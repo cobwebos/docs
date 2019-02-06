@@ -6,16 +6,16 @@ author: hirokib
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/11/2018
 ms.author: elbutter
 ms.reviewer: igorstan
-ms.openlocfilehash: d861e1d4cd891e1f1e1be3209ae4dfdbf4420165
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4a45d00559a84c178ab760acf8616f97ce7bb57c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718273"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466279"
 ---
 # <a name="best-practices-for-using-elastic-query-in-azure-sql-database-to-access-data-in-azure-sql-data-warehouse"></a>使用 Azure SQL 数据库中的弹性查询访问 Azure SQL 数据仓库中的数据的最佳做法
 了解使用弹性查询从 Azure SQL 数据库访问 Azure SQL 数据仓库中的数据的最佳做法。 
@@ -55,7 +55,7 @@ ms.locfileid: "44718273"
 
 若要详细了解如何结合使用弹性查询和 SQL 数据库，请参阅 [Azure SQL 数据库弹性查询概述][Azure SQL Database elastic query overview]。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 请按照这些最佳做法来有效地使用弹性查询。
 
 ### <a name="general"></a>常规

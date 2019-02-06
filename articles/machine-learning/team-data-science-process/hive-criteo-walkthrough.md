@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 777d976133f5b9bb1c97ea678e058f2dc398922d
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 55b6e6db14f3847eb659f9bee05b12585a613693
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135808"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477210"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Team Data Science Process 的工作原理 - 针对 1 TB 数据集使用 Azure HDInsight Hadoop 群集
 
@@ -33,14 +33,14 @@ Criteo 数据是一个单击预测数据集，包含约 370 GB 的 gzip 压缩 T
 * 接下来的 13 列是数值列，并且
 * 最后的 26 列是分类列
 
-这些列是匿名的，并且使用一系列枚举的名称：“Col1”（表示标签列）到“Col40”（表示最后一个分类列）。            
+这些列是匿名的，并且使用一系列枚举的名称：“Col1”（表示标签列）到“Col40”（表示最后一个分类列）。
 
 以下是此数据集中两个观测（行）的前 20 列的摘要：
 
     Col1    Col2    Col3    Col4    Col5    Col6    Col7    Col8    Col9    Col10    Col11    Col12    Col13    Col14    Col15            Col16            Col17            Col18            Col19        Col20
 
-    0       40      42      2       54      3       0       0       2       16      0       1       4448    4       1acfe1ee        1b2ff61f        2e8b2631        6faef306        c6fc10d3    6fcd6dcb           
-    0               24              27      5               0       2       1               3       10064           9a8cb066        7a06385f        417e6103        2170fc56        acf676aa    6fcd6dcb                      
+    0       40      42      2       54      3       0       0       2       16      0       1       4448    4       1acfe1ee        1b2ff61f        2e8b2631        6faef306        c6fc10d3    6fcd6dcb
+    0               24              27      5               0       2       1               3       10064           9a8cb066        7a06385f        417e6103        2170fc56        acf676aa    6fcd6dcb
 
 在此数据集的数值列和分类列中都有缺失值。 本文介绍一种处理缺失值的简单方法。 将缺失值存储到 Hive 表中时，将浏览数据的其他详细信息。
 
@@ -50,9 +50,9 @@ Criteo 数据是一个单击预测数据集，包含约 370 GB 的 gzip 压缩 T
 本演练中涉及两个示例预测问题：
 
 1. **二元分类**：预测用户是否单击了添加：
-   
+
    * 分类 0：无点击
-   * 分类 1：点击
+   * 分类 1：单击
 2. **回归**：预测来自用户功能的广告点击概率。
 
 ## <a name="setup"></a>为数据科学设置 HDInsight Hadoop 群集
@@ -62,10 +62,10 @@ Criteo 数据是一个单击预测数据集，包含约 370 GB 的 gzip 压缩 T
 
 1. [创建存储帐户](../../storage/common/storage-quickstart-create-account.md)：此存储帐户用于在 Azure Blob 存储中存储数据。 HDInsight 群集中使用的数据存储在此处。
 2. [自定义用于数据科学的 Azure HDInsight Hadoop 群集](customize-hadoop-cluster.md)：此步骤将创建一个在所有节点上都安装有 64 位 Anaconda Python 2.7 的 Azure HDInsight Hadoop 群集。 自定义 HDInsight 群集时，要完成两个重要步骤（本主题中有所描述）。
-   
+
    * 必须在创建 HDInsight 群集时将其与在步骤 1 中创建的存储帐户相链接。 此存储帐户用于访问可在群集中处理的数据。
    * 必须在创建群集的头节点后启用远程访问。 记住在此处指定的远程访问凭据（与创建时为群集指定的远程访问凭据不同）：需要这些凭据才能完成以下过程。
-3. [创建 Azure ML 工作区](../studio/create-workspace.md)：此 Azure 机器学习工作区用于在 HDInsight 群集上进行初始数据浏览和缩小取样后构建机器学习模型。
+3. [创建 Azure 机器学习工作室工作区](../studio/create-workspace.md)：此 Azure 机器学习工作区用于在 HDInsight 群集上进行初始数据浏览和缩小取样后构建机器学习模型。
 
 ## <a name="getdata"></a>从公共源获取和使用数据
 可以通过单击链接、接受使用条款并提供名称来访问 [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) 数据集。 此处显示的内容的快照如下：
@@ -74,10 +74,10 @@ Criteo 数据是一个单击预测数据集，包含约 370 GB 的 gzip 压缩 T
 
 单击“继续下载”，详细了解数据集及其可用性。
 
-数据驻留在公共 [Azure Blob 存储](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)位置：wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/。 “wasb”表示 Azure Blob 存储位置。 
+数据驻留在公共 [Azure Blob 存储](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)位置：wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/。 “wasb”表示 Azure Blob 存储位置。
 
 1. 此公共 blob 存储中的数据由已解压缩数据的三个子文件夹组成。
-   
+
    1. 子文件夹 raw/count/ 包含前 21 天的数据 - 从第\_00天到第\_20天
    2. 子文件夹 raw/train/ 由一天的数据组成，即第\_21 天
    3. 子文件夹 raw/test/ 由两天的数据组成，第\_22 天和第\_23 天
@@ -103,11 +103,11 @@ Criteo 数据是一个单击预测数据集，包含约 370 GB 的 gzip 压缩 T
 
 > [!NOTE]
 > 从 Hive bin/ 目录提示符运行此演练中的所有 Hive 命令。 这会自动处理任何路径问题。 我们将术语“Hive 目录提示符”、“Hive bin/ 目录提示符”和“Hadoop 命令行”互换使用。
-> 
+>
 > [!NOTE]
 > 若要执行任何 Hive 查询，可以使用以下命令：
-> 
-> 
+>
+>
 
         cd %hive_home%\bin
         hive
@@ -158,13 +158,13 @@ Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行�
 **有两种可以执行任何 Hive 查询的方法：**
 
 1. **使用 Hive REPL 命令行**：首先发出“hive”命令，然后在 Hive REPL 命令行中复制并粘贴查询。 为此，请执行以下操作：
-   
+
         cd %hive_home%\bin
         hive
-   
+
      在 REPL 命令行，剪切并粘贴查询以执行它。
 2. **将查询保存到文件并执行命令**：第二种方法是将查询保存到 .hql 文件 ([sample&#95;hive&#95;create&#95;criteo&#95;database&#95;and&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql))，并发出以下命令来执行查询：
-   
+
         hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
 
 ### <a name="confirm-database-and-table-creation"></a>确认数据库和表的创建
@@ -294,7 +294,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
         1.0     2.1418600917169246      2.1418600917169246    6.21887086390288 27.53454893115633       65535.0
         Time taken: 564.953 seconds, Fetched: 1 row(s)
 
-百分位数的分布与任何数值变量的直方图分布密切相关。         
+百分位数的分布与任何数值变量的直方图分布密切相关。
 
 ### <a name="find-number-of-unique-values-for-some-categorical-columns-in-the-train-dataset"></a>查找定型数据集中某些分类列的唯一值的数量
 继续数据浏览，我们发现某些分类列所采用的唯一值的数量。 为此，显示 [sample_hive_criteo_unique_values_categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_categoricals.hql) 的内容：
@@ -455,11 +455,11 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
 > [!NOTE]
 > 对定型和测试数据集都执行此操作。 此外，请记住使用为此目的提供的数据库名称和表名称。 图中使用的值仅用于说明目的。\*\*
-> 
-> 
+>
+>
 
 ### <a name="step2"></a> 步骤 2：在 Azure 机器学习中创建一个简单实验，以预测单击/无单击
-我们的 Azure ML 实验如下所示：
+我们的 Azure 机器学习工作室试验如下所示：
 
 ![机器学习实验](./media/hive-criteo-walkthrough/xRpVfrY.png)
 
@@ -481,9 +481,9 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 ![“生成计数转换”模块属性](./media/hive-criteo-walkthrough/e0eqKtZ.png)
 ![“生成计数转换”模块](./media/hive-criteo-walkthrough/OdDN0vw.png)
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > 在“计数列”框中，输入要执行计数的列。 通常，要输入是（正如所提到的）高维分类列。 请记住，Criteo 数据集有 26 个分类列：从 Col15 到 Col40。 此处对所有分类列进行计数，并给出其指数（从 15 到 40，用逗号分隔，如图所示）。
-> 
+>
 
 若要在 MapReduce 模式下使用模块（适用于大型数据集），则需要访问 HDInsight Hadoop 群集（用于功能浏览的群集也可以重复使用于此目的）及其凭据。 前面的图说明了填充值的样式（将提供的值替换为与自己的用例相关的值）。
 
@@ -588,8 +588,8 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
 > [!NOTE]
 > 对于输入数据格式，请使用 **Count Featurizer** 模块的 OUTPUT。 此实验完成运行后，将 **Count Featurizer** 模块的输出另存为数据集。 此数据集用于 webservice 中的输入数据。
-> 
-> 
+>
+>
 
 #### <a name="scoring-experiment-for-publishing-webservice"></a>发布 webservice 的评分实验
 首先，我们演示一下这种情况。 基本结构为“评分模型”模块，该模块接受训练模型对象和在前面步骤中使用 **Count Featurizer** 模块生成的几行输入数据。 使用“在数据集中选择列”来投影出评分标签和评分概率。

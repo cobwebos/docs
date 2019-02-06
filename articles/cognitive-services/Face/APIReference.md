@@ -6,16 +6,16 @@ services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: reference
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: be3e408b3f5f6393786a35108202d51ae871ea3b
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 6c5bfb052fc887bb189edb06247642419b14ecf7
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679726"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296964"
 ---
 # <a name="api-reference"></a>API 参考
 
@@ -28,5 +28,6 @@ Azure 人脸 API 是基于云的 API，可提供用于人脸检测和识别的�
 - [LargeFaceList 管理 API](https://docs.microsoft.com/rest/api/cognitiveservices/face/largefacelist)：用来管理用于[查找相似](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/findsimilar)的 LargeFaceList。
 - [PersonGroup 人员管理 API](https://docs.microsoft.com/rest/api/cognitiveservices/face/persongroupperson)：用来管理用于[识别](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify)的 PersonGroup 人脸。
 - [PersonGroup 管理 API](https://docs.microsoft.com/rest/api/cognitiveservices/face/persongroup)：用来管理用于[识别](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify)的 PersonGroup 数据集。
+- [快照管理 API](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot)：用于管理跨订阅的数据迁移的快照。
 
 <!-- Linguist question: Please confirm that the following are API names and should be left as is: "Person Management, LargePersonGroup/PersonGroup Management, LargeFaceList/FaceList Management, and Face Algorithms" -->

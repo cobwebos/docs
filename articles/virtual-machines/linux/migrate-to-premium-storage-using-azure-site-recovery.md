@@ -9,13 +9,13 @@ ms.tgt_pltfrm: linux
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
-ms.component: disks
-ms.openlocfilehash: 5c7a136149bac2fb5b6368bf891e5d8021e12bdd
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.subservice: disks
+ms.openlocfilehash: 6b5605a8e3a80d597a4a4a78d015fa556c282357
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715346"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465718"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 迁移到高级存储
 
@@ -83,7 +83,7 @@ Site Recovery 支持多种类型的、停机时间极短或不造成停机的故
 ### <a name="step-2-choose-your-protection-goals"></a>步骤 2：选择保护目标 
 
 1. 在想要安装配置服务器的 VM 上，打开 [Azure 门户](https://portal.azure.com)。
-2. 转到“恢复服务保管库” > “设置” > “Site Recovery” > “步骤 1: 准备基础结构” > “保护目标”。
+2. 转到“恢复服务保管库” > “设置” > “Site Recovery” > **步骤 1：“准备基础结构” > “保护目标”**。
 
    ![浏览到“保护目标”窗格][2]
 
@@ -139,7 +139,7 @@ Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和�
 
 要验证配置服务器是否已成功与创建的复制策略相关联，请遵循[设置复制设置](../../site-recovery/vmware-walkthrough-overview.md)。
 
-### <a name="step-6-plan-capacity"></a>步骤 6：规划容量
+### <a name="step-6-plan-capacity"></a>步骤 6：计划容量
 
 1. 使用 [Capacity Planner](../../site-recovery/site-recovery-capacity-planner.md) 根据复制需要准确估算网络带宽、存储和其他要求。 
 2. 完成后，请在“是否已完成容量规划?”中选择“是，已完成”。
@@ -196,8 +196,8 @@ Site Recovery 将创建类型与支持高级存储的 VM 相同或类似的 VM �
 ## <a name="post-migration-steps"></a>迁移后的步骤
 
 1. **将复制的 VM 配置到可用性集（如果适用）**。 Site Recovery 不支持连同可用性集一起迁移 VM。 根据复制的 VM 的部署，执行以下操作之一：
-   * 对于使用经典部署模型创建的 VM：在 Azure 门户中将 VM 添加到可用性集。 有关详细步骤，请参阅[将现有虚拟机添加到可用性集](../linux/classic/configure-availability-classic.md)。
-   * 对于通过资源管理器部署模型创建的 VM：保存 VM 的配置，并在可用性集中删除再重新创建 VM。 为此，请使用 [Set Azure 资源管理器 VM Availability Set](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)（设置 Azure 资源管理器 VM 可用性集）中所述的脚本。 运行此脚本之前，请检查其自身的限制并规划停机时间。
+   * 对于通过经典部署模型创建的 VM：将 VM 添加到 Azure 门户中的可用性集。 有关详细步骤，请参阅[将现有虚拟机添加到可用性集](../linux/classic/configure-availability-classic.md)。
+   * 对于通过资源管理器部署模型创建的 VM：保存 VM 的配置，并在可用性集中删除并再重新创建 VM。 为此，请使用 [Set Azure 资源管理器 VM Availability Set](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)（设置 Azure 资源管理器 VM 可用性集）中所述的脚本。 运行此脚本之前，请检查其自身的限制并规划停机时间。
 
 2. **删除旧 VM 和磁盘**。 请确保高级磁盘与源磁盘一致，并且新 VM 执行的功能与源 VM 相同。 通过 Azure 门户删除源存储帐户中的 VM 和磁盘。 如果出现了即使删除 VM 也无法删除磁盘的问题，请参阅[排查存储资源删除错误](storage-resource-deletion-errors.md)。
 
@@ -220,7 +220,7 @@ Site Recovery 将创建类型与支持高级存储的 VM 相同或类似的 VM �
 
 * [Azure 存储](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure 虚拟机](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](premium-storage.md)
+* [高级存储：适用于 Azure 虚拟机工作负载的高性能存储](premium-storage.md)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png
 [2]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-2.png

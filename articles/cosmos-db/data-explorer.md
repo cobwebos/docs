@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: dech
-ms.openlocfilehash: df0b031e432c91897ff61e2cd9fcadc86bb54ee2
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d50bf7d865cb286f2a1421156b477dc92dc978d1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036862"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453597"
 ---
-# <a name="use-azure-cosmos-db-explorer-to-manage-your-data"></a>使用 Azure Cosmos DB 资源管理器管理数据 
+# <a name="work-with-data-using-azure-cosmos-explorer"></a>使用 Azure Cosmos 资源管理器处理数据 
 
 Azure Cosmos DB 资源管理器是基于 Web 的独立界面，允许查看和管理存储在 Azure Cosmos DB 中的数据。 Azure Cosmos DB 资源管理器相当于创建 Azure Cosmos DB 帐户时 Azure 门户中提供的现有“数据资源管理器”选项卡。 Azure Cosmos DB 资源管理器相对于现有数据资源管理器的主要优势是：
 

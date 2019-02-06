@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: 17e0cf170197b99037e2892d1b74a699a3a9eef5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a91778f1646807a092a3c8cda66bd3bd104ff8b5
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275323"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301877"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -269,7 +269,7 @@ context.log(message)
 允许在默认跟踪级别向流式处理函数日志进行写入。 `context.log` 中还提供了其他的日志记录方法，用以允许在其他跟踪级别写入函数日志：
 
 
-| 方法                 | Description                                |
+| 方法                 | 说明                                |
 | ---------------------- | ------------------------------------------ |
 | **error(_message_)**   | 向错误级日志记录或更低级别进行写入。   |
 | **warn(_message_)**    | 向警告级日志记录或更低级别进行写入。 |
@@ -326,7 +326,7 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 
 ### <a name="configure-the-trace-level-for-console-logging"></a>为控制台日志记录配置跟踪级别
 
-Functions 允许定义向控制台进行写入时使用的阈值跟踪级别，这使得可以轻松控制从函数向控制台写入跟踪的方式。 若要针对写入到控制台的所有跟踪设置阈值，请在 host.json 文件中使用 `tracing.consoleLevel` 属性。 此设置应用于 Function App 中的所有函数。 以下示例设置跟踪阈值来启用详细日志记录：
+Functions 1.x 允许定义向控制台进行写入时使用的阈值跟踪级别，这使得可以轻松控制从函数向控制台写入跟踪的方式。 若要针对写入到控制台的所有跟踪设置阈值，请在 host.json 文件中使用 `tracing.consoleLevel` 属性。 此设置应用于 Function App 中的所有函数。 以下示例设置跟踪阈值来启用详细日志记录：
 
 ```json
 {
@@ -336,7 +336,7 @@ Functions 允许定义向控制台进行写入时使用的阈值跟踪级别，�
 }  
 ```
 
-**consoleLevel** 的值对应于 `context.log` 方法的名称。 要为控制台禁用所有跟踪日志记录，请将 **consoleLevel** 设置为 _off_。 有关详细信息，请参阅 [host.json 参考](functions-host-json.md)。
+**consoleLevel** 的值对应于 `context.log` 方法的名称。 要为控制台禁用所有跟踪日志记录，请将 **consoleLevel** 设置为 _off_。 有关详细信息，请参阅 [host.json 参考](functions-host-json-v1.md)。
 
 ## <a name="http-triggers-and-bindings"></a>HTTP 触发器和绑定
 
@@ -346,7 +346,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 `context.req`（请求）对象具有以下属性：
 
-| 属性      | Description                                                    |
+| 属性      | 说明                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _body_        | 一个包含请求正文的对象。               |
 | _headers_     | 一个包含请求标头的对象。                   |
@@ -361,7 +361,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 `context.res`（响应）对象具有以下属性：
 
-| 属性  | Description                                               |
+| 属性  | 说明                                               |
 | --------- | --------------------------------------------------------- |
 | _body_    | 一个包含响应正文的对象。         |
 | _headers_ | 一个包含响应标头的对象。             |

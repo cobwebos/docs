@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 0be1ddea4d5eaa253850ae640152b2538b39d0ca
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/25/2019
+ms.openlocfilehash: 37b88b254b350d5c9e006e882a2dc5a39b880b2c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035417"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477805"
 ---
 # <a name="automated-backups"></a>自动备份
 
@@ -42,7 +42,7 @@ SQL 数据库使用 SQL Server 技术创建[完整](https://docs.microsoft.com/s
 
 ## <a name="how-long-are-backups-kept"></a>备份保留多长时间？
 
-每个 SQL 数据库的默认备份保留期为 7 到 35 天，具体取决于购买模型和服务层。 可以在 Azure 逻辑服务器上更新数据库的备份保留期。 有关详细信息，请参阅[更改备份保持期](#how-to-change-the-pitr-backup-retention-period)。
+每个 SQL 数据库的默认备份保留期为 7 到 35 天，具体取决于购买模型和服务层。 可以在 SQL 数据库服务器上更新数据库的备份保持期。 有关详细信息，请参阅[更改备份保持期](#how-to-change-the-pitr-backup-retention-period)。
 
 如果删除一个数据库，SQL 数据库将保留其备份，就像保留联机数据库的备份一样。 例如，如果删除保留期为 7 天的基本数据库，已保留 4 天的备份将继续保存 3 天。
 
@@ -63,7 +63,7 @@ SQL 数据库使用 SQL Server 技术创建[完整](https://docs.microsoft.com/s
 
 #### <a name="vcore-based-purchasing-model"></a>基于 vCore 的购买模型
 
-如果使用的是[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)，则默认备份保持期为 7 天（适用于单一、共用和托管实例数据库）。 对于所有 Azure SQL 数据库（单一、共用和托管实例数据库），可以[将备份保持期更改为最多 35 天](#how-to-change-the-pitr-backup-retention-period)。
+如果使用的是[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)，则默认备份保持期为 7 天（适用于单独、入池和实例数据库）。 对于所有 Azure SQL 数据库（单独、入池和实例数据库），可以[将备份保持期更改为最多 35 天](#how-to-change-the-pitr-backup-retention-period)。
 
 > [!WARNING]
 > 如果缩短当前保留期，早于新保留期的所有现有备份将不再可用。 如果延长当前保留期，SQL 数据库将保留现有备份，直至达到更长的保留期。
@@ -80,7 +80,7 @@ PITR 备份异地冗余且受 [Azure 存储跨区域复制](../storage/common/st
 
 ### <a name="backups-for-long-term-retention"></a>长期保留的备份
 
-逻辑服务器中托管的 SQL 数据库提供了选项，用于在 Azure blob 存储中将完整备份的长期保留 (LTR) 配置为最多 10 年。 如果启用了 LTR 策略，每周完整备份将自动复制到不同的 RA-GRS 存储容器。 为了满足不同的符合性要求，可为每周、每月和/或每年备份选择不同的保留期。 存储消耗量取决于所选的备份频率和保留期。 可以使用 [LTR 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=sql-database)来估算 LTR 存储成本。
+单独和入池数据库提供选项，用于在 Azure blob 存储中将完整备份的长期保留 (LTR) 配置为最多 10 年。 如果启用了 LTR 策略，每周完整备份将自动复制到不同的 RA-GRS 存储容器。 为了满足不同的符合性要求，可为每周、每月和/或每年备份选择不同的保留期。 存储消耗量取决于所选的备份频率和保留期。 可以使用 [LTR 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=sql-database)来估算 LTR 存储成本。
 
 类似于 PITR，LTR 备份异地冗余且受 [Azure 存储跨区域复制](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)保护。
 
@@ -111,7 +111,7 @@ Azure SQL 数据库工程团队持续不断地自动测试整个服务中数据�
 
 若要使用 Azure 门户更改 PITR 备份保留期，请导航到要在门户中更改其保留期的服务器对象，然后根据要修改的服务器对象选择适当的选项。
 
-#### <a name="change-pitr-for-a-logical-server"></a>更改逻辑服务器的 PITR
+#### <a name="change-pitr-for-a-sql-database-server"></a>更改 SQL 数据库服务器的 PITR
 
 ![更改 PITR Azure 门户](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 

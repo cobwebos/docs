@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: dineshmurthy
-ms.component: common
-ms.openlocfilehash: 55fa63e75768662a0f909cef0e3cc04b9c2dae41
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: c45c70055817eeeed19f9c8a832a76b10beceaa6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526192"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467027"
 ---
 # <a name="azure-storage-client-tools"></a>Azure 存储客户端工具
 Azure 存储用户经常要使用 Azure 存储客户端工具来查看其数据或者与数据交互。 下表列出了可用于实现此目的的多种工具。 我们在每个能够枚举和/或访问数据抽象的块中打上“X”。 该表还指明了工具是否免费。 “试用”表示存在免费试用版，但完整版产品不是免费的。 “是/否”表示有一个免费版本，而提供的其他版本需要购买。
@@ -107,7 +107,7 @@ Azure 存储用户经常要使用 Azure 存储客户端工具来查看其数据�
     <td>Linux</td>
   </tr>
   <tr>
-    <td><a href="http://www.cerebrata.com/products/azure-management-studio/introduction">Cerabrata: Azure Management Studio</a></td>
+    <td><a href="http://www.cerebrata.com/products/azure-management-studio/introduction">Cerabrata：Azure Management Studio</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -121,7 +121,7 @@ Azure 存储用户经常要使用 Azure 存储客户端工具来查看其数据�
     <td></td>
   </tr>
   <tr>
-    <td><a href="https://www.red-gate.com/products/azure-development/azure-explorer/index">Redgate: Azure Explorer</a></td>
+    <td><a href="https://www.red-gate.com/products/azure-development/azure-explorer/index">Redgate：Azure 资源管理器</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -177,7 +177,7 @@ Azure 存储用户经常要使用 Azure 存储客户端工具来查看其数据�
     <td></td>
   </tr>
   <tr>
-    <td><a href="http://clumsyleaf.com">ClumsyLeaf: AzureXplorer, CloudXplorer, TableXplorer</a></td>
+    <td><a href="http://clumsyleaf.com">ClumsyLeaf：AzureXplorer、CloudXplorer、TableXplorer</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>

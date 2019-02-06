@@ -1,9 +1,9 @@
 ---
-title: 创建、管理 Azure SQL 服务器和单一数据库 | Microsoft Docs
-description: 了解如何创建和管理逻辑服务器和单一数据库。
+title: 创建、管理 Azure SQL 数据库服务器和单一数据库 | Microsoft Docs
+description: 了解如何创建和管理 SQL 数据库服务器和单一数据库。
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: standalone-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,29 +11,29 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: f43c2cd5a3c155258cd698f6b55854bc0df9f861
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: 32b532cab7e970d01c3963729658c32ac4a020b6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388592"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465038"
 ---
-# <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>在 Azure SQL 数据库中创建和管理逻辑服务器和单一数据库
+# <a name="create-and-manage-sql-database-servers-and-single-databases-in-azure-sql-database"></a>在 Azure SQL 数据库中创建和管理 SQL 数据库服务器和单一数据库
 
-可以使用 Azure 门户、PowerShell、Azure CLI、REST API 和 Transact-SQL 创建和管理 Azure SQL 数据库逻辑服务器和单一数据库。
+可使用 Azure 门户、PowerShell、Azure CLI、REST API 和 Transact-SQL 创建和管理 SQL 数据库服务器和单一数据库。
 
-## <a name="azure-portal-manage-logical-servers-and-databases"></a>Azure 门户：管理逻辑服务器和数据库
+## <a name="azure-portal-manage-sql-database-servers-and-single-databases"></a>Azure 门户：管理 SQL 数据库服务器和单一数据库
 
 可以提前创建 Azure SQL 数据库的资源组，也可以在创建服务器本身期间创建。 转到新 SQL 服务器表单的方法有多种，可以通过新建 SQL 服务器，也可以在新建数据库期间。
 
-### <a name="create-a-blank-sql-server-logical-server"></a>创建空白 SQL 服务器（逻辑服务器）
+### <a name="create-a-blank-sql-database-server"></a>创建空白 SQL 数据库服务器
 
-若要使用 [Azure 门户](https://portal.azure.com)创建 Azure SQL 数据库服务器（不含数据库），请转到空白 SQL 服务器（逻辑服务器）表单。  
+若要使用 [Azure 门户](https://portal.azure.com)创建 SQL 数据库服务器，请转到空白 SQL 服务器（逻辑服务器）窗体。  
 
-### <a name="create-a-blank-or-sample-sql-database"></a>创建空白或示例 SQL 数据库
+### <a name="create-a-blank-or-sample-sql-single-database"></a>创建空白或示例 SQL 单一数据库
 
-若要使用 [Azure 门户](https://portal.azure.com)创建 Azure SQL 数据库，请转到空白 SQL 数据库表单，并输入相应信息。 可以提前创建 Azure SQL 数据库的资源组和逻辑服务器，也可以在创建数据库本身期间创建。 可以创建空白数据库，也可以创建基于 Adventure Works LT 的示例数据库。
+若要使用 [Azure 门户](https://portal.azure.com)创建 Azure SQL 单一数据库，请转到空白 SQL 数据库窗体，并输入相应信息。 可以提前或在创建单一数据库本身期间创建 Azure SQL 数据库的资源组和 SQL 数据库服务器。 可以创建空白数据库，也可以创建基于 Adventure Works LT 的示例数据库。
 
   ![创建数据库 - 1](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -42,9 +42,9 @@ ms.locfileid: "54388592"
 
 要创建托管实例，请参阅[创建托管实例](sql-database-managed-instance-get-started.md)
 
-## <a name="manage-an-existing-sql-server"></a>管理现有 SQL 服务器
+## <a name="manage-an-existing-sql-database-server"></a>管理现有 SQL 数据库服务器
 
-若要管理现有服务器，请使用多种方法转到服务器，如通过特定 SQL 数据库网页、“SQL 服务器”页或“所有资源”页。
+若要管理现有 SQL 数据库服务器，请使用多种方法转到服务器，如通过特定 SQL 数据库页、“SQL 服务器”页或“所有资源”页。
 
 若要管理现有数据库，请转到“SQL 数据库”页，再单击要管理的数据库。 下面的屏幕截图展示了如何通过数据库的“概述”页开始为数据库设置服务器级防火墙。
 
@@ -55,12 +55,12 @@ ms.locfileid: "54388592"
 > [!TIP]
 > 有关 Azure 门户快速入门，请参阅[在 Azure 门户中创建 Azure SQL 数据库](sql-database-get-started-portal.md)。
 
-## <a name="powershell-manage-logical-servers-and-databases"></a>PowerShell：管理逻辑服务器和数据库
+## <a name="powershell-manage-sql-database-servers-and-single-databases"></a>PowerShell：管理 SQL 数据库服务器和单一数据库
 
-若要使用 Azure PowerShell 创建并管理 Azure SQL 逻辑服务器、单个和共用数据库以及逻辑服务器防火墙，请运行以下 PowerShell cmdlet。 如果需要安装或升级 PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
+若要使用 Azure PowerShell 创建和管理 Azure SQL 数据库服务器、独立数据库和入池数据库，以及 SQL 数据库服务器防火墙，请运行以下 PowerShell cmdlet。 如果需要安装或升级 PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 
 > [!TIP]
-> 有关 PowerShell 示例脚本，请参阅[使用 PowerShell 创建单个 Azure SQL 数据库和配置逻辑服务器防火墙规则](scripts/sql-database-create-and-configure-database-powershell.md)和[使用 PowerShell 监视和缩放单一 SQL 数据库](scripts/sql-database-monitor-and-scale-database-powershell.md)。
+> 有关 PowerShell 示例脚本，请参阅[使用 PowerShell 创建 Azure SQL 单一数据库和配置 SQL 数据库服务器防火墙规则](scripts/sql-database-create-and-configure-database-powershell.md)和[使用 PowerShell 监视和缩放 SQL 单一数据库](scripts/sql-database-monitor-and-scale-database-powershell.md)。
 
 | Cmdlet | 说明 |
 | --- | --- |
@@ -79,12 +79,12 @@ ms.locfileid: "54388592"
 |[Remove-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/remove-azurermsqlserverfirewallrule)|从服务器中删除防火墙规则。|
 | New-AzureRmSqlServerVirtualNetworkRule | 基于作为虚拟网络服务终结点的子网创建[*虚拟网络规则*](sql-database-vnet-service-endpoint-rule-overview.md)。 |
 
-## <a name="azure-cli-manage-logical-servers-and-databases"></a>Azure CLI：管理逻辑服务器和数据库
+## <a name="azure-cli-manage-sql-database-servers-and-single-databases"></a>Azure CLI：管理 SQL 数据库服务器和单一数据库
 
 若要使用 [Azure CLI](/cli/azure) 创建并管理 Azure SQL 服务器、数据库和防火墙，请使用以下 [Azure CLI SQL 数据库](/cli/azure/sql/db)命令。 使用 [Cloud Shell](/azure/cloud-shell/overview) 在浏览器中运行 CLI，或者在 macOS、Linux 或 Windows 上[安装](/cli/azure/install-azure-cli)它。 若要创建并管理弹性池，请参阅[弹性池](sql-database-elastic-pool.md)。
 
 > [!TIP]
-> 有关 Azure CLI 快速入门，请参阅[使用 Azure CLI 创建单一 Azure SQL 数据库](sql-database-cli-samples.md)。 有关 Azure CLI 示例脚本，请参阅[使用 CLI 创建单个 Azure SQL 数据库和配置防火墙规则](scripts/sql-database-create-and-configure-database-cli.md)和[使用 CLI 监视和缩放单一 SQL 数据库](scripts/sql-database-monitor-and-scale-database-cli.md)。
+> 有关 Azure CLI 快速入门，请参阅[使用 Azure CLI 创建 Azure SQL 单一数据库](sql-database-cli-samples.md)。 有关 Azure CLI 示例脚本，请参阅[使用 CLI 创建 Azure SQL 单一数据库和配置 SQL 数据库防火墙规则](scripts/sql-database-create-and-configure-database-cli.md)和[使用 CLI 监视和缩放 Azure SQL 单一数据库](scripts/sql-database-monitor-and-scale-database-cli.md)。
 >
 
 | Cmdlet | 说明 |
@@ -109,7 +109,7 @@ ms.locfileid: "54388592"
 |[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|更新防火墙规则|
 |[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|删除防火墙规则|
 
-## <a name="transact-sql-manage-logical-servers-and-databases"></a>Transact-SQL：管理逻辑服务器和数据库
+## <a name="transact-sql-manage-sql-database-servers-and-single-databases"></a>Transact-SQL：管理 SQL 数据库服务器和单一数据库
 
 若要使用 Transact-SQL 创建并管理 Azure SQL 服务器、数据库和防火墙，请运行以下 T-SQL 命令。 可以使用 Azure 门户、[SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio)、[Visual Studio Code](https://code.visualstudio.com/docs) 或可以连接到 Azure SQL 数据库服务器并传递 Transact-SQL 命令的其他任何程序，发出这些命令。 若要管理弹性池，请参阅[弹性池](sql-database-elastic-pool.md)。
 
@@ -135,17 +135,17 @@ ms.locfileid: "54388592"
 |[sys.database_firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|返回与 Microsoft Azure SQL 数据库关联的数据库级防火墙设置的相关信息。 |
 |[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|从 Azure SQL 数据库或 SQL 数据仓库中删除数据库级防火墙规则设置。 |
 
-## <a name="rest-api-manage-logical-servers-and-databases"></a>REST API：管理逻辑服务器和数据库
+## <a name="rest-api-manage-sql-database-servers-and-single-databases"></a>REST API：管理 SQL 数据库服务器和单一数据库
 
 若要创建并管理 Azure SQL 服务器、数据库和防火墙，请使用以下 REST API 请求。
 
 | 命令 | 说明 |
 | --- | --- |
-|[Servers - Create Or Update](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|创建或更新新服务器。|
+|[服务器 - 创建或更新](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|创建或更新新服务器。|
 |[Servers - Delete](https://docs.microsoft.com/rest/api/sql/servers/delete)|删除 SQL Server。|
 |[Servers - Get](https://docs.microsoft.com/rest/api/sql/servers/get)|获取服务器。|
 |[Servers - List](https://docs.microsoft.com/rest/api/sql/servers/list)|返回订阅中的服务器列表。|
-|[Servers - List By Resource Group](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|返回资源组中服务器的列表。|
+|[服务器 - 按资源组列出](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|返回资源组中服务器的列表。|
 |[Servers - Update](https://docs.microsoft.com/rest/api/sql/servers/update)|更新现有服务器。|
 |[数据库 - 创建或更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|创建新数据库或更新现有数据库。|
 |[数据库 - 删除](https://docs.microsoft.com/rest/api/sql/databases/delete)|删除数据库。|
@@ -153,10 +153,10 @@ ms.locfileid: "54388592"
 |[数据库 - 按弹性池列出](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|返回弹性池中数据库的列表。|
 |[数据库 - 按服务器列出](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|返回服务器中的数据库列表。|
 |[数据库 - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)|更新现有的数据库。|
-|[Firewall Rules - Create Or Update](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|创建或更新防火墙规则。|
-|[Firewall Rules - Delete](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|删除防火墙规则。|
-|[Firewall Rules - Get](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|获取防火墙规则。|
-|[Firewall Rules - List By Server](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|返回防火墙规则的列表。|
+|[防火墙规则 - 创建或更新](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|创建或更新防火墙规则。|
+|[防火墙规则 - 删除](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|删除防火墙规则。|
+|[防火墙规则 - 获取](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|获取防火墙规则。|
+|[防火墙规则 - 按服务器列出](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|返回防火墙规则的列表。|
 
 ## <a name="next-steps"></a>后续步骤
 

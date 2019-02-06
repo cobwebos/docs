@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 5df11eb4e1b759d66200c09cabc8752532d0873c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 5c3da9a69204d7229ddcbbf39ec389684258e389
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042149"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470682"
 ---
-# <a name="understanding-your-azure-cosmos-db-bill"></a>了解 Azure Cosmos DB 帐单
+# <a name="understand-your-azure-cosmos-db-bill"></a>了解 Azure Cosmos DB 帐单
 
 Azure Cosmos DB 是完全托管的云原生数据库服务，仅针对预配的吞吐量和消耗的存储收费，从而简化计费。 与本地或 IaaS 托管的替代方案相比，无需额外的许可费、硬件、使用成本或设施成本。 若想使用 Azure Cosmos DB 的多区域功能，与现有本地或 IaaS 解决方案相比，数据库服务可显着降低成本。
 

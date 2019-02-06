@@ -1,6 +1,6 @@
 ---
-title:使用 PowerShell 重新训练新的机器学习工作室 Web 服务 titleSuffix: Azure 机器学习工作室 description:了解如何使用机器学习管理 PowerShell cmdlet 以编程方式重新训练模型并更新 Web 服务，以在 Azure 中使用新的训练模型。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:使用 PowerShell 重新训练新的机器学习工作室 Web 服务 titleSuffix:Azure 机器学习工作室 description:了解如何使用机器学习管理 PowerShell cmdlet 以编程方式重新训练模型并更新 Web 服务，以在 Azure 中使用新的训练模型。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:03/28/2017
 ---

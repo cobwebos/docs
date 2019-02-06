@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 58a354950e303eda8158ca072870bfecbf33a89f
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.date: 01/25/2019
+ms.openlocfilehash: 7a5245a9c97748e7b46132eaaa91f6bbc8311266
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890205"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475136"
 ---
 # <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>通过多租户 SQL 数据库 SaaS 应用设置和使用 Log Analytics
 
@@ -49,13 +49,13 @@ OMS 工作区现在称为 Log Analytics 工作区。 Log Analytics 工作区和�
 1. 在 PowerShell ISE 中，打开 *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Demo-PerformanceMonitoringAndManagement.ps1*。 请将此脚本保持打开状态，因为在此教程中可能需要运行多个负载生成方案。
 1. 如果尚未这样做，请预配一批租户，以使监视上下文更为微妙。 此过程需要花费几分钟时间。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 设置 **$DemoScenario = 1**，_预配一批租户_。
+   a. 设置 **$DemoScenario = 1**，_预配一批租户_。
 
    b. 若要运行此脚本并再部署 17 个租户，请按 F5。
 
 1. 现在请启动负载生成器，在所有租户上运行模拟的负载。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 设置 $DemoScenario = 2，生成正常强度负载（约 30 DTU）。
+    a. 设置 $DemoScenario = 2，生成正常强度负载（约 30 DTU）。
 
     b. 若要运行脚本，请按 F5。
 

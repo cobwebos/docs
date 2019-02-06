@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: e69f6869911555730fe723b340e224c0d5a1e4bb
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: b709bbacce23a89b8c60b77a524018b50ca1ca5e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536043"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245661"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Azure SQL 数据库托管实例连接体系结构
 
@@ -98,7 +98,7 @@ Azure SQL 数据库托管实例虚拟群集包含一个管理终结点，可供 
 
 ### <a name="mandatory-inbound-security-rules"></a>强制性入站安全规则 
 
-| 名称       |端口                        |协议|源           |目标|操作|
+| Name       |端口                        |协议|源           |目标|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |管理  |9000、9003、1438、1440、1452|TCP     |任意              |任意        |允许 |
 |mi_subnet   |任意                         |任意     |MI SUBNET        |任意        |允许 |
@@ -106,11 +106,14 @@ Azure SQL 数据库托管实例虚拟群集包含一个管理终结点，可供 
 
 ### <a name="mandatory-outbound-security-rules"></a>强制性出站安全规则 
 
-| 名称       |端口          |协议|源           |目标|操作|
+| Name       |端口          |协议|源           |目标|操作|
 |------------|--------------|--------|-----------------|-----------|------|
-|管理  |80、443、12000|TCP     |任意              |任意        |允许 |
+|管理  |80、443、12000|TCP     |任意              |Internet   |允许 |
 |mi_subnet   |任意           |任意     |任意              |MI SUBNET  |允许 |
 
+  > [!Note]
+  > MI 子网是指子网 10.x.x.x/y 格式的 IP 地址范围。 此信息可在 Azure 门户中找到（通过子网属性）。
+  
   > [!Note]
   > 虽然强制入站安全规则允许来自端口 9000、9003、1438、1440、1452 上的任意资源的流量，但这些端口受内置防火墙的保护。 此[文章](sql-database-managed-instance-find-management-endpoint-ip-address.md)介绍如何发现管理终结点 IP 地址并验证防火墙规则。 
   

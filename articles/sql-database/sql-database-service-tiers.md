@@ -11,22 +11,24 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 9d566c0f95325635c5ce5030f4d3b22dba7ceb08
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 01/25/2019
+ms.openlocfilehash: 719e8c605dfc91b1d9c358158aa3dca248173f90
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726025"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472008"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Azure SQL 数据库购买模型
 
 使用 Azure SQL 数据库，可以轻松购买适合你的性能和成本要求的完全托管的 PaaS 数据库引擎。 你可以根据 Azure SQL 数据库的部署模型选择适合你的需求的购买模型：
+
 - [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)（推荐），可选择确切的存储容量以及计算工作负载所需的容量。
 - [基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)，可选择针对常见工作负载均衡的捆绑计算和存储包。
 
 Azure SQL 数据库部署模型中提供了不同的购买模型：
-- [Azure SQL 数据库](sql-database-technical-overview.md)中的[逻辑服务器](sql-database-logical-servers.md)同时提供[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。 在此购买模型中，可以选择[单一数据库](sql-database-single-databases-manage.md)或[弹性池](sql-database-elastic-pool.md)。
+
+- [Azure SQL 数据库](sql-database-technical-overview.md)中的[单一数据库](sql-database-single-databases-manage.md)和[弹性池](sql-database-elastic-pool.md)提供[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。 
 - Azure SQL 数据库中的[托管实例](sql-database-managed-instance.md)仅提供了[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 
 > [!IMPORTANT]
@@ -64,7 +66,7 @@ Azure SQL 数据库部署模型中提供了不同的购买模型：
 
 ### <a name="database-transaction-units-dtus"></a>数据库事务单位 (DTU)
 
-对于[服务层](sql-database-single-database-scale.md)内特定计算大小的单个 Azure SQL 数据库，Microsoft 保证该数据库（独立于 Azure 云中的任何其他数据库）可获得一定级别的资源，从而提供可预测的性能级别。 此资源量是以若干数据库事务单位或 DTU 计算的，是计算资源、存储资源和 IO 资源的捆绑度量值。 这些资源之间的比例最初由 [OLTP 基准工作负荷](sql-database-benchmark-overview.md)确定，该工作负荷是一种典型的真实 OLTP 工作负荷。 工作负荷超过任何以上资源量时，吞吐量将受到限制，从而导致性能下降和超时。 工作负荷使用的资源不会影响 Azure 云中其他 SQL 数据库可用的资源，而其他工作负荷使用的资源也不会影响用户自己的 SQL 数据库可用的资源。
+对于[服务层](sql-database-single-database-scale.md)内特定计算大小的单个数据库，Microsoft 保证该数据库具有一定级别的资源（独立于 Azure 云中的任何其他数据库），从而提供可预测的性能级别。 此资源量是以若干数据库事务单位或 DTU 计算的，是计算资源、存储资源和 IO 资源的捆绑度量值。 这些资源之间的比例最初由 [OLTP 基准工作负荷](sql-database-benchmark-overview.md)确定，该工作负荷是一种典型的真实 OLTP 工作负荷。 工作负荷超过任何以上资源量时，吞吐量将受到限制，从而导致性能下降和超时。 工作负荷使用的资源不会影响 Azure 云中其他 SQL 数据库可用的资源，而其他工作负荷使用的资源也不会影响用户自己的 SQL 数据库可用的资源。
 
 ![边界框](./media/sql-database-what-is-a-dtu/bounding-box.png)
 

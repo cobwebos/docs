@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
-ms.component: common
-ms.openlocfilehash: fd5df50128885f6a96e68c8ad46204bc21d80264
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: cf40fd45114659bf1a5da4dbaa6bfa928f34088c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39529255"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473759"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>对 Azure 存储服务的跨域资源共享 (CORS) 支持
 从版本 2013-08-15 开始，Azure 存储服务支持 Blob、表、队列和文件服务的跨域资源共享 (CORS)。 CORS 是一项 HTTP 功能，使在一个域中运行的 Web 应用程序能够访问另一个域中的资源。 Web 浏览器实施一种称为[同源策略](http://www.w3.org/Security/wiki/Same_Origin_Policy)的安全限制，防止网页调用不同域中的 API；CORS 提供了一种安全的方法，允许一个域（源域）调用其他域中的 API。 有关 CORS 的详细信息，请参阅 [CORS 规范](http://www.w3.org/TR/cors/)。
@@ -130,8 +130,8 @@ Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元�
 | 请求 |  |  | 响应 |  |
 | --- | --- | --- | --- | --- |
 | **方法** |**源** |**请求标头** |**规则匹配** |**结果** |
-| **PUT** |http://www.contoso.com |x-ms-blob-content-type |第一条规则 |成功 |
-| **GET** |http://www.contoso.com |x-ms-blob-content-type |第二条规则 |成功 |
+| **PUT** |http://www.contoso.com |x-ms-blob-content-type |第一条规则 |Success |
+| **GET** |http://www.contoso.com |x-ms-blob-content-type |第二条规则 |Success |
 | **GET** |http://www.contoso.com |x-ms-client-request-id |第二条规则 |失败 |
 
 第一个请求与第一条规则相匹配，源域与允许的来源相匹配，方法与允许的方法相匹配，标头与允许的标头相匹配，所以第一个请求成功。

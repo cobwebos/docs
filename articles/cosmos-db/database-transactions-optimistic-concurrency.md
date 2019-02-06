@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 5af305a2e0d4754cf4fad8557db9d367c828ecc5
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 044fe3de265d298ecd366a50b9db77eeea32bbb7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389106"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457932"
 ---
-# <a name="database-transactions-and-optimistic-concurrency-control"></a>数据库事务和乐观并发控制
+# <a name="transactions-and-optimistic-concurrency-control"></a>事务和乐观并发控制
 
 数据库事务提供一种安全且可预测的编程模型来处理数据的并发更改。 利用 SQL Server 等传统关系数据库，你可以使用存储过程和/或触发器编写业务逻辑，然后将其发送到该服务器以便直接在数据库引擎中执行。 使用传统关系数据库时需要处理两种不同的编程语言 - 非事务性应用程序编程语言（例如 JavaScript、Python、C#、Java 等）和由数据库本机执行的事务性编程语言 (T-SQL)。
 

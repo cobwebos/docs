@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 9586ffac2fc1f4d3e0a03d0e20052ad16b88cbe9
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 66371fcdc3afba7a5974d8db047242c0c1646bc0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684777"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476853"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>如何使用 TransformText 方法
 
@@ -28,9 +28,9 @@ TransformText 方法是用于社交媒体的文本规范化函数，它返回输
 
 ## <a name="parameters"></a>parameters
 
-| 参数 | Description |
+| 参数 | 说明 |
 |:---|:---|
-| 授权标头 | **必需**：用于标识应用程序的 HTTP 标头。 使用键：“Authorization”和值："Bearer" + " " + access token。 有关详细信息，请转到此处。|
+| 授权标头 | **必需**：用于标识应用程序的 HTTP 标头。 使用密钥：“授权”和值：“持有者” + “ ” + 访问令牌。 有关详细信息，请转到此处。|
 | 语言 | **必需**：一个表示语言代码的字符串。 此参数仅支持以 **en** 作为语言名称的英语。|
 | category | **可选**：一个包含翻译类别或领域的字符串。 此参数仅支持默认选项 **general**。|
 | sentence | **必需**：要更正的句子。 |

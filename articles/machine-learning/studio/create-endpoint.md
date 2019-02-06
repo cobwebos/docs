@@ -1,6 +1,6 @@
 ---
-title:创建 Web service 终结点 titleSuffix: Azure 机器学习工作室 description:在 Azure 机器学习中创建 Web 服务终结点。 Web 服务中的每个终结点都是独立处理、限制和托管的。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:创建 Web service 终结点 titleSuffix:Azure 机器学习工作室 description:在 Azure 机器学习中创建 Web 服务终结点。 Web 服务中的每个终结点都是独立处理、限制和托管的。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:2016/10/04
 ---

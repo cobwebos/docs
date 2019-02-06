@@ -1,6 +1,6 @@
 ---
-title:数据评估 titleSuffix: Azure 机器学习工作室 description:数据可用于数据科学需要满足的四个条件。 本视频提供具体示例，帮助了解基本数据评估。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:数据评估 titleSuffix:Azure 机器学习工作室 description:数据可用于数据科学需要满足的四个条件。 本视频提供具体示例，帮助了解基本数据评估。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: garyericson ms.author: garye ms.custom: seodec18 ms.date:2018/01/03
 ---

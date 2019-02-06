@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: b4f36abb2136223be8d4eec67935317041a41b93
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: b37aa2eb24fe79d322839b4fb5c3c3a8b1296033
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044274"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454090"
 ---
-# <a name="optimize-cost-of-azure-cosmos-db-resources-with-reserved-capacity"></a>使用保留容量优化 Azure Cosmos DB 资源的成本
+# <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 预留容量优化成本
 
 Azure Cosmos DB 预留容量有助于通过预付为期一年或三年的 Azure Cosmos DB 资源费用为你省钱。 使用 Azure Cosmos DB 预留容量，可以获得为 Cosmos DB 资源预配的吞吐量的折扣。 资源示例包括数据库和容器（表、集合和图）。
 
@@ -50,9 +50,9 @@ Azure Cosmos DB 预留容量涵盖为资源预配的吞吐量的费用。 但它
 
    ![填写预留容量表](./media/cosmos-db-reserved-capacity/fill_reserved_capacity_form.png) 
 
-   |字段  |Description  |
+   |字段  |说明  |
    |---------|---------|
-   |名称   |    预留的名称。 该字段自动填充 `CosmosDB_Reservation_<timeStamp>`。 创建预留时，可以提供不同的名称。 或者，可以在创建预留后对其重命名。      |
+   |Name   |    预留的名称。 该字段自动填充 `CosmosDB_Reservation_<timeStamp>`。 创建预留时，可以提供不同的名称。 或者，可以在创建预留后对其重命名。      |
    |订阅  |   用于支付 Azure Cosmos DB 预留容量费用的订阅。 将向所选订阅的付款方式收取预付费用。 订阅类型必须是以下类型之一： <br/><br/>  [企业协议](https://azure.microsoft.com/pricing/enterprise-agreement/)（套餐编号：MS-AZR-0017P）：对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 <br/><br/> [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)（套餐编号：MS-AZR-0003P）：对于即用即付订阅，将向订阅的信用卡或发票付款方式收取费用。    |
    |范围   |   控制有多少订阅可以使用与预留关联的计费权益的选项。 它还控制将预留应用于特定订阅的方式。   <br/><br/>  如果选择“单个订阅”，预留折扣将应用到所选订阅中的 Azure Cosmos DB 实例。 <br/><br/>  如果选择“共享”，预留折扣将应用到计费上下文内任何订阅中运行的 Azure Cosmos DB 实例。 计费上下文基于 Azure 的注册方式。 对于企业客户，共享范围是许可登记表，包括许可登记表中的所有订阅（开发/测试订阅除外）。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。  <br/><br/> 购买预留容量后，可以更改预留范围。  |
    |预留容量类型   |  预配为请求单位的吞吐量。|

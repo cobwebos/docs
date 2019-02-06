@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: a36c5cfc977920f43b7f73e3e7cf9176de7c1f8a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 01/25/2019
+ms.openlocfilehash: 9f61748a489987bf6c3f38e8ebfdab660198e10a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867080"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463015"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>扩大 Azure SQL 数据库
 可以使用**弹性数据库**工具轻松扩大 Azure SQL 数据库。 借助这些工具和功能，可以使用 Azure SQL 数据库中的数据库资源来为事务工作负荷，尤其是服务型软件 (SaaS) 应用程序创建解决方案。 弹性数据库包括：
@@ -67,8 +67,8 @@ VM 和 blob 存储可以轻松实现云应用程序的弹性和缩放需求 - �
 ## <a name="sharding"></a>分片
 分片是一项可跨许多独立数据库、分发大量相同结构数据的技术。 这项技术尤其受到最终客户或企业创建软件即服务 (SAAS) 产品的云开发人员的欢迎。 这些最终客户通常称为“租户”。 需要分片的原因有很多：  
 
-* 数据总量过大而超出单个数据库的限制范围
-* 整个工作负荷的事务吞吐量超出单个数据库的容量
+* 数据总量过大，超出单一数据库的约束范围
+* 整个工作负载的事务吞吐量超出单一数据库的容量
 * 租户可能需要与其他租户物理隔离，因此每个租户都需要单独的数据库
 * 由于符合性、性能或地理政治的原因，不同的数据库部分可能需要驻留在不同的地域中。
 

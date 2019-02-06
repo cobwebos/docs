@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 01/25/2019
 ms.author: jeffpatt
-ms.component: files
-ms.openlocfilehash: 852ffdafefeef7f4b8fd6bf3a9c5d175d872e077
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.subservice: files
+ms.openlocfilehash: 228927630540ed0277ca73a978382439f57b77d2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157626"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471396"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -804,24 +804,19 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 以下部分说明如何排查云分层问题，并确定问题是云存储问题还是服务器问题。
 
 <a id="monitor-tiering-activity"></a>**如何监视服务器上的分层活动**  
-若要监视服务器上的分层活动，请使用遥测事件日志（位于“事件查看器”中的“应用程序和服务\Microsoft\FileSync\代理”下面）中的事件 ID 9002、9003、9016 和 9029。
-
-- 事件 ID 9002 提供服务器终结点的副本创建统计信息。 例如 TotalGhostedFileCount、SpaceReclaimedMB 等。
+若要监视服务器上的分层活动，请使用遥测事件日志（位于“事件查看器”中的“应用程序和服务\Microsoft\FileSync\代理”下）中的事件 ID 9003、9016 和 9029。
 
 - 事件 ID 9003 提供服务器终结点的错误分布情况。 例如错误总数、错误代码，等等。请注意，将为每个错误代码记录一个事件。
-
 - 事件 ID 9016 提供卷的副本创建结果。 例如，可用空间百分比、会话中创建的文件副本数、无法创建副本的文件数，等等。
-
-- 事件 ID 9029 提供副本创建会话信息。 例如，会话中尝试的文件数、会话分层的文件数、已分层的文件数，等等。
+- 事件 ID 9029 提供服务器终结点的副本创建会话信息。 例如，会话中尝试的文件数、会话分层的文件数、已分层的文件数，等等。
 
 <a id="monitor-recall-activity"></a>**如何监视服务器上的重新调用活动**  
-若要监视服务器上的重新调用活动，请使用遥测事件日志（位于“事件查看器”中的“应用程序和服务\Microsoft\FileSync\代理”下面）中的事件 ID 9005、9006、9007。 请注意，将每小时记录这些事件。
+若要监视服务器上的回调活动，请使用遥测事件日志（位于“事件查看器”中的“应用程序和服务\Microsoft\FileSync\代理”下）中的事件 ID 9005、9006、9009 和 9059。
 
 - 事件 ID 9005 提供服务器终结点的重新调用可靠性。 例如，访问的唯一文件总数、访问失败的唯一文件总数，等等。
-
 - 事件 ID 9006 提供服务器终结点的重新调用错误分布情况。 例如，失败的请求总数、错误代码，等等。请注意，将为每个错误代码记录一个事件。
-
-- 事件 ID 9007 提供服务器终结点的重新调用性能。 例如 TotalRecallIOSize、TotalRecallTimeTaken，等等。
+- 事件 ID 9009 提供服务器终结点的回调会话信息。 例如，DurationSeconds、CountFilesRecallSucceeded、CountFilesRecallFailed 等。
+- 事件 ID 9059 提供服务器终结点的应用程序回调分布情况。 例如，ShareId、应用程序名称和 TotalEgressNetworkBytes。
 
 <a id="files-fail-tiering"></a>**排查文件无法分层的问题**  
 如果文件无法分层到 Azure 文件：
@@ -858,6 +853,9 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 在其他一些情况下（例如，在文件资源管理器中浏览文件时），也可能出现意外的重新调用。 在服务器上的文件资源管理器中打开包含云分层文件的文件夹可能导致意外的重新调用。 在服务器上启用防病毒解决方案时更是如此。
 
+> [!NOTE]
+>使用遥测事件日志中的事件 ID 9059 确定导致重新调用的应用程序。 此事件为服务器终结点提供应用程序重新调用分发，并每小时记录一次。
+
 ## <a name="general-troubleshooting"></a>常规故障排除
 如果在服务器上遇到 Azure 文件同步问题，请先完成以下步骤：
 1. 在事件查看器中，查看遥测、操作和诊断事件日志。
@@ -884,6 +882,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 6. 随即会将一个包含日志和跟踪文件的 .zip 文件保存到指定的输出目录。
 
 ## <a name="see-also"></a>另请参阅
+- [监视 Azure 文件同步](storage-sync-files-monitoring.md)
 - [Azure 文件常见问题解答](storage-files-faq.md)
 - [在 Windows 中排查 Azure 文件问题](storage-troubleshoot-windows-file-connection-problems.md)
 - [在 Linux 中排查 Azure 文件问题](storage-troubleshoot-linux-file-connection-problems.md)

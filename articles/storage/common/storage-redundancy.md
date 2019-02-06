@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 7afbdaba46674b69aa601355e80160e7c72ff373
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 3fb3860cbda2e1d46505711d7a175e5d42ec7018
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240964"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455501"
 ---
 # <a name="azure-storage-replication"></a>Azure 存储复制
 
@@ -26,7 +26,7 @@ ms.locfileid: "51240964"
 创建存储帐户时，可以选择以下复制选项之一：
 
 * [本地冗余存储 (LRS)](storage-redundancy-lrs.md)
-* [区域冗余存储空间 (ZRS)](storage-redundancy-zrs.md)
+* [区域冗余存储 (ZRS)](storage-redundancy-zrs.md)
 * [异地冗余存储 (GRS)](storage-redundancy-grs.md)
 * [读取访问异地冗余存储 (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage)
 
@@ -64,9 +64,9 @@ ms.locfileid: "51240964"
 ## <a name="see-also"></a>另请参阅
 
 - [本地冗余存储 (LRS)：Azure 存储的低成本数据冗余](storage-redundancy-lrs.md)
-- [区域冗余存储 (ZRS)：具有高可用性的 Azure 存储应用程序](storage-redundancy-zrs.md)
+- [区域冗余存储 (ZRS)：高度可用的 Azure 存储应用程序](storage-redundancy-zrs.md)
 - [异地冗余存储 (GRS)：Azure 存储的跨区域复制](storage-redundancy-grs.md)
 - [Azure 存储可伸缩性和性能目标](storage-scalability-targets.md)
 - [使用 RA-GRS 存储设计高度可用的应用程序](../storage-designing-ha-apps-with-ragrs.md)
 - [Microsoft Azure Storage redundancy options and read access geo redundant storage ](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)（Microsoft Azure 存储冗余选项和读取访问异地冗余存储）
-- [SOSP Paper - Azure Storage: A highly available cloud storage service with strong consistency](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)（SOSP 论文 - Azure 存储：具有高度一致性的高可用性云存储服务）
+- [SOSP 论文 - Azure 存储：具有高度一致性的高可用云存储服务](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

@@ -1,6 +1,6 @@
 ---
-title:复制其他数据科学示例 titleSuffix: Azure 机器学习工作室 description:“数据科学的商业机密：让他人为你完成工作。 从 Azure AI 库获取机器学习示例。”
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:复制其他数据科学示例 titleSuffix:Azure 机器学习工作室 description:“数据科学的商业机密：让他人为你完成工作。 从 Azure AI 库获取机器学习示例。”
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: garyericson ms.author: garye ms.custom: seodec18 ms.date:2018/01/05
 ---

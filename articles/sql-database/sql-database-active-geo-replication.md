@@ -11,20 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 157d7776cc9a8eff485bd18658527bc8d30f4df0
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: ae57605b0fb2cba8cdb0c2f9ecfbab8eef7a5197
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602948"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468268"
 ---
 # <a name="create-readable-secondary-databases-using-active-geo-replication"></a>使用活动异地复制创建可读辅助数据库
 
-活动异地复制是一项 Azure SQL 数据库功能，可用于在相同或不同的数据中心（区域）的逻辑服务器上创建各个数据库的可读辅助数据库。
+活动异地复制是 Azure SQL 数据库的一项功能，使用此功能可以在相同或不同数据中心（区域）的 SQL 数据库服务器上创建单个数据库的可读辅助数据库。
 
 > [!NOTE]
-> 活动异地复制不受托管实例的支持。
+> 托管实例不支持活动异地复制。 对于托管实例的地理故障转移，请使用[自动故障转移组](sql-database-auto-failover-group.md)。
 
 活动异地复制旨在充当业务连续性解决方案，允许应用程序在发生区域性灾难或大规模中断时执行各个数据库的快速灾难恢复。 如果启用了异地复制，则应用程序可以向其他 Azure 区域中的辅助数据库启动故障转移。 在相同或不同的区域中最多支持四个辅助数据库，并且辅助数据库也可以用于只读访问查询。 故障转移必须由应用程序或用户手动启动。 故障转移后，新的主数据库具有不同的连接终结点。 下图演示了使用活动异地复制的异地冗余云应用程序的典型配置。
 
@@ -90,7 +90,7 @@ ms.locfileid: "53602948"
 
 - **在弹性池中异地复制数据库**
 
-  每个辅助数据库可单独参与弹性池或根本不在弹性池中。 每个辅助数据库的池选择是单独的，并且不会依赖任何其他辅助数据库的配置（无论是主数据库还是辅助数据库）。 每个弹性池包含在单个区域内，因此相同拓扑中的多个辅助数据库永远不会共享弹性池。
+  每个辅助数据库可单独参与弹性池或根本不在弹性池中。 每个辅助数据库的池选择是单独的，并且不会依赖任何其他辅助数据库的配置（无论是主数据库还是辅助数据库）。 每个弹性池都包含在一个区域内，因此，同一拓扑中的多个辅助数据库永远无法共享弹性池。
 
 - **可配置的辅助数据库计算大小**
 
@@ -122,25 +122,25 @@ ms.locfileid: "53602948"
 
 如上所述，也可以使用 Azure PowerShell 和 REST API 以编程方式管理活动异地复制。 下表描述了可用的命令集。 活动异地复制包括一组用于管理的 Azure 资源管理器 API，其中包括 [Azure SQL 数据库 REST API](https://docs.microsoft.com/rest/api/sql/) 和 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview)。 这些 API 需要使用资源组，并支持基于角色的安全性 (RBAC)。 有关如何实现访问角色的详细信息，请参阅 [Azure 基于角色的访问控制](../role-based-access-control/overview.md)。
 
-### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL：管理单一数据库和池化数据库的故障转移
+### <a name="t-sql-manage-failover-of-standalone-and-pooled-databases"></a>T-SQL：管理独立数据库和入池数据库的故障转移
 
 > [!IMPORTANT]
 > 这些 Transact-SQL 命令仅适用于活动异地复制，不适用于故障转移组。 因此，它们也不适用于托管实例，因为它们仅支持故障转移组。
 
-| 命令 | Description |
+| 命令 | 说明 |
 | --- | --- |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |使用 ADD SECONDARY ON SERVER 参数为现有数据库创建辅助数据库，并开始数据复制 |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |使用 FAILOVER 或 FORCE_FAILOVER_ALLOW_DATA_LOSS 将辅助数据库切换为主数据库，启动故障转移 |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |使用 REMOVE SECONDARY ON SERVER 终止 SQL 数据库和指定的辅助数据库之间的数据复制。 |
-| [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |返回有关 Azure SQL 数据库逻辑服务器上每个数据库的所有现有复制链路的信息。 |
+| [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |返回有关 Azure SQL 数据库服务器上每个数据库的所有现有复制链接的信息。 |
 | [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |获取有关给定 SQL 数据库的复制链路的上次复制时间、上次复制滞后时间和其他信息。 |
 | [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |显示所有数据库操作的状态，包括复制链路的状态。 |
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |使应用程序等待，直到所有提交的事务已复制，并由活动辅助数据库确认。 |
 |  | |
 
-### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>PowerShell：管理单一数据库和池化数据库的故障转移
+### <a name="powershell-manage-failover-of-standalone-and-pooled-databases"></a>PowerShell：管理独立数据库和入池数据库的故障转移
 
-| Cmdlet | Description |
+| Cmdlet | 说明 |
 | --- | --- |
 | [Get-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabase) |获取一个或多个数据库。 |
 | [New-AzureRmSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabasesecondary) |为现有数据库创建辅助数据库，并开始数据复制。 |
@@ -152,9 +152,9 @@ ms.locfileid: "53602948"
 > [!IMPORTANT]
 > 有关示例脚本，请参阅[配置单一数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)和[配置入池数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)。
 
-### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API：管理单一数据库和池化数据库的故障转移
+### <a name="rest-api-manage-failover-of-standalone-and-pooled-databases"></a>REST API：管理独立数据库和入池数据库的故障转移
 
-| API | Description |
+| API | 说明 |
 | --- | --- |
 | [创建或更新数据库 (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |创建、更新或还原主数据库或辅助数据库。 |
 | [获取创建或更新数据库状态](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |返回创建操作过程中的状态。 |

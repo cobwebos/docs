@@ -1,6 +1,6 @@
 ---
-title:使用 R 扩展试验 titleSuffix: Azure 机器学习工作室 description:如何使用执行 R 脚本模块通过 R 语言扩展 Azure 机器学习工作室的功能。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:使用 R 扩展试验 titleSuffix:Azure 机器学习工作室 description:如何使用执行 R 脚本模块通过 R 语言扩展 Azure 机器学习工作室的功能。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:03/20/2017
 ---

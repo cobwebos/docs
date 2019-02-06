@@ -1,6 +1,6 @@
 ---
-title:Azure AI 库 titleSuffix: Azure 机器学习工作室 description:在 Azure AI 库中共享和发现分析资源以及更多内容。 学习其他人的经验，为社区做出自己的贡献。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:Azure AI 库 titleSuffix:Azure 机器学习工作室 description:在 Azure AI 库中共享和发现分析资源以及更多内容。 学习其他人的经验，为社区做出自己的贡献。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:01/11/2019
 ---

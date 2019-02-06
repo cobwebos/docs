@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 10/08/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: f8073fd746bc02c23efab914c45c61830942a677
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 00d29ac1938a1abb63fca50afe3d66253a1e29bf
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577949"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460720"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-september-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 9 月
 Azure SQL 数据仓库持续得到改进。 本文介绍了 2018 年 9 月发行的版本中所引入的新功能和所做的更改。
@@ -96,7 +96,7 @@ Commands completed successfully.
 
 ## <a name="bug-fixes"></a>Bug 修复
 
-| 标题 | Description |
+| 标题 | 说明 |
 |:---|:---|
 | **修复了有关创建唯一约束分发的统计信息的问题** | 此修补程序解决了运行仅指定表（表已定义约束）的 UPDATE STATISTICS 时遇到的错误。 |
 | **修复了有关对外部表编译查询的问题** | 此修补程序解决了影响涉及外部表的查询编译时间的缺陷。|

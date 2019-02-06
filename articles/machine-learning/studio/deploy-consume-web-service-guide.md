@@ -1,5 +1,5 @@
 ---
-title:部署和使用 titleSuffix: Azure 机器学习工作室 description:可以使用 Azure 机器学习来部署机器学习工作流和模型作为 Web 服务。 然后，可以使用这些 Web 服务，通过 Internet 从应用程序调用机器学习模型，从而实时或者在批处理模式下进行预测。 services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:部署和使用 titleSuffix:Azure 机器学习工作室 description:可以使用 Azure 机器学习来部署机器学习工作流和模型作为 Web 服务。 然后，可以使用这些 Web 服务，通过 Internet 从应用程序调用机器学习模型，从而实时或者在批处理模式下进行预测。 services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:04/19/2017
 ---

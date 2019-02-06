@@ -1,5 +1,5 @@
 ---
-title:将 Excel 中的分析信息迁移到 Azure 机器学习工作室 titleSuffix: Azure 机器学习工作室 description:Excel 和 Azure 机器学习工作室中线性回归模型的比较 services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:将 Excel 中的分析信息迁移到 Azure 机器学习工作室 titleSuffix:Azure 机器学习工作室 description:Excel 和 Azure 机器学习工作室中线性回归模型的比较 services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:2017/03/20
 ---

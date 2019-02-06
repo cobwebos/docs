@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
-ms.component: disks
-ms.openlocfilehash: 668f14d491fe3e47a445e6d80efda69c017024e2
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.subservice: disks
+ms.openlocfilehash: 2c1b46f1c1726a473fe15e490f3000f3c5235a77
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470913"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477499"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>使用门户将数据磁盘附加到 Linux VM 
 本文介绍如何通过 Azure 门户将新磁盘和现有磁盘附加到 Linux 虚拟机。 也可以[在 Azure 门户中将数据磁盘附加到 Windows VM](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
@@ -99,7 +99,7 @@ dmesg | grep SCSI
 
 此处，*sdc* 是我们需要的磁盘。 
 
-### <a name="partion-a-new-disk"></a>对新磁盘进行分区
+### <a name="partition-a-new-disk"></a>对新磁盘进行分区
 如果使用包含数据的现有磁盘，请跳到装载磁盘。 如果附加新磁盘，需要对磁盘进行分区。
 
 使用 `fdisk` 对磁盘进行分区，将其设置为分区 1 中的主磁盘，并接受其他默认值。 以下示例在 */dev/sdc* 上启动 `fdisk` 进程：

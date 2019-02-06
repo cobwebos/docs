@@ -9,13 +9,13 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.component: queues
-ms.openlocfilehash: 38da370e8e3cd81e209d0fd592d6b2afa8c82e44
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.subservice: queues
+ms.openlocfilehash: 295ca353530fb438d0bd77a9144813543102b997
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138485"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472705"
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>如何通过 Node.js 使用队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -134,7 +134,7 @@ queueSvc.peekMessages('myqueue', function(error, results, response){
 > 
 > 
 
-## <a name="how-to-dequeue-the-next-message"></a>如何：取消对下一条消息的排队
+## <a name="how-to-dequeue-the-next-message"></a>如何：取消下一条消息的排队
 处理消息是一个两阶段过程：
 
 1. 取消消息的排队。
@@ -181,7 +181,7 @@ queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
 });
 ```
 
-## <a name="how-to-additional-options-for-dequeuing-messages"></a>如何：用于对消息取消排队的其他选项
+## <a name="how-to-additional-options-for-dequeuing-messages"></a>如何：取消消息排队的其他选项
 可以通过两种方式自定义队列中的消息检索：
 
 * `options.numOfMessages` - 获取一批消息（最多 32 条）。

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 22a2a5d0a275b4eeb9ddea88741abdef9745a539
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 904cd593022006bc16908664fb7d7d0e3f6f24b0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52166675"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455212"
 documentType: LandingData
 title: Azure SQL 数据库 - 高级安全
 metadata:
@@ -18,7 +18,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: 
   ms.topic: overview
-  ms.date: 11/11/2018
+  ms.date: 01/25/2019
   ms.author: jovanpop-msft
 sections:
 - items:
@@ -74,7 +74,7 @@ sections:
       - href: /azure/sql-database/sql-database-managed-instance-threat-detection#set-up-threat-detection-for-your-managed-instance-in-the-azure-portal
       - href: 
       - href: 
-    - title: 在单一数据库上设置防火墙规则
+    - title: 在单一数据库上设置数据库服务器防火墙规则
       values:
       - href: /azure/sql-database/sql-database-firewall-configure#manage-firewall-rules-using-the-azure-portal
       - href: /azure/sql-database/sql-database-firewall-configure#manage-firewall-rules-using-azure-cli
@@ -93,7 +93,7 @@ sections:
     items:
     - html: <a href="/azure/sql-database/sql-database-managed-instance-threat-detection">托管实例</a>和<a href="/azure/sql-database/sql-database-threat-detection">数据库</a>中的威胁防护会检测异常活动，此类活动表明数据库遭到了异常的访问或利用尝试并且可能会造成损害。
     - html: 针对<a href="/azure/sql-database/sql-database-managed-instance-auditing">托管实例</a>和<a href="/azure/sql-database/sql-database-auditing">数据库</a>的审核会跟踪数据库事件，并将事件写入 Azure 存储帐户、OMS 工作区或事件中心中的审核日志。
-    - html: 单一数据库中的<a href="/azure/sql-database/sql-database-firewall-configure">防火墙规则</a>使你能够控制可以访问数据库的 IP 地址。
+    - html: 单一数据库中的<a href="/azure/sql-database/sql-database-firewall-configure">数据库服务器防火墙规则</a>使你能够控制可以访问数据库的 IP 地址。
     - html: 托管实例中的 <a href="/azure/sql-database/sql-database-managed-instance-vnet-configuration">VNet 集成</a>使你能够将数据库放入自己的专用地址空间中。
     - html: <a href="/azure/sql-database/sql-database-always-encrypted">始终加密</a>会保护服务器上敏感的静态数据、在客户端和服务器之间进行移动的敏感数据以及正在使用中的数据，确保敏感数据永远不会在数据库系统中以明文的形式显示。
     - html: <a href="/azure/sql-database/sql-database-dynamic-data-masking-get-started">动态数据掩码</a>使客户能够指定在对应用层产生最小影响的前提下可以透露的敏感数据量，从而帮助防止敏感数据遭到未经授权的访问。

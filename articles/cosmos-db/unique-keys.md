@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 20e5c96110f07d8eaec218ed167c87a48fd65782
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 73d4ba0c82f26a6249528f2dbef1fd30f99ccedb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037372"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475867"
 ---
-# <a name="unique-keys-in-azure-cosmos-db"></a>Azure Cosmos DB 中的唯一键
+# <a name="unique-key-constraints-in-azure-cosmos-db"></a>Azure Cosmos DB 中的唯一键约束
 
 使用唯一键可在 Cosmos 容器中添加一个数据完整性层。 在创建 Cosmos 容器时创建唯一键策略。 使用唯一键可确保逻辑分区内一个或多个值的唯一性（可以保证每个[分区键](partition-data.md)的唯一性）。 使用唯一键策略创建容器后，该策略会根据唯一键约束的指定，阻止在逻辑分区中创建任何新的（或更新的）重复项。 分区键与唯一键的组合可保证某个项在容器范围内的唯一性。
 

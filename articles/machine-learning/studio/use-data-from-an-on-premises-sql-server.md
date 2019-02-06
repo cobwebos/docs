@@ -1,6 +1,6 @@
 ---
-title:本地 SQL Server titleSuffix: Azure 机器学习工作室 description:在 Azure 机器学习工作室中使用本地 SQL Server 数据库中的数据执行高级分析。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:本地 SQL Server titleSuffix:Azure 机器学习工作室 description:在 Azure 机器学习工作室中使用本地 SQL Server 数据库中的数据执行高级分析。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:2017/03/13
 ---

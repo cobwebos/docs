@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 29b44e4b281ded635359148e251527c44efaa6d4
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.subservice: common
+ms.openlocfilehash: 6369c9c2c3c517012018063883b04487f86ddfd9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214039"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460482"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>使用 Azure AD 标识通过 CLI 或 PowerShell 访问 Azure 存储（预览版）
 

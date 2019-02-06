@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: e2cb1a76bfde5bea7707cf3cc6658e3fc82163c5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cb85d09a1d5dee6cb54254baac4698cdad093785
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043084"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457660"
 ---
-# <a name="optimize-the-cost-required-to-run-queries-in-azure-cosmos-db"></a>优化在 Azure Cosmos DB 中运行查询所需的成本
+# <a name="optimize-query-cost-in-azure-cosmos-db"></a>优化 Azure Cosmos DB 中的查询成本
 
 Azure Cosmos DB 提供了丰富的数据库操作，包括对容器中的项进行操作的关系和分层查询。 与这些操作关联的成本取决于完成操作所需的 CPU、IO 和内存。 可以考虑将请求单位 (RU) 视为执行各种数据库操作以提供请求所需的资源的单一度量值，而无需虑和管理硬件资源。 本文介绍如何评估查询的请求单位费用，并在性能和成本方面优化查询。 
 

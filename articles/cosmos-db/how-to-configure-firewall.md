@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: d209e1f6924e5c7d6bba7512606504b7165f0ed3
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 308d4527c9ea56a408ddaf05532f5a0b36136262
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359419"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451761"
 ---
-# <a name="configure-an-ip-firewall-for-your-azure-cosmos-db-account"></a>为 Azure Cosmos DB 帐户配置 IP 防火墙
+# <a name="configure-ip-firewall-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置 IP 防火墙
 
 可以使用 IP 防火墙保护存储在 Azure Cosmos DB 帐户中的数据。 Azure Cosmos DB 支持使用基于 IP 的访问控制来提供入站防火墙支持。 可通过以下方法之一为 Azure Cosmos DB 帐户设置 IP 防火墙：
 

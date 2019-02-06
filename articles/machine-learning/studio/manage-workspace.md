@@ -1,5 +1,5 @@
 ---
-title:管理机器学习工作室工作区 titleSuffix: Azure 机器学习工作室 description:管理对 Azure 机器学习工作区的访问，以及部署和管理 ML API Web 服务 services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:管理机器学习工作室工作区 titleSuffix:Azure 机器学习工作室 description:管理对 Azure 机器学习工作区的访问权限，以及部署和管理 ML API Web 服务：machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:02/27/2017
 ---

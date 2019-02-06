@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: ac97cf3e269652dc33ce4211947b45631228a697
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 97f11523c0418caaee66930c87a7de64570097d6
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463268"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296889"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安装并运行 LUIS docker 容器
  
@@ -40,11 +40,7 @@ ms.locfileid: "54463268"
 
 ### <a name="the-host-computer"></a>主计算机
 
-主机是运行 docker 容器的计算机。 它可以是本地计算机或 Azure 中的 docker 托管服务，包括：
-
-* [Azure Kubernetes 服务](../../aks/index.yml)
-* [Azure 容器实例](../../container-instances/index.yml)
-* 部署到 [Azure Stack](../../azure-stack/index.yml) 的 [Kubernetes](https://kubernetes.io/) 群集。 有关详细信息，请参阅[将 Kubernetes 部署到 Azure Stack](../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md)。
+[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-host-computer.md)]
 
 ### <a name="container-requirements-and-recommendations"></a>容器要求和建议
 
@@ -52,9 +48,11 @@ ms.locfileid: "54463268"
 
 |设置| 最小值 | 建议 |
 |-----------|---------|-------------|
-|核心数<BR>`--cpus`|1 个内核<BR>至少 2.6 千兆赫 (GHz) 或更快|1 个内核|
+|核心数<BR>`--cpus`|1 个内核|1 个内核|
 |内存<BR>`--memory`|2 GB|4 GB|
 |每秒事务数<BR>(TPS)|20 TPS|40 TPS|
+
+每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
 
 `--cpus` 和 `--memory` 设置用作 `docker run` 命令的一部分。
 
@@ -66,17 +64,12 @@ ms.locfileid: "54463268"
 docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 ```
 
+使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令下载容器映像。
+
 有关可用标记的完整说明（如上述命令中使用的 `latest`），请参阅 Docker Hub 上的 [LUIS](https://go.microsoft.com/fwlink/?linkid=2043204)。
 
-> [!TIP]
-> 可以使用 [docker images](https://docs.docker.com/engine/reference/commandline/images/) 命令列出下载的容器映像。 例如，以下命令以表格列出每个下载的容器映像的 ID、存储库和标记：
->
->  ```Docker
->  docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
->
->  IMAGE ID            REPOSITORY                                                                TAG
->  ebbee78a6baa        mcr.microsoft.com/azure-cognitive-services/luis                           latest
->  ``` 
+[!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
+
 
 ## <a name="how-to-use-the-container"></a>如何使用容器
 
@@ -268,7 +261,7 @@ ApiKey={ENDPOINT_KEY}
 
 查询参数配置查询响应的返回方式以及返回内容：
 
-|查询参数|类型|目的|
+|查询参数|Type|目的|
 |--|--|--|
 |`q`|字符串|用户的话语。|
 |`timezoneOffset`|数字|通过 timezoneOffset 可以[更改时区](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)，该时区由预生成实体 datetimeV2 使用。|
@@ -325,14 +318,7 @@ curl -X GET \
 
 ## <a name="containers-api-documentation"></a>容器的 API 文档
 
-容器提供终结点以及 `Try it now` 功能的整套文档。 通过此功能可以将设置输入到基于 Web 的 HTML 窗体中并进行查询，而无需编写任何代码。 返回查询后，将提供示例 CURL 命令，用于演示所需的 HTTP 标头和正文格式。 
-
-> [!TIP]
-> 阅读 [OpenAPI 规范](https://swagger.io/docs/specification/about/)，该规范描述了 `/swagger` 相对 URI 中容器支持的 API 操作。 例如：
->
->  ```http
->  http://localhost:5000/swagger
->  ```
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>计费
 
@@ -371,7 +357,7 @@ LUIS 容器使用 Azure 帐户中的语言理解资源向 Azure 发送账单信�
 
 在本文中，我们已学习相关的概念，以及语言理解 (LUIS) 容器的下载、安装和运行工作流。 综上所述：
 
-* 语言理解 (LUIS) 为 Docker 提供一个 Linux 容器，从而提供话语的终结点查询预测。
+* 语言理解 (LUIS) 为 Docker 提供一个 Linux 容器，用于提供话语的终结点查询预测。
 * 从 Microsoft 容器注册表 (MCR) 下载容器映像。
 * 容器映像在 Docker 中运行。
 * 可以使用 REST API 来通过指定容器的主机 URI 查询容器终结点。

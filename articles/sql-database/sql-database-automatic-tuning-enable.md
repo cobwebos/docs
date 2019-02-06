@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 1de0f9b77bd1248d77f182a2e32e490c2814f42b
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.date: 01/25/2019
+ms.openlocfilehash: 5b3a77a28945b597fe4fdd57aadfc3e05196a353
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382790"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478247"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>启用自动优化以监视查询并提高工作负荷性能
 
@@ -26,9 +26,11 @@ Azure SQL 数据库是自动托管的数据服务，可持续监视查询并识�
 可以通过 [Azure 门户](sql-database-automatic-tuning-enable.md#azure-portal)、[REST API](sql-database-automatic-tuning-enable.md#rest-api) 调用和 [T-SQL](sql-database-automatic-tuning-enable.md#t-sql) 命令在服务器或数据库级别启用自动优化。
 
 ## <a name="enable-automatic-tuning-on-server"></a>对服务器启用自动优化
+
 在服务器级别上，可选择从“Azure 默认值”继承自动优化配置，或选择不继承配置。 Azure 默认值为启用 FORCE_LAST_GOOD_PLAN 和 CREATE_INDEX，禁用 DROP_INDEX。
 
 ### <a name="azure-portal"></a>Azure 门户
+
 若要对 Azure SQL 数据库逻辑服务器启用自动优化，请在 Azure 门户中导航到该服务器，然后选择菜单中的“自动优化”。
 
 ![服务器](./media/sql-database-automatic-tuning-enable/server.png)
@@ -44,7 +46,6 @@ Azure SQL 数据库是自动托管的数据服务，可持续监视查询并识�
 ### <a name="rest-api"></a>REST API
 
 了解有关使用 REST API 在服务器上启用自动优化的详细信息，请参阅 [SQL Server 自动优化 UPDATE 和 GET HTTP 方法](https://docs.microsoft.com/rest/api/sql/serverautomatictuning)。
-
 
 ## <a name="enable-automatic-tuning-on-an-individual-database"></a>对单个数据库启用自动优化
 
@@ -74,27 +75,28 @@ Azure SQL 数据库支持为每个数据库单独指定自动优化配置。 在
 
 要通过 T-SQL 在单个数据库上启用自动优化，请连接至数据库，并执行以下查询：
 
-   ```T-SQL
-   ALTER DATABASE current SET AUTOMATIC_TUNING = AUTO | INHERIT | CUSTOM
-   ```
-   
+```SQL
+ALTER DATABASE current SET AUTOMATIC_TUNING = AUTO | INHERIT | CUSTOM
+```
+
 将自动优化设置为 AUTO 时，会应用 Azure 默认值。 将其设置为 INHERIT 时，会从父服务器继承自动优化配置。 选择 CUSTOM 时，需手动配置自动优化。
 
 要通过 T-SQL 配置单个自动优化选项，请连接至数据库并执行如下所示的查询：
 
-   ```T-SQL
-   ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_INDEX = DEFAULT, DROP_INDEX = OFF)
-   ```
-   
+```SQL
+ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_INDEX = DEFAULT, DROP_INDEX = OFF)
+```
+
 将单个自动优化选项设置为 ON 时，数据库所继承的任何设置都将被替代，并会启用优化选项。 将其设置为 OFF 时，数据库所继承的任何设置亦将被替代，并会禁用优化选项。 自动优化选项（指定为 DEFAULT）将从数据库级别自动优化设置中继承配置。  
 
 > [!IMPORTANT]
 > 对于[活动异地复制](sql-database-auto-failover-group.md)，只需在主数据库上配置自动优化。 自动应用的优化操作（例如索引创建或删除）将自动复制到只读辅助数据库。 尝试在只读辅助数据库上通过 T-SQL 启用自动优化将导致失败，因为不支持在只读辅助数据库上使用不同的优化配置。
 >
 
-了解有关用来配置自动优化的 T-SQL 选项的详细信息，请参阅[适用于 SQL 数据库逻辑服务器的 ALTER DATABASE SET 选项 (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current)。
+了解有关用来配置自动优化的 T-SQL 选项的详细信息，请参阅[适用于 SQL 数据库服务器的 ALTER DATABASE SET 选项 (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current)。
 
 ## <a name="disabled-by-the-system"></a>已被系统禁用
+
 自动优化监视着自身在数据库上进行的一切操作，在某些情况下，它可以判断自身在数据库中无法正常运行。 在此情况下，系统将禁用自动优化。 造成此情况的主要原因是未启用查询数据存储，或在指定数据库中查询数据存储处于只读状态。
 
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>配置自动优化电子邮件通知
@@ -102,6 +104,7 @@ Azure SQL 数据库支持为每个数据库单独指定自动优化配置。 在
 请参阅[自动优化电子邮件通知](sql-database-automatic-tuning-email-notifications.md)指南。
 
 ## <a name="next-steps"></a>后续步骤
+
 * 请阅读[自动优化文章](sql-database-automatic-tuning.md)，详细了解自动优化及其如何帮助提高性能。
 * 请参阅[性能建议](sql-database-advisor.md)，了解 Azure SQL 数据库性能建议的概述。
 * 若要了解排名靠前的查询的性能影响，请参阅[查询性能见解](sql-database-query-performance.md)。

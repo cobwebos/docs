@@ -1,6 +1,6 @@
 ---
-title:“步骤 2：将数据上传到机器学习工作室试验中”titleSuffix: Azure 机器学习工作室 description:“开发预测解决方案演练的步骤 2：将存储的公共数据上传到 Azure 机器学习工作室。”
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:“步骤 2：将数据上传到机器学习工作室试验中”titleSuffix:Azure 机器学习工作室 description:“开发预测解决方案演练的步骤 2：将存储的公共数据上传到 Azure 机器学习工作室。”
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:2017/03/23
 ---

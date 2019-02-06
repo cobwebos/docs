@@ -1,5 +1,5 @@
 ---
-title:应用程序生命周期管理 titleSuffix: Azure 机器学习工作室 description:在 Azure 机器学习工作室服务中应用应用程序生命周期管理最佳实践： machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:应用程序生命周期管理 titleSuffix:Azure 机器学习工作室 description:在 Azure 机器学习工作室中运用应用程序生命周期管理最佳做法 service: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=haining, previous-author=hning86 ms.date:2016/10/27
 ---

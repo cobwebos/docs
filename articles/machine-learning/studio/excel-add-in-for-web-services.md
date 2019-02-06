@@ -1,6 +1,6 @@
 ---
-title:Web 服务的 Excel 加载项 titleSuffix: Azure 机器学习工作室 description:如何在 Excel 中直接使用 Azure 机器学习 Web 服务，而无需编写任何代码。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:Web 服务的 Excel 加载项 titleSuffix:Azure 机器学习工作室 description:如何在 Excel 中直接使用 Azure 机器学习 Web 服务，而无需编写任何代码。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:2018/02/01
 ---

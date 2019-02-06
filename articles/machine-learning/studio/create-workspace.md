@@ -1,6 +1,6 @@
 ---
-title:创建工作区 titleSuffix: Azure 机器学习工作室 description:若要使用 Azure 机器学习工作室，需要具有“机器学习工作室”工作区。 此工作区包含创建、管理和发布试验所需的工具。 
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:创建工作区 titleSuffix:Azure 机器学习工作室 description:若要使用 Azure 机器学习工作室，需要具有“机器学习工作室”工作区。 此工作区包含创建、管理和发布试验所需的工具。 
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:12/07/2017
 ---

@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 593388c143c31bb4736aa317522ed4c52a8a5296
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: de31ab4e617b872239c1b83324e5b8d52b0b4094
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388337"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469102"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL 连接体系结构
 
@@ -34,7 +34,7 @@ ms.locfileid: "54388337"
 >
 > 在以下方案中，服务终结点用户可能仍会受影响：
 > - 应用程序不常连接到现有的服务器，因此我们的遥测不捕获有关这些应用程序的信息。
-> - 自动化部署逻辑会创建一个逻辑服务器，假设服务终结点连接的默认行为是 `Proxy`
+> - 自动部署逻辑创建 SQL 数据库服务器（假设服务终结点连接的默认行为是 `Proxy`）
 >
 > 如果不能建立到 Azure SQL Server 的服务终结点连接，而你怀疑自己受此更改的影响，请验证是否已将连接类型显式设置为 `Redirect`。 如果是这种情况，则必须对区域中属于端口 11000-12000 的 Sql [服务标记](../virtual-network/security-overview.md#service-tags)的所有 Azure IP 地址启用 VM 防火墙规则和网络安全组 (NSG)。 如果这不是适合自己的选项，请将服务器显式切换为 `Proxy`。
 > [!NOTE]

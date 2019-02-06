@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: ad7d56b3a23d163cfbc6c9ca14c2788c5f96486b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 156d06b3c3fab5df1cd4360fb9e6ec2648d8d0b6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600856"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455059"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>使用 Intelligent Insights 排查 Azure SQL 数据库性能问题
 
@@ -50,7 +50,7 @@ Intelligent Insights 可根据查询执行等待时间、错误或超时自动�
 | [定价层降级](sql-database-intelligent-insights-troubleshoot-performance.md#pricing-tier-downgrade) | 定价层降级操作减少了可用资源。 这会影响 SQL 数据库性能。 | 定价层降级操作减少了可用资源。 这会影响数据库性能。 |
 
 > [!TIP]
-> 若要持续进行 SQL 数据库性能优化，请启用 [Azure SQL 数据库自动优化](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning)。 SQL 数据库内置智能的这项独特功能可以持续监视 SQL 数据库、自动优化索引，并应用查询执行计划更正。
+> 若要持续进行 SQL 数据库性能优化，请启用 [Azure SQL 数据库自动优化](sql-database-automatic-tuning.md)。 SQL 数据库内置智能的这项独特功能可以持续监视 SQL 数据库、自动优化索引，并应用查询执行计划更正。
 >
 
 以下部分更详细地描述了可检测性能模式。
@@ -61,7 +61,7 @@ Intelligent Insights 可根据查询执行等待时间、错误或超时自动�
 
 这种可检测性能模式合并了各种性能问题，涉及达到可用资源限制、工作线程限制和会话限制。 检测到这种性能问题之后，诊断日志的说明字段就会指示性能问题是否与资源、工作线程或会话限制相关。
 
-SQL 数据库上的资源通常称为 [DTU](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu) 或 [vCore](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore) 资源。 如果检测到的查询性能下降是由于达到所度量资源限制而造成的，则认为出现了“达到资源限制”模式。
+SQL 数据库上的资源通常称为 [DTU](sql-database-what-is-a-dtu.md) 或 [vCore](sql-database-service-tiers-vcore.md) 资源。 如果检测到的查询性能下降是由于达到所度量资源限制而造成的，则认为出现了“达到资源限制”模式。
 
 会话限制资源表示系统只允许一定数量的 SQL 数据库并发登录。 如果连接到 SQL 数据库的应用程序达到允许的数据库并发登录数，则认为出现了此性能模式。 如果应用程序尝试使用的会话数超过了可在数据库中使用的数目，则会影响查询性能。
 
@@ -73,7 +73,7 @@ SQL 数据库上的资源通常称为 [DTU](https://docs.microsoft.com/azure/sql
 
 如果已达到可用会话限制，可以通过减少数据库登录次数来优化应用程序。 如果无法减少从应用程序到数据库的登录数，可以考虑提高数据库的定价层。 也可以将数据库拆分成多个数据库并进行移动，使工作负荷的分配更为均衡。
 
-有关解决会话限制的更多建议，请参阅 [How to deal with the limits of SQL Database maximum logins](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/)（如何处理 SQL 数据库最大登录数的限制）。 有关服务器和订阅级别限制的信息，请参阅[逻辑服务器上的资源限制概述](sql-database-resource-limits-logical-server.md)。
+有关解决会话限制的更多建议，请参阅 [How to deal with the limits of SQL Database maximum logins](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/)（如何处理 SQL 数据库最大登录数的限制）。 有关服务器和订阅级别限制的信息，请参阅 [SQL 数据库服务器上的资源限制概述](sql-database-resource-limits-database-server.md)。
 
 ## <a name="workload-increase"></a>工作负载增加
 

@@ -2,20 +2,20 @@
 title: 教程：使用 Azure Functions 管理 Azure SQL 数据仓库中的计算 | Microsoft Docs
 description: 如何使用 Azure Functions 管理数据仓库的计算。
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
+ms.subservice: consume
 ms.date: 04/27/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 2f366718a11f715b0c91a556eb3b0f216424b82c
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 0832fbcacd8b58ffaf36ce2e55e3add151a881db
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287895"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470189"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>使用 Azure Functions 管理 Azure SQL 数据仓库中的计算资源
 

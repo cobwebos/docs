@@ -7,15 +7,15 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/20/2018
 ms.author: jeking
-ms.component: common
-ms.openlocfilehash: 85d69db2f94e4bddf1258233c34c64dcf78a3eeb
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.subservice: common
+ms.openlocfilehash: 8ffd3c34628f96888145a3639ddfe4a190dffc7f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219216"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467061"
 ---
-# <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>异地冗余存储 (GRS)：Azure 存储的跨区域复制
+# <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>异地冗余存储 (GRS)：适用于 Azure 存储的跨区域复制
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-grs.md)]
 
 ## <a name="read-access-geo-redundant-storage"></a>读取访问异地冗余存储
@@ -36,7 +36,7 @@ ms.locfileid: "51219216"
 ## <a name="what-is-the-rpo-and-rto-with-grs"></a>GRS 的 RPO 和 RTO 是什么意思？
 **恢复点目标 (RPO)：** 在 GRS 和 RA-GRS 中，存储服务以异步方式将数据从主要位置异地复制到次要位置。 主要区域中发生重大区域灾难时，Microsoft 会故障转移到次要区域。 如果发生故障转移，则尚未进行异地复制的最近更改可能会丢失。 丢失的潜在数据的分钟数称为 RPO。 RPO 指示可以将数据恢复到的时间点。 Azure 存储的 RPO 通常小于 15 分钟，但目前没有 SLA 规定异地复制所用时长。
 
-**恢复时间目标 (RTO)：** RTO 用于度量执行故障转移以及将存储帐户恢复联机所花费的时间。 执行故障转移的时间包括以下操作：
+**恢复时间目标 (RTO)：** RTO 用于度量执行故障转移以及让存储帐户恢复联机所花费的时间。 执行故障转移的时间包括以下操作：
 
    * Microsoft 确定是否可以在主要位置恢复数据或是否需要故障转移所需的时间
    * 通过将主要 DNS 条目更改为指向次要位置来执行存储帐户故障转移的时间
@@ -44,9 +44,9 @@ ms.locfileid: "51219216"
 Microsoft 会认真负责保留数据。 如果有任何机会在主要区域中恢复数据，则 Microsoft 会延迟故障转移并专注于恢复数据。 
 
 ## <a name="paired-regions"></a>配对区域 
-创建存储帐户时，可以为帐户选择主要区域。 配对的次要区域是根据主要区域确定的且无法更改。 有关 Azure 支持的区域的最新信息，请参阅[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](../../best-practices-availability-paired-regions.md)。
+创建存储帐户时，可以为帐户选择主要区域。 配对的次要区域是根据主要区域确定的且无法更改。 有关 Azure 支持区域的最新信息，请参阅[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](../../best-practices-availability-paired-regions.md)。
 
 ## <a name="see-also"></a>另请参阅
 - [Azure 存储复制](storage-redundancy.md)
 - [本地冗余存储 (LRS)：Azure 存储的低成本数据冗余](storage-redundancy-lrs.md)
-- [区域冗余存储 (ZRS)：具有高可用性的 Azure 存储应用程序](storage-redundancy-zrs.md)
+- [区域冗余存储 (ZRS)：高度可用的 Azure 存储应用程序](storage-redundancy-zrs.md)

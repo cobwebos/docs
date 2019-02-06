@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
-ms.component: common
-ms.openlocfilehash: 6a6508393fe935b456cde815d35f2fd4447cd2d4
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: dfff159d7e0204a752935458a2b4845499c0d652
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528116"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453393"
 ---
 # <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>针对 Microsoft Azure 存储使用 Python 的客户端加密
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -129,7 +129,7 @@ KEK 必须实现以下方法才能成功加密数据：
 * get_key_wrap_algorithm()：返回用于包装密钥的算法。
 * get_kid()：返回此 KEK 的字符串密钥 ID。
   KEK 必须实现以下方法才能成功解密数据：
-* unwrap_key(cek, algorithm)：使用字符串指定的算法返回解包形式的指定 CEK。
+* unwrap_key(cek, algorithm)：使用字符串指定的算法返回指定 CEK 的解包形式。
 * get_kid()：返回此 KEK 的字符串密钥 ID。
 
 密钥解析程序必须至少实现一个方法，以便在指定密钥 ID 的情况下，返回用于实现上述接口的相应 KEK。 只会将此方法分配到服务对象中的 key_resolver_function 属性。

@@ -1,6 +1,6 @@
 ---
-title:将数据导入机器学习工作室 titleSuffix: Azure 机器学习工作室 description:如何将数据从各种数据源导入 Azure 机器学习工作室。 了解受支持的数据类型和数据格式。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:将数据导入机器学习工作室 titleSuffix:Azure 机器学习工作室 description:如何将数据从各种数据源导入 Azure 机器学习工作室。 了解受支持的数据类型和数据格式。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:2017/11/29
 ---

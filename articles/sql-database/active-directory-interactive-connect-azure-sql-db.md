@@ -10,23 +10,20 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: MirekS
 ms.reviewer: GeneMi
-ms.date: 04/06/2018
+ms.date: 01/25/2019
 manager: craigg
-ms.openlocfilehash: 0b8b83651fb5466f5d9a2f703667d7645b498e89
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7a05c6b4fac031482d77827a817ef56920a0c314
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958811"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464545"
 ---
 # <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>使用 ActiveDirectoryInteractive 模式连接到 Azure SQL 数据库
 
 本文提供可连接到 Microsoft Azure SQL 数据库的可运行 C# 代码示例。 C# 程序使用支持 Azure AD 多重身份验证 (MFA) 的身份验证交互模式。 例如，连接尝试可以包括正发送至手机的验证代码。
 
 有关 SQL 工具 MFA 支持的详细信息，请参阅 [SQL Server Data Tools (SSDT) 中的 Azure Active Directory 支持](https://docs.microsoft.com/sql/ssdt/azure-active-directory)。
-
-
-
 
 ## <a name="sqlauthenticationmethod-activedirectoryinteractive-enum-value"></a>SqlAuthenticationMethod .ActiveDirectoryInteractive 枚举值
 
@@ -54,11 +51,9 @@ ms.locfileid: "52958811"
 >
 > [https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod)
 
-
 ## <a name="preparations-for-c-by-using-the-azure-portal"></a>通过使用 Azure 门户准备 C#
 
 我们假定已[创建 Azure SQL 数据库服务器](sql-database-get-started-portal.md)且该服务器可用。
-
 
 ### <a name="a-create-an-app-registration"></a>A. 创建应用注册
 
@@ -87,7 +82,7 @@ ms.locfileid: "52958811"
 
 ### <a name="b-set-azure-ad-admin-on-your-sql-database-server"></a>B. 在 SQL 数据库服务器上设置 Azure AD 管理员
 
-每个 Azure SQL 数据库服务器都有自己的 Azure AD SQL 逻辑服务器。 对于本 C# 方案，必须为 Azure SQL 服务器设置 Azure AD 管理员。
+每个 Azure SQL 单一数据库和弹性池都有其自己的 Azure AD SQL 数据库服务器。 对于本 C# 方案，必须为 Azure SQL 服务器设置 Azure AD 管理员。
 
 1. “SQL Server”&gt;“Active Directory 管理员”&gt;“设置管理员”
 

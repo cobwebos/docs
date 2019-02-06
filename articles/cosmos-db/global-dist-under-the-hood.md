@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: e1c84bb28747cf1799b39c70b6df3dc0cb9f8d78
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 86e4441174fa89fc688fa4e411ead0a7b3ebc8ee
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038936"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475374"
 ---
-# <a name="azure-cosmos-db-global-distribution---under-the-hood"></a>Azure Cosmos DB 全局分布 - 揭秘
+# <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Azure Cosmos DB 全局数据分布 - 揭秘
 
 Azure Cosmos DB 是 Azure 的基础服务，因此它已部署在全球的所有 Azure 区域，包括公有云、主权云、国防部 (DoD) 云和政府云。 在数据中心内，我们会在大量的计算机阵列上部署和管理 Azure Cosmos DB，其中的每个服务都有专用的本地存储。 在数据中心内，Azure Cosmos DB 部署在许多群集之间，每个群集可能运行多代硬件。 群集中的计算机通常分散在 10 到 20 个容错域之间。 下图显示了 Cosmos DB 全局分布系统拓扑：
 

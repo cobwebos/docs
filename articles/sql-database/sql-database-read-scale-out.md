@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 9d7131c6ed1808725f59e53488bedb5ef81a77c3
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: cf32f3998e254e8f4a9c347980718dbc8d0b13c4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389417"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461638"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>使用只读副本对只读的查询工作负荷进行负载均衡（预览版）
 
@@ -76,7 +76,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 
 ## <a name="enable-and-disable-read-scale-out"></a>启用和禁用读取扩展
 
-默认情况下，[托管实例](sql-database-managed-instance.md)业务关键层中启用了读取扩展。 它在[逻辑服务器上放置的数据库](sql-database-logical-servers.md)高级和业务关键层中应处于显式启用状态。 下面介绍了启用和禁用读取扩展的方法。
+默认情况下，[托管实例](sql-database-managed-instance.md)业务关键层中启用了读取扩展。 它在 [SQL 数据库服务器上放置的数据库](sql-database-servers.md)高级和业务关键层中应处于显式启用状态。 下面介绍了启用和禁用读取扩展的方法。
 
 ### <a name="powershell-enable-and-disable-read-scale-out"></a>PowerShell：启用和禁用读取扩展
 

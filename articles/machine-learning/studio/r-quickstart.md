@@ -1,6 +1,6 @@
 ---
-title:R 语言的快速入门教程 titleSuffix: Azure 机器学习工作室 description:通过此 R 编程教程，快速在 Azure 机器学习工作室中使用 R 语言创建预测解决方案。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:R 语言的快速入门教程 titleSuffix:Azure 机器学习工作室 description:通过此 R 编程教程，快速在 Azure 机器学习工作室中使用 R 语言创建预测解决方案。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:01/06/2017
 ---

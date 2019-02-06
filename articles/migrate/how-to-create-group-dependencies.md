@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 9f01e94eb23083ab25dd2cbd41e8bad1297abb54
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 007f7fe95be77a2b1661cd6c82118eb875401f24
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255255"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472569"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>使用组依赖项映射优化组
 
@@ -52,6 +52,8 @@ Azure Migrate 使用 Log Analytics 中的服务映射解决方案来实现计算
 
 ### <a name="install-the-mma"></a>安装 MMA
 
+#### <a name="install-the-agent-on-a-windows-machine"></a>在 Windows 计算机上安装代理
+
 若要在 Windows 计算机上安装代理：
 
 1. 双击下载的代理。
@@ -60,6 +62,9 @@ Azure Migrate 使用 Log Analytics 中的服务映射解决方案来实现计算
 4. 在“代理安装选项”中，选择“Azure Log Analytics” > “下一步”。
 5. 单击“添加”以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“下一步”。
 
+可从命令行或使用自动化方法（如 Azure Automation DSC、System Center Configuration Manager）安装代理，或者，如果已在数据中心部署 Microsoft Azure Stack，则可使用 Azure 资源管理器模板进行安装。 [详细了解](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)如何使用这些方法安装 MMA 代理。
+
+#### <a name="install-the-agent-on-a-linux-machine"></a>在 Linux 计算机上安装代理
 
 若要在 Linux 计算机上安装代理：
 
@@ -68,6 +73,10 @@ Azure Migrate 使用 Log Analytics 中的服务映射解决方案来实现计算
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
+#### <a name="install-the-agent-on-a-machine-monitored-by-system-center-operations-manager"></a>在受 System Center Operations Manager 监视的计算机上安装代理
+
+受 Operations Manager 2012 R2 或更高版本监视的计算机无需安装 MMA 代理。 服务映射与 Operations Manager 集成，利用 Operations Manager MMA 收集必要的依赖项数据。 可以使用[此处](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)的指南启用集成。 但请注意，需要在这些计算机上安装依赖项代理。
+
 ### <a name="install-the-dependency-agent"></a>安装依赖项代理
 1. 若要在 Windows 计算机上安装依赖项代理，请双击安装程序文件，然后按照向导操作。
 2. 若要在 Linux 计算机上安装依赖项代理，请使用以下命令安装为根目录：
@@ -75,6 +84,8 @@ Azure Migrate 使用 Log Analytics 中的服务映射解决方案来实现计算
     ```sh InstallDependencyAgent-Linux64.bin```
 
 深入了解针对 [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) 和 [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) 操作系统的依赖项代理支持。
+
+[详细了解](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)如何使用脚本来安装依赖项代理。
 
 ## <a name="refine-the-group-based-on-dependency-visualization"></a>通过依赖项可视化优化组
 在组中的所有计算机上都安装代理后，可以可视化该组的依赖项，并通过执行以下步骤优化该组。
@@ -91,6 +102,10 @@ Azure Migrate 使用 Log Analytics 中的服务映射解决方案来实现计算
      ![查看组依赖项](./media/how-to-create-group-dependencies/view-group-dependencies.png)
 
 3. 若要查看更精细的依赖项，请单击时间范围并进行修改。 时间范围默认为 1 小时。 你可以修改时间范围，或指定开始和结束日期以及持续时间。
+
+    > [!NOTE]
+      目前，依赖性可视化效果 UI 不支持选择超过一小时的时间范围。 使用 Log Analytics [查询较长持续时间的依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-a-group#query-dependency-data-from-log-analytics)。
+
 4. 验证依赖计算机，以及每台计算机内运行的进程，标识应在组中添加或删除的计算机。
 5. 按住 Ctrl 键单击，在映射上选择想要在组中添加或删除的计算机。
     - 你只能添加已发现的计算机。
@@ -101,6 +116,20 @@ Azure Migrate 使用 Log Analytics 中的服务映射解决方案来实现计算
     ![添加或删除计算机](./media/how-to-create-group-dependencies/add-remove.png)
 
 如果你想要检查显示在组依赖项映射中的特定计算机的依赖项，请[设置计算机依赖项映射](how-to-create-group-machine-dependencies.md)。
+
+## <a name="query-dependency-data-from-log-analytics"></a>从 Log Analytics 查询依赖项数据
+
+服务映射捕获的依赖项数据可用于在与 Azure Migrate 项目关联的 Log Analytics 工作区中进行查询。 [详细了解](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)可在 Log Analytics 中查询的服务映射数据表。 
+
+运行 Log Analytics 查询：
+
+1. 安装代理后，请转到门户并单击“概述”。
+2. 在“概述”中，转到项目的“概要”部分，然后单击“OMS 工作区”旁边提供的工作区名称。
+3. 在“Log Analytics 工作区”页上，单击“常规” > “日志”。
+4. 编写查询以使用 Log Analytics 收集依赖项数据。 [此处](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)提供用于收集依赖项数据的示例查询。
+5. 通过单击“运行”，运行查询。 
+
+[详细了解](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)如何编写 Log Analytics 查询。 
 
 
 ## <a name="next-steps"></a>后续步骤

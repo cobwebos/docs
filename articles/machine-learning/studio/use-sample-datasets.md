@@ -1,6 +1,6 @@
 ---
-title:使用示例数据集 titleSuffix: Azure 机器学习工作室 description:机器学习工作室中包含的示例模型中使用的数据集说明。 可以将这些示例数据集用于实验。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:使用示例数据集 titleSuffix:Azure 机器学习工作室 description:机器学习工作室中包含的示例模型中使用的数据集说明。 可以将这些示例数据集用于实验。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:2018/01/19
 ---

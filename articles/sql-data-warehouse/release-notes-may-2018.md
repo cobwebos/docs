@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: d26ae755b658ce39df04788b7edeee6da7e20a47
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 0ffb9b9105ee455d35d080bb45063c158cadce1e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288086"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463389"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 5 月 
 Azure SQL 数据仓库持续得到改进。 本文介绍 2018 年 5 月发行的版本中所引入的新功能和所做的更改。 
@@ -26,7 +26,7 @@ Azure SQL 数据仓库持续得到改进。 本文介绍 2018 年 5 月发行的
 请参阅 Azure 数据部门企业副总裁 Rohan Kumar 撰写的博客通告 [Turbocharge cloud analytics with Azure SQL Data Warehouse](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/)（使用 Azure SQL 数据仓库推进云分析）。
 
 ## <a name="auto-statistics"></a>自动统计
-在基于模型成本的优化器（例如 SQL 数据仓库中的引擎）中，统计对于优化查询计划的生成的至关重要。 如果事先已知道所有查询，则可以确定需要创建哪些统计对象。 但是，如果系统面对临时查询和随机查询（对于数据仓库工作负荷很常见），则系统管理员可能很难预测需要创建哪些统计，从而可能导致查询执行计划的性能欠佳，并延长查询响应时间。 缓解此问题的方法之一是提前在所有表列中创建统计对象。 但是，由于在加载表的过程中需要维护统计对象，导致加载时间变长，因此，这种过程也会造成代价。
+在基于现代成本的优化器（例如 SQL 数据仓库中的引擎）中，统计对于优化查询计划生成是至关重要的。 如果事先已知道所有查询，则可以确定需要创建哪些统计对象。 但是，如果系统面对临时查询和随机查询（对于数据仓库工作负荷很常见），则系统管理员可能很难预测需要创建哪些统计，从而可能导致查询执行计划的性能欠佳，并延长查询响应时间。 缓解此问题的方法之一是提前在所有表列中创建统计对象。 但是，由于在加载表的过程中需要维护统计对象，导致加载时间变长，因此，这种过程也会造成代价。
 
 SQL 数据仓库现在支持自动创建统计对象，为系统管理员和开发人员提供更高的灵活性、工作效率和易用性，同时可确保系统继续提供优质的执行计划和最佳响应时间。
 

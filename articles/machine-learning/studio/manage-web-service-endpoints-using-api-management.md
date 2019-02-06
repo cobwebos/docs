@@ -1,6 +1,6 @@
 ---
-title:使用 API 管理管理机器学习工作室 Web 服务 titleSuffix: Azure 机器学习工作室 description:介绍如何使用 API 管理来管理 AzureML Web 服务的指南。 通过定义用户访问权限、使用限制和仪表板监视管理 REST API 终结点。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:使用 API 管理管理机器学习工作室 Web 服务 titleSuffix:Azure 机器学习工作室 description:介绍如何使用 API 管理来管理 AzureML Web 服务的指南。 通过定义用户访问权限、使用限制和仪表板监视管理 REST API 终结点。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:2017/11/03
 ---

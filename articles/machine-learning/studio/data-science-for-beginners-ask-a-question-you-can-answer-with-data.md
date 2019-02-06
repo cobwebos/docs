@@ -1,6 +1,6 @@
 ---
-title:提出数据可解答的问题 titleSuffix: Azure 机器学习工作室 description:通过学习“适合初学者的数据科学”视频 3，了解如何将棘手的数据科学问题公式化。 包括分类和回归问题的比较。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:提出数据可解答的问题 titleSuffix:Azure 机器学习工作室 description:通过学习“适合初学者的数据科学”视频 3，了解如何将棘手的数据科学问题公式化。 包括分类和回归问题的比较。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:2018/01/03
 ---

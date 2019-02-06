@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: e0a3f5239e9d0f16312894dee598c0fc490f1e73
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 01/25/2019
+ms.openlocfilehash: 6b4bc5a75f49287ad0425a7fe94f099204b73e44
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270002"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469543"
 ---
 # <a name="the-azure-sql-database-service"></a>Azure SQL 数据库服务
 
@@ -26,8 +26,8 @@ SQL 数据库是 Microsoft Azure 中通用的关系数据库托管服务，支�
 
 Azure SQL 数据库提供下述适用于 Azure SQL 数据库的部署选项：
 
-- 充当拥有自己的资源集（通过逻辑服务器进行托管）的单一数据库
-- 在[弹性池](sql-database-elastic-pool.md)中充当拥有共享资源集（通过逻辑服务器进行托管）的入池数据库
+- 作为单个数据库，通过 SQL 数据库服务器托管自己的资源集
+- 在[弹性池](sql-database-elastic-pool.md)中作为入池数据库，通过 SQL 数据库服务器托管共享的资源集
 - 充当称为[托管实例](sql-database-managed-instance.md)的数据库集合的一部分，该集合包含系统和用户数据库并共享一个资源集。
 
 下图显示了这些部署选项：
@@ -68,7 +68,7 @@ SQL 数据库提供[基于 DTU 的购买模型](sql-database-service-tiers-dtu.m
 > [!IMPORTANT]
 > [超大规模服务层](sql-database-service-tier-hyperscale.md)目前以公共预览版提供。 我们尚不建议在超大规模数据库中运行任何生产工作负荷。 无法将超大规模数据库更新为其他服务层。 出于测试目的，我们建议创建当前数据库的副本，并将副本更新为超大规模服务层。
 
-动态可伸缩性不同于自动缩放。 自动缩放是指服务根据条件自动缩放，而动态可伸缩性允许在无停机时间的情况下进行手动缩放。 单个 Azure SQL 数据库支持手动动态可伸缩性，但不支持自动缩放。 若要获得更多*自动*体验，请考虑使用弹性池，它允许数据库根据各个数据库需求共享池中的资源。 但是，有一些脚本可帮助自动执行单个 Azure SQL 数据库的可伸缩性。 有关示例，请参阅[使用 PowerShell 监视和缩放单个 SQL 数据库](scripts/sql-database-monitor-and-scale-database-powershell.md)。
+动态可伸缩性不同于自动缩放。 自动缩放是指服务根据条件自动缩放，而动态可伸缩性允许在无停机时间的情况下进行手动缩放。 单个数据库支持手动动态可伸缩性，但不支持自动缩放。 若要获得更多*自动*体验，请考虑使用弹性池，它允许数据库根据各个数据库需求共享池中的资源。 但是，有一些脚本可帮助自动执行单个数据库的可伸缩性。 有关示例，请参阅[使用 PowerShell 监视和缩放单个数据库](scripts/sql-database-monitor-and-scale-database-powershell.md)。
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>弹性池可以最大化资源利用率
 
@@ -148,7 +148,7 @@ SQL 数据库提供一系列[内置安全性和符合性功能](sql-database-sec
 
 ### <a name="advance-threat-protection"></a>高级威胁防护
 
-SQL 高级威胁防护是高级 SQL 安全功能的统一程序包。 它包括发现敏感数据并分类、管理数据库漏洞以及检测可能对数据库造成威胁的异常活动的功能。 它提供用于启用和管理这些功能的一个转到位置。
+SQL 高级数据安全是高级 SQL 安全功能的统一程序包。 它包括发现敏感数据并分类、管理数据库漏洞以及检测可能对数据库造成威胁的异常活动的功能。 它提供用于启用和管理这些功能的一个转到位置。
 
 - [数据发现和分类](sql-database-data-discovery-and-classification.md)：
 

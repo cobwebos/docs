@@ -6,16 +6,16 @@ author: jrowlandjones
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: fc7bf4eaeb073b0337be68632e5057bfce96e06a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: a09037f2e33d87446696dd11477c4e8b45af4187
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43310812"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474167"
 ---
 # <a name="migrate-your-data"></a>迁移数据
 数据可以使用各种工具从不同源移动到 SQL 数据仓库中。  ADF 复制、SSIS 和 bcp 都可用来实现此目标。 但是，随着数据量的增加，应该考虑将数据迁移过程划分成多个步骤。 这样，便有机会优化每个步骤以提高性能和弹性，确保顺利迁移数据。
@@ -157,7 +157,7 @@ AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/myconta
 3. 使用 AZCopy 复制 Azure Blob 存储容器中的数据
 4. 使用 PolyBase 将数据载入 SQL 数据仓库
 
-完整文档：[AZCopy][AZCopy]。
+完整的可用文档：[AZCopy][AZCopy]。
 
 ## <a name="optimizing-data-export"></a>优化数据导出
 除了确保导出符合 PolyBase 规定的要求外，还可以设法优化数据导出，以进一步改善过程。

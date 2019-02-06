@@ -11,13 +11,13 @@ author: douglaslMS
 ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/05/2018
-ms.openlocfilehash: 9e79aa2315118bcd9ce4328e74d51d7a22ea6247
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.date: 01/25/2019
+ms.openlocfilehash: c1b6c55475c1600c89c1ac1cae9dee0068b92070
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744539"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478213"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-new-azure-sql-database"></a>快速入门：将 BACPAC 文件导入到新的 Azure SQL 数据库
 
@@ -33,7 +33,7 @@ ms.locfileid: "53744539"
 > [!NOTE]
 > [Azure SQL 数据库托管实例](sql-database-managed-instance.md)支持使用本文中的其他方法从 BACPAC 文件导入，但目前不支持在 Azure 门户中迁移。
 
-若要在 Azure 门户中导入数据库，请打开将托管导入的逻辑服务器对应的页面，然后在工具栏上选择“导入数据库”。  
+若要在 Azure 门户中导入数据库，请打开将托管导入的 SQL 数据库服务器对应的页面，然后在工具栏上选择“导入数据库”。  
 
    ![数据库导入](./media/sql-database-import/import.png)
 
@@ -41,7 +41,7 @@ ms.locfileid: "53744539"
 
 ### <a name="monitor-imports-progress"></a>监视导入的进度
 
-若要监视导入的进度，请打开导入的数据库的逻辑服务器页，然后在“设置”下，选择“导入/导出历史记录”。 成功导入后，状态为“已完成”。
+若要监视导入的进度，请打开导入的数据库的服务器页，然后在“设置”下，选择“导入/导出历史记录”。 成功导入后，状态为“已完成”。
 
 若要验证数据库在服务器上是否处于活动状态，请选择“SQL 数据库”并验证新数据库是否为“联机”。
 
@@ -51,14 +51,14 @@ ms.locfileid: "53744539"
 
 在大多数生产环境中，建议使用 SqlPackage 来实现缩放和性能。 有关 SQL Server 客户咨询团队使用 BACPAC 文件进行迁移的博客，请参阅 [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)（使用 BACPAC 文件从 SQL Server 迁移到 Azure SQL 数据库）。
 
-以下 SqlPackage 命令可将 AdventureWorks2008R2 数据库从本地存储导入到名为 mynewserver20170403 的 Azure SQL 数据库逻辑服务器。 它将创建名为 myMigratedDatabase 的新数据库，其中包含高级服务层和 P6 服务目标。 根据你的环境更改这些值。
+以下 SqlPackage 命令可将 AdventureWorks2008R2 数据库从本地存储导入到名为 mynewserver20170403 的 Azure SQL 数据库服务器。 它将创建名为 myMigratedDatabase 的新数据库，其中包含高级服务层和 P6 服务目标。 根据你的环境更改这些值。
 
 ```cmd
 SqlPackage.exe /a:import /tcs:"Data Source=mynewserver20170403.database.windows.net;Initial Catalog=myMigratedDatabase;User Id=<your_server_admin_account_user_id>;Password=<your_server_admin_account_password>" /sf:AdventureWorks2008R2.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
 ```
 
 > [!IMPORTANT]
-> Azure SQL 数据库逻辑服务器在端口 1433 上进行侦听。 若要从公司防火墙后连接到逻辑服务器，该防火墙必须打开此端口。
+> SQL 数据库服务器在端口 1433 上进行侦听。 若要从公司防火墙后连接到 SQL 数据库服务器，该防火墙必须打开此端口。
 >
 
 此示例演示如何通过 Active Directory 通用身份验证，使用 SqlPackage 来导入数据库。
@@ -107,7 +107,7 @@ $importStatus
 
 ## <a name="limitations"></a>限制
 
-不支持导入到弹性池中的数据库。 可以将数据导入到单一数据库，然后将数据库移到池。
+不支持导入到弹性池中的数据库。 可以将数据导入到单一数据库，然后将数据库移到弹性池。
 
 ## <a name="import-using-wizards"></a>使用向导导入
 

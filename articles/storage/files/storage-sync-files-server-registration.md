@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: a296576d3d7983b710727923043091f5660b693d
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.subservice: files
+ms.openlocfilehash: cec6da78ae47b509e2bb5f8ba0007208545062e7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002546"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478060"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>管理已向 Azure 文件同步注册的服务器
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
@@ -191,5 +191,6 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 
 ## <a name="see-also"></a>另请参阅
 - [规划 Azure 文件同步部署](storage-sync-files-planning.md)
-- [部署 Azure 文件同步](storage-sync-files-deployment-guide.md) 
+- [部署 Azure 文件同步](storage-sync-files-deployment-guide.md)
+- [监视 Azure 文件同步](storage-sync-files-monitoring.md)
 - [对 Azure 文件同步进行故障排除](storage-sync-files-troubleshoot.md)

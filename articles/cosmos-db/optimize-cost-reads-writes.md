@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: c89374919087dc3bca435b8ce4af2dedd26ccb23
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: b6c5722d5e096300f76f60dfaf8bab1e07d0c61c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041316"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455656"
 ---
-# <a name="optimize-the-cost-required-to-read-and-write-data-from-azure-cosmos-db"></a>优化从 Azure Cosmos DB 读取和写入数据所需的成本
+# <a name="optimize-reads-and-writes-cost-in-azure-cosmos-db"></a>优化 Azure Cosmos DB 中的读取和写入成本
 
 本文介绍如何计算从 Azure Cosmos DB 读取和写入数据所需的成本。 读取操作包括对项的 Get 操作；写入操作包括项的插入、替换、删除和 upsert。  
 

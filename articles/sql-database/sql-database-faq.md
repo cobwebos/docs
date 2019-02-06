@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 77cb60c1a459d7c3f98d902d82e5fef86e8c34f4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/25/2019
+ms.openlocfilehash: a7ebf246300fdafe69f45aca0237964c8e669d5c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53541604"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463950"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>SQL 数据库常见问题解答 (FAQ)
 
@@ -43,7 +43,7 @@ SQL 数据库的当前版本是 V12。 V11 版本已停用。
 
 ## <a name="is-moving-to-the-vcore-based-model-required"></a>是否必须转移到基于 vCore 的模型
 
-不是。弹性池和单一数据库的基于 vCore 的部署选项简介体现了我们对客户选择和灵活性的承诺。 如果客户想要继续使用基于 DTU 的模型，他们不需要对此公告采取任何措施，且其体验和计费方式将保持不变。
+否。弹性池和单一数据库的基于 vCore 的部署选项简介体现了我们对客户选择和灵活性的承诺。 如果客户想要继续使用基于 DTU 的模型，他们不需要对此公告采取任何措施，且其体验和计费方式将保持不变。
 
 在许多情况下，应用程序可以受益于预配置的资源套件的简单性。 因此，我们继续向客户提供并支持这些基于 DTU 的选项。 如果你正在使用这些选项且其符合业务要求，请继续使用。
 
@@ -141,9 +141,9 @@ SQL 数据库客户将获得与面向 SQL Server 的 Azure 混合权益相关的
 
 ## <a name="how-long-does-it-take-to-change-the-service-tier-or-compute-size-of-a-single-database-or-move-a-database-in-and-out-of-an-elastic-pool"></a>更改单一数据库的服务层或计算大小，或将数据库移入和移出弹性池需要多长时间
 
-更改数据库的服务层和移入和移出池需要在平台上以后台操作的形式复制数据库。 更改服务层可能需要几分钟至几小时的时间，具体取决于数据库的大小。 在这两种情况下，数据库在移动期间保持联机和可用。 有关更改单一数据库的详细信息，请参阅[更改数据库的服务层](sql-database-service-tiers-dtu.md)。
+更改数据库的服务层和移入和移出池需要在平台上以后台操作的形式复制数据库。 更改服务层可能需要几分钟至几小时的时间，具体取决于数据库的大小。 在这两种情况下，数据库在移动期间保持联机和可用。 有关更改单一数据库的详细信息，请参阅[更改数据库的服务层](sql-database-single-database-scale.md)。
 
-## <a name="when-should-i-use-a-single-database-vs-elastic-databases"></a>何时应该使用单一数据库或弹性数据库
+## <a name="when-should-i-use-a-single-database-vs-elastic-pools"></a>应在何时使用单一数据库或弹性池
 
 一般而言，弹性池针对典型的[软件即服务 (SaaS) 应用程序模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)而设计，该模式中每个客户或租户有一个数据库。 购买单独的数据库并超量设置以满足每个数据库的可变和峰值需求通常不够经济高效。 使用池可以管理池的整体性能，数据库会自动纵向扩展和缩减。 如果 Azure 的智能引擎发现了担保的使用模式，将为数据库建议池。 有关详细信息，请参阅[弹性池指南](sql-database-elastic-pool.md)。
 

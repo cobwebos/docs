@@ -11,19 +11,19 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 49c411487a29a7faa5a6cec5087a85d472309a4b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/25/2019
+ms.openlocfilehash: 40dd963a4aad7ffdd092d6835e8444cf0789e129
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044563"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462794"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录
 
 Azure SQL 数据库、弹性池、托管实例和托管实例中的数据库可以流式传输指标和诊断日志，以便更轻松地进行性能监视。 可以配置数据库，以将资源使用情况、辅助角色和会话以及连接性传输到以下 Azure 资源之一：
 
-- **Azure SQL Analytics**：使用报告、警报和缓解建议对 Azure 数据库进行智能监视。
+- **Azure SQL Analytics**：使用报表、警报和缓解建议对 Azure SQL 数据库进行智能监视。
 - **Azure 事件中心**：将 SQL 数据库遥测与自定义监视解决方案或热管道相集成。
 - **Azure 存储**：低价存档大量遥测数据。
 
@@ -68,7 +68,7 @@ Azure SQL 数据库、弹性池、托管实例和托管实例中的数据库可�
 | [所有指标](sql-database-metrics-diag-logging.md#all-metrics)：包含 DTU/CPU 百分比、DTU/CPU 限制、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比和 XTP 存储百分比。 | 是 | 否 |
 | [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics)：包含有关查询运行时统计信息的信息，例如 CPU 使用率、查询持续时间统计信息。 | 是 | 是 |
 | [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics)：包含有关查询等待统计信息的信息（查询正在等待什么），例如 CPU、日志和锁定。 | 是 | 是 |
-| [Errors](sql-database-metrics-diag-logging.md#errors-dataset):包含有关数据库发生的 SQL 错误的信息。 | 是 | 否 |
+| [Errors](sql-database-metrics-diag-logging.md#errors-dataset):包含有关数据库发生的 SQL 错误的信息。 | 是 | 是 |
 | [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset)：包含有关数据库针对不同等待类型花费多少时间等待的信息。 | 是 | 否 |
 | [Timeouts](sql-database-metrics-diag-logging.md#time-outs-dataset)：包含有关数据库发生的超时的信息。 | 是 | 否 |
 | [Blocks](sql-database-metrics-diag-logging.md#blockings-dataset)：包含有关数据库发生的阻塞事件的信息。 | 是 | 否 |
@@ -409,12 +409,12 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="resource-usage-statistics"></a>资源使用情况统计信息
 
-|属性|Description|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终为：Azure|
 |TimeGenerated [UTC]|记录日志时的时间戳 |
-|类型|始终为：AzureDiagnostics |
+|Type|始终为：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终为：MICROSOFT.SQL |
 |类别|类别的名称。 始终为：ResourceUsageStats |
 |资源|资源名称 |
@@ -438,12 +438,12 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="query-store-runtime-statistics"></a>查询数据存储运行时统计信息
 
-|属性|Description|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终为：Azure |
 |TimeGenerated [UTC]|记录日志时的时间戳 |
-|类型|始终为：AzureDiagnostics |
+|Type|始终为：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终为：MICROSOFT.SQL |
 |类别|类别的名称。 始终为：QueryStoreRuntimeStatistics |
 |OperationName|操作的名称。 始终为：QueryStoreRuntimeStatisticsEvent |
@@ -489,12 +489,12 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="query-store-wait-statistics"></a>查询存储等待统计信息
 
-|属性|Description|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终为：Azure |
 |TimeGenerated [UTC]|记录日志时的时间戳 |
-|类型|始终为：AzureDiagnostics |
+|Type|始终为：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终为：MICROSOFT.SQL |
 |类别|类别的名称。 始终为：QueryStoreWaitStatistics |
 |OperationName|操作的名称。 始终为：QueryStoreWaitStatisticsEvent |
@@ -527,12 +527,12 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="errors-dataset"></a>错误数据集
 
-|属性|Description|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终为：Azure |
 |TimeGenerated [UTC]|记录日志时的时间戳 |
-|类型|始终为：AzureDiagnostics |
+|Type|始终为：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终为：MICROSOFT.SQ |
 |类别|类别的名称。 始终为：错误 |
 |OperationName|操作的名称。 始终为：ErrorEvent |
@@ -556,12 +556,12 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="database-wait-statistics-dataset"></a>数据库等待统计数据集
 
-|属性|Description|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终为：Azure |
 |TimeGenerated [UTC]|记录日志时的时间戳 |
-|类型|始终为：AzureDiagnostics |
+|Type|始终为：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终为：MICROSOFT.SQL |
 |类别|类别的名称。 始终为：DatabaseWaitStatistics |
 |OperationName|操作的名称。 始终为：DatabaseWaitStatisticsEvent |
@@ -585,12 +585,12 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="time-outs-dataset"></a>超时数据集
 
-|属性|Description|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终为：Azure |
 |TimeGenerated [UTC]|记录日志时的时间戳 |
-|类型|始终为：AzureDiagnostics |
+|Type|始终为：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终为：MICROSOFT.SQL |
 |类别|类别的名称。 始终为：超时 |
 |OperationName|操作的名称。 始终为：TimeoutEvent |
@@ -608,12 +608,12 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="blockings-dataset"></a>阻塞数据集
 
-|属性|Description|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终为：Azure |
 |TimeGenerated [UTC]|记录日志时的时间戳 |
-|类型|始终为：AzureDiagnostics |
+|Type|始终为：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终为：MICROSOFT.SQL |
 |类别|类别的名称。 始终为：块 |
 |OperationName|操作的名称。 始终为：BlockEvent |
@@ -632,12 +632,12 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="deadlocks-dataset"></a>死锁数据集
 
-|属性|Description|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终为：Azure |
 |TimeGenerated [UTC] |记录日志时的时间戳 |
-|类型|始终为：AzureDiagnostics |
+|Type|始终为：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终为：MICROSOFT.SQL |
 |类别|类别的名称。 始终为：死锁数 |
 |OperationName|操作的名称。 始终为：DeadlockEvent |
@@ -653,12 +653,12 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="automatic-tuning-dataset"></a>自动优化数据集
 
-|属性|Description|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终为：Azure |
 |TimeGenerated [UTC]|记录日志时的时间戳 |
-|类型|始终为：AzureDiagnostics |
+|Type|始终为：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终为：MICROSOFT.SQL |
 |类别|类别的名称。 始终为：AutomaticTuning |
 |资源|资源名称 |

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2018
 ms.author: mjbrown
-ms.openlocfilehash: adddbc03b5ec61944e95a2e0fff8767c41d96b0e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 9e1ae9faecea67e1abb2a1b08d5641bc25c9f38a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033751"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469084"
 ---
-# <a name="indexing-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引
+# <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的索引 - 概述
 
 Azure Cosmos DB 是一种架构不可知的数据库，使你能够快速迭代应用程序，而无需处理架构或索引管理。 默认情况下，Azure Cosmos DB 自动对容器中的所有项编制索引，而无需来自开发人员的架构或辅助索引。
 

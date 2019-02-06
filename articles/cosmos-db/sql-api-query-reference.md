@@ -8,14 +8,14 @@ ms.topic: reference
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 9ec8ecf7b875b32d0ea5715e407b444fa1b25c50
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: bfc3ed5553802c8a87776dc1a5372bc27ac8d13d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354460"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475179"
 ---
-# <a name="azure-cosmos-db-sql-language-reference"></a>Azure Cosmos DB SQL 语言参考 
+# <a name="sql-language-reference-for-azure-cosmos-db"></a>Azure Cosmos DB SQL 语言参考 
 
 Azure Cosmos DB 支持使用分层 JSON 文档中的语法等熟悉的 SQL（结构化查询语言）来查询文档，无需显示架构或创建辅助索引。 本文提供与 SQL API 帐户兼容的 SQL 查询语言的文档。 有关示例 SQL 查询的演练，请参阅 [Cosmos DB 中的 SQL 查询](how-to-sql-query.md)。  
   
@@ -674,7 +674,7 @@ ORDER BY <sort_specification>
 ##  <a name="bk_built_in_functions"></a> 内置函数  
  Cosmos DB 提供多个内置 SQL 函数。 内置函数的类别如下所示。  
   
-|函数|Description|  
+|函数|说明|  
 |--------------|-----------------|  
 |[数学函数](#bk_mathematical_functions)|每个数学函数均执行一个计算，通常基于作为参数提供的输出值，并返回数值。|  
 |[类型检查函数](#bk_type_checking_functions)|类型检查函数使你能够检查 SQL 查询内表达式的类型。|  
@@ -2169,7 +2169,10 @@ REPLICATE(<str_expr>, <num_expr>)
   
 -   `num_expr`  
   
-     为任何有效的数值表达式。  
+     为任何有效的数值表达式。 如果 num_expr 为负或非有限，则结果未定义。
+
+  > [!NOTE]
+  > 结果的最大长度为 10,000 个字符，即 (length(str_expr)  *  num_expr) <= 10,000。
   
  返回类型  
   

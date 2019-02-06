@@ -1,5 +1,5 @@
 ---
-title:定义自定义 R 模块 titleSuffix: Azure 机器学习工作室 description:本主题介绍如何在 Azure 机器学习中创建和部署自定义 R 模块， 解释什么是自定义 R 模块以及要使用什么文件来定义此类模块， services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:定义自定义 R 模块 titleSuffix:Azure 机器学习工作室 description:本主题介绍如何在 Azure 机器学习中创建和部署自定义 R 模块， 解释什么是自定义 R 模块以及要使用什么文件来定义此类模块， services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:11/29/2017
 ---

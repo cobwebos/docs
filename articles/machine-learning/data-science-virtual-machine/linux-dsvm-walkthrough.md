@@ -10,19 +10,19 @@ editor: cgronlun
 ms.custom: seodec18
 ms.assetid: 34ef0b10-9270-474f-8800-eecb183bbce4
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: d6e4cc585c1239d6a1b81b371f39fc19e3ff37ea
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: b06ca287f03c62b3947e6c37712cf491396392e0
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157167"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245827"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure 上的 Linux 数据科学虚拟机中的数据科学
 本演练显示如何通过 Linux 数据科研 VM 执行几个常见的数据科学任务。 Linux 数据科研虚拟机 (DSVM) 是 Azure 提供的虚拟机映像，其中预安装了一组常用于执行数据分析和机器学习的工具。 [预配 Linux 数据科研虚拟机](linux-dsvm-intro.md)主题中逐项列出了主要的软件组件。 VM 映像允许在几分钟之内轻松开始执行数据科学任务，而无需逐个安装和配置每个工具。 如有必要，可以轻松扩展 VM，并在不使用时停止 VM。 因此，此资源既具有弹性，又具有成本效益。
@@ -180,10 +180,10 @@ ms.locfileid: "54157167"
     accuracy
 
 
-## <a name="deploy-a-model-to-azure-ml"></a>将模型部署到 Azure ML
-[Azure 机器学习工作室](https://studio.azureml.net/) (AzureML) 是一种云服务，可用来轻松地生成和部署预测分析模型。 AzureML 出色的功能之一是能够将任何 R 函数发布为 Web 服务。 AzureML R 程序包使得从 DSVM 上的 R 会话执行部署更加简便直接。
+## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>将模型部署到 Azure 机器学习工作室
+[Azure 机器学习工作室](https://studio.azureml.net/)是一种云服务，可用来轻松地生成和部署预测分析模型。 Azure 机器学习工作室出色的功能之一是能够将任何 R 函数发布为 Web 服务。 Azure 机器学习工作室 R 程序包使得从 DSVM 上的 R 会话执行部署更加简便直接。
 
-要部署前一部分中的决策树代码，需要登录 Azure 机器学习工作室。 需要使用工作区 ID 和授权令牌进行登录。 若要查找这些值并使用它们初始化 AzureML 变量：
+要部署前一部分中的决策树代码，需要登录 Azure 机器学习工作室。 需要使用工作区 ID 和授权令牌进行登录。 若要查找这些值并使用它们初始化 Azure 机器学习变量：
 
 在左侧菜单上选择“**设置**”。 记下“**工作区 ID**”。 ![2](./media/linux-dsvm-walkthrough/workspace-id.png)
 
@@ -270,7 +270,7 @@ ms.locfileid: "54157167"
 让我们读入部分 spambase 数据集，并使用 scikit-learn 中的支持向量机 (support vector machine) 对电子邮件进行分类：
 
     import pandas
-    from sklearn import svm    
+    from sklearn import svm
     data = pandas.read_csv("spambaseHeaders.data", sep = ',\s*')
     X = data.ix[:, 0:57]
     y = data.ix[:, 57]

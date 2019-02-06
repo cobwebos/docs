@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: fryu
-ms.component: common
-ms.openlocfilehash: 293067b2d76f7ef88b6946aee9d39d4c6da97230
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 49ea6a3c6be2325acdcdf61188ced777bd36f0da
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229538"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478128"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure 存储符合性产品/服务
 

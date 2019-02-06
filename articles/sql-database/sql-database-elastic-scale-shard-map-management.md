@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 77ef1fed7bbdb53898a688f14944b9b6b16773c7
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.date: 01/25/2019
+ms.openlocfilehash: a9c857ab9e9a3cfc0d1314600b612c4e6293173d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200966"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476785"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>使用分片映射管理器扩大数据库
 
@@ -40,11 +40,11 @@ ms.locfileid: "54200966"
 
 ![列表映射][1]
 
-多租户模型将数个租户分配给单一数据库（可以跨多个数据库分布租户组。） 当希望每个租户具有较小数据需求时使用此模型。 在此模型中，使用范围映射将一系列用户分配到数据库。
+多租户模型将数个租户分配给单个数据库（可跨多个数据库分布租户组）。 当希望每个租户具有较小数据需求时使用此模型。 在此模型中，使用范围映射将一系列用户分配到数据库。
 
 ![范围映射][2]
 
-或者可以使用*列表映射*来实现多租户数据库模型，以将多个租户分配给单一数据库。 例如，DB1 用于存储租户 ID 1 和 5 的相关信息，而 DB2 用于存储租户 7 和租户 10 的数据。
+或可以使用列表映射来实现多租户数据库模型，以将多个租户分配给单个数据库。 例如，DB1 用于存储租户 ID 1 和 5 的相关信息，而 DB2 用于存储租户 7 和租户 10 的数据。
 
 ![单一数据库上的多个租户][3]
 

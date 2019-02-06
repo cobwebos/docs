@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: 1b3e33c47d4188ba273fb232e2e166a2c33cb1b1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.subservice: files
+ms.openlocfilehash: 23f1f4e8b6a3b71c3792a08645122779e4e629b2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463824"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465820"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -417,3 +417,4 @@ else {
 ## <a name="next-steps"></a>后续步骤
 - [添加或删除 Azure 文件同步服务器终结点](storage-sync-files-server-endpoint.md)
 - [向 Azure 文件同步注册或注销服务器](storage-sync-files-server-registration.md)
+- [监视 Azure 文件同步](storage-sync-files-monitoring.md)

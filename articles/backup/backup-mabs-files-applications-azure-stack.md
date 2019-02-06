@@ -2,18 +2,18 @@
 title: 备份 Azure Stack VM 中的文件
 description: 使用 Azure 备份将 Azure Stack 文件与应用程序备份和恢复到 Azure Stack 环境。
 services: backup
-author: adiganmsft
+author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/5/2018
 ms.author: adigan
-ms.openlocfilehash: acbd1bb98fd9a3eb24b7b3262c3fe9fe47200385
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 67d79f2aa41bab8a14d693098538d22ffeb05a4e
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579167"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301469"
 ---
 # <a name="back-up-files-on-azure-stack"></a>备份 Azure Stack 中的文件
 可以使用 Azure 备份保护（或备份）Azure Stack 上的文件和应用程序。 若要备份文件和应用程序，请将 Microsoft Azure 备份服务器安装为 Azure Stack 上运行的虚拟机。 可以保护相同虚拟网络中任何 Azure Stack 服务器上的文件。 安装 Azure 备份服务器后，可添加 Azure 磁盘以增加可用于短期备份数据的本地存储。 Azure 备份服务器将 Azure 存储用于长期保留。

@@ -2,18 +2,18 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 11/25/2018
+ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: a2ee8705be3f34b6df113c68d88e375411f84bf2
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 7c081b3bc5f9e6273f680b24897f9aced4999afa
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52439992"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55302336"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>从 Cloud Shell 部署模板
 
-可以使用 [Cloud Shell](../articles/cloud-shell/overview.md) 来部署模板。 但是，必须先将模板加载到 Cloud Shell 的存储帐户。 如果尚未使用过 Cloud Shell，请参阅 [Azure Cloud Shell 概述](../articles/cloud-shell/overview.md)，了解如何设置它。
+可以使用 [Cloud Shell](../articles/cloud-shell/overview.md) 来部署模板。 要部署外部模板，请提供与用于任何外部部署的完全相同的模板 URI。 要部署本地模板，必须先将模板加载到 Cloud Shell 的存储帐户。 本节介绍如何将模板加载到 Cloud Shell 帐户，并将其部署为本地文件。 如果尚未使用过 Cloud Shell，请参阅 [Azure Cloud Shell 概述](../articles/cloud-shell/overview.md)，了解如何设置它。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 

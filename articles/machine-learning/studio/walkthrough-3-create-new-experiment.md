@@ -1,6 +1,6 @@
 ---
-title:“步骤 3：创建新的机器学习工作室实验”titleSuffix： Azure 机器学习工作室 description:“开发预测解决方案演练的步骤 3：在 Azure 机器学习工作室中创建新的训练实验。”
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:“步骤 3：创建新的机器学习工作室实验”titleSuffix：Azure 机器学习工作室 description:“开发预测解决方案演练的步骤 3：在 Azure 机器学习工作室中创建新的训练实验。”
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:2017/03/23
 ---

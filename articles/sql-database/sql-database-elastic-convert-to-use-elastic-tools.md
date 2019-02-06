@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 03e1974a91a8c3cceacab777e28e8e4a01ccb313
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/25/2019
+ms.openlocfilehash: 8449462f144590e4fe7048366a21090c95a303cb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251587"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455586"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>迁移要扩展的现有数据库
 使用 Azure SQL 数据库数据库工具（例如[弹性数据库客户端库](sql-database-elastic-database-client-library.md)）轻松管理现有的扩展共享数据库。 先转换现有数据库集，再使用[分片映射管理器](sql-database-elastic-scale-shard-map-management.md)。 
@@ -69,11 +69,11 @@ ms.locfileid: "51251587"
 
 ![列表映射][1]
 
-多租户模型将数个租户分配给单一数据库（可以跨多个数据库分布租户组。） 当希望每个租户具有较小数据需求时使用此模型。 在此模型中，使用范围映射将一系列用户分配到数据库。 
+多租户模型将数个租户分配给单个数据库（可跨多个数据库分布租户组）。 当希望每个租户具有较小数据需求时使用此模型。 在此模型中，使用范围映射将一系列用户分配到数据库。 
 
 ![范围映射][2]
 
-或者可以使用*列表映射*来实现多租户数据库模型，以将多个租户分配给单一数据库。 例如，DB1 用于存储租户 ID 1 和 5 的相关信息，而 DB2 用于存储租户 7 和租户 10 的数据。 
+或可以使用列表映射来实现多租户数据库模型，以将多个租户分配给单个数据库。 例如，DB1 用于存储租户 ID 1 和 5 的相关信息，而 DB2 用于存储租户 7 和租户 10 的数据。 
 
 ![单一数据库上的多个租户][3] 
 
@@ -98,7 +98,7 @@ ms.locfileid: "51251587"
     -RangeShardMapName 'RangeShardMap' 
     -ShardMapManager $ShardMapManager 
 
-### <a name="option-3-list-mappings-on-a-single-database"></a>选项 3：单一数据库上的列表映射
+### <a name="option-3-list-mappings-on-an-individual-database"></a>选项 3：单个数据库的列表映射
 设置此模式也需要创建列表映射，如步骤 2，选项 1 中所示。
 
 ## <a name="step-3-prepare-individual-shards"></a>步骤 3：准备各个分片
@@ -138,7 +138,7 @@ ms.locfileid: "51251587"
     -SqlDatabaseName '<shard_database_name>' 
 
 
-### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-a-single-database"></a>步骤 4，选项 3：映射单一数据库上多个租户的数据
+### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-an-individual-database"></a>步骤 4，选项 3：映射单个数据库上多个租户的数据
 对于每个租户，运行 Add-ListMapping（选项 1）。 
 
 ## <a name="checking-the-mappings"></a>检查映射

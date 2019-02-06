@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: de625e7cc394d1b292f9876a1b4cdd3fb0daeaa8
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: e407aee98bef9917a99e3305e2c99dbdd0c182e0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134788"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469815"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>机器学习异常情况检测 API
 ## <a name="overview"></a>概述
@@ -36,25 +36,25 @@ ms.locfileid: "53134788"
 
 > [!NOTE]
 > 请尝试由 [此 API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) 提供的“IT 异常 Insights 解决方案”
-> 
+>
 <!-- This Solution is no longer available
 > To get this end to end solution deployed to your Azure subscription <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**Start here >**</a>
---> 
+-->
 
 ## <a name="api-deployment"></a>API 部署
-要使用 API，必须将其部署到 Azure 订阅，在该订阅中它将作为 Azure 机器学习 Web 服务进行托管。  可以从 [Azure AI 库](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)执行此操作。  这会将两个 AzureML Web 服务（及其相关资源）部署到 Azure 订阅 - 一个用于异常情况检测（包含季节性检测），另一个不包含季节性检测。  部署完成后，便能从 [AzureML Web 服务](https://services.azureml.net/webservices/)页管理 API。  在该页中，能够查找终结点位置、API 密钥以及调用 API 的示例代码。  [此处](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)提供了更详细的说明。
+要使用 API，必须将其部署到 Azure 订阅，在该订阅中它将作为 Azure 机器学习 Web 服务进行托管。  可以从 [Azure AI 库](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)执行此操作。  这会将两个 Azure 机器学习工作室 Web 服务（及其相关资源）部署到 Azure 订阅 - 一个用于异常情况检测（包含季节性检测），另一个不包含季节性检测。  部署完成后，便能从 [Azure 机器学习工作室 Web 服务](https://services.azureml.net/webservices/)页管理 API。  在该页中，能够查找终结点位置、API 密钥以及调用 API 的示例代码。  [此处](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)提供了更详细的说明。
 
 ## <a name="scaling-the-api"></a>缩放 API
 默认情况下，部署将使用一个免费的开发/测试计费计划，其中包括 1,000 次交易/月和 2 个计算小时/月。  可以根据需求升级到其他计划。  在[此处](https://azure.microsoft.com/pricing/details/machine-learning/)的“生产 Web API 定价”下提供了有关不同计划的定价的详细信息。
 
-## <a name="managing-aml-plans"></a>管理 AML 计划 
+## <a name="managing-aml-plans"></a>管理 AML 计划
 可以在[此处](https://services.azureml.net/plans/)管理计费计划。  计划名称将基于在部署 API 时选择的资源组名称，再加上一个订阅所独有的字符串。  在[此处](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)的“管理计费计划”部分下提供了有关如何升级计划的说明。
 
 ## <a name="api-definition"></a>API 定义
 该 Web 服务提供 HTTPS 上基于 REST 的 API，可以不同方式使用该 API，包括 Web 或移动应用程序、R、Python、Excel 等。可将时间系列数据通过 REST API 调用发送到此服务，此服务将运行下面介绍的三种异常类型的组合。
 
 ## <a name="calling-the-api"></a>调用 API
-若要调用该 API，需要知道终结点位置和 API 密钥。  这两项以及调用该 API 的示例代码可从 [AzureML Web 服务](https://services.azureml.net/webservices/)页获得。  导航到所需的 API，并单击“使用”选项卡可找到它们。  请注意，可以像调用 Swagger API 一样调用该 API（即，使用 URL 参数 `format=swagger`），也可以像调用非 Swagger API 一样调用该 API（即，不使用 `format` URL 参数）。  代码示例使用 Swagger 格式。  下面是采用非 Swagger 格式的示例请求和响应。  这些示例针对季节性终结点。  非季节性终结点与它类似。
+若要调用该 API，需要知道终结点位置和 API 密钥。  这两项以及调用该 API 的示例代码可从 [Azure 机器学习工作室 Web 服务](https://services.azureml.net/webservices/)页获得。  导航到所需的 API，并单击“使用”选项卡可找到它们。  请注意，可以像调用 Swagger API 一样调用该 API（即，使用 URL 参数 `format=swagger`），也可以像调用非 Swagger API 一样调用该 API（即，不使用 `format` URL 参数）。  代码示例使用 Swagger 格式。  下面是采用非 Swagger 格式的示例请求和响应。  这些示例针对季节性终结点。  非季节性终结点与它类似。
 
 ### <a name="sample-request-body"></a>示例请求正文
 该请求包含两个对象：`Inputs` 和 `GlobalParameters`。  在下面的示例请求中，某些参数是显式发送的，而其他参数则不是（向下滚动可找到每个终结点的完整参数列表）。  未在请求中显式发送的参数将使用下面给出的默认值。
@@ -100,13 +100,14 @@ ms.locfileid: "53134788"
 
 
 ## <a name="score-api"></a>Score API
-Score API 用于运行非季节性时序数据的异常情况检测。 Score API 对数据运行大量异常检测程序，并返回其异常分数。 下图显示 Score API 可检测到的异常情况示例。 此时间序列具有 2 个不同级别的更改和 3 个峰值。 红点显示检测到的更改级别的时间，而黑色的点显示检测到的峰值。
+Score API 用于运行非季节性时序数据的异常情况检测。 Score API 对数据运行大量异常检测程序，并返回其异常分数。
+下图显示 Score API 可检测到的异常情况示例。 此时间序列具有 2 个不同级别的更改和 3 个峰值。 红点显示检测到的更改级别的时间，而黑色的点显示检测到的峰值。
 ![Score API][1]
 
 ### <a name="detectors"></a>检测程序
 异常情况检测 API 支持检测程序中的 3 个主要类别。 可在下表中找到特定输入的参数和每个检测程序输出结果的详细信息。
 
-| 检测程序类别 | 检测程序 | Description | 输入参数 | Outputs |
+| 检测程序类别 | 检测程序 | 说明 | 输入参数 | Outputs |
 | --- | --- | --- | --- | --- |
 | 峰值检测程序 |TSpike 检测程序 |根据值与第一个和第三个四分位数的距离，检测峰值和低值 |tspikedetector.sensitivity：取 1-10 范围内的整数值，默认值：3；更高的值会捕获更多极值，从而使敏感度降低 |TSpike：二进制值 – 如果检测到峰值或低值，显示“1”，否则为“0” |
 | 峰值检测程序 | ZSpike 检测程序 |根据数据点与平均值的距离，检测峰值和低值 |spikedetector.sensitivity：取 1-10 范围内的整数值，默认值：3；更高的值会捕获更多极值，从而使敏感度降低 |TSpike：二进制值 – 如果检测到峰值或低值，显示“1”，否则为“0” | |
@@ -116,7 +117,7 @@ Score API 用于运行非季节性时序数据的异常情况检测。 Score API
 ### <a name="parameters"></a>parameters
 下表中列出了这些输入参数的更多详细信息：
 
-| 输入参数 | Description | 默认设置 | 类型 | 有效的范围 | 推荐的区域 |
+| 输入参数 | 说明 | 默认设置 | Type | 有效的范围 | 推荐的区域 |
 | --- | --- | --- | --- | --- | --- |
 | detectors.historywindow |用于记录异常分数计算结果（在数据点的 #） |500 |integer |10-2000 |时间序列依赖项 |
 | detectors.spikesdips | 是仅检测峰值、仅检测 dip，还是两者都检测 |两者 |枚举 |两者、峰值、Dip |两者 |
@@ -127,9 +128,9 @@ Score API 用于运行非季节性时序数据的异常情况检测。 Score API
 | postprocess.tailRows |保留输出结果中的最新数据点的数量 |0 |integer |0（保留所有数据点），或指定要保留在结果中的点的数量 |不适用 |
 
 ### <a name="output"></a>输出
-API 在时间系列数据上运行所有检测程序，并及时返回异常的分数以及每个点的二进制峰值指示符。 下表列出了 API 的输出内容。 
+API 在时间系列数据上运行所有检测程序，并及时返回异常的分数以及每个点的二进制峰值指示符。 下表列出了 API 的输出内容。
 
-| Outputs | Description |
+| Outputs | 说明 |
 | --- | --- |
 | 时间 |应用聚合（和/或）缺失数据时，原始数据或聚合（和/或）数据估算中的时间戳 |
 | 数据 |应用聚合（和/或）缺失数据时，原始数据或聚合（和/或）数据估算中的值 |
@@ -141,7 +142,7 @@ API 在时间系列数据上运行所有检测程序，并及时返回异常的�
 | talert |1/0 值指示存在基于输入敏感度的、正面趋势异常 |
 
 ## <a name="scorewithseasonality-api"></a>ScoreWithSeasonality API
-ScoreWithSeasonality API 用于对具有季节性模式的时序运行异常情况检测。 此 API 可用于检测季节性模式中的偏差。  
+ScoreWithSeasonality API 用于对具有季节性模式的时序运行异常情况检测。 此 API 可用于检测季节性模式中的偏差。
 下图显示在季节性时序中检测到的异常情况示例。 时间序列都有一个最大值（第一个黑点）、两个低值（第二个黑点和结尾处的黑点）和一个级别更改（红点）。 请注意：从序列中删除季节性组件后才可识别时间序列中间的低值和级别更改。
 ![Seasonality API][2]
 
@@ -152,7 +153,7 @@ ScoreWithSeasonality API 用于对具有季节性模式的时序运行异常情�
 
 下表中列出了这些输入参数的更多详细信息：
 
-| 输入参数 | Description | 默认设置 | 类型 | 有效的范围 | 推荐的区域 |
+| 输入参数 | 说明 | 默认设置 | Type | 有效的范围 | 推荐的区域 |
 | --- | --- | --- | --- | --- | --- |
 | preprocess.aggregationInterval |聚合输入时间序列的聚合间隔单位为秒 |0（不执行任何聚合） |integer |0：跳过聚合，> 0 否则 |5 分钟到 1 天，时间系列依赖项 |
 | preprocess.aggregationFunc |用于将数据聚合到指定的 AggregationInterval 函数 |平均值 |枚举 |平均值、总和、长度 |不适用 |
@@ -170,9 +171,9 @@ ScoreWithSeasonality API 用于对具有季节性模式的时序运行异常情�
 | postprocess.tailRows |保留输出结果中的最新数据点的数量 |0 |integer |0（保留所有数据点），或指定要保留在结果中的点的数量 |不适用 |
 
 ### <a name="output"></a>输出
-API 在时间系列数据上运行所有检测程序，并及时返回异常的分数以及每个点的二进制峰值指示符。 下表列出了 API 的输出内容。 
+API 在时间系列数据上运行所有检测程序，并及时返回异常的分数以及每个点的二进制峰值指示符。 下表列出了 API 的输出内容。
 
-| Outputs | Description |
+| Outputs | 说明 |
 | --- | --- |
 | 时间 |应用聚合（和/或）缺失数据时，原始数据或聚合（和/或）数据估算中的时间戳 |
 | 原始数据 |应用聚合（和/或）缺失数据时，原始数据或聚合（和/或）数据估算中的值 |

@@ -8,13 +8,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: a62af881efd4f6f3422db19850a0ce9987c6ae7b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 431a4ef4e84c88467dc7e36bb12d406309f9a8b7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245114"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467826"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>将 Azure 存储用于 Hudson 持续集成解决方案
 ## <a name="overview"></a>概述
@@ -73,7 +73,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 2. 在“管理 Hudson”页，单击“配置系统”。
 3. 在“Microsoft Azure 存储帐户配置”部分中：
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 输入存储帐户名，该帐户名可从 [Azure 门户](https://portal.azure.com)获取。
+    a. 输入存储帐户名，该帐户名可从 [Azure 门户](https://portal.azure.com)获取。
    
     b. 输入存储帐户密钥，该密钥同样可从 [Azure 门户](https://portal.azure.com)获取。
    
@@ -116,7 +116,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 13. 在 Hudson 仪表板中，单击“立即生成”以运行 **MyJob**。 检查控制台输出中的状态。 当生成后操作开始上传生成项目时，Azure 存储的状态消息将包括在控制台输出中。
 14. 成功完成此作业后，可通过打开公共 Blob 检查生成项目。
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 登录到 [Azure 门户](https://portal.azure.com)。
+    a. 登录到 [Azure 门户](https://portal.azure.com)。
     
     b. 单击“存储”。
     
@@ -144,10 +144,10 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 ## <a name="components-used-by-the-blob-service"></a>Blob 服务使用的组件
 以下信息概述了 Blob 服务组件。
 
-* **存储帐户**：对 Azure 存储的所有访问都要通过存储帐户来完成。 存储帐户是访问 blob 的最高级别的命名空间。 一个帐户可以包含无限个容器，只要这些容器的总大小不超过 100 TB 即可。
-* **容器**：一个容器包含一组 blob 集。 所有 blob 必须位于相应的容器中。 一个帐户可以包含无限个容器。 一个容器可以存储无限个 Blob。
+* **存储帐户**：对 Azure 存储进行的所有访问都要通过存储帐户完成。 存储帐户是访问 blob 的最高级别的命名空间。 一个帐户可以包含无限个容器，只要这些容器的总大小不超过 100 TB 即可。
+* **容器**：一个容器包含一组 Blob 集。 所有 blob 必须位于相应的容器中。 一个帐户可以包含无限个容器。 一个容器可以存储无限个 Blob。
 * **Blob**：任何类型和大小的文件。 可将两类 Blob 存储到 Azure 存储中：块 Blob 和页 Blob。 大部分文件都是块 blob。 单个块 Blob 最大可以为 200 GB。 本教程使用的是块 Blob。 另一种 blob 类型为页 blob，其大小可达 1 TB，对文件中的一系列字节进行频繁修改时，这种 blob 更加高效。 有关 Blob 的详细信息，请参阅 [Understanding Block Blobs, Append Blobs, and Page Blobs](https://msdn.microsoft.com/library/azure/ee691964.aspx)（了解块 Blob、追加 Blob 和页 Blob）。
-* **URL 格式**：可使用以下 URL 格式对 Blob 寻址：
+* **URL 格式**：使用以下 URL 格式可对 Blob 寻址：
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
   

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 3d9da96e5bf6c88f76089dea930b02248cfa1d24
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 72d4a9cd9a8b9244c428d49b5270952deb6f5162
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243788"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454481"
 ---
 # <a name="azure-storage-security-guide"></a>Azure 存储安全指南
 
@@ -240,7 +240,7 @@ http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
 * 这些教程介绍了如何使用 .NET 客户端库创建共享访问签名和存储访问策略。
 
   * [使用共享访问签名 (SAS)](../storage-dotnet-shared-access-signature-part-1.md)
-  * [共享访问签名 - 第 2 部分：创建 SAS 并将 SAS 用于 Blob 服务](../blobs/storage-dotnet-shared-access-signature-part-2.md)
+  * [共享访问签名，第 2 部分：创建 SAS 并将其用于 Blob 服务](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 
     此文包含 SAS 模型的说明、共享访问签名的示例，以及 SAS 用法最佳实践的建议。 此外介绍了如何吊销授予的权限。
 
@@ -307,7 +307,7 @@ Azure 磁盘加密是一项新功能。 此功能允许加密 IaaS 虚拟机使�
 在 Microsoft Azure 中启用 IaaS VM 时，该解决方案支持以下 IaaS VM 方案：
 
 * 与 Azure Key Vault 集成
-* 标准层 VM：[A、D、DS、G 和 GS 等系列 IaaS VM](https://azure.microsoft.com/pricing/details/virtual-machines/)
+* 标准层 VM：[A、D、DS、G、GS 等系列 IaaS VM](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * 在 Windows 和 Linux IaaS VM 上启用加密
 * 在 Windows IaaS VM 的 OS 和数据驱动器上禁用加密
 * 在 Linux IaaS VM 的数据驱动器上禁用加密
@@ -328,7 +328,7 @@ Azure 磁盘加密是一项新功能。 此功能允许加密 IaaS 虚拟机使�
 
 
 > [!NOTE]
-> 以下 Linux 分发（RHEL 7.2、CentOS 7.2n 和 Ubuntu 16.04）当前支持 Linux OS 磁盘加密。
+> 下面的 Linux 发行版当前支持 Linux OS 磁盘加密：RHEL 7.2、CentOS 7.2n 和 Ubuntu 16.04。
 >
 >
 
@@ -479,7 +479,7 @@ Azure 存储允许启用 CORS – 跨域资源共享。 对于每个存储帐户
 * [Cross-Origin Resource Sharing (CORS) Support for the Azure Storage Services on MSDN](https://msdn.microsoft.com/library/azure/dn535601.aspx)（MSDN 上对 Azure 存储服务的跨域资源共享 (CORS) 支持）
 
   这是有关对 Azure 存储服务的 CORS 支持的参考文档。 其中提供了适用于每个存储服务的文章链接，并提供示例演示，解释 CORS 文件中的每个元素。
-* [Microsoft Azure Storage: Introducing CORS](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)（Microsoft Azure 存储：CORS 简介）
+* [Microsoft Azure 存储：CORS 简介](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
 
   这是宣布推出 CORS 并演示其用法的第一篇博客文章的链接。
 

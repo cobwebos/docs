@@ -11,13 +11,13 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 manager: craigg
-ms.date: 12/06/2018
-ms.openlocfilehash: f87b7093a732639db8a53ebec68fcae8f29735f3
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.date: 01/25/2019
+ms.openlocfilehash: 59a3b4a4e1b08a9a9985836a9f9be44d1eff9c71
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158663"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472059"
 ---
 # <a name="configure-threat-detection-preview-in-azure-sql-database-managed-instance"></a>在 Azure SQL 数据库托管实例中配置威胁检测（预览版）
 
@@ -25,7 +25,7 @@ ms.locfileid: "54158663"
 
 你可以通过[电子邮件通知](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event)或 [Azure 门户](sql-database-threat-detection-overview.md#explore-threat-detection-alerts-for-your-database-in-the-azure-portal)接收有关检测到的威胁的通知
 
-[威胁检测](sql-database-threat-detection-overview.md)是 [SQL 高级威胁防护](sql-advanced-threat-protection.md) (ATP) 产品/服务（它是高级 SQL 安全功能的一个统一包）的一部分。 可通过中心 SQL ATP 门户访问和管理威胁检测。 威胁检测服务按每个托管实例 15 美元/月来计费，前 30 天免费。
+[威胁检测](sql-database-threat-detection-overview.md)是 [SQL 高级数据安全](sql-advanced-threat-protection.md) (ADS) 产品/服务（它是高级 SQL 安全功能的一个统一包）的一部分。 可通过中心 SQL ADS 门户访问和管理威胁检测。 威胁检测服务按每个托管实例 15 美元/月来计费，前 30 天免费。
 
 ## <a name="set-up-threat-detection-for-your-managed-instance-in-the-azure-portal"></a>在 Azure 门户中为托管实例设置威胁检测
 

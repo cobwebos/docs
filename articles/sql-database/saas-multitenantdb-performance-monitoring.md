@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 7681e3fabe9eb216da81d9f09dc584097bcbaf84
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 01/25/2019
+ms.openlocfilehash: 4257baf437ec6c77ccf9fe4a7f0e6195ddd933be
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829999"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458119"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理分片多租户 Azure SQL 数据库的性能
 
@@ -161,7 +161,7 @@ Wingtip Tickets SaaS 多租户数据库是一个 SaaS 应用，SaaS 应用上的
 
 脚本将在单独的数据库中预配此租户，在目录中注册数据库和租户，然后在浏览器中打开租户的“事件”页。 刷新“事件中心”页，将看到已将“Salix Salsa”添加为场地。
 
-## <a name="manage-performance-of-a-single-database"></a>管理单一数据库的性能
+## <a name="manage-performance-of-an-individual-database"></a>管理单个数据库的性能
 
 如果在多租户数据库中的单个租户遇到持续的高负载，则它可能会占用数据库资源并影响同一数据库中的其他租户。 如果该活动可能要持续一段时间，则可暂时将该租户从数据库移动到其自己的单租户数据库。 这样租户就能获得其需要的额外资源，并将其与其他租户完全隔离开来。
 

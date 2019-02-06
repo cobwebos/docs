@@ -1,6 +1,6 @@
 ---
-title:调试模型 titleSuffix: Azure 机器学习工作室 description:如何在 Azure 机器学习工作室中调试“训练模型”和“评分模型”模块生成的错误。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:调试模型 titleSuffix:Azure 机器学习工作室 description:如何在 Azure 机器学习工作室中调试“训练模型”和“评分模型”模块生成的错误。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:2017/03/14
 ---

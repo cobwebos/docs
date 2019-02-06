@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: fauhse
-ms.component: files
-ms.openlocfilehash: aa01ffc196ba6ece41fac9a95db04b58ad962060
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.subservice: files
+ms.openlocfilehash: 6c8a0a0db419546a49670b1f34e58ead7cebeaa1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259812"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459496"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure 文件同步代理和防火墙设置
 Azure 文件同步可以将本地服务器连接到 Azure 文件，启用多站点同步和云分层功能。 因此，本地服务器必须连接到 Internet。 IT 管理员需确定服务器访问 Azure 云服务的最佳路径。
@@ -144,3 +144,4 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 ## <a name="next-steps"></a>后续步骤
 - [规划 Azure 文件同步部署](storage-sync-files-planning.md)
 - [部署 Azure 文件同步](storage-sync-files-deployment-guide.md)
+- [监视 Azure 文件同步](storage-sync-files-monitoring.md)

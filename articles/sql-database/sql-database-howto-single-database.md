@@ -1,6 +1,6 @@
 ---
-title: 如何配置 Azure SQL 数据库 - 单一实例 | Microsoft Docs
-description: 了解如何配置和管理“Azure SQL 数据库 - 单一数据库”。
+title: 如何配置 Azure SQL 数据库 - 独立 | Microsoft Docs
+description: 了解如何配置和管理“Azure SQL 数据库 - 独立数据库”
 services: sql-database
 ms.service: sql-database
 ms.subservice: ''
@@ -11,21 +11,21 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
-ms.date: 12/14/2018
-ms.openlocfilehash: d34853220e423e73c6ca8cf7c76ba616b815b8bd
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 01/25/2019
+ms.openlocfilehash: bf126caa378eafe569b83f211d9d2bbfd37e18f9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53439744"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477788"
 ---
-# <a name="how-to-use-single-database"></a>如何使用单一数据库
+# <a name="how-to-use-a-single-database-in-azure-sql-database"></a>如何在 Azure SQL 数据库中使用单一数据库
 
-在本部分中，你可以找到可帮助你管理和配置“Azure SQL 数据库 - 单一数据库”的各种指南、脚本和说明。
+本部分提供可帮助你在 Azure SQL 数据库中管理和配置单一数据库的各种指南、脚本和说明
 
 ## <a name="migrate"></a>迁移
 
-- [迁移到 SQL 数据库](sql-database-cloud-migrate.md) – 了解迁移到托管实例时建议使用的迁移流程和工具。
+- [迁移到 SQL 数据库](sql-database-cloud-migrate.md) - 了解迁移到托管实例时建议使用的迁移流程和工具。
 - 了解如何[在迁移后管理 SQL 数据库](sql-database-manage-after-migration.md)。
 
 ## <a name="configure-features"></a>配置功能
@@ -74,4 +74,4 @@ ms.locfileid: "53439744"
 - [使用 Dapper 框架](sql-database-elastic-scale-working-with-dapper.md)查询分片的数据。
 
 ## <a name="next-steps"></a>后续步骤
-- 详细了解[托管实例中的操作指南](sql-database-howto-managed-instance.md)
+- 详细了解[托管实例操作指南](sql-database-howto-managed-instance.md)

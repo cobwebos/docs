@@ -11,17 +11,17 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 01/16/2019
-ms.openlocfilehash: 568b239cf41c802cc5d25b638f6d1501f58eccdf
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.date: 01/25/2019
+ms.openlocfilehash: b0188a0983ea18490f3997b857386e313daa58ed
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360082"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467657"
 ---
 # <a name="configure-replication-in-azure-sql-database-managed-instance"></a>在 Azure SQL 数据库托管实例中配置复制
 
-通过事务复制，可以将数据从 SQL Server 或 Azure SQL 数据库托管实例数据库复制到托管实例，或将托管实例的数据库中所做的更改推送到其他 SQL Server、Azure 单一数据库或其他托管实例。 复制在 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)上以公共预览版提供。 托管实例可以托管发布服务器、分发服务器和订阅服务器数据库。 有关可用配置，请参阅[事务复制配置](sql-database-managed-instance-transactional-replication.md#common-configurations)。
+通过事务复制，可以将数据从 SQL Server 或 Azure SQL 数据库托管实例数据库复制到托管实例，或将托管实例的数据库中所做的更改推送到其他 SQL Server、SQL 数据库单一数据库或弹性池，或其他托管实例。 复制在 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)上以公共预览版提供。 托管实例可以托管发布服务器、分发服务器和订阅服务器数据库。 有关可用配置，请参阅[事务复制配置](sql-database-managed-instance-transactional-replication.md#common-configurations)。
 
 ## <a name="requirements"></a>要求
 
@@ -46,7 +46,7 @@ Azure SQL 数据库上的发布服务器和分发服务器需要：
 
 - 事务和快照复制混合，混合了本地和 Azure SQL 数据库托管实例。
 
-- 订阅服务器可以是本地的，可以是 Azure SQL 数据库中的单一数据库，还可以是 Azure SQL 数据库弹性池中的池化数据库。
+- 订阅服务器可以是本地的，可以是 Azure SQL 数据库中的单一数据库，还可以是 Azure SQL 数据库弹性池中的入池数据库。
 
 - 单向或双向复制。
 
@@ -71,7 +71,7 @@ Azure SQL 数据库上的发布服务器和分发服务器需要：
 
    在下面的示例脚本中，将 `<SQL_USER>` 和 `<PASSWORD>` 与此 SQL Server 帐户数据库用户和密码配合使用。
 
-5. [连接到 SQL 数据库托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms)。
+5. [连接到 SQL 数据库托管实例](sql-database-connect-query-ssms.md)。
 
 6. 运行以下查询，以便添加分发服务器和分发数据库。
 
@@ -172,4 +172,4 @@ Azure SQL 数据库上的发布服务器和分发服务器需要：
 ## <a name="see-also"></a>另请参阅
 
 - [事务复制](sql-database-managed-instance-transactional-replication.md)
-- [什么是托管实例？](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)
+- [什么是托管实例？](sql-database-managed-instance.md)

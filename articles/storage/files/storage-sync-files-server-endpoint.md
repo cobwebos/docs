@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: 00ce83a7ec52e24ce858c720e834b8396c2f808c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: files
+ms.openlocfilehash: 68f21ef70b402fe45613fdcbda3074bac1d4eb5a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523959"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464953"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>添加/删除 Azure 文件同步服务器终结点
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
@@ -36,9 +36,9 @@ ms.locfileid: "39523959"
 
 “添加服务器终结点”下需要以下信息：
 
-- **已注册服务器**：要在其中创建服务器终结点的服务器或群集的名称。
-- **路径**：要作为同步组的一部分进行同步的 Windows Server 上的路径。
-- 云分层：启用或禁用云分层的开关。 启用时，云分层会将文件分层到 Azure 文件共享。 这会将本地文件共享转换为缓存而不是数据集的完整副本，以帮助你管理服务器上的空间效率。
+- **已注册的服务器**：要在其中创建服务器终结点的服务器或群集的名称。
+- **路径**：要作为同步组一部分进行同步的 Windows Server 上的路径。
+- **云分层**：启用或禁用云分层的开关。 启用时，云分层会将文件分层到 Azure 文件共享。 这会将本地文件共享转换为缓存而不是数据集的完整副本，以帮助你管理服务器上的空间效率。
 - **卷可用空间**：要在服务器终结点所在的卷上保留的可用空间量。 例如，如果有一个服务器终结点的卷上的卷可用空间设置为 50%，则约有一半数据会分层为 Azure 文件。 不管是否启用云分层，Azure 文件共享在同步组中始终具有完整的数据副本。
 
 选择“创建”以添加服务器终结点。 同步组命名空间中的文件现在会保持同步。 
@@ -70,3 +70,4 @@ Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ## <a name="next-steps"></a>后续步骤
 - [向 Azure 文件同步注册/注销服务器](storage-sync-files-server-registration.md)
 - [规划 Azure 文件同步部署](storage-sync-files-planning.md)
+- [监视 Azure 文件同步](storage-sync-files-monitoring.md)

@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 718a8fb82c3d85baf94e2e9c316f40b964749912
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 3e2083b03b8463907c6d80fb5a9e1f25cca9beb5
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231357"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454937"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>使用 RA-GRS 设计高度可用的应用程序
 
@@ -24,12 +24,12 @@ ms.locfileid: "51231357"
 
 本文重点介绍 GRS 和 RA-GRS。 使用 GRS 选项，设置存储帐户时，数据的三个副本将保留在你所选的主要区域。 其他三个副本将异步保留在 Azure 指定的次要区域中。 RA-GRS 提供对次要副本具有读取访问权限的异地冗余存储。
 
-如需深入了解主要区域配与次要区域的配对情况，请参阅[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
+如需深入了解主要区域与次要区域的配对情况，请参阅[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
 
 本文包含代码片段，末尾有完成示例的链接，可以下载并运行。
 
 > [!NOTE]
-> Azure 存储现在支持使用区域冗余存储 (ZRS) 来构建具有高可用性的应用程序。 ZRS 提供了一个简单 解决方案来满足许多应用程序的冗余需求。 ZRS 针对影响单个数据中心的硬件故障或重大灾难提供了保护。 有关详细信息，请参阅[区域冗余存储 (ZRS)：具有高可用性的 Azure 存储应用程序](storage-redundancy-zrs.md)。
+> Azure 存储现在支持使用区域冗余存储 (ZRS) 来构建具有高可用性的应用程序。 ZRS 提供了一个简单 解决方案来满足许多应用程序的冗余需求。 ZRS 针对影响单个数据中心的硬件故障或重大灾难提供了保护。 有关详细信息，请参阅[区域冗余存储 (ZRS)：高度可用的 Azure 存储应用程序](storage-redundancy-zrs.md)。
 
 ## <a name="key-features-of-ra-grs"></a>RA-GRS 的主要功能
 

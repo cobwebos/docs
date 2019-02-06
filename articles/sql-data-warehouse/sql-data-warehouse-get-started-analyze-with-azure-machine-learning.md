@@ -2,20 +2,20 @@
 title: 使用 Azure 机器学习分析数据 | Microsoft Docs
 description: 使用 Azure 机器学习，基于存储在 Azure SQL 数据仓库中的数据生成预测机器学习模型。
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
+ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 4324b1ac343a0e2b77c21d7834beffae08403953
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 8a33d733f4737bf19e7baad6d80d8fa72999268f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247520"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477652"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>使用 Azure 机器学习分析数据
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ ms.locfileid: "43247520"
 
 1. 登录到 [Azure 机器学习工作室][Azure Machine Learning studio]并单击“我的试验”。
 2. 单击“+新建”并选择“空白试验”。
-3. 输入试验名称：目标营销。
+3. 输入试验的名称：有针对性的营销。
 4. 将“读取器”模块从模块窗格拖放到画布上。
 5. 在“属性”窗格中指定 SQL 数据仓库数据库的详细信息。
 6. 指定数据库 **查询** 以读取所需的数据。
@@ -101,7 +101,7 @@ FROM [dbo].[vTargetMail]
 现在，我们将测试模型如何在测试数据上执行。 我们将比较选择的算法和不同的算法，以查看哪一个的执行效果更好。
 
 1. 将“评分模型”拖放到画布中。
-    第一个输入：训练模型。第二个输入：测试数据![为模型评分][9]
+    第一个输入：训练的模型；第二个输入：测试数据![对模型评分][9]
 2. 将“双类贝叶斯点机”拖放到试验画布中。 我们将比较此算法和双类提升决策树的执行效果。
 3. 复制“训练模型”和“评分模型”模块并将其粘贴在画布中。
 4. 将“评估模型”模块拖放到画布以比较两种算法。

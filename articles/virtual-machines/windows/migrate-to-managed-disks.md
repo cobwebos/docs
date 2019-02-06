@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: cynthn
-ms.component: disks
-ms.openlocfilehash: 5e2a485630b7e3c9cc5977170d7e7e7eeb3e6ff5
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.subservice: disks
+ms.openlocfilehash: 4aefc8c033383125a803eb0c8a38e2f3de119540
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474211"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467903"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>将 Azure VM 迁移到 Azure 中的托管磁盘
 
@@ -37,7 +37,7 @@ Azure 托管磁盘无需单独管理存储帐户，从而简化存储管理。  
 | 迁移...                                            | 文档链接                                                                                                                                                                                                                                                                  |
 |----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 将独立的 VM 和可用性集中的 VM 转换为托管磁盘   | [转换 VM 以使用托管磁盘](convert-unmanaged-to-managed-disks.md) |
-| 单个 VM 从经典迁移到托管磁盘上的 Resource Manager     | [迁移单个 VM](migrate-single-classic-to-resource-manager.md)  | 
+| 单个 VM 从经典迁移到托管磁盘上的 Resource Manager     | [从经典 VHD 创建 VM](create-vm-specialized-portal.md)  | 
 | vNet 中的所有 VM 从经典迁移到托管磁盘上的 Resource Manager     | [将 IaaS 资源从经典迁移到 Resource Manager](migration-classic-resource-manager-ps.md)，然后[将 VM 从非托管磁盘转换为托管磁盘](convert-unmanaged-to-managed-disks.md) | 
 
 

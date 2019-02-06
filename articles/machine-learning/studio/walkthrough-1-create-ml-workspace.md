@@ -1,6 +1,6 @@
 ---
-title:“步骤 1：创建工作区” titleSuffix: Azure 机器学习工作室 description:“开发预测解决方案演练的步骤 1：了解如何设置新的 Azure 机器学习工作室工作区。”
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:“步骤 1：创建工作区” titleSuffix:Azure 机器学习工作室 description:“开发预测解决方案演练的步骤 1：了解如何设置新的 Azure 机器学习工作室工作区。”
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: garyericson ms.author: garye ms.custom: seodec18 ms.date:03/23/2017
 ---

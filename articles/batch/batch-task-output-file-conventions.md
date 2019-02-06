@@ -3,7 +3,7 @@ title: 使用适用于 .NET 的文件约定库将作业和任务输出保存到 
 description: 了解如何使用适用于 .NET 的 Azure Batch 文件约定库将 Batch 任务和作业输出保存到 Azure 存储，并在 Azure 门户中查看保存的输出。
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/14/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2f6ac523d7944f80da1b75993bfd05d617eb8f85
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 970cab2c782e71defbda828a42273f317dee80e4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706596"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472977"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>使用适用于 .NET 的 Batch 文件约定库将作业和任务数据保存到 Azure 存储
 
@@ -115,7 +115,7 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg
 以后在 Batch 中查询给定任务的已保存输出时，可以使用这些输出类型来指定要列出哪种类型的输出。 换而言之，列出某个任务的输出时，可以根据某种输出类型来筛选列表。 例如，“列出任务 *109* 的预览输出。” 本文稍后的[检索输出](#retrieve-output)部分中会详细介绍如何列出和检索输出。
 
 > [!TIP]
-> 输出类型还会确定特定的文件将显示在 Azure 门户中的哪个位置：*TaskOutput* 类别的文件显示在“任务输出文件”下面，*TaskLog* 文件显示在“任务日志”下面。
+> 输出种类还决定了特定文件在 Azure 门户中的显示位置：TaskOutput 类别的文件显示在“任务输出文件”下，TaskLog 文件显示在“任务日志”下。
 
 ### <a name="store-job-outputs"></a>存储作业输出
 

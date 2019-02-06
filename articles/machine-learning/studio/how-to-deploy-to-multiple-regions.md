@@ -1,6 +1,6 @@
 ---
-title:将工作室 Web 服务部署到多个区域 titleSuffix: Azure 机器学习工作室 description:将新的 Web 服务部署（复制）到其他区域的步骤。 无需多个订阅或工作区即可轻松地将 Web 服务部署到多个区域。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:将工作室 Web 服务部署到多个区域 titleSuffix:Azure 机器学习工作室 description:将新的 Web 服务部署（复制）到其他区域的步骤。 无需多个订阅或工作区即可轻松地将 Web 服务部署到多个区域。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:2017/04/19
 ---

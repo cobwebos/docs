@@ -1,6 +1,6 @@
 ---
-title:执行 Python 机器学习脚本 titleSuffix: Azure 机器学习工作室 description:概述了设计原则对 Azure 机器学习工作室中的 Python 脚本的底层支持，以及基本的使用方案、功能和限制。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:执行 Python 机器学习脚本 titleSuffix:Azure 机器学习工作室 description:概述了设计原则对 Azure 机器学习工作室中的 Python 脚本的底层支持，以及基本的使用方案、功能和限制。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:2017/11/29
 ---

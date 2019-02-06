@@ -6,14 +6,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 20e869d30f9e7b8102b723870f0102e041e064d7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d9bd1bec6d1df6fab634c5d929cb778abbd3d13d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042268"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478400"
 ---
-# <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分区
+# <a name="partitioning-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的分区 - 概述
 
 分区是 Cosmos DB 根据应用程序的性能需求，缩放数据库中的单个容器所用的方法。 使用分区可将容器中的项分割成不同的子集（称作“逻辑分区”）。 逻辑分区是基于与每个项关联的分区键属性值创建的。
 

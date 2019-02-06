@@ -1,6 +1,6 @@
 ---
-title:在机器学习工作室中管理迭代实验 titleSuffix: Azure 机器学习工作室 description:如何在 Azure机器学习工作室中管理试验迭代。 可以在任何时候复查前面运行的试验，以便质询、回顾并最终确认或优化以前的假设。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:在机器学习工作室中管理迭代实验 titleSuffix:Azure 机器学习工作室 description:如何在 Azure机器学习工作室中管理试验迭代。 可以在任何时候复查前面运行的试验，以便质询、回顾并最终确认或优化以前的假设。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:2017/03/20
 ---

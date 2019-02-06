@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 01df34025c0389a4ea8bcd5eceaa29f0351df5f7
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 556ec0b55ea2e62975661eb5f668b4d3acda7c30
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329684"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466347"
 documentType: LandingData
 title: Azure SQL 数据库托管实例
 metadata:
@@ -55,7 +55,7 @@ sections:
       html: <p>使用数据库迁移服务迁移一组数据库，使停机时间最短。</p>
     - title: 定价
       href: https://azure.microsoft.com/pricing/hybrid-benefit/
-      html: <p>使用 Azure Hybrid Benefit (AHB) 和现有的本地许可证最多可节省 40% 的费用。</p>
+      html: <p>使用 Azure 混合权益 (AHB) 和现有的本地许可证最多可节省 40% 的费用。</p>
     - title: PaaS 功能
       href: /azure/sql-database/sql-database-paas
       html: <p>Azure PaaS 使实例的可用性高达 99.99% 且管理量最少。</p>
@@ -78,7 +78,7 @@ sections:
     - html: 为时间点还原<a href="https://aka.ms/managed-instance-configurable-backup-retention">配置长达 35 天的备份保留期</a>。 请注意，长期备份保留（最长 10 年）仍未启用，你可以使用<a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">纯副本备份</a>作为替代方法。
     - html: （预览版）使用<a href="https://aka.ms/managed-instance-failover-groups">地理分布式故障转移组</a>将实例的副本保留在另一个区域中并确保你的数据在发生区域性灾难的情况下仍然可用。
     - html: （预览版）在迁移已启用了透明数据加密 (TDE) 的本地数据库时<a href="https://aka.ms/managed-instance-tde-byok">自带加密密钥</a>。
-    - html: 托管实例由<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-management-endpoint-verify-built-in-firewall">内置防火墙</a>提供保护。
+    - html: 托管实例由<a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">内置防火墙</a>提供保护。
 - title: 5 分钟快速入门
   items:
   - type: paragraph

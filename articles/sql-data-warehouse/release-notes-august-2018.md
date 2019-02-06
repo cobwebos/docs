@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 08/13/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 11125fb1c78852a048787e99d78bf4cb941184fa
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 492bdd30a656a37196cf4d27a2510dbc3a79807d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320355"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463559"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 8 月
 Azure SQL 数据仓库持续得到改进。 本文介绍了 2018 年 8 月发行的版本中所引入的新功能和所做的更改。
@@ -30,7 +30,7 @@ Microsoft 引入了[自动化智能见解](https://azure.microsoft.com/blog/auto
 
 ## <a name="bug-fixes"></a>Bug 修复
 
-| 标题 | Description |
+| 标题 | 说明 |
 |:---|:---|
 | **当拆分计数超过最大限制时，潜在查询失败** |当超过文件拆分数上限（即 100 万个）时，出现未经处理的异常，它导致 SQL 引擎转储且所有查询均失败。 该修补程序解决了此问题，它正确地处理了异常并在不导致查询失败的情况下返回一个错误。 |
 | **已将 ExternalMoveReadersPerNode 默认值调高以提高负载性能** |此问题是由 ExternalMoveReadersPerNode 属性设置与服务结构设置不同步引起的。 此回归导致 Gen2 负载性能降级。 该修补程序将 Gen2 负载性能恢复到了优化后的设计参数范围内。|

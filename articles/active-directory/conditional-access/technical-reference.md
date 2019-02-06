@@ -7,20 +7,20 @@ author: MarkusVi
 manager: daveba
 ms.assetid: 56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/13/2018
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 0971b5abee872d9a7010f0ce931f09c47808eb80
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6c340cde488ee37d2454468356f1ceee03f74844
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452133"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55302098"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
@@ -53,6 +53,8 @@ ms.locfileid: "54452133"
 - Azure 信息保护 - [了解详细信息](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 
 - Azure RemoteApp
+
+- Azure SQL 数据库 - [了解详情](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
 
 - Microsoft Dynamics 365
 
@@ -148,8 +150,8 @@ ms.locfileid: "54452133"
 |    |    |
 |--- | ---|
 |路径 | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-|名称 | 1 |
-|类型 | REG_SZ (String) |
+|Name | 1 |
+|Type | REG_SZ (String) |
 |数据 | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx
 
 对于 Windows 8.1 和 7 中的 Chrome 支持，请创建以下注册表项：
@@ -157,8 +159,8 @@ ms.locfileid: "54452133"
 |    |    |
 |--- | ---|
 |路径 | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-|名称 | 1 |
-|类型 | REG_SZ (String) |
+|Name | 1 |
+|Type | REG_SZ (String) |
 |数据 | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}|
 
 这些浏览器支持设备身份验证，允许根据策略对设备进行识别和验证。 如果浏览器以专用模式运行，设备检查将失败。 
@@ -242,7 +244,7 @@ ms.locfileid: "54452133"
 
 - “需要批准的客户端应用”要求：
 
-    - 仅支持 iOS 和 Android 作为[设备平台条件](#device-platforms-condition)。
+    - 仅支持 iOS 和 Android 作为[设备平台条件](#device-platform-condition)。
 
 
 ## <a name="next-steps"></a>后续步骤

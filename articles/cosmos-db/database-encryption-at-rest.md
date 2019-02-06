@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8ad5b167977059f0749da4221effd427427920e9
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 308e5f829425741b4fbef3eff6738f8c95dca97f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040211"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471260"
 ---
-# <a name="azure-cosmos-db-database-encryption-at-rest"></a>Azure Cosmos DB 数据库静态加密
+# <a name="data-encryption-in-azure-cosmos-db"></a>Azure Cosmos DB 中的数据加密 
 
 “静态加密”这个短语通常指永久性存储设备（例如固态硬盘 (SSD) 和硬盘驱动器 (HDD)）上的数据的加密。 Cosmos DB 将其主要数据库存储在 SSD 上。 其媒体附件和备份存储在 Azure Blob 存储中，通常由 HDD 进行备份。 随着 Cosmos DB 静态加密功能的发布，所有数据库、媒体附件以及备份都是加密的。 现在无论是在传输过程中（通过网络）还是处于静态（永久性存储），数据都处于加密状态，采用端到端的加密。
 

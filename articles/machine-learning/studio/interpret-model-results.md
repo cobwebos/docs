@@ -1,6 +1,6 @@
 ---
-title:在机器学习工作室中解释模型结果 titleSuffix: Azure 机器学习工作室 description:如何为使用并可视化评分模型输出的算法选择最佳的参数集。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:在机器学习工作室中解释模型结果 titleSuffix:Azure 机器学习工作室 description:如何为使用并可视化评分模型输出的算法选择最佳的参数集。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:2017/11/29
 ---

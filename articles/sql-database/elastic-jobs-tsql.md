@@ -11,13 +11,13 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: e00722259abaa02d3dce6ca26c8cd0ea7c42db29
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.date: 01/25/2019
+ms.openlocfilehash: bb7908c5ed72bf58f1bd8920983d76cb674286a3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449395"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458085"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业
 
@@ -75,9 +75,9 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 ```
 
 
-## <a name="exclude-a-single-database"></a>排除单一数据库
+## <a name="exclude-an-individual-database"></a>排除单个数据库
 
-以下示例演示如何针对服务器中的所有数据库执行作业，名为 *MappingDB* 的数据库除外。  
+以下示例演示如何针对 SQL 数据库服务器中的所有数据库执行作业，名为 MappingDB 的数据库除外。  
 连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 ```sql
@@ -103,7 +103,7 @@ EXEC [jobs].sp_add_target_group_member
 @server_name='server2.database.windows.net'
 GO
 
---Excude a database target member from the server target group
+--Exclude a database target member from the server target group
 EXEC [jobs].sp_add_target_group_member
 @target_group_name = N'ServerGroup',
 @membership_type = N'Exclude',
@@ -1032,10 +1032,10 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 目标数据库或数据库集合的类型，其中包括一个服务器中的所有数据库、一个弹性池中的所有数据库、一个分片映射中的所有数据库，或者一个单独的数据库。 target_type 为 nvarchar(128)，没有默认值。 target_type 的有效值为 ‘SqlServer’、‘SqlElasticPool’、‘SqlDatabase’ 或 ‘SqlShardMap’。 
 
 [ **@refresh_credential_name =** ] 'refresh_credential_name'  
-逻辑服务器的名称。 refresh_credential_name 为 nvarchar(128)，没有默认值。
+SQL 数据库服务器的名称。 refresh_credential_name 为 nvarchar(128)，没有默认值。
 
 [ **@server_name =** ] 'server_name'  
-应添加到指定目标组的逻辑服务器的名称。 当 target_type 为 ‘SqlServer’ 时，应指定 server_name。 server_name 为 nvarchar(128)，没有默认值。
+应添加到指定目标组的 SQL 数据库服务器的名称。 当 target_type 为 ‘SqlServer’ 时，应指定 server_name。 server_name 为 nvarchar(128)，没有默认值。
 
 [ **@database_name =** ] 'database_name'  
 应添加到指定目标组的数据库的名称。 当 target_type 为 ‘SqlDatabase’ 时，应指定 database_name。 database_name 为 nvarchar(128)，没有默认值。
@@ -1051,7 +1051,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 返回代码值 0（成功）或 1（失败）
 
 #### <a name="remarks"></a>备注
-如果将逻辑服务器或弹性池包括在目标组中，则一旦执行作业，作业就会在服务器或弹性池中的所有数据库上执行。
+如果将 SQL 数据库服务器或弹性池包括在目标组中，则一旦执行作业，作业就会在 SQL 数据库服务器或弹性池中的所有单一数据库上执行。
 
 #### <a name="permissions"></a>权限
 默认情况下，sysadmin 固定服务器角色的成员可以执行此存储过程。 它们将用户限制为只能监视作业，你可授予用户相应权限，使之成为作业代理数据库（在创建作业代理时指定）中以下数据库角色的成员：
@@ -1229,7 +1229,7 @@ GO
 |**target_type**|   nvarchar(128)   |目标数据库或数据库集合的类型，其中包括一个服务器中的所有数据库、一个弹性池中的所有数据库，或者单个数据库。 target_type 的有效值为 ‘SqlServer’、‘SqlElasticPool’ 或 ‘SqlDatabase’。 NULL 指示这是父作业执行操作。
 |**target_id**  |uniqueidentifier|  目标组成员的唯一 ID。  NULL 指示这是父作业执行操作。
 |**target_group_name**  |nvarchar(128)  |目标组的名称。 NULL 指示这是父作业执行操作。
-|**target_server_name**|    nvarchar(256)|  包含在目标组中的逻辑服务器的名称。 仅当 target_type 为 ‘SqlServer’ 时指定。 NULL 指示这是父作业执行操作。
+|**target_server_name**|    nvarchar(256)|  包含在目标组中的 SQL 数据库服务器的名称。 仅当 target_type 为 ‘SqlServer’ 时指定。 NULL 指示这是父作业执行操作。
 |**target_database_name**   |nvarchar(128)| 包含在目标组中的数据库的名称。 仅当 target_type 为 ‘SqlDatabase’ 时指定。 NULL 指示这是父作业执行操作。
 
 
@@ -1253,7 +1253,7 @@ GO
 
 ### <a name="jobversions-view"></a>job_versions 视图
 
-[jobs].[job_verions]
+[jobs].[job_versions]
 
 显示所有作业版本。
 
@@ -1332,7 +1332,7 @@ GO
 |**refresh_credential_name**    |nvarchar(128)  |用于连接到目标组成员的数据库范围的凭据的名称。|
 |subscription_id    |uniqueidentifier|  订阅的唯一 ID。|
 |**resource_group_name**    |nvarchar(128)| 目标组成员所在资源组的名称。|
-|**server_name**    |nvarchar(128)  |包含在目标组中的逻辑服务器的名称。 仅当 target_type 为 ‘SqlServer’ 时指定。 |
+|**server_name**    |nvarchar(128)  |包含在目标组中的 SQL 数据库服务器的名称。 仅当 target_type 为 ‘SqlServer’ 时指定。 |
 |**database_name**  |nvarchar(128)  |包含在目标组中的数据库的名称。 仅当 target_type 为 ‘SqlDatabase’ 时指定。|
 |**elastic_pool_name**  |nvarchar(128)| 包含在目标组中的弹性池的名称。 仅当 target_type 为 ‘SqlElasticPool’ 时指定。|
 |**shard_map_name** |nvarchar(128)| 包含在目标组中的分片映射的名称。 仅当 target_type 为 ‘SqlShardMap’ 时指定。|

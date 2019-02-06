@@ -1,6 +1,6 @@
 ---
-title:评估模型性能 titleSuffix: Azure 机器学习工作室 description:本文演示了如何在 Azure 机器学习工作室中评估模型的性能，并提供可用于此任务的指标的简短说明。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:评估模型性能 titleSuffix:Azure 机器学习工作室 description:本文演示了如何在 Azure 机器学习工作室中评估模型的性能，并提供可用于此任务的指标的简短说明。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:2017/03/20
 ---

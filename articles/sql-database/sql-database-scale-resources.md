@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 1c83ebd0153e7a28365317b02d3debbe43d976f9
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 49743130966589cceedb7756540c723a6f3276ff
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601570"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471661"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>以最短的停机时间动态缩放数据库资源
 
@@ -54,9 +54,9 @@ Azure SQL 数据库提供[基于 DTU 的购买模型](sql-database-service-tiers
 
 所有三种 Azure SQL 数据库都提供一些动态缩放数据库的功能：
 
-- 在 [Azure SQL 单一数据库](sql-database-single-database-scale.md)中，可以使用 [DTU](sql-database-dtu-resource-limits-single-databases.md) 或 [vCore](sql-database-vcore-resource-limits-single-databases.md) 模型来定义将分配给每个数据库的最大资源量。
-- [Azure SQL 托管实例](sql-database-managed-instance.md)使用 [vCores](sql-database-managed-instance.md#vcore-based-purchasing-model) 模式，并允许定义分配给实例的最大 CPU 核心数和最大存储空间。 该实例中的所有数据库都将共享分配给该实例的资源。
-- [Azure SQL 弹性池](sql-database-elastic-pool-scale.md)允许定义池中每组数据库的最大资源限制。
+- 在[单一数据库](sql-database-single-database-scale.md)中，可以使用 [DTU](sql-database-dtu-resource-limits-single-databases.md) 或 [vCore](sql-database-vcore-resource-limits-single-databases.md) 模型来定义将分配给每个数据库的最大资源量。
+- [托管实例](sql-database-managed-instance.md)使用 [vCore](sql-database-managed-instance.md#vcore-based-purchasing-model) 模式，并允许定义分配给实例的最大 CPU 核心数和最大存储空间。 该实例中的所有数据库都将共享分配给该实例的资源。
+- [弹性池](sql-database-elastic-pool-scale.md)允许定义池中每组数据库的最大资源限制。
 
 ## <a name="alternative-scale-methods"></a>替代缩放方法
 

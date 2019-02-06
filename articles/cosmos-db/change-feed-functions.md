@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 41cbb657a4fc83b498c5cc9a6a16397a619aa075
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 93cd93b40c142d504c52f08f9005d082fb5a2a20
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034040"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469475"
 ---
-# <a name="how-to-use-azure-cosmos-db-change-feed-with-azure-functions"></a>如何将 Azure Cosmos DB 更改源与 Azure Functions 配合使用
+# <a name="trigger-azure-functions-from-azure-cosmos-db"></a>从 Azure Cosmos DB 触发 Azure Functions
 
 如果使用 Azure Functions，连接到更改源的最简单方法是将一个 [Azure Cosmos DB 触发器](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger)添加到 Azure Functions 应用。 在 Azure Functions 应用中创建 Cosmos DB 触发器时，请选择要连接到的 Cosmos DB 容器，以及每当更改该容器中的某项设置时要触发的函数。
 

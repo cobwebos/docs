@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
-ms.component: common
-ms.openlocfilehash: 25de4f28d7516f5c7830b24e4c999ceb855a7759
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: b9524f7aff7ae9de37835985787b5d4d9c3cf9b6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242970"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478230"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>在 Microsoft Azure 存储中管理并发
 ## <a name="overview"></a>概述
@@ -45,7 +45,7 @@ Azure 存储服务支持所有三个策略，尽管它具有独特的功能，�
 4. 如果 Blob 的当前 ETag 值与请求的 **If-Match** 条件标头中的 ETag 的版本不同，则该服务将 412 错误返回到客户端。 这向客户端表明，其他进程自客户端检索到 Blob 起已更新该 Blob。
 5. 如果 Blob 的当前 ETag 值与请求的 **If-Match** 条件标头中的 ETag 的版本相同，则该服务将执行请求的操作，并更新该 Blob 的当前 ETag 值，以说明它已创建新版本。  
 
-以下 C# 代码段（使用客户端存储库 4.2.0）显示一个简单示例，说明如何根据从以前检索到或插入的 Blob 属性访问的 ETag 值构造 **If-Match AccessCondition**。 然后，在更新该 Blob 时使用 **AccessCondition** 对象：**AccessCondition** 对象将 **If-Match** 标头添加到请求中。 如果其他进程已更新该 Blob，则 Blob 服务将返回 HTTP 412 (不满足前提条件) 状态消息。 可以在这里下载完整的示例：[使用 Azure 存储管理并发](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)。  
+以下 C# 代码段（使用客户端存储库 4.2.0）显示一个简单示例，说明如何根据从以前检索到或插入的 Blob 属性访问的 ETag 值构造 **If-Match AccessCondition**。 然后，在更新该 Blob 时使用 **AccessCondition** 对象：**AccessCondition** 对象将 **If-Match** 标头添加到请求中。 如果其他进程已更新该 Blob，则 Blob 服务将返回 HTTP 412 (不满足前提条件) 状态消息。 可以在此处下载完整示例：[使用 Azure 存储管理并发](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)。  
 
 ```csharp
 // Retrieve the ETag from the newly created blob
@@ -126,7 +126,7 @@ catch (StorageException ex)
 
 租约允许支持各种同步策略，包括独占写入/共享读取、独占写入/独占读取和共享写入/独占读取。 如果租约存在，则存储服务会强制执行独占写入（放置、设置和删除操作），但是，若要确保读取操作的独占性，开发人员需要确保所有客户端应用程序都使用一个租约 ID，并且一次只有一个客户端具有有效的租约 ID。 不包括租约 ID 的读取操作会导致共享读取。  
 
-以下 C# 代码段显示一个示例，说明如何在 30 秒内对 Blob 获取独占租约，更新 Blob 的内容，并释放该租约。 尝试获取新租约时，如果 Blob 中已经存在有效租约，则 Blob 服务将返回“HTTP (409) 冲突”状态结果。 在发出请求以在存储服务中更新 Blob 时，以下代码段使用 **AccessCondition** 对象封装租约信息。  可以在这里下载完整的示例：[使用 Azure 存储管理并发](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)。
+以下 C# 代码段显示一个示例，说明如何在 30 秒内对 Blob 获取独占租约，更新 Blob 的内容，并释放该租约。 尝试获取新租约时，如果 Blob 中已经存在有效租约，则 Blob 服务将返回“HTTP (409) 冲突”状态结果。 在发出请求以在存储服务中更新 Blob 时，以下代码段使用 **AccessCondition** 对象封装租约信息。  可以在此处下载完整示例：[使用 Azure 存储管理并发](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)。
 
 ```csharp
 // Acquire lease for 15 seconds
@@ -208,7 +208,7 @@ catch (StorageException ex)
 
 请注意，与 Blob 服务不同，表服务要求客户端将 **If-Match** 标头包括在更新请求中。 但是，如果客户端在请求中将 **If-Match** 标头设置为通配符 (*)，则可以强制执行非条件更新（“以最后写入者为准”策略）并绕过并发检查。  
 
-以下 C# 代码段显示以前创建或检索到的客户实体是如何更新其电子邮件地址的。 初始插入或检索操作将 ETag 值存储在客户对象中，因为示例在执行替换操作时使用相同的对象实例，所以将 ETag 值自动发送回表服务，从而使该服务可以检查是否存在并发违规情况。 如果其他进程已更新表存储中的实体，则该服务将返回 HTTP 412 (不满足前提条件) 状态消息。  可以在这里下载完整的示例：[使用 Azure 存储管理并发](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)。
+以下 C# 代码段显示以前创建或检索到的客户实体是如何更新其电子邮件地址的。 初始插入或检索操作将 ETag 值存储在客户对象中，因为示例在执行替换操作时使用相同的对象实例，所以将 ETag 值自动发送回表服务，从而使该服务可以检查是否存在并发违规情况。 如果其他进程已更新表存储中的实体，则该服务将返回 HTTP 412 (不满足前提条件) 状态消息。  可以在此处下载完整示例：[使用 Azure 存储管理并发](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)。
 
 ```csharp
 try

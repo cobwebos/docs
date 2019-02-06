@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 52f08511d16e216ced7e3d1de11eae960cdbaeb8
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: f56b1b06e8be46c1a111e920cfb98bc58d4f6636
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041860"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466857"
 ---
-# <a name="availability-and-performance-tradeoffs-for-various-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中各种一致性级别的可用性和性能权衡
+# <a name="consistency-availability-and-performance-tradeoffs"></a>一致性、可用性和性能权衡 
 
 依赖复制以实现高可用性和/或低延迟的分布式数据库必须做出权衡。 在读取一致性与可用性、延迟和吞吐量之间做出权衡。 
 

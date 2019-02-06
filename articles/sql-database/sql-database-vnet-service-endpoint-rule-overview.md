@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 0a0a5a046bd1afefe3f4c72e713a0dafe0c856e4
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: ccc97adadef43390d2b82e206adb60962d6e1fb2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390399"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453921"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>使用适用于 Azure SQL 数据库的虚拟网络服务终结点和规则
 
@@ -162,7 +162,7 @@ Azure SQL 数据库查询编辑器部署在 Azure 中的 VM 上。 这些 VM 不
 
 ### <a name="impact-on-data-sync"></a>对数据同步的影响
 
-Azure SQL 数据库具有数据同步功能，可使用 Azure IP 连接到数据库。 使用服务终结点时，很可能你将关闭逻辑服务器的“允许 Azure 服务访问服务器”访问权限。 这将中断数据同步功能。
+Azure SQL 数据库具有数据同步功能，可使用 Azure IP 连接到数据库。 使用服务终结点时，很可能会禁用对 SQL 数据库服务器的“允许 Azure 服务访问服务器”访问权限。 这将中断数据同步功能。
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>将 VNet 服务终结点与 Azure 存储配合使用的影响
 
@@ -173,17 +173,18 @@ Azure 存储已实现相同的功能，允许限制到 Azure 存储帐户的连�
 PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure SQL 数据仓库中。 如果正从 Azure 存储帐户加载数据，而该帐户只允许一组 VNet-子网的访问，则会断开从 PolyBase 到该帐户的连接。 对于连接到 Azure 存储（已通过安全方式连接到 VNet）的 Azure SQL 数据仓库，若要启用 PolyBase 导入和导出方案，请执行如下所示的步骤：
 
 #### <a name="prerequisites"></a>先决条件
+
 1.  按照此[指南](https://docs.microsoft.com/powershell/azure/install-az-ps)安装 Azure PowerShell。
 2.  如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)将该帐户升级到常规用途 v2 帐户。
 3.  必须在 Azure 存储帐户的“防火墙和虚拟网络”设置菜单下启用“允许受信任的 Microsoft 服务访问此存储帐户”。 有关详细信息，请参阅此[指南](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。
  
 #### <a name="steps"></a>Steps
-1.  在 PowerShell 中，**将逻辑 SQL Server 注册**到 Azure Active Directory (AAD)：
+1.  在 PowerShell 中，向 Azure Active Directory (AAD) 注册 SQL 数据库服务器：
 
     ```powershell
     Add-AzureRmAccount
     Select-AzureRmSubscription -SubscriptionId your-subscriptionId
-    Set-AzureRmSqlServer -ResourceGroupName your-logical-server-resourceGroup -ServerName your-logical-servername -AssignIdentity
+    Set-AzureRmSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
     ```
     
  1. 按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)创建**常规用途 v2 存储帐户**。
@@ -192,7 +193,7 @@ PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure SQL 数据�
     > - 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)将该帐户**升级到 v2** 帐户。
     > - 若要了解 Azure Data Lake Storage Gen2 的已知问题，请参阅此[指南](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)。
     
-1.  在存储帐户下导航到“访问控制(标识和访问管理)”，然后单击“添加角色分配”。 为逻辑 SQL Server 分配“存储 Blob 数据参与者(预览版)”RBAC 角色。
+1.  在存储帐户下导航到“访问控制(标识和访问管理)”，然后单击“添加角色分配”。 向 SQL 数据库服务器分配“存储 Blob 数据参与者(预览版)”RBAC 角色。
 
     > [!NOTE] 
     > 只有具有“所有者”特权的成员能够执行此步骤。 若要了解 Azure 资源的各种内置角色，请参阅此[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。

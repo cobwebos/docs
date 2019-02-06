@@ -8,13 +8,13 @@ ms.tgt_pltfrm: windows
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
-ms.component: disks
-ms.openlocfilehash: b1127475b873c5679946121e570ef2bb51f25be1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: disks
+ms.openlocfilehash: 968c8aa74a35bf753d92e7c417aaec2a1361f425
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234708"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467962"
 ---
 # <a name="about-disks-storage-for-azure-windows-vms"></a>关于 Azure Windows VM 的磁盘存储
 
@@ -55,7 +55,7 @@ ms.locfileid: "51234708"
 
 有关预览大小，请参阅我们的[常见问题解答](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged)，了解它们可用的区域。
 
-## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>最后一个建议：将 TRIM 与非托管标准磁盘配合使用
+## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>最后一个建议：结合使用 TRIM 与非托管标准磁盘
 
 如果使用非托管标准磁盘 (HDD)，则应启用 TRIM。 TRIM 会放弃磁盘上未使用的块，以便仅对实际使用的存储进行收费。 如果创建了较大的文件，然后将其删除，这样可以节省成本。
 
@@ -72,7 +72,7 @@ fsutil behavior set DisableDeleteNotify 0
 ```
 
 > [!NOTE]
-> 注意：从 Windows Server 2012/Windows 8 及更高版本开始支持 TRIM，请参阅 [New API allows apps to send "TRIM and Unmap" hints to storage media](https://msdn.microsoft.com/windows/compatibility/new-api-allows-apps-to-send-trim-and-unmap-hints)（新 API 允许应用向存储媒体发送“TRIM 和 Unmap”提示）。
+> 注意：TRIM 支持自 Windows Server 2012/Windows 8 及更高版本起开始提供。请参阅[新 API 允许应用向存储媒体发送“TRIM 和 Unmap”提示](https://msdn.microsoft.com/windows/compatibility/new-api-allows-apps-to-send-trim-and-unmap-hints)。
 > 
 
 <!-- Might want to match next-steps from overview of managed disks -->

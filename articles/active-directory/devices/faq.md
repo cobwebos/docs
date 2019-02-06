@@ -7,20 +7,20 @@ author: MarkusVi
 manager: daveba
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
-ms.component: devices
+ms.subservice: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2010
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 916de2de6cdc19bfa1e3967661d40693d4be1e99
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 513b1d7468700076ae4d3fd46284ef88d5f28c51
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852382"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296151"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
@@ -128,6 +128,12 @@ ms.locfileid: "54852382"
 
 ---
 
+**问：为什么我的用户在更改其 UPN 后，在已联接 Azure AD 的设备上遇到了问题？**
+
+**答：** 当前，已联接 Azure AD 的设备不完全支持 UPN 更改。 因此，在更改其 UPN 后，他们的 Azure AD 身份验证会失败。 这样一来，用户的设备上会存在 SSO 和条件访问问题。 此时，用户需要使用其新 UPN 通过“其他用户”磁贴来登录 Windows，以解决此问题。 我们目前正致力于解决此问题。 但是，使用 Windows Hello 企业版登录的用户不会遇到这个问题。 
+
+---
+
 **问：我的用户无法从加入 Azure AD 的设备中搜索打印机。如何从这些设备启用打印？**
 
 **答：** 若要为加入 Azure AD 的设备部署打印机，请参阅[Deploy Windows Server Hybrid Cloud Print with Pre-Authentication](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)（使用预身份验证部署 Windows Server 混合云打印）。 需要安装本地 Windows Server 才能部署混合云打印。 当前，无法使用基于云的打印服务。 
@@ -170,7 +176,7 @@ ms.locfileid: "54852382"
 
 **问：尝试在电脑上加入 Azure AD 时，为何会出现“哎呀...发生了错误!”对话框？**
 
-**答：** 使用 Intune 设置 Azure Active Directory 注册时会发生此错误。 确保尝试进行 Azure AD 加入的用户已获得正确的 Intune 许可证。 有关详细信息，请参阅[设置 Windows 设备的注册](https://docs.microsoft.com/intune/deploy-use/set-up-windows-device-management-with-microsoft-intune#azure-active-directory-enrollment)。  
+**答：** 使用 Intune 设置 Azure Active Directory 注册时会发生此错误。 确保尝试进行 Azure AD 加入的用户已获得正确的 Intune 许可证。 有关详细信息，请参阅[设置 Windows 设备的注册](https://docs.microsoft.com/intune/windows-enroll#azure-active-directory-enrollment)。  
 
 ---
 
@@ -179,6 +185,19 @@ ms.locfileid: "54852382"
 **答：** 可能是由于使用本地内置管理员帐户登录到设备。 请在使用 Azure Active Directory 加入之前创建不同的本地帐户以完成设置。 
 
 ---
+
+问：Windows 10 设备上的 MS-Organization-P2P-Access 证书是什么？
+
+**答：** MS-Organization-P2P-Access 证书由 Azure AD 颁发给加入 Azure AD 的设备和加入混合 Azure AD 的设备。 这些证书用于在同一租户中的设备之间为远程桌面场景启用信任。 一个证书颁发给设备，另一个颁发给用户。 设备证书在 `Local Computer\Personal\Certificates` 中提供，且有效期为一天。 如果设备在 Azure AD 中仍然处于活动状态，则续订此证书（通过颁发新证书）。 用户证书在 `Current User\Personal\Certificates` 中提供，且此证书有效期为一天，但是用户尝试与另一个加入 Azure AD 的设备进行远程桌面会话时，会按需颁发。 到期不续期。 这两个证书都是使用 `Local Computer\AAD Token Issuer\Certificates` 中的 MS-Organization-P2P-Access 证书颁发的。 此证书由 Azure AD 在设备注册期间颁发。 
+
+---
+
+问：为什么在 Windows 10 设备上看到多个由 MS-Organization-P2P-Access 颁发的过期证书？如何删除它们？
+
+**答：** 在 Windows 10 版本 1709 及更低版本上，由于密码问题，过期的 MS-Organization-P2P-Access 证书会继续存在于计算机存储中。 如果使用的是无法处理大量过期证书的 VPN 客户端（如 Cisco AnyConnect），则用户可能会面临网络连接问题。 此问题在 Windows 10 1803 版本中已修复，自动删除任何此类过期的 MS-Organization-P2P-Access 证书。 可以通过将设备更新到 Windows 10 1803 来解决此问题。 如果无法更新，可以删除这些证书，而不产生任何不利影响。  
+
+---
+
 
 ## <a name="hybrid-azure-ad-join-faq"></a>混合 Azure AD 加入常见问题解答
 
@@ -196,7 +215,15 @@ ms.locfileid: "54852382"
 
 混合 Azure AD 加入优先于 Azure AD 已注册状态。 因此，对于任何身份验证和条件访问评估，视作设备已加入混合 Azure AD。 可以安全地从 Azure AD 门户中删除已注册 Azure AD 设备记录。 了解[避免或清理 Windows 10 计算机上的此双状态](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know)。 
 
+
 ---
+
+**问：为什么我的用户在更改其 UPN 后，在 Windows 10 已联接混合 Azure AD 的设备上遇到了问题？**
+
+**答：** 当前，已联接混合 Azure AD 的设备不完全支持 UPN 更改。 虽然用户可以登录到设备并访问其本地应用程序，但在 UPN 更改后，他们的 Azure AD 身份验证仍会失败。 这样一来，用户的设备上会存在 SSO 和条件访问问题。 此时，需要从 Azure AD 中分离设备（使用提升的权限运行“dsregcmd /leave”），然后重新联接（自动执行）来解决问题。 我们目前正致力于解决此问题。 但是，使用 Windows Hello 企业版登录的用户不会遇到这个问题。 
+
+---
+
 
 ## <a name="azure-ad-register-faq"></a>Azure AD 注册常见问题解答
 
@@ -217,15 +244,3 @@ ms.locfileid: "54852382"
 
 - 在首次尝试访问期间，用户使用公司门户时会看到注册设备的提示。
 
----
-
-
-问：Windows 10 设备上的 MS-Organization-P2P-Access 证书是什么？
-
-**答：** MS-Organization-P2P-Access 证书由 Azure AD 颁发给加入 Azure AD 的设备和加入混合 Azure AD 的设备。 这些证书用于在同一租户中的设备之间为远程桌面场景启用信任。 一个证书颁发给设备，另一个颁发给用户。 设备证书在 `Local Computer\Personal\Certificates` 中提供，且有效期为一天。 如果设备在 Azure AD 中仍然处于活动状态，则续订此证书（通过颁发新证书）。 用户证书在 `Current User\Personal\Certificates` 中提供，且此证书有效期为一天，但是用户尝试与另一个加入 Azure AD 的设备进行远程桌面会话时，会按需颁发。 到期不续期。 这两个证书都是使用 `Local Computer\AAD Token Issuer\Certificates` 中的 MS-Organization-P2P-Access 证书颁发的。 此证书由 Azure AD 在设备注册期间颁发。 
-
----
-
-问：为什么在 Windows 10 设备上看到多个由 MS-Organization-P2P-Access 颁发的过期证书？如何删除它们？
-
-**答：** 在 Windows 10 版本 1709 及更低版本上，由于密码问题，过期的 MS-Organization-P2P-Access 证书会继续存在于计算机存储中。 如果使用的是无法处理大量过期证书的 VPN 客户端（如 Cisco AnyConnect），则用户可能会面临网络连接问题。 此问题在 Windows 10 1803 版本中已修复，自动删除任何此类过期的 MS-Organization-P2P-Access 证书。 可以通过将设备更新到 Windows 10 1803 来解决此问题。 如果无法更新，可以删除这些证书，而不产生任何不利影响。  

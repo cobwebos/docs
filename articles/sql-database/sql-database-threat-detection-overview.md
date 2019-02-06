@@ -11,24 +11,22 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 587c0718e333f121d0ff8b32d8c2a7dad6b8f774
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/29/2019
+ms.openlocfilehash: 4c9700344ca5b973b8dad9fd1505d15f58c06126
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037134"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451710"
 ---
 # <a name="azure-sql-database-threat-detection"></a>Azure SQL 数据库威胁检测
 
 针对 [Azure SQL 数据库](sql-database-technical-overview.md)和 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的 Azure SQL 威胁检测可检测异常活动，这些活动指示对数据库的异常和可能有害的访问或利用企图。
 
-威胁检测包含在 [SQL 高级威胁防护](sql-advanced-threat-protection.md) (ATP) 产品中，该产品是高级 SQL 安全功能统一软件包。 可通过中心 SQL ATP 门户访问和管理威胁检测。
+威胁检测是 [SQL 高级数据安全](sql-advanced-threat-protection.md) (ADS) 产品/服务（它是高级 SQL 安全功能的一个统一包）的一部分。 可通过中心 SQL ADS 门户访问和管理威胁检测。
 
 > [!NOTE]
 > 本主题适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。
-
-威胁检测服务按每个逻辑服务器或托管实例的所有数据集 15 美元/月来计费，前 30 天免费。
 
 ## <a name="what-is-threat-detection"></a>什么是威胁检测？
 
@@ -69,7 +67,7 @@ Azure SQL 数据库威胁检测可检测异常活动（指示异常和可能有�
 
 ## <a name="explore-threat-detection-alerts-for-your-database-in-the-azure-portal"></a>在 Azure 门户中为数据库检测威胁检测警报
 
-SQL 数据库威胁检测功能将其警报与 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成。 Azure 门户中“数据库和 SQL ATP”边栏选项卡内的“实时 SQL 威胁检测”磁贴会跟踪活动威胁的状态。
+SQL 数据库威胁检测功能将其警报与 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成。 Azure 门户中“数据库和 SQL ADS”边栏选项卡内的“实时 SQL 威胁检测”磁贴会跟踪活动威胁的状态。
 
 单击“威胁检测警报”以启动“Azure 安全中心警报”页，并获取在数据库或数据仓库中检测到的活动 SQL 威胁的概述。
 
@@ -79,9 +77,9 @@ SQL 数据库威胁检测功能将其警报与 [Azure 安全中心](https://azur
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[单一数据库中的威胁检测](sql-database-threat-detection.md)。
+- 详细了解[独立和入池数据库中的威胁检测](sql-database-threat-detection.md)。
 - 详细了解[托管实例中的威胁检测](sql-database-managed-instance-threat-detection.md)。
-- 详细了解 [SQL 高级威胁防护](sql-advanced-threat-protection.md)。
+- 详细了解 [SQL 高级数据安全](sql-advanced-threat-protection.md)。
 - 了解有关 [Azure SQL 数据库审核](sql-database-auditing.md)的详细信息
 - 了解有关 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)的详细信息
 - 有关定价的更多详细信息，请参阅 [SQL 数据库定价页](https://azure.microsoft.com/pricing/details/sql-database/)  

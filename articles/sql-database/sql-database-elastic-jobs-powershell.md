@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: de395dc4f862e57030fba1d77de78eabe44a3da8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 01/25/2019
+ms.openlocfilehash: 6ec0742c205204ee74ac9f9474af0394f9d1ab31
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278451"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472637"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>使用 PowerShell 创建和管理 SQL 数据库弹性作业（预览）
 
@@ -189,7 +189,7 @@ ms.locfileid: "53278451"
 </table>
 
 ## <a name="supported-elastic-database-jobs-group-types"></a>支持的弹性数据库作业组类型
-该作业可以跨数据库组执行 Transact-SQL (T-SQL) 脚本或应用 DACPAC。 提交需要跨数据库组执行的作业时，该作业将“扩展”到子作业中，其中的每个作业会针对组中的单一数据库执行请求的执行操作。 
+该作业可以跨数据库组执行 Transact-SQL (T-SQL) 脚本或应用 DACPAC。 提交需要跨数据库组执行的作业时，该作业将“扩展”到子作业中，其中的每个作业会针对组中的单个数据库执行请求的执行操作。 
 
 有两种可以创建的组类型： 
 
@@ -414,7 +414,7 @@ ms.locfileid: "53278451"
 
 执行策略当前允许定义：
 
-* 名称：执行策略的标识符。
+* 姓名：执行策略的标识符。
 * 作业超时：弹性数据库作业取消作业之前的总时间。
 * 初始重试间隔：第一次重试之前等待的间隔。
 * 最大重试间隔：要使用的重试间隔的上限。
@@ -423,7 +423,7 @@ ms.locfileid: "53278451"
 
 默认的执行策略使用以下值：
 
-* 名称：默认执行策略
+* 姓名：默认执行策略
 * 作业超时：1 周
 * 初始重试间隔：100 毫秒
 * 最大重试间隔：30 分钟

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 661fd36b4451238f488bff1db60a901a8dabd5aa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/25/2019
+ms.openlocfilehash: 470a00e62aba4baf5dd13a9c80a0c72df04a81c8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242144"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478332"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>关于 Azure SQL 超大规模数据库的 FAQ
 
@@ -46,17 +46,17 @@ ms.locfileid: "51242144"
 
 | | 资源类型 | 常规用途 |  超大规模 | 业务关键 |
 |:---|:---:|:---:|:---:|:---:|:---:|
-| **最适用于** |全部|  大多数业务工作负荷。 提供以预算导向的、均衡的计算和存储选项。 | 数据容量要求高且能够流畅地自动缩放存储和流畅缩放计算的数据应用程序。 | 事务率较高、延迟 IO 最低的 OLTP 应用程序。 使用多个独立副本，提供最高级别的故障恢复能力。|
+| **最适用于** |All|  大多数业务工作负荷。 提供以预算导向的、均衡的计算和存储选项。 | 数据容量要求高且能够流畅地自动缩放存储和流畅缩放计算的数据应用程序。 | 事务率较高、延迟 IO 最低的 OLTP 应用程序。 使用多个独立副本，提供最高级别的故障恢复能力。|
 |  **资源类型** ||单一数据库/弹性池/托管实例 | 单一数据库 | 单一数据库/弹性池/托管实例 |
 | **计算大小**|单一数据库/弹性池* | 1 - 80 个 vCore | 1 - 80 个 vCore* | 1 - 80 个 vCore |
 | |托管实例 | 8、16、24、32、40、64、80 个 vCore | 不适用 | 8、16、24、32、40、64、80 个 vCore |
-| **存储类型** | 全部 |高级远程存储（每个实例） | 具有本地 SSD 缓存的分离的存储（每个实例） | 超快的本地 SSD 存储（每个实例） |
+| **存储类型** | All |高级远程存储（每个实例） | 具有本地 SSD 缓存的分离的存储（每个实例） | 超快的本地 SSD 存储（每个实例） |
 | **存储大小** | 单一数据库/弹性池 | 5 GB – 4 TB | 最多 100 TB | 5 GB – 4 TB |
 | | 托管实例  | 32 GB – 8 TB | 不适用 | 32 GB – 4 TB |
 | **IO 吞吐量** | 单一数据库** | 每个 vCore 提供 500 IOPS，最大 7000 IOPS | 未知 | 5000 IOPS，最大 200,000 IOPS|
 | | 托管实例 | 取决于文件大小 | 不适用 | 托管实例：取决于文件大小|
-|**可用性**|全部|1 个副本，无读取扩展副本，无本地缓存 | 多个副本，最多 15 个读取扩展副本，部分本地缓存 | 3 个副本，1 个读取扩展副本，区域冗余 HA，完整的本地缓存 |
-|**备份**|全部|RA-GRS，7-35 天（默认为 7 天）| RA-GRS，7-35 天（默认为 7 天），常量时间时点恢复 (PITR) | RA-GRS，7-35 天（默认为 7 天） |
+|**可用性**|All|1 个副本，无读取扩展副本，无本地缓存 | 多个副本，最多 15 个读取扩展副本，部分本地缓存 | 3 个副本，1 个读取扩展副本，区域冗余 HA，完整的本地缓存 |
+|**备份**|All|RA-GRS，7-35 天（默认为 7 天）| RA-GRS，7-35 天（默认为 7 天），常量时间时点恢复 (PITR) | RA-GRS，7-35 天（默认为 7 天） |
 
 \* 超大规模服务层中不支持弹性池
 
@@ -75,9 +75,9 @@ ms.locfileid: "51242144"
 
 超大规模当前适用于以下区域的单一数据库：美国西部 1、美国西部 2、美国东部 1、美国中部、西欧、北欧、英国西部、东南亚、日本东部、韩国中部、澳大利亚东南部和澳大利亚东部。
 
-### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>能否为每个逻辑服务器创建多个超大规模数据库
+### <a name="can-i-create-multiple-hyperscale-databases-per-sql-database-server"></a>能否为每个 SQL 数据库服务器创建多个超大规模数据库
 
-是的。 有关每个逻辑服务器的超大规模数据库数量的详细信息和限制，请参阅[逻辑服务器上单一和共用数据库的 SQL 数据库资源限制](sql-database-resource-limits-logical-server.md)。
+是的。 有关每个 SQL 数据库服务器的超大规模数据库数量的详细信息和限制，请参阅 [SQL 数据库服务器上单一数据库和入池数据库的 SQL 数据库资源限制](sql-database-resource-limits-database-server.md)。
 
 ### <a name="what-are-the-performance-characteristic-of-a-hyperscale-database"></a>超大规模数据库的性能特征有哪些
 
@@ -98,7 +98,7 @@ SQL 超大规模数据库根据工作负荷需求，提供快速的可伸缩性�
 
 ## <a name="deep-dive-questions"></a>深入的问题
 
-### <a name="can-i-mix-hyperscale-and-single-databases-a-my-logical-server"></a>可以将超大规模数据库和单一数据库混合作为逻辑服务器吗
+### <a name="can-i-mix-hyperscale-and-single-databases-a-my-sql-database-server"></a>能否将超大规模数据库和单一数据库混合作为 My SQL 数据库服务器
 
 可以。
 
@@ -235,7 +235,7 @@ SQL 超大规模数据库支持所有 SQL Server 工作负荷，但它主要针�
 
 可以从 Azure 存储中读取数据并将数据加载到超大规模数据库（就像对常规的单一数据库执行的操作一样）。 Azure SQL 数据库当前不支持 Polybase。 可以通过使用 [Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/)或通过[适用于 SQL 的 Spark 连接器](sql-database-spark-connector.md)在 [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) 中运行 Spark 作业，执行 Polybase。 SQL 的 Spark 连接器支持批量插入。
 
-超大规模数据库中不支持简单恢复或批量日志记录模式。 提供高可用性需要完整恢复模式。 但是，相比于单个 Azure SQL 数据库而言，超大规模数据库由于具有新的日志体系结构，可提供更快的数据引入速率。
+超大规模数据库中不支持简单恢复或批量日志记录模式。 提供高可用性需要完整恢复模式。 但是，相比于单个数据库而言，超大规模数据库由于具有新的日志体系结构，可提供更快的数据引入速率。
 
 ### <a name="does-sql-database-hyperscale-allow-provisioning-multiple-nodes-for-ingesting-large-amounts-of-data"></a>SQL 超大规模数据库是否允许预配多个节点，用于引入大量数据
 

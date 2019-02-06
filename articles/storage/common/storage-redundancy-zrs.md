@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/24/2018
 ms.author: jeking
-ms.component: common
-ms.openlocfilehash: 1b39de45d5046ce5a59dcaf0648b87aca2a5c6f5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.subservice: common
+ms.openlocfilehash: 62c6e24776c1d9a4e6a82eea557244bb390ebd00
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868338"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471481"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>区域冗余存储 (ZRS)：具有高可用性的 Azure 存储应用程序
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -25,19 +25,20 @@ ZRS 适用于块 Blob、非磁盘页 Blob、文件、表和队列。
 
 ZRS 在以下区域推出了正式版：
 
+- 亚洲东南部
+- 西欧
+- 北欧
+- 法国中部
+- 日本东部
 - 美国东部
 - 美国东部 2
 - 美国西部 2
 - 美国中部
-- 北欧
-- 西欧
-- 法国中部
-- 东南亚
 
 Microsoft 将继续在其他 Azure 区域推出 ZRS。 请不时地查看 [Azure 服务更新](https://azure.microsoft.com/updates/)来了解有关新区域的信息。
 
 ## <a name="what-happens-when-a-zone-becomes-unavailable"></a>当一个区域不可用时，会发生什么情况？
-即使某个区域不可用，也仍可访问你的数据。 Microsoft 建议持续遵循暂时性故障处理的做法。 这些做法包括结合指数退让实施重试策略。
+即使某个区域不可用，也仍可访问你的数据进行读写操作。 Microsoft 建议持续遵循暂时性故障处理的做法。 这些做法包括结合指数退让实施重试策略。
 
 当某个区域不可用时，Azure 会执行网络更新，例如 DNS 重新指向。 如果完成更新之前访问数据，这些更新可能会影响应用程序。
 

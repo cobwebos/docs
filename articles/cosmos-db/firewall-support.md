@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 2bb3665f0d0ab15f212741a6ce032fcd7ac2620d
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 7cc8e46c841b6e385d1a3b442fdb63d465486af8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358107"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477720"
 ---
-# <a name="ip-firewall-for-azure-cosmos-accounts"></a>Azure Cosmos 帐户的 IP 防火墙
+# <a name="ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 IP 防火墙
 
 为了保护帐户中存储的数据，Azure Cosmos DB 支持基于机密的授权模型，该模型利用强大的基于哈希的消息身份验证代码 (HMAC)。 此外，Azure Cosmos DB 支持使用基于 IP 的访问控制来提供入站防火墙支持。 此模型与传统数据库系统的防火墙规则类似，并且为帐户提供额外级别的安全性。 利用防火墙，可以配置为仅允许从一组已批准的计算机和/或云服务访问你的 Azure Cosmos 帐户。 从这些已批准的计算机和服务访问 Azure Cosmos 数据库中存储的数据仍需调用方提供有效的授权令牌。
 

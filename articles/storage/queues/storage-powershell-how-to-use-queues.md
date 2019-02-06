@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 09/14/2017
 ms.author: rogarana
-ms.component: queues
-ms.openlocfilehash: 016d6b1991085e3ed881deb68317dbde0ee46326
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.subservice: queues
+ms.openlocfilehash: 10b85b2efd4359617ea9aab5838129e7e96ed605
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213223"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463202"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 执行 Azure 队列存储操作
 
@@ -35,7 +35,7 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过 H
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-使用 `Connect-AzAccount` 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
+运行 `Connect-AzAccount` 命令以登录 Azure 订阅，并按照屏幕上的说明操作。
 
 ```powershell
 Connect-AzAccount
@@ -63,7 +63,7 @@ New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 
 ## <a name="create-storage-account"></a>创建存储帐户
 
-使用 [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) 创建具有本地冗余存储 (LRS) 的标准通用存储帐户。 获取用于定义要使用的存储帐户的存储帐户上下文。 对存储帐户执行操作时，引用上下文而不是重复提供凭据。
+使用 [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) 创建具有本地冗余存储 (LRS) 的标准常规用途存储帐户。 获取用于定义要使用的存储帐户的存储帐户上下文。 对存储帐户执行操作时，引用上下文而不是重复提供凭据。
 
 ```powershell
 $storageAccountName = "howtoqueuestorage"
@@ -111,15 +111,15 @@ Get-AzStorageQueue -Context $ctx | select Name
 $queueMessage = New-Object -TypeName Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage `
   -ArgumentList "This is message 1"
 # Add a new message to the queue
-$queue.CloudQueue.AddMessage($QueueMessage)
+$queue.CloudQueue.AddMessageAsync($QueueMessage)
 
 # Add two more messages to the queue 
 $queueMessage = New-Object -TypeName Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage `
   -ArgumentList "This is message 2"
-$queue.CloudQueue.AddMessage($QueueMessage)
+$queue.CloudQueue.AddMessageAsync($QueueMessage)
 $queueMessage = New-Object -TypeName Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage `
   -ArgumentList "This is message 3"
-$queue.CloudQueue.AddMessage($QueueMessage)
+$queue.CloudQueue.AddMessageAsync($QueueMessage)
 ```
 
 如果使用 [Azure 存储资源管理器](http://storageexplorer.com)，可以连接到 Azure 帐户并查看存储帐户中的队列，然后在队列中向下钻取以查看队列中的消息。 
@@ -140,25 +140,29 @@ $queue.CloudQueue.AddMessage($QueueMessage)
 $invisibleTimeout = [System.TimeSpan]::FromSeconds(10)
 
 # Read the message from the queue, then show the contents of the message. Read the other two messages, too.
-$queueMessage = $queue.CloudQueue.GetMessage($invisibleTimeout)
-$queueMessage 
-$queueMessage = $queue.CloudQueue.GetMessage($invisibleTimeout)
-$queueMessage 
-$queueMessage = $queue.CloudQueue.GetMessage($invisibleTimeout)
-$queueMessage 
+$queueMessage = $queue.CloudQueue.GetMessageAsync($invisibleTimeout,$null,$null)
+$queueMessage.Result
+$queueMessage = $queue.CloudQueue.GetMessageAsync($invisibleTimeout,$null,$null)
+$queueMessage.Result
+$queueMessage = $queue.CloudQueue.GetMessageAsync($invisibleTimeout,$null,$null)
+$queueMessage.Result
 
 # After 10 seconds, these messages reappear on the queue. 
 # Read them again, but delete each one after reading it.
 # Delete the message.
-$queueMessage = $queue.CloudQueue.GetMessage($invisibleTimeout)
-$queue.CloudQueue.DeleteMessage($queueMessage)
-$queueMessage = $queue.CloudQueue.GetMessage($invisibleTimeout)
-$queue.CloudQueue.DeleteMessage($queueMessage)
-$queueMessage = $queue.CloudQueue.GetMessage($invisibleTimeout)
-$queue.CloudQueue.DeleteMessage($queueMessage)
+$queueMessage = $queue.CloudQueue.GetMessageAsync($invisibleTimeout,$null,$null)
+$queueMessage.Result
+$queue.CloudQueue.DeleteMessageAsync($queueMessage.Result.Id,$queueMessage.Result.popReceipt)
+$queueMessage = $queue.CloudQueue.GetMessageAsync($invisibleTimeout,$null,$null)
+$queueMessage.Result
+$queue.CloudQueue.DeleteMessageAsync($queueMessage.Result.Id,$queueMessage.Result.popReceipt)
+$queueMessage = $queue.CloudQueue.GetMessageAsync($invisibleTimeout,$null,$null)
+$queueMessage.Result
+$queue.CloudQueue.DeleteMessageAsync($queueMessage.Result.Id,$queueMessage.Result.popReceipt)
 ```
 
 ## <a name="delete-a-queue"></a>删除队列
+
 若要删除队列及其中包含的所有消息，请调用 Remove-AzStorageQueue cmdlet。 以下示例演示如何使用 Remove-AzStorageQueue cmdlet 删除本练习中使用的特定队列。
 
 ```powershell
@@ -187,7 +191,9 @@ Remove-AzResourceGroup -Name $resourceGroup
 > * 删除队列
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets"></a>Microsoft Azure PowerShell 存储 cmdlet
+
 * [存储 PowerShell cmdlet](/powershell/module/az.storage)
 
 ### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure 存储资源管理器
+
 * [Microsoft Azure 存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)是 Microsoft 免费提供的独立应用，适用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。

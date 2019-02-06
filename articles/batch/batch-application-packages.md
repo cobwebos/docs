@@ -3,7 +3,7 @@ title: 在计算节点上安装应用程序包 - Azure Batch | Microsoft Docs
 description: 使用 Azure Batch 的应用程序包功能轻松管理要安装在 Batch 计算节点上的多个应用程序和版本。
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 3b6044b7-5f65-4a27-9d43-71e1863d16cf
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 06/15/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 333161042e968b4baf4b962869d688fd0b696b24
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 6fd3eccf3de5d46520dc5a50cab66667c875799e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094129"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454600"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>使用 Batch 应用程序包将应用程序部署到计算节点
 
@@ -114,8 +114,8 @@ Batch 服务使用 Azure 存储将应用程序包存储为块 blob。 块 blob �
 此窗口显示帐户中每个应用程序的 ID，以及以下属性：
 
 * **包**：与此应用程序关联的版本号。
-* **默认版本**：如果在指定池的应用程序时未指出版本，系统将安装此应用程序版本。 此设置是可选的。
-* **允许更新**：该值指定是否允许更新、删除和添加包。 如果此值设置为“否”，将禁用对应用程序包执行更新和删除操作。 只能添加新的应用程序包版本。 默认值为“是”。
+* **默认版本**：如果你在为池指定应用程序时未指明版本，系统安装的是此应用程序版本。 此设置是可选的。
+* **允许更新**：用于指定是否允许更新、删除和添加包的值。 如果此值设置为“否”，将禁用对应用程序包执行更新和删除操作。 只能添加新的应用程序包版本。 默认值为“是”。
 
 ### <a name="view-application-details"></a>查看应用程序详细信息
 若要查看某个应用程序的详细信息，请在“应用程序”窗口中选择该应用程序。
@@ -124,9 +124,9 @@ Batch 服务使用 Azure 存储将应用程序包存储为块 blob。 块 blob �
 
 在应用程序详细信息中，可以配置应用程序的以下设置。
 
-* **允许更新**：指定是否可更新或删除应用程序包。 请参阅下文中的“更新或删除应用程序包”。
+* **允许更新**：指定能否更新或删除应用程序包。 请参阅下文中的“更新或删除应用程序包”。
 * **默认版本**：指定要部署到计算节点的默认应用程序包。
-* **显示名称**：指定在显示应用程序相关信息时（例如，通过 Batch 提供给客户的服务 UI 中），Batch 解决方案可以使用的友好名称。
+* **显示名称**：指定在 Batch 解决方案显示应用程序相关信息时（例如，在通过 Batch 提供给客户的服务 UI 中），解决方案可使用的易记名称。
 
 ### <a name="add-a-new-application"></a>添加新的应用程序
 若要创建新应用程序，请添加应用程序包并指定新的唯一应用程序 ID。 使用新应用程序 ID 添加的第一个应用程序包也会创建新的应用程序。

@@ -1,6 +1,6 @@
 ---
 title:适合初学者的数据科学 titleSuffix:Azure 机器学习工作室 description:适合初学者的数据科学以 5 个较短的视频讲授基本概念，从 5 个数据科学可解答的问题开始。 来自 Azure 机器学习。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: garyericson ms.author: garye ms.custom: seodec18 ms.date:2018/01/03
 ---

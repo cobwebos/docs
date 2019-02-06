@@ -1,6 +1,6 @@
 ---
-title:适用于机器学习工作室作业的 Azure Batch 服务 titleSuffix: Azure 机器学习工作室 description:适用于机器学习作业的 Azure Batch 服务概述。 可以通过批处理池处理创建池，在其中提交批处理作业。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:适用于机器学习工作室作业的 Azure Batch 服务 titleSuffix:Azure 机器学习工作室 description:适用于机器学习作业的 Azure Batch 服务概述。 可以通过批处理池处理创建池，在其中提交批处理作业。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio | Microsoft Docs' ms.date:2017/04/19
 ---

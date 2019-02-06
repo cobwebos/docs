@@ -11,13 +11,13 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: b2312534cdd63f5672f6b2294e3aef6b50be229a
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: c4776d2c6f8ca2b23ba2df379b2682a6844f9a1b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600040"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461587"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>手动优化 Azure SQL 数据库中的查询性能
 
@@ -235,7 +235,7 @@ ORDER BY start_time DESC
 
 ### <a name="cross-database-sharding"></a>跨数据库分片
 
-由于 Azure SQL 数据库运行在商用硬件上，因此，单一数据库的容量限制低于传统的本地 SQL Server 安装。 某些客户使用分片技术在数据库操作不符合 Azure SQL 数据库中单一数据库的限制时，将这些操作分摊到多个数据库上。 在 Azure SQL 数据库中使用分片技术的大多数客户将单个维度的数据拆分到多个数据库上。 对于该方法，需要了解 OLTP 应用程序执行的事务经常仅适用于架构中的一行或少数几行。
+由于 Azure SQL 数据库在商品硬件上运行，因此单一数据库的容量限制低于传统的本地 SQL Server 安装。 在数据库操作超出 Azure SQL 数据库中单一数据库的限制时，一些客户使用分片技术将这些操作分摊到多个数据库上。 在 Azure SQL 数据库中使用分片技术的大多数客户将单个维度的数据拆分到多个数据库上。 对于该方法，需要了解 OLTP 应用程序执行的事务经常仅适用于架构中的一行或少数几行。
 
 > [!NOTE]
 > SQL 数据库现在提供一个库来帮助分片。 有关详细信息，请参阅[弹性数据库客户端库概述](sql-database-elastic-database-client-library.md)。
