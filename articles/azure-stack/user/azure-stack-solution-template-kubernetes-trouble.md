@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/05/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 41383a31955b8f9507ec681650cf73df23b2a895
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 551958317249cbfa25e3af9922f9ded6850c2521
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663408"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752290"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>排查 Kubernetes 部署到 Azure Stack
 
@@ -53,7 +53,7 @@ ms.locfileid: "55663408"
 
 2. 创建部署 VM 和自定义脚本扩展。
     -  使用市场 Linux 映像 **Ubuntu Server 16.04 LTS** 创建部署 Linux VM。
-    -  从市场下载客户脚本扩展并运行该扩展。 该脚本是“用于 Linux 2.0 的自定义脚本”。
+    -  下载并运行从 marketplace 的自定义脚本扩展。 该脚本是“用于 Linux 2.0 的自定义脚本”。
     -  运行 DVM 自定义脚本。 该脚本执行以下任务：
         1. 从 Azure 资源管理器元数据终结点获取库终结点。
         2. 从 Azure 资源管理器元数据终结点获取 Active Directory 资源 ID。
@@ -61,7 +61,7 @@ ms.locfileid: "55663408"
         4. 将 ACS 引擎部署到 Kubernetes 群集，然后将 Azure Stack 云配置文件保存到 `/etc/kubernetes/azurestackcloud.json`。
 3. 创建主 VM。
 
-4. 下载并运行客户脚本扩展。
+4. 下载并运行自定义脚本扩展。
 
 5. 运行主脚本。
 
@@ -75,7 +75,7 @@ ms.locfileid: "55663408"
         3. 启动计划程序服务。
 6. 创建代理 VM。
 
-7. 下载并运行客户脚本扩展。
+7. 下载并运行自定义脚本扩展。
 
 7. 运行代理脚本。 代理自定义脚本执行以下任务：
     - 安装 etcd

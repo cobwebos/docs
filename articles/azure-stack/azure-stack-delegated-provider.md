@@ -15,12 +15,12 @@ ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 1b22d465df12d313e05d3fd93437b461ef939ee7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b7a12494585cedd8f75fd9061f8eb29a0b5dc319
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242478"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747418"
 ---
 # <a name="delegate-offers-in-azure-stack"></a>在 Azure Stack 中委托套餐
 
@@ -76,6 +76,9 @@ Azure Stack 操作员经常需要委托他人来注册用户和创建订阅。 �
 | --- | --- |
 | 委托的提供商 |用户 |
 | 用户 |用户 |
+
+ > [!NOTE]
+   > 对于 CSP 经销商，若要创建此委托的提供商，它将要求这些用户的租户目录 （用户 AAD） 中。 Azure Stack 操作员需要[第一个载入](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-enable-multitenancy)的 AAD 租户，然后按照配置使用情况和计费[以下步骤](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-csp-howto-register-tenants)。
 
 ### <a name="identify-the-delegated-provider"></a>确定委托的提供商
 

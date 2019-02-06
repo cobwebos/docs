@@ -14,12 +14,12 @@ ms.date: 01/19/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/19/2019
-ms.openlocfilehash: 9b66a7a176862fce687b7cc0b1ff3c14bda118d7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: fbca9eb3703777c0d20998e65bf446b5951c5091
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243883"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745395"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Go 配合使用
 
@@ -68,7 +68,7 @@ Go SDK 依赖于 Azure **Go-autorest**模块将 REST 请求发送到 Azure 资�
 
    > [!NOTE]  
    > Azure Stack 开发工具包 (ASDK) 中的 **ResourceManagerUrl** 为：`https://management.local.azurestack.external/`  
-   > 集成系统中的 **ResourceManagerUrl** 为：`https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`  
+   > 集成系统中的 **ResourceManagerUrl** 为：`https://management.<region>.<fqdn>/`  
    > 检索所需的元数据：`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
   
    示例 JSON 文件：

@@ -16,12 +16,12 @@ ms.date: 01/30/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 444c67e942fad732c959f834e2c50f0b2a35562c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c398e615e943caad40040ff1b87713304fd9f015
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246528"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746704"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 更新
 
@@ -153,6 +153,9 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
 
 <!-- 3190553 - IS ASDK -->
 - 修复了以下问题：生成的干扰性警报指示某个基础结构角色实例不可用或缩放单元节点已脱机。
+
+<!-- 2724961 - IS ASDK -->
+- 以固定了的问题 VM 的概述页无法正确显示 VM 指标图表。 
 
 ## <a name="changes"></a>更改
 
@@ -297,11 +300,6 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
 
 <!-- 1662991 IS ASDK --> 
 - Azure Stack 不支持 Linux VM 诊断。 在部署启用 VM 诊断的 Linux VM 时，部署会失败。 如果通过诊断设置启用 Linux VM 的基本指标，部署也会失败。  
-
-<!-- 2724961- IS ASDK --> 
-- 在订阅设置中注册 **Microsoft.Insight** 资源提供程序并创建支持来宾 OS 诊断的 Windows VM 时，VM 概述页中的“CPU 百分比”图表不显示指标数据。
-
-   若要查找指标数据（例如 VM 的“CPU 百分比”图表），请转到“指标”窗口并查看所有受支持的 Windows VM 来宾指标。
 
 <!-- 3507629 - IS, ASDK --> 
 - 托管磁盘创建了两个新的[计算配额类型](azure-stack-quota-types.md#compute-quota-types)来限制可以预配的托管磁盘的最大容量。 默认情况下将为每个托管磁盘配额类型分配 2048 GiB。 不过，你可能会遇到以下问题：

@@ -66,8 +66,10 @@ items:
       href: manage-database-permissions.md
     - name: 检查群集运行状况
       href: check-cluster-health.md
-    - name: 管理群集缩放
-      href: manage-cluster-scaling.md
+    - name: 管理群集横向扩展
+      href: manage-cluster-scale-out.md
+    - name: 管理群集纵向扩展
+      href: manage-cluster-scale-up.md
     - name: 删除数据
       href: delete-data.md
     - name: 处理重复数据
@@ -88,7 +90,7 @@ items:
       href: troubleshoot-connect-cluster.md
     - name: 使用数据库和表
       href: troubleshoot-database-table.md
-- name: 参考
+- name: 引用
   items:
   - name: 查询语言
     href: /azure/kusto/query/
@@ -120,9 +122,9 @@ items:
     href: http://aka.ms/adecostestimator
   - name: 服务更新
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: a3ebd0582761ed9f0ee69cb8eaed637e46049d4d
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 298df030448f1410ef687405586d4e97827076e9
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295451"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727769"

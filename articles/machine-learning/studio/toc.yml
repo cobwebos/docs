@@ -76,15 +76,9 @@ items:
       href: deploy-with-resource-manager-template.md
   - name: 导入训练数据
     items:
-    - name: 概述
+    - name: 导入数据
       href: import-data.md
-    - name: 从本地文件
-      href: import-data-from-local-file.md
-    - name: 从联机源
-      href: import-data-from-online-sources.md
-    - name: 从试验
-      href: import-data-from-an-experiment.md
-    - name: 使用本地 SQL
+    - name: 使用本地 SQL 数据库中的数据
       displayName: on-premises
       href: use-data-from-an-on-premises-sql-server.md
   - name: 创建模型并定型
@@ -222,9 +216,9 @@ items:
     href: azure-ml-netsharp-reference-guide.md
   - name: 比较我们的 ML 产品
     href: ../service/overview-more-machine-learning.md
-ms.openlocfilehash: 5a6d1f3492186831f5dd83f002c7c22a86de34d7
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 400e6a2e98b8d29018b135204eaefa7ae3a7d965
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662970"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731421"
