@@ -93,8 +93,8 @@ localhost                  : ok=3    changed=2    unreachable=0    failed=0
 ## <a name="create-an-app-service-by-using-traffic-manager"></a>使用流量管理器创建应用服务
 可以使用 [Azure 流量管理器](https://docs.microsoft.com/azure/app-service/web-sites-traffic-manager)来控制如何将来自 Web 客户端的请求分发到 Azure 应用服务中的应用。 将应用服务终结点添加到 Azure 流量管理器配置文件时，流量管理器会跟踪应用服务应用的状态。 状态包括“正在运行”、“已停止”和“已删除”。 然后，流量管理器就可以确定这些终结点中的哪一个应该接收流量。
 
-在应用服务中，应用在应用服务计划中运行。[](https://docs.microsoft.com/azure/app-service/overview-hosting-plans
-) 应用服务计划为要运行的 Web 应用定义一组计算资源。 可以在不同的组中管理应用服务计划和 Web 应用。
+在应用服务中，应用在[应用服务计划](https://docs.microsoft.com/azure/app-service/overview-hosting-plans
+)中运行。 应用服务计划为要运行的 Web 应用定义一组计算资源。 可以在不同的组中管理应用服务计划和 Web 应用。
 
 本部分提供一个示例 Ansible playbook，它定义了以下资源：
 - 你的应用服务计划将部署到其中的资源组
