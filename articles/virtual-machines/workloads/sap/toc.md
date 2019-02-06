@@ -74,6 +74,7 @@
 ### 高可用性体系结构
 #### [HA 体系结构和方案](sap-high-availability-architecture-scenarios.md)
 #### [更高可用性体系结构和方案](sap-higher-availability-architecture-scenarios.md)
+#### [带有 Azure 可用性区域的 SAP 工作负荷配置](sap-ha-availability-zones.md)
 #### [使用共享磁盘在 Windows 上为 (A)SCS 实例提供 HA](sap-high-availability-guide-wsfc-shared-disk.md)
 #### [使用 SOFS 文件共享在 Windows 上为 (A)SCS 实例提供 HA](sap-high-availability-guide-wsfc-file-share.md)
 #### [在 SUSE Linux 上为 (A)SCS 实例提供 HA](high-availability-guide-suse.md)

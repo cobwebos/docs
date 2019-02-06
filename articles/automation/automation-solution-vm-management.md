@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/04/2018
+ms.date: 1/30/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d9dfc70c7158c5f808367b8b2041725b03b9060d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 5cacd2d0e4308e15b562169f72efb0f98ce45289
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846177"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476390"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure 自动化中的在空闲时间启动/停止 VM 解决方案
 
@@ -34,7 +34,7 @@ ms.locfileid: "54846177"
 > [!NOTE]
 > 如果使用的是经典 VM 解决方案，则每个云服务将按顺序处理所有 VM。 虚拟机仍然可以跨不同的云服务并行处理。
 >
-> Azure 云解决方案提供商 (Azure CSP) 订阅仅支持 Azure 资源管理器模型，因此非 Azure 资源管理器服务在计划中不可用。 启动/停止解决方案运行时可能会出现错误，因为它使用 cmdlet 来管理经典资源。 若要了解有关 CSP 的详细信息，请参阅 [CSP 订阅中可用的服务](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)。
+> Azure 云解决方案提供商 (Azure CSP) 订阅仅支持 Azure 资源管理器模型，因此非 Azure 资源管理器服务在计划中不可用。 启动/停止解决方案运行时可能会出现错误，因为它使用 cmdlet 来管理经典资源。 若要了解有关 CSP 的详细信息，请参阅 [CSP 订阅中可用的服务](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)。 如果使用 CSP 订阅，则应在部署之后将 [External_EnableClassicVMs](#variables) 变量修改为 False。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -62,7 +62,7 @@ ms.locfileid: "54846177"
    - 为新的 **Log Analytics 工作区**指定名称，例如“ContosoLAWorkspace”。
    - 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
    - 对于“资源组”，可以创建新资源组，或选择现有的资源组。
-   - 选择“位置” 。 目前可用的位置仅为：澳大利亚东南部、加拿大中部、印度中部、美国东部、日本东部、东南亚、英国南部和西欧。
+   - 选择“位置” 。 目前可用的位置仅为：澳大利亚东南部、加拿大中部、印度中部、美国东部、日本东部、东南亚、英国南部、西欧和美国西部 2。
    - 选择“定价层”。 选择“每 GB (独立)”选项。 Log Analytics 已更新[定价](https://azure.microsoft.com/pricing/details/log-analytics/)，“每 GB”层级是唯一的选项。
 
 5. 在“Log Analytics 工作区”页上提供所需信息后，单击“创建”。 可以在菜单中的“通知”下面跟踪操作进度，完成后将返回到“添加解决方案”页面。
@@ -90,6 +90,9 @@ ms.locfileid: "54846177"
 
 8. 配置解决方案所需的初始设置后，单击“确定”以关闭“参数”页面并选择“创建”。 系统会验证所有设置，然后在订阅中部署该解决方案。 此过程需要几秒钟才能完成，可以在菜单中的“通知”下面跟踪进度。
 
+> [!NOTE]
+> 如果具有 Azure 云解决方案提供商 (Azure CSP) 订阅，则部署完成之后，在自动化帐户中转到“共享资源”下的“变量”，然后将[“External_EnableClassicVMs”](#variables)变量设置为“False”。 这会使解决方案停止查找经典 VM 资源。
+
 ## <a name="scenarios"></a>方案
 
 该解决方案包含三个不同的方案。 这些方案为：
@@ -108,8 +111,8 @@ ms.locfileid: "54846177"
 #### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>针对订阅和资源组确定启动和停止操作的目标
 
 1. 配置 External_Stop_ResourceGroupNames 和 External_ExcludeVMNames 变量以指定目标 VM。
-1. 启用并更新 **Scheduled-StartVM** 和 **Scheduled-StopVM** 计划。
-1. 在将 ACTION 参数设置为 **start** 且将 WHATIF 参数设置为 **True** 的情况下运行 **ScheduledStartStop_Parent** runbook 来预览更改。
+2. 启用并更新 **Scheduled-StartVM** 和 **Scheduled-StopVM** 计划。
+3. 在将 ACTION 参数设置为 **start** 且将 WHATIF 参数设置为 **True** 的情况下运行 **ScheduledStartStop_Parent** runbook 来预览更改。
 
 #### <a name="target-the-start-and-stop-action-by-vm-list"></a>根据 VM 列表确定启动和停止操作的目标
 
@@ -205,6 +208,7 @@ ms.locfileid: "54846177"
 |External_AutoStop_Threshold | 在变量 _External_AutoStop_MetricName_ 中指定的 Azure 警报规则的阈值。 百分比值的范围是从 1 到 100。|
 |External_AutoStop_TimeAggregationOperator | 将应用到所选窗口大小以计算条件的时间聚合运算符。 可接受的值包括：**Average**、**Minimum**、**Maximum**、**Total** 和 **Last**。|
 |External_AutoStop_TimeWindow | Azure 将分析用于触发警报的选定指标的窗口大小。 此参数接受 timespan 格式的输入。 可能的值为 5 分钟到 6 小时。|
+|External_EnableClassicVMs| 指定解决方案是否针对经典 VM。 默认值为 True。 对于 CSP 订阅，这应设置为 False。|
 |External_ExcludeVMNames | 输入要排除的 VM 名称，使用逗号分隔名称，不带空格。|
 |External_Start_ResourceGroupNames | 指定针对启动操作的一个或多个资源组，使用逗号分隔值。|
 |External_Stop_ResourceGroupNames | 指定针对停止操作的一个或多个资源组，使用逗号分隔值。|
