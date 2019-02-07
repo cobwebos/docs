@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: e795c275b832fcd59799a4d4d1107b76f6e489b6
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: eb1aa90cf7a1fafaa066e5a1109d1031b53034e2
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856836"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756421"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中更新应用程序。
 
@@ -73,7 +73,7 @@ docker-compose up --build -d
 
 ## <a name="tag-and-push-the-image"></a>标记并推送映像
 
-若要正确使用已更新的映像，请使用 ACR 注册表的登录服务器名称标记 *azure-vote-front* 映像。 运行 [az acr list](/cli/azure/acr#az_acr_list) 命令，获取登录服务器名称：
+若要正确使用已更新的映像，请使用 ACR 注册表的登录服务器名称标记 *azure-vote-front* 映像。 运行 [az acr list](/cli/azure/acr) 命令，获取登录服务器名称：
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table

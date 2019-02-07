@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: a5837a922f14a779260ad6719b01a9c882eb5768
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 94845573461d99fda9318f303d822abb6ca3f257
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622935"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751134"
 ---
 # <a name="restart-vms"></a>重新启动 VM
 
@@ -87,12 +87,12 @@ az group delete -n myResourceGroup --no-wait --yes
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#az_vm_availability_set_create) | 创建虚拟机。  |
-| [az vm list](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | 与 `--query` 一起使用，用来确保在重新启动 VM 之前已对其进行了预配，然后获取这些 VM 的 ID 以将其重新启动。 |
-| [az resource list](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | 与 `--query` 一起使用来获取使用该标记的 VM 的 ID。 |
-| [az vm restart](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | 重新启动 VM。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | 创建虚拟机。  |
+| [az vm list](https://docs.microsoft.com/cli/azure/vm) | 与 `--query` 一起使用，用来确保在重新启动 VM 之前已对其进行了预配，然后获取这些 VM 的 ID 以将其重新启动。 |
+| [az resource list](https://docs.microsoft.com/cli/azure/vm) | 与 `--query` 一起使用来获取使用该标记的 VM 的 ID。 |
+| [az vm restart](https://docs.microsoft.com/cli/azure/vm) | 重新启动 VM。 |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

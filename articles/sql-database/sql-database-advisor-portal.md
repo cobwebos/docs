@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 6bf0310ae69d45858241a21c5207f557034126d5
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/19/2018
+ms.openlocfilehash: 023395126a587992c1b5648bd9b8a993d9fa9ced
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608206"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564232"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>查找并应用性能建议
 
@@ -39,7 +39,7 @@ ms.locfileid: "53608206"
 
 按其对性能的潜在影响将建议分为以下几个类别：
 
-| 影响 | Description |
+| 影响 | 说明 |
 |:--- |:--- |
 | 高 |高影响建议应提供最重要的性能影响。 |
 | 中型 |中等影响建议应提高性能，但提升程度不大。 |
@@ -124,7 +124,7 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
 ## <a name="monitoring-operations"></a>监视操作
 可能不会立刻应用建议。 该门户提供了有关建议状态的详细信息。 以下是索引可能处于的状态：
 
-| 状态 | Description |
+| 状态 | 说明 |
 |:--- |:--- |
 | 挂起 |已经接收应用建议命令并计划执行。 |
 | 执行 |正在应用建议。 |

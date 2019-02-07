@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 2621918896131864b6183df420f51bab50f0e474
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ab1d083d7fea59284815276d030181ac1e435f72
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811224"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820005"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshservice"></a>教程：Azure Active Directory 与 Freshservice 的集成
 

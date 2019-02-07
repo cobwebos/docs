@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: cherylmc
-ms.openlocfilehash: 72e990516ce6ae3276c6db6f12d1a5dda4d0386f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8db17b92208bd956bd5f9b855249f03ecd5e2c59
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432500"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756693"
 ---
 # <a name="reset-a-vpn-gateway"></a>重置 VPN 网关
 
@@ -94,7 +94,7 @@ StatusCode     : OK
 
 ## <a name="cli"></a>Azure CLI
 
-若要重置网关，请使用 [az network vnet-gateway reset](https://docs.microsoft.com/cli/azure/network/vnet-gateway#az_network_vnet_gateway_reset) 命令。 以下示例将重置 TestRG5 资源组中名为 VNet5GW 的虚拟网络网关：
+若要重置网关，请使用 [az network vnet-gateway reset](https://docs.microsoft.com/cli/azure/network/vnet-gateway) 命令。 以下示例将重置 TestRG5 资源组中名为 VNet5GW 的虚拟网络网关：
 
 ```azurecli
 az network vnet-gateway reset -n VNet5GW -g TestRG5

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 13d2c1028cc712092774a3f81d8eeaa5cb109edf
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 5242be4dfe1c79b8f943b3b6d240046d0e8c5181
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199675"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658754"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>浏览 Azure IoT Central UI
 
@@ -33,11 +33,13 @@ ms.locfileid: "54199675"
 - 排查和修正设备问题。
 - 设置新设备。
 
+[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
+
 ## <a name="use-the-left-navigation-menu"></a>使用左侧导航菜单
 
 使用左侧导航菜单来访问应用程序的不同区域：
 
-| 菜单 | Description |
+| 菜单 | 说明 |
 | ---- | ----------- |
 | ![左侧导航菜单](media/overview-iot-central-tour/navigationbar.png) | <ul><li>“主页”按钮显示应用程序的主页。 构建者可以为操作员自定义此主页。</li><li>“Device Explorer”按钮列出在应用程序中定义的设备模板，以及与每个设备模板关联的模拟和真实设备。 操作员可以使用“Device Explorer”来管理已连接的设备。</li><li>“设备集”按钮可以用来查看和创建设备集。 操作员可以将设备集创建为由查询指定的设备的逻辑集合。</li><li>“分析”按钮显示从设备和设备集的设备遥测数据得出的分析。 操作员可以基于设备数据创建自定义视图来从应用程序获得见解。</li><li>“作业”按钮通过让你创建和运行作业来执行大规模更新，从而实现批量设备管理。</li><li>“应用程序构建者”按钮显示构建者使用的工具，例如“创建设备模板”工具。</li><li>“管理”按钮显示应用程序管理页面，管理员可以在其中管理应用程序设置、用户和角色。</li></ul> |
 

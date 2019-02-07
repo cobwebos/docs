@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 1/30/2019
-ms.openlocfilehash: 4d4d7c587dcc34b12ed757b7da54f5ad0b04e8cc
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cd156a10faf396778b76687b3666887a6a60876c
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451863"
+ms.locfileid: "55505693"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Microsoft 的机器学习产品有哪些？
 
@@ -27,7 +27,7 @@ Microsoft 提供多种多样的产品选项用于生成、部署和管理机器�
 
 | 云&nbsp;选项 | 作用 | 作用 |
 |-|-|-|
-| [Azure 机器学习服务](#azure-machine-learning-services) | 适用于机器学习的托管云服务  | 使用 Python 和 CLI 在 Azure 中训练、部署和管理模型 |
+| [Azure 机器学习服务](#azure-machine-learning-service) | 适用于机器学习的托管云服务  | 使用 Python 和 CLI 在 Azure 中训练、部署和管理模型 |
 | [Azure 机器学习工作室](#azure-machine-learning-studio) | 机器学习的拖放式可视界面 | 使用预配置的算法生成、试验和部署模型（Python 和 R）|
 | [Azure Databricks](#azure-databricks) | 基于 Spark 的分析平台 | 生成和部署模型与数据工作流 |
 | [Azure 认知服务](#azure-cognitive-services) | 包含预生成 AI 和机器学习模型的 Azure 服务 | 轻松将智能功能轻松添加到应用中 |

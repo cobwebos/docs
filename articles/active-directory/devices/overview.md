@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/25/2018
+ms.date: 01/31/2019
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 704f854d7be9930923cb6e1955c3670f296035ed
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 950692a92152ac302ec573522fc5327f3acb91a2
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299820"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512306"
 ---
 # <a name="what-is-device-management-in-azure-active-directory"></a>什么是 Azure Active Directory 中的设备管理？
 
@@ -35,6 +35,11 @@ ms.locfileid: "55299820"
 设备管理也是[基于设备的条件性访问](../conditional-access/require-managed-devices.md)的基础。 通过基于设备的条件访问，可确保只有受管理设备才能访问环境中的资源。   
 
 本文介绍了 Azure Active Directory 中设备管理的工作原理。
+
+
+
+> [!VIDEO https://www.youtube.com/embed/NeezfKhomQU]
+
 
 ## <a name="getting-devices-under-the-control-of-azure-ad"></a>使设备受到 Azure AD 控制
 
