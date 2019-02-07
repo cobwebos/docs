@@ -14,12 +14,12 @@ ms.devlang: R
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: jepeach
-ms.openlocfilehash: 102191b885d2a4a9234b7783b0a51b09903d3abd
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 0e5db2c08749a59a03e384c6048e67f7570f6750
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54807450"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211420"
 ---
 # <a name="r-developers-guide-to-azure"></a>Azure 中的 R 开发指南
 <img src="media/r-developers-guide/logo_r.svg" alt="R logo" align="right" width="200" />
@@ -85,21 +85,21 @@ Databricks 中的协作由平台的 Notebook 系统启用。  用户可以创建
 ## <a name="azure-machine-learning-studio"></a>Azure 机器学习工作室
 [Azure 机器学习工作室](https://azure.microsoft.com/services/machine-learning-studio/)是一个协作型拖放式工具，可用于在云中构建、测试和部署预测分析解决方案。  越来越多的数据科学家正在使用它来创建和部署机器学习模型，而无需编写大量的代码。
 
-机器学习工作室支持 R 和 Python。  可通过两种方式将 R 与机器学习工作室配合使用。
+Azure 机器学习工作室支持 R 和 Python。  可以通过两种方式将 R 与 Azure 机器学习工作室配合使用。
 
 ### <a name="custom-r-scripts-in-your-experiments"></a>试验中的自定义 R 脚本
 首先，可以通过编写自定义 R 脚本来扩展机器学习工作室的数据处理和机器学习功能。
 机器学习工作室包含各种模块用于准备和分析数据，但还比不上 R 等成熟语言的功能。因此，当提供的模块无法满足需求时，该服务允许你引入自己的自定义 R 脚本。
 
-若要利用此功能，请将“执行 R 脚本”模块拖到试验中。  然后，使用“属性”窗格中的代码编辑器编写新的 R 脚本，或粘贴现有脚本。  在脚本中，可以引用外部 R 包。  可以使用脚本来处理数据，或训练标准机器学习工作室模型库中不包括的复杂机器学习模型。
+若要利用此功能，请将“执行 R 脚本”模块拖到试验中。  然后，使用“属性”窗格中的代码编辑器编写新的 R 脚本，或粘贴现有脚本。  在脚本中，可以引用外部 R 包。  可以使用脚本来处理数据，或训练标准 Azure 机器学习工作室模型库中不包括的复杂机器学习模型。
 
-有关在机器学习工作室试验中使用 R 的全面介绍，请查看[适用于 Azure 机器学习的 R 编程语言快速入门教程](https://docs.microsoft.com/azure/machine-learning/studio/r-quickstart)。
+有关在机器学习工作室试验中使用 R 的全面介绍，请查看[适用于 Azure 机器学习工作室的 R 编程语言快速入门教程](https://docs.microsoft.com/azure/machine-learning/studio/r-quickstart)。
 
 ### <a name="create-manage-and-deploy-experiments-from-your-local-r-environment"></a>在本地 R 环境中创建、管理和部署试验
-将 R 与机器学习工作室配合使用的另一种方式是使用
-<code>[AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html)</code> 包来监视和控制 R 编程环境中的试验过程。  此包由 Microsoft 维护，可用于与 Azure 机器学习之间来回上传和下载数据集、查询试验、将 R 函数发布为 Azure 机器学习 Web 服务、通过现有 Web 服务运行 R 数据，以及检索输出。
+将 R 与 Azure 机器学习工作室配合使用的另一种方式是使用
+<code>[AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html)</code> 包来监视和控制 R 编程环境中的试验过程。  此包由 Microsoft 维护，可用于与 Azure 机器学习工作室之间来回上传和下载数据集、查询试验、将 R 函数发布为 Web 服务、通过现有 Web 服务运行 R 数据，以及检索输出。
 
-借助此包可以十分轻松地将 Azure 机器学习用作 R 代码的可缩放部署平台。  无需在 UI 中不断地单击和拖放，而可以使用熟知的工具将整个部署过程自动化。
+借助此包可以十分轻松地将 Azure 机器学习工作室用作 R 代码的可缩放部署平台。  无需在 UI 中不断地单击和拖放，而可以使用熟知的工具将整个部署过程自动化。
 
 ## <a name="azure-batch"></a>Azure 批处理
 对于大规模 R 作业，可以使用 [Azure Batch](https://azure.microsoft.com/services/batch/)。  此服务提供云规模的作业计划和计算管理，可让你缩放跨数十、数百甚至数千个虚拟机的 R 工作负荷。  由于它是一个通用化的计算平台，在 Azure Batch 上运行 R 作业的选项有很多。
@@ -114,7 +114,7 @@ Databricks 中的协作由平台的 Notebook 系统启用。  用户可以创建
 
 [Azure Notebooks](https://notebooks.azure.com) 是一种成本低、冲突少的服务，适合偏向于使用 Notebook 将代码部署到 Azure 的 R 开发人员。  它是一个免费的服务，面向使用 [Jupyter](https://jupyter.org/)（一个开源项目，可将 markdown 文本信息、可执行代码和图形合并到一个画布上）在浏览器中开发和运行代码的任何用户。
 
-Azure Notebooks 的免费服务层是适用于小规模项目的可行选项，因为它将每个 Notebook 的处理能力限制为 4 GB 内存和 1 GB 数据集。 但是，如果需要超出这些限制的计算和数据处理能力，则可以在 Data Science Virtual Machine 实例中运行 Notebook。 有关详细信息，请参阅[管理和配置 Azure Notebooks 项目 - 计算层](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)。
+Azure Notebooks 的免费服务层是适用于小规模项目的可行选项，因为它将每个 Notebook 的处理能力限制为 4 GB 内存和 1 GB 数据集。 但是，如果需要超出这些限制的计算和数据处理能力，则可以在 Data Science Virtual Machine 实例中运行 Notebook。 有关详细信息，请参阅[管理和配置 Azure Notebooks 项目 - 计算层](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)。
 
 ## <a name="azure-sql-database"></a>Azure SQL 数据库
 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)是 Microsoft 提供的完全托管式的智能关系型云数据库服务。  它可以让你使用 SQL Server 的完整功能，省去了设置基础结构的麻烦。  其中包括[机器学习服务](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning?view=sql-server-2017)，这是最近在 SQL 服务中添加的新功能之一。

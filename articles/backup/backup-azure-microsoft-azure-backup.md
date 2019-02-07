@@ -2,19 +2,18 @@
 title: 使用 Azure 备份服务器将工作负荷备份到 Azure
 description: 使用 Azure 备份服务器保护工作负荷或将其备份到 Azure 门户。
 services: backup
-author: PVRK
-manager: shivamg
-keywords: Azure 备份服务器；保护工作负荷；备份工作负荷
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: adigan
-ms.openlocfilehash: a57161fd379269f69ce4e83730a29588d9028b7a
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.author: kasinh
+ms.openlocfilehash: b94d6bd9cc129d80f3ece82c13df375abecafd26
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351605"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493402"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器
 > [!div class="op_single_selector"]

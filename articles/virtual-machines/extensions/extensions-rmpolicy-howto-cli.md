@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 529758a7b9fe4c8b669ade72273335389020fb65
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 536239a9ff98c76badfc042a2d59d19b8fb6f04a
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451197"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770578"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>使用 Azure Policy 限制 Linux VM 上的扩展安装
 
@@ -98,7 +98,7 @@ vim ~/clouddrive/azurepolicy.parameters.json
 
 ## <a name="create-the-policy"></a>创建策略
 
-策略定义是用于存储想要使用的配置的对象。 策略定义使用规则和参数文件定义策略。 使用 [az policy definition create](/cli/azure/role/assignment?view=azure-cli-latest#az_role_assignment_create) 创建策略定义。
+策略定义是用于存储想要使用的配置的对象。 策略定义使用规则和参数文件定义策略。 使用 [az policy definition create](/cli/azure/role/assignment?view=azure-cli-latest) 创建策略定义。
 
 在此示例中，规则和参数是在 cloud shell 中创建并存储为 .json 文件的文件。
 
@@ -115,9 +115,9 @@ az policy definition create \
 
 ## <a name="assign-the-policy"></a>分配策略
 
-此示例使用 [az policy assignment create](/cli/azure/policy/assignment#az_policy_assignment_create) 将策略分配给资源组。 **myResourceGroup** 资源组中创建的任何 VM 将不能安装适用于 Linux 的 Linux VM 访问扩展或自定义脚本扩展。 该资源组必须存在，然后才能分配策略。
+此示例使用 [az policy assignment create](/cli/azure/policy/assignment) 将策略分配给资源组。 **myResourceGroup** 资源组中创建的任何 VM 将不能安装适用于 Linux 的 Linux VM 访问扩展或自定义脚本扩展。 该资源组必须存在，然后才能分配策略。
 
-使用 [az account list](/cli/azure/account?view=azure-cli-latest#az_account_list) 获取你的订阅 ID 以替换示例中的订阅 ID。
+使用 [az account list](/cli/azure/account?view=azure-cli-latest) 获取你的订阅 ID 以替换示例中的订阅 ID。
 
 
 ```azurecli-interactive

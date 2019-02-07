@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/09/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 6963a7d8541897940316d0fdfbea06f265884249
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 18bfdaaf75230cf91ea8f786188b9de9f7a6a5be
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478308"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696722"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>使用虚拟硬盘创建 VM
 
@@ -53,16 +53,16 @@ az group delete -n az-cli-vhd
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
-| [az storage account list](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_list) | 列出存储帐户 |
-| [az storage account check-name](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_check_name) | 检查存储帐户名称是否有效且目前还不存在 |
+| [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
+| [az storage account list](https://docs.microsoft.com/cli/azure/storage/account) | 列出存储帐户 |
+| [az storage account check-name](https://docs.microsoft.com/cli/azure/storage/account) | 检查存储帐户名称是否有效且目前还不存在 |
 | [az storage account keys list](https://docs.microsoft.com/cli/azure/storage/account/keys) | 列出存储帐户的密钥 |
-| [az storage blob exists](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_exists) | 检查 Blob 是否存在 |
-| [az storage container create](https://docs.microsoft.com/cli/azure/storage/container#az_storage_container_create) | 在存储帐户中创建一个容器。 |
-| [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_upload) | 通过上传 VHD，在容器中创建一个 Blob。 |
-| [az vm list](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | 与 `--query` 一起使用，用于检查 VM 名称是否已使用。 | 
+| [az storage blob exists](https://docs.microsoft.com/cli/azure/storage/blob) | 检查 Blob 是否存在 |
+| [az storage container create](https://docs.microsoft.com/cli/azure/storage/container) | 在存储帐户中创建一个容器。 |
+| [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob) | 通过上传 VHD，在容器中创建一个 Blob。 |
+| [az vm list](https://docs.microsoft.com/cli/azure/vm) | 与 `--query` 一起使用，用于检查 VM 名称是否已使用。 | 
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | 创建虚拟机。 |
-| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az_vm_list-ip-addresses) | 获取已创建虚拟机的 IP 地址。 |
+| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm-ip-addresses) | 获取已创建虚拟机的 IP 地址。 |
 
 ## <a name="next-steps"></a>后续步骤
 

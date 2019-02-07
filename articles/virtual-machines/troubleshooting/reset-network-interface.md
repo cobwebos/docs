@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: 6c3d3c831be52f56a1e0d3749ea2aa93fee0a955
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 7b8516566709c024043c413098c948965e255e13
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401735"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746653"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>如何为 Azure Windows VM 重置网络接口 
 
@@ -54,7 +54,7 @@ ms.locfileid: "54401735"
 
     ```powershell
     #Set the variables 
-    $SubscriptionID = "<Suscription ID>"
+    $SubscriptionID = "<Subscription ID>"
     $VM = "<VM Name>"
     $ResourceGroup = "<Resource Group>"
     $VNET = "<Virtual Network>"
@@ -95,7 +95,7 @@ ms.locfileid: "54401735"
 
     ```powershell
     #Set the variables 
-    $SubscriptionID = "<Suscription ID>"
+    $SubscriptionID = "<Subscription ID>"
     $VM = "<VM Name>"
     $CloudService = "<Cloud Service>"
     $VNET = "<Virtual Network>"

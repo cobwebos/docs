@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: b2b247b50eff446776edfbf3a552e92af3c7dfff
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fe98caa2a78722d621c43f1ef708e24add0efb56
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228791"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55664108"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure 高级威胁检测
 
@@ -29,7 +29,7 @@ Azure 提供多种安全性配置和自定义选项，以满足应用部署的�
 
 ## <a name="azure-active-directory-identity-protection"></a>Azure Active Directory 标识保护
 
-[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) 是 [Azure Active Directory Premium P2](https://docs.microsoft.com/azure/active-directory/active-directory-editions) 版本中的一项功能，概述了可影响组织标识的风险事件和潜在漏洞。 Identity Protection 使用现有的 Azure AD 异常情况检测功能（可通过 [Azure AD 异常活动报告](https://docs.microsoft.com/azure/active-directory/active-directory-view-access-usage-reports#anomalous-activity-reports)获得），并引入了新的可以检测实时异常的风险事件类型。
+[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) 是 [Azure Active Directory Premium P2](https://docs.microsoft.com/azure/active-directory/active-directory-editions) 版本中的一项功能，概述了可影响组织标识的风险事件和潜在漏洞。 Identity Protection 使用现有的 Azure AD 异常情况检测功能（可通过 [Azure AD 异常活动报告](https://docs.microsoft.com/azure/active-directory/active-directory-view-access-usage-reports)获得），并引入了新的可以检测实时异常的风险事件类型。
 
 ![Azure AD Identity Protection 示意图](./media/azure-threat-detection/azure-threat-detection-fig1.png)
 

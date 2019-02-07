@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: eb6f1624a3fefbad829600d2280d4eaeedd188bc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 107c844051ab396fe467a1a629883746b2903125
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179967"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731812"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-postgresql-server-using-azure-cli"></a>使用 Azure CLI 启用和下载适用于 PostgreSQL 服务器的 Azure 数据库的服务器慢查询日志
 此示例 CLI 脚本可启用和下载单个适用于 PostgreSQL 服务器的 Azure 数据库的慢查询日志。
@@ -35,13 +35,13 @@ ms.locfileid: "55179967"
 
 | **命令** | **说明** |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
-| [az postgres server create](/cli/azure/postgres/server#az_msql_server_create) | 创建托管数据库的 PostgreSQL 服务器。 |
+| [az group create](/cli/azure/group) | 创建用于存储所有资源的资源组。 |
+| [az postgres server create](/cli/azure/postgres/server) | 创建托管数据库的 PostgreSQL 服务器。 |
 | [az postgres server configuration list](/cli/azure/postgres/server/configuration) | 列出服务器的配置值。 |
-| [az postgres server configuration set](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_set) | 更新服务器的配置。 |
-| [az postgres server-logs list](/cli/azure/postgres/server-logs#az_postgres_server_logs_list) | 列出服务器的日志文件。 |
-| [az postgres server-logs download](/cli/azure/postgres/server-logs#az_postgres_server_logs_download) | 下载日志文件。 |
-| [az group delete](/cli/azure/group#az_group_delete) | 删除资源组，包括所有嵌套的资源。 |
+| [az postgres server configuration set](/cli/azure/postgres/server/configuration) | 更新服务器的配置。 |
+| [az postgres server-logs list](/cli/azure/postgres/server-logs) | 列出服务器的日志文件。 |
+| [az postgres server-logs download](/cli/azure/postgres/server-logs) | 下载日志文件。 |
+| [az group delete](/cli/azure/group) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 - 阅读有关 Azure CLI 的更多信息：[Azure CLI 文档](/cli/azure)。

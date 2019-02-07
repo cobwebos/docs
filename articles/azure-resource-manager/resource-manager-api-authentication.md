@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: d7beab66bdaed312f32adef74ceb4b2944e6853e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: a81c1d20e0f7b58c132a5ece04f05d6740c2308f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103875"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498244"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>使用 Resource Manager 身份验证 API 访问订阅
-## <a name="introduction"></a>介绍
+
 本文面向需要创建应用来管理客户 Azure 资源的软件开发人员，介绍如何使用 Azure 资源管理器 API 进行身份验证，并获取其他订阅中资源的访问权限。
 
 应用可通过多种方式访问 Resource Manager API：
@@ -32,7 +32,10 @@ ms.locfileid: "54103875"
 
 本文提供创建应用来利用这两种授权方法的逐步说明。 其中说明如何使用 REST API 或 C# 执行每个步骤。 完整的 ASP.NET MVC 应用程序位于 [https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense)。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="what-the-web-app-does"></a>Web 应用的功能
+
 Web 应用：
 
 1. 将 Azure 用户登录。
@@ -74,7 +77,7 @@ Web 应用：
 以下示例演示如何使用 Azure PowerShell 注册应用。 必须拥有最新版本（2016 年 8 月）Azure PowerShell 才能正常运行此命令。
 
 ```azurepowershell-interactive
-$app = New-AzureRmADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
+$app = New-AzADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
 ```
 
 若要以 AD 应用程序登录，需要使用应用程序的 ID 和密码。 若要查看前一命令返回的应用程序 ID，请使用：
@@ -330,7 +333,7 @@ ASP.net MVC 示例应用的 [GrantRoleToServicePrincipalOnSubscription](https://
 
 在请求中使用以下值：
 
-| Guid | Description |
+| Guid | 说明 |
 | --- | --- |
 | 09cbd307-aa71-4aca-b346-5f253e6e3ebb |订阅的 ID |
 | c3097b31-7309-4c59-b4e3-770f8406bad2 |应用程序服务主体的对象 ID |

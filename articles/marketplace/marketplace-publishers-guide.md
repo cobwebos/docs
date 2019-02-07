@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 487872b1e9344aaefad5ca0953c41b59f01027b0
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 43badaada3de352ec7bafeb422965a047261a1e4
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753959"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656828"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure 市场和 AppSource 发布指南
 
 本市场发布指南旨在帮助新发布者和现有发布者了解如何利用 [Azure 市场](https://azuremarketplace.microsoft.com)和 [Microsoft AppSource](https://appsource.microsoft.com) 的店面列出他们的应用程序和服务，从而在与 Microsoft 的合作中发展自己的业务。
 
 >[!Note]
->此处的市场是指 Azure 市场和 AppSource。  有关详细信息，请参阅[一个市场，两个店面](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace)。
+>此处的市场是指 Azure 市场和 AppSource。  有关详细信息，请参阅[一个市场，两个店面](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)。
 
 本指南涵盖以下主题： 
 *   什么是市场及其工作原理 

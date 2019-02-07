@@ -3,7 +3,7 @@ title: Azure SQL 数据库 Premium RS 服务层停用 | Microsoft Docs
 description: Premium RS 服务层即将停用，对其的支持即将终结 - 请参阅迁移选项。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 6632d057a509103de3581c757555c6e2c1b827c6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c223b55e8854c9d304354d917e07f4dd7720e72c
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465327"
+ms.locfileid: "55507802"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Azure SQL 数据库 Premium RS 服务层（预览版）即将停用 - 迁移选项
 

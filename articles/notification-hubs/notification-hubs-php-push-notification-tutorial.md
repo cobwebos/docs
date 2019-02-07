@@ -14,12 +14,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 7062404da6b999d42dc523ba72be486df1fc0057
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 7bd533e9319a265e935e32be15768ab3487db6da
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093604"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561342"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>如何通过 PHP 使用通知中心
 
@@ -139,7 +139,7 @@ ms.locfileid: "55093604"
         public $headers;
 
         function __construct($format, $payload) {
-            if (!in_array($format, ["template", "apple", "windows", "gcm", "windowsphone"])) {
+            if (!in_array($format, ["template", "apple", "windows", "fcm", "windowsphone"])) {
                 throw new Exception('Invalid format: ' . $format);
             }
 
@@ -167,7 +167,7 @@ ms.locfileid: "55093604"
         $uri = $this->endpoint . $this->hubPath . "/messages" . NotificationHub::API_VERSION;
         $ch = curl_init($uri);
 
-        if (in_array($notification->format, ["template", "apple", "gcm"])) {
+        if (in_array($notification->format, ["template", "apple", "fcm"])) {
             $contentType = "application/json";
         } else {
             $contentType = "application/xml";
@@ -249,7 +249,7 @@ ms.locfileid: "55093604"
 
     ```php
     $message = '{"data":{"msg":"Hello from PHP!"}}';
-    $notification = new Notification("gcm", $message);
+    $notification = new Notification("fcm", $message);
     $hub->sendNotification($notification, null);
     ```
 
