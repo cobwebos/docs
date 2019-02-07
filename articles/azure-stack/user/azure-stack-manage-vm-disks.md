@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 022dd937ae0557ca848a329039703f3b94ad0885
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b5254b45fcd71901876d9e77d1f29c0a0d40ce3f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245348"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813868"
 ---
 # <a name="create-virtual-machine-disk-storage-in-azure-stack"></a>在 Azure Stack 中创建虚拟机磁盘存储
 
@@ -50,7 +50,7 @@ ms.locfileid: "55245348"
 
 | 方法 | 选项
 |-|-|
-|[用户门户](#use-the-portal-to-add-additional-disks-to-a-vm)|- 向现有 VM 添加新的数据磁盘。 新磁盘由 Azure Stack 创建。 </br> </br>-将现有磁盘 (.vhd) 文件添加到以前创建的 VM。 若要执行此操作，必须准备 .vhd，然后将该文件上传到 Azure Stack。 |
+|用户门户|- 向现有 VM 添加新的数据磁盘。 新磁盘由 Azure Stack 创建。 </br> </br>-将现有磁盘 (.vhd) 文件添加到以前创建的 VM。 若要执行此操作，必须准备 .vhd，然后将该文件上传到 Azure Stack。 |
 |[PowerShell](#use-powershell-to-add-multiple-unmanaged-disks-to-a-vm) | - 使用 OS 磁盘创建新的 VM，同时向该 VM 添加一个或多个数据磁盘。 |
 
 ## <a name="use-the-portal-to-add-disks-to-a-vm"></a>使用门户向 VM 添加磁盘
@@ -69,25 +69,25 @@ ms.locfileid: "55245348"
 ### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>使用门户创建并附加新的数据磁盘
 
 1.  在门户中，选择**所有服务** > **虚拟机**。    
-    示例：![VM 仪表板](media/azure-stack-manage-vm-disks/vm-dashboard.png)
+    ![示例：VM 仪表板](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
 2.  选择以前创建的虚拟机。   
-    ![示例：在仪表板中选择 VM](media/azure-stack-manage-vm-disks/select-a-vm.png)
+    ![例如:在仪表板中选择 VM](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
 3.  对于虚拟机中，选择**磁盘** > **添加数据磁盘**。       
-    示例：![将新磁盘附加到 VM](media/azure-stack-manage-vm-disks/Attach-disks.png)    
+    ![示例：将新磁盘附加到 VM](media/azure-stack-manage-vm-disks/Attach-disks.png)    
 
 4.  数据磁盘：
     -  输入**LUN**。 LUN 必须是有效数字。
     -  选择**创建磁盘**。
-    示例：![将新磁盘附加到 VM](media/azure-stack-manage-vm-disks/add-a-data-disk-create-disk.png)
+    ![示例：将新磁盘附加到 VM](media/azure-stack-manage-vm-disks/add-a-data-disk-create-disk.png)
 
 5.  在创建托管磁盘边栏选项卡：
     -  输入**名称**的磁盘。
     -  选择一个现有或创建一个新**资源组**。
     -  选择**位置**。 默认情况下，位置设置为同一个容器用于保存 OS 磁盘。
     -  选择**帐户类型**。 
-        示例：![将新磁盘附加到 VM](media/azure-stack-manage-vm-disks/create-manage-disk.png)
+        ![示例：将新磁盘附加到 VM](media/azure-stack-manage-vm-disks/create-manage-disk.png)
 
         **高级 SSD**  
         高级磁盘 (SSD) 由固态驱动器支持，提供一致、 低延迟性能。 它们提供价格和性能之间的最佳平衡，并且是 O 能力的应用程序和生产工作负荷的理想选择。
@@ -113,11 +113,11 @@ ms.locfileid: "55245348"
 
        标准磁盘成本增加基于磁盘的大小。 高级磁盘成本和性能增加基于磁盘的大小。 有关详细信息，请参阅[托管磁盘定价](https://go.microsoft.com/fwlink/?linkid=843142)。
 
-    -  选择“创建”。 Azure Stack 创建并验证托管的磁盘。
+    -  选择“创建” 。 Azure Stack 创建并验证托管的磁盘。
 
 5.  在 Azure Stack 创建磁盘并将磁盘附加到虚拟机之后，新磁盘列在“数据磁盘”下的虚拟机磁盘设置中。   
 
-    ![示例：查看磁盘](media/azure-stack-manage-vm-disks/view-data-disk.png)
+    ![例如:查看磁盘](media/azure-stack-manage-vm-disks/view-data-disk.png)
 
 ### <a name="add-a-data-disk-from-a-storage-account"></a>从存储帐户中添加数据磁盘
 
@@ -127,41 +127,41 @@ ms.locfileid: "55245348"
 2. 选择**容器**想要放置的数据磁盘。 从**容器**边栏选项卡，可以创建一个新的容器的前提。 然后，可以将新磁盘的位置更改为其自己的容器。 为每个磁盘使用单独的容器时，数据磁盘的位置是分散的，这样可以改进性能。
 3. 选择“选择”以保存所做的选择。
 
-    ![示例：选择容器](media/azure-stack-manage-vm-disks/select-container.png)
+    ![例如:选择容器](media/azure-stack-manage-vm-disks/select-container.png)
 
 ## <a name="attach-an-existing-data-disk-to-a-vm"></a>将现有数据磁盘附加到 VM
 
 1.  [准备一个 .vhd 文件](https://docs.microsoft.com/azure/virtual-machines/windows/classic/createupload-vhd)，用作 VM 的数据磁盘。 将该 .vhd 文件上传到一个存储帐户，该帐户可以与要向其附加 .vhd 文件的 VM 配合使用。
 
     计划使用一个容器来保存 .vhd 文件，该容器不同于保存 OS 磁盘的容器。   
-    ![示例：上传 VHD 文件](media/azure-stack-manage-vm-disks/upload-vhd.png)
+    ![例如:上传 VHD 文件](media/azure-stack-manage-vm-disks/upload-vhd.png)
 
 2.  上传 .vhd 文件以后，即可将该 VHD 附加到 VM。 在左侧菜单中选择“虚拟机”。  
- 示例：![在仪表板中选择 VM](media/azure-stack-manage-vm-disks/vm-dashboard.png)
+ ![示例：在仪表板中选择 VM](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
 3.  从列表中选择虚拟机。
 
-    ![示例：在仪表板中选择 VM](media/azure-stack-manage-vm-disks/select-a-vm.png)
+    ![例如:在仪表板中选择 VM](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
 4.  在该虚拟机的页面上，选择“磁盘” > “附加现有磁盘”。   
 
-    ![示例：附加现有磁盘](media/azure-stack-manage-vm-disks/attach-disks2.png)
+    ![例如:附加现有磁盘](media/azure-stack-manage-vm-disks/attach-disks2.png)
 
 5.  在“附加现有磁盘”页面中，选择“VHD 文件”。 此时会打开“存储帐户”页。    
 
-    ![示例：选择 VHD 文件](media/azure-stack-manage-vm-disks/select-vhd.png)
+    ![例如:选择 VHD 文件](media/azure-stack-manage-vm-disks/select-vhd.png)
 
 6.  在“存储帐户”下选择要使用的帐户，然后选择一个容器，用于容纳以前上传的 .vhd 文件。 选择该 .vhd 文件，然后选择“选择”以保存所做的选择。    
 
-    ![示例：选择容器](media/azure-stack-manage-vm-disks/select-container2.png)
+    ![例如:选择容器](media/azure-stack-manage-vm-disks/select-container2.png)
 
 7.  在“附加现有磁盘”下，选择的文件列在“VHD 文件”下。 更新磁盘的“主机缓存”设置，然后选择“确定”以保存 VM 的新磁盘配置。    
 
-    ![示例：附加的 VHD 文件](media/azure-stack-manage-vm-disks/attach-vhd.png)
+    ![例如:附加的 VHD 文件](media/azure-stack-manage-vm-disks/attach-vhd.png)
 
 8.  在 Azure Stack 创建磁盘并将磁盘附加到虚拟机之后，新磁盘列在“数据磁盘”下的虚拟机磁盘设置中。   
 
-    ![示例：完成磁盘附加](media/azure-stack-manage-vm-disks/complete-disk-attach.png)
+    ![例如:完成磁盘附加](media/azure-stack-manage-vm-disks/complete-disk-attach.png)
 
 ## <a name="use-powershell-to-add-multiple-unmanaged-disks-to-a-vm"></a>使用 PowerShell 将多个非托管磁盘添加到 VM
 

@@ -14,16 +14,19 @@ ms.topic: article
 ms.date: 01/19/2019
 ms.author: sethm
 ms.lastreviewed: 01/19/2019
-ms.openlocfilehash: 9a14c819acbc46d8a281f73fd4f3185caa8a1e02
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 96cb07ca4ede26e9bf0e5ceba28f1549061d0bf3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478145"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815670"
 ---
 # <a name="configure-ipsecike-policy-for-site-to-site-vpn-connections"></a>配置站点到站点 VPN 连接的 IPsec/IKE 策略
 
 本文将指导完成为站点到站点 (S2S) VPN 配置 IPsec/IKE 策略的步骤在 Azure Stack 中的连接。
+
+>[!NOTE]
+> 您必须运行 Azure Stack 内部版本**1809年**或更高版本才能使用此功能。  如果当前正在生成 1809年之前，请更新你的 Azure Stack 系统到最新版本然后再尝试使用此功能，或按照这篇文章中的步骤。
 
 ## <a name="ipsec-and-ike-policy-parameters-for-vpn-gateways"></a>VPN 网关的 IPsec 和 IKE 策略参数
 
@@ -101,7 +104,7 @@ IPsec 和 IKE 协议标准在各种组合中支持范围广泛的加密算法。
 
 | Diffie-Hellman 组 | DHGroup   | PFSGroup      | 密钥长度    |
 |----------------------|-----------|---------------|---------------|
-| 第                    | DHGroup1  | PFS1          | 768 位 MODP  |
+| 1                    | DHGroup1  | PFS1          | 768 位 MODP  |
 | 2                    | DHGroup2  | PFS2          | 1024 位 MODP |
 | 14                   | DHGroup14<br/>DHGroup2048 | PFS2048       | 2048 位 MODP |
 | 19                   | ECP256    | ECP256        | 256 位 ECP   |
@@ -118,7 +121,7 @@ IPsec 和 IKE 协议标准在各种组合中支持范围广泛的加密算法。
 
 有关更多详细创建站点到站点 VPN 连接的分步说明，请参阅 [创建站点到站点 VPN 连接](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>系统必备
 
 在开始之前，请确保具备以下先决条件：
 
@@ -225,14 +228,14 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupNam
 ```
 
 > [!IMPORTANT]
-> 对连接指定 IPsec/IKE 策略后，Azure VPN 网关将仅发送或接收对特定连接采用指定的加密算法和密钥强度的 IPsec/IKE 提议。 请确保连接你的本地 VPN 设备使用或接受确切策略组合，否则为将不会建立站点到站点 VPN 隧道。
+> 对连接指定 IPsec/IKE 策略后，Azure VPN 网关将仅发送或接受对该特定连接采用指定加密算法和密钥强度的 IPsec/IKE 方案。 请确保连接你的本地 VPN 设备使用或接受确切策略组合，否则为将不会建立站点到站点 VPN 隧道。
 
 ## <a name="part-4---update-ipsecike-policy-for-a-connection"></a>第 4-部分连接的更新 IPsec/IKE 策略
 
 上一部分介绍了如何管理现有的站点到站点连接的 IPsec/IKE 策略。 以下部分将指导完成对连接执行以下操作：
 
 1. 显示连接的 IPsec/IKE 策略
-2. 添加 IPsec/IKE 策略到连接或更新策略
+2. 为连接添加或更新 IPsec/IKE 策略
 3. 删除连接的 IPsec/IKE 策略
 
 > [!NOTE]
@@ -240,7 +243,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupNam
 
 ### <a name="1-show-the-ipsecike-policy-of-a-connection"></a>1.显示连接的 IPsec/IKE 策略
 
-以下示例展示如何对连接配置 IPsec/IKE 策略。 脚本也源自于上一练习：
+以下示例演示如何对连接配置 IPsec/IKE 策略。 脚本也源自于上一练习：
 
 ```powershell
 $RG1 = "TestPolicyRG1"

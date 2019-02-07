@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 6a6782c5e1cd7b5f42b619cd52470b640813a905
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: afa4b3861e9fb7f91fd9f5d540353c5fad23efe0
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42144180"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913608"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>如何使用设备预配服务执行 X.509 CA 证书的所有权证明
 
@@ -54,7 +54,7 @@ ms.locfileid: "42144180"
 Microsoft 提供了工具和示例来帮助你创建签名的验证证书： 
 
 - **Azure IoT 中心 C SDK** 提供了 PowerShell (Windows) 和 (Linux) Bash 脚本来帮助你创建用于开发的 CA 证书和叶证书，以及使用验证码执行所有权证明。 可将系统相关的[文件](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates)下载到工作文件夹，并遵照[管理 CA 证书自述文件](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的说明执行 CA 证书的所有权证明。 
-- **Azure IoT 中心 C# SDK** 包含[组证书验证示例](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples/GroupCertificateVerificationSample)，可用于执行所有权证明。
+- **Azure IoT 中心 C# SDK** 包含[组证书验证示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample)，可用于执行所有权证明。
  
 > [!IMPORTANT]
 > 除了执行所有权证明以外，使用上述 PowerShell 和 Bash 脚本还可创建根证书、中间证书和叶证书用于验证和预配设备。 只能在开发中使用这些证书。 切勿将它们用于生产环境。 

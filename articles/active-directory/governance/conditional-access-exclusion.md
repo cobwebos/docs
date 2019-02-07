@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 0ae6c27091dd2938ec7410e78ae12dbe20509029
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 12a9602ecd61da5dc497790ecca6d8d6f874252e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167594"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184285"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-that-have-been-excluded-from-conditional-access-policies"></a>使用 Azure AD 访问评审管理已从条件访问策略中排除的用户
 
@@ -96,7 +96,7 @@ ms.locfileid: "47167594"
 
 让我们通过两个示例来了解可在哪种情况下使用访问评审管理条件访问策略中的排除项。
 
-## <a name="example-1-access-review-for-users-accessing-from-blocked-countries"></a>示例 1：对从受禁国家/地区访问的用户进行访问评审
+## <a name="example-1-access-review-for-users-accessing-from-blocked-countries"></a>示例 1：对从受阻止国家/地区访问的用户进行访问评审
 
 假设某个条件访问策略会阻止来自特定国家/地区的访问。 该策略排除了某个组。 下面是评审该组成员的建议访问评审方法。
 

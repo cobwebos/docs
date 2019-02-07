@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 843feb83b8202d3ef8e2c6c8c60cb9b509048530
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 114d71227e3cf3d0f235fc63135534b1030d4adc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290767"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188332"
 ---
 # <a name="performance-metrics"></a>性能指标
 
@@ -80,7 +80,7 @@ ms.locfileid: "52290767"
 
 Service Fabric 生成大量自定义性能计数器。 如果已安装 SDK，可以在 Windows 计算机上的“性能监视器”应用程序（“开始”>“性能监视器”）中看到完整列表。 
 
-在要将应用程序部署到的群集中，如果使用的是 Reliable Actors，请添加 `Service Fabric Actor` 和 `Service Fabric Actor Method` 类别的计数器（请参阅 [Service Fabric Reliable Actors 的诊断](service-fabric-reliable-actors-diagnostics.md)）。
+在要部署到群集的应用程序中，如果使用的是 Reliable Actors，请添加 `Service Fabric Actor` 和 `Service Fabric Actor Method` 类别的计数器（请参阅 [Service Fabric Reliable Actors 诊断](service-fabric-reliable-actors-diagnostics.md)）。
 
 如果使用 Reliable Services 或服务远程处理，可同样获得应从其中收集计数器的 `Service Fabric Service` 和 `Service Fabric Service Method` 计数器类别。请参阅[使用服务远程处理进行监视](service-fabric-reliable-serviceremoting-diagnostics.md)和 [Reliable Services 性能计数器](service-fabric-reliable-services-diagnostics.md#performance-counters)。 
 

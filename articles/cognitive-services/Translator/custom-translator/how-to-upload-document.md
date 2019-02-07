@@ -5,16 +5,16 @@ description: 使用文档上传功能可以上传用于训练的并行文档。 
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 3a0adb4b761121334e93f2b8d2d764ff3ab495e2
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: e08813c71a0b95b6b130ab71313bda6d044d730a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633242"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217214"
 ---
 # <a name="upload-a-document"></a>上传文档
 
@@ -35,13 +35,13 @@ ms.locfileid: "52633242"
 
 2.  在对话框中填充以下信息：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  文档类型：
+    a.  文档类型：
 
     -  训练：这些文档将用于训练集。
     -  优化：这些文档将用于优化集。
     -  测试：这些文档将用于测试集。
     -  短语字典：这些文档将用于短语字典。
-    -  句子字典：这些文档将用于句子字典。
+    -  句子字典：这些文档将用于句子字典
 
     b.  语言对
 
@@ -52,7 +52,7 @@ ms.locfileid: "52633242"
     -  并行数据：
         -  源文件：从本地计算机中选择源语言文件。
         -  目标文件：从本地计算机中选择目标语言文件。
-        -  文档名称：仅当上传并行文件时才使用。
+        -  文档名：仅当上传并行文件时才使用。
 
     - 组合数据：
         -  组合文件：从本地计算机中选择组合文件。 组合文件同时包含源语言句子和目标语言句子。 [命名约定](document-formats-naming-convention.md)对于组合文件而言非常重要。

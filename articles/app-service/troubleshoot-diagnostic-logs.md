@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d5a94258e8c17d13e15f22f9fa96ef0647105abe
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: b73656e2bb7c413d2c29fafb682f39154499854a
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807867"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904448"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -35,7 +35,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](https://go.
 可以启用或禁用以下种类的日志：
 
 * **详细错误日志记录** - 指示故障的 HTTP 状态代码（状态代码 400 或更大数字）的详细错误消息。 其中可能包含有助于确定服务器返回错误代码的原因的信息。
-* **失败请求跟踪** - 有关失败请求的详细信息，包括对用于处理请求的 IIS 组件和每个组件所用的时间的跟踪。 在尝试提高站点性能或隔离导致要返回特定 HTTP 错误的内容时，此信息很有用。
+* **失败请求跟踪** - 有关失败请求的详细信息，包括对用于处理请求的 IIS 组件和每个组件所用的时间的跟踪。 如果要提高站点性能或隔离特定的 HTTP 错误，这将非常有用。
 * **Web 服务器日志记录** - 使用 [W3C 扩展日志文件格式](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)的 HTTP 事务信息。 这在确定整体站点指标（如处理的请求数量或来自特定 IP 地址的请求数）时非常有用。
 
 ### <a name="application-diagnostics"></a>应用程序诊断
@@ -53,12 +53,16 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](https://go.
 <!-- todo:cleanup dogfood addresses in screenshot -->
 ![日志部分](./media/web-sites-enable-diagnostic-log/logspart.png)
 
-启用“应用程序诊断”时，还需选择“级别”。 此设置将捕获的信息筛选为“信息性”信息、“警告”信息或“错误”信息。 若将此选项设置为“详细”，将记录应用程序生成的所有信息。
+启用“应用程序诊断”时，还需选择“级别”。 下表显示了每个级别包含的日志类别：
 
-> [!NOTE]
-> 与更改 Web.config 文件不同，启用应用程序诊断或更改诊断日志级别不会回收运行应用程序的应用域。
->
->
+| 级别| 包含的日志类别 |
+|-|-|
+|**已禁用** | 无 |
+|**错误** | “错误”、“严重” |
+|**警告** | “警告”、“错误”、“严重”|
+|**信息** | “信息”、“警告”、“错误”、“严重”|
+|**详细** | “跟踪”、“调试”、“信息”、“警告”、“错误”、“严重”（所有类别） |
+|-|-|
 
 对于“应用程序日志记录”，可以临时打开文件系统选项以便调试。 此选项将在 12 小时后自动关闭。 还可打开 blob 存储选项，选择某个 blob 容器来写入日志。
 

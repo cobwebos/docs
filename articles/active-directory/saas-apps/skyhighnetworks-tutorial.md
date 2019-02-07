@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 48d6ddd1-4d3e-4019-8234-5e5212684d9c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: jeedes
-ms.openlocfilehash: 40237946adf0e9cf30367fd0464a6c32572c3aaf
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6b66a7343c6ddaa9ff8cf36489798a96fbdf1c30
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423719"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55175309"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skyhigh-networks"></a>教程：Azure Active Directory 与 Skyhigh Networks 集成
 
@@ -169,7 +169,7 @@ ms.locfileid: "39423719"
  
 ### <a name="create-a-skyhigh-networks-test-user"></a>创建 Skyhigh Networks 测试用户
 
-在本部分中，将在 Skyhigh Networks 中创建一个名为 Britta Simon 的用户。 请与 [Skyhigh Networks 支持团队](mailto:support@skyhighnetworks.com)协作，将用户添加到 Skyhigh Networks 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Skyhigh Networks 中创建一个名为 Britta Simon 的用户。 与  [Skyhigh Networks 支持团队](mailto:support@skyhighnetworks.com)协作，将用户添加到 Skyhigh Networks 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -206,12 +206,12 @@ ms.locfileid: "39423719"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Skyhigh Networks”磁贴时，应自动登录到 Skyhigh Networks 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

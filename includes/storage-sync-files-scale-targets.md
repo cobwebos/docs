@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: 00124562d3bc21f9139ae54f022d7893a4eaf11c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 6d9370ce6a031377e37c4e830400337f3e57a62e
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53638840"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55084851"
 ---
 | 资源 | 目标 | 硬限制 |
 |----------|--------------|------------|
-| 每个订阅的存储同步服务数 | 每个区域有 15 个存储同步服务 | 否 |
+| 每个区域的存储同步服务数 | 15 个存储同步服务 | 是 |
 | 每个存储同步服务的同步组数 | 100 个同步组 | 是 |
 | 每个存储同步服务的已注册服务器 | 99 台服务器 | 是 |
 | 每个同步组的云终结点数 | 1 个云终结点 | 是 |

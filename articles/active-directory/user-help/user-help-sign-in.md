@@ -7,48 +7,48 @@ manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 4bd1ceb03ddce572e0571afb87ec2f0c36a49443
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 983bf77a157de539264a6437ffbebb291d310840
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810408"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181412"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>使用双重验证或安全信息登录
 
-设置双重验证或安全信息后，可以使用指定的身份验证方法登录到你的工作或学校帐户。
+设置双重验证或安全信息后，可以使用指定的身份验证方法登录到你的帐户。
 
 >[!Note]
 >如果你仍使用双重验证体验，需按照[设置帐户以便进行双重验证](multi-factor-authentication-end-user-first-time.md)一文中的说明设置身份验证方法。 如果管理员已启用安全信息体验，则你需要使用这些分步指南设置身份验证方法：<ul><li>[设置安全信息以使用身份验证应用](security-info-setup-auth-app.md)</li><li>[设置安全信息以使用短信](security-info-setup-text-msg.md)</li><li>[设置安全信息以使用电话呼叫](security-info-setup-phone-number.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>使用验证器应用通知在移动设备上登录
 
-1. 使用你的用户名和密码登录到工作或学校帐户。
+1. 使用用户名和密码登录到你的帐户。
 
 2. 从发送到移动设备的审批通知中选择“批准”。
 
 
 ## <a name="sign-in-using-an-authenticator-app-code-on-your-mobile-device"></a>使用验证器应用代码在移动设备上登录
 
-1. 使用你的用户名和密码登录到工作或学校帐户。
+1. 使用用户名和密码登录到你的帐户。
 
 2. 打开验证器应用，然后在“输入代码”框中键入为帐户随机生成的代码。
 
 
 ## <a name="sign-in-using-your-phone-number"></a>使用电话号码登录
 
-1. 使用你的用户名和密码登录到工作或学校帐户。
+1. 使用用户名和密码登录到你的帐户。
 
 2. 接听电话，并按照说明进行操作。
 
 
 ## <a name="sign-in-using-a-text-message"></a>使用短信登录
 
-1. 使用你的用户名和密码登录到工作或学校帐户。
+1. 使用用户名和密码登录到你的帐户。
 
 2. 打开短信，然后将短信中的代码键入到“输入代码”框。
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: a50fca059331b28c46adb65903be4e7ba018a36c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 2fbc155afc3fd5280f2baf4eccabb895c158b89f
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052030"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913560"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -198,29 +198,27 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 请求 ID 可以是消息属性值的任何有效值（如 [IoT 中心消息传送开发人员指南][lnk-messaging]中所述），且需要验证确保状态是整数。
 
-响应正文包含设备孪生的 properties 节。 以下代码片段表明，标识注册表项的正文限制为“properties”成员，例如：
+响应正文包含设备孪生的 properties 节，如以下响应示例所示：
 
 ```json
 {
-    "properties": {
-        "desired": {
-            "telemetrySendFrequency": "5m",
-            "$version": 12
-        },
-        "reported": {
-            "telemetrySendFrequency": "5m",
-            "batteryLevel": 55,
-            "$version": 123
-        }
+    "desired": {
+        "telemetrySendFrequency": "5m",
+        "$version": 12
+    },
+    "reported": {
+        "telemetrySendFrequency": "5m",
+        "batteryLevel": 55,
+        "$version": 123
     }
 }
 ```
 
 可能的状态代码为：
 
-|状态 | Description |
+|状态 | 说明 |
 | ----- | ----------- |
-| 200 | Success |
+| 204 | 成功（不返回任何内容） |
 | 429 | 请求过多（受限），如 [IoT 中心限制][lnk-quotas]中所述 |
 | 5** | 服务器错误 |
 
@@ -249,7 +247,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 可能的状态代码为：
 
-|状态 | Description |
+|状态 | 说明 |
 | ----- | ----------- |
 | 200 | Success |
 | 400 | 错误的请求。 格式不正确的 JSON |

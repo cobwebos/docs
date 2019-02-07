@@ -14,12 +14,12 @@ ms.date: 01/19/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/19/2019
-ms.openlocfilehash: fbca9eb3703777c0d20998e65bf446b5951c5091
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 8e63b9854d9491ed2cbb2107c93237526a7f1ba8
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745395"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766935"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Go 配合使用
 
@@ -86,7 +86,7 @@ Go SDK 依赖于 Azure **Go-autorest**模块将 REST 请求发送到 Azure 资�
 
 3. 如果不可用，请创建订阅，并保存订阅 ID 供稍后使用。 有关创建订阅的信息，请参阅[在 Azure Stack 中创建产品/服务](../azure-stack-subscribe-plan-provision-vm.md)。
 
-4. 创建服务主体**订阅**作用域和**所有者**角色。 保存服务主体 ID 和机密。 有关创建 Azure Stack 的服务主体的信息，请参阅[创建服务主体](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad)。 现在已设置 Azure Stack 环境。
+4. 创建服务主体**订阅**作用域和**所有者**角色。 保存服务主体 ID 和机密。 有关创建 Azure Stack 的服务主体的信息，请参阅[创建服务主体](azure-stack-create-service-principals.md)。 现在已设置 Azure Stack 环境。
 
 5. 从你的代码中的 Go SDK 配置文件导入服务模块。 最新版本的 Azure Stack 配置文件为 **2017-03-09**。 例如，若要导入网络模块从**2017年-03-09**配置文件类型，请使用以下代码：
 

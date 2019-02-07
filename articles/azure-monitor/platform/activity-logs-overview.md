@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: f5d09600829a3efa2682721bf4aedbed7e5cf969
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3a1ffb3b7a0f154b1d74ca7a8789e5fdadadec31
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439062"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883766"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>使用 Azure 活动日志监视订阅活动
 
@@ -45,7 +45,7 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 * 此类别包含基于订阅中定义的任何自动缩放设置的自动缩放引擎操作相关的所有事件记录。 可在此类别中看到的事件类型示例如“自动缩放扩展操作失败”。 使用自动缩放，可在支持的资源类型中，通过自动缩放设置基于日期和/或负载（指标）数据来自动增加或减少实例的数量。 满足纵向扩展或缩减条件时，开始、成功或失败的事件会记录到此类别中。
 * **建议** - 此类别包含 Azure 顾问提供的建议事件。
 * **安全性** - 此类别包含 Azure 安全中心生成的任何警报记录。 可在此类别中看到的事件类型示例为“执行了可疑的双扩展名文件”。
-* **策略** - 此类别不包含任何事件；它预留给将来使用。 
+* **Policy** - 此类别包含 Azure Policy 执行的所有效果操作的记录。 在此类别中看到的事件类型示例包括“审核”和“拒绝”。 Policy 执行的每个操作建模为对资源执行的操作。
 
 ## <a name="event-schema-per-category"></a>每个类别的事件架构
 [请参阅此文章，了解每个类别的活动日志事件架构。](../../azure-monitor/platform/activity-log-schema.md)
@@ -142,7 +142,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 
 | 属性 | 必选 | 说明 |
 | --- | --- | --- |
-| 名称 |是 |日志配置文件的名称。 |
+| Name |是 |日志配置文件的名称。 |
 | StorageAccountId |否 |应该将活动日志保存到其中的存储帐户的资源 ID。 |
 | serviceBusRuleId |否 |服务总线命名空间（需在其中创建事件中心）的服务总线规则 ID。 是以下格式的字符串：`{service bus resource ID}/authorizationrules/{key name}`。 |
 | 位置 |是 |要为其收集活动日志事件的逗号分隔区域的列表。 |

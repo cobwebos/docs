@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: 905f00842c5ce74f681a6c5c09ff8bf6c7a9e162
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: b24435501ed1312e91ebec9b9c434971dbc94b55
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091243"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163443"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>使用 Azure 门户在 VHD 中创建 VM
 
@@ -28,6 +28,8 @@ ms.locfileid: "49091243"
 - 如果已经有一个要使用的虚拟硬盘 (VHD)，或者需要从要使用的现有 VM 复制 VHD，可以将 VHD 附加到新 VM 作为 OS 磁盘，以此创建新的 VM。 
 
 - 可从已删除的 VM 的 VHD 创建新的 VM。 例如，如果 Azure VM 运行不正常，则可以删除该 VM，然后使用其 VHD 创建新的 VM。 可以重用同一 VHD，也可以创建 VHD 的副本，方法是：先创建快照，然后根据快照创建新的托管磁盘。 虽然创建快照需要多个步骤，但它可以保留原始 VHD 并提供回退的依据。
+
+- 获取经典 VM，并通过 VHD 创建使用资源管理器部署模型和托管磁盘的新 VM。 为了获得最佳结果，在创建快照之前，请在 Azure 门户中**停止**经典 VM。
  
 - 可以通过上传本地 VHD 并将其附加到新 VM，在本地 VHD 上创建 Azure VM。 可使用 PowerShell 或其他工具将 VHD 上传到存储帐户，然后根据 VHD 创建托管磁盘。 有关详细信息，请参阅[上传专用 VHD](create-vm-specialized.md#option-2-upload-a-specialized-vhd)。 
 

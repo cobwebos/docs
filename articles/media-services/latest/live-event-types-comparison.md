@@ -11,24 +11,24 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 3ed38ce75e5ee7c9f05533d64b28171482bfec51
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 9c8bff5a0a4f1599a3d23e0c7b07a1caca536a9b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725926"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153957"
 ---
-# <a name="liveevent-types-comparison"></a>LiveEvent 类型比较
+# <a name="live-event-types-comparison"></a>实时事件类型比较
 
-在 Azure 媒体服务中，[LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) 可以是下述两种类型之一：实时编码和直通。 
+在 Azure 媒体服务中，[实时事件](https://docs.microsoft.com/rest/api/media/liveevents)可以是下述两种类型之一：实时编码和直通。 
 
 ## <a name="types-comparison"></a>类型比较 
 
-下表比较了两种 LiveEvent 类型的功能。
+下表比较了两种实时事件类型的功能。
 
-| Feature | 直通 LiveEvent | 标准 LiveEvent |
+| Feature | 直通实时事件 | 标准实时事件 |
 | --- | --- | --- |
 | 单比特率输入在云中被编码为多比特率 |否 |是 |
 | 贡献源的最大视频分辨率 |4K（4096x2160，60 帧/秒） |1080p（1920x1088，30 帧/秒）|
@@ -50,10 +50,10 @@ ms.locfileid: "53725926"
 | 支持插入静态图像|否|否|
 | 支持通过 API 发出广告指示| 否|否|
 | 支持通过带内 SCTE35 消息发出广告指示|是|是|
-| 能够从贡献源出现的短时停顿中恢复|是|否（如果超过 6 秒而没有输入数据，LiveEvent 就会开始插入静态图像）|
+| 能够从贡献源出现的短时停顿中恢复|是|否（如果超过 6 秒而没有输入数据，实时事件就会开始插入静态图像）|
 | 支持非一致性输入 GOP|是|否 – 输入必须具有固定的 GOP 持续时间|
 | 支持可变帧率输入|是|否 - 输入必须是固定的帧速率。 轻微的帧率变化是容许的，例如在高速运动情况下出现的轻微帧率变化。 但是，贡献源不能降低帧速率（例如降低到 15 帧/秒）。|
-| 输入源丢失时，会自动关闭 LiveEvent|否|12 小时后，如果没有运行的 LiveOutput|
+| 输入源丢失时，会自动关闭实时事件|否|12 小时后，如果没有运行的 LiveOutput|
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 如何使用 Log Analytics（预览版）分析 Azure Active Directory 活动日志 |Microsoft Docs
+title: 使用 Log Analytics（预览版）分析 Azure Active Directory 活动日志 | Microsoft Docs
 description: 了解如何使用 Log Analytics（预览版）分析 Azure Active Directory 活动日志
 services: active-directory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 759a0da93544e2a17b71d762924981f05c3ea322
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: a508c8a2bb4a28372f5dd8f833f6e55adc3c39ed
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810766"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158734"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-log-analytics-preview"></a>如何使用 Log Analytics（预览版）分析 Azure AD 活动日志
 

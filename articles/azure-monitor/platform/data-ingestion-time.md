@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/08/2019
+ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 5db963b1ffea656455c06092c82ac95e85d87826
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 329472f3edee66db6b12e369ee8f944546ad4734
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213121"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900436"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Log Analytics 中的数据引入时间
 Azure Log Analytics 是 Azure Monitor 中的一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 关于数据收集后需要多长时间才能在 Log Analytics 中使用，大家通常存有疑问。 本文将对影响此延迟的不同因素进行说明。
@@ -45,8 +45,15 @@ Azure Log Analytics 是 Azure Monitor 中的一种大规模数据服务，每月
 ### <a name="agent-upload-frequency"></a>代理上传频率
 为确保 Log Analytics 代理保持轻型，代理会缓冲日志并定期将其上传到 Log Analytics。 上传频率在 30 秒到 2 分钟之间变化，具体取决于数据类型。 大多数数据可在 1 分钟内上传。 网络状况可能会对数据抵达 Log Analytics 引入点的延迟产生负面影响。
 
-### <a name="azure-logs-and-metrics"></a>Azure 日志和指标 
-活动日志数据大约需要 5 分钟才可在 Log Analytics 中使用。 诊断日志和指标中的数据可能需要 1-15 分钟才可供处理，具体取决于 Azure 服务。 可用之后，要将数据发送到 Log Analytics 引入点，对于日志还需要 30-60 秒，而指标则需要 3 分钟。
+### <a name="azure-activity-logs-diagnostic-logs-and-metrics"></a>Azure 活动日志、诊断日志和指标
+Azure 数据增加了额外的时间，以便在 Log Analytics 引入点处可用于处理：
+
+- 诊断日志中的数据需要 2 到 15 分钟，具体取决于 Azure 服务。 请参阅[下面的查询](#checking-ingestion-time)，以便在你的环境中检查此延迟
+- 将 Azure 平台指标发送到 Log Analytics 引入点需要 3 分钟。
+- 将活动日志数据发送到 Log Analytics 引入点大约需要 10 到 15 分钟。
+
+数据在引入点处可用后，还需要 2 到 5 分钟才能进行查询。
+
 
 ### <a name="management-solutions-collection"></a>管理解决方案收集
 某些解决方案不从代理收集其数据，并且可能使用会引入额外延迟的收集方法。 一些解决方案以固定时间间隔收集数据，而不尝试近实时收集。 具体示例包括：

@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/21/2018
+ms.date: 01/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1db379a48d4dafdaa2494d081658296a7145bcd9
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 80510b4f3f07b96b9084108fcb89c75e108cbc65
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54815219"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096835"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>适用于 IaaS VM 的 Azure 磁盘加密常见问题解答
 
@@ -42,8 +42,8 @@ Azure 磁盘加密可在标准层 VM 上使用，包括 [A、D、DS、G、GS 和
 
 | Linux 分发版 | 版本 | 支持加密的卷类型|
 | --- | --- |--- |
-| Ubuntu | 16.04-DAILY-LTS | OS 和数据磁盘 |
-| Ubuntu | 14.04.5-DAILY-LTS | OS 和数据磁盘 |
+| Ubuntu | 16.04| OS 和数据磁盘 |
+| Ubuntu | 14.04.5</br>[其 Azure 优化内核更新到 4.15 或更高版本](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | OS 和数据磁盘 |
 | RHEL | 7.5 | OS 和数据磁盘* |
 | RHEL | 7.4 | OS 和数据磁盘* |
 | RHEL | 7.3 | OS 和数据磁盘* |
@@ -59,12 +59,10 @@ Azure 磁盘加密可在标准层 VM 上使用，包括 [A、D、DS、G、GS 和
 | CentOS | 6.7 | 数据磁盘 |
 | CentOS | 6.6 | 数据磁盘 |
 | CentOS | 6.5 | 数据磁盘 |
-| openSUSE | 13.2 | 数据磁盘 |
-| SLES | 12 SP1 | 数据磁盘 |
-| SLES | 优先级：12-SP1 | 数据磁盘 |
-| SLES | HPC 12 | 数据磁盘 |
-| SLES | 优先级：11-SP4 | 数据磁盘 |
-| SLES | 11 SP4 | 数据磁盘 |
+| openSUSE | SUSE:openSUSE-Leap:42.3:latest | 数据磁盘 |
+| SLES | SUSE:SLES-Priority:12-SP4:latest | 数据磁盘 |
+| SLES | SUSE:SLES-HPC:12-SP3:latest | 数据磁盘 |
+| SLES | SUSE:SLES-Priority:12-SP3:latest | 数据磁盘 |
 
 
 *__新的 ADE 实现支持 RHEL OS 和 RHEL7 即用即付映像的数据磁盘。ADE 目前不支持 RHEL 自带订阅 (BYOS) 映像。另请参阅[适用于 Linux 的 Azure 磁盘加密](azure-security-disk-encryption-linux.md)，了解详细信息。__

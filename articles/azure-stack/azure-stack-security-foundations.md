@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.openlocfilehash: fba4020c5e947c135d9e17cfb1d0b2a79ad8a502
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: efa97c18a63954239475338c85f2145b8c6c6ac6
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54819333"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55767263"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Azure Stack 基础结构安全局势
 
@@ -65,7 +66,7 @@ Device Guard 策略也会阻止第三方代理或软件在 Azure Stack 基础结
 ## <a name="credential-guard"></a>Credential Guard
 Azure Stack 中的另一个 Windows Server 2016 安全功能是 Windows Defender Credential Guard，它可用于防止 Azure Stack 基础结构凭据遭到“传递哈希”和“传递票证”攻击。
 
-## <a name="antimalware"></a>反恶意软件
+## <a name="antimalware"></a>Antimalware
 Azure Stack 中的每个组件（Hyper-V 主机和虚拟机）受到 Windows Defender Antivirus 的保护。
 
 在联网场景中，防病毒定义和引擎更新每天应用多次。 在离线场景中，反恶意软件更新作为 Azure Stack 的每月更新的一部分应用。 有关详细信息，请参阅[更新 Azure Stack 上的 Windows Defender Antivirus](azure-stack-security-av.md)。

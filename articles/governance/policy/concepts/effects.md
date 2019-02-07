@@ -4,17 +4,17 @@ description: Azure Policy 定义具有各种效果，可确定管理和报告符
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0fcb30132a83502b8ca5f58364d78129109b8a9d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 68abb5fd95823941bdb5d87d7ebc6675b0760850
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310838"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912503"
 ---
 # <a name="understand-policy-effects"></a>了解 Policy 效果
 
@@ -257,6 +257,11 @@ DeployIfNotExists 效果的“details”属性具有可定义要匹配的相关�
   - 例如，可用于验证父资源（位于 if 条件中）与匹配的相关资源位于相同的资源位置。
 - **roleDefinitionIds** [必选]
   - 此属性必须包含与可通过订阅访问的基于角色的访问控制角色 ID 匹配的字符串数组。 有关详细信息，请参阅[修正 - 配置策略定义](../how-to/remediate-resources.md#configure-policy-definition)。
+- **DeploymentScope**（可选）
+  - 允许的值为 Subscription 和 ResourceGroup。
+  - 设置应执行的部署类型。 _Subscription_ 指示[在订阅级别部署](../../../azure-resource-manager/deploy-to-subscription.md)，_ResourceGroup_ 指示部署到资源组。
+  - 使用订阅级别部署时，必须在 _Deployment_ 中指定 _location_ 属性。
+  - 默认值是 ResourceGroup。
 - **Deployment** [必选]
   - 该属性应包含完整的模板部署，因为它将传递给 `Microsoft.Resources/deployments` PUT API。 有关详细信息，请参阅[部署 REST API](/rest/api/resources/deployments)。
 
@@ -351,5 +356,5 @@ DeployIfNotExists 效果的“details”属性具有可定义要匹配的相关�
 - 查看[策略定义结构](definition-structure.md)
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)
 - 了解如何[获取符合性数据](../how-to/getting-compliance-data.md)
-- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)
+- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组

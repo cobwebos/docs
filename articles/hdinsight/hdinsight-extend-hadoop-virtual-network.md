@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 0119e05ce5cb8d1c2e27936dc44896b7acef9312
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: a2731397ece833adcedc4ebab640fa1b3ab2fc05
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725960"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076819"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>使用 Azure 虚拟网络扩展 Azure HDInsight
 
@@ -308,7 +308,7 @@ HDInsight 在多个端口上公开服务。 使用虚拟设备防火墙时，必
 
 ## <a id="hdinsight-ports"></a>所需的端口
 
-如果你计划使用网络虚拟设备防火墙保护虚拟网络，则必须允许以下端口上的出站流量：
+如果计划使用**防火墙**来保护虚拟网络并通过某些端口访问群集，则应允许你的方案所需的端口上的流量。 默认情况下，不需要将这些端口加入允许列表：
 
 * 53
 * 443

@@ -11,16 +11,19 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: juliako
-ms.openlocfilehash: e286617897ecc9201c3880affd0a974f7330305a
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 18c5e48b5f7dbf664b607b8b83473a914256590b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359625"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104539"
 ---
 # <a name="streaming-endpoints"></a>流式处理终结点
 
-在 Microsoft Azure 媒体服务 (AMS)中，[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints) 实体表示一个流服务，该服务可以直接将内容传递给客户端播放器应用程序，也可以传递给内容分发网络 (CDN) 以进一步分发。 流式处理终结点服务的出站流可以是实时流，也可以是媒体服务帐户中的视频点播资产。 用户创建媒体服务帐户时，将为用户创建一个处于“已停止”状态的默认流式处理终结点。 无法删除“默认”流式处理终结点。 可以在帐户下创建其他流式处理终结点。 若要开始流式处理视频，需启动要从中流式处理视频的流式处理终结点。 
+在 Microsoft Azure 媒体服务 (AMS)中，[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints) 实体表示一个流服务，该服务可以直接将内容传递给客户端播放器应用程序，也可以传递给内容分发网络 (CDN) 以进一步分发。 **流式处理终结点**服务的出站流可以是实时流，也可以是媒体服务帐户中的视频点播资产。 用户创建媒体服务帐户时，将为用户创建一个处于“已停止”状态的默认流式处理终结点。 无法删除“默认”流式处理终结点。 可以在帐户下创建其他流式处理终结点。 
+
+> [!NOTE]
+> 若要开始流式处理视频，需启动要从中流式处理视频的**流式处理终结点**。 
 
 ## <a name="naming-convention"></a>命名约定
 
@@ -34,7 +37,7 @@ ms.locfileid: "54359625"
 
 下表描述了类型：  
 
-|类型|缩放单元|Description|
+|Type|缩放单元|说明|
 |--------|--------|--------|  
 |**标准流式处理终结点**（推荐）|0|标准类型是适用于几乎所有流式处理环境和受众规模的推荐选项。 标准类型会自动缩放出站带宽。 <br/>对于要求极高的客户，媒体服务提供高级流式处理终结点，可用于横向扩展适用于最大规模的 Internet 受众的容量。 如果你希望拥有大量受众和并发观看者，请通过 amsstreaming@microsoft.com 与我们联系，获取有关你是否需要转到高级类型的指导。 |
 |**高级流式处理终结点**|>0|高级流式处理终结点适合用于高级工作负载，同时提供可缩放的专用带宽容量。 可以通过调整 `scaleUnits` 移至高级类型。 `scaleUnits` 提供专用的出口容量，可以按照 200 Mbps 的增量购买。 使用高级类型时，每个启用的单元都为应用程序提供额外的带宽容量。 |
@@ -56,7 +59,7 @@ ms.locfileid: "54359625"
 
 本部分提供了一些 StreamingEndpoint 属性的详细信息。 有关如何创建新流式处理终结点和所有属性描述的示例，请参阅[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)。 
 
-|属性|Description|  
+|属性|说明|  
 |--------------|----------|
 |`accessControl`|用于为此流式处理终结点配置以下安全设置：Akamai 签名标头身份验证密钥和允许连接到此终结点的 IP 地址。<br />当 `cdnEnabled` 设置为 false 时，可以设置此属性。|  
 |`cdnEnabled`|指示是否启用此流式处理终结点的 Azure CDN 集成（默认情况下禁用）。<br /><br /> 如果将 `cdnEnabled` 设置为 true，则会禁用以下配置：`customHostNames` 和 `accessControl`。<br /><br />并非所有数据中心都支持 Azure CDN 集成。 要检查数据中心是否具有 Azure CDN 集成，请执行以下操作：<br /><br /> - 尝试将 `cdnEnabled` 设置为 true。<br /><br /> - 检查返回的结果是否为 `HTTP Error Code 412` (PreconditionFailed)，并显示消息“无法将流式处理终结点 CdnEnabled 属性设置为 true，因为当前区域中没有 CDN 功能。”<br /><br /> 如果出现此错误，则数据中心不支持 Azure CDN 集成。 你应该尝试其他数据中心。|  

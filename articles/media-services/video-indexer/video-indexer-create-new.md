@@ -1,5 +1,5 @@
 ---
-title: 从现有视频创建视频见解
+title: 从现有视频创建视频见解 - Azure
 titlesuffix: Azure Media Services
 description: 本主题介绍如何基于现有的视频文件创建和发布视频见解。
 services: media-services
@@ -7,16 +7,16 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 7ba3fab514729b7b5645254fa9d34dd42b6718d5
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 2f6ceeebd18a91472ee12f04c0ac8e602b05f269
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291732"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197545"
 ---
-# <a name="tutorial-create-highlights-from-existing-videos"></a>教程：基于现有视频创建突出显示内容
+# <a name="create-highlights-from-existing-videos"></a>根据现有视频创建突出显示内容
 
 本主题介绍如何根据一些其他的视频创建和发布视频见解。
 

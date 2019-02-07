@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: rtiberiu
-ms.openlocfilehash: b86a9a0cff397148b0632b3108f58a1977b518e9
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: 69a0bde58a365ff124bc41b6039c606cb38f71fe
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332500"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768539"
 ---
 # <a name="azure-stack-vm-update-and-management"></a>Azure Stack VM 更新和管理
 以下 Azure 自动化解决方案功能可用于管理 Windows 和 Linux Vm 使用 Azure Stack 部署：
@@ -34,7 +35,7 @@ ms.locfileid: "54332500"
 > [!IMPORTANT]
 > 这些解决方案都与用于管理 Azure Vm 的相同。 Azure 和 Azure Stack Vm 进行管理相同的方式，从相同的接口，使用相同的工具。 Azure Stack Vm 与 Azure Stack 配合使用更新管理、 更改跟踪和清单解决方案时还进行定价与 Azure Vm 相同。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 使用这些功能更新和管理 Azure Stack Vm 之前，必须满足几个先决条件。 在 Azure 门户和 Azure Stack 管理门户，其中包括必须采取的步骤。
 
 ### <a name="in-the-azure-portal"></a>在 Azure 门户中

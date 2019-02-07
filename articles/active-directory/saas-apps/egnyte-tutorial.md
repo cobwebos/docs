@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Egnyte 的集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 Egnyte 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Egnyte 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 8c2101d4-1779-4b36-8464-5c1ff780da18
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 33989d04cba06c789089dfc0db62d177d258292a
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: e33fc71e0e43864d7d70495fc5056a8acaf4ad56
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976095"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158999"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>教程：Azure Active Directory 与 Egnyte 的集成
+# <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>教程：Azure Active Directory 与 Egnyte 集成
 
 本教程介绍如何将 Egnyte 与 Azure Active Directory (Azure AD) 集成。
 
@@ -125,7 +125,7 @@ ms.locfileid: "51976095"
 
 6. 在“设置 Egnyte”部分中，根据需求复制相应的 URL。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 登录 URL
+    a. 登录 URL
 
     b. Azure AD 标识符
 
@@ -151,7 +151,7 @@ ms.locfileid: "51976095"
 
     ![单一登录身份验证](./media/egnyte-tutorial/ic787822.png "Single Sign On Authentication")   
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“单一登录身份验证”，选择“SAML 2.0”。
+    a. 对于“单一登录身份验证”，选择“SAML 2.0”。
    
     b. 对于“标识提供者”，选择“AzureAD”。
    
@@ -183,7 +183,7 @@ ms.locfileid: "51976095"
 
     ![创建 Azure AD 测试用户](common/create_aaduser_02.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
@@ -210,7 +210,7 @@ ms.locfileid: "51976095"
     
     ![新建标准用户](./media/egnyte-tutorial/ic787825.png "New Standard User")   
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件”文本框中，输入用户的电子邮件，例如 **Brittasimon@contoso.com**。
+    a. 在“电子邮件”文本框中，输入用户的电子邮件，例如 **Brittasimon@contoso.com**。
 
     b. 在“用户名”文本框中输入用户的用户名，例如“Brittasimon”。
 

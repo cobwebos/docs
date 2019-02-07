@@ -6,16 +6,16 @@ services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: pafarley
-ms.openlocfilehash: 2bee7f0af98bf03a13e376dea9dbf083b3f61815
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 72ba363201b27a8ca31c73af1d0cceb436de468d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340284"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209381"
 ---
 # <a name="how-to-improve-your-classifier"></a>如何改进分类器
 
@@ -41,23 +41,23 @@ ms.locfileid: "49340284"
 
 提供将在正常使用期间提交到分类器的代表图像。 例如，定型“苹果”分类器时，如果只针对盘中的苹果照片进行定型，而对树上的苹果照片进行预测，则分类器可能不会那么准确。 涵盖各种图像可确保分类器不偏重某方面，涵盖所有方面。 以下是可使定型集更加多样化的一些方法：
 
-背景：在不同背景前提供对象的图像（即盘子中的水果与食品袋中的水果）。 场景中的照片比中性背景前的照片更好，因为前者为分类器提供了更多信息。
+__背景：__ 在不同背景前提供对象的图像（即盘子中的水果与食品袋中的水果）。 场景中的照片比中性背景前的照片更好，因为前者为分类器提供了更多信息。
 
 ![背景图像示例](./media/getting-started-improving-your-classifier/background.png)
 
-光照：提供不同光照下的图像（即在闪光、高曝光等设置下拍摄），尤其是在用于预测的图像具有不同光照的情况下。 涵盖不同饱和度、色调和亮度的图像也很有帮助。
+__光照：__ 提供不同光照下的图像（即在闪光、高曝光等设置下拍摄），尤其是在用于预测的图像具有不同光照的情况下。 涵盖不同饱和度、色调和亮度的图像也很有帮助。
 
 ![光照图像示例](./media/getting-started-improving-your-classifier/lighting.png)
 
-对象大小：提供的图像中，对象具有不同大小，拍摄对象的不同部分。 例如，几串香蕉的照片和一根香蕉的特写照片。 不同的大小有助于分类器涵盖所有方面。
+__对象大小：__ 提供的图像中，对象具有不同大小，拍摄对象的不同部分。 例如，几串香蕉的照片和一根香蕉的特写照片。 不同的大小有助于分类器涵盖所有方面。
 
 ![大小图像示例](./media/getting-started-improving-your-classifier/size.png)
 
-照相机角度：提供以不同照相机角度拍摄的图像。 如果所有的照片都是使用一组固定相机（例如监控摄像头）拍摄的，请确保为每个照相机分配不同的标签，即使它们拍摄同一对象也是如此，从而避免过度拟合 - 将不相关的对象（如灯柱）作为关键特点建模。
+__照相机角度：__ 提供以不同照相机角度拍摄的图像。 如果所有的照片都是使用一组固定相机（例如监控摄像头）拍摄的，请确保为每个照相机分配不同的标签，即使它们拍摄同一对象也是如此，从而避免过度拟合 - 将不相关的对象（如灯柱）作为关键特点建模。
 
 ![角度图像示例](./media/getting-started-improving-your-classifier/angle.png)
 
-样式：提供同一类对象不同样式的图像（即不同种类的柑橘）。 但是，如果是完全不同样式的对象（即米老鼠与实际老鼠）的图像，建议将它们标记为单独的类，这样才能更好地表示其不同的特征。
+__样式：__ 提供同一类对象不同样式的图像（即不同种类的柑橘）。 但是，如果是完全不同样式的对象（即米老鼠与实际老鼠）的图像，建议将它们标记为单独的类，这样才能更好地表示其不同的特征。
 
 ![样式图像示例](./media/getting-started-improving-your-classifier/style.png)
 

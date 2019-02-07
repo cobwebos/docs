@@ -10,14 +10,14 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 3eb1228ed9d15fb976f94df114f8725a8c41599d
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 370483b92dcd2c468cd676a32db0ded80e8814d0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230452"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216606"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
@@ -29,7 +29,7 @@ ms.locfileid: "54230452"
 - 监视管理员活动，以跟踪配置更改或高特权操作。
 - 检测并调查多余的用户行为，此操作可根据组织需求进行自定义。
 - 演示审核和符合性。 例如，可监视对机密文件的文件访问操作，这对审核和符合性进程有所帮助。
-- 通过对组织的 Office 365 活动数据使用[日志搜索](../../azure-monitor/log-query/log-query-overview.md)，执行操作故障排除。
+- 通过对组织的 Office 365 活动数据使用[日志搜索](../log-query/log-query-overview.md)，执行操作故障排除。
 
 ## <a name="prerequisites"></a>先决条件
 需要以下各项才能安装和配置此解决方案。
@@ -40,7 +40,7 @@ ms.locfileid: "54230452"
  
 
 ## <a name="management-packs"></a>管理包
-此解决方案不会在[连接的管理组](../../azure-monitor/platform/om-agents.md)中安装任何管理包。
+此解决方案不会在[连接的管理组](../platform/om-agents.md)中安装任何管理包。
   
 ## <a name="install-and-configure"></a>安装和配置
 首先，[将 Office 365 解决方案添加到你的订阅](solutions.md#install-a-management-solution)。 添加后，必须执行本部分中的配置步骤来向其授予对你的 Office 365 订阅的访问权限。
@@ -158,7 +158,7 @@ ms.locfileid: "54230452"
     AdminConsent -ErrorAction Stop
     ```
 
-2. 使用以下命令运行该脚本。
+2. 使用以下命令运行该脚本。 系统将提示你两次输入凭据。 首先提供 Log Analytics 工作区的凭据，然后提供 Office 365 租户的全局管理员凭据。
     ```
     .\office365_consent.ps1 -WorkspaceName <Workspace name> -ResourceGroupName <Resource group name> -SubscriptionId <Subscription ID>
     ```
@@ -351,7 +351,7 @@ ms.locfileid: "54230452"
 
 ### <a name="troubleshooting"></a>故障排除
 
-在订阅已存在后，如果尝试创建订阅，则会出现以下错误。
+如果应用程序已订阅此工作区或者此租户已订阅另一个工作区，则可能会看到以下错误。
 
 ```
 Invoke-WebRequest : {"Message":"An error has occurred."}
@@ -394,7 +394,7 @@ At line:12 char:18
     $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-    $Workspace = (Set-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
+    $Workspace = (Get-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
     $Workspace
     $WorkspaceLocation= $Workspace.Location
     
@@ -476,7 +476,7 @@ At line:12 char:18
 
 ## <a name="data-collection"></a>数据收集
 ### <a name="supported-agents"></a>支持的代理
-Office 365 解决方案不会从任何 [Log Analytics 代理](../../azure-monitor/platform/agent-data-sources.md)中检索数据。  而直接从 Office 365 检索数据。
+Office 365 解决方案不会从任何 [Log Analytics 代理](../platform/agent-data-sources.md)中检索数据。  而直接从 Office 365 检索数据。
 
 ### <a name="collection-frequency"></a>收集频率
 初次收集数据可能需要几个小时。 在开始收集后，每次创建记录时，Office 365 都会向 Log Analytics 发送带详细数据的 [webhook 通知](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications)。 在收到此记录几分钟后，此记录将出现在 Log Analytics 中。
@@ -708,6 +708,6 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) 中的日志搜索可查看详细的更新数据。
-* [创建自己的仪表板](../../azure-monitor/platform/dashboards.md)，显示最喜欢的 Office 365 搜索查询。
-* [创建警报](../../azure-monitor/platform/alerts-overview.md)，主动接收重要的 Office 365 活动通知。  
+* 使用 [Log Analytics](../log-query/log-query-overview.md) 中的日志搜索可查看详细的更新数据。
+* [创建自己的仪表板](../learn/tutorial-logs-dashboards.md)，显示最喜欢的 Office 365 搜索查询。
+* [创建警报](../platform/alerts-overview.md)，主动接收重要的 Office 365 活动通知。  

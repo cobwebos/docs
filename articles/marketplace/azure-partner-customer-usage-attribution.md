@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: da8fd886afa6028959247caa0c6e007df20fdd1b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 66f850225faba8d45eaa07493a0817c9ed0ed52b
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077736"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075578"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作伙伴和客户使用情况归因
 
@@ -32,11 +32,17 @@ Microsoft 合作伙伴可将 Azure 使用情况与其代表客户预配的任何
 - Azure 资源管理器模板：用于部署 Azure 服务以运行合作伙伴软件的资源管理器模板或解决方案模板。 合作伙伴可以创建资源管理器模板，其中定义 Azure 解决方案的基础结构和配置。 通过资源管理器模板，你和你的客户可以在解决方案的整个生命周期内部署该解决方案。 可以放心地以一致状态部署资源。 
 - Azure 资源管理器 API：合作伙伴可以直接调用资源管理器 API 来部署资源管理器模板，或生成 API 调用用于直接预配 Azure 服务。 
 
-发布到 Azure 市场的所有[解决方案模板](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md)都需要客户使用情况归因。 
+发布到 Azure 市场的 [Azure 应用程序产品/服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)需要客户使用情况归因。
 
 ## <a name="use-resource-manager-templates"></a>使用 Resource Manager 模板
 
-许多合作伙伴解决方案都是使用资源管理器模板部署在客户订阅中的。 如果在 Azure 市场、GitHub 或 QuickStart 中拥有 Azure 资源管理器模板，则应该可以直接修改模板以启用这一新跟踪方法。 有关详细信息，请参阅[创建和部署第一个资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)。
+许多合作伙伴解决方案都是使用资源管理器模板部署在客户订阅中的。 如果在 Azure 市场、GitHub 或 QuickStart 中拥有 Azure 资源管理器模板，则应该可以直接修改模板以启用这一新跟踪方法。
+
+有关创建和发布解决方案模板的详细信息，请参阅
+
+* [创建和部署第一个资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
+* [Azure 应用程序产品/服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)。
+* 视频：[为 Azure 市场构建解决方案模板和托管应用程序](https://channel9.msdn.com/Events/Build/2018/BRK3603)。
 
 
 ## <a name="add-a-guid-to-your-template"></a>将 GUID 添加到模板

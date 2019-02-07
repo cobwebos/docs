@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 236809336975eec94d7decd9822fc9143ae19bfb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 692f6b1f02c6c1e86170971886e83722d0160838
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981006"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203583"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上设置 Oracle ASM  
 
@@ -50,7 +50,7 @@ az group create --name myResourceGroup --location eastus
 
 ### <a name="create-a-vm"></a>创建 VM
 
-若要创建基于 Oracle 数据库映像的虚拟机并将其配置为使用 Oracle ASM，请使用 [az vm create](/cli/azure/vm#az_vm_create) 命令。 
+若要创建基于 Oracle 数据库映像的虚拟机并将其配置为使用 Oracle ASM，请使用 [az vm create](/cli/azure/vm) 命令。 
 
 以下示例创建名为 myVM 的 VM，其大小为 Standard_DS2_v2，并包含四个 50 GB 的附加数据磁盘。 如果默认密钥位置中不存在 SSH 密钥，此示例还会创建这些密钥。  若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。  
 
@@ -540,7 +540,7 @@ ssh <publicIpAddress>
 
 6. 选择“退出”关闭 ASM 配置助手。
 
-   ![包含“退出”按钮的“配置 ASM: 磁盘组”对话框屏幕截图](./media/oracle-asm/asm05.png)
+   ![“配置 ASM: 磁盘组”对话框的屏幕截图，其中包含“退出”按钮](./media/oracle-asm/asm05.png)
 
 ## <a name="create-the-database"></a>创建数据库
 

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 01/24/2019
 ms.author: juliako
-ms.openlocfilehash: 7dc2136fe6ee28da0583ebdb2b2749ddf1c37049
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5b666551ed47852fe8653fff174589acc4bff348
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728034"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912027"
 ---
 # <a name="filters-and-dynamic-manifests"></a>筛选器和动态清单
 
@@ -110,7 +110,7 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 使用以下属性来描述筛选器。 
 
-|名称|Description|
+|Name|说明|
 |---|---|
 |firstQuality|筛选器的第一个质量比特率。|
 |presentationTimeRange|呈现时间范围。 此属性用于筛选清单起点/终点、呈现窗口长度和直播起始位置。 <br/>有关详细信息，请参阅 [PresentationTimeRange](#PresentationTimeRange)。|
@@ -120,12 +120,12 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 请将此属性用于**资产筛选器**。 不建议对**帐户筛选器**设置该属性。
 
-|名称|Description|
+|Name|说明|
 |---|---|
 |**endTimestamp**|绝对结束时间边界。 适用于点播视频 (VoD)。 对于直播，将以静默方式忽略该属性；当呈现内容结束并且流变为 VoD 时，将应用该属性。<br/><br/>该值表示流的绝对终点。 它将舍入为最接近的下一个 GOP 起点。<br/><br/>使用 StartTimestamp 和 EndTimestamp 修剪播放列表（清单）。 例如，如果 StartTimestamp=40000000 并且 EndTimestamp=100000000，则会生成包含 StartTimestamp 与 EndTimestamp 之间的媒体的播放列表。 如果某个段跨越边界，则整个段将包含在清单中。<br/><br/>另请参阅下面的 **forceEndTimestamp** 定义。|
 |**forceEndTimestamp**|适用于直播筛选器。<br/><br/>**forceEndTimestamp** 是一个布尔值，指示 **endTimestamp** 是否设置为有效值。 <br/><br/>如果值为 **true**，则应指定 **endTimestamp** 值。 如果未指定，则返回错误的请求。<br/><br/>例如，若要定义一个在输入视频中 5 分钟处开始并持续到流末尾的筛选器，应将 **forceEndTimestamp** 设置为 false，并省略 **endTimestamp** 设置。|
-|**liveBackoffDuration**|仅适用于直播。 该属性用于定义直播播放位置。 使用此规则可以延迟直播播放位置，并为播放器创建服务器端缓冲区。 LiveBackoffDuration 相对于直播位置。 最大直播回退持续时间为 60 秒。|
-|**presentationWindowDuration**|适用于直播。 使用 **presentationWindowDuration** 可对播放列表应用滑动窗口。 例如，设置 presentationWindowDuration=1200000000 会应用 2 分钟的滑动窗口。 直播边缘 2 分钟内的媒体将包含在播放列表中。 如果某个段跨越边界，则整个段将包含在播放列表中。 最小呈现窗口持续时间为 120 秒。|
+|**liveBackoffDuration**|仅适用于直播。 该属性用于定义直播播放位置。 使用此规则可以延迟直播播放位置，并为播放器创建服务器端缓冲区。 LiveBackoffDuration 相对于直播位置。 最大直播回退持续时间为 300 秒。|
+|**presentationWindowDuration**|适用于直播。 使用 **presentationWindowDuration** 可对播放列表应用滑动窗口。 例如，设置 presentationWindowDuration=1200000000 会应用 2 分钟的滑动窗口。 直播边缘 2 分钟内的媒体将包含在播放列表中。 如果某个段跨越边界，则整个段将包含在播放列表中。 最小呈现窗口持续时间为 60 秒。|
 |**startTimestamp**|适用于 VoD 或直播流。 该值表示流的绝对起点。 该值将舍入为最接近的下一个 GOP 起点。<br/><br/>使用 **startTimestamp** 和 **endTimestamp** 修剪播放列表（清单）。 例如，如果 startTimestamp=40000000 并且 endTimestamp=100000000，则会生成包含 StartTimestamp 与 EndTimestamp 之间的媒体的播放列表。 如果某个段跨越边界，则整个段将包含在清单中。|
 |**timescale**|适用于 VoD 或直播流。 前面指定的时间戳和持续时间使用的时间刻度。 默认时间刻度为 10000000。 可以使用备用时间刻度。 默认值为 10000000 HNS（100 纳秒）。|
 
@@ -135,7 +135,7 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 筛选器轨迹属性条件描述轨迹类型、值（如下表所述）和运算（Equal、NotEqual）。 
 
-|名称|Description|
+|Name|说明|
 |---|---|
 |**Bitrate**|使用轨迹的比特率进行筛选。<br/><br/>建议的值为一系列比特率，以比特/秒为单位。 例如“0-2427000”。<br/><br/>注意：尽管可以使用特定的比特率值（例如 250000 比特/秒），但不建议使用此方法，因为确切的比特率可能根据资产的不同而波动。|
 |**FourCC**|使用轨迹的 FourCC 值进行筛选。<br/><br/>该值是 [RFC 6381](https://tools.ietf.org/html/rfc6381) 中指定的编解码器格式的第一个元素。 目前支持以下编解码器： <br/>视频：“avc1”、“hev1”、“hvc1”<br/>音频：“mp4a”、“ec-3”<br/><br/>若要确定资产中轨迹的 FourCC 值，请[获取并检查清单文件](#get-and-examine-manifest-files)。|

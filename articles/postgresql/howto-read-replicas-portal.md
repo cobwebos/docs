@@ -5,15 +5,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/17/2019
-ms.openlocfilehash: 6c1a0a4a13a70daec157ede98f850f87150f8d93
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.date: 01/23/2019
+ms.openlocfilehash: bf6e9947c21e5b07b2adc99de585c77444447c04
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383860"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902646"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-the-azure-portal"></a>如何在 Azure 门户中创建和管理只读副本
+
+> [!IMPORTANT]
+> 只读副本功能目前以公共预览版提供。
+
+
 本文介绍如何使用 Azure 门户在 Azure Database for PostgreSQL 服务中创建和管理只读副本。 若要详细了解只读副本，请[阅读概念文档](concepts-read-replicas.md)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -41,6 +46,7 @@ ms.locfileid: "54383860"
    ![Azure Database for PostgreSQL - 保存后的通知](./media/howto-read-replicas-portal/parameter-save-notification.png)
 
 6. 保存更改后，重启服务器以应用更改。 若要了解如何重启服务器，请参阅[重启文档](howto-restart-server-portal.md)。
+
 
 ## <a name="create-a-read-replica"></a>创建只读副本
 可以使用以下步骤创建只读副本：

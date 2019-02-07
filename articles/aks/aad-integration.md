@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 9bdd3060219907f95454bfc9248572f796afd72e
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 78f00b00465b6d834f30411485a874d6d2116ea4
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437599"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081239"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>将 Azure Active Directory 与 Azure Kubernetes Service 集成
 
@@ -22,7 +22,7 @@ ms.locfileid: "53437599"
 
 以下限制适用：
 
-- 当前不能更新现有不支持 RBAC 的 AKS 群集以供 RBAC 使用。
+- 只有在创建新的启用 RBAC 的群集时，才能启用 Azure AD。 不能在现有 AKS 群集上启用 Azure AD。
 - 不支持 Azure AD 中的来宾用户，例如，从其他目录使用联合登录。
 
 ## <a name="authentication-details"></a>身份验证详细信息

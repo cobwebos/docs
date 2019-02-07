@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 9e73a979950e856a7fc2bfa2193ea4ca0d59bac2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 070e86f2d5d37823f1596cf04735b199289f3d75
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242222"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166163"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>为 Office 365 组配置过期策略
 
@@ -91,45 +91,45 @@ ms.locfileid: "50242222"
 以下是如何使用 PowerShell cmdlets 来为租户中的 Office 365 组配置到期设置的示例：
 
 1. 安装 PowerShell v2.0 预览版模块 (2.0.0.137) 并在 PowerShell 提示符处登录：
-  ````
+  ```
   Install-Module -Name AzureADPreview
   connect-azuread 
-  ````
-2. 配置到期设置 New-AzureADMSGroupLifecyclePolicy：此 cmdlet 将租户中的所有 Office 365 组的生存期都设置为 365 天。 没有所有者的 Office 365 组的续订通知将发送到“emailaddress@contoso.com”
+  ```
+2. 配置到期设置 New-AzureADMSGroupLifecyclePolicy：此 cmdlet 将租户中所有 Office 365 组的生存期设置为 365 天。 没有所有者的 Office 365 组的续订通知将发送到“emailaddress@contoso.com”
   
-  ````
+  ```
   New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
-  ````
-3. 检索现有策略 Get-AzureADMSGroupLifecyclePolicy：此 cmdlet 检索当前已配置的 Office 365 组到期设置。 在此示例中，可以看到：
+  ```
+3. 检索现有策略 Get-AzureADMSGroupLifecyclePolicy：此 cmdlet 检索已配置的当前 Office 365 组到期设置。 在此示例中，可以看到：
   * 策略 ID 
   * 租户中所有 Office 365 组的生存期均设置为 365 天
   * 没有所有者的 Office 365 组的续订通知将发送到“emailaddress@contoso.com”。
   
-  ````
+  ```
   Get-AzureADMSGroupLifecyclePolicy
   
   ID                                    GroupLifetimeInDays ManagedGroupTypes AlternateNotificationEmails
   --                                    ------------------- ----------------- ---------------------------
   26fcc232-d1c3-4375-b68d-15c296f1f077  365                 All               emailaddress@contoso.com
-  ```` 
+  ``` 
    
 4. 更新现有策略 Set-AzureADMSGroupLifecyclePolicy：此 cmdlet 用于更新现有策略。 在以下示例中，现有策略中的组生存期从 365 天更改为 180 天。 
   
-  ````
+  ```
   Set-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -GroupLifetimeInDays 180 -AlternateNotificationEmails "emailaddress@contoso.com"
-  ````
+  ```
   
 5. 将特定组添加到策略 Add-AzureADMSLifecyclePolicyGroup：此 cmdlet 将组添加到生命周期策略。 示例： 
   
-  ````
+  ```
   Add-AzureADMSLifecyclePolicyGroup -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -groupId "cffd97bd-6b91-4c4e-b553-6918a320211c"
-  ````
+  ```
   
-6. 删除现有策略 Remove-AzureADMSGroupLifecyclePolicy：此 cmdlet 会删除 Office 365 组到期设置，但需要策略 ID。 这将禁用 Office 365 组过期。 
+6. 删除现有策略 Remove-AzureADMSGroupLifecyclePolicy：此 cmdlet 删除 Office 365 组到期设置，但需要策略 ID。 这将禁用 Office 365 组过期。 
   
-  ````
+  ```
   Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
-  ````
+  ```
   
 以下 cmdlet 可用于更详细地配置策略。 有关详细信息，请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups)。
 

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Useall 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Useall 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Useall 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 8dd9e452-a5b6-4a16-a97c-b60211ea6b95
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 8deacddc9dcc7571ea725143fa9a9c002c1602b1
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 393494410b14bd54f1878cc372e76ad8a7ee3c7d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50743012"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164752"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-useall"></a>教程：Azure Active Directory 与 Useall 的集成
+# <a name="tutorial-azure-active-directory-integration-with-useall"></a>教程：Azure Active Directory 与 Useall 集成
 
 本教程介绍如何将 Useall 与 Azure Active Directory (Azure AD) 集成。
 
@@ -114,7 +114,7 @@ ms.locfileid: "50743012"
 
     ![Useall 域和 URL 单一登录信息](./media/useall-tutorial/tutorial_useall_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.useall.com.br/tenant/useall`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.useall.com.br/tenant/useall`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.useall.com.br/tenant/apiuseall/saml2`
 
@@ -143,7 +143,7 @@ ms.locfileid: "50743012"
 
     ![创建 Azure AD 测试用户](common/create_aaduser_02.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com

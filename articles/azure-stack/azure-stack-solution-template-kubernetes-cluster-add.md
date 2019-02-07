@@ -15,12 +15,12 @@ ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 9d2d7297ea5978687ef6dc791d5a333016060da7
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 707cd7e72245ce47289c0a744d7103c713acecb9
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659926"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765477"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>将 Kubernetes 添加到 Azure Stack 市场
 
@@ -112,7 +112,7 @@ ms.locfileid: "55659926"
        | 值 | 描述                     |
        | ---   | ---                             |
        | ERCS IP | 在 ASDK 中，特权终结点通常是`AzS-ERCS01`。 |
-       | 应用程序名称 | 应用程序服务主体简单名称。 |
+       | 应用程序名 | 应用程序服务主体简单名称。 |
        | 证书存储位置 | 证书存储在计算机上的路径。 例如： `Cert:\LocalMachine\My\<someuid>` |
 
     - 使用提升的提示符打开 PowerShell。 使用更新为你的值的参数运行以下脚本：
@@ -189,7 +189,7 @@ ms.locfileid: "55659926"
 
 1. 选择“+ 从 Azure 添加”。
 
-1. 输入 `UbuntuServer` 。
+1. 输入 `UbuntuServer`。
 
 1. 选择最新版本的服务器。 检查完整版本并确保已安装最新版本：
     - **发布者**：Canonical
@@ -209,7 +209,7 @@ ms.locfileid: "55659926"
 
 1. 选择“+ 从 Azure 添加”。
 
-1. 输入 `Custom Script for Linux` 。
+1. 输入 `Custom Script for Linux`。
 
 1. 选择具有以下配置文件的服务器：
     - **产品/服务**：适用于 Linux 的自定义脚本 2.0
@@ -230,7 +230,7 @@ ms.locfileid: "55659926"
 
 1. 选择“+ 从 Azure 添加”。
 
-1. 输入 `Kubernetes` 。
+1. 输入 `Kubernetes`。
 
 1. 选择 `Kubernetes Cluster`。
 

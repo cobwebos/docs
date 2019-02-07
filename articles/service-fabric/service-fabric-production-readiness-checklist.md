@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/10/2018
 ms.author: aljo-microsoft
-ms.openlocfilehash: 4e6d5cb3191be7188c1a7c4753200cf049800f04
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 02ad880f3c4a4f5812b60887090c29a0a39f6742
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436001"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206963"
 ---
 # <a name="production-readiness-checklist"></a>生产就绪情况核对清单
 
@@ -27,15 +27,15 @@ ms.locfileid: "53436001"
 
 
 ## <a name="pre-requisites-for-production"></a>生产的先决条件
-1. [Azure Service Fabric 最佳做法](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices)是： 
+1. [Azure Service Fabric 安全性最佳做法](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices)是： 
 * 使用 X.509 证书
 * 配置安全性策略
 * 配置适用于 Azure Service Fabric 的 SSL
 * 将 Azure Service Fabric 与网络隔离和安全功能结合使用
 * 出于安全考虑，设置 Azure Key Vault
-* 将用户分配到角色
+* Microsoft.Network/loadBalancers 将用户分配到角色
 * 如果使用执行组件编程模型，则实现 Reliable Actors 安全配置
-2. 对于具有超过 20 个核心或 10 个节点的群集，请为系统服务创建专用的主节点类型。 添加[放置约束](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)，保留系统服务的主节点类型。 
+2. 对于具有超过 20 个核心或 10 个节点的群集，请为系统服务创建专用的主节点类型。 添加[放置约束](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)，保留系统服务的主节点类型。
 3. 对主节点类型使用 D2v2 或更高版本的 SKU。 建议选择至少有 50 GB 硬盘容量的 SKU。
 4. 生产群集必须是[安全的](service-fabric-cluster-security.md)。 有关设置安全群集的示例，请参阅此[群集模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG)。 使用证书的通用名称，避免使用自签名证书。
 5. 添加[容器和服务的资源约束](service-fabric-resource-governance.md)，以便它们消耗的节点资源不超过 75%。 
@@ -61,8 +61,8 @@ ms.locfileid: "53436001"
 22. 在本地开发期间升级应用程序，检查服务代码是否履行了 `RunAsync` 方法中的取消令牌，并关闭了自定义通信侦听器。
 23. 使用可靠集合时，避免出现[常见错误](service-fabric-work-with-reliable-collections.md)。
 24. 运行负载测试时监视 .NET CLR 内存性能计数器，并检查是否存在高垃圾回收率或堆增长是否失控。
-25. 维护 [Reliable Services 和 Reliable Actors](service-fabric-reliable-services-backup-restore.md) 的脱机备份，并测试恢复过程。 
-
+25. 维护 [Reliable Services 和 Reliable Actors](service-fabric-reliable-services-backup-restore.md) 的脱机备份，并测试恢复过程。
+26. 理想情况下，主 NodeType 虚拟机实例计数应该等于群集可靠性层的最小值；适于超过层最小值的条件包括：在垂直缩放主 NodeTypes 虚拟机规模集 SKU 时临时超过。
 
 ## <a name="optional-best-practices"></a>可选的最佳做法
 

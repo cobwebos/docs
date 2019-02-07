@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7ff73051abc5168b4dc3852a9008adc22d7d56c6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 68892faf707a767ba9c25ce7317f775708e61a90
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811853"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217979"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>安装用于故障回复的 Linux 主目标服务器
 将虚拟机故障转移到 Azure 后，可将虚拟机故障回复到本地站点。 若要故障回复，需要在本地站点中重新保护 Azure 中的虚拟机。 对于此过程，需要安装一个本地主目标服务器用于接收流量。 
@@ -130,7 +130,7 @@ ms.locfileid: "54811853"
 
     ![选择软件](./media/vmware-azure-install-linux-master-target/image19-ubuntu.png)
 
-1. 在安装 GRUB 启动加载程序的选项中，选择“是”，再按 Enter。
+1. 在选择是否安装 GRUB 启动加载程序时，选择“是”，再按 Enter。
      
     ![GRUB 启动安装程序](./media/vmware-azure-install-linux-master-target/image20.png)
 

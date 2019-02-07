@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 MyWorkDrive 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 MyWorkDrive 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 MyWorkDrive 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 4d049778-3c7b-46c0-92a4-f2633a32334b
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 7644a8517840b4fdffe0bc47c5a9bb97d48f6322
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: f0e2c499619df938bd6f4b05757ba607a9edf244
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686784"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183350"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-myworkdrive"></a>教程：Azure Active Directory 与 MyWorkDrive 的集成
+# <a name="tutorial-azure-active-directory-integration-with-myworkdrive"></a>教程：Azure Active Directory 与 MyWorkDrive 集成
 
 在本教程中，你将了解如何将 MyWorkDrive 与 Azure Active Directory (Azure AD) 进行集成。
 
@@ -141,7 +141,7 @@ ms.locfileid: "51686784"
 
     ![管理](./media/myworkdrive-tutorial/tutorial_myworkdrive_admin.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 启用“SAML/ADFS SSO”。
+    a. 启用“SAML/ADFS SSO”。
 
     b. 选择“SAML - Azure AD”
 
@@ -168,7 +168,7 @@ ms.locfileid: "51686784"
 
     ![创建 Azure AD 测试用户](common/create_aaduser_02.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com

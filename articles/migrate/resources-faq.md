@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: snehaa
-ms.openlocfilehash: cc71aba3e884214b054e0ac4e888a52e38b1c390
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 619369972991bab0b23e7e9ae4e0a146f875e59a
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812533"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079250"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - 常见问题解答 (FAQ)
 
@@ -33,7 +33,7 @@ Azure Migrate 是评估服务，可帮助发现本地工作负荷以及规划到
 
 ### <a name="whats-the-difference-between-using-azure-migrate-for-assessments-and-the-map-toolkit"></a>使用 Azure Migrate 和 Map Toolkit 进行评估有什么区别？
 
-[Azure Migrate](migrate-overview.md) 提供迁移评估，专门用于协助本地工作负载到 Azue 的迁移就绪和评估。 [Microsoft Assessment and Planning (MAP) Toolkit](https://www.microsoft.com/en-us/download/details.aspx?id=7826) 具有其他功能。 例如，较新版本的 Windows 客户端和服务器操作系统、软件使用情况跟踪等的迁移规划。对于这些情况，继续使用 MAP Toolkit。
+[Azure Migrate](migrate-overview.md) 提供迁移评估，专门用于协助本地工作负载到 Azue 的迁移就绪和评估。 [Microsoft 评估和规划 (MAP) 工具包](https://www.microsoft.com/en-us/download/details.aspx?id=7826)具有其他功能，例如更新版本的 Windows 客户端和服务器操作系统的迁移规划以及软件使用情况跟踪。 对于这些情况，继续使用 MAP Toolkit。
 
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery-deployment-planner"></a>Azure Migrate 与 Azure Site Recovery 部署规划器有何不同？
@@ -198,7 +198,7 @@ Azure Migrate 目前不支持[企业协议套餐](https://azure.microsoft.com/of
 
 ### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-dependency-agent"></a>如何才能自动安装 Microsoft Monitoring Agent (MMA) 和依赖项代理？
 
-[此处](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)有一个脚本，可以使用它来安装依赖项代理。 对于 MMA，TechNet 上的[此处](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)有一个可以使用的脚本。
+[此处](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)有一个脚本，可以使用它来安装依赖项代理。 [此处](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)是有关如何使用命令行或自动方法安装 MMA 的说明。 对于 MMA，还可以在 Technet 上利用[此处](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)提供的脚本。
 
 除了脚本，还可以利用 System Center Configuration Manager (SCCM)、[Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) 之类的部署工具来部署代理。
 
@@ -213,10 +213,10 @@ Azure Migrate 目前不支持[企业协议套餐](https://azure.microsoft.com/of
 [此处](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems)列出了依赖项代理支持的 Linux 操作系统。
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>我在 Azure Migrate 中可视化依赖项时是否可以超过一小时的持续时间？
-否，Azure Migrate 允许依赖项可视化持续最多一小时的时间。 尽管 Azure Migrate 允许返回到历史记录中的某一特定日期可以推至上个月，但可视化依赖项的最长持续时间最多为一小时。 例如，你可以使用依赖项映射中的持续时间功能来查看昨天的依赖项，但只能查看一小时。
+否，Azure Migrate 允许依赖项可视化持续最多一小时的时间。 尽管 Azure Migrate 允许返回到历史记录中的某一特定日期可以推至上个月，但可视化依赖项的最长持续时间最多为一小时。 例如，你可以使用依赖项映射中的持续时间功能来查看昨天的依赖项，但只能查看一小时。 但是，可以使用 Log Analytics [查询依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics)（经过更长的持续时间）。
 
 ### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>包含 10 个以上 VM 的组是否支持依赖项可视化？
-你可以[可视化依赖项的组最多只能有 10 个 VM](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)，如果某个组的 VM 超过 10 个，建议先将该组拆分成较小的组，然后再可视化依赖项。
+可以[可视化最多包含 10 个 VM 的组的依赖项](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)。 如果某个组的 VM 超过 10 个，建议先将该组拆分成较小的组，然后再可视化依赖项。
 
 
 ## <a name="next-steps"></a>后续步骤

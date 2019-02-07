@@ -9,12 +9,12 @@ ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 115604d9b2aa21018742bbedbc737405b52599e4
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 7ad494a3a1ce657951a0afab4d5ca838821927ad
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188940"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158811"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>使用 Azure Active Directory 域服务配置具有企业安全性套餐的 HDInsight 群集
 
@@ -28,7 +28,11 @@ ms.locfileid: "54188940"
 ## <a name="enable-azure-ad-ds"></a>启用 Azure AD-DS
 
 > [!NOTE]  
-> 只有租户管理员有权启用 Azure AD-DS。 如果群集存储是 Azure Data Lake Storage (ADLS) Gen1 或 Gen2，则只对需要访问群集的用户禁用多重身份验证 (MFA)。 如果群集存储是 Azure Blob 存储 (WASB)，请不要禁用 MFA。
+> 只有租户管理员有权启用 Azure AD-DS。 如果群集存储是 Azure Data Lake Storage (ADLS) Gen1 或 Gen2，则必须只对需要使用基本 Kerberose 身份验证访问群集的用户禁用多重身份验证 (MFA)。 可以使用[受信任 IP](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-mfa-mfasettings#trusted-ips) 或[条件访问](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/overview)在特定用户访问 HDInsight 群集 VNET IP 范围时仅对其禁用 MFA。 如果使用条件访问，请确保在 HDInsight VNET 上启用了 AD 服务终结点。
+>
+>如果群集存储是 Azure Blob 存储 (WASB)，请不要禁用 MFA。
+
+
 
 要想能够创建具有 ESP 的 HDInsight 群集，必须先启用 Azure AD-DS。 有关详细信息，请参阅[使用 Azure 门户启用 Azure Active Directory 域服务](../../active-directory-domain-services/active-directory-ds-getting-started.md)。 
 

@@ -15,12 +15,12 @@ ms.date: 01/11/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: f3129c27d123aa448f8293f7e1827dc3ebc5c82e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f38d27c6f82533265705ff5483bfe835c81c9ce6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239071"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817285"
 ---
 # <a name="update-the-mysql-resource-provider"></a>更新 MySQL 资源提供程序 
 
@@ -30,7 +30,7 @@ ms.locfileid: "55239071"
 
 从 MySQL 资源提供程序版本 1.1.33.0 发行版开始，更新是累积的并且不需要在其中发布; 的顺序安装只要您从版本 1.1.24.0 或更高版本。 例如，如果正在运行的 MySQL 资源提供程序版本 1.1.24.0，则可以升级到版本 1.1.33.0 或更高版本而无需首先安装版本 1.1.30.0。 若要查看可用的资源提供程序版本和 Azure Stack 支持的版本，请参阅中的版本列表[部署的资源提供程序先决条件](./azure-stack-mysql-resource-provider-deploy.md#prerequisites)。
 
-若要更新资源提供程序，请使用 **UpdateMySQLProvider.ps1** 脚本。 此过程类似于安装资源提供程序时所使用的过程，如本文[部署资源提供程序](#deploy-the-resource-provider)部分所述。 资源提供程序的下载包中提供此脚本。 
+若要更新资源提供程序，请使用 **UpdateMySQLProvider.ps1** 脚本。 该过程是类似于用于安装资源提供程序，如中所述部署资源提供程序部分中的这篇文章的过程。 资源提供程序的下载包中提供此脚本。 
 
  > [!IMPORTANT]
  > 在升级前的资源提供程序，查看发行说明以了解有关新功能、 修复和可能会影响你的部署任何已知的问题的信息。
@@ -59,8 +59,8 @@ ms.locfileid: "55239071"
 | **DefaultSSLCertificatePassword** | .pfx 证书的密码。 | _必需_ | 
 | **MaxRetryCount** | 操作失败时，想要重试每个操作的次数。| 2 | 
 | **RetryDuration** | 每两次重试的超时间隔（秒）。 | 120 | 
-| **卸载** | 删除资源提供程序和所有关联的资源（请参阅下面的注释）。 | 否 | 
-| **DebugMode** | 防止在失败时自动清除。 | 否 | 
+| **卸载** | 删除资源提供程序和所有关联的资源（请参阅下面的注释）。 | “否” | 
+| **DebugMode** | 防止在失败时自动清除。 | “否” | 
 | **AcceptLicense** | 跳过接受 GPL 许可条款的提示。  (https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | | 
 
 ## <a name="update-script-example"></a>更新脚本示例

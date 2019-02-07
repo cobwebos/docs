@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
-ms.openlocfilehash: b22ecb9d8948a77df43f47cd9fd218be4319d06e
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 6b617ff99b9183c6b5008292dd3e5d11f2e69da9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583725"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092193"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>创建有关服务通知的活动日志警报
 ## <a name="overview"></a>概述
@@ -37,7 +37,7 @@ ms.locfileid: "53583725"
 
 有关如何使用 Azure 资源管理器模板配置服务运行状况通知警报的信息，请参阅[资源管理器模板](alerts-activity-log.md)。
 
-## <a name="create-an-alert-on-a-service-health-notification-for-a-new-action-group-by-using-the-azure-portal"></a>使用 Azure 门户为新操作组创建有关服务运行状况通知的警报
+## <a name="alert-and-new-action-group-using-azure-portal"></a>使用 Azure 门户发出警报和新建操作组
 1. 在[门户](https://portal.azure.com)中，选择“服务运行状况”。
 
     ![“服务运行状况”服务](media/alerts-activity-log-service-notifications/home-servicehealth.png)
@@ -69,7 +69,7 @@ ms.locfileid: "53583725"
 
 1. 通过提供接收方来定义接收方的列表：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **名称**：输入接收方的名称、别名或标识符。
+    a. **名称**：输入接收方的名称、别名或标识符。
 
     b. **操作类型**：选择短信、电子邮件、Webhook、Azure 应用等。
 
@@ -86,7 +86,7 @@ ms.locfileid: "53583725"
 >
 >
 
-## <a name="create-an-alert-on-a-service-health-notification-for-an-existing-action-group-by-using-the-azure-portal"></a>使用 Azure 门户为现有操作组创建有关服务运行状况通知的警报
+## <a name="alert-with-existing-action-group-using-azure-portal"></a>使用 Azure 门户通过现有操作组发出警报
 
 1. 执行上一节中的步骤 1 至 7 来创建服务运行状况通知。 
 
@@ -96,7 +96,7 @@ ms.locfileid: "53583725"
 
 在几分钟内，警报将处于活动状态，并根据创建期间指定的条件开始触发。
 
-## <a name="create-an-alert-on-a-service-health-notification-for-a-new-action-group-by-using-the-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板为新操作组创建有关服务运行状况通知的警报
+## <a name="alert-and-new-action-group-using-the-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板发出警报和新建操作组
 
 下面是创建以电子邮件为目标的操作组，并为目标订阅启用所有服务运行状况通知的示例。
 

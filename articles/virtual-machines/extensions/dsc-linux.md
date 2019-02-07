@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 70280676453bd146102ca331daae038b947aab58
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: ade066c08829181bc7d1ad5623934b98909e0310
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632851"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888985"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>适用于 Linux 的 DSC 扩展 (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -54,7 +54,7 @@ DSC Linux 扩展支持[扩展支持的 OS](https://azurewiki.cloudapp.netVMAgent
  
 ### <a name="internet-connectivity"></a>Internet 连接
 
-DSCForLinux 扩展要求目标虚拟机已连接到 Internet。 例如，Register 扩展要求连接到自动化服务。 对于其他操作（例如“提取”），Pull 和 Install 扩展要求连接到 Azure 存储/Github， 具体取决于客户提供的设置。
+DSCForLinux 扩展要求目标虚拟机已连接到 Internet。 例如，Register 扩展要求连接到自动化服务。 对于其他操作（例如“拉取”），Pull 和 Install 扩展要求连接到 Azure 存储/Github， 具体取决于客户提供的设置。
 
 ## <a name="extension-schema"></a>扩展架构
 
@@ -68,7 +68,7 @@ DSCForLinux 扩展要求目标虚拟机已连接到 Internet。 例如，Registe
 * `NodeConfigurationName`：（可选，字符串）要应用的节点配置的名称。
 * `RefreshFrequencyMins`：（可选，整数）指定 DSC 尝试从提取服务器获取配置的频率（以分钟为单位）。 
        如果提取服务器上的配置不同于目标节点上的当前配置，则会将前者复制到挂起的存储并应用。
-* `ConfigurationMode`：（可选，字符串）指定 DSC 如何应用配置。 有效值：ApplyOnly、ApplyAndMonitor 和 ApplyAndAutoCorrect。
+* `ConfigurationMode`：（可选，字符串）指定 DSC 如何应用配置。 有效值是：ApplyOnly、ApplyAndMonitor 和 ApplyAndAutoCorrect。
 * `ConfigurationModeFrequencyMins`：（可选，整数）指定 DSC 确保配置处于所需状态的频率（以分钟为单位）。
 
 > [!NOTE]
@@ -424,7 +424,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 /var/log/azure/<extension-name>/<version>/extension.log file.
 ```
 
-错误代码 51 表示分发版或扩展操作不受支持。
+错误代码：51 表示分发版或扩展操作不受支持。
 在某些情况下，如果计算机中存在较高版本的 OMI，则 DSC Linux 扩展无法安装 OMI。 [错误响应: (000003)不允许降级]
 
 

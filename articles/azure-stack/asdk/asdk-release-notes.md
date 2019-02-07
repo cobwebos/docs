@@ -15,12 +15,12 @@ ms.date: 12/21/2018
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 12/21/2018
-ms.openlocfilehash: d3d776def9e031ca2bcc76d1b60a19f67a74b35a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c60ba4f4106ddd0c3fc643288894fb55d3d27f8c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240338"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816452"
 ---
 # <a name="asdk-release-notes"></a>ASDK 发行说明 
  
@@ -60,7 +60,7 @@ ms.locfileid: "55240338"
 - 修复了使用 ADFS 时阻止将 RBAC 策略应用到用户组的问题。
 
 <!--3463840 - IS, ASDK --> 
-- 修复了由于无法从公共 VIP 网络访问文件服务器而导致基础结构备份失败的问题。 该项修复会将基础结构备份服务移回公共基础结构网络。 如果已应用解决此问题的最新 [Azure Stack 1809 修补程序](#azure-stack-hotfixes)，1811 更新将不进行任何进一步的修改。 
+- 修复了由于无法从公共 VIP 网络访问文件服务器而导致基础结构备份失败的问题。 该项修复会将基础结构备份服务移回公共基础结构网络。 如果应用的最新 Azure Stack 修补程序的 1809年用于解决此问题，1811年更新将不进行任何进一步的修改。 
 
 <!-- 2967387 – IS, ASDK --> 
 - 修复了以下问题：登录 Azure Stack 管理员门户或用户门户时使用的帐户显示为“未识别的用户”。 如果帐户中未指定“名字”或“姓氏”，则会显示此消息。   

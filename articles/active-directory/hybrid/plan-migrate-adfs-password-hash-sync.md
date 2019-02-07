@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 12/13/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c6c13d0e27edd5563f10df59ce7af585a345bfab
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: a24281f2b01b53ddb165d15bca4d8d43c26c5c05
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463331"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159839"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>从联合身份验证迁移到 Azure Active Directory 的密码哈希同步
 
@@ -30,7 +30,8 @@ ms.locfileid: "54463331"
 
 ### <a name="update-azure-ad-connect"></a>更新 Azure AD Connect
 
-若要成功完成迁移到密码哈希同步的步骤，必须安装 [Azure Active Directory Connect](https://www.microsoft.com/download/details.aspx?id=47594) (Azure AD Connect) 1.1.819.0 或更高版本。 在 Azure AD Connect 1.1.819.0 中，对执行登录转换的方式做了重大更改。 此版本将 AD FS 到云身份验证的迁移所需的总时间从潜在的几个小时减少为几分钟。
+若要成功执行迁移到密码哈希同步的步骤，至少需要安装 [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) 1.1.819.0。 此版本对执行登录转换的方式做了重大更改，将联合身份验证到云身份验证的迁移所需的总时间从潜在的几个小时减少为几分钟。
+
 
 > [!IMPORTANT]
 > 过时的文档、工具和博客中可能指出，将域从联合标识转换为托管标识时，必须执行用户转换。 现在不再需要转换用户。 Microsoft 正在努力更新文档和工具以反映这项变化。

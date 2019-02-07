@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 61b64b63a53318e0a703678d5525399fe13efa83
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b280c86b15f7af01b04d41b4c2d625ea4ec4a398
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432755"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104301"
 ---
 # <a name="virtual-machine-serial-console-for-windows"></a>适用于 Windows 的虚拟机串行控制台
 
@@ -136,6 +136,13 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 
 ### <a name="use-wsl-in-serial-console"></a>在串行控制台中使用 WSL
 针对 Windows Server 2019 或更高版本，已启用 Windows Subsystem for Linux (WSL)，因此如果运行 Windows Server 2019 或更高版本，也可以启用 WSL 以用于串行控制台。 这对于熟悉 Linux 命令的用户可能有所帮助。 有关为 Windows Server 启用 WSL 的说明，请参阅[安装指南](https://docs.microsoft.com/windows/wsl/install-on-server)。
+
+### <a name="restart-your-windows-vm-within-serial-console"></a>在串行控制台中重启 Windows VM
+可以通过在串行控制台中导航到电源按钮并单击“重启 VM”来重启 VM。 这将发起 VM 重启，你将在 Azure 门户中看到有关重启的通知。
+
+如果你想在不离开串行控制台体验的情况下访问 VM 的启动菜单，这是非常有用的。
+
+![Windows 串行控制台重启](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-windows.gif)
 
 ## <a name="disable-serial-console"></a>禁用串行控制台
 默认情况下，所有订阅为所有 VM 启用了串行控制台访问。 可以在订阅级别或 VM 级别禁用串行控制台。

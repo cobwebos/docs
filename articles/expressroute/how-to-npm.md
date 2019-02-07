@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 06/28/2018
+ms.date: 01/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: e72c2ceaedd23f4e3ee2006930302321498eb736
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 93fd42739e0ec8ca9230688274b31fac5edf216d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104724"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098572"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>为 ExpressRoute 配置网络性能监视器
 
@@ -38,7 +38,7 @@ ms.locfileid: "53104724"
 监视本地和 Azure 中的多个服务器上安装的代理。 代理相互通信，但不会发送数据，而是发送 TCP 握手数据包。 通过代理间的通信，Azure 可以映射流量可能经过的网络拓扑和路径。
 
 1. 创建 NPM 工作区。 这与 Log Analytics 工作区相同。
-2. 安装和配置软件代理： 
+2. 安装和配置软件代理。 （如果只想通过 Microsoft 对等互连进行监视，则无需安装和配置软件代理。）： 
     * 在本地服务器和 Azure VM 上安装监视代理（用于专用对等互连）。
     * 在监视代理服务器上配置设置，允许监视代理进行通信。 （打开防火墙端口等）
 3. 配置网络安全组 (NSG) 规则，允许 Azure VM 上安装的监视代理与本地监视代理进行通信。

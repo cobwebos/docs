@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 39dcbb95-c192-448c-86a1-cedede1c0972
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: jeedes
-ms.openlocfilehash: c08b57c41cc43bfa47dee69a75663e7a58ef4c21
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: f7973ccb384a8e882a9ced5020a53824bf0c4e7d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632834"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169869"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-drift"></a>教程：Azure Active Directory 与 Drift 集成
 
@@ -114,7 +114,7 @@ ms.locfileid: "52632834"
 
     ![Drift 域和 URL 单一登录信息](./media/drift-tutorial/tutorial_drift_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“设置其他 URL”。
+    a. 单击“设置其他 URL”。
 
     b. 在“中继状态”文本框中键入 URL：`https://app.drift.com`
 
@@ -128,9 +128,9 @@ ms.locfileid: "52632834"
     
     | 属性名称 | 属性值 |
     | ---------------| --------------- |    
-    | 名称 | user.displayname |
+    | Name | user.displayname |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击 `name` 声明（突出显示的声明）以打开“管理用户声明”对话框。
+    a. 单击 `name` 声明（突出显示的声明）以打开“管理用户声明”对话框。
 
     ![图像](./media/drift-tutorial/tutorial_drift_attribute1.png)
 
@@ -154,7 +154,7 @@ ms.locfileid: "52632834"
 
     ![“管理”连接](./media/drift-tutorial/tutorial_drift_admin.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将从 Azure 门户下载的联合元数据 XML 上传到“上传标识提供者元数据文件”文本框中。
+    a. 将从 Azure 门户下载的联合元数据 XML 上传到“上传标识提供者元数据文件”文本框中。
 
     b. 上传元数据文件后，剩余的值会自动填充到页面中。
 
@@ -176,7 +176,7 @@ ms.locfileid: "52632834"
 
     ![创建 Azure AD 测试用户](common/create_aaduser_02.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com

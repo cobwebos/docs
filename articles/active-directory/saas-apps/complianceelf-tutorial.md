@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Compliance ELF 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Compliance ELF 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Compliance ELF 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 69c6efc3-54c7-49ec-b827-33177c09aa13
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: e5a7bfc51bcd1931def202d701127de701afb595
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 509bec49840537dbb5bb7f0ec69cc4dfb750244a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042854"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189419"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>教程：Azure Active Directory 与 Compliance ELF 的集成
+# <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>教程：Azure Active Directory 与 Compliance ELF 集成
 
 本教程介绍如何将 Compliance ELF 与 Azure Active Directory (Azure AD) 集成。
 
@@ -106,22 +106,22 @@ ms.locfileid: "39042854"
 
     ![“单一登录”对话框](./media/complianceelf-tutorial/tutorial_complianceelf_samlbase.png)
 
-3. 在“Compliance ELF 域和 URL”部分，如果要在 **IDP** 发起的模式下配置应用程序，请执行以下步骤：
+3. 在“Compliance ELF 域和 URL”部分中，如果要在  **IDP**  发起的模式下配置应用程序，请执行以下步骤：
 
     ![Compliance ELF 域和 URL 单一登录信息](./media/complianceelf-tutorial/tutorial_complianceelf_url.png)
 
     在“标识符”文本框中，键入 URL：`https://sso.cordium.com`
 
-4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
+4. 若要在“SP” 发起的模式下配置应用程序，请选中“显示高级 URL 设置”  **** ****，并执行以下步骤：
 
     ![Compliance ELF 域和 URL 单一登录](./media/complianceelf-tutorial/tutorial_complianceelf_url1.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.complianceelf.com`
+    在“登录 URL” **** 文本框中，使用以下模式键入 URL： `https://<subdomain>.complianceelf.com`
     
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新这些值。 请联系 [Compliance ELF 客户端支持团队](mailto:support@complianceelf.com)获取此值。
 
-5. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。
+5. 在“SAML 签名证书” 部分中，单击“复制”按钮来复制“应用联合元数据 URL”，并将其粘贴到记事本 **** **** 。
     
     ![配置单一登录](./media/complianceelf-tutorial/tutorial_metadataurl.png)
      
@@ -155,7 +155,7 @@ ms.locfileid: "39042854"
 
     ![“用户”对话框](./media/complianceelf-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -202,12 +202,12 @@ ms.locfileid: "39042854"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Compliance ELF 磁贴时，应当会自动登录到 Compliance ELF 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

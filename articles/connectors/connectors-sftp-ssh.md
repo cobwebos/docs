@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 tags: connectors
 ms.date: 01/15/2019
-ms.openlocfilehash: e0f0230241bdffa97b94c88eb4b2d76fd44bcdea
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 807a99a8cac7326648ff4aa91b9fcdeb35de196a
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320780"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54910177"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
@@ -27,7 +27,7 @@ ms.locfileid: "54320780"
 * 获取文件内容和元数据。
 * 将存档提取到文件夹。
 
-与 [SFTP 连接器](../connectors/connectors-create-api-sftp.md)相比，SFTP-SSH 连接器可以读取或写入最大 *1 GB* 的文件。 有关其他差异，请查看本文稍后的 [SFTP-SSH 与 SFTP 的比较](#comparison)。
+与 [SFTP 连接器](../connectors/connectors-create-api-sftp.md)相比，SFTP-SSH 连接器可以通过管理 50 MB 为一批的数据来读取或写入最大 *1 GB* 的文件。 对于大于 1 GB 的文件，操作可以使用[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 有关其他差异，请查看本文稍后的 [SFTP-SSH 与 SFTP 的比较](#comparison)。
 
 可以使用触发器来监视 SFTP 服务器上的事件，并使输出可用于其他操作。 可以使用操作针对 SFTP 服务器执行各种任务。 还可以让逻辑应用中的其他操作使用 SFTP 操作的输出。 例如，如果你定期从 SFTP 服务器检索文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件警报。
 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
@@ -48,7 +48,7 @@ ms.locfileid: "54320780"
   > * **加密算法**：DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC 和 AES-256-CBC
   > * **指纹**：MD5
 
-* 可读取或写入最大 1 GB 的文件，而 SFTP 连接器则不可以，但以 50 MB（而非 1 GB）为一批处理该数据。
+* 可读取或写入最大 1 GB 的文件，而 SFTP 连接器则不可以，但以 50 MB（而非 1 GB）为一批处理该数据。 对于大于 1 GB 的文件，操作也可以使用[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 目前，触发器不支持分块。
 
 * 提供“创建文件夹”操作，用于在 SFTP 服务器上的指定路径中创建文件夹。
 
@@ -130,12 +130,15 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
 当触发器找到新文件时，会检查该新文件是否完整，以及是否未部分写入。 例如，当触发器检查文件服务器时，可能正在更改某个文件。 为了避免返回部分写入的文件，该触发器会记录具有最近更改的文件的时间戳，但不会立即返回该文件。 仅当再次轮询服务器时，触发器才会返回该文件。 有时，此行为可能会导致延迟，长达触发器轮询间隔的两倍。 
 
-请求文件内容时，触发器不会检索大于 50 MB 的文件。 若要获取大于 50 MB 的文件，请遵循以下模式：
+请求文件内容时，触发器不会获取大于 50 MB 的文件。 若要获取大于 50 MB 的文件，请遵循以下模式： 
 
-* 使用可返回文件属性的触发器，如“添加或修改文件时(仅属性)”。 
-* 按照触发器执行读取完整文件的操作，如“使用路径获取文件内容”。
+* 使用可返回文件属性的触发器，如“添加或修改文件时(仅属性)”。
+
+* 按照触发器执行读取完整文件的操作，如“使用路径获取文件内容”，并让操作使用[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。
 
 ## <a name="examples"></a>示例
+
+<a name="file-added-modified"></a>
 
 ### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP - SSH 触发器：添加或修改文件时
 
@@ -143,9 +146,23 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
 **企业示例**：可以使用此触发器监视 SFTP 文件夹中表示客户订单的新文件。 然后，可以使用“获取文件内容”等 SFTP 操作来获取订单内容以做进一步处理，并将该订单存储在订单数据库中。
 
-### <a name="sftp---ssh-action-get-content"></a>SFTP - SSH 操作：获取内容
+请求文件内容时，触发器不会获取大于 50 MB 的文件。 若要获取大于 50 MB 的文件，请遵循以下模式： 
+
+* 使用可返回文件属性的触发器，如“添加或修改文件时(仅属性)”。
+
+* 按照触发器执行读取完整文件的操作，如“使用路径获取文件内容”，并让操作使用[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。
+
+<a name="get-content"></a>
+
+### <a name="sftp---ssh-action-get-content-using-path"></a>SFTP - SSH 操作：使用路径获取内容
 
 此操作从 SFTP 服务器上的文件中获取内容。 例如，可以在前面的示例中添加触发器，并添加文件内容必须符合的条件。 如果条件为 true，则可以运行获取内容的操作。 
+
+请求文件内容时，触发器不会获取大于 50 MB 的文件。 若要获取大于 50 MB 的文件，请遵循以下模式： 
+
+* 使用可返回文件属性的触发器，如“添加或修改文件时(仅属性)”。
+
+* 跟随触发器执行读取完整文件的操作，如“使用路径获取文件内容”，并让操作使用[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。
 
 ## <a name="connector-reference"></a>连接器参考
 

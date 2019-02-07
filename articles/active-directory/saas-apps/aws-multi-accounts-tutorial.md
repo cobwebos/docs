@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 7561c20b-2325-4d97-887f-693aa383c7be
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeedes
-ms.openlocfilehash: a9acb9539497c85f408ce7417fa5983072ea80b9
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 48d8516a1923aaacc26db2eb9a9acfd0ddff737e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365656"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197511"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>教程：Azure Active Directory 与多个 Amazon Web Services (AWS) 帐户的集成
+# <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>教程：Azure Active Directory 与多个 Amazon Web Services (AWS) 帐户集成
 
 本教程介绍如何将 Azure Active Directory (Azure AD) 与 Amazon Web Services (AWS) 的多个帐户集成。
 
@@ -122,7 +122,7 @@ ms.locfileid: "49365656"
 
     ![图像](./media/aws-multi-accounts-tutorial/b1_b2_saml_sso.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“基本 SAML 配置”对话框。
+3. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
 
     ![图像](./media/aws-multi-accounts-tutorial/b1-domains_and_urlsedit.png)
 
@@ -136,13 +136,13 @@ ms.locfileid: "49365656"
 
 6. 在“用户属性和声明”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
-    | 名称  | 源属性  | 命名空间 |
+    | Name  | 源属性  | 命名空间 |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
     | 角色            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
     | SessionDuration             | “提供介于 900 秒（15 分钟）到 43200 秒（12 小时）之间的值” |  https://aws.amazon.com/SAML/Attributes |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”以打开“管理用户声明”对话框。
+    a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
     ![图像](./media/aws-multi-accounts-tutorial/i2-attribute.png)
 
@@ -180,7 +180,7 @@ ms.locfileid: "49365656"
 
     ![配置单一登录对话框][14]
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“提供者类型”，请选择“SAML”。
+    a. 对于“提供者类型”，请选择“SAML”。
 
     b. 在“提供者名称”文本框中，键入提供者名称（例如：*WAAD*）。
 
@@ -200,15 +200,15 @@ ms.locfileid: "49365656"
 
     ![配置单一登录信任][19]
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“选择可信实体的类型”下选择“SAML 2.0 联合身份验证”。
+    a. 在“选择可信实体的类型”下选择“SAML 2.0 联合身份验证”。
 
     b. 在“选择 SAML 2.0 提供程序”部分中，选择之前创建的 SAML 提供程序（例如：*WAAD*）
 
     c. 选择“允许以编程方式和通过 AWS 管理控制台进行访问”。
   
-    d. 单击“下一步: 权限”。
+    d. 单击“下一步:权限”。
 
-16. 在“附加权限策略”对话框中，不需要附加任何策略。 单击“下一步: 核对”。  
+16. 在“附加权限策略”对话框中，不需要附加任何策略。 单击“下一步:查看”。  
 
     ![配置单一登录策略][33]
 
@@ -216,7 +216,7 @@ ms.locfileid: "49365656"
 
     ![配置单一登录审阅][34]
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“角色名称”文本框中，输入你的角色名称。
+    a. 在“角色名称”文本框中，输入你的角色名称。
 
     b. 在“角色说明”文本框中，输入说明。
 
@@ -242,7 +242,7 @@ ms.locfileid: "49365656"
 
 24. 在另一个窗口中打开 [Azure AD Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 使用租户的全局管理员/共同管理员凭据登录到 Graph 浏览器站点。
+    a. 使用租户的全局管理员/共同管理员凭据登录到 Graph 浏览器站点。
 
     b. 需要拥有足够的权限才能创建角色。 单击“修改权限”以获取所需的权限。
 
@@ -352,7 +352,7 @@ ms.locfileid: "49365656"
 
 ![配置单一登录 Add](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_test_saml.png)
 
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 

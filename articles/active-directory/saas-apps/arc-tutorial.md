@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Arc Publishing - SSO 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Arc Publishing - SSO 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Arc Publishing - SSO 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: ae609583-f875-4cb8-b68e-1b0b7938e9a7
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: eafd7998e5bc21a539b6709794fe3cd70d9e3179
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8c4922c817d9667b1a25846df53f9366e2018342
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054312"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187107"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>教程：Azure Active Directory 与 Arc Publishing - SSO 的集成
+# <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>教程：Azure Active Directory 与 Arc Publishing - SSO 集成
 
 本教程介绍如何将 Arc Publishing - SSO 与 Azure Active Directory (Azure AD) 集成。
 
@@ -202,7 +202,7 @@ ms.locfileid: "39054312"
 本部分要在 Arc Publishing - SSO 中创建名为“Britta Simon”的用户。 Arc Publishing - SSO 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 如果用户尚不存在，则在尝试访问 Arc Publishing - SSO 期间会创建一个新用户。
 
 >[!Note]
->如果需要手动创建用户，请联系 [Arc Publishing - SSO 支持团队](mailto:inf@washpost.com)。
+>如果需要手动创建用户，请联系  [Arc Publishing - SSO 支持团队](mailto:inf@washpost.com)。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -239,12 +239,12 @@ ms.locfileid: "39054312"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Arc Publishing - SSO 磁贴时，应会自动登录到 Arc Publishing - SSO 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

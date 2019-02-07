@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/18/2019
+ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e78599a350aff4d0aba5603e8ad7959c945f1aca
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 67083a8214724659765922047c1f0ccd6da87b9d
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439147"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884922"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负荷规划和部署清单 
 
@@ -47,7 +47,7 @@ ms.locfileid: "54439147"
     3.  业务连续性和灾难恢复体系结构
     4.  详细的 OS、DB、内核和 SAP 支持包版本。 Azure VM 中并非支持 SAP NetWeaver 或 S/4HANA 支持的任何 OS 版本。 DBMS 版本也是如此。 为了使 SAP 版本、DBMS 版本或 OS 版本能够在 SAP 和 Azure 支持的窗口中保持一致，并在必要时进行升级，必须检查以下源代码。 必须使用 SAP 和 Azure 支持的版本组合，以获得 SAP 和 Microsoft 的全面支持。 必要时，需要计划升级某些软件组件。 以下位置提供了有关受支持的 SAP、OS 和 DBMS 软件的更多详细信息：
         1.  SAP 支持说明 [#1928533](https://launchpad.support.sap.com/#/notes/1928533)。 本说明定义了 Azure VM 支持的最低 OS 版本。 同时定义了大多数非 HANA 数据库所需的最低数据库版本。 此外，本说明还介绍了对 SAP 支持的不同 Azure VM 类型的 SAP 大小调整。
-        2.  SAP 支持说明 [#2039619](https://launchpad.support.sap.com/#/notes/2039619)。 该说明定义了 Azure 上的 Oracle 支持对照表。 注意，对于 SAP 工作负荷，Oracle 仅支持 Windows 和 Oracle Linux 作为 Azure 中的来宾 OS。 此支持声明也适用于运行 SAP 实例的 SAP 应用层。 但是，Oracle 不支持 Oracle Linux 中 SAP Central Services 的高可用性。 对于 Windows，可以结合用作 DBMS 层的 Oracle，来支持 SAP 所支持的、用于 SAP Central Services 的 Windows 故障转移群集解决方案。 
+        2.  SAP 支持说明 [#2039619](https://launchpad.support.sap.com/#/notes/2039619)。 该说明定义了 Azure 上的 Oracle 支持对照表。 注意，对于 SAP 工作负荷，Oracle 仅支持 Windows 和 Oracle Linux 作为 Azure 中的来宾 OS。 此支持声明也适用于运行 SAP 实例的 SAP 应用层。 但是，Oracle 不支持通过 Pacemaker 在 Oracle Linux 中为 SAP Central Services 提供高可用性。 如果需要在 Oracle Linux 上实现 ASCS 的高可用性，需要利用适用于 Linux 的 SIOS 保护套件。 有关详细的 SAP 认证数据，请查看 SAP 支持说明 [#1662610 - 适用于 Linux 的 SIOS 保护套件的支持详细信息](https://launchpad.support.sap.com/#/notes/1662610)。 对于 Windows，可以结合用作 DBMS 层的 Oracle，来支持 SAP 所支持的、用于 SAP Central Services 的 Windows 故障转移群集解决方案。 
         3.  SAP 支持说明 [#2235581](https://launchpad.support.sap.com/#/notes/2235581)，获取不同 OS 版本的 SAP HANA 支持对照表
         4.  [此处](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)列出了 SAP HANA 支持的 Azure VM 和 [HANA 大型实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
         5.  [SAP 产品可用性对照表](https://support.sap.com/en/)
@@ -196,7 +196,7 @@ ms.locfileid: "54439147"
     2.  对较小的数据库使用备份/还原
     3.  使用 SAP SWPM 工具中实现的 SAP 迁移监视器执行异类迁移
     4.  如果需要与 SAP 版本升级组合，请使用 [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) 过程。 请记住，并非所有源 DBMS 和目标 DBMS 之间的组合都受支持。 在有关 DMO 不同版本的特定 SAP 支持说明中可以找到更多信息。 例如，[SUM 2.0 SP04 的数据库迁移选项 (DMO)](https://launchpad.support.sap.com/#/notes/2644872)
-    5.  在需要移动备份或 SAP 导出文件的情况下，测试通过 Internet 或 ExpressRoute 进行数据传输是否更好。 请注意，对于通过 Interne t移动数据的情况，可能需要更改一些你需要为将来的生产系统准备的 NSG/ASG 安全规则
+    5.  在需要移动备份或 SAP 导出文件的情况下，测试通过 Internet 或 ExpressRoute 进行数据传输是否更好。 对于通过 Internet 移动数据的情况，可能需要更改一些你需要为将来的生产系统设置的 NSG/ASG 安全规则
 3.  在将系统从旧平台移至 Azure 之前，请先收集 CPU 使用情况、存储吞吐量和 IOPS 数据等资源消耗数据。 尤其是来自 DBMS 层单元（也包括应用层单元）的数据。 此外，还应测量网络和存储延迟。
 4.  再次验证 SAP 支持说明、SAP HANA 硬件目录和 SAP PAM 上的资源，以确保 Azure 支持的 VM、这些 VM 中支持的 OS 版本以及 SAP 和 DBMS 版本没有发生更改 
 4.  将部署脚本调整为你决定的 VM 类型和 Azure 功能的最新更改
@@ -224,7 +224,7 @@ ms.locfileid: "54439147"
     
 
 ## <a name="go-live-phase"></a>投入使用阶段
-对于投入使用阶段，需要确保遵循早期阶段开发的 playbook。 执行已测试和训练的步骤。 请勿接收配置和流程中的最新更改。 除此之外，请应用以下各项：
+对于投入使用阶段，需要确保遵循早期阶段开发的 playbook。 执行已测试和训练的步骤。 请勿接收配置和流程中的最新更改。 除此之外，请应用以下度量值：
 
 1. 验证 Azure 门户监视和其他监视工具是否正常工作。  推荐的工具是 Perfmon (Windows) 或 SAR (Linux)： 
     1.  CPU 计数器 

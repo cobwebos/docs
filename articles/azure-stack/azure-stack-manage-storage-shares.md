@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 96145906d40e465d2427a8100b3ad9333eec3f29
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7536913817e10fbc2b46eadd1cebdfb98079c759
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249089"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819512"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>管理 Azure Stack 的存储容量 
 
@@ -51,7 +51,7 @@ ms.locfileid: "55249089"
 
 卷上的共享保存租户数据。 租户数据包括页 Blob、块 Blob、追加 Blob、表、队列、数据库和相关的元数据存储。 由于存储对象（Blob 等）各自包含在单个共享中，因此每个对象的大小上限不能超过共享大小。 新对象的大小上限取决于创建新对象时共享中仍未使用的空间容量。
 
-当共享上的可用空间不足且[回收](#reclaim-capacity)空间的操作不成功或不可用时，Azure Stack 云操作员可以在共享之间[迁移](#migrate-a-container-between) Blob 容器。
+共享较低时的可用空间和操作[回收](#reclaim-capacity)空间不成功或不可用，Azure Stack 云操作员可以迁移 blob 容器从一个共享到另一个。
 
 - 有关容器和 Blob 的详细信息，请参阅“Azure Stack 中的重要功能和概念”中的 [Blob 存储](azure-stack-key-features.md#blob-storage)。
 - 有关租户用户如何使用 Azure Stack 中的 Blob 存储的详细信息，请参阅 [Azure Stack 存储服务](/azure/azure-stack/user/azure-stack-storage-overview#azure-stack-storage-services)。
@@ -80,7 +80,7 @@ VM 磁盘包括操作系统磁盘，由租户添加到容器。 VM 还可能包�
 
 ### <a name="use-powershell"></a>使用 PowerShell
 云操作员可以使用 PowerShell **Get-AzsStorageShare** cmdlet 来监视共享的存储容量。 Get-AzsStorageShare cmdlet 返回每个共享中总计、已分配和可用的空间（以字节为单位）。   
-示例：![返回共享的可用空间](media/azure-stack-manage-storage-shares/free-space.png)
+![示例：返回共享的可用空间](media/azure-stack-manage-storage-shares/free-space.png)
 
 - “容量总计”是共享中可用的总空间（以字节为单位）。 此空间用于存储服务维护的数据和元数据。
 - “已用容量”是存储租户数据和相关元数据的文件中所有盘区使用的数据量（以字节为单位）。
@@ -91,7 +91,7 @@ VM 磁盘包括操作系统磁盘，由租户添加到容器。 VM 还可能包�
 1. 登录到[管理员门户](https://adminportal.local.azurestack.external)。
 2. 选择“所有服务” > “存储”以打开文件共享列表，可以在其中查看使用情况信息。 
 
-  ![示例：存储文件共享](media/azure-stack-manage-storage-shares/storage-file-shares.png)
+  ![例如:存储文件共享](media/azure-stack-manage-storage-shares/storage-file-shares.png)
 
   - “总计”是共享中可用的总空间（以字节为单位）。 此空间用于存储服务维护的数据和元数据。
   - “已用”是存储租户数据和相关元数据的文件中所有盘区使用的数据量（以字节为单位）。
@@ -189,7 +189,7 @@ VM 磁盘包括操作系统磁盘，由租户添加到容器。 VM 还可能包�
   Get-AzsStorageContainerMigrationStatus -JobId $job_id -FarmName $farm_name
   ```
 
-  ![示例：迁移状态](media/azure-stack-manage-storage-shares/migration-status1.png)
+  ![例如:迁移状态](media/azure-stack-manage-storage-shares/migration-status1.png)
 
 6.  可以取消正在进行的迁移作业。 系统会以异步方式处理已取消的迁移作业。 可以使用 $jobid 跟踪取消操作：
 
@@ -197,11 +197,11 @@ VM 磁盘包括操作系统磁盘，由租户添加到容器。 VM 还可能包�
   Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
   ```
 
-  ![示例：回滚状态](media/azure-stack-manage-storage-shares/rollback.png)
+  ![例如:回滚状态](media/azure-stack-manage-storage-shares/rollback.png)
 
 7. 可以再次运行步骤 6 中的命令，直到系统确认迁移作业的状态为 **Canceled**：  
 
-    ![示例：已取消的状态](media/azure-stack-manage-storage-shares/cancelled.png)
+    ![例如:已取消的状态](media/azure-stack-manage-storage-shares/cancelled.png)
 
 ### <a name="move-vm-disks"></a>移动 VM 磁盘
 *此选项仅适用于多节点部署。*

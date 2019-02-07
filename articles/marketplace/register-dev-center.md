@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 393426678d9331837bdc3b73c4e491dbe7eae6fa
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: dacc2ca995bebd0ae65d9c8221fc1954687949ee
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834819"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179831"
 ---
 # <a name="register-in-dev-center"></a>在开发人员中心内注册  
 若要帮助确认你登录的不是个人浏览器帐户，请打开一个新的 Internet Explorer InPrivate 或 Chrome Incognito 浏览会话。  
@@ -68,7 +68,7 @@ ms.locfileid: "52834819"
 
 9.  在 `Registration - Review` 部分中，复查帐户信息，确认所有内容都正确无误。  
 
-    阅读 Microsoft Azure 市场发布者协议的条款和条件。  
+    阅读 Microsoft Azure 市场[发布者协议](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf)的条款和条件。  
 
     单击指示已阅读并接受这些条款的复选框。  
     

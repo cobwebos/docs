@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 01/14/2019
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: a23561e082736b7dfae6205e75fd1e9ccfab5f6c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 531ba32125479528b1a847b32d711049e699dda0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463382"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191646"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect： 配置 AD DS 连接器帐户权限 
 
@@ -129,7 +129,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 此 cmdlet 将设置以下权限： 
  
 
-|类型 |名称 |Access |应用于| 
+|Type |Name |Access |应用于| 
 |-----|-----|-----|-----|
 |允许 |AD DS 连接器帐户 |读取所有属性 |后代设备对象| 
 |允许 |AD DS 连接器帐户|读取所有属性 |后代 InetOrgPerson 对象| 
@@ -155,7 +155,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 
 此 cmdlet 将设置以下权限： 
 
-|类型 |名称 |Access |应用于|
+|Type |Name |Access |应用于|
 |-----|-----|-----|-----| 
 |允许|AD DS 连接器帐户|读取/写入属性|MS-DS-Consistency-Guid|后代用户对象|
 
@@ -175,7 +175,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonPar
 
 此 cmdlet 将设置以下权限： 
 
-|类型 |名称 |Access |应用于|
+|Type |Name |Access |应用于|
 |-----|-----|-----|-----| 
 |允许 |AD DS 连接器帐户 |复制目录更改 |仅限此对象（域根）| 
 |允许 |AD DS 连接器帐户 |复制所有目录更改 |仅限此对象（域根）| 
@@ -195,7 +195,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 此 cmdlet 将设置以下权限： 
 
-|类型 |名称 |Access |应用于|
+|Type |Name |Access |应用于|
 |-----|-----|-----|-----| 
 |允许 |AD DS 连接器帐户 |重置密码 |后代用户对象| 
 |允许 |AD DS 连接器帐户 |写入 lockoutTime 属性 |后代用户对象| 
@@ -205,21 +205,21 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 若要在使用组写回时为 AD DS 连接器帐户设置权限，请运行： 
 
 ``` powershell
-Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
+Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 或； 
 
 ``` powershell
-Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
+Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
 ```
  
 此 cmdlet 将设置以下权限： 
 
-|类型 |名称 |Access |应用于|
+|Type |Name |Access |应用于|
 |-----|-----|-----|-----| 
-|允许 |AD DS 连接器帐户 |一般读取/写入 |后代组对象| 
-|允许 |AD DS 连接器帐户 |创建/删除子对象 |此对象以及所有后代对象| 
-|允许 |AD DS 连接器帐户 |创建/删除对象及其所有子级 |此对象以及所有后代对象|
+|允许 |AD DS 连接器帐户 |一般读取/写入 |对象类型组和子对象的所有属性| 
+|允许 |AD DS 连接器帐户 |创建/删除子对象 |对象类型组和子对象的所有属性| 
+|允许 |AD DS 连接器帐户 |删除/删除树对象|对象类型组和子对象的所有属性|
 
 ### <a name="permissions-for-exchange-hybrid-deployment"></a>Exchange 混合部署的权限 
 若要在使用 Exchange 混合部署时为 AD DS 连接器帐户设置权限，请运行： 
@@ -238,7 +238,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 此 cmdlet 将设置以下权限：  
  
 
-|类型 |名称 |Access |应用于|
+|Type |Name |Access |应用于|
 |-----|-----|-----|-----| 
 |允许 |AD DS 连接器帐户 |读取/写入所有用户属性 |后代用户对象| 
 |允许 |AD DS 连接器帐户 |读取/写入所有用户属性 |后代 InetOrgPerson 对象| 
@@ -260,7 +260,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 此 cmdlet 将设置以下权限： 
 
-|类型 |名称 |Access |应用于|
+|Type |Name |Access |应用于|
 |-----|-----|-----|-----| 
 |允许 |AD DS 连接器帐户 |读取所有属性 |后代 PublicFolder 对象| 
 
@@ -285,7 +285,7 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 
 此 cmdlet 将设置以下权限： 
 
-|类型 |名称 |Access |应用于|
+|Type |Name |Access |应用于|
 |-----|-----|-----|-----| 
 |允许 |SYSTEM |完全控制 |此对象 
 |允许 |企业管理员 |完全控制 |此对象 

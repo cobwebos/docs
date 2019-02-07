@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 3bb8d4796d23b84f815d28efa45af619efe19af3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c44e000a60e4391faf38cb275f35ec512e19aea3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338227"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101679"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>保护 Azure 安全中心的网络资源
 Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安全最佳做法。 在安全中心识别出潜在的安全漏洞时，它会创建一些建议，指导完成配置所需控件以强化和保护资源的过程。
@@ -128,12 +128,12 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 
 ## <a name="network-recommendations"></a>网络建议
 
-|资源类型|安全功能分数|建议|Description|
+|资源类型|安全功能分数|建议|说明|
 |----|----|----|----|
 |计算机|40|在虚拟机上启用网络安全组|启用网络安全组以控制虚拟机的网络访问。|
 |子网|35|在子网上启用网络安全组 |启用网络安全组以控制子网中部署的资源的网络访问。|
 |计算机|30|应用恰时网络访问控制|应用恰时 VM 访问控制来永久锁定对所选端口的访问，并使经授权的用户能够通过同一机制将其打开有限的时间量。|
-|计算机|20|通过面向 Internet 的终结点限制访问|通过限制现有允许规则的访问增强面向 VM 的 Internet 的网络安全组。|
+|计算机|20|通过面向 Internet 的终结点限制访问|通过限制现有允许规则的访问增强面向 Internet 的 VM 的网络安全组。|
 |计算机|10|添加下一代防火墙|添加下一代防火墙 (NGFW) 解决方案，以更好地保护面向 VM 的 Internet。|
 |计算机|5|仅通过网络网关防火墙路由流量|若要完成下一代防火墙解决方案的部署，应当仅通过下一代防火墙解决方案路由发往面向 VM 的受保护 Internet 的流量。|
 |VNet|5|启用 DDoS 防护标准版|这些虚拟网络中具有公共 IP 的应用程序不受 DDOS 防护服务标准版保护。 建议启用该功能以缓解网络容量和协议攻击。|

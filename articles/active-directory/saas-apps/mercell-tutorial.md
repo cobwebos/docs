@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: bb94c288-2ed4-4683-acde-62474292df29
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: e2ca2d4f4a93f6c4bbfdacb6f25185cd59586964
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 1763a022487f0a6b01a59156960e59a0bb8663f3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041121"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183588"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercell"></a>教程：Azure Active Directory 与 Mercell 集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "39041121"
 
     在“标识符”文本框中，键入 URL：`https://my.mercell.com/`
 
-4. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。
+4. 在“SAML 签名证书” 部分中，单击“复制”按钮来复制“应用联合元数据 URL”，并将其粘贴到记事本 **** **** 。
     
     ![配置单一登录](./media/mercell-tutorial/tutorial_metadataurl.png)
      
@@ -144,7 +144,7 @@ ms.locfileid: "39041121"
 
     ![“用户”对话框](./media/mercell-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -156,7 +156,7 @@ ms.locfileid: "39041121"
 
 本部分的目的是在 Mercell 中创建名为“Britta Simon”的用户。 Mercell 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 尝试访问 Mercell 期间，如果该用户尚不存在，则会创建一个新用户。
 >[!Note]
->如果需要手动创建用户，请联系 [Mercell 支持团队](mailto:webmaster@mercell.com)。
+>如果需要手动创建用户，请联系  [Mercell 支持团队](mailto:webmaster@mercell.com)。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -193,12 +193,12 @@ ms.locfileid: "39041121"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Mercell”磁贴时，应该会自动登录到 Mercell 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

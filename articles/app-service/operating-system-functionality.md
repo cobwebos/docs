@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ad27a7eaf88ae57f730609e2b0f43a2f5ea182a1
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: e5ab6651503766844b2aeef1849bffff9cf4d7bb
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653503"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901779"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure 应用服务上的操作系统功能
 本文介绍了可供在 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)上运行的所有 Windows 应用使用的常见基准操作系统功能。 这些功能包括文件、网络和注册表访问以及诊断日志和事件。 
@@ -128,6 +128,10 @@ ms.locfileid: "53653503"
 应用对于它们在其上运行的虚拟机的注册表的大部分内容（尽管不是全部内容）具有只读访问权限。 实际上，这意味着应用可以访问允许对本地用户组进行只读访问的注册表项。 注册表中当前不支持读写访问的一个区域是 HKEY\_CURRENT\_USER Hive。
 
 对注册表的写访问被阻止，包括对任何按用户注册表项的访问。 从应用角度来说，对注册表的写访问永远不应依赖于 Azure 环境，因为应用可以（并且也是这样做的）跨不同虚拟机进行迁移。 应用可依赖的唯一持久可写入存储是在应用服务 UNC 共享上存储的按应用内容目录结构。 
+
+## <a name="remote-desktop-access"></a>远程桌面访问
+
+应用服务不提供对 VM 实例的远程桌面访问。
 
 ## <a name="more-information"></a>详细信息
 

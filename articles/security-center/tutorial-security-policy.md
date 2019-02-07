@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/4/2019
 ms.author: rkarlin
-ms.openlocfilehash: 52af6051b4534ba65b4822205cb5395a59ef9d6a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c706dbd4536b9c75281500ace6f02db00ff2f95d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259958"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095475"
 ---
 # <a name="working-with-security-policies"></a>使用安全策略
 
@@ -121,7 +121,7 @@ Azure Policy 中的重要概念：
 在下面的示例中，替换以下三个变量：
 
 - **{scope}**，用于输入要应用策略的管理组或订阅的名称。
-- **{poicyAssignmentName}**，用于输入[相关策略分配的名称](#policy-names)。
+- **{policyAssignmentName}**，用于输入[相关策略分配的名称](#policy-names)。
 - **{name}**，用于输入你的名字或批准策略更改的管理员的名字。
 
 本示例演示如何对订阅或管理组分配内置的安全中心计划
@@ -212,7 +212,7 @@ Azure Policy 中的重要概念：
 |安全配置 |监视 Azure 安全中心的 OS 漏洞 |systemConfigurationsMonitoringEffect| 
 |终结点保护 |监视 Azure 安全中心 Endpoint Protection 的缺失情况 |endpointProtectionMonitoringEffect |
 |磁盘加密 |监视 Azure 安全中心内未加密的 VM 磁盘 |diskEncryptionMonitoringEffect|
-|漏洞评估 |监视 Azure 安全中心的 VM 漏洞 |vulnerabilityAssesmentMonitoringEffect|
+|漏洞评估 |监视 Azure 安全中心的 VM 漏洞 |vulnerabilityAssessmentMonitoringEffect|
 |Web 应用程序防火墙 |监视 Azure 安全中心内未受保护的 Web 应用程序 |webApplicationFirewallMonitoringEffect |
 |下一代防火墙 |监视 Azure 安全中心内未受保护的网络终结点| |
 

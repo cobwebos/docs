@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Zoho One 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Zoho One 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Zoho One 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: bbc3038c-0d8b-45dd-9645-368bd3d01a0f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 81e86df270a7286426363c26a0e8a87b99082428
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 22563ec52459d4cd332a6e97df95348a74c3ae16
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438267"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152342"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>教程：Azure Active Directory 与 Zoho One 的集成
+# <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>教程：Azure Active Directory 与 Zoho One 集成
 
 本教程介绍了如何将 Zoho One 与 Azure Active Directory (Azure AD) 进行集成。
 
@@ -110,7 +110,7 @@ ms.locfileid: "39438267"
 
     a. 在“标识符(实体 ID)”文本框中，键入 URL：`one.zoho.com`
 
-    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://accounts.zoho.com/samlresponse/<saml-identifier>`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://accounts.zoho.com/samlresponse/<saml-identifier>`
 
     c. 选中“显示高级 URL 设置”。
 
@@ -167,7 +167,7 @@ ms.locfileid: "39438267"
 
     a. 在“域名”文本框中，键入域，例如 **contoso.com**。
 
-    b. 单击 **“添加”**。
+    b. 单击“添加”。
 
     >[!Note]
     >在添加域后，按照[这些](https://www.zoho.com/one/help/admin-guide/domain-verification.html)步骤验证域。 验证域后，在 Azure 门户中的“Zoho One 域和 URL”部分中的“登录 URL”中使用你的域名。
@@ -227,7 +227,7 @@ ms.locfileid: "39438267"
     >[!Note]
     >从域列表中选择已验证的域。
 
-    c. 单击 **“添加”**。
+    c. 单击“添加”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -264,12 +264,12 @@ ms.locfileid: "39438267"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Zoho One 磁贴时，应当会自动登录到 Zoho One 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

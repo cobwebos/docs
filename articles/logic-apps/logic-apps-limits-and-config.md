@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: c33952f893d5ef2cfb9020acbf813d30b6c105e7
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: d59bc20ea745412f8f2549e0359483d1dd3e608d
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469726"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912776"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -26,7 +26,7 @@ ms.locfileid: "54469726"
 
 下面是针对单个逻辑应用定义的限制：
 
-| 名称 | 限制 | 说明 | 
+| Name | 限制 | 说明 | 
 | ---- | ----- | ----- | 
 | 每个工作流的操作数 | 500 | 要对此限制进行扩展，可根据需要添加嵌套工作流。 |
 | 操作的允许嵌套深度 | 8 | 要对此限制进行扩展，可根据需要添加嵌套工作流。 | 
@@ -48,7 +48,7 @@ ms.locfileid: "54469726"
 
 下面是针对单个逻辑应用运行的限制：
 
-| 名称 | 限制 | 说明 | 
+| Name | 限制 | 说明 | 
 |------|-------|-------| 
 | 运行持续时间 | 90 天 | 若要更改此限制，请参阅[更改运行持续时间](#change-duration)。 | 
 | 存储保留期 | 90 天（从运行开始时间计算） | 若要将此限制更改为介于 7 和 90 天之间的值，请参阅[更改存储保留期](#change-retention)。 | 
@@ -83,7 +83,7 @@ ms.locfileid: "54469726"
 
 下面是针对单个逻辑应用运行的限制：
 
-| 名称 | 限制 | 说明 | 
+| Name | 限制 | 说明 | 
 | ---- | ----- | ----- | 
 | 触发器并发 | 限制并发时为 50 | 启用触发器的并发控制时，默认限制为 25。 此限制描述可以在同一时间或并行运行的逻辑应用实例的最大数。 <p><p>若要将默认限制更改为介于 1 到 50 之间（含）的值，请参阅[更改触发器并发限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)或[按顺序触发实例](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)。 | 
 | 最大等待运行数 | 限制并发时为 100 | 当你启用触发器的并发控制时，默认限制为 10。 此限制描述当逻辑应用已在运行最大数量并发实例时，可等待运行的最大逻辑应用实例数。 <p><p>若要将默认限制更改为介于 0 和 100 之间的值，请参阅[更改等待的运行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。 | 
@@ -99,7 +99,7 @@ ms.locfileid: "54469726"
 
 下面是针对单个逻辑应用运行的限制：
 
-| 名称 | 限制 | 说明 | 
+| Name | 限制 | 说明 | 
 | ---- | ----- | ----- | 
 | 操作：每 5 分钟执行的次数 | 300,000 | 默认限制为 100,000。 若要更改此默认限制，请参阅处于预览阶段的[在“高吞吐量”模式下运行逻辑应用](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)。 或者，你可根据需要在多个逻辑应用之间分配工作负荷。 | 
 | 操作：并发传出调用数 | ~2,500 | 你可减少并发请求数，或根据需要减少持续时间。 | 
@@ -117,11 +117,11 @@ ms.locfileid: "54469726"
 
 ### <a name="file-size"></a>文件大小
 
-| 名称 | 限制 | 说明 |
+| Name | 限制 | 说明 |
 |------|-------|-------|
-| FTP | 50 MB | 若要超出此限制，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 | 
-| SFTP | 50 MB | 若要超出此限制，请使用 [SFTP-SSH 连接器](../connectors/connectors-sftp-ssh.md)或参阅[通过分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 | 
-| SFTP-SSH | 1 GB | 此连接器最多处理 1 GB 数据，但以 50 MB（而非 1 GB）为一批传输该数据。 | 
+| FTP | 50 MB | 若要仅对操作超出此限制，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 <p>**注意**：分块不适用于触发器。 另外，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 | 
+| SFTP | 50 MB | 若要仅对操作超出此限制，请使用 [SFTP-SSH 连接器](../connectors/connectors-sftp-ssh.md)或参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 <p>**注意**：分块不适用于触发器。 另外，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 | 
+| SFTP-SSH | 1 GB | 此连接器最多处理 1 GB 数据，但以 50 MB（而非 1 GB）为一批传输该数据。 若要仅对操作超出此限制，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 <p>**注意**：分块不适用于触发器。 | 
 |||| 
 
 <a name="request-limits"></a>
@@ -134,7 +134,7 @@ ms.locfileid: "54469726"
 
 某些连接器操作会进行异步调用或侦听 Webhook 请求，因此，这些操作的超时时间可能会长于以下限制。 有关详细信息，请参阅特定连接器的技术详细信息以及[工作流触发器和操作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)。
 
-| 名称 | 限制 | 说明 | 
+| Name | 限制 | 说明 | 
 | ---- | ----- | ----- | 
 | 传出的请求 | 120 秒 | 对于运行时间较长的操作，请使用[异步轮询模式](../logic-apps/logic-apps-create-api-app.md#async-pattern)或 [until 循环](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)。 | 
 | 同步响应 | 120 秒 | 要使原始请求能够获得响应，则除非以嵌套工作流的形式调用其他逻辑应用，否则必须在限制内完成响应的所有步骤。 有关详细信息，请参阅[调用、触发器或嵌套逻辑应用](../logic-apps/logic-apps-http-endpoint.md)。 | 
@@ -142,7 +142,7 @@ ms.locfileid: "54469726"
 
 #### <a name="message-size"></a>消息大小
 
-| 名称 | 限制 | 说明 | 
+| Name | 限制 | 说明 | 
 | ---- | ----- | ----- | 
 | 消息大小 | 100 MB | 若要解决此限制问题，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 | 
 | 使用分块的消息大小 | 1 GB | 此限制适用于本机支持分块或可以在其运行时配置中启用分块的操作。 有关详细信息，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 | 
@@ -151,7 +151,7 @@ ms.locfileid: "54469726"
 
 #### <a name="retry-policy"></a>重试策略
 
-| 名称 | 限制 | 说明 | 
+| Name | 限制 | 说明 | 
 | ---- | ----- | ----- | 
 | 重试次数 | 90 | 默认值为 4。 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 | 
 | 重试最大延迟 | 1 天 | 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 | 
@@ -164,7 +164,7 @@ ms.locfileid: "54469726"
 
 下面介绍对可通过 Web API 创建的自定义连接器的限制。
 
-| 名称 | 限制 | 
+| Name | 限制 | 
 | ---- | ----- | 
 | 自定义连接器数 | 每个 Azure 订阅 1,000 | 
 | 每分钟的请求数量（对于自定义连接器创建的每个连接） | 每个连接 500 个请求 |
@@ -174,7 +174,7 @@ ms.locfileid: "54469726"
 
 ## <a name="managed-identities"></a>托管标识
 
-| 名称 | 限制 | 
+| Name | 限制 | 
 | ---- | ----- | 
 | 每个 Azure 订阅中具有系统分配的托管标识的逻辑应用数量 | 10 | 
 |||
@@ -234,7 +234,7 @@ ms.locfileid: "54469726"
 
 ### <a name="artifact-capacity-limits"></a>项目容量限制
 
-| 名称 | 限制 | 说明 | 
+| Name | 限制 | 说明 | 
 | ---- | ----- | ----- | 
 | 架构 | 8 MB | 若要上传大于 2 MB 的文件，请使用 [blob URI](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 | 
 | 映射（XSLT 文件） | 2 MB | | 
@@ -250,7 +250,7 @@ ms.locfileid: "54469726"
 
 以下限制适用于 B2B 协议：
 
-| 名称 | 限制 | 说明 | 
+| Name | 限制 | 说明 | 
 | ---- | ----- | ----- | 
 | AS2 | 50 MB | 适用于解码和编码 | 
 | X12 | 50 MB | 适用于解码和编码 | 

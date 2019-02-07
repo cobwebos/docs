@@ -15,12 +15,12 @@ ms.date: 01/11/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 7b94c53d8a084ae49b0b9f68d57c408ed10ac507
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 051c34c631795479cb5e5d0f67209bae89e82940
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247164"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766735"
 ---
 # <a name="update-the-sql-resource-provider"></a>更新 SQL 资源提供程序
 
@@ -63,8 +63,8 @@ ms.locfileid: "55247164"
 | **DefaultSSLCertificatePassword** | .pfx 证书的密码。 | _必需_ |
 | **MaxRetryCount** | 操作失败时，想要重试每个操作的次数。| 2 |
 | **RetryDuration** |每两次重试的超时间隔（秒）。 | 120 |
-| **卸载** | 删除资源提供程序和所有关联的资源。 | 否 |
-| **DebugMode** | 防止在失败时自动清除。 | 否 |
+| **卸载** | 删除资源提供程序和所有关联的资源。 | “否” |
+| **DebugMode** | 防止在失败时自动清除。 | “否” |
 
 ## <a name="update-script-powershell-example"></a>更新脚本 PowerShell 示例
 下面是使用的示例*UpdateSQLProvider.ps1*可以从提升的 PowerShell 控制台运行的脚本。 请务必根据需要更改变量的信息和密码：  

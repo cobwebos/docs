@@ -15,12 +15,12 @@ ms.date: 12/11/2018
 ms.author: mabrigg
 ms.reviewer: guanghu
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 331a71d4f807e1e596a91c1463064e3f6dcbd1e1
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7d719ee6bdb8ce1f4131b474fe7602b492e69cd3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247028"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810664"
 ---
 # <a name="deploy-azure-cognitive-services-to-azure-stack"></a>将 Azure 认知服务部署到 Azure Stack
 
@@ -55,7 +55,7 @@ ms.locfileid: "55247028"
 
 本文将介绍如何在 Azure Stack 上的 Kubernetes 群集中部署 Azure 人脸 API。 可以使用相同的方法将其他认知服务容器部署到 Azure Stack Kubernetes 群集。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 开始之前，需要做好以下准备：
 
@@ -138,13 +138,13 @@ spec:
 
 有关重要字段的详细信息：
 
-| 字段 | 说明 |
+| 字段 | 注意 |
 | --- | --- |
 | replicaNumber | 定义要创建的实例的初始副本。 当然，在部署之后可进行缩放。 |
 | ImageLocation | 指示 ACR 中特定认知服务容器映像的位置。 例如，人脸服务：`aicpppe.azurecr.io/microsoft/cognitive-services-face` |
 | BillingURL |在执行[创建 Azure 资源](#create-azure-resources)步骤时记下的终结点 URL |
 | ApiKey | 在执行[创建 Azure 资源](#create-azure-resources)步骤时记下的订阅密钥 |
-| SecretName | 刚刚在执行[创建机密用于访问专用容器注册表](#create-secrete-to-access-the-private-container-registry)步骤时记下的机密名称 |
+| SecretName | 只需在创建步骤中记下的机密名称机密的保护来访问专用容器注册表 |
 
 ## <a name="deploy-the-cognitive-service"></a>部署认知服务
 

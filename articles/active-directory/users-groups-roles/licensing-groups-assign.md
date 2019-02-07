@@ -10,16 +10,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e08ca3453cc43fa0f35102ca5563b4b07ce45dea
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 423842d3e2485334a916423e997c12669a126adb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214998"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155062"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>按 Azure Active Directory 中的组成员资格将许可证分配给用户
 
@@ -59,7 +59,7 @@ ms.locfileid: "50214998"
 现在，我们已为“HR Department”组指定一个许可证模板。 Azure AD 中已启动一个后台进程来处理该组的所有现有成员。 这项初始操作可能需要花费一段时间，具体时间取决于组的当前大小。 下一步骤介绍了如何验证该过程是否完成，并确定是否需要采取进一步的措施来解决问题。
 
 > [!NOTE]
-> 也可以从另一个位置开始相同的分配：Azure AD 中的“用户和组”。 转到“Azure Active Directory” > “用户和组” > “所有组”。 然后找到该组，选择它，并转到“许可证”选项卡。单击窗格顶部的“分配”按钮会打开许可证分配窗格。
+> 可以从另一个位置开始相同的分配：Azure AD 中的“用户和组”。 转到“Azure Active Directory” > “用户和组” > “所有组”。 然后找到该组，选择它，并转到“许可证”选项卡。单击窗格顶部的“分配”按钮会打开许可证分配窗格。
 
 ## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>步骤 2：验证初始分配是否已完成
 
@@ -77,9 +77,9 @@ ms.locfileid: "50214998"
 
 3. 可在“Azure Active Directory” > “用户和组” > “组名称” > “审核日志”下查看有关许可证处理的更多详细信息。 请注意以下活动：
 
-   - 活动：“开始向用户应用基于组的许可证”。 当系统选取针对组所做的许可证分配更改并开始向所有用户成员应用该更改时，记录此活动。 其中包含有关所做的更改的信息。
+   - 活动：**开始向用户应用基于组的许可证**。 当系统选取针对组所做的许可证分配更改并开始向所有用户成员应用该更改时，记录此活动。 其中包含有关所做的更改的信息。
 
-   - 活动：“完成向用户应用基于组的许可证”。 当系统完成对组中所有用户的处理时，记录此活动。 它包含有关已成功处理多少个用户，以及无法为多少个用户分配组许可证的摘要。
+   - 活动：**完成向用户应用基于组的许可证**。 当系统完成对组中所有用户的处理时，记录此活动。 它包含有关已成功处理多少个用户，以及无法为多少个用户分配组许可证的摘要。
 
    [阅读此部分](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity)以详细了解如何使用审核日志分析由基于组的许可进行的更改。
 

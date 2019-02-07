@@ -6,17 +6,17 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 688194c8d5ec0c2594d8c7178d8cae3925b8e482
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: bc85de9d2d94cd325095f5f6555105a724865005
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413358"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213298"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>语音服务 API 的语言和区域支持
 
@@ -79,6 +79,10 @@ Microsoft 语音识别 API 支持以下语言。 每种语言都有不同级别�
 |--------|----------|---------|--------------------|
 | en-US | 英语(美国) | 男 | “Microsoft 服务器语音的文本转语音（en-US，GuyNeural）” |
 | en-US | 英语(美国) | 女 | “Microsoft 服务器语音的文本转语音（en-US，JessaNeural）” |
+| zh-CN | 中文 | 女 | “Microsoft 服务器语音的文本转语音（zh-CN，XiaoxiaoNeural）” |
+
+> [!IMPORTANT]
+> Microsoft 服务器语音的文本转语音（zh-CN，XiaoxiaoNeural）仅可通过以下东南亚终结点获得： https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1。
 
 ### <a name="standard-voices"></a>标准语音
 

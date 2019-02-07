@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/7/2019
+ms.date: 1/25/2019
 ms.author: raiye
-ms.openlocfilehash: e621d526aed3c4d98d964dfdcd7ba01e8c1fb830
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 9d2fa8497ac773ba086f3a4550e20ac5f5f0d882
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104856"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075459"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure 来宾 OS 版本和 SDK 兼容性对照表
 提供适用于云服务的最新 Azure 来宾 OS 版本的最新信息。 此信息可帮助在禁用来宾 OS 之前规划升级路径。 如果根据 [Azure 来宾 OS 更新设置][Azure Guest OS Update Settings]中所述将角色配置为使用自动进行来宾 OS 更新，则不一定要阅读本页面。
@@ -43,6 +43,9 @@ ms.locfileid: "54104856"
 
 ## <a name="news-updates"></a>新闻更新
 
+###### <a name="january-24-2019"></a>**2019 年 1 月 24 日**
+系列 6 来宾 OS (Windows Server 2019) 已发布。
+
 ###### <a name="january-7-2019"></a>**2019 年 1 月 7 日**
 12 月版来宾 OS 已发布。
 
@@ -65,6 +68,21 @@ ms.locfileid: "54104856"
 6 月版来宾 OS 已发布。
 
 ## <a name="releases"></a>发行版本
+
+## <a name="family-6-releases"></a>系列 6 发行版
+**Windows Server 2019**
+
+已安装的 .NET Framework：3.5、4.7.2
+
+> [!NOTE]
+> Windows Azure SDK for .NET 3.0 可在[此处][Windows Azure SDK]下载。
+>
+
+| 配置字符串 | 发行日期 | 停用日期 |
+| --- | --- | --- |
+| WA-GUEST-OS-6.2_201812-01 |2019 年 1 月 24 日 |6.4 发行后 |
+| WA-GUEST-OS-6.1_201811-01 |2019 年 1 月 24 日 |6.3 发行后 |
+
 ## <a name="family-5-releases"></a>系列 5 发行版本
 **Windows Server 2016**
 
@@ -137,6 +155,7 @@ ms.locfileid: "54104856"
 
 | 来宾 OS 系列 | 兼容的 SDK 版本 |
 | --- | --- |
+| 6 |版本 2.9.6+ |
 | 5 |版本 2.9.5.1+ |
 | 4 |版本 2.1+ |
 | 3 |版本 1.8+ |
@@ -205,3 +224,4 @@ Microsoft Azure 不断地发布更新。 来宾 OS 只不过是此类更新的�
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md
 [fix]: https://technet.microsoft.com/library/security/ms17-010.aspx
+[Windows Azure SDK]: https://www.microsoft.com/en-us/download/details.aspx?id=54917

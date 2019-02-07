@@ -5,15 +5,19 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/22/2019
-ms.openlocfilehash: cb02f0b786ff6f1c7dbef5471fb95ce6516f824c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.date: 01/23/2019
+ms.openlocfilehash: 9270c3290bd7be0bbb79d30aff8becc04dcfc603
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54466068"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903989"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的只读副本
+
+> [!IMPORTANT]
+> 只读副本功能目前以公共预览版提供。
+
 使用只读副本功能，可将数据从 Azure Database for PostgreSQL 服务器（主服务器）复制到同一 Azure 区域中最多五个只读服务器（只读副本）。 只读副本是使用 PostgreSQL 引擎的本机复制技术以异步方式更新的。
 
 副本是一些新的服务器，可以像管理普通的独立 Azure Database for PostgreSQL 服务器一样对其进行管理。 每个只读副本按照预配计算资源的 vCore 数量以及预配的每月 GB 存储量计费。
@@ -99,7 +103,7 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 ### <a name="stopped-replicas"></a>停止的副本
 当你选择停止主服务器与副本之间的复制时，副本将会重启以应用这些更改。 以后，此服务器不能再次成为副本。
 
-### <a name="replicas-are-new-servers"></a>副本是新服务器
+### <a name="replicas-are-new-servers"></a>副本服务器是新服务器
 副本创建为新的 Azure Database for PostgreSQL 服务器。 现有服务器不能成为副本服务器。
 
 ### <a name="replica-server-configuration"></a>副本服务器配置

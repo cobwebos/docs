@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 60fe7296d95a7746fd703c3a45349faf294e5bbd
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: ce88c8c4850e5226ddda12ce5ee0e1d18b51ea5c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320593"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104076"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>有关 Service Fabric 的常见问题
 
@@ -73,7 +73,7 @@ ms.locfileid: "54320593"
 
 我们希望该群集在两个节点同时发生故障时保持可用。 要使 Service Fabric 群集可用，系统服务必须可用。 跟踪哪些服务已部署到群集及其当前托管位置的有状态系统服务（例如命名服务和故障转移管理器服务）取决于非常一致性。 而这种非常一致性又取决于能否获取*仲裁*来更新这些服务的状态，其中，仲裁表示给定服务在严格意义上的大多数副本 (N/2 + 1)。 因此，如果我们希望能够弹性应对两个节点同时丢失（因而系统服务的两个副本也会同时丢失）的情况，必须保证 ClusterSize - QuorumSize >= 2，这会将最小大小强制为 5。 为了演示这一点，我们假设群集包含 N 个节点，并且系统服务有 N 个副本 - 每个节点上各有一个副本。 系统服务的仲裁大小为 (N/2 + 1)。 上述不等式类似于 N - (N/2 + 1) >= 2。 要考虑两种情况：N 为偶数，以及 N 为奇数。 如果 N 为偶数，例如 N = 2\*m，其中 m >= 1，则不等式类似于 2\*m - (2\*m/2 + 1) >= 2 或 m >= 3。 N 的最小值为 6，这是 m = 3 时实现的。 另一方面，如果 N 为奇数，例如 N = 2\*m+1，其中 m >= 1，则不等式类似于 2\*m+1 - ( (2\*m+1)/2 + 1 ) >= 2 或 2\*m+1 - (m+1) >= 2 或 m >= 2。 N 的最小值为 5，这是 m = 2 时实现的。 因此，在满足不等式 ClusterSize - QuorumSize >= 2 的所有 N 值中，最小值为 5。
 
-请注意，在上面的参数中，我们假设每个节点有一个系统服务副本，因此，仲裁大小是根据群集中的节点数计算的。 但是，我们可以通过更改 *TargetReplicaSetSize* 来使仲裁大小小于 (N/2+1)，这可能会造成这样的观点：可以使用少于 5 个节点的群集，并且仍有 2 个额外的节点可以超过仲裁大小。 例如，在 4 节点群集中，如果将 TargetReplicaSetSize 设置为 3，则基于 TargetReplicaSetSize 的仲裁大小为 (3/2 + 1) 或 2，因此 CluserSize - QuorumSize = 4-2 >= 2。 但是，如果同时丢失任何一对节点，则我们无法保证系统服务将会达到或超过仲裁。有可能丢失的两个节点托管了两个副本，因此，系统服务将进入仲裁丢失状态（只留下一个副本）且不可用。
+请注意，在上面的参数中，我们假设每个节点有一个系统服务副本，因此，仲裁大小是根据群集中的节点数计算的。 但是，我们可以通过更改 *TargetReplicaSetSize* 来使仲裁大小小于 (N/2+1)，这可能会造成这样的观点：可以使用少于 5 个节点的群集，并且仍有 2 个额外的节点可以超过仲裁大小。 例如，在 4 节点群集中，如果将 TargetReplicaSetSize 设置为 3，则基于 TargetReplicaSetSize 的仲裁大小为 (3/2 + 1) 或 2，因此 ClusterSize - QuorumSize = 4-2 >= 2。 但是，如果同时丢失任何一对节点，则我们无法保证系统服务将会达到或超过仲裁。有可能丢失的两个节点托管了两个副本，因此，系统服务将进入仲裁丢失状态（只留下一个副本）且不可用。
 
 在了解这种背景的前提下，让我们探讨一些可能的群集配置：
 

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 SilkRoad Life Suite 集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 SilkRoad Life Suite 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 SilkRoad Life Suite 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 3cd92319-7964-41eb-8712-444f5c8b4d15
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 4d8be22a6b700d5ea9d95ee19d6ad3fa7bf5910a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: fd5b4da77c31bd5e0c095f24bea2d6ed8b0e93ab
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440826"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55154119"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>教程：Azure Active Directory 与 SilkRoad Life Suite 集成
 
@@ -180,11 +180,11 @@ ms.locfileid: "39440826"
 
     b. 将从 Azure 门户复制的“SAML 实体 ID”值粘贴到“实体 ID”文本框中。
    
-    c. 在“IdP 说明”文本框中，键入配置说明（例如：*Azure AD SSO*）。
+    c. 在“IdP 说明”文本框中，键入配置说明（例如：“Azure AD SSO”）。
 
     d. 在“元数据文件”文本框中，上传从 Azure 门户下载的**元数据**文件。
   
-    e. 在“IdP 名称”文本框中，键入特定于配置的名称（例如：*Azure SP*）。
+    e. 在“IdP 名称”文本框中，键入特定于配置的名称（例如：“Azure SP”）。
   
     f. 在“注销服务 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
@@ -197,7 +197,7 @@ ms.locfileid: "39440826"
      ![Azure AD 单一登录][17]
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -233,7 +233,7 @@ ms.locfileid: "39440826"
  
 ### <a name="create-a-silkroad-life-suite-test-user"></a>创建 SilkRoad Life Suite 测试用户
 
-在本部分中，将在 SilkRoad Life Suite 中创建一个名为 Britta Simon 的用户。 与 [SilkRoad Life Suite 客户端支持团队](https://www.silkroad.com/locations/)协作，在 SilkRoad Life Suite 平台中添加用户。 使用单一登录前，必须先创建并激活用户。 
+在本部分中，将在 SilkRoad Life Suite 中创建一个名为 Britta Simon 的用户。 与  [SilkRoad Life Suite 客户端支持团队](https://www.silkroad.com/locations/) 协作，将用户添加到 SilkRoad Life Suite 平台中。 使用单一登录前，必须先创建并激活用户。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -270,12 +270,12 @@ ms.locfileid: "39440826"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“SilkRoad Life Suite”磁贴时，用户应自动登录到 SilkRoad Life Suite 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

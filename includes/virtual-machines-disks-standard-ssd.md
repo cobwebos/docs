@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/14/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 75b3934a7329b4e83a0f36f79bbc8365eaf8a086
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: da46687517dbfe189571286087d4ef29d50d1246
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571826"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54906277"
 ---
 # <a name="standard-ssd-managed-disks-for-azure-virtual-machine-workloads"></a>Azure 虚拟机工作负荷的标准 SSD 托管磁盘
 
@@ -36,6 +36,8 @@ Azure 标准固态硬盘 (SSD) 托管磁盘是经济高效的存储选项，已�
 
 |标准 SSD 磁盘类型  |磁盘大小  |每个磁盘的 IOPS  |每个磁盘的吞吐量  |
 |---------|---------|---------|---------|
+|E4     |32 GiB         |最多 120         |最高每秒 25 MiB         |
+|E6     |64 GiB         |最多 240         |最高每秒 50 MiB         |
 |E10     |128 GiB         |最多 500         |最高每秒 60 MiB         |
 |E15     |256 GiB         |最多 500         |最高每秒 60 MiB         |
 |E20     |512 GiB         |最多 500         |最高每秒 60 MiB         |
@@ -65,7 +67,7 @@ Azure 标准固态硬盘 (SSD) 托管磁盘是经济高效的存储选项，已�
 
 **快照**：托管磁盘的快照根据快照在目标和源端使用的容量（如果有）计费。 有关快照的详细信息，请参阅[托管磁盘快照](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#managed-disk-snapshots)。
 
-**出站数据传输**：[出站数据传输](https://azure.microsoft.com/pricing/details/bandwidth/)（Azure 数据中心送出的数据）会产生带宽使用费。
+**出站数据传输**：[出站数据传输](https://azure.microsoft.com/pricing/details/bandwidth/)（传出 Azure 数据中心的数据）会产生带宽使用费。
 
 **事务**：类似于标准 HDD，标准 SSD 上的事务会产生费用。 事务包括磁盘上的读取和写入操作。 用于标准 SSD 事务计费的 I/O 单位大小为 256 KiB。 更大的 I/O 大小被视为多个 256 KiB 大小的 I/O。
 

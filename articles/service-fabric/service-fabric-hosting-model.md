@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: 367f21c63eac3969fb19eada91eae9a8577921de
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 80d9d447a86b58c8d6db5a62d3b0df997e42f673
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348474"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172368"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric 托管模型
 本文概述 Azure Service Fabric 提供的应用程序托管模型，并介绍**共享进程**模型和**独占进程**模型之间的差异。 本文介绍已部署的应用程序在 Service Fabric 节点上的外观，以及服务和服务主机进程的副本（或实例）之间的关系。
@@ -150,7 +150,7 @@ Service Fabric 将[来宾可执行文件][a2]和[容器][a3]应用程序视为�
 
 独占进程托管模型不适用于每个 *ServicePackage* 具有多个 *ServiceType* 的应用程序模型。 这是因为每个 *ServicePackage* 具有多个 *ServiceType* 的目的是提高副本间的资源共享以及每个进程的副本密度。 独占进程模型旨在实现不同的效果。
 
-请考虑这种情况：每个 *ServicePackage* 有多个 *ServiceType*，并且不同的 *CodePackage* 分别注册一个 *ServiceType*. 假设有一个具有 2 个 CodePackage 的 ServicePackage“MultiTypeServicePackge”：
+请考虑这种情况：每个 *ServicePackage* 有多个 *ServiceType*，并且不同的 *CodePackage* 分别注册一个 *ServiceType*. 假设有一个具有 2 个 CodePackage 的 ServicePackage“MultiTypeServicePackage”：
 
 - “MyCodePackageA”注册 ServiceType“MyServiceTypeA”。
 - “MyCodePackageB”注册 ServiceType“MyServiceTypeB”。
@@ -160,15 +160,15 @@ Service Fabric 将[来宾可执行文件][a2]和[容器][a3]应用程序视为�
 - “MyServiceTypeA”类型的服务 **fabric:/SpecialApp/ServiceA** 有 2 个分区（例如 **P1** 和 **P2**），每个分区有 3 个副本。
 - “MyServiceTypeB”类型的服务 **fabric:/SpecialApp/ServiceB** 有 2 个分区（**P3** 和 **P4**），每个分区有 3 个副本。
 
-在给定节点上，两个服务将分别有两个副本。 由于使用独占进程模型创建了服务，Service Fabric 将为每个复本激活一个新“MyServicePackage”副本。 每个活动的“MultiTypeServicePackge”将启动“MyCodePackageA”和“MyCodePackageB”的一个副本。 但是，“MyCodePackageA”或“MyCodePackageB”中只有一个将托管副本（为此副本激活了“MultiTypeServicePackge”）。 下图显示了节点视图：
+在给定节点上，两个服务将分别有两个副本。 由于使用独占进程模型创建了服务，Service Fabric 将为每个复本激活一个新“MyServicePackage”副本。 每次激活“MultiTypeServicePackage”将启动“MyCodePackageA”和“MyCodePackageB”的一个副本。 但是，“MyCodePackageA”或“MyCodePackageB”中只有一个将托管副本（为此副本激活了“MultiTypeServicePackage”）。 下图显示了节点视图：
 
 
 ![已部署应用程序的节点视图的示意图][node-view-five]
 
 
-为服务 **fabric:/SpecialApp/ServiceA** 的 **P1** 分区的副本激活“MultiTypeServicePackge”时，“MyCodePackageA”将托管该副本。 “MyCodePackageB”正在运行。 类似地，为服务 **fabric:/SpecialApp/ServiceB** 的 **P3** 分区的副本激活“MultiTypeServicePackge”时，“MyCodePackageB”将托管该副本。 “MyCodePackageA”正在运行。 因此，每个 *ServicePackage* 的 *CodePackage*（注册不同的 *ServiceType*）数量越多，冗余资源使用率就越高。 
+为服务 **fabric:/SpecialApp/ServiceA** 的 **P1** 分区的副本激活“MultiTypeServicePackage”时，“MyCodePackageA”将托管该副本。 “MyCodePackageB”正在运行。 类似地，为服务 **fabric:/SpecialApp/ServiceB** 的 **P3** 分区的副本激活“MultiTypeServicePackage”时，“MyCodePackageB”将托管该副本。 “MyCodePackageA”正在运行。 因此，每个 *ServicePackage* 的 *CodePackage*（注册不同的 *ServiceType*）数量越多，冗余资源使用率就越高。 
  
- 但是，如果使用共享进程模型创建服务 **fabric:/SpecialApp/ServiceA** 和 **fabric:/SpecialApp/ServiceB**，Service Fabric 将只为应用程序 **fabric:/SpecialApp** 激活一个“MultiTypeServicePackge”副本。 “MyCodePackageA”托管服务 **fabric:/SpecialApp/ServiceA** 的所有副本。 “MyCodePackageB”托管服务 **fabric:/SpecialApp/ServiceB** 的所有副本。 下图显示了此设置中的节点视图： 
+ 但是，如果使用共享进程模型创建服务 **fabric:/SpecialApp/ServiceA** 和 **fabric:/SpecialApp/ServiceB**，Service Fabric 将只为应用程序 **fabric:/SpecialApp** 激活一个“MultiTypeServicePackage”副本。 “MyCodePackageA”托管服务 **fabric:/SpecialApp/ServiceA** 的所有副本。 “MyCodePackageB”托管服务 **fabric:/SpecialApp/ServiceB** 的所有副本。 下图显示了此设置中的节点视图： 
 
 
 ![已部署应用程序的节点视图的示意图][node-view-six]

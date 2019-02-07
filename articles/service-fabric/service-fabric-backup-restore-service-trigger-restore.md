@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: ad89acb63057ff260332384372bcb7719cc8e4f3
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 1482497f3767e7533d1d56e6eb63e55cdb5c9ebb
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064825"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104637"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>在 Azure Service Fabric 中还原备份
 
@@ -229,7 +229,7 @@ $restoreResponse | Format-List
     ```
     
 3. **Success**、**Failure** 或 **Timeout**：请求的还原可能是在以下任一状态下完成的。 每种状态的含义和响应详细信息如下：
-    - **成功**：_Success_ 还原状态表示已重新获取分区状态。 分区将报告 _RestoreEpoch_ 和 _RestordLSN_ 状态，以及 UTC 格式的时间。
+    - **成功**：_Success_ 还原状态表示已重新获取分区状态。 分区将报告 _RestoredEpoch_ 和 _RestoredLSN_ 状态，以及 UTC 格式的时间。
 
         ```
         RestoreState  : Success

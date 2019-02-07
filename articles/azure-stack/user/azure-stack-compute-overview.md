@@ -10,12 +10,12 @@ ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/05/2019
-ms.openlocfilehash: 13454e7dfb18e4d0e87b9b041b53dbef155153a8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: cd42a347de236de2e3374d7ac854779f4c222a00
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251633"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768140"
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Azure Stack 虚拟机简介
 
@@ -25,7 +25,7 @@ Azure Stack 提供一种类型的按需、 可缩放的计算资源与虚拟机 
 
 Azure Stack VM 可提供虚拟化的灵活性，而无需管理群集或单个计算机。 不过，仍然需要通过执行任务（例如，配置、修补和安装在 VM 上运行的软件）来维护 VM。
 
-以下几种方式，可以使用 Azure Stack 虚拟机。 例如：
+以下几种方式，可以使用 Azure Stack 虚拟机。 例如:
 
 - **开发和测试**  
     Azure Stack Vm，可以创建具有所需的代码的特定配置的计算机和测试应用程序。
@@ -57,7 +57,7 @@ Azure Stack VM 可提供虚拟化的灵活性，而无需管理群集或单个�
 
 ### <a name="vm-size"></a>VM 大小
 
-使用的 VM 大小取决于要运行的工作负荷。 然后，所选大小又会影响多个因素，例如处理能力、内存和存储容量。 Azure Stack 提供各种大小来支持多种类型的用途。
+使用的 VM 大小取决于要运行的工作负荷。 然后，选择的大小决定了处理能力、内存和存储容量等因素。 Azure Stack 提供各种大小来支持多种类型的用途。
 
 ### <a name="vm-limits"></a>VM 限制
 
@@ -77,7 +77,7 @@ Azure Stack VM 可提供虚拟化的灵活性，而无需管理群集或单个�
 
 可以选择上传并使用自己的映像。 如果这样做，则不会使用发布者名称、 产品和 SKU。
 
-### <a name="extensions"></a>扩展
+### <a name="extensions"></a>扩展名
 
 VM 扩展通过部署后配置和自动化任务来增加 VM 的功能。
 可以使用扩展完成以下常见任务：
@@ -95,14 +95,14 @@ VM 扩展通过部署后配置和自动化任务来增加 VM 的功能。
 
 下表中的资源由 VM 使用，并且需要存在，或者在创建 VM 时创建：
 
-|资源|需要|描述|
+|资源|必填|描述|
 |---------|---------|---------|
-|资源组|是|VM 必须包含在资源组中。|
-|存储帐户|否|如果使用托管磁盘，则 VM 不需要存储帐户来存储其虚拟硬盘。 <br>如果使用非托管磁盘，则 VM 确实需要存储帐户来存储其虚拟硬盘。|
-|虚拟网络|是|VM 必须是虚拟网络的成员。|
-|公共 IP 地址|否|可以向 VM 分配一个公共 IP 地址，以便远程访问它。|
-|网络接口|是|VM 需要使用网络接口在网络中通信。|
-|数据磁盘数|否|VM 可以包含数据磁盘，以便扩展存储功能。|
+|资源组|“是”|VM 必须包含在资源组中。|
+|存储帐户|“否”|如果使用托管磁盘，则 VM 不需要存储帐户来存储其虚拟硬盘。 <br>如果使用非托管磁盘，则 VM 确实需要存储帐户来存储其虚拟硬盘。|
+|虚拟网络|“是”|VM 必须是虚拟网络的成员。|
+|公用 IP 地址|“否”|可以向 VM 分配一个公共 IP 地址，以便远程访问它。|
+|网络接口|“是”|VM 需要使用网络接口在网络中通信。|
+|数据磁盘|“否”|VM 可以包含数据磁盘，以便扩展存储功能。|
 
 ## <a name="create-your-first-vm"></a>创建第一个 VM
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b120d50b6b0f72b5977d238866cfdf26fd9be5ff
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: d1d515786fde06f4622402f2c1d0c3add7cd8843
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436885"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913133"
 ---
 # <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>使用企业安全性套餐实现 Apache Hadoop 安全性简介
 
@@ -56,7 +56,7 @@ ESP HDInsight 群集使用常见的 Apache Ranger UI 来搜索审核日志。 �
 ## <a name="encryption"></a>加密
 保护数据对于满足组织安全性和合规性要求具有重要意义。 除了限制未经授权的员工访问数据外，还应对数据加密。 
 
-HDInsight 群集的两种数据存储（Azure Blob 存储和 Azure Data Lake Storage Gen1）都支持在服务器端以透明方式进行静态[数据加密](../../storage/common/storage-service-encryption.md)。 HDInsight 安全群集将与这种服务器端静态数据加密功能无缝协作。
+HDInsight 群集的两种数据存储（Azure Blob 存储和 Azure Data Lake Storage Gen1/Gen2）都支持在服务器端以透明方式进行静态[数据加密](../../storage/common/storage-service-encryption.md)。 HDInsight 安全群集将与这种服务器端静态数据加密功能无缝协作。
 
 ## <a name="next-steps"></a>后续步骤
 

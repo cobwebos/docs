@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 01/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 54db7cc65e05b383b251c21aa95569c6c2d58194
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 6da3a9bceaee67d0101abb0837580f4e35e160b3
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306159"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885126"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 SQL Server 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,6 +36,8 @@ ms.locfileid: "54306159"
 - 使用 SQL 或 Windows 身份验证复制数据。
 - 作为源，使用 SQL 查询或存储过程检索数据。
 - 作为接收器，在复制期间将数据追加到目标表，或调用带有自定义逻辑的存储过程。
+
+目前不支持 SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -506,8 +508,8 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |小数 |
-| sql_variant |对象 * |
-| 文本 |String, Char[] |
+| sql_variant |对象 |
+| text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Int16 |
@@ -515,6 +517,9 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 | varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |Xml |
+
+>[!NOTE]
+> 对于映射到十进制临时类型的数据类型，目前 ADF 支持的最大精度为 28。 如果有精度大于 28 的数据，请考虑在 SQL 查询中将其转换为字符串。
 
 ## <a name="troubleshooting-connection-issues"></a>连接问题故障排除
 

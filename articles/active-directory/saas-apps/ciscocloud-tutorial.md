@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Cisco Cloud 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Cisco Cloud 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Cisco Cloud 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: db1cea1d-ff0a-4f0d-b5fd-50ca32702d56
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: jeedes
-ms.openlocfilehash: e5d7e195a3f61d32387d1101fbb24bfa1ac8bccb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c5809426da95e2295c5bf318b6f17345002f536d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431226"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197936"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>教程：Azure Active Directory 与 Cisco Cloud 的集成
+# <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>教程：Azure Active Directory 与 Cisco Cloud 集成
 
 在本教程中，你将学习如何将 Cisco Cloud 与 Azure Active Directory (Azure AD) 集成。
 
@@ -147,7 +147,7 @@ ms.locfileid: "39431226"
 
     e. 单击“确定” 。
 
-1. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。
+1. 在“SAML 签名证书” 部分中，单击”复制”按钮来复制“应用联合元数据 URL”，并将其粘贴到记事本 ****。
 
     ![证书下载链接](./media/ciscocloud-tutorial/tutorial_ciscocloud_certificate.png)
 
@@ -191,7 +191,7 @@ ms.locfileid: "39431226"
  
 ### <a name="create-a-cisco-cloud-test-user"></a>创建 Cisco Cloud 测试用户
 
-在本部分中，将在 Cisco Cloud 中创建一个名为 Britta Simon 的用户。 与 [Cisco Cloud 支持团队](mailto:cpr-ops@cisco.com)协作，在 Cisco Cloud 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Cisco Cloud 中创建一个名为 Britta Simon 的用户。 与  [Cisco Cloud 支持团队](mailto:cpr-ops@cisco.com)协作，将用户添加到 Cisco Cloud 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -228,12 +228,12 @@ ms.locfileid: "39431226"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Cisco Cloud 磁贴时，应当会自动登录到 Cisco Cloud 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

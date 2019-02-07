@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 8d4a99ab9d8107f1b3fbe70f59299f427bc88bd5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 86eec87d0c466b9172834fa9dbe7dfcb3702ea55
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465876"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094098"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>开发 C# IoT Edge 模块以在 Data Box Edge（预览版）上移动文件
 
@@ -97,8 +97,8 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 创建可以使用自己的代码自定义的 C# 解决方案模板。
 
 1. 在 Visual Studio Code 中，选择“查看”>“命令面板”，以打开 VS Code 命令面板。
-2. 在命令面板中，输入并运行“Azure: 登录”命令，然后按说明登录 Azure 帐户。 如果已登录，则可跳过此步骤。
-3. 在命令面板中，输入并运行“Azure IoT Edge: 新建 IoT Edge 解决方案”命令。 在命令面板中提供以下信息，以便创建解决方案：
+2. 在命令面板中，输入并运行命令“Azure: Sign in”并按照说明登录 Azure 帐户。 如果已登录，则可跳过此步骤。
+3. 在命令面板中，输入并运行“Azure IoT Edge: **New IoT Edge Solution** 命令。 在命令面板中提供以下信息，以便创建解决方案：
 
     1. 选择要在其中创建解决方案的文件夹。
     2. 提供解决方案的名称，或者接受默认的 **EdgeSolution**。
@@ -143,7 +143,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
             static int counter;
             private const string InputFolderPath = "/home/LocalShare";
             private const string OutputFolderPath = "/home/CloudShare";
-    ````
+    ```
 
     > [!IMPORTANT]
     > 记下 `InputFolderPath` 和 `OutputFolderPath`。 在部署此模块时，需要提供这些路径。

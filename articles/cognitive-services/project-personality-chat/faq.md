@@ -6,17 +6,17 @@ services: cognitive-services
 author: noellelacharite
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: personality-chat
+ms.subservice: personality-chat
 ms.topic: faq
 ms.date: 05/07/2018
 ms.author: nolachar
 comment: As a bot developer, I want my bot to be able to handle small talk in a consistent tone so that my bot appears more complete and conversational.
-ms.openlocfilehash: 274b232f321b3ad739d18a8580b4a178dbde633e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 95a6511ce818fda6db0cec507a1f9e3b034f17b0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219815"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219050"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 
@@ -28,7 +28,7 @@ ms.locfileid: "47219815"
 
 从可用的默认角色中选择最接近的角色。 现在，你可以利用编辑库编辑回复，以更好地适应你的品牌。 将来，你可以上传一组来自所选个性的示例陈述，并找到最接近的角色 ID 版本。 还有一些方法可以重新训练和自定义模型。
 
-## <a name="is-this-service-powering-existing-intelligent-agents-such-as-zo"></a>此服务是否支持现有的智能代理（如 Zo）？
+## <a name="is-this-service-powering-existing-intelligent-agents-such-aszo"></a>此服务是否支持现有的智能代理（如 Zo）？
 
 为 Zo、Cortana 和项目个性聊天提供支持的服务共享一些类似的技术，但它们是不同的堆栈。 它从 Zo 和 Cortana 的经验中吸取经验教训。
 

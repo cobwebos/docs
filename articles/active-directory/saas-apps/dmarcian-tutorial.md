@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 dmarcian 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 dmarcian 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 dmarcian 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 0f8878505280371bf6046c1d1f0d7fc1275dd496
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 197e0cceb7457ffdd96ada7d4561de56c7ed10fc
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039881"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095645"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>教程：Azure Active Directory 与 dmarcian 的集成
+# <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>教程：Azure Active Directory 与 dmarcian 集成
 
 本教程介绍如何将 dmarcian 与 Azure Active Directory (Azure AD) 集成。
 
@@ -107,7 +107,7 @@ ms.locfileid: "47039881"
 
     ![dmarcian 域和 URL 单一登录信息](./media/dmarcian-tutorial/tutorial_dmarcian_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：
+    a. 在“标识符”文本框中，使用以下模式键入 URL：
     | |
     | -- |
     | `https://us.dmarcian.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
@@ -157,15 +157,15 @@ ms.locfileid: "47039881"
 
     ![身份验证 ](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
 
-    * 在“将 dmarcian 添加到标识提供者”部分，单击“复制”以复制实例的“断言使用者服务 URL”，并将其粘贴到 Azure 门户上“dmarcian 域和 URL”部分的“回复 URL”文本框中。
+    * 在“将 dmarcian 添加到标识提供者”部分下，单击“复制”以复制实例的“断言使用者服务 URL”，并将其粘贴到 Azure 门户上“dmarcian 域和 URL”部分的“回复 URL”文本框中。 ****  **** ****
 
-    * 在“将 dmarcian 添加到标识提供者”部分，单击“复制”以复制实例的“实体 ID”，并将其粘贴到 Azure 门户上“dmarcian 域和 URL”部分的“标识符”文本框中。
+    * 在“将 dmarcian 添加到标识提供者”部分下，单击“复制”以复制实例的“实体 ID”，并将其粘贴到 Azure 门户上“dmarcian 域和 URL”部分的“标识符”文本框中。 ****  **** ****
 
     * 在“设置身份验证”部分的“标识提供者元数据”文本框中，粘贴从 Azure 门户复制的“应用联合元数据 URL”。
 
     * 在“设置身份验证”部分的“属性语句”文本框中，粘贴 URL `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
 
-    * 在“设置登录 URL”部分，复制实例的“登录 URL”，并将其粘贴到 Azure 门户上“dmarcian 域和 URL 部分”的“登录 URL”文本框中。
+    * 在“设置登录 URL”部分下，复制实例的“登录 URL”，并将其粘贴到 Azure 门户上“dmarcian 域和 URL 部分”的“登录 URL”文本框中。 **** ****
 
         > [!Note]
         > 可以根据组织的情况修改“登录 URL”。
@@ -196,7 +196,7 @@ ms.locfileid: "47039881"
 
     ![“用户”对话框](./media/dmarcian-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -224,7 +224,7 @@ ms.locfileid: "47039881"
 
     ![新用户 ](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“新用户的电子邮件”文本框中，输入用户的电子邮件地址，例如 **brittasimon@contoso.com**。
+    a. 在“新用户的电子邮件”文本框中，输入用户的电子邮件地址，例如 **brittasimon@contoso.com**。
 
     b. 若要向该用户授予管理员权限，请选择“将用户设为管理员”。
 
@@ -265,12 +265,12 @@ ms.locfileid: "47039881"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 dmarcian 磁贴时，应会自动登录到 dmarcian 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

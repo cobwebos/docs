@@ -6,17 +6,17 @@ services: cognitive-services
 author: RichardSunMS
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 87df00ae5ca12b168f2e1c03850da2e94cec350b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a14a685ba80dbd5e7e3d44e9032e5baaad5ef3fe
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239296"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208629"
 ---
 # <a name="analyze-method"></a>分析方法
 
@@ -38,7 +38,7 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 ## <a name="request-parameters"></a>请求参数
 
-名称 | 类型 | 必选 | Description
+Name | Type | 必选 | 说明
 -----|-------|----------|------------
 **语言**    | 字符串 | 是 | 将用于分析的两个字母的 ISO 语言编码。 例如，English 为“en”。
 **analyzerIds** | 字符串列表 | 是 | 要应用的分析器的 GUID 列表。 有关详细信息，请参阅分析器文档。
@@ -50,7 +50,7 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 结果如下：
 
-名称 | 类型 | Description
+Name | 类型 | 说明
 -----|------|--------------
 analyzerId | 字符串 | 指定分析器的 GUID
 结果 | 对象 | 分析器结果
@@ -59,7 +59,7 @@ analyzerId | 字符串 | 指定分析器的 GUID
 
 ### <a name="tokens-response-json"></a>令牌响应 (JSON)
 
-名称 | 类型 | Description
+Name | 类型 | 说明
 -----|------|-------------
 结果 | 句子对象列表 | 文本内确定的句子边界 |
 result[x].Offset | int | 每个句子的起始字符偏移量 |

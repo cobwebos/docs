@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 5c5e8c6f-e4fb-43fe-8841-e371f568ebed
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: jeedes
-ms.openlocfilehash: e11c97ecb33c1b1a37891a521c0375b39ad8a956
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 52b89fd830d18c595e29549432514fd60bbc6df9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439912"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158700"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>教程：Azure Active Directory 与 Montage Online 集成
 
@@ -171,7 +171,7 @@ ms.locfileid: "39439912"
  
 ### <a name="create-a-montage-online-test-user"></a>创建 Montage Online 测试用户
 
-在此部分中，将在 Montage Online 中创建名为 Britta Simon 的用户。 与 [Montage Online 支持团队](https://www.montage.co.nz/contact-us/)协作，共同在 Montage Online 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在此部分中，将在 Montage Online 中创建名为 Britta Simon 的用户。 与  [Montage Online 支持团队](https://www.montage.co.nz/contact-us/)协作，将用户添加到 Montage Online 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -208,12 +208,12 @@ ms.locfileid: "39439912"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击“访问面板”中的“Montage Online”磁贴后，应该会自动登录 Montage Online 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

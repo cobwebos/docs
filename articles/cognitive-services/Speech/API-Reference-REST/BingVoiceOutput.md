@@ -6,16 +6,16 @@ services: cognitive-services
 author: priyaravi20
 manager: yanbo
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: priyar
-ms.openlocfilehash: db69a9e3beb819600109603a8c0129547db57fa5
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 61bd1879a4b1bf8281ac03c8254fb3d48c07a139
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343021"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215854"
 ---
 # <a name="bing-text-to-speech-api"></a>必应文本转语音 API
 
@@ -40,7 +40,7 @@ Content-Length: 0
 
 令牌访问所需的标头信息如下所示。
 
-名称| 格式 | Description
+Name| 格式 | 说明
 ----|----|----
 Ocp-Apim-Subscription-Key | ASCII | 订阅密钥
 
@@ -121,7 +121,7 @@ Content-Length: 0
 
 ### <a name="ErrorResponse"></a>错误响应
 
-错误 | Description
+错误 | 说明
 ----|----
 HTTP/400 错误的请求 | 必需参数缺失、为空或为 null，或者传递给必需参数或可选参数的值无效。 获得“无效”响应的一个原因是正在传递一个超过允许长度的字符串值。 对有问题的参数的简要说明包含在内。
 HTTP/401 未授权 | 未对请求授权。
@@ -179,7 +179,7 @@ Microsoft 文本转语音 API 支持 W3C [语音合成标记语言 (SSML) 版本
   ```
 
 > [!NOTE]
-> 请注意，音频数据必须是采用以下格式的 8k 或 16k wav 文件：**CRC 代码** (CRC-32)：4 个字节 (DWORD)，有效范围为 0x00000000 ~ 0xFFFFFFFF；**音频格式标志**：4 个字节 (DWORD)，有效范围为 0x00000000 ~ 0xFFFFFFFF；**示例计数**：4 个字节 (DWORD)，有效范围为 0x00000000 ~ 0x7FFFFFFF；**二进制主体的大小**：4 个字节 (DWORD)，有效范围为 0x00000000 ~ 0x7FFFFFFF；**二进制主体**：n 个字节。
+> 请注意，音频数据必须是以下列格式提交的 8k 或 16k wav：**CRC 代码** (CRC-32)：有效范围为 0x00000000 ~ 0xFFFFFFFF 的 4 字节 (DWORD)；**音频格式标志**：有效范围为 0x00000000 ~ 0xFFFFFFFF 的 4 字节 (DWORD)；**样品计数**：有效范围为 0x00000000 ~ 0x7FFFFFFF 的 4 字节 (DWORD)；**二进制主体大小**：有效范围为 0x00000000 ~ 0x7FFFFFFF 的 4 字节 (DWORD)；**二进制主体**：n 个字节。
 
 ## <a name="SampleApp"></a>示例应用程序
 

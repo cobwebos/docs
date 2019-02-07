@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 0f8db7dd3a90e06587a7e0e05f33cb6fba5c72e1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 21ac48ff473dcf494f96f87210bdfe09e4d82646
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539783"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103388"
 ---
 # <a name="optimizing-autovacuum-on-azure-database-for-postgresql-server"></a>在 Azure Database for PostgreSQL 服务器中优化 autovacuum 
 本文介绍如何在 Azure Database for PostgreSQL 上有效地优化 autovacuum。
@@ -41,7 +41,7 @@ PostgreSQL 使用 MVCC 实现更大的数据库并发。 每次更新都会导�
 - 启动它以后应清除多少内容？
 
 下面是一些可以基于以上问题更新的 autovacuum 配置参数以及一些指导信息：
-参数|Description|默认值
+参数|说明|默认值
 ---|---|---
 autovacuum_vacuum_threshold|指定在任一表中触发清扫作业所需的已更新或已删除元组的最小数量。 默认值为 50 个元组。 此参数只能在 postgresql.conf 文件中或服务器命令行上设置。 可以通过更改表存储参数覆盖单独表的该项设置。|50
 autovacuum_vacuum_scale_factor|指定在决定是否触发清扫作业时要添加到 autovacuum_vacuum_threshold 的表大小的占比。 默认值为 0.2，即表大小的 20%。 此参数只能在 postgresql.conf 文件中或服务器命令行上设置。 可以通过更改表存储参数覆盖单独表的该项设置。|百分之 5

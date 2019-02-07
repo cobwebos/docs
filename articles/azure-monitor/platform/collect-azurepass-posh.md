@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: magoedte
-ms.openlocfilehash: 3a20884dedf2d0f197cd73f0e67f412633736686
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3a7c823493369735df23360645004b0bec85dbd7
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421569"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885501"
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>使用 Log Analytics 配置 Azure PaaS 资源指标的收集
 
@@ -67,7 +67,7 @@ Azure SQL 和网站（Web 应用）等 Azure 平台即服务 (PaaS) 资源原生
 
 脚本将会针对与选定条件匹配的每个资源运行，并为这些资源启用指标收集。 完成后，会出现一条消息，指出配置已完成。  
 
-配置完成后，Log Analytics 存储库中随即会显示来自 Azure PaaS 资源的数据。  将会创建一条 `AzureMetrics` 类型的记录，可以使用 [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) 和 [Azure Web 应用分析](../../azure-monitor/insights/azure-web-apps-analytics.md)管理解决方案来分析这些记录。   
+配置完成后，Log Analytics 存储库中随即会显示来自 Azure PaaS 资源的数据。  将会创建一条 `AzureMetrics` 类型的记录，可以使用 [Azure SQL Analytics](../insights/azure-sql.md) 和 [Azure Web 应用分析](../insights/azure-web-apps-analytics.md)管理解决方案来分析这些记录。   
 
 ## <a name="update-a-resource-to-send-data-to-another-workspace"></a>更新资源以向另一工作区发送数据
 如果某个资源已开始向 Log Analytics 工作区发送数据，后来你决定将该资源重新配置为引用另一工作区，此时，可以结合 `-Update` 参数运行该脚本。  
@@ -79,8 +79,8 @@ Azure SQL 和网站（Web 应用）等 Azure 平台即服务 (PaaS) 资源原生
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[日志搜索](../../azure-monitor/log-query/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。 
+* 了解[日志搜索](../log-query/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。 
 
-* 使用[自定义字段](../../azure-monitor/platform/custom-fields.md)将事件记录分析成单独的字段。
+* 使用[自定义字段](custom-fields.md)将事件记录分析成单独的字段。
 
-* 查看[创建要在 Log Analytics 中使用的自定义仪表板](../../azure-monitor/platform/dashboards.md)，了解如何以组织容易理解的方式将日志搜索结果可视化。
+* 查看[创建和共享 Log Analytics 数据的仪表板](../learn/tutorial-logs-dashboards.md)，了解如何以对组织有意义的方式可视化日志搜索。

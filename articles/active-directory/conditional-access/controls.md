@@ -9,20 +9,20 @@ manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/22/2018
+ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 39d49a223fb02d00af2309922ccd98a764264b4d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 4e6912d13b4192b1f938acf5a9808221f5aa42f7
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452507"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077652"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的访问控制是什么？
 
@@ -71,9 +71,15 @@ ms.locfileid: "54452507"
 
 ### <a name="compliant-device"></a>合规的设备
 
-可以配置基于设备的条件访问策略。 基于设备的条件性访问策略旨在仅从[受管理设备](require-managed-devices.md)授予对已配置资源的访问权限。 要求兼容设备是一个必须定义什么是受管理设备的选项。 如果选择此选项，条件访问策略会授权访问以下设备所做的访问尝试：已向 Azure Active Directory [注册](../devices/overview.md)，且由 Intune（适用于任何设备 OS）或由 Windows 10 设备的第三方 MDM 系统标记为兼容的设备。 不支持除 Windows 10 以外的设备 OS 类型的第三方 MDM 系统。
+可以配置基于设备的条件访问策略。 基于设备的条件性访问策略旨在仅从[受管理设备](require-managed-devices.md)授予对所选云应用的访问权限。 要求将设备标记为合规是限制对受管理设备的访问可以选择的一个选项。 可以通过 Intune（适用于任何设备 OS）或通过适用于 Windows 10 设备的第三方 MDM 系统将设备标记为合规。 不支持除 Windows 10 以外的设备 OS 类型的第三方 MDM 系统。 
 
-有关详细信息，请参阅[设置 Azure Active Directory 基于设备的条件访问策略](require-managed-devices.md)。
+你的设备需要先注册到 Azure AD，然后才能将其标记为合规。 若要注册设备，你有三种选择： 
+
+- [Azure AD 注册设备](../devices/overview.md#azure-ad-registered-devices)
+- [已加入 Azure AD 的设备](../devices/overview.md#azure-ad-joined-devices)  
+- [已加入混合 Azure AD 的设备](../devices/overview.md#hybrid-azure-ad-joined-devices)
+
+有关详细信息，请参阅[如何通过条件访问要求使用受管理设备进行云应用访问](require-managed-devices.md)。
 
 ### <a name="hybrid-azure-ad-joined-device"></a>混合 Azure AD 加入设备
 

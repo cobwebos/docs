@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell
-ms.openlocfilehash: 48df598ab12c509952b7712bb8cc9fe21355325f
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 39034d069c0c0feb2ac81437e34c7206d7fe6c4c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613675"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102810"
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>为什么通过微服务的方法构建应用程序？
 
@@ -33,11 +33,11 @@ ms.locfileid: "51613675"
 
 这些业务要求影响我们*如何*构建应用程序。
 
-有关 Azure 实现微服务的方法的详细信息，请阅读[微服务：由云支持的应用程序革新](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)。
+有关 Azure 实现微服务的方法的详细信息，请阅读[微服务：由云驱动的应用程序革命](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)。
 
 ## <a name="monolithic-vs-microservice-design-approach"></a>单一式设计方法与微服务设计方法
 
-应用程序会随着时间而发展。 成功的应用程序因为有实用性而发展。 失败的应用程序不会发展，最终会被取代。 问题在于：现在对要求了解多少，以及未来有何变化？ 例如，如果要为某个部门构建报告应用程序。 可以确定的是，应用程序仅在公司范围内适用，而且报表的生存期非常短。 那么，选择的方法将不同于构建服务向数千万个客户传送视频内容的方式。
+应用程序会随着时间而发展。 成功的应用程序因为有实用性而发展。 失败的应用程序不会发展，最终会被取代。 问题是：现在对要求了解多少，未来又有何变化？ 例如，如果要为某个部门构建报告应用程序。 可以确定的是，应用程序仅在公司范围内适用，而且报表的生存期非常短。 那么，选择的方法将不同于构建服务向数千万个客户传送视频内容的方式。
 
 在已知以后可以重新设计应用程序的情况下，有时向外寻求概念证明才是驱动因素。 过度设计永不使用的功能并没有太大意义。 这就是通常所谓的工程取舍。 另一方面，公司谈论构建云时都期望成长和使用量。 问题在于成长和规模不可预测。 我们想要能够快速创建原型，同时还要了解我们正在通往未来成功的路上。 这是简练的启动方法：构建、测量、学习和迭代。
 
@@ -149,7 +149,7 @@ Service Fabric 可帮助你构建使用微服务方法的应用程序，它提�
 
 * 提供系统服务的平台，用于部署、升级、检测和重启失败的服务、发现服务、路由消息、管理状态和监视运行状况。
 * 能够部署在容器中运行或作为进程运行的应用程序。 Service Fabric 是容器和进程 Orchestrator。
-* 有助于以微服务形式生成应用程序的生产编程 API：[ASP.NET Core、Reliable Actors 和 Reliable Services](service-fabric-choose-framework.md)。 例如，可以获取运行状况和诊断信息，或利用内置的高可用性。
+* 高效的编程 API，可帮助你将应用程序构建为微服务：[ASP.NET Core、Reliable Actors 和 Reliable Services](service-fabric-choose-framework.md)。 例如，可以获取运行状况和诊断信息，或利用内置的高可用性。
 
 ***Service Fabric 与服务生成方式无关，可以使用任意技术。不过，它确实提供内置编程 API，以便用户可以更轻松地生成微服务。***
 
@@ -197,7 +197,7 @@ Service Fabric 的目标是将构建微服务应用程序的复杂性降低，�
 ## <a name="next-steps"></a>后续步骤
 
 * [Service Fabric 术语概述](service-fabric-technical-overview.md)
-* [微服务：由云支持的应用程序变革](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
+* [微服务：由云驱动的应用程序革命](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png

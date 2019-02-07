@@ -6,18 +6,18 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: f79b148558e7881f852ccd57916b0b0f31a98219
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 4d03ccfddab9a4aab4a1eacde02d68652bf5103a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342324"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219067"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-api-in-c35-for-net-on-windows"></a>快速入门：使用 Windows 上 .NET 适用的 C# 中的必应语音识别 API
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-c35-for-net-on-windows"></a>快速入门：在 Windows 上适用于 .NET 的 C# 中使用必应语音识别 API
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
@@ -78,9 +78,9 @@ ms.locfileid: "49342324"
 
    每个类别有三种识别模式：
 
-    * ShortPhrase 模式：长达 15 秒的语音表达。 当将数据发送到服务器时，客户端接收多个部分结果和一个具有多个 最优选择的最终结果。
-    * LongDictation 模式：长达两分钟的语言表达。 当将数据发送到服务器时，基于服务器指示的语句停顿位置，客户端会接收到多个部分结果和多个最终结果。
-    * 意向检测：服务器返回有关语音输入的其他结构化信息。 要使用意向检测，需要首先使用 [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) 定型模型。
+    * **ShortPhrase 模式**：最长 15 秒的话语。 当将数据发送到服务器时，客户端接收多个部分结果和一个具有多个 最优选择的最终结果。
+    * **LongDictation 模式**：最长两分钟的话语。 当将数据发送到服务器时，基于服务器指示的语句停顿位置，客户端会接收到多个部分结果和多个最终结果。
+    * **意向检测**：服务器返回有关语音输入的其他结构化信息。 要使用意向检测，需要首先使用 [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) 定型模型。
 
 在此示例应用程序中使用示例音频文件。 在 samples/SpeechRecognitionServiceExample 文件夹下，使用此示例在你下载的存储库中找到此文件。 随着语音输入，选择“将 wav 文件用于 Shortphrase 模式”或“将 wav 文件用于 Longdictation 模式”后，如果没有选择其他文件，则会自动运行这些示例音频文件。 目前，仅支持 WAV 音频格式。
 
@@ -90,9 +90,9 @@ ms.locfileid: "49342324"
 
 ### <a name="recognition-events"></a>识别事件
 
-* 部分结果事件：每次语音服务预测你可能会说的内容时，甚至在你说完（如果你使用 `MicrophoneRecognitionClient`）或完成发送数据（如果你使用 `DataRecognitionClient`）之前，会调用此事件。
-* 错误事件：服务检测到错误时调用。
-* 意向事件：在最终识别结果被解析为结构化 JSON 意向后，在“WithIntent”客户端（仅限 ShortPhrase 模式）进行调用。
+* **部分结果事件**：：每次语音服务预测你可能会说的内容时，甚至在你说完（如果使用 `MicrophoneRecognitionClient`）或完成发送数据（如果使用 `DataRecognitionClient`）之前，都会调用此事件。
+* **错误事件**：服务检测到错误时调用。
+* **意向事件**：在最终识别结果被分析为结构化 JSON 意向后，在“WithIntent”客户端上（仅以 ShortPhrase 模式）进行调用。
 * 结果事件：
   * 在 `ShortPhrase` 模式下，在你说完后调用此事件并返回 n-best 结果。
   * 在 `LongDictation` 模式下，基于服务指示的语句停顿位置，多次调用事件处理程序。

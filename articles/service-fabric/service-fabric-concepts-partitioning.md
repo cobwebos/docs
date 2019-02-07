@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 70305468ca20c48bdc26e7e000a0e5edb63508cd
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 0012304412b343918ab69abf6eababc033cddc6f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261564"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55198208"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services 分区
 本文介绍 Azure Service Fabric Reliable Services 分区的基本概念。 本文中使用的源代码也可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions) 上获取。
@@ -129,11 +129,7 @@ Service Fabric 提供了三个分区方案可供选择：
 1. 打开“**Visual Studio**” > “**文件**” > “**新建**” > “**项目**”。
 2. 在“**新建项目**”对话框中，选择 Service Fabric 应用程序。
 3. 将项目命名为“AlphabetPartitions”。
-4. 在“**创建服务**”对话框中，选择“**有状态**”服务并将它称为“Alphabet.Processing”，如下图所示。
-       ![Visual Studio 中的新建服务对话框][1]
-
-  <!--  ![Stateful service screenshot](./media/service-fabric-concepts-partitioning/createstateful.png)-->
-
+4. 在“创建服务”对话框中，选择“有状态”服务并将它称为“Alphabet.Processing”。
 5. 设置分区数。 打开 AlphabetPartitions 项目的 ApplicationPackageRoot 文件夹中的 Applicationmanifest.xml 文件，然后将参数 Processing_PartitionCount 更新为 26，如下所示。
    
     ```xml
@@ -167,7 +163,7 @@ Service Fabric 提供了三个分区方案可供选择：
    
     可以在同一台计算机上承载此服务的多个副本，因此此地址需要是副本独有的。 这就是 URL 中包含分区 ID 和副本 ID 的原因。 HttpListener 可以在同一端口上侦听多个地址，只要 URL 前缀是唯一的。
    
-    额外 GUID 在其中用于辅助副本也针对只读请求进行侦听的高级情况。 如果是这种情况，则要确保在从主副本转换为辅助副本时使用新的唯一地址，以强制客户端重新解析地址。 “+”在此处用作地址，以便副本在所有可用主机（IP、FQDM、localhost 等）上进行侦听下面的代码演示一个示例。
+    额外 GUID 在其中用于辅助副本也针对只读请求进行侦听的高级情况。 如果是这种情况，则要确保在从主副本转换为辅助副本时使用新的唯一地址，以强制客户端重新解析地址。 “+”在此处用作地址，以便副本在所有可用主机（IP、FQDN、localhost 等）上进行侦听下面的代码演示一个示例。
    
     ```CSharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.openlocfilehash: 6f8565fcecab2c17794f94f5a051cc2f269a9d1c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: c3b30085e1036e49706d73fd68b80221e5177d03
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451029"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095730"
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>流分析中的机器学习集成
 流分析支持用于调用 Azure 机器学习终结点的用户定义函数。 [流分析 REST API 库](https://msdn.microsoft.com/library/azure/dn835031.aspx)中详细介绍了此功能的 REST API 支持。 本文提供了在流分析中成功实现此功能所需的补充信息。 还发布了教程，可从[此处](stream-analytics-machine-learning-integration-tutorial.md)获取。
@@ -26,7 +26,7 @@ Microsoft Azure 机器学习是一个协作型拖放式工具，可用于根据�
 * **终结点**：终结点是 Azure 机器学习对象，用于以功能作为输入、应用指定的机器学习模型并返回已评分输出。
 * **评分 Web 服务**：评分 Web 服务是终结点的集合，如上所述。
 
-每个终结点都具有批处理执行和同步执行的 API。 流分析使用同步执行。 在 AzureML 工作室中，特定的服务命名为[请求/响应服务](../machine-learning/studio/consume-web-services.md)。
+每个终结点都具有批处理执行和同步执行的 API。 流分析使用同步执行。 在 Azure 机器学习工作室中，将特定的服务命名为[请求/响应服务](../machine-learning/studio/consume-web-services.md)。
 
 ## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>流分析作业所需的机器学习资源
 出于流分析作业处理的目的，请求/响应终结点、[apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md) 和 swagger 定义对于成功执行而言都是必需项。 流分析提供附加的终结点，用于构造 swagger 终结点的 url、查找接口并向用户返回默认 UDF 定义。
@@ -44,11 +44,11 @@ Microsoft Azure 机器学习是一个协作型拖放式工具，可用于根据�
 ## <a name="creating-a-udf-with-basic-properties"></a>创建具有基本属性的 UDF
 例如，以下示例代码创建了绑定到 Azure 机器学习终结点的名为 *newudf* 的标量 UDF。 请注意，*终结点*（服务 URI）可以在所选服务的 API 帮助页上找到，而 *apiKey* 可以在服务主页上找到。
 
-````
-    PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>  
-````
+```
+    PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
+```
 
-示例请求正文：  
+示例请求正文：
 
 ```json
     {
@@ -71,11 +71,11 @@ Microsoft Azure 机器学习是一个协作型拖放式工具，可用于根据�
 ## <a name="call-retrievedefaultdefinition-endpoint-for-default-udf"></a>调用默认 UDF 的 RetrieveDefaultDefinition 终结点
 创建框架 UDF 后，需要 UDF 的完整定义。 RetreiveDefaultDefinition 终结点可帮助获取绑定到 Azure 机器学习终结点的标量函数的默认定义。 以下负载要求获取绑定到 Azure 机器学习终结点的标量函数的默认 UDF 定义。 它不指定实际的终结点，因为已在 PUT 请求期间提供终结点。 流分析会调用请求中提供的终结点（如果它已显式提供）。 否则，它会使用最初引用的终结点。 此处 UDF 采用单个字符串参数（一个句子），并返回类型字符串的单个输出以指示该句子的“情绪”标签。
 
-````
+```
 POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/RetrieveDefaultDefinition?api-version=<apiVersion>
-````
+```
 
-示例请求正文：  
+示例请求正文：
 
 ```json
     {
@@ -87,7 +87,7 @@ POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/
     }
 ```
 
-此处的示例输出应如下所示。  
+此处的示例输出应如下所示。
 
 ```json
     {
@@ -130,9 +130,9 @@ POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/
 ## <a name="patch-udf-with-the-response"></a>根据响应修补 UDF
 现在，必须根据先前的响应修补 UDF，如下所示。
 
-````
+```
 PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
-````
+```
 
 请求正文（来自 RetrieveDefaultDefinition 的输出）：
 
@@ -175,7 +175,7 @@ PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers
 ```
 
 ## <a name="implement-stream-analytics-transformation-to-call-the-udf"></a>实现流分析转换以调用 UDF
-现在，针对每个输入事件查询 UDF（此处名为 scoreTweet）并将该事件的响应写入到输入。  
+现在，针对每个输入事件查询 UDF（此处名为 scoreTweet）并将该事件的响应写入到输入。
 
 ```json
     {

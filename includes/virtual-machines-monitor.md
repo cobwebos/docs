@@ -2,14 +2,14 @@
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 01/27/2019
 ms.author: cynthn
-ms.openlocfilehash: b9fa5fff46fa330a55125053b831c780f21f6e8f
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: a13ce8d3dc71be83e05fae5bd07f30f413ce59f2
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54404675"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55148065"
 ---
 通过收集、查看和分析诊断与日志数据，可以利用很多机会来监视 VM。 若要执行简单的 VM [监视](../articles/azure-monitor/overview.md)，可以在 Azure 门户中使用 VM 的“概述”屏幕。 可以使用[扩展](../articles/virtual-machines/windows/extensions-features.md)配置 VM 的诊断以收集更多指标数据。 还可以使用更多高级监视选项，如 [Application Insights](../articles/azure-monitor/app/app-insights-overview.md) 和 [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md)。
 
@@ -41,7 +41,7 @@ ms.locfileid: "54404675"
 
 [Azure 资源运行状况](../articles/service-health/resource-health-overview.md)有助于在 Azure 问题影响资源时进行诊断和获取支持。 它通知你有关资源的当前和过去运行状况的信息，并帮助你缓解问题。 在需要有关 Azure 服务问题的帮助时，资源运行状况将提供技术支持。
 
-## <a name="logs"></a>日志
+## <a name="azure-activity-log"></a>Azure 活动日志
 
 [Azure 活动日志](../articles/azure-monitor/platform/activity-logs-overview.md) 是一种方便用户深入了解 Azure 中发生的订阅级别事件的订阅日志。 该日志包括从 Azure 资源管理器操作数据到服务运行状况事件更新的一系列数据。 可以在 Azure 门户中单击“活动日志”查看 VM 的日志。
 
@@ -64,11 +64,13 @@ ms.locfileid: "54404675"
 
 ## <a name="advanced-monitoring"></a>高级监视
 
-- [Log Analytics](../articles/log-analytics/log-analytics-overview.md) 是一个服务，用于监视云和本地环境，使其保持较高的可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。 可以在 [Linux VM](../articles/virtual-machines/linux/extensions-oms.md) 或 [Windows VM](../articles/virtual-machines/windows/extensions-oms.md) 上安装一个用于安装 Log Analytics 代理并将 VM 注册到现有 Log Analytics 工作区的扩展。
+- [Azure Monitor](../articles/azure-monitor/overview.md) 是一个服务，用于监视云和本地环境，使其保持较高的可用性和性能。 它提供了一个全面的解决方案，用于从云和本地环境收集、分析和处理遥测数据。 它可以帮助你了解应用程序的性能，并主动识别影响应用程序及其所依赖资源的问题。 可以在 [Linux VM](../articles/virtual-machines/linux/extensions-oms.md) 或 [Windows VM](../articles/virtual-machines/windows/extensions-oms.md) 上安装一个用于安装 Log Analytics 代理的扩展，以便收集日志数据并将其存储在 Log Analytics 工作区中。
 
-    对于 Windows 和 Linux VM，建议安装 Log Analytics 代理来收集日志和指标。 在 VM 上安装 Log Analytics 代理的最简单方法是通过 [Log Analytics VM 扩展](../articles/log-analytics/log-analytics-azure-vm-extension.md)安装。 使用扩展可简化安装流程，并可自动配置代理，以将数据发送至指定的 Log Analytics 工作区。 代理还会自动升级，以确保拥有最新的功能和修补程序。
+    对于 Windows 和 Linux VM，建议安装 Log Analytics 代理来收集日志。 在 VM 上安装 Log Analytics 代理的最简单方法是通过 [Log Analytics VM 扩展](../articles/log-analytics/log-analytics-azure-vm-extension.md)安装。 使用扩展可简化安装流程，并可自动配置代理，以将数据发送至指定的 Log Analytics 工作区。 代理还会自动升级，以确保拥有最新的功能和修补程序。
 
 - 使用[网络观察程序](../articles/network-watcher/network-watcher-monitoring-overview.md)可以在 VM 及其关联资源与所在网络相关时对其进行监视。 可以在 [Linux VM](../articles/virtual-machines/linux/extensions-nwa.md) 或 [Windows VM](../articles/virtual-machines/windows/extensions-nwa.md) 上安装网络观察程序代理扩展。
+
+- [用于 VM 的 Azure Monitor](../articles/azure-monitor/insights/vminsights-overview.md) 分析 Windows 和 Linux VM 的性能与运行状况，包括其不同的进程以及与其他资源和外部进程之间的相互依赖关系，可以大规模监视 Azure 虚拟机 (VM)。 
 
 ## <a name="next-steps"></a>后续步骤
 - 逐步完成[使用 Azure PowerShell 监视 Windows 虚拟机](../articles/virtual-machines/windows/tutorial-monitoring.md)或[使用 Azure CLI 监视 Linux 虚拟机](../articles/virtual-machines/linux/tutorial-monitoring.md)中的步骤。

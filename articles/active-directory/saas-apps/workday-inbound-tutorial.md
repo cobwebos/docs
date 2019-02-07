@@ -7,19 +7,19 @@ documentationcenter: na
 manager: daveba
 ms.assetid: 1a2c375a-1bb1-4a61-8115-5a69972c6ad6
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
-ms.openlocfilehash: 913304884867751e3e4c929ce6f4cf8819c15ef2
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d4a47130dadb782f41579bd20c4b5e1d1e9978bb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825538"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188586"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：针对自动用户预配来配置 Workday
 
@@ -97,7 +97,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 在本教程中概述的方案假定已有以下各项：
 
 * 一个具有全局管理员访问权限的有效 Azure AD Premium P1 或更高版本的订阅
-* 一个用于测试和集成目的的 Workday 实现租户
+* 用于测试和集成目的的 Workday 实现租户
 * 在 Workday 中拥有管理员权限，可创建系统集成用户，并可做出更改以便出于测试目的测试员工数据
 * 为了将用户预配到 Active Directory，需要一个服务器带有 .NET 4.7.1 或更高版本的运行时并运行 Windows Server 2012 或更高版本，才能托管[本地预配代理](https://go.microsoft.com/fwlink/?linkid=847801)
 * [Azure AD Connect](../hybrid/whatis-hybrid-identity.md)，用于在 Active Directory 与 Azure AD 之间实现用户同步
@@ -151,8 +151,8 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 |   |   |
 | - | - |
-| 用于本地部署的 预配代理数 | 3（针对高可用性和故障转移） |
-| 用于在 Azure 门户中进行配置的 Workday 到 AD 用户预配应用数 | 1 |
+| 不是。 预配代理数 | 3（针对高可用性和故障转移） |
+| 不是。 Workday 到 AD 用户预配应用数 | 1 |
 
   ![方案 1](./media/workday-inbound-tutorial/dep_scenario1.png)
 
@@ -162,8 +162,8 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 |   |   |
 | - | - |
-| 用于本地部署的 预配代理数 | 3（针对高可用性和故障转移） |
-| 用于在 Azure 门户中进行配置的 Workday 到 AD 用户预配应用数 | 每个子域一个应用 |
+| 不是。 预配代理数 | 3（针对高可用性和故障转移） |
+| 不是。 Workday 到 AD 用户预配应用数 | 每个子域一个应用 |
 
   ![方案 2](./media/workday-inbound-tutorial/dep_scenario2.png)
 
@@ -173,8 +173,8 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 |   |   |
 | - | - |
-| 用于本地部署的 预配代理数 | 每个非连续 AD 林 3 个 |
-| 用于在 Azure 门户中进行配置的 Workday 到 AD 用户预配应用数 | 每个子域一个应用 |
+| 不是。 预配代理数 | 每个非连续 AD 林 3 个 |
+| 不是。 Workday 到 AD 用户预配应用数 | 每个子域一个应用 |
 
   ![方案 3](./media/workday-inbound-tutorial/dep_scenario3.png)
 
@@ -488,7 +488,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
          * **常量映射** - 将静态常量字符串值写入 AD 属性
 
-         * **表达式映射** - 可基于一个或多个 Workday 属性将自定义值写入 AD 属性。 [有关详细信息，请参阅这篇有关表达式的文章](../manage-apps/functions-for-customizing-application-data.md)。
+         * **表达式** – 可以基于一个或多个 Workday 属性将自定义值写入 AD 属性。 [有关详细信息，请参阅这篇有关表达式的文章](../manage-apps/functions-for-customizing-application-data.md)。
 
       * **源属性** – Workday 中的用户属性。 如果你查找的属性不存在，请参阅[自定义 Workday 用户属性列表](#customizing-the-list-of-workday-user-attributes)。
 
@@ -625,7 +625,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
       * **常量映射** - 将静态常量字符串值写入 AD 属性
 
-      * **表达式映射** - 可基于一个或多个 Workday 属性将自定义值写入 AD 属性。 [有关详细信息，请参阅这篇有关表达式的文章](../manage-apps/functions-for-customizing-application-data.md)。
+      * **表达式** – 可以基于一个或多个 Workday 属性将自定义值写入 AD 属性。 [有关详细信息，请参阅这篇有关表达式的文章](../manage-apps/functions-for-customizing-application-data.md)。
 
    * **源属性** – Workday 中的用户属性。 如果你查找的属性不存在，请参阅[自定义 Workday 用户属性列表](#customizing-the-list-of-workday-user-attributes)。
 
@@ -696,7 +696,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 3. 在“属性映射”部分中，更新匹配的 ID 以指明 Azure Active Directory 中存储着 Workday 工作人员 ID 或员工 ID 的属性。 常用的匹配方法是将 Workday 工作人员 ID 或员工 ID 同步到 Azure AD 中的 extensionAttribute1-15，然后使用 Azure AD 中的此属性来重新匹配 Workday 中的用户。
 
-4. 要保存映射，请单击“属性-映射”部分顶部的“保存”。
+4. 若要保存映射，请单击“属性映射”部分顶部的“保存”。
 
 属性映射配置完成后，即可[启用并启动用户预配服务](#enable-and-launch-user-provisioning)。 
 
@@ -956,7 +956,7 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
      | ----------------- | -------------------- |
      | PreferredFirstName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:First_Name/text() |
      | PreferredLastName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:Last_Name/text() |
-     | Company | wd:Worker/wd:Worker_Data/wd:Organization_Data/wd:Worker_Organization_Data[wd:Organization_Data/wd:Organization_Type_Reference/wd:ID[@wd:type='Organization_Type_ID']='Company']/wd:Organization_Reference/@wd:Descriptor |
+     | 公司 | wd:Worker/wd:Worker_Data/wd:Organization_Data/wd:Worker_Organization_Data[wd:Organization_Data/wd:Organization_Type_Reference/wd:ID[@wd:type='Organization_Type_ID']='Company']/wd:Organization_Reference/@wd:Descriptor |
      | SupervisoryOrganization | wd:Worker/wd:Worker_Data/wd:Organization_Data/wd:Worker_Organization_Data/wd:Organization_Data[wd:Organization_Type_Reference/wd:ID[@wd:type='Organization_Type_ID']='Supervisory']/wd:Organization_Name/text() |
   
    咨询 Workday 团队，确认上述 API 表达式对 Workday 租户配置而言有效。 如有必要，可按[自定义 Workday 用户属性列表](#customizing-the-list-of-workday-user-attributes)部分中所述进行编辑。
@@ -1023,7 +1023,7 @@ SelectUniqueValue(
 
 使用函数 [Normalize Diacritics ](../manage-apps/functions-for-customizing-application-data.md#normalizediacritics) 删除用户名字和姓氏中的特殊字符，同时为用户构建电子邮件地址或 CN 值。
 
-## <a name="troubleshooting-tips"></a>疑难解答提示
+## <a name="troubleshooting-tips"></a>故障排除提示
 
 本部分提供具体指导，其中介绍如何使用 Azure AD 审核日志和 Windows Server 事件查看器日志来排查 Workday 集成方面的配置问题。 它基于[教程：针对自动用户帐户预配进行报告](../manage-apps/check-status-user-account-provisioning.md)中介绍的一般性疑难解答步骤和概念进行编制
 
@@ -1180,8 +1180,8 @@ manager 属性是 AD 中的引用属性。 预配服务不会将 manager 属性�
 
 |#|错误场景 |可能的原因|推荐的解决方案|
 |--|---|---|---|
-|1.| 审核日志中的导出操作失败，显示消息“错误: OperationsError-SvcErr: 出现操作错误。未为目录服务配置高级引用。因此，目录服务无法向此林范围外的对象发出引用。” | 如果未正确设置 Active Directory 容器 OU，或者用于 parentDistinguishedName 的表达式映射存在问题，则通常会显示此错误。 | 请检查 Active Directory 容器 OU 参数是否有拼写错误。 如果在属性映射中使用 parentDistinguishedName，请确保它始终计算得出 AD 域中的已知容器。 检查审核日志中的导出事件，查看所生成的值。 |
-|2.| 审核日志中的导出操作失败，并显示错误代码“SystemForCrossDomainIdentityManagementBadResponse”和消息“错误: ConstraintViolation-AtrErr: 请求中的值无效。属性的值不在可接受的值范围内。”\n错误详细信息：CONSTRAINT_ATT_TYPE - company。 | 虽然此错误特定于 company 属性，但 CN 等其他属性也可能出现此错误。 由于 AD 强制架构约束而出现此错误。 默认情况下，AD 中的属性（例如 company 和 CN）的字符数上限为 64 个字符。 如果 Workday 中的值超过 64 个字符，则将看到此错误消息。 | 请检查审核日志中的导出事件，查看错误消息中报告的属性的值。 考虑使用 [Mid](../manage-apps/functions-for-customizing-application-data.md#mid) 函数截断来自 Workday 的值，或者将映射更改为不具有类似长度约束的 AD 属性。  |
+|1.| 审核日志中的导出操作失败，并显示消息*错误:OperationsError-SvcErr:出现操作错误。没有为目录服务配置高级引用。因此，目录服务无法向此林外的对象发出引用。* | 如果未正确设置 Active Directory 容器 OU，或者用于 parentDistinguishedName 的表达式映射存在问题，则通常会显示此错误。 | 请检查 Active Directory 容器 OU 参数是否有拼写错误。 如果在属性映射中使用 parentDistinguishedName，请确保它始终计算得出 AD 域中的已知容器。 检查审核日志中的导出事件，查看所生成的值。 |
+|2.| 审核日志中的导出操作失败，并显示错误代码“SystemForCrossDomainIdentityManagementBadResponse”和消息*错误:ConstraintViolation-AtrErr:请求中的值无效。属性的值不在可接受的值范围内。\n错误详细信息:CONSTRAINT_ATT_TYPE - company*。 | 虽然此错误特定于 company 属性，但 CN 等其他属性也可能出现此错误。 由于 AD 强制架构约束而出现此错误。 默认情况下，AD 中的属性（例如 company 和 CN）的字符数上限为 64 个字符。 如果 Workday 中的值超过 64 个字符，则将看到此错误消息。 | 请检查审核日志中的导出事件，查看错误消息中报告的属性的值。 考虑使用 [Mid](../manage-apps/functions-for-customizing-application-data.md#mid) 函数截断来自 Workday 的值，或者将映射更改为不具有类似长度约束的 AD 属性。  |
 
 #### <a name="ad-user-account-update-errors"></a>AD 用户帐户更新错误
 

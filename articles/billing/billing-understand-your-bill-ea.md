@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2018
-ms.author: cwatson
-ms.openlocfilehash: b724fc7a887550b4115a988149b4b7a6c95de830
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 36ce4d96e02bac1eae1791acf811da468726b4a6
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584462"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902697"
 ---
 # <a name="understand-your-bill-for-azure-customers-with-an-enterprise-agreement"></a>了解签署了企业协议的 Azure 客户的帐单
 
@@ -64,7 +64,7 @@ ms.locfileid: "52584462"
 
 1. “总用量”应与服务超额发票上的“总应收金额”相匹配。 下表列出发票上显示的以及企业门户“使用情况摘要”中显示的款项和说明：
 
-   |发票上的款项|“使用情况摘要”中的款项|Description|
+   |发票上的款项|“使用情况摘要”中的款项|说明|
    |---|---|---|
    |总应收金额|总用量|应用信用额度之前特定周期的税前使用费总额。|
    |承诺用量|承诺用量|在该特定周期应用的信用额度。|

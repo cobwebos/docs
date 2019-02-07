@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 73f90d1df2c1a6a0655a61026112cc2a7a73cb1e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 932517e3f1dc70e44727a6d165430dba6e63ae5a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808623"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187787"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -161,8 +161,8 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 如果要在 **Windows 10** 计算机上运行脚本，则需要先执行一些其他步骤。 
 
-1. 安装 [AzureRM 模块](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.4.0l)。
-2. 通过打开 PowerShell 提示符并运行命令 **Import-Module AzureRM** 来导入模块。
+1. 安装 [Az 模块](/powershell/azure/install-az-ps)。
+2. 通过打开 PowerShell 提示符并运行命令 **Import-Module Az** 来导入模块。
 3. 运行 **Set-ExecutionPolicy unrestricted**，并选择 **Yes to All**。 
 4. 现在，可以在管理员模式下运行下载的 PowerShell 脚本以生成 CSV 文件。
 

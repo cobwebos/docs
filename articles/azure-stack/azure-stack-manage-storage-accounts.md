@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 98ae15307b6d2859b583042ca788b825890a40be
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a8134e2350b650f7dfe0b3a1d58d107e42493223
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238765"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766497"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>管理 Azure Stack 中的存储帐户
 
@@ -37,7 +37,7 @@ ms.locfileid: "55238765"
 
 默认显示前 10 个帐户。 可以单击列表底部的“加载更多”链接来提取更多的帐户。
 
-或
+OR
 
 如果您感兴趣的特定的存储帐户-你可以**筛选并提取相关的帐户**仅。
 
@@ -133,7 +133,7 @@ ms.locfileid: "55238765"
 2. 运行以下 cmdlet：
 
 > [!NOTE]  
-> 如果运行这些 cmdlet，将会永久删除帐户及其内容。 不可恢复。 请慎用此 cmdlet。
+> 如果运行这些 cmdlet，将会永久删除帐户及其内容。 它不可恢复。 请慎用此 cmdlet。
 
 ```PowerShell  
     $farm_name = (Get-AzsStorageFarm)[0].name

@@ -16,12 +16,12 @@ ms.date: 01/30/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: c398e615e943caad40040ff1b87713304fd9f015
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 6c498f51bffeadce7a7c0dba8491942f1d4d0248
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746704"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766089"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 更新
 
@@ -50,7 +50,7 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
 - **1809**：[KB 4481548 – Azure Stack 修补程序 1.1809.12.114](https://support.microsoft.com/help/4481548/)
 - **1811**：当前没有修补程序可用。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 > [!IMPORTANT]
 > 在安装 1811 更新期间，必须确保所有管理员门户实例都已关闭。 用户门户可以保持打开，但管理员门户必须关闭。

@@ -3,7 +3,7 @@ title: 在 Azure 中的 Linux VM 上设置 MySQL | Microsoft 文档
 description: 了解如何在 Azure 中的 Linux 虚拟机（Ubuntu 或 Red Hat 系列操作系统）上安装 MySQL 堆栈
 services: virtual-machines-linux
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2016
-ms.author: zarhoads
-ms.openlocfilehash: f7120decd4a5d43f88b55e7d7e20992af34cadc4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: cynthn
+ms.openlocfilehash: c8043064ac1df40eaa31ae56e9ec31c0152e0130
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469554"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888424"
 ---
 # <a name="how-to-install-mysql-on-azure"></a>如何在 Azure 上安装 MySQL
 在本文中，将了解如何在运行 Linux 的 Azure 虚拟机上安装和配置 MySQL。
@@ -42,7 +42,7 @@ ms.locfileid: "49469554"
 ### <a name="how-to-install-mysql56-on-ubuntu"></a>如何在 Ubuntu 上安装 MySQL5.6
 我们在这里会将 Linux VM 与 Azure 中的 Ubuntu 一起使用。
 
-* 步骤 1：为 `root` 用户安装 MySQL Server 5.6 开关：
+* 步骤 1：安装 MySQL Server 5.6（切换到 `root` 用户）：
   
             #[azureuser@mysqlnode:~]sudo su -
   
@@ -86,7 +86,7 @@ ms.locfileid: "49469554"
 ### <a name="how-to-install-mysql-on-red-hat-os-family-like-centos-oracle-linux"></a>如何在 Red Hat OS 系列（例如 CentOS、Oracle Linux）上安装 MySQL
 在这里，我们会将 Linux VM 用于 CentOS 或 Oracle Linux。
 
-* 步骤 1：将 MySQL Yum 存储库开关添加到 `root` 用户：
+* 步骤 1：添加 MySQL Yum 存储库（切换到 `root` 用户）：
   
             #[azureuser@mysqlnode:~]sudo su -
   
@@ -112,7 +112,7 @@ ms.locfileid: "49469554"
         gpgcheck=1
   
         gpgkey=file:/etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
-* 第 3 步：从 MySQL 存储库的“安装 MySQL”安装 MySQL：
+* 步骤 3：从 MySQL 存储库的“安装 MySQL”安装 MySQL：
   
            #[root@mysqlnode ~]#yum install mysql-community-server
   

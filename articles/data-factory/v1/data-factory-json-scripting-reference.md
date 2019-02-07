@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 32e0be682d5d216df6741fa38bb0a16e4b323ef6
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 9f8ffe71743f4832d8ce633f050206d21f411276
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354189"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55082191"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>数据工厂 - JSON 脚本参考
 > [!NOTE]
@@ -83,7 +83,7 @@ ms.locfileid: "54354189"
 
 下表描述了活动 JSON 定义中的属性：
 
-| 标记 | Description | 必选 |
+| 标记 | 说明 | 必选 |
 | --- | --- | --- |
 | 名称 |活动的名称。 指定一个名称，表示活动配置要执行的操作<br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
 | description |描述活动用途的文本。 |否 |
@@ -98,7 +98,7 @@ ms.locfileid: "54354189"
 ### <a name="policies"></a>策略
 策略会影响活动的运行时行为，尤其在处理表的切片时。 下表提供详细信息。
 
-| 属性 | 允许的值 | 默认值 | Description |
+| 属性 | 允许的值 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | concurrency |Integer <br/><br/>最大值：10 |1 |活动的并发执行次数。<br/><br/>它决定可在不同切片上发生的并行活动执行次数。 例如，如果活动需要完成大量可用数据，更大的并发值能加快数据处理速度。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |确定正在处理的数据切片的顺序。<br/><br/>例如，有两个切片（分别发生在下午 4 点和下午 5 点），且均在等待执行。 如果将 executionPriorityOrder 设置为 NewestFirst，则首先处理下午 5 点的切片。 同理，如果将 executionPriorityORder 设置为 OldestFIrst，则先处理下午 4 点的切片。 |
@@ -334,7 +334,7 @@ structure:
 
 数据集定义中的**策略**部分定义了数据集切片必须满足的标准或条件。
 
-| 策略名称 | Description | 适用对象 | 必选 | 默认 |
+| 策略名称 | 说明 | 适用对象 | 必选 | 默认 |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |验证 **Azure Blob** 中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob |否 |NA |
 | minimumRows |验证 **Azure SQL 数据库**中的数据或 **Azure 表**是否包含最小行数。 |<ul><li>Azure SQL 数据库</li><li>Azure 表</li></ul> |否 |NA |
@@ -354,7 +354,7 @@ structure:
 
 除非 Azure 数据工厂生成数据集，否则应将其标记为**外部**。 此设置通常适用于管道中第一个活动的输入，除非正在使用活动或管道链接。
 
-| 名称 | Description | 必选 | 默认值 |
+| Name | 说明 | 必选 | 默认值 |
 | --- | --- | --- | --- |
 | dataDelay |延迟检查给定切片外部数据的可用性的时间。 例如，如果数据应为每小时可用，可使用 dataDelay 推迟检查外部数据是否可用以及相应切片是否就绪。<br/><br/>仅适用于当前时间。  例如，如果现在是下午 1:00 且此值为 10 分钟，则从下午 1:10 开始验证。<br/><br/>此设置不会影响过去的切片 (End Time + dataDelay < Now)，过去的切片不会有任何延迟。<br/><br/>大于 23:59 小时的时间需要使用 `day.hours:minutes:seconds` 格式进行指定。 例如，若要指定 24 小时，请不要使用 24:00:00；请改用 1.00:00:00。 如果使用 24:00:00，则将它视为 24 天 (24.00:00:00)。 对于 1 天又 4 小时，请指定 1:04:00:00。 |否 |0 |
 | retryInterval |失败与下一次重试之间的等待时间。 如果尝试失败，下一次尝试会在 retryInterval 以后。 <br/><br/>如果现在是下午 1:00，我们将开始第一次尝试。 如果完成第一次验证检查的持续时间为 1 分钟，并且操作失败，则下一次重试为 1:00 + 1 分钟（持续时间）+ 1 分钟（重试间隔）= 下午 1:02。 <br/><br/>对于过去的切片，没有任何延迟。 重试会立即发生。 |否 |00:01:00（1 分钟） |
@@ -4380,7 +4380,7 @@ auto-
 ### <a name="relational-source-in-copy-activity"></a>复制活动中的关系源
 如果要从 OData 源复制数据，请将复制活动的**源类型**设置为 **RelationalSource**，并在 **source** 节中指定以下属性：
 
-| 属性 | Description | 示例 | 必选 |
+| 属性 | 说明 | 示例 | 必选 |
 | --- | --- | --- | --- |
 | query |使用自定义查询读取数据。 |"?$select=Name, Description&$top=5" |否 |
 
@@ -4937,7 +4937,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| 类型 |类型属性应设置为：AzureML。 |是 |
+| Type |类型属性应设置为：AzureML。 |是 |
 | mlEndpoint |批处理计分 URL。 |是 |
 | apiKey |已发布的工作区模型的 API。 |是 |
 
@@ -4965,7 +4965,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| 类型 |类型属性应设置为：AzureDataLakeAnalytics。 |是 |
+| Type |类型属性应设置为：AzureDataLakeAnalytics。 |是 |
 | accountName |Azure Data Lake Analytics 帐户名。 |是 |
 | dataLakeAnalyticsUri |Azure Data Lake Analytics URI。 |否 |
 | authorization |在数据工厂编辑器中单击“授权”按钮并完成 OAuth 登录后，会自动检索授权代码。 |是 |
@@ -5106,7 +5106,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 ## <a name="data-transformation-activities"></a>数据转换活动
 
-活动 | Description
+活动 | 说明
 -------- | -----------
 [HDInsight Hive 活动](#hdinsight-hive-activity) | 数据工厂管道中的 HDInsight Hive 活动会在自己的或基于 Windows/Linux 的按需 HDInsight 群集上执行 Hive 查询。
 [HDInsight Pig 活动](#hdinsight-pig-activity) | 数据工厂管道中的 HDInsight Pig 活动会在自己或基于 Windows/Linux 的按需 HDInsight 群集上执行 Pig 查询。
@@ -5279,7 +5279,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ## <a name="hdinsight-streaming-activity"></a>HDInsight Streaming 活动
 可以在 Hadoop 流式处理活动 JSON 定义中指定以下属性。 活动的类型属性必须是：**HDInsightStreaming**。 必须先创建 HDInsight 链接服务，然后指定该服务的名称作为 **linkedServiceName** 属性的值。 将活动类型设置为 HDInsightStreaming 时，**typeProperties** 节支持以下属性：
 
-| 属性 | Description |
+| 属性 | 说明 |
 | --- | --- |
 | mapper | 映射器可执行文件的名称。 在示例中，cat.exe 即是映射器可执行文件。|
 | reducer | 化简器可执行文件的名称。 在示例中，wc.exe 即是减压器可执行文件。 |
@@ -5387,7 +5387,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 - **type** 属性设置为 **HDInsightSpark**。
 - **rootPath** 设置为 **adfspark\\pyFiles**，其中，adfspark 是 Azure Blob 容器，pyFiles 是该容器中的文件夹。 在此示例中，Azure Blob 存储是与 Spark 群集关联的存储。 可将文件上传到不同的 Azure 存储。 如果这样做，请创建 Azure 存储链接服务，将该存储帐户链接到数据工厂。 然后，将该链接的服务的名称指定为 **sparkJobLinkedService** 属性的值。 请参阅 [Spark 活动属性](#spark-activity-properties)，了解有关 Spark 活动支持的此属性及其他属性的详细信息。
 - **entryFilePath** 设置为 **test.py**，这是 python 文件。
-- **getDebugInfo** 属性设置为 **Always**，表示始终生成日志文件（成功或失败）。  
+- **getDebugInfo** 属性设置为 **Always**，表示始终生成日志文件（成功或失败）。
 
     > [!IMPORTANT]
     > 在生产环境中，除非要排查问题，否则我们不建议将此属性设置为 Always。
@@ -5396,13 +5396,13 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 有关该活动的详细信息，请参阅 [Spark 活动](data-factory-spark.md)一文。
 
 ## <a name="machine-learning-batch-execution-activity"></a>机器学习批处理执行活动
-可以在 Azure 机器学习批处理执行活动 JSON 定义中指定以下属性。 活动的类型属性必须是：**AzureMLBatchExecution**。 必须先创建 Azure 机器学习链接服务，然后指定该服务的名称作为 **linkedServiceName** 属性的值。 将活动类型设置为 AzureMLBatchExecution 时，**typeProperties** 节支持以下属性：
+可以在 Azure 机器学习工作室批处理执行活动 JSON 定义中指定以下属性。 活动的类型属性必须是：**AzureMLBatchExecution**。 必须先创建 Azure 机器学习链接服务，然后指定该服务的名称作为 **linkedServiceName** 属性的值。 将活动类型设置为 AzureMLBatchExecution 时，**typeProperties** 节支持以下属性：
 
 属性 | 说明 | 必选
 -------- | ----------- | --------
-webServiceInput | 要作为 Azure 机器学习 Web 服务的输入传递的数据集。 此数据集也必须包含在活动的输入中。 |使用 webServiceInput 或 webServiceInputs。 |
-webServiceInputs | 指定要作为 Azure 机器学习 Web 服务的输入传递的数据集。 如果该 Web 服务采用多个输入，可以使用 webServiceInputs 属性，而不使用 webServiceInput 属性。 **webServiceInputs** 引用的数据集也必须包括在活动 **inputs** 中。 | 使用 webServiceInput 或 webServiceInputs。 |
-webServiceOutputs | 分配为 Azure 机器学习 Web 服务的输出的数据集。 Web 服务在此数据集中返回输出数据。 | 是 |
+webServiceInput | 要作为 Azure 机器学习工作室 Web 服务的输入传递的数据集。 此数据集也必须包含在活动的输入中。 |使用 webServiceInput 或 webServiceInputs。 |
+webServiceInputs | 指定要作为 Azure 机器学习工作室 Web 服务的输入传递的数据集。 如果该 Web 服务采用多个输入，可以使用 webServiceInputs 属性，而不使用 webServiceInput 属性。 **webServiceInputs** 引用的数据集也必须包括在活动 **inputs** 中。 | 使用 webServiceInput 或 webServiceInputs。 |
+webServiceOutputs | 指定为 Azure 机器学习工作室 Web 服务的输出的数据集。 Web 服务在此数据集中返回输出数据。 | 是 |
 globalParameters | 在此节中指定 Web 服务参数的值。 | 否 |
 
 ### <a name="json-example"></a>JSON 示例
@@ -5452,7 +5452,7 @@ globalParameters | 在此节中指定 Web 服务参数的值。 | 否 |
 > 仅 AzureMLBatchExecution 活动的输入和输出可作为参数传递给 Web 服务。 例如，在上面的 JSON 片段中，MLSqlInput 是通过 webServiceInput 参数作为输入传递给 Web 服务的 AzureMLBatchExecution 活动输入。
 
 ## <a name="machine-learning-update-resource-activity"></a>机器学习更新资源活动
-可以在 Azure 机器学习更新资源活动 JSON 定义中指定以下属性。 活动的类型属性必须是：**AzureMLUpdateResource**。 必须先创建 Azure 机器学习链接服务，然后指定该服务的名称作为 **linkedServiceName** 属性的值。 将活动类型设置为 AzureMLUpdateResource 时，**typeProperties** 节支持以下属性：
+可以在 Azure 机器学习工作室更新资源活动 JSON 定义中指定以下属性。 活动的类型属性必须是：**AzureMLUpdateResource**。 必须先创建 Azure 机器学习链接服务，然后指定该服务的名称作为 **linkedServiceName** 属性的值。 将活动类型设置为 AzureMLUpdateResource 时，**typeProperties** 节支持以下属性：
 
 属性 | 说明 | 必选
 -------- | ----------- | --------
@@ -5460,7 +5460,7 @@ trainedModelName | 重新训练的模型的名称。 | 是 |
 trainedModelDatasetName | 指向重新训练操作返回的 iLearner 文件的数据集。 | 是 |
 
 ### <a name="json-example"></a>JSON 示例
-管道具有两个活动：**AzureMLBatchExecution** 和 **AzureMLUpdateResource**。 Azure 机器学习批处理执行活动采用定型数据作为输入，并生成 iLearner 文件作为输出。 活动会通过输入定型数据调用定型 Web 服务（作为 Web 服务公开的训练实验），并从 Web 服务接收 ilearner 文件。 placeholderBlob 只是 Azure 数据工厂服务运行管道所需的虚拟输出数据集。
+管道具有两个活动：**AzureMLBatchExecution** 和 **AzureMLUpdateResource**。 Azure 机器学习工作室批处理执行活动采用训练数据作为输入，并生成 iLearner 文件作为输出。 活动会通过输入定型数据调用定型 Web 服务（作为 Web 服务公开的训练实验），并从 Web 服务接收 ilearner 文件。 placeholderBlob 只是 Azure 数据工厂服务运行管道所需的虚拟输出数据集。
 
 
 ```json

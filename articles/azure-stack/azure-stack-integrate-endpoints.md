@@ -6,17 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.lastreviewed: 12/06/2018
-keywords: ''
-ms.openlocfilehash: 5946f62821d05bd9036b9fc0e6b0fc8daa74c5dc
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/06/2019
+ms.openlocfilehash: 0bb2f3ffb4b615451abc41d0d8945b4b3efdde53
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241196"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816350"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack 数据中心集成 - 发布终结点
 
@@ -69,19 +68,24 @@ Azure Stack 仅支持透明代理服务器。 如果部署中的透明代理上�
 > [!Note]  
 > Azure Stack 不支持使用 Express Route 访问下表中列出的 Azure 服务。
 
-|目的|代码|协议|端口|
-|---------|---------|---------|---------|
-|标识|login.windows.net<br>login.microsoftonline.com<br>graph.windows.net<br>https://secure.aadcdn.microsoftonline-p.com<br>office.com|HTTP<br>HTTPS|80<br>443|
-|市场联合|https://management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|
-|修补程序和更新|https://&#42;.azureedge.net|HTTPS|443|
-|注册|https://management.azure.com|HTTPS|443|
-|使用情况|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.net|HTTPS|443|
-|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*.updates.microsoft.com<br>*.download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>`https://www.microsoft.com/pkiops/crl`<br>`https://www.microsoft.com/pkiops/certs`<br>`https://crl.microsoft.com/pki/crl/products`<br>`https://www.microsoft.com/pki/certs`<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|
-|NTP|（为部署提供的 NTP 服务器的 IP）|UDP|123|
-|DNS|（为部署提供的 DNS 服务器的 IP）|TCP<br>UDP|53|
-|CRL|（证书上的 CRL 分发点下的 URL）|HTTP|80|
-|基础结构备份|（外部目标文件服务器的 IP 或 FQDN）|SMB|445|
-|     |     |     |     |
+|目的|目标网址|协议|端口|源网络|
+|---------|---------|---------|---------|---------|
+|标识|login.windows.net<br>login.microsoftonline.com<br>graph.windows.net<br>https://secure.aadcdn.microsoftonline-p.com<br>office.com|HTTP<br>HTTPS|80<br>443|公共 VIP 的/27<br>公共基础结构网络|
+|市场联合|https://management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|公共 VIP 的/27|
+|修补程序和更新|https://&#42;.azureedge.net|HTTPS|443|公共 VIP 的/27|
+|注册|https://management.azure.com|HTTPS|443|公共 VIP 的/27|
+|使用情况|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.net |HTTPS|443|公共 VIP 的/27|
+|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*.updates.microsoft.com<br>*.download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>https://www.microsoft.com/pkiops/crl<br>https://www.microsoft.com/pkiops/certs<br>https://crl.microsoft.com/pki/crl/products<br>https://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|公共 VIP 的/27<br>公共基础结构网络|
+|NTP|（为部署提供的 NTP 服务器的 IP）|UDP|123|公共 VIP 的/27|
+|DNS|（为部署提供的 DNS 服务器的 IP）|TCP<br>UDP|53|公共 VIP 的/27|
+|CRL|（证书上的 CRL 分发点下的 URL）|HTTP|80|公共 VIP 的/27|
+|基础结构备份|（外部目标文件服务器的 IP 或 FQDN）|SMB|445|公共基础结构网络|
+|LDAP|提供 Graph 集成的 active Directory 林|TCP<br>UDP|389|公共 VIP 的/27|
+|LDAP SSL|提供 Graph 集成的 active Directory 林|TCP|636|公共 VIP 的/27|
+|LDAP GC|提供 Graph 集成的 active Directory 林|TCP|3268|公共 VIP 的/27|
+|LDAP GC SSL|提供 Graph 集成的 active Directory 林|TCP|3269|公共 VIP 的/27|
+|AD FS|为 AD FS 集成提供的 AD FS 的元数据终结点|TCP|443|公共 VIP 的/27|
+|     |     |     |     |     |
 
 > [!Note]  
 > 使用 Azure 流量管理器对出站 URL 进行负载均衡，以根据地理位置提供尽可能最佳的连接。 使用负载平衡的 Url，Microsoft 可以更新和更改后端终结点而不会影响客户。 Microsoft 不共享 IP 地址的列表，为负载平衡 Url。 应使用支持按 URL 而不是按 IP 筛选的设备。

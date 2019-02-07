@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: b5c07c7d142e231c945906d6e75ce16a5bb1d252
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 3a796733f5987f4cc550a606e06166395d1595cc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985975"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156644"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服务清单中指定资源
 ## <a name="overview"></a>概述
@@ -78,7 +78,7 @@ HTTP 终结点由 Service Fabric 自动建立 ACL。
     </EntryPoint>
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an
+  <!-- Config package is the contents of the Config directory under PackageRoot that contains an
        independently updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 
@@ -198,7 +198,7 @@ HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进�
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-注意：如果针对 ApplicationParameter 提供的值为空，将返回到 ServiceManifest 中为对应的 EndPointName 提供的默认值。
+注意：如果针对 ApplicationParameters 提供的值为空，将返回到 ServiceManifest 中为对应的 EndPointName 提供的默认值。
 
 例如：
 
@@ -214,4 +214,4 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
 
 并且应用程序参数的 Port1 和 Protocol1 值为 null 或为空。 仍由 ServiceFabric 决定端口。 而协议将 TCP。
 
-假设指定了错误值。 例如，对于“端口”，你指定了字符串值“Foo”而不是 int。新的 ServiceFabricApplication 命令将失败并出现错误：“ResourceOverrides”部分中的名称“ServiceEndpoint1”属性“Port1”的替代参数无效。 指定的值为“Foo”，而要求的值为“int”。
+假设指定了错误值。 例如，对于“端口”，你指定了字符串值“Foo”而不是 int。New-ServiceFabricApplication 命令将失败并显示错误：“ResourceOverrides”节中名为“ServiceEndpoint1”、属性为“Port1”的替代参数无效。 指定的值为“Foo”，而要求的值为“int”。

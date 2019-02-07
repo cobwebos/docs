@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.date: 1/18/2019
 ms.author: mabrigg
 ms.lastreviewed: 1/18/2019
-ms.openlocfilehash: 4123d4cec25bab116c642f1b89cd8eff4779af42
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 692fba97a67a7dc9654e307c2b7628dcc89f3ba8
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252143"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768668"
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Azure Stack 中的存储帐户
 存储帐户包含 Blob 和表服务，以及存储数据对象的唯一命名空间。 默认情况下，只有你，即存储帐户所有者，才能使用帐户中的数据。
@@ -34,7 +34,7 @@ ms.locfileid: "55252143"
     ![](media/azure-stack-provision-storage-account/image03.png)
 
 ### <a name="next-steps"></a>后续步骤
-[使用 Azure 资源管理器模板](user/azure-stack-arm-templates.md)
+[使用 Azure Resource Manager 模板](user/azure-stack-arm-templates.md)
 
 [了解 Azure 存储帐户](../storage/common/storage-create-storage-account.md)
 

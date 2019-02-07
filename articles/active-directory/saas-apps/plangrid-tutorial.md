@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 PlanGrid 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 PlanGrid 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 PlanGrid 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 0ba72432-9b49-4358-b756-14c982422be8
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: jeedes
-ms.openlocfilehash: b2225a48e78e8c609223510a32d3ed5c735ed3b6
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 5ceb5f09b599b6c42dea3359b18c319e7b44fed7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046051"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55165075"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-plangrid"></a>教程：Azure Active Directory 与 PlanGrid 集成
 
@@ -150,7 +150,7 @@ ms.locfileid: "39046051"
 
     ![“用户”对话框](./media/plangrid-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -160,7 +160,7 @@ ms.locfileid: "39046051"
  
 ### <a name="create-a-plangrid-test-user"></a>创建 PlanGrid 测试用户
 
-本部分需在 PlanGrid 中创建名为“Britta Simon”的用户。 与 [PlanGrid 支持团队](mailto:help@plangrid.com)协作，将用户添加到 PlanGrid 平台中。 使用单一登录前，必须先创建并激活用户。 
+本部分需在 PlanGrid 中创建名为“Britta Simon”的用户。 与  [PlanGrid 支持团队](mailto:help@plangrid.com) 协作，将用户添加到 PlanGrid 平台中。 使用单一登录前，必须先创建并激活用户。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -197,12 +197,12 @@ ms.locfileid: "39046051"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 PlanGrid 磁贴时，应当会自动登录到 PlanGrid 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 
