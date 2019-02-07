@@ -180,6 +180,8 @@ items:
         href: iot-hub-how-to-develop-for-mobile-devices.md
       - name: 管理连接和可靠的消息传送
         href: iot-hub-reliability-features-in-sdks.md
+      - name: 针对 Android Things 平台进行开发
+        href: iot-hub-how-to-android-things.md
     - name: 查询中心路由中的 Avro 数据
       href: iot-hub-query-avro-data.md
     - name: 订阅来自事件网格的设备连接状态事件
@@ -442,9 +444,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 84eae62600f5cb62bfd8941d90140c6150a983f0
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: fe459c18d9b59b04dcf40cb313968631dc83d85c
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809116"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746976"
