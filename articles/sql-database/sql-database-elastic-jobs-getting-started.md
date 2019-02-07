@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: 0269a8ea460667d44b6173e4504a9ccb5695d722
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: ff7e15579bfb0edfe9229238c6a4d5672700d0ef
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863527"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567003"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>弹性数据库作业入门
 
@@ -262,8 +262,8 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
 * 作业超时：作业被弹性数据库作业取消之前经过的总时间。
 * 初始重试间隔：第一次重试之前等待的间隔。
 * 最大重试间隔：要使用的重试间隔的上限。
-* 重试间隔回退系数：用于计算每两次重试的下一个间隔系数。  使用以下公式：(初始重试间隔) * Math.pow((间隔回退指数),(重试次数) - 2)。
-* 最大尝试次数：重试在作业中执行的最大次数。
+* 重试间隔回退系数：用于计算两次重试之间的下一个间隔的系数。  使用以下公式：(初始重试间隔) * Math.pow((间隔回退指数), (重试次数) - 2)。
+* 最大尝试次数：要在作业中执行的最大重试尝试次数。
 
 默认的执行策略使用以下值：
 

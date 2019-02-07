@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: e3b1655207f3baba6ea6e3cf2f00e3540a3602ad
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 07fbf51f584d691b08d94f68fefa8c3f9348227f
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969363"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294822"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
@@ -32,7 +32,7 @@ ms.locfileid: "53969363"
 
 使用文本分析容器之前，必须满足以下先决条件：
 
-|必需|目的|
+|必选|目的|
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
@@ -40,12 +40,7 @@ ms.locfileid: "53969363"
 
 ### <a name="the-host-computer"></a>主计算机
 
-主机是运行 docker 容器的计算机。 它可以是本地计算机或 Azure 中的 docker 托管服务，包括：
-
-* [Azure Kubernetes 服务](../../../aks/index.yml)
-* [Azure 容器实例](../../../container-instances/index.yml)
-* 部署到 [Azure Stack](../../../azure-stack/index.yml) 的 [Kubernetes](https://kubernetes.io/) 群集。 有关详细信息，请参阅[将 Kubernetes 部署到 Azure Stack](../../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md)。
-
+[!INCLUDE [Request access to private preview](../../../../includes/cognitive-services-containers-host-computer.md)]
 
 ### <a name="container-requirements-and-recommendations"></a>容器要求和建议
 
@@ -77,6 +72,8 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 * [语言检测](https://go.microsoft.com/fwlink/?linkid=2018759)
 * [情绪分析](https://go.microsoft.com/fwlink/?linkid=2018654)
 
+使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令下载容器映像。
+
 
 ### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>适用于关键短语提取容器的 Docker 拉取
 
@@ -96,13 +93,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
 docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
 ```
 
-### <a name="listing-the-containers"></a>列出容器
-
-可以使用 [docker images](https://docs.docker.com/engine/reference/commandline/images/) 命令列出下载的容器映像。 例如，以下命令以表格列出每个下载的容器映像的 ID、存储库和标记：
-
-```Docker
-docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
-```
+[!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
 
 ## <a name="how-to-use-the-container"></a>如何使用容器
@@ -159,14 +150,7 @@ ApiKey={BILLING_KEY}
 
 ## <a name="containers-api-documentation"></a>容器的 API 文档
 
-容器提供终结点以及 `Try it now` 功能的整套文档。 通过此功能可以将设置输入到基于 Web 的 HTML 窗体中并进行查询，而无需编写任何代码。 返回查询后，将提供示例 CURL 命令，用于演示所需的 HTTP 标头和正文格式。 
-
-> [!TIP]
-> 阅读 [OpenAPI 规范](https://swagger.io/docs/specification/about/)，该规范描述了 `/swagger` 相对 URI 中容器支持的 API 操作。 例如：
->
->  ```http
->  http://localhost:5000/swagger
->  ```
+[!INCLUDE [Container's API documentation](../../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>计费
 

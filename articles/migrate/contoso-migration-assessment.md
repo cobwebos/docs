@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 01/30/2019
 ms.author: raynew
-ms.openlocfilehash: 18e8b7699a388dabbf0e4f5cff7d4fb927e549c2
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: daf75987a49d2ce90a436fdfcff1a85d2fc0ca21
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853810"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300398"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso 迁移：评估本地工作负荷是否适合迁移到 Azure
 
@@ -121,7 +121,7 @@ Contoso 使用 Microsoft 工具进行迁移评估。 这些工具符合公司的
 - 运行版本 6.5、6.0 或 5.5 的本地 vCenter Server 实例。
 - vCenter Server 中的一个只读帐户，或者创建该帐户的权限。
 - 在 vCenter Server 实例上使用 .ova 模板创建 VM 的权限。
-- 至少一台运行 5.0 或更高版本的 ESXi 主机。
+- 至少一台运行 5.5 或更高版本的 ESXi 主机。
 - 至少两个本地 VMware VM，一个 VM 运行一个 SQL Server 数据库。
 - 在每个 VM 上安装 Azure Migrate 代理的权限。
 - 这些 VM 应该有直接的 Internet 连接。  
@@ -287,13 +287,7 @@ Azure Migrate 会创建一个称作*收集器设备*的本地 VM。 此 VM 可�
     **示例**
 
     ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. 生成的哈希应与这些设置匹配（版本 1.0.9.15）：
-
-    **算法** | **哈希值**
-    --- | ---
-    MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
-    SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
-    SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
+3. 生成的哈希值应与[此处](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#continuous-discovery)列出的哈希值匹配。
 
 ### <a name="create-the-collector-appliance"></a>创建收集器设备
 

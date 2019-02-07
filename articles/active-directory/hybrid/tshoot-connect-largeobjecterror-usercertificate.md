@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5361b93d24c66ef6ccb2f117e6e3a68de4c5f459
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e0d5e466da8804e89ffecd38dd2db6e37a3cb334
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195577"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663632"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect 同步：处理 userCertificate 属性导致的 LargeObject 错误
 
@@ -33,7 +33,7 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 
 若要获取租户中出现 LargeObject 错误的对象列表，请使用以下方法之一：
 
- * 如果为用于同步的 Azure AD Connect Health 启用了租户，可以参考提供[同步错误报告](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync#object-level-synchronization-error-report-preview)。
+ * 如果为用于同步的 Azure AD Connect Health 启用了租户，可以参考提供[同步错误报告](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync)。
  
  * 每个同步周期结束时发送的有关目录同步错误的通知电子邮件包含出现 LargeObject 错误的对象列表。 
  * 如果单击最新的“导出到 Azure AD”操作，[“同步服务管理器操作”选项卡](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations)将显示出现 LargeObject 错误的对象列表。

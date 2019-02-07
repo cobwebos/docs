@@ -10,24 +10,24 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7dffa1480be73f1dbf5e99d11fd8d33eb2ab9038
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 816d25473bfe5f9dc61d6d6f2e50d6cd82ace50c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196406"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562177"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>使用自定义策略在 Azure Active Directory B2C 中配置资源所有者密码凭据流
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-在 Azure Active Directory (Azure AD) B2C 中，资源所有者密码凭据 (ROPC) 流是一种 OAuth 标准身份验证流。 在此流中，应用程序（也称为信赖方）为令牌交换有效凭据。 凭据包括用户 ID 和密码。 返回的令牌为 ID 令牌、访问令牌和刷新令牌。 
+在 Azure Active Directory (Azure AD) B2C 中，资源所有者密码凭据 (ROPC) 流是一种 OAuth 标准身份验证流。 在此流中，应用程序（也称为信赖方）为令牌交换有效凭据。 凭据包括用户 ID 和密码。 返回的令牌为 ID 令牌、访问令牌和刷新令牌。
 
 ROPC 流支持以下选项：
 
 - **本机客户端**：当代码在用户端设备上运行时，将在身份验证期间进行用户交互。
 - **公共客户端流**：只有通过应用程序收集的用户凭据才会在 API 调用中发送。 不会发送应用程序的凭据。
-- **添加新声明**：可更改 ID 令牌内容以添加新的声明。 
+- **添加新声明**：可更改 ID 令牌内容以添加新的声明。
 
 不支持以下流：
 
@@ -43,7 +43,7 @@ ROPC 流支持以下选项：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。 
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
 4. 选择“应用程序”，然后选择“添加”。
 5. 输入应用程序名称，例如 *ROPC_Auth_app*。
 6. 对“Web 应用/Web API”选择“否”，然后对“本机客户端”选择“是”。
@@ -193,7 +193,7 @@ ROPC 流支持以下选项：
           </Metadata>
         </TechnicalProfile>
       </TechnicalProfiles>
-    </ClaimsProvider>    
+    </ClaimsProvider>
     ```
 
 6. 将 **UserJourneys** 元素及其子元素添加到 **TrustFrameworkPolicy** 元素：
@@ -201,7 +201,7 @@ ROPC 流支持以下选项：
     ```XML
     <UserJourney Id="ResourceOwnerPasswordCredentials">
       <PreserveOriginalAssertion>false</PreserveOriginalAssertion>
-        <OrchestrationSteps>
+      <OrchestrationSteps>
         <OrchestrationStep Order="1" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="ResourceOwnerFlow" TechnicalProfileReferenceId="ResourceOwnerPasswordCredentials-OAUTH2" />
@@ -278,7 +278,7 @@ ROPC 流支持以下选项：
 
 - 将 `user-account` 替换为租户中某个用户帐户的名称。
 - 将 `password1` 替换为该用户帐户的密码。
-- 将 `application-id` 替换为 *ROPC_Auth_app* 注册中的应用程序 ID。 
+- 将 `application-id` 替换为 *ROPC_Auth_app* 注册中的应用程序 ID。
 - 如果想要接收刷新令牌，则 *Offline_access* 是可选的。
 
 实际的 POST 请求如以下示例所示：
@@ -291,17 +291,16 @@ Content-Type: application/x-www-form-urlencoded
 username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
 ```
 
-
 脱机访问的成功响应如以下示例所示：
 
 ```JSON
-{ 
-    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki...", 
-    "token_type": "Bearer", 
-    "expires_in": "3600", 
-    "refresh_token": "eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3REVk1EVFBLbUJLb0FUcWQ1ZWFja1hBIiwidmVyIjoiMS4wIiwiemlwIjoiRGVmbGF0ZSIsInNlciI6Ij...", 
-    "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki..." 
-} 
+{
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki...",
+    "token_type": "Bearer",
+    "expires_in": "3600",
+    "refresh_token": "eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3REVk1EVFBLbUJLb0FUcWQ1ZWFja1hBIiwidmVyIjoiMS4wIiwiemlwIjoiRGVmbGF0ZSIsInNlciI6Ij...",
+    "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki..."
+}
 ```
 
 ## <a name="redeem-a-refresh-token"></a>兑换刷新令牌
@@ -322,7 +321,7 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 | refresh_token | `refresh-token` |
 
 - 将 `application-id` 替换为 *ROPC_Auth_app* 注册中的应用程序 ID。
-- 将 `refresh-token` 替换为上一个响应中发回的 **refresh_token**。 
+- 将 `refresh-token` 替换为上一个响应中发回的 **refresh_token**。
 
 成功响应如以下示例所示：
 
@@ -350,5 +349,3 @@ Azure AD B2C 符合公共客户端资源所有者密码凭据的 OAuth 2.0 标�
 
 - 有关此方案的完整示例，请参阅 [Azure Active Directory B2C 自定义策略初学者包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc)。
 - 若要了解有关 Azure Active Directory B2C 所用令牌的详细信息，请参阅[令牌参考](active-directory-b2c-reference-tokens.md)。
-
-

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: 2beb5aa7218df25a1af87411d9481d30b259c353
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 6fca764c191c801cbca86c573339b397e61ead07
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256719"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700224"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 诊断日志
 
@@ -185,7 +185,7 @@ ms.locfileid: "53256719"
 
 字段说明：
 
-|值|Description|
+|值|说明|
 |-------|---------|
 |订阅 ID    |Azure 订阅的 ID，采用 GUID 格式。|
 |资源组名称 |CDN 资源所属资源组的名称。|
@@ -290,7 +290,7 @@ Log Analytics 是一项 Azure 服务，用于监视云和本地环境，使其�
 
 ### <a name="offers-and-pricing-tiers"></a>产品和定价层
 
-可在[此处](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)查看管理解决方案的产品/服务和定价层。
+可在[此处](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)查看管理解决方案的产品/服务和定价层。
 
 ### <a name="customizing-views"></a>自定义视图
 
@@ -319,7 +319,7 @@ Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响�
 下表显示了 **Microsoft 推出的 Azure CDN 标准版**、**Akamai 推出的 Azure CDN 标准版**和 **Verizon 推出的 Azure CDN 标准/高级版**的核心分析日志中提供的一系列指标。 并非所有提供商提供的所有指标都可用，尽管这种差异很小。 此表还显示了某提供商的给定指标是否可用。 这些指标仅适用于在其上拥有流量的 CDN 终结点。
 
 
-|指标                     | Description | Microsoft | Verizon | Akamai |
+|指标                     | 说明 | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
 | RequestCountTotal         | 在此期间请求命中的总次数。 | 是 | 是 |是 |
 | RequestCountHttpStatus2xx | 导致 2xx HTTP 代码（例如 200 和 202）的所有请求的计数。 | 是 | 是 |是 |

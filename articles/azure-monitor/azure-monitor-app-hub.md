@@ -2,7 +2,7 @@
 layout: HubPage
 hide_bc: false
 title: Azure Monitor Application Insights 文档 - 教程和 API 参考 | Microsoft Docs
-description: TBD
+description: Azure Monitor Application Insights 提供深度代码级的应用程序性能监视。
 services: application-insights
 author: mrbullwinkle
 manager: carmonmills
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 713368ab02e72ad0b8e51d0bb312a20bd2df690c
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f2c6475d67958e8ccd3e46598a46cc8bfee9ef54
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830113"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300670"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -220,7 +220,7 @@ ms.locfileid: "54830113"
                                                         <h3>隐私、安全性、使用情况 &amp; 成本</h3>
                                                         <p>
                                                             <a href="https://docs.microsoft.com/azure/log-analytics/log-analytics-personal-data-mgmt">处理个人数据</a><br>
-                                                            <a href="./app/data-retention-privacy.md">数据收集，保留，&amp; 存储</a><br>
+                                                            <a href="./app/data-retention-privacy.md">数据收集、保留和存储</a><br>
                                                             <a href="./app/resources-roles-access-control.md">基于角色的访问</a><br>
                                                             <a href="./app/ip-addresses.md">IP 地址 &amp; 防火墙异常</a><br>
                                                             <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs">使用情况和预估成本</a>

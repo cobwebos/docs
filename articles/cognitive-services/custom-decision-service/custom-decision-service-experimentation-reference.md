@@ -6,16 +6,16 @@ services: cognitive-services
 author: marco-rossi29
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-decision-service
+ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: marossi
-ms.openlocfilehash: eec2c82b779fa5421bc9ac58107ef56f8c71bd1e
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 90a99d4910b0afb885b415760f6a7ef1ca2aec33
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366539"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219815"
 ---
 # <a name="experimentation"></a>试验
 
@@ -35,8 +35,8 @@ ms.locfileid: "46366539"
 * 测试策略评估 `--cb_type`（逆倾向评分 (`ips`) 或双向可靠 (`dr`)）。 有关详细信息，请参阅[上下文 Bandit 示例](https://github.com/JohnLangford/vowpal_wabbit/wiki/Contextual-Bandit-Example)。
 * 测试边际。
 * 测试二次交互功能：
-   * 蛮力阶段：测试与 `--q_bruteforce_terms` 对或更少的所有组合。
-   * 贪婪阶段：添加最佳对，直到 `--q_greedy_stop` 舍入没有任何改进。
+   * **蛮力阶段**：使用 `--q_bruteforce_terms` 对或更少对测试所有组合。
+   * **贪婪阶段**：添加最佳对，直到 `--q_greedy_stop` 轮没有改进。
 * 对超参数（`learning rate`、`L1 regularization` 和 `power_t`）执行第二次扫描。
 
 控制这些步骤的形参包括某些 Vowpal Wabbit 实参：
@@ -54,12 +54,12 @@ ms.locfileid: "46366539"
 
 ## <a name="prerequisites"></a>先决条件
 - Vowpal Wabbit：已安装并在你的路径上。
-  - Windows：[使用 `.msi` 安装程序](https://github.com/eisber/vowpal_wabbit/releases)。
+  - Windows:[使用 `.msi` 安装程序](https://github.com/eisber/vowpal_wabbit/releases)。
   - 其他平台：[获取源代码](https://github.com/JohnLangford/vowpal_wabbit/releases)。
 - Python 3：已安装并在你的路径上。
 - NumPy：使用所选的包管理器。
 - Microsoft/mwt-ds 存储库：[克隆存储库](https://github.com/Microsoft/mwt-ds)。
-- 决策服务 JSON 日志文件：默认情况下，基本命令包括 `--dsjson`，支持输入数据文件的决策服务 JSON 分析。 [获取此格式的示例](https://github.com/JohnLangford/vowpal_wabbit/blob/master/test/train-sets/decisionservice.json)。
+- 决策服务 JSON 日志文件：默认情况下，基本命令包括 `--dsjson`，以支持对输入数据文件进行决策服务 JSON 分析。 [获取此格式的示例](https://github.com/JohnLangford/vowpal_wabbit/blob/master/test/train-sets/decisionservice.json)。
 
 ## <a name="usage"></a>使用情况
 转到 `mwt-ds/DataScience` 并使用相关参数运行 `Experimentation.py`，如以下代码中所述：
@@ -77,7 +77,7 @@ python Experimentation.py [-h] -f FILE_PATH [-b BASE_COMMAND] [-p N_PROC]
 结果日志追加到 mwt-ds/DataScience/experiments.csv 文件。
 
 ### <a name="parameters"></a>parameters
-| 输入 | Description | 默认 |
+| 输入 | 说明 | 默认 |
 | --- | --- | --- |
 | `-h`、`--help` | 显示帮助消息并退出。 | |
 | `-f FILE_PATH`、`--file_path FILE_PATH` | 数据文件路径（`.json` 或 `.json.gz` 格式- 每行都是 `dsjson`）。 | 必选 |  

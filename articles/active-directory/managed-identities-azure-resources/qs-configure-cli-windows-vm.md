@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/10/2018
 ms.author: priyamo
-ms.openlocfilehash: a2e42b165596d26672ee22813e53d02ca0e3a7e9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4c17128f07475b6aeaef9ae15a13bc4863d7e663
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195658"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699884"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>使用 Azure CLI 在 Azure VM 上配置 Azure 资源托管标识
 
@@ -82,7 +82,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    az login
    ```
 
-2. 将 [az vm identity assign](/cli/azure/vm/identity/#az-vm-identity-assign) 与 `identity assign` 命令配合使用，为现有 VM 启用系统分配标识：
+2. 将 [az vm identity assign](/cli/azure/vm/identity/) 与 `identity assign` 命令配合使用，为现有 VM 启用系统分配标识：
 
    ```azurecli-interactive
    az vm identity assign -g myResourceGroup -n myVm
@@ -107,7 +107,7 @@ az vm update -n myVM -g myResourceGroup --set identity.type='UserAssigned'
 az vm update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-若要删除 Azure 资源 VM 扩展的托管标识（计划于 2019 年 1 月弃用），请将 `-n ManagedIdentityExtensionForWindows` 或 `-n ManagedIdentityExtensionForLinux` 开关（具体取决于 VM 的类型）与 [az vm extension delete](https://docs.microsoft.com/cli/azure/vm/#assign-identity) 配合使用：
+若要删除 Azure 资源 VM 扩展的托管标识（计划于 2019 年 1 月弃用），请将 `-n ManagedIdentityExtensionForWindows` 或 `-n ManagedIdentityExtensionForLinux` 开关（具体取决于 VM 的类型）与 [az vm extension delete](https://docs.microsoft.com/cli/azure/vm/) 配合使用：
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -186,7 +186,7 @@ az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentit
    }
    ```
 
-2. 使用 [az vm identity assign](/cli/azure/vm#az-vm-identity-assign) 将用户分配标识分配给 VM。 请务必将 `<RESOURCE GROUP>` 和 `<VM NAME>` 参数值替换为自己的值。 `<USER ASSIGNED IDENTITY NAME>` 为上一步创建的用户分配托管标识的资源 `name` 属性：
+2. 使用 [az vm identity assign](/cli/azure/vm) 将用户分配标识分配给 VM。 请务必将 `<RESOURCE GROUP>` 和 `<VM NAME>` 参数值替换为自己的值。 `<USER ASSIGNED IDENTITY NAME>` 为上一步创建的用户分配托管标识的资源 `name` 属性：
 
     ```azurecli-interactive
     az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY>

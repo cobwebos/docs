@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: douglasl
-ms.openlocfilehash: d9a649e3b49c71a24d06656e0667765ef9cc5508
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: e77b8c89954064fb143f04f0f901d1512d4fc50d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321324"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491002"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hadoop Hive 活动转换数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,7 +52,7 @@ ms.locfileid: "54321324"
         "defines": {
             "param1": "param1Value"
         }
-    }   
+    }
 }
 ```
 ## <a name="syntax-details"></a>语法详细信息
@@ -67,7 +67,7 @@ ms.locfileid: "54321324"
 | getDebugInfo        | 指定何时将日志文件复制到 HDInsight 群集使用的（或者）scriptLinkedService 指定的 Azure 存储。 允许的值：None、Always 或 Failure。 默认值：无。 | 否       |
 | arguments           | 指定 Hadoop 作业的参数数组。 参数以命令行参数的形式传递到每个任务。 | 否       |
 | 定义             | 在 Hive 脚本中指定参数作为键/值对，以供引用。 | 否       |
-| queryTimeout        | 查询超时值（以分钟为单位）。  适用于 HDInsight 群集已启用企业安全性套餐的情况。 | 否       |
+| queryTimeout        | 查询超时值（以分钟为单位）。 适用于 HDInsight 群集已启用企业安全性套餐的情况。 | 否       |
 
 ## <a name="next-steps"></a>后续步骤
 参阅以下文章了解如何以其他方式转换数据： 
@@ -80,4 +80,3 @@ ms.locfileid: "54321324"
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
 * [机器学习“批处理执行”活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)
-

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: sngun
-ms.openlocfilehash: 5f096d016b2fa82e3b340a4a6b6c7e1fd6420216
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 9c6ea982d9a605696dad0c943aa6dd2ae155d6bd
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037185"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770731"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>在 Azure Cosmos DB SQL API 帐户中使用地理空间和 GeoJSON 位置数据
 
@@ -150,32 +150,13 @@ await client.CreateDocumentAsync(
 ### <a name="spatial-sql-built-in-functions"></a>空间 SQL 内置函数
 Azure Cosmos DB 支持以下用于查询地理空间的开放地理空间信息联盟 (OGC) 内置函数。 有关 SQL 语言中的整套内置函数的详细信息，请参阅[查询 Azure Cosmos DB](how-to-sql-query.md)。
 
-<table>
-<tr>
-  <td><strong>使用情况</strong></td>
-  <td><strong>说明</strong></td>
-</tr>
-<tr>
-  <td>ST_DISTANCE (spatial_expr, spatial_expr)</td>
-  <td>返回两个 GeoJSON 点、多边形或 LineString 表达式之间的距离。</td>
-</tr>
-<tr>
-  <td>ST_WITHIN (spatial_expr, spatial_expr)</td>
-  <td>返回一个布尔表达式，指示第一个 GeoJSON 对象（点、多边形或 LineString）是否在第二个 GeoJSON 对象 （点、多边形或 LineString）内。</td>
-</tr>
-<tr>
-  <td>ST_INTERSECTS (spatial_expr, spatial_expr)</td>
-  <td>返回一个布尔表达式，指示两个指定的 GeoJSON 对象 （点、多边形或 LineString）是否相交。</td>
-</tr>
-<tr>
-  <td>ST_ISVALID</td>
-  <td>返回一个布尔值，指示指定的 GeoJSON 点、多边形或 LineString 表达式是否有效。</td>
-</tr>
-<tr>
-  <td>ST_ISVALIDDETAILED</td>
-  <td>如果指定的 GeoJSON 点、多边形或 LineString 表达式有效，则返回包含布尔值的 JSON 值；如果无效，则额外加上作为字符串值的原因。</td>
-</tr>
-</table>
+|**使用情况**|**说明**|
+|---|---|
+| ST_DISTANCE (spatial_expr, spatial_expr) | 返回两个 GeoJSON 点、多边形或 LineString 表达式之间的距离。|
+|ST_WITHIN (spatial_expr, spatial_expr) | 返回一个布尔表达式，指示第一个 GeoJSON 对象（点、多边形或 LineString）是否在第二个 GeoJSON 对象 （点、多边形或 LineString）内。|
+|ST_INTERSECTS (spatial_expr, spatial_expr)| 返回一个布尔表达式，指示两个指定的 GeoJSON 对象 （点、多边形或 LineString）是否相交。|
+|ST_ISVALID| 返回一个布尔值，指示指定的 GeoJSON 点、多边形或 LineString 表达式是否有效。|
+| ST_ISVALIDDETAILED| 如果指定的 GeoJSON 点、多边形或 LineString 表达式有效，则返回包含布尔值的 JSON 值；如果无效，则额外加上作为字符串值的原因。|
 
 空间函数可用于对空间数据执行邻近查询。 例如，以下查询使用 ST_DISTANCE 内置函数返回所有家族文档，且这些文档在指定位置的 30 公里内。 
 
@@ -238,7 +219,7 @@ Azure Cosmos DB 还支持执行反向查询，即可在 Azure Cosmos DB 中索�
 
 ST_ISVALID 和 ST_ISVALIDDETAILED 可用来检查空间对象是否有效。 例如，下列查询检查纬度值 (-132.8) 超出范围的点的有效性。 ST_ISVALID 仅返回一个布尔值，ST_ISVALIDDETAILED 则返回布尔值和字符串，字符串中包含被视为无效的原因。
 
-** 查询 **
+**查询**
 
     SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })
 

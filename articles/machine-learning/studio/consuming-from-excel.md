@@ -1,6 +1,6 @@
 ---
-title:在 Excel 中使用 Web 服务 titleSuffix: Azure 机器学习工作室 description:Azure 机器学习工作室可以轻松地直接从 Excel 调用 Web 服务，而无需编写任何代码。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:在 Excel 中使用 Web 服务 titleSuffix:Azure 机器学习工作室 description:Azure 机器学习工作室可以轻松地直接从 Excel 调用 Web 服务，而无需编写任何代码。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:2018/02/01
 ---

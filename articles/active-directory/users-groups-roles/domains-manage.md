@@ -8,17 +8,17 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 01/29/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.openlocfilehash: d5f926ac41bb90ba716e0c52b790a60fd74e0631
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 12c8b80b76c721962ca6180e531578b037997553
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854909"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294159"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自定义域名
 
@@ -86,7 +86,7 @@ ms.locfileid: "48854909"
 
 ### <a name="frequently-asked-questions"></a>常见问题
 
-**问：为何域删除操作失败，同时有一条错误指出，此域名包含 Exchange 主控的组？** <br>
+**问：为何域删除操作失败，并显示错误“此域名包含 Exchange 主控的组”？** <br>
 **答：** 目前，某些组（例如，支持邮件的安全组和分发列表）由 Exchange 预配，需要手动在 [Exchange 管理中心 (EAC)](https://outlook.office365.com/ecp/) 清理这些组。 可能有遗留的 ProxyAddresses 依赖于自定义域名，需要手动将其更新为另一个域名。 
 
 **问：我以 admin@contoso.com 身份登录，但无法删除域名“contoso.com”，为什么？**<br>
@@ -112,5 +112,4 @@ ms.locfileid: "48854909"
 
 * [添加自定义域名](/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [在 Exchange 管理中心删除 Azure AD 的自定义域名中支持 Exchange 邮件的安全组](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)
-* [将应用程序引用更新为 Azure AD 中的另一个域](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad#updating-an-application)
 * [使用 Microsoft 图形 API 强制删除自定义域名](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/domain_forcedelete)

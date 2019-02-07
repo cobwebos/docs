@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/18/2018
+ms.date: 01/29/2019
 ms.author: ryanwi
-ms.openlocfilehash: f2a181fbae8ab1e08669021c42c5b4be08f66172
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 55564de4a3c5ff2d3ba3ddc5e68fa3d1b2d51e71
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364805"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296386"
 ---
 # <a name="connect-to-a-secure-cluster"></a>连接到安全群集
 
@@ -33,7 +33,13 @@ ms.locfileid: "34364805"
 
 可以使用 `sfctl cluster select` 命令连接到群集。
 
-可以通过两种不同方式指定客户端证书：作为证书和密钥对，或作为单个 pem 文件。 对于受密码保护的 `pem` 文件，系统将自动提示你输入密码。
+可以通过两种不同方式指定客户端证书：作为证书和密钥对，或作为单个 PFX 文件。 对于受密码保护的 PEM 文件，系统将自动提示你输入密码。 如果将客户端证书作为 PFX 文件获取，请先使用以下命令将 PFX 文件转换为 PEM 文件。 
+
+```bash
+openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
+```
+
+如果 .pfx 文件不受密码保护，请使用“-passin pass:”最后一个参数。
 
 若要将客户端证书指定为 pem 文件，请在 `--pem` 参数中指定文件路径。 例如：
 
@@ -341,7 +347,7 @@ static string GetAccessToken(AzureActiveDirectoryMetadata aad)
 
 Azure 门户的群集基本信息窗格中也提供了完整 URL。
 
-若要使用浏览器连接到 Windows 或 OS X 上的安全群集，可以导入客户端证书，浏览器将提示你提供要用于连接群集的证书。  在 Linux 计算机上，需要使用高级浏览器设置（每个浏览器具有不同的机制）导入证书并将其指向磁盘上的证书位置。
+若要使用浏览器连接到 Windows 或 OS X 上的安全群集，可以导入客户端证书，浏览器将提示你提供要用于连接群集的证书。  在 Linux 计算机上，需要使用高级浏览器设置（每个浏览器具有不同的机制）导入证书并将其指向磁盘上的证书位置。 有关详细信息，请阅读[设置客户端证书](#connectsecureclustersetupclientcert)。
 
 ### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>使用 Azure Active Directory 连接到安全群集
 
@@ -360,24 +366,28 @@ Azure 门户的群集基本信息窗格中也提供了完整 URL。
 系统会自动提示用户选择客户端证书。
 
 <a id="connectsecureclustersetupclientcert"></a>
+
 ## <a name="set-up-a-client-certificate-on-the-remote-computer"></a>设置远程计算机上的客户端证书
+
 至少应有两个证书用于保护群集，一个用于保护群集和服务器证书，另一个用于保护客户端访问。  建议还使用其他辅助证书和客户端访问证书。  若要使用证书安全性来保护客户端与与群集节点之间的通信，必须先获取并安装客户端证书。 证书可以安装到本地计算机或当前用户的个人（我的）存储。  还需要服务器证书的指纹，以便客户端可以对群集进行身份验证。
 
-运行以下 PowerShell cmdlet，在访问群集的计算机上设置客户端证书。
+* 在 Windows 上：双击 PFX 文件，按提示在个人存储 `Certificates - Current User\Personal\Certificates` 中安装证书。 或者，可以使用 PowerShell 命令：
 
-```powershell
-Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
-        -FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
-        -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
-```
+    ```powershell
+    Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
+            -FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
+            -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
+    ```
 
-如果它是自签名证书，则需要将其导入计算机的“受信任人”存储中才能使用此证书连接到安全群集。
+    如果它是自签名证书，则需要将其导入计算机的“受信任人”存储中才能使用此证书连接到安全群集。
 
-```powershell
-Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPeople `
--FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
--Password (ConvertTo-SecureString -String test -AsPlainText -Force)
-```
+    ```powershell
+    Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPeople `
+    -FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
+    -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
+    ```
+
+* 在 Mac 上：双击 PFX 文件，按提示在 Keychain 中安装证书。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: 9d0f814428a4d7bc57b4f0a01ff5adc658af1d91
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: fc963987b45751aab33035a83b2b477129e9a756
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54466979"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730894"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>在 Grafana 中监控 Azure 服务
 你现在可以使用 [Azure Monitor 数据源插件](https://grafana.com/plugins/grafana-azure-monitor-datasource)从 [Grafana](https://grafana.com/) 监控 Azure 服务和应用程序。 该插件收集 Azure Monitor 所收集的应用程序性能数据，包括各种日志和指标。 随后，可以在 Grafana 仪表板上显示此数据。
@@ -66,7 +66,7 @@ ms.locfileid: "54466979"
 
 3. 创建服务主体 - Grafana 使用 Azure Active Directory 服务主体连接到 Azure Monitor API 并收集数据。 必须创建新的或使用现有的服务主体，以管理对 Azure 资源的访问权限。
     * 请参阅[这些说明](../../azure-resource-manager/resource-group-create-service-principal-portal.md)以创建服务主体。 复制并保存租户 ID（目录 ID）、客户端 ID（应用程序 ID）和客户端密码（应用程序密钥值）。
-    * 请参阅[将应用程序分配到角色](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role)，以向要监视的订阅、资源组或资源上的 Azure Active Directory 应用程序分配读者角色。 
+    * 请参阅[将应用程序分配到角色](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)，以向要监视的订阅、资源组或资源上的 Azure Active Directory 应用程序分配读者角色。 
     Log Analytics API 需要 [Log Analytics 读者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader)，其中包括读者角色权限并向其添加。
 
 4. 为要使用的 API 提供连接详细信息。 可以连接到所有或其中部分。 

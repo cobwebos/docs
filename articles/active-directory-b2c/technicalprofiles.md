@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c197ead3a7b0f61b9dd5f1e3ea0bd197c23a2778
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 86f2a8fa11becdf24c0a10c0325893946a033c3d
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180758"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568169"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -97,7 +97,7 @@ ms.locfileid: "55180758"
 | OutputClaimsTransformations | 0:1 | 事先定义的、对在从声明提供程序收到声明之后应执行的声明转换的引用列表。 |
 | ValidationTechnicalProfiles | 0:n | 对技术配置文件用来进行验证的其他技术配置文件的引用列表。 有关详细信息，请参阅[验证技术配置文件](validation-technical-profile.md)|
 | SubjectNamingInfo | 0:1 | 控制令牌中使用者名称的生成，其中的使用者名称与声明分开指定。 例如 OAuth 或 SAML。  |
-| IncludeClaimsFromTechnicalProfile | 0:1 | 要将其中的所有输入和输出声明添加到此技术配置文件的技术配置文件的标识符。 必须在同一个策略文件中定义被引用的技术配置文件。 | 
+| IncludeClaimsFromTechnicalProfile | 0:1 | 要将其中的所有输入和输出声明添加到此技术配置文件的技术配置文件的标识符。 必须在同一个策略文件中定义被引用的技术配置文件。 |
 | IncludeTechnicalProfile |0:1 | 要将其中的所有数据添加到此技术配置文件的技术配置文件的标识符。 被引用的技术配置文件必须在同一个策略文件中。 |
 | UseTechnicalProfileForSessionManagement | 0:1 | 用于会话管理的另一个技术配置文件。 |
 |EnabledForUserJourneys| 0:1 |控制是否在用户旅程中执行技术配置文件。  |
@@ -168,7 +168,7 @@ InputClaims 元素包含以下元素：
 | ------- | ----------- | ----------- |
 | InputClaim | 1:n | 预期的输入声明类型。 |
 
-#### <a name="inputclaim"></a>InputClaim 
+#### <a name="inputclaim"></a>InputClaim
 
 InputClaim 元素包含以下属性：
 
@@ -186,7 +186,7 @@ InputClaim 元素包含以下属性：
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1:n | 要保存的声明类型。 |
 
-#### <a name="persistedclaim"></a>PersistedClaim 
+#### <a name="persistedclaim"></a>PersistedClaim
 
 **PersistedClaim** 元素包含以下属性：
 
@@ -204,7 +204,7 @@ OutputClaims 元素包含以下元素：
 | ------- | ----------- | ----------- |
 | OutputClaim | 1:n | 预期的输出声明类型。 |
 
-#### <a name="outputclaim"></a>OutputClaim 
+#### <a name="outputclaim"></a>OutputClaim
 
 OutputClaim 元素包含以下属性：
 
@@ -275,9 +275,9 @@ OutputClaim 元素包含以下属性：
 用户旅程中的 **ClaimsProviderSelections** 定义声明提供程序选项的列表及其顺序。 使用 **EnabledForUserJourneys** 元素可以筛选用户可用的声明提供程序。 **EnabledForUserJourneys** 元素包含以下值之一：
 
 - **Always**：执行技术配置文件。
-- **Never**：跳过技术配置文件。 
-- **OnClaimsExistence**：仅当技术配置文件中指定的特定声明存在时才执行技术配置文件。 
-- **OnItemExistenceInStringCollectionClaim**：仅当字符串集合声明中存在某个项时才执行技术配置文件。 
+- **Never**：跳过技术配置文件。
+- **OnClaimsExistence**：仅当技术配置文件中指定的特定声明存在时才执行技术配置文件。
+- **OnItemExistenceInStringCollectionClaim**：仅当字符串集合声明中存在某个项时才执行技术配置文件。
 - **OnItemAbsenceInStringCollectionClaim**：仅当字符串集合声明中不存在某个项时才执行技术配置文件。
 
 如果使用 OnClaimsExistence、OnItemExistenceInStringCollectionClaim 或 OnItemAbsenceInStringCollectionClaim，要求提供以下元数据：“ClaimTypeOnWhichToEnable”指定要评估的声明类型，“ClaimValueOnWhichToEnable”指定要比较的值。
@@ -289,22 +289,10 @@ OutputClaim 元素包含以下属性：
   <DisplayName>Unlink Facebook</DisplayName>
 ...
     <Metadata>
-        <Item Key="ClaimTypeOnWhichToEnable">identityProviders</Item>
-        <Item Key="ClaimValueOnWhichToEnable">facebook.com</Item>
-    </Metadata>        
+      <Item Key="ClaimTypeOnWhichToEnable">identityProviders</Item>
+      <Item Key="ClaimValueOnWhichToEnable">facebook.com</Item>
+    </Metadata>
 ...
   <EnabledForUserJourneys>OnItemExistenceInStringCollectionClaim</EnabledForUserJourneys>
-</TechnicalProfile>  
+</TechnicalProfile>
 ```
-
-
-
-
-
-
-
-
-
-
-
-

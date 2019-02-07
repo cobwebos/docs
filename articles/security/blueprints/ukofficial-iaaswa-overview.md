@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: d5b759fcde66a2a9be86cc15cba1ead1765ba248
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: ceba377f72ced7d39f0a7e9b18e4fd563dbb39f1
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413390"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239905"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure 安全性和符合性蓝图 - 适用于英国官方的三层 IaaS Web 应用程序
 
@@ -204,7 +204,7 @@ ms.locfileid: "54413390"
 
 **关注点分离**：此参考体系结构将用于管理运营和业务运营的 VNet 分离开来。 将 VNet 和子网分离可以实现流量管理，包括根据 [Microsoft 云服务和网络安全](https://docs.microsoft.com/azure/best-practices-network-security)最佳做法，在网段之间使用 NSG 来限制传入和传出流量。
 
-**资源管理**：将 VM、VNet 和负载均衡器等 Azure 资源分组到 [Azure 资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groupsresource)可对其进行管理。 然后，可将基于资源的访问控制角色分配到每个资源组，以将访问权限限制给已获授权的用户。
+**资源管理**：将 VM、VNet 和负载均衡器等 Azure 资源分组到 [Azure 资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)可对其进行管理。 然后，可将基于资源的访问控制角色分配到每个资源组，以将访问权限限制给已获授权的用户。
 
 **访问控制限制**：使用[基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) 管理应用程序中的资源；可以使用[自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) RBAC 来限制 DevOps 可在每个层上执行的操作。 授予权限时，请使用[最低特权原则](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1)。 记录所有管理操作并执行定期审核，确保所有配置更改按计划进行。
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
 ms.author: victorh
-ms.openlocfilehash: 62397bc707c90a69df558833595c196d4f908d32
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 1a9cbb14bc6d6df25dbc627bba5a3e72db5350a6
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844392"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727324"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>使用 Azure CLI 创建支持外部重定向的应用程序网关
 
@@ -48,7 +48,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>创建网络资源 
 
-使用 [az network vnet create](/cli/azure/network/vnet#az-net) 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 使用 [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
+使用 [az network vnet create](/cli/azure/network/vnet) 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 使用 [az network public-ip create](/cli/azure/network/public-ip) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
 
 ```azurecli-interactive
 az network vnet create \
@@ -93,7 +93,7 @@ az network application-gateway create \
 
 ### <a name="add-the-redirection-configuration"></a>添加重定向配置
 
-添加将流量发送应用程序网关到重定向配置 *bing.com*使用 [az 网络应用程序网关重定向-config 创建](/cli/azure/network/application-gateway/redirect-config#az-network_application_gateway_redirect_config_create)。
+添加将流量发送应用程序网关到重定向配置 *bing.com*使用 [az 网络应用程序网关重定向-config 创建](/cli/azure/network/application-gateway/redirect-configwork_application_gateway_redirect_config_create)。
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -106,7 +106,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-a-listener-and-routing-rule"></a>添加侦听器和路由规则
 
-应用程序网关需要侦听器才能适当地将流量路由到后端池。 使用创建侦听器[az 网络应用程序网关 http 侦听器创建](/cli/azure/network/application-gateway#az-network_application_gateway_http_listener_create)使用创建的前端端口与[az 网络应用程序网关前端端口创建](/cli/azure/network/application-gateway#az-network_application_gateway_frontend_port_create)。 侦听器需要使用规则来了解哪个后端池使用传入流量。 创建一个名为的基本规则*redirectRule*使用[az 网络应用程序网关规则创建](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create)使用重定向配置。
+应用程序网关需要侦听器才能适当地将流量路由到后端池。 使用创建侦听器[az 网络应用程序网关 http 侦听器创建](/cli/azure/network/application-gateway)使用创建的前端端口与[az 网络应用程序网关前端端口创建](/cli/azure/network/application-gateway)。 侦听器需要使用规则来了解哪个后端池使用传入流量。 创建一个名为的基本规则*redirectRule*使用[az 网络应用程序网关规则创建](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create)使用重定向配置。
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -131,7 +131,7 @@ az network application-gateway rule create \
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-若要获取应用程序网关的公共 IP 地址，可以使用 [az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。
+若要获取应用程序网关的公共 IP 地址，可以使用 [az network public-ip show](/cli/azure/network/public-ip)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。
 
 应该会看到 *bing.com* 出现在浏览器中。
 

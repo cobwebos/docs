@@ -9,29 +9,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2018
+ms.date: 01/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 105a836f609859825c273ed9fba9dd46237bcaa9
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: c0875861a90080c649596880804fe6538c04bc51
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447932"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497599"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure 资源管理器部署模式
 
 部署资源时，可以指定部署为增量更新还是完整更新。  这两种模式的主要区别是资源管理器如何处理资源组中不在模板中的现有资源。 默认模式为增量模式。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="incremental-and-complete-deployments"></a>增量部署和完整部署
 
-资源部署时：
+对于这两种模式，资源管理器都会尝试创建模板中指定的所有资源。 如果资源已存在于资源组中且其设置未更改，则不会对该资源执行任何操作。 如果更改资源的属性值，则使用这些新值更新资源。 如果尝试更新现有资源的位置或类型，则部署会失败并出现错误。 请改用所需的位置或类型部署新资源。
 
-* 在完整模式下，资源管理器删除资源组中已存在但尚未在模板中指定的资源。 系统仍会指定这些资源，但由于条件计算结果为 false 而不会对其进行部署，也不会删除这些资源。
-* 在增量模式下，资源管理器保留资源组中已存在但尚未在模板中指定的未更改资源。
+在完整模式下，资源管理器删除资源组中已存在但尚未在模板中指定的资源。 由于[条件](resource-manager-templates-resources.md#condition)的计算结果为 false，因此不会删除模板中指定但未部署的资源。
 
-对于这两种模式，资源管理器都会尝试创建模板中指定的所有资源。 如果资源已存在于资源组中且其设置未更改，该操作不会导致任何更改。 如果更改资源的属性值，则使用这些新值更新资源。 如果尝试更新现有资源的位置或类型，则部署会失败并出现错误。 请改用所需的位置或类型部署新资源。
-
-以增量模式重新部署资源时，请指定资源的所有属性值，而不仅仅是要更新的属性值。 如果未指定某些属性，资源管理器会将更新解释为覆盖这些值。
+在增量模式下，资源管理器保留资源组中已存在但尚未在模板中指定的未更改资源。 以增量模式重新部署资源时，请指定资源的所有属性值，而不仅仅是要更新的属性值。 如果未指定某些属性，资源管理器会将更新解释为覆盖这些值。
 
 ## <a name="example-result"></a>示例结果
 
@@ -67,7 +66,7 @@ ms.locfileid: "54447932"
 在使用 PowerShell 部署时若要设置部署模式，请使用 `Mode` 参数。
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment `
+New-AzResourceGroupDeployment `
   -Mode Complete `
   -Name ExampleDeployment `
   -ResourceGroupName ExampleResourceGroup `

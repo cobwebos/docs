@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 6089f053472faaa7fa8c957904f73c7061cb2d3f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 4f96302f1035500a10cebaa24efd4b8db329fdff
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344919"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219764"
 ---
 # <a name="basic-concepts"></a>基本概念
 
@@ -76,7 +76,7 @@ ms.locfileid: "49344919"
 Microsoft 语音识别服务为开发者提供了两种向其应用添加语音的方法。
 
 - [REST API](GetStarted/GetStartedREST.md)：开发者可使用从其应用到服务的 HTTP 调用来进行语音识别。
-- [客户端库](GetStarted/GetStartedClientLibraries.md)：对于高级功能，开发人员可下载 Microsoft 语音客户端库，并链接到其应用。  客户端库在使用不同语言（C#、Java、JavaScript、ObjectiveC）的多种平台（Windows、Android、iOS）上可用。
+- [客户端库](GetStarted/GetStartedClientLibraries.md)：对于高级功能，开发者可下载 Microsoft 语音客户端库，并链接到其应用。  客户端库在使用不同语言（C#、Java、JavaScript、ObjectiveC）的多种平台（Windows、Android、iOS）上可用。
 
 | 用例 | [REST API](GetStarted/GetStartedREST.md) | [客户端库](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|
@@ -189,7 +189,7 @@ Microsoft 语音服务可在听录响应中返回各种有效负载格式。 所
 
 可通过指定 `format` URL 查询参数来控制短语结果格式。 默认情况下，该服务返回 `simple` 结果。
 
-| 格式 | Description |
+| 格式 | 说明 |
 |-----|-----|
 | `simple` | 简化的短语结果，包含识别状态和已识别文本的显示形式。 |
 | `detailed` | 短语结果的识别状态和 N-best 列表，其中每个短语结果包含所有四种识别形式和置信度分数。 |
@@ -306,7 +306,7 @@ ITN 形式最适合用于要处理已识别文本的应用程序。 例如，应
 
 Microsoft 语音服务识别所有形式的人类话语，包括许多人归类为“不当”的字词和短语。 可使用不当字词查询参数控制服务处理不当字词的方式。 默认情况下，该服务会屏蔽 speech.phrase 结果中的不当字词，并且不会返回包含不当字词的 speech.hypothesis 消息。
 
-| 不当字词值 | Description |
+| 不当字词值 | 说明 |
 | - | - |
 | `masked` | 用星号屏蔽不当字词。 此选项为默认行为。 | 
 | `removed` | 删除所有结果中的不当字词。 |

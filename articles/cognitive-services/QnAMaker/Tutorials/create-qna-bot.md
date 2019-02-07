@@ -11,12 +11,12 @@ ms.subservice: qna-maker`
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: 428aea5775c1777f38d7ea563cfe3af700c27f02
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 1e1152f810bffb2ab4dfe230c2d3b3c2a8198492
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211825"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811913"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>教程：使用 Azure 机器人服务 v3 创建 QnA 机器人
 
@@ -96,9 +96,6 @@ ms.locfileid: "55211825"
     - “发布”知识库（如果尚未执行该操作）
 
     ![QnA Maker 值](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
-
-> [!NOTE]
-> 如果要将预览版知识库与 QnA 机器人连接，请将“Ocp-Apim-Subscription-Key”的值设置为“QnAAuthKey”。 将“QnAEndpointHostName”留空。
 
 ## <a name="test-the-bot"></a>测试机器人
 

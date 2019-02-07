@@ -8,20 +8,20 @@ author: MarkusVi
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/14/2018
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 05d447a7d36e0e8ca9da35407e825eb8f49fb4a3
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6276231f8d63840dcf46f7456d584880315533bf
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448269"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299905"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>快速入门：要求使用 Azure Active Directory 条件访问对特定应用进行 MFA 
 
@@ -43,6 +43,9 @@ ms.locfileid: "54448269"
 - **对 Azure AD Premium 版本的访问权限**：Azure AD 条件访问是一项 Azure AD Premium 功能。 
 
 - **名为 Isabella Simonsen 的测试帐户**：如果不知道如何创建测试帐户，请参阅[添加基于云的用户](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)。
+
+
+本快速入门中的方案要求测试帐户未启用每用户 MFA。 有关详细信息，请参阅[如何要求对用户进行双重验证](../authentication/howto-mfa-userstates.md)。
 
 
 ## <a name="test-your-sign-in"></a>测试登录
@@ -95,7 +98,7 @@ ms.locfileid: "54448269"
 
 5. 在“新建”页面的“名称”文本框中，键入“需要 MFA 才能访问 Azure 门户”。
 
-    ![名称](./media/app-based-mfa/05.png)
+    ![Name](./media/app-based-mfa/05.png)
 
 6. 在“分配”部分中，单击“用户和组”。
 

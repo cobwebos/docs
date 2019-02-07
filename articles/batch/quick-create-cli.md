@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 10f84a758bdb2e01793aee06cba59a29b5639775
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: df56fd00d5a5ff2f9e9000b39939d0f33b3737d5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470954"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752341"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>快速入门：使用 Azure CLI 运行第一个 Batch 作业
 
@@ -139,7 +139,7 @@ az batch task show \
 
 ## <a name="view-task-output"></a>查看任务输出
 
-若要列出计算节点上的任务所创建的文件，请使用 [az batch task file list](/cli/azure/batch/task#az-batch-task-file-list) 命令。 以下命令列出 *mytask1* 创建的文件： 
+若要列出计算节点上的任务所创建的文件，请使用 [az batch task file list](/cli/azure/batch/task) 命令。 以下命令列出 *mytask1* 创建的文件： 
 
 ```azurecli-interactive 
 az batch task file list \
@@ -160,7 +160,7 @@ stderr.txt  https://mybatchaccount.eastus2.batch.azure.com/jobs/myjob/tasks/myta
 
 ```
 
-若要将某个输出文件下载到本地目录，请使用 [az batch task file download](/cli/azure/batch/task#az-batch-task-file-download) 命令。 在此示例中，任务输出位于 `stdout.txt`。 
+若要将某个输出文件下载到本地目录，请使用 [az batch task file download](/cli/azure/batch/task) 命令。 在此示例中，任务输出位于 `stdout.txt`。 
 
 ```azurecli-interactive
 az batch task file download \

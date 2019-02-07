@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: cca81bf3f5a46b32cc901a0ac6024eb7888685f7
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 0313266c9e9bf7814d4581dc04d70cf80e1f8172
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081596"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494708"
 ---
 # <a name="export-azure-resource-manager-templates-with-powershell"></a>使用 PowerShell 导出 Azure 资源管理器模板
 
@@ -30,6 +30,8 @@ ms.locfileid: "55081596"
 * 可以导出已生成的表示资源组当前状态的模板。 导出的模板不基于任何已用于部署的模板。 它创建的模板是资源组的“快照”或“备份”。 导出的模板会有许多硬编码的值，其参数可能没有定义的那么多。 使用此选项可将资源重新部署到同一资源组。 若要将此模板用于其他资源组，可能需要对其进行大幅修改。
 
 本文介绍了这两种方法。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deploy-a-solution"></a>部署解决方案
 

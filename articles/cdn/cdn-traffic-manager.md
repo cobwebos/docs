@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 2d184cc849eb3da60bbf0c387655da9fdf878853
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 4c072ef63c0d4961fba695fc8d9be1d12b4b0e8b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091600"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749208"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>使用 Azure 流量管理器跨多个 Azure CDN 终结点设置故障转移
 
@@ -42,7 +42,7 @@ ms.locfileid: "49091600"
 ## <a name="set-up-azure-traffic-manager"></a>设置 Azure 流量管理器
 创建 Azure 流量管理器配置文件，并跨 CDN 终结点设置负载均衡。 
 
-1. 遵循[创建流量管理器配置文件](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile#create-a-traffic-manager-profile-1)中的步骤创建 Azure 流量管理器配置文件。 
+1. 遵循[创建流量管理器配置文件](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile)中的步骤创建 Azure 流量管理器配置文件。 
 
     对于“路由方法”，请选择“优先级”。
 
@@ -60,7 +60,7 @@ ms.locfileid: "49091600"
 
 1. 转到自定义域提供商（例如 GoDaddy）的网站，并创建两个 DNS CNAME 条目。 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于第一个 CNAME 条目，请将具有 cdnverify 子域的自定义域映射到 CDN 终结点。 将自定义域注册到在步骤 2 中添加到流量管理器的 CDN 终结点时，需要使用此条目。
+    a. 对于第一个 CNAME 条目，请将具有 cdnverify 子域的自定义域映射到 CDN 终结点。 将自定义域注册到在步骤 2 中添加到流量管理器的 CDN 终结点时，需要使用此条目。
 
       例如： 
 

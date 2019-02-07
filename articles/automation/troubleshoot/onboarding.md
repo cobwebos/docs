@@ -4,22 +4,40 @@ description: 了解如何排查更新管理、更改跟踪和库存解决方案�
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 01/25/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 52ff52ffb558278507bb24e1b1e2054c251b2512
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 78e78bc019ab5f8be1cfd3448220b97b89cde6a5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879632"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228774"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>排查加入解决方案时发生的错误
 
 在加入更新管理、更改跟踪或库存等解决方案时，可能会遇到错误。 本文描述可能会发生的各种错误及其解决方法。
 
 ## <a name="general-errors"></a>常规错误
+
+### <a name="missing-write-permissions"></a>场景：加入失败并显示消息 - 无法启用解决方案
+
+#### <a name="issue"></a>问题
+
+尝试将虚拟机加入解决方案时，你会收到以下消息：
+
+```
+The solution cannot be enabled due to missing permissions for the virtual machine or deployments
+```
+
+#### <a name="cause"></a>原因
+
+此错误是由于虚拟机或用户的权限不正确或丢失造成的。
+
+#### <a name="resolution"></a>解决方法
+
+请确保你有加入虚拟机所需的权限。 查看[加入计算机所需的权限](../automation-role-based-access-control.md#onboarding)并尝试重新加入解决方案。
 
 ### <a name="computer-group-query-format-error"></a>场景：ComputerGroupQueryFormatError
 

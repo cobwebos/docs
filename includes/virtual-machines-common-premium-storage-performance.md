@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b98261601f352668fa3cc8d18dc3b1d0d7fe2654
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 40e0230e6a8e03aa53a24f2497fcd016909c0ada
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53553478"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55757560"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure 高级存储：高性能设计
 
@@ -116,7 +116,7 @@ IOPS 是指应用程序在一秒内发送到存储磁盘的请求数。 可以�
 
 PerfMon 计数器适用于处理器、内存以及服务器的每个逻辑磁盘和物理磁盘。 将高级存储磁盘用于 VM 时，物理磁盘计数器适用于每个高级存储磁盘，逻辑磁盘计数器适用于在高级存储磁盘上创建的每个卷。 必须捕获托管应用程序负荷的磁盘的值。 如果在逻辑磁盘和物理磁盘之间存在一一映射，则可以引用物理磁盘计数器，否则请引用逻辑磁盘计数器。 在 Linux 中，iostat 命令会生成 CPU 和磁盘使用率报告。 磁盘使用率报告会按物理设备或分区提供统计信息。 如果数据库服务器的数据和日志位于不同的磁盘上，则请针对两种磁盘收集此类数据。 下表描述了磁盘、处理器和内存的计数器：
 
-| 计数器 | Description | PerfMon | Iostat |
+| 计数器 | 说明 | PerfMon | Iostat |
 | --- | --- | --- | --- |
 | **IOPS 或每秒事务数** |每秒发送到存储磁盘的 I/O 请求数。 |磁盘读取数/秒 <br> 磁盘写入数/秒 |tps <br> r/s <br> w/s |
 | **磁盘读取数和写入数** |在磁盘上执行的读取和写入操作的百分比。 |磁盘读取时间百分比 <br> 磁盘写入时间百分比 |r/s <br> w/s |
@@ -293,10 +293,10 @@ Azure 高级存储提供八种 GA 磁盘大小和三种磁盘大小，当前均�
 举例来说，可以通过执行以下操作将这些准则应用到在高级存储上运行的 SQL Server：
 
 1. 在托管数据文件的高级存储磁盘上配置“ReadOnly”缓存。  
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  从缓存快速读取可以缩短 SQL Server 查询时间，因为从缓存检索数据页的速度要大大快于直接从数据磁盘进行检索的速度。  
+   a.  从缓存快速读取可以缩短 SQL Server 查询时间，因为从缓存检索数据页的速度要大大快于直接从数据磁盘进行检索的速度。  
    b.  从缓存进行读取意味着可以从高级数据磁盘获得更多的吞吐量。 SQL Server 可以利用这额外的吞吐量来检索更多数据页和执行其他操作，例如备份/还原、批量加载以及索引重建。  
 1. 在托管日志文件的高级存储磁盘上将缓存配置为“无”。  
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  日志文件主要是进行频繁的写入操作。 因此，将缓存设置为 ReadOnly 对其无用。
+   a.  日志文件主要是进行频繁的写入操作。 因此，将缓存设置为 ReadOnly 对其无用。
 
 ## <a name="disk-striping"></a>磁盘条带化
 
@@ -411,24 +411,24 @@ Iometer 使用一个测试文件，该文件存储在将要运行基准测试的
 
 1. 使用显示在下面的值创建两个访问规范：
 
-   | 名称 | 请求大小 | 随机百分比 | 读取百分比 |
+   | Name | 请求大小 | 随机百分比 | 读取百分比 |
    | --- | --- | --- | --- |
    | RandomWrites\_1MB |1MB |100 |0 |
    | RandomReads\_1MB |1MB |100 |100 |
 1. 运行 Iometer 测试，以便使用以下参数初始化缓存磁盘。 针对目标卷使用三个工作线程，队列深度为 128。 在"测试设置"选项卡上将测试的“运行时间”持续时间设置为 2 小时。
 
-   | 场景 | 目标卷 | 名称 | Duration |
+   | 场景 | 目标卷 | Name | Duration |
    | --- | --- | --- | --- |
    | 初始化缓存磁盘 |CacheReads |RandomWrites\_1MB |2 小时 |
 1. 运行 Iometer 测试，以便使用以下参数预热缓存磁盘。 针对目标卷使用三个工作线程，队列深度为 128。 在"测试设置"选项卡上将测试的“运行时间”持续时间设置为 2 小时。
 
-   | 场景 | 目标卷 | 名称 | 持续时间 |
+   | 场景 | 目标卷 | Name | 持续时间 |
    | --- | --- | --- | --- |
    | 预热缓存磁盘 |CacheReads |RandomReads\_1MB |2 小时 |
 
 预热缓存磁盘后，继续执行下面列出的测试方案。 若要运行 Iometer 测试，请为**每个**目标卷使用至少三个工作线程。 对于每个工作线程，请选择目标卷并设置队列深度，并选择一个保存的测试规范（如下表所示），以便运行相应的测试方案。 该表还显示了运行这些测试时 IOPS 和吞吐量的预期结果。 所有方案都使用 8KB 的较小 IO 大小，而队列深度则较高，为 128。
 
-| 测试方案 | 目标卷 | 名称 | 结果 |
+| 测试方案 | 目标卷 | Name | 结果 |
 | --- | --- | --- | --- |
 | 最大 读取 IOPS |CacheReads |RandomWrites\_8K |50,000 IOPS |
 | 最大 写入 IOPS |NoCacheWrites |RandomReads\_8K |64,000 IOPS |
@@ -464,7 +464,7 @@ apt-get install fio
 最大写入 IOPS  
 使用以下规范创建作业文件，以便获得最大写入 IOPS。 将其命名为“fiowrite.ini”。
 
-```
+```ini
 [global]
 size=30g
 direct=1
@@ -504,7 +504,7 @@ sudo fio --runtime 30 fiowrite.ini
 最大读取 IOPS  
 使用以下规范创建作业文件，以便获得最大读取 IOPS。 将其命名为“fioread.ini”。
 
-```
+```ini
 [global]
 size=30g
 direct=1
@@ -544,7 +544,7 @@ sudo fio --runtime 30 fioread.ini
 最大读取和写入 IOPS  
 使用以下规范创建作业文件，以便获得最大读写组合 IOPS。 将其命名为“fioreadwrite.ini”。
 
-```
+```ini
 [global]
 size=30g
 direct=1

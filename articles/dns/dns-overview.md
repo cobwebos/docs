@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: df890eb0e07c13d0757c706a3cabbbad67b6eac2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 51869bcc2ee892bc150102595de09782eb01547c
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716270"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770514"
 ---
 # <a name="what-is-azure-dns"></a>什么是 Azure DNS？
 
@@ -32,7 +32,7 @@ Azure DNS 中的 DNS 域托管在 DNS 名称服务器的 Azure 全球网络上�
 
 * [基于角色的访问控制](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control)：控制谁有权访问针对组织的特定操作。
 
-* [活动日志](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#activity-logs)：监视你的组织中的用户对资源进行了怎样的修改，或者在进行故障排除时查找错误。
+* [活动日志](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)：监视你的组织中的用户对资源进行了怎样的修改，或者在进行故障排除时查找错误。
 
 * [资源锁定](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)：锁定订阅、资源组或资源。 锁定可以防止组织中的其他用户意外删除或修改重要资源。
 

@@ -11,18 +11,18 @@ ms.topic: overview
 ms.date: 08/14/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 5c2a31e10d53c8088afd3c3910b1b2f9d2b2d247
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 46d79b1ac6c56ba953eb0908e46338387b69ff1f
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159225"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768217"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>什么是必应 Web 搜索 API？
 
 必应 Web 搜索 API 是一项 RESTful 服务，可以针对用户查询提供即时应答。 搜索结果可以轻松地进行配置，可以包括网页、图像、视频、新闻、翻译等。 结果以 JSON 形式提供，并取决于搜索相关性和必应 Web 搜索订阅。
 
-此 API 适用于需要访问的所有内容都是与用户的搜索查询相关的应用程序。 如果要生成的应用程序只需特定类型的结果，可以考虑使用[必应图像搜索 API](../Bing-Image-Search/overview.md)、[必应视频搜索 API](../Bing-Video-Search/search-the-web.md) 或[必应新闻搜索 API](../Bing-News-Search/search-the-web.md)。 如需必应搜索 API 的完整列表，请参阅[认知服务 API](https://docs.microsoft.com/azure/cognitive-services#cognitive-services-apis)。
+此 API 适用于需要访问的所有内容都是与用户的搜索查询相关的应用程序。 如果要生成的应用程序只需特定类型的结果，可以考虑使用[必应图像搜索 API](../Bing-Image-Search/overview.md)、[必应视频搜索 API](../Bing-Video-Search/search-the-web.md) 或[必应新闻搜索 API](../Bing-News-Search/search-the-web.md)。 如需必应搜索 API 的完整列表，请参阅[认知服务 API](https://docs.microsoft.com/azure/cognitive-services)。
 
 想要了解其工作原理？ 尝试[必应 Web 搜索 API 演示](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/)。
 

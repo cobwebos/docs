@@ -1,7 +1,21 @@
 ---
-title:将 Excel 中的分析信息迁移到 Azure 机器学习工作室 titleSuffix:Azure 机器学习工作室 description:Excel 和 Azure 机器学习工作室中线性回归模型的比较 services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:2017/03/20
+title: 将 Excel 中的分析信息迁移到 Azure 机器学习工作室
+titleSuffix: Azure Machine Learning Studio
+description: Excel 中和 Azure 机器学习工作室中的线性回归模型比较
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 03/20/2017
+ms.openlocfilehash: 12c82d440613078e9f0593ddb9fb6c7fe7b8c362
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488343"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>将 Excel 中的分析信息迁移到 Azure 机器学习工作室
 

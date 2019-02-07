@@ -5,19 +5,19 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 1/29/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 38cccf17980f5a6a2cf162cdecdc6aad40d4f38e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 5717074d53e267018b7697aeed21ea00d246592e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432551"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252211"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 ## <a name="overview"></a>概述 ##
-操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。
+操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 可以在订阅中最多配置 2,000 个操作组。
 
 当操作配置为通过电子邮件或短信来通知某个人员时，该人员将收到确认，指出他 / 她已被添加到操作组。
 
@@ -88,15 +88,18 @@ ms.locfileid: "54432551"
 **语音** - 一个操作组中最多可以有 10 个语音操作</dd>
 请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)一文</dd>
 
-**Webhook** - 一个操作组中最多可以有 10 个 Webhook 操作。 重试逻辑 - 响应的超时期限为 10 秒。 当返回的 HTTP 状态代码为 408、429、503、504 或者 HTTP 终结点未响应时，最多可以重试 2 次 Webhook 调用。 首次重试在 10 秒后发生。 第二次（也是最后一次）重试在 100 秒后发生。
+**Webhook** - 一个操作组中最多可以有 10 个 Webhook 操作。
+重试逻辑 - 响应的超时期限为 10 秒。 当返回的 HTTP 状态代码为 408、429、503、504 或者 HTTP 终结点未响应时，最多可以重试 2 次 Webhook 调用。 首次重试在 10 秒后发生。 第二次重试在 100 秒后发生。 两次失败后，任何操作组都不会在 30 分钟内调用该终结点。
 
 源 IP 地址范围
+    - 13.72.19.232
     - 13.106.57.181
     - 13.106.54.3
     - 13.106.54.19
     - 13.106.38.142
     - 13.106.38.148
     - 13.106.57.196
+    - 52.244.68.117
 
 若要接收有关这些 IP 地址更改的更新，建议配置监视有关操作组服务的信息通知的[服务运行状况警报](./../../azure-monitor/platform/service-notifications.md)。
 

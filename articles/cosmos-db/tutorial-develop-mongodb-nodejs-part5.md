@@ -12,12 +12,12 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
-ms.openlocfilehash: b550107056ec22af3a18ce0396559ad4ef8d245b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4e7aa9931ffb268f787882729341fbe860255f70
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034278"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55767853"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>使用 Azure Cosmos DB 的 MongoDB API 创建 Angular 应用 - 使用 Mongoose 连接到 Cosmos DB
 
@@ -234,7 +234,7 @@ Mongoose 是 MongoDB 和 Node.js 的对象数据建模 (ODM) 库。 可以使用
 
 1. 在 Visual Studio Code 中，保存所有更改。 在左侧，选择“调试”按钮 ![Visual Studio Code 中的“调试”图标](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png)，然后选择“开始调试”按钮 ![Visual Studio Code 中的“开始调试”图标](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png)。
 
-1. 现在切换到浏览器。 打开“开发人员工具”和“网络”选项卡。转到 http://localhost:3000，可在其中看到我们的应用程序。
+1. 现在切换到浏览器。 打开“开发人员工具”和“网络”选项卡。转到 `http://localhost:3000`，可在其中看到我们的应用程序。
 
     ![Azure 门户中的新 Azure Cosmos DB 帐户](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
 

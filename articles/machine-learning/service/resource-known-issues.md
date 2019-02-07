@@ -7,37 +7,37 @@ author: j-martens
 ms.author: jmartens
 ms.reviewer: mldocs
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5634a1aae32b3e9895bf5c5b72837f29223bca27
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: c327d973170a4556471663c3bea9dcae9b5794fb
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381823"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238605"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Azure 机器学习服务的已知问题和故障排除
- 
-本文可帮助你查找和更正使用 Azure 机器学习服务时遇到的错误或失败。 
+
+本文可帮助你查找和更正使用 Azure 机器学习服务时遇到的错误或失败。
 
 ## <a name="sdk-installation-issues"></a>SDK 安装问题
 
-**错误消息：无法卸载 'PyYAML'** 
+**错误消息：无法卸载 'PyYAML'**
 
 适用于 Python 的 Azure 机器学习 SDK：PyYAML 是 distutils 安装的项目。 因此，在部分卸载的情况下，我们无法准确确定哪些文件属于它。 若要在忽略此错误的同时继续安装 SDK，请使用：
-```Python 
+```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ```
 
 ## <a name="trouble-creating-azure-machine-learning-compute"></a>创建 Azure 机器学习计算时发生故障
 
-如果用户在 GA 发布之前已通过 Azure 门户创建了自己的 Azure 机器学习工作区，则他们很可能无法在该工作区中创建 Azure 机器学习计算。 可对服务提出支持请求，也可通过门户或 SDK 创建新的工作区以立即解除锁定。 
+如果用户在 GA 发布之前已通过 Azure 门户创建了自己的 Azure 机器学习工作区，则他们很可能无法在该工作区中创建 Azure 机器学习计算。 可对服务提出支持请求，也可通过门户或 SDK 创建新的工作区以立即解除锁定。
 
 ## <a name="image-building-failure"></a>映像生成失败
 
-部署 Web 服务时映像生成失败。 解决方法是将“pynacl==1.2.1”作为 pip 依赖项添加到 Conda 文件以进行映像配置。  
+部署 Web 服务时映像生成失败。 解决方法是将“pynacl==1.2.1”作为 pip 依赖项添加到 Conda 文件以进行映像配置。
 
 ## <a name="deployment-failure"></a>部署失败
 
@@ -49,10 +49,10 @@ pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ## <a name="databricks"></a>Databricks
 
 Databricks 和 Azure 机器学习问题。
- 
+
 1. 安装更多程序包时，AML SDK 会在 Databricks 上安装失败。
 
-   某些包（如 `psutil`）可能会导致冲突。 为了避免安装错误，请通过冻结 lib 版本来安装包。 此问题与 Databricks 有关，与 Azure 机器学习 SDK 无关 - 你可能还会遇到其他库。 示例：
+   某些包（如 `psutil`）可能会导致冲突。 为了避免安装错误，请通过冻结 lib 版本来安装包。 此问题与 Databricks 有关，与 Azure 机器学习服务 SDK 无关 - 你可能还会遇到其他库。 示例：
    ```python
    pstuil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
    ```
@@ -67,7 +67,8 @@ Databricks 和 Azure 机器学习问题。
 如果直接通过 SDK 或门户的共享链接查看工作区，则将无法在扩展程序中查看包含订阅信息的常规概述页。 也将无法切换到另一个工作区。 如果需要查看其他工作区，解决方法是直接转到 [Azure 门户](https://portal.azure.com)并搜索工作区名称。
 
 ## <a name="diagnostic-logs"></a>诊断日志
-如果在请求帮助时可以提供诊断信息，有时会很有帮助。 下面是日志文件所在的位置：
+如果在请求帮助时可以提供诊断信息，有时会很有帮助。
+下面是日志文件所在的位置：
 
 ## <a name="resource-quotas"></a>资源配额
 

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 72d1676613de699abda2136a7743a974b2b17c01
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 30c03d52e31f70448eef07b4567083061605d8dd
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162852"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300466"
 ---
 # <a name="access-the-vfxt-cluster"></a>访问 vFXT 群集
 
@@ -25,7 +25,7 @@ ms.locfileid: "52162852"
 > [!NOTE] 
 > 本文假设已在群集控制器或群集虚拟网络中另一 VM 上设置了公共 IP 地址。 本文介绍了如何使用该 VM 作为主机来访问群集。 如果使用 VPN 或 ExpressRoute 进行 VNet 访问，请跳到[连接到 Avere 控制面板](#connect-to-the-avere-control-panel-in-a-browser)。
 
-在连接之前，请确保在本地计算机上安装了创建群集控制器时所用的 SSH 公钥/私钥对。 如需帮助，请阅读有关适用于 [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) 或适用于 [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) 的 SSH 密钥文档。  
+在连接之前，请确保在本地计算机上安装了创建群集控制器时所用的 SSH 公钥/私钥对。 如需帮助，请阅读有关适用于 [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) 或适用于 [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) 的 SSH 密钥文档。 （如果使用了密码而不是公钥，则在连接时将提示你输入密码。） 
 
 ## <a name="ssh-tunnel-with-a-linux-host"></a>在 Linux 主机上使用 SSH 隧道
 
@@ -41,7 +41,7 @@ ssh -L local_port:cluster_mgmt_ip:443 controller_username@controller_public_IP
 ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 ```
 
-如果使用 SSH 公钥创建群集，并且在客户端系统上安装了匹配的密钥，则身份验证会自动执行。
+如果使用 SSH 公钥创建群集，并且在客户端系统上安装了匹配的密钥，则身份验证会自动执行。 如果使用了密码，系统将提示你输入密码。
 
 ## <a name="ssh-tunnel-with-a-windows-host"></a>在 Windows 主机上使用 SSH 隧道
 
@@ -57,13 +57,13 @@ ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 1. 单击“隧道”。 
 1. 输入源端口，如 8443。 
 1. 对于目标，请输入 vFXT 群集的管理 IP 地址和端口 443。 
-   示例：``203.0.113.51:443``
+   示例： ``203.0.113.51:443``
 1. 单击“添加”。
 1. 单击“打开”。
 
 ![Putty 应用程序的屏幕截图，显示了单击以添加隧道的位置](media/avere-vfxt-ptty-numbered.png)
 
-如果使用 SSH 公钥创建群集，并且在客户端系统上安装了匹配的密钥，则身份验证会自动执行。
+如果使用 SSH 公钥创建群集，并且在客户端系统上安装了匹配的密钥，则身份验证会自动执行。 如果使用了密码，系统将提示你输入密码。
 
 ## <a name="connect-to-the-avere-control-panel-in-a-browser"></a>在浏览器中连接到 Avere 控制面板
 
@@ -73,11 +73,11 @@ ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 
   你在创建隧道时已连接到群集 IP 地址，因此只需要在浏览器中使用 localhost IP 地址。 如果你使用了 8443 之外的本地端口，请改用你的端口号。
 
-* 如果你使用 VPN 或 ExpressRoute 来访问群集，请在浏览器中导航到群集管理 IP 地址。 示例：``https://203.0.113.51``
+* 如果你使用 VPN 或 ExpressRoute 来访问群集，请在浏览器中导航到群集管理 IP 地址。 示例： ``https://203.0.113.51``
 
 可能需要单击“高级”并确认是否可以安全地继续浏览该页面，具体取决于浏览器。
 
-输入创建群集时提供的用户名 `admin` 以及密码。
+输入创建群集时提供的用户名 `admin` 和管理密码。
 
 ![填写了用户名“管理员”和密码的 Avere 登录页面的屏幕截图](media/avere-vfxt-gui-login.png)
 

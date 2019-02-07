@@ -7,20 +7,20 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 31d6725b6e02bbc583ad80f235360574941a97d3
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 5437e81397182ede37ef98ad40b54c64f94e2092
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468329"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294717"
 ---
-# <a name="configure-language-understanding-docker-containers"></a>配置语言理解 docker 容器 
+# <a name="configure-language-understanding-docker-containers"></a>配置语言理解 Docker 容器 
 
-语言理解 (LUIS) 容器运行时环境使用 `docker run` 命令参数进行配置。 LUIS 有几个必需的设置以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 特定于容器的设置是输入[装载设置](#mount-settings)和账单设置。 
+**语言理解** (LUIS) 容器运行时环境使用 `docker run` 命令参数进行配置。 LUIS 有几个必需的设置以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 特定于容器的设置是输入[装载设置](#mount-settings)和账单设置。 
 
 容器设置[分层](#hierarchical-settings)，可以使用[环境变量](#environment-variable-settings)或 docker [命令行参数](#command-line-argument-settings)进行设置。
 
@@ -66,7 +66,7 @@ ms.locfileid: "54468329"
 * Azure 门户：语言理解的“概述”，标记为 `Endpoint`
 * LUIS 门户：“密钥和终结点设置”页面，作为终结点 URI 的一部分。
 
-|必选| 名称 | 数据类型 | 说明 |
+|必选| Name | 数据类型 | 说明 |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
 
@@ -98,7 +98,7 @@ LUIS 容器不使用输入或输出装载来存储训练或服务数据。
 
 下表描述了支持的设置。
 
-|必选| 名称 | 数据类型 | 说明 |
+|必选| Name | 数据类型 | 说明 |
 |-------|------|-----------|-------------|
 |是| `Input` | String | 输入装入点的目标。 默认值为 `/input`。 这是 LUIS 包文件的位置。 <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
 |否| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括 LUIS 查询日志和容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 412727d79c194172f2855d014d1eaf18f44167f6
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 6a7f7943e9d567a953c0e21697dfe4fdedd6e8f0
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159343"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744783"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box 磁盘限制
 
@@ -66,8 +66,8 @@ ms.locfileid: "54159343"
 
 | Azure 对象类型 | 默认限制                                             |
 |-------------------|-----------------------------------------------------------|
-| 块 blob        | ~ 8 TB                                                 |
-| 页 blob         | 1 TB <br> （以页 Blob 格式上传的任何文件都必须是 512 字节对齐的（整数倍），否则上传将失败。 <br> VHD 和 VHDX 是 512 字节对齐的。） |
+| 块 blob        | ~ 4.75 TiB                                                 |
+| 页 blob         | 8 TiB <br> （以页 Blob 格式上传的任何文件都必须是 512 字节对齐的（整数倍），否则上传将失败。 <br> VHD 和 VHDX 是 512 字节对齐的。） |
 
 
 ## <a name="azure-block-blob-and-page-blob-naming-conventions"></a>Azure 块 blob 和页 blob 命名约定

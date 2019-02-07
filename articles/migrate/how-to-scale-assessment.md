@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 2bc6f14eeb974ded462b8dcaf65d5401cc35291d
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 6b74c81f44ee747cdd80a1106b669d89c8c7fbc3
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262211"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297134"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>发现和评估大型 VMware 环境
 
@@ -19,7 +19,7 @@ Azure Migrate 具有每个项目 1500 台计算机的限制，本文介绍了如
 
 ## <a name="prerequisites"></a>先决条件
 
-- **VMware**：计划迁移的 VM 必须由版本 5.5、6.0、6.5 或 6.7 的 vCenter Server 托管。 此外，需要一个运行 5.0 或更高版本的 ESXi 主机来部署收集器 VM。
+- **VMware**：计划迁移的 VM 必须由版本 5.5、6.0、6.5 或 6.7 的 vCenter Server 托管。 此外，需要一个运行 5.5 或更高版本的 ESXi 主机来部署收集器 VM。
 - **vCenter 帐户**：需要只读帐户来访问 vCenter Server。 Azure Migrate 使用此帐户发现本地 VM。
 - **权限**：在 vCenter Server 中，需要有通过导入 .OVA 格式的文件来创建 VM 的权限。
 - **统计信息设置**：此要求仅适用于现已弃用的[一次性发现模型](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods)。 对于一次性发现模型，应在开始部署之前，将 vCenter Server 的统计信息设置指定为级别 3。 对于每天、每周和每月的收集间隔，统计级别将设置为 3。 如果三个收集间隔中的任何一个的级别低于 3，则可以正常评估，但不会收集存储和网络的性能数据。 然后，大小建议将基于 CPU 和内存的性能数据以及磁盘和网络适配器的配置数据。

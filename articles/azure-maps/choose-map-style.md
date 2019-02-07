@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c77467efbbc1c33be5bc2aaf3251a5803beee864
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 78e3f6a5f4a55fd4bf1925672205eb490e7c6b24
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317103"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695673"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>在 Azure Maps 中选择地图样式
 
@@ -33,7 +33,7 @@ Azure Maps 有四种不同的地图样式可供选择。 有关地图样式的�
 
 上面的代码块设置订阅密钥并创建一个 Map 对象而不预先设置样式。 有关如何创建地图的说明，请参阅[创建地图](./map-create.md)。
 
-第二个代码块使用 map 的 [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setstyle) 方法将地图样式设置为卫星。
+第二个代码块使用 map 的 [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将地图样式设置为卫星。
 
 ## <a name="add-the-style-picker"></a>添加样式选取器
 
@@ -44,7 +44,7 @@ Azure Maps 有四种不同的地图样式可供选择。 有关地图样式的�
 
 第二个代码块使用 atlas [StyleControl](/javascript/api/azure-maps-control/atlas.controls.stylecontrol) 构造函数来构造样式选取器。
 
-样式选取器支持为地图选择样式。 第三个代码块使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) 方法向地图添加样式选取器。 样式选取器位于地图**事件侦听器**内，以确保它在地图完全加载后加载。
+样式选取器支持为地图选择样式。 第三个代码块使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法向地图添加样式选取器。 样式选取器位于地图**事件侦听器**内，以确保它在地图完全加载后加载。
 
 ## <a name="next-steps"></a>后续步骤
 

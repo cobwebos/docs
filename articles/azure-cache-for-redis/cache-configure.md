@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: 8a78823a208a5310e62714de7b1a3cd2e35eaa8f
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 67cc7d0dc162f2b36e38f1068f46079f46120f1c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104669"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819835"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何配置 Azure Redis 缓存
 本主题介绍可用于 Azure Redis 缓存实例的配置。 本主题还介绍了适用于 Azure Redis 缓存实例的默认 Redis 服务器配置。
@@ -57,7 +57,7 @@ ms.locfileid: "54104669"
     * [属性](#properties)
     * [锁](#locks)
     * [自动化脚本](#automation-script)
-* [管理](#administration)
+* 管理
     * [导入数据](#importexport)
     * [导出数据](#importexport)
     * [重新启动](#reboot)
@@ -65,7 +65,7 @@ ms.locfileid: "54104669"
     * [Redis 指标](#redis-metrics)
     * [警报规则](#alert-rules)
     * [诊断](#diagnostics)
-* [支持和故障排除设置](#support-amp-troubleshooting-settings)
+* 支持和故障排除设置
     * [资源运行状况](#resource-health)
     * [新建支持请求](#new-support-request)
 
@@ -398,7 +398,7 @@ Redis 密钥空间通知是在“高级设置”边栏选项卡上配置的。 �
 > 
 > 
 
-| 设置 | 默认值 | Description |
+| 设置 | 默认值 | 说明 |
 | --- | --- | --- |
 | `databases` |16 |默认的数据库数为 16，但可以根据定价层配置不同数目。<sup>1</sup> 默认数据库是 DB 0，可以基于每个连接使用 `connection.GetDatabase(dbid)`（其中 `dbid` 是介于 `0` 和 `databases - 1` 之间的数字）选择其他数据库。 |
 | `maxclients` |取决于定价层<sup>2</sup> |该值是同一时间内允许的最大已连接客户端数。 一旦达到该限制，Redis 会在关闭所有新连接的同时返回“达到客户端最大数量”的错误。 |

@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: c451377d6274c50f22e3b1d4cd32fb0f3edd9d9e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d2d3f36c9b4ee0557f9e060bec762877a94ea637
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220386"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734175"
 ---
 # <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>将 Linux VM 移到其他订阅或资源组
 本文逐步说明如何在资源组或订阅之间移动 Linux 虚拟机 (VM)。 如果在个人订阅中创建了 VM，现在想要将其移到公司的订阅，则在订阅之间移动 VM 会很方便。
@@ -35,7 +35,7 @@ ms.locfileid: "55220386"
 ## <a name="use-the-azure-cli-to-move-a-vm"></a>使用 Azure CLI 移动 VM
 
 
-使用 Azure CLI 移动 VM 之前，需要确保源订阅和目标订阅存在于同一租户中。 若要检查这两个订阅是否具有相同的租户 ID，请使用 [az account show](/cli/azure/account#az_account_show)。
+使用 Azure CLI 移动 VM 之前，需要确保源订阅和目标订阅存在于同一租户中。 若要检查这两个订阅是否具有相同的租户 ID，请使用 [az account show](/cli/azure/account)。
 
 ```azurecli-interactive
 az account show --subscription mySourceSubscription --query tenantId
@@ -43,13 +43,13 @@ az account show --subscription myDestinationSubscription --query tenantId
 ```
 如果源和目标订阅的租户 ID 不相同，则必须联系[支持人员](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)才能将资源移动到新租户。
 
-若要成功移动 VM，需要移动 VM 及其所有支持资源。 使用 [az resource list](/cli/azure/resource#az_resource_list) 命令列出资源组中的所有资源及其 ID。 这有助于通过管道将此命令的输出发送到文件，以便将 ID 复制并粘贴到后续命令中。
+若要成功移动 VM，需要移动 VM 及其所有支持资源。 使用 [az resource list](/cli/azure/resource) 命令列出资源组中的所有资源及其 ID。 这有助于通过管道将此命令的输出发送到文件，以便将 ID 复制并粘贴到后续命令中。
 
 ```azurecli-interactive
 az resource list --resource-group "mySourceResourceGroup" --query "[].{Id:id}" --output table
 ```
 
-要将 VM 及其资源移到其他资源组，请使用 [az resource move](/cli/azure/resource#az_resource_move)。 以下示例说明如何移动 VM 及其所需的大多数通用资源。 使用 **-ids** 参数，并传入要移动的资源的 ID 的逗号分隔列表（不含空格）。
+要将 VM 及其资源移到其他资源组，请使用 [az resource move](/cli/azure/resource)。 以下示例说明如何移动 VM 及其所需的大多数通用资源。 使用 **-ids** 参数，并传入要移动的资源的 ID 的逗号分隔列表（不含空格）。
 
 ```azurecli-interactive
 vm=/subscriptions/mySourceSubscriptionID/resourceGroups/mySourceResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM

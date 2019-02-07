@@ -13,19 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6ff49b3a08977b28ae6fa0971e5c7d72af158a46
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 0b00bff2b32ac9dd16d4d38ee35be006c0247bb8
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081205"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493415"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>通过 Visual Studio 创建和部署 Azure 资源组
+
 使用 Visual Studio 可以创建一个项目，用于将基础结构和代码部署到 Azure。 例如，可以为应用定义 Web 主机、网站和数据库，并将该基础结构与代码一起部署。 Visual Studio 许多不同的入门模板用于部署常见方案。 本文部署 Web 应用和 SQL 数据库。  
 
 本文介绍如何使用[装有 Azure 开发和 ASP.NET 工作负荷的 Visual Studio 2017](/dotnet/azure/dotnet-tools)。 如果使用 Visual Studio 2015 Update 2 以及用于 .NET 的 Microsoft Azure SDK 2.9，或者将 Visual Studio 2013 与 Azure SDK 2.9 配合使用，则体验大致相同。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="create-azure-resource-group-project"></a>创建 Azure 资源组项目
+
 在本部分，我们将使用“Web 应用 + SQL”模板创建 Azure 资源组项目。
 
 1. 在 Visual Studio 中，依次选择“文件”、“新建项目”，选择 **C#** 或 **Visual Basic**（选择哪种语言对以后的阶段没有任何影响，因为这些项目仅包含 JSON 和 PowerShell 的内容）。 然后选择“云”和“Azure 资源组”项目。

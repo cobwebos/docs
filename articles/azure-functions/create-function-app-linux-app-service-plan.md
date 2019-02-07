@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: d9800ff3fc82636c5cae12167738667ec84326ee
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ec7b71c7da19ecefc14696c029e63a074b498ec8
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52854124"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696723"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan-preview"></a>在 Azure 应用服务计划中创建 Linux 函数应用（预览）
 
@@ -84,7 +84,7 @@ az functionapp create --resource-group myResourceGroup --plan myAppServicePlan \
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍如何在 Azure 中创建 Linux 托管的函数应用。 现在可以将[函数项目部署](https://docs.microsoft.com/cli/azure/functionapp/deployment/source?view=azure-cli-latest)到此函数应用。 可以使用 Azure Functions Core Tools 在本地计算机上[创建函数项目](functions-run-local.md#create-a-local-functions-project)，然后将它部署到新的 Linux 函数应用。  
+本文介绍如何在 Azure 中创建 Linux 托管的函数应用。 现在可以将[函数项目部署](https://docs.microsoft.com/cli/azure/functionapp/deployment/source?view=azure-cli-latest)到此函数应用。 可以使用 Azure Functions Core Tools 在本地计算机上[创建函数项目](functions-run-local.md)，然后将它部署到新的 Linux 函数应用。  
 
 > [!div class="nextstepaction"] 
 > [在本地对 Azure Functions 进行编码和测试](functions-run-local.md)

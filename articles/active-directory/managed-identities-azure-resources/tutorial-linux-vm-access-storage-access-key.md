@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: priyamo
-ms.openlocfilehash: 7617b19fe4f59b582b878d5dfe365810963ff51e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2b27553e16225a7bc0d9ca74c7ec013a231d64e6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158088"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755460"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>教程：使用 Linux VM 系统分配的托管标识通过访问密钥访问 Azure 存储
 
@@ -198,4 +198,4 @@ az storage blob download -c <CONTAINER NAME> -n test.txt -f test-download.txt --
 在本教程中，你已学习了如何使用 Linux VM 系统分配的托管标识通过访问密钥来访问 Azure 存储。  若要详细了解 Azure 存储访问密钥，请参阅：
 
 > [!div class="nextstepaction"]
->[管理存储访问密钥](/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys)
+>[管理存储访问密钥](/azure/storage/common/storage-create-storage-account)

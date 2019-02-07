@@ -6,17 +6,17 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 765d93780ad45eaaca61d4deb5f6607ef70ee432
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: f369ab0ec8c460137f7e2b16a7f2696357d84c50
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413679"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247436"
 ---
 # <a name="speech-service-rest-apis"></a>语音服务 REST API
 
@@ -439,6 +439,9 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 * 有关语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。
 * 有关区域可用性的信息，请参阅[区域](regions.md#text-to-speech)。
+
+> [!IMPORTANT]
+> 标准语音、自定义语音和神经语音的费用各不相同。 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
 ### <a name="request-headers"></a>请求标头
 

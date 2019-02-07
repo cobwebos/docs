@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 93a4a47b539184910f01fe9261562ffd8816ad45
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: cec481ca355ecf081f6aaff8228957f0adf226f6
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581226"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691382"
 ---
 # <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-the-same-subscription-with-cli"></a>使用 CLI 基于相同订阅的存储帐户中的 VHD 文件创建托管磁盘
 
@@ -43,7 +43,7 @@ ms.locfileid: "53581226"
 
 | 命令 | 说明 |
 |---|---|
-| [az disk create](https://docs.microsoft.com/cli/azure/disk#az_disk_create) | 使用相同订阅的存储帐户中的 VHD 的 URI 创建托管磁盘 |
+| [az disk create](https://docs.microsoft.com/cli/azure/disk) | 使用相同订阅的存储帐户中的 VHD 的 URI 创建托管磁盘 |
 
 ## <a name="next-steps"></a>后续步骤
 

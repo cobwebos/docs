@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 507927934c442c8b217ed8fea371f505bb517d35
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 4bfe4f9f97587b6791e73c2f04055b2dcf5d0f0d
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198705"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766208"
 ---
 # <a name="work-with-azure-functions-proxies"></a>使用 Azure Functions 代理
 
@@ -249,7 +249,7 @@ requestOverrides 对象定义对传回客户端的响应所做的更改。 该�
 > 在此示例中，响应正文是直接设置的，因此不需要 `backendUri` 属性。 此示例演示如何使用 Azure Functions 代理来模拟 API。
 
 [Azure 门户]: https://portal.azure.com
-[HTTP 触发器]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#http-trigger
+[HTTP 触发器]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response
 [定义 requestOverrides 对象]: #requestOverrides

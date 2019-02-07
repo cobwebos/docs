@@ -7,16 +7,16 @@ ms.author: nilesha
 ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 865d00d4a6608e422fdfca1297962913ee205827
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 310963d5593dde0540c95920214a14a4195c346a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823430"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242325"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>配置自动化机器学习试验
 
@@ -35,7 +35,7 @@ ms.locfileid: "54823430"
 * 注册和部署模型
 
 ## <a name="select-your-experiment-type"></a>选择试验类型
-在开始试验之前，应确定要解决的机器学习问题类型。 自动化机器学习支持分类、回归和预测任务类型。 
+在开始试验之前，应确定要解决的机器学习问题类型。 自动化机器学习支持分类、回归和预测任务类型。
 
 自动化机器学习功能已推出正式版，不过，**预测功能仍以公共预览版提供。**
 
@@ -59,7 +59,7 @@ ms.locfileid: "54823430"
 ## <a name="data-source-and-format"></a>数据源和格式
 自动化机器学习支持驻留在本地桌面上或云中（例如 Azure Blob 存储）的数据。 可将数据读取成 scikit-learn 支持的数据格式。 可将数据读取成：
 * Numpy 数组 X（特征）和 y（目标变量，也称为标签）
-* Pandas 数据帧 
+* Pandas 数据帧
 
 示例：
 
@@ -67,7 +67,7 @@ ms.locfileid: "54823430"
 
     ```python
     digits = datasets.load_digits()
-    X_digits = digits.data 
+    X_digits = digits.data
     y_digits = digits.target
     ```
 
@@ -75,9 +75,9 @@ ms.locfileid: "54823430"
 
     ```python
     import pandas as pd
-    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"') 
-    # get integer labels 
-    df = df.drop(["Label"], axis=1) 
+    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
+    # get integer labels
+    df = df.drop(["Label"], axis=1)
     df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42)
     ```
 
@@ -88,18 +88,18 @@ ms.locfileid: "54823430"
 下面是 `get_data` 的示例：
 
 ```python
-%%writefile $project_folder/get_data.py 
-import pandas as pd 
-from sklearn.model_selection import train_test_split 
-from sklearn.preprocessing import LabelEncoder 
-def get_data(): # Burning man 2016 data 
-    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"') 
-    # get integer labels 
-    le = LabelEncoder() 
-    le.fit(df["Label"].values) 
-    y = le.transform(df["Label"].values) 
-    df = df.drop(["Label"], axis=1) 
-    df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42) 
+%%writefile $project_folder/get_data.py
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+def get_data(): # Burning man 2016 data
+    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
+    # get integer labels
+    le = LabelEncoder()
+    le.fit(df["Label"].values)
+    y = le.transform(df["Label"].values)
+    df = df.drop(["Label"], axis=1)
+    df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42)
     return { "X" : df, "y" : y }
 ```
 
@@ -111,13 +111,13 @@ automl_config = AutoMLConfig(****, data_script=project_folder + "/get_data.py", 
 
 `get_data` 脚本可以返回：
 
-密钥 | 类型 |    与以下对象互斥 | 说明
+密钥 | Type |    与以下对象互斥 | 说明
 ---|---|---|---
 X | Pandas 数据帧或 Numpy 数组 | data_train、label、columns |  用于训练的所有特征
 y | Pandas 数据帧或 Numpy 数组 |   label   | 用于训练的标签数据。 对于分类，应是一个整数数组。
 X_valid | Pandas 数据帧或 Numpy 数组   | data_train、label | （可选）用于验证的所有特征。 如果未指定，则在 train 与 validate 之间拆分 X
 y_valid |   Pandas 数据帧或 Numpy 数组 | data_train、label | （可选）用于验证的标签数据。 如果未指定，则在 train 与 validate 之间拆分 y
-sample_weight | Pandas 数据帧或 Numpy 数组 |   data_train、label、columns| （可选）每个样本的权重值。 需要为数据点分配不同的权重时使用 
+sample_weight | Pandas 数据帧或 Numpy 数组 |   data_train、label、columns| （可选）每个样本的权重值。 需要为数据点分配不同的权重时使用
 sample_weight_valid | Pandas 数据帧或 Numpy 数组 | data_train、label、columns |    （可选）每个验证样本的权重值。 如果未指定，则在 train 与 validate 之间拆分 sample_weight
 data_train |    Pandas 数据帧 |  X、y、X_valid、y_valid |    用于训练的所有数据（特征+标签）
 label | 字符串  | X、y、X_valid、y_valid |  data_train 中的哪个列表示标签
@@ -136,7 +136,8 @@ cv_splits_indices   | 整数数组 ||  （可选）用于拆分数据以进行�
 >* 筛选
 >* 自定义 Python 转换
 
-若要了解 DataPrep SDK，请参阅[如何准备要建模的数据](how-to-load-data.md)一文。 下面是使用 DataPrep SDK 加载数据的示例。 
+若要了解 DataPrep SDK，请参阅[如何准备要建模的数据](how-to-load-data.md)一文。
+下面是使用 DataPrep SDK 加载数据的示例。
 ```python
 # The data referenced here was pulled from `sklearn.datasets.load_digits()`.
 simple_example_data_root = 'https://dprepdata.blob.core.windows.net/automl-notebook-data/'
@@ -189,22 +190,22 @@ y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelec
         primary_metric='AUC_weighted',
         max_time_sec=12000,
         iterations=50,
-        X=X, 
+        X=X,
         y=y,
         n_cross_validations=2)
     ```
 2.  下面是设置为在 100 次迭代后结束的回归试验示例，每次迭代最长持续 600 秒，并完成 5 个交叉验证折。
 
-    ````python
+    ```python
     automl_regressor = AutoMLConfig(
         task='regression',
         max_time_sec=600,
         iterations=100,
         primary_metric='r2_score',
-        X=X, 
+        X=X,
         y=y,
         n_cross_validations=5)
-    ````
+    ```
 
 下表列出了可用于试验的参数设置及其默认值。
 
@@ -223,7 +224,7 @@ y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelec
 `enable_cache`  | True/False <br/>设置为 True 可完成一次预处理，并将相同的预处理数据用于所有迭代。 | True |
 `blacklist_models`  | 自动化机器学习试验会尝试许多不同的算法。 配置为从试验中排除某些算法。 如果你知道某些算法不适合你的数据集，则这种做法很有用。 排除算法可以节省计算资源和训练时间。<br/>分类允许的值<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>回归允许的值<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>预测允许的值<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|   无
 `whitelist_models`  | 自动化机器学习试验会尝试许多不同的算法。 配置为在试验中包含某些算法。 如果你知道某些算法适合你的数据集，则这种做法很有用。 <br/>分类允许的值<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>回归允许的值<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>预测允许的值<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|  无
-`verbosity` |使用 INFO（最详细）和 CRITICAL（最精简）控制日志记录级别。 详细级别采用 Python 日志记录包中定义的相同值。 允许值包括：<br/><li>logging.INFO</li><li>logging.WARNING</li><li>logging.ERROR</li><li>logging.CRITICAL</li>  | logging.INFO</li> 
+`verbosity` |使用 INFO（最详细）和 CRITICAL（最精简）控制日志记录级别。 详细级别采用 Python 日志记录包中定义的相同值。 允许值包括：<br/><li>logging.INFO</li><li>logging.WARNING</li><li>logging.ERROR</li><li>logging.CRITICAL</li>  | logging.INFO</li>
 `X` | 用于训练的所有特征 |  无
 `y` |   用于训练的标签数据。 对于分类，应是一个整数数组。|  无
 `X_valid`|（可选）用于验证的所有特征。 如果未指定，则在 train 与 validate 之间拆分 X |   无
@@ -233,7 +234,7 @@ y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelec
 `run_configuration` |   RunConfiguration 对象。  用于远程运行。 |无
 `data_script`  |    包含 get_data 方法的文件的路径。  远程运行需要此参数。   |无
 `model_explainability` | _可选_ True/False <br/>  如果为 True，则让试验针对每个迭代执行特征重要性评估。 也可以针对特定的迭代使用 explain_model() 方法，以便在完成试验后，为该迭代启用按需特征重要性评估。 | False
-`enable_ensembling`|用于在完成其他所有迭代后启用系综迭代的标志。| True 
+`enable_ensembling`|用于在完成其他所有迭代后启用系综迭代的标志。| True
 `ensemble_iterations`|迭代数，在执行这些迭代期间，我们选择了一个拟合管道作为最终系综的一部分。| 15
 `experiment_timeout_minutes`| 限制运行整个试验可以花费的时间（分钟） | 无
 
@@ -324,20 +325,20 @@ normalized_root_mean_squared_log_error|规范化均方根对数误差指均方�
 
     ```python
     from azureml.train.automl.automlexplainer import explain_model
-    
+
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
         explain_model(fitted_model, X_train, X_test)
-    
+
     #Overall feature importance
     print(overall_imp)
-    print(overall_summary) 
-    
+    print(overall_summary)
+
     #Class-level feature importance
     print(per_class_imp)
-    print(per_class_summary) 
+    print(per_class_summary)
     ```
 
-*   若要查看所有迭代的特征重要性，请在 AutoMLConfig 中将 `model_explainability` 标志设置为 `True`。  
+*   若要查看所有迭代的特征重要性，请在 AutoMLConfig 中将 `model_explainability` 标志设置为 `True`。
 
     ```python
     automl_config = AutoMLConfig(task = 'classification',
@@ -346,7 +347,7 @@ normalized_root_mean_squared_log_error|规范化均方根对数误差指均方�
                                  max_time_sec = 12000,
                                  iterations = 10,
                                  verbosity = logging.INFO,
-                                 X = X_train, 
+                                 X = X_train,
                                  y = y_train,
                                  X_valid = X_test,
                                  y_valid = y_test,
@@ -358,20 +359,20 @@ normalized_root_mean_squared_log_error|规范化均方根对数误差指均方�
 
     ```python
     from azureml.train.automl.automlexplainer import retrieve_model_explanation
-    
+
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
         retrieve_model_explanation(best_run)
-    
+
     #Overall feature importance
     print(overall_imp)
-    print(overall_summary) 
-    
+    print(overall_summary)
+
     #Class-level feature importance
     print(per_class_imp)
-    print(per_class_summary) 
+    print(per_class_summary)
     ```
 
-可以在 Azure 门户中的工作区内可视化特征重要性图表。 在 Notebook 中使用 Jupyter 小组件时，也会显示该图表。 若要详细了解图表，请参阅[示例 Azure 机器学习 Notebook](samples-notebooks.md) 一文。
+可以在 Azure 门户中的工作区内可视化特征重要性图表。 在 Notebook 中使用 Jupyter 小组件时，也会显示该图表。 若要详细了解图表，请参阅[示例 Azure 机器学习服务 Notebook](samples-notebooks.md) 一文。
 
 ```python
 from azureml.widgets import RunDetails
@@ -383,4 +384,4 @@ RunDetails(local_run).show()
 
 详细了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。
 
-详细了解[如何使用自动化机器学习训练分类模型](tutorial-auto-train-models.md)或[如何在远程资源上使用自动化机器学习进行训练](how-to-auto-train-remote.md)。 
+详细了解[如何使用自动化机器学习训练分类模型](tutorial-auto-train-models.md)或[如何在远程资源上使用自动化机器学习进行训练](how-to-auto-train-remote.md)。

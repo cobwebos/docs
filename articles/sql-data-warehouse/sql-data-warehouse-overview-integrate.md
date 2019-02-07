@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 08e144022c79182a63fd99dbce48a5e505aba3f2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c1bc4265c44f007e794b873d732a06d1e30f324f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477992"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661932"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>使用 SQL 数据仓库集成其他服务
 除了本身的核心功能以外，SQL 数据仓库还允许用户集成 Azure 中的其他许多服务。 这些服务包括：
@@ -41,7 +41,7 @@ Azure 数据工厂为用户提供一个托管平台，用于创建复杂的提�
 * **存储过程**：协调 SQL 数据仓库上存储过程的执行。
 * **复制**：使用 ADF 将数据移动到 SQL 数据仓库。 实际上，此操作可以使用 ADF 标准数据移动机制或封面下的 PolyBase。 
 
-有关详细信息，请参阅[与 Azure 数据工厂集成](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json)。
+有关详细信息，请参阅[与 Azure 数据工厂集成](https://docs.microsoft.com/azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json)。
 
 ## <a name="azure-machine-learning"></a>Azure 机器学习
 Azure 机器学习是完全托管的分析服务，因此你可以使用大量预测工具创建复杂的模型。 支持将 SQL 数据仓库用作模型的源和目标，这些模型具有以下功能：

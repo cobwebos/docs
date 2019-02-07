@@ -9,12 +9,12 @@ ms.date: 09/15/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 935119f2efe40ee22d2d11005fa79b12c712b7c2
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: cdf01fbbcc8ef1f90b2e0f8973f59c46c5bf70f8
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104556"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694093"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>从 Go（预览版）收集分布式跟踪
 
@@ -24,7 +24,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
 - 需要一个 Azure 订阅。
 - 应该安装 Go，本文使用版本 1.11 [去下载](https://golang.org/dl/)。
-- 按照说明[将本地转发器安装为 Windows 服务](./opencensus-local-forwarder.md#windows-service)。
+- 按照说明[将本地转发器安装为 Windows 服务](./opencensus-local-forwarder.md)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -57,7 +57,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
    ![检测密钥的屏幕截图](./media/opencensus-Go/0003-instrumentation-key.png)
 
-2. 编辑 `LocalForwarder.config` 文件并添加检测密钥。 如果已按照[先决条件](./opencensus-local-forwarder.md#windows-service)中的说明操作，则该文件位于 `C:\LF-WindowsServiceHost`
+2. 编辑 `LocalForwarder.config` 文件并添加检测密钥。 如果已按照[先决条件](./opencensus-local-forwarder.md)中的说明操作，则该文件位于 `C:\LF-WindowsServiceHost`
 
     ```xml
       <OpenCensusToApplicationInsights>
@@ -186,7 +186,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
 3. 运行 Simple Go 应用后，导航到 `http://localhost:50030`。 每次刷新浏览器都将生成文本“hello world”，并附带由本地转发器拾取的相应 span 数据。
 
-4. 若要确认**本地转发器**是否正在拾取跟踪，请检查 `LocalForwarder.config` 文件。 如果已按照[先决条件](https://docs.microsoft.com/azure/application-insights/local-forwarder#windows-service)中的步骤执行了操作，它将位于 `C:\LF-WindowsServiceHost` 中。
+4. 若要确认**本地转发器**是否正在拾取跟踪，请检查 `LocalForwarder.config` 文件。 如果已按照[先决条件](https://docs.microsoft.com/azure/application-insights/local-forwarder)中的步骤执行了操作，它将位于 `C:\LF-WindowsServiceHost` 中。
 
     在下面的日志文件图像中，可以看到在运行第二个脚本（已在其中添加了导出程序）之前，`OpenCensus input BatchesReceived` 为 0。 开始运行更新的脚本以后，`BatchesReceived` 根据我们输入的值的数目递增：
     

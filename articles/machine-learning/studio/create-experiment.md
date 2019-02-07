@@ -1,6 +1,6 @@
 ---
-title:简单试验 titleSuffix: Azure 机器学习工作室 description:本机器学习教程逐步讲解如何轻松完成数据科研试验。 使用回归算法预测汽车价格。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: tutorial
+title:简单试验 titleSuffix:Azure 机器学习工作室 description:本机器学习教程逐步讲解如何轻松完成数据科研试验。 使用回归算法预测汽车价格。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: tutorial
 
 author: garyericson ms.author: garye ms.custom: seodec18 ms.date:03/20/2017
 ---

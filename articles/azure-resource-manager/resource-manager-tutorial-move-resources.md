@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 12/19/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0ae29146b1b44f3017d37b3cebf7ec4cf39115d0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 3aadeb92fccc2baa445bce73e3d3111168aeecf6
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731749"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490246"
 ---
 # <a name="tutorial-move-azure-resources-to-another-resource-group-or-subscription"></a>教程：将 Azure 资源移到另一个资源组或订阅中
 
@@ -35,6 +35,8 @@ ms.locfileid: "53731749"
 > * 清理资源。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prepare-the-resources"></a>准备资源
 
@@ -63,7 +65,7 @@ ms.locfileid: "53731749"
 
 ```azurepowershell-interactive
 $projectName = Read-Host -prompt "Enter a project name"
-New-AzureRmDeployment `
+New-AzDeployment `
     -Name $projectname `
     -Location "centralus" `
     -TemplateUri "https://armtutorials.blob.core.windows.net/moveresources/azuredeploy.json" `
@@ -101,8 +103,8 @@ $resourceGroupSource = $projectName + "rg1"
 $resourceGroupDestination = $projectName + "rg2"
 $storageAccountName = $projectName + "store"
 
-$storageAccount = Get-AzureRmResource -ResourceGroupName $resourceGroupSource -ResourceName $storageAccountName
-Move-AzureRmResource -DestinationResourceGroupName $resourceGroupDestination -ResourceId $storageAccount.ResourceId
+$storageAccount = Get-AzResource -ResourceGroupName $resourceGroupSource -ResourceName $storageAccountName
+Move-AzResource -DestinationResourceGroupName $resourceGroupDestination -ResourceId $storageAccount.ResourceId
 ```
 
 打开 [Azure 门户](https://portal.azure.com)，验证存储帐户是否已移至其他资源组，并验证存储帐户位置是否仍为美国东部。

@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: cf283803dfa45c362330ccf73fc5eea198d3a5e2
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 0d9ee24e9ab104fb554033802507f78fcbf38fc3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278638"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170923"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 选择、管理和操作 Service Fabric 群集。
 
 ## <a name="commands"></a>命令
 
-|命令|Description|
+|命令|说明|
 | --- | --- |
 | code-versions | 获取 Service Fabric 群集中预配的结构代码版本的列表。 |
 | config-versions | 获取 Service Fabric 群集中预配的结构配置版本的列表。 |
@@ -53,14 +53,14 @@ ms.locfileid: "53278638"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --code-version | Service Fabric 的产品版本。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -75,14 +75,14 @@ ms.locfileid: "53278638"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --config-version | Service Fabric 的配置版本。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -97,7 +97,7 @@ ms.locfileid: "53278638"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --applications-health-state-filter | 用于根据运行状态筛选群集运行状况查询结果中返回的应用程序运行状态对象。 此参数的可能值包括从成员获取的整数值或对 HealthStateFilter 枚举成员进行位运算获取的整数值。 仅返回与筛选器匹配的应用程序。 所有应用程序都用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为“OK”(2) 和“Warning”(4) 的应用程序的运行状态。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
 | --events-health-state-filter | 用于根据运行状况筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
@@ -108,7 +108,7 @@ ms.locfileid: "53278638"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -123,13 +123,13 @@ ms.locfileid: "53278638"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -149,7 +149,7 @@ ms.locfileid: "53278638"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --operation-id [必需] | 用于标识此 API 的调用的 GUID。  需将此参数传入相应的 GetProgress API。 |
 | --force | 指示是否要正常回滚和清理执行用户造成的操作后修改的内部系统状态。 |
@@ -157,7 +157,7 @@ ms.locfileid: "53278638"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -172,7 +172,7 @@ ms.locfileid: "53278638"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --state-filter | 用于根据用户造成的操作的 OperationState 进行筛选。 <br> 65535 - 选择 All <br> 1 - 选择 Running <br> 2 - 选择 RollingBack <br>8 - 选择 Completed <br>16 - 选择 Faulted <br>32 - 选择 Cancelled <br>64 - 选择 ForceCancelled  <br>默认值\: 65535。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
@@ -180,7 +180,7 @@ ms.locfileid: "53278638"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -195,7 +195,7 @@ ms.locfileid: "53278638"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --cluster-manifest-file-path | 群集清单文件路径。 |
 | --code-file-path | 群集代码包文件路径。 |
@@ -203,7 +203,7 @@ ms.locfileid: "53278638"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -218,13 +218,13 @@ ms.locfileid: "53278638"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -239,7 +239,7 @@ ms.locfileid: "53278638"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --health-property [必需] | 运行状况信息的属性。 <br><br> 一个实体可以有不同属性的运行状况报告。 该属性是一个字符串，不是固定的枚举，因此可使报告器灵活地对触发报告的状态条件进行分类。 例如，SourceId 为“LocalWatchdog”的报告器可以监视节点上的可用磁盘的状态，因此它可以报告该节点的“AvailableDisk”属性。 同一报告器可以监视节点连接，因此它可以报告同一节点的“Connectivity”属性。 在运行状况存储中，这些报告均被视为指定节点的单独运行状况事件。 与 SourceId 一起，该属性唯一地标识运行状况信息。 |
 | --health-state    [必需] | 可能的值包括\:“Invalid”、“Ok”、“Warning”、“Error”、“Unknown”。 |
@@ -253,7 +253,7 @@ ms.locfileid: "53278638"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -268,7 +268,7 @@ ms.locfileid: "53278638"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --endpoint [必需] | 群集终结点 URL，包括端口和 HTTP 或 HTTPS 前缀。 |
 | --aad | 使用 Azure Active Directory 进行身份验证。 |
@@ -280,7 +280,7 @@ ms.locfileid: "53278638"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -293,7 +293,7 @@ ms.locfileid: "53278638"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -308,7 +308,7 @@ ms.locfileid: "53278638"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --code-version | 群集代码包版本。 |
 | --config-version | 群集清单版本。 |
@@ -316,7 +316,7 @@ ms.locfileid: "53278638"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -331,7 +331,7 @@ ms.locfileid: "53278638"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --app-health-map | 应用程序名称对的 JSON 编码字典以及引发错误之前的最大不正常百分比。 |
 | --app-type-health-map | 应用程序类型名称对的 JSON 编码字典以及引发错误之前的最大不正常百分比。 |
@@ -356,7 +356,7 @@ ms.locfileid: "53278638"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -371,14 +371,14 @@ ms.locfileid: "53278638"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --upgrade-domain [必需] | 此群集升级的下一个升级域。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -393,13 +393,13 @@ ms.locfileid: "53278638"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -414,13 +414,13 @@ ms.locfileid: "53278638"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -433,7 +433,7 @@ ms.locfileid: "53278638"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --app-health-map | 应用程序名称对的 JSON 编码字典以及引发错误之前的最大不正常百分比。 |
 | --app-type-health-map | 应用程序类型名称对的 JSON 编码字典以及引发错误之前的最大不正常百分比。 |
@@ -457,7 +457,7 @@ ms.locfileid: "53278638"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |

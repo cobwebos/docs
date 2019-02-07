@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 05/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: 5884c7df37ef4bd67f85ec614bdefe87522b6bc6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fe6ec751ed18af24e8a38d6993d8047b62eeed44
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171994"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769753"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>快速入门：使用适用于 C# 的必应视觉搜索 SDK 获取图像见解
 
@@ -26,7 +26,7 @@ ms.locfileid: "55171994"
 * 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
 * 如果使用的是 Linux/MacOS，则可使用 [Mono](http://www.mono-project.com/) 运行此应用程序。
 * NuGet 视觉搜索包。 
-    - 在 Visual Studio 中的解决方案资源管理器中，右键单击项目并从菜单中选择 `Manage NuGet Packages`。 安装 `Microsoft.Azure.CognitiveServices.Search.CustomSearch` 包。 安装 NuGet 包还会安装以下程序：
+    - 在 Visual Studio 中的解决方案资源管理器中，右键单击项目并从菜单中选择 `Manage NuGet Packages`。 安装 `Microsoft.Azure.CognitiveServices.Search.VisualSearch` 包。 安装 NuGet 包还会安装以下程序：
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
         - Newtonsoft.Json
@@ -48,7 +48,7 @@ ms.locfileid: "55171994"
 2. 使用订阅密钥实例化客户端。
     
     ```csharp
-    var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+    var client = new VisualSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
     ```
     
 ## <a name="send-a-search-request"></a>发送搜索请求 
@@ -56,7 +56,7 @@ ms.locfileid: "55171994"
 1. 为图像创建 `FileStream`（在本例中为 `TestImages/image.jpg`）。 然后，使用 `client.Images.VisualSearchMethodAsync()` 通过客户端发送搜索请求。 
     
     ```csharp
-     System.IO.FileStream stream = new FileStream(Path.Combine("TestImages", "image.jpg"), FileMode.Open;
+     System.IO.FileStream stream = new FileStream(Path.Combine("TestImages", "image.jpg"), FileMode.Open);
      // The knowledgeRequest parameter is not required if an image binary is passed in the request body
      var visualSearchResults = client.Images.VisualSearchMethodAsync(image: stream, knowledgeRequest: (string)null).Result;
     ```
@@ -77,13 +77,13 @@ ms.locfileid: "55171994"
     // List of tags
     if (visualSearchResults.Tags.Count > 0)
     {
-        var firstTagResult = visualSearchResults.Tags.First();
+        var firstTagResult = visualSearchResults.Tags[0];
         Console.WriteLine($"Visual search tag count: {visualSearchResults.Tags.Count}");
     
         // List of actions in first tag
         if (firstTagResult.Actions.Count > 0)
         {
-            var firstActionResult = firstTagResult.Actions.First();
+            var firstActionResult = firstTagResult.Actions[0];
             Console.WriteLine($"First tag action count: {firstTagResult.Actions.Count}");
             Console.WriteLine($"First tag action type: {firstActionResult.ActionType}");
         }
@@ -91,6 +91,7 @@ ms.locfileid: "55171994"
         {
             Console.WriteLine("Couldn't find tag actions!");
         }
+    }
     ```
 
 ## <a name="next-steps"></a>后续步骤

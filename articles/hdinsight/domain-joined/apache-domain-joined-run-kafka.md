@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 01/14/2019
-ms.openlocfilehash: 9e6ebd45f08d2479c73e0753fe1e8df3455df1e1
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 381958b462b668447a6548029a1be616df7a3a4b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265288"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750216"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教程：使用企业安全性套餐（预览版）在 HDInsight 中配置 Apache Kafka 策略
 
@@ -48,7 +48,7 @@ ms.locfileid: "54265288"
 
 ## <a name="create-domain-users"></a>创建域用户
 
-访问[使用企业安全性套餐创建 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds#create-a-domain-joined-hdinsight-cluster)，以了解如何创建 sales_user 和 marketing_user 域用户。 在生产方案中，域用户来自你的 Active Directory·租户。
+访问[使用企业安全性套餐创建 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds)，以了解如何创建 sales_user 和 marketing_user 域用户。 在生产方案中，域用户来自你的 Active Directory·租户。
 
 ## <a name="create-ranger-policy"></a>创建 Ranger 策略
 
@@ -153,7 +153,7 @@ ms.locfileid: "54265288"
    export KAFKABROKERS=<brokerlist>:9092
    ```
 
-   示例：`export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
+   示例： `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
 4. 按照以下文章的**生成并部署示例**下的步骤 3 进行操作：[教程：使用 Apache Kafka 生成者和使用者 API](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example) 来确保 `kafka-producer-consumer.jar` 也可供 **sales_user** 使用。
 

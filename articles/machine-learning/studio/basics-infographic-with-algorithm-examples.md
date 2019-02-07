@@ -1,8 +1,21 @@
 ---
-title:算法示例 titleSuffix: Azure 机器学习工作室 description:关于机器学习基础知识的易于理解的概述包括算法示例。 可下载的信息图涵盖大多数机器学习问题。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
-
-author: garyericson ms.author: garye ms.custom: seodc18 ms.date:12/18/2017
+title: 算法示例
+titleSuffix: Azure Machine Learning Studio
+description: 关于机器学习基础知识的易于理解的概述包括算法示例。 可下载的信息图涵盖大多数机器学习问题。
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: garyericson
+ms.author: garye
+ms.custom: seodc18
+ms.date: 12/18/2017
+ms.openlocfilehash: bffdbf58929a0cb7525726be53d83794adf315bf
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295570"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>可下载信息图：包含算法示例的机器学习基础知识
 下载此易于理解的机器学习基础知识信息图概述，以了解用于解答常见机器学习问题的常用算法。 算法示例可帮助机器学习初学者了解可使用的算法及其用途。

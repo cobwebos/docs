@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/013/2018
 ms.author: genli
-ms.openlocfilehash: 0b6ade7a6031b957f2405e525d61c9ca1d2dac3d
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 2c5fac377dfab4b4c85991dcb8f4e15f4e3cb61a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809091"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225922"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>通过使用 Azure 门户将 OS 磁盘附加到恢复 VM，对 Windows VM 进行故障排除
 如果 Windows 虚拟机 (VM) 在 Azure 中遇到启动或磁盘错误，可能需要对虚拟硬盘本身执行故障排除步骤。 一个常见示例是应用程序更新失败，使 VM 无法成功启动。 本文详细介绍如何使用 Azure 门户将虚拟硬盘连接到另一个 Windows VM 来修复所有错误，然后重新创建原始 VM。
@@ -37,12 +37,11 @@ ms.locfileid: "53809091"
 ## <a name="determine-boot-issues"></a>确定启动问题
 若要确定 VM 不能正常启动的原因，请检查启动诊断 VM 屏幕截图。 一个常见示例是应用程序更新失败，或底层虚拟硬盘已删除或移动。
 
-在门户中选择 VM，并向下滚动到“支持 + 故障排除”部分。 单击“启动诊断”查看屏幕截图。 记下任何特定的错误消息或错误代码，帮助确定 VM 遇到问题的原因。 以下示例显示一个 VM 正在等待系统停止服务：
+在门户中选择 VM，并向下滚动到“支持 + 故障排除”部分。 单击“启动诊断”查看屏幕截图。 记下任何特定的错误消息或错误代码，帮助确定 VM 遇到问题的原因。 
 
 ![查看 VM 启动诊断控制台日志](./media/troubleshoot-recovery-disks-portal-windows/screenshot-error.png)
 
-也可单击“屏幕截图”，下载捕获的 VM 屏幕截图。
-
+也可单击“下载屏幕截图”，下载捕获的 VM 屏幕截图。
 
 ## <a name="view-existing-virtual-hard-disk-details"></a>查看现有虚拟硬盘的详细信息
 在将虚拟硬盘附加到另一个 VM 之前，需要标识虚拟硬盘 (VHD) 的名称。 

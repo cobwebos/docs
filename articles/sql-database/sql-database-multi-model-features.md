@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 0c46ba3d2fcd59f43df2383c3e0471fa36217536
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d833d6ea695c05f80f7823f391142fee28872c40
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550756"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300245"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Azure SQL 数据库的多模型功能
 
@@ -50,7 +50,7 @@ Azure SQL 数据库提供图形数据库功能，用于对数据库中的多对�
 
 不能使用关系数据库实现的目的也不能使用图形数据库来实现。 但是，使用图形数据库可以轻松表达某些查询。 可根据以下因素来确定是要选择图形数据库还是关系数据库：
 
-- 为分层数据建模，其中一个节点可以包含多个父级，因此不能使用 HieararchyId
+- 为分层数据建模，其中一个节点可以包含多个父级，因此不能使用 HierarchyId
 - 应用程序存在复杂的多对多关系；在应用程序演进过程中，会不断添加新的关系。
 - 需要分析互联的数据和关系。
 
@@ -96,7 +96,7 @@ Azure SQL 数据库还提供专用的[空间索引](https://docs.microsoft.com/s
 SQL Server 提供一个强大平台用于开发丰富的半结构化数据管理应用程序。 XML 支持已集成到 SQL Server 中的所有组件，其中包括：
 
 - XML 数据类型。 XML 值原生可存储在 XML 数据类型列中，可以根据 XML 架构集合将该列类型化，或者将其保持非类型化。 可为 XML 列编制索引。
-- 可以针对列中存储的 XML 数据和 XML 类型的变量指定 XQuery 查询。 可在任意 Transact-SQL 查询中使用 XQUery 功能来访问数据库中使用的任何数据模型。
+- 可以针对列中存储的 XML 数据和 XML 类型的变量指定 XQuery 查询。 可在任何 Transact-SQL 查询中使用 XQuery 功能来访问数据库中使用的任何数据模型。
 - 使用[主要 XML 索引](https://docs.microsoft.com/sql/relational-databases/xml/xml-indexes-sql-server#primary-xml-index)为 XML 文档中的所有元素自动编制索引，或者使用[辅助 XML 索引](https://docs.microsoft.com/sql/relational-databases/xml/xml-indexes-sql-server#secondary-xml-indexes)来指定要编制索引的确切路径。
 - OPENROWSET 允许批量加载 XML 数据。
 - 将关系数据转换为 XML 格式。

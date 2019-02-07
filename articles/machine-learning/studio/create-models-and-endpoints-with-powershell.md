@@ -1,6 +1,6 @@
 ---
-title:从一个工作室实验中创建多个模型 titleSuffix: Azure 机器学习工作室 description:使用 PowerShell 创建多个具有相同算法和不同训练数据集的机器学习模型和 Web 服务终结点。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:从一个工作室实验中创建多个模型 titleSuffix:Azure 机器学习工作室 description:使用 PowerShell 创建多个具有相同算法和不同训练数据集的机器学习模型和 Web 服务终结点。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:2017/04/04
 ---

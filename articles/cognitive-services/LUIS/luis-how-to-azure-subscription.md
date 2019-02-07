@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/18/2019
+ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: 7662d58c1686dfa4e545246eb897af134a67144c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 26954c8f839ff0bfb2da484e4fb535f33d4e07ed
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473378"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239173"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>将订阅密钥与 LUIS 应用配合使用
 
@@ -43,7 +43,7 @@ ms.locfileid: "54473378"
 
     ![Azure API 选择](./media/luis-azure-subscription/azure-api-choice.png) 
 
-1. 创建语言理解资源后，可以在“资源管理”->“密钥”中查看生成的密钥。 请记下密钥。 下一部分会介绍如何在 LUIS 门户中将此新资源连接到 LUIS 应用。 到时需要使用在步骤 3 中指定的 LUIS 资源名称。
+1. 创建语言理解资源后，可以在“资源管理”->“密钥”中查看生成的密钥。 下一部分会介绍如何在 LUIS 门户中将此新资源连接到 LUIS 应用。 到时需要使用在步骤 3 中指定的 LUIS 资源名称。
 
     ![Azure 密钥](./media/luis-azure-subscription/azure-keys.png)
 
@@ -163,7 +163,7 @@ ms.locfileid: "54473378"
 
     此 POST API 需要以下设置：
 
-    |类型|设置|值|
+    |Type|设置|值|
     |--|--|--|
     |标头|`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。|
     |标头|`Ocp-Apim-Subscription-Key`|你的[创作密钥](luis-how-to-account-settings.md)。|

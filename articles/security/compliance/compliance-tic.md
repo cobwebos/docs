@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: b1a406c15377cb6931f92594f5ce1526a2f2ab99
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: f5efeabf3cf6d52f74aa2d064dc4c67c877d34e5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017093"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751916"
 ---
 # <a name="trusted-internet-connections-guidance"></a>受信任 Internet 连接指南
 
@@ -49,7 +49,7 @@ TIC 的目标是让各机构了解：
 
 要实现从部门或代理 (D/A) 到 Azure 或 Office 365 的连接，而无需通过 D/A TIC 路由流量，D/A 必须使用加密隧道或云服务提供商 (CSP) 的专用连接。 CSP 服务可确保不向公共 Internet 提供与 D/A 云资产的连接，以便代理人员直接访问。
 
-Office 365 符合 TIC 2.0 附录 H，该附录使用启用了 [Microsoft 对等互连](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains)的 ExpressRoute 或使用 TLS 1.2 加密所有流量的 Internet 连接。 D/A 网络上的 D/A 最终用户可通过其代理网络和 TIC 基础结构通过 Internet 进行连接。 阻止了 Office 365 的所有远程 Internet 访问并通过该代理路由。 通过 ExpressRoute 连接与启用的 Microsoft 对等互连（公共对等互连的一种）的连接，D/A 也可连接到 Office 365。  
+Office 365 符合 TIC 2.0 附录 H，该附录使用启用了 [Microsoft 对等互连](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings)的 ExpressRoute 或使用 TLS 1.2 加密所有流量的 Internet 连接。 D/A 网络上的 D/A 最终用户可通过其代理网络和 TIC 基础结构通过 Internet 进行连接。 阻止了 Office 365 的所有远程 Internet 访问并通过该代理路由。 通过 ExpressRoute 连接与启用的 Microsoft 对等互连（公共对等互连的一种）的连接，D/A 也可连接到 Office 365。  
 
 仅对于 Azure，第二个选项 (VPN) 和第三个选项 (ExpressRoute) 在与限制 Internet 访问的服务结合使用时可以满足这些要求。
 

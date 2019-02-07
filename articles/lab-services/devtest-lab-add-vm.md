@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 05e68e13ab5aa526362e71413c105340ad07426f
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 69c0ce73fa5c29a2d0e49d9c4bb15a855fadc75b
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082072"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746775"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加 VM
-如果已[创建第一个 VM](devtest-lab-create-first-vm.md)，则很可能从预加载的[市场映像](devtest-lab-configure-marketplace-images.md)执行此操作。 现在，如果要将后续 VM 添加到实验室，还可以选择作为[自定义映像](devtest-lab-create-template.md)或[公式](devtest-lab-manage-formulas.md)的*基本*映像。 本教程会引导完成使用 Azure 门户向开发测试实验室中的实验室添加 VM 的过程。
+如果已[创建第一个 VM](tutorial-create-custom-lab.md#add-a-vm-to-the-lab)，则很可能从预加载的[市场映像](devtest-lab-configure-marketplace-images.md)执行此操作。 现在，如果要将后续 VM 添加到实验室，还可以选择作为[自定义映像](devtest-lab-create-template.md)或[公式](devtest-lab-manage-formulas.md)的*基本*映像。 本教程会引导完成使用 Azure 门户向开发测试实验室中的实验室添加 VM 的过程。
 
 本文还演示了如何在实验室中管理 VM 的项目。
 
@@ -41,6 +41,8 @@ ms.locfileid: "55082072"
     2. 输入在虚拟机上被授予了管理员权限的**用户名**。 使用唯一的自动生成名称预先填充计算机的“用户名”。 该名称对应于电子邮件地址中的用户名。 此功能可节省每次创建新计算机时确定用户名的时间。 同样，如果愿意，可以用自己选择的用户名替代此自动填充的字段。 若要替代用户名的自动填充值，请在“用户名”文本框中输入值。 此用户在虚拟机上被授予了管理员权限。
     3. 如果要在实验室中创建第一个 VM，请输入用户的密码。 若要将此密码保存为与实验室关联的 Azure Key Vault 中的默认密码，请选择“另存为默认密码”。 默认密码保存在名为“VmPassword”的密钥保管库中。 尝试在实验室中创建后续 VM 时，会自动选择“VmPassword”作为密码。 若要替代该值，请清除“使用已保存的机密”复选框，然后输入密码。 
 
+        ![选择一个库](./media/tutorial-create-custom-lab/new-virtual-machine.png)
+
         还可以先在密钥保管库中保存机密，然后在实验室中创建 VM 时使用它。 有关详细信息，请参阅[在密钥保管库中存储机密](devtest-lab-store-secrets-in-key-vault.md)。 若要使用在密钥保管库中存储的密码，请选择“使用已保存的机密”，并指定与机密（密码）对应的密钥值。
     4. 在“更多选项”部分中，选择“更改大小”。 选择指定了要创建的 VM 的处理器内核、RAM 大小和硬盘驱动器大小的预定义项之一。
     5. 选择“添加或删除项目”。 选择并配置要添加到基础映像的项目。
@@ -52,9 +54,13 @@ ms.locfileid: "55082072"
     4. 若要自动删除 VM，请指定“到期日期和时间”。 
     5. 要使 VM 可由实验室用户认领，对于“使此虚拟机可认领”选项，请选择“是”。 
     6. 指定想要使其可供实验室用户使用的 **VM 实例**数量。 
-3. 选择“创建”将指定的 VM 添加到实验室。
+
+        ![选择一个库](./media/tutorial-create-custom-lab/new-vm-advanced-settings.png)
+1. 选择“创建”将指定的 VM 添加到实验室。
 
    实验室页将显示 VM 的创建状态 - 先是显示为“正在创建”，然后在 VM 启动后显示为“正在运行”。
+
+    ![VM 创建状态](./media/tutorial-create-custom-lab/vm-creation-status.png)
 
 ## <a name="add-an-existing-artifact-to-a-vm"></a>将现有项目添加到 VM
 创建 VM 时，可添加现有项目。 每个实验室包括公共开发测试实验室项目存储库中的项目和已经创建并添加到自己的项目存储库的项目。

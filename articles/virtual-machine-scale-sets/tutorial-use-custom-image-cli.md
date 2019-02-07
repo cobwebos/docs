@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 119a53949b6184389c0e36e56732f0486c24ca5c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7e2e092af0fc0340a0db7b958b02d3d16942ca77
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193482"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755180"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>教程：通过 Azure CLI 创建和使用虚拟机规模集的自定义映像
 创建规模集时，需指定部署 VM 实例时要使用的映像。 若要在部署 VM 实例之后减少任务数目，可以使用自定义 VM 映像。 在此自定义 VM 映像中可以完成全部所需的应用程序安装或配置步骤。 在规模集中创建的任何 VM 实例使用自定义 VM 映像，并随时可为应用程序流量提供服务。 本教程介绍如何执行下列操作：
@@ -44,7 +44,7 @@ ms.locfileid: "55193482"
 >[!NOTE]
 > 本教程介绍创建和使用通用化 VM 映像的过程。 不支持从专用 VM 映像创建规模集。
 
-首先使用 [az group create](/cli/azure/group#az_group_create) 创建资源组，然后使用 [az vm create](/cli/azure/vm) 创建 VM。 此 VM 可用作自定义 VM 映像的源。 以下示例在名为 *myResourceGroup* 的资源组中创建名为 *myVM* 的 VM：
+首先使用 [az group create](/cli/azure/group) 创建资源组，然后使用 [az vm create](/cli/azure/vm) 创建 VM。 此 VM 可用作自定义 VM 映像的源。 以下示例在名为 *myResourceGroup* 的资源组中创建名为 *myVM* 的 VM：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -87,7 +87,7 @@ exit
 ## <a name="create-a-custom-vm-image-from-the-source-vm"></a>从源 VM 创建自定义 VM 映像
 现已自定义源 VM，其上已安装 Nginx Web 服务器。 让我们创建与规模集配合使用的自定义 VM 映像。
 
-若要创建映像，需要解除分配 VM。 使用 [az vm deallocate](/cli//azure/vm#az_vm_deallocate) 解除分配 VM。 然后，使用 [az vm generalize](/cli//azure/vm#az_vm_generalize) 将 VM 的状态设置为已通用化，以便 Azure 平台知道该 VM 可使用自定义映像。 只能从通用化 VM 创建映像：
+若要创建映像，需要解除分配 VM。 使用 [az vm deallocate](/cli//azure/vm) 解除分配 VM。 然后，使用 [az vm generalize](/cli//azure/vm) 将 VM 的状态设置为已通用化，以便 Azure 平台知道该 VM 可使用自定义映像。 只能从通用化 VM 创建映像：
 
 ```azurecli-interactive
 az vm deallocate --resource-group myResourceGroup --name myVM
@@ -122,7 +122,7 @@ az vmss create \
 
 
 ## <a name="test-your-scale-set"></a>测试规模集
-若要允许流量抵达规模集并验证 Web 服务器是否正常工作，请使用 [az network lb rule create](/cli/azure/network/lb/rule#create) 命令创建负载均衡器规则。 以下示例创建名为 *myLoadBalancerRuleWeb* 的规则，该规则允许 *TCP* 端口 *80* 上的流量：
+若要允许流量抵达规模集并验证 Web 服务器是否正常工作，请使用 [az network lb rule create](/cli/azure/network/lb/rule) 命令创建负载均衡器规则。 以下示例创建名为 *myLoadBalancerRuleWeb* 的规则，该规则允许 *TCP* 端口 *80* 上的流量：
 
 ```azurecli-interactive
 az network lb rule create \
@@ -136,7 +136,7 @@ az network lb rule create \
   --protocol tcp
 ```
 
-若要查看规模集的运行方式，请使用 [az network public-ip show](/cli/azure/network/public-ip#show) 获取负载均衡器的公共 IP 地址。 以下示例获取创建为规模集一部分的 *myScaleSetLBPublicIP* 的 IP 地址：
+若要查看规模集的运行方式，请使用 [az network public-ip show](/cli/azure/network/public-ip) 获取负载均衡器的公共 IP 地址。 以下示例获取创建为规模集一部分的 *myScaleSetLBPublicIP* 的 IP 地址：
 
 ```azurecli-interactive
 az network public-ip show \
@@ -152,7 +152,7 @@ az network public-ip show \
 
 
 ## <a name="clean-up-resources"></a>清理资源
-若要删除规模集和其他资源，请使用 [az group delete](/cli/azure/group#az_group_delete) 删除资源组及其所有资源。 `--no-wait` 参数会使光标返回提示符处，不会等待操作完成。 `--yes` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。
+若要删除规模集和其他资源，请使用 [az group delete](/cli/azure/group) 删除资源组及其所有资源。 `--no-wait` 参数会使光标返回提示符处，不会等待操作完成。 `--yes` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes

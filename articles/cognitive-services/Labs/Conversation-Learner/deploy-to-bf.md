@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0bcb6262201b3399ca4d759bb306a570bea33b00
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 56dab93087249082330c0f685e5457bc2585664c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578763"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55237925"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>如何部署对话学习器机器人
 
@@ -53,7 +53,7 @@ ms.locfileid: "45578763"
 
 5. “模型 ID”GUID 显示在页面顶部附近。
 
-## <a name="option-1-deploying-a-conversation-learner-bot-to-run-locally"></a>选项1：部署要在本地运行的对话学习器机器人
+## <a name="option-1-deploying-a-conversation-learner-bot-to-run-locally"></a>选项 1：部署要在本地运行的 Conversation Learner 机器人
 
 此选项会将机器人部署到本地计算机，并显示使用 Bot Framework 模拟器进行访问的方法。
 
@@ -90,7 +90,7 @@ ms.locfileid: "45578763"
 
 2. 你现在已经在与机器人交谈了。
 
-## <a name="option-2-deploy-to-azure"></a>选项 2：部署到 Azure
+## <a name="option-2-deploy-to-azure"></a>选项 2：“部署到 Azure”
 
 采用与发布其他机器人类似的方式发布对话学习器机器人。 在较高级别，将代码上传到托管网站，设置相应配置值，然后使用各种渠道注册机器人。 本视频详细介绍了如何使用 Azure 机器人服务发布机器人。
 
@@ -118,6 +118,7 @@ ms.locfileid: "45578763"
         CONVERSATION_LEARNER_SERVICE_URI | "https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/"
         CONVERSATION_LEARNER_MODEL_ID      | 应用程序 ID GUID，通过模型“设置”下的对话学习器 UI 获取
         LUIS_AUTHORING_KEY               | 此模型的 LUIS 创作密钥
+        LUIS_SUBSCRIPTION_KEY            | 不需要，但建议用于已发布的机器人，以避免使用创作配额。
     
     4. 单击页面顶部附近的“保存”
     5. 打开左侧的“生成”导航项

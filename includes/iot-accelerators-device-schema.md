@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: dc87079083b8f07ad18f5f871bff64de8d492ebd
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 414bb0183e68cb46e52c379ea3f7aceda5d4170e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285640"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55701176"
 ---
 ## <a name="the-parts-of-the-device-model-schema"></a>设备模型架构的组成部分
 
@@ -46,7 +46,7 @@ ms.locfileid: "39285640"
 
 下表描述了顶级架构条目：
 
-| 架构条目 | Description |
+| 架构条目 | 说明 |
 | -- | --- |
 | `SchemaVersion` | 架构版本始终是 `1.0.0`，特定于此文件的格式。 |
 | `Id` | 此设备模型的唯一 ID。 |
@@ -105,7 +105,7 @@ ms.locfileid: "39285640"
 }
 ```
 
-解决方案启动时，会查询所有模拟设备，以生成要在 UI 中使用的 `Type` 值列表。 解决方案使用 `Latitiude` 和 `Longitude` 属性将设备位置添加到仪表板上的地图中。
+解决方案启动时，会查询所有模拟设备，以生成要在 UI 中使用的 `Type` 值列表。 解决方案使用 `Latitude` 和 `Longitude` 属性将设备位置添加到仪表板上的地图中。
 
 ## <a name="telemetry"></a>遥测
 
@@ -142,7 +142,7 @@ ms.locfileid: "39285640"
 * 对象 - 使用 JSON 序列化
 * 二进制 - 使用 base64 序列化
 * 文本
-* 布尔
+* Boolean
 * Integer
 * Double
 * DateTime

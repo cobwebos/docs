@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: a8c371d9d221ac6232c9293f6ca3192f163dfacb
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 115be0ad1b7dec44f036f6d50c2ac30ceba37ba7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156283"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457082"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights：常见问题
 
@@ -245,42 +245,51 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 
 ## <a name="can-i-monitor-an-intranet-web-server"></a>是否可以监视 Intranet Web 服务器？
 
-以下提供了两种方法：
+可以，但你需要通过防火墙例外或代理重定向来允许流量到我们的服务。
+- QuickPulse `rt.services.visualstudio.com:443` 
+- ApplicationIdProvider `https://dc.services.visualstudio.com:443` 
+- TelemetryChannel `https://dc.services.visualstudio.com:443` 
 
-### <a name="firewall-door"></a>防火墙门
 
-允许 Web 服务器将遥测发送到我们的终结点 https://dc.services.visualstudio.com:443 和 https://rt.services.visualstudio.com:443。 
+在[此处](../../azure-monitor/app/ip-addresses.md)查看我们的服务和 IP 地址列表。
 
-### <a name="proxy"></a>代理
+### <a name="firewall-exception"></a>防火墙例外
 
-通过在示例 ApplicationInsights.config 中覆盖这些设置，将流量从服务器路由到 Intranet 上的网关。如果这些“终结点”属性在配置中不存在，这些类将使用下面示例中显示的默认值。
+允许 Web 服务器将遥测发送到我们的终结点。 
 
-#### <a name="example-applicationinsightsconfig"></a>示例 ApplicationInsights.config：
+### <a name="proxy-redirect"></a>代理重定向
+
+通过重写配置中的终结点，将流量从服务器路由到 Intranet 上的网关。
+如果配置中不存在这些“终结点”属性，则这些类将使用下面示例 ApplicationInsights.config 中显示的默认值。 
+
+你的网关应将流量路由到我们的终结点的基址。 在你的配置中，将默认值替换为 `http://<your.gateway.address>/<relative path>`。
+
+
+#### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>使用默认终结点的示例 ApplicationInsights.config：
 ```xml
 <ApplicationInsights>
+  ...
+  <TelemetryModules>
+    <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector"/>
+      <QuickPulseServiceEndpoint>https://rt.services.visualstudio.com/QuickPulseService.svc</QuickPulseServiceEndpoint>
+    </Add>
+  </TelemetryModules>
     ...
-    <TelemetryChannel>
-         <EndpointAddress>https://dc.services.visualstudio.com/v2/track</EndpointAddress>
-    </TelemetryChannel>
-    ...
-    <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights">
-        <ProfileQueryEndpoint>https://dc.services.visualstudio.com/api/profiles/{0}/appId</ProfileQueryEndpoint>
-    </ApplicationIdProvider>
-    ...
+  <TelemetryChannel>
+     <EndpointAddress>https://dc.services.visualstudio.com/v2/track</EndpointAddress>
+  </TelemetryChannel>
+  ...
+  <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights">
+    <ProfileQueryEndpoint>https://dc.services.visualstudio.com/api/profiles/{0}/appId</ProfileQueryEndpoint>
+  </ApplicationIdProvider>
+  ...
 </ApplicationInsights>
 ```
 
 注意，自 v2.6.0 开始具备 ApplicationIdProvider 功能
 
-网关须将流量路由到 https://dc.services.visualstudio.com:443
 
-将上面的值替换为：`http://<your.gateway.address>/<relative path>`
  
-示例： 
-```
-http://<your.gateway.endpoint>/v2/track 
-http://<your.gateway.endpoint>/api/profiles/{0}/apiId
-```
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>是否可以在 Intranet 服务器上运行可用性 Web 测试？
 

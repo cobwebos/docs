@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 01/29/2019
 ms.author: tomfitz
-ms.openlocfilehash: f4d63d4ad0841244cf2548b0842eea880e27a152
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1ab3abb2542b3fec461f1d9ff569ea8ab74458d3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463025"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251973"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -57,6 +57,7 @@ ms.locfileid: "54463025"
 * Azure Active Directory B2C
 * Azure Cosmos DB
 * Azure 数据资源管理器
+* Azure Database for MariaDB
 * Azure Database for MySQL
 * Azure Database for PostgreSQL
 * Azure DevOps - 具有非 Microsoft 扩展购买的 Azure DevOps 组织必须先[取消其购买](https://go.microsoft.com/fwlink/?linkid=871160)，然后才能跨订阅移动帐户。
@@ -99,7 +100,7 @@ ms.locfileid: "54463025"
 * 门户仪表板
 * Power BI - Power BI Embedded 和 Power BI 工作区集合
 * 公共 IP - 可以移动基本 SKU 公共 IP。 不能移动标准 SKU 公共 IP。
-* 恢复服务保管库 - 注册订阅以获取[受限公共预览版](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)。
+* 恢复服务保管库 - 注册[专用预览版](#recovery-services-limitations)。
 * Azure Redis 缓存 - 如果 Azure Redis 缓存实例配置了虚拟网络，则实例无法被移动到其他订阅。 请参阅[虚拟网络限制](#virtual-networks-limitations)。
 * 计划程序
 * 搜索 - 不能一次性移动不同区域中的多个搜索资源。 只能通过多个单独的操作移动它们。
@@ -176,7 +177,7 @@ ms.locfileid: "54463025"
 * 找到虚拟机的位置。
 * 找到含有以下命名模式的资源组：`AzureBackupRG_<location of your VM>_1` 例如，AzureBackupRG_westus2_1
 * 如果在 Azure 门户中，则查看“显示隐藏的类型”
-* 如果在 PowerShell 中，则使用 `Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` cmdlet
+* 如果在 PowerShell 中，则使用 `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` cmdlet
 * 如果在 CLI 中，则使用 `az resource list -g AzureBackupRG_<location of your VM>_1`
 * 使用类型 `Microsoft.Compute/restorePointCollections` 找到具有命名模式 `AzureBackup_<name of your VM that you're trying to move>_###########` 的资源
 * 删除此资源。 此操作仅删除即时恢复点，不删除保管库中的备份数据。
@@ -307,7 +308,7 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 
 ### <a name="recovery-services-limitations"></a>恢复服务限制
 
- 若要移动恢复服务保管库，请注册订阅以获取[受限公共预览版](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)。
+ 若要移动恢复服务保管库，必须注册专用预览版。 若要试用，请发邮件至 AskAzureBackupTeam@microsoft.com。
 
 目前，每个区域一次可以移动一个恢复服务保管库。 不能移动在 IaaS 虚拟机中备份 Azure 文件、Azure 文件同步或 SQL 的保管库。
 
@@ -336,13 +337,15 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 
 移动资源之前需执行的一些重要步骤。 验证这些条件可以避免错误。
 
+1. 源订阅和目标订阅必须处于活动状态。 如果在启用已禁用的帐户时遇到问题，请[创建 Azure 支持请求](../azure-supportability/how-to-create-azure-support-request.md)。 选择“订阅管理”作为问题类型。
+
 1. 源订阅与目标订阅必须在同一个 [Azure Active Directory 租户](../active-directory/develop/quickstart-create-new-tenant.md)中。 若要检查这两个订阅是否具有相同的租户 ID，请使用 Azure PowerShell 或 Azure CLI。
 
   对于 Azure PowerShell，请使用：
 
   ```azurepowershell-interactive
-  (Get-AzureRmSubscription -SubscriptionName <your-source-subscription>).TenantId
-  (Get-AzureRmSubscription -SubscriptionName <your-destination-subscription>).TenantId
+  (Get-AzSubscription -SubscriptionName <your-source-subscription>).TenantId
+  (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
   ```
 
   对于 Azure CLI，请使用：
@@ -362,14 +365,14 @@ _在订阅之间_移动 Web 应用时存在以下限制：
   对于 PowerShell，请使用以下命令来获取注册状态：
 
   ```azurepowershell-interactive
-  Set-AzureRmContext -Subscription <destination-subscription-name-or-id>
-  Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
+  Set-AzContext -Subscription <destination-subscription-name-or-id>
+  Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
   ```
 
   若要注册资源提供程序，请使用：
 
   ```azurepowershell-interactive
-  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
+  Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
   ```
 
   对于 Azure CLI，请使用以下命令来获取注册状态：
@@ -473,12 +476,12 @@ Authorization: Bearer <access-token>
 
 ### <a name="by-using-azure-powershell"></a>使用 Azure PowerShell
 
-要将现有资源移到另一个资源组或订阅，请使用 [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) 命令。 下面的示例演示了如何将多个资源移动到新的资源组。
+要将现有资源移到另一个资源组或订阅，请使用 [Move-AzResource](/powershell/module/az.resources/move-azresource) 命令。 下面的示例演示了如何将多个资源移动到新的资源组。
 
 ```azurepowershell-interactive
-$webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
-$plan = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExamplePlan
-Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
+$webapp = Get-AzResource -ResourceGroupName OldRG -ResourceName ExampleSite
+$plan = Get-AzResource -ResourceGroupName OldRG -ResourceName ExamplePlan
+Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
 ```
 
 若要移到新订阅，请包含 `DestinationSubscriptionId` 参数的值。

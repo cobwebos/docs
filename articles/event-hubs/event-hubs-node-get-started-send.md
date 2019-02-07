@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c75d4404cb0892c3d90261af2fb4982ac84041c4
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 7281e6bb2dda5dc3fddb5f39bf271293ebb88a73
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163780"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732005"
 ---
 # <a name="send-events-to-azure-event-hubs-using-nodejs"></a>使用 Node.js 将事件发送到 Azure 事件中心
 
@@ -44,7 +44,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 ## <a name="install-nodejs-package"></a>安装 Node.js 程序包
 在计算机上安装适用于 Azure 事件中心的 Node.js 程序包。 
 
-```nodejs
+```shell
 npm install @azure/event-hubs
 ```
 
@@ -59,13 +59,13 @@ npm install @azure/event-hubs
 3. 配置你的事件中心连接字符串、事件中心名称和存储终结点。 可以在 Azure 门户中从“事件中心”页面上的 **RootManageSharedAccessKey** 下的“连接字符串-主要”密钥下复制你的事件中心的连接字符串。 有关详细步骤，请参阅[获取连接字符串](event-hubs-create.md#create-an-event-hubs-namespace)。
 4. 在 Azure CLI 中，导航到 **client** 文件夹路径。 通过运行以下命令安装节点程序包并生成项目：
 
-    ```nodejs
+    ```shell
     npm i
     npm run build
     ```
 5. 通过运行以下命令来启动发送事件： 
 
-    ```nodejs
+    ```shell
     node dist/examples/simpleSender.js
     ```
 
@@ -74,7 +74,7 @@ npm install @azure/event-hubs
 下面是使用 node.js 将事件发送到事件中心的示例代码。 可以手动创建 sampleSender.js 文件，并运行它来将事件发送到事件中心。 
 
 
-```nodejs
+```javascript
 const { EventHubClient, EventPosition } = require('@azure/event-hubs');
 
 const client = EventHubClient.createFromConnectionString(process.env["EVENTHUB_CONNECTION_STRING"], process.env["EVENTHUB_NAME"]);
@@ -95,7 +95,7 @@ main().catch((err) => {
 
 在运行此脚本之前，请记得设置环境变量。 可以在命令行中如以下示例所示配置此变量，也可以使用 [dotenv 程序包](https://www.npmjs.com/package/dotenv#dotenv)。 
 
-```
+```shell
 // For windows
 set EVENTHUB_CONNECTION_STRING="<your-connection-string>"
 set EVENTHUB_NAME="<your-event-hub-name>"

@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 65f80aea-0426-4072-83e1-faf5b76df034
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 159f902326d76900e955c6488eb36e58f4b8f3dc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f6e5ca57eaa4a4a1975c0295933fc91e5726ae4c
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167472"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487925"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>规划混合标识生命周期
 标识是企业移动性和应用程序访问策略的基石之一。 无论登录移动设备还是 SaaS 应用，标识都是能否进行访问的关键所在。 从最高层面讲，标识管理解决方案涉及到存储库的统合与同步，其中又包含预配资源过程的自动化和集中化。 标识解决方案应为跨本地与云的集中式标识功能，且应使用某种形式的标识联合，以维护集中式身份验证，安全地与外部用户和企业进行共享和协作。 资源的范围涵盖操作系统和应用程序，乃至组织中或隶属于组织的人员。 组织结构可以改变，以适应预配策略和过程。

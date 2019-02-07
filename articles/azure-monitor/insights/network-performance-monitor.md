@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 1ba1f11029e98f6bf324466627c465507829dc4d
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: cff96ecb4f4b20e7e3542f6ae6e3e7740b750235
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229840"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729789"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -52,14 +52,14 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 * 英国南部
 * 美国弗吉尼亚州政府
 
-可在[文档](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117#regions)中查看支持 ExpressRoute 监视器的区域列表。
+可在[文档](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117)中查看支持 ExpressRoute 监视器的区域列表。
 
 
 ## <a name="set-up-and-configure"></a>安装和配置
 
 ### <a name="install-and-configure-agents"></a>安装并配置代理 
 
-使用[将 Windows 计算机连接到 Azure Log Analytics](../../azure-monitor/platform/om-agents.md) 和[将 Operations Manager 连接到 Log Analytics](../../azure-monitor/platform/om-agents.md) 中的基本过程安装代理。
+使用[将 Windows 计算机连接到 Azure Log Analytics](../../azure-monitor/platform/agent-windows.md) 和[将 Operations Manager 连接到 Log Analytics](../../azure-monitor/platform/om-agents.md) 中的基本过程安装代理。
 
 ### <a name="where-to-install-the-agents"></a>代理安装位置 
 

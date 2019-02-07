@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5459ba31d30a86efbe40239f9531298c10cf9d98
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 6f2d4c9a7871e0917b33407605abe1389eb4420e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413594"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753599"
 ---
 # <a name="troubleshoot-a-vms-operating-system-disk"></a>对 VM 操作系统磁盘进行故障排除
 
@@ -41,11 +41,11 @@ ms.locfileid: "54413594"
 
 | 命令 | 说明 |
 |---|---|
-| [az vm show](https://docs.microsoft.com/cli/azure/vm#az_vm_show) | 返回虚拟机列表。 在此示例中，查询选项用于返回虚拟机操作系统磁盘。 然后，将此值添加到名为“uri”的变量。 |
-| [az vm delete](https://docs.microsoft.com/cli/azure/vm#az_vm_delete) | 删除虚拟机。 |
+| [az vm show](https://docs.microsoft.com/cli/azure/vm) | 返回虚拟机列表。 在此示例中，查询选项用于返回虚拟机操作系统磁盘。 然后，将此值添加到名为“uri”的变量。 |
+| [az vm delete](https://docs.microsoft.com/cli/azure/vm) | 删除虚拟机。 |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | 创建虚拟机。  |
 | [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk) | 将磁盘附加到虚拟机。 |
-| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az_vm_list_ip_addresses) | 返回虚拟机的 IP 地址。 |
+| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm) | 返回虚拟机的 IP 地址。 |
 
 ## <a name="next-steps"></a>后续步骤
 

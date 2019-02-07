@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: daveba
-ms.openlocfilehash: 2ca70805a0806078613bb37ac1d2836dd8d626c8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8274909b40d872309230f9c9f6c045b4283fd6eb
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180732"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752324"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -95,7 +95,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 请参阅以下列表来配置 Azure 逻辑应用的托管标识（在可用的区域中）：
 
 - [Azure 门户](/azure/logic-apps/create-managed-service-identity#azure-portal)
-- [Azure 资源管理器模板](/azure/app-service/overview-managed-identity#deployment-template)
+- [Azure 资源管理器模板](/azure/app-service/overview-managed-identity)
 
 ### <a name="azure-data-factory-v2"></a>Azure 数据工厂 V2
 

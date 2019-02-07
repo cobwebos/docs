@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 01/04/2019
-ms.openlocfilehash: a94f55449535faf0f4d061e3368f408843361063
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.date: 01/28/2019
+ms.openlocfilehash: a48e9a21c97ecb881798b0f944e91cfcf81f0a72
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051962"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295757"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>将 Azure 存储与 Azure HDInsight 群集配合使用
 
@@ -35,7 +35,7 @@ Azure 存储是一种稳健、通用的存储解决方案，它与 HDInsight 无
 | 常规用途 V1   | Blob               | 标准                    | 不适用                    |
 | Blob 存储         | Blob               | 标准                    | 热、冷、存档*    |
 
-建议不要使用默认 blob 容器来存储业务数据。 良好的做法是每次使用之后删除默认 blob 容器以降低存储成本。 请注意，默认容器包含应用程序日志和系统日志。 请确保在删除该容器之前检索日志。
+建议不要使用默认 blob 容器来存储业务数据。 良好的做法是每次使用之后删除默认 blob 容器以降低存储成本。 默认容器包含应用程序日志和系统日志。 请确保在删除该容器之前检索日志。
 
 不支持将单个 blob 容器共享为多个群集的默认文件系统。
  
@@ -63,8 +63,7 @@ HDInsight 提供对在本地附加到计算节点的分布式文件系统的访�
   
   > [!NOTE]  
   > 利用公共容器，可以获得该容器中可用的所有 Blob 的列表以及容器元数据。 利用公共 Blob，仅在知道正确 URL 时才可访问 Blob。 有关详细信息，请参阅<a href="https://docs.microsoft.com/azure/storage/blobs/storage-manage-access-to-resources">管理对容器和 Blob 的访问</a>。
-  > 
-  > 
+
 * **未连接到群集的存储帐户中的专用容器：** 你无法访问这些容器中的 Blob，除非在提交 WebHCat 作业时定义了存储帐户。 本文后面对此做了解释。
 
 创建过程中定义的存储帐户及其密钥存储在群集节点上的 %HADOOP/_HOME%/conf/core-site.xml 中。 HDInsight 的默认行为是使用 core-site.xml 文件中定义的存储帐户。 可以使用 [Apache Ambari](./hdinsight-hadoop-manage-ambari.md) 修改此设置。
@@ -102,7 +101,7 @@ Blob 可用于结构化和非结构化数据。 Blob 容器将数据存储为键
 ### <a name="use-the-azure-portal"></a>使用 Azure 门户
 从门户创建 HDInsight 群集时，可通过以下选项提供存储帐户详细信息。 还可以指定是否要将其他的存储帐户与该群集相关联，如有需要，请选择 Data Lake Storage 或另一个 Azure 存储 blob 作为其他存储。
 
-![HDInsight hadoop 创建数据源](./media/hdinsight-hadoop-use-blob-storage/hdinsight.provision.data.source.png)
+![HDInsight hadoop 创建数据源](./media/hdinsight-hadoop-use-blob-storage/storage.png)
 
 > [!WARNING]  
 > 不支持在 HDInsight 群集之外的其他位置使用别的存储帐户。
@@ -184,7 +183,7 @@ wasb:///example/jars/hadoop-mapreduce-examples.jar
 > [!NOTE]  
 > 在 HDInsight 版本 2.1 和 1.6 群集中，文件名是 <i>hadoop-examples.jar</i>。
 
-&lt;path&gt; 是文件或目录 HDFS 路径名。 由于 Azure 存储容器只是键值存储，因此没有真正的分层文件系统。 Blob 键中的斜杠字符 (/) 解释为目录分隔符。 例如， *hadoop-mapreduce-examples.jar* 的 Blob 名称是：
+&lt;path&gt; 是文件或目录 HDFS 路径名。 由于 Azure 存储中的容器是键值存储，因此没有真正的分层文件系统。 Blob 键中的斜杠字符 (/) 解释为目录分隔符。 例如， *hadoop-mapreduce-examples.jar* 的 Blob 名称是：
 
 ```bash
 example/jars/hadoop-mapreduce-examples.jar
@@ -338,6 +337,7 @@ azure storage blob list <containername> <blobname|prefix> --account-name <storag
 * [将 Apache Hive 和 HDInsight 配合使用][hdinsight-use-hive]
 * [将 Apache Pig 和 HDInsight 配合使用][hdinsight-use-pig]
 * [使用 Azure 存储共享访问签名来限制使用 HDInsight 访问数据][hdinsight-use-sas]
+* [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](hdinsight-hadoop-use-data-lake-storage-gen2.md)
 
 [hdinsight-use-sas]: hdinsight-storage-sharedaccesssignature-permissions.md
 [powershell-install]: /powershell/azureps-cmdlets-docs
@@ -347,7 +347,7 @@ azure storage blob list <containername> <blobname|prefix> --account-name <storag
 [hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
 [hdinsight-use-pig]:hadoop/hdinsight-use-pig.md
 
-[blob-storage-restAPI]: https://msdn.microsoft.com/library/windowsazure/dd135733.aspx
+[blob-storage-restAPI]: https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API
 [azure-storage-create]:../storage/common/storage-create-storage-account.md
 
 [img-hdi-powershell-blobcommands]: ./media/hdinsight-hadoop-use-blob-storage/HDI.PowerShell.BlobCommands.png

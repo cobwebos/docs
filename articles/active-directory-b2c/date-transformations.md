@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 35c5731d260fb63dece3d2b8ae4f4a4522fb91b8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d36abb669490b3d3f6818c018b3844a82ecd0617
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153398"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564777"
 ---
 # <a name="date-claims-transformations"></a>日期声明转换
 
@@ -23,7 +23,7 @@ ms.locfileid: "55153398"
 
 本文演示了在 Azure Active Directory (Azure AD) B2C 中使用标识体验框架架构的日期声明转换的过程。 有关详细信息，请参阅 [ClaimsTransformations](claimstransformations.md)。
 
-## <a name="assertdatetimeisgreaterthan"></a>AssertDateTimeIsGreaterThan 
+## <a name="assertdatetimeisgreaterthan"></a>AssertDateTimeIsGreaterThan
 
 检查一个日期和时间声明（字符串数据类型）是否晚于另一个日期和时间声明（字符串数据类型），然后引发异常。
 
@@ -85,7 +85,6 @@ AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](vali
     - rightOperand：2018-10-01T14:00:00.0000000Z
 - 结果：引发错误
 
-
 ## <a name="convertdatetodatetimeclaim"></a>ConvertDateToDateTimeClaim
 
 将 Date ClaimType 转换为 DateTime ClaimType。 该声明转换会转换时间格式并向日期添加 12:00:00 AM。
@@ -98,7 +97,7 @@ AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](vali
 下面的示例演示声明 `dateOfBirth`（date 数据类型）到另一个声明 `dateOfBirthWithTime`（dateTime 数据类型）的转换。
 
 ```XML
-<ClaimsTransformation Id="ConvertToDateTime" TransformationMethod="ConvertDateToDateTimeClaim">
+  <ClaimsTransformation Id="ConvertToDateTime" TransformationMethod="ConvertDateToDateTimeClaim">
     <InputClaims>
       <InputClaim ClaimTypeReferenceId="dateOfBirth" TransformationClaimType="inputClaim" />
     </InputClaims>
@@ -163,7 +162,7 @@ AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](vali
   </InputParameters>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isLastTOSAcceptedGreaterThanNow" TransformationClaimType="result" />
-  </OutputClaims>      
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 
@@ -175,6 +174,5 @@ AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](vali
 - 输入参数：
     - operator: later than
     - timeSpanInSeconds：7776000（90 天）
-- 输出声明： 
+- 输出声明：
     - 结果：true
-

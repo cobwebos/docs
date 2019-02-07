@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 89aad876eb087817c8514b4268a18fa20925f810
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 0d52d2aa5e218007aed4510f537fb061ef8d1fbe
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52166671"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301554"
 documentType: LandingData
 title: Azure SQL 数据库 - 平台即服务
 metadata:
@@ -54,7 +54,7 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/sql-database/sql-database-security-index">高级安全</a>可检测数据库中的威胁和漏洞，并保护数据安全。
+    - html: <a href="/azure/sql-database/sql-database-security-index">高级安全</a>可检测数据库中的威胁和漏洞，并确保数据安全。
     - html: <a href="/azure/sql-database/sql-database-automatic-tuning">自动优化</a>分析工作负荷并提供相关建议，即通过添加索引、删除未使用的索引以及自动修复查询计划问题来优化应用程序性能。
     - html: <a href="/azure/log-analytics/log-analytics-azure-sql">内置监视功能</a>可使你深入了解数据库和工作负荷的性能以及排查性能问题。
     - html: <a href="/azure/sql-database/sql-database-intelligent-insights">内置智能</a>自动标识工作负荷中的潜在问题并有助于解决问题的建议。

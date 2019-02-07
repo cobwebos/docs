@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ad59decab7233c74e13468b0cf0b11fdb5485d07
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: e11ef458fad11f04ce159d5e79c4152d2bd7e4c6
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722341"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746773"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>使用脚本操作自定义基于 Windows 的 HDInsight 群集
 在创建群集的过程中，可以使用**脚本操作**来调用[自定义脚本](hdinsight-hadoop-script-actions.md)，以便在群集上安装其他软件。
@@ -46,7 +46,7 @@ ms.locfileid: "53722341"
 
 HDInsight 提供了多个脚本用于在 HDInsight 群集上安装以下组件：
 
-| 名称 | 脚本 |
+| Name | 脚本 |
 | --- | --- |
 | **安装 Apache Spark** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1`。 请参阅[在 HDInsight 群集上安装并使用 Apache Spark][hdinsight-install-spark]。 |
 | **安装 R** | `https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1`。 请参阅[在 HDInsight 群集上安装并使用 R](r-server/r-server-hdinsight-manage.md#install-additional-r-packages-on-the-cluster)。 |
@@ -64,7 +64,7 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装以下组件�
 
     <table border='1'>
         <tr><th>属性</th><th>值</th></tr>
-        <tr><td>名称</td>
+        <tr><td>Name</td>
             <td>指定脚本操作的名称。</td></tr>
         <tr><td>脚本 URI</td>
             <td>指定要调用来自定义群集的脚本的 URI。 s</td></tr>
@@ -80,8 +80,9 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装以下组件�
 ## <a name="call-scripts-using-azure-powershell"></a>使用 Azure PowerShell 调用脚本
 以下 PowerShell 脚本演示如何在基于 Windows 的 HDInsight 群集上安装 Spark。  
 
+    ```powershell
     # Provide values for these variables
-    $subscriptionID = "<Azure Suscription ID>" # After "Connect-AzureRmAccount", use "Get-AzureRmSubscription" to list IDs.
+    $subscriptionID = "<Azure Subscription ID>" # After "Connect-AzureRmAccount", use "Get-AzureRmSubscription" to list IDs.
 
     $nameToken = "<Enter A Name Token>"  # The token is use to create Azure service names.
     $namePrefix = $nameToken.ToLower() + (Get-Date -Format "MMdd")
@@ -158,7 +159,7 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装以下组件�
             -OSType Windows `
             -DefaultStorageContainer $defaultBlobContainerName `
             -Config $config
-
+    ```
 
 若要安装其他软件，需要替换脚本中的脚本文件：
 
@@ -171,12 +172,14 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装以下组件�
 
 1. 在 Visual Studio 中创建 C# 控制台应用程序。
 2. 通过 Nuget 包管理器控制台运行以下命令。
-
+    ```powershell
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
         Install-Package Microsoft.Azure.Management.ResourceManager -Pre
         Install-Package Microsoft.Azure.Management.HDInsight
+    ```
 3. 在 Program.cs 文件中使用以下 using 语句：
 
+    ```csharp
         using System;
         using System.Security;
         using Microsoft.Azure;
@@ -186,8 +189,10 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装以下组件�
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
         using Microsoft.Rest;
         using Microsoft.Rest.Azure.Authentication;
+    ```
 4. 将类中的代码替换为以下内容：
 
+    ```csharp
         private static HDInsightManagementClient _hdiManagementClient;
 
         // Replace with your AAD tenant ID if necessary
@@ -276,6 +281,8 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装以下组件�
             // Register the HDInsight provider
             var rpResult = resourceManagementClient.Providers.Register("Microsoft.HDInsight");
         }
+    ```
+
 5. 按 **F5** 运行应用程序。
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>支持 HDInsight 群集上使用的开放源代码软件

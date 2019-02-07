@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 80ca9df064239e9c7beb9d45acfabe963c532e4a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 31d583456f2ca0a2804c2215906965c2241af52d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150542"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751491"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>使用 Azure CLI 通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
 
@@ -43,7 +43,7 @@ ms.locfileid: "55150542"
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group#az_group_create) 创建资源组。 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
+创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
 ```azurecli-interactive
 az group create \
@@ -51,7 +51,7 @@ az group create \
   --location eastus
 ```
 
-使用 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 创建包含一个子网的虚拟网络。
+使用 [az network vnet create](/cli/azure/network/vnet) 创建包含一个子网的虚拟网络。
 
 ```azurecli-interactive
 az network vnet create \
@@ -64,7 +64,7 @@ az network vnet create \
 
 ## <a name="enable-a-service-endpoint"></a>启用服务终结点 
 
-只能为支持服务终结点的服务启用服务终结点。 使用 [az network vnet list-endpoint-services](/cli/azure/network/vnet#az_network_vnet_list_endpoint_services) 查看某个 Azure 位置中可用的启用了服务终结点的服务。 以下示例返回 *eastus* 区域中可用的启用了服务终结点的服务列表。 随着更多的 Azure 服务启用服务终结点，返回的服务列表将随时间增大。
+只能为支持服务终结点的服务启用服务终结点。 使用 [az network vnet list-endpoint-services](/cli/azure/network/vnet) 查看某个 Azure 位置中可用的启用了服务终结点的服务。 以下示例返回 *eastus* 区域中可用的启用了服务终结点的服务列表。 随着更多的 Azure 服务启用服务终结点，返回的服务列表将随时间增大。
 
 ```azurecli-interactive
 az network vnet list-endpoint-services \
@@ -103,7 +103,7 @@ az network vnet subnet update \
   --network-security-group myNsgPrivate
 ```
 
-使用 [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) 创建安全规则。 下面的规则允许对分配给 Azure 存储服务的公用 IP 地址进行出站访问： 
+使用 [az network nsg rule create](/cli/azure/network/nsg/rule) 创建安全规则。 下面的规则允许对分配给 Azure 存储服务的公用 IP 地址进行出站访问： 
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -168,7 +168,7 @@ az storage account create \
   --kind StorageV2
 ```
 
-创建存储帐户后，使用 [az storage account show-connection-string](/cli/azure/storage/account#az_storage_account_show_connection_string) 将存储帐户的连接字符串检索到一个变量中。 在后面的步骤中将使用此连接字符串来创建文件共享。
+创建存储帐户后，使用 [az storage account show-connection-string](/cli/azure/storage/account) 将存储帐户的连接字符串检索到一个变量中。 在后面的步骤中将使用此连接字符串来创建文件共享。
 
 ```azurecli-interactive
 saConnectionString=$(az storage account show-connection-string \
@@ -223,7 +223,7 @@ az storage account network-rule add \
 
 ### <a name="create-the-first-virtual-machine"></a>创建第一个虚拟机
 
-使用 [az vm create](/cli/azure/vm#az_vm_create) 在公共子网中创建一个 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。
+使用 [az vm create](/cli/azure/vm) 在公共子网中创建一个 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。
 
 ```azurecli-interactive
 az vm create \
@@ -322,7 +322,7 @@ sudo mount --types cifs //storage-account-name>.file.core.windows.net/my-file-sh
 
 退出与 *myVmPublic* VM 建立的 SSH 会话。
 
-从计算机中，尝试使用 [az storage share list](/cli/azure/storage/share?view=azure-cli-latest#az_storage_share_list) 查看存储帐户中的共享。 将 `<account-name>` 和 `<account-key>` 替换为在[创建存储帐户](#create-a-storage-account)中获得的存储帐户名称和密钥：
+从计算机中，尝试使用 [az storage share list](/cli/azure/storage/share?view=azure-cli-latest) 查看存储帐户中的共享。 将 `<account-name>` 和 `<account-key>` 替换为在[创建存储帐户](#create-a-storage-account)中获得的存储帐户名称和密钥：
 
 ```azurecli-interactive
 az storage share list \

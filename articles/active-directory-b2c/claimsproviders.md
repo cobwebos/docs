@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5a0774c69c074698383e9c6f7f7cf9331e8939f2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5068692d5f12b5b6c8b0476a789123ef9fd1dc75
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164429"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508804"
 ---
-# <a name="claimsproviders"></a>ClaimsProviders 
+# <a name="claimsproviders"></a>ClaimsProviders
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -35,7 +35,6 @@ ms.locfileid: "55164429"
         ...
     </TechnicalProfiles>
   </ClaimsProvider>
-</ClaimsProvider>
   ...
 </ClaimsProviders>
 ```
@@ -56,7 +55,7 @@ ClaimsProvider 元素包含以下子元素：
 | DisplayName | 0:1 | 一个字符串，其中包含可以向用户显示的声明提供程序的名称。 |
 | [技术配置文件](technicalprofiles.md) | 0:1 | 声明提供程序支持的一组技术配置文件 |
 
-**ClaimsProvider** 可组织与声明提供程序相关的技术配置文件。 以下示例显示了使用 Azure Active Directory 技术配置文件的 Azure Active Directory 声明提供程序： 
+**ClaimsProvider** 可组织与声明提供程序相关的技术配置文件。 以下示例显示了使用 Azure Active Directory 技术配置文件的 Azure Active Directory 声明提供程序：
 
 ```XML
 <ClaimsProvider>
@@ -82,7 +81,7 @@ ClaimsProvider 元素包含以下子元素：
       ...
     </TechnicalProfile>
     <TechnicalProfile Id="AAD-UserWriteProfileUsingObjectId">
-      ...    
+      ...
     </TechnicalProfile>
     <TechnicalProfile Id="AAD-UserReadUsingObjectId">
       ...
@@ -109,4 +108,3 @@ ClaimsProvider 元素包含以下子元素：
   </TechnicalProfiles>
 </ClaimsProvider>
 ```
- 

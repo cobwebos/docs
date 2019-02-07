@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 6af6eb0dd6473b9fe947f7cc4939da4e0cbc77cb
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c4fcdcb8b20fdfb6f2314fc277ded4fdc52c2b99
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718469"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751424"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教程：使用托管标识确保从应用服务进行的 Azure SQL 数据库连接的安全
 
@@ -77,7 +77,7 @@ az ad sp show --id <principalid>
 
 ## <a name="grant-database-access-to-identity"></a>授予数据库访问标识的权限
 
-接下来，请在 Cloud Shell 中使用 [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin_create) 命令授予数据库访问应用的托管标识的权限。 在以下命令中，替换 *\<server_name>* 和 <principalid_from_last_step>。 键入 *\<admin_user>* 的管理员名称。
+接下来，请在 Cloud Shell 中使用 [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest) 命令授予数据库访问应用的托管标识的权限。 在以下命令中，替换 *\<server_name>* 和 <principalid_from_last_step>。 键入 *\<admin_user>* 的管理员名称。
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server_name> --display-name <admin_user> --object-id <principalid_from_last_step>

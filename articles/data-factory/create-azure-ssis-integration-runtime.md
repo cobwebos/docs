@@ -12,19 +12,19 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 4339782304f1bc175f1066954f1050bc00f25005
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 5b6bef8194123ed6c83a48dd5e819085d4bc5424
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434234"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453461"
 ---
 # <a name="create-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建 Azure-SSIS 集成运行时
 本文提供在 Azure 数据工厂 (ADF) 中配置 Azure-SSIS 集成运行时 (IR) 所要执行的步骤。 然后，可以使用 SQL Server Data Tools (SSDT) 或 SQL Server Management Studio (SSMS) 在 Azure 的此集成运行时中部署并运行 SQL Server Integration Services (SSIS) 包。 
 
 [教程：将 SSIS 包部署到 Azure](tutorial-create-azure-ssis-runtime-portal.md) 介绍了如何使用 Azure SQL 数据库来承载 SSIS 目录数据库 (SSISDB)，以创建 Azure-SSIS IR。 本文对该教程的内容做了延伸，介绍了如何执行以下操作： 
 
-- （可选）使用 Azure SQL 数据库服务器与虚拟网络服务终结点/托管实例来托管 SSISDB。 有关如何选择用于托管 SSISDB 的数据库服务器类型的指导，请参阅[比较 Azure SQL 数据库服务器和托管实例](create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance)。 作为先决条件，需将 Azure-SSIS IR 加入虚拟网络，并根据需要配置虚拟网络权限/设置。 请参阅[将 Azure-SSIS IR 加入虚拟网络](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。 
+- （可选）使用 Azure SQL 数据库服务器与虚拟网络服务终结点/托管实例来托管 SSISDB。 有关如何选择用于托管 SSISDB 的数据库服务器类型的指导，请参阅[比较 Azure SQL 数据库单一数据库/弹性池和托管实例](create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance)。 作为先决条件，需将 Azure-SSIS IR 加入虚拟网络，并根据需要配置虚拟网络权限/设置。 请参阅[将 Azure-SSIS IR 加入虚拟网络](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。 
 
 - （可选）对 ADF 的托管标识使用 Azure Active Directory (AAD) 身份验证，以连接到数据库服务器。 作为先决条件，需将 ADF 的托管标识添加为能够在 Azure SQL 数据库服务器/托管实例中创建 SSISDB 的包含的数据库用户。具体请参阅[为 Azure-SSIS IR 启用 AAD 身份验证](https://docs.microsoft.com/azure/data-factory/enable-aad-authentication-azure-ssis-ir)。 
 
@@ -55,11 +55,11 @@ ms.locfileid: "54434234"
 ### <a name="region-support"></a>区域支持
 有关目前提供 ADF 和 Azure-SSIS IR 的 Azure 区域的列表，请参阅 [ADF + SSIS IR 可用性（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all)。 
 
-### <a name="compare-sql-database-logical-server-and-sql-database-managed-instance"></a>比较 SQL 数据库逻辑服务器和 SQL 数据库托管实例
+### <a name="compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance"></a>比较 SQL 数据库单一数据库/弹性池和 SQL 数据库托管实例
 
 下表比较了 Azure SQL 数据库服务器和托管实例与 Azure-SSIR IR 相关的某些功能：
 
-| Feature | Azure SQL 数据库服务器| 托管实例 |
+| Feature | 单一数据库/弹性池| 托管实例 |
 |---------|--------------|------------------|
 | **计划** | SQL Server 代理不可用。<br/><br/>请参阅[在 ADF 管道中计划包执行](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity)。| 可以使用托管实例代理。 |
 | **身份验证** | 可以使用包含的数据库用户创建 SSISDB。该用户充当 **db_owner** 角色，代表具有 ADF 托管标识的任意 AAD 组。<br/><br/>请参阅[在 Azure SQL 数据库服务器中启用 Azure AD 身份验证以创建 SSISDB](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database)。 | 可以使用代表 ADF 托管标识的包含的数据库用户创建 SSISDB。 <br/><br/>请参阅[在 Azure SQL 数据库托管实例中启用 Azure AD 身份验证以创建 SSISDB](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance)。 |
@@ -69,9 +69,11 @@ ms.locfileid: "54434234"
 | | | |
 
 ## <a name="azure-portal"></a>Azure 门户
+
 在本部分，我们将使用 Azure 门户（具体的说是 ADF 用户界面 (UI)/应用）创建 Azure-SSIS IR。 
 
 ### <a name="create-a-data-factory"></a>创建数据工厂 
+
 1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。 
 1. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。 

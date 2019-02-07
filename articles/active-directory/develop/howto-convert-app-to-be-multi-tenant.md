@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu, elisol
 ms.custom: aaddev
-ms.openlocfilehash: ae9412ed7c02d88e7d0c35c6ea0f95da755b84d4
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f9a1b303fb66e71ffb1834c5b5fb4796867a0944
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097038"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819410"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>如何：使用多租户应用程序模式让任何 Azure Active Directory 用户登录
 
@@ -38,7 +38,7 @@ ms.locfileid: "55097038"
 1. [将应用程序注册更新为多租户](#update-registration-to-be-multi-tenant)
 2. [将代码更新为向 /common 终结点发送请求](#update-your-code-to-send-requests-to-common)
 3. [将代码更新为处理多个颁发者值](#update-your-code-to-handle-multiple-issuer-values)
-4. [了解用户和管理员的同意意向并进行适当的代码更改](#understanding-user-and-admin-consent)
+4. 了解用户和管理员的同意意向并进行适当的代码更改
 
 让我们详细了解每个步骤。 也可以直接跳转到[此多租户示例列表][AAD-Samples-MT]。
 

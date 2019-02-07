@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: 6ad90c2d13ebeaa077dc6264f84a4ebd8a340a8c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 38825f7815713678946e86252d4c8a1bee0abbc6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159074"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752681"
 ---
 # <a name="restore-an-azure-database-for-mysql-server-using-azure-cli"></a>使用 Azure CLI 还原 Azure Database for MySQL 服务器
 此示例 CLI 脚本可将单个 Azure Database for MySQL 服务器还原到前一个时间点。
@@ -37,7 +37,7 @@ ms.locfileid: "55159074"
 |---|---|
 | [az group create](/cli/azure/group) | 创建用于存储所有资源的资源组。 |
 | [az mysql server create](/cli/azure/mysql/server) | 创建用于托管数据库的 MySQL 服务器。 |
-| [az mysql server restore](/cli/azure/mysql/server#restore) | 从备份还原服务器。 |
+| [az mysql server restore](/cli/azure/mysql/server) | 从备份还原服务器。 |
 | [az group delete](/cli/azure/group) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤

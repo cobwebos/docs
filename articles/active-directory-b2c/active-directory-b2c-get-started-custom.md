@@ -7,21 +7,21 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 01/25/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 235b72393801717bb5d7258d6492dc4c943fe232
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: d4105aab80add8556bcbe79c9c6e8dd7743b25b7
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852297"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298732"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略入门
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-[自定义策略](active-directory-b2c-overview-custom.md)是定义 Azure Active Directory (Azure AD) B2C 租户行为的配置文件。 本文将介绍如何创建支持使用电子邮件地址和密码进行本地帐户注册或登录的自定义策略。 此外，你还需要准备好环境，以便能够添加标识提供者，例如 Facebook 或 Azure Active Directory。
+[自定义策略](active-directory-b2c-overview-custom.md)是定义 Azure Active Directory (Azure AD) B2C 租户行为的配置文件。 本文将介绍如何创建支持使用电子邮件地址和密码进行本地帐户注册或登录的自定义策略。 你还要准备好环境以添加标识提供者。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,9 +31,6 @@ ms.locfileid: "54852297"
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。 
-
-    ![切换到 Azure AD B2C 租户](./media/active-directory-b2c-setup-fb-app/switch-directories.png)
-
 3. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。
 4. 在“概述”页上，选择“标识体验框架 - 预览”。
 
@@ -72,7 +69,7 @@ Azure AD B2C 要求注册两个用于注册和登录用户的应用程序：Iden
 
 ### <a name="register-the-identityexperienceframework-application"></a>注册 IdentityExperienceFramework 应用程序
 
-1. 选择 Azure 门户左上角的“所有服务”，搜索并选择“Azure Active Directory”，然后选择“应用注册”。
+1. 选择 Azure 门户左上角的“所有服务”，搜索并选择“应用注册”。
 2. 选择“新建应用程序注册”。
 3. 对于“名称”，请输入 `IdentityExperienceFramework`。
 4. 对于“应用程序类型”，请选择“Web 应用/API”。
@@ -105,8 +102,8 @@ Azure AD B2C 要求注册两个用于注册和登录用户的应用程序：Iden
 每个初学者包中包含：
 
 - 基本文件。 需要对基本文件进行少量的修改。
-* 扩展文件。  大多数配置更改会在此文件中进行。
-* 信赖方文件。 应用程序调用的任务特定文件。
+- 扩展文件。  大多数配置更改会在此文件中进行。
+- 信赖方文件。 应用程序调用的任务特定文件。
 
 >[!NOTE]
 >如果 XML 编辑器支持验证，则根据初学者包的根目录中的 TrustFrameworkPolicy_0.3.0.0.xsd XML 架构来验证文件。 XML 架构验证在上传之前会识别错误。
@@ -117,17 +114,14 @@ Azure AD B2C 要求注册两个用于注册和登录用户的应用程序：Iden
     git clone https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack
     ```
 
-2. 在 SocialAndLocalAccounts 文件夹中，编辑将 `yourtenant.onmicrosoft.com` 替换为你的租户名称的所有文件。 例如，`contosoTenant.onmicrosoft.com`。 如果需要 XML 编辑器，请[尝试使用 Visual Studio Code](https://code.visualstudio.com/download)（一个轻型跨平台编辑器）。
+2. 在 SocialAndLocalAccounts 文件夹中，编辑将 `yourtenant` 替换为你的租户名称的所有文件。 例如，`contosoTenant.onmicrosoft.com`。 如果需要 XML 编辑器，请[尝试使用 Visual Studio Code](https://code.visualstudio.com/download)（一个轻型跨平台编辑器）。
 
 ### <a name="add-application-ids-to-the-custom-policy"></a>将应用程序 ID 添加到自定义策略
 
 将应用程序 ID 添加到扩展文件 *TrustFrameworkExtensions.xml*。
 
 1. 打开 TrustFrameworkExtensions.xml 文件并找到元素 `<TechnicalProfile Id="login-NonInteractive">`。
-2. 将 `IdentityExperienceFrameworkAppId` 的两个实例替换为前面创建的标识体验框架应用程序的应用程序 ID。 将 `ProxyIdentityExperienceFrameworkAppId` 的两个实例替换为前面创建的代理标识体验框架应用程序的应用程序 ID。 以下示例演示更改后的 login-NonInteractive 技术配置文件：
-
-    ![应用程序 ID](./media/active-directory-b2c-get-started-custom/login-NonInteractive.png)
-
+2. 将 `IdentityExperienceFrameworkAppId` 的两个实例替换为前面创建的标识体验框架应用程序的应用程序 ID。 将 `ProxyIdentityExperienceFrameworkAppId` 的两个实例替换为前面创建的代理标识体验框架应用程序的应用程序 ID。
 3. 保存扩展文件。
 
 ## <a name="upload-the-policies"></a>上传策略

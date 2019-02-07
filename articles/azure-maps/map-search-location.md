@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 031085b3048d0ffc92dd5a35b4054903088b4858
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: c68b4bdffde5f987fe07d50d76fa83e7bdfa5235
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824330"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755031"
 ---
 # <a name="show-search-results-on-the-map"></a>在地图上显示搜索结果
 
@@ -29,7 +29,7 @@ ms.locfileid: "51824330"
 
 在上面的代码中，第一个代码块将构造一个地图对象并初始化客户端服务。 有关说明，可以参阅[创建地图](./map-create.md)。
 
-第二个代码块使用[服务模块](https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=1)中的 [getSearchFuzzy](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.search?view=azure-iot-typescript-latest#getsearchfuzzy-string--searchgetsearchfuzzyoptionalparams-) 方法。 它允许通过[模糊搜索 rest API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) 执行自由格式文本搜索，以搜索兴趣点。 模糊搜索 API 可以处理任何模糊输入组合。 然后使用 [getGeoJsonSearchResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonsearchresponse?view=azure-iot-typescript-latest#geojsonsearchresponse) 方法将模糊搜索服务的响应解析为 GeoJSON 格式。 
+第二个代码块使用[服务模块](https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=1)中的 [getSearchFuzzy](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.search?view=azure-iot-typescript-latest#getsearchfuzzy-string--searchgetsearchfuzzyoptionalparams-) 方法。 它允许通过[模糊搜索 rest API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) 执行自由格式文本搜索，以搜索兴趣点。 模糊搜索 API 可以处理任何模糊输入组合。 然后使用 [getGeoJsonSearchResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonsearchresponse?view=azure-iot-typescript-latest) 方法将模糊搜索服务的响应解析为 GeoJSON 格式。 
 
 第三个代码块使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 类创建一个数据源对象并向其添加搜索结果。 某个[符号层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)使用文本或图标来呈现作为符号包装在地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中的基于点的数据。  随后创建一个符号层并向其中添加数据源，然后将该符号层添加到地图。
 

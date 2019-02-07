@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 01/31/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 2ba6e3b8b844d72b762e9a66629f16b36193a69f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d2b477c31898884761f260e9520913c67c7c6f83
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478383"
+ms.locfileid: "55488911"
 ---
 # <a name="how-to-improve-the-detection-accuracy"></a>如何：提高检测精度 
 
@@ -115,13 +115,13 @@ Identity Protection 提供了可将环境中的风险检测反馈给 Azure AD �
     ![消除用户风险](./media/howto-improve-detection-accuracy/01.png)
 
 
-应了解的内容：
+**应了解的内容：**
 
 - 无法还原此操作。
 
 - 此操作可能需要几分钟时间才能完成，因此，不应重新提交请求。
 
-- 你只能在 AD 管理用户凭据的情况下执行此操作。 （这是什么意思？）
+- 你只能在 AD 管理用户凭据的情况下执行此操作。 
 
 
 

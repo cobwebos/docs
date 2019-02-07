@@ -1,6 +1,6 @@
 ---
-title:重新训练经典 Web 服务 titleSuffix: Azure 机器学习工作室 description:了解如何以编程方式重新训练模型并更新 Web 服务以使用 Azure 机器学习中的最新训练模型。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:重新训练经典 Web 服务 titleSuffix:Azure 机器学习工作室 description:了解如何以编程方式重新训练模型并更新 Web 服务以使用 Azure 机器学习中的最新训练模型。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date:04/19/2017
 ---

@@ -6,16 +6,16 @@ services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 01/26/2017
 ms.author: sbowles
-ms.openlocfilehash: 9b30fa0fbbd655c03800dadb19cc2568d404204d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: b4b2c09ef608da7c52d415d5f1f2215ddc31c41a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129550"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223317"
 ---
 # <a name="face-api-frequently-asked-questions"></a>人脸 API 常见问题解答
 
@@ -36,7 +36,7 @@ ms.locfileid: "46129550"
 -----
 **问**：我正在传入二进制图像数据，但却看到“人脸图像无效”错误消息。
 
-**答**：这表明，算法无法分析图像。 原因包括：
+**答**：这表明，算法无法分析该图像。 原因包括：
 * 支持的输入图像格式包括 JPEG、PNG、GIF（第一帧）和 BMP。
 * 图像文件不得大于 4MB
 * 可检测的人脸大小介于 36x36 像素和 4096x4096 像素范围之间。 无法检测大小超出此范围的人脸

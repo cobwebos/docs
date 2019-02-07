@@ -7,37 +7,38 @@ author: heatherbshapiro
 ms.author: hshapiro
 ms.reviewer: sgilley
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: article
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 75a1a8763125e1e93691e2a28bc90a6d02ed7c40
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: f7b71b2bae540f4ef6b1e9c637c601d6f7b303ae
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246324"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250701"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>设置模型训练的计算目标
 
-使用 Azure 机器学习服务可以在不同的资源或环境（统称为[__计算目标__](concept-azure-machine-learning-architecture.md#compute-target)）中训练模型。 计算目标可以是本地计算机，也可以是云资源，例如 Azure 机器学习计算、Azure HDInsight 或远程虚拟机。  
+使用 Azure 机器学习服务可以在不同的资源或环境（统称为[__计算目标__](concept-azure-machine-learning-architecture.md#compute-target)）中训练模型。 计算目标可以是本地计算机，也可以是云资源，例如 Azure 机器学习计算、Azure HDInsight 或远程虚拟机。  还可以为模型部署创建计算目标，如[“部署模型的位置和方式”](how-to-deploy-and-where.md)中所述。
 
 可以使用 Azure 机器学习 SDK、Azure 门户或 Azure CLI 创建和管理计算目标。 如果通过其他服务（例如 HDInsight 群集）创建了计算目标，可以通过将其附加到 Azure 机器学习服务工作区来使用它们。
  
-本文介绍如何使用各种计算目标。  适用于所有计算目标的步骤遵循相同的工作流：
+本文介绍如何使用各种计算目标进行模型训练。  适用于所有计算目标的步骤遵循相同的工作流：
 1. __创建__计算目标（如果没有）。
 2. 将计算目标__附加__到工作区。
 3. __配置__计算目标，使其包含脚本所需的 Python 环境和包依赖项。
 
+
 >[!NOTE]
 > 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.6 进行测试。
 
-## <a name="supported-compute-targets"></a>受支持的计算目标
+## <a name="compute-targets-for-training"></a>训练的计算目标
 
 Azure 机器学习服务为不同的计算目标提供不同的支持。 典型的模型开发生命周期从开发/试验少量的数据开始。 在此阶段，我们建议使用本地环境。 例如，本地计算机或基于云的 VM。 针对更大的数据集扩展训练或执行分布式训练时，我们建议使用 Azure 机器学习计算来创建可在每次提交运行时自动缩放的单节点或多节点群集。 你也可以附加自己的计算资源，不过，为各种方案提供的支持可能有所不同，详情如下：
 
 
-|计算目标| GPU 加速 | 自动<br/> 超参数优化 | 自动</br> 机器学习 | 管道友好|
+|训练的计算目标| GPU 加速 | 自动<br/> 超参数优化 | 自动</br> 机器学习 | 管道友好|
 |----|:----:|:----:|:----:|:----:|
 |[本地计算机](#local)| 可能 | &nbsp; | ✓ | &nbsp; |
 |[Azure 机器学习计算](#amlcompute)| ✓ | ✓ | ✓ | ✓ |

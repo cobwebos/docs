@@ -15,12 +15,12 @@ ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a1ca5125162460b95c0ffcadb1551173d06b5838
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1117ffa94a30a55b7b2a7477bf2770d21dcb5441
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163579"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746500"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory 风险事件
 
@@ -164,7 +164,7 @@ Identity Protection 检测来自不熟悉位置的登录，也用于基本身份
 
 我们建议联系用户并扫描用户的所有设备。 用户的个人设备也可能受感染，其他人也可能以用户身份从相同 IP 地址使用受感染的设备。 这些设备之所以受感染，通常是因为下载了防病毒软件尚未识别的恶意软件，也可能是因为用户存在不良习惯，导致设备容易遭受感染。
 
-有关如何解决恶意软件感染的详细信息，请参阅[恶意软件防护中心](https://go.microsoft.com/fwlink/?linkid=335773&clcid=0x409)。
+有关如何解决恶意软件感染的详细信息，请参阅[恶意软件防护中心](https://www.microsoft.com/en-us/security/portal/definitions/adl.aspx/)。
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>从具有可疑活动的 IP 地址登录
 

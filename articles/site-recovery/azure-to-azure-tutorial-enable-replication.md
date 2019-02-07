@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2af1ad35ee5f7548352180026f1d613d27b6af46
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 0e73c0f94e0aa240349aec45b4a146ba5eb37dab
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103487"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700768"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>为 Azure VM 设置到 Azure 次要区域的灾难恢复
 
@@ -170,7 +170,7 @@ Site Recovery 会针对目标区域创建默认设置和复制策略。 可以�
     - **应用一致性快照频率**：默认情况下，Site Recovery 每隔 4 小时拍摄 1 次“应用一致”快照。 可将此值配置为 1 - 12 小时之间的任何值。 “应用一致”快照是 VM 内应用程序数据的时间点快照。 卷影复制服务 (VSS) 确保 VM 上的应用在拍摄快照时处于一致状态。
     - **复制组**：如果应用程序需要跨 VM 的多 VM 一致性，可以为这些 VM 创建一个复制组。 默认情况下，所选的 VM 不属于任何复制组。
 
-5. 若要将 VM 添加到新的或现有的复制组，请在“自定义”中选择“是”以确保多 VM 一致性。 使 VM 成为复制组的一部分。 然后单击“确定”。
+5. 若要将 VM 添加到新的或现有的复制组，请在“自定义”中选择“是”以确保多 VM 一致性。 然后单击“确定”。
 
     - 故障转移时，复制组中的所有计算机将具有共享的崩溃一致性恢复点和应用程序一致性恢复点。 启用多 VM 一致性可能会影响工作负荷性能（因为它是 CPU 密集型），因此，仅当计算机运行相同的工作负荷并且需要跨多个计算机的一致性时，才应使用该设置。
     - 可以选择在复制组中最多包含 16 个虚拟机。

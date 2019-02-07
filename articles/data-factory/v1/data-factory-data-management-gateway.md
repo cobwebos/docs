@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 728adae62677eb2edb1e203df9b0d9f11f6acecf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 101385b23d8ea683dc5762d491e6a4bef91bbed4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022302"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813751"
 ---
 # <a name="data-management-gateway"></a>数据管理网关
 > [!NOTE]
@@ -246,7 +246,7 @@ ms.locfileid: "54022302"
 
     msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 
-如果选择不打开网关计算机上的端口 8050，则使用机制（而不是使用“设置凭据”应用程序）来配置数据存储凭据。 例如，可以使用 [New-AzureRmDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) PowerShell cmdlet。 请参阅[设置凭据和安全](#set-credentials-and-securityy)部分，了解如何设置数据存储凭据。
+如果选择不打开网关计算机上的端口 8050，则使用机制（而不是使用“设置凭据”应用程序）来配置数据存储凭据。 例如，可以使用 [New-AzureRmDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) PowerShell cmdlet。 请参阅“设置凭据和安全”部分，了解如何设置数据存储凭据。
 
 ## <a name="update"></a>更新
 默认情况下，如果有较新版本的网关可用，会自动更新数据管理网关。 完成所有计划的任务之后，网关才会更新。 更新操作完成之前，网关不处理任何其他任务。 如果更新失败，网关回退到旧版本。
@@ -361,7 +361,7 @@ ms.locfileid: "54022302"
 
 监视属性 | 说明
 :------------------ | :---------- 
-名称 | 逻辑网关和与网关关联的节点的名称。 节点是已在其上安装网关的本地 Windows 计算机。 有关在单个逻辑网关中采用多个节点（最多 4 个）的信息，请参阅[数据管理网关 - 高可用性和可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)。    
+Name | 逻辑网关和与网关关联的节点的名称。 节点是已在其上安装网关的本地 Windows 计算机。 有关在单个逻辑网关中采用多个节点（最多 4 个）的信息，请参阅[数据管理网关 - 高可用性和可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)。    
 状态 | 逻辑网关和网关节点的状态。 示例：联机/脱机/受限等。有关这些状态的信息，请参阅[网关状态](#gateway-status)部分。 
 版本 | 显示逻辑网关和每个网关节点的版本。 逻辑网关的版本根据组中多数节点的版本而决定。 如果逻辑网关安装程序中的节点版本不同，只有与逻辑网关的版本号相同的节点能正常运行。 其他节点将处于受限模式，需要手动进行更新（仅当自动更新失败时）。 
 可用内存 | 网关节点上的可用内存。 此值为近实时快照。 

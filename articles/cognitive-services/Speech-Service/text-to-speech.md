@@ -6,17 +6,17 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: b06864e08f6edf52e4c96c33c88bba9f8ef4e859
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b413bd65582dceadd9aab912694c3b560070c4f3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343201"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251548"
 ---
 # <a name="about-the-text-to-speech-api"></a>关于文本转语音 API
 
@@ -37,6 +37,9 @@ ms.locfileid: "53343201"
 ## <a name="voice-support"></a>语音支持
 
 Microsoft 文本转语音服务提供超过 45 种语言和区域设置的 75 种以上语音。 若要使用这些标准的“语音字体”，只需在调用服务的 REST API 时使用几个其他参数指定语音名称。 若要详细了解支持的语言、区域设置和语音，请参阅[支持的语言](language-support.md#text-to-speech)。
+
+> [!IMPORTANT]
+> 标准语音、自定义语音和神经语音的费用各不相同。 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
 ### <a name="neural-voices"></a>神经语音
 

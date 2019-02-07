@@ -1,6 +1,6 @@
 ---
-title:为部署准备模型 titleSuffix: Azure 机器学习工作室 description:如何将机器学习工作室训练实验转换为预测实验，为将要部署为 Web 服务的训练模型做准备。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:为部署准备模型 titleSuffix:Azure 机器学习工作室 description:如何将机器学习工作室训练实验转换为预测实验，为将要部署为 Web 服务的训练模型做准备。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.date:03/28/2017
 ---

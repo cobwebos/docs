@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 36a84618a998dd2e06f5563fb8706a1dc8400e59
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 47b16966f9e72a43cf4fb934706f7b96becef59a
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823345"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694493"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms"></a>Contoso 迁移：将本地应用重新托管到 Azure VM
 
@@ -460,7 +460,7 @@ Contoso 安全团队会审查 Azure VM，确定是否存在任何安全问题。
 - 若要控制访问，团队需审查 VM 的网络安全组 (NSG)。 NSG 用于确保只有允许的流量可到达应用。
 - 团队还应考虑使用 Azure 磁盘加密服务和 KeyVault 保护磁盘上的数据。
 
-[详细了解](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control) VM 的安全做法。
+[详细了解](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms) VM 的安全做法。
 
 ## <a name="bcdr"></a>BCDR
 

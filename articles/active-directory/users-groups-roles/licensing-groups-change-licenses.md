@@ -1,27 +1,25 @@
 ---
-title: 如何在具有组的产品许可证之间迁移用户 - Azure Active Directory | Microsoft Docs
-description: 介绍使用基于组的许可在不同的产品许可证（例如 Office 365 企业版 E1 和 E3）之间迁移用户的建议过程
+title: 如何将用户迁移到具有组的产品许可证 - Azure Active Directory | Microsoft Docs
+description: 介绍使用基于组的许可将组内用户迁移到不同产品许可证（例如 Office 365 企业版 E1 和 E3）的建议过程
 services: active-directory
 keywords: Azure AD 许可
 documentationcenter: ''
 author: curtand
 manager: mtillman
 editor: ''
-ms.assetid: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/14/2019
+ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: sumitp
-ms.openlocfilehash: f675ff0dfaf183c2efd177c7888549e6976fbe6d
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.custom: it-pro;seo-update-azuread-jan
+ms.openlocfilehash: ea6159f487b35192e0e2137662a664a2796843c0
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389477"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294567"
 ---
 # <a name="how-to-safely-migrate-users-between-product-licenses-by-using-group-based-licensing"></a>如何使用基于组的许可安全地在产品许可证之间迁移用户
 

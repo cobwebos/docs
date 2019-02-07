@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a778723093b226ee0e681c2a95ce4db597a310e5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c09816d45169ce9bb6c926b8b17b075ea1059ec7
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198597"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695366"
 ---
 # <a name="saas-sell-through-azure---apis"></a>通过 Azure 销售 SaaS - API
 
@@ -176,13 +176,13 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 响应正文
 
- ``` json       
-    { 
-        “id”: “”, 
-        “subscriptionName”: “”,
-        “offerId”:””, 
-         “planId”:””
-    }     
+``` json
+{
+    "id": "",
+    "subscriptionName": "",
+    "offerId": "",
+    "planId": "",
+}
 ```
 
 | **参数名称** | **数据类型** | **说明**                       |
@@ -246,9 +246,9 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 *正文*
 
 ``` json
-  { 
-      “planId”:””
-   }      
+{
+    "lanId": "",
+}
 ```
 
 | **元素名称** | **数据类型** | **说明**                      |
@@ -307,15 +307,13 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | authorization           | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
 |  |  |  |
 
-
 *正文*
 
-``` json
-                { 
-                    “planId”:””
-                } 
+```json
+{
+    "planId": ""
+}
 ```
-
 
 |  **元素名称** |  **数据类型**  | **说明**                              |
 |  ---------------- | -------------   | --------------------------------------       |
@@ -370,7 +368,6 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | x-ms-correlationid | 否           | 在客户端上执行的操作的唯一字符串值。 此值用于将客户端操作生成的所有事件与服务器端的事件相关联。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 | authorization      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
 |  |  |  |
- 
 
 响应代码
 
@@ -413,7 +410,6 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | api-version         | 用于此请求的操作的版本。 |
 |  |  |
 
-
 *标头*
 
 | **标头密钥**     | **必需** | **说明**                                                                                                                                                                                                                  |
@@ -422,18 +418,17 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | x-ms-correlationid | 否           | 在客户端上执行的操作的唯一字符串值。 此值用于将客户端操作生成的所有事件与服务器端的事件相关联。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
 | authorization      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
 |  |  |  | 
-  
 
 响应正文
 
-``` json
-  { 
-      “id”: “”, 
-      “status”:””, 
-       “resourceLocation”:””, 
-      “created”:””, 
-      “lastModified”:”” 
-  } 
+```json
+{
+    "id": "",
+    "status": "",
+    "resourceLocation": "",
+    "created": "",
+    "lastModified": ""
+}
 ```
 
 | **参数名称** | **数据类型** | **说明**                                                                                                                                               |
@@ -494,16 +489,16 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 响应正文
 
-``` json
-  { 
-      “id”: “”, 
-      “saasSubscriptionName”:””, 
-      “offerId”:””, 
-       “planId”:””, 
-      “saasSubscriptionStatus”:””, 
-      “created”:””, 
-      “lastModified”: “” 
-  }
+```json
+{
+    "id": "",
+    "saasSubscriptionName": "",
+    "offerId": "",
+    "planId": "",
+    "saasSubscriptionStatus": "",
+    "created": "",
+    "lastModified": ""
+}
 ```
 | **参数名称**     | **数据类型** | **说明**                               |
 |------------------------|---------------|-----------------------------------------------|
@@ -539,7 +534,6 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | eTag               | 是          | 链接到资源以获取操作状态。                                                        |
 |  |  |  |
 
-
 ### <a name="get-subscriptions"></a>获取订阅
 
 用户对订阅终结点执行 Get 操作可以检索 ISV 提供的所有套餐的所有订阅。
@@ -564,19 +558,18 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | authorization      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
 |  |  |  |
 
-
 响应正文
 
-``` json
-  { 
-      “id”: “”, 
-      “saasSubscriptionName”:””, 
-      “offerId”:””, 
-       “planId”:””, 
-      “saasSubscriptionStatus”:””, 
-      “created”:””, 
-      “lastModified”: “”
-  }
+```json
+{
+    "id": "",
+    "saasSubscriptionName": "",
+    "offerId": "",
+    "planId": "",
+    "saasSubscriptionStatus": "",
+    "created": "",
+    "lastModified": ""
+}
 ```
 
 | **参数名称**     | **数据类型** | **说明**                               |
@@ -615,7 +608,6 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 ### <a name="saas-webhook"></a>SaaS Webhook
 
 SaaS webhook 用于主动将更改通知给 SaaS 服务。 此 POST API 应当不进行身份验证并由 Microsoft 服务调用。 在对 webhook 通知采取操作之前，SaaS 服务应当调用操作 API 来进行验证和授权。 
-
 
 *正文*
 

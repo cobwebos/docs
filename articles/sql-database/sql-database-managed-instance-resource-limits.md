@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 01/22/2019
-ms.openlocfilehash: 420d3c256f9bf2d0884e98312a5a66aea08b13bc
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6bb90480667a899d9d7bc7a5d8269b0cdf1da223
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450875"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219713"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>概述 Azure SQL 数据库托管实例资源限制
 
@@ -39,6 +39,7 @@ Azure SQL 数据库托管实例可部署在两代硬件 (Gen4 和 Gen5) 上。 �
 | 硬件 | Intel E5-2673 v3 (Haswell) 2.4-GHz 处理器、附加的 SSD vCore = 1 PP（物理核心） | Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器、快速 eNVM SSD、vCore=1 LP（超线程） |
 | 计算 | 8、16、24 个 vCore | 8、16、24、32、40、64、80 个 vCore |
 | 内存 | 每个 vCore 7 GB | 每个 vCore 5.1 GB |
+| 内存中 OLTP 内存 | 每个 vCore 3 GB | 每个 vCore 2.6 GB |
 | 最大存储（常规用途） |  8 TB | 1 TB |
 | 最大存储（业务关键） | 8 TB | 1 TB、2 TB 或 4 TB，具体取决于核心数 |
 

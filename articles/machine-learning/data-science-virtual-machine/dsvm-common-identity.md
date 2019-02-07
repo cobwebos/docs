@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 2c981d33c8108386e0287d4c2a800f065c9dc431
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0146ee6ee37c2eb9e98d831b54df2218d7de5b62
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452849"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754594"
 ---
 # <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>在数据科学虚拟机上设置通用标识
 
@@ -31,7 +31,7 @@ Active Directory 是常用的标识提供者，可以在 Azure 上充当服务�
 
 如果已经有一个用来管理标识的 Active Directory，可以将它用作通用标识提供者。 如果没有 Active Directory，则可以通过名为 [Azure Active Directory 域服务](https://docs.microsoft.com/azure/active-directory-domain-services/) (Azure AD DS) 的服务在 Azure 上运行托管的 Active Directory 实例。 
 
-[Azure AD](https://docs.microsoft.com/azure/active-directory/) 的文档提供了详细的[托管说明](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution#synchronized-identity)，包括如何将 Azure AD 连接到本地目录（如果有）。 
+[Azure AD](https://docs.microsoft.com/azure/active-directory/) 的文档提供了详细的[托管说明](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution)，包括如何将 Azure AD 连接到本地目录（如果有）。 
 
 本文介绍使用 Azure AD DS 在 Azure 上设置完全托管的 Active Directory 域服务的步骤。 然后，你可以将 DSVM 加入托管的 Active Directory 域，以使用户能够使用通用用户帐户和凭据访问 DSVM（以及其他 Azure 资源）池。 
 

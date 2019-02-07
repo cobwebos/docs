@@ -2,18 +2,18 @@
 title: 使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份
 description: 了解如何使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份
 services: backup
-author: adigan
-manager: NKolli1
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/19/2018
-ms.author: adigan
-ms.openlocfilehash: 7e95fa0cc6b5f9476df68ab44e5dbc8bb5432d52
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/31/2019
+ms.author: kasinh
+ms.openlocfilehash: ef976667ec580ea75dd1b8566c7bdddf35eeb0fc
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234438"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298307"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份
 本文说明如何配置 System Center 2012 R2 Data Protection Manager (DPM) 服务器，以将 Microsoft Exchange Server 备份到 Azure 备份。  
@@ -110,11 +110,11 @@ ms.locfileid: "51234438"
 
 在线恢复点有五种恢复类型：
 
-* **恢复到原始 Exchange Server 位置：** 数据将恢复到原始 Exchange Server。
-* **恢复到 Exchange Server 上的其他数据库：** 数据将恢复到其他 Exchange Server 上的其他数据库。
+* **恢复到原始 Exchange 服务器位置：** 数据将恢复到原始 Exchange 服务器。
+* **恢复到 Exchange 服务器上的另一个数据库：** 数据将恢复到另一台 Exchange 服务器上的另一个数据库。
 * **恢复到恢复数据库：** 数据将恢复到 Exchange 恢复数据库 (RDB)。
 * **复制到网络文件夹：** 数据将恢复到网络文件夹。
-* **复制到磁带：** 如果 DPM 服务器上安装并配置了磁带库或独立的磁带机，则恢复点将复制到可用的磁带。
+* **复制到磁带：** 如果 DPM 服务器上附加并配置了磁带库或独立的磁带驱动器，则恢复点将复制到可用的磁带。
 
     ![选择在线复制](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
