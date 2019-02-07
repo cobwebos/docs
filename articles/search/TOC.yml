@@ -228,7 +228,7 @@ items:
       href: search-monitor-usage.md
     - name: 搜索流量分析
       href: search-traffic-analytics.md
-- name: 参考
+- name: 引用
   items:
   - name: Azure CLI
     href: https://docs.microsoft.com/cli/azure/search?view=azure-cli-latest
@@ -273,6 +273,10 @@ items:
       href: cognitive-search-skill-shaper.md
     - name: 不推荐使用的技能
       href: cognitive-search-skill-deprecated.md
+  - name: 自定义技能（预览版）
+    items:
+    - name: 自定义 Web API
+      href: cognitive-search-custom-skill-web-api.md
 - name: 资源
   items:
   - name: Azure 社区支持
@@ -297,9 +301,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: 视频
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: 133f3e44b7efc81f13aba5db68269678ddac9554
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 07ade676f302f9a802be933bf55d686f056d386b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464222"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753752"

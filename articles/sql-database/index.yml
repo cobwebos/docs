@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0f5c60b25ad305b9e76eebcc72639a596b407801
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7a6372f90cde75cb3314a049de41a4826510bd3f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457541"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752239"
 documentType: LandingData
 title: Azure SQL 数据库文档
 metadata:
@@ -22,7 +22,7 @@ metadata:
   ms.date: 01/25/2019
   ms.author: carlrab
 abstract:
-  description: Azure SQL 数据库是基于最新稳定版 Microsoft SQL Server 数据库引擎的关系数据库即服务 (DBaaS)。 SQL 数据库是高性能、可靠且安全的数据库，可用于以所选编程语言构建数据驱动的应用程序和网站，而无需管理基础结构。 使用我们的快速入门、教程和示例了解如何使用 SQL 数据库。
+  description: Azure SQL 数据库是基于最新稳定版 Microsoft SQL Server 数据库引擎的通用关系数据库即服务 (DBaaS)。 SQL 数据库是高性能、可靠且安全的云数据库，可用于以所选编程语言构建数据驱动的应用程序和网站，而无需管理基础结构。 使用我们的快速入门、教程和示例了解如何使用 SQL 数据库。
   aside:
     image:
       alt: 
@@ -106,10 +106,10 @@ sections:
     rows:
     - title: 创建单一数据库
       values:
-      - href: /azure/sql-database/sql-database-get-started-portal
+      - href: /azure/sql-database/sql-database-single-database-get-started
       - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
       - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
-      - href: 
+      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create
     - title: 创建托管实例
       values:
       - href: /azure/sql-database/sql-database-managed-instance-get-started
@@ -118,33 +118,10 @@ sections:
       - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet
     - title: 创建弹性池
       values:
-      - href: 
+      - href: /azure/sql-database/sql-database-elastic-pool-manage
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
       - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create
-    - title: 缩放单一数据库
-      values:
-      - href: 
-      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-cli
-      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-powershell
-      - href: 
-    - title: 缩放弹性池
-      values:
-      - href: 
-      - href: /azure/sql-database/scripts/sql-database-scale-pool-cli
-      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-pool-powershell
-    - title: 缩放托管实例
-      values:
-      - href: 
-      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/05/31/change-size-azure-sql-managed-instance-using-powershell/
-      - href: 
-    - title: 配置适用于托管实例的 Azure 网络
-      values:
-      - href: /azure/sql-database/sql-database-managed-instance-get-started
-      - href: 
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/25/quick-start-script-setup-azure-network-environment-for-azure-sql-managed-instance/
-      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment
 - title: 分步教程
   items:
   - type: paragraph
@@ -152,6 +129,7 @@ sections:
   - type: list
     style: ordered
     items:
+    - html: 借助我们的快速入门指南，开始使用<a href="/azure/sql-database/sql-database-quickstart-guide">单一实例数据库</a>和<a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">托管实例</a>。
     - html: 使用 <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> 或 <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> 创建和设计新单一数据库的架构
     - html: 使用<a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">数据库还原</a>、<a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">数据库迁移助手</a>或 <a href="/azure/sql-database/sql-database-import">BACPAC 导入</a>将现有数据库迁移到 Azure
     - html: <a href="/azure/sql-database/sql-database-security-tutorial">保护 SQL 数据库</a>
@@ -190,7 +168,7 @@ sections:
     items:
     - html: <a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a>
     - html: <a href="/azure/sql-database/sql-database-cli-samples">Azure CLI</a>
-- title: 参考
+- title: 引用
   items:
   - type: list
     style: cards

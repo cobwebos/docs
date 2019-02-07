@@ -7,6 +7,8 @@ items:
     href: terraform-overview.md
 - name: 快速入门
   items:
+  - name: 创建多服务应用程序
+    href: terrafom-quickstart.md
   - name: 安装和配置 Terraform
     href: /azure/virtual-machines/linux/terraform-install-configure
     maintainContext: true
@@ -58,7 +60,7 @@ items:
   items:
   - name: 在 Azure 存储中存储状态
     href: terraform-backend.md
-- name: 参考
+- name: 引用
   items:
   - name: Azure 模块注册表
     href: https://registry.terraform.io/modules/Azure
@@ -70,9 +72,9 @@ items:
     href: https://azure.microsoft.com/solutions/devops/terraform/
   - name: Azure 路线图
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: 5ca3121f8bdb63a49aa99ba9ed8ab2ad8bfbfefd
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 352b6bcf9bbce9e38ba2b048d1b8997896870f24
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462505"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750233"
