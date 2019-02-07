@@ -4,43 +4,41 @@ items:
 - name: 概述
   items:
   - name: 什么是必应实体搜索？
-    href: search-the-web.md
+    href: overview.md
   - name: 比较必应搜索 API
     href: ../Bing-Web-Search/bing-api-comparison.md
     maintainContext: true
 - name: REST API 快速入门
   items:
-  - name: C#
-    href: quickstarts/csharp.md
-  - name: Java
-    href: quickstarts/java.md
-  - name: Node.js
-    href: quickstarts/nodejs.md
-  - name: PHP
-    href: quickstarts/php.md
-  - name: Python
-    href: quickstarts/python.md
-  - name: Ruby
-    href: quickstarts/ruby.md
+  - name: REST API
+    items:
+    - name: 使用 C#
+      href: quickstarts/csharp.md
+    - name: 使用 Java
+      href: quickstarts/java.md
+    - name: 使用 Node.js
+      href: quickstarts/nodejs.md
+    - name: 使用 PHP
+      href: quickstarts/php.md
+    - name: 使用 Python
+      href: quickstarts/python.md
+    - name: 使用 Ruby
+      href: quickstarts/ruby.md
+  - name: SDK 中 IsInRole 中的声明
+    items:
+    - name: 使用 C#
+      href: quickstarts/entity-sdk-csharp-quickstart.md
+    - name: 使用 Node.js
+      href: quickstarts/entity-sdk-node-quickstart.md
+    - name: 使用 Python
+      href: quickstarts/entity-sdk-python-quickstart.md
+    - name: 使用 Java
+      href: quickstarts/entity-sdk-java-quickstart.md
   expanded: true
-- name: SDK 快速入门
-  items:
-  - name: SDK 示例概述
-    href: sdk.md
-  - name: 实体搜索 C# 快速入门
-    href: entity-search-sdk-quickstart.md
-  - name: 实体搜索 Node.js 快速入门
-    href: entity-search-sdk-node-quickstart.md
-  - name: 实体搜索 Python 快速入门
-    href: entity-sdk-python-quickstart.md
-  - name: 实体搜索 Java 快速入门
-    href: entity-sdk-java-quickstart.md
 - name: 教程
   items:
-  - name: 单页 Web 应用
+  - name: 构建单页 Web 应用
     href: tutorial-bing-entities-search-single-page-app.md
-  - name: 单页 Web 应用（源代码）
-    href: tutorial-bing-entities-search-single-page-app-source.md
 - name: 示例
   items:
   - name: 代码示例
@@ -49,6 +47,12 @@ items:
   items:
   - name: 调整和裁剪缩略图
     href: resize-and-crop-thumbnails.md
+- name: 概念
+  items:
+  - name: 搜索实体
+    href: concepts/search-for-entities.md
+  - name: 发送搜索请求
+    href: concepts/sending-requests.md
 - name: 引用
   items:
   - name: 必应搜索 API 使用和显示要求
@@ -90,9 +94,9 @@ items:
     href: entity-search-endpoint.md
   - name: 适用于必应实体搜索 API 的分析
     href: bing-entity-stats.md
-ms.openlocfilehash: 919d44bbf41397cf58c06cfe2eff56867546b61e
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 6574b06a9aced43f381bcb106e0b6426bd6f4fd7
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509926"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755783"

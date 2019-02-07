@@ -6,6 +6,8 @@ items:
   - name: 机器学习工作室
     displayName: overview
     href: what-is-ml-studio.md
+  - name: 比较我们的 ML 产品
+    href: ../service/overview-more-machine-learning.md
   - name: 机器学习工作室的功能
     displayName: overview
     href: studio-overview-diagram.md
@@ -93,10 +95,6 @@ items:
     - name: 在 AI 库中尝试试验
       displayName: gallery
       href: sample-experiments.md
-    - name: 选择算法
-      href: algorithm-choice.md
-    - name: 算法备忘单
-      href: algorithm-cheat-sheet.md
     - name: 评估和解释结果
       items:
       - name: 评估性能
@@ -118,6 +116,12 @@ items:
         href: custom-r-modules.md
       - name: 执行 Python 脚本
         href: execute-python-scripts.md
+  - name: 选择一个算法
+    items:
+    - name: 选择算法
+      href: algorithm-choice.md
+    - name: 算法备忘单
+      href: algorithm-cheat-sheet.md
   - name: 部署模型
     items:
     - name: 部署 Web 服务
@@ -210,15 +214,11 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: 定价
     href: https://azure.microsoft.com/pricing/details/machine-learning/
-  - name: R 开发人员指南
-    href: ../r-developers-guide.md
   - name: 自定义神经网络 (Net#)
     href: azure-ml-netsharp-reference-guide.md
-  - name: 比较我们的 ML 产品
-    href: ../service/overview-more-machine-learning.md
-ms.openlocfilehash: 400e6a2e98b8d29018b135204eaefa7ae3a7d965
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d6d4020d76c8eab2418b3b7ac5d26eaf93363870
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731421"
+ms.locfileid: "55746160"
