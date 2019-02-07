@@ -66,12 +66,8 @@ items:
       href: classroom-labs/how-to-create-schedules.md
   - name: 开发测试实验室
     items:
-    - name: 创建实验室
-      href: devtest-lab-create-lab.md
-    - name: 在实验室中创建 VM
-      href: devtest-lab-create-first-vm.md
-    - name: 删除实验室或实验室中的 VM
-      href: devtest-lab-delete-lab-vm.md
+    - name: 为实验室虚拟机指定资源组
+      href: resource-group-control.md
     - name: 设置实验室的策略
       href: devtest-lab-get-started-with-lab-policies.md
     - name: 在 Azure Key Vault 中存储机密
@@ -101,6 +97,10 @@ items:
           href: devtest-lab-guidance-governance-application-migration-integration.md
     - name: 在实验室中使用 VM
       items:
+      - name: 创建实验室
+        href: devtest-lab-create-lab.md
+      - name: 删除实验室或实验室中的 VM
+        href: devtest-lab-delete-lab-vm.md
       - name: 创建 VM
         href: devtest-lab-add-vm.md
       - name: 创建和管理可认领 VM
@@ -223,9 +223,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab
   - name: 定价
     href: https://azure.microsoft.com/pricing/details/devtest-lab/
-ms.openlocfilehash: 1fc989f61f5c11e06e2651326e0e7e7f51092253
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 783aec352d79c56525751142e4e5e95697149dbc
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496714"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747275"
