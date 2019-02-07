@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 2a0a4aeded3667b7c8f4a31821adb2fc40339137
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 7952086ee8598d2700d6bb5e617eb8de506a5160
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104093"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812695"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
@@ -355,7 +355,7 @@ Functions 运行时以 [PeekLock 模式](../service-bus-messaging/service-bus-pe
 * [C# 脚本 (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [JavaScript](#output---javascript-example)
-* [Java](#output--java-example)
+* Java
 
 ### <a name="output---c-example"></a>输出 - C# 示例
 

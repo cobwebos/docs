@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: cd3ae85e88151e234d42a29ad871a18c7829b05c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 00e226134039d29efd744290c4bc63abd50adc89
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454838"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697826"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Azure 导入/导出服务日志文件格式
 当 Microsoft Azure 导入/导出服务在执行导入作业或导出作业的过程中针对驱动器执行某个操作时，会将日志写入到与该作业关联的存储帐户中的块 Blob 中。  
@@ -22,7 +22,7 @@ ms.locfileid: "55454838"
   
 -   发生错误时始终生成错误日志。  
   
--   详细日志默认未启用，但可通过对[放置作业](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)或[更新作业属性](/rest/api/storageimportexport/jobs#Jobs_Update)操作设置 `EnableVerboseLog` 属性来启用该日志。  
+-   详细日志默认未启用，但可通过对[放置作业](/rest/api/storageimportexport/jobs)或[更新作业属性](/rest/api/storageimportexport/jobs)操作设置 `EnableVerboseLog` 属性来启用该日志。  
   
 ## <a name="log-file-location"></a>日志文件位置  
 日志将写入到 `ImportExportStatesPath` 设置（可在“`Put Job`”操作中设置）指定的容器或虚拟目录中的块 Blob。 日志写入到的位置取决于为该作业指定身份验证的方式，以及为 `ImportExportStatesPath` 指定的值。 可通过存储帐户密钥或容器 SAS（共享访问签名）为作业指定身份验证。  
@@ -38,7 +38,7 @@ ms.locfileid: "55454838"
 |容器 SAS|默认值|名为 `waimportexport` 的虚拟目录，这是默认名称，位于 SAS 中指定的容器下方。<br /><br /> 例如，如果为作业指定的 SAS 是 `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`，则日志位置应为 `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport`|  
 |容器 SAS|用户指定的值|由用户命名的虚拟目录，位于 SAS 中指定的容器下方。<br /><br /> 例如，如果为作业指定的 SAS 是 `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`，指定的虚拟目录名为 `mylogblobs`，则日志位置应为 `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport/mylogblobs`。|  
   
-可以通过调用[获取作业](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)操作来检索错误日志和详细日志的 URL。 处理完驱动器后，将提供日志。  
+可以通过调用[获取作业](/rest/api/storageimportexport/jobs)操作来检索错误日志和详细日志的 URL。 处理完驱动器后，将提供日志。  
   
 ## <a name="log-file-format"></a>日志文件格式  
 这两种日志的格式相同：它是一个 Blob，包含在硬盘驱动器与客户帐户之间复制 Blob 时发生的事件的 XML 说明。  

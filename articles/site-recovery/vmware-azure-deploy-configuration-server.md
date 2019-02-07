@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: ramamill
-ms.openlocfilehash: 712f8fb2cb951460ad2be36b2899f52d4966fc82
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1d5c2dccabbc2acdddec6176d9b52681d4a18e68
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468389"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744086"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器
 
@@ -122,7 +122,7 @@ ms.locfileid: "54468389"
 
 ## <a name="upgrade-the-configuration-server"></a>升级配置服务器
 
-若要将配置服务器升级到最新版本，请执行这些[步骤](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)。 有关如何升级所有 Site Recovery 组件的详细说明，请单击[此处](https://docs.microsoft.com/en-us/azure/site-recovery/service%20updates-how-to)。
+若要将配置服务器升级到最新版本，请执行这些[步骤](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)。 有关如何升级所有 Site Recovery 组件的详细说明，请单击[此处](service-updates-how-to.md)。
 
 ## <a name="manage-the-configuration-server"></a>管理配置服务器
 

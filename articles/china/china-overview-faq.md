@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2017
+ms.date: 02/03/2019
 ms.author: v-wimarc
-ms.openlocfilehash: e5bec3eb3531437b8f9e78b6e797c8413df4fb28
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 56b073ab9c21e0f2a1a02b0acb54fe0614eebf52
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
-ms.locfileid: "23635189"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698046"
 ---
 # <a name="azure-china-21vianet-faq"></a>Azure 中国世纪互联常见问题解答
 获取有关世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）的常见问题的解答。 所述的主题包括帐户和订阅、门户及操作。
@@ -29,10 +29,6 @@ ms.locfileid: "23635189"
 Azure 中国世纪互联的[订阅](https://www.azure.cn/support/faq/#What-is-the-relationship-between-accounts-and-subscriptions)类似于全球 Azure 的订阅。 例如，可以购买多个订阅，每个订阅包含多个用户帐户；可从任何订阅创建和使用 Azure 服务。 允许在多个订阅中包含同一个用户。 帐单详细说明了每个订阅的费用，以及所有订阅的总费用。
 
 ## <a name="portals"></a>门户
-### <a name="what-is-the-azure-portal"></a>什么是 Azure 门户？
-2017 年 6 月，基于 Azure 资源管理器的 [Azure 门户](https://portal.azure.cn)已在中国正式推出。 Azure 门户合并了经典 Azure 管理门户和帐户门户的功能。 我们正在逐渐淘汰经典 Azure 管理门户。 所有新服务将在 Azure 门户中启动，但不可以在管理门户中启动。
-
-我们强烈建议开始使用新的 Azure 门户来部署服务。 Azure 资源管理器平台为资源管理带来了更大的灵活性。
 
 ### <a name="what-can-i-do-in-the-ea-portal"></a>在 EA 门户中可以执行哪些操作？
 [Azure 企业协议 (EA) 门户](https://ea.azure.cn/)是企业联机服务高级协议 (OSPA) 的独特优势。 在此门户中，可以：
@@ -48,13 +44,6 @@ Azure 中国世纪互联的[订阅](https://www.azure.cn/support/faq/#What-is-th
 - 添加更多订阅。
 - 编辑联系信息。
 - 查看订阅添加的预览功能。
-
-### <a name="what-can-i-do-in-the-management-portal"></a>在管理门户中可以执行哪些操作？
-经典 [Azure 管理门户](https://manage.windowsazure.cn/)逐渐被淘汰。 我们建议使用 [Azure 门户](https://portal.azure.cn/)，其中合并了管理和帐户功能，同时可让你更灵活地管理 Azure 资源。
-
-可以继续使用管理门户来执行以下操作：
-- 将 Azure 服务添加到订阅。
-- 添加和管理共同管理员。
 
 ### <a name="why-is-my-new-enrollment-status-pending-in-the-ea-portal"></a>我的新登记为何在 EA 门户中显示为挂起状态？
 预配新登记时，状态会显示为挂起。 使用帐户登录到 EA 门户时，状态会更改为活动。

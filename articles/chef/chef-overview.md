@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: be1e7ab953c55581645a9702fc4759cb603e7ecc
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: c0ec8b98ff711f8e5746d6d4731266ed4b09cc8f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54357855"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658838"
 ---
 # <a name="using-chef-with-azure"></a>将 Chef 与 Azure 配合使用
 [Chef](http://www.chef.io) 是一个功能强大的自动化平台，可将 Azure 上的虚拟机基础结构转换为代码。 无论大小如何，Chef 均可自动控制基础结构在网络中配置、部署和托管的方式。
@@ -21,7 +21,7 @@ ms.locfileid: "54357855"
 本文介绍使用 Chef 管理 Azure 基础结构的优点。
 
 ## <a name="chef-extension-on-azure"></a>Azure 上的 Chef 扩展
-在 Azure 门户上使用 [Chef 扩展](https://docs.microsoft.com/en-us/azure/chef/chef-extension-portal)预配一个虚拟机，其中 Chef 客户端作为后台服务运行。 预配后，这些虚拟机即可由 Chef 服务器进行管理。
+在 Azure 门户上使用 [Chef 扩展](https://docs.microsoft.com/azure/chef/chef-extension-portal)预配一个虚拟机，其中 Chef 客户端作为后台服务运行。 预配后，这些虚拟机即可由 Chef 服务器进行管理。
 
 ## <a name="chef-cloud-shell"></a>Chef Cloud Shell
 在 Azure Cloud Shell 中直接使用 Chef 工作站！ 直接从 Cloud Shell 运行所有 Chef 实用程序和 InSpec。 可以从以下位置利用 Chef 命令：

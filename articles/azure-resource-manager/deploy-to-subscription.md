@@ -11,18 +11,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: d86a1591c81c6343ec376c080945b4bf1f97638a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ce95406cbcb6d9514159d84d653a9ff361713aec
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471770"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744392"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在订阅级别创建资源组和资源
 
 通常情况下，你可将 Azure 资源部署到 Azure 订阅中的资源组。 但是，你还可以创建 Azure 资源组，并在订阅级别创建 Azure 资源。 若要在订阅级别部署模板，请使用 Azure CLI 和 Azure PowerShell。 Azure 门户不支持在订阅级别部署。
 
-若要在 Azure 资源管理器模板中创建资源组，请为该资源组定义包含名称和位置的 [Microsoft.Resources/resourceGroups](/azure/templates/microsoft.resources/allversions.md) 资源。 你可以创建一个资源组并在同一模板中将资源部署到该资源组。 可在订阅级别部署的资源包括：[策略](../azure-policy/azure-policy-introduction.md)和[基于角色的访问控制](../role-based-access-control/overview.md)。
+若要在 Azure 资源管理器模板中创建资源组，请为该资源组定义包含名称和位置的 [Microsoft.Resources/resourceGroups](/azure/templates/microsoft.resources/allversions) 资源。 你可以创建一个资源组并在同一模板中将资源部署到该资源组。 可在订阅级别部署的资源包括：[策略](../azure-policy/azure-policy-introduction.md)和[基于角色的访问控制](../role-based-access-control/overview.md)。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deployment-considerations"></a>部署注意事项
 
@@ -99,7 +101,7 @@ New-AzDeployment `
 }
 ```
 
-模板架构可在[此处](/azure/templates/microsoft.resources/allversions.md)找到。 类似模板可在 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments) 找到。
+模板架构可在[此处](/azure/templates/microsoft.resources/allversions)找到。 类似模板可在 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments) 找到。
 
 ## <a name="create-multiple-resource-groups"></a>创建多个资源组
 

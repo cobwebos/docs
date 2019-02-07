@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: raynew
-ms.openlocfilehash: 5cbe0c5e86a1dfd8cc3cb374f0ae7e1c67ae9d77
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 302445038dc9767bd412e232f62fc5249a1a7f09
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828292"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696936"
 ---
 # <a name="best-practices-to-set-up-networking-for-workloads-migrated-to-azure"></a>为迁移到 Azure 的工作负荷设置网络的最佳做法
 
@@ -72,7 +72,7 @@ Azure 提供了虚拟网络 (VNet)：
 **了解更多：**
 
 - [阅读有关](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)中心和辐射拓扑的信息。
-- 获取有关运行 Azure [Windows](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm#network-recommendations) 和 [Linux](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/linux-vm#network-recommendations) VM 的网络建议。
+- 获取有关运行 Azure [Windows](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm) 和 [Linux](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/linux-vm) VM 的网络建议。
 - [了解](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) VNet 对等互连。
 
 

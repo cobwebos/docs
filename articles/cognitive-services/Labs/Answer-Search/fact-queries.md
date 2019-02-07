@@ -10,20 +10,20 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: b8358890658a38133452ba2092ac9b8b78114ff7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 8402d0228e062aed60adee1c4622ade31771584d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210941"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700275"
 ---
 # <a name="quickstart-query-for-facts"></a>快速入门：查询事实
 
 如果查询针对诸如日期或可识别知识等事实，则响应可以包含 `facts` 答案。 事实答案包含从 Web 文档的段落中提取的相关结果。  这些查询始终返回网页，且[事实](fact-queries.md)和/或[实体](entity-queries.md)依赖于查询。
 
-valentines+2016、when+is+ramadan 等查询被视为与日期相关的查询。 如果必应确定查询与日期相关，则响应包含 `facts` 答案。 
+valentines+2016、when+is+ramadan 等查询被视为与日期相关的查询。 如果必应确定查询与日期相关，则响应包含 `facts` 答案。
 
-下面的示例是日期相关的 `facts` 答案。 
+下面的示例是日期相关的 `facts` 答案。
 
 **查询：**
 ```
@@ -34,28 +34,29 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
 **响应：**`subjectName` 字段包含显示事实时可用作标签的用户查询的显示版本。 如果查询字符串是 valentines+2016，则必应可能将其更改为“Valentine's Day 2016”。 说明字段包含事实。
 
 ```
-{   
-    "_type" : "SearchResponse",   
-    "queryContext" : {   
-        "originalQuery" : "valentines 2016" 
-    },   
-    "facts" : {   
-        "id" : "https:\/\/www.bingapis.com\/api\/v7\/#Facts",   
-        "value" : [{   
-            "description" : "Valentine's Day was on Sunday, February 14, 2016.",   
-            "subjectName" : "Valentine's Day 2016"   
-        }]   
-    },   
-    "rankingResponse" : {   
-        "mainline" : {   
-            "items" : [{   
-                "answerType" : "Facts",   
-                "value" : {   
-                    "id" : "https:\/\/www.bingapis.com\/api\/v7\/knowledge\/#Facts"                   }   
-            }]   
-        }   
-    }   
-}   
+{
+    "_type" : "SearchResponse",
+    "queryContext" : {
+        "originalQuery" : "valentines 2016"
+    },
+    "facts" : {
+        "id" : "https:\/\/www.bingapis.com\/api\/v7\/#Facts",
+        "value" : [{
+            "description" : "Valentine's Day was on Sunday, February 14, 2016.",
+            "subjectName" : "Valentine's Day 2016"
+        }]
+    },
+    "rankingResponse" : {
+        "mainline" : {
+            "items" : [{
+                "answerType" : "Facts",
+                "value" : {
+                    "id" : "https:\/\/www.bingapis.com\/api\/v7\/knowledge\/#Facts"
+                }
+            }]
+        }
+    }
+}
 
 ```
 
@@ -118,7 +119,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+s
 在某些情况下，事实可作为 `_type: StructuredValue/TabularData` 返回。 以下查询获取咖啡和茶对比信息的表格数据。
 
 ```
-https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt=en-us 
+https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt=en-us
 
 ```
 `facts` 结果包含以下行和单元格：

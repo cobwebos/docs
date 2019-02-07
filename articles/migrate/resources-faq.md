@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: snehaa
-ms.openlocfilehash: 619369972991bab0b23e7e9ae4e0a146f875e59a
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 1e60ee5060f5f292ed6d03cf0680d9801a0c04f4
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079250"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746305"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - 常见问题解答 (FAQ)
 
@@ -108,7 +108,7 @@ Azure Migrate 支持两种发现：基于设备的发现和基于代理的发现
 
 ### <a name="would-there-be-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>是否会对已分析的 ESXi 主机环境造成任何性能影响？
 
-在[一次性发现方法](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods)中，为了收集性能数据，vCenter Server 上的统计信息级别将设置为 3。 设置为此级别将收集大量的故障排除数据，这些数据将存储在 vCenter Server 数据库中。 因此，它可能会在 vCenter Server 上导致一些性能问题。 对 ESXi 主机的影响微不足道。
+在[一次性发现方法](https://docs.microsoft.com/azure/migrate/concepts-collector)中，为了收集性能数据，vCenter Server 上的统计信息级别将设置为 3。 设置为此级别将收集大量的故障排除数据，这些数据将存储在 vCenter Server 数据库中。 因此，它可能会在 vCenter Server 上导致一些性能问题。 对 ESXi 主机的影响微不足道。
 
 我们已引入了性能数据持续分析（目前为预览版）。 使用持续分析，不再需要更改 vCenter Server 统计信息级别来运行基于性能的评估。 收集器设备现在将对本地计算机进行分析来度量虚拟机的性能数据。 这几乎不会对 ESXi 主机和 vCenter Server 造成性能影响。
 

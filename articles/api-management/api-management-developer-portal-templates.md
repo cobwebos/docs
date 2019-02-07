@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 90084f6c4fb270c34165bf12763109d9be2398aa
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 00d5e3df78e85d19a519786dad1a1b176ad7fa08
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446953"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733053"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>如何使用模板自定义 Azure API Management 开发人员门户
 
@@ -45,15 +45,15 @@ ms.locfileid: "52446953"
 
 ![开发人员门户模板][api-management-templates-menu]
 
-单击模板转到由该模板自定义的开发人员门户页面。 在此示例中，显示“产品列表”模板。 “产品列表”模板控制红色矩形所示的屏幕区域。 
+单击模板转到由该模板自定义的开发人员门户页面。 在此示例中，显示“产品列表”模板。 “产品列表”模板控制红色矩形所示的屏幕区域。
 
 ![产品列表模板][api-management-developer-portal-templates-overview]
 
-某些模板（如“用户配置文件”模板）自定义同一页面的不同部分。 
+某些模板（如“用户配置文件”模板）自定义同一页面的不同部分。
 
 ![用户配置文件模板][api-management-user-profile-templates]
 
-每个开发人员门户模板的编辑器都具有两个在页面底部显示的部分。 左侧显示模板的编辑窗格，右侧显示模板的数据模型。 
+每个开发人员门户模板的编辑器都具有两个在页面底部显示的部分。 左侧显示模板的编辑窗格，右侧显示模板的数据模型。
 
 模板编辑窗格包含标记，用于控制开发人员门户中的对应页面的外观和行为。 模板中的标记使用 [DotLiquid](http://dotliquidmarkup.org/) 语法。 DotLiquid 的一个流行编辑器是 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)。 在编辑期间对模板所作的任何更改都实时显示在浏览器中，但在[保存](#to-save-a-template)并[发布](#to-publish-a-template)该模板之前对客户不可见。
 
@@ -118,7 +118,7 @@ ms.locfileid: "52446953"
         <li>
             <h3><a href="/products/{{product.id}}">{{product.title}}</a></h3>
             {{product.description}}
-        </li>    
+        </li>
     {% endfor %}
     </ul>
     <paging-control></paging-control>
@@ -209,10 +209,3 @@ ms.locfileid: "52446953"
 [api-management-reset-template]: ./media/api-management-developer-portal-templates/api-management-reset-template.png
 [api-management-reset-template-confirm]: ./media/api-management-developer-portal-templates/api-management-reset-template-confirm.png
 [api-management-restore-templates]: ./media/api-management-developer-portal-templates/api-management-restore-templates.png
-
-
-
-
-
-
-

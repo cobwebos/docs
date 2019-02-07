@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: aschhab
-ms.openlocfilehash: 6b03b1eb773c40a81c9efd76ac26b40936dca2cc
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 3158f0255810c66605d28856133112181c2916db
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849356"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733920"
 ---
 # <a name="messages-payloads-and-serialization"></a>消息、有效负载和序列化
 
@@ -28,7 +28,7 @@ Microsoft Azure 服务总线负责处理消息。 消息传递键值对属性形
  
 服务总线消息包括服务总线从未在服务端以任何形式处理过的二进制有效负载部分，以及两组属性。 中转站属性由系统预定义。 这些预定义属性要么控制中转站内的消息级功能，要么映射到常见的标准化元数据项。 用户属性是一组可由应用程序定义和设置的键值对。
  
-下表列出了预定义的中转站属性。 这些属性名可与所有正式版客户端 API 配合使用，同时还位于 HTTP 协议映射的 [BrokerProperties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Properties_) JSON 对象中。
+下表列出了预定义的中转站属性。 这些属性名可与所有正式版客户端 API 配合使用，同时还位于 HTTP 协议映射的 [BrokerProperties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) JSON 对象中。
  
 括号内列出的是在 AMQP 协议一级使用的等效名称。 
 

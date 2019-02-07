@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/07/2018
 ms.author: priyamo
-ms.openlocfilehash: a4e860d4207eebb993b26bb45e531a6be734c5fc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b655624b4bd611198eddcdcc79c75a52267b6dde
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167183"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756601"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>教程：使用 Windows VM 系统分配托管标识访问 Azure SQL
 
@@ -48,7 +48,7 @@ ms.locfileid: "55167183"
 
 ## <a name="enable-azure-ad-authentication-for-the-sql-server"></a>为 SQL 服务器启用 Azure AD 身份验证
 
-使用以下步骤[为 SQL Server 配置 Azure AD 身份验证](/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-server)：
+使用以下步骤[为 SQL Server 配置 Azure AD 身份验证](/azure/sql-database/sql-database-aad-authentication-configure)：
 
 1.  在 Azure 门户的左侧导航栏中选择“SQL 服务器”。
 2.  单击要启用 Azure AD 身份验证的 SQL 服务器。

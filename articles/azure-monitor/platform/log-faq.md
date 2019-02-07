@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 693d66c6b56fd759086236ae0252d2c6f1b5693e
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0edb3441083a6eb6f95b3ca3ade2bf0b1582858d
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301248"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564946"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics 常见问题解答
 此 Microsoft 常见问题解答是有关 Microsoft Azure 中 Log Analytics 的常见问题列表。 如果有与 Log Analytics 有关的任何其他问题，请转到[论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
@@ -55,7 +55,7 @@ Azure 门户中的新的日志体验基于高级分析门户，但是仍然可�
 
 ### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>问： 为什么从 VM 钻取进去后，我会在日志中发现以下错误：“Register resource provider 'Microsoft.Insights' for this subscription to enable this query”（请为此订阅注册资源提供程序“Microsoft.Insights”以启用此查询）？ 
 
-答：默认情况下，会自动注册多个资源提供程序；但是，可能需要手动注册某些资源提供程序。 这样可以配置订阅，使之适合资源提供程序。 注册的作用域始终是订阅。 有关详细信息，请参阅[资源提供程序和类型](../../azure-resource-manager/resource-manager-supported-services.md#portal)。
+答：默认情况下，会自动注册多个资源提供程序；但是，可能需要手动注册某些资源提供程序。 这样可以配置订阅，使之适合资源提供程序。 注册的作用域始终是订阅。 有关详细信息，请参阅[资源提供程序和类型](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal)。
 
 ### <a name="q-why-am-i-am-getting-no-access-error-message-when-accessing-logs-from-a-vm-page"></a>问： 为什么在从 VM 页访问日志时，会出现“无法访问”错误消息？ 
 

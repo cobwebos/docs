@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: cf011558ab984ecaf8181a4dc4ffcb80851f24fb
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: ebb6fe9f583c2658f187d3cca1185f1525fb1bf5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352948"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811029"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -32,20 +32,14 @@ ms.locfileid: "54352948"
 
 SQL API Java SDK 支持同步操作。 如需异步支持，请使用 [SQL API Async Java SDK](sql-api-sdk-async-java.md)。 
 
-<table>
-
-<tr><td>**SDK 下载**</td><td>[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)</td></tr>
-
-<tr><td>**API 文档**</td><td>[Java API 参考文档](/java/api/com.microsoft.azure.documentdb)</td></tr>
-
-<tr><td>**参与 SDK**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-java/)</td></tr>
-
-<tr><td>**入门**</td><td>[Java SDK 入门](sql-api-java-get-started.md)</td></tr>
-
-<tr><td>**Web 应用教程**</td><td>[使用 Azure Cosmos DB 进行 Web 应用程序开发](sql-api-java-application.md)</td></tr>
-
-<tr><td>受支持的最小运行时</td><td>[Java 开发工具包 (JDK) 7+](https://aka.ms/azure-jdks)</td></tr>
-</table></br>
+| |  |
+|---|---|
+|**SDK 下载**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
+|**API 文档**|[Java API 参考文档](/java/api/com.microsoft.azure.documentdb)|
+|**参与 SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
+|**入门**|[Java SDK 入门](sql-api-java-get-started.md)|
+|**Web 应用教程**|[使用 Azure Cosmos DB 进行 Web 应用程序开发](sql-api-java-application.md)|
+|受支持的最小运行时|[Java 开发工具包 (JDK) 7+](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>发行说明
 
@@ -218,7 +212,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
-| [2.1.1](#2.1.1) |2018 年 11 月 21 日 |--- |
+| 2.1.1 |2018 年 11 月 21 日 |--- |
 | [2.0.0](#2.0.0) |2018 年 9 月 21 日 |--- |
 | [1.16.4](#1.16.4) |2018 年 9 月 10 日 |--- |
 | [1.16.3](#1.16.3) |2018 年 9 月 9 日 |--- |
@@ -249,7 +243,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 | [1.3.0](#1.3.0) |2015 年 10 月 5 日 |--- |
 | [1.2.0](#1.2.0) |2015 年 8 月 5 日 |--- |
 | [1.1.0](#1.1.0) |2015 年 7 月 9 日 |--- |
-| [1.0.1](#1.0.1) |2015 年 5 月 12 日 |--- |
+| 1.0.1 |2015 年 5 月 12 日 |--- |
 | [1.0.0](#1.0.0) |2015 年 4 月 7 日 |--- |
 | 0.9.5-prelease |2015 年 3 月 9 日 |2016 年 2 月 29 日 |
 | 0.9.4-prelease |2015 年 2 月 17 日 |2016 年 2 月 29 日 |

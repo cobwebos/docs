@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/30/2019
-ms.openlocfilehash: 48cdd064155bfbdfa2fef2ce5a8410e4c95e4c3b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/01/2019
+ms.openlocfilehash: cb4d3c4d15dded3c7f90a1e3cf118ca10371dcb1
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461060"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700989"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Azure SQL 数据库基于 vCore 的购买模型针对弹性池的限制
 
@@ -198,7 +198,7 @@ ms.locfileid: "55461060"
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |
 |硬件代次|5|5|5|5|5|5|5|
 |vCore 数|2|4|6|8|10|12|14|
-|内存 (GB)|11|22|33|44|55|66|77|
+|内存 (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
 |列存储支持|是|是|是|是|是|是|是|
 |内存中 OLTP 存储 (GB)|1.571|3.142|4.713|6.284|8.655|11.026|13.397|
 |最大数据大小 (GB)|1024|1024|1024|1536|1536|1536|1536|
@@ -260,5 +260,5 @@ ms.locfileid: "55461060"
 ## <a name="next-steps"></a>后续步骤
 
 - 有关常见问题的解答，请参阅 [SQL 数据库常见问题解答](sql-database-faq.md)。
-- 有关服务器和订阅级别限制的信息，请参阅 [SQL 数据库服务器上的资源限制概述](sql-database-resource-limits-database-server.md)。
+- 有关服务器和订阅级别限制的信息，请参阅 [SQL 数据库服务器资源限制概述](sql-database-resource-limits-database-server.md)。
 - 有关常规 Azure 限制的相关信息，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md)。

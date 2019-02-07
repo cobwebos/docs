@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: b46539758d88fe7a0e27799b5da581255fa5f075
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: bf807a4d24b72c948707ade28f06c4eb2a54c0a0
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229326"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657019"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>如何将托管标识与 Azure 容器实例结合使用
 
@@ -134,7 +134,7 @@ az container show --resource-group myResourceGroup --name mycontainer
 
 ### <a name="grant-user-assigned-identity-access-to-the-key-vault"></a>授予用户分配的标识对 Key Vault 的访问权限
 
-运行以下 [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 命令在 Key Vault 上设置访问策略。 以下示例允许用户分配的标识从 Key Vault 中获取机密：
+运行以下 [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest) 命令在 Key Vault 上设置访问策略。 以下示例允许用户分配的标识从 Key Vault 中获取机密：
 
 ```azurecli-interactive
  az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $spID --secret-permissions get
@@ -216,7 +216,7 @@ spID=$(az container show --resource-group myResourceGroup --name mycontainer --q
 
 ### <a name="grant-container-group-access-to-the-key-vault"></a>授予容器组对 Key Vault 的访问权限
 
-运行以下 [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 命令在 Key Vault 上设置访问策略。 以下示例允许系统托管标识从 Key Vault 中获取机密：
+运行以下 [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest) 命令在 Key Vault 上设置访问策略。 以下示例允许系统托管标识从 Key Vault 中获取机密：
 
 ```azurecli-interactive
  az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $spID --secret-permissions get

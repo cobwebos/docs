@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: 75869de67d006b2053e9c3f9eed2fd8166a0e8e1
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: af269085550f71323c8098b4cdf3c88ec8035dfe
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200983"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563297"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>将 Raspberry Pi 设备连接到远程监视解决方案加速器 (Node.js)
 
@@ -96,7 +96,7 @@ ms.locfileid: "54200983"
 
 1. 在 **remote_monitoring.js** 文件中，添加以下 `require` 语句：
 
-    ```nodejs
+    ```javascript
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     var Client = require('azure-iot-device').Client;
     var Message = require('azure-iot-device').Message;
@@ -105,13 +105,13 @@ ms.locfileid: "54200983"
 
 1. 在 `require` 语句之后添加以下变量声明。 将占位符值 `{device connection string}` 替换为针对远程监视解决方案中预配的设备记下的值：
 
-    ```nodejs
+    ```javascript
     var connectionString = '{device connection string}';
     ```
 
 1. 若要定义一些基本遥测数据，请添加以下变量：
 
-    ```nodejs
+    ```javascript
     var temperature = 50;
     var temperatureUnit = 'F';
     var humidity = 50;
@@ -122,7 +122,7 @@ ms.locfileid: "54200983"
 
 1. 若要定义一些属性值，请添加以下变量：
 
-    ```nodejs
+    ```javascript
     var schema = "real-chiller;v1";
     var deviceType = "RealChiller";
     var deviceFirmware = "1.0.0";
@@ -135,7 +135,7 @@ ms.locfileid: "54200983"
 
 1. 添加以下变量以定义要发送到解决方案的报告属性。 这些属性包括在 Web UI 中显示的元数据：
 
-    ```nodejs
+    ```javascript
     var reportedProperties = {
       "SupportedMethods": "Reboot,FirmwareUpdate,EmergencyValveRelease,IncreasePressure",
       "Telemetry": {
@@ -153,7 +153,7 @@ ms.locfileid: "54200983"
 
 1. 若要输出操作结果，请添加以下帮助程序函数：
 
-    ```nodejs
+    ```javascript
     function printErrorFor(op) {
         return function printError(err) {
             if (err) console.log(op + ' error: ' + err.toString());
@@ -163,7 +163,7 @@ ms.locfileid: "54200983"
 
 1. 添加以下帮助程序函数，用于随机化遥测值：
 
-    ```nodejs
+    ```javascript
     function generateRandomIncrement() {
         return ((Math.random() * 2) - 1);
     }
@@ -171,7 +171,7 @@ ms.locfileid: "54200983"
 
 1. 添加以下泛型函数以处理解决方案中的直接方法调用。 该函数显示调用的直接方法的相关信息，但在此示例中不以任何方式修改设备。 解决方案使用直接方法对设备进行操作：
 
-    ```nodejs
+    ```javascript
     function onDirectMethod(request, response) {
       // Implement logic asynchronously here.
       console.log('Simulated ' + request.methodName);
@@ -186,7 +186,7 @@ ms.locfileid: "54200983"
 
 1. 添加以下函数以处理解决方案中的 **FirmwareUpdate** 直接方法调用。 该函数验证直接方法负载中传入的参数，并以异步方式运行固件更新模拟：
 
-    ```nodejs
+    ```javascript
     function onFirmwareUpdate(request, response) {
       // Get the requested firmware version from the JSON request body
       var firmwareVersion = request.payload.Firmware;
@@ -215,7 +215,7 @@ ms.locfileid: "54200983"
 
 1. 添加以下函数以模拟长时间运行的固件更新流（将进度报告回解决方案）：
 
-    ```nodejs
+    ```javascript
     // Simulated firmwareUpdate flow
     function runFirmwareUpdateFlow(firmwareVersion, firmwareUri) {
       console.log('Simulating firmware update flow...');
@@ -293,7 +293,7 @@ ms.locfileid: "54200983"
 
 1. 添加以下代码将遥测数据发送到解决方案。 客户端应用将属性添加到消息，以确定消息架构：
 
-    ```nodejs
+    ```javascript
     function sendTelemetry(data, schema) {
       if (deviceOnline) {
         var d = new Date();
@@ -312,7 +312,7 @@ ms.locfileid: "54200983"
 
 1. 添加以下代码，创建客户端实例：
 
-    ```nodejs
+    ```javascript
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
@@ -324,7 +324,7 @@ ms.locfileid: "54200983"
     * 为直接方法注册处理程序。 此示例对固件更新直接方法使用单独的处理程序。
     * 开始发送遥测。
 
-    ```nodejs
+    ```javascript
     client.open(function (err) {
       if (err) {
         printErrorFor('open')(err);

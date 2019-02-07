@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: f02d511c5afa6d515f29b9fc557be3b49223c501
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4291f6083cfe07d689ef9377df57c3e9a41772fc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243277"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812202"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>使用 Azure 机器学习数据准备 SDK 转换数据
 
@@ -25,7 +25,7 @@ ms.locfileid: "55243277"
 
 目前的函数适用于执行以下任务：
 
-- [使用表达式添加列](#column)
+- 使用表达式添加列
 - [估算缺失值](#impute-missing-values)
 - [按示例派生列](#derive-column-by-example)
 - [筛选](#filtering)

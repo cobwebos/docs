@@ -9,20 +9,18 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 66f9c41e2551dffc32932f1cfa53fa444251b303
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: a6ae388107e527b399dc758abccbefcec955a60d
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301044"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661626"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>使用私有 Docker 容器注册表进行身份验证
 
 可通过几种方法使用 Azure 容器注册表进行身份验证，并且每种方法适用于一种或多种注册表使用方案。
 
 你可以通过[个人登录](#individual-login-with-azure-ad)来直接登录到注册表，应用程序和容器业务流程协调程序也可以通过使用 Azure Active Directory (Azure AD) [服务主体](#service-principal)执行无人参与或“无外设”身份验证。
-
-Azure 容器注册表不支持未经身份验证的 Docker 操作或匿名访问。 对于公共映像，可以使用 [Docker 中心](https://docs.docker.com/docker-hub/)。
 
 ## <a name="individual-login-with-azure-ad"></a>使用 Azure AD 进行单次登录
 
@@ -69,7 +67,7 @@ docker login myregistry.azurecr.io
 登录后，Docker 会缓存凭据，因此无需记住应用 ID。
 
 > [!TIP]
-> 可通过运行 [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-reset-credentials) 命令重新生成服务主体的密码。
+> 可通过运行 [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest) 命令重新生成服务主体的密码。
 >
 
 ## <a name="admin-account"></a>管理员帐户

@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: b32fd36c5fd546f7d2138cb2b48ee2854667f948
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 58022ca4f605b4672cd9b6e22993fca8ff6dc591
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044257"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510935"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>如何通过 Node.js 使用 Azure 表存储或 Azure Cosmos DB 表 API
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -56,34 +56,34 @@ ms.locfileid: "54044257"
 ### <a name="import-the-package"></a>导入包
 将以下代码添加到应用程序中的 **server.js** 文件的顶部：
 
-```nodejs
+```javascript
 var azure = require('azure-storage');
 ```
 
 ## <a name="add-an-azure-storage-connection"></a>添加 Azure 存储连接
 Azure 模块读取环境变量 AZURE_STORAGE_ACCOUNT 和 AZURE_STORAGE_ACCESS_KEY 或 AZURE_STORAGE_CONNECTION_STRING 以获取连接到 Azure 存储器帐户所需的信息。 如果未设置这些环境变量，则必须在调用 **TableService** 时指定帐户信息。 例如，以下代码创建 TableService 对象：
 
-```nodejs
+```javascript
 var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
 ## <a name="add-an-azure-cosmos-db-connection"></a>添加 Azure Cosmos DB 连接
 要添加 Azure Cosmos DB 连接，创建 TableService 对象并指定帐户名称、主键和终结点。 可以从 Cosmos DB 帐户的 Azure 门户中的“设置” > “连接字符串”中复制这些值。 例如：
 
-```nodejs
+```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
 ```  
 
 ## <a name="create-a-table"></a>创建表
 下面的代码创建 **TableService** 对象并使用它来创建一个新表。 
 
-```nodejs
+```javascript
 var tableSvc = azure.createTableService();
 ```
 
 调用 createTableIfNotExists 创建具有指定名称的一个新表（如果该表尚不存在）。 下面的示例将创建一个名为“mytable”的新表（如果该表尚不存在）：
 
-```nodejs
+```javascript
 tableSvc.createTableIfNotExists('mytable', function(error, result, response){
   if(!error){
     // Table exists or created
@@ -96,13 +96,13 @@ tableSvc.createTableIfNotExists('mytable', function(error, result, response){
 ### <a name="filters"></a>筛选器
 可以向使用 TableService 执行的操作应用可选筛选。 筛选操作可包括日志记录、自动重试等。筛选器是实现具有签名的方法的对象：
 
-```nodejs
+```javascript
 function handle (requestOptions, next)
 ```
 
 在对请求选项执行预处理后，该方法必须调用 next 并且传递具有以下签名的回调：
 
-```nodejs
+```javascript
 function (returnObject, finalCallback, next)
 ```
 
@@ -110,7 +110,7 @@ function (returnObject, finalCallback, next)
 
 Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分别是 **ExponentialRetryPolicyFilter** 和 **LinearRetryPolicyFilter**。 以下代码将创建使用 **ExponentialRetryPolicyFilter** 的 **TableService** 对象:
 
-```nodejs
+```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
 var tableSvc = azure.createTableService().withFilter(retryOperations);
 ```
@@ -125,7 +125,7 @@ var tableSvc = azure.createTableService().withFilter(retryOperations);
 
 下面是如何定义实体的示例。 请注意，**dueDate** 被定义为一种类型的 **Edm.DateTime**。 可以选择指定类型。如果未指定类型，系统会进行推断。
 
-```nodejs
+```javascript
 var task = {
   PartitionKey: {'_':'hometasks'},
   RowKey: {'_': '1'},
@@ -141,7 +141,7 @@ var task = {
 
 还可以使用 **entityGenerator** 来创建实体。 下面的示例使用 **entityGenerator** 来创建相同的任务实体。
 
-```nodejs
+```javascript
 var entGen = azure.TableUtilities.entityGenerator;
 var task = {
   PartitionKey: entGen.String('hometasks'),
@@ -153,7 +153,7 @@ var task = {
 
 要将实体添加到表中，应将实体对象传递给 **insertEntity** 方法。
 
-```nodejs
+```javascript
 tableSvc.insertEntity('mytable',task, function (error, result, response) {
   if(!error){
     // Entity inserted
@@ -165,7 +165,7 @@ tableSvc.insertEntity('mytable',task, function (error, result, response) {
 
 示例响应:
 
-```nodejs
+```javascript
 { '.metadata': { etag: 'W/"datetime\'2015-02-25T01%3A22%3A22.5Z\'"' } }
 ```
 
@@ -186,7 +186,7 @@ tableSvc.insertEntity('mytable',task, function (error, result, response) {
 
 以下示例演示了使用 **replaceEntity** 更新实体：
 
-```nodejs
+```javascript
 tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response){
   if(!error) {
     // Entity updated
@@ -214,7 +214,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 
  下面的示例演示了在一个批次中提交两个实体：
 
-```nodejs
+```javascript
 var task1 = {
   PartitionKey: {'_':'hometasks'},
   RowKey: {'_': '1'},
@@ -254,7 +254,7 @@ tableSvc.executeBatch('mytable', batch, function (error, result, response) {
 ## <a name="retrieve-an-entity-by-key"></a>通过键检索实体
 如果想要返回基于 **PartitionKey** 和 **RowKey** 的特定实体，请使用 **retrieveEntity** 方法。
 
-```nodejs
+```javascript
 tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, response){
   if(!error){
     // result contains the entity
@@ -276,7 +276,7 @@ tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, res
 
 以下示例生成的查询返回 PartitionKey 为“hometasks”的前五项。
 
-```nodejs
+```javascript
 var query = new azure.TableQuery()
   .top(5)
   .where('PartitionKey eq ?', 'hometasks');
@@ -284,7 +284,7 @@ var query = new azure.TableQuery()
 
 由于未使用 select，因此将返回所有字段。 若要对表执行查询，请使用 **queryEntities**。 下面的示例使用此查询来返回“mytable”中的实体。
 
-```nodejs
+```javascript
 tableSvc.queryEntities('mytable',query, null, function(error, result, response) {
   if(!error) {
     // query was successful
@@ -298,7 +298,7 @@ tableSvc.queryEntities('mytable',query, null, function(error, result, response) 
 对表的查询可以只检索实体中的少数几个字段。
 这可以减少带宽并提高查询性能，尤其适用于大型实体。 使用 select 子句并传递要返回的字段的名称。 例如，下面的查询只返回 description 和 dueDate 字段。
 
-```nodejs
+```javascript
 var query = new azure.TableQuery()
   .select(['description', 'dueDate'])
   .top(5)
@@ -308,7 +308,7 @@ var query = new azure.TableQuery()
 ## <a name="delete-an-entity"></a>删除实体
 可以使用实体的分区键和行键删除实体。 在本例中，task1 对象包含要删除的实体的 RowKey 和 PartitionKey 值。 然后，该对象被传递给 **deleteEntity** 方法。
 
-```nodejs
+```javascript
 var task = {
   PartitionKey: {'_':'hometasks'},
   RowKey: {'_': '1'}
@@ -329,7 +329,7 @@ tableSvc.deleteEntity('mytable', task, function(error, response){
 ## <a name="delete-a-table"></a>删除表
 以下代码从存储帐户中删除一个表。
 
-```nodejs
+```javascript
 tableSvc.deleteTable('mytable', function(error, response){
     if(!error){
         // Table deleted
@@ -346,7 +346,7 @@ tableSvc.deleteTable('mytable', function(error, response){
 
 在查询时，在查询对象实例和回调函数之间可能会提供 `continuationToken` 参数：
 
-```nodejs
+```javascript
 var nextContinuationToken = null;
 dc.table.queryEntities(tableName,
     query,
@@ -372,7 +372,7 @@ dc.table.queryEntities(tableName,
 
 下面的示例生成了一个新的共享访问策略，该策略将允许 SAS 持有者查询 ('r') 表，在创建后 100 分钟过期。
 
-```nodejs
+```javascript
 var startDate = new Date();
 var expiryDate = new Date(startDate);
 expiryDate.setMinutes(startDate.getMinutes() + 100);
@@ -394,7 +394,7 @@ var host = tableSvc.host;
 
 然后，客户端应用程序将 SAS 用于 **TableServiceWithSAS**，以便针对表执行操作。 下面的示例连接到该表，并执行一个查询。 请参阅[使用共享访问签名](../storage/common/storage-dotnet-shared-access-signature-part-1.md#examples-of-sas-uris)一文，了解 tableSAS 的格式。 
 
-```nodejs
+```javascript
 // Note in the following command, host is in the format: `https://<your_storage_account_name>.table.core.windows.net` and the tableSAS is in the format: `sv=2018-03-28&si=saspolicy&tn=mytable&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D`;
 
 var sharedTableService = azure.createTableServiceWithSas(host, tableSAS);
@@ -415,7 +415,7 @@ sharedTableService.queryEntities(query, null, function(error, result, response) 
 
 ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID。 以下示例定义了两个策略，一个用于“user1”，一个用于“user2”：
 
-```nodejs
+```javascript
 var sharedAccessPolicy = {
   user1: {
     Permissions: azure.TableUtilities.SharedAccessPermissions.QUERY,
@@ -432,7 +432,7 @@ var sharedAccessPolicy = {
 
 下面的示例获取 **hometasks** 表的当前 ACL，并使用 **setTableAcl** 添加新策略。 此方法具有以下用途：
 
-```nodejs
+```javascript
 var extend = require('extend');
 tableSvc.getTableAcl('hometasks', function(error, result, response) {
 if(!error){
@@ -448,7 +448,7 @@ if(!error){
 
 设置 ACL 后，可以根据某个策略的 ID 创建 SAS。 以下示例为“user2”创建新的 SAS：
 
-```nodejs
+```javascript
 tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 ```
 

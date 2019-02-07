@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 2252dc9d1cb4a8b5666e3f8078528206ac0fddf7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9b8340221c61bedbe010b9ef280ada62cfee7a21
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228247"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754859"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>文本转语音常见问题
 
@@ -29,7 +29,7 @@ ms.locfileid: "55228247"
 
 **问：如果想要使用标准语音模型，应从何处开始？**
 
-**答**：通过 HTTP 请求可以使用超过 45 种语言的 80 多种标准语音模型。 首先，获取[订阅密钥](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)。 若要对预部署的语音模型进行 REST 调用，请参阅 [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech)。
+**答**：通过 HTTP 请求可以使用超过 45 种语言的 80 多种标准语音模型。 首先，获取[订阅密钥](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)。 若要对预部署的语音模型进行 REST 调用，请参阅 [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)。
 
 **问：如果想使用自定义的语音模型，API 是否与用于标准语音的 API 相同？**
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6e15d4376fae576f615cac7c094f53dfcc22618e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 76af79cc9ef1ebea30b30a291f451b7b0a4f3ba6
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826609"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694476"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Contoso 迁移：在 Azure VM 和 SQL 数据库托管实例上重新托管本地应用
 
@@ -173,7 +173,7 @@ Contoso 计划按以下流程设置部署：
 - 子网必须有用户定义的路由 (UDR) 路由表。 分配的唯一路由应为 0.0.0.0/0 下一跃点 Internet。 
 - 可选的自定义 DNS:如果在 Azure 虚拟网络中指定了自定义 DNS，则必须将 Azure 的递归解析程序 IP 地址（例如 168.63.129.16）添加到列表。 了解如何[为托管实例配置自定义 DNS](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns)。
 - 该子网不能有关联的服务终结点（存储或 SQL）。 应在虚拟网络上禁用服务终结点。
-- 该子网必须至少有 16 个 IP 地址。 了解如何[调整托管实例的子网大小](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#determine-the-size-of-subnet-for-managed-instances)。
+- 该子网必须至少有 16 个 IP 地址。 了解如何[调整托管实例的子网大小](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration)。
 - 在 Contoso 混合环境中，自定义 DNS 设置为必需项。 Contoso 将 DNS 设置配置为使用一个或多个公司 Azure DNS 服务器。 详细了解 [DNS 自定义](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns)。
 
 ### <a name="set-up-a-virtual-network-for-the-managed-instance"></a>为托管实例设置虚拟网络
@@ -207,7 +207,7 @@ Contoso 管理员按如下所述设置虚拟网络：
 *需要更多帮助？*
 
 - 简要了解 [SQL 数据库托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)。
-- 了解如何[为 SQL 数据库托管实例创建虚拟网络](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#create-a-new-virtual-network-for-managed-instances)。
+- 了解如何[为 SQL 数据库托管实例创建虚拟网络](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration)。
 - 了解如何[设置对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering)。
 - 了解如何[更新 Azure Active Directory DNS 设置](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-dns)。
 
@@ -609,7 +609,7 @@ Contoso 安全团队会审查 Azure VM 和 SQL 数据库托管实例，检查实
 
      ![托管实例安全 - 威胁检测](./media/contoso-migration-rehost-vm-sql-managed-instance/mi-security.png)  
 
-若要详细了解 VM 的安全做法，请参阅[Azure 中 IaaS 工作负荷的安全性最佳实践](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control)。
+若要详细了解 VM 的安全做法，请参阅[Azure 中 IaaS 工作负荷的安全性最佳实践](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms)。
 
 ### <a name="bcdr"></a>BCDR
 

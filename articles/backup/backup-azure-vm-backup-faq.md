@@ -2,18 +2,18 @@
 title: Azure VM 备份常见问题解答
 description: 针对下述常见问题的解答：Azure VM 备份原理、限制以及更改策略时会发生什么情况
 services: backup
-author: trinadhk
-manager: shreeshd
+author: sogup
+manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
-ms.author: trinadhk
-ms.openlocfilehash: 31a708f3a0da76ab13e789b099f312cca1f86e08
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.author: sogup
+ms.openlocfilehash: 55fbc997f6aaf4cf99bfb8492a2e4ac608c72af8
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332245"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494895"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>常见问题 - Azure 备份
 

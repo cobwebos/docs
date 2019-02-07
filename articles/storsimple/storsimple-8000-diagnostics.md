@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 7199009553eb7aae31db3f913fe4de87e03d74ba
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 5cce4337e3ef95c6407d46d9b8b6401fe4f6600b
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
-ms.locfileid: "27744106"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497734"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>使用 StorSimple 诊断工具排查 8000 系列设备的问题
 
@@ -289,7 +289,7 @@ HCS Vnic Resource             Online HCS Cluster Group
 hcs_cloud_connectivity_...    Online HCS Cluster Group
 hcs_controller_replacement    Online HCS Cluster Group
 hcs_datapath_service          Online HCS Cluster Group
-hcs_management_servic         Online HCS Cluster Group
+hcs_management_service        Online HCS Cluster Group
 hcs_nvram_service             Online HCS Cluster Group
 hcs_passive_datapath          Online HCS Passive Cluster Group
 hcs_platform_service          Online HCS Cluster Group
@@ -417,7 +417,7 @@ Controller0>
 | PowerShell 参数    | 说明  |
 |-------------------------|------------------|
 | 实例 ID             | 每个控制器都有一个关联的唯一标识符或 GUID。|
-| 名称​​                    | 在部署设备期间通过 Azure 门户配置的设备友好名称。 默认的友好名称为设备序列号。 |
+| Name                    | 在部署设备期间通过 Azure 门户配置的设备友好名称。 默认的友好名称为设备序列号。 |
 | 模型                   | StorSimple 8000 系列设备的型号。 型号可能是 8100 或 8600。|
 | 序列号            | 设备序列号是出厂分配的，长度为 15 个字符。 例如，8600-SHX0991003G44HT 表示：<br> 8600 – 设备型号。<br>SHX – 制造地。<br> 0991003 – 具体的产品。 <br> G44HT – 最后 5 位是递增的，确保构成唯一的序列号。 这组编号不一定是按顺序递增的。|
 | TimeZone                | 部署设备期间在 Azure 门户中配置的设备时区。|
@@ -434,7 +434,7 @@ Controller0>
 | CisAgentVersion         | StorSimple 设备上运行的 Cis 代理版本。 此代理可帮助与 Azure 中运行的 StorSimple Manager 服务通信。|
 | MdsAgentVersion         | 对应于 StorSimple 设备上运行的 Mds 代理的版本。 此代理可将数据移到监视和诊断服务 (MDS)。|
 | Lsisas2Version          | 对应于 StorSimple 设备上的 LSI 驱动程序的版本。|
-| Capacity                | 设备的总容量，以字节为单位。|
+| 容量                | 设备的总容量，以字节为单位。|
 | RemoteManagementMode    | 指示是否可以通过设备的 Windows PowerShell 界面远程管理该设备。 |
 | FipsMode                | 指示是否在设备上启用了美国联邦信息处理标准 (FIPS) 模式。 FIPS 140 标准定义的加密算法已经过批准，可以用于美国联邦政府计算机系统来保护敏感数据。 对于运行 Update 4 或更高版本的设备，FIPS 模式默认已启用。 |
 

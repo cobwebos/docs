@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 07/26/2018
 ms.author: danlep
 ROBOTS: NOINDEX
-ms.openlocfilehash: 643d2a5a600d018912f09d01f2e018100767f147
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 8ca2def6aa6ab463e5b2be0203791da671a41745
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410119"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697793"
 ---
 # <a name="cli-example-create-and-manage-a-batch-ai-cluster-of-dedicated-nodes"></a>CLI 示例：创建和管理由专用节点组成的 Batch AI 群集
 
@@ -57,8 +57,8 @@ az group delete --name batchaiautostorage
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az batchai workspace create](/cli/azure/batchai/workspace#az-batchai-workspace-create) | 创建 Batch AI 工作区。 |
 | [az batchai cluster create](/cli/azure/batchai/cluster#az-batchai-cluster-create) | 创建 Batch AI 群集。 |
-| [az batchai cluster show](/cli/azure/batchai/cluster#az-batchai-cluster-show) | 显示有关 Batch AI 群集的信息。 |
-| [az batchai cluster node list](/cli/azure/batchai/cluster/node#az-batchai-cluster-show) | 列出 Batch AI 群集中的节点。 |
+| [az batchai cluster show](/cli/azure/batchai/cluster) | 显示有关 Batch AI 群集的信息。 |
+| [az batchai cluster node list](/cli/azure/batchai/cluster/node) | 列出 Batch AI 群集中的节点。 |
 | [az batchai cluster resize](/cli/azure/batchai/cluster#az-batchai-cluster-resize) | 重设 Batch AI 群集大小。  |
 | [az group delete](/cli/azure/group#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
 

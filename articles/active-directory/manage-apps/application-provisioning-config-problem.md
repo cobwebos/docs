@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2d1a449511ce944783c8d93b79d59be263b20fa3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 38075c9216eab955a023fee53aad74f3768d783c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163937"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822266"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>为 Azure AD 库应用程序配置用户预配时遇到的问题
 
@@ -41,7 +41,7 @@ ms.locfileid: "55163937"
 以下为常规问题范围列表，如果知道从何处着手，可做一番深入了解。
 
 * [预配服务似乎未启动](#provisioning-service-does-not-appear-to-start)
-* [因应用凭据无效而无法保存配置](#can’t-save-configuration-due-to-app-credentials-not-working)
+* 因应用凭据不工作而无法保存配置
 * [即使用户已分配，审核日志还是显示他们已被“跳过”且未预配](#audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>预配服务似乎未启动

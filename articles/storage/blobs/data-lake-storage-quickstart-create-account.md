@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 906f1a85000a2be175a204e9e6e561a75cecfde3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b49c69a488402e593573e7f9e4fda81057519149
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55248429"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732441"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>快速入门：创建 Azure Data Lake Storage Gen2 存储帐户
 
@@ -125,11 +125,8 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 �
 安装 Az.Storage 模块
 
 ```powershell
-Install-Module Az.Storage -Repository PSGallery -RequiredVersion 0.7.0 -AllowPrerelease -AllowClobber -Force
+Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
 ```
-
-> [!NOTE]
-> Azure Powershell Az 模块是在 Powershell 中与 Azure 服务搭配使用的首选模块。 若要了解详细信息，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。
 
 ### <a name="log-in-to-your-azure-subscription"></a>登录 Azure 订阅
 
@@ -195,7 +192,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-若要通过 Azure CLI 创建新的资源组，请使用 [az group create](/cli/azure/group#az_group_create) 命令。
+若要通过 Azure CLI 创建新的资源组，请使用 [az group create](/cli/azure/group) 命令。
 
 ```azurecli-interactive
 az group create `

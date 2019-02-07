@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/26/2018
-ms.openlocfilehash: 86b6c4284cccb183ac9f19911abd4b6cb1d308e5
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/01/2019
+ms.openlocfilehash: a6b31933f7170006046846c458e21efd8c54034c
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546906"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660718"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>使用查询存储监视性能
 
@@ -83,7 +83,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 以下选项可用于配置查询存储参数。
 | **Parameter** | **说明** | **默认** | **范围**|
 |---|---|---|---|
-| pg_qs.query_capture_mode | 设置跟踪哪些语句。 | top | none, top, all |
+| pg_qs.query_capture_mode | 设置跟踪哪些语句。 | 无 | none, top, all |
 | pg_qs.max_query_text_length | 设置可保存的最大查询长度。 将截断较长的查询。 | 6000 | 100 - 10K |
 | pg_qs.retention_period_in_days | 设置保持期。 | 7 | 1 - 30 |
 | pg_qs.track_utility | 设置是否跟踪实用程序命令 | on | on, off |

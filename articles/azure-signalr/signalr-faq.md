@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 12/23/2018
 ms.author: zhshang
-ms.openlocfilehash: 45ceebef85254ff030d237f1af13f0750aaafeba
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 6b3ddf7d8069e689231b9dcb6f0f074e84052511
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53812638"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663258"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR 服务常见问题解答
 
@@ -20,7 +20,7 @@ ms.locfileid: "53812638"
 是的。
 有关正式版的通告，请参阅 [Azure SignalR 服务现已推出正式版](https://azure.microsoft.com/en-us/blog/azure-signalr-service-now-generally-available/)。 
 
-完全支持 [ASP.NET Core SignalR](https://docs.microsoft.com/en-us/aspnet/core/signalr/introduction)。
+完全支持 [ASP.NET Core SignalR](https://docs.microsoft.com/aspnet/core/signalr/introduction)。
 
 对 ASP.NET SignalR 的支持目前仍以公共预览版提供。 此处提供了[代码示例](https://github.com/aspnet/AzureSignalR-samples/tree/master/aspnet-samples/ChatRoom)。
 
@@ -37,7 +37,7 @@ ms.locfileid: "53812638"
 可能的原因包括：
 - 没有任何应用程序服务器连接到 SignalR 服务。 检查应用程序服务器日志，以查看可能的连接错误。 在使用多个应用程序服务器的高可用性设置中，这种情况非常罕见。
 - SignalR 服务实例存在连接问题。 此问题是暂时性的，可自动恢复。
-如果此问题持续一个小时以上，请[在 GitHub 上提出问题](https://github.com/Azure/azure-signalr/issues/new)，或者[在 Azure 中创建支持请求](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request)。
+如果此问题持续一个小时以上，请[在 GitHub 上提出问题](https://github.com/Azure/azure-signalr/issues/new)，或者[在 Azure 中创建支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。
 
 ## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>如果存在多个应用程序服务器，客户端消息是发送到所有服务器，还是只发送到其中的一个服务器？
 
@@ -67,4 +67,4 @@ SignalR 服务将监视应用程序服务器的检测信号。
 
 默认情况下，Azure SignalR 服务提供 ASP.NET Core SignalR 所支持的所有三种传输。 这些传输不可配置。 SignalR 服务将处理连接以及所有客户端连接的传输。
 
-可根据[此文](https://docs.microsoft.com/en-us/aspnet/core/signalr/configuration?view=aspnetcore-2.1#configure-allowed-transports)中所述配置客户端传输。
+可根据[此文](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1#configure-allowed-transports)中所述配置客户端传输。

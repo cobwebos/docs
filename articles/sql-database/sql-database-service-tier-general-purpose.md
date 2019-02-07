@@ -3,7 +3,7 @@ title: 常规用途层 - Azure SQL 数据库服务 | Microsoft Docs
 description: 了解 Azure SQL 数据库常规用途层
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: jovanpop-msft
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 8b708818584be6cdb84530ce008295ccee080d94
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 943982b056a83488426c48763deac14fd5347b8e
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884661"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508989"
 ---
 # <a name="general-purpose-tier---azure-sql-database"></a>常规用途层 - Azure SQL 数据库
 

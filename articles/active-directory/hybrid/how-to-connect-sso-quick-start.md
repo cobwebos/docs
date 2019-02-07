@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 25546c37db7e1117ed73c17f2f7b2a5211d48d51
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1fadf186176c8bc82aaefe9a908f25f9c8a7e35a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162610"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755451"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速入门
 
@@ -164,14 +164,6 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
     ![单一登录](./media/how-to-connect-sso-quick-start/sso16.png)
  
     ![单一登录](./media/how-to-connect-sso-quick-start/sso17.png)
-
-6. 浏览到“用户配置” > “管理模板” > “Windows 组件” > “Internet Explorer” > “Internet 控制面板” > “安全页” > “Intranet 区域”。 然后选择“允许通过脚本更新状态栏”。
-
-    ![单一登录](./media/how-to-connect-sso-quick-start/sso11.png)
-
-7. 启用策略设置，然后选择“确定”。
-
-    ![单一登录](./media/how-to-connect-sso-quick-start/sso12.png)
 
 ### <a name="browser-considerations"></a>浏览器注意事项
 

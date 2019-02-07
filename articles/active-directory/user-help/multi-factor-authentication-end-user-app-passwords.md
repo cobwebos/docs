@@ -12,12 +12,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 87f98f084cf857ff8ab0651a02b98e64512e62f6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 12998547c5525a7132bc350dbbaa7016e4bbeaf0
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181684"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55767677"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>管理双重验证的应用密码
 
@@ -121,4 +121,4 @@ ms.locfileid: "55181684"
 
 - [管理双重验证设置](multi-factor-authentication-end-user-manage-settings.md)
 
-- 试用 [Microsoft 验证器应用](microsoft-authenticator-app-how-to.md)以验证是否可以使用应用通知（而不是通过接收短信或电话）登录。
+- 试用 [Microsoft 验证器应用](user-help-auth-app-download-install.md)以验证是否可以使用应用通知（而不是通过接收短信或电话）登录。

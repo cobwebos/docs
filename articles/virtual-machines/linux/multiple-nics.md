@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: aaeec216e2a89cfd230208d0c674e15153224b5a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b77ed879375cff8d45f7d532283647e70252bdab
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157493"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732832"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>如何在 Azure 中创建具有多个网络接口卡的 Linux 虚拟机
 
@@ -27,7 +27,7 @@ ms.locfileid: "55157493"
 本文详述了如何使用 Azure CLI 创建具有多个 NIC 的 VM。
 
 ## <a name="create-supporting-resources"></a>创建支持资源
-安装最新的 [Azure CLI](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure 帐户。
+安装最新的 [Azure CLI](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。
 
 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 myResourceGroup、mystorageaccount 和 myVM。
 
@@ -37,7 +37,7 @@ ms.locfileid: "55157493"
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 创建虚拟网络。 以下示例创建一个名为 myVnet 的虚拟网络和一个名为 mySubnetFrontEnd 的子网：
+使用 [az network vnet create](/cli/azure/network/vnet) 创建虚拟网络。 以下示例创建一个名为 myVnet 的虚拟网络和一个名为 mySubnetFrontEnd 的子网：
 
 ```azurecli
 az network vnet create \
@@ -48,7 +48,7 @@ az network vnet create \
     --subnet-prefix 10.0.1.0/24
 ```
 
-使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) 为后端通信流创建子网。 以下示例创建名为 mySubnetBackEnd 的子网：
+使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 为后端通信流创建子网。 以下示例创建名为 mySubnetBackEnd 的子网：
 
 ```azurecli
 az network vnet subnet create \
@@ -87,7 +87,7 @@ az network nic create \
 ## <a name="create-a-vm-and-attach-the-nics"></a>创建 VM 并附加 NIC
 创建 VM 时，指定使用 `--nics` 创建的 NIC。 还需要谨慎选择 VM 的大小。 可添加到 VM 的 NIC 数目有限制。 详细了解 [Linux VM 大小](sizes.md)。
 
-使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM。 以下示例创建一个名为 *myVM* 的 VM：
+使用 [az vm create](/cli/azure/vm) 创建 VM。 以下示例创建一个名为 *myVM* 的 VM：
 
 ```azurecli
 az vm create \
@@ -116,14 +116,14 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-要将 NIC 添加到现有 VM，请先使用 [az vm deallocate](/cli/azure/vm#az_vm_deallocate) 解除分配 VM。 以下示例解除分配名为 myVM 的 VM ：
+要将 NIC 添加到现有 VM，请先使用 [az vm deallocate](/cli/azure/vm) 解除分配 VM。 以下示例解除分配名为 myVM 的 VM ：
 
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-使用 [az vm nic add](/cli/azure/vm/nic#az_vm_nic_add) 添加 NIC。 以下示例将 myNic3 添加到 myVM：
+使用 [az vm nic add](/cli/azure/vm/nic) 添加 NIC。 以下示例将 myNic3 添加到 myVM：
 
 ```azurecli
 az vm nic add \
@@ -141,13 +141,13 @@ az vm start --resource-group myResourceGroup --name myVM
 通过完成[为多个 NIC 配置来宾 OS](#configure-guest-os-for- multiple-nics) 中的步骤，将路由表添加到来宾 OS。
 
 ## <a name="remove-a-nic-from-a-vm"></a>从 VM 中删除 NIC
-若要从现有 VM 删除 NIC，请先使用 [az vm deallocate](/cli/azure/vm#az_vm_deallocate) 解除分配 VM。 以下示例解除分配名为 myVM 的 VM ：
+若要从现有 VM 删除 NIC，请先使用 [az vm deallocate](/cli/azure/vm) 解除分配 VM。 以下示例解除分配名为 myVM 的 VM ：
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-使用 [az vm nic remove](/cli/azure/vm/nic#az_vm_nic_remove) 删除 NIC。 以下示例从 myVM 删除 myNic3：
+使用 [az vm nic remove](/cli/azure/vm/nic) 删除 NIC。 以下示例从 myVM 删除 myNic3：
 
 ```azurecli
 az vm nic remove \

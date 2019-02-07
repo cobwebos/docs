@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 1ae352a0292e75eb9a5bf07e3ddca79ca687dea2
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 417772b2e955b1a3664dd495f292a76ab2819165
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687378"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734515"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli-preview"></a>使用 Azure CLI（预览版）对虚拟机规模集中的 OS 和附加数据磁盘进行加密
 
@@ -42,13 +42,13 @@ ms.locfileid: "51687378"
 
 ## <a name="register-for-disk-encryption-preview"></a>注册磁盘加密预览版
 
-要对虚拟机规模集预览版使用 Azure 磁盘加密功能，需要使用 [az feature register](/cli/azure/feature#az_feature_register) 自行注册订阅。 只需在首次使用磁盘加密预览版功能时执行以下步骤：
+要对虚拟机规模集预览版使用 Azure 磁盘加密功能，需要使用 [az feature register](/cli/azure/feature) 自行注册订阅。 只需在首次使用磁盘加密预览版功能时执行以下步骤：
 
 ```azurecli-interactive
 az feature register --name UnifiedDiskEncryption --namespace Microsoft.Compute
 ```
 
-传播注册请求最多可能需要 10 分钟。 可以通过 [az feature show](/cli/azure/feature#az_feature_show) 查看注册状态。 `State` 报告“已注册”时，请使用 [az provider register](/cli/azure/provider#az_provider_register) 重新注册 Mirosoft.Compute 提供程序：
+传播注册请求最多可能需要 10 分钟。 可以通过 [az feature show](/cli/azure/feature) 查看注册状态。 `State` 报告“已注册”时，请使用 [az provider register](/cli/azure/provider) 重新注册 Mirosoft.Compute 提供程序：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute
@@ -56,13 +56,13 @@ az provider register --namespace Microsoft.Compute
 
 ## <a name="create-a-scale-set"></a>创建规模集
 
-使用 [az group create](/cli/azure/group#az_group_create) 创建资源组，才能创建规模集。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+使用 [az group create](/cli/azure/group) 创建资源组，才能创建规模集。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-现在，使用 [az vmss create](/cli/azure/vmss#az_vmss_create) 创建虚拟机规模集。 以下示例创建名为 *myScaleSet* 的规模集，该规模集设置为在应用更改时自动更新；如果 *~/.ssh/id_rsa* 中没有 SSH 密钥，此示例还会生成 SSH 密钥。 每个 VM 实例附有 32Gb 的数据磁盘，可使用 Azure [自定义脚本扩展](../virtual-machines/linux/extensions-customscript.md)通过 [az vmss extension set](/cli/azure/vmss/extension#az_vmss_extension_set) 准备数据磁盘：
+现在，使用 [az vmss create](/cli/azure/vmss) 创建虚拟机规模集。 以下示例创建名为 *myScaleSet* 的规模集，该规模集设置为在应用更改时自动更新；如果 *~/.ssh/id_rsa* 中没有 SSH 密钥，此示例还会生成 SSH 密钥。 每个 VM 实例附有 32Gb 的数据磁盘，可使用 Azure [自定义脚本扩展](../virtual-machines/linux/extensions-customscript.md)通过 [az vmss extension set](/cli/azure/vmss/extension) 准备数据磁盘：
 
 ```azurecli-interactive
 # Create a scale set with attached data disk

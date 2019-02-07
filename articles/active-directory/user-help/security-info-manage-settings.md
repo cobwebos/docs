@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 36d1b4ef9501c94fe385c37f31ee7e8c9f57106e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 80a78d12570e3da1371d2fc1cbb0270eb81fc6ce
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197222"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766837"
 ---
 # <a name="manage-your-security-info-preview"></a>管理安全信息（预览版）
 
@@ -81,7 +81,7 @@ ms.locfileid: "55197222"
 |我的手机已丢失或被盗|不幸地，你的手机可能会遗失或被盗。 在这种情况下，我们强烈建议你告知组织，以便 IT 工作人员重置你的应用密码，并从受信任设备列表中清除所有已记住的设备。 还可以遵循[管理遗失或可能泄密的设备的安全信息](#manage-your-security-info-for-a-lost-or-potentially-compromised-device)部分所述的步骤，来忽略自己的受信任设备。|
 |我买了一个新电话号码|可通过两种方法解决此问题。 可以使用不需要电话号码的备用身份验证方法登录，例如使用电子邮件。如果这种方法不可行，请联系组织的 IT 工作人员，让他们清除设置。 若要将其他方法添加到安全信息，可以遵循[更改信息](#change-your-info)部分所述的步骤。|
 |我的默认方法不正确|可以在安全选项中更新默认方法。 有关具体详细信息，请转到[更改信息](#change-your-info)部分。|
-|我的移动设备未收到短信或来电|如果以前曾经在该移动设备上成功收到过短信或来电，则此问题很可能与手机提供商有关，而与帐户无关。 请确保手机信号良好，可以接收短信和来电。 可以请求好友给你拨打电话或发送短信，以进行测试。<br><br>如果可以成功接收短信和消息，但仍收不到通知，可以尝试使用另一种方法。 可以遵循[更改信息](#change-your-info)部分所述的步骤，将其他方法添加到安全信息。 如果没有其他可添加的方法，请联系公司支持人员，让他们清除设置，以便下次登录时可以设置方法。<br><br>如果你经常由于手机信号不良导致问题，我们建议在移动设备上使用 Microsoft Authenticator 应用。 应用可以生成用于登录的随机安全代码，这些代码可在没有任何手机信号或 Internet 连接的情况下生成。 有关 Microsoft Authenticator 应用的详细信息，请参阅 [Microsoft Authenticator 应用入门](https://docs.microsoft.com/azure/multi-factor-authentication/end-user/microsoft-authenticator-app-how-to)一文。|
+|我的移动设备未收到短信或来电|如果以前曾经在该移动设备上成功收到过短信或来电，则此问题很可能与手机提供商有关，而与帐户无关。 请确保手机信号良好，可以接收短信和来电。 可以请求好友给你拨打电话或发送短信，以进行测试。<br><br>如果可以成功接收短信和消息，但仍收不到通知，可以尝试使用另一种方法。 可以遵循[更改信息](#change-your-info)部分所述的步骤，将其他方法添加到安全信息。 如果没有其他可添加的方法，请联系公司支持人员，让他们清除设置，以便下次登录时可以设置方法。<br><br>如果你经常由于手机信号不良导致问题，我们建议在移动设备上使用 Microsoft Authenticator 应用。 应用可以生成用于登录的随机安全代码，这些代码可在没有任何手机信号或 Internet 连接的情况下生成。 有关 Microsoft Authenticator 应用的详细信息，请参阅 [Microsoft Authenticator 应用入门](https://docs.microsoft.com/azure/multi-factor-authentication/end-user/user-help-auth-app-download-install)一文。|
 |此表格中的所有做法都不能解决我的问题|如果已尝试上述故障排除步骤但仍遇到问题，请联系公司支持人员，他们应该可以提供帮助。|
 
 ## <a name="next-steps"></a>后续步骤

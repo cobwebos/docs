@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: 817e95dc8f00fd791079a6ae3521f312c4c1822b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 86a00eddb9951af26120d260fa0e755aaa72295d
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094846"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731829"
 ---
 # <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>如何区分委派权限和应用程序权限之间的差异
 
 ## <a name="recommended-documents"></a>建议的文档
 
 - 详细了解客户端应用程序如何使用[委派权限和应用程序权限请求](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#permissions)访问资源。
-- 请参阅有关如何[配置客户端应用程序的权限请求](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#configuring-a-client-application-to-access-web-apis)的分步说明
+- 请参阅有关如何[配置客户端应用程序的权限请求](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)的分步说明
 - 有关详细信息，请了解资源应用程序如何将[作用域](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#scopes)和[应用程序角色](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#roles)（在 Azure 门户中分别显示为委派权限和应用程序权限）公开给客户端应用程序。 
 
 ## <a name="next-steps"></a>后续步骤

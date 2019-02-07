@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 0b3b3cd1c9c0410c4cc0ffda8887b40123c1ac7a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b69b16cec08c5d29d4812258f694f2d078a9ff35
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718468"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700972"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure 安全性与合规性蓝图：适用于英国官方工作负荷的 PaaS Web 应用程序托管
 
@@ -73,7 +73,7 @@ Azure 蓝图由指导文档和自动化模板组成，用于部署基于云的�
 
 #### <a name="identity-and-authentication"></a>标识和身份验证
 
-此蓝图确保通过目录和身份管理服务保护对资源的访问。 此体系结构充分利用[标识作为安全边界](https://docs.microsoft.com/azure/security/security-paas-deployments#identity-as-the-primary-security-perimeter)。 
+此蓝图确保通过目录和身份管理服务保护对资源的访问。 此体系结构充分利用[标识作为安全边界](https://docs.microsoft.com/azure/security/security-paas-deployments)。 
 
 以下技术在 Azure 环境中提供标识管理功能：
 

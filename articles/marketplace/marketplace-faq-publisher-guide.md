@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: ellacroi
-ms.openlocfilehash: 93b1b0c8288fb408e4af6aba2eb2267ce650208c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 56a324aba3c5d8f550e5b51ff49b5ee0e74a3415
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247113"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658328"
 ---
 # <a name="marketplace-faqs"></a>市场常见问题解答
 
@@ -358,7 +358,7 @@ Microsoft 需要使用开发人员中心帐户代表发布者向客户计收“�
 
 **什么是潜在顾客？为什么说他们对在市场上作为发布者的我很重要？**
 
-潜在顾客是从市场部署产品的客户。 无论产品是出现在 [Azure 市场](https://azuremarketplace.microsoft.com)中还是出现在 [AppSource](https://appsource.microsoft.com) 中，都能够收到对你产品感兴趣的潜在顾客。  可以根据套餐设置潜在顾客目标。 有关详细信息，请参阅[成为云市场发布者](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher)。
+潜在顾客是从市场部署产品的客户。 无论产品是出现在 [Azure 市场](https://azuremarketplace.microsoft.com)中还是出现在 [AppSource](https://appsource.microsoft.com) 中，都能够收到对你产品感兴趣的潜在顾客。  可以根据套餐设置潜在顾客目标。 有关详细信息，请参阅[成为云市场发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)。
 
 **在何处可获得设置潜在顾客目标的帮助？**
 
