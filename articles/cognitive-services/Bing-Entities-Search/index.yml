@@ -1,14 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f1db6f04a7e7bf32f861fd2eaf193e3cd25d9e12
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 23c5ccd33e63f2cdc9a62925078c3d70d92e9165
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167828"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55748975"
 documentType: LandingData
 title: 必应实体搜索文档
 metadata:
-  title: 必应实体搜索文档 - 教程、快速入门和 API 参考 | Microsoft Docs
+  title: 必应实体搜索 API 文档 - 教程、快速入门和 API 参考 | Microsoft Docs
   description: 如何使用必应实体搜索 API 来获取有关人员、地点或其他已定义对象的信息。 教程介绍了如何构建使用该服务的应用。
   services: cognitive-services
   author: mikedodaro
@@ -18,11 +18,32 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 02/07/2018
+  ms.date: 02/01/2019
   ms.author: v-gedod
 abstract:
-  description: 必应实体搜索 API 返回必应确定与用户的查询相关的实体的相关信息。
+  description: 必应实体搜索 API 使应用程序能够在搜索查询中获取有关检测到的实体的信息。 实体可以是个人、地点、媒体标题，等等。
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-entities-search/overview
+      html: <p>了解必应实体搜索 API</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: 搜索实体
+    - href: /azure/cognitive-services/bing-entities-search/concepts/search-for-entities
+      html: <p>了解如何使用必应实体搜索 API 搜索实体。</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: 发送搜索请求
+    - href: /azure/cognitive-services/bing-custom-search/hosted-ui
+      html: <p>了解如何将搜索请求发送到该 API。</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: 发送搜索查询
 - title: 5 分钟快速入门
   items:
   - type: paragraph
@@ -32,15 +53,15 @@ sections:
     items:
     - image:
         src: media/index/logo_csharp.svg
-      href: quickstarts/csharp
+      href: quickstarts/entity-sdk-csharp-quickstart
       text: C&#35;
     - image:
         src: media/index/logo_java.svg
-      href: quickstarts/java
+      href: quickstarts/entity-sdk-java-quickstart
       text: Java
     - image:
         src: media/index/logo_nodejs.svg
-      href: quickstarts/nodejs
+      href: quickstarts/entity-sdk-node-quickstart
       text: Node.js
     - image:
         src: media/index/logo_php.svg
@@ -48,7 +69,7 @@ sections:
       text: PHP
     - image:
         src: media/index/logo_python.svg
-      href: quickstarts/python
+      href: quickstarts/entity-sdk-python-quickstart
       text: Python
     - image:
         src: media/index/logo_ruby.svg
@@ -59,7 +80,7 @@ sections:
   - type: paragraph
     text: 了解如何使用必应实体搜索 API 开发应用程序：
   - type: paragraph
-    text: <a href="tutorial-bing-entities-search-single-page-app">单页 Web 应用</a> &#124; <a href="tutorial-bing-entities-search-single-page-app-source">源代码</a>
+    text: <a href="tutorial-bing-entities-search-single-page-app">单页 Web 应用</a>
 - title: 示例
   items:
   - type: paragraph
