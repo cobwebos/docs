@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: byvinyal
-ms.openlocfilehash: eb93dfae91ee84400c32af7b662c69aefda979d2
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 00930fd99fd4c0078623aa11f3e2cd5b1c549034
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409167"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812661"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移，此列表将得以展开并更新，以便涵盖更多平台。
@@ -54,7 +54,7 @@ ms.locfileid: "53409167"
 * [Azure Maps](#azure-maps-limits)
 * [Azure Monitor](#monitor-limits)
 * [Azure Policy](#azure-policy-limits)
-* [用于 Redis 的 Azure 缓存](#azure-redis-cache-limits)
+* 用于 Redis 的 Azure 缓存
 * [备份](#backup-limits)
 * [批处理](#batch-limits)
 * [BizTalk 服务](#biztalk-services-limits)

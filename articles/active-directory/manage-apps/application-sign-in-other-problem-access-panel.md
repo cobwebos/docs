@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 529191cf867b6003b0c2eab5ed919087277c7095
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6dfc0f80285dfd7da6e78d7cbf9c993fed388a2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178029"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813528"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>从访问面板登录应用程序时出现的问题
 
@@ -104,9 +104,9 @@ ms.locfileid: "55178029"
 
 若要从 Azure AD 库配置应用程序，需要：
 
--   [从 Azure AD 库添加应用程序](#add-an-application)
+-   从 Azure AD 库添加应用程序
 
--   [在 Azure AD 中配置应用程序的元数据值（登录 URL、标识符、回复 URL）](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
+-   [在 Azure AD 中配置应用程序的元数据值（登录 URL、标识符、答复 URL）](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
 
 -   [选择用户标识符，并添加要发送给应用程序的用户属性](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
 
@@ -114,7 +114,7 @@ ms.locfileid: "55178029"
 
 -   [在应用程序中配置 Azure AD 元数据值（登录 URL、颁发者、注销 URL 和证书）](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
 
--   [将用户分配到应用程序](#assign-users-to-the-application)
+-   将用户分配到应用程序
 
 ### <a name="add-an-application-from-the-azure-ad-gallery"></a>从 Azure AD 库添加应用程序
 
@@ -362,9 +362,9 @@ ms.locfileid: "55178029"
 
 若要从 Azure AD 库配置应用程序，需要：
 
--   [从 Azure AD 库添加应用程序](#add-an-application)
+-   从 Azure AD 库添加应用程序
 
--   [将应用程序配置为密码单一登录](#configure-the-application)
+-   将应用程序配置为密码单一登录
 
 ### <a name="add-an-application-from-the-azure-ad-gallery"></a>从 Azure AD 库添加应用程序
 

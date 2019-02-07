@@ -9,12 +9,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 885f4da5ec9b360605a3e46ee8be8d338a638ede
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 22e58f31e2f891eb09c3d42a01763c68cdcd11a8
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102663"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696177"
 ---
 # <a name="collect-distributed-traces-from-python-preview"></a>从 Python（预览版）收集分布式跟踪
 
@@ -24,7 +24,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
 - 需要一个 Azure 订阅。
 - 应该安装 Python。本文使用 [Python 3.7.0](https://www.python.org/downloads/)，不过更早的版本在进行微调后也可能适用。
-- 按照说明安装 [Windows 服务形式的本地转发器](./../../azure-monitor/app/opencensus-local-forwarder.md#windows-service)
+- 按照说明安装 [Windows 服务形式的本地转发器](./../../azure-monitor/app/opencensus-local-forwarder.md)
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -57,7 +57,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
    ![检测密钥的屏幕截图](./media/opencensus-python/0003-instrumentation-key.png)
 
-2. 编辑 `LocalForwarder.config` 文件并添加检测密钥。 如果已按照[先决条件](./../../azure-monitor/app/opencensus-local-forwarder.md#windows-service)中的说明操作，则该文件位于 `C:\LF-WindowsServiceHost`
+2. 编辑 `LocalForwarder.config` 文件并添加检测密钥。 如果已按照[先决条件](./../../azure-monitor/app/opencensus-local-forwarder.md)中的说明操作，则该文件位于 `C:\LF-WindowsServiceHost`
 
     ```xml
       <OpenCensusToApplicationInsights>
@@ -158,7 +158,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
 6. 现在当你运行上述 Python 脚本时，系统仍会提示你输入值，但现在只有此值输出到 shell 中。
 
-7. 若要确认**本地转发器**是否正在拾取跟踪，请检查 `LocalForwarder.config` 文件。 如果已按照[先决条件](https://docs.microsoft.com/azure/application-insights/local-forwarder#windows-service)中的步骤执行了操作，它将位于 `C:\LF-WindowsServiceHost` 中。
+7. 若要确认**本地转发器**是否正在拾取跟踪，请检查 `LocalForwarder.config` 文件。 如果已按照[先决条件](https://docs.microsoft.com/azure/application-insights/local-forwarder)中的步骤执行了操作，它将位于 `C:\LF-WindowsServiceHost` 中。
 
     在下面的日志文件图像中，可以看到在运行第二个脚本（已在其中添加了导出程序）之前，`OpenCensus input BatchesReceived` 为 0。 开始运行更新的脚本以后，`BatchesReceived` 根据我们输入的值的数目递增：
     

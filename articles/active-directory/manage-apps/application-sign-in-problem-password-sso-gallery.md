@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 5ae7643123552eaa17d51e6cd1ed9c0293292ed0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 734169a0bce546ee2492d100b2abcb2ba8b6ffc9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55184965"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822521"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>登录到配置为密码单一登录的 Azure AD 库应用程序时出现的问题
 
@@ -88,7 +88,7 @@ ms.locfileid: "55184965"
 
 若要从 Azure AD 库配置应用程序，需要：
 
--   [从 Azure AD 库添加应用程序](#_Add_an_application)
+-   从 Azure AD 库添加应用程序
 
 -   [将应用程序配置为密码单一登录](#configure-the-application-for-password-single-sign-on)
 
@@ -140,7 +140,7 @@ ms.locfileid: "55184965"
 
 8.  选择“基于密码的登录”模式。
 
-9.  [将用户分配到应用程序](#_How_to_assign)。
+9.  将用户分配到应用程序。
 
 10. 此外，还可以通过下列步骤代表用户提供凭据：选择用户对应的行，单击“更新凭据”，并代表用户输入用户名和密码。 否则，会在启动时提示用户输入凭据。
 

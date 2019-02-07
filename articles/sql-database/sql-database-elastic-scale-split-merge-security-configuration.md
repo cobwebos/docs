@@ -11,33 +11,38 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: de758d38626107f28211f79a4772c3e887085776
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: a3ba80ce7b5abcb2f112880c4fef5ed3f067f691
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599819"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563212"
 ---
 # <a name="split-merge-security-configuration"></a>拆分/合并安全配置
+
 若要使用拆分/合并服务，必须正确配置安全性。 该服务是 Microsoft Azure SQL 数据库弹性扩展功能的一部分。 有关详细信息，请参阅[弹性缩放拆分和合并服务教程](sql-database-elastic-scale-configure-deploy-split-and-merge.md)。
 
 ## <a name="configuring-certificates"></a>配置证书
+
 通过两种方式配置证书。 
 
 1. [配置 SSL 证书](#to-configure-the-ssl-certificate)
 2. [配置客户端证书](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>获取证书
+
 可从公共证书颁发机构 (CA) 或 [Windows 证书服务](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx)中获取证书。 这些方法是获取证书的首选方法。
 
 如果这些选项不可用，可以生成**自签名证书**。
 
 ## <a name="tools-to-generate-certificates"></a>用于生成证书的工具
+
 * [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
 * [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>运行工具
+
 * 有关适用于 Visual Studio 的开发人员命令提示符，请参阅 [Visual Studio 命令提示符](https://msdn.microsoft.com/library/ms229859.aspx) 
   
     如果已安装工具，请转到：
@@ -46,9 +51,11 @@ ms.locfileid: "53599819"
 * 从 [Windows 8.1：下载工具包和工具](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)获取 WDK
 
 ## <a name="to-configure-the-ssl-certificate"></a>配置 SSL 证书
+
 若要对通信进行加密并对服务器进行身份验证，需要使用 SSL 证书。 从下面的三个方案中选择最适合的方案，并执行其所有步骤：
 
 ### <a name="create-a-new-self-signed-certificate"></a>创建新的自签名证书
+
 1. [创建自签名证书](#create-a-self-signed-certificate)
 2. [为自签名 SSL 证书创建 PFX 文件](#create-pfx-file-for-self-signed-ssl-certificate)
 3. [将 SSL 证书上传到云服务](#upload-ssl-certificate-to-cloud-service)

@@ -13,12 +13,12 @@ ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9c7560dc6c3c5237a056a9468d3ab4f440e8e6dc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: bc726f63ea5c8473601623024e18c1402cbebb51
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190779"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820311"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>在 Azure 门户中查找活动报告
 
@@ -49,8 +49,6 @@ ms.locfileid: "55190779"
 
 可以通过在“活动类别”筛选器中指定类别，在审核报告中使用高级筛选来访问特定类别的审核数据。 例如，若要查看与自助服务密码重置相关的所有活动，请选择“自助服务密码管理”类别。 
 
-    ![Category options on the Filter Audit Logs page](./media/howto-find-activity-reports/06.png "Category options on the Filter Audit Logs page")
-
 活动类别包括：
 
 - 核心目录
@@ -62,8 +60,6 @@ ms.locfileid: "55190779"
 ## <a name="sign-ins-report"></a>登录报告 
 
 “登录”视图包括所有用户登录，以及“应用程序使用情况”报告。 还可以在“企业应用程序”概述的“管理”部分中查看应用程序使用情况信息。
-
-    ![Enterprise applications](./media/howto-find-activity-reports/484.png "Enterprise applications")
 
 若要访问登录报告，请执行以下操作：
 

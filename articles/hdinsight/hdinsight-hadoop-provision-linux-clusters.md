@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 01/28/2019
-ms.openlocfilehash: 0878fc4b069f7c1ca34f8954320af6e69ceea717
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 33a882e8543f1a57afe9207f7a7263ec39530a0c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299855"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817916"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集
 
@@ -50,7 +50,7 @@ Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点�
 
 * [资源组名称](#resource-group-name)
 * [群集类型和配置](#cluster-types) 
-* [群集登录和 SSH 用户名](#cluster-login-and-ssh-username)
+* 群集登录和 SSH 用户名
 * [位置](#location)
 
 > [!IMPORTANT]  

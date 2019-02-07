@@ -2,19 +2,18 @@
 title: Azure 即时还原功能
 description: Azure 即时还原功能以及有关 VM 备份堆栈、资源管理器部署模型的常见问题解答
 services: backup
-author: trinadhk
+author: sogup
 manager: vijayts
-tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: trinadhk
-ms.openlocfilehash: a5afdd0dca55a5df075acb99e488c932196d95c5
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.author: sogup
+ms.openlocfilehash: cc4f559efecec3f024ce995dcf8f8757eb9cb4fb
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092283"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55489678"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>使用 Azure 备份即时还原功能获得更高的备份和还原性能
 

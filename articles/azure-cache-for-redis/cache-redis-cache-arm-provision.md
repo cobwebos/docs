@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: c8aadcf7b37e28035e936a9f722ee832127e928d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 8e0b0572f0d728474c17b41a0f92948451f4ef3f
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038579"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746942"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>使用模板创建 Azure Redis 缓存
 本主题将介绍如何创建 Azure 资源管理器模板，以便部署 Azure Redis 缓存。 该缓存可以用于现有存储帐户以保存诊断数据。 还将了解如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
@@ -33,7 +33,7 @@ ms.locfileid: "54038579"
 > [!NOTE]
 > 适用于新[高级层](cache-premium-tier-intro.md)的 Resource Manager 模板现已推出。 
 > 
-> * [通过群集创建高级 Azure Redis 缓存](https://azure.microsoft.com/documentation/templates/201-redis-premium-cluster-diagnostics/)
+> * [通过群集创建高级 Azure Redis 缓存](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
 > * [通过数据暂留创建高级 Azure Redis 缓存](https://azure.microsoft.com/documentation/templates/201-redis-premium-persistence/)
 > * [通过 VNet 和可选群集创建高级 Azure Redis 缓存](https://azure.microsoft.com/documentation/templates/201-redis-premium-vnet-cluster-diagnostics/)
 > 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c6b4ed787fa9e8881990801bdee77550a1a0bf2f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ce682263663c0547d9e35a4d29037fd125d8bc6c
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473623"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699170"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -241,7 +241,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 若要使用 IP 网络规则授予本地网络访问存储帐户的权限，则必须标识网络所用的面向 Internet 的 IP 地址。 若要获得帮助，请联系网络管理员。
 
-可以使用 [ExpressRoute](/azure/expressroute/expressroute-introduction) 将网络连接到 Azure 网络。 此时，每条线路都配有两个公共 IP 地址。 可在 Microsoft Edge 找到它们并使用 [Azure 公共对等互连](/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains)连接到 Azure 存储等 Microsoft 服务。 若要允许与 Azure 存储通信，请为线路的公共 IP 地址创建 IP 网络规则。 若要查找 ExpressRoute 线路的公共 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
+可以使用 [ExpressRoute](/azure/expressroute/expressroute-introduction) 将网络连接到 Azure 网络。 此时，每条线路都配有两个公共 IP 地址。 可在 Microsoft Edge 找到它们并使用 [Azure 公共对等互连](/azure/expressroute/expressroute-circuit-peerings)连接到 Azure 存储等 Microsoft 服务。 若要允许与 Azure 存储通信，请为线路的公共 IP 地址创建 IP 网络规则。 若要查找 ExpressRoute 线路的公共 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
 
 ### <a name="managing-ip-network-rules"></a>管理 IP 网络规则
 
@@ -355,7 +355,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 |Azure 事件网格|Microsoft.EventGrid|启用 Blob 存储事件发布并允许事件网格发布到存储队列。 了解有关 [blob 存储事件](/azure/event-grid/event-sources)和[发布到队列](/azure/event-grid/event-handlers)的信息。|
 |Azure 事件中心|Microsoft.EventHub|使用事件中心捕获功能存档数据。 [了解详细信息](/azure/event-hubs/event-hubs-capture-overview)。|
 |Azure 网络|Microsoft.Networking|存储和分析网络流量日志。 [了解详细信息](/azure/network-watcher/network-watcher-packet-capture-overview)。|
-|Azure Monitor|Microsoft.Insights|允许将监视数据写入受保护存储帐户[了解详细信息](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks)。|
+|Azure Monitor|Microsoft.Insights|允许将监视数据写入受保护存储帐户[了解详细信息](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。|
 |Azure SQL 数据仓库|Microsoft.Sql|允许使用 PolyBase 的导入和导出方案。 [了解详细信息](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。|
 
 ### <a name="storage-analytics-data-access"></a>存储分析数据访问

@@ -35,7 +35,7 @@ ms.locfileid: "54156674"
 
 1. 首先，使用内部负载均衡器地址（而不是公用 VIP）在虚拟网络中创建基础 ASE。  在此步骤中，将为 ILB ASE 分配根域名称。
 2. 一旦创建 ILB ASE，就会上传 SSL 证书。  
-3. 上传的 SSL 证书显式分配给 ILB ASE 作为其“默认”SSL 证书。  如果应用使用分配给 ASE 的一般根域（例如 https://someapp.mycustomrootcomain.com)）来寻址，此 SSL 证书用于 ILB ASE 上应用的 SSL 流量
+3. 上传的 SSL 证书显式分配给 ILB ASE 作为其“默认”SSL 证书。  如果应用使用分配给 ASE 的一般根域（例如 https://someapp.mycustomrootcomain.com) 来寻址，此 SSL 证书用于 ILB ASE 上应用的 SSL 流量
 
 ## <a name="creating-the-base-ilb-ase"></a>创建基础 ILB ASE
 GitHub（[此处][quickstartilbasecreate]）上提供了 Azure 资源管理器模板示例及其相关联的参数文件。

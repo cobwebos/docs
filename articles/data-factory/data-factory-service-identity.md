@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: a42f5f441dd63f8d6a7f5bd1cfdf0452d025816e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 068929bbde8e4c1411004b45fc77f0188de43ff8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017678"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814189"
 ---
 # <a name="azure-data-factory-service-identity"></a>Azure 数据工厂服务标识
 
@@ -44,7 +44,7 @@ ms.locfileid: "54017678"
 
 - [使用 PowerShell 生成服务标识](#generate-service-identity-using-powershell)
 - [使用 REST API 生成服务标识](#generate-service-identity-using-rest-api)
-- [使用 Azure 资源管理器模板生成服务标识](#generate-service-identity-using-azure-resource-manager-template)
+- 使用 Azure 资源管理器模板生成服务标识
 - [使用 SDK 生成服务标识](#generate-service-identity-using-sdk)
 
 >[!NOTE]
@@ -192,4 +192,4 @@ Type                  : ServicePrincipal
 - [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)
 - [使用 Azure 资源的托管标识身份验证从/向 Azure Data Lake Store 复制数据](connector-azure-data-lake-store.md)
 
-有关数据工厂服务标识所基于的 Azure 资源的托管标识的更多背景信息，请参阅 [Azure 资源的托管标识概述](~/articles/active-directory/msi-overview.md)。 
+有关数据工厂服务标识所基于的 Azure 资源的托管标识的更多背景信息，请参阅 [Azure 资源的托管标识概述](/azure/active-directory/managed-identities-azure-resources/overview)。 
