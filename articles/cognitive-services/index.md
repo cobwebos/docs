@@ -4,17 +4,17 @@ title: Azure 认知服务文档
 description: 了解如何将智能算法构建到应用、网站和机器人中，使它们通过自然的沟通方式观察、倾听、说出、理解和解释用户需求。 教程、快速入门、API 参考和示例演示了如何使用这些 API。
 services: cognitive-services
 author: nitinme
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.author: nitinme
 ms.date: 10/23/2018
 ms.topic: hub-page
-ms.openlocfilehash: 3c67a6fc7345cb533ad0c7088ac09fb02d3da1f2
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 389dd4e8b6f2157c1c53528506435a97a07a493e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213968"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55872928"
 ---
 <h1>Azure 认知服务文档</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">了解如何将智能算法构建到应用、网站和机器人中，从而使它们通过自然的沟通方式观察、倾听、说出和理解用户需求。 教程、快速入门、API 参考和示例演示了操作方法。</p>
