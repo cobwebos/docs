@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 80510b4f3f07b96b9084108fcb89c75e108cbc65
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: fda7d6d3fddf2f4529a983ce2d4991797a5c8448
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096835"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661830"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>适用于 IaaS VM 的 Azure 磁盘加密常见问题解答
 
@@ -59,11 +59,9 @@ Azure 磁盘加密可在标准层 VM 上使用，包括 [A、D、DS、G、GS 和
 | CentOS | 6.7 | 数据磁盘 |
 | CentOS | 6.6 | 数据磁盘 |
 | CentOS | 6.5 | 数据磁盘 |
-| openSUSE | SUSE:openSUSE-Leap:42.3:latest | 数据磁盘 |
-| SLES | SUSE:SLES-Priority:12-SP4:latest | 数据磁盘 |
-| SLES | SUSE:SLES-HPC:12-SP3:latest | 数据磁盘 |
-| SLES | SUSE:SLES-Priority:12-SP3:latest | 数据磁盘 |
-
+| openSUSE | 42.3 | 数据磁盘 |
+| SLES | 12-SP4 | 数据磁盘 |
+| SLES | 12-SP3 | 数据磁盘 |
 
 *__新的 ADE 实现支持 RHEL OS 和 RHEL7 即用即付映像的数据磁盘。ADE 目前不支持 RHEL 自带订阅 (BYOS) 映像。另请参阅[适用于 Linux 的 Azure 磁盘加密](azure-security-disk-encryption-linux.md)，了解详细信息。__
 
