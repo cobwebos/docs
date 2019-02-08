@@ -15,12 +15,12 @@ ms.date: 12/11/2018
 ms.author: mabrigg
 ms.reviewer: guanghu
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 7d719ee6bdb8ce1f4131b474fe7602b492e69cd3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1ccbe8b268725cf3d0747486a20e0597d023662e
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810664"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890597"
 ---
 # <a name="deploy-azure-cognitive-services-to-azure-stack"></a>将 Azure 认知服务部署到 Azure Stack
 
@@ -55,7 +55,7 @@ ms.locfileid: "55810664"
 
 本文将介绍如何在 Azure Stack 上的 Kubernetes 群集中部署 Azure 人脸 API。 可以使用相同的方法将其他认知服务容器部署到 Azure Stack Kubernetes 群集。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>必备组件
 
 开始之前，需要做好以下准备：
 
@@ -138,7 +138,7 @@ spec:
 
 有关重要字段的详细信息：
 
-| 字段 | 注意 |
+| 字段 | 说明 |
 | --- | --- |
 | replicaNumber | 定义要创建的实例的初始副本。 当然，在部署之后可进行缩放。 |
 | ImageLocation | 指示 ACR 中特定认知服务容器映像的位置。 例如，人脸服务：`aicpppe.azurecr.io/microsoft/cognitive-services-face` |
@@ -205,7 +205,7 @@ print(faces)
 
 [如何安装和运行计算机视觉 API 容器。](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers)
 
-[如何安装和运行人脸 API 容器](https://docs.microsoft.com/azure/cognitive-services/face/face-how-to-install-containers#create-a-face-resource-on-azure)
+[如何安装和运行人脸 API 容器](https://docs.microsoft.com/azure/cognitive-services/face/face-how-to-install-containers)
 
 [如何安装和运行文本分析 API 容器](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers)
 

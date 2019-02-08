@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: sethm
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: ddf08c69b5ef06d6243230230bcfdb56965aef4d
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4ec662cd60e2ca8e5db76a3fda4c68df6f3164e4
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239938"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893675"
 ---
 # <a name="manage-key-vault-in-azure-stack-using-powershell"></a>使用 PowerShell 管理 Azure Stack 中的 Key Vault
 
@@ -65,7 +65,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault
 
 如果注册成功，则返回以下输出：
 
-![注册](media/azure-stack-key-vault-manage-powershell/image2.png) 调用密钥保管库密钥时，可能会遇到错误，例如“该订阅未注册为使用命名空间 'Microsoft.KeyVault'。”如果遇到错误，请确认已按以前提到过的说明[启用 Key Vault 资源提供程序](#enable-your-tenant-subscription-for-vault-operations)。
+![注册](media/azure-stack-key-vault-manage-powershell/image2.png) 调用密钥保管库密钥时，可能会遇到错误，例如“该订阅未注册为使用命名空间 'Microsoft.KeyVault'。”如果遇到错误，确认你已按照前面所述的说明启用密钥保管库资源提供程序。
 
 ## <a name="create-a-key-vault"></a>创建 key vault
 

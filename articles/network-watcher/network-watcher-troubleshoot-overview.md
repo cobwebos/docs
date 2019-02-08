@@ -75,10 +75,10 @@ ms.locfileid: "55099766"
 | ConnectionIsMarkedDisconnected | 连接标记为“断开连接” |否|
 | ConnectionNotConfiguredOnGateway | 未在基础服务上配置连接。 | 是 |
 | ConnectionMarkedStandby | 底层服务标记为备用。| 是|
-| 身份验证 | 预共享密钥不匹配 | 是|
+| Authentication | 预共享密钥不匹配 | 是|
 | PeerReachability | 无法访问对等网关。 | 是|
 | IkePolicyMismatch | 对等网关中的 IKE 策略不受 Azure 支持。 | 是|
-| WfpParse 错误 | 分析 WFP 日志时出错。 |是|
+| WfpParse Error | 分析 WFP 日志时出错。 |是|
 
 ## <a name="supported-gateway-types"></a>支持的网关类型
 

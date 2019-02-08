@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: a8134e2350b650f7dfe0b3a1d58d107e42493223
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: aa88c2c63d348d0c82e0ad93115ea49437a63567
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766497"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895052"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>管理 Azure Stack 中的存储帐户
 
@@ -37,7 +37,7 @@ ms.locfileid: "55766497"
 
 默认显示前 10 个帐户。 可以单击列表底部的“加载更多”链接来提取更多的帐户。
 
-OR
+或
 
 如果您感兴趣的特定的存储帐户-你可以**筛选并提取相关的帐户**仅。
 
@@ -67,7 +67,7 @@ OR
 
 在 Azure Stack 中，可通过一种简单的方法实现此目的：
 
-1. 浏览到存储帐户列表。 有关详细信息，请参阅本文中的[查找存储帐户](#find)。
+1. 浏览到存储帐户列表。 请参阅查找此文章了解详细信息中的存储帐户。
 2. 在列表中找到该特定帐户。 可能需要执行筛选。
 3. 检查帐户的状态。 状态应显示为“已删除”。
 4. 选择该帐户，这会打开帐户详细信息窗格。
@@ -113,7 +113,7 @@ OR
 可以使用门户或 PowerShell 来回收容量。
 
 **使用门户回收容量：**
-1. 导航到存储帐户窗格。 请参阅[查找存储帐户](#find)。
+1. 导航到存储帐户窗格。 请参阅查找存储帐户。
 2. 选择窗格顶部的“回收空间”。
 3. 阅读消息，并选择“确定”。
 
@@ -133,7 +133,7 @@ OR
 2. 运行以下 cmdlet：
 
 > [!NOTE]  
-> 如果运行这些 cmdlet，将会永久删除帐户及其内容。 它不可恢复。 请慎用此 cmdlet。
+> 如果运行这些 cmdlet，将会永久删除帐户及其内容。 不可恢复。 请慎用此 cmdlet。
 
 ```PowerShell  
     $farm_name = (Get-AzsStorageFarm)[0].name
