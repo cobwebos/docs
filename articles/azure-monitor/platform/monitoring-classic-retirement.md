@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: a910b0537234d1653be93eb406fe3b2261305ee5
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 3c1896dc756675b838b97d978cec40b4650760fe
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461971"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298953"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Monitor 中的统一警报和监视替换经典警报和监视
 
@@ -36,9 +36,9 @@ Azure Monitor 的新指标平台现将支持来自 Application Insights 的监�
 - **Application Insights 自定义指标** – 使你能够定义和发出自己的监视和警报指标。 有关详细信息，请参阅这篇有关如何使用[新 Azure Monitor 上 Application Insights 的自定义指标](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)的文章。
 - **Application Insights 故障异常（智能检测的一部分）** - 如果 Web 应用的失败 HTTP 请求速率或依赖项调用速率出现异常上升，Application Insights 会准实时地自动通知你。 我们即将发布作为新 Azure Monitor 的一部分的 Application Insights 故障异常（智能检测的一部分），并将更新这篇包含下一次迭代链接的文档，因为它将在接下来几个月内推出。
 
-## <a name="unified-metrics--alerts-for-other-azure-resources"></a>其他 Azure 资源的统一指标和警报
+## <a name="unified-metrics-and-alerts-for-other-azure-resources"></a>其他 Azure 资源的统一指标和警报
 
-从 2018 年 3 月开始，已提供 Azure 资源的新一代警报和多维度监视。 现在，新指标平台和警报更快速，具有准实时的功能。 更重要的是，新指标平台警报能够提供更多粒度，因为新平台包括维度选项，使你能够切片和筛选到特定值组合、条件或操作。 与新 Azure Monitor 中的所有警报一样，新指标警报通过使用 ActionGroup 增加了可扩展性 - 使证书能够扩展到电子邮件或 Webhook 之外，到达短信、语音、Azure Function、自动化 Runbook 等。
+从 2018 年 3 月开始，已提供 Azure 资源的新一代警报和多维度监视。 现在，新指标平台和警报更快速，具有准实时的功能。 更重要的是，新指标平台警报能够提供更多粒度，因为新平台包括维度选项，使你能够切片和筛选到特定值组合、条件或操作。 与新 Azure Monitor 中的所有警报一样，新指标警报通过使用 ActionGroup 增加了可扩展性 - 使证书能够扩展到电子邮件或 Webhook 之外，到达短信、语音、Azure Function、自动化 Runbook 等。 有关详细信息，请参阅[使用 Azure Monitor 创建、查看和管理指标警报](../../azure-monitor/platform/alerts-metric.md)。
 Azure 资源的新指标按以下形式提供：
 
 - **Azure Monitor 标准平台指标** – 提供来自各种 Azure 服务和产品的常用预填充指标。 有关详细信息，请参阅这篇有关 [Azure Monitor 上支持的指标](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)和 [Azure Monitor 上支持的指标警报](../../azure-monitor/platform/alerts-metric-overview.md#supported-resource-types-for-metric-alerts)文章。
@@ -60,6 +60,10 @@ Azure 资源的新指标按以下形式提供：
 - 经典监视和警报服务将停用，并且不再可用于创建新的警报规则
 - 在 2019 年 6 月之后，继续存在于“警报”（经典）中的任何警报规则将继续执行并引发通知，但是不可修改。
 - 从 2019 年 7 月起，经典监视和警报中的任何警报都将由 Microsoft 自动迁移到其在新的 Azure Monitor 平台中的等效项。 该过程无缝进行且没有任何停机时间，并且客户在监视覆盖范围内将没有任何损失。
+- 迁移到新的警报平台的警报规则将提供与之前相同的监视覆盖范围，但将触发具有新的有效负载的通知。 与经典警报规则相关联的任何电子邮件地址、Webhook 终结点或逻辑应用链接在迁移时都将被转移，但行为可能不正确，因为警报有效负载在新平台中将有所不同。
+
+> [!IMPORTANT]
+> Microsoft Azure Monitor 将为客户提供工具，使他们能够快速地自动将其经典警报规则迁移到新平台。 从 2019 年 7 月开始，将强制针对仍然存在的经典警报规则运行该工具。 在迁移经典警报规则后，客户将需要确保对使用经典警报规则有效负载的自动化进行修改以处理来自 [Application Insights 中的统一指标和警报](#unified-metrics-and-alerts-in-application-insights)或[其他 Azure 资源的统一指标和警报](#unified-metrics-and-alerts-for-other-azure-resources)的新有效负载。 
 
 我们很快会提供工具，使你能够将警报从 Azure 门户的[“警报(经典)”部分](../../azure-monitor/platform/alerts-classic.overview.md)自发迁移到新的 Azure 警报。 迁移到新 Azure Monitor 的警报(经典)中配置的所有规则都将继续免费，不收取任何费用。 已迁移的经典警报规则也不会对通过电子邮件、Webhook 或逻辑应用推送通知收取费用。 但是，使用新通知或操作类型（例如短信、语音呼叫、ITSM 迁移等）将收取费用，无论是添加到已迁移的警报还是添加到新警报中。 有关详细信息，请参阅 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。
 

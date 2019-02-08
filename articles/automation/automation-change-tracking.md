@@ -6,16 +6,16 @@ ms.service: automation
 ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/04/2019
+ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d29a2020d7e7a16e0bac0802a887a28e12630f03
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 11b7928512dd1f1d6b284b088af304c6752711f5
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433010"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301435"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的更改
 
@@ -108,7 +108,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 
 ## <a name="wildcard-recursion-and-environment-settings"></a>通配符、递归和环境设置
 
-借助递归可指定通配符以简化目录上的跟踪，借助环境变量可在具有多个或动态驱动器名称的环境中跟踪文件。 以下是配置递归时应了解的常用信息列表：
+借助递归可指定通配符以简化目录上的跟踪，借助环境变量可在具有多个或动态驱动器名称的环境中跟踪文件。 以下列表显示配置递归时应了解的常用信息：
 
 * 跟踪多个文件时需要使用通配符
 * 如果使用通配符，则只能在路径的最后一段中使用。 （例如 C:\folder\\file 或 /etc/*.conf）
@@ -117,7 +117,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 
 ## <a name="configure-file-content-tracking"></a>配置文件内容跟踪
 
-可以使用文件内容更改跟踪功能查看文件更改之前和之后的内容。 这适用于 Windows 和 Linux 文件，每次更改文件时，文件的内容都存储在存储帐户中，并以内联或并排的方式显示更改之前和之后的文件。 若要了解详细信息，请参阅[查看所跟踪文件的内容](change-tracking-file-contents.md)。
+可以使用文件内容更改跟踪功能查看文件更改之前和之后的内容。 这适用于 Windows 和 Linux 文件。每次更改文件时，文件的内容都存储在存储帐户中，并以内联或并排的方式显示更改之前和之后的文件。 若要了解详细信息，请参阅[查看所跟踪文件的内容](change-tracking-file-contents.md)。
 
 ![查看文件中的更改](./media/change-tracking-file-contents/view-file-changes.png)
 
@@ -154,8 +154,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 
 更改跟踪解决方案当前遇到以下问题：
 
-* 没有为 Windows 10 创意者更新和 Windows Server 2016 Core RS3 计算机收集修补程序更新。
-* 对于 Windows 文件，更改跟踪当前无法检测将新文件添加到跟踪文件夹路径的时间
+* 没有在 Windows Server 2016 Core RS3 计算机上收集修补程序更新。
 
 ## <a name="change-tracking-data-collection-details"></a>更改跟踪数据收集详细信息
 
@@ -188,7 +187,7 @@ Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请�
 
 ![Windows 服务滑块](./media/automation-change-tracking/windowservices.png)
 
-代理仅跟踪更改，这可以优化代理的性能。 将阈值设置得过高时，如果服务还原到其原始状态，则可能错过更改。 将频率设置为较小的值可以捕获可能会错过的更改。
+代理仅跟踪更改，这可以优化代理的性能。 如果服务还原到其原始状态，则设置高的阈值可能错过更改。 将频率设置为较小的值可以捕获可能会错过的更改。
 
 > [!NOTE]
 > 虽然代理可以按 10 秒的间隔跟踪更改，但数据仍要在几分钟后才能显示在门户中。 代理仍会跟踪和记录该事件内在门户中显示的更改。
@@ -270,6 +269,41 @@ Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请�
 |---------|---------|
 |ConfigurationData<br>&#124; where   ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"<br>&#124; where SvcState == "Stopped"<br>&#124; summarize arg_max(TimeGenerated, *) by SoftwareName, Computer         | 显示已设置为“自动”，但报告为“已停止”的 Windows 服务的最新库存记录<br>结果仅限于该 SoftwareName 和 Computer 的最新记录      |
 |ConfigurationChange<br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Removed"<br>&#124; order by TimeGenerated desc|显示已删除软件的更改记录|
+
+## <a name="alert-on-changes"></a>进行更改时发出警报
+
+更改跟踪和清单的主要功能是能够根据混合环境的配置状态以及配置状态的更改发出警报。  
+
+在以下示例中，屏幕截图显示已在计算机上修改文件 `C:\windows\system32\drivers\etc\hosts`。 此文件很重要的原因是，Windows 使用 Hosts 文件将主机名解析成 IP 地址，其优先级甚至高于 DNS，这可能导致连接问题，或者导致流量被重定向到恶意网站或其他危险的网站。
+
+![一个图表，显示 hosts 文件的更改情况](./media/automation-change-tracking/changes.png)
+
+若要进一步分析此更改，请单击“Log Analytics”，转到“日志搜索”。 进入“日志搜索”以后，使用查询 `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` 搜索对 Hosts 文件所做的内容更改。 此查询查找的更改包括对特定文件的文件内容的更改，该文件的完全限定路径包含“hosts”一词。 也可将路径部分更改为完全限定的形式（例如 `FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"`），以便请求特定的文件。
+
+在查询返回所需结果后，单击日志搜索体验中的“新建警报规则”按钮，打开警报创建页。 也可在 Azure 门户中通过 **Azure Monitor** 导航到该体验。 在警报创建体验中，再次检查我们的查询，然后修改警报逻辑。 在本示例中，你希望在检测到更改的情况下触发警报，即使只在环境中的所有计算机上检测到一个更改。
+
+![一个显示更改查询（用于跟踪对 hosts 文件的更改）的图像](./media/automation-change-tracking/change-query.png)
+
+在设置条件逻辑以后，请分配操作组，以便执行操作来响应触发的警报。 在此示例中，我设置了要发送的电子邮件以及要创建的 ITSM 票证。  也可执行许多其他的有用操作，例如触发 Azure Function、自动化 runbook、Webhook 或逻辑应用。
+
+![一个图像，显示如何配置一个可以针对更改发出警报的操作组](./media/automation-change-tracking/action-groups.png)
+
+在设置所有参数和逻辑以后，可以将警报应用到环境。
+
+### <a name="alert-suggestions"></a>警报建议
+
+就更改跟踪或清单数据来说，虽然针对 Hosts 文件的更改发出警报是一种很好的应用警报的方式，但还有更多适用于警报的情形，其中包括在以下部分定义的情况及其示例。
+
+|Query  |说明  |
+|---------|---------|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "Files" and FileSystemPath contains " c:\\windows\\system32\\drivers\\"|用于跟踪对系统关键文件的更改|
+|ConfigurationChange <br>&#124; where FieldsChanged contains "FileContentChecksum" and FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"|用于跟踪对关键配置文件的修改|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "WindowsServices" and SvcName contains "w3svc" and SvcState == "Stopped"|用于跟踪对系统关键服务的更改|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "Daemons" and SvcName contains "ssh" and SvcState != "Running"|用于跟踪对系统关键服务的更改|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Added"|用于需锁定软件配置的环境|
+|ConfigurationData <br>&#124; where SoftwareName contains "Monitoring Agent" and CurrentVersion != "8.0.11081.0"|用于查看哪些计算机安装了过时的或不符合标准的软件版本。 它报告最新报告的配置状态，而不报告更改。|
+|ConfigurationChange <br>&#124; where RegistryKey == "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\QualityCompat"| 用于跟踪对重要的防病毒键的更改|
+|ConfigurationChange <br>&#124; where RegistryKey contains "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\SharedAccess\\Parameters\\FirewallPolicy"| 用于跟踪对防火墙设置的更改|
 
 ## <a name="next-steps"></a>后续步骤
 

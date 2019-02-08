@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 36c94a035c7585d655f4482239de70cd2e1a5cc6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: e7d08ec0d25e7666acb510c4bae5533975b21039
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014125"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296536"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -127,7 +127,7 @@ ms.locfileid: "54014125"
 
 ### <a name="syntax-details"></a>语法详细信息
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动的 type 属性必须设置为：**Copy** | 是 |
 | inputs | 指定创建的指向源数据的数据集。 复制活动仅支持单个输入。 | 是 |
@@ -155,7 +155,10 @@ ms.locfileid: "54014125"
 
 ![监视活动运行](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
-单击“操作”下的“详细信息”链接，查看复制活动的执行详细信息和性能特征。 它显示复制方案的以下信息：从源复制到接收器的数据量/行/文件、吞吐量、所执行的步骤和相应的持续时间，以及使用的配置。
+单击“操作”下的“详细信息”链接，查看复制活动的执行详细信息和性能特征。 它显示复制方案的以下信息：从源复制到接收器的数据量/行/文件、吞吐量、所执行的步骤和相应的持续时间，以及使用的配置。 
+
+>[!TIP]
+>对于某些方案，你还会在复制监视页面的顶部看到“**性能优化提示**”，这告诉你所识别出的瓶颈并指导你进行一些更改来提升复制吞吐量，请参阅[此处](#performance-and-tuning)包含详细信息的示例。
 
 **示例：从 Amazon S3 复制到 Azure Data Lake Store**
 ![监视活动运行详细信息](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
@@ -167,7 +170,7 @@ ms.locfileid: "54014125"
 
 “复制活动运行结果”->“输出”部分中也会返回复制活动执行详细信息和性能特征。 下面是一个详细清单；将只显示适用于用户复制方案的内容。 了解如何从[快速入门监视部分](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run)监视活动运行。
 
-| 属性名称  | Description | 单位 |
+| 属性名称  | 说明 | 单位 |
 |:--- |:--- |:--- |
 | dataRead | 从源中读取的数据大小 | Int64 值（**字节**） |
 | DataWritten | 写入接收器的数据大小 | Int64 值（**字节**） |
@@ -232,6 +235,14 @@ ms.locfileid: "54014125"
 ## <a name="performance-and-tuning"></a>性能和优化
 
 请参阅[复制活动性能和优化指南](copy-activity-performance.md)，其中介绍了影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素。 还列出了在内部测试期间观察到的性能，并讨论了优化复制活动性能的多种方法。
+
+在某些情况下，当你在 ADF 中执行复制活动时，会直接在[复制活动监视页面](#monitor-visually)上看到“**性能优化提示**”，如以下示例所示。 它不仅告诉你针对给定复制运行所识别出的瓶颈，而且还指导你进行一些更改来提升复制吞吐量。 目前的性能优化提示提供如下建议：在将数据复制到 Azure SQL 数据仓库时使用 PolyBase；在数据存储端资源出现瓶颈时增加 Azure Cosmos DB RU 或 Azure SQL DB DTU；删除不必要的暂存副本等等。性能优化规则也将逐渐丰富。
+
+**示例：复制到 Azure SQL DB 时的性能优化提示**
+
+在此示例中，在复制运行期间，ADF 注意到接收器 Azure SQL DB 达到了很高的 DTU 利用率，这会减慢写入操作，因此，建议使用更多的 DTU 来增加 Azure SQL DB 层。 
+
+![包含性能优化提示的复制监视](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
 ## <a name="incremental-copy"></a>增量复制 
 数据工厂支持以递增方式将增量数据从源数据存储复制到目标数据存储的方案。 请参阅[教程：以递增方式复制数据](tutorial-incremental-copy-overview.md)。 

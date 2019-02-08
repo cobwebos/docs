@@ -8,19 +8,19 @@ featureFlags:
 - clicktale
 ms.assetid: 06a149f7-4aa1-4fb9-a8ec-ac2633b031fb
 ms.service: active-directory
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 01/29/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
-ms.openlocfilehash: 23fff8fee9e6fd289944da4e946a2a28369ecdd2
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 0847096674d446940ed3fed3390457e3d2e894bf
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449497"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55248446"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -37,6 +37,84 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 本页面每月更新，请不时回来查看。 如果要查找超过 6 个月的项目，可以在 [Azure Active Directory 新增功能存档](whats-new-archive.md)中找到它们。
 
 ---
+## <a name="january-2019"></a>2019 年 1 月
+
+### <a name="new-azure-ad-application-proxy-cookie-settings"></a>新的 Azure AD 应用程序代理 Cookie 设置
+
+**类型：** 新功能  
+**服务类别：** 应用代理  
+**产品功能：** Access Control
+
+我们引入了三种新的 Cookie 设置，这些设置可以供通过应用程序代理发布的应用使用：
+
+- **使用仅限 HTTP 的 Cookie。** 在应用程序代理访问权限和会话 Cookie 上设置 **HTTPOnly** 标志。 启用此设置会带来更多的安全好处，例如有助于防止用户通过客户端脚本复制或修改 Cookie。 建议启用此标志（选择“是”）以享受增加的安全好处。
+
+- **使用安全 Cookie。** 在应用程序代理访问权限和会话 Cookie 上设置 **Secure** 标志。 启用此设置可确保 Cookie 仅通过 TLS 安全通道（例如 HTTPS）传输，因此会带来更多的安全好处，。 建议启用此标志（选择“是”）以享受增加的安全好处。
+
+- **使用永久性 Cookie。** 防止访问 Cookie 在关闭 Web 浏览器时过期。 这些 Cookie 可以持续到访问令牌的生存期结束。 不过，如果过期时间已到，或者用户手动删除了 Cookie，则 Cookie 会重置。 建议保持默认设置“否”，只有在应用较旧且不需在进程之间共享 Cookie 时，才启用该设置。
+
+有关新 Cookie 的详细信息，请参阅[用于在 Azure Active Directory 中访问本地应用程序的 Cookie 设置](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings)。
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---january-2019"></a>Azure AD 应用库中已推出新的联合应用 - 2019 年 1 月
+
+**类型：** 新功能  
+**服务类别：** 企业应用  
+**产品功能：** 第三方集成
+ 
+我们已于 2019 年 1 月将这 35 款支持联合的新应用添加到了应用库中：
+
+[Firstbird](https://docs.microsoft.com/azure/active-directory/saas-apps/firstbird-tutorial)、[Folloze](https://docs.microsoft.com/azure/active-directory/saas-apps/folloze-tutorial)、[Talent Palette](https://docs.microsoft.com/azure/active-directory/saas-apps/talent-palette-tutorial)、[Infor CloudSuite](https://docs.microsoft.com/azure/active-directory/saas-apps/infor-cloud-suite-tutorial)、[Cisco Umbrella](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-umbrella-tutorial)、[Zscaler Internet Access Administrator](https://docs.microsoft.com/azure/active-directory/saas-apps/zscaler-internet-access-administrator-tutorial)、[Expiration Reminder](https://docs.microsoft.com/azure/active-directory/saas-apps/expiration-reminder-tutorial)、[InstaVR Viewer](https://docs.microsoft.com/azure/active-directory/saas-apps/instavr-viewer-tutorial)、[CorpTax](https://docs.microsoft.com/azure/active-directory/saas-apps/corptax-tutorial)、[Verb](https://app.verb.net/login)、[MazeMap Link](https://docs.microsoft.com/azure/active-directory/saas-apps/mazemaplink-tutorial)、[OpenLattice](https://openlattice.com/agora)、[TheOrgWiki](https://www.theorgwiki.com/signup)、[Pavaso Digital Close](https://docs.microsoft.com/azure/active-directory/saas-apps/pavaso-digital-close-tutorial)、[GoodPractice Toolkit](https://docs.microsoft.com/azure/active-directory/saas-apps/goodpractice-toolkit-tutorial)、[Cloud Service PICCO](https://docs.microsoft.com/azure/active-directory/saas-apps/cloud-service-picco-tutorial)、[AuditBoard](https://docs.microsoft.com/azure/active-directory/saas-apps/auditboard-tutorial)、[iProva](https://docs.microsoft.com/azure/active-directory/saas-apps/iprova-tutorial)、[Workable](https://docs.microsoft.com/azure/active-directory/saas-apps/workable-tutorial)、[CallPlease](https://webapp.callplease.com/create-account/create-account.html)、[GTNexus SSO System](https://docs.microsoft.com/azure/active-directory/saas-apps/gtnexus-sso-module-tutorial)、[CBRE ServiceInsight](https://docs.microsoft.com/azure/active-directory/saas-apps/cbre-serviceinsight-tutorial)、[Deskradar](https://docs.microsoft.com/azure/active-directory/saas-apps/deskradar-tutorial)、[Coralogixv](https://docs.microsoft.com/azure/active-directory/saas-apps/coralogix-tutorial)、[Signagelive](https://docs.microsoft.com/azure/active-directory/saas-apps/signagelive-tutorial)、[ARES for Enterprise](https://docs.microsoft.com/azure/active-directory/saas-apps/ares-for-enterprise-tutorial)、[K2 for Office 365](https://www.k2.com/O365)、[Xledger](https://www.xledger.net/)、[iDiD Manager](https://docs.microsoft.com/azure/active-directory/saas-apps/idid-manager-tutorial)、[HighGear](https://docs.microsoft.com/azure/active-directory/saas-apps/highgear-tutorial)、[Visitly](https://docs.microsoft.com/azure/active-directory/saas-apps/visitly-tutorial)、[Korn Ferry ALP](https://docs.microsoft.com/azure/active-directory/saas-apps/korn-ferry-alp-tutorial)、[CaféX Portal (Meetings)](https://docs.microsoft.com/azure/active-directory/saas-apps/caf%c3%a9xportal%28meetings%29-tutorial)、[Acadia](https://docs.microsoft.com/azure/active-directory/saas-apps/acadia-tutorial)、[Adoddle cSaas Platform](https://docs.microsoft.com/azure/active-directory/saas-apps/adoddle-csaas-platform-tutorial)        
+
+有关这些应用的详细信息，请参阅 [SaaS 应用程序与 Azure Active Directory 集成](https://aka.ms/appstutorial)。 要详细了解如何在 Azure AD 应用库中列出应用程序，请参阅[在 Azure Active Directory 应用程序库中列出应用程序](https://aka.ms/azureadapprequest)。
+
+---
+
+### <a name="new-azure-ad-identity-protection-enhancements-public-preview"></a>新的 New Azure AD Identity Protection 增强功能（公共预览版）
+
+**类型：** 已更改的功能  
+**服务类别：** 标识保护  
+**产品功能：** 标识安全性和保护
+
+我们很高兴地宣布，我们已为 Azure AD Identity Protection 公开预览版套餐添加以下增强功能，其中包括：
+
+- 经过更新后集成度更高的用户界面
+
+- 其他 API
+
+- 通过机器学习改进风险评估
+
+- 针对风险用户和风险登录实现产品范围的符合性
+
+有关增强功能的详细信息，请参阅[什么是 Azure Active Directory Identity Protection（已刷新）？](https://aka.ms/IdentityProtectionDocs) 以进行详细的了解并通过产品内提示共享自己的想法。
+
+---
+
+### <a name="new-app-lock-feature-for-the-microsoft-authenticator-app-on-ios-and-android-devices"></a>iOS 和 Android 设备上的 Microsoft Authenticator 应用的新应用锁定功能
+
+**类型：** 新功能  
+**服务类别：** Microsoft Authenticator 应用  
+**产品功能：** 标识安全性和保护
+
+若要使你的一次性密码、应用信息和应用设置更加安全，可以在 Microsoft Authenticator 应用中开启应用锁定功能。 开启应用锁定意味着你每次打开 Microsoft Authenticator 应用时都会要求你使用 PIN 或生物识别进行身份验证。
+
+有关详细信息，请参阅 [Microsoft Authenticator app FAQ](https://docs.microsoft.com/azure/active-directory/user-help/microsoft-authenticator-app-faq)（Microsoft Authenticator 应用常见问题解答）。
+
+---
+
+### <a name="enhanced-azure-ad-privileged-identity-management-pim-export-capabilities"></a>增强的 Azure AD Privileged Identity Management (PIM) 导出功能
+
+**类型：** 新功能  
+**服务类别：** Privileged Identity Management  
+**产品功能：** Privileged Identity Management
+
+Privileged Identity Management (PIM) 管理员现在可以为特定资源导出所有活动的和符合资格的角色分配，其中包括针对所有子资源的角色分配。 以前，管理员很难获取某个订阅的角色分配完整列表，他们必须导出每个特定资源的角色分配。
+
+有关详细信息，请参阅[在 PIM 中查看 Azure 资源角色的活动和审核历史记录](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac)。
+
+---
+
 ## <a name="novemberdecember-2018"></a>2018 年 11 月/12 月
 
 ### <a name="users-removed-from-synchronization-scope-no-longer-switch-to-cloud-only-accounts"></a>从同步范围删除的用户不再切换到仅限云的帐户
@@ -803,165 +881,5 @@ Azure AD Connect 的最新版本包括：
 此功能可让非管理员使用 Microsoft Authenticator（或其他任何验证器应用）提供的通知或代码验证其身份。 管理员启用此自助密码重置方法后，已通过 aka.ms/mfasetup 或 aka.ms/setupsecurityinfo 注册移动应用的用户可以在重置密码时，使用其移动应用作为验证方法。
 
 只能在要求使用两种方法重置密码的策略中启用移动应用通知。
-
----
-
-## <a name="june-2018"></a>2018 年 6 月
-
-### <a name="change-notice-security-fix-to-the-delegated-authorization-flow-for-apps-using-azure-ad-activity-logs-api"></a>更改通知：对使用 Azure AD 活动日志 API 的应用程序的委派授权流的安全修补
-
-**类型：** 更改计划  
-**服务类别：** 报告  
-**产品功能：** 监视和报告
-
-由于我们实施了更强的安全性，我们已对使用委派的授权流访问 [Azure AD 活动日志 API](https://aka.ms/aadreportsapi) 的应用进行了权限更改。 此更改在 **2018 年 6 月 26 日**前生效。
-
-如果你有任何应用使用 Azure AD 活动日志 API，请在更改发生后执行以下步骤来确保应用不会损坏。
-
-**更新应用权限**
-
-1. 登录 Azure 门户，选择“Azure Active Directory”，然后选择“应用注册”。
-2. 选择使用 Azure AD 活动日志 API 的应用，依次选择“设置”、“所需权限”和“Microsoft Azure Active Directory”API。
-3. 在“启用访问权限”边栏选项卡的“委派的权限”区域中，选中“读取目录数据”旁边的框，然后选择“保存”。
-4. 选择“授予权限”，然后选择“是”。
-    
-    >[!Note]
-    >你必须是全局管理员才能向应用授予权限。
-
-有关详细信息，请参阅访问 Azure AD 报告 API 的先决条件文章的[授予权限](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-prerequisites-azure-portal#grant-permissions)部分。
-
----
-
-### <a name="configure-tls-settings-to-connect-to-azure-ad-services-for-pci-dss-compliance"></a>配置 TLS 设置以连接到 Azure AD 服务从而实现 PCI DSS 符合性
-
-**类型：** 新功能  
-**服务类别：** 不适用  
-**产品功能：** 平台
-
-传输层安全性 (TLS) 是一种在两个通信应用程序间提供隐私和数据完整性的协议，是目前使用最广泛的安全协议。
-
-[PCI 安全标准委员会](https://www.pcisecuritystandards.org/)已决定禁用早期版本的 TLS 和安全套接字层 (SSL)，以此支持启用新的和更安全的应用协议，该决定于 2018 年 6 月 30 日开始生效。 这一改变意味着如果连接到 Azure AD 服务并要求符合 PCI DSS，则必须禁用 TLS 1.0。 有多个 TLS 版本可供使用，但 TLS 1.2 是可供 Azure Active Directory 服务使用的最新版本。 强烈建议直接为客户端/服务器和浏览器/服务器组合使用 TLS 1.2。
-
-过时的浏览器可能不支持较新的 TLS 版本，例如 TLS 1.2。 若要查看浏览器支持哪些版本的 TLS，请转到 [Qualys SSL 实验室](https://www.ssllabs.com/)网站，然后单击“Test your browser”（测试浏览器）。 建议将 Web 浏览器升级到最新版本，并且最好只启用 TLS 1.2。
-
-**在各种浏览器中启用 TLS 1.2**
-
-- **Microsoft Edge和 Internet Explorer（均使用 Internet Explorer 设置）**
-
-    1. 打开 Internet Explorer，选择“工具” > “Internet 选项” > “高级”。
-    2. 在“安全”部分，选择“使用 TLS 1.2”，然后选择“确定”。
-    3. 关闭所有浏览器窗口并重启 Internet Explorer。 
-
-- **Google Chrome**
-
-    1. 打开 Google Chrome，在地址栏键入“chrome://settings/”，然后按 Enter。
-    2. 展开“高级”选项，转到“系统”部分，然后选择“打开代理设置”。
-    3. 在“Internet 属性”框中，选择“高级”选项卡，转到“安全”部分，选择“使用 TLS 1.2”，然后选择“确定”。
-    4. 关闭所有浏览器窗口并重启 Google Chrome。
-
-- **Mozilla Firefox**
-
-    1. 打开 Firefox，在地址栏键入“about:config”，然后按 Enter。
-    2. 搜索 TLS 一词，然后选择“security.tls.version.max”条目。
-    3. 将值设置为 3，强制浏览器使用最高 TLS 1.2 的版本，然后选择“确定”。
-
-        >[!NOTE]
-        >Firefox 版本 60.0 支持 TLS 1.3，因此还可将 security.tls.version.max 值设置为 4。
-
-    4. 关闭所有浏览器窗口并重启 Mozilla Firefox。
-
----
-
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---june-2018"></a>Azure AD 应用库中推出的全新联合应用 - 2018 年 6 月
-
-**类型：** 新功能  
-**服务类别：** 企业应用  
-**产品功能：** 第三方集成
- 
-我们已于 2018 年 6 月将这 15 款支持联合的新应用添加到了应用库中：
-
-[Skytap](https://docs.microsoft.com/azure/active-directory/active-directory-saas-skytap-tutorial)[Settling music](https://docs.microsoft.com/azure/active-directory/active-directory-saas-settlingmusic-tutorial)[SAML 1.1 Token enabled LOB App](https://docs.microsoft.com/azure/active-directory/active-directory-saas-saml-tutorial)[Supermood](https://docs.microsoft.com/azure/active-directory/active-directory-saas-supermood-tutorial)[Autotask](https://docs.microsoft.com/azure/active-directory/active-directory-saas-autotaskendpointbackup-tutorial)[Endpoint Backup](https://docs.microsoft.com/azure/active-directory/active-directory-saas-autotaskendpointbackup-tutorial)[Skyhigh Networks](https://docs.microsoft.com/azure/active-directory/active-directory-saas-skyhighnetworks-tutorial)Smartway2、[TonicDM](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tonicdm-tutorial)[Moconavi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-moconavi-tutorial)[Zoho One](https://docs.microsoft.com/azure/active-directory/active-directory-saas-zohoone-tutorial)[SharePoint on-premises](https://docs.microsoft.com/azure/active-directory/active-directory-saas-sharepoint-on-premises-tutorial)[ForeSee CX Suite](https://docs.microsoft.com/azure/active-directory/active-directory-saas-foreseecxsuite-tutorial)[Vidyard](https://docs.microsoft.com/azure/active-directory/active-directory-saas-vidyard-tutorial)[ChronicX](https://docs.microsoft.com/azure/active-directory/active-directory-saas-chronicx-tutorial)
-
-有关这些应用的详细信息，请参阅 [SaaS 应用程序与 Azure Active Directory 集成](https://aka.ms/appstutorial)。 有关在 Azure AD 应用库中列出应用程序的详细信息，请参阅[在 Azure Active Directory 应用程序库中列出应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)。 
-
----
-
-### <a name="azure-ad-password-protection-is-available-in-public-preview"></a>公共预览版中提供 Azure AD 密码保护功能
-
-**类型：** 新功能  
-**服务类别：** 标识保护  
-**产品功能：** 用户身份验证
-
-使用 Azure AD 密码保护有助于杜绝环境中出现易于猜到的密码。 消除这些密码有助于降低遭受密码喷射型攻击时密码泄露的风险。
-
-具体来说，Azure AD 密码保护有助于：
-
-- 保护 Azure AD 和 Windows Server Active Directory (AD) 中的组织帐户。 
-- 阻止用户使用最常用密码列表上的密码，该列表包含 500 多个密码，以及这些密码的 100 多万个字符替换变体。
-- 从 Azure AD 门户中的单一位置管理 Azure AD 密码保护，既适用于 Azure AD，也适用于本地 Windows Server AD。
-
-有关 Azure AD 密码保护的详细信息，请参阅[消除组织中的劣质密码](https://aka.ms/aadpasswordprotectiondocs)。
-
----
-
-### <a name="new-all-guests-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>创建使用条款 (ToU) 期间创建全新的“所有来宾”条件访问策略模板
-
-**类型：** 新功能  
-**服务类别：** 使用条款  
-**产品功能：** 调控
-
-在创建使用条款 (ToU) 期间，还会为“所有来宾”和“所有应用”创建新的条件访问策略模板。 此全新的策略模板采用新创建的 ToU，简化了来宾的创建和执行过程。
-
-有关详细信息，请参阅 [Azure Active Directory 使用条款功能](https://docs.microsoft.com/azure/active-directory/active-directory-tou)。
-
----
-
-### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>创建使用条款 (ToU) 期间创建全新的“自定义”条件访问策略模板
-
-**类型：** 新功能  
-**服务类别：** 使用条款  
-**产品功能：** 调控
-
-在创建使用条款 (ToU) 期间，还会创建新的“自定义”条件访问策略模板。 通过此新策略模板可创建 ToU，然后立即转到条件访问策略创建边栏选项卡，无需手动浏览门户。
-
-有关详细信息，请参阅 [Azure Active Directory 使用条款功能](https://docs.microsoft.com/azure/active-directory/active-directory-tou)。
-
----
-
-### <a name="new-and-comprehensive-guidance-about-deploying-azure-multi-factor-authentication"></a>有关部署 Azure 多重身份验证的全新详尽指南
-
-**类型：** 新功能  
-**服务类别：** 其他  
-**产品功能：** 标识安全性和保护
- 
-我们发布了有关如何在组织中部署 Azure 多重身份验证 (MFA) 的新分步指南。
-
-若要查看 MFA 部署指南，请转到 GitHub 上的[身份部署指南](https://aka.ms/DeploymentPlans)存储库。 若要提供有关部署指南的反馈，请使用[部署计划反馈表](https://aka.ms/deploymentplanfeedback)。 如对部署指南有任何疑问，请通过 [IDGitDeploy](mailto:idgitdeploy@microsoft.com) 与我们联系。
-
----
-
-### <a name="azure-ad-delegated-app-management-roles-are-in-public-preview"></a>Azure AD 委派的应用管理角色处于公共预览状态
-
-**类型：** 新功能  
-**服务类别：** 企业应用  
-**产品功能：** Access Control
-
-管理员现可委派应用管理任务，无需分配全局管理员角色。 新的角色和功能有：
-
-- **新的标准 Azure AD 管理员角色：**
-
-    - **应用程序管理员。** 授予管理所有应用各个方面的权限，包括注册、SSO 设置、应用分配和许可、应用代理设置和同意（Azure AD 资源除外）。
-
-    - **云应用程序管理员。** 授予所有应用程序管理员权限，但应用代理除外，因为它不提供本地访问权限。
-
-    - **应用程序开发人员。** 即使“允许用户注册应用”选项已关闭，该角色也可授予创建应用注册的权限。
-
-- **所有权（设置每个应用注册和每个企业应用，类似于群组所有权流程：**
- 
-    - **应用注册所有者。** 授予管理自有应用注册各个方面的权限，包括应用清单和添加其他所有者。
-
-    - **企业应用所有者。** 授予管理自有企业应用许多方面的权限，包括 SSO 设置、应用分配和同意（Azure AD 资源除外）。
-
-有关公共预览版的详细信息，请参阅 [Azure AD 委派的应用程序管理角色处于公共预览状态！](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/13/hallelujah-azure-ad-delegated-application-management-roles-are-in-public-preview/) 博客。 有关角色和权限的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)。
 
 ---

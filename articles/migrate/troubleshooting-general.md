@@ -4,14 +4,14 @@ description: 概述 Azure Migrate 服务中的已知问题，并针对常见错�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 01/25/2019
 ms.author: raynew
-ms.openlocfilehash: 0c7d0980c928ecefebeabff555378230453c742f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: bb9d22b45011f5156a63444ec8e1651f148993b6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827935"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751899"
 ---
 # <a name="troubleshoot-azure-migrate"></a>排查 Azure Migrate 问题
 
@@ -117,7 +117,7 @@ esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/conto
 
 **由于证书验证失败，收集器而无法连接到 Internet**
 
-如果使用拦截代理连接到 Internet，并且尚未将代理证书导入收集器 VM，则可能会发生这种情况。 可以使用[此处](https://docs.microsoft.com/azure/migrate/concepts-collector#internet-connectivity)详述的步骤导入代理证书。
+如果使用拦截代理连接到 Internet，并且尚未将代理证书导入收集器 VM，则可能会发生这种情况。 可以使用[此处](https://docs.microsoft.com/azure/migrate/concepts-collector)详述的步骤导入代理证书。
 
 收集器不能使用从门户复制的项目 ID 和密钥连接到项目。
 
@@ -153,14 +153,26 @@ Azure Migrate 收集器下载 PowerCLI，并在设备上安装它。 无法安�
 出现此问题可能是由于存在 VMware PowerCLI 安装问题。 请遵循以下步骤来解决该问题：
 
 1. 如果你使用的不是最新版本的收集器设备，请[将收集器升级到最新版本](https://aka.ms/migrate/col/checkforupdates)，然后检查问题是否得到解决。
-2. 如果已经是最新版本的收集器，则请手动安装 [VMware PowerCLI 6.5.2](https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016)，然后检查问题是否得到解决。
-3. 如果上述步骤都未能解决问题，请导航到 C:\Program Files\ProfilerService 文件夹并删除其中的 VMware.dll 和 VimService65.dll 文件，然后在 Windows 服务管理器中重新启动“Azure Migrate 收集器”服务（打开“运行”并键入“services.msc”，可打开 Windows 服务管理器）。
+2. 如果已有最新的收集器版本，请遵循以下步骤来执行 PowerCLI 的干净安装：
+
+   a. 关闭设备中的 Web 浏览器。
+
+   b. 通过转到 Windows 服务管理器（打开“运行”并键入 services.msc 以打开 Windows 服务管理器）停止“Azure Migrate 收集器”服务。 右键单击“Azure Migrate 收集器服务”，然后单击“停止”。
+
+   c. 从以下位置删除以“VMware”开头的所有文件夹：C:\Program Files\WindowsPowerShell\Modules  
+        C:\Program Files (x86)\WindowsPowerShell\Modules
+
+   d. 在 Windows 服务管理器中（打开“运行”并键入 services.msc 以打开 Windows 服务管理器）重启“Azure Migrate 收集器”服务。 右键单击“Azure Migrate 收集器服务”，然后单击“启动”。
+   
+   e. 双击桌面快捷方式“运行收集器”以启动收集器应用程序。 收集器应用程序应当自动下载并安装所需版本的 PowerCLI。
+
+3. 如果上述步骤没有解决问题，请手动安装 [VMware PowerCLI 6.5.2](https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016)，然后检查问题是否得到解决。
 
 ### <a name="error-unabletoconnecttoserver"></a>UnableToConnectToServer 错误
 
 由于错误，无法连接到 vCenter Server“Servername.com:9443”： https://Servername.com:9443/sdk 处没有可接受消息的终结点侦听。
 
-检查要运行的收集器设备是否是最新版本。如果不是，将设备升级到[最新版本](https://docs.microsoft.com/azure/migrate/concepts-collector#how-to-upgrade-collector)。
+检查要运行的收集器设备是否是最新版本。如果不是，将设备升级到[最新版本](https://docs.microsoft.com/azure/migrate/concepts-collector)。
 
 如果是最新版本但此问题仍出现，可能是因为收集器设备无法解析指定的 vCenter Server 名称，或指定的端口不正确。 默认情况下，如果端口未指定，收集器会尝试连接到端口号 443。
 
@@ -210,7 +222,7 @@ Azure Migrate 取决于服务映射以获取依赖项可视化效果功能，并
 [此处](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems)列出了依赖项代理支持的 Linux 操作系统。
 
 ### <a name="i-am-unable-to-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>我在 Azure Migrate 中可视化依赖项不能持续超过一小时？
-Azure Migrate 允许可视化依赖项最多持续一小时的时间。 尽管 Azure Migrate 允许返回到历史记录中的某一特定日期可以推至上个月，但可视化依赖项的最长持续时间最多为一小时。 例如，你可以使用依赖项映射中的持续时间功能来查看昨天的依赖项，但只能查看一小时。
+Azure Migrate 允许可视化依赖项最多持续一小时的时间。 尽管 Azure Migrate 允许返回到历史记录中的某一特定日期可以推至上个月，但可视化依赖项的最长持续时间最多为一小时。 例如，你可以使用依赖项映射中的持续时间功能来查看昨天的依赖项，但只能查看一小时。 但是，可以使用 Log Analytics [查询更长持续时间内的依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics)。
 
 ### <a name="i-am-unable-to-visualize-dependencies-for-groups-with-more-than-10-vms"></a>我无法可视化具有 10 个以上 VM 的组的依赖项？
 你可以[可视化依赖项的组最多只能有 10 个 VM](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)，如果某个组的 VM 超过 10 个，建议先将该组拆分成较小的组，然后再可视化依赖项。

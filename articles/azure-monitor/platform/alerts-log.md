@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 43e842d6325897f484d9dff342505cace6640e78
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 64fb629e29de9771ca5f76d1c454ec5d14337a57
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472273"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104344"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理日志警报  
 
@@ -72,6 +72,7 @@ ms.locfileid: "54472273"
     ![“聚合基于”选项](media/alerts-log/aggregate-on.png)
 
 1.  日志警报：打开可视化效果后，可以从显示的“条件”、“聚合”和“阈值”选项中选择“警报逻辑”。 最后，使用“时间段”选项在逻辑中指定评估指定条件的时间。 此外，通过选择“频率”来指定运行警报服务的频率。
+
 **日志警报**可以基于：
    - 记录数目：如果查询返回的记录计数大于或小于提供的值，则创建警报。
    - 指标度量：如果结果中的每个聚合值超过提供的阈值并且是“分组依据”选定值，则创建警报。 警报违规数是在选定时间段内超过阈值的次数。 可以为结果集中的任何违规组合指定总违规数，或指定连续违规数以要求违规必须在连续采样时发生。 详细了解[日志警报及其类型](../../azure-monitor/platform/alerts-unified-log.md)。
@@ -108,7 +109,7 @@ ms.locfileid: "54472273"
     几分钟后，警报将处于活动状态，并按前面所述进行触发。
 
 用户还可以在 [Azure 门户中的 Logs Analytics 页面](../../azure-monitor/log-query/portals.md#log-analytics-page
-)中完成其分析查询，然后通过“设置警报”按钮推送它来创建警报 - 然后遵循以上教程中从步骤 6 开始的说明。
+)中完成其分析查询，然后通过“+ 新建警报规则”按钮推送它来创建警报 - 然后遵循以上教程中从步骤 6 开始的说明。
 
  ![Log Analytics - 设置警报](media/alerts-log/AlertsAnalyticsCreate.png)
 
@@ -125,35 +126,31 @@ ms.locfileid: "54472273"
     ![管理警报规则](media/alerts-log/manage-alert-rules.png)
 
 ## <a name="managing-log-alerts-using-azure-resource-template"></a>使用 Azure 资源模板管理日志警报
-当前可根据警报所基于的分析平台（即 Log Analytics 或 Application Insights）使用两个不同的资源模板创建日志警报。
 
-因此，以下部分提供了有关针对每个分析平台将资源模板用于日志警报的详细信息。
+Azure Monitor 中的日志警报与资源类型 `Microsoft.Insights/scheduledQueryRules/` 相关联。 有关此资源类型的详细信息，请参阅 [Azure Monitor - 计划查询规则 API 参考](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)。 可以使用[计划查询规则 API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) 为 Application Insights 或 Log Analytics 创建日志警报。
 
-### <a name="azure-resource-template-for-log-analytics"></a>适用于 Log Analytics 的 Azure 资源模板
-通过警报规则创建 Log Analytics 的日志警报，该规则按固定时间间隔运行保存的搜索。 如果查询结果与指定的条件相符，则会创建一个警报记录且会运行一个或多个操作。 
-
-文档的 Log Analytics 部分提供了 Log Analytics 保存搜索和 Log Analytics 警报的资源模板。 若要了解详细信息，请参阅[添加 Log Analytics 保存搜索和警报](../../azure-monitor/insights/solutions-resources-searches-alerts.md)，其中包括说明性的示例和架构详细信息。
-
-### <a name="azure-resource-template-for-application-insights"></a>适用于 Application Insights 的 Azure 资源模板
-Application Insights 资源的日志警报的一种类型为 `Microsoft.Insights/scheduledQueryRules/`。 有关此资源类型的详细信息，请参阅 [Azure Monitor - 计划查询规则 API 参考](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)。
+> [!NOTE]
+> 还可以使用旧式 [Log Analytics 警报 API](../../azure-monitor/platform/api-alerts.md) 以及 [Log Analytics 保存的搜索和警报](../../azure-monitor/insights/solutions-resources-searches-alerts.md)的旧式模板管理 Log Analytics 的日志警报。 有关默认使用此处详述的新 ScheduledQueryRules API 的详细信息，请参阅[切换到 Log Analytics 警报的新 API](alerts-log-api-switch.md)。
 
 以下是基于资源模板的[计划查询规则创建](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate)结构，其中示例数据集作为变量。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0", 
     "parameters": {      
     },   
     "variables": {
-    "alertLocation": "southcentralus",
-    "alertName": "samplelogalert",
-    "alertTag": "hidden-link:/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/components/sampleAIapplication",
-    "alertDescription": "Sample log search alert",
+    "alertLocation": "Region Name for your Application Insights App or Log Analytics Workspace",
+    "alertName": "sample log alert",
+    "alertDescr": "Sample log search alert",
     "alertStatus": "true",
+    "alertTag": "hidden-link:/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews",
     "alertSource":{
-        "Query":"requests",
-        "SourceId": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/components/sampleAIapplication",
+        "Query":"union workspace("servicews").Update, app('serviceapp').requests | summarize AggregatedValue = count() by bin(TimeGenerated,1h), Classification",
+        "Resource1": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews", 
+        "Resource2": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/components/serviceapp",
+        "SourceId": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews",
         "Type":"ResultCount"
          },
      "alertSchedule":{
@@ -161,17 +158,24 @@ Application Insights 资源的日志警报的一种类型为 `Microsoft.Insights
          "Time": 60
          },
      "alertActions":{
-         "SeverityLevel": "4"
+         "SeverityLevel": "4",
+         "SuppressTimeinMin": 20
          },
       "alertTrigger":{
         "Operator":"GreaterThan",
         "Threshold":"1"
          },
+      "metricMeasurement": {
+          "thresholdOperator": "Equal",
+          "threshold": "1",
+          "metricTriggerType": "Consecutive",
+          "metricColumn": "Classification"
+      },
        "actionGrp":{
-        "ActionGroup": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/actiongroups/sampleAG",
+        "ActionGroup": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/actiongroups/sampleAG",
         "Subject": "Customized Email Header",
-        "Webhook": "{ \"alertname\":\"#alertrulename\", \"IncludeSearchResults\":true }"           
-         }
+        "Webhook": "{ \"alertname\":\"#alertrulename\", \"IncludeSearchResults\":true }"
+        }
   },
   "resources":[ {
     "name":"[variables('alertName')]",
@@ -180,28 +184,36 @@ Application Insights 资源的日志警报的一种类型为 `Microsoft.Insights
     "location": "[variables('alertLocation')]",
     "tags":{"[variables('alertTag')]": "Resource"},
     "properties":{
-       "description": "[variables('alertDescription')]",
+       "description": "[variables('alertDescr')]",
        "enabled": "[variables('alertStatus')]",
        "source": {
            "query": "[variables('alertSource').Query]",
+           "authorizedResources": "[concat(array(variables('alertSource').Resource1), array(variables('alertSource').Resource2))]",
            "dataSourceId": "[variables('alertSource').SourceId]",
            "queryType":"[variables('alertSource').Type]"
        },
       "schedule":{
            "frequencyInMinutes": "[variables('alertSchedule').Frequency]",
-           "timeWindowInMinutes": "[variables('alertSchedule').Time]"    
+           "timeWindowInMinutes": "[variables('alertSchedule').Time]"
        },
       "action":{
            "odata.type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction",
            "severity":"[variables('alertActions').SeverityLevel]",
+           "throttlingInMin": "[variables('alertActions').SuppressTimeinMin]",
            "aznsAction":{
-               "actionGroup":"[array(variables('actionGrp').ActionGroup)]",
+               "actionGroup": "[array(variables('actionGrp').ActionGroup)]",
                "emailSubject":"[variables('actionGrp').Subject]",
                "customWebhookPayload":"[variables('actionGrp').Webhook]"
            },
        "trigger":{
                "thresholdOperator":"[variables('alertTrigger').Operator]",
-               "threshold":"[variables('alertTrigger').Threshold]"
+               "threshold":"[variables('alertTrigger').Threshold]",
+               "metricTrigger":{
+                   "thresholdOperator": "[variables('metricMeasurement').thresholdOperator]",
+                   "threshold": "[variables('metricMeasurement').threshold]",
+                   "metricColumn": "[variables('metricMeasurement').metricColumn]",
+                   "metricTriggerType": "[variables('metricMeasurement').metricTriggerType]"
+               }
            }
        }
      }
@@ -214,32 +226,26 @@ Application Insights 资源的日志警报的一种类型为 `Microsoft.Insights
 
 针对此演练，上面的示例 json 可以保存为（例如）sampleScheduledQueryRule.json，并且可以使用 [Azure 门户中的 Azure 资源管理器](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)进行部署。
 
-
 ## <a name="managing-log-alerts-using-powershell-cli-or-api"></a>使用 PowerShell、CLI 或 API 管理日志警报
-当前可根据警报所基于的分析平台（即 Log Analytics 或 Application Insights）使用两个不同的符合资源管理器标准的 API 创建日志警报。
 
-因此，以下部分提供了有关针对每个分析平台通过 Powershell 或 CLI 将 API 用于日志警报的详细信息。
+Azure Monitor - 计划查询规则 API]（ https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) 是一个 REST API 并且与 Azure 资源管理器 REST API 完全兼容。 因此，可以使用资源管理器 cmdlet 和 Azure CLI 通过 Powershell 使用它。
 
-### <a name="powershell-cli-or-api-for-log-analytics"></a>适用于 Log Analytics 的 PowerShell、CLI 或 API
-Log Analytics 警报 REST API 为 RESTful，可通过 Azure 资源管理器 REST API 访问。 因此，API 可以从 PowerShell 命令行访问，并输出 JSON 格式的搜索结果，以便用户可通过编程方式采用多种不同的方法使用结果。
+> [!NOTE]
+> 还可以使用旧式 [Log Analytics 警报 API](../../azure-monitor/platform/api-alerts.md) 以及 [Log Analytics 保存的搜索和警报](../../azure-monitor/insights/solutions-resources-searches-alerts.md)的旧式模板管理 Log Analytics 的日志警报。 有关默认使用此处详述的新 ScheduledQueryRules API 的详细信息，请参阅[切换到 Log Analytics 警报的新 API](alerts-log-api-switch.md)。
 
-详细了解[在 Log Analytics 中通过 REST API 创建和管理警报规则](../../azure-monitor/platform/api-alerts.md)；包括从 Powershell 访问 API 的示例。
 
-### <a name="powershell-cli-or-api-for-application-insights"></a>适用于 Application Insights 的 PowerShell、CLI 或 API
-[Azure Monitor - 计划查询规则 API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) 为 REST API 并与 Azure 资源管理器 REST API 完全兼容。 因此，可以使用资源管理器 cmdlet 和 Azure CLI 通过 Powershell 使用它。
-
-下面展示了之前在[资源模板部分](#azure-resource-template-for-application-insights)中显示的示例资源模板 (sampleScheduledQueryRule.json) 通过 Azure 资源管理器 PowerShell cmdlet 进行使用的情况：
+日志警报目前没有专用的 PowerShell 或 CLI 命令，但如下所展示，可以通过之前在[资源模板部分](#azure-resource-template-for-application-insights)中显示的示例资源模板 (sampleScheduledQueryRule.json) 通过 Azure 资源管理器 PowerShell cmdlet 进行使用：
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
+New-AzureRmResourceGroupDeployment -ResourceGroupName "contosoRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
 ```
+
 下面展示了之前在[资源模板部分](#azure-resource-template-for-application-insights)中显示的示例资源模板 (sampleScheduledQueryRule.json) 通过 Azure CLI 中的 Azure 资源管理器命令进行使用的情况：
 
 ```azurecli
-az group deployment create --resource-group myRG --template-file sampleScheduledQueryRule.json
+az group deployment create --resource-group contosoRG --template-file sampleScheduledQueryRule.json
 ```
+
 成功执行操作后，将返回 201 声明新的警报规则创建，如果修改了现有警报规则，则返回 200。
-
-
   
 ## <a name="next-steps"></a>后续步骤
 

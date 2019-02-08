@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 4c8fcc403b274d161893194109dee4bc8d0cb369
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 433718c19e0df5fac87273f2b46f8ae090ed7510
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974346"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888560"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure 数据工厂中支持的文件格式和压缩编解码器
 
@@ -35,7 +35,7 @@ ms.locfileid: "53974346"
 
 如果想要读取或写入某个文本文件，请将数据集的 `format` 节中的 `type` 属性设置为 **TextFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [TextFormat 示例](#textformat-example)部分，了解如何进行配置。
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 必需 |
 | --- | --- | --- | --- |
 | columnDelimiter |用于分隔文件中的列的字符。 可以考虑使用数据中可能不存在的极少见的不可打印字符。 例如，指定“\u0001”表示标题开头 (SOH)。 |只允许一个字符。 **默认**值为**逗号（“,”）**。 <br/><br/>若要使用 Unicode 字符，请参阅 [Unicode 字符](https://en.wikipedia.org/wiki/List_of_Unicode_characters)获取相应的代码。 |否 |
 | rowDelimiter |用于分隔文件中的行的字符。 |只允许一个字符。 **默认**值为以下任何一项：**[“\r\n”、“\r”、“\n”]**（读取时）和 **“\r\n”**（写入时）。 |否 |
@@ -88,7 +88,7 @@ ms.locfileid: "53974346"
 
 要分析 JSON 文件或以 JSON 格式写入数据，请将 `format` 节中的 `type` 属性设置为 **JsonFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [JsonFormat 示例](#jsonformat-example)部分，了解如何进行配置。
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | filePattern |指示每个 JSON 文件中存储的数据模式。 允许的值为：**setOfObjects** 和 **arrayOfObjects**。 **默认**值为 **setOfObjects**。 请参阅 [JSON 文件模式](#json-file-patterns)部分，详细了解这些模式。 |否 |
 | jsonNodeReference | 若要进行迭代操作，以同一模式从数组字段中的对象提取数据，请指定该数组的 JSON 路径。 只有**从** JSON 文件复制数据时，才支持此属性。 | 否 |
@@ -414,19 +414,23 @@ ms.locfileid: "53974346"
 }
 ```
 
-> [!IMPORTANT]
-> 对于自托管 Integration Runtime（如在本地与云数据存储之间）授权的复制，如果不是按原样复制 Parquet 文件，则需要在 IR 计算机上安装 JRE 8（Java 运行时环境）。 64 位 IR 需要 64 位 JRE。 可以从[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到这两个版本。
->
-
 请注意以下几点：
 
 * 不支持复杂数据类型（MAP、LIST）。
 * 不支持列名称中的空格。
 * Parquet 文件提供以下压缩相关的选项：NONE、SNAPPY、GZIP 和 LZO。 数据工厂支持以这些压缩格式中的任意一种格式从 Parquet 文件中读取数据 - 但 LZO 格式除外，它使用元数据中的压缩编解码器来读取数据。 但是，写入 Parquet 文件时，数据工厂会选择 SNAPPY，这是 Parquet 格式的默认选项。 目前没有任何选项可以重写此行为。
 
+> [!IMPORTANT]
+> 对于由自承载集成运行时（例如，在本地与云数据存储之间）支持的复制，如果不是**按原样**复制 Parquet 文件，则需要在 IR 计算机上安装 **64 位 JRE 8（Java 运行时环境）或 OpenJDK**。 请参阅下面段落中的更多详细信息。
+
+对于使用 Parquet 文件序列化/反序列化在自承载集成运行时上运行的复制，ADF 将通过首先检查 JRE 的注册表项 *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* 来查找 Java 运行时，如果未找到，则会检查系统变量 *`JAVA_HOME`* 来查找 OpenJDK。 
+
+- **若要使用 JRE**：64 位 IR 需要 64 位 JRE。 可在[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到它。
+- **若要使用 OpenJDK**：从 IR 版本 3.13 开始受支持。 将 jvm.dll 以及所有其他必需的 OpenJDK 程序集打包到自承载 IR 计算机中，并相应地设置系统环境变量 JAVA_HOME。
+
 ### <a name="data-type-mapping-for-parquet-files"></a>Parquet 文件的数据类型映射
 
-| 数据工厂临时数据类型 | Parquet 基元类型 | Parquet 原始类型（反序列化） | Parquet 原始类型（串行化） |
+| 数据工厂临时数据类型 | Parquet 基元类型 | Parquet 原始类型（反序列化） | Parquet 原始类型（序列化） |
 |:--- |:--- |:--- |:--- |
 | Boolean | Boolean | 不适用 | 不适用 |
 | SByte | Int32 | Int8 | Int8 |
@@ -436,10 +440,10 @@ ms.locfileid: "53974346"
 | Int32 | Int32 | Int32 | Int32 |
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
-| UInt64 | Int64/二进制 | UInt64 | 小数 |
+| UInt64 | Int64/二进制 | UInt64 | Decimal |
 | Single | Float | 不适用 | 不适用 |
 | Double | Double | 不适用 | 不适用 |
-| 小数 | 二进制 | 小数 | 小数 |
+| Decimal | 二进制 | Decimal | Decimal |
 | String | 二进制 | Utf8 | Utf8 |
 | DateTime | Int96 | 不适用 | 不适用 |
 | TimeSpan | Int96 | 不适用 | 不适用 |
@@ -460,15 +464,19 @@ ms.locfileid: "53974346"
 }
 ```
 
-> [!IMPORTANT]
-> 对于自托管 Integration Runtime（如在本地与云数据存储之间）授权的复制，如果不是按原样复制 ORC 文件，则需要在 IR 计算机上安装 JRE 8（Java 运行时环境）。 64 位 IR 需要 64 位 JRE。 可以从[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到这两个版本。
->
-
 请注意以下几点：
 
 * 不支持复杂数据类型（STRUCT、MAP、LIST、UNION）。
 * 不支持列名称中的空格。
 * ORC 文件有三个[压缩相关的选项](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)：NONE、ZLIB、SNAPPY。 数据工厂支持从使用其中任一压缩格式的 ORC 文件中读取数据。 它使用元数据中的压缩编解码器来读取数据。 但是，写入 ORC 文件时，数据工厂会选择 ZLIB，这是 ORC 的默认选项。 目前没有任何选项可以重写此行为。
+
+> [!IMPORTANT]
+> 对于由自承载集成运行时（例如，在本地与云数据存储之间）支持的复制，如果不是**按原样**复制 ORC 文件，则需要在 IR 计算机上安装 **64 位 JRE 8（Java 运行时环境）或 OpenJDK**。 请参阅下面段落中的更多详细信息。
+
+对于使用 ORC 文件序列化/反序列化在自承载集成运行时上运行的复制，ADF 将通过首先检查 JRE 的注册表项 *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* 来查找 Java 运行时，如果未找到，则会检查系统变量 *`JAVA_HOME`* 来查找 OpenJDK。 
+
+- **若要使用 JRE**：64 位 IR 需要 64 位 JRE。 可在[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到它。
+- **若要使用 OpenJDK**：从 IR 版本 3.13 开始受支持。 将 jvm.dll 以及所有其他必需的 OpenJDK 程序集打包到自承载 IR 计算机中，并相应地设置系统环境变量 JAVA_HOME。
 
 ### <a name="data-type-mapping-for-orc-files"></a>ORC 文件的数据类型映射
 
@@ -485,7 +493,7 @@ ms.locfileid: "53974346"
 | UInt64 | String |
 | Single | Float |
 | Double | Double |
-| 小数 | 小数 |
+| Decimal | Decimal |
 | String | String |
 | DateTime | Timestamp |
 | DateTimeOffset | Timestamp |

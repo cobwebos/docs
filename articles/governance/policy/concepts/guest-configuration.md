@@ -4,17 +4,17 @@ description: 了解 Azure Policy 如何使用来宾配置审核 Azure 虚拟机�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 01/29/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0a571084819c5dfed3f8d6891b59032ef2eecdd6
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 77d99c90e65647a1f4a4efb07ff5520596fa54cf
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856394"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295162"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -63,11 +63,21 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 |Windows|[Microsoft Desired State Configuration](/powershell/dsc) v2| |
 |Linux|[Chef InSpec](https://www.chef.io/inspec/)| Ruby 和 Python 由来宾配置扩展安装。 |
 
+### <a name="validation-frequency"></a>验证频率
+
+来宾配置客户端每 5 分钟检查一次新内容。
+在收到来宾分配后，将按 15 分钟的时间间隔检查设置。
+在审核完成后，结果会立即发送到来宾配置资源提供程序。
+当策略[评估触发器](../how-to/get-compliance-data.md#evaluation-triggers)执行时，会将计算机状态写入到来宾配置资源提供程序。
+这会导致 Azure Policy 评估 Azure 资源管理器属性。
+按需策略评估从来宾配置资源提供程序检索最新值。
+但是，它不会触发对虚拟机中的配置执行新的审核。
+
 ### <a name="supported-client-types"></a>支持的客户端类型
 
 下表显示了 Azure 映像上支持的操作系统列表：
 
-|发布者|名称|版本|
+|发布者|Name|版本|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04、16.04、18.04|
 |Credativ|Debian|8、9|
@@ -90,7 +100,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 ## <a name="guest-configuration-definition-requirements"></a>来宾配置定义要求
 
-来宾配置运行的每个审核都需要两个策略定义：“DeployIfNotExists”和“AuditIfNotExists”。 DeployIfNotExists 用于准备虚拟机的来宾配置代理和其他组件以支持[验证工具](#validation-tools)。
+来宾配置运行的每个审核都需要两个策略定义：**DeployIfNotExists** 和 **Audit**。 DeployIfNotExists 用于准备虚拟机的来宾配置代理和其他组件以支持[验证工具](#validation-tools)。
 
 “DeployIfNotExists”策略定义验证并更正以下项目：
 
@@ -99,14 +109,14 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
   - 安装 Microsoft.GuestConfiguration 扩展的最新版本
   - 安装[验证工具](#validation-tools)和依赖项（如果需要）
 
-一旦 DeployIfNotExists 符合，AuditIfNotExists 策略定义会使用本地验证工具来确定分配的配置分配是符合还是不符合。 验证工具向来宾配置客户端提供结果。 客户端将结果转发给来宾扩展，使其可通过来宾配置资源提供程序使用。
+一旦 **DeployIfNotExists** 符合，**Audit** 策略定义便会使用本地验证工具来确定分配的配置分配是符合还是不符合。 验证工具向来宾配置客户端提供结果。 客户端将结果转发给来宾扩展，使其可通过来宾配置资源提供程序使用。
 
 Azure Policy 使用来宾配置资源提供程序 complianceStatus 属性在“符合性”节点中报告符合性。 有关详细信息，请参阅[获取符合性数据](../how-to/getting-compliance-data.md)。
 
 > [!NOTE]
-> 对于每个来宾配置定义，必须同时存在 DeployIfNotExists 和 AuditIfNotExists 策略定义。
+> 对于每个来宾配置定义，必须同时存在 **DeployIfNotExists** 和 **Audit** 策略定义。
 
-来宾配置的所有内置策略包含在一个计划内，以对分配中使用的定义分组。 名为“[预览]：审核 Linux 和 Windows 虚拟机内的密码安全设置”的内置计划包含 18 个策略。 对于 Windows 有六个 DeployIfNotExists 和 AuditIfNotExists 对，对于 Linux 有三个对。 在每种情况下，都可使用定义内的逻辑验证仅基于[策略规则](definition-structure.md#policy-rule)定义评估目标操作系统。
+来宾配置的所有内置策略包含在一个计划内，以对分配中使用的定义分组。 名为“[预览]：审核 Linux 和 Windows 虚拟机内的密码安全设置”的内置计划包含 18 个策略。 对于 Windows，有六个 **DeployIfNotExists** 和 **Audit** 对，对于 Linux，有三个对。 在每种情况下，都可使用定义内的逻辑验证仅基于[策略规则](definition-structure.md#policy-rule)定义评估目标操作系统。
 
 ## <a name="next-steps"></a>后续步骤
 

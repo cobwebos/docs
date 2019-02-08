@@ -5,16 +5,16 @@ description: 任何项目下的“模型”选项卡会显示每个模型的详�
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 80ee99fc4490f1fdc591093f357c8db55a97abb9
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: d82d41a254164c635f4488db63766b39d922f002
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626730"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219102"
 ---
 # <a name="view-model-details"></a>查看模型详细信息
 
@@ -71,7 +71,7 @@ ms.locfileid: "51626730"
 
 训练完成后，可在“详细信息”页中查看有关该训练的详细信息。 选择一个项目，找到并选择“模型”选项卡，然后选择一个模型。
 
-模型页包含两个选项卡：“训练详细信息”和“测试”。
+模型页面有两个选项卡：“训练详细信息”和“测试”。
 
 1.  **训练详细信息：** 此选项卡显示训练中使用的文档列表：
 

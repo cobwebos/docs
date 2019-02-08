@@ -4,162 +4,164 @@ description: 在 Azure 中部署 Avere vFXT 群集的步骤
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: 8e265f2bed480f7b40476e09ab8f442aedcc9dd4
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: da329b5c50fe7c39d9773743b40c2f990e298963
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999456"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296369"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>部署 vFXT 群集
 
-在 Azure 中创建 vFXT 群集的最简单方法是使用群集控制器。 群集控制器是包含用于创建和管理 vFXT 群集的必需脚本、模板和软件基础结构的 VM。
+此过程详述如何使用 Azure 市场提供的部署向导。 此向导自动使用 Azure 资源管理器模板来部署群集。 在窗体中输入参数并单击“创建”后，Azure 会自动完成以下步骤： 
 
-部署新的 vFXT 群集的步骤包括：
-
-1. [创建群集控制器](#create-the-cluster-controller-vm)。
-1. 如果使用 Azure Blob 存储，在虚拟网络中[创建存储终结点](#create-a-storage-endpoint-if-using-azure-blob)。
-1. [连接到群集控制器](#access-the-controller)。 其余步骤由群集控制器 VM 完成。 
-1. 为群集节点[创建访问角色](#create-the-cluster-node-access-role)。 提供了原型。
-1. 为要创建的 vFXT 群集类型[自定义群集创建脚本](#edit-the-deployment-script)。
-1. [执行群集创建脚本](#run-the-script)。
-
-有关群集部署的步骤和计划的详细信息，请阅读[计划 Avere vFXT 系统](avere-vfxt-deploy-plan.md)和[部署概述](avere-vfxt-deploy-overview.md)。 
+* 创建群集控制器，该控制器是基本的 VM，其中包含部署和管理群集所需的软件。
+* 设置资源组和虚拟网络基础结构，包括根据需要创建新元素。
+* 创建群集节点 VM 并将其配置为 Avere 群集。
+* 根据请求创建新的 Azure Blob 容器并将其配置为群集核心文件管理器。
 
 按照本文档中的说明操作后，将获得虚拟网络、子网、控制器和 vFXT 群集，如下图所示：
 
 ![关系图，它所示的 VNET 包含可选 blob 存储以及一个子网，该子网包含三个标记为 vFXT 节点/vFXT 群集的分组 VM 和一个标记为群集控制器的 VM](media/avere-vfxt-deployment.png)
 
-在开始部署之前，确保已具备以下必备项：  
+创建群集后，如果使用的是 Blob 存储，则应在虚拟网络中[创建存储终结点](#create-a-storage-endpoint-if-using-azure-blob)。 
+
+在使用创建模板之前，请确保已具备以下必备项：  
 
 1. [新订阅](avere-vfxt-prereqs.md#create-a-new-subscription)
 1. [订阅所有者权限](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [vFXT 群集的配额](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
+1. [自定义访问角色](avere-vfxt-prereqs.md#create-access-roles) - 必须创建基于角色的访问控制角色，以便将其分配到群集节点。 可以选择也为群集控制器创建自定义访问角色，但大多数用户会采用默认的所有者角色，这样可以获得与资源组所有者相对应的控制器特权。 如需更多详细信息，请阅读 [Azure 资源的内置角色](../role-based-access-control/built-in-roles.md#owner)。
 
-（可选）可以在创建群集控制器[之前](avere-vfxt-pre-role.md)创建群集节点角色，但在此后执行该操作更简单。
+有关群集部署的步骤和计划的详细信息，请阅读[计划 Avere vFXT 系统](avere-vfxt-deploy-plan.md)和[部署概述](avere-vfxt-deploy-overview.md)。
 
-## <a name="create-the-cluster-controller-vm"></a>创建群集控制器 VM
+## <a name="create-the-avere-vfxt-for-azure"></a>创建 Avere vFXT for Azure
 
-第一步是创建用于创建和配置 vFXT 群集节点的虚拟机。 
+在 Azure 门户中访问创建模板，方法是：先搜索 Avere，然后选择“Avere vFXT for Azure 部署”。 <!-- xxx update if that name changes xxx --> 
 
-群集控制器是预安装了 Avere vFXT 群集创建软件和脚本的 Linux VM。 它不需要强大的处理能力或大量存储空间，因此可以选择成本较低的选项。 在 vFXT 群集的整个生存期中，偶尔会使用此 VM。
+<!-- **[XXX need production image of template deploy in search and/or entry page of template deploy XXX]** -->
 
-有两种方法可以创建群集控制器 VM。 [下面](#create-controller---arm-template)提供了一个 [Azure 资源管理器模板](#create-controller---arm-template)用于简化创建过程；你也可以从 [Azure 市场映像](#create-controller---azure-marketplace-image)创建控制器。 
+单击“创建”即可开始创建。 
 
-可以在创建控制器时创建新资源组。
+![Azure 市场，显示部署模板的第一页](media/avere-vfxt-deploy-first.png)
+
+模板包含四个步骤/页面 - 两个信息收集页面，一个验证步骤和一个确认步骤。 
+
+* 第一页重点介绍群集控制器 VM 的设置。 
+* 第二页收集参数，这些参数适用于创建群集，以及适用于子网和存储之类的关联资源。 
+* 第三页汇总设置并验证配置。 
+* 第四页说明软件条款和条件，让你能够启动群集创建过程。 
+
+## <a name="page-one-parameters---cluster-controller-information"></a>第一页的参数 - 群集控制器信息
+
+部署模板的第一页收集有关群集控制器的信息。 
+
+![部署模板的第一页](media/avere-vfxt-deploy-1.png)
+
+填充以下信息：
+
+* **群集控制器名称** - 设置群集控制器 VM 的名称。
+
+* **控制器用户名** - 填充群集控制器 VM 的根用户名。 
+
+* **身份验证类型** - 选择连接到控制器所需的密码或 SSH 公钥身份验证。 建议使用 SSH 公钥方法；如需帮助，请阅读[如何创建和使用 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)。
+
+* **密码**或 **SSH 公钥** - 必须在后续字段中提供 RSA 公钥或密码，具体取决于所选身份验证类型。 此凭据与以前提供的用户名配合使用。
+
+* **Avere 群集创建角色 ID** - 使用此字段指定群集控制器的访问控制角色。 默认值为内置角色：[所有者](../role-based-access-control/built-in-roles.md#owner)。 群集控制器的所有者特权仅限群集的资源组。 
+
+  必须使用与角色相对应的全局唯一标识符。 与默认值（所有者）相对应的 GUID 为 8e3af657-a8ff-443c-a75c-2fe8c4bcb635。 若要查找自定义角色的 GUID，请使用以下命令： 
+
+  ```azurecli
+  az role definition list --query '[*].{roleName:roleName, name:name}' -o table --name 'YOUR ROLE NAME'
+  ```
+
+* **订阅** - 选择 Avere vFXT 的订阅。 
+
+* **资源组** - 选择 Avere vFXT 群集的资源组，或者单击“新建”，然后输入新的资源组名称。 
+
+* **位置** - 选择群集和资源的 Azure 位置。
+
+完成后，单击“确定”。 
+
+> [!NOTE]
+> 如果希望群集控制器有一个面向公众的 IP 地址，请为群集创建一个新的虚拟网络，而不是选择一个现有的网络。 此设置在第二页上。
+
+## <a name="page-two-parameters---vfxt-cluster-information"></a>第二页的参数 - vFXT 群集信息
+
+可以使用部署模板的第二页来设置群集大小、节点类型、缓存大小、存储参数等设置。 
+
+![部署模板的第二页](media/avere-vfxt-deploy-2.png)
+
+* **Avere vFXT 群集节点计数** - 选择要在群集中使用的节点的数目。 至少 3 个节点，至多 12 个节点。 
+
+* **群集管理密码** - 创建用于群集管理的密码。 若要登录到群集控制面板来监视群集并配置设置，需将此密码与用户名 ```admin``` 配合使用。
+
+* **Avere 群集操作角色** - 指定群集节点的访问控制角色的名称。 这是在先决条件步骤中创建的自定义角色。 
+
+  [创建群集节点访问角色](avere-vfxt-prereqs.md#create-the-cluster-node-access-role)中所述的示例将文件另存为 ```avere-operator.json```，相应的角色名称为 ```avere-operator```。
+
+* **Avere vFXT 群集名称** - 为群集提供唯一名称。 
+
+* **大小** - 指定创建群集节点时需要使用的 VM 类型。 
+
+* **每个节点的缓存大小** - 群集缓存分布在多个群集节点上，因此 Avere vFXT 群集上的总缓存大小为每个节点的缓存大小乘以节点数。 
+
+  建议的配置是：如果使用 Standard_D16s_v3 群集节点，则使用每个节点 1 TB 的设置；如果使用 Standard_E32s_v3 节点，则使用每个节点 4 TB 的设置。
+
+* **虚拟网络** - 选择一个现有的 VNet 来托管群集，或者定义一个新的需要创建的 VNet。 
+
+  > [!NOTE]
+  > 如果创建新的 VNet，群集控制器就会有一个公共 IP 地址，供你访问新的专用网络。 如果选择现有的 VNet，则配置的群集控制器没有公共 IP 地址。 
+  > 
+  > 如果群集控制器上有公开显示的 IP 地址，则虽然方便用户对 vFXT 群集的访问，但会有一些安全风险。 
+  >  * 用户可以将群集控制器上的公共 IP 地址用作跳转主机，从专用子网外部连接到 Avere vFXT 群集。
+  >  * 如果未在控制器上设置公共 IP 地址，则必须使用其他跳转主机、VPN 连接或 ExpressRoute 来访问群集。 例如，在已配置 VPN 连接的虚拟网络中创建控制器。
+  >  * 如果创建具有公共 IP 地址的控制器，则应使用网络安全组保护控制器 VM。 默认情况下，Avere vFXT for Azure 部署会创建一个网络安全组，仅限对具有公共 IP 地址的控制器的端口 22 进行入站访问。 可以通过锁定对 IP 源地址范围的访问来进一步保护系统，换句话说，只允许从你打算将其用于群集访问的计算机进行连接。
+
+* **子网** - 从现有虚拟网络中选择一个子网，或者创建一个新的子网。 
+
+* **使用 Blob 存储** - 选择是否创建新的 Azure Blob 容器并将其配置为新 Avere vFXT 群集的后端存储。 如果选择创建新容器，则必须为该容器提供存储帐户。 如果选择不创建新的 Blob 容器，则必须在创建群集后附加存储（有关说明，请阅读[配置存储](avere-vfxt-add-storage.md)）。 如果不希望创建新容器，请将此字段设置为 **false**。
+
+* **存储帐户** - 如果创建新的 Azure Blob 容器，请输入存储帐户名称。 存储帐户必须是标准的常规用途 V2 帐户，并且配置了本地冗余的存储和热访问层。 [配置存储](avere-vfxt-add-storage.md#azure-storage-cloud-core-filer)一文更详细地介绍了存储帐户要求。
+
+## <a name="validation-and-purchase"></a>验证和购买
+
+第三页对配置进行汇总并验证参数。 验证成功后，请单击“确定”按钮继续。 
+
+![部署模板的第三页 - 验证](media/avere-vfxt-deploy-3.png)
+
+在第四页上单击“创建”按钮，接受条款并创建 Avere vFXT for Azure 群集。 
+
+![部署模板的第四页 - 条款和条件、“创建”按钮](media/avere-vfxt-deploy-4.png)
+
+群集部署需要 15-20 分钟。
+
+## <a name="gather-template-output"></a>收集模板输出
+
+Avere vFXT 模板在创建完群集以后，会输出有关新群集的某些重要信息。 
 
 > [!TIP]
->
-> 决定是否在群集控制器上使用公共 IP 地址。 通过公共 IP 地址，可以更轻松地访问 vFXT 群集，但存在较小的安全风险。
->
->  * 用户可以将群集控制器上的公共 IP 地址用作跳转主机，从专用子网外部连接到 Avere vFXT 群集。
->  * 如果未在控制器上设置公共 IP 地址，则必须使用其他跳转主机、VPN 连接或 ExpressRoute 来访问群集。 例如，在配置了 VPN 连接的虚拟网络中创建控制器。
->  * 如果创建具有公共 IP 地址的控制器，则应使用网络安全组保护控制器 VM。 仅允许通过端口 22 访问以提供 Internet 访问。
+> 请务必复制模板输出中的管理 IP 地址。 需要该地址来管理群集。
 
-### <a name="create-controller---resource-manager-template"></a>创建控制器 - 资源管理器模板
+若要查找此信息，请按照以下过程操作：
 
-若要从门户创建群集控制器节点，请单击下面的“部署到 Azure”按钮。 此部署模板创建用于创建和管理 Avere vFXT 群集的 VM。
+1. 转到群集控制器的资源组。
 
-[![用于创建控制器的按钮](media/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAvere%2Fmaster%2Fsrc%2Fvfxt%2Fazuredeploy.json)
+1. 在左侧单击“部署”，然后单击“microsoft-avere.vfxt-template”。
 
-提供以下信息。
+   ![资源组门户页面，其左侧选中“部署”，“部署名称”下的表中显示 microsoft-avere.vfxt-template](media/avere-vfxt-outputs-deployments.png)
 
-在“基本”部分中提供：  
+1. 在左侧，单击“输出”。 复制每个字段中的值。 
 
-* 群集的**订阅**
-* **群集的资源组** 
-* **位置** 
+   ![输出页面，在标签右侧的字段中显示 SSHSTRING、RESOURCE_GROUP、LOCATION、NETWORK_RESOURCE_GROUP、NETWORK、SUBNET、SUBNET_ID、VSERVER_IPs 和 MGMT_IP 的值](media/avere-vfxt-outputs-values.png)
 
-在“设置”部分中提供：
-
-* 是否要创建新的虚拟网络
-
-  * 如果创建新的 VNET，系统会为群集控制器分配一个公共 IP 地址，以便访问。 还为此 VNET 创建了一个网络安全组，它将入站流量限制为仅限端口 22。
-  * 如果要使用 ExpressRoute 或 VPN 连接到群集控制器，请将此值设置为 `false` 并在其余字段中指定一个现有的 VNET。 群集控制器将该 VNET 用于网络通信。 
-
-* 虚拟网络资源组、名称和子网名称 - 键入现有资源的名称（如果使用现有 VNET）或在创建新 VNET 时键入新名称
-* 控制器名称 -设置控制器 VM 的名称
-* 控制器管理员用户名 - 默认为 `azureuser`
-* SSH 密钥 - 粘贴要与管理员用户名关联的公钥。 如需帮助，请阅读[如何创建和使用 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)。
-
-在“条款和条件”下： 
-
-* 阅读服务条款并单击复选框接受它们。 
-
-  > [!NOTE] 
-  > 如果你不是订阅所有者，请让所有者按照[提前接受软件条款](avere-vfxt-prereqs.md#accept-software-terms-in-advance)中的前提步骤接受条款。 
-
-
-完成后单击“购买”。 五到六分钟后，控制器节点将启动并运行。
-
-访问输出页来收集创建群集所需的控制器信息。 请阅读[创建群集所需的信息](#information-needed-to-create-the-cluster)来了解更多信息。
-
-### <a name="create-controller---azure-marketplace-image"></a>创建控制器 - Azure 市场映像
-
-在 Azure 市场中搜索名称 ``Avere``查找控制器模板。 选择“Avere vFXT for Azure 控制器”模板。
-
-如果尚未这样做，请接受条款，然后单击“要以编程方式部署?”来启用对市场映像的编程访问权限。 “创建”按钮下方的链接。
-
-![屏幕截图，显示位于“创建”按钮下方的以编程方式访问的链接](media/avere-vfxt-deploy-programmatically.png)
-
-单击“启用”按钮，然后保存设置。
-
-![屏幕截图，显示通过鼠标单击启用编程访问](media/avere-vfxt-enable-program.png)
-
-返回到“Avere vFXT for Azure 控制器”模板的主页，然后单击“创建”。 
-
-在第一个面板中，填写或确认以下基本选项：
-
-* **订阅**
-* **资源组**（如果要创建新组，请输入新名称。）
-* **虚拟机名称** - 控制器的名称
-* **区域**
-* **可用性选项** - 不需要冗余
-* **映像** - Avere vFXT 控制器节点映像
-* **大小** - 保留默认值或选择其他成本较低的选项
-* **管理员帐户** - 设置登录到群集控制器的方式： 
-  * 选择用户名/密码或 SSH 公钥（推荐）。
-  
-    > [!TIP] 
-    > SSH 密钥更安全。 如需帮助，请阅读[如何创建和使用 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)。 
-  * 指定用户名 
-  * 粘贴 SSH 密钥，或输入并确认密码
-* **入站端口规则** - 如果使用公共 IP 地址，请打开端口 22 (SSH)
-
-单击“下一步”设置磁盘选项：
-
-* **OS 磁盘类型** - 使用 HDD 的默认值即可
-* **使用非托管磁盘** - 非必需
-* **数据磁盘** - 不使用
-
-单击“下一步”设置联网选项：
-
-* **虚拟网络** - 选择控制器的 VNET，或输入名称以创建新的 VNET。 如果不想对控制器使用公共 IP 地址，请考虑将它放在已设置 ExpressRoute 或其他访问方法的 VNET 中。
-* **子网** - 在 VNET 中选择一个子网（可选）。 如果创建新 VNET，可以同时创建新子网。
-* **公共 IP** - 如果要使用公共 IP 地址，可以在此处指定。 
-* **网络安全组** - 保留默认设置（基本） 
-* **公共入站端口** - 如果使用公共 IP 地址，请使用此控件允许通过 SSH 流量进行访问。 
-* **加速网络** - 此 VM 无法使用。
-
-单击“下一步”设置管理选项：
-
-* **启动诊断** - 更改为“关”
-* **OS 访客诊断** - 禁用
-* **诊断存储帐户** -（可选）选择或指定新帐户，用于保留诊断信息。
-* **托管服务标识** - 将此选项更改为“开”，会为群集控制器创建一个 Azure AD 服务原则。
-* **自动关闭** - 关闭 
-
-此时，如果不想使用实例标记，可以单击“查看 + 创建”。 否则，请点击“下一步”两次，以跳过“访客配置”页面并转到标记页面 完成后，点击“查看 + 创建”。 
-
-验证选择后，单击“创建”按钮。  
-
-创建大约需要五六分钟时间。
 
 ## <a name="create-a-storage-endpoint-if-using-azure-blob"></a>创建存储终结点（如果使用的是 Azure Blob）
 
-如果要将 Azure Blob 存储用于后端数据存储，应在虚拟网络中创建一个存储服务终结点。 此[服务终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)使 Azure Blob 流量保留在本地，而不是通过 Internet 路由。
+如果要将 Azure Blob 存储用于后端数据存储，应在虚拟网络中创建一个存储服务终结点。 此[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)使 Azure Blob 流量保留在本地，而不是通过 Internet 路由。
 
 1. 在门户中，单击左侧的“虚拟网络”。
 1. 为控制器选择 VNET。 
@@ -170,151 +172,6 @@ ms.locfileid: "52999456"
 
   ![带注释的 Azure 门户屏幕截图，注释标明创建服务终结点的步骤](media/avere-vfxt-service-endpoint.png)
 
-## <a name="information-needed-to-create-the-cluster"></a>创建群集所需的信息
-
-在创建群集控制器后，请确保具有后续步骤所需的信息。 
-
-连接到控制器所需的信息： 
-
-* 控制器用户名和 SSH 密钥（或密码）
-* 控制器 IP 地址或连接到控制器 VM 的其他方法
-
-群集所需的信息： 
-
-* 资源组名称
-* Azure 位置 
-* 虚拟网络名称
-* 子网名称
-* 群集节点角色名称 - 此名称是在创建角色时设置的，如[下文](#create-the-cluster-node-access-role)所述
-* 存储帐户名（如果创建 Blob 容器）
-
-如果使用资源管理器模板创建了控制器节点，可以从[模板输出](#find-template-output)获取信息。 
-
-如果你使用了 Azure 市场映像来创建控制器，则你已直接提供了这些项中的大部分。 
-
-浏览到控制器 VM 信息页来查找任何缺少的项。 例如，单击“所有资源”并搜索控制器名称，然后单击控制器名称以查看其详细信息。
-
-### <a name="find-template-output"></a>查找模板输出
-
-要从资源管理器模板输出中查找此信息，请按照以下过程操作：
-
-1. 转到群集控制器的资源组。
-
-1. 在左侧单击“部署”，然后单击“Microsoft.Template”。
-
-   ![资源组门户页面，其左侧选中“部署”，“部署名称”下的表中显示 Microsoft.Template](media/avere-vfxt-deployment-template.png)
-
-1. 在左侧，单击“输出”。 复制每个字段中的值。 
-
-   ![输出页面，其中 SSHSTRING、RESOURCE_GROUP、LOCATION、NETWORK、SUBNET 和 SUBNET_ID 显示在标签右侧的字段中](media/avere-vfxt-template-outputs.png)
-
-## <a name="access-the-controller"></a>访问控制器
-
-若要完成剩余的部署步骤，需要连接到群集控制器。
-
-1. 连接到群集控制器的方法取决于设置。
-
-   * 如果控制器具有公共 IP 地址，将控制器 IP 的 SSH 设置为管理员用户名（例如，``ssh azureuser@40.117.136.91``）。
-   * 如果控制器没有公共 IP，请使用 VPN 或 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) 连接到 VNET。
-
-1. 登录到控制器后，运行 `az login` 验证身份。 复制 shell 中提供的身份验证代码，然后使用 Web 浏览器加载 [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) 并对 Microsoft 系统进行身份验证。 返回 shell 进行确认。
-
-   ![“AZ login”命令的命令行输出，显示浏览器链接和身份验证代码](media/avere-vfxt-azlogin.png)
-
-1. 通过使用订阅 ID 运行此命令添加订阅 ```az account set --subscription YOUR_SUBSCRIPTION_ID```：
-
-## <a name="create-the-cluster-node-access-role"></a>创建群集节点访问角色
-
-> [!NOTE] 
-> * 如果你不是订阅所有者，并且尚未创建角色，请让订阅所有者按照以下步骤操作，或按[在没有控制器的情况下创建 Avere vFXT 群集运行时访问角色](avere-vfxt-pre-role.md)中的程序操作。
-> 
-> * Microsoft 内部用户应当使用名为“Avere 群集运行时操作员”的现有角色而非尝试创建一个。 
-
-[基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/) (RBAC) 授权 vFXT 群集节点执行必要的任务。  
-
-作为 vFXT 群集常规操作的一部分，各个 vFXT 节点需要执行读取 Azure 资源属性、管理存储和控制其他节点的网络接口设置等操作。 
-
-1. 在控制器上，打开编辑器中的 ``/avere-cluster.json`` 文件。
-
-   ![显示列表命令以及“vi /avere-cluster.json”的控制台](media/avere-vfxt-open-role.png)
-
-1. 编辑文件以包含订阅 ID，并删除其上方的行。 将文件另存为 ``avere-cluster.json``。
-
-   ![控制台文本编辑器，显示订阅 ID 和要删除的“删除此行”](media/avere-vfxt-edit-role.png)
-
-1. 使用此命令以创建角色：  
-
-   ```bash
-   az role definition create --role-definition /avere-cluster.json
-   ```
-
-你将在下一步中将角色的名称传递给群集创建脚本。 
-
-## <a name="create-nodes-and-configure-the-cluster"></a>创建节点并配置群集
-
-要创建 Avere vFXT 群集，请编辑控制器中包含的示例脚本之一并在其中运行。 示例脚本位于群集控制器上的根目录 (`/`) 中。
-
-* 如果要创建 Blob 容器以用作 Avere vFXT 的后端存储系统，请使用 ``create-cloudbacked-cluster`` 脚本。
-
-* 如果稍后要添加存储，请使用 ``create-minimal-cluster`` 脚本。
-
-> [!TIP]
-> 群集控制器 VM 的 `/` 目录中也包括用于添加节点和销毁 vFXT 群集的原型脚本。
-
-### <a name="edit-the-deployment-script"></a>编辑部署脚本
-
-在编辑器中打开示例脚本。 你可能希望使用其他名称保存自定义脚本，以免覆盖原始样本。
-
-输入以下脚本变量的值。
-
-* 资源组名称
-
-  * 如果使用位于不同资源组中的网络或存储组件，请取消注释变量并提供名称。 
-
-```python
-# Resource groups
-# At a minimum specify the resource group.  If the network resources live in a
-# different group, specify the network resource group.  Likewise for the storage
-# account resource group.
-RESOURCE_GROUP=
-#NETWORK_RESOURCE_GROUP=
-#STORAGE_RESOURCE_GROUP=
-```
-
-* 位置名称
-* 虚拟网络名称
-* 子网名称
-* Azure AD 运行时角色名 - 如果按[创建群集节点访问角色](#create-the-cluster-node-access-role)中的示例操作，请使用 ``avere-cluster``。 
-* 存储帐户名（如果创建新的 Blob 容器）
-* 群集名称 - 同一个资源组中不能有两个具有相同名称的 vFXT 群集。 最佳做法是为每个群集指定唯一名称。
-* 管理密码 - 选择用于监视和管理群集的安全密码。 此密码已分配给用户 ``admin``。 
-* 节点实例类型 - 相关信息，请参阅 [vFXT 节点大小](avere-vfxt-deploy-plan.md#vfxt-node-sizes)
-* 节点缓存大小 - 相关信息，请参阅 [vFXT 节点大小](avere-vfxt-deploy-plan.md#vfxt-node-sizes)
-
-保存文件并退出。
-
-### <a name="run-the-script"></a>运行脚本
-
-通过键入创建的文件名运行脚本。 （示例：`./create-cloudbacked-cluster-west1`）  
-
-> [!TIP]
-> 请考虑在[终端多路复用器](http://linuxcommand.org/lc3_adv_termmux.php)（如 `screen` 或 `tmux`）内运行此命令，以防丢失连接。  
-
-输出也记录到 `~/vfxt.log`。
-
-脚本完成后，复制群集管理所需的管理 IP 地址。
-
-![脚本的命令行输出，在接近结尾的位置显示管理 IP 地址](media/avere-vfxt-mgmt-ip.png)
-
-> [!IMPORTANT] 
-> 如果创建了新的 Blob 容器，则可能会使用未在群集外部保存的默认密钥加密该容器。 在将数据存储在该容器上之前，必须下载密钥恢复文件或创建你自己的加密密钥并将其恢复文件保存在永久位置中。 
-> 
-> 如果在未下载恢复文件的情况下使用默认密钥，则在 vFXT 群集损坏或丢失时可能无法访问 Blob 核心文件管理器中的加密数据。
->
-> 如果脚本显示 `WARNING` 消息（如以下屏幕截图中带圆圈的消息），请按照[配置存储](avere-vfxt-add-storage.md)中的说明下载密钥文件或为 Blob 容器创建新密钥。 使用群集配置工具，即 Avere 控制面板。
-
-![脚本的命令行输出显示有关创建新的加密密钥的警告消息](media/avere-vfxt-key-warning.png)
-
 ## <a name="next-step"></a>后续步骤
 
-现在群集正在运行，并且已知道其管理 IP 地址，可以[连接到群集配置工具](avere-vfxt-cluster-gui.md)启用支持，根据需要添加存储，或在新的 Blob 存储上使用默认加密密钥。
+运行群集并知道其管理 IP 地址以后，即可[连接到群集配置工具](avere-vfxt-cluster-gui.md)，以便启用支持、根据需要添加存储，以及自定义其他群集设置。

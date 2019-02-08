@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure Site Recovery 为 VMware 灾难恢复启用 VMware VM 复制 | Microsoft Docs
 description: 本文介绍如何使用 Azure Site Recovery 启用 VMware VM 复制以便灾难恢复到 Azure。
-author: asgang
+author: mayurigupta13
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 1/29/2019
 ms.topic: conceptual
-ms.author: asgang
-ms.openlocfilehash: f160fc5f15ad9ca8994995c34d9eba7ee375c015
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: mayg
+ms.openlocfilehash: 51086b894de7a02ec78302323512c7766dc9f4fb
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424143"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226327"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>为 VMware VM 启用到 Azure 的复制
 
@@ -86,18 +86,20 @@ ms.locfileid: "54424143"
 
 1. 单击“设置” > “复制的项”，然后选择虚拟机。 “概要”页显示有关虚拟机设置和状态的信息。
 2. 在“属性”中，可以查看 VM 的复制和故障转移信息。
-3. 在“计算和网络” > “计算属性”中，可以指定 Azure VM 名称和目标大小。 如有必要，请修改名称使其符合 Azure 要求。
+3. 在“计算和网络” > “计算属性”中，可以更改多个 VM 属性：
+* Azure VM 名称 - 如有必要，请修改名称使其符合 Azure 要求
+* 目标 VM 大小或类型 - 默认 VM 大小是根据源 VM 大小选择的。 在故障转移之前，你随时可以根据需要选择不同的 VM 大小。 请注意，VM 磁盘大小也取决于源磁盘大小，并且它只能在故障转移后进行更改。 详细了解[标准](../virtual-machines/windows/disks-standard-ssd.md#scalability-and-performance-targets)与[高级](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)磁盘大小和 IOPS。
 
     ![“计算和网络”属性](./media/vmware-azure-enable-replication/vmproperties.png)
 
-4.  可以选择虚拟机会在故障转移后成为其中一部分的[资源组](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines)。 在故障转移前，可以随时更改此设置。 故障转移后，如果将虚拟机迁移到其他资源组，则会中断该虚拟机的保护设置。
-5. 如果需要虚拟机在故障转移后成为某个[可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)的一部分，可以选择一个可用性集。 选择可用性集时，请记住：
+*  资源组 - 可以选择虚拟机在故障转移后会成为其中一部分的[资源组](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines)。 在故障转移前，可以随时更改此设置。 故障转移后，如果将虚拟机迁移到其他资源组，则会中断该虚拟机的保护设置。
+* 可用性集 - 如果需要虚拟机在故障转移后成为某个[可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)的一部分，可以选择一个可用性集。 选择可用性集时，请记住：
 
     * 仅会列出属于指定资源组的可用性集。  
     * 具有不同虚拟网络的虚拟机不能属于同一可用性集。
     * 仅大小相同的虚拟机可以属于同一可用性集。
-5. 还可查看和添加有关目标网络、子网和分配给 Azure VM 的 IP 地址的信息。
-6. 在“磁盘”中，可看到要复制的 VM 上的操作系统和数据磁盘。
+4. 还可查看和添加有关目标网络、子网和分配给 Azure VM 的 IP 地址的信息。
+5. 在“磁盘”中，可看到要复制的 VM 上的操作系统和数据磁盘。
 
 ### <a name="configure-networks-and-ip-addresses"></a>配置网络和 IP 地址
 
@@ -120,7 +122,7 @@ Microsoft 软件保障客户可以使用 Azure 混合权益来节省迁移到 Az
 
 ## <a name="common-issues"></a>常见问题
 
-* 每个磁盘的大小应小于 1 TB。
+* 每个磁盘的大小应小于 4 TB。
 * OS 磁盘应是基本磁盘而不是动态磁盘。
 * 对于第 2 代虚拟机/已启用 UEFI 的虚拟机，操作系统系列应是 Windows，并且启动盘应小于 300 GB。
 
@@ -128,4 +130,5 @@ Microsoft 软件保障客户可以使用 Azure 混合权益来节省迁移到 Az
 
 保护完成且虚拟机处于受保护状态后，可以尝试[故障转移](site-recovery-failover.md)，检查应用程序是否出现在 Azure 中。
 
-如果要禁用保护，请了解如何[清理注册和保护设置](site-recovery-manage-registration-and-protection.md)。
+* 若要禁用保护，请了解如何[清理注册和保护设置](site-recovery-manage-registration-and-protection.md)。
+* 了解如何[使用 Powershell 为虚拟机自动执行复制](vmware-azure-disaster-recovery-powershell.md)

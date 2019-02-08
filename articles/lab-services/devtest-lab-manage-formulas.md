@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 47699925f057aab25fe6f7c1c7d0b0620e7e4dbe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 60790f0f31915a50829df09d039a4f74860a47d7
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227988"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076428"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>管理 Azure 开发测试实验室公式
 
@@ -44,39 +44,35 @@ ms.locfileid: "51227988"
 
 3. 从实验室列表，选择所需的实验室。  
 
-4. 在实验室的边栏选项卡上，选择“公式（可重用基项）”。
+4. 在实验室的页面上，选择“公式（可重用基项）”。
    
     ![公式菜单](./media/devtest-lab-create-formulas/lab-settings-formulas.png)
 
-5. 在“公式”边栏选项卡上，选择“+ 添加”。
+5. 在“公式”页面上，选择“+ 添加”。
    
     ![添加公式](./media/devtest-lab-create-formulas/add-formula.png)
 
-6. 在“选择基项”边栏选项卡上，选择要从中创建公式的基项（自定义映像、市场映像或公式）。
+6. 在“选择基项”页面上，选择要从中创建公式的基项（自定义映像、市场映像或公式）。
    
     ![基项列表](./media/devtest-lab-create-formulas/base-list.png)
 
-7. 在“创建公式”边栏选项卡上，指定以下值：
+7. 在“创建公式”页面的“基本设置”选项卡上，指定以下值：
    
     * “公式名称” - 输入公式的名称。 创建 VM 时，此值会显示在基本映像列表中。 在键入该名称时会对其进行验证，如果无效，则会显示一条消息，指出有效名称的要求。
-    * “说明” - 为公式输入有意义的说明。 创建 VM 时，可以从公式上下文菜单中获取此值。
     * “用户名” - 输入被授予管理员权限的用户名。
     * “密码” - 输入或从下拉列表中选择与要用于指定用户的密码相关联的值。 若要了解如何在密钥保管库中保存机密并在创建实验室资源时使用这些机密，请参阅[在 Azure 密钥保管库中存储机密](devtest-lab-store-secrets-in-key-vault.md)。
-    * “虚拟机磁盘类型” - 指定 HDD（硬盘驱动器）或 SSD（固态驱动器）以指明允许将哪种存储磁盘类型用于使用此基本映像预配的虚拟机。
-    * **虚拟机大小** - 选择指定了要创建的 VM 的处理器内核、RAM 大小和硬盘驱动器大小的预定义项之一。 
-    * “项目” - 选择此项会打开“添加项目”边栏选项卡，可以从中选择并配置要添加到基本映像的项目。 有关项目的详细信息，请参阅[创建 Azure 开发测试实验室虚拟机的自定义项目](devtest-lab-artifact-author.md)。
-    * “高级设置” - 选择此项将打开“高级”边栏选项卡，可以在其中配置以下设置：
-        * “虚拟网络” - 指定所需的虚拟网络。
-        * “子网” - 指定所需的子网。    
-        * “IP 地址配置” - 指定希望使用公共、私有还是共享 IP 地址。 有关共享 IP 地址的详细信息，请参阅[了解 Azure 开发测试实验室中的共享 IP 地址](./devtest-lab-shared-ip.md)。
-        * “使此计算机可索取” - 使计算机可“索取”的意思是在创建时不会为其分配所有权。 而是，实验室用户将能够在实验室的边栏选项卡上取得（“索取”）计算机的所有权。     
-    * “映像” - 此字段显示在上一个边栏选项卡上选择的基本映像的名称。 
-     
-       ![创建公式](./media/devtest-lab-create-formulas/create-formula.png)
+    * **VM 大小** - 选择“更改大小”以更改 VM 的大小。 
+    * **项目** - 选择“添加或删除项目”页面，可以从中选择并配置要添加到基本映像的项目。 有关项目的详细信息，请参阅[创建 Azure 开发测试实验室虚拟机的自定义项目](devtest-lab-artifact-author.md)。
+8. 切换到“高级设置”选项卡，并指定以下值：
+    - **虚拟网络** - 若要更改虚拟网络，请选择“更改 VNet”。 
+    - **子网** - 若要更改子网，请选择“更改子网”。 
+    - “IP 地址配置” - 指定希望使用公共、私有还是共享 IP 地址。 有关共享 IP 地址的详细信息，请参阅[了解 Azure 开发测试实验室中的共享 IP 地址](./devtest-lab-shared-ip.md)。
+    - **到期日期和时间** - 指定 VM 的到期日期和时间，以便自动删除 VM。 
+    - “使此计算机可认领” - 使计算机“可认领”的意思是在创建时不会为其分配所有权。 而是，实验室用户将能够在实验室的页面上取得（“索取”）计算机的所有权。     
+    - **可认领实例数** - 指定要创建多少可认领的实例。 
+8. 选择“提交”以创建公式。
 
-8. 选择“创建”来创建公式。
-
-9. 创建公式后，它会显示在“公式”边栏选项卡上的列表中。
+9. 创建公式后，它会显示在“公式”页面上的列表中。
 
 ### <a name="create-a-formula-from-a-vm"></a>从 VM 创建公式
 以下步骤介绍基于现有 VM 创建公式的过程。 
@@ -89,15 +85,15 @@ ms.locfileid: "51227988"
 1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 3. 从实验室列表，选择所需的实验室。  
-4. 在实验室的“概述”边栏选项卡上，选择要从中创建公式的 VM。
+4. 在实验室的“概述”页面上，选择要从中创建公式的 VM。
    
     ![实验室 VM](./media/devtest-lab-create-formulas/my-vms.png)
-5. 在 VM 的边栏选项卡，选择“创建公式（可重用基项）”。
+5. 在 VM 的页面上，选择“创建公式（可重用基项）”。
    
     ![创建公式](./media/devtest-lab-create-formulas/create-formula-menu.png)
-6. 在“创建公式”边栏选项卡，输入新公式的“名称”和“说明”。
+6. 在“创建公式”页面上，输入新公式的“名称”和“说明”。
    
-    ![创建公式边栏选项卡](./media/devtest-lab-create-formulas/create-formula-blade.png)
+    ![“创建公式”页面](./media/devtest-lab-create-formulas/create-formula-blade.png)
 7. 选择“确定”创建公式。
 
 ## <a name="modify-a-formula"></a>修改公式
@@ -106,11 +102,11 @@ ms.locfileid: "51227988"
 1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 3. 从实验室列表，选择所需的实验室。  
-4. 在实验室的边栏选项卡上，选择“公式（可重用基项）”。
+4. 在实验室的页面上，选择“公式（可重用基项）”。
    
     ![公式菜单](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
-5. 在“实验室公式”边栏选项卡上，选择要修改的公式。
-6. 在“更新公式”边栏选项卡上，进行所需的编辑，并选择“更新”。
+5. 在“实验室公式”页面上，选择要修改的公式。
+6. 在“更新公式”页面上，进行所需的编辑，并选择“更新”。
 
 ## <a name="delete-a-formula"></a>删除公式
 若要删除公式，请按照下列步骤操作：
@@ -118,10 +114,10 @@ ms.locfileid: "51227988"
 1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 3. 从实验室列表，选择所需的实验室。  
-4. 在实验室“设置”边栏选项卡上，选择“公式”。
+4. 在实验室“设置”页面上，选择“公式”。
    
     ![公式菜单](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
-5. 在“实验室公式”边栏选项卡上，选择要删除的公式右侧的省略号。
+5. 在“实验室公式”页面上，选择要删除的公式右侧的省略号。
    
     ![公式菜单](./media/devtest-lab-manage-formulas/lab-formulas-blade.png)
 6. 在公式的上下文菜单上，选择“删除”。

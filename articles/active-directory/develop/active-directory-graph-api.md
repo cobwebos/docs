@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: 5471ad74-20b3-44df-a2b5-43cde2c0a045
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 249d5068c38466bf8ac3820449bcf613a15c168a
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: ce1940d0b83e0713ce41d84e8d4bfeff6cb75954
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288809"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075850"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory 图形 API
 
@@ -63,7 +63,7 @@ Azure AD 图形 API 提供以下功能：
 Azure AD 图形 API 可实现许多应用程序方案。 以下方案最常见：
 
 * **业务线（单租户）应用程序**：在此方案中，一个企业开发人员为一个拥有 Office 365 订阅的组织工作。 开发人员将构建与 Azure AD 交互的 Web 应用程序，用于执行将许可证分配给用户等任务。 此任务需要访问 Azure AD 图形 API，因此开发人员在 Azure AD 中注册单租户应用程序，并为 Azure AD 图形 API 配置读取和写入权限。 然后，将应用程序配置为使用其自己的凭据或当前登录用户的凭据来获取调用 Azure AD 图形 API 所需的令牌。
-* **服务型软件应用程序（多租户）**：在此方案中，独立软件供应商 (ISV) 将开发一个托管多租户 Web 应用程序，该应用程序为使用 Azure AD 的其他组织提供用户管理功能。 这些功能需要访问目录对象，因此该应用程序需要调用 Azure AD 图形 API。 开发人员在 Azure AD 中注册该应用程序，将它配置为需要对 Azure AD 图形 API 的读取和写入权限，然后启用了外部访问，这样其他组织便可以同意在其目录中使用该应用程序。 当其他组织中的用户首次向该应用程序进行身份验证时，他们会看到一个同意对话框，该对话框包含应用程序请求的权限。 然后，授予许可将为该应用程序提供对用户目录中的 Azure AD 图形 API 的请求权限。 有关许可框架的详细信息，请参阅[许可框架概述](consent-framework.md)。
+* **“软件即服务”应用程序（多租户）**：在此方案中，独立软件供应商 (ISV) 要开发一个为使用 Azure AD 的其他组织提供用户管理功能的托管多租户 Web 应用程序。 这些功能需要访问目录对象，因此该应用程序需要调用 Azure AD 图形 API。 开发人员在 Azure AD 中注册该应用程序，将它配置为需要对 Azure AD 图形 API 的读取和写入权限，然后启用了外部访问，这样其他组织便可以同意在其目录中使用该应用程序。 当其他组织中的用户首次向该应用程序进行身份验证时，他们会看到一个同意对话框，该对话框包含应用程序请求的权限。 然后，授予许可将为该应用程序提供对用户目录中的 Azure AD 图形 API 的请求权限。 有关许可框架的详细信息，请参阅[许可框架概述](consent-framework.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

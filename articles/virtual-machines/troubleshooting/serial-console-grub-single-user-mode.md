@@ -14,29 +14,34 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: f22e5159acc93d9632c8cd268e24e8f972cbd7dd
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 5029365e665ce3ee9ba65886a3d6d5bbced0ed9a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580138"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103303"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用串行控制台访问 GRUB 和单用户模式
-GRUB 指的是 GRand Unified Bootloader。 从 GRUB 可以修改启动配置以实现启动进入单用户模式等功能。
+GRUB 是指 GRand 统一引导加载程序，它可能是你在启动 VM 时看到的第一个事物。 因为它是在操作系统启动之前显示的，因此无法通过 SSH 进行访问。 从 GRUB 可以修改启动配置以实现启动进入单用户模式等功能。
 
 单用户模式是包含最少量功能的极简环境。 它可用于调查启动问题、文件系统问题或网络问题。 可在后台运行的服务较少，根据具体的运行级别，甚至可以不自动装载文件系统。
 
-在仅将 VM 配置为接受 SSH 密钥登录的情况下，单用户模式也很有用。 在这种情况下，可以使用单用户模式创建具有密码身份验证的帐户。
+在仅将 VM 配置为接受 SSH 密钥登录的情况下，单用户模式也很有用。 在这种情况下，可以使用单用户模式创建具有密码身份验证的帐户。 请注意，串行控制台服务将仅允许具有参与者级别或更高级别访问权限的用户访问 VM 的串行控制台。
 
-若要进入单用户模式，需要在 VM 启动时输入 GRUB，并在 GRUB 中修改启动配置。 这可以使用 VM 串行控制台完成。
+若要进入单用户模式，需要在 VM 启动时进入 GRUB，并在 GRUB 中修改启动配置。 下面介绍了进入 GRUB 的详细说明。 通常，如果你的 VM 已配置为显示 GRUB，则可以使用 VM 串行控制台中的重启按钮来重启 VM 并显示 GRUB。
+
+![Linux 串行控制台重启按钮](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-bar.png)
 
 ## <a name="general-grub-access"></a>常规 GRUB 访问
 若要访问 GRUB，需要重新启动 VM，同时使串行控制台边栏选项卡保持处于打开状态。 某些发行版将需要键盘输入以显示 GRUB，而其他发行版则会自动显示 GRUB 几秒钟，并允许用户键盘输入取消超时。
 
 需要确保 VM 上已启用 GRUB，以便能够访问单用户模式。 根据所用的分发版，可能需要完成一些设置工作才能确保启用 GRUB。 可在下方的[此链接](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)处查看特定于发行版的信息。
 
-### <a name="reboot-your-vm-to-access-grub-in-serial-console"></a>重新启动 VM 以在串行控制台中访问 GRUB
-如果启用了 [SysRq](./serial-console-nmi-sysrq.md)，可以使用 SysRq `'b'` 命令在打开串行控制台边栏选项卡的情况下重新启动 VM，或者单击“概述”边栏选项卡中的“重启”按钮（在新浏览器标签页中打开要重启的 VM，无需关闭串行控制台边栏选项卡）。 按照下面的特定于发行版的说明，了解在重新启动时应该从 GRUB 中得到什么。
+### <a name="restart-your-vm-to-access-grub-in-serial-console"></a>重启 VM 以在串行控制台中访问 GRUB
+可以通过在串行控制台中导航到电源按钮并单击“重启 VM”来重启 VM。 这将发起 VM 重启，你将在 Azure 门户中看到有关重启的通知。
+如果启用了 [SysRq](./serial-console-nmi-sysrq.md)，则还可以使用 SysRq `'b'` 命令来重启 VM。 按照下面的特定于发行版的说明，了解在重新启动时应该从 GRUB 中得到什么。
+
+![Linux 串行控制台重启](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-ubuntu.gif)
 
 ## <a name="general-single-user-mode-access"></a>常规单用户模式访问
 在未配置具有密码身份验证的帐户的情况下，可能需要手动访问单用户模式。 需要修改 GRUB 配置以手动进入单用户模式。 完成此操作后，请参阅[使用单用户模式重置或添加密码](#-Use-Single-User-Mode-to-reset-or-add-a-password)以获取进一步说明。

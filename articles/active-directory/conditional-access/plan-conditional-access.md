@@ -6,18 +6,18 @@ author: MarkusVi
 manager: daveba
 tags: azuread
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/13/2018
+ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: martincoetzer
-ms.openlocfilehash: 1911dd189e21a6d29b2bf1ba3d179b41e948f469
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: ca0dfcd9b776b6aea052e2569f9a5aec3ae50eca
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450501"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081018"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>如何：规划 Azure Active Directory 中的条件访问部署
 
@@ -54,9 +54,9 @@ ms.locfileid: "54450501"
 
 |发生这种情况时：|这样做：|
 |-|-|
-|尝试访问：<br>- 访问云应用<br>- 由用户和组<br>使用：<br>- 条件 1（例如，外部企业网络）<br>- 条件 2（例如，登录风险）|阻止访问应用程序|
-|尝试访问：<br>- 访问云应用<br>- 由用户和组<br>使用：<br>- 条件 1（例如，外部企业网络）<br>- 条件 2（例如，登录风险）|使用 (AND) 授予访问权限：<br>- 要求 1（例如，MFA）<br>- 要求 2（例如，设备合规性）|
-|尝试访问：<br>- 访问云应用<br>- 由用户和组<br>使用：<br>- 条件 1（例如，外部企业网络）<br>- 条件 2（例如，登录风险）|使用 (OR) 授予访问权限：<br>- 要求 1（例如，MFA）<br>- 要求 2（例如，设备合规性）|
+|尝试访问：<br>- 访问云应用<br>- 由用户和组<br>使用：<br>- 条件 1（例如，外部企业网络）<br>- 条件 2（例如，设备平台）|阻止访问应用程序|
+|尝试访问：<br>- 访问云应用<br>- 由用户和组<br>使用：<br>- 条件 1（例如，外部企业网络）<br>- 条件 2（例如，设备平台）|使用 (AND) 授予访问权限：<br>- 要求 1（例如，MFA）<br>- 要求 2（例如，设备合规性）|
+|尝试访问：<br>- 访问云应用<br>- 由用户和组<br>使用：<br>- 条件 1（例如，外部企业网络）<br>- 条件 2（例如，设备平台）|使用 (OR) 授予访问权限：<br>- 要求 1（例如，MFA）<br>- 要求 2（例如，设备合规性）|
 
 “发生这种情况时”最起码要定义尝试访问云应用（“什么”）的主体（“谁”）。 如果需要，还可以包含访问尝试是“如何”执行的。 在条件访问中，定义“谁”、“什么”和“如何”的要素称为条件。 有关详细信息，请参阅 [Azure Active Directory 条件访问中的条件是什么？](conditions.md) 
 
@@ -70,28 +70,42 @@ ms.locfileid: "54450501"
 
 有关详细信息，请参阅[需要满足哪些要求才能让策略起作用](best-practices.md#whats-required-to-make-a-policy-work)。
 
-现在，可以确定策略的命名标准。 命名标准有助于查找策略及了解其用途，而无需在 Azure 管理门户中将其打开。 策略的命名应该显示：
+现在，可以决定策略的命名标准。 命名标准有助于查找策略及了解其用途，而无需在 Azure 管理门户中将其打开。 策略的命名应该显示：
 
 - 序列号
 - 策略应用到的云应用
 - 响应
 - 策略对谁应用
-- 策略何时应用 
+- 何时应用（如果适用）
  
 ![命名标准](./media/plan-conditional-access/11.png)
 
-
+虽然描述性名称有助于概述你的条件访问实现，但如果需要在对话中引用策略，则序列号非常有用。 例如，如果你在电话中与伙伴管理员进行交谈，可以要求他打开策略 EM063 来解决问题。
 
 
 
 例如，以下名称指出，策略要求外部网络中使用 Dynamics CRP 应用的营销用户执行 MFA：
 
-`CA01-Dynamics CRP: Require MFA For marketing When on external networks`
+`CA01 - Dynamics CRP: Require MFA For marketing When on external networks`
 
 
-除了活动策略以外，还应该实施[在服务中断/紧急情况下充当辅助性的弹性访问控制措施](../authentication/concept-resilient-controls.md)的已禁用策略。 命名标准也应包含此用途，以便在服务中断期间更轻松地启用这些策略。 例如：
+除了活动策略以外，还建议实现[在服务中断/紧急情况下充当辅助性的弹性访问控制措施](../authentication/concept-resilient-controls.md)的已禁用策略。 应急策略的命名标准应当包括更多的一些项： 
 
-`EM01-Finance app: Require MFA For Sales When on untrusted network`
+- `ENABLE IN EMERGENCY` 在开始时使名称在其他策略中脱颖而出。
+
+- 它应当应用于的中断的名称。
+
+- 一个排序序列号，可以帮助管理员了解应当以何顺序启用策略。 
+
+
+例如，以下名称表示此策略是发生 MFA 中断时应当启用的四个策略中的第一个策略：
+
+`EM01 - ENABLE IN EMERGENCY, MFA Disruption[1/4] - Exchange SharePoint: Require hybrid Azure AD join For VIP users`
+
+
+
+
+
 
 
 ## <a name="plan-policies"></a>规划策略
@@ -118,7 +132,7 @@ ms.locfileid: "54450501"
 
 - [管理员的访问](baseline-protection.md#require-mfa-for-admins)
 - [访问特定的应用](app-based-mfa.md) 
-- [从不信任的网络位置访问](untrusted-networks.md)。
+- [从你不信任的网络位置访问](untrusted-networks.md)。
 
 
 ### <a name="respond-to-potentially-compromised-accounts"></a>响应可能已泄密的帐户
@@ -232,7 +246,7 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 ## <a name="move-to-production"></a>移到生产环境
 
-做好将新策略部署到环境中的准备以后，应分阶段进行部署：
+当新策略针对你的环境准备就绪后，分阶段部署它们：
 
 - 向最终用户提供内部变更通知。
 

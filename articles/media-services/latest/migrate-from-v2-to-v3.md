@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 12/18/2018
+ms.date: 01/24/2019
 ms.author: juliako
-ms.openlocfilehash: 017de43074d4b68c69526ddcc96f98ae826dcd65
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ec40de04f46d0be8f40c2223346f17d288eb580c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808725"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104059"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>有关从媒体服务 v2 迁移到 v3 的指导
 
@@ -35,7 +35,7 @@ ms.locfileid: "54808725"
 
 ### <a name="api-is-more-approachable"></a>API 更便于访问
 
-*  v3 基于一个统一的 API 接口，该接口公开了基于 Azure 资源管理器构建的管理和操作功能。 Azure 资源管理器模板可用于创建和部署转换、流式处理终结点、直播事件等等。
+*  v3 基于一个统一的 API 接口，该接口公开了基于 Azure 资源管理器构建的管理和操作功能。 Azure 资源管理器模板可用于创建和部署转换、流式处理终结点、实时事件等等。
 * [开放的 API（又称为 Swagger）规范](https://aka.ms/ams-v3-rest-sdk)文档。
     公开所有服务组件的架构，包括基于文件的编码。
 * 适用于 [.NET](https://aka.ms/ams-v3-dotnet-ref)、.NET Core、[Node.js](https://aka.ms/ams-v3-nodejs-ref)、[Python](https://aka.ms/ams-v3-python-ref)、[Java](https://aka.ms/ams-v3-java-ref)、[Go](https://aka.ms/ams-v3-go-ref) 和 Ruby 的 SDK。
@@ -45,14 +45,14 @@ ms.locfileid: "54808725"
 
 * 对于基于文件的作业处理，可以使用 HTTP(S) URL 作为输入。<br/>无需事先在 Azure 中存储内容，无需创建资产。
 * 为基于文件的作业处理引入了[转换](transforms-jobs-concept.md)的概念。 使用转换可以生成可重用的配置、创建 Azure 资源管理器模板，并隔离多个客户或租户之间的处理设置。
-* 一个资产可以有[多个 StreamingLocator](streaming-locators-concept.md)，其中每个 StreamingLocator 有不同的动态打包和动态加密设置。
+* 一个资产可以有多个[流式处理定位符](streaming-locators-concept.md)，其中每个流式处理定位符有不同的动态打包和动态加密设置。
 * [内容保护](content-key-policy-concept.md)支持多密钥功能。
 * 使用媒体服务将单比特率贡献源转码为具有多比特率的输出流时，可以流式传输最长 24 小时的实时事件。
-* LiveEvent 支持新的低延迟实时传送视频流。 有关详细信息，请参阅[延迟](live-event-latency.md)。
-* LiveEvent 预览版支持动态打包和动态加密。 这样，用户便可以使用预览版中的内容保护以及 DASH 和 HLS 打包。
-* 与 v2 API 中的 Program 实体相比，LiveOutput 更易于使用。 
+* 实时事件支持新的低延迟实时传送视频流。 有关详细信息，请参阅[延迟](live-event-latency.md)。
+* 实时事件预览版支持动态打包和动态加密。 这样，用户便可以使用预览版中的内容保护以及 DASH 和 HLS 打包。
+* 与 v2 API 中的节目实体相比，实时输出更易于使用。 
 * 改进的 RTMP 支持（提高了稳定性并提供了更多的源编码器支持）。
-* RTMPS 安全引入。<br/>创建 LiveEvent 时，将获得 4 个引入 URL。 这 4 个引入 URL 几乎是相同的，具有相同的流式处理令牌 (AppId)，仅端口号部分不同。 其中两个 URL 是 RTMPS 的主要和备份 URL。   
+* RTMPS 安全引入。<br/>创建实时事件时，将获得 4 个引入 URL。 这 4 个引入 URL 几乎是相同的，具有相同的流式处理令牌 (AppId)，仅端口号部分不同。 其中两个 URL 是 RTMPS 的主要和备份 URL。   
 * 可对实体使用基于角色的访问控制 (RBAC)。 
 
 ## <a name="changes-from-v2"></a>自 v2 以来的更改
@@ -64,14 +64,14 @@ ms.locfileid: "54808725"
 * 在 v3 API 中，所有编码比特率以“比特/秒”为单位。 这与 v2 Media Encoder Standard 预设不同。 例如，v2 中的比特率指定为 128 (kbps)，而在 v3 中，则指定 128000（比特/秒）。 
 * v3 中不存在实体 AssetFile、AccessPolicy 和 Ingestmanifest。
 * v3 中不存在 IAsset.ParentAssets 属性。
-* 现在，Contentkey 不再是实体，而是 StreamingLocator 的一个属性。
+* 现在，Contentkey 不再是实体，而是流式处理定位符的一个属性。
 * 事件网格支持替换 NotificationEndpoint。
 * 以下实体已重命名
-    * JobOutput 取代了 Task，现在属于作业的一部分。
-    * StreamingLocator 替换了 Locator。
-    * LiveEvent 替换了 Channel。<br/>LiveEvent 计费基于直播频道指标。 有关详细信息，请参阅[实时传送视频流](live-streaming-overview.md#billing)和[定价](https://azure.microsoft.com/pricing/details/media-services/)。
-    * LiveOutput 替换了 Program。
-* LiveOutput 无需显式启动，它们在创建时启动，在删除时停止。 v2 API 中的节目以不同的方式工作，它们必须在创建后启动。
+    * 作业输出取代了任务，现在是作业的一部分。
+    * 流式处理定位符取代了定位符。
+    * 实时事件取代了频道。<br/>实时事件计费基于实时频道计量器。 有关详细信息，请参阅[计费](live-event-states-billing.md)和[定价](https://azure.microsoft.com/pricing/details/media-services/)。
+    * 实时输出取代了节目。
+* 实时输出无需显式启动，它们在创建时启动，在删除时停止。 v2 API 中的节目以不同的方式工作，它们必须在创建后启动。
 
 ## <a name="feature-gaps-with-respect-to-v2-apis"></a>与 v2 API 之间的功能差距
 
@@ -84,7 +84,7 @@ ms.locfileid: "54808725"
     * 叠加
     * 裁剪
     * 缩略图子画面
-* 包含转码的 LiveEvent 目前不支持静态图像插入中间流，以及通过 API 调用执行的广告标记插入。 
+* 包含转码的实时事件目前不支持静态图像插入中间流，以及通过 API 调用执行的广告标记插入。 
 
 > [!NOTE]
 > 请将本文加入书签，并不时地查看最新信息。
@@ -97,7 +97,7 @@ ms.locfileid: "54808725"
 |---|---|---|
 |创建资产并上传文件 |[v2 .NET 示例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |提交作业|[v2 .NET 示例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>演示如何先创建转换，再提交作业。|
-|发布使用 AES 加密的资产 |1.创建 ContentKeyAuthorizationPolicyOption<br/>2.创建 ContentKeyAuthorizationPolicy<br/>3.创建 AssetDeliveryPolicy<br/>4.创建资产并上传内容或提交作业并使用输出资产<br/>5.将 AssetDeliveryPolicy 与 Asset 关联<br/>6.创建 ContentKey<br/>7.将 ContentKey 附加到 Asset<br/>8.创建 AccessPolicy<br/>9.创建 Locator<br/><br/>[v2 .NET 示例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1.创建内容密钥策略<br/>2.创建 Asset<br/>3.上传内容或将 Asset 用作 JobOutput<br/>4.创建 StreamingLocator<br/><br/>[v3 .NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
+|发布使用 AES 加密的资产 |1.创建 ContentKeyAuthorizationPolicyOption<br/>2.创建 ContentKeyAuthorizationPolicy<br/>3.创建 AssetDeliveryPolicy<br/>4.创建资产并上传内容或提交作业并使用输出资产<br/>5.将 AssetDeliveryPolicy 与 Asset 关联<br/>6.创建 ContentKey<br/>7.将 ContentKey 附加到 Asset<br/>8.创建 AccessPolicy<br/>9.创建 Locator<br/><br/>[v2 .NET 示例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1.创建内容密钥策略<br/>2.创建 Asset<br/>3.上传内容或将 Asset 用作 JobOutput<br/>4.创建流式处理定位符<br/><br/>[v3 .NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
 
 ## <a name="known-issues"></a>已知问题
 
@@ -106,7 +106,7 @@ ms.locfileid: "54808725"
 * 无法使用 v2 API 来管理通过 v3 API 创建的媒体服务实体。  
 * 不建议使用 v3 API 来管理通过 v2 API 创建的实体。 下面是会导致两个版本中的实体不兼容的差异示例：   
     * 在 v2 中创建作业和任务不会在 v3 中显示，因为它们不与转换相关联。 建议切换到 v3 转换和作业。 在切换过程中，需要花费一段相对较短的时间来监视即时 v2 作业。
-    * 无法持续使用 v3 来管理通过 v2 创建的频道和节目（将映射到 v3 中的 LiveEvent 和 LiveOutput）。 建议是停止频道后的方便时间，切换到 v3 LiveEvent 和 LiveOutput。<br/>目前，无法持续迁移正在运行的频道。  
+    * 无法持续使用 v3 来管理通过 v2 创建的频道和节目（映射到 v3 中的实时事件和实时输出）。 建议在方便停止频道时切换到 v3 实时事件和实时输出。<br/>目前，无法持续迁移正在运行的频道。  
 
 > [!NOTE]
 > 在媒体服务团队不断改进 v3 API 并解决版本差距的过程中，本页面会得到维护。

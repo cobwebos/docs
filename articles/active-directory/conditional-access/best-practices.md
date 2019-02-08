@@ -9,20 +9,20 @@ manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/23/2018
+ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 62bb9b6b4b0edd9e45b317c3c4e18872bae2eec4
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 8324b7bf97325c295fdf95819cc2b22fb0f3c14e
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452830"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078944"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中条件性访问的最佳实践
 
@@ -47,14 +47,32 @@ ms.locfileid: "54452830"
 
 |对象           | 方式                                  | Why|
 |:--            | :--                                  | :-- |
-|云应用 |需要选择一个或多个应用。  | 条件访问策略的目标是使你能够控制已授权用户访问云应用的方式。|
-| 用户和组 | 需要选择至少一个已经授权的用户或组来访问所选云应用。 | 未在其中分配任何用户和组的条件性访问策略永远不会触发。 |
-| 访问控制 | 需要至少选择一个访问控制。 | 策略处理器需要知道条件满足时需要执行的操作。|
+|云应用 |选择一个或多个应用。  | 条件访问策略的目标是使你能够控制已授权用户访问云应用的方式。|
+| 用户和组 | 至少选择一个已经授权的用户或组来访问所选云应用。 | 未在其中分配任何用户和组的条件性访问策略永远不会触发。 |
+| 访问控制 | 至少选择一个访问控制。 | 策略处理器需要知道条件满足时需要执行的操作。|
 
 
 
 
 ## <a name="what-you-should-know"></a>要点
+
+
+
+### <a name="how-are-conditional-access-policies-applied"></a>条件访问策略是如何应用的？
+
+访问云应用时，可能会应用多个条件访问策略。 在这种情况下，必须满足所应用的所有策略。 例如，如果一个策略需要 MFA，并且另一个策略需要符合标准的设备，则你必须通过 MFA 并使用符合标准的设备。 
+
+所有策略都是在两个阶段中强制实施的：
+
+- 在**第一个**阶段中，将对所有策略进行评估并收集不满足的所有访问控制。 
+
+- 在**第二个**阶段中，将提示你去满足尚未满足的要求。 如果其中一个策略阻止访问，则会阻止你并且不会提示你去满足其他策略控制。 如果没有策略阻止你，则会提示你按以下顺序满足其他策略控制：
+
+    ![顺序](./media/best-practices/06.png)
+    
+    然后是外部 MFA 提供程序和使用条款。
+
+
 
 ### <a name="how-are-assignments-evaluated"></a>如何计算分配？
 
@@ -70,7 +88,7 @@ ms.locfileid: "54452830"
 
 如果你因为条件性访问策略中的设置不正确而被锁定在 Azure AD 门户之外，则请执行以下操作：
 
-- 验证组织中是否有其他管理员尚未被阻止。 具有 Azure 门户访问权限的管理员可以禁用影响你登录的策略。 
+- 检查组织中是否有其他管理员尚未被阻止。 具有 Azure 门户访问权限的管理员可以禁用影响你登录的策略。 
 
 - 如果组织中没有管理员可以更新策略，则需提交支持请求。 Microsoft 支持人员可以审核并更新妨碍访问的条件性访问策略。
 
@@ -122,13 +140,13 @@ ms.locfileid: "54452830"
 
 第一步，应使用[假设状况法](what-if-tool.md)对策略进行评估。
 
-做好将新策略部署到环境中的准备以后，应分阶段进行部署：
+当新策略针对你的环境准备就绪后，分阶段部署它们：
 
 1. 对一小组用户应用策略，验证策略的表现是否符合预期。 
 
-2.  将策略的范围扩大，使之包括更多用户时，继续将所有管理员排除在策略之外。 这样是为了确保在需要更改的情况下，管理员仍然可以访问并对策略进行更新。
+2.  当扩展策略以包括更多用户时， 继续从策略中排除所有管理员，以确保在需要进行更改时他们仍然具有访问权限且可以更新策略。
 
-3. 将策略应用到所有用户的前提是确实需要这样做。 
+3. 仅当必要时，才将策略应用于所有用户。 
 
 最佳做法是创建一个符合以下条件的用户帐户：
 
@@ -154,4 +172,7 @@ ms.locfileid: "54452830"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](app-based-mfa.md)。
+如果希望了解：
+
+- 如何配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](app-based-mfa.md)。
+- 如何规划条件访问策略，请参阅[如何在 Azure Active Directory 中规划条件访问部署](plan-conditional-access.md)。

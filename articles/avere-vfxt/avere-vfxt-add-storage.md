@@ -4,29 +4,23 @@ description: 如何为 Avere vFXT for Azure 添加后端存储系统
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: procedural
-ms.date: 10/31/2018
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: a7036f6fbab771dc090e97034a6191cf82b707a7
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 13084ac21315d725df3f0913583fff3e64ee5c4a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190815"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813222"
 ---
 # <a name="configure-storage"></a>配置存储
 
 本步骤为 vFXT 群集设置后端存储系统。
 
 > [!TIP]
-> 如果使用了 `create-cloudbacked-cluster` 原型脚本与 Avere vFXT 群集一起创建新的 Blob 容器，则该容器已进行了设置并可供使用，无需添加存储。
->
-> 但是，如果使用默认加密密钥加密了新的 Blob 容器，则必须从群集中下载密钥恢复文件或者在存储数据前使用新密钥替换默认密钥。 默认密钥仅保存在群集中，而如果群集丢失或变得不可用，就无法检索默认密钥。
->
-> 连接到 Avere 控制面板后，单击“设置”，然后选择“核心文件管理器” > “云加密设置”。 在“本地密钥存储”部分中，选择以下选项之一： 
-> * 使用“重新下载恢复文件”按钮获取现有密钥的恢复文件。 恢复文件是使用群集管理密码加密的。 请务必将文件保存在可靠的位置。 
-> * 按照页面“生成新主密钥”部分的说明，新建一个由你控制的加密密钥。 此选项可用于指定唯一的密码，并且它要求你上传并重新下载恢复文件以验证密码文件对。
+> 如果随 Avere vFXT 群集创建了新的 Blob 容器，则该容器已进行了设置并可供使用，无需添加存储。
 
-如果为群集使用了 `create-minimal-cluster` 原型脚本，或者想要添加其他硬件或基于云的存储系统，请按照这些说明进行操作。
+如果没有随群集创建新的 Blob 容器，或者想要添加其他硬件或基于云的存储系统，请按照这些说明进行操作。
 
 有两个主要任务：
 
@@ -43,12 +37,11 @@ ms.locfileid: "54190815"
 要添加核心文件管理器，请选择以下两种主要类型的核心文件管理器之一：
 
   * [NAS 核心文件管理器](#nas-core-filer) - 介绍如何添加 NAS 核心文件管理器 
-  * [Azure 存储帐户云核心文件管理器](#azure-storage-account-cloud-core-filer) - 介绍如何将 Azure 存储帐户添加为云核心文件管理器
+  * [Azure 存储云核心文件管理器](#azure-storage-cloud-core-filer) - 介绍如何将 Azure 存储帐户添加为云核心文件管理器
 
 ### <a name="nas-core-filer"></a>NAS 核心文件管理器
 
-NAS 核心文件管理器可以是本地 NetApp 或 Isilon，也可以是云中的 NAS 终结点。  
-存储系统必须与 Avere vFXT 群集具有可靠的高速连接 - 例如，1GBps ExpressRoute 连接（非 VPN） - 并且它必须为群集根提供对正在使用的 NAS 导出的访问权限。
+NAS 核心文件管理器可以是本地 NetApp 或 Isilon，也可以是云中的 NAS 终结点。 存储系统必须与 Avere vFXT 群集具有可靠的高速连接 - 例如，1GBps ExpressRoute 连接（非 VPN） - 并且它必须为群集根提供对正在使用的 NAS 导出的访问权限。
 
 执行以下步骤添加 NAS 核心文件管理器：
 
@@ -79,7 +72,7 @@ NAS 核心文件管理器可以是本地 NetApp 或 Isilon，也可以是云中�
 要将 Azure Blob 存储用作 vFXT 群集的后端存储，需要将一个空容器添加为核心文件管理器。
 
 > [!TIP] 
-> ``create-cloudbacked-cluster``示例脚本创建一个存储容器，将其定义为核心文件服务器，并在 vFXT 群集创建过程中创建命名空间交接点。 ``create-minimal-cluster`` 示例脚本不会创建 Azure 存储容器。 为避免在创建群集后创建和配置 Azure 存储核心文件管理器，请使用 ``create-cloudbacked-cluster`` 脚本部署 vFXT 群集。
+> 如果你选择在创建 Avere vFXT 群集的同时创建 blob 容器，则在创建 vFXT 群集的过程中，部署模板或脚本将创建一个存储容器，将其定义为核心文件管理器，并创建命名空间交接点。 
 
 将 Blob 存储添加到群集需要执行以下任务：
 

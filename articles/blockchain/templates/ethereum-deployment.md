@@ -5,23 +5,23 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/29/2018
+ms.date: 01/28/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: 16bf68a5fdb1df2a4f60de9167893a42295cbc52
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 266e2be2775a6f9b74c714bd9112e38837bb6a6c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260527"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098332"
 ---
 # <a name="ethereum-proof-of-work-consortium-solution-template"></a>Ethereum 工作量证明联盟解决方案模板
 
 Ethereum 工作流证明联盟解决方案模板旨在利用最少的 Azure 和 Ethereum 知识使部署和配置多成员联盟 Ethereum 网络变得更加轻松、快捷。
 
-通过 Azure 门户中的少量用户输入和一键式部署，每个成员都可以使用全球范围内的 Microsoft Azure 计算、网络和存储服务来设置其网络内存占用。 每个成员的网络内存占用由一组负载均衡事务节点（应用程序或用户可以通过它们交互来提交事务）、一组记录事务的挖掘节点以及一个 VPN 网关组成。 随后的连接步骤连接网关以创建完全配置的多成员区块链网络。
+使用 Azure 资源管理器模板，每个成员都可以使用 Microsoft Azure 计算、网络和存储服务预配其网络占用情况。 每个成员的网络内存占用由一组负载均衡事务节点（应用程序或用户与其进行交互来提交事务）、一组记录事务的挖掘节点以及一个 VPN 网关组成。 在部署后，你将连接网关来创建完全配置的多成员区块链网络。
 
 ## <a name="about-blockchain"></a>关于区块链
 
@@ -45,11 +45,11 @@ Ethereum 工作流证明联盟解决方案模板旨在利用最少的 Azure 和 
 
 ### <a name="log-analytics-details"></a>Log Analytics 详细信息
 
-每个部署还会创建一个新的 Log Analytics 实例或可以加入现有实例。 该操作允许监视组成部署网络的每个虚拟机的各种性能指标。
+每个部署还会创建一个新的 Log Analytics 实例，也可以加入现有实例。 Log Analytics 允许监视组成部署网络的每个虚拟机的各种性能指标。
 
 ## <a name="deployment-architecture"></a>部署体系结构
 
-### <a name="description"></a>Description
+### <a name="description"></a>说明
 
 此解决方案模板可以部署单个或多个基于区域的多成员 Ethereum 联盟网络。 每个区域的虚拟网络使用 VNET 网关和连接资源以链形拓扑连接到其他区域。 它还设置了一个注册器，其中包含每个区域内部署的所有挖掘程序和事务节点所需的信息。
 
@@ -88,11 +88,9 @@ SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell �
 资源组| 部署联盟网络的资源组。||NA
 位置| 资源组的 Azure 区域。 ||NA
 
-
-
 ### <a name="operations-management-suite"></a>Operations Management Suite
 
-Operations Management Suite (OMS) 边栏选项卡允许你为网络配置 OMS 资源。 OMS 将从网络收集并显示有用的指标和日志，从而提供快速检查网络运行状况或调试问题的功能。 一旦达到容量，OMS 的免费产品将失败。
+Operations Management Suite (OMS) 允许你为网络配置 OMS 资源。 OMS 将从网络收集并显示有用的指标和日志，从而提供快速检查网络运行状况或调试问题的功能。 一旦达到容量，OMS 的免费产品将失败。
 
 ![新建 OMS](./media/ethereum-deployment/new-oms.png)
 
@@ -143,8 +141,8 @@ Operations Management Suite (OMS) 边栏选项卡允许你为网络配置 OMS �
 ConsortiumMember ID|与参与联盟网络的每个成员相关联的 ID，用于配置 IP 地址空间以避免冲突。 <br /><br />成员 ID 在同一网络中的不同组织之间应该是唯一的。 即使同一个组织部署到多个区域，也需要一个唯一的成员 ID。<br /><br />记下此参数的值，因为你需要与其他加入成员共享它。|0 - 255
 Ethereum 网络 ID|要部署的 Ethereum 联盟网络的网络 ID。 每个 Ethereum 网络都有自己的网络 ID，其中 1 是公共网络的 ID。 尽管挖掘节点的网络访问受到限制，但我们仍建议使用大量挖掘节点来防止冲突。|5 - 999,999,999| 10101010
 自定义起源块|自动生成起源块或提供自定义块的选项。|Yes/No| 否
-Ethereum 帐户密码（自定义起源块 = 否）|用于保护导入到每个节点的 Ethereum 帐户的管理员密码。 密码必须包含以下内容：1 个大写字符、1 个小写字符和 1 个数字。|12 个字符或更多|NA
-Ethereum 私钥密码（自定义起源块 = 否）|用于生成与生成的默认 Ethereum 帐户关联的 ECC 私钥的密码。 预生成的私钥不需要显式传入。<br /><br />考虑使用具有足够随机性的密码，以确保私钥强度强，并且不会与其他联盟成员重叠。 密码必须至少包含以下内容：1 个大写字符、1 个小写字符和 1 个数字。<br /><br />请注意，如果两个成员使用相同的密码，则所生成的帐户将相同。 如果单个组织试图跨区域部署并希望跨所有节点共享一个帐户 (coin base)，则相同的密码会很有用。|12 个字符或更多|NA
+Ethereum 帐户密码（自定义起源块 = 否）|用于保护导入到每个节点的 Ethereum 帐户的管理员密码。 密码必须包含：1 个大写字符、1 个小写字符和 1 个数字。|12 个字符或更多|NA
+Ethereum 私钥密码（自定义起源块 = 否）|用于生成与生成的默认 Ethereum 帐户关联的 ECC 私钥的密码。 预生成的私钥不需要显式传入。<br /><br />考虑使用具有足够随机性的密码，以确保私钥强度强，并且不会与其他联盟成员重叠。 密码必须至少包含：1 个大写字符、1 个小写字符和 1 个数字。<br /><br />请注意，如果两个成员使用相同的密码，则所生成的帐户将相同。 如果单个组织试图跨区域部署并希望跨所有节点共享一个帐户 (coin base)，则相同的密码会很有用。|12 个字符或更多|NA
 起源块（自定义起源块 = 是）|表示自定义起源块的 JSON 字符串。 你可以在自定义网络下找到有关起源块格式的详细信息。<br /><br />Ethereum 帐户仍在提供自定义起源块时创建。 考虑在起源块中指定一个预先配置好的 Ethereum 帐户，以便无需等待挖掘。|有效的 JSON |NA
 用于连接的共享密钥|用于 VNET 网关之间连接的共享密钥。| 12 个字符或更多|NA
 联盟数据 URL|指向由其他成员的部署提供的相关联盟配置数据的 URL。 <br /><br />此信息由已进行部署的已连接成员提供。 如果你部署了网络的其余部分，则 URL 是模板部署输出，名为 CONSORTIUM-DATA。||NA
@@ -154,7 +152,7 @@ Ethereum 私钥密码（自定义起源块 = 否）|用于生成与生成的默�
 
 ### <a name="summary"></a>摘要
 
-单击“摘要”边栏选项卡查看指定的输入并运行基本的部署前验证。
+单击“摘要”以查看指定的输入并运行基本的部署前验证。
 
 ![摘要](./media/ethereum-deployment/summary.png)
 
