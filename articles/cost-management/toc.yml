@@ -23,10 +23,14 @@ items:
     items:
     - name: Azure 成本管理最佳做法
       href: cost-mgt-best-practices.md
+    - name: 了解成本管理数据
+      href: understand-cost-mgt-data.md
   - name: 操作指南
     items:
     - name: 向数据分配访问权限
       href: assign-access-acm-data.md
+    - name: 使用成本警报
+      href: cost-mgt-alerts-monitor-usage-spending.md
   - name: 引用
     items:
     - name: Azure 成本管理 REST API
@@ -109,9 +113,9 @@ items:
         href: cost-mgt-faq.md
       - name: 联系 Cloudyn 支持人员
         href: support-request-cost-management.md
-ms.openlocfilehash: 3e37e0d145b50326b8c7f878216ead0bc4a665e3
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: ae9155548a839db18fc80f40c12e5264643cea9d
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120387"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769009"

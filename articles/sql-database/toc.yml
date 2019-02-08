@@ -191,6 +191,8 @@ items:
       href: sql-database-automated-backups.md
     - name: 长期备份保留
       href: sql-database-long-term-retention.md
+    - name: 计划内维护事件
+      href: sql-database-planned-maintenance.md
     - name: 故障转移组和异地复制
       items:
       - name: 活动异地复制
@@ -295,8 +297,6 @@ items:
       href: sql-database-elastic-query-overview.md
     - name: 弹性事务
       href: sql-database-elastic-transactions-overview.md
-  - name: SQL 功能比较
-    href: sql-database-features.md
   - name: 监视和优化
     items:
     - name: 监视和优化概述
@@ -321,24 +321,28 @@ items:
         href: sql-database-performance.md
       - name: 数据库顾问性能建议
         href: sql-database-advisor.md
-  - name: 加载和移动数据
-    items:
-    - name: SQL 数据同步
-      href: sql-database-sync-data.md
-    - name: 事务复制
-      href: sql-database-managed-instance-transactional-replication.md
   - name: 数据库功能
     items:
-    - name: 数据库功能
-      href: sql-database-develop-overview.md
+    - name: SQL 功能比较
+      href: sql-database-features.md
     - name: 多模型功能
       href: sql-database-multi-model-features.md
     - name: 内存中
       href: sql-database-in-memory.md
+    - name: 事务复制
+      href: sql-database-managed-instance-transactional-replication.md
+    - name: SQL 数据同步
+      href: sql-database-sync-data.md
     - name: 临时表
       href: sql-database-temporal-tables.md
     - name: 作业自动化
       href: sql-database-job-automation-overview.md
+    - name: 机器学习
+      items:
+      - name: 机器学习概述
+        href: sql-database-machine-learning-services-overview.md
+      - name: 主要区别
+        href: sql-database-machine-learning-services-differences.md
 - name: 操作指南
   items:
   - name: 概述
@@ -523,8 +527,8 @@ items:
       href: sql-database-manage-automation.md
   - name: 开发应用
     items:
-    - name: 连接
-      href: sql-database-libraries.md
+    - name: 概述
+      href: sql-database-develop-overview.md
     - name: 处理 JSON 数据
       href: sql-database-json-features.md
     - name: 使用 Spark 连接器
@@ -712,9 +716,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: 卸载弹性作业（已弃用）
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 9a04e463a7324b1021594a8fbefc5988ad8471f2
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 1b32688e6e9ed6b826dd9191c8d58e85b1b2b128
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756727"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813665"

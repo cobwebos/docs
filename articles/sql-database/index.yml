@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7a6372f90cde75cb3314a049de41a4826510bd3f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 437ab5fe8eec2a7c097805f3328df4dd9a2398c6
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752239"
+ms.locfileid: "55769942"
 documentType: LandingData
 title: Azure SQL 数据库文档
 metadata:
@@ -110,18 +110,18 @@ sections:
       - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
       - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
       - href: https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create
-    - title: 创建托管实例
-      values:
-      - href: /azure/sql-database/sql-database-managed-instance-get-started
-      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/
-      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet
     - title: 创建弹性池
       values:
       - href: /azure/sql-database/sql-database-elastic-pool-manage
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
       - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create
+    - title: 创建托管实例
+      values:
+      - href: /azure/sql-database/sql-database-managed-instance-get-started
+      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/
+      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet
 - title: 分步教程
   items:
   - type: paragraph
@@ -129,9 +129,9 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: 借助我们的快速入门指南，开始使用<a href="/azure/sql-database/sql-database-quickstart-guide">单一实例数据库</a>和<a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">托管实例</a>。
+    - html: 借助我们的快速入门指南，开始使用<a href="/azure/sql-database/sql-database-single-database-quickstart-guide">单一数据库</a>和<a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">托管实例</a>。
     - html: 使用 <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> 或 <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> 创建和设计新单一数据库的架构
-    - html: 使用<a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">数据库还原</a>、<a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">数据库迁移助手</a>或 <a href="/azure/sql-database/sql-database-import">BACPAC 导入</a>将现有数据库迁移到 Azure
+    - html: 使用<a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">本机 SQL Server 备份文件</a>、<a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">数据库迁移助手</a>或<a href="/azure/sql-database/sql-database-import">通过导入 BACPAC 文件</a>将现有数据库迁移到 Azure 中
     - html: <a href="/azure/sql-database/sql-database-security-tutorial">保护 SQL 数据库</a>
     - html: 使用<a href="/azure/sql-database/sql-database-implement-geo-distributed-database">地理分散的数据库</a>在全球分布数据
 - title: 利用 Microsoft Learn 掌握技能

@@ -60,8 +60,12 @@ items:
       href: migrate-tutorial-aws-azure.md
   - name: 移动 Azure VM
     items:
+    - name: 概述
+      href: azure-to-azure-move-overview.md
     - name: 将 Azure VM 移动到另一区域
       href: azure-to-azure-tutorial-migrate.md
+    - name: 将 Azure VM 移动到可用性区域
+      href: move-Azure-VMs-AVset-Azone.md
 - name: 概念
   items:
   - name: 有关 Site Recovery 的常见问题
@@ -454,9 +458,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: 服务更新
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 10592c399414440c032d83b5fcdafa1ccee98956
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 89271625d4c05dd7e639cc3fef1ebfe97b710f03
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566850"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821790"

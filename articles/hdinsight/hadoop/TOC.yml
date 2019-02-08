@@ -18,7 +18,7 @@ items:
   items:
   - name: 创建 Apache Hadoop 群集 - 门户
     href: apache-hadoop-linux-create-cluster-get-started-portal.md
-  - name: 创建 Apache Hadoop 群集 - 资源管理器
+  - name: 创建 Apache Hadoop 群集 - 资源管理器模板
     href: apache-hadoop-linux-tutorial-get-started.md
 - name: 教程
   items:
@@ -325,8 +325,6 @@ items:
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
-    - name: 自动缩放 HDInsight 群集
-      href: ../hdinsight-autoscale-clusters.md
     - name: 缩放 HDInsight 群集
       href: ../hdinsight-scaling-best-practices.md
       maintainContext: true
@@ -566,9 +564,9 @@ items:
   - name: 适用于 HDInsight 的 Windows 工具
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 3bdc132e4b9b7f47fb1d65f540baa744f5afc5a8
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 291eefe2e9dba12975ab7d04140a6161352af454
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472783"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817788"
