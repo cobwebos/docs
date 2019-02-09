@@ -7,16 +7,16 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 02/06/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 09/05/2018
-ms.openlocfilehash: 027d4a9f93032bfdd0f4cda96df74c92b5679540
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 02ecb3cdec9ddb07bf48dfe77d1ed5fbf07975e0
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251565"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965318"
 ---
 # <a name="use-the-asdk-to-validate-an-azure-stack-backup"></a>使用 ASDK 验证 Azure Stack 备份
 在部署 Azure Stack 并预配用户资源（例如套餐、计划、配额、订阅）以后，应[启用 Azure Stack 基础结构备份](../azure-stack-backup-enable-backup-console.md)。 计划并运行定期基础结构备份可确保在硬件或服务出现灾难性故障时基础结构管理数据不会丢失。
@@ -47,7 +47,7 @@ Azure Stack 基础结构备份包含有关云的重要数据，这些数据可�
 
 
 
-### <a name="cloud-recovery-prerequisites"></a>云恢复先决条件
+### <a name="prereqs"></a>云恢复的先决条件
 在开始对 ASDK 进行云恢复部署之前，请确保有以下信息：
 
 |先决条件|描述|
@@ -80,6 +80,43 @@ New-SmbShare -Path $azsbackupshare.FullName -FullAccess ($env:computername + "\A
 > [!IMPORTANT]
 > ASDK 安装支持使用一个网络接口卡 (NIC) 进行网络连接。 如果有多个 NIC，请确保只启用一个（所有其他 NIC 均禁用），然后再运行部署脚本。
 
+### <a name="use-the-installer-to-deploy-the-asdk-in-recovery-mode"></a>使用安装程序部署在恢复模式下 ASDK
+在本部分中的步骤说明如何使用图形用户界面 (GUI) 通过下载并运行部署 ASDK **asdk-installer.ps1** PowerShell 脚本。
+
+> [!NOTE]
+> Azure Stack 开发工具包的安装程序用户界面是一种基于 WCF 和 PowerShell 的开源脚本。
+
+1. 在主机成功启动到 CloudBuilder.vhdx 映像后，使用管理员凭据登录指定当您[准备开发工具包主机](asdk-prepare-host.md)用于 ASDK 安装。 此凭据应与开发工具包主机本地管理员凭据相同。
+2. 打开提升的 PowerShell 控制台并运行**&lt;驱动器号 > \AzureStack_Installer\asdk-installer.ps1** PowerShell 脚本。 该脚本现在可能 CloudBuilder.vhdx 映像中除 C:\ 以外的驱动器上。 单击“**恢复**”。
+
+    ![ASDK 安装程序脚本](media/asdk-validate-backup/1.PNG) 
+
+3. 在标识提供程序和凭据页上将 ASDK 主机计算机输入 Azure AD 目录信息 （可选） 和本地管理员密码。 单击“下一步”。
+
+    ![标识和凭据页](media/asdk-validate-backup/2.PNG) 
+
+4. 选择要使用 ASDK 主机上，然后单击网络适配器**下一步**。 在 ASDK 安装过程中，将禁用所有其他网络接口。 
+
+    ![网络适配器接口](media/asdk-validate-backup/3.PNG) 
+
+5. 在网络配置页上，提供有效的时间服务器和 DNS 转发器 IP 地址。 单击“下一步”。
+
+    ![网络配置页](media/asdk-validate-backup/4.PNG) 
+
+6. 验证网络接口卡属性后，单击**下一步**。 
+
+    ![网络卡设置验证](media/asdk-validate-backup/5.PNG) 
+
+7. 提供所需的信息中所述[先决条件部分](#prereqs)备份设置页的用户名和密码要用来对其进行访问。 单击“下一步”：  
+
+   ![备份设置页](media/asdk-validate-backup/6.PNG) 
+
+8. 查看要用于部署 ASDK 摘要页上的部署脚本。 单击**部署**以开始部署。 
+
+    ![“摘要”页](media/asdk-validate-backup/7.PNG) 
+
+
+### <a name="use-powershell-to-deploy-the-asdk-in-recovery-mode"></a>使用 PowerShell 部署 ASDK 处于恢复模式
 针对环境修改以下 PowerShell 命令，然后运行它们，以便在云恢复模式下部署 ASDK：
 
 ```powershell

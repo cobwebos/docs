@@ -16,18 +16,18 @@ ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: asganesh
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: f900fa5105f42dac57b392d41a8cd888850fc648
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 491664067c87de8f94d2395cb2ffbdeade2595b0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249485"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979541"
 ---
 # <a name="azure-stack-datacenter-integration"></a>Azure Stack 数据中心集成
 
-本文介绍从客户采购集成式解决方案，到解决方案提供商成功完成现场部署的端到端 Azure Stack 客户体验。 使用此信息可以简化旅程，并帮助 Azure Stack 客户制定在将 Azure Stack 集成到数据中心后预期产生的效果。
+本指南介绍了从采购到成功的现场部署解决方案提供商通过集成的系统的端到端 Azure Stack 客户体验。 简化之旅并帮助设置为你的 Azure Stack 客户的预期，请使用此信息。
 
-Azure Stack 客户应该对以下数据中心集成阶段做好准备：
+作为 Azure Stack 客户，应预计到以下几个阶段：
 
 |     |规划阶段|订单处理|部署前|工厂处理|硬件交付|现场部署|
 |-----|-----|-----|-----|-----|-----|-----|
@@ -63,7 +63,7 @@ Microsoft 或 Azure Stack 解决方案合作伙伴，将工作与你一同评估
 [一般数据中心集成注意事项](azure-stack-datacenter-integration.md)一文提供的信息可帮助你完成该模板（名为“部署工作表”）。 
 
 > [!IMPORTANT]
-> 在此阶段，必须先调查并确定所有必要信息，然后再订购解决方案。 请注意，此步骤相当耗时，需要与组织中的多个专业单位协调，并从中收集数据。 
+> 在此阶段，必须先调查并确定所有必要信息，然后再订购解决方案。 请注意，此步骤相当耗时，需要与组织中的多个专业单位协调，并从中收集数据。 信息不正确或不完整可能会导致更长的部署。 
 
 在部署前的阶段，需要确定以下事宜：
 
@@ -90,7 +90,7 @@ Microsoft 或 Azure Stack 解决方案合作伙伴，将工作与你一同评估
 
 -   必须购买并准备好所有证书。
 
--   必须确定域名。
+-   必须确定区域名称。
 
 -   所有网络集成参数都已确认，且符合你向解决方案提供商提出的要求。
 
@@ -102,16 +102,16 @@ Microsoft 或 Azure Stack 解决方案合作伙伴，将工作与你一同评估
 
 下面是在部署体验期间，现场工程师应执行的操作：
 
-- 检查所有布线和边界连接，确保解决方案正确定位在一起，且符合要求
-- 配置解决方案的 HLH（硬件生命周期主机）
+- 检查所有电缆连接的边界连接以确保解决方案正确结合在一起并满足你的要求。
+- 如果存在，请配置解决方案 HLH （硬件生命周期主机）。
 - 检查并确保所有 BMC、BIOS 和网络设置正确。
-- 确保所有组件的固件使用解决方案批准的最新版本
-- 开始部署
+- 请确保所有组件的固件是由该解决方案的最新已批准版本。
+- 启动部署。
 
 > [!NOTE]
 > 现场工程师可能需要一个工作周的时间来完成部署过程。
 
-## <a name="post-integration-phase"></a>集成后的阶段
+## <a name="post-deployment-phase"></a>后期部署阶段
 在集成后的阶段，合作伙伴必须先执行几个步骤，然后才能将解决方案移交给客户。 在此阶段，验证非常重要，它可以确保系统部署正确且运行正常。 
 
 OEM 合作伙伴应执行的操作包括：
@@ -122,13 +122,13 @@ OEM 合作伙伴应执行的操作包括：
 
 -   [市场联合](azure-stack-download-azure-marketplace-item.md#use-the-marketplace-syndication-tool-to-download-marketplace-items)
 
--   备份交换机配置文件
+-   备份配置交换机和 HLH 配置文件
 
 -   去除 DVM
 
 -   为客户准备部署摘要
 
--   [检查更新以确保解决方案软件已更新到最新版本](azure-stack-updates.md)
+-   [检查更新以确保解决方案软件已更新到最新版本](.\azure-stack-updates.md)
 
 有几个步骤是必需或可选的，具体取决于安装类型。
 

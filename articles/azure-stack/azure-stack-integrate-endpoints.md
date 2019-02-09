@@ -10,12 +10,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 0bb2f3ffb4b615451abc41d0d8945b4b3efdde53
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9a209aaf730b356c8c102eab7a8832ce670204cc
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816350"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977741"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack 数据中心集成 - 发布终结点
 
@@ -38,11 +38,11 @@ Azure Stack 为其基础结构角色设置虚拟 IP 地址 (VIP)。 这些 VIP �
 |终结点 (VIP)|DNS 主机 A 记录|协议|端口|
 |---------|---------|---------|---------|
 |AD FS|Adfs.*&lt;region>.&lt;fqdn>*|HTTPS|443|
-|门户（管理员）|Adminportal.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13012<br>13020<br>13021<br>13026<br>30015|
+|门户（管理员）|Adminportal.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Adminhosting | *.adminhosting.\<region>.\<fqdn> | HTTPS | 443 |
-|Azure 资源管理器（管理员）|Adminmanagement.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>30024|
-|门户（用户）|Portal.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>12495<br>12649<br>13001<br>13010<br>13011<br>13012<br>13020<br>13021<br>30015<br>13003|
-|Azure 资源管理器（用户）|Management.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>30024|
+|Azure 资源管理器（管理员）|Adminmanagement.*&lt;region>.&lt;fqdn>*|HTTPS|443|
+|门户（用户）|Portal.*&lt;region>.&lt;fqdn>*|HTTPS|443|
+|Azure 资源管理器（用户）|Management.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |图形|Graph.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |证书吊销列表|Crl.*&lt;region>.&lt;fqdn>*|HTTP|80|
 |DNS|&#42;.*&lt;region>.&lt;fqdn>*|TCP 和 UDP|53|
@@ -79,7 +79,6 @@ Azure Stack 仅支持透明代理服务器。 如果部署中的透明代理上�
 |NTP|（为部署提供的 NTP 服务器的 IP）|UDP|123|公共 VIP 的/27|
 |DNS|（为部署提供的 DNS 服务器的 IP）|TCP<br>UDP|53|公共 VIP 的/27|
 |CRL|（证书上的 CRL 分发点下的 URL）|HTTP|80|公共 VIP 的/27|
-|基础结构备份|（外部目标文件服务器的 IP 或 FQDN）|SMB|445|公共基础结构网络|
 |LDAP|提供 Graph 集成的 active Directory 林|TCP<br>UDP|389|公共 VIP 的/27|
 |LDAP SSL|提供 Graph 集成的 active Directory 林|TCP|636|公共 VIP 的/27|
 |LDAP GC|提供 Graph 集成的 active Directory 林|TCP|3268|公共 VIP 的/27|
@@ -89,9 +88,6 @@ Azure Stack 仅支持透明代理服务器。 如果部署中的透明代理上�
 
 > [!Note]  
 > 使用 Azure 流量管理器对出站 URL 进行负载均衡，以根据地理位置提供尽可能最佳的连接。 使用负载平衡的 Url，Microsoft 可以更新和更改后端终结点而不会影响客户。 Microsoft 不共享 IP 地址的列表，为负载平衡 Url。 应使用支持按 URL 而不是按 IP 筛选的设备。
-
-> [!Note]  
-> 在 1809 中，基础结构备份服务与公共 VIP 网络中的外部文件服务器进行通信。 在 1809 之前，服务通过公共基础结构网络进行通信。 如果你的环境不允许从公共 VIP 网络访问基础结构资源，请应用 Azure Stack 的最新 [1809 修补程序](azure-stack-update-1809.md#post-update-steps)。 该修补程序会将基础结构备份服务移回公共基础结构网络。 在 1811 中，如果应用 1809 修补程序，则基础结构备份服务将保留在公共基础结构网络上。 如果不应用该修补程序，则更新会将服务移回公共基础结构网络。
 
 ## <a name="next-steps"></a>后续步骤
 

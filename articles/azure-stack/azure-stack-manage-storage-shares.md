@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 01/14/2019
+ms.date: 01/22/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 7536913817e10fbc2b46eadd1cebdfb98079c759
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 97cdae49b4676500e29ac25b12712c94e575e5f8
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819512"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960558"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>管理 Azure Stack 的存储容量 
 
@@ -80,7 +80,7 @@ VM 磁盘包括操作系统磁盘，由租户添加到容器。 VM 还可能包�
 
 ### <a name="use-powershell"></a>使用 PowerShell
 云操作员可以使用 PowerShell **Get-AzsStorageShare** cmdlet 来监视共享的存储容量。 Get-AzsStorageShare cmdlet 返回每个共享中总计、已分配和可用的空间（以字节为单位）。   
-![示例：返回共享的可用空间](media/azure-stack-manage-storage-shares/free-space.png)
+示例：![返回共享的可用空间](media/azure-stack-manage-storage-shares/free-space.png)
 
 - “容量总计”是共享中可用的总空间（以字节为单位）。 此空间用于存储服务维护的数据和元数据。
 - “已用容量”是存储租户数据和相关元数据的文件中所有盘区使用的数据量（以字节为单位）。
@@ -91,7 +91,7 @@ VM 磁盘包括操作系统磁盘，由租户添加到容器。 VM 还可能包�
 1. 登录到[管理员门户](https://adminportal.local.azurestack.external)。
 2. 选择“所有服务” > “存储”以打开文件共享列表，可以在其中查看使用情况信息。 
 
-  ![例如:存储文件共享](media/azure-stack-manage-storage-shares/storage-file-shares.png)
+    ![示例：存储文件共享](media/azure-stack-manage-storage-shares/storage-file-shares.png)
 
   - “总计”是共享中可用的总空间（以字节为单位）。 此空间用于存储服务维护的数据和元数据。
   - “已用”是存储租户数据和相关元数据的文件中所有盘区使用的数据量（以字节为单位）。
@@ -189,7 +189,7 @@ VM 磁盘包括操作系统磁盘，由租户添加到容器。 VM 还可能包�
   Get-AzsStorageContainerMigrationStatus -JobId $job_id -FarmName $farm_name
   ```
 
-  ![例如:迁移状态](media/azure-stack-manage-storage-shares/migration-status1.png)
+  ![示例：迁移状态](media/azure-stack-manage-storage-shares/migration-status1.png)
 
 6.  可以取消正在进行的迁移作业。 系统会以异步方式处理已取消的迁移作业。 可以使用 $jobid 跟踪取消操作：
 
@@ -197,11 +197,11 @@ VM 磁盘包括操作系统磁盘，由租户添加到容器。 VM 还可能包�
   Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
   ```
 
-  ![例如:回滚状态](media/azure-stack-manage-storage-shares/rollback.png)
+  ![示例：回滚状态](media/azure-stack-manage-storage-shares/rollback.png)
 
 7. 可以再次运行步骤 6 中的命令，直到系统确认迁移作业的状态为 **Canceled**：  
 
-    ![例如:已取消的状态](media/azure-stack-manage-storage-shares/cancelled.png)
+    ![示例：已取消的状态](media/azure-stack-manage-storage-shares/cancelled.png)
 
 ### <a name="move-vm-disks"></a>移动 VM 磁盘
 *此选项仅适用于多节点部署。*

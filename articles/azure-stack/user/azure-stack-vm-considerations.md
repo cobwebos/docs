@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2018
+ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 12/19/2018
-ms.openlocfilehash: 421e3bf4465f5aa9aafc4ad666af2178faedb7c3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 112e9aa023fb29bd960b61139861db4007c61b4d
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245950"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962241"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>在 Azure Stack 中使用虚拟机时的注意事项
 
@@ -41,8 +41,9 @@ Azure Stack 虚拟机提供可按需缩放的计算资源。 在部署虚拟机 
 | 虚拟机磁盘性能 | 取决于磁盘类型和大小。 | 取决于磁盘所附加到的 VM 的 VM 大小，请参阅 [Azure Stack 中支持的虚拟机大小](azure-stack-vm-sizes.md)一文。
 | API 版本 | Azure 始终提供所有虚拟机功能的最新 API 版本。 | Azure Stack 支持特定的 Azure 服务以及这些服务的特定 API 版本。 若要查看支持的 API 版本列表，请参阅本文的 [API 版本](#api-versions)部分。 |
 | Azure 实例元数据服务 | Azure 实例元数据服务提供有关运行虚拟机实例的信息，这些实例可用于管理和配置虚拟机。  | Azure Stack 不支持实例元数据服务。 |
-|虚拟机可用性集|多个容错域（每个区域 2 个或 3 个）<br>多个更新域<br>支持托管磁盘|多个容错域（每个区域 2 个或 3 个）<br>多个更新域（最多 20 个）<br>不支持托管磁盘|
-|虚拟机规模集|支持自动缩放|不支持自动缩放。<br>使用门户、资源管理器模板或 PowerShell 将更多实例添加到规模集。
+| 虚拟机可用性集|多个容错域（每个区域 2 个或 3 个）<br>多个更新域|多个容错域（每个区域 2 个或 3 个）<br>多个更新域（最多 20 个）|
+| 虚拟机规模集|支持自动缩放|不支持自动缩放。<br>使用门户、资源管理器模板或 PowerShell 将更多实例添加到规模集。 |
+| 虚拟机诊断 | Linux VM 诊断 | Azure Stack 不支持 Linux VM 诊断。 在部署启用 VM 诊断的 Linux VM 时，部署会失败。 如果通过诊断设置启用 Linux VM 的基本指标，部署也会失败。
 
 ## <a name="virtual-machine-sizes"></a>虚拟机大小
 
@@ -71,7 +72,7 @@ Azure Stack 施加了一些资源限制，以避免资源（服务器本地和�
 
 ## <a name="virtual-machine-extensions"></a>虚拟机扩展
 
- Azure Stack 包含少量的扩展。 可以通过市场联合来获取更新和其他扩展。
+Azure Stack 包含少量的扩展。 可以通过市场联合来获取更新和其他扩展。
 
 使用以下 PowerShell 脚本可获取 Azure Stack 环境中可用的虚拟机扩展的列表：
 
@@ -82,6 +83,8 @@ Get-AzureRmVmImagePublisher -Location local | `
   Select Type, Version | `
   Format-Table -Property * -AutoSize
 ```
+
+如果预配某个扩展在 VM 部署时间太长，通知而不是尝试停止该进程来解除分配或删除该 VM 的预配超时值。
 
 ## <a name="api-versions"></a>API 版本
 

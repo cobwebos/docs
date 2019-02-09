@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3d304a0f43632ab0f33e286b4404e1063ecb437e
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: a539e1db4fb86adb9f1fcf1f478e24e5de5edbdb
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364334"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983230"
 documentType: LandingData
 title: Azure Functions 文档
 metadata:
@@ -126,4 +126,4 @@ sections:
     - title: REST
       html: <p><a href="/azure/azure-functions/functions-api-definition">OpenAPI</a></p>
     - title: 绑定
-      html: <p><a href="/azure/azure-functions/functions-bindings-storage-blob">Blob 存储</a></p><p><a href="/azure/azure-functions/functions-bindings-documentdb">Azure Cosmos DB</a></p><p><a href="/azure/azure-functions/functions-bindings-event-hubs">事件中心</a></p><p><a href="/azure/azure-functions/functions-bindings-external-file">外部文件</a></p><p><a href="/azure/azure-functions/functions-bindings-http-webhook">HTTP 和 webhook</a></p><p><a href="/azure/azure-functions/functions-bindings-mobile-apps">移动应用</a></p><p><a href="/azure/azure-functions/functions-bindings-notification-hubs">通知中心</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-queue">队列存储</a></p><p><a href="/azure/azure-functions/functions-bindings-sendgrid">SendGrid</a></p><p><a href="/azure/azure-functions/functions-bindings-service-bus">服务总线</a></p><p><a href="/azure/azure-functions/functions-bindings-signalr-service">SignalR 服务</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-table">表存储</a></p><p><a href="/azure/azure-functions/functions-bindings-timer">计时器</a></p><p><a href="/azure/azure-functions/functions-bindings-twilio">Twilio 输出绑定</a></p>
+      html: <p><a href="/azure/azure-functions/functions-bindings-storage-blob">Blob 存储</a></p><p><a href="/azure/azure-functions/functions-bindings-documentdb">Azure Cosmos DB</a></p><p><a href="/azure/azure-functions/functions-bindings-event-hubs">事件中心</a></p><p><a href="/azure/azure-functions/functions-bindings-http-webhook">HTTP 和 webhook</a></p><p><a href="/azure/azure-functions/functions-bindings-mobile-apps">移动应用</a></p><p><a href="/azure/azure-functions/functions-bindings-notification-hubs">通知中心</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-queue">队列存储</a></p><p><a href="/azure/azure-functions/functions-bindings-sendgrid">SendGrid</a></p><p><a href="/azure/azure-functions/functions-bindings-service-bus">服务总线</a></p><p><a href="/azure/azure-functions/functions-bindings-signalr-service">SignalR 服务</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-table">表存储</a></p><p><a href="/azure/azure-functions/functions-bindings-timer">计时器</a></p><p><a href="/azure/azure-functions/functions-bindings-twilio">Twilio 输出绑定</a></p>
