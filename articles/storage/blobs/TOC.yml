@@ -512,14 +512,14 @@ items:
       href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - name: 快速入门
     items:
-    - name: 创建支持 Data Lake Storage Gen2 的存储帐户
+    - name: 创建存储帐户
       href: ../blobs/data-lake-storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: 创建/连接 Databricks 帐户
+    - name: 使用存储资源管理器管理数据
+      href: ../blobs/data-lake-storage-explorer.md
+    - name: 使用 Databricks 分析数据
       href: ../blobs/data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 创建 HDInsight 群集
       href: ../blobs/data-lake-storage-quickstart-create-connect-hdi-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: 开始使用 Azure 存储资源管理器
-      href: ../blobs/data-lake-storage-explorer.md
   - name: 教程
     items:
     - name: 使用 Azure Databricks 提取、转换和加载数据
@@ -530,9 +530,9 @@ items:
       href: ../blobs/data-lake-storage-tutorial-extract-transform-load-hive.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - name: 概念
     items:
-    - name: 适用于 Hadoop 的 Azure Blob FileSystem 驱动程序
+    - name: 适用于 Hadoop 的 Azure Blob 文件系统驱动程序
       href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Azure Blob 文件系统 URI 简介
+    - name: Azure Blob 文件系统 URI
       href: ../blobs/data-lake-storage-introduction-abfs-uri.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 分层命名空间服务
       href: ../blobs/data-lake-storage-namespace.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -546,53 +546,57 @@ items:
         href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       - name: 使用客户密钥对数据进行静态加密
         href: ../common/storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: Azure Data Lake Storage Gen2 中的访问控制
+      - name: Access Control
         href: data-lake-storage-access-control.md
-      - name: 配置防火墙和虚拟网络
-        href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: 身份验证
-        items:
-        - name: 使用 RBAC 管理访问权限
-          href: ../common/storage-auth-aad-rbac.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - name: 如何
     items:
-    - name: 使用 Azure 存储资源管理器设置权限
-      href: ../blobs/data-lake-storage-how-to-set-permissions-storage-explorer.md
-    - name: 配合使用 Data Lake Storage Gen2 和 Azure HDInsight 群集
-      href: ../blobs/data-lake-storage-use-hdi-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: 配合使用 Hadoop 文件系统 CLI 和 Data Lake Storage Gen2
-      href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: 从 Data Lake Storage Gen1 升级
-      href: ../blobs/data-lake-storage-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 引入数据
       items:
-      - name: 使用 Distcp 将数据复制到 Data Lake Storage Gen2 中
+      - name: 使用 Distcp
         href: ../blobs/data-lake-storage-use-distcp.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: 使用 Azure 数据工厂将数据复制到 Data Lake Storage Gen2 中
+      - name: 使用 Azure 数据工厂
         href: ../../data-factory/load-azure-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: 性能
+    - name: 保护数据
+      items:
+      - name: 配置防火墙和虚拟网络
+        href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - name: 使用 RBAC 管理访问权限
+        href: ../common/storage-auth-aad-rbac.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - name: 设置文件和目录级别权限
+        href: ../blobs/data-lake-storage-how-to-set-permissions-storage-explorer.md
+    - name: 与 Azure 服务集成
+      items:
+      - name: 与 HDInsight 群集配合使用
+        href: ../blobs/data-lake-storage-use-hdi-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - name: 与 Hadoop 文件系统 CLI 配合使用
+        href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - name: 与 Azure Databricks 配合使用
+        href: https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html
+      - name: 与 Azure SQL 数据仓库配合使用
+        href: ../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase
+    - name: 优化性能
       items:
       - name: 概述
         href: ../blobs/data-lake-storage-performance-tuning-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: 使用 Spark on HDInsight
+      - name: 优化 HDInsight 上的 Spark
         href: ../blobs/data-lake-storage-performance-tuning-spark.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: 使用 Hive on HDInsight
+      - name: 优化 HDInsight 上的 Hive
         href: ../blobs/data-lake-storage-performance-tuning-hive.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: 使用 MapReduce on HDInsight
+      - name: 优化 HDInsight 上的 MapReduce
         href: ../blobs/data-lake-storage-performance-tuning-mapreduce.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: 使用 Storm on HDInsight
+      - name: 优化 HDInsight 上的 Storm
         href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: 连接到 Azure DataBricks
-      href: https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html
-    - name: 连接到 Azure SQL 数据仓库
-      href: ../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase
+    - name: 迁移数据
+      items:
+      - name: 从 Data Lake Storage Gen1 升级
+        href: ../blobs/data-lake-storage-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - name: 引用
     items:
     - name: REST
       href: https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2
   - name: 资源
     items:
-    - name: Data Lake Storage Gen2 已知问题
+    - name: 已知问题
       href: data-lake-storage-known-issues.md
     - name: Azure 路线图
       href: https://azure.microsoft.com/roadmap/?category=storage
@@ -610,9 +614,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/windows-azure-storage
     - name: 视频
       href: https://azure.microsoft.com/documentation/videos/index/?services=storage
-ms.openlocfilehash: dec146846ac3bf889ac0d694fc769c899ab1d12e
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 546184e0552bbd0a5a3cc8ba864fba8794428dec
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767660"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870514"

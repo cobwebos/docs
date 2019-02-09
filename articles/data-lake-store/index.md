@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 4e2fcdac282d0cca9fe993efdaf787e43c2b6e9d
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 68e4a7bd73b7fdd4b21140c912422b062f51c775
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433810"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869188"
 ---
 # <a name="azure-data-lake-storage-gen1-documentation"></a>Azure Data Lake Storage Gen1 文档
 
-了解如何使用 Azure Data Lake Storage Gen1（以前称为 Azure Data Lake Store）创建超大规模的与 Hadoop 兼容的存储库，用于对任何大小、类型和引入速度的数据进行分析。 教程、API 参考和其他文档介绍了如何设置、管理及访问用于操作和探索分析的 Data Lake 存储库。
+Azure Data Lake Storage Gen2 现已正式发布。 我们建议你立即开始使用它。 有关详细信息，请参阅[产品页](https://aka.ms/adlsgen2-product)。
 
-若要了解 Data Lake Storage Gen2 预览版，请查看[产品页](https://aka.ms/adlsgen2-product)。
+了解如何使用 Azure Data Lake Storage Gen1（以前称为 Azure Data Lake Store）创建超大规模的与 Hadoop 兼容的存储库，用于对任何大小、类型和引入速度的数据进行分析。 教程、API 参考和其他文档介绍了如何设置、管理及访问用于操作和探索分析的 Data Lake 存储库。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -193,7 +193,7 @@ ms.locfileid: "54433810"
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>语言</h3>
+                        <h3>Languages</h3>
                         <p><a href="/dotnet/api/overview/azure/data-lake-store">.NET</a></p>
                         <p><a href="/java/api/overview/azure/datalake">Java</a></p>
                         <p><a href="https://www.npmjs.com/package/azure-arm-datalake-store">Node.js</a></p>

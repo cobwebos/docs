@@ -17,7 +17,8 @@ items:
     href: apache-kafka-get-started.md
   - name: 创建 Apache Kafka 群集 - PowerShell
     href: apache-kafka-quickstart-powershell.md
-  - name: 创建 Apache kafka 群集 - 资源管理器模板
+  - name: 创建 Apache Kafka 群集 - 资源管理器模板
+    displayName: resource manager template, arm template, resource manager group
     href: apache-kafka-quickstart-resource-manager-template.md
 - name: 教程
   items:
@@ -142,6 +143,7 @@ items:
         href: ../hdinsight-hadoop-create-linux-clusters-portal.md
         maintainContext: true
       - name: 使用 Azure 资源管理器模板
+        displayName: resource manager template, arm template, resource manager group
         href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
         maintainContext: true
       maintainContext: true
@@ -262,6 +264,7 @@ items:
   - name: REST (Apache Spark)
     href: /rest/api/hdinsightspark/
   - name: 资源管理器模板
+    displayName: resource manager template, arm template, resource manager group
     href: /azure/templates/microsoft.hdinsight/allversions
 - name: 资源
   items:
@@ -278,9 +281,9 @@ items:
   - name: 适用于 HDInsight 的 Windows 工具
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 11468d52eb07180abc6624772d69a3c0cd122ae7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c9524d96975a2eb443e3daec7122dc10ecc7e56d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814293"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893624"

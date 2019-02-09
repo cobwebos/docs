@@ -71,6 +71,8 @@ items:
     href: how-to-modify-assessment.md
   - name: 在评估后迁移计算机
     href: how-to-get-migration-tool.md
+  - name: 自动执行大量 VM 的迁移
+    href: how-to-migrate-at-scale.md
   - name: 排查 Azure Migrate 问题
     href: troubleshooting-general.md
 - name: 资源
@@ -93,9 +95,9 @@ items:
     href: https://azure.microsoft.com/migrate
   - name: Azure 路线图
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: d61f4c8d27e9b70d035f8e54051402a24b795555
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: ae2719e97bd23496ab861457549a845713001162
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200373"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893657"
