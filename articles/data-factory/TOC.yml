@@ -304,6 +304,8 @@ items:
     items:
     - name: 通过复制活动复制数据
       href: copy-activity-overview.md
+    - name: 使用“删除活动”删除文件
+      href: delete-activity.md
     - name: 复制数据工具
       href: copy-data-tool.md
     - name: 加载 Data Lake Storage Gen2
@@ -458,8 +460,22 @@ items:
       href: how-to-create-schedule-trigger.md
     - name: 创建翻转窗口触发器
       href: how-to-create-tumbling-window-trigger.md
+    - name: 创建翻转窗口触发器依赖项
+      href: tumbling-window-trigger-dependency.md
     - name: 创建基于事件的触发器
       href: how-to-create-event-trigger.md
+  - name: 模板
+    items:
+    - name: 模板概述
+      href: solution-templates-introduction.md
+    - name: 从多个容器复制文件
+      href: solution-template-copy-files-multiple-containers.md
+    - name: 使用控制表进行大容量复制
+      href: solution-template-bulk-copy-with-control-table.md
+    - name: 使用控制表进行增量复制
+      href: solution-template-delta-copy-with-control-table.md
+    - name: 使用 Databricks 转换数据
+      href: solution-template-databricks-notebook.md
 - name: 引用
   items:
   - name: .NET
@@ -490,9 +506,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: 支持选项
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: fd664db6e5f4bfbf0a86d9984559a1e5eabf262d
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: c73a736dadee91f344da32fb5569d5809a382f1b
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567241"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960235"

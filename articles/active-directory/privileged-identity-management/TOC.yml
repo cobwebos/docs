@@ -23,6 +23,8 @@ items:
     href: pim-apis.md
 - name: 操作指南
   items:
+  - name: 部署 PIM
+    href: pim-deployment-plan.md
   - name: 开始使用 PIM
     href: pim-getting-started.md
   - name: 激活我的角色
@@ -77,7 +79,7 @@ items:
       items:
       - name: 评审我的目录角色
         href: pim-how-to-perform-security-review.md
-      - name: 开始访问评审
+      - name: 开始访问审阅
         href: pim-how-to-start-security-review.md
       - name: 完成访问评审
         href: pim-how-to-complete-review.md
@@ -90,9 +92,9 @@ items:
       - name: 完成访问评审
         href: pim-resource-roles-complete-access-review.md
   expanded: true
-ms.openlocfilehash: a7c314bd6fd7fdc96900411db78a37b45b8c3e07
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 29eebb03aebec9dae7232df95a63e9a633ab109d
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512325"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979473"
