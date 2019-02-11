@@ -8,19 +8,19 @@ manager: ''
 editor: ''
 ms.assetid: 54319292-6aa0-4a08-846b-e3c53ecca483
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: c4aa5786ea1dfbef32c40306de6291ebeb2fe6f8
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 494acc55001bd3180d345801ef8d62800dd5e837
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036132"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174020"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD 域服务 - 排查警报问题
 本文提供有关排查托管域中可能出现的任何警报问题的指南。
@@ -114,7 +114,7 @@ ms.locfileid: "51036132"
 4. 要将虚拟机加入新的域，请按照[本指南](active-directory-ds-admin-guide-join-windows-vm-portal.md)操作。
 8. 若要确保警报已解决，请在两个小时内检查域的运行状况。
 
-## <a name="aadds106-your-azure-subscription-is-not-found"></a>AADDS106: 找不到 Azure 订阅
+## <a name="aadds106-your-azure-subscription-is-not-found"></a>AADDS106：找不到 Azure 订阅
 
 **警报消息：**
 
@@ -128,7 +128,7 @@ Azure AD 域服务需要订阅功能，并且无法移到其他订阅。 由于�
 2. 从现有 Azure AD 目录中[删除托管域](active-directory-ds-disable-aadds.md)。
 3. 按照[入门](active-directory-ds-getting-started.md)指南重新创建托管域。
 
-## <a name="aadds107-your-azure-subscription-is-disabled"></a>AADDS107: Azure 订阅已禁用
+## <a name="aadds107-your-azure-subscription-is-disabled"></a>AADDS107：Azure 订阅已禁用
 
 **警报消息：**
 
@@ -140,7 +140,7 @@ Azure AD 域服务需要订阅功能，并且无法移到其他订阅。 由于�
 1. [续订 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable)。
 2. 续订订阅后，Azure AD 域服务将从 Azure 收到重新启用托管域的通知。
 
-## <a name="aadds108-subscription-moved-directories"></a>AADDS108: 在目录中移动了订阅
+## <a name="aadds108-subscription-moved-directories"></a>AADDS108：订阅已移至其他目录
 
 **警报消息：**
 
@@ -150,7 +150,7 @@ Azure AD 域服务使用的订阅已移到另一个目录。Azure AD 域服务�
 
 可将与 Azure AD 域服务关联的订阅移回到以前的目录，或者从现有目录中[删除托管域](active-directory-ds-disable-aadds.md)并在所选的目录中重新创建它（使用新订阅，或更改 Azure AD 域服务实例所在的目录）。
 
-## <a name="aadds109-resources-for-your-managed-domain-cannot-be-found"></a>AADDS109: 找不到托管域的资源
+## <a name="aadds109-resources-for-your-managed-domain-cannot-be-found"></a>AADDS109：找不到托管域的资源
 
 **警报消息：**
 
@@ -169,7 +169,7 @@ Azure AD 域服务在部署时会创建特定的资源（包括公共 IP 地址�
 3.  如果警报超过 4 小时，则托管域将处于不可恢复状态。 必须删除 Azure AD 域服务并重新创建。
 
 
-## <a name="aadds110-the-subnet-associated-with-your-managed-domain-is-full"></a>AADDS110: 与托管域关联的子网已满
+## <a name="aadds110-the-subnet-associated-with-your-managed-domain-is-full"></a>AADDS110：与托管域关联的子网已满
 
 **警报消息：**
 
@@ -179,7 +179,7 @@ Azure AD 域服务在部署时会创建特定的资源（包括公共 IP 地址�
 
 此错误无法恢复。 若要解决此问题，必须[删除现有托管域](active-directory-ds-disable-aadds.md)并[重新创建托管域](active-directory-ds-getting-started.md)。
 
-## <a name="aaddds111-service-principal-unauthorized"></a>AADDDS111: 服务主体未经授权
+## <a name="aadds111-service-principal-unauthorized"></a>AADDS111：服务主体未经授权
 
 **警报消息：**
 
@@ -193,7 +193,7 @@ Azure AD 域服务用来为域提供服务的服务主体无权管理 Azure 订�
 2. 评审 ID 为 ```abba844e-bc0e-44b0-947a-dc74e5d09022``` 的服务主体的访问权限，并授予在以前的某个日期拒绝的访问权限。
 
 
-## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: 托管域中没有足够的 IP 地址
+## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112：托管域中没有足够的 IP 地址
 
 **警报消息：**
 
@@ -214,7 +214,7 @@ Azure AD 域服务用来为域提供服务的服务主体无权管理 Azure 订�
 4. 要将虚拟机加入新的域，请按照[本指南](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal)操作。
 5. 在两小时后检查域的运行状况，确保已正确完成相关步骤。
 
-## <a name="aadds113-resources-are-unrecoverable"></a>AADDS113: 资源不可恢复
+## <a name="aadds113-resources-are-unrecoverable"></a>AADDS113：资源不可恢复
 
 **警报消息：**
 
@@ -224,7 +224,7 @@ Azure AD 域服务用来为域提供服务的服务主体无权管理 Azure 订�
 
 此错误无法恢复。 若要解决此问题，必须[删除现有托管域](active-directory-ds-disable-aadds.md)并[重新创建托管域](active-directory-ds-getting-started.md)。
 
-## <a name="aadds114-subnet-invalid"></a>AADDS114: 子网无效
+## <a name="aadds114-subnet-invalid"></a>AADDS114：子网无效
 
 **警报消息：**
 
@@ -234,7 +234,7 @@ Azure AD 域服务用来为域提供服务的服务主体无权管理 Azure 订�
 
 此错误无法恢复。 若要解决此问题，必须[删除现有托管域](active-directory-ds-disable-aadds.md)并[重新创建托管域](active-directory-ds-getting-started.md)。
 
-## <a name="aadds115-resources-are-locked"></a>AADDS115: 资源已锁定
+## <a name="aadds115-resources-are-locked"></a>AADDS115：资源已锁定
 
 **警报消息：**
 
@@ -245,7 +245,7 @@ Azure AD 域服务用来为域提供服务的服务主体无权管理 Azure 订�
 1.  查看有关网络资源的资源管理器操作日志（其中应会提供有关哪个锁正在阻止修改的信息）。
 2.  删除资源中的锁，使 Azure AD 域服务服务主体能够在这些资源上运行。
 
-## <a name="aadds116-resources-are-unusable"></a>AADDS116: 资源不可用
+## <a name="aadds116-resources-are-unusable"></a>AADDS116：资源不可用
 
 **警报消息：**
 

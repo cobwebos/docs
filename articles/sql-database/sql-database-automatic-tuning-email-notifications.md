@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
-ms.reviewer: carlrab
+ms.author: danil
+ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: eaeb0d7f77b6d8ab6a3e12febba33c995a10ec3f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 12/19/2018
+ms.openlocfilehash: 1b58401a6697cdc80acc9badaf018923c5a9a980
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466525"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660283"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自动优化的电子邮件通知
 

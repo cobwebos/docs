@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/11/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: a58de808816bf80cf950d7b032ca042c7913a2e5
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: db5482fe17b9181097e13d446937bc489c3db8fe
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976377"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462821"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>为 VMware VM 灾难恢复管理配置服务器
 
@@ -137,10 +137,12 @@ ms.locfileid: "51976377"
 - 如果运行的是 9.7、9.8、9.9 或 9.10 版，可以直接升级到 9.11 版。
 - 如果运行的是 9.6 版或更早版本并且想要升级到 9.11 版，则必须先升级到 9.7 版， 然后再升级到 9.11 版。
 
-[Azure 更新页](https://azure.microsoft.com/updates/?product=site-recovery)中提供了用于升级到配置服务器的所有版本的更新汇总的链接。
+有关 Azure Site Recovery 组件支持声明的详细指南，请参阅[此处](https://aka.ms/asr_support_statement)。
+[此处](https://aka.ms/asr_update_rollups)提供了用于升级到配置服务器的所有版本的更新汇总的链接。
 
 > [!IMPORTANT]
-> 对于每一新版“N”的已发布 Azure Site Recovery 组件，“N-4”以下的所有版本都被视为不受支持。 始终建议升级到可用的最新版本。
+> 对于每一新版“N”的已发布 Azure Site Recovery 组件，“N-4”以下的所有版本都被视为不受支持。 始终建议升级到可用的最新版本。</br>
+> 有关 Azure Site Recovery 组件支持声明的详细指南，请参阅[此处](https://aka.ms/asr_support_statement)。
 
 按如下所示升级服务器：
 
@@ -158,6 +160,7 @@ ms.locfileid: "51976377"
     ![更新](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. 单击“完成”关闭安装程序。
+8. 若要升级其余的 Site Recovery 组件，请参阅我们的[升级指南](https://aka.ms/asr_vmware_upgrades)。
 
 ## <a name="delete-or-unregister-a-configuration-server"></a>删除或取消注册配置服务器
 
@@ -174,7 +177,7 @@ ms.locfileid: "51976377"
 
 还可以选择使用 PowerShell 删除配置服务器。
 
-1. [安装](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) Azure PowerShell 模块。
+1. [安装](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.4.0) Azure PowerShell 模块。
 2. 使用以下命令登录到你的 Azure 帐户：
 
     `Connect-AzureRmAccount`

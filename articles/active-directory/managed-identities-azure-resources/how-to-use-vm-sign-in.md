@@ -3,34 +3,36 @@ title: 如何在 Azure VM 上使用 Azure 资源的托管标识进行登录
 description: 有关使用 Azure 资源服务主体的 Azure VM 托管标识进行脚本客户端登录和资源访问的逐步说明与示例。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: daveba
-ms.openlocfilehash: bf363e4b03fb604e1b9af0d30b6e4ac471a41821
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: priyamo
+ms.openlocfilehash: d5f07fefc18e87f1ffb760defe0d5c256c6b338e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980281"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55186784"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>如何在 Azure VM 上使用 Azure 资源的托管标识进行登录 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
 本文提供有关使用 Azure 资源服务主体的托管标识进行登录的 PowerShell 和 CLI 脚本示例，以及有关错误处理等重要主题的指导。
 
+[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-如果打算使用本文中的 Azure PowerShell 或 Azure CLI 示例，请务必安装最新版本的 [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
+如果打算使用本文中的 Azure PowerShell 或 Azure CLI 示例，请务必安装最新版本的 [Azure PowerShell](/powershell/azure/install-az-ps) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
 
 > [!IMPORTANT]
 > - 本文中的所有示例脚本均假设命令行客户端在已启用 Azure 资源的托管标识的 VM 上运行。 在 Azure 门户中使用 VM 的“连接”功能远程连接到 VM。 有关在 VM 上启用 Azure 资源的托管标识的详细信息，请参阅[使用 Azure 门户在 VM 上配置 Azure 资源的托管标识](qs-configure-portal-windows-vm.md)，或有关在不同工具（使用 PowerShell、CLI、模板或 Azure SDK）中执行此操作的文章之一。 
@@ -67,10 +69,10 @@ Azure 资源的托管标识提供一个[服务主体对象](../develop/developer
 2. 调用 Azure 资源管理器 cmdlet 获取有关 VM 的信息。 PowerShell 负责自动管理令牌的使用。  
 
    ```azurepowershell
-   Add-AzureRmAccount -identity
+   Add-AzAccount -identity
 
    # Call Azure Resource Manager to get the service principal ID for the VM's managed identity for Azure resources. 
-   $vmInfoPs = Get-AzureRMVM -ResourceGroupName <RESOURCE-GROUP> -Name <VM-NAME>
+   $vmInfoPs = Get-AzVM -ResourceGroupName <RESOURCE-GROUP> -Name <VM-NAME>
    $spID = $vmInfoPs.Identity.PrincipalId
    echo "The managed identity for Azure resources service principal ID is $spID"
    ```
@@ -83,8 +85,8 @@ Azure 资源的托管标识提供一个[服务主体对象](../develop/developer
 
 如下所示的响应可能表示未正确配置 VM 的 Azure 资源的托管标识：
 
-- PowerShell：“Invoke-WebRequest: 无法连接到远程服务器”
-- CLI：“MSI: 无法从 'http://localhost:50342/oauth2/token' 检索令牌，出现错误 HTTPConnectionPool (主机='localhost'，端口=50342)” 
+- PowerShell：Invoke-WebRequest：无法连接到远程服务器
+- CLI：MSI：无法从 'http://localhost:50342/oauth2/token' 检索令牌，出现错误 HTTPConnectionPool (主机='localhost'，端口=50342) 
 
 如果收到以下错误之一，请在 [Azure 门户](https://portal.azure.com)中返回到 Azure VM 并执行以下操作：
 

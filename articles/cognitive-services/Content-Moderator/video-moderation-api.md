@@ -1,21 +1,21 @@
 ---
-title: 在 C# 中分析令人反感的视频内容
+title: 在 C# 中分析令人反感的视频内容 - 内容审查器
 titlesuffix: Azure Cognitive Services
 description: 如何使用适用于 .NET 的内容审查器 SDK 分析视频内容中是否存在各种令人反感的材料
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 80635354b228edc1a8c1334e5d59cf530a10083e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: bb34d05a476e51722d7bccf14e41d960083f0b25
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008277"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207441"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>在 C# 中分析令人反感的视频内容
 

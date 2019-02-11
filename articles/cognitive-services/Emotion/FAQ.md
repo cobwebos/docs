@@ -6,17 +6,17 @@ services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: emotion-api
+ms.subservice: emotion-api
 ms.topic: conceptual
 ms.date: 01/26/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6c1c4b8e5c2701f3c419a58bc3fdc33f7e629bbd
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: ded91c6de498b130cc26109a70e89955dd70d862
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238503"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208978"
 ---
 # <a name="emotion-api-frequently-asked-questions"></a>情感 API 常见问题解答
 
@@ -35,7 +35,7 @@ ms.locfileid: "48238503"
 
 **问**：情感 API 可以识别多少种情感？
 
-**答**：情感 API 可以识别 8 种公认的不同情感：
+**答**：情感 API 可以识别 8 种普遍公认的不同情感：
 * 高兴
 * 悲伤
 * 惊喜
@@ -53,9 +53,9 @@ ms.locfileid: "48238503"
 
 -----
 
-**问**：*我正在传入二进制图像数据，但却看到“人脸图像无效”错误消息。**
+**问**：我正在传入二进制图像数据，但却看到“人脸图像无效”错误消息。*
 
-**答**：此消息表明，算法无法分析图像。  
+**答**：此消息表明，算法无法分析该图像。  
 * 支持的输入图像格式包括 JPEG、PNG、GIF（第一帧）和 BMP
 * 图像文件不得大于 4 MB
 * 可检测的人脸大小范围为 36 x 36 到 4096 x 4096 像素。 无法检测超出此范围的人脸

@@ -1,22 +1,19 @@
 ---
-title: 快速入门：将 Gremlin API 与 PHP 配合使用 - Azure Cosmos DB | Microsoft Docs
+title: 快速入门：将 Gremlin API 与 PHP 配合使用 - Azure Cosmos DB
 description: 本快速入门介绍如何在 Azure 门户和 PHP 中使用 Azure Cosmos DB Gremlin API 创建控制台应用程序
-services: cosmos-db
 author: luisbosquez
-manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-graph
-ms.custom: quick start connect, mvc
+ms.subservice: cosmosdb-graph
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2018
 ms.author: lbosq
-ms.openlocfilehash: 06f54429957a84de81e3dfaae00c6126b5340b74
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: f13f8878f24309330db8143eb0f5cf3ae890d2fe
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702487"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039140"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-php-and-the-azure-portal"></a>Azure Cosmos DB：使用 PHP 和 Azure 门户创建图形数据库
 
@@ -38,7 +35,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]或者，无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。
 
 此外：
-* [PHP](http://php.net/) 5.6 或更高版本
+* [PHP](https://php.net/) 5.6 或更高版本
 * [编辑器](https://getcomposer.org/download/)
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
@@ -105,7 +102,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现在，返回到 Azure 门户，获取连接信息，并将信息复制到应用程序中。 借助这些设置，应用程序可以与托管的数据库进行通信。
 
-1. 在 [Azure 门户](http://portal.azure.com/)中，单击“密钥”。 
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击“密钥”。 
 
     复制 URI 值的第一部分。
 

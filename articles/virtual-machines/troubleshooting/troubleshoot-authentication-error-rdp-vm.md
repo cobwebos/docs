@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 5f9d933f0f294855719c8d187e759708ef8c9931
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 47d3b827099d3a4a7520ac66765d2928795b6e49
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669604"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967974"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>使用 RDP 连接到 Azure VM 时排查身份验证错误
 
@@ -75,7 +75,7 @@ VM 被设置为仅接受符合美国联邦信息处理标准 (FIPS) 的算法连
 
 ### <a name="create-a-backup-snapshot"></a>创建备份快照
 
-要创建备份快照，请执行[创建磁盘快照](..\windows\snapshot-copy-managed-disk.md)中的步骤。
+要创建备份快照，请执行[创建磁盘快照](../windows/snapshot-copy-managed-disk.md)中的步骤。
 
 ### <a name="connect-to-the-vm-remotely"></a>远程连接到 VM
 

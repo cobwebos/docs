@@ -8,20 +8,22 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: dobett
-ms.openlocfilehash: 5faa91f054e62e2b3d9d317efe57f2d3f659cee6
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 91d4eda566c8b534daa10c62637db28ccb01bbb6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829828"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628317"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-linux"></a>将设备连接到远程监视解决方案加速器 (Linux)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-本教程介绍如何将物理设备连接到远程监视解决方案加速器。
+本教程介绍如何将真实设备连接到远程监视解决方案加速器。
 
 与受约束设备上运行的大多数嵌入式应用程序一样，设备应用程序的客户端代码是用 C 语言编写的。在本教程中，将在运行 Ubuntu (Linux) 的计算机上生成应用程序。
+
+如果更喜欢模拟某个设备，请参阅[创建和测试新的模拟设备](iot-accelerators-remote-monitoring-create-simulated-device.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

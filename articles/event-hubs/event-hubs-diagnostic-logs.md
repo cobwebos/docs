@@ -1,6 +1,6 @@
 ---
-title: Azure 事件中心诊断日志 | Microsoft 文档
-description: 了解如何为 Azure 中的事件中心设置诊断日志。
+title: 设置诊断日志 - Azure 事件中心 | Microsoft 文档
+description: 了解如何为 Azure 中的事件中心设置活动日志和诊断日志。
 keywords: ''
 documentationcenter: ''
 services: event-hubs
@@ -13,21 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 07/02/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: bee6219bca21c3bc2bf4f97aa061fce0b30d55ff
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: c32662b446df10649617570c63ce534071ed7d27
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985159"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540308"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>设置 Azure 事件中心的诊断日志
 
 可以查看两种类型的 Azure 事件中心日志：
 
-* **[活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**：这些日志包含对作业执行的操作的相关信息。 始终启用这些日志。
-* **[诊断日志](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**：可配置诊断日志，更深入地了解作业发生的所有情况。 诊断日志涵盖从创建作业开始到删除作业为止的所有活动，其中包括作业运行时发生的更新和活动。
+* **[活动日志](../azure-monitor/platform/activity-logs-overview.md)**：此类日志提供对作业执行的操作的相关信息。 始终启用这些日志。
+* **[诊断日志](../azure-monitor/platform/diagnostic-logs-overview.md)**：可配置诊断日志，更深入地了解作业发生的所有情况。 诊断日志涵盖从创建作业开始到删除作业为止的所有活动，其中包括作业运行时发生的更新和活动。
 
 ## <a name="enable-diagnostic-logs"></a>启用诊断日志
 
@@ -53,7 +54,7 @@ ms.locfileid: "49985159"
 
 新设置在大约 10 分钟后生效。 在此之后，日志将出现在“诊断日志”窗格上配置的存档目标中。
 
-有关配置诊断的详细信息，请参阅 [Azure 诊断日志概述](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)。
+有关配置诊断的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md)。
 
 ## <a name="diagnostic-logs-categories"></a>诊断日志类别
 

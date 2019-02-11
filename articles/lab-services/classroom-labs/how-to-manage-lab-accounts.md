@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2018
 ms.author: spelluru
-ms.openlocfilehash: c672634e79cbc0850edfe7f7fbdb0a880d5cf0d8
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 20412efac553458f3028f873bcc6d918a673f261
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51707123"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838803"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>管理 Azure 实验室服务中的实验室帐户 
 在 Azure 实验室服务中，实验室帐户是托管实验室（如教室实验室）的容器。 管理员可以设置一个具有 Azure 实验室服务的实验室帐户，并为能够在帐户中创建实验室的实验室所有者提供访问权限。 本文介绍如何创建实验室帐户、查看所有实验室帐户，或者删除实验室帐户。
@@ -47,12 +47,8 @@ ms.locfileid: "51707123"
 ## <a name="add-a-user-to-the-lab-creator-role"></a>将用户添加为“实验室创建者”角色
 若要在实验室帐户中设置课堂实验室，用户必须是实验室帐户中“实验室创建者”角色的成员。 用来创建实验室帐户的帐户会自动添加到此角色。 如果打算使用同一用户帐户创建课堂实验室，可以跳过此步骤。 若要使用其他用户帐户创建教室实验室，请执行以下步骤： 
 
-1. 在“实验室帐户”页上，选择“访问控制(IAM)”，然后单击工具栏中的“+ 添加”。 
-
-    ![“实验室帐户”页面](../media/tutorial-setup-lab-account/access-control.png)
-2. 在“添加权限”页，为“角色”选择“实验室创建者”，选择想要添加为实验室创建者角色的用户，然后选择“保存”。 
-
-    ![将用户添加为“实验室创建者”角色](../media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
+1. 在“实验室帐户”页上，选择“访问控制(IAM)”，然后单击工具栏中的“+ 添加角色分配”。 
+2. 在“添加权限”页，为“角色”选择“实验室创建者”，选择想要添加为实验室创建者角色的用户，然后选择“保存”。
 
 ## <a name="specify-marketplace-images-available-to-lab-owners"></a>指定可供实验室所有者使用的市场映像
 作为实验室帐户所有者，你可以指定可供实验室创建者用来在实验室帐户中创建实验室的市场映像。 

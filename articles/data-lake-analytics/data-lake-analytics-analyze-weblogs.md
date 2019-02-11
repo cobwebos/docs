@@ -9,12 +9,12 @@ ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 4f9a30bf25cea1e80f53596be9eea6ae57a79889
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 83742a4f82fb4d67fd258ff0d242847eab634c78
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246457"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402279"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 分析网站日志
 了解如何使用 Data Lake Analytics 分析网站日志，尤其是找出尝试访问网站时哪些引用发生了错误。
@@ -165,7 +165,7 @@ U-SQL 应用程序主要是 U-SQL 脚本。 若要了解有关 U SQL 的详细�
 
 1. 在“服务器资源管理器”中依次展开 “Azure”、“Data Lake Analytics”、Data Lake Analytics 帐户、“存储帐户”，右键单击默认 Data Lake Storage 帐户，并单击“资源管理器”。
 2. 双击“示例”打开文件夹，并双击“输出”。
-3. 双击 “UnsuccessfulResponsees.log”。
+3. 双击“UnsuccessfulResponses.log”。
 4. 也可以双击该作业图形视图中的输出文件直接导航到输出。
 
 ## <a name="see-also"></a>另请参阅

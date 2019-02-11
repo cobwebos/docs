@@ -1,38 +1,36 @@
 ---
-title: Azure 服务总线 IP 连接筛选器 | Microsoft Docs
-description: 如何使用 IP 筛选阻止特定 IP 地址到 Azure 服务总线的连接。
+title: Azure 服务总线防火墙规则 | Microsoft Docs
+description: 如何使用防火墙规则允许从特定 IP 地址连接到 Azure 服务总线。
 services: service-bus
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
-ms.author: clemensv
-ms.openlocfilehash: c6e9eef762d4a9eb95685d94c61ce10d499bb155
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: a8d29e7cae20c37adfeccaef01e1625b6ab3e0d0
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884797"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852671"
 ---
-# <a name="use-ip-filters"></a>使用 IP 筛选器
+# <a name="use-firewall-rules"></a>使用防火墙规则
 
-如果只能通过某些已知站点访问 Azure 服务总线，可使用 IP 筛选器功能配置相关规则，以拒绝或接受源自特定 IPv4 地址的流量。 例如，这些地址可能是企业 NAT 网关地址。
+对于只能从某些已知站点访问 Azure 服务总线的方案，防火墙规则使你能够配置规则，以接受源自特定 IPv4 地址的流量。 例如，这些地址可能是企业 NAT 网关地址。
 
 ## <a name="when-to-use"></a>使用时机
 
-在下述两个具体情况中，可使用该筛选器阻止特定 IP 地址的服务总线终结点：
-
-- 服务总线只能从指定范围的 IP 地址接收流量并拒绝任何其他流量。 例如，结合使用服务总线和 [Azure Express Route][express-route]，以创建到本地基础结构的专用连接。
-- 需要拒绝来自服务总线管理员已标识为可疑地址的 IP 地址的流量。
+如果要安装服务总线，使其仅接收来自指定 IP 地址范围的流量并拒绝其他所有流量，则可以利用“防火墙”来阻止来自其他 IP 地址的服务总线终结点。 例如，结合使用服务总线和 [Azure Express Route][express-route]，以创建到本地基础结构的专用连接。 
 
 ## <a name="how-filter-rules-are-applied"></a>筛选器规则的应用方式
 
-IP 筛选器规则应用于服务总线命名空间级别。 因此，这些规则适用于通过各种受支持协议从客户端发出的所有连接。
+IP 筛选器规则应用于服务总线命名空间级别。 因此，这些规则适用于通过任何受支持协议从客户端发出的所有连接。
 
-如果某 IP 地址与服务总线命名空间上的拒绝 IP 规则匹配，则拒绝来自该地址的任何连接并将其标记为“未经授权”。 响应不会提及 IP 规则。
+如果某 IP 地址与服务总线命名空间上的允许 IP 规则不匹配，则将拒绝来自该地址的任何连接尝试并将其标记为“未经授权”。 响应不会提及 IP 规则。
 
 ## <a name="default-setting"></a>默认设置
 
@@ -42,67 +40,107 @@ IP 筛选器规则应用于服务总线命名空间级别。 因此，这些规�
 
 IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决定了将执行接受操作还是执行拒绝操作。
 
-例如，如果希望接受 70.37.104.0/24 范围中的地址并拒绝任何其他地址，则网格中的第一个规则应接受 70.37.104.0/24 地址范围。 下一个规则应通过使用 0.0.0.0/0 范围拒绝所有地址。
+>[!WARNING]
+> 实施防火墙规则可以组织其他 Azure 服务与服务总线进行交互。
+>
+> 实施 IP 筛选（防火墙规则）时，受信任的 Microsoft 服务不受支持，但很快就会变得可用。
+>
+> 不适用于 IP 筛选的常见 Azure 方案（请注意，该列表内容并不详尽）-
+> - Azure Monitor
+> - Azure 流分析
+> - 与 Azure 事件网格的集成
+> - Azure IoT 中心路由
+> - Azure IoT Device Explorer
+> - Azure 数据资源管理器
+>
+> 以下 Microsoft 服务必须在虚拟网络中
+> - Azure 应用服务
+> - Azure Functions
 
-> [!NOTE]
-> 拒绝 IP 地址即可阻止其他 Azure 服务（例如门户中的 Azure 流分析、Azure 虚拟机或设备资源管理器）与服务总线交互。
+### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建虚拟网络和防火墙规则
 
-### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建虚拟网络规则
-
-> ![重要] 虚拟网络仅在服务总线的**高级**层中受支持。
+> [!IMPORTANT]
+> 虚拟网络仅在服务总线的“高级”层中受支持。
 
 以下资源管理器模板支持向现有服务总线命名空间添加虚拟网络规则。
 
 模板参数：
 
-- ipFilterRuleName 必须是区分大小写的唯一字母数字字符串，长度不超过 128 个字符。
-- ipFilterAction 是要应用到 IP 筛选规则的“拒绝”或“接受”操作。
 - ipMask 是单个 IPv4 地址或者是以 CIDR 表示法表示的一个 IP 地址块。 例如，在 CIDR 表示法中，70.37.104.0/24 表示从 70.37.104.0 到 70.37.104.255 的 256 个 IPv4 地址，其中 24 表示范围的有效前缀位数。
 
+> [!NOTE]
+> 虽然不可能具有拒绝规则，但 Azure 资源管理器模板的默认操作设置为“允许”，不限制连接。
+> 制定虚拟网络或防火墙规则时，必须更改“defaultAction”
+> 
+> from
+> ```json
+> "defaultAction": "Allow"
+> ```
+> to
+> ```json
+> "defaultAction": "Deny"
+> ```
+>
+
 ```json
-{  
-   "$schema":"http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-   "contentVersion":"1.0.0.0",
-   "parameters":{     
-          "namespaceName":{  
-             "type":"string",
-             "metadata":{  
-                "description":"Name of the namespace"
-             }
-          },
-          "ipFilterRuleName":{  
-             "type":"string",
-             "metadata":{  
-                "description":"Name of the Authorization rule"
-             }
-          },
-          "ipFilterAction":{  
-             "type":"string",
-             "allowedValues": ["Reject", "Accept"],
-             "metadata":{  
-                "description":"IP Filter Action"
-             }
-          },
-          "IpMask":{  
-             "type":"string",
-             "metadata":{  
-                "description":"IP Mask"
-             }
-          }
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "servicebusNamespaceName": {
+        "type": "string",
+        "metadata": {
+          "description": "Name of the Service Bus namespace"
+        }
       },
+      "location": {
+        "type": "string",
+        "metadata": {
+          "description": "Location for Namespace"
+        }
+      }
+    },
+    "variables": {
+      "namespaceNetworkRuleSetName": "[concat(parameters('servicebusNamespaceName'), concat('/', 'default'))]",
+    },
     "resources": [
-        {
-            "apiVersion": "2018-01-01-preview",
-            "name": "[concat(parameters('namespaceName'), '/', parameters('ipFilterRuleName'))]",
-            "type": "Microsoft.ServiceBus/Namespaces/IPFilterRules",
-            "properties": {
-                "FilterName":"[parameters('ipFilterRuleName')]",
-                "Action":"[parameters('ipFilterAction')]",              
-                "IpMask": "[parameters('IpMask')]"
+      {
+        "apiVersion": "2018-01-01-preview",
+        "name": "[parameters('servicebusNamespaceName')]",
+        "type": "Microsoft.ServiceBus/namespaces",
+        "location": "[parameters('location')]",
+        "sku": {
+          "name": "Standard",
+          "tier": "Standard"
+        },
+        "properties": { }
+      },
+      {
+        "apiVersion": "2018-01-01-preview",
+        "name": "[variables('namespaceNetworkRuleSetName')]",
+        "type": "Microsoft.ServiceBus/namespaces/networkruleset",
+        "dependsOn": [
+          "[concat('Microsoft.ServiceBus/namespaces/', parameters('servicebusNamespaceName'))]"
+        ],
+        "properties": {
+          "virtualNetworkRules": [<YOUR EXISTING VIRTUAL NETWORK RULES>],
+          "ipRules": 
+          [
+            {
+                "ipMask":"10.1.1.1",
+                "action":"Allow"
+            },
+            {
+                "ipMask":"11.0.0.0/24",
+                "action":"Allow"
             }
-        } 
-    ]
-}
+          ],
+          "defaultAction": "Deny"
+        }
+      }
+    ],
+    "outputs": { }
+  }
 ```
 
 若要部署模板，请按照 [Azure 资源管理器][lnk-deploy]的说明进行操作。

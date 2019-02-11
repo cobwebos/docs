@@ -10,12 +10,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/15/2018
 ms.author: victorh
-ms.openlocfilehash: c64754595ef67b7c083ee8d47da5b412467c191b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 2ae8c14b40fa13a1aa8008588fb0efb1b1d2c3f6
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195907"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159411"
 ---
 # <a name="configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>通过 Azure 门户使用 SSL 终端配置应用程序网关
 
@@ -28,11 +28,11 @@ ms.locfileid: "34195907"
 > * 使用证书创建应用程序网关
 > * 创建用作后端服务器的虚拟机
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-在 [http://portal.azure.com](http://portal.azure.com) 登录到 Azure 门户
+在 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
@@ -148,7 +148,7 @@ Export-PfxCertificate \
 ### <a name="add-backend-servers"></a>添加后端服务器
 
 3. 单击“所有资源”，然后单击 **myAppGateway**。
-4. 单击“后端池”。 默认池已随应用程序网关自动创建。 单击 **appGateayBackendPool**。
+4. 单击“后端池”。 默认池已随应用程序网关自动创建。 单击 **appGatewayBackendPool**。
 5. 单击“添加目标”将所创建的每个虚拟机添加到后端池。
 
     ![添加后端服务器](./media/create-ssl-portal/application-gateway-backend.png)

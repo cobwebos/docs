@@ -12,17 +12,20 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/29/2018
+ms.date: 12/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 78315409c5d83a98321e16913b1090e8996ed8ce
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 9e8ca50970ff4a845174d7061b60a88a8f5ce578
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230278"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465617"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric 应用程序和服务清单
 本文介绍如何使用 ApplicationManifest.xml 和 ServiceManifest.xml 文件定义 Service Fabric 应用程序和服务并对其进行版本控制。  有关更多详细示例，请参阅[应用程序和服务清单示例](service-fabric-manifest-examples.md)。  这些清单文件的 XML 架构记录在 [ServiceFabricServiceModel.xsd 架构文档](service-fabric-service-model-schema.md)中。
+
+> [!WARNING]
+> 清单 XML 文件架构强制对子元素进行正确排序。  作为局部解决方法，创作或修改任何 Service Fabric 清单时，请在 Visual Studio中打开“C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd”。 这样一来，可以检查子元素的排序并提供 intelli-sense。
 
 ## <a name="describe-a-service-in-servicemanifestxml"></a>使用 ServiceManifest.xml 描述服务
 服务清单以声明方式定义服务类型和版本。 它指定服务元数据，例如服务类型、运行状况属性、负载均衡度量值、服务二进制文件和配置文件。  换言之，它描述了组成一个服务包以支持一个或多个服务类型的代码、配置和数据包。 服务清单可以包含多个代码、配置和数据包，可以独立进行版本控制。 以下是[投票示例应用程序](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart)的 ASP.NET Core Web 前端服务的服务清单（以下是一些[更详细的示例](service-fabric-manifest-examples.md)）：
@@ -50,7 +53,7 @@ ms.locfileid: "50230278"
     </EntryPoint>
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an 
+  <!-- Config package is the contents of the Config directory under PackageRoot that contains an 
        independently-updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 
@@ -93,7 +96,7 @@ ms.locfileid: "50230278"
 </Settings>
 ```
 
-声明/更改服务要使用的资源（如终结点）而无需更改已编译的代码。  可以通过应用程序清单中的 SecurityGroup 控制对服务清单中指定资源的访问。  在服务清单中定义了终结点资源时，如果未显式指定端口，则 Service Fabric 从保留的应用程序端口范围中分配端口。  详细了解[指定或替代终结点资源](service-fabric-service-manifest-resources.md)。
+Service Fabric 服务终结点是 Service Fabric 资源的示例；Service Fabric 资源可以进行声明/更改，而无需更改已编译的代码。 可以通过应用程序清单中的 SecurityGroup 控制对服务清单中指定 Service Fabric 资源的访问。 在服务清单中定义了终结点资源时，如果未显式指定端口，则 Service Fabric 从保留的应用程序端口范围中分配端口。 详细了解[指定或替代终结点资源](service-fabric-service-manifest-resources.md)。
 
 
 <!--

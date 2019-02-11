@@ -1,24 +1,21 @@
 ---
-title: 机器学习算法备忘单 - Azure 机器学习工作室 | Microsoft Docs
+title: 机器学习算法备忘单
+titleSuffix: Azure Machine Learning Studio
 description: 可打印的机器学习算法备忘单可帮助在 Azure 机器学习工作室中为预测模型选择正确的算法。
-keywords: 算法备忘单，备忘单，机器学习算法
 services: machine-learning
-author: ericlicoding
-ms.custom: (previous ms.author=pakalra, author=pakalra)
-ms.author: amlstudiodocs
-manager: cgronlun
-editor: cgronlun
-ms.assetid: e1dc31ec-1acb-463f-ba77-de565d4ddf4d
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 307a2d442fc8cf82630b111b6ea73e180c740c64
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: f445f13d3c2d63e8942864458064658d237aa763
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307402"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245934"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Azure 机器学习工作室机器学习算法备忘单
 
@@ -28,7 +25,7 @@ ms.locfileid: "52307402"
 
 ## <a name="download-machine-learning-algorithm-cheat-sheet"></a>下载：机器学习算法备忘单
 
-**在此处下载该备忘单：[机器学习算法备忘单（11x17 英寸）](https://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v7.pdf)**
+**在此下载备忘单：[机器学习算法备忘单(11 x 17 英寸)](https://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v7.pdf)**
 
 ![机器学习算法备忘单：了解如何选择机器学习算法。][cheat-sheet]
 
@@ -51,7 +48,7 @@ ms.locfileid: "52307402"
 
   * 在**非监督式学习**中，数据点没有与其关联的标签。 相反，非监督式学习算法的目的是以某种方式组织数据或者说明其结构。 这意味着将其分组到群集（如 K-means 所实现）或查找不同的方法来查看复杂数据以使其显示更简单。
 
-  * 在**强化学习**中，算法需选择响应每个数据点的操作。 它是机器人学中的常见方法，在此技术中一个时间点的传感器读数集是数据点，并且算法必须选择机器人的下一个动作。 它也是物联网应用程序的理想选择。 学习算法还会在短时间后收到奖励信号，指示决策的优秀程度。 在此基础上，算法会修改其战略议获得最高奖励。 目前，Azure ML 中暂无强化学习算法模块。
+  * 在**强化学习**中，算法需选择响应每个数据点的操作。 它是机器人学中的常见方法，在此技术中一个时间点的传感器读数集是数据点，并且算法必须选择机器人的下一个动作。 它也是物联网应用程序的理想选择。 学习算法还会在短时间后收到奖励信号，指示决策的优秀程度。 在此基础上，算法会修改其战略议获得最高奖励。 目前，Azure 机器学习工作室中暂无强化学习算法模块。
 
 * **贝叶斯方法**对统计上独立的数据点做出假设。 这意味着一个数据点中的未建模变化与其他数据点不相关，也就是说，无法预测。 例如，如果所记录的数据是下一班地铁到达之前的分钟数，将一天分开的两个度量值在统计上是不相关的。 但是，将一分钟分开的两个度量值在统计上不是不相关的 - 一个的值能够高度预测另一个的值。
 
@@ -73,7 +70,7 @@ ms.locfileid: "52307402"
 
 * 若要下载和打印 Microsoft Azure 机器学习工作室功能概述示意图，请参阅 [Overview diagram of Azure Machine Learning Studio capabilities](studio-overview-diagram.md)（Azure Machine 机器学习工作室功能概述）。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 <!-- Module References -->
 [a-z-list]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/a-z-module-list

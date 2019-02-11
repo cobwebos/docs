@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: be880b937f254cbf8115d1a5129069069a0c7eea
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: dabee3f4eb6fb2bf4f58ff8654068e138858dbbd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249657"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156915"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>创建动态组并检查状态
 
@@ -55,7 +55,7 @@ ms.locfileid: "50249657"
 “成员资格处理”状态会显示以下几种状态消息：
 
 * **正在评估**：已收到组更改，正在评估更新。
-* **正在处理**：正在进行更新。
+* **正在处理**：正在处理更新。
 * **更新完成**：处理已完成，且已完成所有适用更新。
 * **处理错误**：评估成员资格规则时遇到错误，无法完成处理。
 * **更新已暂停**：管理员暂停了动态成员资格规则更新。 MembershipRuleProcessingState 设置为“已暂停”。

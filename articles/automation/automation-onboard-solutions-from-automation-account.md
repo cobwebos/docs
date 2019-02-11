@@ -9,12 +9,12 @@ ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 6ee89f3d57ded382b4d4519e4054448c144b10c5
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d274642c8e35374dee2d584e6285165a15cd3128
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632681"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747027"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>载入更新管理、更改跟踪和清单解决方案
 
@@ -31,6 +31,25 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 选择 Log Analytics 工作区和自动化帐户，然后单击“启用”以启用此解决方案。 启用此解决方案最长需要 15 分钟的时间。
 
 ![载入清单解决方案](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
+
+在启用解决方案时，只有某些区域支持链接 Log Analytics 工作区和自动化帐户。
+
+下表显示了受支持的映射：
+
+|**Log Analytics 工作区区域**|**Azure 自动化区域**|
+|---|---|
+|AustraliaSoutheast|AustraliaSoutheast|
+|CanadaCentral|CanadaCentral|
+|CentralIndia|CentralIndia|
+|EastUS|EastUS2|
+|JapanEast|JapanEast|
+|SoutheastAsia|SoutheastAsia|
+|WestCentralUS|WestCentralUS|
+|西欧|西欧|
+|UKSouth|UKSouth|
+|USGovVirginia|USGovVirginia|
+|EastUS2EUAP|CentralUSEUAP|
+|美国西部 2|美国西部 2|
 
 更改跟踪和清单解决方案提供针对虚拟机的[跟踪更改](automation-vm-change-tracking.md)和[清单](automation-vm-inventory.md)功能。 在此步骤中，在虚拟机上启用解决方案。
 
@@ -60,7 +79,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 导航到你的自动化帐户并在“常规”下选择“保存的搜索”。 可以在下表中看到这些解决方案使用的两个已保存搜索：
 
-|名称     |类别  |别名  |
+|Name     |类别  |别名  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | 更新        | Updates__MicrosoftDefaultComputerGroup         |

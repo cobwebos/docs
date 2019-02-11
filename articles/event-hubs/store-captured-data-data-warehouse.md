@@ -1,21 +1,22 @@
 ---
-title: 将 Azure 事件中心数据迁移到 SQL 数据仓库 | Microsoft Docs
+title: 将事件数据迁移到 SQL 数据仓库 - Azure 事件中心 | Microsoft Docs
 description: 本教程介绍如何使用事件网格触发的 Azure 函数将事件中心的数据捕获到 SQL 数据仓库中。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: ''
 ms.author: shvija
-ms.date: 08/27/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 9673a7bff8e2d22764be28abef807434c53cc552
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 03ebdabf60882a73eb15cbd36481068591bbd3bc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43145301"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086277"
 ---
-# <a name="process-and-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>使用事件网格和 Azure Functions 处理捕获的事件中心数据并将其迁移到 SQL 数据仓库
+# <a name="migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>使用事件网格和 Azure Functions 将捕获的事件中心数据迁移到 SQL 数据仓库
 
 若要将事件中心的流式处理数据自动传递到 Azure Blob 存储或 Azure Data Lake Store，最容易的方式是使用事件中心[捕获](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)。 可以随后处理数据并将其传递到所选的任何其他存储目标，例如 SQL 数据仓库或 Cosmos DB。 本教程介绍如何使用[事件网格](https://docs.microsoft.com/azure/event-grid/overview)触发的 Azure 函数将事件中心的数据捕获到 SQL 数据仓库中。
 
@@ -138,7 +139,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
    ![添加订阅](./media/store-captured-data-data-warehouse/add-event-grid-subscription.png)
 
-1. 为事件网格订阅指定名称。 使用“事件中心命名空间”作为事件类型。 提供用于选择事件中心命名空间实例的值。 将订阅服务器终结点保留为提供的值。 选择**创建**。
+1. 为事件网格订阅指定名称。 使用“事件中心命名空间”作为事件类型。 提供用于选择事件中心命名空间实例的值。 将订阅服务器终结点保留为提供的值。 选择“创建”。
 
    ![创建订阅](./media/store-captured-data-data-warehouse/set-subscription-values.png)
 

@@ -5,16 +5,18 @@ services: automation
 author: georgewallace
 ms.service: automation
 ms.topic: include
-ms.date: 11/07/2018
+ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: 70cdd5a9d0482c24dfeb2037ae56b86cd9339fcf
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f3ae2289112948dea7d2649c4fad6b1cafb3804b
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285720"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53443994"
 ---
+#### <a name="process-automation"></a>流程自动化
+
 | 资源 | 最大限制 |说明|
 | --- | --- |---|
 | 每个自动化帐户每 30 秒可以提交的新作业的最大数量（非计划的作业） |100 |达到此限制时，后续作业创建请求会失败。 客户端会收到错误响应。|
@@ -33,5 +35,19 @@ ms.locfileid: "51285720"
 | Runbook 参数数量上限   | 50|可以将 JSON 或 XML 字符串传递给参数，并在达到 50 个参数的限制时使用 Runbook 对其进行分析|
 | Webhook 有效负载大小上限 |  512 kb|
 | 保留作业数据的最大天数|30 天|
+| PowerShell 工作流状态大小上限 |5 MB| 执行检查点工作流时适用于 PowerShell 工作流 runbook。|
 
 <sup>1</sup> 沙盒是可由多个作业使用的共享环境，使用相同沙盒的作业受到该沙盒的资源限制的约束。
+
+#### <a name="change-tracking-and-inventory"></a>更改跟踪和库存
+
+下表显示了用于更改跟踪的每台计算机的跟踪项限制。
+
+| **资源** | **限制**| **说明** |
+|---|---|---|
+|文件|500||
+|注册表|250||
+|Windows 软件|250|不包括软件更新|
+|Linux 包|1250||
+|服务|250||
+|守护程序|250||

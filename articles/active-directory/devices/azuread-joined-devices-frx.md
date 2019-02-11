@@ -4,24 +4,24 @@ description: 本主题说明用户如何在首次运行体验期间设置 Azure 
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 06a149f7-4aa1-4fb9-a8ec-ac2633b031fb
 ms.service: active-directory
-ms.component: devices
+ms.subservice: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/25/2018
+ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: eaf0b3e3b607145598660dbb64cadd5a277360cb
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: b3dd14aefc929e14ce22a701013c2be84a4ef01c
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046316"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695632"
 ---
 # <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>教程：首次运行期间使用 Azure AD 加入新的 Windows 10 设备
 

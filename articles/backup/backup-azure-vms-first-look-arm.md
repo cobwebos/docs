@@ -1,24 +1,21 @@
 ---
-title: 初步了解：使用恢复服务保管库保护 Azure VM
-description: 使用恢复服务保管库保护 Azure VM。 使用 Resource Manager 部署型 VM、经典部署型 VM、高级存储 VM、加密 VM 和基于托管磁盘的 VM 的备份来保护数据。 创建并注册恢复服务保管库。 在 Azure 中注册 VM、创建策略和保护 VM。
+title: 使用 Azure 备份服务备份 Azure VM
+description: 了解如何使用 Azure 备份服务备份 Azure VM
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
-keyword: backups; vm backup
 ms.service: backup
 ms.topic: conceptual
-ms.date: 08/01/2018
-ms.author: markgal
-ms.custom: H1Hack27Feb2017
-keywords: 备份; VM 备份
-ms.openlocfilehash: daa2355d028af9b61b0b14a453452c1a96487403
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/17/2018
+ms.author: raynew
+ms.openlocfilehash: c1bd92b9c4611465b680f195e4881a447f4bb701
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233535"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044393"
 ---
-# <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>将 Azure 虚拟机备份到恢复服务保管库
+# <a name="back-up-azure-vms-with-the-azure-backup-service"></a>使用 Azure 备份服务备份 Azure VM
 
 本文介绍如何通过虚拟机操作菜单或恢复服务保管库为虚拟机配置保护。 恢复服务保管库保护：
 
@@ -32,7 +29,7 @@ ms.locfileid: "51233535"
 
 有关保护高级存储 VM 的详细信息，请参阅[备份和还原高级存储 VM](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup)一文。 有关支持托管磁盘 VM 的详细信息，请参阅[备份和还原托管磁盘上的 VM](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)。 若要详细了解适用于 Linux VM 备份的前脚本和后脚本框架，请参阅[使用前脚本和后脚本进行应用程序一致性 Linux VM 备份](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)。
 
-若要了解可备份和不可备份内容的详细信息，请参阅[让环境为备份 Azure VM 做好准备](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm)。
+若要了解可备份和不可备份内容的详细信息，请参阅[让环境为备份 Azure VM 做好准备](backup-azure-arm-vms-prepare.md#before-you-start)。
 
 > [!NOTE]
 > 备份服务将创建一个单独的资源组而非 VM 的资源组来存储还原点集合。 建议客户不要锁定为备份服务使用而创建的资源组。
@@ -293,7 +290,7 @@ ms.locfileid: "51233535"
   部署通知会告知你备份作业已触发，并且可以在“备份作业”页面上监视作业的进度。 创建初始备份可能需要一些时间，具体取决于 VM 的大小。
 
   > [!NOTE]
-  > 所有由 Azure 备份负责备份的数据均通过[存储服务加密 (SSE)](../storage/common/storage-service-encryption.md) 进行静态加密。
+  > - 所有由 Azure 备份负责备份的数据均通过[存储服务加密 (SSE)](../storage/common/storage-service-encryption.md) 进行静态加密。
   >
   >
 
@@ -337,7 +334,8 @@ ms.locfileid: "51233535"
 如果在完成本文中的某些任务时遇到问题，请参阅 [故障排除指南](backup-azure-vms-troubleshoot.md)。
 
 ## <a name="pricing"></a>定价
-Azure VM 备份的成本取决于受保护实例的数目。 如需受保护实例的定义，请参阅[什么是受保护实例](backup-introduction-to-azure-backup.md#what-is-a-protected-instance)。 如果需要通过示例来了解如何计算虚拟机的备份费用，请参阅[受保护实例的计算方法](backup-azure-vms-introduction.md#calculating-the-cost-of-protected-instances)。 请参阅“Azure 备份定价”页，了解[备份定价](https://azure.microsoft.com/pricing/details/backup/)。
+Azure VM 备份的成本取决于受保护实例的数目。 如需受保护实例的定义，请参阅[什么是受保护实例](backup-introduction-to-azure-backup.md#what-is-a-protected-instance)。 请参阅“Azure 备份定价”页，了解[备份定价](https://azure.microsoft.com/pricing/details/backup/)。
 
-## <a name="questions"></a>有疑问？
-如果有疑问，或者希望包含某种功能，请 [给我们反馈](https://aka.ms/azurebackup_feedback)。
+## <a name="next-steps"></a>后续步骤
+
+[管理](backup-azure-manage-vms.md)备份。

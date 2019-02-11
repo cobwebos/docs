@@ -6,16 +6,16 @@ author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: cf6d63c8cf67e42eed2ca52bfd0d0a3f9b0e10b1
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 29b86d430fb5d65e7f089c616651da5f488b675c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302078"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455977"
 ---
 # <a name="assigning-variables-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中分配变量
 有关开发解决方案时在 Azure SQL 数据仓库中分配 T-SQL 变量的技巧。

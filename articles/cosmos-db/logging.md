@@ -1,23 +1,20 @@
 ---
-title: Azure Cosmos DB 诊断日志记录 | Microsoft Docs
-description: 借助本教程开始使用 Azure Cosmos DB 日志记录。
-services: cosmos-db
+title: Azure Cosmos DB 中的诊断日志记录
+description: 了解对 Azure Cosmos DB 中存储的数据进行记录和监视的各种方法。
 author: SnehaGunda
-manager: kfile
-tags: azure-resource-manager
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/07/2018
+ms.date: 12/06/2018
 ms.author: sngun
-ms.openlocfilehash: 1c25db0a217d6aff984029a28932242b06096735
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.custom: seodec18
+ms.openlocfilehash: cdc55491e827ab949d471c9b66c7caaa86f5055d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423222"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043322"
 ---
-# <a name="azure-cosmos-db-diagnostic-logging"></a>Azure Cosmos DB 诊断日志记录
+# <a name="diagnostic-logging-in-azure-cosmos-db"></a>Azure Cosmos DB 中的诊断日志记录 
 
 开始使用一个或多个 Azure Cosmos DB 数据库后，可能需要监视数据库的访问方式和时间。 本文概述了 Azure 平台上提供的日志。 其中介绍了如何启用监视用的诊断日志记录，以便将日志发送到 [Azure 存储](https://azure.microsoft.com/services/storage/)，将日志流式传输到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，以及如何将日志导出到 [Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/)。
 
@@ -82,10 +79,10 @@ Azure 诊断日志由资源发出，提供与该资源的操作相关的各种�
 
     * **存档到存储帐户**：要使用此选项，需要一个可连接到的现有存储帐户。 要在门户中创建新的存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md)，并按照说明创建 Azure 资源管理器（即通用帐户）。 然后在门户中返回到此页，选择存储帐户。 新创建的存储帐户可能几分钟后才会显示在下拉菜单中。
     * **流式传输到事件中心**：要使用此选项，需要一个可连接到的现有事件中心命名空间和事件中心。 要创建事件中心命名空间，请参阅[使用 Azure 门户创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。 然后在门户中返回到此页，选择事件中心命名空间和策略名称。
-    * **发送到 Log Analytics**：若要使用此选项，请使用现有的工作区，或遵循[创建新工作区](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace)的步骤在门户中创建新的 Log Analytics 工作区。 有关在 Log Analytics 中查看日志的详细信息，请参阅[在 Log Analytics 中查看日志](#view-in-loganalytics)。
+    * **发送到 Log Analytics**：若要使用此选项，请使用现有的工作区，或遵循[创建新工作区](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)的步骤在门户中创建新的 Log Analytics 工作区。 有关在 Log Analytics 中查看日志的详细信息，请参阅[在 Log Analytics 中查看日志](#view-in-loganalytics)。
     * **记录 DataPlaneRequests**：选择此选项可记录从底层 Azure Cosmos DB 分布式平台发出的针对 SQL、图形、MongoDB、Cassandra 和表 API 帐户的后端请求。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
-    * **记录 MongoRequests**：选择此选项可记录用户从 Azure Cosmos DB 前端发起的用于处理 MongoDB API 帐户的请求。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
-    * **指标请求**：选择此选项可在 [Azure 指标](../monitoring-and-diagnostics/monitoring-supported-metrics.md)中存储详细数据。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
+    * **记录 MongoRequests**：选择此选项可记录来自 Azure Cosmos DB 前端的用户发起的请求，以便为使用 Azure Cosmos DB 的 API for MongoDB 配置的 Cosmos 帐户提供服务。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
+    * **指标请求**：选择此选项可在 [Azure 指标](../azure-monitor/platform/metrics-supported.md)中存储详细数据。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
 
 3. 选择“保存”。
 
@@ -462,7 +459,7 @@ $blobs | Get-AzureStorageBlobContent `
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何启用日志记录，以及各种 Azure 服务支持的指标和日志类别，请参阅文章 [Microsoft Azure 中的指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)和 [Azure 诊断日志概述](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)。
+- 若要了解如何启用日志记录，以及各种 Azure 服务支持的指标和日志类别，请参阅文章 [Microsoft Azure 中的指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)和 [Azure 诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md)。
 - 阅读以下文章，了解事件中心：
    - [什么是 Azure 事件中心？](../event-hubs/event-hubs-what-is-event-hubs.md)
    - [事件中心入门](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)

@@ -4,24 +4,24 @@ description: 了解如何将 Azure 角色分配给 Windows 设备的本地管理
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: devices
+ms.subservice: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: ravenn
-ms.openlocfilehash: 267e398305939048014038b7350b2a10481fdfbd
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 8eba3c35c9c9f0063506b5427c8b1d7b75e09995
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238720"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100897"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的设备上的本地管理员组
 
@@ -64,7 +64,10 @@ Azure AD 还会将 Azure AD 设备管理员角色添加到本地管理员组，�
 
 ![其他本地管理员](./media/assign-local-admin/10.png)
 
- 
+>[!NOTE]
+> 此选项需要 Azure AD Premium 租户。 
+
+
 设备管理员已分配给所有已加入 Azure AD 的设备。 无法将设备管理员范围限定为一组特定设备。 更新设备管理员角色不一定会对受影响的用户产生直接影响。 对于用户已登录的设备，在以下情况下会发生特权更新：
      
 
@@ -88,7 +91,7 @@ Azure AD 还会将 Azure AD 设备管理员角色添加到本地管理员组，�
 
 除使用 Azure AD 联接过程之外，还可手动将常规用户提升为某个特定设备上的本地管理员。 此步骤要求用户已是本地管理员组的成员。 
 
-从 Windows 10 1709 版本开始，可通过选择“添加工作或学校用户”，从“设置”->“帐户”->“其他用户”中执行此任务。
+从 **Windows 10 1709** 版本开始，可从“设置”->“帐户”->“其他用户”执行此任务。 选择“添加工作单位或学校用户”，在“用户帐户”下输入用户的 UPN，然后在“帐户类型”下选择“管理员”  
  
 此外，还可使用命令提示符添加用户：
 

@@ -1,24 +1,25 @@
 ---
-title: 如何逐页浏览可用图像 - 必应图像搜索 API
+title: 逐页浏览必应图像搜索 API 返回的图像
 titleSuffix: Azure Cognitive Services
-description: 了解如何逐页浏览必应可以返回的所有图像。
+description: 浏览必应图像搜索 API 返回的不同图像页。
 services: cognitive-services
 author: swhite-msft
 manager: cgonlun
 ms.assetid: 3C8423F8-41E0-4F89-86B6-697E840610A7
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 0db8c62bbb4da1a6fa1230b439c5074325bbe9c3
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.custom: seodec2018
+ms.openlocfilehash: e9eb67cff82ce8c52684d523be7c662c5a2cbb40
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739358"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160316"
 ---
-# <a name="paging-results"></a>分页结果
+# <a name="page-through-the-images-results"></a>逐页浏览图像结果
 
 如果调用图像搜索 API，必应会返回结果列表。 此列表是与查询相关的所有结果的一部分。 若要获取可访问结果的总估计数，请访问答案对象的 [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#totalestimatedmatches) 字段。  
 

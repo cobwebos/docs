@@ -8,26 +8,24 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/16/2018
-ms.openlocfilehash: b6aa2dd16b1731c24b5f24068fa825500589a2e2
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 61463f33491cc909a21be99efcbb82094c958edd
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711168"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063244"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-python-library"></a>快速入门：使用 Azure 数据资源管理器 Python 库引入数据
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据浏览服务，适用于日志和遥测数据。 Azure 数据资源管理器为 Python 提供了两个客户端库：[引入库](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest)和[数据库](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)。 可以使用这些库在群集中引入（加载）数据并从代码中查询数据。 在本快速入门，首先在测试群集中创建一个表和数据映射。 然后将引入排列到群集并验证结果。
+Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器为 Python 提供了两个客户端库：[引入库](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest)和[数据库](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)。 可以使用这些库在群集中引入（加载）数据并从代码中查询数据。 本快速入门首先在群集中创建一个表和数据映射。 然后将引入排列到群集并验证结果。
 
 本快速入门同时也可用作 [Azure Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb)。
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
-
 ## <a name="prerequisites"></a>先决条件
 
-除 Azure 订阅外，还需以下条件才能完成此快速入门：
+* 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* [测试群集和数据库](create-cluster-database-portal.md)
+* [群集和数据库](create-cluster-database-portal.md)
 
 * 已在开发计算机上安装了 [Python](https://www.python.org/downloads/)
 
@@ -36,23 +34,21 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据浏览服�
 安装 azure-kusto-data 和 azure-kusto-ingest。
 
 ```
-pip install azure-kusto-data==0.0.13
-pip install azure-kusto-ingest==0.0.13
+pip install azure-kusto-data
+pip install azure-kusto-ingest
 ```
 
-## <a name="add-import-statements-and-constants"></a>添加 import 语句和常量
+## <a name="add-import-statements-and-constants"></a>添加导入语句和常量
 
-从库中导入类以及 datetime 和 pandas，即数据分析库。
+从 azure-kusto-data 导入类。
 
 ```python
 from azure.kusto.data.request import KustoClient, KustoConnectionStringBuilder
 from azure.kusto.data.exceptions import KustoServiceError
 from azure.kusto.data.helpers import dataframe_from_result_table
-import pandas as pd
-import datetime
 ```
 
-要对应用程序进行身份验证，Azure 数据资源管理器使用 AAD 租户 ID。 要查找租户 ID，请使用以下 URL，并将域替换为 YourDomain。
+Azure 数据资源管理器使用 AAD 租户 ID，以对应用程序进行身份验证。 要查找租户 ID，请使用以下 URL，并将域替换为 YourDomain。
 
 ```
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
@@ -70,10 +66,10 @@ https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
 AAD_TENANT_ID = "<TenantId>"
 KUSTO_URI = "https://<ClusterName>.<Region>.kusto.windows.net:443/"
 KUSTO_INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/"
-KUSTO_DATABASE  = "<DatabaseName>"
+KUSTO_DATABASE = "<DatabaseName>"
 ```
 
-现在构造连接字符串。 此示例使用设备身份验证来访问群集。 此外可以使用 AAD 应用程序证书、AAD 应用程序密钥以及 AAD 用户和密码。
+现在构造连接字符串。 此示例使用设备身份验证来访问群集。 此外可以使用 [AAD 应用程序证书](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24)、[AAD 应用程序密钥](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20)以及 [AAD 用户和密码](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34)。
 
 在后续步骤中创建目标表和映射。
 
@@ -103,9 +99,9 @@ FILE_SIZE = 64158321    # in bytes
 BLOB_PATH = "https://" + ACCOUNT_NAME + ".blob.core.windows.net/" + CONTAINER + "/" + FILE_PATH + SAS_TOKEN
 ```
 
-## <a name="create-a-table-on-your-test-cluster"></a>在测试群集上创建表
+## <a name="create-a-table-on-your-cluster"></a>在群集上创建表
 
-创建与 StormEvents.csv 文件中的数据架构匹配的表。 此代码运行时，它将返回如下消息：要登录，请使用 Web 浏览器打开页面 https://microsoft.com/devicelogin，并输入代码 F3W4VWZDM 进行身份验证。 按照步骤登录，然后返回运行下一个代码块。 建立连接的后续代码块将要求你再次登录。
+创建与 StormEvents.csv 文件中的数据架构匹配的表。 运行此代码时，它会返回如下消息：若要登录，请使用 Web 浏览器打开页面 https://microsoft.com/devicelogin，然后输入代码 F3W4VWZDM 进行身份验证。 按照步骤登录，然后返回运行下一个代码块。 建立连接的后续代码块将要求你再次登录。
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB_DATA)
@@ -118,7 +114,7 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 
 ## <a name="define-ingestion-mapping"></a>定义引入映射
 
-将传入的 CSV 数据映射到创建表时使用的列名称和数据类型。
+将传入的 CSV 数据映射到创建表时使用的列名称和数据类型。 这会将源数据字段映射到目标表列
 
 ```python
 CREATE_MAPPING_COMMAND = """.create table StormEvents ingestion csv mapping 'StormEvents_CSV_Mapping' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EpisodeId","datatype":"int","Ordinal":2},{"Name":"EventId","datatype":"int","Ordinal":3},{"Name":"State","datatype":"string","Ordinal":4},{"Name":"EventType","datatype":"string","Ordinal":5},{"Name":"InjuriesDirect","datatype":"int","Ordinal":6},{"Name":"InjuriesIndirect","datatype":"int","Ordinal":7},{"Name":"DeathsDirect","datatype":"int","Ordinal":8},{"Name":"DeathsIndirect","datatype":"int","Ordinal":9},{"Name":"DamageProperty","datatype":"int","Ordinal":10},{"Name":"DamageCrops","datatype":"int","Ordinal":11},{"Name":"Source","datatype":"string","Ordinal":12},{"Name":"BeginLocation","datatype":"string","Ordinal":13},{"Name":"EndLocation","datatype":"string","Ordinal":14},{"Name":"BeginLat","datatype":"real","Ordinal":16},{"Name":"BeginLon","datatype":"real","Ordinal":17},{"Name":"EndLat","datatype":"real","Ordinal":18},{"Name":"EndLon","datatype":"real","Ordinal":19},{"Name":"EpisodeNarrative","datatype":"string","Ordinal":20},{"Name":"EventNarrative","datatype":"string","Ordinal":21},{"Name":"StormSummary","datatype":"dynamic","Ordinal":22}]'"""
@@ -136,15 +132,15 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 INGESTION_CLIENT = KustoIngestClient(KCSB_INGEST)
 
 # All ingestion properties are documented here: https://docs.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
-INGESTION_PROPERTIES  = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, dataFormat=DataFormat.csv, mappingReference=DESTINATION_TABLE_COLUMN_MAPPING, additionalProperties={'ignoreFirstRecord': 'true'})
-BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)  # 10 is the raw size of the data in bytes
-INGESTION_CLIENT.ingest_from_blob(BLOB_DESCRIPTOR,ingestion_properties=INGESTION_PROPERTIES)
+INGESTION_PROPERTIES = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, dataFormat=DataFormat.csv, mappingReference = DESTINATION_TABLE_COLUMN_MAPPING, additionalProperties={'ignoreFirstRecord': 'true'})
+BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)  # FILE_SIZE is the raw size of the data in bytes
+INGESTION_CLIENT.ingest_from_blob(BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)
 
 print('Done queuing up ingestion with Azure Data Explorer')
 
 ```
 
-## <a name="validate-that-data-was-ingested-into-the-table"></a>验证数据已引入到表
+## <a name="query-data-that-was-ingested-into-the-table"></a>查询已引入表中的数据
 
 等待五到十分钟，直到排入队列的引入已计划在 Azure 数据资源管理器中引入和加载数据。 然后运行以下代码，以获取 StormEvents 表中记录的计数。
 
@@ -169,7 +165,7 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 
 ```Kusto
 .show operations
-| where StartedOn > ago(4h) and Database == "<DatabaseName>" and Operation == "DataIngestPull"
+| where StartedOn > ago(4h) and Database == "<DatabaseName>" and Table == "StormEvents" and Operation == "DataIngestPull"
 | summarize arg_max(LastUpdatedOn, *) by OperationId
 ```
 
@@ -184,4 +180,4 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [编写查询](write-queries.md)
+> [使用 Python 查询数据](python-query-data.md)

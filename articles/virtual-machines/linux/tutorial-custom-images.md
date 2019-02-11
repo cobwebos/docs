@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d8e6afb61fd9fa25b220f3267ee718f0859ae9a4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1c2be140e4d7156a1e23e1064436dda959c9cd14
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948785"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749995"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>教程：使用 Azure CLI 创建 Azure VM 的自定义映像
 
@@ -73,13 +73,13 @@ exit
 
 ### <a name="deallocate-and-mark-the-vm-as-generalized"></a>解除分配并将 VM 标记为通用化
 
-若要创建映像，需要解除分配 VM。 使用 [az vm deallocate](/cli//azure/vm#deallocate) 解除分配 VM。 
+若要创建映像，需要解除分配 VM。 使用 [az vm deallocate](/cli//azure/vm) 解除分配 VM。 
    
 ```azurecli-interactive 
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-最后，使用 [az vm generalize](/cli//azure/vm#generalize) 将 VM 的状态设置为“已通用化”，以便 Azure 平台知道已通用化 VM。 只能从通用化 VM 创建映像。
+最后，使用 [az vm generalize](/cli//azure/vm) 将 VM 的状态设置为“已通用化”，以便 Azure 平台知道已通用化 VM。 只能从通用化 VM 创建映像。
    
 ```azurecli-interactive 
 az vm generalize --resource-group myResourceGroup --name myVM
@@ -87,7 +87,7 @@ az vm generalize --resource-group myResourceGroup --name myVM
 
 ### <a name="create-the-image"></a>创建映像
 
-现在，可使用 [az image create](/cli//azure/image#create) 创建 VM 的映像。 以下示例从名为“myVM”的 VM 创建名为“myImage”的映像。
+现在，可使用 [az image create](/cli//azure/image) 创建 VM 的映像。 以下示例从名为“myVM”的 VM 创建名为“myImage”的映像。
    
 ```azurecli-interactive 
 az image create \
@@ -98,7 +98,7 @@ az image create \
  
 ## <a name="create-vms-from-the-image"></a>从映像创建 VM
 
-在具有映像后，便可以使用 [az vm create](/cli/azure/vm#az_vm_create) 从映像创建一个或多个新 VM。 以下示例从名为“myImage”的映像创建名为“myVMfromImage”的映像。
+在具有映像后，便可以使用 [az vm create](/cli/azure/vm) 从映像创建一个或多个新 VM。 以下示例从名为“myImage”的映像创建名为“myVMfromImage”的映像。
 
 ```azurecli-interactive 
 az vm create \

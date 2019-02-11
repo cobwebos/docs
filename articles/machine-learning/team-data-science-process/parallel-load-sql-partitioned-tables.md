@@ -1,24 +1,24 @@
 ---
-title: 生成并优化表以便快速将数据并行导入到 Azure VM 上的 SQL Server | Microsoft 文档
-description: 使用 SQL 分区表并行批量导入数据
+title: 在 SQL 分区表中进行并行批量数据导入 - Team Data Science Process
+description: 构建分区表来快速将数据并行批量导入到 SQL Server 数据库。
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: f437de3043cbd3d689f85dc3524b419b1633553f
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: f1a5f54e520cdabd49e1ca69626e1c693bc1ee19
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446460"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470019"
 ---
-# <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>使用 SQL 分区表并行批量导入数据
+# <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>生成并优化表以便快速将数据并行导入到 Azure VM 上的 SQL Server
 
 本文介绍如何构建分区表来快速将数据并行批量导入到 SQL Server 数据库。 要将大型数据加载/传输到 SQL 数据库，可以通过使用*分区表和视图*加快将数据导入 SQL 数据库和后续查询的速度。 
 
@@ -47,9 +47,9 @@ ms.locfileid: "52446460"
          FILEGROUP [filegroup_1] 
         ( NAME = ''FileGroup1'', FILENAME = ''' + @data_path + '<file_name_1>.ndf'' , SIZE = 4096KB , FILEGROWTH = 1024KB ), 
          FILEGROUP [filegroup_2] 
-        ( NAME = ''FileGroup1'', FILENAME = ''' + @data_path + '<file_name_2>.ndf'' , SIZE = 4096KB , FILEGROWTH = 1024KB ), 
+        ( NAME = ''FileGroup2'', FILENAME = ''' + @data_path + '<file_name_2>.ndf'' , SIZE = 4096KB , FILEGROWTH = 1024KB ), 
          FILEGROUP [filegroup_3] 
-        ( NAME = ''FileGroup1'', FILENAME = ''' + @data_path + '<file_name>.ndf'' , SIZE = 102400KB , FILEGROWTH = 10240KB ), 
+        ( NAME = ''FileGroup3'', FILENAME = ''' + @data_path + '<file_name_3>.ndf'' , SIZE = 102400KB , FILEGROWTH = 10240KB ) 
          LOG ON 
         ( NAME = ''LogFileGroup'', FILENAME = ''' + @data_path + '<log_file_name>.ldf'' , SIZE = 1024KB , FILEGROWTH = 10%)
     ')

@@ -9,23 +9,22 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 69994d0e2f945f54ccc10bcf067fa46bb3befd23
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 86c38818ee1632bf2d2f3fb1e1240954f3267887
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121866"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567309"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 HubSpot 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 HubSpot 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!IMPORTANT]
-> 此连接器目前提供预览版。 欢迎试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 支持部门](https://azure.microsoft.com/support/)。
+> 此连接器目前提供预览版。 欢迎试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://azure.microsoft.com/support/)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -45,7 +44,7 @@ HubSpot 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：**Hubspot** | 是 |
+| type | type 属性必须设置为：Hubspot | 是 |
 | clientId | 与 Hubspot 应用程序关联的客户端 ID。  | 是 |
 | clientSecret | 与 Hubspot 应用程序关联的客户端密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | accessToken | 最初进行 OAuth 集成身份验证时获得的访问令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -64,16 +63,16 @@ HubSpot 链接服务支持以下属性：
         "typeProperties": {
             "clientId" : "<clientId>",
             "clientSecret": {
-                 "type": "SecureString",
-                 "value": "<clientSecret>"
+                "type": "SecureString",
+                "value": "<clientSecret>"
             },
             "accessToken": {
-                 "type": "SecureString",
-                 "value": "<accessToken>"
+                "type": "SecureString",
+                "value": "<accessToken>"
             },
             "refreshToken": {
-                 "type": "SecureString",
-                 "value": "<refreshToken>"
+                "type": "SecureString",
+                "value": "<refreshToken>"
             }
         }
     }
@@ -84,7 +83,12 @@ HubSpot 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 HubSpot 数据集支持的属性列表。
 
-要从 HubSpot 复制数据，请将数据集的 type 属性设置为“HubspotObject”。 此类型的数据集中没有任何其他特定于类型的属性。
+要从 HubSpot 复制数据，请将数据集的 type 属性设置为“HubspotObject”。 支持以下属性：
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| type | 数据集的 type 属性必须设置为：HubspotObject | 是 |
+| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -96,7 +100,8 @@ HubSpot 链接服务支持以下属性：
         "linkedServiceName": {
             "referenceName": "<Hubspot linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -107,12 +112,12 @@ HubSpot 链接服务支持以下属性：
 
 ### <a name="hubspotsource-as-source"></a>以 HubspotSource 作为源
 
-要从 HubSpot 复制数据，请将复制活动中的源类型设置为“HubspotSource”。 复制活动**源**部分支持以下属性：
+要从 HubSpot 复制数据，请将复制活动中的源类型设置为“HubspotSource”。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**HubspotSource** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Companies where Company_Id = xxx"`。 | 是 |
+| type | 复制活动源的 type 属性必须设置为：HubspotSource | 是 |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Companies where Company_Id = xxx"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

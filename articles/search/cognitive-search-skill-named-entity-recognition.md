@@ -1,5 +1,5 @@
 ---
-title: 命名实体识别认知搜索技能（Azure 搜索）| Microsoft Docs
+title: 命名实体识别认知搜索技能 - Azure 搜索
 description: 从 Azure 搜索认知搜索管道中的文本中提取人员、位置和组织的命名实体。
 services: search
 manager: pablocas
@@ -8,23 +8,27 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 01/17/2019
 ms.author: luisca
-ms.openlocfilehash: f9ff3f66f3a73fbaf1a4c2ca280c85f4bde65444
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec2018
+ms.openlocfilehash: 0480b3d3037a6b0a0dcd4d35965020f794ad8273
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442023"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412476"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>命名实体识别认知技能
 
 命名实体识别技能可以从文本中提取命名实体。 可用实体包括 `person`、`location` 和 `organization` 类型。
 
+> [!IMPORTANT]
+> 已命名的实体识别技能已弃用，替换为 [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)。 2019 年 2 月 15 日，停止支持。 按照[已弃用的认知搜索技能](cognitive-search-skill-deprecated.md)中的建议，迁移到支持的技能。
+
 > [!NOTE]
-> <ul>
-> <li>Azure 搜索目前提供公共预览版。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 </li>
-> <li> 命名实体识别技能被视为“已弃用”，自 2019 年 2 月 15 日起将不再受到正式支持。 按照<a href="cognitive-search-skill-deprecated.md">弃用的认知搜索技能</a>页面中列出的建议，迁移到支持的技能</li>
+> 从 2018 年 12 月 21 日开始，可以使用 Azure 搜索技能集[附加认知服务资源](cognitive-search-attach-cognitive-services.md)。 这会使我们能够开始对技能集执行收费。 在此日期，我们还会开始将图像提取视为文档破解阶段的一部分进行计费。 我们将继续提供文档文本提取服务而不收取额外费用。
+>
+> 执行[内置认知技能](cognitive-search-predefined-skills.md)按[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services)收费，其费率与你以往直接执行任务的费率相同。 图像提取是 Azure 搜索收费项，目前以预览定价提供。 有关详细信息，请参见 [Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)或[如何计费](search-sku-tier.md#how-billing-works)。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.NamedEntityRecognitionSkill
@@ -149,7 +153,7 @@ Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
 
 ## <a name="error-cases"></a>错误案例
-如果不支持文档的语言代码，则返回错误，并且不提取任何实体。
+如果文档的语言代码不受支持，则返回错误，并且不提取任何实体。
 
 ## <a name="see-also"></a>另请参阅
 

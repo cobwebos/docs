@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 29142f7e-d862-4076-9a1a-ecae5bcd9d9b
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 04/17/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3b60a659700b1e464f4d8f70516a2ceaa0f08b6b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b78d8a5bd5ebb0d7b2f3c2012ec2021e4f999c1f
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423739"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100795"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>使用 OpenID Connect 和 Azure Active Directory 来授权访问 Web 应用程序
 
@@ -87,7 +87,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &nonce=7362CAEA-9CA5-4B43-9BA3-34D7C303EBA7
 ```
 
-| 参数 |  | Description |
+| 参数 |  | 说明 |
 | --- | --- | --- |
 | tenant |必填 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 独立于租户的令牌的允许值为租户标识符，例如 `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` 或 `common` |
 | client_id |必填 |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可以在 Azure 门户中找到该值。 单击“Azure Active Directory”，单击“应用注册”，选择应用程序并在应用程序页上找到应用程序 ID。 |
@@ -114,7 +114,7 @@ Content-Type: application/x-www-form-urlencoded
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | id_token |应用请求的 `id_token`。 可以使用 `id_token` 验证用户的标识，并以用户身份开始会话。 |
 | state |同时随令牌响应返回的请求中所包含的值。 随机生成的唯一值通常用于[防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 该状态也用于在身份验证请求出现之前，于应用程序中编码用户的状态信息，例如之前所在的网页或视图。 |
@@ -131,7 +131,7 @@ Content-Type: application/x-www-form-urlencoded
 error=access_denied&error_description=the+user+canceled+the+authentication
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | error |用于分类发生的错误类型与响应错误的错误码字符串。 |
 | error_description |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
@@ -140,7 +140,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 下表描述了可在错误响应的 `error` 参数中返回的各个错误代码。
 
-| 错误代码 | Description | 客户端操作 |
+| 错误代码 | 说明 | 客户端操作 |
 | --- | --- | --- |
 | invalid_request |协议错误，例如，缺少必需的参数。 |修复并重新提交请求。 这通常是在初始测试期间捕获的开发错误。 |
 | unauthorized_client |不允许客户端应用程序请求授权代码。 |客户端应用程序未注册到 Azure AD 中或者未添加到用户的 Azure AD 租户时，通常会出现这种情况。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
@@ -176,7 +176,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 ```
 
-| 参数 |  | Description |
+| 参数 |  | 说明 |
 | --- | --- | --- |
 | post_logout_redirect_uri |建议 |用户在成功注销后应重定向到的 URL。 如果未包含此参数，系统会向用户显示一条常规消息。 |
 
@@ -223,7 +223,7 @@ Content-Type: application/x-www-form-urlencoded
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&state=12345
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | id_token |应用请求的 `id_token`。 可以使用 `id_token` 验证用户的标识，并以用户身份开始会话。 |
 | 代码 |应用程序请求的 authorization_code。 应用程序可以使用授权代码请求目标资源的访问令牌。 Authorization_codes 的生存期较短，通常约 10 分钟后即过期。 |
@@ -241,7 +241,7 @@ Content-Type: application/x-www-form-urlencoded
 error=access_denied&error_description=the+user+canceled+the+authentication
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | error |用于分类发生的错误类型与响应错误的错误码字符串。 |
 | error_description |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6a0c4158b85a6bc6c9276eff19466fb742c6f442
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1908d655064a4a320191695c048271246951c29c
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235915"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187478"
 ---
 # <a name="supplemental-lesson---dynamic-security"></a>补充课程 - 动态安全性
 
@@ -21,7 +21,7 @@ ms.locfileid: "51235915"
   
 要实现动态安全性，需要将一个表添加到模型，该表包含用户名以及可连接到模型和浏览模型对象与数据的用户。 使用本教程创建的模型在 Adventure Works 的上下文中；但是，要完成本课程，必须从自己的域添加一个包含用户的表。 不需要已添加的用户名的密码。 要使用来自自己域中的少量用户示例创建 EmployeeSecurity 表，可以使用“粘贴”功能粘贴 Excel 电子表格中的员工数据。 在实际方案中，包含用户名的表通常是用作数据源的数据库中的某个表；例如，实际的 DimEmployee 表。  
   
-若要实现动态安全性，可以使用两个 DAX 函数：[USERNAME 函数 (DAX)](https://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) 和 [LOOKUPVALUE 函数 (DAX)](https://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab)。 在行筛选器公式中应用的这些函数在新角色中定义。 该公式通过使用 LOOKUPVALUE 函数，指定 EmployeeSecurity 表中的值。 公式随后将该值传递给 USERNAME 函数，该函数指定登录用户的用户名属于此角色。 然后，用户只能浏览角色的行筛选器指定的数据。 在此方案中，将指定销售员工只能浏览他们所属销售区域的 Internet 销售数据。  
+若要实现动态安全性，请使用两个 DAX 函数：[USERNAME 函数 (DAX)](https://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) 和 [LOOKUPVALUE 函数 (DAX)](https://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab)。 在行筛选器公式中应用的这些函数在新角色中定义。 该公式通过使用 LOOKUPVALUE 函数，指定 EmployeeSecurity 表中的值。 公式随后将该值传递给 USERNAME 函数，该函数指定登录用户的用户名属于此角色。 然后，用户只能浏览角色的行筛选器指定的数据。 在此方案中，将指定销售员工只能浏览他们所属销售区域的 Internet 销售数据。  
   
 本 Adventure Works 表格模型方案特有的、但不一定适用于真实方案的任务就是以这种形式确定的。 每个任务包括附加的信息用于描述任务的目的。  
   
@@ -37,7 +37,7 @@ ms.locfileid: "51235915"
   
 1.  在表格模型资源管理器中，转到“数据源”，右键单击连接，并单击“导入新表”。  
 
-    如果出现“模拟凭据”对话框，请键入在“第 2 课：添加数据”中使用的模拟凭据。
+    如果出现“模拟凭据”对话框，请键入在第 2 课中使用的模拟凭据：添加数据。
   
 2.  在导航器中选择“DimSalesTerritory”表，并单击“确定”。    
   

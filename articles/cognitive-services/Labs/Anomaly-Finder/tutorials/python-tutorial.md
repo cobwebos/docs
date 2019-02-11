@@ -6,16 +6,16 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.component: anomaly-detection
+ms.subservice: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 98f83fbc4db8685526833c3d4f1d15903419ad3f
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 2df1e2c261069473a02b40e4a7e45895eadea42d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887745"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219390"
 ---
 # <a name="tutorial-anomaly-detection-with-python-application"></a>教程：使用 Python 应用程序进行异常情况检测
 
@@ -31,7 +31,7 @@ ms.locfileid: "48887745"
 
 ## <a name="download-the-example-code"></a>下载示例代码
 
-1. 导航到 [Github 中的教程笔记本](https://github.com/MicrosoftAnomalyDetection/python-sample)。
+1. 导航到 [GitHub 中的教程笔记本](https://github.com/MicrosoftAnomalyDetection/python-sample)。
 2. 单击绿色按钮以克隆或下载教程。 
 
 ## <a name="opening-the-tutorial-notebook-in-jupyter"></a>在 Jupyter 中打开教程笔记本

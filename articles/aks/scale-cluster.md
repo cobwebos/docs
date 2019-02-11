@@ -1,84 +1,105 @@
 ---
 title: 缩放 Azure Kubernetes 服务 (AKS) 群集
-description: 缩放 Azure Kubernetes 服务 (AKS) 群集。
+description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中缩放节点数。
 services: container-service
-author: gabrtv
-manager: jeconnoc
+author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 11/15/2017
-ms.author: gamonroy
-ms.custom: mvc
-ms.openlocfilehash: 577fff2e659759647ffc7e96158ebcbe5a88ab25
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.date: 01/10/2019
+ms.author: iainfoulds
+ms.openlocfilehash: 558a3b6dc15293ab9a0895aa4f9f709ba2d0a51f
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934678"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214617"
 ---
-# <a name="scale-an-azure-kubernetes-service-aks-cluster"></a>缩放 Azure Kubernetes 服务 (AKS) 群集
+# <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>在 Azure Kubernetes 服务 (AKS) 群集中缩放节点数
 
-可轻松将 AKS 群集缩放为不同的节点数。  选择所需的节点数，然后运行 `az aks scale` 命令。  节点数减少时，节点会被仔细[封锁和排除][kubernetes-drain]，尽量避免对正在运行的应用程序造成中断。  节点数增加时，`az` 命令将等待，直到 Kubernetes 群集将节点标记为 `Ready`。
+如果资源需要更改应用程序，可以手动缩放 AKS 群集以运行不同数量的节点。 节点数减少时，节点会被仔细[封锁和排除][kubernetes-drain]，尽量避免对正在运行的应用程序造成中断。 节点数增加时，`az` 命令将等待，直到 Kubernetes 群集将节点标记为 `Ready`。
 
 ## <a name="scale-the-cluster-nodes"></a>缩放群集节点
 
-使用 `az aks scale` 命令缩放群集节点。 以下示例将名为 *myAKSCluster* 的群集缩放为单个节点。
+首先，使用 [az aks show][az-aks-show] 命令获取节点池的名称。 以下示例获取 myResourceGroup 资源组中名为 myAKSCluster 的群集的节点池名称：
 
 ```azurecli-interactive
-az aks scale --name myAKSCluster --resource-group myResourceGroup --node-count 1
+az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
 ```
 
-输出：
+以下示例输出表明名称为 nodepool1：
+
+```console
+$ az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
+
+[
+  {
+    "count": 1,
+    "maxPods": 110,
+    "name": "nodepool1",
+    "osDiskSizeGb": 30,
+    "osType": "Linux",
+    "storageProfile": "ManagedDisks",
+    "vmSize": "Standard_DS2_v2"
+  }
+]
+```
+
+使用 `az aks scale` 命令缩放群集节点。 以下示例将名为 *myAKSCluster* 的群集缩放为单个节点。 提供前一个命令中自己的 --nodepool-name，如 nodepool1：
+
+```azurecli-interactive
+az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1 --nodepool-name <your node pool name>
+```
+
+以下示例输出显示群集已成功缩放为一个节点，如 agentPoolProfiles 部分中所示：
 
 ```json
 {
-  "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "location": "eastus",
-  "name": "myAKSCluster",
-  "properties": {
-    "accessProfiles": {
-      "clusterAdmin": {
-        "kubeConfig": "..."
-      },
-      "clusterUser": {
-        "kubeConfig": "..."
-      }
-    },
-    "agentPoolProfiles": [
-      {
-        "count": 1,
-        "dnsPrefix": null,
-        "fqdn": null,
-        "name": "myAKSCluster",
-        "osDiskSizeGb": null,
-        "osType": "Linux",
-        "ports": null,
-        "storageProfile": "ManagedDisks",
-        "vmSize": "Standard_D2_v2",
-        "vnetSubnetId": null
-      }
-    ],
-    "dnsPrefix": "myK8sClust-myResourceGroup-4f48ee",
-    "fqdn": "myk8sclust-myresourcegroup-4f48ee-406cc140.hcp.eastus.azmk8s.io",
-    "kubernetesVersion": "1.7.7",
-    "linuxProfile": {
-      "adminUsername": "azureuser",
-      "ssh": {
-        "publicKeys": [
-          {
-            "keyData": "..."
-          }
-        ]
-      }
-    },
-    "provisioningState": "Succeeded",
-    "servicePrincipalProfile": {
-      "clientId": "e70c1c1c-0ca4-4e0a-be5e-aea5225af017",
-      "keyVaultSecretRef": null,
-      "secret": null
+  "aadProfile": null,
+  "addonProfiles": null,
+  "agentPoolProfiles": [
+    {
+      "count": 1,
+      "maxPods": 110,
+      "name": "nodepool1",
+      "osDiskSizeGb": 30,
+      "osType": "Linux",
+      "storageProfile": "ManagedDisks",
+      "vmSize": "Standard_DS2_v2",
+      "vnetSubnetId": null
+    }
+  ],
+  "dnsPrefix": "myAKSClust-myResourceGroup-19da35",
+  "enableRbac": true,
+  "fqdn": "myaksclust-myresourcegroup-19da35-0d60b16a.hcp.eastus.azmk8s.io",
+  "id": "/subscriptions/<guid>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
+  "kubernetesVersion": "1.9.11",
+  "linuxProfile": {
+    "adminUsername": "azureuser",
+    "ssh": {
+      "publicKeys": [
+        {
+          "keyData": "[...]"
+        }
+      ]
     }
   },
+  "location": "eastus",
+  "name": "myAKSCluster",
+  "networkProfile": {
+    "dnsServiceIp": "10.0.0.10",
+    "dockerBridgeCidr": "172.17.0.1/16",
+    "networkPlugin": "kubenet",
+    "networkPolicy": null,
+    "podCidr": "10.244.0.0/16",
+    "serviceCidr": "10.0.0.0/16"
+  },
+  "nodeResourceGroup": "MC_myResourceGroup_myAKSCluster_eastus",
+  "provisioningState": "Succeeded",
   "resourceGroup": "myResourceGroup",
+  "servicePrincipalProfile": {
+    "clientId": "[...]",
+    "secret": null
+  },
   "tags": null,
   "type": "Microsoft.ContainerService/ManagedClusters"
 }
@@ -96,3 +117,4 @@ az aks scale --name myAKSCluster --resource-group myResourceGroup --node-count 1
 
 <!-- LINKS - internal -->
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
+[az-aks-show]: /cli/azure/aks#az-aks-show

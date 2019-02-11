@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: b4b6e91f9b20166f63a4710f42726bf1d4090022
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1170266ed0b59c53adce4e44fe3e7a0bc62f394e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251553"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014849"
 ---
 # <a name="security-frame-authentication--mitigations"></a>安全框架：身份验证 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -322,7 +322,7 @@ ms.locfileid: "51251553"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型、.NET Framework 3 |
 | **属性**              | 客户端凭据类型 - None |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_transport_client) |
+| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_transport_client) |
 | **步骤** | 缺少身份验证意味着每个人都能访问此服务。 不对其客户端进行身份验证的服务允许所有用户访问其功能。 将应用程序配置为对客户端凭据进行身份验证。 为此，可将传输 clientCredentialType 设置为 Windows 或 Certificate。 |
 
 ### <a name="example"></a>示例
@@ -350,7 +350,7 @@ ms.locfileid: "51251553"
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [Azure AD 的身份验证方案](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/)、[Azure Active Directory 代码示例](https://azure.microsoft.com/documentation/articles/active-directory-code-samples/)、[Azure Active Directory 开发人员指南](https://azure.microsoft.com/documentation/articles/active-directory-developers-guide/) |
-| **步骤** | <p>Azure Active Directory (Azure AD) 通过提供标识即服务并支持 OAuth 2.0 和 OpenID Connect 等行业标准协议，简化了对开发人员的身份验证。 下面是 Azure AD 支持的五种主要应用程序方案：</p><ul><li>Web 浏览器到 Web 应用程序：用户需要登录到由 Azure AD 保护的 Web 应用程序</li><li>单页面应用程序 (SPA)：用户需要登录到由 Azure AD 保护的单页面应用程序</li><li>本机应用程序到 Web API：在手机、平板电脑或电脑上运行的本机应用程序需要对用户进行身份验证以从 Azure AD 所保护的 Web API 获取资源</li><li>Web 应用程序到 Web API：Web 应用程序需要从 Azure AD 所保护的 Web API 获取资源。</li><li>后台或服务器应用程序到 Web API：没有 Web 用户界面的后台应用程序或服务器应用程序需要从 Azure AD 所保护的 Web API 获取资源</li></ul><p>请参阅参考部分中的链接，了解低级别实施详细信息</p>|
+| **步骤** | <p>Azure Active Directory (Azure AD) 通过提供标识即服务并支持 OAuth 2.0 和 OpenID Connect 等行业标准协议，简化了对开发人员的身份验证。 下面是 Azure AD 支持的五种主要应用程序方案：</p><ul><li>Web 浏览器到 Web 应用程序：用户需要登录到受 Azure AD 保护的 Web 应用程序</li><li>单页面应用程序 (SPA)：用户需要登录到受 Azure AD 保护的单页面应用程序</li><li>本机应用程序到 Web API：在手机、平板电脑或电脑上运行的本机应用程序需要对用户进行身份验证以通过受 Azure AD 保护的 Web API 获取资源</li><li>Web 应用程序到 Web API：Web 应用程序需要通过受 Azure AD 保护的 Web API 获取资源</li><li>守护程序或服务器应用程序到 Web API：没有 Web 用户界面的守护程序应用程序或服务器应用程序需要通过受 Azure AD 保护的 Web API 获取资源</li></ul><p>请参阅参考部分中的链接，了解低级别实施详细信息</p>|
 
 ## <a id="adal-scalable"></a>使用可缩放的替代方案覆盖默认的 ADAL 令牌缓存
 
@@ -566,7 +566,7 @@ await deviceClient.SendEventAsync(message);
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - Blob |
 | **参考**              | [管理对容器和 Blob 的匿名读取访问](https://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/)、[共享访问签名，第 1 部分：了解 SAS 模型](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/) |
-| **步骤** | <p>默认情况下，仅存储帐户的所有者能够访问容器以及其中的所有 Blob。 若要授予匿名用户对容器及其 Blob 的读取权限，可以设置容器权限以允许公共访问。 匿名用户可以读取可公开访问的容器中的 Blob，而无需对请求进行身份验证。</p><p>容器提供了下列用于管理容器访问的选项：</p><ul><li>完全公共读取访问：可通过匿名请求读取容器和 Blob 数据。 客户端可以通过匿名请求枚举容器中的 Blob，但无法枚举存储帐户中的容器。</li><li>仅针对 Blob 的公共读取访问：可通过匿名请求读取此容器中的 Blob 数据，但容器数据不可用。 客户端无法通过匿名请求枚举容器中的 Blob</li><li>无公共读取访问：仅帐户所有者可读取容器和 Blob 数据</li></ul><p>如果想要始终允许对某些 Blob 进行匿名读取访问，最好是启用匿名访问。 若要进行更精细的控制，可以创建一个共享访问签名，这样便可使用不同的权限在指定时间间隔内委派受限访问。 确保不要意外地授予对可能包含敏感数据的容器和 Blob 的匿名访问权限</p>|
+| **步骤** | <p>默认情况下，仅存储帐户的所有者能够访问容器以及其中的所有 Blob。 若要授予匿名用户对容器及其 Blob 的读取权限，可以设置容器权限以允许公共访问。 匿名用户可以读取可公开访问的容器中的 Blob，而无需对请求进行身份验证。</p><p>容器提供了下列用于管理容器访问的选项：</p><ul><li>完全公共读取访问：可通过匿名请求读取容器和 Blob 数据。 客户端可以通过匿名请求枚举容器中的 Blob，但无法枚举存储帐户中的容器。</li><li>仅限 Blob 的公共读取访问权限：可以通过匿名请求读取此容器中的 Blob 数据，但容器数据不可用。 客户端无法通过匿名请求枚举容器中的 Blob</li><li>无公共读取访问：仅帐户所有者可读取容器和 Blob 数据</li></ul><p>如果想要始终允许对某些 Blob 进行匿名读取访问，最好是启用匿名访问。 若要进行更精细的控制，可以创建一个共享访问签名，这样便可使用不同的权限在指定时间间隔内委派受限访问。 确保不要意外地授予对可能包含敏感数据的容器和 Blob 的匿名访问权限</p>|
 
 ## <a id="limited-access-sas"></a>使用 SAS 或 SAP 授予对 Azure 存储中的对象的受限访问权限
 
@@ -576,5 +576,5 @@ await deviceClient.SendEventAsync(message);
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用 |
-| **参考**              | [共享访问签名，第 1 部分：了解 SAS 模型](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)、[共享访问签名，第 2 部分：创建 SAS 并将 SAS 用于 Blob 存储](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/)、[如何使用共享访问签名和存储访问策略来委派对帐户中对象的访问权限](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |
+| **参考**              | [共享访问签名，第 1 部分：了解 SAS 模型](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)，[共享访问签名，第 2 部分：通过 Blob 存储创建和使用 SAS](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/)，[如何使用共享访问签名和存储访问策略来委派对帐户中对象的访问权限](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |
 | **步骤** | <p>使用共享访问签名 (SAS) 是将对存储帐户中对象的受限访问权限授予其他客户端且不必公开帐户访问密钥的一种高度有效的方法。 SAS 是在其查询参数中包含对存储资源进行验证了身份的访问所需的所有信息的 URI。 要使用 SAS 访问存储资源，客户端只需将 SAS 传入到相应的构造函数或方法。</p><p>需要将存储帐户中资源的访问权限提供给不能使用帐户密钥进行信任的客户端时，可以使用 SAS。 存储帐户密钥包括主密钥和辅助密钥，这两种密钥都授予对帐户以及其中所有资源的管理访问权限。 公开这两种帐户密钥的任何一种都会向可能的恶意或负面使用开放帐户。 共享访问签名提供一种安全的方法，允许其他客户端根据你授予的权限读取、写入和删除存储帐户中的数据，而无需帐户密钥。</p><p>如果每次都有一组类似的逻辑参数，使用存储访问策略 (SAP) 是个不错的想法。 由于使用派生自存储访问策略的 SAS 可以立即吊销该 SAS，因此建议的最佳做法是始终使用存储访问策略（如果可能）。</p>|

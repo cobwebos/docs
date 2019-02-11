@@ -4,20 +4,20 @@ titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 ms.author: zarhoads
 ms.date: 09/26/2018
 ms.topic: quickstart
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: 0638f908150c90c3b73dc3036f4407d17cceb9e3
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: e176da3b9f015d3f1e9c8759ff45007ddbe4bdc8
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705695"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656492"
 ---
-# <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-vs-code"></a>快速入门：使用 Azure Dev Spaces 创建 Kubernetes 开发空间（.NET Core 和 VS Code）
+# <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-vs-code"></a>快速入门：使用 Azure Dev Spaces 创建 Kubernetes dev 空间（.NET Core 和 VS Code）
 
 本指南介绍如何：
 
@@ -37,12 +37,12 @@ ms.locfileid: "51705695"
 
     ```cmd
     az group create --name MyResourceGroup --location <region>
-    az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.11.2 --enable-addons http_application_routing --generate-ssh-keys
+    az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.10.9 --enable-addons http_application_routing --generate-ssh-keys
     ```
 
 ## <a name="set-up-azure-dev-spaces"></a>设置 Azure Dev Spaces
 
-Azure CLI 和 Azure Dev Spaces 扩展可以在 Windows、Mac 或 Linux 计算机上安装并运行。 Linux 支持以下发行版：Ubuntu（18.04、16.04 和 14.04）、Debian 8 和 9、RHEL 7、Fedora 26+、CentOS 7、openSUSE 42.2、SLES 12。
+Azure CLI 和 Azure Dev Spaces 扩展可以在 Windows、Mac 或 Linux 计算机上安装并运行。 对于 Linux，支持以下发行版：Ubuntu（18.04、16.04 和 14.04）、Debian 8 和 9、RHEL 7、Fedora 26+、CentOS 7、openSUSE 42.2 和 SLES 12。
 
 请按以下步骤设置 Azure Dev Spaces：
 
@@ -147,4 +147,4 @@ Azure Dev Spaces 不会在每次进行代码编辑时都重新生成和重新部
 了解 Azure Dev Spaces 如何帮助开发跨多个容器的更复杂应用，以及如何通过在不同的空间中使用不同的代码版本或分支来简化协作开发。 
 
 > [!div class="nextstepaction"]
-> [使用多个容器和团队开发](team-development-netcore.md)
+> [使用多个容器和团队开发](multi-service-netcore.md)

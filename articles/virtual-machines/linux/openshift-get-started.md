@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: d68215359d50ac153d6df3bbcce5a9b6171698bb
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: bf34d7e85632999056388eb74816140ce667ce10
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085433"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382363"
 ---
 # <a name="openshift-in-azure"></a>Azure 中的 OpenShift
 
@@ -35,12 +35,12 @@ OpenShift 包括用于容器业务流程和管理的 Kubernetes 容器。 它增
 有多个可用的 OpenShift 版本：
 
 - OpenShift 容器平台
-- Azure 上的 OpenShift（完全托管的 OpenShift，将于 CY2019 年初推出）
+- Azure 上的 OpenShift（完全托管的 OpenShift，将于 CY2019 年第一季度末推出）
 - OKD（以前称为 OpenShift Origin）
 - OpenShift Dedicated
 - OpenShift Online
 
-在本文所述的五个版本中，目前只有两个（OpenShift 容器平台和 OKD）可供客户部署到 Azure 中。
+在本文所述的五个版本中，目前只有以下两个可供客户部署到 Azure 中：OpenShift 容器平台和 OKD。
 
 ## <a name="openshift-container-platform"></a>OpenShift 容器平台
 
@@ -50,7 +50,7 @@ OpenShift 包括用于容器业务流程和管理的 Kubernetes 容器。 它增
 
 ## <a name="openshift-on-azure"></a>Azure 上的 OpenShift
 
-Azure 上的 OpenShift 是一种在 Azure 中运行的完全托管的 OpenShift 产品/服务。 此服务由 Microsoft 和 Red Hat 共同管理并提供支持。 群集将部署到客户的 Azure 订阅中。 此服务目前为个人预览版，计划在 CY2019 年初推出。 随着产品/服务越来越临近正式发布，将提供更多的信息。
+Azure 上的 OpenShift 是一种在 Azure 中运行的完全托管的 OpenShift 产品/服务。 此服务由 Microsoft 和 Red Hat 共同管理并提供支持。 群集将部署到客户的 Azure 订阅中。 此服务目前为个人预览版，计划在 CY2019 年第一季度末正式发布。 对于有兴趣参与个人预览版的客户，请填写[提名表单](http://aka.ms/openshiftazureinterest)。  随着产品/服务越来越临近正式发布，将提供更多的信息。
 
 ## <a name="okd-formerly-openshift-origin"></a>OKD（以前称为 OpenShift Origin）
 

@@ -7,13 +7,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/11/2018
-ms.openlocfilehash: c437f350e394dc8c264903508a2a5a66fa8225a7
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 7a1e440a8dc8f518e272df9e126771df54390ed5
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49346229"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53161978"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure 流分析查询的故障排除
 
@@ -47,47 +48,47 @@ ms.locfileid: "49346229"
 
 下列 Azure 流分析作业中的示例查询具有一个流输入、两个引用数据输入和一个向 Azure 表存储的输出。 查询联接数据中心和两个引用 blob 中的数据，以获取名称和类别信息：
 
-![示例 SELECT INTO 查询](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
+![流分析 SELECT INTO 查询示例](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
 
 请注意，虽然作业正在运行，但在输出中未生成任何事件。 在如下所示的“监视”磁贴上，可以看见输入正在生成数据，但你不知道 JOIN 的哪个步骤导致删除所有事件。
 
-![“监视”磁贴](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
+![流分析监视磁贴](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
  
 在此情况下，可添加几个额外的 SELECT INTO 语句，用于“记录”中间 JOIN 结果，以及从输入中读取的数据。
 
 此示例中添加了两个新的“临时输出”。 可任意选择你喜欢的接收器。 此处使用 Azure 存储作为示例：
 
-![添加额外的 SELECT INTO 语句](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
+![向流分析查询添加额外的 SELECT INTO 语句](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
 
 然后，可以重写查询，如下所示：
 
-![重写的 SELECT INTO 查询](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
+![重写 SELECT INTO 流分析查询](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
 
 现在再次启动作业，并运行数分钟。 查询 temp1 和 temp2 通过 Visual Studio 云资源管理器生成下列各表：
 
 **temp1 表**
-![SELECT INTO temp1 表](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
+![SELECT INTO temp1 表流分析查询](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
 
 **temp2 表**
-![SELECT INTO temp2 表](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
+![SELECT INTO temp2 表流分析查询](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
 
 可以看到，temp1 和 temp2 都拥有数据，且 temp2 中正确填充了名称列。 但是，由于输出中没有数据，因此存在问题：
 
-![SELECT INTO output1 表不包含数据](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
+![SELECT INTO output1 表不包含数据流分析查询](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
 
 通过数据采样，几乎可以确定此问题与第二个 JOIN 有关。 可以从 blob 下载并查看引用数据：
 
-![SELECT INTO ref 表](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
+![SELECT INTO ref 表流分析查询](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
 
 可以看到，此引用数据中的 GUID 的格式与 temp2 中 [来自] 列的格式不同。 这就是数据无法按预期到达 output1 的原因。
 
 可以修复数据格式、将其上传至引用 blob，然后再重新尝试：
 
-![SELECT INTO temp 表](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
+![SELECT INTO temp 表流分析查询](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
 
 此时，输出中的数据按预期格式化和填充。
 
-![SELECT INTO final 表](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
+![SELECT INTO final 表流分析查询](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
 
 ## <a name="get-help"></a>获取帮助
 

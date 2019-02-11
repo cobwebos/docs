@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: aahi
-ms.openlocfilehash: a9ea0636072bec88176a2866cab6a1612437684f
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 8c984e7c4b85940d457955b1e3cba93d7eb964e5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163956"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183571"
 ---
 # <a name="share-your-custom-search-instance"></a>共享自定义搜索实例
 

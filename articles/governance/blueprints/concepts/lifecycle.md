@@ -1,5 +1,5 @@
 ---
-title: 了解 Azure 蓝图的生命周期
+title: 了解蓝图的生命周期
 description: 了解蓝图的整个生命周期及每个阶段的详细信息。
 services: blueprints
 author: DCtheGeek
@@ -8,14 +8,15 @@ ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 882279019a5f321c6af9beab1f4d0f220781bc5c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.custom: seodec18
+ms.openlocfilehash: 84dc86f993b0c1b4c4803525a07bdd34dddd229d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094153"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309800"
 ---
-# <a name="understand-the-life-cycle-of-an-azure-blueprint"></a>了解 Azure 蓝图的生命周期
+# <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>了解 Azure 蓝图的生命周期
 
 与 Azure 中的众多资源一样，Azure 蓝图中的蓝图也有一个典型的自然生命周期。 这些蓝图会被创建、部署，并在不再需要或相关时被删除。
 蓝图支持标准的生命周期操作。 它将在这些操作的基础之上进行构建，以提供附加的状态级别，用于支持常见的持续集成和持续部署管道，供管理基础结构即代码（DevOps 中的一项关键要素）的组织使用。

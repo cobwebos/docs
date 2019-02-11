@@ -1,28 +1,28 @@
 ---
-title: Azure AD Connect：声明性预配表达式 | Microsoft 文档
+title: Azure AD Connect：声明性预配表达式 | Microsoft Docs
 description: 说明声明性设置表达式
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: e3ea53c8-3801-4acf-a297-0fb9bb1bf11d
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/18/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 26c835e6c2f658f7ad852fdd02dc8974db33e47b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a18b80677a67960a0b0c323280264bff2ffa8371
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306046"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55489465"
 ---
-# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect 同步：了解声明性预配表达式
+# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect 同步：了解声明性设置表达式
 Azure AD Connect 同步基于 Forefront Identity Manager 2010 中最先引入的声明式预配。 使用该功能可以实现完整的标识集成业务逻辑，而无需编写已编译的代码。
 
 声明性设置的一个重要组成部分是属性流中使用的表达式语言。 所用的语言是 Microsoft® Visual Basic® for Applications (VBA) 的子集。 Microsoft Office 中使用了这种语言，具有 VBScript 经验的用户都认识该语言。 声明性预配表达式语言只使用函数，不属于结构化语言。 它不提供任何方法或语句。 函数嵌套在表达式程序流中。
@@ -37,7 +37,7 @@ Azure AD Connect 同步基于 Forefront Identity Manager 2010 中最先引入的
 * 参数通过百分比符号标识：%ParameterName%
 * 字符串常量放在引号中：例如 "Contoso"（注意：必须使用直引号 ""，而不能使用弯引号“”）
 * 数字值表示不带引号，并且应为十进制。 十六进制值带有前缀 &H。 例如，98052, &HFF
-* 表示布尔值的常量： True、 False。
+* 布尔值以常量表示：True、False。
 * 内置常量和文本仅使用其名称表示：NULL、CRLF、IgnoreThisFlow
 
 ### <a name="functions"></a>函数
@@ -93,10 +93,10 @@ Active Directory 连接器为入站同步规则提供以下参数：
 
 **概述主题**
 
-* [Azure AD Connect 同步：理解和自定义同步](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同步：了解和自定义同步](how-to-connect-sync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
 
 **参考主题**
 
-* [Azure AD Connect 同步：函数参考](reference-connect-sync-functions-reference.md)
+* [Azure AD Connect 同步：函数引用](reference-connect-sync-functions-reference.md)
 

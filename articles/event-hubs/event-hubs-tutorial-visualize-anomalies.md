@@ -1,20 +1,20 @@
 ---
-title: 将发送到 Azure 事件中心的实时事件中的数据异常可视化 | Microsoft Docs
+title: 将实时事件中的数据异常可视化 - Azure 事件中心 | Microsoft Docs
 description: 教程 - 将发送到 Microsoft Azure 事件中心的实时事件中的数据异常可视化
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
 ms.author: shvija
-ms.date: 08/08/2018
 ms.topic: tutorial
 ms.service: event-hubs
-ms.custom: mvc
-ms.openlocfilehash: 04a9a3b3df44814d680f01595d70ced08a946591
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.custom: seodec18
+ms.date: 12/06/2018
+ms.openlocfilehash: add88a24da2e217d705065274f26382c1ffe8e17
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004107"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091673"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>教程：将发送到 Azure 事件中心的实时事件中的数据异常可视化
 
@@ -176,7 +176,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
    **作业名称**：使用 **contosoEHjob**。 此字段是作业的名称，必须全局唯一。
 
-   **订阅**：选择自己的订阅。
+   **订阅**：选择订阅。
 
    **资源组**：使用事件中心所用的同一资源组 (**ContosoResourcesEH**)。
 
@@ -201,7 +201,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
    **输入别名**：使用 **contosoinputs**。 此字段是定义数据查询时使用的输入流的名称。
 
-   **订阅**：选择自己的订阅。
+   **订阅**：选择订阅。
 
    **事件中心命名空间**：选择事件中心命名空间 ($**eventHubNamespace**)。 
 
@@ -227,7 +227,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
    **数据集名称**：使用 **contosoehdataset**。 此字段是要在 Power BI 中使用的数据集的名称。 
 
-   **表名称**：使用 **contosoehtable**。 此字段是要在 Power BI 中使用的表的名称。 
+   **表名**：使用 **contosoehtable**。 此字段是要在 Power BI 中使用的表的名称。 
 
    在剩余字段中使用默认值。
 

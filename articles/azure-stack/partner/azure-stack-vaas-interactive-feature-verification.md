@@ -10,15 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/19/2018
+ms.date: 01/07/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: dc0c6a37e11574cef857a7af773a9d90bea57357
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 01/07/2019
+ROBOTS: NOINDEX
+ms.openlocfilehash: 880f28a6f6e0029812e50dd97ff96d149c956b33
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972059"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252245"
 ---
 # <a name="interactive-feature-verification-testing"></a>交互式功能验证测试  
 
@@ -104,7 +106,7 @@ ms.locfileid: "52972059"
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image11.png)
 
-4.  预检查脚本成功完成后，执行的手动方案 （磁盘更换） 根据**文档**并**验证**的链接从**信息**选项卡。
+4.  预检查脚本成功完成后，每运行一次手动方案 （磁盘更换） 作为**文档**并**验证**的链接从**信息**选项卡。
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image12.png)
 

@@ -5,18 +5,18 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 02/04/2019
 ms.author: diberry
-ms.openlocfilehash: a9a6470e8dc7b9f82ae8db586fcbd6629d8ed757
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7a9217797382a31e17e0381a639387ccbf3c094d
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235558"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729687"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-nodejs"></a>快速入门：通过 Node.js 在 QnA Maker 中创建知识库
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-nodejs"></a>快速入门：在 QnA Maker 中使用 Node.js 创建知识库
 
 本快速入门将指导你完成以编程方式创建和发布示例 QnA Maker 知识库的过程。 QnA Maker 自动从[数据源](../Concepts/data-sources-supported.md)中从半结构化内容（例如常见问题解答）中自动提取问题和解答。 用于知识库的模型是在 API 请求的正文中发送的 JSON 中定义的。 
 
@@ -29,7 +29,7 @@ ms.locfileid: "51235558"
 * [Node.js 6+](https://nodejs.org/en/download/)
 * 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在仪表板的“资源管理”下选择“密钥”。 
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 
 ## <a name="create-a-knowledge-base-nodejs-file"></a>创建知识库 Node.js 文件
 

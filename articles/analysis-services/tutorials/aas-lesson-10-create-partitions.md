@@ -5,21 +5,21 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5aaaee6f9a69f9cb619935f18f614d7572a755d7
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 11be6d10589d981335d1f63d06933dba5265348a
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429673"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191830"
 ---
 # <a name="create-partitions"></a>创建分区
 
 在本课中，将创建分区来将 FactInternetSales 表拆分为较小的逻辑部件，然后可以彼此独立地处理（刷新）各个逻辑部件。 默认情况下，模型中包含的每个表都有一个分区，该分区包括该表的所有列和行。 对于 FactInternetSales 表，我们希望按年份拆分数据；每个分区包含表中每五年的数据。 可以独立处理每个分区。 若要了解详细信息，请参阅[分区](https://docs.microsoft.com/sql/analysis-services/tabular-models/partitions-ssas-tabular)。 
   
-本课预计完成时间：**15 分钟**  
+本课程预计完成时间：15 分钟  
   
 ## <a name="prerequisites"></a>先决条件  
 本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，应当已完成上一课：[第 9 课：创建层次结构](../tutorials/aas-lesson-9-create-hierarchies.md)。  
@@ -40,7 +40,7 @@ ms.locfileid: "49429673"
 
     ![aas-lesson10-query-editor](../tutorials/media/aas-lesson10-query-editor.png)
 
-6.  在“筛选行”对话框中，在“显示符合以下条件的行: OrderDate”中，保留“晚于或等于”，并在日期字段中输入 **1/1/2010**。 将“且”运算符保留为选中状态，选择“早于”，然后在日期字段中输入 **1/1/2011**，然后单击“确定”。
+6.  在“筛选行”对话框的“显示满足以下条件的行：OrderDate”中保留“晚于或等于”，然后在日期字段中输入 2010 年 1 月 1 日。 将“且”运算符保留为选中状态，选择“早于”，然后在日期字段中输入 **1/1/2011**，然后单击“确定”。
 
     ![aas-lesson10-filter-rows](../tutorials/media/aas-lesson10-filter-rows.png)
     

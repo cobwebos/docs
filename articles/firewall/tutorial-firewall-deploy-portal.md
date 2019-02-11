@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 179a13d6fbb162ae7727c6a176b60879901dc4d1
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: be4cbc7e955e56853809378f98e9733ffe4a20c3
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426180"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633718"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>教程：使用 Azure 门户部署和配置 Azure 防火墙
 
@@ -40,7 +40,7 @@ ms.locfileid: "52426180"
 > * 设置测试网络环境
 > * 部署防火墙
 > * 创建默认路由
-> * 配置应用程序以允许访问 github.com
+> * 配置应用程序以允许访问 msn.com
 > * 配置网络规则，以允许访问外部 DNS 服务器
 > * 测试防火墙
 
@@ -136,7 +136,7 @@ ms.locfileid: "52426180"
 2. 单击“网络”，然后在“特色”后面单击“查看所有”。
 3. 单击“防火墙” > “创建”。 
 4. 在“创建防火墙”页上，使用下表配置防火墙：
-   
+
    |设置  |值  |
    |---------|---------|
    |名称     |Test-FW01|
@@ -146,12 +146,12 @@ ms.locfileid: "52426180"
    |选择虚拟网络     |**使用现有项**：Test-FW-VN|
    |公共 IP 地址     |**新建**。 公共 IP 地址必须为“标准 SKU”类型。|
 
-2. 单击“查看 + 创建”。
-3. 查看摘要，然后单击“创建”以创建防火墙。
+5. 单击“查看 + 创建”。
+6. 查看摘要，然后单击“创建”以创建防火墙。
 
    需要花费几分钟时间来完成部署。
-4. 部署完成后，转到“Test-FW-RG”资源组，然后单击“Test-FW01”防火墙。
-6. 记下专用 IP 地址。 稍后在创建默认路由时需要用到此地址。
+7. 部署完成后，转到“Test-FW-RG”资源组，然后单击“Test-FW01”防火墙。
+8. 记下专用 IP 地址。 稍后在创建默认路由时需要用到此地址。
 
 ## <a name="create-a-default-route"></a>创建默认路由
 
@@ -182,7 +182,7 @@ ms.locfileid: "52426180"
 
 ## <a name="configure-an-application-rule"></a>配置应用程序规则
 
-这是允许出站访问 github.com 的应用程序规则。
+这是允许出站访问 msn.com 的应用程序规则。
 
 1. 打开“Test-FW-RG”，然后单击“Test-FW01”防火墙。
 2. 在“Test-FW01”页上的“设置”下，单击“规则”。
@@ -194,7 +194,7 @@ ms.locfileid: "52426180"
 8. 在“规则”>“目标 FQDN”中，键入 **AllowGH** 作为**名称**。
 9. 对于“源地址”，请键入 **10.0.2.0/24**。
 10. 对于“协议:端口”，请键入 **http, https**。
-11. 对于“目标 FQDN”，请键入 **github.com**
+11. 对于“目标 FQDN”，请键入 **msn.com**
 12. 单击“添加”。
 
 Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则集合。 这些 FQDN 特定于平台，不能用于其他目的。 有关详细信息，请参阅[基础结构 FQDN](infrastructure-fqdns.md)。
@@ -204,17 +204,17 @@ Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则�
 这是允许在端口 53 (DNS) 上对两个 IP 地址进行出站访问的网络规则。
 
 1. 单击“网络规则集合”选项卡。
-1. 单击“添加网络规则集合”。
-2. 对于“名称”，请键入 **Net-Coll01**。
-3. 对于“优先级”，请键入 **200**。
-4. 对于“操作”，请选择“允许”。
+2. 单击“添加网络规则集合”。
+3. 对于“名称”，请键入 **Net-Coll01**。
+4. 对于“优先级”，请键入 **200**。
+5. 对于“操作”，请选择“允许”。
 
 6. 在“规则”下，为“名称”键入 **AllowDNS**。
-8. 对于“协议”，请选择“UDP”。
-9. 对于“源地址”，请键入 **10.0.2.0/24**。
-10. 对于“目标地址”，请键入 **209.244.0.3,209.244.0.4**
-11. 对于“目标端口”，请键入 **53**。
-12. 单击“添加”。
+7. 对于“协议”，请选择“UDP”。
+8. 对于“源地址”，请键入 **10.0.2.0/24**。
+9. 对于“目标地址”，请键入 **209.244.0.3,209.244.0.4**
+10. 对于“目标端口”，请键入 **53**。
+11. 单击“添加”。
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>更改 **Srv-Work** 网络接口的主要和辅助 DNS 地址
 
@@ -235,12 +235,12 @@ Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则�
 1. 在 Azure 门户中，查看 **Srv-Work** 虚拟机的网络设置并记下专用 IP 地址。
 2. 将远程桌面连接到 **Srv-Jump** 虚拟机，然后在该虚拟机中，与 **Srv-Work** 专用 IP 地址建立远程桌面连接。
 
-5. 打开 Internet Explorer 并浏览到 http://github.com。
-6. 出现安全警报时单击“确定” > “关闭”。
+3. 打开 Internet Explorer 并浏览到 http://msn.com。
+4. 出现安全警报时单击“确定” > “关闭”。
 
-   应会看到 GitHub 主页。
+   应会看到 MSN 主页。
 
-7. 浏览到 http://www.msn.com。
+5. 浏览到 http://www.msn.com。
 
    防火墙应会阻止你访问。
 

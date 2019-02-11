@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: service-fabric
-ms.date: 04/09/2018
+ms.date: 11/29/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 65f6252ecfa4e5850824fc7aa2e6eca2bdb88692
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5d8137b2ca6c47713b7a681090963dd2749dd1f2
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205750"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634041"
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell 示例
 
@@ -33,7 +33,6 @@ ms.locfileid: "34205750"
 |-|-|
 | **创建群集** ||
 | [创建群集 (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| 创建 Azure Service Fabric 群集。 |
-|[创建测试群集 (Azure)](./scripts/service-fabric-powershell-create-test-cluster.md)| 在 Azure 上创建三节点测试 Service Fabric 群集。|
 | **管理群集、节点和基础结构** ||
 | [添加应用程序证书](./scripts/service-fabric-powershell-add-application-certificate.md)| 将应用程序 X.509 证书添加到群集中的所有节点。 |
 | [更新群集 VM 上的 RDP 端口范围](./scripts/service-fabric-powershell-change-rdp-port-range.md)|更改已部署群集中群集节点 VM 上的 RDP 端口范围。|

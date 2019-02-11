@@ -9,23 +9,22 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: ed29fb99025dbc69b9dae6a996f444954a7d88d1
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f86931aad4eab697e4a0d2dfc47a6d4ff5bfc256
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123413"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565677"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Impala 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Impala 复制数据。 本文基于总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!IMPORTANT]
-> 此连接器目前提供预览版。 可以进行试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 支持部门](https://azure.microsoft.com/support/)。
+> 此连接器目前提供预览版。 可以进行试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://azure.microsoft.com/support/)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -56,7 +55,7 @@ Impala 链接服务支持以下属性。
 | useSystemTrustStore | 指定是使用系统信任存储中的 CA 证书还是使用指定 PEM 文件中的 CA 证书。 默认值为 **false**。  | 否 |
 | allowHostNameCNMismatch | 指定通过 SSL 进行连接时是否要求 CA 颁发的 SSL 证书的名称与服务器的主机名相匹配。 默认值为 **false**。  | 否 |
 | allowSelfSignedServerCert | 指定是否允许来自服务器的自签名证书。 默认值为 **false**。  | 否 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure Integration Runtime 时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：**
 
@@ -71,8 +70,8 @@ Impala 链接服务支持以下属性。
             "authenticationType" : "UsernameAndPassword",
             "username" : "<username>",
             "password": {
-                 "type": "SecureString",
-                 "value": "<password>"
+                "type": "SecureString",
+                "value": "<password>"
             }
         },
         "connectVia": {
@@ -87,7 +86,12 @@ Impala 链接服务支持以下属性。
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Impala 数据集支持的属性列表。
 
-要从 Impala 复制数据，请将数据集的 type 属性设置为“ImpalaObject”。 此类型的数据集中没有任何其他特定于类型的属性。
+要从 Impala 复制数据，请将数据集的 type 属性设置为“ImpalaObject”。 支持以下属性：
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| type | 数据集的 type 属性必须设置为：**ImpalaObject** | 是 |
+| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -99,7 +103,8 @@ Impala 链接服务支持以下属性。
         "linkedServiceName": {
             "referenceName": "<Impala linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -115,7 +120,7 @@ Impala 链接服务支持以下属性。
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **ImpalaSource**。 | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。 | 是 |
+| query | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/28/2017
 ms.author: tamram
-ms.openlocfilehash: c38a49e82a71a23fdf621f5ac350c4242ffc2f8f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 3cb1e35617a58fcde7968ab45d437d865c91f983
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29847101"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696926"
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>计算 Blob 存储容器的大小
 
@@ -51,9 +51,9 @@ az group delete --name myResourceGroup
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
-| [az storage blob upload](/cli/azure/storage/account#az_storage_account_create) | 将本地文件上传到 Azure Blob 存储容器。 |
-| [az storage blob list](/cli/azure/storage/account/keys#az_storage_account_keys_list) | 列出 Azure Blob 存储容器中的 blob。 |
+| [az group create](/cli/azure/group) | 创建用于存储所有资源的资源组。 |
+| [az storage blob upload](/cli/azure/storage/account) | 将本地文件上传到 Azure Blob 存储容器。 |
+| [az storage blob list](/cli/azure/storage/account/keys) | 列出 Azure Blob 存储容器中的 blob。 |
 
 ## <a name="next-steps"></a>后续步骤
 

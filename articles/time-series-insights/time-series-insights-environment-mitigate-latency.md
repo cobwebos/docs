@@ -11,12 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
-ms.openlocfilehash: e301afaa2fed2b00599fbdde8178203965280c0d
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: seodec18
+ms.openlocfilehash: 3a42570b51811cfbdd4329f196b98d75c8cd53f7
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364972"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556741"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>监视并缩减限制，以减少 Azure 时序见解中的延迟
 传入数据量超过环境配置时，Azure 时序见解中可能会出现延迟或限制。
@@ -56,9 +57,9 @@ ms.locfileid: "46364972"
 |入口收到的无效消息数     | 从所有 Azure 事件中心或 Azure IoT 中心事件源读取的无效消息的计数。      |
 |入口收到的消息数   | 从所有事件中心或 IoT 中心事件源读取的消息的计数。        |
 |入口存储的字节数     | 已存储且可用于查询的事件的总大小。 仅根据属性值计算大小。        |
-|入口存储的事件数     |   已存储并可供查询的平展事件计数。      |
-|**入口收到消息时间延迟**    |  消息在事件源中排队的时间与消息在入口中处理之间的时间差（以秒为单位）。      |
-|**入口收到消息数计数延迟**    |  上次排队的消息在事件源分区中的序列号与在入口中进行处理的消息的序列号之间的差异。      |
+|**入口存储的事件数**     |   已存储并可供查询的平展事件计数。      |
+|**入口收到消息时间延迟**    |  消息在事件源中排队的时间与消息在入口中处理之间的时间差（以秒为单位）。      |
+|**入口收到消息计数延迟**    |  上次排队的消息在事件源分区中的序列号与在入口中进行处理的消息的序列号之间的差异。      |
 
 
 ![Latency](media/environment-mitigate-latency/latency.png)

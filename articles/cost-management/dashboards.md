@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: e053f2387df5d9a2855ce3242d4d7121452a73d8
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: seodec18
+ms.openlocfilehash: f232ee89993998eb25ecce73e9c2ac8e08f3198b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275932"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094095"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>使用仪表板查看关键成本指标
 
@@ -43,7 +43,7 @@ Cloudyn 中的仪表板提供报表的高级别视图。 通过仪表板，可�
 若要创建自定义仪表板：
 
 1. 在主页上，单击“新增 +”。 将显示“我的仪表板”页。  
-    ![我的仪表板](./media/dashboards/my-dashboard.png)
+    ![供添加新报表的“我的仪表板”页面](./media/dashboards/my-dashboard.png)
 2. 单击“添加新报表”。 将显示“添加报表”框。
 3. 选择想要添加到仪表板小组件的报表。 小组件被添加到仪表板。
 4. 在仪表板完成前，重复以上步骤。
@@ -63,7 +63,7 @@ Cloudyn 中的仪表板提供报表的高级别视图。 通过仪表板，可�
 若要将自定义仪表板共享至“公共”：
 
 1. 在仪表板中，单击“仪表板设置”。 将显示“仪表板设置”框。  
-    ![仪表板选项](./media/dashboards/dashboard-options.png)
+    ![自定义仪表板的仪表板设置](./media/dashboards/dashboard-options.png)
 2. 在“仪表板设置”框中，单击箭头符号，然后单击“公共”。 将显示公共仪表板确认对话框。
 3. 单击“是”。 仪表板现在可供其他人员使用。
 
@@ -116,13 +116,13 @@ Cloudyn 中的仪表板提供报表的高级别视图。 通过仪表板，可�
 -或-
 
 1. 单击“仪表板设置”，查看可用的仪表板列表并选择想要设置为默认仪表板的仪表板。  
-    ![仪表板选项](./media/dashboards/dashboard-options.png)
+    ![自定义仪表板的仪表板选项](./media/dashboards/dashboard-options.png)
 2. 在仪表板行中，单击“默认”。 将显示默认仪表板确认框。
 3. 单击 **“是”**。 该仪表板被设置为默认仪表板。
 
 ## <a name="management-dashboard"></a>“管理”仪表板
 “管理”（或 MSP 用户的 MSP 仪表板）仪表板包括主报表类型的突出显示。  
-![“管理”仪表板](./media/dashboards/management-dash.png)
+![显示各种报表的管理仪表板](./media/dashboards/management-dash.png)
 
 ### <a name="cost-entity-summary-enterprise-only"></a>成本实体摘要（仅适用于企业）
 此小组件总结托管的成本实体，包括实体数和帐户数。
@@ -158,7 +158,7 @@ Cloudyn 中的仪表板提供报表的高级别视图。 通过仪表板，可�
 
 ## <a name="cost-controller-dashboard"></a>成本控制器仪表板
 成本控制器仪表板显示预设成本分配突出显示。  
-![成本控制器仪表板](./media/dashboards/cost-controller-dashboard.png)
+![显示各种报表的成本控制器仪表板](./media/dashboards/cost-controller-dashboard.png)
 
 ### <a name="cost-over-time"></a>时段成本
 此小组件帮助发现成本趋势。 它根据过去 30 天的趋势，突出显示最后一天的成本。
@@ -198,7 +198,7 @@ Cloudyn 中的仪表板提供报表的高级别视图。 通过仪表板，可�
 ## <a name="asset-controller-dashboard"></a>资产控制器仪表板
 
 该仪表板显示运行实例数、可用和正在使用的磁盘、实例类型分发和存储信息。  
-![资产控制器仪表板](./media/dashboards/asset-controller-dashboard.png)
+![显示各种报表的资产控制器仪表板](./media/dashboards/asset-controller-dashboard.png)
 
 ### <a name="compute-instances"></a>计算实例
 此小组件根据过去 30 天的使用趋势显示运行实例数。
@@ -227,7 +227,7 @@ Cloudyn 中的仪表板提供报表的高级别视图。 通过仪表板，可�
 
 ## <a name="optimizer-dashboard"></a>优化器仪表板
 此仪表板显示精简建议、未使用的资源和可能的节省额。  
-![优化器仪表板](./media/dashboards/optimizer-dashboard.png)
+![显示各种报表的优化器仪表板](./media/dashboards/optimizer-dashboard.png)
 
 ### <a name="ri-calculator"></a>RI 计算器
 此小组件显示 RI 购买建议数，并突出显示可能的年度节省额。
@@ -257,7 +257,7 @@ Cloudyn 中的仪表板提供报表的高级别视图。 通过仪表板，可�
 
 ## <a name="s3-tracker-dashboard"></a>S3 跟踪器仪表板
 S3 跟踪器仪表板可帮助查找、分析和显示当前存储使用情况和趋势。  
-![S3 跟踪器仪表板](./media/dashboards/s3-tracker-dashboard.png)
+![显示各种报表的 S3 跟踪器仪表板](./media/dashboards/s3-tracker-dashboard.png)
 
 ### <a name="all-buckets"></a>所有存储桶
 此小组件突出显示所有存储桶的总小大 (GB) 和存储桶中的总对象数。
@@ -281,7 +281,7 @@ S3 跟踪器仪表板可帮助查找、分析和显示当前存储使用情况�
 
 ## <a name="cloud-comparison-dashboard"></a>云比较仪表板
 云比较仪表板可帮助根据定价、CPU 类型和 RAM 大小来比较不同云提供商的成本。  
-![云比较仪表板](./media/dashboards/cloud-comparison-dashboard.png)
+![显示各种报表的云比较仪表板](./media/dashboards/cloud-comparison-dashboard.png)
 
 ### <a name="ec2-cost-in-azure-by-instance-type"></a>按实例类型划分的 Azure 中的 EC2 成本
 此小组件以按需费率突出显示过去 30 天的使用情况。 它比较当前的 Amazon EC2 成本与 Azure 中可能的成本。

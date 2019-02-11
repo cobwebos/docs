@@ -3,7 +3,7 @@ title: 有关在 Azure 门户中预配 Windows SQL Server VM 的指南 | Microso
 description: 本操作指南介绍用于在 Azure 门户中创建 Windows SQL Server 2017 虚拟机的选项。
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
@@ -13,13 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 05/04/2018
-ms.author: jroth
-ms.openlocfilehash: d2bcabf845a2178abbebe8f2998d58b462e37c78
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: fd01fdd3f7f8803dc7221bd0bd6c993120a83d44
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38704532"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330885"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>如何在 Azure 门户中预配 Windows SQL Server 虚拟机
 
@@ -54,7 +55,7 @@ ms.locfileid: "38704532"
 
 1. 查看可用的 SQL Server 映像。 每个映像均可标识 SQL Server 版本和操作系统。
 
-1. 选择名为“免费 SQL Server 许可证: 基于 Windows Server 2016 的 SQL Server 2017 Developer”的映像。
+1. 选择名为“免费 SQL Server 许可证：Windows Server 2016 上的 SQL Server 2017 Developer”的映像。
 
    > [!TIP]
    > 本演示使用 Developer（开发人员）版，因为该版本是 SQL Server 的完整功能版本，并且可免费用于开发测试。 只需支付运行 VM 的成本。 但是，本教程中使用的映像可随意选择。 有关可用映像的说明，请参阅 [SQL Server Microsoft 虚拟机概述](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo)。
@@ -73,7 +74,7 @@ ms.locfileid: "38704532"
 ## <a id="configure"></a> 配置选项
 有五个用于配置 SQL Server 虚拟机的窗口。
 
-| 步骤 | 说明 |
+| 步骤 | Description |
 | --- | --- |
 | **基础知识** |[配置基本设置](#1-configure-basic-settings) |
 | **大小** |[选择虚拟机大小](#2-choose-virtual-machine-size) |

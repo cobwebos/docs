@@ -4,7 +4,7 @@ items:
 - name: 概述
   items:
   - name: 什么是 Azure 备份？
-    href: backup-introduction-to-azure-backup.md
+    href: backup-overview.md
 - name: 快速入门
   items:
   - name: 备份 VM - 门户
@@ -34,6 +34,10 @@ items:
     href: backup-rm-template-samples.md
 - name: 概念
   items:
+  - name: 备份体系结构
+    href: backup-architecture.md
+  - name: 备份支持矩阵
+    href: backup-support-matrix.md
   - name: 常见问题解答
     items:
     - name: 恢复服务保管库常见问题解答
@@ -122,8 +126,6 @@ items:
         href: backup-azure-vms-encryption.md
       - name: 在创建 VM 期间启用 VM 备份
         href: backup-during-vm-creation.md
-      - name: 升级到 VM 备份堆栈 V2
-        href: backup-upgrade-to-vm-backup-stack-v2.md
     - name: 管理和监视 VM
       items:
       - name: 在 Azure 门户中管理 Azure VM 备份
@@ -136,6 +138,8 @@ items:
         href: backup-azure-restore-files-from-vm.md
       - name: 在 Azure 门户中还原 VM
         href: backup-azure-arm-restore-vms.md
+      - name: 即时还原功能
+        href: backup-instant-restore-capability.md
       - name: 还原加密 VM
         href: backup-azure-vms-encryption.md
       - name: 还原已加密 VM 的 Key Vault 密钥和机密
@@ -170,6 +174,8 @@ items:
       href: backup-dpm-automation.md
     - name: Azure 门户中的 Windows Server
       href: backup-client-automation.md
+    - name: Azure 门户中的 Azure 文件共享
+      href: backup-azure-afs-automation.md
   - name: 使用 Azure 备份 REST API
     items:
     - name: 创建恢复服务保管库
@@ -236,8 +242,12 @@ items:
     href: /rest/api/backup/
   - name: REST - 恢复服务保管库
     href: /rest/api/recoveryservices/
+  - name: 资源管理器模板
+    href: /azure/templates/microsoft.recoveryservices/allversions
 - name: 资源
   items:
+  - name: 常见安全属性
+    href: backup-security-attributes.md
   - name: Azure 路线图
     href: https://azure.microsoft.com/roadmap/
   - name: MSDN 论坛
@@ -250,9 +260,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=backup
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=backup
-ms.openlocfilehash: a10a5db8c8d364d5ea1a09180e14826e67eb2c01
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 8b9e6d742cfa1b4d46599747c03b8e3c3ba8c101
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317596"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507954"

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/23/2018
 ms.author: amsriva
-ms.openlocfilehash: e7020ef5c1f7411c7226e7a2db489112ee6bf0a4
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: fcb49f532d5dfcd340baf017bd55c69d4e81e0e6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945495"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630676"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>应用程序网关的端到端 SSL 概述
 
@@ -31,7 +31,7 @@ ms.locfileid: "49945495"
 应用程序网关只会与已知的后端实例通信，这些实例已将其证书加入应用程序网关的允许列表。 要启用证书允许列表，必须将后端服务器证书的公钥上传到应用程序网关（而不是根证书）。 然后仅允许连接到已知且加入允许列表的后端。 剩余的后端会导致网关错误。 自签名证书仅用于测试目的，不建议用于生产工作负荷。 如前面的步骤中所述，此类证书必须加入应用程序网关的允许列表，才可以使用。
 
 > [!NOTE]
-> Azure Web 应用等受信任的 Azure 服务不需要身份验证证书设置。
+> Azure 应用服务等受信任的 Azure 服务不需要身份验证证书设置。
 
 ## <a name="end-to-end-ssl-with-the-v2-sku"></a>端到端 SSL 与 v2 SKU
 
@@ -39,7 +39,7 @@ ms.locfileid: "49945495"
 
 - 由 CN 与 HTTP 后端设置中的主机名匹配的知名 CA 颁发机构签名的证书不需要任何额外的步骤即可使端到端 SSL 工作。 
 
-   例如，如果后端证书由知名 CA 颁发并具有 contoso.com 的 CN，并且后端 http 设置的主机字段也设置为 contoso.com，则不需要其他步骤。 可以将后端 http 设置协议设置为 HTTPS，并且运行状况探测和数据路径都将启用 SSL。 如果使用 Azure Web 应用或其他 Azure Web 服务作为后端，则这些也是隐式受信任的，端到端 SSL 不需要其他步骤。
+   例如，如果后端证书由知名 CA 颁发并具有 contoso.com 的 CN，并且后端 http 设置的主机字段也设置为 contoso.com，则不需要其他步骤。 可以将后端 http 设置协议设置为 HTTPS，并且运行状况探测和数据路径都将启用 SSL。 如果使用 Azure 应用服务或其他 Azure Web 服务作为后端，则这些也是隐式受信任的，端到端 SSL 不需要其他步骤。
 - 如果证书是自签名证书，或是由未知中介签名的证书，那么，要在 v2 SKU 中启用端到端 SSL，必须定义受信任的根证书。 应用程序网关仅与符合以下条件的后端进行通信：后端的服务器证书的根证书与池关联的后端 http 设置中的受信任根证书列表之一匹配。
 - 除了根证书匹配之外，应用程序网关还会验证后端 http 设置中指定的主机设置是否与后端服务器的 SSL 证书提供的公用名 (CN) 的主机设置相匹配。 尝试与后端建立 SSL 连接时，应用程序网关会将服务器名称指示 (SNI) 扩展设置为后端 http 设置中指定的主机。
 - 如果已选择**从后端地址选择主机名**而不是选择后端 http 设置中的主机字段，则 SNI 标头始终设置为后端池 FQDN，并且后端服务器 SSL 证书上的 CN 必须与其 FQDN 匹配。 在此方案中不支持具有 IP 的后端池成员。

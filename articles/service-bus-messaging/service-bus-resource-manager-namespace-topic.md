@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 09/11/2018
+ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 08b4ef6ea59123524500188428eb0bc03d85138b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 8155a9c8dd8e16ae9853f78ea949954fd15d30e1
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409977"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847503"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建包含主题和订阅的服务总线命名空间
 
@@ -130,6 +130,8 @@ ms.locfileid: "47409977"
         }]
     }]
 ```
+
+有关 JSON 语法和属性，请参阅[命名空间](/azure/templates/microsoft.servicebus/namespaces)、[主题](/azure/templates/microsoft.servicebus/namespaces/topics)和[订阅](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions)。
 
 ## <a name="commands-to-run-deployment"></a>运行部署的命令
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: 342fdce9a0e9b47380a8d8c975703ebb7f57e3b6
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: b9e9c0b141987f8af563944c8eee216b8218846c
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43087123"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352880"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从 Azure SQL 数据库中的表加载到 Azure Blob 存储。 
@@ -43,7 +42,7 @@ ms.locfileid: "43087123"
 ## <a name="overview"></a>概述
 下面是高级解决方案示意图： 
 
-![以增量方式加载数据](media\tutorial-Incremental-copy-portal\incrementally-load.png)
+![以增量方式加载数据](media/tutorial-Incremental-copy-portal/incrementally-load.png)
 
 下面是创建此解决方案所要执行的重要步骤： 
 
@@ -136,7 +135,7 @@ ms.locfileid: "43087123"
 运行以下命令，在 SQL 数据库中创建存储过程：
 
 ```sql
-CREATE PROCEDURE sp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
+CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
 AS
 
 BEGIN
@@ -172,7 +171,7 @@ END
 5. 选择数据工厂的**位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 6. 选择“固定到仪表板”。     
 7. 单击“创建”。      
-8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
+8. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”。 
 
     ![“正在部署数据工厂”磁贴](media/tutorial-incremental-copy-portal/deploying-data-factory.png)
 9. 创建完成后，可以看到图中所示的“数据工厂”页。
@@ -303,7 +302,7 @@ END
     ![存储过程活动 - SQL 帐户](./media/tutorial-incremental-copy-portal/sp-activity-sql-account-settings.png)
 26. 切换到“存储过程”选项卡，然后执行以下步骤： 
 
-    1. 至于“存储过程名称”，请选择 **sp_write_watermark**。 
+    1. 对于“存储过程名称”，请选择 **usp_write_watermark**。 
     2. 若要指定存储过程参数的值，请单击“导入参数”，然后为参数输入以下值： 
 
         | 名称 | 类型 | 值 | 

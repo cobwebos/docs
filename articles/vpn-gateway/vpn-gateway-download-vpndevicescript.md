@@ -2,24 +2,18 @@
 title: 下载用于 S2S VPN 连接的 VPN 设备配置脚本：Azure 资源管理器 | Microsoft Docs
 description: 本文逐步讲解如何使用 Azure 资源管理器下载采用 Azure VPN 网关的 S2S VPN 连接的 VPN 设备配置脚本。
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
 manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/29/2018
+ms.date: 01/09/2019
 ms.author: yushwang
-ms.openlocfilehash: 254f5012bfbf827aebc20d90405636dcb204193c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0b0a7ce63fa2d0154300dd2e8f9cf88d985a8a0a
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507684"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>下载用于 S2S VPN 连接的 VPN 设备配置脚本
 

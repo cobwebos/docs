@@ -9,17 +9,16 @@ ms.assetid: bc5e801d-0b3b-48ec-9501-bb4146ea17f1
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: eb4579c2d94ae610d21b7221c0b410b07268d419
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: daf0b1c12ab10230690a62eb5dc772417d8b92f3
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051792"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024495"
 ---
 # <a name="azure-data-factory---naming-rules"></a>Azure 数据工厂 - 命名规则
 > [!NOTE]

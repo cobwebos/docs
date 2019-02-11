@@ -1,6 +1,6 @@
 ---
 title: 保护对 Azure 逻辑应用的访问 | Microsoft 文档
-description: 保护对 Azure 逻辑应用工作流中的触发器、输入和输出、操作参数和服务的访问
+description: 增加 Azure 逻辑应用的安全性，包括触发器、输入和输出、参数和其他服务
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,262 +9,362 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
-ms.date: 11/22/2016
-ms.openlocfilehash: 0fe35b67a424caedcea2c71885d1757943ace9d1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/08/2019
+ms.openlocfilehash: a7d34b76eb6184e546c8217aa6b3723819be70be
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232590"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189524"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>保护 Azure 逻辑应用中的访问
 
-可以通过以下方式保护对逻辑应用中不同组件的访问：
+以下是逻辑应用中可以保护访问权限的元素：
 
-* 保护使用 HTTP 请求触发器触发逻辑应用工作流的访问。
-* 保护管理、编辑或读取逻辑应用的访问。
-* 保护对逻辑应用运行的输入和输出以外内容的访问。
-* 保护逻辑应用工作流中的操作的参数或输入。
-* 保护对从逻辑应用工作流接收请求的服务的访问。
+* [请求或 Webhook 触发器](#secure-triggers)
+* [管理、编辑或查看](#secure-operations)逻辑应用等操作
+* 逻辑应用运行历史记录中的[输入和输出](#secure-run-history)
+* [操作参数和输入](#secure-action-parameters)
+* 从逻辑应用[获取请求的服务](#secure-requests)
 
-## <a name="secure-access-to-trigger"></a>保护对触发器的访问
+<a name="secure-triggers"></a>
 
-在使用针对 HTTP 请求（[请求](../connectors/connectors-native-reqres.md)或 [Webhook](../connectors/connectors-native-webhook.md)）触发的逻辑应用时，可以限制访问，以便只有经过授权的客户端可以触发该逻辑应用。 发往逻辑应用的所有请求经过加密，并通过 SSL 受到保护。
+## <a name="secure-access-to-request-triggers"></a>保护对请求触发器的访问
 
-### <a name="shared-access-signature"></a>共享访问签名
+当逻辑应用使用基于 HTTP 请求的触发器（如[请求](../connectors/connectors-native-reqres.md)或 [Webhook](../connectors/connectors-native-webhook.md) 触发器）时，你可以限制访问权限，以便只有经过授权的客户端才能启动逻辑应用。 逻辑应用接收到的所有请求都使用安全套接字层 (SSL) 协议进行加密和保护。 可使用不同的方法来保护对此触发器类型的访问：
 
-逻辑应用的每个请求终结点的 URL 包含[共享访问签名 (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 每个 URL 包含 `sp`、`sv` 和 `sig` 查询参数。 权限由 `sp` 指定，对应于允许的 HTTP 方法；`sv` 是用于生成的版本，`sig` 用于对触发器访问进行身份验证。 签名是使用 SHA256 算法生成的，所有 URL 路径和属性中包含一个密钥。 该机密密钥会永远不会公开或向外发布，而是保留加密状态，存储为逻辑应用的一部分。 逻辑应用只会向包含有效签名（使用密钥创建）的触发器授权。
+* [生成共享访问签名](#sas)
+* [限制传入 IP 地址](#restrict-incoming-IP)
+* [添加 Azure Active Directory、OAuth 或其他安全标准](#add-authentication)
+
+<a name="sas"></a>
+
+### <a name="generate-shared-access-signatures"></a>生成共享访问签名
+
+逻辑应用的每个请求终结点在终结点的 URL 中都包含一个[共享访问签名 (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 每个 URL 都包含 `sp`、`sv` 和 `sig` 查询参数：
+
+* `sp` 指定映射到允许使用的 HTTP 方法的权限。
+* `sv` 指定用于生成签名的版本。
+* `sig` 用于对触发器的访问进行身份验证。
+
+签名是使用 SHA256 算法生成的，所有 URL 路径和属性中都包含访问密钥。 该密钥永远不会公开或发布，而是一直处于加密状态并存储在逻辑应用中。 逻辑应用仅向那些包含有效签名（使用密钥创建）的触发器授权。 
+
+以下是有关使用共享访问签名保护访问权限的详细信息：
+
+* [重新生成访问密钥](#access-keys)
+* [创建具有到期日期的回调 URL](#expiring-URLs)
+* [使用主密钥或辅助密钥创建 URL](#primary-secondary-key)
+
+<a name="access-keys"></a>
 
 #### <a name="regenerate-access-keys"></a>重新生成访问密钥
 
-随时可以通过 REST API 或 Azure 门户重新生成新的安全密钥。 以前使用旧密钥生成的所有当前 URL 已失效，不再有权触发逻辑应用。
+要随时重新生成新的安全访问密钥，请使用 Azure REST API 或 Azure 门户。 以前使用旧密钥生成的所有 URL 已失效，不再有权触发逻辑应用。 重新生成后检索的 URL 将使用新访问密钥进行签名。
 
-1. 在 Azure 门户中，打开要重新生成密钥的逻辑应用
-1. 单击“设置”下面的“访问密钥”菜单项
-1. 选择要重新生成的密钥并完成生成过程
+1. 在 Azure 门户中，打开包含要重新生成密钥的逻辑应用。
 
-重新生成后检索的 URL 将使用新访问密钥进行签名。
+1. 在逻辑应用菜单的“设置”下，选择“访问密钥”。
 
-#### <a name="creating-callback-urls-with-an-expiration-date"></a>创建附带过期日期的回调 URL
+1. 选择要重新生成的密钥并完成生成过程。
 
-如果要与其他人共享 URL，可以根据需要生成具有特定密钥和过期日期的 URL。 这样便可以顺利地滚动更新密钥，或者将触发应用的访问活动限定为特定的时间范围。 可通过[逻辑应用 REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers) 为 URL 指定过期日期：
+<a name="expiring-urls"></a>
 
-``` http
-POST 
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl?api-version=2016-06-01
-```
+#### <a name="create-callback-urls-with-expiration-dates"></a>创建附带到期日期的回调 URL
 
-在正文中，包含 JSON 日期字符串形式的属性 `NotAfter`，该属性返回只在 `NotAfter` 日期和时间之前有效的回调 URL。
-
-#### <a name="creating-urls-with-primary-or-secondary-secret-key"></a>创建附带主要或辅助机密密钥的 URL
-
-生成或列出基于请求的触发器的回调 URL 时，还可以指定要使用哪个密钥来为 URL 签名。  可按如下所示，通过[逻辑应用 REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers) 生成由特定密钥签名的 URL：
+如果与其他各方共享基于请求的触发器终结点的 URL，则可以根据需要生成具有特定密钥和到期日期的回调 URL。 然后，可以无缝地滚动密钥，或将触发逻辑应用的访问限制在特定的时间范围内。 可以使用[逻辑应用 REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers)为 URL 指定到期日期，例如：
 
 ``` http
 POST 
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl?api-version=2016-06-01
 ```
 
-在正文中，包含值为 `Primary` 或 `Secondary` 的属性 `KeyType`。  此属性将返回由指定的安全密钥签名的 URL。
+在正文中，使用 JSON 日期字符串包含 `NotAfter` 属性。 该属性返回仅在 `NotAfter` 日期和时间之前有效的回调 URL。
+
+<a name="primary-secondary-key"></a>
+
+#### <a name="create-urls-with-primary-or-secondary-secret-key"></a>创建附带主密钥或辅助密钥的 URL
+
+生成或列出基于请求的触发器的回调 URL 时，还可以指定用于对 URL 进行签名的密钥。 可以使用[逻辑应用 REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers) 生成由特定密钥签名的 URL，例如：
+
+``` http
+POST 
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl?api-version=2016-06-01
+```
+
+在正文中，包含值为 `Primary` 或 `Secondary` 的 `KeyType` 属性。 此属性返回由指定的安全密钥签名的 URL。
+
+<a name="restrict-incoming-ip"></a>
 
 ### <a name="restrict-incoming-ip-addresses"></a>限制传入 IP 地址
 
-除了共享访问签名以外，还可以限制为只能通过特定的客户端调用逻辑应用。  例如，如果要通过 Azure API 管理来管理终结点，可将逻辑应用限制为仅当请求来自 API 管理实例 IP 地址时，才接受该请求。
+除了共享访问签名外，还建议限制可以调用逻辑应用的特定客户端。  
+例如，如果使用 Azure API 管理来管理请求终结点，则可以将逻辑应用限制为仅接受来自 API 管理实例的 IP 地址的请求。 
 
-可在逻辑应用设置中配置此项设置：
+#### <a name="set-ip-ranges---azure-portal"></a>设置 IP 范围 - Azure 门户
 
-1. 在 Azure 门户中，打开要添加 IP 地址限制的逻辑应用
-1. 单击“设置”下的“工作流设置”菜单项
-1. 指定触发器接受的 IP 地址范围列表
+要在 Azure 门户中设置此限制，请转到逻辑应用的设置： 
 
-有效的 IP 范围采用 `192.168.1.1/32` 格式。 如果希望逻辑应用只作为嵌套逻辑应用触发，请选择“仅限其他逻辑应用”选项。 此选项将一个空数组写入资源，意味着只有来自服务本身（父逻辑应用）的调用才能成功触发。
+1. 在 Azure 门户的逻辑应用设计器中打开逻辑应用。 
+
+1. 在逻辑应用的菜单中，在“设置”下，选择“工作流设置”。
+
+1. 在“访问控制配置” > 
+“允许的入站 IP 地址”下，请选择“特定 IP 范围”。
+
+1. 在“触发器的 IP 范围”下，请指定触发器接受的 IP 地址范围。 有效的 IP 范围使用这些格式：x.x.x.x/x 或 x.x.x.x-x.x.x.x 
+
+如果想让逻辑应用仅作为嵌套逻辑应用触发，请从“允许的入站 IP 地址”列表中选择“仅限其他逻辑应用”。 此选项会将空数组写入逻辑应用资源，因此只有来自逻辑应用服务（父级逻辑应用）的调用才能触发嵌套的逻辑应用。
 
 > [!NOTE]
-> 不管 IP 是什么，仍可通过 REST API/管理 `/triggers/{triggerName}/run` 运行包含请求触发器的逻辑应用。 在此情况下需要针对 Azure REST API 执行身份验证，所有事件会显示在 Azure 审核日志中。 请相应地设置访问控制策略。
+> 无论 IP 地址如何，仍可通过 Azure REST API 或 API 管理使用 `/triggers/{triggerName}/run` 来运行具有基于请求的触发器的逻辑应用。 不过，这种情况下仍需要针对 Azure REST API 进行身份验证，所有事件都会显示在 Azure 审核日志中。 请确保相应地设置访问控制策略。
 
-#### <a name="setting-ip-ranges-on-the-resource-definition"></a>在资源定义中设置 IP 范围
+#### <a name="set-ip-ranges---logic-app-deployment-template"></a>设置 IP 范围 - 逻辑应用的部署模板
 
-如果使用[部署模板](logic-apps-create-deploy-template.md)自动完成部署，可在资源模板中配置 IP 范围设置。  
+如果使用 [Azure 资源管理器部署模板](logic-apps-create-deploy-template.md)自动执行逻辑应用部署，则可以在该模板中设置 IP 范围，例如：
 
 ``` json
 {
-    "properties": {
-        "definition": {
-        },
-        "parameters": {},
-        "accessControl": {
-            "triggers": {
-                "allowedCallerIpAddresses": [
-                    {
-                        "addressRange": "192.168.12.0/23"
-                    },
-                    {
-                        "addressRange": "2001:0db8::/64"
-                    }
-                ]
-            }
-        }
-    },
-    "type": "Microsoft.Logic/workflows"
+   "properties": {
+      "definition": {},
+      "parameters": {},
+      "accessControl": {
+         "triggers": {
+            "allowedCallerIpAddresses": [
+               {
+               "addressRange": "192.168.12.0/23"
+               },
+               {
+                  "addressRange": "2001:0db8::/64"
+               }
+            ]
+         }
+      }
+   },
+   "type": "Microsoft.Logic/workflows",
 }
-
 ```
 
-### <a name="adding-azure-active-directory-oauth-or-other-security"></a>添加 Azure Active Directory、OAuth 或其他安全标准
+<a name="add-authentication"></a>
 
-为了在逻辑应用顶层添加更多授权协议，[Azure API 管理](https://azure.microsoft.com/services/api-management/)为能够将逻辑应用作为 API 公开的任何终结点提供了丰富的监视、安全、策略和文档功能。 Azure API 管理可以公开逻辑应用的公共或专用终结点，该终结点可以利用 Azure Active Directory、证书、OAuth 或其他安全标准。 收到请求时，Azure API 管理将请求转发到逻辑应用（即时执行任何所需的转换或限制）。 可以使用逻辑应用中的传入 IP 范围设置，限制为只能通过 API 管理触发逻辑应用。
+### <a name="add-azure-active-directory-oauth-or-other-security"></a>添加 Azure Active Directory、OAuth 或其他安全标准
 
-## <a name="secure-access-to-manage-or-edit-logic-apps"></a>保护对逻辑应用管理或编辑功能的访问
+要向逻辑应用添加更多授权协议，请考虑使用 [Azure API 管理](https://azure.microsoft.com/services/api-management/)。 此服务为所有终结点提供了丰富的监视信息、安全性、策略和文档，并且可以将逻辑应用公开为 API。 API 管理可以公开逻辑应用的公共或专用终结点，然后让其使用 Azure Active Directory、OAuth、证书或其他安全标准。 当 API 管理收到请求时，此服务会将请求发送到逻辑应用，同时也会进行任何必要的转换或限制。 要仅让 API 管理触发逻辑应用，可以使用逻辑应用的传入 IP 范围设置。 
 
-可以限制对逻辑应用中管理操作的访问，以便只有特定的用户或组才能对资源执行操作。 逻辑应用使用 Azure [基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 功能，用户可以使用相同的工具对它进行自定义。  还可以将订阅的成员分配到几个内置角色：
+<a name="secure-operations"></a>
 
-* **逻辑应用参与者** - 提供查看、编辑和更新逻辑应用的访问权限。  无法删除资源或执行管理操作。
-* **逻辑应用操作员** - 可以查看逻辑应用和运行历史记录，以及启用/禁用相关功能。  无法编辑或更新定义。
+## <a name="secure-access-to-logic-app-operations"></a>保护对逻辑应用操作的访问
 
-还可以使用 [Azure 资源锁](../azure-resource-manager/resource-group-lock-resources.md)来防止更改或删除逻辑应用。 此功能非常有用，它可以防止修改或删除生产资源。
+要仅允许特定用户或组在逻辑应用上运行操作，可以限制对管理、编辑和查看等任务的访问权限。 逻辑应用支持 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md)，你可以为订阅中的成员自定义或分配内置角色，例如：
 
-## <a name="secure-access-to-contents-of-the-run-history"></a>保护对运行历史记录内容的访问
+* **逻辑应用参与者**：用户可以查看、编辑和更新逻辑应用。 该角色无法删除逻辑应用或运行管理员操作。
+* **逻辑应用操作员**：用户可以查看逻辑应用和运行历史记录，并启用或禁用逻辑应用。 该角色无法编辑或更新逻辑应用。
 
-可以限制为只能通过特定的 IP 地址范围访问以前运行应用时提供的输入或输出内容。  
+要防止他人更改或删除逻辑应用，可以使用 [Azure 资源锁](../azure-resource-manager/resource-group-lock-resources.md)。 此功能可以帮助防止他人更改或删除生产资源。
 
-工作流运行中的所有数据都已经过传输中加密和静态加密。 发出运行历史记录的调用时，服务将对请求进行身份验证，并提供请求和响应输入与输出的链接。 可以保护此链接，以便只有来自指定 IP 地址范围的内容查看请求才能返回内容。 此功能可用于其他访问控制。 甚至可以指定类似于 `0.0.0.0` 的 IP 地址，使得任何人都无法访问输入/输出。 只有拥有管理员权限的人员才能解除此限制，使“适时”访问工作流内容成为可能。
+<a name="secure-run-history"></a>
 
-可以在 Azure 门户的资源设置中配置此项设置：
+## <a name="secure-access-to-logic-app-run-history"></a>保护对逻辑应用运行历史记录的访问
 
-1. 在 Azure 门户中，打开要添加 IP 地址限制的逻辑应用
-2. 单击“设置”下面的“访问控制配置”菜单项
-3. 指定有权访问内容的 IP 地址范围列表
+要保护之前逻辑应用运行中传递的输入或输出内容，可以限制为通过特定 IP 地址范围访问。 此功能提供了更多的访问控制。 在传输过程中和静态存储期间，逻辑应用运行中的所有数据都是加密的。 请求逻辑应用的运行历史记录时，逻辑应用对该请求进行身份验证，并提供指向逻辑应用工作流中来自请求和响应的输入和输出的链接。 可以保护这些链接，以便只有来自特定 IP 地址的请求才能返回该内容。 例如，甚至可以指定 IP 地址（例如 `0.0.0.0-0.0.0.0`），这样就没有人可以访问输入和输出。 只有拥有管理员权限的人员才能删除此限制，使“实时”访问逻辑应用的内容成为可能。
 
-#### <a name="setting-ip-ranges-on-the-resource-definition"></a>在资源定义中设置 IP 范围
+### <a name="set-ip-ranges---azure-portal"></a>设置 IP 范围 - Azure 门户
 
-如果使用[部署模板](logic-apps-create-deploy-template.md)自动完成部署，可在资源模板中配置 IP 范围设置。  
+要在 Azure 门户中设置此限制，请转到逻辑应用的设置：
+
+1. 在 Azure 门户的逻辑应用设计器中打开逻辑应用。 
+
+1. 在逻辑应用的菜单中，在“设置”下，选择“工作流设置”。
+
+1. 在“访问控制配置” > 
+“允许的入站 IP 地址”下，请选择“特定 IP 范围”。
+
+1. 在“内容的 IP 范围”下，指定可以访问输入和输出中内容的 IP 地址范围。 有效的 IP 范围使用这些格式：x.x.x.x/x 或 x.x.x.x-x.x.x.x 
+
+### <a name="set-ip-ranges---logic-app-deployment-template"></a>设置 IP 范围 - 逻辑应用的部署模板
+
+如果使用 [Azure 资源管理器部署模板](logic-apps-create-deploy-template.md)自动执行逻辑应用部署，则可以在该模板中设置 IP 范围，例如：
 
 ``` json
 {
-    "properties": {
-        "definition": {
-        },
-        "parameters": {},
-        "accessControl": {
-            "contents": {
-                "allowedCallerIpAddresses": [
-                    {
-                        "addressRange": "192.168.12.0/23"
-                    },
-                    {
-                        "addressRange": "2001:0db8::/64"
-                    }
-                ]
-            }
-        }
-    },
-    "type": "Microsoft.Logic/workflows"
+   "properties": {
+      "definition": {},
+      "parameters": {},
+      "accessControl": {
+         "contents": {
+            "allowedCallerIpAddresses": [
+               {
+               "addressRange": "192.168.12.0/23"
+               },
+               {
+                  "addressRange": "2001:0db8::/64"
+               }
+            ]
+         }
+      }
+   },
+   "type": "Microsoft.Logic/workflows",
 }
 ```
 
-## <a name="secure-parameters-and-inputs-within-a-workflow"></a>保护工作流中的参数和输入
+<a name="secure-action-parameters"></a>
 
-对于跨环境部署，可在某些方面将工作流定义参数化。 此外，其中的一些参数可能是安全参数，不希望在编辑工作流时显示这些参数，例如，用于对 HTTP 操作进行 [Azure Active Directory 身份验证](../connectors/connectors-native-http.md#authentication)的客户端 ID 和客户端密码。
+## <a name="secure-action-parameters-and-inputs"></a>保护操作参数和输入
 
-### <a name="using-parameters-and-secure-parameters"></a>使用参数和安全参数
+在各种环境中进行部署时，建议对逻辑应用工作流定义中的特定方面进行参数化处理。 例如，可以在 [Azure 资源管理器部署模板](../azure-resource-manager/resource-group-authoring-templates.md#parameters)中指定参数。 要在运行时访问资源的参数值，可以使用[工作流定义语言](https://aka.ms/logicappsdocs)提供的 `@parameters('parameterName')` 表达式。 
 
-[工作流定义语言](https://aka.ms/logicappsdocs)提供一项 `@parameters()` 操作用于在运行时访问资源参数的值。 此外，可[在资源部署模板中指定参数](../azure-resource-manager/resource-group-authoring-templates.md#parameters)。 如果将参数类型指定为 `securestring`，它不会连同资源定义的剩余部分一起返回，并且在部署后无法通过查看资源来访问该参数。
+在使用 `securestring` 参数类型编辑逻辑应用的工作流时，也可以保护不希望显示的特定参数。 例如，可以保护用于向 [Azure Active Directory](../connectors/connectors-native-http.md#authentication) 验证 HTTP 操作的客户端 ID 和客户端密码等参数。
+将参数的类型指定为 `securestring` 时，该参数不会随资源定义一起返回，并且在部署后无法通过查看资源来访问该参数。 
 
 > [!NOTE]
-> 如果在标头或请求正文中使用参数，在访问运行历史记录和传出 HTTP 请求时，可能会看到该参数。 请务必相应地设置内容访问策略。
-> 始终不能通过输入或输出看见授权标头。 因此，如果在输入或输出中使用密钥，则无法检索密钥。
+> 如果在请求的标头或正文中使用参数，当访问逻辑应用的运行历史记录和传出的 HTTP 请求时，该参数可能是可见的。 请务必相应地设置内容访问策略。
+> 始终不能通过输入或输出看见授权标头。 因此，如果在此处使用机密，则无法检索机密。
 
-#### <a name="resource-deployment-template-with-secrets"></a>包含机密的资源部署模板
+此示例显示 Azure 资源管理器部署模板，该模板使用多个具有 `securestring` 类型的运行时参数： 
 
-以下示例显示在运行时引用安全参数 `secret` 的部署。 在单独的参数文件中，可以指定 `secret` 的环境值，或者在部署时利用 [Azure 资源管理器 KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md) 检索密钥。
+* `armTemplatePasswordParam`，这是逻辑应用定义的 `logicAppWfParam` 参数的输入
 
-``` json
+* `logicAppWfParam`，这是使用基本身份验证的 HTTP 操作的输入
+
+在单独的参数文件中，可以指定 `armTemplatePasswordParam` 参数的环境值，也可以使用 [Azure 资源管理器 KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md) 在部署时检索机密。
+内部 `parameters` 部分属于逻辑应用的工作流定义，而外部 `parameters` 部分属于部署模板。
+
+```json
 {
    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
    "contentVersion": "1.0.0.0",
    "parameters": {
-      "secretDeploymentParam": {
-         "type": "securestring"
+      "logicAppName": {       
+         "type": "string",
+         "minLength": 1,
+         "maxLength": 80,
+         "metadata": {         
+            "description": "Name of the Logic App."       
+         }     
+      },
+      "armTemplatePasswordParam": {
+         "type": "securestring"     
+      },     
+      "logicAppLocation": {       
+         "type": "string",
+         "defaultValue": "[resourceGroup().location]",
+         "allowedValues": [         
+            "[resourceGroup().location]",
+            "eastasia",
+            "southeastasia",
+            "centralus",
+            "eastus",
+            "eastus2",
+            "westus",
+            "northcentralus",
+            "southcentralus",
+            "northeurope",
+            "westeurope",
+            "japanwest",
+            "japaneast",
+            "brazilsouth",
+            "australiaeast",
+            "australiasoutheast",
+            "southindia",
+            "centralindia",
+            "westindia",
+            "canadacentral",
+            "canadaeast",
+            "uksouth",
+            "ukwest",
+            "westcentralus",
+            "westus2"
+         ],
+         "metadata": {
+            "description": "Location of the Logic App."
+         }
       }
    },
    "variables": {},
-   "resources": [ {
-      "name": "secret-deploy",
-      "type": "Microsoft.Logic/workflows",
-      "location": "westus",
-      "tags": {
-         "displayName": "LogicApp"
-      },
-      "apiVersion": "2016-06-01",
-      "properties": {
-         "definition": {
-            "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
-            "actions": {
-               "Call_External_API": {
-                  "type": "Http",
-                  "inputs": {
-                     "headers": {
-                        "Authorization": "@parameters('secret')"
+   "resources": [
+      {       
+         "name": "[parameters('logicAppName')]",
+         "type": "Microsoft.Logic/workflows",
+         "location": "[parameters('logicAppLocation')]",
+         "tags": {
+            "displayName": "LogicApp"
+         },
+         "apiVersion": "2016-06-01",
+         "properties": {
+            "definition": {
+               "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-0601/workflowdefinition.json#",
+               "actions": {
+                  "HTTP": {
+                     "type": "Http",
+                     "inputs": {
+                        "method": "GET",
+                        "uri": "http://www.microsoft.com",
+                        "authentication": {
+                           "type": "Basic",
+                           "username": "username",
+                              "password": "@parameters('logicAppWfParam')"
+                        }
                      },
-                     "body": "This is the request"
-                  },
                   "runAfter": {}
-               }
+                  }
+               },
+               "parameters": { 
+                  "logicAppWfParam": {
+                     "type": "securestring"
+                  }
+               },
+               "triggers": {
+                  "manual": {
+                     "type": "Request",
+                     "kind": "Http",
+                     "inputs": {
+                        "schema": {}
+                     }
+                  }
+               },
+               "contentVersion": "1.0.0.0",
+               "outputs": {}
             },
             "parameters": {
-               "secret": {
-                  "type": "SecureString"
+               "logicAppWfParam": {
+                  "value": "[parameters('armTemplatePasswordParam')]"
                }
-            },
-            "triggers": {
-               "manual": {
-                  "type": "Request",
-                  "kind": "Http",
-                  "inputs": {
-                     "schema": {}
-                  }
-               }
-            },
-            "contentVersion": "1.0.0.0",
-            "outputs": {}
-         },
-         "parameters": {
-            "secret": {
-               "value": "[parameters('secretDeploymentParam')]"
             }
          }
       }
-   } ],
-   "outputs": {}
-}
+   ],
+   "outputs": {} 
+}   
 ```
 
-## <a name="secure-access-to-services-receiving-requests-from-a-workflow"></a>保护对从工作流接收请求的服务的访问
+<a name="secure-requests"></a>
 
-可以借助多种方法来保护逻辑应用需要访问的任何终结点。
+## <a name="secure-access-to-services-receiving-requests"></a>保护对接收请求的服务的访问
 
-### <a name="using-authentication-on-outbound-requests"></a>针对出站请求使用身份验证
+通过以下方法可以保护逻辑应用需要访问和发送请求的任意终结点。
 
-使用 HTTP、HTTP + Swagger（开放 API）或 Webhook 操作时，可将身份验证添加到正在发送的请求。 该信息可能包括基本身份验证、证书身份验证或 Azure Active Directory 身份验证。 [此文](../connectors/connectors-native-http.md#authentication)中提供了有关如何配置这种身份验证的详细信息。
+### <a name="add-authentication-on-outbound-requests"></a>针对出站请求添加身份验证
 
-### <a name="restricting-access-to-logic-app-ip-addresses"></a>限制对逻辑应用 IP 地址的访问
+使用 HTTP、HTTP + Swagger（开放 API）或 Webhook 操作时，可以为逻辑应用发送的请求添加身份验证。 例如，可以使用基本身份验证、证书身份验证或 Azure Active Directory 身份验证。 有关详细信息，请参阅[对触发器或操作进行身份验证](logic-apps-workflow-actions-triggers.md#connector-authentication)以及[对 HTTP 操作进行身份验证](../connectors/connectors-native-http.md#authentication)。
 
-通过逻辑应用发出的所有调用都来自于每个区域中一组特定 IP 地址。 可以添加附加的筛选，以便只接受来自这些指定 IP 地址的请求。 有关这些 IP 地址的列表，请参阅[逻辑应用限制和配置](logic-apps-limits-and-config.md#configuration)。
+### <a name="restrict-access-to-logic-app-ip-addresses"></a>限制对逻辑应用 IP 地址的访问
 
-### <a name="on-premises-connectivity"></a>本地连接
+通过逻辑应用发出的所有调用都来自基于区域的特定指定 IP 地址。 可以添加仅接受来自这些 IP 地址的请求的筛选规则。 要了解这些 IP 地址，请参阅 [Azure 逻辑应用的限制和配置](logic-apps-limits-and-config.md#configuration)。
 
-可将逻辑应用与一些服务集成，提供安全可靠的本地通信。
+### <a name="secure-on-premises-connectivity"></a>保护本地连接性
+
+Azure 逻辑应用可与这些服务集成，提供安全可靠的本地通信。
 
 #### <a name="on-premises-data-gateway"></a>本地数据网关
 
-使用逻辑应用的多个托管连接器可以安全连接到本地系统，包括文件系统、SQL、SharePoint、 DB2，等等。 网关通过 Azure 服务总线中继来自加密频道上的本地源的数据。 所有流量最初都是网关代理的安全出站流量。 详细了解[数据网关的工作原理](logic-apps-gateway-install.md#gateway-cloud-service)。
+Azure 逻辑应用的许多托管的连接器都可以安全连接到本地系统，例如，文件系统、SQL、SharePoint、DB2 等。 网关通过 Azure 服务总线发送来自加密通道上的本地源的数据。 所有流量最初都是网关代理的安全出站流量。 了解[本地数据网关的工作原理](logic-apps-gateway-install.md#gateway-cloud-service)。
 
 #### <a name="azure-api-management"></a>Azure API 管理
 
-[Azure API 管理](https://azure.microsoft.com/services/api-management/)提供本地连接选项，包括站点到站点 VPN 和 ExpressRoute 集成，可以保护代理与本地系统的通信。 在逻辑应用设计器中，可以快速选择工作流中通过 Azure API 管理公开的 API，从而快速访问本地系统。
+[Azure API 管理](https://azure.microsoft.com/services/api-management/)提供本地连接选项，例如站点到站点虚拟专用网络和 ExpressRoute 集成，用于保护代理和与本地系统的通信。 在逻辑应用设计器中，可以从逻辑应用的工作流中选择 API 管理公开的 API，从而快速访问本地系统。
 
 ## <a name="next-steps"></a>后续步骤
-[创建部署模板](logic-apps-create-deploy-template.md)  
-[异常处理](logic-apps-exception-handling.md)  
-[监视逻辑应用](logic-apps-monitor-your-logic-apps.md)  
-[诊断逻辑应用的错误和问题](logic-apps-diagnosing-failures.md)  
+
+* [创建部署模板](logic-apps-create-deploy-template.md)  
+* [异常处理](logic-apps-exception-handling.md)  
+* [监视逻辑应用](logic-apps-monitor-your-logic-apps.md)  
+* [诊断逻辑应用的错误和问题](logic-apps-diagnosing-failures.md)  

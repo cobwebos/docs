@@ -3,9 +3,9 @@ title: 如何通过 Node.js 使用服务总线队列 | Microsoft 文档
 description: 了解如何在来自 Node.js 应用程序的 Azure 中使用服务总线队列。
 services: service-bus-messaging
 documentationcenter: nodejs
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: a87a00f9-9aba-4c49-a0df-f900a8b67b3f
 ms.service: service-bus-messaging
 ms.workload: tbd
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 09/10/2018
-ms.author: spelluru
-ms.openlocfilehash: 99cf1b8e95e2a07d6ade2e73c097c59fed0d4f56
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: aschhab
+ms.openlocfilehash: b8036c373541d76ecaaec7664e3bfc3ad3e35703
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394299"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853080"
 ---
 # <a name="how-to-use-service-bus-queues-with-nodejs"></a>如何通过 Node.js 使用服务总线队列
 
@@ -34,7 +34,7 @@ ms.locfileid: "47394299"
 ## <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 创建一个空的 Node.js 应用程序。 有关如何创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][Create and deploy a Node.js application to an Azure Website]或 [Node.js 云服务][Node.js Cloud Service]（使用 Windows PowerShell）。
 
-## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用应用程序
+## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用服务总线
 若要使用 Azure 服务总线，请下载并使用 Node.js Azure 包。 此包包括一组用来与服务总线 REST 服务通信的库。
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>使用 Node 包管理器 (NPM) 可获取该程序包
@@ -140,7 +140,7 @@ serviceBusService.sendQueueMessage('myqueue', message, function(error){
 });
 ```
 
-服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大为 64 KB，其中包括标准和自定义应用程序属性。 一个队列可包含的消息数不受限制，但消息的总大小受限。 此队列大小是在创建时定义的，上限为 5 GB。 有关配额的详细信息，请参阅[服务总线配额][Service Bus quotas]。
+服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 一个队列可包含的消息数不受限制，但消息的总大小受限。 此队列大小是在创建时定义的，上限为 5 GB。 有关配额的详细信息，请参阅[服务总线配额][Service Bus quotas]。
 
 ## <a name="receive-messages-from-a-queue"></a>从队列接收消息
 对 ServiceBusService 对象使用 `receiveQueueMessage` 方法可从队列接收消息。 默认情况下，消息被读取后即从队列删除；但是可以读取（速览）并锁定消息而不将其从队列删除，只要将可选参数 `isPeekLock` 设置为“true”即可。

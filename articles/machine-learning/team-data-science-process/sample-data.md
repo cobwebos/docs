@@ -1,22 +1,22 @@
 ---
-title: 对 Azure Blob 容器、SQL Server 和 Hive 表中的数据采样 | Microsoft Docs
-description: 如何浏览存储在各个 Azure 环境中的数据。
+title: 不同 Azure 存储位置中的示例数据 - Team Data Science Process
+description: Azure blob 容器、SQL Server 和 Hive 表中的示例数据，可将其缩小为更小但更具代表性且更易于管理的大小。
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: b7b233532a526879e886950c3a0d8cfe169251a7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: fc91aec80f74488125649cfe807757ba5ae49c9b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441496"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466330"
 ---
 # <a name="heading"></a>对 Azure Blob 容器、SQL Server 和 Hive 表中的数据采样
 
@@ -26,7 +26,7 @@ ms.locfileid: "52441496"
 * [**SQL Server 数据**](sample-data-sql-server.md)是使用 SQL 和 Python 编程语言进行采样。 
 * [**Hive 表数据**](sample-data-hive.md)是使用 Hive 查询进行采样。
 
-此采样任务是[团队数据科学流程 (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 中的一个步骤。
+此采样任务是[团队数据科学流程 (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的一个步骤。
 
 **为什么对数据采样？**
 

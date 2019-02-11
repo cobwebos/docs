@@ -1,18 +1,19 @@
 ---
-title: 教程 - 配置 Azure Analysis Services 服务器管理员和用户角色教程课程 | Microsoft Docs
+title: 教程 - 配置 Azure Analysis Services 管理员和用户角色 | Microsoft Docs
+description: 了解如何配置 Azure Analysis Services 角色。
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 07/09/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 1c1dd5316eead5e91dd77d3e6b21a7a14d39afeb
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 4c1a3f52c37dcaad4bc2f84d6d2fa04b61376cf1
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929223"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188770"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>教程：配置服务器管理员和用户角色
 
@@ -35,9 +36,9 @@ ms.locfileid: "37929223"
 - 向服务器[添加 adventureworks 示例模型](../analysis-services-create-sample-model.md)。
 - [安装最新版本的 SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。
 
-## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
+## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到[门户](https://portal.azure.com/)。
+登录[门户](https://portal.azure.com/)。
 
 ## <a name="get-server-name"></a>获取服务器名称
 若要从 SSMS 连接到服务器，首先需要服务器名称。 可以从门户获取服务器名称。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 5f6f3f61b5f7a06ac4056499edfb811780838cdc
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: eba81e0d0a5b178aec6f712abaae2b566bc54316
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441871"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583436"
 ---
 # <a name="configure-service-health-alerts-with-pagerduty"></a>使用 PagerDuty 配置服务运行状况警报
 
@@ -36,7 +36,7 @@ ms.locfileid: "39441871"
 
 1.  在“集成设置”中，选择以下项：
 
-    a. **集成类型**：Microsoft Azure
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **集成类型**：Microsoft Azure
 
     b. **集成名称**：\<名称\>
 
@@ -50,11 +50,11 @@ ms.locfileid: "39441871"
 
 ## <a name="create-an-alert-using-pagerduty-in-the-azure-portal"></a>在 Azure 门户中使用 PagerDuty 创建警报
 ### <a name="for-a-new-action-group"></a>对于新操作组：
-1. 执行[使用 Azure 门户为新操作组创建有关服务运行状况通知的警报](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)中的步骤 1 到步骤 8。
+1. 执行[使用 Azure 门户为新操作组创建有关服务运行状况通知的警报](../azure-monitor/platform/alerts-activity-log-service-notifications.md)中的步骤 1 到步骤 8。
 
 1. 在“操作”列表中定义：
 
-    a. **操作类型：***Webhook*
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **操作类型：***Webhook*
 
     b. **详细信息：** 前面保存的 PagerDuty **集成 URL**。
 
@@ -71,7 +71,7 @@ ms.locfileid: "39441871"
 
 1. 添加到“操作”列表：
 
-    a. **操作类型：***Webhook*
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **操作类型：***Webhook*
 
     b. **详细信息：** 前面保存的 PagerDuty **集成 URL**。
 
@@ -80,7 +80,7 @@ ms.locfileid: "39441871"
 1. 操作组更新完成后，选择“保存”。
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>通过 HTTP POST 请求测试 Webhook 集成
-1. 创建要发送的服务运行状况有效负载。 可以在 [Azure 活动日志警报的 Webhook](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md) 中找到示例服务运行状况 Webhook 有效负载。
+1. 创建要发送的服务运行状况有效负载。 可以在 [Azure 活动日志警报的 Webhook](../azure-monitor/platform/activity-log-alerts-webhook.md) 中找到示例服务运行状况 Webhook 有效负载。
 
 1. 按如下所示创建 HTTP POST 请求：
 
@@ -97,6 +97,6 @@ ms.locfileid: "39441871"
 
 ## <a name="next-steps"></a>后续步骤
 - 了解如何[为现有问题管理系统配置 Webhook 通知](service-health-alert-webhook-guide.md)。
-- 查看[活动日志警报 webhook 架构](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)。 
-- 了解[服务运行状况通知](../monitoring-and-diagnostics/monitoring-service-notifications.md)。
-- 详细了解[操作组](../monitoring-and-diagnostics/monitoring-action-groups.md)。
+- 查看[活动日志警报 webhook 架构](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
+- 了解[服务运行状况通知](../azure-monitor/platform/service-notifications.md)。
+- 详细了解[操作组](../azure-monitor/platform/action-groups.md)。

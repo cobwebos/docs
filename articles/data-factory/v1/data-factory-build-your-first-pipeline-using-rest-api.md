@@ -9,17 +9,16 @@ ms.assetid: 7e0a2465-2d85-4143-a4bb-42e03c273097
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: caea4296bc0573141865aca27b04f9d9ee049e94
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 2465dd6c22567a3d8b50a7cfad4e26491bbe773e
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955580"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885194"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>教程：使用数据工厂 REST API 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -34,7 +33,7 @@ ms.locfileid: "49955580"
 
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[快速入门：使用 Azure 数据工厂创建数据工厂](../quickstart-create-data-factory-rest-api.md)。
+> 本文适用于数据工厂版本 1。 如果使用的是数据工厂服务的当前版本，请参阅[快速入门：使用 Azure 数据工厂创建数据工厂](../quickstart-create-data-factory-rest-api.md)。
 
 本教程介绍如何使用数据工厂 REST API 创建第一个 Azure 数据工厂。 若要使用其他工具/SDK 来完成教程，请从下拉列表中选择一个选项。
 
@@ -121,7 +120,7 @@ ms.locfileid: "49955580"
 
 下表提供了代码片段中使用的 JSON 属性的描述：
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | ClusterSize |HDInsight 群集的大小。 |
 | TimeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
@@ -167,7 +166,7 @@ ms.locfileid: "49955580"
 
 下表提供了代码片段中使用的 JSON 属性的描述：
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | type |type 属性设置为 AzureBlob，因为数据位于 Azure Blob 存储中。 |
 | linkedServiceName |引用前面创建的 StorageLinkedService。 |
@@ -219,8 +218,8 @@ ms.locfileid: "49955580"
                 "scriptPath": "adfgetstarted/script/partitionweblogs.hql",
                 "scriptLinkedService": "AzureStorageLinkedService",
                 "defines": {
-                    "inputtable": "wasb://adfgetstarted@<stroageaccountname>.blob.core.windows.net/inputdata",
-                    "partitionedtable": "wasb://adfgetstarted@<stroageaccountname>t.blob.core.windows.net/partitioneddata"
+                    "inputtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/inputdata",
+                    "partitionedtable": "wasb://adfgetstarted@<storageaccountname>t.blob.core.windows.net/partitioneddata"
                 }
             },
             "inputs": [{
@@ -315,13 +314,13 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 请注意以下几点：
 
-* Azure 数据工厂的名称必须全局唯一。 如果在结果中看到错误：“数据工厂名称 ‘FirstDataFactoryREST’ 不可用”，请执行以下步骤： 
+* Azure 数据工厂的名称必须全局唯一。 如果在结果中看到错误：“数据工厂名称 ‘FirstDataFactoryREST’ 不可用”，请执行以下步骤：
   1. 在 **datafactory.json** 文件中更改名称（例如，yournameFirstDataFactoryREST）。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
   2. 在分配 **$cmd** 变量值的第一个命令中，将 FirstDataFactoryREST 替换为新名称，并运行该命令。
   3. 运行以下两个命令来调用 REST API，创建数据工厂并列显操作结果。
 * 只有 Azure 订阅的参与者/管理员才可以创建数据工厂实例
 * 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。
-* 如果收到错误：“**该订阅未注册为使用命名空间 Microsoft.DataFactory**”，请执行下列操作之一，尝试再次发布：
+* 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，再尝试重新发布：
 
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
 
@@ -485,10 +484,10 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 4. 创建了包含 **HDInsight Hive** 活动的**管道**。
 
 ## <a name="next-steps"></a>后续步骤
-本文创建了可在按需 Azure HDInsight 群集上运行 Hive 脚本、包含转换活动（HDInsight 活动）的管道。 要了解如何使用复制活动将数据从 Azure Blob 复制到 Azure SQL，请参阅 [Tutorial: Copy data from an Azure Blob to Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)（教程：将数据从 Azure Blob 复制到 Azure SQL）。
+本文创建了可在按需 Azure HDInsight 群集上运行 Hive 脚本、包含转换活动（HDInsight 活动）的管道。 若要了解如何使用复制活动将数据从 Azure Blob 复制到 Azure SQL，请参阅[教程：将数据从 Azure Blob 复制到 Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 ## <a name="see-also"></a>另请参阅
-| 主题 | Description |
+| 主题 | 说明 |
 |:--- |:--- |
 | [Data Factory REST API Reference](/rest/api/datafactory/) |参阅有关数据工厂 cmdlet 的综合文档 |
 | [管道](data-factory-create-pipelines.md) |帮助你了解 Azure 数据工厂中的管道和活动，以及如何利用它们为方案或业务构造端对端数据驱动工作流。 |

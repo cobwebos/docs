@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 58f4827910d863aef14171574d40e4b3acfc04d9
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: d4245ce35cfc1e3aa0ba9ee9307315c9a999b5ff
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498686"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722033"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上为 Apache Hadoop 服务启用堆转储
 
@@ -22,7 +22,7 @@ ms.locfileid: "52498686"
 
 堆转储包含应用程序的内存快照，其中包括创建转储时各变量的值。 因此，它们在诊断发生在运行时的问题时很有用。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 本文档中的步骤仅适用于使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 ## <a name="whichServices"></a>服务
@@ -48,7 +48,7 @@ ms.locfileid: "52498686"
 * **mapreduce.admin.map.child.java.opts**
 * **mapreduce.admin.reduce.child.java.opts**
 
-> [!NOTE]
+> [!NOTE]  
 > 我们建议使用 [Apache Ambari](https://ambari.apache.org/) 来修改脚本和 mapred-site.xml 设置，因为 Ambari 负责在群集中跨节点复制更改。 请参阅[使用 Apache Ambari](#using-apache-ambari) 部分以了解具体的步骤。
 
 ### <a name="enable-heap-dumps"></a>启用堆转储
@@ -59,7 +59,7 @@ ms.locfileid: "52498686"
 
 + 指示是否启用了此选项。 默认为禁用。
 
-> [!WARNING]
+> [!WARNING]  
 > 默认情况下，在 HDInsight 上不为 Hadoop 服务启用堆转储，因为转储文件可能很大。 如果启用了堆转储来进行故障诊断，请记住在重现问题并收集转储文件后禁用堆转储。
 
 ### <a name="dump-location"></a>转储位置
@@ -76,7 +76,7 @@ ms.locfileid: "52498686"
 
     -XX:OnOutOfMemoryError=/path/to/script
 
-> [!NOTE]
+> [!NOTE]  
 > 由于 Apache Hadoop 是分布式系统，任何使用的脚本都必须放置在服务运行时所在的群集的所有节点上。
 > 
 > 该脚本还必须位于可供帐户（服务以该帐户的身份运行）访问的位置，并且必须提供执行权限。 例如，你可能希望将脚本存储在 `/usr/local/bin` 中，并通过 `chmod go+rx /usr/local/bin/filename.sh` 来授予读取和执行权限。
@@ -89,8 +89,8 @@ ms.locfileid: "52498686"
 
     出现提示时，在该站点中使用群集的 HTTP 帐户名（默认为 admin）和密码进行身份验证。
 
-   > [!NOTE]
-   > Ambari 可能会再次提示输入用户名和密码。 如果是这样，请重新输入相同的帐户名和密码
+   > [!NOTE]  
+   > Ambari 可能会再次提示输入用户名和密码。 如果是这样，请输入相同的帐户名和密码。
 
 2. 使用左侧的列表，选择你想要修改的服务区。 例如，**HDFS**。 在中心区域，选择“配置”选项卡。
 
@@ -104,7 +104,7 @@ ms.locfileid: "52498686"
 
     ![HADOOP_NAMENODE_OPTS with -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > 为映射或化简子进程启用堆转储时，需查找名为 **mapreduce.admin.map.child.java.opts** 和 **mapreduce.admin.reduce.child.java.opts** 的字段。
 
     使用“保存”按钮保存所做的更改。 可以输入简短的说明，描述所做的更改。
@@ -121,7 +121,7 @@ ms.locfileid: "52498686"
 
     ![重新启动受影响的所有条目](./media/hdinsight-hadoop-heap-dump-linux/restartbutton.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > 其他服务的“重启”按钮条目可能会有所不同。
 
 8. 一旦重启服务，可使用“服务操作”按钮“关闭维护模式”。 这样一来，Ambari 就可以继续监视服务的警报。

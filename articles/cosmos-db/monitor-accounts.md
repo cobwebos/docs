@@ -1,22 +1,21 @@
 ---
-title: 监视 Azure Cosmos DB 请求和存储 | Microsoft Docs
+title: 监视 Azure Cosmos DB 中的性能和存储指标
 description: 了解如何监视 Azure Cosmos DB 帐户的性能指标（如请求和服务器错误）以及使用情况指标（如存储消耗）。
-services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/19/2017
+ms.date: 12/06/2018
 ms.author: sngun
-ms.openlocfilehash: 1f4bf4ba660e83be9879c56d04b27c932d563e17
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.custom: seodec18
+ms.openlocfilehash: 9c307bbbef7b9eecc980dc6013c317f1ee231a0c
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354049"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034295"
 ---
-# <a name="monitor-azure-cosmos-db"></a>监视 Azure Cosmos DB
+# <a name="monitor-performance-and-storage-metrics-in-azure-cosmos-db"></a>监视 Azure Cosmos DB 中的性能和存储指标
+
 可以在 [Azure 门户](https://portal.azure.com/)中监视 Azure Cosmos DB 帐户。 对于每个 Azure Cosmos DB 帐户，一整套指标可用于监视吞吐量、存储、可用性、延迟和一致性。
 
 可在“帐户”页、新的“指标”页或 Azure Monitor.中查看指标。

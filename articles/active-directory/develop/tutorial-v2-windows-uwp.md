@@ -7,7 +7,7 @@ author: andretms
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/24/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 4ba4e844ed6bb01204b7a0adf5020aec255147dd
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: a0c2d13b2ac6715db047d56e998294688d9b65cf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986536"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097055"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>从通用 Windows 平台应用程序 (XAML) 调用 Microsoft 图形 API
 
@@ -44,7 +44,7 @@ ms.locfileid: "49986536"
 
 本指南使用以下 NuGet 包：
 
-|库|Description|
+|库|说明|
 |---|---|
 |[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft 身份验证库|
 
@@ -355,7 +355,7 @@ ms.locfileid: "49986536"
 
 “令牌信息”框中还会显示通过 `AcquireTokenAsync` 或 `AcquireTokenSilentAsync` 获得的令牌的相关基本信息：
 
-|属性  |格式  |Description |
+|属性  |格式  |说明 |
 |---------|---------|---------|
 |**名称** |用户全名|用户的名字和姓氏。|
 |**用户名** |<span>user@domain.com</span> |用于标识用户的用户名。|
@@ -382,14 +382,14 @@ Microsoft 图形 API 需要 *user.read* 作用域来读取用户的个人资料�
  - 在用户的证书存储中未找到有效的证书。
  - 请重试选择不同的身份验证方法。
 
-**原因：** 未启用企业功能和证书功能。
+原因：未启用企业功能和证书功能。
 
-**解决方法：** 遵循[联合域中的集成身份验证](#enable-integrated-authentication-on-federated-domains-optional)中的步骤。
+**解决方案：** 按照[联盟域中的集成身份验证](#enable-integrated-authentication-on-federated-domains-optional)中的步骤操作。
 
 ### <a name="issue-2"></a>问题 2
 [在联合域中启用集成身份验证](#enable-integrated-authentication-on-federated-domains-optional)，并尝试在 Windows 10 计算机上使用 Windows Hello 登录到配置了多重身份验证的环境。 此时会显示证书列表。 但如果选择使用 PIN，则永远不会显示 PIN 窗口。
 
-**原因：** 在 Windows 10 桌面版上运行的 UWP 应用程序中的 Web 身份验证代理存在已知限制。 该代理在 Windows 10 手机版上可正常工作。
+原因：在 Windows 10 桌面版上运行的 UWP 应用程序中的 Web 身份验证代理存在已知限制。 该代理在 Windows 10 手机版上可正常工作。
 
 **解决方法：** 选择“使用其他选项登录”。 然后选择“使用用户名和密码登录”。 选择“提供密码”。 然后完成手机身份验证过程。
 

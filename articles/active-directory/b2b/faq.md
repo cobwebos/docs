@@ -3,19 +3,19 @@ title: Azure Active Directory B2B 协作常见问题解答 | Microsoft Docs
 description: 获取有关 Azure Active Directory B2B 协作的常见问题的解答。
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: reference
 ms.date: 10/29/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 9f82deaa3ca048342c3501e111470eaea2ed9437
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 3ed781b7d3388015de93a81fb745764a8ad95baa
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748402"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663174"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B 协作常见问题解答
 
@@ -55,7 +55,7 @@ ms.locfileid: "50748402"
 除非 B2B 协作用户被分配了受限制的管理员或全局管理员角色，否则他们不需要对 Azure 门户的访问权限。 但是，被分配了受限制的管理员或全局管理员角色的 B2B 协作用户可以访问门户。 另外，如果未被分配这些管理员角色之一的来宾用户访问门户，该用户可以访问某些部分的体验。 来宾用户角色具有目录中的某些权限。
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>我能否阻止来宾用户访问 Azure 门户？
-能！ 配置此策略时请小心，避免意外阻止成员和管理员的访问。
+ 能！ 配置此策略时请小心，避免意外阻止成员和管理员的访问。
 若要阻止来宾用户访问 [Azure 门户](https://portal.azure.com)，可以在 Windows Azure 经典部署模型 API 中使用条件访问策略：
 1. 修改“所有用户”组，使其仅包含成员。
   ![修改组屏幕截图](media/faq/modify-all-users-group.png)
@@ -69,11 +69,11 @@ ms.locfileid: "50748402"
 是的。 Azure AD B2B 协作同时支持多重身份验证和使用者电子邮件帐户。
 
 ### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>是否支持 Azure AD B2B 协作用户的密码重置？
-如果 Azure AD 租户是用户的主目录，则可以从 Azure 门户[重置用户的密码](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal#how-to-reset-the-password-for-a-user)。 但是，对于使用由其他 Azure AD 目录或外部标识提供者管理的帐户登录的来宾用户，无法直接重置其密码。 只有用户主目录中的来宾用户或管理员可以重置密码。 以下示例演示来宾用户如何重置密码：
+如果 Azure AD 租户是用户的主目录，则可以从 Azure 门户[重置用户的密码](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal)。 但是，对于使用由其他 Azure AD 目录或外部标识提供者管理的帐户登录的来宾用户，无法直接重置其密码。 只有用户主目录中的来宾用户或管理员可以重置密码。 以下示例演示来宾用户如何重置密码：
  
 * 使用 Microsoft 帐户（例如 guestuser@live.com）登录的来宾用户可以使用 Microsoft 帐户自助密码重置 (SSPR) 来重置其自己的密码。 请参阅[如何重置 Microsoft 帐户密码](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password)。
 * 使用 Google 帐户或其他外部标识提供者登录的来宾用户可以使用其标识提供者的 SSPR 方法来重置自己的密码。 例如，使用 Google 帐户 guestuser@gmail.com 的来宾用户可以遵照[更改或重置密码](https://support.google.com/accounts/answer/41078)中的说明重置其密码。
-* 如果标识租户是实时 (JIT) 或“病毒性”租户（独立的不受管 Azure 租户），则只有来宾用户可以重置其密码。
+* 如果标识租户是实时 (JIT) 或“病毒性”租户（独立的不受管 Azure 租户），则只有来宾用户可以重置其密码。 有时，组织将[接管在员工使用其工作电子邮件地址注册服务时创建的病毒性租户的管理](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)。 组织接管病毒性租户后，只有该组织中的管理员可以重置用户密码或启用 SSPR。 如果需要，作为邀请方组织，你可以从目录中删除来宾用户帐户并重新发送邀请。
 * 如果来宾用户的主目录是 Azure AD 租户，则你可以重置该用户的密码。 例如，你可能在本地 Active Directory 中创建了用户或同步了用户，并将其 UserType 设置为 Guest。 由于此用户位于你的目录中，因此，可以从 Azure 门户重置其密码。
 
 ### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>Microsoft Dynamics 365 是否为 Azure AD B2B 协作提供联机支持？

@@ -1,22 +1,22 @@
 ---
-title: 团队数据科学过程中的特征选择 | Microsoft Docs
+title: Team Data Science Process 中的特征选择
 description: 介绍特征选择的目的，并提供其在机器学习数据增强过程中作用的相关示例。
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: b439f7245dd09a2f8a7ffe5f3b3c5396786220af
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a74f2c21746deb16372174d4a769f9abb825a1cd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442363"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473300"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Team Data Science Process (TDSP) 中的功能选择
 本文介绍特征工程的目的，并提供其在机器学习数据增强过程中作用的相关示例。 这些示例来自 Azure 机器学习工作室。 
@@ -26,7 +26,7 @@ ms.locfileid: "52442363"
 特征的工程设计和选择是 [Team Data Science Process (TDSP) 是什么？](overview.md)一文中所述的 Team Data Science Process (TDSP) 的一部分。 特征工程和选择是 TDSP 的**开发特征**步骤的一部分。
 
 * **特征工程**：该过程尝试从数据中的现有原始特征创建其他相关特征，并提高学习算法的预测能力。
-* **特征选择**：该过程选择原始数据特征的关键子集，试图降低定型问题的维度。
+* **特性选择**：该过程选择原始数据特征的关键子集，试图降低定型问题的维度。
 
 通常，首先应用**特征工程**生成其他特征，然后执行**特征选择**步骤，消除不相关、冗余或高度相关的特征。
 
@@ -42,21 +42,21 @@ ms.locfileid: "52442363"
 
 在 Azure 机器学习工作室中，为特征选择提供了多个模块。 如下图中所示，这些模块包括[基于筛选器的特征选择][filter-based-feature-selection]和[费舍尔线性判别分析][fisher-linear-discriminant-analysis]。
 
-![特征选择示例](./media/select-features/feature-Selection.png)
+![特征选择模块](./media/select-features/feature-Selection.png)
 
 例如，考虑使用[基于筛选器的特征选择][filter-based-feature-selection]模块。 为方便起见，继续使用文本挖掘示例。 假设在通过[特征哈希][feature-hashing]模块创建了一组 256 个特征后想要生成回归模型，并且响应变量为“Col1”（包含范围为 1 到 5 的书籍审核评级）。 通过将“特征评分方法”设为“皮尔逊相关”，“目标列”将设为“Col1”，而“所需特征数”将设为 50。 然后，[基于筛选器的特征选择][filter-based-feature-selection]模块将生成一个包含 50 个特征且目标属性为“Col1”的数据集。 下图显示了此实验的流程以及输入参数：
 
-![特征选择示例](./media/select-features/feature-Selection1.png)
+![基于筛选器的特征选择模块属性](./media/select-features/feature-Selection1.png)
 
 下图显示了生成的数据集：
 
-![特征选择示例](./media/select-features/feature-Selection2.png)
+![生成的数据集，用于基于筛选器的特征选择模块](./media/select-features/feature-Selection2.png)
 
 基于特征本身和目标属性“Col1”之间的皮尔逊相关对每个特征进行评分。 保留高分数的特征。
 
 下图显示了所选特征的相应分数：
 
-![特征选择示例](./media/select-features/feature-Selection3.png)
+![分数，用于基于筛选器的特征选择模块](./media/select-features/feature-Selection3.png)
 
 通过应用此[基于筛选器的特征选择][filter-based-feature-selection]模块，将从256 个特征中选出 50 个，因为它们基于评分方法“皮尔逊相关”具有与目标变量“Col1”最相关的特征。
 

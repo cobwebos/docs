@@ -5,23 +5,23 @@ services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: f27ced5c67c5124d0792c5ce3884c88473fba056
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 6276231f8d63840dcf46f7456d584880315533bf
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604189"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299905"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>快速入门：要求使用 Azure Active Directory 条件访问对特定应用进行 MFA 
 
@@ -43,6 +43,9 @@ ms.locfileid: "45604189"
 - **对 Azure AD Premium 版本的访问权限**：Azure AD 条件访问是一项 Azure AD Premium 功能。 
 
 - **名为 Isabella Simonsen 的测试帐户**：如果不知道如何创建测试帐户，请参阅[添加基于云的用户](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)。
+
+
+本快速入门中的方案要求测试帐户未启用每用户 MFA。 有关详细信息，请参阅[如何要求对用户进行双重验证](../authentication/howto-mfa-userstates.md)。
 
 
 ## <a name="test-your-sign-in"></a>测试登录
@@ -85,17 +88,17 @@ ms.locfileid: "45604189"
 
     ![Azure Active Directory](./media/app-based-mfa/02.png)
 
-3. 在“Azure Active Directory”页的“管理”部分，单击“条件性访问”。
+3. 在“Azure Active Directory”页的“安全性”部分中，单击“条件访问”。
 
     ![条件性访问](./media/app-based-mfa/03.png)
  
-4. 在“条件性访问”页顶部的工具栏中，单击“添加”。
+4. 在“条件访问”页顶部的工具栏中，单击“新建策略”。
 
     ![添加](./media/app-based-mfa/04.png)
 
 5. 在“新建”页面的“名称”文本框中，键入“需要 MFA 才能访问 Azure 门户”。
 
-    ![名称](./media/app-based-mfa/05.png)
+    ![Name](./media/app-based-mfa/05.png)
 
 6. 在“分配”部分中，单击“用户和组”。
 
@@ -140,7 +143,7 @@ ms.locfileid: "45604189"
 
     a. 选择“授予访问权限”。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“需要多重身份验证”。
+    a. 选择“需要多重身份验证”。
 
     b. 单击“选择”。
 
@@ -171,7 +174,7 @@ ms.locfileid: "45604189"
 
 **若要评估条件访问策略，请执行以下操作：**
 
-1. 在 [条件访问 - 策略](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) 页上，单击顶部菜单中的 What If。  
+1. 在[条件访问 - 策略](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)页上，单击顶部菜单中的“What If”。  
  
     ![What If](./media/app-based-mfa/14.png)
 
@@ -183,7 +186,7 @@ ms.locfileid: "45604189"
 
     ![云应用](./media/app-based-mfa/16.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“云应用”。
+    a. 单击“云应用”。
 
     b. 在“云应用”页上，单击“选择应用”。
 

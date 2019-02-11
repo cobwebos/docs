@@ -10,17 +10,16 @@ ms.assetid: 0974eb40-db98-4149-a50d-48db46817076
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6330854f4ee9b2db1597d916c815bb6646da6a29
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: d13e304b0d10e8bd34d306426f1f9164bcc6be94
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052743"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014244"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure 数据工厂复制向导
 > [!NOTE]
@@ -92,4 +91,4 @@ Azure 数据工厂复制向导可简化数据引入过程，这通常是端到�
 ![计划属性](./media/data-factory-copy-wizard/scheduling-properties.png)
 
 ## <a name="next-steps"></a>后续步骤
-有关使用数据工厂复制向导创建具有复制活动的管道的快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
+有关使用数据工厂复制向导创建包含复制活动的管道的快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。

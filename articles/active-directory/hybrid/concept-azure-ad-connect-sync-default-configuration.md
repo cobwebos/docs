@@ -4,23 +4,23 @@ description: 本文介绍 Azure AD Connect 同步中的默认配置。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ed876f22-6892-4b9d-acbe-6a2d112f1cd1
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: bd708d279649138fcb17362491da4eb7539c478b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ed32cbabe5f80e131f467a87378eda8912b9a65e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46308746"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496248"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect 同步：了解默认配置
 本文介绍现成的配置规则。 其中说明这些规则及其对配置将有何影响。 此外还将逐步介绍如何完成 Azure AD Connect 同步的默认配置。其目的是让读者了解配置模型（名为声明性预配）在实际示例中的运行情形。 本文假设已使用安装向导安装并配置了 Azure AD Connect 同步。
@@ -145,9 +145,9 @@ SRE 是一个资源套件工具，将随 Azure AD Connect 同步一起安装。�
 
 ![同步规则警告](./media/concept-azure-ad-connect-sync-default-configuration/warningeditrule.png)
 
-同步规则具有四个配置部分：“描述”、“范围筛选器”、“联接规则”和“转换”。
+同步规则具有四个配置部分：描述、范围筛选器、联接规则和转换。
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>说明
 第一部分提供名称和描述等基本信息。
 
 ![同步规则编辑器中的“说明”选项卡 ](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
@@ -187,7 +187,7 @@ SRE 是一个资源套件工具，将随 Azure AD Connect 同步一起安装。�
 
 如果将此配置放在帐户-资源林部署的上下文中考虑，应在帐户林中找到已启用的帐户，在具有 Exchange 和 Lync 设置的资源林中找到已禁用的帐户。 查看的同步规则包含进行登录所需的属性，这些属性应从包含已启用帐户的林流动。 所有这些属性流会在一个同步规则中进行组合。
 
-转换可以具有不同的类型：“常量”、“直接”和“表达式”。
+转换可以具有不同类型：常量、指令和表达式。
 
 * 常量流始终传递硬编码值。 在上例中，始终在名为 **accountEnabled** 的 Metaverse 属性中设置值 **True**。
 * 直接流始终将源中的属性值按原样传递到目标属性。
@@ -219,7 +219,7 @@ NULL
 ### <a name="putting-it-all-together"></a>汇总
 我们现在对同步规则已有足够的认识，能够了解配置如何在不同的同步规则下运行。 如果观察某个用户和提供给 Metaverse 的属性，会发现规则将按以下顺序应用：
 
-| 名称 | 注释 |
+| Name | 注释 |
 |:--- |:--- |
 | In from AD – User Join |联接连接器空间对象与 Metaverse 的规则。 |
 | In from AD – UserAccount Enabled |登录 Azure AD 和 Office 365 所需的属性。 我们可以从已启用的帐户获取这些属性。 |
@@ -236,6 +236,6 @@ NULL
 
 **概述主题**
 
-* [Azure AD Connect 同步：理解和自定义同步](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同步：了解和自定义同步](how-to-connect-sync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
 

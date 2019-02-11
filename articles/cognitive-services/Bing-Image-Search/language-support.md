@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 10/06/2017
 ms.author: aahi
-ms.openlocfilehash: e5c9a4291501c657a94509aec2edd90d00ab795d
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: d214c227171066e0a401e22d20538014790a58d3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52160421"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157323"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>必应图像搜索 API 的语言和区域支持
 

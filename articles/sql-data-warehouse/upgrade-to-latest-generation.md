@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
-ms.date: 08/22/2018
+ms.subservice: manage
+ms.date: 11/26/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fe1f2e026aaa4260d34b9b1cb96064053af1c3c7
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 173846e4828228bdc51fc42858e0c6c9b00cafd6
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568006"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242784"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>通过升级 SQL 数据仓库优化性能
 将 Azure SQL 数据仓库升级到最新一代 Azure 硬件和存储体系结构。
@@ -35,11 +35,44 @@ ms.locfileid: "51568006"
 ## <a name="before-you-begin"></a>开始之前
 > [!NOTE]
 > 如果现有的“计算优化第 1 代”层级数据仓库不在提供了“计算优化第 2 代”层级的区域中，则可以通过 PowerShell [异地还原](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region)到某个受支持的区域。
-> 
 >
+> 
 
 1. 如果要升级的“计算优化第 1 代”层级数据仓库已暂停，请[恢复数据仓库](pause-and-resume-compute-portal.md)。
+
 2. 做好停机几分钟的准备。 
+
+3. 识别任何对计算优化第 1 代性能级别的代码引用，并将其修改为等效的计算优化第 2 代性能级别。 下面是升级前需要更新代码引用的两个示例：
+
+   原始 Gen1 PowerShell 命令：
+
+   ```powershell
+   Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
+   ```
+
+   修改为：
+
+   ```powershell
+   Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300c"
+   ```
+
+   > [!NOTE] 
+   > -RequestedServiceObjectiveName“DW300”更改为 - RequestedServiceObjectiveName“DW300c”
+   >
+
+   原始 Gen1 T-SQL 命令：
+
+   ```SQL
+   ALTER DATABASE mySampleDataWarehouse MODIFY (SERVICE_OBJECTIVE = 'DW300') ;
+   ```
+
+   修改为：
+
+   ```sql
+   ALTER DATABASE mySampleDataWarehouse MODIFY (SERVICE_OBJECTIVE = 'DW300c') ; 
+   ```
+    > [!NOTE] 
+    > SERVICE_OBJECTIVE = “DW300”更改为 SERVICE_OBJECTIVE = “DW300c”
 
 
 
@@ -47,34 +80,40 @@ ms.locfileid: "51568006"
 
 1. 在 Azure 门户中转到“计算优化第 1 代”层级数据仓库，单击“任务”选项卡下的“升级到第 2 代”卡：![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
     
-> [!NOTE]
-> 如果在“任务”选项卡下未看到“升级到第 2 代”卡，则你的订阅类型在当前区域中受到限制。 [提交支持票证](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket)以便将你的订阅列入允许列表。
+    > [!NOTE]
+    > 如果在“任务”选项卡下未看到“升级到第 2 代”卡，则你的订阅类型在当前区域中受到限制。
+    > [提交支持票证](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket)以便将你的订阅列入允许列表。
 
 2. 默认情况下，请使用以下映射根据你的“弹性优化第 1 代”层级数据仓库的当前性能级别为数据仓库**选择建议的性能级别**：
-    
-   | “计算优化第 1 代”层级 | “计算优化第 2 代”层级 |
-   | :----------------------: | :-------------------: |
-   |      DW100 - DW600       |        DW500c         |
-   |          DW1000          |        DW1000c        |
-   |          DW1200          |        DW1500c        |
-   |          DW1500          |        DW1500c        |
-   |          DW2000          |        DW2000c        |
-   |          DW3000          |        DW3000c        |
-   |          DW6000          |        DW6000c        |
 
-3. 在升级之前，请确保工作负荷已完成运行并处于静止状态。 在数据仓库作为“计算优化第 2 代”数据仓库回到联机状态之前，会出现几分钟的停机时间。 **单击“升级”**。 在预览版期间，“计算优化第 2 代”层级性能层的价格减半：
-    
+   | “计算优化第 1 代”层级 | “计算优化第 2 代”层级 |
+   | :-------------------------: | :-------------------------: |
+   |            DW100            |           DW100c            |
+   |            DW200            |           DW200c            |
+   |            DW300            |           DW300c            |
+   |            DW400            |           DW400c            |
+   |            DW500            |           DW500c            |
+   |            DW600            |           DW500c            |
+   |           DW1000            |           DW1000c           |
+   |           DW1200            |           DW1000c           |
+   |           DW1500            |           DW1500c           |
+   |           DW2000            |           DW2000c           |
+   |           DW3000            |           DW3000c           |
+   |           DW6000            |           DW6000c           |
+
+3. 在升级之前，请确保工作负荷已完成运行并处于静止状态。 在数据仓库作为“计算优化第 2 代”数据仓库回到联机状态之前，会出现几分钟的停机时间。 **单击“升级”**：
+
    ![Upgrade_2](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_2.png)
 
 4. 通过在 Azure 门户中检查状态来**监视升级**：
 
    ![Upgrade3](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_3.png)
-   
+
    升级过程的第一个步骤将经历缩放操作（“升级 - 脱机”），其中，所有会话都将终止并且连接将会断开。 
-   
+
    升级过程的第二个步骤是数据迁移（“升级 - 联机”）。 数据迁移是一个联机缓慢执行的后台进程，它利用本地 SSD 缓存，缓慢地将列式数据从旧的存储体系结构移动到新的存储体系结构。 在此期间，你的数据仓库将处于联机状态以便用于查询和加载。 所有数据都可供查询，无论它是否已迁移。 数据迁移以可变速率进行，具体取决于数据大小、性能级别和列存储段的数目。 
 
-5. **可选建议：** 要加快数据迁移后台进程，可以通过以更大的 SLO 和资源类对你要查询的所有主要列存储表运行 [Alter Index rebuild](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-index) 来立即强制数据移动。 与缓慢执行的后台进程相比，此过程是**脱机的**，后台进程可能要花费数小时才能完成，具体取决于你的表的数量和大小；不过，数据迁移要快得多，在完成后，可以通过高质量的行组充分利用全新增强的存储体系结构。 
+5. **可选建议**：要加快数据迁移后台进程，可以通过以更大的 SLO 和资源类对要查询的所有主要列存储表运行 [Alter Index rebuild](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-index) 来立即强制数据移动。 与缓慢执行的后台进程相比，此过程是**脱机的**，后台进程可能要花费数小时才能完成，具体取决于你的表的数量和大小；不过，数据迁移要快得多，在完成后，可以通过高质量的行组充分利用全新增强的存储体系结构。 
 
 以下查询生成加快数据迁移过程时所需的 Alter Index Rebuild 命令：
 
@@ -125,4 +164,3 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 ## <a name="next-steps"></a>后续步骤
 升级后的数据仓库已联机。 若要利用增强的体系结构，请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。
- 

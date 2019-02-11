@@ -1,23 +1,23 @@
 ---
-title: 快速入门：项目答案搜索、C#
+title: 快速入门：项目答案答搜索，C#
 titlesuffix: Azure Cognitive Services
 description: 通过 C# 开始使用项目答案搜索的代码示例。
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: answer-search
+ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 6d00c420ba84ea78235e138977cc4b5fde4fae64
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fa6ee10b9597c32be11d15cad2a63eefe768472c
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49464839"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207422"
 ---
-# <a name="quickstart-project-answer-search-query-in-c"></a>快速入门：使用 C# 实现项目答案搜索查询
+# <a name="quickstart-project-answer-search-query-in-c"></a>快速入门：C# 中的项目应答搜索查询
 
 以下 C# 示例创建并发送有关微积分第三定律的信息查询。
 

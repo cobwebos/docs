@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: dobett
-ms.openlocfilehash: 1d9e5b46460f04ad491ac741a62ee6d644985e61
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 724f655229347aa73747476e6bb4837b30e0fc4f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283421"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838995"
 ---
 # <a name="upload-files-with-iot-hub"></a>使用 IoT 中心上传文件
 
@@ -54,7 +54,7 @@ IoT 中心返回以下数据，供设备用来上传文件：
 ```json
 {
     "correlationId": "somecorrelationid",
-    "hostName": "contoso.azure-devices.net",
+    "hostName": "yourstorageaccount.blob.core.windows.net",
     "containerName": "testcontainer",
     "blobName": "test-device1/image.jpg",
     "sasToken": "1234asdfSAStoken"
@@ -97,7 +97,7 @@ IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储�
 
 如[终结点](iot-hub-devguide-endpoints.md)中所述，IoT 中心通过面向服务的终结点 (**/messages/servicebound/fileuploadnotifications**) 以消息的形式传递文件上传通知。 文件上传通知的接收语义与云到设备的消息的接收语义相同，并且具有相同的[消息生命周期](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-lifecycle)。 从文件上传通知终结点检索到的每条消息都是具有以下属性的 JSON 记录：
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | EnqueuedTimeUtc |指示通知创建时间的时间戳。 |
 | DeviceId |上传文件的设备的 **DeviceId**。 |
@@ -123,7 +123,7 @@ IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储�
 
 每个 IoT 中心都具有针对文件上传通知的以下配置选项：
 
-| 属性 | 说明 | 范围和默认值 |
+| 属性 | Description | 范围和默认值 |
 | --- | --- | --- |
 | **enableFileUploadNotifications** |控制是否将文件上传通知写入文件通知终结点。 |布尔型。 默认值：True。 |
 | **fileNotifications.ttlAsIso8601** |文件上传通知的默认 TTL。 |ISO_8601 间隔上限为 48 小时（下限为 1 分钟）。 默认值：1 小时。 |

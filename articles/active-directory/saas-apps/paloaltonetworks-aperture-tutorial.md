@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: a5ea18d3-3aaf-4bc6-957c-783e9371d0f1
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 7bb4782fa390ad2cc324a79a1f544c3db062c921
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7f94921126900c8e124cd41bd2e4f913b28396a2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421543"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153668"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>教程：Azure Active Directory 与 Palo Alto Networks - Aperture 集成
+# <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>教程：Azure Active Directory 与 Palo Alto Networks - Aperture 的集成
 
 在本教程中，了解如何将 Palo Alto Networks - Aperture 与 Azure Active Directory (Azure AD) 进行集成。
 
@@ -161,7 +161,7 @@ ms.locfileid: "39421543"
     f. 单击“ **保存**”。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -197,7 +197,7 @@ ms.locfileid: "39421543"
  
 ### <a name="create-a-palo-alto-networks---aperture-test-user"></a>创建 Palo Alto Networks - Aperture 测试用户
 
-在本部分中，在 Palo Alto Networks - Aperture 中创建名为 Britta Simon 的用户。 与 [Palo Alto Networks - Aperture 客户支持团队](https://live.paloaltonetworks.com/t5/custom/page/page-id/Support)协作，在 Palo Alto Networks - Aperture 平台中添加用户。 使用单一登录前，必须先创建并激活用户。 
+在本部分中，在 Palo Alto Networks - Aperture 中创建名为 Britta Simon 的用户。 与  [Palo Alto Networks - Aperture 客户支持团队](https://live.paloaltonetworks.com/t5/custom/page/page-id/Support) 协作，将用户添加到 Palo Alto Networks - Aperture 平台中。 使用单一登录前，必须先创建并激活用户。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -234,12 +234,12 @@ ms.locfileid: "39421543"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“Palo Alto Networks - Aperture”磁贴时，应会自动登录到 Palo Alto Networks - Aperture 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -3,7 +3,7 @@ title: Azure 标准与高级托管磁盘存储的相互转换 | Microsoft Docs
 description: 如何使用 Azure PowerShell 实现 Azure 标准与高级托管磁盘的相互转换。
 services: virtual-machines-windows
 documentationcenter: ''
-author: ramankum
+author: ramankumarlive
 manager: kavithag
 editor: ''
 tags: azure-resource-manager
@@ -15,24 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: ramankum
-ms.openlocfilehash: 958f661585b38b156cf523fe00986e7594474917
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.subservice: disks
+ms.openlocfilehash: 4c13708ad785a2291da3db61d739f604a2c3bb88
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093810"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475884"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>更新托管磁盘的存储类型
 
-Azure 托管磁盘提供三种存储类型选项：[高级 SSD](../windows/premium-storage.md)、[标准 SSD](../windows/disks-standard-ssd.md) 和[标准 HDD](../windows/standard-storage.md)。 可以根据性能需要，切换托管磁盘的存储类型，从而使故障时间最短。 非托管磁盘不支持切换存储类型；但是，可以轻松地[将非托管磁盘转换为托管磁盘](convert-unmanaged-to-managed-disks.md)。
+Azure 托管磁盘提供三种存储选项：[高级 SSD](../windows/premium-storage.md)、[标准 SSD](../windows/disks-standard-ssd.md) 和[标准 HDD](../windows/standard-storage.md)。 可以根据性能需要，切换托管磁盘的存储类型，从而使故障时间最短。 非托管磁盘不支持切换存储类型；但是，可以轻松地[将非托管磁盘转换为托管磁盘](convert-unmanaged-to-managed-disks.md)。
 
-本文介绍了如何使用 Azure PowerShell 实现标准托管磁盘与高级托管磁盘的相互转换。 如需安装或升级 PowerShell，请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.8.1)。
+本文介绍了如何使用 Azure PowerShell 实现标准托管磁盘与高级托管磁盘的相互转换。 如需安装或升级 PowerShell，请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.8.1)。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 由于转换需要重启虚拟机 (VM)，因此请在预先存在的维护时段内计划磁盘存储迁移。 
 * 如果使用的是非托管磁盘，请先[将其转换为托管磁盘](convert-unmanaged-to-managed-disks.md)，以便可以切换存储类型。 
-* 本文中的示例需要版本 6.0.0 或更高版本的 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 运行 [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount)创建与 Azure 的连接。
+* 本文中的示例需要版本 6.0.0 或更高版本的 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。 运行 [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount)创建与 Azure 的连接。
 
 
 ## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium"></a>将 VM 的所有托管磁盘从标准存储切换为高级存储

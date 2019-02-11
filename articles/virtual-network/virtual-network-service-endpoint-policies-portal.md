@@ -1,13 +1,10 @@
 ---
-title: 创建并关联服务终结点策略 - Azure 门户 | Microsoft Docs
+title: 创建并关联服务终结点策略 - Azure 门户
+titlesuffix: Azure Virtual Network
 description: 在本文中了解如何在 Azure 门户中设置和关联服务终结点策略。
 services: virtual-network
 documentationcenter: virtual-network
 author: anithaa
-manager: narayan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 09/18/2018
 ms.author: anithaa
-ms.openlocfilehash: 6bd318da5b3cd667d0a39b9c963e8d3ffd472f41
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 06c034968b2577d6321ffe6f55f969547a35931f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633004"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054429"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>使用 Azure 门户创建、更改或删除服务终结点策略
 
@@ -47,7 +44,7 @@ ms.locfileid: "52633004"
 3. 在“基本信息”中，输入或选择以下信息 
 
    - 订阅：选择用于策略的订阅。    
-   - 资源组：选择“新建”并输入 myResourceGroup。     
+   - 资源组：选择“新建”，并输入 myResourceGroup     
    - 名称：myEndpointPolicy
    - 位置：美国中西部     
  
@@ -66,8 +63,8 @@ ms.locfileid: "52633004"
    
 5. 可选：在“标记”中，输入或选择以下信息：
    
-   - 密钥：选择策略的键。 例如 Dept     
-   - 值：输入该键的值对。 例如 Finance
+   - 密钥：选择策略的键。 例如：部门     
+   - 值：输入该键的值对。 例如：财务
 
 6. 选择“查看 + 创建”。 验证信息并单击“创建”。 要做进一步的编辑，请单击“上一步”。 
 
@@ -101,7 +98,7 @@ ms.locfileid: "52633004"
 3. 在“创建虚拟网络”下输入或选择以下信息，接受剩下的默认设置，然后选择“创建”：
    - 名称：myVirtualNetwork      
    - 地址空间：10.0.0.0/16      
-   - 订阅：选择自己的订阅。 策略应与 VNet 位于同一订阅中     
+   - 订阅：选择订阅。 策略应与 VNet 位于同一订阅中     
    - 资源组：选择“使用现有”，然后选择“myResourceGroup”     
    - 位置：美国中西部     
    - 子网名称：private     

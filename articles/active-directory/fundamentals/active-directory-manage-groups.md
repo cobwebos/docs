@@ -1,24 +1,25 @@
 ---
-title: 了解如何使用 Azure Active Directory 组管理对应用和资源的访问 | Microsoft Docs
+title: 使用组管理应用和资源访问 - Azure Active Directory | Microsoft Docs
 description: 了解如何使用 Azure Active Directory 组来管理对组织的基于云的应用、本地应用和资源的访问。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: piotrci
-ms.openlocfilehash: 69be2cb8b57b34502d5a5688ac163d7451abe48e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: d5a05db0ab69a1cb9f123bb73c0cb4151f1104d6
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223966"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103541"
 ---
-# <a name="learn-about-access-management-using-azure-active-directory-groups"></a>了解如何使用 Azure Active Directory 组进行访问管理
+# <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>使用 Azure Active Directory 组管理应用和资源访问
 Azure Active Directory (Azure AD) 可以帮助你使用组织的组来管理基于云的应用、本地应用和资源。 资源可以是目录中的资源（例如用于通过目录中的角色管理对象的权限）、目录外部的资源（例如软件即服务 (SaaS) 应用、Azure 服务和 SharePoint 站点）和本地资源。
 
 >[!NOTE]
@@ -34,7 +35,7 @@ Azure AD 通过向单个用户或整个 Azure AD 组提供访问权限，帮助�
 
 - **直接分配。** 资源所有者直接将用户分配到资源。
 
-- **组分配。** 资源所有者将 Azure AD 组分配到资源，这会自动向所有组成员授予对该资源的访问权限。 组成员身份由组所有者和资源所有者管理，允许任一所有者在该组中添加或删除成员。 有关添加或删除组成员身份的详细信息，请参阅[如何：使用 Azure Active Directory 门户在另一个组中添加或删除组](active-directory-groups-membership-azure-portal.md)。 
+- **组分配。** 资源所有者将 Azure AD 组分配到资源，这会自动向所有组成员授予对该资源的访问权限。 组成员身份由组所有者和资源所有者管理，允许任一所有者在该组中添加或删除成员。 有关添加或删除组成员的详细信息，请参阅[如何：使用 Azure Active Directory 门户在一个组中添加或删除另一个组](active-directory-groups-membership-azure-portal.md)。 
 
 - **基于规则的分配。** 资源所有者创建一个组，并使用一条规则来定义要将哪些用户分配到特定的资源。 该规则基于分配给单个用户的属性。 资源所有者管理该规则，确定需要提供哪些属性和值才能访问该资源。 有关详细信息，请参阅[创建动态组和检查状态](../users-groups-roles/groups-create-rule.md)。
 

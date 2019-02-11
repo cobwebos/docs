@@ -6,17 +6,17 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 10/28/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e5f6cbec75a9f652cf05c9608c412e00489288b9
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8fea062e2c72410b13fa70cc5cad22b7e677086b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212924"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211842"
 ---
-# <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>为 Azure VM 设置到 Azure 次要区域的灾难恢复 
+# <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>为 Azure VM 设置到 Azure 次要区域的灾难恢复        
 
 [Azure Site Recovery](site-recovery-overview.md) 服务通过在计划内和计划外中断期间使商业应用程序保持启动和运行状态，有助于实施业务连续性和灾难恢复 (BCDR) 策略。 Site Recovery 管理并安排本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
 
@@ -54,10 +54,10 @@ ms.locfileid: "50212924"
 
 对主要区域中的 VM 禁用复制时，该 VM 会停止复制：
 
-- 将自动清除源复制设置。
+- 将自动清除源复制设置。 请注意，作为复制的一部分安装的 Site Recovery 扩展未删除，需要手动删除。 
 - 对 VM 的 Site Recovery 计费也会停止。
 
-请按如下所述停止复制：
+按如下所述停止复制
 
 1. 选择 VM。
 2. 在“灾难恢复”中，单击“禁用复制”。

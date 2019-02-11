@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: df919e23fd608cdf41e93844f13342ca00657adb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 72640a4d917ddb2485199f0df1fead8b0bdcd1c9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205138"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192959"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>手动滚动更新 Service Fabric 群集证书
-当 Service Fabric 群集证书接近到期时，需要更新该证书。  如果群集已[设置为基于公用名称使用证书](service-fabric-cluster-change-cert-thumbprint-to-cn.md)（而不是指纹），证书滚动更新很简单。  从证书颁发机构获取具有新到期日期的新证书。  不支持自签名证书，包括在 Azure 门户中部署 Service Fabric 群集时生成的证书。  新证书必须具有与旧证书相同的公用名称。 
+当 Service Fabric 群集证书接近到期时，需要更新该证书。  如果群集已[设置为基于公用名称使用证书](service-fabric-cluster-change-cert-thumbprint-to-cn.md)（而不是指纹），证书滚动更新很简单。  从证书颁发机构获取具有新到期日期的新证书。  自签名证书不支持用于生产 Service Fabric 群集，也不支持包括在执行 Azure 门户群集创建工作流期间生成的证书。 新证书必须具有与旧证书相同的公用名称。 
 
-以下脚本将新证书上传到密钥保管库，然后将证书安装在虚拟机规模集上。  Service Fabric 群集将自动使用具有最新到期日期的证书。
+当主机上安装了多个验证证书时，Service Fabric 群集将自动使用声明的证书，并进一步延长到将来的到期日期。 最佳做法是使用资源管理器模板预配 Azure 资源。 对于非生产环境，可以使用以下脚本将新证书上传到密钥保管库，然后将证书安装在虚拟机规模集上： 
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
@@ -78,6 +78,9 @@ $vmss = Add-AzureRmVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $Sour
 # Update the VM scale set 
 Update-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -VirtualMachineScaleSet $vmss  -Verbose
 ```
+
+>[!NOTE]
+> 计算虚拟机规模集机密不支持对两个不同的机密使用相同的资源 ID，因为每个机密都是带有版本的唯一资源。 
 
 若要了解详细信息，请阅读以下内容：
 * 了解[群集安全性](service-fabric-cluster-security.md)。

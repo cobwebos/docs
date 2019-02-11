@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 635948c28ffe5d5eaece372976e58d26e17214e3
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.lastreviewed: 10/25/2018
+ms.openlocfilehash: 6922571e4e816d04f6e116db582922cecc85542c
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50084224"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765460"
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>使用 Microsoft Azure Stack 上的 MySQL 数据库
 

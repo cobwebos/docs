@@ -10,17 +10,16 @@ ms.assetid: eb9e70b9-a13a-4a27-8256-2759496be470
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a04e91cea4ce1670fcc0a7be2d7591d5856b738f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a056e83a95c711126ee2357d93ba07f154200309
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106856"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884174"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -33,7 +32,7 @@ ms.locfileid: "43106856"
 > 
  
 > [!NOTE]
-> 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[快速入门：使用 Azure 数据工厂创建数据工厂](../quickstart-create-data-factory-dot-net.md)。
+> 本文适用于数据工厂版本 1。 如果使用的是数据工厂服务的当前版本，请参阅[快速入门：使用 Azure 数据工厂创建数据工厂](../quickstart-create-data-factory-dot-net.md)。
 
 本教程介绍如何使用 Azure 资源管理器模板创建第一个 Azure 数据工厂。 若要使用其他工具/SDK 来完成教程，请从下拉列表中选择一个选项。
 
@@ -42,7 +41,7 @@ ms.locfileid: "43106856"
 > [!NOTE]
 > 本教程中的数据管道可以转换输入数据，以便生成输出数据。 有关如何使用 Azure 数据工厂复制数据的教程，请参阅[教程：将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 > 
-> 本教程中的管道只有一类活动：HDInsightHive。 一个管道可以有多个活动。 而且，可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。 
+> 本教程中的管道只有一个活动，其类型为：HDInsightHive。 一个管道可以有多个活动。 而且，可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。 
 
 ## <a name="prerequisites"></a>先决条件
 * 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。
@@ -50,7 +49,7 @@ ms.locfileid: "43106856"
 * 若要了解 Azure 资源管理器模板，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)。 
 
 ## <a name="in-this-tutorial"></a>本教程的内容
-| 实体 | Description |
+| 实体 | 说明 |
 | --- | --- |
 | Azure 存储链接服务 |将 Azure 存储帐户链接到数据工厂。 Azure 存储帐户保留本示例中管道的输入和输出数据。 |
 | HDInsight 按需链接服务 |将按需 HDInsight 群集链接到数据工厂。 系统会自动创建群集来处理数据，完成处理后会删除群集。 |
@@ -60,7 +59,7 @@ ms.locfileid: "43106856"
 
 数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 有两种类型的活动：[数据移动活动](data-factory-data-movement-activities.md)和[数据转换活动](data-factory-data-transformation-activities.md)。 本教程将创建包含一个活动（Hive 活动）的管道。
 
-以下部分提供了用于定义数据工厂实体的完整 Resource Manager 模板，以便可以快速完成整个教程并测试模板。 若要了解每个数据工厂实体的定义方式，请参阅[模板中的数据工厂实体](#data-factory-entities-in-the-template)部分。
+以下部分提供了用于定义数据工厂实体的完整 Resource Manager 模板，以便可以快速完成整个教程并测试模板。 若要了解每个数据工厂实体的定义方式，请参阅[模板中的数据工厂实体](#data-factory-entities-in-the-template)部分。 若要了解模板中数据工厂资源的 JSON 语法和属性，请参阅 [Microsoft.DataFactory 资源类型](/azure/templates/microsoft.datafactory/allversions)。
 
 ## <a name="data-factory-json-template"></a>数据工厂 JSON 模板
 用于定义数据工厂的顶级 Resource Manager 模板是： 
@@ -262,7 +261,7 @@ ms.locfileid: "43106856"
 ```
 
 > [!NOTE]
-> 可以在[教程：使用 Azure 资源管理器模板创建包含复制活动的管道](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)中找到用于创建 Azure 数据工厂的另一个资源管理器模板示例。  
+> 可以在以下文章中找到用于创建 Azure 数据工厂的其他资源管理器模板示例：[教程：使用 Azure 资源管理器模板创建包含复制活动的管道](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)。  
 > 
 > 
 
@@ -408,7 +407,7 @@ JSON 模板中定义了以下数据工厂实体：
     }
 }
 ```
-**connectionString** 使用 storageAccountName 和 storageAccountKey 参数。 可以使用配置文件传递这些参数的值。 该定义还使用了模板中定义的变量 azureStroageLinkedService 和 dataFactoryName。 
+**connectionString** 使用 storageAccountName 和 storageAccountKey 参数。 可以使用配置文件传递这些参数的值。 该定义还使用了模板中定义的变量 azureStorageLinkedService 和 dataFactoryName。 
 
 #### <a name="hdinsight-on-demand-linked-service"></a>HDInsight 按需链接服务
 有关用于定义 HDInsight 按需链接服务的 JSON 属性的详细信息。请参阅 [Compute linked services](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)（计算链接服务）。  
@@ -616,10 +615,10 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFT
     ]
 }
 ```
-此模板使用名为 GatewayUsingARM 的网关创建名为 GatewayUsingArmDF 的数据工厂。 
+此模板使用以下名称的网关创建名为 GatewayUsingArmDF 的数据工厂：GatewayUsingARM。 
 
 ## <a name="see-also"></a>另请参阅
-| 主题 | Description |
+| 主题 | 说明 |
 |:--- |:--- |
 | [管道](data-factory-create-pipelines.md) |帮助你了解 Azure 数据工厂中的管道和活动，以及如何利用它们为方案或业务构造端对端数据驱动工作流。 |
 | [数据集](data-factory-create-datasets.md) |还有助于了解 Azure 数据工厂中的数据集。 |

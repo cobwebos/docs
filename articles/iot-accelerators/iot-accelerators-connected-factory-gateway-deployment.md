@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: ce2391014eb5e15650c0a81ebb8e2fd4a08ca96b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 0a2ccdc6b02e9d348517bee95306ffc88d9ccd98
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139218"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599938"
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>在 Windows 或 Linux 上为连接的工厂解决方案加速器部署边缘网关
 
@@ -70,7 +70,7 @@ ms.locfileid: "50139218"
 
 安装 OPC 组件之前，先完成以下步骤准备好环境：
 
-1. 若要完成网关部署，需要提供连接的工厂部署中 IoT 中心的  **iothubowner**  连接字符串。 在  [Azure 门户](http://portal.azure.com/)中，导航到 IoT 中心中在部署连接的工厂解决方案时创建的资源组。 单击“共享访问策略” **** 访问  **iothubowner**  连接字符串：
+1. 若要完成网关部署，需要提供连接的工厂部署中 IoT 中心的  **iothubowner**  连接字符串。 在  [Azure 门户](https://portal.azure.com/)中，导航到 IoT 中心中在部署连接的工厂解决方案时创建的资源组。 单击“共享访问策略” **** 访问  **iothubowner**  连接字符串：
 
     ![找到 IoT 中心连接字符串](./media/iot-accelerators-connected-factory-gateway-deployment/image2.png)
 

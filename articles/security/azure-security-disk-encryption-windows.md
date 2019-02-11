@@ -1,27 +1,29 @@
 ---
-title: 为 Windows IaaS VM 启用 Azure 磁盘加密 | Microsoft Docs
+title: 为 Windows IaaS VM 启用 Azure 磁盘加密
 description: 本文提供有关如何为 Windows IaaS VM 启用 Microsoft Azure 磁盘加密的说明。
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 10/12/2018
-ms.openlocfilehash: 545723a020609766b9556746e6547eb8b93e5de9
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 12/17/2018
+ms.custom: seodec18
+ms.openlocfilehash: 0051c7ca66d30730e6fc25b8b9d3edec91c43f07
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687514"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548640"
 ---
-# <a name="enable-azure-disk-encryption-for-windows-iaas-vms"></a>为 Windows IaaS VM 启用 Azure 磁盘加密 
+# <a name="enable-azure-disk-encryption-for-windows-iaas-vms"></a>为 Windows IaaS VM 启用 Azure 磁盘加密
 
 可启用多种磁盘加密方案，具体步骤因方案而异。 以下部分更详细介绍了适用于 Windows IaaS VM 的方案。 在使用磁盘加密之前，需要先完成 [Azure 磁盘加密先决条件](../security/azure-security-disk-encryption-prerequisites.md)。 
 
 加密磁盘之前创建[快照](../virtual-machines/windows/snapshot-copy-managed-disk.md)和/或备份。 备份确保在加密过程中发生任何意外故障时可以使用恢复选项。 加密之前，需要备份包含托管磁盘的 VM。 备份之后，可以通过指定 -skipVmBackup 参数，使用 Set-AzureRmVMDiskEncryptionExtension cmdlet 来加密托管磁盘。 有关如何备份和还原已加密 VM 的详细信息，请参阅 [Azure 备份](../backup/backup-azure-vms-encryption.md)一文。 
 
 >[!WARNING]
-> Azure 磁盘加密要求 Key Vault 和 VM 共存于同一区域中。 在要加密的 VM 所在的同一区域中创建并使用 Key Vault。 
+> - 如果你以前采用[使用 Azure AD 应用进行 Azure 磁盘加密](azure-security-disk-encryption-prerequisites-aad.md)来加密此 VM，则必须继续使用此选项来加密 VM。 你不能在此加密的 VM 上使用 [Azure 磁盘加密](azure-security-disk-encryption-prerequisites.md)，因为这不是受支持的方案，这意味着尚不支持从 AAD 应用程序切换到此加密的 VM。 
+> - Azure 磁盘加密要求 Key Vault 和 VM 共存于同一区域中。 在要加密的 VM 所在的同一区域中创建并使用 Key Vault。 
 
 
 ## <a name="bkmk_RunningWinVM"></a>在现有或正在运行的 IaaS Windows VM 上启用加密
@@ -134,6 +136,7 @@ ms.locfileid: "51687514"
 | 位置 | 所有资源的位置。 |
 
 ## <a name="encrypt-virtual-machine-scale-sets"></a>加密虚拟机规模集
+
 使用 [Azure 虚拟机规模集](../virtual-machine-scale-sets/overview.md)可以创建并管理一组完全相同的、负载均衡的 VM。 可以根据需求或定义的计划自动增减 VM 实例的数目。 使用 CLI 或 Azure PowerShell 加密虚拟机规模集。
 
 
@@ -194,13 +197,13 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 
 ### <a name="register-for-disk-encryption-preview-using-azure-cli"></a>使用 Azure CLI 注册磁盘加密预览版
 
-要对虚拟机规模集预览版使用 Azure 磁盘加密功能，需要使用 [az feature register](/cli/azure/feature#az_feature_register) 自行注册订阅。 只需在首次使用磁盘加密预览版功能时执行以下步骤：
+要对虚拟机规模集预览版使用 Azure 磁盘加密功能，需要使用 [az feature register](/cli/azure/feature#az-feature-register) 自行注册订阅。 只需在首次使用磁盘加密预览版功能时执行以下步骤：
 
 ```azurecli-interactive
 az feature register --name UnifiedDiskEncryption --namespace Microsoft.Compute
 ```
 
-传播注册请求最多可能需要 10 分钟。 可以通过 [az feature show](/cli/azure/feature#az_feature_show) 查看注册状态。 `State` 报告“已注册”时，请使用 [az provider register](/cli/azure/provider#az_provider_register) 重新注册 Mirosoft.Compute 提供程序：
+传播注册请求最多可能需要 10 分钟。 可以通过 [az feature show](/cli/azure/feature#az-feature-show) 查看注册状态。 `State` 报告“已注册”时，请使用 [az provider register](/cli/azure/provider#az-provider-register) 重新注册 Mirosoft.Compute 提供程序：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute
@@ -233,7 +236,20 @@ az provider register --namespace Microsoft.Compute
      az vmss encryption disable --resource-group "MySecureRG" --name "MySecureVmss"
     ```
 
+### <a name="azure-resource-manager-templates-for-windows-virtual-machine-scale-sets"></a>适用于 Windows 虚拟机规模集的 Azure 资源管理器模板
+
+若要加密或解密 Windows 虚拟机规模集，请使用以下 Azure 资源管理器模板和说明：
+
+- [在 Windows 虚拟机规模集上启用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
+- [使用 jumpbox 部署 Windows VM 的 VM 规模集，并在 Windows VM 规模集上启用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+- [在 Windows VM 规模集上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
+
+     1. 单击 **“部署到 Azure”**。
+     2. 填写必填字段，然后同意条款和条件。
+     3. 单击“购买”以部署模板。
+
 ## <a name="bkmk_VHDpre"></a>通过客户加密的 VHD 和加密密钥新建的 IaaS VM
+
 在此方案中，可以使用 PowerShell cmdlet 或 CLI 命令启用加密。 
 
 参考附录中的说明来准备可在 Azure 中使用的预加密映像。 创建映像后，可使用下一部分中的步骤创建加密的 Azure VM。

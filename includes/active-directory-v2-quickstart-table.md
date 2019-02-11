@@ -7,26 +7,26 @@ author: andretms
 manager: mtillman
 editor: ''
 service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/01/2018
+ms.date: 01/09/2019
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 196435a8bd260c7f1679c06127610aeee29c0fe3
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 93dc56243f48bc456a6546a873039a4178984a5a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843431"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55480456"
 ---
-| 移动和本机应用 | Web 应用和 Web API | 直接与协议集成 |
+| 移动和本机应用 | Web 应用和 SPA | Web API |
 | --- | --- | --- |
-| [向 iOS 应用程序添加登录](../articles/active-directory/develop/tutorial-v2-ios.md) | [向 JavaScript 单页应用程序 (SPA) 添加登录](../articles/active-directory/develop/tutorial-v2-javascript-spa.md) |[注册应用程序](../articles/active-directory/develop/quickstart-v2-register-an-app.md) |
-| [向 Android 应用程序添加登录](../articles/active-directory/develop/tutorial-v2-android.md) | [将登录添加到 ASP.NET 应用程序](../articles/active-directory/develop/tutorial-v2-asp-webapp.md) |[使用 OAuth 2.0 协议的移动应用程序](../articles/active-directory/develop/v2-oauth2-auth-code-flow.md) |
-| [向 Windows 桌面应用程序添加登录](../articles/active-directory/develop/guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) |  [将登录添加到 ASP.NET Core Web 应用程序](https://azure.microsoft.com/resources/samples/active-directory-aspnetcore-webapp-openidconnect-v2) | [使用 OpenID Connect 协议的 Web 应用程序](../articles/active-directory/develop/v2-protocols-oidc.md) |
-| [向多平台 Xamarin 应用程序添加登录](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)| [向 Node.js Web 应用程序添加登录](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) |[使用 OpenID Connect 协议的 JavaScript SPA](../articles/active-directory/develop/v2-oauth2-implicit-grant-flow.md) |
-|  | [保护 ASP.NET Web API](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet) | [使用 OAuth 2.0 客户端凭据流的守护应用程序](../articles/active-directory/develop/v2-oauth2-client-creds-grant-flow.md) |
-|  | [保护 ASP.NET Core Web API](https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2) | |
+|<img width="40" role="presentation" alt="iOS" src="../articles/active-directory/develop/media/index/logo_ios.svg" data-linktype="relative-path" /><br/>[登录到 iOS 应用并从中获取令牌](../articles/active-directory/develop/quickstart-v2-ios.md) | <img width="40" role="presentation" alt="JavaScript" src="../articles/active-directory/develop/media/index/logo_js.svg"/><br/>[登录到 JavaScript SPA 并从中获取令牌](../articles/active-directory/develop/quickstart-v2-javascript.md) |<img width="40" role="presentation" alt="ASP.NET Web API" src="../articles/active-directory/develop/media/index/logo_net.svg" /><br/> [保护 ASP.NET Web API](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)  |
+|<img width="40" role="presentation" alt="Android" src="../articles/active-directory/develop/media/index/logo_android.svg" /><br/>[登录到 Android 应用并从中获取令牌](../articles/active-directory/develop/quickstart-v2-android.md) | <img width="40" role="presentation" alt="ASP.NET" src="../articles/active-directory/develop/media/index/logo_net.svg" /><br/>[将登录添加到 ASP.NET 应用程序](../articles/active-directory/develop/quickstart-v2-aspnet-webapp.md) |<img width="40" role="presentation" alt="ASP.NET Core Web API" src="../articles/active-directory/develop/media/index/logo_netcore.svg" /><br/>[保护 ASP.NET Core Web API](https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2) |
+|<img width="40" role="presentation" alt="Windows Desktop" src="../articles/active-directory/develop/media/index/logo_windows.svg" /><br/>[登录到 Windows 桌面应用并从中获取令牌](../articles/active-directory/develop/quickstart-v2-windows-desktop.md) | <img width="40" role="presentation" alt=".NET Core" src="../articles/active-directory/develop/media/index/logo_netcore.svg" /><br/> [将登录添加到 ASP.NET Core Web 应用程序](../articles/active-directory/develop/quickstart-v2-aspnet-core-webapp.md) | |
+|<img width="40" role="presentation" alt="Xamarin" src="../articles/active-directory/develop/media/index/logo_xamarin.svg" /><br/> [向多平台 Xamarin 应用程序添加登录](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)| <img width="40" role="presentation" alt="Node.js" src="../articles/active-directory/develop/media/index/logo_nodejs.svg" /><br/>[向 Node.js Web 应用程序添加登录](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) | |
+|<img width="40" role="presentation" alt="Universal Windows Platform" src="../articles/active-directory/develop/media/index/logo_windows.svg" /><br/> [登录到 UWP 应用并从中获取令牌](../articles/active-directory/develop/quickstart-v2-uwp.md)| | |
+|<img width="40" role="presentation" alt=".NET Core Daemon" src="../articles/active-directory/develop/media/index/logo_netcore.svg" /><br/> [从非交互式 .NET Core 应用获取令牌](../articles/active-directory/develop/quickstart-v2-netcore-daemon.md)| | |

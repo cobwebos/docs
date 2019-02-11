@@ -1,26 +1,26 @@
 ---
-title: Azure Active Directory 域服务：范围内同步 | Microsoft Docs
+title: Azure Active Directory 域服务：具有作用域的同步 | Microsoft Docs
 description: 配置从 Azure AD 到托管域的范围内同步
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 9389cf0f-0036-4b17-95da-80838edd2225
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: ergreenl
-ms.openlocfilehash: 1df9b07d5a0a9e5018fc024038e65723c606ef71
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: e3d13082e3c076061b8d343827266ec04ae80646
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442975"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180681"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>配置从 Azure AD 到托管域的范围内同步
 本文介绍了如何仅将特定用户帐户配置为从 Azure AD 目录同步到 Azure AD 域服务托管域。
@@ -79,7 +79,7 @@ ms.locfileid: "52442975"
   > 必须在已配置范围内同步的组列表中添加“AAD DC 管理员”组。 如果未添加此组，将无法使用托管域。
   >
 
-4. 现在，创建托管域，并为托管域启用基于组的范围内同步。 在 ```Properties``` 参数中添加属性 ```"filteredSync" = "Enabled"```。 例如，请参阅复制自[任务 7：预配 Azure AD 域服务托管域](active-directory-ds-enable-using-powershell.md#task-7-provision-the-azure-ad-domain-services-managed-domain)的以下脚本片段。
+4. 现在，创建托管域，并为托管域启用基于组的范围内同步。 在 ```Properties``` 参数中添加属性 ```"filteredSync" = "Enabled"```。 例如，请参阅以下复制自[任务 7：预配 Azure AD 域服务托管域](active-directory-ds-enable-using-powershell.md#task-7-provision-the-azure-ad-domain-services-managed-domain)的脚本片段。
 
   ```powershell
   $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
@@ -89,7 +89,7 @@ ms.locfileid: "52442975"
   $AzureLocation = "westus"
 
   # Enable Azure AD Domain Services for the directory.
-  New-AzureRmResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
+  New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
   -Location $AzureLocation `
   -Properties @{"DomainName"=$ManagedDomainName; "filteredSync" = "Enabled"; `
     "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
@@ -173,7 +173,7 @@ foreach ($id in $newGroupIds)
     }
     catch
     {
-        Write-Error "Exception occured assigning Object-ID: $id. Exception: $($_.Exception)."
+        Write-Error "Exception occurred assigning Object-ID: $id. Exception: $($_.Exception)."
     }
 }
 
@@ -196,15 +196,15 @@ Write-Output "******************************************************************
 
 ```powershell
 // Login to your Azure AD tenant
-Login-AzureRmAccount
+Login-AzAccount
 
 // Retrieve the Azure AD Domain Services resource.
-$DomainServicesResource = Get-AzureRmResource -ResourceType "Microsoft.AAD/DomainServices"
+$DomainServicesResource = Get-AzResource -ResourceType "Microsoft.AAD/DomainServices"
 
 // Disable group-based scoped synchronization.
 $disableScopedSync = @{"filteredSync" = "Disabled"}
 
-Set-AzureRmResource -Id $DomainServicesResource.ResourceId -Properties $disableScopedSync
+Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $disableScopedSync
 ```
 
 ## <a name="next-steps"></a>后续步骤

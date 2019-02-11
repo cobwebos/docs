@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: a7f939d9-532d-4b6d-b6d3-95520207965d
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 02/08/2017
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 8f32d8f05d5ba5a7a813157adbf07ff7590153bb
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0afcb022cf6a62479253efcf07843d06b17117cd
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425372"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092861"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>使用客户端凭据（共享密钥或证书）进行服务到服务调用
 
@@ -53,10 +53,10 @@ https://login.microsoftonline.com/<tenant id>/oauth2/token
 ## <a name="service-to-service-access-token-request"></a>服务到服务访问令牌请求
 有两种情况，具体取决于客户端应用程序选择由共享密钥还是由证书保护。
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一种情况：使用共享密钥访问令牌请求
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一种情况：使用共享机密访问令牌请求
 使用共享密钥时，服务到服务访问令牌请求包含以下参数：
 
-| 参数 |  | Description |
+| 参数 |  | 说明 |
 | --- | --- | --- |
 | grant_type |必填 |指定请求的授权类型。 在客户端凭据授权流中，该值必须是 **client_credentials**。 |
 | client_id |必填 |指定调用 Web 服务的 Azure AD 客户端 ID。 要查找调用应用程序的客户端 ID，请在 [Azure 门户](https://portal.azure.com)中，依次单击“Azure Active Directory”和“应用注册”，然后单击该应用程序。 client_id 是应用程序 ID |
@@ -77,7 +77,7 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 ### <a name="second-case-access-token-request-with-a-certificate"></a>第二种情况：使用证书访问令牌请求
 使用证书的服务到服务访问令牌请求包含以下参数：
 
-| 参数 |  | Description |
+| 参数 |  | 说明 |
 | --- | --- | --- |
 | grant_type |必填 |指定请求的响应类型。 在客户端凭据授权流中，该值必须是 **client_credentials**。 |
 | client_id |必填 |指定调用 Web 服务的 Azure AD 客户端 ID。 要查找调用应用程序的客户端 ID，请在 [Azure 门户](https://portal.azure.com)中，依次单击“Azure Active Directory”和“应用注册”，然后单击该应用程序。 client_id 是应用程序 ID |
@@ -102,10 +102,10 @@ resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b
 
 成功响应包含具有以下参数的 JSON OAuth 2.0 响应：
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | access_token |请求的访问令牌。 调用 Web 服务可以使用此令牌向接收 Web 服务进行身份验证。 |
-| token_type |指示令牌类型值。 Azure AD 唯一支持的类型是 **Bearer**。 有关持有者令牌的详细信息，请参阅 [OAuth2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
+| token_type |指示令牌类型值。 Azure AD 唯一支持的类型是 **Bearer**。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
 | expires_in |访问令牌的有效期（以秒为单位）。 |
 | expires_on |访问令牌的过期时间。 该日期表示为自 1970-01-01T0:0:0Z UTC 至过期时间的秒数。 此值用于确定缓存令牌的生存期。 |
 | not_before |访问令牌可用的时间。 该日期表示为自 1970-01-01T0:0:0Z UTC 至令牌有效时间的秒数。|

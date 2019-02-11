@@ -1,26 +1,20 @@
 ---
-title: Azure PowerShell 脚本 - 创建 Azure Cosmos DB Cassandra API 帐户 | Microsoft Docs
+title: Azure PowerShell 脚本 - 创建 Azure Cosmos DB Cassandra API 帐户
 description: Azure PowerShell 脚本示例 - 创建 Azure Cosmos DB Cassandra API 帐户
-services: cosmos-db
-documentationcenter: cosmosdb
-author: SnehaGunda
-manager: kfile
-tags: azure-service-management
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
-ms.component: cosmosdb-graph
-ms.custom: mvc
+ms.subservice: cosmosdb-graph
 ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: cosmosdb
-ms.workload: database
 ms.date: 08/08/2018
-ms.author: sngun
-ms.openlocfilehash: e594e2dd4da938065cbb0849a5dad4eee78335e9
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.reviewer: sngun
+ms.openlocfilehash: 13305224ec0f1c0c6126a86af366474ebf1db9c3
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41918429"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040806"
 ---
 # <a name="azure-cosmos-db-create-a-cassandra-api-account-using-powershell"></a>Azure Cosmos DB：使用 PowerShell 创建 Cassandra API 帐户
 

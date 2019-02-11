@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/29/2018
+ms.date: 01/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c00dd8cd412d79093e4ae1fd7ea30a3071c9b54f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: da71857e84b27b9e9a063d707f75fdf33e5d6a96
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210238"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159003"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>准备 Azure 资源，以便对本地计算机进行灾难恢复
 
@@ -68,11 +68,12 @@ ms.locfileid: "50210238"
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
-1. 在 Azure 门户中，选择“创建资源” > “存储” > “备份和站点恢复(OMS)”。
-2. 在“名称”中，输入一个友好名称以标识此保管库。 对于这组教程，我们使用 **ContosoVMVault**。
-3. 在“资源组”中，我们将使用 **contosoRG**。
-4. 在“位置”中， 我们将使用“西欧”。
-5. 若要从仪表板快速访问保管库，请选择“固定到仪表板” > “创建”。
+1. 在 Azure 门户中单击“+创建资源”，然后在市场中搜索“恢复服务”。
+2. 单击“备份和站点恢复(OMS)”，然后在“备份和站点恢复”页中单击“创建”。 
+1. 在“恢复服务保管库” > “名称”中，输入一个友好名称以标识此保管库。 对于这组教程，我们使用 **ContosoVMVault**。
+2. 在**资源组**中，选择现有资源组或创建新资源组。 在本教程中，我们使用 **contosoRG**。
+3. 在**位置**中，选择保管库应位于的区域。 我们将使用“西欧”。
+4. 若要从仪表板快速访问保管库，请选择“固定到仪表板” > “创建”。
 
    ![创建新的保管库](./media/tutorial-prepare-azure/new-vault-settings.png)
 

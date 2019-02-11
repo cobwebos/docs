@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: fe73d5a2aa63cf127f5df835484cfcc75ef702aa
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.date: 11/09/2018
+ms.openlocfilehash: 0d007096bdd231769e04b503d97889b121eae9c3
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514955"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565490"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>将应用程序连接到 Azure SQL 数据库托管实例
 

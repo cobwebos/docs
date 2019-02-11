@@ -11,22 +11,108 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/15/2018
+ms.date: 1/22/2019
 ms.author: raiye
-ms.openlocfilehash: c2ff5d79c59a08c6ed808312027dc69aee910224
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 0a9b811f3781cd181c17b9ed92b9ca653ee91af0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854265"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828445"
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 引入这些更新的特定[系列][family-explain]始终会包含这些更新。
 
-## <a name="november-2018-guest-os"></a>2018 年 11 月来宾 OS
-
 >[!NOTE]
->11 月来宾 OS 目前正在推出到配置为自动更新的云服务 VM。 推出完成后，此版本将可通过 Azure 门户和配置文件进行手动更新。 11 月来宾 OS 中包含以下修补程序。 此列表可能随时变动。
+>目前，我们正在将 1 月来宾 OS 推广到配置为自动更新的云服务 VM。 推出完成后，此版本将可通过 Azure 门户和配置文件进行手动更新。 1 月来宾 OS 中包含以下修补程序。 此列表可能随时变动。
+
+## <a name="january-2019-guest-os"></a>2019 年 1 月来宾 OS
+
+| 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
+| --- | --- | --- | --- | --- |
+| Rel 19-01 | [4480961] | Windows 10 安全性 | 5.27 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480964] | Windows 安全性 | 4.62 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480972] | Windows 安全性 | 3.69 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480960] | Windows 安全性 | 2.82 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480074] | .Net 4.x 安全性 | 4.62 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480075] | .Net 4.x 安全性 | 3.69 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480076] | .Net 4.x 安全性 | 2.82 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480086] | .Net 3.x 安全性 | 4.62 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480083] | .Net 3.x 安全性 | 3.69 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480085] | .Net 3.x 安全性 | 2.82 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480979] | 闪烁 | 3.69、4.62、5.27 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480965] | Internet Explorer | 2.82、3.69、4.62 | 2019 年 1 月 8 日 |
+| 不适用 | [4471318] | 12 月非安全性汇总 | 2.82 | 2018 年 12 月 11 日 |
+| 不适用 | [4470641] | 12 月非安全性汇总 .NET 3.x | 2.82 | 2018 年 12 月 11 日 |
+| 不适用 | [4470637] | 12 月非安全性汇总 .NET 4.x | 2.82 | 2018 年 12 月 11 日 |
+| 不适用 | [4471330] | 12 月非安全性汇总 | 3.69 | 2018 年 12 月 11 日 |
+| 不适用 | [4470629] | 12 月非安全性汇总 .NET 3.x | 3.69 | 2018 年 12 月 11 日 |
+| 不适用 | [4470623] | 12 月非安全性汇总 .NET 4.x | 3.69 | 2018 年 12 月 11 日 |
+| 不适用 | [4471320] | 12 月非安全性汇总 | 4.62 | 2018 年 12 月 11 日 |
+| 不适用 | [4470630] | 12 月非安全性汇总 .NET 3.x | 4.62 | 2018 年 12 月 11 日 |
+| 不适用 | [4470622] | 12 月非安全性汇总 .NET 4.x | 4.62 | 2018 年 12 月 11 日 |
+
+[4480961]: http://support.microsoft.com/kb/4480961
+[4480964]: http://support.microsoft.com/kb/4480964
+[4480972]: http://support.microsoft.com/kb/4480972
+[4480960]: http://support.microsoft.com/kb/4480960
+[4480074]: http://support.microsoft.com/kb/4480074
+[4480075]: http://support.microsoft.com/kb/4480075
+[4480076]: http://support.microsoft.com/kb/4480076
+[4480086]: http://support.microsoft.com/kb/4480086
+[4480083]: http://support.microsoft.com/kb/4480083
+[4480085]: http://support.microsoft.com/kb/4480085
+[4480979]: http://support.microsoft.com/kb/4480979
+[4480965]: http://support.microsoft.com/kb/4480965
+[4471318]: http://support.microsoft.com/kb/4471318
+[4470641]: http://support.microsoft.com/kb/4470641
+[4470637]: http://support.microsoft.com/kb/4470637
+[4471330]: http://support.microsoft.com/kb/4471330
+[4470629]: http://support.microsoft.com/kb/4470629
+[4470623]: http://support.microsoft.com/kb/4470623
+[4471320]: http://support.microsoft.com/kb/4471320
+[4470630]: http://support.microsoft.com/kb/4470630
+[4470622]: http://support.microsoft.com/kb/4470622
+
+## <a name="december-2018-guest-os"></a>2018 年 12 月来宾 OS
+
+| 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
+| --- | --- | --- | --- | --- |
+| Rel 18-12 | [4471321] | Windows 10 安全性 | 5.26 | 2018 年 12 月 11 日 |
+| Rel 18-12 | [4471328] | Windows 安全性   | 2.81 | 2018 年 12 月 11 日 |
+| Rel 18-12 | [4471326] | Windows 安全性   | 3.68 | 2018 年 12 月 11 日 |
+| Rel 18-12 | [4471322] | Windows 安全性   | 4.61 | 2018 年 12 月 11 日 |
+| Rel 18-12 | [4470600] | .Net 3.x 安全性  | 2.81 | 2018 年 12 月 11 日 |
+| Rel 18-12 | [4470601] | .Net 3.x 安全性  | 3.68 | 2018 年 12 月 11 日|
+| Rel 18-12 | [4470602] | .Net 3.x 安全性  | 4.61 | 2018 年 12 月 11 日 |
+| Rel 18-12 | [4470493] | .Net 4.x 安全性  | 2.81 | 2018 年 12 月 11 日 |
+| Rel 18-12 | [4470492] | .Net 4.x 安全性  | 3.68 | 2018 年 12 月 11 日 |
+| Rel 18-12 | [4470491] | .Net 4.x 安全性  | 4.61| 2018 年 12 月 11 日 |
+| Rel 18-12 | [4471331] | 闪烁  | 3.68, 4.61, 5.26 | 2018 年 12 月 5 日  |
+| Rel 18-12 | [4470199] | Internet Explorer  | 2.81, 3.68, 4.61 | 2018 年 12 月 11 日 |
+| 不适用 | [4468323] | 时区更新    | 2.81, 3.68, 4.61 | 2018 年 12 月 13 日 |
+| 不适用 | [4467107] | 11 月非安全性汇总   | 2.81 | 2018 年 11 月 13 日 |
+| 不适用 | [4467701] | 11 月非安全性汇总     | 3.68 | 2018 年 11 月 13 日 |
+| 不适用 | [4467697] | 11 月非安全性汇总     | 4.61 | 2018 年 11 月 13 日 |
+
+[4471321]: http://support.microsoft.com/kb/4471321
+[4471328]: http://support.microsoft.com/kb/4471328
+[4471326]: http://support.microsoft.com/kb/4471326
+[4471322]: http://support.microsoft.com/kb/4471322
+[4470600]: http://support.microsoft.com/kb/4470600
+[4470601]: http://support.microsoft.com/kb/4470601
+[4470602]: http://support.microsoft.com/kb/4470602
+[4470493]: http://support.microsoft.com/kb/4470493
+[4470492]: http://support.microsoft.com/kb/4470492
+[4470491]: http://support.microsoft.com/kb/4470491
+[4471331]: http://support.microsoft.com/kb/4471331
+[4470199]: http://support.microsoft.com/kb/4470199
+[4468323]: http://support.microsoft.com/kb/4468323
+[4467107]: http://support.microsoft.com/kb/4467107
+[4467701]: http://support.microsoft.com/kb/4467701
+[4467697]: http://support.microsoft.com/kb/4467697
+
+## <a name="november-2018-guest-os"></a>2018 年 11 月来宾 OS
 
 | 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
 | --- | --- | --- | --- | --- |
@@ -468,13 +554,13 @@ ms.locfileid: "51854265"
 | 不适用 |[3192321] |土耳其结束了 DST 规则 |5.3、4.38、3.45、2.57 |2016 年 11 月 8 日 |
 | 不适用 |[3185330] |2016 年 10 月 Windows 7 SP1 和 Windows Server 2008 R2 SP1 安全质量月度汇总更新 |2.57 |2016 年 11 月 8 日 |
 | 不适用 |[3192403] |2016 年 10 月 Windows 7 SP1 和 Windows Server 2008 R2 SP1 质量月度汇总预览 |2.57 |2016 年 11 月 8 日 |
-| 不适用 |[3177467] |2016 年 9 月 20 日 Windows 7 SP1 和 Windows Server 2008 R2 SP1 的服务堆栈更新 |2.57 |2016 年 11 月 8 日 |
+| 不适用 |[3177467] |Windows 7 SP1 和 Windows Server 2008 R2 SP1 的服务堆栈更新：2016 年 9 月 20 日 |2.57 |2016 年 11 月 8 日 |
 | 不适用 |[3185332] |2016 年 10 月 Windows Server 2012 安全质量月度汇总更新 |3.45 |2016 年 11 月 8 日 |
 | 不适用 |[3192406] |2016 年 10 月 Windows Server 2012 质量月度汇总预览 |3.45 |2016 年 11 月 8 日 |
 | 不适用 |[3185331] |2016 年 10 月 Windows 8.1 和 Windows Server 2012 R2 安全质量月度汇总更新 |4.38 |2016 年 11 月 8 日 |
 | 不适用 |[3192404] |2016 年 10 月 Windows 8.1 和 Windows Server 2012 R2 质量月度汇总预览 |4.38 |2016 年 11 月 8 日 |
-| 不适用 |[3199986] |2016 年 10 月 27 日 Windows 10 版本 1607 的服务堆栈更新 |5.3 |2016 年 11 月 8 日 |
-| 不适用 |[3197954] |2016 年 10 月 27 日 Windows 10 版本 1607 和 Windows Server 2016 的累积更新 |5.3 |2016 年 11 月 8 日 |
+| 不适用 |[3199986] |Windows 10 版本 1607 的服务堆栈更新：2016 年 10 月 27 日 |5.3 |2016 年 11 月 8 日 |
+| 不适用 |[3197954] |适用于 Windows 10 版本 1607 和 Windows Server 2016 的累积更新：2016 年 10 月 27 日 |5.3 |2016 年 11 月 8 日 |
 
 ## <a name="october-2016-guest-os"></a>2016 年 10 月来宾 OS
 | 公告 ID | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
@@ -581,7 +667,7 @@ ms.locfileid: "51854265"
 | 不适用 |[3133977] |BitLocker 在 Windows 7 或 Windows Server 2008 R2 中由于 svchost.exe 进程中的服务崩溃而无法加密驱动器  |2.51 |2016 年 5 月 10 日 |
 | 不适用 |[3133681] |虚拟机在 Windows Server 2012 R2 中未响应 SCVMM 中的操作  |4.32 |2016 年 5 月 10 日 |
 | 不适用 |[3123245] |更新改进了 Windows Server 2012 R2 中的端口消耗标识  |4.32 |2016 年 5 月 10 日 |
-| 不适用 |[禁用 RC4] | Microsoft 安全公告：用于禁用 RC4 的更新  |4.32、3.39、2.51 |2016 年 5 月 10 日 |
+| 不适用 |[禁用 RC4] | Microsoft 安全公告：禁用 RC4 的更新  |4.32、3.39、2.51 |2016 年 5 月 10 日 |
 
 ## <a name="april-2016-guest-os"></a>2016 年 4 月来宾 OS
 | 公告 ID | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
@@ -630,7 +716,7 @@ ms.locfileid: "51854265"
 | MS16-005 |[3124584] |Windows 内核模式驱动程序安全更新，解决远程代码执行过程中的问题 |4.28、3.35、2.47 |2016 年 1 月 12 日 |
 | MS16-007 |[3124901] |Microsoft Windows 安全更新，解决远程代码执行过程中的问题 |4.28、3.35、2.47 |2016 年 1 月 12 日 |
 | MS16-008 |[3124605] |内核安全更新，解决权限提升过程中的问题 |4.28、3.35、2.47 |2016 年 1 月 12 日 |
-| Microsoft 安全公告修订版 |[2755801] |针对 Internet Explorer 中的 Adobe Flash Player 的漏洞提供更新（包 KB：TBD）- 公告占位符 |4.28、3.35 |2016 年 1 月 12 日 |
+| Microsoft 安全公告修订版 |[2755801] |针对 Internet Explorer 中的 Adobe Flash Player 的漏洞更新（包 KB：TBD）- 公告占位符 |4.28、3.35 |2016 年 1 月 12 日 |
 | Microsoft 安全公告 |[3109853] |更新后改进了 TLS 互操作性 |4.28、3.35 |2016 年 1 月 12 日 |
 | Microsoft 安全公告 |[3123479] |弃用 Microsoft 根证书计划的 SHA-1 哈希算法 |4.28、3.35、2.47 |2016 年 1 月 12 日 |
 | Microsoft 安全公告 |[2736233] |ActiveX Kill Bits 更新 |4.28、3.35、2.47 |2016 年 1 月 12 日 |

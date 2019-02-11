@@ -1,24 +1,24 @@
 ---
-title: Team Data Science Process 生命周期的数据采集和理解阶段 - Azure | Microsoft Docs
+title: Team Data Science Process 的数据采集和理解
 description: 你的数据科学项目数据采集和理解阶段的目标、任务和可交付结果
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 13cbcead381257c87f17dc8ed6666a1b8964d81a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: c4acb3b779821193949c69d440edaafec5e3d803
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441562"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474048"
 ---
-# <a name="data-acquisition-and-understanding"></a>数据获取和理解
+# <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Team Data Science Process 的数据采集和理解阶段
 
 本文概述了与 Team Data Science Process (TDSP) 的数据采集和理解阶段相关联的目标、任务和可交付结果。 此过程提供可用于构建数据科学项目的建议生命周期。 该生命周期概述了项目通常执行的主要阶段（通常以迭代方式进行）：
 

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.topic: conceptual
 ms.service: site-recovery
-ms.date: 10/28/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 9da64ebe675f9d481c7474a81fec294d50e49ce7
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c353c40cc838dc4082d3d4b843a48a5fedb6e1f5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215202"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039463"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>将 Azure Stack VM 复制到 Azure
 
@@ -104,7 +104,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
     - 如果使用的不是域帐户，则需在 VM 上禁用远程用户访问控制：
         - 在注册表中的 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System 下，创建 DWORD 值 LocalAccountTokenFilterPolicy。
         - 将值设置为 1。
-        - 若要在命令提示符下执行此操作，请键入以下内容：REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1。
+        - 为此，请在命令提示符窗口中键入以下命令：**REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1**。
 - 在要复制的 VM 上的 Windows 防火墙中，允许“文件和打印机共享”以及 WMI。
     - 若要执行此操作，请运行 wf.msc 打开 Windows 防火墙控制台。 依次右键单击“入站规则” > “新建规则”。 选择“预定义”，然后从列表中选择“文件和打印机共享”。 完成向导，选择以允许连接，然后单击“完成”。
     - 对于域计算机，可使用 GPO 来执行此操作。
@@ -140,9 +140,9 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
     ![专用 IP 地址](./media/azure-stack-site-recovery/private-ip.png)
 
 
-## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>第 2 步：创建保管库并选择复制目标
+## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>步骤 2：创建保管库并选择复制目标
 
-1. 在 Azure 门户中，选择“创建资源” > “监视 + 管理” > “备份和站点恢复”。
+1. 在 Azure 门户中，选择“创建资源” > “管理工具” > “备份和站点恢复”。
 2. 在“名称”中，输入一个友好名称以标识此保管库。 
 3. 在“资源”组中，创建或选择资源组。 我们将使用 contosoRG。
 4. 在“位置”中，输入 Azure 区域。 我们将使用“西欧”。
@@ -202,7 +202,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 3. Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和网络。 如果未找到，则需创建至少一个存储帐户和虚拟网络，方可完成向导。
 
 
-## <a name="step-5-enable-replication"></a>第 5 步：启用复制
+## <a name="step-5-enable-replication"></a>步骤 5：启用复制
 
 ### <a name="create-a-replication-policy"></a>创建复制策略
 
@@ -237,7 +237,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 6. 选择要在其中存储复制的数据的 Azure 存储帐户。
 7. 选择 Azure VM 在故障转移后创建时所要连接的 Azure 网络和子网。
 8. 选择“立即为选定的计算机配置”，将网络设置应用到选择保护的所有计算机。 如需为每台计算机单独选择 Azure 网络，请选择“稍后配置”。
-9. 在“物理计算机”中，单击“+物理计算机”。 指定每台计算机的 IP 地址名称以及要复制的操作系统。
+9. 在“物理计算机”中，单击“+物理计算机”。 指定要复制的每台计算机的名称、IP 地址和 OS 类型。
 
     - 使用计算机的内部 IP 地址。
     - 如果指定公共 IP 地址，则复制可能无法按预期进行。
@@ -280,7 +280,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 2. 故障转移使用指定的恢复点处理数据：
     - **最新处理**：计算机故障转移到由 Site Recovery 处理的最新恢复点。 将显示时间戳。 使用此选项时，无需费时处理数据，因此 RTO（恢复时间目标）会较低。
     - **最新的应用一致**：计算机故障转移到最新的应用一致恢复点。
-    - **自定义**： 选择用于故障转移的恢复点。
+    - **自定义**：选择用于故障转移的恢复点。
 
 3. 会使用已处理的数据创建 Azure VM。
 4. 测试故障转移可自动清理在演练期间创建的 Azure VM。
@@ -314,12 +314,12 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 7. 验证 VM 后，单击“提交”完成故障转移。 这会删除所有可用的恢复点。
 
 > [!WARNING]
-> 请勿取消正在进行的故障转移：在故障转移开始前，停止 VM 复制。 如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。
+> 不会取消正在进行的故障转移：在故障转移开始前，VM 复制已停止。 如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。
 
 
 ### <a name="fail-back-to-azure-stack"></a>故障回复到 Azure Stack
 
-主站点恢复正常运行后，可从 Azure 故障回复到 Azure Stack。 若要进行此操作，需下载 Azure VM VHD，并将其上传到 Azure Stack。
+主站点重新启动并运行后，可从 Azure 故障回复到 Azure Stack。 若要进行此操作，需下载 Azure VM VHD，并将其上传到 Azure Stack。
 
 1. 关闭 Azure VM，以便可下载 VHD。 
 2. 若要开始下载 VHD，请安装 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: bfb53ddf666426253cce08e6f09a5297f5d2f4d3
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: ae2b06f266ef19d9558511284ba94c77cdca1955
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634101"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409677"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具运行 Apache Hive 查询
 
@@ -24,7 +24,7 @@ ms.locfileid: "51634101"
 
 * Azure HDInsight（HDInsight 上的 Apache Hadoop）群集
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 * Visual Studio（以下版本之一）：
@@ -37,7 +37,7 @@ ms.locfileid: "51634101"
 
 * Visual Studio 的 HDInsight 工具或 Visual Studio 的 Azure Data Lake 工具。 请参阅 [Get started using Visual Studio Hadoop tools for HDInsight](apache-hadoop-visual-studio-tools-get-started.md)（开始使用 Visual Studio Hadoop tools for HDInsight），了解如何安装和配置这些工具。
 
-## <a id="run"></a>使用 Visual Studio 运行 Hive 查询
+## <a id="run"></a> 使用 Visual Studio 运行 Apache Hive 查询
 
 1. 打开“Visual Studio”，选择“新建” > “项目” > “Azure Data Lake” > “HIVE” > “Hive 应用程序”。 提供此项目的名称。
 
@@ -58,12 +58,12 @@ ms.locfileid: "51634101"
 
    * `CREATE EXTERNAL TABLE`：在 Hive 中创建一个新的“外部”表。 外部表仅在 Hive 中存储表定义；数据会保留在原始位置。
 
-     > [!NOTE]
+     > [!NOTE]  
      > 如果希望通过外部源更新基础数据，应使用外部表。 例如，MapReduce 作业或 Azure 服务。
      >
      > 删除外部表**不会**删除数据，只会删除表定义。
 
-   * `ROW FORMAT`：告知 Hive 如何设置数据的格式。 在此情况下，每个日志中的字段以空格分隔。
+   * `ROW FORMAT`：让 Hive 知道数据的格式已如何进行了设置。 在此情况下，每个日志中的字段以空格分隔。
 
    * `STORED AS TEXTFILE LOCATION`：告知 Hive 数据已以文本形式存储在 example/data 目录中。
 
@@ -95,7 +95,7 @@ ms.locfileid: "51634101"
 
    * `CREATE TABLE IF NOT EXISTS`：如果表不存在，则创建表。 因为未使用 `EXTERNAL` 关键字，此语句创建内部表。 内部表存储在 Hive 数据仓库中，由 Hive 管理。
 
-     > [!NOTE]
+     > [!NOTE]  
      > 与 `EXTERNAL` 表不同，删除内部表会同时删除基础数据。
 
    * `STORED AS ORC`：以优化的行纵栏式 (ORC) 格式存储数据。 ORC 是高度优化且有效的 Hive 数据存储格式。
@@ -112,27 +112,27 @@ ms.locfileid: "51634101"
 
 有关 HDInsight 中的 Hive 的一般信息：
 
-* [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
+* [将 Apache Hive 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
 
 有关 HDInsight 上的 Hadoop 的其他使用方法的信息：
 
-* [将 Pig 与 Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
+* [将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
 
-* [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-mapreduce.md)
+* [将 MapReduce 与 HDInsight 上的 Apache Hadoop 配合使用](hdinsight-use-mapreduce.md)
 
 有关适用于 Visual Studio 的 HDInsight 工具的详细信息：
 
 * [Visual Studio 的 HDInsight 工具入门](apache-hadoop-visual-studio-tools-get-started.md)
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
-[apache-tez]: http://tez.apache.org
-[apache-hive]: http://hive.apache.org/
-[apache-log4j]: http://en.wikipedia.org/wiki/Log4j
+[apache-tez]: https://tez.apache.org
+[apache-hive]: https://hive.apache.org/
+[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
 [hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: http://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
+[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
 
 
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
@@ -147,7 +147,7 @@ ms.locfileid: "51634101"
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-get-started]:apache-hadoop-linux-tutorial-get-started.md
 
-[powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
+[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx
 
 [image-hdi-hive-powershell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png

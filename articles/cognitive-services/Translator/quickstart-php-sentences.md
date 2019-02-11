@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: 7c709c10d7944a53a557f6a1ce2a6d9b930cccce
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 51b7691b856181ec3f66b1de595fec05104229f6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645382"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209445"
 ---
 # <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-php"></a>快速入门：使用文本翻译 REST API (PHP) 获取句子长度
 

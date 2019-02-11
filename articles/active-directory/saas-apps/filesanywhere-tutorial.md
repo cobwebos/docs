@@ -4,22 +4,22 @@ description: 了解如何在 Azure Active Directory 和 FilesAnywhere 之间配�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 220b5a486f5bb5d22c671ac6935e610a6eef62cf
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: a6cc65feb49052a00fed94fb318570182dd9a49b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115979"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55154620"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>教程：Azure Active Directory 与 FilesAnywhere 集成
 
@@ -117,7 +117,7 @@ ms.locfileid: "49115979"
 
     ![配置单一登录](./media/filesanywhere-tutorial/tutorial_filesanywhere_url.png)
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<company name>.filesanywhere.com/saml20.aspx?c=215`
+    a. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<company name>.filesanywhere.com/saml20.aspx?c=215`
 > [!NOTE]
 > 请注意，“clientid”的值“215”只是一个示例。 需要将其替换为实际的 clientid 值。
 
@@ -125,7 +125,7 @@ ms.locfileid: "49115979"
     
     ![配置单一登录](./media/filesanywhere-tutorial/tutorial_filesanywhere_url1.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“显示高级 URL 设置”选项
+    a. 单击“显示高级 URL 设置”选项
 
     b. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<sub domain>.filesanywhere.com/`
 
@@ -147,7 +147,7 @@ ms.locfileid: "49115979"
     | ---------------| --------------- |    
     | clientid | "uniquevalue" |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
+    a. 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_04.png)
 
@@ -198,7 +198,7 @@ ms.locfileid: "49115979"
  
     ![创建 Azure AD 测试用户](./media/filesanywhere-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -255,7 +255,7 @@ ms.locfileid: "49115979"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

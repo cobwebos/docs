@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d10e9d3d2b6fe339b04d3c0754290313312bc2b7
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6f686ff40805050b6da05a1971aeabb367da96d7
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427274"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190806"
 ---
 # <a name="monitor-server-metrics"></a>监视服务器指标
 
@@ -33,7 +33,9 @@ Analysis Services 提供的指标可帮助你监视服务器的性能和运行�
     ![监视图表](./media/analysis-services-monitor/aas-monitor-chart.png)
 
 <a id="#server-metrics"></a>
+
 ## <a name="server-metrics"></a>服务器指标
+
 使用此表可确定哪些指标最适用于监视方案。 在同一图表上只能显示相同单位的指标。
 
 |指标|指标显示名称|单位|聚合类型|Description|
@@ -52,8 +54,8 @@ Analysis Services 提供的指标可帮助你监视服务器的性能和运行�
 |MemoryLimitHigh|内存: 内存上限|字节|平均值|内存上限，来自配置文件。|
 |MemoryLimitLow|内存: 内存下限|字节|平均值|内存下限，来自配置文件。|
 |MemoryLimitVertiPaq|内存: 内存 VertiPaq 限制|字节|平均值|内存中限制，来自配置文件。|
-|MemoryUsage|内存: 内存使用量|字节|平均值|服务器进程的内存使用量（在计算清理器内存价格时使用）。 等于计数器 Process\PrivateBytes 加上内存映射的数据的大小，并且将忽略由内存中分析引擎 (VertiPaq) 映射或分配的超出了引擎内存限制的任何内存。|
-|Quota|内存: 配额|字节|平均值|当前内存配额（字节）。 内存配额也称为内存授予或内存保留。|
+|MemoryUsage|内存: 内存用量|字节|平均值|服务器进程的内存使用量（在计算清理器内存价格时使用）。 等于计数器 Process\PrivateBytes 加上内存映射的数据的大小，并且将忽略由内存中分析引擎 (VertiPaq) 映射或分配的超出了引擎内存限制的任何内存。|
+|Quota|内存: Quota|字节|平均值|当前内存配额（字节）。 内存配额也称为内存授予或内存保留。|
 |QuotaBlocked|内存: 阻止的配额|Count|平均值|在其他内存配额被释放之前已阻止的当前的配额请求数。|
 |VertiPaqNonpaged|内存: VertiPaq 未分页|字节|平均值|工作集中被锁定的供内存中引擎使用的内存字节数。|
 |VertiPaqPaged|内存: VertiPaq 已分页|字节|平均值|用于内存中数据的已分页内存字节数。|

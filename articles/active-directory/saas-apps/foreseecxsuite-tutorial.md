@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 5f4b7830-6186-4d17-b77b-504d4192bfde
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2018
 ms.author: jeedes
-ms.openlocfilehash: b288bcbe14050c0f764f348d5e20186570e32866
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 54dd577e3e3cc1650e4384e3b7f4eda581fe0fa1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442194"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191136"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>教程：Azure Active Directory 与 ForeSee CX Suite 的集成
 
@@ -115,7 +115,7 @@ ms.locfileid: "39442194"
 
     b. 单击“文件夹徽标”来选择元数据文件并单击“上传”。
 
-    c. 成功完成**服务提供程序元数据文件**的上传后，**标识**值将自动填充在“ForeSee CX Suite 域和 URL”部分的文本框中，如下所示：
+    c. 成功完成服务提供程序元数据文件的上传后，标识值将自动填充在“ForeSee CX Suite 域和 URL”部分的文本框中，如下所示：
 
     ![ForeSee CX Suite 域和 URL 单一登录信息](./media/foreseecxsuite-tutorial/urlupload.png)
 
@@ -211,12 +211,12 @@ ms.locfileid: "39442194"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 ForeSee CX Suite 磁贴时，应当会自动登录到 ForeSee CX Suite 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -9,21 +9,20 @@ ms.assetid: dbe3bfd6-fa6a-491a-9638-3a9a10d396d1
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a9dba65591479033a892615ff053eebd0862851e
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: b4485344f0bb85cb5dd2a2d621833d0fed15a8e0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125664"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022472"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Salesforce 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](data-factory-salesforce-connector.md)
+> * [版本 1](data-factory-salesforce-connector.md)
 > * [版本 2（当前版本）](../connector-salesforce.md)
 
 > [!NOTE]
@@ -52,9 +51,9 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从 Salesforce 移动数据。
 
-创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+创建管道的最简单方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-也可以使用以下工具创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+还可以使用以下工具来创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储： 
 
@@ -71,7 +70,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| type |类型属性必须设置为：**Salesforce**  |是 |
+| type |type 属性必须设置为：**Salesforce**。 |是 |
 | environmentUrl | 指定 Salesforce 实例的 URL。 <br><br> - 默认为“https://login.salesforce.com”。 <br> - 要从沙盒复制数据，请指定“https://test.salesforce.com”。 <br> - 若要从自定义域复制数据，请指定（例如）“https://[domain].my.salesforce.com”。 |否 |
 | username |为用户帐户指定用户名。 |是 |
 | password |指定用户帐户的密码。 |是 |
@@ -204,7 +203,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 
 **Azure Blob 输出数据集**
 
-数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。
+数据每小时向新的 blob 写入一次（frequency：hour，interval：1）。
 
 ```json
 {
@@ -288,7 +287,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 | Salesforce 类型 | 基于 .NET 的类型 |
 | --- | --- |
 | 自动编号 |String |
-| 复选框 |布尔 |
+| 复选框 |Boolean |
 | 货币 |小数 |
 | 日期 |DateTime |
 | 日期/时间 |DateTime |

@@ -1,20 +1,22 @@
 ---
-title: 导出或删除工作区数据 — Azure机器学习 | Microsoft Docs
-description: 在 Azure 机器学习中，可以使用 Azure 门户、CLI、SDK 和经过身份验证的 REST API 导出或删除工作区。 本文介绍相关实现方法。
+title: 导出或删除工作区数据
+titleSuffix: Azure Machine Learning service
+description: 了解如何使用 Azure 门户、CLI、SDK 和经过身份验证的 REST API 导出或删除工作区。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 author: ph-com
 ms.author: pahusban
 ms.date: 09/24/2018
-ms.openlocfilehash: 20c75b55e9b02f30e90ad40ea11383b91ae0a247
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.custom: seodec18
+ms.openlocfilehash: 3f40606d5fae3b3784ac7f1fdcf4977b7fd9eb1f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267281"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251769"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>导出或删除机器学习服务工作区数据 
 

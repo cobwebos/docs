@@ -3,19 +3,19 @@ title: 使用自定义策略在 Azure Active Directory B2C 中设置 Google 帐�
 description: 使用自定义策略在 Azure Active Directory B2C 中设置 Google 帐户登录。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 5f4aaef65620a2c6f268f123544c7ecf71dccb82
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.subservice: B2C
+ms.openlocfilehash: a958650a80df9eba27b99e11cce72a1ad62db14c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887268"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153056"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略设置 Google 帐户登录
 
@@ -45,7 +45,7 @@ ms.locfileid: "48887268"
 
 ## <a name="create-a-policy-key"></a>创建策略密钥
 
-需要存储前面在 Azure AD B2C 租户中记录的客户端机密。
+你需要存储前面在 Azure AD B2C 租户中记录的客户端机密。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
@@ -53,9 +53,9 @@ ms.locfileid: "48887268"
 4. 在“概述”页上，选择“标识体验框架 - 预览”。
 5. 选择“策略密钥”，然后选择“添加”。
 6. 对于“选项”，请选择 `Manual`。
-7. 输入策略密钥的“名称”。 例如，`GoogleSecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+7. 输入策略密钥的**名称**。 例如，`GoogleSecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 8. 在“机密”中，输入前面记录的应用程序机密。
-9. 对于“密钥用法”，请选择 `Signature`。
+9. 在“密钥用法”处选择 `Signature`。
 10. 单击“创建”。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
@@ -174,7 +174,7 @@ ms.locfileid: "48887268"
 更新用于启动创建的用户旅程的信赖方 (RP) 文件。
 
 1. 在工作目录中创建 *SignUpOrSignIn.xml* 的副本并将其重命名。 例如，将其重命名为 *SignUpSignInGoogle.xml*。
-2. 打开新文件，并将 **TrustFrameworkPolicy** 的 **PolicyId** 属性值更新为唯一的值。 例如，`SignUpSignInGoogle`。
+2. 打开新文件，并将 **TrustFrameworkPolicy** 的 **PolicyId** 属性的值更新为唯一的值。 例如，`SignUpSignInGoogle`。
 3. 将 **PublicPolicyUri** 的值更新为策略的 URI。 例如 `http://contoso.com/B2C_1A_signup_signin_google`
 4. 更新 **DefaultUserJourney** 中的 **ReferenceId** 属性的值，以匹配所创建的新用户旅程的 ID (SignUpSignGoogle)。
 5. 保存更改并上传文件，然后选择列表中的新策略。

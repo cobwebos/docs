@@ -3,18 +3,18 @@ title: 加入 Azure Automation State Configuration 管理的计算机
 description: 如何设置通过 Azure Automation State Configuration 进行管理的计算机
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 50f8fea04da3b1e414917a6404cb3f6e838bf716
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 1a3cfb51cc75c89c5a4580b1b7721eb763078980
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284806"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096698"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>加入 Azure Automation State Configuration 管理的计算机
 
@@ -168,7 +168,7 @@ Azure Automation State Configuration 可让你使用 Azure 门户、Azure 资源
 1. 确保已在希望加入到 Azure Automation State Configuration 的计算机上安装[适用于 Linux 的 PowerShell Desired State Configuration](https://github.com/Microsoft/PowerShell-DSC-for-Linux) 的最新版本。
 1. 如果 [PowerShell DSC 本地 Configuration Manager 默认值](/powershell/dsc/metaconfig4)与用例匹配，并且想要将计算机加入为**同时**从 Azure Automation State Configuration 提取并报告信息，则请执行以下操作：
 
-   - 在要加入到 Azure Automation State Configuration 的每台 Linux 计算机上，使用 `Register.py` 通过 PowerShell DSC 本地 Configuration Manager 默认值进行加入：
+   - 在要加入到 Azure Automation State Configuration 的每台 Linux 计算机上，通过 `Register.py` 使用 PowerShell DSC 本地 Configuration Manager 默认值加入：
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 

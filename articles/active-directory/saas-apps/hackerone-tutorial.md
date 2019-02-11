@@ -1,25 +1,25 @@
 ---
-title: 教程：Azure Active Directory 与 Hackerone 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Hackerone 集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 Hackerone 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 229d1efb-b6a5-4df8-9839-5d551487db4e
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 4e33ad66fe0ced9a426a608f4193ff52dec4f7ee
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: fdc9b67ef7f2becbeffe10261b3f2a96a225b5db
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441827"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159083"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>教程：Azure Active Directory 与 HackerOne 集成
 
@@ -148,9 +148,9 @@ ms.locfileid: "39441827"
 
     a. 在“电子邮件域”文本框中，键入已注册域。
 
-    b. 在“单一登录 URL”文本框中，粘贴从 Azure 门户中复制的“SAML 单一登录服务 URL”的值。
+    b. 在“单一登录 URL”  **** 文本框中，粘贴从 Azure 门户中复制的“SAML 单一登录服务 URL” **** 的值。
 
-    c. 在记事本中打开从 Azure 门户下载的“证书文件”，将内容复制到剪贴板，然后粘贴到“X509 证书”文本框。
+    c. 在记事本中打开从 Azure 门户下载的“证书文件”，将内容复制到剪贴板，然后粘贴到“X509 证书” 文本框。
     
     d. 单击“ **保存**”。
 
@@ -163,7 +163,7 @@ ms.locfileid: "39441827"
     b. 如果“状态”字段的值为“上次测试状态: 已创建”，则请联系 [HackerOne 支持团队](mailto:support@hackerone.com)请求查看配置。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -246,7 +246,7 @@ ms.locfileid: "39441827"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

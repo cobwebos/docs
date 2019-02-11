@@ -12,29 +12,31 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 01/11/2019
 ms.author: anwestg
-ms.openlocfilehash: 79d78faa53962ea72178281d75cef3c2f61320b1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 01/11/2019
+ms.openlocfilehash: 267c3c2d8430d769b5d42de33796da8b57504516
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971498"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238782"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>将应用服务资源提供程序添加到受 AD FS 保护且已断开连接的 Azure Stack 环境
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!IMPORTANT]
-> 适用于 Azure Stack 集成系统的 1809年更新或部署 Azure 应用服务 1.4 之前部署最新的 Azure Stack 开发工具包。
->
->
+> 请将 1809 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包，然后部署 Azure 应用服务 1.4。
 
 按照本文中的说明操作即可将[应用服务资源提供程序](azure-stack-app-service-overview.md)安装到符合以下条件的 Azure Stack 环境：
 
 - 未连接到 Internet
 - 受 Active Directory 联合身份验证服务 (AD FS) 保护。
 
+ > [!IMPORTANT]
+ > 在部署之前的资源提供程序，查看发行说明以了解有关新功能、 修复和可能会影响你的部署任何已知的问题的信息。
+ 
 若要将应用服务资源提供程序添加到脱机的 Azure Stack 部署，必须完成以下顶级任务：
 
 1. 完成[先决条件步骤](azure-stack-app-service-before-you-get-started.md)（例如购买证书，可能需要数天才能接收到）。
@@ -84,7 +86,7 @@ ms.locfileid: "52971498"
     2. 在“Azure Stack 订阅”框中，选择“默认提供商订阅”。
     
     > [!NOTE]
-    > 应用服务只能部署到**默认提供商订阅**。
+    > 应用服务只能部署到“默认提供程序订阅”。
     >
     
     3. 在“Azure Stack 位置”框中，选择要部署到的区域所对应的位置。 例如，如果要部署到 Azure Stack 开发工具包，请选择“本地”。
@@ -160,16 +162,16 @@ ms.locfileid: "52971498"
 
     | 角色 | 最小实例数 | 最小 SKU | 说明 |
     | --- | --- | --- | --- |
-    | 控制器 | 1 | Standard_A2 -（2 个 vCPU，3584 MB） | 管理和维护应用服务云的运行状况。 |
-    | 管理 | 1 | Standard_A2 -（2 vCPU，3584 MB） | 管理应用服务 Azure 资源管理器和 API 终结点、门户扩展（管理员门户、租户门户、Functions 门户）和数据服务。 为了支持故障转移，已将建议的实例数增加到 2 个。 |
-    | 发布者 | 1 | Standard_A1 -（1 vCPU，1792 MB） | 通过 FTP 和 Web 部署发布内容。 |
-    | FrontEnd | 1 | Standard_A1 -（1 vCPU，1792 MB） | 将请求路由到应用服务应用程序。 |
-    | 共享辅助角色 | 1 | Standard_A1 -（1 vCPU，1792 MB） | 托管 Web 应用程序或 API 应用程序和 Azure Functions 应用。 可能需要添加更多实例。 作为操作员，可以定义产品/服务，并选择任何 SKU 层。 这些层必须至少具有一个 vCPU。 |
+    | 控制器 | 第 | Standard_A2 -（2 个 vCPU，3584 MB） | 管理和维护应用服务云的运行状况。 |
+    | 管理 | 第 | Standard_A2 -（2 vCPU，3584 MB） | 管理应用服务 Azure 资源管理器和 API 终结点、门户扩展（管理员门户、租户门户、Functions 门户）和数据服务。 为了支持故障转移，已将建议的实例数增加到 2 个。 |
+    | 发布者 | 第 | Standard_A1 -（1 vCPU，1792 MB） | 通过 FTP 和 Web 部署发布内容。 |
+    | FrontEnd | 第 | Standard_A1 -（1 vCPU，1792 MB） | 将请求路由到应用服务应用程序。 |
+    | 共享辅助角色 | 第 | Standard_A1 -（1 vCPU，1792 MB） | 托管 Web 应用程序或 API 应用程序和 Azure Functions 应用。 可能需要添加更多实例。 作为操作员，可以定义产品/服务，并选择任何 SKU 层。 这些层必须至少具有一个 vCPU。 |
 
     ![应用服务安装程序][14]
 
     > [!NOTE]
-    > **不支持将 Windows Server 2016 Core 平台映像与 Azure Stack 上的 Azure 应用服务配合使用。请勿将评估映像用于生产部署。Azure Stack上的 Azure 应用服务要求在用于部署的映像上激活 Microsoft.Net 3.5.1 SP1。 Marketplace 联合 Windows Server 2016 映像没有启用此功能，因此您必须创建并使用 Windows Server 2016 映像预先启用此功能。**
+    > **不支持将 Windows Server 2016 Core 平台映像与 Azure Stack 上的 Azure 应用服务配合使用。请勿将评估映像用于生产部署。Azure Stack上的 Azure 应用服务要求在用于部署的映像上激活 Microsoft.Net 3.5.1 SP1。 市场联合 Windows Server 2016 映像未启用此功能，因此必须在预先启用此功能的情况下创建并使用 Windows Server 2016 映像。**
 
 14. 在“选择平台映像”框中选择部署型 Windows Server 2016 虚拟机映像，该映像由应用服务云的计算资源提供程序提供。 单击“下一步”。
 
@@ -197,21 +199,21 @@ ms.locfileid: "52971498"
 
 1. 在 Azure Stack 管理员门户中，转到“管理 - 应用服务”。
 
-2. 在概述中，在状态检查以查看是否**状态**显示**所有角色都已就绪**。
+2. 在“概述”中，在“状态”下，检查“状态”是否显示了“所有角色已就绪”。
 
     ![应用服务管理](media/azure-stack-app-service-deploy/image12.png)
 
 > [!NOTE]
 > 如果选择部署到现有虚拟网络和内部 IP 地址以连接到文件服务器，则必须添加出站安全规则，以便在工作子网和文件服务器之间启用 SMB 流量。  为此，请转到管理门户中的 WorkersNsg 并添加具有以下属性的出站安全规则：
-> * 源：任何
+> * 源：任意
 > * 源端口范围：*
 > * 目标：IP 地址
-> * 目标 IP 地址范围：文件服务器的 IP 范围
+> * 目标 IP 地址范围：你的文件服务器的 IP 范围
 > * 目标端口范围：445
 > * 协议：TCP
 > * 操作：允许
 > * 优先级：700
-> * 名称：Outbound_Allow_SMB445
+> * 姓名：Outbound_Allow_SMB445
 >
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>体验 Azure Stack 上的应用服务
@@ -257,9 +259,9 @@ ms.locfileid: "52971498"
 - [MySQL 资源提供程序](azure-stack-mysql-resource-provider-deploy.md)
 
 <!--Links-->
-[Azure_Stack_App_Service_preview_installer]: http://go.microsoft.com/fwlink/?LinkID=717531
-[App_Service_Deployment]: http://go.microsoft.com/fwlink/?LinkId=723982
-[AppServiceHelperScripts]: http://go.microsoft.com/fwlink/?LinkId=733525
+[Azure_Stack_App_Service_preview_installer]: https://go.microsoft.com/fwlink/?LinkID=717531
+[App_Service_Deployment]: https://go.microsoft.com/fwlink/?LinkId=723982
+[AppServiceHelperScripts]: https://go.microsoft.com/fwlink/?LinkId=733525
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-deploy-offline/app-service-exe-advanced-create-package.png

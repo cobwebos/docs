@@ -4,23 +4,23 @@ description: 了解如何安装 Azure AD Power BI 内容包
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: fd5604eb-1334-4bd8-bfb5-41280883e2b5
 ms.service: active-directory
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: cd5da2a3c5fa3d9cd67715493eb649926badb694
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 7ac19bf78e01fb5f78ac595b80e6823c5209af56
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622528"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55185800"
 ---
 # <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>快速入门：安装 Azure Active Directory Power BI 内容包
 
@@ -39,7 +39,7 @@ ms.locfileid: "51622528"
 
 * 一个 Power BI 帐户。 这是与你的 O365 或 Azure AD 帐户相同的帐户。 
 * 你的 Azure AD 租户 ID。 这是从 Azure 门户的[属性页面](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)中获得的你的目录的**目录 ID**。
-* 一个 Azure AD Premium (P1/P2) 许可证。 
+* 一个 Azure AD Premium (P1/P2) 许可证。 请参阅 [Azure Active Directory Premium 入门](../fundamentals/active-directory-get-started-premium.md)来升级 Azure Active Directory 版本。
 
 ## <a name="install-azure-ad-power-bi-content-pack"></a>安装 Azure AD Power BI 内容包 
 

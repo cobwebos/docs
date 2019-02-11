@@ -1,20 +1,17 @@
 ---
 title: 如何对 Azure Database for MariaDB 中的查询性能问题进行故障排除
 description: 本文介绍了如何使用 EXPLAIN 对 Azure Database for MariaDB 中的查询性能问题进行故障排除。
-services: mariadb
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: 6bbaffeccbca77f1cab3058152f8c001f721332e
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 672635c8d8c84fa16c106ae79e97332fd740928d
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51347441"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53541075"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>如何使用 EXPLAIN 分析 Azure Database for MariaDB 中的查询性能
 **EXPLAIN** 是一个可用来优化查询的易用工具。 可以使用 EXPLAIN 语句来获取有关 SQL 语句执行情况的信息。 下面的输出显示了 EXPLAIN 语句的一个执行示例。

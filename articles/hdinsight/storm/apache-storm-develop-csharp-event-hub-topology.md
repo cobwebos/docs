@@ -9,34 +9,34 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 027c8155c84959ca429eb9b093a155ac22aaf324
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 85d95354d24a3f107fc518b367ab1187da43269d
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582201"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633753"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (C#)
 
-了解如何从 [Apache Storm](http://storm.apache.org/) on HDInsight 使用 Azure 事件中心。 本文档使用 C# Storm 拓扑对事件中心读取和写入数据
+了解如何从 [Apache Storm](https://storm.apache.org/) on HDInsight 使用 Azure 事件中心。 本文档使用 C# Storm 拓扑对事件中心读取和写入数据
 
-> [!NOTE]
+> [!NOTE]  
 > 如需此项目的 Java 版，请参阅[使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)。
 
 ## <a name="scpnet"></a>SCP.NET
 
 本文档中的步骤使用 SCP.NET，后者是一个 NuGet 包，方便用户创建适用于 Storm on HDInsight 的 C# 拓扑和组件。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 虽然本文档中的步骤依赖于带 Visual Studio 的 Windows 开发环境，但是也可将编译的项目提交到使用 Linux 的 Storm on HDInsight 群集。 仅 2016 年 10 月 28 日之后创建的基于 Linux 的群集支持 SCP.NET 拓扑。
 
-HDInsight 3.4 及更高版本使用 Mono 运行 C# 拓扑。 本文档中使用的示例适用于 HDInsight 3.6。 如果你计划为 HDInsight 创建自己的 .NET 解决方案，请查看 [Mono 兼容性](http://www.mono-project.com/docs/about-mono/compatibility/)文档了解可能的不兼容性。
+HDInsight 3.4 及更高版本使用 Mono 运行 C# 拓扑。 本文档中使用的示例适用于 HDInsight 3.6。 如果你计划为 HDInsight 创建自己的 .NET 解决方案，请查看 [Mono 兼容性](https://www.mono-project.com/docs/about-mono/compatibility/)文档了解可能的不兼容性。
 
 ### <a name="cluster-versioning"></a>群集版本控制
 
 用于项目的 Microsoft.SCP.Net.SDK NuGet 包必须与安装在 HDInsight 上的 Storm 的主要版本匹配。 HDInsight 版本 3.5 和 3.6 使用 Storm 1.x，因此必须对这些群集使用 SCP.NET 版本 1.0.x.x。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 本文档中的示例需要 HDInsight 3.5 或 3.6 群集。
 >
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
@@ -47,13 +47,13 @@ C# 拓扑还必须针对 .NET 4.5 运行。
 
 Microsoft 提供一组 Java 组件用于与 Storm 拓扑中的事件中心通信。 可在 [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar) 中找到包含这些组件的 HDInsight 3.6 兼容版本的 Java 存档 (JAR) 文件。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 虽然组件是以 Java 编写的，但可通过 C# 拓扑轻松使用它们。
 
 此示例中使用了以下组件：
 
 * __EventHubSpout__：从事件中心读取数据。
-* __EventHubBolt__：将数据写入事件中心。
+* __EventHubBolt__：从事件中心写入数据。
 * __EventHubSpoutConfig__：用于配置 EventHubSpout。
 * __EventHubBoltConfig__：用于配置 EventHubBolt。
 
@@ -99,7 +99,7 @@ topologyBuilder.SetJavaBolt(
         .shuffleGrouping("Spout");
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > 此示例使用作为字符串传递的 Clojure 表达式，而不是像 Spout 示例那样使用 **JavaComponentConstructor** 创建 **EventHubBoltConfig**。 任意一种方法均有效。 使用最适合方法。
 
 ## <a name="download-the-completed-project"></a>下载已完成的项目
@@ -110,7 +110,7 @@ topologyBuilder.SetJavaBolt(
 
 * [Apache Storm on HDInsight 3.5 或 3.6 版群集](apache-storm-tutorial-get-started-linux.md)。
 
-    > [!WARNING]
+    > [!WARNING]  
     > 本文档中使用的示例需要 Storm on HDInsight 3.5 或 3.6 版。 由于重大类名更改，此示例不适用于旧版 HDInsight。 如需适用于旧式群集的示例版本，请参阅 [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub/releases)。
 
 * [Azure 事件中心](../../event-hubs/event-hubs-create.md)。

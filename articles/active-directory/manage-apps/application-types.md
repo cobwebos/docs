@@ -4,22 +4,22 @@ description: 如何查看租户中的全部应用程序，并了解应用程序�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: f483be5866715ddf253daefb197ae3dd87e02d99
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 55632acf516198b5ad0b6430480836dcc62fd5a5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249092"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755369"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>应用程序列表中意料之外的应用程序
 
@@ -63,15 +63,15 @@ ms.locfileid: "51249092"
 
 4.  当通过使用[应用程序注册表](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)创建以自定义方式开发的应用程序，来添加新应用程序注册之时
 
-5.  当通过使用 [V2.0 应用程序注册门户](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration#visit-the-microsoft-app-registration-portal)创建以自定义方式开发的应用程序，来添加新应用程序注册之时
+5.  当通过使用 [V2.0 应用程序注册门户](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)创建以自定义方式开发的应用程序，来添加新应用程序注册之时
 
-6.  添加正在使用 Visual Studio 的 [ASP.net 身份验证方法](http://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)或[连接的服务](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)开发的应用程序时
+6.  添加正在使用 Visual Studio 的 [ASP.net 身份验证方法](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)或[连接的服务](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)开发的应用程序时
 
 7.  使用 [Azure AD PowerShell 模块](/powershell/azure/install-adv2?view=azureadps-2.0)创建服务主体对象时
 
-8.  以管理员身份[同意某应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)使用租户中的数据时
+8.  以管理员身份[同意某应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)使用租户中的数据时
 
-9.  [用户同意某应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)使用租户中的数据时
+9.  [用户同意某应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)使用租户中的数据时
 
 10. 启用某些在租户中存储数据的服务时。 相应的一个示例是密码重置，密码重置是作为服务主体进行建模的，以便安全存储密码重置策略。
 
@@ -107,7 +107,7 @@ ms.locfileid: "51249092"
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>我要禁用用户未来针对应用程序的所有同意操作
 
-针对整个目录禁用用户同意操作，可防止最终用户同意任何应用程序。 管理员仍可代表用户执行同意操作。 若要深入了解应用程序同意，以及为何要或不这样操作，请参阅[了解用户和管理员同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)。
+针对整个目录禁用用户同意操作，可防止最终用户同意任何应用程序。 管理员仍可代表用户执行同意操作。 若要深入了解应用程序同意，以及为何要或不这样操作，请参阅[了解用户和管理员同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)。
 
 若要**禁用用户未来在整个目录中执行的所有同意操作**，请执行以下步骤：
 

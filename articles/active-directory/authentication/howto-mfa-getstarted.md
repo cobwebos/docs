@@ -3,19 +3,19 @@ title: 云中的 Azure MFA 入门
 description: Microsoft Azure 多重身份验证和条件访问入门
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 09/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: bd2f796ab2feee4bb862d8de2c44efc742163f06
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 8f4991c00f133d97680bb76d6de627709847d275
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167522"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081086"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>部署基于云的 Azure 多重身份验证
 
@@ -74,7 +74,7 @@ Azure 多重身份验证 (Azure MFA) 入门是一个直截了当的过程。
 1. 为策略提供一个有意义的名称。
 1. 在“用户和组”下：
    * 在“包括”选项卡上，选中“所有用户”单选按钮
-   * 建议：在“排除”选项卡上，选中“用户和组”旁边的框，并选择当用户无权访问其身份验证方法时用于排除的组。
+   * 建议：在“排除”选项卡上，选中“用户和组”所对应的框，并选择当用户无权访问其身份验证方法时用于排除的组。
    * 单击“完成”。
 1. 在“云应用”下，选中“所有云应用”单选按钮。
    * 可选：在“排除”选项卡上，选择组织不需要对其执行 MFA 的云应用。

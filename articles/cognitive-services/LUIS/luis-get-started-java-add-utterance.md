@@ -1,21 +1,22 @@
 ---
-title: Java 快速入门 - 更改模型并训练 LUIS 应用
-titleSuffix: Azure Cognitive Services
-description: 在本 Java 快速入门中，你将向家庭自动化应用中添加示例话语并训练该应用。 示例话语是映射到意向的对话式用户文本。 通过提供意向的示例话语，可以教 LUIS 识别用户提供的文本类型属于哪种意向。
+title: 更改、训练应用，Java
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: 在本 Java 快速入门中，你将向家庭自动化应用中添加示例话语并训练该应用。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: bfe4aae25a34799370e52c8677871a62935ab5c2
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: aeb0242114169303a938b1b31ffe6009167e1e5a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419735"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213236"
 ---
 # <a name="quickstart-change-model-using-java"></a>快速入门：使用 Java 更改模型 
 
@@ -71,14 +72,14 @@ ms.locfileid: "50419735"
 
 使用依赖项编译 AddUtterance
 
-```CMD
+```console
 > javac -classpath gson-2.8.2.jar AddUtterances.java
 ```
 
 ## <a name="run-code"></a>运行代码
 调用不带参数的 `AddUtterance` 会将 LUIS 陈述添加到应用，但不训练应用。
 
-```CMD
+```console
 > java -classpath .;gson-2.8.2.jar AddUtterances
 ```
 

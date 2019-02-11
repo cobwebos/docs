@@ -8,19 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/02/2017
+ms.date: 11/27/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: b393fcefbc2de1941118d02a671e5696e1510fa2
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 3ccb307eb028170f2dc65fd7cf90edf3115ae9a7
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336327"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102680"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>在 Linux 代理上将来自 CollectD 的数据收集到 Log Analytics 中
 [CollectD](https://collectd.org/) 是一个开源 Linux 守护程序，它定期从应用程序级和系统级信息中收集性能指标。 示例应用程序包括 Java 虚拟机 (JVM)、MySQL Server 和 Nginx。 本文提供了与将来自 CollectD 的性能数据收集到 Log Analytics 中相关的信息。
@@ -124,6 +122,5 @@ Log Analytics Linux 代理也在端口 26000 上侦听 CollectD 指标，然后�
 | values[] | CounterValue |
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[日志搜索](../../log-analytics/log-analytics-queries.md)以便分析从数据源和解决方案中收集的数据。 
+* 了解[日志查询](../../log-analytics/log-analytics-queries.md)以便分析从数据源和解决方案中收集的数据。 
 * 使用[自定义字段](../../log-analytics/log-analytics-custom-fields.md)将来自 syslog 记录的数据解析为单个字段。
-

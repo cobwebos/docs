@@ -8,12 +8,12 @@ ms.author: sahubbar
 ms.date: 09/15/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 35db7bf87c7b72fc31d820c9058b1df8415bd553
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ac5accc72369d811c0d36c4ef64cd8d523a061f3
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031299"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724496"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中创建并运行作业
 
@@ -56,8 +56,13 @@ ms.locfileid: "47031299"
 
 如果要停止当前正在运行的作业，单击要停止的正在运行的作业名称。 选择面板上的“停止”按钮。 你将看到作业状态已更改以反映作业已停止。
 
-> [!NOTE]
-> 作业已停止后无法重新启动。 必须使用所需的操作和设备创建另一个作业。
+   ![停止作业](./media/howto-run-a-job/stopjob.png)
+
+### <a name="run-a-stopped-job"></a>运行已停止的作业
+
+如果要运行当前已停止的作业，单击要运行的已停止作业的名称。 选择面板上的“运行”按钮。 可看到作业状态已更改以反映作业现在已重新运行。
+
+   ![已恢复的作业](./media/howto-run-a-job/resumejob.png)
 
 ## <a name="view-the-job-status"></a>查看作业状态
 

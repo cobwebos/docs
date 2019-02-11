@@ -14,12 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 6fb8be96c9793e96f1f7d2ad8e212d056d7e9ba5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 358e8cd92fe250741adbbb9208b5e149a5f60216
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38467880"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959727"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 Apache Cordova 客户端库
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -71,8 +71,8 @@ Azure 移动应用 Cordova 插件同时支持 Ionic v1 和 Ionic v2 应用。  �
 
 [!INCLUDE [app-service-mobile-html-js-library.md](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>如何对用户进行身份验证
-Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Google、Microsoft 帐户和 Twitter）对应用的用户进行身份验证和授权。 可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 还可以在服务器脚本中使用已经过身份验证的用户的标识来实施授权规则。 有关详细信息，请参阅[身份验证入门]教程。
+## <a name="auth"></a>如何：对用户进行身份验证
+Azure 应用服务支持使用各种外部标识提供者对应用用户进行身份验证和授权：Facebook、Google、Microsoft 帐户和 Twitter。 可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 还可以在服务器脚本中使用已经过身份验证的用户的标识来实施授权规则。 有关详细信息，请参阅[身份验证入门]教程。
 
 在 Apache Cordova 应用中使用身份验证时，以下 Cordova 插件必须可用：
 
@@ -83,7 +83,7 @@ Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Go
 
 [!INCLUDE [app-service-mobile-html-js-auth-library.md](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>如何为外部重定向 URL 配置移动应用服务。
+### <a name="configure-external-redirect-urls"></a>如何：为外部重定向 URL 配置移动应用服务。
 有多种类型的 Apache Cordova 应用程序使用环回功能来处理 OAuth UI 流。  localhost 上的 OAuth UI 流会造成问题，因为身份验证服务默认只知道如何利用服务。  有问题的 OAuth UI 流示例包括：
 
 * Ripple 模拟器。
@@ -167,7 +167,7 @@ pushHandler.on('error', function (error) {
 
 ## <a name="more-information"></a>详细信息
 
-可以在 [API 文档](http://azure.github.io/azure-mobile-apps-js-client/)中找到详细的 API 详细信息。
+可以在 [API 文档](https://azure.github.io/azure-mobile-apps-js-client/)中找到详细的 API 详细信息。
 
 <!-- URLs. -->
 [Azure 门户]: https://portal.azure.com
@@ -176,7 +176,7 @@ pushHandler.on('error', function (error) {
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
 [适用于 Azure 移动应用的 Apache Cordova 插件]: https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-apps
-[第一个 Apache Cordova 应用]: http://cordova.apache.org/#getstarted
+[第一个 Apache Cordova 应用]: https://cordova.apache.org/#getstarted
 [phonegap-facebook-plugin]: https://github.com/wizcorp/phonegap-facebook-plugin
 [phonegap-plugin-push]: https://www.npmjs.com/package/phonegap-plugin-push
 [cordova-plugin-device]: https://www.npmjs.com/package/cordova-plugin-device

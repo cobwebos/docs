@@ -1,5 +1,5 @@
 ---
-title: 如何使用 Azure 资源管理器模板创建 ILB ASE | Microsoft Docs
+title: 使用 Azure 资源管理器模板创建 ILB ASE - 应用服务 | Microsoft Docs
 description: 了解如何使用 Azure 资源管理器模板创建内部负载均衡器 ASE。
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
-ms.openlocfilehash: 20531cb301cad23fbadb617bdf33e710a4481be4
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.custom: seodec18
+ms.openlocfilehash: 34278e02c62bda18a4b4d2f404417e8844dd5fc4
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050028"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156674"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>如何使用 Azure 资源管理器模板创建 ILB ASE
 
@@ -34,14 +35,14 @@ ms.locfileid: "44050028"
 
 1. 首先，使用内部负载均衡器地址（而不是公用 VIP）在虚拟网络中创建基础 ASE。  在此步骤中，将为 ILB ASE 分配根域名称。
 2. 一旦创建 ILB ASE，就会上传 SSL 证书。  
-3. 上传的 SSL 证书显式分配给 ILB ASE 作为其“默认”SSL 证书。  如果应用使用分配给 ASE 的一般根域（例如 https://someapp.mycustomrootcomain.com)）来寻址，此 SSL 证书用于 ILB ASE 上应用的 SSL 流量
+3. 上传的 SSL 证书显式分配给 ILB ASE 作为其“默认”SSL 证书。  如果应用使用分配给 ASE 的一般根域（例如 https://someapp.mycustomrootcomain.com) 来寻址，此 SSL 证书用于 ILB ASE 上应用的 SSL 流量
 
 ## <a name="creating-the-base-ilb-ase"></a>创建基础 ILB ASE
 GitHub（[此处][quickstartilbasecreate]）上提供了 Azure 资源管理器模板示例及其相关联的参数文件。
 
 *azuredeploy.parameters.json* 文件中的大部分参数通用于创建 ILB ASE 以及绑定到公用 VIP 的 ASE。  创建 ILB ASE 时，以下列表会调出特殊注释的参数或唯一的参数：
 
-* *interalLoadBalancingMode*：此属性多数情况下设置为 3，这表示端口 80/443 上的 HTTP/HTTPS 流量以及 ASE 上的 FTP 服务所侦听的控制/数据通道端口将绑定到 ILB 分配的虚拟网络内部地址。  如果此属性改设为 2，则只有与 FTP 服务相关的端口（控制和数据通道）会绑定到 ILB 地址，而 HTTP/HTTPS 流量将保留在公用 VIP 上。
+* internalLoadBalancingMode：大多数情况下，请将此属性设置为 3，这表示端口 80/443 上的 HTTP/HTTPS 流量以及 ASE 上的 FTP 服务所侦听的控制/数据通道端口将绑定到 ILB 分配的虚拟网络内部地址。  如果此属性改设为 2，则只有与 FTP 服务相关的端口（控制和数据通道）会绑定到 ILB 地址，而 HTTP/HTTPS 流量将保留在公用 VIP 上。
 * *dnsSuffix*：此参数定义要分配给 ASE 的默认根域。  在 Azure 应用服务的公共变体中，所有 Web 应用的默认根域均为 *azurewebsites.net*。  不过，ILB ASE 位于客户虚拟网络的内部，因此不适合使用公共服务的默认根域，  而应当具有适合在公司的内部虚拟网络中使用的默认根域。  例如，假定的 Contoso Corporation 可能会将 *internal-contoso.com* 的默认根域用于只能在 Contoso 虚拟网络内解析和访问的应用。 
 * *ipSslAddressCount*：在 *azuredeploy.json* 文件中，此参数的值自动默认为 0，因为 ILB ASE 只有一个 ILB 地址。  ILB ASE 没有显式 IP-SSL 地址，因此 ILB ASE 的 IP-SSL 地址池必须设置为零，否则会发生预配错误。 
 
@@ -60,7 +61,7 @@ GitHub（[此处][quickstartilbasecreate]）上提供了 Azure 资源管理器�
 可通过各种方式获取有效的 SSL 证书，包括内部 CA、向外部颁发者购买证书，以及使用自签名证书。  无论 SSL 证书的来源如何，都需要正确配置以下证书属性：
 
 * *使用者*：此属性必须设置为 **.your-root-domain-here.com*
-* *使用者可选名称*：此属性必须同时包含 **.your-root-domain-here.com* 和 **scm.your-root-domain-here.com*。  输入第二项是因为将使用 *your-app-name.scm.your-root-domain-here.com* 形式的地址，建立与每个应用关联的 SCM/Kudu 站点的 SSL 连接。
+* *使用者可选名称*：此属性必须同时包括 **.your-root-domain-here.com* 和 **.scm.your-root-domain-here.com*。  输入第二项是因为将使用 *your-app-name.scm.your-root-domain-here.com* 形式的地址，建立与每个应用关联的 SCM/Kudu 站点的 SSL 连接。
 
 备妥有效的 SSL 证书还需要两个额外的准备步骤。  SSL 证书必须转换/另存为 .pfx 文件。  记住，.pfx 文件必须包含所有中间证书和根证书，还必须使用密码保护。
 
@@ -85,16 +86,16 @@ GitHub（[此处][quickstartilbasecreate]）上提供了 Azure 资源管理器�
 *azuredeploy.parameters.json* 文件中的参数如下所列：
 
 * *appServiceEnvironmentName*：要配置的 ILB ASE 的名称。
-* *existingAseLocation*：包含 ILB ASE 部署所在的 Azure 区域的文本字符串。  例如：“美国中南部”。
+* existingAseLocation：包含 ILB ASE 部署所在的 Azure 区域的文本字符串。  例如：“South Central US”。
 * *pfxBlobString*：.pfx 文件的 based64 编码字符串表示形式。  使用前面所示的代码片段，复制并粘贴“exportedcert.pfx.b64”中包含的字符串，作为 *pfxBlobString* 属性的值。
 * *password*：用于保护 .pfx 文件的密码。
-* *certificateThumbprint*：证书的指纹。  如果从 Powershell 检索到此值（例如先前代码片段中的 *$certificate.Thumbprint*），可以按原样使用此值。  不过，如果从 Windows 证书对话框复制此值，请记得去除多余的空格。  *certificateThumbprint* 应如下所示：AF3143EB61D43F6727842115BB7F17BBCECAECAE
+* certificateThumbprint：证书的指纹。  如果从 Powershell 检索到此值（例如先前代码片段中的 *$certificate.Thumbprint*），可以按原样使用此值。  不过，如果从 Windows 证书对话框复制此值，请记得去除多余的空格。  *certificateThumbprint* 应如下所示：AF3143EB61D43F6727842115BB7F17BBCECAECAE
 * *certificateName*：用户自己选择的易记字符串标识符，用于标识证书。  此名称用作 *Microsoft.Web/certificates* 实体（表示 SSL 证书）的 Azure 资源管理器唯一标识符的一部分。  名称**必须**以下述后缀结尾：\_yourASENameHere_InternalLoadBalancingASE。  此后缀由门户使用，表示证书用于维护启用 ILB 的 ASE 的安全。
 
 *azuredeploy.parameters.json* 的缩写示例如下所示：
 
     {
-         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
+         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
          "contentVersion": "1.0.0.0",
          "parameters": {
               "appServiceEnvironmentName": {
@@ -138,6 +139,6 @@ GitHub（[此处][quickstartilbasecreate]）上提供了 Azure 资源管理器�
 
 <!-- LINKS -->
 [quickstartilbasecreate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-create/
-[examplebase64encoding]: http://powershellscripts.blogspot.com/2007/02/base64-encode-file.html 
+[examplebase64encoding]: https://powershellscripts.blogspot.com/2007/02/base64-encode-file.html 
 [configuringDefaultSSLCertificate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-configure-default-ssl/ 
 

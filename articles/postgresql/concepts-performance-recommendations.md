@@ -1,22 +1,21 @@
 ---
 title: Azure Database for PostgreSQL 中的性能建议
 description: 本文介绍可在 Azure Database for PostgreSQL 中获得的性能建议。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: 46a4e69ecb08276e12ccc197de2d3ad838628b78
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 1dedc08f27d1a483290dc61cce879290ca66592d
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378595"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548086"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的性能建议
 
-适用于：Azure Database for PostgreSQL 9.6 和 10
+**适用于：** Azure Database for PostgreSQL 9.6 和 10
 
 > [!IMPORTANT]
 > 性能建议为公共预览版。

@@ -1,24 +1,26 @@
 ---
-title: 通过 SSDT 部署到 Azure Analysis Services | Microsoft Docs
+title: 通过 Visual Studio (SSDT) 部署到 Azure Analysis Services | Microsoft Docs
 description: 了解如何通过 SSDT 将表格模型部署到 Azure Analysis Services 服务器。
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5f56ee65cd2ec5dfb39929f6985c26ebc339953e
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: a9f3dfba4c79b2369e99b95c13557557ed930c24
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429042"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188583"
 ---
-# <a name="deploy-a-model-from-ssdt"></a>从 SSDT 部署模型
+# <a name="deploy-a-model-from-visual-studio"></a>从 Visual Studio 部署模型
+
 在 Azure 订阅中创建服务器之后，便可以开始将表格模型数据库部署到其中。 SQL Server Data Tools (SSDT) 可用于生成和部署正在处理的表格模型项目。 
 
 ## <a name="prerequisites"></a>先决条件
+
 要开始，需要：
 
 * Azure 中的 **Analysis Services 服务器**。 若要了解详细信息，请参阅[创建 Azure Analysis Services 服务器](analysis-services-create-server.md)。
@@ -53,10 +55,12 @@ ms.locfileid: "49429042"
 
 
 ## <a name="troubleshooting"></a>故障排除
+
 如果部署元数据时部署失败，可能是因为 SSDT 无法连接到服务器。 确保可以使用 SSMS 连接到服务器。 然后确保项目的“部署服务器”属性正确。
 
 如果部署在表上失败，可能是因为服务器无法连接到数据源。 如果数据源位于组织网络中的本地位置，请务必安装[本地数据网关](analysis-services-gateway.md)。
 
 ## <a name="next-steps"></a>后续步骤
+
 现在，已将表格模型部署到服务器，可以与其进行连接了。 可以[使用 SSMS 连接到它](analysis-services-manage.md)以对其进行管理。 并且，可以[使用客户端工具连接到它](analysis-services-connect.md)，如 Power BI、Power BI Desktop 或 Excel，并开始创建报表。
 

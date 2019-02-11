@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 6796ecd272c7a1ed1d29c89fbe06c87dc2d4601b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5dc39d2f64aa2cd895cbf57d95100d831a6f4432
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242800"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159785"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -318,7 +318,7 @@ ms.locfileid: "51242800"
 </set-body>
 ```
 
-#### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accesing-it-later-in-the-pipeline-will-result-in-an-exception"></a>示例：访问 JObject 形式的正文。 请注意，由于我们不保留原始请求正文，稍后在管道进行访问将产生异常。
+#### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accessing-it-later-in-the-pipeline-will-result-in-an-exception"></a>示例：访问 JObject 形式的正文。 请注意，由于我们不保留原始请求正文，因此稍后在管道进行访问将产生异常。
 
 ```xml
 <set-body> 
@@ -334,7 +334,7 @@ ms.locfileid: "51242800"
 ```
 
 #### <a name="filter-response-based-on-product"></a>根据产品筛选响应
- 此示例演示如何通过以下方法进行内容筛选：`Starter` 产品时删除从后端服务接收的响应中的数据元素。 有关配置和使用此策略的演示，请观看 [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)（Cloud Cover 第 177 集：Vlad Vinogradsky 讲述更多 API 管理功能），快进到 34:30。 若要大致了解用于此演示的 [Dark Sky Forecast API](https://developer.forecast.io/)，请从 31:50 开始观看。
+ 以下示例演示了如何进行内容筛选，方法是：在使用 `Starter` 产品时删除从后端服务接收的响应中的数据元素。 有关配置和使用此策略的演示，请参阅 [Cloud Cover 第 177 集：更多的 API 管理功能与 VLAD Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) 并快进到 34:30。 若要大致了解用于此演示的 [Dark Sky Forecast API](https://developer.forecast.io/)，请从 31:50 开始观看。
 
 ```xml
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->
@@ -469,7 +469,7 @@ OriginalUrl.
 ```
 
 #### <a name="forward-context-information-to-the-backend-service"></a>将上下文信息转发到后端服务
- 此示例演示了如何在 API 级别应用策略，以便将上下文信息提供给后端服务。 有关配置和使用此策略的演示，请观看 [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)（Cloud Cover 第 177 集：Vlad Vinogradsky 讲述更多 API 管理功能），快进到 10:30。 在 12:10 处有一个演示，演示了如何在开发人员门户中调用操作，以便在其中查看生效的策略。
+ 此示例演示了如何在 API 级别应用策略，以便将上下文信息提供给后端服务。 有关配置和使用此策略的演示，请参阅 [Cloud Cover 第 177 集：更多的 API 管理功能与 VLAD Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) 并快进到 10:30。 在 12:10 处有一个演示，演示了如何在开发人员门户中调用操作，以便在其中查看生效的策略。
 
 ```xml
 <!-- Copy this snippet into the inbound element to forward some context information, user id and the region the gateway is hosted in, to the backend service for logging or evaluation -->
@@ -543,7 +543,7 @@ OriginalUrl.
 ```
 
 #### <a name="forward-context-information-to-the-backend-service"></a>将上下文信息转发到后端服务
- 此示例演示了如何在 API 级别应用策略，以便将上下文信息提供给后端服务。 有关配置和使用此策略的演示，请观看 [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)（Cloud Cover 第 177 集：Vlad Vinogradsky 讲述更多 API 管理功能），快进到 10:30。 在 12:10 处有一个演示，演示了如何在开发人员门户中调用操作，以便在其中查看生效的策略。
+ 此示例演示了如何在 API 级别应用策略，以便将上下文信息提供给后端服务。 有关配置和使用此策略的演示，请参阅 [Cloud Cover 第 177 集：更多的 API 管理功能与 VLAD Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) 并快进到 10:30。 在 12:10 处有一个演示，演示了如何在开发人员门户中调用操作，以便在其中查看生效的策略。
 
 ```xml
 <!-- Copy this snippet into the inbound element to forward a piece of context, product name in this example, to the backend service for logging or evaluation -->
@@ -709,7 +709,7 @@ OriginalUrl.
 |----------|-----------------|--------------|
 |xsl-transform|根元素。|是|
 |参数|用于定义在转换中使用的变量|否|
-|xsl:stylesheet|根样式表元素。 在其中定义的所有元素和属性都遵循标准的 [XSLT 规范](http://www.w3.org/TR/xslt)|是|
+|xsl:stylesheet|根样式表元素。 在其中定义的所有元素和属性都遵循标准的 [XSLT 规范](https://www.w3.org/TR/xslt)|是|
 
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。

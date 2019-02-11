@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
-ms.author: cwatson
-ms.openlocfilehash: a9ca57ce916dc3f9bc8d451063596519d1d6649c
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: kfollis
+ms.openlocfilehash: 21119816477d460aa48560b8ca231f23144a901b
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391330"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888482"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以编程方式创建 Azure 仪表板
 
@@ -100,7 +100,7 @@ Azure 提供协调多资源部署的功能。 创建用于表达要部署的资�
 ```json
 
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "virtualMachineName": {
@@ -386,7 +386,7 @@ __可在本文档末尾查看完整的工作模板。__
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "virtualMachineName": {

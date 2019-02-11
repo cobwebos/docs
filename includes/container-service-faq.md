@@ -4,14 +4,16 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: c5200e7e4d5550f26343fab1561c214ee19d6741
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: b0bb45233aa34dce6794638e5d49fc2b47bef71d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571850"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53615203"
 ---
-# <a name="container-service-frequently-asked-questions"></a>容器服务常见问题
+# <a name="deprecated-container-service-frequently-asked-questions"></a>（已弃用）容器服务常见问题解答
+
+[!INCLUDE [ACS deprecation](container-service-deprecation.md)]
 
 ## <a name="orchestrators"></a>协调器
 
@@ -30,7 +32,7 @@ Swarm 模式目前不受支持，但已列入服务计划。 
 ### <a name="do-you-recommend-a-specific-orchestrator-in-azure-container-service"></a>是否建议在 Azure 容器服务中使用特定的协调器？ 
 通常情况下，我们不提供特定协调器方面的建议。 如果体验过某个受支持的协调器，可以将该体验应用在 Azure 容器服务中。 不过，数据趋势表明，DC/OS 已在生产环境中证明适用于大数据和 IoT 工作负荷，Kubernetes 适用于云原生工作负荷，Docker Swarm 已知可以集成 Docker 工具且易于学习。
 
-用户也可以使用其他 Azure 服务，根据自己的情况生成和管理自定义容器解决方案。 这些服务包括[虚拟机](../articles/virtual-machines/linux/overview.md)、[Service Fabric](../articles/service-fabric/service-fabric-overview.md)、[Web 应用](../articles/app-service/app-service-web-overview.md)和[批处理](../articles/batch/batch-technical-overview.md)。  
+用户也可以使用其他 Azure 服务，根据自己的情况生成和管理自定义容器解决方案。 这些服务包括[虚拟机](../articles/virtual-machines/linux/overview.md)、[Service Fabric](../articles/service-fabric/service-fabric-overview.md)、[Web 应用](../articles/app-service/overview.md)和[批处理](../articles/batch/batch-technical-overview.md)。  
 
 ### <a name="what-is-the-difference-between-azure-container-service-and-acs-engine"></a>Azure 容器服务和 ACS 引擎的区别是什么？ 
 Azure 容器服务是支持 SLA 的 Azure 服务，具有 Azure 门户、Azure 命令行工具和 Azure API 中提供的功能。 用户可以使用该服务快速实现和管理运行标准容器协调工具的群集，配置选项相对较少。 

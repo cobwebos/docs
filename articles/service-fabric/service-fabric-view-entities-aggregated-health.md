@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: c6d5954ed3547666236130753dfd53d10475df43
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 09696c606fdf57f5ac55fc50eb06c2c5eea55dfe
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308982"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555245"
 ---
 # <a name="view-service-fabric-health-reports"></a>查看 Service Fabric 运行状况报告
 Azure Service Fabric 引入了一种具有运行状况实体的[运行状况模型](service-fabric-health-introduction.md)，系统组件和监视器可以在其上报告它们监视的本地状况。 [运行状况存储](service-fabric-health-introduction.md#health-store)聚合所有运行状况数据以确定实体是否正常运行。
@@ -46,7 +46,7 @@ Service Fabric 提供多种方式来获取实体聚合运行状况：
 Service Fabric Explorer 提供群集的更直观展示。 在下图中，可以看到：
 
 * 应用程序 **fabric:/WordCount** 为红色（出错），因为 **MyWatchdog** 报告“**可用性**”属性有一个错误事件。
-* 其服务之一 **fabric:/WordCount/WordCountService** 为黄色（警告）。 服务使用七个副本进行配置，而群集具有五个节点，因此有两个副本无法进行放置。 尽管此处未显示，不过服务分区是黄色，因为来自 `System.FM` 的系统报告指示 `Partition is below target replica or instance count`。 黄色分区触发黄色服务。
+* 其服务之一 **fabric:/WordCount/WordCountService** 为黄色（警告）。 该服务配置了七个副本，而群集具有五个节点，因此有两个副本无法进行放置。 尽管此处未显示，不过服务分区是黄色，因为来自 `System.FM` 的系统报告指示 `Partition is below target replica or instance count`。 黄色分区触发黄色服务。
 * 由于应用程序为红色，因此群集为红色。
 
 评估使用群集清单和应用程序清单的默认策略。 它们是严格的策略，不容许任何失败。
@@ -464,7 +464,7 @@ HealthEvents                    : None
 
 以下示例获取具有指定服务名称 (URI) 的服务的运行状况：
 
-```charp
+```csharp
 ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthAsync(serviceName);
 ```
 
@@ -1045,7 +1045,7 @@ ApplicationHealthStateChunks :
 * 副本列表：返回分区中副本的列表（已分页）。
   * API：[FabricClient.QueryClient.GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
   * PowerShell：Get-ServiceFabricReplica
-* 已部署应用程序列表：返回节点上已部署应用程序的列表。
+* 已部署的应用程序列表：返回节点上已部署应用程序的列表。
   * API：[FabricClient.QueryClient.GetDeployedApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
   * PowerShell：Get-ServiceFabricDeployedApplication
 * 已部署服务包列表：返回已部署应用程序中服务包的列表。

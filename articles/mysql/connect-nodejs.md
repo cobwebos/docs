@@ -1,24 +1,21 @@
 ---
 title: 通过 Node.js 连接到 Azure Database for MySQL
 description: 本快速入门提供多个 Node.js 代码示例，使用这些示例可连接到适用于 MySQL 的 Azure 数据库并查询其中的数据。
-services: mysql
 author: jasonwhowell
 ms.author: jasonh
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/21/2018
-ms.openlocfilehash: f0e76dff32038ba53dbdf7f869f5a04e75316e12
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: f5738c3eba3461c6f75884033eb60c54faec8473
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290699"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53535470"
 ---
-# <a name="azure-database-for-mysql-use-nodejs-to-connect-and-query-data"></a>适用于 MySQL 的 Azure 数据库：使用 Node.js 进行连接并查询数据
+# <a name="azure-database-for-mysql-use-nodejs-to-connect-and-query-data"></a>Azure Database for MySQL：使用 Node.js 连接和查询数据
 本快速入门演示如何在 Windows、Ubuntu Linux 和 Mac 平台中使用 [Node.js](https://nodejs.org/) 连接到适用于 MySQL 的 Azure 数据库。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本主题假设你熟悉如何使用 Node.js 进行开发，但不太熟悉 Azure Database for MySQL 的用法。
 
 ## <a name="prerequisites"></a>先决条件

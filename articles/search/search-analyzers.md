@@ -1,5 +1,5 @@
 ---
-title: Azure 搜索中的分析器 | Microsoft Docs
+title: 用于语言和文本处理的分析器 - Azure 搜索
 description: 将分析器分配到索引中的可搜索文本字段，以将默认标准 Lucene 替换为自定义、预定义或特定语言替代项。
 services: search
 ms.service: search
@@ -8,14 +8,15 @@ ms.date: 09/11/2017
 ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
-ms.openlocfilehash: 68ce4fa5536f21d6d66245a9383a4b58c42febff
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.custom: seodec2018
+ms.openlocfilehash: 868658062a6407dce901b455cc92f95008df798c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116364"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631934"
 ---
-# <a name="analyzers-in-azure-search"></a>Azure 搜索中的分析器
+# <a name="analyzers-for-text-processing-in-azure-search"></a>用于 Azure 搜索中文本处理的分析器
 
 “分析器”是[全文搜索](search-lucene-query-architecture.md)的组成部分，负责在查询字符串和带索引文档中进行文本处理。 以下是分析过程中的典型转换：
 
@@ -75,7 +76,7 @@ Azure 搜索允许通过附加的 `indexAnalyzer` 和 `searchAnalyzer` 字段参
 
 ### <a name="compare-english-analyzers"></a>比较英语分析器
 
-[搜索分析器演示](http://alice.unearth.ai/)是第三方演示应用，它演示了对标准 Lucene 分析器、Lucene 英语分析器和 Microsoft 英语自然语言处理器的并排比较。 索引是固定的；它包含常见情景中的文本。 对于提供的每个搜索输入，每个分析器的结果将显示在相邻窗格中，使你了解每个分析器是如何处理同一个字符串的。 
+[搜索分析器演示](https://alice.unearth.ai/)是第三方演示应用，它演示了对标准 Lucene 分析器、Lucene 英语分析器和 Microsoft 英语自然语言处理器的并排比较。 索引是固定的；它包含常见情景中的文本。 对于提供的每个搜索输入，每个分析器的结果将显示在相邻窗格中，使你了解每个分析器是如何处理同一个字符串的。 
 
 ## <a name="examples"></a>示例
 
@@ -243,13 +244,13 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 `searc
 
 + 请参阅 [Azure 搜索中全文搜索的工作原理](search-lucene-query-architecture.md)获取全面的说明。 本文通过示例来说明某些表面上看起来与预期不符的行为。
 
-+ 通过[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents#examples)示例部分或者通过门户中“搜索资源管理器”的[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)尝试其他查询语法。
++ 通过[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples)示例部分或者通过门户中“搜索资源管理器”的[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)尝试其他查询语法。
 
 + 了解如何应用[语言特定的词法分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)。
 
 + [配置自定义分析器](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)，针对单个字段尽量简化处理或者进行专门处理。
 
-+ 在此演示网站的相邻窗格中[比较标准和英语分析器](http://alice.unearth.ai/)。 
++ 在此演示网站的相邻窗格中[比较标准和英语分析器](https://alice.unearth.ai/)。 
 
 ## <a name="see-also"></a>另请参阅
 

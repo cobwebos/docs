@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 79ee129390c6b364ec65e8ae1e893e98f358751e
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4eb4db9a4057d072f348de48bee2f746f77cbb84
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497100"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715335"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>创建 HDInsight 群集时添加自定义 Apache Hive 库
 
@@ -26,7 +26,7 @@ ms.locfileid: "52497100"
 
 在群集创建过程中，该脚本将枚举文件、将这些文件复制到头节点和工作节点上的 `/usr/lib/customhivelibs/` 目录，然后将它们添加到 `core-site.xml` 文件中的 `hive.aux.jars.path` 属性。 在基于 Linux 的群集中，它还会针对文件位置更新 `hive-env.sh` 文件。
 
-> [!NOTE]
+> [!NOTE]  
 > 使用本文中的脚本操作使库可用于以下方案：
 >
 > * **基于 Linux 的 HDInsight** - 使用 Hive 客户端、**WebHCat** 和 **HiveServer2** 时。
@@ -40,7 +40,7 @@ ms.locfileid: "52497100"
 
 对于**基于 Windows 的群集**：[https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 **要求**
@@ -53,14 +53,14 @@ ms.locfileid: "52497100"
 
 * 必须指定容器的 WASB 路径作为脚本操作的参数。 例如，如果 jar 存储在名为 **mystorage** 的存储帐户上名为 **libs** 的容器中，则该参数应为 **wasb://libs@mystorage.blob.core.windows.net/**。
 
-  > [!NOTE]
+  > [!NOTE]  
   > 本文档假定已创建存储帐户、blob 容器，并已将文件上传到该容器。
   >
-  > 如果尚未创建存储帐户，可以通过 [Azure 门户](https://portal.azure.com)创建该帐户。 然后可以使用实用程序（如 [Azure 存储资源管理器](http://storageexplorer.com/)）在帐户中创建一个容器并将文件上传到该容器。
+  > 如果尚未创建存储帐户，可以通过 [Azure 门户](https://portal.azure.com)创建该帐户。 然后可以使用实用程序（如 [Azure 存储资源管理器](https://storageexplorer.com/)）在帐户中创建一个容器并将文件上传到该容器。
 
 ## <a name="create-a-cluster-using-the-script"></a>使用脚本创建群集。
 
-> [!NOTE]
+> [!NOTE]  
 > 以下步骤创建基于 Linux 的 HDInsight 群集。 若要创建基于 Windows 的群集，创建群集时请选择 **Windows** 作为群集 OS，并使用 Windows (PowerShell) 脚本而不是 bash 脚本。
 >
 > 也可以使用 Azure PowerShell 或 HDInsight .NET SDK 来使用此脚本创建群集。 有关使用这些方法的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
@@ -71,13 +71,13 @@ ms.locfileid: "52497100"
 
    * **名称**：输入脚本操作的友好名称。
 
-   * **脚本 URI**： https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh
+   * **脚本 URI**： https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh。
 
    * **标头**：选中此选项。
 
    * **辅助角色**：选中此选项。
 
-   * **ZOOKEEPER**：将此选项留空。
+   * **ZOOKEEPER**：将此项留空。
 
    * **参数**：输入包含 jar 的容器和存储帐户的 WASB 地址。 例如，**wasb://libs@mystorage.blob.core.windows.net/**。
 

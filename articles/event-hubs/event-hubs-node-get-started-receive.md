@@ -1,20 +1,21 @@
 ---
-title: 使用 Node.js 从 Azure 事件中心接收事件 | Microsoft Docs
-description: 了解如何使用 Node.js 从事件中心接收事件。
+title: 使用 Node.js 接收事件 - Azure 事件中心 | Microsoft Docs
+description: 本文提供了一个演练，说明如何创建从 Azure 事件中心接收事件的 Node.js 应用程序。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 09/18/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 2f59b7f47acc8ce8e566b7f0e2bcfed379ea60d2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6986a5c40b51300b631f3fdce6c3a88b43fb5b11
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239078"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730877"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-nodejs"></a>使用 Node.js 从 Azure 事件中心接收事件
 
@@ -27,7 +28,7 @@ Azure 事件中心是一个具备高度伸缩性的事件管理系统，每秒�
 [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/processor) 上提供了本快速入门的代码。
 
 > [!NOTE]
->  若要使用 Node.js 将事件发送到事件中心，请参阅以下文章：[使用 Node.js 将事件发送到 Azure 事件中心](event-hubs-node-get-started-send.md)。 
+>  若要使用 Node.js 将事件发送到事件中心，请参阅此文：[使用 Node.js 将事件发送到 Azure 事件中心](event-hubs-node-get-started-send.md)。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -43,12 +44,12 @@ Azure 事件中心是一个具备高度伸缩性的事件管理系统，每秒�
 若要使用 EventProcessorHost，必须有一个 Azure 存储帐户。 使用 Azure 存储容器在接收器之间共享分区租用和事件流中的检查点等状态信息。 可以按照[此文章](../storage/common/storage-quickstart-create-account.md)中的说明创建 Azure 存储帐户。
 
 ## <a name="clone-the-git-repository"></a>克隆 Git 存储库
-从 Github 下载或克隆[示例](https://github.com/Azure/azure-event-hubs-node/tree/master/processor/examples/)。 
+从 GitHub 下载或克隆[示例](https://github.com/Azure/azure-event-hubs-node/tree/master/processor/examples/)。 
 
 ## <a name="install-the-eventprocessorhost"></a>安装 EventProcessorHost
 为事件中心模块安装 EventProcessorHost。 
 
-```nodejs
+```shell
 npm install @azure/event-processor-host
 ```
 
@@ -60,20 +61,20 @@ npm install @azure/event-processor-host
 3. 配置你的事件中心连接字符串、事件中心名称和存储终结点。 可以在 Azure 门户中从“事件中心”页面上的 **RootManageSharedAccessKey** 下的“连接字符串-主要”密钥下复制你的事件中心的连接字符串。 有关详细步骤，请参阅[获取连接字符串](event-hubs-create.md#create-an-event-hubs-namespace)。
 4. 在 Azure CLI 中，导航到 **processor** 文件夹路径。 通过运行以下命令安装节点程序包并生成项目：
 
-    ```nodejs
+    ```shell
     npm i
     npm run build
     ```
 5. 通过运行以下命令使用事件处理器主机接收事件：
 
-    ```nodejs
+    ```shell
     node dist/examples/singleEph.js
     ```
 
 ## <a name="review-the-sample-code"></a>查看示例代码 
 下面是使用 node.js 从事件中心接收事件的示例代码。 可以手动创建 sampleEph.js 文件，并运行它来从事件中心接收事件。 
 
-  ```nodejs
+  ```javascript
   const { EventProcessorHost, delay } = require("@azure/event-processor-host");
 
   const path = process.env.EVENTHUB_NAME;
@@ -126,7 +127,7 @@ npm install @azure/event-processor-host
 
 在运行此脚本之前，请记得设置环境变量。 可以在命令行中如以下示例所示配置此变量，也可以使用 [dotenv 程序包](https://www.npmjs.com/package/dotenv#dotenv)。 
 
-```
+```shell
 // For windows
 set EVENTHUB_CONNECTION_STRING="<your-connection-string>"
 set EVENTHUB_NAME="<your-event-hub-name>"

@@ -1,5 +1,5 @@
 ---
-title: 为 Azure 应用服务中使用流量管理器进行负载均衡的 Web 应用配置自定义域名。
+title: 为使用流量管理器的应用配置 DNS 名称 - Azure 应用服务
 description: 为 Azure 应用服务中包含流量管理器（用于负载均衡）的 Web 应用使用自定义域名。
 services: app-service\web
 documentationcenter: ''
@@ -14,19 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
-ms.openlocfilehash: b140ccba2b45dbfb1e4413c9fbeb12e9fec6bc8a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 5431372abb9a1157b322a8af4a07ba5fa15d8e8e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227172"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720452"
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>使用流量管理器为 Azure 应用服务中的 Web 应用配置自定义域名
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
 [!INCLUDE [intro](../../includes/custom-dns-web-site-intro-traffic-manager.md)]
 
-本文提供了将自定义域名与一个[应用服务](app-service-web-overview.md)应用配合使用的一般说明，该应用已与[流量管理器](../traffic-manager/traffic-manager-overview.md)集成以进行负载均衡。
+本文提供了将自定义域名与一个[应用服务](overview.md)应用配合使用的一般说明，该应用已与[流量管理器](../traffic-manager/traffic-manager-overview.md)集成以进行负载均衡。
 
 [!INCLUDE [tmwebsitefooter](../../includes/custom-dns-web-site-traffic-manager-notes.md)]
 
@@ -46,7 +47,7 @@ ms.locfileid: "51227172"
 
 ## <a name="add-a-dns-record-for-your-custom-domain"></a>为自定义域添加 DNS 记录
 > [!NOTE]
-> 如果已通过 Azure 应用服务 Web 应用购买了域，请跳过下面的步骤并参阅[为 Web 应用购买域](custom-dns-web-site-buydomains-web-app.md)文章的最后一个步骤。
+> 如果已通过 Azure 应用服务 Web 应用购买了域，请跳过下面的步骤并参阅[为 Web 应用购买域](manage-custom-dns-buy-domain.md)文章的最后一个步骤。
 > 
 > 
 
@@ -70,8 +71,6 @@ ms.locfileid: "51227172"
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅 [Node.js 开发人员中心](https://azure.microsoft.com/develop/nodejs/)。
-
-[!INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
 <!-- URL List -->
 

@@ -74,7 +74,7 @@ items:
     href: functions-scale.md
   - name: 触发器和绑定
     href: functions-triggers-bindings.md
-  - name: 语言
+  - name: Languages
     items:
     - name: 支持的语言
       href: supported-languages.md
@@ -91,7 +91,7 @@ items:
     - name: Python
       href: functions-reference-python.md
   - name: 诊断
-    href: ../app-service/app-service-diagnostics.md
+    href: ../app-service/overview-diagnostics.md
   - name: 性能注意事项
     href: functions-best-practices.md
   - name: Functions 代理
@@ -122,8 +122,8 @@ items:
       href: create-function-app-linux-app-service-plan.md
     - name: 管理连接
       href: manage-connections.md
-    - name: 错误处理。
-      href: functions-bindings-error-pages.md
+    - name: 手动运行非 HTTP 触发函数
+      href: functions-manually-run-non-http.md
     - name: 在本地调试事件网格触发器
       href: functions-debug-event-grid-trigger-local.md
   - name: 部署
@@ -157,21 +157,21 @@ items:
     - name: 对用户进行身份验证
       items:
       - name: 使用 Azure AD 进行身份验证
-        href: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        href: ../app-service/configure-authentication-provider-aad.md?toc=%2fazure%2fazure-functions%2ftoc.json
       - name: 使用 Facebook 进行身份验证
-        href: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        href: ../app-service/configure-authentication-provider-facebook.md?toc=%2fazure%2fazure-functions%2ftoc.json
       - name: 使用 Google 进行身份验证
-        href: ../app-service/app-service-mobile-how-to-configure-google-authentication.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        href: ../app-service/configure-authentication-provider-google.md?toc=%2fazure%2fazure-functions%2ftoc.json
       - name: 使用 Microsoft 帐户进行身份验证
-        href: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        href: ../app-service/configure-authentication-provider-microsoft.md?toc=%2fazure%2fazure-functions%2ftoc.json
       - name: 使用 Twitter 进行身份验证
-        href: ../app-service/app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: 高级身份验证
       href: ../app-service/app-service-authentication-how-to.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: 限制 IP
       href: ../app-service/app-service-ip-restrictions.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: 使用托管标识
-      href: ../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
+      href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: 从 Key Vault 引用机密
       href: ../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json
   - name: 集成
@@ -189,7 +189,7 @@ items:
     - name: 从 Microsoft Flow 调用函数
       href: functions-flow-scenario.md
     - name: 使用托管标识
-      href: ../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
+      href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
   - name: 故障排除
     items:
     - name: 排查存储问题
@@ -218,10 +218,6 @@ items:
       href: functions-bindings-event-grid.md
     - name: 事件中心
       href: functions-bindings-event-hubs.md
-    - name: 外部文件
-      href: functions-bindings-external-file.md
-    - name: 外部表
-      href: functions-bindings-external-table.md
     - name: HTTP 和 webhook
       href: functions-bindings-http-webhook.md
     - name: Microsoft Graph
@@ -270,7 +266,7 @@ items:
   - name: MSDN 论坛
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions
   - name: 堆栈溢出
-    href: http://stackoverflow.com/questions/tagged/azure-functions
+    href: https://stackoverflow.com/questions/tagged/azure-functions
   - name: Twitter
     href: https://twitter.com/azurefunctions
   - name: 提供产品反馈
@@ -279,9 +275,9 @@ items:
     href: https://github.com/Azure/Azure-Functions/
   - name: 服务更新
     href: https://azure.microsoft.com/updates/?product=functions&updatetype=&platform=
-ms.openlocfilehash: e24971272bfe445d742dea5f907dba8318a00d16
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 88a0dc35c7a1d3836c21d237bc7a5b3c98555aec
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879751"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983570"

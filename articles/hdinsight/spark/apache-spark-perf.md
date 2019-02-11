@@ -8,13 +8,13 @@ ms.author: maxluk
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/11/2018
-ms.openlocfilehash: dc1fe8a3d9a1f0da0a190275b4fbb8bd18fff610
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.date: 01/08/2019
+ms.openlocfilehash: d1eeedfd91dfe1d4a174a3cbed2c0db826a8d5ab
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499149"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117854"
 ---
 # <a name="optimize-apache-spark-jobs"></a>优化 Apache Spark 作业
 
@@ -24,44 +24,44 @@ ms.locfileid: "52499149"
 
 ## <a name="choose-the-data-abstraction"></a>选择数据抽象
 
-Spark 1.x 使用 RDD 将数据抽象化，Spark 2.x 则引入了 DataFrame 和 DataSet。 请仔细衡量下列优缺点：
+早期的 Spark 版本使用 RDD 提取数据，Spark 1.3 和 1.6 分别引入了 DataFrame 和 DataSet。 请仔细衡量下列优缺点：
 
 * **DataFrame**
-    * 大多数情况下的最佳选择
-    * 通过 Catalyst 提供查询优化
-    * 全程代码生成
-    * 直接内存访问
-    * 垃圾回收 (GC) 开销低
-    * 不如 DataSet 那样适合开发，因为没有编译时检查或域对象编程
+    * 大多数情况下的最佳选择。
+    * 通过 Catalyst 提供查询优化。
+    * 全阶段代码生成。
+    * 直接内存访问。
+    * 垃圾回收 (GC) 开销低。
+    * 不像数据集那样易于开发者使用，因为没有编译时检查或域对象编程。
 * **DataSet**
-    * 适合不太影响性能的复杂 ETL 管道
-    * 不适合性能影响可能很大的聚合
-    * 通过 Catalyst 提供查询优化
-    * 提供域对象编程和编译时检查，适合开发
-    * 增加序列化/反序列化开销
-    * GC 开销高
-    * 中断全程代码生成
+    * 适合可容忍性能受影响的复杂 ETL 管道。
+    * 不适合需要考虑性能受影响的聚合。
+    * 通过 Catalyst 提供查询优化。
+    * 提供域对象编程和编译时检查，适合开发。
+    * 增加序列化/反序列化开销。
+    * GC 开销高。
+    * 中断全阶段代码生成。
 * **RDD**
-    * 在 Spark 2.x 中不必使用 RDD，除非需要生成新的自定义 RDD
-    * 不能通过 Catalyst 提供查询优化
-    * 不提供全程代码生成
-    * GC 开销高
-    * 必须使用 Spark 1.x 旧版 API
+    * 不必使用 RDD，除非需要生成新的自定义 RDD。
+    * 不能通过 Catalyst 提供查询优化。
+    * 不提供全阶段代码生成。
+    * GC 开销高。
+    * 必须使用 Spark 1.x 旧版 API。
 
 ## <a name="use-optimal-data-format"></a>使用最佳数据格式
 
-Spark 支持多种格式，比如 csv、json、xml、parquet、orc 和 avro。 Spark 可以借助外部数据源进行扩展，以支持更多格式 — 有关详细信息，请参阅 [Spark 包](https://spark-packages.org)。
+Spark 支持多种格式，比如 csv、json、xml、parquet、orc 和 avro。 Spark 可以借助外部数据源进行扩展，以支持更多格式 — 有关详细信息，请参阅 [Apache Spark 包](https://spark-packages.org)。
 
 最能提高性能的格式是采用 *Snappy 压缩*的 Parquet，这是 Spark 2.x 中的默认格式。 Parquet 以分列格式存储数据，并在 Spark 中得到了高度优化。
 
 ## <a name="select-default-storage"></a>选择默认存储
 
-在创建新的 Spark 群集时，可以选择将 Azure Blob 存储或 Azure Data Lake Store 用作群集的默认存储。 这两个选项都能为暂时性群集提供长期存储，这样就不会在删除群集时自动删除数据。 用户可以重新创建暂时性群集，并且依然能访问数据。
+创建新的 Spark 群集时，可以选择将 Azure Blob 存储或 Azure Data Lake Storage 用作群集的默认存储。 这两个选项都能为暂时性群集提供长期存储，这样就不会在删除群集时自动删除数据。 用户可以重新创建暂时性群集，并且依然能访问数据。
 
 | 存储类型 | 文件系统 | Speed | 暂时性 | 用例 |
 | --- | --- | --- | --- | --- |
 | Azure Blob 存储 | **wasb:**//url/ | **标准** | 是 | 暂时性群集 |
-| Azure Data Lake Store | **adl:**//url/ | **较快** | 是 | 暂时性群集 |
+| Azure Data Lake 存储 | **adl:**//url/ | **较快** | 是 | 暂时性群集 |
 | 本地 HDFS | **hdfs:**//url/ | **最快** | 否 | 全天候交互型群集 |
 
 ## <a name="use-the-cache"></a>使用缓存
@@ -73,7 +73,7 @@ Spark 提供自己的本机缓存机制，可通过各种方法（比如 `.persi
     * 不可用于分区，但将来的 Spark 版本可能会实现这一点。
 
 * 存储级缓存（推荐）
-    * 可以使用 [Alluxio](http://www.alluxio.org/) 实现。
+    * 可以使用 [Alluxio](https://www.alluxio.org/) 实现。
     * 使用内存中和 SSD 缓存。
 
 * 本地 HDFS（推荐）
@@ -119,9 +119,9 @@ Bucket 存储类似于数据分区，但每个 Bucket 都可以保存一组列�
 
 下面是一些高级 Bucket 存储功能：
 
-* 基于 Bucket 存储元信息的查询优化
-* 优化的聚合
-* 优化的联接
+* 基于 Bucket 存储元信息的查询优化。
+* 优化的聚合。
+* 优化的联接。
 
 可以同时使用分区和 Bucket 存储。
 
@@ -202,7 +202,7 @@ sql("SELECT col1, col2 FROM V_JOIN")
 定期监视正在运行的作业，看是否有性能问题。 如果需要更深入地了解某些问题，请考虑使用以下性能分析工具之一：
 
 * [Intel PAL 工具](https://github.com/intel-hadoop/PAT)监视 CPU、存储和网络带宽利用率。
-* [Oracle Java 8 Mission Control](http://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) 分析 Spark 和执行程序代码。
+* [Oracle Java 8 Mission Control](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) 分析 Spark 和执行程序代码。
 
 Spark 2.x 查询性能的关键在于 Tungsten 引擎，这取决于全程代码生成。 在某些情况下，可能会禁用全程代码生成。 例如，如果在聚合表达式中使用非可变类型 (`string`)，则会显示 `SortAggregate`，而不是 `HashAggregate`。 例如，为了提高性能，可尝试运行以下命令，然后重新启用代码生成：
 

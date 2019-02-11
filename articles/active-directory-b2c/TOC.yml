@@ -19,7 +19,15 @@ items:
   items:
   - name: 1 - 创建 B2C 租户
     href: tutorial-create-tenant.md
-  - name: 2 - 对帐户进行身份验证
+  - name: 2 - 注册应用程序
+    href: tutorial-register-applications.md
+  - name: 3 - 创建用户流
+    href: tutorial-create-user-flows.md
+  - name: 添加标识提供程序
+    href: tutorial-add-identity-providers.md
+  - name: 自定义 UI
+    href: tutorial-customize-ui.md
+  - name: 对帐户进行身份验证
     items:
     - name: ASP.NET
       href: active-directory-b2c-tutorials-web-app.md
@@ -27,7 +35,7 @@ items:
       href: active-directory-b2c-tutorials-desktop-app.md
     - name: 单页
       href: active-directory-b2c-tutorials-spa.md
-  - name: 3 - 授予 API 访问权限
+  - name: 授予 API 访问权限
     items:
     - name: ASP.NET
       href: active-directory-b2c-tutorials-web-api.md
@@ -35,8 +43,6 @@ items:
       href: active-directory-b2c-tutorials-desktop-app-webapi.md
     - name: 单页
       href: active-directory-b2c-tutorials-spa-webapi.md
-  - name: 自定义 UI
-    href: tutorial-customize-ui.md
 - name: 示例
   href: code-samples.md
 - name: 概念
@@ -45,16 +51,12 @@ items:
     href: active-directory-b2c-apps.md
   - name: 身份验证协议
     href: active-directory-b2c-reference-protocols.md
-  - name: 用户流
-    href: active-directory-b2c-reference-policies.md
   - name: 标识体验框架
     items:
     - name: 自定义策略
       href: active-directory-b2c-overview-custom.md
     - name: 用户访问权限
       href: manage-user-access.md
-    - name: 用户数据
-      href: manage-user-data.md
   - name: OAuth 2.0
     href: active-directory-b2c-reference-oauth-code.md
   - name: OpenId Connect
@@ -65,13 +67,21 @@ items:
     href: active-directory-b2c-reference-tokens.md
   - name: 用户帐户
     href: user-overview.md
+  - name: 用户数据
+    href: manage-user-data.md
+  - name: 用户流
+    href: active-directory-b2c-reference-policies.md
   - name: 用户界面自定义
     href: customize-ui-overview.md
 - name: 操作指南
   items:
   - name: 访问审核日志
     href: active-directory-b2c-reference-audit-logs.md
-  - name: 年龄限制
+  - name: 添加 Web API 应用程序
+    href: add-web-application.md
+  - name: 添加本机客户端应用程序
+    href: add-native-application.md
+  - name: 配置年龄限制
     href: basic-age-gating.md
   - name: 配置令牌
     href: active-directory-b2c-token-session-sso.md
@@ -87,10 +97,24 @@ items:
     href: active-directory-b2c-reference-mfa.md
   - name: 标识体验框架
     items:
-    - name: 创建自定义策略
-      href: active-directory-b2c-get-started-custom.md
     - name: 使用 Application Insights 收集日志
       href: active-directory-b2c-troubleshoot-custom.md
+    - name: 配置 ROPC
+      href: ropc-custom.md
+    - name: 配置用户输入
+      href: active-directory-b2c-configure-signup-self-asserted-custom.md
+    - name: 创建自定义策略
+      href: active-directory-b2c-get-started-custom.md
+    - name: 自定义 UI
+      href: active-directory-b2c-ui-customization-custom.md
+    - name: 动态自定义 UI
+      href: active-directory-b2c-ui-customization-custom-dynamic.md
+    - name: 自定义令牌
+      href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
+    - name: 定义自定义属性
+      href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
+    - name: 启用“使我保持登录状态”
+      href: active-directory-b2c-reference-kmsi-custom.md
     - name: 集成 RESTful API
       items:
       - name: 验证用户输入
@@ -119,8 +143,14 @@ items:
         href: active-directory-b2c-custom-setup-msa-idp.md
       - name: Twitter
         href: active-directory-b2c-custom-setup-twitter-idp.md
-      - name: 传递访问令牌
-        href: idp-pass-through-custom.md
+    - name: 页协定
+      href: page-contract.md
+    - name: 传递访问令牌
+      href: idp-pass-through-custom.md
+    - name: 密码复杂性
+      href: active-directory-b2c-reference-password-complexity-custom.md
+    - name: 密码更改
+      href: active-directory-b2c-reference-password-change-custom.md
     - name: SAML 提供程序
       items:
       - name: ADFS
@@ -129,24 +159,6 @@ items:
         href: active-directory-b2c-setup-sf-app-custom.md
     - name: 跟踪用户行为
       href: active-directory-b2c-custom-guide-eventlogger-appins.md
-    - name: 用户流
-      items:
-      - name: 配置用户输入
-        href: active-directory-b2c-configure-signup-self-asserted-custom.md
-      - name: 自定义属性
-        href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
-      - name: 自定义 UI
-        href: active-directory-b2c-ui-customization-custom.md
-      - name: 动态自定义 UI
-        href: active-directory-b2c-ui-customization-custom-dynamic.md
-      - name: 自定义令牌
-        href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
-      - name: 密码复杂性
-        href: active-directory-b2c-reference-password-complexity-custom.md
-      - name: 密码更改
-        href: active-directory-b2c-reference-password-change-custom.md
-      - name: 启用“使我保持登录状态”
-        href: active-directory-b2c-reference-kmsi-custom.md
     - name: 引用
       items:
       - name: 声明解析程序
@@ -222,6 +234,8 @@ items:
           href: userjourneys.md
         - name: RelyingParty
           href: relyingparty.md
+      - name: JavaScript 示例
+        href: javascript-samples.md
       - name: 发行说明
         href: active-directory-b2c-developer-notes-custom.md
       - name: 信任框架定义
@@ -260,8 +274,6 @@ items:
     href: active-directory-b2c-access-tokens.md
   - name: 传递访问令牌
     href: idp-pass-through-user-flow.md
-  - name: 注册应用程序
-    href: active-directory-b2c-app-registration.md
   - name: 报告使用情况
     href: active-directory-b2c-reference-usage-reporting-api.md
   - name: 资源所有者密码凭据
@@ -274,16 +286,6 @@ items:
     href: b2clogin.md
   - name: 使用 Azure AD 图形 API
     href: active-directory-b2c-devquickstarts-graph-dotnet.md
-  - name: Web 应用
-    items:
-    - name: ASP.NET
-      href: active-directory-b2c-devquickstarts-web-dotnet-susi.md
-  - name: Web API
-    items:
-    - name: ASP.NET
-      href: active-directory-b2c-devquickstarts-api-dotnet.md
-    - name: 调用 .NET Web API
-      href: active-directory-b2c-devquickstarts-web-api-dotnet.md
   - name: 引用
     items:
     - name: 代码示例
@@ -322,9 +324,9 @@ items:
     href: active-directory-b2c-support.md
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: f46d54408e62f04519bc8e93f619d5e8d6d8640b
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 8aa1d5bf118330f6f04cfd35a59f2b60ce6e1ee8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720501"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751780"

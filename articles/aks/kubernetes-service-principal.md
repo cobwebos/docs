@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: get-started-article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 4af4cae07f4e02bc8306c0b317da3a58e4586494
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 2bc0579d3dd60d66a23a29dabff7e43ca8dfee76
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578343"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435389"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
@@ -113,6 +113,10 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
   - *Microsoft.Compute/disks/read*
   - *Microsoft.Compute/disks/write*
 - 或者，在资源组中分配[存储帐户参与者][rbac-storage-contributor]内置角色
+
+### <a name="azure-container-instances"></a>Azure 容器实例
+
+如果使用虚拟 Kubelet 与 AKS 集成并选择在与 AKS 群集分开的资源组中运行 Azure 容器实例 (ACI)，则必须在 ACI 资源组上授予 AKS 服务主体“参与者”权限。
 
 ## <a name="additional-considerations"></a>其他注意事项
 

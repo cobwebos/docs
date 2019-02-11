@@ -9,17 +9,16 @@ ms.assetid: 4acc894f-fee0-4c2f-988e-bc0eceea5eda
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 05/10/2018
+ms.date: 01/08/2019
 ms.author: barclayn
-ms.openlocfilehash: 0214d6cf09795605bca60774604ecd1fec94fdc6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a78cc79031a8dc9b0c98beddf759fbc8674c6dd1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989411"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168254"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure Key Vault 中设置和检索机密
 
@@ -31,7 +30,7 @@ Azure Key Vault 是一项云服务，用作安全的机密存储。 可以安全
 
 如果选择在本地安装并使用 CLI，本快速入门要求 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
-若要使用 CLI 登录到 Azure，可键入：
+若要使用 CLI 登录到 Azure，可以键入：
 
 ```azurecli
 az login
@@ -44,7 +43,7 @@ az login
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在“eastus”位置创建名为“ContosoResourceGroup”的资源组。
 
 ```azurecli
-az group create --name 'ContosoResourceGroup' --location eastus
+az group create --name "ContosoResourceGroup" --location eastus
 ```
 
 ## <a name="create-a-key-vault"></a>创建密钥保管库
@@ -56,12 +55,12 @@ az group create --name 'ContosoResourceGroup' --location eastus
 - 位置“美国东部”。
 
 ```azurecli
-az keyvault create --name 'Contoso-Vault2' --resource-group 'ContosoResourceGroup' --location eastus
+az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGroup" --location eastus
 ```
 
-此 cmdlet 的输出显示新创建的 Key Vault 的属性。 记下下面列出的两项属性：
+此 cmdlet 的输出显示新创建的 Key Vault 的属性。 请记下下面列出的两个属性：
 
-- **保管库名称**：在本示例中为 **Contoso-Vault2**。 将在其他 Key Vault 命令中使用此名称。
+- **保管库名称**：在本示例中，此项为 **Contoso-Vault2**。 将在其他 Key Vault 命令中使用此名称。
 - **保管库 URI**：在本示例中，此项为 https://contoso-vault2.vault.azure.net/。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
 
 目前，只有你的 Azure 帐户才有权对这个新保管库执行任何操作。
@@ -73,7 +72,7 @@ az keyvault create --name 'Contoso-Vault2' --resource-group 'ContosoResourceGrou
 键入以下命令，在 Key Vault 中创建名为 **ExamplePassword** 的机密，用于存储的值将为 **Pa$$w0rd**：
 
 ```azurecli
-az keyvault secret set --vault-name 'Contoso-Vault2' --name 'ExamplePassword' --value 'Pa$$w0rd'
+az keyvault secret set --vault-name "Contoso-Vault2" --name "ExamplePassword" --value "Pa$$w0rd"
 ```
 
 现在，可以通过使用密码的 URI，引用已添加到 Azure Key Vault 的此密码。 使用 **https://ContosoVault.vault.azure.net/secrets/ExamplePassword** 获取当前版本。 
@@ -81,7 +80,7 @@ az keyvault secret set --vault-name 'Contoso-Vault2' --name 'ExamplePassword' --
 若要查看机密中包含的纯文本形式的值，请执行以下命令：
 
 ```azurecli
-az keyvault secret show --name 'ExamplePassword' --vault-name 'Contoso-Vault2'
+az keyvault secret show --name "ExamplePassword" --vault-name "Contoso-Vault2"
 ```
 
 现在，你已创建 Key Vault 并存储和检索了机密。
@@ -89,7 +88,7 @@ az keyvault secret show --name 'ExamplePassword' --vault-name 'Contoso-Vault2'
 ## <a name="clean-up-resources"></a>清理资源
 
 本系列中的其他快速入门和教程是在本快速入门的基础上制作的。 如果打算继续使用后续的快速入门和教程，则可能需要保留这些资源。
-如果不再需要资源组和所有相关的资源，可以使用 [az group delete](/cli/azure/group#delete) 命令将其删除。 可以删除资源，如下所示：
+如果不再需要资源组和所有相关的资源，可以使用 [az group delete](/cli/azure/group) 命令将其删除。 可以删除资源，如下所示：
 
 ```azurecli
 az group delete --name ContosoResourceGroup

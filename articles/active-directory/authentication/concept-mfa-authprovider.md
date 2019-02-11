@@ -3,19 +3,19 @@ title: 何时以及如何使用 Azure 多重身份验证提供程序？
 description: 何时应使用 Azure MFA 的身份验证提供程序？
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 41edbc621baede92c548f43ad2730b73f59756c0
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 2d7156a1387184cff2eb4252648f0e844e8b1f50
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496103"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079695"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>何时使用 Azure 多重身份验证提供程序
 

@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/18/2018
-ms.author: cwatson
-ms.openlocfilehash: de5fd6e52ab93132920b1c98188cbea92b9900b5
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.date: 1/23/2019
+ms.author: banders
+ms.openlocfilehash: b0d5dd5fb29c8915e2c660b8647cb0148bce1399
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584343"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901507"
 ---
 # <a name="cancel-your-subscription-for-azure"></a>取消针对 Azure 的订阅
 
@@ -37,10 +37,11 @@ ms.locfileid: "52584343"
 ## <a name="cancel-subscription-using-the-azure-portal"></a>使用 Azure 门户取消订阅
 
 1. 从 [Azure 门户中的“订阅”页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中选择订阅。
-1. 选择要取消的订阅，然后单击“取消订阅”。
+2. 选择要取消的订阅。
+3. 选择“概述”，然后选择“取消订阅”。
 
     ![显示“取消”按钮的屏幕截图](./media/billing-how-to-cancel-azure-subscription/cancel_ibiza.png)
-1. 按照提示进行操作并完成取消。
+3. 按照提示进行操作并完成取消。
 
 ## <a name="what-happens-after-i-cancel-my-subscription"></a>取消订阅之后会发生什么情况？
 
@@ -60,4 +61,4 @@ ms.locfileid: "52584343"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

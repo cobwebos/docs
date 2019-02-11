@@ -4,15 +4,16 @@ description: 本文汇总了使用 Azure Site Recovery 设置将本地 VMware VM
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 11/19/2018
+services: site-recovery
+ms.date: 1/29/2019
 ms.topic: conceptual
-ms.author: raynew
-ms.openlocfilehash: 248b2a748088330f91b3cc76564d5d8743f04411
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.author: mayg
+ms.openlocfilehash: aa4b0fcdfecde181eea4481cc40b898ca74fce76
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162477"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212222"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>常见问题 - VMware 到 Azure 的复制
 
@@ -42,7 +43,26 @@ ms.locfileid: "52162477"
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>我的 Azure 帐户是否需要拥有创建 VM 的权限？
 如果你是订阅管理员，则已经获得了所需的复制权限。 否则，需要有权在配置 Site Recovery 时指定的资源组和虚拟网络中创建 Azure VM，并有权写入选定的存储帐户。 [了解详细信息](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)。
 
+### <a name="can-i-use-guest-os-server-license-on-azure"></a>是否可以在 Azure 上使用来宾 OS 服务器许可证？
+可以，Microsoft 软件保障客户可以使用 Azure 混合权益来节省迁移到 Azure 的 **Windows Server 计算机**的许可成本，或将 Azure 用于灾难恢复。
 
+## <a name="azure-site-recovery-components-upgrade"></a>Azure Site Recovery 组件升级
+
+### <a name="my-mobility-agentconfiguration-serverprocess-server-version-is-very-old-and-my-upgrade-has-failed-how-should-i-upgrade-to-latest-version"></a>我的移动性代理/配置服务器/进程服务器版本过旧，导致升级失败。 应如何升级到最新版本？
+
+Azure Site Recovery 遵循 N-4 支持模型。 有关如何从过旧版本升级的详细信息，请参阅我们的[支持声明](https://aka.ms/asr_support_statement)。
+
+### <a name="where-can-i-find-the-release-notesupdate-rollups-of-azure-site-recovery"></a>在哪里可以找到 Azure Site Recovery 的发行说明/更新汇总？
+
+有关发行说明的信息，请参阅[文档](https://aka.ms/asr_update_rollups)。 可以在每个更新汇总中找到各个组件的安装链接。
+
+### <a name="how-should-i-upgrade-site-recovery-components-for-on-premises-vmware-or-physical-site-to-azure"></a>应如何将本地 VMware 或物理站点的 Site Recovery 组件升级到 Azure？
+
+请参阅[此处](https://aka.ms/asr_vmware_upgrades)提供的指南来升级组件。
+
+## <a name="is-reboot-of-source-machine-mandatory-for-each-upgrade"></a>每次升级是否必须重新启动源计算机？
+
+尽管建议重新启动，但并非每次升级都必须这样做。 有关明确的准则，请参阅[此处](https://aka.ms/asr_vmware_upgrades)。
 
 ## <a name="on-premises"></a>本地
 
@@ -74,7 +94,7 @@ ms.locfileid: "52162477"
 Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将数据从本地复制到 Azure 存储。 不支持通过站点到站点 VPN 网络进行的复制。
 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>是否可以使用 ExpressRoute 复制到 Azure？
-可以使用 ExpressRoute 将 VM 复制到 Azure。 Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户。需要设置[公共对等互连](../expressroute/expressroute-circuit-peerings.md#azure-public-peering)才能进行 Site Recovery 复制。 将 VM 故障转移到 Azure 虚拟网络后，可以使用[专用对等互连](../expressroute/expressroute-circuit-peerings.md#azure-private-peering)访问这些 VM。
+可以使用 ExpressRoute 将 VM 复制到 Azure。 Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户。 需要设置[公共对等互连](../expressroute/expressroute-circuit-peerings.md#publicpeering)或 [Microsoft 对等互连](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)将 ExpressRoute 用于 Site Recovery 复制。 在复制时，建议使用 Microsoft 对等互连作为路由域。 此外，复制时还应确保满足[网络要求](vmware-azure-configuration-server-requirements.md#network-requirements)。 将 VM 故障转移到 Azure 虚拟网络后，可以使用[专用对等互连](../expressroute/expressroute-circuit-peerings.md#privatepeering)访问这些 VM。
 
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>为何不能通过 VPN 复制？
@@ -90,7 +110,7 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 将 VMware VM 复制到 Azure 时，复制是持续性的。
 
 ### <a name="can-i-extend-replication"></a>是否可以扩展复制？
-不支持扩展扩展或链式复制。 请在[反馈论坛](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959-support-for-exisiting-extended-replication)中请求此功能。
+不支持扩展扩展或链式复制。 请在[反馈论坛](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)中请求此功能。
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>是否可以执行脱机初始复制？
 不支持此操作。 请在[反馈论坛](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)中请求此功能。
@@ -107,6 +127,12 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 ### <a name="can-i-modify-vms-that-are-replicating-by-adding-or-resizing-disks"></a>是否可以通过添加磁盘或调整磁盘大小来修改正在复制的 VM？
 
 对于从 VMware 复制到 Azure，可以修改磁盘大小。 如果要添加新磁盘，则需要为 VM 添加磁盘并重新启用保护。
+
+### <a name="can-i-migrate-on-prem-machines-to-a-new-vcenter-without-impacting-ongoing-replication"></a>是否可以在不影响进行中复制的情况下将本地计算机迁移到新的 Vcenter？
+否，更改 Vcenter 或迁移将影响正在进行的复制。 你需要为 ASR 设置新的 Vcenter 并为计算机启用复制。
+
+### <a name="can-i-replicate-to-cachetarget-storage-account-which-has-a-vnet-with-azure-storage-firewalls-configured-on-it"></a>是否可以复制到在其上配置了 Vnet（具有 Azure 存储防火墙）的缓存/目标存储帐户？
+否，Azure Site Recovery 不支持复制到 Vnet 上的存储。
 
 ## <a name="configuration-server"></a>配置服务器
 
@@ -135,7 +161,7 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 虽然可以这样做，但运行配置服务器的 Azure VM 需要与本地的 VMware 基础结构和 VM 通信。 这可能会增加延迟并影响正在进行的复制。
 
 ### <a name="how-do-i-update-the-configuration-server"></a>如何更新配置服务器？
-[了解](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)如何更新配置服务器。 可以在 [Azure 更新页](https://azure.microsoft.com/updates/?product=site-recovery)中找到最新的更新信息。 另外，还可以直接从 [Microsoft 下载中心](https://aka.ms/asrconfigurationserver)下载最新版本的配置服务器。
+[了解](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)如何更新配置服务器。 可以在 [Azure 更新页](https://azure.microsoft.com/updates/?product=site-recovery)中找到最新的更新信息。 另外，还可以直接从 [Microsoft 下载中心](https://aka.ms/asrconfigurationserver)下载最新版本的配置服务器。 如果你的版本早于当前版本 4 个版本，请参阅[支持声明](https://aka.ms/asr_support_statement)获取升级指南。
 
 ### <a name="should-i-backup-the-deployed-configuration-server"></a>是否应该备份部署的配置服务器？
 建议定期备份配置服务器。 若想成功进行故障回复，进行故障回复的虚拟机必须存在于配置服务器数据库中，并且配置服务器必须正在运行且处于已连接状态。 可以在[此处](vmware-azure-manage-configuration-server.md)了解有关常见配置服务器管理任务的详细信息。
@@ -146,11 +172,14 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>我是否可以避免下载 MySQL 但让 Site Recovery 安装它？
 是的。 请下载 MySQL 安装程序并将其置于 **C:\Temp\ASRSetup** 文件夹中。  在设置配置服务器 VM 时，接受条款并单击“下载并安装”后，门户将使用你添加的安装程序来安装 MySQL。
  
-### <a name="canl-i-use-the-configuration-server-vm-for-anything-else"></a>是否可以将配置服务器 VM 用于任何其他项？
+### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>是否可以将配置服务器 VM 用于任何其他项？
 否，只能将该 VM 用于配置服务器。 
 
+### <a name="can-i-clone-a-configuration-server-and-use-it-for-orchestration"></a>是否可以克隆配置服务器并将其用于业务流程？
+否，应设置新配置服务器以避免注册问题。
+
 ### <a name="can-i-change-the-vault-registered-in-the-configuration-server"></a>是否可以更改在配置服务器中注册的保管库？
-不是。 将保管库注册到配置服务器后，它无法更改。
+不是。 将保管库注册到配置服务器后，它无法更改。 请查看[此文](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault)以了解重新注册步骤。
 
 ### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>是否可以将同一配置服务器同时用于 VMware VM 和物理服务器的灾难恢复？
 可以，但请注意，物理计算机仅可故障回复到 VMware VM。
@@ -221,9 +250,10 @@ Azure 具有复原能力。 Site Recovery 能够根据 Azure SLA 故障转移到
 可以。故障转移到 Azure 后，如果原始位置不可用，可以故障回复到不同的位置。 [了解详细信息](concepts-types-of-failback.md#alternate-location-recovery-alr)。
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-to-fail-back"></a>为何需要使用 VPN 或 ExpressRoute 进行故障回复？
-
 从 Azure 故障回复时，Azure 中的数据将复制回到本地 VM，这需要提供私人访问权限。
 
+### <a name="can-i-resize-the-azure-vm-after-failover"></a>是否可以在故障转移后调整 Azure VM 的大小？
+否，无法在故障转移后更改目标 VM 的大小或类型。
 
 
 ## <a name="automation-and-scripting"></a>自动化和脚本

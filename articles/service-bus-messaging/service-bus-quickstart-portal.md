@@ -1,6 +1,6 @@
 ---
-title: 快速入门 - 使用 Azure 门户通过 Azure 服务总线发送和接收消息 | Microsoft Docs
-description: 本快速入门介绍如何使用 Azure 门户发送和接收服务总线消息
+title: 快速入门 - 使用 Azure 门户创建服务总线队列 | Microsoft Docs
+description: 在本快速入门中，你将了解如何使用 Azure 门户创建服务总线队列。 然后，你将使用示例客户端应用程序向队列发送消息以及从中接收消息。
 services: service-bus-messaging
 author: spelluru
 manager: timlt
@@ -8,17 +8,16 @@ ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/22/2018
+ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: be08be43269dfb332dca1d5f62ce661940d311cc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 69c9a6d2d059ffbac5fe3e0ddb103eaec51123c3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259371"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264014"
 ---
-# <a name="quickstart-send-and-receive-messages-using-the-azure-portal-and-net"></a>快速入门：使用 Azure 门户和 .NET 发送和接收消息
-
+# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>快速入门：使用 Azure 门户创建服务总线队列
 Microsoft Azure 服务总线是一种提供安全消息传送和绝对可靠性的企业集成消息中转站。 典型的服务总线方案通常涉及将两个或更多应用程序、服务或进程彼此解耦以及传输状态或数据更改。 此类方案可能涉及在其他应用程序或服务中计划多个批处理作业，或触发订单履行。 例如，零售公司可能会将其销售点数据发送到后端办公系统或区域配送中心，以便进行补货和库存更新。 在这种情况下，客户端应用会将消息发送到服务总线队列并从中接收消息。  
 
 ![队列](./media/service-bus-quickstart-portal/quick-start-queue.png)
@@ -77,7 +76,7 @@ Microsoft Azure 服务总线是一种提供安全消息传送和绝对可靠性�
 
 ## <a name="send-and-receive-messages"></a>发送和接收消息
 
-预配命名空间和队列并且拥有所需的凭据后，便可以发送和接收消息。 可以在[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/quickstarts-and-tutorials/quickstart-jms)中检查代码。
+预配命名空间和队列并且拥有所需的凭据后，便可以发送和接收消息。 可以在[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)中检查代码。
 
 若要运行此代码，请执行以下操作：
 

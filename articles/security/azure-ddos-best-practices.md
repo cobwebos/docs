@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 37748aaa7f34a51d24091ee04608496ebd45fa90
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4496a0fd3ec220d03c4cc279876234b503b0dbb6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231616"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720860"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS 防护：最佳做法和参考体系结构
 
@@ -81,7 +81,7 @@ Azure 客户查看 Microsoft 最佳做法，构建采用防故障设计且经过
 
 可伸缩性是指系统处理增加的负载的能力。 必须采用可[横向缩放](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out)的应用程序设计，以满足放大负载的需求，尤其是防范 DDoS 攻击。 如果应用程序依赖于服务的单个实例，则会造成单一故障点。 预配多个实例能够提高复原能力和可伸缩性。
 
-对于 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)，请选择提供多个实例的[应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 对于 Azure 云服务，请将每个角色配置为使用[多个实例](../cloud-services/cloud-services-choose-me.md)。 对于 [Azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，请确保虚拟机 (VM) 体系结构包含多个 VM，并且每个 VM 包含在[可用性集](../virtual-machines/virtual-machines-windows-manage-availability.md)中。 我们建议使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)来实现自动缩放功能。
+对于 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)，请选择提供多个实例的[应用服务计划](../app-service/overview-hosting-plans.md)。 对于 Azure 云服务，请将每个角色配置为使用[多个实例](../cloud-services/cloud-services-choose-me.md)。 对于 [Azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，请确保虚拟机 (VM) 体系结构包含多个 VM，并且每个 VM 包含在[可用性集](../virtual-machines/virtual-machines-windows-manage-availability.md)中。 我们建议使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)来实现自动缩放功能。
 
 ### <a name="defense-in-depth"></a>深层防御
 
@@ -96,7 +96,7 @@ Azure 客户查看 Microsoft 最佳做法，构建采用防故障设计且经过
 
 ## <a name="azure-offerings-for-ddos-protection"></a>Azure 中的 DDoS 防护产品/服务
 
-Azure 提供两个可以防御网络攻击（第 3 层和第 4 层）的 DDoS 服务产品/服务 - 基本 DDoS 防护和标准 DDoS 防护。 
+Azure 具有两个 DDoS 服务产品，提供网络攻击防护（第 3 层和第 4 层）：基本 DDoS 防护和标准 DDoS 防护。 
 
 ### <a name="ddos-protection-basic"></a>基本 DDoS 防护
 

@@ -1,23 +1,24 @@
 ---
-title: 训练 LUIS 版本
-titleSuffix: Azure Cognitive Services
+title: 训练应用
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 训练是向语言理解 (LUIS) 应用版本进行教学以提高其自然语言理解能力的过程。 对模型进行更新（例如添加、编辑、标记或删除实体、意向或陈述）后，请对 LUIS 应用进行训练。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 362c5e2e7216d584a9858ace5fb607dc0ee126d5
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 57829d5656a49d4266ad56ea6e7605ac25420c95
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426054"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218948"
 ---
-# <a name="train-your-luis-app-version"></a>训练 LUIS 应用版本
+# <a name="train-your-active-version-of-the-luis-app"></a>训练 LUIS 应用的有效版本 
 
 训练是向语言理解 (LUIS) 应用进行教学以提高其自然语言理解能力的过程。 对模型进行更新（例如添加、编辑、标记或删除实体、意向或陈述）后，请对 LUIS 应用进行训练。 
 

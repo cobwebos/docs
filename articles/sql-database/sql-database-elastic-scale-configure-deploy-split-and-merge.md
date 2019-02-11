@@ -3,7 +3,7 @@ title: 部署拆分 / 合并服务 | Microsoft 文档
 description: 可使用拆分/合并工具在分片数据库之间移动数据。
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 253a50f50e94888a5d764e51a4ff49cc0c1424c6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/04/2018
+ms.openlocfilehash: 7939de5cf45535dc911c25ae8fa8c914a214fa3c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253527"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458051"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>部署拆分/合并服务以在分片数据库之间移动数据
 
@@ -69,7 +69,7 @@ ms.locfileid: "51253527"
     makecert ^
     -n "CN=*.cloudapp.net" ^
     -r -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.1,1.3.6.1.5.5.7.3.2" ^
-    -a sha1 -len 2048 ^
+    -a sha256 -len 2048 ^
     -sr currentuser -ss root ^
     -sv MyCert.pvk MyCert.cer
    ```
@@ -204,7 +204,7 @@ ms.locfileid: "51253527"
    
 ## <a name="use-powershell-to-verify-your-deployment"></a>使用 PowerShell 验证部署
 1. 打开新的 PowerShell 窗口并导航到下载拆分/合并包的目录，并导航到“powershell”目录中。
-2. 创建会在其中创建分片映射管理器和分片的 Azure SQL 数据库服务器（或选择现有服务器）。
+2. 创建一个将在其中创建分片映射管理器和分片的 Azure SQL 数据库服务器（或选择现有服务器）。
    
    > [!NOTE]
    > 在默认情况下，SetupSampleSplitMergeEnvironment.ps1 脚本会在相同的服务器上创建所有这些数据库以简化脚本。 这并不表示拆分/合并服务本身存在限制。

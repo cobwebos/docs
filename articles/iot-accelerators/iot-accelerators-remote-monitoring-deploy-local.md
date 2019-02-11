@@ -6,20 +6,20 @@ manager: hegate
 ms.author: avneet723
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 10/25/2018
+ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5068f0277726b7c468aa24d0629c4350b60b78b5
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: e4a48312dc516010b7a7fe1471ba7e555a2f92f2
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287602"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382260"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>在本地部署远程监视解决方案加速器 - Visual Studio
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-本文展示了如何将远程监视解决方案加速器部署到本地计算机，用于测试和开发。 了解如何在 Visual Studio 中运行微服务。 本地微服务部署使用以下云服务：IoT 中心、Cosmos DB、Azure 流分析，以及云中的 Azure 时序见解服务。
+本文展示了如何将远程监视解决方案加速器部署到本地计算机，用于测试和开发。 了解如何在 Visual Studio 中运行微服务。 本地微服务部署使用以下云服务：云中的 IoT Hub、Cosmos DB、Azure 流分析和 Azure 时序见解服务。
 
 若要在本地计算机上的 Docker 中运行远程监视解决方案加速器，请参阅[在本地部署远程监视解决方案加速器 - Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md)。
 
@@ -36,7 +36,7 @@ ms.locfileid: "51287602"
 * [Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
 * [Visual Studio](https://visualstudio.microsoft.com/)
-* [Nginx](http://nginx.org/en/download.html)
+* [Nginx](https://nginx.org/en/download.html)
 * [Node.js v8](https://nodejs.org/) - 此软件是 PCS CLI 的先决条件，脚本使用 PCS CLI 来创建 Azure 资源。 请勿使用 Node.js v10。
 
 > [!NOTE]
@@ -48,16 +48,9 @@ ms.locfileid: "51287602"
 
 在本部分，我们将运行远程监视微服务。 在本地运行 Web UI，在 Docker 中运行设备模拟服务，并在 Visual Studio 中运行微服务。
 
-### <a name="run-the-web-ui"></a>运行 Web UI
-
-此步骤启动 Web UI。 导航到存储库本地副本中的 **webui** 文件夹，并运行以下命令：
-
-```cmd
-npm install
-npm start
-```
-
 ### <a name="run-the-device-simulation-service"></a>运行设备模拟服务
+
+打开一个新的命令提示符窗口，以确保能够访问在上一部分中由 **start.cmd** 脚本设置的环境变量。
 
 运行以下命令，启动设备模拟服务的 Docker 容器。 该服务模拟远程监视解决方案的设备。
 
@@ -94,14 +87,25 @@ npm start
 1. 在资源列表中单击“流分析作业”。
 1. 在流分析作业的“概述”页上，单击“启动”按钮。 然后单击“启动”以立即启动该作业。
 
+### <a name="run-the-web-ui"></a>运行 Web UI
+
+此步骤启动 Web UI。 打开一个新的命令提示符窗口，以确保能够访问由 **start.cmd** 脚本设置的环境变量。 导航到存储库本地副本中的 **webui** 文件夹，并运行以下命令：
+
+```cmd
+npm install
+npm start
+```
+
+在启动完成时，浏览器会显示页面 **http://localhost:3000/dashboard**。 此页面上的错误是预料之中的。 若想在无错误的情况下查看应用程序，请完成以下步骤。
+
 ### <a name="configure-and-run-nginx"></a>配置并运行 NGINX
 
 设置反向代理服务器，以链接本地计算机上运行的 Web 应用程序和微服务：
 
-* 将 **webui\scripts\localhost** 文件夹中的 **nginx.conf** 文件复制到 **nginx\conf** 安装目录。
+* 将存储库的本地副本的 **webui\scripts\localhost** 文件夹中的 **nginx.conf** 文件复制到 **nginx\conf** 安装目录。
 * 运行 **nginx**。
 
-有关运行 **nginx** 的详细信息，请参阅[适用于 Windows 的 nginx](http://nginx.org/en/docs/windows.html)。
+有关运行 **nginx** 的详细信息，请参阅[适用于 Windows 的 nginx](https://nginx.org/en/docs/windows.html)。
 
 ### <a name="connect-to-the-dashboard"></a>连接到仪表板
 

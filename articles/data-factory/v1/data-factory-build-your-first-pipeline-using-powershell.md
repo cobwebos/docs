@@ -10,17 +10,16 @@ ms.assetid: 22ec1236-ea86-4eb7-b903-0e79a58b90c7
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 5d490b195f2e8fd58ca331b3e68ed451d92932f0
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: e3421f8401d227e5c14dd244d87711427c57eefb
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241831"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019225"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>教程：使用 Azure PowerShell 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -35,7 +34,7 @@ ms.locfileid: "50241831"
 
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[快速入门：使用 Azure 数据工厂创建数据工厂](../quickstart-create-data-factory-powershell.md)。
+> 本文适用于数据工厂版本 1。 如果使用的是数据工厂服务的当前版本，请参阅[快速入门：使用 Azure 数据工厂创建数据工厂](../quickstart-create-data-factory-powershell.md)。
 
 本教程介绍如何使用 Azure PowerShell 创建第一个 Azure 数据工厂。 若要使用其他工具/SDK 来完成教程，请从下拉列表中选择一个选项。
 
@@ -83,7 +82,7 @@ ms.locfileid: "50241831"
 * Azure 数据工厂的名称必须全局唯一。 如果收到错误：“数据工厂名称 ‘FirstDataFactoryPSH’ 不可用”，请更改名称（例如 yournameFirstDataFactoryPSH）。 执行本教程中的步骤时，请使用此名称取代 ADFTutorialFactoryPSH。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
 * 只有 Azure 订阅的参与者/管理员才可以创建数据工厂实例
 * 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。
-* 如果收到错误：“**该订阅未注册为使用命名空间 Microsoft.DataFactory**”，请执行下列操作之一，尝试再次发布：
+* 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，再尝试重新发布：
 
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
 
@@ -411,7 +410,7 @@ ms.locfileid: "50241831"
 4. 创建了包含 **HDInsight Hive** 活动的**管道**。
 
 ## <a name="next-steps"></a>后续步骤
-本文创建了可在按需 Azure HDInsight 群集上运行 Hive 脚本、包含转换活动（HDInsight 活动）的管道。 要了解如何使用复制活动将数据从 Azure Blob 复制到 Azure SQL，请参阅 [Tutorial: Copy data from an Azure Blob to Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)（教程：将数据从 Azure Blob 复制到 Azure SQL）。
+本文创建了可在按需 Azure HDInsight 群集上运行 Hive 脚本、包含转换活动（HDInsight 活动）的管道。 若要了解如何使用复制活动将数据从 Azure Blob 复制到 Azure SQL，请参阅[教程：将数据从 Azure Blob 复制到 Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 ## <a name="see-also"></a>另请参阅
 | 主题 | Description |

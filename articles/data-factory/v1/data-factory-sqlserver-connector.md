@@ -9,21 +9,20 @@ ms.assetid: 864ece28-93b5-4309-9873-b095bbe6fedd
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c4038ea5a450f32a46f24a306d1ee30bd61308a5
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a8283ebe135c5204dd64d8955295fdece38e0ebe
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054579"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023492"
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出本地或 IaaS (Azure VM) 中的 SQL Server
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](data-factory-sqlserver-connector.md)
+> * [版本 1](data-factory-sqlserver-connector.md)
 > * [版本 2（当前版本）](../connector-sql-server.md)
 
 > [!NOTE]
@@ -53,9 +52,9 @@ ms.locfileid: "37054579"
 ## <a name="getting-started"></a>入门
 可创建包含复制活动的管道，该活动使用不同的工具/API 将数据移入/移出本地 SQL Server 数据库。
 
-创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+创建管道的最简单方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-也可以使用以下工具创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+还可以使用以下工具来创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储： 
 
@@ -78,7 +77,7 @@ ms.locfileid: "37054579"
 | type |类型属性应设置为：**OnPremisesSqlServer**。 |是 |
 | connectionString |指定使用 SQL 身份验证或 Windows 身份验证连接到本地 SQL Server 数据库时所需的 connectionString 信息。 |是 |
 | gatewayName |网关的名称 - 数据工厂服务应使用此网关连接到本地 SQL Server 数据库。 |是 |
-| username |如果使用的是 Windows 身份验证，请指定用户名。 示例：**域名\\用户名**。 |否 |
+| username |如果使用的是 Windows 身份验证，请指定用户名。 示例：域名\\用户名。 |否 |
 | password |指定为用户名指定的用户帐户的密码。 |否 |
 
 可使用 **New-AzureRmDataFactoryEncryptValue** cmdlet 加密凭据，并在连接字符串中使用凭据，如下例所示（**EncryptedCredential** 属性）：  
@@ -250,7 +249,7 @@ ms.locfileid: "37054579"
 ```
 **Azure Blob 输出数据集**
 
-数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据每小时向新的 blob 写入一次（frequency：hour，interval：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```json
 {
@@ -357,7 +356,7 @@ ms.locfileid: "37054579"
    }
 }
 ```
-在本例中，为 SqlSource 指定了 **sqlReaderQuery**。 复制活动针对 SQL Server 数据库源运行此查询以获取数据。 此外，也可以通过指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** 来指定存储过程（如果存储过程使用参数）。 SqlReaderQuery 可以引用输入数据集所引用的数据库中的多个表。 这不仅局限于设置为数据集的 tableName typeProperty 的表。
+在本例中，为 SqlSource 指定了 **sqlReaderQuery**。 复制活动针对 SQL Server 数据库源运行此查询以获取数据。 此外，也可以通过指定 sqlReaderStoredProcedureName 和 storedProcedureParameters 来指定存储过程（如果存储过程使用参数）。 SqlReaderQuery 可以引用输入数据集所引用的数据库中的多个表。 这不仅局限于设置为数据集的 tableName typeProperty 的表。
 
 如果不指定 sqlReaderQuery 或 sqlReaderStoredProcedureName，则使用在结构部分中定义的列来生成针对 SQL Server 数据库运行的 select 查询。 如果数据集定义不具备该结构，则从表中选择所有列。
 
@@ -403,7 +402,7 @@ ms.locfileid: "37054579"
 ```
 **Azure Blob 输入数据集**
 
-每小时从新的 blob 获取数据一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态评估 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月和日部分，文件名使用开始时间的小时部分。 设置“external”: ”true”将告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。
+每小时从新的 blob 获取数据一次（frequency：hour，interval：1）。 根据处理中切片的开始时间，动态评估 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月和日部分，文件名使用开始时间的小时部分。 设置“external”: ”true”将告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。
 
 ```json
 {
@@ -541,19 +540,19 @@ ms.locfileid: "37054579"
 ```
 
 ## <a name="troubleshooting-connection-issues"></a>连接问题故障排除
-1. 将 SQL Server 配置为接受远程连接。 启动 **SQL Server Management Studio**，右键单击“服务器”，并单击“属性”。 从列表选择“连接”，并选中“允许远程连接到此服务器”。
+1. 将 SQL Server 配置为接受远程连接。 启动 SQL Server Management Studio，右键单击“服务器”，并单击“属性”。 从列表选择“连接”，并选中“允许远程连接到此服务器”。
 
     ![启用远程连接](./media/data-factory-sqlserver-connector/AllowRemoteConnections.png)
 
     有关详细步骤，请参阅[配置远程访问服务器配置选项](https://msdn.microsoft.com/library/ms191464.aspx)。
-2. 启动 **SQL Server 配置管理器**。 针对所需实例展开“SQL Server 网络配置”，并选择“MSSQLSERVER 的协议”。 应会在右侧窗格中看到协议。 右键单击“TCP/IP”，并单击“启用”，可启用 TCP/IP。
+2. 启动“SQL Server 配置管理器”。 针对所需实例展开“SQL Server 网络配置”，并选择“MSSQLSERVER 的协议”。 应会在右侧窗格中看到协议。 右键单击“TCP/IP”，并单击“启用”，可启用 TCP/IP。
 
     ![启用 TCP/IP](./media/data-factory-sqlserver-connector/EnableTCPProptocol.png)
 
     有关详细信息和启用 TCP/IP 协议的其他方法，请参阅[启用或禁用服务器网络协议](https://msdn.microsoft.com/library/ms191294.aspx)。
 3. 在同一窗口中，双击“TCP/IP”以启动“TCP/IP 属性”窗口。
-4. 切换到“IP 地址”选项卡。向下滚动以查看 **IPAll** 部分。 记下 **TCP 端口**（默认值是 **1433**）。
-5. 在计算机上创建 **Windows 防火墙规则**，以便允许通过此端口传入流量。  
+4. 切换到“IP 地址”选项卡。向下滚动以查看 IPAll 部分。 记下 TCP 端口（默认值是 1433）。
+5. 在计算机上创建 Windows 防火墙规则，以便允许通过此端口传入流量。  
 6. **验证连接**：若要使用完全限定名称连接到 SQL Server，请从另一台计算机使用 SQL Server Management Studio。 例如：“<machine><domain>.corp<company>.com,1433”。
 
    > [!IMPORTANT]
@@ -611,7 +610,7 @@ create table dbo.TargetTbl
     }
 }
 ```
-**数据集 JSON 定义**
+**目标数据集 JSON 定义**
 
 ```json
 {
@@ -637,7 +636,7 @@ create table dbo.TargetTbl
 }
 ```
 
-请注意，源表和目标表具有不同架构（目标表具有一个额外标识列）。 在本方案中，需在不包含标识列的目标数据集定义中指定 **structure** 属性。
+请注意，源表和目标表具有不同架构（目标表具有一个额外标识列）。 在本方案中，需在不包含标识列的目标数据集定义中指定 structure 属性。
 
 ## <a name="invoke-stored-procedure-from-sql-sink"></a>调用 SQL 接收器的存储过程
 有关在管道的复制活动中调用 SQL 接收器的存储过程的示例，请参阅[在复制活动中调用 SQL 接收器的存储过程](data-factory-invoke-stored-procedure-from-copy-activity.md)一文。
@@ -678,7 +677,7 @@ create table dbo.TargetTbl
 | smallint |Int16 |
 | smallmoney |小数 |
 | sql_variant |对象 * |
-| text |String, Char[] |
+| 文本 |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Byte |

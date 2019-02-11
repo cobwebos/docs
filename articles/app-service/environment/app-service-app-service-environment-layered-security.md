@@ -1,5 +1,5 @@
 ---
-title: 使用应用服务环境实现分层的安全体系结构
+title: 使用应用服务环境实现分层的安全体系结构 - Azure
 description: 使用应用服务环境实现分层的安全体系结构。
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
-ms.openlocfilehash: 29c928c7d81eb3a2532f735be9132b49db5da373
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.custom: seodec18
+ms.openlocfilehash: 5e25de1ad2042ac978c3698165b9d9baba20e816
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34356199"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274150"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>使用应用服务环境实现分层的安全体系结构
 ## <a name="overview"></a>概述

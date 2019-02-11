@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: rafats
-ms.openlocfilehash: 3168593e30a7f5acf49960c8479da75529860a65
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: ef7fde987eff2235b59feab5481fe3dc71edd859
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684539"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039987"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>读取 Azure Cosmos DB 更改源
 

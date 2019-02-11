@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 3caa4f2dbe36f86c9b15a83303e90b16d06c56fd
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e9fc8351b5e9a4f2274f0906d4071f86dcbcff26
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419395"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259676"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>在脱机模式下安装 Azure 虚拟机代理 
 
@@ -36,7 +36,15 @@ Azure 虚拟机代理（VM 代理）可提供多种有用的功能，例如本�
 
 可以使用以下步骤，在脱机模式下安装 VM 代理。
 
-### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>第 1 步：将 VM 的 OS 磁盘作为数据磁盘附加到另一 VM
+> [!NOTE]
+> 可以在脱机模式下自动执行 VM 代理的安装过程。
+> 若要执行此操作，请使用 [Azure VM 恢复脚本](https://github.com/Azure/azure-support-scripts/blob/master/VMRecovery/ResourceManager/README.md)。 如果选择使用 Azure VM 恢复脚本，则可以使用以下过程：
+> 1. 使用脚本将受影响的 VM 的 OS 磁盘附加到恢复 VM，则可跳过步骤 1。
+> 2. 请按照步骤 2 - 10 应用补救措施。
+> 3. 使用脚本重新生成 VM，则可跳过步骤 11。
+> 4. 请遵循步骤 12。
+
+### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>步骤 1：将 VM 的 OS 磁盘作为数据磁盘附加到另一 VM
 
 1.  删除 VM。 删除 VM 时，请确保选择“保留磁盘”选项。
 
@@ -44,7 +52,7 @@ Azure 虚拟机代理（VM 代理）可提供多种有用的功能，例如本�
 
 3.  连接到故障排除 VM。 转到“计算机管理” > “磁盘管理”。 确认 OS 磁盘处于联机状态，并且已将驱动器号分配到磁盘分区。
 
-### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>第 2 步：修改 OS 磁盘以安装 Azure VM 代理
+### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>步骤 2：修改 OS 磁盘以安装 Azure VM 代理
 
 1.  远程桌面连接到故障排除 VM。
 
@@ -76,7 +84,7 @@ Azure 虚拟机代理（VM 代理）可提供多种有用的功能，例如本�
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\WindowsAzureTelemetryService
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\RdAgent
 
-        ![导出注册表子项](./media/install-vm-agent-offline/backup-reg.png)
+          ![导出注册表子项](./media/install-vm-agent-offline/backup-reg.png)
 
     2. 编辑注册表文件。 在每个文件中，将项值 SYSTEM改为 BROKENSYSTEM（如下图所示）并保存该文件。 请记住当前 VM 代理的 **ImagePath**。 我们将需要将相应的文件夹复制到附加的 OS 磁盘。 
 

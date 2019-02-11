@@ -1,21 +1,21 @@
 ---
-title: 使用 Git 进行协作编程 - Azure 机器学习 | Microsoft Docs
+title: 利用 Git 实现协作编码 - Team Data Science Process
 description: 如何配合敏捷规划使用 Git 针对数据科学项目执行协作代码开发。
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 4ea9aa10ba40d734e064d34da2536e28a619201f
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 045f2d12eb6836d14a09ea96c8eca3cad0e5246d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444233"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458207"
 ---
 # <a name="collaborative-coding-with-git"></a>使用 Git 进行协作编程
 

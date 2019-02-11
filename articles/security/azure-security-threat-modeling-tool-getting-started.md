@@ -3,9 +3,9 @@ title: 入门 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
 description: 这是着重强调威胁建模工具操作的更深入的概述。
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: 340c92d2830069a9d957f4ece79416a707062629
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.author: jegeib
+ms.openlocfilehash: 6315e6d39a3b68854beb6563d075e3c79ca93a69
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096768"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359470"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>威胁建模工具入门
 
-云和企业安全工具团队今年的早些时候发布了威胁建模工具预览版，是免费的**[单击下载](https://aka.ms/tmtpreview)** 版本。 交付机制中的更改使我们能够在客户每次打开该工具时向他们推送最新的改进和 bug 修复，使其更易于维护和使用。
+Microsoft Threat Modeling Tool 2018 在 2018 年 9 月作为 GA 发布，是免费的[单击下载](https://aka.ms/threatmodelingtool)版本。 交付机制中的更改使我们能够在客户每次打开该工具时向他们推送最新的改进和 bug 修复，使其更易于维护和使用。
 本文将指导你开始使用 Microsoft SDL 威胁建模方法的过程，并演示如何使用该工具来开发优秀的威胁模型，以作为安全进程的主干。
 
 本文基于 SDL 威胁建模方法的现有认知。 若要快速查看，请参阅**[威胁建模 Web 应用程序](https://msdn.microsoft.com/library/ms978516.aspx)** 和 2006 年发布的**[使用 STRIDE 方法发现安全漏洞](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** MSDN 文章的存档版本。
@@ -68,13 +68,13 @@ ms.locfileid: "47096768"
 他们将进行开发他的首个威胁模型的过程。
 
 > Ricardo：你好 Cristina，我在研究威胁模型关系图，想要确保我们所进行的细节都没有任何问题。 你可以帮我看一下吗？
-> Cristina：没问题。 让我们一起看一下。
+> Cristina：绝对是。 让我们一起看一下。
 > Ricardo 打开该工具并将他的屏幕与 Cristina 共享。
 
 ![基本威胁模型](./media/azure-security-threat-modeling-tool-feature-overview/basictmt.png)
 
 > Cristina：好的，我们直接看，不过可以先向我介绍一下整体情况吗？
-> Ricardo: 没问题！ 这是结构细节：
+> Ricardo：当然！ 这是结构细节：
 > - 我们的用户被绘制为外部实体—正方形
 > - 他们正向我们的 Web 服务器发送命令—圆圈
 > - Web 服务器正向数据库发出请求（两条平行线）
@@ -143,4 +143,4 @@ Ricardo 和 Cristina 查看列表并添加重要事项、缓解/理由、优先�
 
 ## <a name="next-steps"></a>后续步骤
 
-将你的问题、评论和疑问发送至 tmtextsupport@microsoft.com。 **[下载](https://aka.ms/tmtpreview)** 威胁建模工具以开始。
+将你的问题、评论和疑问发送至 tmtextsupport@microsoft.com。 **[下载](https://aka.ms/threatmodelingtool)** 威胁建模工具以开始。

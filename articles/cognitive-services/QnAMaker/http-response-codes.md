@@ -1,21 +1,22 @@
 ---
 title: API HTTP 响应代码 - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 了解从 QnA Maker API 返回的 HTTP 响应代码
+description: 了解从 QnA Maker API 返回的 HTTP 响应代码。 这将帮助解决任何错误。
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 10/09/2018
+ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: 96782d32817e4989c02e0ed098d7772c80aa26c8
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.custom: seodec18
+ms.openlocfilehash: 9eb5f1aefc8a36727e837af79f553108f624fc70
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079663"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207958"
 ---
 # <a name="qna-maker-api-http-response-codes"></a>QnA Maker API HTTP 响应代码
 [管理](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)和预测 API 返回 HTTP 响应代码。 响应消息包含特定于某个请求的信息，而 HTTP 响应状态代码是通用的。 

@@ -10,15 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/10/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 45bf9bbffdbba22336da08c81df069ce0267686f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.lastreviewed: 12/03/2018
+ms.openlocfilehash: ea36dbe30eddc3d503631c31e46291101ea175d4
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092654"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239530"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>使用 Azure Stack 存储的数据传输工具
 
@@ -56,16 +57,17 @@ AzCopy 是一个命令行实用工具，用于向 / 从简单的命令使用具�
 
 ### <a name="download-and-install-azcopy"></a>下载并安装 AzCopy
 
-有两种版本的 AzCopy 实用工具：Windows 上的 AzCopy 和 Linux 上的 AzCopy。
+有两个版本的 AzCopy 实用程序：Windows 上的 AzCopy 和 Linux 上的 AzCopy。
 
  - **Windows 上的 AzCopy**
-    - 下载 Azure Stack 支持的 AzCopy 版本。 可以采用与 Azure 一样的方式在 Azure Stack 上安装和使用 AzCopy。 若要了解详细信息，请参阅 [Windows 上的 AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)。
-        - 对于 1802 更新或更高版本，请[下载 AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417)。
-        - 对于以前的版本，请[下载 AzCopy 5.0.0](https://aka.ms/azcopyforazurestack20170417)。
+    - 下载 Azure Stack 支持的 AzCopy 版本。 可以采用与 Azure 一样的方式在 Azure Stack 上安装和使用 AzCopy。 有关详细信息，请参阅 [Windows 上的 AzCopy](../../storage/common/storage-use-azcopy.md)。
+        - 对于 1811 更新或更高版本，请[下载 AzCopy 7.3.0](https://aka.ms/azcopyforazurestack20171109)。
+        - 对于以前的版本（1802 到 1809 更新），请[下载 AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417)。
 
  - **Linux 上的 AzCopy**
 
-    - Linux 上的 AzCopy 支持 Azure Stack 1802 更新或更高版本。 可以采用与 Azure 一样的方式在 Azure Stack 上安装和使用 AzCopy。 若要了解详细信息，请参阅 [Linux 上的 AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux)。
+    - 可以采用与 Azure 一样的方式在 Azure Stack 上安装和使用 AzCopy。 有关详细信息，请参阅 [Linux 上的 AzCopy](../../storage/common/storage-use-azcopy-linux.md)。
+    - 对于以前的版本（1802 到 1809 更新），请参阅 [AzCopy 7.1 和更低版本的安装步骤](../../storage/common/storage-use-azcopy-linux.md#installation-steps-for-azcopy-71-and-earlier-versions)。
 
 ### <a name="azcopy-command-examples-for-data-transfer"></a>针对数据传输的 AzCopy 命令示例
 
@@ -75,36 +77,36 @@ AzCopy 是一个命令行实用工具，用于向 / 从简单的命令使用具�
 
 **Windows**
 
-````AzCopy
+```shell
 AzCopy.exe /source:https://myaccount.blob.local.azurestack.external/mycontainer /dest:C:\myfolder /sourcekey:<key> /S
-````
+```
 
 **Linux**
 
-````AzCopy
+```bash
 azcopy \
     --source https://myaccount.blob.local.azurestack.external/mycontainer \
     --destination /mnt/myfiles \
     --source-key <key> \
     --recursive
-````
+```
 
 ### <a name="upload-single-file-to-virtual-directory"></a>将单个文件上传到虚拟目录
 
 **Windows**
 
-```AzCopy
+```shell
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.local.azurestack.external/mycontainer/vd /DestKey:key /Pattern:abc.txt
 ```
 
 **Linux**
 
-````AzCopy
+```bash
 azcopy \
     --source /mnt/myfiles/abc.txt \
     --destination https://myaccount.blob.local.azurestack.external/mycontainer/vd/abc.txt \
     --dest-key <key>
-````
+```
 
 ### <a name="move-data-between-azure-and-azure-stack-storage"></a>在 Azure 和 Azure Stack 存储之间移动数据
 
@@ -112,13 +114,13 @@ azcopy \
 
 **Windows**
 
-````AzCopy
+```shell
 Azcopy /Source:https://myaccount.blob.local.azurestack.external/mycontainer /Dest:https://myaccount2.blob.core.windows.net/mycontainer2 /SourceKey:AzSKey /DestKey:Azurekey /S /SyncCopy
-````
+```
 
 **Linux**
 
-````AzCopy
+```bash
 azcopy \
     --source https://myaccount1.blob.local.azurestack.external/myContainer/ \
     --destination https://myaccount2.blob.core.windows.net/myContainer/ \
@@ -126,7 +128,7 @@ azcopy \
     --dest-key <key2> \
     --include "abc.txt" \
     --sync-copy
-````
+```
 
 ### <a name="azcopy-known-issues"></a>Azcopy 已知问题
 
@@ -159,7 +161,7 @@ Azure PowerShell 是一个模块，它提供的 cmdlet 用于管理 Azure 和 Az
 
 $ARMEvnName = "AzureStackUser" # set AzureStackUser as your Azure Stack environment name
 $ARMEndPoint = "https://management.local.azurestack.external" 
-$GraphAudiance = "https://graph.windows.net/" 
+$GraphAudience = "https://graph.windows.net/" 
 $AADTenantName = "<myDirectoryTenantName>.onmicrosoft.com" 
 
 $SubscriptionName = "basic" # Update with the name of your subscription.
@@ -168,7 +170,7 @@ $StorageAccountName = "azsblobcontainer" # Give a name to your new storage accou
 $Location = "Local" # Choose "Local" as an example.
 $ContainerName = "photo" # Give a name to your new container.
 $ImageToUpload = "C:\temp\Hello.jpg" # Prepare an image file and a source directory in your local computer.
-$DestinationFolder = "C:\temp\downlaod" # A destination directory in your local computer.
+$DestinationFolder = "C:\temp\download" # A destination directory in your local computer.
 
 # Import the Connect PowerShell module"
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
@@ -217,28 +219,27 @@ New-Item -Path $DestinationFolder -ItemType Directory -Force
 $blobs | Get-AzureStorageBlobContent –Destination $DestinationFolder
 
 # end
-````
+```
 
 ### <a name="powershell-known-issues"></a>PowerShell 已知问题
 
 目前兼容的 Azure Stack 的 Azure PowerShell 模块版本为 1.2.11，用于用户操作。 它不同于最新版本的 Azure PowerShell。 这种差异影响存储服务操作：
 
-* 在版本 1.2.11 中，`Get-AzureRmStorageAccountKey` 的返回值格式有两个属性：`Key1` 和 `Key2`，而当前的 Azure 版本返回的数组包含所有帐户密钥。
+在版本 1.2.11 中，`Get-AzureRmStorageAccountKey` 的返回值格式有两个属性：`Key1` 和 `Key2`，而当前的 Azure 版本返回的数组包含所有帐户密钥。
 
-   ```
-   # This command gets a specific key for a storage account, 
-   # and works for Azure PowerShell version 1.4, and later versions.
-   (Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
-   -AccountName "MyStorageAccount").Value[0]
+```powershell
+# This command gets a specific key for a storage account, 
+# and works for Azure PowerShell version 1.4, and later versions.
+(Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
+-AccountName "MyStorageAccount").Value[0]
 
-   # This command gets a specific key for a storage account, 
-   # and works for Azure PowerShell version 1.3.2, and previous versions.
-   (Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
-   -AccountName "MyStorageAccount").Key1
+# This command gets a specific key for a storage account, 
+# and works for Azure PowerShell version 1.3.2, and previous versions.
+(Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
+-AccountName "MyStorageAccount").Key1
+```
 
-   ```
-
-   有关详细信息，请参阅 [Get-AzureRmStorageAccountKey](https://docs.microsoft.com/powershell/module/azurerm.storage/Get-AzureRmStorageAccountKey?view=azurermps-4.1.0)。
+有关详细信息，请参阅 [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/Get-AzureRmStorageAccountKey)。
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -246,7 +247,7 @@ Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 可以将�
 
 Azure CLI 经过优化，可用于从命令行管理 Azure 资源，以及生成可以针对 Azure 资源管理器运行的自动化脚本。 它提供 Azure Stack 门户所提供的许多功能，包括各种数据访问功能。
 
-Azure Stack 需要 Azure CLI 2.0 或更高版本。 若要详细了解如何通过 Azure Stack 来安装和配置 Azure CLI，请参阅[安装和配置 Azure Stack CLI](azure-stack-version-profiles-azurecli2.md)。 有关如何使用 Azure CLI 执行使用 Azure Stack 存储帐户中资源的多个任务的详细信息，请参阅[对 Azure 存储使用 Azure CLI](../../storage/storage-azure-cli.md)
+Azure Stack 需要 Azure CLI 2.0 版或更高版本。 若要详细了解如何通过 Azure Stack 来安装和配置 Azure CLI，请参阅[安装和配置 Azure Stack CLI](azure-stack-version-profiles-azurecli2.md)。 若要详细了解如何使用 Azure CLI 执行多个可利用 Azure Stack 存储帐户中资源的任务，请参阅[将 Azure CLI 与 Azure 存储配合使用](../../storage/storage-azure-cli.md)
 
 ### <a name="azure-cli-sample-script-for-azure-stack"></a>适用于 Azure Stack 的 Azure CLI 示例脚本
 
@@ -265,7 +266,7 @@ Azure Stack 需要 Azure CLI 2.0 或更高版本。 若要详细了解如何通�
 4. 如有必要，将脚本标记为可执行文件：`chmod +x my_storage_sample.sh`
 5. 执行脚本。 例如，在 Bash 中：`./my_storage_sample.sh`
 
-```bash
+```azurecli
 #!/bin/bash
 # A simple Azure Stack storage example script
 
@@ -296,20 +297,20 @@ echo "Downloading the file..."
 az storage blob download --container-name $AZURESTACK_STORAGE_CONTAINER_NAME --account-name $AZURESTACK_STORAGE_ACCOUNT_NAME --name $AZURESTACK_STORAGE_BLOB_NAME --file $DESTINATION_FILE --output table
 
 echo "Done"
-````
+```
 
 ## <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure 存储资源管理器
 
-Microsoft Azure 存储资源管理器是 Microsoft 的一款独立应用。 它可用来在 Windows、macOS 和 Linux 计算机上轻松处理 Azure 存储和 Azure Stack 存储数据。 如果你想管理你的 Azure Stack 存储数据的简单办法，则可以考虑使用 Microsoft Azure 存储资源管理器。
+Microsoft Azure 存储资源管理器是 Microsoft 的一款独立应用。 它可用来在 Windows、macOS 和 Linux 计算机上轻松处理 Azure 存储和 Azure Stack 存储数据。 如果希望通过某种方式轻松管理 Azure Stack 存储数据，请考虑使用 Microsoft Azure 存储资源管理器。
 
 * 若要详细了解如何配置 Azure 存储资源管理器，使之能够用于 Azure Stack，请参阅[将存储资源管理器连接到 Azure Stack 订阅](azure-stack-storage-connect-se.md)。
 * 若要了解有关 Microsoft Azure 存储资源管理器的详细信息，请参阅[存储资源管理器入门](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 
 ## <a name="blobfuse"></a>Blobfuse 
 
-[Blobfuse](https://github.com/Azure/azure-storage-fuse) 是适用于 Azure Blob 存储的虚拟文件系统驱动程序，用于通过 Linux 文件系统访问存储帐户中的现有块 Blob 数据。 Azure Blob 存储是一项对象存储服务，因此没有分层命名空间。 Blobfuse 使用虚拟目录方案提供此命名空间，并使用正斜杠 `/` 作为分隔符。 Blobfuse 同时适用于 Azure 和 Azure Stack。 
+[Blobfuse](https://github.com/Azure/azure-storage-fuse) 是适用于 Azure Blob 存储的虚拟文件系统驱动程序，用于通过 Linux 文件系统访问存储帐户中的现有块 Blob 数据。 Azure Blob 存储是一项对象存储服务，因此没有分层命名空间。 Blobfuse 提供了此命名空间使用的虚拟目录方案通过使用正斜杠`/`作为分隔符。 Blobfuse 同时适用于 Azure 和 Azure Stack。 
 
-若要了解有关在 Linux 上装载为文件系统使用 Blobfuse 的 Blob 存储的详细信息，请参阅[Blob 存储装载为文件系统如何使用 Blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux)。 
+若要详细了解如何使用 Linux 上的 Blobfuse 将 Blob 存储装载为文件系统，请参阅[如何使用 Blobfuse 将 Blob 存储装载为文件系统](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux)。 
 
 对于 Azure Stack，在装载准备步骤中配置存储帐户凭据时，除了 accountName、accountKey/sasToken、containerName 之外，还需要指定 **blobEndpoint**。 
 
@@ -317,20 +318,20 @@ Microsoft Azure 存储资源管理器是 Microsoft 的一款独立应用。 它�
 
 请注意，accountKey 和 sasToken 一次只能配置一个。 提供存储帐户密钥时，凭据配置文件采用以下格式： 
 
-```text  
-    accountName myaccount 
-    accountKey myaccesskey== 
-    containerName mycontainer 
-    blobEndpoint myaccount.blob.local.azurestack.external
+```
+accountName myaccount 
+accountKey myaccesskey== 
+containerName mycontainer 
+blobEndpoint myaccount.blob.local.azurestack.external
 ```
 
 提供共享访问密钥时，凭据配置文件采用以下格式：
 
-```text  
-    accountName myaccount 
-    sasToken ?mysastoken 
-    containerName mycontainer 
-    blobEndpoint myaccount.blob.local.azurestack.external
+```  
+accountName myaccount 
+sasToken ?mysastoken 
+containerName mycontainer 
+blobEndpoint myaccount.blob.local.azurestack.external
 ```
 
 ## <a name="next-steps"></a>后续步骤

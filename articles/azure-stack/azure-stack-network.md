@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 9b1eb6878dcafba68c230255f3b3f43e005421ab
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.lastreviewed: 08/30/2018
+ms.openlocfilehash: a4e04bc9071f4f677230d112a7baa708e9e8dc34
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340182"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243226"
 ---
 # <a name="network-connectivity"></a>网络连接
 本文提供 Azure Stack 网络基础架构信息，可帮助你确定如何以最佳方式将 Azure Stack 集成到现有的网络环境。 
@@ -29,7 +30,7 @@ ms.locfileid: "43340182"
 > 若要从 Azure Stack 解析外部 DNS 名称（例如 www.bing.com），必须提供 DNS 服务器来转发 DNS 请求。 有关 Azure Stack DNS 要求的详细信息，请参阅 [Azure Stack 数据中心集成 - DNS](azure-stack-integrate-dns.md)。
 
 ## <a name="physical-network-design"></a>物理网络设计
-Azure Stack 解决方案需有弹性且高度可用的物理基础结构才能支持其操作和服务。 从 ToR 到边界交换机的上行链路仅限于 SFP+ 或 SFP28 介质以及 1 GB、10 GB 或 25 GB 的速度。 请咨询原始设备制造商 (OEM) 硬件供应商以了解可用性。 下图显示了建议的设计：
+Azure Stack 解决方案需要一个可复原且具有高可用性的物理基础设施来支持其操作和服务。 从 ToR 到边界交换机的上行链路仅限于 SFP+ 或 SFP28 介质以及 1 GB、10 GB 或 25 GB 的速度。 请咨询原始设备制造商 (OEM) 硬件供应商以了解可用性。 下图显示了建议的设计：
 
 ![建议的 Azure Stack 网络设计](media/azure-stack-network/recommended-design.png)
 
@@ -39,9 +40,9 @@ Azure Stack 解决方案需有弹性且高度可用的物理基础结构才能�
 
 下表显示了逻辑网络以及必须规划的关联 IPv4 子网范围：
 
-| 本地网络 | 说明 | 大小 | 
+| 逻辑网络 | 描述 | 大小 | 
 | -------- | ------------- | ------------ | 
-| 公共 VIP | Azure Stack 使用共 31 此网络中的地址。 8 个公共 IP 地址由少量的 Azure Stack 服务使用，剩余的地址由租户虚拟机使用。 如果打算使用应用服务和 SQL 资源提供程序，则还要额外使用 7 个地址。 剩余 15 Ip 保留供将来的 Azure 服务。 | /26（62 台主机）- /22（1022 台主机）<br><br>建议使用 /24（254 台主机） | 
+| 公共 VIP | Azure Stack 总共使用此网络中的 31 个地址。 8 个公共 IP 地址由少量的 Azure Stack 服务使用，剩余的地址由租户虚拟机使用。 如果打算使用应用服务和 SQL 资源提供程序，则还要额外使用 7 个地址。 其余 15 个 IP 保留用于将来的 Azure 服务。 | /26（62 台主机）- /22（1022 台主机）<br><br>建议使用 /24（254 台主机） | 
 | 交换机基础结构 | 用于路由的专用交换机管理接口的点到点 IP 地址，以及分配给交换机的环回地址。 | /26 | 
 | 基础结构 | 用于通信的 Azure Stack 内部组件。 | /24 |
 | 专用 | 用于存储网络和专用 VIP。 | /24 | 

@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: caa96ea2-da21-4529-8fab-0e06367beb40
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 7756e943d25a02b3ec3e5a9150bb5eec8485eda7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4fb21f96c682775b4f7360abcdac7b64c78f76d9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421526"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158275"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-safetynet"></a>教程：Azure Active Directory 与 SafetyNet 集成
 
@@ -121,7 +121,7 @@ ms.locfileid: "39421526"
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [SafetyNet 客户端支持团队](mailto:dev@predictivesolutions.com)获取这些值。
 
-1. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。
+1. 在“SAML 签名证书” 部分中，单击”复制”按钮来复制“应用联合元数据 URL”，并将其粘贴到记事本 ****。
 
     ![证书下载链接](./media/safetynet-tutorial/tutorial_safetynet_certificate.png)
 
@@ -165,7 +165,7 @@ ms.locfileid: "39421526"
  
 ### <a name="create-a-safetynet-test-user"></a>创建 SafetyNet 测试用户
 
-本部分将在 SafetyNet 中创建名为“Britta Simon”的用户。 请与 [SafetyNet 支持团队](mailto:dev@predictivesolutions.com)协作，将用户添加到 SafetyNet 平台中。 使用单一登录前，必须先创建并激活用户。
+本部分将在 SafetyNet 中创建名为“Britta Simon”的用户。 与  [SafetyNet 支持团队](mailto:dev@predictivesolutions.com)协作，将用户添加到 SafetyNet 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -202,12 +202,12 @@ ms.locfileid: "39421526"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“SafetyNet”磁贴时，用户应自动登录到 SafetyNet 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

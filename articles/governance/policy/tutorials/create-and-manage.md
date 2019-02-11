@@ -4,17 +4,17 @@ description: 使用 Azure Policy 强制执行标准、满足法规遵从性、�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 12/06/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 6ee7a4190248c8c18f747ee579aadc04a136696b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: ecebeef509f1f23e34ade6a79b8ffe39d4cbb0a5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583074"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845616"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>创建和管理策略以强制实施符合性
 
@@ -56,23 +56,23 @@ ms.locfileid: "52583074"
 
    ![查找策略](../media/create-and-manage/select-available-definition.png)
 
-1. “分配名称”中自动填充了所选的策略名称，但可以更改它。 对于本示例，请保留“需要 SQL Server 版本 12.0”。 还可根据需要添加“说明”。 该说明提供有关此策略分配的详细信息。  将根据登录的用户自动填写“分配者”。 此字段是可选字段，因此可输入自定义值。
+1. “分配名称”中自动填充了所选的策略名称，但可以更改它。 对于本示例，请保留“需要 SQL Server 版本 12.0”。 还可根据需要添加“说明”。 该说明提供有关此策略分配的详细信息。  系统会根据登录的用户自动填充“分配者”。 此字段是可选字段，因此可输入自定义值。
 
-1. 不选中“创建托管标识”。 当分配的策略或计划包含具有 [deployIfNotExists](../concepts/effects.md#deployifnotexists) 效果的策略时，必须检查此复选框。 由于未显示本教程所使用的策略，请将其留空。 有关详细信息，请参阅[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)和[修正安全性工作原理](../how-to/remediate-resources.md#how-remediation-security-works)。
+1. 不选中“创建托管标识”。 当分配的策略或计划包含具有 [deployIfNotExists](../concepts/effects.md#deployifnotexists) 效果的策略时，必须勾选此框。 本教程所使用的策略不属于这种情况，因此请将其留空。 有关详细信息，请参阅[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)和[修正安全性工作原理](../how-to/remediate-resources.md#how-remediation-security-works)。
 
 1. 单击“分配”。
 
 ## <a name="implement-a-new-custom-policy"></a>实施新的自定义策略
 
-分配内置的策略定义后，可以使用 Azure Policy 执行其他操作。 接下来创建一个新的自定义策略，确保在环境中创建的 VM 不能处于 G 系列，从而节省成本。 这样，当组织中的用户每次尝试创建 G 系列的 VM 时，请求将被拒绝。
+分配内置的策略定义后，可以使用 Azure Policy 执行其他操作。 接下来创建一个新的自定义策略，确保在环境中创建的 VM 不能处于 G 系列，以便节省成本。 这样，当组织中的用户每次尝试创建 G 系列的 VM 时，请求将被拒绝。
 
 1. 选择“Azure Policy”页左侧“创作”下的“定义”。
 
    ![创作下的定义](../media/create-and-manage/definition-under-authoring.png)
 
-1. 选择页面顶部的“+ 策略定义”。 此时会打开“策略定义”页。
+1. 选择页面顶部的“+ 策略定义”。 此按钮会打开“策略定义”页。
 
-1. 输入以下内容：
+1. 输入以下信息：
 
    - 策略定义保存到的管理组或订阅。 使用“定义位置”旁边的省略号进行选择。
 
@@ -110,7 +110,7 @@ ms.locfileid: "52583074"
     }
     ```
 
-    策略规则中字段属性的值必须是下列其中一项：“名称”、“类型”、“位置”、“标记”或别名。 例如，别名为 `"Microsoft.Compute/VirtualMachines/Size"`。
+    策略规则中的 *field* 属性必须采用以下值之一：Name、Type、Location、Tags 或某个别名。 例如，别名为 `"Microsoft.Compute/VirtualMachines/Size"`。
 
     若要查看其他 Azure Policy 示例，请参阅 [Azure Policy 示例](../samples/index.md)。
 
@@ -158,14 +158,14 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Micros
 
 ## <a name="create-a-policy-definition-with-powershell"></a>使用 PowerShell 创建策略定义
 
-在继续完成 PowerShell 示例之前，请确保已安装最新版本的 Azure PowerShell。 版本 3.6.0 中添加了策略参数。 如果使用较早版本，示例将返回一个错误，指示“找不到参数”。
+在继续完成 PowerShell 示例之前，请确保已安装最新版本的 Azure PowerShell。 版本 3.6.0 中添加了策略参数。 如果使用较早版本，示例会返回一个错误，指示找不到参数。
 
-可使用 `New-AzureRmPolicyDefinition` cmdlet 创建策略定义。
+可使用 `New-AzPolicyDefinition` cmdlet 创建策略定义。
 
 要在文件中创建策略定义，请将路径传递给该文件。 对于外部文件，请使用以下示例：
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition `
+$definition = New-AzPolicyDefinition `
     -Name 'denyCoolTiering' `
     -DisplayName 'Deny cool access tiering for storage' `
     -Policy 'https://raw.githubusercontent.com/Azure/azure-policy-samples/master/samples/Storage/storage-account-access-tier/azurepolicy.rules.json'
@@ -174,7 +174,7 @@ $definition = New-AzureRmPolicyDefinition `
 对于本地文件，请使用以下示例：
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition `
+$definition = New-AzPolicyDefinition `
     -Name 'denyCoolTiering' `
     -Description 'Deny cool access tiering for storage' `
     -Policy 'c:\policies\coolAccessTier.json'
@@ -183,7 +183,7 @@ $definition = New-AzureRmPolicyDefinition `
 要使用内联规则创建策略定义，请使用以下示例：
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition -Name 'denyCoolTiering' -Description 'Deny cool access tiering for storage' -Policy '{
+$definition = New-AzPolicyDefinition -Name 'denyCoolTiering' -Description 'Deny cool access tiering for storage' -Policy '{
     "if": {
         "allOf": [{
                 "field": "type",
@@ -238,7 +238,7 @@ $parameters = '{
     }
 }'
 
-$definition = New-AzureRmPolicyDefinition -Name 'storageLocations' -Description 'Policy to specify locations for storage accounts.' -Policy $policy -Parameter $parameters
+$definition = New-AzPolicyDefinition -Name 'storageLocations' -Description 'Policy to specify locations for storage accounts.' -Policy $policy -Parameter $parameters
 ```
 
 ### <a name="view-policy-definitions-with-powershell"></a>使用 PowerShell 查看策略定义
@@ -246,7 +246,7 @@ $definition = New-AzureRmPolicyDefinition -Name 'storageLocations' -Description 
 若要查看订阅中的所有策略定义，请运行以下命令：
 
 ```azurepowershell-interactive
-Get-AzureRmPolicyDefinition
+Get-AzPolicyDefinition
 ```
 
 此命令可返回所有可用的策略定义，包括内置策略。 返回的每个策略的格式如下：
@@ -322,7 +322,7 @@ az policy definition list
 
 ## <a name="create-and-assign-an-initiative-definition"></a>创建并分配计划定义
 
-通过计划定义，可以组合某些策略定义以实现首要目标。 创建计划定义，确保定义范围内的资源符合构成计划定义的策略定义。 有关计划定义的详细信息，请参阅 [Azure Policy 概述](../overview.md)。
+通过计划定义，可以组合某些策略定义以实现首要目标。 创建计划定义，验证定义范围内的资源是否符合构成计划定义的策略定义。 有关计划定义的详细信息，请参阅 [Azure Policy 概述](../overview.md)。
 
 ### <a name="create-an-initiative-definition"></a>创建计划定义
 
@@ -338,7 +338,7 @@ az policy definition list
 
 1. 输入计划的“名称”和“说明”。
 
-   此示例确保资源符合有关保证安全的策略定义。 计划的名称为“保证安全”，说明为：“创建此计划的目的是处理所有与保护资源相关的策略定义”。
+   此示例验证资源是否符合有关保证安全的策略定义。 将计划命名为“保证安全”，并将说明设置为：**创建此计划的目的是处理所有与保护资源相关的策略定义**。
 
 1. 对于“类别”，请从现有的选项中选择，或者创建新类别。
 
@@ -354,7 +354,7 @@ az policy definition list
 
    ![计划定义](../media/create-and-manage/initiative-definition-2.png)
 
-1. 如果要添加到计划的策略定义有参数，则这些参数会显示在“策略和参数”区域的策略名称下。 _value_ 可以设置为“设置值”（针对此计划的所有分配进行硬编码）或“使用计划参数”（在每个计划分配期间设置）。 如果选择了“设置值”，则下拉到 _Values_ 的右侧即可输入或选择所需值。 如果选择了“使用计划参数”，则会显示新的“计划参数”部分，用于定义将要在计划分配期间设置的参数。 此计划参数的允许值可能会进一步限制能够在计划分配期间设置的内容。
+1. 如果要添加到计划的策略定义有参数，则这些参数会显示在“策略和参数”区域的策略名称下。 _value_ 可以设置为“设置值”（针对此计划的所有分配进行硬编码）或“使用计划参数”（在每个计划分配期间设置）。 如果选择了“设置值”，则下拉到 _Values_ 的右侧即可输入或选择值。 如果选择了“使用计划参数”，则会显示新的“计划参数”部分，用于定义将要在计划分配期间设置的参数。 此计划参数的允许值可能会进一步限制能够在计划分配期间设置的内容。
 
    ![计划定义参数](../media/create-and-manage/initiative-definition-3.png)
 
@@ -371,7 +371,7 @@ az policy definition list
 
    ![分配定义](../media/create-and-manage/assign-definition.png)
 
-   或者，可以右键单击选定的行，或者单击上下文菜单行末尾处的省略号。  然后选择“分配”。
+   也可右键单击选定的行，或者左键单击上下文菜单行末尾处的省略号。  然后选择“分配”。
 
    ![右键单击某个行](../media/create-and-manage/select-right-click.png)
 
@@ -380,10 +380,10 @@ az policy definition list
    - 范围：在其中保存计划的管理组或订阅变为默认。  可以更改范围，以将计划分配到保存位置中的某个订阅或资源组。
    - 排除项：配置上述范围内的任何资源，以防止向其应用计划分配。
    - 计划定义和分配名称：“保证安全”（预先填充了所分配计划的名称）。
-   - 说明：此计划分配旨在实施这组策略定义。
-   - 分配者：根据登录的用户自动填写。 此字段是可选字段，因此可输入自定义值。
+   - 说明:此计划分配旨在实施这组策略定义。
+   - 分配者：根据登录的用户自动填充。 此字段是可选字段，因此可输入自定义值。
 
-1. 不选中“创建托管标识”。 当分配的策略或计划包含具有 [deployIfNotExists](../concepts/effects.md#deployifnotexists) 效果的策略时，必须检查此复选框。 由于未显示本教程所使用的策略，请将其留空。 有关详细信息，请参阅[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)和[修正安全性工作原理](../how-to/remediate-resources.md#how-remediation-security-works)。
+1. 不选中“创建托管标识”。 当分配的策略或计划包含具有 [deployIfNotExists](../concepts/effects.md#deployifnotexists) 效果的策略时，必须勾选此框。 本教程所使用的策略不属于这种情况，因此请将其留空。 有关详细信息，请参阅[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)和[修正安全性工作原理](../how-to/remediate-resources.md#how-remediation-security-works)。
 
 1. 单击“分配”。
 
@@ -391,7 +391,7 @@ az policy definition list
 
 1. 选择“Azure Policy”页左侧的“符合性”。
 
-1. 找到“获取源”计划。 很可能仍处于“未启动”符合性状态。 单击计划，获取有关分配进度的完整详细信息。
+1. 找到“获取源”计划。 可能仍处于“未启动”符合性状态。 单击计划，获取有关分配进度的完整详细信息。
 
    ![符合性 - 未启动](../media/create-and-manage/compliance-status-not-started.png)
 
@@ -403,12 +403,12 @@ az policy definition list
 
 ## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>使用“排除”豁免不符合或遭拒绝的资源
 
-继续以上示例，在通过分配策略定义来要求使用 SQL Server 版本 12.0 以后，通过 12.0 以外的版本创建的 SQL Server 将被拒绝。 本部分介绍如何通过创建单个资源组中的排除项，来解决拒绝尝试创建 SQL Server 的问题。 该排除项可防止对该资源实施策略（或计划）。
+继续以上示例，在通过分配策略定义来要求使用 SQL Server 版本 12.0 以后，通过 12.0 以外的版本创建的 SQL Server 将被拒绝。 本部分介绍如何通过创建单个资源组中的排除项，来解决拒绝创建 SQL Server 的请求的问题。 该排除项可防止对该资源实施策略（或计划）。
 在以下示例中，允许在单个资源组中使用任何 SQL Server 版本。 可对订阅、资源组应用排除，或者将排除范围缩小到单个资源。
 
-可在两个位置查看由于分配的策略或计划而导致受阻的部署：
+可在两个位置查看被分配的策略或计划阻止的部署：
 
-- 在部署部署针对的资源组中：选择页面左侧的“部署”，然后单击失败部署的“部署名称”。 随后将会列出带有“禁止”状态的被拒绝资源。 若要确定拒绝该资源的策略或计划和分配，请在“部署概述”页上单击“失败。单击此处了解详细信息 ->”。 页面右侧会打开一个窗口，其中显示了错误信息。 “错误详细信息”下显示了相关策略对象的 GUID。
+- 在部署针对的资源组中：选择页面左侧的“部署”，然后单击失败部署的“部署名称”。 随后将会列出带有“禁止”状态的被拒绝资源。 若要确定拒绝该资源的策略或计划和分配，请在“部署概述”页上单击“失败。单击此处了解详细信息 ->”。 页面右侧会打开一个窗口，其中显示了错误信息。 “错误详细信息”下显示了相关策略对象的 GUID。
 
   ![策略分配拒绝的部署](../media/create-and-manage/rg-deployment-denied.png)
 
@@ -416,7 +416,7 @@ az policy definition list
 
   ![分配策略的符合性概述](../media/create-and-manage/compliance-overview.png)
 
-在本示例中，Trent Baker（Contoso 的高级虚拟化专家之一）执行了所需的工作。 我们需要为他指定一个例外项，但不希望在任何资源组中使用版本 12.0 以外的 SQL Server。 我们创建了新资源组 **SQLServers_Excluded**，现在要将此资源组指定为此策略分配的例外项。
+在此示例中，Contoso 的资深虚拟化专家之一 Trent Baker 执行了所需的工作。 我们需要为 Trent 指定一个例外项，但不希望在任何资源组中使用版本 12.0 以外的 SQL Server。 我们创建了新资源组 **SQLServers_Excluded**，现在要将此资源组指定为此策略分配的例外项。
 
 ### <a name="update-assignment-with-exclusion"></a>使用排除项更新分配
 
@@ -433,7 +433,7 @@ az policy definition list
 
 1. 单击“选择”，并单击“保存”。
 
-在本部分，我们通过对单个资源组创建排除项，解决了拒绝尝试创建受禁 SQL Server 版本的问题。
+本部分介绍如何通过创建单个资源组中的排除项，来解决请求被拒绝的问题。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -447,7 +447,7 @@ az policy definition list
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已成功完成以下操作：
+在本教程中，你已成功完成以下任务：
 
 > [!div class="checklist"]
 > - 分配策略，对将来创建的资源强制执行条件

@@ -1,23 +1,23 @@
 ---
-title: 快速入门：查找备用翻译，Ruby - 文本翻译 API
+title: 快速入门：使用双语字典、Ruby 查找字词 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用文本翻译 API 和 Ruby 查找字词的备用翻译和示例。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: c9e33fd4be80c8bb95248e8be34f9540d9cd69ea
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 76357db32ad676cc5246e7f9edfae238d33b0696
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649612"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461145"
 ---
-# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-ruby"></a>快速入门：使用文本翻译 REST API (Ruby) 查找备用翻译
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-ruby"></a>快速入门：通过 Ruby 使用双语字典查找字词
 
 在本快速入门中，你将使用文本翻译 API 查找术语的可能备用翻译的详细信息，以及这些备用翻译的使用示例。
 

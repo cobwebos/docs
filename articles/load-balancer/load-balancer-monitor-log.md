@@ -1,5 +1,6 @@
 ---
-title: 监视公共基本负载均衡器的操作、事件和计数器 | Microsoft Docs
+title: 监视公共基本负载均衡器的操作、事件和计数器
+titlesuffix: Azure Load Balancer
 description: 了解如何为公共基本负载均衡器启用警报事件以及探测运行状况日志记录
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/10/2018
 ms.author: kumud
-ms.openlocfilehash: e8d38aaff2e7f20a3935608bcf4d610828d2b84f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 00a5e888961a9712db0cd509a39fb0367895ac3f
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261496"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164120"
 ---
 # <a name="log-analytics-for-public-basic-load-balancer"></a>适用于公共基本负载均衡器的 Log Analytics
 
@@ -25,7 +27,7 @@ ms.locfileid: "51261496"
 
 可以在 Azure 中使用不同类型的日志对基本负载均衡器进行管理和故障排除。 可通过门户访问其中某些日志。 可从 Azure Blob 存储提取所有日志并在 Excel 和 PowerBI 等各种工具中查看。 可从下表了解有关各种类型日志的详细信息。
 
-* **审核日志：** 可以使用 [Azure 审核日志](../monitoring-and-diagnostics/insights-debugging-with-events.md)（旧称为“运行日志”）查看提交到 Azure 订阅的所有操作及其状态。 审核日志默认情况下启用，并且可以在 Azure 门户中查看。
+* **审核日志：** 可以使用 [Azure 审核日志](../monitoring-and-diagnostics/insights-debugging-with-events.md)（以前称为操作日志）查看提交到 Azure 订阅的所有操作及其状态。 审核日志默认情况下启用，并且可以在 Azure 门户中查看。
 * **警报事件日志：** 可以使用此日志查看负载均衡器引发的警报。 每隔五分钟收集一次负载均衡器的状态。 仅在引发了负载均衡器警报事件的情况下，才会向此日志写入相关内容。
 * **运行状况探测日志：** 可以使用此日志查看运行状况探测器检测到的问题，例如后端池中由于运行状况探测失败未从负载均衡器接收请求的实例数。 当运行状况探测状态发生更改时，将写入此日志。
 

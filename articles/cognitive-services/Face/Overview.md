@@ -5,16 +5,16 @@ description: 了解如何使用人脸服务来检测和分析图像中的人脸�
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: overview
 ms.date: 10/29/2018
 ms.author: sbowles
-ms.openlocfilehash: a15b6678b15bf5d1a3078494e12da3a08c57bed3
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 361d80bcca0b0a151e9fcdaab938de0c8ff5f8bc
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633455"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220104"
 ---
 # <a name="what-is-the-azure-face-api"></a>什么是 Azure 人脸 API？
 
@@ -72,10 +72,14 @@ Azure 人脸 API 服务是一项认知服务，其提供的算法可用于检测
 
 以下示例应用程序展示了如何通过多种方式来使用人脸 API。
 
-- [Microsoft Face API: Windows Client Library & Sample](https://github.com/Microsoft/Cognitive-Face-Windows)（Microsoft 人脸 API：Windows 客户端库和示例）- 一种 WPF 应用，演示人脸检测、分析和识别的几种方案。
+- [Microsoft 人脸 API：Windows 客户端库和示例](https://github.com/Microsoft/Cognitive-Face-Windows) - 一种 WPF 应用，演示人脸检测、分析和识别的几种方案。
 - [FamilyNotes UWP 应用](https://github.com/Microsoft/Windows-appsample-familynotes) - 一种通用 Windows 平台 (UWP) 应用，可以在家庭便笺共享方案中使用人脸识别、语音、Cortana、墨迹和相机。
+
+## <a name="data-privacy-and-security"></a>数据隐私和安全性
+
+与所有认知服务一样，使用人脸服务的开发人员应该了解 Microsoft 针对客户数据的政策。 请参阅 Microsoft 信任中心上的[“认知服务”页面](https://www.microsoft.com/en-us/trustcenter/cloudservices/cognitiveservices)来了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 
 按照一个快速入门的说明，通过代码实现简单的人脸检测方案。
-- [快速入门：使用 .NET SDK 和 C# 检测图像中的人脸](quickstarts/csharp.md)（提供其他语言）
+- [快速入门：使用 .NET SDK 和 C# 检测图像中的人脸](quickstarts/csharp.md)（有其他语言可用）

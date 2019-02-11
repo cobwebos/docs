@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
-ms.author: cwatson
-ms.openlocfilehash: 096cf8e7a03f00cd5854ac4ce9569b14fe4b761b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 3e1280abfabadba36303ba7a42f9184507c5a592
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581470"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904499"
 ---
 # <a name="understand-how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>了解如何将 Azure 预留折扣应用于虚拟机
 
@@ -53,6 +53,10 @@ ms.locfileid: "52581470"
 
 正在运行 Windows VM 实例时，将应用预留以涵盖基础结构成本。 对 Windows VM 的 VM 基础结构成本应用预订与对非 Windows VM 的 VM 基础结构成本应用预订相同。 将按 vCPU 对 Windows 软件单独收费。 请参阅 [Windows 软件的预留成本](https://go.microsoft.com/fwlink/?linkid=862756)。 可以利用 [Windows Server 的 Azure 混合权益](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)来涵盖 Windows 许可费用。
 
+## <a name="discount-applies-to-different-sizes-with-instance-size-flexibility"></a>折扣可以按照实例大小灵活性应用于不同大小
+
+在购买预留 VM 实例时，如果选择“优化对象：实例大小灵活性”，则折扣覆盖范围将取决于所选的 VM 大小。 预订可以应用于同一大小系列组中的虚拟机 (VM) 大小。 有关详细信息，请参阅[预订 VM 实例的虚拟机大小灵活性](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
+
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关 Azure 预订的详细信息，请参阅以下文章：
@@ -68,4 +72,4 @@ ms.locfileid: "52581470"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

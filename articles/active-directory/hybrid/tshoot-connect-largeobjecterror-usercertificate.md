@@ -4,7 +4,7 @@ description: 本主题提供针对 userCertificate 属性导致的 LargeObject �
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 146ad5b3-74d9-4a83-b9e8-0973a19828d9
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 0882976df898d36f1d5a5ff06e0de5c747613719
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e0d5e466da8804e89ffecd38dd2db6e37a3cb334
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306066"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663632"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect 同步：处理 userCertificate 属性导致的 LargeObject 错误
 
@@ -33,7 +33,7 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 
 若要获取租户中出现 LargeObject 错误的对象列表，请使用以下方法之一：
 
- * 如果为用于同步的 Azure AD Connect Health 启用了租户，可以参考提供[同步错误报告](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync#object-level-synchronization-error-report-preview)。
+ * 如果为用于同步的 Azure AD Connect Health 启用了租户，可以参考提供[同步错误报告](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync)。
  
  * 每个同步周期结束时发送的有关目录同步错误的通知电子邮件包含出现 LargeObject 错误的对象列表。 
  * 如果单击最新的“导出到 Azure AD”操作，[“同步服务管理器操作”选项卡](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations)将显示出现 LargeObject 错误的对象列表。
@@ -41,7 +41,7 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 ## <a name="mitigation-options"></a>缓解选项
 在解决 LargeObject 错误之前，对同一对象所做的其他属性更改将无法导出到 Azure AD 中。 若要解决该错误，可以考虑以下选项：
 
- * 将 Azure AD Connect 升级到内部版本 1.1.524.0 或更高版本。 在 Azure AD Connect 内部版本 1.1.524.0 中，现成的同步规则已经更新：如果 userCertificate 和 userSMIMECertificate 属性的值超过 15 个，则不会导出这些属性。 有关如何升级 Azure AD Connect 的详细信息，请参阅 [Azure AD Connect：从旧版升级到最新版本](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version)一文。
+ * 将 Azure AD Connect 升级到内部版本 1.1.524.0 或更高版本。 在 Azure AD Connect 内部版本 1.1.524.0 中，现成的同步规则已经更新：如果 userCertificate 和 userSMIMECertificate 属性的值超过 15 个，则不会导出这些属性。 有关如何升级 Azure AD Connect 的详细信息，请参阅 [Azure AD Connect：从旧版本升级到最新版本](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version)一文。
 
  * 在 Azure AD Connect 中实现一个**出站同步规则**，以便导出**包含超过 15 个证书值的对象的 null 值而不是实际值**。 如果不需要将包含超过 15 个证书值的对象的任何证书值导出到 Azure AD，则此选项不适用。 有关如何实现此同步规则的详细信息，请参阅下一部分[实现同步规则以限制 userCertificate 属性的导出](#implementing-sync-rule-to-limit-export-of-usercertificate-attribute)。
 
@@ -116,8 +116,8 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 
     | 属性 | 值 | 详细信息 |
     | --- | --- | --- |
-    | 名称 | *提供名称* | 例如“Out to AAD – Custom override for userCertificate” |
-    | Description | *提供说明* | 例如“If userCertificate attribute has more than 15 values, export NULL” |
+    | Name | *提供名称* | 例如“Out to AAD – Custom override for userCertificate” |
+    | 说明 | *提供说明* | 例如“If userCertificate attribute has more than 15 values, export NULL” |
     | 连接的系统 | *选择 Azure AD 连接器* |
     | 连接的系统对象类型 | **user** | |
     | Metaverse 对象类型 | **person** | |

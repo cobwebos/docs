@@ -3,7 +3,7 @@ title: Azure 安全中心的自适应应用程序控制 | Microsoft Docs
 description: 本文档介绍如何在 Azure 安全中心使用自适应应用程序控制将在 Azure VM 中运行的应用程序加入允许列表。
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: mbaldwin
 editor: ''
 ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
-ms.author: rkarlin
-ms.openlocfilehash: ddf9c5e30a27a829a74ccf0985dce30a68f9bbb7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/21/2019
+ms.author: monhaber
+ms.openlocfilehash: b7a27dea9f521f14bfb4278eada636cb7e30c581
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256640"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427128"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Azure 安全中心的自适应应用程序控制
 了解如何通过本演练在 Azure 安全中心配置应用程序控制。
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>安全中心的自适应应用程序控制是什么？
-自适应应用程序控制是 Azure 安全中心提供的智能的自动化端到端应用程序允许列表解决方案。 可以通过自适应应用程序控制来控制哪些应用程序能够在 Azure 中的 VM 上运行，这样有很多好处，能够增强 VM 对恶意软件的抵抗力。 安全中心使用机器学习分析在 VM 上运行的应用程序，有助于运用此智能服务应用特定的允许列表规则。 此功能大大简化配置和维护应用程序允许列表策略的过程，让你可以：
+自适应应用程序控制是 Azure 安全中心提供的智能的自动化端到端应用程序允许列表解决方案。 可以通过它来控制哪些应用程序能够在 Azure 中的 VM 上运行，这样有很多好处，能够增强 VM 对恶意软件的抵抗力。 安全中心使用机器学习分析在 VM 上运行的应用程序，有助于运用此智能服务应用特定的允许列表规则。 此功能大大简化配置和维护应用程序允许列表策略的过程，让你可以：
 
 - 阻止运行恶意应用程序的尝试（包括在其他情况下可能会被反恶意软件解决方案遗漏的尝试）或者向用户发出此方面的警报。
 - 遵循组织要求只能使用许可软件的安全策略。
@@ -88,7 +88,6 @@ ms.locfileid: "51256640"
 5. 选择完以后，请选择“创建”。 <br>
 选择“创建”后，Azure 安全中心会自动基于 Windows 服务器 (AppLocker) 上可用的内置应用程序允许列表解决方案创建相应的规则。
 
-
 > [!NOTE]
 > - 安全中心需要至少两周的数据才能创建基线并根据 VM 组填充唯一建议。 安全中心标准层的新客户会遇到一种行为，即 VM 组首先显示在“无建议”选项卡下。
 > - 安全中心内的自适应应用程序控制不支持已通过 GPO 或本地安全策略为其启用了 AppLocker 策略的 VM。
@@ -118,7 +117,8 @@ ms.locfileid: "51256640"
   - **强制**：在此模式下，应用程序控制解决方案强制实施规则，确保阻止不允许运行的应用程序。
 
    > [!NOTE]
-   > 如前所述，默认情况下，新的应用程序控制策略始终在“审核”模式下配置。 
+   > -  在进一步通知之前，禁用“强制”保护模式。
+   > - 如前所述，默认情况下，新的应用程序控制策略始终在“审核”模式下配置。 
    >
 
 4. 可以在“策略扩展”下添加需要允许的任何应用程序路径。 添加这些路径后，除了已有的规则之外，安全中心还会更新所选 VMS 组中 VM 上的应用程序允许列表策略，并为这些应用程序创建适当的规则。
@@ -130,7 +130,7 @@ ms.locfileid: "51256640"
 6. 在“发布者允许列表规则”、“路径允许列表规则”和“哈希允许列表规则”下，可以根据规则集合类型，查看当前在组内的 VM 上配置了哪些应用程序允许列表规则。 对于每条规则，可以查看：
 
   - **规则**：AppLocker 根据此参数检查应用程序是否能运行。
-  - **文件类型**：特定规则涵盖的文件类型。 可以是以下任意类型：EXE、脚本、MSI 或这些类型的任意排列。
+  - **文件类型**：特定规则涵盖的文件类型。 可以是以下任意一种类型：EXE、脚本、MSI 或这些文件类型的任意排列。
   - **用户**：允许运行应用程序允许列表规则所涵盖的应用程序的用户的名称或数量。
 
    ![允许列表规则](./media/security-center-adaptive-application/security-center-adaptive-application-fig9.png)

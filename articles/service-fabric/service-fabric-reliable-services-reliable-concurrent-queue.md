@@ -3,7 +3,7 @@ title: Azure Service Fabric 中的可靠并发队列
 description: 可靠并发队列是一种高吞吐量队列，适用于并行排队和取消排队。
 services: service-fabric
 documentationcenter: .net
-author: sangarg
+author: tylermsft
 manager: timlt
 editor: raja,tyadam,masnider,vturecek
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
-ms.author: sangarg
-ms.openlocfilehash: e04123f7870921a2979564d0f6c68424d4d7711c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: twhitney
+ms.openlocfilehash: 61b53a23fdbb08b226878d9b702ec6bb2879f8bc
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206571"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185029"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric 中的可靠并发队列简介
 可靠并发队列是一种异步的、事务性的已复制队列，其特点是排队和取消排队操作的高并发性。 它旨在降低[可靠队列](https://msdn.microsoft.com/library/azure/dn971527.aspx)提供的严格的 FIFO 排序要求，代之以“尽力排序”要求，从而提高吞吐量并降低延迟。
@@ -55,7 +55,7 @@ ms.locfileid: "34206571"
 ### <a name="enqueueasync"></a>EnqueueAsync
 下面是使用 EnqueueAsync 的一些代码片段及其预期输出。
 
-- 案例 1：单个排队任务
+- *案例 1：单个排队任务*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -74,7 +74,7 @@ using (var txn = this.StateManager.CreateTransaction())
 > 20, 10
 
 
-- 案例 2：并行排队任务
+- *案例 2：并行排队任务*
 
 ```
 // Parallel Task 1
@@ -103,7 +103,7 @@ using (var txn = this.StateManager.CreateTransaction())
 下面是使用 TryDequeueAsync 的一些代码片段及预期输出。 假定已在队列中填充以下项：
 > 10, 20, 30, 40, 50, 60
 
-- 案例 1：单个取消排队任务
+- *案例 1：单个取消排队任务*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -118,7 +118,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 假定任务已成功完成，且没有并发事务在修改队列。 由于无法推断队列中项的顺序，可能会采用任意顺序取消任意三个项的排队。 队列会尝试让项保持原有的（排队）顺序，但在出现并发操作或错误的情况下，也可能会强制其重新排序。  
 
-- 案例 2：并行取消排队任务
+- *案例 2：并行取消排队任务*
 
 ```
 // Parallel Task 1
@@ -146,7 +146,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 同一项不会出现在两个列表中。 因此，如果 dequeue1 包含 10、30，则 dequeue2 就会包含 20、40。
 
-- 案例 3：通过中止事务排定取消排队任务顺序
+- *案例 3：通过中止事务排定取消排队任务顺序*
 
 中止正在取消排队的事务，项就会重新回到队列头。 项回到队列头的顺序是不确定的。 请看以下代码：
 

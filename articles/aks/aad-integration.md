@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 0dc0421baf1e5cb19be925072b5fffb989e23a3b
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 78f00b00465b6d834f30411485a874d6d2116ea4
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979244"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081239"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>将 Azure Active Directory 与 Azure Kubernetes Service 集成
 
@@ -22,7 +22,7 @@ ms.locfileid: "50979244"
 
 以下限制适用：
 
-- 当前不能更新现有不支持 RBAC 的 AKS 群集以供 RBAC 使用。
+- 只有在创建新的启用 RBAC 的群集时，才能启用 Azure AD。 不能在现有 AKS 群集上启用 Azure AD。
 - 不支持 Azure AD 中的来宾用户，例如，从其他目录使用联合登录。
 
 ## <a name="authentication-details"></a>身份验证详细信息
@@ -149,7 +149,7 @@ az aks create \
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
 ```
 
-接下来，使用以下清单为 Azure AD 帐户创建 ClusterRoleBinding。 将用户名更新为 Azure AD 租户中的某个用户名。 此示例向该帐户授予对群集所有命名空间的完全访问权限：
+接下来，使用以下清单为 Azure AD 帐户创建 ClusterRoleBinding。 此示例向该帐户授予对群集所有命名空间的完全访问权限。 创建一个文件（例如 *rbac-aad-user.yaml*），然后粘贴以下内容。 将用户名更新为 Azure AD 租户中的某个用户名：
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -166,7 +166,13 @@ subjects:
   name: "user@contoso.com"
 ```
 
-此外，可为 Azure AD 组的所有成员创建角色绑定。 使用组对象 ID 指定 Azure AD 组，如以下示例所示：
+使用 [kubectl apply][kubectl-apply] 命令应用绑定，如以下示例所示：
+
+```console
+kubectl apply -f rbac-aad-user.yaml
+```
+
+此外，可为 Azure AD 组的所有成员创建角色绑定。 使用组对象 ID 指定 Azure AD 组，如以下示例所示。 创建一个文件（例如 *rbac-aad-group.yaml*），然后粘贴以下内容。 将组对象 ID 更新为 Azure AD 租户中的某个组对象 ID：
 
  ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -181,6 +187,12 @@ subjects:
 - apiGroup: rbac.authorization.k8s.io
    kind: Group
    name: "894656e1-39f8-4bfe-b16a-510f61af6f41"
+```
+
+使用 [kubectl apply][kubectl-apply] 命令应用绑定，如以下示例所示：
+
+```console
+kubectl apply -f rbac-aad-group.yaml
 ```
 
 有关使用 RBAC 保护 Kubernetes 群集的详细信息，请参阅[使用 RBAC 授权][rbac-authorization]。
@@ -221,6 +233,7 @@ error: You must be logged in to the server (Unauthorized)
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
 [rbac-authorization]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 
 <!-- LINKS - internal -->
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create

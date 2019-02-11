@@ -4,19 +4,19 @@ description: 了解在联机迁移到 Azure Database for MySQL 时存在的已�
 services: database-migration
 author: HJToland3
 ms.author: scphang
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 6e82c10d8e9109279045095c1b856520245a5a6f
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ebe2af858aafaff62a7e3b629c0a8c84bbf49584
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884504"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721642"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>联机迁移到 Azure DB for MySQL 时存在的已知问题/迁移限制
 
@@ -66,7 +66,7 @@ ms.locfileid: "48884504"
 
 - **限制**：如果表中没有主键，连续同步将会失败。
  
-    **解决方法**：暂时为表设置一个主键，使迁移能够继续。 数据迁移完成后，可以删除该主键。
+    **解决方法**：暂时为表设置一个主键，以便迁移能够继续。 数据迁移完成后，可以删除该主键。
 
 ## <a name="lob-limitations"></a>LOB 限制
 大型对象 (LOB) 列可能会增大。 MySQL、中等长度文本、长文本、Blob、中等 Blob、长 Blob 等都属于 LOB 数据类型。

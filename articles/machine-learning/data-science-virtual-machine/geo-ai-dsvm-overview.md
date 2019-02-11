@@ -1,26 +1,28 @@
 ---
-title: 地理人工智能数据科学虚拟机简介 - Azure | Microsoft Docs
-description: 介绍地理 AI 数据科学 VM 和组件。
+title: 概述地理人工智能 Data Science Virtual Machine
+titleSuffix: Azure
+description: 地理人工智能 Data Science Virtual Machine 提供用于处理地理数据的 ArcGIS Pro。 它还提供 Python、R 和数据科学的工具包，用于处理机器学习和人工智能。
 keywords: 深度学习, AI, 数据科学工具, 数据科学虚拟机, 地理空间分析
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 2fb49212b8480fa550558e14e890cbf7395406da
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2aa5522b8200f87df633759ee136f744cd1b8099
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407446"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471226"
 ---
 # <a name="introduction-to-the-geo-artificial-intelligence-data-science-virtual-machine"></a>地理人工智能数据科学虚拟机简介
 

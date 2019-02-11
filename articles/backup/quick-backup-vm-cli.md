@@ -2,21 +2,21 @@
 title: Azure 快速入门 - 使用 Azure CLI 备份 VM
 description: 了解如何使用 Azure CLI 备份虚拟机
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 8/3/2018
-ms.author: markgal
+ms.date: 01/31/2019
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e378c385d3ea98fd43937558d00d3d13accb636b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 961f231f9d8ab339d06e9521830c58d175c4a9e3
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984953"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492906"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>使用 CLI 在 Azure 中备份虚拟机
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 可以通过定期创建备份来保护数据。 Azure 备份可创建恢复点，这些恢复点可存储在异地冗余的恢复保管库中。 本文详细介绍如何使用 Azure CLI 在 Azure 中备份虚拟机 (VM)。 也可以使用 [Azure PowerShell](quick-backup-vm-powershell.md) 或 [Azure 门户](quick-backup-vm-portal.md)执行这些步骤。
@@ -47,7 +47,7 @@ az backup vault create --resource-group myResourceGroup \
 
 
 ## <a name="enable-backup-for-an-azure-vm"></a>为 Azure VM 启用备份
-创建一个保护策略，用于定义：备份作业的运行时间以及恢复点的存储期限。 默认保护策略每天运行备份作业，并将恢复点保留 30 天。 可以使用这些默认策略值来快速保护 VM。 若要为 VM 启用备份保护，请使用 [az backup protection enable-for-vm](https://docs.microsoft.com/cli/azure/backup/protection#az-backup-protection-enable-for-vm)。 指定要保护的资源组和 VM，再指定要使用的策略：
+创建一个保护策略，用于定义：备份作业的运行时间以及恢复点的存储期限。 默认保护策略每天运行一个备份作业，并将恢复点保留 30 天。 可以使用这些默认策略值来快速保护 VM。 若要为 VM 启用备份保护，请使用 [az backup protection enable-for-vm](https://docs.microsoft.com/cli/azure/backup/protection#az-backup-protection-enable-for-vm)。 指定要保护的资源组和 VM，再指定要使用的策略：
 
 ```azurecli-interactive 
 az backup protection enable-for-vm \
@@ -64,12 +64,12 @@ az backup protection enable-for-vm \
 az backup protection enable-for-vm \
     --resource-group myResourceGroup \
     --vault-name myRecoveryServicesVault \
-    --vm $(az vm show -g VMResourceGroup -n MyVm --query id) \
+    --vm $(az vm show -g VMResourceGroup -n MyVm --query id | tr -d '"') \
     --policy-name DefaultPolicy
 ```
 
 ## <a name="start-a-backup-job"></a>启动备份作业
-若要立即开始备份而不是等待默认策略根据计划的时间运行作业，请使用 [az backup protection backup-now](https://docs.microsoft.com/cli/azure/backup/protection#az-backup-protection-backup-now)。 这第一个备份作业会创建完整恢复点。 此初始备份后的每个备份作业会创建增量恢复点。 增量恢复点有利于存储并具有时效性，因为它们仅传输自上次备份以来所做的更改。
+若要立即开始备份而不是等待默认策略根据计划的时间运行作业，请使用 [az backup protection backup-now](https://docs.microsoft.com/cli/azure/backup/protection#az-backup-protection-backup-now)。 第一个备份作业会创建一个完整恢复点。 此初始备份后的每个备份作业会创建增量恢复点。 增量恢复点有利于存储并具有时效性，因为它们仅传输自上次备份以来所做的更改。
 
 以下参数用于备份 VM：
 

@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 08/17/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 7af18272c335c835a2aa406fc635f3e7afda2a3a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: de78e70b30c4e0b03f87ad6b1bfe00356f897f43
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003446"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698212"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>生成 Node.js 应用程序并将其部署到 Azure 云服务
 
@@ -60,7 +60,7 @@ ms.locfileid: "39003446"
 
     该 cmdlet 将创建以下文件：
 
-   * **ServiceConfiguration.Cloud.cscfg**、**ServiceConfiguration.Local.cscfg** 和 **ServiceDefinition.csdef**：发布应用程序所需的特定于 Azure 的文件。 有关详细信息，请参阅 [创建 Azure 托管服务概述]。
+   * **ServiceConfiguration.Cloud.cscfg**、**ServiceConfiguration.Local.cscfg** 和 **ServiceDefinition.csdef**：发布应用程序时必需的 Azure 特定文件。 有关详细信息，请参阅 [创建 Azure 托管服务概述]。
    * **deploymentSettings.json**：存储供 Azure PowerShell 部署 cmdlet 使用的本地设置。
 4. 输入以下命令添加新的 Web 角色：
 
@@ -164,11 +164,11 @@ Node.js 应用在 **server.js** 文件中定义，该文件位于 Web 角色（�
 
 <!-- URL List -->
 
-[Azure 网站、云服务和虚拟机的比较]: ../app-service/choose-web-site-cloud-service-vm.md
+[Azure 网站、云服务和虚拟机的比较]: ../app-service/overview-compare.md
 [使用轻型 Web 应用]: ../app-service/app-service-web-get-started-nodejs.md
 [Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [用于 .NET 2.7 的 Azure SDK]: http://www.microsoft.com/en-us/download/details.aspx?id=48178
-[连接 PowerShell]: /powershell/azureps-cmdlets-docs#step-3-connect
+[连接 PowerShell]: /powershell/azureps-cmdlets-docs
 [nodejs.org]: http://nodejs.org/
 [创建 Azure 托管服务概述]: https://azure.microsoft.com/documentation/services/cloud-services/
 [Node.js 开发人员中心]: https://azure.microsoft.com/develop/nodejs/

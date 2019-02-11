@@ -5,25 +5,25 @@ services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: a3c5c26f43fddf5d23df3bee0b0511e865b7e71b
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 2c889368afe601bc7188f3b0989e7799c88131b4
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705916"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081953"
 ---
-# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>快速入门：使用 Azure Active Directory 条件访问检测到会话风险后阻止访问  
+# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>快速入门：使用 Azure Active Directory 条件访问检测到会话风险时阻止访问  
 
 若要使环境保持受保护状态，可能需要阻止可疑用户执行登录活动。 [Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) 会分析每个登录活动，并计算不是由用户帐户合法所有者执行的登录尝试的可能性。 这种可能性（低、中、高）以称作[登录风险级别](conditions.md#sign-in-risk)的计算值来表示。 通过设置登录风险条件，可以配置一个条件访问策略对特定的登录风险级别做出响应。 
 
@@ -87,17 +87,17 @@ ms.locfileid: "51705916"
 
     ![Azure Active Directory](./media/app-sign-in-risk/02.png)
 
-3. 在“Azure Active Directory”页的“管理”部分，单击“条件性访问”。
+3. 在“Azure Active Directory”页的“安全性”部分中，单击“条件性访问”。
 
     ![条件性访问](./media/app-sign-in-risk/03.png)
  
 4. 在“条件性访问”页顶部的工具栏中，单击“添加”。
 
-    ![名称](./media/app-sign-in-risk/108.png)
+    ![Name](./media/app-sign-in-risk/108.png)
 
 5. 在“新建”页上的“名称”文本框中，键入“出现中等风险级别时阻止访问”。
 
-    ![名称](./media/app-sign-in-risk/104.png)
+    ![Name](./media/app-sign-in-risk/104.png)
 
 6. 在“分配”部分中，单击“用户和组”。
 
@@ -107,7 +107,7 @@ ms.locfileid: "51705916"
 
     ![条件性访问](./media/app-sign-in-risk/107.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“选择用户和组”，然后选择“用户和组”。
+    a. 单击“选择用户和组”，然后选择“用户和组”。
 
     b. 单击“选择”。
 
@@ -123,7 +123,7 @@ ms.locfileid: "51705916"
 
     ![条件性访问](./media/app-sign-in-risk/109.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“所有云应用”。
+    a. 单击“所有云应用”。
 
     b. 单击“完成”。
 
@@ -135,7 +135,7 @@ ms.locfileid: "51705916"
 
     ![登录风险级别](./media/app-sign-in-risk/21.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“登录风险”。
+    a. 单击“登录风险”。
  
     b. 对于“配置”，单击“是”。
 
@@ -155,7 +155,7 @@ ms.locfileid: "51705916"
 
     ![条件性访问](./media/app-sign-in-risk/105.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“阻止访问”。
+    a. 选择“阻止访问”。
 
     b. 单击“选择”。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a56d595ca88541779f5213c6b0ec88fc87913b6a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4d9a6b8bf2b6a9a50ee315d5150c15a18f37462d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239043"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696041"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公有云中的隔离
 ##  <a name="introduction"></a>介绍
@@ -121,7 +121,7 @@ Microsoft 采取强硬措施保护数据免受不适当的访问或未经授权�
 
 如果用户删除了任何数据，Microsoft Azure 也将删除该数据，包括所有缓存或备份副本。 对于范围内服务，该删除操作会在保留期结束后 90 天内进行。 （[联机服务条款](https://aka.ms/Online-Services-Terms)的数据处理条款部分对范围内服务进行了定义。）
 
-如果用于存储的磁盘驱动器发生硬件故障，在 Microsoft 将其送回给制造商进行更换或修复前，将安全[擦除或销毁](https://microsoft.com/en-us/trustcenter/privacy/you-own-your-data)该磁盘驱动器上的数据。 驱动器上的数据会被覆盖，以确保无法通过任何方式恢复数据。
+如果用于存储的磁盘驱动器发生硬件故障，在 Microsoft 将其送回给制造商进行更换或修复前，将安全[擦除或销毁](https://microsoft.com/trustcenter/privacy/you-own-your-data)该磁盘驱动器上的数据。 驱动器上的数据会被覆盖，以确保无法通过任何方式恢复数据。
 
 ## <a name="compute-isolation"></a>计算隔离
 Microsoft Azure 提供各种基于云的计算服务，包括大量计算实例和服务，它们可根据应用程序或企业的需求自动扩展和缩减。 这些计算实例和服务提供多个级别的隔离来保护数据，且不会降低客户所需配置的灵活性。
@@ -149,9 +149,7 @@ Azure 的计算平台以计算机虚拟化为基础，这意味着所有客户�
 
 每个节点还有一个特殊的根 VM，用于运行主机 OS。 关键边界由虚拟机监控程序和根 OS 管理，用于将根 VM 与来宾 VM 隔离，以及将各来宾 VM 彼此隔离。 虚拟机监控程序/根 OS 配对充分利用 Microsoft 在操作系统安全性方面的数十年经验以及来自 Hyper-V 的最新信息，实现了各来宾 VM 之间的强大隔离。
 
-Azure 平台使用虚拟化环境。 用户实例以单独的虚拟机方式运行，这些虚拟机无法访问物理主机服务器。这样的隔离是通过物理处理器（0 环/3 环）特权级别强制实施的。
-
-0 环表示最高权限，3 环表示最低权限。 来宾 OS 在权限较低的 1 环运行，应用程序在权限最低的 3 环运行。 对物理资源进行这样的虚拟化会在来宾 OS 和虚拟机监控程序之间形成清晰的隔离，从而在这二者之间实现进一步的安全隔离。
+Azure 平台使用虚拟化环境。 用户实例作为无法访问物理主机服务器的独立虚拟机运行。
 
 Azure 的虚拟机监控程序相当于微内核，可将所有硬件访问请求从来宾虚拟机传递到主机，以便使用名为 VMBus 的共享内存界面进行处理。 这样可以防止用户获取对系统的原始读取/写入/执行访问权限，减轻共享系统资源的风险。
 
@@ -187,9 +185,9 @@ Azure 虚拟机监控程序、根 OS/FA 和客户 VM/GA 的集合包含一个计
 
 进行编程的规则有两类：
 
--   **计算机配置或基础结构规则**：默认情况下，将阻止所有通信。 在例外情况下，可以允许虚拟机发送和接收 DHCP 和 DNS 流量。 虚拟机还可以将流量发送到“公共”Internet 以及同一 Azure 虚拟网络和 OS 激活服务器内的其他虚拟机。 虚拟机的传出目标允许列表不包括 Azure 路由器子网、Azure 管理以及其他 Microsoft 属性。
+-   **计算机配置或基础结构规则：** 默认情况下，将阻止所有通信。 在例外情况下，可以允许虚拟机发送和接收 DHCP 和 DNS 流量。 虚拟机还可以将流量发送到“公共”Internet 以及同一 Azure 虚拟网络和 OS 激活服务器内的其他虚拟机。 虚拟机的传出目标允许列表不包括 Azure 路由器子网、Azure 管理以及其他 Microsoft 属性。
 
--   **角色配置文件**：根据租户的服务模型定义入站访问控制列表 (ACL)。
+-   **角色配置文件：** 根据租户的服务模型定义入站访问控制列表 (ACL)。
 
 ### <a name="vlan-isolation"></a>VLAN 隔离
 每个群集中有三个 VLAN：
@@ -240,7 +238,7 @@ Azure 提供了以下加密类型来保护数据：
 -   [客户端加密](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage)，在将数据传输到存储之前加密数据，以及从存储传出数据后解密数据。
 
 #### <a name="encryption-at-rest"></a>静态加密
-对许多组织而言，[静态数据加密](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)是实现数据隐私性、合规性和数据所有权的必要措施。 有三项 Azure 功能可提供“静态”数据加密：
+对许多组织而言，[静态数据加密](https://docs.microsoft.com/azure/security/azure-isolation)是实现数据隐私性、合规性和数据所有权的必要措施。 有三项 Azure 功能可提供“静态”数据加密：
 
 -   [存储服务加密](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest)可以请求存储服务在将数据写入 Azure 存储时自动加密数据。
 
@@ -256,7 +254,7 @@ Azure 提供了以下加密类型来保护数据：
 在 Microsoft Azure 中启用 IaaS VM 时，该解决方案支持以下 IaaS VM 方案：
 -   与 Azure Key Vault 集成
 
--   标准层 VM：A、D、DS、G 和 GS 等系列 IaaS VM
+-   标准层 VM：A、D、DS、G、GS 等系列 IaaS VM
 
 -   在 Windows 和 Linux IaaS VM 上启用加密
 
@@ -295,7 +293,7 @@ SQL 数据库是 Microsoft 云中的关系型数据库服务，它基于行业�
 
 [Microsoft SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-get-started) 数据库是一项基于云的关系型数据库服务，是根据 SQL Server 技术构建的。 它提供由 Microsoft 在云端托管的多租户数据库服务，该服务高度可用并且可缩放。
 
-在应用程序方面，SQL Azure 提供以下层次结构：每个级别都包含以下一个或多个级别。
+从应用程序的角度来看，SQL Azure 提供以下层次结构：每个级别都包含以下一对多的级别。
 
 ![SQL Azure 应用程序模型](./media/azure-isolation/azure-isolation-fig10.png)
 
@@ -344,9 +342,9 @@ Azure 部署具有多层网络隔离。 下图显示了 Azure 提供给客户的
 
 ![网络隔离](./media/azure-isolation/azure-isolation-fig13.png)
 
-**流量隔离**：[虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)是 Azure 平台上的流量隔离边界。 一个虚拟网络中的虚拟机 (VM) 无法与不同虚拟网络中的 VM 直接通信，即使这两个虚拟网络是由同一个客户所创建。 隔离是一个非常关键的属性，可确保客户 VM 与通信在虚拟网络中保持私密性。
+**流量隔离：**[虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)是 Azure 平台上的流量隔离边界。 一个虚拟网络中的虚拟机 (VM) 无法与不同虚拟网络中的 VM 直接通信，即使这两个虚拟网络是由同一个客户所创建。 隔离是一个非常关键的属性，可确保客户 VM 与通信在虚拟网络中保持私密性。
 
-[子网](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#subnets)基于 IP 范围在虚拟网络中提供额外的隔离层。 使用虚拟网络中的 IP 地址，可以将虚拟网络划分成多个子网，以方便进行组织和提高安全性。 部署到 VNet 的子网（不管是相同的子网还是不同的子网）中的 VM 和 PaaS 角色实例可以互相通信，不需任何额外的配置。 还可以配置[网络安全组 (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#network-security-groups-nsg)，以便根据 NSG 的访问控制列表 (ACL) 中配置的规则允许或拒绝到某个 VM 实例的网络流量。 NSG 可以与子网或该子网中的各个 VM 实例相关联。 当 NSG 与某个子网相关联时，ACL 规则将应用到该子网中的所有 VM 实例。
+[子网](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)基于 IP 范围在虚拟网络中提供额外的隔离层。 使用虚拟网络中的 IP 地址，可以将虚拟网络划分成多个子网，以方便进行组织和提高安全性。 部署到 VNet 的子网（不管是相同的子网还是不同的子网）中的 VM 和 PaaS 角色实例可以互相通信，不需任何额外的配置。 还可以配置[网络安全组 (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)，以便根据 NSG 的访问控制列表 (ACL) 中配置的规则允许或拒绝到某个 VM 实例的网络流量。 NSG 可以与子网或该子网中的各个 VM 实例相关联。 当 NSG 与某个子网相关联时，ACL 规则将应用到该子网中的所有 VM 实例。
 
 ## <a name="next-steps"></a>后续步骤
 

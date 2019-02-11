@@ -5,15 +5,15 @@ services: digital-twins
 author: alinamstanciu
 ms.service: digital-twins
 ms.topic: include
-ms.date: 11/13/2018
+ms.date: 12/17/2018
 ms.author: alinast
 ms.custom: include file
-ms.openlocfilehash: 216e2db82d5a07bd8e4cae8b9f357ac7dcee330a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: e8027e16cc1f58fbadbb35ae241ab29010005586
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626384"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584726"
 ---
 1. 在 [Azure 门户](https://portal.azure.com)中，从左窗格打开 **Azure Active Directory**，然后打开“属性”窗格。 将“目录 ID”复制到一个临时文件。 将在下一部分使用此值来配置示例应用程序。
 

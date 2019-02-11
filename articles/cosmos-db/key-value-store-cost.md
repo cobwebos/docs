@@ -1,26 +1,22 @@
 ---
-title: 用作键值存储的 Azure Cosmos DB – 费用概述 | Microsoft Docs
-description: 了解使用 Azure Cosmos DB 作为键值存储带来的经济性。
-keywords: 键值存储
-services: cosmos-db
+title: 作为键/值存储的 Azure Cosmos DB 的请求单位费用
+description: 了解 Azure Cosmos DB 在用作键/值存储时执行简单写入和读取操作的请求单位费用。
 author: SnehaGunda
-manager: kfile
-tags: ''
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/15/2017
+ms.date: 12/06/2018
 ms.author: sngun
-ms.openlocfilehash: 09abc89c8e4cc8b0ee79200739722fc62d1ece4b
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec18
+ms.openlocfilehash: e81dec7d7556819e60a65a44106426c226c6223d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163194"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035723"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>用作键值存储的 Azure Cosmos DB – 费用概述
 
-Azure Cosmos DB 是全球分布式多模型数据库服务，用于轻松构建高度可用的大规模应用程序。 默认情况下，Azure Cosmos DB 将有效地为它引入的所有数据编制索引。 因此，可针对任何类型的数据执行快速一致的 [SQL](how-to-sql-query.md)（和 [JavaScript](programming.md)）查询。 
+Azure Cosmos DB 是全球分布式多模型数据库服务，用于轻松构建高度可用的大规模应用程序。 默认情况下，Azure Cosmos DB 将有效地为它引入的所有数据编制索引。 因此，可针对任何类型的数据执行快速一致的 [SQL](how-to-sql-query.md)（和 [JavaScript](stored-procedures-triggers-udfs.md)）查询。 
 
 本文介绍使用 Azure Cosmos DB 作为键/值存储执行简单写入和读取操作时产生的费用。 写入操作包括文档的插入、替换、删除和更新插入。 除了针对所有采用宽松一致性的单区域帐户和多区域帐户提供有保证的 99.99% 可用性 SLA，针对所有多区域数据库帐户提供 99.999% 读取可用性以外，Azure Cosmos DB 还保证读取延迟小于 10 毫秒，（索引）写入延迟小于 15 毫秒，SLA 高达 99%。 
 

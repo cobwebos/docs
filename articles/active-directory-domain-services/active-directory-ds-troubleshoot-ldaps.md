@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 域服务：安全 LDAP 配置疑难解答 | Microsoft Docs
+title: Azure Active Directory 域服务：安全 LDAP 配置故障排除 | Microsoft Docs
 description: Azure AD 域服务的安全 LDAP 疑难解答
 services: active-directory-ds
 documentationcenter: ''
@@ -8,19 +8,19 @@ manager: ''
 editor: ''
 ms.assetid: 81208c0b-8d41-4f65-be15-42119b1b5957
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: e3a31749407f9ec0494e8452b602ed9966c5ab83
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: be07579d8273ab19101aa6c475ae5d23375517ca
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504203"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177179"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD 域服务 - 安全 LDAP 配置疑难解答
 
@@ -54,7 +54,7 @@ ms.locfileid: "39504203"
 > 端口 636 不是 Azure AD 域服务要平稳地运行所需的唯一规则。 若要了解详细信息，请访问[网络准则](active-directory-ds-networking.md)或[解决 NSG 配置问题](active-directory-ds-troubleshoot-nsg.md)文章。
 >
 
-## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502：安全 LDAP 证书到期
+## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502：安全 LDAP 证书即将到期
 
 **警报消息：**
 

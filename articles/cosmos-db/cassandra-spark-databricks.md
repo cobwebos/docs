@@ -1,20 +1,19 @@
 ---
 title: 从 Azure Databricks 访问 Azure Cosmos DB Cassandra API
 description: 本文介绍如何从 Azure Databricks 使用 Azure Cosmos DB Cassandra API。
-services: cosmos-db
-author: anagha-microsoft
+author: kanshiG
+ms.author: govindk
+ms.reviewer: sngun
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
-ms.devlang: spark-scala
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: ankhanol
-ms.openlocfilehash: e1d8f41c55ffd453507804b005d10620665b512c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 37a06b19285c1196b5d87830ea176d4bd0d4eade
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222010"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033649"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>从 Azure Databricks 访问 Azure Cosmos DB Cassandra API 数据
 
@@ -54,7 +53,7 @@ ms.locfileid: "47222010"
 
 ## <a name="sample-notebooks"></a>示例笔记本
 
-可在 Github 存储库下载一系列 Azure Databricks [示例笔记本](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/notebooks/scala)。 这些示例包括如何从 Spark 连接到 Azure Cosmos DB Cassandra API 并对数据执行不同的 CRUD 操作。 此外可以[将所有笔记本导入](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/dbc)到 Databricks 群集工作区并运行。 
+可在 GitHub 存储库下载一系列 Azure Databricks [示例笔记本](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/notebooks/scala)。 这些示例包括如何从 Spark 连接到 Azure Cosmos DB Cassandra API 并对数据执行不同的 CRUD 操作。 此外可以[将所有笔记本导入](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/dbc)到 Databricks 群集工作区并运行。 
 
 ## <a name="accessing-azure-cosmos-db-cassandra-api-from-spark-scala-programs"></a>从 Spark Scala 程序访问 Azure Cosmos DB Cassandra API
 

@@ -6,20 +6,20 @@ services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: a4c74ff70a4426abf97562bf997479a91afbf17a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 8c89a43910a5e98286a82de8626870d3aec55b94
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124042"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214205"
 ---
 # <a name="example-how-to-detect-faces-in-image"></a>示例：如何检测图像中的人脸
 
-本指南展示了如何通过提取性别、年龄或姿态等人脸属性来检测图像中的人脸。 示例是使用人脸 API 客户端库以 C# 编写的。 
+本指南展示了如何通过提取性别、年龄或姿态等人脸属性来检测图像中的人脸。 示例在 C# 中使用人脸 API 客户端库编写。 
 
 ## <a name="concepts"></a>概念
 
@@ -49,12 +49,12 @@ https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&retu
 &subscription-key=<Subscription Key>
 ```
 
-也可在 HTTP 请求头中指定订阅密钥：**ocp-apim-subscription-key：&lt;订阅密钥&gt;**。使用客户端库时，订阅密钥通过 FaceServiceClient 类的构造函数传入。 例如：
+作为替代方法，也可以在 HTTP 请求头 **ocp-apim-subscription-key: 中指定订阅密钥：&lt;订阅密钥&gt;** 使用客户端库时，订阅密钥通过 FaceServiceClient 类的构造函数传入。 例如：
 ```CSharp
 faceServiceClient = new FaceServiceClient("<Subscription Key>");
 ```
 
-## <a name="step-2-upload-an-image-to-the-service-and-execute-face-detection"></a>第 2 步：将图像上传到服务并执行人脸检测
+## <a name="step-2-upload-an-image-to-the-service-and-execute-face-detection"></a>步骤 2：将图像上传到服务并执行人脸检测
 
 执行人脸检测的最基本方法是直接上传图像。 为此，请发送“POST”请求，其中包含 application/octet-stream 内容类型和从 JPEG 图像中读取的数据。 图像的大小上限为 4MB。
 
@@ -90,7 +90,7 @@ foreach (var face in faces)
 
 与检测到的人脸一起返回的 FaceRectangle 属性是人脸上的基本位置（以像素为单位）。 此矩形通常包含眼睛、眉毛、鼻子和嘴，不包含头顶、耳朵和下巴。 如果裁剪完整头部或中景肖像（照片 ID 类型为图像），建议扩展矩形人脸框架区域，因为人脸区域可能对某些应用来说太小。 若要更精确地定位人脸，请使用下一部分中介绍的人脸特征点（定位人脸特征或计算人脸方向机制），经证明非常有用。
 
-## <a name="step-3-understanding-and-using-face-landmarks"></a>第 3 步：了解并使用人脸特征点
+## <a name="step-3-understanding-and-using-face-landmarks"></a>步骤 3：了解并使用人脸特征点
 
 人脸特征点是人脸上的一系列具体特征点；通常是瞳孔、眼角或鼻子等人脸组成部分特征点。 人脸特征点是可在人脸检测期间分析的可选属性。 可以在调用[“人脸 - 检测”](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)时将“true”作为布尔值传递给 returnFaceLandmarks 查询参数，也可以对 FaceServiceClient 类 DetectAsync 方法使用可选参数 returnFaceLandmarks，以便在检测结果中添加人脸特征点。
 
@@ -145,7 +145,7 @@ Vector faceDirection = new Vector(
 
 通过确定人脸方向，可以旋转矩形人脸框架，让它与人脸对齐。 很显然，人脸特征点可以提高详细程度和实用性。
 
-## <a name="step-4-using-other-face-attributes"></a>第 4 步：使用其他人脸特性
+## <a name="step-4-using-other-face-attributes"></a>步骤 4：使用其他人脸特性
 
 除了人脸特征点外，“人脸 - 检测”API 还可以分析人脸上的其他几个属性。 这些属性包括：
 

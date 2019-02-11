@@ -5,15 +5,15 @@ services: digital-twins
 author: dsk-2015
 ms.service: digital-twins
 ms.topic: include
-ms.date: 09/17/2018
+ms.date: 12/17/2018
 ms.author: dkshir
 ms.custom: include file
-ms.openlocfilehash: e5e015c1e12e68f54ae7fd32082faed1abfebe74
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: f286676cba3d1333db52fb1125279772d518dd88
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51626383"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584730"
 ---
 1. 登录到 [Azure 门户](http://portal.azure.com)。
 
@@ -33,8 +33,8 @@ ms.locfileid: "51626383"
 
 1. 打开数字孪生实例的“概览”窗格。 记下“管理 API”下的链接。
 
-   **管理 API** URL 的格式为：_https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger_。 此 URL 将引导你到适用于实例的 Azure 数字孪生 REST API 文档。 阅读[如何使用 Azure 数字孪生 Swagger](../articles/digital-twins/how-to-use-swagger.md)，了解如何阅读和使用此 API 文档。
+   **管理 API** URL 的格式为：`https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger`。 此 URL 将引导你到适用于实例的 Azure 数字孪生 REST API 文档。 阅读[如何使用 Azure 数字孪生 Swagger](../articles/digital-twins/how-to-use-swagger.md)，了解如何阅读和使用此 API 文档。
 
-    将**管理 API** URL 修改成此格式：_https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/_。 应用程序将使用此修改过的 URL 作为基 URL 来访问实例。 将此修改过的 URL 复制到一个临时文件。 下一部分将需要此 URL。
+    将**管理 API** URL 修改成此格式：`https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`。 应用程序将使用此修改过的 URL 作为基 URL 来访问实例。 将此修改过的 URL 复制到一个临时文件。 下一部分将需要此 URL。
 
     ![管理 API](./media/create-digital-twins-portal/digital-twins-management-api.png)

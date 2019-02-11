@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 0f6f485bb251bfae942c258b9be879c0aff5f5b9
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 5b98513625a6179585601320d45996396fca7207
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955671"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035897"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建包含 Azure Data Lake Storage Gen1 的 HDInsight 群集
 > [!div class="op_single_selector"]
@@ -66,6 +66,12 @@ Get-AzureRmSubscription
 # Select a subscription
 Set-AzureRmContext -SubscriptionId <subscription ID>
 ```
+
+模板将部署以下资源类型：
+
+* [Microsoft.DataLakeStore/accounts](/azure/templates/microsoft.datalakestore/accounts)
+* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+* [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/clusters)
 
 ## <a name="upload-sample-data-to-data-lake-storage-gen1"></a>向 Data Lake Storage Gen1 上传示例数据
 该资源管理器模板模板会创建一个新的 Data Lake Storage Gen1 帐户，并将其与此 HDInsight 群集关联。 现在必须要将示例数据上传到 Data Lake Storage Gen1。 此教程中之后需要这些数据从访问 Data Lake Storage Gen1 帐户中数据的 HDInsight 群集运行作业。 有关如何上传数据的说明，请参阅[上传文件到 Data Lake Storage Gen1 帐户](data-lake-store-get-started-portal.md#uploaddata)。 如果正在查找一些示例数据进行上传，可以从 **Azure Data Lake Git 存储库** 获取 [Ambulance Data](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData)文件夹。

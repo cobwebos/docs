@@ -1,27 +1,27 @@
 ---
-title: Azure 标准负载均衡器概述 | Microsoft Docs
+title: 什么是 Azure 标准负载均衡器？
+titlesuffix: Azure Load Balancer
 description: Azure 标准负载均衡器功能概述
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: ''
-ms.assetid: ''
+manager: twooley
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 01/11/2019
 ms.author: kumud
-ms.openlocfilehash: 17b4bc68b2dc996134626b1822cfd17f0a9a7572
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: d914242b6a29e05e5b97ad11a1bde6f894113e43
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161635"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382566"
 ---
-# <a name="azure-load-balancer-standard-overview"></a>Azure 负载均衡器标准版概述
+# <a name="azure-standard-load-balancer-overview"></a>Azure 标准负载均衡器概述
 
 使用 Azure 负载均衡器可以缩放应用程序，并为服务提供高可用性。 负载均衡器可用于入站和出站方案、提供低延迟和高吞吐量，以及为所有 TCP 和 UDP 应用程序纵向扩展到数以百万计的流。 
 
@@ -58,7 +58,7 @@ ms.locfileid: "47161635"
 
 ### <a name="backend"></a>后端池
 
-标准负载均衡器的后端池在虚拟网络中扩展到任何虚拟机资源。  可包含多达 1000 个后端实例。  后端实例是 IP 配置（NIC 资源的属性）。
+标准负载均衡器的后端池扩展到虚拟网络中的任何虚拟机资源。  可包含多达 1000 个后端实例。  后端实例是 IP 配置（NIC 资源的属性）。
 
 后端池可以包含独立的虚拟机、可用性集或虚拟机规模集。  还可以在后端池中混合资源。 按每个负载均衡器资源计算，最多可以在后端池中混合 150 个资源。
 
@@ -88,14 +88,14 @@ ms.locfileid: "47161635"
 
 标准负载均衡器通过 Azure Monitor 提供多维度指标。  可以就给定维度对这些指标进行筛选、分组和细分。  可便于深入了解服务的当前及历史性能和运行状况。  还支持资源运行状况。  以下是支持的诊断的简要概述：
 
-| 指标 | Description |
+| 指标 | 说明 |
 | --- | --- |
-| VIP 可用性 | 负载均衡器标准版持续运用从区域内部到负载均衡器前端，直到支持 VM 的 SDN 堆栈的数据路径。 只要保留正常实例，这种度量就会遵循应用程序负载均衡的流量所用的相同路径。 此外，还会验证客户使用的数据路径。 度量对于应用程序不可见，且不会干扰其他操作。|
-| DIP 可用性 | 负载均衡器标准版使用分布式运行状况探测服务，根据配置设置监视应用程序终结点的运行状况。 此指标提供负载均衡器池中每个实例终结点的聚合视图或按终结点筛选的视图。  可以查看负载均衡器如何根据运行状况探测配置的指示了解应用程序的运行状况。
-| SYN 数据包 | 负载均衡器标准版不会终止 TCP 连接，也不会与 TCP 或 UDP 数据包流交互。 流及其握手始终位于源和 VM 实例之间。 若要更好地排查 TCP 协议方案的问题，可以使用 SYN 数据包计数器了解进行了多少次 TCP 连接尝试。 该指标将报告接收到的 TCP SYN 数据包数目。|
-| SNAT 连接 | 负载均衡器标准版报告公共 IP 地址前端上伪装的出站流数。 SNAT 端口是可耗竭性资源。 此指标可以指出应用程序依赖于 SNAT 获取出站发起流的程度有多高。  将报告成功和失败的出站 SNAT 流的计数器，可使用这些计数器排查和了解出站流的运行状况。|
-| 字节计数器 | 负载均衡器标准版按前端报告处理的数据。|
-| 数据包计数器 | 负载均衡器标准版按前端报告处理的数据包。|
+| VIP 可用性 | 标准负载均衡器持续运用从区域内部到负载均衡器前端，直到支持 VM 的 SDN 堆栈的数据路径。 只要保留正常实例，这种度量就会遵循应用程序负载均衡的流量所用的相同路径。 此外，还会验证客户使用的数据路径。 度量对于应用程序不可见，且不会干扰其他操作。|
+| DIP 可用性 | 标准负载均衡器使用分布式运行状况探测服务，根据配置设置监视应用程序终结点的运行状况。 此指标提供负载均衡器池中每个实例终结点的聚合视图或按终结点筛选的视图。  可以查看负载均衡器如何根据运行状况探测配置的指示了解应用程序的运行状况。
+| SYN 数据包 | 标准负载均衡器不会终止 TCP 连接，也不会与 TCP 或 UDP 数据包流交互。 流及其握手始终位于源和 VM 实例之间。 若要更好地排查 TCP 协议方案的问题，可以使用 SYN 数据包计数器了解进行了多少次 TCP 连接尝试。 该指标将报告接收到的 TCP SYN 数据包数目。|
+| SNAT 连接 | 标准负载均衡器报告公共 IP 地址前端上伪装的出站流数。 SNAT 端口是可耗竭性资源。 此指标可以指出应用程序依赖于 SNAT 获取出站发起流的程度有多高。  将报告成功和失败的出站 SNAT 流的计数器，可使用这些计数器排查和了解出站流的运行状况。|
+| 字节计数器 | 标准负载均衡器按前端报告处理的数据。|
+| 数据包计数器 | 标准负载均衡器按前端报告处理的数据包。|
 
 请查看[有关标准负载均衡器诊断的详细讨论](load-balancer-standard-diagnostics.md)。
 
@@ -120,7 +120,7 @@ ms.locfileid: "47161635"
 
 ### <a name="outbound"></a>出站连接
 
-负载均衡器支持入站和出站方案。  对于出站连接，标准负载均衡器与基本负载均衡器存在明显差异。
+负载均衡器支持入站和出站方案。  对于出站连接，标准负载均衡器与基本负载均衡器之间存在明显差异。
 
 源网络地址转换 (SNAT) 用于将虚拟网络上的内部专用 IP 地址映射到负载均衡器前端的公共 IP 地址。
 
@@ -162,7 +162,7 @@ ms.locfileid: "47161635"
 
 ### <a name="operations"></a>管理操作
 
-标准负载均衡器资源存在于全新的基础结构平台中。  这允许标准 SKU 大大提高管理操作的速度，对于每个标准 SKU 资源，完成时间通常少于 30 秒。  请注意，后端池增大时，其更改所需的持续时间也随之延长。
+标准负载均衡器资源存在于全新的基础结构平台中。  这使得标准 SKU 可以提高管理操作的速度，对于每个标准 SKU 资源，完成时间通常少于 30 秒。  当后端池增大时，其更改所需的持续时间也随之延长。
 
 可以修改标准负载均衡器资源，显著提高在虚拟机之间移动标准公共 IP 地址的速度。
 
@@ -203,7 +203,7 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 
 ## <a name="region-availability"></a>上市区域
 
-负载均衡器标准版目前已在所有公有云区域推出。
+标准负载均衡器目前已在所有公有云区域推出。
 
 ## <a name="sla"></a>SLA
 
@@ -211,7 +211,12 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 
 ## <a name="pricing"></a>定价
 
-标准负载均衡器根据以下内容计费：配置的负载均衡规则数量以及处理的所有入站和出站数据量。 有关标准负载均衡器的定价信息，请访问[负载均衡器定价](https://aka.ms/lbpricing)页。
+使用标准负载均衡器是收费的。
+
+- 已配置的负载均衡规则和出站规则的数量（入站 NAT 规则不计入规则总数）
+- 处理的入站和出站数据的数量，与规则无关。 
+
+有关标准负载均衡器的定价信息，请访问[负载均衡器定价](https://azure.microsoft.com/pricing/details/load-balancer/)页。
 
 ## <a name="limitations"></a>限制
 
@@ -230,7 +235,7 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 - 了解[运行状况探测](load-balancer-custom-probe-overview.md)。
 - 详细了解[可用性区域](../availability-zones/az-overview.md)。
 - 了解有关[标准负载均衡器诊断](load-balancer-standard-diagnostics.md)的信息。
-- 在 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 中了解用于诊断的[支持的多维度指标](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers)。
+- 在 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 中了解用于诊断的[支持的多维度指标](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers)。
 - 了解如何[对出站连接使用负载均衡器](load-balancer-outbound-connections.md)。
 - 了解[出站规则](load-balancer-outbound-rules-overview.md)。
 - 了解如何[在空闲时重置 TCP](load-balancer-tcp-reset.md)。

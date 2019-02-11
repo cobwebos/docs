@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 适用于 Linux 的 Azure Docker CE 群集
+title: （已弃用）快速入门 - 适用于 Linux 的 Azure Docker CE 群集
 description: 快速学习在 Azure 容器服务中使用 Azure CLI 为 Linux 容器创建 Docker CE 群集。
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: c8f9db2674976d2c1efa7686b8b224b48a19a534
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a7a7455ce9167a9c480d317d50fdce49e2ef06a9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964439"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994299"
 ---
-# <a name="deploy-docker-ce-cluster"></a>部署 Docker CE 群集
+# <a name="deprecated-deploy-docker-ce-cluster"></a>（已弃用）部署 Docker CE 群集
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 在本快速入门中，将使用 Azure CLI 部署 Docker CE 群集。 然后，在群集上部署和运行包含 Web 前端和 Redis 实例的多容器应用程序。 完成后，即可通过 Internet 访问应用程序。
 

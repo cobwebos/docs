@@ -1,10 +1,10 @@
 ---
-title: 如何使用 Azure Monitor 将 Azure Active Directory 日志与 Splunk 集成（预览）| Microsoft Docs
+title: 使用 Azure Monitor（预览版）将 Azure Active Directory 日志流式传输到 Splunk | Microsoft Docs
 description: 了解如何使用 Azure Monitor 将 Azure Active Directory 日志与 Splunk 集成（预览）
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: c4b605b6-6fc0-40dc-bd49-101d03f34665
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e45b175b97b7f395199dbc4521054fa69a4bb4a7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 7bc687d339a3089b8285078f7ad23c172452c5dc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623769"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183435"
 ---
 # <a name="integrate-azure-ad-logs-with-splunk-using-azure-monitor-preview"></a>使用 Azure Monitor（预览版）将 Azure AD 日志与 Splunk 集成
 

@@ -7,13 +7,13 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.component: common
-ms.openlocfilehash: ec12da6ccd5b681c85da87d53f944fc4430149b5
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.subservice: common
+ms.openlocfilehash: 180780c3a3a644a8da0fa544c37bc8cd252c982f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616191"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469492"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器疑难解答指南
 
@@ -100,7 +100,7 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 如果无法通过 UI 删除附加的帐户或存储资源，可以通过删除以下文件夹来手动删除所有附加的资源：
 
 * Windows：`%AppData%/StorageExplorer`
-* macOS：`/Users/<your_name>/Library/Applicaiton Support/StorageExplorer`
+* macOS：`/Users/<your_name>/Library/Application Support/StorageExplorer`
 * Linux：`~/.config/StorageExplorer`
 
 > [!NOTE]

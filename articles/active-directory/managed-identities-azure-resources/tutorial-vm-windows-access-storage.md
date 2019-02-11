@@ -3,23 +3,23 @@ title: 使用 Windows VM 系统分配的托管标识访问 Azure 存储
 description: 本教程将指导你完成使用 Windows VM 系统分配的托管标识访问 Azure 存储的过程。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: daveba
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2018
-ms.author: daveba
-ms.openlocfilehash: d032d8cc33d33954406ad45e64fc199d569abf41
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.author: priyamo
+ms.openlocfilehash: bb637e05731f20bebc306de5e0995f5ec4762f0b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51620929"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176346"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure 存储
 
@@ -74,7 +74,7 @@ ms.locfileid: "51620929"
 
 1. 导航回新创建的存储帐户。  
 2. 单击左侧面板中的“访问控制(IAM)”链接。  
-3. 单击页面顶部的“+ 添加”，为 VM 添加新的角色分配。
+3. 单击页面顶部的“+ 添加角色分配”，为 VM 添加新的角色分配。
 4. 在“角色”下，从下拉列表中，选择“存储 Blob 数据读取器(预览)”。 
 5. 在下一个下拉列表中，在“将访问权限分配到”下，选择“虚拟机”。  
 6. 接下来，确保“订阅”下拉列表中列出了正确的订阅，然后将“资源组”设置为“所有资源组”。  

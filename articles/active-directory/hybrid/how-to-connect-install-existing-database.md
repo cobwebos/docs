@@ -4,7 +4,7 @@ description: 本主题介绍如何使用现有 ADSync 数据库。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.reviewer: cychua
 ms.assetid: ''
@@ -12,16 +12,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/30/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: bbf8dc4ccbd16f2157e65773b01fb42587fbfe9d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f863c4b115616ff709634f3c68955c3be3241707
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417474"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494181"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>使用现有 ADSync 数据库安装 Azure AD Connect
 Azure AD Connect 要求使用 SQL Server 数据库来存储数据。 可以使用随 Azure AD Connect 一起安装的默认 SQL Server 2012 Express LocalDB，也可以使用自己的完整版本 SQL。 以前，当安装 Azure AD Connect 时，始终会创建一个名为 ADSync 的新数据库。 使用 Azure AD Connect 版本 1.1.613.0（或更高版本），可以选择通过将 Azure AD Connect 指向现有的 ADSync 数据库来安装 Azure AD Connect。
@@ -91,7 +91,7 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储数据。 可以使�
 
 使用下表来确认是否需要执行其他任何步骤。
 
-|功能|Steps|
+|Feature|Steps|
 |-----|-----|
 |密码哈希同步| 从 Azure AD Connect 版本 1.2.65.0 开始，密码哈希同步和密码写回设置将完全还原。  如果使用早期版本的 Azure AD Connect 还原，请查看这些功能的同步选项设置，以确保它们与活动的同步服务器匹配。  不必要执行其他任何配置步骤。|
 |使用 AD FS 进行联合身份验证|Azure 身份验证将继续使用针对活动同步服务器配置的 AD FS 策略。  如果使用 Azure AD Connect 来管理 AD FS 场，则可以选择性地将登录方法更改为 AD FS 联合身份验证，以应对备用服务器变成活动同步实例时的情况。   如果在活动同步服务器上启用了设备选项，请通过运行“配置设备选项”任务，在此服务器上配置这些选项。|
@@ -100,6 +100,6 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储数据。 可以使�
 ## <a name="next-steps"></a>后续步骤
 
 - 安装 Azure AD Connect 后，可以[验证安装并分配许可证](how-to-connect-post-installation.md)。
-- 若要了解有关这些功能（在安装过程中已启用）的详细信息，请参阅[防止意外删除](how-to-connect-sync-feature-prevent-accidental-deletes.md)和 [Azure AD Connect Health](how-to-connect-health-sync.md)。
+- 若要了解有关这些功能（在安装过程中已启用）的详细信息，请参阅：[防止意外删除](how-to-connect-sync-feature-prevent-accidental-deletes.md)和 [Azure AD Connect Health](how-to-connect-health-sync.md)。
 - 若要了解有关这些常见主题的详细信息，请参阅[计划程序以及如何触发同步](how-to-connect-sync-feature-scheduler.md)。
 - 了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

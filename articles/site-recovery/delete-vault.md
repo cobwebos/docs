@@ -4,16 +4,15 @@ description: 了解如何删除为 Azure Site Recovery 配置的恢复服务保�
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 6827bcc561ced0d346d79e60b3f2b2fde83bc2d8
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 7dc1be1316d833d4a37a8b46bf0145089bb3ae22
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977040"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839110"
 ---
 # <a name="delete-a-site-recovery-services-vault"></a>删除 Site Recovery 服务保管库
 

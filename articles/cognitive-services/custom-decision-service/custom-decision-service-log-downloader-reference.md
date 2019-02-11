@@ -6,16 +6,16 @@ services: cognitive-services
 author: marco-rossi29
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-decision-service
+ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: marossi
-ms.openlocfilehash: 8c5ab0e297690f1fbdb41a2627dd63c3ea522d1b
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 227caaa1b726210fd498596d716aa41365a63c7a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366783"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228111"
 ---
 # <a name="logdownloader"></a>LogDownloader
 
@@ -24,9 +24,9 @@ ms.locfileid: "46366783"
 ## <a name="prerequisites"></a>先决条件
 
 - Python 3：已安装并在你的路径上。 我们建议使用 64 位版本来处理大文件。
-- *Microsoft/mwt-ds* 存储库：[克隆存储库](https://github.com/Microsoft/mwt-ds)。
+- Microsoft/mwt-ds 存储库：[克隆存储库](https://github.com/Microsoft/mwt-ds)。
 - *azure-storage-blob* 包：有关安装的详细信息，请转到[用于 Python 的 Microsoft Azure 存储库](https://github.com/Azure/azure-storage-python#option-1-via-pypi)。
-- 在 *mwt-ds/DataScience/ds.config* 中输入 Azure 存储连接字符串：遵循 *my_app_id: my_connectionString* 模板。 可以指定多个 `app_id`。 运行 `LogDownloader.py` 时，如果在 `ds.config` 中找不到输入 `app_id`，则 `LogDownloader.py` 使用 `$Default` 连接字符串。
+- 在 *mwt-ds/DataScience/ds.config* 中输入 Azure 存储连接字符串：请按照 *my_app_id: my_connectionString* 模板进行操作。 可以指定多个 `app_id`。 运行 `LogDownloader.py` 时，如果在 `ds.config` 中找不到输入 `app_id`，则 `LogDownloader.py` 使用 `$Default` 连接字符串。
 
 ## <a name="usage"></a>使用情况
 
@@ -41,7 +41,7 @@ python LogDownloader.py [-h] -a APP_ID -l LOG_DIR [-s START_DATE]
 
 ### <a name="parameters"></a>parameters
 
-| 输入 | Description | 默认 |
+| 输入 | 说明 | 默认 |
 | --- | --- | --- |
 | `-h`、`--help` | 显示帮助消息并退出。 | |
 | `-a APP_ID`、`--app_id APP_ID` | 应用程序 ID（即 Azure 存储 blob 容器名称）。 | 必选 |
@@ -59,7 +59,7 @@ python LogDownloader.py [-h] -a APP_ID -l LOG_DIR [-s START_DATE]
 | `--delta_mod_t DELTA_MOD_T` | 用于检测文件当前是否正在使用的时间窗口（以秒为单位）。 | `3600` 秒（`1` 小时） |
 | `--verbose` | 输出更多详细信息。 | `False` |
 | `-v VERSION`、`--version VERSION` | 要使用的日志程序下载程序版本。 | |
-| | `1`：用于未处理的日志（仅用于向后兼容）。 | 已放弃 |
+| | `1`：用于未处理的日志（仅为了向后兼容）。 | 已放弃 |
 | | `2`：用于已处理的日志。 | 默认 |
 
 ### <a name="examples"></a>示例

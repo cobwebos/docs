@@ -1,10 +1,10 @@
 ---
-title: 教程 - 将 Azure Active Directory 日志存档到 Azure 存储帐户（预览版）| Microsoft Docs
+title: 教程 - 将 Azure Active Directory 日志存档到存储帐户（预览版）| Microsoft Docs
 description: 了解如何设置 Azure 诊断来将 Azure Active Directory 日志推送到存储帐户（预览版）
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 045f94b3-6f12-407a-8e9c-ed13ae7b43a3
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9d41c0ceeed2a69884b8ef481c79feb495fc89c0
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 861239eeffe7665f252cb7a096b487da71eec93e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621202"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197409"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account-preview"></a>教程：将 Azure AD 日志存档到 Azure 存储帐户（预览版）
 

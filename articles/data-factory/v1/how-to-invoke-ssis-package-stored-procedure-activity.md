@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: eb9d35b132a0aa3f0702604444f8a760bf66cf9a
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: c7731de810dab8b252294d694ace5df3f5d0a185
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275575"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427553"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动调用 SSIS 包
 本文介绍如何使用存储过程活动从 Azure 数据工厂管道中调用 SSIS 包。 
@@ -32,7 +32,7 @@ ms.locfileid: "52275575"
 本文中的演练使用托管 SSIS 目录的 Azure SQL 数据库。 还可使用 Azure SQL 数据库托管实例。
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>创建 Azure-SSIS 集成运行时
-如果还没有 Azure-SSIS 集成运行时，请按照[教程：部署 SSIS 包](../tutorial-create-azure-ssis-runtime-portal.md)中的分步说明创建一个。 无法使用数据工厂版本 1 创建 Azure-SSIS 集成运行时。 
+如果还没有 Azure-SSIS 集成运行时，请按照[教程：部署 SSIS 包](../tutorial-create-azure-ssis-runtime-portal.md)。 无法使用数据工厂版本 1 创建 Azure-SSIS 集成运行时。 
 
 ## <a name="azure-portal"></a>Azure 门户
 在此部分中，将使用 Azure 门户创建数据工厂管道，管道中包含可调用 SSIS 包的存储过程活动。
@@ -62,7 +62,7 @@ ms.locfileid: "52275575"
 5. 选择数据工厂的**位置**。 下拉列表中仅显示数据工厂支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库等）和计算资源（HDInsight 等）可以位于其他位置。
 6. 选择“固定到仪表板”。     
 7. 单击“创建”。
-8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
+8. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”。 
 
     ![“正在部署数据工厂”磁贴](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
 9. 创建完成后，可以看到图中所示的“数据工厂”页。
@@ -165,7 +165,7 @@ ms.locfileid: "52275575"
 ## <a name="azure-powershell"></a>Azure PowerShell
 在此部分中，将使用 Azure PowerShell 创建数据工厂管道，管道中包含可调用 SSIS 包的存储过程活动。
 
-按[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明安装最新的 Azure PowerShell 模块。
+按[如何安装和配置 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) 中的说明安装最新的 Azure PowerShell 模块。
 
 ### <a name="create-a-data-factory"></a>创建数据工厂
 下列过程提供创建数据工厂的步骤。 可在数据工厂中使用存储过程活动创建管道。 存储过程活动在 SSISDB 数据库中执行存储过程，运行 SSIS 包。
@@ -227,7 +227,7 @@ ms.locfileid: "52275575"
         }
     ```
 2. 在 Azure PowerShell 中，切换到 C:\ADF\RunSSISPackage 文件夹。
-3. 运行 New-AzureRmDataFactoryLinkedService cmdlet，创建链接服务：AzureSqlDatabaseLinkedService。 
+3. 运行 **New-AzureRmDataFactoryLinkedService** cmdlet 以创建链接服务：**AzureSqlDatabaseLinkedService**。 
 
     ```powershell
     New-AzureRmDataFactoryLinkedService $df -File ".\AzureSqlDatabaseLinkedService.json"
@@ -294,7 +294,7 @@ ms.locfileid: "52275575"
     }    
     ```
 
-2. 要创建管道 RunSSISPackagePipeline，请运行 New-AzureRmDataFactoryPipeline cmdlet。
+2. 若要创建管道 RunSSISPackagePipeline，请运行 New-AzureRmDataFactoryPipeline cmdlet。
 
     ```powershell
     $DFPipeLine = New-AzureRmDataFactoryPipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "RunSSISPackagePipeline" -DefinitionFile ".\RunSSISPackagePipeline.json"

@@ -3,17 +3,17 @@ title: 在 Azure 中使用 Ansible 创建虚拟机规模集
 description: 了解如何在 Azure 中使用 Ansible 创建和配置虚拟机规模集
 ms.service: ansible
 keywords: ansible, azure, devops, bash, playbook, 虚拟机, 虚拟机规模集, vmss
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/24/2018
-ms.openlocfilehash: f3b08c41d3bf083c7cca5897cee11a1a4b9c9092
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 920a631ed379651751641c22e4b43f6731197377
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918569"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054148"
 ---
 # <a name="create-virtual-machine-scale-sets-in-azure-using-ansible"></a>在 Azure 中使用 Ansible 创建虚拟机规模集
 使用 Ansible 可以在环境中自动部署和配置资源。 可以在 Azure 中使用 Ansible 管理虚拟机规模集 (VMSS)，就像管理任何其他 Azure 资源一样。 本文介绍如何使用 Ansible 创建和横向扩展虚拟机规模集。 
@@ -37,7 +37,7 @@ ms.locfileid: "42918569"
 
 输入自己的密码作为 *admin_password* 值。
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       resource_group: myResourceGroup
@@ -141,7 +141,7 @@ ms.locfileid: "42918569"
 
 运行 playbook 后，类似于以下示例的输出显示已成功创建虚拟机规模集：
 
-  ```bash
+  ```Output
   PLAY [localhost] ***********************************************************
 
   TASK [Gathering Facts] *****************************************************
@@ -190,7 +190,7 @@ ms.locfileid: "42918569"
 
 现在，让我们从两个实例扩展到三个实例。 以下 Ansible playbook 代码检索有关虚拟机规模的信息，并将其容量从 2 更改为 3。 
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       resource_group: myResourceGroup
@@ -225,7 +225,7 @@ ms.locfileid: "42918569"
 
 运行 Ansible playbook 的输出显示虚拟机规模集已成功横向扩展：
 
-  ```bash
+  ```Output
   PLAY [localhost] **********************************************************
 
   TASK [Gathering Facts] ****************************************************
@@ -275,4 +275,6 @@ ms.locfileid: "42918569"
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"] 
-> [适用于 VMSS 的 Ansible 示例 playbook](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)
+> [使用 Ansible 将应用程序部署到虚拟机规模集](https://docs.microsoft.com/azure/ansible/ansible-deploy-app-vmss)
+
+> [使用 Ansible 自动缩放虚拟机规模集](https://docs.microsoft.com/azure/ansible/ansible-auto-scale-vmss)

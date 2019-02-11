@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 24ffc841-7a77-481c-9cc4-6f8bda58fe66
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: c260b32dc6f659ca4cc1b4c3f59859f75ba999d0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e5c7a578320beb57858ff93c848345f7f5a21caf
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447367"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183486"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iwellnessnow"></a>教程：Azure Active Directory 与 iWellnessNow 集成
 
@@ -114,7 +114,7 @@ ms.locfileid: "39447367"
 
     b. 单击“文件夹徽标”来选择元数据文件并单击“上传”。
     
-    c. 成功完成**服务提供程序元数据文件**的上传后，**标识符**和**回复 URL** 值将自动填充在“iWellnessNow 域和 URL”部分的文本框中，如下所示：
+    c. 成功完成“服务提供程序元数据文件”的上传后，“标识符”和“回复 URL” 值将自动填充在“iWellnessNow 域和 URL”部分的文本框中，如下所示：
 
     ![iWellnessNow 域和 URL 单一登录信息](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_url3.png)
 
@@ -179,7 +179,7 @@ ms.locfileid: "39447367"
  
 ### <a name="create-an-iwellnessnow-test-user"></a>创建 iWellnessNow 测试用户
 
-在本部分中，将在 iWellnessNow 中创建一个名为 Britta Simon 的用户。 请与 [iWellnessNow 支持团队](mailto:info@iwellnessnow.com)协作，在 iWellnessNow 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 iWellnessNow 中创建一个名为 Britta Simon 的用户。 请与  [iWellnessNow 支持团队](mailto:info@iwellnessnow.com)协作，在 iWellnessNow 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -216,12 +216,12 @@ ms.locfileid: "39447367"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 iWellnessNow 磁贴时，应当会自动登录到 iWellnessNow 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

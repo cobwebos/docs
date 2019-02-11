@@ -1,25 +1,22 @@
 ---
 title: 快速入门 - 使用 Azure CLI 创建 Azure Database for PostgreSQL
 description: 有关使用 Azure CLI（命令行界面）创建和管理 Azure Database for PostgreSQL 服务器的快速入门指南。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 04/01/2018
+ms.date: 01/09/2019
 ms.custom: mvc
-ms.openlocfilehash: fa7fca18d52d4853bd31f0bddc3a3cd6ec930664
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: b4c13fb0bdae790f215b87dbfdbfa32eff388fd8
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961004"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730571"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure Database for PostgreSQL
-用于 PostgreSQL 的 Azure 数据库是一种托管服务，可用于在云中运行、管理和缩放具有高可用性的 PostgreSQL 数据库。 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速入门指南介绍了如何使用 Azure CLI 在 [Azure 资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)中创建 Azure Database for PostgreSQL 服务器。
+Azure Database for PostgreSQL 是一种托管服务，可用于在云中运行、管理和缩放具有高可用性的 PostgreSQL 数据库。 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速入门指南介绍了如何使用 Azure CLI 在 [Azure 资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)中创建 Azure Database for PostgreSQL 服务器。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -32,21 +29,21 @@ ms.locfileid: "50961004"
 az login
 ```
 
-如果有多个订阅，请选择应计费的资源所在的相应订阅。 使用 [az account set](/cli/azure/account#az_account_set) 命令选择帐户下的特定订阅 ID。 用订阅的 **az login** 输出中的 **id** 属性代替订阅 id 占位符。
+如果有多个订阅，请选择应计费的资源所在的相应订阅。 使用 [az account set](/cli/azure/account) 命令选择帐户下的特定订阅 ID。 用订阅的 **az login** 输出中的 **id** 属性代替订阅 id 占位符。
 ```azurecli-interactive
 az account set --subscription <subscription id>
 ```
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group#az_group_create) 命令创建 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 应提供唯一名称。 以下示例在 `westus` 位置创建名为 `myresourcegroup` 的资源组。
+使用 [az group create](/cli/azure/group) 命令创建 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 应提供唯一名称。 以下示例在 `westus` 位置创建名为 `myresourcegroup` 的资源组。
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>创建 Azure Database for PostgreSQL 服务器
 
-使用 [az postgres server create](/cli/azure/postgres/server#az_postgres_server_create) 命令创建 [Azure Database for PostgreSQL 服务器](overview.md)。 一台服务器可以管理多个数据库。
+使用 [az postgres server create](/cli/azure/postgres/server) 命令创建 [Azure Database for PostgreSQL 服务器](overview.md)。 一台服务器可以管理多个数据库。
 
 
 **设置** | **示例值** | **说明**
@@ -55,17 +52,17 @@ az group create --name myresourcegroup --location westus
 resource-group | myresourcegroup | 提供 Azure 资源组的名称。
 sku-name | GP_Gen4_2 | SKU 的名称。 请遵循简写约定 {pricing tier}_{compute generation}_{vCores}。 请参阅下表，详细了解 sku-name 参数。
 backup-retention | 7 | 保留备份的时长。 单位为天。 范围为 7-35。 
-geo-redundant-backup | 已禁用 | 是否应该为此服务启用异地冗余备份。 允许的值：Enabled、Disabled。
+geo-redundant-backup | 已禁用 | 是否应该为此服务启用异地冗余备份。 允许的值：“Enabled”、“Disabled”。
 位置 | westus | 服务器的 Azure 位置。
-ssl-enforcement | 已启用 | 是否应该为此服务启用 ssl。 允许的值：Enabled、Disabled。
+ssl-enforcement | 已启用 | 是否应该为此服务启用 ssl。 允许的值：“Enabled”、“Disabled”。
 storage-size | 51200 | 服务器的存储容量（单位是兆字节）。 有效的存储大小最小为 5120MB，以 1024MB 为增量。 请参阅[定价层](./concepts-pricing-tiers.md)文档，详细了解存储大小限制。 
 版本 | 9.6 | PostgreSQL 主版本。
 admin-user | myadmin | 用于管理员登录的用户名。 它不能为“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”。
-admin-password | *安全密码* | 管理员用户的密码。 该密码必须包含 8 到 128 个字符。 密码必须含以下字符类别中的三类：英文大写字母、英文小写字母、数字及非字母数字字符。
+admin-password | *安全密码* | 管理员用户的密码。 该密码必须包含 8 到 128 个字符。 密码必须包含以下三个类别的字符：英文大写字母、英文小写字母、数字和非字母数字字符。
 
 
 sku-name 参数值遵循 {定价层}\_{计算层代}\_{vCore 数} 约定，如以下示例中所示：
-+ `--sku-name B_Gen4_4` 映射到基本、第 4 代和 4 个 vCore。
++ `--sku-name B_Gen4_1` 映射到基本、第 4 代和 1 个 vCore。 此选项是可用的最小 SKU。
 + `--sku-name GP_Gen5_32` 映射到常规用途、第 5 层和 32 个 vCore。
 + `--sku-name MO_Gen5_2` 映射到内存优化、第 5 层和 2 个 vCore。
 
@@ -76,16 +73,15 @@ sku-name 参数值遵循 {定价层}\_{计算层代}\_{vCore 数} 约定，如�
 az postgres server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 9.6
 ```
 
-
-> [!IMPORTANT]
-> 此处指定的服务器管理员登录名和密码是以后在本快速入门中登录到服务器所必需的。 请牢记或记录此信息，以后会使用到它。
-
+> [!NOTE]
+> 如果轻量级计算和 I/O 足以满足工作负荷要求，请考虑使用“基本”定价层。 请注意，在“基本”定价层中创建的服务器以后不能扩展到“常规用途”或“内存优化”定价层。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/postgresql/)。
+> 
 
 ## <a name="configure-a-server-level-firewall-rule"></a>配置服务器级防火墙规则
 
-使用 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_create) 命令创建 Azure PostgreSQL 服务器级防火墙规则。 服务器级防火墙规则允许外部应用程序（如 [psql](https://www.postgresql.org/docs/9.2/static/app-psql.html) 或 [PgAdmin](https://www.pgadmin.org/)）通过 Azure PostgreSQL 服务防火墙连接到服务器。 
+使用 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) 命令创建 Azure PostgreSQL 服务器级防火墙规则。 服务器级防火墙规则允许外部应用程序（如 [psql](https://www.postgresql.org/docs/9.2/static/app-psql.html) 或 [PgAdmin](https://www.pgadmin.org/)）通过 Azure PostgreSQL 服务防火墙连接到服务器。 
 
-可以设置涵盖某个 IP 范围的防火墙规则，以便通过网络进行连接。 下面的示例使用 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_create) 为单个 IP 地址创建防火墙规则 `AllowMyIP`。
+可以设置涵盖某个 IP 范围的防火墙规则，以便通过网络进行连接。 下面的示例使用 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) 为单个 IP 地址创建防火墙规则 `AllowMyIP`。
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
 ```
@@ -171,9 +167,9 @@ pgAdmin 是用于 PostgreSQL 的开源工具。 可以从 [pgAdmin 网站](https
 
    ![“连接”选项卡](./media/quickstart-create-server-database-azure-cli/10-pgadmin-create-server.png)
 
-    pgAdmin 参数 |值|Description
+    pgAdmin 参数 |值|说明
     ---|---|---
-    主机名/地址 | 服务器名称 | 此前在创建用于 PostgreSQL 的 Azure 数据库服务器时使用过的服务器名称值。 示例服务器为 mydemoserver.postgres.database.azure.com。 请使用完全限定的域名 (**\*.postgres.database.azure.com)，如示例中所示。 如果不记得服务器名称，请按上一部分的步骤操作，以便获取连接信息。 
+    主机名/地址 | 服务器名称 | 此前在创建用于 PostgreSQL 的 Azure 数据库服务器时使用过的服务器名称值。 示例服务器为 mydemoserver.postgres.database.azure.com。 请使用完全限定的域名 (**\*.postgres.database.azure.com**)，如示例中所示。 如果不记得服务器名称，请按上一部分的步骤操作，以便获取连接信息。 
     端口 | 5432 | 连接到用于 PostgreSQL 的 Azure 数据库服务器时使用的端口。 
     维护数据库 | postgres | 系统生成的默认数据库名称。
     用户名 | 服务器管理员登录名 | 此前在创建用于 PostgreSQL 的 Azure 数据库服务器时提供的服务器管理员登录用户名。 如果不记得用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为 username@servername。
@@ -213,7 +209,7 @@ pgAdmin 是用于 PostgreSQL 的开源工具。 可以从 [pgAdmin 网站](https
 az group delete --name myresourcegroup
 ```
 
-若要删除新创建的服务器，可运行 [az postgres server delete](/cli/azure/postgres/server#az_postgres_server_delete) 命令。
+若要删除新创建的服务器，可运行 [az postgres server delete](/cli/azure/postgres/server) 命令。
 ```azurecli-interactive
 az postgres server delete --resource-group myresourcegroup --name mydemoserver
 ```

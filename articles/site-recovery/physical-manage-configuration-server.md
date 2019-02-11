@@ -5,14 +5,14 @@ services: site-recovery
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 0e8dbf47c40339c90a0e28c3ef497a8da963e481
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 824c7c70cf3e79df3aa04bbe86674ed9486b79f2
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230979"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300432"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>为物理服务器灾难恢复管理配置服务器
 
@@ -106,7 +106,7 @@ Site Recovery 门户中提供了配置服务器安装文件的最新版本。 �
 
 ### <a name="parameters"></a>parameters
 
-|参数名称| 类型 | Description| 值|
+|参数名称| Type | 说明| 值|
 |-|-|-|-|
 | /ServerMode|必选|指定是要同时安装配置服务器和进程服务器，还是只安装进程服务器|CS<br>PS|
 |/InstallLocation|必选|用于安装组件的文件夹| 计算机上的任意文件夹|
@@ -128,7 +128,7 @@ Site Recovery 门户中提供了配置服务器安装文件的最新版本。 �
 ### <a name="create-file-input-for-mysqlcredsfilepath"></a>创建 MYSQLCredsFilePath 的文件输入
 
 MySQLCredsFilePath 参数使用某个文件作为输入。 创建使用以下格式的文件并将其作为输入 MySQLCredsFilePath 参数进行传递。
-```
+```ini
 [MySQLCredentials]
 MySQLRootPassword = "Password>"
 MySQLUserPassword = "Password"
@@ -136,7 +136,7 @@ MySQLUserPassword = "Password"
 ### <a name="create-file-input-for-proxysettingsfilepath"></a>创建 ProxySettingsFilePath 的文件输入
 ProxySettingsFilePath 参数使用某个文件作为输入。 创建使用以下格式的文件并将其作为输入 ProxySettingsFilePath 参数进行传递。
 
-```
+```ini
 [ProxySettings]
 ProxyAuthentication = "Yes/No"
 Proxy IP = "IP Address"
@@ -157,7 +157,7 @@ ProxyPassword="Password"
 5. 提供新代理服务器的详细信息，并单击“注册”按钮。
 6. 打开管理员 PowerShell 命令窗口。
 7. 运行以下命令：
-  ```
+  ```powershell
   $pwd = ConvertTo-SecureString -String MyProxyUserPassword
   Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
   net stop obengine
@@ -177,7 +177,7 @@ ProxyPassword="Password"
   6. 打开管理员 PowerShell 命令窗口。
   7. 运行以下命令
 
-      ```
+      ```powershell
       $pwd = ConvertTo-SecureString -String MyProxyUserPassword
       Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
       net stop obengine
@@ -205,7 +205,7 @@ ProxyPassword="Password"
 6. 提供代理服务器的详细信息，并单击“注册”按钮。  
 7. 打开管理员 PowerShell 命令窗口。
 8. 运行以下命令
-    ```
+    ```powershell
     $pwd = ConvertTo-SecureString -String MyProxyUserPassword
     Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
     net stop obengine
@@ -264,7 +264,7 @@ ProxyPassword="Password"
 
 ## <a name="delete-or-unregister-a-configuration-server-powershell"></a>删除或取消注册配置服务器 (PowerShell)
 
-1. [安装](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) Azure PowerShell 模块
+1. [安装](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.4.0) Azure PowerShell 模块
 2. 使用命令登录到 Azure 帐户
     
     `Connect-AzureRmAccount`
@@ -273,7 +273,7 @@ ProxyPassword="Password"
      `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
 3.  现在设置保管库上下文
     
-    ```
+    ```powershell
     $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
     Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
     ```

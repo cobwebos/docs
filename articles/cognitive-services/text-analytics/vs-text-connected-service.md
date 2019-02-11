@@ -6,16 +6,16 @@ services: cognitive-services
 author: ghogen
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 09/12/2018
 ms.author: ghogen
-ms.openlocfilehash: 95de174087fb2a73ad6c75a2e96caf872c351854
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 6527e053f685fd7947e123d15c0d33399d07e61f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605226"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227244"
 ---
 # <a name="tutorial-connect-to-the-text-analytics-cognitive-service-by-using-connected-services-in-visual-studio"></a>教程：使用 Visual Studio 中的连接服务功能连接到文本分析认知服务
 
@@ -259,7 +259,7 @@ ms.locfileid: "45605226"
    
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要资源组时，可将其删除。 这会删除认知服务及相关资源。 若要通过门户删除资源组，请执行以下操作：
+不再需要资源组时，可将其删除。 这会删除认知服务及相关资源。 要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到本教程中使用的资源组时，请选择它。
 2. 选择“删除资源组”。

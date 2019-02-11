@@ -8,18 +8,17 @@ manager: jwhit
 editor: tysonn
 ms.assetid: 570b278c-2d47-4e5a-9828-7f01f31ddf8c
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: 97e499612082d0d58cd75bb9f8854b8c4e0f669e
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 4bd8e4ea347c1b26cba831317bdc1d837701788b
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635758"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107389"
 ---
 # <a name="views-in-management-solutions-preview"></a>管理解决方案（预览版）中的视图
 > [!NOTE]
@@ -90,7 +89,7 @@ ms.locfileid: "52635758"
 * 变量应在解决方案中进行定义，并在适当的属性中使用。
 
 ### <a name="log-analytics-api-version"></a>Log Analytics API 版本
-资源管理器模板中定义的所有 Log Analytics 资源均包含 apiVersion 属性，该属性将定义资源应使用的 API 版本。  对于使用[旧版查询语言和升级版查询语言](../../log-analytics/log-analytics-queries.md)的具有查询的视图，此版本有所不同。  
+资源管理器模板中定义的所有 Log Analytics 资源均包含 apiVersion 属性，该属性将定义资源应使用的 API 版本。  对于使用[旧版查询语言和升级版查询语言](../../azure-monitor/log-query/log-query-overview.md)的具有查询的视图，此版本有所不同。  
 
  下表指定了旧版和升级版工作区中视图的 Log Analytics API 版本： 
 
@@ -108,7 +107,7 @@ ms.locfileid: "52635758"
 例如，下面的示例演示包含视图的简单解决方案文件。  由于空间原因，省略号 (...) 表示**仪表板**和 **OverviewTile** 内容。
 
     {
-        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
             "workspaceName": {

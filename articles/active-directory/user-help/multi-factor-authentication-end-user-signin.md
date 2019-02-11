@@ -4,21 +4,21 @@ description: 本页将提供有关在何处查看 Azure MFA 支持的各种登�
 keywords: 用户身份验证, 登录体验, 使用手机登录, 使用办公电话登录
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: b310b762-471b-4b26-887a-a321c9e81d46
 ms.workload: identity
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: e7886d3c8aa1ef9ee1e392030aabf0d187568e24
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: aafc960c0c26a94a8be672d0d72a46dfcb559013
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343060"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157000"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>使用 Azure 多重身份验证时的登录体验
 > [!NOTE]

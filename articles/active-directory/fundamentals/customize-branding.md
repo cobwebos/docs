@@ -1,25 +1,25 @@
 ---
-title: 如何将品牌添加到 Azure Active Directory 登录页面 | Microsoft Docs
-description: 了解如何将组织的品牌添加到 Azure Active Directory 登录页面。
+title: 将品牌添加到组织的登录页面 - Azure Active Directory | Microsoft Docs
+description: 有关如何将组织的品牌添加到 Azure Active Directory 登录页面的说明。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: kexia
-custom: it-pro
-ms.openlocfilehash: cdf1c8bfb8e623956d50975f36faafe10b534d06
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 7753a70c379a7b2afce5e53f20513800c3293fd0
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367554"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099373"
 ---
-# <a name="how-to-add-branding-to-your-azure-active-directory-sign-in-page"></a>如何：将品牌添加到 Azure Active Directory 登录页面
+# <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>将品牌添加到组织的 Azure Active Directory 登录页面
 使用组织的徽标和自定义颜色方案，在 Azure Active Directory (Azure AD) 登录页面上提供一致外观和体验。 用户登录到组织的基于 Web 的应用（例如 Office 365，它使用 Azure AD 作为标识提供者时）时，将显示登录页面。
 
 >[!Note]

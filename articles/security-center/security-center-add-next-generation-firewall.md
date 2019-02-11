@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7daefc1de06ac704f0449d065ed748bbe0f1ac61
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a71f2044b799fb47e4ab8991d76f92a1ccc049f5
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307649"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102441"
 ---
 # <a name="add-a-next-generation-firewall-in-azure-security-center"></a>在 Azure 安全中心中添加下一代防火墙
 Azure 安全中心可能会建议从 Microsoft 合作伙伴添加下一代防火墙 (NGFW)，以增强安全保护。 本文档将举例说明如何执行此操作。
@@ -62,7 +62,7 @@ Azure 安全中心可能会建议从 Microsoft 合作伙伴添加下一代防火
 
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
-* [Setting security policies in Azure Security Center](security-center-azure-policy.md)（在 Azure 安全中心设置安全策略）- 了解如何配置安全策略。
+* [Setting security policies in Azure Security Center](tutorial-security-policy.md)（在 Azure 安全中心设置安全策略）- 了解如何配置安全策略。
 * [在 Azure 安全中心中管理安全建议](security-center-recommendations.md) -- 了解建议如何帮助保护 Azure 资源。
 * [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) -- 了解如何监视 Azure 资源的运行状况。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。

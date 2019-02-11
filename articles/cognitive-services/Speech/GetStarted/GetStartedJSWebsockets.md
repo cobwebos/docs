@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 79f2aa9c3e73037aa25848b7d11c34a73bf35f64
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: c5869133d94f73e1d463a176614617df2587bdfb
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342392"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226098"
 ---
 # <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>开始使用 JavaScript 中的语音识别 API
 
@@ -34,10 +34,10 @@ ms.locfileid: "49342392"
 
 ## <a name="get-started"></a>入门
 
-在本节中，我们将逐步介绍加载示例 HTML 页的必要步骤。 示例位于 [github 存储库](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript)。 可以从存储库直接打开示例，或从存储库的本地副本打开示例。 
+在本节中，我们将逐步介绍加载示例 HTML 页的必要步骤。 示例位于 [GitHub 存储库](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript)。 可以从存储库直接打开示例，或从存储库的本地副本打开示例。
 
 > [!NOTE]
-> 某些浏览器阻止麦克风访问不安全的源。 因此，建议以 https 承载“示例”/“应用”，使其在所有支持的浏览器上正常工作。 
+> 某些浏览器阻止麦克风访问不安全的源。 因此，建议以 https 承载“示例”/“应用”，使其在所有支持的浏览器上正常工作。
 
 ### <a name="open-the-sample-directly"></a>直接打开示例
 

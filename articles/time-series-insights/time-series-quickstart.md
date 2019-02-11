@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - Azure 时序见解资源管理器 | Microsoft Docs
+title: 快速入门：Azure 时序见解资源管理器 | Microsoft Docs
 description: 此快速入门说明如何在 Web 浏览器中开始使用 Azure 时序见解资源管理器，使大量 IoT 数据可视化。 在演示环境中浏览关键功能。
 ms.service: time-series-insights
 services: time-series-insights
@@ -9,16 +9,16 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.topic: quickstart
 ms.workload: big-data
-ms.custom: mvc
+ms.custom: mvc seodec18
 ms.date: 11/15/2017
-ms.openlocfilehash: 6d1e5951ed8cdd9542463ffc57be81e55e4b9194
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 32ed0ec178f7a0064fae88357011197e71604885
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629627"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555534"
 ---
-# <a name="quickstart-explore-azure-time-series-insights"></a>快速入门：浏览 Azure 时序见解
+# <a name="quickstart-explore-azure-time-series-insights"></a>快速入门：探索 Azure 时序见解
 此快速入门说明如何在免费的演示环境中开始使用 Azure 时序见解资源管理器。 了解如何使用 Web 浏览器将大量 IoT 数据可视化，并浏览时序见解资源管理器的关键功能。 
 
 Azure 时序见解是一种完全托管的分析、存储和可视化服务，让同时探索和分析数十亿 IoT 事件变得简单轻松。 它帮助发现隐藏的趋势和异常，并近实时地进行根因分析，从而提供数据的全局视图，能够快速验证 IoT 解决方案，并避免关键设备昂贵的停机时间。  如果正在生成需要存储或查询时序数据的应用程序，可以使用时序见解 REST API 进行开发。

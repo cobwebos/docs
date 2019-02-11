@@ -3,19 +3,19 @@ title: 教程：创建单页 Web 应用 - 必应图像搜索 API
 titleSuffix: Azure cognitive services
 description: 通过必应图像搜索 API 可以搜索 Web 以寻找高质量的相关图像。 使用本教程构建可向 API 发送搜索查询并在网页内显示结果的单页 Web 应用程序。
 services: cognitive-services
-author: aahi
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 9/12/2018
 ms.author: aahi
-ms.openlocfilehash: e37cb9b9412d257ab238f23b90e4a1077070b2b6
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a0fd10d48b3dc46435c2cbd3d43ff0f839343e10
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297445"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188144"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>教程：使用必应图像搜索 API 创建单页应用
 
@@ -34,7 +34,7 @@ ms.locfileid: "46297445"
 ## <a name="prerequisites"></a>先决条件
 
 * 最新版本的 [Node.js](https://nodejs.org/)。
-* 适用于 Node.js 的 [Express.js](https://expressjs.com/) 框架。 可在 gitHub 示例自述文件中获取源代码的安装说明。
+* 适用于 Node.js 的 [Express.js](https://expressjs.com/) 框架。 可在 GitHub 示例自述文件中获取源代码的安装说明。
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -316,7 +316,7 @@ function renderImageResults(items) {
 
 必应图像搜索 API 可以返回四种类型的搜索建议以帮助引导用户的搜索体验，每个建议都在其自己的顶级对象中。
 
-| 建议         | Description                                                                                                                                                                                                         |
+| 建议         | 说明                                                                                                                                                                                                         |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `pivotSuggestions` | 将原始搜索中的透视字替换为其他字的查询。 例如，如果搜索“red flowers”，透视字可能为“red”，并且透视建议可能为“yellow flowers”。 |
 | `queryExpansions`  | 通过添加更多词缩小原始搜索范围的查询。 例如，如果搜索“Microsoft Surface”，查询扩展可能为“Microsoft Surface Pro”。                                   |
@@ -338,7 +338,7 @@ searchItemRenderers = {
 
 这些呈现器函数接受以下参数：
 
-| 参数         | Description                                                                                              |
+| 参数         | 说明                                                                                              |
 |---------|----------------------------------------------------------------------------------------------|
 | `item`  | 包含项目属性（如其 URL 及其说明）的 JavaScript 对象。 |
 | `index` | 结果项集合中的结果项的索引。                                          |

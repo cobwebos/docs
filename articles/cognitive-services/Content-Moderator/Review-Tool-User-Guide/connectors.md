@@ -1,22 +1,23 @@
 ---
-title: 使用 Azure 内容审查器中的连接器访问其他 API | Microsoft Docs
+title: 审查内容时连接到其他服务 - 内容审查器
+titlesuffix: Azure Cognitive Services
 description: 了解如何使用连接器访问内容审查器工作流的其他 API。
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: article
-ms.date: 06/22/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: d8114457e7079ca8772cab830bd011dcddf372f5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5e56579a856f7b6259acddcbe34f2e5361505cb5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365468"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217605"
 ---
-# <a name="connectors"></a>连接器
+# <a name="connect-to-other-cognitive-services"></a>连接到其他认知服务
 
 除了内容审查器 API 之外，Azure 内容审查器工作流还可以使用其他 API。 可以使用内容审查器中的连接器访问其他 API。 连接器可链接到其他 API。
 

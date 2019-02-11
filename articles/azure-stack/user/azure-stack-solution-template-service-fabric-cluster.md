@@ -11,23 +11,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/22/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: shnatara
-ms.openlocfilehash: abb77f59e49a98c1195dcd2e7b622b2b8e3fd7b8
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.lastreviewed: 01/25/2019
+ms.openlocfilehash: a8897288e19a7628dbd1cc2c022de4db2a111393
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087266"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55248038"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>在 Azure Stack 中部署 Service Fabric 群集
 
 使用 Azure 市场中的“Service Fabric 群集”项在 Azure Stack 中部署受保护的 Service Fabric 群集。 
 
-有关使用 Service Fabric 的详细信息，请参阅[的 Azure Service Fabric 概述](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview)并[Service Fabric 群集安全方案](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)，Azure 文档中。
+有关使用 Service Fabric 的详细信息，请参阅 Azure 文档中的 [Azure Service Fabric 概述](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview)和 [Service Fabric 群集安全方案](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)。
 
-Azure Stack 中的 Service Fabric 群集不会使用资源提供程序 Microsoft.ServiceFabric。 相反，在 Azure Stack 中，Service Fabric 群集是虚拟机规模集通过使用 Desired State Configuration (DSC) 设置的预安装软件。
+Azure Stack 中的 Service Fabric 群集不使用资源提供程序 Microsoft.ServiceFabric。 相反，在 Azure Stack 中，Service Fabric 群集是虚拟机规模集与使用 Desired State Configuration (DSC) 的预安装的软件集。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -50,7 +51,7 @@ Azure Stack 中的 Service Fabric 群集不会使用资源提供程序 Microsoft
 
 
 ## <a name="add-a-secret-to-key-vault"></a>向 Key Vault 添加机密
-若要部署 Service Fabric 群集，必须指定正确的 KeyVault 机密标识符，或 Service Fabric 群集的 URL。 Azure 资源管理器模板使用密钥保管库作为输入。 然后该模板在安装 Service Fabric 群集时检索群集证书。
+若要部署 Service Fabric 群集，必须指定正确的 KeyVault 机密标识符，或 Service Fabric 群集的 URL。 Azure 资源管理器模板接受一个 KeyVault 作为输入。 然后，该模板在安装 Service Fabric 群集时检索群集证书。
 
 > [!IMPORTANT]  
 > 必须使用 PowerShell 在 KeyVault 中添加一个要用于 Service Fabric 的机密。 不要使用门户。  
@@ -118,7 +119,7 @@ Azure Stack 中的 Service Fabric 群集不会使用资源提供程序 Microsoft
    ``` 
 
 
-有关详细信息，请参阅[使用 PowerShell 管理 Azure Stack 上的 KeyVault](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-kv-manage-powershell)。
+有关详细信息，请参阅[使用 PowerShell 管理 Azure Stack 上的 KeyVault](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-key-vault-manage-powershell)。
 
 ## <a name="deploy-the-marketplace-item"></a>部署市场项
 
@@ -141,7 +142,7 @@ Azure Stack 中的 Service Fabric 群集不会使用资源提供程序 Microsoft
    - 源 Key Vault：指定脚本结果中的完整 *keyVault id* 字符串。 
    - 群集证书 URL：指定脚本结果中的 *Secret Id* 中的完整 URL。 
    - 群集证书指纹：指定脚本结果中的 *Cluster Certificate Thumbprint*（群集证书指纹）。
-   - 管理员客户端证书指纹： 指定*管理员客户端证书指纹*必备组件中创建。 
+   - 管理客户端证书指纹：指定在先决条件中创建的*管理客户端证书指纹*。 
 
    ![脚本输出](media/azure-stack-solution-template-service-fabric-cluster/image5.png)
 
@@ -184,9 +185,9 @@ Azure Stack 中的 Service Fabric 群集不会使用资源提供程序 Microsoft
 1. 若要查找 Service Fabric Explorer 的 URL 和客户端连接终结点，请查看模板部署的结果。
 
 1. 在浏览器中转到 https://*FQDN*:19080。 将 *FQDN* 替换为在步骤 2 中获取的 Service Fabric 群集 FQDN。   
-   如果你已使用自签名的证书，将看到该连接不安全警告。 若要继续访问网站，请依次选择“更多信息”、“继续访问网页”。 
+   如果使用了自签名的证书，屏幕上会显示一条警告，指出连接不安全。 若要继续访问网站，请依次选择“更多信息”、“继续访问网页”。 
 
-1. 若要向该站点进行身份验证，必须选择要使用的证书。 选择“更多选项”，选择适当的证书，然后单击“确定”连接到 Service Fabric Explorer。 
+1. 若要在站点中进行身份验证，必须选择要使用的证书。 选择“更多选项”，选择适当的证书，然后单击“确定”连接到 Service Fabric Explorer。 
 
    ![身份验证](media/azure-stack-solution-template-service-fabric-cluster/image14.png)
 
@@ -210,7 +211,7 @@ Azure Stack 中的 Service Fabric 群集不会使用资源提供程序 Microsoft
 
 1. 更改环境变量的顺序后，重启 PowerShell，然后运行以下 PowerShell 脚本获取 Service Fabric 群集的访问权限：
 
-   ````PowerShell  
+   ```PowerShell  
     Connect-ServiceFabricCluster -ConnectionEndpoint "\[Service Fabric
     CLUSTER FQDN\]:19000" \`
 
@@ -221,8 +222,11 @@ Azure Stack 中的 Service Fabric 群集不会使用资源提供程序 Microsoft
     0272251171BA32CEC7938A65B8A6A553AA2D3283 \`
 
     -StoreLocation CurrentUser -StoreName My -Verbose
-   ````
+   ```
    
    > [!NOTE]  
    > 脚本中群集名称的前面没有 *https://*。 必须指定端口 19000。
- 
+
+## <a name="next-steps"></a>后续步骤
+
+[将 Kubernetes 部署到 Azure Stack](azure-stack-solution-template-kubernetes-deploy.md)

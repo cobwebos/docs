@@ -5,10 +5,10 @@ services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
-ms.component: identity-protection
+ms.subservice: identity-protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 792a1fc2403e672c973577efd7a05c9c81d45ad4
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: ed1104d3e5ddf54657fb1f7b5c84a85ea855d95c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054075"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55148571"
 ---
 # <a name="how-to-configure-the-multi-factor-authentication-registration-policy"></a>如何：配置多重身份验证注册策略
 
@@ -54,7 +54,7 @@ MFA 注册策略位于 [Azure AD Identity Protection 页面](https://portal.azur
 
 配置登录风险策略时，需要设置：
 
-- 策略应用于的用户和组：
+- 该策略应用到的用户和组：
 
     ![用户和组](./media/howto-mfa-policy/11.png)
 
@@ -67,7 +67,7 @@ MFA 注册策略位于 [Azure AD Identity Protection 页面](https://portal.azur
     ![强制实施策略](./media/howto-mfa-policy/14.png)
 
 
-策略配置对话框提供了一个选项来评估你的配置的影响。
+策略配置对话框提供了一个选项用于评估配置的影响。
 
 ![估计的影响](./media/howto-mfa-policy/15.png)
 

@@ -1,21 +1,21 @@
 ---
-title: 快速入门：必应实体搜索 API、C#
+title: 快速入门：必应实体搜索 API，C#
 titlesuffix: Azure Cognitive Services
 description: 获取信息和代码示例，以帮助你快速开始使用必应实体搜索 API。
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: aahi
-ms.openlocfilehash: 7c303516c9b455ce3477c348c59cbc88693e2297
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 62f260b11e4012b440fea51020b17590fece93fc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313854"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187022"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-c"></a>通过 C# 使用必应实体搜索 API 快速入门 
 

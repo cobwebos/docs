@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 7dc60c18e105c9be190b5bfede786f61a65feec3
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 3096fa77913ef1dd4eb491b3c0e5d7fa236f6c65
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416930"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020876"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -70,7 +69,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
     </tr>
     <tr>
         <td>网络</td>
-        <td>Internet 接口：10 Gbps；intranet 接口：40 Gbps</td>
+        <td>Internet 接口：10 Gbps；Intranet 接口：40 Gbps</td>
     </tr>
     </table>
 
@@ -89,7 +88,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 | 在基于文件的存储之间复制数据 | 4 到 32 个，具体取决于文件的数量和大小。 |
 | 所有其他复制方案 | 4 |
 
-若要替代此默认值，请如下所示指定 **dataIntegrationUnits** 属性的值。 **dataIntegrationUnits** 属性**允许的值****最大为 256**。 复制操作在运行时使用的**实际 DIU 数**等于或小于配置的值，具体取决于数据模式。 有关为特定复制源和接收器配置更多单元时可能获得的性能增益级别的信息，请参阅[性能参考](#performance-reference)。
+若要替代此默认值，请如下所示指定 **dataIntegrationUnits** 属性的值。 **dataIntegrationUnits** 属性 **允许的值** **最大为 256** 。 复制操作在运行时使用的**实际 DIU 数**等于或小于配置的值，具体取决于数据模式。 有关为特定复制源和接收器配置更多单元时可能获得的性能增益级别的信息，请参阅[性能参考](#performance-reference)。
 
 监视活动运行时，可以在复制活动输出中看到每次复制运行实际使用的数据集成单元数。 从[复制活动监视](copy-activity-overview.md#monitoring)中了解详细信息。
 
@@ -196,6 +195,9 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 | **路径** |指定要包含此暂存数据的 Blob 存储路径。 如果不提供路径，该服务将创建容器以存储临时数据。 <br/><br/> 只在使用具有共享访问签名的存储时，或者要求临时数据位于特定位置时才指定路径。 |不适用 |否 |
 | **enableCompression** |指定是否应先压缩数据，再将数据复制到目标。 此设置可减少传输的数据量。 |False |否 |
 
+>[!NOTE]
+> 若使用暂存复制并启用压缩，则不支持对暂存 blob 链接服务的服务主体或 MSI 身份验证。
+
 以下是具有上表所述属性的复制活动的示例定义：
 
 ```json
@@ -300,12 +302,12 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 ### <a name="file-based-data-stores"></a>基于文件的数据存储
 
-* **复制行为**：如果从基于文件的不同数据存储复制数据，则复制活动可通过 **copyBehavior** 属性提供三个选项。 它将保留层次结构、平展层次结构或合并文件。 保留或平展层次结构有少量的性能开销或没有性能开销，但合并文件会导致性能开销增加。
+* **复制行为**：如果从基于文件的不同数据存储复制数据，则复制活动可通过 copyBehavior 属性提供三个选项。 它将保留层次结构、平展层次结构或合并文件。 保留或平展层次结构有少量的性能开销或没有性能开销，但合并文件会导致性能开销增加。
 * **文件格式和压缩**：有关提高性能的更多方法，请参阅[序列化和反序列化注意事项](#considerations-for-serialization-and-deserialization)和[压缩注意事项](#considerations-for-compression)部分。
 
 ### <a name="relational-data-stores"></a>关系数据存储
 
-* **复制行为**：根据已为 **sqlSink** 设置的属性，复制活动以不同的方式将数据写入目标数据库。
+* **复制行为**：根据已为 sqlSink 设置的属性，复制活动以不同的方式将数据写入目标数据库。
   * 数据移动服务默认使用大容量复制 API 以追加模式插入数据，这提供最佳性能。
   * 如果在接收器中配置存储过程，数据库一次会应用一行数据，而不是大容量加载。 性能会大大降低。 如果数据集较大，请考虑切换为使用 **preCopyScript** 属性（如适用）。
   * 如果为每次复制活动运行配置 **preCopyScript** 属性，该服务会触发脚本，然后使用大容量复制 API 插入数据。 例如，若要使用最新数据覆盖整个表，可指定一个脚本，先删除所有记录，再从源大容量加载新数据。
@@ -336,7 +338,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 输入或输出数据集是文件时，可以设置复制活动，使其在将数据写入目标时执行压缩或解压缩。 选择压缩时，请在输入/输出 (I/O) 和 CPU 之间进行权衡。 压缩数据会花费额外的计算资源。 但反过来减少了网络 I/O 和存储。 根据所用数据，可能会看到整体复制吞吐量的提升。
 
-**编解码器**：每种压缩编解码器各有优点。 例如，虽然 bzip2 复制吞吐量最低，但使用 bzip2 可获得最佳的 Hive 查询性能，因为可将其拆分处理。 Gzip 是最平衡的选项，也是最常用的选项。 选择最适合端到端方案的编解码器。
+**编解码器**：每中压缩编解码器各有优点。 例如，虽然 bzip2 复制吞吐量最低，但使用 bzip2 可获得最佳的 Hive 查询性能，因为可将其拆分处理。 Gzip 是最平衡的选项，也是最常用的选项。 选择最适合端到端方案的编解码器。
 
 **级别**：对于每个压缩编解码器，有以下两个选择：最快压缩和最佳压缩。 最快压缩选项可尽快压缩数据，不过无法以最佳方式压缩生成的文件。 最佳压缩选项花费更多时间进行压缩，产生最小量的数据。 可对这两个选项进行测试，确定可为方案提供最佳整体性能的选项。
 
@@ -358,7 +360,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 ## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>示例方案：从本地 SQL Server 复制到 Blob 存储
 
-**方案**：构建管道，以 CSV 格式将数据从本地 SQL Server 复制到 Blob 存储。 要使复制作业更快，应将 CSV 文件压缩为 bzip2 格式。
+**场景**：构建管道，以 CSV 格式将数据从本地 SQL Server 复制到 Blob 存储。 要使复制作业更快，应将 CSV 文件压缩为 bzip2 格式。
 
 **测试和分析**：复制活动的吞吐量小于 2 MBps，这比性能基准慢得多。
 
@@ -368,7 +370,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 2. **序列化和压缩数据**：Integration Runtime 将数据流序列化为 CSV 格式，并将数据压缩为 bzip2 流。
 3. **写入数据**：Integration Runtime 通过 Internet 将 bzip2 流上传到 Blob 存储。
 
-如用户所见，数据以流式处理顺序方式进行处理和移动：SQL Server > LAN> Integration Runtime > WAN > Blob 存储。 **整体性能受管道中最小吞吐量的限制**。
+如你所见，数据以流式处理顺序方式进行处理和移动：SQL Server > LAN> Integration Runtime > WAN > Blob 存储。 **整体性能受管道中最小吞吐量的限制**。
 
 ![数据流](./media/copy-activity-performance/case-study-pic-1.png)
 
@@ -377,7 +379,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 * **源**：SQL Server 本身由于负载过重而吞吐量低。
 * **自承载 Integration Runtime**：
   * **LAN**：Integration Runtime 的位置离 SQL Server 计算机很远，且带宽连接低。
-  * **Integration Runtime**：Integration Runtime 已达到其执行以下操作的负载限制：
+  * **Integration Runtime**：Integration Runtime 已达到执行以下操作的负载限制：
     * **序列化**：将数据流序列化为 CSV 格式时吞吐量缓慢。
     * **压缩**：选择慢速压缩编解码器（例如，bzip2，其采用 Core i7，速度为 2.8 MBps）。
   * **WAN**：企业网络和 Azure 服务之间的带宽低（例如，T1 = 1,544 kbps；T2 = 6,312 kbps）。
@@ -394,7 +396,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 * Azure SQL 数据仓库：其功能以数据仓库单位 (DWU) 衡量；请参阅[管理 Azure SQL 数据仓库中的计算能力（概述）](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
 * Azure Cosmos DB：[Azure Cosmos DB 中的性能级别](../cosmos-db/performance-levels.md)
 * 本地 SQL Server：[监视和优化性能](https://msdn.microsoft.com/library/ms189081.aspx)
-* 本地文件服务器：[Performance tuning for file servers](https://msdn.microsoft.com/library/dn567661.aspx)（文件服务器性能优化）
+* 本地文件服务器：[文件服务器性能优化](https://msdn.microsoft.com/library/dn567661.aspx)
 
 ## <a name="next-steps"></a>后续步骤
 请参阅其他复制活动文章：

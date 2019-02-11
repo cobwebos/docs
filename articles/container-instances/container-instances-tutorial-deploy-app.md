@@ -1,21 +1,21 @@
 ---
-title: Azure 容器实例教程 - 部署应用
-description: Azure 容器实例教程第 3 部分 - 部署应用程序
+title: 教程 - 将容器应用部署到 Azure 容器实例
+description: Azure 容器实例教程第 3 部分（共 3 部分）- 将容器应用程序部署到 Azure 容器实例
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 3fe1ee3d23594d5c1697ed08b17cb0b4d5b7a2fd
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 54fcbe9adc8fbf4a8fba6eabbd7c2f8802fd933a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857629"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191082"
 ---
-# <a name="tutorial-deploy-a-container-to-azure-container-instances"></a>教程：将容器部署到 Azure 容器实例
+# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>教程：将容器应用程序部署到 Azure 容器实例
 
 这是由三个部分组成的系列教程的最后一个教程。 在本系列教程的前几篇文章中，我们已[创建一个容器映像](container-instances-tutorial-prepare-app.md)并将其[推送到 Azure 容器注册表](container-instances-tutorial-prepare-acr.md)。 本文是本系列教程的最后一篇，介绍如何将容器部署到 Azure 容器实例。
 
@@ -52,10 +52,10 @@ az acr credential show --name <acrName> --query "passwords[0].value"
 
 ### <a name="deploy-container"></a>部署容器
 
-现在，使用 [az container create][az-container-create] 部署容器。 将 `<acrLoginServer>` 和 `<acrPassword>` 替换为之前两个命令获得的值。 将 `<acrName>` 替换为容器注册表的名称。
+现在，使用 [az container create][az-container-create] 部署容器。 将 `<acrLoginServer>` 和 `<acrPassword>` 替换为之前两个命令获得的值。 将 `<acrName>` 替换为容器注册表名称，将 `<aciDnsLabel>` 替换为所需的 DNS 名称。
 
 ```azurecli
-az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <acrName> --registry-password <acrPassword> --dns-name-label aci-demo --ports 80
+az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <acrName> --registry-password <acrPassword> --dns-name-label <aciDnsLabel> --ports 80
 ```
 
 将在几秒钟内收到来自 Azure 的初始响应。 在创建容器实例时所在的 Azure 区域中，`--dns-name-label` 值必须是唯一的。 如果在执行命令时收到 **DNS 名称标签**错误消息，请修改前一命令中的值。

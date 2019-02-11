@@ -1,29 +1,31 @@
 ---
-title: 使用 Azure 机器学习训练 PyTorch 模型
+title: 使用 PyTorch 训练模型
+titleSuffix: Azure Machine Learning service
 description: 了解如何使用 PyTorch 估算器运行 PyTorch 模型的单节点和分布式训练
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: 27d4ad03e4a7f911fe3c9981618337a2fff51317
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: e5528cdfc2efa2d5c257732c8b6b6df117421839
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114611"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250021"
 ---
-# <a name="how-to-train-pytorch-models"></a>如何训练 PyTorch 模型
+# <a name="train-pytorch-models-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务训练 PyTorch 模型
 
 对于使用 PyTorch 的深度神经网络 (DNN) 训练，Azure 机器学习提供了 `Estimator` 的自定义 `PyTorch` 类。 Azure SDK 的 `PyTorch` 估算器使你能够轻松为 Azure 计算上的单节点和分布式运行提交 PyTorch 训练作业。
 
 ## <a name="single-node-training"></a>单节点训练
 使用 `PyTorch` 估算器进行训练与使用[基础 `Estimator`](how-to-train-ml-models.md) 类似，因此，请首先阅读操作说明文章并确保你了解其中介绍的概念。
   
-若要运行 PyTorch 作业，请实例化 `PyTorch` 对象。 应已创建[计算目标](how-to-set-up-training-targets.md#batch)对象 `compute_target` 和[数据存储](how-to-access-data.md)对象 `ds`。
+若要运行 PyTorch 作业，请实例化 `PyTorch` 对象。 应已创建[计算目标](how-to-set-up-training-targets.md#amlcompute)对象 `compute_target` 和[数据存储](how-to-access-data.md)对象 `ds`。
 
 ```Python
 from azureml.train.dnn import PyTorch
@@ -40,11 +42,11 @@ pt_est = PyTorch(source_directory='./my-pytorch-proj',
 ```
 
 此处，我们为 PyTorch 构造函数指定以下参数：
-参数 | Description
+参数 | 说明
 --|--
 `source_directory` |  包含训练作业所需的所有代码的本地目录。 此文件夹已从本地计算机复制到远程计算
 `script_params` |  指定训练脚本 `entry_script` 的命令行参数的字典，格式为 <命令行参数, 值> 对
-`compute_target` |  将运行训练脚本的远程计算，这种情况下为 [Batch AI](how-to-set-up-training-targets.md#batch) 群集
+`compute_target` |  运行训练脚本的远程计算目标，在本例中为 Azure 机器学习计算 ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) 群集
 `entry_script` |  要在远程计算上运行的训练脚本的文件路径（相对于 `source_directory`）。 此文件以及所依赖的任何其他文件应位于此文件夹中
 `conda_packages` |  要通过训练脚本所需的 conda 安装的 Python 包列表。 构造函数具有名为 `pip_packages` 的另一个参数，可以将其用于任何所需的 pip 包
 `use_gpu` |  将此标志设置为 `True` 以利用 GPU 进行训练。 默认为 `False`
@@ -80,7 +82,7 @@ pt_est = PyTorch(source_directory='./my-pytorch-project',
 ```
 
 该代码显示了 PyTorch 构造函数的以下新参数：
-参数 | Description | 默认
+参数 | 说明 | 默认
 --|--|--
 `node_count` |  要用于训练作业的节点数。 | `1`
 `process_count_per_node` |  要在每个节点上运行的进程（或“工作线程”）数。 | `1`
@@ -100,13 +102,9 @@ run = exp.submit(pt_est)
 ```
 
 ## <a name="examples"></a>示例
-有关单节点 PyTorch 训练的教程，请参阅：
-* [training/01.train-hyperparameter-tune-deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/training/01.train-hyperparameter-tune-deploy-with-pytorch)
 
-有关使用 Horovod 运行分布式 PyTorch 的教程，请参阅：
-* [training/02.distributed-pytorch-with-horovod](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/02.distributed-pytorch-with-horovod)
-
-获取以下笔记本：
+有关分布式深度学习的笔记本，请参阅：
+* [how-to-use-azureml/training-with-deep-learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

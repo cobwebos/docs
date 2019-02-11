@@ -1,6 +1,6 @@
 ---
-title: 如何向 Azure 时序见解环境发送事件 | Microsoft Docs
-description: 本教程介绍如何创建和配置事件中心，并运行一个示例应用程序来推送要在 Azure 时序见解中显示的事件。
+title: 向 Azure 时序见解环境发送事件 | Microsoft Docs
+description: 了解如何配置事件中心，并运行示例应用程序来推送可以在 Azure 时序见解中查看的事件。
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -10,144 +10,90 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/09/2018
-ms.openlocfilehash: 30b83c54d314934f1de170955eec22e7b2a264b8
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.date: 12/03/2018
+ms.custom: seodec18
+ms.openlocfilehash: 424476b91537c60a6d7f0f9a854453353bf98633
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629746"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557013"
 ---
-# <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>通过事件中心向时序见解环境发送事件
-本文介绍如何创建和配置事件中心并运行示例应用程序来推送事件。 如果你已经有了一个事件中心，其中的事件采用 JSON 格式，则可跳过本教程，在[时序见解](https://insights.timeseries.azure.com)中查看你的环境。
+# <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>通过使用事件中心向时序见解环境发送事件
+
+本文介绍如何在 Azure 事件中心中创建和配置事件中心，并运行示例应用程序来推送事件。 如果已经有了一个事件中心，其中的事件采用 JSON 格式，则可跳过本教程，在 [Azure 时序见解](./time-series-insights-update-create-environment.md)中查看环境。
 
 ## <a name="configure-an-event-hub"></a>配置事件中心
-1. 若要创建事件中心，请遵循事件中心[文档](../event-hubs/event-hubs-create.md)中的说明。
 
-2. 在搜索栏中搜索“事件中心”。 在返回的列表中单击“事件中心”。
+1. 若要了解如何创建事件中心，请参阅[事件中心文档](https://docs.microsoft.com/azure/event-hubs/)。
+1. 在搜索框中，搜索“事件中心”。 在返回的列表中选择“事件中心”。
+1. 选择事件中心。
+1. 在创建事件中心时，实际上要创建事件中心命名空间。 如果尚未在命名空间中创建事件中心，请在菜单中的“实体”下创建事件中心。  
 
-3. 单击事件中心的名称将其选中。
+    ![事件中心的列表][1]
 
-4. 在中间的配置窗口中，在“实体”下，再次单击“事件中心”。
+1. 创建事件中心后，请在事件中心列表中选择它。
+1. 在菜单中的“实体”下，选择“事件中心”。
+1. 选择事件中心的名称对其进行配置。
+1. 在“实体”下选择“使用者组”，然后选择“使用者组”。
 
-5. 选择事件中心的名称对其进行配置。
+    ![创建使用者组][2]
 
-  ![选择事件中心使用者组](media/send-events/consumer-group.png)
+1. 请确保创建一个使用者组，由时序见解事件源独占使用。
 
-6. 在“实体”下，选择“使用者组”。
- 
-7. 请确保创建一个使用者组，由时序见解事件源独占使用。
+    > [!IMPORTANT]
+    > 请确保该使用者组没有被任何其他服务（例如 Azure 流分析作业或其他时序见解环境）使用。 如果使用者组由其他服务使用，则此环境和其他服务的读取操作会受到负面影响。 如果使用 $Default 作为使用者组，则其他读者可能会重复使用使用者组。
 
-   > [!IMPORTANT]
-   > 请确保该使用者组没有被任何其他服务（例如流分析作业或其他时序见解环境）使用。 如果使用者组由其他服务使用，则此环境和其他服务的读取操作会受到负面影响。 如果使用“$Default”作为使用者组，则可能会被其他读取器重复使用。
+1. 在菜单中的“设置”下，选择“共享访问策略”，然后选择“添加”。
 
-8. 在“设置”标题下，选择“共享访问策略”。
+    ![选择“共享访问策略”，然后选择“添加”按钮][3]
 
-9. 在事件中心创建 **MySendPolicy**，用于在 csharp 示例中发送事件。
+1. 在“添加新的共享访问策略”窗格中，创建名为“MySendPolicy”的共享访问。 将使用此共享访问策略在本文后面的 C# 示例中发送事件。
 
-  ![选择共享访问策略，并单击“添加”按钮](media/send-events/shared-access-policy.png)  
+    ![在“策略名称”框中输入“MySendPolicy”][4]
 
-  ![添加新的共享访问策略](media/send-events/shared-access-policy-2.png)  
+1. 在“声明”下选择“发送”复选框。
 
-## <a name="add-time-series-insights-reference-data-set"></a>添加时序见解引用数据集 
-使用 TSI 中的参考数据将遥测数据上下文化。  该上下文在数据中添加含义，并使其更易于筛选和聚合。  TSI 在引入时联接参考数据，且无法以追溯方式联接此数据。  因此，在添加包含数据的事件源之前添加参考数据至关重要。  位置或传感器类型等数据是有用的维度，可将其联接到设备/标记/传感器 ID，以方便切片和筛选。  
+## <a name="add-a-time-series-insights-instance"></a>添加时序见解实例
 
-> [!IMPORTANT]
-> 上传历史数据时配置参考数据集非常关键。
+时序见解更新使用实例将上下文数据添加到传入的遥测数据中。 使用时间序列 ID 在查询时加入数据。 在本文后面使用的示例 windmills 项目的时间序列 ID 是 Id。若要详细了解时序见解实例和时间序列 ID，请参阅[时序模型](./time-series-insights-update-tsm.md)。
 
-将历史数据批量上传到 TSI 时，请务必准备好参考数据。  请记住，如果事件源包含数据，则 TSI 会立即开始从联接的事件源读取数据。  在准备好参考数据之前等待将事件源联接到 TSI 非常有用，尤其是该事件源包含数据时。 或者，可以在准备好参考数据集之前，等待将数据推送到该事件源。
+### <a name="create-a-time-series-insights-event-source"></a>创建时序见解事件源
 
-若要管理参考数据，可以使用 TSI 资源管理器中基于 Web 的用户界面，或使用编程 C# API。 TSI 资源管理器提供视觉用户体验用于上传文件，或者以 JSON 或 CSV 格式粘贴现有的参考数据集。 借助 API，可以根据需要生成自定义应用。
+1. 如果尚未创建事件源，请完成步骤以[创建事件源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)。
 
-有关在时序见解中管理参考数据的详细信息，请参阅[参考数据文章](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set)。
+1. 为 `timeSeriesId` 设置一个值。 若要详细了解时间序列 ID，请参阅[时序模型](./time-series-insights-update-tsm.md)。
 
-## <a name="create-time-series-insights-event-source"></a>创建时序见解事件源
-1. 如果尚未创建事件源，请按[这些说明](time-series-insights-how-to-add-an-event-source-eventhub.md)操作，以便创建事件源。
+### <a name="push-events"></a>推送事件（windmills 示例）
 
-2. 指定 **deviceTimestamp** 作为时间戳属性名称 - 此属性在 C# 示例中用作实际时间戳。 时间戳属性名称区分大小写，值在作为 JSON 发送到事件中心时必须采用 yyyy-MM-ddTHH:mm:ss.FFFFFFFK 格式。 如果此属性不存在于事件中，则会使用事件中心的排队时间。
+1. 在搜索栏中搜索“事件中心”。 在返回的列表中选择“事件中心”。
 
-  ![创建事件源](media/send-events/event-source-1.png)
+1. 选择事件中心。
 
-## <a name="sample-code-to-push-events"></a>用于推送事件的示例代码
-1. 转到名为 **MySendPolicy** 的事件中心策略。 复制包含策略密钥的**连接字符串**。
+1. 转到“共享访问策略” > “RootManageSharedAccessKey”。 复制连接字符串 - 主键的值。
 
-  ![复制 MySendPolicy 连接字符串](media/send-events/sample-code-connection-string.png)
+    ![复制主键连接字符串的值][5]
 
-2. 运行以下代码，为三个设备中的每一个发送 600 个事件。 使用连接字符串更新 `eventHubConnectionString`。
+1. 转到  https://tsiclientsample.azurewebsites.net/windFarmGen.html 。 URL 运行模拟 windmill 设备。
+1. 在网页上的“事件中心连接字符串”框中，粘贴在[推送事件](#push-events)中复制的连接字符串。
+  
+    ![将主键连接字符串粘贴到“事件中心连接字符串”框中][6]
 
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using Microsoft.ServiceBus.Messaging;
+1. 选择“单击可启动”。 模拟器生成可以直接使用的实例 JSON。
 
-namespace Microsoft.Rdx.DataGenerator
-{
-    internal class Program
-    {
-        private static void Main(string[] args)
-        {
-            var from = new DateTime(2017, 4, 20, 15, 0, 0, DateTimeKind.Utc);
-            Random r = new Random();
-            const int numberOfEvents = 600;
+1. 返回到 Azure 门户中的事件中心。 在“概述”页面上，应该可以看到事件中心收到的新事件：
 
-            var deviceIds = new[] { "device1", "device2", "device3" };
+    ![显示事件中心指标的事件中心“概述”页面][7]
 
-            var events = new List<string>();
-            for (int i = 0; i < numberOfEvents; ++i)
-            {
-                for (int device = 0; device < deviceIds.Length; ++device)
-                {
-                    // Generate event and serialize as JSON object:
-                    // { "deviceTimestamp": "utc timestamp", "deviceId": "guid", "value": 123.456 }
-                    events.Add(
-                        String.Format(
-                            CultureInfo.InvariantCulture,
-                            @"{{ ""deviceTimestamp"": ""{0}"", ""deviceId"": ""{1}"", ""value"": {2} }}",
-                            (from + TimeSpan.FromSeconds(i * 30)).ToString("o"),
-                            deviceIds[device],
-                            r.NextDouble()));
-                }
-            }
+<a id="json"></a>
 
-            // Create event hub connection.
-            var eventHubConnectionString = @"Endpoint=sb://...";
-            var eventHubClient = EventHubClient.CreateFromConnectionString(eventHubConnectionString);
-
-            using (var ms = new MemoryStream())
-            using (var sw = new StreamWriter(ms))
-            {
-                // Wrap events into JSON array:
-                sw.Write("[");
-                for (int i = 0; i < events.Count; ++i)
-                {
-                    if (i > 0)
-                    {
-                        sw.Write(',');
-                    }
-                    sw.Write(events[i]);
-                }
-                sw.Write("]");
-
-                sw.Flush();
-                ms.Position = 0;
-
-                // Send JSON to event hub.
-                EventData eventData = new EventData(ms);
-                eventHubClient.Send(eventData);
-            }
-        }
-    }
-}
-
-```
 ## <a name="supported-json-shapes"></a>支持的 JSON 形状
+
 ### <a name="sample-1"></a>示例 1
 
 #### <a name="input"></a>输入
 
-一个简单的 JSON 对象。
+一个简单的 JSON 对象：
 
 ```json
 {
@@ -155,7 +101,8 @@ namespace Microsoft.Rdx.DataGenerator
     "timestamp":"2016-01-08T01:08:00Z"
 }
 ```
-#### <a name="output---one-event"></a>输出 - 一个事件
+
+#### <a name="output-one-event"></a>输出：一个事件
 
 |id|timestamp|
 |--------|---------------|
@@ -164,7 +111,9 @@ namespace Microsoft.Rdx.DataGenerator
 ### <a name="sample-2"></a>示例 2
 
 #### <a name="input"></a>输入
-包含两个 JSON 对象的 JSON 数组。 每个 JSON 对象都将转换为事件。
+
+包含两个 JSON 对象的 JSON 数组。 每个 JSON 对象都转换为事件。
+
 ```json
 [
     {
@@ -177,7 +126,8 @@ namespace Microsoft.Rdx.DataGenerator
     }
 ]
 ```
-#### <a name="output---two-events"></a>输出 - 两个事件
+
+#### <a name="output-two-events"></a>输出：两个事件
 
 |id|timestamp|
 |--------|---------------|
@@ -189,6 +139,7 @@ namespace Microsoft.Rdx.DataGenerator
 #### <a name="input"></a>输入
 
 具有嵌套 JSON 数组（其中包含两个 JSON 对象）的 JSON 对象：
+
 ```json
 {
     "location":"WestUs",
@@ -203,12 +154,13 @@ namespace Microsoft.Rdx.DataGenerator
         }
     ]
 }
-
 ```
-#### <a name="output---two-events"></a>输出 - 两个事件
-请注意，“location”属性复制到每个事件。
 
-|location|events.id|events.timestamp|
+#### <a name="output-two-events"></a>输出：两个事件
+
+“location”属性复制到每个事件。
+
+|位置|events.id|events.timestamp|
 |--------|---------------|----------------------|
 |WestUs|device1|2016-01-08T01:08:00Z|
 |WestUs|device2|2016-01-08T01:17:00Z|
@@ -217,7 +169,7 @@ namespace Microsoft.Rdx.DataGenerator
 
 #### <a name="input"></a>输入
 
-具有嵌套 JSON 数组（其中包含两个 JSON 对象）的 JSON 对象。 此输入表明复杂 JSON 对象可能表示全局属性。
+具有嵌套 JSON 数组（其中包含两个 JSON 对象）的 JSON 对象。 此输入表明复杂 JSON 对象可以表示全局属性。
 
 ```json
 {
@@ -248,15 +200,24 @@ namespace Microsoft.Rdx.DataGenerator
     ]
 }
 ```
-#### <a name="output---two-events"></a>输出 - 两个事件
 
-|location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
+#### <a name="output-two-events"></a>输出：两个事件
+
+|位置|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
 |---|---|---|---|---|---|---|---|
 |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|压强|psi|108.09|
 |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|振动|abs G|217.09|
 
-
-
 ## <a name="next-steps"></a>后续步骤
+
 > [!div class="nextstepaction"]
-> [在时序见解资源管理器中查看环境](https://insights.timeseries.azure.com)。
+> [在时序见解资源管理器中查看环境](https://insights.timeseries.azure.com)
+
+<!-- Images -->
+[1]: media/send-events/updated.png
+[2]: media/send-events/consumer-group.png
+[3]: media/send-events/shared-access-policy.png
+[4]: media/send-events/shared-access-policy-2.png
+[5]: media/send-events/sample-code-connection-string.png
+[6]: media/send-events/updated_two.png
+[7]: media/send-events/telemetry.png

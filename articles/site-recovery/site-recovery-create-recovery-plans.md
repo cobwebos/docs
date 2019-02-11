@@ -1,17 +1,19 @@
 ---
 title: 使用 Azure Site Recovery 创建和自定义灾难恢复的恢复计划 | Microsoft Docs
 description: 了解如何使用 Azure Site Recovery 服务创建和自定义灾难恢复的恢复计划。
+author: rayne-wiselman
 manager: carmonm
+services: site-recovery
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 5253b5743216fdb7cea9e3d387f64fdba8f56d8a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: d52aa3b39a17c42c0f0e0cb669c69d336b41ba48
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212329"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973192"
 ---
 # <a name="create-and-customize-recovery-plans"></a>创建和自定义恢复计划
 
@@ -42,7 +44,7 @@ ms.locfileid: "50212329"
 
 ## <a name="add-a-group-to-a-plan"></a>向计划中添加组
 
-你可以创建更多组，向各个组中添加计算机，以便可以逐个组指定不同的行为。 例如，你可以为每个组指定组中的计算机在故障转移后应该在何时启动，或者为每个组指定自定义操作。
+可创建更多组，向各个组中添加计算机，以便可以逐个组指定不同的行为。 例如，你可以为每个组指定组中的计算机在故障转移后应该在何时启动，或者为每个组指定自定义操作。
 
 1. 在“恢复计划”中，右键单击该计划 >“自定义”。 默认情况下，在创建计划后，添加到计划中的所有计算机都位于默认的组 1 中。
 2. 单击“+组”。 默认情况下，新组按其添加顺序进行编号。 最多可以添加七个组。

@@ -1,5 +1,5 @@
 ---
-title: Azure 应用服务中的身份验证和授权的高级用法 | Microsoft Docs
+title: 身份验证和授权的高级用法 - Azure 应用服务 | Microsoft Docs
 description: 介绍如何在应用服务中自定义身份验证和授权，以及获取用户声明和不同的令牌。
 services: app-service
 documentationcenter: ''
@@ -13,36 +13,37 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
-ms.openlocfilehash: e1109ec8cc98c7e5fc72d7f56ade19968b0056cc
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: 34902016578d92847bd83a7dede8ef73bb640b3e
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685321"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301571"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权的高级用法
 
-本文介绍了如何自定义[应用服务中的内置身份验证和授权](app-service-authentication-overview.md)，以及如何从应用程序管理标识。 
+本文介绍了如何自定义[应用服务中的内置身份验证和授权](overview-authentication-authorization.md)，以及如何从应用程序管理标识。 
 
 若要快速入门，请参阅以下教程之一：
 
 * [教程：在 Azure 应用服务 (Windows) 中对用户进行端到端身份验证和授权](app-service-web-tutorial-auth-aad.md)
 * [教程：在适用于 Linux 的 Azure 应用服务中对用户进行端到端身份验证和授权](containers/tutorial-auth-aad.md)
-* [如何将应用配置为使用 Azure Active Directory 登录](app-service-mobile-how-to-configure-active-directory-authentication.md)
-* [如何将应用配置为使用 Facebook 登录](app-service-mobile-how-to-configure-facebook-authentication.md)
-* [如何将应用配置为使用 Google 登录](app-service-mobile-how-to-configure-google-authentication.md)
-* [如何将应用配置为使用 Microsoft 帐户登录](app-service-mobile-how-to-configure-microsoft-authentication.md)
-* [如何将应用配置为使用 Twitter 登录](app-service-mobile-how-to-configure-twitter-authentication.md)
+* [如何将应用配置为使用 Azure Active Directory 登录](configure-authentication-provider-aad.md)
+* [如何将应用配置为使用 Facebook 登录](configure-authentication-provider-facebook.md)
+* [如何将应用配置为使用 Google 登录](configure-authentication-provider-google.md)
+* [如何将应用配置为使用 Microsoft 帐户登录](configure-authentication-provider-microsoft.md)
+* [如何将应用配置为使用 Twitter 登录](configure-authentication-provider-twitter.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>使用多个登录提供程序
 
-门户配置不会向用户全面提供多个登录提供程序（例如 Facebook 和 Twitter）。 但是，将此功能添加到 Web 应用并不困难。 步骤概括如下：
+门户配置不会向用户全面提供多个登录提供程序（例如 Facebook 和 Twitter）。 但是，将此功能添加到应用并不困难。 步骤概括如下：
 
 首先，在 Azure 门户中的“身份验证/授权”页上，配置想要启用的每个标识提供者。
 
 在“请求未经身份验证时需执行的操作”中，选择“允许匿名请求(无操作)”。
 
-在登录页、导航栏或 Web 应用的其他任何位置中，将一个登录链接添加到已启用的每个提供程序 (`/.auth/login/<provider>`)。 例如：
+在登录页、导航栏或应用的其他任何位置中，将一个登录链接添加到已启用的每个提供程序 (`/.auth/login/<provider>`)。 例如：
 
 ```HTML
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -62,7 +63,7 @@ ms.locfileid: "51685321"
 
 ## <a name="validate-tokens-from-providers"></a>验证来自提供程序的令牌
 
-在客户端定向的登录中，应用程序手动将用户登录到提供程序，然后将身份验证令牌提交给应用服务进行验证（请参阅[身份验证流](app-service-authentication-overview.md#authentication-flow)）。 此验证本身不实际向你授予对所需应用资源的访问权限，但成功的验证会向你提供一个会话令牌，可以使用该令牌来访问应用资源。 
+在客户端定向的登录中，应用程序手动将用户登录到提供程序，然后将身份验证令牌提交给应用服务进行验证（请参阅[身份验证流](overview-authentication-authorization.md#authentication-flow)）。 此验证本身不实际向你授予对所需应用资源的访问权限，但成功的验证会向你提供一个会话令牌，可以使用该令牌来访问应用资源。 
 
 若要验证提供程序令牌，必须首先为应用服务应用配置所需的提供程序。 在运行时，从你的提供程序检索身份验证令牌后，将令牌发布到 `/.auth/login/<provider>` 进行验证。 例如： 
 
@@ -175,25 +176,25 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 > [!NOTE]
 > 访问令牌用于访问提供程序资源，因此，仅当使用客户端机密配置了提供程序时，才提供这些令牌。 若要了解如何获取刷新令牌，请参阅[刷新访问令牌](#refresh-access-tokens)。
 
-## <a name="refresh-access-tokens"></a>刷新访问令牌
+## <a name="refresh-identity-provider-tokens"></a>刷新标识提供程序令牌
 
-当提供程序的访问令牌过期时，需要重新对用户进行身份验证。 向应用程序的 `/.auth/refresh` 终结点发出 `GET` 调用可以避免令牌过期。 调用应用服务时，应用服务会自动刷新已身份验证用户的令牌存储中的访问令牌。 应用代码发出的后续令牌请求将获取刷新的令牌。 但是，若要正常刷新令牌，令牌存储必须包含提供程序的[刷新令牌](https://auth0.com/learn/refresh-tokens/)。 每个提供程序会阐述获取刷新令牌的方式。以下列表提供了简短摘要：
+当提供程序的访问令牌（而不是[会话令牌](#extend-session-token-expiration-grace-period)）到期时，需要在再次使用该令牌之前重新验证用户。 向应用程序的 `/.auth/refresh` 终结点发出 `GET` 调用可以避免令牌过期。 调用应用服务时，应用服务会自动刷新已身份验证用户的令牌存储中的访问令牌。 应用代码发出的后续令牌请求将获取刷新的令牌。 但是，若要正常刷新令牌，令牌存储必须包含提供程序的[刷新令牌](https://auth0.com/learn/refresh-tokens/)。 每个提供程序会阐述获取刷新令牌的方式。以下列表提供了简短摘要：
 
 - **Google**：将一个 `access_type=offline` 查询字符串参数追加到 `/.auth/login/google` API 调用。 如果使用移动应用 SDK，可将该参数添加到 `LogicAsync` 重载之一（请参阅 [Google 刷新令牌](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)）。
 - **Facebook**：不提供刷新令牌。 生存期较长的令牌在 60 天后过期（请参阅 [Facebook 访问令牌的过期和延期](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)）。
-- **Twitter**：访问令牌不会过期（请参阅 [Twitter OAuth 常见问题解答](https://developer.twitter.com/en/docs/basics/authentication/guides/oauth-faq)）。
-- **Microsoft 帐户**：[配置 Microsoft 帐户身份验证设置](app-service-mobile-how-to-configure-microsoft-authentication.md)时，请选择 `wl.offline_access` 范围。
-- **Azure Active Directory**：在 [https://resources.azure.com](https://resources.azure.com) 中执行以下步骤：
+- **Twitter**：访问令牌不会过期（请参阅 [Twitter OAuth 常见问题解答](https://developer.twitter.com/en/docs/basics/authentication/FAQ)）。
+- **Microsoft 帐户**：[配置 Microsoft 帐户身份验证设置](configure-authentication-provider-microsoft.md)时，请选择 `wl.offline_access` 范围。
+- **Azure Active Directory**：在 [https://resources.azure.com](https://resources.azure.com) 中，执行以下步骤：
     1. 在页面顶部，选择“读/写”。
-    1. 在左侧浏览器中，导航到 **subscriptions** > **_\<subscription\_name_** > **resourceGroups** > _**\<resource\_group\_name>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<app\_name>**_ > **config** > **authsettings**。 
-    1. 单击“编辑”。
-    1. 修改以下属性。 将 _\<app\_id>_ 替换为要访问的服务的 Azure Active Directory 应用程序 ID。
+    2. 在左侧浏览器中，导航到 **subscriptions** > **_\<subscription\_name_** > **resourceGroups** > _**\<resource\_group\_name>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<app\_name>**_ > **config** > **authsettings**。 
+    3. 单击“编辑”。
+    4. 修改以下属性。 将 _\<app\_id>_ 替换为要访问的服务的 Azure Active Directory 应用程序 ID。
 
         ```json
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
         ```
 
-    1. 单击“放置”。 
+    5. 单击“放置”。 
 
 配置提供程序后，可以在令牌存储区[查找刷新令牌和访问令牌的过期时间](#retrieve-tokens-in-app-code)。 
 
@@ -212,9 +213,9 @@ function refreshTokens() {
 
 如果用户撤销了授予应用的权限，对 `/.auth/me` 的调用可能会失败并返回 `403 Forbidden` 响应。 若要诊断错误，请检查应用程序日志了解详细信息。
 
-## <a name="extend-session-expiration-grace-period"></a>延长会话过期宽限期
+## <a name="extend-session-token-expiration-grace-period"></a>延长会话令牌过期宽限期
 
-经过身份验证的会话过期后，默认会提供 72 小时的宽限期。 在此宽限期内，可以使用应用服务刷新会话 Cookie 或会话令牌，而无需重新对用户进行身份验证。 会话 Cookie 或会话令牌失效后，只需调用 `/.auth/refresh`，且不需要自行跟踪令牌过期时间。 72 小时的宽限期过后，用户必须再次登录才能获取有效的会话 Cookie 或会话令牌。
+经过身份验证的会话会在 8 小时后过期。 经过身份验证的会话过期后，默认会提供 72 小时的宽限期。 在此宽限期内，可以使用应用服务刷新会话令牌，而无需重新对用户进行身份验证。 会话令牌失效后，只需调用 `/.auth/refresh`，而不需要自行跟踪令牌过期时间。 72 小时的宽限期过后，用户必须重新登录才能获取有效的会话令牌。
 
 如果 72 小时的时间不够，可以延长此过期期限。 大大延长过期时间可能会造成严重的安全风险（例如身份验证令牌泄密或被盗）。 因此，应将宽限期保留为默认 72 小时，或者将延期设为最小值。
 

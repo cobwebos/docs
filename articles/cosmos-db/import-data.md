@@ -1,23 +1,17 @@
 ---
-title: 适用于 Azure Cosmos DB 的数据库迁移工具 | Microsoft Docs
+title: 适用于 Azure Cosmos DB 的数据库迁移工具
 description: 了解如何使用开源 Azure Cosmos DB 数据迁移工具从各种源将数据导入 Azure Cosmos DB 中，这些源包括 MongoDB、SQL Server、表存储、Amazon DynamoDB、CSV 和 JSON 文件。 将 CSV 转换为 JSON。
-keywords: csv 到 json, 数据库迁移工具, 将 csv 转换为 json
-services: cosmos-db
 author: deborahc
-manager: kfile
-editor: monicar
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: dech
-ms.custom: mvc
-ms.openlocfilehash: e04e3443cdd3bf7aa32d023fc053950c58cf1449
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 82c34f3dcc606ccf7103b557518cd7a54a153183
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853959"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034114"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>使用数据迁移工具将数据迁移到 Azure Cosmos DB
 
@@ -27,7 +21,7 @@ ms.locfileid: "51853959"
 
 * **[SQL API](documentdb-introduction.md)** - 可以使用数据迁移工具中提供的任何源选项导入数据。
 * **[表 API](table-introduction.md)** - 可以使用数据迁移工具或 AzCopy 导入数据。 有关详细信息，请参阅[导入要在 Azure Cosmos DB 表 API 中使用的数据](table-import.md)。
-* **[MongoDB API](mongodb-introduction.md)** - 数据迁移工具目前不支持将 Azure Cosmos DB MongoDB API 作为源或目标。 如果想要从 Azure Cosmos DB 的 MongoDB API 集合中迁入或迁出数据，请参阅 [Azure Cosmos DB：如何迁移 MongoDB API 的数据](mongodb-migrate.md)的相关说明。 仍可使用数据迁移工具将数据从 MongoDB 导出到 Azure Cosmos DB SQL API 集合中，以便使用 SQL API。
+* **[Azure Cosmos DB 的用于 MongoDB 的 API](mongodb-introduction.md)** - 数据迁移工具目前不支持将 Azure Cosmos DB 的用于 MongoDB 的 API 作为源或目标。 如果想要从 Azure Cosmos DB 的集合中迁入或迁出数据，请参阅[如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 将 MongoDB 数据迁移到 Cosmos 数据库](mongodb-migrate.md)的相关说明。 仍可使用数据迁移工具将数据从 MongoDB 导出到 Azure Cosmos DB SQL API 集合中，以便使用 SQL API。
 * **[Gremlin API](graph-introduction.md)** - Gremlin API 帐户目前不支持将数据迁移工具用作导入工具。
 
 本教程涵盖以下任务：
@@ -114,7 +108,7 @@ dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t
 ## <a id="MongoDB"></a>从 MongoDB 导入
 
 > [!IMPORTANT]
-> 如果要导入到支持 MongoDB 的 Azure Cosmos DB 帐户，请遵照这些[说明](mongodb-migrate.md)操作。
+> 如果要导入到 Cosmos 帐户（配置了 Azure Cosmos DB 的用于 MongoDB 的 API），请遵照这些[说明](mongodb-migrate.md)操作。
 
 借助 MongoDB 源导入程序选项，可从单个 MongoDB 集合中导入，并且选择使用查询筛选文档，以及使用投影来修改文档结构。  
 
@@ -177,7 +171,7 @@ dt.exe /s:MongoDBExport /s.Files:D:\mongoemployees.json /t:DocumentDBBulk /t.Con
 
 请注意 Address.AddressType 和 Address.Location.StateProvinceName 等别名。 通过指定嵌套分隔符“.”，导入工具会在导入过程中创建 Address 和 Address.Location 子文档。 下面是 Azure Cosmos DB 中的生成文档的示例：
 
-{ "id": "956", "Name": "Finer Sales and Service", "Address": { "AddressType": "Main Office", "AddressLine1": "#500-75 O'Connor Street", "Location": { "City": "Ottawa", "StateProvinceName": "Ontario" }, "PostalCode": "K4B 1S2", "CountryRegionName": "Canada" } }
+*{ "id":"956", "Name":"Finer Sales and Service", "Address": { "AddressType":"Main Office", "AddressLine1": "#500-75 O'Connor Street", "Location": { "City":"Ottawa", "StateProvinceName":"Ontario" }, "PostalCode":"K4B 1S2", "CountryRegionName":"Canada" } }*
 
 下面是一些从 SQL Server 中导入的命令行示例：
 
@@ -201,7 +195,7 @@ CSV 文件源导入程序选项可用于导入一个或多个 CSV 文件。 添�
 
 请注意 DomainInfo.Domain_Name 和 RedirectInfo.Redirecting 等别名。 通过指定嵌套分隔符“.”，导入工具会在导入过程中创建 DomainInfo 和 RedirectInfo 子文档。 下面是 Azure Cosmos DB 中的生成文档的示例：
 
-{ "DomainInfo": { "Domain_Name": "ACUS.GOV", "Domain_Name_Address": "http://www.ACUS.GOV" }, "Federal Agency": "Administrative Conference of the United States", "RedirectInfo": { "Redirecting": "0", "Redirect_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }
+*{ "DomainInfo": { "Domain_Name":"ACUS.GOV", "Domain_Name_Address": "https://www.ACUS.GOV" }, "Federal Agency":"Administrative Conference of the United States", "RedirectInfo": { "Redirecting":"0", "Redirect_Destination": "" }, "id":"9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
 
 导入工具会尝试针对 CSV 文件中不带引号的值推断类型信息（带引号的值始终作为字符串处理）。  按以下顺序标识类型︰数值、日期时间、布尔值。  
 
@@ -394,13 +388,13 @@ Azure Cosmos DB 帐户连接字符串可从 Azure 门户的“密钥”页中检
 
 * 字符串：保持字符串值
 * Epoch：保持 Epoch 数字值
-* 两者：保持字符串和 Epoch 数字值。 此选项创建一个子文档，例如："date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
+* 两者：保持字符串和 Epoch 数字值。 此选项创建一个子文档，例如："date_joined": { "Value":"2013-10-21T21:17:25.2410000Z", "Epoch":1382390245 }
 
 Azure Cosmos DB 批量导入程序具有下列高级附加选项：
 
-1. 批大小︰工具默认将批大小设置为 50。  如果要导入的文档很大，请考虑减小批大小。 如果要导入的文档很小，请考虑增大批大小。
+1. 批大小：工具默认将批大小设置为 50。  如果要导入的文档很大，请考虑减小批大小。 如果要导入的文档很小，请考虑增大批大小。
 2. 最大脚本大小（字节）：工具默认设置为 512 KB 的最大脚本大小。
-3. 禁用自动生成 ID︰如果要导入的每个文档都包含一个 ID 字段，则选择此选项可以提高性能。 不会导入缺少唯一 ID 字段的文档。
+3. 禁用自动生成 ID：如果要导入的每个文档都包含一个 ID 字段，则选择此选项可以提高性能。 不会导入缺少唯一 ID 字段的文档。
 4. 更新现有文档：工具将默认设置为不替换存在 ID 冲突的现有文档。 选择此选项可以覆盖具有匹配 ID 的现有文档。 此功能可用于更新现有文档的计划内数据迁移。
 5. 失败重试次数：指定在发生暂时性故障（例如网络连接中断）期间重试 Azure Cosmos DB 连接的频率。
 6. 重试间隔：指定在发生暂时性故障（例如网络连接中断）时重试 Azure Cosmos DB 连接等待的时间间隔。
@@ -449,12 +443,12 @@ Azure Cosmos DB 连接字符串的格式为：
 
 * 字符串：保持字符串值
 * Epoch：保持 Epoch 数字值
-* 两者：保持字符串和 Epoch 数字值。 此选项创建一个子文档，例如："date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
+* 两者：保持字符串和 Epoch 数字值。 此选项创建一个子文档，例如："date_joined": { "Value":"2013-10-21T21:17:25.2410000Z", "Epoch":1382390245 }
 
 Azure Cosmos DB - 顺序记录导入程序具有下列高级附加选项：
 
 1. 并行请求数：工具默认设置为两个并行请求。 如果要导入的文档很小，请考虑增加并行请求的数量。 如果此数字提高得过多，则导入可能会遇到速率限制。
-2. 禁用自动生成 ID︰如果要导入的每个文档都包含一个 ID 字段，则选择此选项可以提高性能。 不会导入缺少唯一 ID 字段的文档。
+2. 禁用自动生成 ID：如果要导入的每个文档都包含一个 ID 字段，则选择此选项可以提高性能。 不会导入缺少唯一 ID 字段的文档。
 3. 更新现有文档：工具将默认设置为不替换存在 ID 冲突的现有文档。 选择此选项可以覆盖具有匹配 ID 的现有文档。 此功能可用于更新现有文档的计划内数据迁移。
 4. 失败重试次数：指定在发生暂时性故障（例如网络连接中断）期间重试 Azure Cosmos DB 连接的频率。
 5. 重试间隔：指定在发生暂时性故障（例如网络连接中断）期间重试 Azure Cosmos DB 连接等待的时间间隔。

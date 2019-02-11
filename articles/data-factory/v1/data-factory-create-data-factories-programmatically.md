@@ -9,17 +9,16 @@ ms.assetid: b0a357be-3040-4789-831e-0d0a32a0bda5
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: afee3254ebdd325d756bfc5027cca531442c5689
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d05661c131d981538dada988131c39d4fd956ee9
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257346"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016726"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>使用 Azure 数据工厂 .NET SDK 创建、监视和管理 Azure 数据工厂
 > [!NOTE]
@@ -445,7 +444,7 @@ ms.locfileid: "51257346"
     }
     ```
 
-15. 在“解决方案资源管理器”中展开项目 **DataFactoryAPITestApp**，右键单击“引用”，并单击“添加引用”。 选择 `System.Configuration` 程序集的复选框，并单击“确定”。
+15. 在“解决方案资源管理器”中，展开项目：**DataFactoryAPITestApp**，右键单击“引用”，然后单击“添加引用”。 选择 `System.Configuration` 程序集的复选框，并单击“确定”。
 15. 生成控制台应用程序。 在菜单中单击“生成”，并单击“生成解决方案”。
 16. 确认 Azure Blob 存储中的 adftutorial 容器内至少有一个文件。 如果没有，请在记事本中创建包含以下内容的 Emp.txt 文件，并将其上传到 adftutorial 容器。
 
@@ -457,7 +456,7 @@ ms.locfileid: "51257346"
 18. 使用 Azure 门户验证是否创建了包含以下项目的数据工厂 **APITutorialFactory** ：
     * 链接服务：**AzureStorageLinkedService**
     * 数据集：**DatasetBlobSource** 和 **DatasetBlobDestination**。
-    * 管道： **PipelineBlobSample**
+    * 管道：**PipelineBlobSample**
 19. 验证 **adftutorial** 容器中的 **apifactoryoutput** 文件夹内是否创建了一个输出文件。
 
 ## <a name="get-a-list-of-failed-data-slices"></a>获取失败的数据切片的列表 

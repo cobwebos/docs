@@ -1,6 +1,6 @@
 ---
-title: 收集和分析 Azure Log Analytics 中的 Windows 事件日志 | Microsoft Docs
-description: Windows 事件日志 Log Analytics 使用的最常见的数据源之一。  本文介绍如何配置 Windows 事件日志收集以及在 Log Analytics 工作区中创建的记录的详细信息。
+title: 在 Log Analytics 中收集和分析 Windows 事件日志 | Microsoft Docs
+description: 介绍了如何通过 Log Analytics 配置 Windows 事件日志收集，以及它们创建的记录的详细信息。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -8,19 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: ee52f564-995b-450f-a6ba-0d7b1dac3f32
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/11/2017
+ms.date: 11/28/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 036378c5ed595ffbaeefad9407fba8519945cf5c
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: a60c5c41c3f7f0c26788aa9f986af076d9e82c2f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336409"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102595"
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Log Analytics 中的 Windows 事件日志数据源
 由于许多应用程序都会写入 Windows 事件日志，因此 Windows 事件日志是使用 Windows 代理收集数据的最常见[数据源](agent-data-sources.md)之一。  除了指定由需要监视的应用程序创建的任何自定义日志，还可以从标准日志（如系统和应用程序）中收集事件。
@@ -28,7 +26,7 @@ ms.locfileid: "52336409"
 ![Windows 事件](media/data-sources-windows-events/overview.png)     
 
 ## <a name="configuring-windows-event-logs"></a>配置 Windows 事件日志
-可以从 [Log Analytics 设置中的数据菜单](agent-data-sources.md#configuring-data-sources)配置 Windows 事件日志。
+可以从[“高级设置”中的“数据”菜单](agent-data-sources.md#configuring-data-sources)配置 Windows 事件日志。
 
 Log Analytics 仅从在设置中指定的 Windows 事件日志收集事件。  可以通过键入日志名称并单击“+”添加事件日志。  对于每个日志，仅收集具有所选严重级别的事件。  检查要收集的特定日志的严重级别。  不能向筛选事件提供任何其他条件。
 
@@ -37,7 +35,7 @@ Log Analytics 仅从在设置中指定的 Windows 事件日志收集事件。  �
 ![配置 Windows 事件](media/data-sources-windows-events/configure.png)
 
 ## <a name="data-collection"></a>数据收集
-Log Analytics 在事件创建时从受监视的事件日志中收集与所选严重级别相匹配的每个事件。  代理会在将其收集到的每个事件日志的位置记录下来。  如果代理在一段时间内处于脱机状态，则 Log Analytics 从其上次脱机的位置收集事件，即使这些事件是在代理脱机期间创建的。  如果事件日志在代理脱机时，还有未收集的事件正在被覆盖，则可能无法收集这些事件。
+Log Analytics 在事件创建时从受监视的事件日志中收集与所选严重级别相匹配的每个事件。  代理会在将其收集到的每个事件日志的位置记录下来。  如果代理在一段时间内处于脱机状态，则它从其上次脱机的位置收集事件，即使这些事件是在代理脱机期间创建的。  如果事件日志在代理脱机时，还有未收集的事件正在被覆盖，则可能无法收集这些事件。
 
 >[!NOTE]
 >对于其中包含带关键字“经典” ** 或“审核成功”以及关键字 0xa0000000000000 的事件 ID 为 18453 的源 MSSQLSERVER，Log Analytics 不会从中收集 SQL Server 创建的审核事件。
@@ -63,8 +61,8 @@ Windows 事件记录都有一个**事件**类型，并且具有下表中的属�
 | TimeGenerated |在 Windows 中创建事件的日期和时间。 |
 | Username |记录事件的帐户的用户名。 |
 
-## <a name="log-searches-with-windows-events"></a>使用 Windows 事件的日志搜索
-下表提供了检索 Windows 事件记录的不同日志搜索的示例。
+## <a name="log-queries-with-windows-events"></a>使用 Windows 事件的日志查询
+下表提供了检索 Windows 事件记录的不同日志查询的示例。
 
 | Query | Description |
 |:---|:---|
@@ -76,6 +74,5 @@ Windows 事件记录都有一个**事件**类型，并且具有下表中的属�
 
 ## <a name="next-steps"></a>后续步骤
 * 配置 Log Analytics 以收集其他[数据源](agent-data-sources.md)进行分析。
-* 了解[日志搜索](../../log-analytics/log-analytics-queries.md)以便分析从数据源和解决方案中收集的数据。  
-* 使用[自定义字段](../../log-analytics/log-analytics-custom-fields.md)将事件记录解析为单独字段。
+* 了解[日志查询](../../log-analytics/log-analytics-queries.md)以便分析从数据源和解决方案中收集的数据。  
 * 配置来自 Windows 代理的[性能计数器集合](data-sources-performance-counters.md)。

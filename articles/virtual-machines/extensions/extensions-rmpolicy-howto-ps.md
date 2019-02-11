@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 15a6a7f4753d51118d23d2e3c021010218d2d2d7
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 82b01cec892f15f7f85f6b5f822475114b5b73c6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451827"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434983"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>使用 Azure Policy 限制 Windows VM 上的扩展安装
 
 如果想要阻止在 Windows VM 上使用或安装某些扩展，可以使用 PowerShell 创建 Azure Policy 以限制资源组中的 VM 扩展。 
 
-本教程在 Cloud Shell 中使用 Azure PowerShell，后者已不断更新到最新版本。 如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 3.6 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 
+本教程在 Cloud Shell 中使用 Azure PowerShell，后者已不断更新到最新版本。 如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 3.6 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。 
 
 ## <a name="create-a-rules-file"></a>创建规则文件
 
@@ -139,7 +139,7 @@ $assignment
 
 ## <a name="test-the-policy"></a>测试策略
 
-若要测试策略，请尝试使用 VM 访问扩展。 以下命令将失败并显示消息“Set-AzureRmVMAccessExtension：策略不允许使用资源 'myVMAccess'”。
+若要测试策略，请尝试使用 VM 访问扩展。 以下命令应失败并显示消息“Set-AzureRmVMAccessExtension:策略不允许使用资源 'myVMAccess'”。
 
 ```azurepowershell-interactive
 Set-AzureRmVMAccessExtension `

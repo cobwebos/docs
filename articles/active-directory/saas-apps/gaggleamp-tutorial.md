@@ -4,24 +4,24 @@ description: 了解如何在 Azure Active Directory 和 GaggleAMP 之间配置�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 9cc1a4b7-964b-406b-9e0c-05cb1a7c9856
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 828dd1e1dcef900a7105143088f6782032b4f22e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ccb2e6be481c27661543ff0dc19e5b60b2aa8d8a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436506"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178250"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-gaggleamp"></a>教程：Azure Active Directory 与 GaggleAMP 集成
+# <a name="tutorial-azure-active-directory-integration-with-gaggleamp"></a>教程：Azure Active Directory 与 GaggleAMP 的集成
 
 本教程介绍如何将 GaggleAMP 与 Azure Active Directory (Azure AD) 集成。
 
@@ -227,7 +227,7 @@ ms.locfileid: "39436506"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

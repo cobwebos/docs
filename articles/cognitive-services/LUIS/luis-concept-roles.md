@@ -1,21 +1,22 @@
 ---
-title: 了解如何在基于模式的实体中使用角色
+title: 实体角色
 titleSuffix: Azure Cognitive Services
-description: 角色是仅在模式中使用的实体的已命名上下文子类型。 例如，在购买从纽约到伦敦的车票的话语中，纽约和伦敦都是城市，但是两者在句中的含义不同。 纽约为出发城市，伦敦为目标城市。
+description: 角色是仅在模式中使用的实体的已命名上下文子类型。 例如，在表述 `buy a ticket from New York to London` 中，纽约和伦敦都是城市，但是两者在句中的含义不同。 纽约为出发城市，伦敦为目标城市。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: f5f790d4cdba8b6ebc1ed2694cb4552cb565f676
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: f5768012a03629190a65dd86d004dc842d99912e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427210"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215940"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>模式中的实体角色是上下文子类型
 角色是仅在[模式](luis-concept-patterns.md)中使用的实体的已命名上下文子类型。
@@ -44,6 +45,16 @@ ms.locfileid: "52427210"
 
 
 [!INCLUDE [H2 Roles versus hierarchical entities](../../../includes/cognitive-services-luis-hier-roles.md)] 
+
+## <a name="example-role-for-entities"></a>实体的示例角色
+
+角色只是一个实体在话语中的上下文学习位置。 当话语具有多个实体类型时，它最有效。 对于任何实体类型，最简单的示例是区分 to 和 from 位置。 位置可以用许多不同的实体类型表示。 
+
+一个示例用例是将员工从一个部门调到另一个部门，其中每个部门都是列表中的项目。 例如： 
+
+`Move [PersonName] from [Department:from] to [Department:to]`。 
+
+在返回的预测中，两个部门实体将在 JSON 响应中返回，每个部门实体都将包含角色名称。 
 
 ## <a name="roles-with-prebuilt-entities"></a>具有预构建实体的角色
 

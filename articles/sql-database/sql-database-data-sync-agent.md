@@ -11,17 +11,20 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 11/12/2018
-ms.openlocfilehash: bb80b512176e8fe260eb4572ea9fa801a6ffc80a
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 12/20/2018
+ms.openlocfilehash: 78d85239e1e82c290b210d33d3ca7000d6a05a1f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685134"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567904"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Azure SQL 数据同步的数据同步代理
 
 通过安装并配置 Azure SQL 数据同步的数据同步代理来将数据与本地 SQL Server 数据库进行同步。有关 SQL 数据同步的详细信息，请参阅[使用 SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
+
+> [!IMPORTANT]
+> 目前，Azure SQL 数据同步**不**支持 Azure SQL 数据库托管实例。
 
 ## <a name="download-and-install"></a>下载并安装
 
@@ -136,7 +139,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 
 ### <a name="agent-start"></a>客户端代理未启动（错误 1069）
 
-发现代理未在托管 SQL Server 的计算机上运行。 尝试手动启动代理时出现一个对话框，其中显示消息“错误 1069: 由于登录失败，服务未启动。”
+发现代理未在托管 SQL Server 的计算机上运行。 尝试手动启动代理时出现一个对话框，其中显示消息“错误 1069:由于登录失败，服务未启动。”
 
 ![数据同步错误 1069 对话框](media/sql-database-troubleshoot-data-sync/sync-error-1069.png)
 
@@ -145,7 +148,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 - **解决方法**。 将代理的密码更新为当前服务器密码：
 
   1. 找到 SQL 数据同步客户端代理服务。  
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“启动”。  
+    a. 选择“启动”。  
     b. 在搜索框中输入 **services.msc**。  
     c. 在搜索结果中，选择“服务”。  
     d. 在“服务”窗口中，滚动到 **SQL 数据同步代理**所对应的条目。  
@@ -211,7 +214,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 
   1. 退出应用。  
   1. 打开组件服务面板。  
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在任务栏上的搜索框中输入 **services.msc**。  
+    a. 在任务栏上的搜索框中输入 **services.msc**。  
     b. 在搜索结果中，双击“服务”。  
   1. 停止“SQL 数据同步”服务。
   1. 重启“SQL 数据同步”服务。  

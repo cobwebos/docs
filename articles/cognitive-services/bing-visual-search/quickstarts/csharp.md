@@ -1,187 +1,106 @@
 ---
-title: 快速入门：创建视觉搜索查询 (C#) - 必应视觉搜索
+title: 快速入门：使用必应视觉搜索 REST API 和 C# 获取图像见解
 titleSuffix: Azure Cognitive Services
-description: 展示了如何将图像上传到必应视觉搜索 API 并获取有关该图像的见解。
+description: 了解如何将图像上传到必应视觉搜索 API 并获取其相关见解。
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 2f22c240eedf9a720912e96bc8f3c7ac269c1bc7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 2ceef9391e6476ac184989b0411428203abefe14
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441173"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55173337"
 ---
-# <a name="quickstart-your-first-bing-visual-search-query-in-c"></a>快速入门：使用 C# 编写的第一个必应视觉搜索查询
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>快速入门：使用必应视觉搜索 REST API 和 C# 获取图像见解
 
-必应视觉搜索 API 将返回有关所提供的图像的信息。 可以通过使用图像的 URL、见解标记或通过上传图像来提供图像。 有关这些选项的信息，请参阅[什么是必应视觉搜索 API？](../overview.md) 本文演示了如何上传图像。 上传图像在移动方案中非常有用，在这类方案中，你可以拍摄知名地标的照片并获取有关它的信息。 例如，见解可能包括有关地标的花边消息。 
-
-如果上传本地图像，则下面显示了必须在 POST 的正文中包含的窗体数据。 窗体数据必须包含 Content-Disposition 标头。 它的 `name` 参数必须设置为“image”，`filename` 参数可以设置为任何字符串。 窗体内容是图像的二进制文件。 可以上传的最大图像大小为 1 MB。 
-
-```
---boundary_1234-abcd
-Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
-
-ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
-
---boundary_1234-abcd--
-```
-
-本文包括了一个简单的控制台应用程序，它发送必应视觉搜索 API 请求并显示 JSON 搜索结果。 虽然此应用程序是用 C# 编写的，但 API 是一种 RESTful Web 服务，与任何可以发出 HTTP 请求并分析 JSON 的编程语言兼容。 
-
-示例程序仅使用了 .NET Core 类，并使用 .NET CLR 在 Windows 上运行，或者使用 [Mono](http://www.mono-project.com/) 在 Linux 或 macOS 上运行。
-
+使用本快速入门首次调用必应视觉搜索 API 并查看搜索结果。 此简单 C# 应用程序会将一个图像上传到该 API，并显示返回的相关信息。
 
 ## <a name="prerequisites"></a>先决条件
-对于本快速入门，你需要以 S9 价格层开始订阅，如[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/) 中所示。 
 
-若要在 Azure 门户中开始订阅，请执行以下操作：
-1. 在 Azure 门户顶部显示 `Search resources, services, and docs` 的文本框中输入“BingSearchV7”。  
-2. 在“市场”下的下拉列表中，选择 `Bing Search v7`。
-3. 输入新资源的 `Name`。
-4. 选择 `Pay-As-You-Go` 订阅。
-5. 选择 `S9` 定价层。
-6. 单击 `Enable` 即可开始订阅。
+* 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
+* [Json.NET](https://www.newtonsoft.com/json) 框架，可以 NuGet 包的形式提供。
+* 如果使用的是 Linux/MacOS，则可使用 [Mono](http://www.mono-project.com/) 运行此应用程序。
 
-需要使用 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 才能在 Windows 上运行此代码。 （免费的社区版也可以。）  
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-## <a name="running-the-application"></a>运行应用程序
+## <a name="create-and-initialize-a-project"></a>创建并初始化项目
 
-下面展示了如何使用 HttpWebRequest 发送消息。 有关使用 HttpClient、HttpRequestMessage 和 MultipartFormDataContent 的示例，请参阅[使用 HttpClient](#using-httpclient)。
+1. 在 Visual Studio 中创建一个名为 `BingSearchApisQuickStart` 的新控制台解决方案。 然后将以下命名空间添加到主代码文件。
 
-若要运行此应用程序，请执行以下步骤：
+    ```csharp
+    using System;
+    using System.Text;
+    using System.Net;
+    using System.IO;
+    using System.Collections.Generic;
+    ```
 
-1. 在 Visual Studio 中创建一个新的控制台解决方案。
-1. 将 `Program.cs` 的内容替换为本快速入门中显示的代码。
-2. 将 `accessKey` 值替换为你的订阅密钥。
-2. 将 `imagePath` 值替换为要上传的图像的路径。
-3. 运行该程序。
+2. 为订阅密钥、终结点以及要上传的图像的路径添加变量。
 
-
-```csharp
-using System;
-using System.Text;
-using System.Net;
-using System.IO;
-using System.Collections.Generic;
-
-namespace VisualSearchUpload
-{
-
-    class Program
-    {
-        // **********************************************
-        // *** Update and verify the following values. ***
-        // **********************************************
-
-        // Replace the accessKey string value with your valid subscription key.
+    ```csharp
         const string accessKey = "<yoursubscriptionkeygoeshere>";
-
         const string uriBase = "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch";
-
-        // Set the path to the image that you want to get insights of. 
         static string imagePath = @"<pathtoimagegoeshere>";
-
-        // Boundary strings for form data in body of POST.
-        const string CRLF = "\r\n";
-        static string BoundaryTemplate = "batch_{0}";
-        static string StartBoundaryTemplate = "--{0}";
-        static string EndBoundaryTemplate = "--{0}--";
-
-        const string CONTENT_TYPE_HEADER_PARAMS = "multipart/form-data; boundary={0}";
-        const string POST_BODY_DISPOSITION_HEADER = "Content-Disposition: form-data; name=\"image\"; filename=\"{0}\"" + CRLF +CRLF;
+    ```
 
 
-        static void Main()
-        {
-            try
+1. 创建名为 `GetImageFileName()` 的方法以获取图像的路径
+    
+    ```csharp
+    static string GetImageFileName(string path)
             {
-                Console.OutputEncoding = System.Text.Encoding.UTF8;
-
-                if (accessKey.Length == 32)
-                {
-                    if (IsImagePathSet(imagePath))
-                    {
-                        var filename = GetImageFileName(imagePath);
-                        Console.WriteLine("Getting image insights for image: " + filename);
-                        var imageBinary = GetImageBinary(imagePath);
-
-                        // Set up POST body.
-                        var boundary = string.Format(BoundaryTemplate, Guid.NewGuid());
-                        var startFormData = BuildFormDataStart(boundary, filename);
-                        var endFormData = BuildFormDataEnd(boundary);
-                        var contentTypeHdrValue = string.Format(CONTENT_TYPE_HEADER_PARAMS, boundary);
-
-                        var json = BingImageSearch(startFormData, endFormData, imageBinary, contentTypeHdrValue);
-
-                        Console.WriteLine("\nJSON Response:\n");
-                        Console.WriteLine(JsonPrettyPrint(json));
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Invalid Bing Visual Search API subscription key!");
-                    Console.WriteLine("Please paste yours into the source code.");
-                }
-
-                Console.Write("\nPress Enter to exit ");
-                Console.ReadLine();
+                return new FileInfo(path).Name;
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
+    ```
 
+2. 创建一种用于获取图像的二进制字符的方法。
 
+    ```csharp
+    static byte[] GetImageBinary(string path)
+    {
+        return File.ReadAllBytes(path);
+    }
+    ```
 
-        /// <summary>
-        /// Verify that imagePath exists.
-        /// </summary>
-        static Boolean IsImagePathSet(string path)
-        {
-            if (string.IsNullOrEmpty(path))
-                throw new ArgumentException("Image path is null or empty.");
+## <a name="build-the-form-data"></a>生成窗体数据
 
-            if (!File.Exists(path))
-                throw new ArgumentException("Image path does not exist.");
+上传本地图像时，发送到 API 的窗体数据的格式必须正确。 它必须包括内容处置标头，它的 `name` 参数必须设置为“image”，`filename` 参数可以设置为任何字符串。 窗体内容包含图像的二进制文件。 可以上传的最大图像大小为 1 MB。
 
-            var size = new FileInfo(path).Length;
+    ```
+    --boundary_1234-abcd
+    Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
+    
+    ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
+    
+    --boundary_1234-abcd--
+    ```
 
-            if (size > 1000000)
-                throw new ArgumentException("Image is greater than the 1 MB maximum size.");
+1. 若要设置窗体数据的格式，请添加边界字符串以正确设置 POST 窗体数据的格式，这将确定数据的开头、结尾和换行字符。
 
-            return true;
-        }
+    ```csharp
+    // Boundary strings for form data in body of POST.
+    const string CRLF = "\r\n";
+    static string BoundaryTemplate = "batch_{0}";
+    static string StartBoundaryTemplate = "--{0}";
+    static string EndBoundaryTemplate = "--{0}--";
+    ```
 
+2. 以下变量将用于向窗体数据添加参数。 
 
+    ```csharp
+    const string CONTENT_TYPE_HEADER_PARAMS = "multipart/form-data; boundary={0}";
+    const string POST_BODY_DISPOSITION_HEADER = "Content-Disposition: form-data; name=\"image\"; filename=\"{0}\"" + CRLF +CRLF;
+    ```
 
-        /// <summary>
-        /// Get the binary characters of an image.
-        /// </summary>
-        static byte[] GetImageBinary(string path)
-        {
-            return File.ReadAllBytes(path);
-        }
-
-
-        /// <summary>
-        /// Get the image's filename.
-        /// </summary>
-        static string GetImageFileName(string path)
-        {
-            return new FileInfo(path).Name;
-        }
-
-
-        /// <summary>
-        /// Build the beginning part of the form data.
-        /// </summary>
+3. 创建名为 `BuildFormDataStart()` 的函数，以使用边界字符串和图像路径创建所需窗体数据的开头部分。
+    
+    ```csharp
         static string BuildFormDataStart(string boundary, string filename)
         {
             var startBoundary = string.Format(StartBoundaryTemplate, boundary);
@@ -191,21 +110,26 @@ namespace VisualSearchUpload
 
             return requestBody;
         }
+    ```
 
-
-        /// <summary>
-        /// Build the ending part of the form data.
-        /// </summary>
+4. 创建名为 `BuildFormDataEnd()` 的函数，以使用边界字符串创建所需窗体数据的结尾部分。
+    
+    ```csharp
         static string BuildFormDataEnd(string boundary)
         {
             return CRLF + CRLF + string.Format(EndBoundaryTemplate, boundary) + CRLF;
         }
+    ```
 
+## <a name="call-the-bing-visual-search-api"></a>调用必应视觉搜索 API
 
+1. 创建一个函数来调用必应视觉搜索终结点，并返回 json 响应。 此函数应采取窗体数据（包含图像数据和 contentType 值的字节数组）的开头和结尾部分。
 
-        /// <summary>
-        /// Calls the Bing visual search endpoint and returns the JSON response.
-        /// </summary>
+2. 使用 `WebRequest` 存储 URI、contentType 值和标头。  
+
+3. 使用 `request.GetRequestStream()` 写入窗体和图像数据。 然后获取响应。 此函数应如以下代码所示：
+        
+    ```csharp
         static string BingImageSearch(string startFormData, string endFormData, byte[] image, string contentTypeValue)
         {
             WebRequest request = HttpWebRequest.Create(uriBase);
@@ -226,89 +150,45 @@ namespace VisualSearchUpload
                 writer.Close();
             }
 
-
             HttpWebResponse response = (HttpWebResponse)request.GetResponseAsync().Result;
             string json = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
             return json;
         }
+    ```
 
+## <a name="create-the-main-method"></a>创建 main 方法
 
-        /// <summary>
-        /// Formats the given JSON string by adding line breaks and indents.
-        /// </summary>
-        /// <param name="json">The raw JSON string to format.</param>
-        /// <returns>The formatted JSON string.</returns>
-        static string JsonPrettyPrint(string json)
-        {
-            if (string.IsNullOrEmpty(json))
-                return string.Empty;
+1. 在应用程序的 main 方法中，获取图像的文件名和图像二进制文件。 
 
-            json = json.Replace(Environment.NewLine, "").Replace("\t", "");
+    ```csharp
+    var filename = GetImageFileName(imagePath);
+    var imageBinary = GetImageBinary(imagePath);
+    ```
 
-            StringBuilder sb = new StringBuilder();
-            bool quote = false;
-            bool ignore = false;
-            char last = ' ';
-            int offset = 0;
-            int indentLength = 2;
+2. 通过设置 POST 正文的边界格式来对其进行设置。 然后调用 `startFormData()` 和 `endFormData` 来创建窗体数据。 
 
-            foreach (char ch in json)
-            {
-                switch (ch)
-                {
-                    case '"':
-                        if (!ignore) quote = !quote;
-                        break;
-                    case '\\':
-                        if (quote && last != '\\') ignore = true;
-                        break;
-                }
+    ```csharp
+    // Set up POST body.
+    var boundary = string.Format(BoundaryTemplate, Guid.NewGuid());
+    var startFormData = BuildFormDataStart(boundary, filename);
+    var endFormData = BuildFormDataEnd(boundary);
+    ```
 
-                if (quote)
-                {
-                    sb.Append(ch);
-                    if (last == '\\' && ignore) ignore = false;
-                }
-                else
-                {
-                    switch (ch)
-                    {
-                        case '{':
-                        case '[':
-                            sb.Append(ch);
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', ++offset * indentLength));
-                            break;
-                        case '}':
-                        case ']':
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', --offset * indentLength));
-                            sb.Append(ch);
-                            break;
-                        case ',':
-                            sb.Append(ch);
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', offset * indentLength));
-                            break;
-                        case ':':
-                            sb.Append(ch);
-                            sb.Append(' ');
-                            break;
-                        default:
-                            if (quote || ch != ' ') sb.Append(ch);
-                            break;
-                    }
-                }
-                last = ch;
-            }
+3. 通过设置 `CONTENT_TYPE_HEADER_PARAMS` 和窗体数据边界的格式创建 ContentType 值。
 
-            return sb.ToString().Trim();
-        }
-    }
-}
-```
+    ```csharp
+    var contentTypeHdrValue = string.Format(CONTENT_TYPE_HEADER_PARAMS, boundary);
+    ```
 
+4. 通过调用 `BingImageSearch()` 获取 API 响应。 然后输出响应。
+
+    ```csharp
+    var json = BingImageSearch(startFormData, endFormData, imageBinary, contentTypeHdrValue);
+    Console.WriteLine(json);
+    Console.WriteLine("enter any key to continue");
+    Console.readKey();
+    ```
 
 ## <a name="using-httpclient"></a>使用 HttpClient
 
@@ -388,15 +268,7 @@ namespace VisualSearchUpload
         }
 ```
 
-
-
-
 ## <a name="next-steps"></a>后续步骤
 
-[使用见解标记获取有关图像的见解](../use-insights-token.md)  
-[必应视觉搜索图像上传教程](../tutorial-visual-search-image-upload.md)
-[必应视觉搜索单页应用教程](../tutorial-bing-visual-search-single-page-app.md)
-[必应视觉搜索概述](../overview.md)  
-[试用](https://aka.ms/bingvisualsearchtryforfree)  
-[获取免费试用版访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
-[必应视觉搜索 API 参考](https://aka.ms/bingvisualsearchreferencedoc)
+> [!div class="nextstepaction"]
+> [生成自定义搜索 Web 应用](../tutorial-bing-visual-search-single-page-app.md)

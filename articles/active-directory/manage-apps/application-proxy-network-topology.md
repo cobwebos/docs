@@ -4,9 +4,9 @@ description: 介绍使用 Azure AD 应用程序代理时的网络拓扑注意事
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.date: 07/28/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 2321ccf115e3b517bdc593c0c428c61d5dd90968
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 91f419f22dc4fdd13b136df5a790cd5ab699f683
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39367083"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180086"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>使用 Azure Active Directory 应用程序代理时的网络拓扑注意事项
 
@@ -40,7 +40,7 @@ ms.locfileid: "39367083"
 
 注册 Azure AD 租户时，租户所在的区域根据指定的国家/地区确定。 启用应用程序代理时，将在 Azure AD 租户所在的同一区域或者与它最靠近的区域中选择或创建租户的应用程序代理服务实例。
 
-例如，如果 Azure AD 租户所在的区域为欧盟 (EU)，则所有 Azure AD 应用程序代理连接器将使用位于 EU 的 Azure 数据中心内的服务实例。 当用户访问发布的应用程序时，其流量会流经此位置中的应用程序代理服务实例。
+例如，如果你的 Azure AD 租户所在的区域为英国，则所有 Azure AD 应用程序代理连接器都使用位于 EU 数据中心内的服务实例。 当用户访问发布的应用程序时，其流量会流经此位置中的应用程序代理服务实例。
 
 ## <a name="considerations-for-reducing-latency"></a>有关降低延迟的注意事项
 
@@ -85,11 +85,11 @@ ms.locfileid: "39367083"
 
 如果连接器需连接到域控制器，此模式十分有利。 这种方法适用于大多数方案，因此大多数客户都使用此模式。 也可以将此模式与模式 2 结合使用，优化服务与连接器之间的流量。
 
-### <a name="pattern-2-take-advantage-of-expressroute-with-public-peering"></a>模式 2：利用结合公共对等互连的 ExpressRoute
+### <a name="pattern-2-take-advantage-of-expressroute-with-microsoft-peering"></a>模式 2：将 ExpressRoute 与 Microsoft 对等互连配合使用
 
-如果结合公共对等互连设置了 ExpressRoute，可为应用程序代理与连接器之间的流量使用更快的 ExpressRoute 连接。 连接器仍在网络中靠近应用的位置。
+如果你为 ExpressRoute 设置了 Microsoft 对等互连，则可为应用程序代理与连接器之间的流量使用更快的 ExpressRoute 连接。 连接器仍在网络中靠近应用的位置。
 
-### <a name="pattern-3-take-advantage-of-expressroute-with-private-peering"></a>模式 3：利用结合专用对等互连的 ExpressRoute
+### <a name="pattern-3-take-advantage-of-expressroute-with-private-peering"></a>模式 3：将 ExpressRoute 与专用对等互连配合使用
 
 如果已在 Azure 与企业网络之间结合专用对等互连设置了专用 VPN 或 ExpressRoute，则还可以使用另一个选项。 在此配置中，Azure 中的虚拟网络通常被视为企业网络的扩展。 因此，可将连接器安装在 Azure 数据中心，同时仍可满足连接器到应用的连接的低延迟要求。
 
@@ -111,15 +111,15 @@ ms.locfileid: "39367083"
 
 对于这些方案，为了方便讨论，我们将每个连接称为“跃点”并为其编号：
 
-- 跃点 1：从用户到应用程序代理服务
-- 跃点 2：从应用程序代理服务到应用程序代理连接器
-- 跃点 3：从应用程序代理连接器到目标应用程序 
+- **跃点 1**：从用户到应用程序代理服务
+- **跃点 2**：从应用程序代理服务到应用程序代理连接器
+- **跃点 3**：从应用程序代理连接器到目标应用程序 
 
 ### <a name="use-case-1"></a>用例 1
 
-**方案：** 该应用位于组织在美国部署的网络中，其用户位于同一区域。 Azure 数据中心与企业网络之间不存在 ExpressRoute 或 VPN。
+**场景：** 该应用位于组织在美国部署的网络中，其用户位于同一区域。 Azure 数据中心与企业网络之间不存在 ExpressRoute 或 VPN。
 
-**建议：** 遵循前一部分中所述的模式 1。 为了降低延迟，可以根据需要考虑使用 ExpressRoute。
+**建议：** 遵循上一部分中所述的模式 1。 为了降低延迟，可以根据需要考虑使用 ExpressRoute。
 
 这是一个简单的模式。 可以通过将连接器放置在应用附近来优化跃点 3。 这也是一种自然而然的选择，因为安装的连接器通常与应用和数据中心建立直通连接，以便执行 KCD 操作。
 
@@ -127,9 +127,9 @@ ms.locfileid: "39367083"
 
 ### <a name="use-case-2"></a>用例 2
 
-**方案：** 该应用位于组织在美国部署的网络中，其用户遍布全球各地。 Azure 数据中心与企业网络之间不存在 ExpressRoute 或 VPN。
+**场景：** 该应用位于组织在美国部署的网络中，其用户遍布全球各地。 Azure 数据中心与企业网络之间不存在 ExpressRoute 或 VPN。
 
-**建议：** 遵循前一部分中所述的模式 1。 
+**建议：** 遵循上一部分中所述的模式 1。 
 
 同样，常见的模式是优化跃点 3，其中的连接器放置在应用附近。 如果将整个跃点 3 放在同一区域，则它的系统开销通常不大。 但是，根据用户所在的位置，跃点 1 的系统开销可能更大，因为世界各地的用户必须访问位于美国的应用程序代理实例。 值得注意的是，由于用户遍布全球各地，任何代理解决方案将具有类似的特征。
 
@@ -137,21 +137,21 @@ ms.locfileid: "39367083"
 
 ### <a name="use-case-3"></a>用例 3
 
-**方案：** 该应用位于组织在美国部署的网络中。 Azure 与企业网络之间存在结合公共对等互连的 ExpressRoute。
+**场景：** 该应用位于组织在美国部署的网络中。 Azure 与企业网络之间存在采用 Microsoft 对等互连的 ExpressRoute。
 
-建议：遵循前一部分中所述的模式 1 和模式 2。
+**建议：** 遵循上一部分中所述的模式 1 和模式 2。
 
 首先，使连接器尽量靠近应用。 然后，系统自动为跃点 2 使用 ExpressRoute。 
 
-如果 ExpressRoute 链路使用公共对等互连，代理与连接器之间的流量将通过该链路流动。 跃点 2 的延迟将得到优化。
+如果 ExpressRoute 链路使用 Microsoft 对等互连，则代理与连接器之间的流量将通过该链路流动。 跃点 2 的延迟将得到优化。
 
 ![显示代理与连接器之间的 ExpressRoute 连接的示意图](./media/application-proxy-network-topology/application-proxy-pattern3.png)
 
 ### <a name="use-case-4"></a>用例 4
 
-**方案：** 该应用位于组织在美国部署的网络中。 Azure 与企业网络之间存在结合专用对等互连的 ExpressRoute。
+**场景：** 该应用位于组织在美国部署的网络中。 Azure 与企业网络之间存在结合专用对等互连的 ExpressRoute。
 
-建议：遵循前一部分中所述的模式 3。
+**建议：** 遵循上一部分中所述的模式 3。
 
 将连接器放置在通过 ExpressRoute 专用对等互连连接到企业网络的 Azure 数据中心内。 
 
@@ -161,7 +161,7 @@ ms.locfileid: "39367083"
 
 ### <a name="use-case-5"></a>用例 5
 
-**方案：** 该应用位于组织在欧盟部署的网络中，应用程序代理实例和大多数用户位于美国。
+**场景：** 应用位于组织在欧盟部署的网络中，应用程序代理实例和大多数用户位于美国。
 
 **建议：** 将连接器放置在应用的附近。 由于美国用户访问的应用程序代理实例正好处于同一区域，因此跃点 1 的系统开销也不会太高。 跃点 3 经过优化。 考虑使用 ExpressRoute 来优化跃点 2。 
 
@@ -173,7 +173,7 @@ ms.locfileid: "39367083"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [启用应用程序代理](application-proxy-enable.md)
+- [启用应用程序代理](application-proxy-add-on-premises-application.md)
 - [启用单一登录](application-proxy-configure-single-sign-on-with-kcd.md)
 - [启用条件性访问](application-proxy-integrate-with-sharepoint-server.md)
 - [解决使用应用程序代理时遇到的问题](application-proxy-troubleshoot.md)

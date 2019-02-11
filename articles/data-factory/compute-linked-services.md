@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/31/2018
+ms.date: 01/15/2019
 ms.author: douglasl
-ms.openlocfilehash: 127438e1e65400daac75cec525197a5cfc8cd46a
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 5e620b03f5588369fc73a62f2019d857766596fd
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390205"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321936"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
 本文介绍可用于处理或转换数据的不同计算环境。 同时还详细介绍了配置将这些计算环境链接到 Azure 数据工厂的链接服务时，数据工厂所支持的不同配置（按需和自带）。
@@ -34,11 +34,11 @@ ms.locfileid: "39390205"
 
 >  
 
-## <a name="on-demand-compute-environment"></a>按需计算环境
+## <a name="on-demand-hdinsight-compute-environment"></a>按需 HDInsight 计算环境
 在此类型的配置中，计算环境由 Azure 数据工厂服务完全管理。 作业提交到进程数据前，数据工厂服务会自动创建计算环境，作业完成后则自动将其删除。 可以为按需计算环境创建并配置链接服务，以及控制作业执行、群集管理和引导操作的粒度设置。
 
 > [!NOTE]
-> 按需配置目前仅支持 Azure HDInsight 群集。
+> 按需配置目前仅支持 Azure HDInsight 群集。 Azure Databricks 还支持使用作业群集的按需作业，有关详细信息，请参阅 [Azure Databricks 链接服务](#azure-databricks-linked-service)。
 
 ## <a name="azure-hdinsight-on-demand-linked-service"></a>Azure HDInsight 按需链接服务
 Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据。 群集创建在与该群集相关联的存储帐户（JSON 中的 linkedServiceName 属性）所在的同一区域中。 存储帐户必须是通用的标准 Azure 存储帐户。 
@@ -48,11 +48,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 * 按需 HDInsight 群集在 Azure 订阅下创建。 当群集启动并运行时，你可以在 Azure 门户中查看群集。 
 * 在按需 HDInsight 群集上运行的作业日志将复制到与 HDInsight 群集相关联的存储帐户。 在链接的服务定义中定义的 clusterUserName、clusterPassword、clusterSshUserName、clusterSshPassword 用于登录到群集，以便在群集的生命周期内进行深入故障排除。 
 * 仅对 HDInsight 群集启动并运行作业的时间进行收费。
-* 不能对 Azure HDInsight 按需链接服务使用脚本操作。 例如，如果需要安装其他依赖项，请考虑使用 Azure 自动化来运行执行以下操作的 PowerShell 脚本：  
-  a. 创建 HDInsight 群集。  
-  b. 运行脚本操作来安装其他依赖项，例如。  
-  c. 运行数据工厂管道。  
-  d. 删除群集。  
+* 可以对 Azure HDInsight 按需链接服务使用**脚本操作**。  
 
 > [!IMPORTANT]
 > 按需预配 Azure HDInsight 群集通常需要 **20 分钟**或更长时间。
@@ -107,27 +103,27 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | linkedServiceName            | 由按需群集用于存储和处理数据的 Azure 存储链接服务。 HDInsight 群集在创建时与此 Azure 存储帐户位于同一区域。 Azure HDInsight 会限制可在其支持的每个 Azure 区域中使用的核心总数。 确保在 Azure 区域中有足够的内核配额来满足所需的 clusterSize。 有关详细信息，请参阅[使用 Hadoop、Spark、Kafka 等在 HDInsight 中设置群集](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)<p>目前，无法创建使用 Azure Data Lake Store 作为存储的按需 HDInsight 群集。 如果想要存储在 Azure Data Lake Store 中处理的来自 HDInsight 的结果数据，请使用复制活动将数据从 Azure Blob 存储复制到 Azure Data Lake Store。 </p> | 是      |
 | clusterResourceGroup         | 在此资源组中创建 HDInsight 群集。 | 是      |
 | timetolive                   | 按需 HDInsight 群集允许的空闲时间。 指定当活动运行完成后，如果群集中没有其他的活动作业，按需 HDInsight 群集保持活动状态的时间。 允许的最小值为 5 分钟 (00: 05:00)。<br/><br/>例如，如果一个活动运行需要 6 分钟，而 timetolive 的设置是 5 分钟，则当 6 分钟的活动运行处理结束后，群集将保持 5 分钟的活动状态。 如果在这 6 分钟的时间内执行其他的活动运行，则由同一群集进行处理。<br/><br/>创建按需 HDInsight 群集是一项开销非常大的操作（可能会花费一定的时间），因此请根据需要使用此设置，以通过重复使用一个按需 HDInsight 群集来提高数据工厂的性能。<br/><br/>如果将 timetolive 值设置为 0，则将会在活动运行处理完后立即删除群集。 然而，如果设置了较高的值，则群集可能会保持空闲状态，以方便你登录进行某些故障排除工作，但这可能会导致成本高昂。 因此，根据具体需要设置适当的值非常重要。<br/><br/>如果 timetolive 属性值设置适当，多个管道则可共享按需 HDInsight 群集实例。 | 是      |
-| clusterType                  | 要创建的 HDInsight 群集的类型。 允许的值是“hadoop”和“spark”。 如果未指定，默认值为 hadoop。 目前不支持启用了企业安全性套餐的群集 | 否       |
+| clusterType                  | 要创建的 HDInsight 群集的类型。 允许的值是“hadoop”和“spark”。 如果未指定，默认值为 hadoop。 无法按需创建启用企业安全性套餐的群集，请改用[现有群集/自带计算](#azure-hdinsight-linked-service)。 | 否       |
 | 版本                      | HDInsight 群集的版本。 如果未指定较高的值，则使用当前 HDInsight 定义的默认版本。 | 否       |
 | hostSubscriptionId           | 用于创建 HDInsight 群集的 Azure 订阅 ID。 如果未指定，则使用 Azure 登录上下文的订阅 ID。 | 否       |
 | clusterNamePrefix           | HDI 群集名称的前缀，将自动在群集名称末尾追加时间戳| 否       |
 | sparkVersion                 | 群集类型为“Spark”时的 spark 版本 | 否       |
 | additionalLinkedServiceNames | 指定 HDInsight 链接服务的其他存储帐户，使数据工厂服务能够代为注册它们。 这些存储帐户必须与 HDInsight 群集位于同一区域中，该群集是在与 linkedServiceName 指定的存储帐户相同的区域中创建的。 | 否       |
-| osType                       | 操作系统的类型。 允许的值为：Linux 和 Windows（仅适用于 HDInsight 3.3）。 默认值为 Linux。 | 否       |
+| osType                       | 操作系统的类型。 允许值包括：Linux 和 Windows（仅适用于 HDInsight 3.3）。 默认值为 Linux。 | 否       |
 | hcatalogLinkedServiceName    | 指向 HCatalog 数据库的 Azure SQL 链接服务的名称。 将 Azure SQL 数据库用作元存储以创建按需 HDInsight 群集。 | 否       |
-| connectVia                   | 用于将活动分发到此 HDInsight 链接服务的集成运行时。 对于按需的 HDInsight 链接服务，它仅支持 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 | 否       |
+| connectVia                   | 用于将活动分发到此 HDInsight 链接服务的集成运行时。 对于按需的 HDInsight 链接服务，它仅支持 Azure 集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否       |
 | clusterUserName                   | 用于访问群集的用户名。 | 否       |
 | clusterPassword                   | 用于访问群集的安全字符串类型密码。 | 否       |
 | clusterSshUserName         | 用于 SSH 远程连接到群集节点的用户名（适用于 Linux）。 | 否       |
 | clusterSshPassword         | 用于 SSH 远程连接到群集节点的安全字符串类型密码（适用于 Linux）。 | 否       |
+| scriptActions | 在按需创建群集期间指定 [HDInsight 群集自定义](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)的脚本。 <br />目前，Azure 数据工厂的用户界面创作工具仅支持指定 1 个脚本操作，但你可以通过 JSON 解决此限制（在 JSON 中指定多个脚本操作）。 | 否 |
 
 
 > [!IMPORTANT]
 > HDInsight 支持多个可部署的 Hadoop 群集版本。 每个版本选项创建 Hortonworks 数据平台 (HDP) 分发的特定版本和该分发内包含的一组组件。 支持的 HDInsight 版本列表会不断更新，以提供最新的 Hadoop 生态系统组件和修补程序。 请确保始终参考[支持的 HDInsight 版本和操作系统类型](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)的最新信息，以确保使用的是受支持的 HDInsight 版本。 
 >
-> 
 > [!IMPORTANT]
-> 目前，HDInsight 链接服务不支持 HBase、Interactive Query (Hive LLAP)、Storm 和启用了企业安全性（已加入域）的群集。 
+> 目前，HDInsight 链接服务不支持 HBase、交互式查询 (Hive LLAP)、Storm。 
 >
 > 
 
@@ -244,7 +240,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 "dataNodeSize": "Standard_D4",
 ```
 
-如果为这些属性指定了错误的值，则可能会收到以下**错误：** 未能创建群集。 异常: 无法完成群集创建操作。 操作失败，代码为 '400'。 群集保持为 'Error' 状态。 消息: “PreClusterCreationValidationFailure”。 收到此错误时，请确保使用的是[虚拟机的大小](../virtual-machines/linux/sizes.md)一文中的表中的 **CMDLET 和 API** 名称。        
+如果为这些属性指定了错误的值，则可能会收到以下错误：未能创建群集。 异常：无法完成群集创建操作。 操作失败，代码为 '400'。 群集保持为 'Error' 状态。 消息：'PreClusterCreationValidationFailure'。 收到此错误时，请确保使用的是[虚拟机的大小](../virtual-machines/linux/sizes.md)一文中的表中的 **CMDLET 和 API** 名称。        
 
 ## <a name="bring-your-own-compute-environment"></a>自带计算环境
 在此类型的配置中，用户可在数据工厂中将现有的计算环境注册为链接服务。 该计算环境由用户进行管理，数据工厂服务用它来执行活动。
@@ -288,20 +284,21 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ```
 
 ### <a name="properties"></a>属性
-| 属性          | 说明                              | 必选 |
-| ----------------- | ---------------------------------------- | -------- |
-| type              | 类型属性应设置为 **HDInsight**。 | 是      |
-| clusterUri        | HDInsight 群集的 URI。        | 是      |
+| 属性          | 说明                                                  | 必选 |
+| ----------------- | ------------------------------------------------------------ | -------- |
+| type              | 类型属性应设置为 **HDInsight**。            | 是      |
+| clusterUri        | HDInsight 群集的 URI。                            | 是      |
 | username          | 指定用于连接到现有 HDInsight 群集的用户的名称。 | 是      |
-| password          | 指定用户帐户的密码。   | 是      |
+| password          | 指定用户帐户的密码。                       | 是      |
 | linkedServiceName | Azure 存储链接服务（指 HDInsight 群集使用的 Azure Blob 存储）的名称。 <p>目前，不能为此属性指定 Azure Data Lake Store 链接服务。 如果 HDInsight 群集有权访问 Data Lake Store，则可从 Hive/Pig 脚本访问 Azure Data Lake Store 中的数据。 </p> | 是      |
-| connectVia        | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 | 否       |
+| isEspEnabled      | 如果 HDInsight 群集启用了[企业安全性套餐](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-introduction)，请指定“true”。 默认值为“false”。 | 否       |
+| connectVia        | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 <br />对于启用了企业安全性套餐 (ESP) 的 HDInsight 群集，可以使用自承载集成运行时，该运行时具有群集的视线，或者应该与 ESP HDInsight 群集部署在同一虚拟网络内。 | 否       |
 
 > [!IMPORTANT]
 > HDInsight 支持多个可部署的 Hadoop 群集版本。 每个版本选项创建 Hortonworks 数据平台 (HDP) 分发的特定版本和该分发内包含的一组组件。 支持的 HDInsight 版本列表会不断更新，以提供最新的 Hadoop 生态系统组件和修补程序。 请确保始终参考[支持的 HDInsight 版本和操作系统类型](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)的最新信息，以确保使用的是受支持的 HDInsight 版本。 
 >
 > [!IMPORTANT]
-> 目前，HDInsight 链接服务不支持 HBase、Interactive Query (Hive LLAP)、Storm 和启用了企业安全性（已加入域）的群集。 
+> 目前，HDInsight 链接服务不支持 HBase、交互式查询 (Hive LLAP)、Storm。 
 >
 > 
 
@@ -353,7 +350,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | batchUri          | 指向 Azure Batch 帐户的 URL，格式为 https://*batchaccountname.region*.batch.azure.com。 | 是      |
 | poolName          | 虚拟机的池名称。    | 是      |
 | linkedServiceName | 与此 Azure Batch 链接服务相关联的 Azure 存储链接服务的名称。 此链接服务用于暂存运行活动所需的文件。 | 是      |
-| connectVia        | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 | 否       |
+| connectVia        | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否       |
 
 ## <a name="azure-machine-learning-linked-service"></a>Azure 机器学习链接服务
 可以创建 Azure 机器学习链接服务，以向数据工厂注册机器学习批处理计分终结点。
@@ -383,14 +380,14 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ### <a name="properties"></a>属性
 | 属性               | 说明                              | 必选                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
-| Type                   | 类型属性应设置为 **AzureML**。 | 是                                      |
+| 类型                   | 类型属性应设置为：AzureML。 | 是                                      |
 | mlEndpoint             | 批处理计分 URL。                   | 是                                      |
 | apiKey                 | 已发布的工作区模型的 API。     | 是                                      |
 | updateResourceEndpoint | Azure ML Web 服务终结点的更新资源 URL 用于使用经过训练的模型文件更新预测性 Web 服务 | 否                                       |
 | servicePrincipalId     | 指定应用程序的客户端 ID。     | 如果已指定 updateResourceEndpoint，则为必需 |
 | servicePrincipalKey    | 指定应用程序的密钥。           | 如果已指定 updateResourceEndpoint，则为必需 |
 | tenant                 | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 如果已指定 updateResourceEndpoint，则为必需 |
-| connectVia             | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 | 否                                       |
+| connectVia             | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否                                       |
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics 链接服务
 创建 **Azure Data Lake Analytics** 链接服务将 Azure Data Lake Analytics 计算服务链接到 Azure 数据工厂。 管道中的 Data Lake Analytics U-SQL 活动是指此链接服务。 
@@ -426,7 +423,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 | 属性             | 说明                              | 必选                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
-| type                 | 类型属性应设置为 **AzureDataLakeAnalytics**。 | 是                                      |
+| type                 | 类型属性应设置为：AzureDataLakeAnalytics。 | 是                                      |
 | accountName          | Azure Data Lake Analytics 帐户名。  | 是                                      |
 | dataLakeAnalyticsUri | Azure Data Lake Analytics URI。           | 否                                       |
 | subscriptionId       | Azure 订阅 ID                    | 否                                       |
@@ -434,7 +431,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | servicePrincipalId   | 指定应用程序的客户端 ID。     | 是                                      |
 | servicePrincipalKey  | 指定应用程序的密钥。           | 是                                      |
 | tenant               | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 是                                      |
-| connectVia           | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 | 否                                       |
+| connectVia           | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否                                       |
 
 
 
@@ -487,7 +484,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | 属性             | 说明                              | 必选                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | 名称                 | 链接服务的名称               | 是   |
-| type                 | 类型属性应设置为 **AzureDatabricks**。 | 是                                      |
+| type                 | 类型属性应设置为：AzureDatabricks。 | 是                                      |
 | 域               | 根据 Databricks 工作区的区域相应地指定 Azure 区域。 示例： https://eastus.azuredatabricks.net | 是                                 |
 | accessToken          | 数据工厂通过 Azure Databricks 进行身份验证时，必须使用访问令牌。 需从 Databricks 工作区生成访问令牌。 [此处](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token)提供了查找访问令牌的更多详细步骤  | 是                                       |
 | existingClusterId    | 现有群集的群集 ID，用于在其上运行所有作业。 该群集应该是已创建的交互式群集。 如果群集停止响应，则可能需要手动重启该群集。 Databricks 建议在新群集上运行作业，以提高可靠性。 可以通过 Databricks 工作区 ->“群集”->“交互式群集名称”->“配置”->“标记”找到交互式群集的群集 ID。 [更多详细信息](https://docs.databricks.com/user-guide/clusters/tags.html) | 否 

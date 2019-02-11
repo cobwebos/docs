@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2018
 ms.author: ryanwi
-ms.openlocfilehash: f2795e2836dbb374d147b84d2ac91977659a1520
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 426f89437b91bf32efc7d4887c92ebe9cd729b5b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883509"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166282"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上准备开发环境
 > [!div class="op_single_selector"]
@@ -50,6 +50,9 @@ ms.locfileid: "48883509"
 ## <a name="install-the-sdk-and-tools"></a>安装 SDK 和工具
 Web 平台安装程序 (WebPI) 是安装 SDK 和工具的建议方法。 如果使用 WebPI 收到运行时错误，还可以在特定 Service Fabric 版本的发行说明中找到指向安装程序的直接链接。 发行说明可以在 [Service Fabric 团队博客](https://blogs.msdn.microsoft.com/azureservicefabric/)的各种发布公告中找到。
 
+> [!NOTE]
+> 不支持本地 Service Fabric 开发群集升级。
+
 ### <a name="to-use-visual-studio-2017"></a>使用 Visual Studio 2017
 Service Fabric 工具是 Visual Studio 2017 中 Azure 开发工作负荷的一部分。 在 Visual Studio 安装过程中启用此工作负荷。
 此外还需使用 Web 平台安装程序安装 Microsoft Azure Service Fabric SDK 和运行时。
@@ -66,10 +69,10 @@ Service Fabric 工具是 Visual Studio 2017 中 Azure 开发工作负荷的一�
 * [安装 Microsoft Azure Service Fabric SDK][core-sdk]
 
 当前版本包括：
-* Service Fabric SDK and Tools 3.2.187
-* Service Fabric 运行时 6.3.187
-* Service Fabric Tools for Visual Studio 2015 2.3.10710.3
-* Visual Studio 2017 15.7 包括 Service Fabric Tools for Visual Studio 2.3.10710.1 
+* Service Fabric SDK and Tools 3.3.622
+* Service Fabric 运行时 6.4.622
+* 适用于 Visual Studio 2015 的 Service Fabric 工具 2.4.11116.1
+* Visual Studio 2017 15.9 包括适用于 Visual Studio 的 Service Fabric 工具 2.4.11024.1 
 
 有关支持的版本列表，请参阅 [Service Fabric 支持](service-fabric-support.md)
 
@@ -88,8 +91,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ## <a name="next-steps"></a>后续步骤
 完成设置开发环境之后，便可开始生成和运行应用。
 
-* [在 Visual Studio 中创建第一个 Service Fabric 应用程序](service-fabric-create-your-first-application-in-visual-studio.md)
-* [了解如何在本地群集上部署和管理应用程序](service-fabric-get-started-with-a-local-cluster.md)
+* [了解如何创建、部署和管理应用程序](service-fabric-tutorial-create-dotnet-app.md)
 * [了解编程模型：Reliable Services 和 Reliable Actors](service-fabric-choose-framework.md)
 * [在 GitHub 上检查 Service Fabric 代码示例](https://aka.ms/servicefabricsamples)
 * [使用 Service Fabric 资源管理器可视化群集](service-fabric-visualizing-your-cluster.md)

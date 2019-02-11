@@ -1,27 +1,27 @@
 ---
-title: 如何获取对 Azure Active Directory 的支持 | Microsoft Docs
-description: 了解如何获取对 Azure Active Directory 的支持。
+title: 查找帮助和打开支持工单 - Azure Active Directory | Microsoft Docs
+description: 有关如何获取帮助和打开 Azure Active directory 支持工单的说明。
 services: active-directory
 documentationcenter: na
 author: eross-msft
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.workload: identity
 ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro
-ms.openlocfilehash: d7d499ed43ee2eab03e46e408104eca4af6a2945
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 2063f9fcd3e001f4f8f175bd6031c9d31313f9e6
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729373"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092135"
 ---
-# <a name="how-to-get-support-for-azure-active-directory"></a>如何：获取对 Azure Active Directory 的支持
+# <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>查找帮助并打开 Azure Active Directory 的支持票证
 Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、售前、计费和订阅支持。 对于 Microsoft Azure 付费版和试用版订阅，将通过在线服务和电话提供支持。 电话支持和在线计费支持以更多的语言提供。 
 
 ## <a name="find-help-without-opening-a-support-ticket"></a>无需开具支持票证即可获得帮助

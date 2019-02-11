@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: douglasl
-ms.openlocfilehash: 54d0ce39ea511958824acb753bcf7102d33a6c90
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: a56e9c2a7cceed8012f35c9d02e9c3bc5703b31f
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444022"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353203"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 SQL Server 存储过程活动转换数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +26,7 @@ ms.locfileid: "52444022"
 可使用数据工厂[管道](concepts-pipelines-activities.md)中的数据转换活动将原始数据转换和处理为预测和见解。 存储过程活动是数据工厂支持的转换活动之一。 本文基于[转换数据](transform-data.md)一文编写，它概述了数据转换和数据工厂中支持的转换活动。
 
 > [!NOTE]
-> 如果不熟悉 Azure 数据工厂，请在阅读本文之前，先通读 [Azure 数据工厂简介](introduction.md)，并学习教程：[教程：转换数据](tutorial-transform-data-spark-powershell.md)。 
+> 如果不熟悉 Azure 数据工厂，请在阅读本文之前，先通读 [Azure 数据工厂简介](introduction.md)，并学习以下教程：[教程：转换数据](tutorial-transform-data-spark-powershell.md)。 
 
 可以使用存储过程活动调用企业或 Azure 虚拟机 (VM) 中以下数据存储中的存储过程： 
 
@@ -55,7 +54,7 @@ ms.locfileid: "52444022"
         "type": "LinkedServiceReference"
     },
     "typeProperties": {
-        "storedProcedureName": "sp_sample",
+        "storedProcedureName": "usp_sample",
         "storedProcedureParameters": {
             "identifier": { "value": "1", "type": "Int" },
             "stringData": { "value": "str1" }

@@ -4,19 +4,19 @@ description: 了解使用 Azure 数据库迁移服务执行数据库迁移的先
 services: database-migration
 author: pochiraju
 ms.author: rajpo
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: b3c974eaf4e44a80046efc4b1545f29797fcaf0c
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 63a8d9f23dc9edd8303d8a2c7113a4e00d4a21aa
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887660"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715539"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>使用 Azure 数据库迁移服务的先决条件概述
 若要确保 Azure 数据库迁移服务在执行数据库迁移时顺利运行，需要具备几个先决条件。 某些先决条件适用于该服务支持的所有方案（源/目标对），而其他先决条件则是特定方案所独有的。

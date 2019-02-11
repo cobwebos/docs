@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 349fd1f129d93a2893e2585267d17661e141ad0f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 55ff6d37f18f4ffa2f12e17bd33dd196b77f79af
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242205"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025770"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>使用 Azure 数据工厂从 Sybase 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,7 +57,7 @@ Sybase 链接的服务支持以下属性：
 | type | type 属性必须设置为：**Sybase** | 是 |
 | server | Sybase 服务器的名称。 |是 |
 | database | Sybase 数据库的名称。 |是 |
-| authenticationType | 用于连接 Sybase 数据库的身份验证类型。<br/>允许的值为：Basic 和 Windows。 |是 |
+| authenticationType | 用于连接 Sybase 数据库的身份验证类型。<br/>允许值包括：**Basic** 和 **Windows**。 |是 |
 | username | 指定用于连接到 Sybase 数据库的用户名。 |是 |
 | password | 指定为用户名指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
@@ -96,7 +95,7 @@ Sybase 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：RelationalTable | 是 |
+| type | 数据集的 type 属性必须设置为：**RelationalTable** | 是 |
 | tableName | Sybase 数据库中的表名。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -125,7 +124,7 @@ Sybase 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：RelationalSource | 是 |
+| type | 复制活动源的 type 属性必须设置为：**RelationalSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**

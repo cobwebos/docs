@@ -4,24 +4,24 @@ description: 借助条件性访问控制，Azure Active Directory 会在验证�
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: b92fa5a9-c04c-4692-b495-ff64d023792c
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/30/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5aeefe82255d40938eff09d7920e2fd5aca94c95
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 1c4ee3cb4ed8c710f1d1e7a429c9e1de40b1890b
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46308296"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491496"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>定义混合标识采用策略
 在此任务中，你将根据所述的业务要求，为混合标识解决方案定义混合标识采用策略：
@@ -92,7 +92,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 * Office 转换为被动身份验证可让它们支持纯 SAML 2.0 IdP，但支持仍然因客户端而异
 
 > [!NOTE]
-> 有关最新列表，请阅读文章 https://aka.ms/ssoproviders。
+> 有关最新列表，请阅读 [Azure AD 联合身份验证兼容性列表](how-to-connect-fed-compatibility.md)一文。
 > 
 > 
 

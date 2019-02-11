@@ -3,7 +3,7 @@ title: 使用任务依赖关系来基于其他任务的完成情况运行任务 
 description: 在 Azure Batch 中创建依赖于其他任务的完成的任务，以处理 MapReduce 样式和类似的大数据工作负荷。
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: b8d12db5-ca30-4c7d-993a-a05af9257210
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a9b44ed56774466bae2f0f5d48b5e012382721b
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: ca6918b809a9b4ede3fffb151c7fa5183ae03b47
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865227"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730793"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>创建任务依赖关系，以运行依赖于其他任务的任务
 
@@ -79,7 +79,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 |:---:| --- | --- |
 |  [一对一](#one-to-one) |*taskB* 取决于 *taskA* <p/> *taskA* 成功完成后，*taskB* 才会按计划执行 |![关系图：一对一任务依赖关系][1] |
 |  [一对多](#one-to-many) |*taskC* 同时取决于 *taskA* 和 *taskB* <p/> *taskA* 和 *taskB* 成功完成后，*taskC* 才会按计划执行 |![关系图：一对多任务依赖关系][2] |
-|  [任务 ID 范围](#task-id-range) |*taskD* 取决于一系列任务 <p/> ID 为 *1* 到 *10* 的任务成功完成后，*taskD* 才会按计划执行 |![关系图：任务 ID 范围依赖关系][3] |
+|  [任务 ID 范围](#task-id-range) |*taskD* 取决于一系列任务 <p/> ID 为 *1* 到 *10* 的任务成功完成后，*taskD* 才会按计划执行 |![示意图：任务 ID 范围依赖项][3] |
 
 > [!TIP]
 > 可以创建**多对多**关系，例如，在此关系中任务 C、D、E 和 F 都依赖于任务 A 和 B。这很有用，例如，在下游任务依赖于多个上游任务的输出的并行化预处理方案中，即可以这样操作。
@@ -123,7 +123,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 > [!IMPORTANT]
 > 将任务 ID 范围用于依赖项时，只有 ID 表示整数值的任务将由范围选定。 因此范围 `1..10` 将选择任务 `3` 和 `7`，而不是 `5flamingoes`。 
 > 
-> 在评估范围依赖关系时，前导零不重要，因此，带字符串标识符 `4`、`04` 和 `004` 的任务都将处于范围内，它们将全部视为任务 `4`，因此，要完成的第一个任务将满足依赖关系。
+> 在评估范围依赖项时，前导零不重要，因此，带字符串标识符 `4`、`04` 和 `004` 的任务都将处于范围内，它们将全部视为任务 `4`，因此，要完成的第一个任务将满足依赖项。
 > 
 > 范围内的每个任务必须通过成功完成或者已完成但出现了映射到设置为 **Satisfy** 的某个依赖关系操作的失败，来满足该依赖关系。 有关详细信息，请参阅[依赖关系操作](#dependency-actions)部分。
 >
@@ -227,7 +227,7 @@ new CloudTask("B", "cmd.exe /c echo B")
 [net_exitcode]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.taskexecutioninformation.exitcode.aspx
 [net_exitconditions]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.exitconditions
 [net_exitoptions]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.exitoptions
-[net_dependencyaction]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.exitoptions#Microsoft_Azure_Batch_ExitOptions_DependencyAction
+[net_dependencyaction]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.exitoptions
 [net_msdn]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [net_onid]: https://msdn.microsoft.com/library/microsoft.azure.batch.taskdependencies.onid.aspx
 [net_onids]: https://msdn.microsoft.com/library/microsoft.azure.batch.taskdependencies.onids.aspx

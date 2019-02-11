@@ -5,21 +5,24 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 11/28/2018
+ms.date: 01/28/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 50180a89633dc40fc1bf3850e0297b39cd41507d
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: f576e4546c5024e14b0735867ed9ed8dc38e93aa
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52643401"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55205112"
 ---
 | 类别 | 数据存储 |
 |:--- |:--- |
 | **Azure** |[Azure Blob 存储](../articles/data-factory/connector-azure-blob-storage.md) |
-| &nbsp; |[Azure Cosmos DB](../articles/data-factory/connector-azure-cosmos-db.md) |
+| &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) |
+| &nbsp; |[Azure Cosmos DB 的 API for MongoDB](../articles/data-factory/connector-azure-cosmos-db-mongodb-api.md) |
 | &nbsp; |[Azure Data Lake Storage Gen1](../articles/data-factory/connector-azure-data-lake-store.md) |
+| &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |
+| &nbsp; |[Azure Database for MariaDB](../articles/data-factory/connector-azure-database-for-mariadb.md) |
 | &nbsp; |[Azure Database for MySQL](../articles/data-factory/connector-azure-database-for-mysql.md) |
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |
 | &nbsp; |[Azure 文件](../articles/data-factory/connector-azure-file-storage.md) |
@@ -44,7 +47,8 @@ ms.locfileid: "52643401"
 | &nbsp; |[Phoenix](../articles/data-factory/connector-phoenix.md) |
 | &nbsp; |[PostgreSQL](../articles/data-factory/connector-postgresql.md) 
 | &nbsp; |[Presto（预览）](../articles/data-factory/connector-presto.md) |
-| &nbsp; |[SAP Business Warehouse](../articles/data-factory/connector-sap-business-warehouse.md) |
+| &nbsp; |[SAP Business Warehouse Open Hub](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |
+| &nbsp; |[通过 MDX 实现的 SAP Business Warehouse](../articles/data-factory/connector-sap-business-warehouse.md) |
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |
 | &nbsp; |[SQL Server](../articles/data-factory/connector-sql-server.md) |
@@ -57,11 +61,13 @@ ms.locfileid: "52643401"
 | **文件** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
 | &nbsp; |[文件系统](../articles/data-factory/connector-file-system.md) |
 | &nbsp; |[FTP](../articles/data-factory/connector-ftp.md) |
+| &nbsp; |[Google Cloud Storage](../articles/data-factory/connector-google-cloud-storage.md) |
 | &nbsp; |[HDFS](../articles/data-factory/connector-hdfs.md) |
 | &nbsp; |[SFTP](../articles/data-factory/connector-sftp.md) |
 | **通用协议** |[泛型 HTTP](../articles/data-factory/connector-http.md) |
 | &nbsp; |[泛型 OData](../articles/data-factory/connector-odata.md) |
 | &nbsp; |[泛型 ODBC](../articles/data-factory/connector-odbc.md) |
+| &nbsp; |[泛型 REST](../articles/data-factory/connector-rest.md) |
 | **服务和应用** |[Amazon Marketplace Web Service（预览）](../articles/data-factory/connector-amazon-marketplace-web-service.md) |
 | &nbsp; |[Common Data Service for Apps](../articles/data-factory/connector-dynamics-crm-office-365.md) |✓
 | &nbsp; |[Concur（预览）](../articles/data-factory/connector-concur.md) |

@@ -4,24 +4,22 @@ description: 学习设计你的第一个 Azure SQL 数据库，并使用 ADO.NET
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: ''
-ms.devlang: ''
 ms.topic: tutorial
 author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
 manager: craigg-msft
-ms.date: 11/01/2018
-ms.openlocfilehash: 82cf0303019d2cbb620c442fd6f750f733930f84
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 12/10/2018
+ms.openlocfilehash: cf180f6e2970ac4435602f1cceeb98a4dd9e8724
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912333"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727159"
 ---
-# <a name="tutorial-design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>教程：设计 Azure SQL 数据库，并使用 C&#x23; 和 ADO.NET 进行连接
+# <a name="tutorial-design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>教程：设计 Azure SQL 数据库，并使用 C# 和 ADO.NET 进行连接
 
-Azure SQL 数据库与 Microsoft 云 (Azure) 中的数据库即服务 (DBaaS) 相关。 本教程介绍如何将 Azure 门户、ADO.NET 与 Visual Studio 结合使用来完成以下操作：
+Azure SQL 数据库是 Microsoft 云 (Azure) 中的关系型数据库即服务 (DBaaS)。 本教程介绍如何将 Azure 门户、ADO.NET 与 Visual Studio 结合使用来完成以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 门户中创建数据库
@@ -35,7 +33,7 @@ Azure SQL 数据库与 Microsoft 云 (Azure) 中的数据库即服务 (DBaaS) �
 
 ## <a name="prerequisites"></a>先决条件
 
-已安装 [Visual Studio Community 2017、Visual Studio Professional 2017 或 Visual Studio Enterprise 2017](https://www.visualstudio.com/downloads/)。
+安装 [Visual Studio 2017](https://www.visualstudio.com/downloads/)
 
 <!-- The following included .md, sql-database-tutorial-portal-create-firewall-connection-1.md, is long.
 And it starts with a ## H2.
@@ -51,16 +49,16 @@ And it starts with a ## H2.
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了基本数据库任务，例如创建数据库和表、负载和查询数据，以及将数据库还原到以前的时间点。 你已了解如何：
+本教程介绍了基本数据库任务，例如创建数据库和表、连接到数据库、加载数据和运行查询。 你已了解如何：
+
 > [!div class="checklist"]
 > * 创建数据库
 > * 设置防火墙规则。
 > * 使用 [Visual Studio 和 C#](sql-database-connect-query-dotnet-visual-studio.md) 连接至数据库
 > * 创建表
-> * 插入、更新和删除数据
-> * 查询数据
+> * 插入、更新、删除和查询数据
 
 请转到下一教程，了解数据迁移。
 
 > [!div class="nextstepaction"]
-> [将 SQL Server 数据库迁移至 Azure SQL 数据库](sql-database-migrate-your-sql-server-database.md)
+> [使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库](../dms/tutorial-sql-server-to-azure-sql.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure 中的专用 Docker 容器注册表
+title: Azure 中的专用 Docker 容器注册表 - 概述
 description: 介绍 Azure 容器注册表服务，该服务提供基于云的托管专用 Docker 注册表。
 services: container-registry
 author: stevelas
@@ -7,13 +7,13 @@ ms.service: container-registry
 ms.topic: overview
 ms.date: 09/25/2018
 ms.author: stevelas
-ms.custom: mvc
-ms.openlocfilehash: 3cc44b58d3e715a1e3c264be03b887f27c0c753c
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 0118c17045b86c88d8d92048787a20bd7d309c0b
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633489"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298341"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure 中的专用 Docker 容器注册表简介
 
@@ -36,9 +36,9 @@ Azure 容器注册表是基于开源 Docker 注册表 2.0 的托管 [Docker 注�
 
 ## <a name="key-concepts"></a>关键概念
 
-* **注册表** - 在 Azure 订阅中创建一个或多个容器注册表。 注册表以三种 SKU 形式提供：[基本、标准和高级](container-registry-skus.md)，每一种都支持 webhook 集成、通过 Azure Active Directory 进行的注册表身份验证，以及删除功能。 在与部署相同的 Azure 位置创建注册表，充分利用容器映像的本地闭合网络存储。 将高级注册表的[异地复制](container-registry-geo-replication.md)功能用于高级复制和容器映像分发方案。 完全限定的注册表名称采用以下格式：`myregistry.azurecr.io`。
+* **注册表** - 在 Azure 订阅中创建一个或多个容器注册表。 注册表以三种 SKU 形式提供：[基本、标准和高级](container-registry-skus.md)，每一种都支持 webhook 集成、通过 Azure Active Directory 进行注册表身份验证，以及删除功能。 在与部署相同的 Azure 位置创建注册表，充分利用容器映像的本地闭合网络存储。 将高级注册表的[异地复制](container-registry-geo-replication.md)功能用于高级复制和容器映像分发方案。 完全限定的注册表名称采用以下格式：`myregistry.azurecr.io`。
 
-  可以使用使用 Azure Active Directory 支持的 [服务主体](../active-directory/develop/app-objects-and-service-principals.md)或提供的管理员帐户来[控制访问](container-registry-authentication.md)容器注册表。 运行标准 `docker login` 命令可对注册表进行身份验证。
+  可以使用 Azure 标识、Azure Active Directory 支持的[服务主体](../active-directory/develop/app-objects-and-service-principals.md)或提供的管理员帐户来[控制访问](container-registry-authentication.md)（针对容器注册表）。 使用 Azure 命令行界面或标准的 `docker login` 命令登录到注册表。
 
 * **存储库** - 一个注册表包含一个或多个存储库，用于存储容器映像组。 Azure 容器注册表支持多级存储库命名空间。 使用多级命名空间可将特定应用相关的映像集合分组，或者将特定开发或运营团队的应用集合分组。 例如：
 

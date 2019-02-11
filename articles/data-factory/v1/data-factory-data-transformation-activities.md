@@ -1,5 +1,5 @@
 ---
-title: 数据转换：处理和转换数据 |Microsoft Docs
+title: 数据转换：处理和转换数据 | Microsoft Docs
 description: 了解如何在 Azure 数据工厂中利用 Hadoop、机器学习或 Azure Data Lake Analytics 转换或处理数据。
 services: data-factory
 documentationcenter: ''
@@ -9,17 +9,16 @@ ms.assetid: 39786731-1e4b-40a4-81b7-d06e127427aa
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: afa00a81738563ec3c5b4b168f533b732c263825
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: b1a99f2872a69e01232c69a73f36319552429ca0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045613"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022438"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>在 Azure 数据工厂中转换数据
 > [!div class="op_single_selector"]
@@ -68,7 +67,7 @@ ms.locfileid: "37045613"
 有关这些机器学习活动的详细信息，请参阅[使用机器学习活动](data-factory-azure-ml-batch-execution-activity.md)。 
 
 ## <a name="stored-procedure-activity"></a>存储过程活动
-可在数据工厂管道中使用 SQL Server 存储过程活动调用以下数据存储中的存储过程：Azure SQL 数据库、Azure SQL 数据仓库、企业中的 SQL Server 数据库或 Azure VM。 有关详细信息，请参阅[存储过程活动](data-factory-stored-proc-activity.md)文章。  
+可使用数据工厂管道中的 SQL Server 存储过程活动调用以下数据存储之一中的存储过程：Azure SQL 数据库、Azure SQL 数据仓库、企业中的 SQL Server 数据库或 Azure VM。 有关详细信息，请参阅[存储过程活动](data-factory-stored-proc-activity.md)文章。  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL 活动
 Data Lake Analytics U-SQL 活动在 Azure Data Lake Analytics 群集上运行 U-SQL 脚本。 有关详细信息，请参阅 [Data Analytics U-SQL 活动](data-factory-usql-activity.md)文章。 
@@ -81,8 +80,8 @@ Data Lake Analytics U-SQL 活动在 Azure Data Lake Analytics 群集上运行 U-
 ## <a name="compute-environments"></a>计算环境
 为计算环境创建链接服务，并在定义转换活动时使用该服务。 数据工厂支持两类计算环境。 
 
-1. **按需**：此情况下，计算环境由数据工厂完全托管。 作业提交到进程数据前，数据工厂服务会自动创建计算环境，作业完成后则自动将其删除。 针对作业执行、群集管理和启动操作，可以配置和控制按需计算环境的粒度设置。 
-2. **自带**：此情况下，可将自己的计算环境（例如 HDInsight 群集）注册为数据工厂中的链接服务。 计算环境由用户进行管理，数据工厂服务使用它执行活动。 
+1. **按需**：在这种情况下，计算环境由数据工厂完全托管。 作业提交到进程数据前，数据工厂服务会自动创建计算环境，作业完成后则自动将其删除。 针对作业执行、群集管理和启动操作，可以配置和控制按需计算环境的粒度设置。 
+2. **自带**：在这种情况下，可将自己的计算环境（例如 HDInsight 群集）注册为数据工厂中的链接服务。 计算环境由用户进行管理，数据工厂服务使用它执行活动。 
 
 有关数据工厂支持的计算服务列表，请参阅 [计算链接服务](data-factory-compute-linked-services.md)文章。 
 

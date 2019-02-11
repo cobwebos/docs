@@ -1,6 +1,6 @@
 ---
-title: 教程：使用 Azure DevOps Projects 将 ASP.NET Core 应用部署到 Azure Kubernetes 服务 (AKS)
-description: 通过 Azure DevOps Projects 可以轻松开始使用 Azure。 使用 DevOps Projects，可通过几个快速步骤将 ASP.NET Core 应用部署到 Azure Kubernetes 服务 (AKS)。
+title: 教程：使用 Azure DevOps Projects 将 ASP.NET Core 应用部署到 Azure Kubernetes 服务
+description: 可以通过 Azure DevOps Projects 轻松地在 Azure 上开始操作。 使用 DevOps Projects，可通过几个快速步骤将 ASP.NET Core 应用部署到 Azure Kubernetes 服务 (AKS)。
 ms.author: mlearned
 ms.manager: douge
 ms.prod: devops
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 6e2b53e51d7da117a7f690cb676d0ec096bcb1cd
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 2aa103b36f60a84aaafc47f03a6cf6d5b6b66160
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165538"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993769"
 ---
-# <a name="tutorial-deploy-your-aspnet-core-app-to-azure-kubernetes-service-aks-by-using-azure-devops-projects"></a>教程：使用 Azure DevOps Projects 将 ASP.NET Core 应用部署到 Azure Kubernetes 服务 (AKS)
+# <a name="tutorial-deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-projects"></a>教程：使用 Azure DevOps Projects 将 ASP.NET Core 应用部署到 Azure Kubernetes 服务
 
 Azure DevOps Projects 提供一种简化的体验，你在其中既可使用现有的代码和 Git 存储库，也可选择一个示例应用程序，以便创建连接到 Azure 的持续集成 (CI) 和持续交付 (CD) 管道。 
 
@@ -24,6 +24,7 @@ DevOps Projects 还可以：
 * 自动创建 Azure 资源，例如 Azure Kubernetes 服务 (AKS)。
 * 在 Azure DevOps 中创建并配置一个发布管道，用于设置 CI/CD 的生成和发布管道。
 * 创建用于监视的 Azure Application Insights 资源。
+* 启用[用于容器的 Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) 以监视 AKS 群集上容器工作负载的性能
 
 在本教程中，将：
 
@@ -113,7 +114,7 @@ DevOps Projects 自动在你的 Azure DevOps 组织中配置一个 CI/CD 管道�
     此窗格显示最近针对生成所做的更改的审核线索。 Azure DevOps 会跟踪对生成管道所做的任何更改，并允许进行版本比较。
 
 1. 选择“触发器”。  
-    DevOps Projects 会自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。 （可选）可以选择在 CI 过程中包括或排除分支。
+    DevOps Projects 会自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。 （可选）可以选择在 CI 过程中包括或排除分库。
 
 1. 选择“保留期”。  
     可以根据方案指定策略，以保留或删除特定数目的生成。
@@ -122,14 +123,14 @@ DevOps Projects 自动在你的 Azure DevOps 组织中配置一个 CI/CD 管道�
 
 DevOps Projects 会自动创建并配置从 Azure DevOps 组织部署到 Azure 订阅所要执行的步骤。 这些步骤包括配置 Azure 服务连接，以便在 Azure 订阅中进行 Azure DevOps 身份验证。 自动化还会创建一个发布管道，该管道提供到 Azure 的 CD。 若要详细了解发布管道，请执行以下操作：
 
-1. 依次选择“生成和发布”、“发布”。  
-    DevOps Projects 会创建一个发布管道用于管理到 Azure 的部署。
+1. 选择“生成和发布”，然后选择“发布”。  
+    DevOps Projects 会创建一个发布管道，用于管理到 Azure 的部署。
 
 1. 选择发布管道旁边的省略号 (...)，然后选择“编辑”。  
     发布管道包含一个*管道*，用于定义发布过程。
 
 1. 在“项目”下选择“删除”。  
-    在前述步骤中检查过的生成管道将生成用于项目的输出。 
+    在前述步骤中检查过的生成管道会生成用于项目的输出。 
 
 1. 在“删除”图标的右侧，选择“持续部署触发器”。  
     此发布管道有一个已启用的 CD 触发器，每次有新的生成项目可用时，此触发器就会执行部署。 （可选）可以禁用此触发器，这样就需要手动执行部署。 
@@ -168,7 +169,7 @@ DevOps Projects 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 测试后，可以清理资源，以避免产生费用。 不再需要本教程中创建的 AKS 群集和相关资源时，可将其删除。 为此，可以使用 DevOps Projects 仪表板上的“删除”功能。
 
 > [!IMPORTANT]
-> 以下过程会永久删除资源。 “删除”功能会销毁 DevOps Projects 中的项目在 Azure 和 Azure DevOps 中创建的数据，删除后无法检索这些数据。 请只在仔细阅读提示后才使用此过程。
+> 以下过程会永久删除资源。 “删除”功能会销毁 DevOps Projects 中的项目在 Azure 和 Azure DevOps 中创建的数据，删除后无法检索这些数据。 只能在仔细阅读提示后才使用此过程。
 
 1. 在 Azure 门户中，转到 DevOps Projects 仪表板。
 2. 在右上角选择“删除”。 
@@ -190,4 +191,4 @@ DevOps Projects 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 若要详细了解如何使用 Kubernetes 仪表板，请参阅：
 
 > [!div class="nextstepaction"]
-> [使用 Kubernetes 仪表板](https://docs.microsoft.com/en-us/azure/aks/kubernetes-dashboard)
+> [使用 Kubernetes 仪表板](https://docs.microsoft.com/azure/aks/kubernetes-dashboard)

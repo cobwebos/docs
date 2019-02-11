@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: d58e72c4487a3ab6d7b562fd328098d98761da5e
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: f40be655481481946929c4d79210cb360797f174
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620330"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017151"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制数据
 
@@ -76,7 +75,7 @@ Dynamics 链接服务支持以下属性。
 >[!NOTE]
 >Dynamics 连接器使用可选的“organizationName”属性来标识 Dynamics CRM/365 Online 实例。 虽然它保持正常工作，但建议改为指定新的“serviceUri”属性来获得更好的实例发现性能。
 
-示例：使用 Office365 身份验证的 Dynamics 联机
+示例：**使用 Office365 身份验证的 Dynamics 联机**
 
 ```json
 {
@@ -121,7 +120,7 @@ Dynamics 链接服务支持以下属性。
 >[!IMPORTANT]
 >若要将数据复制到 Dynamics，请使用靠近 Dynamics 实例的位置显式[创建 Azure 运行时](create-azure-integration-runtime.md#create-azure-ir)。 按如下示例所示在链接服务中关联该运行时。
 
-示例：带有 IFD、使用 IFD 身份验证的本地 Dynamics
+示例：**带有 IFD、使用 IFD 身份验证的本地 Dynamics**
 
 ```json
 {
@@ -278,7 +277,7 @@ Dynamics 链接服务支持以下属性。
 | type | 复制活动接收器的 type 属性必须设置为 **DynamicsSink**。 | 是 |
 | writeBehavior | 操作的写入行为。<br/>允许的值为 **"Upsert"**。 | 是 |
 | writeBatchSize | 每批中写入到 Dynamics 的数据行计数。 | 否（默认值为 10） |
-| ignoreNullValues | 指示是否忽略 null 值从输入数据（键字段除外）期间写入操作。<br/>允许的值为 **true** 和 **false**。<br>- **True**：保留目标中的数据对象时进行更新插入/更新操作保持不变。 插入在执行插入操作时定义的默认值。<br/>- **False**：执行更新插入/更新操作时为 NULL 更新目标对象中的数据。 执行插入操作时插入 NULL 值。 | 否（默认值为 false） |
+| ignoreNullValues | 指示是否忽略 null 值从输入数据（键字段除外）期间写入操作。<br/>允许的值为 **true** 和 **false**。<br>- **True**：执行更新插入/更新操作时，保持目标对象中的数据不变。 插入在执行插入操作时定义的默认值。<br/>- **False**：执行更新插入/更新操作时，将目标对象中的数据更新为 NULL。 执行插入操作时插入 NULL 值。 | 否（默认值为 false） |
 
 >[!NOTE]
 >接收器“writeBatchSize”和 Dynamics 接收器的复制活动“[parallelCopies](copy-activity-performance.md#parallel-copy)” 的默认值都是 10。 因此，会将 100 条记录同时提交到 Dynamics。

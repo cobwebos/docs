@@ -1,21 +1,22 @@
 ---
-title: 快速入门：提取印刷体文本 (OCR) - REST、PHP - 计算机视觉
+title: 快速入门：提取印刷体文本 - REST、PHP
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 PHP 从图像中提取印刷体文本。
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 10be09c4d18cc7bc395937e1a175a5bfcd1e5d7e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 6d945cc651aade3f751c1fa57e7c2397e39d705b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340233"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207932"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-php-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 PHP 提取印刷体文本 (OCR)
 
@@ -33,7 +34,7 @@ ms.locfileid: "49340233"
 
 要创建和运行示例，请执行以下步骤：
 
-1. 安装 PHP5 [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2) 包。
+1. 安装 PHP5 [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2) 包。
    1. 以管理员身份打开命令提示符窗口。
    1. 运行以下命令：
 

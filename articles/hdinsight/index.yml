@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: dd8976bc9c78045830ab499f48775bcb051f6c71
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 52f96a97aaf4ced4cf7b0e1170014f327ff6e192
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49455736"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975793"
 documentType: LandingData
 title: Azure HDInsight 文档
 metadata:
@@ -70,12 +70,12 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: Hadoop：<a href="/azure/hdinsight/hdinsight-analyze-flight-delay-data-linux">执行 ETL 操作</a> | <a href="/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf">创建按需群集</a>
-    - html: Spark：<a href="/azure/hdinsight/spark/apache-spark-load-data-run-query">运行交互式查询</a> | <a href="/azure/hdinsight/spark/apache-spark-use-bi-tools">可视化数据</a> | <a href="/azure/hdinsight/spark/apache-spark-ipython-notebook-machine-learning">机器学习</a>
-    - html: Kafka：<a href="/azure/hdinsight/hdinsight-apache-kafka-spark-structured-streaming">将结构化流式处理与 Kafka 配合使用</a> | <a href="/azure/hdinsight/hdinsight-apache-storm-with-kafka">与 Storm on HDInsight 配合使用</a> | <a href="/azure/hdinsight/kafka/apache-kafka-producer-consumer-api">使用 Kafka 生成者和使用者 API</a>
-    - html: HBase：<a href="/azure/hdinsight/hbase/apache-hbase-provision-vnet">在 VNET 中创建 HBase 群集</a> | <a href="/azure/hdinsight/hdinsight-phoenix-in-hdinsight">使用 Apache Phoenix</a> | <a href="/azure/hdinsight/hdinsight-using-spark-query-hbase">连接到 Spark</a>
+    - html: Apache Hadoop：<a href="/azure/hdinsight/hdinsight-analyze-flight-delay-data-linux">执行 ETL 操作</a> | <a href="/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf">创建按需群集</a>
+    - html: Apache Spark：<a href="/azure/hdinsight/spark/apache-spark-load-data-run-query">运行交互式查询</a> | <a href="/azure/hdinsight/spark/apache-spark-use-bi-tools">将数据可视化</a> | <a href="/azure/hdinsight/spark/apache-spark-ipython-notebook-machine-learning">机器学习</a>
+    - html: Apache Kafka：<a href="/azure/hdinsight/hdinsight-apache-kafka-spark-structured-streaming">将结构化流与 Kafka 配合使用</a> | <a href="/azure/hdinsight/hdinsight-apache-storm-with-kafka">与 Storm on HDInsight 配合使用</a> | <a href="/azure/hdinsight/kafka/apache-kafka-producer-consumer-api">使用 Kafka 生成者和使用者 API</a>
+    - html: Apache HBase：<a href="/azure/hdinsight/hbase/apache-hbase-provision-vnet">在 VNET 中创建 HBase 群集</a> | <a href="/azure/hdinsight/hdinsight-phoenix-in-hdinsight">使用 Apache Phoenix</a> | <a href="/azure/hdinsight/hdinsight-using-spark-query-hbase">连接到 Spark</a>
     - html: Interactive Query：<a href="/azure/hdinsight/interactive-query/apache-hadoop-connect-hive-power-bi-directquery">使用 Direct Query 与 Power BI 连接</a>
-    - html: Storm：<a href="/azure/hdinsight/storm/apache-storm-develop-java-topology">在 Java 中创建 Storm 拓扑</a> | <a href="/azure/hdinsight/storm/apache-storm-deploy-monitor-topology-linux">在 HDInsight 上部署 Storm 拓扑</a> | <a href="/azure/hdinsight/storm/apache-storm-write-data-lake-store">从 Storm 写入到 Data Lake Store</a>
+    - html: Apache Storm：<a href="/azure/hdinsight/storm/apache-storm-develop-java-topology">在 Java 中创建 Storm 拓扑</a> | <a href="/azure/hdinsight/storm/apache-storm-deploy-monitor-topology-linux">在 HDInsight 上部署 Storm 拓扑</a> | <a href="/azure/hdinsight/storm/apache-storm-write-data-lake-store">从 Storm 写入到 Data Lake Storage</a>
     - html: ML Services：<a href="/azure/hdinsight/r-server/r-server-submit-jobs-r-tools-vs">使用针对 Visual Studio 的 R 工具</a>
 - title: 引用
   items:

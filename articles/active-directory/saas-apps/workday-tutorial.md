@@ -4,23 +4,23 @@ description: 了解如何在 Azure Active Directory 和 Workday 之间配置单�
 services: active-directory
 documentationCenter: na
 author: cmmdesai
-manager: mtillman
+manager: daveba
 ms.reviewer: jeedes
 ms.assetid: e9da692e-4a65-4231-8ab3-bc9a87b10bca
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: chmutali
-ms.openlocfilehash: 78b9fe704c5c8a1f81da480787f1791e88bf4f72
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 77c4453603cc82d89f79316b64463ca7dc4274ee
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714712"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55186021"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>教程：Azure Active Directory 与 Workday 的集成
 
@@ -114,7 +114,7 @@ ms.locfileid: "44714712"
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://impl.workday.com/<tenant>/login-saml2.htmld`
 
-    b. 在“标识符”文本框中，键入一个 URL：`http://www.workday.com`
+    b. 在“标识符”文本框中，键入一个 URL：`https://www.workday.com`
 
 4. 选中“显示高级 URL 设置”，并执行以下步骤：
 
@@ -180,7 +180,7 @@ ms.locfileid: "44714712"
 
     ![SAML 标识提供者](./media/workday-tutorial/IC7829271.png "SAML 标识提供者")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识提供者名称”文本框中，键入提供者名称（例如：*SPInitiatedSSO*）。
+    a. 在“标识提供者名称”文本框中，键入提供者名称（例如：SPInitiatedSSO）。
 
     b. 在 Azure 门户的“配置登录”窗口中，复制“SAML 实体 ID”值，然后将其粘贴到“颁发者”文本框。
 
@@ -225,7 +225,7 @@ ms.locfileid: "44714712"
 
     ![SSO 配置](./media/workday-tutorial/WorkdaySSOConfiguratio.png "SSO 配置")
 
-    a.  在“服务提供商 ID”文本框中，键入 **http://www.workday.com**。
+    a.  在“服务提供商 ID”文本框中，键入 **https://www.workday.com**。
 
     b. 选择“不削弱 SP 发起的身份验证请求”。
 
@@ -316,7 +316,7 @@ ms.locfileid: "44714712"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

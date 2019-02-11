@@ -1,5 +1,5 @@
 ---
-title: 创建 Azure 时序见解单页 Web 应用
+title: 教程：创建 Azure 时序见解单页 Web 应用 | Microsoft Docs
 description: 了解如何创建可以查询和呈现 TSI 环境中的数据的单页 Web 应用程序。
 author: ashannon7
 ms.service: time-series-insights
@@ -7,12 +7,13 @@ ms.topic: tutorial
 ms.date: 06/14/2018
 ms.author: anshan
 manager: cshankar
-ms.openlocfilehash: 312e15f976a6782e3f39cfcc5ce0721ac6357a16
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: 9d18b1382bdb421afcc8aee92fd99b7ef0d09e32
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626749"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540140"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>教程：创建 Azure 时序见解单页 Web 应用
 
@@ -34,7 +35,7 @@ ms.locfileid: "39626749"
 如前所述，TSI 示例应用程序是本教程中使用的设计和代码的基础。 代码使用 TSI 客户端 JavaScript 库。 TSI 客户端库提供两个主要 API 类别的抽象：
 
 - **用于调用 TSI 查询 API 的包装器方法**：用于通过基于 JSON 的表达式查询 TSI 数据的 REST API。 这些方法组织在库的 `TsiClient.server` 命名空间下。
-- **用于创建和填充多种图表控件的方法**：用于在网页中可视化 TSI 数据的方法。 这些方法组织在库的 `TsiClient.ux` 命名空间下。
+- **用于创建和填充多种图表控件的方法**：用于在网页中直观显示 TSI 数据的方法。 这些方法组织在库的 `TsiClient.ux` 命名空间下。
 
 本教程还会使用示例应用程序的 TSI 环境中的数据。 若要详细了解 TSI 示例应用程序的结构及其使用 TSI 客户端库的方式，请参阅[探索 Azure 时序见解 JavaScript 客户端库](tutorial-explore-js-client-lib.md)教程。
 
@@ -51,7 +52,7 @@ ms.locfileid: "39626749"
    
    参数|Description
    ---|---
-   **Name** | 提供一个有意义的注册名称。  
+   **名称** | 提供一个有意义的注册名称。  
    **应用程序类型** | 由于生成的是 SPA Web 应用程序，因此请将其保留为“Web 应用/API”。
    **登录 URL** | 输入应用程序的主页/登录页的 URL。 由于应用程序会在以后托管在 Azure 应用服务中，因此必须使用“https://azurewebsites.net”域中的 URL。 在本示例中，名称基于注册名称。
 
@@ -91,7 +92,7 @@ ms.locfileid: "39626749"
    > 可能需要在保存文件之前更正文件扩展名（更正为 HTML 或 CSS），具体取决于浏览器。
 
    - **index.html** HTML 和 JavaScript 适合页面 https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html
-   - **sampleStyles.css：** CSS 样式表：https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css
+   - **sampleStyles.css：** CSS 样式表： https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css
     
 1. 启动 Visual Studio 并登录到其中，以便创建适合 Web 应用程序的项目。 在“文件”菜单上，选择“打开”>“网站”选项。 在“打开网站”对话框中，选择存储了 HTML 和 CSS 文件的工作目录，然后单击“打开”：
 
@@ -103,7 +104,7 @@ ms.locfileid: "39626749"
 
 1. 发布应用程序之前，需在 **index.html** 中更新 JavaScript 代码的多个部分： 
 
-   a. 首先，在 `<head>` 元素中更改 JavaScript 和样式表文件引用的路径。 打开 Visual Studio 解决方案中的 **index.html** 文件，找到以下 JavaScript 代码行。 取消注释“PROD RESOURCE LINKS”下的三行，注释掉“DEV RESOURCE LINKS”下的三行：
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 首先，在 `<head>` 元素中更改 JavaScript 和样式表文件引用的路径。 打开 Visual Studio 解决方案中的 **index.html** 文件，找到以下 JavaScript 代码行。 取消注释“PROD RESOURCE LINKS”下的三行，注释掉“DEV RESOURCE LINKS”下的三行：
    
       [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=2-20&highlight=10-13,15-18)]
 
@@ -139,7 +140,7 @@ ms.locfileid: "39626749"
    > [!NOTE]
    > 以下对话框中的多个字段填充的是 Azure 订阅中的数据。 因此，在继续操作之前，可能需要等待数秒钟，确保每个对话框加载完毕。  
 
-   a. 右键单击“解决方案资源管理器”中的网站项目节点，然后选择“发布 Web 应用”：  
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 右键单击“解决方案资源管理器”中的网站项目节点，然后选择“发布 Web 应用”：  
 
       ![VS - 解决方案资源管理器的“发布 Web 应用”](media/tutorial-create-tsi-sample-spa/vs-solution-explorer-publish-web-app.png)
 

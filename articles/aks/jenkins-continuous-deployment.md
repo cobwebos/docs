@@ -6,13 +6,13 @@ ms.service: container-service
 author: iainfoulds
 ms.author: iainfou
 ms.topic: article
-ms.date: 09/27/2018
-ms.openlocfilehash: d252e275280ed2a5c2129f6b228e9989a33b37fd
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.date: 01/09/2019
+ms.openlocfilehash: 470ba6df76741dd5c9e9eed055cd7848d341082f
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853607"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188447"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>教程：使用 Jenkins 持续集成和部署从 GitHub 部署到 Azure Kubernetes 服务 (AKS)
 
@@ -229,11 +229,6 @@ az role assignment create --assignee 626dd8ea-042d-4043-a8df-4ef56273670f --role
 1. 输入“azure-vote”作为作业名称。 依次选择“自由风格项目”和“确定”
 1. 在“常规”部分下面，选择“GitHub”项目并输入分叉的存储库的 URL，例如 *https://github.com/\<your-github-account\>/azure-voting-app-redis*
 1. 在“源代码管理”部分下面，选择“Git”并输入分叉的存储库 *.git* 的 URL，例如 *https://github.com/\<your-github-account\>/azure-voting-app-redis.git*
-    - 对于凭据，依次单击“添加” > “Jenkins”
-    - 在“类型”下选择“机密文本”，输入 [GitHub 个人访问令牌][git-access-token]作为机密。
-    - 完成时请选择“添加”。
-
-    ![GitHub 凭据](media/aks-jenkins/github-creds.png)
 
 1. 在“生成触发器”部分下面，选择“用于 GITscm 轮询的 GitHub 挂钩触发器”
 1. 在“生成环境”下，选择“使用机密文本或文件”

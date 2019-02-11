@@ -5,17 +5,15 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/04/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: b3b6d7a64873d77336b2fcf14e22f4d6ae33e3a2
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 06430bf476c2e9f3af2102272fb54d201a3f1066
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976785"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790803"
 ---
-ms.author: ramamill
-
 # <a name="install-the-mobility-service-manually-on-vmware-vms-and-physical-servers"></a>在 VMware VM 和物理服务器上手动安装移动服务
 
 在使用 [Azure Site Recovery](site-recovery-overview.md) 设置 VMware VM 和物理服务器的灾难恢复时，可在每个本地 VMware VM 和物理服务器上安装 [Site Recovery 移动服务](vmware-physical-mobility-service-overview.md)。  移动服务可以捕获计算机上的数据写入，并将其转发到 Site Recovery 进程服务器。
@@ -93,7 +91,7 @@ ms.author: ramamill
 安装日志 | 位于 %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log 下。
 /Role | 必需的安装参数。 指定是要安装移动服务 (MS) 还是主目标 (MT)。
 /InstallLocation| 可选参数。 指定移动服务的安装位置（任意文件夹）。
-/Platform | 必需。 指定一个平台，以便在其上安装移动服务。 对于 Mware VM/物理服务器，请指定 **VMware**；对于 Azure VM，请指定 **Azure**。 
+/Platform | 必需。 指定一个平台，以便在其上安装移动服务。 对于 VMware VM/物理服务器，请指定 **VMware**；对于 Azure VM，请指定 **Azure**。 
 /Silent| 可选。 指定是否以静默模式运行安装程序。
 
 #### <a name="registration-settings"></a>注册设置
@@ -131,7 +129,7 @@ ms.author: ramamill
 使用情况 | ./install -d <Install Location> -r <MS|MT> -v VmWare -q
 -r | 必需的安装参数。 指定是要安装移动服务 (MS) 还是主目标 (MT)。
 -d | 可选参数。 指定移动服务的安装位置：/usr/local/ASR。
--v | 必需。 指定一个平台，以便在其上安装移动服务。 对于 Mware VM/物理服务器，请指定 **VMware**；对于 Azure VM，请指定 **Azure**。 
+-v | 必需。 指定一个平台，以便在其上安装移动服务。 对于 VMware VM/物理服务器，请指定 **VMware**；对于 Azure VM，请指定 **Azure**。 
 -q | 可选。 指定是否以静默模式运行安装程序。
 
 #### <a name="registration-settings"></a>注册设置

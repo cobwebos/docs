@@ -1,23 +1,24 @@
 ---
 title: 置信度分数 - Microsoft 认知服务 | Microsoft Docs
 titleSuffix: Azure
-description: 说明置信度分数
+description: 此置信度分数指明了答案是给定用户查询的正确匹配答案的置信度。
 services: cognitive-services
 author: tulasim88
 manager: pchoudh
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 01/14/2019
 ms.author: tulasim
-ms.openlocfilehash: b1126b2cdb7a5cd7451a916558bc928653bc0027
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.custom: seodec18
+ms.openlocfilehash: 35d447fb7024b8be0bd427305b9e43fa60b1a90d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577917"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223181"
 ---
-# <a name="confidence-score"></a>置信度分数
+# <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>QnA Maker 知识库的置信度分数
 如果用户查询的匹配依据为知识库，QnA Maker 会返回相关答案和置信度分数。 此分数指明了答案是给定用户查询的正确匹配答案的置信度。 
 
 置信度分数是介于 0 和 100 之间的数字。 100 分表明很可能是完全匹配，而 0 分则表明找不到匹配答案。 分数越高，答案的置信度就越大。 对于给定查询，可能会返回多个答案。 在这种情况下，答案按置信度分数降序顺序返回。
@@ -57,7 +58,7 @@ ms.locfileid: "51577917"
 > 较新版本的 QnA Maker 包括对评分逻辑的改进，并可能影响你的阈值。 每次更新服务时，请务必测试阈值并在必要时调整阈值。 可以在[此处](https://www.qnamaker.ai/UserSettings)查看 QnA 服务版本，并在[此处](../How-To/troubleshooting-runtime.md)了解如何获取最新更新。
 
 ## <a name="improve-confidence-scores"></a>提高置信度分数
-若要提高对用户查询的特定响应的置信度分数，可以将用户查询添加到知识库，作为该响应的备用问题。
+若要提高对用户查询的特定响应的置信度分数，可以将用户查询添加到知识库，作为该响应的备用问题。 还可以使用[字变更](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd)向知识库中的关键字添加同义词。
 
 
 ## <a name="similar-confidence-scores"></a>相似的置信度分数
@@ -78,15 +79,15 @@ ms.locfileid: "51577917"
 
 2. 单击以打开“应用服务”。
 
-    ![访问应用服务](../media/qnamaker-concepts-confidencescore/set-default-response.png)
+    ![在 Azure 门户中访问 QnA Maker 的应用服务](../media/qnamaker-concepts-confidencescore/set-default-response.png)
 
 3. 单击“应用程序设置”，然后将 **DefaultAnswer** 字段编辑为所需的默认响应。 单击“ **保存**”。
 
-    ![更改默认响应](../media/qnamaker-concepts-confidencescore/change-response.png)
+    ![选择“应用程序设置”，然后编辑 QnA Maker 的 DefaultAnswer](../media/qnamaker-concepts-confidencescore/change-response.png)
 
 4. 重启应用服务
 
-    ![QnA Maker 应用服务重启](../media/qnamaker-faq/qnamaker-appservice-restart.png)
+    ![更改 DefaultAnswer 后，重启 QnA Maker 应用服务](../media/qnamaker-faq/qnamaker-appservice-restart.png)
 
 
 ## <a name="next-steps"></a>后续步骤

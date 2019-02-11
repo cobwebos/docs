@@ -3,7 +3,7 @@ title: 使用 Azure PowerShell 创建 SQL Server Windows VM | Microsoft Docs
 description: 本教程介绍如何使用 Azure PowerShell 创建 Windows SQL Server 2017 虚拟机。
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
@@ -11,14 +11,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 02/15/2018
-ms.author: jroth
-ms.openlocfilehash: bebb153d5ff840a0eed7d6afffccd03a5236592d
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.date: 12/21/2018
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: e79b85a2dd47706ca83b6cbc2c59100b05574fab
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42022372"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425554"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 SQL Server Windows 虚拟机
 
@@ -37,7 +38,7 @@ ms.locfileid: "42022372"
 
 ## <a id="powershell"></a> 获取 Azure PowerShell
 
-本快速入门需要 Azure PowerShell 模块 3.6 版或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
+本快速入门需要 Azure PowerShell 模块 3.6 版或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。
 
 ## <a name="configure-powershell"></a>配置 PowerShell
 
@@ -47,7 +48,7 @@ ms.locfileid: "42022372"
    Connect-AzureRmAccount
    ```
 
-1. 应当会出现用来输入凭据的登录屏幕。 使用登录 Azure 门户时所用的相同电子邮件和密码。
+1. 此时应会显示用于输入凭据的屏幕。 使用登录 Azure 门户时所用的相同电子邮件和密码。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -122,11 +123,11 @@ ms.locfileid: "42022372"
 
 ## <a name="create-the-sql-vm"></a>创建 SQL VM
 
-1. 定义登录到 VM 所需的凭据。 用户名为“azureadmin”。 确保在运行命令之前更改密码。
+1. 定义登录到 VM 所需的凭据。 用户名为“azureadmin”。 确保在运行命令之前更改 \<密码>。
 
    ``` PowerShell
    # Define a credential object
-   $SecurePassword = ConvertTo-SecureString 'Change.This!000' `
+   $SecurePassword = ConvertTo-SecureString '<password>' `
       -AsPlainText -Force
    $Cred = New-Object System.Management.Automation.PSCredential ("azureadmin", $securePassword)
    ```
@@ -136,7 +137,7 @@ ms.locfileid: "42022372"
    ```PowerShell
    # Create a virtual machine configuration
    $VMName = $ResourceGroupName + "VM"
-   $VMConfig = New-AzureRmVMConfig -VMName $VMName -VMSize Standard_DS13 | `
+   $VMConfig = New-AzureRmVMConfig -VMName $VMName -VMSize Standard_DS13_V2 | `
       Set-AzureRmVMOperatingSystem -Windows -ComputerName $VMName -Credential $Cred -ProvisionVMAgent -EnableAutoUpdate | `
       Set-AzureRmVMSourceImage -PublisherName "MicrosoftSQLServer" -Offer "SQL2017-WS2016" -Skus "SQLDEV" -Version "latest" | `
       Add-AzureRmVMNetworkInterface -Id $Interface.Id
@@ -164,7 +165,7 @@ ms.locfileid: "42022372"
    Get-AzureRmPublicIpAddress -ResourceGroupName $ResourceGroupName | Select IpAddress
    ```
 
-1. 然后获取返回的 IP 地址，将其作为命令行参数传递给 **mstsc**，以便启动到新 VM 的远程桌面会话。
+1. 将返回的 IP 地址作为命令行参数传递给 **mstsc**，以便启动到新 VM 的远程桌面会话。
 
    ```
    mstsc /v:<publicIpAddress>
@@ -176,9 +177,9 @@ ms.locfileid: "42022372"
 
 1. 登录到远程桌面会话以后，从开始菜单启动 **SQL Server Management Studio 2017**。
 
-1. 在“连接到服务器”对话框中，保留默认设置。 服务器名称为 VM 名称。 身份验证设置为“Windows 身份验证”。 单击“连接”。
+1. 在“连接到服务器”对话框中，保留默认设置。 服务器名称为 VM 名称。 身份验证设置为“Windows 身份验证”。 选择“连接”。
 
-现在已通过本地方式连接到 SQL Server。 若要进行远程连接，必须通过门户或手动方式[配置连接性](virtual-machines-windows-sql-connect.md)。
+你现在已通过本地方式连接到 SQL Server。 若要进行远程连接，必须通过门户或手动[配置连接性](virtual-machines-windows-sql-connect.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -188,7 +189,7 @@ ms.locfileid: "42022372"
 Stop-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
 ```
 
-还可以使用 **Remove-AzureRmResourceGroup** 命令永久删除与虚拟机关联的所有资源。 请小心使用此命令，因为它也会永久删除该虚拟机。
+还可以使用 **Remove-AzureRmResourceGroup** 命令永久删除与虚拟机关联的所有资源。 这样做还会永久删除虚拟机，因此请小心使用此命令。
 
 ## <a name="next-steps"></a>后续步骤
 

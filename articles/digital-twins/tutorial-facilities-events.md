@@ -1,46 +1,50 @@
 ---
-title: 捕获 Azure 数字孪生空间的事件 | Microsoft Docs
+title: 教程：捕获 Azure 数字孪生空间的事件 | Microsoft Docs
 description: 了解如何使用本教程中的步骤将 Azure 数字孪生与逻辑应用集成，以便从空间接收通知。
 services: digital-twins
 author: dsk-2015
+ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 10/15/2018
+ms.date: 12/18/2018
 ms.author: dkshir
-ms.openlocfilehash: bf41be4a3a4856302a054e5767b3d7b5ba423c60
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f24d601fc3b589daf22788ad0d05eb74a7b51f0a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583255"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156759"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>教程：使用逻辑应用从 Azure 数字孪生空间接收通知
 
-部署 Azure 数字孪生实例、预配空间并实现用于监视特定条件的自定义函数以后，即可在受监视的条件满足时通过电子邮件通知办公室主任。 
+部署 Azure 数字孪生实例、预配空间并实现用于监视特定条件的自定义函数以后，即可在受监视的条件满足时通过电子邮件通知办公室主任。
 
 在[第一个教程](tutorial-facilities-setup.md)中，你配置了一栋虚构大楼的空间图， 其中一个房间包含用于移动、二氧化碳和温度的传感器。 在[第二个教程](tutorial-facilities-udf.md)中，你预配了图形和一个用户定义函数，用于监视这些传感器值并在房间为空且温度和二氧化碳处于某个令人舒适的范围内时触发通知。 
 
-本教程介绍如何将这些通知与 Azure 逻辑应用集成，以便在此类房间可用时发送电子邮件。 办公室主任可以根据此信息帮助员工预订工作效率最高的会议室。 
+本教程介绍如何将这些通知与 Azure 逻辑应用集成，以便在此类房间可用时发送电子邮件。 办公室主任可以根据此信息帮助员工预订工作效率最高的会议室。
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 将事件与 Azure 事件网格集成。
 > * 使用逻辑应用发出事件通知。
-    
+
 ## <a name="prerequisites"></a>先决条件
 
 本教程假定你已[配置](tutorial-facilities-setup.md)和[预配](tutorial-facilities-udf.md) Azure 数字孪生设置。 在继续操作之前，请确保已具备以下条件：
+
 - 一个 [Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 一个正在运行的数字孪生实例。
 - 在工作计算机上下载并解压缩的[数字孪生 C# 示例](https://github.com/Azure-Samples/digital-twins-samples-csharp)。
-- 在用于运行示例的开发计算机上安装的 [.NET Core SDK 2.1.403 或更高版本](https://www.microsoft.com/net/download)。 请运行 `dotnet --version` 以验证是否安装了正确的版本。 
+- 在用于运行示例的开发计算机上安装的 [.NET Core SDK 2.1.403 或更高版本](https://www.microsoft.com/net/download)。 请运行 `dotnet --version` 以验证是否安装了正确的版本。
 - 用于发送通知电子邮件的 Office 365 帐户。
 
-## <a name="integrate-events-with-event-grid"></a>将事件与事件网格集成 
+## <a name="integrate-events-with-event-grid"></a>将事件与事件网格集成
+
 在此部分，请设置一个[事件网格](../event-grid/overview.md)，以便从 Azure 数字孪生实例收集事件，然后将事件重定向到[事件处理程序](../event-grid/event-handlers.md)，例如逻辑应用。
 
 ### <a name="create-an-event-grid-topic"></a>创建事件网格主题
+
 [事件网格主题](../event-grid/concepts.md#topics)提供一个界面，用于路由用户定义的函数生成的事件。 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
@@ -55,7 +59,7 @@ ms.locfileid: "52583255"
 
 1. 从资源组浏览到事件网格主题，选择“概览”，将“主题终结点”的值复制到某个临时文件。 下一部分将需要此 URL。 
 
-1. 选择“访问密钥”，将**密钥 1** 和**密钥 2** 复制到某个临时文件。 在下一部分，将需要这些值来创建终结点。
+1. 选择“访问密钥”，将 **YOUR_KEY_1** 和 **YOUR_KEY_2** 复制到某个临时文件。 在下一部分，将需要这些值来创建终结点。
 
     ![事件网格密钥](./media/tutorial-facilities-events/event-grid-keys.png)
 
@@ -77,11 +81,11 @@ ms.locfileid: "52583255"
       path: Event_Grid_Topic_Path
     ```
 
-1. 将占位符 `Primary_connection_string_for_your_Event_Grid` 替换为 **Key1** 的值。 
+1. 将占位符 `Primary_connection_string_for_your_Event_Grid` 替换为 **YOUR_KEY_1** 的值。
 
-1. 将占位符 `Secondary_connection_string_for_your_Event_Grid` 替换为 **Key2** 的值。
+1. 将占位符 `Secondary_connection_string_for_your_Event_Grid` 替换为 **YOUR_KEY_2** 的值。
 
-1. 将占位符 `Event_Grid_Topic_Path` 替换为事件网格主题的路径。 从**主题终结点** URL 中删除 **https://** 以及尾随的资源路径即可获取此路径。 它看起来应该类似于此格式：*yourEventGridName.yourLocation.eventgrid.azure.net*。 
+1. 将占位符 `Event_Grid_Topic_Path` 替换为事件网格主题的路径。 从**主题终结点** URL 中删除 **https://** 以及尾随的资源路径即可获取此路径。 它看起来应该类似于此格式：*yourEventGridName.yourLocation.eventgrid.azure.net*。
 
     > [!IMPORTANT]
     > 输入所有值，不带任何引号。 在 YAML 文件中，请确保在冒号之后至少有一个空格字符。 也可使用任何联机 YAML 验证程序（例如[此工具](https://onlineyamltools.com/validate-yaml)）来验证 YAML 文件内容。
@@ -96,8 +100,8 @@ ms.locfileid: "52583255"
 
    ![事件网格的终结点](./media/tutorial-facilities-events/dotnet-create-endpoints.png)
 
-
 ## <a name="notify-events-with-logic-apps"></a>使用逻辑应用发出事件通知
+
 可以通过 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)服务为从其他服务接收的事件创建自动化任务。 在此部分，请设置逻辑应用，以便借助[事件网格主题](../event-grid/overview.md)为从空间传感器路由的事件创建电子邮件通知。
 
 1. 在 [Azure 门户](https://portal.azure.com)的左窗格中，选择“创建资源”。
@@ -114,7 +118,7 @@ ms.locfileid: "52583255"
 
 1. 在“当资源事件发生时(预览版)”窗口中，执行以下操作： 
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择曾经用于创建事件网格主题的**订阅**。
+   a. 选择曾经用于创建事件网格主题的**订阅**。
 
    b. 选择 **Microsoft.EventGrid.Topics** 作为**资源类型**。
 
@@ -125,56 +129,56 @@ ms.locfileid: "52583255"
 1. 选择“新步骤”按钮。
 
 1. 在“选择操作”窗口中，执行以下操作：
-    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 搜索“分析 json”短语，然后选择“分析 JSON”操作。
+
+   a. 搜索“分析 json”短语，然后选择“分析 JSON”操作。
 
    b. 在“内容”字段的“动态内容”列表中选择“正文”。
 
    c. 选择“使用示例有效负载生成架构”。 粘贴以下 JSON 有效负载，然后选择“完成”。
 
-        ```JSON
-        {
-        "id": "32162f00-a8f1-4d37-aee2-9312aabba0fd",
-        "subject": "UdfCustom",
-        "data": {
-          "TopologyObjectId": "20efd3a8-34cb-4d96-a502-e02bffdabb14",
-          "ResourceType": "Space",
-          "Payload": "\"Air quality is poor.\"",
-          "CorrelationId": "32162f00-a8f1-4d37-aee2-9312aabba0fd"
-        },
-        "eventType": "UdfCustom",
-        "eventTime": "0001-01-01T00:00:00Z",
-        "dataVersion": "1.0",
-        "metadataVersion": "1",
-        "topic": "/subscriptions/a382ee71-b48e-4382-b6be-eec7540cf271/resourceGroups/HOL/providers/Microsoft.EventGrid/topics/DigitalTwinEventGrid"
-        }
-        ```
-    
+    ```JSON
+    {
+    "id": "32162f00-a8f1-4d37-aee2-9312aabba0fd",
+    "subject": "UdfCustom",
+    "data": {
+      "TopologyObjectId": "20efd3a8-34cb-4d96-a502-e02bffdabb14",
+      "ResourceType": "Space",
+      "Payload": "\"Air quality is poor.\"",
+      "CorrelationId": "32162f00-a8f1-4d37-aee2-9312aabba0fd"
+    },
+    "eventType": "UdfCustom",
+    "eventTime": "0001-01-01T00:00:00Z",
+    "dataVersion": "1.0",
+    "metadataVersion": "1",
+    "topic": "/subscriptions/a382ee71-b48e-4382-b6be-eec7540cf271/resourceGroups/HOL/providers/Microsoft.EventGrid/topics/DigitalTwinEventGrid"
+    }
+    ```
+
     此有效负载包含虚构值。 逻辑应用使用此示例有效负载生成一个*架构*。
-    
+
     ![适用于事件网格的逻辑应用“分析 JSON”窗口](./media/tutorial-facilities-events/logic-app-parse-json.png)
 
 1. 选择“新步骤”按钮。
 
 1. 在“选择操作”窗口中，执行以下操作：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“操作”列表中搜索并选择“条件控制”。 
+   a. 选择“控制”>“条件”或从“操作”列表中搜索“条件”。 
 
    b. 在第一个“选择值”文本框的“分析 JSON”窗口的“动态内容”列表中选择“eventType”。
 
-   c. 在第二个“选择值”文本框中输入“UdfCustom”。
+   c. 在第二个“选择值”文本框中输入“`UdfCustom`”。
 
    ![所选条件](./media/tutorial-facilities-events/logic-app-condition.png)
 
 1. 在 **If true** 窗口中，执行以下操作：
-   
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“添加操作”，然后选择“Office 365 Outlook”。
+
+   a. 选择“添加操作”，然后选择“Office 365 Outlook”。
 
    b. 从“操作”列表中选择“发送电子邮件”。 选择“登录”，使用电子邮件帐户凭据。 当系统提示时，请选择“允许访问”。
 
    c. 在“收件人”框中，输入用于接收通知的电子邮件 ID。 在“主题”中输入文本“有关空间中空气质量差的数字孪生通知”， 然后从**分析 JSON** 的“动态内容”列表中选择“TopologyObjectId”。
 
-   d. 在同一窗口的“正文”下，输入类似于以下内容的文本：检测到房间中的空气质量差，需调整温度。 请根据需要使用“动态内容”列表中的元素进行详细阐述。
+   d. 在同一窗口中的“正文”下，输入与此类似的文本：**检测到房间内空气质量差，需要调整温度**。 请根据需要使用“动态内容”列表中的元素进行详细阐述。
 
    ![逻辑应用的“发送电子邮件”选项](./media/tutorial-facilities-events/logic-app-send-email.png)
 
@@ -188,7 +192,6 @@ ms.locfileid: "52583255"
 
 若要停止接收这些电子邮件，请转到门户中的逻辑应用资源，然后选择“概览”窗格。 选择“禁用”。
 
-
 ## <a name="clean-up-resources"></a>清理资源
 
 如果不希望继续探索 Azure 数字孪生，可以删除本教程中创建的资源：
@@ -198,15 +201,16 @@ ms.locfileid: "52583255"
     > [!TIP]
     > 如果在删除数字孪生实例时遇到麻烦，请使用已推出的包含修补程序的服务更新。 请重新尝试删除实例。
 
-2. 可以根据需要删除工作计算机上的示例应用程序。 
-
+2. 可以根据需要删除工作计算机上的示例应用程序。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何可视化传感器数据、分析趋势和查找异常，请继续阅读下一教程： 
-> [!div class="nextstepaction"]
-> [教程：使用时序见解可视化和分析 Azure 数字孪生空间中的事件](tutorial-facilities-analyze.md)
+若要了解如何可视化传感器数据、分析趋势和查找异常，请继续阅读下一教程：
 
-也可详细了解 Azure 数字孪生中的空间智能图和对象模型： 
+> [!div class="nextstepaction"]
+> [教程：使用时序见解直观显示和分析 Azure 数字孪生空间中的事件](tutorial-facilities-analyze.md)
+
+也可详细了解 Azure 数字孪生中的空间智能图和对象模型：
+
 > [!div class="nextstepaction"]
 > [了解数字孪生对象模型和空间智能图](concepts-objectmodel-spatialgraph.md)

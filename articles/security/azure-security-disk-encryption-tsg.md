@@ -1,18 +1,19 @@
 ---
-title: Azure 磁盘加密故障排除 | Microsoft 文档
+title: 故障排除 - 为 IaaS VM 启用 Azure 磁盘加密 | Microsoft Docs
 description: 本文提供适用于 Windows 和 Linux IaaS VM 的 Microsoft Azure 磁盘加密的故障排除提示。
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/10/2018
-ms.openlocfilehash: 3d52e031d6c3266ba9d15a2283adcdbce7a6b929
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.date: 01/25/2019
+ms.custom: seodec18
+ms.openlocfilehash: 70cf6c65592eef94ce657c9aaef7dc78de4ffa11
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347675"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468387"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁盘加密故障排除指南
 
@@ -32,7 +33,23 @@ ms.locfileid: "44347675"
 - 数据驱动器以递归方式装载在 /mnt/ 目录下，或者相互装载（例如 /mnt/data1、/mnt/data2、/data3 + /data3/data4）。
 - 不满足 Linux 的其他 Azure 磁盘加密[先决条件](azure-security-disk-encryption-prerequisites.md)。
 
-## <a name="unable-to-encrypt"></a>无法加密
+## <a name="bkmk_Ubuntu14"></a> 更新 Ubuntu 14.04 LTS 默认内核
+
+Ubuntu 14.04 LTS 映像附带 4.4 版本的默认内核。 此内核版本存在一个已知问题，即 Out of Memory Killer 会在 OS 加密过程中不正确地终止 dd 命令。 此 bug 已在最新 Azure 优化 Linux 内核中修复。 若要避免此错误，在映像中启用加密之前，使用以下命令更新至 [Azure 优化内核 4.15](https://packages.ubuntu.com/trusty/linux-azure) 或更高版本：
+
+```
+sudo apt-get update
+sudo apt-get install linux-azure
+sudo reboot
+```
+
+VM 重启进入新内核后，可以使用以下方式确认新内核版本：
+
+```
+uname -a
+```
+
+## <a name="unable-to-encrypt-linux-disks"></a>无法加密 Linux 磁盘
 
 在某些情况下，Linux 磁盘加密看上去停滞在“OS 磁盘加密已启动”状态，同时 SSH 处于禁用状态。 加密过程可能需要 3-16 小时才能完成存储库映像。 如果添加了多 TB 大小的数据磁盘，此过程可能需要数天才能完成。
 
@@ -70,7 +87,10 @@ ProgressMessage            : OS disk successfully encrypted, please reboot the V
 应用的任何网络安全组设置仍必须允许终结点满足所述的与磁盘加密相关的网络配置[先决条件](azure-security-disk-encryption-prerequisites.md#bkmk_GPO)。
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>防火墙保护下的 Azure Key Vault
-VM 必须能够访问 Key Vault。 请参阅有关从 [Azure Key Vault](../key-vault/key-vault-access-behind-firewall.md) 团队维护的防火墙后面访问 Key Vault 的指导。 
+使用 [Azure AD 凭据](azure-security-disk-encryption-prerequisites-aad.md)启用加密时，必须对目标 VM 授予访问 Azure AD 身份验证终结点和 Key Vault 终结点的权限。  有关此过程的更多信息，请参阅有关从 [Azure Key Vault](../key-vault/key-vault-access-behind-firewall.md) 团队维护的防火墙后面访问密钥保管库的指导。 
+
+### <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务 
+VM 必须能够访问这样的 [Azure 实例元数据服务](../virtual-machines/windows/instance-metadata-service.md)终结点：该终结点使用只能从 VM 内访问的已知不可路由 IP 地址 (`169.254.169.254`)。
 
 ### <a name="linux-package-management-behind-a-firewall"></a>防火墙保护下的 Linux 程序包管理
 

@@ -1,23 +1,24 @@
 ---
-title: 管理 LUIS 应用中的版本
-titleSuffix: Azure Cognitive Services
+title: 管理版本
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 版本允许你构建和发布不同的模型。 较好的做法是在对模型进行更改之前将当前的活动模型复制到一个不同的应用版本。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: db461191b70aabc322e570ecc814a076c21206f2
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ac12ec34ce9799163dc815af3bc602a2e63923d8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033781"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210156"
 ---
-# <a name="manage-versions"></a>管理版本
+# <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>使用版本进行编辑和测试，而不会影响暂存应用或生产应用
 
 版本允许你构建和发布不同的模型。 较好的做法是在对模型进行更改之前将当前的活动模型复制到一个不同的应用[版本](luis-concept-version.md)。 
 
@@ -25,7 +26,7 @@ ms.locfileid: "47033781"
 
 版本列表显示哪些版本已发布，它们发布在何处，以及哪个版本当前处于活动状态。 
 
-[![](./media/luis-how-to-manage-versions/versions-import.png "“管理”部分的“版本”页面")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
+[![“管理”部分的“版本”页](./media/luis-how-to-manage-versions/versions-import.png "“管理”部分的“版本”页")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
 
 ## <a name="clone-a-version"></a>克隆版本
 
@@ -44,7 +45,7 @@ ms.locfileid: "47033781"
 
 从列表中选择一个版本，然后从工具栏中选择“激活”。 
 
-[![](./media/luis-how-to-manage-versions/versions-other.png "“管理”部分的“版本”页面")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
+[![在“管理”部分的“版本”页，执行版本操作](./media/luis-how-to-manage-versions/versions-other.png "在“管理”部分的“版本”页，执行版本操作")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
 ## <a name="import-version"></a>导入版本
 
@@ -52,7 +53,7 @@ ms.locfileid: "47033781"
 
 2. 在“导入新版本”弹出窗口中，输入新的由十个字符构成的版本名称。 仅当应用中已有 JSON 文件中的版本时，才需要设置版本 ID。
 
-    ![“管理”部分的“版本”页面](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
+    ![在“管理”部分的“版本”页，导入新版本](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 
     导入后，新版本就会成为活动版本。
 

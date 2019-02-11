@@ -1,22 +1,22 @@
 ---
-title: 使用 Hive 查询在 Hadoop 群集中为数据创建功能 | Microsoft Docs
+title: 在 Hadoop 群集中为数据创建功能 - Team Data Science Process
 description: 在存储在 Azure HDInsight Hadoop 群集中的数据中生成功能的 Hive 查询的示例。
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: f63e1aeaca6e19eacb10ed7dc68d311234a31666
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: be95a75e7cdcaa11ef3e90093ef52c5615608eac
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444540"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458017"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>使用 Hive 查询创建用于 Hadoop 群集中数据的功能
 本文档将演示如何使用 Hive 查询创建用于 Hadoop 群集中数据的功能。 这些 Hive 查询使用嵌入式 Hive 用户的定义函数 (UDF) 以及为其提供的脚本。
@@ -139,23 +139,23 @@ Hive 附带一组用于处理日期时间字段的 UDF。 在 Hive 中，默认�
 ## <a name="tuning"></a>高级主题：优化 Hive 参数以加快查询速度
 Hive 群集的默认参数设置可能不适合 Hive 查询以及正在处理查询的数据。 在本部分中，讨论用户可对其进行优化以改进 Hive 查询性能的某些参数。 用户需要在查询处理数据之前，先添加优化查询参数。
 
-1. Java 堆空间：对于涉及联接大数据集或处理长记录的查询，一个常见错误为“堆空间不足”。 可以通过将参数 mapreduce.map.java.opts 和 mapreduce.task.io.sort.mb 设置为所需的值来避免此错误。 下面是一个示例：
+1. **Java 堆空间**：对于涉及联接大数据集或处理长记录的查询，常见的一个错误为“堆空间不足”。 可以通过将参数 mapreduce.map.java.opts 和 mapreduce.task.io.sort.mb 设置为所需的值来避免此错误。 下面是一个示例：
    
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
 
     此参数会将 4GB 内存分配到 Java 堆空间，并通过为其分配更多内存来提高排序效率。 如果有任何与堆空间相关的作业失败错误，最好进行这些分配。
 
-1. DFS 块大小：此参数设置文件系统存储的最小数据单位。 例如，如果 DFS 块的大小为 128 MB，那么任何小于等于 128 MB 的数据都存储在单个块中。 大于 128 MB 的数据会被分配到额外的块。 
+1. **DFS 块大小**：此参数设置文件系统存储的最小数据单位。 例如，如果 DFS 块的大小为 128 MB，那么任何小于等于 128 MB 的数据都存储在单个块中。 大于 128 MB 的数据会被分配到额外的块。 
 2. 选择较小的块大小会导致 Hadoop 中开销变大，因为名称节点必须处理更多查找属于文件的相关块的请求。 处理千兆字节（或更大）数据的推荐设置为：
 
         set dfs.block.size=128m;
 
-2. 优化 Hive 中的联接操作：映射/归约框架中的联接操作通常发生在归约阶段，有时可通过规划映射阶段（也称为“映射联接”）中的联接来实现巨大的提升。 若要指导 Hive 尽可能执行此操作，请设置：
+2. **优化 Hive 中的联接操作**：映射/归约框架中的联接操作通常发生在归约阶段，有时可通过规划映射阶段（也称为“映射联接”）中的联接来实现巨大的提升。 若要指导 Hive 尽可能执行此操作，请设置：
    
        set hive.auto.convert.join=true;
 
-3. 将映射器数指定为 Hive：虽然 Hadoop 允许用户设置归约器数量，但是映射器数量通常不由用户设置。 允许对此数量在一定程度进行控制的技巧是，选择 Hadoop 变量 mapred.min.split.size 和 mapred.max.split.size，因为每个映射任务的大小由以下内容决定：
+3. **将映射器数指定为 Hive**：虽然 Hadoop 允许用户设置归约器数量，但是映射器数量通常不由用户设置。 允许对此数量在一定程度进行控制的技巧是，选择 Hadoop 变量 mapred.min.split.size 和 mapred.max.split.size，因为每个映射任务的大小由以下内容决定：
    
         num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
    

@@ -3,9 +3,9 @@ title: 删除个人数据 - Azure Active Directory 应用程序代理 | Microsof
 description: 从安装在设备上的连接器中删除 Azure Active Directory 应用程序代理的个人数据。
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: bccda196be82808e7dc369de3f517490f410e26e
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 9b17d3b339bf2c873e8e4c02586e814febfefaec
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366036"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177332"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>删除 Azure Active Directory 应用程序代理的个人数据  
 

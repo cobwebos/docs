@@ -1,21 +1,19 @@
 ---
-title: 使用 Azure CLI 管理 Azure Cosmos DB 资源 | Microsoft Docs
+title: 使用 Azure CLI 管理 Azure Cosmos DB 资源
 description: 使用 Azure CLI 管理 Azure Cosmos DB 帐户、数据库和容器。
-services: cosmos-db
 author: markjbrown
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: mjbrown
-ms.openlocfilehash: 3446f4f71349d0b7290a2514edf46efb37203324
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c3028fd18bd9afefaa18f7f515a43a852ddef78a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019727"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464392"
 ---
-# <a name="manage-azure-cosmos-db-resources-using-azure-cli"></a>使用 Azure CLI 管理 Azure Cosmos DB 资源
+# <a name="manage-azure-cosmos-resources-using-azure-cli"></a>使用 Azure CLI 管理 Azure Cosmos 资源
 
 以下指南介绍了使用 Azure CLI 自动管理 Azure Cosmos DB 帐户、数据库和容器的命令。 它还包括用来缩放容器吞吐量的命令。 [Azure CLI 参考](https://docs.microsoft.com/cli/azure/cosmosdb)中收录了所有 Azure Cosmos DB CLI 命令的参考页。 还可以在[针对 Azure Cosmos DB 的 Azure CLI 示例](cli-samples.md)中找到更多示例，包括如何为 MongoDB、Gremlin、Cassandra 和表 API 创建和管理 Cosmos DB 帐户、数据库和容器。
 

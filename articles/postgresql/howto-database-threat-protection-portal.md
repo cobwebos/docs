@@ -1,19 +1,17 @@
 ---
-title: 高级威胁防护 - Azure Database for PostgreSQL | Microsoft Docs
+title: 高级威胁防护 - Azure Database for PostgreSQL
 description: 威胁防护会检测异常的数据库活动，指出对数据库的潜在安全威胁。
-services: postgresql
 author: bolzmj
-manager: kfile
-ms.service: postgresql
-ms.topic: article
-ms.date: 09/20/2018
 ms.author: mbolz
-ms.openlocfilehash: ab32cc9a4aafd9fc716eff8104fb2b5117f233a9
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.service: postgresql
+ms.topic: conceptual
+ms.date: 01/24/2019
+ms.openlocfilehash: bbb48708d0e5a7cd07a3971a6966f40696107562
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47045626"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095089"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 的高级威胁防护
 
@@ -22,8 +20,11 @@ Azure Database for PostgreSQL 的高级威胁防护可检测异常活动，指�
 高级威胁防护包含在高级数据安全产品/服务中，是一个针对高级安全功能的统一软件包。 高级威胁防护可以通过 [Azure 门户](https://portal.azure.com)进行访问和管理，当前为预览版。
 
 > [!NOTE]
-> 高级威胁防护功能在以下 Azure 政府和主权云区域中不可用：US Gov 德克萨斯州、US Gov 亚利桑那州、US Gov 爱荷华州、US Gov 弗吉尼亚州、US DoD 东部、US DoD 中部、德国中部、德国北部、中国东部、中国东部 2。 请访问[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)，以了解常规产品可用性。
+> 高级威胁防护功能在以下 Azure 政府和主权云区域中**不可用**：US Gov 德克萨斯州、US Gov 亚利桑那州、US Gov 爱荷华州、US Gov 弗吉尼亚、US DoD 东部、US DoD 中部、德国中部、德国北部、中国东部、中国东部 2。 请访问[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)，以了解常规产品可用性。
 >
+
+> [!NOTE]
+> Azure 中的所有区域均提供此功能，其中 Azure Database for PostgreSQL 部署用于常规用途和内存优化服务器。
 
 ## <a name="set-up-threat-detection"></a>设置威胁检测
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中启动 Azure 门户。
@@ -57,7 +58,7 @@ Azure Database for PostgreSQL 的高级威胁防护可检测异常活动，指�
 
 单击“威胁防护”下的“安全警报”以启动“Azure 安全中心警报”页，并概要查看在数据库中检测到的活动 SQL 威胁。
 
-  ![威胁防护升序](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
+  ![威胁防护 asc](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
 
 ## <a name="next-steps"></a>后续步骤
 

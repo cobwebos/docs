@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: b8aac8a6a666bf3f360ef2867ff15933ad72dbd7
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 6f47606e91ec55bae624527bace81d947c5ea4f9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166978"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55091540"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway-preview"></a>教程：准备部署 Azure Data Box Gateway（预览版）
 
@@ -42,7 +42,7 @@ ms.locfileid: "49166978"
 | **#** | **此步骤的内容** | **使用这些文档** |
 | --- | --- | --- | 
 | 1. |**[在 Azure 门户中做好部署 Data Box Gateway 的准备](data-box-gateway-deploy-prep.md)** |在预配 Data Box Gateway 虚拟设备之前创建并配置 Data Box Gateway 资源。 |
-| 2. |**[在 Hyper-V 中预配 Data Box Gateway](data-box-gateway-deploy-provision-hyperv.md)** <br><br><br>**[在 VMware 中预配 Data Box Gateway](data-box-gateway-deploy-provision-vmware.md)**|对于 Hyper-V，可在 Windows Server 2016 或 Windows Server 2012 R2 上运行 Hyper-V 的主机系统上预配和连接 Data Box Gateway 虚拟设备。 <br><br><br> 对于 VMware，可在运行 VMware ESXi 6.0 或 6.5 的主机系统上预配和连接 Data Box Gateway 虚拟设备。<br></br> |
+| 2. |**[在 Hyper-V 中预配 Data Box Gateway](data-box-gateway-deploy-provision-hyperv.md)** <br><br><br>**[在 VMware 中预配 Data Box Gateway](data-box-gateway-deploy-provision-vmware.md)**|对于 Hyper-V，可在 Windows Server 2016 或 Windows Server 2012 R2 上运行 Hyper-V 的主机系统上预配和连接 Data Box Gateway 虚拟设备。 <br><br><br> 对于 VMware，可在运行 VMware ESXi 6.0、6.5 或 6.7 的主机系统上预配和连接 Data Box Gateway 虚拟设备。<br></br> |
 | 3. |**[连接、设置并激活 Data Box Gateway](data-box-gateway-deploy-connect-setup-activate.md)** |连接到本地 Web UI，完成设备设置，然后激活设备。 然后即可预配 SMB 共享。  |
 | 4. |**[使用 Data Box Gateway 传输数据](data-box-gateway-deploy-add-shares.md)** |添加共享，并通过 SMB 或 NFS 连接到共享。 |
 
@@ -63,7 +63,7 @@ ms.locfileid: "49166978"
 
 在部署虚拟设备之前，请确保：
 
-* 有权访问在 Windows Server 2012 R2 或更高版本上运行 Hyper-V 的主机系统或者运行可用于预配设备的 VMware（ESXi 6.0 或 6.5）的主机系统。
+* 有权访问在 Windows Server 2012 R2 或更高版本上运行 Hyper-V 的主机系统或者运行可用于预配设备的 VMware（ESXi 6.0、6.5 或 6.7）的主机系统。
 * 主机系统能够将以下资源专用于预配 Data Box 虚拟设备：
   
   * 至少 4 个核心。
@@ -126,7 +126,7 @@ ms.locfileid: "49166978"
 4. 在右窗格中的“快速启动”内，单击要下载的映像对应的链接。 映像文件约为 4.8 GB。
    
    * [Windows Server 2012 R2 及更高版本上的适用于 Hyper-V 的 VHDX](https://aka.ms/dbe-vhdx-2012)。
-   * [适用于 VMWare ESXi 6.0 或 6.5 的 VMDK](https://aka.ms/dbe-vmdk)。
+   * [适用于 VMWare ESXi 6.0、6.5 或 6.7 的 VMDK](https://aka.ms/dbe-vmdk)。
 
 5. 下载该文件并将其解压缩到本地驱动器，记下解压缩文件所在的位置。
 

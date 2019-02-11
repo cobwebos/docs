@@ -1,6 +1,6 @@
 ---
-title: 通过门户启用 Azure 事件中心捕获 | Microsoft Docs
-description: 通过 Azure 门户启用事件中心捕获功能。
+title: 使用 Azure 门户捕获流式处理事件 - Azure事件中心 | Microsoft Docs
+description: 本文介绍如何使用 Azure 门户捕获通过 Azure 事件中心流式处理的事件。
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -10,18 +10,19 @@ ms.assetid: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/16/2018
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 5cb3fee975e99af3d86affcbc18d89277dde2dc1
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 19b485add894dbe99a524d16f891d001991c1ec7
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409112"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558373"
 ---
-# <a name="enable-event-hubs-capture-using-the-azure-portal"></a>通过 Azure 门户启用事件中心捕获
+# <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>启用捕获通过 Azure 事件中心流式处理的事件
 
 Azure [事件中心捕获][capture-overview]用于自动将事件中心的流式处理数据传递到所选的 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)或 [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) 帐户。
 
@@ -35,7 +36,7 @@ Azure [事件中心捕获][capture-overview]用于自动将事件中心的流式
 
 默认时间段为 5 分钟。 最小值为 1，最大值为 15。 **大小**窗口的范围为 10-500 MB。
 
-![][1]
+![捕获的时间范围][1]
 
 ## <a name="capture-data-to-an-azure-data-lake-store-account"></a>将数据捕获到 Azure Data Lake Store 帐户
 
@@ -52,7 +53,7 @@ Azure [事件中心捕获][capture-overview]用于自动将事件中心的流式
 2. 在“创建事件中心”门户页的“捕获提供程序”框中选择“Azure Data Lake Store”。
 3. 在“选择 Data Lake Store”中指定此前创建的 Data Lake Store 帐户，并在“Data Lake 路径”字段中输入已创建的数据文件夹的路径。
 
-    ![][3]
+    ![选择 Data Lake Storage 帐户][3]
 
 ## <a name="add-or-configure-capture-on-an-existing-event-hub"></a>在现有的事件中心添加或配置捕获
 
@@ -60,11 +61,11 @@ Azure [事件中心捕获][capture-overview]用于自动将事件中心的流式
 
 ### <a name="azure-blob-storage"></a>Azure Blob 存储
 
-![][2]
+![配置 Azure Blob 存储][2]
 
 ### <a name="azure-data-lake-store"></a>Azure Data Lake Store
 
-![][4]
+![配置 Azure Data Lake Storage][4]
 
 [1]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture1.png
 [2]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture2.png

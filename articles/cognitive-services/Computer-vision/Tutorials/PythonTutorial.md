@@ -1,31 +1,32 @@
 ---
-title: 教程：计算机视觉 API Python
+title: 教程：执行图像操作 - Python
 titlesuffix: Azure Cognitive Services
 description: 通过 Jupyter Notebook 了解如何使用 Python 中的计算机视觉 API。 使用常用库直观显示结果。
 services: cognitive-services
 author: KellyDF
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 11/6/2018
+ms.date: 11/06/2018
 ms.author: kefre
-ms.openlocfilehash: 16054d19c1ce6f211ebd3e2f0bbc4d152a255dda
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.custom: seodec18
+ms.openlocfilehash: 3d3cc6138e6823fad11db5b6bd8edbb2d7398d00
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51276961"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225681"
 ---
 # <a name="tutorial-computer-vision-api-python"></a>教程：计算机视觉 API Python
 
-本教程介绍如何使用 Python 中的计算机视觉 API 以及如何使用常用库直观显示结果。 你将使用 Jupyter 运行本教程。 若要了解如何开始使用交互式 Jupyter Notebook，请参阅 [Jupyter 文档](http://jupyter.readthedocs.io/en/latest/index.html)。
+本教程介绍如何使用 Python 中的计算机视觉 API 以及如何使用常用库直观显示结果。 你将使用 Jupyter 运行本教程。 若要了解如何开始使用交互式 Jupyter Notebook，请参阅 [Jupyter 文档](https://jupyter.readthedocs.io/en/latest/index.html)。
 
 ## <a name="prerequisites"></a>先决条件
 
 - [Python 2.7+ 或 3.5+](https://www.python.org/downloads/)
 - [pip](https://pip.pypa.io/en/stable/installing/) 工具
-- 已安装 [Jupyter Notebook](http://jupyter.org/install)
+- 已安装 [Jupyter Notebook](https://jupyter.org/install)
 
 ## <a name="open-the-tutorial-notebook-in-jupyter"></a>在 Jupyter 中打开教程 Notebook 
 

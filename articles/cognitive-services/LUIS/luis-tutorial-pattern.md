@@ -1,30 +1,31 @@
 ---
-title: 教程 3：用于改进 LUIS 预测的模式
+title: 模式
 titleSuffix: Azure Cognitive Services
 description: 使用模式来改进意向和实体预测，同时提供更少的示例话语。 该模式通过模板话语示例提供，该示例包括用于标识实体和可忽略文本的语法。
 services: cognitive-services
 author: diberry
+ms.custom: seodec18
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: 7ba5db8e50e8da5b274f73046d56f7816ca8834d
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 2b41054420f381ed4d39d35af82a464cf555cb13
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138321"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490883"
 ---
-# <a name="tutorial-3-add-common-utterance-formats"></a>教程 3：添加常见话语格式
+# <a name="tutorial-add-common-pattern-template-utterance-formats"></a>教程：添加常见的模式模板话语格式
 
 在本教程中，使用模式来改进意向和实体预测，同时提供更少的示例话语。 该模式通过模板话语示例提供，该示例包括用于标识实体和可忽略文本的语法。 模式是表达式匹配和机器学习的组合。  模板话语示例和意向话语使 LUIS 能够更好地理解哪些话语符合意向。 
 
 **本教程介绍如何执行下列操作：**
 
 > [!div class="checklist"]
-> * 使用现有的教程应用 
+> * 导入示例应用 
 > * 创建意向
 > * 定型
 > * 发布
@@ -36,13 +37,13 @@ ms.locfileid: "50138321"
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>使用现有应用
+## <a name="import-example-app"></a>导入示例应用
 
 继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
 
-如果没有上一个教程中的 HumanResources 应用，请执行以下步骤：
+请执行以下步骤：
 
-1.  下载并保存[应用 JSON 文件](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json)。
+1.  下载并保存[应用 JSON 文件](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json)。
 
 2. 将 JSON 导入到新应用中。
 
@@ -106,7 +107,7 @@ ms.locfileid: "50138321"
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `Who is the boss of Jill Jones?`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 
 
-    ```JSON
+    ```json
     {
         "query": "who is the boss of jill jones?",
         "topScoringIntent": {
@@ -229,7 +230,7 @@ ms.locfileid: "50138321"
 
 LUIS 向客户端应用返回预测后，意向名称可以用作客户端应用中的函数名称，并且“员工”实体可以用作该函数的参数。
 
-```Javascript
+```javascript
 OrgChartManager(employee){
     ///
 }
@@ -277,7 +278,7 @@ OrgChartManager(employee){
 
 3. 将光标定位到地址中 URL 的末尾，并输入 `Who is the boss of Jill Jones?` 作为话语。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 
 
-    ```JSON
+    ```json
     {
         "query": "who is the boss of jill jones?",
         "topScoringIntent": {

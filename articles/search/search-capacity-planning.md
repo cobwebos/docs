@@ -1,5 +1,5 @@
 ---
-title: 为 Azure 搜索中的查询和索引分配分区和副本 | Microsoft Docs
+title: 为查询和索引分配分区和副本 - Azure 搜索
 description: 在 Azure 搜索中调整分区和副本计算机资源，其中每个资源按照可计费搜索单位定价。
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: fa1a13c5c786867f6e92a678c40a491e0a226076
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: e2eff6c854dae48961700341a6db19dc7113901c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238722"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316108"
 ---
 # <a name="allocate-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>为 Azure 搜索中的查询和索引工作负载分配分区和副本
 [选择定价层](search-sku-tier.md)并[预配搜索服务](search-create-service-portal.md)后，下一步是有选择性地增加服务使用的副本或分区数目。 每一层提供固定数量的计费单位。 本文介绍如何通过分配这些单位来实现最佳配置，根据查询执行、索引和存储的要求做出平衡。

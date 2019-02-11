@@ -1,21 +1,22 @@
 ---
-title: 用于增强实体检测的短语列表
-titleSuffix: Azure Cognitive Services
+title: 短语列表
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 使用语言理解 (LUIS) 添加应用功能，可以改进对类别和模式的意向和实体的检测或预测
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 01/16/2019
 ms.author: diberry
-ms.openlocfilehash: feb51cd55801addaf5ce2486e5527542f794bbc5
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: a196ef174c5b32c63f89d5d4931b22f41ae4d08e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52580944"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206759"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>使用短语列表来增强字词列表的信号
 
@@ -27,6 +28,8 @@ ms.locfileid: "52580944"
 
 ## <a name="add-phrase-list"></a>添加短语列表
 
+LUIS 允许每个应用最多有 10 个短语列表。 
+
 1. 单击“我的应用”页上的名称打开应用，单击“构建”，然后单击应用左侧面板中的“短语列表”。 
 
 2. 在“短语列表”页上，单击“新建短语列表”。 
@@ -37,11 +40,11 @@ ms.locfileid: "52580944"
 
 4. LUIS 可以建议相关值，用于添加到短语列表。 单击“建议”，获取一组与添加的值在语义上相关的建议值。 可以单击任何建议的值，或单击“全部添加”添加所有值。
 
-    ![短语列表建议的值](./media/luis-add-features/related-values.png)
+    ![短语列表建议的值 - 全部添加](./media/luis-add-features/related-values.png)
 
 5. 如果添加的短语列表值是可交换使用的替代值，则单击“这些值可以交换”。
 
-    ![短语列表建议的值](./media/luis-add-features/interchangeable.png)
+    ![短语列表建议的值 - 选择可互换框 ](./media/luis-add-features/interchangeable.png)
 
 6. 单击“ **保存**”。 将“城市”短语列表添加到“短语列表”页。
 

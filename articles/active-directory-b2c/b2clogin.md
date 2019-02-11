@@ -1,21 +1,21 @@
 ---
-title: 将 Azure Active Directory B2C 的重定向 URL 设置为 b2clogin.com | Microsoft Docs
+title: 将重定向 URL 设置为 b2clogin.com - Azure Active Directory B2C | Microsoft Docs
 description: 了解在 Azure Active Directory B2C 的重定向 URL 中使用 b2clogin.com。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 01/28/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 7b460efbdc50c5b243c3ef78bad568b720e75e59
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.subservice: B2C
+ms.openlocfilehash: 61c4212233dd7ed9c34de779176c3402890e673f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51635551"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160898"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>将 Azure Active Directory B2C 的重定向 URL 设置为 b2clogin.com
 
@@ -23,13 +23,13 @@ ms.locfileid: "51635551"
 
 使用 b2clogin.com 可以提供更多优势，例如：
 
-- 不再与其他 Microsoft 服务共享 Cookie。
-- URL 不再包括对 Microsoft 的引用。 例如，`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。
+- Microsoft 服务在 cookie 标头中使用的空间就会减少。
+- URL 不再包括对 Microsoft 的引用。 例如，`https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp`。
 
 使用 b2clogin.com 时，考虑可能需要更改的这些设置：
 
 - 将标识提供者应用程序中的重定向 URL 设置为使用 b2clogin.com。 
-- 将 Azure AD B2C 应用程序设置为将 b2clogin.com 用于策略引用和令牌终结点。 
+- 将 Azure AD B2C 应用程序设置为将 b2clogin.com 用于用户流引用和令牌终结点。 
 - 如果使用的是 MSAL，则需要将 **ValidateAuthority** 属性设置为 `false`。
 - 请确保更改[用户界面自定义](active-directory-b2c-ui-customization-custom-dynamic.md)的 CORS 设置中定义的任何“允许的源”。  
 
@@ -56,11 +56,13 @@ ms.locfileid: "51635551"
 
 ## <a name="update-your-application"></a>更新应用程序
 
-你的 Azure AD B2C 应用程序可能在多个地方引用了 `login.microsoftonline.com`，例如策略引用和令牌终结点。  请确保授权终结点、令牌终结点和证书颁发者都已更新为使用 `your-tenant-name.b2clogin.com`。  
+Azure AD B2C 应用程序可能在多个地方引用了 `login.microsoftonline.com`，例如用户流引用和令牌终结点。  请确保授权终结点、令牌终结点和证书颁发者都已更新为使用 `your-tenant-name.b2clogin.com`。  
 
 ## <a name="set-the-validateauthority-property"></a>设置 ValidateAuthority 属性
 
-如果使用的是 MSAL，请将 **ValidateAuthority** 设置为 `false`。 以下示例展示了如何设置此属性：
+如果使用的是 MSAL，请将 **ValidateAuthority** 属性设置为 `false`。 当 **ValidateAuthority** 设置为 `false` 时，允许重定向到 b2clogin.com。 
+
+以下示例展示了如何设置此属性：
 
 在[适用于 .Net 的 MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) 中：
 

@@ -5,17 +5,18 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e797f1faf249a1ad1eebbd46984829de5f087936
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: f10bae780ebb05d3450f4dab7e53fa87fe25b022
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958660"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189547"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>使用 REST API 执行异步刷新
+
 使用支持 REST 调用的任何编程语言，可以针对 Azure Analysis Services 表格模型执行异步数据刷新操作。 这包括同步只读副本以进行查询扩展。 
 
 数据刷新操作可能需要一段时间，具体取决于多种因素，包括数据卷、使用分区的优化级别，等等。在传统上，这些操作是使用现有方法调用的，例如，使用 [TOM](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo)（表格对象模型）、[PowerShell](https://docs.microsoft.com/sql/analysis-services/powershell/analysis-services-powershell-reference) cmdlet，或 [TMSL](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)（表格模型脚本语言）。 但是，这些方法可能需要通常不可靠的且长时间运行的 HTTP 连接。
@@ -94,6 +95,7 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 ```
 
 ### <a name="parameters"></a>parameters
+
 不需要指定参数。 将应用默认值。
 
 |名称  |类型  |Description  |默认  |
@@ -185,10 +187,10 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
 `syncstate` 的值：
 
 - 0：正在复制。 正在将数据库文件复制到目标文件夹。
-- 1：正在解冻。 正在只读的服务器实例上解冻数据库。
-- 2：已完成。 同步操作已成功完成。
-- 3：失败。 同步操作失败。
-- 4：正在终结。 同步操作已完成，但正在执行清理步骤。
+- 1:正在解冻。 正在只读的服务器实例上解冻数据库。
+- 2:已完成。 同步操作已成功完成。
+- 3：已失败。 同步操作失败。
+- 4：正在完成。 同步操作已完成，但正在执行清理步骤。
 
 ## <a name="code-sample"></a>代码示例
 

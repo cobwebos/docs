@@ -6,16 +6,16 @@ services: cognitive-services
 author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 12/18/2018
 ms.author: tulasim88
-ms.openlocfilehash: eef26cf1f5a11d7dcd1fdc41747aac675e0bc528
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 8712f9e79965e09e21df768b1c06561a896b8e01
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031078"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214086"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>配合使用元数据与 GenerateAnswer API
 
@@ -57,8 +57,8 @@ ms.locfileid: "47031078"
     - **Knowledge base ID**（字符串）：知识库的 GUID。
     - **QnAMaker endpoint**（字符串）：部署在 Azure 订阅中的终结点的主机名。
 - **请求标头**
-    - **Content-Type**（字符串）：发送到 API 的正文媒体类型。
-    - **授权**（字符串）：终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
+    - **Content-Type**（字符串）：发送到 API 的正文的媒体类型。
+    - **Authorization**（字符串）：终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
 - **请求正文**
     - **question**（字符串）：要针对知识库查询的用户问题。
     - **top**（可选，整数）：要包含在输出中的排序结果数。 默认值为 1。
@@ -88,7 +88,7 @@ ms.locfileid: "47031078"
         - **metadata**：与答案关联的元数据。
             - name：元数据名称。 （字符串，最大长度：100，必填）
             - value：元数据值。 （字符串，最大长度：100，必填）
-        - **Id**：分配给答案的唯一 ID。
+        - **id**：分配给答案的唯一 ID。
     ```json
     {
         "answers": [
@@ -113,11 +113,11 @@ ms.locfileid: "47031078"
 
 ## <a name="metadata-example"></a>元数据示例
 
-请思考以下位于 Hyderabad 的餐馆常见问题解答数据。 单击齿轮图标，将元数据添加到知识库。
+请考虑以下常见问题解答数据。 通过单击元数据图标，将元数据添加到知识库。
 
 ![添加元数据](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 
-### <a name="filter-results-with-strictfilters"></a>使用 strictFilters 来筛选结果
+### <a name="filter-results-with-strictfilters-for-metadata-tags"></a>使用元数据标记的 strictFilters 来筛选结果
 
 请思考此用户问题 -“此酒店什么时候打烊？” 这里隐含的意向是“Paradise”餐馆。
 
@@ -167,6 +167,8 @@ ms.locfileid: "47031078"
 此信息可用于记录之前对话的上下文，供后续对话使用。 
 
 ## <a name="next-steps"></a>后续步骤
+
+发布页还提供了使用 [Postman](../Quickstarts/get-answer-from-kb-using-postman.md) 和 [cURL](../Quickstarts/get-answer-from-kb-using-curl.md) 生成答案的信息。 
 
 > [!div class="nextstepaction"]
 > [创建知识库](./create-knowledge-base.md)

@@ -3,24 +3,20 @@ title: Azure 虚拟网络服务终结点策略 | Microsoft Docs
 description: 了解如何使用服务终结点策略来筛选发往 Azure 服务资源的虚拟网络流量
 services: virtual-network
 documentationcenter: na
-author: anithaa
-manager: narayan
-editor: ''
-ms.assetid: ''
+author: sumeetmittal
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
-ms.author: anithaa
-ms.custom: ''
-ms.openlocfilehash: 425bbc9eac112a4b999bd08940abb8b875aca61c
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.author: sumeet.mittal
+ms.openlocfilehash: 7a3a94e9759dfb3c525ffcf1e840d5bec18f4808
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433287"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051305"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>虚拟网络服务终结点策略（预览版）
 
@@ -146,9 +142,9 @@ __Azure 存储__：WestCentralUS、WestUS2。
 
 ## <a name="scenarios"></a>方案
 
-- **对等互连、互连或多个虚拟网络**：若要筛选对等虚拟网络中的流量，应该单独对这些虚拟网络应用终结点策略。
+- **对等互连、互连或多个虚拟网络**：若要筛选对等互连虚拟网络中的流量，应该单独对这些虚拟网络应用终结点策略。
 - **使用网络设备或 Azure 防火墙筛选 Internet 流量**：通过终结点使用策略筛选 Azure 服务流量，并通过设备或 Azure 防火墙筛选剩余的 Internet 或 Azure 流量。 
-- **基于部署到虚拟网络中的 Azure 服务筛选流量**：在预览期，虚拟网络中部署的任何 Azure 托管服务不支持服务终结点策略。 
+- **基于部署到虚拟网络中的 Azure 服务筛选流量**：在预览期间，虚拟网络中部署的任何 Azure 托管服务不支持服务终结点策略。 
  有关特定的服务，请参阅[限制](#Limitations)。
 - **筛选从本地发往 Azure 服务的流量**：服务终结点策略只会应用到与这些策略关联的子网发出的流量。 若要允许从本地访问特定的 Azure 服务资源，应使用网络虚拟设备或防火墙筛选流量。
 

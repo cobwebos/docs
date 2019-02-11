@@ -11,12 +11,12 @@ ms.topic: hero-article
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shwetams
-ms.openlocfilehash: 807fd49a54c82b0930134beb8413e14c1c28b278
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 8844260c4364776ad0fc828dcd66932d37474ecf
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115555"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164613"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>用于 Node.js 的批处理 SDK 入门
 
@@ -254,7 +254,7 @@ var cloudPool = batch_client.pool.get(poolid,function(error,result,request,respo
 ```
 
 
-### <a name="step-4-submit-an-azure-batch-job"></a>步骤 5：提交 Azure Batch 作业
+### <a name="step-4-submit-an-azure-batch-job"></a>步骤 4：提交 Azure Batch 作业
 Azure Batch 作业是包含相似任务的逻辑组。 在我们的方案中，它是指“将 csv 处理成 JSON”。 这里的每个任务可能都在处理每个 Azure 存储容器中存在的 csv 文件。
 
 这些任务会并行运行，并且跨多个节点部署，由 Azure Batch 服务进行协调。
@@ -311,14 +311,14 @@ var job_prep_task_config = {id:"installprereq",commandLine:"sudo sh startup_prer
 ```
 
 
-### <a name="step-5-submit-azure-batch-tasks-for-a-job"></a>步骤 6：为作业提交 Azure Batch 任务
+### <a name="step-5-submit-azure-batch-tasks-for-a-job"></a>步骤 5：为作业提交 Azure Batch 任务
 
 创建“process csv”作业以后，让我们创建该作业的任务。 假设我们有四个容器，则必须创建四个任务，一个容器一个任务。
 
 如果我们查看 [Python 脚本](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py)，可以看到它接受两个参数：
 
-* container name：要从其中下载文件的存储容器
-* pattern：文件名称模式的可选参数
+* 容器名称：要从其中下载文件的存储容器
+* 模式：文件名称模式的可选参数
 
 假设我们有四个容器，分别为“con1”、“con2”、“con3”、“con4”。以下代码显示了如何将任务提交到我们此前创建的 Azure Batch 作业“process csv”。
 

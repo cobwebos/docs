@@ -4,21 +4,21 @@ titleSuffix: Azure Dev Spaces
 author: stepro
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 ms.author: stephpr
 ms.date: 09/26/2018
 ms.topic: quickstart
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
 manager: mmontwil
-ms.openlocfilehash: 9e0d90dc4e5e4782802233dd311d10fc1cbe969c
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 24bb5a044db813e1ee3cf2c9ff3e36a9b9ff86d7
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978530"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657053"
 ---
-# <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-java-and-vs-code"></a>快速入门：使用 Azure Dev Spaces 创建 Kubernetes 开发空间（Java 和 VS Code）
+# <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-java-and-vs-code"></a>快速入门：使用 Azure Dev Spaces 创建 Kubernetes dev 空间（Java 和 VS Code）
 
 本指南介绍如何：
 
@@ -27,7 +27,7 @@ ms.locfileid: "50978530"
 - 通过 VS Code 调试开发空间中的代码。
 
 > [!Note]
-> **如果在任何时候遇到问题**，请参阅[故障排除](troubleshooting.md)部分，或在此页上发表评论。 也可以试着学习更详细的[教程](get-started-netcore.md)。
+> **如果在任何时候遇到问题**，请参阅[故障排除](troubleshooting.md)部分，或在此页上发表评论。 也可以试着学习更详细的[教程](get-started-java.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,7 +38,7 @@ ms.locfileid: "50978530"
 
     ```cmd
     az group create --name MyResourceGroup --location <region>
-    az aks create -g MyResourceGroup -n myAKS --location <region> --kubernetes-version 1.11.2 --enable-addons http_application_routing --generate-ssh-keys
+    az aks create -g MyResourceGroup -n myAKS --location <region> --kubernetes-version 1.10.9 --enable-addons http_application_routing --generate-ssh-keys
     ```
 
 ## <a name="set-up-azure-dev-spaces"></a>设置 Azure Dev Spaces
@@ -137,4 +137,4 @@ Azure Dev Spaces 不会在每次进行代码编辑时都重新生成和重新部
 了解 Azure Dev Spaces 如何帮助开发跨多个容器的更复杂应用，以及如何通过在不同的空间中使用不同的代码版本或分支来简化协作开发。
 
 > [!div class="nextstepaction"]
-> [使用多个容器和团队开发](team-development-java.md)
+> [使用多个容器和团队开发](multi-service-java.md)

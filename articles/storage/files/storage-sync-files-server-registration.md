@@ -7,18 +7,20 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: 1aa1bd085a312e379dc996a860c7f97b2e0dfe73
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.subservice: files
+ms.openlocfilehash: cec6da78ae47b509e2bb5f8ba0007208545062e7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918870"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478060"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>管理已向 Azure 文件同步注册的服务器
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
 
 下面的文章说明如何向存储同步服务注册服务器并进行管理。 若要了解如何部署端到端的 Azure 文件同步，请参阅[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>向存储同步服务注册/注销服务器
 向 Azure 文件同步注册服务器可在 Windows Server 和 Azure 之间建立信任关系。 这种关系随后可用于创建服务器上的服务器终结点，该终结点表示应与 Azure 文件共享（也称为云终结点）同步的特定文件夹。 
@@ -33,10 +35,10 @@ ms.locfileid: "42918870"
     
     ![突出显示“IE 增强的安全配置”的服务器管理器 UI](media/storage-sync-files-server-registration/server-manager-ie-config.png)
 
-* 确保服务器上安装了 AzureRM PowerShell 模块。 如果服务器是故障转移群集的成员，则群集中的每个节点都需要 AzureRM 模块。 有关如何安装 AzureRM 模块的更多详细信息可以在[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) 上找到。
+* 确保服务器上安装了 Azure PowerShell 模块。 如果服务器是故障转移群集的成员，则群集中的每个节点都需要 Az 模块。 有关如何安装 Az 模块的更多详细信息可以在[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 上找到。
 
     > [!Note]  
-    > 我们建议使用最新版本的 AzureRM PowerShell 模块注册/注销服务器。 如果 AzureRM 包之前已安装在此服务器上（并且此服务器上的 PowerShell 版本是 5.* 或更高版本），则可以使用 `Update-Module` cmdlet 更新此包。 
+    > 我们建议使用最新版本的 Az PowerShell 模块注册/注销服务器。 如果 Az 包之前已安装在此服务器上（并且此服务器上的 PowerShell 版本是 5.* 或更高版本），则可以使用 `Update-Module` cmdlet 更新此包。 
 * 如果你在环境中利用网络代理服务器，请在服务器上为要利用的同步代理配置代理设置。
     1. 确定代理 IP 地址和端口号
     2. 编辑以下这两个文件：
@@ -135,8 +137,8 @@ Invoke-StorageSyncFileRecall -Path <a-volume-with-server-endpoints-on-it>
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
 
-$accountInfo = Connect-AzureRmAccount
-Login-AzureRmStorageSync -SubscriptionId $accountInfo.Context.Subscription.Id -TenantId $accountInfo.Context.Tenant.Id -ResourceGroupName "<your-resource-group>"
+$accountInfo = Connect-AzAccount
+Login-AzStorageSync -SubscriptionId $accountInfo.Context.Subscription.Id -TenantId $accountInfo.Context.Tenant.Id -ResourceGroupName "<your-resource-group>"
 
 $StorageSyncService = "<your-storage-sync-service>"
 
@@ -189,5 +191,6 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 
 ## <a name="see-also"></a>另请参阅
 - [规划 Azure 文件同步部署](storage-sync-files-planning.md)
-- [部署 Azure 文件同步](storage-sync-files-deployment-guide.md) 
+- [部署 Azure 文件同步](storage-sync-files-deployment-guide.md)
+- [监视 Azure 文件同步](storage-sync-files-monitoring.md)
 - [对 Azure 文件同步进行故障排除](storage-sync-files-troubleshoot.md)

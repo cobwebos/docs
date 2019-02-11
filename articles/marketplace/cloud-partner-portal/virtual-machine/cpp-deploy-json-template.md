@@ -1,9 +1,9 @@
 ---
-title: 适用于 Microsoft Azure 的 VHD 部署模板 (JSON) | Microsoft Docs
-description: 适用于 Azure 门户的示例 VHD 部署模板。
+title: Azure VHD 部署模板 | Microsoft Docs
+description: 列出从用户虚拟硬盘部署新的 Azure 虚拟机所需的 Azure 资源管理器模板。
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
-author: pbutlerm
+author: v-miclar
 manager: Patrick.Butler
 editor: ''
 ms.assetid: ''
@@ -11,22 +11,21 @@ ms.service: marketplace
 ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
-ms.topic: reference
-ms.date: 09/25/2018
+ms.topic: article
+ms.date: 11/29/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 283eb1a7ce9bfcf7f57c7a2770b7b51bddc0be23
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 5b338f0b829a337bccf41af5ab9449a6b39b665d
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638884"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186950"
 ---
-# <a name="vhd-deployment-template-json"></a>VHD 部署模板 (JSON) 
+# <a name="virtual-hard-disk-deployment-template"></a>虚拟硬盘部署模板 
 
-以下 JSON 代码表示部署模板，使用该模板可以将虚拟机 (VM) 映像部署到 Microsoft Azure。  要在 Azure 市场中创建 VM 产品/服务，需要 VM 资源。 
+以下 Azure 资源管理器模板定义从本地虚拟硬盘 (VHD) 创建的新 Azure 虚拟机 (VM) 实例。  [从用户 VHD 部署 Azure VM](./cpp-deploy-vm-user-image.md) 一文中使用了此模板。 
 
-
-``` json
+```json
 {
     "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
     "contentVersion": "1.0.0.0",
@@ -47,7 +46,7 @@ ms.locfileid: "49638884"
         },
         "adminPassword": {
             "type": "securestring",
-            "defaultValue": ""
+            "defaultValue": "Password@123"
         },
         "osType": {
             "type": "string",
@@ -77,7 +76,25 @@ ms.locfileid: "49638884"
         },
         "nicName": {
             "type": "string"
-        },        
+        },
+        "vaultName": {
+            "type": "string",            
+            "metadata": {
+                "description": "Name of the KeyVault"
+            }
+        },
+        "vaultResourceGroup": {
+            "type": "string",           
+            "metadata": {
+                "description": "Resource Group of the KeyVault"
+            }
+        },
+        "certificateUrl": {
+            "type": "string",
+            "metadata": {
+                "description": "Url of the certificate with version in KeyVault e.g. https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7"
+            }
+        },
         "vhdUrl": {
             "type": "string",
             "metadata": {
@@ -177,7 +194,35 @@ ms.locfileid: "49638884"
                     "osProfile": {
                         "computername": "[parameters('vmName')]",
                         "adminUsername": "[parameters('adminUsername')]",
-                        "adminPassword": "[parameters('adminPassword')]"                       
+                        "adminPassword": "[parameters('adminPassword')]",
+                        "secrets": [
+                            {
+                                "sourceVault": {
+                                    "id": "[resourceId(parameters('vaultResourceGroup'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
+                                },
+                                "vaultCertificates": [
+                                    {
+                                        "certificateUrl": "[parameters('certificateUrl')]",
+                                        "certificateStore": "My"
+                                    }
+                                ]
+                            }
+                        ],
+                        "windowsConfiguration": {
+                            "provisionVMAgent": "true",
+                            "winRM": {
+                                "listeners": [
+                                    {
+                                        "protocol": "http"
+                                    },
+                                    {
+                                        "protocol": "https",
+                                        "certificateUrl": "[parameters('certificateUrl')]"
+                                    }
+                                ]
+                            },
+                            "enableAutomaticUpdates": "true"
+                        }
                     },
                     "storageProfile": {
                         "osDisk": {
@@ -199,9 +244,17 @@ ms.locfileid: "49638884"
                                 "id": "[resourceId('Microsoft.Network/networkInterfaces',parameters('nicName'))]"
                             }
                         ]
-                    }                
+                    },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat('http://', parameters('userStorageAccountName'), '.blob.core.windows.net')]"
+                    }
+                }
+                
                 }
             }
         ]
     }
+
 ```

@@ -3,18 +3,18 @@ title: 大规模备份 Azure 虚拟机
 description: 同时将多个虚拟机备份到 Azure
 services: backup
 keywords: 虚拟机备份; 虚拟机备份; 备份 vm; 备份 vm; 备份 Azure vm; 备份和灾难恢复
-author: markgalioto
-ms.author: markgal
-ms.date: 2/14/2018
+author: rayne-wiselman
+ms.author: raynew
+ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: dfe561e7a7231c8e7f9465819a01cd4b0a35f47c
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a73568fd1dd7ed6b6cd3a7938768db4982725658
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434529"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497871"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>使用 Azure 门户备份多个虚拟机
 

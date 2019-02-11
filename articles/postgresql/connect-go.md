@@ -1,24 +1,21 @@
 ---
 title: 使用 Go 语言连接到 Azure Database for PostgreSQL
 description: 本快速入门提供了一个 Go 编程语言示例，你可以使用它来连接到 Azure Database for PostgreSQL 并查询其中的数据。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: eef5d9b6878b46d402a91f3adbfd965c47493c25
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 026913e8afbc1eca5742e21d28ed65c1f1f04d96
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986469"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549513"
 ---
-# <a name="azure-database-for-postgresql-use-go-language-to-connect-and-query-data"></a>Azure Database for PostgreSQL：使用 Go 语言进行连接并查询数据
+# <a name="azure-database-for-postgresql-use-go-language-to-connect-and-query-data"></a>Azure Database for PostgreSQL：使用 Go 语言连接和查询数据
 本快速入门演示如何使用以 [Go](https://golang.org/) 语言 (golang) 编写的代码连接到 Azure Database for PostgreSQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文假设你熟悉如何使用 Go 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。
 
 ## <a name="prerequisites"></a>先决条件

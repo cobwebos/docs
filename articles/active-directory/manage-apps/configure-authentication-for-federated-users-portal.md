@@ -4,21 +4,21 @@ description: 介绍什么是 Azure AD 租户，以及如何通过 Azure Active D
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: barbkess
-ms.openlocfilehash: f9cd761080bc5098d0500841e7327ac8ce9f9a2d
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: eaadd24789baf9da49397a65f9cd1a18b40ff918
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957919"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168684"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主领域发现策略为应用程序配置 Azure Active Directory 登录行为
 
@@ -226,7 +226,7 @@ Add-AzureADServicePrincipalPolicy -Id <ObjectID of the Service Principal> -RefOb
 ``` powershell
 Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
 ```
-#### <a name="step-5-youre-done"></a>步骤 5：操作完成！
+#### <a name="step-5-youre-done"></a>步骤 5：大功告成！
 尝试运行应用程序，以检查新策略是否有效。
 
 ### <a name="example-list-the-applications-for-which-hrd-policy-is-configured"></a>示例：列出为其配置了 HRD 策略的应用程序

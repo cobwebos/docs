@@ -15,18 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: jeffgo
-ms.openlocfilehash: 932b4c80912fa516a08c18cd581f96b5ea91e1dc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.lastreviewed: 08/15/2018
+ms.openlocfilehash: ad0419cee3fc5c838d6d81adf9040432b9feaf07
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232290"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242223"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>为 Azure Stack 准备基于 Red Hat 的虚拟机
 
 在本文中，将了解如何准备 Red Hat Enterprise Linux (RHEL) 虚拟机，以供在 Azure Stack 中使用。 本文介绍的 RHEL 版本为 7.1+。 本文所述的用于准备工作的虚拟机监控程序为 Hyper-V、基于内核的虚拟机 (KVM) 和 VMware。
 
-有关 Red Hat Enterprise Linux 支持信息，请参阅 [Red Hat 和 Azure Stack：常见问题解答](https://access.redhat.com/articles/3413531)。
+有关 Red Hat Enterprise Linux 支持信息，请参阅[Red Hat 和 Azure Stack:常见问题解答](https://access.redhat.com/articles/3413531)。
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>从 Hyper-V 管理器准备基于 Red Hat 的虚拟机
 
@@ -81,7 +82,7 @@ ms.locfileid: "51232290"
     sudo subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-1. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 若要执行此修改，请打开`/etc/default/grub`在文本编辑器中，并修改`GRUB_CMDLINE_LINUX`参数。 例如：
+1. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 若要执行此修改，请在文本编辑器中打开 `/etc/default/grub` 并修改 `GRUB_CMDLINE_LINUX` 参数。 例如：
 
     ```sh
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -347,7 +348,7 @@ ms.locfileid: "51232290"
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>从 VMware 准备基于 Red Hat 的虚拟机
 
-本部分假设已在 VMware 中安装了 RHEL 虚拟机。 有关如何在 VMware 中安装操作系统的详细信息，请参阅 [VMware 来宾操作系统安装指南](http://partnerweb.vmware.com/GOSIG/home.html)。
+本部分假设已在 VMware 中安装了 RHEL 虚拟机。 有关如何在 VMware 中安装操作系统的详细信息，请参阅 [VMware 来宾操作系统安装指南](https://partnerweb.vmware.com/GOSIG/home.html)。
 
 * 在安装 Linux 操作系统时，建议使用标准分区而不是 LVM，这通常是许多安装的默认设置。 这种做法可以避免 LVM 名称与克隆的虚拟机名称冲突，尤其是在需要将操作系统磁盘附加到另一台虚拟机进行故障排除时。 如果需要，可以在数据磁盘上使用 LVM 或 RAID。
 * 不要在操作系统磁盘上配置交换分区。 可将 Linux 代理配置为在临时资源磁盘上创建交换文件。 可以在下面的步骤中找到有关此操作的详细信息。
@@ -387,7 +388,7 @@ ms.locfileid: "51232290"
     sudo subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-1. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 若要执行此修改，请打开`/etc/default/grub`在文本编辑器中，并修改`GRUB_CMDLINE_LINUX`参数。 例如：
+1. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 若要执行此修改，请在文本编辑器中打开 `/etc/default/grub` 并修改 `GRUB_CMDLINE_LINUX` 参数。 例如：
 
     ```sh
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -670,6 +671,6 @@ ms.locfileid: "51232290"
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，可以使用 Red Hat Enterprise Linux 虚拟硬盘在 Azure Stack 中创建新的虚拟机。 如果这是你第一次将 VHD 文件上传到 Azure Stack，请参阅[使用市场工具包创建和发布市场项](azure-stack-marketplace-publisher.md)。
+现在，可以使用 Red Hat Enterprise Linux 虚拟硬盘在 Azure Stack 中创建新的虚拟机。 如果第一次，在将 VHD 文件上载到 Azure Stack，请参阅[创建和发布 Marketplace 项](azure-stack-create-and-publish-marketplace-item.md)。
 
 有关经认证可运行 Red Hat Enterprise Linux 的虚拟机监控程序的详细信息，请参阅 [Red Hat 网站](https://access.redhat.com/certified-hypervisors)。

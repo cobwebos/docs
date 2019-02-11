@@ -3,9 +3,9 @@ title: 服务总线定价和计费|Microsoft 文档
 description: 服务总线定价结构概述。
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 7c45b112-e911-45ab-9203-a2e5abccd6e0
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
-ms.author: spelluru
-ms.openlocfilehash: db5f4bc7cc62c61f13258b919226efbf63165371
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: aschhab
+ms.openlocfilehash: 5b9aae979a25a1f175b3d5a5e24960d6f392b9b4
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406833"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852926"
 ---
 # <a name="service-bus-pricing-and-billing"></a>服务总线定价和计费
 
@@ -50,7 +50,7 @@ Azure 服务总线推出标准和[高级](service-bus-premium-messaging.md)两�
 
 队列和主题/订阅按每个“操作”而不是每条消息计费。 操作是指对队列或主题/订阅服务终结点发出的任何 API 调用。 这包括管理、发送/接收和会话状态操作。
 
-| 操作类型 | Description |
+| 操作类型 | 说明 |
 | --- | --- |
 | 管理 |对队列或主题/订阅进行创建、读取、更新、删除 (CRUD) 操作。 |
 | 消息传递 |通过队列或主题/订阅发送和接收消息。 |
@@ -96,7 +96,7 @@ Azure 服务总线推出标准和[高级](service-bus-premium-messaging.md)两�
 例如：
 
 1. 每个设备（共 10000 个）通过单个 AMQP 连接进行连接，并从服务总线主题中接收命令。 设备将遥测事件发送至事件中心。 如果所有设备每天连接 12 小时，则需支付以下连接费用（未包括任何其他服务总线主题费用）：10,000 个连接 * 12 小时 * 31 天/744 = 5,000 个中转连接。 在扣除每月 1,000 个中转连接的限额后，需要按每个中转连接 0.03 美元的费率支付 4,000 个中转连接的费用，总共 120 美元。
-2. 10,000 台设备通过 HTTP 从服务总线队列接收消息，超时不为零。 如果所有设备每天连接 12 小时，则需要支付以下连接费用（未包括任何其他服务总线费用）：10,000 个 HTTP 接收连接 * 12 小时/天 * 31 天/744 小时 = 5,000 个中转连接。
+2. 10,000 台设备通过 HTTP 从服务总线队列接收消息，超时不为零。 如果所有设备每天连接 12 小时，则需支付以下连接费用（未包括任何其他服务总线费用）：10,000 个 HTTP 接收连接 * 12 小时/天 * 31 天/744 小时 = 5,000 个中转连接。
 
 ### <a name="do-brokered-connection-charges-apply-to-queues-and-topicssubscriptions"></a>中转连接费用是否适用于队列和主题/订阅？
 

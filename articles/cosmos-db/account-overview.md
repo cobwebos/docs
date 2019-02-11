@@ -1,20 +1,21 @@
 ---
 title: 使用 Azure Cosmos DB 帐户
 description: 本文介绍如何创建和使用 Azure Cosmos DB 帐户
-author: dharmas
+author: dharmas-cosmos
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: e73c295c214728bf07b65ae4402c3b5abe21932f
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: cbc11e2fc54ecffbea22a66354f334f3562e3339
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165282"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459200"
 ---
-# <a name="working-with-azure-cosmos-account"></a>使用 Azure Cosmos 帐户
+# <a name="work-with-azure-cosmos-account"></a>使用 Azure Cosmos 帐户
 
 Azure Cosmos DB 是完全托管的平台即服务 (PaaS)。 若要开始使用 Azure Cosmos DB，首先应在 Azure 订阅中创建一个 Azure Cosmos 帐户。 Azure Cosmos 帐户包含唯一的 DNS 名称，可以使用 Azure 门户、Azure CLI 或不同的特定于语言的 SDK 来管理帐户。 有关详细信息，请参阅[如何管理 Azure Cosmos 帐户](how-to-manage-database-account.md)。
 
@@ -38,7 +39,7 @@ Azure Cosmos DB 容器是基本的缩放单元。 容器可以提供几乎无限
 * [全局分发](distribute-data-globally.md)
 * [一致性级别](consistency-levels.md)
 * [使用 Azure Cosmos 容器和项](databases-containers-items.md)
-* [Azure Cosmos 帐户的 VNET 服务终结点](firewall-support.md)
-* [Azure Cosmos 帐户的 IP 防火墙](vnet-service-endpoint.md)
+* [Azure Cosmos 帐户的 VNET 服务终结点](vnet-service-endpoint.md)
+* [Azure Cosmos 帐户的 IP 防火墙](firewall-support.md)
 * [如何在 Azure Cosmos 帐户中添加和删除 Azure 区域](how-to-manage-database-account.md)
 * [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

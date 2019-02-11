@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
-ms.component: blobs
-ms.openlocfilehash: a69d67ee455b447eb038903bb8fafb644d025662
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.subservice: blobs
+ms.openlocfilehash: a1dba92a9e156c82f49b9f6f85faf227fc652029
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565728"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240074"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>将大量随机数据以并行方式上传到 Azure 存储
 
@@ -35,7 +35,7 @@ Azure Blob 存储提供可缩放的服务来存储数据。 为了尽可能提�
 
 ## <a name="prerequisites"></a>先决条件
 
-要完成本教程，必须已经完成了以前的存储教程：[为可缩放的应用程序创建虚拟机和存储帐户][previous-tutorial]。
+若要完成本教程，必须先完成上一存储教程：[为可缩放的应用程序创建虚拟机和存储帐户][previous-tutorial]。
 
 ## <a name="remote-into-your-virtual-machine"></a>远程登录到虚拟机
 
@@ -69,7 +69,7 @@ dotnet run
 
 除设置线程和连接限制设置外，还需将 [UploadFromStreamAsync ](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromstreamasync?view=azure-dotnet) 方法的 [BlobRequestOptions](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions?view=azure-dotnet) 配置为使用并行，并禁用 MD5 哈希验证。 文件以 100 mb 的块上传，此配置提高了性能，但如果网络性能不佳，可能成本高昂，因为如果出现失败，会重试整个 100 mb 的块。
 
-|属性|值|Description|
+|属性|值|说明|
 |---|---|---|
 |[ParallelOperationThreadCount](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.paralleloperationthreadcount?view=azure-dotnet)| 8| 上传时，此设置将 blob 分为多个块。 为获得最佳性能，此值应为内核数的 8 倍。 |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.disablecontentmd5validation?view=azure-dotnet)| true| 该属性禁用对上传内容的 MD5 哈希检查。 禁用 MD5 验证可加快传输速度。 但是不能确认传输文件的有效性或完整性。   |

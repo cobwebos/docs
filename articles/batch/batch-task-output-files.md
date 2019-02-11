@@ -1,8 +1,8 @@
 ---
-title: 使用 Azure Batch 服务 API 将作业和任务输出保存到 Azure 存储 | Microsoft Docs
+title: 使用 Batch 服务 API 将作业和任务输出保存到 Azure 存储 - Azure Batch | Microsoft Docs
 description: 了解如何使用 Batch 服务 API 将 Batch 任务和作业输出保存到 Azure 存储。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.service: batch
@@ -11,13 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/14/2018
-ms.author: danlep
-ms.openlocfilehash: 549be57b52fa88efa8c3850d131563fea2a7c65e
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 0aa0be7ae9658259b327014c5678777c963e6cb5
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706120"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302810"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>使用 Batch 服务 API 将任务数据保存到 Azure 存储
 
@@ -49,7 +50,7 @@ Azure Batch 提供多种方式来保存任务输出。 使用 Batch 服务 API �
 
 ```csharp
 CloudBlobContainer container = storageAccount.CreateCloudBlobClient().GetContainerReference(containerName);
-await conainer.CreateIfNotExists();
+await container.CreateIfNotExists();
 ```
 
 ## <a name="get-a-shared-access-signature-for-the-container"></a>获取容器的共享访问签名

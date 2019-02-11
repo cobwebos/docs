@@ -1,20 +1,20 @@
 ---
-title: 使用 Azure PowerShell 运行首个 Resource Graph 查询
+title: 使用 Azure PowerShell 运行第一个查询
 description: 本文将指导你完成为 Azure PowerShell 启用 Resource Graph 模块并运行首个查询的步骤。
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 11/27/2018
+ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 6bd7ceaeaf0b064ebbd8f069a4741489349bb980
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.custom: seodec18
+ms.openlocfilehash: a624540e95d054ef5edadfada29fa13cd47419d6
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427499"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848863"
 ---
 # <a name="run-your-first-resource-graph-query-using-azure-powershell"></a>使用 Azure PowerShell 运行首个 Resource Graph 查询
 
@@ -24,80 +24,49 @@ ms.locfileid: "52427499"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
+[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
+
 ## <a name="add-the-resource-graph-module"></a>添加 Resource Graph 模块
 
-要使 Azure PowerShell 能够查询 Azure Resource Graph，则必须添加该模块。 此模块可以与在本地安装的 Windows PowerShell 和 PowerShell Core 一起使用，也可以与 [Azure PowerShell Docker 映像](https://hub.docker.com/r/azuresdk/azure-powershell/)一起使用。
+要使 Azure PowerShell 能够查询 Azure Resource Graph，则必须添加该模块。 此模块可以与在本地安装的 PowerShell 以及 [Azure Cloud Shell](https://shell.azure.com) 一起使用，也可以与 [Azure PowerShell Docker 映像](https://hub.docker.com/r/azuresdk/azure-powershell/)一起使用。
 
 ### <a name="base-requirements"></a>基本要求
 
 Azure Resource Graph 模块需要以下软件：
 
-- Azure PowerShell 6.3.0 或更高版本。 若尚未安装，请遵循[这些说明](/powershell/azure/install-azurerm-ps)。
-
-  - 对于 PowerShell Core，请使用 Azure PowerShell 模块的 **Az** 版本。
-
-  - 对于 Windows PowerShell，请使用 Azure PowerShell 模块的 **AzureRm** 版本。
+- Azure PowerShell 1.0.0 或更高版本。 若尚未安装，请遵循[这些说明](/powershell/azure/install-az-ps)。
 
 - PowerShellGet 2.0.1 或更高版本。 若尚未安装或更新，请遵循[这些说明](/powershell/gallery/installing-psget)。
 
-### <a name="cloud-shell"></a>Cloud Shell
+### <a name="install-the-module"></a>安装模块
 
-若要在 Cloud Shell 中添加 Azure Resource Graph 模块，请按下面的适用于 PowerShell Core 的说明进行操作。
+适用于 PowerShell 的 Resource Graph 模块是 **Az.ResourceGraph**。
 
-### <a name="powershell-core"></a>PowerShell Core
-
-适用于 PowerShell Core 的 Resource Graph 模块是 **Az.ResourceGraph**。
-
-1. 从**管理** PowerShell Core 提示符运行以下命令：
+1. 从管理 PowerShell 提示符运行以下命令：
 
    ```azurepowershell-interactive
    # Install the Resource Graph module from PowerShell Gallery
    Install-Module -Name Az.ResourceGraph
    ```
 
-1. 验证是否已导入该模块且是否为正确版本 (0.3.0)：
+1. 验证是否已导入该模块且是否为正确版本 (0.7.1)：
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.ResourceGraph module
    Get-Command -Module 'Az.ResourceGraph' -CommandType 'Cmdlet'
    ```
 
-1. 使用以下命令启用从 **Az** 到 **AzureRm** 的别名向后兼容性：
-
-   ```azurepowershell-interactive
-   # Enable backwards alias compatibility
-   Enable-AzureRmAlias
-   ```
-
-### <a name="windows-powershell"></a>Windows PowerShell
-
-适用于 Windows PowerShell 的 Resource Graph 模块是 **AzureRm.ResourceGraph**。
-
-1. 从**管理** Windows PowerShell 提示符运行以下命令：
-
-   ```powershell
-   # Install the Resource Graph (prerelease) module from PowerShell Gallery
-   Install-Module -Name AzureRm.ResourceGraph -AllowPrerelease
-   ```
-
-1. 验证是否已导入该模块且是否为正确版本 (0.1.1-preview)：
-
-   ```powershell
-   # Get a list of commands for the imported AzureRm.ResourceGraph module
-   Get-Command -Module 'AzureRm.ResourceGraph' -CommandType 'Cmdlet'
-   ```
-
 ## <a name="run-your-first-resource-graph-query"></a>运行首个 Resource Graph 查询
 
 将 Azure PowerShell 模块添加到所选环境中后，即可尝试一个简单的 Resource Graph 查询。 该查询将返回前五个 Azure 资源，以及每个资源的名称和资源类型。
 
-1. 使用 `Search-AzureRmGraph` cmdlet 运行首个 Azure Resource Graph 查询：
+1. 使用 `Search-AzGraph` cmdlet 运行首个 Azure Resource Graph 查询：
 
    ```azurepowershell-interactive
-   # Login first with Connect-AzureRmAccount if not using Cloud Shell
+   # Login first with Connect-AzAccount if not using Cloud Shell
 
    # Run Azure Resource Graph query
-   Search-AzureRmGraph -Query 'project name, type | limit 5'
+   Search-AzGraph -Query 'project name, type | limit 5'
    ```
 
    > [!NOTE]
@@ -107,7 +76,7 @@ Azure Resource Graph 模块需要以下软件：
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with 'order by'
-   Search-AzureRmGraph -Query 'project name, type | limit 5 | order by name asc'
+   Search-AzGraph -Query 'project name, type | limit 5 | order by name asc'
    ```
 
   > [!NOTE]
@@ -117,7 +86,7 @@ Azure Resource Graph 模块需要以下软件：
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
-   Search-AzureRmGraph -Query 'project name, type | order by name asc | limit 5'
+   Search-AzGraph -Query 'project name, type | order by name asc | limit 5'
    ```
 
 假设环境中没有任何变化，则多次运行最后一个查询时，返回的结果将是一致的且符合预期的 -- 按 Name 属性排序，但仍限制为前五个结果。
@@ -128,7 +97,7 @@ Azure Resource Graph 模块需要以下软件：
 
 ```powershell
 # Remove the Resource Graph module from the Azure PowerShell environment
-Remove-Module -Name 'AzureRm.ResourceGraph'
+Remove-Module -Name 'Az.ResourceGraph'
 ```
 
 > [!NOTE]

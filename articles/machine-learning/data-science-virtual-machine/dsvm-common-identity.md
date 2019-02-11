@@ -1,26 +1,27 @@
 ---
 title: 设置数据科学虚拟机的通用标识 - Azure | Microsoft Docs
-description: 在企业团队的 DSVM 环境中设置通用标识。
+description: 了解如何创建可跨多个 Data Science Virtual Machine 使用的公共用户帐户。 可以使用 Azure Active Directory 或本地 Active Directory 对 Data Science Virtual Machine 的用户进行身份验证。
 keywords: 深度学习, AI, 数据科学工具, 数据科学虚拟机, 地理空间分析, 团队数据科学过程
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 25d40b6a72ab6da61feb1458f5930eb48ef1d900
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 0146ee6ee37c2eb9e98d831b54df2218d7de5b62
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436295"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754594"
 ---
 # <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>在数据科学虚拟机上设置通用标识
 
@@ -30,7 +31,7 @@ Active Directory 是常用的标识提供者，可以在 Azure 上充当服务�
 
 如果已经有一个用来管理标识的 Active Directory，可以将它用作通用标识提供者。 如果没有 Active Directory，则可以通过名为 [Azure Active Directory 域服务](https://docs.microsoft.com/azure/active-directory-domain-services/) (Azure AD DS) 的服务在 Azure 上运行托管的 Active Directory 实例。 
 
-[Azure AD](https://docs.microsoft.com/azure/active-directory/) 的文档提供了详细的[托管说明](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution#synchronized-identity)，包括如何将 Azure AD 连接到本地目录（如果有）。 
+[Azure AD](https://docs.microsoft.com/azure/active-directory/) 的文档提供了详细的[托管说明](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution)，包括如何将 Azure AD 连接到本地目录（如果有）。 
 
 本文介绍使用 Azure AD DS 在 Azure 上设置完全托管的 Active Directory 域服务的步骤。 然后，你可以将 DSVM 加入托管的 Active Directory 域，以使用户能够使用通用用户帐户和凭据访问 DSVM（以及其他 Azure 资源）池。 
 

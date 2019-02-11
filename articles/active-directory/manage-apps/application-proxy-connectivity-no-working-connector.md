@@ -4,10 +4,10 @@ description: 对于使用 Azure AD 应用程序代理的应用程序，解决连
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: baaf7bbb83ff600045e95cd16206fbfff9fce1c5
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: f874999bc5bc767fd4501951fc0ea0706976c9f0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354673"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189980"
 ---
 # <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>找不到应用程序代理应用程序的工作连接器组
 

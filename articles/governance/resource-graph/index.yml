@@ -1,24 +1,24 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7adbe7055fa37c5cf3774caae3a33790d2adf354
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: d7b18c11762f0be08017c7b151b9deede0a7b1c3
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49943984"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506953"
 documentType: LandingData
 title: Azure Resource Graph 文档
 metadata:
   title: Azure Resource Graph 文档 - 教程和 API 参考
-  description: Azure Resource Graph 是一项 Azure 服务，可大规模复杂地查询资源。
+  description: Azure Resource Graph 是一项 Azure 服务，可实现对资源的大规模复杂查询。
   services: resource-graph
   author: DCtheGeek
   manager: carmonm
   ms.service: resource-graph
   ms.topic: landing-page
-  ms.date: 09/18/2018
+  ms.date: 01/31/2019
   ms.author: dacoulte
 abstract:
-  description: Azure Resource Graph 文档可帮助配置和了解查询语言，以大规模发现和探索资源。
+  description: Azure Resource Graph 文档可帮助你配置和学习查询语言，以便大规模发现和探索资源。
 sections:
 - title: 5 分钟快速入门
   items:
@@ -45,5 +45,9 @@ sections:
     style: cards
     className: cardsD
     items:
+    - title: 命令行
+      html: <p><a href="/cli/azure/ext/resource-graph/graph">Azure CLI</a></p>
+    - title: PowerShell
+      html: <p><a href="/powershell/module/az.resourcegraph/">Azure PowerShell</a></p>
     - title: REST API
       html: <p><a href="/rest/api/azureresourcegraph/resources/resources">资源</a></p>

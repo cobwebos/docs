@@ -1,20 +1,21 @@
 ---
-title: Azure 磁盘加密常见问题解答 | Microsoft Docs
+title: 常见问题解答 - 适用于 IaaS VM 的 Azure 磁盘加密 | Microsoft Docs
 description: 本文提供有关适用于 Windows 和 Linux IaaS VM 的 Microsoft Azure 磁盘加密的常见问题解答。
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 10/16/2018
-ms.openlocfilehash: 8da966154f1da8cb1be090f70d80e4484e9bce0d
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.date: 01/25/2019
+ms.custom: seodec18
+ms.openlocfilehash: fda7d6d3fddf2f4529a983ce2d4991797a5c8448
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377285"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661830"
 ---
-# <a name="azure-disk-encryption-faq"></a>Azure 磁盘加密 FAQ
+# <a name="azure-disk-encryption-for-iaas-vms-faq"></a>适用于 IaaS VM 的 Azure 磁盘加密常见问题解答
 
 本文提供有关适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密的常见问题解答 (FAQ)。 有关此服务的详细信息，请参阅[适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密](azure-security-disk-encryption-overview.md)。
 
@@ -41,12 +42,12 @@ Azure 磁盘加密可在标准层 VM 上使用，包括 [A、D、DS、G、GS 和
 
 | Linux 分发版 | 版本 | 支持加密的卷类型|
 | --- | --- |--- |
-| Ubuntu | 16.04-DAILY-LTS | OS 和数据磁盘 |
-| Ubuntu | 14.04.5-DAILY-LTS | OS 和数据磁盘 |
-| RHEL | 7.5 | 数据磁盘* |
-| RHEL | 7.4 | 数据磁盘* |
-| RHEL | 7.3 | 数据磁盘* |
-| RHEL | 7.2 | 数据磁盘* |
+| Ubuntu | 16.04| OS 和数据磁盘 |
+| Ubuntu | 14.04.5</br>[其 Azure 优化内核更新到 4.15 或更高版本](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | OS 和数据磁盘 |
+| RHEL | 7.5 | OS 和数据磁盘* |
+| RHEL | 7.4 | OS 和数据磁盘* |
+| RHEL | 7.3 | OS 和数据磁盘* |
+| RHEL | 7.2 | OS 和数据磁盘* |
 | RHEL | 6.8 | 数据磁盘* |
 | RHEL | 6.7 | 数据磁盘* |
 | CentOS | 7.4 | OS 和数据磁盘 |
@@ -58,15 +59,11 @@ Azure 磁盘加密可在标准层 VM 上使用，包括 [A、D、DS、G、GS 和
 | CentOS | 6.7 | 数据磁盘 |
 | CentOS | 6.6 | 数据磁盘 |
 | CentOS | 6.5 | 数据磁盘 |
-| openSUSE | 13.2 | 数据磁盘 |
-| SLES | 12 SP1 | 数据磁盘 |
-| SLES | 优先级：12-SP1 | 数据磁盘 |
-| SLES | HPC 12 | 数据磁盘 |
-| SLES | 优先级：11-SP4 | 数据磁盘 |
-| SLES | 11 SP4 | 数据磁盘 |
+| openSUSE | 42.3 | 数据磁盘 |
+| SLES | 12-SP4 | 数据磁盘 |
+| SLES | 12-SP3 | 数据磁盘 |
 
-
-*__RHEL 支持将 ADE 用于数据磁盘。当前的 ADE 实现适用于 OS 磁盘，但当前并非联合支持。Microsoft 和 Red Hat 都在努力实现联合支持解决方案。在此期间，可以参阅文章[适用于 Linux 的 Azure 磁盘加密](azure-security-disk-encryption-linux.md)。__
+*__新的 ADE 实现支持 RHEL OS 和 RHEL7 即用即付映像的数据磁盘。ADE 目前不支持 RHEL 自带订阅 (BYOS) 映像。另请参阅[适用于 Linux 的 Azure 磁盘加密](azure-security-disk-encryption-linux.md)，了解详细信息。__
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>如何开始使用 Azure 磁盘加密？
 
@@ -136,7 +133,7 @@ Azure 磁盘加密具有先决条件。 请参阅 [Azure 磁盘加密先决条�
 
 ## <a name="what-encryption-method-does-azure-disk-encryption-use"></a>Azure 磁盘加密使用何种加密方法？
 
-在 Windows 上，ADE 使用 Bitlocker AES256 加密方法（Windows Server 2012 之前版本上的 AES256WithDiffuser）。 在 Linux 上，ADE 配合使用 aes-xts-plain64 的 dmcrypt 默认方法和 256 位卷主密钥。
+在 Windows 上，ADE 使用 BitLocker AES256 加密方法（Windows Server 2012 之前版本上的 AES256WithDiffuser）。 在 Linux 上，ADE 配合使用 aes-xts-plain64 的 dmcrypt 默认方法和 256 位卷主密钥。
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>如果我使用 EncryptFormatAll 并指定了所有卷类型，它是否会擦除我们已加密的数据驱动器上的数据？
 否，不会擦除已使用 Azure 磁盘加密进行了加密的数据驱动器上的数据。 与 EncryptFormatAll 不重新加密 OS 驱动器类似，它也不会重新加密已加密的数据驱动器。 有关详细信息，请参阅 [EncryptFormatAll 条件](azure-security-disk-encryption-linux.md#bkmk_EFACriteria)。        

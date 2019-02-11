@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 10/12/2018
-ms.openlocfilehash: 5b1768978425d3153f775e20a1a4c44a39794779
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 76f09af66e362fb6b03346b43a6be1a3ec7cf681
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315948"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976760"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>快速入门：创建 Apache Kafka on HDInsight 群集
 
@@ -23,7 +23,7 @@ Apache Kafka 是开源分布式流式处理平台。 通常用作消息代理，
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 仅可通过相同虚拟网络内的资源访问 Apache Kafka API。 本快速入门使用 SSH 直接访问群集。 若要将其他服务、网络或虚拟机连接到 Apache Kafka，则必须首先创建虚拟机，然后才能在网络中创建资源。
 >
 > 有关详细信息，请参阅[使用虚拟网络连接到 Apache Kafka](apache-kafka-connect-vpn-gateway.md) 文档。
@@ -40,7 +40,7 @@ Apache Kafka 是开源分布式流式处理平台。 通常用作消息代理，
 
     * [安装适用于 Linux 的 Windows 子系统](https://docs.microsoft.com/windows/wsl/install-win10)。 可通过 Microsoft Store 提供 `ssh` 命令获得 Linux 分发版。
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > 本文档中的此步骤假定正在使用上述 SSH 客户端之一。 如果正在使用不同的 SSH 客户端并遇到问题，请查阅 SSH 客户端的文档。
     >
     > 有关详细信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)文档。
@@ -49,7 +49,13 @@ Apache Kafka 是开源分布式流式处理平台。 通常用作消息代理，
 
 若要创建 Apache Kafka on HDInsight 群集，请使用以下步骤：
 
-1. 从 [Azure 门户](https://portal.azure.com)依次选择“+ 创建资源”、“数据 + 分析”、“HDInsight”。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+
+1. 在左侧菜单中，选择“+ 创建资源”。
+
+1. 在“Azure 市场”下，选择“分析”。
+
+1. 在“精选”下选择“HDInsight”。
    
     ![创建 HDInsight 群集](./media/apache-kafka-get-started/create-hdinsight.png)
 
@@ -85,7 +91,7 @@ Apache Kafka 是开源分布式流式处理平台。 通常用作消息代理，
     | 资源组 | 要在其中创建群集的资源组。 |
     | 位置 | 要在其中创建群集的 Azure 区域。 |
 
-    > [!TIP]
+    > [!TIP]  
     > 每个 Azure 区域（位置）均提供_容错域_。 容错域是 Azure 数据中心基础硬件的逻辑分组。 每个容错域共享公用电源和网络交换机。 在 HDInsight 群集中实现节点的虚拟机和托管磁盘跨这些容错域分布。 此体系结构可限制物理硬件故障造成的潜在影响。
     >
     > 为实现数据的高可用性，请选择包含三个容错域的区域（位置）。 有关区域中容错域数的信息，请参阅 [Linux 虚拟机的可用性](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)文档。
@@ -108,10 +114,10 @@ Apache Kafka 是开源分布式流式处理平台。 通常用作消息代理，
 
 8. 在“群集大小”中，选择“下一步”以使用默认设置继续。
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > 若要确保 Apache Kafka on HDInsight 的可用性，辅助角色节点数条目必须设置为 3 或以上。 默认值为 4。
     
-    > [!TIP]
+    > [!TIP]  
     > “每个工作节点的磁盘数”条目配置 Apache Kafka on HDInsight 的可伸缩性。 Apache Kafka on HDInsight 在群集中使用虚拟机的本地磁盘来存储数据。 由于 Apache Kafka 的 I/O 很高，因此会使用 [Azure 托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)为每个节点提供高吞吐量和更多存储。 托管磁盘的类型可以为“标准”(HDD) 或“高级”(SSD)。 磁盘类型取决于辅助角色节点（Apache Kafka 代理）所使用的 VM 大小。 高级磁盘可自动与 DS 和 GS 系列 VM 一起使用。 所有其他的 VM 类型使用“标准”。
 
    ![设置 Apache Kafka 群集大小](./media/apache-kafka-get-started/kafka-cluster-size.png)
@@ -148,7 +154,7 @@ Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
  * Support:        https://ubuntu.com/advantage
 
   Get cloud support with Ubuntu Advantage Cloud Guest:
-    http://www.ubuntu.com/business/services/cloud
+    https://www.ubuntu.com/business/services/cloud
 
 83 packages can be updated.
 37 updates are security updates.

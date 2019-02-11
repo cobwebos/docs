@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 990f300055f7c0c7132dd44271dea73044649fc5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 1d67f981991796b81ba3ab6540631e6d62be8077
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306992"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092110"
 ---
-# <a name="security-frame-auditing-and-logging--mitigations"></a>安全框架：审核与日志记录 | 缓解措施 
+# <a name="security-frame-auditing-and-logging--mitigations"></a>安全框架：审核和日志记录 | 缓解措施 
 | 产品/服务 | 文章 |
 | --------------- | ------- |
 | **Dynamics CRM**    | <ul><li>[识别解决方案中的敏感实体并实现更改审核](#sensitive-entities)</li></ul> |
@@ -196,7 +196,7 @@ ms.locfileid: "43306992"
 
 ### <a name="example"></a>示例
 以下 WCF 配置文件中的 `<behavior/>` 元素指示在 WCF 无法写入审核日志时，WCF 不要通知应用程序。
-````
+```
 <behaviors>
     <serviceBehaviors>
         <behavior name="NewBehavior">
@@ -207,7 +207,7 @@ ms.locfileid: "43306992"
         </behavior>
     </serviceBehaviors>
 </behaviors>
-````
+```
 请将 WCF 配置为每当无法写入审核日志时，就会通知程序。 应在程序中实施替代的通知方案，告知组织没有维护审核线索。 
 
 ## <a id="logging-web-api"></a>确保在 Web API 中强制实施审核与日志记录

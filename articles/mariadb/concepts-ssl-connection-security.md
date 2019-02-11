@@ -3,17 +3,15 @@ title: Azure Database for MariaDB 的 SSL 连接
 description: 有关配置 Azure Database for MariaDB 和关联应用程序以正确使用 SSL 连接的信息
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 1d0b27a8fd7e3882a73624fa1b668ac602a85e6b
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 15bb28846b3409dd31bcdf8d42990facc94fd06d
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249496"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539596"
 ---
 # <a name="ssl-connectivity-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的 SSL 连接
 Azure Database for MariaDB 支持使用安全套接字层 (SSL) 将数据库服务器连接到客户端应用程序。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。

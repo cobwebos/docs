@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 02/05/2018
 ms.author: ramamill
-ms.openlocfilehash: 180d84f40f3d439419f9667b246b8c4b5c69814a
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: fd434ed8d5b625a1a0ed1ff195da0f864a4024b0
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51974182"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769417"
 ---
 # <a name="manage-process-servers"></a>管理进程服务器
 
@@ -125,5 +125,5 @@ ms.locfileid: "51974182"
 - C:\ProgramData\ASRSetupLogs
 - C:\ProgramData\LogUploadServiceLogs
 - C:\ProgramData\Microsoft Azure Site Recovery
-- 进程服务器安装目录，例如：C:\Program Files (x86)\Microsoft Azure Site Recovery
+- 进程服务器安装目录，示例：C:\Program Files (x86)\Microsoft Azure Site Recovery
 

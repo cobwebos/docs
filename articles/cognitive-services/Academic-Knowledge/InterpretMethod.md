@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: e16a772caa5fba632f8544094e2d8b57ed4ca765
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: d79e14fa48631ec6ce3cde42a7dbe300034782cb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902563"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171646"
 ---
 # <a name="interpret-method"></a>interpret 方法
 
@@ -29,7 +29,7 @@ REST 终结点：
 
 ## <a name="request-parameters"></a>请求参数
 
-名称     | 值 | 必需？  | Description
+Name     | 值 | 必需？  | 说明
 ---------|---------|---------|---------
 **query**    | 文本字符串 | 是 | 用户输入的查询。  如果 complete 设置为 1，查询将被解释为生成查询自动完成建议的前缀。        
 **model**    | 文本字符串 | 否  | 要查询的模型的名称。  当前，值默认为“最新”。        
@@ -40,7 +40,7 @@ timeout  | Number | 否<br>default:1000 | 超时（以毫秒为单位）。 仅�
 <br>
   
 ## <a name="response-json"></a>响应 (JSON)
-名称     | Description
+Name     | 说明
 ---------|---------
 **query** |query 参数来自请求。
 interpretations |用于将用户输入与语法进行匹配的 0 种或更多种不同方式的数组。

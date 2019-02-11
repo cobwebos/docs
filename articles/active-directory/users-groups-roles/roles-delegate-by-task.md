@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: bd63e8379051864a19c473779625a925446185f2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 3b6c5b08fa3f915c541837abe5f52c7ec3d9b87e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445015"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55185188"
 ---
 # <a name="administrator-roles-by-identity-task-in-azure-active-directory"></a>Azure Active Directory 中按照标识任务委托的管理员角色
 

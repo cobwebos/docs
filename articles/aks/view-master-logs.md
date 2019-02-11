@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 5f151db9cb2cf7a5ef242f777cd2ad1820c856a8
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: a8fefdf352507f0e0c0757625297f667907eb9bc
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636662"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230588"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志
 
@@ -31,18 +31,28 @@ ms.locfileid: "51636662"
 1. 选择 AKS 群集的资源组，例如 *myResourceGroup*。 不要选择包含单个 AKS 群集资源的资源组，例如 *MC_myResourceGroup_myAKSCluster_eastus*。
 1. 在左侧选择“诊断设置”。
 1. 选择 AKS 群集（例如 *myAKSCluster*），然后选择“启用诊断”。
-1. 输入名称（例如 *myAKSLogs*），然后选择“发送到 Log Analytics”选项。
+1. 输入名称（例如 myAKSClusterLogs），然后选择“发送到 Log Analytics”选项。
     * 选择*配置* Log Analytics，然后选择现有的工作区，或**创建新工作区**。
     * 如果需要创建工作区，请提供一个名称、资源组和位置。
-1. 在可用日志列表中，选择要启用的日志，例如 *kube-apiserver*、*kube-controller-manager* 和 *kube-scheduler*。 启用 Log Analytics 后，可以返回并更改收集的日志。
+1. 在可用日志列表中，选择要启用的日志。 默认情况下，kube-apiserver、kube-controller-manager 和 kube-scheduler 日志已启用。 你可以启用其他日志，例如 kube-audit 和 cluster-autoscaler。 启用 Log Analytics 后，可以返回并更改收集的日志。
 1. 准备就绪后，选择“保存”以启用选定日志的收集。
+
+> [!NOTE]
+> AKS 仅捕获在订阅上启用功能标志后创建或升级的群集的审核日志。 若要注册 *AKSAuditLog* 功能标志，请使用 [az feature register][az-feature-register] 命令，如以下示例所示：
+>
+> `az feature register --name AKSAuditLog --namespace Microsoft.ContainerService`
+>
+> 等待状态显示“已注册”。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
+>
+> `az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAuditLog')].{Name:name,State:properties.state}"`
+>
+> 准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 AKS 资源提供程序的注册状态：
+>
+> `az provider register --namespace Microsoft.ContainerService`
 
 以下示例门户屏幕截图显示了“诊断设置”窗口，以及用于创建 Log Analytics 工作区的选项：
 
 ![为 AKS 群集的 Log Analytics 启用 Log Analytics 工作区](media/view-master-logs/enable-oms-log-analytics.png)
-
->[!NOTE]
->OMS 工作区现在称为 Log Analytics 工作区。
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>在 AKS 群集上计划测试 pod
 
@@ -133,6 +143,9 @@ AzureDiagnostics
 [cli-quickstart]: kubernetes-walkthrough.md
 [portal-quickstart]: kubernetes-walkthrough-portal.md
 [log-analytics-overview]: ../log-analytics/log-analytics-overview.md
-[analyze-log-analytics]: ../log-analytics/log-analytics-tutorial-viewdata.md
+[analyze-log-analytics]: ../azure-monitor/learn/tutorial-viewdata.md
 [kubelet-logs]: kubelet-logs.md
 [aks-ssh]: ssh.md
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

@@ -12,15 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 12/12/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 9cffbeae3e73682f5e76523de7ee607285c9fc75
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.lastreviewed: 12/12/2018
+ms.openlocfilehash: f874be6081a1ea01ecf616c9b97db878554d441c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238620"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242410"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Azure Stack 部署规划注意事项
 在部署 Azure Stack 开发工具包 (ASDK) 之前，请确保开发工具包主机满足本文中所述的要求。
@@ -29,12 +30,12 @@ ms.locfileid: "51238620"
 ## <a name="hardware"></a>硬件
 | 组件 | 最小值 | 建议 |
 | --- | --- | --- |
-| 磁盘驱动器：操作系统 |1 块 OS 磁盘，至少 200 GB 用于系统分区（SSD 或 HDD） |1 块 OS 磁盘，至少 200 GB 用于系统分区（SSD 或 HDD） |
-| 磁盘驱动器：常规开发工具包数据<sup>*</sup>  |4 块磁盘。 每个磁盘提供至少 140 GB 的容量（SSD 或 HDD）。 将使用所有可用的磁盘。 |4 块磁盘。 每个磁盘提供至少 250 GB 的容量（SSD 或 HDD）。 将使用所有可用的磁盘。 |
-| 计算：CPU |双插槽：12 个物理核心（总计） |双插槽：16 个物理核心（总计） |
-| 计算：内存 |96 GB RAM |128 GB RAM（这是支持 PaaS 资源提供程序所需的最低设置。）|
+| 磁盘驱动器：操作系统 |1 个操作系统磁盘，至少 200 GB 用于系统分区（SSD 或 HDD） |1 块 OS 磁盘，至少 200 GB 用于系统分区（SSD 或 HDD） |
+| 磁盘驱动器：常规开发工具包数据<sup>*</sup>  |4 块磁盘。 每个磁盘提供至少 240 GB 的容量（SSD 或 HDD）。 将使用所有可用的磁盘。 |4 块磁盘。 每个磁盘提供至少 400 GB 的容量（SSD 或 HDD）。 将使用所有可用的磁盘。 |
+| 计算：CPU |双插槽：16 个物理核心（总计） |双插槽：20 个物理核心（总计） |
+| 计算：内存 |192 GB RAM |256 GB RAM |
 | 计算：BIOS |Hyper-V 已启用（提供 SLAT 支持） |Hyper-V 已启用（提供 SLAT 支持） |
-| 网络：NIC |NIC 必须经过 Windows Server 2012 R2 认证，此外在功能上没有特定要求 |NIC 必须经过 Windows Server 2012 R2 认证，此外在功能上没有特定要求 |
+| 网络：NIC |Windows Server 2012 R2 认知。 不要求使用专用功能 |Windows Server 2012 R2 认知。 不要求使用专用功能 |
 | 硬件徽标认证 |[针对 Windows Server 2012 R2 的认证](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[Windows Server 2016 认证](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
 
 <sup>*</sup>如果计划从 Azure 添加多个[市场项](asdk-marketplace-item.md)，则需要的容量比这个建议的容量要大。
@@ -59,7 +60,7 @@ ms.locfileid: "51238620"
 
 <sup>*</sup> 没有直通功能的 RAID 控制器无法识别此介质类型。 此类控制器会将 HDD 和 SSD 都标记为“未指定”。 在这种情况下，SSD 将用作持久存储而不是缓存设备。 因此，可以在这些 SSD 上部署开发工具包。
 
-**实例 HBA**：LSI 9207-8i、LSI-9300-8i 或 LSI-9265-8i（在直通模式下）
+**示例 HBA**：LSI 9207-8i、LSI-9300-8i 或 LSI-9265-8i（在直通模式下）
 
 提供了示例 OEM 配置。
 
@@ -82,7 +83,7 @@ ms.locfileid: "51238620"
 ### <a name="azure-active-directory-accounts"></a>Azure Active Directory 帐户
 若要使用 Azure AD 帐户来部署 Azure Stack，必须先准备 Azure AD 帐户，然后再运行 PowerShell 部署脚本。 此帐户成为 Azure AD 租户的全局管理员。 对于所有与 Azure Active Directory 和图形 API 交互的 Azure Stack 服务，可以使用它来预配和委托应用程序和服务主体。 也可将它用作默认提供商订阅（可以稍后更改）的所有者。 可以使用此帐户登录到 Azure Stack 系统的管理员门户。
 
-1. 创建一个 Azure AD 帐户，该帐户是至少一个 Azure AD 的目录管理员。 如果已经有一个这样的帐户，则可以使用该帐户。 否则，可以通过 [https://azure.microsoft.com/free/](https://azure.microsoft.com/pricing/free/)（中国用户请访问 <http://go.microsoft.com/fwlink/?LinkID=717821>）创建一个免费帐户。 如果打算以后[将 Azure Stack 注册到 Azure](asdk-register.md)，则还必须在这个新创建的帐户中有一个订阅。
+1. 创建一个 Azure AD 帐户，该帐户是至少一个 Azure AD 的目录管理员。 如果已经有一个这样的帐户，则可以使用该帐户。 否则，可以通过 [https://azure.microsoft.com/free/](https://azure.microsoft.com/pricing/free/)（中国用户请访问 <https://go.microsoft.com/fwlink/?LinkID=717821>）创建一个免费帐户。 如果打算以后[将 Azure Stack 注册到 Azure](asdk-register.md)，则还必须在这个新创建的帐户中有一个订阅。
    
     保存这些以服务管理员身份使用的凭据。 此帐户可以配置和管理资源云、用户帐户、租户计划、配额和定价。 在门户中，该帐户可以创建网站云和虚拟机专用云、创建计划，以及管理用户订阅。
 1. 在 Azure AD 中至少创建一个测试用户帐户，以便以租户身份登录到开发工具包。
@@ -121,7 +122,7 @@ ms.locfileid: "51238620"
 确保可以在 NIC 连接到的网络上使用 DHCP 服务器。 如果 DHCP 不可用，则除了主机使用的静态 IPv4 网络，还必须准备另一个此类网络。 必须提供该 IP 地址和网关作为部署参数。
 
 ### <a name="internet-access"></a>Internet 访问权限
-Azure Stack 需要访问 Internet，可以直接访问，也可以通过透明代理进行访问。 Azure Stack 不支持通过配置 Web 代理来启用 Internet 访问。 主机 IP 和分配到 MAS-BGPNAT01 的新 IP（通过 DHCP 或静态 IP 的方式进行分配）必须能够访问 Internet。 Graph.windows.net 和 login.microsoftonline.com 域下将使用端口 80 和 443。
+Azure Stack 需要访问 Internet，可以直接访问，也可以通过透明代理进行访问。 Azure Stack 不支持通过配置 Web 代理来启用 Internet 访问。 主机 IP 和分配到 AzS-BGPNAT01 的新 IP（通过 DHCP 或静态 IP 的方式进行分配）必须能够访问 Internet。 Graph.windows.net 和 login.microsoftonline.com 域下将使用端口 80 和 443。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,21 +1,22 @@
 ---
-title: 快速入门：生成缩略图 - SDK、C# - 计算机视觉
+title: 快速入门：生成缩略图 - SDK、C#
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 Windows C# 客户端库基于图像生成缩略图。
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
 ms.author: pafarley
-ms.openlocfilehash: d3340131c1f174201cc9fd1dcb31bd4a4b8cd07a
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: 30bc45e0c32fdb0cf06d8eb5b0cb7445e693d17d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854078"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209496"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>快速入门：使用计算机视觉 SDK 和 C# 生成缩略图
 

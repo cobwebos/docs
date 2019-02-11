@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: ad8437f5-b887-41ff-bd77-779ddafc33fb
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 07/19/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 1d52e3b8871a5af219d1c9eafd559f06bb19f560
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: dd9bdc4638d1c055706026798acba08d6add08c7
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424877"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098742"
 ---
 # <a name="single-sign-on-saml-protocol"></a>单一登录 SAML 协议
 
@@ -46,7 +46,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 </samlp:AuthnRequest>
 ```
 
-| 参数 |  | Description |
+| 参数 |  | 说明 |
 | --- | --- | --- |
 | ID | 必选 | Azure AD 使用此属性来填充返回的响应的 `InResponseTo` 属性。 ID 的开头不能是数字，因此常见的策略是在 GUID 的字符串表示法前面加上类似于“id”的字符串。 例如，`id6c1c178c166d486687be4aaf5e482730` 是有效的 ID。 |
 | 版本 | 必选 | 此参数应设置为 **2.0**。 |
@@ -153,7 +153,7 @@ Azure AD 将忽略 `AuthnRequest` 元素的 `Subject` 元素。
 `Response` 元素包含授权请求的结果。 Azure AD 将设置 `Response` 元素中的 `ID`、`Version` 和 `IssueInstant` 值。 它还设置以下属性：
 
 * `Destination`：登录成功完成时，此属性将设置为服务提供者（云服务）的 `RedirectUri`。
-* `InResponseTo`：设置为发起响应的 `AuthnRequest` 元素的 `ID` 属性。
+* `InResponseTo`：此项设置为发起响应的 `AuthnRequest` 元素的 `ID` 属性。
 
 ### <a name="issuer"></a>颁发者
 

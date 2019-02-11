@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 2f8a41834c1451d80c53cfed4bae3b7e36281702
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 8048dde6158d9eaa9bf38a8c3020420b81bdd55b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779254"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099766"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>在 Azure 网络观察程序中进行资源故障排除简介
 
@@ -74,11 +74,11 @@ ms.locfileid: "32779254"
 | ConnectionEntityNotFound | 连接配置缺失 | 否 |
 | ConnectionIsMarkedDisconnected | 连接标记为“断开连接” |否|
 | ConnectionNotConfiguredOnGateway | 未在基础服务上配置连接。 | 是 |
-| ConnectionMarkedStandy | 底层服务标记为备用。| 是|
-| 身份验证 | 预共享密钥不匹配 | 是|
+| ConnectionMarkedStandby | 底层服务标记为备用。| 是|
+| Authentication | 预共享密钥不匹配 | 是|
 | PeerReachability | 无法访问对等网关。 | 是|
 | IkePolicyMismatch | 对等网关中的 IKE 策略不受 Azure 支持。 | 是|
-| WfpParse 错误 | 分析 WFP 日志时出错。 |是|
+| WfpParse Error | 分析 WFP 日志时出错。 |是|
 
 ## <a name="supported-gateway-types"></a>支持的网关类型
 

@@ -1,25 +1,25 @@
 ---
-title: 如何将自定义域添加到 Azure Active Directory | Microsoft Docs
-description: 了解如何使用 Azure Active Directory 门户添加自定义域。
+title: 添加自定义域 - Azure Active Directory | Microsoft Docs
+description: 介绍如何使用 Azure Active Directory 添加自定义域。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
-ms.custom: it-pro
-ms.openlocfilehash: 77c2247281fde4aa2b67388464b386b276fe6437
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: aae0a71684f91b98b5f7f137738d5a5fefd40dbc
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233331"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092708"
 ---
-# <a name="how-to-add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>如何：使用 Azure Active Directory 门户添加自定义域名
+# <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>使用 Azure Active Directory 门户添加自定义域名
 每个新的 Azure AD 租户都附带了初始域名 *domainname*.onmicrosoft.com。 无法更改或删除初始域名，但可以将组织的名称添加到列表中。 添加自定义域名有助于创建用户所熟悉的用户名，例如 *alain@contoso.com*。
 
 ## <a name="before-you-begin"></a>开始之前
@@ -63,7 +63,7 @@ ms.locfileid: "51233331"
 ## <a name="add-your-dns-information-to-the-domain-registrar"></a>将 DNS 信息添加到域注册机构
 将自定义域名添加到 Azure AD 之后，必须返回到域注册机构，并添加已复制的 TXT 文件中的 Azure AD DNS 信息。 为域创建此 TXT 记录可以“验证”域名的所有权。
 
--  返回到域注册机构，根据复制的 DNS 信息为域创建新的 TXT 记录，将“TTL”（生存时间）设置为 60 分钟，然后保存信息。
+-  返回到域注册机构，根据复制的 DNS 信息为域创建新的 TXT 记录，将“TTL”（生存时间）设置为 3600 秒（60 分钟），然后保存信息。
 
     >[!Important]
     >可以注册任意数目的域名。 但是，每个域将从 Azure AD 获取其自身的 TXT 记录。 在域注册机构处输入 TXT 文件信息时请小心。 如果输入了错误或重复的信息，则必须等到 TTL 超时（60 分钟），然后才能重试。
@@ -98,10 +98,10 @@ ms.locfileid: "51233331"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 将另一个全局管理员添加到目录。 有关详细信息，请参阅[如何分配角色和管理员](active-directory-users-assign-role-azure-portal.md)
+- 将另一个全局管理员添加到目录。 有关详细信息，请参阅[如何分配角色和管理员](active-directory-users-assign-role-azure-portal.md)。
 
-- 将用户添加到域，具体请参阅[如何添加或删除用户](add-users-azure-active-directory.md)
+- 将用户添加到域，具体请参阅[如何添加或删除用户](add-users-azure-active-directory.md)。
 
-- 在 Azure AD 中管理域名信息。 有关详细信息，请参阅[管理自定义域名](../users-groups-roles/domains-manage.md)
+- 在 Azure AD 中管理域名信息。 有关详细信息，请参阅[管理自定义域名](../users-groups-roles/domains-manage.md)。
 
 - 若要结合 Azure Active Directory 使用 Windows Server 的本地版本，请参阅[将本地目录与 Azure Active Directory 集成](../connect/active-directory-aadconnect.md)。

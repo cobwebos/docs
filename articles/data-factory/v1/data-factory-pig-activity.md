@@ -9,17 +9,16 @@ ms.assetid: 5af07a1a-2087-455e-a67b-a79841b4ada5
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 5abd0b07037559b14158a3c314b6ca6ce30ab655
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: fe1ef8c141c4a4daa443f800181f8e6e3199d0cc
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045110"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331293"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Pig 活动转换数据
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -41,46 +40,47 @@ ms.locfileid: "37045110"
 数据工厂[管道](data-factory-create-pipelines.md)中的 HDInsight Pig 活动会在[自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或基于 Windows/Linux 的[按需](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 Pig 查询。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
 
 > [!NOTE] 
-> 如果是刚开始接触 Azure 数据工厂，请仔细阅读 [Azure 数据工厂简介](data-factory-introduction.md)，并学习[教程：生成首个数据管道](data-factory-build-your-first-pipeline.md)，然后再阅读本文。 
+> 如果不熟悉 Azure 数据工厂，请在阅读本文之前，先通读 [Azure 数据工厂简介](data-factory-introduction.md)，并学习以下教程：[构建第一个数据管道](data-factory-build-your-first-pipeline.md)。 
 
 ## <a name="syntax"></a>语法
 
 ```JSON
 {
-    "name": "HiveActivitySamplePipeline",
-      "properties": {
+  "name": "HiveActivitySamplePipeline",
+  "properties": {
     "activities": [
-        {
-            "name": "Pig Activity",
-            "description": "description",
-            "type": "HDInsightPig",
-            "inputs": [
-                  {
-                    "name": "input tables"
-                  }
-            ],
-            "outputs": [
-                  {
-                    "name": "output tables"
-                  }
-            ],
-            "linkedServiceName": "MyHDInsightLinkedService",
-            "typeProperties": {
-                  "script": "Pig script",
-                  "scriptPath": "<pathtothePigscriptfileinAzureblobstorage>",
-                  "defines": {
-                    "param1": "param1Value"
-                  }
-            },
-               "scheduler": {
-                  "frequency": "Day",
-                  "interval": 1
-            }
+      {
+        "name": "Pig Activity",
+        "description": "description",
+        "type": "HDInsightPig",
+        "inputs": [
+          {
+            "name": "input tables"
           }
+        ],
+        "outputs": [
+          {
+            "name": "output tables"
+          }
+        ],
+        "linkedServiceName": "MyHDInsightLinkedService",
+        "typeProperties": {
+          "script": "Pig script",
+          "scriptPath": "<pathtothePigscriptfileinAzureblobstorage>",
+          "defines": {
+            "param1": "param1Value"
+          }
+        },
+        "scheduler": {
+          "frequency": "Day",
+          "interval": 1
+        }
+      }
     ]
   }
 }
 ```
+
 ## <a name="syntax-details"></a>语法详细信息
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
@@ -128,11 +128,11 @@ Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/
    
    > [!NOTE]
    > 还可以使用 **script** 属性在活动定义中提供 Pig 脚本内联。 但不建议使用此方法，因为这需转义脚本中的所有特殊字符，并且可能导致调试问题。 最佳做法是遵循步骤 #4。
-   > 
-   > 
+   >
+   >
 5. 创建包含 HDInsightPig 活动的管道。 此活动通过在 HDInsight 群集上运行 Pig 脚本来处理输入数据。
 
-    ```JSON   
+    ```JSON
     {
       "name": "PigActivitySamplePipeline",
       "properties": {
@@ -155,14 +155,14 @@ Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/
               "scriptPath": "adfwalkthrough\\scripts\\enrichlogs.pig",
               "scriptLinkedService": "StorageLinkedService"
             },
-               "scheduler": {
-                  "frequency": "Day",
-                  "interval": 1
+            "scheduler": {
+              "frequency": "Day",
+              "interval": 1
             }
           }
         ]
       }
-    } 
+    }
     ```
 6. 部署管道。 有关详细信息，请参阅[创建管道](data-factory-create-pipelines.md)一文。 
 7. 使用数据工厂监视和管理视图来监视管道。 有关详细信息，请参阅[监视和管理数据工厂管道](data-factory-monitor-manage-pipelines.md)一文。
@@ -174,54 +174,54 @@ Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/
 
 * 定义 **defines** 中的参数。
 
-    ```JSON  
+    ```JSON
     {
-        "name": "PigActivitySamplePipeline",
-          "properties": {
+      "name": "PigActivitySamplePipeline",
+      "properties": {
         "activities": [
-            {
-                "name": "PigActivitySample",
-                "type": "HDInsightPig",
-                "inputs": [
-                      {
-                        "name": "PigSampleIn"
-                      }
-                ],
-                "outputs": [
-                      {
-                        "name": "PigSampleOut"
-                      }
-                ],
-                "linkedServiceName": "HDInsightLinkedService",
-                "typeproperties": {
-                      "scriptPath": "adfwalkthrough\\scripts\\samplepig.hql",
-                      "scriptLinkedService": "StorageLinkedService",
-                      "defines": {
-                        "Input": "$$Text.Format('wasb: //adfwalkthrough@<storageaccountname>.blob.core.windows.net/samplein/yearno={0: yyyy}/monthno={0:MM}/dayno={0: dd}/',SliceStart)",
-                        "Output": "$$Text.Format('wasb://adfwalkthrough@<storageaccountname>.blob.core.windows.net/sampleout/yearno={0:yyyy}/monthno={0:MM}/dayno={0:dd}/', SliceStart)"
-                      }
-                },
-                   "scheduler": {
-                      "frequency": "Day",
-                      "interval": 1
-                }
+          {
+            "name": "PigActivitySample",
+            "type": "HDInsightPig",
+            "inputs": [
+              {
+                "name": "PigSampleIn"
               }
+            ],
+            "outputs": [
+              {
+                "name": "PigSampleOut"
+              }
+            ],
+            "linkedServiceName": "HDInsightLinkedService",
+            "typeproperties": {
+              "scriptPath": "adfwalkthrough\\scripts\\samplepig.hql",
+              "scriptLinkedService": "StorageLinkedService",
+              "defines": {
+                "Input": "$$Text.Format('wasb: //adfwalkthrough@<storageaccountname>.blob.core.windows.net/samplein/yearno={0: yyyy}/monthno={0:MM}/dayno={0: dd}/',SliceStart)",
+                "Output": "$$Text.Format('wasb://adfwalkthrough@<storageaccountname>.blob.core.windows.net/sampleout/yearno={0:yyyy}/monthno={0:MM}/dayno={0:dd}/', SliceStart)"
+              }
+            },
+            "scheduler": {
+              "frequency": "Day",
+              "interval": 1
+            }
+          }
         ]
       }
     }
-    ```  
+    ```
 * 在 Pig 脚本中，使用“**$parameterName**”引用参数，如下例所示：
 
-    ```  
-    PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);    
-    GroupProfile = Group PigSampleIn all;        
-    PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampleIn.Duration);        
+    ```
+    PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);
+    GroupProfile = Group PigSampleIn all;
+    PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampleIn.Duration);
     Store PigSampleOut into '$Output' USING PigStorage (','); 
     ```
+
 ## <a name="see-also"></a>另请参阅
 * [Hive 活动](data-factory-hive-activity.md)
 * [MapReduce 活动](data-factory-map-reduce.md)
 * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
 * [调用 Spark 程序](data-factory-spark.md)
 * [调用 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
-

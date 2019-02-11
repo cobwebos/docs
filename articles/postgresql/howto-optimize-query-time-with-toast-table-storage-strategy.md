@@ -3,16 +3,15 @@ title: 使用 toast 表存储策略优化 Azure Database for PostgreSQL 服务�
 description: 本文介绍如何使用 toast 表存储策略优化 Azure Database for PostgreSQL 服务器中的查询时间。
 author: dianaputnam
 ms.author: dianas
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: dee8aaaef4b1998a7234a88d07ad5efbc79d050b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 1fb818a65e26f969f72131b0f5265f3efdd36bb6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628332"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542190"
 ---
 # <a name="optimizing-query-time-with-toast-table-storage-strategy"></a>使用 TOAST 表存储策略优化查询时间 
 本文介绍如何使用 TOAST 表存储策略优化查询时间。
@@ -32,4 +31,4 @@ ms.locfileid: "51628332"
 ## <a name="next-steps"></a>后续步骤
 查看工作负荷的上述特征。 
 
-查看以下 PostgreSQL 文档：[第 68 章：数据库物理存储](https://www.postgresql.org/docs/current/storage-toast.html) 
+查看以下 PostgreSQL 文档：[第 68 章，数据库物理存储](https://www.postgresql.org/docs/current/storage-toast.html) 

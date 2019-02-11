@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/11/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: 023df222ee2e9ca6af1398dd70767938e61c90b7
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.subservice: common
+ms.openlocfilehash: cdaa151f0603cddc9ca1bf17b0ff304f646cfdde
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824094"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462828"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>使用 Azure 导入/导出服务将数据导入到 Azure Blob 存储
 
@@ -30,7 +30,7 @@ ms.locfileid: "51824094"
 - 拥有[受支持类型](storage-import-export-requirements.md#supported-disks)的足够数量的磁盘。 
 - 拥有运行[受支持 OS 版本](storage-import-export-requirements.md#supported-operating-systems)的 Windows 系统。 
 - 在 Windows 系统上启用 BitLocker。 请参阅[如何启用 BitLocker](http://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)。
-- 在 Windows 系统上[下载 WAImportExport 版本 1](https://www.microsoft.com/en-us/download/details.aspx?id=42659)。 解压缩到默认文件夹 `waimportexportv1`。 例如，`C:\WaImportExportV1`。
+- 在 Windows 系统上[下载 WAImportExport 版本 1](https://aka.ms/waiev1)。 解压缩到默认文件夹 `waimportexportv1`。 例如，`C:\WaImportExportV1`。
 - 具有 FedEx/DHL 帐户。  
     - 该帐户必须是有余额的有效帐户，且有退货功能。
     - 生成导出作业的跟踪号。
@@ -64,7 +64,7 @@ ms.locfileid: "51824094"
     
     下表介绍了所使用的参数：
 
-    |选项  |Description  |
+    |选项  |说明  |
     |---------|---------|
     |/j:     |带有 .jrn 扩展名的日志文件的名称。 会为每个驱动器生成一个日志文件。 建议使用磁盘序列号作为日志文件名。         |
     |/id:     |会话 ID。 请为该命令的每个实例使用唯一的会话编号。      |
@@ -138,7 +138,7 @@ ms.locfileid: "51824094"
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-## <a name="step-5-verify-data-upload-to-azure"></a>步骤 5：验证数据上传到 Azure
+## <a name="step-5-verify-data-upload-to-azure"></a>步骤 5：验证 Azure 中的数据上传
 
 跟踪作业直至完成。 作业完成后，验证数据已上传到 Azure。 仅在已确认上传成功后才删除本地数据。
 

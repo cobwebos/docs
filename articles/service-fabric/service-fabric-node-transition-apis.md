@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/12/2017
 ms.author: lemai
-ms.openlocfilehash: 95c3726caeb19d6bbf7153533951bb18cd7d0e57
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: df0e53736c08fd2c26c467def7328e85f2989f26
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055397"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752936"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>将启动节点 API 和停止节点 API 替换为节点转换 API
 
 ## <a name="what-do-the-stop-node-and-start-node-apis-do"></a>停止节点 API 和启动节点 API 有什么作用？
 
-停止节点 API（在托管环境中为 [StopNodeAsync()][stopnode]，在 PowerShell 中为 [Stop-ServiceFabricNode][stopnodeps]）可停止 Service Fabric 节点。  Service Fabric 节点是进程，而不是 VM 或计算机 – VM 或计算机仍会运行。  在本文档的余下部分中，“节点”是指 Service Fabric 节点。  停止某个节点会将其置于*已停止*状态，此时，该节点不再是群集的成员，也无法托管服务，因此相当于一个*关闭的*节点。  这种做法有助于将故障注入系统，对应用程序进行测试。  启动节点 API（在托管环境中为 [StartNodeAsync()][startnode]，在 PowerShell 中为 [Start-ServiceFabricNode][startnodeps]]）与停止节点 API 相反，可使节点恢复正常状态。
+停止节点 API（在托管环境中为：[StopNodeAsync()][stopnode]，在 PowerShell 中为：[Stop-ServiceFabricNode][stopnodeps]）停止 Service Fabric 节点。  Service Fabric 节点是进程，而不是 VM 或计算机 – VM 或计算机仍会运行。  在本文档的余下部分中，“节点”是指 Service Fabric 节点。  停止某个节点会将其置于*已停止*状态，此时，该节点不再是群集的成员，也无法托管服务，因此相当于一个*关闭的*节点。  这种做法有助于将故障注入系统，对应用程序进行测试。  启动节点 API（在托管环境中为：[StartNodeAsync()][startnode]，在 PowerShell 中为：[Start-ServiceFabricNode][startnodeps]]）与停止节点 API 相反，可使节点恢复正常状态。
 
 ## <a name="why-are-we-replacing-these"></a>为什么要替换这些 API？
 
@@ -38,14 +38,14 @@ ms.locfileid: "44055397"
 
 ## <a name="introducing-the-node-transition-apis"></a>节点转换 API 简介
 
-我们凭借一组新的 API 解决了上述问题。  新的节点转换 API（在托管环境中为 [StartNodeTransitionAsync()][snt]）可用于将 Service Fabric 节点转换为*停止*状态，或将其从*停止*状态转换为正常的启动状态。  请注意，该 API 的名称中的“Start”不是指启动节点，  而是指系统开始执行异步操作，将节点转换为*停止*或启动状态。
+我们凭借一组新的 API 解决了上述问题。  新的节点转换 API（在托管环境中为：[StartNodeTransitionAsync()][snt]）可用于将 Service Fabric 节点转换为*停止*状态，或将其从*停止*状态转换为正常的启动状态。  请注意，该 API 的名称中的“Start”不是指启动节点，  而是指系统开始执行异步操作，将节点转换为*停止*或启动状态。
 
 **使用情况**
 
-如果调用节点转换 API 后未引发异常，则表示系统已接受异步操作，将执行该操作。  成功的调用并不意味着操作已完成。  若要获取有关当前操作状态的信息，请结合针对此操作调用节点转换 API 时使用的 guid 调用节点转换进度 API（在托管环境中为 [GetNodeTransitionProgressAsync()][gntp]）。  节点转换进度 API 返回 NodeTransitionProgress 对象。  此对象的 State 属性指定当前操作状态。  如果状态为“Running”，则表示该操作正在执行。  如果状态为“Completed”，则表示该操作已完成且未出错。  如果状态为“Faulted”，则表示执行该操作时出现问题。  Result 属性的 Exception 属性将指示具体的问题。  请参阅 https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate 了解有关状态属性的详细信息，并查看以下“示例用法”部分了解代码示例。
+如果调用节点转换 API 后未引发异常，则表示系统已接受异步操作，将执行该操作。  成功的调用并不意味着操作已完成。  若要获取有关该操作的当前状态的信息，请使用为此操作调用节点转换 API 时使用的 guid 来调用节点转换进度 API（在托管环境中为：[GetNodeTransitionProgressAsync()][gntp]）。  节点转换进度 API 返回 NodeTransitionProgress 对象。  此对象的 State 属性指定当前操作状态。  如果状态为“Running”，则表示该操作正在执行。  如果状态为“Completed”，则表示该操作已完成且未出错。  如果状态为“Faulted”，则表示执行该操作时出现问题。  Result 属性的 Exception 属性将指示具体的问题。  请参阅 https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate 了解有关状态属性的详细信息，并查看以下“示例用法”部分了解代码示例。
 
 
-**区分停止的节点和关闭的节点**如果使用节点转换 API *停止*某个节点，节点查询（在托管环境中为 [GetNodeListAsync()][nodequery]，在 PowerShell 中为 [Get-ServiceFabricNode][nodequeryps]）的输出会显示此节点的 *IsStopped* 属性值为 true。  请注意，这与 *NodeStatus* 属性的值不同，后者显示 *Down*。  如果 *NodeStatus* 属性的值为 *Down*，但 *IsStopped* 为 false，则表示未使用节点转换 API 停止该节点，而是出于其他原因而使该节点处于*关闭*状态。  如果 *IsStopped* 属性为 true，*NodeStatus* 属性为 *Down*，则表示已使用节点转换 API 停止该节点。
+**区分停止的节点和关闭的节点** 如果节点是使用节点转换 API“停止的”，则节点查询（在托管环境中为：[GetNodeListAsync()][nodequery]，在 PowerShell 中为：[Get-ServiceFabricNode][nodequeryps]）的输出将显示此节点的 *IsStopped* 属性值为 true。  请注意，这与 *NodeStatus* 属性的值不同，后者显示 *Down*。  如果 *NodeStatus* 属性的值为 *Down*，但 *IsStopped* 为 false，则表示未使用节点转换 API 停止该节点，而是出于其他原因而使该节点处于*关闭*状态。  如果 *IsStopped* 属性为 true，*NodeStatus* 属性为 *Down*，则表示已使用节点转换 API 停止该节点。
 
 使用节点转换 API 启动*停止的*节点可让它重新成为群集的正常成员。  节点查询 API 的输出会显示 *IsStopped* 为 false，*NodeStatus* 为除 Down 以外的某个值（例如 Up）。
 
@@ -159,7 +159,7 @@ ms.locfileid: "44055397"
             }
             while (!wasSuccessful);
 
-            // Now call StartNodeTransitionProgressAsync() until hte desired state is reached.
+            // Now call StartNodeTransitionProgressAsync() until the desired state is reached.
             await WaitForStateAsync(fc, guid, TestCommandProgressState.Completed).ConfigureAwait(false);
         }
 ```
@@ -202,7 +202,7 @@ ms.locfileid: "44055397"
             }
             while (!wasSuccessful);
 
-            // Now call StartNodeTransitionProgressAsync() until hte desired state is reached.
+            // Now call StartNodeTransitionProgressAsync() until the desired state is reached.
             await WaitForStateAsync(fc, guid, TestCommandProgressState.Completed).ConfigureAwait(false);
         }
 ```
@@ -280,11 +280,11 @@ ms.locfileid: "44055397"
         }
 ```
 
-[stopnode]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.faultmanagementclient?redirectedfrom=MSDN#System_Fabric_FabricClient_FaultManagementClient_StopNodeAsync_System_String_System_Numerics_BigInteger_System_Fabric_CompletionMode_
+[stopnode]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.faultmanagementclient?redirectedfrom=MSDN
 [stopnodeps]: https://msdn.microsoft.com/library/mt125982.aspx
-[startnode]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.faultmanagementclient?redirectedfrom=MSDN#System_Fabric_FabricClient_FaultManagementClient_StartNodeAsync_System_String_System_Numerics_BigInteger_System_String_System_Int32_System_Fabric_CompletionMode_System_Threading_CancellationToken_
+[startnode]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.faultmanagementclient?redirectedfrom=MSDN
 [startnodeps]: https://msdn.microsoft.com/library/mt163520.aspx
-[nodequery]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient#System_Fabric_FabricClient_QueryClient_GetNodeListAsync_System_String_
+[nodequery]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient
 [nodequeryps]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode
-[snt]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.testmanagementclient#System_Fabric_FabricClient_TestManagementClient_StartNodeTransitionAsync_System_Fabric_Description_NodeTransitionDescription_System_TimeSpan_System_Threading_CancellationToken_
-[gntp]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.testmanagementclient#System_Fabric_FabricClient_TestManagementClient_GetNodeTransitionProgressAsync_System_Guid_System_TimeSpan_System_Threading_CancellationToken_
+[snt]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.testmanagementclient
+[gntp]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.testmanagementclient

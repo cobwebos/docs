@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f301c0156265f055f0ebf7cdad8dba7f39f5ba2b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 391fc493d642c260a10b74aa42b805ad055dd8b1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044571"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164548"
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Reliable Services 生命周期概述
 > [!div class="op_single_selector"]
@@ -99,7 +99,7 @@ ms.locfileid: "39044571"
 3. 完成 `StatefulServiceBase.OnCloseAsync()` 后，销毁服务对象。
 
 ## <a name="stateful-service-primary-swaps"></a>有状态服务主副本交换
-运行有状态服务时，只有该有状态服务的主副本打开其通信侦听器并调用其 **RunAsync** 方法。 会构造辅助副本，但不会对其执行进一步的调用。 在运行有状态服务时，当前用作主副本的副本可能会更改。 从副本看到的生命周期事件角度看，这意味着什么呢？ 有状态副本看到的行为取决于在交换期间该副本是已降级还是已升级。
+运行有状态服务时，只有该有状态服务的主副本打开其通信侦听器并调用其 **RunAsync** 方法。 会构造辅助副本，但不会对其执行进一步的调用。 在运行有状态服务时，当前用作主副本的副本可能会因故障或群集均衡优化而发生更改。 从副本看到的生命周期事件角度看，这意味着什么呢？ 有状态副本看到的行为取决于在交换期间该副本是已降级还是已升级。
 
 ### <a name="for-the-primary-thats-demoted"></a>对于已降级的主副本
 对于已降级的主副本，Service Fabric 需要使用此副本来停止处理消息，退出正在执行的任何后台工作。 因此，此步骤类似于关闭服务时的情况。 一个差别在于，在此情况下不会销毁或关闭服务，因为它保留为辅助副本。 将调用以下 API：

@@ -1,23 +1,23 @@
 ---
-title: 快速入门：获取备用翻译，Node.js - 文本翻译 API
+title: 快速入门：使用双语字典、Node.js 查找字词 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何使用 Node.js 和文本翻译 REST API 查找指定文本的备用翻译和用法示例。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 191afcdfb7a401755fffc028ce4119526f1e693d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 502455c6302a19176b29e9e5dcbac4a9897a04ea
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035622"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214035"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-with-nodejs"></a>快速入门：使用 Node.js 通过文本翻译 API 获取备用翻译
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-nodejs"></a>快速入门：通过 Node.js 使用双语字典查找字词
 
 本快速入门介绍如何使用 Node.js 和文本翻译 REST API 查找指定文本的备用翻译和用法示例。
 

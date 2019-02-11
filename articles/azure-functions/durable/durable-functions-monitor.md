@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7af8015e424b4a9169a9b80ed5e7070a8fa6de1c
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: f68c3797d5425c496e38c1000cc39e3868d41739
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52638452"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727031"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions 中的监视场景 - 天气观察程序示例
 
@@ -32,7 +32,7 @@ ms.locfileid: "52638452"
 * 监视器可以在满足某种条件时终止，或者由其他进程终止。
 * 监视器可以采用参数。 此示例演示如何将同一个天气监视进程应用到任何请求的地点和电话号码。
 * 监视器可缩放。 由于每个监视器是一个业务流程实例，因此可以创建多个监视器，而无需创建新函数或定义更多的代码。
-* 监视器可轻松集成到更大的工作流。 监视器可以是更复杂业务流程函数或[子业务流程](https://docs.microsoft.com/azure/azure-functions/durable-functions-sub-orchestrations)的一部分。
+* 监视器可轻松集成到更大的工作流。 监视器可以是更复杂业务流程函数或[子业务流程](durable-functions-sub-orchestrations.md)的一部分。
 
 ## <a name="configuring-twilio-integration"></a>配置 Twilio 集成
 
@@ -59,7 +59,7 @@ ms.locfileid: "52638452"
 * `E3_SendGoodWeatherAlert`：通过 Twilio 发送短信的活动函数。
 
 以下各部分介绍了用于 C# 脚本和 JavaScript 的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
- 
+
 ## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>天气监视业务流程（Visual Studio Code 和 Azure 门户示例代码）
 
 **E3_Monitor** 函数对业务流程协调程序函数使用标准的 *function.json*。
@@ -72,7 +72,7 @@ ms.locfileid: "52638452"
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
@@ -83,7 +83,7 @@ ms.locfileid: "52638452"
 3. 调用 **E3_GetIsClear** 来确定请求的地点是否为晴天。
 4. 如果是晴天，则调用 **E3_SendGoodWeatherAlert** 将短信通知发送到请求的电话号码。
 5. 创建一个持久计时器，以便在下一个轮询间隔恢复业务流程。 为简便起见，本示例使用了硬编码值。
-6. 持续运行，直到 [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) 超过了监视器的过期时间或者发送了短信提醒。
+6. 持续运行，直到 [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (C#) 或 `currentUtcDateTime` (JavaScript) 超过了监视器的到期时间或者发送了短信提醒。
 
 可以通过发送多个 **MonitorRequests** 来同时运行多个业务流程实例。 可以指定要监视的地点，以及要将短信提醒发送到的电话号码。
 
@@ -107,7 +107,7 @@ JavaScript 示例使用正则 JSON 对象作为参数。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
@@ -121,7 +121,7 @@ JavaScript 示例使用正则 JSON 对象作为参数。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
 
@@ -134,8 +134,9 @@ POST https://{host}/orchestrators/E3_Monitor
 Content-Length: 77
 Content-Type: application/json
 
-{ "Location": { "City": "Redmond", "State": "WA" }, "Phone": "+1425XXXXXXX" }
+{ "location": { "city": "Redmond", "state": "WA" }, "phone": "+1425XXXXXXX" }
 ```
+
 ```
 HTTP/1.1 202 Accepted
 Content-Type: application/json; charset=utf-8
@@ -144,9 +145,6 @@ RetryAfter: 10
 
 {"id": "f6893f25acf64df2ab53a35c09d52635", "statusQueryGetUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "sendEventPostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/raiseEvent/{eventName}?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "terminatePostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason={text}&taskHub=SampleHubVS&connection=Storage&code={systemKey}"}
 ```
-
-   > [!NOTE]
-   > 目前，JavaScript 业务流程启动器函数不能返回实例管理 URI。 此功能将在以后的版本中添加。
 
 **E3_Monitor** 实例启动，并查询请求位置的当前天气状况。 如果天气为晴，则调用某个活动函数来发送提醒；否则将设置计时器。 当计时器过期时，业务流程将会恢复。
 
@@ -168,7 +166,7 @@ RetryAfter: 10
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-业务流程的超时时间已到，或者检测到晴天时，业务流程将会[终止](durable-functions-instance-management.md#terminating-instances)。 也可以在另一函数中使用 `TerminateAsync`，或调用上述 202 响应中提到的 **terminatePostUri** HTTP POST Webhook（请将 `{text}` 替换为终止原因）：
+业务流程的超时时间已到，或者检测到晴天时，业务流程将会[终止](durable-functions-instance-management.md#terminating-instances)。 也可以在另一函数中使用 `TerminateAsync` (.NET) 或 `terminate` (JavaScript)，或调用上述 202 响应中提到的 **terminatePostUri** HTTP POST Webhook（请将 `{text}` 替换为终止原因）：
 
 ```
 POST https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
@@ -177,6 +175,9 @@ POST https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf6
 ## <a name="visual-studio-sample-code"></a>Visual Studio 示例代码
 
 下面是 Visual Studio 项目中以单个 C# 文件形式提供的业务流程：
+
+> [!NOTE]
+> 需要安装 `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget 包才能运行下面的示例代码。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs)]
 

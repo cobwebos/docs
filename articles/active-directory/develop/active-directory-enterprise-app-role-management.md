@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 01/07/2019
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 2bb9d69487b8576cdae60a1a613a341898495f06
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: a354d5d0242bfdbb618eb325c8157a7bed3d3b64
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48903756"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263648"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序配置 SAML 令牌中颁发的角色声明
 
@@ -59,7 +59,7 @@ ms.locfileid: "48903756"
 
 6. 在另一个窗口中打开 [Azure AD Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)，然后执行以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
+    a. 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
 
     b. 需要足够的权限才能创建角色。 选择“修改权限”以获取权限。
 
@@ -151,25 +151,29 @@ ms.locfileid: "48903756"
 
 8. 更新“属性”表以定义角色声明的自定义映射。
 
-9. 在“单一登录”对话框的“用户属性”部分，按图中所示配置 SAML 令牌属性，然后执行以下步骤。
+9. 在“单一登录”对话框的“用户属性和声明”部分中，按图中所示配置 SAML 令牌属性，然后执行以下步骤。
 
     | 属性名称 | 属性值 |
     | -------------- | ----------------|
     | 角色名称  | user.assignedroles |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“添加属性”，打开“添加属性”窗格。
+    a. 单击“编辑”按钮以打开“用户属性”对话框。
+
+      ![“添加属性”按钮](./media/active-directory-enterprise-app-role-management/editattribute.png)
+
+    b. 选择“添加属性”以打开“管理用户声明”窗格。
 
       ![“添加属性”按钮](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 
       ![“添加属性”窗格](./media/active-directory-enterprise-app-role-management/tutorial_attribute_05.png)
 
-    b. 在“名称”框中，根据需要键入属性名称。 此示例中使用**角色名称**作为声明名称。
-
-    c. 在“值”列表中，选择为该行显示的属性值。
+    c. 在“名称”框中，根据需要键入属性名称。 此示例中使用**角色名称**作为声明名称。
 
     d. 将“命名空间”框留空。
 
-    e. 选择“确定”。
+    e. 在“源属性”列表中，键入为该行显示的属性值。
+
+    f. 选择“保存”。
 
 10. 若要在标识提供者启动的单一登录中测试应用程序，请登录到[访问面板](https://myapps.microsoft.com)，然后选择应用程序磁贴。 在 SAML 令牌中，应该会看到具有所提供的声明名称的用户的所有已分配角色。
 
@@ -203,7 +207,7 @@ ms.locfileid: "48903756"
 
     ![“PATCH”的请求正文，突出显示了“description”和“displayname”](./media/active-directory-enterprise-app-role-management/graph-explorer-patchupdate.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将方法从“GET”更改为“PATCH”。
+    a. 将方法从“GET”更改为“PATCH”。
 
     b. 复制现有角色，并将其粘贴到“请求正文”下。
 
@@ -241,7 +245,7 @@ ms.locfileid: "48903756"
 
     ![“PATCH”的请求正文，IsEnabled 设置为 false](./media/active-directory-enterprise-app-role-management/graph-explorer-new8.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将方法从“GET”更改为“PATCH”。
+    a. 将方法从“GET”更改为“PATCH”。
 
     b. 从应用程序中复制现有角色，并将其粘贴到“请求正文”下。
 

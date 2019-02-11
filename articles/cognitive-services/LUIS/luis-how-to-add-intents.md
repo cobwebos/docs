@@ -1,41 +1,30 @@
 ---
-title: 在 LUIS 应用程序中添加意向
-titleSuffix: Azure Cognitive Services
+title: 添加意向
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 向 LUIS 应用添加意向，识别具有相同意向的问题或命令组。
 services: cognitive-services
 author: diberry
 manager: cgronlun
-ms.component: language-understanding
+ms.custom: seodec18
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 01/23/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 495b7e99319126b3ee9e655b2d9aa4af940e1d56
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 81b963a56b35cc1206982680f8742c2fea9f2446
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139903"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219322"
 ---
-# <a name="add-intents"></a>添加意向 
+# <a name="add-intents-to-determine-user-intention-of-utterances"></a>添加意向以确定用户的话语意向
 
 向 LUIS 应用添加[意向](luis-concept-intent.md)，识别具有相同意向的问题或命令组。 
 
 可以依次转到顶部导航栏的“生成”部分和左侧面板的“意向”来管理意向。 
 
-## <a name="create-an-app"></a>创建应用
-
-1. 登录到 [LUIS](https://www.luis.ai) 门户。
-
-1. 选择“创建新应用”。 
-
-1. 将新应用命名为 `MyHumanResourcesApp`。 选择“英语”区域性。 说明是可选的。 
-
-1. 选择“完成”。 
-
 ## <a name="add-intent"></a>添加意向
-
-1. 应用将会打开并显示“意向”列表。
 
 1. 在“意向”页上，选择“创建新意向”。
 
@@ -57,7 +46,7 @@ ms.locfileid: "50139903"
 
 意向中的话语可能在所选意向和预测分数之间存在意向预测偏差。 LUIS 通过用红框围住示例话语行上的“已标记意向”来指示这种偏差。 
 
-![意向详细信息页的屏幕截图，其中突出显示了表述](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
+![意向详细信息页的屏幕截图，其中包含表述预测差异错误](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
 
 在顶部导航栏中，选择“训练”。 预测偏差现已消失。
 

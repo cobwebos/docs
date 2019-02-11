@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/12/2018
+ms.date: 01/17/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4333a234efe96f32541254819c9c5f21bb031757
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 541d1473b21056e24c6b04b86414936a02b7d9d5
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115070"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382581"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>教程：使用 Kestrel 向 ASP.NET Core Web API 前端服务添加 HTTPS 终结点
 
@@ -54,10 +54,10 @@ ms.locfileid: "49115070"
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>获取证书或创建自签名开发证书
 
-对于生产应用程序，请使用[证书颁发机构 (CA)](https://wikipedia.org/wiki/Certificate_authority) 提供的证书。 出于开发和测试目的，可以创建并使用自签名证书。 Service Fabric SDK 提供的 *CertSetup.ps1* 脚本可创建自签名证书并将其导入 `Cert:\LocalMachine\My` 证书存储。 以管理员身份打开命令提示符并运行以下命令即可创建使用者为“CN=localhost”的证书：
+对于生产应用程序，请使用[证书颁发机构 (CA)](https://wikipedia.org/wiki/Certificate_authority) 提供的证书。 出于开发和测试目的，可以创建并使用自签名证书。 Service Fabric SDK 提供的 *CertSetup.ps1* 脚本可创建自签名证书并将其导入 `Cert:\LocalMachine\My` 证书存储。 以管理员身份打开命令提示符并运行以下命令即可创建使用者为“CN=mytestcert”的证书：
 
 ```powershell
-PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=localhost
+PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=mytestcert
 ```
 
 如果已经有证书 PFX 文件，请运行以下命令，将证书导入 `Cert:\LocalMachine\My` 证书存储：
@@ -158,7 +158,9 @@ serviceContext =>
         }))
 ```
 
-另请添加以下方法，这样 Kestrel 就能通过使用者在 `Cert:\LocalMachine\My` 存储中找到证书。  如果已使用以前的 PowerShell 命令创建自签名证书，请将“&lt;your_CN_value&gt;”替换为“localhost”，或者使用证书的 CN。
+另请添加以下方法，这样 Kestrel 就能通过使用者在 `Cert:\LocalMachine\My` 存储中找到证书。  
+
+如果已使用以前的 PowerShell 命令创建自签名证书，请将“&lt;your_CN_value&gt;”替换为“mytestcert”，或者使用证书的 CN。
 
 ```csharp
 private X509Certificate2 GetCertificateFromStore()
@@ -238,7 +240,7 @@ powershell.exe -ExecutionPolicy Bypass -Command ".\SetCertAccess.ps1"
 在“解决方案资源管理器”中，右键单击“VotingWeb”，选择“添加”->“新建项”，然后添加名为“SetCertAccess.ps1”的新文件。  编辑 *SetCertAccess.ps1* 文件，添加以下脚本：
 
 ```powershell
-$subject="localhost"
+$subject="mytestcert"
 $userGroup="NETWORK SERVICE"
 
 Write-Host "Checking permissions to certificate $subject.." -ForegroundColor DarkCyan
@@ -347,9 +349,9 @@ if ($cert -eq $null)
 
 ## <a name="install-certificate-on-cluster-nodes"></a>在群集节点上安装证书
 
-在将应用程序部署到 Azure 之前，请将证书安装到远程群集节点的 `Cert:\LocalMachine\My` 存储中。  当前端 Web 服务在群集节点上启动时，启动脚本会查找证书并配置访问权限。
+在将应用程序部署到 Azure 之前，请将证书安装到所有远程群集节点的 `Cert:\LocalMachine\My` 存储中。  服务可以移到群集的不同节点。  当前端 Web 服务在群集节点上启动时，启动脚本会查找证书并配置访问权限。
 
-首先，将证书导出到 PFX 文件。 打开 certlm.msc 应用程序，导航到“个人”>“证书”。  右键单击 *localhost* 证书，选择“所有任务”>“导出”。
+首先，将证书导出到 PFX 文件。 打开 certlm.msc 应用程序，导航到“个人”>“证书”。  右键单击 *mytestcert* 证书，选择“所有任务”>“导出”。
 
 ![导出证书][image4]
 

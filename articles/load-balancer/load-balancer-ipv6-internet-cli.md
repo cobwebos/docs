@@ -1,5 +1,6 @@
 ---
-title: 使用 IPv6 创建公共负载均衡器 - Azure CLI | Microsoft Docs
+title: 创建使用 IPv6 的公共负载均衡器 - Azure CLI
+titlesuffix: Azure Load Balancer
 description: 了解如何使用 Azure CLI 创建使用 IPv6 的公共负载均衡器。
 services: load-balancer
 documentationcenter: na
@@ -8,16 +9,17 @@ keywords: ipv6, azure 负载均衡器, 双堆栈, 公共 ip, 本机 ipv6, 移动
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: kumud
-ms.openlocfilehash: e3d6611c8a5c6faf3d1e070d1bafa2027adfc0cb
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 1caa8e7554024c3b2e3d86436d3d494d7995169a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739824"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53142013"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>使用 Azure CLI 创建使用 IPv6 的公共负载均衡器
 
@@ -48,7 +50,7 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 * **后端地址池**：包含从负载均衡器接收网络流量的虚拟机网络接口 (NIC)。
 * **负载均衡规则**：所含规则可将负载均衡器上的公共端口映射到后端地址池的端口上。
 * **入站 NAT 规则**：所含网络地址转换 (NAT) 规则可将负载均衡器上的公共端口映射到后端地址池中特定虚拟机的端口。
-* **探测器**：包含用于检查后端地址池中虚拟机实例的可用性的运行状况探测器
+* **探测器**：包含用于检查后端地址池中虚拟机实例的可用性的运行状况探测器。
 
 ## <a name="set-up-azure-cli"></a>设置 Azure CLI
 

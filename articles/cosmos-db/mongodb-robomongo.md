@@ -1,33 +1,30 @@
 ---
-title: 对 Azure Cosmos DB 使用 Robomongo | Microsoft Docs
-description: '了解如何配合使用 Robomongo 与 Azure Cosmos DB: API for MongoDB 帐户'
-keywords: robomongo
-services: cosmos-db
-author: SnehaGunda
-manager: kfile
+title: 使用 Robo 3T 连接到 Azure Cosmos DB
+description: 了解如何使用 Robo 3T 和 Azure Cosmos DB 的 API for MongoDB 连接到 Azure Cosmos DB
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
-ms.devlang: na
+ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 05/23/2017
-ms.author: sngun
-ms.openlocfilehash: b6d64d7d7b30d4175fb8c8bf6c98127465427d4e
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.date: 12/26/2018
+author: sivethe
+ms.author: sivethe
+ms.openlocfilehash: 5696c376ad64df01d7f9d43ff59c87402c334c52
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795013"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034805"
 ---
-# <a name="use-robomongo-with-an-azure-cosmos-db-api-for-mongodb-account"></a>配合使用 Robomongo 与 Azure Cosmos DB: API for MongoDB 帐户
-若要使用 Robomongo 连接到 Azure Cosmos DB: API for MongoDB 帐户，必须：
+# <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>将 Robo 3T 与 Azure Cosmos DB 的 API for MongoDB 配合使用
 
-* 下载并安装 [Robomongo](https://robomongo.org/)
-* 具有 Azure Cosmos DB: API for MongoDB 帐户的[连接字符串](connect-mongodb-account.md)信息
+若要使用 Robo 3T 连接到 Cosmos 帐户，必须：
 
-## <a name="connect-using-robomongo"></a>使用 Robomongo 进行连接
-要将 Azure Cosmos DB: API for MongoDB 帐户添加到 Robomongo MongoDB 连接，请执行以下步骤。
+* 下载并安装 [Robo 3T](https://robomongo.org/)
+* 获得 Cosmos DB [连接字符串](connect-mongodb-account.md)信息
 
-1. 使用[此处](connect-mongodb-account.md)的说明检索 Azure Cosmos DB: API for MongoDB 帐户连接信息。
+## <a name="connect-using-robo-3t"></a>使用 Robo 3T 进行连接
+要将 Cosmos 帐户添加到 Robo 3T 连接管理器，请执行以下步骤：
+
+1. 使用[此处](connect-mongodb-account.md)的说明检索使用 Azure Cosmos DB 的 API MongoDB 配置的 Cosmos 帐户的连接信息。
 
     ![连接字符串边栏选项卡的屏幕截图](./media/mongodb-robomongo/connectionstringblade.png)
 2. 运行 Robomongo.exe
@@ -47,4 +44,6 @@ ms.locfileid: "34795013"
 7. 最后，单击“测试”验证是否能够连接，并单击“保存”。
 
 ## <a name="next-steps"></a>后续步骤
-* 浏览 Azure Cosmos DB: API for MongoDB [示例](mongodb-samples.md)。
+
+- 了解如何配合[使用 Studio 3T](mongodb-mongochef.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API。
+- 使用 Azure Cosmos DB 的用于 MongoDB 的 API 浏览 MongoDB [示例](mongodb-samples.md)。

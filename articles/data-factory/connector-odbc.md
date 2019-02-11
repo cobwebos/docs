@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 600b64eceb3d3187349ce6c0e4a0270f24ab8621
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: c51804748e4313d79cc3a369b659974d2d32e2e2
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976547"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014261"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 ODBC 数据存储复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,9 +51,9 @@ ODBC 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：Odbc | 是 |
+| type | type 属性必须设置为：**Odbc** | 是 |
 | connectionString | 不包括凭据部分的连接字符串。 可以使用类似 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` 的模式指定连接字符串，也可以利用在 Integration Runtime 计算机上使用 `"DSN=<name of the DSN on IR machine>;"` 设置的系统 DSN（数据源名称）（仍需要相应地指定链接服务中的凭据部分）。<br>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。| 是 |
-| authenticationType | 用于连接 ODBC 数据存储的身份验证类型。<br/>允许的值是：Basic 和 Anonymous。 | 是 |
+| authenticationType | 用于连接 ODBC 数据存储的身份验证类型。<br/>允许值包括：**Basic** 和 **Anonymous**。 | 是 |
 | userName | 如果使用基本身份验证，请指定用户名。 | 否 |
 | password | 指定为 userName 指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | credential | 连接字符串的访问凭据部分，采用特定于驱动程序的属性值格式指定。 示例：`"RefreshToken=<secret refresh token>;"`。 将此字段标记为 SecureString。 | 否 |
@@ -121,7 +120,7 @@ ODBC 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：RelationalTable | 是 |
+| type | 数据集的 type 属性必须设置为：**RelationalTable** | 是 |
 | tableName | ODBC 数据存储中表的名称。 | 源为否（如果指定了活动源中的“query”）；<br/>接收器为是 |
 
 **示例**
@@ -152,7 +151,7 @@ ODBC 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：RelationalSource | 是 |
+| type | 复制活动源的 type 属性必须设置为：**RelationalSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**

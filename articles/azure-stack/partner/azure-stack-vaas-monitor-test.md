@@ -13,12 +13,14 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: c4a4b70e39731b3a78fd42078bfa1b7340343f9a
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.lastreviewed: 11/26/2018
+ROBOTS: NOINDEX
+ms.openlocfilehash: 04756481b676ed198120b67ca4368093ca8acead
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334365"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250868"
 ---
 # <a name="monitor-and-manage-tests-in-the-vaas-portal"></a>监视和管理 VaaS 门户中的测试
 
@@ -64,7 +66,7 @@ ms.locfileid: "52334365"
 
 每个计划的测试实例会显示以下信息：
 
-| 列 | 说明 |
+| 列 | 描述 |
 | --- | --- |
 | 测试名称 | 名称和版本的测试。 |
 | 类别 | 测试的目的。 |
@@ -85,14 +87,14 @@ ms.locfileid: "52334365"
 
 选择**查看信息**从上下文菜单查看测试定义的常规信息。 这是由每个具有相同名称和版本的测试实例共享。
 
-| 测试属性 | 说明 |
+| 测试属性 | 描述 |
 | -- | -- |
 | 测试名称 | 测试的名称。 |
 | 测试版本 | 测试的版本。 |
 | 发布者 | 测试的发布服务器。 |
 | 类别 |  测试的目的。 |
 | 目标服务 | Azure Stack 服务进行测试。 |
-| 说明 | 对测试的说明。 |
+| 描述 | 对测试的说明。 |
 | 估计持续时间(分钟) | 测试的预期的运行时。 |
 | 链接 | 任何相关的测试的信息的联系点。 |
 
@@ -102,7 +104,7 @@ ms.locfileid: "52334365"
 
 此窗口包含的所有测试实例的以下元数据：
 
-| 测试实例属性 | 说明 |
+| 测试实例属性 | 描述 |
 | -- | -- |
 | 测试名称 | 测试的名称。 |
 | 测试版本 | 测试的版本。 |

@@ -6,26 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 09/07/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: fbe286313bce9b735665b134a5ea18ba4995548b
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 3b158e0743a811f0d8f478c15b64c2b8b99a748a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712256"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54155994"
 ---
-# <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>快速入门：使用 Azure 门户部署 Azure Data Box 磁盘（预览版）
+# <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Data Box Disk
 
 本快速入门介绍如何使用 Azure 门户部署 Azure Data Box 磁盘。 这些步骤包括快速创建订单、接收磁盘、打开包装、建立连接以及将数据复制到磁盘，以便上传到 Azure。 
 
-有关详细的分步部署和跟踪说明，请转到[教程：订购 Azure Data Box 磁盘](data-box-disk-deploy-ordered.md)。 
+有关详细的分步部署和跟踪说明，请转到[教程：订购 Azure Data Box Disk](data-box-disk-deploy-ordered.md)。 
 
 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-> [!IMPORTANT]
-> Data Box 磁盘以预览版提供。 在部署此解决方案之前，请查看 [Azure 预览版服务的条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>先决条件
 

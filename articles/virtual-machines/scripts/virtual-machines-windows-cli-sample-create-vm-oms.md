@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 脚本示例 - 使用 Log Analytics Monitoring 创建 Windows Server 2016 VM | Microsoft Docs
-description: Azure CLI 脚本示例 - 使用 Log Analytics Monitoring 创建 Windows Server 2016 VM
+title: Azure CLI 示例 - 创建运行 Log Analytics 监视的 Azure VM | Microsoft Docs
+description: Azure CLI 示例 - 创建运行 Windows Server 2016 VM 和 Log Analytics 监视的 Azure VM。
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
-ms.custom: mvc
-ms.openlocfilehash: d4b73981e3cb21f7b4caefaf443014853929b708
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: mvc,seodec18
+ms.openlocfilehash: 912fcdc0b73c12c858e5be99a5f3d4b0adc25cde
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403383"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730969"
 ---
 # <a name="monitor-a-vm-with-log-analytics"></a>使用 Log Analytics 监视 VM
 
@@ -49,10 +49,10 @@ az group delete --name myResourceGroup --yes
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | 针对虚拟机运行 VM 扩展。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |
+| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | 针对虚拟机运行 VM 扩展。 |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

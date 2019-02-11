@@ -1,23 +1,24 @@
 ---
-title: 使用 Node.js 的 LUIS 机器人 - 教程 - Web 应用机器人 - Bot Framework SDK 4.0
+title: 机器人 - Node.js - v4
 titleSuffix: Azure Cognitive Services
 description: 使用 Node.js，生成集成了语言理解 (LUIS) 的聊天机器人。 此聊天机器人使用人力资源应用来快速实现一个机器人解决方案。 此机器人是使用 Bot Framework 4 和 Azure Web 应用机器人生成的。
 services: cognitive-services
 author: diberry
+ms.custom: seodec18
 manager: cjgronlund
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: ad21754b3f55a0d14bb43a2898d5bd4b8b8150ae
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 8a24ffa4717244d8ce2ef507183cff06cbea5797
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385900"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492226"
 ---
-# <a name="tutorial-luis-bot-in-nodejs"></a>教程：使用 Node.js 的 LUIS 机器人
+# <a name="tutorial-luis-bot-in-nodejs-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>教程：使用 Bot Framework 4.x 和 Azure Web 应用机器人的 Node.js 中的 LUIS 机器人
 使用 Node.js 可以生成与语言理解 (LUIS) 相集成的聊天机器人。 此机器人使用 HomeAutomation 应用来实现机器人解决方案。 此机器人是使用 Azure [Web 应用机器人](https://docs.microsoft.com/azure/bot-service/)和 [Bot Framework 版本](https://github.com/Microsoft/botbuilder-js) v4 构建的。
 
 **本教程介绍如何执行下列操作：**
@@ -32,8 +33,6 @@ ms.locfileid: "49385900"
 
 ## <a name="prerequisites"></a>先决条件
 
-<!--* Samples from 
-https://github.com/Microsoft/BotBuilder-Samples/tree/v4/javascript_nodejs/12.nlp-with-luis-->
 * [机器人模拟器](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 
@@ -42,7 +41,7 @@ https://github.com/Microsoft/BotBuilder-Samples/tree/v4/javascript_nodejs/12.nlp
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建新资源”。
 
-2. 在搜索框中，搜索并选择“Web 应用机器人”。 选择**创建**。
+2. 在搜索框中，搜索并选择“Web 应用机器人”。 选择“创建”。
 
 3. 在“机器人服务”中提供所需的信息：
 
@@ -65,7 +64,7 @@ https://github.com/Microsoft/BotBuilder-Samples/tree/v4/javascript_nodejs/12.nlp
     |SDK 语言|机器人的编程语言|**Node.js**|
     |聊天/基础机器人|机器人类型|**基础机器人**|
     
-5. 选择**创建**。 随即会创建机器人服务并将其部署到 Azure。 在此过程中，会创建名为 `luis-nodejs-bot-XXXX` 的 LUIS 应用。 此名称基于上一部分所述的机器人名称和应用名称。
+5. 选择“创建”。 随即会创建机器人服务并将其部署到 Azure。 在此过程中，会创建名为 `luis-nodejs-bot-XXXX` 的 LUIS 应用。 此名称基于上一部分所述的机器人名称和应用名称。
 
     [ ![创建 Web 应用机器人](./media/bfv4-nodejs/create-web-app-service.png) ](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
 
@@ -115,7 +114,7 @@ https://github.com/Microsoft/BotBuilder-Samples/tree/v4/javascript_nodejs/12.nlp
 
 6. 打开 bot.js 文件并找到 `const results = await this.luisRecognizer.recognize(context);`。 输入到机器人的用户话语通过此处发送到 LUIS。
 
-    ```javascript
+   ```javascript
     /**
      * Driver code that does one of the following:
      * 1. Display a welcome card upon startup
@@ -199,7 +198,7 @@ https://github.com/Microsoft/BotBuilder-Samples/tree/v4/javascript_nodejs/12.nlp
 3. 创建一个文件用于保存机器人代码查找的环境变量。 将该文件命名为 `.env`。 添加以下环境变量：
 
     <!--there is no code language that represents an .env file correctly-->
-    ```
+    ```env
     botFilePath=
     botFileSecret=
     ```
@@ -214,7 +213,7 @@ https://github.com/Microsoft/BotBuilder-Samples/tree/v4/javascript_nodejs/12.nlp
 
 5. 启动机器人后，终端窗口会显示运行机器人的本地端口：
 
-    ```
+    ```console
     > basic-bot@0.1.0 start C:\Users\pattiowens\repos\BFv4\luis-nodejs-bot-src
     > node ./index.js NODE_ENV=development
 
@@ -248,7 +247,7 @@ https://github.com/Microsoft/BotBuilder-Samples/tree/v4/javascript_nodejs/12.nlp
 
 1. 在该文件的顶部找到 **Supported LUIS Intents** 节，并添加 HomeAutomation 意向的常量：
 
-    ```javascript
+   ```javascript
     // Supported LUIS Intents
     const GREETING_INTENT = 'Greeting';
     const CANCEL_INTENT = 'Cancel';
@@ -262,7 +261,7 @@ https://github.com/Microsoft/BotBuilder-Samples/tree/v4/javascript_nodejs/12.nlp
 
 2. 找到用于接收话语的 LUIS 预测的 **isTurnInterrupted**，并添加用于在控制台上列显结果的代码行。
 
-    ```node
+   ```javascript
     /**
      * Look at the LUIS results and determine if we need to handle
      * an interruptions due to a Help or Cancel intent
@@ -277,7 +276,7 @@ https://github.com/Microsoft/BotBuilder-Samples/tree/v4/javascript_nodejs/12.nlp
 
     机器人的响应并不与 LUIS REST API 请求完全相同，因此，必须查看 JSON 的响应来了解差异。 文本和意向属性相同，但实体属性值已修改。 
 
-    ```JSON
+    ```json
     {
         "$instance": {
             "HomeAutomation_Device": [
@@ -310,7 +309,7 @@ https://github.com/Microsoft/BotBuilder-Samples/tree/v4/javascript_nodejs/12.nlp
 
 3. 对于 `DialogTurnStatus.empty`，请将意向添加到 onTurn 方法的 switch 语句：
 
-    ```javascript
+   ```javascript
     switch (topIntent) {
         case GREETING_INTENT:
             await dc.begin(GREETING_DIALOG);
@@ -343,7 +342,7 @@ https://github.com/Microsoft/BotBuilder-Samples/tree/v4/javascript_nodejs/12.nlp
 
 2. 机器人将做出以下响应：
 
-    ```JSON
+    ```json
     TurnOn intent found, entities included: {"$instance":{“HomeAutomation_Device”:[{“startIndex”:23,“endIndex”:29,“score”:0.9776345,“text”:“lights”,“type”:“HomeAutomation.Device”}],“HomeAutomation_Room”:[{“startIndex”:12,“endIndex”:22,“score”:0.9079433,“text”:“livingroom”,“type”:“HomeAutomation.Room”}]},“HomeAutomation_Device”:[“lights”],“HomeAutomation_Room”:[“livingroom”]}
     ```
 

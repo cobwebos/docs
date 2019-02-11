@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: bryanla
-ms.openlocfilehash: 4906be4dc6315d8b4dd3c1e640b40caec28b7743
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 794e22b6fce77c0564a4db1b802c81513a36542f
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301994"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747231"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault 限制指南
 
@@ -41,6 +41,51 @@ Key Vault 中的服务限制用于防止资源滥用，确保所有 Key Vault �
     - 发出的所有请求要符合使用限制。
 
 实现应用的错误处理时，请使用 HTTP 错误代码 429 检测是否需要限制客户端。 如果请求再次失败，错误代码为 HTTP 429，则仍会遇到 Azure 服务限制。 请继续使用推荐的客户端限制方法，重试请求直至成功。
+
+实现指数退避的代码如下所示。 
+```
+     public async Task OnGetAsync()
+     {
+         Message = "Your application description page.";
+         int retries = 0;
+         bool retry = false;
+         try
+         {
+             /* The below 4 lines of code shows you how to use AppAuthentication library to fetch secrets from your Key Vault*/
+             AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
+             KeyVaultClient keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
+             var secret = await keyVaultClient.GetSecretAsync("https://<YourKeyVaultName>.vault.azure.net/secrets/AppSecret")
+                     .ConfigureAwait(false);
+             Message = secret.Value;
+
+             /* The below do while logic is to handle throttling errors thrown by Azure Key Vault. It shows how to do exponential backoff which is the recommended client side throttling*/
+             do
+             {
+                 long waitTime = Math.Min(getWaitTime(retries), 2000000);
+                 secret = await keyVaultClient.GetSecretAsync("https://<YourKeyVaultName>.vault.azure.net/secrets/AppSecret")
+                     .ConfigureAwait(false);
+                 retry = false;
+             } 
+             while(retry && (retries++ < 10));
+         }
+         /// <exception cref="KeyVaultErrorException">
+         /// Thrown when the operation returned an invalid status code
+         /// </exception>
+         catch (KeyVaultErrorException keyVaultException)
+         {
+             Message = keyVaultException.Message;
+             if((int)keyVaultException.Response.StatusCode == 429)
+                 retry = true;
+         }
+     }
+
+     // This method implements exponential backoff incase of 429 errors from Azure Key Vault
+     private static long getWaitTime(int retryCount)
+     {
+         long waitTime = ((long)Math.Pow(2, retryCount) * 100L);
+         return waitTime;
+     }
+```
 
 ### <a name="recommended-client-side-throttling-method"></a>推荐的客户端限制方法
 

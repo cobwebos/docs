@@ -3,7 +3,7 @@ title: 使用 Azure Docker VM 扩展 | Microsoft 文档
 description: 了解如何使用 Docker VM 扩展快速安全地在 Azure 中使用资源管理器模板和 Azure CLI 部署 Docker 环境
 services: virtual-machines-linux
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 ms.assetid: 936d67d7-6921-4275-bf11-1e0115e66b7f
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
-ms.author: zarhoads
-ms.openlocfilehash: 75959225d6fcc5487466ed26a21ba2d26c55cde9
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: cynthn
+ms.openlocfilehash: 1bc250ac70e48a548d393c3bc6025868948dc022
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465927"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699153"
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>在 Azure 中使用 Docker VM 扩展创建 Docker 环境
 
@@ -39,15 +39,15 @@ Azure Docker VM 扩展在 Linux 虚拟机 (VM) 中安装并配置 Docker 守护�
 
 
 ## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>使用 Azure Docker VM 扩展部署模板
-让我们使用现有的快速入门模板来创建 Ubuntu VM，以使用 Azure Docker VM 扩展来安装和配置 Docker 主机。 可以在此处查看模板：[使用 Docker 轻松部署 Ubuntu VM](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)。 需要安装最新版 [Azure CLI](/cli/azure/install-az-cli2)，并已使用 [az login](/cli/azure/reference-index#az_login) 登录 Azure 帐户。
+让我们使用现有的快速入门模板来创建 Ubuntu VM，以使用 Azure Docker VM 扩展来安装和配置 Docker 主机。 可以查看此处的模板：[使用 Docker 简单部署 Ubuntu VM](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)。 需要安装最新版 [Azure CLI](/cli/azure/install-az-cli2)，并已使用 [az login](/cli/azure/reference-index) 登录 Azure 帐户。
 
-首先，使用 [az group create](/cli/azure/group#az_group_create) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+首先，使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-接下来，使用 [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) 部署 VM，其中包含 [GitHub 中此 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)中的 Azure Docker VM 扩展。 出现提示时，为 newStorageAccountName、adminUsername、adminPassword 和 dnsNameForPublicIP 提供自己的唯一值：
+接下来，使用 [az group deployment create](/cli/azure/group/deployment) 部署 VM，其中包含 [GitHub 中此 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)中的 Azure Docker VM 扩展。 出现提示时，为 newStorageAccountName、adminUsername、adminPassword 和 dnsNameForPublicIP 提供自己的唯一值：
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -58,7 +58,7 @@ az group deployment create --resource-group myResourceGroup \
 
 
 ## <a name="deploy-your-first-nginx-container"></a>部署第一个 NGINX 容器
-若要查看 VM 的详细信息（包括 DNS 名称），请使用 [az vm show](/cli/azure/vm#az_vm_show)：
+若要查看 VM 的详细信息（包括 DNS 名称），请使用 [az vm show](/cli/azure/vm)：
 
 ```azurecli
 az vm show \

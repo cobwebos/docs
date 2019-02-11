@@ -3,23 +3,23 @@ title: 如何在 Azure VM 上将 Azure 资源的托管标识与 Azure SDK 配合
 description: 将 Azure SDK 与具有 Azure 资源的托管标识的 Azure VM 配合使用的代码示例。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: daveba
-ms.openlocfilehash: 6827b01e72cd72d3f017df36205ccb985b4f242e
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.author: priyamo
+ms.openlocfilehash: 9161b4288a10e9db7faac639fcf4cdd9d53c369d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106265"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164905"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-with-azure-sdks"></a>如何在 Azure VM 上将 Azure 资源的托管标识与 Azure SDK 配合使用 
 

@@ -4,22 +4,22 @@ description: 本页与 Azure AD Connect Health 相关，介绍如何监视 Azure
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
-manager: mtillman
+manager: daveba
 ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9811c51485ec30e7fe692c52f4e65cefd93e5cb0
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: beb5c7e7cc11b981762779f87209b22199a722b3
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499073"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487891"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 Azure AD Connect 同步
 以下文档专门介绍如何使用 Azure AD Connect Health 来监视 Azure AD Connect (Sync)。  有关使用 Azure AD Connect Health 监视 AD FS 的信息，请参阅 [在 AD FS 中使用 Azure AD Connect Health](how-to-connect-health-adfs.md)。 此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅 [在 AD DS 中使用 Azure AD Connect Health](how-to-connect-health-adds.md)。
@@ -79,7 +79,7 @@ ms.locfileid: "52499073"
 ### <a name="categorization-of-errors"></a>错误分类
 该报告将现有同步错误划分为以下类别：
 
-| 类别 | Description |
+| 类别 | 说明 |
 | --- | --- |
 | 重复属性 |当 Azure AD Connect 在 Azure AD 中尝试创建或更新对象时出错，因为这些对象具有一个或多个属性的重复值，但这些值在 proxyAddresses、UserPrincipalName 等租户中必须唯一。 |
 | 数据不匹配 |当软匹配无法匹配导致同步错误的对象时出错。 |

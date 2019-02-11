@@ -1,5 +1,5 @@
 ---
-title: 将 ACR 与 Azure DC/OS 群集配合使用
+title: （已弃用）将 ACR 与 Azure DC/OS 群集配合使用
 description: 在 Azure 容器服务中将 Azure 容器注册表与 DC/OS 群集配合使用
 services: container-service
 author: julienstroheker
@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 81b5bd18ea367b68adfc41ee97768b3b28967a42
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8319f2f5405271679d0c11d4ac68492cdec8fc14
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986620"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100115"
 ---
-# <a name="use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>将 ACR 与 DC/OS 群集配合使用，部署应用程序
+# <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>（已弃用）将 ACR 与 DC/OS 群集配合使用，以部署应用程序
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 在本文中，我们将探讨如何将 Azure 容器注册表与 DC/OS 群集配合使用。 使用 ACR 可私下存储和管理容器映像。 本教程涵盖以下任务：
 
@@ -129,7 +131,7 @@ docker run ubuntu --name base-image
 
 ```azurecli-interactive
 docker -H tcp://localhost:2375 commit base-image mycontainerregistry30678.azurecr.io/dcos-demo
-````
+```
 
 登录 Azure 容器注册表。 将名称替换为 loginServer 名称，将 --username 替换为容器注册表的名称，而将 --password 替换为提供的密码之一。
 

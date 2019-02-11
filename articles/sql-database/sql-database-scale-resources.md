@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: ede96607e14a43e85c3605e2d710c15ef0495c1f
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 01/25/2019
+ms.openlocfilehash: 49743130966589cceedb7756540c723a6f3276ff
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868167"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471661"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>以最短的停机时间动态缩放数据库资源
 
@@ -35,8 +35,8 @@ Azure SQL 数据库允许以最短的停机时间向数据库动态添加更多�
 
 Azure SQL 数据库提供[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 
-- [基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)在三个服务层中提供包括计算、内存和 IO 资源在内的各种内容，支持轻型到重型数据库工作负荷：基本、标准、高级。 每个层中的不同性能级别提供这些资源的不同组合，你可以向其添加更多的存储资源。
-- [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)允许选择 vCore 数、内存容量，以及存储的容量和速度。 此购买模型提供三个服务层：常规用途、业务关键和超大规模（预览）。
+- [基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)在以下三个服务层中提供包括计算、内存和 IO 资源在内的各种内容，以支持轻型到重型数据库工作负荷：基本、标准和高级。 每个层中的不同性能级别提供这些资源的不同组合，你可以向其添加更多的存储资源。
+- [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)允许选择 vCore 数、内存容量，以及存储的容量和速度。 此采购模式提供三个服务层：常规用途、业务关键和超大规模（预览版）。
 
 可以在小型单一数据库中构建你的第一个应用，每个月只需在“基本”、“标准”或“常规用途”服务层中花费少量资金。然后可以根据解决方案的需要，随时手动或以编程方式将服务层更改为“高级”或“业务关键”服务层。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。
 
@@ -54,9 +54,9 @@ Azure SQL 数据库提供[基于 DTU 的购买模型](sql-database-service-tiers
 
 所有三种 Azure SQL 数据库都提供一些动态缩放数据库的功能：
 
-- 在 [Azure SQL 单一数据库](sql-database-single-database-scale.md)中，可以使用 [DTU](sql-database-dtu-resource-limits-single-databases.md) 或 [vCore](sql-database-vcore-resource-limits-single-databases.md) 模型来定义将分配给每个数据库的最大资源量。
-- [Azure SQL 托管实例](sql-database-managed-instance.md)使用 [vCores](sql-database-managed-instance.md#vcore-based-purchasing-model) 模式，并允许定义分配给实例的最大 CPU 核心数和最大存储空间。 该实例中的所有数据库都将共享分配给该实例的资源。
-- [Azure SQL 弹性池](sql-database-elastic-pool-scale.md)允许定义池中每组数据库的最大资源限制。
+- 在[单一数据库](sql-database-single-database-scale.md)中，可以使用 [DTU](sql-database-dtu-resource-limits-single-databases.md) 或 [vCore](sql-database-vcore-resource-limits-single-databases.md) 模型来定义将分配给每个数据库的最大资源量。
+- [托管实例](sql-database-managed-instance.md)使用 [vCore](sql-database-managed-instance.md#vcore-based-purchasing-model) 模式，并允许定义分配给实例的最大 CPU 核心数和最大存储空间。 该实例中的所有数据库都将共享分配给该实例的资源。
+- [弹性池](sql-database-elastic-pool-scale.md)允许定义池中每组数据库的最大资源限制。
 
 ## <a name="alternative-scale-methods"></a>替代缩放方法
 

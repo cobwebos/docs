@@ -3,19 +3,19 @@ title: 在 Azure 门户中添加 B2B 协作用户 - Azure Active Directory | Mic
 description: 介绍如何使用 Azure Active Directory (Azure AD) B2B 协作将来宾用户从合作伙伴组织添加到其目录。
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: mal
-ms.openlocfilehash: bda01b5c9fbd43feed8c407e85b90b31bef0ffa1
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 43cceeb9b65bcee97855f96c781c5d157b32346a
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335055"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080917"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>在 Azure 门户中添加 Azure Active Directory B2B 协作用户
 
@@ -24,7 +24,7 @@ ms.locfileid: "52335055"
 将来宾用户添加到目录后，你可以向来宾用户发送指向共享应用程序的直接链接，或者来宾用户可以单击邀请电子邮件中的兑换 URL。 有关兑换过程的详细信息，请参阅 [B2B 协作邀请兑换](redemption-experience.md)。
 
 > [!IMPORTANT]
-> 应按照[操作指南：在 Azure Active Directory 中添加组织的隐私信息](https://aka.ms/adprivacystatement)中的步骤添加组织的隐私声明的 URL。 作为首次邀请兑换进程的一部分，受邀的用户必须同意你的隐私条款才能继续操作。 
+> 应按照[如何：在 Azure Active Directory 中添加组织的隐私信息](https://aka.ms/adprivacystatement)中的步骤添加组织的隐私声明的 URL。 作为首次邀请兑换进程的一部分，受邀的用户必须同意你的隐私条款才能继续操作。 
 
 ## <a name="add-guest-users-to-the-directory"></a>将来宾用户添加到目录
 
@@ -37,6 +37,9 @@ ms.locfileid: "52335055"
 
    ![显示“新来宾用户”在 UI 中的位置](./media/add-users-administrator/NewGuestUser-Directory.png) 
  
+   > [!NOTE]
+   > “组织关系”页上也提供了“新来宾用户”选项。 在 Azure Active Directory 中的“管理”下，选择“组织关系”。
+
 5. 在“用户名”下，输入外部用户的电子邮件地址。 （可选）包含一条欢迎消息。 例如：
 
    ![显示“新来宾用户”在 UI 中的位置](./media/add-users-administrator/InviteGuest.png) 

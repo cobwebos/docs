@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: ca12c7a3fe8a5ade8cf0e4ce00977bdcc9a300a6
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c9320c8d0cf512bc9145accc07ab4c79630a7c84
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007648"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301350"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google BigQuery 复制数据
 
@@ -79,8 +78,8 @@ Google BigQuery 链接服务支持以下属性。
                 "value":"<secret of the application used to generate the refresh token>"
             },
             "refreshToken": {
-                 "type": "SecureString",
-                 "value": "<refresh token>"
+                "type": "SecureString",
+                "value": "<refresh token>"
             }
         }
     }
@@ -117,14 +116,19 @@ Google BigQuery 链接服务支持以下属性。
             "type": "IntegrationRuntimeReference"
         }
     }
-} 
+}
 ```
 
 ## <a name="dataset-properties"></a>数据集属性
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Google BigQuery 数据集支持的属性列表。
 
-要从 Google BigQuery 复制数据，请将数据集的 type 属性设置为 **GoogleBigQueryObject**。 此类型的数据集中没有任何其他特定于类型的属性。
+要从 Google BigQuery 复制数据，请将数据集的 type 属性设置为 **GoogleBigQueryObject**。 支持以下属性：
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| type | 数据集的 type 属性必须设置为：**GoogleBigQueryObject** | 是 |
+| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -136,7 +140,8 @@ Google BigQuery 链接服务支持以下属性。
         "linkedServiceName": {
             "referenceName": "<GoogleBigQuery linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -152,7 +157,7 @@ Google BigQuery 链接服务支持以下属性。
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **GoogleBigQuerySource**。 | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。 | 是 |
+| query | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

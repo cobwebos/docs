@@ -1,22 +1,19 @@
 ---
-title: 使用 Gremlin API 生成 Azure Cosmos DB Node.js 应用程序 | Microsoft Docs
+title: 使用 Gremlin API 构建 Azure Cosmos DB Node.js 应用程序
 description: 演示了一个可以用来连接到 Azure Cosmos DB 并进行查询的 Node.js 代码示例
-services: cosmos-db
 author: luisbosquez
-manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-graph
-ms.custom: quick start connect, mvc
+ms.subservice: cosmosdb-graph
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 5f7e2a30ee4ea069e8c08187312f09e33a5a921a
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 400784fbc34a877b91ad0bdc2203b1992a537555
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700022"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509960"
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-gremlin-api"></a>Azure Cosmos DB：使用 Gremlin API 生成 Node.js 应用程序
 
@@ -37,7 +34,7 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 
 在运行此示例之前，必须具备以下先决条件：
 * [Node.js](https://nodejs.org/en/) 版本 v0.10.29 或更高版本
-* [Git](http://git-scm.com/)
+* [Git](https://git-scm.com/)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -81,7 +78,7 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 
 * 将创建 Gremlin 客户端。
 
-    ```nodejs
+    ```javascript
     const client = Gremlin.createClient(
         443, 
         config.endpoint, 
@@ -97,7 +94,7 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 
 * 将定义一系列函数以执行不同 Gremlin 操作。 以下是其中一个函数：
 
-    ```nodejs
+    ```javascript
     function addVertex1(callback)
     {
         console.log('Running Add Vertex1'); 
@@ -111,7 +108,7 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 
 * 每个函数均通过 Gremlin 查询字符串参数执行 `client.execute` 方法。 下面是演示如何执行 `g.V().count()` 的示例：
 
-    ```nodejs
+    ```javascript
     console.log('Running Count'); 
     client.execute("g.V().count()", { }, (err, results) => {
         if (err) return console.error(err);
@@ -122,7 +119,7 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 
 * 然后在文件末尾，使用 `async.waterfall()` 方法调用所有方法。 这将依次执行它们：
 
-    ```nodejs
+    ```javascript
     try{
         async.waterfall([
             dropGraph,
@@ -161,7 +158,7 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 
 下面举例说明了完成的 config.js 文件是什么样子：
 
-```nodejs
+```javascript
 var config = {}
 
 // Note that this must not have HTTPS or the port number

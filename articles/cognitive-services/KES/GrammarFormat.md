@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 4b4010152622cd9a1d8111ac92dd1960e78d4601
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f3cb307a52cfddebfa97c1b8608549acdd89169d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125147"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215061"
 ---
 # <a name="grammar-format"></a>语法格式
 
@@ -126,7 +126,7 @@ before <attrref uri="academic#Year" op="lt" name="year"/
 
 下表列出了每个属性类型支持的 `op` 值。  要使用这些值，架构属性定义中需要包含相应的索引操作。
 
-| 属性类型 | Op 值 | Description | 索引操作
+| 属性类型 | Op 值 | 说明 | 索引操作
 |----|----|----|----|
 | String | eq | 字符串完全匹配 | equals |
 | String | starts_with | 字符串前缀匹配 | starts_with |

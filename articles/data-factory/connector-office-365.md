@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 01/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 82fb2241b5988bae9587807c03e7bec50e7c1677
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: b86aef7de048690d689a87d4fb844f77ea986445
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955366"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297453"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）将数据从 Office 365 复制到 Azure 
 
@@ -34,7 +33,7 @@ Azure 数据工厂允许你以可缩放的方式将 Office 365 租户中的丰�
 >- 包含数据工厂和接收器数据存储的 Azure 订阅必须位于与 Office 365 租户相同的 Azure Active Directory (Azure AD) 租户下。
 >- 确保用于复制活动的 Azure Integration Runtime 区域以及目标在 Office 365 租户用户邮箱所在的同一区域中。 若要了解如何确定 Azure IR 位置，请参阅[此处](concepts-integration-runtime.md#integration-runtime-location)。 有关受支持的 Office 区域和对应的 Azure 区域列表，请参阅[此处的表](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/Capabilities#data-regions)。
 >-  如果要将 Office 365 数据加载到作为目标的 Azure Blob 存储，请确保在定义到 Azure Blob 存储的链接服务时，使用[服务主体身份验证](connector-azure-blob-storage.md#service-principal-authentication)，而不是使用[帐户密钥](connector-azure-blob-storage.md#account-key-authentication)、[共享访问签名](connector-azure-blob-storage.md#shared-access-signature-authentication)或 [Azure 资源的托管标识](connector-azure-blob-storage.md#managed-identity)身份验证。
->-  如果要将 Office 365 数据加载到作为目标的 **Azure Data Lake Storage Gen1**，请确保在定义到 Azure Data Lake Storage Gen1 的链接服务时，使用[**服务主体身份验证**](connector-azure-data-lake-store.md#using-service-principal-authentication)，而不是使用 [Azure 资源的托管标识身份验证](connector-azure-data-lake-store.md#managed-identity)。
+>-  如果要将 Office 365 数据加载到作为目标的 **Azure Data Lake Storage Gen1**，请确保在定义到 Azure Data Lake Storage Gen1 的链接服务时，使用[**服务主体身份验证**](connector-azure-data-lake-store.md#use-service-principal-authentication)，而不是使用 [Azure 资源的托管标识身份验证](connector-azure-data-lake-store.md#managed-identity)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -43,9 +42,10 @@ Azure 数据工厂允许你以可缩放的方式将 Office 365 租户中的丰�
 - Office 365 租户管理员必须完成载入操作，如[此处](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/On-boarding)所述。
 - 在 Azure Active Directory 中创建和配置 Azure AD Web 应用程序。  有关说明，请参阅[创建 Azure AD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)。
 - 记下下面的值，这些值将用于定义 Office 365 的链接服务：
-    - 租户 ID。  有关说明，请参阅[获取租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)。
+    - 租户 ID。 有关说明，请参阅[获取租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)。
     - 应用程序 ID 和身份验证密钥。  有关说明，请参阅[获取应用程序 ID 和身份验证密钥](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)。
-- 添加用户标识，将作为 Azure AD Web 应用程序的所有者发出数据访问请求（从 Azure AD Web 应用程序>设置>所有者>添加所有者）。
+- 添加用户标识，将作为 Azure AD Web 应用程序的所有者发出数据访问请求（从 Azure AD Web 应用程序>设置>所有者>添加所有者）。 
+    - 用户标识必须位于你从中获取数据的 Office 365 组织中，并且不能是来宾用户。
 
 ## <a name="approving-new-data-access-requests"></a>批准新的数据访问请求
 
@@ -79,7 +79,7 @@ Office 365 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：Office 365 | 是 |
+| type | type 属性必须设置为：**Office365** | 是 |
 | office365TenantId | Office 365 帐户所属的 Azure 租户 ID。 | 是 |
 | servicePrincipalTenantId | 指定 Azure AD Web 应用程序所在的租户信息。 | 是 |
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是 |
@@ -119,7 +119,7 @@ Office 365 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：Office365Table | 是 |
+| type | 数据集的 type 属性必须设置为：**Office365Table** | 是 |
 | tableName | 要从 Office 365 中提取的数据集的名称。 有关支持提取的 Office 365 数据集列表，请参阅[此处](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#datasets)。 | 是 |
 | predicate | 可用于筛选要从 Office 365 中提取的特定行的谓词表达式。  要找出哪些列可用于每个表的谓词筛选以及筛选器表达式格式，请参阅[此处](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#filters)。 | 否<br>（如果未提供任何谓词，则默认为提取过去 30 天的数据） |
 

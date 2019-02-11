@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: d52785dd7569560f4b6986080b14723762537ec8
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f5efeabf3cf6d52f74aa2d064dc4c67c877d34e5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388291"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751916"
 ---
 # <a name="trusted-internet-connections-guidance"></a>受信任 Internet 连接指南
 
@@ -49,7 +49,7 @@ TIC 的目标是让各机构了解：
 
 要实现从部门或代理 (D/A) 到 Azure 或 Office 365 的连接，而无需通过 D/A TIC 路由流量，D/A 必须使用加密隧道或云服务提供商 (CSP) 的专用连接。 CSP 服务可确保不向公共 Internet 提供与 D/A 云资产的连接，以便代理人员直接访问。
 
-Office 365 符合 TIC 2.0 附录 H，该附录使用启用了 [Microsoft 对等互连](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains)的 ExpressRoute 或使用 TLS 1.2 加密所有流量的 Internet 连接。 D/A 网络上的 D/A 最终用户可通过其代理网络和 TIC 基础结构通过 Internet 进行连接。 阻止了 Office 365 的所有远程 Internet 访问并通过该代理路由。 通过 ExpressRoute 连接与启用的 Microsoft 对等互连（公共对等互连的一种）的连接，D/A 也可连接到 Office 365。  
+Office 365 符合 TIC 2.0 附录 H，该附录使用启用了 [Microsoft 对等互连](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings)的 ExpressRoute 或使用 TLS 1.2 加密所有流量的 Internet 连接。 D/A 网络上的 D/A 最终用户可通过其代理网络和 TIC 基础结构通过 Internet 进行连接。 阻止了 Office 365 的所有远程 Internet 访问并通过该代理路由。 通过 ExpressRoute 连接与启用的 Microsoft 对等互连（公共对等互连的一种）的连接，D/A 也可连接到 Office 365。  
 
 仅对于 Azure，第二个选项 (VPN) 和第三个选项 (ExpressRoute) 在与限制 Internet 访问的服务结合使用时可以满足这些要求。
 
@@ -124,8 +124,8 @@ Azure 网络观察程序提供了多种审核 TIC 符合性的工具。 有关�
 
 当 Azure PaaS 服务与虚拟网络集成时，可从该虚拟网络私密访问该服务。 可通过用户定义的路由或 BGP 为 0.0.0.0/0 应用自定义路由。 自定义路由确保所本地有 Internet 绑定流量路由都可以遍历 TIC。 使用以下模式将 Azure 服务集成到虚拟网络中：
 
-- 部署专用服务实例：越来越多的 PaaS 服务可部署为具有虚拟网络附加终结点的专用实例。 可在“独立”模式下为 PowerApps 部署应用服务环境，以允许将网络终结点限于虚拟网络。 然后，应用服务环境可以托管许多 Azure PaaS 服务，例如 Azure Web 应用、Azure API 管理和 Azure Functions。
-- 使用虚拟网络服务终结点：越来越多的 PaaS 服务允许选项将其终结点移动到虚拟网络专有 IP，而不是公共地址。
+- **部署专用服务实例**：越来越多的 PaaS 服务可部署为具有虚拟网络附加终结点的专用实例。 可在“独立”模式下为 PowerApps 部署应用服务环境，以允许将网络终结点限于虚拟网络。 然后，应用服务环境可以托管许多 Azure PaaS 服务，例如 Azure Web 应用、Azure API 管理和 Azure Functions。
+- **使用虚拟网络服务终结点**：越来越多的 PaaS 服务允许选项将其终结点移动到虚拟网络专有 IP，而不是公共地址。
 
 下表列出了自 2018 年 5 月起支持将专用实例部署到虚拟网络或使用服务终结点的服务。
 
@@ -157,7 +157,7 @@ Azure 网络观察程序提供了多种审核 TIC 符合性的工具。 有关�
 |Azure Active Directory                | GA               |
 |Azure 批处理                           | GA               |
 |应用服务环境               | GA               |
-|Azure Redis 缓存                     | GA               |
+|用于 Redis 的 Azure 缓存                     | GA               |
 |Azure HDInsight                       | GA               |
 |虚拟机规模集             | GA               |
 |Azure 云服务                  | GA               |
@@ -165,7 +165,7 @@ Azure 网络观察程序提供了多种审核 TIC 符合性的工具。 有关�
 
 ### <a name="virtual-network-integration-details"></a>虚拟网络集成详细信息
 
-下图显示了访问 PaaS 服务的常规网络流。 显示了从虚拟网络注入和虚拟网络服务隧道进行的访问。 有关网络服务网关、虚拟网络和服务标记的详细信息，请参阅[网络和应用程序安全组：服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)。
+下图显示了访问 PaaS 服务的常规网络流。 显示了从虚拟网络注入和虚拟网络服务隧道进行的访问。 有关网络服务网关、虚拟网络和服务标记的详细信息，请参阅[网络和应用程序安全组：服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)
 
 ![TIC 的 PaaS 连接选项](media/tic-diagram-e.png)
 
@@ -247,7 +247,7 @@ Azure Policy 以订阅级别为目标。 该服务提供了一个集中的接口
 
 ## <a name="appendix-trusted-internet-connections-patterns-for-common-workloads"></a>附录：常见工作负载的受信任 Internet 连接模式
 
-| 类别 | 工作负载 | IaaS | 专用 PaaS /虚拟网络注入  | 服务终结点  |
+| 类别 | 工作负荷 | IaaS | 专用 PaaS /虚拟网络注入  | 服务终结点  |
 |---------|---------|---------|---------|--------|
 | 计算 | Azure Linux 虚拟机 | 是 | | |
 | 计算 | Azure Windows 虚拟机 | 是 | | |
@@ -263,7 +263,7 @@ Azure Policy 以订阅级别为目标。 该服务提供了一个集中的接口
 | 数据库 | Azure Database for PostgreSQL | | | 是 |
 | 数据库 | Azure SQL 数据仓库 | | | 是 |
 | 数据库 | Azure Cosmos DB | | | 是 |
-| 数据库 | Azure Redis 缓存 | | 是 | |
+| 数据库 | 用于 Redis 的 Azure 缓存 | | 是 | |
 | 存储 | Azure Blob 存储 | 是 | | |
 | 存储 | Azure 文件 | 是 | | |
 | 存储 | Azure 队列存储 | 是 | | |

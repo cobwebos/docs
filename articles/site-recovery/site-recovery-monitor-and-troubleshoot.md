@@ -5,14 +5,14 @@ author: bsiva
 manager: abhemra
 ms.service: site-recovery
 ms.topic: troubleshooting
-ms.date: 07/19/2018
+ms.date: 11/27/2018
 ms.author: bsiva
-ms.openlocfilehash: dc089e29889b12a5a6d3fcb17328cfc13fe8d0c9
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 48e53bcc542b9a0e00a544f80ec796082fa71f7b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211802"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210414"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>监视和排查 Site Recovery 问题
 
@@ -156,7 +156,7 @@ Healthy | 复制正常进行。 未检测到任何错误或警告症状。
       - **复制信息**：计算机的当前状态和运行状况。
       - **RPO**（恢复点目标）：虚拟机的当前 RPO，以及上次计算 RPO 的时间。
       - **恢复点**：计算机的最新可用恢复点。
-      - **故障转移就绪性**：指示是否对该计算机运行了测试故障转移、计算机上运行的代理版本（适用于运行移动服务的计算机）和任何配置问题。
+      - **故障转移就绪**：指示是否对该计算机运行了测试故障转移、计算机上运行的代理版本（适用于运行移动服务的计算机）和任何配置问题。
       - **错误**：列出当前在计算机上观察到的复制错误症状，以及可能的原因/措施。
       - **事件**：影响计算机的最近事件列表，按时间顺序列出。 错误详细信息显示当前可观测到的错误症状，而事件是影响了计算机的问题的历史记录。
       - **基础结构视图**：显示将计算机复制到 Azure 时方案的基础结构状态。

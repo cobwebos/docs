@@ -1,29 +1,28 @@
 ---
-title: 适用于 Azure 的 MongoDB、Angular 和 Node 教程 | Microsoft Docs
+title: 使用 MongoB API 的 Node.Js、Angular 应用（第 1 部分）
+titleSuffix: Azure Cosmos DB
 description: 了解如何通过 Angular 和 Node 在 Azure Cosmos DB 上创建 MongoDB 应用，所使用的 API 与本视频教程系列中用于 MongoDB 的 API 完全相同。
-services: cosmos-db
 author: johnpapa
-manager: kfile
-editor: ''
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 09/05/2017
+ms.date: 12/26/2018
 ms.author: jopapa
-ms.custom: mvc
-ms.openlocfilehash: 1a9d608e7f959b3fc164f87d408ccd268e8d2568
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.custom: seodec18
+ms.reviewer: sngun
+ms.openlocfilehash: ec88b8e78c2d73ffa4badbc8ceaa468b4e5169e0
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41920258"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044342"
 ---
-# <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db"></a>通过 Angular 和 Azure Cosmos DB 创建 MongoDB 应用 
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的 API for MongoDB 创建 Angular 应用
 
-本教程包含多个部分，演示了如何通过 Express、Angular 和 Node.js（MEAN 堆栈）创建新的 [MongoDB API](mongodb-introduction.md) 应用，然后将其连接到 Azure Cosmos DB 数据库。 Azure Cosmos DB 支持 MongoDB 客户端连接，因此可以用 Azure Cosmos DB 来代替 MongoDB，所用代码与用于 MongoDB 应用的代码相同，而优势则会增强。 Azure Cosmos DB 的优势包括：简化云部署、缩放、安全、全局复制数据、多模型支持，以及超快的读取和写入速度。 
+本教程包含多个部分，演示了如何通过 Express 和 Angular 创建以 Node.js 编写的新应用，然后将其连接到[使用 Cosmos DB 的 API for MongoDB 配置的 Cosmos 帐户](mongodb-introduction.md)。
 
-Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可以通过它来快速创建和查询文档、键/值和图形数据库，它们都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。 
+Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可以通过它来快速创建和查询文档、键/值和图形数据库，它们都受益于 Cosmos DB 核心的全球分布和水平缩放功能。 
 
 本教程分为多个部分，涵盖以下任务：
 

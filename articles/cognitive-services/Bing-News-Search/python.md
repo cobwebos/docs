@@ -1,78 +1,79 @@
 ---
-title: 快速入门：必应新闻搜索 API、Python
+title: 快速入门：使用 Python 执行新闻搜索 - 必应新闻搜索 REST API
 titlesuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以帮助你快速开始使用必应新闻搜索 API。
+description: 使用本快速入门，通过 Python 将请求发送到必应新闻搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 9/21/2017
+ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: 738b139cb2070f2244442311d3670757caac6541
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 7d048287cb70f93088468e9cd477101b0fe2259f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308811"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197647"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-python"></a>将必应新闻搜索 API 与 Python 配合使用快速入门
-本演练演示了一个简单的示例：调用必应新闻搜索 API 并后期处理生成的 JSON 对象。 有关详细信息，请参阅[必应新闻搜索文档](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)。  
+# <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>快速入门：使用 Python 和必应新闻搜索 REST API 执行新闻搜索
 
-可以通过单击启动活页夹锁屏提醒，在 [MyBinder](https://mybinder.org) 上将此示例作为 Jupyter 笔记本运行： 
+使用本快速入门对必应新闻搜索 API 进行你的第一次调用并接收 JSON 响应。 这个简单的 JavaScript 应用程序会向 API 发送一个搜索查询并处理结果。 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
+
+可以通过单击启动活页夹锁屏提醒，在 [MyBinder](https://mybinder.org) 上将此代码示例作为 Jupyter Notebook 运行： 
 
 [![活页夹](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingNewsSearchAPI.ipynb)
 
+该示例的源代码还可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingNewsSearchv7.py) 上获得。
+
 ## <a name="prerequisites"></a>先决条件
 
-必须拥有包含必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你需要使用在激活免费试用版时提供的访问密钥。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-## <a name="running-the-walkthrough"></a>运行演练
-首先，将 `subscription_key` 设置为必应 API 服务的 API 密钥。
+另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
+## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-```python
-subscription_key = None
-assert subscription_key
-```
-
-接下来，验证 `search_url` 终结点是否正确。 在撰写本文时，必应搜索 API 仅使用一个终结点。 如果遇到授权错误，请在 Azure 仪表板中针对必应搜索终结点仔细检查此值。
-
-
-```python
-search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
-```
-
-设置 `search_term`查找有关 Microsoft 的新闻文章。
-
-
-```python
-search_term = "Microsoft"
-```
-
-以下程序块使用 Python 中的 `requests` 库调出必应搜索 API 并将结果作为 JSON 对象返回。 注意，我们通过 `headers` 字典传入 API 密钥，通过 `params` 字典传入搜索词。 若要查看可用于筛选搜索结果的完整选项列表，请参阅 [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) 文档。
-
+1. 在你最喜欢使用的 IDE 或编辑器中新建一个 Python 文件，并导入请求模块。 为你的订阅密钥、终结点和搜索词创建变量。 可以在 Azure 仪表板中找到你的终结点。
 
 ```python
 import requests
 
-headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
-params  = {"q": search_term, "textDecorations": True, "textFormat": "HTML"}
-response = requests.get(search_url, headers=headers, params=params)
-response.raise_for_status()
-search_results = response.json()
+subscription_key = "your subscription key"
+search_term = "Microsoft"
+search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
 ```
 
-`search_results` 对象包含相关新闻文章和丰富的元数据。 例如，以下代码行提取文章的说明。
+### <a name="create-parameters-for-the-request"></a>为请求创建参数
 
+1. 将你的订阅密钥添加到一个新字典中，使用 `"Ocp-Apim-Subscription-Key"` 作为键。 为搜索参数执行相同的操作。
 
-```python
-descriptions = [article["description"] for article in search_results["value"]]
-```
+    ```python
+    headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
+    params  = {"q": search_term, "textDecorations": True, "textFormat": "HTML"}
+    ```
+
+## <a name="send-a-request-and-get-a-response"></a>发送请求并获取响应
+
+1. 使用请求库以及你的订阅密钥和在上一步骤中创建的字典对象调用必应视觉搜索 API。
+
+    ```python
+    response = requests.get(search_url, headers=headers, params=params)
+    response.raise_for_status()
+    search_results = response.json()
+    ```
+
+2. `search_results` 将来自 API 的响应包含为 JSON 对象。 访问响应中包含的对象的说明。
+    
+    ```python
+    descriptions = [article["description"] for article in search_results["value"]]
+    ```
+
+## <a name="displaying-the-results"></a>显示结果
 
 然后，这些说明可以呈现为表格，其中搜索关键字用粗体突出显示。
-
 
 ```python
 from IPython.display import HTML
@@ -83,10 +84,4 @@ HTML("<table>"+rows+"</table>")
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [分页新闻](paging-news.md)
-> [使用修饰标记来突出显示文本](hit-highlighting.md)
-
-## <a name="see-also"></a>另请参阅 
-
- [在网上搜索新闻](search-the-web.md)  
- [试用](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)
+[创建单页 Web 应用](tutorial-bing-news-search-single-page-app.md)

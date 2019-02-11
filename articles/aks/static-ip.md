@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: c6097c96c0211c1efac2c2652eb0ef7d668d6877
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: f1507bc2aebcd29feea7480761cd1b4949439583
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427040"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994481"
 ---
 # <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>将静态公用 IP 地址用于 Azure Kubernetes 服务 (AKS) 负载均衡器
 
@@ -25,6 +25,8 @@ ms.locfileid: "52427040"
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
 还需安装并配置 Azure CLI 2.0.46 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+
+目前仅支持基本 IP SKU。 支持标准 IP 的开发正在进行中。
 
 ## <a name="create-a-static-ip-address"></a>创建静态 IP 地址
 

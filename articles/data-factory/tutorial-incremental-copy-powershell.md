@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 08bce244dc4eafcd423123b1230fe4aa8b4ed04e
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 1c074b4e7cee7a05611fd88b601e6e1f9fa559ce
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092033"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439198"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从 Azure SQL 数据库中的表加载到 Azure Blob 存储。 
@@ -37,7 +36,7 @@ ms.locfileid: "43092033"
 ## <a name="overview"></a>概述
 下面是高级解决方案示意图： 
 
-![以增量方式加载数据](media\tutorial-Incrementally-copy-powershell\incrementally-load.png)
+![以增量方式加载数据](media/tutorial-Incrementally-copy-powershell/incrementally-load.png)
 
 下面是创建此解决方案所要执行的重要步骤： 
 
@@ -61,7 +60,7 @@ ms.locfileid: "43092033"
 ## <a name="prerequisites"></a>先决条件
 * **Azure SQL 数据库**。 将数据库用作源数据存储。 如果没有 SQL 数据库，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)，了解创建该数据库的步骤。
 * **Azure 存储**。 将 Blob 存储用作接收器数据存储。 如果没有存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)以获取创建步骤。 创建名为 adftutorial 的容器。 
-* **Azure PowerShell**。 遵循[安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明。
+* **Azure PowerShell**。 遵循[安装和配置 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) 中的说明。
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>在 SQL 数据库中创建数据源表
 1. 打开 SQL Server Management Studio。 在“服务器资源管理器”中，右键单击数据库，然后选择“新建查询”。
@@ -132,7 +131,7 @@ ms.locfileid: "43092033"
 运行以下命令，在 SQL 数据库中创建存储过程：
 
 ```sql
-CREATE PROCEDURE sp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
+CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
 AS
 
 BEGIN
@@ -188,7 +187,7 @@ END
     ```
 
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。
-* 要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（存储、SQL 数据库等）和计算资源（Azure HDInsight 等）可以位于其他区域中。
+* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（存储、SQL 数据库等）和计算资源（Azure HDInsight 等）可以位于其他区域中。
 
 
 ## <a name="create-linked-services"></a>创建链接服务
@@ -471,7 +470,7 @@ END
                     "type": "SqlServerStoredProcedure",
                     "typeProperties": {
     
-                        "storedProcedureName": "sp_write_watermark",
+                        "storedProcedureName": "usp_write_watermark",
                         "storedProcedureParameters": {
                             "LastModifiedtime": {"value": "@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}", "type": "datetime" },
                             "TableName":  { "value":"@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}", "type":"String"}

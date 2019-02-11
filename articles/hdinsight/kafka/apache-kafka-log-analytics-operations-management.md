@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: bd8bfb8775bc9c988bb7484ac25f189c3ff46991
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 69eaa0028f1115cafbd1ed28b66940d7faaed062
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317273"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608539"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>分析 HDInsight 上 Apache Kafka 的日志
 
@@ -30,7 +30,7 @@ ms.locfileid: "52317273"
 
 3. 配置 Kafka 群集以使用 Log Analytics。 有关详细信息，请参阅[使用 Log Analytics 监视 HDInsight](../hdinsight-hadoop-oms-log-analytics-tutorial.md)文档。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 还可使用 `Enable-AzureRmHDInsightOperationsManagementSuite` cmdlet，将群集配置为使用 Log Analytics。 此 cmdlet 需要以下信息：
     >
     > * HDInsight 群集名称。
@@ -38,7 +38,7 @@ ms.locfileid: "52317273"
     > * 用于 Log Analytics 连接的主密钥。 若要查找主键，请在 Azure 门户中打开工作区，从左侧菜单中选择“高级设置”。 从“高级设置”中，选择“已连接的源”>“Linux 服务器”。
 
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 在数据可用于 Log Analytics 之前可能需要等待约 20 分钟。
 
 ## <a name="query-logs"></a>查询日志
@@ -57,7 +57,7 @@ ms.locfileid: "52317273"
 
     * 每秒传出字节数：`metrics_kafka_CL | where ClusterName_s == "your_kafka_cluster_name" and InstanceName_s == "kafka-BrokerTopicMetrics-BytesOutPerSec-Count" | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesOutPerSec_Count_value_d) by bin(TimeGenerated, 1h)`
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > 将查询值替换为特定于群集的信息。 例如，必须将 `ClusterName_s` 设置为群集的名称。 必须将 `HostName_s` 设置为群集中辅助角色节点的域名。
 
     也可输入 `*` 来搜索全部已记录的类型。 当前有以下日志可用于查询：

@@ -3,29 +3,29 @@ title: 在 Azure Active Directory B2C 的自定义策略中定义 OAuth1 技术�
 description: 在 Azure Active Directory B2C 的自定义策略中定义 OAuth1 技术配置文件。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 10c90b060c184bb911ac149640e8a9570b59e2fb
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.subservice: B2C
+ms.openlocfilehash: 08fb0baf85b09b4804c83617dbae9ae9c69f0224
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44382320"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162729"
 ---
 # <a name="define-a-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OAuth1 技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C 为 [OAuth 1.0 协议](http://tools.ietf.org/html/rfc5849)标识提供者提供支持。 本文介绍了与支持此标准化协议的声明提供程序进行交互的技术配置文件的详细信息。 使用 OAuth1 技术配置文件，可以与基于 OAuth1 的标识提供者（例如 Twitter）联合，方便用户使用其现有的社交或企业标识登录。
+Azure Active Directory (Azure AD) B2C 为 [OAuth 1.0 协议](https://tools.ietf.org/html/rfc5849)标识提供者提供支持。 本文介绍了与支持此标准化协议的声明提供程序进行交互的技术配置文件的详细信息。 使用 OAuth1 技术配置文件，可以与基于 OAuth1 的标识提供者（例如 Twitter）联合，方便用户使用其现有的社交或企业标识登录。
 
 ## <a name="protocol"></a>协议
 
-**Protocol** 元素的 **Name** 属性必须设置为 `OAuth1`。 例如，**Twitter-OAUTH1** 技术配置文件的协议为 `OAuth1`。
+“Protocol”元素的“Name”属性必须设置为 `OAuth1`。 例如，**Twitter-OAUTH1** 技术配置文件的协议为 `OAuth1`。
 
 ```XML
 <TechnicalProfile Id="Twitter-OAUTH1">
@@ -67,7 +67,7 @@ Azure Active Directory (Azure AD) B2C 为 [OAuth 1.0 协议](http://tools.ietf.o
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 必选 | Description |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
 | ProviderName | 否 | 标识提供者的名称。 |
@@ -81,7 +81,7 @@ Azure Active Directory (Azure AD) B2C 为 [OAuth 1.0 协议](http://tools.ietf.o
 
 **CryptographicKeys** 元素包含以下属性：
 
-| 属性 | 必选 | Description |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 标识提供者应用程序的客户端机密。   | 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: 2f10a231c4edc3e01d3f8c5f7f4db1854f83044d
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 76a29ce05aab39d9460dcf068ec8a7f60d1e8fac
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49392396"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753276"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>通过使用 Azure CLI 将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除
 如果 Linux 虚拟机 (VM) 遇到启动或磁盘错误，则可能需要对虚拟硬盘本身执行故障排除步骤。 一个常见示例是 `/etc/fstab` 中存在无效条目，使 VM 无法成功启动。 本文详细介绍如何使用 Azure CLI 将虚拟硬盘连接到另一个 Linux VM，以修复任何错误，然后重新创建原始 VM。 
@@ -35,7 +35,7 @@ ms.locfileid: "49392396"
 
 有关使用托管磁盘的 VM，请参阅[通过附加新的操作系统磁盘对托管磁盘 VM 进行故障排除](#troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk)。
 
-若要执行这些故障排除步骤，需要安装最新的 [Azure CLI](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure 帐户。
+若要执行这些故障排除步骤，需要安装最新的 [Azure CLI](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。
 
 在以下示例中，请将参数名称替换成自己的值。 示例参数名称包括 `myResourceGroup`、`mystorageaccount` 和 `myVM`。
 
@@ -43,7 +43,7 @@ ms.locfileid: "49392396"
 ## <a name="determine-boot-issues"></a>确定启动问题
 检查串行输出以确定 VM 不能正常启动的原因。 一个常见示例是 `/etc/fstab` 中存在无效条目，或底层虚拟硬盘已删除或移动。
 
-使用 [az vm boot-diagnostics get-boot-log](/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_get_boot_log) 获取启动日志。 以下示例从名为 `myResourceGroup` 的资源组中名为 `myVM` 的 VM 获取串行输出：
+使用 [az vm boot-diagnostics get-boot-log](/cli/azure/vm/boot-diagnostics) 获取启动日志。 以下示例从名为 `myResourceGroup` 的资源组中名为 `myVM` 的 VM 获取串行输出：
 
 ```azurecli
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM
@@ -55,7 +55,7 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM
 ## <a name="view-existing-virtual-hard-disk-details"></a>查看现有虚拟硬盘的详细信息
 在将虚拟硬盘 (VHD) 附加到另一个 VM 之前，需要标识 OS 磁盘的 URI。 
 
-使用 [az vm show](/cli/azure/vm#az_vm_show) 查看有关 VM 的信息。 使用 `--query` 标志提取 OS 磁盘的 URI。 以下示例在名为 `myResourceGroup` 的资源组中获取名为 `myVM` 的 VM 的磁盘信息：
+使用 [az vm show](/cli/azure/vm) 查看有关 VM 的信息。 使用 `--query` 标志提取 OS 磁盘的 URI。 以下示例在名为 `myResourceGroup` 的资源组中获取名为 `myVM` 的 VM 的磁盘信息：
 
 ```azurecli
 az vm show --resource-group myResourceGroup --name myVM \
@@ -69,7 +69,7 @@ URI 类似于 **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd**�
 
 恢复 VM 的第一步是删除 VM 资源本身。 删除 VM 时会将虚拟硬盘留在存储帐户中。 删除 VM 后，可将虚拟硬盘附加到另一个 VM，以排查和解决这些错误。
 
-使用 [az vm delete](/cli/azure/vm#az_vm_delete) 删除 VM。 以下示例从名为 `myResourceGroup` 的资源组中删除名为 `myVM` 的 VM：
+使用 [az vm delete](/cli/azure/vm) 删除 VM。 以下示例从名为 `myResourceGroup` 的资源组中删除名为 `myVM` 的 VM：
 
 ```azurecli
 az vm delete --resource-group myResourceGroup --name myVM 
@@ -81,7 +81,7 @@ az vm delete --resource-group myResourceGroup --name myVM
 ## <a name="attach-existing-virtual-hard-disk-to-another-vm"></a>将现有虚拟硬盘附加到另一个 VM
 在后续几个步骤中，将使用另一个 VM 进行故障排除。 将现有虚拟硬盘附加到此故障排除 VM，以浏览和编辑磁盘的内容。 例如，此过程允许用户更正任何配置错误或者查看其他应用程序或系统日志文件。 选择或创建另一个 VM 用于故障排除。
 
-使用 [az vm unmanaged-disk attach](/cli/azure/vm/unmanaged-disk#az_vm_unmanaged_disk_attach) 附加现有的虚拟硬盘。 附加现有的虚拟硬盘时，请指定在前面的 `az vm show` 命令中获取的磁盘 URI。 以下示例将现有的虚拟硬盘附加到名为 `myResourceGroup` 的资源组中名为 `myVMRecovery` 的故障排除 VM：
+使用 [az vm unmanaged-disk attach](/cli/azure/vm/unmanaged-disk) 附加现有的虚拟硬盘。 附加现有的虚拟硬盘时，请指定在前面的 `az vm show` 命令中获取的磁盘 URI。 以下示例将现有的虚拟硬盘附加到名为 `myResourceGroup` 的资源组中名为 `myVMRecovery` 的故障排除 VM：
 
 ```azurecli
 az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecovery \
@@ -147,7 +147,7 @@ az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecov
     sudo umount /dev/sdc1
     ```
 
-2. 现在从 VM 中分离虚拟硬盘。 退出故障排除 VM 的 SSH 会话。 使用 [az vm unmanaged-disk list](/cli/azure/vm/unmanaged-disk#az_vm_unmanaged_disk_list) 列出附加到故障排除 VM 的数据磁盘。 以下示例列出附加到名为 `myResourceGroup` 的资源组中名为 `myVMRecovery` 的 VM 的数据磁盘：
+2. 现在从 VM 中分离虚拟硬盘。 退出故障排除 VM 的 SSH 会话。 使用 [az vm unmanaged-disk list](/cli/azure/vm/unmanaged-disk) 列出附加到故障排除 VM 的数据磁盘。 以下示例列出附加到名为 `myResourceGroup` 的资源组中名为 `myVMRecovery` 的 VM 的数据磁盘：
 
     ```azurecli
     azure vm unmanaged-disk list --resource-group myResourceGroup --vm-name myVMRecovery \
@@ -156,7 +156,7 @@ az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecov
 
     记下现有虚拟硬盘的名称。 例如，URI 为 **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** 的磁盘的名称为 **myVHD**。 
 
-    使用 [az vm unmanaged-disk detach](/cli/azure/vm/unmanaged-disk#az_vm_unmanaged_disk_detach) 从 VM 分离数据磁盘。 以下示例将名为 `myVHD` 的磁盘从 `myResourceGroup` 资源组中名为 `myVMRecovery` 的 VM 中分离：
+    使用 [az vm unmanaged-disk detach](/cli/azure/vm/unmanaged-disk) 从 VM 分离数据磁盘。 以下示例将名为 `myVHD` 的磁盘从 `myResourceGroup` 资源组中名为 `myVMRecovery` 的 VM 中分离：
 
     ```azurecli
     az vm unmanaged-disk detach --resource-group myResourceGroup --vm-name myVMRecovery \
@@ -169,7 +169,7 @@ az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecov
 
 - https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json
 
-该模板使用从前面的命令获得的 VHD URI 部署 VM。 使用 [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) 部署模板。 提供原始 VHD 的 URI，并指定 OS 类型、VM 大小和 VM 名称，如下所示：
+该模板使用从前面的命令获得的 VHD URI 部署 VM。 使用 [az group deployment create](/cli/azure/group/deployment) 部署模板。 提供原始 VHD 的 URI，并指定 OS 类型、VM 大小和 VM 名称，如下所示：
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeployment \
@@ -181,7 +181,7 @@ az group deployment create --resource-group myResourceGroup --name myDeployment 
 ```
 
 ## <a name="re-enable-boot-diagnostics"></a>重新启用启动诊断
-从现有虚拟硬盘创建 VM 时，启动诊断可能不会自动启用。 使用 [az vm boot-diagnostics enable](/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_enable) 启用启动诊断。 以下示例在名为 `myResourceGroup` 的资源组中名为 `myDeployedVM` 的 VM 上启用诊断扩展：
+从现有虚拟硬盘创建 VM 时，启动诊断可能不会自动启用。 使用 [az vm boot-diagnostics enable](/cli/azure/vm/boot-diagnostics) 启用启动诊断。 以下示例在名为 `myResourceGroup` 的资源组中名为 `myDeployedVM` 的 VM 上启用诊断扩展：
 
 ```azurecli
 az vm boot-diagnostics enable --resource-group myResourceGroup --name myDeployedVM

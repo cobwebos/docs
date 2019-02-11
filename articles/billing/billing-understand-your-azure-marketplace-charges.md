@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: cwatson
+ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0e90c043976fc1798f675f8bf480b02e0ed93536
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 44e1930ec4d82593580bfc3a7c3e19439436752e
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581912"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904329"
 ---
 # <a name="understand-your-azure-billing-for-external-service-charges"></a>了解外部服务收费的 Azure 计费
 外部服务由 Azure 市场中的第三方软件供应商发布。 例如，SendGrid 是可以在 Azure 中购买的外部服务，但不是 Microsoft 发布的。
@@ -88,5 +88,5 @@ EA 客户可以在 EA 门户中查看外部服务支出和下载报表。 若要
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 

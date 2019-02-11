@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 67ed6f2039bad90716edadb2ecdb5e9ac9faa172
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 3459814108450e3c8faead6ab373ce62b951885e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156232"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095782"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>快速入门：使用 Node.js 将 X.509 设备注册到设备预配服务
 
@@ -46,13 +46,13 @@ ms.locfileid: "50156232"
  
 1. 打开命令提示符或 Git Bash shell，并切换到计算机上的某个工作文件夹。 执行以下命令克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库：
     
-  ```cmd/sh
-  git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
-  ```
+   ```cmd/sh
+   git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+   ```
 
-  此存储库的大小目前大约为 220 MB。 应该预料到此操作需要几分钟才能完成。
+   此存储库的大小目前大约为 220 MB。 应该预料到此操作需要几分钟才能完成。
 
-  测试工具位于你克隆的存储库的 *azure-iot-sdk-c/tools/CACertificates* 中。    
+   测试工具位于你克隆的存储库的 *azure-iot-sdk-c/tools/CACertificates* 中。    
 
 2. 根据[管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步骤进行操作。 
 
@@ -107,7 +107,7 @@ ms.locfileid: "50156232"
         });
       }
     });
-    ````
+    ```
 
 ## <a name="run-the-enrollment-group-sample"></a>运行注册组示例
  
@@ -115,7 +115,7 @@ ms.locfileid: "50156232"
     1. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开设备预配服务。 
     2. 单击“共享访问策略”，然后单击需要用来打开其属性的访问策略。 在“访问策略”窗口中，复制并记下主密钥连接字符串。 
 
-    ![从门户获取预配服务连接字符串](./media/quick-enroll-device-x509-node/get-service-connection-string.png) 
+       ![从门户获取预配服务连接字符串](./media/quick-enroll-device-x509-node/get-service-connection-string.png) 
 
 
 3. 如[准备测试证书](quick-enroll-device-x509-node.md#prepare-test-certificates)中所述，还需要一个 .pem 文件，其中包含的 X.509 中间或根 CA 证书此前已上传并通过预配服务进行验证。 若要查看证书是否已上传并验证，请在 Azure 门户的设备预配服务摘要页中单击“证书”。 找到要用于组注册的证书，确保其状态值为“已验证”。

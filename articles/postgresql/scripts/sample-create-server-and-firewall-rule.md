@@ -1,22 +1,19 @@
 ---
 title: Azure CLI 脚本 - 创建 Azure Database for PostgreSQL
 description: Azure CLI 示例脚本 - 为 PostgreSQL 服务器创建 Azure 数据库，并配置服务器级防火墙规则。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/28/2018
-ms.openlocfilehash: 4d14ca7ee70dc7d24f0fa95a2139d88231d36a7d
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 14bb46d8917aedb3ea5a625db2489c97a4fd0ba3
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52580547"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727103"
 ---
 # <a name="create-an-azure-database-for-postgresql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>使用 Azure CLI 为 PostgreSQL 服务器创建 Azure 数据库并配置防火墙规则
 此示例 CLI 脚本为 PostgreSQL 服务器创建 Azure 数据库，并配置服务器级防火墙规则。 成功运行此脚本后，可以通过所有 Azure 服务和配置的 IP 地址访问 PostgreSQL 服务器。
@@ -38,11 +35,11 @@ ms.locfileid: "52580547"
 
 | **命令** | **说明** |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
-| [az postgres server create](/cli/azure/postgres/server#az_postgres_server_create) | 创建托管数据库的 PostgreSQL 服务器。 |
-| [az postgres server firewall create](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_create) | 创建一个防火墙规则，以允许从输入的 IP 地址范围访问服务器及其下的所有数据库。 |
-| [az group delete](/cli/azure/group#az_group_delete) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](/cli/azure/group) | 创建用于存储所有资源的资源组。 |
+| [az postgres server create](/cli/azure/postgres/server) | 创建托管数据库的 PostgreSQL 服务器。 |
+| [az postgres server firewall create](/cli/azure/postgres/server/firewall-rule) | 创建一个防火墙规则，以允许从输入的 IP 地址范围访问服务器及其下的所有数据库。 |
+| [az group delete](/cli/azure/group) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
-- 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)
-- 尝试其他脚本：[Azure Database for PostgreSQL 的 Azure CLI 示例](../sample-scripts-azure-cli.md)
+- 阅读有关 Azure CLI 的更多信息：[Azure CLI 文档](/cli/azure)
+- 请尝试其他脚本：[用于 PostgreSQL 的 Azure 数据库的 Azure CLI 示例](../sample-scripts-azure-cli.md)

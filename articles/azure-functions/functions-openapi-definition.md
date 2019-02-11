@@ -12,16 +12,16 @@ ms.date: 11/26/2018
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 2d50e4c2352444d29bdb090bc9a2a7947ecc6a50
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 6daa29b4e8f09a4f8a40c3b92d2e2e86a5dea6aa
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496031"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993179"
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>为函数创建 OpenAPI 定义
 
-通常使用 OpenAPI 定义（以前称为 [Swagger](http://swagger.io/) 文件）描述 REST API。 此定义中包含的信息涉及 API 中哪些操作可用，以及 API 的请求和响应数据应采用怎样的结构。
+通常使用 OpenAPI 定义（以前称为 [Swagger](https://swagger.io/) 文件）描述 REST API。 此定义中包含的信息涉及 API 中哪些操作可用，以及 API 的请求和响应数据应采用怎样的结构。
 
 本教程将创建确定风力涡轮机上的紧急修复是否经济高效的函数。 然后为该函数应用创建一个 OpenAPI 定义，使该函数可使用其他应用和服务进行调用。
 
@@ -38,7 +38,7 @@ ms.locfileid: "52496031"
 
 ## <a name="create-a-function-app"></a>创建函数应用
 
-必须使用函数应用托管函数的执行。 函数应用可将函数分组为逻辑单元，以便更轻松地管理、部署、缩放和共享资源。 
+必须使用 Function App 托管函数的执行。 函数应用可将函数分组为逻辑单元，以便更轻松地管理、部署、缩放和共享资源。 
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
@@ -123,7 +123,7 @@ ms.locfileid: "52496031"
 
 ## <a name="generate-the-openapi-definition"></a>生成 OpenAPI 定义
 
-现在即可生成 OpenAPI 定义。 其他 Microsoft 技术（例如 API 应用、[PowerApps](functions-powerapps-scenario.md)、[Microsoft Flow](../azure-functions/app-service-export-api-to-powerapps-and-flow.md)）以及第三方开发者工具（例如 [Postman](https://www.getpostman.com/docs/importing_swagger) 和[其他更多包](http://swagger.io/tools/)）也可以使用此定义。
+现在即可生成 OpenAPI 定义。 其他 Microsoft 技术（例如 API 应用、[PowerApps](functions-powerapps-scenario.md)、[Microsoft Flow](../azure-functions/app-service-export-api-to-powerapps-and-flow.md)）以及第三方开发者工具（例如 [Postman](https://www.getpostman.com/docs/importing_swagger) 和[其他更多包](https://swagger.io/tools/)）也可以使用此定义。
 
 1. 请仅选择 API 支持的“谓词”（本示例中为 POST）。 这样可以生成更干净的 API 定义。
 
@@ -141,7 +141,7 @@ ms.locfileid: "52496031"
 
     ![API 定义源](media/functions-openapi-definition/api-definition-source.png)
 
-    此步骤为 Function App 启用一套 OpenAPI 选项，其中包括一个用于托管 Function App 域中的 OpenAPI 文件的终结点、一个 [OpenAPI 编辑器](http://editor.swagger.io)的内联副本和一个 API 定义模板生成器。
+    此步骤为 Function App 启用一套 OpenAPI 选项，其中包括一个用于托管 Function App 域中的 OpenAPI 文件的终结点、一个 [OpenAPI 编辑器](https://editor.swagger.io)的内联副本和一个 API 定义模板生成器。
 
 1. 单击“生成 API 定义模板” > “保存”。
 
@@ -168,7 +168,7 @@ ms.locfileid: "52496031"
         parameters: []
         description: >-
             Replace with Operation Object
-            #http://swagger.io/specification/#operationObject
+            #https://swagger.io/specification/#operationObject
         responses:
             '200':
             description: Success operation

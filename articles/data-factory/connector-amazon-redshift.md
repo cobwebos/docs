@@ -9,20 +9,19 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 6d36733b63645fd86580ccdc5af756739f77338c
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 7c790d03143eece9b0c827a033bdd46bfd1a8f45
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048139"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024359"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](v1/data-factory-amazon-redshift-connector.md)
+> * [版本 1](v1/data-factory-amazon-redshift-connector.md)
 > * [当前版本](connector-amazon-redshift.md)
 
 
@@ -54,13 +53,13 @@ Amazon Redshift 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：**AmazonRedshift** | 是 |
+| type | Type 属性必须设置为：**AmazonRedshift** | 是 |
 | server |Amazon Redshift 服务器的 IP 地址或主机名。 |是 |
 | port |Amazon Redshift 服务器用于侦听客户端连接的 TCP 端口数。 |否，默认值为 5439 |
 | database |Amazon Redshift 数据库名称。 |是 |
 | username |有权访问数据库的用户的名称。 |是 |
 | password |用户帐户密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure Integration Runtime 或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：**
 
@@ -90,13 +89,13 @@ Amazon Redshift 链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各个部分和属性的完整列表，请参阅数据集一文。 本部分提供 Amazon Redshift 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 Amazon Redshift 数据集支持的属性列表。
 
 要从 Amazon Redshift 复制数据，请将数据集的 type 属性设置为“RelationalTable”。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：RelationalTable | 是 |
+| type | 数据集的 type 属性必须设置为：**RelationalTable** | 是 |
 | tableName | Amazon Redshift 中的表的名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -122,7 +121,7 @@ Amazon Redshift 链接的服务支持以下属性：
 
 ### <a name="amazon-redshift-as-source"></a>作为源的 Amazon Redshift
 
-要从 Amazon Redshift 复制数据，请将复制活动中的源类型设置为“AmazonRedshiftSource”。 复制活动**源**部分支持以下属性：
+要从 Amazon Redshift 复制数据，请将复制活动中的源类型设置为“AmazonRedshiftSource”。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -158,7 +157,7 @@ Amazon Redshift 链接的服务支持以下属性：
 
 对于此用例，复制活动按“redshiftUnloadSettings”中的配置将数据从 Amazon Redshift 卸载到 Amazon S3，然后按“stagingSettings”中指定的内容将数据从 Amazon S3 复制到 Azure Blob，最后使用 PolyBase 将数据载入 SQL 数据仓库。 所有临时格式均由复制活动正确处理。
 
-![Redshift 到 SQL DW 复制工作流](media\copy-data-from-amazon-redshift\redshift-to-sql-dw-copy-workflow.png)
+![Redshift 到 SQL DW 复制工作流](media/copy-data-from-amazon-redshift/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 "activities":[

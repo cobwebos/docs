@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6d05323eb08a69ef4b76dbbf35217d80b9b2dc3c
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 4abed1718d77c93e864fe5bb1d39aba5e5272f10
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261065"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074464"
 ---
 # <a name="determine-your-publishing-option"></a>确定发布选项
 为套餐选择的发布选项直接关系到资格要求和市场 GTM 权益。 更重要的是，在云合作伙伴门户中选择的发布选项和套餐类型定义了用户如何与市场套餐进行交互。
 
 启用发布选项时，可以先在云合作伙伴门户中选择一个套餐类型，然后创建一个市场套餐。 为此，需了解下述重要的市场概念：发布选项、套餐类型和配置，以及广告语，这些决定了套餐在市场店面中的显示方式和位置。
 
-![](https://github.com/ellacroi/azure-docs-pr/blob/options-table/articles/marketplace/media/marketplace-publishers-guide/storefronts_options_table.png?raw=true)
+![](./media/marketplace-publishers-guide/storefronts_options_table.png)
 
 >[!Note]
 >上表介绍了解决方案或服务如何映射到店面、发布选项和套餐类型，这些是在市场中显示套餐时需要使用的。
@@ -62,12 +62,12 @@ ms.locfileid: "52261065"
 
 ## <a name="choose-a-publishing-option"></a>选择发布选项
 
-可用的发布选项提供差异化的客户参与度，并且允许你访问潜在客户共享资料和[上市权益](https://partner.microsoft.com/en-US/reach-customers/gtm)。 在使用云合作伙伴门户创建市场套餐之前，请从三个可能的发布选项中进行选择。 请注意与发布选项相对应的广告语：
+可用的发布选项提供差异化的客户参与度，并且允许你访问潜在客户共享资料和[上市权益](https://partner.microsoft.com/reach-customers/gtm)。 在使用云合作伙伴门户创建市场套餐之前，请从三个可能的发布选项中进行选择。 请注意与发布选项相对应的广告语：
 
 | **发布选项**    | **说明**  |
 | :------------------- | :-------------------|
 | **列表** | 直接列出应用程序或服务，这样市场用户就可以通过“与我联系”广告语请求你与客户联系。 |
-| **试用** | 通过市场增加曝光率，自动预配应用程序的试用体验，让潜在用户在有限的时间内免费使用你的 SaaS、IaaS 或 Microsoft 应用内体验，然后再决定是否购买。 用于试用发布选项的广告语是：**免费试用版**或**体验版**。 |
+| **试用** | 通过市场增加曝光率，自动预配应用程序的试用体验，让潜在用户在有限的时间内免费使用你的 SaaS、IaaS 或 Microsoft 应用内体验，然后再决定是否购买。 用于试用发布选项的广告语是：免费试用版或体验版。 |
 | **事务处理** | 应用程序在 Azure 上运行，当客户选择“马上购买”广告语时，可以作为资源直接预配到客户的 Azure 订阅中。 你的软件许可可以选择性地购买和开票，具体取决于客户选择的付款方式和条款。你可以允许客户在有限的时间内访问**免费试用软件**（只能在 Azure 市场中使用）。 |
 
 >[!Note]

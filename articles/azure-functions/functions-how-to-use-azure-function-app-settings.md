@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 5e34aae62f871cba2a27a292242cff8e90c67934
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7497255dcad55cea86e0c640e2f1423d7d763a7f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228974"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713620"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>如何在 Azure 门户中管理 Function App 
 
 在 Azure Functions 中，Function App 提供各个函数的执行上下文。 Function App 行为适用于由给定 Function App 托管的所有函数。 本主题介绍如何在 Azure 门户中配置和管理 Function App。
 
-要开始，请转到 [Azure 门户](http://portal.azure.com)，并使用 Azure 帐户登录。 在门户顶端的搜索栏中，键入函数应用的名称，并从列表中将其选中。 选择 Function App 后，将看到以下页面：
+要开始，请转到 [Azure 门户](https://portal.azure.com)，并使用 Azure 帐户登录。 在门户顶端的搜索栏中，键入函数应用的名称，并从列表中将其选中。 选择 Function App 后，将看到以下页面：
 
 ![Azure 门户中 Function App 的概述](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
@@ -126,7 +126,7 @@ Function App 运行于 Azure 应用服务平台，并由该平台维护。 在�
 
 | | |
 |-|-|
-| ![Azure 门户中的 Function App 身份验证](./media/functions-how-to-use-azure-function-app-settings/function-app-authentication.png) | 函数使用 HTTP 触发器时，可以要求首先对调用进行身份验证。 应用服务支持 Azure Active Directory 身份验证和使用社交提供程序登录，如 Facebook、Microsoft 和 Twitter。 有关配置特定身份验证提供程序的详细信息，请参阅 [Azure 应用服务身份验证概述](../app-service/app-service-authentication-overview.md)。 |
+| ![Azure 门户中的 Function App 身份验证](./media/functions-how-to-use-azure-function-app-settings/function-app-authentication.png) | 函数使用 HTTP 触发器时，可以要求首先对调用进行身份验证。 应用服务支持 Azure Active Directory 身份验证和使用社交提供程序登录，如 Facebook、Microsoft 和 Twitter。 有关配置特定身份验证提供程序的详细信息，请参阅 [Azure 应用服务身份验证概述](../app-service/overview-authentication-authorization.md)。 |
 
 ![配置 Function App 的身份验证](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 

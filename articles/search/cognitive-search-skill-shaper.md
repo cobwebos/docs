@@ -1,5 +1,5 @@
 ---
-title: 整形程序认知搜索技能（Azure 搜索）| Microsoft Docs
+title: 整形程序认知搜索技能 - Azure 搜索
 description: 从非结构化数据中提取元数据和结构化信息，并将其整形为 Azure 搜索扩充管道中的复杂类型。
 services: search
 manager: pablocas
@@ -8,14 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 01/17/2019
 ms.author: luisca
-ms.openlocfilehash: 286e1f9d6f6ae09d98aa87b447df7a7524642a1f
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec2018
+ms.openlocfilehash: a1f5a698ee76ebd0561bd19ff1a23d0f04be0771
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45728991"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410109"
 ---
 #   <a name="shaper-cognitive-skill"></a>整形程序认知技能
 
@@ -28,7 +29,7 @@ ms.locfileid: "45728991"
 在响应中，输出名称始终为“输出”。 管道可在内部映射不同名称，例如将以下示例中的“analyzedText”映射为“output”，但整形程序技能自身会在响应中返回“output”。 如果正在调试大量文档并发现存在命名差异，或者要生成自定义技能并自行构建响应，这一点非常重要。
 
 > [!NOTE]
-> Azure 搜索目前以公共预览版提供。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 
+> 此技能未绑定到认知服务 API，你使用它无需付费。 但是，你仍然应该[附加认知服务资源](cognitive-search-attach-cognitive-services.md)，以覆盖**免费**资源选项，该选项限制你每天进行少量的每日扩充。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill
@@ -82,7 +83,7 @@ Microsoft.Skills.Util.ShaperSkill
 
 
 ### <a name="sample-output"></a>示例输出
-整形程序技能使用 text 和 sentiment 组合元素生成一个名为 analyzedText 的新元素。 
+整形程序技能使用 *text* 和 *sentiment* 组合元素生成一个名为 *analyzedText* 的新元素。 
 
 ```json
 {
@@ -156,6 +157,6 @@ Microsoft.Skills.Util.ShaperSkill
 
 ## <a name="see-also"></a>另请参阅
 
-+ [预定义的技能](cognitive-search-predefined-skills.md)
-+ [如何定义技能组合](cognitive-search-defining-skillset.md)
++ [预定义技能](cognitive-search-predefined-skills.md)
++ [如何定义技能集](cognitive-search-defining-skillset.md)
 

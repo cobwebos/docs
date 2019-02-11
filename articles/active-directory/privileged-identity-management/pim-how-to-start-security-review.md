@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 5c7216a419ba01c1b2df744e305bf059cf68104e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 1cf3d29bd3d7af56f3e20c1d2344ed90095229bf
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224375"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196661"
 ---
 # <a name="start-an-access-review-for-azure-ad-directory-roles-in-pim"></a>在 PIM 中启动 Azure AD 目录角色的访问评审
 当用户有不再需要的特权访问时，角色分配将变为“过时”。 为了降低与这些过时角色分配相关联的风险，特权角色管理员或全局管理员应定期创建访问评审来让管理员审阅用户的已分配角色。 本文档包含在 Azure AD Privileged Identity Management (PIM) 中开始访问审阅的相关步骤。
@@ -62,9 +62,9 @@ ms.locfileid: "47224375"
     ![选择审阅者 - 屏幕快照](./media/pim-how-to-start-security-review/PIM_review_reviewers.png)
 2. 选择以下选项之一：
    
-   * **选择审阅者**：如果不知道谁需要访问，请使用此选项。 使用此选项，可以将审阅分配给资源所有者或组管理员完成。
-   * **我**：如果想要预览访问审阅的工作原理，或者你想要代表无法执行此操作的用户进行审阅，此选项很有用。
-   * **成员自我审阅**：使用此选项让用户审阅自己的角色分配。
+   * **选择评审者**：如果不知道谁需要访问，请使用此选项。 使用此选项，可以将审阅分配给资源所有者或组管理员完成。
+   * **我**：如果想要预览访问评审的工作原理，或者想要代表无法执行此操作的用户进行评审，此选项很有用。
+   * **成员自我评审**：使用此选项让用户评审自己的角色分配。
 
 ### <a name="start-the-review"></a>开始审阅
 最后，如果用户批准其访问，可以选择要求他们提供原因。 添加审阅的描述（如果愿意）并选择“开始”。

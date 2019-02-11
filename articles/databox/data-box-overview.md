@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 10/23/2018
+ms.date: 01/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 731730aae59fa654394bf01a139af0088c207774
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: b43dac7f81b92ac504427dab164d23d9ebb1ec03
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955331"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411401"
 ---
 # <a name="what-is-azure-data-box"></a>什么是 Azure Data Box？
 
@@ -56,13 +56,14 @@ Data Box 旨在几乎不影响网络的情况下将大量数据移至 Azure。 �
 
 此版本中的 Data Box 设备具有以下功能。
 
-| 规范                                          | Description              |
+| 规范                                          | 说明              |
 |---------------------------------------------------------|--------------------------|
 | 重量                                                  | < 22.68 千克                |
 | 维度                                              | 设备 - 宽度：309.0 毫米 高度：430.4 毫米 深度：502.0 毫米 |            
 | 机架空间                                              | 放在机架侧面时为 7 U（不能安装在机架上）|
 | 所需的电缆                                         | 1 根电源线（附送） <br> 2 根 RJ45 电缆 <br> 2 根 SFP+ Twinax 铜缆线|
 | 存储容量                                        | 100 TB 设备在进行 RAID 5 保护后有 80 TB 的可用容量|
+| 功率分级                                            | 电源设备的概率为 700 瓦。 <br> 通常情况下，设备为 375 瓦。|
 | 网络接口                                      | 2 个 1 GbE 接口 - MGMT 和 DATA 3。 <br> MGMT - 适用于管理，用户不可配置，用于初始设置 <br> DATA3 - 适用于数据，用户可配置，且默认为动态 <br> MGMT 和 DATA 3 也可作为 10 GbE 接口使用 <br> 2 个 10 GbE 接口 - DATA 1 和 DATA 2 <br> 两者都用于数据，可以配置为动态（默认）或静态 |
 | 数据传输介质                                     | RJ45、SFP+ 铜缆 10 GbE 以太网  |
 | 安全                                                | 坚固耐用的设备外壳，带防破坏定制螺钉 <br> 防破坏贴纸放置在设备的底部|

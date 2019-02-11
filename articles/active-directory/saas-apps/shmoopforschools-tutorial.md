@@ -1,28 +1,28 @@
 ---
-title: 教程：Azure Active Directory 与 Shmoop For Schools 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Shmoop For Schools 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Shmoop For Schools 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 1d75560a-55b3-42e9-bda1-92b01c572d8e
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: b5826fd3067ac337808b9e27040dee808cd6a01c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 90d4cb3c5da37e8de63a95e65670cfd9e3098453
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39045951"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178420"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>教程：Azure Active Directory 与 Shmoop For Schools 的集成
+# <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>教程：Azure Active Directory 与 Shmoop For Schools 集成
 
 在本教程中，了解如何将 Shmoop For Schools 与 Azure Active Directory (Azure AD) 集成。
 
@@ -108,7 +108,7 @@ ms.locfileid: "39045951"
 
     ![配置单一登录](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”框中，使用以下模式键入 URL：`https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`
+    a. 在“登录 URL”框中，使用以下模式键入 URL：`https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`
 
     b. 在“标识符”框中，使用以下模式键入 URL：`https://schools.shmoop.com/<uniqueid>`
 
@@ -128,7 +128,7 @@ ms.locfileid: "39045951"
     | -------------- | --------------- |
     | role           | user.assignedroles |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 若要打开“添加属性”对话框，请选择“添加属性”。
+    a. 若要打开“添加属性”对话框，请选择“添加属性”。
     
     ![配置单一登录 ](./media/shmoopforschools-tutorial/tutorial_attribute_04.png)
     
@@ -146,7 +146,7 @@ ms.locfileid: "39045951"
 
     ![配置单一登录](./media/shmoopforschools-tutorial/tutorial_general_400.png)
 
-7. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。
+7. 在“SAML 签名证书”部分中，单击”复制”按钮来复制“应用联合元数据 URL”，并将其粘贴到记事本 **** 。
 
     ![证书下载链接](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_certificate.png)
 
@@ -176,13 +176,13 @@ ms.locfileid: "39045951"
 
     ![“用户”对话框](./media/shmoopforschools-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 选择**创建**。
+    d. 选择“创建”。
  
 ### <a name="create-a-shmoop-for-schools-test-user"></a>创建 Shmoop For Schools 测试用户
 
@@ -232,7 +232,7 @@ ms.locfileid: "39045951"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

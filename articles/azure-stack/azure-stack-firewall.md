@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 3759a9845d4ad1514fc5f0183c78b5eca2e31464
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: eff526118f6fd127ba720d28296baf86abd01393
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960645"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246427"
 ---
 # <a name="azure-stack-firewall-integration"></a>Azure Stack 防火墙集成
 建议使用防火墙设备来帮助保护 Azure Stack。 虽然防火墙可以发挥很多作用，例如抵御分布式拒绝服务 (DDOS) 工具、执行入侵检测和内容检查，但是它们也可能会成为 Azure 存储服务（例如 blob、表和队列）的吞吐量瓶颈。
@@ -34,7 +35,7 @@ Azure 资源管理器（管理员）、管理员门户和 Key Vault（管理员�
 ### <a name="network-address-translation"></a>网络地址转换
 网络地址转换 (NAT) 是建议采用的方法，它允许部署虚拟机 (DVM) 在部署期间访问外部资源和 Internet，以及在注册和故障排除期间访问 Emergency Recovery Console (ERCS) VM 或 Privileged End Point (PEP)。
 
-还可以使用 NAT 作为外部网络上的公共 IP 地址或公共 VIP 的替代方法。 但是，不建议这样做，因为它限制了租户用户体验并增加了复杂性。 可采用的两个选项是一对一 NAT（这仍然要求池中的每个用户 IP 有一个公共 IP）和多对一 NAT（这需要采用按用户 VIP 的 NAT 规则，使其包含与用户可以使用的所有端口的关联）。
+还可以使用 NAT 作为外部网络上的公共 IP 地址或公共 VIP 的替代方法。 但是，不建议这样做，因为它限制了租户用户体验并增加了复杂性。 两个选项将仍需要每个用户 IP 池的一个公共 IP 或许多 1 对 1 NAT:用户可能使用 1 NAT 要求每个用户包含到的所有端口关联的 VIP 的 NAT 规则。
 
 下面是对公共 VIP 使用 NAT 的一些缺点：
 - NAT 增加了管理防火墙规则时的开销，因为用户在软件定义的网络 (SDN) 堆栈中控制其自己的终结点和其自己的发布规则。 用户必须联系 Azure Stack 操作员才能发布其 VIP 以及更新端口列表。
@@ -54,7 +55,7 @@ Azure 资源管理器（管理员）、管理员门户和 Key Vault（管理员�
 ## <a name="enterprise-intranet-or-perimeter-network-firewall-scenario"></a>企业 Intranet 或外围网络防火墙方案
 在企业 Intranet 或外围部署中，Azure Stack 部署在多区域防火墙上或者部署在边缘防火墙与内部的公司网络防火墙之间。 然后，其流量将分布在安全的外围网络（或 DMZ）与不安全的区域之间，如下所述：
 
-- **安全区域**：这是使用内部或公司可路由 IP 地址的内部网络。 安全网络可以拆分，可以通过防火墙上的 NAT 进行 Internet 出站访问，并且通常可以通过内部网络从你的数据中心内的任何位置进行访问。 除了外部网络的公共 VIP 池之外，所有 Azure Stack 网络都应当位于安全区域中。
+- **安全区域**:这是使用内部或公司可路由的 IP 地址的内部网络。 安全网络可以拆分，可以通过防火墙上的 NAT 进行 Internet 出站访问，并且通常可以通过内部网络从你的数据中心内的任何位置进行访问。 除了外部网络的公共 VIP 池之外，所有 Azure Stack 网络都应当位于安全区域中。
 - **外围区域**。 通常在外围网络中部署面向外部或 Internet 的应用程序，例如 Web 服务器。 通常由防火墙对其进行监视，以避免诸如 DDoS 和入侵（黑客进攻）之类的攻击，同时允许来自 Internet 的指定入站流量。 只有 Azure Stack 的外部网络公共 VIP 池应当位于 DMZ 区域中。
 - **不安全区域**。 这是指外部网络，即 Internet。 建议**不要**将 Azure Stack 部署在不安全区域中。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: casoper
-ms.openlocfilehash: 82c5fb0f3f3e8edad948b82f77c9c336636f3077
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: f8de7f7a263a087abb16ed48d05b2cae9834b4ad
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442735"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961104"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务 (ASP.NET Core)
 
@@ -27,7 +27,7 @@ ms.locfileid: "42442735"
 > - [ASP.NET](./vs-storage-aspnet-getting-started-blobs.md)
 > - [ASP.NET Core](./vs-storage-aspnet-core-getting-started-blobs.md)
 
-Azure Blob 存储是一种将非结构化数据作为对象或 Blob 存储在云中的服务。 Blob 存储可以存储任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。 Blob 存储也称为对象存储。
+Azure Blob 存储是一种将非结构化数据作为对象或 Blob 存储在云中的服务。 Blob 存储可以存储任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。 Blob 存储也称为对象存储。 若要了解有关 Blob 存储的详细信息，请参阅 [Azure Blob 存储简介](../storage/blobs/storage-blobs-introduction.md)。
 
 本教程介绍如何针对使用 Blob 存储的一些常见方案编写 ASP.NET Core 代码。 方案包括创建 Blob 容器，以及上传、列出、下载和删除 Blob。
 
@@ -36,8 +36,6 @@ Azure Blob 存储是一种将非结构化数据作为对象或 Blob 存储在云
 ## <a name="prerequisites"></a>先决条件
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-
-[!INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
 ## <a name="set-up-the-development-environment"></a>设置开发环境
 

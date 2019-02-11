@@ -3,7 +3,7 @@ title: 教程 - Azure 中 Linux VM 的高可用性 | Microsoft Docs
 description: 本教程介绍了如何使用 Azure CLI 在可用性集中部署高度可用的虚拟机
 documentationcenter: ''
 services: virtual-machines-linux
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/24/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f7bf5e233307703dca522974d52a86bc193186b8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 7fd671c77b4c0897134457f5aacaabc11d568694
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465825"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756404"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和部署高度可用的虚拟机
 
@@ -49,7 +49,7 @@ ms.locfileid: "49465825"
 
 ## <a name="create-an-availability-set"></a>创建可用性集
 
-可使用 [az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create) 创建可用性集。 在本示例中，*myResourceGroupAvailability* 资源组中名为 *myAvailabilitySet* 的可用性集的更新域数和容错域数均设置为 *2*。
+可使用 [az vm availability-set create](/cli/azure/vm/availability-set) 创建可用性集。 在本示例中，*myResourceGroupAvailability* 资源组中名为 *myAvailabilitySet* 的可用性集的更新域数和容错域数均设置为 *2*。
 
 首先，使用 [az group create](/cli/azure/group#az-group-create) 创建资源组，然后创建可用性集：
 
@@ -70,7 +70,7 @@ az vm availability-set create \
 
 必须在可用性集中创建 VM，确保它们正确地分布在硬件中。 在创建可用性集后，无法将现有 VM 添加到可用性集中。
 
-通过 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM 时，请使用 `--availability-set` 参数指定可用性集的名称。
+通过 [az vm create](/cli/azure/vm) 创建 VM 时，请使用 `--availability-set` 参数指定可用性集的名称。
 
 ```azurecli-interactive
 for i in `seq 1 2`; do

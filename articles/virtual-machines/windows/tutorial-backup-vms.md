@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6ae014597a89c75e4426715227bbb19f1e98a438
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7c6f5e199041af7d0ecd829ace2b56f5789f4955
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32189283"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890443"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>教程：在 Azure 中备份和还原 Windows 虚拟机的文件
 
@@ -47,7 +47,7 @@ ms.locfileid: "32189283"
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在左侧菜单中选择“虚拟机”。 
 3. 从列表中选择要备份的 VM。
-4. 在 VM 边栏选项卡上的“设置”部分中，单击“备份”。 此时会打开“启用备份”边栏选项卡。
+4. 在 VM 边栏选项卡上的“操作”部分中，单击“备份”。 此时会打开“启用备份”边栏选项卡。
 5. 在“恢复服务保管库”中，单击“新建”并为新保管库提供名称。 将在与虚拟机相同的资源组和位置中创建新保管库。
 6. 单击“备份策略”。 对于本示例，请保留默认值，并单击“确定”。
 7. 在“启用备份”边栏选项卡中，单击“启用备份”。 这会根据默认的计划创建每日备份。

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/17/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf507fb21b314a6811db1c1e45a4356381caada1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f699e40a4a31b6d57b12a43ae307806d3f010015
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111845"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267175"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>部署 StorSimple 虚拟阵列 - 通过 Azure 门户设置为文件服务器
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -28,7 +28,7 @@ ms.locfileid: "23111845"
 ## <a name="introduction"></a>介绍
 本文介绍如何执行初始设置、注册 StorSimple 文件服务器、完成设备设置，以及创建和连接 SMB 共享。 这是此系列部署教程的最后一篇文章，是将虚拟阵列完全部署为文件服务器或 iSCSI 服务器所必读的。
 
-完成设置和配置过程可能需要大约 10 分钟。 本文中的信息仅适用于部署 StorSimple 虚拟阵列。 有关 StorSimple 8000 系列设备的部署，请转到：[部署运行 Update 2 的 StorSimple 8000 系列设备](storsimple-deployment-walkthrough-u2.md)。
+完成设置和配置过程可能需要大约 10 分钟。 本文中的信息仅适用于部署 StorSimple 虚拟阵列。 要部署 StorSimple 8000 系列设备，请转到：[部署当前运行 Update 2 的 StorSimple 8000 系列设备](storsimple-deployment-walkthrough-u2.md)。
 
 ## <a name="setup-prerequisites"></a>设置先决条件
 配置和设置 StorSimple 虚拟阵列之前，请确保：
@@ -49,7 +49,7 @@ ms.locfileid: "23111845"
    使用在上一步中记下的连接 URL。 此时会出现一个错误，指出网站的安全证书有问题。 单击“继续访问此网页”。
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image2.png)
-2. 以 **StorSimpleAdmin** 身份登录到虚拟阵列的 Web UI。 输入在“步骤 3：启动虚拟阵列”中更改的设备管理员密码，详见[在 Hyper-V 中预配 StorSimple 虚拟阵列](storsimple-virtual-array-deploy2-provision-hyperv.md)或[在 VMware 中预配 StorSimple 虚拟阵列](storsimple-virtual-array-deploy2-provision-vmware.md)。
+2. 以 **StorSimpleAdmin** 身份登录到虚拟阵列的 Web UI。 输入在“步骤 3：启动虚拟阵列”中更改的设备管理员密码：详见[在 Hyper-V 中预配 StorSimple 虚拟阵列](storsimple-virtual-array-deploy2-provision-hyperv.md)或[在 VMware 中预配 StorSimple 虚拟阵列](storsimple-virtual-array-deploy2-provision-vmware.md)。
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image3.png)
 3. 此时会转到“主页”。 该页介绍配置虚拟阵列并将其注册到 StorSimple Device Manager 服务所需的各种设置。 “网络设置”、“Web 代理设置”和“时间设置”为可选设置。 仅“设备设置”和“云设置”为必需设置。
@@ -69,11 +69,11 @@ ms.locfileid: "23111845"
    1. 为设备指定唯一“名称”。 该名称长度为 1-15 个字符，并可包含字母、数字和连字符。
    2. 选择要创建的设备的“类型”时，请单击“文件服务器”图标 ![](./media/storsimple-virtual-array-deploy3-fs-setup/image6.png)。 文件服务器可用于创建共享文件夹。
    3. 由于设备是文件服务器，因此需将其加入域。 输入“域名”。
-   4. 单击“应用” 。
+   4. 单击“应用”。
 7. 此时会显示一个对话框。 按指定格式输入域凭据。 单击选中图标。 此时会验证域凭据。 如果凭据不正确，则会显示错误消息。
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image7.png)
-8. 单击“应用” 。 此时会应用和验证设备设置。
+8. 单击“应用”。 此时会应用和验证设备设置。
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image8.png)
    
@@ -87,10 +87,10 @@ ms.locfileid: "23111845"
    
    在“Web 代理”页中：
    
-   1. 以下述格式提供“Web 代理 URL”：*http://&lt;主机 IP 地址或 FDQN&gt;:端口号*。 请注意，不支持 HTTPS URL。
+   1. 以下述格式提供“Web 代理 URL”： http://&lt;主机 IP 地址或 FQDN&gt;:端口号。 请注意，不支持 HTTPS URL。
    2. 将“身份验证”指定为“基本”或“无”。
    3. 如果使用身份验证，则还需提供“用户名”和“密码”。
-   4. 单击“应用” 。 此时会验证并应用配置的 Web 代理设置。
+   4. 单击“应用”。 此时会验证并应用配置的 Web 代理设置。
 10. （可选）配置设备的时间设置，例如时区以及主 NTP 服务器和辅助 NTP 服务器。 NTP 服务器是必需的，因为设备必须同步时间，才能通过云服务提供程序进行身份验证。
     
     ![](./media/storsimple-virtual-array-deploy3-fs-setup/image10.png)
@@ -98,12 +98,12 @@ ms.locfileid: "23111845"
     在“时间设置”页中：
     
     1. 根据部署设备的地理位置，从下拉列表中选择相应的“时区” 。 设备的默认时区为太平洋标准时间。 设备将此时区用于所有计划操作。
-    2. 为设备指定“主 NTP 服务器”，或者接受默认值：time.windows.com。确保网络允许 NTP 流量从数据中心传递到 Internet。
+    2. 为设备指定“主 NTP 服务器”，或者接受默认值：time.windows.com。 确保网络允许 NTP 流量从数据中心传递到 Internet。
     3. （可选）为设备指定“辅助 NTP 服务器”。
     4. 单击“应用” 。 此时会验证并应用配置的时间设置。
 11. 配置设备的云设置。 此步骤需完成本地设备配置，然后将设备注册到 StorSimple Device Manager 服务。
     
-    1. 输入在[步骤 2：获取服务注册密钥](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)（适用于 StorSimple 虚拟阵列）中获得的“服务注册密钥”。
+    1. 输入在适用于 StorSimple 虚拟阵列的[步骤 2：获取服务注册密钥](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)中获取的服务注册密钥。
     2. 如果这是注册到此服务的第一个设备，则会向你提供服务数据加密密钥。 复制此密钥并将其保存到一个安全位置。 向 StorSimple Device Manager 服务注册其他设备时，需要此密钥以及该服务注册密钥。 
        
        如果这不是注册到此服务的第一个设备，则需提供服务数据加密密钥。 有关详细信息，请参阅本地 Web UI 上的[获取服务数据加密密钥](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)。

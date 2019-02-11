@@ -3,21 +3,22 @@ title: Microsoft Azure 多重身份验证用户状态
 description: 了解 Azure 多重身份验证中的用户状态。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 01/11/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 4726383d96b0bd17f346f7391ed968c5f96bef1e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: f85ce3424598044292de3b2b5cb073cc3c510225
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239247"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077159"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>如何要求对用户进行双重验证
+
 可以采用两种方法之一要求进行双重验证，这两种方法都需要使用全局管理员帐户。 第一个选项是为每个用户启用 Azure 多重身份验证 (MFA)。 逐个为用户启用此功能后，他们每次登录时都会执行双重验证（有一些例外情况，例如，当他们从受信任的 IP 地址登录时，或者开启了“记忆的设备”功能时）。 第二个选项是设置条件性访问策略，可要求在某些情况下进行双重验证。
 
 > [!TIP]
@@ -25,7 +26,7 @@ ms.locfileid: "50239247"
 
 ## <a name="choose-how-to-enable"></a>选择启用方法
 
-**通过更改用户状态启用** - 这是需要进行双重验证的传统方法，本文将对此进行讨论。 它适用于云中的 Azure MFA 以及 Azure MFA 服务器。 使用此方法要求用户**每次**登录时都执行双重验证并重写条件访问策略。
+**通过更改用户状态启用** - 这是需要进行双重验证的传统方法，本文将对此进行讨论。 它适用于云中的 Azure MFA 以及 Azure MFA 服务器。 使用此方法要求用户**每次**登录时都执行双重验证并重写条件访问策略。 这是使用 Office 365 或 Microsoft 365 商业版许可证的方法，因为它们不包括条件访问功能。
 
 通过条件访问策略启用 - 这是为用户启用双重验证的最灵活方法。 通过条件访问策略启用仅适用于云中的 Azure MFA，并且是 Azure AD 的高级功能。 有关此方法的详细信息，请参阅[部署基于云的 Azure 多重身份验证](howto-mfa-getstarted.md)。
 
@@ -39,7 +40,7 @@ ms.locfileid: "50239247"
 
 Azure 多重身份验证中的用户帐户具有以下三种不同状态：
 
-| 状态 | Description | 受影响的非浏览器应用 | 受影响的浏览器应用 | 新式身份验证受影响 |
+| 状态 | 说明 | 受影响的非浏览器应用 | 受影响的浏览器应用 | 新式身份验证受影响 |
 |:---:|:---:|:---:|:--:|:--:|
 | 已禁用 |没有在 Azure MFA 中注册某个新用户的默认状态。 |否 |否 |否 |
 | 已启用 |用户已加入 Azure MFA 但尚未注册。 在用户下次登录时会提示他们进行注册。 |不是。  它们继续工作，直到注册过程完成。 | 是的。 会话过期后，会要求进行 Azure MFA 注册。| 是的。 访问令牌过期后，会要求进行 Azure MFA 注册。 |

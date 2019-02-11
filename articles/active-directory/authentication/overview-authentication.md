@@ -3,25 +3,25 @@ title: Azure Active Directory 用户身份验证
 description: 作为 Azure AD 管理员，如何保护用户身份验证，同时降低对最终用户造成的影响？
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: overview
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 0b232ed8bacfeb896fd5ee6ff9e2a58b71dc1517
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: d14b44a45d9001e945e559dcd080683220c6a0b7
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162942"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076394"
 ---
 # <a name="what-methods-are-available-for-authentication"></a>有哪些方法可用来进行身份验证？
 
 我们经常在新闻中听到有关密码被盗以及身份被冒用的报道。 除了密码之外，要求使用第二个因素可以立即提高你的组织的安全性。 Microsoft Azure Active Directory (Azure AD) 包括了诸如 Azure 多重身份验证 (Azure MFA) 和 Azure AD 自助服务密码重置 (SSPR) 来帮助管理员使用附加身份验证方法保护其组织和用户。
 
-当用户需要访问敏感应用程序、重置其密码或者启用 Windows Hello 时，可能会要求他们提供附加验证来证明他们是自己所说的人。
+在许多情况下（例如，登录到应用程序、重置密码、启用 Windows Hello，以及其他情况），可能会要求用户提供额外的验证，证明他们是自己声称的人。
 
 附加验证可以采用身份验证方法进行，例如：
 
@@ -56,6 +56,6 @@ Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案。 使�
 
 若要开始使用自助服务密码重置，请参阅[启用 SSPR 快速入门文章](quickstart-sspr.md)。
 
-在[工作原理：Azure AD 自助服务密码重置](concept-sspr-howitworks.md)一文中详细了解自助服务密码重置
+若要详细了解自助服务密码重置，请参阅[工作原理：Azure AD 自助服务密码重置](concept-sspr-howitworks.md)一文
 
-在[工作原理：Azure 多重身份验证](concept-mfa-howitworks.md)一文中详细了解 Azure 多重身份验证
+若要详细了解 Azure 多重身份验证，请参阅[工作原理：Azure 多重身份验证](concept-mfa-howitworks.md)一文

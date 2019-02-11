@@ -3,7 +3,7 @@ title: 弹性数据库作业入门 | Microsoft Docs
 description: 使用弹性数据库作业执行跨多个数据库的 T-SQL 脚本。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,28 +11,28 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: ada95f9fc09aeb7e8dac67bc5f9c4af96f9700df
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.date: 12/04/2018
+ms.openlocfilehash: ff7e15579bfb0edfe9229238c6a4d5672700d0ef
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241355"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567003"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>弹性数据库作业入门
 
-
 [!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
-
 
 使用 Azure SQL 数据库的弹性数据库作业（预览版），可以跨多个数据库可靠执行 T-SQL 脚本，同时自动重试并提供最终完成保证。 有关弹性数据库作业功能的详细信息，请参阅[弹性作业](sql-database-elastic-jobs-overview.md)。
 
 本文对[弹性数据库工具入门](sql-database-elastic-scale-get-started.md)中的示例进行了扩展。 完成本主题后，将学会如何创建和管理用于管理一组相关数据库的作业。 无需使用弹性缩放工具即可利用弹性作业的优势。
 
 ## <a name="prerequisites"></a>先决条件
+
 下载并运行[弹性数据库工具示例入门](sql-database-elastic-scale-get-started.md)。
 
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>使用示例应用程序创建分片映射管理器
+
 在此处，将创建分片映射管理器以及多个分片，然后将数据插入分片。 如果分片中设置了分片数据，则可以跳过下面的步骤，直接转到下一部分。
 
 1. 生成并运行**弹性数据库工具入门**示例应用程序。 一直执行到[下载和运行示例应用](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)部分中的步骤 7。 在步骤 7 结束时，会看到以下命令提示符：
@@ -48,8 +48,9 @@ ms.locfileid: "50241355"
 
 我们通常会使用 **New-AzureSqlJobTarget** cmdlet 来创建分片映射目标。 必须将分片映射管理器数据库设置为数据库目标，然后将特定分片映射指定为目标。 而我们的做法是枚举服务器中的所有数据库，并将这些数据库添加到 master 数据库除外的其他新自定义集合。
 
-## <a name="creates-a-custom-collection-and-add-all-databases-in-the-server-to-the-custom-collection-target-with-the-exception-of-master"></a>创建自定义集合，并将服务器中的所有数据库添加到 master 以外的自定义集合目标。
-   ```
+## <a name="creates-a-custom-collection-and-add-all-databases-in-the-server-to-the-custom-collection-target-with-the-exception-of-master"></a>创建自定义集合，并将服务器中的所有数据库添加到 master 以外的自定义集合目标
+
+   ```Powershell
     $customCollectionName = "dbs_in_server"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $ResourceGroupName = "ddove_samples"
@@ -257,16 +258,16 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
 
 执行策略当前允许定义：
 
-* 名称：执行策略的标识符。
+* 姓名：执行策略的标识符。
 * 作业超时：作业被弹性数据库作业取消之前经过的总时间。
 * 初始重试间隔：第一次重试之前等待的间隔。
-* 最大重试间隔：要使用的重试间隔上限。
-* 重试间隔回退系数：用于计算每两次重试的下一个间隔系数。  使用以下公式：(初始重试间隔) * Math.pow((间隔回退指数),(重试次数) - 2)。
-* 最大尝试次数：重试在作业中执行的最大次数。
+* 最大重试间隔：要使用的重试间隔的上限。
+* 重试间隔回退系数：用于计算两次重试之间的下一个间隔的系数。  使用以下公式：(初始重试间隔) * Math.pow((间隔回退指数), (重试次数) - 2)。
+* 最大尝试次数：要在作业中执行的最大重试尝试次数。
 
 默认的执行策略使用以下值：
 
-* 名称：默认执行策略
+* 姓名：默认执行策略
 * 作业超时：1 周
 * 初始重试间隔：100 毫秒
 * 最大重试间隔：30 分钟
@@ -301,6 +302,7 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
    ```
 
 ## <a name="cancel-a-job"></a>取消作业
+
 弹性数据库作业支持作业取消请求。  如果弹性数据库作业检测到当前正在执行作业的取消请求，它将尝试停止作业。
 
 弹性数据库作业可通过两种不同的方式执行取消：
@@ -312,12 +314,13 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
 
 若要提交取消请求，请使用 **Stop-AzureSqlJobExecution** cmdlet 并设置 **JobExecutionId** 参数。
 
-   ```
+   ```Powershell
     $jobExecutionId = "{Job Execution Id}"
     Stop-AzureSqlJobExecution -JobExecutionId $jobExecutionId
    ```
 
 ## <a name="delete-a-job-by-name-and-the-jobs-history"></a>根据名称和作业的历史记录删除作业
+
 弹性数据库作业支持异步删除作业。 可将某个作业标记为待删除，系统会在作业的作业执行都已完成后，删除该作业及其所有作业历史记录。 系统不会自动取消处于活动状态的作业执行。  
 
 必须调用 Stop-AzureSqlJobExecution 来取消处于活动状态的作业执行。

@@ -5,24 +5,24 @@ keywords: AD FS, ADFS, AD FS 管理, AAD Connect, Connect, Azure AD, 信任, AAD
 services: active-directory
 documentationcenter: ''
 ms.reviewer: anandyadavmsft
-manager: mtillman
-ms.component: hybrid
+manager: daveba
+ms.subservice: hybrid
 ms.assetid: 2593b6c6-dc3f-46ef-8e02-a8e2dc4e9fb9
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: billmath
 author: billmath
 ms.custom: ''
-ms.openlocfilehash: 5ac69c53a6b6c1e4695b88e5806f8e883cd52c66
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a3115aef45c17dc11d4176486b6ad69a55f0ac0a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432046"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493688"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>使用 Azure AD Connect 管理 AD FS 与 Azure AD 之间的信任关系
 
@@ -38,7 +38,7 @@ Azure AD Connect 可以管理本地 Active Directory 联合身份验证服务 (A
 
 Azure AD Connect **仅**管理与 Azure AD 信任相关的设置。 Azure AD Connect 不会修改 AD FS 中有关其他信赖方信任的任何设置。 下表指出了 Azure AD Connect 控制的设置。
 
-| 设置 | Description |
+| 设置 | 说明 |
 | :--- | :--- |
 | 令牌签名证书 | Azure AD Connect 可用于重置和重新创建与 Azure AD 之间的信任关系。 Azure AD Connect 针对 AD FS 的令牌签名证书执行一次性的立即滚动更新，并更新 Azure AD 域联合设置。|
 | 令牌签名算法 | Microsoft 建议使用 SHA-256 作为令牌签名算法。 Azure AD Connect 可以检测令牌签名算法是否设置为安全性不如 SHA-256 的值。 在下一个可能的配置操作中，它会将设置更新为 SHA-256。 必须更新其他信赖方信任，才能使用新的令牌签名证书。 |
@@ -76,7 +76,7 @@ Azure AD Connect **仅**管理与 Azure AD 信任相关的设置。 Azure AD Con
 
 Azure AD Connect 确保始终使用适当的建议声明规则集来配置 Azure AD 信任。 Microsoft 建议使用 Azure AD Connect 来管理 Azure AD 信任。 本部分列出颁发转换规则集及其说明。
 
-| 规则名称 | Description |
+| 规则名称 | 说明 |
 | --- | --- |
 | 颁发 UPN | 此规则从 userprincipalname 的同步设置中配置的属性查询 userprincipalname 的值。|
 | 查询自定义 ImmutableId 声明的 objectguid 和 msdsconsistencyguid | 此规则在 objectguid 和 msdsconsistencyguid 值（如果存在）的管道中添加一个临时值 |

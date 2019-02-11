@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: ba46ba6429640cf29d9abc75055563fb1578d2e2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a8a50db5ece242bc00a28e66e21c863388950d6f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129584"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756829"
 ---
 # <a name="tuning-azure-data-lake-storage-gen1-for-performance"></a>优化 Azure Data Lake Storage Gen1 性能
 
@@ -49,7 +49,7 @@ Data Lake Storage Gen1 可进行缩放，以便为所有分析方案提供必要
 
 | 工具               | 设置     | 更多详细信息                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| Powershell       | PerFileThreadCount、ConcurrentFileCount |  [链接](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell#performance-guidance-while-using-powershell) |
+| Powershell       | PerFileThreadCount、ConcurrentFileCount |  [链接](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
 | AdlCopy    | Azure Data Lake Analytics 单元  |   [链接](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
 | DistCp            | -m (mapper)   | [链接](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
 | Azure 数据工厂| parallelCopies    | [链接](../data-factory/copy-activity-performance.md)                          |
@@ -134,9 +134,9 @@ HDInsight 群集由两个头节点和一些辅助角色节点组成。 每个辅
 
 除上述常规准则外，每个应用程序都有不同的参数，可用于优化该特定应用程序。 下表列出了一些参数和链接，有助于开始对每个应用程序执行性能优化。
 
-| 工作负载               | 用于设置任务数的参数                                                         |
+| 工作负荷               | 用于设置任务数的参数                                                         |
 |--------------------|-------------------------------------------------------------------------------------|
-| [Spark on HDInisight](data-lake-store-performance-tuning-spark.md)       | <ul><li>Num-executors</li><li>Executor-memory</li><li>Executor-cores</li></ul> |
+| [Spark on HDInsight](data-lake-store-performance-tuning-spark.md)       | <ul><li>Num-executors</li><li>Executor-memory</li><li>Executor-cores</li></ul> |
 | [Hive on HDInsight](data-lake-store-performance-tuning-hive.md)    | <ul><li>hive.tez.container.size</li></ul>         |
 | [MapReduce on HDInsight](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
 | [Storm on HDInsight](data-lake-store-performance-tuning-storm.md)| <ul><li>工作进程数</li><li>Spout 执行器实例数</li><li>Bolt 执行器实例数 </li><li>Spout 任务数</li><li>Bolt 任务数</li></ul>|

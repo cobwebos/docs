@@ -3,19 +3,19 @@ title: 将基于风险的 MFA 和 SSPR 与 Azure Identity Protection 配合使�
 description: 本教程介绍如何启用 Azure Identity Protection 集成，以便进行多重身份验证和自助密码重置，从而减少风险行为。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: fb9ec69476253eaa559fe763dcc2c92994505602
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 504e314151409732cba23af97224683eb35a7c81
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163252"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075476"
 ---
 # <a name="tutorial-use-risk-events-to-trigger-multi-factor-authentication-and-password-changes"></a>教程：使用风险事件触发多重身份验证和密码更改
 

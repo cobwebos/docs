@@ -8,17 +8,16 @@ ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 9453099af8d9be21a97808733ffa8f8bfe5a364a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: b39fb3ed6dbcf8fde2dadf0de59d154285eb8587
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047558"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022532"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>解决数据管理网关的使用问题
 本文提供有关解决数据管理网关使用问题的信息。
@@ -169,7 +168,7 @@ ms.locfileid: "37047558"
 #### <a name="resolution"></a>解决方法
 请按照这些步骤使网关重新处于联机状态：
 
-1. 允许网关计算机和企业防火墙上的 IP 地址出站规则。 可通过 Windows 事件日志查找 IP 地址 (ID == 401)：尝试了以其访问权限 XX.XX.XX.XX:9350 禁止的方式访问套接字。
+1. 允许网关计算机和企业防火墙上的 IP 地址出站规则。 可以从 Windows 事件日志中找到 IP 地址 (ID == 401)：尝试以其访问权限 XX.XX.XX.XX:9350 禁止的方式访问套接字。
 * 在网关上配置代理设置。 有关详细信息，请参阅[代理服务器注意事项](#proxy-server-considerations)部分。
 * 对网关计算机和企业防火墙上的 Windows 防火墙启用出站端口 5671 和 9350-9354。 有关详细信息，请参阅[端口和防火墙](#ports-and-firewall)部分。 此步骤虽为可选步骤，但出于性能方面的考虑，建议执行该步骤。
 

@@ -1,23 +1,24 @@
 ---
-title: 10 分钟创建第一个 LUIS 应用
-titleSuffix: Azure Cognitive Services
+title: 快速入门：创建应用
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 使用预生成的域 `HomeAutomation` 创建 LUIS 应用，以便打开和关闭灯和设备。 此预生成的域为你提供意向、实体和示例话语。 完成本教程后，你会有一个在云中运行的 LUIS 终结点。
 services: cognitive-services
 author: diberry
+ms.custom: seodec18
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 657f5b6879f7782cbd94588657dc0082eff1f9c5
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 1dc7c0d8f5b55b9fcbe2680470dcb1e8d352bcd2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423324"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222621"
 ---
-# <a name="quickstart-use-prebuilt-home-automation-app"></a>快速入门：使用预生成的家庭自动化应用
+# <a name="quickstart-use-prebuilt-home-automation-app"></a>快速入门：使用预构建的家庭自动化应用
 
 在本快速入门中，请使用预生成的域 `HomeAutomation` 来创建 LUIS 应用，以便打开和关闭灯和设备。 此预生成的域为你提供意向、实体和示例话语。 完成本教程后，你会有一个在云中运行的 LUIS 终结点。
 
@@ -32,11 +33,11 @@ ms.locfileid: "52423324"
 
 2. 选择“创建新应用”。
 
-    [![](media/luis-quickstart-new-app/app-list.png "应用列表的屏幕截图")](media/luis-quickstart-new-app/app-list.png)
+    [![应用列表的屏幕截图](media/luis-quickstart-new-app/app-list.png "Screenshot of app list")](media/luis-quickstart-new-app/app-list.png)
 
 3. 在对话框中，将应用程序命名为“家庭自动化”。
 
-    [![](media/luis-quickstart-new-app/create-new-app-dialog.png "“创建新应用”弹出对话框的屏幕截图")](media/luis-quickstart-new-app/create-new-app-dialog.png)
+    [![“创建新应用”弹出对话框的屏幕截图](media/luis-quickstart-new-app/create-new-app-dialog.png "Screenshot of Create new app pop-up dialog")](media/luis-quickstart-new-app/create-new-app-dialog.png)
 
 4. 选择应用程序区域性。 对于此家庭自动化应用，请选择“中文”。 然后选择“完成”。 LUIS 会创建家庭自动化应用。 
 
@@ -47,11 +48,11 @@ ms.locfileid: "52423324"
 
 在左侧导航窗格中选择“预生成的域”。 然后搜索“家庭”。 选择“添加域”。
 
-[![](media/luis-quickstart-new-app/home-automation.png "在预生成域菜单中调用的“家庭自动化”域的屏幕截图")](media/luis-quickstart-new-app/home-automation.png)
+[![在预构建域菜单中调出的家庭自动化域的屏幕截图](media/luis-quickstart-new-app/home-automation.png "Screenshot of Home Automation domain called out in prebuilt domain menu")](media/luis-quickstart-new-app/home-automation.png)
 
 成功添加域以后，预生成域框会显示“删除域”按钮。
 
-[![](media/luis-quickstart-new-app/remove-domain.png "包含删除按钮的“家庭自动化”域的屏幕截图")](media/luis-quickstart-new-app/remove-domain.png)
+[![带删除按钮的家庭自动化域的屏幕截图](media/luis-quickstart-new-app/remove-domain.png "Screenshot of Home Automation domain with remove button")](media/luis-quickstart-new-app/remove-domain.png)
 
 ## <a name="intents-and-entities"></a>意向和实体
 
@@ -62,7 +63,7 @@ ms.locfileid: "52423324"
 
 选择 **HomeAutomation.TurnOff** 意向。 可以看到，此意向包含一系列使用实体标记的话语。
 
-[![](media/luis-quickstart-new-app/home-automation-turnon.png "HomeAutomation.TurnOff 意向的屏幕截图")](media/luis-quickstart-new-app/home-automation-turnon.png)
+[![HomeAutomation.TurnOff 意向的屏幕截图](media/luis-quickstart-new-app/home-automation-turnon.png "Screenshot of HomeAutomation.TurnOff intent")](media/luis-quickstart-new-app/home-automation-turnon.png)
 
 ## <a name="train-the-luis-app"></a>训练 LUIS 应用
 
@@ -79,7 +80,7 @@ Turn off the lights
 
 在以下示例中，“关灯”被正确标识为“HomeAutomation.TurnOff”的评分最高的意向。
 
-[![](media/luis-quickstart-new-app/test.png "“测试”面板的屏幕截图，其中突出显示了话语")](media/luis-quickstart-new-app/test.png)
+[![突出显示了话语的“测试”面板的屏幕截图](media/luis-quickstart-new-app/test.png "Screenshot of Test panel with utterance highlighted")](media/luis-quickstart-new-app/test.png)
 
 
 再次选择“测试”，折叠测试窗格。 
@@ -96,7 +97,7 @@ Turn off the lights
 
 2. 将光标定位到地址中 URL 的末尾并输入 `turn off the living room light`，然后按 Enter。 浏览器会显示 HTTP 终结点的 JSON 响应。
 
-    [![](media/luis-quickstart-new-app/turn-off-living-room.png "浏览器的屏幕截图，其中的 JSON 结果检测到意向 TurnOff")](media/luis-quickstart-new-app/turn-off-living-room.png)
+    [![JSON 结果检测到意向 TurnOff 的浏览器的屏幕截图](media/luis-quickstart-new-app/turn-off-living-room.png "Screenshot of browser with JSON result detects the intent TurnOff")](media/luis-quickstart-new-app/turn-off-living-room.png)
     
 ## <a name="clean-up-resources"></a>清理资源
 

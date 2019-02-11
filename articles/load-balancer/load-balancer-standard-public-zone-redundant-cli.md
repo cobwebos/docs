@@ -1,12 +1,11 @@
 ---
-title: 使用 Azure CLI 对区域冗余的 VM 进行负载均衡 | Microsoft Docs
-description: 了解如何使用 Azure CLI 通过区域冗余的前端创建公共负载均衡器标准
+title: 使用 Azure CLI 让区域冗余的 VM 实现负载均衡
+titlesuffix: Azure Load Balancer
+description: 了解如何使用 Azure CLI 通过区域冗余的前端创建公共标准负载均衡器
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: kumud
-ms.openlocfilehash: dc8a0228c9b2a0c2ab54bc14dc911698593ba691
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7359be235135098779478eebc8a8927e34904ac1
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948530"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197787"
 ---
 #  <a name="load-balance-vms-across-all-availability-zones-using-azure-cli"></a>使用 Azure CLI 跨所有可用性区域对 VM 进行负载均衡
 
@@ -32,7 +31,7 @@ ms.locfileid: "46948530"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.17 或更高版本。  若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.17 或更高版本。  要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 > [!NOTE]
 > 选择 Azure 资源、区域和 VM 大小系列时可使用可用性区域支持。 有关如何开始使用以及可以尝试将可用性区域用于哪些 Azure 资源、区域和 VM 大小系列的详细信息，请参阅[可用性区域概述](https://docs.microsoft.com/azure/availability-zones/az-overview)。 若需支持，可以在 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) 上寻求帮助或者 [open an Azure support ticket](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json)（创建 Azure 支持票证）。  
@@ -61,7 +60,7 @@ az network public-ip create \
 --sku Standard
 ```
 
-## <a name="create-azure-load-balancer-standard"></a>创建标准 Azure 负载均衡器
+## <a name="create-azure-standard-load-balancer"></a>创建 Azure 标准负载均衡器
 本部分详细介绍如何创建和配置负载均衡器的以下组件：
 - 前端 IP 池，用于在负载均衡器上接收传入网络流量。
 - 后端 IP 池，前端池将负载均衡的网络流量发送到此处。

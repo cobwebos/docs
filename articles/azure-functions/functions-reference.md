@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 38d73f38a5e04a42ee15c9206ce760936e3e10c9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 42635852bb5c6e7b388d4dc58b9d5bfaa6212438
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980298"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725841"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions 开发人员指南
 在 Azure Functions 中，特定函数共享一些核心技术概念和组件，不受所用语言或绑定限制。 跳转学习某个特定语言或绑定的详细信息之前，请务必通读此通用概述。
@@ -76,7 +76,7 @@ Azure Functions 运行时或脚本宿主是基础主机，可侦听事件、收�
 ## <a id="fileupdate"></a> 如何更新函数应用文件
 通过 Azure 门户中内置函数编辑器可更新 function.json 文件和函数代码文件。 要上传或更新其他文件，例如 package.json 或 project.json 或是依赖项，必须使用其他部署方法。
 
-Function App 都建立在应用服务之上，因此所有[可用于标准 Web 应用的部署选项](../app-service/app-service-deploy-local-git.md)也均可用于 Function App。 以下为可用的上传或更新函数应用文件的一些方法。 
+Function App 都建立在应用服务之上，因此所有[可用于标准 Web 应用的部署选项](../app-service/deploy-local-git.md)也均可用于 Function App。 以下为可用的上传或更新函数应用文件的一些方法。 
 
 #### <a name="use-local-tools-and-publishing"></a>使用本地工具和发布
 可以使用各种工具创作和发布函数应用，包括 [Visual Studio](./functions-develop-vs.md)、[Visual Studio Code](functions-create-first-function-vs-code.md)、[IntelliJ](./functions-create-maven-intellij.md)、[Eclipse](./functions-create-maven-eclipse.md) 和 [Azure Functions Core Tools](./functions-develop-local.md)。 有关详细信息，请参阅[在本地对 Azure Functions 进行编码和测试](./functions-develop-local.md)。
@@ -87,7 +87,7 @@ Function App 都建立在应用服务之上，因此所有[可用于标准 Web �
 按照本主题中的说明 [Azure Functions 连续部署](functions-continuous-deployment.md) 进行操作。
 
 ## <a name="parallel-execution"></a>并行执行
-多个触发事件发生的速度超过了单线程函数运行的处理速度时，运行时可并行多次调用函数。  如果 Function App 正在使用[消耗量托管计划](functions-scale.md#how-the-consumption-plan-works)，则 Function App 可自动扩大。  无论应用是在消耗量托管计划还是常规[应用服务托管计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)上运行，每个 Function App 实例都可能使用多个线程并行处理并发函数调用。  每个 Function App 实例中并发函数的最大调用数根据所用触发器类型以及 Function App 中其他函数所用资源而有所不同。
+多个触发事件发生的速度超过了单线程函数运行的处理速度时，运行时可并行多次调用函数。  如果 Function App 正在使用[消耗量托管计划](functions-scale.md#how-the-consumption-plan-works)，则 Function App 可自动扩大。  无论应用是在消耗量托管计划还是常规[应用服务托管计划](../app-service/overview-hosting-plans.md)上运行，每个 Function App 实例都可能使用多个线程并行处理并发函数调用。  每个 Function App 实例中并发函数的最大调用数根据所用触发器类型以及 Function App 中其他函数所用资源而有所不同。
 
 ## <a name="functions-runtime-versioning"></a>Functions 运行时版本控制
 

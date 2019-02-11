@@ -9,16 +9,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 4f1e6e7e61cdfd72251120f3c03df7a689aecafe
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8c3883ae6dd2928fb6cc4f22510e7992daac7793
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997448"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015298"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时  
 **集成运行时**是 Azure 数据工厂用于在不同的网络环境之间提供多种数据集成功能的计算基础结构。 数据工厂提供三种类型的集成运行时：
@@ -41,14 +40,14 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 ### <a name="properties"></a>属性
 下表说明该 cmdlet 针对 Azure 集成运行时返回的属性：
 
-| 属性 | 说明 |
+| 属性 | Description |
 -------- | ------------- | 
 | 名称 | Azure 集成运行时的名称。 |  
 | State | Azure 集成运行时的状态。 | 
 | Location | Azure 集成运行时的位置。 有关 Azure 集成运行时位置的详细信息，请参阅[集成运行时简介](concepts-integration-runtime.md)。 |
 | DataFactoryName | Azure 集成运行时所属的数据工厂的名称。 | 
 | ResourceGroupName | 数据工厂所属的资源组的名称。  |
-| 说明 | Azure 集成运行时的说明。  |
+| Description | Azure 集成运行时的说明。  |
 
 ### <a name="status"></a>状态
 下表提供了 Azure 集成运行时的可能状态：
@@ -68,7 +67,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 
 下表提供了**每个节点**的监视属性的说明：
 
-| 属性 | 说明 | 
+| 属性 | Description | 
 | -------- | ----------- | 
 | 名称 | 自承载集成运行时的名称及其关联的节点。 节点是装有自承载集成运行时的本地 Windows 计算机。 |  
 | 状态 | 整个自承载集成运行时和每个节点的状态。 示例：联机/脱机/受限等。有关这些状态的信息，请参阅下一个部分。 | 
@@ -92,7 +91,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 ### <a name="status-per-node"></a>状态（每个节点）
 下表提供了自承载集成运行时节点的可能状态：
 
-| 状态 | 说明 |
+| 状态 | Description |
 | ------ | ------------------ | 
 | 联机 | 节点已连接到数据工厂服务。 |
 | 脱机 | 节点处于脱机状态。 |
@@ -105,7 +104,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 ### <a name="status-overall-self-hosted-integration-runtime"></a>状态（整个自承载集成运行时）
 下表提供了自承载集成运行时的可能状态： 此状态取决于属于运行时的所有节点的状态。 
 
-| 状态 | 说明 |
+| 状态 | Description |
 | ------ | ----------- | 
 | 需要注册 | 尚未将任何节点注册到此自承载集成运行时。 |
 | 联机 | 所有节点处于联机状态。 |
@@ -157,7 +156,7 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 
 ### <a name="properties"></a>属性
 
-| 属性/状态 | 说明 |
+| 属性/状态 | Description |
 | --------------- | ----------- |
 | CreateTime | Azure-SSIS 集成运行时的创建时间（UTC 时间）。 |
 | Nodes | Azure-SSIS 集成运行时的已分配/可用节点、特定于节点的状态 (starting/available/recycling/unavailable) 和可采取措施的错误。 |
@@ -175,16 +174,16 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 | VNetId | Azure-SSIS 集成运行时要加入的虚拟网络资源 ID。 |
 | 子网 | Azure-SSIS 集成运行时要加入的子网名称。 |
 | ID | Azure-SSIS 集成运行时的资源 ID。 |
-| Type | Azure-SSIS 集成运行时的类型 (Managed/Self-Hosted)。 |
+| 类型 | Azure-SSIS 集成运行时的类型 (Managed/Self-Hosted)。 |
 | ResourceGroupName | 在其中创建了数据工厂和 Azure-SSIS 集成运行时的 Azure 资源组的名称。 |
 | DataFactoryName | Azure 数据工厂的名称。 |
 | 名称 | Azure-SSIS 集成运行时的名称。 |
-| 说明 | Azure-SSIS 集成运行时的说明。 |
+| Description | Azure-SSIS 集成运行时的说明。 |
 
   
 ### <a name="status-per-node"></a>状态（每个节点）
 
-| 状态 | 说明 |
+| 状态 | Description |
 | ------ | ----------- | 
 | 正在启动 | 正在准备此节点。 |
 | 可用 | 此节点已准备就绪，可在其中部署/执行 SSIS 包。 |
@@ -193,7 +192,7 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 
 ### <a name="status-overall-azure-ssis-integration-runtime"></a>状态（整个 Azure-SSIS 集成运行时）
 
-| 总体状态 | 说明 | 
+| 总体状态 | Description | 
 | -------------- | ----------- | 
 | Initial | 尚未分配/准备 Azure-SSIS 集成运行时的节点。 | 
 | 正在启动 | 正在分配/准备 Azure-SSIS 集成运行时的节点，计费已开始。 |
@@ -223,7 +222,7 @@ Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Na
 
 - [Azure-SSIS 集成运行时](concepts-integration-runtime.md#azure-ssis-integration-runtime)。 此文提供有关集成运行时（包括 Azure-SSIS IR）的一般概念性信息。 
 - [教程：将 SSIS 包部署到 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 此文提供有关创建 Azure-SSIS IR，并使用 Azure SQL 数据库来承载 SSIS 目录的分步说明。 
-- [如何创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。 本文是对教程的拓展，介绍了如何使用 Azure SQL 数据库托管实例，以及如何将 IR 加入虚拟网络。 
+- [如何：创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。 本文是教程的拓展延伸，介绍了如何使用 Azure SQL 数据库托管实例以及如何将 IR 加入虚拟网络。 
 - [管理 Azure-SSIS IR](manage-azure-ssis-integration-runtime.md)。 此文介绍如何停止、启动或删除 Azure-SSIS IR。 此外，介绍如何通过在 Azure-SSIS IR 中添加更多节点来扩展 IR。 
 - [将 Azure-SSIS IR 加入虚拟网络](join-azure-ssis-integration-runtime-virtual-network.md)。 此文提供有关将 Azure-SSIS IR 加入 Azure 虚拟网络的概念性信息。 此外，还介绍可以执行哪些步骤来使用 Azure 门户配置虚拟网络，以便 Azure-SSIS IR 能够加入虚拟网络。 
 

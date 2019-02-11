@@ -3,19 +3,19 @@ title: 在 Azure Active Directory 中为 B2B 协作配置 SaaS 应用 | Microsof
 description: 有关 Azure Active Directory B2B 协作的代码和 PowerShell 示例
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 78f34183b30f8ea9fe44ddaf2b57b237cbb09749
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 7a6c8ee2b7b54457f5b470858603088438f51c73
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985756"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55082055"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>为 B2B 协作配置 SaaS 应用
 

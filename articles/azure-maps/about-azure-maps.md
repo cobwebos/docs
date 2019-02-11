@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 4db494de87993a6434eaf5dbf441094578d72ea4
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 9bf168a0f06d662526d172687e54327b55d50bd8
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165958"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104261"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 
@@ -62,7 +62,7 @@ Azure Maps 包含以下六个可在 Azure 应用程序中提供地理上下文�
 
 ### <a name="time-zone-service"></a>时区服务
 
-“时区”服务允许你使用纬度-经度对或 [IANA ID](http://www.iana.org/) 来查询当前、历史和将来的时区信息。 时区服务还允许将 Microsoft Windows 时区 ID 转换为 IANA 时区，提取到 UTC 的时区偏移以及获取相应时区中的当前时间。 查询时区服务的典型 JSON 响应如下例所示：
+“时区”服务允许你使用纬度-经度对或 [IANA ID](https://www.iana.org/) 来查询当前、历史和将来的时区信息。 时区服务还允许将 Microsoft Windows 时区 ID 转换为 IANA 时区，提取到 UTC 的时区偏移以及获取相应时区中的当前时间。 查询时区服务的典型 JSON 响应如下例所示：
 
 ```JSON
 {
@@ -109,7 +109,7 @@ Azure Maps 针对移动设备设计，可为跨平台应用程序提供支持。
 
 ## <a name="usage"></a>使用情况
 
-若要访问 Maps 服务，只需导航到 [Azure 门户](http://portal.azure.com)并创建一个 Azure Maps 帐户即可。
+若要访问 Maps 服务，只需导航到 [Azure 门户](https://portal.azure.com)并创建一个 Azure Maps 帐户即可。
 
 Azure Maps 使用基于密钥的身份验证方案。 你的帐户将附带为你预生成的两个密钥。 通过使用任一密钥并向 Azure Maps 服务发出请求，开始将这些位置功能集成到你的应用程序。
 

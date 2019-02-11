@@ -3,19 +3,19 @@ title: Azure 多重身份验证常见问题解答 | Microsoft Docs
 description: 与 Azure 多重身份验证相关的常见问题与解答。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: eb0fa1edaadddfe055f3fc53a6d232e5a1293490
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b6123407c8a9157aaf1d43b8fbdb84ef0c5b5f4d
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424929"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076139"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题解答
 
@@ -74,7 +74,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 
 计费依据是配置为使用多重身份验证的用户数量，无论用户当月是否执行过双重验证。
 
-**问：多重身份验证如何计费？**
+**问：多重身份验证服务如何收费？**
 
 创建按用户或按身份验证计费的 MFA 提供程序时，组织的 Azure 订阅每月根据使用情况计费一次。 此计费模式类似于 Azure 收取虚拟机和网站的使用费。
 
@@ -116,17 +116,19 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 
 ## <a name="manage-and-support-user-accounts"></a>管理和支持用户帐户
 
-**问：如果用户的手机未收到响应，或者用户没带手机，我该怎么告诉他们？**
+**问：如果用户的手机未收到响应，我该告诉他们怎么做？**
 
-但愿用户已配置多种验证方法。 请告诉他们再次尝试登录，但需要在登录页上选择另一种验证方法。
+让用户在 5 分钟内尝试最多 5 次，以便收到电话或短信进行身份验证。 Microsoft 使用多个提供程序，用于进行呼叫和发送短信。 如果这不起作用，请使用 Microsoft 打开支持案例以进一步排除故障。
+
+如果上述步骤不起作用，但愿用户已配置多种验证方法。 请告诉他们再次尝试登录，但需要在登录页上选择另一种验证方法。
 
 可以让用户转到[最终用户故障排除指南](../user-help/multi-factor-authentication-end-user-troubleshoot.md)。
 
-**问：如果某个用户无法进入其帐户，我该办什么？**
+**问：如果某个用户无法进入其帐户，我该怎么做？**
 
 可以要求用户再次完成注册过程来重置其帐户。 详细了解[管理云中 Azure 多重身份验证的用户和设备设置](howto-mfa-userdevicesettings.md)。
 
-**问：如果某个用户丢失了使用应用密码的手机，我该办什么？**
+**问：如果某个用户丢失了使用应用密码的手机，我该怎么做？**
 
 为了防止未经授权的访问，请删除该用户的所有应用密码。 用户购买替代设备后，即可重新创建密码。 详细了解[管理云中 Azure 多重身份验证的用户和设备设置](howto-mfa-userdevicesettings.md)。
 

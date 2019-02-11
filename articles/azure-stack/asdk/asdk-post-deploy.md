@@ -12,19 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 10/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: e099240d3f8670032ff2d6c0fad295c5f14f6e70
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 10/10/2018
+ms.openlocfilehash: 7e052c8d1674cc95a376de5ba6e20ca63b4dd72c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969356"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245518"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>安装 ASDK 后的配置任务
 
-[安装 Azure Stack 开发工具包 (ASDK)](asdk-install.md) 之后，需要实施建议的安装后配置更改。
+在[安装 AzureStack 开发工具包 (ASDK)](asdk-install.md) 之后，当你在 ASDK 主机上以 AzureStack\AzureStackAdmin 的身份登录时，需要进行一些建议的安装后配置更改。 
 
 ## <a name="install-azure-stack-powershell"></a>安装 Azure Stack PowerShell
 
@@ -44,6 +45,19 @@ Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 > 在安装所需版本之前，请务必[卸载任何现有 Azure PowerShell 模块](../azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-powershell-modules)。
 
 - **已从 ASDK 主机建立 Internet 连接**。 运行以下 PowerShell 脚本，在开发工具包安装中安装以下模块：
+
+  - Azure Stack 1811 或更高版本：
+
+    ``` PowerShell
+    # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet. 
+    Install-Module -Name AzureRm.BootStrapper
+
+    # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
+    Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
+
+    # Install Azure Stack Module Version 1.6.0.
+    Install-Module -Name AzureStack -RequiredVersion 1.6.0
+    ```
 
   - Azure Stack 1808 或更高版本：
 
@@ -95,7 +109,7 @@ Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
   Save-Package `
     -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.3.0
   
-  # AzureStack requries 1.5.0 for version 1808, 1.4.0 for versions after 1803, and 1.2.11 for versions before 1803
+  # AzureStack requires 1.5.0 for version 1808, 1.4.0 for versions after 1803, and 1.2.11 for versions before 1803
   Save-Package `
     -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.5.0
   ```

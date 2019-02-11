@@ -3,19 +3,19 @@ title: ClaimsTransformations - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C 标识体验框架架构中 ClaimsTransformations 元素的定义。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: b569fe6a354bed315fd2136cafdade667b6f3a8b
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.subservice: B2C
+ms.openlocfilehash: 403e126795a877be018cf4f4eb42581dee080e9c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432778"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163154"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -35,7 +35,7 @@ ClaimsTransformations 元素包含一个可在用户旅程中用作[自定义策
 
 ClaimsTransformation 元素包含以下属性：
 
-| 属性 |必选 | Description |
+| 属性 |必选 | 说明 |
 | --------- |-------- | ----------- |
 | ID |是 | 用于唯一标识声明转换的标识符。 从策略中的其他 XML 元素引用此标识符。 |
 | TransformationMethod | 是 | 用于声明转换的转换方法。 每个声明转换都有其自己的值。 有关可用值的完整列表，请参阅[声明转换引用](#Claims-transformations-reference)。 |
@@ -59,7 +59,7 @@ ClaimsTransformation 元素包含以下元素：
 ```
 
 
-| 元素 | 出现次数 | Description |
+| 元素 | 出现次数 | 说明 |
 | ------- | -------- | ----------- |
 | InputClaims | 0:1 | InputClaim 元素列表，这些元素用于指定被看作声明转换输入的声明类型。 每个元素都包含对在策略的 ClaimsSchema 部分定义的 ClaimType 的引用。 |
 | InputParameters | 0:1 | InputParameter 元素列表，这些元素作为声明转换输入提供。  
@@ -69,7 +69,7 @@ ClaimsTransformation 元素包含以下元素：
 
 InputClaims 元素包含以下元素：
 
-| 元素 | 出现次数 | Description |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | InputClaim | 1:n | 预期的输入声明类型。 |
 
@@ -77,7 +77,7 @@ InputClaims 元素包含以下元素：
 
 InputClaim 元素包含以下属性：
 
-| 属性 |必选 | Description |
+| 属性 |必选 | 说明 |
 | --------- | ----------- | ----------- |
 | ClaimTypeReferenceId |是 | 对在策略的 ClaimsSchema 部分定义的 ClaimType 的引用。 |
 | TransformationClaimType |是 | 用于引用转换声明类型的标识符。 每个声明转换都有其自己的值。 有关可用值的完整列表，请参阅[声明转换引用](#Claims-transformations-reference)。 |
@@ -86,13 +86,13 @@ InputClaim 元素包含以下属性：
 
 InputParameters 元素包含以下元素：
 
-| 元素 | 出现次数 | Description |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | InputParameter | 1:n | 预期的输入参数。 |
 
 #### <a name="inputparameter"></a>InputParameter
 
-| 属性 | 必选 |Description |
+| 属性 | 必选 |说明 |
 | --------- | ----------- |----------- |
 | ID | 是 | 是对声明转换方法的参数的引用的标识符。 每个声明转换方法都有其自己的值。 有关可用值的完整列表，请参阅声明转换表。 |
 | 数据类型 | 是 | 参数的数据类型，例如根据自定义策略 XML 架构中的 DataType 枚举的字符串、布尔值、Int 或 DateTime。 此类型用于正确执行算术操作。 每个声明转换都有其自己的值。 有关可用值的完整列表，请参阅[声明转换引用](#Claims-transformations-reference)。 |
@@ -102,7 +102,7 @@ InputParameters 元素包含以下元素：
 
 OutputClaims 元素包含以下元素：
 
-| 元素 | 出现次数 | Description |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0:n | 预期的输出声明类型。 |
 
@@ -110,7 +110,7 @@ OutputClaims 元素包含以下元素：
 
 OutputClaim 元素包含以下属性：
 
-| 属性 |必选 | Description |
+| 属性 |必选 | 说明 |
 | --------- | ----------- |----------- |
 | ClaimTypeReferenceId | 是 | 对在策略的 ClaimsSchema 部分定义的 ClaimType 的引用。
 | TransformationClaimType | 是 | 用于引用转换声明类型的标识符。 每个声明转换都有其自己的值。 有关可用值的完整列表，请参阅[声明转换引用](#Claims-transformations-reference)。 |

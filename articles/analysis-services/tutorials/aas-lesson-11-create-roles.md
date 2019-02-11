@@ -5,19 +5,19 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1a9ecea835e42c90ce7d71617666d210182fe465
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 5b89051cab7e89f79a2b62a392173e6dc234e48d
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428895"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189739"
 ---
 # <a name="create-roles"></a>创建角色
 
-在本课中，将创建角色。 角色通过仅允许属于角色成员的用户进行访问，提供模型数据库对象和数据安全性。 每个角色都定义有单一权限：无、读取、读取和处理、处理，或管理员。 在创作模型期间，可以使用角色管理器来定义角色。 在部署模型后，可以使用 SQL Server Management Studio (SSMS) 来管理角色。 若要了解详细信息，请参阅[角色](https://docs.microsoft.com/sql/analysis-services/tabular-models/roles-ssas-tabular)。
+在本课中，将创建角色。 角色通过仅允许属于角色成员的用户进行访问，提供模型数据库对象和数据安全性。 每个角色都定义了一个权限：无、读取、读取和处理、处理或管理员。 在创作模型期间，可以使用角色管理器来定义角色。 在部署模型后，可以使用 SQL Server Management Studio (SSMS) 来管理角色。 若要了解详细信息，请参阅[角色](https://docs.microsoft.com/sql/analysis-services/tabular-models/roles-ssas-tabular)。
   
 > [!NOTE]  
 > 创建角色不是完成本教程所必需的。 默认情况下，当前用来登录的帐户具有对模型的管理员权限。 不过，若要允许组织中的其他用户使用某个报告客户端来进行浏览，则必须至少创建一个具有读取权限的角色并将那些用户添加为其成员。  
@@ -32,7 +32,7 @@ ms.locfileid: "49428895"
   
 因为组织中的 Windows 用户和组帐户具有唯一性，所以可以将特定组织中的帐户添加为成员。 不过，对于本教程，也可以将成员保留为空。 可在后面的“第 12 课：在 Excel 中分析”中测试每个角色的效果。  
   
-本课预计完成时间：**15 分钟**  
+本课程预计完成时间：15 分钟  
   
 ## <a name="prerequisites"></a>先决条件  
 本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，应当已完成上一课：[第 10 课：创建分区](../tutorials/aas-lesson-10-create-partitions.md)。  

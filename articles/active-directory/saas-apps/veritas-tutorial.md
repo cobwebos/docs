@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Veritas Enterprise Vault.cloud SSO 集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 Veritas Enterprise Vault.cloud SSO 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Veritas Enterprise Vault.cloud SSO 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -7,19 +7,19 @@ author: jeevansd
 manager: femila
 ms.assetid: c47894b1-f5df-4755-845d-f12f4c602dc4
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 4ff282b3db4689ceaf5fa27b57c82cb05025712e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 0b2d4acb3a717f51d0ff15868dea917806b5b604
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449091"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181956"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>教程：Azure Active Directory 与 Veritas Enterprise Vault.cloud SSO 集成
 
@@ -148,7 +148,7 @@ ms.locfileid: "39449091"
 1. 若要在 **Veritas Enterprise Vault.cloud SSO** 端配置单一登录，需要将下载的**证书(Base64)** 和 **SAML 单一登录服务 URL** 发送给 [Veritas Enterprise Vault.cloud SSO 支持团队](https://www.veritas.com/support/.html)。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -184,7 +184,7 @@ ms.locfileid: "39449091"
  
 ### <a name="creating-a-veritas-enterprise-vaultcloud-sso-test-user"></a>创建 Veritas Enterprise Vault.cloud SSO 测试用户
 
-在本部分中，将在 Enterprise Vault.cloud SSO 中创建一个名为“Britta Simon”的用户。 请协助 [Veritas Enterprise Vault.cloud SSO 支持团队](https://www.veritas.com/support/.html)将用户添加到 Enterprise Vault.cloud SSO 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Enterprise Vault.cloud SSO 中创建一个名为“Britta Simon”的用户。 与  [Veritas Enterprise Vault.cloud SSO 支持团队](https://www.veritas.com/support/.html) 协作，将用户添加到 Enterprise Vault.cloud SSO 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -225,7 +225,7 @@ ms.locfileid: "39449091"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

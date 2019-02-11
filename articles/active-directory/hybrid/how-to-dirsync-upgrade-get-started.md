@@ -1,10 +1,10 @@
 ---
-title: Azure AD Connect：从 DirSync 升级 | Microsoft 文档
+title: Azure AD Connect：从 DirSync 升级 | Microsoft Docs
 description: 了解如何从 DirSync 升级到 Azure AD Connect。 本文介绍从 DirSync 升级到 Azure AD Connect 的步骤。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: baf52da7-76a8-44c9-8e72-33245790001c
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 41bbc2fd57617bb4bafb121f9c766b1f673dd075
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 12a11e444372ad7004e566851532a98be63af8e8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228617"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195352"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect：从 DirSync 升级
 Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 DirSync 升级的方式。 这些步骤不适用于从另一个版本的 Azure AD Connect 或从 Azure AD Sync 升级。
@@ -103,7 +103,7 @@ Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 D
      系统会显示有关 DirSync 使用的现有 SQL Server 数据库服务器的信息。 如果需要，请做相应的调整。 单击“下一步”继续安装。
    * 如果有超过 50,000 个对象，则会看到以下屏幕：  
      ![分析完成，已准备好从 DirSync 升级](./media/how-to-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)  
-     若要继续进行就地升级，请单击消息旁的复选框：“继续在此计算机上升级 DirSync”。
+     若要继续进行就地升级，请单击以下消息旁的复选框：“继续在此计算机上升级 DirSync”。
      要改为进行[并行部署](#parallel-deployment)，请导出 DirSync 配置设置，将该配置迁移到新的服务器。
 5. 提供当前用于连接 Azure AD 的帐户的密码。 这必须是 DirSync 当前使用的帐户。  
    ![输入 Azure AD 凭据](./media/how-to-dirsync-upgrade-get-started/ConnectToAzureAD.png)  
@@ -213,7 +213,7 @@ Azure AD Connect 现在为活动服务器，不得切换回去使用现有的 Di
 ## <a name="next-steps"></a>后续步骤
 安装 Azure AD Connect 后，可以[验证安装并分配许可证](how-to-connect-post-installation.md)。
 
-了解有关这些功能（在安装过程中已启用）的详细信息，请参阅[自动升级](how-to-connect-install-automatic-upgrade.md)、[防止意外删除](how-to-connect-sync-feature-prevent-accidental-deletes.md)和 [Azure AD Connect Health](how-to-connect-health-sync.md)。
+若要了解有关这些新功能（在安装过程中已启用）的详细信息，请参阅：[自动升级](how-to-connect-install-automatic-upgrade.md)、[防止意外删除](how-to-connect-sync-feature-prevent-accidental-deletes.md)和 [Azure AD Connect Health](how-to-connect-health-sync.md)。
 
 若要了解有关这些常见主题的详细信息，请参阅[计划程序以及如何触发同步](how-to-connect-sync-feature-scheduler.md)。
 

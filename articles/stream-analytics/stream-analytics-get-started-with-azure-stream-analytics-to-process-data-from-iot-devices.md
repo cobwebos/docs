@@ -2,19 +2,19 @@
 title: 使用 Azure 流分析的 IoT 实时数据流
 description: 带流分析和实时数据处理的 IoT 传感器标记和数据流
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: 8a4e5b180438203e345ef6c5323ab010f4757c0e
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: b008fe128aa760197c34d8c14c4d3b92cbed2bd2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978070"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103160"
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>开始使用 Azure 流分析处理来自 IoT 设备的数据
 在本教程中，会学习如何创建流处理逻辑，以从物联网 (IoT) 设备收集数据。 我们会使用真实的物联网 (IoT) 用例来演示如何经济实惠地快速生成解决方案。
@@ -56,35 +56,35 @@ Contoso 是一家工业自动化公司，该公司已将其制造流程完全自
    > 
 4. 选中复选框以将作业置于仪表板上，然后单击“创建”。
    
-    ![正在创建作业](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03a.png)
+    ![正在执行流分析作业创建](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03a.png)
 5. 此时会在浏览器窗口右上角显示“部署已启动...”。 很快它会变为已完成的窗口，如下所示。
    
-    ![正在创建作业](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03b.png)
+    ![流分析部署成功](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03b.png)
 
 ## <a name="create-an-azure-stream-analytics-query"></a>创建 Azure 流分析查询
 创建作业后，应将其打开并生成查询。 可通过单击对应的磁贴，轻松访问作业。
 
-![作业磁贴](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
+![Azure 门户中的流分析作业磁贴](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
 
 在“作业拓扑”窗格中，单击“查询”框以转到查询编辑器。 “查询”编辑器允许输入针对传入事件数据执行转换的 T-SQL 查询。
 
-![查询框](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
+![流分析仪表板查询磁贴](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
 ### <a name="query-archive-your-raw-data"></a>查询：存档原始数据
 查询的最简单形式是传递查询，该查询会将所有输入数据存档到其指定的输出。 将示例数据文件从 [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot) 下载到计算机中的某个位置。 
 
 1. 从 PassThrough.txt 文件粘贴查询。 
    
-    ![测试输入流](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
+    ![将查询粘贴到流分析查询编辑器中](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
 2. 单击输入旁边的三个点，并选择“从文件上载示例数据”框。
    
-    ![测试输入流](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06a.png)
+    ![选择在文件中上传示例数据](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06a.png)
 3. 将打开右侧的窗格。请在其中从下载位置选择 HelloWorldASA-InputStream.json 数据文件，然后在窗格底部单击“确定”。
    
-    ![测试输入流](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06b.png)
+    ![上传 json 示例数据文件](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06b.png)
 4. 然后，在窗口左上区域单击“测试”齿轮，处理针对示例数据集的测试查询。 处理完成后，会在查询下方显示结果窗口。
    
-    ![测试结果](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
+    ![流分析查询的测试结果](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
 ### <a name="query-filter-the-data-based-on-a-condition"></a>查询：根据条件筛选数据
 让我们尝试基于条件筛选结果。 我们希望仅显示来自“sensorA”的事件的结果。 查询在 Filtering.txt 文件中。
@@ -110,5 +110,5 @@ Contoso 是一家工业自动化公司，该公司已将其制造流程完全自
 此时使用 **LEFT OUTER** 联接到相同的数据流（自联接）。 对于 **INNER** 联接，仅当找到匹配项时才返回结果。  对于 **LEFT OUTER** 联接，如果联接左侧的事件不匹配，则返回右侧所有列中带 NULL 的行。 这种方法对于查找事件缺失很有用。 有关详细信息，请参阅 MSDN 文档 [JOIN](https://msdn.microsoft.com/library/azure/dn835026.aspx)（联接）。
 
 ## <a name="conclusion"></a>结束语
-本教程旨在演示如何编写不同的流分析查询语言查询，并在浏览器中查看结果。 但是，这仅仅是一个开始。 使用流分析还可以完成许多其他操作。 流分析支持多种输入和输出，甚至可以使用 Azure 机器学习中的函数，因而是用于分析数据流的可靠工具。 可以通过 [learning map](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/)（学习路线图）开始详细了解流分析。 有关如何编写查询的详细信息，请阅读有关[常用查询模式](stream-analytics-stream-analytics-query-patterns.md)的文章。
+本教程旨在演示如何编写不同的流分析查询语言查询，并在浏览器中查看结果。 但是，这仅仅是一个开始。 使用流分析还可以完成许多其他操作。 流分析支持多种输入和输出，甚至可以使用 Azure 机器学习中的函数，因而是用于分析数据流的可靠工具。 可以通过 [learning map](https://docs.microsoft.com/azure/stream-analytics/)（学习路线图）开始详细了解流分析。 有关如何编写查询的详细信息，请阅读有关[常用查询模式](stream-analytics-stream-analytics-query-patterns.md)的文章。
 

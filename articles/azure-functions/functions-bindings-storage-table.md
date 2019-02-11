@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 56616ff01ff70230a591285014ed291a2fdc7b34
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: bd85214efc3c8f67d41563e3ca46a1e2278c4868
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250982"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062667"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 表存储绑定
 
@@ -26,7 +26,7 @@ ms.locfileid: "50250982"
 
 ## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
-[Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet 包 2.x 版中提供了表存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) GitHub 存储库中提供了此包的源代码。
+[Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet 包 2.x 版中提供了表存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -779,7 +779,7 @@ public static MyPoco TableOutput(
 
   在 C# 和 C# 脚本中，可以使用 `out T paramName` 等方法参数或函数返回值访问输出表实体。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 如果 *function.json* 文件或 `Table` 特性提供了分区键和行键，则 `T` 可以是任何可序列化类型。 否则，`T` 必须是包含 `PartitionKey` 和 `RowKey` 属性的类型。 在此方案中，`T` 通常实现 `ITableEntity` 或派生自 `TableEntity`，但不一定非要这样。
 
-* **在 C# 或 C# 脚本中写入一行或多行**
+* **用 C# 或 C# 脚本写入一行或多行**
 
   在 C# 和 C# 脚本中，可以使用方法参数 `ICollector<T> paramName` 或 `IAsyncCollector<T> paramName` 访问输出表实体。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 `T` 指定要添加的实体的架构。 通常，`T` 派生自 `TableEntity` 或实现 `ITableEntity`，但不一定非要这样。 此方案不使用 *function.json* 中的分区键和行键值，也不使用 `Table` 特性构造函数。
 

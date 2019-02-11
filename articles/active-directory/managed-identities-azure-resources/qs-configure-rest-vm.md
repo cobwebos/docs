@@ -3,23 +3,23 @@ title: 如何在 Azure VM 上使用 REST 配置系统分配的托管标识和用
 description: 分步说明如何在 Azure VM 上通过使用 CURL 进行 REST API 调用来配置系统分配的托管标识和用户分配的托管标识。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/25/2018
-ms.author: daveba
-ms.openlocfilehash: 6f147aa7066db19c1be451b0a5ac49bfce9f571b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.author: priyamo
+ms.openlocfilehash: 7b44d58f14da06bdcbd7e9d9ada4976049969c81
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422927"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158972"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>使用 REST API 调用在 Azure VM 上配置 Azure 资源的托管标识
 
@@ -79,7 +79,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    ```
    
    **请求标头**
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -167,7 +167,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
    **请求标头**
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -199,7 +199,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    ```
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -234,7 +234,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
     
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -276,7 +276,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    ```
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -335,7 +335,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -416,7 +416,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -506,7 +506,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01 HTTP/1.1
    ```
    **请求标头**
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。
 
@@ -527,7 +527,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    ```
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        |
@@ -559,7 +559,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -595,7 +595,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -634,7 +634,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -674,7 +674,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    ```
 
    **请求标头**
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。
@@ -697,7 +697,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -729,7 +729,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -759,7 +759,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 **请求标头**
 
-|请求标头  |Description  |
+|请求标头  |说明  |
 |---------|---------|
 |*Content-Type*     | 必需。 设置为 `application/json`。        |
 |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -786,7 +786,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 **请求标头**
 
-|请求标头  |Description  |
+|请求标头  |说明  |
 |---------|---------|
 |*Content-Type*     | 必需。 设置为 `application/json`。        |
 |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。| 

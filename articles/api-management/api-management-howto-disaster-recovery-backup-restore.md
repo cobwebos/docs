@@ -11,29 +11,29 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 0dc7e8836f1e6a11c44f5e0f337015cac53a92d4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7da97b763c532a2189ef058cbb8ffb14c5b150f9
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252796"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968367"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 
-通过 Azure API 管理选择发布和管理 API，即可充分利用了许多容错和基础结构功能，否则必须设计、实现和管理这些功能。 Azure 平台通过花费少量成本消除大量潜在故障。
+通过 Azure API 管理来发布和管理 API，即可充分利用容错和基础结构功能，否则需手动设计、实现和管理这些功能。 Azure 平台通过花费少量成本消除大量潜在故障。
 
-若要从影响托管着 API 管理服务的区域的可用性问题中恢复，应随时准备好在不同的区域中重建服务。 根据可用性目标和恢复时间目标，可能要在一个或多个区域中保留备份服务，并尝试使其配置和内容与活动服务保持同步。 服务“备份和还原”功能为实现灾难恢复策略提供了必要的构建基块。
+若要从影响托管着 API 管理服务的区域的可用性问题中恢复，应随时准备好在另一区域中重建服务。 根据可用性目标和恢复时间目标，可能需要在一个或多个区域中保留备份服务。 也可尝试使其配置和内容与活动服务保持同步。 服务“备份和还原”功能为实现灾难恢复策略提供了必要的构建基块。
 
-本指南介绍了如何对 Azure 资源管理器请求进行身份验证以及如何备份和还原 API 管理服务实例。
+本指南介绍如何对 Azure 资源管理器请求进行身份验证。 另外还介绍如何备份和还原 API 管理服务实例。
 
 > [!NOTE]
 > 为灾难恢复备份和还原 API 管理服务实例的过程还可用于为暂存之类的方案复制 API 管理服务实例。
 >
 > 每个备份都会在 30 天后过期。 如果在 30 天有效期到期后尝试还原备份，还原会失败并显示 `Cannot restore: backup expired` 消息。
->
->
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="authenticating-azure-resource-manager-requests"></a>对 Azure 资源管理器请求进行身份验证
 
@@ -48,17 +48,17 @@ ms.locfileid: "51252796"
 
 ### <a name="create-an-azure-active-directory-application"></a>创建 Azure Active Directory 应用程序
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 使用包含 API 管理服务实例的订阅导航到 Azure Active Directory 中的“应用注册”选项卡（Azure Active Directory > 管理/应用注册）。
 
     > [!NOTE]
-    > 如果 Azure Active Directory 默认目录对帐户不可见，请联系 Azure 订阅的管理员以向帐户授予所需权限。
+    > 如果 Azure Active Directory 默认目录对帐户不可见，请联系 Azure 订阅的管理员，要求他们向你的帐户授予必要的权限。
 3. 单击“新建应用程序注册”。
 
     此时将在右侧显示“创建”窗口。 可以在其中输入 AAD 应用相关信息。
 4. 输入应用程序的名称。
 5. 对于应用程序类型，选择“本机”。
-6. 输入占位符 URL，如为“重定向 URI”输入 `http://resources`，因为它是必填字段，但以后不使用该值。 单击此复选框保存应用程序。
+6. 输入占位符 URL，例如，为“重定向 URI”输入 `http://resources`，因为它是必填字段，但以后不使用该值。 单击此复选框保存应用程序。
 7. 单击“创建”。
 
 ### <a name="add-an-application"></a>添加应用程序
@@ -68,7 +68,7 @@ ms.locfileid: "51252796"
 3. 单击“+添加”。
 4. 按“选择 API”。
 5. 选择“Windows Azure 服务管理 API”。
-6. 按“选择”。 
+6. 按“选择”。
 
     ![添加权限](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
 
@@ -78,7 +78,7 @@ ms.locfileid: "51252796"
 
 ### <a name="configuring-your-app"></a>配置应用
 
-在调用生成备份并还原它的 API 之前，必须获取令牌。 以下示例使用 [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) NuGet 包来检索令牌。
+在调用可生成备份并还原它的 API 之前，需获取令牌。 以下示例使用 [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) NuGet 包来检索令牌。
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -105,9 +105,9 @@ namespace GetTokenResourceManagerRequests
 }
 ```
 
-根据以下说明替换 `{tentand id}`、`{application id}` 和 `{redirect uri}`。
+根据以下说明替换 `{tenant id}`、`{application id}` 和 `{redirect uri}`。
 
-1. 将 `{tenant id}` 替换为你创建的 Azure Active Directory 应用程序的租户 ID。 可通过单击“应用注册” -> “终结点”访问此 ID。
+1. 将 `{tenant id}` 替换为已创建的 Azure Active Directory 应用程序的租户 ID。 可通过单击“应用注册” -> “终结点”访问此 ID。
 
     ![终结点][api-management-endpoint]
 2. 将 `{application id}` 替换为通过导航到“设置”页面获得的值。
@@ -122,7 +122,7 @@ namespace GetTokenResourceManagerRequests
 
 ## <a name="calling-the-backup-and-restore-operations"></a>调用备份和还原操作
 
-REST API 为 [Api 管理服务 - 备份](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/apimanagementservice_backup)和 [Api 管理服务 - 还原](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/apimanagementservice_restore)。
+REST API 为 [Api 管理服务 - 备份](/rest/api/apimanagement/apimanagementservice/backup)和 [Api 管理服务 - 还原](/rest/api/apimanagement/apimanagementservice/restore)。
 
 在调用以下部分中所述的“备份和还原”操作之前，为 REST 调用设置授权请求标头。
 
@@ -131,22 +131,22 @@ request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 ```
 
 ### <a name="step1"></a>备份 API 管理服务
+
 若要备份 API 管理服务问题，请发送以下 HTTP 请求：
 
-```
+```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}
 ```
 
 其中：
 
-* `subscriptionId` - 包含尝试备份的 API 管理服务的订阅的 ID
+* `subscriptionId` - 订阅的 ID，该订阅包含的 API 管理服务是你尝试备份的
 * `resourceGroupName` - Azure API 管理服务的资源组名称
 * `serviceName` - 正在创建其备份的 API 管理服务的名称，在创建时指定
 * `api-version` - 替换为 `2018-06-01-preview`
 
 在请求正文中，指定目标 Azure 存储帐户名称、访问密钥、blob 容器名称和备份名称：
 
-
 ```json
 {
   "storageAccount": "{storage account name for the backup}",
@@ -158,32 +158,33 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 将 `Content-Type` 请求标头的值设置为 `application/json`。
 
-备份是长时间运行的操作，可能需要数分钟才能完成。  如果请求已成功并且已启动备份过程，将收到带有 `Location` 标头的 `202 Accepted` 响应状态代码。  向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当备份正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示备份操作成功完成。
+备份是长时间运行的操作，可能需要数分钟才能完成。  如果请求已成功且备份过程已开始，则会收到带有 `Location` 标头的 `202 Accepted` 响应状态代码。  向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当备份正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示备份操作成功完成。
 
-发出备份请求时请注意以下限制。
+发出备份请求时请注意以下限制：
 
 * 请求正文中指定的**容器****必须存在**。
-* 当备份正在进行时，**不应尝试任何服务管理操作**，如 SKU 升级或降级、域名更改等。
+* 当备份正在进行时，请**避免更改服务管理**，例如 SKU 升级或降级、域名更改等。
 * 从创建时开始，**备份还原仅保证 30 天**。
 * 用于创建分析报表的**用法数据****不包括**在备份中。 使用 [Azure API 管理 REST API][Azure API Management REST API] 定期检索分析报表以保证安全。
-* 执行服务备份的频率将影响恢复点目标。 为最大程度地降低影响，建议实现定期备份，并且在对 API 管理服务进行重大更改后执行按需备份。
-* 备份操作正在进行时对服务配置（例如 API、策略、开发人员门户外观）所做的**更改****可能不包含在备份中，因此将丢失**。
+* 执行服务备份的频率将影响恢复点目标。 为了最大程度减少它，建议实施定期备份，以及在对 API 管理服务进行更改后执行按需备份。
+* 备份操作正在进行时对服务配置（例如 API、策略、开发人员门户外观）所做的**更改****可能不包含在备份中，会丢失**。
 
 ### <a name="step2"></a>还原 API 管理服务
+
 若要从之前创建的备份还原 API 管理服务，请发出以下 HTTP 请求：
 
-```
+```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}
 ```
 
 其中：
 
-* `subscriptionId` - 包含正在将备份还原到的 API 管理服务的订阅 ID
-* `resourceGroupName` - 包含要将备份还原到的 Azure API 管理服务的资源组的名称
-* `serviceName` - 正在还原到的 API 管理服务的名称，在创建时指定
+* `subscriptionId` - 订阅 ID，该订阅包含的 API 管理服务是需要将备份还原到其中的
+* `resourceGroupName` - 资源组的名称，该资源组包含的 Azure API 管理服务是需要将备份还原到其中的
+* `serviceName` - 要将备份还原到其中的 API 管理服务的名称，在创建时指定
 * `api-version` - 替换为 `2018-06-01-preview`
 
-在请求正文中，指定备份文件位置，即 Azure 存储帐户名称、访问密钥、blob 容器名称和备份名称：
+在请求正文中，指定备份文件位置。 也就是说，添加 Azure 存储帐户名称、访问密钥、Blob 容器名称和备份名称：
 
 ```json
 {
@@ -196,12 +197,14 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 将 `Content-Type` 请求标头的值设置为 `application/json`。
 
-还原是长时间运行的操作，可能需要长达 30 分钟或更长时间才能完成。 如果请求已成功并且已启动还原过程，将收到带有 `Location` 标头的 `202 Accepted` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当还原正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示还原操作成功完成。
+还原是长时间运行的操作，可能需要长达 30 分钟或更长时间才能完成。 如果请求已成功且还原过程已开始，则会收到带有 `Location` 标头的 `202 Accepted` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当还原正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示还原操作成功完成。
 
 > [!IMPORTANT]
 > 要还原到的服务的 **SKU** 必须与正在还原的已备份服务的 SKU **匹配**。
 >
 > 还原操作正在进行时对服务配置（例如 API、策略、开发人员门户外观）所做的**更改****可能会被覆盖**。
+
+<!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
 > 也可分别运行 PowerShell Backup-AzureRmApiManagement 和 Restore-AzureRmApiManagement 命令，执行备份和还原操作。
@@ -218,7 +221,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 [Backup an API Management service]: #step1
 [Restore an API Management service]: #step2
 
-[Azure API Management REST API]: http://msdn.microsoft.com/library/azure/dn781421.aspx
+[Azure API Management REST API]: https://msdn.microsoft.com/library/azure/dn781421.aspx
 
 [api-management-add-aad-application]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-add-aad-application.png
 

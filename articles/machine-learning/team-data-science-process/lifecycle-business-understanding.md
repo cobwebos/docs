@@ -1,24 +1,24 @@
 ---
-title: Team Data Science Process 生命周期的业务理解阶段 - Azure | Microsoft Docs
-description: 你的数据科学项目业务理解阶段的目标、任务和可交付结果
+title: Team Data Science Process 中的业务理解
+description: Team Data Science Process 中数据科学项目业务理解阶段的目标、任务和可交付结果。
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 3d2a6bf5a7e4766ca6205c413dd27fa9a69c16b7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 3e897a3fbc76a75e526e4d0706a2678cd29dfc2e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446715"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477448"
 ---
-# <a name="business-understanding"></a>了解业务
+# <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期的业务理解阶段
 
 本文概述了与 Team Data Science Process (TDSP) 的业务理解阶段相关联的目标、任务和可交付结果。 此过程提供可用于构建数据科学项目的建议生命周期。 该生命周期概述了项目通常执行的主要阶段（通常以迭代方式进行）：
 
@@ -92,5 +92,3 @@ ms.locfileid: "52446715"
    5. [客户验收](lifecycle-acceptance.md)
 
 我们还提供了完整的演练，演示特定方案过程中的所有步骤。 [示例演练](walkthroughs.md)一文提供了包含链接和缩略图描述的方案列表。 该演练演示如何将云、本地工具以及服务结合到一个工作流或管道中，以创建智能应用程序。 
-
-有关如何在使用 Azure 机器学习工作室的 TDSP 中执行步骤的示例，请参阅[通过 Azure 机器学习使用 TDSP](https://aka.ms/datascienceprocess)。

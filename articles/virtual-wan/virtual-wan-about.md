@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/25/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: fedb41f6538e0c65114c4a28c8aa43ffc7ef6d7f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: c2edb821eb8bd9a5da7a6cce81269e7d3f611722
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957594"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869885"
 ---
 # <a name="what-is-azure-virtual-wan"></a>什么是 Azure 虚拟 WAN？
 
@@ -29,7 +29,7 @@ Azure Virtual WAN 是一种网络服务，它通过 Azure 提供经优化、自�
 
 ## <a name="s2s"></a>站点到站点连接
 
-若要使用虚拟 WAN 创建站点到站点连接，可以咨询[虚拟 WAN 合作伙伴](https://go.microsoft.com/fwlink/p/?linkid=2019615)，或手动创建连接。
+若要使用虚拟 WAN 创建站点到站点连接，可以咨询[虚拟 WAN 合作伙伴](virtual-wan-locations-partners.md)，或手动创建连接。
 
 ### <a name="s2spartner"></a>与虚拟 WAN 合作伙伴合作
 
@@ -46,11 +46,11 @@ Azure Virtual WAN 是一种网络服务，它通过 Azure 提供经优化、自�
 
 点到站点 (P2S) 连接用于创建从单个客户端计算机到虚拟中心的安全连接。 可通过从客户端计算机启动连接来建立 P2S 连接。 对于要从远程位置（例如从家里或会议室）连接的远程工作者，此解决方案很有用。 如果只有一些客户端需要连接，则还可以使用 P2S VPN 这一解决方案来代替 S2S VPN。
 
-若要手动创建连接，请参阅[使用虚拟 WAN 创建点到站点连接](https://go.microsoft.com/fwlink/p/?linkid=2020051&clcid)。
+若要手动创建连接，请参阅[使用虚拟 WAN 创建点到站点连接](virtual-wan-point-to-site-portal.md)。
 
 ## <a name="er"></a>ExpressRoute 连接（预览版）
 
-若要手动创建连接，请参阅[使用虚拟 WAN 创建 ExpressRoute 连接](https://go.microsoft.com/fwlink/p/?linkid=2020148&clcid)。
+若要手动创建连接，请参阅[使用虚拟 WAN 创建 ExpressRoute 连接](virtual-wan-expressroute-portal.md)。
 
 
 ## <a name="resources"></a>虚拟 WAN 资源
@@ -76,4 +76,4 @@ Azure Virtual WAN 是一种网络服务，它通过 Azure 提供经优化、自�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 查看[虚拟 WAN 合作伙伴和位置](https://aka.ms/virtualwan)
+查看[虚拟 WAN 合作伙伴和位置](virtual-wan-locations-partners.md)页。

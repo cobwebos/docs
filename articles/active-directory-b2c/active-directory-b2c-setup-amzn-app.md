@@ -3,25 +3,25 @@ title: 使用 Azure Active Directory B2C 设置通过 Amazon 帐户注册与登�
 description: 使用 Azure Active Directory B2C 提供在应用程序中通过 Amazon 帐户注册与登录到客户的设置。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 5bc1e0faf01125f498eb339bba841b96f6de9d82
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.subservice: B2C
+ms.openlocfilehash: 207a33931d7be88355241ea8c282dc7c39c9971c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181798"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169954"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Amazon 帐户注册与登录
 
 ## <a name="create-an-amazon-application"></a>创建 Amazon 应用程序
 
-要将 Amazon 帐户用作 Azure Active Directory (Azure AD) B2C 中的标识提供者，需要在表示它的租户中创建一个应用程序。 如果还没有 Amazon 帐户，可以在 [http://www.amazon.com/](http://www.amazon.com/) 获取。
+要将 Amazon 帐户用作 Azure Active Directory (Azure AD) B2C 中的标识提供者，需要在表示它的租户中创建一个应用程序。 如果还没有 Amazon 帐户，可以在 [https://www.amazon.com/](https://www.amazon.com/) 获取。
 
 1. 使用 Amazon 帐户凭据登录 [Amazon 开发人员中心](https://login.amazon.com/)。
 2. 如果未曾登录过，请单击“注册”，按照开发人员注册步骤，并接受策略。

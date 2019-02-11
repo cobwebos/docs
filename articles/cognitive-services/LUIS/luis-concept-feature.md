@@ -1,25 +1,26 @@
 ---
-title: Azure 认知服务中 LUIS 应用的功能
-titleSuffix: Azure Cognitive Services
-description: 将特征添加到语言模型，提供有关如何识别需要标记或分类的输入的提示。 特征可帮助 LUIS 识别意向和实体。
+title: 功能
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: 将特征添加到语言模型，提供有关如何识别需要标记或分类的输入的提示。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 43b2b1485e6a33162f7fc08631094f3e975f8cdb
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 35f05df39a37b64c9619ef31455944207de13246
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638242"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216075"
 ---
-# <a name="phrase-list-features-in-luis"></a>LUIS 中的短语列表特征
+# <a name="phrase-list-features-in-your-luis-app"></a>LUIS 应用中的短语列表特征
 
-在机器学习中，特征是系统观察到的数据的不同特征或属性。 
+在机器学习中，*特征*是系统观察到的数据的特征或特有属性。 
 
 将特征添加到语言模型，提供有关如何识别需要标记或分类的输入的提示。 特征帮助 LUIS 识别意向和实体，但特征本身不是意向或实体。 相反，特征可能提供相关术语的示例。  
 
@@ -28,12 +29,25 @@ ms.locfileid: "49638242"
 
 短语列表添加到应用域的词汇中，作为这些字词的第二个 LUIS 信号。
 
+## <a name="phrase-lists-help-all-models"></a>短语列表可以帮助所有模型
+
+短语列表未链接到特定意向或实体，但作为增强项添加到所有模型。 其目的是改进意向检测和实体分类。
+
 ## <a name="how-to-use-phrase-lists"></a>如何使用短语列表
 在人力资源应用的[简单实体教程](luis-quickstart-primary-and-secondary-data.md)中，应用使用作业类型的“工作”短语列表，例如程序员、屋顶工和秘书。 如果将其中一个值标记为机器学习实体，则 LUIS 会学习识别其他值。 
 
-短语列表可能是可互换的也可能是不可互换的。 可互换短语列表适用于同义的值，而不可互换短语列表适用于不同义但在应用中仍需要其他信号的值。 
+短语列表可能是可互换的也可能是不可互换的。 可互换短语列表适用于同义的值，而不可互换短语列表用作应用的特定词汇列表。 随着你不断扩展应用词汇短语列表，你可能会发现一些术语有许多种形式（同义词）。 将它们分入另一个可互换的短语列表。 
+
+|列表类型|目的|
+|--|--|
+|可互换|将其更换为列表中的其他字词后具有相同意向和实体提取的同义词或字词。|
+|不可互换|相对于该语言中的其他通用字词，更特定于应用的应用词汇。|
+
+短语列表不仅有助于实体检测，还有助于意向分类，其中不可互换短语列表有添加英语中未知的集外词等作用。
+
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
+
 ## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>短语列表有助于识别简单的可互换实体
 可互换短语列表是优化 LUIS 应用性能的一种好方法。 如果应用在预测正确意向的表述或识别实体时存在困难，请思考表述是否包含异常字词，或者包含含义不明的字词。 这些词是列入短语列表的优秀候选词。
 

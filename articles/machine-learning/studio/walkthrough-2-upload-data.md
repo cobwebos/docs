@@ -1,27 +1,8 @@
 ---
-title: 步骤 2：将数据上传到机器学习工作室试验中 - Azure | Microsoft Docs
-description: 开发预测解决方案演练步骤 2：将存储的公共数据上传到 Azure 机器学习工作室。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
-editor: cgronlun
-ms.assetid: 9f4bc52e-9919-4dea-90ea-5cf7cc506d85
-ms.service: machine-learning
-ms.component: studio
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/23/2017
-ms.openlocfilehash: 0dc39d42e1ad7cc955b0bdc91d9a4c5cb49a2f2e
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311970"
+title:“步骤 2：将数据上传到机器学习工作室试验中”titleSuffix:Azure 机器学习工作室 description:“开发预测解决方案演练的步骤 2：将存储的公共数据上传到 Azure 机器学习工作室。”
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:2017/03/23
 ---
 # <a name="walkthrough-step-2-upload-existing-data-into-an-azure-machine-learning-studio-experiment"></a>演练步骤 2：将现有数据上传到 Azure 机器学习工作室试验中
 这是演练的第二步，[在 Azure 机器学习中开发预测分析解决方案](walkthrough-develop-predictive-solution.md)
@@ -29,32 +10,32 @@ ms.locfileid: "52311970"
 1. [创建机器学习工作区](walkthrough-1-create-ml-workspace.md)
 2. **上传现有数据**
 3. [创建新试验](walkthrough-3-create-new-experiment.md)
-4. [定型和评估模型](walkthrough-4-train-and-evaluate-models.md)
+4. [培训和评估模型](walkthrough-4-train-and-evaluate-models.md)
 5. [部署 Web 服务](walkthrough-5-publish-web-service.md)
 6. [访问 Web 服务](walkthrough-6-access-web-service.md)
 
 - - -
-若要开发用于信贷风险的预测模型，我们需要用于训练和测试模型的数据。 对于本演练，我们使用 UC Irvine 机器学习存储库的“UCI Statlog(德国信贷数据)数据集”。 可在此处找到以下内容：  
+若要开发用于信贷风险的预测模型，我们需要用于训练和测试模型的数据。 对于本演练，我们将使用 UC Irvine 机器学习存储库的“UCI Statlog(德国信贷数据)数据集”。 可在此处找到以下内容：  
 <a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
 
-我们使用名为“german.data”的文件。 将此文件下载到本地硬盘。  
+我们使用名为“german.data”的文件。 将此文件下载到本地硬盘驱动器。  
 
-**german.data** 数据集包含 1000 个以前的信贷申请人的 20 个变量行。 这 20 个变量代表数据集的功能集（*功能向量*），此功能集提供每个信贷申请人的标识特征。 每行中的额外列表示申请人经计算的信贷风险，700 个申请人标识为低信贷风险，300 个申请人标识为高风险。
+**german.data** 数据集包含 1000 个以前的信贷申请人的 20 个变量行。 这 20 个变量代表数据集的特征集（*特征向量*），此特征集提供每个信贷申请人的标识特征。 每行增加一列表示申请人经计算的信贷风险，其中700 个申请人标识为低信贷风险，300 个申请人标识为高信贷风险。
 
 UCI 网站提供此数据的功能向量的属性说明。 这包括财务信息、信贷历史记录、就业状态和个人信息。 每个申请人都将提供二进制分级，指示他们的信贷风险是高还是低。 
 
-我们将使用此数据训练预测分析模型。 操作完成后，模型应能够接受新个人的功能向量，并预测其信贷风险是低还是高。  
+我们将使用此数据训练一个预测分析模型。 操作完成后，模型应能够接受一个新个体的特征向量，并预测其信贷风险是低还是高。  
 
 下面是一个有趣的转折。 UCI 网站上的数据集说明提及了如果我们对人员的信用风险进行错误的分类所要付出的代价。
 如果模型预测某个人员具有高信用风险，而实际上该人员具有低信用风险，则该模型进行了错误分类。
-而反向错误分类会使金融机构付出五倍以上的代价：如果模型预测某个人员具有低信用风险，而实际上该人员具有高信用风险。
+但对金融机构而言，反向错误分类会付出五倍的代价：如果模型预测某个人员具有低信贷风险，而实际上该人员具有高信贷风险。
 
 因此，我们想要训练模型，使后一种类型的错误分类代价高于其他方式的错误分类五倍。
-在实验中训练模型时实现此目的的一个简单方法是重复表示高信用风险用户的条目（5 次）。 然后，如果模型将实际上具有高风险的某人错误分类为低信用风险，则模型会执行该相同的错误分类五次（每个重复项一次）。 这会增加此错误在训练结果中的成本。
+在实验中训练模型时实现此目的的一个简单方法是复制（5 次）表示高信用风险用户的条目。 然后，如果模型将实际上具有高风险的某人错误分类为低信用风险，则模型会执行该相同的错误分类五次（每个重复项一次）。 这会增加此错误在训练结果中的成本。
 
 
 ## <a name="convert-the-dataset-format"></a>转换数据集格式
-原始数据集使用空白分隔的格式。 机器学习工作室使用逗号分隔值 (CSV) 文件效果更好，所以我们通过将空格替换为逗号来转换数据集。  
+原始数据集使用空格分隔的格式。 机器学习工作室使用逗号分隔值 (CSV) 文件效果更好，所以我们通过将空格替换为逗号来转换数据集。  
 
 转换此数据的方法有很多。 一种方法是使用以下 Windows PowerShell 命令：   
 
@@ -101,7 +82,7 @@ UCI 网站提供此数据的功能向量的属性说明。 这包括财务信息
 
 有关将其他类型的数据导入实验的详细信息，请参阅[将训练数据导入 Azure 机器学习工作室](import-data.md)。
 
-**下一步：[创建新实验](walkthrough-3-create-new-experiment.md)**
+下一步：[新建新实验](walkthrough-3-create-new-experiment.md)
 
 [1]: media/walkthrough-2-upload-data/menu.png
 [2]: media/walkthrough-2-upload-data/add-dataset.png

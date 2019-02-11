@@ -3,18 +3,18 @@ title: Runbook 输入参数
 description: Runbook 输入参数可让你将数据传递到启动的 Runbook，以增加 Runbook 的弹性。 本文介绍在 Runbook 中使用输入参数的不同方案。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 650effed388dde4419e2ff6aede2f0468551a959
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: d22a2de29e170979d9ab5d61c7f21a47d6aee99c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276680"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433435"
 ---
 # <a name="runbook-input-parameters"></a>Runbook 输入参数
 
@@ -97,7 +97,7 @@ Param
    | **属性** | **说明** |
    |:--- |:--- |
    | 名称 |必需。 参数的名称。 在 Runbook 中必须唯一，并且只能包含字母、数字或下划线字符。 必须以字母开头。 |
-   | Description |可选。 有关输入参数用途的说明。 |
+   | 说明 |可选。 有关输入参数用途的说明。 |
    | 类型 |可选。 参数值的预期数据类型。 支持的参数类型包括 **String**、**Int32**、**Int64**、**Decimal**、**Boolean**、**DateTime** 和 **Object**。 如果未选择数据类型，将默认为 **String**。 |
    | 必需 |可选。 指定是否必须为该参数提供值。 如果选择“是”，则启动 Runbook 时必须提供一个值。 如果选择“否”，则启动 Runbook 时不需要提供值，并且可以设置一个默认值。 |
    | 默认值 |可选。 指定在启动 Runbook 时未传入值的情况下要用于参数的值。 对于不是必需的参数，可以设置默认值。 若要设置默认值，请选择“自定义”。 除非在 Runbook 启动时提供了其他值，否则将使用此值。 如果不想提供任何默认值，请选择“无”。 |
@@ -151,7 +151,7 @@ Runbook 有多种启动方式：通过 Azure 门户、Webhook、PowerShell cmdle
 
 #### <a name="start-a-published-runbook-by-using-powershell-cmdlets-and-assign-parameters"></a>使用 PowerShell cmdlet 启动已发布的 Runbook 并分配参数
 
-* **Azure 资源管理器 cmdlet**：可使用 [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) 启动在资源组中创建的自动化 Runbook。
+* **Azure 资源管理器 cmdlet：** 可使用 [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) 启动在资源组中创建的自动化 Runbook。
   
   **示例：**
   
@@ -160,7 +160,7 @@ Runbook 有多种启动方式：通过 Azure 门户、Webhook、PowerShell cmdle
   
   Start-AzureRmAutomationRunbook -AutomationAccountName “TestAutomation” -Name “Get-AzureVMGraphical” –ResourceGroupName $resourceGroupName -Parameters $params
   ```
-* **Azure 经典部署模型 cmdlet**：可以使用 [Start-AzureAutomationRunbook](https://docs.microsoft.com/powershell/module/servicemanagement/azure/start-azureautomationrunbook) 启动在默认资源组中创建的自动化 Runbook。
+* **Azure 经典部署模型 cmdlet：** 可使用 [Start-AzureAutomationRunbook](https://docs.microsoft.com/powershell/module/servicemanagement/azure/start-azureautomationrunbook) 启动在默认资源组中创建的自动化 Runbook。
   
   **示例：**
   
@@ -196,7 +196,7 @@ Runbook 有多种启动方式：通过 Azure 门户、Webhook、PowerShell cmdle
       return response.Job;
       }
   ```
-* **Azure 经典部署模型方法：** 可使用编程语言的 SDK 启动 Runbook。 以下 C# 代码段用于在自动化帐户中启动 Runbook。 可以在 [GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)中查看完整代码。
+* **Azure 经典部署模型方法：** 可使用编程语言的 SDK 来启动 Runbook。 以下 C# 代码段用于在自动化帐户中启动 Runbook。 可以在 [GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)中查看完整代码。
   
   ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
@@ -236,13 +236,13 @@ Runbook 有多种启动方式：通过 Azure 门户、Webhook、PowerShell cmdle
 在请求 URI 中替换以下参数：
 
 * **subscription-id：** Azure 订阅 ID。  
-* **cloud-service-name：** 请求所要发送到的云服务的名称。  
+* **cloud-service-name：** 请求所应发送到的云服务的名称。  
 * **automation-account-name：** 托管在指定云服务中的自动化帐户的名称。  
 * **job-id：** 作业的 GUID。 使用 **[GUID]::NewGuid().ToString()** 命令可以创建 PowerShell 中的 GUID。
 
 要将参数传递到 Runbook 作业，请使用请求正文。 它采用两个以 JSON 格式提供的属性：
 
-* **名称：** 必需。 作业要启动的 Runbook 的名称。  
+* **Runbook 名称：** 必需。 作业要启动的 Runbook 的名称。  
 * **Runbook 参数：** 可选。 参数列表的字典；列表必须采用 (名称, 值) 格式，其中的名称应为字符串类型，值可以是任何有效的 JSON 值。
 
 如果想要启动之前以 **VMName** 和 **resourceGroupName** 作为参数创建的 **Get-AzureVMTextual Runbook**，请使用以下 JSON 格式的请求正文。
@@ -285,4 +285,5 @@ Runbook 有多种启动方式：通过 Azure 门户、Webhook、PowerShell cmdle
 * 有关以不同方式启动 Runbook 的详细信息，请参阅[启动 Runbook](automation-starting-a-runbook.md)。
 * 若要编辑文本 Runbook，请参阅[编辑文本 Runbook](automation-edit-textual-runbook.md)。
 * 若要编辑图形 Runbook，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)。
+
 

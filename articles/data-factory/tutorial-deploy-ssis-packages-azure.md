@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: ed14dc45af3f47032e54c946486c4de70aeae11a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: b3c9c2b5040dfc00aa1e8c5eeea57693f86b62d1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214947"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453155"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中预配 Azure-SSIS 集成运行时
 本教程提供使用 Azure 门户在 Azure 数据工厂中预配 Azure-SSIS 集成运行时 (IR) 的步骤。 然后，可以使用 SQL Server Data Tools (SSDT) 或 SQL Server Management Studio (SSMS) 在 Azure 的此运行时中部署并运行 SQL Server Integration Services (SSIS) 包。 有关 Azure-SSIS IR 的概念性信息，请参阅 [Azure-SSIS 集成运行时概述](concepts-integration-runtime.md#azure-ssis-integration-runtime)。
@@ -33,13 +33,13 @@ ms.locfileid: "50214947"
 - **Azure 订阅**。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 
 - **Azure SQL 数据库服务器** 如果还没有数据库服务器，请在启动之前在 Azure 门户中创建一个。 Azure 数据工厂在此数据库服务器上创建 SSIS 目录（SSISDB 数据库）。 建议在集成运行时所在的同一 Azure 区域中创建数据库服务器。 此配置允许集成运行时将执行日志写入 SSISDB 数据库而无需跨 Azure 区域。 
 - 根据所选数据库服务器的不同，SSISDB 的创建方式也不相同：可以代表你作为单个数据库创建、可以充当弹性池的一部分创建，也可以在托管实例中创建，并可在公用网络中访问或者通过加入虚拟网络来访问。 如果结合使用 Azure SQL 数据库与虚拟网络服务终结点/托管实例来托管 SSISDB，或需要访问本地数据，那么必须将 Azure-SSIS IR 加入虚拟网络（请参阅[在虚拟网络中创建 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)）。 
-- 确认为数据库服务器启用了“允许访问 Azure 服务”设置。 如果结合使用 Azure SQL 数据库与虚拟网络服务终结点/托管实例来托管 SSISDB，这并不适用。 有关详细信息，请参阅[保护 Azure SQL 数据库](../sql-database/sql-database-security-tutorial.md#create-a-server-level-firewall-rule-in-the-azure-portal)。 若要通过 PowerShell 来启用此设置，请参阅 [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule?view=azurermps-4.4.1)。 
+- 确认为数据库服务器启用了“允许访问 Azure 服务”设置。 如果结合使用 Azure SQL 数据库与虚拟网络服务终结点/托管实例来托管 SSISDB，这并不适用。 有关详细信息，请参阅[保护 Azure SQL 数据库](../sql-database/sql-database-security-tutorial.md#create-firewall-rules)。 若要通过 PowerShell 来启用此设置，请参阅 [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule?view=azurermps-4.4.1)。 
 - 将客户端计算机的 IP 地址或一系列包括客户端计算机 IP 地址的 IP 地址添加到数据库服务器的防火墙设置中的客户端 IP 地址列表。 有关详细信息，请参阅 [Azure SQL 数据库服务器级和数据库级防火墙规则](../sql-database/sql-database-firewall-configure.md)。 
 - 若要连接到数据库服务器，可以将 SQL 身份验证与服务器管理员凭据配合使用，也可以将 Azure Active Directory (AAD) 身份验证与 Azure 数据工厂 (ADF) 托管标识配合使用。  对于后者，需将 ADF 的托管标识添加到有权访问数据库服务器的 AAD 组中，详见[使用 AAD 身份验证创建 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。 
 - 确认 Azure SQL 数据库服务器没有 SSIS 目录（SSISDB 数据库）。 预配 Azure-SSIS IR 时不支持使用现有 SSIS 目录。 
 
 > [!NOTE]
-> - 如需目前提供数据工厂和 Azure-SSIS Integration Runtime 的 Azure 区域的列表，请参阅 [ADF + SSIS IR 可用性（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all)。 
+> - 如需目前提供数据工厂和 Azure-SSIS 集成运行时的 Azure 区域的列表，请参阅 [ADF + SSIS IR 可用性（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all)。 
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
@@ -78,11 +78,33 @@ ms.locfileid: "50214947"
 
 1. 选择“创作和监视”，在单独的选项卡中打开数据工厂用户界面 (UI)。 
 
-## <a name="provision-an-azure-ssis-integration-runtime"></a>预配 Azure-SSIS 集成运行时
+## <a name="create-an-azure-ssis-integration-runtime"></a>创建 Azure-SSIS 集成运行时
+
+### <a name="from-the-data-factory-overview"></a>使用数据工厂概览
 
 1. 在“入门”页中，选择“配置 SSIS 集成运行时”磁贴。 
 
    ![“配置 Azure SSIS 集成运行时”磁贴](./media/tutorial-create-azure-ssis-runtime-portal/configure-ssis-integration-runtime-tile.png)
+
+1. 请参阅[预配 Azure-SSIS 集成运行时](#provision-an-azure-ssis-integration-runtime)部分，了解用于设置 Azure-SSIS IR 的剩余步骤。 
+
+### <a name="from-the-authoring-ui"></a>使用创作 UI
+
+1. 在 Azure 数据工厂 UI 中切换到“编辑”选项卡，选择“连接”，然后切换到“集成运行时”选项卡以查看数据工厂中的现有集成运行时。 
+
+   ![用于查看现有 IR 的选择](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
+
+1. 选择“新建”以创建 Azure-SSIS IR。 
+
+   ![通过菜单创建集成运行时](./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png)
+
+1. 在“集成运行时安装”窗口中选择“直接迁移现有的 SSIS 包以在 Azure 中执行”，然后选择“下一步”。 
+
+   ![指定集成运行时的类型](./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png)
+
+1. 请参阅[预配 Azure-SSIS 集成运行时](#provision-an-azure-ssis-integration-runtime)部分，了解用于设置 Azure-SSIS IR 的剩余步骤。 
+
+## <a name="provision-an-azure-ssis-integration-runtime"></a>预配 Azure-SSIS 集成运行时
 
 1. 在“集成运行时安装”的“常规设置”页中完成以下步骤： 
 
@@ -98,7 +120,7 @@ ms.locfileid: "50214947"
 
    e. 对于“节点数”，请选择集成运行时群集中的节点数。 仅显示支持的节点数。 如果需要并行运行多个包，请选择包含许多节点的大型群集（横向扩展）。 
 
-   f. 对于“版本/许可证”，请选择集成运行时的 SQL Server 版本/许可证：Standard 或 Enterprise。 如果需要在集成运行时上使用高级功能，请选择“Enterprise”。 
+   f. 对于“版本/许可证”，请选择集成运行时的 SQL Server 版本/许可证：“标准”或“企业”。 如果需要在集成运行时上使用高级功能，请选择“Enterprise”。 
 
    g. 对于“节省资金”，请选择适用于集成运行时的 Azure 混合权益 (AHB) 选项：“是”或“否”。 如果需要自带具有软件保障的 SQL Server 许可证，以便充分利用使用混合权益带来的成本节省，请选择“是”。 
 
@@ -112,15 +134,15 @@ ms.locfileid: "50214947"
 
    b. 对于“位置”，请选择用于托管 SSISDB 的数据库服务器的位置。 建议选择集成运行时的位置。 
 
-   c. 对于“目录数据库服务器终结点”，请选择用于承载 SSISDB 的数据库服务器的终结点。 SSISDB 创建方式因选定数据库服务器而异：可以你的名义创建为独立数据库，可创建为弹性池的一部分，也可以在托管实例中创建为可在公用网络中访问或通过加入虚拟网络访问的数据库。 有关如何选择用于托管 SSISDB 的数据库服务器类型的指导，请参阅[比较 SQL 数据库逻辑服务器和托管实例](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance)。 如果选择结合使用 Azure SQL 数据库与虚拟网络服务终结点/托管实例来托管 SSISDB，或需要访问本地数据，那么必须将 Azure-SSIS IR 加入虚拟网络。 请参阅[在虚拟网络中创建 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。 
+   c. 对于“目录数据库服务器终结点”，请选择用于承载 SSISDB 的数据库服务器的终结点。 根据所选数据库服务器的不同，SSISDB 的创建方式也不相同：可以代表你作为单个数据库创建、可以充当弹性池的一部分创建，也可以在托管实例中创建，并可在公用网络中访问或者通过加入虚拟网络来访问。 有关如何选择用于托管 SSISDB 的数据库服务器类型的指导，请参阅[比较 Azure SQL 数据库单一数据库/弹性池和托管实例](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance)。 如果选择结合使用 Azure SQL 数据库与虚拟网络服务终结点/托管实例来托管 SSISDB，或需要访问本地数据，那么必须将 Azure-SSIS IR 加入虚拟网络。 请参阅[在虚拟网络中创建 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。 
 
-   d. 在“使用 AAD 身份验证...”复选框中，选择数据库服务器用来托管 SSISDB 的身份验证方法：SQL 或使用 Azure 数据工厂 (ADF) 托管标识的 Azure Active Directory (AAD)。 如果勾选它，则需将 ADF 的托管标识添加到有权访问数据库服务器的 AAD 组中，详见[使用 AAD 身份验证创建 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。 
+   d. 在“使用 AAD 身份验证...”复选框中，选择数据库服务器用来承载 SSISDB 的身份验证方法：使用 Azure 数据工厂 (ADF) 的托管标识的 SQL 或 Azure Active Directory (AAD)。 如果勾选它，则需将 ADF 的托管标识添加到有权访问数据库服务器的 AAD 组中，详见[使用 AAD 身份验证创建 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。 
 
    e. 对于“管理员用户名”，请输入用于承载 SSISDB 的数据库服务器的 SQL 身份验证用户名。 
 
    f. 对于“管理员密码”，请输入用于承载 SSISDB 的数据库服务器的 SQL 身份验证密码。 
 
-   g. 对于“目录数据库服务层”，请选择用于托管 SSISDB 的数据库服务器的服务层：基本/标准/高级层或弹性池名称。 
+   g. 对于“目录数据库服务层”，请选择用于承载 SSISDB 的数据库服务器的服务层：基本/标准/高级层或弹性池名称。 
 
    h. 单击“测试连接”，如果成功，则单击“下一步”。 
 
@@ -150,22 +172,6 @@ ms.locfileid: "50214947"
 1. 使用“操作”列中的链接可以停止/启动、编辑或删除集成运行时。 使用最后一个链接可以查看集成运行时的 JSON 代码。 仅当 IR 已停止时，才会启用编辑和删除按钮。 
 
    ![“操作”列中的链接](./media/tutorial-create-azure-ssis-runtime-portal/azure-ssis-ir-actions.png) 
-
-## <a name="create-an-azure-ssis-integration-runtime"></a>创建 Azure-SSIS 集成运行时
-
-1. 在 Azure 数据工厂 UI 中切换到“编辑”选项卡，选择“连接”，然后切换到“集成运行时”选项卡以查看数据工厂中的现有集成运行时。 
-
-   ![用于查看现有 IR 的选择](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
-
-1. 选择“新建”以创建 Azure-SSIS IR。 
-
-   ![通过菜单创建集成运行时](./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png)
-
-1. 在“集成运行时安装”窗口中选择“直接迁移现有的 SSIS 包以在 Azure 中执行”，然后选择“下一步”。 
-
-   ![指定集成运行时的类型](./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png)
-
-1. 请参阅[预配 Azure-SSIS 集成运行时](#provision-an-azure-ssis-integration-runtime)部分，了解用于设置 Azure-SSIS IR 的剩余步骤。 
 
 ## <a name="deploy-ssis-packages"></a>部署 SSIS 包
 现在，使用 SQL Server Data Tools (SSDT) 或 SQL Server Management Studio (SSMS) 来将 SSIS 包部署到 Azure。 连接到托管 SSIS 目录（SSISDB 数据库）的 Azure SQL 数据库服务器。 Azure SQL 数据库服务器的名称采用 `<servername>.database.windows.net` 格式。 

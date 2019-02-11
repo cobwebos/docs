@@ -1,5 +1,5 @@
 ---
-title: 处理和提取 Azure 搜索中的图像中的文本 | Microsoft Docs
+title: 在认知搜索中处理和提取图像中的文本 - Azure 搜索
 description: 处理和提取 Azure 搜索的认知搜索管道中的图像中的文本和其他信息。
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 5ee821f3d1e81e581f376d4b14b3e8393a8f190c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec2018
+ms.openlocfilehash: b4829b0da656c648db732b2e7564de6db8fbf2eb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444626"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312606"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>如何处理和提取认知搜索方案中的图像中的信息
 
@@ -90,7 +91,7 @@ ms.locfileid: "52444626"
 
 ## <a name="image-related-skills"></a>图像相关技术
 
-有两项内置的认知技术以图像为输入：[OCR](cognitive-search-skill-ocr.md) 和[图像分析](cognitive-search-skill-image-analysis.md)。 
+有两项内置的认知技能以图像作为输入：[OCR](cognitive-search-skill-ocr.md) 和[图像分析](cognitive-search-skill-image-analysis.md)。 
 
 目前，这些技术仅适用于通过文档破解步骤生成的图像。 因此，唯一支持的输入为 `"/document/normalized_images"`。
 

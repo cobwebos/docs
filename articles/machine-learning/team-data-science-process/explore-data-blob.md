@@ -1,22 +1,22 @@
 ---
-title: 使用 pandas 浏览 Azure blob 存储中的数据 | Microsoft Docs
-description: 如何使用 pandas 浏览存储在 Azure blob 容器中的数据。
+title: 使用 pandas 浏览 Azure blob 存储中的数据 - Team Data Science Process
+description: 如何使用 pandas Python 包浏览存储在 Azure blob 容器中的数据。
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 12e277168d27786581d14adc4c32b94d0979df6d
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 1d76f9a76c85f4f3f052c3b409f5be28b51ebe91
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441574"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459122"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>使用 pandas 浏览 Azure blob 存储中的数据
 

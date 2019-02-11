@@ -1,5 +1,5 @@
 ---
-title: 始终加密：SQL 数据库 - Azure Key Vault | Microsoft 文档
+title: Always Encrypted：SQL 数据库 - Azure Key Vault | Microsoft Docs
 description: 本文演示如何使用 SQL Server Management Studio 中的始终加密向导，通过数据加密来保护 SQL 数据库中的敏感数据。
 keywords: 数据加密, 加密密钥, 云加密
 services: sql-database
@@ -12,15 +12,15 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 5499193ba96d5a32ac6d3b310eee531c68fd52fb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/03/2019
+ms.openlocfilehash: fa37a83799ec50c7a8a87a0ac8a3232035a49234
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255911"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755656"
 ---
-# <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted：保护敏感数据并将加密密钥存储在 Azure 密钥保管库中
+# <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted：保护敏感数据并将加密密钥存储在 Azure Key Vault 中
 
 本文演示如何使用 [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt459280.aspx) 中的[始终加密向导](https://msdn.microsoft.com/library/hh213248.aspx)，通过数据加密来保护 SQL 数据库中的敏感数据。 它还包括如何将每个加密密钥存储在 Azure 密钥保管库的说明。
 
@@ -60,6 +60,7 @@ ms.locfileid: "51255911"
     $userPrincipalName = '<username@domain.com>'
     $applicationId = '<application ID from your AAD application>'
     $resourceGroupName = '<resource group name>'
+    # Use the same resource group name when creating your SQL Database below
     $location = '<datacenter location>'
     $vaultName = 'AeKeyVault'
 
@@ -80,7 +81,7 @@ ms.locfileid: "51255911"
 ## <a name="create-a-blank-sql-database"></a>创建空的 SQL 数据库
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 转到“创建资源” > “数据库” > “SQL 数据库”。
-3. 在新服务器或现有服务器上创建名为 **Clinic** 的**空**数据库。 若要深入了解如何在 Azure 门户中创建数据库，请参阅[ SQL 数据库](sql-database-get-started-portal.md)。
+3. 在新服务器或现有服务器上创建名为 **Clinic** 的**空**数据库。 若要深入了解如何在 Azure 门户中创建数据库，请参阅[ SQL 数据库](sql-database-single-database-get-started.md)。
    
     ![创建空数据库](./media/sql-database-always-encrypted-azure-key-vault/create-database.png)
 
@@ -132,7 +133,7 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
    
     ![加密列](./media/sql-database-always-encrypted-azure-key-vault/encrypt-columns.png)
 
-始终加密向导包括以下部分：**列选择**、**主密钥配置**、**验证**和**摘要**。
+Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置**、**验证**和**摘要**。
 
 ### <a name="column-selection"></a>列选择
 单击“简介”页上的“下一步”，可以打开“列选择”页。 在此页上，选择想要加密的列，[加密类型和要使用的列加密密钥 (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2)。

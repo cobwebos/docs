@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 06a7e23eb16cf6296a8997273ea8d554851600c3
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: f31fccd2bf6d0daae03b025b53a41a0fad4ce2ef
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456484"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210125"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 到 Azure 复制中的移动服务自动更新
 
@@ -25,7 +25,7 @@ Azure Site Recovery 每月发布一次，增加对现有功能或新功能的增
  
 ## <a name="how-does-automatic-update-work"></a>自动更新的工作原理
 
-一旦允许 Site Recovery 管理更新，则将通过自动化帐户（与保管库在同一订阅中创建）部署 Azure 服务使用的全局 runbook。 一个自动化帐户用于一个特定保管库。 runbook 检查保管库中每个已启用自动更新的 VM，并在新版本可用时启动移动服务拓展升级。 根据复制虚拟机地区的时区，runbook 默认计划在每天上午 12:00 重复。 如有必要，用户还可通过自动化帐户修改 runbook 计划。 
+一旦允许 Site Recovery 管理更新，则将通过自动化帐户（与保管库在同一订阅中创建）部署 Azure 服务使用的全局 runbook。 一个自动化帐户用于一个特定保管库。 runbook 检查保管库中每个已启用自动更新的 VM，并在新版本可用时启动移动服务拓展升级。 根据复制虚拟机地区的时区，runbook 默认计划在每天上午 12:00 重复运行。 如有必要，用户还可通过自动化帐户修改 runbook 计划。 
 
 > [!NOTE]
 > 启用自动更新不需要重新启动 Azure VM，并且不影响正在进行的复制。
@@ -53,7 +53,7 @@ Azure Site Recovery 每月发布一次，增加对现有功能或新功能的增
 1. 在保管库中，导航到“管理”-> “Site Recovery 基础结构”
 2. 在“用于 Azure 虚拟机”-> “扩展更新设置”下，单击切换按钮，选择允许 ASR 管理更新或手动管理。 单击“ **保存**”。
 
-![vault-toggle-autuo-update](./media/azure-to-azure-autoupdate/vault-toggle.png)
+![vault-toggle-auto-update](./media/azure-to-azure-autoupdate/vault-toggle.png)
 
 > [!Important] 
 > 如果选择“允许 ASR 管理”，该设置会应用到相应保管库中的所有虚拟机。
@@ -66,11 +66,11 @@ Azure Site Recovery 每月发布一次，增加对现有功能或新功能的增
 
 1. 如果 Azure VM 上安装的移动服务有可用的新更新，则会显示“新 Site Recovery 复制代理更新可用”的通知。 单击可安装。”
 
-     ![“复制的项”窗口](.\media\vmware-azure-install-mobility-service\replicated-item-notif.png)
+     ![“复制的项”窗口](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 3. 选择通知以打开虚拟机选择页面。
 4. 选择要升级移动服务的虚拟机，然后选择“确定”。
 
-     ![“复制的项”VM 列表](.\media\vmware-azure-install-mobility-service\update-okpng.png)
+     ![“复制的项”VM 列表](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
 将为所选的每个虚拟机启动“更新移动服务”作业。
 
@@ -81,7 +81,7 @@ Azure Site Recovery 每月发布一次，增加对现有功能或新功能的增
 
 如果尝试启用自动更新但操作失败，请参阅以下内容进行故障排除。
 
-**错误**：没有权限创建 Azure 运行方式帐户（服务主体）并向服务主体授予参与者角色。 
+**错误**：你没有权限创建 Azure 运行方式帐户（服务主体）并向服务主体授予参与者角色。 
 - 建议的操作：请确保已为登录的帐户分配“参与者”角色，然后重试操作。 有关分配正确权限的详细信息，请参阅[此](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)文档。
  
 启用自动更新后，Site Recovery 服务可修复大部分问题，这需要单击“修复”按钮。

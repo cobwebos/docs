@@ -1,7 +1,7 @@
 ---
 title: 在 Azure IoT Central 中配置规则和操作 | Microsoft Docs
 description: 本教程演示，作为构建者，如何在 Azure IoT Central 应用程序中配置基于遥测的规则和操作。
-author: ankitgupta
+author: ankitscribbles
 ms.author: ankitgup
 ms.date: 10/12/2018
 ms.topic: tutorial
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: fbe9e1fbd0891f2f39b05fa7ba53653188ef8e03
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: d7269f61579ce1ffd9a686634effd153837a2f25
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158068"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662972"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>教程：在 Azure IoT Central 中配置用于设备的规则和操作
 
@@ -27,6 +27,8 @@ ms.locfileid: "50158068"
 > [!div class="checklist"]
 > * 创建基于遥测的规则
 > * 添加操作
+
+[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -56,7 +58,7 @@ ms.locfileid: "50158068"
 
     | 设置                                      | 值                             |
     | -------------------------------------------- | ------------------------------    |
-    | 名称                                         | 空调温度警报 |
+    | Name                                         | 空调温度警报 |
     | 为此此模板中的所有设备启用规则 | 启用                                |
     | 在此设备上启用规则                   | 启用                                |
     | 条件                                    | 温度大于 90    |

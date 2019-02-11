@@ -11,16 +11,16 @@ ms.custom: mvc
 ms.date: 6/29/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: f5b39b428b894fcf5dddc0a7435353d174d83b78
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d9f3bb33ab0638fddfcf64e61642c236a03d6293
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231196"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065255"
 ---
 # <a name="what-is-azure-logic-apps"></a>什么是 Azure 逻辑应用？
 
-[Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps)是一项云服务，用于在需要跨企业或组织集成应用、数据、系统和服务时自动执行和协调任务、业务流程和[工作流](#logic-app-concepts)。 逻辑应用可简化可缩放解决方案的设计和生成方式，适用于应用集成、数据集成、系统集成、企业应用程序集成 (EAI) 和企业到企业 (B2B) 通信，不管是在云中还是在本地。
+[Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps)是一项云服务，用于在需要跨企业或组织集成应用、数据、系统和服务时自动执行和协调任务、业务流程和[工作流](#logic-app-concepts)。 逻辑应用可简化可缩放解决方案的设计和生成方式，适用于应用[集成](https://azure.microsoft.com/product-categories/integration/)、数据集成、系统集成、企业应用程序集成 (EAI) 和企业到企业 (B2B) 通信，不管是在云中还是在本地。
 
 例如，下面就是一些可以通过逻辑应用自动完成的工作负荷：
 
@@ -41,7 +41,7 @@ ms.locfileid: "50231196"
 
 ![逻辑应用设计器 - 示例逻辑应用](./media/logic-apps-overview/overview.png)
 
-可以使用逻辑应用设计器直观地生成逻辑应用。该设计器可通过浏览器在 Azure 门户中获取，也可在 Visual Studio 中获取。 若要获取更多的自定义逻辑应用，可以使用“代码视图”编辑器以 JavaScript 对象表示法 (JSON) 创建或编辑逻辑应用定义。 也可对选定的任务使用 Azure PowerShell 命令和 Azure 资源管理器模板。 逻辑应用部署和运行在 Azure 云中。 如需更详细的介绍，请观看此视频：[Use Azure Enterprise Integration Services to run cloud apps at scale](https://channel9.msdn.com/Events/Connect/2017/T119/)（使用 Azure Enterprise Integration Services 大规模运行云应用）
+可以使用逻辑应用设计器直观地生成逻辑应用。该设计器可通过浏览器在 Azure 门户中获取，也可在 Visual Studio 中获取。 若要获取更多的自定义逻辑应用，可以使用“代码视图”编辑器以 JavaScript 对象表示法 (JSON) 创建或编辑逻辑应用定义。 也可对选定的任务使用 Azure PowerShell 命令和 Azure 资源管理器模板。 逻辑应用部署和运行在 Azure 云中。 如需更详细的介绍，请观看此视频：[使用 Azure Enterprise Integration Services 大规模运行云应用](https://channel9.msdn.com/Events/Connect/2017/T119/)
 
 ## <a name="why-use-logic-apps"></a>为什么使用逻辑应用？
 

@@ -1,27 +1,24 @@
 ---
 title: Azure Database for MySQL 服务器防火墙规则
 description: 描述 Azure Database for MySQL 服务器的防火墙规则。
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: bd075a98e75c6fcb609103eefe260f4d7fc216b1
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: a7016b8ca43abee9c3f346c6dec55a101ce4020a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264647"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541211"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Azure Database for MySQL 服务器防火墙规则
 在指定哪些计算机具有访问权限之前，防火墙将禁止所有对数据库服务器的访问。 防火墙基于每个请求的起始 IP 地址授予对服务器的访问权限。
 
 要配置防火墙，请创建防火墙规则，指定可接受的 IP 地址的范围。 可以在服务器级别创建防火墙规则。
 
-防火墙规则：这些规则允许客户端访问整个 Azure Database for MySQL 服务器，即同一逻辑服务器内的所有数据库。 可使用 Azure 门户或 Azure CLI 命令配置服务器级的防火墙规则。 若要创建服务器级防火墙规则，用户必须是订阅所有者或订阅参与者。
+**防火墙规则：** 这些规则允许客户端访问整个 Azure Database for MySQL 服务器，即同一逻辑服务器内的所有数据库。 可使用 Azure 门户或 Azure CLI 命令配置服务器级的防火墙规则。 若要创建服务器级防火墙规则，用户必须是订阅所有者或订阅参与者。
 
 ## <a name="firewall-overview"></a>防火墙概述
 防火墙将默认阻止对 Azure Database for MySQL 服务器的所有数据库访问。 若要从另一台计算机开始使用服务器，需要指定一个或多个服务器级防火墙规则以允许访问服务器。 使用防火墙规则指定要允许的来自 Internet 的 IP 地址范围。 对 Azure 门户网站本身的访问不受防火墙规则影响。
@@ -52,11 +49,11 @@ ms.locfileid: "35264647"
 ## <a name="troubleshooting-the-database-firewall"></a>数据库防火墙故障排除
 对 Microsoft Azure Database for MySQL 服务器服务的访问与预期不符时，请考虑以下几点：
 
-* 对允许列表的更改尚未生效：对 Azure Database for MySQL 服务器防火墙配置所做的更改可能需要多达 5 分钟的延迟才可生效。
+* **对允许列表的更改尚未生效：** 对 Azure Database for MySQL 防火墙配置所做的更改可能最多需要 5 分钟的延迟才可生效。
 
-* 登录名未授权或使用了错误的密码：如果某个登录名对 Azure Database for MySQL 服务器没有权限或者使用的密码不正确，则与 Azure Database for MySQL 服务器的连接会被拒绝。 创建防火墙设置仅向客户端提供尝试连接到服务器的机会；每个客户端必须提供必需的安全凭据。
+* **登录名未授权或使用了错误的密码：** 如果某个登录名对 Azure Database for MySQL 服务器没有权限或者使用的密码不正确，则与 Azure Database for MySQL 服务器的连接会被拒绝。 创建防火墙设置仅向客户端提供尝试连接到服务器的机会；每个客户端必须提供必需的安全凭据。
 
-* 动态 IP 地址：如果 Internet 连接使用动态 IP 寻址，并且在通过防火墙时遇到问题，可尝试以下解决方法之一：
+* **动态 IP 地址：** 如果 Internet 连接使用动态 IP 寻址，并且在通过防火墙时遇到问题，则可以尝试以下解决方法之一：
 
 * 向 Internet 服务提供商 (ISP) 询问分配给客户端计算机、用于访问 Azure Database for MySQL 服务器的 IP 地址范围，然后将该 IP 地址范围作为防火墙规则添加。
 

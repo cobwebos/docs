@@ -4,22 +4,22 @@ description: 了解如何在 Azure Active Directory 与 Five9 Plus Adapter (CTI,
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 88dc82ab-be0b-4017-8335-c47d00775d7b
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 8ee04008b62867c8eba68b1525cf50edec881cbc
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c4eeb3da3a3ac8cc6464e29881843a5aefd452d3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432627"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177587"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>教程：将 Azure Active Directory 与 Five9 Plus Adapter (CTI, Contact Center Agents) 集成
 
@@ -46,7 +46,7 @@ ms.locfileid: "39432627"
 测试本教程中的步骤应遵循以下建议：
 
 - 除非必要，请勿使用生产环境。
-- 如果没有 Azure AD 试用环境，可在此处获取一个月的试用版：[试用产品/服务](https://azure.microsoft.com/pricing/free-trial/)。
+- 如果没有 Azure AD 试用环境，可以在此处获取一个月的试用版：[试用版产品/服务](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
@@ -142,15 +142,15 @@ ms.locfileid: "39432627"
 
 1. 若要在“Five9 Plus Adapter (CTI, Contact Center Agents)”端配置单一登录，需要将下载的“证书 (Base64)”、“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”发送到 [Five9 Plus Adapter (CTI, Contact Center Agents) 支持团队](https://www.five9.com/about/contact)。 此外，若要进一步配置 SSO，请根据适配器遵循以下步骤：
 
-    a. “Five9 Plus Adapter for Agent Desktop Toolkit”管理员指南：[http://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf](http://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf)
+    a. “Five9 Plus Adapter for Agent Desktop Toolkit”管理员指南：[https://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf)
     
-    b. “Five9 Plus Adapter for Microsoft Dynamics CRM”管理员指南：[http://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf](http://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf)
+    b. “Five9 Plus Adapter for Microsoft Dynamics CRM”管理员指南：[https://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf)
     
-    c. “Five9 Plus Adapter for Zendesk”管理员指南：[http://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf](http://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf)
+    c. “Five9 Plus Adapter for Zendesk”管理员指南：[https://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf)
 
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -186,7 +186,7 @@ ms.locfileid: "39432627"
  
 ### <a name="creating-a-five9-plus-adapter-cti-contact-center-agents-test-user"></a>创建 Five9 Plus Adapter (CTI, Contact Center Agents) 测试用户
 
-本部分在 Five9 Plus Adapter (CTI, Contact Center Agents) 中创建一个名为 Britta Simon 的用户。 通过 [Five9 Plus Adapter (CTI, Contact Center Agents) 支持团队](https://www.five9.com/about/contact)在 Five9 Plus Adapter (CTI, Contact Center Agents) 平台添加用户。 使用单一登录前，必须先创建并激活用户。
+本部分在 Five9 Plus Adapter (CTI, Contact Center Agents) 中创建一个名为 Britta Simon 的用户。 通过 [Five9 Plus Adapter (CTI, Contact Center Agents) 支持团队](https://www.five9.com/about/contact)在 Five9 Plus Adapter (CTI, Contact Center Agents) 平台添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -223,12 +223,12 @@ ms.locfileid: "39432627"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在“访问面板”中单击“Five9 Plus Adapter (CTI, Contact Center Agents)”磁贴时，应自动登录到 Five9 Plus Adapter (CTI, Contact Center Agents) 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

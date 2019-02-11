@@ -3,9 +3,9 @@ title: 风险缓解 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
 description: Microsoft 威胁建模工具的风险缓解页，重点介绍了针对最常见的已发生威胁的可能解决方案。
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 07ef1fd3d81d795c9164741d22b5a689f86bd720
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 24aa49fd4ccccda372d2632ef4aee22bd5cb2bf6
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23043432"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359130"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft 威胁建模工具风险缓解
 
@@ -31,7 +31,7 @@ ms.locfileid: "23043432"
 
 威胁建模工具缓解措施根据 Web 应用程序安全框架分类，包括：
 
-| 类别 | 说明 |
+| 类别 | Description |
 | -------- | ----------- |
 | **[审核和日志记录](./azure-security-threat-modeling-tool-auditing-and-logging.md)** | 谁在何时做了什么？ 审核与日志记录是指应用程序如何记录安全相关的事件 |
 | **[身份验证](./azure-security-threat-modeling-tool-authentication.md)** | 你是谁？ 身份验证是某个实体证明另一实体的身份的过程，这通常是通过用户名和密码等凭据完成的。 |

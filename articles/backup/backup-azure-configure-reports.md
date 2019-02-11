@@ -2,19 +2,18 @@
 title: 为 Azure 备份配置报表
 description: 使用恢复服务保管库为 Azure 备份配置 Power BI 报表。
 services: backup
-author: adiganmsft
+author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 01/30/2019
 ms.author: adigan
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 493a8881975e6b7568a7823bfc86fc97b4389378
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e93c51365adfc867082e180d8e4db804d02003ca
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418273"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297717"
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 本文介绍了如何使用恢复服务保管库为 Azure 备份配置报表。 还介绍了如何使用 Power BI 访问报表。 完成这些步骤后，可以直接转到 Power BI 来查看、自定义和创建报表。

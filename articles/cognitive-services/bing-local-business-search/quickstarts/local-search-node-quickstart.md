@@ -6,21 +6,21 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.component: bing-local-business
+ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: d60f2aca912f279f84710863e5f6ce507de64cb0
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: e58bd9afcbb7684cae93d3e71bae89d49f640111
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309168"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203957"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>快速入门：使用 Node.js 将查询发送到必应当地企业搜索 API
 
 使用此快速入门开始向必应当地企业搜索 API 发送请求，该 API 是一项 Azure 认知服务。 虽然这个简单的应用程序是用 Node.js 编写的，但 API 是一种 RESTful Web 服务，可以与任何能够发出 HTTP 请求并解析 JSON 的编程语言兼容。
- 
+
 此示例应用程序从 API 获取搜索查询 `hotel in Bellevue` 的本地响应数据。
 
 ## <a name="prerequisites"></a>先决条件
@@ -31,18 +31,19 @@ ms.locfileid: "52309168"
 
 必须拥有包含必应 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 使用免费试用版提供的访问密钥。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
-##<a name="code-scenario"></a>代码方案
+## <a name="code-scenario"></a>代码方案
+
 以下代码定义并发送请求。 该代码通过以下步骤实现：
 
 1. 声明变量，以按主机和路径指定终结点。
-2. 指定查询，然后添加查询参数。 
+2. 指定查询，然后添加查询参数。
 3. 为响应创建处理程序函数。
 4. 定义搜索函数，用以创建请求并添加 Ocp-Apim-Subscription-Key 标头。
-5. 运行“搜索”函数。 
+5. 运行“搜索”函数。
 
 本演示的完整代码如下：
 
-````
+```
 'use strict';
 
 let https = require('https');
@@ -89,9 +90,10 @@ let Search = function () {
 
 Search();
 
-````
+```
 
 ## <a name="next-steps"></a>后续步骤
-- [当地企业搜索快速入门](local-quickstart.md)
-- [当地企业搜索 Java 快速入门](local-search-java-quickstart.md)
-- [当地企业搜索 Python 快速入门](local-search-python-quickstart.md)
+
+* [当地企业搜索快速入门](local-quickstart.md)
+* [当地企业搜索 Java 快速入门](local-search-java-quickstart.md)
+* [当地企业搜索 Python 快速入门](local-search-python-quickstart.md)

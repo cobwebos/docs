@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: d8382cac86abb112018195695340ed12663a2333
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.subservice: common
+ms.openlocfilehash: 15c37be3f3b1b3f72c32865e095091fa10ee9750
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427410"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251684"
 ---
 # <a name="authenticate-access-to-blobs-and-queues-with-managed-identities-for-azure-resources-preview"></a>使用 Azure 资源托管标识（预览版）验证对 Blob 和队列的访问权限
 
@@ -43,7 +43,7 @@ Azure Blob 和队列存储支持使用 [Azure 资源的托管标识](../../activ
 
 若要使用托管标识进行身份验证，应用程序或脚本必须获取托管标识访问令牌。 若要了解如何获取访问令牌，请参阅[如何在 Azure VM 上使用 Azure 资源的托管标识获取访问令牌](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)。
 
-## <a name="net-code-example-create-a-block-blob"></a>.NET 代码示例：创建块 blob
+## <a name="net-code-example-create-a-block-blob"></a>.NET 代码示例：创建块 Blob
 
 此代码示例假定你拥有托管标识访问令牌。 访问令牌用于授权托管标识创建块 Blob。
 

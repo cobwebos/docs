@@ -1,25 +1,25 @@
 ---
-title: 教程：Azure Active Directory 与 JobScore 集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 JobScore 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 JobScore 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 30f51b32-e55c-4c66-96e8-50a2f9c2194a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 8fbe30d37c8fb906c829d5e76771155dfeb76fce
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 551a5499f7be83eea49210675e46923f5a2ca8ff
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449139"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55204144"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscore"></a>教程：Azure Active Directory 与 JobScore 集成
 
@@ -128,7 +128,7 @@ ms.locfileid: "39449139"
 1. 若要在“JobScore”端配置单一登录，需要将下载的“元数据 XML”发送给 [JobScore 支持团队](mailto:support@jobscore.com)。 
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -205,7 +205,7 @@ ms.locfileid: "39449139"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

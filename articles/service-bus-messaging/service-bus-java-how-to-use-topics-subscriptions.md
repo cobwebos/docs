@@ -3,9 +3,9 @@ title: 如何通过 Java 使用 Azure 服务总线主题 | Microsoft Docs
 description: 在 Azure 中使用服务总线主题和订阅。
 services: service-bus-messaging
 documentationcenter: java
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 63d6c8bd-8a22-4292-befc-545ffb52e8eb
 ms.service: service-bus-messaging
 ms.workload: tbd
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 09/17/2018
-ms.author: spelluru
-ms.openlocfilehash: 501d15ebbb373c100dd735e97bebf2f085a9579e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.author: aschhab
+ms.openlocfilehash: cd2d5812d1b61e1d8fcc00fbc824be8ceac696de
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241304"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849951"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>如何通过 Java 使用服务总线主题和订阅
 

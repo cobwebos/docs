@@ -7,15 +7,15 @@ manager: jeconnoc
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 11/16/2018
+ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: d6d1fb9631af06f6bfbb2c360661779281a08905
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: c13a01b392b9bbc93fff2e997cb6d168a441ad07
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975103"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679913"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>快速入门：使用 .NET API 运行第一个 Azure Batch 作业
 
@@ -47,7 +47,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-quickstart.git
 
 导航到包含 Visual Studio 解决方案文件 `BatchDotNetQuickstart.sln` 的目录。
 
-在 Visual Studio 中打开解决方案文件，使用为帐户获取的值更新 `program.cs` 中的凭据字符串。 例如：
+在 Visual Studio 中打开解决方案文件，使用为帐户获取的值更新 `Program.cs` 中的凭据字符串。 例如：
 
 ```csharp
 // Batch account credentials
@@ -143,7 +143,7 @@ foreach (string filePath in inputFilePaths)
 BatchSharedKeyCredentials cred = new BatchSharedKeyCredentials(BatchAccountUrl, BatchAccountName, BatchAccountKey);
 
 using (BatchClient batchClient = BatchClient.Open(cred))
-...    
+...
 ```
 
 ### <a name="create-a-pool-of-compute-nodes"></a>创建计算节点池
@@ -155,33 +155,42 @@ using (BatchClient batchClient = BatchClient.Open(cred))
 [Commit](/dotnet/api/microsoft.azure.batch.cloudpool.commit) 方法将池提交到 Batch 服务。
 
 ```csharp
-ImageReference imageReference = new ImageReference(
-    publisher: "MicrosoftWindowsServer",
-    offer: "WindowsServer",
-    sku: "2016-Datacenter-smalldisk",
-    version: "latest");
 
-VirtualMachineConfiguration virtualMachineConfiguration =
-new VirtualMachineConfiguration(
-   imageReference: imageReference,
-   nodeAgentSkuId: "batch.node.windows amd64");
-
-try
+private static VirtualMachineConfiguration CreateVirtualMachineConfiguration(ImageReference imageReference)
 {
-    CloudPool pool = batchClient.PoolOperations.CreatePool(
-    poolId: PoolId,
-    targetDedicatedComputeNodes: PoolNodeCount,
-    virtualMachineSize: PoolVMSize,
-    virtualMachineConfiguration: virtualMachineConfiguration);
-
-    pool.Commit();
+    return new VirtualMachineConfiguration(
+        imageReference: imageReference,
+        nodeAgentSkuId: "batch.node.windows amd64");
 }
+
+private static ImageReference CreateImageReference()
+{
+    return new ImageReference(
+        publisher: "MicrosoftWindowsServer",
+        offer: "WindowsServer",
+        sku: "2016-datacenter-smalldisk",
+        version: "latest");
+}
+
+private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfiguration vmConfiguration)
+{
+    try
+    {
+        CloudPool pool = batchClient.PoolOperations.CreatePool(
+            poolId: PoolId,
+            targetDedicatedComputeNodes: PoolNodeCount,
+            virtualMachineSize: PoolVMSize,
+            virtualMachineConfiguration: vmConfiguration);
+
+        pool.Commit();
+    }
 ...
 
 ```
+
 ### <a name="create-a-batch-job"></a>创建 Batch 作业
 
-Batch 作业是对一个或多个任务进行逻辑分组。 作业包含任务的公用设置，例如优先级以及运行任务的池。 应用使用 [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob) 方法在池中创建作业。 
+Batch 作业是对一个或多个任务进行逻辑分组。 作业包含任务的公用设置，例如优先级以及运行任务的池。 应用使用 [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob) 方法在池中创建作业。
 
 [Commit](/dotnet/api/microsoft.azure.batch.cloudjob.commit) 方法将作业提交到 Batch 服务。 作业一开始没有任务。
 
@@ -192,15 +201,16 @@ try
     job.Id = JobId;
     job.PoolInformation = new PoolInformation { PoolId = PoolId };
 
-    job.Commit(); 
+    job.Commit();
 }
 ...
 ```
 
 ### <a name="create-tasks"></a>创建任务
+
 此应用创建 [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) 对象的列表。 每个任务都使用 [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) 属性来处理输入 `ResourceFile` 对象。 在示例中，命令行运行 Windows `type` 命令来显示输入文件。 此命令是一个用于演示的简单示例。 使用 Batch 时，可以在命令行中指定应用或脚本。 Batch 提供多种将应用和脚本部署到计算节点的方式。
 
-然后，应用使用 [AddTask](/dotnet/api/microsoft.azure.batch.joboperations.addtask) 方法将任务添加到作业，使任务按顺序在计算节点上运行。 
+然后，应用使用 [AddTask](/dotnet/api/microsoft.azure.batch.joboperations.addtask) 方法将任务添加到作业，使任务按顺序在计算节点上运行。
 
 ```csharp
 for (int i = 0; i < inputFiles.Count; i++)
@@ -216,7 +226,7 @@ for (int i = 0; i < inputFiles.Count; i++)
 
 batchClient.JobOperations.AddTask(JobId, tasks);
 ```
- 
+
 ### <a name="view-task-output"></a>查看任务输出
 
 应用创建 [TaskStateMonitor](/dotnet/api/microsoft.azure.batch.taskstatemonitor) 来监视任务，确保其完成。 然后，应用使用 [CloudTask.ComputeNodeInformation](/dotnet/api/microsoft.azure.batch.cloudtask.computenodeinformation) 属性来显示每个已完成任务生成的 `stdout.txt` 文件。 如果任务成功运行，任务命令的输出将写入到 `stdout.txt`：

@@ -9,17 +9,16 @@ ms.assetid: b6b3c2ae-b0e8-4e28-90d8-daf20421660d
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b4d9a684c2c21ed9ec00b04963432f9ebcff7493
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a82d871ea232b31b31cfc24585af672141617d88
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048448"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352999"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure 数据工厂 - 函数和系统变量
 > [!NOTE]
@@ -28,7 +27,7 @@ ms.locfileid: "37048448"
 本文提供 Azure 数据工厂支持的函数和变量的相关信息。
 
 ## <a name="data-factory-system-variables"></a>数据工厂系统变量
-| 变量名 | 说明 | 对象作用域 | JSON 作用域和用例 |
+| 变量名 | Description | 对象作用域 | JSON 作用域和用例 |
 | --- | --- | --- | --- |
 | WindowStart |当前活动运行窗口的开始时间间隔 |activity |<ol><li>指定数据选择查询。 请参阅[数据移动活动](data-factory-data-movement-activities.md)一文中引用的连接器文章。</li> |
 | WindowEnd |当前活动运行窗口的结束时间间隔 |activity |与 WindowStart 相同。 |
@@ -78,26 +77,26 @@ ms.locfileid: "37048448"
 ### <a name="functions"></a>函数
 下表列出了 Azure 数据工厂中的所有函数：
 
-| 类别 | 函数 | parameters | 说明 |
+| 类别 | 函数 | parameters | Description |
 | --- | --- | --- | --- |
-| 时间 |AddHours(X,Y) |X: DateTime <br/><br/>Y: int |向给定时间 X 加 Y 小时。 <br/><br/>示例：`9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
-| 时间 |AddMinutes(X,Y) |X: DateTime <br/><br/>Y: int |向 X 加 Y 分钟。<br/><br/>示例：`9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| 时间 |StartOfHour(X) |X: Datetime |获取由 X 小时部分表示的小时起始时间。 <br/><br/>示例：`StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
-| 日期 |AddDays(X,Y) |X: DateTime<br/><br/>Y: int |向 X 加 Y 天。 <br/><br/>示例：2013/9/15 中午 12:00:00 + 2 天 = 2013/9/17 中午 12:00:00。<br/><br/>也可指定 Y 为负数来减去天数。<br/><br/>示例：`9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`。 |
-| 日期 |AddMonths(X,Y) |X: DateTime<br/><br/>Y: int |向 X 加 Y 个月。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`。<br/><br/>也可指定 Y 为负数来减去月数。<br/><br/>示例：`9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`。|
-| 日期 |AddQuarters(X,Y) |X: DateTime <br/><br/>Y: int |向 X 加 Y * 3 个月。<br/><br/>示例：`9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
-| 日期 |AddWeeks(X,Y) |X: DateTime<br/><br/>Y: int |向 X 加 Y * 7 天<br/><br/>示例：2013/9/15 中午 12:00:00 + 1 周 = 2013/9/22 中午 12:00:00<br/><br/>也可指定 Y 为负数来减去周数。<br/><br/>示例：`9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`。 |
-| 日期 |AddYears(X,Y) |X: DateTime<br/><br/>Y: int |向 X 加 Y 年。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>也可指定 Y 为负数来减去年数。<br/><br/>示例：`9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`。 |
-| 日期 |Day(X) |X: DateTime |获取 X 的日期号数部分。<br/><br/>示例：`Day of 9/15/2013 12:00:00 PM is 9`。 |
-| 日期 |DayOfWeek(X) |X: DateTime |获取 X 的星期部分。<br/><br/>示例：`DayOfWeek of 9/15/2013 12:00:00 PM is Sunday`。 |
-| 日期 |DayOfYear(X) |X: DateTime |获取由 X 的年份部分表示的当年第几天。<br/><br/>示例：<br/>`12/1/2015: day 335 of 2015`<br/>`12/31/2015: day 365 of 2015`<br/>`12/31/2016: day 366 of 2016 (Leap Year)` |
-| 日期 |DaysInMonth(X) |X: DateTime |获取由参数 X 的月份部分表示的当月天数。<br/><br/>示例：`DaysInMonth of 9/15/2013 are 30 since there are 30 days in the September month`。 |
-| 日期 |EndOfDay(X) |X: DateTime |获取表示 X 的当天（日期号数部分）结束时的日期时间。<br/><br/>示例：`EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`。 |
-| 日期 |EndOfMonth(X) |X: DateTime |获取由参数 X 的月份部分表示的当月结束时间。 <br/><br/>示例： `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM`（表示 9 月结束的日期时间） |
-| 日期 |StartOfDay(X) |X: DateTime |获取由参数 X 的日期号数部分表示的当天开始时间。<br/><br/>示例：`StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`。 |
-| DateTime |From(X) |X: String |将字符串 X 解析成日期时间。 |
-| DateTime |Ticks(X) |X: DateTime |获取参数 X 的刻度属性。一刻度等于 100 纳秒。 此属性的值表示自 0001 年 1 月 1 日午夜 12:00:00 以来已经过的刻度数。 |
-| 文本 |Format(X) |X: String variable |设置文本格式（使用 `\\'` 组合转义 `'` 字符）。|
+| 时间 |AddHours(X,Y) |X：DateTime <br/><br/>Y: int |向给定时间 X 加 Y 小时。 <br/><br/>示例： `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
+| 时间 |AddMinutes(X,Y) |X：DateTime <br/><br/>Y: int |向 X 加 Y 分钟。<br/><br/>示例： `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
+| 时间 |StartOfHour(X) |X：Datetime |获取由 X 小时部分表示的小时起始时间。 <br/><br/>示例： `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| 日期 |AddDays(X,Y) |X：DateTime<br/><br/>Y: int |向 X 加 Y 天。 <br/><br/>示例：9/15/2013 12:00:00 PM + 2 天 = 9/17/2013 12:00:00 PM。<br/><br/>也可指定 Y 为负数来减去天数。<br/><br/>示例：`9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`。 |
+| 日期 |AddMonths(X,Y) |X：DateTime<br/><br/>Y: int |向 X 加 Y 个月。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`。<br/><br/>也可指定 Y 为负数来减去月数。<br/><br/>示例：`9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`。|
+| 日期 |AddQuarters(X,Y) |X：DateTime <br/><br/>Y: int |向 X 加 Y * 3 个月。<br/><br/>示例： `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
+| 日期 |AddWeeks(X,Y) |X：DateTime<br/><br/>Y: int |向 X 加 Y * 7 天<br/><br/>示例：9/15/2013 12:00:00 PM + 1 周 = 9/22/2013 12:00:00 PM<br/><br/>也可指定 Y 为负数来减去周数。<br/><br/>示例：`9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`。 |
+| 日期 |AddYears(X,Y) |X：DateTime<br/><br/>Y: int |向 X 加 Y 年。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>也可指定 Y 为负数来减去年数。<br/><br/>示例：`9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`。 |
+| 日期 |Day(X) |X：DateTime |获取 X 的日期号数部分。<br/><br/>示例：`Day of 9/15/2013 12:00:00 PM is 9`。 |
+| 日期 |DayOfWeek(X) |X：DateTime |获取 X 的星期部分。<br/><br/>示例：`DayOfWeek of 9/15/2013 12:00:00 PM is Sunday`。 |
+| 日期 |DayOfYear(X) |X：DateTime |获取由 X 的年份部分表示的当年第几天。<br/><br/>示例：<br/>`12/1/2015: day 335 of 2015`<br/>`12/31/2015: day 365 of 2015`<br/>`12/31/2016: day 366 of 2016 (Leap Year)` |
+| 日期 |DaysInMonth(X) |X：DateTime |获取由参数 X 的月份部分表示的当月天数。<br/><br/>示例：`DaysInMonth of 9/15/2013 are 30 since there are 30 days in the September month`。 |
+| 日期 |EndOfDay(X) |X：DateTime |获取表示 X 的当天（日期号数部分）结束时的日期时间。<br/><br/>示例：`EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`。 |
+| 日期 |EndOfMonth(X) |X：DateTime |获取由参数 X 的月份部分表示的当月结束时间。 <br/><br/>示例： `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM`（表示 9 月结束的日期时间） |
+| 日期 |StartOfDay(X) |X：DateTime |获取由参数 X 的日期号数部分表示的当天开始时间。<br/><br/>示例：`StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`。 |
+| DateTime |From(X) |X：String |将字符串 X 解析成日期时间。 |
+| DateTime |Ticks(X) |X：DateTime |获取参数 X 的刻度属性。一刻度等于 100 纳秒。 此属性的值表示自 0001 年 1 月 1 日午夜 12:00:00 以来已经过的刻度数。 |
+| 文本 |Format(X) |X：字符串变量 |设置文本格式（使用 `\\'` 组合转义 `'` 字符）。|
 
 > [!IMPORTANT]
 > 在一个函数中使用另一函数时，无需对内部函数使用 **$$** 前缀。 例如：$$Text.Format('PartitionKey eq \\'my_pkey_filter_value\\' and RowKey ge \\'{0: yyyy-MM-dd HH:mm:ss}\\''、Time.AddHours(SliceStart, -6))。 请注意，本例未对 **Time.AddHours** 函数使用 **$$** 前缀。 
@@ -154,7 +153,7 @@ ms.locfileid: "37048448"
             {
                 "type": "SqlServerStoredProcedure",
                 "typeProperties": {
-                    "storedProcedureName": "sp_sample",
+                    "storedProcedureName": "usp_sample",
                     "storedProcedureParameters": {
                         "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)"
                     }

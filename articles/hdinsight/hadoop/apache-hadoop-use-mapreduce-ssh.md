@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: df6a96d8bbf1c77d279806e69e7aa7f65387dd4b
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: bce79aed49b94071b4e83524de2d599fca182256
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632520"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438559"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>通过 SSH 将 MapReduce 与 HDInsight 上的 Apache Hadoop 配合使用
 
@@ -63,7 +63,7 @@ ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.net
     此命令启动 `hadoop-mapreduce-examples.jar` 文件中包含的 `wordcount` 类。 它使用 `/example/data/gutenberg/davinci.txt` 文档作为输入，并将输出存储在 `/example/data/WordCountOutput` 中。
 
     > [!NOTE]
-    > 有关此 MapReduce 作业和示例数据的详细信息，请参阅[在 HDInsight 上的 Hadoop 中使用 MapReduce](hdinsight-use-mapreduce.md)。
+    > 有关此 MapReduce 作业和示例数据的详细信息，请参阅[在 Apache Hadoop on HDInsight 中使用 MapReduce](hdinsight-use-mapreduce.md)。
 
 2. 作业在处理时提供详细信息，并在完成时返回类似于以下文本的信息：
 
@@ -80,7 +80,7 @@ ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.net
 
     此命令显示两个文件（`_SUCCESS` 和 `part-r-00000`）。 `part-r-00000` 文件包含此作业的输出。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 某些 MapReduce 作业可能会将结果拆分成多个 **part-r-#####** 文件。 如果是这样，请使用 ##### 后缀指示文件的顺序。
 
 4. 若要查看输出，请使用以下命令：
@@ -111,5 +111,5 @@ ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.net
 
 有关 HDInsight 上的 Hadoop 的其他使用方法的信息：
 
-* [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
-* [将 Pig 与 Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
+* [将 Apache Hive 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
+* [将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)

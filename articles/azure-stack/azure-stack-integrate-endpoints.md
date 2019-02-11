@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
-keywords: ''
-ms.openlocfilehash: e6f7d255fbfbcd740d9f3a7c2743f57cecea1abf
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.lastreviewed: 02/06/2019
+ms.openlocfilehash: 9a209aaf730b356c8c102eab7a8832ce670204cc
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298738"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977741"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack 数据中心集成 - 发布终结点
 
@@ -38,11 +38,11 @@ Azure Stack 为其基础结构角色设置虚拟 IP 地址 (VIP)。 这些 VIP �
 |终结点 (VIP)|DNS 主机 A 记录|协议|端口|
 |---------|---------|---------|---------|
 |AD FS|Adfs.*&lt;region>.&lt;fqdn>*|HTTPS|443|
-|门户（管理员）|Adminportal.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13012<br>13020<br>13021<br>13026<br>30015|
+|门户（管理员）|Adminportal.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Adminhosting | *.adminhosting.\<region>.\<fqdn> | HTTPS | 443 |
-|Azure 资源管理器（管理员）|Adminmanagement.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>30024|
-|门户（用户）|Portal.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>12495<br>12649<br>13001<br>13010<br>13011<br>13012<br>13020<br>13021<br>30015<br>13003|
-|Azure 资源管理器（用户）|Management.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>30024|
+|Azure 资源管理器（管理员）|Adminmanagement.*&lt;region>.&lt;fqdn>*|HTTPS|443|
+|门户（用户）|Portal.*&lt;region>.&lt;fqdn>*|HTTPS|443|
+|Azure 资源管理器（用户）|Management.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |图形|Graph.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |证书吊销列表|Crl.*&lt;region>.&lt;fqdn>*|HTTP|80|
 |DNS|&#42;.*&lt;region>.&lt;fqdn>*|TCP 和 UDP|53|
@@ -68,18 +68,23 @@ Azure Stack 仅支持透明代理服务器。 如果部署中的透明代理上�
 > [!Note]  
 > Azure Stack 不支持使用 Express Route 访问下表中列出的 Azure 服务。
 
-|目的|代码|协议|端口|
-|---------|---------|---------|---------|
-|标识|login.windows.net<br>login.microsoftonline.com<br>graph.windows.net<br>https://secure.aadcdn.microsoftonline-p.com<br>office.com|HTTP<br>HTTPS|80<br>443|
-|市场联合|https://management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|
-|修补程序和更新|https://&#42;.azureedge.net|HTTPS|443|
-|注册|https://management.azure.com|HTTPS|443|
-|使用情况|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.net|HTTPS|443|
-|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*.updates.microsoft.com<br>*.download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>http://www.microsoft.com/pkiops/crl<br>http://www.microsoft.com/pkiops/certs<br>http://crl.microsoft.com/pki/crl/products<br>http://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|
-|NTP|（为部署提供的 IP 的 NTP 服务器）|UDP|123|
-|DNS|（为部署提供的 IP 的 DNS 服务器）|TCP<br>UDP|53|
-|CRL|(在你的证书上的 CRL 分发点的 URL)|HTTP|80|
-|     |     |     |     |
+|目的|目标网址|协议|端口|源网络|
+|---------|---------|---------|---------|---------|
+|标识|login.windows.net<br>login.microsoftonline.com<br>graph.windows.net<br>https://secure.aadcdn.microsoftonline-p.com<br>office.com|HTTP<br>HTTPS|80<br>443|公共 VIP 的/27<br>公共基础结构网络|
+|市场联合|https://management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|公共 VIP 的/27|
+|修补程序和更新|https://&#42;.azureedge.net|HTTPS|443|公共 VIP 的/27|
+|注册|https://management.azure.com|HTTPS|443|公共 VIP 的/27|
+|使用情况|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.net |HTTPS|443|公共 VIP 的/27|
+|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*.updates.microsoft.com<br>*.download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>https://www.microsoft.com/pkiops/crl<br>https://www.microsoft.com/pkiops/certs<br>https://crl.microsoft.com/pki/crl/products<br>https://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|公共 VIP 的/27<br>公共基础结构网络|
+|NTP|（为部署提供的 NTP 服务器的 IP）|UDP|123|公共 VIP 的/27|
+|DNS|（为部署提供的 DNS 服务器的 IP）|TCP<br>UDP|53|公共 VIP 的/27|
+|CRL|（证书上的 CRL 分发点下的 URL）|HTTP|80|公共 VIP 的/27|
+|LDAP|提供 Graph 集成的 active Directory 林|TCP<br>UDP|389|公共 VIP 的/27|
+|LDAP SSL|提供 Graph 集成的 active Directory 林|TCP|636|公共 VIP 的/27|
+|LDAP GC|提供 Graph 集成的 active Directory 林|TCP|3268|公共 VIP 的/27|
+|LDAP GC SSL|提供 Graph 集成的 active Directory 林|TCP|3269|公共 VIP 的/27|
+|AD FS|为 AD FS 集成提供的 AD FS 的元数据终结点|TCP|443|公共 VIP 的/27|
+|     |     |     |     |     |
 
 > [!Note]  
 > 使用 Azure 流量管理器对出站 URL 进行负载均衡，以根据地理位置提供尽可能最佳的连接。 使用负载平衡的 Url，Microsoft 可以更新和更改后端终结点而不会影响客户。 Microsoft 不共享 IP 地址的列表，为负载平衡 Url。 应使用支持按 URL 而不是按 IP 筛选的设备。

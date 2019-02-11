@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
-ms.author: rayne
-ms.openlocfilehash: 1a9a89138dc71f7a0255b8ab4084182848d6e994
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 12/27/2018
+ms.author: raynew
+ms.openlocfilehash: c93f80ba93e84c93ddf58b46b4bbcf98c53478d8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211734"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794220"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>设置 IP 寻址以在故障转移后连接到辅助本地站点
 

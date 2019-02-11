@@ -4,23 +4,23 @@ description: 本主题介绍 Azure AD Connect 同步的操作任务，以及如�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: b29c1790-37a3-470f-ab69-3cee824d220d
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 11390f1ad777d20e31c263b4a694ae5cb31f3fd3
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 993bf8f6a9d414c9c7667a189868ef1174392797
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46305806"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490527"
 ---
 # <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Azure AD Connect 同步：操作任务和注意事项
 本主题旨在介绍 Azure AD Connect 同步的操作任务。
@@ -75,7 +75,7 @@ ms.locfileid: "46305806"
 #### <a name="verify"></a>验证
 1. 启动 cmd 提示符并转到 `%ProgramFiles%\Microsoft Azure AD Sync\bin`
 2. 运行：`csexport "Name of Connector" %temp%\export.xml /f:x` 连接器名称可以在同步服务中找到。 它的名称类似于“contoso.com – AAD”（表示 Azure AD）。
-3. 运行：`CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` 现在，%temp% 中已有名为 export.csv 的文件，可在 Microsoft Excel 中检查。 此文件包含要导出的所有更改。
+3. 运行：`CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` %temp% 中已有名为 export.csv 的文件，可在 Microsoft Excel 中检查。 此文件包含要导出的所有更改。
 4. 对数据或配置进行必要的更改并再次运行这些步骤（导入和同步和身份验证），直到要导出的更改都按预期进行。
 
 了解 export.csv 文件。大部分的文件都简单易懂。 请理解内容中的的一些缩写：
@@ -152,9 +152,9 @@ write-host "Importing XML" -ForegroundColor Yellow
 $resolvedXMLtoimport=Resolve-Path -Path ([Environment]::ExpandEnvironmentVariables($xmltoimport))
 
 #use an XmlReader to deal with even large files
-$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
+$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
 $result=$reader.ReadToDescendant('cs-object')
-do 
+do 
 {
     #create the object placeholder
     #adding them up here means we can enforce consistency
@@ -271,5 +271,5 @@ $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeI
 ## <a name="next-steps"></a>后续步骤
 **概述主题**  
 
-* [Azure AD Connect 同步：理解和自定义同步](how-to-connect-sync-whatis.md)  
+* [Azure AD Connect 同步：了解和自定义同步](how-to-connect-sync-whatis.md)  
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)  

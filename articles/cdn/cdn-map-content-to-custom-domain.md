@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 67621cb95cbf5072ab7b72770f43c0b68785c78e
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: b9bcba78600e90c28f95c4ea842bf4b25b1c0da7
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092094"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722782"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>教程：将自定义域添加到 Azure CDN 终结点
 本教程介绍如何将自定义域添加到 Azure 内容分发网络 (CDN) 终结点。 使用 CDN 终结点来交付内容时，如果希望自己的域名在 CDN URL 中可见，则必须使用自定义域。 使用可见的域名可以方便客户，适用于推广品牌。 
@@ -38,7 +38,7 @@ ms.locfileid: "49092094"
 
 在完成本教程中的步骤之前，必须先创建一个 CDN 配置文件，一个至少一个 CDN 终结点。 有关详细信息，请参阅[快速入门：创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)。
 
-如果没有自定义域，则必须先在域提供商那里购买一个。 有关示例，请参阅[购买自定义域名](https://docs.microsoft.com/azure/app-service/custom-dns-web-site-buydomains-web-app)。
+如果没有自定义域，则必须先在域提供商那里购买一个。 有关示例，请参阅[购买自定义域名](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain)。
 
 如果使用 Azure 来托管 [DNS 域](https://docs.microsoft.com/azure/dns/dns-overview)，必须将域提供商的域名系统 (DNS) 委托给 Azure DNS。 有关详细信息，请参阅 [向 Azure DNS 委派域](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)。 否则，如果通过域提供商处理 DNS 域，请转到[创建 CNAME DNS 记录](#create-a-cname-dns-record)。
 
@@ -64,13 +64,13 @@ ms.locfileid: "49092094"
 
 3. 为自定义域创建一个 CNAME 记录条目并完成各个字段，如下表所示（字段名称可能有所不同）：
 
-    | 源                    | Type  | 目标                     |
+    | 源                    | 类型  | 目标                     |
     |---------------------------|-------|---------------------------------|
     | cdnverify.www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
 
     - 源：采用 cdnverify._&lt;自定义域名&gt; 格式输入自定义域名，包括 cdnverify 子域。 例如，cdnverify.www.contoso.com。
 
-    - 类型：输入 *CNAME*。
+    - 键入：输入 *CNAME*。
 
     - 目标：采用 cdnverify.&lt;终结点名称&gt;.azureedge.net 格式输入 CDN 终结点主机名，包括 cdnverify 子域。 例如，cdnverify.contoso.azureedge.net。
 
@@ -90,13 +90,13 @@ ms.locfileid: "49092094"
 
     ![CNAME 条目](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
 
-    - 类型：让 *CNAME* 保持选中状态。
+    - 键入：让“CNAME”保留选中状态。
 
     - 主机：输入要使用的自定义域的子域，包括 cdnverify 子域名称。 例如，cdnverify.www。
 
     - 指向：输入 CDN 终结点的主机名，包括 cdnverify 子域名称。 例如，cdnverify.contoso.azureedge.net。 
 
-    - TTL：让“1 小时”保持选中状态。
+    - TTL：让“1 小时”保留选中状态。
 
 6. 选择“保存”。
  
@@ -158,13 +158,13 @@ ms.locfileid: "49092094"
 
 3. 为自定义域创建一个 CNAME 记录条目并完成各个字段，如下表所示（字段名称可能有所不同）：
 
-    | 源          | Type  | 目标           |
+    | 源          | 类型  | 目标           |
     |-----------------|-------|-----------------------|
     | www.contoso.com | CNAME | contoso.azureedge.net |
 
     - 源：输入自定义域名（例如 www.contoso.com）。
 
-    - 类型：输入 *CNAME*。
+    - 键入：输入 *CNAME*。
 
     - 目标：输入 CDN 终结点主机名。 必须采用 _&lt;endpoint name&gt;_.azureedge.net 格式， 例如 contoso.azureedge.net。
 
@@ -188,13 +188,13 @@ ms.locfileid: "49092094"
 
     ![CNAME 条目](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
 
-    - 类型：让 *CNAME* 保持选中状态。
+    - 键入：让“CNAME”保留选中状态。
 
     - 主机：输入要使用的自定义域的子域， 例如 www 或 cdn。
 
     - 指向：输入 CDN 终结点的主机名， 例如 contoso.azureedge.net。 
 
-    - TTL：让“1 小时”保持选中状态。
+    - TTL：让“1 小时”保留选中状态。
 
 6. 选择“保存”。
  
@@ -230,6 +230,6 @@ ms.locfileid: "49092094"
 转到下一教程，了解如何在 Azure CDN 自定义域上配置 HTTPS。
 
 > [!div class="nextstepaction"]
-> [教程：在 Azure CDN 自定义域上配置 HTTPS](cdn-custom-ssl.md)
+> [教程：在 Azure CDN 自定义域中配置 HTTPS](cdn-custom-ssl.md)
 
 

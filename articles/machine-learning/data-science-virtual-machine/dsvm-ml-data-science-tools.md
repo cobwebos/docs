@@ -1,26 +1,27 @@
 ---
 title: 机器学习和数据科学工具 - Azure | Microsoft 文档
-description: 机器学习和数据科学工具
+description: 了解 Data Science Virtual Machine 上预装的机器学习工具和框架。
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 9308c51c0ff5fc7278eab632f9d23f23cf016a2a
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f84341d6d8ac3b5c7febaa4f659da84efcebb780
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901662"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473340"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>机器学习和数据科学工具
 Azure Data Science Virtual Machine 拥有丰富的用于机器学习 (ML) 的工具和库，这些工具和库以 Python、R 和 Julia 等热门语言提供。 
@@ -31,7 +32,7 @@ Azure Data Science Virtual Machine 拥有丰富的用于机器学习 (ML) 的工
 |    |           |
 | ------------- | ------------- |
 | 它是什么？   |   Azure 机器学习是一种可用于开发和部署 ML 模型的云服务。 可以在使用 Python SDK 构建、训练、缩放和管理模型时跟踪模型。 将模型部署为容器，并在云中、在本地或在 Azure IoT Edge 上运行它们。   |
-| 支持的版本     | Windows（conda 环境：AzureML）、Linux（conda 环境：py36）    |
+| 支持的版本     | Windows（conda 环境：AzureML），Linux（conda 环境：py36）    |
 | 典型用途      | 常规 ML 平台      |
 | 如何配置或安装它？      |  使用 GPU 支持安装   |
 | 如何使用或运行它      | 与 Python SDK 和 Azure CLI 一样。 激活到 Windows 版本上的 conda 环境 `AzureML` 或 Linux 版本上的 `py36`。      |

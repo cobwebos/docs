@@ -1,29 +1,29 @@
 ---
-title: 如何配置联接到混合 Azure Active Directory 的设备 | Microsoft Docs
-description: 了解如何配置联接到混合 Azure Active Directory 的设备。
+title: 为联盟域配置混合 Azure Active Directory 加入 | Microsoft Docs
+description: 了解如何为联盟域配置混合 Azure Active Directory 加入。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: devices
+ms.subservice: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/07/2018
+ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: e40c18edadebae1f92cf811ea054503b9cd6b1ae
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 760a1db68021146720e0a8e5c872d74bd2c153da
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277964"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101510"
 ---
-# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教程：为联盟域配置混合 Azure Active Directory 联接
+# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教程：为联盟域配置混合 Azure Active Directory 加入
 
 与用户类似，设备将成为要保护的另一标识，并且也用于随时保护资源和位置。 为此，可通过下述某一方法将设备的标识引入 Azure AD：
 
@@ -53,6 +53,7 @@ ms.locfileid: "51277964"
 -  [如何控制设备的混合 Azure AD 加入](hybrid-azuread-join-control.md)
 
 
+
 要配置本教程中的方案，需具备以下项：
 
 - 带 AD FS 的 Windows Server 2012 R2
@@ -72,11 +73,11 @@ ms.locfileid: "51277964"
 
 要实现混合 Azure AD 联接，设备必须有权从组织的网络中访问以下 Microsoft 资源：  
 
-- https://enterpriseregistration.windows.net
-- https://login.microsoftonline.com
-- https://device.login.microsoftonline.com
+- https\://enterpriseregistration.windows.net
+- https\://login.microsoftonline.com
+- https\://device.login.microsoftonline.com
 - 组织的 STS（联盟域）
-- https://autologon.microsoftazuread-sso.com（如果正在使用或计划使用无缝 SSO）
+- https\://autologon.microsoftazuread-sso.com（如果正在使用或计划使用无缝 SSO）
 
 从 Windows 10 1803 开始，如果 AD FS 等联合域的即时混合 Azure AD 加入失败，我们将依赖 Azure AD Connect 同步 Azure AD 中的计算机对象，该计算机对象随后用于完成混合 Azure AD 加入的设备注册。
 
@@ -167,7 +168,7 @@ ms.locfileid: "51277964"
 
 
     
-必须将以下策略设置为“所有”：“用户可以向 Azure AD 注册其设备”
+以下策略必须设置为 **All**：**用户可以向 Azure AD 注册其设备**
 
 ![注册设备](./media/hybrid-azuread-join-federated-domains/23.png)
 

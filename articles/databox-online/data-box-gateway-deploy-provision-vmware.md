@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 10/01/2018
+ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: ea4203c45f482b990122a966fc2ec13b3fb41c84
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 00415cab4d5c36c74cf78a10cb71682d97236517
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167148"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099152"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>教程：在 VMware（预览版）中预配 Azure Data Box Gateway
 
 ## <a name="overview"></a>概述
 
-本教程介绍如何在运行 VMware ESXi 6.0 或 6.5 的主机系统上预配 Data Box Gateway。 
+本教程介绍如何在运行 VMware ESXi 6.0、6.5 或 6.7 的主机系统上预配 Data Box Gateway。 
 
 需要管理员权限才能预配和连接虚拟设备。 完成预配和初始设置可能需要大约 10 分钟。
 
@@ -37,7 +37,7 @@ ms.locfileid: "49167148"
 
 ## <a name="prerequisites"></a>先决条件
 
-在运行 VMware ESXi 6.0 或 6.5 的主机系统上预配虚拟设备的先决条件如下所示。
+在运行 VMware ESXi 6.0、6.5 或 6.7 的主机系统上预配虚拟设备的先决条件如下所示。
 
 ### <a name="for-the-data-box-gateway-resource"></a>对于 Data Box Gateway 资源
 
@@ -53,7 +53,7 @@ ms.locfileid: "49167148"
 
 在部署虚拟设备之前，请确保：
 
-* 有权访问运行 VMware（ESXi 6.0 或 6.5）的主机系统，以便预配设备。
+* 有权访问运行 VMware（ESXi 6.0、6.5 或 6.7）的主机系统，以便预配设备。
 * 主机系统能够将以下资源专用于预配虚拟设备：
 
   * 至少 4 个核心。
@@ -73,7 +73,7 @@ ms.locfileid: "49167148"
 
 若要创建虚拟设备，需满足以下条件：
 
-* 有权访问运行 VMware ESXi Server 6.0 或 6.5 的主机系统。 主机系统能够将以下资源专用于虚拟设备：
+* 有权访问运行 VMware ESXi Server 6.0、6.5 或 6.7 的主机系统。 主机系统能够将以下资源专用于虚拟设备：
  
   * 至少 4 个核心。
   * 至少 8 GB 的 RAM。 
@@ -192,7 +192,7 @@ ms.locfileid: "49167148"
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image23.png)
 
-6. 步骤 5-7 仅适用于在非 DHCP 环境中启动的情况。 如果是在 DHCP 环境中，则请跳过这些步骤，转到步骤 8。 如果已在非 DHCP 环境中启动设备，则会看到指示此内容的消息：“使用 Set-HcsIPAddress cmdlet 来配置网络”。 
+6. 步骤 5-7 仅适用于在非 DHCP 环境中启动的情况。 如果是在 DHCP 环境中，则请跳过这些步骤，转到步骤 8。 如果已在非 DHCP 环境中启动设备，则会看到指示此内容的消息：**使用 Set-HcsIPAddress cmdlet 可配置网络**。 
    
 7. 若要配置网络，请在命令提示符处使用 `Get-HcsIpAddress` 命令列出在虚拟设备上启用的网络接口。 如果设备启用了单个网络接口，则分配到该接口的默认名称为 `Ethernet`。
 

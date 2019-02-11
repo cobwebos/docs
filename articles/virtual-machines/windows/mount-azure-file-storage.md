@@ -13,12 +13,13 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 8d537bdc882487784baef9f693e4677c76d3bd8d
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.subservice: files
+ms.openlocfilehash: d79a2d33157d9e2a6f56eb18d061f71a7dcd635c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
-ms.locfileid: "27577545"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462233"
 ---
 # <a name="use-azure-file-shares-with-windows-vms"></a>通过 Windows VM 使用 Azure 文件共享 
 

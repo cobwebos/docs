@@ -8,21 +8,21 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: c63e2e3ec922d2cf26603fe19606008b1e8d3f45
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 451ccff9747988ee019f2be9e0cccec12c9c1ef9
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498178"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118228"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>使用 Caffe on Azure HDInsight Spark 进行分布式深度学习
 
 
 ## <a name="introduction"></a>介绍
 
-深度学习正在影响我们生活中的方方面面，从医疗保健到交通运输到生产制造，不一而足。 很多公司都在致力于通过深度学习来解决各种棘手的问题，例如[图像分类](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/)、[语音识别](http://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)、物体识别和机器翻译。 
+深度学习正在影响我们生活中的方方面面，从医疗保健到交通运输到生产制造，不一而足。 很多公司都在致力于通过深度学习来解决各种棘手的问题，例如[图像分类](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/)、[语音识别](https://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)、物体识别和机器翻译。 
 
-有[许多常用框架](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)，其中包括 [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/)、[Tensorflow](https://www.tensorflow.org/)、[Apache MXNet](https://mxnet.apache.org/)、Theano 等。[Caffe](http://caffe.berkeleyvision.org/) 是最著名的非符号（命令式）神经网络框架之一，广泛用于包括计算机视觉在内的许多领域。 此外，[CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) 将 Caffe 与 Apache Spark 相结合，因此，可在现有 Hadoop 集群上轻松使用深度学习。 可将深度学习与 Spark ETL 管道搭配使用，降低系统复杂性和完整解决方案学习中的延迟。
+有[许多常用框架](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)，其中包括 [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/)、[Tensorflow](https://www.tensorflow.org/)、[Apache MXNet](https://mxnet.apache.org/)、Theano 等。[Caffe](https://caffe.berkeleyvision.org/) 是最著名的非符号（命令式）神经网络框架之一，广泛用于包括计算机视觉在内的许多领域。 此外，[CaffeOnSpark](https://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) 将 Caffe 与 Apache Spark 相结合，因此，可在现有 Hadoop 集群上轻松使用深度学习。 可将深度学习与 Spark ETL 管道搭配使用，降低系统复杂性和完整解决方案学习中的延迟。
 
 [HDInsight](https://azure.microsoft.com/services/hdinsight/) 是云 Apache Hadoop 产品/服务，为 Apache Spark、Apache Hive、Apache Hadoop、Apache HBase、Apache Storm、Apache Kafka 和 ML Services 提供优化的开源分析群集。 HDInsight 提供 99.9% SLA 支持。 这些大数据技术和 ISV 应用程序均可轻松部署为受企业保护和监视的托管群集。
 
@@ -43,7 +43,7 @@ HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，�
 
     #!/bin/bash
     #Please be aware that installing the below will add additional 20 mins to cluster creation because of the dependencies
-    #installing all dependencies, including the ones mentioned in http://caffe.berkeleyvision.org/install_apt.html, as well a few packages that are not included in HDInsight, such as gflags, glog, lmdb, numpy
+    #installing all dependencies, including the ones mentioned in https://caffe.berkeleyvision.org/install_apt.html, as well a few packages that are not included in HDInsight, such as gflags, glog, lmdb, numpy
     #It seems numpy will only needed during compilation time, but for safety purpose you install them on all the nodes
 
     sudo apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler maven libatlas-base-dev libgflags-dev libgoogle-glog-dev liblmdb-dev build-essential  libboost-all-dev python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
@@ -62,7 +62,7 @@ HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，�
 
 脚本操作有两个步骤。 第一步是安装所有必需的库。 这些库包括编译 Caffe 所必需的库（例如 gflags、glog）和运行 Caffe 所必需的库（例如 numpy）。 考虑到 CPU 优化，你使用的是 libatlas，但始终可以按照 CaffeOnSpark Wiki 上的说明来安装其他优化库，例如 MKL 或 CUDA（适合 GPU）。
 
-第二步是在运行时下载、编译和安装适用于 Caffe 的 protobuf 2.5.0。 Protobuf 2.5.0 [是必需的](https://github.com/yahoo/CaffeOnSpark/issues/87)，但 Ubuntu 16 不提供包形式的该版本，因此需从源代码对其进行编译。 Internet 上也有一些介绍其编译方法的资源。 有关详细信息，请参阅[此文](http://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html)。
+第二步是在运行时下载、编译和安装适用于 Caffe 的 protobuf 2.5.0。 Protobuf 2.5.0 [是必需的](https://github.com/yahoo/CaffeOnSpark/issues/87)，但 Ubuntu 16 不提供包形式的该版本，因此需从源代码对其进行编译。 Internet 上也有一些介绍其编译方法的资源。 有关详细信息，请参阅[此文](https://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html)。
 
 若要开始，可直接针对群集的所有工作节点和头节点运行此脚本操作（适用于 HDInsight 3.5）。 可在现有群集上运行脚本操作，或在群集创建过程中使用脚本操作。 有关脚本操作的详细信息，请参阅[此处](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#view-history-promote-and-demote-script-actions)的文档。
 
@@ -89,7 +89,7 @@ HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，�
 
     #compile CaffeOnSpark
     pushd ${CAFFE_ON_SPARK}
-    #always clean up the environment before building (especially when rebuiding), or there will be errors such as "failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occured: exec returned: 2"
+    #always clean up the environment before building (especially when rebuiding), or there will be errors such as "failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occurred: exec returned: 2"
     make clean 
     #the build step usually takes 20~30 mins, since it has a lot maven dependencies
     make build 
@@ -116,11 +116,11 @@ HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，�
 - 将编译的 Caffe 库置于 BLOB 存储，以便将来使用脚本操作将这些库复制到所有节点，不再需要编译。
 
 
-### <a name="troubleshooting-an-ant-buildexception-has-occurred-exec-returned-2"></a>故障排除：出现 Ant BuildException: exec 返回: 2
+### <a name="troubleshooting-an-ant-buildexception-has-occurred-exec-returned-2"></a>故障排除：出现 Ant BuildException: exec 返回:2
 
 首次尝试生成 CaffeOnSpark 时，有时会出现以下错误消息：
 
-    failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occured: exec returned: 2
+    failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occurred: exec returned: 2
 
 运行“make clean”清除代码存储库，再运行“make build”即可解决该问题，前提是依赖项正确。
 
@@ -169,7 +169,7 @@ Caffe 使用的是“富有表现力的体系结构”，因此若要编写模�
 
 CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具有良好的设计，将网络体系结构（网络拓扑）和优化进行了拆分。 在本示例中，需要两个文件： 
 
-“解算器”文件 (${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt) 用于监控优化情况和生成参数更新。 例如，它可以定义是使用 CPU 还是 GPU，以及具体的动量和迭代次数等。它还定义程序应使用哪个神经元网络拓扑（即你需要的第二个文件）。 有关解算器的详细信息，请参阅 [Caffe 文档](http://caffe.berkeleyvision.org/tutorial/solver.html)。
+“解算器”文件 (${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt) 用于监控优化情况和生成参数更新。 例如，它可以定义是使用 CPU 还是 GPU，以及具体的动量和迭代次数等。它还定义程序应使用哪个神经元网络拓扑（即你需要的第二个文件）。 有关解算器的详细信息，请参阅 [Caffe 文档](https://caffe.berkeleyvision.org/tutorial/solver.html)。
 
 就此示例来说，你使用的是 CPU 而不是 GPU，因此应将最后一行更改为：
 
@@ -187,7 +187,7 @@ CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具�
 
 ![Caffe 配置](./media/apache-spark-deep-learning-caffe/Caffe-2.png)
 
-如需详细了解如何定义网络，请查看[有关 MNIST 数据集的 Caffe 文档](http://caffe.berkeleyvision.org/gathered/examples/mnist.html)
+如需详细了解如何定义网络，请查看[有关 MNIST 数据集的 Caffe 文档](https://caffe.berkeleyvision.org/gathered/examples/mnist.html)
 
 对于本文，请使用此 MNIST 示例。 从头节点运行以下命令：
 
@@ -294,8 +294,8 @@ SampleID 表示 MNIST 数据集中的 ID，标签是模型的标识数字。
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>方案
-* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 结合 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 来通过 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检验结果](apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="manage-resources"></a>管理资源
 * [管理 Azure HDInsight 中 Apache Spark 群集的资源](apache-spark-resource-manager.md)

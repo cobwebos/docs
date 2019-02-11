@@ -1,21 +1,22 @@
 ---
-title: 快速入门：生成缩略图 - REST、Go - 计算机视觉
+title: 快速入门：生成缩略图 - REST、Go
 titleSuffix: Azure Cognitive Services
 description: 在该快速入门中，你将使用计算机视觉 API 和 Go 基于图像生成缩略图。
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: f2b3296385cd11fc37d15b536ea02773802bdba1
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: 2b6f97382089dd20d3a717187bc6513771776f50
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854231"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227227"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-go-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 Go 生成缩略图
 

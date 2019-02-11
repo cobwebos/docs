@@ -5,20 +5,20 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-ms.assetid: e1152110-b756-4c1a-9fa2-73fe3ab0ad8e
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/12/2018
+ms.date: 1/18/2019
 ms.author: mabrigg
-ms.openlocfilehash: 608525a1f06a396c7df7d764f236f33af77dccc6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.lastreviewed: 1/18/2019
+ms.openlocfilehash: 692fba97a67a7dc9654e307c2b7628dcc89f3ba8
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235337"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768668"
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Azure Stack 中的存储帐户
 存储帐户包含 Blob 和表服务，以及存储数据对象的唯一命名空间。 默认情况下，只有你，即存储帐户所有者，才能使用帐户中的数据。
@@ -34,7 +34,7 @@ ms.locfileid: "51235337"
     ![](media/azure-stack-provision-storage-account/image03.png)
 
 ### <a name="next-steps"></a>后续步骤
-[使用 Azure 资源管理器模板](user/azure-stack-arm-templates.md)
+[使用 Azure Resource Manager 模板](user/azure-stack-arm-templates.md)
 
 [了解 Azure 存储帐户](../storage/common/storage-create-storage-account.md)
 

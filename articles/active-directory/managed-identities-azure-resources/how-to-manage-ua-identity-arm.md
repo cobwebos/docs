@@ -3,23 +3,23 @@ title: 如何使用 Azure 资源管理器创建和删除用户分配的托管标
 description: 分步说明如何使用 Azure 资源管理器创建和删除用户分配的托管标识。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
-ms.author: daveba
-ms.openlocfilehash: 9329695ed582a313ffdf1a83352e7b561b778654
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.author: priyamo
+ms.openlocfilehash: fb133ec9c19195568eb876526adaff193028cb16
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298732"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197477"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>使用 Azure 资源管理器创建、列出和删除用户分配的托管标识
 
@@ -71,7 +71,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
     {
       "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
       "name": "[parameters('resourceName')]",
-      "apiVersion": "2015-08-31-PREVIEW",
+      "apiVersion": "2018-11-30",
       "location": "[resourceGroup().location]"
     }
   ],

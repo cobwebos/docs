@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/28/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 9d10464dac8d9e47d80f11b8bfaf70740e3ad250
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: ce48e9a17ab6b63c7fb8caa752258e218ca51ba3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567088"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226377"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>将 Amazon Web Services (AWS) VM 迁移到 Azure
 
@@ -33,12 +33,14 @@ ms.locfileid: "51567088"
 
 ## <a name="prerequisites"></a>先决条件
 - 确保要迁移的 VM 运行的是支持的 OS 版本。 支持的版本包括： 
-  - Windows Server 2016 
-  - Windows Server 2012 R2
-  - Windows Server 2012 
-  - 64 位版本的 Windows Server 2008 R2 SP1 或更高版本
-  - Red Hat Enterprise Linux 6.7（仅限 HVM 虚拟化实例），使用 Citrix PV 或 AWS PV 驱动程序。 *不*支持运行 RedHat PV 驱动程序的实例。
- - 必须在要复制的每个 VM 上安装移动服务。 
+      - Windows Server 2016 
+      - Windows Server 2012 R2
+      - Windows Server 2012 
+      - 64 位版本的 Windows Server 2008 R2 SP1 或更高版本
+      - Red Hat Enterprise Linux 6.4 到 6.10、7.1 到 7.6（仅限 HVM 虚拟化实例）（不支持运行 RedHat PV 驱动程序的实例。）
+      - CentOS 6.4 到 6.10、7.1 到 7.6（仅限 HVM 虚拟化实例）
+ 
+- 必须在要复制的每个 VM 上安装移动服务。 
 
     > [!IMPORTANT]
     > 为 VM 启用复制后，Site Recovery 会自动安装此服务。 若要进行自动安装，必须在 EC2 实例上准备一个帐户，Site Recovery 将使用该帐户访问 VM。 可以使用域帐户或本地帐户。 
@@ -101,7 +103,7 @@ ms.locfileid: "51567088"
 
 在 Azure 门户的保管库页的“入门”部分选择“Site Recovery”，然后选择“准备基础结构”。 完成以下步骤。
 
-### <a name="1-protection-goal"></a>1：保护目标
+### <a name="1-protection-goal"></a>1:保护目标
 
 在“保护目标”页上选择以下值：
 
@@ -113,7 +115,7 @@ ms.locfileid: "51567088"
 
 完成后，选择“确定”即可转到下一部分。
 
-### <a name="2-prepare-source"></a>2：准备源
+### <a name="2-prepare-source"></a>2:准备源
 
 在“准备源”页上，选择“+ 配置服务器”。
 
@@ -136,7 +138,7 @@ ms.locfileid: "51567088"
     11. “安装进度”显示有关安装过程的信息。 完成后，选择“完成”。 此时会出现一个显示重启消息的窗口。 选择“确定”。 接下来会出现一个窗口，显示有关配置服务器连接通行短语的消息。 将通行短语复制到剪贴板，然后保存到其他安全位置。
 6. 在 VM 上运行 cspsconfigtool.exe，以在配置服务器上创建一个或多个管理帐户。 请确保管理帐户在要迁移的 EC2 实例上具有管理员权限。
 
-完成配置服务器设置后，请返回门户，选择为**配置服务器**创建的服务器。 选择“确定”，转到“3：准备目标”。
+完成配置服务器设置后，请返回门户，选择为**配置服务器**创建的服务器。 选择“确定”转到 3：准备目标。
 
 ### <a name="3-prepare-target"></a>3：准备目标
 
@@ -167,10 +169,10 @@ ms.locfileid: "51567088"
 
 为要迁移的各 VM 启用复制。 启用复制后，Site Recovery 会自动安装移动服务。
 
-1. 转到 [Azure 门户](htts://portal.azure.com)。
+1. 转到 [Azure 门户](https://portal.azure.com)。
 1. 在保管库相应页面的“入门”下，选择“Site Recovery”。
-2. 在“适用于本地计算机和 Azure VM”下，选择“步骤 1: 复制应用程序”。 使用以下信息完成向导页面。 完成后，在每个页面上选择“确定”：
-    - 1：配置源
+2. 在“适用于本地计算机和 Azure VM”下，选择“步骤 1：复制应用程序”。 使用以下信息完成向导页面。 完成后，在每个页面上选择“确定”：
+    - 1:配置源
 
     |  |  |
     |-----|-----|
@@ -179,7 +181,7 @@ ms.locfileid: "51567088"
     |计算机类型： | 选择“物理计算机”。|
     | 进程服务器： | 从下拉列表中选择配置服务器。|
 
-    - 2：配置目标
+    - 2:配置目标
 
     |  |  |
     |-----|-----|

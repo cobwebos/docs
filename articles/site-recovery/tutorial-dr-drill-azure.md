@@ -4,16 +4,17 @@ description: 了解使用 Azure Site Recovery 对从 Azure 本地计算机运行
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
+services: site-recovery
 ms.topic: tutorial
-ms.date: 10/29/2018
+ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b0344095cd7c9aedd360d44f2649f27dfd78cd30
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c01cc6bd6244bcaa8d33baead35ac2a1dadc3d7a
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214403"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53970791"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>运行 Azure 灾难恢复演练
 

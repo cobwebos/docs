@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 1f4b24eb-ab4d-4baa-a717-2a0e5b8d27cd
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,20 +17,20 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 731b68e3f7dbb46f2fa51a18cb5b3da6b4626fa6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3e4cd8859f376fa4fbb9069b145d893483c3fc14
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963928"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101254"
 ---
 # <a name="quickstart-set-up-a-dev-environment"></a>快速入门：设置开发环境
 
-Microsoft 标识平台可让开发人员生成面向各种自定义 Microsoft 365 环境和标识的应用程序。 要开始使用 Microsoft 标识平台，你将访问环境（也称为 Azure AD 租户），该环境可以注册和管理应用、可以访问 Microsoft 365 数据并部署自定义条件访问和租户限制。 
+Microsoft 标识平台可让开发人员生成面向各种自定义 Microsoft 365 环境和标识的应用程序。 要开始使用 Microsoft 标识平台，你将需要访问环境（也称为 Azure AD 租户），该环境可以注册和管理应用、可以访问 Microsoft 365 数据并部署自定义条件访问和租户限制。
 
-租户是组织的表示形式。 它是 Azure AD 专用实例，组织或应用开发人员与 Microsoft 建立关系时（例如注册 Azure、Microsoft Intune 或 Microsoft 365）会收到该实例。 
+租户是组织的表示形式。 它是 Azure AD 专用实例，组织或应用开发人员与 Microsoft 建立关系时（例如注册 Azure、Microsoft Intune 或 Microsoft 365）会收到该实例。
 
-每个 Azure AD 租户都与其他 Azure AD 租户不同并单独存在，而且使用自己的工作和学校标识、消费者标识（如果是 Azure AD B2C 租户）以及应用注册进行表示。 租户内部的应用注册只允许从租户或所有租户的帐户中进行身份验证。 
+每个 Azure AD 租户都与其他 Azure AD 租户不同并单独存在，而且使用自己的工作和学校标识、消费者标识（如果是 Azure AD B2C 租户）以及应用注册进行表示。 租户内部的应用注册只允许从租户或所有租户的帐户中进行身份验证。
 
 ## <a name="determining-environment-type"></a>确定环境类型
 
@@ -69,7 +69,7 @@ Microsoft 标识平台可让开发人员生成面向各种自定义 Microsoft 36
 
 ## <a name="social-and-local-accounts"></a>社交和本地帐户
 
-要开始生成登录社交和本地帐户的应用，你将需要创建 Azure AD B2C 租户。 请从[创建 Azure AD B2C 租户](../../active-directory-b2c/tutorial-create-tenant.md)开始。 
+要开始生成登录社交和本地帐户的应用，你将需要创建 Azure AD B2C 租户。 请从[创建 Azure AD B2C 租户](../../active-directory-b2c/tutorial-create-tenant.md)开始。
 
 ## <a name="next-steps"></a>后续步骤
 

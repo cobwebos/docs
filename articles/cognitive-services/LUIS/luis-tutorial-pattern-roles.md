@@ -1,45 +1,32 @@
 ---
-title: 教程 4：上下文相关数据的模式角色
+title: 模式角色
 titleSuffix: Azure Cognitive Services
 description: 使用模式从格式正确的模板话语中提取数据。 模板话语使用简单的实体和角色提取相关的数据，例如源位置和目标位置。
+ms.custom: seodec18
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: d13d77fdb741f7f7cf16e3d25c755f4363e56f93
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 18c02babe401ed995062e792fab6920a88379729
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427482"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212115"
 ---
-# <a name="tutorial-4-extract-contextually-related-patterns"></a>教程 4：提取与上下文相关的模式
+# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>教程：使用角色提取与上下文相关的模式
 
 在本教程中，使用模式从格式正确的模板话语中提取数据。 模板话语使用简单的实体和角色提取相关的数据，例如源位置和目标位置。  当使用模式时，意向需要较少的示例话语。
 
-角色的用途是在话语中提取与上下文相关的实体。 在 `Move new employee Robert Williams from Sacramento and San Francisco` 话语中，原城市和目的地城市值彼此相关，并使用公共语言来表示每个位置。 
-
-
-新员工 Billy Patterson 的名称还不是“员工”列表实体的一部分。 首先需提取新员工名称，才能将名称发送到外部系统以创建公司凭据。 创建公司凭据后，会将员工凭据添加到“员工”列表实体。
-
-需要将新员工和家人从现有城市调到虚构公司所在的城市。 由于新员工可以来自于任何城市，因此需要发现此位置。 诸如列表实体等的集合列表可能不起作用，因为只会提取列表中的城市。
-
-与原城市和目的地城市相关联的角色名称需要在所有实体中是唯一的。 确保这些角色唯一的一种简单办法是通过命名策略将其绑定到包含实体。 “NewEmployeeRelocation”实体是包含两个角色（“NewEmployeeReloOrigin”和“NewEmployeeReloDestination”）的简单实体。 Relo 是 relocation 的缩写。
-
-由于示例话语 `Move new employee Robert Williams from Sacramento and San Francisco` 仅具有机器学习的实体，因此，向意向提供足够的示例话语至关重要，以便检测到这些实体。  
-
-**尽管模式允许提供较少的示例话语，但如果未检测到实体，则该模式将不匹配。**
-
-如果由于简单实体是城市等名称而难以检测到该实体，请考虑添加类似值的短语列表。 这通过为 LUIS 提供有关该类型的字或短语的其他信号，帮助检测城市名称。 短语列表只能通过帮助模式匹配所必需的实体检测来为模式提供帮助。 
 
 **本教程介绍如何执行下列操作：**
 
 > [!div class="checklist"]
-> * 使用现有的教程应用
+> * 导入示例应用
 > * 创建新实体
 > * 创建新意向
 > * 定型
@@ -51,12 +38,29 @@ ms.locfileid: "52427482"
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>使用现有应用
+## <a name="using-roles-in-patterns"></a>在模式中使用角色
+
+角色的用途是在话语中提取与上下文相关的实体。 在 `Move new employee Robert Williams from Sacramento and San Francisco` 话语中，原城市和目的地城市值彼此相关，并使用公共语言来表示每个位置。 
+
+
+新员工 Billy Patterson 的名称还不是“员工”列表实体的一部分。 首先需提取新员工名称，才能将名称发送到外部系统以创建公司凭据。 创建公司凭据后，会将员工凭据添加到“员工”列表实体。
+
+需要将新员工和家人从现有城市调到虚构公司所在的城市。 由于新员工可以来自于任何城市，因此需要发现此位置。 诸如列表实体等的集合列表可能不起作用，因为只会提取列表中的城市。
+
+与原城市和目的地城市相关联的角色名称需要在所有实体中是唯一的。 确保这些角色唯一的一种简单办法是通过命名策略将其绑定到包含实体。 NewEmployeeRelocation 实体是具有以下两个角色的简单实体：NewEmployeeReloOrigin 和 NewEmployeeReloDestination。 Relo 是 relocation 的缩写。
+
+由于示例话语 `Move new employee Robert Williams from Sacramento and San Francisco` 仅具有机器学习的实体，因此，向意向提供足够的示例话语至关重要，以便检测到这些实体。  
+
+**尽管模式允许提供较少的示例话语，但如果未检测到实体，则该模式将不匹配。**
+
+如果由于简单实体是城市等名称而难以检测到该实体，请考虑添加类似值的短语列表。 这通过为 LUIS 提供有关该类型的字或短语的其他信号，帮助检测城市名称。 短语列表只能通过帮助模式匹配所必需的实体检测来为模式提供帮助。 
+
+## <a name="import-example-app"></a>导入示例应用
 继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
 
-如果没有上一个教程中的 HumanResources 应用，请执行以下步骤：
+请执行以下步骤：
 
-1.  下载并保存[应用 JSON 文件](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-patterns-HumanResources-v2.json)。
+1.  下载并保存[应用 JSON 文件](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-patterns-HumanResources-v2.json)。
 
 2. 将 JSON 导入到新应用中。
 
@@ -128,7 +132,7 @@ ms.locfileid: "52427482"
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `Move Wayne Berry from Miami to Mount Vernon`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 
 
-    ```JSON
+    ```json
     {
       "query": "Move Wayne Berry from Newark to Columbus",
       "topScoringIntent": {
@@ -258,7 +262,7 @@ ms.locfileid: "52427482"
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `Move wayne berry from miami to mount vernon`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 
 
-    ```JSON
+    ```json
     {
       "query": "Move Wayne Berry from Miami to Mount Vernon",
       "topScoringIntent": {

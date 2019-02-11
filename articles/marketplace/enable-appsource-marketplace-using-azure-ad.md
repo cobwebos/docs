@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: qianw211
-ms.openlocfilehash: 3ad9308f3bc714ee2877627da8fdb328459b9fe4
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 247a45a38d732ace0455c6ca2ebbd5c44c384004
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351943"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732322"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>使用 Azure Active Directory 启用 AppSource 和市场列表
 
@@ -59,7 +59,7 @@ AppSource 和 Azure 市场的各种[列表选项和产品/服务类型](https://
 
 自动化客户设置可以增加转换的可能性。 当客户选择你的试用列表并重定向到试用环境时，可直接设置客户，而无需其他登录步骤。
 
-在身份验证期间，Azure AD 会向应用或产品/服务发送令牌。 令牌提供的用户信息可在应用或产品/服务中创建用户帐户。 若要了解更多信息，请参阅[示例令牌](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens)。
+在身份验证期间，Azure AD 会向应用或产品/服务发送令牌。 令牌提供的用户信息可在应用或产品/服务中创建用户帐户。 若要了解更多信息，请参阅[示例令牌](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)。
 
 使用 Azure AD 在应用或试用列表中启用一键式身份验证时，可以：
 

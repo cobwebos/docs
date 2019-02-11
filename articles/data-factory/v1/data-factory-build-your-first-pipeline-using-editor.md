@@ -10,17 +10,16 @@ ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f3dc27b35f35f3aaa649b03777ff13d385561673
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 426a8f3df67ee00ded0591024447770e4cfedc32
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732220"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020704"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>教程：使用 Azure 门户生成第一个数据工厂
 > [!div class="op_single_selector"]
@@ -33,7 +32,7 @@ ms.locfileid: "45732220"
 
 
 > [!NOTE]
-> 本文适用于 Azure 数据工厂第 1 版（即正式版）。 如果你使用的是数据工厂服务的当前版本，请参阅[快速入门：使用 Azure 数据工厂创建数据工厂](../quickstart-create-data-factory-dot-net.md)。
+> 本文适用于 Azure 数据工厂第 1 版（即正式版）。 如果使用的是数据工厂服务的当前版本，请参阅[快速入门：使用数据工厂创建数据工厂](../quickstart-create-data-factory-dot-net.md)。
 
 本教程介绍如何使用 [Azure 门户](https://portal.azure.com/)创建第一个数据工厂。 若要使用其他工具/SDK 来完成教程，请从下拉列表中选择一个选项。 
 
@@ -78,7 +77,7 @@ ms.locfileid: "45732220"
 
 1. 选中“固定到仪表板”复选框。
 
-1. 选择**创建**。
+1. 选择“创建”。
 
    > [!IMPORTANT]
    > 只有订阅/资源组级别的[数据工厂参与者](../../role-based-access-control/built-in-roles.md#data-factory-contributor)角色成员才能创建数据工厂实例。
@@ -335,7 +334,7 @@ ms.locfileid: "45732220"
    >
 1. 确认符合以下条件：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **input.log** 文件存在于 Blob 存储的 **adfgetstarted** 容器的 **inputdata** 文件夹中。
+   a. **input.log** 文件存在于 Blob 存储的 **adfgetstarted** 容器的 **inputdata** 文件夹中。
 
    b. **partitionweblogs.hql** 文件在 Blob 存储的 **adfgetstarted** 容器的 **script** 文件夹中。 如果没有看到这些文件，请执行[教程概述](data-factory-build-your-first-pipeline.md)的“先决条件”部分中的步骤。
 

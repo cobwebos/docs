@@ -1,6 +1,6 @@
 ---
 title: 比较流、逻辑应用、函数和 WebJobs - Azure
-description: 比较针对集成任务进行了优化的各种 Microsoft 云服务：流、逻辑应用、函数和 WebJobs。
+description: 比较针对集成任务进行了优化的各种 Microsoft 云服务：Flow、逻辑应用、Functions 和 WebJobs。
 services: functions, logic-apps
 documentationcenter: na
 author: ggailey777
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: c5c2e4cd26954efb92d470f5432f709e4dc3f887
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4227db0f2767f559bb51afab6cb75f3ac34707c4
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240573"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117582"
 ---
 # <a name="compare-flow-logic-apps-functions-and-webjobs"></a>比较流、逻辑应用、函数和 WebJobs
 
@@ -26,7 +26,7 @@ ms.locfileid: "51240573"
 * [Microsoft Flow](https://flow.microsoft.com/)
 * [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
-* [Azure 应用服务 WebJobs](../app-service/web-sites-create-web-jobs.md)
+* [Azure 应用服务 WebJobs](../app-service/webjobs-create.md)
 
 所有这些服务都可以解决集成问题并自动化业务流程。 它们都可以定义输入、操作、条件和输出。 可以在日程安排或触发器中运行其中一个。 但是，每种服务都有其独特的优点，本文将介绍这些差异。
 
@@ -53,7 +53,7 @@ ms.locfileid: "51240573"
 
 函数和逻辑应用是用于启用无服务器工作负荷的 Azure 服务。 Azure Functions 是一种无服务器计算服务，而 Azure 逻辑应用提供无服务器工作流。 这两种服务都可以创建复杂“业务流程”。 业务流程是函数或步骤（在逻辑应用中称为“操作”）的集合，将执行这些函数或步骤来完成复杂任务。 例如，若要处理一批订单，可以并行执行某个函数的许多实例，等待所有实例完成，然后执行某个函数来计算聚合结果。
 
-对于 Azure Functions，通过编写代码并使用 [Durable Functions 扩展](durable-functions-overview.md)来开发业务流程。 对于逻辑应用，你通过使用 GUI 或通过编辑配置文件来创建业务流程。
+对于 Azure Functions，通过编写代码并使用 [Durable Functions 扩展](durable/durable-functions-concepts.md)来开发业务流程。 对于逻辑应用，你通过使用 GUI 或通过编辑配置文件来创建业务流程。
 
 在构建业务流程、从逻辑应用中调用函数以及从函数中调用逻辑应用时，可以混合使用各种服务。 可以根据服务功能或你的个人喜好选择如何构建每个业务流程。 下表列出了这些服务之间的一些主要区别：
  
@@ -62,15 +62,15 @@ ms.locfileid: "51240573"
 | 开发 | 代码优先（命令性） | 设计器优先（声明性） |
 | 连接 | [有关十多个内置的绑定类型](functions-triggers-bindings.md#supported-bindings)，为自定义绑定编写代码 | [大型连接器集合](../connectors/apis-list.md)、[适用于 B2B 方案的 Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)、[构建自定义连接器](../logic-apps/custom-connector-overview.md) |
 | 操作 | 每个活动都是一个 Azure 函数；为活动函数编写代码 |[现成操作的大型集合](../logic-apps/logic-apps-workflow-actions-triggers.md)|
-| 监视 | [Azure Application Insights](../application-insights/app-insights-overview.md) | [Azure 门户](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
-| 管理 | [REST API](durable-functions-http-api.md)、[Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure 门户](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[REST API](https://docs.microsoft.com/rest/api/logic/)、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp/?view=azurermps-5.6.0)、[Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
+| 监视 | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure 门户](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
+| 管理 | [REST API](durable/durable-functions-http-api.md)、[Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure 门户](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[REST API](https://docs.microsoft.com/rest/api/logic/)、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp/?view=azurermps-5.6.0)、[Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
 | 执行上下文 | 可以[在本地](functions-runtime-overview.md)或在云中运行。 | 只能在云中运行。|
 
 <a name="function"></a>
 
 ## <a name="compare-functions-and-webjobs"></a>比较函数和 WebJobs
 
-与 Azure Functions 一样，包含 WebJobs SDK 的 Azure 应用服务是一项代码优先的集成服务，专为开发人员设计。 二者都是在 [Azure 应用服务](../app-service/app-service-web-overview.md) 上构建的，支持[源代码管理集成](../app-service/app-service-continuous-deployment.md)、[身份验证](../app-service/app-service-authentication-overview.md)以及[使用 Application Insights 集成进行监视](functions-monitoring.md)等功能。
+与 Azure Functions 一样，包含 WebJobs SDK 的 Azure 应用服务是一项代码优先的集成服务，专为开发人员设计。 二者都是在 [Azure 应用服务](../app-service/overview.md) 上构建的，支持[源代码管理集成](../app-service/deploy-continuous-deployment.md)、[身份验证](../app-service/overview-authentication-authorization.md)以及[使用 Application Insights 集成进行监视](functions-monitoring.md)等功能。
 
 ### <a name="webjobs-and-the-webjobs-sdk"></a>WebJobs 和 WebJobs SDK
 

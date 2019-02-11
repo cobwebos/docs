@@ -2,18 +2,18 @@
 title: 排查 System Center Data Protection Manager 和 Azure 备份问题
 description: 排查 System Center Data Protection Manager 中的问题。
 services: backup
-author: adigan
-manager: shreeshd
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 11/24/2017
-ms.author: adigan
-ms.openlocfilehash: d3776df8184523999433059e95bc72e1d3abb1c7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 01/30/2019
+ms.author: kasinh
+ms.openlocfilehash: 4108616e3ae41e2c88b74bb08d5f846c0035101f
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606437"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55293989"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>排查 System Center Data Protection Manager 问题
 

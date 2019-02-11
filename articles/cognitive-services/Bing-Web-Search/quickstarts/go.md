@@ -1,24 +1,25 @@
 ---
-title: 快速入门：使用 Go 执行搜索 - 必应 Web 搜索 API
+title: 快速入门：通过 Go 执行 Web 搜索 - 必应 Web 搜索 REST API
 titleSuffix: Azure Cognitive Services
-description: 本快速入门介绍了如何使用 Go 进行你的第一次必应 Web 搜索 API 调用并接收 JSON 响应。
+description: 使用本快速入门，通过 Go 将请求发送到必应 Web 搜索 REST API，并接收 JSON 响应
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
-ms.openlocfilehash: 4191232e45d012d3aec5d056c28e765332073ede
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 11f15d37830bb177031ff90d93ea1053b66013ce
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310423"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203213"
 ---
-# <a name="quickstart-use-go-to-call-the-bing-web-search-api"></a>快速入门：使用 Go 调用必应 Web 搜索 API  
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>快速入门：使用必应 Web 搜索 REST API 和 Go 搜索网页
 
 使用本快速入门在不到 10 分钟时间内进行你的第一次必应 Web 搜索 API 调用并接收 JSON 响应。  
 

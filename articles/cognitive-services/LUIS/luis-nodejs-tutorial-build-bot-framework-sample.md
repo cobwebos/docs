@@ -1,23 +1,24 @@
 ---
-title: 使用 Node.js 的 LUIS 机器人 - Web 应用机器人 - Bot Framework SDK 3.0
+title: Bot - Node.js - v3
 titleSuffix: Azure Cognitive Services
-description: 使用 Bot Framework 生成与 LUIS 应用程序集成的机器人。
+description: 使用 Bot Framework 3.x 和 Azure Web 应用机器人构建与 LUIS 应用程序集成的机器人。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: 0bd191da3f2625bc202ee66100e7dac25d9d65de
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 8539c108409a5aea521f919eb9e015764eb0dd29
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042323"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490135"
 ---
-# <a name="luis-bot-in-nodejs"></a>Node.js 中的 LUIS 机器人
+# <a name="luis-bot-in-nodejs-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>使用 Bot Framework 3.x 和 Azure Web 应用机器人的 Node.js 中的 LUIS 机器人
 
 使用 Node.js，生成集成了语言理解 (LUIS) 的聊天机器人。 此聊天机器人使用预生成的 HomeAutomation 域来快速实现机器人解决方案。 该机器人是使用 Bot Framework 3.x 和 Azure Web 应用机器人生成的。
 
@@ -37,11 +38,11 @@ ms.locfileid: "47042323"
 
 1. 在 [Azure 门户](https://portal.azure.com)的菜单边栏选项卡中，选择“创建新资源”，并选择“查看全部”。
 
-    ![新建资源](./media/luis-tutorial-node-bot/bot-service-creation.png)
+    ![查看 Azure 门户中的所有资源](./media/luis-tutorial-node-bot/bot-service-creation.png)
 
 2. 在搜索框中，搜索“Web 应用机器人”。 
 
-    ![新建资源](./media/luis-tutorial-node-bot/bot-service-selection.png)
+    ![选择 Web 应用机器人以开始资源创建过程](./media/luis-tutorial-node-bot/bot-service-selection.png)
 
 3. 在“机器人服务边栏选项卡”中，提供所需信息，然后选择“创建”。 此操作可创建机器人服务和 LUIS 应用并将其部署到 Azure。 如果想要使用[语音启动](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)，请在创建机器人前查看[区域要求](luis-resources-faq.md#what-luis-regions-support-bot-framework-speech-priming)。 
     * 将“应用名称”设置为机器人名称。 将机器人部署到云（例如，mynotesbot.azurewebsites.net）时，该名称用作子域。 <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
@@ -78,7 +79,7 @@ ms.locfileid: "47042323"
 
 5. 新的浏览器窗口将打开。 在控制台中输入以下命令：
 
-    ```
+    ```console
     cd site\wwwroot && npm install
     ```
 
@@ -257,54 +258,10 @@ bot.dialog('TurnOff',
 > [语音启动](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)
 
 
-[intentDialog]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.intentdialog.html
-
-[intentDialog_matches]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.intentdialog.html#matches 
-
-[NotesSample]: https://github.com/Microsoft/BotFramework-Samples/tree/master/docs-samples/Node/basics-naturalLanguage
-
 [triggerAction]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction
-
-[confirmPrompt]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions.html#confirmprompt
-
-[waterfall]: bot-builder-nodejs-dialog-manage-conversation-flow.md#manage-conversation-flow-with-a-waterfall
-
-[session_userData]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html#userdata
-
-[EntityRecognizer_findEntity]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.entityrecognizer.html#findentity
 
 [matches]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions.html#matches
 
-[LUISAzureDocs]: https://docs.microsoft.com/azure/cognitive-services/LUIS/Home
 
-[Dialog]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html
-
-[IntentRecognizerSetOptions]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.iintentrecognizersetoptions.html
-
-[LuisRecognizer]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.luisrecognizer
-
-[LUISConcepts]: https://docs.botframework.com/node/builder/guides/understanding-natural-language/
-
-[DisambiguationSample]: https://github.com/Microsoft/BotBuilder/tree/master/Node/examples/feature-onDisambiguateRoute
-
-[IDisambiguateRouteHandler]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.idisambiguateroutehandler.html
-
-[RegExpRecognizer]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.regexprecognizer.html
-
-[AlarmBot]: https://github.com/Microsoft/BotBuilder/blob/master/Node/examples/basics-naturalLanguage/app.js
-
-[LUISBotSample]: https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/intelligence-LUIS
-
-[UniversalBot]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.universalbot.html
-
-
-<!-- Old Links -->
-[Github-BotFramework-Emulator-Download]: https://aka.ms/bot-framework-emulator
-[Github-LUIS-Samples]: https://github.com/Microsoft/LUIS-Samples
-[Github-LUIS-Samples-node-hotel-bot]: https://github.com/Microsoft/LUIS-Samples/tree/master/bot-integration-samples/hotel-finder/nodejs
-[NodeJs]: https://nodejs.org/
-[BFPortal]: https://dev.botframework.com/
-[RegisterInstructions]: https://docs.microsoft.com/bot-framework/portal-register-bot
-[BotFramework]: https://docs.microsoft.com/bot-framework/
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
 

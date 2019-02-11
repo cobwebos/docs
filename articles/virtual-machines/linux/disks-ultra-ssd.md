@@ -10,12 +10,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: rogarana
-ms.openlocfilehash: 29be5088ed26ace494ab4f5aed6907863b453dc2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.subservice: disks
+ms.openlocfilehash: b4a2b63f184997c49663ec1c91921cb5a8ee641c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981189"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467531"
 ---
 [!INCLUDE [virtual-machines-disks-ultra-ssd](../../../includes/virtual-machines-disks-ultra-ssd.md)]
 

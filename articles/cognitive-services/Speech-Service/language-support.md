@@ -1,21 +1,22 @@
 ---
 title: 语言支持 - 语音服务 API
 titleSuffix: Azure Cognitive Services
-description: 语音服务支持的自然语言列表。
+description: Azure 语音服务支持多种语言，可用于语音到文本和文本到语音转换，以及语音翻译。 本文提供服务支持语言的完整列表。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: fa4563b84eb0882832a89ccc98396ff487f51b48
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.custom: seodec18
+ms.openlocfilehash: bc85de9d2d94cd325095f5f6555105a724865005
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284755"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213298"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>语音服务 API 的语言和区域支持
 
@@ -37,7 +38,7 @@ Microsoft 语音识别 API 支持以下语言。 每种语言都有不同级别�
  en-IN | 英语(印度) | 是 | 是 | 是
  en-NZ | 英语(新西兰) | 否 | 是 | 是  
  en-US | 英语(美国) | 是 | 是 | 是
- es-ES | 西班牙语(西班牙) | 否 | 是 | 否
+ es-ES | 西班牙语(西班牙) | 是 | 是 | 否
  es-MX | 西班牙语(墨西哥) | 否 | 是 | 否
  fi-FI | 芬兰语(芬兰) | 否 | 否 | 否
  fr-CA | 法语(加拿大) | 否 | 是 | 否
@@ -49,7 +50,7 @@ Microsoft 语音识别 API 支持以下语言。 每种语言都有不同级别�
  nb-NO | 书面挪威语(挪威) | 否 | 否 | 否
  nl-NL | 荷兰语(荷兰) | 否 | 是 | 否
  pl-PL | 波兰语(波兰) | 否 | 否 | 否
- pt-BR | 葡萄牙语(巴西) | 否 | 是 | 否
+ pt-BR | 葡萄牙语(巴西) | 是 | 是 | 否
  pt-PT | 葡萄牙语(葡萄牙) | 否 | 是 | 否
  ru-RU | 俄语(俄罗斯) | 是 | 是 | 否
  sv-SE | 瑞典语(瑞典) | 否 | 否 | 否
@@ -59,11 +60,35 @@ Microsoft 语音识别 API 支持以下语言。 每种语言都有不同级别�
  th-TH | 泰语(泰国) | 否 | 否 | 否
 
 
-## <a name="text-to-speech"></a>文本到语音转换
+## <a name="text-to-speech"></a>文本转语音
 
-语音合成 API 提供以下语音，每种语音支持区域设置标识的特定语言和方言。
+文本转语音 REST API 支持以下语音，每种语音支持区域设置标识的特定语言和方言。
 
-区域设置 | 语言 | 性别 | Service name mapping
+> [!IMPORTANT]
+> 标准语音、自定义语音和神经语音的定价各不相同。 有关其他信息，请访问[定价](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)页。
+
+### <a name="neural-voices-preview"></a>神经语音（预览版）
+
+神经文本到语音转换是由深度神经网络提供支持的新型语音合成。 使用神经语音时，几乎无法将合成的语音与人类录音区分开来。
+
+可以使用神经语音使与聊天机器人和虚拟助手的交流更加自然和专注、可将数字文本（如电子书）转换为有声读物以及可增强车载导航系统。 随着类人的自然韵律和字词的清晰发音，用户在与 AI 系统交互时，神经语音显著减轻了听力疲劳。
+
+有关神经语音和区域可用性的完整列表，请参阅[区域](regions.md#neural-voices)。
+
+| 区域设置 | 语言 | 性别 | 服务名称映射|
+|--------|----------|---------|--------------------|
+| en-US | 英语(美国) | 男 | “Microsoft 服务器语音的文本转语音（en-US，GuyNeural）” |
+| en-US | 英语(美国) | 女 | “Microsoft 服务器语音的文本转语音（en-US，JessaNeural）” |
+| zh-CN | 中文 | 女 | “Microsoft 服务器语音的文本转语音（zh-CN，XiaoxiaoNeural）” |
+
+> [!IMPORTANT]
+> Microsoft 服务器语音的文本转语音（zh-CN，XiaoxiaoNeural）仅可通过以下东南亚终结点获得： https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1。
+
+### <a name="standard-voices"></a>标准语音
+
+提供超过 75 种标准语音，涉及超过 45 种语言和区域设置，允许用户将文本转换为合成语音。 有关区域可用性的详细信息，请参阅[区域](regions.md#standard-voices)。
+
+区域设置 | 语言 | 性别 | 服务名称映射
 -------|----------|---------|--------------------
 ar-EG\* | 阿拉伯语(埃及) | 女 | “Microsoft 服务器语音的文本转语音（ar-EG，Hoda）”
 ar-SA | 阿拉伯语(沙特阿拉伯) | 男 | “Microsoft 服务器语音的文本转语音（ar-SA，Naayf）”
@@ -158,22 +183,7 @@ zh-TW | 中文(中国台湾)|女 | “Microsoft 服务器语音的文本转语�
 
 ## <a name="speech-translation"></a>语音翻译
 
-**语音翻译** API 支持使用不同的语言进行语音转语音和语音转文本的翻译。 源语言必须始终来自以下“语音语言”表。 可用的目标语言取决于翻译目标是语音还是文本。 可以将传入的语音翻译成 [60 种以上的语言](https://www.microsoft.com/translator/business/languages/)。 这些语言的子集可用于[语音合成](language-support.md#text-languages)。 
-
-### <a name="speech-languages"></a>语音语言
-
-| 语音语言   | 语言代码 |
-|:----------- |-|
-| 阿拉伯语(现代标准)      | `ar` |
-| 中文(普通话)      | `zh` |
-| 英语      | `en` |
-| 法语      | `fr` |
-| 德语      | `de` |
-| 意大利语      | `it` |
-| 日语      | `jp` |
-| 葡萄牙语(巴西)     | `pt` |
-| 俄语      | `ru` |
-| 西班牙语      |  `es` |
+**语音翻译** API 支持使用不同的语言进行语音转语音和语音转文本的翻译。 源语言必须始终来自“语音转文本”语言表。 可用的目标语言取决于翻译目标是语音还是文本。 可以将传入的语音翻译成 [60 种以上的语言](https://www.microsoft.com/translator/business/languages/)。 这些语言的子集可用于[语音合成](language-support.md#text-languages)。
 
 ### <a name="text-languages"></a>文本语言
 

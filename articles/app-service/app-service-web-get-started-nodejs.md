@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 应用中创建 Node.js Web 应用 | Microsoft Docs
+title: 创建 Node.js Web 应用 - Azure 应用服务 | Microsoft Docs
 description: 数分钟内在 Azure 应用服务 Web 应用中部署第一个 Node.js Hello World。
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/30/2018
 ms.author: cephalin;msangapu
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 6d3f367ce21e9574282805737f2eff6c83ea6157
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.custom: seodec18
+ms.openlocfilehash: 5223a60663e05747b58aa04e7a102f1d350badd4
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248181"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632291"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中创建 Node.js Web 应用
 
@@ -28,7 +28,7 @@ ms.locfileid: "50248181"
 > 本文将应用部署到 Windows 上的应用服务。 若要部署到基于 _Linux_ 的应用服务，请参阅[在基于 Linux 的 Azure 应用服务中创建 Node.js Web 应用](./containers/quickstart-nodejs.md)。
 >
 
-[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。  本快速入门演示如何将 Node.js 应用部署到 Azure Web 应用中。 使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建 Web 应用，并使用 ZipDeploy 将 Node.js 代码示例部署到 Web 应用。
+[Azure 应用服务](overview.md)提供高度可缩放、自修补的 Web 托管服务。  本快速入门演示如何将 Node.js 应用部署到 Azure 应用服务中。 使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建 Web 应用，并使用 ZipDeploy 将 Node.js 代码示例部署到 Web 应用。
 
 ![在 Azure 中运行应用的示例](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
@@ -73,7 +73,7 @@ npm start
 在终端窗口中，按 **Ctrl+C** 退出 Web 服务器。
 
 > [!NOTE]
-> 在 Azure 应用服务中，此应用在 IIS 中使用 [iisnode](https://github.com/Azure/iisnode) 运行。 为了让应用能够使用 iisnode 运行，根应用目录要包含 web.config 文件。 此文件可以由 IIS 读取，与 iisnode 相关的设置记录在 [iisnode GitHub 存储库](https://github.com/Azure/iisnode/blob/master/src/samples/configuration/web.config)中。
+> 在 Azure 应用服务中，此应用在 IIS 中使用 [iisnode](https://github.com/Azure/iisnode) 运行。 为了让应用能够使用 iisnode 运行，根应用目录包含一个 web.config 文件。 此文件可以由 IIS 读取，与 iisnode 相关的设置记录在 [iisnode GitHub 存储库](https://github.com/Azure/iisnode/blob/master/src/samples/configuration/web.config)中。
 
 [!INCLUDE [Create ZIP file](../../includes/app-service-web-create-zip.md)]
 
@@ -85,7 +85,7 @@ npm start
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
-在 Cloud Shell 中，使用 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令在应用服务计划 `myAppServicePlan` 中创建一个 Web 应用。 
+在 Cloud Shell 中，使用 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令在 `myAppServicePlan` 应用服务计划中创建一个 Web 应用。 
 
 在以下示例中，将 `<app_name>` 替换为全局唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）。
 
@@ -119,10 +119,10 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WEBSITE_NODE_DEFAULT_VERSION=8.11.1
 ```
 
-浏览到新建的 Web 应用。 将 _&lt;应用名称>_ 替换为唯一的应用名称。
+浏览到新建的 Web 应用。 将 `<app_name>` 替换为唯一应用名称。
 
 ```bash
-http://<app name>.azurewebsites.net
+http://<app_name>.azurewebsites.net
 ```
 
 新 Web 应用应该如下所示：
@@ -143,7 +143,7 @@ Node.js 示例代码在 Azure 应用服务 Web 应用中运行。
 
 ![在 Azure 中运行应用的示例](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
-**祝贺你！** 现已将第一个 Node.js 应用部署到应用服务。
+祝贺你！ 现已将第一个 Node.js 应用部署到应用服务。
 
 ## <a name="update-and-redeploy-the-code"></a>更新并重新部署代码
 
@@ -169,19 +169,19 @@ Compress-Archive -Path * -DestinationPath myUpdatedAppFiles.zip
 
 ![已更新的在 Azure 中运行应用的示例](media/app-service-web-get-started-nodejs-poc/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>管理新 Azure Web 应用
+## <a name="manage-your-new-azure-app"></a>管理新的 Azure 应用
 
 转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理创建的 Web 应用。
 
-在左侧菜单中单击“应用服务”，然后单击 Azure Web 应用的名称。
+在左侧菜单中单击“应用程序服务”，然后单击 Azure 应用的名称。
 
-![在门户中导航到 Azure Web 应用](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
+![在门户中导航到 Azure 应用](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
 
-此时会出现 Web 应用的概述页。 可在此处执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 
+这里我们可以看到 Web 应用的概述页。 并可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 
 
 ![Azure 门户中的应用服务页](media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-detail.png)
 
-左侧菜单提供用于配置应用的不同页面。 
+左侧菜单提供了用于配置应用的不同页面。 
 
 ## <a name="video"></a>视频
 

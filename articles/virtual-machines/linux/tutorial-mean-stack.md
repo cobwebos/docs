@@ -3,7 +3,7 @@ title: 教程 - 在 Azure 中的 Linux 虚拟机上创建 MEAN 堆栈 | Microsof
 description: 本教程介绍如何在 Azure 中的 Linux VM 上创建 MongoDB、Express、AngularJS 和 Node.js (MEAN) 堆栈。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/08/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a223cb9be7c381c2f64648b32ef9bca69ebeddb5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 84860b5098e141bdfbd924d86836bc7b48b0ce8f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465675"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754211"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>教程：在 Azure 中的 Linux 虚拟机上创建 MongoDB、Express、AngularJS 和 Node.js (MEAN) 堆栈
 
@@ -42,7 +42,7 @@ ms.locfileid: "49465675"
 
 ## <a name="create-a-linux-vm"></a>创建 Linux VM
 
-使用 [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) 命令创建资源组，并使用 [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) 命令创建 Linux VM。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+使用 [az group create](https://docs.microsoft.com/cli/azure/group) 命令创建资源组，并使用 [az vm create](https://docs.microsoft.com/cli/azure/vm) 命令创建 Linux VM。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 以下示例使用 Azure CLI 在 *eastus* 位置创建名为 *myResourceGroupMEAN* 的资源组。 将会创建一个包含 SSH 密钥（如果默认密钥位置不存在这些密钥）的、名为 *myVM* 的 VM。 若要使用一组特定的密钥，请使用 --ssh-key-value 选项。
 

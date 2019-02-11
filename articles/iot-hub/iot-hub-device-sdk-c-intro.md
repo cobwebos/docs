@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: 97f1c9e16ae6be9e6bece69d0923f6290a8cd072
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: d1d7c5df1b49a1f8c2fe4fbae4d8c8fdbd481e0e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024709"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053902"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>适用于 C 的 Azure IoT 设备 SDK
 
@@ -75,11 +75,11 @@ SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure
 
 * 一个是称为[设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)的 Windows 应用程序。
 
-* 一个称为 [Azure IoT 工具包](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)的跨平台 Visual Studio Code 扩展。
+* 一个称为 [Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)的跨平台 Visual Studio Code 扩展。
 
 * 一个称为[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)的跨平台 Python CLI。
 
-本教程使用图形*设备资源管理器*工具。 如果在 VS Code 中进行开发，可以使用*适用于 VS Code 的 Azure IoT 工具包扩展*。 如果偏好 CLI 工具，也可以使用适用于 Azure CLI 2.0 的 IoT 扩展工具。
+本教程使用图形*设备资源管理器*工具。 如果在 VS Code 中进行开发，可以使用适用于 VS Code 的 Azure IoT 工具。 如果偏好 CLI 工具，也可以使用适用于 Azure CLI 2.0 的 IoT 扩展工具。
 
 设备资源管理器工具使用 Azure IoT 服务库在 IoT 中心执行各种功能（包括添加设备）。 若使用设备资源管理器工具添加设备，会获得设备的连接字符串。 需要此连接字符串才能运行示例应用程序。
 

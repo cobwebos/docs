@@ -3,25 +3,25 @@ title: 启用 Azure AD SSPR 试点
 description: 在本教程中，你将为试点用户组启用 Azure AD 自助密码重置
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: a86547ad3eddb57328a2a0358ac453c979b84d37
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 7b84e36ae447adcf36fae90b61564bc06c3bae89
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163273"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081545"
 ---
 # <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>教程：完成 Azure AD 自助密码重置试点推广
 
 在本教程中，你将在组织中启用 Azure AD 自助密码重置 (SSPR) 的试点推广，并使用非管理员帐户进行测试。
 
-对自助密码重置进行的任何测试都必须使用非管理员帐户。 Microsoft 管理管理员帐户的密码重置策略，需要使用更严格的身份验证方法。 此策略不允许使用安全性问题和回答，要求使用两种方法进行重置。
+对自助密码重置进行的任何测试都必须使用非管理员帐户。 Microsoft 管理管理员帐户的密码重置策略，需要使用更严格的身份验证方法。 此策略不允许使用安全性问题和回答，而要求使用两种重置方法。
 
 > [!div class="checklist"]
 > * 启用自助服务密码重置
@@ -36,7 +36,7 @@ ms.locfileid: "39163273"
 1. 使用全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 浏览到“Azure Active Directory”，然后选择“密码重置”。
 1. 开始使用试点组时，请为组织中的部分用户启用自助密码。
-   * 在“属性”页中，在“启用自助密码重置”选项下，选择“选定”，然后选取一个试点组。
+   * 在“属性”页中的“启用自助密码重置”选项下，选择“已选”，然后选取一个试点组。
       * 仅所选特定 Azure AD 组的成员可以使用 SSPR 功能。 建议定义一组用户，在为概念证明部署此功能时使用此设置。 此处支持安全组嵌套。
       * 确保所选组中的用户已获得适当的许可。
    * 单击“保存”
@@ -46,7 +46,7 @@ ms.locfileid: "39163273"
    * 单击“保存”
 1. 在“注册”页上
    * 针对“要求用户在登录时注册”选择“是”。
-   * 将“用户必须在几天后重新确认其身份验证信息”设置为“180”。
+   * 将“在多少天后要求用户重新确认其身份验证信息”设置为“180”。 
    * 单击“保存”
 1. 在“通知”页上
    * 将“重置密码时通知用户”选项设置为“是”。
@@ -59,7 +59,7 @@ ms.locfileid: "39163273"
 
 ## <a name="test-sspr-as-a-user"></a>以用户身份测试 SSPR
 
-使用非管理员测试用户（属于试点组的成员）测试自助密码重置。 **请注意，如果使用分配有管理员角色的帐户，则身份验证方法和次数可能不同于你所选择的，因为 Microsoft 会管理管理员策略。**
+使用非管理员测试用户（属于试点组的成员）测试自助密码重置。 **使用非管理员测试用户（属于试点组的成员）测试自助密码重置。 **请注意，如果所使用的帐户具有任何管理员角色，那么身份验证方法和数量可能与所选的有所不同，因为由Microsoft管理管理员策略。**
 
 1. 打开一个新的 InPrivate 或 incognito 模式浏览器窗口。
 1. 通过 [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) 中的注册门户使用测试用户注册自助密码重置。

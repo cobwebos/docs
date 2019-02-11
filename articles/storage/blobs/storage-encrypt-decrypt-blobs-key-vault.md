@@ -7,19 +7,19 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: tamram
-ms.component: blobs
-ms.openlocfilehash: 092ffa5ed34a8e0a05b69c3fae86ab7299760ac2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: blobs
+ms.openlocfilehash: 09bb74ead0ff52cc7a70170357ddc54a91bf00d9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233093"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239401"
 ---
-# <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>教程：在 Microsoft Azure 存储中使用 Azure 密钥保管库加密和解密 Blob
+# <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>教程：在 Microsoft Azure 存储中使用 Azure Key Vault 加密和解密 Blob
 ## <a name="introduction"></a>介绍
 本教程介绍如何结合使用客户端存储加密与 Azure 密钥保管库。 其中将引导完成如何在控制台应用程序中使用这些技术加密和解密 blob。
 
-**估计完成时间：** 20 分钟。
+**估计完成时间：** 20 分钟
 
 有关 Azure 密钥保管库的概述信息，请参阅[什么是 Azure 密钥保管库？](../../key-vault/key-vault-whatis.md)。
 
@@ -52,7 +52,7 @@ ms.locfileid: "51233093"
 
 记下将应用程序注册到 Azure Active Directory 时生成的 ClientID 和 ClientSecret。
 
-在密钥保管库中创建这两个密钥。 我们在本教程的其余部分将假定使用了以下名称：ContosoKeyVault 和 TestRSAKey1。
+在密钥保管库中创建这两个密钥。 我们在本教程的其余部分假定使用了以下名称：ContosoKeyVault 和 TestRSAKey1。
 
 ## <a name="create-a-console-application-with-packages-and-appsettings"></a>使用程序包和 AppSettings 创建控制台应用程序
 在 Visual Studio 中创建新的控制台应用程序。
@@ -208,7 +208,7 @@ $enc = [System.Convert]::ToBase64String($b)
 $secretvalue = ConvertTo-SecureString $enc -AsPlainText -Force
 
 // Substitute the VaultName and Name in this command.
-$secret = Set-AzureKeyVaultSecret -VaultName 'ContoseKeyVault' -Name 'TestSecret2' -SecretValue $secretvalue -ContentType "application/octet-stream"
+$secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'TestSecret2' -SecretValue $secretvalue -ContentType "application/octet-stream"
 ```
 
 在控制台应用程序中，可以使用与之前相同的调用将此密钥作为 SymmetricKey 进行检索。

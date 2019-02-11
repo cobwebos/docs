@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: magattus
-ms.openlocfilehash: 0bb52943eac3e35b5012e3f54bfb841cf491ed18
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: af8e57f39b5b83b1d1be09c29d8b6eb5d49c7b6c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091805"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309258"
 ---
 # <a name="understanding-azure-cdn-billing"></a>了解 Azure CDN 计费
 
@@ -32,7 +32,7 @@ ms.locfileid: "49091805"
 
 - 区域 2：亚太（包括日本）
 
-- 区域 3：南美
+- 区域 3：南美洲
 
 - 区域 4：澳大利亚和新西兰
 
@@ -40,7 +40,7 @@ ms.locfileid: "49091805"
 
 有关接入点 (POP) 区域的信息，请参阅[按区域列出的 Azure CDN 的 POP 位置](https://docs.microsoft.com/azure/cdn/cdn-pop-locations)。 例如，位于墨西哥的 POP 属于北美区域，因此包括在区域 1 中。 
 
-有关 Azure CDN 定价的信息，请参阅[内容分发网络定价](https://azure.microsoft.com/is-is/pricing/details/cdn/)。
+有关 Azure CDN 定价的信息，请参阅[内容分发网络定价](https://azure.microsoft.com/pricing/details/cdn/)。
 
 ## <a name="how-are-delivery-charges-calculated-by-region"></a>如何按区域计算分发费用？
 Azure CDN 计费区域取决于将内容分发到最终用户的源服务器的位置。 系统不将客户端的目标（物理位置）视为计费区域。
@@ -59,7 +59,7 @@ Azure CDN 计费区域取决于将内容分发到最终用户的源服务器的�
 
 - 以 GB 为单位的传输量：通过传输来填充 CDN 缓存的数据量。
 
-- 事务数：填充缓存所需。
+- 事务：填充缓存所需。
 
 有关 Azure 存储计费的详细信息，请参阅 [Understanding Azure Storage Billing – Bandwidth, Transactions, and Capacity](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)（了解 Azure 存储计费 - 带宽、事务和容量）。
 
@@ -80,9 +80,9 @@ CDN POP 会在每次需要填充其缓存时向要缓存的对象的源提出请
 
 - 内容的可缓存性如何：如果内容的 TTL（生存时间）/过期值高且访问频率也高，因此需经常放置在缓存中，则由 CDN 处理负载的绝大部分。 通常情况下，合格的缓存命中率远高于 90%，这意味着必须返回到源的客户端请求不到 10%，不管是因为缓存失误还是因为需要进行对象刷新。
 
-- 多少节点需要加载对象：节点在每次从源加载对象时，都会产生计费事务。 因此，全局内容越多（需要从更多的节点访问），计费事务也越多。
+- 多少节点需要加载对象：每次节点从源加载对象时，都会产生计费事务。 因此，全局内容越多（需要从更多的节点访问），计费事务也越多。
 
-- TTL 影响：对象的 TTL 越高，意味着需要从源提取该对象的频率越低， 同时还意味着客户端（例如浏览器）能够缓存该对象的时间越长，因此可以减少 CDN 的事务。
+- TTL 影响：对象的 TTL 越高，意味着需要从源提取该对象的频率越低。 同时还意味着客户端（例如浏览器）能够缓存该对象的时间越长，因此可以减少 CDN 的事务。
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>如何才能最有效地管理费用？
 将内容的 TTL 尽可能设置得长一点。 

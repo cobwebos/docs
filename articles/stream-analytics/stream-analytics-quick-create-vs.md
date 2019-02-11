@@ -1,24 +1,23 @@
 ---
-title: 使用用于 Visual Studio 的 Azure 流分析工具创建流分析作业 | Microsoft Docs
+title: 使用适用于 Visual Studio 的 Azure 流分析工具创建流分析作业
 description: 本快速入门展示了如何开始使用 Visual Studio 创建流分析作业、配置输入和输出，以及定义查询。
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 06/15/2018
+ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-manager: kfile
-ms.openlocfilehash: be4c906535981c6b05c1a72aa23e4e1f78f57edf
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 1a72e2874e28a2aa5b69866bd959743707ea9d99
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954737"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021911"
 ---
-# <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-stream-analytics-tools-for-visual-studio"></a>快速入门：使用用于 Visual Studio 的 Azure 流分析工具创建流分析作业
+# <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-stream-analytics-tools-for-visual-studio"></a>快速入门：使用适用于 Visual Studio 的 Azure 流分析工具创建流分析作业
 
-本快速入门展示了如何使用用于 Visual Studio 的 Azure 流分析工具创建和运行流分析作业。 示例作业从 Azure Blob 存储中读取流式处理数据。 在本快速入门中使用的输入数据文件包含的静态数据仅供说明之用。 在实际方案中，请将流式处理输入数据用于流分析作业。 在本快速入门中，你将定义一个作业，用以计算超过 100° 时的平均温度并将生成的输出事件写入到一个新文件中。
+本快速入门展示了如何使用用于 Visual Studio 的 Azure 流分析工具创建和运行流分析作业。 示例作业从 IoT 中心设备中读取流式处理数据。 你将定义一个作业，用以计算超过 27° 时的平均温度并将生成的输出事件写入到 blob 存储中的一个新文件。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -32,33 +31,54 @@ ms.locfileid: "49954737"
 
 ## <a name="prepare-the-input-data"></a>对输入数据进行准备
 
-在定义流分析作业之前，应该对已配置为作业输入的数据进行准备。 若要对作业所需的输入数据进行准备，请运行以下步骤：
+在定义流分析作业之前，应该对稍后会配置为作业输入的数据进行准备。 若要对作业所需的输入数据进行准备，请完成以下步骤：
 
-1. 从 GitHub 下载[示例传感器数据](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json)。 示例数据包含下述 JSON 格式的传感器信息：  
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-   ```json
-   {
-     "time": "2018-01-26T21:18:52.0000000",
-     "dspl": "sensorC",
-     "temp": 87,
-     "hmdt": 44
-   }
-   ```
-2. 登录到 [Azure 门户](https://portal.azure.com/)。
+2. 选择“创建资源” > “物联网” > “IoT 中心”。
 
-3. 从 Azure 门户的左上角选择“创建资源” > “存储” > “存储帐户”。 填充“存储帐户作业”页，将“名称”设置为“asaquickstartstorage”，将“位置”设置为“美国西部”，将“资源组”设置为“asaquickstart-resourcegroup”（请将存储帐户托管在流式处理作业所在的资源组中，以便提高性能）。 余下设置可以保留默认值。  
+3. 在“IoT 中心”窗格中，输入以下信息：
+   
+   |**设置**  |**建议的值**  |**说明**  |
+   |---------|---------|---------|
+   |订阅  | 用户的订阅\<\> |  选择要使用的 Azure 订阅。 |
+   |资源组   |   asaquickstart-resourcegroup  |   选择“新建”，然后输入帐户的新资源组名称。 |
+   |区域  |  \<选择离用户最近的区域\> | 选择可以在其中托管 IoT 中心的地理位置。 使用最靠近用户的位置。 |
+   |IoT 中心名称  | MyASAIoTHub  |   选择 IoT 中心的名称。   |
 
-   ![创建存储帐户](./media/stream-analytics-quick-create-vs/create-a-storage-account-vs.png)
+   ![创建 IoT 中心](./media/stream-analytics-quick-create-vs/create-iot-hub.png)
 
-4. 在“所有资源”页中找到上一步创建的存储帐户。 打开“概览”页，然后打开“Blob”磁贴。  
+4. 在完成时选择“下一步:设置大小和规模”。
 
-5. 从“Blob 服务”页面中，选择“容器”，为你的容器提供一个**名称**，例如 *container1*，然后选择“确定”。  
+5. 选择“定价和缩放层”。 就本快速入门来说，请选择“F1 - 免费”层（前提是此层在订阅上仍然可用）。 如果免费层不可用，请选择可用的最低层。 有关详细信息，请参阅 [IoT 中心定价](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
-   ![创建容器](./media/stream-analytics-quick-create-vs/create-a-storage-container.png)
+   ![设置 IoT 中心的大小和规模](./media/stream-analytics-quick-create-vs/iot-hub-size-and-scale.png)
 
-6. 转到上一步创建的容器。 选择“上传”，然后上传从第一步获取的传感器数据。  
+6. 选择“查看 + 创建”。 查看 IoT 中心信息，然后单击“创建”。 创建 IoT 中心可能需要数分钟的时间。 可在“通知”窗格中监视进度。
 
-   ![将示例数据上传到 Blob](./media/stream-analytics-quick-create-vs/upload-sample-data-to-blob.png)
+7. 在 IoT 中心导航菜单的“IoT 设备”下单击“添加”。 添加“设备 ID”，然后单击“保存”。
+
+   ![将设备添加到 IoT 中心](./media/stream-analytics-quick-create-vs/add-device-iot-hub.png)
+
+8. 创建设备后，请从“IoT 设备”列表打开设备。 复制“连接字符串 -- 主密钥”并将其保存到记事本，供稍后使用。
+
+   ![复制 IoT 中心设备连接字符串](./media/stream-analytics-quick-create-vs/save-iot-device-connection-string.png)
+
+## <a name="create-blob-storage"></a>创建 Blob 存储
+
+1. 从 Azure 门户的左上角选择“创建资源” > “存储” > “存储帐户”。
+
+2. 在“创建存储帐户”窗格中，输入存储帐户名称、位置和资源组。 选择与创建的 IoT 中心相同的位置和资源组。 然后单击“查看 + 创建”，以便创建帐户。
+
+   ![创建存储帐户](./media/stream-analytics-quick-create-portal/create-storage-account.png)
+
+3. 创建存储帐户以后，请在“概览”窗格上选择“Blob”磁贴。
+
+   ![存储帐户概述](./media/stream-analytics-quick-create-portal/blob-storage.png)
+
+4. 从“Blob 服务”页面中，选择“容器”，为你的容器提供一个名称，例如 *container1*。 将“公共访问级别”保留为“专用(非匿名访问)”，然后选择“确定”。
+
+   ![创建 Blob 容器](./media/stream-analytics-quick-create-portal/create-blob-container.png)
 
 ## <a name="create-a-stream-analytics-project"></a>创建流分析项目
 
@@ -92,12 +112,11 @@ ms.locfileid: "49954737"
    |**设置**  |**建议的值**  |**说明**   |
    |---------|---------|---------|
    |输入别名  |  输入   |  输入一个名称，用于标识作业的输入。   |
-   |源类型   |  数据流 |  选择合适的输入源：数据流或引用数据。   |
-   |源  |  Blob 存储 |  选择合适的输入源。   |
+   |源类型   |  数据流 |  选择合适的输入源：数据流或参考数据。   |
+   |源  |  IoT 中心 |  选择合适的输入源。   |
    |资源  | 选择当前帐户中的数据源 | 选择手动输入数据或选择现有帐户。   |
-   |订阅  |  用户的订阅\<\>   | 选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。   |
-   |存储帐户  |  asaquickstartstorage   |  选择或输入存储帐户的名称。 如果在同一订阅中创建存储帐户名称，则会自动将其删除。   |
-   |容器  |  container1   |  选择你在存储帐户中创建的现有容器。   |
+   |订阅  |  用户的订阅\<\>   | 选择包含创建的 IoT 中心的 Azure 订阅。   |
+   |IoT 中心  |  MyASAIoTHub   |  选择或输入 IoT 中心的名称。 如果在同一订阅中创建 IoT 中心名称，则会自动将其删除。   |
    
 3. 让其他选项保留默认值，然后选择“保存”以保存设置。  
 
@@ -130,16 +149,10 @@ ms.locfileid: "49954737"
 2. 添加以下查询：
 
    ```sql
-   SELECT 
-   System.Timestamp AS OutputTime,
-   dspl AS SensorName,
-   Avg(temp) AS AvgTemperature
-   INTO
-     Output
-   FROM
-     Input TIMESTAMP BY time
-   GROUP BY TumblingWindow(second,30),dspl
-   HAVING Avg(temp)>100
+   SELECT *
+   INTO BlobOutput
+   FROM IoTHubInput
+   HAVING Temperature > 27
    ```
 
 ## <a name="submit-a-stream-analytics-query-to-azure"></a>将流分析查询提交到 Azure
@@ -150,13 +163,23 @@ ms.locfileid: "49954737"
 
    ![将作业提交到 Azure](./media/stream-analytics-quick-create-vs/stream-analytics-job-to-azure.png)
 
+## <a name="run-the-iot-simulator"></a>运行 IoT 模拟器
+
+1. 在新的浏览器标签页或窗口中打开 [Raspberry Pi Azure IoT 联机模拟器](https://azure-samples.github.io/raspberry-pi-web-simulator/)。
+
+2. 将第 15 行的占位符替换为在上一部分保存的 Azure IoT 中心设备连接字符串。
+
+3. 单击“运行”。 输出会显示传感器数据和发送到 IoT 中心的消息。
+
+   ![Raspberry Pi Azure IoT 联机模拟器](./media/stream-analytics-quick-create-portal/ras-pi-connection-string.png)
+
 ## <a name="start-the-stream-analytics-job-and-check-output"></a>启动流分析作业并检查输出
 
 1. 在作业创建后，作业视图会自动打开。 选择绿色箭头按钮以启动作业。
 
    ![启动流分析作业](./media/stream-analytics-quick-create-vs/start-stream-analytics-job-vs.png)
 
-2. 将日期“自定义时间”更改为 `2018-01-01` 并选择“启动”。
+2. 将“作业输出启动模式”更改为“JobStartTime”，然后选择“启动”。
 
    ![“启动作业”配置](./media/stream-analytics-quick-create-vs/stream-analytics-start-configuration.png)
 
@@ -180,7 +203,7 @@ ms.locfileid: "49954737"
 
 在本快速入门中，你使用 Visual Studio 部署了一个简单的流分析作业。 也可通过 [Azure 门户](stream-analytics-quick-create-portal.md)和 [PowerShell](stream-analytics-quick-create-powershell.md) 部署流分析作业。 
 
-若要了解如何配置其他输入源并执行实时检测，请继续阅读以下文章：
+若要了解适用于 Visual Studio 的 Azure 流分析工具，请继续阅读以下文章：
 
 > [!div class="nextstepaction"]
-> [使用 Azure 流分析实时检测欺诈行为](stream-analytics-real-time-fraud-detection.md)
+> [使用 Visual Studio 查看 Azure 流分析作业](stream-analytics-vs-tools.md)

@@ -1,21 +1,22 @@
 ---
-title: 关于语音转文本
+title: 有关语音转文本 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 语音转文本 API 功能概述。
+description: 语音转文本 API 将音频流转录为应用程序可以显示或作为输入操作的文本。 此服务通过 SDK 和 RESTful 终结点提供。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: erhopf
-ms.openlocfilehash: 041ec1c095ec604fed7906368ff266c1586df570
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 4884756c50e181e5536ad93ae795543bf1edf8ba
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471333"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220212"
 ---
 # <a name="about-the-speech-to-text-api"></a>关于语音转文本 API
 

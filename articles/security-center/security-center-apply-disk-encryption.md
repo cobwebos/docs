@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: c8a2caf2826069824a993294f4eba514ea870d9c
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: eaeb1e17cf6ddf0e0e9284360d3e4864bf50f27d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307369"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338918"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>在 Azure 安全中心中应用磁盘加密
 Azure 安全中心建议：如有未使用 Azure 磁盘加密加密的 Windows 或 Linux VM 磁盘，则应用磁盘加密。 通过磁盘加密，可以对 Windows 和 Linux IaaS VM 磁盘进行加密。  对于 VM 上的 OS 和数据卷，建议使用加密。
@@ -56,7 +56,7 @@ Azure 安全中心建议：如有未使用 Azure 磁盘加密加密的 Windows �
 
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
-* [在 Azure 安全中心设置安全策略](security-center-azure-policy.md) - 了解如何配置安全策略。
+* [在 Azure 安全中心设置安全策略](tutorial-security-policy.md) - 了解如何配置安全策略。
 * [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) -- 了解如何监视 Azure 资源的运行状况。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。
 * [在 Azure 安全中心中管理安全建议](security-center-recommendations.md) -- 了解建议如何帮助保护 Azure 资源。

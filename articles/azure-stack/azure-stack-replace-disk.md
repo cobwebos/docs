@@ -12,14 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/22/2019
 ms.author: mabrigg
-ms.openlocfilehash: 7ce501be5458282273e51a5b2bc18482592d2333
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.lastreviewed: 01/22/2019
+ms.openlocfilehash: 0a73119c7d079498f0e766fb92904c86ff5131c8
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44376946"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55767216"
 ---
 # <a name="replace-a-physical-disk-in-azure-stack"></a>更换 Azure Stack 中的物理磁盘
 
@@ -29,10 +30,10 @@ ms.locfileid: "44376946"
 
 可以将此过程用于集成系统，以及用于具有热插拔磁盘的开发工具包部署。
 
-实际的磁盘更换步骤将因原始设备制造商 (OEM) 硬件供应商而异。 有关你系统特有的详细步骤，请参阅供应商的现场可更换部件 (FRU) 文档。 
+实际的磁盘更换步骤将因原始设备制造商 (OEM) 硬件供应商而异。 有关你系统特有的详细步骤，请参阅供应商的现场可更换部件 (FRU) 文档。
 
 ## <a name="review-disk-alert-information"></a>查看磁盘警报信息
-当磁盘发生故障时，你会收到通知你物理磁盘已丢失的警报。 
+当磁盘发生故障时，你会收到通知你物理磁盘已丢失的警报。
 
  ![显示物理磁盘连接丢失的警报](media/azure-stack-replace-disk/DiskAlert.png)
 
@@ -47,34 +48,34 @@ ms.locfileid: "44376946"
 
 为了防止在集成系统中使用不支持的磁盘，系统会阻止供应商不支持的磁盘。 如果尝试使用不支持的磁盘，则会有新警报通知你因为不支持该磁盘的型号或固件，所以已将该磁盘隔离。
 
-更换磁盘后，Azure Stack 会自动发现新磁盘，并启动虚拟磁盘修复过程。  
+更换磁盘后，Azure Stack 会自动发现新磁盘，并启动虚拟磁盘修复过程。
  
  ## <a name="check-the-status-of-virtual-disk-repair"></a>检查虚拟磁盘修复状态
  
  更换磁盘后，可以使用特权终结点监视虚拟磁盘运行状况和修复作业进度。 从任何可以通过网络连接到特权终结点的计算机，按照下列步骤进行操作。
 
 1. 打开 Windows PowerShell 会话并连接到特权终结点。
-    ````PowerShell
+    ```PowerShell
         $cred = Get-Credential
         Enter-PSSession -ComputerName <IP_address_of_ERCS>`
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-    ```` 
+    ``` 
   
 2. 运行以下命令以查看虚拟磁盘运行状况：
-    ````PowerShell
+    ```PowerShell
         Get-VirtualDisk -CimSession s-cluster
-    ````
+    ```
    ![Get-VirtualDisk 命令的 Powershell 输出](media/azure-stack-replace-disk/GetVirtualDiskOutput.png)
 
 3. 运行以下命令以查看当前的存储作业状态：
     ```PowerShell
         Get-VirtualDisk -CimSession s-cluster | Get-StorageJob
-    ````
+    ```
       ![Get-StorageJob 命令的 Powershell 输出](media/azure-stack-replace-disk/GetStorageJobOutput.png)
 
 ## <a name="troubleshoot-virtual-disk-repair"></a>针对虚拟磁盘修复问题进行故障排除
 
 如果虚拟磁盘修复作业出现停滞，请运行以下命令来重新启动作业：
-  ````PowerShell
+  ```PowerShell
         Get-VirtualDisk -CimSession s-cluster | Repair-VirtualDisk
-  ```` 
+  ``` 

@@ -3,19 +3,19 @@ title: 教程 - 使用 Azure Active Directory B2C 通过 Web 应用授予对 ASP
 description: 有关如何使用 Active Directory B2C 保护 ASP.NET Web API 并通过 ASP.NET Web 应用对其进行调用的教程。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.author: davidmu
-ms.date: 01/23/2018
+ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
-ms.component: B2C
-ms.openlocfilehash: 2b70ed174331b88f9afc9aa30d14a585986496a5
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.subservice: B2C
+ms.openlocfilehash: d57a1b5d8e6fee52e617ccffdcf80fa5a04bc64f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604333"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158224"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 通过 Web 应用授予对 ASP.NET Web API 的访问权限
 
@@ -54,7 +54,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过 Az
     
     | 设置      | 建议的值  | 说明                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Name** | 我的示例 Web API | 输入一个**名称**，描述面向开发人员的 Web API。 |
+    | **名称** | 我的示例 Web API | 输入一个**名称**，描述面向开发人员的 Web API。 |
     | 包括 Web 应用/Web API | 是 | 对于 Web API，请选择“是”。 |
     | 允许隐式流 | 是 | 选择“是”，因为 API 使用 [OpenID Connect 登录](active-directory-b2c-reference-oidc.md)。 |
     | 回复 URL | `https://localhost:44332` | 回复 URL 属于终结点，允许 Azure AD B2C 在其中返回 API 请求的任何令牌。 在本教程中，示例 Web API 在本地 (localhost) 运行，并在端口 44332 上进行侦听。 |
@@ -120,7 +120,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过 Az
 
 示例解决方案中有两个项目：
 
-**Web 应用示例应用 (TaskWebApp)：** 用于创建和编辑任务列表的 Web 应用。 此 Web 应用使用**注册或登录**策略，通过电子邮件地址注册或登录用户。
+**Web 应用示例应用 (TaskWebApp)：** 用于创建和编辑任务列表的 Web 应用。 此 Web 应用使用**注册或登录**用户流，通过电子邮件地址注册或登录用户。
 
 **Web API 示例应用 (TaskService)：** 一个 Web API，支持创建、读取、更新和删除任务列表的功能。 此 Web API 受 Azure AD B2C 保护，可以通过 Web 应用进行调用。
 
@@ -162,10 +162,10 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过 Az
     <add key="ida:ClientId" value="<The Application ID for your web API obtained from the Azure portal>"/>
     ```
 
-4. 使用在创建注册和登录策略时生成的名称更新策略设置。
+4. 使用在创建注册和登录用户流时生成的名称更新用户流设置。
 
     ```C#
-    <add key="ida:SignUpSignInPolicyId" value="B2C_1_SiUpIn" />
+    <add key="ida:SignUpSignInUserFlowId" value="B2C_1_SiUpIn" />
     ```
 
 5. 配置作用域设置，使之与门户中创建的设置相匹配。

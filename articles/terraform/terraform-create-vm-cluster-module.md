@@ -4,17 +4,17 @@ description: 了解如何使用 Terraform 模块在 Azure 中创建 Windows 虚�
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, 虚拟机, 网络, 模块
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
-ms.openlocfilehash: 03c09e190fce9cbbd98cea3565dd2437f79dadf1
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: d5a820da94254fe0da416d9219f7582d3a4241cb
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666627"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696160"
 ---
 # <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>使用模块注册表通过 Terraform 创建 VM 群集
 
@@ -31,7 +31,7 @@ ms.locfileid: "43666627"
 ## <a name="set-up-authentication-with-azure"></a>使用 Azure 设置身份验证
 
 > [!TIP]
-> 如果在 [Azure Cloud Shell](/azure/cloud-shell/overview) 中[使用 Terraform 环境变量](/azure/virtual-machines/linux/terraform-install-configure#set-environment-variables)或运行此教程，请跳过此步骤。
+> 如果在 [Azure Cloud Shell](/azure/cloud-shell/overview) 中[使用 Terraform 环境变量](/azure/virtual-machines/linux/terraform-install-configure)或运行此教程，请跳过此步骤。
 
  查看[安装 Terraform 并配置对 Azure 的访问权限](/azure/virtual-machines/linux/terraform-install-configure)，以创建 Azure 服务主体。 通过此服务主体使用以下代码将新文件 `azureProviderAndCreds.tf` 填充到空目录中：
 

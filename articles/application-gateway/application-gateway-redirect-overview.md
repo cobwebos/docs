@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2017
 ms.author: amsriva
-ms.openlocfilehash: e6352873ea055965b433fbf3e6e46162890e5fec
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: d05d509b67fd26c958e0e2fa2bbd877db26e6521
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33200699"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232203"
 ---
 # <a name="application-gateway-redirect-overview"></a>应用程序网关重定向概述
 
@@ -35,4 +35,4 @@ ms.locfileid: "33200699"
 
 ### <a name="next-steps"></a>后续步骤
 
-[在应用程序网关上配置 URL 重定向](application-gateway-configure-redirect-powershell.md)
+[在应用程序网关上将 HTTP 配置为 HTTPS 重定向](redirect-http-to-https-portal.md)

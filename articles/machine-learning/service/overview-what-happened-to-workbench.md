@@ -1,115 +1,126 @@
 ---
-title: Azure Machine Learning workbench 发生了什么情况？ | Microsoft Docs
-description: 了解 Workbench 应用程序发生的情况、Azure 机器学习有何变化，以及支持时间线是什么。
+title: Machine Learning Workbench 有何遭遇？
+titleSuffix: Azure Machine Learning service
+description: 了解 Machine Learning Workbench 应用程序有何遭遇、Azure 机器学习服务有何变化，以及支持时间线是什么。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: overview
 ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
-ms.date: 09/24/2018
-ms.openlocfilehash: b8263c399f287be79590860cce7036207ef2e3f7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/09/2019
+ms.custom: seodec18
+ms.openlocfilehash: e4e4c9ae764e1278251c01d41a0617ed2e88e439
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243737"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242308"
 ---
-# <a name="what-is-happening-to-workbench-in-azure-machine-learning-preview"></a>Azure 机器学习（预览版）中的 Workbench 发生了什么情况？
+# <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 有何遭遇？
 
-为了给改进后的[体系结构](concept-azure-machine-learning-architecture.md)让路，2018 年 9 月版本替换了 Workbench 应用程序和其他一些早期功能。 此版本包含许多重大更新，这些更新是由有助于改善体验的客户反馈促成。 核心功能（从试验运行到模型部署）并无变化，但现在可以使用可靠的 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> 和 [CLI](reference-azure-machine-learning-cli.md) 完成机器学习任务和管道。  
+为了给改进后的[体系结构](concept-azure-machine-learning-architecture.md)让路，2018 年 9 月版本弃用并替换了 Azure Machine Learning Workbench 应用程序和其他一些早期功能。 
 
-本文介绍了具体变化及其对使用 Azure 机器学习服务构建的已有内容的影响。
+为改善用户体验，此版本包含许多重大更新，这些更新由客户反馈促成。 从实验运行到模型部署的核心功能没有变化。 但现在，可以使用可靠的 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> 和 [Azure CLI](reference-azure-machine-learning-cli.md) 来完成机器学习任务和管道。  
+
+在旧版 Azure 机器学习服务中创建的大多数项目，都存储在自己的本地存储或云存储中。 这些项目永远不会消失。
+
+本文介绍了具体变化及其对使用 Azure Machine Learning Workbench 及其 API 构建的已有内容的影响。
+
+>[!Warning]
+>本文不适用于 Azure 机器学习工作室用户。 适用于已安装 Workbench（预览版）应用程序和/或拥有试验和模型管理预览帐户的 Azure 机器学习服务客户。
+
 
 ## <a name="what-changed"></a>有何变化？
 
-最新版 Azure 机器学习服务包括：
-+ [简化的 Azure 资源模型](concept-azure-machine-learning-architecture.md)
-+ [全新门户 UI](how-to-track-experiments.md)，用于管理试验和计算目标
-+ 更全面的全新 Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>
-+ 已扩充的全新 [Azure CLI 扩展](reference-azure-machine-learning-cli.md)，用于机器学习
+最新版 Azure 机器学习服务包括以下功能：
++ [简化的 Azure 资源模型](concept-azure-machine-learning-architecture.md)。
++ [全新门户 UI](how-to-track-experiments.md)，用于管理试验和计算目标。
++ 更全面的全新 Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>。
++ 已扩充的全新 [Azure CLI 扩展](reference-azure-machine-learning-cli.md)，用于机器学习。
 
-出于易用性考虑，[体系结构](concept-azure-machine-learning-architecture.md)已经过重新设计。 无需使用多个 Azure 资源和帐户，只需使用 [Azure 机器学习服务工作区](concept-azure-machine-learning-architecture.md#workspace)即可。  可以在 [Azure 门户](quickstart-get-started.md)中快速创建工作区。  多个用户可使用工作区，以存储定型和部署计算目标、模型试验、Docker 映像、已部署模型等。
+重新设计的[架构](concept-azure-machine-learning-architecture.md)，易于使用。 无需使用多个 Azure 资源和帐户，只需使用 [Azure 机器学习服务工作区](concept-azure-machine-learning-architecture.md#workspace)即可。 可以在 [Azure 门户](quickstart-get-started.md)中快速创建工作区。 通过使用工作区，多个用户可以存储定型和部署计算目标、模型试验、Docker 映像、已部署模型等。
 
-当前版本推出了改进后的全新 CLI 和 SDK 客户端，但桌面 Workbench 应用程序本身已遭弃用。 现在可以在 [Azure Web 门户的工作区仪表板](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)中监视试验。 借助仪表板，可以获取试验历史记录、管理附加到工作区的计算目标、管理模型和 Docker 映像，甚至还能部署 Web 服务。
-
-## <a name="how-do-i-migrate"></a>如何迁移？
-
-在旧版 Azure 机器学习服务中创建的大多数项目，都存储在你自己的本地存储或云存储中。 这些项目永远不会消失。 若要进行迁移，必须再次向更新后的 Azure 机器学习服务注册项目。 这篇[迁移文章](how-to-migrate.md)介绍了可以迁移哪些项目以及迁移方法。
+虽然当前版本中有新的已改进的 CLI 和 SDK 客户端，但桌面工作台应用程序本身已经停用。 可以在 [Azure 门户的工作区仪表板](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)中管理试验。 借助仪表板，可以获取试验历史记录、管理附加到工作区的计算目标、管理模型和 Docker 映像，甚至还能部署 Web 服务。
 
 <a name="timeline"></a>
 
 ## <a name="support-timeline"></a>支持时间线
 
-在 2018 年 9 月后的一段时间内，可继续使用试验和模型管理帐户以及 Workbench 应用程序。 在此版本发布后的 3-4 个月内，对以下资源的支持将逐渐停止提供。 有关旧功能的文档，仍可访问目录底部的[“资源”部分](../desktop-workbench/tutorial-classifying-iris-part-1.md)。
+于 2019 年 1 月 9 日，对 Machine Learning Workbench、Azure 机器学习试验和模型管理帐户及其相关 SDK 和 CLI 的支持已经结束。 
 
-|阶段|早期功能的支持详细信息|
-|:---:|----------------|
-|1|通过 Azure 门户和 CLI 端创建 Azure 机器学习试验帐户和模型管理帐户的功能支持将停止提供。 使用 CLI 创建机器学习计算环境的功能支持也将停止提供。 若有现有帐户，可以在此阶段继续使用 CLI 和桌面 Workbench。|
-|2|在这一阶段，对其他所有功能的支持（包括剩余的 API 和桌面 Workbench）都将停止提供。|
-
-立即[开始迁移](how-to-migrate.md)。 使用全新 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>、[CLI](reference-azure-machine-learning-cli.md) 和[门户](quickstart-get-started.md)即可使用所有最新功能。
+通过此 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>、[CLI](reference-azure-machine-learning-cli.md) 和[门户](quickstart-get-started.md)即可使用所有最新功能。
 
 ## <a name="what-about-run-histories"></a>运行历史记录又如何？
 
-在一段时间内仍可继续访问运行历史记录。 当准备好迁移到更新版 Azure 机器学习服务时，若要保留副本，可导出这些运行历史记录。
+旧的运行历史记录不再可访问，你仍然可以在最新版本中查看运行情况。 
 
-在当前版本中，运行历史记录现在称为“试验”。 可使用 SDK、CLI 或 Web 门户收集并探索模型的试验。
+运行历史记录现在称为“试验”。 可使用 SDK、CLI 或 Azure 门户收集并探索模型的试验。
 
-门户的工作区仪表板仅在 Microsoft Edge、Chrome 和 Firefox 浏览器上受支持。
+门户的工作区仪表板仅在 Microsoft Edge、Chrome 和 Firefox 浏览器上受支持：
 
-[ ![联机门户](./media/overview-what-happened-to-workbench/image001.png) ] (./media/overview-what-happened-to-workbench/image001.png#lightbox)
+[![联机门户](./media/overview-what-happened-to-workbench/image001.png)] (./media/overview-what-happened-to-workbench/image001.png#lightbox)
 
+使用新的 CLI 和 SDK 开始训练模型并跟踪运行历史记录。 可以了解如何使用[教程：使用 Azure 机器学习服务训练模型](tutorial-train-models-with-aml.md)。
 
 ## <a name="can-i-still-prep-data"></a>我能否仍准备数据？
 
-已有的数据准备文件不可移植到最新版本中，因为 Workbench 已遭弃用。 不过，仍可以准备数据用于建模。  
+已有的数据准备文件不可移植到最新版本中，因为 Machine Learning Workbench 已遭弃用。 但你仍然可以为建模准备任何大小的数据集。   
 
-使用较小的数据集，可以在建模前使用 <a href="https://aka.ms/aml-sdk" target="_blank">Azure 机器学习数据准备 SDK</a> 快速准备数据。 
+使用任何大小的数据集，可以在编写 Python 代码进行建模之前使用 [Azure 机器学习数据准备 SDK](http://aka.ms/data-prep-sdk) 快速准备数据。 
 
-可以对较大数据集使用这一相同 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>，也可以使用 Azure Databricks 准备大数据集。 
+可以按照[本教程](tutorial-data-prep.md)，深入了解如何使用 Azure 机器学习数据准备 SDK。
 
 ## <a name="will-projects-persist"></a>项目是否继续存在？
 
-不会丢失任何代码或工作。 在旧版本中，项目是包含本地目录的云实体。 在最新版本中，可使用本地配置文件将本地目录附加到 Azure 机器学习服务工作区。 [请参阅最新体系结构的关系图](concept-azure-machine-learning-architecture.md)。
+不会丢失任何代码或工作。 在旧版本中，项目是包含本地目录的云实体。 在最新版本中，可使用本地配置文件将本地目录附加到 Azure 机器学习服务工作区。 请参阅[最新体系结构的关系图](concept-azure-machine-learning-architecture.md)。
 
-由于很多项目内容已存在于本地计算机上，因此只需在相应目录中创建配置文件，并在代码中引用它，即可连接到工作区。 [了解如何迁移现有项目](how-to-migrate.md#projects)。
+大部分项目内容已存在于本地计算机上。 因此，只需在相应目录中创建配置文件，并在代码中引用它，即可连接到工作区。 要继续使用包含文件和脚本的本地目录，请在[“experiment.submit”](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)Python 命令指定该目录的名称或使用“az ml project attach”CLI 命令。  例如：
+```python
+run = exp.submit(source_directory = script_folder, script = 'train.py', run_config = run_config_system_managed)
+```
 
-了解如何开始[在 Python 中使用主 SDK](quickstart-get-started.md)。
+了解如何开始[在 Python 中使用主 SDK](quickstart-create-workspace-with-python.md) 或使用 [Azure 门户](quickstart-get-started.md)。
 
-## <a name="what-about-my-registers-models-and-images"></a>我注册的模型和映像又如何？
+## <a name="what-about-my-registered-models-and-images"></a>我注册的模型和映像又如何？
  
-若要继续使用旧模型注册表中注册的模型，必须将它们迁移到新工作区。 为此，请在新工作区中[下载模型并重新注册它们](how-to-migrate.md)。 
+若要继续使用旧模型注册表中注册的模型，必须将它们迁移到新工作区。 若要迁移模型，请下载模型并将其在新工作区中重新注册。 
 
-若要继续使用在旧映像注册表中创建的映像，必须在新工作区中重新创建它们。 为此，请按照[创建 docker 映像](how-to-deploy-to-aci.md#configure-an-image)部分中的说明操作。 
+若要继续使用在旧映像注册表中创建的映像，必须在新工作区中重新创建它们。 可以按照[配置和创建映像](how-to-deploy-and-where.md#configureimage)部分重新创建这些映像。 
 
 ## <a name="what-about-deployed-web-services"></a>已部署 Web 服务又如何？
 
-只要 Azure 容器服务 (ACS) 受支持，使用模型管理帐户部署为 Web 服务的模型就可以继续运行。 甚至在模型管理帐户不再受支持后，这些 Web 服务也仍会运行。 不过，在旧 CLI 不再受支持后，管理这些 Web 服务的功能支持也不再提供。
+现在，对旧 CLI 的支持已经结束，你无法再重新部署模型或管理最初使用模型管理帐户部署的 Web 服务。 但是，只要仍支持 Azure 容器服务 (ACS)，这些 Web 服务就将继续有效。
 
-在更高版本中，模型作为 Web 服务部署到 [Azure 容器实例](how-to-deploy-to-aci.md) (ACI) 或 [Azure Kubernetes 服务](how-to-deploy-to-aks.md) (AKS) 群集中。 还可以[部署到 FPGA 和 IoT Edge](how-to-deploy-and-where.md)。 无需更改任何计分文件、依赖项和架构，即可使用全新 SDK 或 CLI 重新部署模型。 
+在最新版本中，模型作为 Web 服务部署到 Azure 容器实例 (ACI) 或 Azure Kubernetes 服务 (AKS) 群集。 还可以部署到 FPGA 和 Azure IoT Edge。 
 
-## <a name="what-about-the-old-sdk--cli"></a>旧 SDK 和 CLI 又如何？
+通过以下文章，了解详细信息：
++ [在何处以及如何部署模型](how-to-deploy-and-where.md)
++ [教程：使用 Azure 机器学习服务部署模型](tutorial-deploy-models-with-aml.md)
 
-在一段时间内仍可继续使用它们（请参阅上面的[时间线](#timeline)）。 建议开始使用最新 SDK 和/或 CLI 新建试验和模型。
+## <a name="what-about-the-old-sdk-and-cli"></a>旧的 SDK 和 CLI 又如何？
 
-在最新版本中，使用全新 Python SDK，可以在任何 Python 环境中与 Azure 机器学习服务进行交互。 了解如何安装最新版 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>。  还可以结合使用[更新后的 Azure CLI 机器学习扩展](reference-azure-machine-learning-cli.md)和丰富的 `az ml` 命令集，在任何命令行环境（包括 Azure 门户 Cloud Shell）中与服务进行交互。
+它们将继续正常运行到 1 月。 请参阅前面的[时间线](#timeline)。 建议开始使用最新 SDK 或 CLI 新建试验和模型。
 
-## <a name="what-about-vs-code-tools-for-ai"></a>VS Code Tools for AI 又如何？
+在最新版本中，使用全新 Python SDK，可以在任何 Python 环境中与 Azure 机器学习服务进行交互。 了解如何安装最新版 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>。 还可以结合使用更新后的 [Azure 机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)和丰富的 `az ml` 命令集，在任何命令行环境（包括 Azure Cloud Shell）中与服务进行交互。
 
-在此最新版本中，Visual Studio (VS) Code Tools for AI 扩展已获扩充和改进，以支持上述新功能。
+## <a name="what-about-visual-studio-code-tools-for-ai"></a>Visual Studio Code Tools for AI 怎么样？
 
-[ ![Visual Studio Code Tools for AI](./media/overview-what-happened-to-workbench/vscode.png) ] (./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
+在此最新版本中，该扩展已重命名为 Azure Machine Learning for Visual Studio Code，并已进行了扩展和改进，以使用上述新功能。
+
+[![用于 Visual Studio Code 的 Azure 机器学习](./media/overview-what-happened-to-workbench/vscode.png)] (./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
 
 ## <a name="what-about-domain-packages"></a>域包又如何？
 
-[计算机视觉、文本分析和预测](../desktop-workbench/reference-python-package-overview.md)的域包无法与最新版 Azure 机器学习结合使用。 不过，仍可以使用最新版 Azure 机器学习 Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>，生成并定型计算机视觉、文本分析和预测模型。 若要了解如何迁移使用计算机视觉、文本分析和预测包构建的已有模型，请联系我们：[AML-Packages@microsoft.com](mailto:AML-Packages@microsoft.com)。
+计算机视觉、文本分析和预测的域包无法与最新版 Azure 机器学习结合使用。 不过，仍可以使用最新版 Azure 机器学习 Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>，生成并定型计算机视觉、文本分析和预测模型。 若要了解如何迁移使用计算机视觉、文本分析和预测包构建的已有模型，请联系 [AML-Packages@microsoft.com](mailto:AML-Packages@microsoft.com)。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 [Azure 机器学习服务的最新体系结构](concept-azure-machine-learning-architecture.md)，并尝试学习快速入门或教程之一：
+了解 [Azure 机器学习服务的最新体系结构](concept-azure-machine-learning-architecture.md)。 
 
-* [什么是 Azure 机器学习服务](overview-what-is-azure-ml.md)
-* [快速入门：使用 Python 创建工作区](quickstart-get-started.md)
-* [教程：定型模型](tutorial-train-models-with-aml.md)
+有关该服务的概述，请阅读[什么是 Azure 机器学习服务？](overview-what-is-azure-ml.md)
+
+有关说明如何创建工作区、创建项目、运行脚本以及使用最新版本的 Azure 机器学习服务探索脚本的运行历史记录的快速入门，请尝试 [Azure 机器学习服务入门](quickstart-get-started.md)。
+
+有关此工作流的更深入体验，请参阅[完整教程](tutorial-train-models-with-aml.md)，其中包含使用 Azure 机器学习服务训练和部署模型的详细步骤。 

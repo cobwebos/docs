@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 TrackVia 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 TrackVia 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 TrackVia 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: e7010023-bdda-4a19-a335-19904e75b813
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: jeedes
-ms.openlocfilehash: fd17282783f9701f7365a5fb1d37f4a2263134e9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1c4cc0517ad55cd3be862e974a0a707ef871d805
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422335"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196372"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>教程：Azure Active Directory 与 TrackVia 的集成
+# <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>教程：Azure Active Directory 与 TrackVia 集成
 
 在本教程中，了解如何将 TrackVia 与 Azure Active Directory (Azure AD) 集成。
 
@@ -223,7 +223,7 @@ ms.locfileid: "39422335"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

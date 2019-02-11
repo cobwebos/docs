@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure IoT Edge 模块 | Microsoft 文档
-description: 了解有关 Azure IoT Edge 模块以及如何进行配置的信息
+title: 了解模块在设备上运行逻辑的方式 - Azure IoT Edge | Microsoft Docs
+description: Azure IoT Edge 模块是容器化的逻辑单元，可以远程部署和管理，以便可以在 IoT Edge 设备上运行业务逻辑
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3d76f5931e3636f19c2030c4090116a0791db819
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 976b46a26d95b5e252b0df2383ea94b4dd280d24
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567326"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229619"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>了解 Azure IoT Edge 模块
 
@@ -29,9 +30,9 @@ ms.locfileid: "51567326"
 IoT Edge 模块映像包含能够充分利用 IoT Edge 运行时的管理、安全性和通信功能的应用程序。 你可以开发自己的模块映像，或从支持的 Azure 服务导出一个模块映像，如 Azure 流分析。
 映像存在于云中，可以在不同解决方案中对其进行更新、更改和部署。 例如，使用机器学习来预测生产线输出的模块作为一个单独映像（而不是一个使用计算机视觉来控制无人机的模块）存在。 
 
-每当将模块映像部署到设备上，并由 IoT Edge 运行时启动时，就会创建该模块的一个新实例。 世界不同地区的两台设备可以使用相同的模块映像；但是，当模块在设备上启动时，每个模块都有其自己的模块实例。 
+每当将模块映像部署到设备上，并由 IoT Edge 运行时启动时，就会创建该模块的一个新实例。 在世界不同地区的两个设备可以使用相同的模块映像。 但是，在设备上启动模块时每个设备都会有其自己的模块实例。 
 
-![云中的模块映像 - 设备上模块实例](./media/iot-edge-modules/image_instance.png)
+![关系图 - 云中的模块映像，设备上的模块实例](./media/iot-edge-modules/image_instance.png)
 
 在实现中，模块映像作为存储库中的容器映像存在，而模块实例则是设备上的容器。 
 
@@ -46,13 +47,13 @@ As use cases for Azure IoT Edge grow, new types of module images and instances w
 
 很显然，当需要在同一设备上多次部署一个模块映像时，可以使用不同的名称多次部署相同的映像。
 
-![模块标识是唯一的](./media/iot-edge-modules/identity.png)
+![关系图 - 模块标识在设备中和设备之间具有唯一性](./media/iot-edge-modules/identity.png)
 
 ## <a name="module-twins"></a>模块孪生
 
 此外，每个模块实例都有一个对应的模块孪生，你可以使用它来配置模块实例。 实例和孪生通过模块标识进行相互关联。 
 
-模块孪生是存储模块信息和配置属性的 JSON 文档。 此概念与 IoT 中心的[设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)概念类似。 模块孪生的结构与设备孪生完全相同。 用于与这两种类型的孪生进行交互的 API 也是相同的。 两者之间唯一的区别是用来实例化客户端 SDK 的标识。 
+模块孪生是存储模块信息和配置属性的 JSON 文档。 此概念与 IoT 中心的[设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)概念类似。 模块孪生的结构与设备孪生相同。 用于与这两种类型的孪生进行交互的 API 也是相同的。 两者之间唯一的区别是用来实例化客户端 SDK 的标识。 
 
 ```csharp
 // Create a ModuleClient object. This ModuleClient will act on behalf of a 
@@ -72,9 +73,9 @@ Azure IoT Edge 支持在 IoT Edge 设备上执行脱机操作。 现在，这些
 只要满足以下要求，IoT Edge 模块可以长时间内处于脱机状态： 
 
 * **消息生存期 (TTL) 未过**。 消息 TTL 的默认值是两个小时，但可以在 IoT Edge 中心设置中的存储和转发配置中将其更改为更大或更小的值。 
-* **当处于脱机状态时，模块不需要通过 IoT Edge 中心重新进行身份验证**。 模块可以仅通过与 IoT 中心之间具有活动连接的 Edge 中心进行身份验证。 如果模块因任何原因而重启，则它们需要重新进行身份验证。 模块的 SAS 令牌过期后，模块仍然可以向 Edge 中心发送消息。 当连接恢复时，Edge 中心会向模块请求一个新令牌，并通过 IoT 中心验证该令牌。 如果成功，Edge 中心会转发它存储的模块消息，即使该消息在模块的令牌过期时已发送过。 
-* **在脱机状态下发送消息的模块在连接恢复时仍然会工作**。 在重新连接到 IoT 中心时，Edge 中心需要对新的模块令牌进行验证（如果以前的令牌已过期），然后才能转发模块消息。 如果模块不可用来提供新令牌，则 Edge 中心无法对模块的已存储消息进行操作。 
-* **Edge 中心利用磁盘空间来存储消息**。 默认情况下，消息存储在 Edge 中心容器的文件系统中。 有一个配置选项可用来指定改为使用装载的卷来存储消息。 在任一情况下，都需要有空间可用来存储延迟传递到 IoT 中心的消息。  
+* **当处于脱机状态时，模块不需要通过 IoT Edge 中心重新进行身份验证**。 模块可以仅通过与 IoT 中心之间具有活动连接的 IoT Edge 中心进行身份验证。 如果模块因任何原因而重启，则它们需要重新进行身份验证。 模块的 SAS 令牌过期后，模块仍然可以向 IoT Edge 中心发送消息。 当连接恢复时，IoT Edge 中心会向模块请求一个新令牌，并通过 IoT 中心验证该令牌。 如果成功，IoT Edge 中心会转发它存储的模块消息，即使该消息在模块的令牌过期时已发送过。 
+* **在脱机状态下发送消息的模块在连接恢复时仍然会工作**。 在重新连接到 IoT 中心时，IoT Edge 中心需要对新的模块令牌进行验证（如果以前的令牌已过期），然后才能转发模块消息。 如果模块不可用来提供新令牌，则 IoT Edge 中心无法对模块的已存储消息进行操作。 
+* IoT Edge 中心利用磁盘空间来存储消息。 默认情况下，消息存储在 IoT Edge 中心容器的文件系统中。 有一个配置选项可用来指定改为使用装载的卷来存储消息。 在任一情况下，都需要有空间可用来存储延迟传递到 IoT 中心的消息。  
 
 公共预览版中提供了其他脱机功。能。 有关详细信息，请参阅[了解 IoT Edge 设备、模块和子设备的扩展脱机功能](offline-capabilities.md)。
 

@@ -1,21 +1,22 @@
 ---
-title: 预生成模型 - 实体、意向、域 - LUIS
-titleSuffix: Azure Cognitive Services
+title: 预生成的模型
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 预生成模型提供了域、意向、话语和实体。 可以使用预生成域启动你的应用，也可以在以后向你的应用添加相关域。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: 6237dc66e6e085a2501642abd679844c38e98ed1
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: beed7f428576605c870288ed464e782cd4955111
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210525"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218710"
 ---
 # <a name="prebuilt-domain-intent-and-entity-models"></a>预生成域、意向和实体模型
 

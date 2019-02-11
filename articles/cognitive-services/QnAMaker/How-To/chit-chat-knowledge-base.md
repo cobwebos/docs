@@ -1,21 +1,22 @@
 ---
 title: 向 QnA Maker 知识库添加聊天内容
 titleSuffix: Azure Cognitive Services
-description: 在创建 KB 时向机器人中添加个性化聊天内容可使其更健谈而有趣。 使用 QnA Maker，可以轻松将预填充的一组最常用的聊天内容添加到知识库中。 这可以用作你的机器人的聊天内容的起点，并节省从头开始编写它们的时间和成本。
+description: 在创建 KB 时向机器人中添加个性化聊天内容可使其更健谈而有趣。 使用 QnA Maker，可以轻松将预填充的一组最常用的聊天内容添加到知识库中。
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 01/14/2019
 ms.author: tulasim
-ms.openlocfilehash: ddd78cbfff2b1ee450a26306dce528cd89fea788
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.custom: seodec18
+ms.openlocfilehash: 051c92ad6598934e13568e61c17840e136e9a57f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50228918"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216313"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>向知识库添加聊天内容
 

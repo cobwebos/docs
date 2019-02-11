@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: e1916224-e1c2-426f-b233-0a2518fa41db
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 3467b823e6c91d34ebd48c7f8bc29558a79c59e5
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3009cb42ac477b18d45ab5968d6f5793ce1cd36c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229540"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55165891"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>教程：Azure Active Directory 与 moconavi 集成
 
@@ -109,11 +109,11 @@ ms.locfileid: "36229540"
 
     ![moconavi 域和 URL 单一登录信息](./media/moconavi-tutorial/tutorial_moconavi_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<yourserverurl>/moconavi-saml2/saml/login`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<yourserverurl>/moconavi-saml2/saml/login`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<yourserverurl>/moconavi-saml2`
 
-    C. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<yourserverurl>/moconavi-saml2/saml/SSO`
+    C. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<yourserverurl>/moconavi-saml2/saml/SSO`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [moconavi 客户端支持团队](mailto:support@recomot.co.jp)获取这些值。
@@ -162,7 +162,7 @@ ms.locfileid: "36229540"
 
 ### <a name="create-a-moconavi-test-user"></a>创建 moconavi 测试用户
 
-在本部分中，将在 moconavi 中创建一个名为 Britta Simon 的用户。 请与 [moconavi 支持团队](mailto:support@recomot.co.jp)协作，将用户添加到 moconavi 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 moconavi 中创建一个名为 Britta Simon 的用户。 与  [moconavi 支持团队](mailto:support@recomot.co.jp) 协作，将用户添加到 moconavi 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -229,7 +229,7 @@ ms.locfileid: "36229540"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

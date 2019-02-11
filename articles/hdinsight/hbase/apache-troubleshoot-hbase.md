@@ -3,17 +3,17 @@ title: 使用 Azure HDInsight 对 HBase 进行故障排除
 description: 获取有关使用 HBase 和 Azure HDInsight 的常见问题的解答。
 services: hdinsight
 ms.service: hdinsight
-author: nitinver
-ms.author: nitinver
-ms.custom: hdinsightactive
+author: hrasheed-msft
+ms.author: hrasheed
+ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
-ms.date: 7/7/2017
-ms.openlocfilehash: 771f01f18c5cb54a0458d624a65ec1a69345cadd
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.date: 12/06/2018
+ms.openlocfilehash: 4f6f6042eaacc809b9d413ef01883987bd558507
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317222"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651599"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache HBase 进行故障排除
 
@@ -288,7 +288,7 @@ HBase Master 服务可能需要花费长达五分钟才能稳定下来并完成�
 
 ### <a name="detailed-description"></a>详细说明
 
-Linux 群集上可能会出现一条消息，指出 *hbase: meta* 表未联机。 运行 `hbck` 时可能会报告“在任何区域中都未发现 hbase: meta 表 replicaId 0”。 问题可能是重启 HBase 后，HMaster 无法初始化。 HMaster 日志中可能会出现以下消息：“区域 hbase: backup \<区域名称\> 的 hbase: meta 中未列出服务器地址”。  
+Linux 群集上可能会出现一条消息，指出 *hbase: meta* 表未联机。 运行 `hbck` 时可能会报告“在任何区域中都未发现 hbase: meta 表 replicaId 0”。 问题可能是重启 HBase 后，HMaster 无法初始化。 在 HMaster 日志中，你会看到消息：“区域 hbase 的 hbase: meta 中未列出服务器地址：\<区域名称\>”。  
 
 ### <a name="resolution-steps"></a>解决步骤
 
@@ -314,12 +314,12 @@ Linux 群集上可能会出现一条消息，指出 *hbase: meta* 表未联机�
 
 ### <a name="additional-reading"></a>其他阅读材料
 
-[无法处理 HBase 表](http://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
+[无法处理 HBase 表](https://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
 
 
 ### <a name="error"></a>错误
 
-HMaster 超时且出现类似于“java.io.IOException: 等待分配命名空间表时超时 300000 毫秒”的严重异常。
+HMaster 超时时出现类似于“java.io.IOException:超时 300000 毫秒，等待分配命名空间表”的致命异常。
 
 ### <a name="detailed-description"></a>详细说明
 
@@ -344,7 +344,7 @@ HMaster 超时且出现类似于“java.io.IOException: 等待分配命名空间
 
 ### <a name="issue"></a>问题
 
-可以遵循以下最佳做法来防止区域服务器重启失败。 我们建议在计划重启 HBase 区域服务器时，暂停繁重的工作负荷活动。 如果在关闭过程中应用程序继续与区域服务器进行连接，则这会将区域服务器重启操作拖慢几分钟。 另外，最好是先刷新所有表。 有关如何刷新表的参考信息，请参阅 [HDInsight HBase：如何通过刷新表来改善 Apache HBase 群集重启时间](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/)。
+可以遵循以下最佳做法来防止区域服务器重启失败。 我们建议在计划重启 HBase 区域服务器时，暂停繁重的工作负荷活动。 如果在关闭过程中应用程序继续与区域服务器进行连接，则这会将区域服务器重启操作拖慢几分钟。 另外，最好是先刷新所有表。 有关如何刷新表的参考信息，请参阅 [HDInsight HBase：如何通过刷新表改进 Apache HBase 群集重启时间](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/)。
 
 如果通过 Apache Ambari UI 在 HBase 区域服务器上开始重启操作，马上就会看到区域服务器关闭，但不会立即重启。 
 

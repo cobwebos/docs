@@ -1,24 +1,25 @@
 ---
-title: 搜索 Web 上的热门图像 - 必应图像搜索 API
+title: 使用必应图像搜索 API 获取热门图像
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用必应图像搜索 API 搜索 Web 中的热门图像。
+description: 使用必应图像搜索 API 从 Web 搜索目前的热门图像。
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.assetid: EAB92D35-5C0B-4A0A-8F49-02DF7FAD44B4
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 00d992da1d061ddbbee59e93898a92b6701f1ffb
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.custom: seodec2018
+ms.openlocfilehash: 177a9cbf9235bb3d2deb0d5f8e4e31a0e1472b48
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296305"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756465"
 ---
-# <a name="get-trending-images-from-the-bing-image-search-api"></a>通过必应图像搜索 API 获取热门图像
+# <a name="get-trending-images-from-the-web"></a>从 Web 获取热门图像
 
 要获取今天的热门图像，请发送以下 GET 请求：  
 
@@ -89,7 +90,7 @@ Host: api.cognitive.microsoft.com
 
 每个磁贴包含用于获取相关图像的图像和选项。 要获取相关图像，你可以使用查询 `text` 来调用[图像搜索 API](./search-the-web.md)，并自行显示相关图像。 或者，你可以使用 `webSearchUrl` 中的 URL 将用户转到必应图像搜索结果页面，其中包含相关图像。
 
-如果调用图像搜索 API 来获取相关图像，请将 [id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#id) 查询参数设置为 `id` 字段中的 ID。 指定 ID 可确保响应包含图像（它是响应中的第一个图像）及其相关图像。 另外，将 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#q) 查询参数设置为 `query` 对象的 `text` 字段中的文本。
+如果调用图像搜索 API 来获取相关图像，请将 [id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#id) 查询参数设置为 `id` 字段中的 ID。 指定 ID 可确保响应包含图像（它是响应中的第一个图像）及其相关图像。 另外，将 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) 查询参数设置为 `query` 对象的 `text` 字段中的文本。
 
 以下示例显示如何使用图像 ID 在先前的热门图像 API 响应中获取 Smith 先生的相关图像。
 

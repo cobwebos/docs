@@ -1,5 +1,5 @@
 ---
-title: 如何为入站 IP 地址更改做准备 - Azure
+title: 为入站 IP 地址更改做准备 - Azure 应用服务
 description: 如果入站 IP 地址将要更改，请了解如何在更改后继续运行应用。
 services: app-service\web
 author: cephalin
@@ -10,12 +10,13 @@ ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
-ms.openlocfilehash: 28741e858b0c938ec8b2b2ff983106c6b08e18fc
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.custom: seodec18
+ms.openlocfilehash: aaa89b5a3bb1af6878ed21e0160a534a1c989228
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578212"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721353"
 ---
 # <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>如何为入站 IP 地址更改做准备
 
@@ -27,9 +28,9 @@ ms.locfileid: "39578212"
 
 * 选项 2：如果在域注册门户（第三方 DNS 提供程序或 Azure DNS）中仅配置了一条 CNAME 记录（指向 URI 的 DNS 记录），则不需要执行任何操作。
 
-* 选项 3：如果在域注册门户（第三方 DNS 提供程序或 Azure DNS）中配置了 A 记录（直接指向你的 IP 地址的 DNS 记录），请将现有 IP 地址替换为新 IP 地址。 按照下一部分中的说明可以找到新 IP 地址。
+* 选项 3：如果在域注册门户（第三方 DNS 提供程序或 Azure DNS）中配置了 A 记录（直接指向你的 IP 地址的 DNS 记录），请将现有 IP 地址替换为新 IP 地址。 遵照下一部分中的说明可以找到新 IP 地址。
 
-* 选项 4：如果应用程序位于负载均衡器、IP 筛选器或需要应用程序 IP 地址的任何其他 IP 机制之后，请将现有 IP 地址替换为新 IP 地址。 按照下一部分中的说明可以找到新 IP 地址。
+* 选项 4：如果应用程序位于负载均衡器、IP 筛选器或需要应用程序 IP 地址的任何其他 IP 机制之后，请将现有 IP 地址替换为新 IP 地址。 遵照下一部分中的说明可以找到新 IP 地址。
 
 ## <a name="find-the-new-inbound-ip-address-in-the-azure-portal"></a>在 Azure 门户中找到新的入站 IP 地址
 
@@ -41,7 +42,7 @@ ms.locfileid: "39578212"
 
 3.  从列表中选择自己的应用服务应用。
 
-4.  如果应用是一个函数应用，请参阅[函数应用入站 IP 地址](../azure-functions/ip-addresses.md#function-app-inbound-ip-address)。
+1.  如果应用是一个函数应用，请参阅[函数应用入站 IP 地址](../azure-functions/ip-addresses.md#function-app-inbound-ip-address)。
 
 4.  在“设置”标题下，单击左侧导航栏中的“属性”，找到标有“虚拟 IP 地址”的部分。
 
@@ -49,4 +50,4 @@ ms.locfileid: "39578212"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何对 Azure 发起的 IP 地址更改做好准备。 有关 Azure 应用服务中的 IP 地址的详细信息，请参阅 [Azure 应用服务中的入站和出站 IP 地址](app-service-ip-addresses.md)。
+本文介绍了如何对 Azure 发起的 IP 地址更改做好准备。 有关 Azure 应用服务中的 IP 地址的详细信息，请参阅 [Azure 应用服务中的入站和出站 IP 地址](overview-inbound-outbound-ips.md)。

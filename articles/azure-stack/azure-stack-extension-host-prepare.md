@@ -5,21 +5,22 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 11/27/2018
+ms.date: 02/07/2019
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.openlocfilehash: 8de810e689a00f081df82365eca00131453a6db5
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.lastreviewed: 01/25/2019
+ms.openlocfilehash: b0d3b3e4901fbcece13c201938be8bccb1bb9c82
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447106"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962360"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>为 Azure Stack 准备扩展主机
 
-扩展主机通过减少所需的 TCP/IP 端口数来保护 Azure Stack。 本文讨论了为 Azure Stack 准备扩展主机，扩展主机是通过 1808 更新之后的一个 Azure Stack 更新程序包自动启用的。
+扩展主机通过减少所需的 TCP/IP 端口数来保护 Azure Stack。 本文讨论了为 Azure Stack 准备扩展主机，扩展主机是通过 1808 更新之后的一个 Azure Stack 更新程序包自动启用的。 本文适用于 Azure Stack 更新 1808年、 1809 和 1811年。
 
 ## <a name="certificate-requirements"></a>证书要求
 
@@ -127,10 +128,10 @@ Azure Stack 就绪性检查器工具能够为两个新的必需 SSL 证书创建
 > 如果使用了 DNS 区域委派进行 DNS 集成，则此步骤不是必需的。
 如果已配置了单独的主机 A 记录来发布 Azure Stack 终结点，则需要创建两个额外的主机 A 记录：
 
-| IP | 主机名 | 类型 |
+| IP | 主机名 | Type |
 |----|------------------------------|------|
-| \<IP> | *.Adminhosting。\<区域 >。\<FQDN > | A |
-| \<IP> | *.承载。\<区域 >。\<FQDN > | A |
+| \<IP> | *.Adminhosting.\<Region>.\<FQDN> | A |
+| \<IP> | *.Hosting.\<Region>.\<FQDN> | A |
 
 可以通过运行 cmdlet **Get-AzureStackStampInformation** 使用特权终结点检索已分配的 IP。
 
@@ -140,14 +141,53 @@ Azure Stack 就绪性检查器工具能够为两个新的必需 SSL 证书创建
 
 ### <a name="publish-new-endpoints"></a>发布新的终结点
 
-需要通过防火墙发布两个新的终结点。 可以使用 cmdlet **Get-AzureStackStampInformation** 从公共 VIP 池检索已分配的 IP。
+需要通过防火墙发布两个新的终结点。 可以使用下面的代码必须通过在 Azure Stack 运行检索从公共 VIP 池已分配的 Ip[环境的特权终结点](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint)。
+
+```PowerShell
+# Create a PEP Session
+winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
+$PEPCreds = Get-Credential
+$PEPSession = New-PSSession -ComputerName <IpOfERCSMachine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
+
+# Obtain DNS Servers and Extension Host information from Azure Stack Stamp Information and find the IPs for the Host Extension Endpoints
+$StampInformation = Invoke-Command $PEPSession {Get-AzureStackStampInformation} | Select-Object -Property ExternalDNSIPAddress01, ExternalDNSIPAddress02, @{n="TenantHosting";e={($_.TenantExternalEndpoints.TenantHosting) -replace "https://*.","testdnsentry"-replace "/"}},  @{n="AdminHosting";e={($_.AdminExternalEndpoints.AdminHosting)-replace "https://*.","testdnsentry"-replace "/"}},@{n="TenantHostingDNS";e={($_.TenantExternalEndpoints.TenantHosting) -replace "https://",""-replace "/"}},  @{n="AdminHostingDNS";e={($_.AdminExternalEndpoints.AdminHosting)-replace "https://",""-replace "/"}}
+If (Resolve-DnsName -Server $StampInformation.ExternalDNSIPAddress01 -Name $StampInformation.TenantHosting -ErrorAction SilentlyContinue) {
+    Write-Host "Can access AZS DNS" -ForegroundColor Green
+    $AdminIP = (Resolve-DnsName -Server $StampInformation.ExternalDNSIPAddress02 -Name $StampInformation.AdminHosting).IPAddress
+    Write-Host "The IP for the Admin Extension Host is: $($StampInformation.AdminHostingDNS) - is: $($AdminIP)" -ForegroundColor Yellow
+    Write-Host "The Record to be added in the DNS zone: Type A, Name: $($StampInformation.AdminHostingDNS), Value: $($AdminIP)" -ForegroundColor Green
+    $TenantIP = (Resolve-DnsName -Server $StampInformation.ExternalDNSIPAddress01 -Name $StampInformation.TenantHosting).IPAddress
+    Write-Host "The IP address for the Tenant Extension Host is $($StampInformation.TenantHostingDNS) - is: $($TenantIP)" -ForegroundColor Yellow
+    Write-Host "The Record to be added in the DNS zone: Type A, Name: $($StampInformation.TenantHostingDNS), Value: $($TenantIP)" -ForegroundColor Green
+}
+Else {
+    Write-Host "Cannot access AZS DNS" -ForegroundColor Yellow
+    $AdminIP = (Resolve-DnsName -Name $StampInformation.AdminHosting).IPAddress
+    Write-Host "The IP for the Admin Extension Host is: $($StampInformation.AdminHostingDNS) - is: $($AdminIP)" -ForegroundColor Yellow
+    Write-Host "The Record to be added in the DNS zone: Type A, Name: $($StampInformation.AdminHostingDNS), Value: $($AdminIP)" -ForegroundColor Green
+    $TenantIP = (Resolve-DnsName -Name $StampInformation.TenantHosting).IPAddress
+    Write-Host "The IP address for the Tenant Extension Host is $($StampInformation.TenantHostingDNS) - is: $($TenantIP)" -ForegroundColor Yellow
+    Write-Host "The Record to be added in the DNS zone: Type A, Name: $($StampInformation.TenantHostingDNS), Value: $($TenantIP)" -ForegroundColor Green
+}
+Remove-PSSession -Session $PEPSession
+```
+
+#### <a name="sample-output"></a>示例输出
+
+```PowerShell
+Can access AZS DNS
+The IP for the Admin Extension Host is: *.adminhosting.\<region>.\<fqdn> - is: xxx.xxx.xxx.xxx
+The Record to be added in the DNS zone: Type A, Name: *.adminhosting.\<region>.\<fqdn>, Value: xxx.xxx.xxx.xxx
+The IP address for the Tenant Extension Host is *.hosting.\<region>.\<fqdn> - is: xxx.xxx.xxx.xxx
+The Record to be added in the DNS zone: Type A, Name: *.hosting.\<region>.\<fqdn>, Value: xxx.xxx.xxx.xxx
+```
 
 > [!Note]  
 > 请在启用扩展主机前进行此更改。 这使得 Azure Stack 门户持续可访问。
 
 | 终结点 (VIP) | 协议 | 端口 |
 |----------------|----------|-------|
-| AdminHosting | HTTPS | 443 |
+| 管理托管 | HTTPS | 443 |
 | Hosting | HTTPS | 443 |
 
 ### <a name="update-existing-publishing-rules-post-enablement-of-extension-host"></a>更新现有的发布规则（在启用扩展主机后）
@@ -162,8 +202,8 @@ Azure Stack 就绪性检查器工具能够为两个新的必需 SSL 证书创建
 
 | 终结点 (VIP) | 协议 | 端口 |
 |----------------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
-| 门户（管理员） | HTTPS | 12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13020<br>13021<br>13026<br>30015 |
-| 门户（用户） | HTTPS | 12495<br>12649<br>13001<br>13010<br>13011<br>13020<br>13021<br>30015<br>13003 |
+| 门户（管理员） | HTTPS | 12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13012<br>13020<br>13021<br>13026<br>30015 |
+| 门户（用户） | HTTPS | 12495<br>12649<br>13001<br>13010<br>13011<br>13012<br>13020<br>13021<br>30015<br>13003 |
 | Azure 资源管理器（管理员） | HTTPS | 30024 |
 | Azure 资源管理器（用户） | HTTPS | 30024 |
 

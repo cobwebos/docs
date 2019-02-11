@@ -1,6 +1,6 @@
 ---
-title: Azure 搜索中的数据导入 | Microsoft Docs
-description: 了解如何将数据上传到 Azure 搜索中的索引。
+title: 数据导入以便将数据引入到搜索索引中 - Azure 搜索
+description: 从外部数据源填充数据并将数据上传到 Azure 搜索中的索引。
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,14 +8,15 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: heidist
-ms.openlocfilehash: ab26adb330e69f71d94aa296ede558b44e47a187
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: 731519b4e099bd696002af3aa08ada145e490260
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249772"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314850"
 ---
-# <a name="indexing-in-azure-search"></a>在 Azure 搜索中编制索引
+# <a name="indexing-external-data-for-queries-in-azure-search"></a>为 Azure 搜索中的查询编制外部数据索引
 > [!div class="op_single_selector"]
 > * [概述](search-what-is-data-import.md)
 > * [.NET](search-import-data-dotnet.md)
@@ -23,7 +24,7 @@ ms.locfileid: "51249772"
 > 
 > 
 
-在 Azure 搜索中，将会针对已加载到[搜索索引](search-what-is-an-index.md)中的内容执行查询。 本文介绍两种将内容加载到索引中的基本方法：一种是推送，即以编程方式将数据推送至索引；另一种是拉取，即将 [Azure 搜索索引器](search-indexer-overview.md)指向支持的数据源，以便拉取数据。
+在 Azure 搜索中，将会针对已加载和已保存到[搜索索引](search-what-is-an-index.md)中的内容执行查询。 本文介绍填充索引的两种基本方法：一种是推送，即以编程方式将数据推送至索引；另一种是拉取，即将 [Azure 搜索索引器](search-indexer-overview.md)指向支持的数据源，以便拉取数据。
 
 ## <a name="pushing-data-to-an-index"></a>将数据推送至索引
 推送模式用于以编程方式将数据发送到 Azure 搜索，是最灵活的方法。 首先，它对数据源类型没有限制。 任何由 JSON 文档组成的数据集都可以推送至 Azure 搜索索引，前提是数据集中的每个文档的字段都映射到索引架构中定义的字段。 其次，它对执行频率没有限制。 可以根据需要选择相应的频率，将更改推送到索引。 对于具有极低延迟要求的应用程序（例如，如果需要搜索操作与动态库存数据库同步），只能选择推送模型。

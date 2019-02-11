@@ -1,5 +1,5 @@
 ---
-title: 文本合并认知搜索技能（Azure 搜索）| Microsoft Docs
+title: 文本合并认知搜索技能 - Azure 搜索
 description: 将字段集合中的文本合并到合并字段中。 在 Azure 搜索扩充管道中使用此认知技能。
 services: search
 manager: pablocas
@@ -8,21 +8,22 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 01/17/2019
 ms.author: luisca
-ms.openlocfilehash: 5387eeacc78875ac0f38f96a6c83fb3f5791775e
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.custom: seodec2018
+ms.openlocfilehash: a3c64a26ed5ee7454fcfd22f47c1a161f65c6de7
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167607"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445338"
 ---
 #    <a name="text-merge-cognitive-skill"></a>文本合并认知技能
 
 文本合并技能会将字段集合中的文本合并到单个字段中。 
 
 > [!NOTE]
-> 认知搜索目前提供公共预览版。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 
+> 此技能未绑定到认知服务 API，你使用它无需付费。 但是，你仍然应该[附加认知服务资源](cognitive-search-attach-cognitive-services.md)，以覆盖**免费**资源选项，该选项限制你每天进行少量的每日扩充。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.MergeSkill
@@ -31,7 +32,7 @@ Microsoft.Skills.Text.MergeSkill
 
 参数区分大小写。
 
-| 参数名称     | Description |
+| 参数名称     | 说明 |
 |--------------------|-------------|
 | insertPreTag  | 每次插入之前要包含的字符串。 默认值为 `" "`。 要忽略空格，请将值设置为 `""`。  |
 | insertPostTag | 每次插入后要包含的字符串。 默认值为 `" "`。 要忽略空格，请将值设置为 `""`。  |
@@ -108,7 +109,7 @@ Microsoft.Skills.Text.MergeSkill
       "description": "Create merged_text, which includes all the textual representation of each image inserted at the right location in the content field.",
       "context": "/document",
       "insertPreTag": " ",
-      "insertPostTag": " "
+      "insertPostTag": " ",
       "inputs": [
         {
           "name":"text", "source": "/document/content"
@@ -145,6 +146,6 @@ Microsoft.Skills.Text.MergeSkill
 
 ## <a name="see-also"></a>另请参阅
 
-+ [预定义的技能](cognitive-search-predefined-skills.md)
-+ [如何定义技能组合](cognitive-search-defining-skillset.md)
++ [预定义技能](cognitive-search-predefined-skills.md)
++ [如何定义技能集](cognitive-search-defining-skillset.md)
 + [创建索引器 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

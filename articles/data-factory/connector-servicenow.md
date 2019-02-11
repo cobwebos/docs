@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/23/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1e0bbfafcda77ca48fb22ad919c5848a7670a102
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 234b78a97c2663121d0d585154695887a58b9522
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309668"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351737"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>使用 Azure 数据工厂从 ServiceNow 复制数据
 
@@ -42,9 +41,9 @@ ServiceNow 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：“ServiceNow” | 是 |
+| type | type 属性必须设置为：**ServiceNow** | 是 |
 | endpoint | ServiceNow 服务器的终结点 (`http://<instance>.service-now.com`)。  | 是 |
-| authenticationType | 可使用的身份验证类型。 <br/>允许的值是：Basic、OAuth2 | 是 |
+| authenticationType | 可使用的身份验证类型。 <br/>允许值包括：**Basic****OAuth2** | 是 |
 | username | 用户名用于连接到 ServiceNow 服务器，进行基本和 OAuth2 身份验证。  | 是 |
 | password | 基本和 OAuth2 身份验证的用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | clientId | OAuth2 身份验证的客户端 ID。  | 否 |
@@ -77,7 +76,12 @@ ServiceNow 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 ServiceNow 数据集支持的属性列表。
 
-要从 ServiceNow 复制数据，请将数据集的 type 属性设置为“ServiceNowObject”。 此类型的数据集中没有任何其他特定于类型的属性。
+要从 ServiceNow 复制数据，请将数据集的 type 属性设置为“ServiceNowObject”。 支持以下属性：
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| type | 数据集的 type 属性必须设置为：**ServiceNowObject** | 是 |
+| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -89,7 +93,8 @@ ServiceNow 链接服务支持以下属性：
         "linkedServiceName": {
             "referenceName": "<ServiceNow linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -104,16 +109,16 @@ ServiceNow 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：ServiceNowSource | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Actual.alm_asset"`。 | 是 |
+| type | 复制活动源的 type 属性必须设置为：**ServiceNowSource** | 是 |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Actual.alm_asset"`。 | 否（如果指定了数据集中的“tableName”） |
 
 在查询中指定 ServiceNow 的架构和列时注意以下内容，并且参阅有关复制性能隐含的[性能提示](#performance-tips)。
 
 - **架构：** 在 ServiceNow 查询中将架构指定为 `Actual` 或 `Display`，从而在调用 [ServiceNow restful API](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET) 时可以将其视为参数 `sysparm_display_value`，其值为 true 或 false。 
-- **列：**`Actual` 架构下实际值的列名是 `[columne name]_value`，而 `Display` 架构下显示值的列名为 `[columne name]_display_value`。 请注意，列名需要映射到查询中所使用的架构。
+- **列：**`Actual` 架构下实际值的列名是 `[column name]_value`，而 `Display` 架构下显示值的列名为 `[column name]_display_value`。 请注意，列名需要映射到查询中所使用的架构。
 
 **示例查询：**
-`SELECT col_value FROM Actual.alm_asset` 或  
+`SELECT col_value FROM Actual.alm_asset`或  
 `SELECT col_display_value FROM Display.alm_asset`
 
 **示例：**

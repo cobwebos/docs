@@ -9,18 +9,20 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/28/2018
+ms.date: 01/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5bb820d816115dccf470b6c32d080862495e8310
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: dfed8ce93a97b31380b44f0ac7057c0cff60901e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434970"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497275"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 
 本文列出了 Azure 资源类型是否支持移动操作。 尽管资源类型支持移动操作，但可能有阻止资源移动的情况。 有关影响移动操作的情况的详细信息，请参阅[将资源移动至新资源组或订阅](resource-group-move-resources.md)。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="find-resource-provider-and-resource-type"></a>查找资源提供程序和资源类型
 
@@ -29,13 +31,13 @@ ms.locfileid: "47434970"
 对于 PowerShell，请使用：
 
 ```azurepowershell-interactive
-Get-AzureRmResource -ResourceGroupName demogroup | Select Name, ResourceType | Format-table
+Get-AzResource -ResourceGroupName demogroup | Select Name, ResourceType | Format-table
 ```
 
 对于 Azure CLI，请使用：
 
 ```azurecli-interactive
-az resource list -g demogroup --query '[].{name:name, reourcetype:type}'
+az resource list -g demogroup --query '[].{name:name, resourceType:type}' --output table
 ```
 
 返回的资源类型格式为 `<resource-provider>/<resource-type-name>`。 因此，该值 `Microsoft.OperationalInsights/workspaces` 中显示的资源提供程序为 Microsoft.OperationalInsights，资源类型名称为 workspaces。
@@ -89,14 +91,6 @@ az resource list -g demogroup --query '[].{name:name, reourcetype:type}'
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | -------------- | ------------ |
 | batchaccounts | 是 | 是 |
-
-## <a name="microsoftbatchai"></a>Microsoft.BatchAI
-| 资源类型 | 资源组 | 订阅 |
-| ------------- | -------------- | ------------ |
-| clusters | 否 | 否 |
-| fileservers | 否 | 否 |
-| jobs | 否 | 否 |
-| workspaces | 否 | 否 |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 | 资源类型 | 资源组 | 订阅 |
@@ -380,6 +374,11 @@ az resource list -g demogroup --query '[].{name:name, reourcetype:type}'
 | ------------- | -------------- | ------------ |
 | vaults | 是 | 是 |
 
+## <a name="microsoftkusto"></a>Microsoft.Kusto
+| 资源类型 | 资源组 | 订阅 |
+| ------------- | -------------- | ------------ |
+| clusters | 是 | 是 |
+
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | -------------- | ------------ |
@@ -465,7 +464,7 @@ az resource list -g demogroup --query '[].{name:name, reourcetype:type}'
 | ------------- | -------------- | ------------ |
 | applicationgateways | 否 | 否 |
 | applicationsecuritygroups | 是 | 是 |
-| azurefirewalls | 是 | 是 |
+| azurefirewalls | 否 | 否 |
 | connections | 是 | 是 |
 | ddosprotectionplans | 否 | 否 |
 | dnszones | 是 | 是 |

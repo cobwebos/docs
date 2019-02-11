@@ -5,17 +5,18 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 manager: femila
-ms.date: 10/22/2018
+ms.date: 01/25/2019
 ms.topic: article
 ms.service: azure-stack
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: de98387b0c7d5eb3c5ca99f9aa31619397e2aadf
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.lastreviewed: 01/25/2019
+ms.openlocfilehash: f0e3eca0c38a47e7107e52464e889580dd0b1b8a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944573"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243566"
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Azure Stack 网络注意事项
 
@@ -27,7 +28,7 @@ Azure Stack 网络具有许多由 Azure 网络提供的功能。 但是，在部
 
 ## <a name="cheat-sheet-networking-differences"></a>速查表：网络差异
 
-| 服务 | 功能 | Azure（公有云） | Azure Stack |
+| 服务 | Feature | Azure（公有云） | Azure Stack |
 |--------------------------|----------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | DNS | 多租户 DNS | 支持 | 尚不支持 |
 |  | DNS AAAA 记录 | 支持 | 不支持 |
@@ -54,7 +55,6 @@ Azure Stack 网络具有许多由 Azure 网络提供的功能。 但是，在部
 |  | 默认网关站点 | Azure 支持为强制隧道配置默认站点。 | 尚不支持。 |
 |  | 网关大小调整 | Azure 支持在部署后调整网关大小。 | 不支持调整大小。 |
 |  | 主动/主动配置 | 支持 | 尚不支持。 |
-|  | IKE/IPSec 策略 | Azure 支持自定义的 IPSec 策略配置。 | 尚不支持。 |
 |  | UsePolicyBasedTrafficSelectors | Azure 支持将基于策略的流量选择器与基于路由的网关连接配合使用。 | 尚不支持。 |
 | 负载均衡 | SKU | 支持基本和标准负载均衡器。 | 仅支持基本负载均衡器。  不支持 SKU 属性。 |
 |  | 区域 | 支持可用性区域。 | 尚不支持 |
@@ -65,11 +65,9 @@ Azure Stack 网络具有许多由 Azure 网络提供的功能。 但是，在部
 |  | 获取有效 ACL | 支持 | 尚不支持。 |
 |  | 启用加速网络 | 支持 | 尚不支持。 |
 |  | IP 转发 | 默认已禁用。  可启用。 | 不支持切换此设置。  默认已启用。 |
-|  | 每个接口的多个 IP 配置 | 支持 | 尚不支持。 |
 |  | 应用程序安全组 | 支持 | 尚不支持。 |
 |  | 内部 DNS 名称标签 | 支持 | 尚不支持。 |
 |  | 专用 IP 地址版本 | 支持 IPv6 和 IPv4。 | 仅支持 IPv4。 |
-|  | 主要 IP 配置 | 。 识别接口上的主要 IP 配置。 | 尚不支持。 |
 | 网络观察程序 | 网络观察程序租户网络监视功能 | 支持 | 尚不支持。 |
 | CDN | 内容分发网络配置文件 | 支持 | 尚不支持。 |
 | 应用程序网关 | 7 层负载均衡 | 支持 | 尚不支持。 |

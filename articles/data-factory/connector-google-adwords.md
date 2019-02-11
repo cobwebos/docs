@@ -9,23 +9,22 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/07/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 402d4fb0c1eb7c6760f800bdd408e9a4d8161ccc
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 0f68627e2db3c08049f0273045906057526bd6aa
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095907"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568046"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Google AdWords 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Google AdWords 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!IMPORTANT]
-> 此连接器目前提供预览版。 可以进行试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 支持部门](https://azure.microsoft.com/support/)。
+> 此连接器目前提供预览版。 可以进行试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://azure.microsoft.com/support/)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -45,13 +44,13 @@ Google AdWords 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为 **GoogleAdWords**。 | 是 |
+| type | Type 属性必须设置为：**GoogleAdWords** | 是 |
 | clientCustomerID | 需提取其报表数据的 AdWords 帐户的客户端客户 ID。  | 是 |
-| developerToken | 与管理员帐户相关联的开发人员令牌，该帐户用来授予对 AdWords API 的访问权限。  可以选择将此字段标记为 SecureString 以将其安全地存储在 ADF，或在 Azure Key Vault 中存储密码，并允许在此处 ADF 复制活动请求时执行数据复制 - 在[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)中了解详细信息。 | 是 |
-| authenticationType | 用于身份验证的 OAuth 2.0 身份验证机制。 ServiceAuthentication 只能在自托管 IR 上使用。 <br/>允许的值为：**ServiceAuthentication**、**UserAuthentication** | 是 |
-| refreshToken | 从 Google 获得的刷新令牌，用于授权访问 AdWords 以进行用户身份验证。 可以选择将此字段标记为 SecureString 以将其安全地存储在 ADF，或在 Azure Key Vault 中存储密码，并允许在此处 ADF 复制活动请求时执行数据复制 - 在[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)中了解详细信息。 | 否 |
-| clientId | Google 应用程序的客户端 ID，用户获取刷新令牌。 可以选择将此字段标记为 SecureString 以将其安全地存储在 ADF，或在 Azure Key Vault 中存储密码，并允许在此处 ADF 复制活动请求时执行数据复制 - 在[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)中了解详细信息。 | 否 |
-| clientSecret | Google 应用程序的客户端机密，用户获取刷新令牌。 可以选择将此字段标记为 SecureString 以将其安全地存储在 ADF，或在 Azure Key Vault 中存储密码，并允许在此处 ADF 复制活动请求时执行数据复制 - 在[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)中了解详细信息。 | 否 |
+| developerToken | 与管理员帐户相关联的开发人员令牌，该帐户用来授予对 AdWords API 的访问权限。  可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 是 |
+| authenticationType | 用于身份验证的 OAuth 2.0 身份验证机制。 ServiceAuthentication 只能在自托管 IR 上使用。 <br/>允许值包括：ServiceAuthentication、UserAuthentication | 是 |
+| refreshToken | 从 Google 获得的刷新令牌，用于授权访问 AdWords 以进行用户身份验证。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 否 |
+| clientId | Google 应用程序的客户端 ID，用户获取刷新令牌。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 否 |
+| clientSecret | Google 应用程序的客户端机密，用户获取刷新令牌。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 否 |
 | 电子邮件 | 用于 ServiceAuthentication 的服务帐户电子邮件 ID，只能在自托管 IR 上使用。  | 否 |
 | keyFilePath | .p12 密钥文件的完整路径，该文件用于对服务帐户电子邮件地址进行身份验证，只能在自托管 IR 上使用。  | 否 |
 | trustedCertPath | 包含受信任 CA 证书（通过 SSL 进行连接时用于验证服务器）的 .pem 文件的完整路径。 只有在自托管 IR 上使用 SSL 时才能设置此属性。 默认值是随 IR 一起安装的 cacerts.pem 文件。  | 否 |
@@ -67,21 +66,21 @@ Google AdWords 链接服务支持以下属性：
         "typeProperties": {
             "clientCustomerID" : "<clientCustomerID>",
             "developerToken": {
-                 "type": "SecureString",
-                 "value": "<developerToken>"
+                "type": "SecureString",
+                "value": "<developerToken>"
             },
             "authenticationType" : "ServiceAuthentication",
             "refreshToken": {
-                 "type": "SecureString",
-                 "value": "<refreshToken>"
+                "type": "SecureString",
+                "value": "<refreshToken>"
             },
             "clientId": {
-                 "type": "SecureString",
-                 "value": "<clientId>"
+                "type": "SecureString",
+                "value": "<clientId>"
             },
             "clientSecret": {
-                 "type": "SecureString",
-                 "value": "<clientSecret>"
+                "type": "SecureString",
+                "value": "<clientSecret>"
             },
             "email" : "<email>",
             "keyFilePath" : "<keyFilePath>",
@@ -97,7 +96,12 @@ Google AdWords 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Google AdWords 数据集支持的属性列表。
 
-若要从 Google AdWords 复制数据，请将数据集的 type 属性设置为 **GoogleAdWordsObject**。 此类型的数据集中没有任何其他特定于类型的属性。
+若要从 Google AdWords 复制数据，请将数据集的 type 属性设置为 **GoogleAdWordsObject**。 支持以下属性：
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| type | 数据集的 type 属性必须设置为：**GoogleAdWordsObject** | 是 |
+| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -109,7 +113,8 @@ Google AdWords 链接服务支持以下属性：
         "linkedServiceName": {
             "referenceName": "<GoogleAdWords linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 
@@ -121,12 +126,12 @@ Google AdWords 链接服务支持以下属性：
 
 ### <a name="google-adwords-as-source"></a>充当源的 Google AdWords
 
-若要从 Google AdWords 复制数据，请将复制活动中的源类型设置为“GoogleAdWordsSource”。 复制活动**源**部分支持以下属性：
+若要从 Google AdWords 复制数据，请将复制活动中的源类型设置为“GoogleAdWordsSource”。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为 **GoogleAdWordsSource** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 是 |
+| type | 复制活动源的 type 属性必须设置为：**GoogleAdWordsSource** | 是 |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

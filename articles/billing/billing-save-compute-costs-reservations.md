@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
-ms.author: cwatson
-ms.openlocfilehash: 27b31b6dec480fee417bf9ccb241199204f28f96
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 4133d78ccff1fa4eb712d8928cefa604ca2f52ca
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582643"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902051"
 ---
 # <a name="what-are-azure-reservations"></a>什么是 Azure 预留项？
 
@@ -38,7 +38,7 @@ ms.locfileid: "52582643"
 
 - 虚拟机预留实例：预留仅涵盖虚拟机计算成本。 而不涵盖软件、网络或存储等其他费用。
 - SQL 数据库预留 vCore：预留仅包含计算成本。 许可证单独计费。
-- Azure Cosmos DB 保留容量：预订涵盖为资源预配的吞吐量的费用，而不涵盖存储和网络费用。 
+- Azure Cosmos DB 预留容量：预留涵盖为资源预配的吞吐量的费用，而不涵盖存储和网络费用。 
 
 对于 Windows 虚拟机和 SQL 数据库，可以利用 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)来涵盖许可费用。
 
@@ -77,10 +77,10 @@ ms.locfileid: "52582643"
 
 购买预订时，折扣可以应用于具有同一大小组中属性的其他实例。 折扣覆盖范围的灵活性取决于预订的类型以及购买预订时选择的特性。
 
-- 预订 VM 实例：购买预订时，如果选择“优化对象: 实例大小灵活性”，则折扣覆盖范围将取决于所选的 VM 大小。 预订可以应用于同一大小系列组中的虚拟机 (VM) 大小。 有关详细信息，请参阅[预订 VM 实例的虚拟机大小灵活性](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
+- 虚拟机预留实例：购买预留时，如果选择“优化对象: 实例大小灵活性”，则折扣覆盖范围将取决于所选的 VM 大小。 预订可以应用于同一大小系列组中的虚拟机 (VM) 大小。 有关详细信息，请参阅[预订 VM 实例的虚拟机大小灵活性](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
 - SUSE Linux Enterprise 软件计划：折扣覆盖范围取决于运行 SUSE 软件的 VM 的 vCPU。 有关详细信息，请参阅[了解如何应用 SUSE Linux Enterprise 软件计划折扣](billing-understand-suse-reservation-charges.md)。
-- SQL 数据库保留容量：折扣覆盖范围取决于所选的性能层。 有关详细信息，请参阅[了解如何应用 Azure 预订折扣](billing-understand-reservation-charges.md)。
-- Azure Cosmos DB 保留容量：折扣覆盖范围取决于预配的吞吐量。 有关详细信息，请参阅[了解如何应用 Azure Cosmos DB 预订折扣](billing-understand-cosmosdb-reservation-charges.md)。
+- SQL 数据库预留容量：折扣覆盖范围取决于所选的性能层。 有关详细信息，请参阅[了解如何应用 Azure 预订折扣](billing-understand-reservation-charges.md)。
+- Azure Cosmos DB 预留容量：折扣覆盖范围取决于预配的吞吐量。 有关详细信息，请参阅[了解如何应用 Azure Cosmos DB 预订折扣](billing-understand-cosmosdb-reservation-charges.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -96,4 +96,4 @@ ms.locfileid: "52582643"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

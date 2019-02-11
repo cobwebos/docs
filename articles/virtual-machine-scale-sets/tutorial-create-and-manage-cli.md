@@ -3,7 +3,7 @@ title: 教程 - 创建和管理 Azure 虚拟机规模集 | Microsoft Docs
 description: 了解如何使用 Azure CLI 创建虚拟机规模集以及某些常见的管理任务，例如如何启动和停止实例，或者如何更改规模集容量。
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 263a2ddd1cf42348678488a02ed0b97a7ed1304c
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: b0d2a72567783ca1c127f76d94ddc9c5e007ea89
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466131"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751015"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和管理虚拟机规模集
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 在虚拟机规模集的整个生命周期内，可能需要运行一个或多个管理任务。 本教程介绍如何执行下列操作：
@@ -41,7 +41,7 @@ ms.locfileid: "49466131"
 
 
 ## <a name="create-a-resource-group"></a>创建资源组
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机规模集前创建资源组。 使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 在此示例中，在“eastus”区域中创建了名为“myResourceGroup”的资源组。 
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机规模集前创建资源组。 使用 [az group create](/cli/azure/group) 命令创建资源组。 在此示例中，在“eastus”区域中创建了名为“myResourceGroup”的资源组。 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -51,7 +51,7 @@ az group create --name myResourceGroup --location eastus
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-请使用 [az vmss create](/cli/azure/vmss#az_vmss_create) 命令创建虚拟机规模集。 以下示例创建名为“myScaleSet”的规模集，并生成 SSH 密钥（如果不存在）：
+请使用 [az vmss create](/cli/azure/vmss) 命令创建虚拟机规模集。 以下示例创建名为“myScaleSet”的规模集，并生成 SSH 密钥（如果不存在）：
 
 ```azurecli-interactive
 az vmss create \
@@ -66,7 +66,7 @@ az vmss create \
 
 
 ## <a name="view-the-vm-instances-in-a-scale-set"></a>查看规模集中的 VM 实例
-若要查看规模集中的 VM 实例的列表，请使用 [az vmss list-instances](/cli/azure/vmss#az_vmss_list_instances)，如下所示：
+若要在规模集中查看 VM 实例的列表，请使用 [az vmss list-instances](/cli/azure/vmss)，如下所示：
 
 ```azurecli-interactive
 az vmss list-instances \
@@ -85,7 +85,7 @@ az vmss list-instances \
 ```
 
 
-输出中的第一个列显示 *InstanceId*。 若要查看特定 VM 实例的其他信息，请将 `--instance-id` 参数添加到 [az vmss get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view)。 以下示例查看 VM 实例 *1* 的相关信息：
+输出中的第一个列显示 *InstanceId*。 若要查看特定 VM 实例的其他信息，请将 `--instance-id` 参数添加到 [az vmss get-instance-view](/cli/azure/vmss)。 以下示例查看 VM 实例 *1* 的相关信息：
 
 ```azurecli-interactive
 az vmss get-instance-view \
@@ -98,7 +98,7 @@ az vmss get-instance-view \
 ## <a name="list-connection-information"></a>列出连接信息
 系统将公共 IP 地址分配给负载均衡器，由后者将流量路由到各个 VM 实例。 默认情况下，会将网络地址转换 (NAT) 规则添加到 Azure 负载均衡器，由后者将远程连接流量转发给给定端口上的每个 VM。 若要连接到规模集中的 VM 实例，请创建一个可连接到已分配的公共 IP 地址和端口号的远程连接。
 
-若要列出规模集中连接到 VM 实例的地址和端口，请使用 [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info)：
+若要列出规模集中连接到 VM 实例的地址和端口，请使用 [az vmss list-instance-connection-info](/cli/azure/vmss)：
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
@@ -129,7 +129,7 @@ exit
 
 
 ## <a name="understand-vm-instance-images"></a>了解 VM 实例映像
-在教程开头创建规模集时，为 VM 实例指定的 `--image` 为 *UbuntuLTS*。 Azure Marketplace 包括许多可用于创建 VM 实例的映像。 若要查看最常用的映像列表，请使用 [az vm image list](/cli/azure/vm/image#az_vm_image_list) 命令。
+在教程开头创建规模集时，为 VM 实例指定的 `--image` 为 *UbuntuLTS*。 Azure Marketplace 包括许多可用于创建 VM 实例的映像。 若要查看最常用的映像列表，请使用 [az vm image list](/cli/azure/vm/image) 命令。
 
 ```azurecli-interactive
 az vm image list --output table
@@ -202,7 +202,7 @@ VM 实例大小或 *SKU* 决定了可供 VM 实例使用的计算资源（如 CP
 | [高性能](../virtual-machines/linux/sizes-hpc.md) | H, A8-11          | 功能极其强大的 CPU VM 具有可选的高吞吐量网络接口 (RDMA)。 
 
 ### <a name="find-available-vm-instance-sizes"></a>查找可用的 VM 实例大小
-若要查看在特定区域可用的 VM 实例大小的列表，请使用 [az vm list-sizes](/cli/azure/vm#az_vm_list_sizes) 命令。
+若要查看在特定区域可用的 VM 实例大小的列表，请使用 [az vm list-sizes](/cli/azure/vm) 命令。
 
 ```azurecli-interactive
 az vm list-sizes --location eastus --output table
@@ -227,7 +227,7 @@ az vm list-sizes --location eastus --output table
 ```
 
 ### <a name="create-a-scale-set-with-a-specific-vm-instance-size"></a>创建特定 VM 实例大小的规模集
-在教程开头创建规模集时，为 VM 实例提供了默认 VM SKU *Standard_D1_v2*。 可以根据 [az vm list-sizes](/cli/azure/vm#az_vm_list_sizes) 的输出指定其他 VM 实例大小。 以下示例会使用 `--vm-sku` 参数创建一个规模集，以便指定 VM 实例大小 *Standard_F1*。 由于只需数分钟即可创建和配置所有的规模集资源和 VM 实例，因此不需部署以下规模集：
+在教程开头创建规模集时，为 VM 实例提供了默认 VM SKU *Standard_D1_v2*。 可以根据 [az vm list-sizes](/cli/azure/vm) 的输出指定其他 VM 实例大小。 以下示例会使用 `--vm-sku` 参数创建一个规模集，以便指定 VM 实例大小 *Standard_F1*。 由于只需数分钟即可创建和配置所有的规模集资源和 VM 实例，因此不需部署以下规模集：
 
 ```azurecli-interactive
 az vmss create \
@@ -241,9 +241,9 @@ az vmss create \
 
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>更改规模集的容量
-在教程开头创建规模集时，默认部署了两个 VM 实例。 可以使用 [az vmss create](/cli/azure/vmss#az_vmss_create) 来指定 `--instance-count` 参数，以便更改通过规模集创建的实例数。 若要增加或减少现有规模集中的 VM 实例数，可以手动更改容量。 规模集会创建或删除所需数量的 VM 实例，然后配置分发流量所需的负载均衡器。
+在教程开头创建规模集时，默认部署了两个 VM 实例。 可以使用 [az vmss create](/cli/azure/vmss) 来指定 `--instance-count` 参数，以便更改通过规模集创建的实例数。 若要增加或减少现有规模集中的 VM 实例数，可以手动更改容量。 规模集会创建或删除所需数量的 VM 实例，然后配置分发流量所需的负载均衡器。
 
-若要手动增加或减少规模集中 VM 实例的数目，请使用 [az vmss scale](/cli/azure/vmss#az_vmss_scale)。 以下示例将规模集中 VM 实例的数目设置为 *3*：
+若要手动增加或减少规模集中 VM 实例的数目，请使用 [az vmss scale](/cli/azure/vmss)。 以下示例将规模集中 VM 实例的数目设置为 *3*：
 
 ```azurecli-interactive
 az vmss scale \
@@ -252,7 +252,7 @@ az vmss scale \
     --new-capacity 3
 ```
 
-更新规模集容量需要花费数分钟。 若要查看规模集中目前包含的实例数，请使用 [az vmss show](/cli/azure/vmss#az_vmss_show) 并对 sku.capacity 进行查询：
+更新规模集容量需要花费数分钟。 若要查看规模集中目前包含的实例数，请使用 [az vmss show](/cli/azure/vmss) 并对 sku.capacity 进行查询：
 
 ```azurecli-interactive
 az vmss show \
@@ -267,27 +267,27 @@ az vmss show \
 现在可以创建规模集、列出连接信息以及连接到 VM 实例。 你已经了解如何对 VM 实例使用其他 OS 映像、如何选择其他 VM 大小，或者如何手动缩放实例数。 在日常管理过程中，可能需要停止、启动或重启规模集中的 VM 实例。
 
 ### <a name="stop-and-deallocate-vm-instances-in-a-scale-set"></a>停止和解除分配规模集中的 VM 实例
-若要在规模集中停止一个或多个 VM 实例，请使用 [az vmss stop](/cli/azure/vmss#az_vmss_stop)。 可以通过 `--instance-ids` 参数指定一个或多个需要停止的 VM 实例。 若不指定实例 ID，则会停止规模集中的所有 VM 实例。 以下示例停止实例 *1*：
+若要在规模集中停止一个或多个 VM 实例，请使用 [az vmss stop](/cli/azure/vmss)。 可以通过 `--instance-ids` 参数指定一个或多个需要停止的 VM 实例。 若不指定实例 ID，则会停止规模集中的所有 VM 实例。 以下示例停止实例 *1*：
 
 ```azurecli-interactive
 az vmss stop --resource-group myResourceGroup --name myScaleSet --instance-ids 1
 ```
 
-已停止的 VM 实例会保留已分配状态，且会继续产生计算费用。 如果希望 VM 实例保持已解除分配状态，且仅会产生存储费用，请使用 [az vmss deallocate](/cli/azure/vmss#az_vmss_deallocate)。 以下示例停止和解除分配实例 *1*：
+已停止的 VM 实例会保留已分配状态，且会继续产生计算费用。 如果希望 VM 实例保持已解除分配状态，且仅会产生存储费用，请使用 [az vmss deallocate](/cli/azure/vmss)。 以下示例停止和解除分配实例 *1*：
 
 ```azurecli-interactive
 az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance-ids 1
 ```
 
 ### <a name="start-vm-instances-in-a-scale-set"></a>启动规模集中的 VM 实例
-若要在规模集中启动一个或多个 VM 实例，请使用 [az vmss start](/cli/azure/vmss#az_vmss_start)。 可以通过 `--instance-ids` 参数指定一个或多个需要启动的 VM 实例。 若不指定实例 ID，则会启动规模集中的所有 VM 实例。 以下示例启动实例 *1*：
+若要在规模集中启动一个或多个 VM 实例，请使用 [az vmss start](/cli/azure/vmss)。 可以通过 `--instance-ids` 参数指定一个或多个需要启动的 VM 实例。 若不指定实例 ID，则会启动规模集中的所有 VM 实例。 以下示例启动实例 *1*：
 
 ```azurecli-interactive
 az vmss start --resource-group myResourceGroup --name myScaleSet --instance-ids 1
 ```
 
 ### <a name="restart-vm-instances-in-a-scale-set"></a>重启规模集中的 VM 实例
-若要在规模集中重启一个或多个 VM 实例，请使用 [az vmss restart](/cli/azure/vmss#az_vm_restart)。 可以通过 `--instance-ids` 参数指定一个或多个需要重启的 VM 实例。 若不指定实例 ID，则会重启规模集中的所有 VM 实例。 以下示例重启实例 *1*：
+若要在规模集中重启一个或多个 VM 实例，请使用 [az vmss restart](/cli/azure/vmss)。 可以通过 `--instance-ids` 参数指定一个或多个需要重启的 VM 实例。 若不指定实例 ID，则会重启规模集中的所有 VM 实例。 以下示例重启实例 *1*：
 
 ```azurecli-interactive
 az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-ids 1

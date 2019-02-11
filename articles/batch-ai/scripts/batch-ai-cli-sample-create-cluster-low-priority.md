@@ -14,14 +14,17 @@ ms.tgt-pltfrm: multiple
 ms.workload: na
 ms.date: 07/26/2018
 ms.author: danlep
-ms.openlocfilehash: 1fb21ab754e85dd347ff3bd66bafc2fadd95f8b1
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: e1a37104a5dc6e89b147c8bb9e14b4eda36d8eef
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44058084"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697843"
 ---
 # <a name="cli-example-create-and-manage-a-batch-ai-cluster-of-low-priority-nodes"></a>CLI 示例：创建和管理由低优先级节点组成的 Batch AI 群集
+
+[!INCLUDE [batch-ai-retiring](../../../includes/batch-ai-retiring.md)]
 
 此脚本演示了 Azure CLI 中可用的一些命令，这些命令可创建和管理由低优先级节点（虚拟机）组成的 Batch AI 群集。
 
@@ -54,8 +57,8 @@ az group delete --name batchaiautostorage
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az batchai workspace create](/cli/azure/batchai/workspace#az-batchai-workspace-create) | 创建 Batch AI 工作区。 |
 | [az batchai cluster create](/cli/azure/batchai/cluster#az-batchai-cluster-create) | 创建 Batch AI 群集。 |
-| [az batchai cluster show](/cli/azure/batchai/cluster#az-batchai-cluster-show) | 显示有关 Batch AI 群集的信息。 |
-| [az batchai cluster node list](/cli/azure/batchai/cluster/node#az-batchai-cluster-show) | 列出 Batch AI 群集中的节点。 |
+| [az batchai cluster show](/cli/azure/batchai/cluster) | 显示有关 Batch AI 群集的信息。 |
+| [az batchai cluster node list](/cli/azure/batchai/cluster/node) | 列出 Batch AI 群集中的节点。 |
 | [az batchai cluster resize](/cli/azure/batchai/cluster#az-batchai-cluster-resize) | 重设 Batch AI 群集大小。  |
 | [az group delete](/cli/azure/group#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
 

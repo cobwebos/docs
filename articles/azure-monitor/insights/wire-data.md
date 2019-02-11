@@ -10,17 +10,15 @@ ms.assetid: fc3d7127-0baa-4772-858a-5ba995d1519b
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 62d1ea2def4ef920ebaca20b06252bd86ec776a4
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 953f0d2652c328b32d9cc7bac239901075ff6c1b
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633209"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104703"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Log Analytics 中的 Wire Data 2.0（预览版）解决方案
 
@@ -35,7 +33,7 @@ ms.locfileid: "52633209"
 
 默认情况下，Log Analytics 从 Windows 和 Linux 中内置的计数器以及可以指定的其他性能计算器记录 CPU、内存和磁盘数据以及网络性能数据。 网络以及其他数据的收集针对每个代理实时执行，包括正在由计算机使用的子网和应用程序级协议。  Wire Data 查看应用程序层（而不是 TCP 传输层）的数据。  该解决方案不会查看单个 ACK 和 SYN。  完成握手后，该连接将被视作实时连接，并被标记为“已连接”。 只要双方同意开启套接字，并且数据可以在彼此之间来回传递，该实时连接就将保持不变。  只要有一方关闭连接，该连接就会被标记为“已断开连接”。  因此，它只对已成功完成数据包的带宽计数，而不会对重新发送或失败的数据包进行报告。
 
-如果使用过 [sFlow](http://www.sflow.org/) 或其他包含 [Cisco 的 NetFlow 协议](http://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html)的软件，则不会对来自线路数据的统计信息和数据感到陌生。
+如果使用过 [sFlow](http://www.sflow.org/) 或其他包含 [Cisco 的 NetFlow 协议](https://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html)的软件，则不会对来自线路数据的统计信息和数据感到陌生。
 
 一些内置的日志搜索查询类型包括：
 
@@ -61,8 +59,8 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 Dependency Agent �
 | **连接的源** | **支持** | **说明** |
 | --- | --- | --- |
 | Windows 代理 | 是 | Wire Data 从 Windows 代理计算机分析和收集数据。 <br><br> 除[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/platform/agent-windows.md)外，Windows 代理还需要 Microsoft Dependency Agent。 有关完整的操作系统版本列表，请参阅[支持的操作系统](../../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems)。 |
-| Linux 代理 | 是 | Wire Data 从 Linux 代理计算机分析和收集数据。<br><br> 除[适用于 Linux 的 Log Analytics 代理](../../log-analytics/log-analytics-quick-collect-linux-computer.md)外，Linux 代理还需要 Microsoft Dependency Agent。 有关完整的操作系统版本列表，请参阅[支持的操作系统](../../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems)。 |
-| System Center Operations Manager 管理组 | 是 | Wire Data 在所连接的 [System Center Operations Manager 管理组](../../log-analytics/log-analytics-om-agents.md)中从 Windows 和 Linux 代理分析和收集数据。 <br><br> 需要从 System Center Operations Manager 代理计算机直接连接到 Log Analytics。 |
+| Linux 代理 | 是 | Wire Data 从 Linux 代理计算机分析和收集数据。<br><br> 除[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/learn/quick-collect-linux-computer.md)外，Linux 代理还需要 Microsoft Dependency Agent。 有关完整的操作系统版本列表，请参阅[支持的操作系统](../../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems)。 |
+| System Center Operations Manager 管理组 | 是 | Wire Data 在所连接的 [System Center Operations Manager 管理组](../../azure-monitor/platform/om-agents.md)中从 Windows 和 Linux 代理分析和收集数据。 <br><br> 需要从 System Center Operations Manager 代理计算机直接连接到 Log Analytics。 |
 | Azure 存储帐户 | 否 | Wire Data 从代理计算机中收集数据，因此Wire Data 中没有从 Azure 存储收集的数据。 |
 
 在 Windows 中，System Center Operations Manager 和 Log Analytics 都可使用 Microsoft Monitoring Agent (MMA) 收集和发送数据。 根据上下文，可将此代理称为 System Center Operations Manager 代理、Log Analytics 代理、MMA 或直接代理。 System Center Operations Manager 和 Log Analytics 提供略有不同的 MMA 版本。 这些版本每个都可向 System Center Operations Manager 报告，或向 Log Analytics 报告，也可同时向两者报告。
@@ -237,7 +235,7 @@ InstallDependencyAgent-Windows.exe /?
 
 使用以下步骤在每台 Linux 计算机上安装依赖关系代理：
 
-1. 遵循[从托管在环境中的 Linux 计算机收集数据](../../log-analytics/log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key)所述步骤安装 Log Analytics 代理。
+1. 遵循[从托管在环境中的 Linux 计算机收集数据](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key)所述步骤安装 Log Analytics 代理。
 2. 使用上一部分中的链接下载 Linux 依赖关系代理，然后以 root 身份使用以下命令安装该代理：sh InstallDependencyAgent-Linux64.bin
 3. 如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 在 Linux 代理上，日志目录是：/var/opt/microsoft/dependency-agent/log。
 
@@ -361,7 +359,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 ## <a name="management-packs"></a>管理包
 
-在 Log Analytics 工作区中激活 Wire Data 时，将向该工作区中的所有 Windows 服务器发送 300KB 的管理包。 若在[连接的管理组](../../log-analytics/log-analytics-om-agents.md)中使用 System Center Operations Manager 代理，则会从 System Center Operations Manager 部署依赖关系监视器管理包。 如果代理是直接连接的，则 Log Analytics 会传送管理包。
+在 Log Analytics 工作区中激活 Wire Data 时，将向该工作区中的所有 Windows 服务器发送 300KB 的管理包。 若在[连接的管理组](../../azure-monitor/platform/om-agents.md)中使用 System Center Operations Manager 代理，则会从 System Center Operations Manager 部署依赖关系监视器管理包。 如果代理是直接连接的，则 Log Analytics 会传送管理包。
 
 管理包名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor。 它将写入到 %Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs。 管理包所使用的数据源是 %Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources&lt;AutoGeneratedID&gt;\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll。
 
@@ -451,4 +449,4 @@ rpm -e dependency-agent dependency-agent-connector
 
 ## <a name="next-steps"></a>后续步骤
 
-- [搜索日志](../../log-analytics/log-analytics-queries.md)以查看详细的线路数据搜索记录。
+- [搜索日志](../../azure-monitor/log-query/log-query-overview.md)以查看详细的线路数据搜索记录。

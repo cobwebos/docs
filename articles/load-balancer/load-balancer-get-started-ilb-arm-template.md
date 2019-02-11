@@ -1,5 +1,6 @@
 ---
-title: 创建内部负载均衡器 - Azure 模板 | Microsoft 文档
+title: 创建内部负载均衡器 - Azure 模板
+titlesuffix: Azure Load Balancer
 description: 了解如何在 Resource Manager 中使用模板创建内部负载均衡器
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: a65c43ac70bd4e423c28149a122d346519e73c9a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: d029de11c7101e961506f1fa46f5a71c6efb103e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412527"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044002"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>使用模板创建内部负载均衡器
 
@@ -78,3 +80,4 @@ ms.locfileid: "50412527"
 
 [配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)
 
+有关模板中负载均衡器的 JSON 语法和属性，请参阅 [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)。

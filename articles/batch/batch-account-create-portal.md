@@ -3,7 +3,7 @@ title: 在 Azure 门户中创建批处理帐户 | Microsoft Docs
 description: 了解如何在 Azure 门户中创建 Azure Batch 帐户，以便在云中运行大规模并行工作负荷
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/18/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dfaee72be883ee8902fe4550890d757f114ff932
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 89e41dc8e27cf39d9d0e6168dc7352267c321623
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426099"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460516"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>使用 Azure 门户创建 Batch 帐户
 
@@ -42,13 +42,13 @@ ms.locfileid: "39426099"
 
     ![创建批处理帐户][account_portal]
 
-    a. **帐户名称**：所选名称必须在创建帐户的 Azure 区域中唯一（参见下面的“位置”）。 帐户名只能包含小写字符或数字，且长度必须为 3-24 个字符。
+    a. **帐户名**：所选名称必须在创建帐户的 Azure 区域中唯一（参见下面的“位置”）。 帐户名只能包含小写字符或数字，且长度必须为 3-24 个字符。
 
-    b. **订阅**：要在其中创建批处理帐户的订阅。 如果只有一个订阅，则默认选择此项。
+    b. **订阅**：要在其中创建 Batch 帐户的订阅。 如果只有一个订阅，则默认选择此项。
 
-    c. **资源组**：为新批处理帐户选择现有的资源组，或选择创建一个新组。
+    c. **资源组**：为新 Batch 帐户选择现有的资源组，或选择创建一个新组。
 
-    d. **位置**：要在其中创建批处理帐户的 Azure 区域。 只有订阅和资源组支持的区域显示为选项。
+    d. **位置**：要在其中创建 Batch 帐户的 Azure 区域。 只有订阅和资源组支持的区域显示为选项。
 
     e. **存储帐户**（可选）：与 Batch 帐户关联的 Azure 存储帐户。 建议大多数批处理帐户采用此设置。 有关 Batch 中的存储帐户选项，请参阅 [Batch 功能概述](batch-api-basics.md#azure-storage-account)。 在门户中，选择一个现有存储帐户，或者选择创建一个新帐户。
 
@@ -91,11 +91,11 @@ ms.locfileid: "39426099"
 
     ![注册 Microsoft.Batch 提供程序][register_provider]
 
-1. 在“订阅”页中，选择“访问控制(IAM)” > “添加”。
+1. 在“订阅”页上，选择“访问控制(IAM)” > “角色分配” > “添加角色分配”。
 
     ![订阅访问控制][subscription_access]
 
-1. 在“添加权限”页上，选择“参与者”角色，然后搜索 Batch API。 搜索每一条字符串，直到找到此 API：
+1. 在“添加角色分配”页上，选择“参与者”角色，然后搜索 Batch API。 搜索每一条字符串，直到找到此 API：
     1. MicrosoftAzureBatch。
     1. Microsoft Azure Batch。 较新的 Azure AD 租户可能使用此名称。
     1. ddbf3205-c6bd-46ae-8127-60eb93363864 是此 Batch API 的 ID。 

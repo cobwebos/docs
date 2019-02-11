@@ -5,10 +5,10 @@ services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: 60836abf-f0e9-459d-b344-8e06b8341d25
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: identity-protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 5c2a37f3753292c6db847a4a9152bd4506f8fa5e
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 77e5b2e79906f4dc363e334f4f9630c7b4754fa4
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580476"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765581"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection 操作手册
 

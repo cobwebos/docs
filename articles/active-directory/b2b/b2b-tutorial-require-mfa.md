@@ -3,21 +3,21 @@ title: 教程：对 Azure AD B2B 来宾用户强制执行多重身份验证
 description: 了解如何在使用 Azure AD B2B 与外部用户和合作伙伴组织协作时要求进行多重身份验证 (MFA)。
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 34ca5667b5bf47bec8c48a7e5836b7d51ad08724
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 3e16b9d77a881c98ff0a5ee26f405a64561f5c75
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45986811"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080153"
 ---
-# <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>教程：对 B2B 来宾用户强制执行多重身份验证
+# <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>教程：对 B2B 用户强制执行多重身份验证
 
 在与 B2B 来宾用户协作时，最好使用多重身份验证 (MFA) 策略保护你的应用。 实施后，用户在访问你的资源时，不仅仅是要提供用户名和密码。 在 Azure Active Directory (Azure AD) 中，可通过要求 MFA 访问验证的条件访问策略实现此目标。 可在租户、应用或个人来宾用户级别上强制实施 MFA 策略，操作方式与为你自己的组织成员启用这些策略的方式相同。
 
@@ -137,6 +137,6 @@ ms.locfileid: "45986811"
 4.  选择测试用户，然后选择“删除用户”。
 5.  在左窗格中选择“Azure Active Directory”。
 6.  在“安全性”下，选择“条件访问”。
-7.  在“策略名称”列表中，为测试策略选择上下文菜单 (…)，然后选择“删除”。 请选择“是”进行确认。
+7.  在“策略名称”列表中，为测试策略选择上下文菜单 (…)，然后选择“删除”。 请选择“是”以确认。
 ## <a name="next-steps"></a>后续步骤
 在本教程中，你创建了一个条件访问策略，它要求来宾用户在登录你的某个云应用时使用 MFA。 要详细了解如何添加来宾用户进行协作，请参阅[在 Azure 门户中添加 Azure Active Directory B2B 协作用户](add-users-administrator.md)。

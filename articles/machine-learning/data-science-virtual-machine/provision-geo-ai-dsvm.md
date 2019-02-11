@@ -1,26 +1,27 @@
 ---
 title: 在 Azure 上预配地理人工智能虚拟机 - Azure | Microsoft Docs
-description: 如何预配 Azure 上的地理 AI 虚拟机。
+description: 了解如何创建和配置地理 AI Data Science Virtual Machine。 地理 AI Data Science Virtual Machine 提供使用地理数据创建 AI 和 ML 解决方案的工具。
 keywords: 深度学习, AI, 数据科学工具, 数据科学虚拟机, 地理空间分析
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: bdcf2662f2a81b145868cff92ecb7a2cb4d53046
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 47d5616f86c8f4cb62773d0b92a24a5fb63b2ea7
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239791"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240463"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>在 Azure 上预配地理人工智能虚拟机 
 
@@ -56,14 +57,14 @@ Geo-DSVM 包含用于人工智能的多个工具，包括：
 
       4. **订阅**：如果有多个订阅，请选择要在其上创建虚拟机并对其计费的订阅。
 
-      5. **资源组**：可以创建一个新资源组，也可以使用订阅中现有的**空** Azure 资源组。
+      5. **资源组**：可以创建一个新资源组，也可以使用订阅中现有的空 Azure 资源组。
 
-      6. **位置**：选择最适合的数据中心。 通常，最合适的数据中心应拥有大部分数据，或者最接近实际位置以实现最快的网络访问。 如果需要在 GPU 上进行深度学习，必须选择 Azure 中包含 NC 系列 GPU VM 实例的某个位置。 目前具有 GPU VM 的位置包括：**美国东部、美国中北部、美国中南部、美国西部 2、北欧、西欧**。 有关最新列表，请查看[“Azure 产品(按区域)”页](https://azure.microsoft.com/regions/services/)并在“计算”下查找“NC 系列”。 
+      6. **位置**：选择最合适的数据中心。 通常，最合适的数据中心应拥有大部分数据，或者最接近实际位置以实现最快的网络访问。 如果需要在 GPU 上进行深度学习，必须选择 Azure 中包含 NC 系列 GPU VM 实例的某个位置。 目前拥有 GPU VM 的位置是：美国东部、美国中北部、美国中南部、美国西部2、北欧、西欧。 有关最新列表，请查看[“Azure 产品(按区域)”页](https://azure.microsoft.com/regions/services/)并在“计算”下查找“NC 系列”。 
 
 
    - **设置**：如果计划在地理 DSVM 上的 GPU 上运行深度学习，请选择 NC 系列 GPU 虚拟机大小之一。 否则，可以选择基于 CPU 的实例之一。  为 VM 创建存储帐户。 
    
-   - **摘要**：检查输入的所有信息是否正确。
+   - **汇总**：验证输入的所有信息是否正确。
 
    - **购买**：单击“购买”开始预配。 此时会显示服务条款的链接。 除计算**大小**步骤中选择的服务器大小所产生的费用外，VM 没有任何其他费用。 
 

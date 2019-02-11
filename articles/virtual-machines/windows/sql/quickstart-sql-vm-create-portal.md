@@ -3,7 +3,7 @@ title: 在门户中创建SQL Server Windows VM | Microsoft Docs
 description: 本教程介绍如何在 Azure 门户中创建 Windows SQL Server 2017 虚拟机。
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
@@ -12,13 +12,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
-ms.author: jroth
-ms.openlocfilehash: aeeee58242a5f6ea41b9ba354efc4f5d5087151c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 234625825c1d9729d4f06f2bb0c96325cdd81f22
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38720118"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329338"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 SQL Server 2017 Windows 虚拟机
 
@@ -46,7 +47,7 @@ ms.locfileid: "38720118"
 
 1. 在搜索字段中键入“Windows Server 2016 上的 SQL Server 2017 Developer”，然后按 Enter。
 
-1. 选择“免费 SQL Server 许可证: Windows Server 2016 上的 SQL Server 2017 Developer”映像。
+1. 选择“免费 SQL Server 许可证：Windows Server 2016 上的 SQL Server 2017 Developer”映像。
 
    ![新搜索窗口](./media/quickstart-sql-vm-create-portal/newsearch.png)
 

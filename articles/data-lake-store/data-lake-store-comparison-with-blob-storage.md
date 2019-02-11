@@ -12,15 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: d24a268cf389dfe9dec914b2d27bbe8e466ea675
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 4bdebe415bcd86867bebeb7f03dc6dafa8480169
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737186"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259778"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>比较 Azure Data Lake Storage Gen1 与 Azure Blob 存储
+  >[!NOTE] 
+    >[Azure Data Lake Storage Gen2 预览版](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)已于近日推出。 Data Lake Storage Gen2 预览版是将我们现有的两个存储服务（Azure Blob 存储和 [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index)）的功能进行聚合得到的结果。 Azure Data Lake Storage Gen1 的功能（例如文件系统语义、文件级安全性和规模）与 [Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)的低成本分层存储、高可用性/灾难恢复功能进行了组合。 <br> 强烈建议你开始使用 Data Lake Storage Gen2 预览版作为构建企业 Data Lake 的基础，并充分利用 Azure Blob 存储和 Azure Data Lake Storage Gen1。
+
 本文中的表总结了 Azure Data Lake Storage Gen1 和 Azure Blob 存储在一些大数据处理的关键方面之间的差异。 Azure Blob 存储是一个常规用途和可扩展的对象存储，适用于多种存储方案。 Azure Data Lake Storage Gen1 是一个针对大数据分析工作负荷进行了优化的超大规模存储库。
+
+
+
+
 
 |  | Azure Data Lake Storage Gen1 | Azure Blob 存储 |
 | --- | --- | --- |

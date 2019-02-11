@@ -3,29 +3,33 @@ items:
   href: index.yml
 - name: SQL 数据库服务
   items:
-  - name: 什么是 SQL DB
+  - name: 什么是 SQL 数据库
     href: sql-database-technical-overview.md
   - name: 选择 Azure SQL 版本
     href: sql-database-paas-vs-sql-server-iaas.md
 - name: 快速入门
   items:
+  - name: 单一数据库快速入门指南
+    href: sql-database-single-database-quickstart-guide.md
+  - name: 托管实例快速入门指南
+    href: sql-database-managed-instance-quickstart-guide.md
   - name: 创建
     items:
     - name: 单一数据库
-      href: sql-database-get-started-portal.md
+      href: sql-database-single-database-get-started.md
     - name: 托管实例
       href: sql-database-managed-instance-get-started.md
   - name: 配置
     items:
-    - name: 逻辑服务器防火墙规则
-      href: sql-database-get-started-portal-firewall.md
-    - name: 客户端 VM 与托管实例的连接
+    - name: 服务器级别 IP 防火墙规则
+      href: sql-database-server-level-firewall-rule.md
+    - name: 与托管实例的客户端 VM 连接
       href: sql-database-managed-instance-configure-vm.md
     - name: 与托管实例的点到站点连接
       href: sql-database-managed-instance-configure-p2s.md
   - name: 加载数据
     items:
-    - name: 将 BACPAC 导入到单个数据库
+    - name: 将 BACPAC 导入到新的数据库
       href: sql-database-import.md
     - name: 将数据库备份还原到托管实例
       href: sql-database-managed-instance-get-started-restore.md
@@ -63,19 +67,27 @@ items:
   expanded: true
 - name: 教程
   items:
-  - name: 1 - 使用 SSMS 设计 DB
-    href: sql-database-design-first-database.md
-  - name: 2 - 使用 .NET 设计 DB
-    href: sql-database-design-first-database-csharp.md
-  - name: 3 - 使用 DMS 迁移到单个 Azure SQL 数据库
-    href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
-  - name: 4 - 保护 SQL DB
-    href: sql-database-security-tutorial.md
-  - name: 5 - 实现地理分散的数据库
+  - name: 设计 Azure SQL 数据库
+    items:
+    - name: 使用 SSMS 设计数据库
+      href: sql-database-design-first-database.md
+    - name: 使用 .NET 设计数据库
+      href: sql-database-design-first-database-csharp.md
+  - name: 迁移到 Azure SQL 数据库
+    items:
+    - name: 使用 DMS 迁移到单一/共用数据库
+      href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
+    - name: 使用 DMS 迁移到托管实例
+      href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
+  - name: Azure SQL 数据库中的安全性
+    items:
+    - name: 单一数据库安全性
+      href: sql-database-security-tutorial.md
+    - name: 使用 Azure AD 登录名实现托管实例安全性
+      href: sql-database-managed-instance-aad-security-tutorial.md
+  - name: 实现地理分散的数据库
     href: sql-database-implement-geo-distributed-database.md
-  - name: 6 - 使用 DMS 迁移到托管实例
-    href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
-  - name: 7 - 设置 Azure SQL 数据同步
+  - name: 设置 Azure SQL 数据同步
     href: sql-database-get-started-sql-data-sync.md
 - name: 示例
   items:
@@ -85,6 +97,8 @@ items:
     href: sql-database-cli-samples.md
   - name: Azure PowerShell
     href: sql-database-powershell-samples.md
+  - name: Azure 资源管理器
+    href: sql-database-resource-manager-samples.md
 - name: 概念
   items:
   - name: 购买模型
@@ -97,85 +111,77 @@ items:
       href: sql-database-service-tiers-dtu.md
     - name: 为预留容量预付费
       href: sql-database-reserved-capacity.md
+    - name: 从高级 RS 服务层迁移
+      href: sql-database-service-tiers-prs.md
   - name: 计算和存储
     items:
     - name: 概述
       href: sql-database-service-tiers-general-purpose-business-critical.md
-    - name: 常规用途/标准
+    - name: 常规用途/标准服务层
       href: sql-database-service-tier-general-purpose.md
-    - name: 业务关键/高级
+    - name: 业务关键/高级服务层
       href: sql-database-service-tier-business-critical.md
-    - name: 超大规模
+    - name: 超大规模服务层
       href: sql-database-service-tier-hyperscale.md
     - name: 超大规模常见问题解答
       href: sql-database-service-tier-hyperscale-faq.md
   - name: 单一数据库
     items:
-    - name: 单一数据库
+    - name: 单个数据库概述
       href: sql-database-single-index.yml
-    - name: 创建和管理
+    - name: 单一数据库功能
+      href: sql-database-single-database.md
+    - name: 管理 API 参考
       href: sql-database-single-databases-manage.md
-    - name: 逻辑服务器
+    - name: T-SQL 的差异
+      href: sql-database-transact-sql-information.md
+    - name: 数据库服务器和资源
       items:
-      - name: 创建和管理
-        href: sql-database-logical-servers.md
-      - name: 资源限制
-        href: sql-database-resource-limits-logical-server.md
+      - name: 数据库服务器概述
+        href: sql-database-servers.md
+      - name: 数据库服务器资源限制
+        href: sql-database-resource-limits-database-server.md
       - name: 连接体系结构
         href: sql-database-connectivity-architecture.md
-      - name: T-SQL 的差异
-        href: sql-database-transact-sql-information.md
-      - name: 事务复制 - 单一数据库和弹性池
-        href: replication-to-sql-database.md
-    - name: 弹性池
+    - name: 单一数据库资源
       items:
-      - name: 弹性池
-        href: sql-database-elastic-pool.md
-      - name: 创建和管理
-        href: sql-database-elastic-pool-manage.md
+      - name: 基于虚拟核心的资源限制
+        href: sql-database-vcore-resource-limits-single-databases.md
+      - name: 基于 DTU 的资源限制
+        href: sql-database-dtu-resource-limits-single-databases.md
+      - name: 缩放资源
+        href: sql-database-single-database-scale.md
+  - name: 弹性池
+    items:
+    - name: 弹性池
+      href: sql-database-elastic-pool.md
+    - name: 弹性池资源
+      items:
       - name: 基于虚拟核心的资源限制
         href: sql-database-vcore-resource-limits-elastic-pools.md
       - name: 基于 DTU 的资源限制
         href: sql-database-dtu-resource-limits-elastic-pools.md
       - name: 缩放资源
         href: sql-database-elastic-pool-scale.md
-    - name: 基于虚拟核心的资源限制
-      href: sql-database-vcore-resource-limits-single-databases.md
-    - name: 基于 DTU 的资源限制
-      href: sql-database-dtu-resource-limits-single-databases.md
-    - name: 缩放资源
-      href: sql-database-single-database-scale.md
+    - name: 创建和管理
+      href: sql-database-elastic-pool-manage.md
   - name: 托管实例
     items:
-    - name: 托管实例
-      href: sql-database-managed-instance-index.yml
     - name: 托管实例概述
+      href: sql-database-managed-instance-index.yml
+    - name: 托管实例功能
       href: sql-database-managed-instance.md
-    - name: 创建和管理
+    - name: 管理 API 参考
       href: sql-database-managed-instance-create-manage.md
     - name: 资源限制
       href: sql-database-managed-instance-resource-limits.md
-    - name: VNet 集成
-      items:
-      - name: VNet 配置
-        href: sql-database-managed-instance-vnet-configuration.md
-      - name: 自定义 DNS
-        href: sql-database-managed-instance-custom-dns.md
-      - name: 同步网络配置
-        href: sql-database-managed-instance-sync-network-configuration.md
-      - name: 连接体系结构
-        href: sql-database-managed-instance-connectivity-architecture.md
-      - name: 管理终结点
-        href: sql-database-managed-instance-management-endpoint.md
-      - name: 连接应用程序
-        href: sql-database-managed-instance-connect-app.md
+    - name: 连接体系结构
+      href: sql-database-managed-instance-connectivity-architecture.md
     - name: T-SQL 的差异
       href: sql-database-managed-instance-transact-sql-information.md
-    - name: 事务复制
-      href: replication-with-sql-database-managed-instance.md
   - name: 平台即服务
     items:
-    - name: 平台即服务
+    - name: “平台即服务”概述
       href: sql-database-paas.yml
     - name: 业务连续性
       href: sql-database-business-continuity.md
@@ -184,19 +190,17 @@ items:
     - name: 自动备份
       href: sql-database-automated-backups.md
     - name: 长期备份保留
-      items:
-      - name: 长期备份保留
-        href: sql-database-long-term-retention.md
-      - name: 使用 Azure blob 存储进行配置
-        href: sql-database-long-term-backup-retention-configure.md
-      - name: 使用 Azure 保管库进行配置（已弃用）
-        href: sql-database-long-term-backup-retention-configure-vault.md
+      href: sql-database-long-term-retention.md
+    - name: 计划内维护事件
+      href: sql-database-planned-maintenance.md
     - name: 故障转移组和异地复制
       items:
-      - name: 故障转移组和异地复制
-        href: sql-database-geo-replication-overview.md
-      - name: 配置异地复制 - 门户
-        href: sql-database-geo-replication-portal.md
+      - name: 活动异地复制
+        href: sql-database-active-geo-replication.md
+      - name: 自动故障转移组
+        href: sql-database-auto-failover-group.md
+      - name: 配置活动异地复制 - 门户
+        href: sql-database-active-geo-replication-portal.md
       - name: 为副本配置安全性
         href: sql-database-geo-replication-security-config.md
     - name: 数据库恢复选项
@@ -209,33 +213,23 @@ items:
         href: sql-database-disaster-recovery.md
       - name: 恢复练习
         href: sql-database-disaster-recovery-drills.md
-    - name: 应用设计
-      items:
-      - name: 灾难恢复设计
-        href: sql-database-designing-cloud-solutions-for-disaster-recovery.md
-      - name: 弹性池设计
-        href: sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
-      - name: 应用升级设计
-        href: sql-database-manage-application-rolling-upgrade.md
   - name: 安全
     items:
-    - name: 安全
-      href: sql-database-security-index.yml
     - name: 安全概述
+      href: sql-database-security-index.yml
+    - name: 安全功能
       href: sql-database-security-overview.md
-    - name: 高级威胁防护
+    - name: 高级数据安全
       items:
-      - name: 高级威胁防护
-        href: sql-advanced-threat-protection.md
+      - name: 高级数据安全
+        href: sql-database-advanced-data-security.md
       - name: 数据发现和分类
         href: sql-database-data-discovery-and-classification.md
       - name: 漏洞评估
         href: sql-vulnerability-assessment.md
-      - name: 威胁检测 - SQL 数据库
-        href: sql-database-threat-detection.md
-      - name: 威胁检测 - 托管实例
-        href: sql-database-managed-instance-threat-detection.md
-    - name: 防火墙规则
+      - name: 威胁检测
+        href: sql-database-threat-detection-overview.md
+    - name: 服务器级别 IP 防火墙规则
       items:
       - name: 创建和管理
         href: sql-database-firewall-configure.md
@@ -250,31 +244,17 @@ items:
       - name: 登录名和用户
         href: sql-database-manage-logins.md
     - name: Azure AD 身份验证
-      items:
-      - name: Azure AD 身份验证
-        href: sql-database-aad-authentication.md
-      - name: 配置 Azure AD 身份验证
-        href: sql-database-aad-authentication-configure.md
-      - name: 条件性访问
-        href: sql-database-conditional-access.md
-      - name: 多重身份验证
-        href: sql-database-ssms-mfa-authentication.md
-      - name: 配置多重身份验证
-        href: sql-database-ssms-mfa-authentication-configure.md
+      href: sql-database-aad-authentication.md
     - name: 审核
       items:
-      - name: 审核 - 服务器、池和数据库
+      - name: 审核 - 单一数据库和弹性池
         href: sql-database-auditing.md
       - name: 审核 - 托管实例
         href: sql-database-managed-instance-auditing.md
       - name: 表审核（已弃用）
         href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
     - name: 动态数据掩码
-      items:
-      - name: 动态数据掩码
-        href: sql-database-dynamic-data-masking-get-started.md
-      - name: 配置掩码
-        href: sql-database-dynamic-data-masking-get-started-portal.md
+      href: sql-database-dynamic-data-masking-get-started.md
     - name: Always Encrypted
       items:
       - name: 使用证书存储
@@ -287,15 +267,11 @@ items:
         href: transparent-data-encryption-azure-sql.md
       - name: 将 TDE 与自带密钥配合使用
         href: transparent-data-encryption-byok-azure-sql.md
-      - name: 为 TDE 配置 BYOK
-        href: transparent-data-encryption-byok-azure-sql-configure.md
-      - name: 轮换 TDE BYOK 密钥
-        href: transparent-data-encryption-byok-azure-sql-key-rotation.md
-      - name: 删除 TDE 保护器
-        href: transparent-data-encryption-byok-azure-sql-remove-tde-protector.md
-  - name: 弹性的可伸缩性
+  - name: 可伸缩性
     items:
-    - name: 资源可伸缩性
+    - name: 可伸缩性概述
+      href: sql-database-scalability-index.yml
+    - name: 纵向扩展/缩减
       href: sql-database-scale-resources.md
     - name: 读取横向扩展
       href: sql-database-read-scale-out.md
@@ -303,30 +279,124 @@ items:
       items:
       - name: 数据库分片
         href: sql-database-elastic-scale-introduction.md
+      - name: 术语表
+        href: sql-database-elastic-scale-glossary.md
       - name: 弹性客户端库 - 合并
         href: sql-database-elastic-database-client-library.md
-      - name: 升级弹性数据库客户端库
-        href: sql-database-elastic-scale-upgrade-client-library.md
       - name: 分片映射
         href: sql-database-elastic-scale-shard-map-management.md
       - name: 查询路由
         href: sql-database-elastic-scale-data-dependent-routing.md
       - name: 管理凭据
         href: sql-database-elastic-scale-manage-credentials.md
-      - name: 分片查询
-        href: sql-database-elastic-scale-multishard-querying.md
-      - name: 弹性工具
-        href: sql-database-elastic-scale-glossary.md
       - name: 移动分片数据
         href: sql-database-elastic-scale-overview-split-and-merge.md
-      - name: 弹性客户端库 - Dapper
-        href: sql-database-elastic-scale-working-with-dapper.md
       - name: 弹性工具常见问题
         href: sql-database-elastic-scale-faq.md
+    - name: 弹性查询
+      href: sql-database-elastic-query-overview.md
+    - name: 弹性事务
+      href: sql-database-elastic-transactions-overview.md
+  - name: 监视和优化
+    items:
+    - name: 监视和优化概述
+      href: sql-database-monitoring-tuning-index.yml
+    - name: 监视和性能优化
+      href: sql-database-monitor-tune-overview.md
+    - name: 性能监视
+      items:
+      - name: 查询性能见解
+        href: sql-database-query-performance.md
+      - name: Azure SQL Analytics 监视
+        href: https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql
+      - name: 诊断遥测日志记录
+        href: sql-database-metrics-diag-logging.md
+    - name: 智能性能
+      items:
+      - name: 自动优化
+        href: sql-database-automatic-tuning.md
+      - name: 针对性能的智能见解
+        href: sql-database-intelligent-insights.md
+      - name: 优化操作和建议
+        href: sql-database-performance.md
+      - name: 数据库顾问性能建议
+        href: sql-database-advisor.md
+  - name: 数据库功能
+    items:
+    - name: SQL 功能比较
+      href: sql-database-features.md
+    - name: 多模型功能
+      href: sql-database-multi-model-features.md
+    - name: 内存中
+      href: sql-database-in-memory.md
+    - name: 事务复制
+      href: sql-database-managed-instance-transactional-replication.md
+    - name: SQL 数据同步
+      href: sql-database-sync-data.md
+    - name: 临时表
+      href: sql-database-temporal-tables.md
+    - name: 作业自动化
+      href: sql-database-job-automation-overview.md
+    - name: 机器学习
+      items:
+      - name: 机器学习概述
+        href: sql-database-machine-learning-services-overview.md
+      - name: 主要区别
+        href: sql-database-machine-learning-services-differences.md
+- name: 操作指南
+  items:
+  - name: 概述
+    href: sql-database-howto.md
+  - name: 单一数据库
+    items:
+    - name: 概述
+      href: sql-database-howto-single-database.md
+    - name: 迁移到 SQL 数据库
+      href: sql-database-cloud-migrate.md
+    - name: 在迁移后管理 SQL 数据库
+      href: sql-database-manage-after-migration.md
+    - name: 配置复制
+      href: replication-to-sql-database.md
+    - name: 配置威胁检测
+      href: sql-database-threat-detection.md
+    - name: 使用 Azure Blob 存储配置备份保留
+      href: sql-database-long-term-backup-retention-configure.md
+    - name: 配置弹性数据库作业
+      href: elastic-jobs-overview.md
+    - name: 配置动态数据掩码
+      href: sql-database-dynamic-data-masking-get-started-portal.md
+    - name: 配置异地复制 - 门户
+      href: sql-database-geo-replication-portal.md
+    - name: 为异地副本配置安全性
+      href: sql-database-geo-replication-security-config.md
+    - name: 尝试内存中功能
+      href: sql-database-in-memory-sample.md
+    - name: 启用自动优化
+      href: sql-database-automatic-tuning-enable.md
+    - name: 启用自动优化的电子邮件通知
+      href: sql-database-automatic-tuning-email-notifications.md
+    - name: 应用性能建议
+      href: sql-database-advisor-portal.md
+    - name: 创建警报
+      href: sql-database-insights-alerts-portal.md
+    - name: 排查连接问题
+      href: sql-database-troubleshoot-common-connection-issues.md
+    - name: 使用 Azure 保管库（已弃用）配置备份保留
+      href: sql-database-long-term-backup-retention-configure-vault.md
+    - name: 管理文件空间
+      href: sql-database-file-space-management.md
+    - name: 使用资源运行状况排查连接问题
+      href: sql-database-resource-health.md
+    - name: 数据库分片
+      items:
+      - name: 升级弹性数据库客户端库
+        href: sql-database-elastic-scale-upgrade-client-library.md
       - name: 创建分片应用
         href: sql-database-elastic-scale-get-started.md
       - name: 查询水平分片数据
         href: sql-database-elastic-query-getting-started.md
+      - name: 多分片查询
+        href: sql-database-elastic-scale-multishard-querying.md
       - name: 移动分片数据
         href: sql-database-elastic-scale-configure-deploy-split-and-merge.md
       - name: 安全配置
@@ -341,148 +411,52 @@ items:
         href: sql-database-elastic-database-perf-counters.md
       - name: 使用实体框架
         href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
-  - name: SQL 功能比较
-    href: sql-database-features.md
-  - name: 监视和性能优化
-    items:
-    - name: 监视和优化概述
-      href: sql-database-monitor-tune-overview.md
-    - name: 智能性能
+      - name: 使用 Dapper 框架
+        href: sql-database-elastic-scale-working-with-dapper.md
+    - name: 查询分布式数据
       items:
-      - name: 优化顾问
-        items:
-        - name: 优化操作和建议
-          href: sql-database-performance.md
-        - name: 查询性能见解
-          href: sql-database-query-performance.md
-        - name: 数据库顾问性能建议
-          href: sql-database-advisor.md
-        - name: 应用性能建议
-          href: sql-database-advisor-portal.md
-      - name: 高级监视
-        items:
-        - name: Azure SQL Analytics 监视
-          href: https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql
-        - name: 诊断遥测日志记录
-          href: sql-database-metrics-diag-logging.md
-      - name: 自动进行故障排除
-        items:
-        - name: 针对性能的智能见解
-          href: sql-database-intelligent-insights.md
-        - name: 使用智能见解排查性能问题
-          href: sql-database-intelligent-insights-troubleshoot-performance.md
-        - name: 使用智能见解诊断日志
-          href: sql-database-intelligent-insights-use-diagnostics-log.md
-      - name: 自动优化
-        items:
-        - name: 自动优化概述
-          href: sql-database-automatic-tuning.md
-        - name: 启用自动优化
-          href: sql-database-automatic-tuning-enable.md
-        - name: 启用电子邮件通知
-          href: sql-database-automatic-tuning-email-notifications.md
-      - name: 智能查询处理
-        items:
-        - name: 智能查询处理
-          href: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json
-        - name: 自适应查询处理
-          href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
-    - name: 手动优化
-      items:
-      - name: 手动优化
-        href: sql-database-performance-guidance.md
-      - name: 使用 DMV 监视性能
-        href: sql-database-monitoring-with-dmvs.md
-      - name: 操作 Query Store
-        href: sql-database-operate-query-store.md
-      - name: 内存中
-        href: sql-database-in-memory-oltp-monitoring.md
-      - name: 扩展的事件
-        items:
-        - name: 扩展的事件
-          href: sql-database-xevent-db-diff-from-svr.md
-        - name: 扩展的事件 - 事件文件
-          href: sql-database-xevent-code-event-file.md
-        - name: 扩展的事件 - 环形缓冲区
-          href: sql-database-xevent-code-ring-buffer.md
-    - name: 创建警报
-      href: sql-database-insights-alerts-portal.md
-    - name: 排查连接问题
-      href: sql-database-troubleshoot-common-connection-issues.md
-    - name: Azure 自动化
-      href: sql-database-manage-automation.md
-  - name: 跨数据库操作
-    items:
-    - name: 弹性数据库作业
-      items:
-      - name: 弹性数据库作业
-        href: elastic-jobs-overview.md
-      - name: 创建和管理 (PowerShell)
-        href: elastic-jobs-powershell.md
-      - name: 创建和管理 (T-SQL)
-        href: elastic-jobs-tsql.md
-      - name: 迁移（从旧的弹性作业）
-        href: elastic-jobs-migrate.md
-      - name: 弹性作业（已弃用）
-        items:
-        - name: 弹性作业（已弃用）
-          href: sql-database-elastic-jobs-overview.md
-        - name: 安装弹性作业（已弃用）
-          href: sql-database-elastic-jobs-service-installation.md
-        - name: 创建作业 - 门户（已弃用）
-          href: sql-database-elastic-jobs-create-and-manage.md
-        - name: 创建作业 - Azure PowerShell（已弃用）
-          href: sql-database-elastic-jobs-powershell.md
-        - name: 创建作业 - 示例应用（已弃用）
-          href: sql-database-elastic-jobs-getting-started.md
-        - name: 卸载弹性作业（已弃用）
-          href: sql-database-elastic-jobs-uninstall.md
-    - name: 弹性查询
-      items:
-      - name: 弹性查询
-        href: sql-database-elastic-query-overview.md
       - name: 查询垂直分区的数据
         href: sql-database-elastic-query-getting-started-vertical.md
       - name: 跨横向扩展的数据层进行报告
         href: sql-database-elastic-query-horizontal-partitioning.md
       - name: 在具有不同架构的表中进行查询
         href: sql-database-elastic-query-vertical-partitioning.md
-    - name: 弹性事务
-      href: sql-database-elastic-transactions-overview.md
-  - name: 多租户 SaaS
+    - name: 弹性数据库作业
+      items:
+      - name: 创建和管理 (PowerShell)
+        href: elastic-jobs-powershell.md
+      - name: 创建和管理 (T-SQL)
+        href: elastic-jobs-tsql.md
+      - name: 迁移（从旧的弹性作业）
+        href: elastic-jobs-migrate.md
+  - name: 托管实例
     items:
-    - name: SaaS 设计模式
-      href: saas-tenancy-app-design-patterns.md
-    - name: SaaS 视频索引器
-      href: saas-tenancy-video-index-wingtip-brk3120-20171011.md
-    - name: SaaS 应用安全
-      href: saas-tenancy-elastic-tools-multi-tenant-row-level-security.md
-  - name: 开发数据库
-    items:
-    - name: 开发数据库
-      href: sql-database-develop-overview.md
-    - name: JSON 数据
-      href: sql-database-json-features.md
-    - name: 内存中
-      href: sql-database-in-memory.md
-    - name: 临时表
-      href: sql-database-temporal-tables.md
-    - name: 保留策略
-      href: sql-database-temporal-tables-retention-policy.md
-    - name: 配置“内存中”设置
-      href: sql-database-in-memory-oltp-migration.md
-- name: 操作指南
-  items:
-  - name: 迁移到 SQL 数据库
-    items:
-    - name: 迁移到 SQL 数据库
-      href: sql-database-cloud-migrate.md
+    - name: 概述
+      href: sql-database-howto-managed-instance.md
     - name: 迁移到托管实例
       href: sql-database-managed-instance-migrate.md
     - name: 将 TDE 证书迁移到托管实例
       href: sql-database-managed-instance-migrate-tde-certificate.md
-    - name: 在迁移后管理 SQL 数据库
-      href: sql-database-manage-after-migration.md
+    - name: 确定托管实例子网的大小
+      href: sql-database-managed-instance-determine-size-vnet-subnet.md
+    - name: 为托管实例创建新的 VNet 和子网
+      href: sql-database-managed-instance-create-vnet-subnet.md
+    - name: 为托管实例配置现有 VNet 和子网
+      href: sql-database-managed-instance-configure-vnet-subnet.md
+    - name: 配置自定义 DNS
+      href: sql-database-managed-instance-custom-dns.md
+    - name: 同步网络配置
+      href: sql-database-managed-instance-sync-network-configuration.md
+    - name: 查找管理终结点 IP 地址
+      href: sql-database-managed-instance-find-management-endpoint-ip-address.md
+    - name: 验证内置防火墙保护
+      href: sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md
+    - name: 事务复制
+      href: replication-with-sql-database-managed-instance.md
+    - name: 配置威胁检测
+      href: sql-database-managed-instance-threat-detection.md
+    - name: 连接应用程序
+      href: sql-database-managed-instance-connect-app.md
   - name: 加载和移动数据
     items:
     - name: 在 Azure 内复制 DB
@@ -493,8 +467,6 @@ items:
       href: sql-database-export.md
     - name: 数据同步
       items:
-      - name: SQL 数据同步
-        href: sql-database-sync-data.md
       - name: 数据同步代理
         href: sql-database-data-sync-agent.md
       - name: 复制架构更改
@@ -509,14 +481,56 @@ items:
       href: sql-database-load-from-csv-with-bcp.md
     - name: 使用 ADF 加载数据
       href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
-  - name: 管理文件空间
-    href: sql-database-file-space-management.md
-  - name: 使用资源运行状况排查连接问题
-    href: sql-database-resource-health.md
+  - name: 监视和优化数据库
+    items:
+    - name: 手动优化
+      href: sql-database-performance-guidance.md
+    - name: 使用 DMV 监视性能
+      href: sql-database-monitoring-with-dmvs.md
+    - name: 使用查询存储监视性能
+      href: sql-database-operate-query-store.md
+    - name: 使用智能见解排查性能问题
+      href: sql-database-intelligent-insights-troubleshoot-performance.md
+    - name: 使用智能见解诊断日志
+      href: sql-database-intelligent-insights-use-diagnostics-log.md
+    - name: 监视内存中 OLTP 空间
+      href: sql-database-in-memory-oltp-monitoring.md
+    - name: 扩展的事件
+      items:
+      - name: 扩展的事件
+        href: sql-database-xevent-db-diff-from-svr.md
+      - name: 扩展的事件 - 事件文件
+        href: sql-database-xevent-code-event-file.md
+      - name: 扩展的事件 - 环形缓冲区
+        href: sql-database-xevent-code-ring-buffer.md
+  - name: 配置功能
+    items:
+    - name: 配置 Azure AD 身份验证
+      href: sql-database-aad-authentication-configure.md
+    - name: 条件性访问
+      href: sql-database-conditional-access.md
+    - name: 多重 AAD 身份验证
+      href: sql-database-ssms-mfa-authentication.md
+    - name: 配置多重身份验证
+      href: sql-database-ssms-mfa-authentication-configure.md
+    - name: 配置时态保留策略
+      href: sql-database-temporal-tables-retention-policy.md
+    - name: 为 TDE 配置 BYOK
+      href: transparent-data-encryption-byok-azure-sql-configure.md
+    - name: 轮换 TDE BYOK 密钥
+      href: transparent-data-encryption-byok-azure-sql-key-rotation.md
+    - name: 删除 TDE 保护器
+      href: transparent-data-encryption-byok-azure-sql-remove-tde-protector.md
+    - name: 配置内存中 OLTP
+      href: sql-database-in-memory-oltp-migration.md
+    - name: Azure 自动化
+      href: sql-database-manage-automation.md
   - name: 开发应用
     items:
-    - name: 连接
-      href: sql-database-libraries.md
+    - name: 概述
+      href: sql-database-develop-overview.md
+    - name: 处理 JSON 数据
+      href: sql-database-json-features.md
     - name: 使用 Spark 连接器
       href: sql-database-spark-connector.md
     - name: 应用身份验证
@@ -537,60 +551,82 @@ items:
       href: sql-database-develop-cplusplus-simple.md
     - name: Excel
       href: sql-database-connect-excel.md
-  - name: 多租户 SaaS 示例应用程序
+    - name: Java
+      items:
+      - name: 使用 Spring Data JDBC
+        href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-sql-server
+      - name: 使用 Spring Data JPA
+        href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-sql-server
+  - name: 设计应用程序
     items:
-    - name: Wingtip Tickets 示例
-      href: saas-tenancy-welcome-wingtip-tickets-app.md
-    - name: 一般指南
-      href: saas-tenancy-wingtip-app-guidance-tips.md
-    - name: 独立的应用程序
+    - name: 灾难恢复设计
+      href: sql-database-designing-cloud-solutions-for-disaster-recovery.md
+    - name: 弹性池设计
+      href: sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
+    - name: 应用升级设计
+      href: sql-database-manage-application-rolling-upgrade.md
+    - name: 多租户 SaaS
       items:
-      - name: 部署示例应用
-        href: saas-standaloneapp-get-started-deploy.md
-      - name: 预配租户
-        href: saas-standaloneapp-provision-and-catalog.md
-    - name: 每个租户一个数据库
-      items:
-      - name: 教程简介
-        href: saas-dbpertenant-wingtip-app-overview.md
-      - name: 部署示例应用
-        href: saas-dbpertenant-get-started-deploy.md
-      - name: 预配租户
-        href: saas-dbpertenant-provision-and-catalog.md
-      - name: 监视数据库性能
-        href: saas-dbpertenant-performance-monitoring.md
-      - name: 使用 Log Anaytics 进行监视
-        href: saas-dbpertenant-log-analytics.md
-      - name: 还原一个租户
-        href: saas-dbpertenant-restore-single-tenant.md
-      - name: 管理租户架构
-        href: saas-tenancy-schema-management.md
-      - name: 跨租户报告
-        href: saas-tenancy-cross-tenant-reporting.md
-      - name: 租户分析
+      - name: SaaS 设计模式
+        href: saas-tenancy-app-design-patterns.md
+      - name: SaaS 视频索引器
+        href: saas-tenancy-video-index-wingtip-brk3120-20171011.md
+      - name: SaaS 应用安全
+        href: saas-tenancy-elastic-tools-multi-tenant-row-level-security.md
+      - name: 多租户 SaaS 示例应用程序
         items:
-        - name: 使用 SQL DB
-          href: saas-tenancy-tenant-analytics.md
-        - name: 使用 SQL DW
-          href: saas-tenancy-tenant-analytics-adf.md
-      - name: 使用异地还原进行灾难恢复
-        href: saas-dbpertenant-dr-geo-restore.md
-      - name: 使用数据库异地复制进行灾难恢复
-        href: saas-dbpertenant-dr-geo-replication.md
-    - name: 多租户数据库
-      items:
-      - name: 部署示例应用
-        href: saas-multitenantdb-get-started-deploy.md
-      - name: 预配租户
-        href: saas-multitenantdb-provision-and-catalog.md
-      - name: 监视数据库性能
-        href: saas-multitenantdb-performance-monitoring.md
-      - name: 运行临时查询
-        href: saas-multitenantdb-adhoc-reporting.md
-      - name: 管理租户架构
-        href: saas-multitenantdb-schema-management.md
-      - name: 用于分析的 ETL
-        href: saas-multitenantdb-tenant-analytics.md
+        - name: Wingtip Tickets 示例
+          href: saas-tenancy-welcome-wingtip-tickets-app.md
+        - name: 一般指南
+          href: saas-tenancy-wingtip-app-guidance-tips.md
+        - name: 单一应用程序
+          items:
+          - name: 部署示例应用
+            href: saas-standaloneapp-get-started-deploy.md
+          - name: 预配租户
+            href: saas-standaloneapp-provision-and-catalog.md
+        - name: 每个租户一个数据库
+          items:
+          - name: 教程简介
+            href: saas-dbpertenant-wingtip-app-overview.md
+          - name: 部署示例应用
+            href: saas-dbpertenant-get-started-deploy.md
+          - name: 预配租户
+            href: saas-dbpertenant-provision-and-catalog.md
+          - name: 监视数据库性能
+            href: saas-dbpertenant-performance-monitoring.md
+          - name: 使用 Log Anaytics 进行监视
+            href: saas-dbpertenant-log-analytics.md
+          - name: 还原一个租户
+            href: saas-dbpertenant-restore-single-tenant.md
+          - name: 管理租户架构
+            href: saas-tenancy-schema-management.md
+          - name: 跨租户报告
+            href: saas-tenancy-cross-tenant-reporting.md
+          - name: 租户分析
+            items:
+            - name: 使用 SQL DB
+              href: saas-tenancy-tenant-analytics.md
+            - name: 使用 SQL DW
+              href: saas-tenancy-tenant-analytics-adf.md
+        - name: 使用异地还原进行灾难恢复
+          href: saas-dbpertenant-dr-geo-restore.md
+        - name: 使用数据库异地复制进行灾难恢复
+          href: saas-dbpertenant-dr-geo-replication.md
+      - name: 多租户数据库
+        items:
+        - name: 部署示例应用
+          href: saas-multitenantdb-get-started-deploy.md
+        - name: 预配租户
+          href: saas-multitenantdb-provision-and-catalog.md
+        - name: 监视数据库性能
+          href: saas-multitenantdb-performance-monitoring.md
+        - name: 运行临时查询
+          href: saas-multitenantdb-adhoc-reporting.md
+        - name: 管理租户架构
+          href: saas-multitenantdb-schema-management.md
+        - name: 用于分析的 ETL
+          href: saas-multitenantdb-tenant-analytics.md
 - name: 引用
   items:
   - name: Azure PowerShell
@@ -613,6 +649,8 @@ items:
     href: /sql/t-sql/language-reference
   - name: REST
     href: /rest/api/sql/
+  - name: 用于 SQL 的资源管理器模板
+    href: /azure/templates/microsoft.sql/allversions
   - name: SQL Server 工具
     href: /sql/tools/overview-sql-tools
   - name: SQL Server Management Studio (SSMS)
@@ -638,12 +676,12 @@ items:
       href: /sql/connect/odbc/microsoft-odbc-driver-for-sql-server
 - name: 资源
   items:
+  - name: 术语词汇表
+    href: sql-database-glossary-terms.md
   - name: 利用 Microsoft Learn 掌握技能
     href: /learn/browse/?products=azure-sql-database
   - name: Azure 路线图
     href: https://azure.microsoft.com/roadmap/
-  - name: 常见问题解答
-    href: sql-database-faq.md
   - name: 公共数据集
     href: sql-database-public-data-sets.md
   - name: 排查连接问题
@@ -662,9 +700,23 @@ items:
     href: /azure/architecture/
   - name: 客户案例
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 8c32468bf7b21cd2545f85226758879cc5b657e8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+  - name: 弹性作业（已弃用）
+    items:
+    - name: 弹性作业（已弃用）
+      href: sql-database-elastic-jobs-overview.md
+    - name: 安装弹性作业（已弃用）
+      href: sql-database-elastic-jobs-service-installation.md
+    - name: 创建作业 - 门户（已弃用）
+      href: sql-database-elastic-jobs-create-and-manage.md
+    - name: 创建作业 - Azure PowerShell（已弃用）
+      href: sql-database-elastic-jobs-powershell.md
+    - name: 创建作业 - 示例应用（已弃用）
+      href: sql-database-elastic-jobs-getting-started.md
+    - name: 卸载弹性作业（已弃用）
+      href: sql-database-elastic-jobs-uninstall.md
+ms.openlocfilehash: 9b11a1bd8cc68aabc8881636d5fcdfe5cbaec034
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961971"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960541"

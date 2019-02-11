@@ -1,5 +1,5 @@
 ---
-title: 认知搜索文档资源（Azure 搜索）| Microsoft 文档
+title: 认知搜索文档资源 - Azure 搜索
 description: 与 Azure 搜索中的认知搜索工作负载相关的文章、教程、示例和博客文章的批注列表。
 services: search
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: heidist
-ms.openlocfilehash: bad73d2bf8bdf4adee4ce6e40550e506a35a2083
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.custom: seodec2018
+ms.openlocfilehash: 609b5d990cffce10733f6fc82e6b1032ad0f06bb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165657"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314595"
 ---
 # <a name="documentation-resources-for-cognitive-search-workloads"></a>认知搜索工作负载的文档资源
 

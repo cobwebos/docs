@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 XaitPorter 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 XaitPorter 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 XaitPorter 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: d33c7cb7-0550-425b-882a-619a713a71b7
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 12fb8e5b2b940c48de766a48f59ed0cc342b5356
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: fe89b64fb5f188591ce123e8ed7ed410d3c5ab48
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421060"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170039"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>教程：Azure Active Directory 与 XaitPorter 集成
 
@@ -183,7 +183,7 @@ ms.locfileid: "39421060"
  
 ### <a name="create-a-xaitporter-test-user"></a>创建 XaitPorter 测试用户
 
-本部分的内容是在 XaitPorter 中创建名为“Britta Simon”的用户。 请与 [XaitPorter 客户端支持团队](https://www.xait.com/support/)协作，在 XaitPorter 平台中添加用户。 使用单一登录前，必须先创建并激活用户。 
+本部分的内容是在 XaitPorter 中创建名为“Britta Simon”的用户。 与  [XaitPorter 客户端支持团队](https://www.xait.com/support/) 协作，将用户添加到 XaitPorter 平台中。 使用单一登录前，必须先创建并激活用户。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -220,12 +220,12 @@ ms.locfileid: "39421060"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“XaitPorter”磁贴时，应会自动登录到 XaitPorter 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

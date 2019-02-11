@@ -1,22 +1,24 @@
 ---
-title: 如何使用 Azure 机器学习 CLI 扩展
+title: 机器学习 CLI 扩展
+titleSuffix: Azure Machine Learning service
 description: 了解适用于 Azure CLI 的 Azure 机器学习的机器学习 CLI 扩展。 Azure CLI 是一个跨平台命令行实用工具，可让你使用 Azure 云中的资源。 借助该机器学习扩展可以使用 Azure 机器学习服务。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 09/24/2018
-ms.openlocfilehash: 13d09471191deed670db97a9f18e15bc9577dd1a
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: d7baa4faf718852e5bddd89f99e4ffc1248a403c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713412"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249725"
 ---
-# <a name="use-the-azure-machine-learning-cli-extension"></a>使用 Azure 机器学习 CLI 扩展
+# <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>将 CLI 扩展用于 Azure 机器学习服务
 
 Azure 机器学习 CLI 是 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)（适用于 Azure 平台的跨平台命令行接口）的一个扩展。 借助此扩展提供的命令，可以从命令行使用 Azure 机器学习服务。 它允许创建用于自动化机器学习工作流的脚本。 例如，可以创建用于执行以下操作的脚本：
 
@@ -40,17 +42,17 @@ CLI 不能取代 Azure 机器学习 SDK。 它是一个经过优化的补充工�
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
 
-> [!NOTE]
-> 若要使用 CLI，必须拥有 Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://aka.ms/AMLfree)。
+* 若要使用 CLI，必须拥有 Azure 订阅。 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
+
+* [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
 
 ## <a name="install-the-extension"></a>安装扩展
 
 若要安装机器学习 CLI 扩展，请使用以下命令：
 
 ```azurecli-interactive
-az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-0.1.68-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
+az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-1.0.6-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
 ```
 
 出现提示时，选择 `y` 安装该扩展。
@@ -79,22 +81,33 @@ az extension remove -n azure-cli-ml
 
 + 创建 Azure 机器学习服务工作区：
 
-   ```azurecli-interactive
-   az ml workspace create -n myworkspace -g myresourcegroup
-   ```
+    ```azurecli-interactive
+    az ml workspace create -n myworkspace -g myresourcegroup
+    ```
 
 + 设置默认工作区：
 
-   ```azurecli-interactive
-   az configure --defaults aml_workspace=myworkspace group=myresourcegroup
-   ```
+    ```azurecli-interactive
+    az configure --defaults aml_workspace=myworkspace group=myresourcegroup
+    ```
 
-+ 创建 DSVM（数据科学 VM）。 还可以创建用于分布式训练的 BatchAI 群集或用于部署的 AKS 群集。
++ 为分布式定型创建托管的计算目标：
 
+    ```azurecli-interactive
+    az ml computetarget create amlcompute -n mycompute --max_nodes 4 --size Standard_NC6
+    ```
 
-  ```azurecli-interactive
-  az ml computetarget setup dsvm -n mydsvm
-  ```
+* 更新托管的计算目标：
+
+    ```azurecli-interactive
+    az ml computetarget update --name mycompute --workspace –-group --max_nodes 4 --min_nodes 2 --idle_time 300
+    ```
+
+* 附加非托管计算目标以进行定型或部署：
+
+    ```azurecli-interactive
+    az ml computetarget attach aks -n myaks -i myaksresourceid -g myrg -w myworkspace
+    ```
 
 ## <a name="experiments"></a>试验
 
@@ -106,11 +119,15 @@ az extension remove -n azure-cli-ml
     az ml project attach --experiment-name myhistory
     ```
 
-* 开始运行试验。 使用此命令时，请指定计算目标。 在此示例中，`local` 使用本地计算机通过 `train.py` 脚本训练模型：
+* 开始运行试验。 使用此命令时，请指定包含运行配置的 `.runconfig` 文件的名称。 计算目标使用运行配置来为模型创建训练环境。 在此示例中，运行配置是从 `./aml_config/myrunconfig.runconfig` 文件加载的。
 
     ```azurecli-interactive
-    az ml run submit -c local train.py
+    az ml run submit -c myrunconfig train.py
     ```
+
+    在使用 `az ml project attach` 命令附加项目时会创建名为 `docker.runconfig` 和 `local.runconfig` 的默认 `.runconfig` 文件。 在使用它们来训练模型之前可能需要修改它们。 
+
+    还可以使用 [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) 类以编程方式创建运行配置。 在创建后，可以使用 `save()` 方法来创建 `.runconfig` 文件。
 
 * 查看提交的试验列表：
 

@@ -1,6 +1,6 @@
 ---
-title: Azure 安全中心中的恰时虚拟机访问 | Microsoft Docs
-description: 本文档说明 Azure 安全中心中的恰时 VM 访问可以如何帮助你控制对 Azure 虚拟机的访问。
+title: Azure 安全中心中的实时虚拟机访问 | Microsoft Docs
+description: 本文档说明 Azure 安全中心中的实时 VM 访问如何帮助你控制对 Azure 虚拟机的访问。
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2018
+ms.date: 12/4/2018
 ms.author: rkarlin
-ms.openlocfilehash: 72acf0f06bbed0129ff322b10a7faf16fd94f712
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5c42c0d5597e1e14bbb7814ad635abcd086db804
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314739"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339036"
 ---
-# <a name="manage-virtual-machine-access-using-just-in-time"></a>使用恰时功能管理虚拟机访问
+# <a name="manage-virtual-machine-access-using-just-in-time"></a>使用实时功能管理虚拟机访问
 
-恰时虚拟机 (VM) 访问可以用来锁定发往 Azure VM 的入站流量，降低遭受攻击的可能性，同时在需要时还允许轻松连接到 VM。
+实时 (JIT) 虚拟机访问可用来锁定发往 Azure VM 的入站流量，降低遭受攻击的可能性，同时在需要时还可轻松连接到 VM。
 
 > [!NOTE]
 > 实时功能在安全中心的标准层上可用。  若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。
@@ -34,87 +34,102 @@ ms.locfileid: "52314739"
 
 暴力攻击通常以攻击管理端口为手段来获取对 VM 的访问权限。 如果成功，则攻击者可以获得对 VM 的控制权并建立通向你的环境的据点。
 
-降低遭受暴力攻击的可能性的一种方法是限制端口处于打开状态的时间量。 管理端口不需要始终处于打开状态。 它们只需要在特定的时间打开，例如在你连接到 VM 来执行管理或维护任务时。 当启用了恰时功能时，安全中心会使用[网络安全组](../virtual-network/security-overview.md#security-rules) (NSG) 规则，这些规则将限制对管理端口的访问以使其不会成为攻击者的目标。
+降低遭受暴力攻击的可能性的一种方法是限制端口处于打开状态的时间量。 管理端口不需要始终处于打开状态。 它们只需要在特定的时间打开，例如在你连接到 VM 来执行管理或维护任务时。 如果启用了实时功能，安全中心会使用[网络安全组](../virtual-network/security-overview.md#security-rules) (NSG) 规则，这些规则将限制对管理端口的访问以使其不会成为攻击者的目标。
 
-![恰时方案][1]
+![实时方案](./media/security-center-just-in-time/just-in-time-scenario.png)
 
-## <a name="how-does-just-in-time-access-work"></a>恰时访问的工作原理是怎样的？
+## <a name="how-does-jit-access-work"></a>JIT 如何访问工作？
 
-当启用了恰时访问时，安全中心会通过创建 NSG 规则来锁定发往 Azure VM 的入站流量。 你需要选择要锁定 VM 上的哪些端口的入站流量。 这些端口将受恰时解决方案控制。
+如果启用了实时访问，安全中心会通过创建 NSG 规则来锁定发往 Azure VM 的入站流量。 你需要选择要锁定 VM 上的哪些端口的入站流量。 这些端口将受实时解决方案控制。
 
-当用户请求访问 VM 时，安全中心会检查该用户是否具有为 VM 提供写入访问的[基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 权限。 如果用户具有写入权限，则会批准请求并且安全中心会自动将网络安全组 (NSG) 配置为：在你指定的时间内允许发往选定端口的入站流量。 在该时间到期后，安全中心会将 NSG 还原为以前的状态。 但是，那些已经建立的连接不会中断。
+当用户请求访问 VM 时，安全中心会检查该用户是否具有允许用户成功请求访问 VM 的[基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 权限。 如果请求获得批准，安全中心将自动配置网络安全组 (NSG)，以便在指定的时间内允许入站流量到达选定端口和请求的源 IP 地址或范围。 在该时间到期后，安全中心会将 NSG 还原为以前的状态。 但是，那些已经建立的连接不会中断。
 
 > [!NOTE]
-> 安全中心恰时 VM 访问当前仅支持通过 Azure 资源管理器部署的 VM。 若要了解有关经典部署模型和资源管理器部署模型的详细信息，请参阅 [Azure 资源管理器与经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
+> 安全中心实时 VM 访问当前仅支持通过 Azure 资源管理器部署的 VM。 若要了解有关经典部署模型和资源管理器部署模型的详细信息，请参阅 [Azure 资源管理器与经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
 >
 >
 
-## <a name="using-just-in-time-access"></a>使用恰时访问
+可通过以下方式访问 JIT：
+- [在 Azure 安全中心中使用 JIT 访问](#jit-asc)
+- [在 Azure VM 边栏选项卡中使用 JIT 访问](#jit-vm)
+
+## 在 Azure 安全中心中使用 JIT 访问<a name="jit-asc"></a>
 
 1. 打开“安全中心”仪表板。
 
-2. 在左侧窗格中，选择“恰时 VM 访问”。
+2. 在左侧窗格中，选择“实时 VM 访问”。
 
-![“恰时 VM 访问”磁贴][2]
+![实时 VM 访问磁贴](./media/security-center-just-in-time/just-in-time.png)
 
-“恰时 VM 访问”窗口随即打开。
+“实时 VM 访问”窗口随即打开。
 
-![“恰时 VM 访问”磁贴][10]
+![实时 VM 访问磁贴](./media/security-center-just-in-time/just-in-time-access.png)
 
-“恰时 VM 访问”提供 VM 的状态信息：
+“实时 VM 访问”提供 VM 的状态信息：
 
-- **已配置** - 已配置为支持恰时 VM 访问的 VM。 提供的数据是针对过去一周的，并且针对每个 VM 包括了已批准的请求数、上次访问日期和时间以及上一个用户。
-- **推荐** - 可以支持恰时 VM 访问但尚未配置此功能的 VM。 建议为这些 VM 启用恰时 VM 访问控制。 请参阅[配置恰时访问策略](#configuring-a-just-in-time-access-policy)。
+- **已配置** - 已配置为支持实时 VM 访问的 VM。 提供的数据是针对过去一周的，并且针对每个 VM 包括了已批准的请求数、上次访问日期和时间以及上一个用户。
+- **推荐** - 可以支持实时 VM 访问但尚未配置此功能的 VM。 建议为这些 VM 启用实时 VM 访问控制。 请参阅[配置实时访问策略](#jit-config)。
 - **不推荐** - 导致不推荐某个 VM 的可能原因有：
-  - 缺少 NSG - 恰时解决方案需要 NSG 准备就绪。
-  - 经典 VM - 安全中心恰时 VM 访问当前仅支持通过 Azure 资源管理器部署的 VM。 恰时解决方案不支持经典部署。
-  - 其他 - 如果在订阅或资源组的安全策略中未开启恰时解决方案，或者 VM 缺少公共 IP 且没有已准备就绪的 NSG，则该 VM 将位于此类别中。
+  - 缺少 NSG - 实时解决方案需要 NSG 准备就绪。
+  - 经典 VM - 安全中心实时 VM 访问当前仅支持通过 Azure 资源管理器部署的 VM。 实时解决方案不支持经典部署。
+  - 其他 - 如果在订阅或资源组的安全策略中未开启实时解决方案，或者 VM 缺少公共 IP 且没有已准备就绪的 NSG，则该 VM 将位于此类别中。
 
-## <a name="configuring-a-just-in-time-access-policy"></a>配置恰时访问策略
+### 配置 JIT 访问策略<a name="jit-config"></a>
 
 选择要启用的 VM：
 
-1. 在“恰时 VM 访问”下，选择“推荐”选项卡。
+1. 在“实时 VM 访问”下，选择“推荐”选项卡。
 
-  ![启用恰时访问][3]
+  ![启用实时 VM 访问](./media/security-center-just-in-time/enable-just-in-time-access.png)
 
 2. 在“虚拟机”下，选择要启用的 VM。 这会在 VM 旁边放置一个复选标记。
 3. 选择“在 VM 上启用 JIT”。
+  1. 此边栏选项卡显示通过 Azure 安全中心建议的默认端口：
+     - 22 - SSH
+     - 3389 - RDP
+     - 5985 - WinRM 
+     - 5986 - WinRM
+  2. 此外还可以配置自定义端口。 要执行此操作，请选择“添加”。 
+  3. 在“添加端口配置”中，对于你选择配置的每个端口，无论是默认端口还是自定义端口，都可以自定义下列设置：
+    - **协议类型** - 批准某个请求时，此端口允许的协议。
+    - **允许的源 IP 地址** - 批准某个请求时，此端口允许的 IP 范围。
+    - **最大请求时间** - 可以打开特定端口的最大时间范围。
+
 4. 选择“保存”。
 
-### <a name="default-ports"></a>默认端口
-
-可以查看安全中心推荐为其启用恰时功能的默认端口。
-
-1. 在“恰时 VM 访问”下，选择“推荐”选项卡。
-
-  ![显示默认端口][6]
-
-2. 在“VM”下，选择一个 VM。 这会在该 VM 旁边放置一个复选标记并打开“JIT VM 访问配置”。 此边栏选项卡将显示默认端口。
-
-### <a name="add-ports"></a>添加端口
-
-在“JIT VM 访问配置”下，还可以添加并配置要启用恰时解决方案的新端口。
-
-1. 在“JIT VM 访问配置”下，选择“添加”。 这将打开“添加端口配置”。
-
-  ![端口配置][7]
-
-2. 在“添加端口配置”下，标识端口、协议类型、允许的源 IP 和最大请求时间。
-
-  允许的源 IP 是允许根据批准的请求获取访问权限的 IP 范围。
-
-  最大请求时间是特定端口可以处于打开状态的最大时间范围。
-
-3. 选择“确定”。
 
 > [!NOTE]
 >如果为 VM 启用 JIT VM 访问，Azure 安全中心将在与所选端口关联的网络安全组中为该端口创建拒绝所有入站通信规则。 规则在网络安全组中将具有最高优先级，或比其中的现有规则的优先级更低。 这取决于确定规则是否安全的 Azure 安全中心执行的分析。
 >
 
+### <a name="request-jit-access-to-a-vm"></a>请求 JIT 对 VM 的访问权限
 
-## <a name="set-just-in-time-within-a-vm"></a>在 VM 中设置实时访问
+若要请求对 VM 的访问权限，请执行以下操作：
+1.  在“实时 VM 访问”下，选择“配置”。
+2.  在“VM”下，选中要启用实时访问的 VM。
+3.  选择“请求访问权限”。 
+  ![请求对 VM 的访问权限](./media/security-center-just-in-time/request-access-to-a-vm.png)
+4.  在“请求访问”下，为每个 VM 配置要打开的端口、要为其打开该端口的源 IP 地址以及将打开该端口的时间范围。 只能请求对在实时策略中配置的端口的访问权限。 每个端口都有一个从实时策略派生的最大允许时间。
+5.  选择“打开端口”。
 
+> [!NOTE]
+> 如果请求访问的用户使用代理，则“我的 IP”选项可能无法使用。 可能需要定义组织的完整 IP 地址范围。
+
+### <a name="editing-a-jit-access-policy"></a>编辑 JIT 访问策略
+
+可以对 VM 的现有实时策略进行以下更改：添加并配置要保护该 VM 的新端口，或更改与已保护的端口相关的任何其他设置。
+
+编辑现有的 VM 实时策略：
+1. 在“已配置”选项卡中，在“VM”下，通过单击 VM 对应的行内的三个点来选择要为其添加端口的 VM。 
+2. 选择“编辑”。
+3. 在“JIT VM 访问配置”下，可以编辑已保护的端口的现有设置，也可以添加新的自定义端口。 有关详细信息，请参阅[配置实时访问策略](#jit-config)。 
+  ![jit vm 访问](./media/security-center-just-in-time/edit-policy.png)
+
+## 在 Azure VM 边栏选项卡中使用 JIT 访问<a name="jit-vm"></a>
+
+为方便起见，可直接从 Azure 的 VM 边栏选项卡中使用 JIT 连接到 VM。
+
+### <a name="configuring-a-just-in-time-access-policy"></a>配置实时访问策略 
 若要轻松地在 VM 间进行实时访问，可以将 VM 设置为仅允许从 VM 内直接进行实时访问。
 
 1. 在 Azure 门户中，选择“虚拟机”。
@@ -126,69 +141,38 @@ ms.locfileid: "52314739"
 
 - Windows 服务器：
     - RDP 端口 3389
-    - 3 小时访问
+    - 最长 3 小时的访问时间
     - 允许的源 IP 地址设置为“按请求”
 - Linux 服务器：
     - SSH 端口 22
-    - 3 小时访问
+    - 最长 3 小时的访问时间
     - 允许的源 IP 地址设置为“按请求”
      
 如果 VM 已启用实时访问，则在转到其配置页时，将看到实时访问已启用。可使用链接打开 Azure 安全中心中的策略，以便查看和更改设置。
 
 ![VM 中的 JIT 配置](./media/security-center-just-in-time/jit-vm-config.png)
 
+### <a name="requesting-jit-access-to-a-vm"></a>请求 JIT 对 VM 的访问权限
 
-## <a name="requesting-access-to-a-vm"></a>请求对 VM 的访问权限
+在 Azure 门户中，尝试连接到 VM 时，Azure 会检查是否在该 VM 上配置实时访问策略。
 
-若要请求对 VM 的访问权限，请执行以下操作：
+- 如果没有在 VM 上配置 JIT，将提示你配置 JIT 策略。
 
-1. 在“恰时 VM 访问”下，选择“配置”选项卡。
-2. 在“VM”下，选择要启用访问权限的 VM。 这会在 VM 旁边放置一个复选标记。
-3. 选择“请求访问权限”。 这将打开“请求访问权限”。
+  ![jit 提示](./media/security-center-just-in-time/jit-prompt.png)
 
-  ![请求对 VM 的访问权限][4]
+- 如果在 VM 上配置了 JIT 策略，则可以单击“请求访问”，以便根据 VM 的 JIT 策略集进行访问。
 
-4. 在“请求访问权限”下，为每个 VM 配置要打开的端口、要为其打开该端口的源 IP 以及将打开该端口的时间范围。 只能请求对在恰时策略中配置的端口的访问权限。 每个端口都有一个从恰时策略派生的最大允许时间。
-5. 选择“打开端口”。
+  ![jit 请求访问](./media/security-center-just-in-time/jit-request-access.png)
 
-> [!NOTE]
-> 当用户请求访问 VM 时，安全中心会检查该用户是否具有为 VM 提供写入访问的[基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 权限。 如果用户具有写入权限，则会批准请求。
->
->
-
-> [!NOTE]
-> 如果请求访问的用户使用代理，则“我的 IP”选项可能无法使用。 可能需要定义组织的完整范围。
->
->
-
-## <a name="editing-a-just-in-time-access-policy"></a>编辑恰时访问策略
-
-可以对 VM 的现有恰时策略进行以下更改：添加并配置要为该 VM 打开的新端口，或更改与已保护的端口相关的任何其他参数。
-
-若要编辑 VM 的现有恰时策略，需使用“推荐”选项卡：
-
-1. 在“VM”下，通过单击 VM 对应的行内的三个点来选择要为其添加端口的 VM。 这将打开一个菜单。
-2. 在菜单中选择“编辑”。 这将打开“JIT VM 访问配置”。
-
-  ![编辑策略][8]
-
-3. 在“JIT VM 访问配置”下，可以通过单击某个已保护的端口来编辑该端口的现有设置，也可以选择“添加”。 这将打开“添加端口配置”。
-
-  ![添加端口][7]
-
-4. 在“添加端口配置”下，标识端口、协议类型、允许的源 IP 和最大请求时间。
-5. 选择“确定”。
-6. 选择“保存”。
-
-## <a name="auditing-just-in-time-access-activity"></a>审核恰时访问活动
+## <a name="auditing-jit-access-activity"></a>审核 JIT 访问活动
 
 可以使用日志搜索深入了解 VM 活动。 若要查看日志，请执行以下操作：
 
-1. 在“恰时 VM 访问”下，选择“配置”选项卡。
+1. 在“实时 VM 访问”下，选择“已配置”选项卡。
 2. 在“VM”下，通过单击 VM 对应的行内的三个点来选择要查看其信息的 VM。 这将打开一个菜单。
 3. 在菜单中选择“活动日志”。 这将打开“活动日志”。
 
-  ![选择“活动日志”][9]
+  ![选择“活动日志”](./media/security-center-just-in-time/select-activity-log.png)
 
   “活动日志”提供了该 VM 的以前操作的经筛选视图以及时间、日期和订阅。
 
@@ -196,13 +180,35 @@ ms.locfileid: "52314739"
 
 修改筛选器并选择“应用”来创建搜索和日志。
 
-## <a name="using-just-in-time-vm-access-via-rest-apis"></a>通过 REST API 使用及时 VM 访问
 
-通过 Azure 安全中心 API 可以使用及时 VM 访问功能。 可以通过此 API 获取有关配置 VM 的信息、添加新的 VM、请求访问 VM 等。 若要详细了解及时 REST API，请参阅 [Jit Network Access Policies](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies)（Jit 网络访问策略）。
+## <a name="permissions-needed-to-configure-and-use-jit"></a>配置和使用 JIT 所需的权限
 
-## <a name="using-just-in-time-vm-access-via-powershell"></a>通过 PowerShell 使用恰时 VM 访问 
+设置这些必需权限，使用户能够为 VM 配置或编辑 JIT 策略。
 
-若要通过 PowerShell 使用实时 VM 访问解决方案，请使用正式的 Azure 安全中心 PowerShell cmdlet，具体为 `Set-AzureRmJitNetworkAccessPolicy`。
+将这些“操作”分配给角色： 
+-   与 VM 关联的订阅或资源组的作用域：
+   - Microsoft.Security/locations/jitNetworkAccessPolicies/write
+-    在订阅、资源组或 VM 的作用域：
+   - Microsoft.Compute/virtualMachines/write 
+
+设置这些权限，使用户能够成功请求 JIT 对 VM 的访问：将这些“操作”分配给用户：
+-   与 VM 关联的订阅或资源组的作用域：
+   - Microsoft.Security/locations/{the_location_of_the_VM}/jitNetworkAccessPolicies/ initiate/action
+-    在订阅、资源组或 VM 的作用域：
+   - Microsoft.Compute/virtualMachines/read
+
+
+
+## <a name="use-jit-programmatically"></a>以编程方式使用 JIT
+可通过 REST API 和 PowerShell 设置和使用实时功能。
+
+### <a name="using-just-in-time-vm-access-via-rest-apis"></a>通过 REST API 使用实时 VM 访问
+
+通过 Azure 安全中心 API 可使用实时 VM 访问功能。 可以通过此 API 获取有关配置 VM 的信息、添加新的 VM、请求访问 VM 等。 要详细了解实时 REST API，请参阅 [Jit Network Access Policies](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies)（JIT网络访问策略）。
+
+### <a name="using-jit-vm-access-via-powershell"></a>通过 PowerShell 使用 JIT VM 访问 
+
+要通过 PowerShell 使用实时 VM 访问解决方案，请使用正式的 Azure 安全中心 PowerShell cmdlet，具体为 `Set-AzureRmJitNetworkAccessPolicy`。
 
 下面的示例可对特定 VM 设置实时 VM 访问策略，并设置以下各项：
 1.  关闭端口 22 和 3389。
@@ -211,7 +217,7 @@ ms.locfileid: "52314739"
 
 在 PowerShell 中运行以下命令实现此目的：
 
-1.  分配变量，保存 VM 的实时 VM 访问策略:
+1.  分配变量，保存 VM 的实时 VM 访问策略：
 
         $JitPolicy = (@{
          id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
@@ -234,7 +240,7 @@ ms.locfileid: "52314739"
     
         Set-AzureRmJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
 
-### <a name="requesting-access-to-a-vm"></a>请求对 VM 的访问权限
+#### <a name="requesting-access-to-a-vm"></a>请求对 VM 的访问权限
 
 在以下示例中，可以看到对特定 VM 的实时 VM 访问请求，其中请求端口 22 为特定 IP 地址打开，并持续特定时间：
 
@@ -258,11 +264,11 @@ ms.locfileid: "52314739"
 
 
 ## <a name="next-steps"></a>后续步骤
-在本文中，你已了解了安全中心中的恰时 VM 访问如何帮助你控制对 Azure 虚拟机的访问。
+在本文中，你已了解了安全中心中的实时 VM 访问如何帮助你控制对 Azure 虚拟机的访问。
 
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
-- [设置安全策略](security-center-azure-policy.md) — 了解如何为 Azure 订阅和资源组配置安全策略。
+- [设置安全策略](tutorial-security-policy.md) — 了解如何为 Azure 订阅和资源组配置安全策略。
 - [管理安全建议](security-center-recommendations.md) — 了解建议如何帮助你保护 Azure 资源。
 - [安全运行状况监视](security-center-monitoring.md) — 了解如何监视 Azure 资源的运行状况。
 - [管理和响应安全警报](security-center-managing-and-responding-alerts.md) — 了解如何管理和响应安全警报。
@@ -270,15 +276,3 @@ ms.locfileid: "52314739"
 - [安全中心常见问题](security-center-faq.md) - 查找有关如何使用服务的常见问题。
 - [Azure 安全性博客](https://blogs.msdn.microsoft.com/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。
 
-
-<!--Image references-->
-[1]: ./media/security-center-just-in-time/just-in-time-scenario.png
-[2]: ./media/security-center-just-in-time/just-in-time.png
-[10]: ./media/security-center-just-in-time/just-in-time-access.png
-[3]: ./media/security-center-just-in-time/enable-just-in-time-access.png
-[4]: ./media/security-center-just-in-time/request-access-to-a-vm.png
-[5]: ./media/security-center-just-in-time/activity-log.png
-[6]: ./media/security-center-just-in-time/default-ports.png
-[7]: ./media/security-center-just-in-time/add-a-port.png
-[8]: ./media/security-center-just-in-time/edit-policy.png
-[9]: ./media/security-center-just-in-time/select-activity-log.png

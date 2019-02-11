@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6bcd2d299d3816c17265eef658ff1f01409828a1
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: a674ee52ae5e8f8f800d4584a53c808ceae70156
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632216"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435049"
 ---
 # <a name="run-apache-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>使用 Pig 命令 (SSH) 在基于 Linux 的群集上运行 Apache Pig 作业
 
@@ -22,7 +22,7 @@ ms.locfileid: "51632216"
 
 了解如何以交互方式通过 SSH 与 HDInsight 群集的连接运行 Apache Pig 作业。 可以使用 Pig Latin 编程语言来描述应用到输入数据以生成所需输出的转换。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 本文档中的步骤要求使用基于 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 ## <a id="ssh"></a>使用 SSH 进行连接
@@ -35,7 +35,7 @@ ssh sshuser@myhdinsight-ssh.azurehdinsight.net
 
 有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
-## <a id="pig"></a>使用 Pig 命令
+## <a id="pig"></a>使用 Apache Pig 命令
 
 1. 连接后，请使用以下命令启动 Pig 命令行接口 (CLI)：
 
@@ -74,7 +74,7 @@ ssh sshuser@myhdinsight-ssh.azurehdinsight.net
     | `FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;` | 创建包含每个唯一日志级别值及其发生次数的数据集。 该数据集将存储到 `FREQUENCIES` 中。 |
     | `RESULT = order FREQUENCIES by COUNT desc;` | 按计数为日志级别排序（降序），并存储到 `RESULT` 中。 |
 
-    > [!TIP]
+    > [!TIP]  
     > 使用 `DUMP` 查看每个步骤后的转换结果。
 
 5. 也可以使用 `STORE` 语句保存转换结果。 例如，以下语句将 `RESULT` 保存到群集的默认存储的 `/example/data/pigout` 目录：
@@ -83,7 +83,7 @@ ssh sshuser@myhdinsight-ssh.azurehdinsight.net
     STORE RESULT into '/example/data/pigout';
     ```
 
-   > [!NOTE]
+   > [!NOTE]  
    > 该数据存储在名为 `part-nnnnn` 的文件的指定目录中。 如果该目录已存在，则将收到错误。
 
 6. 若要退出 grunt 提示符，请输入以下语句：
@@ -136,9 +136,9 @@ ssh sshuser@myhdinsight-ssh.azurehdinsight.net
 
 有关 HDInsight 中 Pig 的常规信息，请参阅以下文档：
 
-* [将 Pig 与 Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
+* [将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
 
 有关使用 HDInsight 上 Hadoop 的其他方式的详细信息，请参阅以下文档：
 
-* [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
-* [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-mapreduce.md)
+* [将 Apache Hive 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
+* [将 MapReduce 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-mapreduce.md)

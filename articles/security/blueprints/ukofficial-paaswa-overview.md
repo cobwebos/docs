@@ -8,14 +8,14 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1c2294004245e0ef64b9b708a5b57ec0d34cc45f
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: b69b16cec08c5d29d4812258f694f2d078a9ff35
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321982"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700972"
 ---
-# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure 安全性与符合性蓝图：适用于英国官方工作负载的 PaaS Web 应用程序托管
+# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure 安全性与合规性蓝图：适用于英国官方工作负荷的 PaaS Web 应用程序托管
 
 ## <a name="azure-security-and-compliance-blueprints"></a>Azure 安全性和符合性蓝图
 
@@ -39,7 +39,7 @@ Azure 蓝图由指导文档和自动化模板组成，用于部署基于云的�
 
 此蓝图是一个基础体系结构。 我们的客户可以使用此蓝图作为其基于 Web 的官方分类工作负载的基础，并根据自己的要求扩展模板和资源。 此蓝图建立在[UK-OFFICAL Three-Tier IaaS Web 应用程序蓝图](https://aka.ms/ukofficial-iaaswa)的原则之上，为我们的客户提供[基础结构即服务 (IaaS)](https://azure.microsoft.com/overview/what-is-iaas/)和 PaaS 实现选项，用于托管基于 Web 的工作负载。
 
-要部署此蓝图，Azure 订阅是必需的。 如果没有 Azure 订阅，则可以免费快速注册：Azure入门。 单击[此处](https://aka.ms/ukofficial-paaswa-repo/)获取部署说明。
+要部署此蓝图，Azure 订阅是必需的。 如果没有 Azure 订阅，可以免费快速轻松地注册：Azure入门。 单击[此处](https://aka.ms/ukofficial-paaswa-repo/)获取部署说明。
 
 ## <a name="architecture-and-components"></a>体系结构和组件
 
@@ -73,13 +73,13 @@ Azure 蓝图由指导文档和自动化模板组成，用于部署基于云的�
 
 #### <a name="identity-and-authentication"></a>标识和身份验证
 
-此蓝图确保通过目录和身份管理服务保护对资源的访问。 此体系结构充分利用[标识作为安全边界](https://docs.microsoft.com/azure/security/security-paas-deployments#identity-as-the-primary-security-perimeter)。 
+此蓝图确保通过目录和身份管理服务保护对资源的访问。 此体系结构充分利用[标识作为安全边界](https://docs.microsoft.com/azure/security/security-paas-deployments)。 
 
 以下技术在 Azure 环境中提供标识管理功能：
 
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) 是 Microsoft 提供的多租户、基于云的目录和标识管理服务。 解决方案的所有用户（包括访问 SQL 数据库的用户）都在 Azure Active Directory 中创建。
 - 使用 Azure AD 执行面向 Web 应用程序的操作员的身份验证和 Azure 资源管理的访问。 有关详细信息，请参阅[将应用程序与 Azure Active Directory 集成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)。
-- 数据库列加密使用 Azure AD 对访问 Azure SQL 数据库的应用程序进行身份验证。 有关详细信息，请参阅[Always Encrypted：保护 SQL 数据库中的敏感数据](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)。
+- 数据库列加密使用 Azure AD 对访问 Azure SQL 数据库的应用程序进行身份验证。 有关详细信息，请参阅 [Always Encrypted：保护 SQL 数据库中的敏感数据](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)。
 - 为面向 Web 应用程序的用户配置公共访问。 要通过 Active Directory 或社交网络标识提供者创建并验证帐户，可根据需要集成 [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/)。
 - [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) 可以检测潜在漏洞，为风险帐户提供建议，以增强组织身份的安全状况，配置对检测到的与组织身份相关的可疑操作的自动响应，调查可疑事件并采取适当措施解决这些问题。
 - [Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 可在 Azure 中实现极有针对性的访问管理。 订阅访问仅限于订阅管理员，Azure Key Vault 访问仅限于需要密钥管理访问权限的用户。
@@ -102,17 +102,17 @@ Azure 蓝图由指导文档和自动化模板组成，用于部署基于云的�
 
 #### <a name="azure-app-service"></a>Azure 应用服务
 
-Azure Web 应用为使用 Java、PHP、Node.js Python、HTML和 C# 开发的 Web 应用程序提供了完全托管的 Web 托管环境，而无需管理基础架构 它提供自动缩放和高可用性，支持 Windows 和 Linux，并允许从 [Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/) 或任何基于 Git 的存储库进行自动部署。
+Azure 应用服务为使用 Java、PHP、Node.js Python、HTML 和 C# 开发的 Web 应用程序提供了完全托管的 Web 托管环境，而无需管理基础架构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并允许从 [Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/) 或任何基于 Git 的存储库进行自动部署。
 
-应用服务符合 [ISO、SOC、和 PCI 标准](https://www.microsoft.com/TrustCenter/)，可以使用[ Azure Active Directory ](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication)或者通过社交登录（[Google](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-google-authentication)[Facebook](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-facebook-authentication)、[Twitter](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-twitter-authentication) 和 [Microsoft 身份验证](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-microsoft-authentication)）对用户进行身份验证。
+应用服务符合 [ISO、SOC、和 PCI 标准](https://www.microsoft.com/TrustCenter/)，可以使用[ Azure Active Directory ](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)或者通过社交登录（[Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google)[Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook)、[Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter) 和 [Microsoft 身份验证](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft)）对用户进行身份验证。
 
-基本、标准和高级计划适用于生产工作负载，并在专用虚拟机实例上运行。 每个实例均可支持多个应用程序和域。 应用服务还支持 [IP 地址限制](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)，可在需要时将流量安全地传输到受信任的 IP 地址；它还支持 [Azure 资源的托管标识](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity)，可确保安全连接到其他 PaaS 服务（[如 Key Vault](https://azure.microsoft.com/services/key-vault/) 和 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)）。 如果需要额外保护，还可使用独立计划在私有专用 Azure 环境中托管应用，对于需要与本地网络或其他性能和规模安全连接的应用而言，这是理想选择。
+基本、标准和高级计划适用于生产工作负载，并在专用虚拟机实例上运行。 每个实例均可支持多个应用程序和域。 应用服务还支持 [IP 地址限制](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)，可在需要时将流量安全地传输到受信任的 IP 地址；它还支持 [Azure 资源的托管标识](https://docs.microsoft.com/azure/app-service/overview-managed-identity)，可确保安全连接到其他 PaaS 服务（[如 Key Vault](https://azure.microsoft.com/services/key-vault/) 和 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)）。 如果需要额外保护，还可使用独立计划在私有专用 Azure 环境中托管应用，对于需要与本地网络或其他性能和规模安全连接的应用而言，这是理想选择。
 
 此模板将部署以下应用服务功能：
 
-- [标准](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)应用服务计划层
-- 多个 Web 应用[部署槽位](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing)：开发、预览、QA、UAT 和生产（默认槽位）。
-- [Azure 资源的托管标识](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity)连接到 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)（这还可以用于提供 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)的访问权限） 
+- [标准](https://docs.microsoft.com/azure/app-service/overview-hosting-plans)应用服务计划层
+- 多个应用服务[部署槽位](https://docs.microsoft.com/azure/app-service/deploy-staging-slots)：开发、预览、QA、UAT 和生产（默认槽位）。
+- [Azure 资源的托管标识](https://docs.microsoft.com/azure/app-service/overview-managed-identity)连接到 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)（这还可以用于提供 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)的访问权限） 
 - 集成 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-azure-web-apps)来监视性能
 - [诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) 
 - 指标[警报](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) 
@@ -163,7 +163,7 @@ Microsoft [Azure 存储](https://azure.microsoft.com/services/storage/)是 Micro
 
 #### <a name="azure-key-vault-in-this-blueprint"></a>此蓝图中的 Azure Key Vault
 
-- 保存存储访问密钥，并为面向客户的 Web 应用的[托管标识](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity)授予读取访问权限
+- 保存存储访问密钥，并为面向客户的 Web 应用的[托管标识](https://docs.microsoft.com/azure/app-service/overview-managed-identity)授予读取访问权限
 - 保存 SQL Server DBA 密码（在单独的保管库中）
 - 诊断日志记录
 
@@ -231,7 +231,7 @@ Crown Commercial Service（一家致力于改善政府商业和采购活动的�
 
 1.  将[此](https://aka.ms/ukofficial-paaswa-repo) GitHub 存储库克隆或下载到本地工作站。
 2.  查看[方法 1：Azure CLI 2（Express 版本）](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version)并执行提供的命令。
-3.  查看[方法 1a：（配置通过脚本参数部署）的 Azure CLI 2](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments)并执行提供的命令
+3.  查看[方法 1a：Azure CLI 2（通过脚本参数配置部署）](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments)并执行提供的命令
 4.  查看[方法 2：Azure 门户部署过程](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process)并执行列出的命令
 
 ## <a name="guidance-and-recommendations"></a>指导和建议

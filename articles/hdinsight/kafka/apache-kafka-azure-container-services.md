@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 569030cc6d72d206411a73703ec0d359e033bef7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b8995436677c195317b9ac304fe8c52cc2fcfc80
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311664"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602063"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>将 Azure Kubernetes 服务与 Apache Kafka on HDInsight 配合使用
 
@@ -22,7 +22,7 @@ ms.locfileid: "52311664"
 
 [Apache Kafka](https://kafka.apache.org) 是一个分布式流式处理平台，以开源方式提供，可用于构建实时流式处理数据管道和应用程序。 Azure Kubernetes 服务管理托管的 Kubernetes 环境，使用它可以快速轻松地部署容器化应用程序。 使用 Azure 虚拟网络可以连接这两个服务。
 
-> [!NOTE]
+> [!NOTE]  
 > 本文重点讲解需要执行哪些步骤才能让 Azure Kubernetes 服务与 Kafka on HDInsight 通信。 示例本身只是一个用于演示配置工作原理的基本 Kafka 客户端。
 
 ## <a name="prerequisites"></a>先决条件
@@ -49,7 +49,7 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
 ![HDInsight 和 AKS 各在不同的虚拟网络中，两者的网络使用对等互连建立连接](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 未在对等网络之间启用名称解析，因此使用了 IP 寻址。 默认情况下，Kafka on HDInsight 配置为在客户端建立连接时返回主机名而不是 IP 地址。 本文档中的步骤会将 Kafka 修改为使用 IP 播发。
 
 ## <a name="create-an-azure-kubernetes-service-aks"></a>创建 Azure Kubernetes 服务 (AKS)
@@ -59,7 +59,7 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 * [部署 Azure Kubernetes 服务 (AKS) 群集 - 门户](../../aks/kubernetes-walkthrough-portal.md)
 * [部署 Azure Kubernetes 服务 (AKS) 群集 - CLI](../../aks/kubernetes-walkthrough.md)
 
-> [!NOTE]
+> [!NOTE]  
 > AKS 在安装期间会创建虚拟网络。 此网络将与下一部分针对 HDInsight 创建的网络建立对等互连。
 
 ## <a name="configure-virtual-network-peering"></a>配置虚拟网络对等互连
@@ -72,7 +72,7 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
 4. 若要为 HDInsight 创建虚拟网络，请依次选择“+ 创建资源”、“网络”、“虚拟网络”。
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > 输入新虚拟网络的值时，使用的地址空间不得与 AKS 群集网络使用的地址空间重叠。
 
     使用 AKS 群集所用的相同虚拟网络__位置__。
@@ -95,9 +95,9 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
 ## <a name="install-apache-kafka-on-hdinsight"></a>安装 Apache Kafka on HDInsight
 
-创建 Kafka on HDInsight 群集时，必须加入前面针对 HDInsight 创建的虚拟网络。 有关创建 Kafka 群集的详细信息，请参阅[创建 Kafka 群集](apache-kafka-get-started.md)文档。
+创建 Kafka on HDInsight 群集时，必须加入前面针对 HDInsight 创建的虚拟网络。 有关创建 Kafka 群集的详细信息，请参阅[创建 Apache Kafka 群集](apache-kafka-get-started.md)文档。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 创建群集时，必须使用“高级设置”加入针对 HDInsight 创建的虚拟网络。
 
 ## <a name="configure-apache-kafka-ip-advertising"></a>配置 Apache Kafka IP 播发
@@ -158,8 +158,8 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
 3. 编辑 `index.js` 文件并更改以下行：
 
-    * `var topic = 'mytopic'`：将 `mytopic` 替换为此应用程序使用的 Kafka 主题名称。
-    * `var brokerHost = '176.16.0.13:9092`：将 `176.16.0.13` 替换为群集的某个代理主机的内部 IP 地址。
+    * `var topic = 'mytopic'`：将 `mytopic` 替换为此应用程序使用的 Kafka 主题的名称。
+    * `var brokerHost = '176.16.0.13:9092`：将 `176.16.0.13` 替换为群集的某个中转站主机的内部 IP 地址。
 
         若要查找群集中代理主机（工作节点）的内部 IP 地址，请参阅 [Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) 文档。 选择域名以 `wn` 开头的某个条目的 IP 地址。
 
@@ -169,7 +169,7 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
     docker build -t kafka-aks-test .
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > 此应用程序所需的包将签入存储库，因此不需要使用 `npm` 实用工具来安装这些包。
 
 5. 登录到 Azure 容器注册表 (ACR)，并找到 loginServer 名称：
@@ -179,7 +179,7 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
     az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > 如果不知道 Azure 容器注册表名称，或者不熟悉如何将 Azure CLI 与 Azure Kubernetes 服务配合使用，请参阅 [AKS 教程](../../aks/tutorial-kubernetes-prepare-app.md)。
 
 6. 使用 ACR 的 loginServer 标记本地 `kafka-aks-test` 映像。 另外，在末尾添加 `:v1` 以指示映像版本：
@@ -217,7 +217,7 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
 12. 在字段中输入文本，然后选择“发送”按钮。 数据将发送到 Kafka。 然后，应用程序中的 Kafka 使用者将读取消息，并将其添加到“来自 Kafka 的消息”部分。
 
-    > [!WARNING]
+    > [!WARNING]  
     > 可能会收到消息的多个副本。 如果在连接后刷新浏览器，或者在浏览器中与应用程序建立多个连接，则通常会发生此问题。
 
 ## <a name="next-steps"></a>后续步骤

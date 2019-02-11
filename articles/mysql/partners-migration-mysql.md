@@ -1,18 +1,17 @@
 ---
 title: Azure Database for MySQL 迁移合作伙伴 | Microsoft Docs
 description: 列出了一些第三方迁移合作伙伴，这些合作伙伴提供支持 Azure Database for MySQL 的解决方案。
-services: mysql
 author: HJToland3
 ms.author: jtoland
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: e50cd285d904830bd7332f39d51aaa149f38b82a
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 8c081c6436939089565425a0f14bbf1856ca7ce8
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038020"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536757"
 ---
 # <a name="azure-database-for-mysql-migration-partners"></a>Azure Database for MySQL 迁移合作伙伴
 为了广泛支持你的 Azure Database for MySQL 解决方案，可以从众多行业领先的合作伙伴和工具中进行选择。 本文重点介绍了提供支持 Azure Database for MySQL 的迁移解决方案的 Microsoft 合作伙伴。

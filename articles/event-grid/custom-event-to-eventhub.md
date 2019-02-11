@@ -1,21 +1,22 @@
 ---
-title: 将 Azure 事件网格的自定义事件发送到事件中心 | Microsoft Docs
+title: 将自定义事件发送到事件中心 - 事件网格、Azure CLI
 description: 使用 Azure 事件网格和 Azure CLI 发布一个主题，然后订阅该事件。 事件中心用于终结点。
 services: event-grid
 keywords: ''
-author: tfitzmac
-ms.author: tomfitz
+author: spelluru
+ms.author: spelluru
 ms.date: 10/09/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 0d8504dc002fa43c25f689b4c5b3f78c822cf5b0
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.custom: seodec18
+ms.openlocfilehash: fd087c2afe50870289b008906b28605fdd558311
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069414"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475180"
 ---
-# <a name="route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>使用 Azure CLI 和事件网格将自定义事件路由到 Azure 事件中心
+# <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>快速入门：使用 Azure CLI 和事件网格将自定义事件路由到 Azure 事件中心
 
 Azure 事件网格是针对云的事件处理服务。 Azure 事件中心是受支持的事件处理程序之一。 在本文中，将使用 Azure CLI 创建一个自定义主题，然后订阅该自定义主题，再触发可查看结果的事件。 将事件发送到事件中心。
 

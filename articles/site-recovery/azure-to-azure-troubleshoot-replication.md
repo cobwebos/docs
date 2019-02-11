@@ -5,16 +5,15 @@ services: site-recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/30/2018
+ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 0ac90d8ef29d4293a5eeb5f932687788320c218e
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4a18e009f7defc8d41846b867f9b7a65d2b853dd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615790"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993325"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-ongoing-replication-issues"></a>排查 Azure 到 Azure VM 持续复制问题
 
@@ -29,7 +28,7 @@ ms.locfileid: "51615790"
 Azure Site Recovery 以一致的方式将数据从源区域复制到灾难恢复区域，并每隔 5 分钟创建崩溃一致性恢复点。 如果 Site Recovery 在 60 分钟内无法创建恢复点，则会向用户发出警报。 下面是导致此错误的可能原因：
 
 **原因 1：[源虚拟机上的数据更改率较高](#high-data-change-rate-on-the-source-virtal-machine)**    
-**原因 2：[网络连接问题](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
+**原因 2：[网络连接问题](#Network-connectivity-issue)**
 
 ## <a name="causes-and-solutions"></a>原因和解决方法
 
@@ -77,5 +76,10 @@ Azure Site Recovery 以一致的方式将数据从源区域复制到灾难恢复
 
 ### <a name="Network-connectivity-issue"></a>网络连接问题
 
+#### <a name="network-latency-to-cache-storage-account-"></a>缓存存储帐户的网络延迟：
+ Site Recovery 将复制的数据发送到缓存存储帐户，如果将数据从虚拟机上传到缓存存储帐户时的速度低于 4 MB/3 秒，则可能会出现此问题。 若要检查是否存在与延迟相关的任何问题，请使用 [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) 将数据从虚拟机上传到缓存存储帐户。<br>
+如果延迟较高，请检查你是否在使用网络虚拟设备控制来自 VM 的出站网络流量。 如果所有复制流量都通过 NVA，设备可能会受到限制。 我们建议在虚拟网络中为“存储”创建一个网络服务终结点，这样复制流量就不会经过 NVA。 请参考[网络虚拟设备配置](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration)
+
+#### <a name="network-connectivity"></a>网络连接
 若要 Site Recovery 复制正常运行，需要从 VM 到特定 URL 或 IP 范围的出站连接。 如果 VM 位于防火墙后或使用网络安全组 (NSG) 规则来控制出站连接，则可能会遇到以下问题之一。</br>
-请参阅 [Site Recovery URL 的出站连接](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-troubleshoot-errors?#outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072)
+请参考 [Site Recovery URL 的出站连接](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)以确保所有 URL 都已连接 

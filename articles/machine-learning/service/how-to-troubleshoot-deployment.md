@@ -1,24 +1,26 @@
 ---
-title: Azure 机器学习服务部署故障排除指南
-description: 了解如何使用 Azure 机器学习服务规避、解决和排除常见 Docker 部署错误。
+title: 部署故障排除指南
+titleSuffix: Azure Machine Learning service
+description: 了解如何使用 Azure 机器学习服务规避、解决以及排除 AKS 和 ACI 的常见 Docker 部署错误。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
-ms.author: haining
-author: hning86
+author: chris-lauren
+ms.author: clauren
 ms.reviewer: jmartens
-ms.date: 10/01/2018
-ms.openlocfilehash: a10b05e95fa719b80775191e48bd4117e3a785fd
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 83ee548befdc7ef0a4e7ed2d4b4e61b42a217f12
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321676"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247062"
 ---
-# <a name="troubleshooting-azure-machine-learning-service-deployments"></a>Azure 机器学习服务部署故障排除
+# <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Azure 机器学习服务 AKS 和 ACI 部署故障排除
 
-本文将介绍如何使用 Azure 机器学习服务规避或解决常见 Docker 部署错误。
+本文将介绍如何使用 Azure 机器学习服务规避或解决 Azure 容器实例 (ACI) 和 Azure Kubernetes 服务 (AKS) 的常见 Docker 部署错误。
 
 在 Azure 机器学习服务中部署模型时，系统将执行大量任务。 这是一系列复杂事件，有时会出现问题。 部署任务包括：
 
@@ -91,10 +93,10 @@ ms.locfileid: "49321676"
 print(image.image_build_log_uri)
 
 # if you only know the name of the image (note there might be multiple images with the same name but different version number)
-print(ws.images()['myimg'].image_build_log_uri)
+print(ws.images['myimg'].image_build_log_uri)
 
 # list logs for all images in the workspace
-for name, img in ws.images().items():
+for name, img in ws.images.items():
     print (img.name, img.version, img.image_build_log_uri)
 ```
 此映像日志 URI 是指向 Azure blob 存储中存储的日志文件的 SAS URL. 只需复制 URI 并将其粘贴到浏览器窗口，即可下载和查看日志文件。
@@ -113,11 +115,11 @@ for name, img in ws.images().items():
 print(service.get_logs())
 
 # if you only know the name of the service (note there might be multiple services with the same name but different version number)
-print(ws.webservices()['mysvc'].get_logs())
+print(ws.webservices['mysvc'].get_logs())
 ```
 
 ### <a name="debug-the-docker-image-locally"></a>本地调试 Docker 映像
-有时 Docker 日志体现的错误相关信息并不充足。 可以进一步操作并提取生成的 Docker 映像，启动本地容器并以交互方式直接在实时容器内进行调试。 若要启动本地容器，必须具有本地运行的 Docker 映像，此外，如果还安装有 [azure-cli](/cli/azure/install-azure-cli?view=azure-cli-latest)，此步骤将容易得多。
+有时 Docker 日志体现的错误相关信息并不充足。 可以进一步操作并提取生成的 Docker 映像，启动本地容器并以交互方式直接在实时容器内进行调试。 若要启动本地容器，必须具有本地运行的 Docker 映像，此外，如果还安装有 [azure-cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，此步骤将容易得多。
 
 首先需要找到映像位置：
 
@@ -216,16 +218,12 @@ def run(input_data):
         # return error message back to the client
         return json.dumps({"error": result})
 ```
-注意：通过 `run(input_data)` 调用返回错误消息应仅用于调试目的。 出于安全原因，在生产环境中执行此操作可能并非上策。
+**注意**：通过 `run(input_data)` 调用返回错误消息应仅用于调试目的。 出于安全原因，在生产环境中执行此操作可能并非上策。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 详细了解部署： 
-* [如何部署到 ACI](how-to-deploy-to-aci.md)
+* [部署方式和部署位置](how-to-deploy-and-where.md)
 
-* [如何部署到 AKS](how-to-deploy-to-aks.md)
-
-* [教程第 1 部分：培训模型](tutorial-train-models-with-aml.md)
-
-* [教程第 2 部分：部署模型](tutorial-deploy-models-with-aml.md)
+* [教程：训练和部署模型](tutorial-train-models-with-aml.md)

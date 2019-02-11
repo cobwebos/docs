@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/26/2018
+ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 78e56286e0dec3307c7481a6097c53a1362f57cc
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 79e2d33d1452eda35141b6ae80b46ab4eecd0909
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427516"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902153"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>教程：为 Azure Data Box 连接电缆并连接到它
 
@@ -40,7 +40,7 @@ ms.locfileid: "52427516"
     - 连接到高速网络。 强烈建议你至少建立一个 10-GbE 连接。 如果 10-GbE 连接不可用，则可使用 1-GbE 数据链路，但复制速度会受影响。 
 6. 必须找到一个可以放置 Data Box 的平面。 如需将设备置于标准的机架上，则需要数据中心机架中的一个 7U 槽。 可以将设备平放或直放在机架中。
 7. 你已经采购了以下电缆，用于将 Data Box 连接到主机。
-    - 两根 10-GbE SFP+ Twinax 铜线（用于 DATA 1、DATA 2 网络接口）
+    - 两根 10-GbE SFP+ Twinax 铜线（用于 DATA 1、DATA 2 网络接口）。 Data Box 使用带 PCI Express 3.0 网络接口的 Mellanox ConnectX®-3 Pro EN 双端口 10GBASE-T 适配器，因此与该接口兼容的电缆都可以用。 例如，使用 CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP +3M 电缆进行内部测试。
     - 一根 RJ-45 CAT 6 网线（用于 MGMT 网络接口）
     - 一根 RJ-45 CAT 6A 网线或一根 RJ-45 CAT 6 网线（用于 DATA 3 网络接口，分别配置为 10 Gbps 或 1 Gbps）
 
@@ -50,7 +50,7 @@ ms.locfileid: "52427516"
 
 1. 检查设备是否有任何改动的痕迹或任何明显的损坏。 如果设备已被篡改或严重损坏，请不要继续操作。 请立即联系 Microsoft 支持部门，让他们帮助评估设备是否正常，或者是否需要更换磁盘。
 2. 将设备运输到你希望为其通电的位置。 将设备放置在一个平面上。 也可以将设备放置在标准机架上。
-3. 连接电源线和网络电缆。 对于常见配置，连接电缆后的设备的底板如下所示。 
+3. 连接电源线和网络电缆。 对于常见配置，连接电缆后的设备的底板如下所示。 可以根据环境从其他[布线选项](data-box-cable-options.md)中进行选择。
     
     ![已连接了电缆的 Data Box 设备底板](media/data-box-deploy-set-up/data-box-cabled-dhcp.png)
 
@@ -69,7 +69,7 @@ ms.locfileid: "52427516"
 执行以下步骤来使用本地 Web UI 和门户 UI 设置设备。
 
 1. 在使用的笔记本上配置以太网适配器以通过静态 IP 地址 192.168.100.5 和子网 255.255.255.0 连接到设备。 
-2. 连接到设备的 MGMT 端口并访问其位于 https://192.168.100.10 的本地 Web UI。 从打开设备算起，进行此连接可能需要长达 5 分钟的时间。
+2. 连接到设备的 MGMT 端口并访问其位于 https\://192.168.100.10 的本地 Web UI。 从打开设备算起，进行此连接可能需要长达 5 分钟的时间。
 3. 单击“详细信息”，然后单击“转到网页”。
 
    ![连接到本地 Web UI](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png) 

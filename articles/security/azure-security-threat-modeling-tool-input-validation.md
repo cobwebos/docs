@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: da2e742f0dde0cb4b98bfb107d18eca779d10021
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dd2914c675d3bca32ca8951ffca1b04e23786400
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234589"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266892"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>安全框架：输入验证 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -39,7 +39,7 @@ ms.locfileid: "51234589"
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [XSLT 安全](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx)、[XsltSettings.EnableScript 属性](https://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
-| **步骤** | XSLT 支持使用 `<msxml:script>` 元素在样式表内编写脚本。 这样，便可以在 XSLT 转换中使用自定义函数。 该脚本在执行转换的进程的上下文中执行。 在不受信任的环境中必须禁用 XSLT 脚本，防止执行不受信任的代码。 *如果使用.NET：* XSLT 脚本默认已禁用；但是，必须确保未通过 `XsltSettings.EnableScript` 属性显式将它启用。|
+| **步骤** | XSLT 支持使用 `<msxml:script>` 元素在样式表内编写脚本。 这样，便可以在 XSLT 转换中使用自定义函数。 该脚本在执行转换的进程的上下文中执行。 在不受信任的环境中必须禁用 XSLT 脚本，防止执行不受信任的代码。 如果使用 .NET：XSLT 脚本默认已禁用；但是，必须确保未通过 `XsltSettings.EnableScript` 属性显式将它启用。|
 
 ### <a name="example"></a>示例 
 

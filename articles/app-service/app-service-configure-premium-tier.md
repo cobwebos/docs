@@ -1,5 +1,5 @@
 ---
-title: 为 Azure 应用服务配置 PremiumV2 层 |Microsoft Docs
+title: 配置 PremiumV2 层 - Azure 应用服务 | Microsoft Docs
 description: 了解如何通过扩展到新的 PremiumV2 定价层提高 Azure 应用服务中的 Web、移动和 API 应用的性能。
 keywords: 应用服务, azure 应用服务, 缩放, 可缩放, 应用服务计划, 应用服务成本
 services: app-service
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: cephalin
-ms.openlocfilehash: 59e5825554843ef7265cbccdd9a63db0426891fa
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.custom: seodec18
+ms.openlocfilehash: 991748c33eae607e97b3916a913b111af7b3b75a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226303"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714468"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>为 Azure 应用服务配置 PremiumV2 层
 
@@ -28,7 +29,7 @@ ms.locfileid: "47226303"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要将 Web 应用纵向扩展到 **PremiumV2**，需要在 Azure 应用服务中提供一个 Web 应用，该 Web 应用在低于 **PremiumV2** 的定价层中运行，并且必须在支持 PremiumV2 的应用服务部署中运行。
+若要将应用纵向扩展到 **PremiumV2**，需要有一个 Azure 应用服务应用，该应用在低于 **PremiumV2** 的定价层中运行，并且必须在支持 PremiumV2 的应用服务部署中运行。
 
 <a name="availability"></a>
 
@@ -46,7 +47,7 @@ az appservice list-locations --sku P1V2
 
 ## <a name="create-an-app-in-premiumv2-tier"></a>在 PremiumV2 层中创建应用
 
-应用服务应用的定价层是在运行它的[应用服务计划](azure-web-sites-web-hosting-plans-in-depth-overview.md)中定义的。 应用服务计划可以独立创建，也可以在创建 Web 应用的过程中创建。
+应用服务应用的定价层是在运行它的[应用服务计划](overview-hosting-plans.md)中定义的。 应用服务计划可以独立创建，也可以在创建应用的过程中创建。
 
 在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>中配置应用服务计划时，选择“定价层”。 
 
@@ -87,7 +88,7 @@ az appservice list-locations --sku P1V2
 
 如果应用在不支持 **PremiumV2** 的应用服务部署中运行，或者在目前不支持 **PremiumV2** 的区域中运行，则需要重新部署应用才能利用 **PremiumV2**。  可以使用两个选项：
 
-- 创建**新**资源组，然后在**新**资源组中创建**新** Web 应用和应用服务计划，并在创建过程中选择所需的 Azure 区域。  创建新应用服务计划时，**必须**选择 **PremiumV2** 计划。  这可以确保资源组、应用服务计划和 Azure 区域的组合可让你在支持 **PremiumV2** 的应用服务部署中创建应用服务计划。  然后，将应用程序代码重新部署到新建的应用和应用服务计划。 以后可以根据需要，将应用服务计划从 **PremiumV2** 纵向缩减以节省成本，同时仍可使用 **PremiumV2** 成功纵向扩展。
+- 创建**新**资源组，然后在**新**资源组中创建**新**应用和应用服务计划，并在创建过程中选择所需的 Azure 区域。  创建新应用服务计划时，**必须**选择 **PremiumV2** 计划。  这可以确保资源组、应用服务计划和 Azure 区域的组合可让你在支持 **PremiumV2** 的应用服务部署中创建应用服务计划。  然后，将应用程序代码重新部署到新建的应用和应用服务计划。 以后可以根据需要，将应用服务计划从 **PremiumV2** 纵向缩减以节省成本，同时仍可使用 **PremiumV2** 成功纵向扩展。
 - 如果应用已在现有的**高级**层中运行，则可将应用以及所有应用设置、连接字符串和部署配置克隆到使用 **PremiumV2** 的新应用服务计划。
 
     ![](media/app-service-configure-premium-tier/clone-app.png)

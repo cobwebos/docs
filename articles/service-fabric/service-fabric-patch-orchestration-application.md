@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 3416d257a23e94460199a1ddfe63302ff55ad5a5
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 43133a1666dc3551e0f935ceb2af4cf1297d44a7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285044"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155300"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
 
@@ -43,13 +43,13 @@ POA 是一个 Azure Service Fabric 应用程序，可在 Service Fabric 群集�
 
 修补业务流程应用由以下子组件组成：
 
-- 协调器服务：此有状态服务负责：
+- **协调器服务**：此有状态服务负责：
     - 协调整个群集上的 Windows 更新作业。
     - 存储已完成的 Windows 更新操作的结果。
-- 节点代理服务：此无状态服务在所有 Service Fabric 群集节点上运行。 该服务负责：
+- **节点代理服务**：此无状态服务在所有 Service Fabric 群集节点上运行。 该服务负责：
     - 启动节点代理 NTService。
     - 监视节点代理 NTService。
-- 节点代理 NTService：此 Windows NT 服务以更高级别的特权 (SYSTEM) 运行。 相比之下，节点代理服务和协调器服务以较低级别的特权 (NETWORK SERVICE) 运行。 该服务负责在所有群集节点上执行以下 Windows 更新作业：
+- **节点代理 NTService**：此 Windows NT 服务以更高级别的特权 (SYSTEM) 运行。 相比之下，节点代理服务和协调器服务以较低级别的特权 (NETWORK SERVICE) 运行。 该服务负责在所有群集节点上执行以下 Windows 更新作业：
     - 在节点上禁用自动 Windows 更新。
     - 根据用户提供的策略下载并安装 Windows 更新。
     - 安装 Windows 更新后重新启动计算机。
@@ -141,7 +141,7 @@ POA 是一个 Azure Service Fabric 应用程序，可在 Service Fabric 群集�
 
 可以从[存档链接](https://go.microsoft.com/fwlink/?linkid=869566)下载应用程序和安装脚本。
 
-可以从 [sfpkg 链接](https://aka.ms/POA/POA_v1.2.2.sfpkg)下载 sfpkg 格式的应用程序。 这对[基于 Azure 资源管理器的应用程序部署](service-fabric-application-arm-resource.md)非常有用。
+可以从 [sfpkg 链接](https://aka.ms/POA/POA.sfpkg)下载 sfpkg 格式的应用程序。 这对[基于 Azure 资源管理器的应用程序部署](service-fabric-application-arm-resource.md)非常有用。
 
 ## <a name="configure-the-app"></a>配置应用
 
@@ -153,15 +153,15 @@ POA 是一个 Azure Service Fabric 应用程序，可在 Service Fabric 群集�
 |TaskApprovalPolicy   |枚举 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy 指示协调器服务用于跨 Service Fabric 群集节点安装 Windows 更新的策略。<br>                         允许值包括： <br>                                                           <b>NodeWise</b>。 每次在一个节点上安装 Windows 更新。 <br>                                                           <b>UpgradeDomainWise</b>。 每次在一个升级域上安装 Windows 更新。 （在最大程度情况下，属于升级域的所有节点都可进行 Windows 更新。）<br> 请参阅[常见问题解答](#frequently-asked-questions)部分，了解如何确定最适合你的群集的策略。
 |LogsDiskQuotaInMB   |Long  <br> （默认值：1024）               |可在节点本地持久保存的修补业务流程应用日志的最大大小，以 MB 为单位。
 | WUQuery               | 字符串<br>（默认值："IsInstalled=0"）                | 用于获取 Windows 更新的查询。 有关详细信息，请参阅 [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)。
-| InstallWindowsOSOnlyUpdates | Boolean <br> （默认值：True）                 | 此标志允许安装 Windows 操作系统更新。            |
-| WUOperationTimeOutInMinutes | int <br>（默认值：90）                   | 指示任何 Windows 更新操作（搜索、下载或安装）的超时。 在指定的超时内未完成的操作会被中止。       |
+| InstallWindowsOSOnlyUpdates | Boolean <br> （默认值：false）                 | 使用此标志来控制应当下载并安装哪些更新。 允许以下值 <br>true - 仅安装 Windows 操作系统更新。<br>false - 在计算机上安装所有可用的更新。          |
+| WUOperationTimeOutInMinutes | int <br>（默认值：90%）                   | 指示任何 Windows 更新操作（搜索、下载或安装）的超时。 在指定的超时内未完成的操作会被中止。       |
 | WURescheduleCount     | int <br> （默认值：5）                  | 在操作持续失败的情况下，服务重新计划 Windows 更新的最大次数。          |
 | WURescheduleTimeInMinutes | int <br>（默认值：30） | 在持续失败的情况下，服务重新计划 Windows 更新的间隔。 |
-| WUFrequency           | 逗号分隔的字符串（默认值："Weekly, Wednesday, 7:00:00"）     | 安装 Windows 更新的频率。 其格式和可能的值包括： <br>-   Monthly, DD, HH:MM:SS，例如：Monthly, 5,12:22:32。 <br> -   Weekly, DAY, HH:MM:SS，例如：Weekly, Tuesday, 12:22:32。  <br> -   Daily, HH:MM:SS，例如：Daily, 12:22:32。  <br> - None 表示不应执行 Windows 更新。  <br><br> 请注意，时间采用 UTC。|
+| WUFrequency           | 逗号分隔的字符串（默认值："Weekly, Wednesday, 7:00:00"）     | 安装 Windows 更新的频率。 其格式和可能的值包括： <br>-   Monthly, DD, HH:MM:SS，例如：Monthly, 5,12:22:32。<br>字段 DD（天）允许的值为范围 1-28 中的数字和“last”。 <br> -   Weekly, DAY, HH:MM:SS，例如：Weekly, Tuesday, 12:22:32。  <br> -   Daily, HH:MM:SS，例如：Daily, 12:22:32。  <br> - None 表示不应执行 Windows 更新。  <br><br> 请注意，时间采用 UTC。|
 | AcceptWindowsUpdateEula | Boolean <br>（默认值：True） | 通过设置此标志，该应用程序将代表计算机所有者接受 Windows 更新的最终用户许可协议。              |
 
 > [!TIP]
-> 若要立即进行 Windows 更新，请依据应用程序部署时间设置 `WUFrequency`。 例如，假设拥有一个 5 节点测试群集，并计划在大约 UTC 下午 5:00 部署应用。 如果假定应用程序升级或部署最多需要 30 分钟，请将 WUFrequency 设置为“Daily, 17:30:00”。
+> 若要立即进行 Windows 更新，请依据应用程序部署时间设置 `WUFrequency`。 例如，假设拥有一个 5 节点测试群集，并计划在大约 UTC 下午 5:00 部署应用。 如果假定应用程序升级或部署最多需要 30 分钟，请将 WUFrequency 设置为“Daily, 17:30:00”
 
 ## <a name="deploy-the-app"></a>部署应用
 
@@ -292,7 +292,7 @@ A. 在安装过程中，修补业务流程应用会禁用或重新启动节点�
 
 在 Windows 更新安装结束时，重新启动后节点将会重新启用。
 
-在下面的示例中，由于两个节点关闭且违反了 MaxPercentageUnhealthNodes 策略，群集暂时进入了错误状态。 这是一个暂时性的错误，在修补操作继续后即可恢复。
+在以下示例中，由于两个节点关闭且违反了 MaxPercentageUnhealthyNodes 策略，群集暂时进入了错误状态。 这是一个暂时性的错误，在修补操作继续后即可恢复。
 
 ![不正常群集的图像](media/service-fabric-patch-orchestration-application/MaxPercentage_causing_unhealthy_cluster.png)
 
@@ -316,7 +316,7 @@ A. “UpgradeDomainWise”通过并行修补属于升级域的所有节点，使
 
 问： **修补一个节点需要多长时间？**
 
-A. 修补一个节点可能需要几分钟（例如：[Windows Defender 定义更新](https://www.microsoft.com/wdsi/definitions)）到几小时（例如：[Windows 累积更新](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)）。 修补一个节点所需的时间主要取决于 
+A. 修补节点可能需要花费数分钟（例如：[Windows Defender 定义更新](https://www.microsoft.com/wdsi/definitions)）到数小时（例如：[Windows 累积更新](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)）。 修补一个节点所需的时间主要取决于 
  - 更新的大小
  - 必须在修补窗口中应用的更新数
  - 安装更新、重新启动节点（如果需要）以及完成重新启动后安装步骤所需的时间。
@@ -397,8 +397,19 @@ A. 否，修补业务流程应用不能用来修补单节点群集。 此限制�
 
 - 群集缩减工作流中的 Bug 修复。 引入了针对不存在节点中 POA 修复任务的垃圾回收逻辑。
 
-### <a name="version-122-latest"></a>版本 1.2.2（最新版本）
+### <a name="version-122"></a>版本 1.2.2
 
 - 其他 Bug 修复。
 - 二进制文件现已签名。
-- sfpkg 下载链接现在指向特定版本。
+- 为应用程序添加了 sfpkg 链接。
+
+### <a name="version-130"></a>版本 1.3.0
+
+- 将 InstallWindowsOSOnlyUpdates 设置为 false 现在会安装所有可用的更新。
+- 更改了禁用自动更新的逻辑。 这修复了在 Server 2016 及更高版本上不会禁用自动更新的 bug。
+- 针对高级用例，对 POA 的微服务的放置约束进行了参数化。
+
+### <a name="version-131"></a>版本 1.3.1
+- 修复了由于禁用自动更新失败而导致 POA 1.3.0 无法在 Windows Server 2012 R2 或更低版本上运行的回归。 
+- 修复了 InstallWindowsOSOnlyUpdates 配置总是被选为 True 的 bug。
+- 将 InstallWindowsOSOnlyUpdates 的默认值更改为 False。

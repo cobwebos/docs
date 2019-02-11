@@ -2,20 +2,20 @@
 title: 使用 Azure Cosmos DB 中的更改源处理器库
 description: 使用 Azure Cosmos DB 更改源处理器库。
 author: rafats
-manager: kfile
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: rafats
-ms.openlocfilehash: 9d427a8001112e4994597b86579d85156f94a870
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.reviewer: sngun
+ms.openlocfilehash: 64763ebc145685e4dc7a4559eac6db9923d31dc5
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628471"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455552"
 ---
-# <a name="using-the-azure-cosmos-db-change-feed-processor-library"></a>使用 Azure Cosmos DB 更改源处理器库
+# <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 更改源处理器 
 
 借助 [Azure Cosmos DB 更改源处理器库](sql-api-sdk-dotnet-changefeed.md)，可以在多个使用者之间分配事件处理负载。 此库简化了跨分区的以及并行工作的多个线程中的更改的读取。
 
@@ -43,7 +43,7 @@ ms.locfileid: "51628471"
 
    * 时间戳：租约最近更新时间；时间戳可用于检查租约是否到期。
 
-1. **处理器主机：** 每个主机根据具有活动租约的主机其他实例数目，确定要处理的分区数目。
+1. **处理器主机：** 每个主机根据具有活动租用的其他主机实例数目，确定要处理的分区数目。
 
    * 主机启动时，将获取租用，以在所有主机中均衡工作负荷。 主机定期续订租用，使租用保持活动状态。
 

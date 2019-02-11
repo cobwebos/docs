@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 8d0b0c99b743461da41a518feae9c781f90c8b63
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2cb4895fc2f884d6da41b55faa91fbcb9e88f52f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988400"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52978639"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>从 JavaScript 单页应用程序 (SPA) 调用 Microsoft Graph API
 
@@ -46,7 +46,7 @@ ms.locfileid: "49988400"
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|适用于 JavaScript 的 Microsoft 身份验证库预览|
 
 > [!NOTE]
-> msal.js 面向 Azure Active Directory v2.0 终结点，这使得个人、学校和工作帐户能够登录和获取令牌。 Azure Active Directory v2.0 终结点具有[某些限制](..\articles\active-directory\develop\active-directory-v2-limitations.md)。
+> msal.js 面向 Azure Active Directory v2.0 终结点，这使得个人、学校和工作帐户能够登录和获取令牌。 Azure Active Directory v2.0 终结点具有[某些限制](../articles/active-directory/develop/active-directory-v2-limitations.md)。
 > 若要了解 v1.0 和 v2.0 终结点之间的差异，请参阅[终结点比较指南](../articles/active-directory/develop/azure-ad-endpoint-comparison.md)。
 
 <!--end-collapse-->

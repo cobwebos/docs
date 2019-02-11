@@ -1,26 +1,25 @@
 ---
-title: 如何在 Azure Active Directory 中使用基于组的许可安全地在产品许可证之间迁移用户 | Microsoft Docs
-description: 介绍使用基于组的许可在不同的产品许可证（例如 Office 365 企业版 E1 和 E3）之间迁移用户的建议过程
+title: 如何将用户迁移到具有组的产品许可证 - Azure Active Directory | Microsoft Docs
+description: 介绍使用基于组的许可将组内用户迁移到不同产品许可证（例如 Office 365 企业版 E1 和 E3）的建议过程
 services: active-directory
 keywords: Azure AD 许可
 documentationcenter: ''
-author: piotrci
+author: curtand
 manager: mtillman
 editor: ''
-ms.assetid: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/29/2018
-ms.author: piotrci
-ms.openlocfilehash: 643339545dac6ec35ab44f2a05fbe417dea2bb71
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 01/28/2019
+ms.author: curtand
+ms.reviewer: sumitp
+ms.custom: it-pro;seo-update-azuread-jan
+ms.openlocfilehash: ea6159f487b35192e0e2137662a664a2796843c0
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211785"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294567"
 ---
 # <a name="how-to-safely-migrate-users-between-product-licenses-by-using-group-based-licensing"></a>如何使用基于组的许可安全地在产品许可证之间迁移用户
 
@@ -47,7 +46,7 @@ ms.locfileid: "50211785"
 -   了解组在环境中的管理方式。 例如，如果通过 Azure AD Connect 在本地管理组并将其同步到 Azure Active Directory (Azure AD) 中，则需要使用本地系统添加/删除用户。 将更改同步到 Azure AD 并在基于组的许可中拾取更改会花费一段时间。 如果使用 Azure AD 动态组成员身份，则需要改为通过修改属性来添加/删除用户。 但是，总体迁移过程保持不变。 唯一的差别是如何为组成员身份添加/删除用户。
 
 ## <a name="migrate-users-between-products-that-dont-have-conflicting-service-plans"></a>在不包含有冲突服务计划的产品之间迁移用户
-迁移目标是使用基于组的许可将用户许可证从源许可证（在本示例中为 Office 365 企业版 E3）更改为目标许可证（在本示例中为 Office 365 企业版 E5）。 此方案中的两种产品不包含有冲突的服务计划，因此，可以同时完全分配其许可证，而不会发生冲突。 在迁移过程中，用户始终可以访问服务或数据。 迁移是以小型的“批”执行的。 可以验证每个批的结果，并最大程度地缩小迁移过程中可能发生的任何问题的范围。 总体过程如下：
+迁移目标是使用基于组的许可将用户许可证从“源许可证”（在此示例中为：Office 365 企业版 E3）更改为“目标许可证”（在此示例中为：Office 365 企业版 E5）。 此方案中的两种产品不包含有冲突的服务计划，因此，可以同时完全分配其许可证，而不会发生冲突。 在迁移过程中，用户始终可以访问服务或数据。 迁移是以小型的“批”执行的。 可以验证每个批的结果，并最大程度地缩小迁移过程中可能发生的任何问题的范围。 总体过程如下：
 
 1.  用户是源组的成员，从该组继承源许可证。
 
@@ -70,7 +69,7 @@ ms.locfileid: "50211785"
 
 ![源许可证继承自组的用户](./media/licensing-groups-change-licenses/UserWithSourceLicenseInherited.png)
 
-**步骤 2**：用户已添加到目标组并且基于组的许可已处理更改。 用户现已从组继承源许可证和目标许可证。
+**步骤 2**：用户已添加到目标组，并且基于组的许可已处理更改。 用户现已从组继承源许可证和目标许可证。
 
 ![源和目标许可证都继承自组的用户](./media/licensing-groups-change-licenses/UserWithBothSourceAndTargetLicense.png)
 
@@ -84,7 +83,7 @@ ms.locfileid: "50211785"
 > [!NOTE]
 > 此示例代码本使用文档[最后一部分](#powershell-automation-of-migration-and-verification-steps)中包含的 PowerShell 函数。
 
-```
+```powershell
 # A batch of users that we want to migrate in this iteration.
 # The batch can be specified as an array of User Principal Names (string) or ObjectIds (Guid).
 # Note: The batch can be loaded from a text file that represents a larger batch of users that we want to migrate.
@@ -127,7 +126,7 @@ ExecuteVerificationLoop ${function:VerifySourceLicenseRemovedAndTargetLicenseAss
 
 **示例输出（迁移两个用户）**
 
-```
+```powershell
 Verifying initial assumptions:
 Enough TailspinOnline:ENTERPRISEPREMIUM licenses available (13) for users: 2.
 migrationuser@tailspinonline.com                OK
@@ -176,7 +175,7 @@ Check passed for all users. Exiting check loop.
 ```
 
 ## <a name="migrate-users-between-products-that-have-conflicting-service-plans"></a>在包含有冲突服务计划的产品之间迁移用户
-迁移目标是使用基于组的许可将用户许可证从源许可证（在本示例中为 Office 365 企业版 E1）更改为目标许可证（在本示例中为 Office 365 企业版 E3）。 此方案中的两种产品包含有冲突的服务计划（在此文中详细了解冲突），因此，我们必须先解决冲突，然后才能无缝迁移用户。 有关这些冲突的详细信息，请参阅[解决 Active Directory 许可组问题：有冲突的服务计划](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans)。 在迁移过程中，用户始终可以访问服务或数据。 迁移是以小型的“批”执行的。 可以验证每个批的结果，并最大程度地缩小迁移过程中可能发生的任何问题的范围。 总体过程如下：
+迁移目标是使用基于组的许可将用户许可证从“源许可证”（在此示例中为：Office 365 企业版 E1）更改为“目标许可证”（在此示例中：Office 365 企业版 E3）。 此方案中的两种产品包含有冲突的服务计划（在此文中详细了解冲突），因此，我们必须先解决冲突，然后才能无缝迁移用户。 有关这些冲突的详细信息，请参阅[解决 Active Directory 许可组问题：有冲突的服务计划](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans)。 在迁移过程中，用户始终可以访问服务或数据。 迁移是以小型的“批”执行的。 可以验证每个批的结果，并最大程度地缩小迁移过程中可能发生的任何问题的范围。 总体过程如下：
 
 1.  用户是源组的成员，从该组继承源许可证。
 
@@ -199,7 +198,7 @@ Check passed for all users. Exiting check loop.
 
 ![源许可证继承自组的用户](./media/licensing-groups-change-licenses/UserWithSourceLicenseInheritedConflictScenario.png)
 
-**步骤 2**：用户已添加到目标组并且基于组的许可已处理更改。 由于用户仍有源许可证，因此，由于存在冲突，目标许可证处于错误状态。
+**步骤 2**：用户已添加到目标组，并且基于组的许可已处理更改。 由于用户仍有源许可证，因此，由于存在冲突，目标许可证处于错误状态。
 
 ![源许可证继承自组、目标许可证处于错误状态的用户](./media/licensing-groups-change-licenses/UserWithSourceLicenseAndTargetLicenseInConflict.png)
 
@@ -214,7 +213,7 @@ Check passed for all users. Exiting check loop.
 > [!NOTE]
 > 此示例代码本使用文档[最后一部分](#powershell-automation-of-migration-and-verification-steps)中包含的 PowerShell 函数。
 
-```
+```powershell
 # A batch of users that we want to migrate in this iteration.
 # The batch can be specified as an array of User Principal Names (string) or ObjectIds (Guid).
 # Note: The batch can be loaded from a text file that represents a larger batch of users that we want to migrate.
@@ -264,7 +263,7 @@ ExecuteVerificationLoop ${function:VerifySourceLicenseRemovedAndTargetLicenseAss
 
 **示例输出（迁移两个用户）**
 
-```
+```powershell
 Verifying initial assumptions:
 Enough TailspinOnline:ENTERPRISEPACK licenses available (61) for users: 2.
 migrationuser@tailspinonline.com                OK
@@ -320,7 +319,7 @@ Check passed for all users. Exiting check loop.
 
 若要执行该代码，请参考 [Azure AD PowerShell v1.0 库](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)中的说明。 在执行脚本之前，请先运行 `connect-msolservice` cmdlet 登录到租户。
 
-```
+```powershell
 # BEGIN: Helper functions that are used in the scripts.
 
 # GetUserObject function
@@ -522,7 +521,7 @@ function IsExpectedLicenseStateForGroup
     # The license is expected to be fully assigned from the group and not in an error state.
     if([string]::IsNullOrEmpty($expectedError))
     {
-        # Check if the assigned license is inherted from the expected group and without an error on it.
+        # Check if the assigned license is inherited from the expected group and without an error on it.
         return (UserHasLicenseAssignedFromThisGroup $user $skuId $groupId)
     }
     # The license is expected to be in the specific error state on the specific group.
@@ -613,7 +612,7 @@ function VerifyAssumptionsForUser
         return $false
     }
 
-    # 2. The user does't have the same source license assigned from another group at the same time,
+    # 2. The user doesn't have the same source license assigned from another group at the same time,
     #    and the user doesn't have the source license assigned directly.
     [Guid[]]$otherObjectsAssigningLicense = GetObjectIdsAssigningLicense $user $sourceSkuId | Where {$_ -ne $sourceGroupId}
     foreach($otherObject in $otherObjectsAssigningLicense)

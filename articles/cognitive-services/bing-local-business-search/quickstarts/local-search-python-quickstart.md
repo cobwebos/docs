@@ -6,20 +6,20 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.component: bing-local-business
+ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: d48f24048225f4a0571915c2e27b931f858e8f6e
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5966f7bf635a0de00fb841cdf22af9cea0698d0e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316952"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176244"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>快速入门：使用 Python 将查询发送到必应当地企业搜索 API
 
-使用此快速入门开始向必应当地企业搜索 API 发送请求，该 API 是 Azure 认知服务。 虽然这个简单的应用程序是用 Python 编写的，但 API 是一种 RESTful Web 服务，可以与任何能够发出 HTTP 请求并解析 JSON 的编程语言兼容。
+使用此快速入门开始向必应当地企业搜索 API 发送请求，该 API 是一项 Azure 认知服务。 虽然这个简单的应用程序是用 Python 编写的，但 API 是一种 RESTful Web 服务，可以与任何能够发出 HTTP 请求并解析 JSON 的编程语言兼容。
 
 此示例应用程序从 API 获取搜索查询 `hotel in Bellevue` 的本地响应数据。
 
@@ -41,7 +41,7 @@ ms.locfileid: "52316952"
 
 本演示的完整代码如下：
 
-````
+```
 import http.client, urllib.parse
 import json
 
@@ -65,7 +65,7 @@ def get_local():
 result = get_local()
 print (json.dumps(json.loads(result), indent=4))
 
-````
+```
 
 ## <a name="next-steps"></a>后续步骤
 - [当地企业搜索 Java 快速入门](local-search-java-quickstart.md)

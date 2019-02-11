@@ -4,22 +4,22 @@ description: 了解如何在 Azure Active Directory 和 DocuSign 之间配置单
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 294cd6b8-74d7-44bc-92bc-020ccd13ff12
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 6099c07a0f27966eb4c253b85d24afb0561a708b
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: a4fecf760f60f9e81385d9e11387cf8d38c29a03
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345534"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55198225"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>教程：为 DocuSign 配置自动用户预配
 
@@ -98,5 +98,5 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 * [配置单一登录](docusign-tutorial.md)

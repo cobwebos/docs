@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 31e675b101d903af5dd4a07fee3bc56fbc3353d9
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: bb5d7306558f46f84d1f4a1b7a61332bf767479f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412782"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267039"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>脱机重置 Azure VM 的本地 Windows 密码
 如果已安装 Azure 来宾代理，可以使用 [Azure 门户或 Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 重置 Azure 中 VM 的本地 Windows 密码。 此方法是重置 Azure VM 密码的主要方法。 如果遇到了 Azure 来宾代理无响应的问题，或者上传自定义映像后无法安装，可以手动重置 Windows 密码。 本文详细说明如何通过将源 OS 虚拟磁盘附加到另一个 VM 来重置本地帐户密码。 本文所述的步骤不适用于 Windows 域控制器。 
@@ -37,6 +37,19 @@ ms.locfileid: "50412782"
 * 从故障排除 VM 中分离源 VM 的 OS 磁盘。
 * 在 Resource Manager 模板中使用原始虚拟磁盘创建一个 VM。
 * 新 VM 启动时，创建的配置文件会更新所需用户的密码。
+
+> [!NOTE]
+> 可自动执行以下过程：
+>
+> - 创建故障排除 VM
+> - 附加 OS 磁盘
+> - 重新创建原始 VM
+> 
+> 若要执行此操作，请使用 [Azure VM 恢复脚本](https://github.com/Azure/azure-support-scripts/blob/master/VMRecovery/ResourceManager/README.md)。 如果选择使用 Azure VM 恢复脚本，可使用“详细步骤”部分中的以下过程：
+> 1. 使用脚本将受影响 VM 的 OS 磁盘附加到恢复 VM，则可跳过步骤 1 和步骤 2。
+> 2. 请按照步骤 3 - 6 应用风险缓解。
+> 3. 使用脚本重新生成 VM，则可跳过步骤 7 - 9。
+> 4. 请按照步骤 10 和 11 进行操作。
 
 ## <a name="detailed-steps"></a>详细步骤
 

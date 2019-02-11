@@ -3,19 +3,19 @@ title: 本地 Azure AD 密码保护常见问题解答
 description: 本地 Azure AD 密码保护常见问题解答
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: d3d42a3c81153d54690f0825368eaa950dbac18e
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: f690625fda07bdbff671567f0292cc8e1cabeda1
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314773"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078689"
 ---
 # <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>预览版：本地 Azure AD 密码保护 - 常见问题解答
 

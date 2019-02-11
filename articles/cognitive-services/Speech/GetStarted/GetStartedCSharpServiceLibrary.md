@@ -6,18 +6,18 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: e9b3d3207f5aca6cba3555ba2578b5c66b3bd193
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 79ed6f1d2dc5495994d2522abf5af391cc79b705
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343685"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226037"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>快速入门：使用 C# for .NET Windows 中的必应语音识别服务库
+# <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>快速入门：在 C# for .NET Windows 版中使用必应语音识别服务库
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
@@ -52,7 +52,7 @@ ms.locfileid: "49343685"
 
 2. 双击打开名为 SpeechClient.sln 的 Visual Studio 2015 解决方案 (.sln) 文件。 该解决方案随即在 Visual Studio 中打开。
 
-## <a name="step-2-build-the-sample-application"></a>步骤 2：生成示例应用程序
+## <a name="step-2-build-the-sample-application"></a>步骤 2：构建示例应用程序
 
 按 Ctrl+Shift+B 或选择功能区菜单上的“生成”。 然后选择“生成解决方案”。
 
@@ -66,15 +66,15 @@ ms.locfileid: "49343685"
 
    * Arg[0]：指定输入音频 WAV 文件。
    * Arg[1]：指定音频区域设置。
-   * Arg[2]：指定识别模式：Short 表示 `ShortPhrase` 模式，Long 表示 `LongDictation` 模式。
+   * Arg[2]：指定识别模式：指定“Short”表示 `ShortPhrase` 模式，指定“Long”表示 `LongDictation` 模式。
    * Arg[3]：指定用于访问语音识别服务的订阅密钥。
 
 ## <a name="samples-explained"></a>介绍的示例
 
 ### <a name="recognition-modes"></a>识别模式
 
-* `ShortPhrase` 模式：最长 15 秒的语音。 当将数据发送到服务器时，客户端接收多个部分结果和一个最佳结果。
-* `LongDictation` 模式：最长 10 分钟的语音。 当将数据发送到服务器时，基于服务器指示的语句停顿位置，客户端会接收到多个部分结果和多个最终结果。
+* `ShortPhrase` 模式：最长 15 秒的话语。 当将数据发送到服务器时，客户端接收多个部分结果和一个最佳结果。
+* `LongDictation` 模式：最长 10 分钟的话语。 当将数据发送到服务器时，基于服务器指示的语句停顿位置，客户端会接收到多个部分结果和多个最终结果。
 
 ### <a name="supported-audio-formats"></a>支持的音频格式
 
@@ -90,14 +90,14 @@ ms.locfileid: "49343685"
 
 * `SpeechLanguage`：发送到语音服务的音频区域设置。
 * `ServiceUri`：用于调用语音服务的终结点。
-* `AuthorizationProvider`：用提取令牌以访问语音服务的 IAuthorizationProvider 实现。 虽然该示例提供了认知服务授权提供程序，但我们强烈建议你创建自己的实现来处理令牌缓存。
+* `AuthorizationProvider`：用于提取令牌以访问语音服务的 IAuthorizationProvider 实现。 虽然该示例提供了认知服务授权提供程序，但我们强烈建议你创建自己的实现来处理令牌缓存。
 * `EnableAudioBuffering`：高级选项。 请参阅[连接管理](#connection-management)。
 
 ### <a name="speech-input"></a>语音输入
 
 SpeechInput 对象包含两个字段：
 
-* **音频**：SDK 从中提取音频的所选流实现。 它可以是支持读取的任何[流](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx)。
+* **音频**：SDK 从中拉取音频的所选流实现。 它可以是支持读取的任何[流](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx)。
    > [!NOTE]
    > 当流在读取中返回 0 时，SDK 会检测流的结束。
 
@@ -119,7 +119,7 @@ SpeechInput 对象包含两个字段：
 
 ：每次语音服务预测你可能会说的内容时，甚至在你说完（如果使用 `MicrophoneRecognitionClient`）或完成发送数据（如果使用 `DataRecognitionClient`）之前，都会调用此事件。 可使用 `SpeechClient.SubscribeToPartialResult()` 订阅该事件。 或者可使用通用事件订阅方法 `SpeechClient.SubscribeTo<RecognitionPartialResult>()`。
 
-**返回格式** | Description |
+**返回格式** | 说明 |
 ------|------
 **LexicalForm** | 此形式最适合需要原始、未处理的语音识别结果的应用程序使用。
 **DisplayText** | 应用了反向文本规范化、大写、标点符号和不当字词屏蔽的已识别短语。 在不当字词的初始字符后用星号进行了屏蔽，例如“d***”。 该形式最适合需要向用户显示语音识别结果的应用程序使用。
@@ -130,7 +130,7 @@ SpeechInput 对象包含两个字段：
 #### <a name="result-event"></a>结果事件
 （在 `ShortPhrase` 模式下）完成说话后，将调用此事件。 针对结果提供了 n-best 选项。 在 `LongDictation` 模式下，可根据服务指示的语句停顿位置多次调用该事件。 可使用 `SpeechClient.SubscribeToRecognitionResult()` 订阅该事件。 或者可使用通用事件订阅方法 `SpeechClient.SubscribeTo<RecognitionResult>()`。
 
-**返回格式** | Description |
+**返回格式** | 说明 |
 ------|------|
 **RecognitionStatus** | 有关识别生成方式的状态。 例如，它是由于成功识别还是由于取消连接等原因而产生的。
 **Phrases** | 具有识别置信度的 n-best 识别短语集。

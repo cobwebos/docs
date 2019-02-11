@@ -1,23 +1,23 @@
 ---
 title: 使用 Azure 中的 Cloudyn 报表 | Microsoft Docs
-description: 本文介绍如何在 Cloudyn 门户中使用各种报表。
+description: 本文介绍 Cloudyn 门户中包含的 Cloudyn 报表的用途，可帮助你有效使用它们。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/17/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: efb199a9e97a6e80cc24dfe32f6477b4c7abf89a
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: seodec18
+ms.openlocfilehash: db24cb1e1b303fbd3f0981390940732685c98baf
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276017"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558798"
 ---
-# <a name="use-cloudyn-reports"></a>使用 Cloudyn 报表
+# <a name="reports-available-in-the-cloudyn-portal"></a>Cloudyn 门户中可用的报表
 
 本文介绍 Cloudyn 门户中包含的 Cloudyn 报表的用途。 另外还介绍了如何有效地使用这些报表。 大多数报表都较为直观，具有统一的外观。 在一个报表中可以执行的大部分操作，在其他报表中也同样可以执行。 有关如何使用 Cloudyn 报表（包括如何自定义并保存或计划报表）的概述，请参阅[了解成本报表](understanding-cost-reports.md)。
 
@@ -59,11 +59,11 @@ Cloudyn 中的仪表板提供报表的高级别视图。 仪表板由小组件�
 
 ## <a name="budget-information-in-reports"></a>报表中的预算信息
 
-手动创建一项预算后，很多 Cloudyn 报表将显示预算信息。 也就是说，在创建预算之前，报表不会显示预算信息。 有关详细信息，请参阅[预算设置](#budget-settings)。
+手动创建一项预算后，很多 Cloudyn 报表将显示预算信息。 也就是说，在创建预算之前，报表不会显示预算信息。 有关详细信息，请参阅[预算管理设置](#budget-management-settings)。
 
 ## <a name="reports-and-reporting-features"></a>报表和报告功能
 
-Clouydn 包括下列报表和报告功能。
+Cloudyn 包括下列报表和报告功能。
 
 ### <a name="cost-navigator-report"></a>成本导航器报表
 

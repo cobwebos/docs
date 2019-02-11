@@ -1,5 +1,5 @@
 ---
-title: 监视 Azure DC/OS 群集 - Datadog
+title: （已弃用）监视 Azure DC/OS 群集 - Datadog
 description: 通过 Datadog 监视 Azure 容器服务群集。 使用 DC/OS Web UI 将 Datadog 代理部署到群集。
 services: container-service
 author: sauryadas
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 07/28/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 029f36e4362704fcec240f6e88da5c96e903c317
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d881a5c0f994b627b4c7c3da362672b3b887cd5e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32162749"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996153"
 ---
-# <a name="monitor-an-azure-container-service-dcos-cluster-with-datadog"></a>通过 Datadog 监视 Azure 容器服务 DC/OS 群集
+# <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-datadog"></a>（已弃用）通过 Datadog 监视 Azure 容器服务 DC/OS 群集
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 在本文中，我们将 Datadog 代理部署到 Azure 容器服务群集中的所有代理节点。 此配置需要具有 Datadog 帐户。 
 

@@ -1,22 +1,22 @@
 ---
-title: 在 Team Data Science Process 中浏览数据| Microsoft Docs
-description: 如何在不同的存储环境中浏览数据。
+title: 在 Team Data Science Process 中浏览数据
+description: 浏览通常用于 Team Data Science Process 的不同存储环境中的数据。
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 261cb608aa5404b836ec3f5b1eecfa7ba4036978
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: c9c788ef5d358152b595cde673930949d013c281
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441243"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451251"
 ---
 # <a name="explore-data-in-the-team-data-science-process"></a>在 Team Data Science Process 中浏览数据
 

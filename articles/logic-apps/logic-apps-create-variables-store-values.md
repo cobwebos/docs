@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: c0f2802bae366637fd93d47e33619746b7142f53
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: bb84c7d5e483b0a2abc3b7d1a37de8760513d203
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231621"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063210"
 ---
 # <a name="create-variables-for-saving-and-managing-values-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建用于保存和管理值的变量
 
@@ -28,7 +28,10 @@ ms.locfileid: "50231621"
 * 将不同的值赋给变量。
 * 插入或追加变量值作为字符串或数组中的最后一个时间。
 
-变量只在创建它们的逻辑应用实例中存在并保持全局性。 另外，它们保留在逻辑应用实例中的任何循环迭代之间。 引用变量时，请使用变量的名称作为令牌，而不要使用操作的名称。操作名称通常用于引用操作的输出。
+变量只在创建它们的逻辑应用实例中存在并保持全局性。 另外，它们保留在逻辑应用实例中的任何循环迭代之间。 引用变量时，请使用变量的名称作为令牌，而不要使用操作的名称。操作名称通常用于引用操作的输出。 
+
+> [!IMPORTANT]
+> 默认情况下，“Foreach”循环中的周期并行运行。 在循环中使用变量时，[按顺序](../logic-apps/logic-apps-control-flow-loops.md#sequential-foreach-loop)运行循环，以便变量返回可预测的结果。 
 
 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 
@@ -69,11 +72,11 @@ ms.locfileid: "50231621"
 
 4. 提供变量的以下信息：
 
-   | 属性 | 必选 | 值 |  Description |
+   | 属性 | 必选 | Value |  Description |
    |----------|----------|-------|--------------|
-   | 名称 | 是 | <*variable-name*> | 要递增的变量的名称 | 
-   | 类型 | 是 | <*variable-type*> | 变量的数据类型 | 
-   | 值 | 否 | <*start-value*> | 变量的初始值 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道变量的起始值。 | 
+   | Name | 是 | <*variable-name*> | 要递增的变量的名称 | 
+   | Type | 是 | <*variable-type*> | 变量的数据类型 | 
+   | Value | 否 | <*start-value*> | 变量的初始值 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道变量的起始值。 | 
    ||||| 
 
    ![初始化变量](./media/logic-apps-create-variables-store-values/initialize-variable.png)
@@ -205,10 +208,10 @@ ms.locfileid: "50231621"
 
 3. 提供用于递增变量的以下信息：
 
-   | 属性 | 必选 | 值 |  Description |
+   | 属性 | 必选 | Value |  Description |
    |----------|----------|-------|--------------|
-   | 名称 | 是 | <*variable-name*> | 要递增的变量的名称 | 
-   | 值 | 否 | <*increment-value*> | 用于递增变量的值。 默认值为 1。 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道用于递增变量的特定值。 | 
+   | Name | 是 | <*variable-name*> | 要递增的变量的名称 | 
+   | Value | 否 | <*increment-value*> | 用于递增变量的值。 默认值为 1。 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道用于递增变量的特定值。 | 
    |||| 
 
    例如： 
@@ -325,10 +328,10 @@ ms.locfileid: "50231621"
 
 下面是“递减变量”操作的属性：
 
-| 属性 | 必选 | 值 |  Description |
+| 属性 | 必选 | Value |  Description |
 |----------|----------|-------|--------------|
-| 名称 | 是 | <*variable-name*> | 要递减的变量的名称 | 
-| 值 | 否 | <*increment-value*> | 用于递减变量的值。 默认值为 1。 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道用于递减变量的特定值。 | 
+| Name | 是 | <*variable-name*> | 要递减的变量的名称 | 
+| Value | 否 | <*increment-value*> | 用于递减变量的值。 默认值为 1。 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道用于递减变量的特定值。 | 
 ||||| 
 
 如果从设计器切换到代码视图编辑器，“递减变量”操作会采用 JSON 格式，按以下方式显示在逻辑应用定义中。
@@ -360,10 +363,10 @@ ms.locfileid: "50231621"
 
 下面是“设置变量”操作的属性：
 
-| 属性 | 必选 | 值 |  Description | 
+| 属性 | 必选 | Value |  Description | 
 |----------|----------|-------|--------------| 
-| 名称 | 是 | <*variable-name*> | 要更改的变量的名称 | 
-| 值 | 是 | <*new-value*> | 要赋给变量的值。 两者的数据类型必须相同。 | 
+| Name | 是 | <*variable-name*> | 要更改的变量的名称 | 
+| Value | 是 | <*new-value*> | 要赋给变量的值。 两者的数据类型必须相同。 | 
 ||||| 
 
 > [!NOTE]
@@ -418,10 +421,10 @@ ms.locfileid: "50231621"
 
 下面是“追加到...”操作的属性：
 
-| 属性 | 必选 | 值 |  Description | 
+| 属性 | 必选 | Value |  Description | 
 |----------|----------|-------|--------------| 
-| 名称 | 是 | <*variable-name*> | 要更改的变量的名称 | 
-| 值 | 是 | <*append-value*> | 要追加的值，可以是任何类型 | 
+| Name | 是 | <*variable-name*> | 要更改的变量的名称 | 
+| Value | 是 | <*append-value*> | 要追加的值，可以是任何类型 | 
 |||||  
 
 如果从设计器切换到代码视图编辑器，“追加到数组变量”操作会采用 JSON 格式，按以下方式显示在逻辑应用定义中。

@@ -1,27 +1,8 @@
 ---
-title: 对机器学习工作室经典 Web 服务重新训练进行故障排除 - Azure | Microsoft Docs
-description: 确定并更正重新训练 Azure 机器学习工作室 Web 服务的模型时遇到的常见问题。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
-ms.author: amlstudiodocs
-manager: hjerez
-editor: cgronlun
-ms.assetid: 75cac53c-185c-437d-863a-5d66d871921e
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/01/2017
-ms.openlocfilehash: 1105b81d0f8ba80bd76bcdf140fe79b9e8a7102d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307196"
+title:对机器学习工作室经典 Web 服务重新训练进行故障排除 titleSuffix:Azure 机器学习工作室 description:确定并更正重新训练 Azure 机器学习工作室 Web 服务的模型时遇到的常见问题。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date:2017/11/01
 ---
 # <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-studio-classic-web-service"></a>对 Azure 机器学习工作室经典 Web 服务重新训练进行故障排除
 ## <a name="retraining-overview"></a>重新训练概述
@@ -41,8 +22,8 @@ ms.locfileid: "52307196"
 
 所有部分准备就绪后，必须按照如下主要步骤重新训练模型：
 
-1. 调用培训 Web 服务：调用批处理执行服务 (BES)，而不是请求响应服务 (RRS)。 可使用 API 帮助页面上的示例 C# 代码进行调用。 
-2. 查找 *BaseLocation*、*RelativeLocation* 和 *SasBlobToken* 的值：这些值在从调用训练 Web 服务的输出中返回。 
+1. 调用训练 Web 服务：调用批处理执行服务 (BES)，而不是请求响应服务 (RRS)。 可使用 API 帮助页面上的示例 C# 代码进行调用。 
+2. 找到 BaseLocation、RelativeLocation 和 SasBlobToken 的值：从训练 Web 服务调用的输出中返回这些值。 
    ![显示重新训练示例的输出以及 BaseLocation、RelativeLocation 和 SasBlobToken 值。][image6]
 3. 使用新训练的模型从评分 Web 服务更新添加的终结点：使用重新训练机器学习模型中提供的示例代码，通过训练 Web 服务中新训练的模型以编程方式更新已添加到评分模型的新终结点。
 
@@ -71,7 +52,7 @@ ms.locfileid: "52307196"
 7. 在“修补程序”URL 下面，单击“API 帮助”打开修补帮助页。
 
 > [!NOTE]
-> 如果已向训练 Web 服务而非预测 Web 服务添加终结点，在单击“更新资源”链接时会收到以下错误：抱歉，此功能不受支持或在此上下文中不可用。 此 Web 服务没有可更新的资源。 我们对于所造成的不便深表歉意，正在努力改进此工作流。
+> 如果已向训练 Web 服务而非预测 Web 服务添加终结点，在单击“更新资源”链接时会收到以下错误：“抱歉，此功能不受支持或在此上下文中不可用”。 此 Web 服务没有可更新的资源。 我们对于所造成的不便深表歉意，正在努力改进此工作流。
 > 
 > 
 
@@ -105,7 +86,7 @@ ms.locfileid: "52307196"
 
 <!-- Image Links -->
 
-[image1]: ./media/troubleshooting-retraining-a-model/ml-studio-tm-connnected-to-web-service-out.png
+[image1]: ./media/troubleshooting-retraining-a-model/ml-studio-tm-connected-to-web-service-out.png
 [image2]: ./media/troubleshooting-retraining-a-model/addEndpoint-output.png
 [image3]: ./media/troubleshooting-retraining-a-model/azure-portal-update-resource.png
 [image4]: ./media/troubleshooting-retraining-a-model/check-workspace-region.png

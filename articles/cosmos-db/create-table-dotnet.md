@@ -1,22 +1,19 @@
 ---
-title: 快速入门：将表 API 与 .NET 配合使用 - Azure Cosmos DB | Microsoft Docs
+title: 快速入门：将表 API 与 .NET 配合使用 - Azure Cosmos DB
 description: 本快速入门介绍如何在 Azure 门户和 .NET 中使用 Azure Cosmos DB 表 API 创建应用程序
-services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-table
-ms.custom: quickstart connect, mvc
+ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: 9cda2c165d7d00ebb92907d54217a30d62df6c18
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 453c3ce2d813093e087bea67056036f9125941c6
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700028"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038596"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-and-azure-cosmos-db"></a>快速入门：使用 .NET 和 Azure Cosmos DB 生成表 API 应用 
 
@@ -88,7 +85,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 这样，应用程序就可以与托管的数据库进行通信。 
 
-1. 在 [Azure 门户](http://portal.azure.com/)中，单击“连接字符串”。 
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击“连接字符串”。 
 
     使用窗口右侧的复制按钮复制“主连接字符串”。
 

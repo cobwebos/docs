@@ -1,25 +1,25 @@
 ---
-title: Azure Analysis Services 教程第 13 课：部署 | Microsoft Docs
+title: Azure Analysis Services 教程第 13 课：部署 |Microsoft Docs
 description: 介绍了如何将教程项目部署到 Azure Analysis Services。
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f0528af5f3a6b7309d81c36ca5bc7a3faccfa293
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 780853644125c8fa6d5edcef642cfad724516ef2
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427104"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188379"
 ---
 # <a name="deploy"></a>部署
 
 本课介绍如何配置部署属性；指定要部署到的 Azure Analysis Services 服务器，以及模型的名称。 然后，将模型部署到该实例。 在部署模型后，用户可以使用报告客户端应用程序连接到该模型。 有关详细信息，请参阅[部署到 Azure Analysis Services](https://docs.microsoft.com/azure/analysis-services/analysis-services-deploy)。  
   
-本课预计完成时间：**5 分钟**  
+本课程预计完成时间：5 分钟  
   
 ## <a name="prerequisites"></a>先决条件  
 本文是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，应当已完成上一课：[第 12 课：在 Excel 中分析](../tutorials/aas-lesson-12-analyze-in-excel.md)。  

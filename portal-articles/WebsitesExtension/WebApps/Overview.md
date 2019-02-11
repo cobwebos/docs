@@ -8,18 +8,18 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 50e6b714bc28ce383f06580d0e35b0b0e4066835
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: be918ecef3a9fb346d9aa441bef9b4c3991009d6
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432217"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606463"
 ---
 # <a name="app-service-documentation"></a>应用服务文档
 使用 Azure 应用服务，可以采用所选编程语言构建和托管 Web 应用程序，不需要对基础结构进行管理，也不需要对语言或 Web 框架运行时进行管理。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps Services 或任何 Git 存储库进行自动部署。 可以参考我们的快速入门、教程和示例来了解如何使用 Azure 应用服务。
 
 ## <a name="windows-linux-and-docker"></a>Windows、Linux 和 Docker
-[Web 应用](/app-service/app-service-web-overview)是应用服务的主要产品/服务，用于使用 Windows 环境构建和托管 Web 应用程序。 喜欢使用 Linux 环境的开发人员可以选择[适用于 Linux 的应用服务](/app-service/containers/app-service-linux-intro)。 开发人员还可以直接将 Docker 映像部署到适用于 Linux 的应用服务来部署自定义运行时/框架。
+[Web 应用](/app-service/overview)是应用服务的主要产品/服务，用于使用 Windows 环境构建和托管 Web 应用程序。 喜欢使用 Linux 环境的开发人员可以选择[适用于 Linux 的应用服务](/app-service/containers/app-service-linux-intro)。 开发人员还可以直接将 Docker 映像部署到适用于 Linux 的应用服务来部署自定义运行时/框架。
 
 ## <a name="5-minute-quickstarts"></a>5 分钟快速入门
 
@@ -54,7 +54,7 @@ ms.locfileid: "47432217"
 查找脚本来管理常见任务。
 
 - [Azure CLI](/azure/app-service/app-service-cli-sample)
-- [Azure PowerShell](/azure/app-service/app-service-powershell-samples)
+- [Azure PowerShell](/azure/app-service/samples-powershell)
 
 ## <a name="more"></a>更多
 

@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 08/06/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: c7d2211ca69fcd18588ea1b20b638b2970b8439c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: e63dd0a6feaedf95bb4845a3c5eded89e6585e36
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318826"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463491"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-july-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 7 月
 Azure SQL 数据仓库持续得到改进。 本文介绍了 2018 年 7 月发行的版本中所引入的新功能和所做的更改。
@@ -23,12 +23,12 @@ Azure SQL 数据仓库持续得到改进。 本文介绍了 2018 年 7 月发行
 ## <a name="lightning-fast-query-performance"></a>飞快的查询性能
 随着可改进无序操作性能的即时数据访问的推出，[Azure SQL 数据仓库](https://aka.ms/sqldw)制定了新的性能基准。 即时数据访问使用直接的 SQL Server 到 SQL Server 本机数据操作来降低数据移动操作的开销。 为实现数据移动而与 SQL Server 引擎直接集成，意味着 SQL 数据仓库的速度**比 Amazon Redshift 快 67%**，因为它使用派生自公认行业标准 [TPC Benchmark™ H (TPC-H)](http://www.tpc.org/tpch/) 的工作负荷。
 
-![Azure SQL 数据仓库比 Amazon Redshift 更快、更便宜](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/eb3b908a-464d-4847-b384-9f296083a737.png)
-<sub>资料来源：[Gigaom Research Analyst Report: Data Warehouse in the Cloud Benchmark](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>（Gigaom 调查分析师报告：符合云基准的数据仓库）
+![Azure SQL 数据仓库比 Amazon Redshift 速度更快、成本更低](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/eb3b908a-464d-4847-b384-9f296083a737.png)
+<sub>来源：[Gigaom 研究分析师报告：云基准中的数据仓库](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
 
 除运行时性能以外，[Gigaom 调查](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)报告还在评估特定工作负荷的美元成本时测量了性价比。 处理 30TB 的工作负荷时，SQL 数据仓库的成本比 Redshift **至少降低了 23%**。 SQL 数据仓库能够弹性缩放计算资源，并且还能暂停和恢复工作负荷；只有服务处于使用中状态时，客户才需付费，因此进一步降低了成本。
-![Azure SQL 数据仓库比 Amazon Redshift 更快、更便宜](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/cb76447e-621e-414b-861e-732ffee5345a.png)
-<sub>资料来源：[Gigaom Research Analyst Report: Data Warehouse in the Cloud Benchmark](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>（Gigaom 调查分析师报告：符合云基准的数据仓库）
+![Azure SQL 数据仓库比 Amazon Redshift 速度更快、成本更低](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/cb76447e-621e-414b-861e-732ffee5345a.png)
+<sub>来源：[Gigaom 研究分析师报告：云基准中的数据仓库](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
 
 ### <a name="query-concurrency"></a>查询并发性
 SQL 数据仓库还确保可跨组织访问数据。 Microsoft 增强了该服务以支持 128 个并发查询，使更多的用户可以查询同一个数据库，而不会受到其他请求的阻止。 相比之下，Amazon Redshift 将最大并发查询数限制为 50 个，因此限制了组织内部的数据访问。

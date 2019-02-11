@@ -1,21 +1,23 @@
 ---
-title: Azure IoT Edge 平台支持 | Microsoft Docs
-description: Azure IoT Edge 支持的平台
+title: 支持的操作系统、容器引擎 - Azure IoT Edge | Microsoft Docs
+description: 了解可以运行 Azure IoT Edge 守护程序和运行时的操作系统以及生产设备支持的容器引擎
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/07/2018
+ms.date: 12/17/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 45c5c7245a2af3b0d0e328bfcc43112eaee406ee
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 6443260de0a8bd8531edb303fa581d281034fef3
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564997"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555602"
 ---
-# <a name="azure-iot-edge-support"></a>Azure IoT Edge 支持
+# <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支持的系统
+
 有多种方法可用来寻求对 Azure IoT Edge 产品的支持。
 
 **报告 bug** – 涉及 Azure IoT Edge 产品的大多数开发都是在 IoT Edge 开放源代码项目中进行的。 可以在项目的[问题页面](https://github.com/azure/iotedge/issues)上报告 bug。 修复很快就会从项目实施到产品更新中。
@@ -42,9 +44,11 @@ Azure IoT Edge 在可以运行容器的大多数操作系统上运行，但是�
 公共预览版
 | 操作系统 | AMD64 | ARM32 |
 | ---------------- | ----- | ----- |
-| Windows 10 IoT 核心版（2018 年 4 月更新） | 是 | 否 |
-| Windows 10 IoT 企业版（2018 年 4 月更新） | 是 | 否 |
-| Windows 10 Server 1803 | 是 | 否 |
+| Windows 10 IoT 核心版 17763 | 是 | 否 |
+| 用于 Windows 容器的 Windows 10 版本 17763<br><br>用于 Linux 容器的 Windows 10 版本 14393 或更新版本\* | 是 | 否 |
+| 用于 Windows 容器的 Windows Server 2019<br><br>用于 Linux 容器的 Windows Server 2016 或更新版本\* | 是 | 否 |
+
+\* Microsoft 为 Windows 设备上的 Linux 容器提供仅用于开发和测试的安装包。 该配置不支持在生产环境中使用。 
 
 ### <a name="tier-2"></a>第 2 层
 第 2 层系统可视为与 Azure IoT Edge 兼容并且可以相对容易地使用。 这意味着：

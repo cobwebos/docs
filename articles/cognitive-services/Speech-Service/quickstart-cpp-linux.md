@@ -1,27 +1,27 @@
 ---
-title: 快速入门：在 Linux 上使用语音服务 SDK 通过 C++ 识别语音
+title: 快速入门：识别语音，C++ (Linux) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何在 Linux 上使用语音服务 SDK 通过 C++ 识别语音
 services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 12/18/2018
 ms.author: wolfma
-ms.openlocfilehash: bfb71c000eea56e705b33fb97827aead23de8cbb
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 914f86e8705916af4927aa192a41fc7636b80f3a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219267"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228689"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>快速入门：在 Linux 上使用语音 SDK 通过 C++ 识别语音
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-在本文中，你将创建一个适用于 Ubuntu Linux 16.04 的 C++ 控制台应用程序。 你将使用认知服务[语音 SDK](speech-sdk.md)，通过电脑的麦克风将语音实时转录为文本。 该应用程序是通过[适用于 Linux 的语音 SDK](https://aka.ms/csspeech/linuxbinary) 和你的 Linux 发行版的 C++ 编译器（例如 `g++`）构建的。
+在本文中，将创建一个适用于 Ubuntu Linux 16.04 或 18.04 的 C++ 控制台应用程序。 你将使用认知服务[语音 SDK](speech-sdk.md)，通过电脑的麦克风将语音实时转录为文本。 该应用程序是通过[适用于 Linux 的语音 SDK](https://aka.ms/csspeech/linuxbinary) 和你的 Linux 发行版的 C++ 编译器（例如 `g++`）构建的。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,9 +31,9 @@ ms.locfileid: "51219267"
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-认知服务语音 SDK 的当前版本是 `1.1.0`。
+认知服务语音 SDK 的当前版本是 `1.2.0`。
 
-适用于 Linux 的语音 SDK 可用于构建 64 位和 32 位应用程序。 可以从 https://aka.ms/csspeech/linuxbinary 以 tarfile 格式下载必需的库和头文件。
+适用于 Linux 的语音 SDK 可用于构建 64 位和 32 位应用程序。 可以从 https://aka.ms/csspeech/linuxbinary 以 tar 文件格式下载必需的库和头文件。
 
 下载并安装 SDK，如下所示：
 
@@ -129,16 +129,12 @@ ms.locfileid: "51219267"
    We recognized: What's the weather like?
    ```
 
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-在 `quickstart/cpp-linux` 文件夹中查找此示例。
-
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用适用于 C++ 的语音 SDK 从语音中识别意向](how-to-recognize-intents-from-speech-cpp.md)
+> [浏览 GitHub 上的 C++ 示例](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>另请参阅
 
-- [翻译语音](how-to-translate-speech-csharp.md)
 - [自定义声学模型](how-to-customize-acoustic-models.md)
 - [自定义语言模型](how-to-customize-language-model.md)

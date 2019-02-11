@@ -2,21 +2,21 @@
 title: 使用 Azure Batch 进行并行 R 模拟
 description: 教程 - 分步说明如何在 Azure Batch 中使用 R doAzureParallel 包运行 Monte Carlo 财务模拟
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
 ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: fb616dc95cc7dd7dbb25f2deb832b517d0747ae4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: bccf12c4e0614ec02414001ab7cf3c4b7f189e65
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30315444"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455994"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>教程：使用 Azure Batch 运行并行 R 模拟 
 

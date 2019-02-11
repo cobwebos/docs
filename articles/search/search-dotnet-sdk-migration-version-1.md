@@ -1,6 +1,6 @@
 ---
-title: 升级到 Azure 搜索 .NET SDK 版本 1.1 | Microsoft Docs
-description: 升级到 Azure 搜索 .NET SDK 版本 1.1
+title: 升级到 Azure 搜索 .NET SDK 版本 1.1 - Azure 搜索
+description: 从旧 API 版本将代码迁移到 Azure 搜索 .NET SDK 版本 1.1。 了解新增功能和所需的代码更改。
 author: brjohnstmsft
 manager: jlembicz
 services: search
@@ -9,12 +9,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: brjohnst
-ms.openlocfilehash: ccefd21e2aa89a2b46129956b3c4417d548cbf32
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 82823bae76521080634d4f7ff285d94ce8495fbf
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31796738"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317281"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-11"></a>升级到 Azure 搜索 .NET SDK 版本 1.1
 
@@ -47,15 +48,15 @@ ms.locfileid: "31796738"
 
 <a name="ListOfChangesV1"></a>
 
-### <a name="list-of-breaking-changes-in-version-11"></a>版本 1.1 中的重大更改列表
+## <a name="list-of-breaking-changes-in-version-11"></a>版本 1.1 中的重大更改列表
 以下列表按更改会影响应用程序代码的可能性排序。
 
-#### <a name="indexbatch-and-indexaction-changes"></a>IndexBatch 和 IndexAction 更改
+### <a name="indexbatch-and-indexaction-changes"></a>IndexBatch 和 IndexAction 更改
 `IndexBatch.Create` 已重命名为 `IndexBatch.New`，且不再有 `params` 参数。 可以将 `IndexBatch.New` 用于混用不同类型操作（合并、删除等）的 Batch。 此外，还有可用于创建 Batch（其中的所有操作都相同）的新静态方法：`Delete`、`Merge`、`MergeOrUpload` 和 `Upload`。
 
 `IndexAction` 不再有公共构造函数，并且其属性现已不可变。 应该使用新的静态方法针对不同目的创建操作：`Delete`、`Merge`、`MergeOrUpload` 和 `Upload`。 `IndexAction.Create` 已删除。 如果使用了仅需要一个文档的重载，请务必改为使用 `Upload`。
 
-##### <a name="example"></a>示例
+#### <a name="example"></a>示例
 如果代码如下所示：
 
     var batch = IndexBatch.Create(documents.Select(doc => IndexAction.Create(doc)));
@@ -71,10 +72,10 @@ ms.locfileid: "31796738"
     var batch = IndexBatch.Upload(documents);
     indexClient.Documents.Index(batch);
 
-#### <a name="indexbatchexception-changes"></a>IndexBatchException 更改
+### <a name="indexbatchexception-changes"></a>IndexBatchException 更改
 `IndexBatchException.IndexResponse` 属性已重命名为 `IndexingResults`，且其类型现为 `IList<IndexingResult>`。
 
-##### <a name="example"></a>示例
+#### <a name="example"></a>示例
 如果代码如下所示：
 
     catch (IndexBatchException e)
@@ -95,7 +96,7 @@ ms.locfileid: "31796738"
 
 <a name="OperationMethodChanges"></a>
 
-#### <a name="operation-method-changes"></a>操作方法更改
+### <a name="operation-method-changes"></a>操作方法更改
 Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的一组方法重载。 这些方法重载的签名和分解在版本 1.1 中已更改。
 
 例如，较早版本的 SDK 中的“获取索引统计信息”操作公开以下签名：
@@ -151,10 +152,10 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 * 扩展方法现在对调用方隐藏了许多与 HTTP 无关的细节。 例如，较早版本的 SDK 返回响应对象时带有 HTTP 状态代码，通常不需要检查这些状态代码，因为操作方法会为指示错误的任何状态代码引发 `CloudException`。 新的扩展方法只返回模型对象，使你无需在代码中对其进行解包。
 * 核心接口现在反而公开了允许在 HTTP 级别进行更多控制的方法（如果需要）。 现在可以传入要包括在请求中的自定义 HTTP 标头，并且新的 `AzureOperationResponse<T>` 返回类型使你可以直接访问操作的 `HttpRequestMessage` 和 `HttpResponseMessage`。 `AzureOperationResponse` 在 `Microsoft.Rest.Azure` 命名空间中定义，替换 `Hyak.Common.OperationResponse`。
 
-#### <a name="scoringparameters-changes"></a>ScoringParameters 更改
+### <a name="scoringparameters-changes"></a>ScoringParameters 更改
 名为 `ScoringParameter` 的新类已添加到最新的 SDK 中，使向搜索查询中的计分配置文件提供参数更为容易。 之前，`SearchParameters` 类的 `ScoringProfiles` 属性以 `IList<string>` 形式键入；现在它以 `IList<ScoringParameter>` 形式键入。
 
-##### <a name="example"></a>示例
+#### <a name="example"></a>示例
 如果代码如下所示：
 
     var sp = new SearchParameters();
@@ -172,7 +173,7 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
             new ScoringParameter("mapCenterParam", GeographyPoint.Create(lat, lon))
         };
 
-#### <a name="model-class-changes"></a>模型类更改
+### <a name="model-class-changes"></a>模型类更改
 由于[操作方法更改](#OperationMethodChanges)中描述的签名更改，`Microsoft.Azure.Search.Models` 命名空间中的许多类已重命名或已删除。 例如：
 
 * `IndexDefinitionResponse` 已替换为 `AzureOperationResponse<Index>`
@@ -184,7 +185,7 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 
 总之，仅用于包裹模型对象的现有 `OperationResponse` 派生类已删除。 其余类已将其后缀从 `Response` 更改为 `Result`。
 
-##### <a name="example"></a>示例
+#### <a name="example"></a>示例
 如果代码如下所示：
 
     IndexerGetStatusResponse statusResponse = null;
@@ -217,7 +218,7 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 
     IndexerExecutionResult lastResult = status.LastResult;
 
-##### <a name="response-classes-and-ienumerable"></a>响应类和 IEnumerable
+#### <a name="response-classes-and-ienumerable"></a>响应类和 IEnumerable
 可能影响代码的其他更改是：保留集合的响应类不再实现 `IEnumerable<T>`。 相反，可以直接访问集合属性。 例如，如果代码如下所示：
 
     DocumentSearchResponse<Hotel> response = indexClient.Documents.Search<Hotel>(searchText, sp);
@@ -234,7 +235,7 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
         Console.WriteLine(result.Document);
     }
 
-##### <a name="special-case-for-web-applications"></a>Web 应用程序的特例
+#### <a name="special-case-for-web-applications"></a>Web 应用程序的特例
 如果有一个直接序列化 `DocumentSearchResponse` 以向浏览器发送搜索结果的 Web 应用程序，将需要更改代码，否则结果将不会正确序列化。 例如，如果代码如下所示：
 
     public ActionResult Search(string q = "")
@@ -267,10 +268,10 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 
 必须自己在代码中查找此类情况；**编译器不会警告你**，因为 `JsonResult.Data` 属于类型 `object`。
 
-#### <a name="cloudexception-changes"></a>CloudException 更改
+### <a name="cloudexception-changes"></a>CloudException 更改
 `CloudException` 类已从 `Hyak.Common` 命名空间移动到 `Microsoft.Rest.Azure` 命名空间。 此外，其 `Error` 属性已重名为 `Body`。
 
-#### <a name="searchserviceclient-and-searchindexclient-changes"></a>SearchServiceClient 和 SearchIndexClient 更改
+### <a name="searchserviceclient-and-searchindexclient-changes"></a>SearchServiceClient 和 SearchIndexClient 更改
 `Credentials` 属性的类型已从 `SearchCredentials` 更改为其基类（即 `ServiceClientCredentials`）。 如果需要访问 `SearchIndexClient` 或 `SearchServiceClient` 的 `SearchCredentials`，请使用新的 `SearchCredentials` 属性。
 
 在早期版本的 SDK 中，`SearchServiceClient` 和 `SearchIndexClient` 具有需要 `HttpClient` 参数的构造函数。 这些已替换为需要 `HttpClientHandler` 和一个 `DelegatingHandler` 对象数组的构造函数。 这使得必要时安装用于预处理 HTTP 请求的自定义处理程序更为容易。
@@ -291,7 +292,7 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 
 另请注意，凭据参数的类型已更改为 `ServiceClientCredentials`。 由于 `SearchCredentials` 派生自 `ServiceClientCredentials`，所以这不太可能影响代码。
 
-#### <a name="passing-a-request-id"></a>传递请求 ID
+### <a name="passing-a-request-id"></a>传递请求 ID
 在早期版本的 SDK 中，可以设置 `SearchServiceClient` 或 `SearchIndexClient` 上的请求 ID，它将包含在对 REST API 的每个请求中。 如果需要与支持人员联系，这对于解决搜索服务的问题非常有用。 不过，为每个操作设置唯一请求 ID 更加有用，而不是将同一 ID 用于所有操作。 出于此原因，`SearchServiceClient` 和 `SearchIndexClient` 的 `SetClientRequestId` 方法已删除。 相反，可以通过可选参数 `SearchRequestOptions` 将请求 ID 传递给每个操作方法。
 
 > [!NOTE]
@@ -299,7 +300,7 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 > 
 > 
 
-#### <a name="example"></a>示例
+### <a name="example"></a>示例
 如果代码如下所示：
 
     client.SetClientRequestId(Guid.NewGuid());
@@ -310,7 +311,7 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 
     long count = client.Documents.Count(new SearchRequestOptions(requestId: Guid.NewGuid()));
 
-#### <a name="interface-name-changes"></a>接口名称更改
+### <a name="interface-name-changes"></a>接口名称更改
 操作组接口名称已全部更改，与其相应的属性名称保持一致：
 
 * `ISearchServiceClient.Indexes` 的类型已从 `IIndexOperations` 更改为 `IIndexesOperations`。
@@ -322,17 +323,17 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 
 <a name="BugFixesV1"></a>
 
-### <a name="bug-fixes-in-version-11"></a>版本 1.1 中的 Bug 修复
+## <a name="bug-fixes-in-version-11"></a>版本 1.1 中的 Bug 修复
 与自定义模型类的序列化有关的早期版本的 Azure 搜索 .NET SDK 中存在 Bug。 如果使用不可为 null 的值类型的属性创建了自定义模型类，可能会出现 Bug。
 
-#### <a name="steps-to-reproduce"></a>重现步骤
+### <a name="steps-to-reproduce"></a>重现步骤
 使用不可为 null 的值类型的属性创建自定义模型类。 例如，添加类型为 `int`（而不是 `int?`）的公共 `UnitCount` 属性。
 
 如果使用该类型的默认值（例如，`int` 的 0）对文档编制索引，该字段在 Azure 搜索将为 null。 如果随后搜索该文档，`Search` 调用会引发 `JsonSerializationException`，声称无法将 `null` 转换为 `int`。
 
 此外，筛选器可能不会按预期工作，因为 null 已写入索引，而不是预期值。
 
-#### <a name="fix-details"></a>修复详细信息
+### <a name="fix-details"></a>修复详细信息
 我们修复了版本 1.1 的 SDK 中存在的此问题。 现在，如果模型类如下所示：
 
     public class Model
@@ -346,7 +347,7 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 
 使用此方法时有一个潜在的问题需要注意：如果将模型类型与不可为 null 的属性一起使用，必须**保证**索引中的所有文档的对应字段都不包含 null 值。 该 SDK 和 Azure 搜索 REST API 都不会帮助强制实施此检查。
 
-这不只是假想的问题：假设将新字段添加到 `Edm.Int32`类型的现有索引。 更新索引定义后，所有文档的该新字段都具有 null 值（因为 Azure 搜索中的所有类型都可以为 null）。 如果随后使用该字段具有不可为 null `int` 属性的模型类，则在尝试检索文档时会获得如下所示的 `JsonSerializationException`：
+这不只是假想的问题：假设将新字段添加到 `Edm.Int32` 类型的现有索引。 更新索引定义后，所有文档的该新字段都具有 null 值（因为 Azure 搜索中的所有类型都可以为 null）。 如果随后使用该字段具有不可为 null `int` 属性的模型类，则在尝试检索文档时会获得如下所示的 `JsonSerializationException`：
 
     Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 

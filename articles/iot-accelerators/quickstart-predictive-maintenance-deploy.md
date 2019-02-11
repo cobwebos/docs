@@ -1,5 +1,5 @@
 ---
-title: 尝试使用 Azure 上基于云的 IoT 预测性维护解决方案 | Microsoft Docs
+title: 尝试使用基于云的 IoT 预测性维护解决方案 - Azure | Microsoft Docs
 description: 在本快速入门中，我们将部署预测性维护 Azure IoT 解决方案加速器，然后登录并使用解决方案仪表板。
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: c56bdb5968b5f5ada902aa9212282c3cfebe2eaf
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 22f0eae805ad112c5a6a7746897dac7e37d90028
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139833"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604331"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>快速入门：尝试基于云的解决方案，以便在连接的设备上运行预测性维护分析
 

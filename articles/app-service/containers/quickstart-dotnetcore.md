@@ -1,5 +1,5 @@
 ---
-title: 创建 .NET Core Web 应用并将其部署到 Linux 应用服务 | Microsoft Docs
+title: 在 Linux 上创建 .NET Core 应用 - Azure 应用服务 | Microsoft Docs
 description: 在数分钟内将第一个 .NET Core Hello World 应用部署到 Linux 应用服务。
 keywords: azure 应用服务、web 应用、dotnet、core、linux、oss
 services: app-service
@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/11/2018
 ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: 5aff783735d38a2707f42efe8a1632bd5aaafc4b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec18
+ms.openlocfilehash: 047ed6026412cac7fc7c51135e1837a20decd910
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316763"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633923"
 ---
-# <a name="create-a-net-core-web-app-in-app-service-on-linux"></a>在 Linux 应用服务中创建 .NET Core Web 应用
+# <a name="create-a-net-core-app-in-app-service-on-linux"></a>在 Linux 上的应用服务中创建 .NET Core 应用
 
 > [!NOTE]
-> 本文将应用部署到基于 Linux 的应用服务。 若要部署到基于 _Windows_ 的应用服务，请参阅[在 Azure 中创建 ASP.NET Core Web 应用](../app-service-web-get-started-dotnet.md)。
+> 本文将应用部署到基于 Linux 的应用服务。 若要部署到基于 Windows 的应用服务，请参阅[在 Azure 中创建 ASP.NET Core 应用](../app-service-web-get-started-dotnet.md)。
 >
 
-[Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门演示如何在 Linux 应用服务中创建 [.NET Core](https://docs.microsoft.com/aspnet/core/) 应用。 使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建 Web 应用，并使用 Git 将 .NET Core 代码部署到 Web 应用。
+[Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门演示如何在 Linux 应用服务中创建 [.NET Core](https://docs.microsoft.com/aspnet/core/) 应用。 使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建应用，并使用 Git 将 .NET Core 代码部署到该应用。
 
 ![在 Azure 中运行应用的示例](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "52316763"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本快速入门教程：
+完成本快速入门教程需要：
 
 * <a href="https://git-scm.com/" target="_blank">安装 Git</a>
 * <a href="https://www.microsoft.com/net/core/" target="_blank">安装 .NET Core</a>
@@ -53,7 +53,7 @@ md hellodotnetcore
 cd hellodotnetcore
 ```
 
-新建一个 .NET Core Web 应用。
+创建新的 .NET Core 应用。
 
 ```bash
 dotnet new web
@@ -95,15 +95,15 @@ git commit -m "first commit"
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)]
 
-浏览到新建的 Web 应用。 将 _&lt;应用名称>_ 替换为 Web 应用名称。
+浏览到新建的应用。 将 &lt;app name> 替换为你的应用名称。
 
 ```bash
 http://<app name>.azurewebsites.net
 ```
 
-新 Web 应用应该如下所示：
+新应用应该如下所示：
 
-![空 Web 应用页面](media/quickstart-dotnetcore/dotnet-browse-created.png)
+![空应用页](media/quickstart-dotnetcore/dotnet-browse-created.png)
 
 [!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
@@ -144,11 +144,11 @@ To https://cephalin-dotnetcore.scm.azurewebsites.net/cephalin-dotnetcore.git
 http://<app_name>.azurewebsites.net
 ```
 
-.NET Core 示例代码在包含内置映像的 Web 应用中运行。
+.NET Core 示例代码在包含内置映像的 Linux 上的应用服务中运行。
 
 ![在 Azure 中运行应用的示例](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
-**祝贺你！** 现已将第一个 .NET Core 应用部署到 Linux 应用服务。
+祝贺你！ 现已将第一个 .NET Core 应用部署到 Linux 应用服务。
 
 ## <a name="update-and-redeploy-the-code"></a>更新并重新部署代码
 
@@ -169,15 +169,15 @@ git push azure master
 
 ![已更新的在 Azure 中运行应用的示例](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
 
-## <a name="manage-your-new-azure-web-app"></a>管理新 Azure Web 应用
+## <a name="manage-your-new-azure-app"></a>管理新的 Azure 应用
 
-转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理创建的 Web 应用。
+转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理已创建的应用。
 
-在左侧菜单中单击“应用服务”，然后单击 Azure Web 应用的名称。
+在左侧菜单中单击“应用程序服务”，然后单击 Azure 应用的名称。
 
-![在门户中导航到 Azure Web 应用](./media/quickstart-dotnetcore/portal-app-service-list.png)
+![在门户中导航到 Azure 应用](./media/quickstart-dotnetcore/portal-app-service-list.png)
 
-这里我们可以看到 Web 应用的概述页。 并可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 
+这里我们可以看到应用的“概述”页。 并可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 
 
 ![Azure 门户中的应用服务页](media/quickstart-dotnetcore/portal-app-overview.png)
 
@@ -188,4 +188,4 @@ git push azure master
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [在 Linux 上的 Azure 应用服务中生成 .NET Core 和 SQL 数据库 Web 应用](tutorial-dotnetcore-sqldb-app.md)
+> [在 Linux 上的 Azure 应用服务中构建 .NET Core 和 SQL 数据库应用](tutorial-dotnetcore-sqldb-app.md)

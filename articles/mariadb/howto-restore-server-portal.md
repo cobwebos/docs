@@ -3,17 +3,15 @@ title: 如何在 Azure Database for MariaDB 中还原服务器
 description: 本文介绍如何使用 Azure 门户在 Azure Database for MariaDB 中还原服务器。
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 899f0bfa3075c92ac31e2b4f5fab9093a1dc6806
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cf6d0399c790a42eaf74b3ec339bf8cf67495fb3
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999030"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548744"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MariaDB 中备份和还原服务器
 
@@ -68,7 +66,7 @@ Azure Database for MariaDB 服务器定期进行备份以便启用还原功能�
    ![Azure Database for MariaDB - 还原信息 ](./media/howto-restore-server-portal/3-restore.png)
   - **还原点**：选择要还原到的时间点。
   - **目标服务器**：提供新服务器的名称。
-  - 位置：不可选择区域。 默认情况下，此值与源服务器相同。
+  - **位置**：不可选择区域。 默认情况下，此值与源服务器相同。
   - **定价层**：执行时间点还原时，无法更改这些参数。 此值与源服务器相同。 
 
 4. 单击“确定”，将服务器还原到某个时间点。 
@@ -81,7 +79,7 @@ Azure Database for MariaDB 服务器定期进行备份以便启用还原功能�
 ## <a name="geo-restore"></a>异地还原
 如果为服务器配置了异地冗余备份，则可以从该现有服务器的备份创建新服务器。 可以在 Azure Database for MariaDB 可用的任何区域中创建此新服务器。  
 
-1. 选择门户左上角的“创建资源”按钮 (+)。 在搜索框中键入 **Azure Database for MariaDB** 来查找该服务。
+1. 选择门户左上角的“创建资源”按钮 (+)。 在搜索框中键入 Azure Database for MariaDB 来查找该服务。
 
    ![“Azure Database for MariaDB”选项](./media/howto-restore-server-portal/2_navigate-to-mariadb.png)
 

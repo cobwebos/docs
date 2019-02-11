@@ -2,17 +2,18 @@
 title: 将事件发布到自定义 Azure 事件网格主题
 description: 说明如何将事件发布到 Azure 事件网格的自定义主题
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/17/2018
-ms.author: tomfitz
-ms.openlocfilehash: e4256de1d9112d785b6d1cd52067fc99144a0a04
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.date: 01/17/2019
+ms.author: spelluru
+ms.openlocfilehash: b219e9475151ecd14d8b45db9501a06cde05875b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470590"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>发布到 Azure 事件网格的自定义主题
 
@@ -97,7 +98,7 @@ az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --quer
 
 |结果  |响应  |
 |---------|---------|
-|成功  | 200 正常  |
+|Success  | 200 正常  |
 |事件数据的格式不正确 | 400 错误请求 |
 |访问密钥无效 | 401 未授权 |
 |终结点不正确 | 404 未找到 |

@@ -14,12 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: fde8892f7a32d7b5405eef6661bbf29098325178
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.subservice: files
+ms.openlocfilehash: 0aa291c3334af35ec90648cfbcbb7de7015deb99
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958672"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731438"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>使用 SMB 在 Linux VM 上装载 Azure 文件存储
 
@@ -42,7 +43,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-使用 [az storage account create](/cli/azure/storage/account#create) 在创建的资源组中创建一个新存储帐户。 此示例创建名为 *mySTORAGEACCT<random number>* 的存储帐户，然后将该存储帐户的名称置于变量 **STORAGEACCT** 中。 存储帐户名称必须唯一，请使用 `$RANDOM` 将一个数字追加到名称末尾，使之变得唯一。
+使用 [az storage account create](/cli/azure/storage/account) 在创建的资源组中创建一个新存储帐户。 此示例创建名为 *mySTORAGEACCT<random number>* 的存储帐户，然后将该存储帐户的名称置于变量 **STORAGEACCT** 中。 存储帐户名称必须唯一，请使用 `$RANDOM` 将一个数字追加到名称末尾，使之变得唯一。
 
 ```bash
 STORAGEACCT=$(az storage account create \
@@ -57,7 +58,7 @@ STORAGEACCT=$(az storage account create \
 
 创建存储帐户时，帐户密钥是成对创建的，这样是为了不中断任何服务就可轮换密钥。 轮换到密钥对中的第二个密钥后，将创建新的密钥对。 新的存储帐户密钥始终成对创建，因此始终至少有一个未使用的存储帐户密钥可以切换到。
 
-使用 [az storage account keys list](/cli/azure/storage/account/keys#list) 查看存储帐户密钥。 此示例将密钥 1 的值存储在 **STORAGEKEY** 变量中。
+使用 [az storage account keys list](/cli/azure/storage/account/keys) 查看存储帐户密钥。 此示例将密钥 1 的值存储在 **STORAGEKEY** 变量中。
 
 ```bash
 STORAGEKEY=$(az storage account keys list \
@@ -68,7 +69,7 @@ STORAGEKEY=$(az storage account keys list \
 
 ## <a name="create-a-file-share"></a>创建文件共享
 
-使用 [az storage share create](/cli/azure/storage/share#create) 创建文件存储共享。 
+使用 [az storage share create](/cli/azure/storage/share) 创建文件存储共享。 
 
 共享名必须全部采用小写字母、数字和单个连字符，但不能以连字符开头。 有关命名文件共享和文件的完整详细信息，请参阅 [命名和引用共享、目录、文件和元数据](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)。
 

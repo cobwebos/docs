@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: f0c631c765ba95602fb2ac3ab1fd72732793a199
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a775a38d15876850b8a821f9e827e0dd0c3772b6
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264211"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55148033"
 ---
 <!--author=alkohli last changed: 01/23/18-->
 
@@ -54,7 +54,7 @@ ms.locfileid: "51264211"
    
     安装第一级更新的示例输出显示在下面。 对于第一级更新，需要指向特定文件。
    
-        ````
+        ```
         Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
         \FirstOrderUpdate\HcsSoftwareUpdate.exe -Credential contoso\John
    
@@ -65,7 +65,7 @@ ms.locfileid: "51264211"
         be disrupted. Are you sure you want to continue?
         [Y] Yes [N] No [?] Help (default is "Y"): Y
    
-        ````
+        ```
 4. 出现确认安装修补程序的提示时，请键入 **Y**。
 5. 使用 `Get-HcsUpdateStatus` 监视更新。 先在被动控制器上完成更新。 更新被动控制器之后，将发生故障转移，然后，更新将应用到另一个控制器。 两个控制器都更新后，更新即告完成。
    

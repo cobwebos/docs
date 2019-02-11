@@ -3,23 +3,23 @@ title: 使用 Linux VM 系统分配的托管标识访问 Azure 资源管理器
 description: 本快速入门将指导你完成使用 Linux VM 系统分配的托管标识访问 Azure Resource Manager 的过程。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: bryanla
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: daveba
-ms.openlocfilehash: 6c4869c6ed392b8ae0fb33176435aa3f58abaa1e
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.author: priyamo
+ms.openlocfilehash: f06458e3f1a0c0614f9ccb02d4f8dbf7f720ac33
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706426"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181123"
 ---
 # <a name="use-a-linux-vm-system-assigned-managed-identity-to-access-azure-resource-manager"></a>使用 Linux VM 系统分配的托管标识访问 Azure 资源管理器
 
@@ -55,12 +55,12 @@ ms.locfileid: "51706426"
 
 1. 在门户中，转到 Linux VM，并单击“概述”中的“连接”。  
 2. 使用所选的 SSH 客户端连接到 VM。 
-3. 在终端窗口中，使用 CURL 向 Azure 资源终结点的本地托管标识发出请求，以获取 Azure 资源管理器的访问令牌。
+3. 在终端窗口中，使用 `curl` 向 Azure 资源终结点的本地托管标识发出请求，以获取 Azure 资源管理器的访问令牌。  
  
-    下面是用于获取访问令牌的 CURL 请求。  
+    下面是对访问令牌的 `curl` 请求。  
     
     ```bash
-    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true   
+    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' -H Metadata:true   
     ```
     
     > [!NOTE]
@@ -92,11 +92,11 @@ ms.locfileid: "51706426"
     返回的响应包含具体的资源组信息：    
     ```bash
     {"id":"/subscriptions/98f51385-2edc-4b79-bed9-7718de4cb861/resourceGroups/DevTest","name":"DevTest","location":"westus","properties":{"provisioningState":"Succeeded"}} 
-    ```     
+    ```
 
-## Next steps
+## <a name="next-steps"></a>后续步骤
 
-In this quickstart, you learned how to use a system-assigned managed identity to access the Azure Resource Manager API.  To learn more about Azure Resource Manager see:
+在本快速入门中，你已学习了如何使用系统分配的标识来访问 Azure 资源管理器 API。  若要详细了解 Azure 资源管理器，请参阅：
 
 > [!div class="nextstepaction"]
->[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
+>[Azure 资源管理器](/azure/azure-resource-manager/resource-group-overview)

@@ -6,16 +6,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 70fc9c34599f27eb5d67b79ef823f8037ae55ba9
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8bee93c4bb932730000a06cc2bc3fe5a3e330a1f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215236"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217622"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>教程：创建自定义声学模型
 
@@ -46,7 +46,7 @@ ms.locfileid: "50215236"
 * 若要更好地识别嘈杂工厂环境中的语音，音频文件应包括嘈杂工厂中的讲话人。
 * 如果想要优化单个讲话人的性能（例如，罗斯福总统的所有炉边谈话），可以听录他的所有言语，然后，音频文件应该只会包括该讲话人的多个示例。
 
-用于自定义声学模型的声学数据集由两个部分组成：(1) 一组包含语音数据的音频文件；(2) 一个包含所有音频文件听录内容的文件。
+用于自定义声学模型的声学数据集由两个部分组成：(1) 一组包含语音数据的音频文件；(2) 一个包含所有音频文件的听录内容的文件。
 
 ### <a name="audio-data-recommendations"></a>音频数据建议
 

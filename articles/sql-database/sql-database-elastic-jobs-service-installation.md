@@ -3,7 +3,7 @@ title: 安装弹性数据库作业 | Microsoft 文档
 description: 演练如何安装弹性作业功能。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: c2fb3ae20ea2b6ba71408a734c1e0c82cbeb699c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/04/2018
+ms.openlocfilehash: fb405d40458461fbdff8a7720425ff352bfc61de
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233569"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565473"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>安装弹性数据库作业概述
 

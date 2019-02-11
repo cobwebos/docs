@@ -4,9 +4,9 @@ description: 介绍有关 Azure AD 应用程序代理连接器的基础知识
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: d098d38c39788dee7f4a3852d07a762b36fd9a4f
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 0b6b85ef3117343cc8c7dc654bd5debe0c4dfd81
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333745"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149674"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理为发布的应用设置自定义主页
 
@@ -142,4 +142,4 @@ ms.locfileid: "52333745"
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 Azure AD 应用程序代理启用对 SharePoint 的远程访问](application-proxy-integrate-with-sharepoint-server.md)
-- [在 Azure 门户中启用应用程序代理](application-proxy-enable.md)
+- [在 Azure 门户中启用应用程序代理](application-proxy-add-on-premises-application.md)

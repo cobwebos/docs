@@ -1,25 +1,40 @@
 ---
-title: 教程 5：自由格式文本的 Pattern.any 实体
+title: Pattern.any 实体
 titleSuffix: Azure Cognitive Services
 description: 对于格式良好且数据结尾可能容易与话语的剩余单词混淆的话语，使用 pattern.any 实体可从中提取数据。
 services: cognitive-services
+ms.custom: seodec18
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: ee5ba6783a50ad50489a20aa662f17af2ca4ae6a
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d26a8ba40d145515d35de929682125ba9d3e397f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52421991"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55205773"
 ---
-# <a name="tutorial-5-extract-free-form-data"></a>教程 5：提取自由格式数据
+# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>教程：使用 Pattern.any 实体提取自由格式数据
 
 在本教程中，对于格式良好且数据结尾可能容易与话语的剩余单词混淆的话语，我们使用 pattern.any 实体从这些话语中提取数据。 
+
+**本教程介绍如何执行下列操作：**
+
+> [!div class="checklist"]
+> * 导入示例应用
+> * 将示例话语添加到现有实体
+> * 创建 Pattern.any 实体
+> * 创建模式
+> * 定型
+> * 测试新模式
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="using-patternany-entity"></a>使用 Pattern.any 实体
 
 通过 pattern.any 实体，可找到自由格式数据，其中实体的用语方式比较晦涩，难以从话语的其余部分来确定实体的结尾。 
 
@@ -49,24 +64,12 @@ ms.locfileid: "52421991"
 |{FormName} 的作者是谁[？]|
 |{FormName} 是以法语发布的吗[？]|
 
-**本教程介绍如何执行下列操作：**
-
-> [!div class="checklist"]
-> * 使用现有的教程应用
-> * 将示例话语添加到现有实体
-> * 创建 Pattern.any 实体
-> * 创建模式
-> * 定型
-> * 测试新模式
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="use-existing-app"></a>使用现有应用
+## <a name="import-example-app"></a>导入示例应用
 继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
 
-如果没有上一个教程中的 HumanResources 应用，请执行以下步骤：
+请执行以下步骤：
 
-1.  下载并保存[应用 JSON 文件](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-roles-HumanResources.json)。
+1.  下载并保存[应用 JSON 文件](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-pattern-roles-HumanResources.json)。
 
 2. 将 JSON 导入到新应用中。
 

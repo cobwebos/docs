@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 1/25/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: df020fc3a4e2f57730dea7329b08e1e46660e610
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 66f41ffef5d72f5d574bb78d3b810f4a4dc2c4c1
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037033"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098725"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>自定义 Azure-SSIS 集成运行时的安装
 
@@ -28,6 +27,8 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
 既可以安装免费或未许可的组件，也可以安装付费或许可的组件。 如果你是 ISV，请参阅[如何为 Azure-SSIS IR 开发付费或许可的组件](how-to-develop-azure-ssis-ir-licensed-components.md)。
 
+> [!IMPORTANT]
+> Azure-SSIS IR 的 v2 系列节点不适用于自定义设置，因此请改用 v3 系列节点。  如果已使用 v2 系列节点，请尽快改为使用 v3 系列节点。
 
 ## <a name="current-limitations"></a>当前限制
 
@@ -79,7 +80,7 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
        ![创建 Blob 容器](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
 
-    1.  选择新容器并上传自定义安装脚本及其关联的文件。 请务必将 `main.cmd` 上传到容器的顶级目录，而不要上传到任何文件夹中。 
+    1.  选择新容器并上传自定义安装脚本及其关联的文件。 请务必将 `main.cmd` 上传到容器的顶级目录，而不要上传到任何文件夹中。 另请确保你的容器仅包含所需的自定义安装文件，以便稍后将它们下载到 Azure-SSIS IR 时不会花费较长的时间。
 
        ![将文件上传到 Blob 容器](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png)
 
@@ -119,7 +120,7 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
 1.  若要查看其他自定义安装示例，请使用 Azure 存储资源管理器连接到公共预览版容器。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  在“(本地和附加)”下面，右键单击“存储帐户”，并依次选择“连接到 Azure 存储”、“使用连接字符串或共享访问签名 URI”、“下一步”。
+    a.  在“(本地和附加)”下面，右键单击“存储帐户”，并依次选择“连接到 Azure 存储”、“使用连接字符串或共享访问签名 URI”、“下一步”。
 
        ![使用共享访问签名连接到 Azure 存储](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image9.png)
 
@@ -131,7 +132,7 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
     c. 选择已连接的公共预览版容器，并双击 `CustomSetupScript` 文件夹。 此文件夹包含以下项：
 
-       1. 一个 `Sample` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装基本任务的自定义安装程序。 该任务不会执行任何操作，而是休眠几秒。 该文件夹还包含 `gacutil` 文件夹，其中包含 `gacutil.exe`。 此外，`main.cmd` 包含用于保存访问凭据以进行文件共享的注释。
+       1. 一个 `Sample` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装基本任务的自定义安装程序。 该任务不会执行任何操作，而是休眠几秒。 该文件夹还包含 `gacutil` 文件夹，其整个内容（`gacutil.exe`、`gacutil.exe.config` 和 `1033\gacutlrc.dll`）都可以按原样复制到容器中。 此外，`main.cmd` 包含用于保存访问凭据以进行文件共享的注释。
 
        1. 一个 `UserScenarios` 文件夹，其中包含用于实际用户方案的多个自定义设置。
 
@@ -141,17 +142,15 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
        1. 一个 `.NET FRAMEWORK 3.5` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装自定义组件可能需要的 .NET Framework 早期版本的自定义安装程序。
 
-       1. 一个 `AAS` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装客户端库的自定义设置，这些客户端库用于使你的 Analysis Services 任务能够使用服务主体身份验证连接到 Azure Analysis Services (AAS) 实例。 首先，从[此处](https://docs.microsoft.com/azure/analysis-services/analysis-services-data-providers)下载最新的 **MSOLAP (amd64)** 和 **AMO** 客户端库/Windows 安装程序 - 例如 `x64_15.0.900.108_SQL_AS_OLEDB.msi` 和 `x64_15.0.900.108_SQL_AS_AMO.msi`，然后将它们连同 `main.cmd` 一起上传到你的容器。  
-
        1. 一个 `BCP` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装 SQL Server 命令行实用工具 (`MsSqlCmdLnUtils.msi`)（包括批量复制程序 (`bcp`)）的自定义安装程序。
 
        1. 一个 `EXCEL` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装开源程序集（`DocumentFormat.OpenXml.dll`、`ExcelDataReader.DataSet.dll` 和 `ExcelDataReader.dll`）的自定义安装程序。
 
-       1. 一个 `MSDTC` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上修改 Microsoft 分布式事务处理协调器 (MSDTC) 服务的网络和安全配置的自定义安装。 若要确保 MSDTC 已启动，请在包中控制流开头添加 Execute Process Task 以执行以下命令：`%SystemRoot%\system32\cmd.exe /c powershell -Command "Start-Service MSDTC"` 
-
        1. 一个 `ORACLE ENTERPRISE` 文件夹，其中包含用于在 Azure-SSIS IR 企业版的每个节点上安装 Oracle 连接器和 OCI 驱动程序的自定义安装脚本 (`main.cmd`) 和无提示安装配置文件 (`client.rsp`)。 此安装程序允许使用 Oracle 连接管理器、源和目标。 首先，从 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/details.aspx?id=55179)下载适用于 Oracle 的 Microsoft 连接器 v5.0 （`AttunitySSISOraAdaptersSetup.msi` 和 `AttunitySSISOraAdaptersSetup64.msi`），并从 [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) 下载最新的 Oracle 客户端，例如 `winx64_12102_client.zip`，然后将它们连同 `main.cmd` 和 `client.rsp` 一起上传到你的容器中。 如果使用 TNS 连接到 Oracle，则还需要下载 `tnsnames.ora`，对其进行编辑，然后将其上传到容器，以便在安装期间将其复制到 Oracle 安装文件夹中。
 
-       1. 一个 `ORACLE STANDARD` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装 Oracle ODP.NET 驱动程序的自定义安装脚本 (`main.cmd`)。 此安装程序允许使用 ADO.NET 连接管理器、源和目标。 首先，从 [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html) 下载最新的 Oracle ODP.NET 驱动程序（例如 `ODP.NET_Managed_ODAC122cR1.zip`），然后将其与 `main.cmd` 一起上传到容器中。
+       1. 一个 `ORACLE STANDARD ADO.NET` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装 Oracle ODP.NET 驱动程序的自定义安装脚本 (`main.cmd`)。 此安装程序允许使用 ADO.NET 连接管理器、源和目标。 首先，从 [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html) 下载最新的 Oracle ODP.NET 驱动程序（例如 `ODP.NET_Managed_ODAC122cR1.zip`），然后将其与 `main.cmd` 一起上传到容器中。
+       
+       1. 一个 `ORACLE STANDARD ODBC` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装 Oracle ODBC 驱动程序并配置 DSN 的自定义安装脚本 (`main.cmd`)。 此安装程序允许你使用 ODBC 连接管理器/源/目标或 Power Query 连接管理器/源以及 ODBC 数据源种类来连接到 Oracle 服务器。 首先，下载最新的 Oracle Instant Client（基本包或基本精简包）和 ODBC 包 - 例如，从[此处](https://www.oracle.com/technetwork/topics/winx64soft-089540.html)下载 64 位包（基本包：`instantclient-basic-windows.x64-18.3.0.0.0dbru.zip`，基本精简包：`instantclient-basiclite-windows.x64-18.3.0.0.0dbru.zip`，ODBC 包：`instantclient-odbc-windows.x64-18.3.0.0.0dbru.zip`）或者从[此处](https://www.oracle.com/technetwork/topics/winsoft-085727.html)下载 32 位包（基本包：`instantclient-basic-nt-18.3.0.0.0dbru.zip`，基本精简包：`instantclient-basiclite-nt-18.3.0.0.0dbru.zip`，ODBC 包：`instantclient-odbc-nt-18.3.0.0.0dbru.zip`），然后将它们连同 `main.cmd` 一起上传到你的容器中。
 
        1. 一个 `SAP BW` 文件夹，其中包含用于在 Azure-SSIS IR 企业版的每个节点上安装 SAP .NET 连接器程序集 (`librfc32.dll`) 的自定义安装脚本 (`main.cmd`)。 此安装程序允许使用 SAP BW 连接管理器、源和目标。 首先，将 64 位或 32 位版本的 `librfc32.dll` 连同 `main.cmd` 一起从 SAP 安装文件夹上传到容器中。 然后，该脚本会在安装期间将 SAP 程序集复制到 `%windir%\SysWow64` 或 `%windir%\System32` 文件夹中。
 

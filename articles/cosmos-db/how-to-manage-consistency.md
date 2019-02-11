@@ -1,26 +1,25 @@
 ---
 title: 了解如何在 Azure Cosmos DB 中管理一致性
 description: 了解如何在 Azure Cosmos DB 中管理一致性
-services: cosmos-db
 author: christopheranderson
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: 68c8c3767ff3a3d2873c1ff50928ab8d2cada4b1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 33c97f95bebbc05362547164628d3615f1c920f5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263735"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038120"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中管理一致性级别
 
-本文介绍如何通过不同的方式来设置默认一致性、在客户端上重写该一致性、手动管理会话令牌以及了解概率有限过期性 (PBS) 指标。
+本文介绍了如何在 Azure Cosmos DB 中管理一致性级别。 你将了解如何配置默认一致性级别、替代默认一致性、手动管理会话令牌以及了解概率有限过期 (PBS) 指标。
 
 ## <a name="configure-the-default-consistency-level"></a>配置默认一致性级别
 
-默认一致性级别是客户端会默认使用的一致性级别。 它可以由客户端重写。
+默认一致性级别是客户端默认情况下使用的一致性级别。 客户端可以替代它。
 
 ### <a name="cli"></a>CLI
 
@@ -34,7 +33,7 @@ az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource
 
 ### <a name="powershell"></a>PowerShell
 
-下面的这个示例创建新的 Cosmos DB 帐户，并在“美国东部”和“美国西部”区域启用多主机，同时将默认一致性策略设置为“会话”。
+此示例创建在“美国东部”和“美国西部”区域中启用了多主数据库的一个新 Azure Cosmos DB 帐户。 默认一致性策略设置为会话。
 
 ```azurepowershell-interactive
 $locations = @(@{"locationName"="East US"; "failoverPriority"=0},
@@ -60,13 +59,13 @@ New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a name="portal"></a>门户
 
-若要查看或修改默认一致性级别，请登录 Azure 门户。 找到 Cosmos DB 帐户，打开“默认一致性”窗格。 在其中选择所需一致性级别作为新的默认设置，然后单击“保存”。
+若要查看或修改默认一致性级别，请登录到 Azure 门户。 找到你的 Azure Cosmos DB 帐户，打开“默认一致性”窗格。 选择你希望用作新的默认值的一致性级别，然后选择“保存”。
 
-![Azure 门户中一致性菜单的图片](./media/how-to-manage-consistency/consistency-settings.png)
+![Azure 门户中的一致性菜单](./media/how-to-manage-consistency/consistency-settings.png)
 
-## <a name="override-the-default-consistency-level"></a>重写默认一致性级别
+## <a name="override-the-default-consistency-level"></a>替代默认一致性级别
 
-客户端可以重写由服务设置的默认一致性级别。 可以为整个客户端只需此操作，也可以按请求来执行。
+客户端可以替代由服务设置的默认一致性级别。 可以为整个客户端设置此选项，也可以针对每个请求设置此选项。
 
 ### <a id="override-default-consistency-dotnet"></a>.NET SDK
 
@@ -131,7 +130,7 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.ac
 
 ## <a name="utilize-session-tokens"></a>利用会话令牌
 
-若要手动管理会话令牌，可以从响应中获取它们，然后按请求设置它们。 如果不需手动管理会话令牌，则不需使用下面的示例。 SDK 会自动跟踪会话令牌并使用最新的会话令牌（如果你不自行设置会话令牌的话）。
+若要手动管理会话令牌，请从响应中获取会话令牌并针对每个请求设置它们。 如果不需手动管理会话令牌，则不需要使用这些示例。 SDK 会自动跟踪会话令牌。 如果未手动设置会话令牌，则默认情况下，SDK 使用最新的会话令牌。
 
 ### <a id="utilize-session-tokens-dotnet"></a>.NET SDK
 
@@ -206,17 +205,17 @@ options = {
 item = client.ReadItem(doc_link, options)
 ```
 
-## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>监视概率有限过期性 (PBS) 指标
+## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>监视概率有限过期 (PBS) 指标
 
-若要查看 PBS 指标，请在 Azure 门户中转到 Cosmos DB 帐户，然后打开“指标”窗格。 在其中单击“一致性”选项卡，查看名为“基于工作负载的强一致性读取的概率(请参阅 PBS)”的图。
+若要查看 PBS 指标，请在 Azure 门户中转到你的 Cosmos DB 帐户。 打开“指标”窗格，然后选择“一致性”选项卡。查看名为“基于工作负载的强一致性读取的概率(请参阅 PBS)”的图。
 
-![Azure 门户中 PBS 图的图片](./media/how-to-manage-consistency/pbs-metric.png)
+![Azure 门户中的 PBS 图](./media/how-to-manage-consistency/pbs-metric.png)
 
-使用 Cosmos DB 指标菜单来查看此指标。 它不会出现在 Azure Monitoring 指标体验中。
+请使用 Azure Cosmos DB 指标菜单查看此指标。 它不显示在 Azure Monitoring 指标体验中。
 
 ## <a name="next-steps"></a>后续步骤
 
-可以通过以下文档详细了解如何在 Cosmos DB 中管理数据冲突或转到下一重要概念：
+详细了解如何管理数据冲突，或者继续了解 Azure Cosmos DB 中的下一个关键概念。 请参阅以下文章：
 
-* [如何管理区域之间的冲突](how-to-manage-conflicts.md)
+* [管理区域之间的冲突](how-to-manage-conflicts.md)
 * [分区和数据分布](partition-data.md)

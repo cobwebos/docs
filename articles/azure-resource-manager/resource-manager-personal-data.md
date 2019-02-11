@@ -13,18 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 71928be07080ed14fdcb93f33ea64d2572955b53
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: db4e1b8705b879fd5716763869462bafdf1f905c
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38466018"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495201"
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>管理与 Azure 资源管理器相关联的个人数据
 
 若要避免公开敏感信息，请删除在部署、资源组或标记中提供的任何个人信息。 Azure 资源管理器提供相关操作，可以让你管理在部署、资源组或标记中提供的个人数据。
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="delete-personal-data-in-deployment-history"></a>删除部署历史记录中的个人数据
 
@@ -33,13 +35,13 @@ ms.locfileid: "38466018"
 若要在历史记录中列出**部署**，请使用：
 
 * [按资源组列表](/rest/api/resources/deployments/listbyresourcegroup)
-* [Get-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/Get-AzureRmResourceGroupDeployment)
+* [Get-AzResourceGroupDeployment](/powershell/module/az.resources/Get-AzResourceGroupDeployment)
 * [az group deployment list](/cli/azure/group/deployment#az-group-deployment-list)
 
 若要从历史记录中删除**部署**，请使用：
 
 * [删除](/rest/api/resources/deployments/delete)
-* [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/Remove-AzureRmResourceGroupDeployment)
+* [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/Remove-AzResourceGroupDeployment)
 * [az group deployment delete](/cli/azure/group/deployment#az-group-deployment-delete)
 
 ## <a name="delete-personal-data-in-resource-group-names"></a>在资源组名称中删除个人数据
@@ -49,13 +51,13 @@ ms.locfileid: "38466018"
 若要列出**资源组**，请使用：
 
 * [列表](/rest/api/resources/resourcegroups/list)
-* [Get-AzureRmResourceGroup](/powershell/module/azurerm.resources/Get-AzureRmResourceGroup)
+* [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup)
 * [az group list](/cli/azure/group#az-group-list)
 
 若要删除**资源组**，请使用：
 
 * [删除](/rest/api/resources/resourcegroups/delete)
-* [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/Remove-AzureRmResourceGroup)
+* [Remove-AzResourceGroup](/powershell/module/az.resources/Remove-AzResourceGroup)
 * [az group delete](/cli/azure/group#az-group-delete)
 
 ## <a name="delete-personal-data-in-tags"></a>删除标记中的个人数据
@@ -65,13 +67,13 @@ ms.locfileid: "38466018"
 若要列出**标记**，请使用：
 
 * [列表](/rest/api/resources/tags/list)
-* [Get-AzureRmTag](/powershell/module/azurerm.tags/get-azurermtag)
+* [Get-AzTag](/powershell/module/az.resources/Get-AzTag)
 * [az tag list](/cli/azure/tag#az-tag-list)
 
 若要删除**标记**，请使用：
 
 * [删除](/rest/api/resources/tags/delete)
-* [Remove-AzureRmTag](/powershell/module/azurerm.tags/remove-azurermtag)
+* [Remove-AzTag](/powershell/module/az.resources/Remove-AzTag)
 * [az tag delete](/cli/azure/tag#az-tag-delete)
 
 ## <a name="next-steps"></a>后续步骤

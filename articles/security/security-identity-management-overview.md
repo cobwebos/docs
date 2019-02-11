@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
-Customer intent: As a IT Pro or decision maker I am trying to learn about identity mangement capabilities in Azure
-ms.openlocfilehash: 84ab35c269af66f58f3886a5dd0606ce69a11be9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+Customer intent: As a IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
+ms.openlocfilehash: b49629fc380da2df2e091a52ae4bfc8787299aa6
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255875"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103923"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 标识管理安全概述
 
@@ -101,8 +101,8 @@ RBAC 是在 Azure 资源管理器基础上构建的授权系统，针对 Azure �
 
 在 Azure 门户中，报告分为以下类别：
 
-* **异常报告**：包含我们认为异常的登录事件。 我们的目标是让你知道这类活动，并让你能够确定事件是否可疑。
-* **集成应用程序报告**：说明云应用程序在你所在组织中的使用情况。 Azure AD 提供与数千个云应用程序的集成。
+* **异常报告**：包含我们发现存在异常的登录事件。 我们的目标是让你知道这类活动，并让你能够确定事件是否可疑。
+* **集成式应用程序报告**：就组织如何使用云应用程序提供见解。 Azure AD 提供与数千个云应用程序的集成。
 * **错误报告**：指示在为外部应用程序预配帐户时可能发生的错误。
 * **用户特定的报告**：显示特定用户的设备登录活动数据。
 * **活动日志**：包含过去 24 小时、过去 7 天或过去 30 天内的所有已审核事件的记录，以及组活动更改记录、密码重置和注册活动记录。
@@ -154,9 +154,8 @@ Azure AD 设备注册是基于设备的[条件访问](../active-directory/active
 
 了解更多：
 
-* [Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md)
-* [Azure AD Privileged Identity Management 中的角色](../active-directory/privileged-identity-management/pim-roles.md)
-* [Azure AD Privileged Identity Management：如何添加或删除用户角色](../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
+* [什么是 Azure AD Privileged Identity Management？](../active-directory/privileged-identity-management/pim-configure.md)
+* [在 PIM 中分配 Azure AD 目录角色](../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
 
 ## <a name="identity-protection"></a>标识保护
 
@@ -165,7 +164,7 @@ Azure AD Identity Protection 是一种安全服务，它提供一个综合视图
 了解更多：
 
 * [Azure AD Identity Protection](../active-directory/active-directory-identityprotection.md)
-* [第 9 频道：Azure AD 和标识展示：Identity Protection 预览](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [第 9 频道：Azure AD 和标识展示：Identity Protection 预览版](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>混合标识管理/Azure AD Connect
 

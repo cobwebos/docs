@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2018
 ms.author: rkarlin
-ms.openlocfilehash: 91ee57ccd676d1d5e806e3f22eed3389d0fe5e73
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 16c7ad523bcd4a1f7b7b1f80d99e4d36dade72df
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334187"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102424"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>在 Azure 安全中心自定义 OS 安全配置（预览）
 
@@ -90,7 +90,7 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 >
 >
 
-编辑自定义文件时，可以修改一条规则或所有规则。 每个规则集包含一个 *rules* 节，该节已划分为三个类别：“注册表”、“审核策略”和“安全策略”，如下所示：
+编辑自定义文件时，可以修改一条规则或所有规则。 每个规则集都包含“规则”节，该节分为三个类别：注册表、审核策略和安全策略，如下所示：
 
 ![三个规则集类别](media/security-center-customize-os-security-config/rules-section.png)
 
@@ -98,7 +98,7 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 
 - **expectedValue**：此属性的字段数据类型必须与每种规则类型支持的值匹配，例如：
 
-  - **baselineRegistryRules**：该值应与该规则中定义的 [regValueType](https://msdn.microsoft.com/library/windows/desktop/ms724884) 匹配。
+  - **baselineRegistryRules**：此值应与该规则中定义的 [regValueType](https://msdn.microsoft.com/library/windows/desktop/ms724884) 匹配。
 
   - **baselineAuditPolicyRules**：使用以下字符串值之一：
 
@@ -110,9 +110,9 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 
     - *No one*
 
-    - 允许的用户组列表，例如：*Administrators*, *Backup Operators*
+    - 允许的用户组列表，例如：管理员、备份操作员
 
--   **state**：可以包含 *Disabled* 或 *Enabled* 选项的字符串。 在此个人预览版中，该字符串区分大小写。
+-   **state**：该字符串可以包含选项 Disabled 或 Enabled。 在此个人预览版中，该字符串区分大小写。
 
 只能配置这些字段。 如果不符合文件格式或大小，则无法保存更改。 你会收到一条错误消息，指出需上传有效的 JSON 配置文件。
 
@@ -121,7 +121,7 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 以下三节包含上述规则的示例。 可以更改 *expectedValue* 和 *state* 属性。
 
 **baselineRegistryRules**
-```
+```json
     {
     "hive": "LocalMachine",
     "regValueType": "Int",
@@ -144,7 +144,7 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 ```
 
 **baselineAuditPolicyRules**
-```
+```json
     {
     "auditPolicyId": "0cce923a-69ae-11d9-bed3-505054503030",
     "ruleId": "37745508-95fb-44ec-ab0f-644ec0b16995",
@@ -161,7 +161,7 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 ```
 
 **baselineSecurityPolicyRules**
-```
+```json
     {
     "sectionName": "Privilege Rights",
     "settingName": "SeIncreaseWorkingSetPrivilege",
@@ -194,15 +194,15 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 
 新自定义规则带有新自定义源 (!= "Microsoft") 的标记。 *ruleId* 字段可为 null 或空。 如果为空，Microsoft 会生成一个 ID。 如果不为空，它必须是在所有规则（包括默认规则和自定义规则）中唯一的有效 GUID。 查看核心字段的以下约束：
 
--   **originalId**：可为 null 或空。 如果 *originalId* 不为空，它应该是有效的 GUID。
+-   **originalId**：可为 null 或为空。 如果 *originalId* 不为空，它应该是有效的 GUID。
 
--   **cceId**：可为 null 或空。 如果 *cceId* 不为空，它必须是唯一的。
+-   **cceId**：可为 null 或为空。 如果 *cceId* 不为空，它必须是唯一的。
 
 -   **ruleType**：选择下列其中一项：Registry、AuditPolicy 或 SecurityPolicy。
 
 -   **Severity**：选择下列其中一项：Unknown、Critical、Warning 或 Informational。
 
--   **analyzeOperation**：必须是 *Equals*。
+-   **analyzeOperation**：必须为 *Equals*。
 
 -   **auditPolicyId**：必须是有效的 GUID。
 
@@ -216,7 +216,7 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 新自定义规则的示例：
 
 **注册表**：
-```
+```json
     {
     "hive": "LocalMachine",
     "regValueType": "Int",
@@ -225,7 +225,7 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
     "valueName": "MyValueName",
     "originalId": "",
     "cceId": "",
-    "ruleName": "My new registry rule”, "baselineRuleType": "Registry",
+    "ruleName": "My new registry rule", "baselineRuleType": "Registry",
     "expectedValue": "123", "severity": "Critical",
     "analyzeOperation": "Equals",
     "source": "MyCustomSource",
@@ -233,7 +233,7 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
     }
 ```
 **安全策略**：
-```
+```json
    {
    "sectionName": "Privilege Rights",
    "settingName": "SeDenyBatchLogonRight",
@@ -248,7 +248,7 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
    }
 ```
 **审核策略**：
-```
+```json
    {
    "auditPolicyId": "0cce923a-69ae-11d9-bed3-505054503030",
    "originalId": "",
@@ -275,7 +275,7 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 
 | **错误**                                | **说明**                                                                                                                              |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| BaselineConfiguratiohSchemaVersionError  | 发现属性 *schemaVersion* 无效或为空。 该值必须设置为 *{0}*。                                                         |
+| BaselineConfigurationSchemaVersionError  | 发现属性 *schemaVersion* 无效或为空。 该值必须设置为 *{0}*。                                                         |
 | BaselineInvalidStringError               | 属性 *{0}* 不能包含 *\\n*。                                                                                                         |
 | BaselineNullRuleError                    | 基线配置规则列表包含值为 *null* 的规则。                                                                         |
 | BaselineRuleCceIdNotUniqueError          | CCE-ID *{0}* 不唯一。                                                                                                                  |
@@ -298,7 +298,7 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 | BaselineRuleTypeDoesntMatchError         | 规则的实际类型为 *{0}*，但 *ruleType* 属性为 *{1}*。                                                                          |
 | BaselineRuleUnpermittedChangesError      | 只允许更改 *expectedValue* 和 *state* 属性。                                                                       |
 | BaselineTooManyRules                     | 允许的最大自定义规则数为 {0} 个规则。 给定的配置包含 {1} 个规则，其中包括 {2} 个默认规则，{3} 个自定义规则。 |
-| ErrorNoConfigurationStatus               | 找不到配置状态。 请指明所需的配置状态: *Default* 或 *Custom*。                                    |
+| ErrorNoConfigurationStatus               | 找不到配置状态。 请指明所需的配置状态：Default 或 Custom。                                    |
 | ErrorNonEmptyRulesetOnDefault            | 配置状态已设置为默认值。 *BaselineRulesets* 列表必须为 null 或空。                                                          |
 | ErrorNullRulesetsPropertyOnCustom        | 给定的配置状态为 *Custom*，但 *baselineRulesets* 属性为 null 或空。                                             |
 | ErrorParsingBaselineConfig               | 给定的配置无效。 定义的一个或多个值具有 null 值或无效类型。                                  |

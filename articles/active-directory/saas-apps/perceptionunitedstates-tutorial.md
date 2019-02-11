@@ -4,23 +4,23 @@ description: 了解如何在 Azure Active Directory 与 Perception United States
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: b4a8f026-cb5f-41eb-9680-68eddc33565e
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 61fb9904e69f5269c345b733ef2396294c6c790a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8afaf7eec11aef672bc815a509f8cd399c1e24aa
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448166"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174221"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>教程：Azure Active Directory 与 Perception United States (Non-UltiPro) 的集成
 
@@ -173,7 +173,7 @@ ms.locfileid: "39448166"
 
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -209,7 +209,7 @@ ms.locfileid: "39448166"
   
 ### <a name="create-a-perception-united-states-non-ultipro-test-user"></a>创建 Perception United States (Non-UltiPro) 测试用户
 
-本部分将在 Perception United States (Non-UltiPro) 中创建名为 Britta Simon 的用户。 与 [Perception United States (Non-UltiPro) 支持团队](http://www.ultimatesoftware.com/Contact/ContactUs)协作，在 Perception United States (Non-UltiPro) 平台中添加用户。
+本部分将在 Perception United States (Non-UltiPro) 中创建名为 Britta Simon 的用户。 与 [Perception United States (Non-UltiPro) 支持团队](https://www.ultimatesoftware.com/Contact/ContactUs)协作，在 Perception United States (Non-UltiPro) 平台中添加用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -246,12 +246,12 @@ ms.locfileid: "39448166"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Perception United States (Non-UltiPro) 磁贴时，应会自动登录到 Perception United States (Non-UltiPro) 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

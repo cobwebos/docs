@@ -4,22 +4,22 @@ description: 了解如何在 Azure Active Directory 和 Huddle 之间配置单�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 8389ba4c-f5f8-4ede-b2f4-32eae844ceb0
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 050a5a210ab10a557b149513a0416b188f4618ba
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 3ec78c7dc3ac3ce9747a09218e1e35068c60b894
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885897"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187719"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>教程：Azure Active Directory 与 Huddle 集成
 
@@ -101,11 +101,11 @@ ms.locfileid: "48885897"
 
     ![配置单一登录][4]
 
-2. 单击屏幕顶部的“更改单一登录模式”，以选择 **SAML** 模式。
+2. 单击屏幕顶部的“更改单一登录模式”，以选择“SAML”模式。
 
     ![配置单一登录](./media/huddle-tutorial/tutorial_general_300.png)
 
-3. 在“选择单一登录方法”对话框中，对 SAML 模式单击“选择”以启用单一登录。
+3. 在“选择单一登录方法”对话框中，单击“SAML”模式对应的“选择”，以启用单一登录。
 
     ![配置单一登录](./media/huddle-tutorial/tutorial_general_301.png)
 
@@ -120,7 +120,7 @@ ms.locfileid: "48885897"
 
     ![Huddle 域和 URL 单一登录信息](./media/huddle-tutorial/tutorial_huddle_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入一个 URL：
+    a. 在“标识符”文本框中，键入一个 URL：
 
     | | |
     |--|--|
@@ -152,7 +152,7 @@ ms.locfileid: "48885897"
     > [!NOTE]
     > 登录 URL 值不是实际值。 使用实际登录 URL 更新此值。 请联系 [Huddle 客户端支持团队](https://huddle.zendesk.com)获取这些值。
 
-6. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“下载”以根据要求下载相应的证书并将其保存在计算机上。
+6. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，单击“下载”，以根据要求下载相应的证书，并将证书保存在计算机上。
 
     ![配置单一登录](./media/huddle-tutorial/tutorial_huddle_certificate.png)
 
@@ -169,7 +169,7 @@ ms.locfileid: "48885897"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，选择“Azure Active Directory”，接着选择“用户”，然后选择“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
     ![创建 Azure AD 用户][100]
 
@@ -177,11 +177,11 @@ ms.locfileid: "48885897"
 
     ![创建 Azure AD 测试用户](./media/huddle-tutorial/create_aaduser_01.png) 
 
-3. 在“用户属性”中，执行以下步骤。
+3. 在“用户属性”中，按照以下步骤操作。
 
     ![创建 Azure AD 测试用户](./media/huddle-tutorial/create_aaduser_02.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
@@ -208,7 +208,7 @@ ms.locfileid: "48885897"
   
     ![新建邀请](./media/huddle-tutorial/IC787839.png "New Invitation")
   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“选择要邀请人员加入的团队”列表中，选择“团队”。
+    a. 在“选择要邀请人员加入的团队”列表中，选择“团队”。
 
     b. 在“输入要邀请的人员的电子邮件地址”文本框中，键入希望预配的有效 Azure AD 帐户的“电子邮件地址”。
 

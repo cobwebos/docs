@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,21 +16,21 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 916d34a0af1490404cb9f7851b3117f1967c54d0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 55866d5ff28c707c26141683bb90c8f2873b17c8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240896"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818900"
 ---
-# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform-preview"></a>快速入门：删除注册到 Microsoft 标识平台（预览版）的应用程序
+# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform-preview"></a>快速入门：删除注册到 Microsoft 标识平台的应用程序（预览版）
 
 已经向 Microsoft 标识平台注册了应用程序的企业开发人员和软件即服务 (SaaS) 提供商可能需要删除应用程序的注册。
 
 在本快速入门中，你将学习如何：
 
-* [删除你或你的组织编写的应用程序](#remove-an-application-authored-by-your-organization)
-* [删除其他组织编写的应用程序](#remove-an-application-authoried-by-another-organization)
+* 删除你或你的组织编写的应用程序
+* 删除其他组织编写的应用程序
 
 ## <a name="prerequisites"></a>先决条件
 

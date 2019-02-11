@@ -3,7 +3,7 @@ items:
   href: index.yml
 - name: 概述
   items:
-  - name: 关于事件网格
+  - name: 什么是事件网格？
     href: overview.md
   - name: 比较消息服务
     href: compare-messaging-services.md
@@ -124,6 +124,8 @@ items:
     href: cloudevents-schema.md
   - name: 使用事件域管理主题
     href: how-to-event-domains.md
+  - name: 实现客户端故障转移
+    href: custom-disaster-recovery.md
 - name: 引用
   items:
   - name: Azure CLI
@@ -173,9 +175,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: 堆栈溢出
     href: http://stackoverflow.com/questions/tagged/azure-eventgrid
-ms.openlocfilehash: 7d478caf70b799828af5de5afc6f9b491819da8f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e88de075666f8565be9f977d24b038899604970d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415783"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692872"

@@ -6,16 +6,16 @@ services: cognitive-services
 author: luiscabrer
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 09/12/2018
 ms.author: luisca
-ms.openlocfilehash: fe6bc384e4190cd17df00ddf285701db8c4199a6
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 0bda38db089218e0d5f6f8ff15c9eac888900e95
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733323"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209088"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>教程：将 Power BI 与文本分析认知服务集成
 
@@ -70,7 +70,7 @@ CSV 导入对话框用于验证 Power BI Desktop 是否已正确检测到字符�
 
 在 Power BI Desktop 中，选择“开始”功能区。 在“外部数据”组中，单击“编辑查询”。
 
-![[“开始”功能区中的“外部数据”组]](../media/tutorials/power-bi/edit-queries.png)
+![[“主页”功能区中的“外部数据”组]](../media/tutorials/power-bi/edit-queries.png)
 
 选择窗口左侧“查询”列表中的 `FabrikamComments`（如果尚未选择）。
 

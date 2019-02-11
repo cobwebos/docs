@@ -1,6 +1,6 @@
 ---
-title: 使用 .NET Standard 库从 Azure 事件中心接收事件 | Microsoft Docs
-description: 使用 .NET Standard 中的 EventProcessorHost 接收消息入门
+title: 使用 .NET Core 接收事件 - Azure 事件中心 | Microsoft Docs
+description: 本文提供了一个演练，用于创建使用 EventProcessorHost 接收消息的 .NET Core 应用程序。
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 9adbd8b9e7934ebe454d14ac6e47fe96898c9184
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 18b37fd7c85fced4cc57b57320daf195f6f33e3e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234385"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082374"
 ---
-# <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>使用 .NET Standard 中的事件处理程序主机接收消息入门
+# <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-core"></a>使用 .NET Core 中的事件处理程序主机接收消息入门
 事件中心是一个服务，可用于处理来自连接设备和应用程序的大量事件数据（遥测）。 将数据采集到事件中心后，可以使用任何实时分析提供程序或存储群集来转换和存储数据。 这种大规模事件收集和处理功能是现代应用程序体系结构（包括物联网 (IoT)）的重要组件。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
 
 本教程显示如何编写 .NET Core 控制台应用程序，以使用[事件处理程序主机](event-hubs-event-processor-host.md)从事件中心接收消息。 [事件处理程序主机](event-hubs-event-processor-host.md)是一个 .NET 类，它通过从事件中心管理持久检查点和并行接收来简化从那些事件中心接收事件的过程。 使用事件处理程序主机，可跨多个接收方拆分事件，即使在不同节点中托管时也是如此。 此示例演示如何为单一接收方使用事件处理程序主机。 [扩大事件处理][使用事件中心扩大事件处理]示例显示如何将事件处理程序主机用于多个接收方。
@@ -206,7 +207,7 @@ ms.locfileid: "51234385"
 > 本教程使用单个 [EventProcessorHost](event-hubs-event-processor-host.md) 实例。 若要增加吞吐量，建议运行多个 [EventProcessorHost](event-hubs-event-processor-host.md) 实例，如[扩展的事件处理](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3)示例中所示。 在这些情况下，为了对接收的事件进行负载均衡，多个实例会自动相互协调。 
 
 ## <a name="next-steps"></a>后续步骤
-在本快速入门，你已创建从事件中心接收消息的 .NET Standard 应用程序。 若要了解如何使用 .NET Standard 将事件发送到事件中心，请参阅[从事件中心发送事件 - .NET Standard](event-hubs-dotnet-standard-getstarted-send.md)。
+在本快速入门中，你已创建从事件中心接收消息的 .NET Core 应用程序。 若要了解如何使用 .NET Core 将事件发送到事件中心，请参阅[从事件中心发送事件 - .NET Core](event-hubs-dotnet-standard-getstarted-send.md)。
 
 [1]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/event-hubs-python1.png
 [2]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcorercv.png

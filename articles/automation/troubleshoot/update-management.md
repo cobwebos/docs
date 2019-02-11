@@ -4,16 +4,16 @@ description: 了解如何排查更新管理问题
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f52767058ef69d29465f1274109b6d3ffe58296c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 01f72b8d41c1a973c7d187f519a43ce62929a23e
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092621"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359351"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>排查更新管理问题
 
@@ -45,13 +45,56 @@ The components for the 'Update Management' solution have been enabled, and now t
 1. 访问[网络规划](../automation-hybrid-runbook-worker.md#network-planning)，了解需要允许哪些地址和端口才能使更新管理正常工作。
 2. 如果使用克隆映像，请首先对映像进行系统准备，然后在事后安装 MMA 代理。
 
+### <a name="multi-tenant"></a>场景：在为另一个 Azure 租户中的计算机创建更新部署时收到链接订阅错误。
+
+#### <a name="issue"></a>问题
+
+尝试为另一个 Azure 租户中的计算机创建更新部署时收到以下错误：
+
+```
+The client has permission to perform action 'Microsoft.Compute/virtualMachines/write' on scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Automation/automationAccounts/automationAccountName/softwareUpdateConfigurations/updateDeploymentName', however the current tenant '00000000-0000-0000-0000-000000000000' is not authorized to access linked subscription '00000000-0000-0000-0000-000000000000'.
+```
+
+#### <a name="cause"></a>原因
+
+当创建的更新部署包含另一个租户中的 Azure 虚拟机时会发生此错误。
+
+#### <a name="resolution"></a>解决方法
+
+你需要使用以下解决方法来进行安排。 你可以使用 [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule?view=azurermps-6.13.0) cmdlet 和开关 `-ForUpdate` 来创建计划，然后使用 [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration?view=azurermps-6.13.0
+) cmdlet 并将另一个租户中的计算机传递给 `-NonAzureComputer` 参数。 以下示例展示了如何执行此操作：
+
+```azurepowershell-interactive
+$nonAzurecomputers = @("server-01", "server-02")
+
+$startTime = ([DateTime]::Now).AddMinutes(10)
+
+$s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
+
+New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+```
+
+### <a name="nologs"></a>场景：Log Analytics 中未显示计算机的更新管理数据
+
+#### <a name="issue"></a>问题
+
+你的计算机在“合规性”下显示为“未评估”，但你会在 Log Analytics 中看到混合 Runbook 辅助角色的检测信号数据，而不是“更新管理”。
+
+#### <a name="cause"></a>原因
+
+混合 Runbook 辅助角色可能需要重新注册并重新安装。
+
+#### <a name="resolution"></a>解决方法
+
+遵循[部署 Windows 混合 Runbook 辅助角色](../automation-windows-hrw-install.md)中的步骤来为 Windows 安装混合辅助角色，或者遵循[部署 Linux 混合 Runbook 辅助角色](../automation-linux-hrw-install.md)中的步骤为 Linux 进行安装。
+
 ## <a name="windows"></a>Windows
 
 如果在尝试在虚拟机上载入解决方案时遇到问题，请查看本地计算机“应用程序和服务日志”下的“Operations Manager”事件日志中是否存在事件 ID 为 4502、事件消息包含 Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent 的事件。
 
 下一部分突出显示了特定的错误消息，以及每个消息的可能解决方案。 有关其他载入问题，请参阅[排查解决方案载入问题](onboarding.md)。
 
-### <a name="machine-already-registered"></a>方案：计算机已注册到其他帐户
+### <a name="machine-already-registered"></a>场景：计算机已注册到其他帐户
 
 #### <a name="issue"></a>问题
 
@@ -69,7 +112,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 通过[删除混合 runbook 组](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)对计算机上的旧项目进行清理，然后重试。
 
-### <a name="machine-unable-to-communicate"></a>方案：计算机无法与服务进行通信
+### <a name="machine-unable-to-communicate"></a>场景：计算机无法与服务进行通信
 
 #### <a name="issue"></a>问题
 
@@ -95,7 +138,7 @@ The certificate presented by the service <wsid>.oms.opinsights.azure.com was not
 
 检查网络并确保允许适当的端口和地址。 有关更新管理和混合 Runbook 辅助角色所需的端口和地址列表，请参阅[网络要求](../automation-hybrid-runbook-worker.md#network-planning)。
 
-### <a name="unable-to-create-selfsigned-cert"></a>方案：无法创建自签名证书
+### <a name="unable-to-create-selfsigned-cert"></a>场景：无法创建自签名证书
 
 #### <a name="issue"></a>问题
 
@@ -113,20 +156,6 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 请验证系统帐户是否具有对文件夹 C:\ProgramData\Microsoft\Crypto\RSA 的读取权限，然后重试。
 
-### <a name="nologs"></a>场景：Log Analytics 中未显示计算机的更新管理数据
-
-#### <a name="issue"></a>问题
-
-你的计算机在“合规性”下显示为“未评估”，但你会在 Log Analytics 中看到混合 Runbook 辅助角色的检测信号数据，而不是“更新管理”。
-
-#### <a name="cause"></a>原因
-
-混合 Runbook 辅助角色可能需要重新注册并重新安装。
-
-#### <a name="resolution"></a>解决方法
-
-按照[部署 Windows 混合 Runbook 辅助角色](../automation-windows-hrw-install.md)中的步骤重新安装混合辅助角色。
-
 ### <a name="hresult"></a>场景：计算机显示“未评估”，并显示 HResult 异常
 
 #### <a name="issue"></a>问题
@@ -135,7 +164,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 #### <a name="cause"></a>原因
 
-计算机中的 Windows 更新配置不正确。
+计算机中的 Windows 更新或 WSUS 配置不正确。 更新管理依赖于 Windows 更新或 WSUS 来提供所需的更新、修补程序的状态，以及所部署的修补程序的结果。 如果没有该信息，则更新管理无法正确报告所需的或已安装的修补程序。
 
 #### <a name="resolution"></a>解决方法
 
@@ -149,9 +178,14 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | 请确保 Windows 更新服务 (wuauserv) 正在运行，并且未禁用。        |
 |任何其他一般异常     | 在 Internet 上搜索可能的解决方案，并与本地 IT 支持人员合作。         |
 
+此外，你可以下载并运行 [Windows 更新疑难解答](https://support.microsoft.com/help/4027322/windows-update-troubleshooter)，以检查计算机上的 Windows 更新是否存在任何问题。
+
+> [!NOTE]
+> [Windows 更新疑难解答](https://support.microsoft.com/help/4027322/windows-update-troubleshooter)指出它适用于 Windows 客户端，但它也适用于 Windows Server。
+
 ## <a name="linux"></a>Linux
 
-### <a name="scenario-update-run-fails-to-start"></a>方案：无法启动更新运行
+### <a name="scenario-update-run-fails-to-start"></a>场景：无法启动更新运行
 
 #### <a name="issue"></a>问题
 
@@ -169,7 +203,7 @@ Linux 混合辅助角色运行状况不正常。
 /var/opt/microsoft/omsagent/run/automationworker/worker.log
 ```
 
-### <a name="scenario-update-run-starts-but-encounters-errors"></a>方案：启动更新运行后遇到错误
+### <a name="scenario-update-run-starts-but-encounters-errors"></a>场景：启动更新运行后遇到错误
 
 #### <a name="issue"></a>问题
 

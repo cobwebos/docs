@@ -3,19 +3,19 @@ title: 以来宾用户身份离开组织 - Azure Active Directory | Microsoft Do
 description: 演示 Azure AD B2B 来宾用户如何使用访问面板离开组织。
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: cea882bd1ba2ba12d34690fb47ec1afd6edf5c4c
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: caca01411b5bd5f41a35dd99b36b21accba47e5c
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982164"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077992"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>以来宾用户身份离开组织
 

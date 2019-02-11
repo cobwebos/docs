@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: d709acfe378583a21b72971f465e4b5d73818bcd
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 2d57097e4d3317bfba5055a6b75ae72dd60f046a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307722"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244685"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>为 SQL 数据仓库中的表编制索引
 在 Azure SQL 数据仓库中为表编制索引的建议和示例。

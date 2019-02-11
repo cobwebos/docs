@@ -7,16 +7,16 @@ author: aahill
 manager: cgronlun
 ms.assetid: C2862E98-8BCC-423B-9C4A-AC79A287BE38
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 8/8/2018
 ms.author: aahi
-ms.openlocfilehash: 5d2dcc60a8707394ec07a76e3286929db365c651
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 9e5995809630e160e38a5be700b058035fffc653
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296509"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188527"
 ---
 # <a name="send-queries-to-the-bing-image-search-api"></a>向必应图像搜索 API 发送查询
 

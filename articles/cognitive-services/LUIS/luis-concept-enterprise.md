@@ -1,21 +1,22 @@
 ---
-title: LUIS 应用的企业概念 - 语言理解
-titleSuffix: Azure Cognitive Services
-description: 了解大型 LUIS 应用的设计概念。
+title: 企业概念
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: 了解大型 LUIS 应用程序或多个应用程序（包括 LUIS 和 QnA Maker）的设计概念。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: bb4078c9131488e5077795df792de259d7c789dc
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: d757ea45ab1aec3d9babd5f7cf570d73257bfd40
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638256"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223062"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>LUIS 应用的企业策略
 查看企业应用的设计策略。

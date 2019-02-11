@@ -4,11 +4,11 @@ description: 了解设备管理如何有助于控制访问环境中的资源的�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: devices
+ms.subservice: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 10/03/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 1b8a6e6a6b5f482a4e3575c4da18a02a958c4081
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 20bfa4cf02c86922836a70f8885f910814eafb22
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249360"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092113"
 ---
 # <a name="how-to-manage-the-stale-devices-in-azure-ad"></a>如何：在 Azure AD 中管理陈旧的设备
 

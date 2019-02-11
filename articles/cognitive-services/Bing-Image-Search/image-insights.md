@@ -7,16 +7,16 @@ author: swhite-msft
 manager: cgronlun
 ms.assetid: 0BCD936E-D4C0-472D-AE40-F4B2AB6912D5
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 280c646a3265ff7ab9a3d32412a2be2e3989e22e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f0f3396852720bbbb31e46f7a9913d9d1bdc4a6c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297463"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157234"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>使用必应图像搜索 API 获取图像见解
 
@@ -216,10 +216,10 @@ Host: api.cognitive.microsoft.com
 
 矩形的值是相对于原始图像的宽和高的，其范围为 0.0 到 1.0。 例如，如果图像为 300x200，该区域左上角所在的点为 (10, 20)，右下角所在的点为 (290, 150)，则规范化的矩形的指标如下：  
 
--   左：10 / 300 = 0.03333...  
--   上：20 / 200 = 0.1  
--   右：290 / 300 = 0.9667...  
--   下：150 / 200 = 0.75  
+-   左：10/300 = 0.03333...  
+-   上：20/200 = 0.1  
+-   右：290/300 = 0.9667...  
+-   下：150/200 = 0.75  
 
 可以在后续的见解调用中使用必应返回的此区域。 例如，可以使用此区域来获取在视觉上与识别的实体类似的图像。 有关详细信息，请参阅[裁剪图像以便将其用于“视觉类似”模块和“实体识别”模块](#croppingimages)。 下面说明了如何在区域字段和将要用于裁剪图像的查询字符串之间进行映射。  
 
@@ -408,7 +408,7 @@ Host: api.cognitive.microsoft.com
 }
 ```
 
-若要获取在线提供此产品的商家的列表（参见 [offerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#offer-offercount) 字段），请再次调用此 API，将 `modules` 设置为 ShoppingSources。 然后，将 `insightsToken` 查询参数设置为在产品摘要图像中发现的令牌。  
+若要获取在线提供此产品的商家的列表（参见 [offerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) 字段），请再次调用此 API，将 `modules` 设置为 ShoppingSources。 然后，将 `insightsToken` 查询参数设置为在产品摘要图像中发现的令牌。  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?modules=ShoppingSources&insightsToken=ccid_hb3uRvUk*mid_BF5C252A47F2C765...&mkt=en-us HTTP/1.1    

@@ -8,21 +8,21 @@ manager: mtillman
 editor: ''
 ms.assetid: 494a06b8-0f9b-44e1-a7a2-d728cf2077ae
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 12/18/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 24a9b014028bf99673881904e17ec0911d0b5063
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bee59155a8b8a03064b658c2657a7540c53a8874
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952046"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100761"
 ---
 # <a name="application-types-for-v20"></a>v2.0 的应用程序类型
 
@@ -121,7 +121,7 @@ Web API 可以从各种应用接收访问令牌，其中包括 Web 服务器应�
 
 ## <a name="daemons-and-server-side-apps"></a>守护程序和服务器端应用
 
-包含长时运行进程或无需用户交互便可操作的应用还需要通过其他方法访问受保护的资源，例如 Web API。 这些应用可以通过 OAuth 2.0 客户端凭据流使用应用的标识（而不是用户的委派标识）来进行身份验证和获取令牌。
+包含长时运行进程或无需用户交互便可操作的应用还需要通过其他方法访问受保护的资源，例如 Web API。 这些应用可以通过 OAuth 2.0 客户端凭据流使用应用的标识（而不是用户的委派标识）来进行身份验证和获取令牌。 可以使用客户端机密或证书证明应用的身份。 有关详细信息，请参阅[使用证书在守护程序应用中对 Azure AD 进行身份验证](https://azure.microsoft.com/resources/samples/active-directory-dotnet-daemon-certificate-credential/)。
 
 在该流中，应用通过直接与 `/token` 终结点交互来获取令牌：
 

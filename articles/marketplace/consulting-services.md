@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: dbd97ba8faacdc387a6e0b78c206f65a201ca246
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 53281af4cf3ce49272ffe9fc48ab0f85cea276b2
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261541"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213615"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure 市场和 AppSource 的咨询服务
 Azure 市场和 AppSource 中的咨询服务使 Microsoft 合作伙伴可实现将客户与服务相连以支持和扩展他们对 Azure 的使用的目标以及业务目标。 
@@ -66,10 +66,10 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 |主产品 |合格要求 |
 |---------|---------|
 | Dynamics 365 for Customer Engagement    |   银级或金级[云客户关系管理](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency)资格。    | 
-|Dynamics 365 for Finance and Operations Enterprise Edition  |  银级或金级[企业资源规划](https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency)资格，后续 12 个月的云运营最低收入达到 25,000 美元。       |
-|Dynamics 365 for Finance and Operations Business Edition  |  充当至少一个客户的[云服务提供商 (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) 或[数字记录合作伙伴 (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record)      |
+|Dynamics 365 for Finance and Operations Enterprise Edition  |  银级或金级[企业资源规划](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)资格，后续 12 个月的云运营最低收入达到 25,000 美元。       |
+|Dynamics 365 for Finance and Operations Business Edition  |  充当至少一个客户的[云服务提供商 (CSP)](https://partner.microsoft.com/cloud-solution-provider) 或[数字记录合作伙伴 (DPOR)](https://partner.microsoft.com/membership/digital-partner-of-record)      |
 |Power BI、Power BI 自定义视觉对象 | 满足[解决方案合作伙伴的条件](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf)。|
-|PowerApps | 具有已发布的[合作伙伴展示]()解决方案
+|PowerApps | 具有已发布的[合作伙伴展示](https://appsource.microsoft.com/partners)解决方案
 
 <b>有关详细信息，请参阅 [Microsoft 合作伙伴网络的资质](https://partner.microsoft.com/membership/competencies)。</b>
  
@@ -87,7 +87,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 咨询服务的启动将在特定地理区域中进行。 首次启动区域将包括：美国、加拿大、英国和澳大利亚。 由合作伙伴提交且由 Microsoft 批准一定数量的有吸引力服务产品选项后，面向其他国家/地区的目录将会推出。
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>如何在 Azure 市场和 AppSource 中注册咨询服务
-首先在市场中[注册](https://azuremarketplace.microsoft.com/en-us/sell/signup)公司信息。 发布者可以参考[成为 Marketplace 中的发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)，获取注册要求的完整清单。 
+首先在市场中[注册](https://azuremarketplace.microsoft.com/sell/signup)公司信息。 发布者可以参考[成为 Marketplace 中的发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)，获取注册要求的完整清单。 
 
 **注册后的期望** 实施团队将在 1-3 个工作日内通过欢迎电子邮件与你联系，其中包括你的云合作伙伴门户 (CPP) 登录信息。 [云合作伙伴门户](https://cloudpartner.azure.com)是产品/服务列表门户，发布者可以在其中提交列表信息和提交。 
 
@@ -119,23 +119,23 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 ## <a name="publishing-process"></a>发布过程
 在 Azure 市场和 AppSource 中列出咨询服务产品涉及以下阶段：
 
-1. **列出**：通过登录[云合作伙伴门户](https://cloudpartner.azure.com)帐户开始起草新的产品列表。 从下拉列表菜单中选择“新产品/服务”和“咨询服务”。 输入列表项目并发布。
-2. **验证：** 将评审你的请求，以确保你符合条件。 然后，我们会发送有关列出咨询服务产品的说明。 
-3. **提交：** 提供说明中列出的必需信息。 所有内容和支持材料都必须以英文提交。 
-4. **评审：** 我们的营销和编辑团队将会评审提交内容，并针对内可读性、语法和效果对其进行优化。 
-5. **暂存**：提交内容将暂存以供查阅。 
-6. **发布：** 在你和 Microsoft 都对暂存内容感到满意后，所列产品便可以在市场中推出。 列表推出日期取决于产品/服务中指定的国家/地区。 如果所选国家/地区的目录已在 Azure 市场或 AppSource 中推出，则所列产品会在几小时内显示。 否则，该目录一推出，就会显示列表。
+1. **一览**：通过登录[云合作伙伴门户](https://cloudpartner.azure.com)帐户开始起草新的产品列表。 从下拉列表菜单中选择“新产品/服务”和“咨询服务”。 输入列表项目并发布。
+2. **验证**：评审你的请求，以确保你符合条件。 然后，我们会发送有关列出咨询服务产品的说明。 
+3. **提交**：提供说明中列出的必需信息。 所有内容和支持材料都必须以英文提交。 
+4. **评审**：我们的营销和编辑团队将会评审提交内容，并在可读性、语法和效果方面对其进行优化。 
+5. **暂存**：暂存提交内容以供查阅。 
+6. **发布**：在你和 Microsoft 都对暂存内容感到满意后，所列产品便可以在市场中推出。 列表推出日期取决于产品/服务中指定的国家/地区。 如果所选国家/地区的目录已在 Azure 市场或 AppSource 中推出，则所列产品会在几小时内显示。 否则，该目录一推出，就会显示列表。
 
 ## <a name="offer-listings-and-content-review-criteria"></a>产品列表和内容审核标准
 产品/服务必须属于以下五种服务类型之一（可以列出多个）： 
 
-* **评估：** 评估客户的环境，以确定解决方案的适用性，并提供成本和时间估算。 
-* **简介**：使用框架、演示和客户示例介绍解决方案或咨询服务，以吸引客户的兴趣。 
-* **实施：** 进行完整安装，以实施完全正常运行的解决方案。 我们建议限制为可在两周或更短时间内实施的解决方案。 
-* **概念证明：** 进行有限范围的实施，以确定解决方案是否满足客户的要求。 
-* **研讨会：** 在客户场地开展的交互式活动， 可以涉及到培训、简报、评估，或根据客户数据或环境制作的演示。 
+* **评估**：评估客户的环境，以确定解决方案的适用性，并提供成本和时间估算。 
+* **简报**：使用框架、演示和客户示例介绍解决方案或咨询服务，以吸引客户的兴趣。 
+* **实施**：进行完整安装，以实施完全正常运行的解决方案。 我们建议限制为可在两周或更短时间内实施的解决方案。 
+* **概念证明**：进行有限范围的实施，以确定解决方案是否满足客户的要求。 
+* **研讨会**：在客户场地开展的交互式活动。 可以涉及到培训、简报、评估，或根据客户数据或环境制作的演示。 
 
-**注意：** 可以面对面地（即在客户位置或者合作伙伴的设施内现场进行）或者以虚拟形式（即通过电话会议、网络会议或远程实施）提供咨询服务，但这一点不适用于“简报”服务类型。 简报必须面对面提供。
+**注意：** 可以面对面地（即，在客户的位置或者合作伙伴的设施中现场进行）或者以虚拟形式（即，通过电话会议、网络会议或远程实施）提供咨询服务，但这一点不适用于“简报”服务类型。 简报必须面对面提供。
 
 当你配置好上面列出的所需元素以后，内容审核团队会验证你的产品/服务描述所提供的信息对于目标受众来说是否足够充分。 
 
@@ -148,7 +148,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 
 |标题示例  |正确格式  |
 |---------|---------|
-|Azure IoT 制造入门    |   制造 IoT：2 天评估      |
+|Azure IoT 制造入门    |   制造 IoT：2 日评估      |
 |智能烤面包机研讨会        |  智能烤面包机：1 周研讨会       |
 |  SQL Server 迁移 PoC    | SQL 迁移：3 周概念证明        |
 
@@ -180,8 +180,9 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 
 如果尚未注册， 
 
-- 请在市场中[注册](https://azuremarketplace.microsoft.com/sell)
+- 请在市场中[注册](https://azuremarketplace.microsoft.com/sell)。
 
 如果已注册且正在使用云合作伙伴门户，请 
 
-- [登录到云合作伙伴门户](https://cloudpartner.azure.com)创建或完成套餐
+- [登录到云合作伙伴门户](https://cloudpartner.azure.com)，创建或完成套餐。
+- 有关详细信息，请参阅 [Azure 和 Dynamics 365 咨询服务产品/服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer)。

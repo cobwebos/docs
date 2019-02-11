@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-speech
+ms.subservice: translator-speech
 ms.topic: overview
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 641081e4a01aa5810d569795c10e967e4b46568e
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 1983ecbdee3d15efc73ad395fd07cbc7cd4f279c
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023571"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769719"
 ---
 # <a name="what-is-translator-speech-api"></a>什么是语音翻译 API？
 
@@ -23,7 +23,7 @@ ms.locfileid: "50023571"
 
 不管目标 OS 或开发语言是什么，都可以使用语音翻译 API 将端到端的实时语音翻译添加到需要多语言语音翻译的应用程序、工具或任何解决方案。 该 API 可用于“语音转语音”和“语音转文本”翻译。
 
-文本翻译 API 是一个 Azure 服务，属于云中机器学习和 AI 算法的 [Azure 认知服务 API 集合](https://docs.microsoft.com/azure/#pivot=products&panel=cognitive)，随时可在开发项目中使用。
+文本翻译 API 是一个 Azure 服务，属于云中机器学习和 AI 算法的 [Azure 认知服务 API 集合](https://docs.microsoft.com/azure/)，随时可在开发项目中使用。
 
 借助语音翻译 API，客户端应用程序可将语音音频流式传输到服务，并接收基于文本和音频的结果流，包括在源语言中识别到的文本及其目标语言翻译。 通过将深度神经网络支持的自动语音识别 (ASR) 应用到音频流，来生成文本结果。 名为 TrueText 的新技术会进一步改善原始 ASR 输出，以更准确地反映用户意向。 例如，TrueText 会删除不流畅的语流（“嗯”和咳嗽声）和重复的单词，并还原正确的标点和大小写。 此外，还包括掩码或排除亵渎字词的功能。 识别和翻译引擎经过专门的训练，可以处理对话语音。 
 
@@ -66,6 +66,6 @@ NMT 模型是该 API 的核心，对最终用户不可见。 两者的明显差�
 > [开始编写代码](quickstarts/csharp.md)
 
 ## <a name="see-also"></a>另请参阅
-- [认知服务文档页](https://docs.microsoft.com/azure/#pivot=products&panel=cognitive)
+- [认知服务文档页](https://docs.microsoft.com/azure/)
 - [认知服务产品页](https://azure.microsoft.com/services/cognitive-services/)
 - [解决方案和定价信息](https://www.microsoft.com/en-us/translator/home.aspx) 

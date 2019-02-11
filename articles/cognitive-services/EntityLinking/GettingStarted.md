@@ -6,16 +6,16 @@ services: cognitive-services
 author: DavidLiCIG
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: entity-linking-intelligence
+ms.subservice: entity-linking-intelligence
 ms.topic: tutorial
 ms.date: 07/06/2016
 ms.author: davl
-ms.openlocfilehash: 907b4cab483f1bf63a864094530784f9c632a1c8
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 883d566fd3a6089eb9e72498089f995697a318f1
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365632"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216806"
 ---
 # <a name="tutorial-build-an-entity-linking-app-with-c"></a>教程：使用 C# 构建实体链接应用
 
@@ -32,16 +32,16 @@ Microsoft 实体链接是一款自然语言处理工具，可用于分析文本�
 
 可以通过 [SDK](https://www.github.com/microsoft/cognitive-entitylinking-windows) 下载实体链接智能服务 API 客户端库。 必须将下载的 zip 文件解压缩到选定文件夹，许多用户选择解压缩到 Visual Studio 2015 文件夹。
 
-### <a name="step-1-subscribe-entity-linking-intelligence-service-and-get-your-own-key">第 1 步：订阅实体链接智能服务并获取密钥</a>
+### <a name="step-1-subscribe-entity-linking-intelligence-service-and-get-your-own-key">步骤 1：订阅实体链接智能服务并获取密钥</a>
 必须先注册 API 密钥，然后才能使用实体链接智能服务。 请参阅[订阅](https://www.microsoft.com/cognitive-services/en-us/sign-up)。 主密钥和辅助密钥都可用于本教程。
 
-### <a name="step-2-create-a-new-project-in-visual-studio">第 2 步：在 Visual Studio 中新建项目</a>
+### <a name="step-2-create-a-new-project-in-visual-studio">步骤 2：在 Visual Studio 中新建项目</a>
 
 接下来，先在 Visual Studio 中新建项目。 首先，通过“开始”菜单启动 Visual Studio 2015。 然后，依次选择“已安装 → 模板 → Visual C# → Windows 通用 → 空白应用”作为项目模板，从而新建项目：
 
  ![创建通用应用](./Images/CreateUWP.png)
 
-### <a name="step-3-add-the-entity-linking-nuget-package-to-your-project">第 3 步：向项目添加实体链接 NuGet 包</a>
+### <a name="step-3-add-the-entity-linking-nuget-package-to-your-project">步骤 3：向项目添加实体链接 NuGet 包</a>
 
 将认知服务的实体链接发布为 NuGet.org 包。必须先安装此包，然后才能使用它。
 若要将它添加到项目中，请转到“解决方案资源管理器”选项卡，右键单击项目，并选择“管理 Nuget 包”。
@@ -54,7 +54,7 @@ Microsoft 实体链接是一款自然语言处理工具，可用于分析文本�
 
  ![项目中包含的 nuget 库](./Images/NugetLibraryInProject.png)
  
-### <a name="step-4-add-an-input-and-output-text-block-to-your-apps-xaml">第 4 步：向应用的 XAML 添加输入和输出文本块</a>
+### <a name="step-4-add-an-input-and-output-text-block-to-your-apps-xaml">步骤 4：向应用的 XAML 添加输入和输出文本块</a>
 转到“解决方案资源管理器”中的 **MainPage.xaml**，并双击此文件，在新窗口中打开它。 为方便起见，可以双击“设计器”选项卡中的“XAML”按钮，这会隐藏“可视化设计器”，并保留代码视图的所有空间。
 
  ![项目中包含的 nuget 库](./Images/UWPMainPage.png)
@@ -74,7 +74,7 @@ Microsoft 实体链接是一款自然语言处理工具，可用于分析文本�
 </Grid>
  ```
  
-### <a name="step-5-proceed-to-add-entity-linking-intelligence-service">第 5 步：继续添加实体链接智能服务</a>
+### <a name="step-5-proceed-to-add-entity-linking-intelligence-service">步骤 5：继续添加实体链接智能服务</a>
  
 现已创建用户界面。 必须先添加按钮单击处理程序，然后才能使用实体链接服务。 在“解决方案资源管理器”中，打开“MainPage.xaml”。 在按钮末尾处添加 button_Click 处理程序。
  

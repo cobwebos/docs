@@ -1,23 +1,24 @@
 ---
-title: 了解 LUIS 应用中的意向
-titleSuffix: Azure Cognitive Services
-description: 意向表示用户想执行的任务或操作。 它是用户话语中表达的目的或目标。 定义一组意向，对应于用户希望在应用程序中执行的操作。
+title: 用户意向
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: 意向表示用户想执行的任务或操作。 它是用户话语中表达的目的或目标。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 5ccfe781b3632bd7ccfc532398a00faf7a87b63f
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: ce95e5c9f5a71a23f4da6273a01c8f89fe687c1a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637205"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215310"
 ---
-# <a name="intents-in-luis"></a>LUIS 中的意向
+# <a name="concepts-about-intents-in-your-luis-app"></a>关于 LUIS 应用中的意向的概念
 
 意向表示用户想执行的任务或操作。 这是用户的[陈述](luis-concept-utterance.md)中所表示的目的或目标。
 
@@ -57,7 +58,7 @@ ms.locfileid: "49637205"
 [预生成域](luis-how-to-use-prebuilt-domains.md)具有带有陈述的意向。  
 
 ## <a name="none-intent-is-fallback-for-app"></a>None 意向是应用的回退意向
-“None”意向是全方位或或回退意向。 它用于训练应用域（主题区域）中不重要的 LUIS 陈述。 None 意向应占应用程序中总陈述数的 10 % 到 20%。 请不要将此意向留空。 
+“None”意向是全方位或或回退意向。 它用于训练应用域（主题区域）中不重要的 LUIS 陈述。 None 意向应占应用程序中总陈述数的 10 % 到 20%。 不要将“None”意向留空。 
 
 ### <a name="none-intent-helps-conversation-direction"></a>None 意向有助于指导会话
 当陈述预测为 None 意向并且返回到具有该预测的聊天机器人时，机器人可询问更多问题或提供菜单以指导用户在聊天机器人中进行有效选择。 

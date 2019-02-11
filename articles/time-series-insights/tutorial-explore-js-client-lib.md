@@ -1,5 +1,5 @@
 ---
-title: 探索 Azure 时序见解 JavaScript 客户端库
+title: 教程：探索 Azure 时序见解 JavaScript 客户端库 | Microsoft Docs
 description: 了解 Azure 时序见解 JavaScript 客户端库和相关的编程模型。
 author: ashannon7
 manager: cshankar
@@ -8,12 +8,13 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
-ms.openlocfilehash: 5f31dce98cd873a0bf4b750934384e1bf6d2564a
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.custom: seodec18
+ms.openlocfilehash: f231fa7624a2babea2a3d91076ad0348b3c9e976
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706987"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540363"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>教程：探索 Azure 时序见解 JavaScript 客户端库
 
@@ -236,7 +237,7 @@ TSI 客户端库还会公开一些可按需使用的可选高级功能。
 1. 首先定义一系列自定义操作。 每个操作包含由一个或多个元素构成的数组。 每个元素定义单个上下文菜单项：
 
    - `barChartActions`：此操作定义饼图的上下文菜单，该菜单包含一个元素用于定义单个项：
-     - `name`：用于菜单项的文本：“在控制台上列显参数。”
+     - `name`：用于菜单项的文本：“将参数输出到控制台。”
      - `action`：与菜单项关联的操作。 该操作始终是一个匿名函数，根据用于创建图表的聚合表达式采用三个参数。 在本例中，这些参数将写入浏览器控制台窗口：
        - `ae`：聚合表达式数组。
        - `splitBy`：splitBy 值。
@@ -262,7 +263,7 @@ TSI 客户端库还会公开一些可按需使用的可选高级功能。
 前一示例“包含用于创建饼图/条形图的上下文菜单的折线图”（描述[弹出上下文菜单](#popup-context-menus-section)）中显示了用于演示画笔的代码。
 
 1. 画笔操作类似于上下文菜单，为画笔定义一系列自定义操作。 每个操作包含由一个或多个元素构成的数组。 每个元素定义单个上下文菜单项：
-   - `name`：用于菜单项的文本：“在控制台上列显参数。”
+   - `name`：用于菜单项的文本：“将参数输出到控制台。”
    - `action`：与菜单项关联的操作，始终是采用两个参数的匿名函数。 在本例中，这些参数将写入浏览器控制台窗口：
       - `fromTime`：画笔选项的“起始时间”时间戳。
       - `toTime`：画笔选项的“截止时间”时间戳。

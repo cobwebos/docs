@@ -1,5 +1,5 @@
 ---
-title: Azure 搜索中的查询类型和组成部分 | Microsoft Docs
+title: 查询类型和组成部分 - Azure 搜索
 description: 在 Azure 搜索中生成搜索查询并使用参数对结果进行筛选、选择和排序的基础知识。
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.openlocfilehash: a1dad30148da9f6b322c75fd40dc01098c4d6b63
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.custom: seodec2018
+ms.openlocfilehash: 9b682b9cd17c174363dcd04707a11075e30cc8e1
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42141843"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214821"
 ---
 # <a name="query-types-and-composition-in-azure-search"></a>Azure 搜索中的查询类型和组成部分
 
@@ -93,7 +94,7 @@ queryType=simple&search=mountain beach garden ranch^3&searchFields=description&$
 使用完整 Lucene 分析器的同一查询针对“ranch”解释字段内提升，从而大大提升了包含该特定字词的结果的搜索排名。
 
 ```
-queryType=simple&search=mountain beach garden ranch^3&searchFields=description&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket
+queryType=full&search=mountain beach garden ranch^3&searchFields=description&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket
 ```
 
 <a name="types-of-queries"></a>

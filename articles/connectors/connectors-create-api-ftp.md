@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/15/2018
 tags: connectors
-ms.openlocfilehash: a14f045193c01b8c26019314ddde4c2116d8bad6
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 1e649f21758adedb069b38f64f083ccb85df874d
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232811"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913353"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用创建、监视和管理 FTP 文件
 
@@ -26,10 +26,10 @@ ms.locfileid: "50232811"
 * 获取文件内容和元数据。
 * 将存档提取到文件夹。
 
-可以使用触发器从 FTP 服务器获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的操作对 FTP 服务器上的文件执行任务。 还可以让其他操作使用来自 FTP 操作的输出。 例如，如果你定期从 FTP 服务器检索文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+可以使用触发器从 FTP 服务器获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的运行操作对 FTP 服务器上的文件进行管理。 还可以让其他操作使用来自 FTP 操作的输出。 例如，如果你定期从 FTP 服务器获取文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 > [!NOTE]
-> 除非使用[区块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)，否则 FTP 连接器仅支持 50 MB 或更小的文件。 
+> 除非[在操作中使用消息分块](../logic-apps/logic-apps-handle-large-messages.md)，否则 FTP 连接器仅支持 50 MB 或更小的文件。 目前，不能对触发器使用分块。
 >
 > 此外，FTP 连接器仅支持显式 FTP over SSL (FTPS)，与隐式 FTPS 不兼容。 
 
@@ -39,7 +39,7 @@ ms.locfileid: "50232811"
 
 * FTP 主机服务器地址和帐户凭据
 
-  FTP 连接器需要可从 Internet 访问并设置为在 passive 模式下运行的 FTP 服务器。 你的凭据授权逻辑应用创建连接并访问你的 FTP 帐户。
+  FTP 连接器需要可从 Internet 访问并设置为在 passive 模式下运行的 FTP 服务器。 你的凭据允许逻辑应用创建连接并访问你的 FTP 帐户。
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
@@ -66,25 +66,42 @@ ms.locfileid: "50232811"
 
 1. 为所选触发器或操作提供所需的详细信息，然后继续生成逻辑应用的工作流。
 
+请求文件内容时，触发器不会获取大于 50 MB 的文件。 若要获取大于 50 MB 的文件，请遵循以下模式：
+
+* 使用可返回文件属性的触发器，如“添加或修改文件时(仅属性)”。
+
+* 跟随触发器执行读取完整文件的操作，如“使用路径获取文件内容”，并让操作使用[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。
+
 ## <a name="examples"></a>示例
+
+<a name="file-added-modified"></a>
 
 ### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>FTP 触发器：添加或修改文件时
 
 当此触发器检测到 FTP 服务器上添加或更改了文件时，将会启动逻辑应用工作流。 例如，可以添加一个条件，用于检查文件内容，并根据该内容是否符合指定的条件，来确定是否要获取该内容。 最后可以添加一个操作，用于获取文件内容并将该内容放在 SFTP 服务器上的某个文件夹中。 
 
-**企业示例**：可以使用此触发器监视 FTP 文件夹中表示客户订单的新文件。 然后，可以使用“获取文件内容”等 FTP 操作来获取订单内容以做进一步处理，并将该订单存储在订单数据库中。
+**企业示例**：可以使用此触发器监视 FTP 文件夹中描述客户订单的新文件。 然后，可以使用“获取文件内容”等 FTP 操作来获取订单内容以做进一步处理，并将该订单存储在订单数据库中。
+
+请求文件内容时，触发器不会获取大于 50 MB 的文件。 若要获取大于 50 MB 的文件，请遵循以下模式： 
+
+* 使用可返回文件属性的触发器，如“添加或修改文件时(仅属性)”。
+
+* 跟随触发器执行读取完整文件的操作，如“使用路径获取文件内容”，并让操作使用[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。
 
 有效且正常工作的逻辑应用需要一个触发器和至少一个操作。 因此请确保在添加触发器后添加一个操作。
 
-以下是演示此触发器的示例：“添加或修改文件时”
+下面是一个展示了此触发器的示例：**添加或修改文件时**
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
-1. 对于空白逻辑应用，请在搜索框中输入“ftp”作为筛选器。 在触发器列表下，选择以下触发器：“添加或修改字段时 - FTP”
+1. 对于空白逻辑应用，请在搜索框中输入“ftp”作为筛选器。 在触发器列表中选择此触发器：**添加或修改字段时 - FTP**
 
    ![查找和选择 FTP 触发器](./media/connectors-create-api-ftp/select-ftp-trigger.png)  
 
 1. 为连接提供所需的详细信息，然后选择“创建”。
+
+   默认情况下，此连接器将以文本格式传输文件。 
+   若要以二进制格式传输文件，例如，在使用了编码的情况下，请选择“二进制传输”。
 
    ![创建 FTP 服务器连接](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)  
 
@@ -98,13 +115,23 @@ ms.locfileid: "50232811"
 
 现在，逻辑应用已具有一个触发器，请添加在逻辑应用找到新文件或已编辑文件时要运行的操作。 对于此示例，可以添加获取新内容或更新内容的 FTP 操作。
 
+<a name="get-content"></a>
+
 ### <a name="ftp-action-get-content"></a>FTP 操作：获取内容
 
 添加或更新文件时，此操作将通过 FTP 服务器获取该文件的内容。 例如，可通过前面的示例添加触发器，然后添加操作，用于在添加或编辑文件后获取该文件内容。 
 
+请求文件内容时，触发器不会获取大于 50 MB 的文件。 若要获取大于 50 MB 的文件，请遵循以下模式： 
+
+* 使用可返回文件属性的触发器，如“添加或修改文件时(仅属性)”。
+
+* 跟随触发器执行读取完整文件的操作，如“使用路径获取文件内容”，并让操作使用[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。
+
+下面是一个展示了此操作的示例：**获取内容**
+
 1. 在该触发器或其他任何操作下，选择“新建步骤”。 
 
-1. 在搜索框中，输入“ftp”作为筛选器。 在操作列表下，选择此操作：“获取文件内容 - FTP”
+1. 在搜索框中，输入“ftp”作为筛选器。 在操作列表中选择以下操作：**获取文件内容 - FTP**
 
    ![选择 FTP 操作](./media/connectors-create-api-ftp/select-ftp-action.png)  
 

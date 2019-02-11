@@ -9,21 +9,20 @@ ms.assetid: f54a26a4-baa4-4255-9791-5a8f935898e2
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 05833599059c2724529f9fd23edcd86934793835
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 1ba8db3ebe2caf4c37d147f744326b6e631cb556
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048850"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022047"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表源移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](data-factory-web-table-connector.md)
+> * [版本 1](data-factory-web-table-connector.md)
 > * [版本 2（当前版本）](../connector-web-table.md)
 
 > [!NOTE]
@@ -56,8 +55,8 @@ ms.locfileid: "37048850"
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
 
-- 创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
-- 也可以使用以下工具创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+- 创建管道的最简单方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
+- 还可以使用以下工具来创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -209,7 +208,7 @@ ms.locfileid: "37048850"
 
 **Azure Blob 输出数据集**
 
-数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。
+数据每小时向新的 blob 写入一次（frequency：hour，interval：1）。
 
 ```json
 {
@@ -290,11 +289,11 @@ ms.locfileid: "37048850"
 2. 单击工具栏中的“新建查询”，指向“从其他源”，并单击“从 Web”。
 
     ![Power Query 菜单](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
-3. 在“从 Web”对话框中，输入要在链接服务 JSON 中使用的 URL（例如：https://en.wikipedia.org/wiki/)）以及要为数据集指定的路径（例如：AFI%27s_100_Years...100_Movies），并单击“确定”。
+3. 在“从 Web”对话框中，输入要在链接服务 JSON 中使用的 **URL**（例如： https://en.wikipedia.org/wiki/)）以及要为数据集指定的路径（例如：AFI%27s_100_Years...100_Movies），并单击“确定”。
 
     ![“从 Web”对话框](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 
-    此示例中使用的 URL：https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
+    此示例中使用的 URL： https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
 4. 如果出现“访问 Web 内容”对话框，请选择正确的 **URL** 和**身份验证**，并单击“连接”。
 
    ![“访问 Web 内容”对话框](./media/data-factory-web-table-connector/AccessWebContentDialog.png)

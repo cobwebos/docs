@@ -5,16 +5,16 @@ description: 了解如何在自定义翻译中管理设置、创建工作区、�
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 7b6dd0ec271d335d1055381a8cb7256600be283f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 6fabbb57538f5e10e6cd91ebc109707045e54033
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626706"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227074"
 ---
 # <a name="how-to-manage-settings"></a>如何管理设置
 
@@ -85,7 +85,7 @@ ms.locfileid: "51626706"
 
 ## <a name="sharing-permissions"></a>共享权限
 
-1.  **读取者：** 工作区中的读取者可以查看工作区中的所有信息。 
+1.  **读者：** 工作区中的读者可以查看工作区中的所有信息。 
 
 2.  **编辑者：** 工作区中的编辑者可以添加文档、训练模型，以及删除文档和项目。 他们可以添加订阅密钥，但无法修改工作区的共享对象、删除工作区，或更改工作区名称。
 

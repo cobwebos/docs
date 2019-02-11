@@ -3,18 +3,18 @@ title: 创建独立的 Azure 自动化帐户
 description: 本文逐步讲解如何在 Azure 自动化中创建、测试和使用示例安全主体身份验证。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dc369f5bc3d80a476e45d46cfe25541216484b1c
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 1590a02503a12be870dab14a1ccffdd3cf64a282
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958799"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426601"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>创建独立的 Azure 自动化帐户
 
@@ -69,7 +69,7 @@ ms.locfileid: "49958799"
   >
   > ![添加自动化帐户警报](media/automation-create-standalone-account/create-account-without-perms.png)
 
-1. 在“添加自动化帐户”窗格的“名称”框中，输入新自动化帐户的名称。 此名称选定后即不可更改。 每个区域和资源组的自动化帐户名称都是唯一的。
+1. 在“添加自动化帐户”窗格的“名称”框中，输入新自动化帐户的名称。 此名称选定后即不可更改。 每个区域和资源组的自动化帐户名称都是唯一的。已删除的自动化帐户的名称可能无法立即可用。
 1. 如果有多个订阅，请在“订阅”框中为新帐户指定一个订阅。
 1. 对于“资源组”，请输入或选择新的或现有的资源组。
 1. 对于“位置”，请选择一个 Azure 数据中心位置。
@@ -89,7 +89,7 @@ ms.locfileid: "49958799"
 
 成功创建自动化帐户后，系统会自动创建几个资源。 创建后，如果不想保留这些 runbook，可以放心地将其删除。 运行方式帐户可用于对 runbook 中的帐户进行身份验证，除非创建其他运行方式帐户或不需要它们，否则应将其保留。 下表汇总了运行方式帐户的资源。
 
-| 资源 | Description |
+| 资源 | 说明 |
 | --- | --- |
 | AzureAutomationTutorial Runbook |一个示例图形 Runbook，演示如何使用运行方式帐户进行身份验证。 该 Runbook 获取所有资源管理器资源。 |
 | AzureAutomationTutorialScript Runbook |一个示例 PowerShell Runbook，演示如何使用运行方式帐户进行身份验证。 该 Runbook 获取所有资源管理器资源。 |
@@ -99,7 +99,7 @@ ms.locfileid: "49958799"
 
 下表汇总了经典运行方式帐户的资源。
 
-| 资源 | Description |
+| 资源 | 说明 |
 | --- | --- |
 | AzureClassicAutomationTutorial Runbook |一个示例图形 Runbook。 该 Runbook 使用经典运行方式帐户（证书）获取订阅中的所有经典 VM。 然后，它显示 VM 名称和状态。 |
 | AzureClassicAutomationTutorial 脚本 Runbook |一个示例 PowerShell Runbook。 该 Runbook 使用经典运行方式帐户（证书）获取订阅中的所有经典 VM。 然后，它显示 VM 名称和状态。 |
@@ -112,3 +112,4 @@ ms.locfileid: "49958799"
 * 若要开始使用 PowerShell Runbook，请参阅[我的第一个 PowerShell Runbook](automation-first-runbook-textual-powershell.md)。
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅 [我的第一个 PowerShell 工作流 Runbook](automation-first-runbook-textual.md)。
 * 若要开始使用 Python2 runbook，请参阅[第一个 Python2 runbook](automation-first-runbook-textual-python2.md)。
+

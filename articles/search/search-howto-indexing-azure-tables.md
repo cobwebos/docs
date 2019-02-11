@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 搜索编制 Azure 表存储的索引 | Microsoft Docs
-description: 了解如何使用 Azure 搜索为 Azure 表存储中存储的数据编制索引
+title: 为 Azure 表存储中的内容编制索引，以便进行全文搜索 - Azure 搜索
+description: 了解如何使用 Azure 搜索索引器为 Azure 表存储中存储的数据编制索引。
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: 738518f94869a55cf80db1c87b8c74b167f5cce1
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec2018
+ms.openlocfilehash: 9532f4331b4dbbc8d687778b29f63179cca6b4d4
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406919"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632953"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>使用 Azure 搜索编制 Azure 表存储的索引
 本文介绍如何使用 Azure 搜索对 Azure 表存储中存储的数据编制索引。
@@ -66,9 +67,9 @@ ms.locfileid: "49406919"
 
 可通过以下一种方式提供表的凭据： 
 
-- **完全访问存储帐户连接字符串**：`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`可通过导航到“存储帐户”边栏选项卡  > “设置” > “密钥”（对于经典存储帐户）或“设置” > “访问密钥”（对于 Azure 资源管理器存储帐户），从 Azure 门户获取连接字符串。
-- **存储帐户共享访问签名连接字符串：**`TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl`共享访问签名应具有容器（本例中为表）和对象（表行）的列出和读取权限。
--  **表共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r`共享访问签名应具有表的查询（读取）权限。
+- **完全访问存储帐户连接字符串**：`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` 可通过转到“存储帐户”边栏选项卡  > “设置” > “密钥”（适用于经典存储帐户）或“设置” > “访问密钥”（适用于 Azure 资源管理器存储帐户），从 Azure 门户获取连接字符串。
+- **存储帐户共享访问签名连接字符串**：`TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` 共享访问签名应具有容器（本例中为表）和对象（表行）的列表和读取权限。
+-  **表共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` 共享访问签名应具有表的查询（读取）权限。
 
 有关存储共享访问签名的详细信息，请参阅[使用共享访问签名](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 

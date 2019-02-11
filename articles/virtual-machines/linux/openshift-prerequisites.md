@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: bbc9ad4f15bdffa2c0f9b6f4b56f8b1701c83c47
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 25ec82c923ebe322194d868159332ef145727999
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636605"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692983"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>在 Azure 中部署 OpenShift 所要满足的一般先决条件
 
@@ -53,14 +53,14 @@ OpenShift 的安装使用 Ansible 攻略。 Ansible 使用安全外壳 (SSH) 连
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure 
-使用 [az login](/cli/azure/reference-index#az_login) 命令登录到 Azure 订阅，按屏幕说明操作，或者单击“试用”使用 Cloud Shell。
+使用 [az login](/cli/azure/reference-index) 命令登录到 Azure 订阅，按屏幕说明操作，或者单击“试用”使用 Cloud Shell。
 
 ```azurecli 
 az login
 ```
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 建议使用专用资源组来托管密钥保管库。 此组与要将 OpenShift 群集资源部署到的资源组分开。
+使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 建议使用专用资源组来托管密钥保管库。 此组与要将 OpenShift 群集资源部署到的资源组分开。
 
 以下示例在 *eastus* 位置创建一个名为 *keyvaultrg* 的资源组：
 
@@ -69,7 +69,7 @@ az group create --name keyvaultrg --location eastus
 ```
 
 ## <a name="create-a-key-vault"></a>创建 key vault
-使用 [az keyvault create](/cli/azure/keyvault#az_keyvault_create) 命令创建一个 Key Vault 用于管理群集的 SSH 密钥。 Key Vault 名称必须全局唯一。
+使用 [az keyvault create](/cli/azure/keyvault) 命令创建一个 Key Vault 用于管理群集的 SSH 密钥。 Key Vault 名称必须全局唯一。
 
 以下示例在 *keyvaultrg* 资源组中创建一个名为 *keyvault* 的 Key Vault：
 
@@ -101,7 +101,7 @@ az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/open
 ## <a name="create-a-service-principal"></a>创建服务主体 
 OpenShift 使用用户名和密码或服务主体来与 Azure 通信。 Azure 服务主体是可用于应用、服务和 OpenShift 等自动化工具的安全标识。 控制和定义服务主体可在 Azure 中执行哪些操作的权限。 最好将服务主体的权限范围限定为特定资源组而不是整个订阅。
 
-使用 [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) 创建服务主体并输出 OpenShift 需要的凭据。
+使用 [az ad sp create-for-rbac](/cli/azure/ad/sp) 创建服务主体并输出 OpenShift 需要的凭据。
 
 以下示例创建一个服务主体并为其分配对名为 openshiftrg 的资源组的参与者权限。
 

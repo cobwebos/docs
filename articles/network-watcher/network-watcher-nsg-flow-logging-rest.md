@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 30f20e2671b4428f08c38eeb93ec90f0b745eea6
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 58486ab821b6b01f531f62445a9d4ade1336569a
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51819111"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332007"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>使用 REST API 配置网络安全组流日志
 
@@ -32,7 +32,7 @@ ms.locfileid: "51819111"
 网络安全组流日志是网络观察程序的一项功能，可用于查看有关通过网络安全组的入口和出口 IP 流量的信息。 这些流日志以 json 格式编写，并基于每个规则显示出站和入站流、流所适用的 NIC、有关流的 5 元组信息（源/目标 IP、源/目标端口、协议），以及是允许还是拒绝流量。
 
 > [!NOTE] 
-> Flow Logs 版本 2 仅在美国中西部区域推出。 配置可通过 Azure 门户和 REST API 获取。 在不支持的区域启用版本 2 日志时，版本 1 日志就会输出到存储帐户中。
+> Flow Logs 版本 2 仅在美国中西部区域推出。 在不支持的区域启用版本 2 日志时，版本 1 日志会输出到存储帐户中。
 
 ## <a name="before-you-begin"></a>开始之前
 

@@ -1,14 +1,12 @@
 ---
-title: 教程：区域中的负载均衡器 VM--Azure 门户 | Microsoft Docs
+title: 教程：区域中的负载均衡器 VM - Azure 门户
+titlesuffix: Azure Load Balancer
 description: 本教程演示如何使用 Azure 门户创建包含区域前端的标准负载均衡器，以便对可用性区域中的 VM 进行负载均衡
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
+manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: tutorial
@@ -16,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 580015b7f8b1f894c69ddec0f26daeb524932e4b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.custom: seodec18
+ms.openlocfilehash: 76e55c643378e689f12d485100a81ccefa4196f4
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637287"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229806"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>教程：通过 Azure 门户使用标准负载均衡器对可用性区域中的 VM 进行负载均衡
 
@@ -53,7 +51,7 @@ ms.locfileid: "34637287"
 2. 在“创建负载均衡器”页中，为负载均衡器输入以下值：
     - **myLoadBalancer**：负载均衡器的名称。
     - **公共**：负载均衡器的类型。
-     - **myPublicIPZonal**：创建的新公共 IP 地址。 选择“选择公共 IP 地址”。 然后选择“新建”。 对于“名称”，请输入 **myPublicIP**。 SKU 默认为“标准”。 对于“可用性区域”，请选择“区域 1”。
+      - **myPublicIPZonal**：创建的新公共 IP 地址。 选择“选择公共 IP 地址”。 然后选择“新建”。 对于“名称”，请输入 **myPublicIP**。 SKU 默认为“标准”。 对于“可用性区域”，请选择“区域 1”。
     - **myResourceGroupZLB**：所创建的新资源组的名称。
     - **westeurope**：位置。
 3. 选择“创建”以创建负载均衡器。
@@ -81,7 +79,7 @@ ms.locfileid: "34637287"
     - **myNetworkSecurityGroup**：网络安全组的名称。
     - **myResourceGroupLBAZ**：现有资源组的名称。
    
-    ![创建网络安全组](./media/tutorial-load-balancer-standard-zonal-portal/create-network-security-group.png)
+     ![创建网络安全组](./media/tutorial-load-balancer-standard-zonal-portal/create-network-security-group.png)
 
 ### <a name="create-nsg-rules"></a>创建 NSG 规则
 
@@ -100,7 +98,7 @@ ms.locfileid: "34637287"
     - 输入“允许 HTTP”作为“说明”。
 4. 选择“确定”。
  
- ![创建 NSG 规则](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![创建 NSG 规则](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 
 5. 重复步骤 2 到 4，创建名为 **myRDPRule** 的另一规则。 该规则允许使用端口 3389 的入站 RDP 连接，输入的值如下：
     - 输入“服务标记”作为“源”。
@@ -112,7 +110,7 @@ ms.locfileid: "34637287"
     - 输入 **myRDPRule** 作为“名称”。
     - 输入“允许 RDP”作为“说明”。
 
-    ![创建 RDP 规则](./media/tutorial-load-balancer-standard-zonal-portal/create-rdp-rule.png)
+      ![创建 RDP 规则](./media/tutorial-load-balancer-standard-zonal-portal/create-rdp-rule.png)
 
 ### <a name="create-virtual-machines"></a>创建虚拟机
 

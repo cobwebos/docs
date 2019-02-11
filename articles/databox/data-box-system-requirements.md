@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 01/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 957100e042da1d41fb7c8fa27a5663cf99a41c20
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 7d52af9e3948f40936795efab5b6671c3f71007a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093929"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206741"
 ---
 # <a name="azure-data-box-system-requirements"></a>Azure Data Box 系统要求
 
@@ -48,13 +48,21 @@ ms.locfileid: "49093929"
 
 ### <a name="supported-storage-accounts"></a>支持的存储帐户
 
-下面是 Data Box 设备支持的存储类型列表。
+下面是 Data Box 设备支持的存储帐户和存储类型的列表。 有关所有不同类型的存储帐户及其完整功能的完整列表，请参阅[存储帐户类型](/azure/storage/common/storage-account-overview#types-of-storage-accounts)。
 
-| **存储帐户** | **说明** |
-| --- | --- |
-| 经典 | 标准 |
-| 常规用途  |标准；同时支持 V1 和 V2。 |
-| Blob |支持热和冷。 |
+| **存储帐户/支持的存储类型** | **块 blob** |**页 blob*** |**Azure 文件** |**说明**|
+| --- | --- | -- | -- | -- |
+| 经典标准 | Y | Y | Y |
+| 常规用途 v1 标准  | Y | Y | Y | 支持热和冷。|
+| 常规用途 v1 高级  |  | Y| | |
+| 常规用途 v2 标准  | Y | Y | Y | 支持热和冷。|
+| 常规用途 v2 高级  |  |Y | | |
+| Blob 存储标准 |Y | | |支持热和冷。 |
+
+\* *- 上传到页 blob 的数据必须是 512 字节对齐，例如 vhds。*
+
+>[!NOTE]
+> 不支持 Azure Data Lake Storage Gen 2 帐户。
 
 
 ### <a name="supported-storage-types"></a>支持的存储类型
@@ -82,7 +90,7 @@ ms.locfileid: "49093929"
 
 ## <a name="networking-requirements"></a>网络要求
 
-数据中心需要有高速网络。 强烈建议你至少建立一个 10 GbE 连接。 如果 10 GbE 连接不可用，则可使用 1 GbE 数据链路复制数据，但复制速度会受影响。
+数据中心需要有高速网络。 强烈建议你至少建立一个 10-GbE 连接。 如果 10-GbE 连接不可用，则可使用 1-GbE 数据链路复制数据，但复制速度会受影响。
 
 ## <a name="next-step"></a>后续步骤
 

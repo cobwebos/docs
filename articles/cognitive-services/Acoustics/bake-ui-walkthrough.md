@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: c37e050cd762cb173d64f78b5267e4ad252d17a9
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f376b6bcb0238f96b4f5bb35d898cc600e108c65
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902240"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169750"
 ---
 # <a name="bake-acoustics"></a>制作音效
 
@@ -255,10 +255,10 @@ Azure 凭据安全地存储在本地计算机上，并与 Unity 编辑器相关�
 
 此插件在不同位置创建了 4 个数据文件。 运行时仅需一个，因此其他三个文件位于名为“Editor”的文件夹中，因此不会编译到项目中。
 
-* Assets/Editor/[SceneName]\_AcousticsParameters.asset：此文件存储在音效 UI 中的字段中输入的数据。 不能更改此文件的位置和名称。 此文件中存储影响制作的其他值，但它们针对高级用户且不得更改。
-* Assets/AcousticsData/Acoustics\_[SceneName].ace.bytes：此文件创建于制作模拟过程中，包含运行时所用的查找数据，以呈现场景的音效。 使用“探测”选项卡上的字段可更改此文件的位置和名称。
-* Assets/AcousticsData/Editor/Acoustics_[SceneName].vox：此文件存储体素化的声学几何体和材料属性。 使用“探测”选项卡上的“计算...”按钮进行计算。可以使用“探测”选项卡上的字段更改此文件的位置和名称。
-* Assets/AcousticsData/Editor/Acoustics\_[SceneName]\_config.xml：此文件存储使用“探测”选项卡上的“计算...”按钮进行计算的参数。使用“探测”选项卡上的字段可更改此文件的位置和名称。
+* **Assets/Editor/[SceneName]\_AcousticsParameters.asset**：此文件存储你在音效 UI 的字段中输入的数据。 不能更改此文件的位置和名称。 此文件中存储影响制作的其他值，但它们针对高级用户且不得更改。
+* **Assets/AcousticsData/Acoustics\_[SceneName].ace.bytes**：此文件创建于烘培模拟过程中，包含运行时所用的查找数据，以呈现场景的音效。 使用“探测”选项卡上的字段可更改此文件的位置和名称。
+* **Assets/AcousticsData/Editor/Acoustics_[SceneName].vox**：此文件存储体素化声学几何体和材料属性。 使用“探测”选项卡上的“计算...”按钮进行计算。可以使用“探测”选项卡上的字段更改此文件的位置和名称。
+* **Assets/AcousticsData/Editor/Acoustics\_[SceneName]\_config.xml**：此文件存储使用“探测”选项卡上的“计算...”按钮计算的参数。使用“探测”选项卡上的字段可更改此文件的位置和名称。
 
 请注意，不要删除从制作中下载的 *.ace.bytes 文件。 除重新制作场景外，此文件是无法恢复的。
 

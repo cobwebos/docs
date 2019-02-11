@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: danlep
-ms.openlocfilehash: fd22677c2acc9e61abc082b3515a817c01c163cb
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 077ca3c876a3078e7e627dbfefdff38e09ec57b9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855952"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228349"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>升级经典容器注册表
 
@@ -123,10 +123,10 @@ az acr update --name myclassicregistry --sku Premium
 将经典注册表升级为基本、标准或高级注册表以后，Azure 不再使用一开始充当经典注册表后备的存储帐户。 为了降低成本，可以考虑删除存储帐户或帐户中的 Blob 容器（其中包含旧的容器映像）。
 
 <!-- IMAGES -->
-[update-classic-01-upgrade]: ./media/container-registry-upgrade\update-classic-01-upgrade.png
-[update-classic-02-confirm]: ./media/container-registry-upgrade\update-classic-02-confirm.png
-[update-classic-03-updating]: ./media/container-registry-upgrade\update-classic-03-updating.png
-[update-classic-04-updated]: ./media/container-registry-upgrade\update-classic-04-updated.png
+[update-classic-01-upgrade]: ./media/container-registry-upgrade/update-classic-01-upgrade.png
+[update-classic-02-confirm]: ./media/container-registry-upgrade/update-classic-02-confirm.png
+[update-classic-03-updating]: ./media/container-registry-upgrade/update-classic-03-updating.png
+[update-classic-04-updated]: ./media/container-registry-upgrade/update-classic-04-updated.png
 
 <!-- LINKS - internal -->
 [az-acr-update]: /cli/azure/acr#az-acr-update

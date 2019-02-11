@@ -1,5 +1,5 @@
 ---
-title: 有关从 Web 应用程序使用 Azure Key Vault 的教程 | Microsoft Docs
+title: 从 Web 应用程序使用 Azure Key Vault 的教程 - Azure Key Vault | Microsoft Docs
 description: 本教程有助于读者了解如何从 Web 应用程序使用 Azure Key Vault。
 services: key-vault
 author: barclayn
@@ -9,14 +9,14 @@ ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/09/2018
+ms.date: 01/02/2019
 ms.author: barclayn
-ms.openlocfilehash: b66c9912ba0b6508c2beb786d2327efa779c6645
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 79bccbcbcf78de18504c5cb0235e29930d90ede8
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079457"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999299"
 ---
 # <a name="tutorial-use-azure-key-vault-from-a-web-application"></a>教程：从 Web 应用程序使用 Azure Key Vault
 
@@ -40,9 +40,9 @@ ms.locfileid: "49079457"
 * 已在 Azure Active Directory 中注册的、有权访问 Key Vault 的 Web 应用程序的客户端 ID 和客户端机密
 * Web 应用程序。 本教程演示适用于在 Azure 中部署为 Web 应用的 ASP.NET MVC 应用程序的步骤。
 
-完成 [Azure Key Vault 入门](key-vault-get-started.md)中的步骤，以获取机密 URI、客户端 ID 和客户端机密，并注册应用程序。 该 Web 应用程序将访问保管库，并必须在 Azure Active Directory 中注册。 它还需要有权访问 Key Vault。 如果它没有此访问权限，请返回入门教程中的“注册应用程序”，并重复列出的步骤。 有关创建 Azure Web 应用的详细信息，请参阅 [Web 应用概述](../app-service/app-service-web-overview.md)。
+完成 [Azure Key Vault 入门](key-vault-get-started.md)中的步骤，以获取机密 URI、客户端 ID 和客户端机密，并注册应用程序。 该 Web 应用程序将访问保管库，并必须在 Azure Active Directory 中注册。 它还需要有权访问 Key Vault。 如果它没有此访问权限，请返回入门教程中的“注册应用程序”，并重复列出的步骤。 有关创建 Azure Web 应用的详细信息，请参阅 [Web 应用概述](../app-service/overview.md)。
 
-此示例依赖于手动预配 Azure Active Directory 标识。 但是，你应该改用 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)，后者自动预配 Azure AD 标识。 有关详细信息，请参阅 [GitHub 中的示例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/)，以及相关的[应用服务和 Functions 教程](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity)。 还可以查看 Key Vault 特定的[“将 Azure Web 应用程序配置为从 Key Vault 读取机密”教程](tutorial-web-application-keyvault.md)。
+此示例依赖于手动预配 Azure Active Directory 标识。 但是，你应该改用 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)，后者自动预配 Azure AD 标识。 有关详细信息，请参阅 [GitHub 中的示例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/)，以及相关的[应用服务和 Functions 教程](https://docs.microsoft.com/azure/app-service/overview-managed-identity)。 还可以查看 Key Vault 特定的[“将 Azure Web 应用程序配置为从 Key Vault 读取机密”教程](tutorial-web-application-keyvault.md)。
 
 ## <a id="packages"></a>添加 NuGet 包
 
@@ -71,8 +71,6 @@ Install-Package Microsoft.Azure.KeyVault
     <add key="SecretUri" value="secreturi" />
     <!-- If you aren't hosting your app as an Azure Web App, then you should use the actual ClientId, Client Secret, and Secret URI values -->
 ```
-
-
 
 ## <a id="gettoken"></a>添加用于获取访问令牌的方法
 
@@ -159,7 +157,7 @@ Export-PfxCertificate -cert $Cert -FilePath $PFXFilePath -Password $SecStringPw
 Export-Certificate -cert $Cert -FilePath $CerFilePath 
 ```
 
-记下 .pfx 的结束日期和密码（在本示例中为：May 15, 2019 和 MyPassword）。 需要在以下脚本中使用这些信息。 
+记下 .pfx 的结束日期和密码（在此示例中为：2019 年 5 月 15 日和 MyPassword）。 需要在以下脚本中使用这些信息。 
 ### <a name="associate-the-certificate-with-an-azure-ad-application"></a>将证书与 Azure AD 应用程序相关联
 
 现在你已有一个证书，需要将其与 Azure AD 应用程序相关联。 可以通过 PowerShell 完成关联。 运行以下命令，将该证书与 Azure AD 应用程序相关联：
@@ -188,11 +186,11 @@ $x509.Thumbprint
 
 现在，我们将在 Web 应用中添加代码以访问证书并使用它进行身份验证。 
 
-首先，添加用于访问证书的代码。请注意，StoreLocation 是 CurrentUser，而不是 LocalMachine。 在 Find 方法中提供“false”，因为使用的是测试证书。
+首先，添加用于访问证书的代码。存储位置是 CurrentUser，而不是 LocalMachine。 在 Find 方法中提供“false”，因为使用的是测试证书。
 
 ```cs
 //Add this using statement
-using System.Security.Cryptography.X509Certificates;  
+using System.Security.Cryptography.X509Certificates;  
 
 public static class CertificateHelper
 {

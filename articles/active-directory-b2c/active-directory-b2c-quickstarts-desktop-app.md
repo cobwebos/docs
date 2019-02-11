@@ -3,20 +3,20 @@ title: 快速入门 - 使用 Azure Active Directory B2C 为桌面应用设置登
 description: 运行一个使用 Azure Active Directory B2C 提供帐户登录的示例 ASP.NET 桌面应用程序。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: b018872eb1bd8575004fc50124c8ab8b77564b15
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.subservice: B2C
+ms.openlocfilehash: 161c1ec72b14f4cc1b2517a0dc6282f0548575b3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247566"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55182296"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为桌面应用设置登录 
 
@@ -60,7 +60,7 @@ Azure Active Directory (Azure AD) B2C 提供云身份管理来保护应用程序
 
 ## <a name="edit-your-profile"></a>编辑个人资料
 
-Azure AD B2C 提供允许用户更新个人资料的功能。 示例 Web 应用对工作流使用 Azure AD B2C 编辑配置文件策略。 
+Azure AD B2C 提供允许用户更新个人资料的功能。 示例 Web 应用对工作流使用 Azure AD B2C 编辑配置文件用户流。 
 
 1. 在应用程序菜单栏中，单击“编辑个人资料”以编辑创建的个人资料。
 

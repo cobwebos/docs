@@ -1,15 +1,15 @@
 ---
 author: yashesvi
-ms.author: yashar
+ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 09/05/2018
-ms.openlocfilehash: 40551fa60aa17e9a46d24ffdf17bb61a884a48f2
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.date: 11/30/2018
+ms.openlocfilehash: 1da2278eee6fcea5c013e9c2f5f4ad3e3013b590
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585639"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54906278"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>通过 Azure 虚拟机预留实例为虚拟机预付费
 
@@ -32,12 +32,11 @@ ms.locfileid: "52585639"
 
 - 预留折扣不适用于以下 VM：
   - 经典 VM 和云服务
-  - 受约束的 vCPU 大小
   - VM 系列：A 系列、Av2 系列或 G 系列
-  - 预览版 VM：预览版中的任何 VM 系列或大小
+  - 预览版 VM：处于预览状态的任何 VM 系列或大小
 - 云：不能在德国或中国区域中购买预留。
 - 配额不足：其范围仅限单个订阅的预留必须在订阅中具有可用的 vCPU 配额才能获得新的 RI。 例如，如果目标订阅的配额限制为 10 个 vCPU（适用于 D 系列），则不能为 11 个 Standard_D1 实例购买预留。 虚拟机预留实例的配额检查包括已在订阅中部署的 VM。 例如，如果该订阅的配额为针对 D 系列购买 10 个 vCPU，并且已部署两个 Standard_D1 实例，则可在该订阅中为 10 个 Standard_D1 实例购买预留。 
-- 容量限制：在极少数情况下，Azure 限制购买部分 VM 大小的新虚拟机预留实例，因为某个区域的容量不足。
+- 容量限制：在极少数情况下，Azure 限制购买部分 VM 大小的新预留，因为某个区域的容量不足。
 
 ## <a name="buy-a-reserved-vm-instance"></a>购买虚拟机预留实例
 
@@ -46,10 +45,10 @@ ms.locfileid: "52585639"
 3. 选择“添加”购买新的预订。
 4. 填写必填字段。 与所选属性匹配的正在运行的 VM 实例有资格获得预订折扣。 实际获得折扣的 VM 实例数取决于所选范围和数量。
 
-    | 字段      | Description|
+    | 字段      | 说明|
     |:------------|:--------------|
-    |名称        |此预订的名称。| 
-    |订阅|用于支付预订费用的订阅。 将向订阅的付款方式收取预订的预付费用。 订阅类型必须是“企业协议”（套餐编号：MS-AZR-0017P）或“即用即付”（套餐编号：MS-AZR-0003P）。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于即用即付订阅，将向订阅的信用卡或发票付款方式收取费用。|    
+    |Name        |此预订的名称。| 
+    |订阅|用于支付预订费用的订阅。 将向订阅的付款方式收取预订的预付费用。 订阅类型必须为“企业协议”（产品/服务编号：MS-AZR-0017P）或“即用即付”（产品/服务编号：MS-AZR-0003P）。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于即用即付订阅，将向订阅的信用卡或发票付款方式收取费用。|    
     |范围       |预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： <ul><li>单个订阅 - 预订折扣将应用到此订阅中的 VM。 </li><li>共享 - 预订折扣将应用到计费上下文中任何订阅中运行的 VM。 对于企业客户，共享范围是许可登记表，包括许可登记表中的所有订阅（开发/测试订阅除外）。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</li></ul>|
     |区域    |预订涵盖的 Azure 区域。|    
     |VM 大小     |VM 实例的大小。|
@@ -89,4 +88,4 @@ ms.locfileid: "52585639"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

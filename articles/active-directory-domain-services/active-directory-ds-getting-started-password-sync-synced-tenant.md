@@ -4,35 +4,33 @@ description: Azure Active Directory 域服务入门
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 8731f2b2-661c-4f3d-adba-2c9e06344537
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: ergreenl
-ms.openlocfilehash: 813d1d17f2d9b80c2e96f771fc346e553c59e95b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 74ad811481aea83454d7e3179652e68d4c406521
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234198"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564963"
 ---
 # <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>允许将密码同步到 Azure Active Directory 域服务
 在前述任务中，你为 Azure Active Directory (Azure AD) 租户启用了 Azure Active Directory 域服务。 下一个任务是使 NT LAN Manager (NTLM) 和 Kerberos 身份验证所需的凭据哈希同步到 Azure AD 域服务。 设置凭据同步以后，用户即可使用其公司凭据登录到托管域。
 
 对于仅限云的用户帐户来说，所涉及的步骤不同于使用 Azure AD Connect 从本地目录同步的用户帐户。
 
-<br>
 | **用户帐户的类型** | **要执行的步骤** |
 | --- | --- |
-| **从本地目录同步的用户帐户** |**&#x2713;** [按此文中的说明操作](active-directory-ds-getting-started-password-sync-synced-tenant.md#task-5-enable-password-synchronization-to-your-managed-domain-for-user-accounts-synced-with-your-on-premises-ad) | 
+| **从本地目录同步的用户帐户** |**&#x2713;** [按此文中的说明操作](active-directory-ds-getting-started-password-sync-synced-tenant.md#task-5-enable-password-synchronization-to-your-managed-domain-for-user-accounts-synced-with-your-on-premises-ad) |
 | **在 Azure AD 中创建的云用户帐户** |**&#x2713;** [将仅限云的用户帐户的密码同步到托管域](active-directory-ds-getting-started-password-sync.md) |
-<br>
 
 > [!TIP]
 > **可能需要完成这两组步骤。**
@@ -52,7 +50,7 @@ ms.locfileid: "51234198"
 
 **[下载 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)**
 
-推荐的版本：**1.1.614.0** - 于 2017 年 9 月 5 日发布。
+建议的版本：**1.1.614.0** - 已在 2017 年 9 月 5 日发布。
 
 > [!WARNING]
 > 必须安装推荐的最新的 Azure AD Connect 版本，才能将旧密码凭据（NTLM 和 Kerberos 身份验证需要的）同步到 Azure AD 租户。 此功能不可用于之前的 Azure AD Connect 版本或旧版的 DirSync 工具。
@@ -65,22 +63,20 @@ ms.locfileid: "51234198"
 对每个 AD 林执行以下 PowerShell 脚本。 可以通过此脚本将所有本地用户的 NTLM 和 Kerberos 密码哈希同步到 Azure AD 租户。 脚本还在 Azure AD Connect 中启动完全同步。
 
 ```powershell
-$adConnector = "<CASE SENSITIVE AD CONNECTOR NAME>"  
-$azureadConnector = "<CASE SENSITIVE AZURE AD CONNECTOR NAME>"  
-Import-Module adsync  
-$c = Get-ADSyncConnector -Name $adConnector  
+$adConnector = "<CASE SENSITIVE AD CONNECTOR NAME>"
+$azureadConnector = "<CASE SENSITIVE AZURE AD CONNECTOR NAME>"
+Import-Module adsync
+$c = Get-ADSyncConnector -Name $adConnector
 $p = New-Object Microsoft.IdentityManagement.PowerShell.ObjectModel.ConfigurationParameter "Microsoft.Synchronize.ForceFullPasswordSync", String, ConnectorGlobal, $null, $null, $null
-$p.Value = 1  
-$c.GlobalParameters.Remove($p.Name)  
-$c.GlobalParameters.Add($p)  
-$c = Add-ADSyncConnector -Connector $c  
-Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $false   
-Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $true  
+$p.Value = 1
+$c.GlobalParameters.Remove($p.Name)
+$c.GlobalParameters.Add($p)
+$c = Add-ADSyncConnector -Connector $c
+Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $false
+Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $true
 ```
 
 Azure AD 的凭据哈希同步需要一些时间，具体取决于目录的大小（用户、组的数量等）。 将凭据哈希同步到 Azure AD 后不久，即可在受 Azure AD 域服务管理的域中使用密码。
-
-<br>
 
 ## <a name="related-content"></a>相关内容
 * [对仅限云的 Azure AD 目录启用 AAD 域服务的密码同步](active-directory-ds-getting-started-password-sync.md)

@@ -1,5 +1,5 @@
 ---
-title: 使用模板创建 Azure 事件中心命名空间并启用捕获 | Microsoft Docs
+title: 创建启用了捕获的事件中心 - Azure 事件中心 | Microsoft Docs
 description: 使用 Azure 资源管理器模板创建包含一个事件中心的 Azure 事件中心命名空间并启用捕获
 services: event-hubs
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: c8341b40ba7616add1415178a2f0775fbbc66ec1
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 1ec0945996f0232553c9c1e0469289235f506611
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41920257"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054820"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>使用模板通过事件中心创建一个命名空间并启用捕获
 
@@ -27,7 +27,7 @@ ms.locfileid: "41920257"
 
 本文还介绍如何根据所选目标，指定将事件捕获到 Azure 存储 Blob 或 Azure Data Lake Store 中。
 
-有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板][Authoring Azure Resource Manager templates]。
+有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板][Authoring Azure Resource Manager templates]。 有关要在模板中使用的 JSON 语法和属性，请参阅 [Microsoft.EventHub 资源类型](/azure/templates/microsoft.eventhub/allversions)。
 
 有关 Azure 资源命名约定的模式和实践的详细信息，请参阅 [Azure 资源命名约定][Azure Resources naming conventions]。
 

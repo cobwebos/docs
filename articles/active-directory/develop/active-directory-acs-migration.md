@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 805270fa4cc051929ecb1362f2d3cd4455a17a60
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: f472503d43d82209c765a331ba3922a2f25ca327
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423375"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077057"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>如何：从 Azure 访问控制服务迁移
 
@@ -132,7 +132,7 @@ https://<mynamespace>.accesscontrol.windows.net
 | ------- | -------- |
 | Azure 服务总线 | [迁移到共享访问签名](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
 | Azure 服务总线中继 | [迁移到共享访问签名](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
-| Azure 托管缓存 | [迁移到 Azure Redis 缓存](https://docs.microsoft.com/azure/redis-cache/cache-faq#which-azure-cache-offering-is-right-for-me) |
+| Azure 托管缓存 | [迁移到用于 Redis 的 Azure 缓存](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#which-azure-cache-offering-is-right-for-me) |
 | Azure DataMarket | [迁移到认知服务 API](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
 | BizTalk 服务 | [迁移到 Azure 应用服务的逻辑应用功能](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
 | Azure 媒体服务 | [迁移到 Azure AD 身份验证](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
@@ -151,7 +151,7 @@ https://<mynamespace>.accesscontrol.windows.net
 
 | Feature | 指南 |
 | ------- | -------- |
-| 从 Azure AD 对用户进行身份验证 | 以前，Azure AD 不支持 SharePoint 用来执行身份验证的 SAML 1.1 令牌，并将 ACS 用作中介，使 SharePoint 能够与 Azure AD 令牌格式兼容。 现在，可以[使用 Azure AD 应用库 SharePoint 本地应用](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial)将 SharePoint 直接连接到 Azure AD。 |
+| 从 Azure AD 对用户进行身份验证 | 以前，Azure AD 不支持 SharePoint 进行身份验证所需的 SAML 1.1 令牌，并将 ACS 用作中介，使 SharePoint 能够与 Azure AD 令牌格式兼容。 现在，可以[使用 Azure AD 应用库 SharePoint 本地应用](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial)将 SharePoint 直接连接到 Azure AD。 |
 | [本地 SharePoint 中的应用身份验证和服务器到服务器身份验证](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | 不受 ACS 停用的影响；无需更改。 | 
 | [SharePoint 加载项的低信任授权（提供程序托管和 SharePoint 托管）](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | 不受 ACS 停用的影响；无需更改。 |
 | [SharePoint 云混合搜索](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | 不受 ACS 停用的影响；无需更改。 |
@@ -291,7 +291,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 
 <!--
 
-## Sharepoint 2010, 2013, 2016
+## SharePoint 2010, 2013, 2016
 
 TODO: Azure AD only, use Azure AD SAML 1.1 tokens, when we bring it back online.
 Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.

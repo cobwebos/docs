@@ -3,18 +3,18 @@ title: 管理多个 Azure 虚拟机的更新
 description: 本文介绍了如何管理 Azure 虚拟机的更新。
 services: automation
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 01/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8e1c58f2d60ee95189fb583e032d8748fedb88d4
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: ac2d1c1fb59988c8b95fda6b92bb9ae0332fc0e0
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620211"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427417"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>管理多个计算机的更新
 
@@ -84,9 +84,9 @@ Linux 代理必须具有访问更新存储库的权限。
 
 - **符合**：计算机不缺少关键更新或安全更新。
 
-- **不符合** - 计算机缺少至少一项关键更新或安全更新。
+- **不符合**：计算机缺少至少一项关键更新或安全更新。
 
-- **未评估** - 未在预期的时间范围内收到计算机的更新评估数据。 对于 Linux 计算机，预期的时间范围是过去 3 小时内。 对于 Windows 计算机，预期的时间范围是过去 12 小时内。
+- **未评估**：未在预期的时间范围内收到计算机的更新评估数据。 对于 Linux 计算机，预期的时间范围是过去 3 小时内。 对于 Windows 计算机，预期的时间范围是过去 12 小时内。
 
 若要查看代理的状态，请选择“更新代理准备”列中的链接。 选择此选项将打开“混合辅助角色”窗格，并且将显示混合辅助角色的状态。 下图显示了长时间未连接到“更新管理”的代理的示例。
 
@@ -104,7 +104,7 @@ Linux 代理必须具有访问更新存储库的权限。
 
 下表介绍了此解决方案支持的连接的源：
 
-| 连接的源 | 支持 | Description |
+| 连接的源 | 支持 | 说明 |
 | --- | --- | --- |
 | Windows 代理 |是 |“更新管理”从 Windows 代理收集有关系统更新的信息，并开始安装必需的更新。 |
 | Linux 代理 |是 |“更新管理”从 Linux 代理收集有关系统更新的信息，然后开始在受支持的发行版上安装必需的更新。 |
@@ -113,7 +113,11 @@ Linux 代理必须具有访问更新存储库的权限。
 
 ### <a name="collection-frequency"></a>收集频率
 
-对于每台托管的 Windows 计算机，每天运行两次扫描。 每隔 15 分钟就会调用一次 Windows API 来查询上次更新时间，以确定状态是否已更改。 如果状态已更改，则会启动符合性扫描。 对于每台托管的 Linux 计算机，每 3 小时运行一次扫描。
+在计算机完成更新符合性扫描以后，代理会将信息批量转发到 Azure Log Analytics。 在 Windows 计算机上，符合性扫描默认情况下每 12 小时运行一次。
+
+如果 MMA 重启，除了按扫描计划扫描，更新符合性扫描还会在更新安装前和更新安装后的 15 分钟内启动。
+
+对于 Linux 计算机，符合性扫描默认情况下每 3 小时执行一次。 如果 MMA 代理重启，则会在 15 分钟内启动符合性扫描。
 
 可能需要 30 分钟到 6 小时，仪表板才会显示受托管计算机提供的已更新数据。
 
@@ -126,13 +130,13 @@ Linux 代理必须具有访问更新存储库的权限。
 在“新建更新部署”窗格中，指定以下信息：
 
 - **名称**：输入用于标识更新部署的唯一名称。
-- **操作系统**：选择 **Windows** 或 **Linux**。
-- **要更新的组（预览）**：定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 有关详细信息，请参阅[动态组](automation-update-management.md#using-dynamic-groups)
-- **要更新的计算机**：选择“已保存的搜索”、“已导入的组”或“计算机”，进而选择要更新的计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。 可以在计划更新部署之前查看计算机的运行状况状态。 要了解在 Log Analytics 中创建计算机组的不同方法，请参阅 [Log Analytics 中的计算机组](../log-analytics/log-analytics-computer-groups.md)
+- **操作系统**：选择“Windows”或“Linux”。
+- **要更新的组(预览版)**：定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 有关详细信息，请参阅[动态组](automation-update-management.md#using-dynamic-groups)
+- **要更新的计算机**：选择“已保存的搜索”、“已导入的组”或“计算机”，进而选择要更新的计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。 可以在计划更新部署之前查看计算机的运行状况状态。 要了解在 Log Analytics 中创建计算机组的不同方法，请参阅 [Log Analytics 中的计算机组](../azure-monitor/platform/computer-groups.md)
 
   ![“新建更新部署”窗格](./media/manage-update-multi/update-select-computers.png)
 
-- **更新分类**：选择要在更新部署包括的软件的类型。 有关分类类型的说明，请参阅[更新分类](automation-update-management.md#update-classifications)。 分类类型：
+- **更新分类**：选择要在更新部署中包括的软件的类型。 有关分类类型的说明，请参阅[更新分类](automation-update-management.md#update-classifications)。 分类类型：
   - 关键更新
   - 安全更新
   - 更新汇总
@@ -155,7 +159,7 @@ Linux 代理必须具有访问更新存储库的权限。
 
 - **重启控制** - 此设置确定如何为更新部署处理重启。
 
-   |选项|Description|
+   |选项|说明|
    |---|---|
    |必要时请重启| **（默认）** 必要时且在维护时段允许的情况下开始重启。|
    |永远重启|无论是否需要重启，都会开始重启。 |
@@ -194,3 +198,4 @@ Linux 代理必须具有访问更新存储库的权限。
 ## <a name="next-steps"></a>后续步骤
 
 - 若要详细了解“更新管理”（包括日志、输出和错误），请参阅 [Azure 中的更新管理解决方案](../operations-management-suite/oms-solution-update-management.md)。
+

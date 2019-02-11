@@ -6,16 +6,16 @@ services: cognitive-services
 author: noellelacharite
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: nolachar
-ms.openlocfilehash: 10b6015a5d0755c77c787003e429c79f0e2669e5
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: c8e88066769b16cf50e3a8317d401a425bcc5d85
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283410"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228264"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Go 调用文本分析认知服务 
 <a name="HOLTop"></a>

@@ -7,14 +7,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: bb4a3f433f213984c4c351439760ddd3327cda73
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: ff772d4f53b279d8d048720beaa62cfdeb6401eb
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353130"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850408"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>将加速网络与 Azure 虚拟机灾难恢复配合使用
 
@@ -41,9 +41,9 @@ ms.locfileid: "49353130"
 * **Windows Server 2012 R2 Datacenter**
 
 ### <a name="supported-vm-instances"></a>支持的 VM 实例
-大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。  这些受支持的系列包括 D/DSv2 和 F/Fs
+大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。  这些受支持的系列包括：D/DSv2 和 F/Fs
 
-在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 受支持的系列包括 D/DSv3、E/ESv3、Fsv2 和 Ms/Mms
+在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 受支持的系列包括：D/DSv3、E/ESv3、Fsv2 和 Ms/Mms
 
 有关 VM 实例的详细信息，请参阅[Windows VM 大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
@@ -62,9 +62,9 @@ ms.locfileid: "49353130"
 * **Oracle Linux 7.4**
 
 ### <a name="supported-vm-instances"></a>支持的 VM 实例
-大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。  这些受支持的系列包括 D/DSv2 和 F/Fs
+大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。  这些受支持的系列包括：D/DSv2 和 F/Fs
 
-在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 受到支持的系列包括 D/DSv3、E/ESv3、Fsv2 和 Ms/Mms。
+在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 受支持的系列包括：D/DSv3、E/ESv3、Fsv2 和 Ms/Mms。
 
 有关 VM 实例的详细信息，请参阅[Linux VM 大小](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 

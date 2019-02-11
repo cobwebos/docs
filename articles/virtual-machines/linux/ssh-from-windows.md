@@ -3,7 +3,7 @@ title: 针对 Linux VM 将 SSH 密钥与 Windows 配合使用 | Microsoft Docs
 description: 了解如何在 Windows 计算机上生成和使用 SSH 密钥连接到 Azure 上的 Linux 虚拟机。
 services: virtual-machines-linux
 documentationcenter: ''
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-service-management,azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
-ms.author: danlep
-ms.openlocfilehash: abb0ba6eace2e837ea2f74a0d919097f8801101e
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 11/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 247d09e58ded2de12fb7cc6b5a036b695e715077
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407410"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298647"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>如何在 Azure 上将 SSH 密钥与 Windows 配合使用
 
@@ -105,6 +105,8 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
 如果创建密钥对时配置了通行短语，则在登录过程中遇到提示时，请输入该通行短语。
+
+如果 VM 使用的是实时访问策略，则需要先请求访问权限，然后才能连接到 VM。 有关实时策略的详细信息，请参阅[使用实时策略管理虚拟机访问](../../security-center/security-center-just-in-time.md)。
 
 ### <a name="connect-with-putty"></a>通过 PuTTY 连接
 

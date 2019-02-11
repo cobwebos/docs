@@ -1,5 +1,5 @@
 ---
-title: Azure 搜索中的全文搜索引擎 (Lucene) 体系结构 | Microsoft Docs
+title: 全文搜索引擎 (Lucene) 体系结构 - Azure 搜索
 description: 解释与 Azure 搜索相关的全文搜索的 Lucene 查询处理和文档检索概念。
 manager: jlembicz
 author: yahnoosh
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
-ms.openlocfilehash: 55d361e90dbc5fe48bc118088a6f859d096048ff
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.custom: seodec2018
+ms.openlocfilehash: dedfc7db6aef6d55fd50c94a217bdc489b9615f3
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036864"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633855"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure 搜索中全文搜索的工作原理
 
@@ -262,7 +263,7 @@ Spacious,||air-condition*+"Ocean view"
 | resort | 3 |
 | retreat | 4 |
 
-在标题字段中，只有 *hotel* 显示在以下两个文档中：1 和 3。
+在标题字段中，只有“酒店”显示在以下两个文档中：1、3。
 
 对于**说明**字段，索引如下所示：
 
@@ -384,7 +385,7 @@ Internet 搜索引擎取得的成功提高了人们对私有数据运行全文�
 
 + 生成示例索引，尝试不同的查询并查看结果。 有关说明，请参阅[在门户中生成和查询索引](search-get-started-portal.md#query-index)。
 
-+ 通过[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents#examples)示例部分或者通过门户中“搜索资源管理器”的[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)尝试其他查询语法。
++ 通过[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples)示例部分或者通过门户中“搜索资源管理器”的[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)尝试其他查询语法。
 
 + 如果想要在搜索应用程序中优化排名，请查看[评分配置文件](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)。
 
@@ -392,7 +393,7 @@ Internet 搜索引擎取得的成功提高了人们对私有数据运行全文�
 
 + [配置自定义分析器](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)，针对特定的字段尽量简化处理或者进行专门处理。
 
-+ 在此演示网站并排[比较标准和英语分析器](http://alice.unearth.ai/)。 
++ 在此演示网站并排[比较标准和英语分析器](https://alice.unearth.ai/)。 
 
 ## <a name="see-also"></a>另请参阅
 

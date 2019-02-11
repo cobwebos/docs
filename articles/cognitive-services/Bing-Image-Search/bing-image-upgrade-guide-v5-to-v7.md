@@ -1,5 +1,5 @@
 ---
-title: 从必应图像搜索 API v5 升级到 v7 - 必应图像搜索 API
+title: 从必应图像搜索 API v5 升级到 v7
 titleSuffix: Azure Cognitive Services
 description: 此升级指南介绍必应图像搜索 API 的版本 5 与版本 7 之间的更改。 本指南有助于发现需要更新为使用版本 7 的应用部分。
 services: cognitive-services
@@ -7,18 +7,18 @@ author: swhite-msft
 manager: cgronlun
 ms.assetid: 7F78B91F-F13B-40A4-B8A7-770FDB793F0F
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 53713a629dbe2682ef393a3a5dbf7845b5075591
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ec870ee8b40e732bf12c90689fb7ca79a7ff516c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296356"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55204178"
 ---
-# <a name="image-search-api-upgrade-guide"></a>图像搜索 API 升级指南
+# <a name="bing-image-search-api-upgrade-guide"></a>必应图像搜索 API 升级指南
 
 此升级指南介绍必应图像搜索 API 的版本 5 与版本 7 之间的更改。 本指南有助于发现需要更新为使用版本 7 的应用部分。
 
@@ -39,7 +39,7 @@ ms.locfileid: "46296356"
 
 - 已将 v5 错误代码替换为以下可取的 `code` 和 `subCode` 值。
 
-|代码|SubCode|Description
+|代码|SubCode|说明
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|只要出现任何子代码条件，必应就会返回 ServerError。 如果 HTTP 状态代码为 500，响应就会包含这些错误。
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>已阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，HTTP 状态代码为 400。<br/><br/>如果错误是 HttpNotAllowed，则 HTTP 状态代码为 410。
@@ -74,9 +74,9 @@ InsufficientScope|InsufficientAuthorization
 
 ### <a name="query-parameters"></a>查询参数
 
-- 已将 `modulesRequested` 查询参数重命名为 [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modules)。  
+- 已将 `modulesRequested` 查询参数重命名为 [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)。  
 
-- 将 Annotations 重命名为 Tags。 请参阅 [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modules)，查询 Tags 的参数。  
+- 将 Annotations 重命名为 Tags。 请参阅 [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)，查询 Tags 的参数。  
 
 - 将 ShoppingSources 筛选器值的受支持市场列表更改为仅限 en-US。 请参阅 [imageType](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagetype)。  
 
@@ -98,7 +98,7 @@ InsufficientScope|InsufficientAuthorization
 - 现在，以下查询参数仅对 `/images/details` 终结点有效。  
 
     -   [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken)  
-    -   [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modules)  
+    -   [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)  
     -   [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imgurl)  
     -   [cab](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cab)  
     -   [cal](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cal)  

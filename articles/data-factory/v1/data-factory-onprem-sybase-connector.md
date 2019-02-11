@@ -9,17 +9,16 @@ ms.assetid: b379ee10-0ff5-4974-8c87-c95f82f1c5c6
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0832d5a3f5b529a815046bb6f12755ad733ff03c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0de8d4145ff41b498149774af8ed74c56375dea9
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260561"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023645"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>使用 Azure 数据工厂从 Sybase 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -49,8 +48,8 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
 
-- 创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
-- 也可以使用以下工具创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+- 创建管道的最简单方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
+- 还可以使用以下工具来创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -67,11 +66,11 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| type |“type”属性必须设置为：**OnPremisesSybase** |是 |
+| type |type 属性必须设置为：**OnPremisesSybase** |是 |
 | server |Sybase 服务器的名称。 |是 |
 | database |Sybase 数据库的名称。 |是 |
 | schema |数据库中架构的名称。 |否 |
-| authenticationType |用于连接 Sybase 数据库的身份验证类型。 可能的值为：Anonymous、Basic 和 Windows。 |是 |
+| authenticationType |用于连接 Sybase 数据库的身份验证类型。 可能的值包括：Anonymous、Basic 和 Windows。 |是 |
 | username |如果使用基本或 Windows 身份验证，请指定用户名。 |否 |
 | password |指定为用户名指定的用户帐户的密码。 |否 |
 | gatewayName |网关的名称 - 数据工厂服务应使用此网关连接到本地 Sybase 数据库。 |是 |
@@ -177,7 +176,7 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 
 **Azure Blob 输出数据集：**
 
-数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据每小时向新的 blob 写入一次（frequency：hour，interval：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```JSON
 {

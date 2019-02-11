@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: crdun
-ms.openlocfilehash: f88e6a4037bcca54982359742cdc6021f020882d
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 506c59ca24aeafbac59b1508bb78142051302765
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27594711"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001831"
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>为 Xamarin.Forms 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "27594711"
 
 本教程基于在完成 [创建 Xamarin iOS 应用] 教程时创建的移动应用的 Xamarin.Forms 快速入门解决方案。 Xamarin.Forms 的快速入门解决方案包含用于支持脱机同步的代码，只需启用即可使用。 在本教程中，需更新快速入门解决方案，以打开 Azure 移动应用的脱机功能。 还将重点介绍该应用中的脱机特定代码。 如果不使用下载的快速入门解决方案，必须将数据访问扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK][1]。
 
-若要了解有关脱机同步功能的详细信息，请参阅[Azure 移动应用中的脱机数据同步][2] 主题。
+若要了解有关脱机同步功能的详细信息，请参阅[Azure 移动应用中的脱机数据同步]主题[2]。
 
 ## <a name="enable-offline-sync-functionality-in-the-quickstart-solution"></a>启用快速入门解决方案中的脱机同步功能
 脱机同步代码使用 C# 预处理器指令，包含在项目中。 定义 **OFFLINE\_SYNC\_ENABLED** 符号时，这些代码路径包含在生成中。 对于 Windows 应用，还必须安装 SQLite 平台。
@@ -118,7 +118,7 @@ ms.locfileid: "27594711"
 
 对具有由上下文跟踪的未完成本地更新的表执行拉取操作时，该拉取操作会自动触发在前面执行的上下文推送操作。 在此示例中刷新、添加和完成项目时，可省略显式 **PushAsync** 调用。
 
-在所提供的代码中，查询远程 TodoItem 表中的所有记录，但它还可以筛选记录，只需将查询 ID 和查询传递给 **PushAsync** 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步][2] 中的增量同步部分。
+在所提供的代码中，查询远程 TodoItem 表中的所有记录，但它还可以筛选记录，只需将查询 ID 和查询传递给 **PushAsync** 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步]中的增量同步部分[2]。
 
 ## <a name="run-the-client-app"></a>运行客户端应用
 现已启用脱机同步，可在每个平台上至少运行一次客户端应用程序，以填充本地存储数据库。 然后模拟脱机情况，并在应用处于脱机状态时修改本地存储中的数据。
@@ -146,7 +146,7 @@ ms.locfileid: "27594711"
 
 1. 重新打开 Constants.cs。 更正 `applicationURL`，使其指向正确的 URL。
 2. 重新生成并运行客户端应用。 该应用在启动后将尝试与移动应用后端进行同步。 验证调试控制台中是否未记录任何异常。
-3. （可选）使用 SQL Server 对象资源管理器或 REST 工具（如 Fiddler 或 [Postman][6] ）查看更新后的数据。 请注意，数据已在后端数据库和本地存储之间进行同步。
+3. （可选）使用 SQL Server 对象资源管理器或 REST 工具（如 Fiddler 或 [Postman]）查看更新后的数据[6]。 请注意，数据已在后端数据库和本地存储之间进行同步。
 
     请注意，数据已在数据库和本地存储之间进行同步，并包含在应用断开连接时添加的项目。
 
@@ -157,9 +157,9 @@ ms.locfileid: "27594711"
 <!-- URLs. -->
 [1]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [2]: app-service-mobile-offline-data-sync.md
-[3]: http://go.microsoft.com/fwlink/p/?LinkID=716919
-[4]: http://go.microsoft.com/fwlink/p/?LinkID=716920
-[5]: http://sqlite.org/2016/sqlite-uwp-3120200.vsix
+[3]: https://go.microsoft.com/fwlink/p/?LinkID=716919
+[4]: https://go.microsoft.com/fwlink/p/?LinkID=716920
+[5]: https://sqlite.org/2016/sqlite-uwp-3120200.vsix
 [6]: https://www.getpostman.com/
-[7]: http://www.telerik.com/fiddler
+[7]: https://www.telerik.com/fiddler
 [8]: app-service-mobile-dotnet-how-to-use-client-library.md

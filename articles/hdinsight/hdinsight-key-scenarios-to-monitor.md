@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: arindamc
-ms.openlocfilehash: 727ecdb06f9a43bf3722f82fa10b7a3304cf4958
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 83cbb2a54ed712f8aa5084408ab852432470b73c
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255296"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742467"
 ---
 # <a name="monitor-cluster-performance"></a>监视群集性能
 
 监视 HDInsight 群集的运行状况和性能对于维持最佳性能和资源利用率来说至关重要。 监视还可以帮助你检测并解决群集配置错误和用户代码问题。
 
-以下各部分介绍了如何监视和优化你的群集上的负载、YARN 队列，并检测存储限制问题。
+以下各部分介绍了如何监视和优化群集上的负载、Apache Hadoop YARN 队列，以及检测存储限制问题。
 
 ## <a name="monitor-cluster-load"></a>监视群集负载
 
@@ -28,7 +28,7 @@ ms.locfileid: "51255296"
 
 若要概括地查看群集的节点及其负载，请登录到 [Ambari Web UI](hdinsight-hadoop-manage-ambari.md)，然后选择“主机”选项卡。将按主机完全限定域名列出主机。 每个主机的运行状态由一个彩色运行状况指示器进行显示：
 
-| 颜色 | 说明 |
+| 颜色 | Description |
 | --- | --- |
 | 红色 | 主机上至少有一个主组件已关闭。 悬停鼠标以查看列出受影响组件的工具提示。 |
 | 橙色 | 主机上至少有一个从属组件已关闭。 悬停鼠标以查看列出受影响组件的工具提示。 |
@@ -43,7 +43,7 @@ ms.locfileid: "51255296"
 
 ![主机详细信息](./media/hdinsight-key-scenarios-to-monitor/host-details.png)
 
-有关设置警报和查看指标的详细信息，请参阅[使用 Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)。
+有关设置警报和查看指标的详细信息，请参阅[使用 Apache Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)。
 
 ## <a name="yarn-queue-configuration"></a>YARN 队列配置
 
@@ -77,16 +77,16 @@ YARN 队列管理器页的左侧显示队列的列表，以及分配给每个队
 
 如果使用 Azure 存储，有关监视与存储相关问题（包括限制）的信息，请参阅[监视、诊断和排查 Microsoft Azure 存储问题](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting)。
 
-如果群集的后备存储为 Azure Data Lake Store (ADLS)，产生限制的原因很可能是因为带宽限制。 在这种情况下，限制可通过观察任务日志中的限制错误来确定。 对于 ADLS，请参阅这些文章中相应服务的限制部分：
+如果群集的后备存储为 Azure Data Lake Storage (ADLS)，产生限制的原因很可能是因为带宽限制。 在这种情况下，限制可通过观察任务日志中的限制错误来确定。 对于 ADLS，请参阅这些文章中相应服务的限制部分：
 
-* [Hive on HDInsight 和 Azure Data Lake Store 性能优化指南](../data-lake-store/data-lake-store-performance-tuning-hive.md)
-* [MapReduce on HDInsight 和 Azure Data Lake Store 性能优化指南](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
-* [Storm on HDInsight 和 Azure Data Lake Store 性能优化指南](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+* [Apache Hive on HDInsight 和 Azure Data Lake Storage 性能优化指南](../data-lake-store/data-lake-store-performance-tuning-hive.md)
+* [MapReduce on HDInsight 和 Azure Data Lake Storage 性能优化指南](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
+* [Apache Storm on HDInsight 和 Azure Data Lake Storage 性能优化指南](../data-lake-store/data-lake-store-performance-tuning-storm.md)
 
 ## <a name="next-steps"></a>后续步骤
 
 请访问以下链接，了解有关故障排除和监视群集的详细信息：
 
 * [分析 HDInsight 日志](hdinsight-debug-jobs.md)
-* [使用 YARN 日志调试应用](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [在基于 Linux 的 HDInsight 上为 Hadoop 服务启用堆转储](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [使用 Apache Hadoop YARN 日志调试应用](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [在基于 Linux 的 HDInsight 上为 Apache Hadoop 服务启用堆转储](hdinsight-hadoop-collect-debug-heap-dump-linux.md)

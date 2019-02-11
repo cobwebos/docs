@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 12/13/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7b633b1787fc34658a84a2810de6673f9530cbf3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5e6d7dffb831e4e6541b5ef91cfc4ae4bbe88167
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310644"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343133"
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>在 Azure 安全中心中添加 web 应用程序防火墙
 为保护 web 应用程序，Azure 安全中心可能会建议从 Microsoft 合作伙伴添加 web 应用程序防火墙 (WAF)。 本文档将举例说明如何应用此建议。
@@ -46,7 +46,9 @@ ms.locfileid: "52310644"
 
 6. 会打开“Web 应用程序防火墙”，可在其中执行“VM 配置”步骤和提供“WAF 信息”。 选择“VM 配置”。
 7. 在“VM 配置”下输入启动要运行此 WAF 的虚拟机所需的信息。
+
    ![VM 配置][4]
+   
 8. 返回到“ Web 应用程序防火墙”，并选择“WAF 信息”。 在“WAF 信息”下可对此 WAF 本身进行配置。 通过步骤 7 可对要在其上运行 WAF 的虚拟机进行配置，通过步骤 8 可对此 WAF 本身进行预配。
 
 ## <a name="finalize-application-protection"></a>完成应用程序保护
@@ -73,7 +75,7 @@ ms.locfileid: "52310644"
 
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
-* [在 Azure 安全中心中设置安全策略](security-center-azure-policy.md)了解如何配置 Azure 订阅和资源组的安全策略。
+* [在 Azure 安全中心中设置安全策略](tutorial-security-policy.md)了解如何配置 Azure 订阅和资源组的安全策略。
 * [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) -- 了解如何监视 Azure 资源的运行状况。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。
 * [在 Azure 安全中心中管理安全建议](security-center-recommendations.md) -- 了解建议如何帮助保护 Azure 资源。

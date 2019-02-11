@@ -4,10 +4,10 @@ description: 使用 Azure 门户查看 Azure Active Directory (Azure AD) 租户�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.date: 07/25/2018
 ms.author: barbkess
 ms.reviewer: arvinh
 ms.custom: it-pro
-ms.openlocfilehash: bedd83426ecb24681fcfa292a049b8d4a3271d6a
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: ab73cbb9c7b2a72d132074d8921487349f2993ec
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39266313"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179628"
 ---
 # <a name="view-your-azure-active-directory-tenant-applications"></a>查看 Azure Active Directory 租户应用程序
 

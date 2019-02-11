@@ -1,22 +1,22 @@
 ---
-title: 在 Azure 上使用 Hive 进行 HDInsight Hadoop 数据科学演练 | Microsoft Docs
+title: 使用 Hive 在 Azure HDInsight Hadoop 上执行分析 - Team Data Science Process
 description: Team Data Science Process 的示例，演练如何在 Azure HDInsight Hadoop 上使用 Hive 来执行预测分析。
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: eae56eda72d775205a231e2c6482a1c0686d9251
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 8db11759ce501929e5cfd7b721c5e9dc80f9e01a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445918"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473181"
 ---
 # <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>在 Azure 上使用 Hive 进行 HDInsight Hadoop 数据科学演练 
 

@@ -1,21 +1,22 @@
 ---
-title: 在 LUIS 中管理帐户设置 | Microsoft Docs
-description: 使用 LUIS 网站管理帐户设置。
-titleSuffix: Azure
+title: 管理设置
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: 使用 LUIS 网站管理用户帐户设置及用于你的所有应用的创作密钥。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: bb41331228e700c55da21c627d617d16faa2dcb9
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 51b0d3f753ab89e5809e610f5754355d1c5090b0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335394"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228621"
 ---
 # <a name="manage-account-and-authoring-key"></a>管理帐户和创作密钥
 LUIS 帐户信息的两个关键部分是用户帐户和创作密钥。 登录信息在 [account.microsoft.com](https://account.microsoft.com) 上进行管理。 创作密钥在 [LUIS](luis-reference-regions.md) 网站的“设置”页面上进行管理。 

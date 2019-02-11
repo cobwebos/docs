@@ -9,18 +9,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 01/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 5c45167255ec91030f07e550de223a7ebed93168
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: c429945d4832710125a419b4e9a9b9165869ca97
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345753"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888679"
 ---
-#  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据 
+# <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
 > * [版本 1](v1/data-factory-azure-sql-data-warehouse-connector.md)
 > * [当前版本](connector-azure-sql-data-warehouse.md)
@@ -337,9 +336,9 @@ CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
 AS
 SET NOCOUNT ON;
 BEGIN
-     select *
-     from dbo.UnitTestSrcTable
-     where dbo.UnitTestSrcTable.stringData != stringData
+    select *
+    from dbo.UnitTestSrcTable
+    where dbo.UnitTestSrcTable.stringData != stringData
     and dbo.UnitTestSrcTable.identifier != identifier
 END
 GO
@@ -404,26 +403,26 @@ SQL 数据仓库 PolyBase 直接支持 Azure Blob 和 Azure Data Lake Store。 �
 
    1. `fileName` 不包含通配符筛选器。
    2. `rowDelimiter` 必须是 **\n**。
-   3. `nullValue` 设置为**空字符串**（""）或保留为默认值，`treatEmptyAsNull` 未设置为 false。
+   3. 将 `nullValue` 设置为“空字符串”（“”）或保留为默认值，并将 `treatEmptyAsNull` 设置为默认值或 true。
    4. `encodingName` 设置为 **utf-8**（默认值）。
    5. `escapeChar`、`quoteChar` 和 `skipLineCount` 未指定。 PolyBase 支持跳过可以在 ADF 中配置为 `firstRowAsHeader` 的标头行。
    6. `compression` 可为**无压缩**、**GZip** 或 **Deflate**。
 
     ```json
     "typeProperties": {
-       "folderPath": "<blobpath>",
-       "format": {
-           "type": "TextFormat",
-           "columnDelimiter": "<any delimiter>",
-           "rowDelimiter": "\n",
-           "nullValue": "",
-           "encodingName": "utf-8",
-           "firstRowAsHeader": <any>
-       },
-       "compression": {
-           "type": "GZip",
-           "level": "Optimal"
-       }
+        "folderPath": "<blobpath>",
+        "format": {
+            "type": "TextFormat",
+            "columnDelimiter": "<any delimiter>",
+            "rowDelimiter": "\n",
+            "nullValue": "",
+            "encodingName": "utf-8",
+            "firstRowAsHeader": <any>
+        },
+        "compression": {
+            "type": "GZip",
+            "level": "Optimal"
+        }
     },
     ```
 
@@ -574,8 +573,8 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的 Blob 
 | smalldatetime | DateTime |
 | smallint | Int16 |
 | smallmoney | 小数 |
-| sql_variant | 对象 * |
-| 文本 | String, Char[] |
+| sql_variant | 对象 |
+| text | String, Char[] |
 | time | TimeSpan |
 | timestamp | Byte[] |
 | tinyint | Byte |

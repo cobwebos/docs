@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: ryanwi
-ms.openlocfilehash: e4c3bf627c4a5e01c4d9001fcbb0feed0b92209f
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e41e5d48141b120ec1f80b0faa899bda07a2934e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008036"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962057"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>为 Service Fabric 群集打开端口
 
 使用 Azure Service Fabric 群集部署的负载均衡器将流量定向到在节点上运行的应用。 如果将应用更改为使用另一端口，必须在 Azure 负载均衡器中公开该端口（或路由另一端口）。
 
-将 Service Fabric 群集部署到 Azure 后，系统会自动创建负载均衡器。 如果没有负载均衡器，请参阅[配置面向 Internet 的负载均衡器](..\load-balancer\load-balancer-get-started-internet-portal.md)。
+将 Service Fabric 群集部署到 Azure 后，系统会自动创建负载均衡器。 如果没有负载均衡器，请参阅[配置面向 Internet 的负载均衡器](../load-balancer/load-balancer-get-started-internet-portal.md)。
 
 ## <a name="configure-service-fabric"></a>配置 Service Fabric
 
@@ -33,7 +33,7 @@ Service Fabric 应用程序 ServiceManifest.xml 配置文件定义应用程序�
 
 ## <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
 
-负载均衡器规则可打开面向 Internet 的端口，并将流量转发至应用程序所用的内部节点的端口。 如果没有负载均衡器，请参阅[配置面向 Internet 的负载均衡器](..\load-balancer\load-balancer-get-started-internet-portal.md)。
+负载均衡器规则可打开面向 Internet 的端口，并将流量转发至应用程序所用的内部节点的端口。 如果没有负载均衡器，请参阅[配置面向 Internet 的负载均衡器](../load-balancer/load-balancer-get-started-internet-portal.md)。
 
 要创建负载均衡器规则，需要收集以下信息：
 
@@ -68,7 +68,7 @@ Azure CLI 命令具有下表中所述的几个参数：
 
 
 >[!NOTE]
->有关如何使用 Azure CLI 创建负载均衡器的详细信息，请参阅[使用 Azure CLI 创建负载均衡器](..\load-balancer\load-balancer-get-started-internet-arm-cli.md)。
+>有关如何使用 Azure CLI 创建负载均衡器的详细信息，请参阅[使用 Azure CLI 创建负载均衡器](../load-balancer/load-balancer-get-started-internet-arm-cli.md)。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -104,7 +104,7 @@ $lb | Set-AzureRmLoadBalancer
 对于 `New-AzureRmLoadBalancerRuleConfig` 命令，`-FrontendPort` 表示负载均衡器针对外部连接公开的端口，而 `-BackendPort` 表示 Service Fabric 应用正在侦听的端口。
 
 >[!NOTE]
->有关如何使用 PowerShell 创建负载均衡器的详细信息，请参阅[使用 PowerShell 创建负载均衡器](..\load-balancer\load-balancer-get-started-internet-arm-ps.md)。
+>有关如何使用 PowerShell 创建负载均衡器的详细信息，请参阅[使用 PowerShell 创建负载均衡器](../load-balancer/load-balancer-get-started-internet-arm-ps.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

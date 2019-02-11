@@ -5,18 +5,18 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 84c82da933b17679e8c69c08b0c9cc7372951cfd
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 3f87a4c520327f1a13a48c70502b6737c0aa9b3a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802047"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630965"
 ---
-# <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>使用 Azure 本地数据网关连接到本地数据源
-本地数据网关的作用好似一架桥，提供本地数据源与云中的 Azure Analysis Services 服务器之间的安全数据传输。 除了在同一区域中使用多个 Azure Analysis Services 服务器，最新版本的网关也适用于 Azure 逻辑应用、Power BI、Power Apps 和 Microsoft Flow。 可以将同一订阅和同一区域中的多个服务与单个网关进行关联。 
+# <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>使用本地数据网关连接到本地数据源
+本地数据网关提供本地数据源与云中的 Azure Analysis Services 服务器之间的安全数据传输。 除了在同一区域中使用多个 Azure Analysis Services 服务器，最新版本的网关也适用于 Azure 逻辑应用、Power BI、Power Apps 和 Microsoft Flow。 可以将同一订阅和同一区域中的多个服务与单个网关进行关联。 
 
 首次设置网关的过程分为四个部分：
 
@@ -50,7 +50,7 @@ ms.locfileid: "48802047"
 如果由于身份验证，代理服务器遇到问题，建议将 Windows 服务帐户更改为域用户或托管服务帐户。
 
 ## <a name="ports"> </a>端口
-网关会创建与 Azure 服务总线之间的出站连接。 它在以下出站端口上进行通信：TCP 443（默认值）、5671、5672、9350 到 9354。  网关不需要入站端口。
+网关会创建与 Azure 服务总线之间的出站连接。 它在出站端口上进行通信：TCP 443（默认值）、5671、5672、9350 到 9354。  网关不需要入站端口。
 
 我们建议在防火墙中针对数据区域列出 IP 地址允许列表。 可以下载 [Microsoft Azure 数据中心 IP 列表](https://www.microsoft.com/download/details.aspx?id=41653)。 该列表每周都会进行更新。
 
@@ -93,16 +93,16 @@ ms.locfileid: "48802047"
 
 ### <a name="general"></a>常规
 
-问：对于云中的数据源（如 Azure SQL 数据库），是否需要网关？ <br/>
-**答**：不需要。 如果仅连接到本地数据源，则网关是必需的。
+**问**：对于云中的数据源（如 Azure SQL 数据库），是否需要网关？ <br/>
+**答**：不是。 如果仅连接到本地数据源，则网关是必需的。
 
 **问**：网关是否必须安装在与数据源相同的计算机上？ <br/>
-**答**：不需要。 网关只需能够连接到服务器即可，通常在同一个网络上。
+**答**：不是。 网关只需能够连接到服务器即可，通常在同一个网络上。
 
 <a name="why-azure-work-school-account"></a>
 
 **问**：为何需要使用工作或学校帐户登录？ <br/>
-**答**：安装本地数据网关时只能使用组织工作或学校帐户。 而且，该帐户必须与要在其中配置网关资源的订阅在同一租户中。 登录帐户存储在由 Azure Active Directory (Azure AD) 管理的租户中。 通常，Azure AD 帐户的用户主体名称 (UPN) 与电子邮件地址匹配。
+**答**：安装本地数据网关时只能使用组织的工作或学校帐户。 而且，该帐户必须与要在其中配置网关资源的订阅在同一租户中。 登录帐户存储在由 Azure Active Directory (Azure AD) 管理的租户中。 通常，Azure AD 帐户的用户主体名称 (UPN) 与电子邮件地址匹配。
 
 **问**：凭据存储在何处？ <br/>
 **答**：为数据源输入的凭据将会加密，并存储在网关云服务中。 凭据在本地数据网关中解密。
@@ -118,7 +118,7 @@ ms.locfileid: "48802047"
 **答**：可通过 Azure 服务总线发送结果。
 
 **问**：是否存在从云到网关的入站连接？ <br/>
-**答**：不需要。 网关使用与 Azure 服务总线之间的出站连接。
+**答**：不是。 网关使用与 Azure 服务总线之间的出站连接。
 
 **问**：如果阻止出站连接，会发生什么情况？ 我需要打开什么？ <br/>
 **答**：查看网关使用的端口和主机。
@@ -127,12 +127,15 @@ ms.locfileid: "48802047"
 **答**：在“服务”中，网关名为“本地数据网关服务”。
 
 **问**：是否可以使用 Azure Active Directory 帐户运行网关 Windows 服务？ <br/>
-**答**：不需要。 该 Windows 服务必须具有有效的 Windows 帐户。 默认情况下，服务使用服务 SID“NT SERVICE\PBIEgwService”来运行。
+**答**：不是。 该 Windows 服务必须具有有效的 Windows 帐户。 默认情况下，服务使用服务 SID“NT SERVICE\PBIEgwService”来运行。
 
 **问**：如何接管网关？ <br/>
-**答**：要接管网关（通过在“控制面板”>“程序”中运行“安装程序”/“更改”），你需要成为 Azure 中网关资源的所有者并且需要拥有恢复密钥。 可在访问控制中配置网管资源所有者。
+**答**：要接管网关（通过在“控制面板”>“程序”中运行“设置/更改”），你需要成为 Azure 中网关资源的所有者并且需要拥有恢复密钥。 可在访问控制中配置网管资源所有者。
 
 ### <a name="high-availability"></a>高可用性和灾难恢复
+
+**问**：如何具有更高可用性？  
+**答**：可在另一台计算机上安装网关以创建群集。 若要了解详细信息，请参阅 Power BI Gateway 文档中的[本地数据网关的高可用性群集](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters)。
 
 **问**：有哪些选项可用于灾难恢复？ <br/>
 **答**：可以使用恢复密钥还原或移动网关。 安装网关时，指定恢复密钥。
@@ -143,7 +146,7 @@ ms.locfileid: "48802047"
 ## <a name="troubleshooting"></a>故障排除
 
 **问**：尝试在 Azure 中创建网关资源时，为什么在网关实例列表中没看到我的网关？ <br/>
-**A**：有两个可能的原因。 第一种可能性是已在当前订阅或某个其他订阅中为该网关创建了资源。 若要消除该可能性，请从门户枚举“本地数据网关”类型的资源。 枚举所有资源时，请确保选择所有订阅。 创建资源后，该网关将不会出现在“创建网关资源”门户体验的网关实例列表中。 第二种可能性是安装该网关的用户的 Azure AD 标识与登录到 Azure 门户的用户不同。 若要解决此问题，请使用安装该网关的用户帐户登录到门户。
+**答**：有两个可能的原因。 第一种可能性是已在当前订阅或某个其他订阅中为该网关创建了资源。 若要消除该可能性，请从门户枚举“本地数据网关”类型的资源。 枚举所有资源时，请确保选择所有订阅。 创建资源后，该网关将不会出现在“创建网关资源”门户体验的网关实例列表中。 第二种可能性是安装该网关的用户的 Azure AD 标识与登录到 Azure 门户的用户不同。 若要解决此问题，请使用安装该网关的用户帐户登录到门户。
 
 **问**：如何查看正在发送到本地数据源的查询？ <br/>
 **答**：可以启用查询跟踪，包括要发送的查询。 请记得在完成故障排除后将查询跟踪改回原始值。 一直保持启用查询跟踪会创建大量的日志。
@@ -157,7 +160,7 @@ ms.locfileid: "48802047"
 
 如果网关版本过时，可能会出现很多问题。 良好的常规做法是确保使用最新版本。 如果有一个月或更长时间未更新网关，可能要考虑安装最新版本的网关，并确定是否可以重现问题。
 
-### <a name="error-failed-to-add-user-to-group--2147463168-pbiegwservice-performance-log-users"></a>错误: 无法将用户添加到组。 (-2147463168 PBIEgwService Performance Log Users)
+### <a name="error-failed-to-add-user-to-group--2147463168-pbiegwservice-performance-log-users"></a>错误：无法将用户添加到组。 (-2147463168 PBIEgwService Performance Log Users)
 
 如果尝试在不受支持的域控制器上安装网关，可能会收到此错误。 请确保将网关部署在不是域控制器的计算机上。
 
@@ -184,7 +187,7 @@ ms.locfileid: "48802047"
 
 **启用遥测**
 
-1.  查看计算机上的本地数据网关客户端目录。 通常为 %systemdrive%\Program Files\On-premises data gateway。 或者可以打开服务控制台，并查看可执行文件（本地数据网关服务的属性之一）的路径。
+1.  查看计算机上的本地数据网关客户端目录。 通常为 %systemdrive%\Program Files\On-premises data gateway。 或者，可打开“服务”控制台并查看可执行文件的“路径”：“本地数据网关服务”的属性。
 2.  在客户端目录的 Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config 文件中， 将 SendTelemetry 设置更改为 true。
         
     ```
@@ -193,7 +196,7 @@ ms.locfileid: "48802047"
         </setting>
     ```
 
-3.  保存更改并重启 Windows 服务：本地数据网关服务。
+3.  保存更改，然后重启 Windows 服务：本地数据网关服务。
 
 
 

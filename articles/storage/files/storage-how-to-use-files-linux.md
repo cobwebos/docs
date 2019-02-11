@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: renash
-ms.component: files
-ms.openlocfilehash: 4b844fe50623782f23c1819c14eb7626eb9506cf
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.subservice: files
+ms.openlocfilehash: d7c8c2c4769cd1a8c92b5bf52c72ac8f2a4f71e4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614934"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462080"
 ---
 # <a name="use-azure-files-with-linux"></a>通过 Linux 使用 Azure 文件
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以使用 [SMB 内核客户端](https://wiki.samba.org/index.php/LinuxCIFS)在 Linux 分发版中装载 Azure 文件共享。 本文介绍装载 Azure 文件共享的两种方法：使用 `mount` 命令按需装载，以及通过在 `/etc/fstab` 中创建一个条目在启动时装载。
@@ -24,7 +24,7 @@ ms.locfileid: "51614934"
 ## <a name="prerequisites-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package"></a>使用 Linux 和 cifs-utils 包装载 Azure 文件共享的先决条件
 <a id="smb-client-reqs"></a>
 * **选择 Linux 发行版以满足你的装载需求。**  
-      可以通过 SMB 2.1 和 SMB 3.0 装载 Azure 文件。 对于来自本地或其他 Azure 区域中的客户端的连接，Azure 文件会拒绝 SMB 2.1（或没有加密的 SMB 3.0）。 如果为存储帐户启用“需要安全转移”，则 Azure 文件仅允许使用带加密的 SMB 3.0 进行连接。
+      可以通过 SMB 2.1 和 SMB 3.0 装载 Azure 文件。 对于来自本地或其他 Azure 区域中的客户端的连接，必须使用 SMB 3.0；Azure 文件会拒绝 SMB 2.1（或没有加密的 SMB 3.0）。 如果从同一个 Azure 区域内的 VM 访问 Azure 文件共享，则可使用 SMB 2.1 访问文件共享，当且仅当托管 Azure 文件共享的存储帐户禁用了“需要安全传输”时适用。 始终建议要求安全传输并仅使用带加密的 SMB 3.0。
     
     SMB 3.0 加密支持在 Linux 内核版本 4.11 中引入，已向后移植到常见 Linux 分发版的早期内核版本中。 在本文档发布时，Azure 库中的以下发行版支持表标题中指定的装载选项。 
 
@@ -75,7 +75,7 @@ ms.locfileid: "51614934"
 
 * **存储帐户密钥**：需提供主要（或辅助）存储密钥才能装载 Azure 文件共享。 目前不支持使用 SAS 密钥进行装载。
 
-* **确保已打开端口 445**：SMB 通过 TCP 端口 445 通信 - 请查看防火墙是否未阻止 TCP 端口 445 与客户端计算机通信。
+* **确保端口 445 处于打开状态**：SMB 通过 TCP 端口 445 通信 - 请查看防火墙是否未阻止 TCP 端口 445 与客户端计算机通信。
 
 ## <a name="mount-the-azure-file-share-on-demand-with-mount"></a>使用 `mount` 按需装载 Azure 文件共享
 1. [安装适用于 Linux 分发版的 cifs-utils 包](#install-cifs-utils)。
@@ -86,7 +86,7 @@ ms.locfileid: "51614934"
     mkdir /mnt/MyAzureFileShare
     ```
 
-3. **使用 mount 命令装载 Azure 文件共享**：记得将 `<storage-account-name>`、`<share-name>`、`<smb-version>`、`<storage-account-key>` 和 `<mount-point>` 替换为适用于你环境的相应信息。 如果你的 Linux 分发版支持带加密的 SMB 3.0（有关详细信息，请参阅[了解 SMB 客户端要求](#smb-client-reqs)），则将 `3.0` 用于 `<smb-version>`。 对于不支持带加密的 SMB 3.0 的 Linux 分发版，将 `2.1` 用于 `<smb-version>`。 请注意，只能使用 SMB 3.0 在 Azure 区域外部（包括本地或不同 Azure 区域中）装载 Azure 文件共享。 
+3. **使用 mount 命令装载 Azure 文件共享**：请记得将 `<storage-account-name>``<share-name>``<smb-version>``<storage-account-key>` 和 `<mount-point>` 替换为适合你的环境的信息。 如果你的 Linux 分发版支持带加密的 SMB 3.0（有关详细信息，请参阅[了解 SMB 客户端要求](#smb-client-reqs)），则将 `3.0` 用于 `<smb-version>`。 对于不支持带加密的 SMB 3.0 的 Linux 分发版，将 `2.1` 用于 `<smb-version>`。 请注意，只能使用 SMB 3.0 在 Azure 区域外部（包括本地或不同 Azure 区域中）装载 Azure 文件共享。 
 
     ```bash
     sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
@@ -123,7 +123,7 @@ ms.locfileid: "51614934"
     sudo chmod 600 /etc/smbcredentials/<storage-account-name>.cred
     ```
 
-5. **使用以下命令将以下代码行追加到 `/etc/fstab`**：记得将 `<storage-account-name>`、`<share-name>`、`<smb-version>` 和 `<mount-point>` 替换为适合你的环境的信息。 如果你的 Linux 分发版支持带加密的 SMB 3.0（有关详细信息，请参阅[了解 SMB 客户端要求](#smb-client-reqs)），则将 `3.0` 用于 `<smb-version>`。 对于不支持带加密的 SMB 3.0 的 Linux 分发版，将 `2.1` 用于 `<smb-version>`。 请注意，只能使用 SMB 3.0 在 Azure 区域外部（包括本地或不同 Azure 区域中）装载 Azure 文件共享。 
+5. **使用以下命令将以下行追加到 `/etc/fstab`**：请记得将 `<storage-account-name>``<share-name>``<smb-version>` 和 `<mount-point>` 替换为适合你的环境的信息。 如果你的 Linux 分发版支持带加密的 SMB 3.0（有关详细信息，请参阅[了解 SMB 客户端要求](#smb-client-reqs)），则将 `3.0` 用于 `<smb-version>`。 对于不支持带加密的 SMB 3.0 的 Linux 分发版，将 `2.1` 用于 `<smb-version>`。 请注意，只能使用 SMB 3.0 在 Azure 区域外部（包括本地或不同 Azure 区域中）装载 Azure 文件共享。 
 
     ```bash
     sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> <mount-point> cifs nofail,vers=<smb-version>,credentials=/etc/smbcredentials/<storage-account-name>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'

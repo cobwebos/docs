@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: pim
-ms.date: 08/31/2018
+ms.subservice: pim
+ms.date: 11/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 59bce2c61db5838bb21a29757d4e354311ecffd5
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e37435b0f2d52e2015caf3d2e0db6db0dba60c75
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666241"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187345"
 ---
 # <a name="activate-my-azure-resource-roles-in-pim"></a>在 PIM 中激活 Azure 资源角色
 
@@ -67,9 +67,25 @@ ms.locfileid: "43666241"
 
 1. 单击“激活”。
 
-    如果角色不需要审批，而且已经激活，则此角色将出现在活动角色列表中。 如果[角色需要审批](pim-resource-roles-approval-workflow.md)才能激活，则浏览器右上角会显示一条通知，告知你请求正在等待审批。
+    如果角色不需要审批，则会激活该角色并将其添加到活动角色列表中。 若要立即使用该角色，请按照下一部分中的步骤操作。
+
+    如果[角色需要审批](pim-resource-roles-approval-workflow.md)才能激活，则浏览器右上角会显示一条通知，告知你请求正在等待审批。
 
     ![请求等待审批通知](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
+
+## <a name="use-a-role-immediately-after-activation"></a>激活后立即使用角色
+
+在 PIM 中激活某个角色时，需要等待至少 10 分钟，然后你才能访问所需的管理门户，或者执行特定管理工作负荷中的功能。 若要强制更新权限，请使用“应用程序访问”页，如以下步骤所述。
+
+1. 打开 Azure AD Privileged Identity Management。
+
+1. 单击“应用程序访问”页。
+
+    ![PIM 应用程序访问 - 屏幕截图](./media/pim-resource-roles-activate-your-roles/pim-application-access.png)
+
+1. 单击“Azure 资源”链接以将门户重新打开到“所有资源”页。
+
+    单击此链接时，会使当前令牌失效并强制 Azure 门户获取应包含已更新权限的新令牌。
 
 ## <a name="view-the-status-of-your-requests"></a>查看请求的状态
 
@@ -82,20 +98,6 @@ ms.locfileid: "43666241"
     ![Azure AD 目录角色和 Azure 资源角色 - 我的请求](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
 
 1. 向右滚动以查看“请求状态”列。
-
-## <a name="use-a-role-immediately-after-activation"></a>激活后立即使用角色
-
-由于缓存的原因，在未刷新的情况下，激活过程不会在 Azure 门户中立即发生。 如果需要在激活角色后减少延迟的可能性，可以使用门户中的“应用程序访问”页。 从此页访问的应用程序会立即检查新的角色分配。
-
-1. 打开 Azure AD Privileged Identity Management。
-
-1. 单击“应用程序访问”页。
-
-    ![PIM 应用程序访问 - 屏幕截图](./media/pim-resource-roles-activate-your-roles/pim-application-access.png)
-
-1. 单击“Azure 资源”以在“所有资源”页上重新打开门户。
-
-    单击此链接时，将强制刷新，并检查是否有新的 Azure 资源角色分配。
 
 ## <a name="cancel-a-pending-request"></a>取消挂起的请求
 
@@ -110,6 +112,21 @@ ms.locfileid: "43666241"
     单击“取消”会取消该请求。 若要再次激活该角色，必须提交新的激活请求。
 
    ![取消等待中的请求](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
+
+## <a name="troubleshoot"></a>故障排除
+
+### <a name="permissions-not-granted-after-activating-a-role"></a>激活角色后未授予权限
+
+在 PIM 中激活某个角色时，需要等待至少 10 分钟，然后你才能访问所需的管理门户，或者执行特定管理工作负荷中的功能。 若要强制更新权限，请使用“应用程序访问”页，如前面[在激活后立即使用角色](#use-a-role-immediately-after-activation)中所述。
+
+有关其他故障排除步骤，请参阅[排查提升的权限问题](https://social.technet.microsoft.com/wiki/contents/articles/37568.troubleshooting-elevated-permissions-with-azure-ad-privileged-identity-management.aspx)。
+
+### <a name="cannot-activate-a-role-due-to-a-resource-lock"></a>由于资源锁而无法激活角色
+
+如果尝试激活某个角色时收到一条消息，指出 Azure 资源被锁定，则可能是因为角色分配作用域内的某个资源具有资源锁。 锁可以防止资源被意外删除或意外更改。 锁还可以防止 PIM 在激活期间结束时从资源上删除角色分配。 由于 PIM 在应用了锁时无法正常工作，因此，PIM 会禁止用户在资源上激活角色。 有两种方法可以解决此问题：
+
+- 如[锁定资源以防止意外更改](../../azure-resource-manager/resource-group-lock-resources.md)中所述删除锁。
+- 如果你希望保留锁，请使角色分配成为永久的或者使用“不受限”帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

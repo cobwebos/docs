@@ -9,17 +9,16 @@ ms.assetid: c0538b90-2695-4c4c-a6c8-82f59111f4ab
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 417425a6982ca92e486ccfb578131ebc898a0466
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 03127dc777588f669ef07af52c8f73d986bfe0ea
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046082"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020806"
 ---
 # <a name="azure-data-factory---samples"></a>Azure 数据工厂 - 示例
 > [!NOTE]
@@ -29,7 +28,7 @@ ms.locfileid: "37046082"
 ## <a name="samples-on-github"></a>GitHub 上的示例
 [GitHub Azure-DataFactory 存储库](https://github.com/azure/azure-datafactory)中的几个示例可帮助快速熟悉 Azure 数据工厂服务或修改脚本并将其用于自己的应用程序。 Samples\JSON 文件夹包含用于常见方案的 JSON 片段。
 
-| 示例 | 说明 |
+| 示例 | Description |
 |:--- |:--- |
 | [ADF 演练](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFWalkthrough) |此示例提供端到端演练，以使用 Azure 数据工厂处理日志文件，从而将日志文件中的数据转换为见解。 <br/><br/>在本演练中，数据工厂管道收集示例日志、处理和扩充日志中的数据（包含引用数据）并转换数据，以评估最近启动的市场营销活动的有效性。 |
 | [JSON 示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON) |此示例提供常见方案的 JSON 示例。 |
@@ -49,7 +48,7 @@ ms.locfileid: "37046082"
 ## <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
 可在 GitHub 上找到数据工厂的以下 Azure 资源管理器模板。
 
-| 模板 | 说明 |
+| 模板 | Description |
 | --- | --- |
 | [从 Azure Blob 存储复制到 Azure SQL 数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |部署此模板将创建 Azure 数据工厂，其中包含可将数据从指定的 Azure Blob 存储复制到 Azure SQL 数据库的管道 |
 | [从 Salesforce 复制到 Azure Blob 存储](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |部署此模板将创建 Azure 数据工厂，其中包含可将数据从指定的 Salesforce 帐户复制到 Azure Blob 存储的管道。 |
@@ -83,7 +82,7 @@ ms.locfileid: "37046082"
 
 * Visual Studio 2013 或 Visual Studio 2015
 * 下载用于 Visual Studio 2013 或 Visual Studio 2015 的 Azure SDK。 导航到 [Azure 下载页](https://azure.microsoft.com/downloads/)，在“.NET”部分中单击“VS 2013”或“VS 2015”。
-* 下载用于 Visual Studio 的最新 Azure 数据工厂插件：[VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) 或 [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)。 如果使用的是 Visual Studio 2013，还可通过执行以下步骤更新插件：在菜单上，依次单击“工具” -> “扩展和更新” -> “联机” -> “Visual Studio 库” -> “适用于 Visual Studio 的 Microsoft Azure 数据工厂工具” -> “更新”。
+* 下载用于 Visual Studio 的最新 Azure 数据工厂插件：[VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) 或 [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)。 如果使用的是 Visual Studio 2013，还可以执行以下步骤来更新插件：在菜单上，依次单击“工具” -> “扩展和更新” -> “联机” -> “Visual Studio 库” -> “适用于 Visual Studio 的 Microsoft Azure 数据工厂工具” -> “更新”。
 
 ### <a name="use-data-factory-templates"></a>使用数据工厂模板
 1. 在菜单上单击“文件”，指向“新建”并单击“项目”。

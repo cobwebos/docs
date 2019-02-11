@@ -1,27 +1,27 @@
 ---
-title: 教程：Azure Active Directory 与 Klue 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Klue 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Klue 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 08341008-980b-4111-adb2-97bbabbf1e47
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 4afe11d6d241e86b57ebb40d54e4c2dceb63a46c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 8521ce6645aea1d92abc02a6ffe8f22a807a8f1f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123050"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55165562"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-klue"></a>教程：Azure Active Directory 与 Klue 集成
+# <a name="tutorial-azure-active-directory-integration-with-klue"></a>教程：Azure Active Directory 与 Klue 的集成
 
 本教程介绍如何将 Klue 与 Azure Active Directory (Azure AD) 集成。
 
@@ -206,7 +206,7 @@ ms.locfileid: "43123050"
 本部分的目的是在 Klue 中创建名为 Britta Simon 的用户。 Klue 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 如果尚不存在用户，则在尝试访问 Klue 期间创建新用户。
 
 > [!Note]
-> 如果需要手动创建用户，请联系 [Klue 支持团队](mailto:support@klue.com)。
+> 如需手动创建用户，请联系  [Klue 支持团队](mailto:support@klue.com)。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -243,12 +243,12 @@ ms.locfileid: "43123050"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Klue 磁贴时，应会自动登录 Klue 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

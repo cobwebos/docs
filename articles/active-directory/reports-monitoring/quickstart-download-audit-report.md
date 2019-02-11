@@ -4,7 +4,7 @@ description: 了解如何通过 Azure 门户下载审核报表
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4de121ea-f4aa-4c8a-aae4-700c2c5e97a2
 ms.service: active-directory
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3f4090f1724850b0263905a0593fc77cc6dbfd16
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: e589f613eb3afc8efe409773f37a9855f8fc5432
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51620728"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180325"
 ---
 # <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>快速入门：通过 Azure 门户下载审核报表
 
-在此快速入门中，你将学习如何下载租户过去 24 小时的审核日志。
+在此快速入门中，你将学习如何下载租户过去 24 小时的审核日志。 最多可从 Azure 门户下载 5000 条记录。 记录按最近时间进行排序，因此默认情况下获取的是最近 5000 条记录。 
 
 ## <a name="prerequisites"></a>先决条件
 

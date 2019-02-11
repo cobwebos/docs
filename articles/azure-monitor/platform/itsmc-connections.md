@@ -9,20 +9,18 @@ ms.assetid: 8231b7ce-d67f-4237-afbf-465e2e397105
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.component: ''
-ms.openlocfilehash: b6e59834d9a20a26be7c41d964556a45b0d2aab6
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: a07512c801d8e6c0f0ff3242fe1b94eeab5b2534
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637752"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104992"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>将 ITSM 产品/服务与 IT 服务管理连接器相连接
-本文介绍如何配置 ITSM 产品/服务与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项。 有关 ITSMC 的详细信息，请参阅[概述](../../log-analytics/log-analytics-itsmc-overview.md)。
+本文介绍如何配置 ITSM 产品/服务与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项。 有关 ITSMC 的详细信息，请参阅[概述](../../azure-monitor/platform/itsmc-overview.md)。
 
 支持以下 ITSM 产品/服务。 选择产品可查看有关如何将该产品连接到 ITSMC 的详细信息。
 
@@ -43,7 +41,7 @@ ms.locfileid: "52637752"
 
 请确保满足以下先决条件：
 
-- 已安装 ITSMC。 详细信息：[添加 IT Service Management Connector 解决方案](../../log-analytics/log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- 已安装 ITSMC。 详细信息：[添加 IT 服务管理连接器解决方案](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - 已部署并配置 Service Manager Web 应用程序（Web 应用）。 [此处](#create-and-deploy-service-manager-web-app-service)提供了有关 Web 应用的信息。
 - 已创建并配置混合连接。 详细信息：[配置混合连接](#configure-the-hybrid-connection)。
 - 支持的 Service Manager 版本：2012 R2 或 2016。
@@ -72,10 +70,10 @@ ms.locfileid: "52637752"
 | **连接名称**   | 键入要与 ITSMC 连接的 System Center Service Manager 实例的名称。  以后在此实例中配置工作项/查看详细日志分析时，需要使用此名称。 |
 | **合作伙伴类型**   | 选择“System Center Service Manager”。 |
 | **服务器 URL**   | 键入 Service Manager Web 应用的 URL。 [此处](#create-and-deploy-service-manager-web-app-service)提供了有关 Service Manager Web 应用的详细信息。
-| **客户端 ID**   | 键入（使用自动脚本）生成的、用于对 Web 应用进行身份验证的客户端 ID。 [此处](../../log-analytics/log-analytics-itsmc-service-manager-script.md)提供了有关自动化脚本的详细信息。|
+| **客户端 ID**   | 键入（使用自动脚本）生成的、用于对 Web 应用进行身份验证的客户端 ID。 [此处](../../azure-monitor/platform/itsmc-service-manager-script.md)提供了有关自动化脚本的详细信息。|
 | **客户端机密**   | 键入为此 ID 生成的客户端机密。   |
 | **数据同步范围**   | 选择需要通过 ITSMC 同步的 Service Manager 工作项。  这些工作项将导入到 Log Analytics。 **选项：**“事件”、“更改请求”。|
-| **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天 |
+| **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天。 |
 | **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，Log Analytics 会在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。 |
 
 ![Service Manager 连接](media/itsmc-connections/service-manager-connection.png)
@@ -87,7 +85,7 @@ ms.locfileid: "52637752"
 - 在此 Service Manager 实例中，可以根据 Log Analytics 警报、日志记录或 Azure 警报创建事件。
 
 
-详细了解：[根据 Azure 警报创建 ITSM 工作项](../../log-analytics/log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+了解更多：[根据 Azure 警报创建 ITSM 工作项](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ### <a name="create-and-deploy-service-manager-web-app-service"></a>创建和部署 Service Manager Web 应用服务
 
@@ -95,11 +93,11 @@ ms.locfileid: "52637752"
 
 若要为 Service Manager 设置 ITSM Web 应用，请执行以下操作：
 
-- **部署 Web 应用** – 部署 Web 应用，设置属性，并在 Azure AD 上进行身份验证。 可以使用 Microsoft 提供的[自动化脚本](../../log-analytics/log-analytics-itsmc-service-manager-script.md)部署 Web 应用。
+- **部署 Web 应用** – 部署 Web 应用，设置属性，并在 Azure AD 上进行身份验证。 可以使用 Microsoft 提供的[自动化脚本](../../azure-monitor/platform/itsmc-service-manager-script.md)部署 Web 应用。
 - 手动**配置混合连接** - [配置此连接](#configure-the-hybrid-connection)。
 
 #### <a name="deploy-the-web-app"></a>部署 Web 应用
-使用自动化[脚本](../../log-analytics/log-analytics-itsmc-service-manager-script.md)部署 Web 应用，设置属性，并在 Azure AD 上进行身份验证。
+使用自动化[脚本](../../azure-monitor/platform/itsmc-service-manager-script.md)部署 Web 应用，设置属性，并在 Azure AD 上进行身份验证。
 
 通过提供以下所需详细信息来运行脚本：
 
@@ -141,10 +139,10 @@ ms.locfileid: "52637752"
 
     - **终结点名称**：指定新混合连接的名称。
     -  **终结点主机**：Service Manager 管理服务器的 FQDN。
-    - **终结点端口**：键入 5724
+    - **终结点端口**：类型 5724
     - **服务总线命名空间**：使用现有的服务总线命名空间，或新建一个。
     - **位置**：选择位置。
-    -  **名称**：指定服务总线的名称（如果要创建）。
+    -  **名称**：指定服务总线的名称（如果要创建服务总线）。
 
     ![混合连接值](media/itsmc-connections/itsmc-new-hybrid-connection-values.png)
 6. 单击“确定”关闭“创建混合连接”边栏选项卡并开始创建混合连接。
@@ -186,8 +184,8 @@ ms.locfileid: "52637752"
 
 ### <a name="prerequisites"></a>先决条件
 请确保满足以下先决条件：
-- 已安装 ITSMC。 详细信息：[添加 IT Service Management Connector 解决方案](../../log-analytics/log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)。
-- ServiceNow 支持的版本：金斯顿、雅加达、伊斯坦布尔、赫尔辛基、日内瓦。
+- 已安装 ITSMC。 详细信息：[添加 IT 服务管理连接器解决方案](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- ServiceNow 支持的版本：Kingston、Jakarta、Istanbul、Helsinki、Geneva。
 
 **ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作**：
 - 生成 ServiceNow 产品的客户端 ID 和客户端密码。 有关如何生成客户端 ID 和机密的信息，请根据需要参阅以下信息：
@@ -226,10 +224,10 @@ ms.locfileid: "52637752"
 | **用户名**   | 键入在 ServiceNow 应用中创建的、用于支持连接到 ITSMC 的集成用户名。 详细信息：[创建 ServiceNow 应用用户角色](#create-integration-user-role-in-servicenow-app)。|
 | **密码**   | 键入此用户名的关联密码。 **注意**：用户名和密码仅用于生成身份验证令牌，不会存储在 ITSMC 服务中的任何位置。  |
 | **服务器 URL**   | 键入需要连接到 ITSMC 的 ServiceNow 实例的 URL。 |
-| **客户端 ID**   | 键入前面生成的、用于 OAuth2 身份验证的客户端 ID。  有关生成客户端 ID 和机密的详细信息：[OAuth 设置](http://wiki.servicenow.com/index.php?title=OAuth_Setup)。 |
+| **客户端 ID**   | 键入前面生成的、用于 OAuth2 身份验证的客户端 ID。  有关生成客户端 ID 和机密的详细信息： [OAuth 设置](https://wiki.servicenow.com/index.php?title=OAuth_Setup)。 |
 | **客户端机密**   | 键入为此 ID 生成的客户端机密。   |
 | **数据同步范围**   | 选择要通过 ITSMC 同步到 Azure Log Analytics 的 ServiceNow 工作项。  选定的值将导入到 Log Analytics。   **选项：**“事件”和“更改请求”。|
-| **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天 |
+| **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天。 |
 | **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，ITSMC 会在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。 |
 
 ![ServiceNow 连接](media/itsmc-connections/itsm-connection-servicenow-connection-latest.png)
@@ -240,7 +238,7 @@ ms.locfileid: "52637752"
 
 - 在此 ServiceNow 实例中，可以根据 Log Analytics 警告、日志记录或 Azure 警报创建事件。
 
-详细了解：[根据 Azure 警报创建 ITSM 工作项](../../log-analytics/log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+了解更多：[根据 Azure 警报创建 ITSM 工作项](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ### <a name="create-integration-user-role-in-servicenow-app"></a>在 ServiceNow 应用中创建集成用户角色
 
@@ -292,8 +290,8 @@ ms.locfileid: "52637752"
 请确保满足以下先决条件：
 
 
-- 已安装 ITSMC。 详细信息：[添加 IT Service Management Connector 解决方案](../../log-analytics/log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)。
-- Provance 应用应已注册到 Azure AD，并且可提供客户端 ID。 有关详细信息，请参阅[如何配置 Active Directory 身份验证](../../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md)。
+- 已安装 ITSMC。 详细信息：[添加 IT 服务管理连接器解决方案](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- Provance 应用应已注册到 Azure AD，并且可提供客户端 ID。 有关详细信息，请参阅[如何配置 Active Directory 身份验证](../../app-service/configure-authentication-provider-aad.md)。
 
 - 用户角色：管理员。
 
@@ -319,11 +317,11 @@ ms.locfileid: "52637752"
 | **连接名称**   | 键入需要与 ITSMC 连接的 Provance 实例的名称。  以后在此 ITSM 中配置工作项/查看详细日志分析时，需要使用此名称。 |
 | **合作伙伴类型**   | 选择“Provance”。 |
 | **用户名**   | 键入可以连接到 ITSMC 的用户名。    |
-| **密码**   | 键入此用户名的关联密码。 **注意**：用户名和密码仅用于生成身份验证令牌，不会存储在 ITSMC 服务中的任何位置。|
+| **密码**   | 键入此用户名的关联密码。 **注意：** 用户名和密码仅用于生成身份验证令牌，不会存储在 ITSMC 服务中的任何位置。|
 | **服务器 URL**   | 键入需要连接到 ITSMC 的 Provance 实例的 URL。 |
-| **客户端 ID**   | 键入在 Provance 实例中生成的、用于对此连接进行身份验证的客户端 ID。  有关客户端 ID 的详细信息，请参阅[如何配置 Active Directory 身份验证](../../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md)。 |
-| **数据同步范围**   | 选择需要通过 ITSMC 同步到 Azure Log Analytics 的 Provance 工作项。  这些工作项将导入到 Log Analytics。   **选项：**“事件”、“更改请求”。|
-| **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天 |
+| **客户端 ID**   | 键入在 Provance 实例中生成的、用于对此连接进行身份验证的客户端 ID。  有关客户端 ID 的详细信息，请参阅[如何配置 Active Directory 身份验证](../../app-service/configure-authentication-provider-aad.md)。 |
+| **数据同步范围**   | 选择需要通过 ITSMC 同步到 Azure Log Analytics 的 Provance 工作项。  这些工作项将导入到 Log Analytics。   **选项：** “事件”、“更改请求”。|
+| **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天。 |
 | **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，ITSMC 会在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。|
 
 ![Provance 连接](media/itsmc-connections/itsm-connections-provance-latest.png)
@@ -334,7 +332,7 @@ ms.locfileid: "52637752"
 
 - 在此 Provance 实例中，可以根据 Log Analytics 警告、日志记录或 Azure 警报创建事件。
 
-详细了解：[根据 Azure 警报创建 ITSM 工作项](../../log-analytics/log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+了解更多：[根据 Azure 警报创建 ITSM 工作项](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ## <a name="connect-cherwell-to-it-service-management-connector-in-azure"></a>将 Cherwell 连接到 Azure 中的 IT 服务管理连接器
 
@@ -344,7 +342,7 @@ ms.locfileid: "52637752"
 
 请确保满足以下先决条件：
 
-- 已安装 ITSMC。 详细信息：[添加 IT Service Management Connector 解决方案](../../log-analytics/log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- 已安装 ITSMC。 详细信息：[添加 IT 服务管理连接器解决方案](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - 已生成客户端 ID。 详细信息：[为 Cherwell 生成客户端 ID](#generate-client-id-for-cherwell)。
 - 用户角色：管理员。
 
@@ -370,11 +368,11 @@ ms.locfileid: "52637752"
 | **连接名称**   | 键入需要连接到 ITSMC 的 Cherwell 实例名称。  以后在此 ITSM 中配置工作项/查看详细日志分析时，需要使用此名称。 |
 | **合作伙伴类型**   | 选择“Cherwell”。 |
 | **用户名**   | 键入可以连接到 ITSMC 的 Cherwell 用户名。 |
-| **密码**   | 键入此用户名的关联密码。 **注意**：用户名和密码仅用于生成身份验证令牌，不会存储在 ITSMC 服务中的任何位置。|
+| **密码**   | 键入此用户名的关联密码。 **注意：** 用户名和密码仅用于生成身份验证令牌，不会存储在 ITSMC 服务中的任何位置。|
 | **服务器 URL**   | 键入需要连接到 ITSMC 的 Cherwell 实例的 URL。 |
 | **客户端 ID**   | 键入在 Cherwell 实例中生成的、用于对此连接进行身份验证的客户端 ID。   |
 | **数据同步范围**   | 选择需要通过 ITSMC 同步的 Cherwell 工作项。  这些工作项将导入到 Log Analytics。   **选项：**“事件”、“更改请求”。 |
-| **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天 |
+| **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天。 |
 | **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，ITSMC 会在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。 |
 
 
@@ -386,7 +384,7 @@ ms.locfileid: "52637752"
 
 - 在此 Cherwell 实例中，可以根据 Log Analytics 警告、日志记录或 Azure 警报创建事件。
 
-详细了解：[根据 Azure 警报创建 ITSM 工作项](../../log-analytics/log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+了解更多：[根据 Azure 警报创建 ITSM 工作项](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ### <a name="generate-client-id-for-cherwell"></a>为 Cherwell 生成客户端 ID
 
@@ -400,4 +398,4 @@ ms.locfileid: "52637752"
 
 
 ## <a name="next-steps"></a>后续步骤
- - [根据 Azure 警报日志创建 ITSM 工作项](../../log-analytics/log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
+ - [根据 Azure 警报日志创建 ITSM 工作项](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)

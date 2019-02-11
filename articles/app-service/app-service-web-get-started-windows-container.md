@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中运行自定义 Windows 容器（预览版）| Microsoft Docs
+title: 运行自定义 Windows 容器（预览）- Azure 应用服务 | Microsoft Docs
 description: 了解如何将自定义 Windows 容器部署到 Azure 应用服务中。
 services: app-service\web
 documentationcenter: ''
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 09/17/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: e2d058cfe6d6a31f557708277902063e51f54bc5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.custom: seodec18
+ms.openlocfilehash: f1d072d40967ac6d106de7489e0a2148fe7948ed
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971359"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598095"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>在 Azure 中运行自定义 Windows 容器（预览版）
 
-[Azure 应用服务](app-service-web-overview.md)在 Windows 上提供预定义的应用程序堆栈，例如在 IIS 上运行的 ASP.NET 或 Node.js。 预配置的 Windows 环境锁定了操作系统，不允许对其进行管理访问、软件安装、全局程序集缓存更改等操作（请参阅 [Azure 应用服务上的操作系统功能](web-sites-available-operating-system-functionality.md)）。 如果应用程序需要的访问权限超出了预配置环境的允许，则可改为部署自定义 Windows 容器。 本快速入门介绍如何将 Windows 映像中的 ASP.NET 应用从 Visual Studio 部署到 [Docker 中心](https://hub.docker.com/)以及在 Azure 应用服务中的自定义容器中运行它。
+[Azure 应用服务](overview.md)在 Windows 上提供预定义的应用程序堆栈，例如在 IIS 上运行的 ASP.NET 或 Node.js。 预配置的 Windows 环境锁定了操作系统，不允许对其进行管理访问、软件安装、全局程序集缓存更改等操作（请参阅 [Azure 应用服务上的操作系统功能](operating-system-functionality.md)）。 如果应用程序需要的访问权限超出了预配置环境的允许，则可改为部署自定义 Windows 容器。 本快速入门介绍如何将 Windows 映像中的 ASP.NET 应用从 Visual Studio 部署到 [Docker 中心](https://hub.docker.com/)以及在 Azure 应用服务中的自定义容器中运行它。
 
 ![](media/app-service-web-get-started-windows-container/app-running-vs.png)
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+完成本教程需要：
 
 - <a href="https://hub.docker.com/" target="_blank">注册 Docker 中心帐户</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">安装用于 Windows 的 Docker</a>。
@@ -80,7 +80,7 @@ FROM microsoft/aspnet:4.7.1
 
 提供 Docker 中心帐户凭据，然后单击“保存”。 
 
-等待部署完成。 “发布”页现会显示以后要在应用服务中使用的存储库名称。
+等待部署完成。 等待部署完成。 “发布”页会显示以后要在应用服务中使用的存储库名称。
 
 ![从项目概述页发布](./media/app-service-web-get-started-windows-container/published-docker-repository.png)
 
@@ -94,7 +94,7 @@ FROM microsoft/aspnet:4.7.1
 
 1. 在 Azure 门户的左上角选择“创建资源”。
 
-2. 在 Azure 市场资源列表上方的搜索框中，搜索并选择“容器的 Web 应用”。
+2. 在 Azure 市场资源列表上方的搜索框中，搜索并选择“用于容器的 Web 应用”。
 
 3. 提供应用名称（例如 win-container-demo），接受创建新资源组所需的默认设置，然后在“OS”框中单击“Windows (预览版)”。
 
@@ -122,7 +122,7 @@ Azure 操作完成后，会显示通知框。
 
 2. 在应用页中，单击“URL”下的链接。
 
-此时会出现一个打开到以下页面的新浏览器页面：
+如果会打开一个如以下页面所示的新浏览器页面：
 
 ![](media/app-service-web-get-started-windows-container/app-starting.png)
 
@@ -130,11 +130,11 @@ Azure 操作完成后，会显示通知框。
 
 ![](media/app-service-web-get-started-windows-container/app-running-vs.png)
 
-**祝贺你！** 你现在是在 Azure 应用服务中运行第一个自定义 Windows 容器。
+祝贺你！ 你正在 Azure 应用服务中运行你的第一个自定义 Windows 容器。
 
 ## <a name="see-container-start-up-logs"></a>查看容器启动日志
 
-Windows 容器的加载可能需要一定的时间。 若要查看进度，请导航到以下 URL（将 *\<app_name>* 替换为应用名称）。
+加载 Windows 容器可能需要一些时间。 要查看进度，请导航到以下 URL（将 \<app_name> 替换为你的应用名称）。
 ```
 https://<app_name>.scm.azurewebsites.net/api/logstream
 ```

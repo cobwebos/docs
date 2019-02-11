@@ -1,5 +1,5 @@
 ---
-title: Azure WebJobs SDK 入门
+title: WebJobs SDK 入门 - Azure
 description: 用于事件驱动的后台处理的 WebJobs SDK 简介。 了解如何访问 Azure 服务和第三方服务中的数据。
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: b0f4ef5079ac689827cb49884fa1c6a51529ea83
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 913b23946f70500ace7ab7e4ff7b5cd2858492fc
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140343"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121650"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
@@ -54,7 +54,7 @@ public static void Run(
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假设你已创建一个 [Azure 帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)，并且对 [Azure 应用服务中的应用](app-service-web-overview.md)有一定的经验。 完成本文中的步骤：
+本文假设你已创建一个 [Azure 帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)，并且对 [Azure 应用服务中的应用](overview.md)有一定的经验。 完成本文中的步骤：
 
 * [安装](https://docs.microsoft.com/visualstudio/install/)包含 **Azure 开发**工作负荷的 Visual Studio 2017。 如果已安装 Visual Studio，但未配置该工作负荷，请选择“工具”>“获取工具和功能”添加该工作负荷。
 * [创建应用服务应用](app-service-web-get-started-dotnet-framework.md)。 如果已有一个可在其中部署 WebJob 的应用服务应用，则可以使用该应用，而无需新建。
@@ -63,9 +63,9 @@ public static void Run(
 
 1. 在 Visual Studio 中，选择“文件”>“新建项目”。
 
-1. 选择“Windows 经典桌面”>“控制台应用(.NET Framework)”。
+2. 选择“Windows 经典桌面”>“控制台应用(.NET Framework)”。
 
-1. 将项目命名为 *WebJobsSDKSample*，然后选择“确定”。
+3. 将项目命名为 *WebJobsSDKSample*，然后选择“确定”。
 
    ![“新建项目”对话框](./media/webjobs-sdk-get-started/new-project.png)
 
@@ -292,7 +292,7 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
 ## <a name="add-application-insights-logging"></a>添加 Application Insights 日志记录
 
-在 Azure 中运行项目时，无法通过查看控制台输出来监视函数执行。 我们建议的监视解决方案是 [Application Insights](../application-insights/app-insights-overview.md)。 有关详细信息，请参阅[监视 Azure Functions](../azure-functions/functions-monitoring.md)。
+在 Azure 中运行项目时，无法通过查看控制台输出来监视函数执行。 我们建议的监视解决方案是 [Application Insights](../azure-monitor/app/app-insights-overview.md)。 有关详细信息，请参阅[监视 Azure Functions](../azure-functions/functions-monitoring.md)。
 
 在本部分，我们将执行以下任务来设置 Application Insights 日志记录，然后部署到 Azure：
 
@@ -304,9 +304,9 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
 1. 如果没有可用的应用服务应用，请[创建一个](app-service-web-get-started-dotnet-framework.md)。
 
-1. 如果没有可用的 Application Insights 资源，请[创建一个](../application-insights/app-insights-create-new-resource.md)。 将“应用程序类型”设置为“常规”，并跳过“复制检测密钥”后面的部分。
+1. 如果没有可用的 Application Insights 资源，请[创建一个](../azure-monitor/app/create-new-resource.md )。 将“应用程序类型”设置为“常规”，并跳过“复制检测密钥”后面的部分。
 
-1. 如果已有可用的 Application Insights 资源，请[复制检测密钥](../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key)。
+1. 如果已有可用的 Application Insights 资源，请[复制检测密钥](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key)。
 
 ### <a name="configure-app-settings"></a>配置应用设置 
 
@@ -396,7 +396,7 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
 在本部分，我们将再次在本地运行，以验证日志记录数据现在是否转到 Application Insights 和控制台。
 
-1. 像[前面](#trigger-the-function)所做的那样，在 Visual Studio 中使用“服务器资源管理器”创建队列消息，不过这次要输入 Hello App Insights! 作为消息文本。
+1. 像[前面](#trigger-the-function-in-azure)所做的那样，在 Visual Studio 中使用“服务器资源管理器”创建队列消息，不过这次要输入 Hello App Insights! 作为消息文本。
 
 1. 运行该项目。
 

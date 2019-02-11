@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: d055ea9b30732e1cc0fc4ae5471bae26adc08b35
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: tables
+ms.openlocfilehash: 3ba2009ef1ea8fdf5916baab296c7ff5eee953db
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238890"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469186"
 ---
 # <a name="table-design-patterns"></a>表设计模式
 本文介绍适用于表服务解决方案的一些模式。 此外，还将了解如何实际解决其他表存储设计文章中提出的一些问题和权衡。 下图总结了不同模式之间的关系：  
@@ -223,7 +223,7 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 2. 分析 EmployeeIDs 字段中的员工 ID 列表。  
 3. 如需了解其中每个员工的其他信息（如电子邮件地址），请通过 **PartitionKey** 值“Sales”和 **RowKey** 值，在步骤 2 中获得的员工列表中检索每个员工实体。  
 
-<u>选项 #3：</u> 在不同分区或表中创建索引实体  
+<u>选项 #3：</u>在单独的分区或表中创建索引实体  
 
 对于第三个选项，请使用存储以下数据的索引实体：  
 
@@ -916,7 +916,7 @@ foreach (var e in entities)
 ### <a name="retrieving-heterogeneous-entity-types"></a>检索异类实体类型
 如果使用存储客户端库，则有三个选项可处理多个实体类型。  
 
-如果知道使用特定 **RowKey** 和 **PartitionKey** 值存储的实体的类型，则在检索实体时可以指定该实体类型（如前面两个检索 **EmployeeEntity** 类型的实体的示例所示）：[使用存储客户端库执行点查询](#executing-a-point-query-using-the-storage-client-library)和[使用 LINQ 检索多个实体](#retrieving-multiple-entities-using-linq)。  
+如果知道使用特定 RowKey 和 PartitionKey 值存储的实体的类型，则在检索实体时可以指定此实体类型，如前面两个检索 EmployeeEntity 类型的实体的示例中所示：[使用存储客户端库执行点查询](#executing-a-point-query-using-the-storage-client-library)和[使用 LINQ 检索多个实体](#retrieving-multiple-entities-using-linq)。  
 
 第二个选项是使用 **DynamicTableEntity** 类型（属性包）而不是具体的 POCO 实体类型，该选项无需序列化实体和将实体反序列化为 .NET 类型，因此还可提升性能。 以下 C# 代码可能会从表中检索多个不同类型的实体，但会将所有实体作 **DynamicTableEntity** 实例返回。 然后，它使用 **EntityType** 属性确定每个实体的类型：  
 

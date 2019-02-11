@@ -1,18 +1,19 @@
 ---
-title: 创建和修改 ExpressRoute 线路：PowerShell：Azure 资源管理器 | Microsoft 文档
-description: 本文介绍如何创建、预配、验证、更新、删除和取消预配 ExpressRoute 线路。
+title: 创建和修改 ExpressRoute 线路 - PowerShell：Azure | Microsoft Docs
+description: 创建、预配、验证、更新、删除和取消预配 ExpressRoute 线路。
 services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: f95bdfe9a61a271825ff9bbe5ca7f84330c98df5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: ff86c87690f5dd4a919929f0deef4af739cbe4d3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257446"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104996"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>使用 PowerShell 创建和修改 ExpressRoute 线路
 > [!div class="op_single_selector"]
@@ -23,7 +24,7 @@ ms.locfileid: "51257446"
 > * [PowerShell（经典）](expressroute-howto-circuit-classic.md)
 >
 
-本文介绍如何使用 PowerShell cmdlet 和 Azure 资源管理器部署模型创建 Azure ExpressRoute 线路。 本文还介绍如何查看线路状态，以及如何更新、删除和取消预配线路。
+本文可帮助你使用 PowerShell cmdlet 和 Azure 资源管理器部署模型创建 ExpressRoute 线路。 还可以检查线路状态、更新、删除或取消预配线路。
 
 ## <a name="before-you-begin"></a>开始之前
 

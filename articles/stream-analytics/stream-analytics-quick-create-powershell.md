@@ -1,32 +1,33 @@
 ---
 title: 使用 Azure PowerShell 创建流分析作业
-description: 本快速入门详细介绍了如何使用 Azure PowerShell 模块来部署并运行 Azure 流分析作业。
+description: 本快速入门演示如何使用 Azure PowerShell 模块来部署并运行 Azure 流分析作业。
 services: stream-analytics
-author: sidramadoss
-ms.author: sidram
-ms.date: 05/14/2018
+author: mamccrea
+ms.author: mamccrea
+ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-manager: kfile
-ms.openlocfilehash: 126677df01ad34d488863dd83e2f8c9a2d947824
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 5591e8174f15d552bf7295d1c3fe9cb5257c0f2e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958884"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438892"
 ---
-# <a name="quickstart-create-a-stream-analytics-job-by-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建流分析作业
+# <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建流分析作业
 
 Azure PowerShell 模块用于通过 PowerShell cmdlet 或脚本创建和管理 Azure 资源。 本快速入门详细介绍了如何使用 Azure PowerShell 模块来部署并运行 Azure 流分析作业。 
- 
-示例作业从 Azure Blob 存储中的 Blob 读取流式处理数据。 在本快速入门中使用的输入数据文件包含的静态数据仅供说明之用。 在实际方案中，请将流式处理输入数据用于流分析作业。 接下来，作业使用流分析查询语言计算温度超过 100° 时的平均温度，对数据进行转换。 最后，作业将生成的输出事件写入到另一文件中。 
+
+示例作业从 IoT 中心设备中读取流式处理数据。 输入数据由 Raspberry Pi 联机模拟器生成。 接下来，流分析作业使用流分析查询语言对数据进行转换，以便筛选所涉及的温度大于 27° 的消息。 最后，作业将生成的输出事件写入到 Blob 存储的一个文件中。 
 
 ## <a name="before-you-begin"></a>开始之前
 
 * 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/)。  
 
-* 本快速入门需要 Azure PowerShell 模块 3.6 版或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可找到在本地计算机上安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)一文。 
+* 本快速入门需要 Azure PowerShell 模块 3.6 版或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可找到在本地计算机上安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)。
+
+* 某些 IoT 中心操作不受 Azure PowerShell 的支持，必须使用 Azure CLI 2.0.24 或更高版本以及 Azure CLI 的 IoT 扩展来完成。 [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，并使用 `az extension add --name azure-cli-iot-ext` 来安装 IoT 扩展。
 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
@@ -34,11 +35,11 @@ Azure PowerShell 模块用于通过 PowerShell cmdlet 或脚本创建和管理 A
 使用 `Connect-AzureRmAccount` 命令登录到 Azure 订阅，然后在弹出的浏览器中输入 Azure 凭据：
 
 ```powershell
-# Log in to your Azure account
+# Connect to your Azure account
 Connect-AzureRmAccount
 ```
 
-登录后，如果有多个订阅，请运行以下 cmdlet，选择要用于本快速入门的订阅。 请确保将 <your subscription name> 替换为订阅的名称：  
+如果有多个订阅，请运行以下 cmdlet，选择要用于本快速入门的订阅。 请确保将 `<your subscription name>` 替换为订阅的名称：  
 
 ```powershell
 # List all available subscriptions.
@@ -64,20 +65,62 @@ New-AzureRmResourceGroup `
 
 在定义流分析作业之前，请对已配置为作业输入的数据进行准备。
 
-1. 从 GitHub 下载[传感器示例数据](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json)。 右键单击链接，然后选择“将链接另存为...”或“将目标另存为”。
+以下 Azure CLI 代码块通过多项命令来准备作业所需的输入数据。 查看介绍代码的部分。
 
-2. 以下 PowerShell 代码块通过多项命令来准备作业所需的输入数据。 查看介绍代码的部分。 
+1. 在 PowerShell 窗口中运行 [az login](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) 命令，以便登录到 Azure 帐户。 
 
-   1. 使用 [New-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/New-AzureRmStorageAccount) cmdlet 创建标准的常规用途存储帐户。  本示例创建一个名为 mystorageaccount 的存储帐户，该帐户默认启用本地冗余存储 (LRS) 和 Blob 加密。  
+   当你成功登录后，Azure CLI 会返回订阅的列表。 复制用于本快速入门的订阅，然后运行 [az account set](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) 命令以选择该订阅。 选择在上一部分使用 PowerShell 选择的订阅。 确保将 `<your subscription name>` 替换为订阅的名称。
 
-   2. 检索存储帐户上下文 `$storageAccount.Context`，该上下文定义要使用的存储帐户。 使用存储帐户时，请引用上下文而不是重复提供凭据。 
+   ```azurecli
+   az login
+   
+   az account set --subscription "<your subscription>"
+   ```
 
-   3. 请使用 [New-AzureStorageContainer](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) 创建存储容器，然后上传此前下载的[传感器示例数据](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json)。 
+2. 使用 [az iot hub create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) 命令创建 IoT 中心。 此示例创建名为 **MyASAIoTHub** 的 IoT 中心。 由于 IoT 中心名称是唯一的，因此需使用你自己的 IoT 中心名称。 将 SKU 设置为 F1 即可使用免费层，前提是它在订阅中可用。 否则，请选择下一个最低的层。
 
-   4. 复制代码所输出的存储密钥，然后将该密钥粘贴到 JSON 文件中，以便稍后创建流式处理作业的输入和输出。
+   ```azurecli
+   az iot hub create --name "<your IoT Hub name>" --resource-group $resourceGroup --sku S1
+   ```
+
+   创建 IoT 中心以后，请使用 [az iot hub show-connection-string](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest) 命令获取 IoT 中心连接字符串。 复制整个连接字符串并将其保存。这样，在将 IoT 中心作为输入添加到流分析作业时，就可以使用该字符串。
+   
+   ```azurecli
+   az iot hub show-connection-string --hub-name "MyASAIoTHub"
+   ```
+
+3. 使用 [az iothub device-identity create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) 命令将设备添加到 IoT 中心。 此示例创建名为 **MyASAIoTDevice** 的设备。
+
+   ```azurecli
+   az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
+   ```
+
+4. 使用 [az iot hub device-identity show-connection-string](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-show-connection-string) 命令获取设备连接字符串。 复制整个连接字符串并将其保存。这样，在创建 Raspberry Pi 模拟器时，就可以使用该字符串。
+
+   ```azurecli
+   az iot hub device-identity show-connection-string --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice" --output table
+   ```
+
+   **输出示例：**
+
+   ```azurecli
+   HostName=MyASAIoTHub.azure-devices.net;DeviceId=MyASAIoTDevice;SharedAccessKey=a2mnUsg52+NIgYudxYYUNXI67r0JmNubmfVafojG8=
+   ```
+
+## <a name="create-blob-storage"></a>创建 Blob 存储
+
+以下 Azure PowerShell 代码块使用命令来创建用于作业输出的 Blob 存储。 查看介绍代码的部分。
+
+1. 使用 [New-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/New-AzureRmStorageAccount) cmdlet 创建标准的常规用途存储帐户。  本示例创建一个名为 **myasaquickstartstorage** 的存储帐户，该帐户默认启用本地冗余存储 (LRS) 和 Blob 加密。  
+   
+2. 检索存储帐户上下文 `$storageAccount.Context`，该上下文定义要使用的存储帐户。 使用存储帐户时，请引用上下文而不是重复提供凭据。 
+
+3. 使用 [New-AzureStorageContainer](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) 创建存储容器。
+
+4. 复制代码所输出的存储密钥，然后保存该密钥，以便稍后创建流式处理作业的输出。
 
    ```powershell
-   $storageAccountName = "mystorageaccount"
+   $storageAccountName = "myasaquickstartstorage"
    $storageAccount = New-AzureRmStorageAccount `
      -ResourceGroupName $resourceGroup `
      -Name $storageAccountName `
@@ -86,23 +129,17 @@ New-AzureRmResourceGroup `
      -Kind Storage
    
    $ctx = $storageAccount.Context
-   $containerName = "streamanalytics"
+   $containerName = "container1"
    
    New-AzureStorageContainer `
      -Name $containerName `
      -Context $ctx
    
-   Set-AzureStorageBlobContent `
-     -File "c:\HelloWorldASA-InputStream.json" `
-     -Blob "input/HelloWorldASA-InputStream.json" `
-     -Container $containerName `
-     -Context $ctx  
-   
    $storageAccountKey = (Get-AzureRmStorageAccountKey `
      -ResourceGroupName $resourceGroup `
      -Name $storageAccountName).Value[0]
    
-   Write-Host "The <storage account key> placeholder needs to be replaced in your input and output json files with this key value:" 
+   Write-Host "The <storage account key> placeholder needs to be replaced in your output json files with this key value:" 
    Write-Host $storageAccountKey -ForegroundColor Cyan
    ```
 
@@ -124,7 +161,7 @@ New-AzureRmResourceGroup `
 }
 ```
 
-接下来运行 `New-AzureRmStreamAnalyticsJob` cmdlet。 确保将 `jobDefinitionFile` 变量的值替换为在其中存储了作业定义 JSON 文件的路径。 
+接下来运行 `New-AzureRmStreamAnalyticsJob` cmdlet。 将 `jobDefinitionFile` 变量的值替换为在其中存储了作业定义 JSON 文件的路径。 
 
 ```powershell
 $jobName = "MyStreamingJob"
@@ -140,25 +177,24 @@ New-AzureRmStreamAnalyticsJob `
 
 使用 [New-AzureRmStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsinput?view=azurermps-5.4.0) cmdlet 添加作业的输入。 此 cmdlet 使用作业名称、作业输入名称、资源组名称和作业输入定义作为参数。 作业输入定义是一个 JSON 文件，其中包含配置作业的输入所需的属性。 在此示例中，需将 Blob 存储创建为输入。 
 
-在本地计算机上创建名为 `JobInputDefinition.json` 的文件，并向其添加以下 JSON 数据。 确保将 `accountKey` 的值替换为存储帐户的访问密钥，该密钥是存储在 $storageAccountKey 值中的值。 
+在本地计算机上创建名为 `JobInputDefinition.json` 的文件，并向其添加以下 JSON 数据。 确保将 `accesspolicykey` 的值替换为在上一部分保存的 IoT 中心设备连接字符串的 `SharedAccessKey` 部分。
 
 ```json
 {
     "properties": {
         "type": "Stream",
         "datasource": {
-            "type": "Microsoft.Storage/Blob",
+            "type": "Microsoft.Devices/IotHubs",
             "properties": {
-                "storageAccounts": [
-                {
-                   "accountName": "mystorageaccount",
-                   "accountKey":"<storage account key>"
-                }],
-                "container": "streamanalytics",
-                "pathPattern": "input/",
-                "dateFormat": "yyyy/MM/dd",
-                "timeFormat": "HH"
-            }
+                "iotHubNamespace": "MyASAIoTHub",
+                "sharedAccessPolicyName": "iothubowner",
+                "sharedAccessPolicyKey": "accesspolicykey",
+                "endpoint": "messages/events",
+                "consumerGroupName": "$Default"
+                }
+        },
+        "compression": {
+            "type": "None"
         },
         "serialization": {
             "type": "Json",
@@ -167,7 +203,7 @@ New-AzureRmStreamAnalyticsJob `
             }
         }
     },
-    "name": "MyBlobInput",
+    "name": "IoTHubInput",
     "type": "Microsoft.StreamAnalytics/streamingjobs/inputs"
 }
 ```
@@ -175,7 +211,7 @@ New-AzureRmStreamAnalyticsJob `
 接下来运行 `New-AzureRmStreamAnalyticsInput` cmdlet，确保将 `jobDefinitionFile` 变量的值替换为在其中存储了作业输入定义 JSON 文件的路径。 
 
 ```powershell
-$jobInputName = "MyBlobInput"
+$jobInputName = "IoTHubInput"
 $jobInputDefinitionFile = "C:\JobInputDefinition.json"
 New-AzureRmStreamAnalyticsInput `
   -ResourceGroupName $resourceGroup `
@@ -198,10 +234,10 @@ New-AzureRmStreamAnalyticsInput `
             "properties": {
                 "storageAccounts": [
                     {
-                      "accountName": "mystorageaccount",
+                      "accountName": "asaquickstartstorage",
                       "accountKey": "<storage account key>"
                     }],
-                "container": "streamanalytics",
+                "container": "container1",
                 "pathPattern": "output/",
                 "dateFormat": "yyyy/MM/dd",
                 "timeFormat": "HH"
@@ -215,7 +251,7 @@ New-AzureRmStreamAnalyticsInput `
             }
         }
     },
-    "name": "MyBlobOutput",
+    "name": "BlobOutput",
     "type": "Microsoft.StreamAnalytics/streamingjobs/outputs"
 }
 ```
@@ -223,7 +259,7 @@ New-AzureRmStreamAnalyticsInput `
 接下来运行 `New-AzureRmStreamAnalyticsOutput` cmdlet。 确保将 `jobOutputDefinitionFile` 变量的值替换为在其中存储了作业输出定义 JSON 文件的路径。 
 
 ```powershell
-$jobOutputName = "MyBlobOutput"
+$jobOutputName = "BlobOutput"
 $jobOutputDefinitionFile = "C:\JobOutputDefinition.json"
 New-AzureRmStreamAnalyticsOutput `
   -ResourceGroupName $resourceGroup `
@@ -243,7 +279,7 @@ New-AzureRmStreamAnalyticsOutput `
    "properties":{    
       "streamingUnits":1,  
       "script":null,  
-      "query":" SELECT System.Timestamp AS OutputTime, dspl AS SensorName, Avg(temp) AS AvgTemperature INTO MyBlobOutput FROM MyBlobInput TIMESTAMP BY time GROUP BY TumblingWindow(second,30),dspl HAVING Avg(temp)>100"  
+      "query":" SELECT * INTO BlobOutput FROM IoTHubInput HAVING Temperature > 27"  
    }  
 }
 ```
@@ -259,19 +295,27 @@ New-AzureRmStreamAnalyticsTransformation `
   -File $jobTransformationDefinitionFile `
   -Name $jobTransformationName -Force
 ```
+## <a name="run-the-iot-simulator"></a>运行 IoT 模拟器
+
+1. 打开 [Raspberry Pi Azure IoT 联机模拟器](https://azure-samples.github.io/raspberry-pi-web-simulator/)。
+
+2. 将第 15 行的占位符替换为在上一部分保存的整个 Azure IoT 中心设备连接字符串。
+
+3. 单击“运行”。 输出会显示传感器数据和发送到 IoT 中心的消息。
+
+   ![Raspberry Pi Azure IoT 联机模拟器](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>启动流分析作业并检查输出
 
-请使用 [Start-AzureRmStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/start-azurermstreamanalyticsjob?view=azurermps-5.4.0) cmdlet 启动作业。 此 cmdlet 使用作业名称、资源组名称、输出启动模式和启动时间作为参数。 `OutputStartMode` 接受的值为 `JobStartTime`、`CustomTime` 或 `LastOutputEventTime`。 若要详细了解每个值是指什么，请参阅 PowerShell 文档中的[参数](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/start-azurermstreamanalyticsjob?view=azurermps-5.4.0)部分。 在此示例中，请将模式指定为 `CustomTime` 并提供一个值作为 `OutputStartTime`。 
+请使用 [Start-AzureRmStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/start-azurermstreamanalyticsjob?view=azurermps-5.4.0) cmdlet 启动作业。 此 cmdlet 使用作业名称、资源组名称、输出启动模式和启动时间作为参数。 `OutputStartMode` 接受的值为 `JobStartTime`、`CustomTime` 或 `LastOutputEventTime`。 若要详细了解每个值是指什么，请参阅 PowerShell 文档中的[参数](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/start-azurermstreamanalyticsjob?view=azurermps-5.4.0)部分。 
 
-对于时间值，请选择 `2018-01-01`。 之所以选择此起始日期，是因为它比示例数据中的事件时间戳要早。 以下 cmdlet 在运行以后会返回 `True` 作为输出（如果作业启动）。 在存储容器中，创建的输出文件夹包含已转换的数据。 
+以下 cmdlet 在运行以后会返回 `True` 作为输出（如果作业启动）。 在存储容器中，创建的输出文件夹包含已转换的数据。 
 
 ```powershell
 Start-AzureRmStreamAnalyticsJob `
   -ResourceGroupName $resourceGroup `
   -Name $jobName `
-  -OutputStartMode CustomTime `
-  -OutputStartTime 2018-01-01T00:00:00Z 
+  -OutputStartMode 'JobStartTime'
 ```
 
 ## <a name="clean-up-resources"></a>清理资源

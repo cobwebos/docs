@@ -1,138 +1,127 @@
 ---
-title: 快速入门：使用 C# 调用终结点 - 必应自定义搜索
+title: 快速入门：使用 C# 调用必应自定义搜索终结点 | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: 本快速入门演示如何通过使用 C# 调用必应自定义搜索终结点来从自定义搜索实例中请求搜索结果。
+description: 参考本快速入门开始从必应自定义搜索实例请求 C# 搜索结果。
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: maheshb
-ms.openlocfilehash: 3a7ba0f464dc82751df5daabd4226fc521fe6916
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ae50d8ea1556d7956f96b13a6ccbb84c28e8aae9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316185"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149797"
 ---
-# <a name="quickstart-call-bing-custom-search-endpoint-c"></a>快速入门：调用必应自定义搜索终结点 (C#)
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>快速入门：使用 C# 调用必应自定义搜索终结点 
 
-本快速入门演示如何使用 C# 调用必应自定义搜索终结点来从自定义搜索实例中请求搜索结果。 
+参考本快速入门开始从必应自定义搜索实例请求搜索结果。 虽然此应用程序是以 C# 编写的，但必应自定义搜索 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs) 上找到此示例的源代码。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本快速入门，你需要：
+- 必应自定义搜索实例。 请参阅[快速入门：创建第一个必应自定义搜索实例](quick-start.md)，了解详细信息。
+- Microsoft [.Net Core](https://www.microsoft.com/net/download/core)
+- 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)
+- 如果使用的是 Linux/MacOS，则可使用 [Mono](http://www.mono-project.com/) 运行此应用程序。
+- 已安装 [NuGet 自定义搜索](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0)包。 
+    - 在 Visual Studio 中的解决方案资源管理器中，右键单击项目并从菜单中选择 `Manage NuGet Packages`。 安装 `Microsoft.Azure.CognitiveServices.Search.CustomSearch` 包。 安装 NuGet 自定义搜索包还会安装以下程序集：
+        - Microsoft.Rest.ClientRuntime
+        - Microsoft.Rest.ClientRuntime.Azure
+        - Newtonsoft.Json
 
-- 现成的自定义搜索实例。 请参阅[创建第一个必应自定义搜索实例](quick-start.md)。
-- 已安装 [.Net Core](https://www.microsoft.com/net/download/core)。
-- 订阅密钥。 可以在激活[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)时获取订阅密钥，也可以使用 Azure 仪表板中的付费订阅密钥（请参阅[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)）。   另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+[!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
+## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-## <a name="run-the-code"></a>运行代码
-
-若要运行该示例，请遵循以下步骤：
-
-1. 为代码创建文件夹。  
-  
-2. 从命令提示符或终端导航至刚刚创建的文件夹。  
-  
-3. 运行以下命令：
-    ```
-    dotnet new console -o BingCustomSearch
-    cd BingCustomSearch
-    dotnet add package Newtonsoft.Json
-    dotnet restore
-    ```
-  
-4. 将以下代码复制到 Program.cs。 将“YOUR-SUBSCRIPTION-KEY”和“YOUR-CUSTOM-CONFIG-ID”分别替换为订阅密钥和配置 ID。
+1. 在 Visual Studio 中创建新的 C# 控制台应用程序。 然后，将以下包添加到项目。
 
     ```csharp
     using System;
     using System.Net.Http;
     using System.Web;
     using Newtonsoft.Json;
-    
-    namespace bing_custom_search_example_dotnet
-    {
-        class Program
-        {
-            static void Main(string[] args)
-            {
-                var subscriptionKey = "YOUR-SUBSCRIPTION-KEY";
-                var customConfigId = "YOUR-CUSTOM-CONFIG-ID";
-                var searchTerm = args.Length > 0 ? args[0]: "microsoft";            
-    
-                var url = "https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?" +
-                    "q=" + searchTerm +
-                    "&customconfig=" + customConfigId;
-    
-                var client = new HttpClient();
-                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
-                var httpResponseMessage = client.GetAsync(url).Result;
-                var responseContent = httpResponseMessage.Content.ReadAsStringAsync().Result;
-                BingCustomSearchResponse response = JsonConvert.DeserializeObject<BingCustomSearchResponse>(responseContent);
-                
-                for(int i = 0; i < response.webPages.value.Length; i++)
-                {                
-                    var webPage = response.webPages.value[i];
-                    
-                    Console.WriteLine("name: " + webPage.name);
-                    Console.WriteLine("url: " + webPage.url);                
-                    Console.WriteLine("displayUrl: " + webPage.displayUrl);
-                    Console.WriteLine("snippet: " + webPage.snippet);
-                    Console.WriteLine("dateLastCrawled: " + webPage.dateLastCrawled);
-                    Console.WriteLine();
-                }            
-            }
-        }
-    
-        public class BingCustomSearchResponse
-        {        
-            public string _type{ get; set; }            
-            public WebPages webPages { get; set; }
-        }
-    
-        public class WebPages
-        {
-            public string webSearchUrl { get; set; }
-            public int totalEstimatedMatches { get; set; }
-            public WebPage[] value { get; set; }        
-        }
-    
-        public class WebPage
-        {
-            public string name { get; set; }
-            public string url { get; set; }
-            public string displayUrl { get; set; }
-            public string snippet { get; set; }
-            public DateTime dateLastCrawled { get; set; }
-            public string cachedPageUrl { get; set; }
-            public OpenGraphImage openGraphImage { get; set; }        
-        }
-        
-        public class OpenGraphImage
-        {
-            public string contentUrl { get; set; }
-            public int width { get; set; }
-            public int height { get; set; }
-        }
+    ```
+
+2. 创建以下类用于存储必应自定义搜索 API 返回的搜索结果。
+
+    ```csharp
+    public class BingCustomSearchResponse {        
+        public string _type{ get; set; }            
+        public WebPages webPages { get; set; }
+    }
+
+    public class WebPages {
+        public string webSearchUrl { get; set; }
+        public int totalEstimatedMatches { get; set; }
+        public WebPage[] value { get; set; }        
+    }
+
+    public class WebPage {
+        public string name { get; set; }
+        public string url { get; set; }
+        public string displayUrl { get; set; }
+        public string snippet { get; set; }
+        public DateTime dateLastCrawled { get; set; }
+        public string cachedPageUrl { get; set; }
     }
     ```
-6. 使用以下命令来生成应用程序。 请注意由命令输出引用的 DLL 路径。
 
-    <pre>
-    dotnet build 
-    </pre>
-    
-7. 使用下面的命令来运行应用程序，将 PATH TO OUTPUT 替换为步骤 6 中引用的 DLL 路径。
+3. 在项目的 main 方法中，为必应自定义搜索 API 订阅密钥、搜索实例的自定义配置 ID 和搜索词创建变量。
 
-    <pre>    
-    dotnet **PATH TO OUTPUT**
-    </pre>
+    ```csharp
+    var subscriptionKey = "YOUR-SUBSCRIPTION-KEY";
+    var customConfigId = "YOUR-CUSTOM-CONFIG-ID";
+    var searchTerm = args.Length > 0 ? args[0]:"microsoft";
+    ```
+
+4. 通过将搜索词追加​​到 `q=` 查询参数后面，并将搜索实例的自定义配置 ID 追加​​到 `customconfig=` 后面来构造请求 URL。 使用 `&` 字符分隔参数。 
+
+    ```csharp
+    var url = "https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?" +
+                "q=" + searchTerm + "&" +
+                "customconfig=" + customConfigId;
+    ```
+
+## <a name="send-and-receive-a-search-request"></a>发送和接收搜索请求 
+
+1. 创建请求客户端，并将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头。
+
+    ```csharp
+    var client = new HttpClient();
+    client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+    ```
+
+2. 执行搜索请求并获取 JSON 对象形式的响应。
+
+    ```csharp
+    var httpResponseMessage = client.GetAsync(url).Result;
+    var responseContent = httpResponseMessage.Content.ReadAsStringAsync().Result;
+    BingCustomSearchResponse response = JsonConvert.DeserializeObject<BingCustomSearchResponse>(responseContent);
+    ```
+## <a name="process-and-view-the-results"></a>处理和查看结果
+
+1. 循环访问响应对象以显示有关每条搜索结果的信息，包括其名称、URL 和上次网页爬网的日期。
+
+    ```csharp
+    for(int i = 0; i < response.webPages.value.Length; i++) {                
+        var webPage = response.webPages.value[i];
+        
+        Console.WriteLine("name: " + webPage.name);
+        Console.WriteLine("url: " + webPage.url);                
+        Console.WriteLine("displayUrl: " + webPage.displayUrl);
+        Console.WriteLine("snippet: " + webPage.snippet);
+        Console.WriteLine("dateLastCrawled: " + webPage.dateLastCrawled);
+        Console.WriteLine();
+    }
+    Console.WriteLine("Press any key to exit...");
+    Console.ReadKey();
+    ```
 
 ## <a name="next-steps"></a>后续步骤
-- [配置托管 UI 体验](./hosted-ui.md)
-- [使用修饰标记来突出显示文本](./hit-highlighting.md)
-- [网页](./page-webpages.md)
+
+> [!div class="nextstepaction"]
+> [生成自定义搜索 Web 应用](./tutorials/custom-search-web-page.md)

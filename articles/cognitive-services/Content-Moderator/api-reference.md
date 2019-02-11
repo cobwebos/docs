@@ -1,34 +1,34 @@
 ---
 title: API 参考 - 内容审查器
 titlesuffix: Azure Cognitive Services
-description: 了解内容审查器的内容审核和评审 API。
+description: 了解多种内容审查器的内容审核和评审 API。
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: reference
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: ecc22b097c14fc7597d8ee0e31f9691098a2211d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0620ee1d0969a57801fe524684d02e2ef9ef6ba6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229741"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223370"
 ---
 # <a name="content-moderator-api-reference"></a>内容审查器 API 参考
 
 可以通过以下方式开始使用 Azure 内容审查器 API：（另请参阅[管理凭据](review-tool-user-guide/credentials.md)。）
 
 - 在 Azure 门户中，[订阅内容审查器 API](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator)。
-- 注册[内容审查器审阅工具](https://contentmoderator.cognitive.microsoft.com/)。 请参阅[快速入门](quick-start.md)。
+- 注册[内容审查器审阅工具](https://contentmoderator.cognitive.microsoft.com/)。 请参阅[尝试在 Web 上使用内容审查器](quick-start.md)。
 
 ## <a name="moderation-apis"></a>审查 API
 
 可以使用以下内容审查器 API 设置审查后工作流。
 
-| Description | 引用 |
+| 说明 | 引用 |
 | -------------------- |-------------|
 | **图像审查 API**<br /><br />通过使用标记、置信度分数和其他提取的信息扫描图像并检测潜在的成人和不雅内容。 <br /><br />使用此信息发布、拒绝或查看审查后工作流中的内容。 <br /><br />| [图像审查 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c "图像审查 API 参考")   |
 | **文本审查 API**<br /><br />扫描文本内容。 返回不雅用语和个人身份信息 (PII)。 <br /><br />使用此信息发布、拒绝或查看审查后工作流中的内容。<br /><br /> | [文本审查 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f "文本审查 API 参考")   |
@@ -39,7 +39,7 @@ ms.locfileid: "51229741"
 
 评审 API 包括以下组件：
 
-| Description | 引用 |
+| 说明 | 引用 |
 | -------------------- |-------------|
 | **作业**<br /><br /> 为图像和文本内容启动扫描并评审审查工作流。 审查作业通过使用图像审查 API 和文本审查 API 扫描你的内容。 审查作业使用已定义和默认的工作流来生成评审。 <br /><br />在人工审查器审查了自动分配的标记和预测数据并提交了内容审核决定后，评审 API 会将所有信息提交到 API 终结点。<br /><br /> | [作业参考](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5 "作业参考")   |
 | **评审**<br /><br />使用“评审”工具可直接为人工审查器创建图像或文本评审。<br /><br /> 在人工审查器审查了自动分配的标记和预测数据并提交了内容审核决定后，评审 API 会将所有信息提交到 API 终结点。<br /><br /> | [评审参考](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4 "评审参考")   |

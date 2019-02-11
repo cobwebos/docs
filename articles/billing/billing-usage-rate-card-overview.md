@@ -1,5 +1,5 @@
 ---
-title: Azure 计费 API | Microsoft Docs
+title: 使用 Azure 计费 API 获取 Azure 使用情况 | Microsoft Docs
 description: 了解 Azure 帐单用量和 RateCard API，洞察 Azure 资源消耗量和趋势。
 services: ''
 documentationcenter: ''
@@ -15,18 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 5/10/2018
 ms.author: erikre
-ms.openlocfilehash: 7e504b2fb01bc8b92c529b68f818df5ed1b889a1
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: seodec18
+ms.openlocfilehash: 944623943fc49f4f6856c3a62f30ea61f901c16d
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276442"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579407"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>使用 Azure 计费 API 以编程方式洞察 Azure 用量
 使用 Azure 计费 API 将用量和资源数据提取到偏好的数据分析工具。 Azure 资源用量和 RateCard API 可以帮助你准确预测及管理成本。 这些 API 作为资源提供程序实现，属于 Azure 资源管理器公开的 API 系列。  
-
-> [!div class="nextstepaction"]
-> [帮助改进 Azure 计费文档](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="azure-invoice-download-api-preview"></a>Azure 发票下载 API（预览版）
 [完成选择加入](billing-manage-access.md#opt-in)后，请使用[发票 API](/rest/api/billing) 预览版下载发票。 具体功能包括：

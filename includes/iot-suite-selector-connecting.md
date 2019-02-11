@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: e241317231f3c607c373cb8a54e4b5bf6601b8e7
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 64cbf8f8704dbb216a15247caf741ff43690496a
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620755"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54457057"
 ---
 > [!div class="op_single_selector"]
 > * [Windows 上的 C](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -41,7 +41,7 @@ ms.locfileid: "52620755"
 
 ## <a name="before-you-start"></a>开始之前
 
-在为设备编写任何代码之前，部署远程监视解决方案加速器，并向该解决方案添加一个新的物理设备。
+在为设备编写任何代码之前，部署远程监视解决方案加速器，并向该解决方案添加一个真实的新设备。
 
 ### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>部署远程监视解决方案加速器
 
@@ -62,7 +62,7 @@ ms.locfileid: "52620755"
 
 1. 选择“+ 新建设备”，并选择“物理”作为设备类型：
 
-    ![添加物理设备](media/iot-suite-selector-connecting/devicesprovision.png)
+    ![添加真实设备](media/iot-suite-selector-connecting/devicesprovision.png)
 
 1. 输入 Physical-chiller 作为设备 ID。 选择“对称密钥”和“自动生成密钥”选项：
 
@@ -72,7 +72,7 @@ ms.locfileid: "52620755"
 
     ![检索凭据](media/iot-suite-selector-connecting/credentials.png)
 
-现在，你已向远程监视解决方案加速器添加了物理设备，并记下了其设备连接字符串。 在以下各部分中，你将实现使用设备连接字符串连接到解决方案的客户端应用程序。
+现在，你已向远程监视解决方案加速器添加了一个真实设备，并记下了其设备连接字符串。 在以下各部分中，你将实现使用设备连接字符串连接到解决方案的客户端应用程序。
 
 客户端应用程序实现内置的冷却器设备模型。 解决方案加速器设备模型指定有关设备的以下信息：
 

@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0dc92524843f47b1327af5e9d3f237656cad2a37
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0bba3c936463ad4fa8b4d06bf6f9df4f0ce6b863
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46947527"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752307"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>教程：在 Linux Service Fabric 群集上创建容器映像
 
@@ -190,7 +190,7 @@ docker push 命令需要几分钟才能完成。
 
 ## <a name="list-images-in-registry"></a>列出注册表中的映像
 
-若要返回已推送到 Azure 容器注册表的映像列表，请运行 [az acr repository list](/cli/azure/acr/repository#az_acr_repository_list) 命令。 使用 ACR 实例名称更新命令。
+若要返回已推送到 Azure 容器注册表的映像列表，请运行 [az acr repository list](/cli/azure/acr/repository) 命令。 使用 ACR 实例名称更新命令。
 
 ```bash
 az acr repository list --name <acrName> --output table
@@ -208,7 +208,7 @@ azure-vote-front
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程中从 Github 拉取了一个应用程序、创建了容器映像并将容器映像推送到注册表。 已完成以下步骤：
+本教程中从 GitHub 拉取了一个应用程序、创建了容器映像并将容器映像推送到注册表。 已完成以下步骤：
 
 > [!div class="checklist"]
 > * 克隆 GitHub 中的应用程序源

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 529612aeecfcea1d775c2f4359c5135ca3c6885e
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.subservice: common
+ms.openlocfilehash: b3b011d9789cbb3dcd8557eda1473b7fd2609075
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052537"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454277"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 存储模拟器进行开发和测试
 
@@ -88,21 +88,24 @@ Microsoft Azure 存储模拟器提供了一个模拟 Azure Blob、队列和表�
 有关连接字符串的详细信息，请参阅[配置 Azure 存储连接字符串](../storage-configure-connection-string.md)。
 
 ### <a name="authorize-with-a-shared-access-signature"></a>使用共享访问签名进行授权
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 某些 Azure 存储客户端库（诸如 Xamarin 库）仅支持使用共享的访问签名 (SAS) 令牌进行身份验证。 可使用[存储资源管理器](http://storageexplorer.com/)之类的工具或其他支持共享密钥身份验证的应用程序创建 SAS 令牌。
 
 还可使用 Azure PowerShell 来生成 SAS 令牌。 以下示例会生成可完全访问 blob 容器的 SAS 令牌：
 
-1. 若尚未安装 Azure PowerShell，请进行安装（建议使用最新版 Azure PowerShell cmdlet 安装）。 有关安装说明，请参阅[安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps)。
+1. 若尚未安装 Azure PowerShell，请进行安装（建议使用最新版 Azure PowerShell cmdlet 安装）。 有关安装说明，请参阅[安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps)。
 2. 打开 Azure PowerShell 并运行以下命令，将 `CONTAINER_NAME` 替换为所选名称：
 
 ```powershell
-$context = New-AzureStorageContext -Local
+$context = New-AzStorageContext -Local
 
-New-AzureStorageContainer CONTAINER_NAME -Permission Off -Context $context
+New-AzStorageContainer CONTAINER_NAME -Permission Off -Context $context
 
 $now = Get-Date
 
-New-AzureStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryTime $now.AddDays(1.0) -Context $context -FullUri
+New-AzStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryTime $now.AddDays(1.0) -Context $context -FullUri
 ```
 
 得到的新容器的共享访问签名 URI 应类似于以下内容：
@@ -164,9 +167,9 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 ### <a name="options"></a>选项
 若要查看选项列表，请在命令提示符下键入 `/help`。
 
-| 选项 | Description | 命令 | 参数 |
+| 选项 | 说明 | 命令 | 参数 |
 | --- | --- | --- | --- |
-| **启动** |启动存储模拟器。 |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*：在当前进程中启动模拟器而不是创建一个新的进程。 |
+| **启动** |启动存储模拟器。 |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*：在当前进程中启动仿真器，而不是创建新的进程。 |
 | **Stop** |停止存储模拟器。 |`AzureStorageEmulator.exe stop` | |
 | **Status** |打印存储模拟器的状态。 |`AzureStorageEmulator.exe status` | |
 | **Clear** |清除命令行上指定的所有服务中的数据。 |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]                                                    ` |*blob*：清除 blob 数据。 <br/>*queue*：清除队列数据。 <br/>*table*：清除表数据。 <br/>*all*：清除所有服务中的所有数据。 |

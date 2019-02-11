@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 6355a7ce203f2bf75b5c93d225502f961deeee43
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: c1d9047de814b7a80210fe2502d219921f5829a4
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032067"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976896"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>快速入门：在 Azure VM 上手动安装单实例 SAP HANA
 ## <a name="introduction"></a>介绍
@@ -62,20 +62,20 @@ ms.locfileid: "47032067"
 有关使用 SAP Cloud Appliance Library 部署 S/4HANA 或 BW/4HANA 的信息，请参阅 [在 Microsoft Azure 上部署 SAP S/4HANA 或 BW/4HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h) 。
 
 ### <a name="sap-hana-supported-operating-systems"></a>SAP HANA 支持的操作系统
-有关 SAP HANA 支持的操作系统的信息，请参阅 [SAP 支持说明 #2235581 - SAP HANA：支持的操作系统](https://launchpad.support.sap.com/#/notes/2235581/E)。 Azure VM 仅支持其中的一部分操作系统。 支持使用以下操作系统在 Azure 上部署 SAP HANA： 
+有关 SAP HANA 支持的操作系统的信息，请参阅 [SAP Support Note #2235581 - SAP HANA:Supported Operating Systems](https://launchpad.support.sap.com/#/notes/2235581/E)（SAP 支持说明 #2235581 - SAP HANA：支持的操作系统）。 Azure VM 仅支持其中的一部分操作系统。 支持使用以下操作系统在 Azure 上部署 SAP HANA： 
 
 * SUSE Linux Enterprise Server 12.x
 * Red Hat Enterprise Linux 7.2
 
 如需查看更多有关 SAP HANA 和其他 Linux 操作系统的 SAP 文档，请参阅：
 
-* [SAP 支持说明 #171356 - Linux 上的 SAP 软件：常规信息](https://launchpad.support.sap.com/#/notes/1984787)
+* [SAP Support Note #171356 - SAP Software on Linux:General Information](https://launchpad.support.sap.com/#/notes/1984787)（SAP 支持说明 #171356 - Linux 上的 SAP 软件：常规信息）
 * [SAP 支持说明 #1944799 - 适用于 SLES 操作系统安装的 SAP HANA 指南](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
 * [SAP 支持说明 #2205917 - SAP HANA DB 建议的适用于 SLES 12 for SAP Applications 的 OS 设置](https://launchpad.support.sap.com/#/notes/2205917/E)
-* [SAP 支持说明 #1984787 - SUSE Linux Enterprise Server 12：安装说明](https://launchpad.support.sap.com/#/notes/1984787)
+* [SAP Support Note #1984787 - SUSE Linux Enterprise Server 12:Installation Notes](https://launchpad.support.sap.com/#/notes/1984787)（SAP 支持说明 #1984787 - SUSE Linux Enterprise Server 12：安装说明）
 * [SAP 支持说明 #1391070 - Linux UUID 解决方案](https://launchpad.support.sap.com/#/notes/1391070)
 * [SAP Support Note #2009879 - SAP HANA Guidelines for Red Hat Enterprise Linux (RHEL) Operating System](https://launchpad.support.sap.com/#/notes/2009879)（SAP 支持说明 #2009879 - Red Hat Enterprise Linux (RHEL) 操作系统的 SAP HANA 指南）
-* [2292690 - SAP HANA DB: Recommended OS settings for RHEL 7](https://launchpad.support.sap.com/#/notes/2292690/E)（2292690 - SAP HANA DB：RHEL 7 的建议 OS 设置）
+* [2292690 - SAP HANA DB:Recommended OS settings for RHEL 7](https://launchpad.support.sap.com/#/notes/2292690/E)（2292690 - SAP HANA DB：建议用于 RHEL 7 的 OS 设置）
 
 ### <a name="sap-monitoring-in-azure"></a>Azure 中的 SAP 监视
 有关 Azure 中 SAP 监视的信息，请参阅：
@@ -87,7 +87,7 @@ ms.locfileid: "47032067"
 ### <a name="azure-vm-types"></a>Azure VM 类型
 Azure VM 类型和配合 SAP HANA 使用的 SAP 支持的工作负荷方案记录在 [SAP 认证 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)中。 
 
-有关通过 SAP 的 SAP NetWeaver 或 S/4HANA 应用程序层认证的 Azure VM 类型，请参阅 [SAP 说明 1928533 - Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型](https://launchpad.support.sap.com/#/notes/1928533/E)中的介绍。
+有关通过 SAP 的 SAP NetWeaver 或 S/4HANA 应用程序层认证的 Azure VM 类型，请参阅 [SAP Note 1928533 - SAP Applications on Azure:Supported Products and Azure VM types](https://launchpad.support.sap.com/#/notes/1928533/E)（SAP 说明 1928533 - Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型）中的介绍。
 
 >[!Note]
 >SAP-Linux-Azure 集成仅在 Azure 资源管理器部署模型上受支持，在经典部署模型上不受支持。 
@@ -404,7 +404,7 @@ SLES for SAP Applications 12 GA 和 SLES for SAP Applications 12 SP1 具有替�
 有关 HANA HDBLCM 工具的详细信息，请参阅：
 
 * [Choosing the Correct SAP HANA HDBLCM for Your Task](https://help.sap.com/saphelp_hanaplatform/helpdata/en/68/5cff570bb745d48c0ab6d50123ca60/content.htm)（为任务选择正确的 SAP HANA HDBLCM）
-* [SAP HANA Lifecycle Management Tools](http://saphanatutorial.com/sap-hana-lifecycle-management-tools/)（SAP HANA 生命周期管理工具）
+* [SAP HANA Lifecycle Management Tools](https://www.tutorialspoint.com/sap_hana_administration/sap_hana_administration_lifecycle_management.htm)（SAP HANA 生命周期管理工具）
 * [SAP HANA Server Installation and Update Guide](http://help.sap.com/hana/SAP_HANA_Server_Installation_Guide_en.pdf)（SAP HANA 服务器安装和更新指南）
 
 为了避免 `\<HANA SID\>adm user`（由 HDBLCM 工具创建）的默认组 ID 设置发生问题，请在通过 HDBLCM 安装 SAP HANA 之前，定义一个名为 `sapsys`、组 ID 为 `1001` 的新组：

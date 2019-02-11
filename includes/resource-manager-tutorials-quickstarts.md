@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 10/30/2018
+ms.date: 01/15/2019
 ms.author: jgao
 ms.custom: include file
-ms.openlocfilehash: 936c9198eebfa229db6ac34426e435c9e6ed96e8
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 11bcfa1b4719d6def5bfc4a6a189bd2b58896b5b
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50254485"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54334343"
 ---
 ## <a name="quickstarts-and-tutorials"></a>快速入门和教程
 
@@ -39,12 +39,15 @@ ms.locfileid: "50254485"
     |------|-----|
     |[利用模板参考](../articles/azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md)|利用模板参考文档来开发模板。 在本教程中，找到存储帐户架构，并使用相关信息来创建加密的存储帐户。|
     |[创建多个实例](../articles/azure-resource-manager/resource-manager-tutorial-create-multiple-instances.md)|创建多个 Azure 资源的实例。 在本教程中，将创建多个存储帐户实例。|
+    |[移动资源](../articles/azure-resource-manager/resource-manager-tutorial-move-resources.md)|将资源在资源组之间移动。 在本教程中，运行现有模板以创建两个资源组和一个存储帐户，然后运行 Azure PowerShell cmdlet 以将存储帐户移动到另一个资源组。|
     |[设置资源部署顺序](../articles/azure-resource-manager/resource-manager-tutorial-create-templates-with-dependent-resources.md)|定义资源依赖关系。 在本教程中，将创建虚拟网络、虚拟机和相关 Azure 资源。 了解如何定义依赖关系。|
     |[使用条件](../articles/azure-resource-manager/resource-manager-tutorial-use-conditions.md)|基于某些参数值来部署资源。 在本教程中，基于参数的值定义一个模板以创建新的存储帐户或使用现有存储帐户。|
     |[集成 Key Vault](../articles/azure-resource-manager/resource-manager-tutorial-use-key-vault.md)|从 Azure Key Vault 检索机密/密码。 在本教程中，将创建虚拟机。  从 Key Vault 检索虚拟机管理员密码。|
     |[创建链接模板](../articles/azure-resource-manager/resource-manager-tutorial-create-linked-templates.md)|模块化模板，并从模板中调用其他模板。 在本教程中，将创建虚拟网络、虚拟机和相关资源。  相关存储帐户在链接模板中定义。 |
     |[部署虚拟机扩展](../articles/azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)|使用扩展执行部署后任务。 在本教程中，你将部署客户脚本扩展以在虚拟机上安装 Web 服务器。 |
     |[部署 SQL 扩展](../articles/azure-resource-manager/resource-manager-tutorial-deploy-sql-extensions-bacpac.md)|使用扩展执行部署后任务。 在本教程中，你将部署客户脚本扩展以在虚拟机上安装 Web 服务器。 |
+    |[保护项目](../articles/azure-resource-manager/resource-manager-tutorial-secure-artifacts.md)|保护完成部署所需的项目。 本教程介绍如何保护“部署 SQL 扩展”教程中使用的项目。 |
     |[使用安全部署做法](../articles/azure-resource-manager/deployment-manager-tutorial.md)|使用 Azure 部署管理器。 |
+    |[教程：对资源管理器模板部署进行故障排除](../articles/azure-resource-manager/resource-manager-tutorial-troubleshoot.md)|排查模板部署问题。|
 
 这些教程可以单独使用，也可以作为一系列用于学习主要的资源管理器模板开发概念。

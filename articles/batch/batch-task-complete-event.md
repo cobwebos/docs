@@ -2,7 +2,7 @@
 title: Azure Batch 任务完成事件 | Microsoft Docs
 description: 批处理任务完成事件参考。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -11,12 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: danlep
-ms.openlocfilehash: 9f25d9cbdc70282afd71b1a4b9ac72250922d163
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: lahugh
+ms.openlocfilehash: b5fd1a8020c8e95323bc2333c0583dafe58e8456
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459232"
 ---
 # <a name="task-complete-event"></a>任务完成事件
 

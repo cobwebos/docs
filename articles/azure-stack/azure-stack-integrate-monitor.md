@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
-ms.openlocfilehash: 66cd20eaa401261bcb18bedbbc16f5bcf40ee192
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.lastreviewed: 02/06/2019
+ms.openlocfilehash: ff28fbb52b33308967051a37fdaa3c6c273fc282
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342977"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816079"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>将外部监视解决方案与 Azure Stack 集成
 
@@ -37,6 +38,9 @@ ms.locfileid: "49342977"
 下图演示 Azure Stack 集成系统、硬件生命周期主机、外部监视解决方案与外部票证/数据收集系统之间的流量流。
 
 ![显示 Azure Stack、监视与票证解决方案之间的流量的示意图。](media/azure-stack-integrate-monitor/MonitoringIntegration.png)  
+
+> [!NOTE]
+> 直接与物理服务器和网络设备的外部监视集成不是允许的和主动阻止的访问控制列表 (Acl)。 
 
 本文介绍如何将 Azure Stack 与外部监视解决方案（例如 System Center Operations Manager 和 Nagios）集成。 此外，还介绍如何使用 PowerShell 或 REST API 调用以编程方式处理警报。
 
@@ -75,15 +79,15 @@ Nagios 监视插件开发与合作伙伴 Cloudbase 解决方案一起宽松免�
 
 使用以下参数来配置插件文件“Azurestack_plugin.py”：
 
-| 参数 | 说明 | 示例 |
+| 参数 | 描述 | 示例 |
 |---------|---------|---------|
 | *arm_endpoint* | Azure 资源管理器（管理员）终结点 |https://adminmanagement.local.azurestack.external |
 | *api_endpoint* | Azure 资源管理器（管理员）终结点  | https://adminmanagement.local.azurestack.external |
 | *Tenant_id* | 管理员订阅 ID | 通过管理员门户或 PowerShell 检索 |
 | *User_name* | 操作员订阅用户名 | operator@myazuredirectory.onmicrosoft.com |
 | *User_password* | 操作员订阅密码 | mypassword |
-| *Client_id* | Client | 0a7bdc5c-7b57-40be-9939-d4c5fc7cd417* |
-| *region* |  Azure Stack 区域名称 | local |
+| *Client_id* | 客户端 | 0a7bdc5c-7b57-40be-9939-d4c5fc7cd417* |
+| *region* |  Azure Stack 区域名称 | 本地 |
 |  |  |
 
 *提供的 PowerShell GUID 是通用的。 可对每个部署使用它。
@@ -123,7 +127,7 @@ Nagios 监视插件开发与合作伙伴 Cloudbase 解决方案一起宽松免�
 
     ```
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解详情
 
 有关内置运行状况监视的信息，请参阅[在 Azure Stack 中监视运行状况和警报](azure-stack-monitor-health.md)。
 

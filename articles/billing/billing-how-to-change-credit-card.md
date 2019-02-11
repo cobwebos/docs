@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: cwatson
-ms.openlocfilehash: 69c24e08ce2434c39b8bb67cb53173f9ceaee51b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 4e3c04d0cf53b53f3221effca8c8ae534990fdb3
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581436"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901153"
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>添加、更新或删除用于 Azure 的信用卡或借记卡
 
@@ -32,7 +32,7 @@ ms.locfileid: "52581436"
 
 ## <a name="add-a-new-credit-or-debit-card"></a>添加新的信用卡或借记卡
 
-1. 以帐户管理员身份登录到[帐户中心](https://account.windowsazure.com/Subscriptions)。
+1. 以[帐户管理员](billing-subscription-transfer.md#whoisaa)身份登录到[帐户中心](https://account.windowsazure.com/Subscriptions)。
 1. 选择一个订阅。
 1. 在页面右侧，选择“管理付款方式”。
 
@@ -49,7 +49,7 @@ ms.locfileid: "52581436"
 
 如果更换了信用卡，但号码保持不变，请更新现有信用卡的详细信息（例如到期日）。 如果信用卡号码由于卡丢失、失窃或过期而更改，则需要按照[将信用卡添加为支付方式](#addcard)中的步骤操作。 无需更新 CVV。
 
-1. 以帐户管理员身份登录到 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)。
+1. 以[帐户管理员](billing-subscription-transfer.md#whoisaa)身份登录到 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)。
 1. 选择链接到卡的订阅。
 1. 选择“管理付款方式”。
 1. 选择想要更新的卡旁边的“编辑”。
@@ -58,14 +58,14 @@ ms.locfileid: "52581436"
 
 ## <a name="use-a-different-credit-card-for-the-azure-subscription"></a>使用另外一张信用卡支付 Azure 订阅
 
-1. 以帐户管理员身份登录到 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)。
+1. 以[帐户管理员](billing-subscription-transfer.md#whoisaa)身份登录到 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)。
 1. 选择链接到卡的订阅。
 1. 在页面右侧，选择“管理付款方式”。
 1. 单击要使用的信用卡旁边的“改用”。 这还会更新当前与此卡关联的任何其他订阅。 
 
 ## <a name="remove-a-credit-or-debit-card-from-the-account"></a>从帐户中删除信用卡或借记卡
 
-1. 以帐户管理员身份登录到 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)。
+1. 以[帐户管理员](billing-subscription-transfer.md#whoisaa)身份登录到 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)。
 1. 选择链接到卡的订阅。
 3. 在页面右侧，选择“管理付款方式”。
 4. 对想要删除的信用卡单击“删除”。
@@ -104,4 +104,4 @@ ms.locfileid: "52581436"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

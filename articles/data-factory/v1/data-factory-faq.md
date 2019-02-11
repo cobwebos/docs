@@ -9,17 +9,16 @@ ms.assetid: 532dec5a-7261-4770-8f54-bfe527918058
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 414a6042d064a1dece7025dc277533d40ef2aa64
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 81c7c98f29c2e507e165a3943395e36a453cbf06
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781907"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024036"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure 数据工厂 - 常见问题解答
 > [!NOTE]
@@ -55,7 +54,7 @@ ms.locfileid: "43781907"
 * **Azure PowerShell**：有关使用 PowerShell 创建数据工厂的教程/演练，请参阅[使用 Azure PowerShell 创建和监视 Azure 数据工厂](data-factory-build-your-first-pipeline-using-powershell.md)。 有关数据工厂 cmdlet 的综合文档，请参阅 MSDN 库上的[数据工厂 Cmdlet 参考][adf-powershell-reference]内容。
 * **.NET 类库**：可以使用数据工厂 .NET SDK 以编程方式创建数据工厂。 有关使用 .NET SDK 创建数据工厂的演练，请参阅[使用 .NET SDK 创建、监视和管理数据工厂](data-factory-create-data-factories-programmatically.md)。 有关数据工厂 .NET SDK 的综合文档，请参阅[数据工厂类库参考][msdn-class-library-reference]。
 * **REST API**：还可以使用 Azure 数据工厂服务公开的 REST API 创建和部署数据工厂。 有关数据工厂 REST API 的综合文档，请参阅[数据工厂 REST API 参考][msdn-rest-api-reference]。
-* **Azure 资源管理器模板**：有关详细信息，请参阅[教程：使用 Azure 资源管理器模板构建第一个 Azure 数据工厂](data-factory-build-your-first-pipeline-using-arm.md)。
+* **Azure 资源管理器模板** 有关详细信息，请参阅[教程：使用 Azure 资源管理器模板构建第一个 Azure 数据工厂](data-factory-build-your-first-pipeline-using-arm.md)。
 
 ### <a name="can-i-rename-a-data-factory"></a>是否可以重命名数据工厂？
 不是。 和其他 Azure 资源一样，不可以更改 Azure 数据工厂的名称。

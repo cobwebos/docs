@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: 7654ab4c-4489-4ea5-aba9-d7cdc256e42a
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: f6f804ea9121d1728e31f1e694280e841f4b7f4e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dcde2a09f9e066c49d870f230aed37655c4b6647
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946538"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093406"
 ---
 # <a name="quickstart-secure-a-web-api-with-azure-active-directory"></a>快速入门：使用 Azure Active Directory 保护 Web API
 
@@ -74,7 +74,7 @@ az ad app create --display-name node-aad-demo --homepage http://localhost --iden
 
 `create` 命令的[参数](/cli/azure/ad/app?view=azure-cli-latest#az-ad-app-create)包括：
 
-| 参数  | Description |
+| 参数  | 说明 |
 |---------|---------|
 |`display-name` | 注册的友好名称 |
 |`homepage` | 用户可在其中登录和使用应用程序的 URL |
@@ -82,7 +82,7 @@ az ad app create --display-name node-aad-demo --homepage http://localhost --iden
 
 在连接到 Azure Active Directory 之前，需准备好以下信息：
 
-| 名称  | Description | 配置文件中的变量名称 |
+| Name  | 说明 | 配置文件中的变量名称 |
 | ------------- | ------------- | ------------- |
 | 租户名称  | 要用于身份验证的[租户名称](quickstart-create-new-tenant.md) | `tenantName`  |
 | 客户端 ID  | 客户端 ID 是对 AAD _应用程序 ID_ 使用的 OAuth 术语。 |  `clientID`  |
@@ -166,7 +166,7 @@ passport.use(authenticationStrategy);
 定义身份验证策略后，可在 Restify 服务器中指定一些基本设置，并将其设置为使用 Passport 来获得安全性。
 
 ```JavaScript
-const server = restify.createServer({ name: 'Azure Active Directroy with Node.js Demo' });
+const server = restify.createServer({ name: 'Azure Active Directory with Node.js Demo' });
 server.use(restifyPlugins.authorizationParser());
 server.use(passport.initialize());
 server.use(passport.session());
@@ -221,7 +221,7 @@ curl -isS -X GET http://127.0.0.1:3000/
 
 ```shell
 HTTP/1.1 200 OK
-Server: Azure Active Directroy with Node.js Demo
+Server: Azure Active Directory with Node.js Demo
 Content-Type: application/json
 Content-Length: 49
 Date: Tue, 10 Oct 2017 18:35:13 GMT
@@ -240,7 +240,7 @@ curl -isS -X GET http://127.0.0.1:3000/api
 
 ```shell
 HTTP/1.1 401 Unauthorized
-Server: Azure Active Directroy with Node.js Demo
+Server: Azure Active Directory with Node.js Demo
 WWW-Authenticate: token is not found
 Date: Tue, 10 Oct 2017 16:22:03 GMT
 Connection: keep-alive

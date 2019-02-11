@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: bc03a5f43ef65ec8feaccb82fc3d31debbc6e7b9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: d437c6e2327fc9771f9567a37bfbf8ad82713b2b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523370"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452637"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>监视 Azure 门户中的存储帐户
 
@@ -98,7 +98,7 @@ ms.locfileid: "39523370"
 3. 为新的警报规则输入“名称”和“描述”。
 4. 选择要为其添加警报的**指标**，以及警报**条件**和**阈值**。 阈值单位类型根据所选的指标而异。 例如，“计数”是 *ContainerCount* 的单位类型，而 *PercentNetworkError* 指标的单位是百分比。
 5. 选择“时间段”。 在该时间段内达到或超过阈值的指标将触发警报。
-6. （可选）配置“电子邮件”和“Webhook”通知。 有关 Webhook 的详细信息，请参阅[针对 Azure 指标警报配置 Webhook](../../monitoring-and-diagnostics/insights-webhooks-alerts.md)。 如果未配置电子邮件或 Webhook 通知，警报只会显示在 Azure 门户中。
+6. （可选）配置“电子邮件”和“Webhook”通知。 有关 Webhook 的详细信息，请参阅[针对 Azure 指标警报配置 Webhook](../../azure-monitor/platform/alerts-webhooks.md)。 如果未配置电子邮件或 Webhook 通知，警报只会显示在 Azure 门户中。
 
 ![Azure 门户中的“添加警报规则”边栏选项卡](./media/storage-monitor-storage-account/add-alert-rule.png)
 

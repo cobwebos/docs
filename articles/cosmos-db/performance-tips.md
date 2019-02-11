@@ -1,21 +1,17 @@
 ---
-title: 适用于 .NET 的 Azure Cosmos DB 性能提示 | Microsoft Docs
+title: 适用于 .NET 的 Azure Cosmos DB 性能提示
 description: 了解用于提高 Azure Cosmos DB 数据库性能的客户端配置选项
-keywords: 如何提高数据库性能
-services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 91da40613e940b3dd577362273cf14e68d019f26
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: f05935f73f385b076741d2e856af8316a74e9d2f
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442466"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042489"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>适用于 Azure Cosmos DB 和 .NET 的性能提示
 
@@ -47,7 +43,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
     * TCP
     * HTTPS
 
-    使用网关模式时，Azure Cosmos DB 使用端口 443，MongoDB API 使用 10250、10255 和 10256 端口。 10250 端口映射到没有异地复制功能的默认 Mongodb 实例，10255/10256 端口映射到具有异地复制功能的 Mongodb 实例。 在直接模式下使用时 TCP 时，除了网关端口外，还需确保端口 10000 到 20000 范围之间的端口处于打开状态，因为 Azure Cosmos DB 使用动态 TCP 端口。 如果这些端口未处于打开状态，在尝试使用 TCP 时会收到“503 服务不可用”错误。 下表显示可用于不同 API 的连接模式以及每个 API 的服务端口用户：
+    如果使用网关模式，Cosmos DB 在使用 Azure Cosmos DB 的 API for MongoDB 时使用端口 443 和端口 10250、10255 和 10256。 10250 端口映射到没有异地复制功能的默认 MongoDB 实例，10255/10256 端口映射到具有异地复制功能的 MongoDB 实例。 在直接模式下使用时 TCP 时，除了网关端口外，还需确保端口 10000 到 20000 范围之间的端口处于打开状态，因为 Azure Cosmos DB 使用动态 TCP 端口。 如果这些端口未处于打开状态，在尝试使用 TCP 时会收到“503 服务不可用”错误。 下表显示可用于不同 API 的连接模式以及每个 API 的服务端口用户：
 
     |连接模式  |支持的协议  |支持的 SDK  |API/服务端口  |
     |---------|---------|---------|---------|

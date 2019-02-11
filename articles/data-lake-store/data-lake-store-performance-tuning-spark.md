@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: d280ef50d91f2e9b5157de5ec918e496f9887681
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: dc92e7d2fcc911aeb6d92b91dd2d430af3c502ad
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127663"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401701"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Spark on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
 
@@ -25,7 +25,7 @@ ms.locfileid: "46127663"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
 * 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
 * **在 Data Lake Storage Gen1 中运行 Spark 群集**。  有关详细信息，请参阅[使用 HDInsight Spark 群集分析 Data Lake Storage Gen1 中的数据](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
@@ -57,14 +57,14 @@ ms.locfileid: "46127663"
 
 **步骤 1：确定群集中运行的应用数目** – 应该知道群集中运行了多少个应用，包括当前正在使用的应用。  每项 Spark 设置的默认值假设同时运行了 4 个应用。  因此，每个应用只能利用群集 25% 的资源。  若要提高性能，可以通过更改执行器数目来覆盖默认值。  
 
-**步骤 2：设置执行器内存** – 要设置的第一个参数是执行器内存。  内存取决于要运行的作业。  减少每个执行器的内存分配可以提高并发性。  如果在运行作业时看到内存不足异常，应增大此参数的值。  一种替代方法是使用具有更高内存量的群集或增大群集的大小来获得更多内存。  增加内存便可以使用更多的执行器，意味着并发性得到提高。
+**步骤 2：设置执行器内存** - 要设置的第一个参数是执行器内存。  内存取决于要运行的作业。  减少每个执行器的内存分配可以提高并发性。  如果在运行作业时看到内存不足异常，应增大此参数的值。  一种替代方法是使用具有更高内存量的群集或增大群集的大小来获得更多内存。  增加内存便可以使用更多的执行器，意味着并发性得到提高。
 
 **步骤 3：设置执行器核心数** – 对于不执行复杂操作的 I/O 密集型工作负荷而言，一开始最好是指定一个较大数值的执行器核心数，以增加每个执行器的并行任务数。  将执行器核心数设置为 4 是个不错的起点。   
 
     executor-cores = 4
 增加执行器核心数可以提高并行度，这样可以体验不同执行器核心数带来的效果。  对于执行较复杂操作的作业，应减少每个执行器的核心数。  如果执行器核心数设置为 4 以上，则垃圾回收可能会变得低效，并且性能会下降。
 
-**步骤 4：确定群集中的 YARN 内存量** – Ambari 中提供了此信息。  导航到 YARN 并查看“配置”选项卡即可。YARN 内存量会显示在此窗口中。  
+**步骤 4：确定群集中的 YARN 内存量** – Ambari 中提供了此信息。  导航到 YARN 并查看“配置”选项卡。YARN 内存量会显示在此窗口中。  
 请注意，在该窗口中操作时，还可以查看默认的 YARN 容器大小。  YARN 容器大小与每个执行器的内存量参数相同。
 
     Total YARN memory = nodes * YARN memory per node

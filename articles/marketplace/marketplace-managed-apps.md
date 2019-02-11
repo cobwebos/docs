@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: c8ead3dc34faefce0f113dee2074960fddfa11a1
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: ae50562a9354b9c1e5b2711e5bbeec7b1e0fbbb8
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144585"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078790"
 ---
 # <a name="azure-applications-managed-application-offer-publishing-guide"></a>Azure 应用程序：“托管应用程序”产品/服务发布指南
 
@@ -41,7 +41,7 @@ ms.locfileid: "43144585"
 |部署到客户的 Azure 订阅 | 托管应用必须部署在客户的订阅中，并且可以由第三方管理 | 
 |计费和计量    |  资源将在客户的 Azure 订阅中预配。 即用即付 (PAYGO) 虚拟机将通过 Microsoft 与客户进行交易，通过客户的 Azure 订阅 (PAYGO) 进行计费 
 如果是自带许可，虽然 Microsoft 将对客户订阅中产生的基础结构成本进行计费，但你会直接向客户支付软件许可费用        |
-|与 Azure 兼容的虚拟硬盘 (VHD)    |   必须基于 Windows 或 Linux 构建 VM。<ul> <li>有关创建 Linux VHD 的详细信息，请访问 [docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2-create-an-azure-compatible-vhd-linux-based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2-create-an-azure-compatible-vhd-linux-based) 上的“创建与 Azure 兼容的 VHD（基于 Linux）”部分。</li> <li>有关创建 Windows VHD 的详细信息，请访问 [docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3-create-an-azure-compatible-vhd-windows-based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3-create-an-azure-compatible-vhd-windows-based) 上的“创建与 Azure 兼容的 VHD（基于 Windows）”部分。</li> </ul>      |
+|与 Azure 兼容的虚拟硬盘 (VHD)    |   必须基于 Windows 或 Linux 构建 VM。<ul> <ul> <li>有关创建 Linux VHD 的详细信息，请参阅 [Azure 认可的 Linux 发行版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。</li> <li>有关创建 Windows VHD 的详细信息，请参阅[创建与 Azure 兼容的 VHD](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)。</li> </ul> |
 
 >[!NOTE]
 > 托管应用必须可通过市场部署。 如果客户沟通是个问题，应该在启用商机分享后与感兴趣的客户交流。  
@@ -50,8 +50,8 @@ ms.locfileid: "43144585"
 ## <a name="next-steps"></a>后续步骤
 如果尚未注册， 
 
-- 请在市场中[注册](https://azuremarketplace.microsoft.com/sell)
+- 请在市场中[注册](https://azuremarketplace.microsoft.com/sell)。
 
 如果已注册并正在创建新套餐或正在使用现有套餐，
 
-- [登录到云合作伙伴门户](https://cloudpartner.azure.com)创建或完成套餐
+- [登录到云合作伙伴门户](https://cloudpartner.azure.com)，创建或完成套餐。

@@ -1,22 +1,18 @@
 ---
-title: 使用 Azure Cosmos DB 中的指标进行监视和调试 | Microsoft Docs
+title: 使用 Azure Cosmos DB 中的指标进行监视和调试
 description: 使用 Azure Cosmos DB 中的指标调试常见问题和监视数据库。
-keywords: 指标
-services: cosmos-db
-author: kanshiG
-manager: kfile
-editor: ''
 ms.service: cosmos-db
-ms.devlang: na
+author: kanshiG
+ms.author: sngun
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.author: govindk
-ms.openlocfilehash: 5e2ff89c45797e8453a3a3e4da4ac7cbe1ee6f16
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.reviewer: sngun
+ms.openlocfilehash: ff6e0b6084eebf236d01b4dd00a46897687938c2
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852871"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034720"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的指标进行监视和调试
 
@@ -42,7 +38,7 @@ Azure Cosmos DB 提供吞吐量、存储、一致性、可用性和延迟的指�
 
 ## <a name="determine-the-storage-distribution-across-partitions"></a>确定跨分区的存储分布
 
-对任何可伸缩应用程序而言，均必须具有良好的分区基数。 若要确定任何由分区细分为分区容器的吞吐量分布，请前往 [Azure 门户](https://portal.azure.com)中的“指标”边栏选项卡。 在“吞吐量”选项卡中，存储细目显示在“各物理分区占用的最大 RU 数/秒”图表中。 下图显示一个示例介绍因最左侧的倾斜分区而产生的不良数据分布。
+对任何可伸缩应用程序而言，均必须具有良好的分区基数。 若要确定任何按分区细分为分区容器的存储分布，请前往 [Azure 门户](https://portal.azure.com)中的“指标”边栏选项卡。 在“存储”选项卡中，存储细分显示在顶部分区键图表所占用的“数据 + 索引”存储中。 下图说明了数据存储的不良分布，如最左侧的倾斜分区所示。
 
 ![不良数据分布示例](media/use-metrics/metrics-07.png)
 

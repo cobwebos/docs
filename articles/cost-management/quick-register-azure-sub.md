@@ -1,21 +1,21 @@
 ---
 title: 在 Cloudyn 中注册 Azure 订阅 | Microsoft 文档
-description: 使用 Azure 订阅在 Cloudyn 中注册。
+description: 本快速入门将详细介绍创建 Cloudyn 试用订阅和登录到 Cloudyn 门户所需的注册过程。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 08/07/2018
+ms.date: 12/07/2018
 ms.topic: quickstart
-ms.custom: ''
+ms.custom: seodec18
 ms.service: cost-management
 manager: benshy
-ms.openlocfilehash: 4b0c0a6fdf8d84b6519d1228f148342b8486c282
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 54bb66d79979e68c55a671035fa2bc11d8220b17
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276391"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351588"
 ---
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>注册一个单独的 Azure 订阅并查看成本数据
 
@@ -23,23 +23,23 @@ ms.locfileid: "52276391"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-- 通过 http://portal.azure.com 登录到 Azure 门户。
+- 通过 https://portal.azure.com 登录到 Azure 门户。
 
 ## <a name="register-with-cloudyn"></a>注册 Cloudyn
 
 1. 在 Azure 门户中，单击服务列表中的“成本管理 + 计费”。
 2. 在“概览”下，单击“Cloudyn”  
-    ![Cloudyn 页面](./media/quick-register-azure-sub/cost-mgt-billing-service.png)
+    ![显示在 Azure 门户中的 Cloudyn 页](./media/quick-register-azure-sub/cost-mgt-billing-service.png)
 3. 在“成本管理”页上，单击“转到 Cloudyn”，以在新窗口中打开 Cloudyn 注册页。
 4. 在 Cloudyn 门户试用注册页上，键入公司名称，然后选择“Azure 个人订阅所有者”，然后单击“下一步”。 你的帐户名称和租户 ID 被自动添加到窗体。  
-    ![试用注册](./media/quick-register-azure-sub/trial-reg-ind.png)
+    ![试用注册页，可在此输入注册信息](./media/quick-register-azure-sub/trial-reg-ind.png)
 5. 选择与你的订阅相关联的“套餐 ID - 名称”。 如果不确定你的订阅的费率 ID，可以查看 Azure 账单或查找“套餐 ID”。
 6. 同意“使用条款”，并验证相关信息，然后单击“下一步”。
 7. 在“获取其他数据”页，单击“下一步”，以授权 Cloudyn 收集 Azure 资源数据。 收集的数据包括订阅的使用情况、性能、计费和标记数据。  
-    ![收集更多数据](./media/quick-register-azure-sub/gather-additional.png)
+    ![收集在其中授权 Cloudyn 的其他数据页](./media/quick-register-azure-sub/gather-additional.png)
 8. 你的浏览器会将你转到 Cloudyn 的登录页。 使用 Azure 订阅凭据登录。
 9. 单击“转到 Cloudyn”，以打开 Cloudyn 门户，然后在“帐户管理”页，应该可以看到你的 Azure 订阅帐户信息。  
-    ![帐户管理](./media/quick-register-azure-sub/accounts-mgt.png)
+    ![显示 Azure 订阅信息的帐户管理页](./media/quick-register-azure-sub/accounts-mgt.png)
 
 若要观看有关如何注册 Azure 订阅的教程视频，请参阅[在 Cloudyn 中查找要使用的目录 GUID 和费率 ID](https://youtu.be/PaRjnyaNGMI)。
 

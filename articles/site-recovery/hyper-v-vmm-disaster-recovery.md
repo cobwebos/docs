@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/28/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b2b6de09b5c8dd825cd3d61c23be7081fab20e53
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: cccfc3d028cb2da9346e629a5aca080bedd7fee9
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213264"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794509"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>为 Hyper-V VM 设置到辅助本地站点的灾难恢复
 
@@ -65,7 +65,7 @@ ms.locfileid: "50213264"
 
 选择要复制的内容以及要复制到的位置。
 
-1. 单击“Site Recovery” > “步骤 1: 准备基础结构” > “保护目标”。
+1. 单击“Site Recovery” > 步骤 1 **：** > “保护目标”。
 2. 选择“到恢复站点”，并选择“是，使用 Hyper-V”。
 3. 选择“是”，指示将使用 VMM 管理 Hyper-V 主机。
 4. 如果具有辅助 VMM 服务器，请选择“是”。 如果要在单个 VMM 服务器上的云之间部署复制，请单击“否”。 然后单击“确定”。
@@ -133,8 +133,8 @@ ms.locfileid: "50213264"
 1. 在“复制频率” 中，指定要在初始复制后复制增量数据的频率（每隔 30 秒、5 或 15 分钟）。
 2. 在“恢复点保留期”中，指定每个恢复点的保留期时长（以小时为单位）。 复制的计算机可以恢复到某个时段内的任意时间点。
 3. 在“应用一致性快照频率”中，指定创建包含应用程序一致性快照的恢复点的频率（1-12 小时）。 Hyper-V 使用两种类型的快照：
-    - 标准快照：提供整个虚拟机的增量快照。
-    - 应用一致快照：拍摄虚拟机内应用程序数据的时点快照。 卷影复制服务 (VSS) 确保应用在拍摄快照时处于一致状态。 启用应用程序一致性快照会影响源 VM 的应用性能。 确保设置的值小于所配置的附加恢复点数量。
+    - **标准快照**：提供整个虚拟机的增量快照。
+    - **应用一致的快照**：拍摄 VM 内应用程序数据的时间点快照。 卷影复制服务 (VSS) 可确保应用在拍摄快照时处于一致状态。 启用应用程序一致性快照会影响源 VM 的应用性能。 确保设置的值小于所配置的附加恢复点数量。
 4. 在“数据传输压缩”中，指定是否应压缩所传输的复制数据。
 5. 选择“删除副本 VM”，指定禁用对源 VM 的保护时应删除副本虚拟机。 如果启用此设置，禁用对源 VM 的保护时，将从站点恢复控制台中删除该 VM、在 VMM 控制台中删除 VMM 的站点恢复设置，并删除副本。
 6. 如果要通过网络进行复制，请在“初始复制方法”中指定是要启动还是计划初始复制。 要节省网络带宽，可以将它计划在非高峰时间运行。 然后单击“确定”。

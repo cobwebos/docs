@@ -2,20 +2,20 @@
 title: 向 Azure SQL 数据仓库进行身份验证 | Microsoft Docs
 description: 了解如何使用 Azure Active Directory (AAD) 或 SQL Server 身份验证向 Azure SQL 数据仓库进行身份验证。
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/12/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: d082ba8bd2819450609a8a6e4ab41b4320158d4b
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 7f26ded5fae1bde5b2e6485ae2a2f99eebb17563
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43311292"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463321"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>向 Azure SQL 数据仓库进行身份验证
 了解如何使用 Azure Active Directory (AAD) 或 SQL Server 身份验证向 Azure SQL 数据仓库进行身份验证。
@@ -67,7 +67,7 @@ Azure Active Directory 的优点包括：
 按照这些步骤配置 Azure Active Directory 身份验证。
 
 1. 创建并填充 Azure Active Directory
-2. 可选：关联或更改当前与 Azure 订阅关联的活动目录
+2. 可选：关联或更改当前与 Azure 订阅关联的 Active Directory
 3. 为 Azure SQL 数据仓库创建 Azure Active Directory 管理员。
 4. 配置客户端计算机
 5. 在映射到 Azure AD 标识的数据库中创建包含的数据库用户

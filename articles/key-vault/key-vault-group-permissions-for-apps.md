@@ -1,5 +1,5 @@
 ---
-title: 为多个应用程序授予 Azure 密钥保管库的访问权限 | Microsoft Docs
+title: 向多个应用程序授予 Azure 密钥保管库的访问权限 - Azure 密钥保管库 | Microsoft Docs
 description: 了解如何为多个应用程序授予密钥保管库的访问权限
 services: key-vault
 documentationcenter: ''
@@ -10,16 +10,15 @@ ms.assetid: 785d4e40-fb7b-485a-8cbc-d9c8c87708e6
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2018
+ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 4ad6a18f9937fcc7d24bebc3ac197e23990ff59e
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: cd680f24eafe61bc73fa6eb91df4b4dfa5f5399b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309240"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073418"
 ---
 # <a name="grant-several-applications-access-to-a-key-vault"></a>授予多个应用程序访问密钥保管库的权限
 
@@ -37,26 +36,26 @@ ms.locfileid: "49309240"
 接下来，在 PowerShell 中运行以下命令：
 
 ```powershell
-# Connect to Azure AD 
-Connect-AzureAD 
- 
-# Create Azure Active Directory Security Group 
-$aadGroup = New-AzureADGroup -Description "Contoso App Group" -DisplayName "ContosoAppGroup" -MailEnabled 0 -MailNickName none -SecurityEnabled 1 
- 
-# Find and add your applications (ServicePrincipal ObjectID) as members to this group 
-$spn = Get-AzureADServicePrincipal –SearchString "ContosoApp1" 
-Add-AzureADGroupMember –ObjectId $aadGroup.ObjectId -RefObjectId $spn.ObjectId 
- 
-# You can add several members to this group, in this fashion. 
- 
-# Set the Key Vault ACLs 
+# Connect to Azure AD 
+Connect-AzureAD 
+ 
+# Create Azure Active Directory Security Group 
+$aadGroup = New-AzureADGroup -Description "Contoso App Group" -DisplayName "ContosoAppGroup" -MailEnabled 0 -MailNickName none -SecurityEnabled 1 
+ 
+# Find and add your applications (ServicePrincipal ObjectID) as members to this group 
+$spn = Get-AzureADServicePrincipal –SearchString "ContosoApp1" 
+Add-AzureADGroupMember –ObjectId $aadGroup.ObjectId -RefObjectId $spn.ObjectId 
+ 
+# You can add several members to this group, in this fashion. 
+ 
+# Set the Key Vault ACLs 
 Set-AzureRmKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.ObjectId `
 -PermissionsToKeys decrypt,encrypt,unwrapKey,wrapKey,verify,sign,get,list,update,create,import,delete,backup,restore,recover,purge `
 –PermissionsToSecrets get,list,set,delete,backup,restore,recover,purge `
 –PermissionsToCertificates get,list,delete,create,import,update,managecontacts,getissuers,listissuers,setissuers,deleteissuers,manageissuers,recover,purge,backup,restore `
--PermissionsToStorage get,list,delete,set,update,regeneratekey,getsas,listsas,deletesas,setsas,recover,backup,restore,purge 
- 
-# Of course you can adjust the permissions as required 
+-PermissionsToStorage get,list,delete,set,update,regeneratekey,getsas,listsas,deletesas,setsas,recover,backup,restore,purge 
+ 
+# Of course you can adjust the permissions as required 
 ```
 
 如果需要为一组应用程序授予一组不同的权限，请为此类应用程序创建单独的 Azure Active Directory 安全组。

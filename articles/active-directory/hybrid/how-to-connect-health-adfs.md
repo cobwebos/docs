@@ -4,23 +4,23 @@ description: 本页与 Azure AD Connect Health 相关，介绍如何监视本地
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: dc0e53d8-403e-462a-9543-164eaa7dd8b3
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7d93207e6a5f0acabcf348981e799e801c39f48b
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 74ec404b1e116c3d52469f154309b41fd37dbc38
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278831"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493025"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 AD FS
 以下文档专门介绍如何使用 Azure AD Connect Health 来监视 AD FS 基础结构。 有关使用 Azure AD Connect Health 监视 Azure AD Connect（同步）的信息，请参阅 [使用用于同步的 Azure AD Connect Health](how-to-connect-health-sync.md)。此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅 [在 AD DS 中使用 Azure AD Connect Health](how-to-connect-health-adds.md)。
@@ -44,33 +44,33 @@ Azure AD Connect Health 使用情况分析可分析联合服务器的身份验�
 
 若要选择其他指标、指定时间范围或更改分组，请右键单击使用情况分析图表并选择“编辑图表”。 然后可以指定时间范围、选择不同的指标以及更改分组。 可以查看基于不同“度量值”的身份验证流量分布，并使用以下部分中所述的相关“分组依据”参数对每个度量值进行分组:
 
-**度量值：请求总数** - 由 AD FS 服务器处理的请求总数。
+**指标：请求总数** - 由 AD FS 服务器处理的请求总数。
 
 |分组依据 | 分组意味着什么，它为什么很有用？ |
 | --- | --- |
-| 全部 | 显示所有 AD FS 服务器处理的请求总数的计数。|
-| Application | 基于目标信赖方对请求总数分组。 此分组有助于了解具体某个应用程序正在接收多少百分比的总流量。 |
+| All | 显示所有 AD FS 服务器处理的请求总数的计数。|
+| 应用程序 | 基于目标信赖方对请求总数分组。 此分组有助于了解具体某个应用程序正在接收多少百分比的总流量。 |
 |  服务器 |基于处理请求的服务器对请求总数分组。 此分组有助于了解总流量的负载分布。
 | 工作区加入 |基于请求是否来自已加入工作区（已知）的设备对请求总数分组。 此分组有助于了解是否使用标识基础结构未知的设备来访问资源。 |
 |  身份验证方法 | 基于用于身份验证的身份验证方法对请求总数分组。 此分组有助于了解用于身份验证的常见身份验证方法。 可能的身份验证方法如下所示： <ol> <li>Windows 集成身份验证 (Windows)</li> <li>基于窗体的身份验证（窗体）</li> <li>SSO（单一登录）</li> <li>X509 证书身份验证（证书）</li> <br>如果联合服务器接收带有 SSO Cookie 的请求，则该请求被计为 SSO（单一登录）。 在这种情况下，如果此 cookie 有效，则不会要求用户提供凭据并该用户可无缝访问该应用程序。 如果有多个受联合服务器保护的信赖方，则这种行为很常见。 |
 | 网络位置 | 基于用户的网络位置对请求总数分组。 该位置可以是 Intranet 或 Extranet。 此分组有助于了解来自 Intranet 或 Extranet 的流量分别为多少百分比。 |
 
 
-**度量值：失败请求总数** - 失败了的由联合身份验证服务处理的请求总数。 （此度量值仅在 Windows Server 2012 R2 的 AD FS 上可用）
+**指标：失败请求总数** - 失败了的由联合身份验证服务处理的请求总数。 （此度量值仅在 Windows Server 2012 R2 的 AD FS 上可用）
 
 |分组依据 | 分组意味着什么，它为什么很有用？ |
 | --- | --- |
 | 错误类型 | 基于预定义错误类型显示错误数。 此分组有助于了解常见类型的错误。 <ul><li>用户名或密码错误：因用户名或密码不正确而导致的错误。</li> <li>“Extranet 锁定”：收到无法访问 Extranet 的用户的请求而导致的失败 </li><li> “密码过期”：用户使用已过期密码登录而导致的失败。</li><li>“帐户已禁用”：用户使用已禁用的帐户登录导致的失败。</li><li>“设备身份验证”：用户无法使用“设备身份验证”进行身份验证导致的失败。</li><li>“用户证书身份验证”：用户因证书无效而无法进行身份验证而导致的失败。</li><li>“MFA”：用户无法使用“多重身份验证”进行身份验证导致的失败。</li><li>“其他凭据”：“颁发授权”：因授权失败而失败。</li><li>“颁发委托”：颁发委托错误导致的失败。</li><li>“令牌接受”：由于 ADFS 拒绝来自第三方标识提供者的令牌而导致的失败。</li><li>“协议”：因协议错误而失败。</li><li>“未知”：全部捕获。 任何其他不属于定义类别的失败。</li> |
 | 服务器 | 基于服务器对错误分组。 这种分组有助于了解各服务器的错误分布情况。 分布不均匀可能表示服务器处于错误状态。 |
 | 网络位置 | 基于请求的网络位置（Intranet 或 Extranet）对错误分组。 这种分组有助于了解失败的请求类型。 |
-|  Application | 基于目标应用程序（信赖方）对失败分组。 这种分组有助于了解错误数最多的目标应用程序。 |
+|  应用程序 | 基于目标应用程序（信赖方）对失败分组。 这种分组有助于了解错误数最多的目标应用程序。 |
 
-**度量值：用户计数** - 使用 AD FS 主动进行身份验证的独立用户平均数
+**指标：用户计数** - 使用 AD FS 主动进行身份验证的独立用户平均数
 
 |分组依据 | 分组意味着什么，它为什么很有用？ |
 | --- | --- |
-|全部 |此指标提供所选时间段内使用联合身份验证服务的用户平均数。 不对用户进行分组。 <br>平均值取决于所选的时间段。 |
-| Application |基于目标应用程序（信赖方）对用户平均数分组。 这种分组有助于了解使用具体某个应用程序的用户数量。 |
+|All |此指标提供所选时间段内使用联合身份验证服务的用户平均数。 不对用户进行分组。 <br>平均值取决于所选的时间段。 |
+| 应用程序 |基于目标应用程序（信赖方）对用户平均数分组。 这种分组有助于了解使用具体某个应用程序的用户数量。 |
 
 ## <a name="performance-monitoring-for-ad-fs"></a>AD FS 的性能监视
 Azure AD Connect Health 性能监视提供有关度量值的监视信息。 选择“监视”框会打开一个边栏选项卡，其中包含有关指标的详细信息。
@@ -82,7 +82,7 @@ Azure AD Connect Health 性能监视提供有关度量值的监视信息。 选�
 ## <a name="top-50-users-with-failed-usernamepassword-logins"></a>用户名/密码登录失败的前 50 个用户
 AD FS 服务器上身份验证请求失败的常见原因之一就是请求所提供的凭据无效，也就是错误的用户名或密码。 这往往是用户的密码太复杂、忘记密码或打错字。
 
-但也有其他原因导致 AD FS 服务器处理的请求数超过预期，例如：某个应用程序缓存了用户凭据、凭据过期，或者某个恶意用户尝试以一系列的常见密码登录到帐户。 这两个示例都是可能导致请求激增的合理原因。
+但还是有其他原因导致 AD FS 服务器所处理的请求数量超出预期，例如：可缓存用户凭据的应用程序和到期的凭据，或尝试以一系列的常见密码登录某个帐户的恶意用户。 这两个示例都是可能导致请求激增的合理原因。
 
 Azure AD Connect Health for ADFS 提供一份报告，内容有关因为用户名或密码无效而登录尝试失败的前 50 个用户。 处理场中所有 AD FS 服务器所生成的审核事件即可完成此报告。
 
@@ -105,7 +105,7 @@ Azure AD Connect Health for ADFS 提供一份报告，内容有关因为用户�
 
 该报告提供以下信息：
 
-| 报告项 | Description |
+| 报告项 | 说明 |
 | --- | --- |
 | 用户 ID |显示使用的用户 ID。 此值是用户键入的内容，在某些情况下是使用的错误用户 ID。 |
 | 失败尝试次数 |显示该特定用户 ID 的尝试失败总次数。 该表已按最多失败尝试次数的降序排序。 |
@@ -134,7 +134,7 @@ AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为�
 ### <a name="what-is-in-the-report"></a>报表内容
 “风险 IP”报表中的每个项目都会显示有关失败的 AD FS 登录活动（失败次数超出指定阈值）的聚合信息。 它提供以下信息：![Azure AD Connect Health 门户](./media/how-to-connect-health-adfs/report4a.png)
 
-| 报告项 | Description |
+| 报告项 | 说明 |
 | ------- | ----------- |
 | 时间戳 | 当检测时间窗口启动时，显示基于 Azure 门户本地时间的时间戳。<br /> 所有每日事件都在 UTC 时间的午夜生成。 <br />每小时事件的时间戳舍入为整点。 可以在已导出文件的“firstAuditTimestamp”中找到第一个活动开始时间。 |
 | 触发器类型 | 显示检测时间窗口的类型。 聚合触发器类型为每小时或每日。 这适用于检测高频暴力破解攻击，与之相反的是慢速攻击，后者在一天中的尝试攻击行动是分散的。 |
@@ -161,7 +161,7 @@ AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为�
 ### <a name="download-risky-ip-report"></a>下载“风险 IP”报表 
 使用**下载**功能，可以将过去 30 天的整个风险 IP 地址列表从 Connect Health 门户导出 导出结果将包括每个检测时段所有失败的 AD FS 登录活动，因此可以在导出后自定义筛选功能。 除了门户中突出显示的聚合，导出结果还显示有关已失败登录活动（按 IP 地址划分）的更多详细信息：
 
-|  报告项  |  Description  | 
+|  报告项  |  说明  | 
 | ------- | ----------- | 
 | firstAuditTimestamp | 显示在检测时段启动失败的活动时的第一个时间戳。  | 
 | lastAuditTimestamp | 显示在检测时段结束失败的活动时的最后一个时间戳。  | 
@@ -176,7 +176,7 @@ AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为�
 
 ![Azure AD Connect Health 门户](./media/how-to-connect-health-adfs/report4d.png)
 
-| 阈值项 | Description |
+| 阈值项 | 说明 |
 | --- | --- |
 | (错误 U/P + Extranet 锁定) / 天  | 阈值设置，用于在特定条件下报告活动并触发警报通知。该特定条件是：每**天**的“密码不正确”错误的计数加上“Extranet 锁定”错误的计数超出该阈值。 |
 | (错误 U/P + Extranet 锁定) / 小时 | 阈值设置，用于在特定条件下报告活动并触发警报通知。该特定条件是：每**小时**的“密码不正确”错误的计数加上“Extranet 锁定”错误的计数超出该阈值。 |

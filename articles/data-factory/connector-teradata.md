@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 37e7281af87a8cfc57aae95411eb2d4cce9eef65
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e9fd818990c8a985a77c2e7eeea19bf63c440e4e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228056"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018987"
 ---
 # <a name="copy-data-from-teradata-using-azure-data-factory"></a>使用 Azure 数据工厂从 Teradata 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -57,7 +56,7 @@ Teradata 链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Teradata** | 是 |
 | server | Teradata 服务器的名称。 | 是 |
-| authenticationType | 用于连接 Teradata 数据库的身份验证类型。<br/>允许的值为：Basic 和 Windows。 | 是 |
+| authenticationType | 用于连接 Teradata 数据库的身份验证类型。<br/>允许值包括：**Basic** 和 **Windows**。 | 是 |
 | username | 指定用于连接到 Teradata 数据库的用户名。 | 是 |
 | password | 指定为用户名指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
@@ -94,7 +93,7 @@ Teradata 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：RelationalTable | 是 |
+| type | 数据集的 type 属性必须设置为：**RelationalTable** | 是 |
 | tableName | Teradata 数据库中的表名。 | 否（如果指定了活动源中的“query”） |
 
 **示例：**
@@ -123,7 +122,7 @@ Teradata 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：RelationalSource | 是 |
+| type | 复制活动源的 type 属性必须设置为：**RelationalSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**

@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 12/29/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1e55da981daf29aca491c480d58f399bc681fd27
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 40bfa8317effd25cf3d9aa28b8f63e292213a83b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499550"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425976"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>教程：使用 Azure 数据工厂在 HDInsight 中创建按需 Apache Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "52499550"
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure PowerShell。 有关说明，请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0)。
+- Azure PowerShell。 有关说明，请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-5.7.0)。
 
 - 一个 Azure Active Directory 服务主体。 创建服务主体后，请务必使用链接文章中的说明检索**应用程序 ID** 和**身份验证密钥**。 在本教程后面的步骤中，你需要用到这些值。 另外，请确保此服务主体是订阅“参与者”角色的成员，或创建群集的资源组的成员。 有关检索所需值和分配适当角色的说明，请参阅[创建 Azure Active Directory 服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
 
@@ -55,7 +55,7 @@ ms.locfileid: "52499550"
 
 
 **使用 Azure PowerShell 创建存储帐户并复制文件：**
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 指定将通过脚本创建的 Azure 资源组和 Azure 存储帐户的名称。
 > 记下脚本所输出的“资源组名称”、“存储帐户名称”和“存储帐户密钥”。 下一部分需要它们。
 
@@ -166,7 +166,11 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 在 Azure 门户中，选择“创建资源” > “数据 + 分析” > “数据工厂”。
+1. 在左侧菜单中，选择“+ 创建资源”。
+
+1. 在“Azure 市场”下，选择“分析”。
+
+1.  在“特别推荐”下选择“数据工厂”。
 
     ![门户中的 Azure 数据工厂](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png "门户中的 Azure 数据工厂")
 
@@ -181,19 +185,18 @@ Write-host "`nScript completed" -ForegroundColor Green
     |**名称** |  输入数据工厂的名称。 该名称必须全局唯一。|
     |**订阅**     |  选择 Azure 订阅。 |
     |**资源组**     | 选择“使用现有项”，然后选择使用 PowerShell 脚本创建的资源组。 |
-    |**版本**     | 选择“V2 (预览版)”。 |
-    |**位置**     | 位置会自动设置为先前在创建资源组时指定的位置。 在本教程中，位置设置为“美国东部 2”。 |
+    |**版本**     | 选择“V2” |
+    |**位置**     | 位置会自动设置为先前在创建资源组时指定的位置。 在本教程中，位置设置为“美国东部”。 |
     
 
-1. 选择“固定到仪表板”，并选择“创建”。 门户仪表板上应会出现标题为“提交部署”的新磁贴。 创建一个数据工厂可能需要花费 2 到 4 分钟。
+1. 选择“创建”。 创建一个数据工厂可能需要花费 2 到 4 分钟。
 
-    ![模板部署进度](./media/hdinsight-hadoop-create-linux-clusters-adf/deployment-progress-tile.png "模板部署进度") 
- 
-1. 创建数据工厂后，门户将显示该数据工厂的概述。
 
-    ![Azure 数据工厂概述](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure 数据工厂概述")
+1. 创建数据工厂后，将收到“部署成功”的通知，并附带“转到资源”按钮。  选择“转到资源”以打开数据工厂默认视图。
 
 1. 选择“创作和监视”启动 Azure 数据工厂创作和监视门户。
+
+    ![Azure 数据工厂概述](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure 数据工厂概述")
 
 ## <a name="create-linked-services"></a>创建链接服务
 
@@ -234,7 +237,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 
     输入以下值，并在剩余的字段中保留默认值。
 
-    | 属性 | Description |
+    | 属性 | 说明 |
     | --- | --- |
     | 名称 | 输入 HDInsight 链接服务的名称 |
     | 类型 | 选择“按需 HDInsight” |

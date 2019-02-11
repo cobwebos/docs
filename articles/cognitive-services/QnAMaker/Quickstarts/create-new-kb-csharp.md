@@ -1,21 +1,22 @@
 ---
-title: 快速入门：创建知识库 - REST、C# - QnA Maker
-titlesuffix: Azure Cognitive Services
+title: 创建知识库 - REST、C#
+titlesuffix: QnA Maker- Azure Cognitive Services
 description: 此 C# 基于 REST 的快速入门详细介绍如何以编程方式创建一个示例 QnA Maker 知识库，该知识库会显示在认知服务 API 帐户的 Azure 仪表板中。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 11/6/2018
+ms.date: 02/04/2019
 ms.author: diberry
-ms.openlocfilehash: 190a937a4239c08d844d271d2e1d8e858215a5c2
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 54a33a135557fdf310e860a083dd953c9ec3d495
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334953"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733614"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>快速入门：通过 C# 在 QnA Maker 中创建知识库
 
@@ -32,7 +33,7 @@ ms.locfileid: "52334953"
 * 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在仪表板的“资源管理”下选择“密钥”。 
 
 > [!NOTE] 
-> 完整的解决方案文件可从 [**Azure-Samples/cognitive-services-qnamaker-csharp** Github 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp)获得。
+> 完整的解决方案文件可从 [Azure-Samples/cognitive-services-qnamaker-csharp GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp)获得。
 
 ## <a name="create-a-knowledge-base-project"></a>创建知识库项目
 

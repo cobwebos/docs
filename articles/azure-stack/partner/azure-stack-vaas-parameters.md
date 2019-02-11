@@ -13,12 +13,14 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: ddc6942b56e3ad4d1f5b16c86dde87f408c1a2c1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.lastreviewed: 11/19/2018
+ROBOTS: NOINDEX
+ms.openlocfilehash: 59adaed427eb0d791e18438826aff4f6477e831a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262988"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247266"
 ---
 # <a name="workflow-common-parameters-for-azure-stack-validation-as-a-service"></a>工作流通用参数作为服务的 Azure Stack 验证
 
@@ -39,7 +41,7 @@ ms.locfileid: "52262988"
 ### <a name="generate-the-stamp-information-file"></a>生成的标记信息文件
 
 1. 登录到此 DVM 或有权访问 Azure Stack 环境的任何计算机。
-2. 在提升的 PowerShell 窗口中执行以下命令：
+2. 在提升的 PowerShell 窗口中运行以下命令：
     ```PowerShell  
     $CloudAdminUser = "<cloud admin username>"
     $CloudAdminPassword = ConvertTo-SecureString "<cloud admin password>" -AsPlainText -Force
@@ -56,7 +58,7 @@ ms.locfileid: "52262988"
 
 常见的测试参数包括不能在配置文件中存储的敏感信息。 这些必须手动提供。
 
-参数    | 说明
+参数    | 描述
 -------------|-----------------
 租户管理员用户                            | Azure Active Directory 租户管理员预配的 AAD 目录中的服务管理员。 此用户执行租户级的操作，例如部署模板来设置资源 (Vm、 存储帐户，等等) 和执行工作负荷。 有关预配的租户帐户的详细信息，请参阅[添加新的 Azure Stack 租户](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-new-user-aad)。
 服务管理员用户             | 在 Azure Stack 部署过程中指定的 AAD Directory 租户的 azure Active Directory 管理员。 搜索`AADTenant`中的 ECE 配置文件，然后选择中的值`UniqueName`元素。

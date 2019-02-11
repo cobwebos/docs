@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 28c943b2588270af823c0712d4e510a4f018da3e
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: efca5c4155372456100126671e7d5cd1ccf0cbbc
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50981318"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53027933"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>在 Azure 中将基础结构自动化工具与虚拟机配合使用
 若要以一致的方式大规模创建和管理 Azure 虚拟机 (VM)，通常需要某种形式的自动化。 可以通过许多工具和解决方案来自动完成整个 Azure 基础结构部署和管理生命周期。 本文介绍了一些可以在 Azure 中使用的基础结构自动化工具。 这些工具通常适合以下某个方法：
@@ -23,7 +23,7 @@ ms.locfileid: "50981318"
     - [Azure 自动化](#azure-automation)可以跨 Azure 和本地基础结构执行操作。
 
 - 自动执行应用程序部署和交付
-    - 示例包括 [Azure DevOps Services](#visual-studio-team-services) 和 [Jenkins](#jenkins)。
+    - 示例包括 [Azure DevOps Services](#azure-devops-services) 和 [Jenkins](#jenkins)。
 
 ## <a name="ansible"></a>Ansible
 [Ansible](https://www.ansible.com/) 是适用于配置管理、VM 创建或应用程序部署的自动化引擎。 Ansible 通常将无代理的模型与 SSH 密钥配合使用，对目标计算机进行身份验证和管理。 配置任务在 playbook 中定义，可以使用多个 Ansible 模块来执行特定任务。 有关详细信息，请参阅 [How Ansible works](https://www.ansible.com/how-ansible-works)（Ansible 工作原理）。

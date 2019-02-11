@@ -1,20 +1,21 @@
 ---
-pageTitle: Synonyms in Azure Search | Microsoft Docs
-description: 使用同义词扩大搜索查询的范围
-author: mhko
+title: 搜索索引上查询扩展的同义词 - Azure 搜索
+description: 创建一个同义词映射，用于扩展 Azure 搜索索引上搜索查询的范围。 扩宽了范围，使其包括你在列表中提供的同义术语。
+author: brjohnstmsft
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 manager: jlembicz
-ms.author: nateko
-ms.openlocfilehash: fcb4314583036c2abfffdf7e5d0b5d90478dbe6b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: brjohnst
+ms.custom: seodec2018
+ms.openlocfilehash: cea95756f115e9efd6dc184fc85a0485ab49d1b9
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468545"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634654"
 ---
 # <a name="synonyms-in-azure-search"></a>Azure 搜索中的同义词功能
 
@@ -73,7 +74,7 @@ ms.locfileid: "49468545"
 
 ##### <a name="apache-solr-synonym-format"></a>Apache Solr 同义词格式
 
-Solr 格式支持等效和显式同义词映射。 映射规则遵循 Apache Solr 的开源同义词筛选器规则，详情请参阅此文档：[SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter)。 下面是等效同义词的示例规则。
+Solr 格式支持等效和显式同义词映射。 映射规则遵循 Apache Solr 的开源同义词筛选器规范，详情请参阅此文档：[SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter)。 下面是等效同义词的示例规则。
 ```
 USA, United States, United States of America
 ```

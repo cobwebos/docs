@@ -1,33 +1,33 @@
 ---
-title: Azure Blockchain Workbench 中的智能合同集成模式
-description: Azure Blockchain Workbench 中的智能合同集成模式概述。
+title: Azure Blockchain Workbench 中的智能合约集成模式
+description: Azure Blockchain Workbench 中的智能合约集成模式概述。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 0b0307d167485712e06966dd36fa94e24ef33aa1
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 11e0e1436e3f640c30fec5e8d6fd9ca10adbd707
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240566"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330461"
 ---
-# <a name="smart-contract-integration-patterns"></a>智能合同集成模式
+# <a name="smart-contract-integration-patterns"></a>智能合约集成模式
 
 智能合同通常表示需要与外部系统和设备集成的业务工作流。
 
-这些工作流的要求包括需要对分布式账本（包含来自外部系统、服务或设备的数据）发起事务。 它们还需要让外部系统对源自分布式账本中的智能合同的事件做出反应。
+这些工作流的要求包括需要对分布式账本（包含来自外部系统、服务或设备的数据）发起事务。 它们还需要让外部系统对源自分布式账本中的智能合约的事件做出反应。
 
-使用 REST API 和消息传递集成能够将外部系统中的事务发送到 Azure Blockchain Workbench 应用程序中包含的智能合同，以及根据应用程序中发生的更改将事件通知发送到外部系统。
+REST API 和消息集成将事务从外部系统发送到 Azure Blockchain Workbench 应用程序中包含的智能合同。 它还会根据应用程序中发生的更改向外部系统发送事件通知。
 
-针对数据集成方案，Azure Blockchain Workbench 包含一组数据库视图，这些视图合并了区块链中的事务数据以及有关应用程序和智能合同的元数据的组合。
+针对数据集成方案，Azure Blockchain Workbench 包含一组数据库视图，这些视图合并了区块链中的事务数据以及有关应用程序和智能合约的元数据的组合。
 
-此外，在某些情况下（例如与供应链或媒体相关的情况），可能还需要集成文档。 尽管 Azure Blockchain Workbench 不提供 API 调用用于直接处理文档，但可将文档合并到 Azure Blockchain 应用程序中。 本部分也会介绍该模式。
+此外，在某些情况下（例如与供应链或媒体相关的情况），可能还需要集成文档。 尽管 Azure Blockchain Workbench 不提供 API 调用用于直接处理文档，但可将文档合并到区块链应用程序中。 本部分也会介绍该模式。
 
 本部分包括在端到端解决方案中实施上述每种集成可用的模式。
 
@@ -37,30 +37,30 @@ Azure Blockchain Workbench 生成的 Web 应用程序中的功能是通过 REST 
 
 REST API 主要用于 Web、移动和 bot 应用程序等交互式客户端。
 
-本部分介绍模式，并侧重于将事务发送到分布式账本的 REST API 功能，以及查询 Azure Blockchain Workbench 的链外 SQL 数据库中事务相关数据的功能。
+本节重点介绍将事务发送到分布式账本的 REST API 方面的模式，以及 Azure Blockchain Workbench 的链外 SQL 数据库查询事务数据的模式。
 
 ### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>将事务从外部系统发送到分布式账本
 
-Azure Blockchain Workbench REST API 提供发送身份验证的请求，以针对分布式账本执行事务的功能。
+Azure Blockchain Workbench REST API 发送经身份验证的请求以在分布式账本上执行事务。
 
 ![将事务发送到分布式账本](./media/integration-patterns/send-transactions-ledger.png)
 
-此功能是使用上面描绘的过程执行的，其中：
+使用前面描述的过程执行事务，其中：
 
 -   外部应用程序对预配为 Azure Blockchain Workbench 部署的一部分的 Azure Active Directory 进行身份验证。
 -   获得授权的用户接收一个可以连同请求一起发送到 API 的持有者令牌。
 -   外部应用程序使用持有者令牌对 REST API 发出调用。
--   REST API 将请求打包为消息，并将其发送到服务总线。 在服务总线中检索消息并将其签名，然后发送到相应的分布式账本。
+-   REST API 将请求打包为消息，并将其发送到服务总线。 在服务总线中检索消息并签名，然后发送到相应的分布式账本。
 -   REST API 向 Azure Blockchain Workbench SQL 数据库发出请求，以记录该请求并建立当前预配状态。
 -   SQL 数据库返回预配状态，API 调用向调用它的外部应用程序返回 ID。
 
 ### <a name="querying-blockchain-workbench-metadata-and-distributed-ledger-transactions"></a>查询 Blockchain Workbench 元数据和分布式账本事务
 
-Azure Blockchain Workbench REST API 提供发送身份验证的请求，以查询分布式账本中的智能合同执行相关的详细信息的功能。
+Azure Blockchain Workbench REST API 将经过身份验证的请求发送到与分布式账本上的智能合同执行相关的查询详细信息。
 
 ![查询元数据](./media/integration-patterns/querying-metadata.png)
 
-此功能是使用上面描绘的过程执行的，其中：
+使用前面描述的过程进行查询，其中：
 
 1. 外部应用程序对预配为 Azure Blockchain Workbench 部署的一部分的 Azure Active Directory 进行身份验证。
 2. 获得授权的用户接收一个可以连同请求一起发送到 API 的持有者令牌。
@@ -69,23 +69,23 @@ Azure Blockchain Workbench REST API 提供发送身份验证的请求，以查�
 
 ## <a name="messaging-integration"></a>消息传递集成
 
-消息传递集成简化了无法或者不需要进行交互式登录的系统、服务和设备的交互。 消息传递集成侧重于两种消息：对分布式账本执行事务的请求，以及执行事务时账本公开的事件。
+消息传递集成简化了无法或者不需要进行交互式登录的系统、服务和设备的交互。 消息集成侧重于两种类型的消息：在分布式账本上执行的消息请求事务，以及事务发生时由该账本公开的事件。
 
 消息传递集成侧重于用户创建、合同创建和合同事务执行相关的事务的执行和监视，主要由无外设后端系统使用。
 
-本部分介绍的模式侧重于可将事务发送到分布式账本的基于消息的 API 功能，以及表示基础分布式账本公开的事件消息的功能。
+本部分介绍的模式侧重于可将事务发送到分布式账本的基于消息的 API 功能，以及表示基础分布式账本公开的事件消息的模式。
 
 ### <a name="one-way-event-delivery-from-a-smart-contract-to-an-event-consumer"></a>从智能合同到事件使用者的单向事件递送 
 
 在此方案中，事件（例如，状态更改或特定类型的事务的执行）发生在智能合同中。 此事件通过事件网格广播到下游使用者，然后，这些使用者采取相应的措施。
 
-此方案的一个例子：发生某个事务时，使用者会收到警报并可以采取措施，例如，在 SQL 数据库或 Common Data Service 中记录信息。 这是 Workbench 在填充其链外 SQL 数据库时遵循的相同模式。
+此方案的一个例子：发生某个事务时，使用者会收到警报并可以采取措施，例如，在 SQL 数据库或 Common Data Service 中记录信息。 此方案与 Workbench 在填充其链外 SQL DB 时所遵循的模式相同。
 
 另一个例子是，智能合同转换为特定状态，例如，当合同进入 *OutOfCompliance* 状态。 发生这种状态更改时，可能会触发警报并将其发送到管理员的手机。
 
 ![单向事件传送](./media/integration-patterns/one-way-event-delivery.png)
 
-此功能是使用上面描绘的过程执行的，其中：
+使用前面描述的过程会出现这种情况，其中：
 
 -   智能合同转换为新状态，并将事件发送到账本。
 -   账本接收事件并将其传送到 Azure Blockchain Workbench。
@@ -105,7 +105,7 @@ Azure Blockchain Workbench REST API 提供发送身份验证的请求，以查�
 
 ![直接传送](./media/integration-patterns/direct-delivery.png)
 
-此功能是使用上面描绘的过程执行的，其中：
+使用前面描述的过程进行此传送，其中：
 
 -   事件在外部系统中发生，并触发 Azure Blockchain Workbench 的消息创建。
 -   外部系统中编写的代码以已知的格式创建此消息，并将其直接发送到服务总线。
@@ -119,7 +119,7 @@ Azure Blockchain Workbench REST API 提供发送身份验证的请求，以查�
 
 ![未知消息格式](./media/integration-patterns/unknown-message-format.png)
 
-此功能是使用上面描绘的过程执行的，其中：
+使用前面描述的过程会发生此情况，其中：
 
 -   事件在外部系统中发生，并触发消息创建。
 -   使用逻辑应用或自定义代码接收该消息，并将其转换为 Azure Blockchain Workbench 的标准格式消息。
@@ -156,7 +156,7 @@ Azure Blockchain Workbench REST API 提供发送身份验证的请求，以查�
 
 -   对于无法直接修改、因而无法编写符合 API 预期要求的消息的系统，将会转换消息。
 
--   消息内容将被打包，并发送到智能合同中的特定函数。 系统会代表与外部系统关联的用户完成此操作。
+-   消息内容将被打包，并发送到智能合同中的特定函数。 该发送是代表与外部系统相关联的用户完成的。
 
 -   函数执行，并且通常会修改状态。 状态更改推动了智能合同中反映的业务工作流，使其他函数现在能够适当地执行。
 
@@ -173,22 +173,22 @@ Azure Blockchain Workbench REST API 提供发送身份验证的请求，以查�
 3.  逻辑应用将已转换的消息直接发送到服务总线。
 4.  Azure Blockchain Workbench 从服务总线订阅事件并接收消息。
 5.  Azure Blockchain Workbench 向账本发起调用，并将数据从外部系统发送到特定的合同。
-6. 消息内容将被打包，并发送到智能合同中的特定函数。 系统会代表与外部系统关联的用户完成此操作。
+6. 消息内容将被打包，并发送到智能合同中的特定函数。 该发送是代表与外部系统相关联的用户完成的。
 7.  函数执行，并且通常会修改状态。 状态更改推动了智能合同中反映的业务工作流，使其他函数现在能够适当地执行。
 
 ## <a name="iot-integration"></a>IoT 集成
 
 一种常见的集成方案是在智能合同中包含从传感器检索到的遥测数据。 根据传感器传送的数据，智能合同可以采取明智的措施，并可以更改状态。
 
-例如，如果运送药物的卡车温度飙升到 110 度，同时未在供应链中检测到并消除此问题，则可能会影响药物的效力，并可能造成公共安全问题。 如果驾驶员将此车辆加速到 100 英里/小时，则生成的传感器信息可能会造成保险被保险公司取消。 如果汽车是租赁过来的，GPS 数据可能会指示驾驶员超出了租赁协议涵盖的地理区域，从而产生罚金。
+例如，如果运送药物的卡车温度飙升到 110 度，同时未在供应链中检测到并消除此问题，则可能会影响药物的效力，并可能造成公共安全问题。 如果驾驶员将其车辆加速到 100 英里/小时，则生成的传感器信息可能会造成保险被保险公司取消。 如果汽车是租赁过来的，GPS 数据可能会指示驾驶员超出了其租赁协议涵盖的地理区域，从而产生罚金。
 
 难点在于，这些传感器可以持续传送数据，但不适合用于将所有这些数据发送到智能合同。 典型的方法是限制发送到区块链的消息数，同时将所有消息传送到辅助存储。 例如，仅当包含的值超出智能合同的议定范围时，才按固定的间隔传送收到的消息（如每小时传送一次）。 检查超出容限的值可以确保接收和执行与合同业务逻辑相关的数据。 按间隔检查值可以确认传感器仍在报告数据。 所有数据发送到辅助报告存储，以进行更广泛的报告、分析和机器学习。 例如，尽管不一定需要每隔一分钟就获取智能合同的 GPS 传感器读数一次，但这些读数能够在报告或地图路线中提供有用的数据。
 
-在 Azure 平台上，与设备的集成通常是使用 IoT 中心实现的。 IoT 中心提供根据内容路由消息的功能，并支持上面所述的功能类型。
+在 Azure 平台上，与设备的集成通常是使用 IoT 中心实现的。 IoT 中心根据内容提供消息路由，并启用前面描述的功能类型。
 
 ![IoT 消息](./media/integration-patterns/iot.png)
 
-上述过程描绘了实现此方案的模式：
+该过程描述了一种模式：
 
 -   设备直接或通过现场网关与 IoT 中心通信。
 -   IoT 中心接收消息，并根据建立的路由评估消息（例如，检查消息的内容）。 传感器是否会报告 50 度以上的温度？
@@ -214,7 +214,7 @@ Azure Blockchain Workbench REST API 提供发送身份验证的请求，以查�
 
 ## <a name="storage-integration"></a>存储集成
 
-许多方案可能需要合并可证实的文件。 出于多种原因，将文件放在区块链中并不合适。 一种常见方法是针对文件执行加密哈希（例如，SHA-256），并在分布式账本中共享该哈希。 将来再次执行该哈希应返回相同的结果。 如果文件被修改（即使只是修改了图像中的一个像素），该哈希将返回不同的值。
+许多方案可能需要合并可证实的文件。 出于多种原因，将文件放在区块链中并不合适。 一种常见方法是针对文件执行加密哈希（例如，SHA-256），并在分布式账本中共享该哈希。 将来再次执行该哈希应返回相同的结果。 如果修改了文件（即使只是修改了图像中的一个像素），该哈希将返回不同的值。
 
 ![存储集成](./media/integration-patterns/storage-integration.png)
 
@@ -230,7 +230,7 @@ Azure Blockchain Workbench REST API 提供发送身份验证的请求，以查�
 为了方便外部系统或设备使用 REST 或消息 API 与智能合同进行交互，必须执行以下操作：
 
 1. 在用于联盟的 Azure Active Directory 中，创建一个表示外部系统或设备的帐户。
-2. 在 Azure Blockchain Workbench 应用程序的相应智能合同中定义函数，以接受来自外部系统或设备的事件。
+2. 在 Azure Blockchain Workbench 应用程序的一个或多个适当的智能合同具有定义为接受来自外部系统或设备的事件的功能。
 3. 智能合同的应用程序配置文件包含分配给系统或设备的角色。
 4. 智能合同的应用程序配置文件确定处于哪些状态时，此函数可由定义的角色调用。
 5. 应用程序配置文件及其智能合同上传到 Azure Blockchain Workbench。
@@ -239,6 +239,6 @@ Azure Blockchain Workbench REST API 提供发送身份验证的请求，以查�
 
 ## <a name="testing-external-system-integration-flows-prior-to-writing-integration-code"></a>编写集成代码之前测试外部系统集成流 
 
-提供与外部系统集成的能力是许多方案的关键要求。 最好是能够在开发代码之前或者在此同时，验证智能合同是否能够与外部系统集成。
+与外部系统集成是许多方案的关键要求。 最好是能够在开发代码之前或者在此同时，验证智能合同是否能够与外部系统集成。
 
-使用 Azure Active Directory (Azure AD) 能够大大提高开发人员的工作效率和加速面市。 具体而言，代码与外部系统的集成可能需要经历很长的一段时间。 使用 Azure AD 和 Azure Blockchain Workbench 的 UX 自动生成功能，开发人员可以像登录外部系统一样登录到 Workbench，并通过 UX 填充该外部系统所需的值。 这样，便可以在集成针对外部系统编写的代码之前或者在此同时，快速开发创意产品并在概念证明环境中对其进行验证。
+使用 Azure Active Directory (Azure AD) 能够大大提高开发人员的工作效率和加速面市。 具体而言，代码与外部系统的集成可能需要经历很长的一段时间。 使用 Azure AD 和 Azure Blockchain Workbench 的 UX 自动生成功能，开发人员可以像登录外部系统一样登录到 Blockchain Workbench，并通过 UX 填充来自外部系统的值。 在为外部系统编写集成代码之前，可以在概念证明环境中快速开发和验证想法。

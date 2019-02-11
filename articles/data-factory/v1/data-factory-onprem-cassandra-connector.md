@@ -9,21 +9,20 @@ ms.assetid: 085cc312-42ca-4f43-aa35-535b35a102d5
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c4ed3a22d3ad4e227178e8ac265cc97050e31ee6
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: dd90834a2e112effbfd6876b84dfe8b3ca87fcf3
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054303"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015638"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>使用 Azure 数据工厂从本地 Cassandra 数据库移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](data-factory-onprem-cassandra-connector.md)
+> * [版本 1](data-factory-onprem-cassandra-connector.md)
 > * [版本 2（当前版本）](../connector-cassandra.md)
 
 > [!NOTE]
@@ -49,8 +48,8 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
 
-- 创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
-- 也可以使用以下工具创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+- 创建管道的最简单方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
+- 还可以使用以下工具来创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -67,7 +66,7 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| type |“type”属性必须设置为：OnPremisesCassandra |是 |
+| type |type 属性必须设置为：**OnPremisesCassandra** |是 |
 | host |Cassandra 服务器的一个或多个 IP 地址或主机名。<br/><br/>指定以逗号分隔的 IP 地址或主机名列表，以同时连接到所有服务器。 |是 |
 | port |Cassandra 服务器用来侦听客户端连接的 TCP 端口。 |否，默认值：9042 |
 | authenticationType |Basic 或 Anonymous |是 |
@@ -184,7 +183,7 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
 
 **Azure Blob 输出数据集：**
 
-数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。
+数据每小时向新的 blob 写入一次（frequency：hour，interval：1）。
 
 ```json
 {

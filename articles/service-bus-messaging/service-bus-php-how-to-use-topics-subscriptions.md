@@ -3,9 +3,9 @@ title: 如何通过 PHP 使用服务总线主题 | Microsoft 文档
 description: 了解如何通过 PHP 使用 Azure 中的服务总线主题。
 services: service-bus-messaging
 documentationcenter: php
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: faaa4bbd-f6ef-42ff-aca7-fc4353976449
 ms.service: service-bus-messaging
 ms.workload: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 09/06/2018
-ms.author: spelluru
-ms.openlocfilehash: 8b2cd62d9f1c2010956604a9f3c753d893f7c2ad
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: aschhab
+ms.openlocfilehash: a8d9ea841aee21531ccb0379fbbc9b10ccf25303
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407274"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727307"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>如何通过 PHP 使用服务总线主题和订阅
 
@@ -42,7 +42,7 @@ ms.locfileid: "47407274"
 ## <a name="get-the-azure-client-libraries"></a>获取 Azure 客户端库
 [!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
 
-## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用应用程序
+## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用服务总线
 使用服务总线 API：
 
 1. 使用 [require_once][require-once] 语句引用 autoloader 文件。
@@ -157,7 +157,7 @@ catch(ServiceException $e){
 ```
 
 ### <a name="create-subscriptions-with-filters"></a>创建具有筛选器的订阅
-还可以设置筛选器，以指定发送到主题的哪些消息应该在特定主题订阅中显示。 订阅支持的最灵活的一种筛选器是 [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter#microsoft_servicebus_messaging_sqlfilter)，它实现了一部分 SQL92 功能。 SQL 筛选器将对发布到主题的消息的属性进行操作。 有关 SqlFilters 的详细信息，请参阅 [SqlFilter.SqlExpression 属性][sqlfilter]。
+还可以设置筛选器，以指定发送到主题的哪些消息应该在特定主题订阅中显示。 订阅支持的最灵活的一种筛选器是 [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)，它实现了一部分 SQL92 功能。 SQL 筛选器将对发布到主题的消息的属性进行操作。 有关 SqlFilters 的详细信息，请参阅 [SqlFilter.SqlExpression 属性][sqlfilter]。
 
 > [!NOTE]
 > 有关订阅的每个规则单独处理传入消息，并将其结果消息添加到订阅。 此外，每个新订阅的筛选器具有一个默认**规则**对象，该对象包含一个将主题中的所有消息添加到订阅的筛选器。 要仅接收与筛选器相符的消息，必须删除默认规则。 可以使用 `ServiceBusRestProxy->deleteRule` 方法删除默认规则。
@@ -241,10 +241,10 @@ for($i = 0; $i < 5; $i++){
 }
 ```
 
-服务总线主题在[标准层](service-bus-premium-messaging.md)中支持的最大消息容量为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大为 64 KB，其中包括标准和自定义应用程序属性。 一个主题中包含的消息数量不受限制，但消息的总大小受限制。 主题大小的上限为 5 GB。 有关配额的详细信息，请参阅[服务总线配额][Service Bus quotas]。
+服务总线主题在[标准层](service-bus-premium-messaging.md)中支持的最大消息容量为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 一个主题中包含的消息数量不受限制，但消息的总大小受限制。 主题大小的上限为 5 GB。 有关配额的详细信息，请参阅[服务总线配额][Service Bus quotas]。
 
 ## <a name="receive-messages-from-a-subscription"></a>从订阅接收消息
-从订阅接收消息的最佳方法是使用 `ServiceBusRestProxy->receiveSubscriptionMessage` 方法。 可通过两种模式接收消息：[*ReceiveAndDelete* 和 *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode)。 **PeekLock** 为默认设置。
+从订阅接收消息的最佳方法是使用 `ServiceBusRestProxy->receiveSubscriptionMessage` 方法。 可在两种不同的模式下接收消息：[*ReceiveAndDelete* 和 *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode)。 **PeekLock** 为默认设置。
 
 当使用 [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) 模式时，接收是一个单步操作，也就是当服务总线接收订阅中的消息读取请求时，它会将消息标记为“正在使用”并将其返回给应用程序。 [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) * 模式是最简单的模型，最适合应用程序允许在出现故障时不处理消息的情形。 为了理解这一点，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线已将消息标记为“已使用”，因此当应用程序重启并重新开始使用消息时，它就漏掉了在发生故障前使用的消息。
 
@@ -338,6 +338,6 @@ $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[sqlfilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter#microsoft_servicebus_messaging_sqlfilter
+[sqlfilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
 [require-once]: http://php.net/require_once
 [Service Bus quotas]: service-bus-quotas.md

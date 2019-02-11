@@ -1,20 +1,19 @@
 ---
-title: Azure Policy 示例 - 审核 SQL Server 审核设置
+title: 示例 - 审核 SQL Server 审核设置
 description: 此示例策略会审核 SQL Server 审核设置。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 09/18/2018
+ms.date: 01/23/2019
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 258d56f70349c99faf6053de46886b736ffb95cf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8f1c34be9b16830ef8e09c018a7971347ce9c3f8
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949599"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847860"
 ---
 # <a name="audit-sql-server-audit-settings"></a>审核 SQL Server 审核设置
 
@@ -67,9 +66,9 @@ ms.locfileid: "46949599"
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh.md)]
 
 ```azurepowershell-interactive
-$definition = Get-AzureRmPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/a6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9
+$definition = Get-AzPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/a6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9
 
-New-AzureRmPolicyAssignment -name "SQL Audit audit" -PolicyDefinition $definition -PolicyParameter '{"setting": {"value":"enabled"}}' -Scope <scope>
+New-AzPolicyAssignment -name "SQL Audit audit" -PolicyDefinition $definition -PolicyParameter '{"setting": {"value":"enabled"}}' -Scope <scope>
 ```
 
 ### <a name="clean-up-powershell-deployment"></a>清理 PowerShell 部署
@@ -77,7 +76,7 @@ New-AzureRmPolicyAssignment -name "SQL Audit audit" -PolicyDefinition $definitio
 运行以下命令删除策略分配。
 
 ```azurepowershell-interactive
-Remove-AzureRmPolicyAssignment -Name "SQL Audit audit" -Scope <scope>
+Remove-AzPolicyAssignment -Name "SQL Audit audit" -Scope <scope>
 ```
 
 ## <a name="deploy-with-azure-cli"></a>使用 Azure CLI 进行部署

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: b8ca2d74012418dbd8ca9e878f133a250ebb5991
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: f5f62a6bfa1baa205e0496dd901f1f1eef660079
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465094"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698184"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>使用 CLI 创建基于路由的 VPN 网关
 
@@ -26,7 +26,7 @@ ms.locfileid: "49465094"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
+使用 [az group create](/cli/azure/group) 命令创建资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
 
 ```azurecli-interactive 
@@ -35,7 +35,7 @@ az group create --name TestRG1 --location eastus
 
 ## <a name="vnet"></a>创建虚拟网络
 
-使用 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 命令创建虚拟网络。 以下示例在“EastUS”位置创建一个名为“VNet1”的虚拟网络：
+使用 [az network vnet create](/cli/azure/network/vnet) 命令创建虚拟网络。 以下示例在“EastUS”位置创建一个名为“VNet1”的虚拟网络：
 
 ```azurecli-interactive 
 az network vnet create \
@@ -56,7 +56,7 @@ az network vnet subnet create \
   --vnet-name VNet1 \
   -n GatewaySubnet \
   -g TestRG1 \
-  --address-prefix 10.1.255.0/27 
+  --address-prefix 10.1.255.0/27 
 ```
 
 ## <a name="PublicIP"></a>请求公共 IP 地址
@@ -67,12 +67,12 @@ VPN 网关必须具有动态分配的公共 IP 地址。 将向为虚拟网络�
 az network public-ip create \
   -n VNet1GWIP \
   -g TestRG1 \
-  --allocation-method Dynamic 
+  --allocation-method Dynamic 
 ```
 
 ## <a name="CreateGateway"></a>创建 VPN 网关
 
-使用 [az network vnet-gateway create](/cli/azure/group#az_network_vnet_gateway_create) 命令创建 VPN 网关。
+使用 [az network vnet-gateway create](/cli/azure/group) 命令创建 VPN 网关。
 
 如果使用 `--no-wait` 参数运行该命令，则不会显示任何反馈或输出。 `--no-wait` 参数允许在后台创建网关。 但并不意味着 VPN 网关会立即创建。
 
@@ -172,7 +172,7 @@ az network public-ip show \
 ```
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要所创建的资源，请使用 [az group delete](/cli/azure/group#az_group_delete) 删除资源组。 这将删除资源组及其包含的所有资源。
+如果不再需要所创建的资源，请使用 [az group delete](/cli/azure/group) 删除资源组。 这将删除资源组及其包含的所有资源。
 
 ```azurecli-interactive 
 az group delete --name TestRG1 --yes

@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 284f1d90f043e2634e143508e2ab0e98cd309f46
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: a76be5203c7d62ba973993bf6338b7496e2fce80
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902680"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203923"
 ---
 # <a name="lambda-search-syntax"></a>Lambda 搜索语法
 
@@ -33,7 +33,7 @@ FollowEdge(params string[] edgeTypes)
 > [!NOTE]
 > 如果我们不在意要遵循的边缘类型，只需省略两个节点之间的 FollowEdge()：查询将遍历这两个节点之间的所有可能的边缘。
 
-我们可以通过 VisitNode() 指定要在节点上采取的遍历操作，即，是在此节点中停止并返回当前路径作为结果，还是继续浏览关系图。  枚举类型 Action定义两种类型的操作：Action.Return 和 Action.Continue。 我们可以将此类枚举值直接传递给 VisitNode()，或将其与按位 AND 运算符“&”组合。 将这两种操作组合在一起意味着将执行这两种操作。 注意：不要对操作使用按位 OR 运算符“|”。 使用此运算符将导致查询中止，且不会返回任何结果。 跳过两个 FollowEdge() 调用之间的 VisitNode() 将导致查询在到达节点后无条件浏览关系图。
+我们可以通过 VisitNode() 指定要在节点上采取的遍历操作，即，是在此节点中停止并返回当前路径作为结果，还是继续浏览关系图。  枚举类型 Action 定义两种类型的操作：*Action.Return* 和 *Action.Continue*。 我们可以将此类枚举值直接传递给 VisitNode()，或将其与按位 AND 运算符“&”组合。 将这两种操作组合在一起意味着将执行这两种操作。 注意：不要对操作使用按位 OR 运算符“|”。 使用此运算符将导致查询中止，且不会返回任何结果。 跳过两个 FollowEdge() 调用之间的 VisitNode() 将导致查询在到达节点后无条件浏览关系图。
 
 ```
 VisitNode(Action action, IEnumerable<string> select = null)
@@ -93,7 +93,7 @@ INode 提供只读数据访问接口和节点上的少数内置帮助程序函�
 
 生成大于或等于 0.0 并小于 1.0 的随机数字。 此函数仅在该数字小于或等于 p 时才返回 true。
 
-与 json 搜索相比，lambda 搜索表达得更为清楚：C# lambda 表达式可直接用于指定查询模式。 下面是两个示例。
+与 json 搜索相比，lambda 搜索更具表现力：可以直接使用 C# lambda 表达式来指定查询模式。 下面展示了两个示例。
 
 ```
 MAG.StartFrom(@"{

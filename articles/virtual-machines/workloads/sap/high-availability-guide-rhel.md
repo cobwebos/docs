@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: sedusch
-ms.openlocfilehash: 110f487d486ccd2f1a26065aa225838a3a83c197
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: c7805e64c4f387b870922dcb63e20d86f691092a
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167216"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119010"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Azure 虚拟机在 Red Hat Enterprise Linux 上为 SAP NetWeaver 提供的高可用性
 
@@ -157,10 +157,10 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
 1. 创建可用性集  
    设置最大更新域
 1. 创建虚拟机 1  
-   请至少使用 RHEL 7（此示例中为 Red Hat Enterprise Linux 7.4 映像）<https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   请至少使用 RHEL 7（此示例中为 Red Hat Enterprise Linux 7.4 映像）<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    选择前面创建的可用性集  
 1. 创建虚拟机 2  
-   请至少使用 RHEL 7（此示例中为 Red Hat Enterprise Linux 7.4 映像）<https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   请至少使用 RHEL 7（此示例中为 Red Hat Enterprise Linux 7.4 映像）<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    选择前面创建的可用性集  
 1. 将至少一个数据磁盘添加到这两个虚拟机  
    数据磁盘用于 /usr/sap/`<SAPSID`> 目录
@@ -715,7 +715,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
    
    [root@nw1-cl-0 ~]# pcs resource clear rsc_sap_NW1_ASCS00
    
-   # Remove failed actions for the ERS that occured as part of the migration
+   # Remove failed actions for the ERS that occurred as part of the migration
    [root@nw1-cl-0 ~]# pcs resource cleanup rsc_sap_NW1_ERS02
    </code></pre>
 

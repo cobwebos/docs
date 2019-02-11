@@ -1,23 +1,23 @@
 ---
-title: 快速入门：必应拼写检查 SDK、C#
+title: 快速入门：必应拼写检查 SDK，C#
 titlesuffix: Azure Cognitive Services
 description: 设置拼写检查 SDK 控制台应用程序
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
-ms.openlocfilehash: 3050bc06c30c29efe7ba5294cbbee2aea1a6055b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ee46ad5b48bc84c24dc67afd6992ad7a01214b5e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311596"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193516"
 ---
-# <a name="quickstart-bing-spell-check-sdk-with-c"></a>快速入门：通过 C# 使用必应拼写检查 SDK
+# <a name="quickstart-bing-spell-check-sdk-with-c"></a>快速入门：C# 的必应拼写检查 SDK
 
 必应拼写检查 SDK 包含用于拼写检查的 REST API 的功能。
 
@@ -46,10 +46,10 @@ using Microsoft.Azure.CognitiveServices.Language.SpellCheck;
 var client = new SpellCheckClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 ```
 
-使用该客户端检查拼写：
+使用该客户端检查文本的拼写。 `acceptLanguage` 参数是可选的：
 
 ```cs
-var result = client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof", acceptLanguage: "en-US").Result;
+var result = client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof", acceptLanguage: "en-US", market: "en-US").Result;
 Console.WriteLine("Correction for Query# \"bill gatas\"");
 ```
 
@@ -95,7 +95,7 @@ if (result?.Body.FlaggedTokens?.Count > 0)
 ```cs
 using System;
 using System.Linq;
-using Microsoft.Azure.CognitiveServices.SpellCheck;
+using Microsoft.Azure.CognitiveServices.Language.SpellCheck;
 
 namespace SpellCheckSDK
 {
@@ -107,7 +107,7 @@ namespace SpellCheckSDK
 
             try
             {
-                var result = client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof", acceptLanguage: "en-US").Result;
+                var result = client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof", acceptLanguage: "en-US", market:"en-US").Result;
                 Console.WriteLine("Correction for Query# \"bill gatas\"");
 
                 // SpellCheck Results

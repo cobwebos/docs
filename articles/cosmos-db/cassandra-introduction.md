@@ -1,22 +1,19 @@
 ---
-title: Azure Cosmos DB Cassandra API 简介 | Microsoft Docs
+title: Azure Cosmos DB Cassandra API 简介
 description: 了解如何使用 Azure Cosmos DB“直接迁移”现有的应用程序以及如何通过使用 Cassandra 驱动程序和熟悉的 CQL 的 Cassandra API 构建新的应用程序。
-services: cosmos-db
 author: kanshiG
-manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
-ms.devlang: na
+ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 1037f7921093d38d9020bafd9fd3597f27ca5011
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 9d948164177b7acd2df722078ae590f409c8e795
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230244"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036505"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 简介
 
@@ -30,11 +27,11 @@ Azure Cosmos DB Cassandra API 可以充当为 [Apache Cassandra](https://cassand
 
 **性能管理**：Azure Cosmos DB 可以确保 SLA 所保证的在 99% 的情况下实现低延迟读写。 用户不需担心操作开销，可以确保高性能和低延迟读写。 这意味着，用户不需手动计划压缩、管理逻辑删除、设置布隆筛选器和副本。 Azure Cosmos DB 没有管理这些问题的开销，让你专注于应用程序逻辑。
 
-**能够使用现有的代码和工具**：Azure Cosmos DB 的线路协议级别与现有 Cassandra SDK 和工具兼容。 此兼容性确保只需经过细微的更改，就可以将现有代码库用于 Azure Cosmos DB Cassandra API。
+**能够使用现有的代码和工具**：Azure Cosmos DB 提供的线路协议级别与现有 Cassandra SDK 和工具兼容。 此兼容性确保只需经过细微的更改，就可以将现有代码库用于 Azure Cosmos DB Cassandra API。
 
 **吞吐量和存储弹性**：Azure Cosmos DB 可以通过 Azure门户、PowerShell 或 CLI 操作跨所有区域提供有保证的吞吐量，并可缩放预配的吞吐量。 可以根据需要弹性缩放表的存储和吞吐量，其性能可以预测。
 
-**全球分发和可用性**：Azure Cosmos DB 可以在所有 Azure 区域全局分发数据，在本地提供数据，确保低延迟数据访问和高可用性。 Azure Cosmos DB 在区域内提供 99.99% 的高可用性，跨多个区域提供 99.999% 的读写可用性，并且没有任何运营开销。 在[在全球范围内分发数据](distribute-data-globally.md)一文中了解详细信息。 
+**全球分发和可用性**：Azure Cosmos DB 可以在所有 Azure 区域全局分发数据，在本地处理数据，同时确保低延迟数据访问和高可用性。 Azure Cosmos DB 在区域内提供 99.99% 的高可用性，跨多个区域提供 99.999% 的读写可用性，并且没有任何运营开销。 在[在全球范围内分发数据](distribute-data-globally.md)一文中了解详细信息。 
 
 **一致性选择**：Azure Cosmos DB 提供五个定义明确的一致性级别以供选择，可在一致性和性能之间实现最佳平衡。 这些一致性级别分别是：强、有限过期、会话、一致前缀和最终。 通过这些定义明确、实用且直观的一致性级别，开发者可以在一致性、可用性和延迟之间实现精确的平衡。 在[一致性级别](consistency-levels.md)一文中了解详细信息。 
 

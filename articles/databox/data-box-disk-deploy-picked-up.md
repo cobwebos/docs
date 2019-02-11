@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/10/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f971a1bed0391e809e19ff5bb0508d153319faf4
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 357fa8a34afc8b426d308940462e22895130169f
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093997"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158765"
 ---
-# <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>教程：寄回 Azure Data Box 磁盘并验证 Azure 中的数据上传
+# <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>教程：退回 Azure Data Box Disk 并验证到 Azure 的数据上传
 
-这是在系列教程“部署 Azure Data Box 磁盘”中的最后一篇教程。 在本教程中，将了解如何：
+这是本系列的最后一个教程：部署 Azure Data Box Disk。 在本教程中，将了解如何：
 
 > [!div class="checklist"]
 > * 将 Data Box 磁盘寄送到 Microsoft
@@ -27,7 +27,7 @@ ms.locfileid: "49093997"
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，请确保已完成[教程：将数据复制到 Azure Data Box 磁盘并验证](data-box-disk-deploy-copy-data.md)。
+在开始之前，请确保已完成[教程：将数据复制到 Azure Data Box Disk 并进行验证](data-box-disk-deploy-copy-data.md)。
 
 ## <a name="ship-data-box-disk-back"></a>寄回 Data Box 磁盘
 

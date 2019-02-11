@@ -1,21 +1,22 @@
 ---
-title: 了解模式如何提高预测的准确性
-titleSuffix: Azure Cognitive Services
-description: 模式旨在多条话语非常类似的情况下提升准确性。 使用模式可在不提供更多话语的情况下获得更高的意向准确度。
+title: 模型有助于预测
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: 使用模式可在不提供更多话语的情况下获得更高的意向准确度。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/10/2018
 ms.author: diberry
-ms.openlocfilehash: 09c869bf28b804d8fabe331c4a9c2d222accc1e5
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: ed7f50d51b46b9e6204522751fdc1a1e996442f2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300364"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207568"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>模式可提高预测的准确性
 模式旨在多条话语非常类似的情况下提升准确性。  使用模式可在不提供更多话语的情况下获得更高的意向准确度。 
@@ -43,6 +44,8 @@ ms.locfileid: "51300364"
 ## <a name="patterns-do-not-improve-entity-detection"></a>模式不提升检测到实体的可能性
 当模式需要实体时，它不帮助检测实体。 模式仅表示使用意向和角色帮助作出预测。  
 
+若将多个话语合并到单个模式，则无法提升实体预测。 若要触发简单实体，需要添加话语或使用列表实体，否则模式将无法触发。
+
 ## <a name="patterns-use-entity-roles"></a>模式使用实体角色
 如果模式中的两个或多个实体具有相关的上下文，模式会使用实体[角色](luis-concept-roles.md)来提取关于实体的上下文信息。 这相当于分层实体子对象，但仅可在模式中使用。 
 
@@ -50,7 +53,7 @@ ms.locfileid: "51300364"
 假定有足够多的实例话语，则 LUIS 不使用模式即能提高预测的置信度。 无需提供尽量多的话语，模式就能增加置信度得分。  
 
 ## <a name="pattern-matching"></a>模式匹配
-模式的匹配顺序是先检测模式内的实体，再验证模式的其余字词和字词顺序。 要匹配模式，需要在模式中包含实体。 
+模式的匹配顺序是先检测模式内的实体，再验证模式的其余字词和字词顺序。 要匹配模式，需要在模式中包含实体。 模式在标记级别应用，而不在字符级别应用。 
 
 ## <a name="pattern-syntax"></a>模式语法
 模式语法是一个话语模板。 该模板应包含要匹配的字词和实体，还要包含希望忽略的字词和标点。 它不是一个正则表达式。 

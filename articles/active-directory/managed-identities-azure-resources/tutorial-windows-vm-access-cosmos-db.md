@@ -3,23 +3,23 @@ title: 使用 Windows VM 系统分配的托管标识访问 Azure Cosmos DB
 description: 本教程介绍了使用 Windows VM 上系统分配的托管标识访问 Azure Cosmos DB 的过程。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: daveba
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
-ms.author: daveba
-ms.openlocfilehash: 28e40d06b27b36618c44091ab482a1e32183ddd4
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.author: priyamo
+ms.openlocfilehash: 331e59e234b66f465189248c755ebf450adcb603
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624329"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150031"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure Cosmos DB
 
@@ -36,6 +36,8 @@ ms.locfileid: "51624329"
 ## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+- 安装最新版本的 [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="create-a-cosmos-db-account"></a>创建 Cosmos DB 帐户 
 
@@ -63,16 +65,14 @@ Cosmos DB 原本不支持 Azure AD 身份验证。 但是，可以使用系统�
 若要向 Windows VM 系统分配的托管标识授予在 Azure 资源管理器中使用 PowerShell 访问 Cosmos DB 帐户的权限，请更新环境的 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>` 和 `<COSMOS DB ACCOUNT NAME>` 的值。 Cosmos DB 在使用访问密钥时支持两种级别的粒度：对帐户的读/写访问权限，以及对帐户的只读访问权限。  如果需要获取帐户的读/写密钥，请分配 `DocumentDB Account Contributor` 角色；如果需要获取帐户的只读密钥，请分配 `Cosmos DB Account Reader Role` 角色。  对于本教程，请分配 `Cosmos DB Account Reader Role`：
 
 ```azurepowershell
-$spID = (Get-AzureRMVM -ResourceGroupName myRG -Name myVM).identity.principalid
-New-AzureRmRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Reader Role" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>"
+$spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
+New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Reader Role" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>"
 ```
 ## <a name="get-an-access-token-using-the-windows-vm-system-assigned-managed-identity-to-call-azure-resource-manager"></a>使用 Windows VM 系统分配的托管标识获取访问令牌来调用 Azure 资源管理器
 
 在本教程的剩余部分中，我们从先前创建的 VM 入手。 
 
-在此部分中，将需要使用 Azure 资源管理器 PowerShell cmdlet。  如果尚未安装，请[下载最新版本](https://docs.microsoft.com/powershell/azure/overview)，然后再继续。
-
-还需在 Windows VM 上安装最新版本的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+需在 Windows VM 上安装最新版本的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 1. 在 Azure 门户中，导航到“虚拟机”，转到 Windows 虚拟机，然后在“概述”页中单击顶部的“连接”。 
 2. 输入创建 Windows VM 时添加的用户名和密码。 

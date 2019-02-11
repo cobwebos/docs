@@ -3,19 +3,19 @@ title: Office 365 外部共享与 Azure Active Directory B2B 协作 | Microsoft 
 description: 讨论使用 O365 和 Azure Active Directory B2B 协作与外部合作伙伴共享资源。
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 05/24/2017
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: fc789283e56d220f0068277544cb6494e265ee39
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 85388e179a6857609e792c8c1479717fa5e8e431
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981895"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075941"
 ---
 # <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Office 365 外部共享与 Azure Active Directory B2B 协作
 

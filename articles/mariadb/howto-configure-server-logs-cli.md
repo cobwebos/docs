@@ -1,21 +1,18 @@
 ---
 title: 使用 Azure CLI 访问 Azure Database for MariaDB 中的服务器日志
 description: 本文介绍如何使用 Azure CLI 命令行实用工具访问 Azure Database for MariaDB 中的服务器日志。
-services: mariadb
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 11/10/2018
-ms.openlocfilehash: b9ae07b88164a830598db791d61b77a6abb7b1df
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 403f111882b1bd151b26af56fd614355e7ba88e3
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516403"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539205"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>使用 Azure CLI 配置和访问服务器日志
 可以使用 Azure CLI（Azure 的命令行实用工具）下载 Azure Database for MariaDB 服务器日志。

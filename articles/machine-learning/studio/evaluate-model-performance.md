@@ -1,36 +1,31 @@
 ---
-title: 评估模型性能 - Azure 机器学习工作室 | Microsoft Docs
+title: 评估模型性能
+titleSuffix: Azure Machine Learning Studio
 description: 本文演示了如何在 Azure 机器学习工作室中评估模型的性能，并提供可用于此任务的指标的简短说明。
 services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
-editor: cgronlun
-ms.assetid: 5dc5348a-4488-4536-99eb-ff105be9b160
 ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: studio
 ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: de013f8deb5e64077aad96bd34d64135f981166d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b663177a07446b888bc7bf9e919bf180458d36bc
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311480"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487002"
 ---
-# <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>如何在 Azure 机器学习中评估模型性能
+# <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio"></a>如何在 Azure 机器学习工作室中评估模型性能
+
 本文演示了如何在 Azure 机器学习工作室中评估模型的性能，并提供可用于此任务的指标的简短说明。 显示了三个常见的监督学习方案： 
 
 * 回归
 * 二元分类 
 * 多类分类
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 评估模型性能是数据科学过程的核心阶段之一。 它指示训练的模型为某个数据集评分的成功程度。 
 

@@ -2,18 +2,18 @@
 title: 无提示的 Azure 备份服务器 V2 安装
 description: 使用 PowerShell 脚本可以无提示方式安装 Azure 备份服务器 V2。 这种类型安装也称为无人参与安装。
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: markgal
-ms.openlocfilehash: 8f7bda070e613e5495d3733dd1610cb291e12c36
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.author: raynew
+ms.openlocfilehash: dd66710a24ca28b78c6b3e0a8197a078f17524db
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612689"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868134"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>运行 Azure 备份服务器的无人参与安装
 
@@ -56,9 +56,9 @@ ms.locfileid: "51612689"
 
 可以将以下这些标志用于安装：</br>
 /f：.ini 文件路径</br>
-/l：日志路径</br>
-/i：安装路径</br>
-/x：卸载路径</br>
+**/l**：日志路径</br>
+**/i**：安装路径</br>
+**/x**：卸载路径</br>
 
 ## <a name="next-steps"></a>后续步骤
 安装备份服务器之后，了解如何准备服务器或开始保护工作负载。

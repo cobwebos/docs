@@ -4,10 +4,10 @@ description: 排除与自助应用程序访问相关的问题
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: japere,asteen
-ms.openlocfilehash: 3a8e0ca54766f36ba3343f420d751f2e40a8033b
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: a3fe327113a62ad35dcc1843b00eb40cefdfb38c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354631"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161608"
 ---
 # <a name="problem-using-self-service-application-access"></a>使用自助应用程序访问时的问题
 
@@ -62,18 +62,18 @@ ms.locfileid: "44354631"
 
 9.  接下来，要选择向其添加请求此应用程序访问权限的用户的组，请单击“分配的用户应添加到哪个组?”标签旁边的选择器，并选择一个组。
 
-10. **可选：** 如果希望获得业务批准之后才允许用户访问，请将“需要获得批准才能授权访问此应用程序?”切换到“是”。
+10. **可选：** 如果希望在获得业务批准之后才允许用户访问，请将“需要获得批准才能授权访问此应用程序?”切换到“是”。
 
-11. **可选：对于仅使用密码单一登录的应用程序，** 如果要允许业务审批人为已批准的用户指定发送到此应用程序的密码，请将“允许审批人设置此应用程序的用户密码?”切换到“是”。
+11. **可选：对于仅使用密码单一登录的应用程序**，如果要允许业务审批人为已获得批准的用户指定发送到此应用程序的密码，请将“允许审批人设置此应用程序的用户密码?”切换到“是”。
 
-12. **可选：** 若要指定有权授予此应用程序访问权限的业务审批人，请单击“谁有权批准此应用程序的访问权限?”标签旁边的选择器，最多可选择 10 个单独业务审批人。
+12. **可选：** 若要指定有权批准对此应用程序访问的业务审批人，请单击“谁有权批准此应用程序的访问权限?”标签旁边的选择器，最多可选择 10 个单独的业务审批人。
 
  >[!NOTE]
  > 不支持组。
  >
  >
 
-13. **可选：** **对于公开角色的应用程序**，如果想要向角色分配已被批准使用自助服务的用户，请单击“在此应用程序中应向哪个角色分配用户?”旁边的选择器，选择要向其分配这些用户的角色。
+13. **可选：**“对于公开角色的应用程序”，如果想要向角色分配已被批准使用自助服务的用户，请单击“在此应用程序中应向哪个角色分配用户?”旁边的选择器，选择要向其分配这些用户的角色。
 
 14. 单击边栏选项卡顶部的“保存”按钮以完成操作。
 

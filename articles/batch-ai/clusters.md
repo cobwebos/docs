@@ -11,14 +11,17 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 61294d8b6b84b03b1e0c8d79b4d2855452c7f0e6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9af8ce84805e48dd3c91dd7fb4fcf0b136fbfc60
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44056706"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410085"
 ---
 # <a name="work-with-batch-ai-clusters"></a>使用 Batch AI 群集 
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 本文介绍如何使用 Azure Batch AI 中的群集。 其中介绍了群集的概念、可能的配置类型和示例。 本文中演示如何创建和管理群集的大部分示例都使用 Azure CLI。 但是，也可以通过其他工具（包括 Azure 门户和 Azure Batch AI SDK）来使用群集。
 

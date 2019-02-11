@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 搜索的认知搜索管道中引用输入和输出中的注释 | Microsoft Docs
+title: 认知搜索管道中的引用输入和输出 - Azure 搜索
 description: 说明了注释语法，以及如何在 Azure 搜索的认知搜索管道中引用技能集的输入和输出中的注释。
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 1ccc1fb20cb08cfd97d58984676ef4006e693118
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.custom: seodec2018
+ms.openlocfilehash: 57fed710d7d58199fb3cb70640d1f2d3f316f180
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801941"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315796"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>如何在认知搜索技能集中引用注释
 

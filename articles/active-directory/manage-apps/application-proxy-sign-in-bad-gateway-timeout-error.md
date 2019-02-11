@@ -4,10 +4,10 @@ description: 如何解决使用 Azure AD 应用程序代理应用程序时的常
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2af5ed294c4a53e38690991f1f65b3f7d2f46c73
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: f282bdb54a96b6bf91df3fc7d185e68c41cd7008
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354514"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177196"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>使用应用程序代理应用程序时出现“无法访问此企业应用程序”错误
 
@@ -62,7 +62,7 @@ ms.locfileid: "44354514"
 
 如果出现禁止访问错误，则表明用户未分配到该应用程序。 此错误可能会出现在 Azure Active Directory 中或后端应用程序上。
 
-要了解如何将用户分配到 Azure 中的应用程序，请参阅[配置文档](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal#add-a-test-user)。
+要了解如何将用户分配到 Azure 中的应用程序，请参阅[配置文档](application-proxy-add-on-premises-application.md#test-the-application)。
 
 如果确认用户已分配到 Azure 中的应用程序，请检查后端应用程序中的用户配置。 如果你正在使用 Kerberos 约束委派/集成 Windows 身份验证，请参阅“KCD 故障排除”页，以了解指导原则。
 
@@ -82,11 +82,11 @@ ms.locfileid: "44354514"
 
 4.  此处，有几种方法可进一步深入探讨：
 
-  * 将活动连接器移入该组：如果存在某个活动连接器应属于该组，并对目标后端应用程序具有视距，则可以将此连接器移入指定的组。 若要执行此操作，请单击“连接器”。 在“连接器组”字段中，使用下拉列表选择正确的组，并单击“保存”。
+  * 将活动连接器移入该组：如果你有一个活动连接器，该连接器应属于此组并且直接可见目标后端应用程序，则可以将该连接器移入已分配的组。 若要执行此操作，请单击“连接器”。 在“连接器组”字段中，使用下拉列表选择正确的组，并单击“保存”。
 
   * 为该组下载新的连接器：从该页面可获取指向[下载新连接器](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download)的链接。 将连接器安装在直接与后端应用程序相连的机器上。 通常，需要在应用程序所在的同一台服务器上安装连接器。 使用“下载连接器”链接将连接器下载到目标计算机上。 接下来，单击“连接器”并使用“连接器组”下拉列表，确保它属于正确的组。
 
-  * 调查非活动连接器：如果连接器显示为非活动，它将无法访问服务。 此错误通常是因为某些必需的端口遭到阻止。 若要解决此问题，需继续“验证所有必需端口都已列入允许列表”。
+  * 调查非活动连接器：如果连接器显示为非活动状态，它将无法访问服务。 此错误通常是因为某些必需的端口遭到阻止。 若要解决此问题，需继续“验证所有必需端口都已列入允许列表”。
 
 使用上述步骤确保应用程序分配到具有正常工作的连接器的组之后，再次测试该应用程序。 如果它仍无法正常工作，则继续执行下一部分。
 

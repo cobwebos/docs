@@ -4,9 +4,9 @@ description: 使用 Azure AD 应用程序通过 Microsoft Teams 代理访问本�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.date: 09/05/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 1269dfb3aec33e781601a1d885004ddf80127160
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 3f515861b7b54651665c378305070b4a8261ca70
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39367192"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163018"
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>通过 Microsoft Teams 访问本地应用程序
 
@@ -31,7 +31,7 @@ ms.locfileid: "39367192"
 
 ## <a name="install-the-application-proxy-connector-and-publish-your-app"></a>安装应用程序代理连接器并发布应用
 
-如果尚未执行，请[为租户配置应用程序代理并安装连接器](application-proxy-enable.md)。 然后[发布进行远程访问的本地应用程序](application-proxy-publish-azure-portal.md)。 发布应用时，请记下外部 URL，用于将应用添加到 Teams。
+如果尚未执行，请[为租户配置应用程序代理并安装连接器](application-proxy-add-on-premises-application.md)。 然后[发布进行远程访问的本地应用程序](application-proxy-add-on-premises-application.md)。 发布应用时，请记下外部 URL，用于将应用添加到 Teams。
 
 如果已发布应用，但忘记了其外部 URL，请在 [Azure 门户](https://portal.azure.com)中查找。 登录，然后导航到“Azure Active Directory” > “企业应用程序” > “所有应用程序”>选择应用>“应用程序代理”。
 

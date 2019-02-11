@@ -8,19 +8,41 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
-ms.component: files
-ms.openlocfilehash: d5dd2e2943d78291fc9c4903c15fb4d3767edbea
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.subservice: files
+ms.openlocfilehash: ca7e89f4b7f976633d5f097b7e335fe9b7631985
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442006"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477737"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>在 Linux 中排查 Azure 文件问题
 
-本文列出了从 Linux 客户端进行连接时，与 Microsoft Azure 文件相关的常见问题。 此外，还提供了这些问题的可能原因和解决方法。 
+本文列出了从 Linux 客户端进行连接时，与 Azure 文件相关的常见问题。 此外，还提供了这些问题的可能原因和解决方法。 
 
 除本文中的疑难解答步骤之外，还可使用 [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) 确保 Linux 客户端满足正确的先决条件。 AzFileDiagnostics 自动检测本文中提到的大多数症状。 它有助于设置环境以获得最佳性能。 也可以在 [Azure 文件共享疑难解答](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到此信息。 疑难解答提供了帮助你解决连接、映射和装载 Azure 文件共享问题的步骤。
+
+<a id="mounterror13"></a>
+## <a name="mount-error13-permission-denied-when-you-mount-an-azure-file-share"></a>装载 Azure 文件共享时出现“装载错误(13):权限被拒绝”
+
+### <a name="cause-1-unencrypted-communication-channel"></a>原因 1：信道未加密
+
+出于安全考虑，如果信道未加密，且连接尝试并非来自 Azure 文件共享所在的同一数据中心，将阻止连接到 Azure 文件共享。 如果在存储帐户中启用[需要安全传输](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)设置，则还可以阻止同一数据中心中未加密的连接。 仅当用户的客户端 OS 支持 SMB 加密时，才提供加密的信道。
+
+若要了解详细信息，请参阅[使用 Linux 和 cifs-utils 包装载 Azure 文件共享的先决条件](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-linux#prerequisites-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package)。 
+
+### <a name="solution-for-cause-1"></a>原因 1 的解决方案
+
+1. 从支持 SMB 加密的客户端进行连接，或者从用于 Azure 文件共享的 Azure 存储帐户所在数据中心内的虚拟机进行连接。
+2. 如果客户端不支持 SMB 加密，请验证是否已在存储帐户上禁用[需要安全传输](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)设置。
+
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因 2：在存储帐户上启用了虚拟网络或防火墙规则 
+
+如果在存储帐户上配置了虚拟网络 (VNET) 和防火墙规则，则将拒绝访问网络流量，除非允许客户端 IP 地址或虚拟网络访问。
+
+### <a name="solution-for-cause-2"></a>原因 2 的解决方案
+
+验证是否已在存储帐户上正确配置虚拟网络和防火墙规则。 若要测试虚拟网络或防火墙规则是否导致此问题，请将存储帐户上的设置临时更改为“允许来自所有网络的访问”。 若要了解详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security)。
 
 <a id="permissiondenied"></a>
 ## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>尝试打开文件时出现“[权限被拒绝] 超出磁盘配额”
@@ -87,6 +109,27 @@ ms.locfileid: "52442006"
 4.11 内核中引入了适用于 Linux 的 SMB 3.0 加密功能。 使用此功能可从本地或不同 Azure 区域装载 Azure 文件共享。 在发布时，此功能已向后移植到 Ubuntu 17.04 和 Ubuntu 16.10。 
 
 如果 Linux SMB 客户端不支持加密，请使用 SMB 2.1 从文件共享所在的同一数据中心上的 Azure Linux VM 装载 Azure 文件。 验证是否已在存储帐户中禁用[需要安全传输]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)设置。 
+
+<a id="accessdeniedportal"></a>
+## <a name="error-access-denied-when-browsing-to-an-azure-file-share-in-the-portal"></a>浏览到门户中的 Azure 文件共享时出现“访问被拒绝”错误
+
+浏览到门户中的 Azure 文件共享时，可能会收到以下错误：
+
+访问被拒绝  
+你无权访问  
+你似乎无权访问此内容。 若要获取访问权限，请联系所有者。  
+
+### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>原因 1：你的用户帐户无权访问该存储帐户
+
+### <a name="solution-for-cause-1"></a>原因 1 的解决方案
+
+浏览到Azure文件共享所在的存储帐户，单击“访问控制(IAM)”，确保你的用户帐户有权访问该存储帐户。 若要了解详细信息，请参阅[如何使用基于角色的访问控制 (RBAC) 来保护存储帐户](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac)。
+
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因 2：在存储帐户上启用了虚拟网络或防火墙规则
+
+### <a name="solution-for-cause-2"></a>原因 2 的解决方案
+
+验证是否已在存储帐户上正确配置虚拟网络和防火墙规则。 若要测试虚拟网络或防火墙规则是否导致此问题，请将存储帐户上的设置临时更改为“允许来自所有网络的访问”。 若要了解详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security)。
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Linux VM 上装载的 Azure 文件共享性能缓慢
@@ -163,11 +206,11 @@ COPYFILE 中的强制标志 **f** 导致在 Unix 上执行 **cp -p -f**。 此�
 * 可提供自我修复的说明性指导。
 * 可收集诊断跟踪。
 
-## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: 无法访问 '&lt;path&gt;': 输入/输出错误
+## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: 无法访问 '&lt;path&gt;':输入/输出错误
 
 尝试使用 ls 命令列出 Azure 文件共享中的文件时，该命令在列出文件时挂起。 收到以下错误：
 
-**ls: 无法访问 '&lt;path&gt;': 输入/输出错误**
+**ls: 无法访问'&lt;path&gt;':输入/输出错误**
 
 
 ### <a name="solution"></a>解决方案
@@ -178,7 +221,7 @@ COPYFILE 中的强制标志 **f** 导致在 Unix 上执行 **cp -p -f**。 此�
 - 4.12.11+
 - 4.13 或更高的所有版本
 
-## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>无法创建符号链接 - ln: 未能创建符号链接 't': 操作不受支持
+## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>无法创建符号链接 - ln: 未能创建符号链接 't':操作不受支持
 
 ### <a name="cause"></a>原因
 默认情况下，使用 CIFS 在 Linux 上装载 Azure 文件共享不会启用符号链接的支持。 出现如下错误：

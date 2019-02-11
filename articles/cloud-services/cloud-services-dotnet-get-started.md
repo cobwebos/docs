@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 04c68308739f641e892a335832725ba87e36f7af
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 966536b7129a91f4c6fd8dd7bf0270be660bdf81
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242120"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332058"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure 云服务和 ASP.NET 入门
 
@@ -35,8 +35,8 @@ ms.locfileid: "51242120"
 
 应用程序使用 [以队列为中心的工作模式](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) 来减轻创建缩略图到后端进程的 CPU 密集型工作。
 
-## <a name="alternative-architecture-web-apps-and-webjobs"></a>替代体系结构：Web 应用和 WebJobs
-本教程演示如何在 Azure 云服务中运行前端和后端。 一种替代方法是在 [Azure Web 应用](/azure/app-service/)中运行前端，并对后端使用 [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) 功能。 有关如何使用 WebJobs 的教程，请参阅 [Azure WebJobs SDK 入门](https://github.com/Azure/azure-webjobs-sdk/wiki)。 有关如何选择最适合方案的服务信息，请参阅 [Azure 网站、云服务和虚拟机比较](../app-service/choose-web-site-cloud-service-vm.md)。
+## <a name="alternative-architecture-app-service-and-webjobs"></a>替代体系结构：应用服务和 WebJobs
+本教程演示如何在 Azure 云服务中运行前端和后端。 一种替代方法是在 [Azure 应用服务](/azure/app-service/)中运行前端，并对后端使用 [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) 功能。 有关如何使用 WebJobs 的教程，请参阅 [Azure WebJobs SDK 入门](https://github.com/Azure/azure-webjobs-sdk/wiki)。 有关如何选择最适合方案的服务的信息，请参阅 [Azure 应用服务、云服务和虚拟机比较](../app-service/overview-compare.md)。
 
 ## <a name="what-youll-learn"></a>学习内容
 * 如何通过安装 Azure SDK 来让计算机可以进行 Azure 开发。
@@ -380,7 +380,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 3. 在 ContosoAdsCloudService 项目中，右键单击“角色”下的 ContosoAdsWeb，并单击“属性”。
 
     ![角色属性](./media/cloud-services-dotnet-get-started/roleproperties.png)
-4. 在“ContosAdsWeb 角色”属性窗口中，单击“设置”选项卡，并单击“添加设置”。
+4. 在“ContosoAdsWeb [角色]”属性窗口中，单击“设置”选项卡，并单击“添加设置”。
 
     将“服务配置”保留设置为“所有配置”。
 5. 添加名为 StorageConnectionString 的设置。 将“类型”设置为 *ConnectionString*，并将“值”设置为 *UseDevelopmentStorage=true*。
@@ -390,8 +390,8 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 7. 按照相同的过程在 ContosoAdsWorker 角色属性中添加存储连接字符串。
 8. 还是在“ContosoAdsWorker [角色]”属性窗口中，添加另一个连接字符串  ：
 
-   * 名称：ContosoAdsDbConnectionString
-   * 类型：字符串
+   * 姓名：ContosoAdsDbConnectionString
+   * 键入：String
    * 值：粘贴用于 Web 角色项目的相同连接字符串。 （以下示例适用于 Visual Studio 2013。 如果使用 Visual Studio 2015 或更高版本并想要复制此示例，请记得更改数据源。）
 
        ```
@@ -407,9 +407,9 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 2. 在 ContosoAdsWeb 项目中，从下载的项目添加以下文件。
 
    * *Global.asax.cs*。  
-   * 在 *Views\Shared* 文件夹中：*\_Layout.cshtml*。
-   * 在 *Views\Home* 文件夹中：*Index.cshtml*。
-   * 在 *Controllers* 文件夹中：*AdController.cs*。
+   * 在“Views\Shared”文件夹中：\_Layout.cshtml。
+   * 在“Views\Home”文件夹中：Index.cshtml。
+   * 在“Controllers”文件夹中：AdController.cs。
    * 在 *Views\Ad* 文件夹（首先创建该文件夹）中：五个 *.cshtml* 文件。
 3. 在 ContosoAdsWorker 项目中，从下载的项目添加 *WorkerRole.cs* 。
 
@@ -775,7 +775,7 @@ Contoso 广告应用程序有意保持入门教程的简单性。 例如，它�
 
 有关详细信息，请参阅以下资源：
 
-* [Azure 云服务的第 1 部分：简介](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
+* [Azure 云服务第 1 部分：简介](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [如何管理云服务](cloud-services-how-to-manage-portal.md)
 * [Azure 存储](https://docs.microsoft.com/azure/storage/)
 * [如何选择云服务提供商](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

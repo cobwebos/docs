@@ -4,23 +4,23 @@ description: 本文详细概述了风险事件。
 services: active-directory
 keywords: azure active directory identity protection , 安全性, 风险, 风险级别, 漏洞, 安全策略
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6c1b9fabe89d254524006a21e3a422221791022d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 1117ffa94a30a55b7b2a7477bf2770d21dcb5441
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625260"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746500"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory 风险事件
 
@@ -31,7 +31,9 @@ ms.locfileid: "51625260"
  - **Azure AD 报告** - 风险事件属于 Azure AD 的安全报告。 有关详细信息，请参阅[风险用户安全报告](concept-user-at-risk.md)和[有风险的登录安全报告](concept-risky-sign-ins.md)。
 
  - **Azure AD Identity Protection** - 风险事件也是 [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) 的报告功能的一部分。
-    
+
+此外，还可以使用 [Identity Protection 风险事件 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) 通过 Microsoft Graph 以编程方式访问安全检测。 有关详细信息，请参阅 [Azure Active Directory Identity Protection 和 Microsoft Graph 入门](../identity-protection/graph-get-started.md)。 
+
 目前，Azure Active Directory 检测 6 种类型的风险事件：
 
 - [具有已泄漏凭据的用户](#leaked-credentials) 
@@ -42,6 +44,9 @@ ms.locfileid: "51625260"
 - [从不熟悉的位置登录](#sign-in-from-unfamiliar-locations) 
 
 ![风险事件](./media/concept-risk-events/91.png)
+
+> [!IMPORTANT]
+> 有时，可能会在[登录报表](concept-sign-ins.md)中发现没有相应登录输入的风险事件。 这是因为“身份保护”评估“交互式”和“非交互式”登录的风险，而登录报表只显示交互式登录。
 
 从检测到的风险事件获得的见解会绑定到 Azure AD 订阅。 
 
@@ -127,7 +132,7 @@ Identity Protection 检测来自不熟悉位置的登录，也用于基本身份
 
 * **高**：高置信度和高严重性风险事件。 这些事件指出用户的标识明显已遭入侵，应立即补救所有受影响的用户帐户。
 
-* **中**：高严重性，但置信度较低的风险事件，或反之。 这些事件具有潜在风险，应补救所有受影响的用户帐户。
+* **中**：高严重性，但置信度较低的风险事件，反之亦然。 这些事件具有潜在风险，应补救所有受影响的用户帐户。
 
 * **低**：低置信度和低严重性风险事件。 此事件可能不要求立即采取措施，但与其他风险事件结合时，可能指出标识明显遭到入侵。
 
@@ -159,7 +164,7 @@ Identity Protection 检测来自不熟悉位置的登录，也用于基本身份
 
 我们建议联系用户并扫描用户的所有设备。 用户的个人设备也可能受感染，其他人也可能以用户身份从相同 IP 地址使用受感染的设备。 这些设备之所以受感染，通常是因为下载了防病毒软件尚未识别的恶意软件，也可能是因为用户存在不良习惯，导致设备容易遭受感染。
 
-有关如何解决恶意软件感染的详细信息，请参阅[恶意软件防护中心](https://go.microsoft.com/fwlink/?linkid=335773&clcid=0x409)。
+有关如何解决恶意软件感染的详细信息，请参阅[恶意软件防护中心](https://www.microsoft.com/en-us/security/portal/definitions/adl.aspx/)。
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>从具有可疑活动的 IP 地址登录
 

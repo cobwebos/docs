@@ -5,37 +5,38 @@ services: backup
 ms.service: backup
 author: rayne-wiselman
 ms.author: raynew
-ms.date: 10/23/2018
+ms.date: 01/31/2019
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: faf229d67a5b4a7a15774d6e01af1c5706d18058
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 5ee0eccced5757c91fca1ba7f77750839bc017f3
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023145"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492719"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>排查 Azure 文件共享备份问题
 可参考下表中所列信息，排查使用 Azure 文件共享备份时遇到的问题和错误。
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>预览版期间 Azure 文件共享备份的限制
-Azure 文件共享备份处于预览状态。 Azure 文件共享不支持以下备份场景：
+Azure 文件共享备份处于预览状态。 常规用途 v1 和常规用途 v2 存储帐户中的 Azure 文件共享均受支持。 Azure 文件共享不支持以下备份场景：
 - 不能保护具有[读取访问异地冗余存储](../storage/common/storage-redundancy-grs.md) (RA-GRS) 复制功能\*的存储帐户中的 Azure 文件共享。
 - 不能保护已启用虚拟网络或防火墙的存储帐户中的 Azure 文件共享。
-- 无法使用 PowerShell 或 CLI 通过 Azure 备份来保护 Azure 文件。
+- 无法使用 CLI 通过 Azure 备份来保护 Azure 文件。
 - 每天的计划备份数上限为 1。
 - 每天的按需备份数上限为 4。
 - 在存储帐户上使用[资源锁定](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest)，防止意外删除恢复服务保管库中的备份。
 - 请勿删除由 Azure 备份创建的快照。 删除快照可能导致恢复点丢失和/或还原失败。
+- 请勿删除受 Azure 备份保护的文件共享。 当前的解决方案会在文件共享删除后删除 Azure 备份创建的所有快照，因此会失去所有还原点。
 
 \*具有[读取访问异地冗余存储](../storage/common/storage-redundancy-grs.md) (RA-GRS) 复制功能的存储帐户中的 Azure 文件共享将作为 GRS 发挥作用并按 GRS 价格计费。
 
-使用[区域冗余存储空间](../storage/common/storage-redundancy-zrs.md) (ZRS) 复制对存储帐户中的 Azure 文件共享进行备份，目前只能在美国中部 (CUS)、美国东部 2 (EUS2)、北欧 (NE)、东南亚 (SEA) 和西欧 (WE) 使用。
+使用[区域冗余存储](../storage/common/storage-redundancy-zrs.md) (ZRS) 复制对存储帐户中的 Azure 文件共享进行备份，目前只能在美国中部 (CUS)、美国东部 (EUS)、美国东部 2 (EUS2)、北欧 (NE)、东南亚 (SEA)、西欧 (WE) 和美国西部 2 (WUS2) 使用。
 
 ## <a name="configuring-backup"></a>配置备份
 下表用于配置备份：
 
-| 配置备份 | 解决办法或解决方法提示 |
+| 错误消息 | 解决办法或解决方法提示 |
 | ------------------ | ----------------------------- |
 | 找不到存储帐户，因此无法配置 Azure 文件共享的备份 | <ul><li>等到发现完成。 <li>检查是否已使用另一恢复服务保管库对存储帐户中的任何文件共享进行保护。 **注意**：一个存储帐户中的所有文件共享只能在一个恢复服务保管库中进行保护。 <li>请确保文件共享不是存在于不受支持的存储帐户中。|
 | 门户中的错误指出无法发现存储帐户。 | 如果订阅为合作伙伴（已启用 CSP），请忽略此错误。 如果订阅未启用 CSP，且无法发现存储帐户，请联系支持部门。|
@@ -63,6 +64,14 @@ Azure 文件共享备份处于预览状态。 Azure 文件共享不支持以下�
 | 还原操作失败，因为目标文件共享已满。 | 增加目标文件共享大小配额，使之能够容纳还原数据，然后重试该操作。 |
 | 由于对与目标文件共享关联的文件同步服务资源执行预还原操作时出错，还原操作失败。 | 请稍后重试，如果问题仍然存在，请联系 Microsoft 支持部门。 |
 | 一个或多个文件无法成功恢复。 有关详细信息，请查看上面给出的路径中的故障文件列表。 | <ul> <li> 恢复失败原因已在文件中列出（作业详细信息中提供了路径），请针对原因解决相关问题，只对故障文件重试还原操作。 <li> 文件还原失败的常见原因如下： <br/> - 确保目前没有在使用故障文件。 <br/> - 父目录中存在其名称与故障文件名称相同的目录。 |
+
+
+## <a name="modify-policy"></a>修改策略
+| 错误消息 | 解决办法或解决方法提示 |
+| ------------------ | ----------------------------- |
+| 正在对此项进行另一个配置保护操作。 | 请等待上一个修改策略操作完成，并过一段时间重试。|
+| 正在对所选项进行另一项操作。 | 请等待其他正在进行的操作完成，并过一段时间重试 |
+
 
 ## <a name="see-also"></a>另请参阅
 有关 Azure 文件共享备份的其他信息，请参阅：

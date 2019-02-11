@@ -6,15 +6,14 @@ author: yushwang
 manager: rossort
 ms.service: vpn-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 10/05/2018
+ms.date: 02/06/2019
 ms.author: yushwang
-ms.openlocfilehash: e93f1174f0beaa7b1c8b3164081714281d5b1050
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 3e3dff18bde1c02c3746aa200376b02e1fba9e05
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687531"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765358"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>关于用于站点到站点 VPN 网关连接的 VPN 设备和 IPsec/IKE 参数
 
@@ -44,24 +43,25 @@ ms.locfileid: "51687531"
 |**供应商**          |**设备系列**     |**最低操作系统版本** |**PolicyBased 配置说明** |**RouteBased 配置说明** |
 | ---                | ---                  | ---                   | ---            | ---           |
 | A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |不兼容  |[配置指南](https://www.a10networks.com/resources/deployment-guides/a10-thunder-cfw-ipsec-vpn-interoperability-azure-vpn-gateways)|
-| Allied Telesis     |AR 系列 VPN 路由器 |2.9.2                  |即将支持     |不兼容  |
+| Allied Telesis     |AR 系列 VPN 路由器 |AR 系列 5.4.7+               |即将支持     |[配置指南](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
 | Barracuda Networks, Inc. |Barracuda NextGen Firewall F-series |PolicyBased：5.4.3<br>RouteBased：6.2.0 |[配置指南](https://techlib.barracuda.com/NGF/AzurePolicyBasedVPNGW) |[配置指南](https://techlib.barracuda.com/NGF/AzureRouteBasedVPNGW) |
 | Barracuda Networks, Inc. |Barracuda NextGen Firewall X-series |Barracuda Firewall 6.5 |[配置指南](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) |不兼容 |
 | Brocade            |Vyatta 5400 vRouter   |Virtual Router 6.6R3 GA|[配置指南](http://www1.brocade.com/downloads/documents/html_product_manuals/vyatta/vyatta_5400_manual/wwhelp/wwhimpl/js/html/wwhelp.htm#href=VPN_Site-to-Site%20IPsec%20VPN/Preface.1.1.html) |不兼容 |
-| 检查点 |安全网关 |R77.30 |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
-| Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |[配置指南*](vpn-gateway-3rdparty-device-config-cisco-asa.md) |
-| Cisco |ASR |PolicyBased：IOS 15.1<br>RouteBased：IOS 15.2 |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
-| Cisco |ISR |PolicyBased：IOS 15.0<br>RouteBased*：IOS 15.1 |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[配置示例\*\*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
+| 检查点 |安全网关 |R80.10 |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
+| Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |支持 |[配置指南*](vpn-gateway-3rdparty-device-config-cisco-asa.md) |
+| Cisco |ASR |PolicyBased：IOS 15.1<br>RouteBased：IOS 15.2 |支持 |支持 |
+| Cisco |ISR |PolicyBased：IOS 15.0<br>RouteBased*：IOS 15.1 |支持 |支持 |
 | Cisco |Meraki |不适用 |不兼容 |不兼容 |
 | Citrix |NetScaler MPX，SDX，VPX |10.1 及以上 |[配置指南](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |不兼容 |
 | F5 |BIG-IP 系列 |12.0 |[配置指南](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[配置指南](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
 | Fortinet |FortiGate |FortiOS 5.6 |  |[配置指南](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-56/) |
 | Internet Initiative Japan (IIJ) |SEIL 系列 |SEIL/X 4.60<br>SEIL/B1 4.60<br>SEIL/x86 3.20 |[配置指南](http://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) |不兼容 |
-| Juniper |SRX |PolicyBased：JunOS 10.2<br>Routebased：JunOS 11.4 |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX) |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX) |
-| Juniper |J 系列 |PolicyBased：JunOS 10.4r9<br>RouteBased：JunOS 11.4 |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) |
-| Juniper |ISG |ScreenOS 6.3 |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) |
-| Juniper |SSG |ScreenOS 6.2 |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |
-| Microsoft |路由和远程访问服务 |Windows Server 2012 |不兼容 |[配置示例](https://go.microsoft.com/fwlink/p/?LinkId=717761) |
+| Juniper |SRX |PolicyBased：JunOS 10.2<br>Routebased：JunOS 11.4 |支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
+| Juniper |J 系列 |PolicyBased：JunOS 10.4r9<br>RouteBased：JunOS 11.4 |支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
+| Juniper |ISG |ScreenOS 6.3 |支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
+| Juniper |SSG |ScreenOS 6.2 |支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
+| Juniper |MX |JunOS 12.x|支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
+| Microsoft |路由和远程访问服务 |Windows Server 2012 |不兼容 |支持 |
 | 打开系统 AG |任务控制安全网关 |不适用 |[配置指南](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |不兼容 |
 | Palo Alto Networks |运行 PAN-OS 的所有设备 |PAN-OS<br>PolicyBased：6.1.5 或更高版本<br>RouteBased：7.1.4 |[配置指南](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[配置指南](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
 | ShareTech | Next Generation UTM（NU 系列） | 9.0.1.3 | 不兼容 | [配置指南](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
@@ -205,7 +205,7 @@ ms.locfileid: "51687531"
 
 ### <a name="feb-16-2017"></a>2017 年 2 月 16 日
 
-**早于 7.1.4 版的 Palo Alto Networks 设备**（针对 Azure 基于路由的 VPN）：如果通过 PAN-OS 版本早于 7.1.4 的 Palo Alto Networks 使用 VPN 设备，并且遇到 Azure 基于路由的 VPN 网关的连接问题，请执行以下步骤：
+**早于 7.1.4 版的 Palo Alto Networks 设备**（针对 Azure 基于路由的 VPN）：如果使用的是早于 7.1.4 版的 Palo Alto Networks VPN 设备，并且遇到 Azure 基于路由的 VPN 网关的连接问题，请执行以下步骤：
 
 1. 检查 Palo Alto Networks 设备的固件版本。 如果 PAN-OS 版本低于 7.1.4，请升级到 7.1.4。
 2. 连接到 Azure VPN 网关时，请在 Palo Alto Networks 设备上将阶段 2 SA（或快速模式 SA）生存期更改为 28,800 秒（8 小时）。

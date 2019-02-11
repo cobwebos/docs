@@ -4,15 +4,15 @@ description: 概述 Azure Migrate 服务。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 10/23/2018
+ms.date: 01/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 85873dc023e63b7cc9f5ba3ff87214c49ac16e34
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c8aa7050163c2b58ca68adcf9a9b4d0bc96bb126
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246729"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808351"
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
 
@@ -22,22 +22,28 @@ Azure Migrate 服务会评估要迁移到 Azure 的本地工作负荷。 该服�
 
 Azure Migrate 有助于：
 
-- **评估 Azure 迁移就绪性**：评估本地计算机是否适合在 Azure 中运行。
-- **获取大小建议**：获取 Azure VM 的大小建议，具体取决于本地 VM 的性能历史记录。
+- **评估 Azure 就绪性**：评估本地计算机是否适合在 Azure 中运行。
+- **获取大小建议**：根据本地 VM 的性能历史记录来获取 Azure VM 的大小建议。
 - **估算每月成本**：获取在 Azure 中运行本地计算机的估算成本。  
-- **充满信心地进行迁移**：将本地计算机的依赖关系可视化，创建可以一起进行评估和迁移的计算机组。
+- **充满信心地进行迁移**：将本地计算机的依赖项可视化，创建将进行评估并一起迁移的计算机组。
 
 ## <a name="current-limitations"></a>当前限制
 
-- 只能评估要迁移到 Azure VM 的本地 VMware 虚拟机 (VM)。 VMware VM 必须通过 vCenter Server（5.5、6.0 或 6.5 版）进行管理。
+- 只能评估要迁移到 Azure VM 的本地 VMware 虚拟机 (VM)。 VMware VM 必须通过 vCenter Server（5.5、6.0、6.5 或 6.7 版）进行管理。
 - 若要评估 Hyper-VM 和物理服务器，请使用 [Azure Site Recovery 部署规划器](https://aka.ms/asr-dp-hyperv-doc)进行 Hyper-V 评估，使用我们的[合作伙伴工具](https://azure.microsoft.com/migration/partners/)进行物理计算机评估。
 - 一次发现最多可以发现 1500 个 VM，单个项目中最多可以发现 1500 个 VM。 另外，单次评估最多可以评估 1500 个 VM。
 - 若要发现更大的环境，可以拆分发现，然后创建多个项目。 [了解详细信息](how-to-scale-assessment.md)。 Azure Migrate 最多允许每个订阅 20 个项目。
 - Azure Migrate 仅支持使用托管磁盘进行迁移评估。
--  只能在地理位置为“美国”的区域创建一个 Azure Migrate 项目。 但是，可以计划到任意目标 Azure 位置的迁移。
-    - 只有在本地环境中发现的元数据才会存储在迁移项目区域中。
-    - 元数据存储在以下一个地理区域：美国中西部/美国东部。
-    - 如果将依赖项可视化与 Log Analytics 工作区配合使用，则会在项目所在的区域中创建它。
+-  只能在以下地域创建 Azure Migrate 项目。 但是，这不会限制你为其他目标 Azure 位置创建评估。
+    **地域** | **存储位置**
+    --- | ---
+    Azure Government  | 美国政府弗吉尼亚州
+    亚洲 | 东南亚
+    欧洲 | 欧洲北部或欧洲西部
+    美国 | 美国东部或美国中西部
+
+    与迁移项目关联的地域用于存储本地部署环境中发现的元数据。 根据为迁移项目指定的地域，元数据存储在其中某个区域中。 如果通过创建新的 Log Analytics 工作区来使用依赖关系可视化，则会在项目所在的区域中创建工作区。
+- 依赖项可视化功能在 Azure 政府中不可用。
 
 
 ## <a name="what-do-i-need-to-pay-for"></a>需要支付哪些费用？
@@ -51,18 +57,18 @@ Azure Migrate 有助于：
 
 **属性** | **详细信息**
 --- | ---
-**目标位置** | 要迁移到的 Azure 位置。<br/><br/>Azure Migrate 目前支持 30 个区域。 [查看区域](https://azure.microsoft.com/global-infrastructure/services/)。 默认情况下，目标区域设置为“美国西部 2”。
-**存储类型** |  要在 Azure 中分配的磁盘类型。 这适用于大小调整条件为“按本地”的情况。 请将目标磁盘类型指定为高级（默认）或标准托管磁盘。 对于基于性能的大小调整，将根据虚拟机的性能数据自动提供磁盘大小调整建议。
-**“大小调整”条件** | 可以根据本地 VM 的**性能历史记录**进行大小调整，也可以**按本地**（默认设置）要求来进行，不考虑性能历史记录。
+**目标位置** | 要迁移到的 Azure 位置。<br/><br/>Azure Migrate 当前支持 33 个区域作为迁移目标位置。 [查看区域](https://azure.microsoft.com/global-infrastructure/services/)。 默认情况下，目标区域设置为“美国东部”。
+**存储类型** | 要为作为评估一部分的所有 VM 分配的托管磁盘的类型。 如果大小调整标准为“按本地大小调整”，则可以将目标磁盘类型指定为高级磁盘（默认值）、标准 SSD 磁盘或标准 HDD 磁盘。 对于基于性能的大小调整以及上述选项，还可以选择“自动”，这将确保根据 VM 的性能数据自动完成磁盘大小调整建议。 例如，如果要实现 [99.9% 的单实例 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)，则可能需要将存储类型指定为高级托管磁盘，这将确保将评估中的所有磁盘建议为高级托管磁盘磁盘。 请注意，Azure Migrate 仅支持使用托管磁盘进行迁移评估。
+**预留实例** |  是否在 Azure 中有[预留实例](https://azure.microsoft.com/pricing/reserved-vm-instances/)。 Azure Migrate 会进行相应的成本估算。
+**“大小调整”条件** | 可以根据本地 VM 的**性能历史记录**（默认设置）进行大小调整，也可以**按本地**要求来进行，而不考虑性能历史记录。
+**性能历史记录** | 默认情况下，Azure Migrate 使用过去一天的性能历史记录来评估本地计算机的性能，百分位数为 95%。
+**舒适因子** | Azure Migrate 在评估期间会考虑到缓冲（舒适因子）。 该缓冲应用到 VM 的机器使用率数据（CPU、内存、磁盘和网络）上。 舒适因子考虑到季节性使用特点、短期性能历史记录，以及未来使用量可能会增加等问题。<br/><br/> 例如，一个使用率为 20% 的 10 核 VM 通常相当于一个 2 核 VM。 但是，如果舒适因子为 2.0x，则结果就变成一个 4 核 VM。 默认的舒适设置为 1.3x。
+**VM 系列** | 用于大小评估的 VM 系列。 例如，如果不打算将生产环境迁移到 Azure 中的 A 系列 VM，可以从列表或系列中排除 A 系列。 大小调整仅取决于所选系列。   
+**货币** | 计费货币。 默认为美元。
+**折扣 (%)** | 基于 Azure 套餐获得的任何特定订阅的折扣。 默认设置是 0%。
+**VM 运行时间** | 如果 VM 不会在 Azure 中全天候运行，则可指定运行持续时间（每月的天数和每天的小时数），然后系统就会进行相应的成本估算。 默认值为“每月 31 天和每天 24 小时”。
 **Azure 产品/服务** | 加入的 [Azure 套餐](https://azure.microsoft.com/support/legal/offer-details/)。 Azure Migrate 会进行相应的成本估算。
 **Azure 混合权益** | 是否有软件保证，以及是否有资格享受带成本折扣的 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
-**预留实例** |  是否在 Azure 中有[预留实例](https://azure.microsoft.com/pricing/reserved-vm-instances/)。 Azure Migrate 会进行相应的成本估算。
-**VM 运行时间** | VM 将在 Azure 中运行的持续时间。 会相应地进行成本估算。
-**定价层** | 目标 Azure VM 的[定价层（基本/标准）](../virtual-machines/windows/sizes-general.md)。 例如，如果打算迁移生产环境，则可考虑“标准”层，其提供的 VM 延迟较低但成本可能较高。 而在测试环境中，则可使用基本层，其延迟较高，但成本较低。 默认使用[标准](../virtual-machines/windows/sizes-general.md)层。
-**性能历史记录** | 默认情况下，Azure Migrate 使用过去一天的性能历史记录来评估本地计算机的性能，百分位数为 95%。
-**VM 系列** | 用于大小评估的 VM 系列。 例如，如果不打算将生产环境迁移到 Azure 中的 A 系列 VM，可以从列表或系列中排除 A 系列。 大小调整仅取决于所选系列。   
-**舒适因子** | Azure Migrate 在评估期间会考虑到缓冲（舒适因子）。 该缓冲应用到 VM 的机器使用率数据（CPU、内存、磁盘和网络）上。 舒适因子考虑到季节性使用特点、短期性能历史记录，以及未来使用量可能会增加等问题。<br/><br/> 例如，一个使用率为 20% 的 10 核 VM 通常相当于一个 2 核 VM。 但是，如果舒适因子为 2.0x，则结果就变成一个 4 核 VM。 默认的舒适设置为 1.3x。
-
 
 ## <a name="how-does-azure-migrate-work"></a>Azure Migrate 工作原理
 

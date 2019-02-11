@@ -6,24 +6,24 @@ author: sachinpMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: aa1d98f5ea2db0cc549b60e33769c8628181721b
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 131a2102ec3ede930de3cad7516e486d793fec3d
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686596"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250549"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>SQL 数据仓库容量限制
 Azure SQL 数据仓库的各个组件允许的最大值。
 
 ## <a name="workload-management"></a>工作负荷管理
-| 类别 | Description | 最大值 |
+| 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
-| [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |单个 SQL 数据仓库的最大 DWU | 第 1 代：DW6000<br></br>第 2 代：DW30000c |
+| [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |单个 SQL 数据仓库的最大 DWU | Gen1：DW6000<br></br>Gen2：DW30000c |
 | [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |每个服务器的默认 DTU |54,000<br></br>默认情况下，每个 SQL Server（例如 myserver.database.windows.net）的 DTU 配额为 54,000，最多可以允许 DW6000c。 此配额仅仅只是安全限制。 可以通过[创建支持票证](sql-data-warehouse-get-started-create-support-ticket.md)并选择“配额”作为请求类型来增加配额。  要计算 DTU 需求，请将所需的 DWU 总数乘以 7.5 或将所需的 cDWU 总数乘以 9.0。 例如：<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW6000c x 9.0 = 54,000 DTU。<br></br>可以在门户中的 SQL Server 选项中查看当前 DTU 消耗量。 已暂停和未暂停的数据库都计入 DTU 配额。 |
 | 数据库连接 |并发打开的会话 |1024<br/><br/>1024 个活动会话每一个都能同时向 SQL 数据仓库数据库提交请求。 请注意，可并发执行的查询数量是有限制的。 当超出并发限制时，请求将进入内部队列等待处理。 |
 | 数据库连接 |预处理语句的最大内存 |20 MB |
@@ -31,9 +31,9 @@ Azure SQL 数据仓库的各个组件允许的最大值。
 | [tempdb](sql-data-warehouse-tables-temporary.md) |最大 GB |每 DW100 399 GB。 因此，在 DWU1000 的情况下，tempdb 的大小为 3.99 TB。 |
 
 ## <a name="database-objects"></a>数据库对象
-| 类别 | Description | 最大值 |
+| 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
-| 数据库 |最大大小 | 第 1 代：磁盘压缩后为 240TB。 此空间与 tempdb 或日志空间无关，因此，此空间专用于永久表。  聚集列存储压缩率估计为 5 倍。  此压缩率允许数据库在所有表都为聚集列存储（默认表类型）的情况下增长到大约 1 PB。 <br/><br/> 第 2 代：240TB 用于行存储，无限存储空间用于列存储表 |
+| 数据库 |最大大小 | Gen1：磁盘上压缩后 240 TB。 此空间与 tempdb 或日志空间无关，因此，此空间专用于永久表。  聚集列存储压缩率估计为 5 倍。  此压缩率允许数据库在所有表都为聚集列存储（默认表类型）的情况下增长到大约 1 PB。 <br/><br/> Gen2：240TB 用于行存储，无限存储空间用于列存储表 |
 | 表 |最大大小 |磁盘上压缩后 60 TB |
 | 表 |每个数据库的表数 | 100,000 |
 | 表 |每个表的列数 |1024 个列 |
@@ -52,12 +52,12 @@ Azure SQL 数据仓库的各个组件允许的最大值。
 | 查看 |每个视图的列数 |1,024 |
 
 ## <a name="loads"></a>加载
-| 类别 | Description | 最大值 |
+| 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
 | Polybase 加载 |每行 MB 数 |1<br/><br/>Polybase 仅加载到小于 1 MB 的行，并且无法加载到 VARCHAR(MAX)、NVARCHAR(MAX) 或 VARBINARY(MAX)。<br/><br/> |
 
 ## <a name="queries"></a>查询
-| 类别 | Description | 最大值 |
+| 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
 | Query |用户表的排队查询数。 |1000 |
 | Query |系统视图的并发查询数。 |100 |
@@ -69,7 +69,7 @@ Azure SQL 数据仓库的各个组件允许的最大值。
 | SELECT |每个 JOIN 的列数 |1024 个列<br/><br/>JOIN 中的列数始终不得超过 1024。 无法保证最大值始终为 1024。 如果 JOIN 计划需要列数多于 JOIN 结果的临时表，那么将 1024 限制应用于此临时表。 |
 | SELECT |每个 GROUP BY 列的字节数。 |8060<br/><br/>GROUP BY 子句中的列的字节数最大为 8060 字节。 |
 | SELECT |每个 ORDER BY 列的字节数 |8060 字节<br/><br/>ORDER BY 子句中的列的字节数最大为 8060 字节 |
-| 每个语句的标识符数 |被引用的标识符数 |65,535<br/><br/>SQL 数据仓库会限制一条查询的单个表达式中可包含的标识符数。 超过此数字将导致 SQL Server 错误 8632。 有关详细信息，请参阅 [Internal error: An expression services limit has been reached](https://support.microsoft.com/en-us/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a)（内部错误：已达到表达式服务限制）。 |
+| 每个语句的标识符数 |被引用的标识符数 |65,535<br/><br/>SQL 数据仓库会限制一条查询的单个表达式中可包含的标识符数。 超过此数字将导致 SQL Server 错误 8632。 有关详细信息，请参阅[内部错误：已达到表达式服务限制](https://support.microsoft.com/en-us/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a)。 |
 | 字符串文本 | 一个语句中字符串文本的数量 | 20,000 <br/><br/>SQL 数据仓库会限制单个查询表达式中可包含的字符串常量数。 超过此数字将导致 SQL Server 错误 8632。|
 
 ## <a name="metadata"></a>元数据

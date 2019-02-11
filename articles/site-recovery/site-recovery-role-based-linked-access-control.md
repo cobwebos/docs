@@ -1,17 +1,17 @@
 ---
 title: 使用基于角色的访问控制 (RBAC) 管理 Azure Site Recovery 访问 | Microsoft Docs
-description: 本文介绍如何应用基于角色的访问控制 (RBAC) 管理 Azure Site Recovery 访问。
+description: 本文介绍如何应用基于角色的访问控制 (RBAC) 以管理 Azure Site Recovery 访问。
 ms.service: site-recovery
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 19d41d8c9b1a54cefc09190531b064d640048385
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 5a6ef10f03bb5e108c226fe3d68f1dec67e6164a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212040"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218064"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>使用基于角色的访问控制 (RBAC) 管理 Site Recovery 访问
 
@@ -69,7 +69,7 @@ Azure Site Recovery 提供了 3 个用于控制 Site Recovery 管理操作的内
 考虑分别为 Resource Manager 和经典部署模型使用[内置角色](../role-based-access-control/built-in-roles.md)“虚拟机参与者”和“经典虚拟机参与者”。
 
 ## <a name="next-steps"></a>后续步骤
-* [基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)：Azure 门户中的 RBAC 入门。
+* [基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)：在 Azure 门户中开始使用 RBAC。
 * 了解如何通过以下方式管理访问权限：
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)

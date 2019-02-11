@@ -1,19 +1,20 @@
 ---
-title: Azure AD Connect：ADSyncConfig PowerShell 参考 |Microsoft Docs
+title: Azure AD Connect：ADSyncConfig PowerShell 参考 |Microsoft 文档
 description: 本文档提供 ADSyncConfig.psm1 PowerShell 模块的参考信息。
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.date: 10/19/2018
-ms.component: hybrid
+ms.date: 01/24/2019
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 84be07eeb112711de35853162b798b5f6ed0b2aa
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.topic: reference
+ms.openlocfilehash: 01b138fff437e41366b8442729fba89c82ed9073
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422756"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487959"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect：ADSyncConfig PowerShell 参考
 以下文档提供了 Azure AD Connect 附带的 ADSyncConfig.psm1 PowerShell 模块的参考信息。
@@ -1215,7 +1216,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
 ### <a name="description"></a>说明
 Set-ADSyncUnifiedGroupWritebackPermissions 函数将为 AD 同步帐户提供所需的权限，其中包括以下内容：
 1.
-针对所有对象类型和子对象的一般读取/写入、删除、删除树和创建\删除子元素
+针对所有组对象类型和子对象的一般读取/写入、删除、删除树和创建\删除子级
 
 这些权限适用于林中的所有域。
 （可选）可在 ADobjectDN 参数中提供 DistinguishedName，以仅在该 AD 对象上设置这些权限（包括对子对象的继承）。

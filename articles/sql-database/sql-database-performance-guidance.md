@@ -7,17 +7,17 @@ ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: juliemsft
+ms.author: jrasnick
+ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: 95e09532616b4aff05dad7440dcda6872fd27484
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.date: 01/25/2019
+ms.openlocfilehash: c4776d2c6f8ca2b23ba2df379b2682a6844f9a1b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645518"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461587"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>手动优化 Azure SQL 数据库中的查询性能
 
@@ -235,7 +235,7 @@ ORDER BY start_time DESC
 
 ### <a name="cross-database-sharding"></a>跨数据库分片
 
-由于 Azure SQL 数据库运行在商用硬件上，因此，单一数据库的容量限制低于传统的本地 SQL Server 安装。 某些客户使用分片技术在数据库操作不符合 Azure SQL 数据库中单一数据库的限制时，将这些操作分摊到多个数据库上。 在 Azure SQL 数据库中使用分片技术的大多数客户将单个维度的数据拆分到多个数据库上。 对于该方法，需要了解 OLTP 应用程序执行的事务经常仅适用于架构中的一行或少数几行。
+由于 Azure SQL 数据库在商品硬件上运行，因此单一数据库的容量限制低于传统的本地 SQL Server 安装。 在数据库操作超出 Azure SQL 数据库中单一数据库的限制时，一些客户使用分片技术将这些操作分摊到多个数据库上。 在 Azure SQL 数据库中使用分片技术的大多数客户将单个维度的数据拆分到多个数据库上。 对于该方法，需要了解 OLTP 应用程序执行的事务经常仅适用于架构中的一行或少数几行。
 
 > [!NOTE]
 > SQL 数据库现在提供一个库来帮助分片。 有关详细信息，请参阅[弹性数据库客户端库概述](sql-database-elastic-database-client-library.md)。
@@ -258,7 +258,7 @@ SQL Server 用户经常将许多功能集中在单一数据库内。 例如，�
 
 ### <a name="application-tier-caching"></a>应用程序层缓存
 
-某些数据库应用程序包含具有大量读取操作的工作负荷。 缓存层可减少数据库上的负载，还有可能降低支持使用 Azure SQL 数据库的数据库所需的计算大小。 如果读取工作负荷较重，通过 [Azure Redis 缓存](https://azure.microsoft.com/services/cache/)，只需读取数据一次（也许只需对每个应用层计算机读取一次，具体取决于其配置方式），然后将该数据存储在 SQL 数据库外部。 这样可降低数据库负载（CPU 和读取 IO），但对于事务一致性有影响，因为从缓存读取的数据可能与数据库中数据不同步。 虽然许多应用程序可接受一定的不一致，但并非所有工作负荷都是这样。 应该先完全了解任何应用程序要求，再实施应用程序层缓存策略。
+某些数据库应用程序包含具有大量读取操作的工作负荷。 缓存层可减少数据库上的负载，还有可能降低支持使用 Azure SQL 数据库的数据库所需的计算大小。 通过 [Azure Redis 缓存](https://azure.microsoft.com/services/cache/)，如果有一个读取作业繁重的工作负荷，可以读取数据一次（或者也许可以按应用层计算机读取一次，具体取决于其配置方式），然后将该数据存储在 SQL 数据库外部。 这样可降低数据库负载（CPU 和读取 IO），但对于事务一致性有影响，因为从缓存读取的数据可能与数据库中数据不同步。 虽然许多应用程序可接受一定的不一致，但并非所有工作负荷都是这样。 应该先完全了解任何应用程序要求，再实施应用程序层缓存策略。
 
 ## <a name="next-steps"></a>后续步骤
 

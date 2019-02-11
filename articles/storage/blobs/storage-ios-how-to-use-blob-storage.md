@@ -6,23 +6,21 @@ author: michaelhauss
 ms.service: storage
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 11/20/2018
 ms.author: michaelhauss
-ms.component: blobs
-ms.openlocfilehash: 43e9acb79b363e8f2cb00f6a4676d450c097bf3e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: blobs
+ms.openlocfilehash: 9e4c717b3b205d6c8fdd309dada918eb6df35181
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261989"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244753"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>如何通过 iOS 使用 Blob 存储
 
 本文演示如何使用 Microsoft Azure Blob 存储执行常见任务。 示例采用 Objective-C 编写，并使用了[适用于 iOS 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-ios)。 涉及的任务包括上传、列出、下载和删除 Blob。 有关 Blob 的详细信息，请参阅[后续步骤](#next-steps)部分。 也可下载[示例应用](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample)，快速了解如何在 iOS 应用程序中使用 Azure 存储。
 
-## <a name="what-is-blob-storage"></a>什么是 Blob 存储？
-
-[!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
+若要了解有关 Blob 存储的详细信息，请参阅 [Azure Blob 存储简介](storage-blobs-introduction.md)。
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
@@ -131,9 +129,9 @@ Azure 存储空间中的每个 Blob 都必须驻留在一个容器中。 以下�
 ## <a name="set-container-permissions"></a>设置容器权限
 默认情况下，容器的权限配置为**专用**访问权限。 但是，容器提供了几个不同的容器访问权限选项：
 
-* **专用**：仅帐户所有者可读取容器和 Blob 数据。
-* **Blob**：可通过匿名请求读取此容器中的 Blob 数据，但容器数据不可用。 客户端无法通过匿名请求枚举容器中的 Blob。
-* **容器**：可通过匿名请求读取容器和 Blob 数据。 客户端可以通过匿名请求枚举容器中的 Blob，但无法枚举存储帐户中的容器。
+* **专用**：仅帐户所有者可以读取容器和 Blob 数据。
+* **Blob**：可以通过匿名请求读取此容器中的 Blob 数据，但容器数据不可用。 客户端无法通过匿名请求枚举容器中的 Blob。
+* **容器**：可以通过匿名请求读取容器和 Blob 数据。 客户端可以通过匿名请求枚举容器中的 Blob，但无法枚举存储帐户中的容器。
 
 以下示例演示如何创建一个具有**容器**访问权限的容器，这会允许 Internet 上的所有用户对其进行公共只读访问：
 
@@ -218,12 +216,12 @@ Azure 存储空间中的每个 Blob 都必须驻留在一个容器中。 以下�
 * **prefix** - 可以指定要用于 blob 列出的前缀。 将仅列出以该前缀开头的 blob。
 * **useFlatBlobListing** - 如[命名和引用容器和 blob](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) 部分中所述，虽然 Blob 服务是平面存储方案，但可通过命名具有路径信息的 blob 来创建虚拟层次结构。 但是，目前不支持非平面列表。 此功能即将支持。 目前，此值应为 **YES**。
 * **blobListingDetails** - 可指定在列出 blob 时要包含哪些项
-  * AZSBlobListingDetailsNone：仅列出已提交的 blob，不返回 blob 元数据。
-  * AZSBlobListingDetailsSnapshots：列出已提交的 blob 和 blob 快照。
-  * AZSBlobListingDetailsMetadata：检索列表中返回的每个 blob 的 blob 元数据。
-  * AZSBlobListingDetailsUncommittedBlobs：列出已提交和未提交的 blob。
-  * AZSBlobListingDetailsCopy：在列表中包括复制属性。
-  * AZSBlobListingDetailsAll：列出所有可用的已提交 blob、未提交 blob 和快照，并返回这些 blob 的所有元数据和复制状态。
+  * _AZSBlobListingDetailsNone_：仅列出已提交的 blob，并且不返回 blob 元数据。
+  * _AZSBlobListingDetailsSnapshots_：列出提交的 blob 和 blob 快照。
+  * _AZSBlobListingDetailsMetadata_：检索列表中返回的每个 blob 的 blob 元数据。
+  * _AZSBlobListingDetailsUncommittedBlobs_：列出已提交和未提交的 blob。
+  * _AZSBlobListingDetailsCopy_：在列表中包含复制属性。
+  * _AZSBlobListingDetailsAll_：列出所有可用的已提交 blob、未提交 blob 和快照，并返回这些 blob 的所有元数据和复制状态。
 * **maxResults** - 此操作可返回的结果的最大数目。 使用 -1 以不设置限制。
 * **completionHandler** - 要使用列表操作的结果执行的代码块。
 

@@ -1,21 +1,22 @@
 ---
-title: 使用 Azure 门户为 Azure 事件网格创建 Blob 存储事件 | Microsoft Docs
-description: 使用 Azure 事件网格和 Azure 门户创建 Blob 存储帐户并订阅其事件。
+title: 将 Blob 存储事件发送到 Web 终结点 - 门户 | Microsoft Docs
+description: 使用 Azure 事件网格和 Azure 门户创建 Blob 存储帐户并订阅其事件。 将事件发送到 Webhook。
 services: event-grid
 keywords: ''
-author: tfitzmac
-ms.author: tomfitz
+author: spelluru
+ms.author: spelluru
 ms.date: 10/17/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 44e258069515ad6c409c193312f3a714a5096541
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec18
+ms.openlocfilehash: 2b8b06a540af99cad45bed4068dd55773eaf38d0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404216"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468567"
 ---
-# <a name="create-and-route-blob-storage-events-with-the-azure-portal-and-event-grid"></a>使用 Azure 门户和事件网格创建和路由 Blob 存储事件
+# <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>快速入门：利用 Azure 门户将 Blob 存储事件路由到 Web 终结点
 
 Azure 事件网格是针对云的事件处理服务。 在本文中，你将使用 Azure 门户创建 Blob 存储帐户、订阅该 Blob 存储的事件，并触发事件来查看结果。 通常，你会将事件发送到处理事件数据并执行操作的终结点。 但是，为了简化本文，你将事件发送到收集并显示消息的 Web 应用。
 

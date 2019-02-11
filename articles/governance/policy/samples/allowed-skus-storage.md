@@ -1,20 +1,19 @@
 ---
-title: Azure Policy 示例 - 允许用于存储帐户和虚拟机的 SKU
+title: 示例 - 允许用于存储帐户和虚拟机的 SKU
 description: 此示例策略要求存储帐户和虚拟机使用已批准的 SKU。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 09/18/2018
+ms.date: 01/23/2019
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: af660d594e302ecc6b7b0d6c8c3386674b3f973d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 483c2dc1c90ac5193784f5badb8a89892bcacc11
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982845"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857057"
 ---
 # <a name="allowed-skus-for-storage-accounts-and-virtual-machines"></a>允许用于存储帐户和虚拟机的 SKU
 
@@ -40,9 +39,9 @@ ms.locfileid: "46982845"
 $policydefinitions = "https://raw.githubusercontent.com/Azure/azure-policy/master/samples/PolicyInitiatives/skus-for-multiple-types/azurepolicyset.definitions.json"
 $policysetparameters = "https://raw.githubusercontent.com/Azure/azure-policy/master/samples/PolicyInitiatives/skus-for-multiple-types/azurepolicyset.parameters.json"
 
-$policyset= New-AzureRmPolicySetDefinition -Name "skus-for-multiple-types" -DisplayName "Allowed SKUs for Storage Accounts and Virtual Machines" -Description "This policy allows you to speficy what skus are allowed for storage accounts and virtual machines" -PolicyDefinition $policydefinitions -Parameter $policysetparameters 
+$policyset= New-AzPolicySetDefinition -Name "skus-for-multiple-types" -DisplayName "Allowed SKUs for Storage Accounts and Virtual Machines" -Description "This policy allows you to speficy what skus are allowed for storage accounts and virtual machines" -PolicyDefinition $policydefinitions -Parameter $policysetparameters 
  
-New-AzureRmPolicyAssignment -PolicySetDefinition $policyset -Name <assignmentName> -Scope <scope>  -LISTOFALLOWEDSKUS_1 <VM SKUs> -LISTOFALLOWEDSKUS_2 <Storage Account SKUs>
+New-AzPolicyAssignment -PolicySetDefinition $policyset -Name <assignmentName> -Scope <scope>  -LISTOFALLOWEDSKUS_1 <VM SKUs> -LISTOFALLOWEDSKUS_2 <Storage Account SKUs>
 ```
 
 ### <a name="clean-up-powershell-deployment"></a>清理 PowerShell 部署
@@ -50,8 +49,8 @@ New-AzureRmPolicyAssignment -PolicySetDefinition $policyset -Name <assignmentNam
 运行以下命令删除策略分配和定义。
 
 ```azurepowershell-interactive
-Remove-AzureRmPolicyAssignment -Name <assignmentName>
-Remove-AzureRmPolicySetDefinitions -Name "skus-for-multiple-types"
+Remove-AzPolicyAssignment -Name <assignmentName>
+Remove-AzPolicySetDefinitions -Name "skus-for-multiple-types"
 ```
 
 ## <a name="deploy-with-azure-cli"></a>使用 Azure CLI 进行部署

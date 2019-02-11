@@ -2,21 +2,21 @@
 title: Azure 事件网格资源组事件架构
 description: 介绍针对 Azure 事件网格中的资源组事件提供的属性
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: reference
-ms.date: 10/12/2018
-ms.author: tomfitz
-ms.openlocfilehash: ffc9eba251cbf4d9e2542791d90943ecdd1a972a
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.date: 01/12/2019
+ms.author: spelluru
+ms.openlocfilehash: 2b570fdb42c29c6ad68add32be660ef57f1eec1f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310566"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468295"
 ---
 # <a name="azure-event-grid-event-schema-for-resource-groups"></a>资源组的 Azure 事件网格事件架构
 
-本文提供资源组事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
+本文提供资源组事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
 Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资源更改或操作相关。 主要区别是资源组针对资源组中的资源发出事件，Azure 订阅针对跨订阅的资源发出事件。
 
@@ -34,7 +34,7 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 
 资源组可从 Azure 资源管理器发出管理事件，例如，在创建 VM 或删除存储帐户时。
 
-| 事件类型 | Description |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Resources.ResourceActionCancel | 在资源操作被取消时引发。 |
 | Microsoft.Resources.ResourceActionFailure | 在资源操作失败时引发。 |
@@ -234,7 +234,7 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 
 事件具有以下顶级数据：
 
-| 属性 | 类型 | Description |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
@@ -247,7 +247,7 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | authorization | 对象 | 操作请求的授权。 |
 | 声明 | 对象 | 声明的属性。 有关详细信息，请参阅 [JWT 规范](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |

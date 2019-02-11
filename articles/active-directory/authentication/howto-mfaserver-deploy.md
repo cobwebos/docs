@@ -3,19 +3,19 @@ title: Azure 多重身份验证服务器入门 | Microsoft 文档
 description: 本地 Azure MFA 服务器分步入门
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: d69addac0647513e00663110ac82eef343b77983
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 8ce4b37f1471fe0adeac4665dcf73e15bb0f7a37
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364612"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077499"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure 多重身份验证服务器入门
 
@@ -45,7 +45,7 @@ ms.locfileid: "46364612"
 
 请确保用于 Azure 多重身份验证的服务器满足以下要求：
 
-| Azure 多重身份验证服务器要求 | Description |
+| Azure 多重身份验证服务器要求 | 说明 |
 |:--- |:--- |
 | 硬件 |<li>200 MB 硬盘空间</li><li>有 x32 或 x64 功能的处理器</li><li>1 GB 或更大的 RAM</li> |
 | 软件 |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008、SP1、SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003、SP1、SP2</li><li>Windows 10</li><li>Windows 8.1，所有版本</li><li>Windows 8，所有版本</li><li>Windows 7，所有版本</li><li>Windows Vista，所有版本、SP1、SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 或更高版本（如果要安装用户门户或 Web 服务 SDK）</li> |

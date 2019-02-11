@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 适用于 Windows 的 Azure Kubernetes 群集
+title: （已弃用）快速入门 - 适用于 Windows 的 Azure Kubernetes 群集
 description: 快速学习在 Azure 容器服务中使用 Azure CLI 为 Windows 容器创建 Kubernetes 群集。
 services: container-service
 author: dlepow
@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 24659f60e44dc306451528cc7bfb823ad14268a6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d7ce702bb726fb89780d251f31023c9490112c36
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946147"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659382"
 ---
-# <a name="deploy-kubernetes-cluster-for-windows-containers"></a>为 Windows 容器部署 Kubernetes 群集
+# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>为 Windows 容器部署 Kubernetes 群集
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南详细介绍如何在 [Azure 容器服务](../container-service-intro.md)中使用 Azure CLI 部署 [Kubernetes](https://kubernetes.io/docs/home/) 群集。 部署群集后，使用 Kubernetes `kubectl` 命令行工具连接到群集，并部署第一个 Windows 容器。
 
@@ -65,7 +65,7 @@ az acs create --orchestrator-type=kubernetes \
 
 若要从客户端计算机连接到 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/)。 
 
-如果使用 Azure CloudShell，则 `kubectl` 已安装。 如果想在本地安装，可以使用 [az acs kubernetes install-cli](/cli/azure/acs/kubernetes#install-cli) 命令。
+如果使用 Azure CloudShell，则 `kubectl` 已安装。 如果想在本地安装，可以使用 [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) 命令。
 
 以下 Azure CLI 示例向系统安装 `kubectl`。 在 Windows 上，以管理员身份运行此命令。
 
@@ -76,7 +76,7 @@ az acs kubernetes install-cli
 
 ## <a name="connect-with-kubectl"></a>使用 kubectl 进行连接
 
-若要配置 `kubectl` 以连接到 Kubernetes 群集，请运行 [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) 命令。 下面的示例下载 Kubernetes 群集的群集配置。
+若要配置 `kubectl` 以连接到 Kubernetes 群集，请运行 [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes) 命令。 下面的示例下载 Kubernetes 群集的群集配置。
 
 ```azurecli-interactive 
 az acs kubernetes get-credentials --resource-group=myResourceGroup --name=myK8sCluster

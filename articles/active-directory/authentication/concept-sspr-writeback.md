@@ -3,19 +3,19 @@ title: 本地密码写回与 Azure AD SSPR 的集成
 description: 将云密码写回到本地 AD 基础结构
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 01/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 3d9d6aef4fafd6013c86fd5d5883222c0f32b34d
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: f1e90e0499372f78b91f3e21284f37178aff70ff
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319364"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075629"
 ---
 # <a name="what-is-password-writeback"></a>什么是密码写回？
 
@@ -30,19 +30,19 @@ ms.locfileid: "49319364"
 > [!WARNING]
 > 当 [Azure访问控制服务 (ACS) 于 2018 年 11 月 7 日停用时](../develop/active-directory-acs-migration.md)，密码写回将不再用于使用 Azure AD Connect 版本 1.0.8641.0 及更早版本的客户。 届时，Azure AD Connect 版本 1.0.8641.0 及更早版本将不再允许进行密码写回，因为它们依赖于 ACS 来实现该功能。
 >
-> 要避免服务中断，请从以前版本的 Azure AD Connect 升级到较新版本，请参阅文章 [Azure AD Connect：从先前版本升级到最新版本](../hybrid/how-to-upgrade-previous-version.md)
+> 要避免服务中断，请从以前版本的 Azure AD Connect 升级到更新版本，请参阅文章 [Azure AD Connect：从先前版本升级到最新版本](../hybrid/how-to-upgrade-previous-version.md)
 >
 
 密码写回提供：
 
 * **本地 Active Directory 密码策略的实施**：如果用户重置密码，系统会检查此请求，以确保它符合本地 Active Directory 策略要求，然后再将请求提交到相应目录。 此评审包括检查历史记录、复杂性、期限、密码筛选器，以及已在本地 Active Directory 中定义的其他任何密码限制。
 * **零延迟反馈**：密码写回是一项同步操作。 如果用户的密码不符合策略或因任何原因而无法重置或更改，用户会立即收到通知。
-* **支持访问面板和 Office 365 中的密码更改**：如果联合用户或密码哈希同步用户更改已过期或未过期的密码，这些密码会写回到本地 Active Directory 环境。
-* **支持管理员在 Azure 门户中重置密码时写回密码**：每当管理员在 [Azure 门户](https://portal.azure.com)中重置用户密码时，如果该用户是联合用户或密码哈希同步用户，则密码会写回到本地。 Office 管理门户暂不支持此功能。
+* **支持从访问面板和 Office 365 更改密码**：如果联合用户或密码哈希同步用户更改已过期或未过期的密码，这些密码会写回到本地 Active Directory 环境。
+* **支持当管理员在 Azure 门户中重置密码时写回密码**：每当管理员在 [Azure 门户](https://portal.azure.com)中重置用户密码时，如果该用户是联合用户或密码哈希同步用户，则密码会写回到本地。 Office 管理门户暂不支持此功能。
 * **不需要任何入站防火墙规则**：密码写回服务使用 Azure 服务总线中继作为基础信道。 所有通信都是通过端口 443 进行的出站通信。
 
 > [!Note]
-> 密码写回不适用于本地 Active Directory 中受保护组内的用户帐户。 有关受保护组的详细信息，请参阅 [Active Directory 中的受保护帐户和组](https://technet.microsoft.com/library/dn535499.aspx)。
+> 密码写回不适用于本地 Active Directory 中受保护组内的用户帐户。 本地 AD 中受保护组内的管理员帐户可与密码写回一起使用。 有关受保护组的详细信息，请参阅 [Active Directory 中的受保护帐户和组](https://technet.microsoft.com/library/dn535499.aspx)。
 >
 
 ## <a name="licensing-requirements-for-password-writeback"></a>密码写回的许可要求
@@ -58,9 +58,10 @@ ms.locfileid: "49319364"
 * Microsoft 365 E3 或 A3
 * Microsoft 365 E5 或 A5
 * Microsoft 365 F1
+* Microsoft 365 商业版
 
 > [!WARNING]
-> 独立 Office 365 许可计划*不支持密码写回*，要使此功能正常工作，需要使用上述计划之一。
+> 独立 Office 365 许可计划不支持“通过本地写回实现自助密码重置/更改/解锁”，要使此功能正常工作，需要使用上述计划之一。
 >
 
 ## <a name="how-password-writeback-works"></a>密码写回的工作原理
@@ -121,9 +122,9 @@ ms.locfileid: "49319364"
 
 在用户提交密码重置请求后，重置请求会先经历多个加密步骤，然后才会到达本地环境。 这些加密步骤可确保实现最高的服务可靠性和安全性。 这些步骤如下所述：
 
-* **第 1 步：使用 2048 位 RSA 密钥加密密码**：在用户提交要写回本地的密码后，提交的密码本身会使用 2048 位 RSA 密钥进行加密。
-* **第 2 步：使用 AES-GCM 进行包级加密**：使用 AES-GCM 加密整个包（密码及所需的元数据）。 此加密可防止任何可直接访问基础服务总线通道的人员查看或篡改内容。
-* **第 3 步：所有通信都是通过 TLS/SSL 进行**：与服务总线的所有通信都是在 SSL/TLS 通道中发生。 此加密可保护内容不被未经授权的第三方查看/篡改。
+* **步骤 1：使用 2048 位 RSA 密钥加密密码**：在用户提交要写回本地的密码后，提交的密码本身会使用 2048 位 RSA 密钥进行加密。
+* **步骤 2：使用 AES-GCM 进行包级加密**：使用 AES-GCM 加密整个包（密码及所需的元数据）。 此加密可防止任何可直接访问基础服务总线通道的人员查看或篡改内容。
+* **步骤 3：所有通信都是通过 TLS/SSL 进行**：与服务总线的所有通信都是在 SSL/TLS 通道中发生。 此加密可保护内容不被未经授权的第三方查看/篡改。
 * **每隔六个月自动滚动更新密钥**：每隔六个月，或者每当在 Azure AD Connect 中禁用再重新启用密码写回时，滚动更新所有密钥，确保最高的服务安全性与可靠性。
 
 ### <a name="password-writeback-bandwidth-usage"></a>密码写回带宽用量
@@ -169,4 +170,4 @@ ms.locfileid: "49319364"
 
 ## <a name="next-steps"></a>后续步骤
 
-参考教程[启用密码写回](tutorial-enable-writeback.md)来启用密码写回
+使用以下教程启用密码写回：[启用密码写回](tutorial-enable-writeback.md)

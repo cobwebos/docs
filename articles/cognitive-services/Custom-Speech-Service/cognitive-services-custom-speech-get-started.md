@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: 4bbd4c57556fd4bfd176c915e26be4a4d198418a
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7392459f0b80558aac22bd585c0d30bf4105d76f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339927"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224439"
 ---
 # <a name="get-started-with-custom-speech-service"></a>自定义语音服务入门
 
@@ -36,7 +36,7 @@ ms.locfileid: "49339927"
 ## <a name="creating-a-custom-acoustic-model"></a>创建自定义声学模型
 若要向特定域自定义声学模型，必须有一系列语音数据。 此集合包括一组语音数据音频文件，以及每个音频文件的听录文本文件。 音频数据应能够代表要使用识别器的场景
 
-例如：若要更好地识别嘈杂工厂环境中的语音，音频文件应包括嘈杂工厂中的说话人。
+例如：若要更好地识别嘈杂工厂环境中的语音，音频文件应包括嘈杂工厂中的讲话人。
 若要优化一个说话人的讲话（例如，要听录罗斯福总统的所有炉边谈话），音频文件应只包括这个说话人的多个示例。
 
 可以单击[此处](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-acoustic-model.md)，详细了解如何创建自定义声学模型。

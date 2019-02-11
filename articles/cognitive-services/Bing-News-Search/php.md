@@ -1,35 +1,38 @@
 ---
-title: 快速入门：必应新闻搜索 API、PHP
+title: 快速入门：使用 PHP 执行新闻搜索 - 必应新闻搜索 REST API
 titlesuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以帮助你快速开始使用必应新闻搜索 API。
+description: 使用本快速入门，通过 PHP 将请求发送到必应新闻搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 9/21/2017
+ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: 0fb43bac75d677612f06b37f1ee91afba13417b5
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: c7657a3ca8ab92079b47927d98b881fa9653e0cf
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312861"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197154"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-php"></a>将必应新闻搜索 API 与 PHP 配合使用快速入门
+# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>快速入门：使用 PHP 和必应新闻搜索 REST API 执行新闻搜索
 
-本文展示了如何使用 Azure 上的 Microsoft 认知服务中包含的必应新闻搜索 API。 虽然本文采用的是 PHP，但 API 是一种 RESTful Web 服务，与任何可以发出 HTTP 请求并分析 JSON 的编程语言兼容。 
+使用本快速入门进行你的第一次必应图像搜索 API 调用并接收 JSON 响应。 这个简单的 JavaScript 应用程序会向 API 发送一个搜索查询并显示原始结果。
 
-编写的示例代码在 PHP 5.6 下工作。
-
-有关 API 的技术详细信息，请参阅 [API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference)。
+虽然此应用程序是使用 PHP 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 ## <a name="prerequisites"></a>先决条件
 
-必须拥有包含必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+* PHP 5.6 或更高版本
 
-## <a name="bing-news-search"></a>必应新闻搜索
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
+
+另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+
+## <a name="run-the-application"></a>运行应用程序
 
 [必应新闻搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) 从必应搜索引擎返回新闻结果。
 
@@ -197,8 +200,4 @@ echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [对新闻进行分页](paging-news.md)
-> [使用修饰标记来突出显示文本](hit-highlighting.md)
-> [在网上搜索新闻](search-the-web.md)  
-> [试试看](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)
-
+[创建单页 Web 应用](tutorial-bing-news-search-single-page-app.md)

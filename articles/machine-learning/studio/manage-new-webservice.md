@@ -1,29 +1,10 @@
 ---
-title: 使用机器学习 Web 服务门户 - Azure 机器学习工作室 | Microsoft Docs
-description: 可以使用 Microsoft Azure 机器学习 Web 服务门户来管理机器学习 Web 服务（新 Web 服务和经典 Web 服务）。 由于经典 Web 服务和新的 Web 服务基于不同的基础技术，针对它们的管理能力会稍有不同。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
-ms.author: amlstudiodocs
-manager: hjerez
-editor: cgronlun
-ms.assetid: b62cf2ca-dd2a-4a83-bb54-469f948fb026
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/28/2017
-ms.openlocfilehash: 78e776da17e8e068ff45e426795fa5d86a92cc79
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308658"
+title:使用 Azure 机器学习工作室 Web 服务门户 titleSuffix:Azure 机器学习工作室 description:可以使用 Microsoft Azure 机器学习 Web 服务门户来管理机器学习 Web 服务（新 Web 服务和经典 Web 服务）。 由于经典 Web 服务和新的 Web 服务基于不同的基础技术，针对它们的管理能力会稍有不同。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date:02/28/2017
 ---
-# <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>使用 Azure 机器学习 Web 服务门户管理 Web 服务
+# <a name="manage-a-web-service-using-the-azure-machine-learning-studio-web-services-portal"></a>使用 Azure 机器学习工作室 Web 服务门户管理 Web 服务
 可以使用 Microsoft Azure 机器学习 Web 服务门户来管理机器学习 Web 服务（新 Web 服务和经典 Web 服务）。 由于经典 Web 服务和新的 Web 服务基于不同的基础技术，针对它们的管理能力会稍有不同。
 
 在机器学习 Web 服务门户中，可以：
@@ -34,7 +15,7 @@ ms.locfileid: "52308658"
 * 创建、 删除或更新计费计划 （仅限于新的Web 服务）。
 * 添加和删除终结点（仅限于经典 Web 服务）
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>用于管理基于资源管理器的新 Web 服务的权限
 

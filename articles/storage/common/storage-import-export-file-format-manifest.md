@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 920f350ab5ba1e9e1703ffcc32dc8c7153624c0b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: ee53cc3a639a79e1b29ac6cd537bfb04e05b1bca
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525148"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692453"
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Azure 导入/导出服务清单文件格式
 驱动器清单文件描述 Azure Blob 存储中的 Blob 与构成导入或导出作业的驱动器上的文件之间的映射。 对于某个导入操作而言，该清单文件作为驱动器准备过程的一部分创建，在将该驱动器送至 Azure 数据中心之前已存储在驱动器上。 在导出操作过程中，Azure 导入/导出服务会在驱动器上创建并存储该清单。  
@@ -37,9 +37,9 @@ ms.locfileid: "39525148"
         Hash="md5-hash">global-properties-file-path</PropertiesPath>]  
   
       <!-- First Blob -->  
-      <Blob>  
-        <BlobPath>blob-path-relative-to-account</BlobPath>  
-        <FilePath>file-path-relative-to-transfer-disk</FilePath>  
+      <Blob>  
+        <BlobPath>blob-path-relative-to-account</BlobPath>  
+        <FilePath>file-path-relative-to-transfer-disk</FilePath>  
         [<ClientData>client-data</ClientData>]  
         [<Snapshot>snapshot</Snapshot>]  
         <Length>content-length</Length>  
@@ -47,7 +47,7 @@ ms.locfileid: "39525148"
         page-range-list-or-block-list          
         [<MetadataPath Hash="md5-hash">metadata-file-path</MetadataPath>]  
         [<PropertiesPath Hash="md5-hash">properties-file-path</PropertiesPath>]  
-      </Blob>  
+      </Blob>  
   
       <!-- Second Blob -->  
       <Blob>  
@@ -72,7 +72,7 @@ page-range-list ::=
     <PageRangeList>  
       [<PageRange Offset="page-range-offset" Length="page-range-length"   
        Hash="md5-hash"/>]  
-      [<PageRange Offset="page-range-offset" Length="page-range-length"   
+      [<PageRange Offset="page-range-offset" Length="page-range-length"   
        Hash="md5-hash"/>]  
     </PageRangeList>  
   
@@ -80,7 +80,7 @@ block-list ::=
     <BlockList>  
       [<Block Offset="block-offset" Length="block-length" [Id="block-id"]  
        Hash="md5-hash"/>]  
-      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
+      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
        Hash="md5-hash"/>]  
     </BlockList>  
 
@@ -90,14 +90,14 @@ block-list ::=
 
 下表指定了驱动器清单 XML 格式的数据元素和属性。  
   
-|XML 元素|Type|Description|  
+|XML 元素|Type|说明|  
 |-----------------|----------|-----------------|  
 |`DriveManifest`|Root 元素|清单文件的根元素。 该文件中的其他所有元素均位于此元素下方。|  
 |`Version`|属性，字符串|清单文件的版本。|  
 |`Drive`|嵌套的 XML 元素|包含每个驱动器的清单。|  
 |`DriveId`|String|驱动器的唯一驱动器标识符。 通过查询驱动器获取其序列号，即可找到该驱动器标识符。 该驱动器序列号通常还打印在该驱动器的外部。 `DriveID` 元素必须出现在清单元素中的任何 `BlobList` 元素之前。|  
 |`StorageAccountKey`|String|当且仅当未指定 `ContainerSas` 时，导入作业才需要此元素。 与作业关联的 Azure 存储帐户的帐户密钥。<br /><br /> 导出操作的清单中会省略此元素。|  
-|`ContainerSas`|String|当且仅当未指定 `StorageAccountKey` 时，导入作业才需要此元素。 用于访问与作业关联的 Blob 的容器 SAS。 有关其格式，请参阅[放置作业](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)。导出操作的清单中会省略此元素。|  
+|`ContainerSas`|String|当且仅当未指定 `StorageAccountKey` 时，导入作业才需要此元素。 用于访问与作业关联的 Blob 的容器 SAS。 有关其格式，请参阅[放置作业](/rest/api/storageimportexport/jobs)。导出操作的清单中会省略此元素。|  
 |`ClientCreator`|String|指定创建 XML 文件的客户端。 导入/导出服务不解释该值。|  
 |`BlobList`|嵌套的 XML 元素|包含作为导入或导出作业一部分的 Blob 列表。 Blob 列表中的每个 Blob 共享相同的元数据和属性。|  
 |`BlobList/MetadataPath`|String|可选。 指定磁盘上某个文件的相对路径，该文件包含针对导入操作的 Blob 列表中的 Blob 设置的默认元数据。 可以针对每个 Blob 有选择性地重写此元数据。<br /><br /> 导出操作的清单中会省略此元素。|  

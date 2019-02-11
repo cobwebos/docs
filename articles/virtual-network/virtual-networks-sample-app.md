@@ -1,12 +1,11 @@
 ---
-title: 用于 DMZ 的 Azure 示例应用程序 |Microsoft Docs
+title: 用于外围网络的 Azure 示例应用程序
+titlesuffix: Azure Virtual Network
 description: 在创建外围网络后部署此简单的 Web 应用程序以测试流量流方案
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: ''
-ms.assetid: 60340ab7-b82b-40e0-bd87-83e41fe4519c
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: 7a0f1313f8b22aba0a153563bd804435c3ef53f2
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: a8e52af1a1feb8a01ed5556efb6e153c56b25cca
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52159859"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700581"
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>用于 DMZ 的示例应用程序
 [返回安全边界最佳实践页面][HOME]
@@ -95,9 +94,9 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
           <br />
           The following sections show:
           <ul style="margin-top: 0px;">
-            <li> Local Server Time - Shows if this page is or isnt cached anywhere</li>
+            <li> Local Server Time - Shows if this page is or isn''t cached anywhere</li>
             <li> File Output - Shows that the web server is reaching AppVM01 on the backend subnet and successfully returning content</li>
-            <li> Image from the Internet - Doesnt really show anything, but it made me happy to see this when the app worked</li>
+            <li> Image from the Internet - Doesn''t really show anything, but it made me happy to see this when the app worked</li>
           </ul>
           <div style="border: 2px solid #8AC007; border-radius: 25px; padding: 20px; margin: 10px; width: 650px;">
             <b>Local Web Server Time</b>: <asp:Label runat="server" ID="lblTime" /></div>
@@ -142,7 +141,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
     Restart-Service -Name W3SVC
 
     Write-Host
-    Write-Host "Web App Creation Successfull!" -ForegroundColor Green
+    Write-Host "Web App Creation Successful!" -ForegroundColor Green
     Write-Host
 ```
 
@@ -156,7 +155,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
 5. 关闭 IE Enhanced Security 以允许更轻松地从此服务器浏览 
 
 > [!IMPORTANT]
-> **最佳实践**：绝不会关闭生产服务器上的 IE Enhanced Security，而且从生产服务器在 Web 上冲浪通常不是个好主意。 另外，打开文件共享以进行匿名访问不是个好主意，但在此处为简单起见进行了此操作。
+> **最佳做法**：绝不会关闭生产服务器上的 IE Enhanced Security，而且从生产服务器在 Web 上冲浪通常不是个好主意。 另外，打开文件共享以进行匿名访问不是个好主意，但在此处为简单起见进行了此操作。
 > 
 > 
 
@@ -189,7 +188,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
     Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0
 
     Write-Host
-    Write-Host "File Server Set up Successfull!" -ForegroundColor Green
+    Write-Host "File Server Set up Successful!" -ForegroundColor Green
     Write-Host
 ```
 

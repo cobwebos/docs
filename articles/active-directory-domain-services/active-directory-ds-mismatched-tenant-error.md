@@ -4,28 +4,28 @@ description: 了解和解决现有 Azure AD 域服务托管域的不匹配目录
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 40eb75b7-827e-4d30-af6c-ca3c2af915c7
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: ergreenl
-ms.openlocfilehash: 12611c9a4016b634cb865bbf609b1c7a6961abb7
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: d3586293574cc71011ad96fece5e5a4fdfa0b70f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155059"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191986"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>解决现有 Azure AD 域服务托管域的不匹配目录错误
 你有一个现有 Azure AD 域服务托管域。 导航到 Azure 门户并查看托管域时，会看到以下错误消息：
 
-![不匹配目录错误](.\media\getting-started\mismatched-tenant-error.png)
+![不匹配目录错误](./media/getting-started/mismatched-tenant-error.png)
 
 解决错误前，无法管理此托管域。
 
@@ -37,11 +37,11 @@ ms.locfileid: "50155059"
 
 简言之，无法在属于另一 Azure AD 租户“fabrikam.com”所有的 Azure 订阅的虚拟网络中为 Azure AD 租户“contoso.com”启用托管域。 
 
-有效配置：在此部署方案中，将为 Contoso Azure AD 租户启用 Contoso 托管域。 托管域在属于 Contoso Azure AD 租户所有的 Azure 订阅的虚拟网络中公开。 因此，托管域以及虚拟网络属于相同的 Azure AD 租户。 此配置有效，且完全受支持。
+**有效配置**：在此部署方案中，将为 Contoso Azure AD 租户启用 Contoso 托管域。 托管域在属于 Contoso Azure AD 租户所有的 Azure 订阅的虚拟网络中公开。 因此，托管域以及虚拟网络属于相同的 Azure AD 租户。 此配置有效，且完全受支持。
 
 ![有效租户配置](./media/getting-started/valid-tenant-config.png)
 
-不匹配的租户配置：在此部署方案中，将为 Contoso Azure AD 租户启用 Contoso 托管域。 然而，托管域在属于 Fabrikam Azure AD 租户所有的 Azure 订阅的虚拟网络中公开。 因此，托管域以及虚拟网络属于两个不同的 Azure AD 租户。 此配置为不匹配的租户配置，且不受支持。 必须将虚拟网络移到与托管域相同的 Azure AD 租户（即 Contoso）。 有关详细信息，请参阅[解决](#resolution)部分。
+**不匹配的租户配置**：在此部署方案中，将为 Contoso Azure AD 租户启用 Contoso 托管域。 然而，托管域在属于 Fabrikam Azure AD 租户所有的 Azure 订阅的虚拟网络中公开。 因此，托管域以及虚拟网络属于两个不同的 Azure AD 租户。 此配置为不匹配的租户配置，且不受支持。 必须将虚拟网络移到与托管域相同的 Azure AD 租户（即 Contoso）。 有关详细信息，请参阅[解决](#resolution)部分。
 
 ![不匹配的租户配置](./media/getting-started/mismatched-tenant-config.png)
 

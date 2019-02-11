@@ -6,16 +6,16 @@ author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 05/09/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1a7ea00e8bdf4fa1a22dd765e5108dce72e2d380
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: c11cdd6d1cc24d639d837993e94f3b304228634a
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307456"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299548"
 ---
 # <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>创建、更新 Azure SQL 数据仓库中表的统计信息
 用于创建和更新 Azure SQL 数据仓库中表的查询优化统计信息的建议和示例。
@@ -38,7 +38,7 @@ FROM sys.databases
 ALTER DATABASE <yourdatawarehousename> 
 SET AUTO_CREATE_STATISTICS ON
 ```
-当检测到包含联接存在谓词时，以下语句将触发自动创建统计信息：SELECT、INSERT-SELECT、CTAS、UPDATE、DELETE 和 EXPLAIN。 
+当检测到包含联接或存在谓词时，以下语句将触发自动创建统计信息：SELECT、INSERT-SELECT、CTAS、UPDATE、DELETE 和 EXPLAIN。 
 
 > [!NOTE]
 > 不在临时或外部表上创建“自动创建统计信息”。
@@ -50,7 +50,7 @@ SET AUTO_CREATE_STATISTICS ON
 > 统计信息的创建还会记录在其他用户上下文中的 [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) 中。
 > 
 
-在创建自动统计信息时，它们将采用以下格式：_WA_Sys_<以十六进制表示的 8 位列 ID>_<以十六进制表示的 8 位表 ID>。 可以通过运行 [DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=sql-server-2017) 命令查看已创建的统计信息：
+创建自动统计信息时，它们将采用以下格式：_WA_Sys_<以十六进制表示的 8 位列 ID>_<以十六进制表示的 8 位表 ID>。 可以通过运行 [DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=sql-server-2017) 命令查看已创建的统计信息：
 
 ```sql
 DBCC SHOW_STATISTICS (<tablename>, <targetname>)
@@ -337,7 +337,7 @@ EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
 
 基于所有列创建示例统计信息 
 
-## <a name="examples-update-statistics"></a>示例：更新统计信息
+## <a name="examples-update-statistics"></a>示例：Update statistics
 要更新统计信息，可以：
 
 - 更新一个统计信息对象。 指定要更新的统计信息对象名称。
@@ -388,7 +388,7 @@ UPDATE STATISTICS dbo.table1;
 ### <a name="catalog-views-for-statistics"></a>统计信息的目录视图
 这些系统视图提供有关统计信息的信息：
 
-| 目录视图 | Description |
+| 目录视图 | 说明 |
 |:--- |:--- |
 | [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |针对每个列提供一行。 |
 | [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |针对数据库中的每个对象提供一行。 |
@@ -401,7 +401,7 @@ UPDATE STATISTICS dbo.table1;
 ### <a name="system-functions-for-statistics"></a>统计信息的系统函数
 这些系统函数适合用于处理统计信息：
 
-| 系统函数 | Description |
+| 系统函数 | 说明 |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql) |上次更新统计信息对象的日期。 |
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |有关统计信息对象识别的值分布的摘要级别和详细信息。 |
@@ -416,7 +416,7 @@ SELECT
         sm.[name]                           AS [schema_name]
 ,       tb.[name]                           AS [table_name]
 ,       st.[name]                           AS [stats_name]
-,       st.[filter_definition]              AS [stats_filter_defiinition]
+,       st.[filter_definition]              AS [stats_filter_definition]
 ,       st.[has_filter]                     AS [stats_is_filtered]
 ,       STATS_DATE(st.[object_id],st.[stats_id])
                                             AS [stats_last_updated_date]

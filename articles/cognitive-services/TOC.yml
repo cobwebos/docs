@@ -14,20 +14,8 @@ items:
   items:
   - name: 创建帐户
     href: cognitive-services-apis-create-account.md
-- name: 教程
-  items:
-  - name: 使用计算机视觉开发应用
-    href: ./Computer-vision/tutorials/csharptutorial.md
-  - name: 使用语音 SDK 和 LUIS 识别意向
-    href: ./speech-service/how-to-recognize-intents-from-speech-csharp.md
-  - name: 生成 LUIS 应用
-    href: ./luis/luis-quickstart-intents-only.md
-  - name: 将文本分析与 Power BI 配合使用
-    href: ./Text-Analytics/tutorials/tutorial-power-bi-key-phrases.md
-  - name: 创建必应 Web 搜索应用
-    href: ./bing-web-search/tutorial-bing-web-search-single-page-app.md
-  - name: 创建必应图像搜索应用
-    href: ./bing-image-search/tutorial-bing-image-search-single-page-app.md
+  - name: 身份验证
+    href: authentication.md
 - name: 资源
   items:
   - name: Azure 路线图
@@ -44,9 +32,9 @@ items:
     href: http://go.microsoft.com/fwlink/?LinkId=698895
   - name: 知识库
     href: https://cognitive.uservoice.com/knowledgebase
-ms.openlocfilehash: 43358d176db8642862a49d755a766cc22dbd57b9
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 28b17af092a1e336cb830772541dcdefe472ed3a
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51630973"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320857"

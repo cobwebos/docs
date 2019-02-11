@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0b8d408482f1f6e2bcd25182208a46d28f7b4f7a
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 3cd34bf67b0d796af71036e7d14834a061803973
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633026"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628076"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>使用 HDInsight 中用于 Apache Hadoop 的 .NET SDK 运行 Apache Sqoop 作业
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -24,12 +24,11 @@ ms.locfileid: "51633026"
 
 > [!NOTE]
 > 尽管可以对基于 Windows 或 Linux 的 HDInsight 群集使用本文中的步骤，但是，只能从 Windows 客户端执行这些步骤。 若要选择其他方法，使用本文顶部的选项卡选择器。
-> 
 
 ## <a name="prerequisites"></a>先决条件
 开始学习本教程之前，必须具有以下项：
 
-* HDInsight 中的 Hadoop 群集。 有关详细信息，请参阅[创建群集和 SQL 数据库](hdinsight-use-sqoop.md#create-cluster-and-sql-database)。
+* HDInsight 中的 Apache Hadoop 群集。 有关详细信息，请参阅[创建群集和 SQL 数据库](hdinsight-use-sqoop.md#create-cluster-and-sql-database)。
 
 ## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>通过 .NET SDK 使用 HDInsight 群集上的 Sqoop
 HDInsight .NET SDK 提供 .NET 客户端库，以便可轻易从 .NET 中使用 HDInsight 群集。 本部分创建一个 C# 控制台应用程序，以便将 hivesampletable 导出到本教程前面创建的 Azure SQL 数据库表。
@@ -113,12 +112,12 @@ HDInsight .NET SDK 提供 .NET 客户端库，以便可轻易从 .NET 中使用 
 
 * 批量导出：用于将数据导出到 Microsoft SQL Server 或 Azure SQL 数据库的 Sqoop 连接器目前不支持批量插入。
 
-* 批处理：如果在执行插入时使用 `-batch` 开关，Sqoop 将执行多次插入而不是批处理插入操作。
+* 批处理：通过使用 `-batch` 开关，Sqoop 将执行多次插入而不是批处理插入操作。
 
 ## <a name="next-steps"></a>后续步骤
 现在已经学习了如何使用 Sqoop。 若要了解更多信息，请参阅以下文章：
 
-* [将 Oozie 与 HDInsight 配合使用](../hdinsight-use-oozie.md)：在 Oozie 工作流中使用 Sqoop 操作。
-* [使用 HDInsight 分析航班延误数据](../hdinsight-analyze-flight-delay-data.md)：使用 Hive 分析航班延误数据，然后使用 Sqoop 将数据导出到 Azure SQL 数据库。
+* [将 Apache Oozie 和 HDInsight 配合使用](../hdinsight-use-oozie.md)：在 Oozie 工作流中使用 Sqoop 操作。
+* [使用 HDInsight 分析航班延误数据](../hdinsight-analyze-flight-delay-data.md)：使用 Apache Hive 分析航班延误数据，然后使用 Sqoop 将数据导出到 Azure SQL 数据库。
 * [将数据上传到 HDInsight](../hdinsight-upload-data.md)：了解将数据上传到 HDInsight 或 Azure Blob 存储的其他方法。
 

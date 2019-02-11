@@ -1,21 +1,21 @@
 ---
-title: 教程：使用 C# 提取图像详细信息 - 必应图像搜索 API
+title: 教程：使用必应图像搜索 API 和 C# 提取图像详细信息
 titleSuffix: Azure Cognitive Services
 description: 使用本文创建可利用必应图像搜索 API 提取图像详细信息的 C# 应用程序。
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 9/14/2018
 ms.author: aahi
-ms.openlocfilehash: 96d011a04c97d309409062a286bdd7a17db9cda5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f92cdb152ebff219f9aaf034468c6fe973511e71
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297650"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167200"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>教程：使用必应图像搜索 API 和 C# 提取图像详细信息
 

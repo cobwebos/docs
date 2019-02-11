@@ -1,27 +1,27 @@
 ---
-title: 教程：Azure Active Directory 与 LogicMonitor 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 LogicMonitor 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 LogicMonitor 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 496156c3-0e22-4492-b36f-2c29c055e087
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: jeedes
-ms.openlocfilehash: a6bc220d15e720662eaa9605421e21ccb99892ab
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: e8cf814399661c62d38b0d95a0074a2d36c9b4b4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502339"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187634"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>教程：Azure Active Directory 与 LogicMonitor 的集成
+# <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>教程：Azure Active Directory 与 LogicMonitor 集成
 
 在本教程中，了解如何将 LogicMonitor 与 Azure Active Directory (Azure AD) 集成。
 
@@ -194,7 +194,7 @@ ms.locfileid: "39502339"
    
     ![角色和用户](./media/logicmonitor-tutorial/ic790056.png "Roles and Users")
 
-1. 单击 **“添加”**。
+1. 单击“添加”。
 
 1. 在“添加帐户”部分中，执行以下步骤：
    
@@ -242,14 +242,14 @@ ms.locfileid: "39502339"
 ### <a name="testing-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
- 
+ 
 单击访问面板中的 LogicMonitor 磁贴时，应当会自动登录到 LogicMonitor 应用程序。
 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

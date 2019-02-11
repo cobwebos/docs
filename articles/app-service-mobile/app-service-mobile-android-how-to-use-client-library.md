@@ -13,12 +13,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: b595e62e032743be2655406ac02c8db94cf708f9
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: c0e6aa34b80389689e49ac6ad3566a3a109a96e1
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281744"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158156"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>如何使用用于 Android 的 Azure 移动应用 SDK
 
@@ -189,7 +189,7 @@ public final void setPriority(Integer priority) {
 }
 ```
 
-若要了解如何在移动应用后端中创建更多表，请参阅[如何定义表控制器][15]（.NET 后端）或[使用动态架构定义表][16]（Node.js 后端）。
+若要了解如何在移动应用后端中创建更多表，请参阅[如何：定义表控制器][15]（.NET 后端）或[使用动态架构定义表][16]（Node.js 后端）。
 
 Azure 移动应用后端表定义了五个特殊字段，其中四个字段可用于客户端：
 
@@ -446,7 +446,7 @@ do {
 > [!TIP]
 > 选择适当的页面大小可在执行请求时使用的内存量、带宽用量以及完全接收数据时产生的延迟之间进行平衡。  默认值（50 个记录）适用于所有设备。  如果以独占方式在较大的内存设备上运行，最高可将页面大小增大到 500。  我们发现，将页面大小增大到超过 500 条记录会导致出现不可接受的延迟，以及消耗大量内存的问题。
 
-### <a name="chaining"></a>如何连接查询方法
+### <a name="chaining"></a>如何：连接查询方法
 
 用于查询后端表的方法是可以连接的。 链接查询方法使你能够选择已排序并分页的筛选行的特定列。 可以创建复杂的逻辑筛选器。  每个查询方法将返回一个查询对象。 若要结束方法序列并真正运行查询，可以调用 **execute** 方法。 例如：
 
@@ -672,7 +672,7 @@ ToDoItem result = mToDoTable
     .get();
 ```
 
-## <a name="untyped"></a>如何处理非类型化数据
+## <a name="untyped"></a>如何：处理非类型化数据
 
 非类型化编程模型可以提供对 JSON 序列化的完全控制。  但有时可能想要使用非类型化编程模型，这种情况也是比较常见的。 例如，如果后端表包含很多列，并且只需引用列的子集。  类型化模型需要在数据类中定义移动应用后端中定义的所有列。  用于访问数据的大多数 API 调用都与类型化编程调用类似。 主要差别在于，在非类型化模型中，要对 **MobileServiceJsonTable** 对象而不是 **MobileServiceTable** 对象调用方法。
 
@@ -767,9 +767,9 @@ public void showAllUntyped(View view) {
 
 Azure 移动应用客户端 SDK 还可使用 SQLite 数据库在本地存储服务器数据的副本，从而实现脱机数据同步。  无需建立移动连接即可针对脱机表执行操作。  脱机同步有助于提高恢复能力和性能，代价是用于解决冲突的逻辑变得更复杂。  Azure 移动应用客户端 SDK 实现以下功能：
 
-* 增量同步：仅下载已更新的和新的记录，从而减少了带宽和内存消耗。
+* 增量同步：仅下载已更新记录和新记录，从而减少了带宽和内存消耗。
 * 乐观并发：假设操作成功。  冲突解决推迟到在服务器上执行更新之后。
-* 冲突解决：SDK 检测服务器上发生的有冲突更改，并提供挂钩来提醒用户。
+* 冲突解决方法：SDK 检测何时在服务器上进行了有冲突的更改，并提供挂钩来提醒用户。
 * 软删除：将已删除的记录标记为已删除，使其他设备能够更新其脱机缓存。
 
 ### <a name="initialize-offline-sync"></a>初始化脱机同步
@@ -892,7 +892,7 @@ public void completeItem(View view) {
 
 教程已详细说明如何添加这些功能。
 
-应用服务支持使用各种外部标识提供者[对应用用户进行身份验证](app-service-mobile-android-get-started-users.md)，这些提供者包括：Facebook、Google、Microsoft 帐户、Twitter 和 Azure Active Directory。 可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 还可以在后端中使用已经过身份验证的用户的标识来实施授权规则。
+应用服务支持使用各种外部标识提供者[对应用用户进行身份验证](app-service-mobile-android-get-started-users.md)：Facebook、Google、Microsoft Account、Twitter 和 Azure Active Directory。 可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 还可以在后端中使用已经过身份验证的用户的标识来实施授权规则。
 
 支持两种身份验证流：**服务器**流和**客户端**流。 服务器流依赖于标识提供者 Web 界面，因此可提供最简便的身份验证体验。  实现服务器流身份验证不需要任何其他 SDK。 服务器流身份验证不提供与移动设备的深入集成，因此建议仅用于验证概念方案。
 
@@ -1188,7 +1188,7 @@ mClient = new MobileServiceClient("https://myappname.azurewebsites.net");
 mClient.setAndroidHttpClientFactory(new OkHttpClientFactory() {
     @Override
     public OkHttpClient createOkHttpClient() {
-        OkHttpClient client = new OkHttpClinet();
+        OkHttpClient client = new OkHttpClient();
         client.setReadTimeout(60, TimeUnit.SECONDS);
         client.setWriteTimeout(60, TimeUnit.SECONDS);
         return client;
@@ -1281,7 +1281,7 @@ FieldNamingStrategy namingStrategy = new FieldNamingStrategy() {
 client.setGsonBuilder(
     MobileServiceClient
         .createMobileServiceGsonBuilder()
-        .setFieldNamingStrategy(namingStategy)
+        .setFieldNamingStrategy(namingStrategy)
 );
 ```
 
@@ -1289,31 +1289,31 @@ client.setGsonBuilder(
 
 <!-- URLs. -->
 [Get started with Azure Mobile Apps]: app-service-mobile-android-get-started.md
-[ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
-[Mobile Services SDK for Android]: http://go.microsoft.com/fwlink/p/?LinkID=717033
+[ASCII control codes C0 and C1]: https://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
+[Mobile Services SDK for Android]: https://go.microsoft.com/fwlink/p/?LinkID=717033
 [Azure portal]: https://portal.azure.com
 [身份验证入门]: app-service-mobile-android-get-started-users.md
 [1]: https://static.javadoc.io/com.google.code.gson/gson/2.8.5/com/google/gson/JsonObject.html
-[2]: http://hashtagfail.com/post/44606137082/mobile-services-android-serialization-gson
+[2]: https://hashtagfail.com/post/44606137082/mobile-services-android-serialization-gson
 [3]: https://www.javadoc.io/doc/com.google.code.gson/gson/2.8.5
-[4]: http://go.microsoft.com/fwlink/p/?LinkId=296840
+[4]: https://go.microsoft.com/fwlink/p/?LinkId=296840
 [5]: app-service-mobile-android-get-started-push.md
 [6]: ../notification-hubs/notification-hubs-push-notification-overview.md#integration-with-app-service-mobile-apps
 [7]: app-service-mobile-android-get-started-users.md#cache-tokens
-[8]: http://azure.github.io/azure-mobile-apps-android-client/com/microsoft/windowsazure/mobileservices/table/MobileServiceTable.html
-[9]: http://azure.github.io/azure-mobile-apps-android-client/com/microsoft/windowsazure/mobileservices/MobileServiceClient.html
+[8]: https://azure.github.io/azure-mobile-apps-android-client/com/microsoft/windowsazure/mobileservices/table/MobileServiceTable.html
+[9]: https://azure.github.io/azure-mobile-apps-android-client/com/microsoft/windowsazure/mobileservices/MobileServiceClient.html
 [10]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [11]: app-service-mobile-node-backend-how-to-use-server-sdk.md
-[12]: http://azure.github.io/azure-mobile-apps-android-client/
+[12]: https://azure.github.io/azure-mobile-apps-android-client/
 [13]: app-service-mobile-android-get-started.md#create-a-new-azure-mobile-app-backend
-[14]: http://go.microsoft.com/fwlink/p/?LinkID=717034
+[14]: https://go.microsoft.com/fwlink/p/?LinkID=717034
 [15]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#define-table-controller
 [16]: app-service-mobile-node-backend-how-to-use-server-sdk.md#TableOperations
 [17]: https://developer.android.com/reference/java/util/UUID.html
 [18]: https://github.com/google/guava/wiki/ListenableFutureExplained
-[19]: http://www.odata.org/documentation/odata-version-3-0/
-[20]: http://hashtagfail.com/post/46493261719/mobile-services-android-querying
+[19]: https://www.odata.org/documentation/odata-version-3-0/
+[20]: https://hashtagfail.com/post/46493261719/mobile-services-android-querying
 [21]: https://github.com/Azure-Samples/azure-mobile-apps-android-quickstart
-[22]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
-[Future]: http://developer.android.com/reference/java/util/concurrent/Future.html
-[AsyncTask]: http://developer.android.com/reference/android/os/AsyncTask.html
+[22]: ../app-service/configure-authentication-provider-aad.md
+[Future]: https://developer.android.com/reference/java/util/concurrent/Future.html
+[AsyncTask]: https://developer.android.com/reference/android/os/AsyncTask.html

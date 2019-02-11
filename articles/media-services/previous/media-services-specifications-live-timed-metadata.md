@@ -3,7 +3,7 @@ title: Azure 媒体服务 - 实时传送视频流中的超时元数据信号 | M
 description: 此规范针对实时传送视频流中的超时元数据信号概述了媒体服务支持的两种模式。 这包括对泛型超时元数据信号的支持，以及对用于广告接合插入的 SCTE-35 信号的支持。
 services: media-services
 documentationcenter: ''
-author: cenkdin
+author: johndeu
 manager: cfowler
 editor: johndeu
 ms.assetid: 265b94b1-0fb8-493a-90ec-a4244f51ce85
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2018
+ms.date: 12/13/2018
 ms.author: johndeu;
-ms.openlocfilehash: 827153300b9cab4ea805689b1e103bea1b334ec9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f29efb9a58c0b269f64d637fa3c5d59bb3610bbc
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249568"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265884"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>实时传送视频流中的超时元数据信号
 
@@ -81,7 +81,7 @@ RTMP 支持超时元数据信号作为 RTMP 流中嵌入的 AMF 提示消息发�
 | 字段名称 | 字段类型 | 必需？ | 说明                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
 | 提示        | String     | 必选 | 事件消息。  对于 [SCTE-35] 消息，这必须是采用 splice_info_section() 编码的 base64 (IETF RFC 4648) 二进制文件，以便按照 [SCTE-67] 将消息发送至 HLS、Smooth 和 Dash 客户端。                                              |
-| type       | String     | 必选 | 标识消息方案的 URN 或 URL；例如，“urn:example:signaling:1.0”。  对于 [SCTE-35] 消息，这必须为“urn:scte:scte35:2013a:bin”，以便按照 [SCTE-67] 将消息发送至 HLS、Smooth 和 Dash 客户端。  |
+| type       | String     | 必选 | 标识消息方案的 URN 或 URL。 对于 [SCTE-35] 消息，这必须为“urn:scte:scte35:2013a:bin”，以便按照 [SCTE-67] 将消息发送至 HLS、Smooth 和 Dash 客户端。  |
 | id         | String     | 必选 | 描述接合或片段的唯一标识符。 标识消息的此实例。  具有等效语义的消息应具有相同的值。|
 | duration   | Number     | 必选 | 如果已知，则为事件或广告接合段的持续时间。 如果未知，该值应为 0。                                                                 |
 | 已用时间    | Number     | 可选 | 如果 [SCTE-35] 广告信号重复出现以便接收，此字段应为自接合开始后已经过去的呈现时间量。 单位为小数形式的秒。 在 [SCTE-35] 模式下，此值可能超过接合或片段的最初指定持续时间。                                                  |
@@ -89,7 +89,7 @@ RTMP 支持超时元数据信号作为 RTMP 流中嵌入的 AMF 提示消息发�
 
 ---------------------------
 
-#### <a name="211-cancelation-and-updates"></a>2.1.1 取消和更新
+#### <a name="211-cancellation-and-updates"></a>2.1.1 取消和更新
 
 可以通过发送多条具有相同呈现时间和 ID 的消息来取消或更新消息。 呈现时间和 ID 用于唯一标识事件，并且针对具体呈现时间收到的满足前置式约束的最后一条消息为待处理的消息。 已更新的事件将替换以前接收的任何消息。 前置式约束为 4 秒。 在呈现时间前的至少 4 秒内收到的消息将有待处理。
 
@@ -103,9 +103,9 @@ RTMP 支持超时元数据信号作为 RTMP 流中嵌入的 AMF 提示消息发�
 |--------------------|----------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | systemBitrate      | Number         | 必选      | 必须为“0”，以指示具有未知、可变比特率的轨迹。                                                                                                                                                                                                 |
 | parentTrackName    | String         | 必选      | 必须是父级轨迹的名称，稀疏轨迹时间码与父级轨迹时间刻度一致。 父级轨迹不能为稀疏轨迹。                                                                                                                    |
-| manifestOutput     | 布尔        | 必选      | 必须为“true”，以指示将在 Smooth 客户端清单中嵌入稀疏轨迹。                                                                                                                                                               |
+| manifestOutput     | Boolean        | 必选      | 必须为“true”，以指示将在 Smooth 客户端清单中嵌入稀疏轨迹。                                                                                                                                                               |
 | 子类型            | String         | 必选      | 必须是四字符代码的“DATA”。                                                                                                                                                                                                                         |
-| 方案             | String         | 必选      | 必须为标识消息方案的 URN 或 URL；例如，“urn:example:signaling:1.0”。 对于 [SCTE-35] 消息，这必须为“urn:scte:scte35:2013a:bin”，以便按照 [SCTE-67] 将消息发送至 HLS、Smooth 和 Dash 客户端。 |
+| 方案             | String         | 必选      | 必须为标识消息方案的 URN 或 URL。 对于 [SCTE-35] 消息，这必须为“urn:scte:scte35:2013a:bin”，以便按照 [SCTE-67] 将消息发送至 HLS、Smooth 和 Dash 客户端。 |
 | trackName          | String         | 必选      | 必须为稀疏轨迹的名称。trackName 可用来区分具有相同方案的多个事件流。 每个唯一事件流必须具有唯一的轨迹名称。                                                                           |
 | 时间刻度          | Number         | 可选      | 必须为父级轨迹时间刻度。                                                                                                                                                                                                                      |
 
@@ -157,7 +157,7 @@ MediaDataBox（“mdat”）块必须具有以下格式：
 ------------------------------
 
 
-### <a name="224-cancelation-and-updates"></a>2.2.4 取消和更新
+### <a name="224-cancellation-and-updates"></a>2.2.4 取消和更新
 可以通过发送多条具有相同呈现时间和 ID 的消息来取消或更新消息。  呈现时间和 ID 可唯一标识事件。 针对具体呈现时间收到的满足前置式约束的最后一条消息为待处理的消息。 已更新的消息将替换以前接收的任何消息。  前置式约束为 4 秒。 在呈现时间前的至少 4 秒内收到的消息将有待处理。 
 
 
@@ -226,7 +226,7 @@ Apple HTTP Live Streaming (HLS) 的超时元数据可以嵌入到自定义 M3U �
 | **属性名称** | 类型                      | **必需？**                             | **说明**                                                                                                                                                                                                                                                                      |
 |--------------------|-------------------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 提示                | 带引号的字符串                 | 必选                                  | 如 [IETF RFC 4648](http://tools.ietf.org/html/rfc4648) 中所述，编码为 base64 字符串的消息。 对于 [SCTE-35] 消息，这是 base64 编码的 splice_info_section()。                                                                                                |
-| 类型               | 带引号的字符串                 | 必选                                  | 标识消息方案的 URN 或 URL；例如，“urn:example:signaling:1.0”。 对于 [SCTE-35] 消息，类型将采用特殊值“scte35”。                                                                                                                                |
+| 类型               | 带引号的字符串                 | 必选                                  | 标识消息方案的 URN 或 URL。 对于 [SCTE-35] 消息，类型将采用特殊值“scte35”。                                                                                                                                |
 | ID                 | 带引号的字符串                 | 必选                                  | 事件的唯一标识符。 引入消息时，如果未指定 ID，Azure 媒体服务将生成唯一 ID。                                                                                                                                          |
 | DURATION           | 十进制浮点数 | 必选                                  | 事件持续时间。 如果未知，该值应为 0。 单位为小数形式的秒。                                                                                                                                                                                           |
 | 已用时间            | 十进制浮点数 | 可选，但是对于滑动窗口为必需 | 如果信号重复出现以便支持滑动呈现窗口，此字段应为事件开始后已经过去的呈现时间量。 单位为小数形式的秒。 此值可能超过接合或片段的最初指定持续时间。 |
@@ -240,30 +240,17 @@ HLS 播放器应用程序层将使用 TYPE 执行以下操作：标识消息的�
 #EXTM3U
 #EXT-X-VERSION:4
 #EXT-X-ALLOW-CACHE:NO
-#EXT-X-MEDIA-SEQUENCE:0
+#EXT-X-MEDIA-SEQUENCE:346
 #EXT-X-TARGETDURATION:6
-#EXT-X-PROGRAM-DATE-TIME:1970-01-01T00:00:00.000+00:00
+#EXT-X-I-FRAMES-ONLY
+#EXT-X-PROGRAM-DATE-TIME:2018-12-13T15:54:19.462Z
+#EXTINF:4.000000,no-desc
+KeyFrames(video_track=15447164594627600,format=m3u8-aapl)
 #EXTINF:6.000000,no-desc
-Fragments(video=0,format=m3u8-aapl)
+KeyFrames(video_track=15447164634627600,format=m3u8-aapl)
+#EXT-X-CUE:ID="1026",TYPE="scte35",DURATION=30.000000,TIME=1544716520.022760,CUE="/DAlAAAAAAAAAP/wFAUAAAQCf+//KRjAfP4AKTLgAAAAAAAAVYsh2w=="
 #EXTINF:6.000000,no-desc
-Fragments(video=60000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-#EXT-X-CUE: ID=”metadata-12.000000”,TYPE=”urn:example:signaling:1.0”,TIME=”12.000000”, DURATION=”18.000000”,CUE=”HrwOi8vYmWVkaWEvhhaWFRlRDa=”
-Fragments(video=120000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=180000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=240000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=300000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=360000000,format=m3u8-aapl)
-#EXT-X-CUE: ID=”metadata-42.000000”,TYPE=”urn:example:signaling:1.0”,TIME=”42.000000”, DURATION=”60.000000”,CUE=”PD94bWwgdm0iMS4wIiBlbmNvpD4=”
-#EXTINF:6.000000,no-desc
-Fragments(video=420000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=480000000,format=m3u8-aapl)
-…
+KeyFrames(video_track=15447165474627600,format=m3u8-aapl)
 ~~~
 
 #### <a name="hls-message-handling"></a>HLS 消息处理
@@ -293,7 +280,7 @@ EventStream 元素具有以下属性：
 
 | **属性名称** | 类型                | **必需？** | **说明**                                                                                                                                                                                                                                                                                   |
 |--------------------|-------------------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| scheme_id_uri      | 字符串                  | 必选      | 标识消息的方案。 方案将设为“Live Server Manifest”块中的方案属性的值。 值必须为标识消息方案的 URN 或 URL；例如，“urn:example:signaling:1.0”。                                                                |
+| scheme_id_uri      | 字符串                  | 必选      | 标识消息的方案。 方案将设为“Live Server Manifest”块中的方案属性的值。 值应为标识消息方案的 URN 或 URL；例如，“urn:scte:scte35:2013a:bin”。                                                                |
 | 值              | 字符串                  | 可选      | 方案所有者用于自定义消息的语义的附加字符串值。 为便于区分具有相同方案的多个事件流，值必须设为 事件流的名称（平滑引入的 trackName 或 RTMP 引入的 AMF 消息）。 |
 | 时间刻度          | 32 位无符号整数 | 必选      | “emsg”块中的时间和持续时间字段的时间刻度（以“滴答数/秒”为单位）。                                                                                                                                                                                                       |
 
@@ -335,11 +322,14 @@ EventStream 元素中包含零个或多个事件元素，并且它们具有以�
 
 
 <!-- Example Section in MPD -->
-
-<EventStream schemeIdUri=”urn:example:signaling:1.0” timescale=”1000” value=”player-statistics”>
-  <Event presentationTime=”0” duration=”10000” id=”0”> PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48QWNxdWlyZWRTaWduYWwgeG1sbnM9InVybjpjYWJsZWxhYnM6bWQ6eHNkOnNpZ25hbGluZzozLjAiIGFjcXVpc2l0aW9uUG9pbnRJZGVudGl0eT0iRVNQTl9FYXN0X0FjcXVpc2l0aW9uX1BvaW50XzEiIGFjcXVpc2l0aW9uU2lnbmFsSUQ9IjRBNkE5NEVFLTYyRkExMUUxQjFDQTg4MkY0ODI0MDE5QiIgYWNxdWlzaXRpb25UaW1lPSIyMDEyLTA5LTE4VDEwOjE0OjI2WiI+PFVUQ1BvaW50IHV0Y1BvaW50PSIyMDEyLTA5LTE4VDEwOjE0OjM0WiIvPjxTQ1RFMzVQb2ludERlc2NyaXB0b3Igc3BsaWNlQ29tbWFuZFR5cGU9IjUiPjxTcGxpY2VJbnNlcnQgc3BsaWNlRXZlbnRJRD0iMzQ0NTY4NjkxIiBvdXRPZk5ldHdvcmtJbmRpY2F0b3I9InRydWUiIHVuaXF1ZVByb2dyYW1JRD0iNTUzNTUiIGR1cmF0aW9uPSJQVDFNMFMiIGF2YWlsTnVtPSIxIiBhdmFpbHNFeHBlY3RlZD0iMTAiLz48L1NDVEUzNVBvaW50RGVzY3JpcHRvcj48U3RyZWFtVGltZXM+PFN0cmVhbVRpbWUgdGltZVR5cGU9IkhTUyIgdGltZVZhbHVlPSI1MTUwMDAwMDAwMDAiLz48L1N0cmVhbVRpbWVzPjwvQWNxdWlyZWRTaWduYWw+</Event>
-  <Event presentationTime=”20000” duration=”10000” id=”1”> PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48QWNxdWlyZWRTaWduYWwgeG1sbnM9InVybjpjYWJsZWxhYnM6bWQ6eHNkOnNpZ25hbGluZzozLjAiIGFjcXVpc2l0aW9uUG9pbnRJZGVudGl0eT0iRVNQTl9FYXN0X0FjcXVpc2l0aW9uX1BvaW50XzEiIGFjcXVpc2l0aW9uU2lnbmFsSUQ9IjRBNkE5NEVFLTYyRkExMUUxQjFDQTg4MkY0ODI0MDE5QiIgYWNxdWlzaXRpb25UaW1lPSIyMDEyLTA5LTE4VDEwOjE0OjI2WiI+PFVUQ1BvaW50IHV0Y1BvaW50PSIyMDEyLTA5LTE4VDEwOjE0OjM0WiIvPjxTQ1RFMzVQb2ludERlc2NyaXB0b3Igc3BsaWNlQ29tbWFuZFR5cGU9IjUiPjxTcGxpY2VJbnNlcnQgc3BsaWNlRXZlbnRJRD0iMzQ0NTY4NjkxIiBvdXRPZk5ldHdvcmtJbmRpY2F0b3I9InRydWUiIHVuaXF1ZVByb2dyYW1JRD0iNTUzNTUiIGR1cmF0aW9uPSJQVDFNMFMiIGF2YWlsTnVtPSIxIiBhdmFpbHNFeHBlY3RlZD0iMTAiLz48L1NDVEUzNVBvaW50RGVzY3JpcHRvcj48U3RyZWFtVGltZXM+PFN0cmVhbVRpbWUgdGltZVR5cGU9IkhTUyIgdGltZVZhbHVlPSI1MTYyMDAwMDAwMDAiLz48L1N0cmVhbVRpbWVzPjwvQWNxdWlyZWRTaWduYWw+</Event>
-</EventStream>
+  <EventStream schemeIdUri="urn:scte:scte35:2013a:bin" value="scte35_track_001_000" timescale="10000000">
+        <Event presentationTime="15447165200227600" duration="300000000" id="1026">/DAlAAAAAAAAAP/wFAUAAAQCf+//KRjAfP4AKTLgAAAAAAAAVYsh2w==</Event>
+        <Event presentationTime="15447166250227600" duration="300000000" id="1027">/DAlAAAAAAAAAP/wFAUAAAQDf+//KaeGwP4AKTLgAAAAAAAAn75a3g==</Event>
+        <Event presentationTime="15447167300227600" duration="600000000" id="1028">/DAlAAAAAAAAAP/wFAUAAAQEf+//KjkknP4AUmXAAAAAAAAAWcEldA==</Event>
+        <Event presentationTime="15447168350227600" duration="600000000" id="1029">/DAlAAAAAAAAAP/wFAUAAAQFf+//KslyqP4AUmXAAAAAAAAAvKNt0w==</Event>
+        <Event presentationTime="15447169400227600" duration="300000000" id="1030">/DAlAAAAAAAAAP/wFAUAAAQGf+//K1mIvP4AKTLgAAAAAAAAt2zEbw==</Event>
+        <Event presentationTime="15447170450227600" duration="600000000" id="1031">/DAlAAAAAAAAAP/wFAUAAAQHf+//K+hc/v4AUmXAAAAAAAAANNRzVw==</Event>
+    </EventStream>
 ~~~
 
 >[!NOTE]
@@ -375,7 +365,7 @@ DASHEventMessageBox 字段定义如下：
 
 | **字段名称**          | **字段类型**          | **必需？** | **说明**                                                                                                                                                                                                                                                                                                                                                    |
 |-------------------------|-------------------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| scheme_id_uri           | 字符串                  | 必选      | 标识消息的方案。 方案将设为“Live Server Manifest”块中的方案属性的值。 值必须为标识消息方案的 URN 或 URL；例如，“urn:example:signaling:1.0”。 对于 [SCTE-35] 消息，尽管 [SCTE-67] 建议其他内容，但这仍将采用特殊值“urn:scte:scte35:2013a:bin”。 |
+| scheme_id_uri           | 字符串                  | 必选      | 标识消息的方案。 方案将设为“Live Server Manifest”块中的方案属性的值。 值应为标识消息方案的 URN 或 URL。 对于 [SCTE-35] 消息，尽管 [SCTE-67] 建议其他内容，但这仍将采用特殊值“urn:scte:scte35:2013a:bin”。 |
 | 值                   | 字符串                  | 必选      | 方案所有者用于自定义消息的语义的附加字符串值。 为便于区分具有相同方案的多个事件流，值将设为 事件流的名称（平滑引入的 trackName 或 RTMP 引入的 AMF 消息）。                                                                  |
 | 时间刻度               | 32 位无符号整数 | 必选      | “emsg”块中的时间和持续时间字段的时间刻度（以“滴答数/秒”为单位）。                                                                                                                                                                                                                                                                        |
 | Presentation_time_delta | 32 位无符号整数 | 必选      | 此片段中的事件呈现时间的媒体呈现时间增量和最早的呈现时间。 呈现时间和持续时间应与类型 1 或 类型 2 的流访问点 (SAP) 保持一致，如 [ISO-14496-12] 附录 I 中所述。                                                                                            |
@@ -398,9 +388,9 @@ DASHEventMessageBox 字段定义如下：
 
 **[SCTE-35]** ANSI/SCTE 35 2013a – 电缆的数字程序插入提示消息，2013a
 
-**[SCTE-67]** ANSI/SCTE 67 2014 –SCTE 35 的建议做法：电缆的数字程序插入提示消息
+**[SCTE-67]** ANSI/SCTE 67 2014 - SCTE 35 的建议做法：电缆的数字程序插入提示消息
 
-**[DASH]** ISO/IEC 23009-1 2014 - 信息技术 - 通过 HTTP 的动态自适应流式处理 (DASH) - 第 1 部分：媒体展现说明和分段格式，第二版
+**[DASH]** ISO/IEC 23009-1 2014 - 信息技术 - 通过 HTTP 的动态自适应流式处理 (DASH) - 第 1 部分：媒体展现说明和分段格式，第 2 版
 
 **[HLS]** [“HTTP Live Streaming”, draft-pantos-http-live-streaming-14, 2014/10/14](http://tools.ietf.org/html/draft-pantos-http-live-streaming-14)
 

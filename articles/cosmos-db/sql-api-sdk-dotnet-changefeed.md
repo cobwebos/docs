@@ -1,21 +1,19 @@
 ---
-title: Azure Cosmos DB：.NET 更改源处理器 API、SDK 和资源 | Microsoft Docs
+title: Azure Cosmos DB：.NET 更改源处理器 API、SDK 和资源
 description: 了解有关更改源处理器 API 和 SDK 的全部信息，包括发布日期、停用日期和 .NET 更改源处理器 SDK 各版本之间所做的更改。
-services: cosmos-db
 author: ealsur
-manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 10/24/2018
+ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: a57e7ccedd0c3b776a39c6750a3d5b4b5cc41d88
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 0f6fff5047bc72fa1171e06bb2f160196ecef807
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685440"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300602"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 > [!div class="op_single_selector"]
@@ -28,7 +26,7 @@ ms.locfileid: "51685440"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -43,8 +41,28 @@ ms.locfileid: "51685440"
 
 ### <a name="v2-builds"></a>v2 版本
 
+### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
+* 改进了对观察者异常的处理。
+* 有关观察者错误的更丰富信息：
+ * 当观察者由于观察者的 ProcessChangesAsync 抛出异常而关闭时，CloseAsync 现在将接收设置为 ChangeFeedObserverCloseReason.ObserverError 的 reason 参数。
+ * 添加了跟踪以识别观察者的用户代码中的错误。
+
+### <a name="a-name225225"></a><a name="2.2.5"/>2.2.5
+* 添加了对使用共享数据库吞吐量的拆分集合的处理支持。
+  * 此版本修复了使用共享数据库吞吐量的拆分集合可能发生的问题，即在拆分导致分区重新平衡时仅创建一个子分区键范围，而不是两个。 发生这种情况时，更改源处理器可能会在删除旧分区键范围的租约时卡住，而无法创建新租约。 此版本中已修复了此问题。
+
+### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
+* 添加了新属性 ChangeFeedProcessorOptions.StartContinuation 来支持从请求继续标记开始更改源。 只有当租约集合为空或者租约未设置 ContinuationToken 时才使用此属性。 对于租约集合中设置了 ContinuationToken 的租约，将使用 ContinuationToken 并忽略 ChangeFeedProcessorOptions.StartContinuation。
+
+### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
+* 增加了对使用自定义存储的支持，用以按分区持久保存继续标记。
+  * 例如，自定义租约存储可以是以任何自定义方式分区的 Azure Cosmos DB 租约集合。
+  * 自定义租约存储可以使用新的扩展点 ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager) 和 ILeaseStoreManager 公共接口。
+  * 将 ILeaseManager 接口重构到了多个角色接口中。
+* 次要重大更改：删除了扩展点 ChangeFeedProcessorBuilder.WithLeaseManager(ILeaseManager)，请改用 ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager)。
+
 ### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
-* 修复了在对租用集合分区时处理拆分过程中可能出现的问题。 此问题可能导致已分区的租用未从租用集合中删除。 此版本中已修复了此问题。
+* 此版本修复了在处理受监视集合中的拆分和使用已分区租约集合期间发生的一个问题。 在处理拆分分区的租约时，可能不会删除对应于该分区的租约。 此版本中已修复了此问题。
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 * 多主机帐户和新的会话令牌格式的固定估计器计算。
@@ -145,6 +163,11 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.2.6](#2.2.6) |2019 年 1 月 29 日 |--- |
+| [2.2.5](#2.2.5) |2018 年 12 月 13 日 |--- |
+| [2.2.4](#2.2.4) |2018 年 11 月 29 日 |--- |
+| [2.2.3](#2.2.3) |2018 年 11 月 19 日 |--- |
+| [2.2.2](#2.2.2) |2018 年 10 月 31 日 |--- |
 | [2.2.1](#2.2.1) |2018 年 10 月 24 日 |--- |
 | [1.3.3](#1.3.3) |2018 年 5 月 8 日 |--- |
 | [1.3.2](#1.3.2) |2018 年 4 月 18 日 |--- |

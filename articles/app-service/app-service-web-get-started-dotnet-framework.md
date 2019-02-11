@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中创建 C# ASP.NET Framework Web 应用 | Microsoft Docs
+title: 创建 C# ASP.NET Framework Web 应用 - Azure 应用服务 | Microsoft Docs
 description: 了解如何通过部署默认的 C# ASP.NET Web 应用，在 Azure 应用服务中运行 Web 应用。
 services: app-service\web
 documentationcenter: ''
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: cephalin
-ms.custom: mvc, devcenter
-ms.openlocfilehash: cce14d91509fe051beef87acdaeac9a92d998ef6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.custom: seodec18
+ms.openlocfilehash: 8dc062a1c9490a03aa5369dc103db750d7531140
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053772"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635266"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>在 Azure 中创建 ASP.NET Framework Web 应用
 
-[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。  本快速入门演示如何将第一个 ASP.NET Web 应用部署到 Azure Web 应用中。 完成后，便拥有了一个资源组，该资源组包含一个应用服务计划和一个具有已部署的 Web 应用程序的 Azure Web 应用。
+[Azure 应用服务](overview.md)提供高度可缩放、自修补的 Web 托管服务。  本快速入门演示如何将第一个 ASP.NET Web 应用部署到 Azure 应用服务中。 完成后，将拥有一个资源组，该资源组包含一个应用服务计划和一个部署了 Web 应用程序的应用服务应用。
 
 ![](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
 
@@ -98,7 +98,7 @@ ms.locfileid: "44053772"
 
 ![创建应用服务计划](./media/app-service-web-get-started-dotnet-framework/configure-app-service-plan.png)
 
-| 设置 | 建议的值 | Description |
+| 设置 | 建议的值 | 描述 |
 |-|-|-|
 |应用服务计划| myAppServicePlan | 应用服务计划的名称。 |
 | 位置 | 西欧 | 托管 Web 应用的数据中心。 |
@@ -144,19 +144,19 @@ ms.locfileid: "44053772"
 
 ![已在 Azure 中更新的 ASP.NET Web 应用](./media/app-service-web-get-started-dotnet-framework/updated-azure-web-app.png)
 
-## <a name="manage-the-azure-web-app"></a>管理 Azure Web 应用
+## <a name="manage-the-azure-app"></a>管理 Azure 应用
 
 转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理 Web 应用。
 
-从左侧菜单中选择“应用服务”，并选择 Azure Web 应用的名称。
+从左侧菜单中选择“应用程序服务”，并选择 Azure 应用的名称。
 
-![在门户中导航到 Azure Web 应用](./media/app-service-web-get-started-dotnet-framework/access-portal.png)
+![在门户中导航到 Azure 应用](./media/app-service-web-get-started-dotnet-framework/access-portal.png)
 
-此时将看到 Web 应用的概述页。 在此处可以执行基本的管理任务，例如浏览、停止、启动、重启和删除。 
+这里我们可以看到 Web 应用的概述页。 并可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 
 
 ![Azure 门户中的应用服务边栏选项卡](./media/app-service-web-get-started-dotnet-framework/web-app-blade.png)
 
-左侧菜单提供用于配置应用的不同页面。 
+左侧菜单提供了用于配置应用的不同页面。 
 
 ## <a name="video"></a>视频
 

@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/28/2018
+ms.date: 01/14/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 1af74cc44391c95fba781cbce14e9118ca36c14b
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 038a70f5cce5b78f6c0e95316e66de42fa529954
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078488"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321732"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>教程：使用 ASP.NET Core Web API 前端服务和有状态后端服务创建并部署应用程序
 
@@ -326,8 +326,6 @@ namespace VotingWeb.Controllers
 
 此外，更新投票项目中的应用程序 URL 属性值，使 Web 浏览器在调试应用程序时打开到正确的端口。  在解决方案资源管理器中，选择“投票”项目并将“应用程序 URL”属性更新为 **8080**。
 
-![应用程序 URL](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-url.png)
-
 ### <a name="deploy-and-run-the-voting-application-locally"></a>在本地部署并运行“投票”应用程序
 现在可以继续运行“投票”应用程序进行调试。 在 Visual Studio 中，按 **F5** 在调试模式下将应用程序部署到本地 Service Fabric 群集。 如果此前未以管理员身份打开 Visual Studio，则应用程序会失败。
 
@@ -454,12 +452,7 @@ namespace VotingData.Controllers
 
 在如何与 Reliable Services 通信方面，Service Fabric 提供十足的弹性。 在单个应用程序中，可能有能够通过 TCP 访问的服务。 其他服务也许可以通过 HTTP REST API 访问，并且仍可通过 Web 套接字访问。 有关可用选项和相关权衡取舍的背景信息，请参阅[与服务通信](service-fabric-connect-and-communicate-with-services.md)。
 
-本教程使用 [ASP.NET Core Web API](service-fabric-reliable-services-communication-aspnetcore.md) 和 [Service Fabric 反向代理](service-fabric-reverseproxy.md)，以便 VotingWeb 前端 Web 服务能够与后端 VotingData 服务通信。 反向代理默认配置为使用端口 19081，应适用于本教程。 在用于设置群集的 ARM 模板中设置端口。 若要确定使用了哪个端口，请查看 **Microsoft.ServiceFabric/clusters** 资源中的群集模板，或者查看群集清单中的 HttpApplicationGatewayEndpoint 元素。
-
-> [!NOTE]
-> 仅在运行 Windows 8 及更高版本或 Windows Server 2012 及更高版本的群集上支持反向代理。
-
-<u>Microsoft.ServiceFabric/clusters reverseProxyEndpointPort 资源</u>
+本教程使用 [ASP.NET Core Web API](service-fabric-reliable-services-communication-aspnetcore.md) 和 [Service Fabric 反向代理](service-fabric-reverseproxy.md)，以便 VotingWeb 前端 Web 服务能够与后端 VotingData 服务通信。 反向代理默认配置为使用端口 19081，应适用于本教程。 反向代理端口是在用于设置群集的 Azure 资源管理器模板中设置的。 若要确定使用哪个端口，请在 **Microsoft.ServiceFabric/clusters** 资源中搜索群集模板： 
 
 ```json
 "nodeTypes": [
@@ -472,13 +465,10 @@ namespace VotingData.Controllers
           }
         ],
 ```
-在本地 Service Fabric 群集清单中查看 HttpApplicationGatewayEndpoint 元素：
-1. 打开浏览器窗口并导航到 http://localhost:19080。
-2. 单击“清单”。
+若要查找在本地开发群集中使用的反向代理端口，请查看本地 Service Fabric 群集清单中的 **HttpApplicationGatewayEndpoint** 元素：
+1. 打开一个浏览器窗口，并导航到 http://localhost:19080 以打开 Service Fabric Explorer 工具。
+2. 选择“群集”->“清单”。
 3. 记下 HttpApplicationGatewayEndpoint 元素端口。 默认情况下，此端口应是 19081。 如果不是 19081，则需要更改以下 VotesController.cs 代码的 GetProxyAddress 方法中的端口。
-
-
-
 
 <a id="updatevotecontroller" name="updatevotecontroller_anchor"></a>
 
@@ -622,9 +612,9 @@ public class VotesController : Controller
 
 若要查看代码，请完成以下步骤：
 
-1. 打开 **VotingWeb\VotesController.cs** 文件，并在此 Web API 的 **Put** 方法（第 63 行）中设置断点。
+1. 打开 **VotingWeb\VotesController.cs** 文件，并在此 Web API 的 **Put** 方法（第 72 行）中设置断点。
 
-2. 打开 **VotingData\VoteDataController.cs** 文件，并在此 Web API 的 **Put** 方法（第 53 行）中设置断点。
+2. 打开 **VotingData\VoteDataController.cs** 文件，并在此 Web API 的 **Put** 方法（第 54 行）中设置断点。
 
 3. 按 **F5** 以调试模式启动应用程序。
 

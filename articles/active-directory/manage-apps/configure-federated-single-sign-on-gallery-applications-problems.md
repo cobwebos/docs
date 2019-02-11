@@ -4,22 +4,22 @@ description: 解决在使用 SAML 配置 Azure AD 应用程序库中所列应用
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 2aee48d0d62321cd129e0e5480e3d31d644baba1
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 94c1a70e0a4492489a8a2a7348e08d49b29e40cb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354578"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168424"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>配置 Azure AD 库应用程序的联合单一登录时遇到的问题
 

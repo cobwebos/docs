@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shants
-ms.openlocfilehash: 1ac965896dc3356f33e6461cf390e4345663c3d3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e07937710dd36c14e7118caf6028a161ad7dc4ee
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982080"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753616"
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>处理 Linux 虚拟机的计划内维护通知
 
@@ -32,7 +32,7 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 
 需要重启的计划内维护是按批进行计划的。 每个批具有不同的作用域（区域）。
 
-- 一个批从向客户发送通知开始。 默认情况下，向订阅所有者和共同所有者发送通知。 可以使用 Azure [活动日志警报](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)，向通知添加更多收件人和消息传送选项（如电子邮件、短信和 Webhook）。  
+- 一个批从向客户发送通知开始。 默认情况下，向订阅所有者和共同所有者发送通知。 可以使用 Azure [活动日志警报](../../azure-monitor/platform/activity-logs-overview.md)，向通知添加更多收件人和消息传送选项（如电子邮件、短信和 Webhook）。  
 - 在通知时会提供自助时段。 可以在此时段内找到包含在此批中的虚拟机，开始按照自己的计划主动进行维护。
 - 自助时段过后，就会开始计划内维护时段。 在此时段的某个时刻，Azure 会计划所需的维护，并将其应用于虚拟机。 
 
@@ -74,7 +74,7 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 
 ## <a name="find-vms-scheduled-for-maintenance-using-cli"></a>使用 CLI 查找计划用于维护的 VM
 
-可以使用 [azure vm get-instance-view](/cli/azure/vm?view=azure-cli-latest#az_vm_get_instance_view) 查看计划内维护信息。
+可以使用 [azure vm get-instance-view](/cli/azure/vm?view=azure-cli-latest) 查看计划内维护信息。
  
 仅当有计划内维护时，才会返回维护信息。 如果未计划任何影响 VM 的维护，该命令不返回任何维护信息。 
 
@@ -84,7 +84,7 @@ az vm get-instance-view -g rgName -n vmName
 
 在 MaintenanceRedeployStatus 下返回以下值： 
 
-| 值 | Description   |
+| 值 | 说明   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | 指示此时是否可以在 VM 上启动维护 ||
 | PreMaintenanceWindowStartTime         | 可以在 VM 上启动维护的自助式维护时段的起点 ||
@@ -138,7 +138,7 @@ azure compute virtual-machine initiate-maintenance --service-name myService --na
 
 **问：如果我按建议使用可用性集实现高可用性，我是否安全？**
 
-**答：** 可用性集或虚拟机规模集中部署的虚拟机具有更新域 (UD) 的概念。 执行维护时，Azure 遵循 UD 约束，不会从不同 UD（在同一可用性集中）重新启动虚拟机。  Azure 还会至少等待 30 分钟，然后才移到下一组虚拟机。 
+**答：** 对于部署在可用性集或虚拟机规模集中的虚拟机，我们有一个概念：更新域 (UD)。 执行维护时，Azure 遵循 UD 约束，不会从不同 UD（在同一可用性集中）重新启动虚拟机。  Azure 还会至少等待 30 分钟，然后才移到下一组虚拟机。 
 
 有关高可用性的详细信息，请参阅 [Azure 中虚拟机的区域和可用性](regions-and-availability.MD)。
 
@@ -146,17 +146,17 @@ azure compute virtual-machine initiate-maintenance --service-name myService --na
 
 **答：** 一次计划内维护是通过将计划设置到一个或多个 Azure 区域启动的。 不久以后，电子邮件通知将发送到订阅所有者（每个订阅一封电子邮件）。 可以使用活动日志警报配置此通知的其他通道和收件人。 如果将虚拟机部署到已安排计划内维护的区域，将不会收到通知，而是需要检查 VM 的维护状态。
 
-**问：我在门户、Powershell 或 CLI 中看不到任何计划内维护的指示。是哪里出错了？**
+**问：我在门户、PowerShell 或 CLI 中看不到计划内维护的任何指示。是哪里出错了？**
 
 **答：** 在计划内维护期间，与计划内维护相关的信息仅适用于将受到该次计划内维护影响的 VM。 换而言之，如果你看不到数据，则可能是这次维护已完成（或未启动）或虚拟机已在更新的服务器中托管。
 
-**问：有什么方法可以知道虚拟机将受到影响的确切时间？**
+**问：有什么方法可以知道虚拟机受影响的确切时间？**
 
-**答：** 设置计划时，我们定义了长达几天的时间窗口。 但是，服务器（和 VM）在此时间窗口内的确切排序是未知的。 想要知道其 VM 确切时间的客户可以使用[计划事件](scheduled-events.md)并从虚拟机中查询，这样就会在 VM 重启前 15 分钟收到通知。
+**答：** 设置计划时，我们定义了一个长达几天的时间段。 但是，服务器（和 VM）在此时间窗口内的确切排序是未知的。 想要知道其 VM 确切时间的客户可以使用[计划事件](scheduled-events.md)并从虚拟机中查询，这样就会在 VM 重启前 15 分钟收到通知。
 
 **问：重新启动虚拟机需要多长时间？**
 
-**答：** 根据 VM 的大小，在自助维护时段内，重启最多可能需要几分钟时间。 当 Azure 在计划性维护时段内启动重启时，重启通常需要 25 分钟左右。 请注意，如果使用云服务（Web/辅助角色）、虚拟机规模集或可用性集，则在计划性维护时段内每组 VM (UD) 之间有 30 分钟的可用时间。
+**答：** 根据 VM 的大小，在自助维护时段内，重新启动最多可能需要几分钟时间。 当 Azure 在计划性维护时段内启动重启时，重启通常需要 25 分钟左右。 请注意，如果使用云服务（Web/辅助角色）、虚拟机规模集或可用性集，则在计划性维护时段内每组 VM (UD) 之间有 30 分钟的可用时间。
 
 **问：使用虚拟机规模集时的体验如何？**
 
@@ -164,7 +164,7 @@ azure compute virtual-machine initiate-maintenance --service-name myService --na
 
 **问：使用云服务（Web/辅助角色）和 Service Fabric 时的体验如何？**
 
-**答：** 虽然这些平台会受到计划内维护的影响，但使用这些平台的客户会认为安全，因为在任何给定时间，只有单个升级域 (UD) 中的 VM 会受到影响。 自助维护目前不适用于云服务（Web/辅助角色）和 Service Fabric。
+**答：** 虽然这些平台会受到计划内维护的影响，但使用这些平台的客户可以安全地进行操作，因为在任何给定的时间，只有单个升级域 (UD) 中的 VM 受影响。 自助维护目前不适用于云服务（Web/辅助角色）和 Service Fabric。
 
 **问：我在 VM 上看不到任何维护信息，是哪里出错了？**
 
@@ -175,7 +175,7 @@ azure compute virtual-machine initiate-maintenance --service-name myService --na
 
 **问：我的 VM 已计划进行第二次维护，为什么？**
 
-**答：** 在多种用例下，在已完成维护性的重新部署后，会看到 VM 已计划进行维护：
+**答：** 多种用例都会看到在完成维护性重新部署后，VM 仍进行计划性维护：
 1.  我们已取消这次维护，并使用不同的有效负载重新启动它。 可能是我们已检测到出错的有效负载，只需部署其他有效负载。
 2.  由于硬件故障，已在另一个节点上对 VM 进行服务修复。
 3.  选择了停止（解除分配）VM 并将其重启。

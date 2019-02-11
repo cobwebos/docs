@@ -1,21 +1,21 @@
 ---
 title: 通过 API 控制台使用人工评审来审查内容 - 内容审查器
 titlesuffix: Azure Cognitive Services
-description: 了解如何在内容审查器 API 控制台中创建人工审查。
+description: 使用评审 API 的审查操作为人工审查创建图像或文本审查。
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 08/05/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: bb95341a09f09ce8020f34476e720270fd401909
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 7e4c750e7470c6a76e56bd67d6a134b1b61535eb
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219747"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218384"
 ---
 # <a name="create-reviews-from-the-api-console"></a>从 API 控制台中创建审查
 
@@ -24,12 +24,12 @@ ms.locfileid: "47219747"
 在人工审查器审查自动分配的标记和预测数据并提交了最终审核决定后，评审 API 会将所有信息提交到 API 终结点。
 
 ## <a name="use-the-api-console"></a>使用 API 控制台
-要通过使用联机控制台体验 API，需要输入一些值到控制台中：
+若要使用联机控制台试用 API，需要在控制台中输入下面一些值：
 
-- teamName：在设置审查工具帐户时创建的团队名称。 
-- ContentId：此字符串被传递给 API 并通过回叫返回。 ContentId 在关联内部标识符或元数据与审查作业结果时十分有用。
-- Metadata：回叫期间返回到 API 终结点的自定义键值对。 如果此键是审查工具中定义的短代码，则显示为标记。
-- Ocp-Apim-Subscription-Key：位于“设置”选项卡上。有关详细信息，请参阅[概述](overview.md)。
+- **teamName**：在设置审查工具帐户时创建的团队名称。 
+- **ContentId**：此字符串将传递给 API，并通过回调返回。 ContentId 在关联内部标识符或元数据与审查作业结果时十分有用。
+- **元数据**：回叫期间返回到 API 终结点的自定义键值对。 如果此键是审查工具中定义的短代码，则显示为标记。
+- **Ocp-Apim-Subscription-Key**：位于“设置”选项卡中。有关详细信息，请参阅[概述](overview.md)。
 
 从“凭据”窗口访问是访问测试工作台的最简单的方法。
 

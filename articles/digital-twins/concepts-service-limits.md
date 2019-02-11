@@ -1,19 +1,19 @@
 ---
 title: Azure 数字孪生公共预览版服务限制 | Microsoft Docs
-description: 了解 Azure 数字孪生公共预览版服务限制
+description: 了解 Azure 数字孪生公共预览版服务限制。
 author: dwalthermsft
 manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 01/03/2019
 ms.author: dwalthermsft
-ms.openlocfilehash: 86ae75118dd1311ea2ae92fb718fe4c58b8e5673
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: cc873ad441c93a7fce54c275e9f7d52f0b044319
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961749"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302419"
 ---
 # <a name="public-preview-service-limits"></a>公共预览版服务限制
 
@@ -35,21 +35,25 @@ ms.locfileid: "50961749"
 
 反之，每个 Azure 数字孪生实例可以具有：
 
-- 一个 **IoTHub** 资源。
-- 一个 **DeviceMessage** 事件类型的 **EventHub** 终结点。
+- 有且仅有一个在服务预配期间自动创建的嵌入式 **IoTHub** 资源。
+- 只有一个 DeviceMessage 事件类型的 EventHub 终结点。
 - 最多三个事件类型为 **SensorChange**、**SpaceChange**、**TopologyOperation** 或 **UdfCustom** 的 **EventHub**、**ServiceBus** 或 **EventGrid** 终结点。
 
-## <a name="management-api-limits"></a>管理 API 限制
+> [!NOTE]
+> 公共预览期间不需要某些参数（这些参数通常在创建上述 Azure IoT 实体时定义）。
+> - 有关最新的 API 规范，请参阅 [Swagger 参考文档](./how-to-use-swagger.md)。
 
-管理 API 的请求速率限制是：
+## <a name="azure-digital-twins-management-api-limits"></a>Azure 数字孪生管理 API 限制
 
-- 每秒向管理 API 发出 100 个请求。
-- 单个管理 API 查询可以返回最多 1,000 个对象。 
+Azure 数字孪生管理 API 的请求速率限制是：
+
+- 每秒向 Azure 数字孪生管理 API 发出 100 个请求。
+- 单个 Azure 数字孪生管理 API 查询可以返回最多 1,000 个对象。
 
 > [!IMPORTANT]
 > 如果超出了 1,000 个对象这一限制，你将收到一个错误并且必须简化查询。
 
-## <a name="udf-rate-limits"></a>UDF 速率限制
+## <a name="user-defined-functions-rate-limits"></a>用户定义的函数速率限制
 
 以下限制设置对 Azure 数字孪生实例进行的所有用户定义函数调用的总数：
 
@@ -59,7 +63,7 @@ ms.locfileid: "50961749"
 > [!NOTE]
 > 以下操作可能会导致临时应用其他速率限制：
 > - 对拓扑对象元数据进行编辑
-> - 对 UDF 定义进行更新
+> - 对用户定义的函数定义进行的更新
 > - 第一次发送遥测数据的设备
 
 ## <a name="device-telemetry-limits"></a>限制设备遥测
@@ -70,4 +74,4 @@ ms.locfileid: "50961749"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要尝试 Azure 数字孪生示例，请转到[查找可用房间的快速入门](./quickstart-view-occupancy-dotnet.md)。
+- 若要尝试 Azure 数字孪生示例，请转到[查找可用房间的快速入门](./quickstart-view-occupancy-dotnet.md)。

@@ -3,25 +3,25 @@ title: 如何在 Azure AD 中禁止密码
 description: 在 Azure AD 动态禁止密码的环境中禁止弱密码
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: rogoya
-ms.openlocfilehash: 34011144d4f960413e78f13c999dfddf6d2660bf
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 8596e1a3d33041a5e7176b87e868d89ee6dc124d
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50742942"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080118"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>配置自定义禁止密码列表
 
 |     |
 | --- |
-| Azure AD 密码保护是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
+| Azure AD 密码保护是 Azure Active Directory 的一项公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
 |     |
 
 许多组织发现其用户使用常见的当地词汇（比如学校、运动队或名人）来创建密码，这让这些密码很容易猜到。 当用户和管理员尝试更改或重置密码时，除了全局禁止密码列表之外，Microsoft 自定义禁止密码列表允许组织添加要评估和阻止的字符串。
@@ -36,7 +36,7 @@ ms.locfileid: "50742942"
    * 自定义禁止密码列表最多可包含 1000 个词。
    * 自定义禁止密码列表不区分大小写。
    * 自定义禁止密码列表会考虑常用字符替换。
-      * 示例：“o”和“0”或“a”和“@”
+      * 示例：“o”和“0”或“a”和“\@”
    * 最小字符串长度为四个字符，最大字符串长度为 16 个字符。
 1. 添加所有字符串后，请单击“保存”。
 

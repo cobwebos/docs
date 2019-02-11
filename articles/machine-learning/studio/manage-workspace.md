@@ -1,29 +1,9 @@
 ---
-title: 管理机器学习工作区 - Azure 机器学习工作室 | Microsoft Docs
-description: 管理对 Azure 机器学习工作区的访问，部署并管理 ML API Web 服务
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
-editor: cgronlun
-ms.assetid: daf3d413-7a77-4beb-9a7a-6b4bdf717719
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/27/2017
-ms.openlocfilehash: c470d10b933b31d4cfe151fb541c2182562a2805
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314098"
+title:管理机器学习工作室工作区 titleSuffix:Azure 机器学习工作室 description:管理对 Azure 机器学习工作区的访问权限，以及部署和管理 ML API Web 服务：machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:02/27/2017
 ---
-# <a name="manage-an-azure-machine-learning-workspace"></a>管理 Azure 机器学习工作区
+# <a name="manage-an-azure-machine-learning-studio-workspace"></a>管理 Azure 机器学习工作室工作区
 
 > [!NOTE]
 > 有关在机器学习 Web 服务门户中管理 Web 服务的信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。
@@ -32,7 +12,7 @@ ms.locfileid: "52314098"
 
 可以在 Azure 门户中管理机器学习工作区。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 

@@ -4,22 +4,22 @@ description: 了解添加 Azure AD 库应用程序时常见的问题，以及可
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: b44b72c4414314e4329a7de91f4d1a61914afc6f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 3621ca390add5c4a50cae6ed8f2baa5e3b1e2339
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424963"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55173269"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>添加 Azure AD 库应用程序时的问题
 

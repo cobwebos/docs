@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: d9d1fa7d8cf25057339e560c371deb939997b578
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 17c25181709e6c75de2d23fb02fd55c0e6e41ae3
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945071"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818024"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>通过 Azure AD 身份验证使用 REST 访问 Azure 媒体服务 API
 
@@ -50,7 +50,7 @@ ms.locfileid: "49945071"
 - 查看[使用 Azure AD 身份验证访问 Azure 媒体服务 API 概述](media-services-use-aad-auth-to-access-ams-api.md)一文。
 - 安装 [Postman](https://www.getpostman.com/) REST 客户端以执行本文所示的 REST API。 
 
-    本教程中要使用的是 Postman，但任何 REST 工具也适用。 其他适用的工具有：具有 REST 插件的 Visual Studio Code 或 Telerik Fiddler。 
+    本教程中要使用的是 **Postman**，但任何 REST 工具也适用。 其他替代工具包括：带有 REST 插件的 **Visual Studio Code** 或 **Telerik Fiddler**。 
 
 ## <a name="get-the-authentication-information-from-the-azure-portal"></a>从 Azure 门户获取身份验证信息
 
@@ -58,7 +58,7 @@ ms.locfileid: "49945071"
 
 若要访问媒体服务 API，需要收集以下数据点。
 
-|设置|示例|Description|
+|设置|示例|说明|
 |---|-------|-----|
 |Azure Active Directory 租户域|microsoft.onmicrosoft.com|作为安全令牌服务 (STS) 终结点的 Azure AD 是使用以下格式创建的： https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token。 Azure AD 颁发用于访问资源的 JWT（访问令牌）。|
 |REST API 终结点|https://amshelloworld.restv2.westus.media.azure.net/api/|这是应用程序中发出的所有媒体服务 REST API 调用所针对的终结点。|
@@ -79,7 +79,7 @@ ms.locfileid: "49945071"
 5. 选择现有的“Azure AD 应用程序”或新建一个 Azure AD 应用程序（如下所示）。
 
     > [!NOTE]
-    > 为使 Azure 媒体 REST 请求成功，对于尝试访问的媒体服务帐户，调用用户必须具有“参与者”或“所有者”角色。 如果出现“远程服务器返回错误: (401)未授权”的异常，请参阅[访问控制](media-services-use-aad-auth-to-access-ams-api.md#access-control)。
+    > 为使 Azure 媒体 REST 请求成功，对于尝试访问的媒体服务帐户，调用用户必须具有“参与者”或“所有者”角色。 如果出现“远程服务器返回错误:(401)未授权”的异常，请参阅[访问控制](media-services-use-aad-auth-to-access-ams-api.md#access-control)。
 
     如果需要创建新的 AD 应用，请执行以下步骤：
     
@@ -118,7 +118,7 @@ ms.locfileid: "49945071"
 
 ## <a name="get-the-access-token-using-postman"></a>使用 Postman 获取访问令牌
 
-本部分演示如何使用 Postman 执行返回 JWT 持有者令牌（访问令牌）的 REST API。 若要调用任何媒体服务 REST API，需要将“授权”标头添加到这些调用，并将“持有者 your_access_token”的值添加到每个调用（如本教程的下一部分中所示）。 
+本部分演示如何使用 Postman 执行返回 JWT 持有者令牌（访问令牌）的 REST API。 若要调用任何媒体服务 REST API，需要将“授权”标头添加到这些调用，并将“持有者 your_access_token”的值添加到每个调用（如本教程的下一部分中所示）。 
 
 1. 打开 Postman。
 2. 选择“POST” 。
@@ -188,5 +188,5 @@ ms.locfileid: "49945071"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 尝试使用 [Azure AD Authentication for Azure Media Services Access: Both via REST API](https://github.com/willzhan/WAMSRESTSoln)（Azure 媒体服务访问的 Azure AD 身份验证：均通过 REST API）中的此示例代码
+* 尝试使用 [Azure AD Authentication for Azure Media Services Access:Both via REST API](https://github.com/willzhan/WAMSRESTSoln)（Azure 媒体服务访问的 Azure AD 身份验证：均通过 REST API）中的此示例代码
 * [使用 .NET 上传文件](media-services-dotnet-upload-files.md)

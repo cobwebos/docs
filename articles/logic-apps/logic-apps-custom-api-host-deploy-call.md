@@ -10,22 +10,22 @@ ms.reviewer: klam, stepsic, LADocs
 ms.topic: article
 ms.assetid: f113005d-0ba6-496b-8230-c1eadbd6dbb9
 ms.date: 05/26/2017
-ms.openlocfilehash: 0d53c8355fadf53c81676a1fe3c71f8e0b046630
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: e95b20a12fafa9d1dbcbd641ce1c9f2674314489
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126562"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606429"
 ---
 # <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>从 Azure 逻辑应用中的工作流部署和调用自定义 API
 
-[创建自定义 API](./logic-apps-create-api-app.md) 以供逻辑应用工作流使用后，必须先部署 API 才能调用它们。 虽然可以将 API 部署为 [Web 应用](../app-service/app-service-web-overview.md)，但请考虑将 API 部署为 [API 应用](../app-service/app-service-web-tutorial-rest-api.md)，便于更加轻松地在云端和本地生成、托管和使用 API。 不必更改 API 中的任何代码 - 可直接将代码部署到 API 应用。 可在 [Azure App Service](../app-service/app-service-web-overview.md) 上托管API，它是一款平台即服务 (PaaS) 产品，可提供简单的高缩放性 API 托管。
+[创建自定义 API](./logic-apps-create-api-app.md) 以供逻辑应用工作流使用后，必须先部署 API 才能调用它们。 虽然可以将 API 部署为 [Web 应用](../app-service/overview.md)，但请考虑将 API 部署为 [API 应用](../app-service/app-service-web-tutorial-rest-api.md)，便于更加轻松地在云端和本地生成、托管和使用 API。 不必更改 API 中的任何代码 - 可直接将代码部署到 API 应用。 可在 [Azure App Service](../app-service/overview.md) 上托管API，它是一款平台即服务 (PaaS) 产品，可提供简单的高缩放性 API 托管。
 
 虽然可从逻辑应用调用任何 API，但为获得最佳体验，请添加 [OpenAPI（以前称为 Swagger）元数据](http://swagger.io/specification/)，用于说明 API 的操作和参数。 此 OpenAPI 文件有助于使 API 与逻辑应用集成更轻松、运行更顺畅。
 
 ## <a name="deploy-your-api-as-a-web-app-or-api-app"></a>将 API 部署为 Web 应用或 API 应用
 
-若要从逻辑应用调用自定义 API，首先需将 API 作为 Web 应用或 API 应用部署到 Azure 应用服务。 此外，若要使逻辑应用设计器能够读取 OpenAPI 文件，请为 Web 应用或 API 应用设置 API 定义属性并开启[跨域资源共享 (CORS)](../app-service/app-service-web-overview.md)。
+若要从逻辑应用调用自定义 API，首先需将 API 作为 Web 应用或 API 应用部署到 Azure 应用服务。 此外，若要使逻辑应用设计器能够读取 OpenAPI 文件，请为 Web 应用或 API 应用设置 API 定义属性并开启[跨域资源共享 (CORS)](../app-service/overview.md)。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择 Web 应用或 API 应用。
 

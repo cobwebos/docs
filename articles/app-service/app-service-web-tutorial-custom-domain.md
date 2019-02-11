@@ -1,5 +1,5 @@
 ---
-title: 将现有的自定义 DNS 名称映射到 Azure Web 应用 | Microsoft Docs
+title: 映射现有的自定义 DNS 名称 - Azure 应用服务 | Microsoft Docs
 description: 了解如何在 Azure 应用服务中向 Web 应用、移动应用后端或 API 应用添加现有的自定义 DNS 域名（虚域）。
 keywords: 应用服务, Azure 应用服务, 域映射, 域名, 现有域, 主机名
 services: app-service\web
@@ -15,17 +15,17 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 30199005db93f9a43a37d2c72bb34dd772265419
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.custom: seodec18
+ms.openlocfilehash: 89852e30929cc26aa0cbe63ed4e334c4e878b90b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43664881"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714332"
 ---
-# <a name="tutorial-map-an-existing-custom-dns-name-to-azure-web-apps"></a>教程：将现有的自定义 DNS 名称映射到 Azure Web 应用
+# <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
-[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。 本教程介绍如何将现有的自定义 DNS 名称映射到 Azure Web 应用。
+[Azure 应用服务](overview.md)提供高度可缩放、自修补的 Web 托管服务。 本教程介绍如何将现有的自定义 DNS 名称映射到 Azure 应用服务。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
@@ -48,11 +48,11 @@ ms.locfileid: "43664881"
   例如，若要添加 `contoso.com` 和 `www.contoso.com` 的 DNS 条目，必须能够配置 `contoso.com` 根域的 DNS 设置。
 
   > [!NOTE]
-  > 如果现有还没有域名，请考虑[使用 Azure 门户购买域](custom-dns-web-site-buydomains-web-app.md)。 
+  > 如果现有还没有域名，请考虑[使用 Azure 门户购买域](manage-custom-dns-buy-domain.md)。 
 
 ## <a name="prepare-the-app"></a>准备应用
 
-若要映射自定义 DNS 名称到 Web 应用，Web 应用的[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/)必须位于付费层（“共享”、“基本”、“标准”或“高级”）。 在此步骤中，需确保应用服务计划位于受支持的定价层。
+若要将自定义 DNS 名称映射到 Web 应用，Web 应用的[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/)必须位于付费层（Azure Functions 的“共享”、“基本”、“标准”、“高级”或“消耗”层）。 在此步骤中，需确保应用服务计划位于受支持的定价层。
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -156,7 +156,7 @@ ms.locfileid: "43664881"
 ![已添加 CNAME 记录](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> 若要添加 SSL 绑定，请参阅[将现有的自定义 SSL 证书绑定到 Azure Web 应用](app-service-web-tutorial-custom-ssl.md)。
+> 若要添加 SSL 绑定，请参阅[将现有的自定义 SSL 证书绑定到 Azure 应用服务](app-service-web-tutorial-custom-ssl.md)。
 
 如果之前错过了某个步骤或者在某个位置的输入不正确，则会在页面的底部看到验证错误。
 
@@ -231,7 +231,7 @@ ms.locfileid: "43664881"
 ![已添加 A 记录](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> 若要添加 SSL 绑定，请参阅[将现有的自定义 SSL 证书绑定到 Azure Web 应用](app-service-web-tutorial-custom-ssl.md)。
+> 若要添加 SSL 绑定，请参阅[将现有的自定义 SSL 证书绑定到 Azure 应用服务](app-service-web-tutorial-custom-ssl.md)。
 
 如果之前错过了某个步骤或者在某个位置的输入不正确，则会在页面的底部看到验证错误。
 
@@ -286,7 +286,7 @@ ms.locfileid: "43664881"
 ![已添加 CNAME 记录](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 > [!NOTE]
-> 若要添加 SSL 绑定，请参阅[将现有的自定义 SSL 证书绑定到 Azure Web 应用](app-service-web-tutorial-custom-ssl.md)。
+> 若要添加 SSL 绑定，请参阅[将现有的自定义 SSL 证书绑定到 Azure 应用服务](app-service-web-tutorial-custom-ssl.md)。
 
 ## <a name="test-in-browser"></a>在浏览器中测试
 
@@ -305,7 +305,7 @@ ms.locfileid: "43664881"
 
 ## <a name="migrate-an-active-domain"></a>迁移活动域
 
-若要将实时站点及其 DNS 域名迁移到应用服务而不停机，请参阅[将活动 DNS 名称迁移到 Azure 应用服务](app-service-custom-domain-name-migrate.md)。
+若要将实时站点及其 DNS 域名迁移到应用服务而不停机，请参阅[将活动 DNS 名称迁移到 Azure 应用服务](manage-custom-dns-migrate-domain.md)。
 
 ## <a name="redirect-to-a-custom-directory"></a>重定向到自定义目录
 
@@ -334,7 +334,7 @@ az webapp config hostname add \
     --hostname <fully_qualified_domain_name> 
 ``` 
 
-有关详细信息，请参阅[将自定义域映射到 Web 应用](scripts/app-service-cli-configure-custom-domain.md)。 
+有关详细信息，请参阅[将自定义域映射到 Web 应用](scripts/cli-configure-custom-domain.md)。 
 
 ### <a name="azure-powershell"></a>Azure PowerShell 
 
@@ -347,7 +347,7 @@ Set-AzureRmWebApp `
     -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net") 
 ```
 
-有关详细信息，请参阅[将自定义域分配到 Web 应用](scripts/app-service-powershell-configure-custom-domain.md)。
+有关详细信息，请参阅[将自定义域分配到 Web 应用](scripts/powershell-configure-custom-domain.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -363,4 +363,4 @@ Set-AzureRmWebApp `
 转到下一教程，了解如何将自定义 SSL 证书绑定到 Web 应用。
 
 > [!div class="nextstepaction"]
-> [将现有的自定义 SSL 证书绑定到 Azure Web 应用](app-service-web-tutorial-custom-ssl.md)
+> [将现有的自定义 SSL 证书绑定到 Azure 应用服务](app-service-web-tutorial-custom-ssl.md)

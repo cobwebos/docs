@@ -1,24 +1,26 @@
 ---
-title: 教程：必应新闻搜索单页应用
+title: 教程：创建单页 Web 应用 - 必应新闻搜索 API
 titlesuffix: Azure Cognitive Services
-description: 介绍如何在单页 Web 应用程序中使用必应新闻搜索 API。
+description: 使用本教程构建可向必应新闻 API 发送搜索查询并在网页内显示结果的单页 Web 应用程序。
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 10/30/2017
+ms.date: 01/10/2019
 ms.author: v-gedod
-ms.openlocfilehash: 1d27751d12c82736ca519bb3a0e9bcd49bef4a47
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.custom: seodec2018
+ms.openlocfilehash: fc07c825c6de4f9cf0e331d80f7838edf4ff3792
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803641"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197749"
 ---
-# <a name="tutorial-single-page-news-search-app"></a>教程：单页新闻搜索应用
-通过必应新闻搜索 API 可以搜索 Web 并获取与搜索查询相关的新闻类型结果。 本教程将生成一个单页 Web 应用程序，该应用程序使用必应新闻搜索 API 在页面中显示搜索结果。 该应用程序包含 HTML、CSS 和 JavaScript 组件。
+# <a name="tutorial-create-a-single-page-web-app"></a>教程：创建单页 Web 应用
+
+通过必应新闻搜索 API 可以搜索 Web 并获取与搜索查询相关的新闻类型结果。 本教程将生成一个单页 Web 应用程序，该应用程序使用必应新闻搜索 API 在页面中显示搜索结果。 该应用程序包含 HTML、CSS 和 JavaScript 组件。 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingNewsSearchApp.html) 上获得。
 
 <!-- Remove until we can replace it with sanitized copy
 ![Single-page Bing News Search app](media/news-search-singlepage.png)
@@ -37,8 +39,6 @@ ms.locfileid: "48803641"
 > * 处理可能出现的错误
 
 教程页是完全独立的；它不使用任何外部框架、样式表或图像文件， 而仅使用广泛支持的 JavaScript 语言功能，并且适用于所有主要 Web 浏览器的当前版本。
-
-本教程将讨论源代码的选定部分。 提供了完整的[源代码](tutorial-bing-news-search-single-page-app-source.md)。 若要运行该示例，请将源代码复制并粘贴到文本编辑器中，并将其另存为 `bing.html`。
 
 ## <a name="app-components"></a>应用组件
 与任何单页 Web 应用一样，本教程应用程序包含以下三个部分：
@@ -101,7 +101,7 @@ HTML `<form>` 标记 `onsubmit` 可调用 `bingWebSearch` 函数以返回搜索�
 
 HTML 表单包括具有以下名称的元素：
 
-|元素|Description|
+|元素|说明|
 |-|-|
 | `where` | 用于选择市场（位置和语言）进行搜索的下拉菜单。 |
 | `query` | 用于输入搜索条件的文本字段。 |
@@ -315,7 +315,7 @@ function renderResults(items) {
 ```
 必应新闻搜索 API 最多返回四种不同类型的相关结果，每个都有其自己的顶级对象。 它们是：
 
-|关系|Description|
+|关系|说明|
 |-|-|
 |`pivotSuggestions`|将原始搜索中的透视字替换为其他字的查询。 例如，如果搜索“red flowers”，透视字可能为“red”，并且透视建议可能为“yellow flowers”。|
 |`queryExpansions`|通过添加更多词缩小原始搜索范围的查询。 例如，如果搜索“Microsoft Surface”，查询扩展可能为“Microsoft Surface Pro”。|
@@ -338,7 +338,7 @@ searchItemRenderers = {
 ```
 呈现器函数可以接受以下参数：
 
-|参数|Description|
+|参数|说明|
 |-|-|
 |`item`| 包含项目属性（如其 URL 及其说明）的 JavaScript 对象。|
 |`index`| 结果项集合中的结果项的索引。|

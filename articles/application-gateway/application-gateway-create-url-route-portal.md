@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/26/2018
 ms.author: victorh
-ms.openlocfilehash: 5bec7be5f7ad744960d2602aaf24fec51d869267
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 108045c691d711dfdd12df39fe72e536f842f68f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056243"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993215"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>通过 Azure 门户使用基于路径的路由规则创建应用程序网关
 
@@ -36,7 +36,7 @@ ms.locfileid: "39056243"
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-在 [http://portal.azure.com](http://portal.azure.com) 登录到 Azure 门户
+在 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
@@ -154,7 +154,7 @@ ms.locfileid: "39056243"
 
     ![记下应用程序网关的公共 IP 地址](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如 http://http://40.121.222.19。
+2. 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如 http:// http://40.121.222.19。
 
     ![在应用程序网关中测试基 URL](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
 

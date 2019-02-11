@@ -14,15 +14,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 2d75a432e84c3490186da6f8342562fddcaa32e1
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: ee6c18d1d0dda691f8b108cbe70e05eedae606e5
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805204"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446321"
 ---
-<a name="lcs-subscription"></a>LCS 订阅
-================
+# <a name="lcs-subscription"></a>LCS 订阅
 
 在本教程中，你将了解如何创建订阅。 此订阅将为你提供一个 Microsoft Online 测试租户和一个你可以在其中部署环境的 Microsoft Dynamics Lifecycle Services 项目。 你还将在 Microsoft Online 租户中设置更多用户，并体验以下服务管理功能。 下面是你将学习的技能：
 
@@ -32,8 +31,7 @@ ms.locfileid: "48805204"
 - 向 Microsoft Azure Active Directory 和客户端添加更多用户。
 - 在订阅电子邮件中查看资源。
 
-<a name="key-terms"></a>关键术语
-=========
+## <a name="key-terms"></a>关键术语
 
 **Microsoft Online Services 租户** - 租户是包含你的组织的所有订阅和用户的组。 租户是在 Microsoft Online Services 中创建你的第一个订阅时创建的。
 

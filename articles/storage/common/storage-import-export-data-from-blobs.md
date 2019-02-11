@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 12/11/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: faf8852df8b50c43affe32ede0f1e96d0bb80d3d
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.subservice: common
+ms.openlocfilehash: 99e3abb1bedffdb5a7d49c033ebc8b4c46df1c03
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821236"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769265"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>使用 Azure 导入/导出服务从 Azure Blob 存储导出数据
 本文分步说明如何使用 Azure 导入/导出服务从 Azure Blob 存储安全地导出大量数据。 该服务要求你将空驱动器寄送到 Azure 数据中心。 该服务将数据从存储帐户导出到驱动器，然后将驱动器寄回。
@@ -67,8 +67,8 @@ ms.locfileid: "51821236"
          ![全部导出](./media/storage-import-export-data-from-blobs/export-from-blob4.png) 
 
     - 可以指定要导出的容器和 blob。
-        - **指定要导出的 blob**：使用“等于”选择器。 指定 blob 的相对路径，以容器名称开头。 使用 *$root* 指定根容器。
-        - **指定以前缀开头的所有 blob**：使用“开头为”选择器。 指定以正斜杠“/”开头的前缀。 该前缀可以是容器名称的前缀、完整容器名称或者后跟 Blob 名称前缀的完整容器名称。 必须以有效格式提供 blob 路径，以免在处理过程中出现错误，如以下屏幕截图所示。 有关详细信息，请参阅[有效 blob 路径示例](#examples-of-valid-blob-paths)。 
+        - **若要指定要导出的 blob**：使用“等于”选择器。 指定 blob 的相对路径，以容器名称开头。 使用 *$root* 指定根容器。
+        - **若要指定以前缀开头的所有 blob**：使用“开头为”选择器。 指定以正斜杠“/”开头的前缀。 该前缀可以是容器名称的前缀、完整容器名称或者后跟 Blob 名称前缀的完整容器名称。 必须以有效格式提供 blob 路径，以免在处理过程中出现错误，如以下屏幕截图所示。 有关详细信息，请参阅[有效 blob 路径示例](#examples-of-valid-blob-paths)。 
    
            ![导出所选容器和 blob](./media/storage-import-export-data-from-blobs/export-from-blob5.png) 
 
@@ -127,7 +127,7 @@ ms.locfileid: "51821236"
 
 此*可选*步骤有助于确定导出作业所需的驱动器数量。 在运行[受支持 OS 版本](storage-import-export-requirements.md#supported-operating-systems)的 Windows 系统上执行此步骤。
 
-1. 在 Windows 系统上[下载 WAImportExport 版本 1](https://www.microsoft.com/en-us/download/details.aspx?id=42659)。 
+1. 在 Windows 系统上[下载 WAImportExport 版本 1](https://aka.ms/waiev1)。 
 2. 解压缩到默认文件夹 `waimportexportv1`。 例如，`C:\WaImportExportV1`。
 3. 使用管理权限打开 PowerShell 或命令行窗口。 若要将目录切换到解压缩的文件夹，请运行以下命令：
     
@@ -139,13 +139,13 @@ ms.locfileid: "51821236"
 
     下表介绍了这些参数：
     
-    |命令行参数|Description|  
+    |命令行参数|说明|  
     |--------------------------|-----------------|  
     |**/logdir:**|可选。 日志目录。 详细日志文件将写入此目录。 如果未指定，则使用当前目录作为日志目录。|  
     |**/sn:**|必需。 导出作业的存储帐户的名称。|  
     |**/sk:**|仅当未指定容器 SAS 时才是必需的。 导出作业的存储帐户的帐户密钥。|  
     |**/csas:**|仅当未指定存储帐户密钥时才是必需的。 用于列出要在导出作业中导出的 Blob 的容器 SAS。|  
-    |**/ExportBlobListFile:**|必需。 包含要导出的 Blob 的 Blob 路径列表或 Blob 路径前缀的 XML 文件的路径。 导入/导出服务 REST API 的[放置作业](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)操作的 `BlobListBlobPath` 元素中使用的文件格式。|  
+    |**/ExportBlobListFile:**|必需。 包含要导出的 Blob 的 Blob 路径列表或 Blob 路径前缀的 XML 文件的路径。 导入/导出服务 REST API 的[放置作业](/rest/api/storageimportexport/jobs)操作的 `BlobListBlobPath` 元素中使用的文件格式。|  
     |**/DriveSize:**|必需。 用于导出作业的驱动器大小，*例如* 500 GB、1.5 TB。|  
 
     请参阅 [PreviewExport 命令示例](#example-of-previewexport-command)。
@@ -193,7 +193,7 @@ Number of drives needed:        3
 
 下表显示有效 Blob 路径的示例：
    
-   | 选择器 | Blob 路径 | Description |
+   | 选择器 | Blob 路径 | 说明 |
    | --- | --- | --- |
    | 开头为 |/ |导出存储帐户中的所有 Blob |
    | 开头为 |/$root/ |导出根容器中的所有 Blob |

@@ -3,19 +3,19 @@ title: Azure AD 密码保护预览版中的操作和报告
 description: Azure AD 密码保护预览版中的部署后操作和报告
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: 92c8de0961f64eea8eef830ad99c7baa268099d9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 8d7002a014fc6cfab1888a6bc97c0f864de1d99d
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007580"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080865"
 ---
 # <a name="preview-azure-ad-password-protection-operational-procedures"></a>预览版：Azure AD 密码保护操作规程
 

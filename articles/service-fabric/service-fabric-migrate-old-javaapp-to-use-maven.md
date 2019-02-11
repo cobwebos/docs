@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: rapatchi
-ms.openlocfilehash: 5f03f4fe1422f1665d857269c98a50827ed75d55
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: b880a80e19c5a85a35d5e1d78022fe4acc74f0e1
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958351"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999163"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>更新旧式 Java Service Fabric 应用程序，以便从 Maven 提取 Java 库
 我们最近已将 Service Fabric Java 二进制文件从 Service Fabric Java SDK 移至 Maven 托管。 现在，你可以使用 mavencentral 来提取最新的 Service Fabric Java 依赖项。 本快速入门介绍如何更新现有的 Java 应用程序（此前使用 Yeoman 模板或 Eclipse 创建，可与 Service Fabric Java SDK 配合使用），使之与基于 Maven 的版本兼容。
@@ -220,7 +220,7 @@ task copyDeps <<{
     }
 }
 ```
-通常情况下，若要粗略地了解 Service Fabric 无状态 Java 服务的生成脚本的情况，可参阅入门示例中提供的任何示例。 这里是适用于 EchoServer 示例的 [build.gradle](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/Services/EchoServer/EchoServer1.0/EchoServerService/build.gradle)。
+通常情况下，若要粗略地了解 Service Fabric 无状态 Java 服务的生成脚本的情况，可参阅入门示例中提供的任何示例。 这里是适用于 EchoServer 示例的 [build.gradle](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/reliable-services-actor-sample/build.gradle)。
 
 ## <a name="migrating-service-fabric-actor-service"></a>迁移 Service Fabric Actor 服务
 

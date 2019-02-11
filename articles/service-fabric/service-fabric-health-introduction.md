@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 6cba4e1fd9c9fe5fdaa7ff4513218a606a4eace9
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 060ff6b94c171d27dae74ea76603222253f33bab
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215224"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194281"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric 运行状况监视简介
 Azure Service Fabric 引入了一个运行状况模型，该模型提供丰富、灵活且可扩展的运行状况评估和报告。 使用该模型可对群集及其中运行的服务的状态进行近乎实时的监视。 可以轻松获取运行状况信息，并在潜在问题级联和造成大规模停机之前予以更正。 在典型的模型中，服务基于其本地视图发送报告，并聚合信息，以提供整体的群集级别视图。
@@ -68,7 +68,7 @@ Service Fabric 组件使用这种提供丰富信息的运行状况模型报告�
 运行状况层次结构基于最新的运行状况报告表示系统的最新状态，该报告几乎是实时信息。
 基于应用程序特定的逻辑或监视的自定义条件，内部和外部的监视器可以针对相同实体进行报告。 用户报告与系统报告共存。
 
-设计大型云服务时，请投入时间规划如何报告和响应运行状况。 有了这种前期投入准备，可以更轻松地调试、监视和操作该服务。
+设计大型云服务时，请投入时间规划如何报告和响应运行状况。 有了这种预先投入准备，可以更轻松地调试、监视和操作该服务。
 
 ## <a name="health-states"></a>运行状况状态
 Service Fabric 使用三种运行状况状态来说明实体是否正常：“正常”、“警告”和“错误”。 发送到运行状况存储的任何报告都必须指定其中一种状态。 运行状况评估结果是其中一种状态。

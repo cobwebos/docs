@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 55274f26-be7e-4514-964c-7186ecb55c4a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 2dfc450fe53c543c1d5119cd9c6954aadaa3b3ff
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: cea5c6ad57d8c391bd1d5264abbc1397fbad0f30
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421417"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161999"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fiscalnote"></a>教程：Azure Active Directory 与 FiscalNote 集成
 
@@ -192,7 +192,7 @@ ms.locfileid: "39421417"
 
 本部分的目的是在 FiscalNote 中创建名为 Britta Simon 的用户。 FiscalNote 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 如果尚不存在用户，请在尝试访问 FiscalNote 期间创建一个新用户。
 >[!Note]
->如果需要手动创建用户，请联系 [FiscalNote 支持团队](mailto:support@fiscalnote.com)。
+>如果需要手动创建用户，请联系  [FiscalNote 支持团队](mailto:support@fiscalnote.com)。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -229,12 +229,12 @@ ms.locfileid: "39421417"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“FiscalNote”磁贴，应会自动登录到 FiscalNote 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

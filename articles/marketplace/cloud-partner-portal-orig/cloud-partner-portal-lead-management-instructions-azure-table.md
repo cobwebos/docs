@@ -12,17 +12,16 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 60e3e3d81b07bf7ae681b5cef2d6d9681877a35f
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: c4537709181398e401ade67b831bc2d26a99221f
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805830"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193580"
 ---
-<a name="lead-management-instructions-for-azure-table"></a>Azure 表的潜在客户管理说明
-============================================
+# <a name="lead-management-instructions-for-azure-table"></a>Azure 表的潜在客户管理说明
 
 本文介绍如何配置 Azure 表以存储潜在销售顾客。 可以使用 Azure 表存储和自定义客户信息。
 
@@ -42,140 +41,111 @@ ms.locfileid: "48805830"
 可以使用 [Azure 存储资源管理器](http://azurestorageexplorer.codeplex.com/)或任何其他工具来查看存储表中的数据。 此外可以导出 Azure 表中的数据。
 数据。
 
-## <a name="optional-to-use-azure-functions-with-an-azure-table"></a>（可选）将 Azure Functions 与 Azure 表配合使用
+## <a name="optional-use-microsoft-flow-with-an-azure-table"></a>（可选）将 Microsoft Flow 与 Azure 表配合使用
 
-如果想要自定义如何接收潜在顾客，请将 [Azure Functions](https://azure.microsoft.com/services/functions/) 与 Azure 表配合使用。 使用 Azure Functions 服务，可使你能够自动执行潜在顾客生成过程。
+每次将潜在顾客添加到 Azure 表时，都可使用 [Microsoft Flow](https://docs.microsoft.com/flow/) 自动发送通知。 如果没有帐户，可以[注册免费帐户](https://flow.microsoft.com/)。
 
-以下步骤说明如何创建使用计时器的 Azure Function。 每隔五分钟函数便会在 Azure 表中查找新记录，然后使用 SendGrid 服务发送电子邮件通知。
+### <a name="lead-notification-example"></a>潜在顾客通知示例
 
+使用此示例作为指南，创建一个简单的流，在将新的潜在顾客添加到 Azure 表时自动发送电子邮件通知。 此示例设置重复周期，以在更新表存储时每一小时发送一次潜在顾客信息。
 
-1.  在 Azure 订阅中[创建](https://portal.azure.com/#create/SendGrid.SendGrid)免费的 SendGrid 服务帐户。
+1. 登录 Microsoft Flow 帐户。
+2. 在左侧导航栏中，选择“我的流”。
+3. 在顶部导航栏上，选择“+ 新建”。  
+4. 在下拉列表中，选择“+ 从头开始创建”
+5. 在“从头开始创建流”下，选择“从头开始创建”。
 
-    ![创建 SendGrid](./media/cloud-partner-portal-lead-management-instructions-azure-table/createsendgrid.png)
+   ![从头开始创建新的流](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-create-from-blank.png)
 
-2.  创建 SendGrid API 密钥 
-    - 选择“管理”以转到 SendGrid UI
-    - 选择“设置”、“API 密钥”，然后创建一个具有邮件发送 -\> 完全访问权限的密钥
-    - 保存 API 密钥
+6. 在连接器和触发器搜索页面上，选择“触发器”。
+7. 在“触发器”下，选择“重复周期”。
+8. 在“重复周期”窗口中，为间隔保留默认设置 1。 在“频率”下拉列表中，选择“小时”。
 
+   >[!NOTE] 
+   >虽然此示例使用 1 小时间隔，但你可以选择最适合业务需求的间隔和频率。
 
-    ![SendGrid API 密钥](./media/cloud-partner-portal-lead-management-instructions-azure-table/sendgridkey.png)
+   ![将重复周期频率设定为 1 小时](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-recurrence-dropdown.png)
 
+9. 选择“+新建步骤”。
+10. 搜索“获取过去时间”，然后在“操作”下选择“获取过去时间”。 
 
-3.  使用名为“消耗计划”的“宿主计划”选项[创建](https://portal.azure.com/#create/Microsoft.FunctionApp)一个 Azure 函数应用。
+    ![查找并选择“获取过去时间”操作](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-search-getpasttime.png)
 
-    ![创建 Azure 函数应用](./media/cloud-partner-portal-lead-management-instructions-azure-table/createfunction.png)
+11. 在“获取过去时间”窗口中，将间隔设置为 1。  从“时间单位”下拉列表中，选择“小时”。
+    >[!IMPORTANT] 
+    >确保此“间隔”和“时间”单位与为“重复周期”配置的“间隔”和“频率”匹配。
 
+    ![设置过去时间间隔](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getpast-time.png)
 
-4.  创建新的函数定义。
+    >[!TIP] 
+    >可以随时检查流以验证是否正确配置了每个步骤。 要检查流，请从流菜单栏中选择“流检查器”。
 
-    ![创建 Azure 函数定义](./media/cloud-partner-portal-lead-management-instructions-azure-table/createdefinition.png)
- 
+下一组步骤中，将连接到 Azure 表，并设置处理逻辑以处理新的潜在顾客。
 
-5.  若要让该函数在特定时间发送更新，请选择“TimerTrigger-CSharp”作为启动器选项。
+1. 在执行“获取过去时间”步骤后，选择“+ 新建步骤”，然后搜索“获取实体”。
+2. 在“操作”下，选择“获取实体”，然后选择“显示高级选项”。
+3. 在“获取实体”窗口中，提供以下字段的信息：
 
-     ![Azure Function 时间触发器选项](./media/cloud-partner-portal-lead-management-instructions-azure-table/timetrigger.png)
+   - 表 - 输入 Azure 表存储的名称。 下一个屏幕截图显示了为此示例输入“MarketPlaceLeads”时的提示。 
 
+     ![为 Azure 表名选择自定义值](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-table-name.png)
 
-6.  将“开发”代码替换为以下代码示例。 用你想要用于发件人和接收人的地址来编辑电子邮件地址。
+   - 筛选查询 - 单击此字段，弹出窗口中将显示“获取过去时间”图标。 选择“过去时间”，将其用作时间戳以筛选查询。 此外，也可以将此功能粘贴到以下字段：`gt datetime'@{body('Get_past_time')}'`
 
-        #r "Microsoft.WindowsAzure.Storage"
-        #r "SendGrid"
-        using Microsoft.WindowsAzure.Storage.Table;
-        using System;
-        using SendGrid;
-        using SendGrid.Helpers.Mail;
-        public class MyRow : TableEntity
-        {
-            public string Name { get; set; }
-        }
-        public static void Run(TimerInfo myTimer, IQueryable<MyRow> inputTable, out Mail message, TraceWriter log)
-        {
-            // UTC datetime that is 5.5 minutes ago while the cron timer schedule is every 5 minutes
-            DateTime dateFrom = DateTime.UtcNow.AddSeconds(-(5 * 60 + 30));
-            var emailFrom = "YOUR EMAIL";
-            var emailTo = "YOUR EMAIL";
-            var emailSubject = "Azure Table Notification";
-            // Look in the table for rows that were added recently
-            var rowsList = inputTable.Where(r => r.Timestamp > dateFrom).ToList();
-            // Check how many rows were added
-            int rowsCount = rowsList.Count;
-            if (rowsCount > 0)
-            {
-                log.Info($"Found {rowsCount} rows added since {dateFrom} UTC");
-                // Configure the email message describing how many rows were added
-                message = new Mail
-                {
-                    From = new Email(emailFrom),
-                    Subject = emailSubject + " (" + rowsCount + " new rows)"
-                };
-                var personalization = new Personalization();
-                personalization.AddTo(new Email(emailTo));
-                message.AddPersonalization(personalization);
-                var content = new Content
-                {
-                    Type = "text/plain",
-                    Value = "Found " + rowsCount + " new rows added since " + dateFrom.ToString("yyyy-MM-dd HH:mm:ss") + " UTC"
-                };
-                message.AddContent(content);
-            }
-            else
-            {
-                // Do not send the email if no new rows were found
-                message = null;
-            }
-        }
+     ![设置筛选查询功能](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 
-    ![Azure Function 代码片段](./media/cloud-partner-portal-lead-management-instructions-azure-table/code.png)
+4. 选择“新建步骤”可以添加条件，通过扫描 Azure 表获取新潜在顾客。
 
+   ![使用“新建”步骤添加条件以扫描 Azure 表](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-add-filterquery-new-step.png)
 
-7.  选择“集成”和“输入”，即可定义 Azure 表连接。
+5. 在“选择操作”窗口中，选择“操作”，然后选择“条件”控件。
 
-    ![Azure Function 集成](./media/cloud-partner-portal-lead-management-instructions-azure-table/integrate.png)
+     ![添加条件控件](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-action-condition-control.png)
 
+6. 在“条件”窗口中，选择“选择值”字段，然后在弹出窗口中选择“表达式”。
+7. 将 `length(body('Get_entities')?['value'])` 粘贴到 fx 字段中。 选择“确定”以添加此功能。 要完成条件设置：
 
-8.  输入表名称，并通过选择“新建”来定义连接字符串。
+   - 从下拉列表中选择“大于”。
+   - 输入 0 作为值 
 
+     ![在条件中添加一个函数](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-condition-fx0.png)
 
-    ![Azure Function 表连接](./media/cloud-partner-portal-lead-management-instructions-azure-table/configtable.png)
+8. 根据条件的结果设置要采取的操作。
 
-9.  现在，将 Output 定义为 SendGrid，并保留所有默认值。
+     ![根据条件结果设置操作](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-condition-pick-action.png)
 
-    ![SendGrid 输出](./media/cloud-partner-portal-lead-management-instructions-azure-table/sendgridoutput.png)
+9. 如果条件解析为“如果否”，则不执行任何操作。 
+10. 如果条件解析为“如果是”，则触发连接 Office 365 帐户以发送电子邮件的操作。 选择“添加操作”。
+11. 选择“发送电子邮件”。 
+12. 在“发送电子邮件”窗口中，提供以下字段的信息：
 
-    ![SendGrid 输出默认值](./media/cloud-partner-portal-lead-management-instructions-azure-table/sendgridoutputdefaults.png)
+    - 收件人 - 输入将收到此通知的所有人的电子邮件地址。
+    - 主题 - 提供电子邮件的主题。 例如：新潜在顾客！
+    - **正文**： 添加要包含在每封电子邮件中的文本（可选），然后将 `('Get_entities')?['value']` 作为插入潜在顾客信息的函数粘贴到正文。
 
-10. 使用名为“SendGridApiKey”和从 SendGrid UI 中的 API 密钥获取的值向 Function App 设置添加 SendGrid API 密钥
+      >[!NOTE] 
+      >可将其他静态或动态数据点插入此电子邮件的正文中。
 
-    ![SendGrid 管理](./media/cloud-partner-portal-lead-management-instructions-azure-table/sendgridmanage.png)
-    ![SendGrid 管理密钥](./media/cloud-partner-portal-lead-management-instructions-azure-table/sendgridmanagekey.png)
+       ![设置潜在顾客通知的电子邮件](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-emailbody-fx.png)
 
-函数配置完成后，“集成”部分中的代码应类似下面的示例。
+13. 选择“保存”以保存流。 Microsoft Flow 将自动测试流中的错误。 如果没有任何错误，流将在保存后开始运行。
 
-    {
-      "bindings": [
-        {
-          "name": "myTimer",
-          "type": "timerTrigger",
-          "direction": "in",
-          "schedule": "0 */5 * * * *"
-        },
-        {
-          "type": "table",
-          "name": "inputTable",
-          "tableName": "MarketplaceLeads",
-          "take": 50,
-          "connection": "yourstorageaccount_STORAGE",
-          "direction": "in"
-        },
-        {
-          "type": "sendGrid",
-          "name": "message",
-          "apiKey": "SendGridApiKey",
-          "direction": "out"
-        }
-      ],
-      "disabled": false
-    }
+下一个屏幕截图显示了最终流应如何显示的示例。
 
-11. 最后一步是导航到函数的开发 UI，然后选择“运行”以启动计时器。 现在，每当有新的潜在顾客来访时，你都将收到通知。
+ ![最终流序列](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end.png)
+
+### <a name="managing-your-flow"></a>管理流
+
+在流运行后管理流十分容易。  可完全控制流。 例如，可以停止它、编辑它、查看运行历史记录，然后获取分析。 下一个屏幕截图显示了可用于管理流的选项。 
+
+ ![管理流](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-manage-completed.png)
+
+流将一直保持运行状态，直到你使用“关闭流量”选项来停止流。
+
+若未收到任何潜在顾客电子邮件通知，则表示新的潜在顾客尚未添加到 Azure 表中。 若有任何流故障，将收到类似下一个屏幕截图中的示例的电子邮件。
+
+ ![流失败电子邮件通知](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-failure-note.png)
+
+## <a name="next-steps"></a>后续步骤
+
+[配置潜在客户](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)

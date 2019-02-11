@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: b14a98ce22979182ec27ba5dc849f9535fa2b387
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 16876a7831ab374637e28165c44d47e0ab059712
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824296"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976353"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>排查 Azure Windows 虚拟机激活问题
 
@@ -37,10 +37,10 @@ Azure 使用不同的终结点进行 KMS 激活，具体取决于 VM 所在的�
 
 尝试激活 Azure Windows VM 时，将收到类似于以下示例的错误消息：
 
-**错误: 0xC004F074 软件授权服务报告无法激活计算机。无法联系任何密钥管理服务(KMS)。有关其他信息，请参阅应用程序事件日志。**
+**错误：0xC004F074 软件授权服务报告无法激活计算机。无法联系任何密钥管理服务(KMS)。有关其他信息，请参阅应用程序事件日志。**
 
 ## <a name="cause"></a>原因
-通常情况下，如果未使用相应的 KMS 客户端安装密钥配置 Windows VM，或 Windows VM 与 Azure KMS 服务（kms.core.windows.net，端口 1668）的连接出现问题，便会出现 Azure VM 激活问题。 
+通常情况下，如果未使用相应的 KMS 客户端安装密钥配置 Windows VM，或 Windows VM 与 Azure KMS 服务（kms.core.windows.net，端口 1688）的连接出现问题，便会出现 Azure VM 激活问题。 
 
 ## <a name="solution"></a>解决方案
 
@@ -86,7 +86,7 @@ Azure 使用不同的终结点进行 KMS 激活，具体取决于 VM 所在的�
     ```
     iex "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
-    此命令应返回：密钥管理服务计算机名称已成功设置为 kms.core.windows.net:1688。
+    该命令应当返回以下内容：密钥管理服务计算机名称已成功设置为 kms.core.windows.net:1688。
 
 4. 使用 Psping 验证是否已连接到 KMS 服务器。 切换到将 Pstools.zip 下载内容提取到的文件夹，再运行以下命令：
   
@@ -94,7 +94,7 @@ Azure 使用不同的终结点进行 KMS 激活，具体取决于 VM 所在的�
     \psping.exe kms.core.windows.net:1688
     ```
   
-  请确保输出的倒数第二行显示：Sent = 4, Received = 4, Lost = 0 (0% loss)。
+  确保输出的倒数第二行显示以下内容：Sent = 4, Received = 4, Lost = 0 (0% loss)。
 
   如果“Lost”大于 0（零），表示 VM 未连接到 KMS 服务器。 在这种情况下，如果 VM 位于虚拟网络中，并且指定了自定义 DNS 服务器，必须确保此 DNS 服务器能够解析 kms.core.windows.net。 或者，将 DNS 服务器更改为可以解析 kms.core.windows.net。
 

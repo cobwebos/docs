@@ -8,19 +8,18 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 34161251ac52323bc3eff66cfe30f3de34bdf60c
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 6511eb7a4651f0b95b7821e1959ba7e4130c2d6e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713850"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105791"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>在 Azure 中创建管理解决方案文件（预览版）
 > [!NOTE]
@@ -43,7 +42,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 管理解决方案文件的基本结构与如下所示的[资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md#template-format)相同。  以下各节描述了解决方案中的顶级元素及其内容。  
 
     {
-       "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
        "contentVersion": "1.0",
        "parameters": {  },
        "variables": {  },
@@ -169,7 +168,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 **dependsOn** 元素指定对另一个资源的[依赖](../../azure-resource-manager/resource-group-define-dependencies.md)。  安装解决方案时，资源的所有依赖均已创建后才能创建资源。  例如，如果解决方案使用[作业资源](solutions-resources-automation.md#automation-jobs)安装，则该解决方案需要[启动 runbook](solutions-resources-automation.md#runbooks)。  作业资源将依赖于 runbook 资源，以确保在创建作业之前创建 runbook。
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics 工作区和自动化帐户
-管理解决方案需要 [Log Analytics 工作区](../../log-analytics/log-analytics-manage-access.md)来包含视图，也需要[自动化帐户](../../automation/automation-security-overview.md#automation-account-overview)来包含 runbook 和相关资源。  这些内容在解决方案中的资源创建之前必须已经存在，并且不能在解决方案本身中定义。  部署解决方案时，用户将[指定工作区和帐户](solutions.md#log-analytics-workspace-and-automation-account)，但作为作者，应考虑以下几点。
+管理解决方案需要 [Log Analytics 工作区](../../azure-monitor/platform/manage-access.md)来包含视图，也需要[自动化帐户](../../automation/automation-security-overview.md#automation-account-overview)来包含 runbook 和相关资源。  这些内容在解决方案中的资源创建之前必须已经存在，并且不能在解决方案本身中定义。  部署解决方案时，用户将[指定工作区和帐户](solutions.md#log-analytics-workspace-and-automation-account)，但作为作者，应考虑以下几点。
 
 
 ## <a name="solution-resource"></a>解决方案资源

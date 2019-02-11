@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 用户旅程中集成 REST API 声明交�
 description: 在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: e3d938c4464fc5141b97f85220bf096920e17d00
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.subservice: B2C
+ms.openlocfilehash: 5ade3ac7587d4ac5c5a6d8e174e76e76088e4e57
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339587"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157935"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换
 
@@ -26,19 +26,19 @@ ms.locfileid: "43339587"
 ## <a name="introduction"></a>介绍
 使用 Azure AD B2C 可以通过调用 RESTful 服务，将自己的业务逻辑添加到用户旅程中。 标识体验框架在“输入声明”集合中将数据发送到 RESTful 服务，在“输出声明”集合中接收 RESTful 返回的数据。 使用 RESTful 服务集成，可以：
 
-* **验证用户输入数据**：此操作防止将格式不当的数据保存到 Azure AD。 如果用户提供的值无效，RESTful 服务会返回错误消息，指示用户提供有效条目。 例如，可以验证用户提供的电子邮件地址是否在客户数据库中存在。
+* **验证用户输入数据**：此操作可防止将格式不正确的数据保存到 Azure AD。 如果用户提供的值无效，RESTful 服务会返回错误消息，指示用户提供有效条目。 例如，可以验证用户提供的电子邮件地址是否在客户数据库中存在。
 * **覆盖输入声明**：例如，如果用户使用全小写或全大写字母输入了名字，则你可以设置该名字的格式，只将第一个字母大写。
 * **通过进一步与企业业务线应用程序集成来丰富用户数据**：RESTful 服务可以接收用户的电子邮件地址、查询客户的数据库，并向 Azure AD B2C 返回用户的会员号。 返回声明可以存储在用户 Azure AD 帐户中、在后续的业务流程步骤中进行评估，或包含在访问令牌中。
 * **运行自定义业务逻辑**：可以发送推送通知、更新企业数据库、运行用户迁移过程、管理权限、审核数据库，以及执行其他操作。
 
 可通过以下方式来设计与 RESTful 服务的集成：
 
-* **验证技术配置文件**：对 RESTful 服务的调用在指定的技术配置文件的验证技术配置文件中发生。 在用户旅程推进之前，验证技术配置文件会验证用户提供的数据。 使用验证技术配置文件，可以：
+* **验证技术配置文件**：对 RESTful 服务的调用在指定技术配置文件的验证技术配置文件中发生。 在用户旅程推进之前，验证技术配置文件会验证用户提供的数据。 使用验证技术配置文件，可以：
    * 发送输入声明。
    * 验证输入声明并引发自定义错误消息。
    * 发回输出声明。
 
-* **声明交换**：此设计与验证技术配置文件类似，不过它在业务流程步骤中发生。 此定义仅限于：
+* **声明交换**：此设计与验证技术配置文件类似，但它在业务流程步骤中发生。 此定义仅限于：
    * 发送输入声明。
    * 发回输出声明。
 
@@ -50,7 +50,7 @@ ms.locfileid: "43339587"
 * 在用户旅程中使用 RESTful 服务。
 * 发送输入声明，并在代码中读取这些声明。
 * 验证用户的名字。
-* 发回会员号。 
+* 发回会员号。
 * 将会员号添加到 JSON Web 令牌 (JWT)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -77,11 +77,11 @@ ms.locfileid: "43339587"
 ## <a name="step-2-prepare-the-rest-api-endpoint"></a>步骤 2：准备 REST API 终结点
 
 ### <a name="step-21-add-data-models"></a>步骤 2.1：添加数据模型
-模型代表 RESTful 服务中的输入声明和输出声明数据。 代码通过将输入声明模型从 JSON 字符串反序列化为 C# 对象（你的模型）来读取输入数据。 ASP.NET Web API 将输出声明模型自动反序列化回到 JSON，然后将序列化的数据写入 HTTP 响应消息的正文。 
+模型代表 RESTful 服务中的输入声明和输出声明数据。 代码通过将输入声明模型从 JSON 字符串反序列化为 C# 对象（你的模型）来读取输入数据。 ASP.NET Web API 将输出声明模型自动反序列化回到 JSON，然后将序列化的数据写入 HTTP 响应消息的正文。
 
 执行以下操作，创建一个代表输入声明的模型：
 
-1. 如果解决方案资源管理器尚未打开，请选择“视图” > “解决方案资源管理器”。 
+1. 如果解决方案资源管理器尚未打开，请选择“视图” > “解决方案资源管理器”。
 2. 在“解决方案资源管理器”中，右键单击“模型”文件夹，选择“添加”，并选择“类”。
 
     ![添加模型](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-model.png)
@@ -128,7 +128,7 @@ ms.locfileid: "43339587"
                 this.userMessage = message;
                 this.status = (int)status;
                 this.version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            }    
+            }
         }
     }
     ```
@@ -215,7 +215,7 @@ ms.locfileid: "43339587"
     此时会打开“创建应用服务”窗口。 在此窗口中，创建在 Azure 中运行 ASP.NET Web 应用所需的全部 Azure 资源。
 
     > [!NOTE]
-    >有关发布方法的详细信息，请参阅[在 Azure 中创建 ASP.NET Web 应用](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure)。
+    >有关发布方法的详细信息，请参阅[在 Azure 中创建 ASP.NET Web 应用](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet)。
 
 3. 在“Web 应用名称”框中，键入唯一的应用名称（有效字符为 a-z、0-9 和连字符 (-)）。 Web 应用的 URL 为 http://<app_name>.azurewebsites.NET，其中，*app_name* 是 Web 应用的名称。 可以接受自动生成的名称，它是唯一的。
 
@@ -241,59 +241,59 @@ ms.locfileid: "43339587"
 </BuildingBlocks>
 ```
 
-## <a name="step-5-add-a-claims-provider"></a>步骤 5：添加声明提供程序 
-每个声明提供程序必须包含一个或多个用于确定终结点的技术配置文件，以及与该声明提供程序通信所需的协议。 
+## <a name="step-5-add-a-claims-provider"></a>步骤 5：添加声明提供程序
+每个声明提供程序必须包含一个或多个用于确定终结点的技术配置文件，以及与该声明提供程序通信所需的协议。
 
-一个声明提供程序可出于由于各种原因包含多个技术配置文件。 例如，由于声明提供程序支持多个协议、终结点可以包含不同的功能，或者版本可以包含采用不同保障级别的声明，因此可以定义多个技术配置文件。 可以接受在一个用户旅程中发放敏感声明，但不接受在另一个用户旅程中发放此类声明。 
+一个声明提供程序可出于由于各种原因包含多个技术配置文件。 例如，由于声明提供程序支持多个协议、终结点可以包含不同的功能，或者版本可以包含采用不同保障级别的声明，因此可以定义多个技术配置文件。 可以接受在一个用户旅程中发放敏感声明，但不接受在另一个用户旅程中发放此类声明。
 
 以下 XML 片段包含具有两个技术配置文件的声明提供程序节点：
 
-* **TechnicalProfile Id="REST-API-SignUp"**：定义 RESTful 服务。 
-   * `Proprietary` 描述为基于 RESTful 的提供程序的协议。 
-   * `InputClaims` 定义要从 Azure AD B2C 发送到 REST 服务的声明。 
+* **TechnicalProfile Id="REST-API-SignUp"**：定义 RESTful 服务。
+   * `Proprietary` 描述为基于 RESTful 的提供程序的协议。
+   * `InputClaims` 定义要从 Azure AD B2C 发送到 REST 服务的声明。
 
    在此示例中，声明 `givenName` 的内容作为 `firstName` 发送到 REST 服务，声明 `surname` 的内容作为 `lastName` 发送到 REST 服务，`email` 按原样发送。 `OutputClaims` 元素定义要从 RESTful 服务检索回到 Azure AD B2C 的声明。
 
-* **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"**：将验证技术配置文件添加到现有技术配置文件（在基本策略中定义）。 在执行注册旅程期间，验证技术配置文件调用上述技术配置文件。 如果 RESTful 服务返回 HTTP 错误 409（冲突错误），会向用户显示错误消息。 
+* **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"**：将验证技术配置文件添加到现有技术配置文件（在基本策略中定义）。 在执行注册旅程期间，验证技术配置文件调用上述技术配置文件。 如果 RESTful 服务返回 HTTP 错误 409（冲突错误），会向用户显示错误消息。
 
 找到 `<ClaimsProviders>` 节点，然后在 `<ClaimsProviders>` 节点下添加以下 XML 片段：
 
 ```xml
 <ClaimsProvider>
-    <DisplayName>REST APIs</DisplayName>
-    <TechnicalProfiles>
+  <DisplayName>REST APIs</DisplayName>
+  <TechnicalProfiles>
     
     <!-- Custom Restful service -->
     <TechnicalProfile Id="REST-API-SignUp">
-        <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
-        <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-        <Metadata>
+      <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
+      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      <Metadata>
         <Item Key="ServiceUrl">https://your-app-name.azurewebsites.NET/api/identity/signup</Item>
         <Item Key="AuthenticationType">None</Item>
         <Item Key="SendClaimsIn">Body</Item>
-        </Metadata>
-        <InputClaims>
+        <Item Key="AllowInsecureAuthInProduction">true</Item>
+      </Metadata>
+      <InputClaims>
         <InputClaim ClaimTypeReferenceId="email" />
         <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName" />
         <InputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName" />
-        </InputClaims>
-        <OutputClaims>
+      </InputClaims>
+      <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="loyaltyNumber" PartnerClaimType="loyaltyNumber" />
-        </OutputClaims>
-        <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+      </OutputClaims>
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
     </TechnicalProfile>
 
-<!-- Change LocalAccountSignUpWithLogonEmail technical profile to support your validation technical profile -->
+    <!-- Change LocalAccountSignUpWithLogonEmail technical profile to support your validation technical profile -->
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
-        <OutputClaims>
+      <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="loyaltyNumber" PartnerClaimType="loyaltyNumber" />
-        </OutputClaims>
-        <ValidationTechnicalProfiles>
+      </OutputClaims>
+      <ValidationTechnicalProfiles>
         <ValidationTechnicalProfile ReferenceId="REST-API-SignUp" />
-        </ValidationTechnicalProfiles>
+      </ValidationTechnicalProfiles>
     </TechnicalProfile>
-
-    </TechnicalProfiles>
+  </TechnicalProfiles>
 </ClaimsProvider>
 ```
 
@@ -329,7 +329,7 @@ ms.locfileid: "43339587"
 
 2. 选择“标识体验框架”。
 
-3. 打开“所有策略”。 
+3. 打开“所有策略”。
 
 4. 选择“上传策略”。
 
@@ -354,7 +354,7 @@ ms.locfileid: "43339587"
 
     ![测试策略](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-test.png)
 
-4.  在“名”框中键入一个名称（不要键入“Test”）。  
+4. 在“名”框中键入一个名称（不要键入“Test”）。  
     Azure AD B2C 会注册该用户，然后将 loyaltyNumber 发送到应用程序。 请注意此 JWT 中的编号。
 
 ```
@@ -381,7 +381,7 @@ ms.locfileid: "43339587"
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>（可选）下载完整的策略文件和代码
 * 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们已提供[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw)用于参考。
 * 可以从 [Visual Studio 解决方案参考示例](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/)下载完整代码。
-    
+
 ## <a name="next-steps"></a>后续步骤
 * [使用基本身份验证（用户名和密码）保护 RESTful API](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 * [使用客户端证书保护 RESTful API](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

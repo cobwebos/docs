@@ -1,21 +1,22 @@
 ---
-title: 快速入门：分析本地图像 - REST、cURL - 计算机视觉
+title: 快速入门：分析本地图像 - REST、cURL
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 cURL 来分析本地图像。
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: pafarley
-ms.openlocfilehash: c7c3cf2bae66e1739c4a62e1ce823542d0dfce36
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 91e127c1ad41c459d0f1a1c2070cb193d59dd80b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339910"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209955"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-curl-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 cURL 分析本地图像
 

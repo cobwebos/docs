@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
-ms.author: cwatson
-ms.openlocfilehash: 6a070d9ebd46d117041276436107abcc958d58d4
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 257e9f72f21d523dfa2390814b786d1963dd671c
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583731"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903998"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
 
@@ -54,7 +54,7 @@ ms.locfileid: "52583731"
 2. 选择“所有服务” > “预订”以列出自己有权访问的预订。
 3. 选择要将访问权限委托给其他用户的预订。
 4. 选择“访问控制 (IAM)”。
-5. 选择“添加” > “角色” > “所有者”。 或者，如果希望提供有限的访问权限，请选择其他角色。
+5. 选择“添加角色分配” > “角色” > “所有者”。 或者，如果希望提供有限的访问权限，请选择其他角色。
 6. 键入要添加为“所有者”的用户的电子邮件地址。
 7. 选择用户，再选择“保存”。
 
@@ -133,4 +133,4 @@ ms.locfileid: "52583731"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

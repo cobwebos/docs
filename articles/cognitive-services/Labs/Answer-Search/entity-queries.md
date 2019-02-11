@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: answer-search
+ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: 09af064a1c072996171e6afa4f043e84f18612b4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 2ec11412b5b0e713742029f05c91a6ecbe78c344
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467406"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210686"
 ---
 # <a name="quickstart-query-for-entities"></a>快速入门：查询实体
 
@@ -33,7 +33,7 @@ ms.locfileid: "49467406"
 -   景点 
  
 要确定响应所包含的实体的类型，请使用 `entityTypeHints` 字段，如“比尔·盖茨”的查询所示。
-````
+```
         },
         "description": "Bill Gates is an American business man and philanthropist, co-founder of Microsoft",
         "entityPresentationInfo": {
@@ -44,13 +44,13 @@ ms.locfileid: "49467406"
         },
         "bingId": "6d7d66a7-2cb8-0ae9-637c-f81fd749dc9a"
       }
-````
+```
 下面是“太空针塔”的查询：
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=space+needle&mkt=en-us
-````
+```
 该响应包括 `entities` 答案。 请注意 `entityScenario` 和 `entityTypeHints` 字段。 
-````
+```
   "entities": {
     "value": [
       {
@@ -108,19 +108,19 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=space+needle
       }
     ]
   },
-````
+```
 
 如果相关，查询可返回一个列表。
 
 **查询：** 以下查询查找濒危物种列表：
 
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+endangered+species
 
-````
+```
 
 **响应：** 响应包括格式设置为作为表格值显示的列表：
-````
+```
   "facts": {
     "id": "https://www.bingapis.com/api/v7/#Facts",
     "contractualRules": [
@@ -217,7 +217,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+enda
     ]
   },
 
-````
+```
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,102 +1,92 @@
 ---
-title: 快速入门：必应新闻搜索 API、Node.js
+title: 快速入门：使用 Node.js 执行新闻搜索 - 必应新闻搜索 REST API
 titlesuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以帮助你快速开始使用必应新闻搜索 API。
+description: 使用本快速入门，通过 Node.js 将请求发送到必应新闻搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 9/21/2017
+ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: d0bb2d9b35c93d8730ca17fbf70e41df5deb1834
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 9eb8869847f60d277857826e810a7e9bf51fc1fa
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316899"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157153"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-nodejs"></a>将必应新闻搜索 API 与 Node.js 配合使用快速入门
+# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>快速入门：使用 Node.js 和必应新闻搜索 REST API 执行新闻搜索
 
-本文展示了如何使用 Azure 上的 Microsoft 认知服务中包含的必应新闻搜索 API。 虽然本文采用的是 Node.js，但 API 是一种 RESTful Web 服务，与任何可以发出 HTTP 请求并分析 JSON 的编程语言兼容。 
+使用本快速入门进行你的第一次必应图像搜索 API 调用并接收 JSON 响应。 这个简单的 JavaScript 应用程序会向 API 发送一个搜索查询并显示原始结果。
 
-示例是用 JavaScript 编写的并在 Node.js 6 下运行。
+虽然此应用程序采用 JavaScript 编写且在 Node.js 中运行，但 API 是一种 RESTful Web 服务，可与大多数编程语言兼容。
 
-有关 API 的技术详细信息，请参阅 [API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)。
+该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingNewsSearchv7.js) 上获得。
 
 ## <a name="prerequisites"></a>先决条件
 
-必须拥有包含必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+* 最新版本的 [Node.js](https://nodejs.org/en/download/)。
 
-## <a name="bing-news-search"></a>必应新闻搜索
+* [JavaScript 请求库](https://github.com/request/request)
 
-[必应新闻搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) 从必应搜索引擎返回新闻结果。
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-1. 在你喜欢使用的 IDE 或编辑器中新建一个 Node.js 项目。
-2. 添加下面提供的代码。
-3. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
-4. 运行该程序。
+另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
-```javascript
-'use strict';
+## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-let https = require('https');
+1. 在最喜爱的 IDE 或编辑器中创建新的 JavaScript 文件，并设置严格性和 https 要求。
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+    ```javascript
+    'use strict';
+    let https = require('https');
+    ```
 
-// Replace the subscriptionKey string value with your valid subscription key.
-let subscriptionKey = 'enter key here';
+2. 为 API 终结点、图像 API 搜索路径、订阅密钥和搜索词创建变量。
+    ```javascript
+    let subscriptionKey = 'enter key here';
+    let host = 'api.cognitive.microsoft.com';
+    let path = '/bing/v7.0/news/search';
+    let term = 'Microsoft';
+    ```
 
-// Verify the endpoint URI.  At this writing, only one endpoint is used for Bing
-// search APIs.  In the future, regional endpoints may be available.  If you
-// encounter unexpected authorization errors, double-check this host against
-// the endpoint for your Bing Search instance in your Azure dashboard.
-let host = 'api.cognitive.microsoft.com';
-let path = '/bing/v7.0/news/search';
+## <a name="handle-and-parse-the-response"></a>处理和分析响应
 
-let term = 'Microsoft';
+1. 定义名为 `response_handler` 的函数，它将 HTTP 调用 `response` 作为参数。 在此函数内，执行以下步骤：
 
-let response_handler = function (response) {
-    let body = '';
-    response.on('data', function (d) {
-        body += d;
-    });
-    response.on('end', function () {
-        console.log('\nRelevant Headers:\n');
-        for (var header in response.headers)
-            // header keys are lower-cased by Node.js
-            if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
-                 console.log(header + ": " + response.headers[header]);
-        body = JSON.stringify(JSON.parse(body), null, '  ');
-        console.log('\nJSON Response:\n');
-        console.log(body);
-    });
-    response.on('error', function (e) {
-        console.log('Error: ' + e.message);
-    });
-};
+    1. 定义一个包含 JSON 响应的正文的变量。  
+        ```javascript
+        let response_handler = function (response) {
+            let body = '';
+        };
+        ```
 
-let bing_news_search = function (search) {
-  console.log('Searching news for: ' + term);
-  let request_params = {
-        method : 'GET',
-        hostname : host,
-        path : path + '?q=' + encodeURIComponent(search),
-        headers : {
-            'Ocp-Apim-Subscription-Key' : subscriptionKey,
-        }
-    };
+    2. 在调用数据标志时存储响应的正文
+        ```javascript
+        response.on('data', function (d) {
+            body += d;
+        });
+        ```
 
-    let req = https.request(request_params, response_handler);
-    req.end();
-}
-bing_news_search(term);
-```
+    3. 当通过信号发出了 **end** 标志时，可以查看 JSON 和标头。
 
-**响应**
+        ```javascript
+        response.on('end', function () {
+            console.log('\nRelevant Headers:\n');
+            for (var header in response.headers)
+                // header keys are lower-cased by Node.js
+                if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
+                     console.log(header + ": " + response.headers[header]);
+            body = JSON.stringify(JSON.parse(body), null, '  ');
+            console.log('\nJSON Response:\n');
+            console.log(body);
+         });
+        ```
+
+## <a name="json-response"></a>JSON 响应
 
 在 JSON 中返回成功的响应，如以下示例所示： 
 
@@ -194,8 +184,4 @@ bing_news_search(term);
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [对新闻进行分页](paging-news.md)
-> [使用修饰标记来突出显示文本](hit-highlighting.md)
-> [在网上搜索新闻](search-the-web.md)  
-> [试试看](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)
-
+[创建单页 Web 应用](tutorial-bing-news-search-single-page-app.md)

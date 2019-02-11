@@ -5,23 +5,23 @@ services: active-directory
 keywords: AD 回收站, 意外删除, 源定位点
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: afec4207-74f7-4cdd-b13a-574af5223a90
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/13/2017
-ms.component: hybrid
+ms.topic: conceptual
+ms.date: 12/17/2018
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 378e1d3aab992e9b4e6f2263c26ea4268a43d678
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 8580d1c938908d5dd5c962d42d4edb2673ae4f5f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306156"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494368"
 ---
 # <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Azure AD Connect 同步：启用 AD 回收站
 建议为同步到 Azure AD 的本地 Active Directory 启用 AD 回收站功能。 
@@ -40,11 +40,9 @@ ms.locfileid: "46306156"
 > [!NOTE]
 > 默认情况下，Azure AD 会以软删除状态保留已删除的 Azure AD 用户对象 30 天，然后才会将其永久删除。 但管理员可加快此类对象的删除。 对象永久删除后，即使已启用本地 AD 回收站功能，也无法再进行恢复。
 
-
-
 ## <a name="next-steps"></a>后续步骤
 **概述主题**
 
-* [Azure AD Connect 同步：理解和自定义同步](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同步：了解和自定义同步](how-to-connect-sync-whatis.md)
 
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)

@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 标识体验框架架构的 字符串声明转
 description: Azure Active Directory B2C 标识体验框架架构的字符串声明转换示例。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: ce2ad3e699b930f801ad47083d6cfcf6a7937a5c
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.subservice: B2C
+ms.openlocfilehash: 9504a710711ba10d72c3f87045f498b652cfea44
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433440"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193431"
 ---
 # <a name="string-claims-transformations"></a>字符串声明转换
 
@@ -31,7 +31,7 @@ ms.locfileid: "47433440"
 | ---- | ----------------------- | --------- | ----- |
 | inputClaim | inputClaim1 | 字符串 | 要比较的第一个声明的类型。 |
 | inputClaim | inputClaim2 | 字符串 | 要比较的第二个声明的类型。 |
-| InputParameter | stringComparison | 字符串 | 字符串比较，其中一个值：Ordinal、OrdinalIgnoreCase。 |
+| InputParameter | stringComparison | 字符串 | 字符串比较，值为下列其中一项：Ordinal、OrdinalIgnoreCase。 |
 
 AssertStringClaimsAreEqual 声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 UserMessageIfClaimsTransformationStringsAreNotEqual 自断言技术配置文件元数据控制向用户显示的错误消息。
 
@@ -115,7 +115,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 - 输入声明：
     - email: SomeOne@contoso.com
 - 输入参数：
-    - toCase: LOWER
+    - **toCase**：LOWER
 - 输出声明：
     - email: someone@contoso.com
 
@@ -144,9 +144,9 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ### <a name="example"></a>示例
 
 - 输入参数：
-    - value：Contoso 服务条款...
+    - **value**：Contoso 服务条款...
 - 输出声明：
-    - createdClaim：TOS ClaimType 包含“Contoso 服务条款...”值。
+    - **createdClaim**：TOS ClaimType 包含“Contoso 服务条款...”值。
 
 ## <a name="compareclaims"></a>CompareClaims
 
@@ -184,7 +184,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
     - inputClaim1: someone@contoso.com
     - inputClaim2: someone@outlook.com
 - 输入参数：
-    - operator:  NOT EQUAL
+    - **operator**：不等于
     - ignoreCase: true
 - 输出声明：
     - outputClaim: true
@@ -197,7 +197,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 | ---- | ----------------------- | --------- | ----- |
 | inputClaim | inputClaim1 | 字符串 | 要比较的声明类型。 |
 | InputParameter | operator | 字符串 | 可能的值：`EQUAL` 或 `NOT EQUAL`。 |
-| InputParameter | compareTo | 字符串 | 字符串比较，其中一个值：Ordinal、OrdinalIgnoreCase。 |
+| InputParameter | compareTo | 字符串 | 字符串比较，值为下列其中一项：Ordinal、OrdinalIgnoreCase。 |
 | InputParameter | ignoreCase | 布尔值 | 指定此比较是否应忽略所比较字符串的大小写。 |
 | OutputClaim | outputClaim | 布尔值 | 调用此声明转换后生成的 ClaimType。 |
 
@@ -223,8 +223,8 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 - 输入声明：
     - inputClaim1: v1
 - 输入参数：
-    - compareTo: V1
-    - operator: EQUAL 
+    - **compareTo**:V1
+    - **operator**：EQUAL 
     - ignoreCase:  true
 - 输出声明：
     - outputClaim: true
@@ -257,7 +257,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ### <a name="example"></a>示例
 
 - 输入参数：
-    - randomGeneratorType: GUID
+    - **randomGeneratorType**：GUID
 - 输出声明： 
     - outputClaim: bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
 
@@ -280,12 +280,12 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ### <a name="example"></a>示例
 
 - 输入参数：
-    - randomGeneratorType: INTEGER
-    - maximumNumber: 1000
-    - stringFormat: OTP_{0}
+    - **randomGeneratorType**：INTEGER
+    - **maximumNumber**：1000
+    - **stringFormat**：OTP_{0}
     - base64: false
 - 输出声明： 
-    - outputClaim: OTP_853
+    - **outputClaim**：OTP_853
 
 
 ## <a name="formatstringclaim"></a>FormatStringClaim
@@ -317,7 +317,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - inputClaim: 5164db16-3eee-4629-bfda-dcc3326790e9
+    - **inputClaim**：5164db16-3eee-4629-bfda-dcc3326790e9
 - 输入参数：
     - stringFormat:  cpim_{0}@{RelyingPartyTenantId}
 - 输出声明：
@@ -354,12 +354,12 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - inputClaim1: Joe
-    - inputClaim2: Fernando
+    - **inputClaim1**：Joe
+    - **inputClaim2**：Fernando
 - 输入参数：
     - stringFormat: {0} {1}
 - 输出声明：
-    - outputClaim: Joe Fernando
+    - **outputClaim**：Joe Fernando
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
 
@@ -392,7 +392,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
     <InputClaim ClaimTypeReferenceId="responseCode" TransformationClaimType="mapFromClaim" />
   </InputClaims>
   <OutputClaims>
-    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />         
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />         
   </OutputClaims>
 </ClaimsTransformation>
 ```
@@ -400,9 +400,9 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - mapFromClaim: B2C_V1_90001
+    - **mapFromClaim**：B2C_V1_90001
 - 输出声明：
-    - restrictionValueClaim：无法登录，因为你未成年。
+    - **restrictionValueClaim**：无法登录，因为你未成年。
 
 ## <a name="lookupvalue"></a>LookupValue
 
@@ -415,7 +415,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 | InputParameter | errorOnFailedLookup | 布尔值 | 控制在没有任何匹配查找时是否返回错误。 |
 | OutputClaim | inputParameterId | 字符串 | 调用此声明转换后将生成的 ClaimTypes。 匹配 ID 的值。 |
 
-下面的示例在其中一个 inpuParameters 集合中查找域名。 声明转换查找标识符中的域名，并返回其值（应用程序 ID）。
+下面的示例在某一个 inputParameters 集合中查找域名。 声明转换查找标识符中的域名，并返回其值（应用程序 ID）。
 
 ```XML
  <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
@@ -439,8 +439,8 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 - 输入声明：
     - inputParameterId: test.com
 - 输入参数：
-    - contoso.com: 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
-    - microsoft.com: 0213308f-17cb-4398-b97e-01da7bd4804e
+    - **contoso.com**：13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **microsoft.com**：0213308f-17cb-4398-b97e-01da7bd4804e
     - test.com: c7026f88-4299-4cdb-965d-3f166464b8a9
     - errorOnFailedLookup: false
 - 输出声明：
@@ -465,9 +465,9 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ```
 
 - 输入声明：
-    - outputClaim：欢迎使用 Contoso 应用。 如果继续浏览和使用本网站，表示你同意遵守并受下列条款和条件的约束...
+    - **outputClaim**：欢迎使用 Contoso 应用。 如果继续浏览和使用本网站，表示你同意遵守并受下列条款和条件的约束...
 - 输出声明：
-    - outputClaim: NULL
+    - **outputClaim**：Null
 
 ## <a name="parsedomain"></a>ParseDomain
 
@@ -538,13 +538,13 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 - 输入声明：
     - inputClaim: v1
 - 输入参数：
-    - matchTo: V1
+    - **matchTo**：V1
     - stringComparison: ordinalIgnoreCase 
-    - stringMatchMsg:  B2C_V1_90005
-    - stringMatchMsgCode：TOS 升级到 v2
+    - **stringMatchMsg**：B2C_V1_90005
+    - **stringMatchMsgCode**：TOS 升级到 v2
 - 输出声明：
-    - outputClaim1: B2C_V1_90005
-    - outputClaim2：TOS 升级到 v2
+    - **outputClaim1**：B2C_V1_90005
+    - **outputClaim2**：TOS 升级到 v2
     - stringCompareResultClaim: true
 
 ## <a name="setclaimsifstringsmatch"></a>SetClaimsIfStringsMatch
@@ -582,12 +582,12 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - claimToMatch: Minor
+    - **claimToMatch**：Minor
 - 输入参数：
-    - matchTo: Minor
+    - **matchTo**：Minor
     - stringComparison: ordinalIgnoreCase 
-    - outputClaimIfMatched:  B2C_V1_90001
+    - **outputClaimIfMatched**：B2C_V1_90001
 - 输出声明：
-    - isMinorResponseCode: B2C_V1_90001
+    - **isMinorResponseCode**：B2C_V1_90001
     - isMinor: true
 

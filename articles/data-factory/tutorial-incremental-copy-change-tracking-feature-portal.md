@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: f06094fb82f10276f7a41d1b22f6dd99836a497f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 92441e55d0a423e1e716d15166791c85fcf5d8ec
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095504"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434217"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储 
 在本教程中，请创建一个带管道的 Azure 数据工厂，以便根据源 Azure SQL 数据库中的**更改跟踪**信息将增量数据加载到 Azure Blob 存储。  
@@ -145,7 +144,7 @@ ms.locfileid: "43095504"
     ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-按[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明安装最新的 Azure PowerShell 模块。
+按[如何安装和配置 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) 中的说明安装最新的 Azure PowerShell 模块。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
@@ -171,7 +170,7 @@ ms.locfileid: "43095504"
 5. 选择数据工厂的**位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 6. 选择“固定到仪表板”。     
 7. 单击“创建”。      
-8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
+8. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”。 
 
     ![“正在部署数据工厂”磁贴](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
 9. 创建完成后，可以看到图中所示的“数据工厂”页。
@@ -322,7 +321,7 @@ ms.locfileid: "43095504"
 ### <a name="review-the-results"></a>查看结果
 可以在 `adftutorial` 容器的 `incchgtracking` 文件夹中看到名为 `incremental-<GUID>.txt` 的文件。 
 
-![来自完整复制的输出文件](media\tutorial-incremental-copy-change-tracking-feature-portal\full-copy-output-file.png)
+![来自完整复制的输出文件](media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-output-file.png)
 
 该文件应该包含 Azure SQL 数据库中的数据：
 
@@ -445,7 +444,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 ### <a name="review-the-results"></a>查看结果
 可以在 `adftutorial` 容器的 `incchgtracking` 文件夹中看到第二个文件。 
 
-![来自增量复制的输出文件](media\tutorial-incremental-copy-change-tracking-feature-portal\incremental-copy-output-file.png)
+![来自增量复制的输出文件](media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-output-file.png)
 
 该文件应该只包含 Azure SQL 数据库中的增量数据。 带 `U` 的记录是数据库中的更新行，带 `I` 的记录是添加的行。 
 

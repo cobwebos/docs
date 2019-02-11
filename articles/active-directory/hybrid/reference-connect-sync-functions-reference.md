@@ -1,28 +1,28 @@
 ---
-title: Azure AD Connect 同步：函数引用 | Microsoft Docs
+title: Azure AD Connect 同步：函数参考 | Microsoft Docs
 description: 在 Azure AD Connect 同步中引用声明性设置表达式。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4f525ca0-be0e-4a2e-8da1-09b6b567ed5f
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 07/12/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: cb6f74a1de3e91868d7b20563a790352486862ee
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: e01e28e304c02c05e233f1c83bdc906779f39a1f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425687"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493519"
 ---
-# <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同步：函数参考
+# <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同步：函数引用
 在 Azure AD Connect 中，函数用于在同步期间操作属性值。  
 函数的语法使用以下格式表示：  
 `<output type> FunctionName(<input type> <position name>, ..)`
@@ -146,7 +146,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 **语法：**  
 `dt CDate(str value)`
 
-* Value：具有日期、时间和可选时区的字符串
+* 值：具有日期、时间和可选时区的字符串
 
 **备注：**  
 返回的字符串始终采用 UTC 格式。
@@ -248,7 +248,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 **语法：**  
 `str CertNameInfo(binary certificateRawData, str x509NameType, bool includesIssuerName)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
-*   X509NameType：针对使用者的 X509NameType 值。
+*   X509NameType：使用者的 X509NameType 值。
 *   includesIssuerName：包含颁发者名称则为 true；否则为 false。
 
 - - -
@@ -499,7 +499,7 @@ CStr 函数转换为字符串数据类型。
 **语法：**  
 `dt DateAdd(str interval, num value, dt date)`
 
-* 间隔：表示要添加的时间间隔的字符串表达式。 字符串必须具有下列值之一：
+* interval：表示要添加的时间间隔的字符串表达式。 字符串必须具有下列值之一：
   * yyyy Year
   * q Quarter
   * m Month
@@ -510,8 +510,8 @@ CStr 函数转换为字符串数据类型。
   * h Hour
   * n Minute
   * s Second
-* 值：要添加的单位数。 它可以是正值（以获取将来的日期）或负值（以获取过去的日期）。
-* 日期：表示间隔添加到其中的日期的 DateTime。
+* value：要添加的单位数。 它可以是正值（以获取将来的日期）或负值（以获取过去的日期）。
+* date：表示间隔添加到其中的日期的 DateTime。
 
 **示例：**  
 `DateAdd("m", 3, CDate("2001-01-01"))`  
@@ -539,7 +539,7 @@ DNComponent 函数返回从左边起的指定 DN 组件的值。
 `str DNComponent(ref dn, num ComponentNumber)`
 
 * dn：要解释的引用属性
-* ComponentNumber：要返回的 DN 中的组件
+* ComponentNumber：DN 中要返回的组件
 
 **示例：**  
 `DNComponent(CRef([dn]),1)`  
@@ -556,7 +556,7 @@ DNComponentRev 函数返回从右边起（末尾）的指定 DN 组件的值。
 
 * dn：要解释的引用属性
 * ComponentNumber - 要返回的 DN 中的组件
-* Options：DC – 忽略具有“dc=”的所有组件
+* 选项：DC – 忽略具有“dc=”的所有组件
 
 **示例：**  
 如果 dn 为 "cn=Joe,ou=Atlanta,ou=GA,ou=US, dc=contoso,dc=com"，则  
@@ -600,7 +600,7 @@ FormatDateTime 函数用于为具有指定格式的字符串设置 DateTime 格�
 * format：表示要转换为的格式的字符串。
 
 **备注：**  
-格式的可能值可以在此处找到：[用户定义的日期/时间格式（Format 函数）](https://msdn2.microsoft.com/library/73ctwf33\(VS.90\).aspx)
+可以从以下位置找到格式的可能值：[FORMAT 函数的自定义日期和时间格式](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function)。
 
 **示例：**  
 
@@ -852,7 +852,7 @@ Join 函数使用多值字符串，并返回每个项之间插入指定分隔符
 `str Join(mvstr attribute)`  
 `str Join(mvstr attribute, str Delimiter)`
 
-* attribute：包含要联接的字符串的多值属性。
+* 属性：包含要联接的字符串的多值属性。
 * delimiter：任意字符串，用于分隔返回的字符串中的子字符串。 如果省略，则使用空格字符（“ ”）。 如果分隔符为零长度字符串（“”）或零，则列表中的所有项都不使用分隔符连接。
 
 **备注**  
@@ -1077,9 +1077,9 @@ Replace 函数将所有出现的某一字符串替换为另一个字符串。
 **语法：**  
 `str Replace(str string, str OldValue, str NewValue)`
 
-* string：替换其中的值的字符串。
+* string：要替换其中的值的字符串。
 * OldValue：要搜索和替换的字符串。
-* NewValue：要替换的字符串。
+* NewValue：要替换成的字符串。
 
 **备注：**  
 该函数可以识别以下特殊 moniker：
@@ -1100,7 +1100,7 @@ ReplaceChars 函数替换 ReplacePattern 字符串中找到的所有出现的字
 **语法：**  
 `str ReplaceChars(str string, str ReplacePattern)`
 
-* string：替换其中值的字符串。
+* string：要替换其中值的字符串。
 * ReplacePattern：包含具有要替换字符的字典的字符串。
 
 格式为 {source1}:{target1},{source2}:{target2},{sourceN},{targetN}，其中源是要查找并确定要替换的目标字符串的字符。
@@ -1222,7 +1222,7 @@ Switch 函数用于基于计算的条件返回单个值。
 **语法：**  
 `var Switch(exp expr1, var value1[, exp expr2, var value … [, exp expr, var valueN]])`
 
-* expr：想要计算结果的变体表达式。
+* expr：要求值的变体表达式。
 * value：当相应表达式为 True 时要返回的值。
 
 **备注：**  
@@ -1297,7 +1297,7 @@ UCase 函数将字符串中的所有字符都转换为大写形式。
 `With(var variable, exp subExpression, exp complexExpression)`  
 * variable：表示子表达式。
 * subExpression：由变量表示的子表达式。
-* complexExpression：复杂表达式。
+* complexExpression：一个复杂表达式。
 
 **示例：**  
 `With($unExpiredCerts,Where($item,[userCertificate],CertNotAfter($item)>Now()),IIF(Count($unExpiredCerts)>0,$unExpiredCerts,NULL))`  
@@ -1335,5 +1335,5 @@ UCase 函数将字符串中的所有字符都转换为大写形式。
 
 ## <a name="additional-resources"></a>其他资源
 * [了解声明性预配表达式](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
-* [Azure AD Connect Sync：自定义同步选项](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同步：自定义同步选项](how-to-connect-sync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)

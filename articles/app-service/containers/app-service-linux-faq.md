@@ -1,5 +1,5 @@
 ---
-title: Linux 上的 Azure 应用服务常见问题解答 | Microsoft Docs
+title: Linux 上的应用服务常见问题解答 - Azure | Microsoft Docs
 description: Linux 上的 Azure 应用服务常见问题解答。
 keywords: Azure 应用服务, Web 应用, 常见问题解答, Linux, oss, 用于容器的 Web 应用, 多容器, 多容器
 services: app-service
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
-ms.openlocfilehash: 94e61cf5bf4f629dfd776cf9ea2ae54233e91dc6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec18
+ms.openlocfilehash: cdda4b0951edd0d1471113c48a4082dfa7407211
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417576"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719076"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
 
@@ -76,7 +77,7 @@ ms.locfileid: "50417576"
 
 - 使用持续交付（预览版）功能：可将应用的源代码存储在 Azure DevOps Git 存储库或 GitHub 存储库中，以使用 Azure 持续交付。 有关详细信息，请参阅[如何为 Linux Web 应用配置持续交付](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)。
 
-- 使用 [ZIP 部署 API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)：若要使用此 API，请[通过 SSH 连接到 Web 应用](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection)，并转到要在其中部署代码的文件夹。 运行以下代码：
+- 使用 [ZIP 部署 API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)：要使用此 API，请[通过 SSH 连接到 Web 应用](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection)，并转到要在其中部署代码的文件夹。 运行以下代码：
 
    ```bash
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
@@ -193,5 +194,5 @@ image: <server-name>.azurecr.io/<image-name>:<tag>
 ## <a name="next-steps"></a>后续步骤
 
 - [什么是 Linux 上的 Azure 应用服务？](app-service-linux-intro.md)
-- [设置 Azure 应用服务中的过渡环境](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [设置 Azure 应用服务中的过渡环境](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [使用用于容器的 Web 应用进行持续部署](./app-service-linux-ci-cd.md)

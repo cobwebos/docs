@@ -4,7 +4,7 @@ description: 介绍了如何使用 Azure Active Directory Connect 同步将 Offi
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1dfc01d0f2f0f5f3eae58fd6c889fee3ad306135
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 50210ebeed30bdb58698d0e878667b92dcc73609
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623021"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167081"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect 同步：为 Office 365 资源配置首选数据位置
 本主题的目的是介绍如何在 Azure Active Directory (Azure AD) Connect 同步中配置首选数据位置的属性。当某人使用了 Office 365 中的多地域功能时，你使用此属性来指定用户的 Office 365 数据的地理位置。 （术语*区域*和*地域*可以互换使用。）
@@ -31,7 +31,7 @@ ms.locfileid: "51623021"
 通过设置属性 **preferredDataLocation**，可以定义用户的地域。 可以将用户的 Office 365 资源（例如邮箱和 OneDrive）放在用户所在的同一区域，同时仍对整个组织使用一个租户。
 
 > [!IMPORTANT]
-> Office 365 服务订阅数大于等于 5000 个的客户现可使用 Multi-Geo。 有关详细信息，请咨询 Microsoft 代表。
+> Office 365 服务订阅数大于等于 2,500 个的客户现可使用多地理位置功能。 有关详细信息，请咨询 Microsoft 代表。
 >
 >
 
@@ -53,7 +53,7 @@ Office 365 中支持多地域的区域包括：
 | 美国 | NAM |
 
 * 如果某个地域未在此表中列出（例如南美），则它无法用于多地域。
-* 印度地域仅供帐单邮寄地址属于此地域且在此地域购买许可证的客户使用。
+
 * 并非所有 Office 365 工作负荷都支持设置用户的地域。
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Azure AD Connect 对同步的支持
@@ -104,7 +104,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
 ![Synchronization Service Manager 和“属性”对话框的屏幕截图](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
 
-## <a name="step-3-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>步骤 3：将 **preferredDataLocation** 添加到 Azure AD 连接器架构
+## <a name="step-3-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>步骤 3：将 PreferredDataLocation 添加到 Azure AD 连接器架构
 默认情况下，**preferredDataLocation** 属性不会导入到 Azure AD 连接器空间。 若要将其添加到已导入属性的列表，请执行以下操作：
 
 1. 在 Synchronization Service Manager 中选择“连接器”选项卡。
@@ -125,8 +125,8 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
     | 属性 | 值 | 详细信息 |
     | --- | --- | --- |
-    | 名称 | *提供名称* | 例如“In from AD – User preferredDataLocation” |
-    | Description | *提供自定义说明* |  |
+    | Name | *提供名称* | 例如“In from AD – User preferredDataLocation” |
+    | 说明 | *提供自定义说明* |  |
     | 连接的系统 | *选取本地 Active Directory 连接器* |  |
     | 连接的系统对象类型 | **User** |  |
     | Metaverse 对象类型 | **Person** |  |
@@ -154,8 +154,8 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
     | 属性 | 值 | 详细信息 |
     | ----- | ------ | --- |
-    | 名称 | *提供名称* | 例如，“Out to Azure AD – User preferredDataLocation” |
-    | Description | *提供说明* ||
+    | Name | *提供名称* | 例如，“Out to Azure AD – User preferredDataLocation” |
+    | 说明 | *提供说明* ||
     | 连接的系统 | *选择 Azure AD 连接器* ||
     | 连接的系统对象类型 | **User** ||
     | Metaverse 对象类型 | **Person** ||
@@ -215,7 +215,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
    1. 右键单击“Azure AD 连接器”，并选择“搜索连接器空间”。
    2. 在“搜索连接器空间”对话框中：
 
-        a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将“范围”设置为“挂起的导出”。<br>
+        a. 将“范围”设置为“挂起的导出”。<br>
         b. 选择所有三个复选框，包括“添加”、“修改”和“删除”。<br>
         c. 若要查看包含要导出的更改的对象列表，请选择“搜索”。 若要检查给定对象的更改，请双击该对象。<br>
         d. 验证更改是否符合需要。
@@ -261,5 +261,5 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
 概述主题：
 
-* [Azure AD Connect 同步：理解和自定义同步](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同步：了解和自定义同步](how-to-connect-sync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)

@@ -4,22 +4,22 @@ description: 了解如何在 Azure Active Directory 和 EthicsPoint Incident Man
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 8cb31a4c-9309-469b-93ac-daf0d3c7a3e6
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: c38c751701b323bf1c985a4127d0e9deac2c8eaa
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 352af25d90e674d1dbe960932e3aeb97055f875b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446015"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184489"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ethicspoint-incident-management-epim"></a>教程：Azure Active Directory 与 EthicsPoint Incident Management (EPIM) 集成
 
@@ -123,7 +123,7 @@ ms.locfileid: "39446015"
     c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<servername>.navexglobal.com/adfs/ls/`
 
     > [!NOTE] 
-    > 这些不是实际值。 使用实际回复 URL、标识符和登录 URL 更新这些值。 请联系 [EthicsPoint Incident Management (EPIM) 客户端支持团队](http://www.navexglobal.com/company/contact-us)来获取这些值。 
+    > 这些不是实际值。 使用实际回复 URL、标识符和登录 URL 更新这些值。 请联系 [EthicsPoint Incident Management (EPIM) 客户端支持团队](https://www.navexglobal.com/company/contact-us)来获取这些值。 
 
 1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
@@ -133,10 +133,10 @@ ms.locfileid: "39446015"
 
     ![配置单一登录](./media/ethicspoint-incident-management-tutorial/tutorial_general_400.png)
     
-1. 若要在“EthicsPoint Incident Management (EPIM)”端配置单一登录，请将下载的“元数据 XML”发送到 [EthicsPoint Incident Management (EPIM) 支持团队](http://www.navexglobal.com/company/contact-us)。
+1. 若要在“EthicsPoint Incident Management (EPIM)”端配置单一登录，请将下载的“元数据 XML”发送到 [EthicsPoint Incident Management (EPIM) 支持团队](https://www.navexglobal.com/company/contact-us)。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -172,7 +172,7 @@ ms.locfileid: "39446015"
  
 ### <a name="creating-a-ethicspoint-incident-management-epim-test-user"></a>创建 EthicsPoint Incident Management (EPIM) 测试用户
 
-在本部分中，会在 EthicsPoint Incident Management (EPIM) 中创建一个名为“Britta Simon”的用户。 请协助 [EthicsPoint Incident Management (EPIM) 支持团队](http://www.navexglobal.com/company/contact-us)在 EthicsPoint Incident Management (EPIM) 平台中添加用户。
+在本部分中，会在 EthicsPoint Incident Management (EPIM) 中创建一个名为“Britta Simon”的用户。 请协助 [EthicsPoint Incident Management (EPIM) 支持团队](https://www.navexglobal.com/company/contact-us)在 EthicsPoint Incident Management (EPIM) 平台中添加用户。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -212,7 +212,7 @@ ms.locfileid: "39446015"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

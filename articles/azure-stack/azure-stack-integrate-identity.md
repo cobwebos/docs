@@ -2,20 +2,20 @@
 title: Azure Stack 数据中心集成 - 标识
 description: 了解如何将 Azure Stack AD FS 与数据中心 AD FS 集成
 services: azure-stack
-author: jeffgilb
+author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 11/08/2018
-ms.author: jeffgilb
-ms.reviewer: wfayed
-keywords: ''
-ms.openlocfilehash: b59d503b8aadef9e8f9c2d7db71ff60aee3b6387
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.date: 01/23/19
+ms.author: patricka
+ms.reviewer: thoroet
+ms.lastreviewed: 01/23/19
+ms.openlocfilehash: a7753280c0b84b21f44e52c303b96f11cd4cd8af
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300704"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765784"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack 数据中心集成 - 标识
 可以使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者来部署 Azure Stack。 必须在部署 Azure Stack 之前做出选择。 使用 AD FS 的部署也称为在断开连接模式下部署 Azure Stack。
@@ -24,10 +24,10 @@ ms.locfileid: "51300704"
 
 ||从 Internet 断开连接|连接到 Internet|
 |---------|---------|---------|
-|计费|必须是“容量”<br> 仅限企业协议 (EA)|“容量”或“即用即付”<br>“EA”或“云解决方案提供商”(CSP)|
+|帐单|必须是“容量”<br> 仅限企业协议 (EA)|“容量”或“即用即付”<br>“EA”或“云解决方案提供商”(CSP)|
 |标识|必须是“AD FS”|“Azure AD”或“AD FS”|
 |市场 |支持<br>BYOL 许可|支持<br>BYOL 许可|
-|注册|建议选项，需要使用可移动媒体<br> 和独立的连接设备。|自动|
+|注册|必需选项，需要使用可移动媒体<br> 和独立的连接设备。|自动|
 |修补和更新|必需选项，需要使用可移动媒体<br> 和独立的连接设备。|可以直接从 Internet<br> 将更新包下载到 Azure Stack。|
 
 > [!IMPORTANT]
@@ -64,21 +64,21 @@ Graph 仅支持与单个 Active Directory 林集成。 如果存在多个林，�
 
 需要使用以下信息作为自动化参数的输入：
 
-|参数|说明|示例|
+|参数|描述|示例|
 |---------|---------|---------|
 |CustomADGlobalCatalog|要与之集成的目标 Active Directory<br>林的 FQDN|Contoso.com|
 |CustomADAdminCredentials|拥有 LDAP“读取”权限的用户|YOURDOMAIN\graphservice|
 
 ### <a name="configure-active-directory-sites"></a>配置 Active Directory 站点
 
-对于具有多个站点的 Active Directory 部署，配置到 Azure Stack 部署最近的 Active Directory 站点。 配置可避免 Azure Stack Graph 服务解析查询使用从远程站点的全局编录服务器。
+如果 Active Directory 部署包含多个站点，请配置最靠近 Azure Stack 部署的 Active Directory 站点。 这种配置可以避免让 Azure Stack Graph 服务使用全局目录服务器从远程站点解析查询。
 
-添加 Azure Stack[公共 VIP 网络](azure-stack-network.md#public-vip-network)到 Azure AD 站点与 Azure Stack 最接近的子网。 例如，如果你的 Active Directory 具有两个站点西雅图和雷德蒙德西雅图站点上部署 Azure stack，可将 Azure Stack 公共 VIP 网络子网到 Azure AD 站点为西雅图。
+将 Azure Stack [公共 VIP 网络](azure-stack-network.md#public-vip-network)子网添加到最靠近 Azure Stack 的 Azure AD 站点。 例如，如果 Active Directory 包含 Seattle 和 Redmond 两个站点，且 Azure stack 部署在 Seattle 站点，则应将 Azure Stack 公共 VIP 网络子网添加到 Seattle 的 Azure AD 站点。
 
-Active Directory 站点的详细信息请参阅[设计站点拓扑](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)。
+有关 Active Directory 站点的详细信息，请参阅[设计站点拓扑](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)。
 
 > [!Note]  
-> 如果你的 Active Directory 包含的单个站点可以跳过此步骤。 如果你有配置全能子网验证 Azure Stack 公共 VIP 网络子网不是它的一部分。
+> 如果 Active Directory 只有一个站点，则可以跳过此步骤。 如果配置了全方位的子网，请验证 Azure Stack 公共 VIP 网络子网是否不属于该子网。
 
 ### <a name="create-user-account-in-the-existing-active-directory-optional"></a>在现有 Active Directory 中创建用户帐户（可选）
 
@@ -129,9 +129,9 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
 
 以下信息是作为自动化参数的输入所必需的：
 
-|参数|说明|示例|
+|参数|描述|示例|
 |---------|---------|---------|
-|CustomAdfsName|声明提供程序的名称。<cr>AD FS 登陆页上会显示此名称。|Contoso|
+|CustomAdfsName|声明提供程序的名称。<br>AD FS 登录页上会显示此名称。|Contoso|
 |CustomAD<br>FSFederationMetadataEndpointUri|联合元数据链接|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
 
 
@@ -168,7 +168,7 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
 以下信息是作为自动化参数的输入所必需的：
 
 
-|参数|说明|示例|
+|参数|描述|示例|
 |---------|---------|---------|
 |CustomAdfsName|声明提供程序的名称。 AD FS 登录页上会显示此名称。|Contoso|
 |CustomADFSFederationMetadataFileContent|元数据内容|$using:federationMetadataFileContent|
@@ -193,29 +193,34 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
 
 对于此过程，请使用可以与 Azure Stack 中的特权终结点进行通信的计算机，并且该计算机可以访问在上一步中创建的元数据文件。
 
-1. 打开提升的 Windows PowerShell 会话。
+1. 打开权限提升的 Windows PowerShell 会话并连接到特权终结点。
 
    ```PowerShell  
    $federationMetadataFileContent = get-content c:\metadata.xml
    $creds=Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
-   Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataFileContent $using:federationMetadataFileContent
    ```
 
-2. 使用适用于环境的参数运行以下命令，更新默认提供商订阅的所有者：
+2. 连接到特权终结点之后，使用适用于环境的参数运行以下命令：
+
+    ```PowerShell
+    Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataFileContent $using:federationMetadataFileContent
+    ```
+
+3. 使用适用于环境的参数运行以下命令，更新默认提供商订阅的所有者：
 
    ```PowerShell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
    ```
 
    > [!Note]  
-   > 在旋转上现有的 AD FS （帐户 STS） 的证书时必须设置的 AD FS 集成。 即使元数据终结点是可访问或通过提供元数据文件来为其配置，必须设置集成。
+   > 在现有的 AD FS（帐户 STS）中轮换证书时，必须重新设置 AD FS 集成。 即使元数据终结点可访问，或已通过提供元数据文件进行配置，也需要设置集成。
 
 ## <a name="configure-relying-party-on-existing-ad-fs-deployment-account-sts"></a>在现有 AD FS 部署上配置信赖方（帐户 STS）
 
 Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的脚本。 不一定要使用此脚本，也可以手动运行命令。
 
-可以从 Github 上的 [Azure Stack 工具](https://github.com/Azure/AzureStack-Tools/tree/vnext/DatacenterIntegration/Identity)下载帮助器脚本。
+可以从 GitHub 上的 [Azure Stack 工具](https://github.com/Azure/AzureStack-Tools/tree/vnext/DatacenterIntegration/Identity)下载帮助器脚本。
 
 如果确定要手动运行命令，请遵循以下步骤：
 
@@ -252,14 +257,14 @@ Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的�
    => issue(claim = c);
    ```
 
-2. 验证基于 Windows 窗体的身份验证的 extranet 和 intranet 已启用。 首先验证是否其已启用通过运行以下 cmdlet:
+2. 验证是否已启用基于 Windows 窗体的 Extranet 和 Intranet 身份验证。 首先通过运行以下 cmdlet 验证它是否已启用：
 
    ```PowerShell  
    Get-AdfsAuthenticationProvider | where-object { $_.name -eq "FormsAuthentication" } | select Name, AllowedForPrimaryExtranet, AllowedForPrimaryIntranet
    ```
 
     > [!Note]  
-    > Windows 集成身份验证 (WIA) 受支持的用户代理字符串可能会过时，AD FS 部署可能需要更新，以支持最新的客户端。 你可以阅读更多有关更新 WIA 的文章中支持用户代理字符串[配置 intranet 基于窗体的身份验证不支持 WIA 的设备](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-intranet-forms-based-authentication-for-devices-that-do-not-support-wia)。<br>在本文中，介绍了这些步骤来启用基于窗体的身份验证策略[配置身份验证策略](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-authentication-policies)。
+    > Windows 集成身份验证 (WIA) 支持的用户代理字符串可能已过时，AD FS 部署可能需要更新以支持最新客户端。 可以在[为不支持 WIA 的设备配置基于 Intranet 窗体的身份验证](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-intranet-forms-based-authentication-for-devices-that-do-not-support-wia)一文中阅读有关更新 WIA 支持的用户代理字符串的更多信息。<br>有关启用基于表单的身份验证策略的步骤，请参阅文章[配置身份验证策略](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-authentication-policies)。
 
 3. 若要添加信赖方信任，请在 AD FS 实例或场成员上运行以下 Windows PowerShell 命令。 请务必更新 AD FS 终结点，并指向步骤 1 中创建的文件。
 
@@ -278,7 +283,7 @@ Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的�
    > [!IMPORTANT]  
    > 使用 Windows Server 2012 或 2012 R2 AD FS 时，必须使用 AD FS MMC 管理单元来配置颁发授权规则。
 
-4. 使用 Internet Explorer 或 Microsoft Edge 浏览器访问 Azure Stack 时，必须忽略令牌绑定。 否则登录尝试会失败。 在 AD FS 实例或场成员上运行以下命令：
+4. 当您使用 Internet Explorer 或 Microsoft Edge 浏览器访问 Azure Stack 时，必须忽略令牌绑定。 否则登录尝试会失败。 在 AD FS 实例或场成员上运行以下命令：
 
    > [!note]  
    > 使用 Windows Server 2012 或 2012 R2 AD FS 时，此步骤不适用。 可以放心跳过此命令并继续集成。
@@ -300,10 +305,10 @@ Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的�
 > [!Important]  
 > AD FS 仅支持交互式登录会话。 如果需要对自动化场景进行非交互式登录，则必须使用 SPN。
 
-有关创建 SPN 的详细信息，请参阅[为 AD FS 创建服务主体](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-ad-fs)。
+有关创建 SPN 的详细信息，请参阅[为 AD FS 创建服务主体](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals)。
 
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 ### <a name="configuration-rollback"></a>配置回滚
 
@@ -319,7 +324,7 @@ Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的�
 2. 然后运行以下 cmdlet：
 
    ```PowerShell  
-   Reset-DatacenterIntegationConfiguration
+   Reset-DatacenterIntegrationConfiguration
    ```
 
    运行回滚操作后，所有配置更改都会回滚。 只能使用内置的 **CloudAdmin** 用户身份进行身份验证。

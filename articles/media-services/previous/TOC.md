@@ -126,20 +126,20 @@
 ### [处理长时间运行的操作](media-services-dotnet-long-operations.md)
 ### [碎片化的 MP4 实时引入规范](media-services-fmp4-live-ingest-overview.md)
 
-## [剪辑内容](media-services-azure-media-clipper-overview.md)
-### [入门](media-services-azure-media-clipper-getting-started.md)
-### [加载视频](media-services-azure-media-clipper-load-assets.md)
-### [配置键盘快捷方式](media-services-azure-media-clipper-keyboard-shortcuts.md)
-### [配置本地化](media-services-azure-media-clipper-localization.md)
-### [提交剪辑作业](media-services-azure-media-clipper-submit-job.md)
-### [Azure 门户](media-services-azure-media-clipper-portal.md)
+<!-- ## [Clip content](media-services-azure-media-clipper-overview.md)
+### [Getting started](media-services-azure-media-clipper-getting-started.md)
+### [Load videos](media-services-azure-media-clipper-load-assets.md)
+### [Configure keyboard shortcuts](media-services-azure-media-clipper-keyboard-shortcuts.md)
+### [Configure localization](media-services-azure-media-clipper-localization.md)
+### [Submit clipping jobs](media-services-azure-media-clipper-submit-job.md)
+### [Azure portal](media-services-azure-media-clipper-portal.md) -->
 
 ## [保护内容](media-services-content-protection-overview.md)
 ### [存储加密](media-services-rest-storage-encryption.md)
 ### [AES-128 加密](media-services-protect-with-aes128.md)
 ### [适用于流式处理的 PlayReady/Widevine](media-services-protect-with-playready-widevine.md)
 ### [适用于流式处理的 FairPlay](media-services-protect-hls-with-fairplay.md)
-### [适用于 Windows 10 的脱机 PlayReady](https://blogs.msdn.microsoft.com/playready4/2016/10/26/does-azure-media-services-support-offline-mode/)
+### [适用于 Windows 10 的脱机 PlayReady](offline-playready-streaming-windows-10.md)
 ### [适用于 iOS 的脱机 FairPlay](media-services-protect-hls-with-offline-fairplay.md)
 ### [适用于 Android 的脱机 Widevine](offline-widevine-for-android.md)
 ### [在 Azure 门户中配置](media-services-portal-protect-content.md)
@@ -177,8 +177,8 @@
 ### [使用内容审查器进行处理](media-services-content-moderation.md)
 
 ## [配置遥测](media-services-telemetry-overview.md)
-###[.NET](media-services-dotnet-telemetry.md)
-###[REST](media-services-rest-telemetry.md)
+### [.NET](media-services-dotnet-telemetry.md)
+### [REST](media-services-rest-telemetry.md)
 
 ## 缩放
 ### [媒体处理](media-services-scale-media-processing-overview.md)

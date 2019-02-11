@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 中使用自定义策略管理单一登录
 description: 了解如何使用 Azure AD B2C 中的自定义策略管理 SSO 会话。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: bd41ce5ba0cc738c1fd0d61d080e63753706f975
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.subservice: B2C
+ms.openlocfilehash: d1d76e3ac995d4ee63e36ac3560d20f473d3ea2d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377406"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187210"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的单一登录会话管理
 
@@ -89,10 +89,10 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 技术配置文件中有两个元数据项：
 
-| Item | 默认值 | 可能的值 | Description
+| Item | 默认值 | 可能的值 | 说明
 | --- | --- | --- | --- |
-| IncludeSessionIndex | 是 | true/false | 向提供程序指出应存储会话索引。 |
-| RegisterServiceProviders | 是 | true/false | 指示提供程序应注册已颁发断言的所有 SAML 服务提供程序。 |
+| IncludeSessionIndex | true | true/false | 向提供程序指出应存储会话索引。 |
+| RegisterServiceProviders | true | true/false | 指示提供程序应注册已颁发断言的所有 SAML 服务提供程序。 |
 
 使用提供程序存储 SAML 标识提供者会话时，上述项应该均为 false。 使用提供程序存储 B2C SAML 会话时，上述项应为 true 或被省略，因为默认值为 true。 需要 `SessionIndex` 和 `NameID` 才能完成 SAML 会话注销。
 

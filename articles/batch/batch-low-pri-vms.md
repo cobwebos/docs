@@ -1,5 +1,5 @@
 ---
-title: 在经济高效低优先级的 VM 上运行 Azure Batch 工作负荷 | Microsoft 文档
+title: 在经济高效低优先级的 VM 上运行工作负荷 - Azure Batch | Microsoft Docs
 description: 了解如何预配低优先级 VM，以降低 Azure Batch 工作负载的成本。
 services: batch
 author: mscurrell
@@ -11,12 +11,13 @@ ms.topic: article
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: markscu
-ms.openlocfilehash: d42cef944c3b971804ef1417a3877bf919784a02
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.custom: seodec18
+ms.openlocfilehash: 17668470be3e997c215aacc4cc2c32c80de2dd81
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092997"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546787"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>将低优先级 VM 与 Batch 配合使用
 
@@ -42,11 +43,11 @@ Azure Batch 可提供低优先级虚拟机 (VM) 来降低 Batch 工作负荷的�
 
 适合使用低优先级 VM 的批处理用例示例包括：
 
--   开发和测试：具体而言，开发大规模解决方案时可以实现极大的节省。 所有类型的测试都可以受益，但大规模负载测试和回归测试可以获得极大的好处。
+-   **开发和测试**：具体而言，开发大规模解决方案时可以实现极大的节省。 所有类型的测试都可以受益，但大规模负载测试和回归测试可以获得极大的好处。
 
--   补充按需容量：低优先级 VM 可用于补充普通的专用 VM - 如果有可用的容量，则作业可以扩展，因而能够以更低的成本、更快的速度完成；如果没有可用的容量，则仍可遵循专用 VM 的基准。
+-   **补充按需容量**：低优先级 VM 可用于补充常规的专用 VM - 如果可用，则作业可以扩展，因而能够以更低的成本、更快的速度完成；如果不可用，则仍可遵循专用 VM 的基准。
 
--   灵活的作业执行时间：如果作业必须完成的时间比较灵活，则可以容忍潜在的容量下降；但是，增加的低优先级 VM 作业往往能够以更低的成本、更快的速度运行。
+-   **灵活的作业执行时间**：如果作业必须完成的时间比较灵活，则可以容忍潜在的容量下降；但是，增加的低优先级 VM 作业往往能够以更低的成本、更快的速度运行。
 
 可以根据作业执行时间的灵活度，通过多种方式将 Batch 池配置为使用低优先级 VM。
 

@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 12/13/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: cb14a23fbffb5ca9b7d3240a42e14aa17060f935
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.subservice: common
+ms.openlocfilehash: 1cf2276ca1995df19cc7068764a31916e4981100
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820300"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452688"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>使用 Azure 导入/导出服务将数据导入到 Azure 文件
 
@@ -29,7 +29,7 @@ ms.locfileid: "51820300"
 - 拥有至少一个 Azure 存储帐户。 请参阅[导入/导出服务支持的存储帐户和存储类型](storage-import-export-requirements.md)的列表。 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](storage-quickstart-create-account.md)。
 - 拥有足够数量的[受支持类型](storage-import-export-requirements.md#supported-disks)的磁盘。 
 - 拥有运行[受支持 OS 版本](storage-import-export-requirements.md#supported-operating-systems)的 Windows 系统。
-- 在 Windows 系统上[下载 WAImportExport 版本 2](https://www.microsoft.com/download/details.aspx?id=55280)。 解压缩到默认文件夹 `waimportexport`。 例如，`C:\WaImportExport`。
+- 在 Windows 系统上[下载 WAImportExport 版本 2](https://aka.ms/waiev2)。 解压缩到默认文件夹 `waimportexport`。 例如，`C:\WaImportExport`。
 - 具有 FedEx/DHL 帐户。 
     - 该帐户必须是有余额的有效帐户，且有退货功能。
     - 生成导出作业的跟踪号。
@@ -170,7 +170,7 @@ ms.locfileid: "51820300"
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-## <a name="step-5-verify-data-upload-to-azure"></a>步骤 5：验证数据上传到 Azure
+## <a name="step-5-verify-data-upload-to-azure"></a>步骤 5：验证 Azure 中的数据上传
 
 跟踪作业直至完成。 作业完成后，验证数据已上传到 Azure。 仅在已确认上传成功后才删除本地数据。
 

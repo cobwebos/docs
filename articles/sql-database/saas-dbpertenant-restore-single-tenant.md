@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 228f5135165cbf8806516e5e932f210586013402
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 12/04/2018
+ms.openlocfilehash: 4059b0f979e7e6856905f1759129167d62d7b5f5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056737"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274422"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>通过“每租户一个数据库”SaaS 应用程序还原单个租户
 
@@ -26,10 +26,8 @@ ms.locfileid: "47056737"
 本教程将介绍两种数据恢复模式：
 
 > [!div class="checklist"]
-
 > * 将数据库还原为并行数据库（并行）。
 > * 就地还原数据库，替代现有数据库。
-
 
 |||
 |:--|:--|
@@ -44,13 +42,13 @@ ms.locfileid: "47056737"
 
 ## <a name="introduction-to-the-saas-tenant-restore-patterns"></a>SaaS 租户还原模式简介
 
-存在两种简单的模式可用于还原单个租户的数据。 由于租户数据库彼此相互隔离，因此还原某个租户不会对其他租户的数据造成任何影响。 这两种模式都使用 Azure SQL 数据库时间点还原 (PITR) 功能。 PITR 总是会新建一个数据库。   
+存在两种简单的模式可用于还原单个租户的数据。 由于租户数据库彼此相互隔离，因此还原某个租户不会对其他租户的数据造成任何影响。 这两种模式都使用 Azure SQL 数据库时间点还原 (PITR) 功能。 PITR 总是会新建一个数据库。
 
-* **并行还原**：在第一种模式中，将创建一个新的与租户的当前数据库并排存在的并行数据库。 随后，向租户授予访问已还原数据库的只读权限。 可访问已还原的数据库，还可使用此数据库覆盖当前数据值。 由应用设计人员决定租户访问已还原数据库的方式以及所提供的还原选项。 在某些场景中，只需授予租户访问其较早时间点的数据的权限即可。 
+* **并行还原**：在第一种模式中，将创建一个新的与租户的当前数据库并排存在的并行数据库。 随后，向租户授予访问已还原数据库的只读权限。 可访问已还原的数据库，还可使用此数据库覆盖当前数据值。 由应用设计人员决定租户访问已还原数据库的方式以及所提供的还原选项。 在某些场景中，只需授予租户访问其较早时间点的数据的权限即可。
 
 * **就地还原**：如果数据已丢失或损坏，且租户希望还原到较早的时间点，则第二种模式非常有用。 还原数据库时，租户处于脱机状态。 将删除原始数据库并重命名已还原的数据库。 删除后，原始数据库的备份链仍可访问，因此，必要时你可以将数据库还原到较早的时间点。
 
-如果数据库使用[异地复制](sql-database-geo-replication-overview.md)和并行还原，则建议将已还原副本中的所有必备数据都复制到原始数据库中。 如果将原始数据库替换为还原的数据库，则需要重新配置并重新同步异地复制。
+如果数据库使用[活动异地复制](sql-database-active-geo-replication.md)和并行还原，则建议将已还原副本中的所有必备数据都复制到原始数据库中。 如果将原始数据库替换为还原的数据库，则需要重新配置并重新同步异地复制。
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>获取 Wingtip Tickets SaaS“每租户一个数据库”应用程序脚本
 
@@ -74,7 +72,6 @@ ms.locfileid: "47056737"
 
    ![最后一个事件出现](media/saas-dbpertenant-restore-single-tenant/last-event.png)
 
-
 ### <a name="accidentally-delete-the-last-event"></a>“意外”删除最后一个事件
 
 1. 在 PowerShell ISE 中，打开 ...\\Learning Modules\\Business Continuity and Disaster Recovery\\RestoreTenant\\*Demo-RestoreTenant.ps1*，并设置以下值：
@@ -88,15 +85,13 @@ ms.locfileid: "47056737"
    ```
 
 3. Contoso 事件页面将打开。 向下滚动并验证该事件已不存在。 如果该事件仍在列表中，请选择“刷新”并再次验证它已不存在。
-
    ![最后一个事件已删除](media/saas-dbpertenant-restore-single-tenant/last-event-deleted.png)
-
 
 ## <a name="restore-a-tenant-database-in-parallel-with-the-production-database"></a>还原与生产数据库并行的租户数据库
 
 本练习将 Contoso Concert Hall 数据库还原到删除该事件前的某个时间点。 此方案假设你希望在并行数据库中查看已删除的数据。
 
- Restore-TenantInParallel.ps1 脚本会创建一个名为 ContosoConcertHall\_old 的并行租户数据库（内附并行目录条目）。 此还原模式最适用于在丢失少量数据后进行恢复。 如果出于符合性或审核目的而需要审查数据，也可以使用此模式。 使用[异地复制](sql-database-geo-replication-overview.md)时，建议使用此方法。
+ Restore-TenantInParallel.ps1 脚本会创建一个名为 ContosoConcertHall\_old 的并行租户数据库（内附并行目录条目）。 此还原模式最适用于在丢失少量数据后进行恢复。 如果出于符合性或审核目的而需要审查数据，也可以使用此模式。 使用[活动异地复制](sql-database-active-geo-replication.md)时，建议使用此方法。
 
 1. 完成[模拟租户意外删除数据](#simulate-a-tenant-accidentally-deleting-data)部分。
 2. 在 PowerShell ISE 中，打开 ...\\Learning Modules\\Business Continuity and Disaster Recovery\\RestoreTenant\\_Demo-RestoreTenant.ps1_。
@@ -115,7 +110,6 @@ ms.locfileid: "47056737"
 2. 若要运行脚本，请按 F5。
 3. 现在已从目录中删除了 ContosoConcertHall\_old 条目。 在浏览器中关闭此租户的事件页面。
 
-
 ## <a name="restore-a-tenant-in-place-replacing-the-existing-tenant-database"></a>就地还原租户，替换现有租户数据库
 
 本练习会将 Contoso Concert Hall 租户还原到删除事件之间的某个时间点。 Restore-TenantInPlace 脚本会将租户数据库还原到新的数据库中并删除原始数据库。 此还原模式最适用于在发生严重数据损坏后进行恢复，并且租户可能必须承受大量数据丢失。
@@ -128,14 +122,13 @@ ms.locfileid: "47056737"
 
 已成功将数据库还原到删除事件之前的某个时间点。 在“事件”页面打开时，确认最后一个事件已还原。
 
-还原数据库后，需要再等待 10 到 15 分钟，才可再次通过第一个完整备份进行还原。 
+还原数据库后，需要再等待 10 到 15 分钟，才可再次通过第一个完整备份进行还原。
 
 ## <a name="next-steps"></a>后续步骤
 
 本教程介绍了如何：
 
 > [!div class="checklist"]
-
 > * 将数据库还原为并行数据库（并行）。
 > * 就地还原数据库。
 

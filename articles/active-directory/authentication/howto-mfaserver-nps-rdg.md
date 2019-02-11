@@ -3,19 +3,19 @@ title: RDG 和 Azure MFA 服务器（使用 RADIUS）| Microsoft 文档
 description: 本 Azure 多重身份验证页面会帮助你部署使用 RADIUS 的远程桌面 (RD) 网关和 Azure 多重身份验证服务器。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 99ed74a9664fbeeb65d90e51d0afcd97dd0b0ca0
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: e80b2fe9bfde7a2034877498897aff899234b58e
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346482"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079437"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>使用 RADIUS 的远程桌面网关和 Azure 多重身份验证服务器
 
@@ -30,6 +30,9 @@ ms.locfileid: "44346482"
 - 已加入域的 Azure MFA 服务器。 如果尚未安装该服务器，请执行 [Azure 多重身份验证服务器入门](howto-mfaserver-deploy.md)中的步骤。
 - 现有已配置的 NPS 服务器。
 - 一个远程桌面网关，用于通过网络策略服务进行身份验证。
+
+> [!NOTE]
+> 本文仅适用于 MFA 服务器部署，不适用 Azure MFA（基于云）。
 
 ## <a name="configure-the-remote-desktop-gateway"></a>配置远程桌面网关
 将 RD 网关配置为将 RADIUS 身份验证发送到 Azure 多重身份验证服务器。 

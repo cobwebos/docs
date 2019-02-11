@@ -1,21 +1,19 @@
 ---
-title: 如何通过 PHP 使用 Azure 存储表服务或 Azure Cosmos DB 表 API | Microsoft Docs
+title: 如何通过 PHP 使用 Azure 存储表服务或 Azure Cosmos DB 表 API
 description: 使用 Azure 表存储或 Azure Cosmos DB 表 API 将结构化数据存储在云中。
-services: cosmos-db
-author: SnehaGunda
-manager: kfile
+author: wmengmsft
+ms.author: wmeng
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
-ms.author: sngun
-ms.openlocfilehash: 7ca8e786a8284fd958948e313b79e34a6f502120
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 3ec91b564647e4eda4696a249c77739daff2ece3
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41918304"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044223"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>如何通过 PHP 使用 Azure 存储表服务或 Azure Cosmos DB 表 API
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -53,7 +51,7 @@ ms.locfileid: "41918304"
   }
 }
 ```
-2. 将 [composer.phar](http://getcomposer.org/composer.phar) 下载到根目录中。 
+2. 将 [composer.phar](https://getcomposer.org/composer.phar) 下载到根目录中。 
 3. 打开命令提示符并在项目根目录中执行以下命令：
 ```
 php composer.phar install
@@ -178,8 +176,7 @@ catch(ServiceException $e){
 
 有关表属性和类型的信息，请参阅[了解表服务数据模型][table-data-model]。
 
-
-  **TableRestProxy** 类提供了用于插入实体的两个替代方法：**insertOrMergeEntity** 和 **insertOrReplaceEntity**。 要使用这些方法，请创建新的 **Entity**，并将其作为参数传递到上述任一方法。 如果实体不存在，则每种方法都将插入实体。 在实体已存在的情况下，如果属性已存在，则 **insertOrMergeEntity** 更新属性值；如果属性不存在，则该方法添加新属性，而 **insertOrReplaceEntity** 会完全替换现有实体。 下面的示例演示如何使用 **insertOrMergeEntity**。 如果 `PartitionKey` 为“tasksSeattle”且 `RowKey` 为“1”的实体不存在，则将插入该实体。 但是，如果之前已插入该实体（如上面的示例所示），则将更新 `DueDate` 属性并添加 `Status` 属性。 系统还将更新 `Description` 和 `Location` 属性，但使用的值实际上会使其保持不变。 如果后面两个属性不是如示例中所示添加的，但已存在于目标实体上，则其现有值将保持不变。
+**TableRestProxy** 类提供了用于插入实体的两个替代方法：**insertOrMergeEntity** 和 **insertOrReplaceEntity**。 要使用这些方法，请创建新的 **Entity**，并将其作为参数传递到上述任一方法。 如果实体不存在，则每种方法都将插入实体。 在实体已存在的情况下，如果属性已存在，则 **insertOrMergeEntity** 更新属性值；如果属性不存在，则该方法添加新属性，而 **insertOrReplaceEntity** 会完全替换现有实体。 下面的示例演示如何使用 **insertOrMergeEntity**。 如果 `PartitionKey` 为“tasksSeattle”且 `RowKey` 为“1”的实体不存在，则将插入该实体。 但是，如果之前已插入该实体（如上面的示例所示），则将更新 `DueDate` 属性并添加 `Status` 属性。 系统还将更新 `Description` 和 `Location` 属性，但使用的值实际上会使其保持不变。 如果后面两个属性不是如示例中所示添加的，但已存在于目标实体上，则其现有值将保持不变。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -511,7 +508,7 @@ catch(ServiceException $e){
 * [PHP 开发人员中心](https://azure.microsoft.com/develop/php/)。
 
 [download]: https://packagist.org/packages/microsoft/azure-storage-table
-[require_once]: http://php.net/require_once
+[require_once]: https://php.net/require_once
 [table-service-timeouts]: https://docs.microsoft.com/rest/api/storageservices/setting-timeouts-for-table-service-operations
 
 [table-data-model]: https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model

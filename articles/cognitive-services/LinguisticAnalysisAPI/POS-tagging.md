@@ -5,17 +5,17 @@ services: cognitive-services
 author: RichardSunMS
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 09/27/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: a01fcea4ae6c8950d578bacefc2f064586d7306b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 41383b5bbad0eb5c32b98c57f3ea35e6018993e8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238500"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218115"
 ---
 # <a name="part-of-speech-tagging"></a>词性标记
 
@@ -30,7 +30,7 @@ ms.locfileid: "48238500"
 
 ## <a name="list-of-part-of-speech-tags"></a>词性标记列表
 
-| 标记 | Description | 示例字词 |
+| 标记 | 说明 | 示例字词 |
 |-----|-------------|---------------|
 | $ | 美元 | $ |
 | \`\` | 左引号 | \` \`\` |
@@ -80,4 +80,4 @@ ms.locfileid: "48238500"
 
 ## <a name="specification"></a>规格
 
-对于词汇切分，本文以[宾州树库](https://catalog.ldc.upenn.edu/ldc99t42)中的规范为准。
+对于词汇切分，本文以[宾州树库](https://catalog.ldc.upenn.edu/LDC99T42)中的规范为准。

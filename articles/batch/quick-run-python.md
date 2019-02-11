@@ -7,17 +7,17 @@ manager: jeconnoc
 ms.service: batch
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/26/2018
+ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 0ce9d6854f464efdf0ff6eea8644fedc5ad90d1f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 9ede1b48d1b69c738e335676f10233af72e8564e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427312"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754415"
 ---
-# <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>快速入门：使用 Python API 运行第一个 Batch 作业
+# <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>快速入门：使用 Python API 运行你的第一个 Batch 作业
 
 本快速入门通过基于 Azure Batch Python API 生成的应用程序运行 Azure Batch 作业。 此应用将多个输入数据文件上传到 Azure 存储，然后创建包含 Batch 计算节点（虚拟机）的*池*。 再然后，它创建一个示例*作业*，以便运行*任务*，在池中使用基本命令来处理每个输入文件。 完成本快速入门以后，你会了解 Batch 服务的重要概念，并可使用更逼真的工作负荷进行更大规模的 Batch 试用。
  
@@ -65,8 +65,6 @@ _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
 
-[!INCLUDE [batch-credentials-include](../../includes/batch-credentials-include.md)]
-
 ## <a name="run-the-app"></a>运行应用
 
 若要查看操作中的 Batch 工作流，请运行脚本：
@@ -110,7 +108,7 @@ Batch processing began with mainframe computers and punch cards. Today it still 
 本快速入门中的 Python 应用执行以下操作：
 
 * 将三个小的文本文件上传到 Azure 存储帐户中的 Blob 容器。 这些文件是供 Batch 任务处理的输入。
-* 创建一个池，其中包含两个运行 Ubuntu 16.04 LTS 的计算节点。
+* 创建一个池，其中包含两个运行 Ubuntu 18.04 LTS 的计算节点。
 * 创建一个作业和三个任务，它们需要在节点上运行。 每个任务都使用 Bash shell 命令行来处理一个输入文件。
 * 显示文件返回的任务。
 
@@ -151,11 +149,11 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="create-a-pool-of-compute-nodes"></a>创建计算节点池
 
-为了创建 Batch 池，此应用使用 [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) 类来设置节点数、VM 大小和池配置。 在这里，[VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) 对象指定对 Azure 市场中发布的 Ubuntu Server 16.04 LTS 映像的 [ImageReference](/python/api/azure.batch.models.imagereference)。 Batch 支持 Azure 市场中的各种 Linux 和 Windows Server 映像以及自定义 VM 映像。
+为了创建 Batch 池，此应用使用 [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) 类来设置节点数、VM 大小和池配置。 在这里，[VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) 对象指定对 Azure 市场中发布的 Ubuntu Server 18.04 LTS 映像的 [ImageReference](/python/api/azure.batch.models.imagereference)。 Batch 支持 Azure 市场中的各种 Linux 和 Windows Server 映像以及自定义 VM 映像。
 
 节点数 (`_POOL_NODE_COUNT`) 和 VM 大小 (`_POOL_VM_SIZE`) 是定义的常数。 此示例默认创建的池包含 2 个大小为 *Standard_A1_v2* 的节点。 就此快速示例来说，建议的大小在性能和成本之间达成了很好的平衡。
 
-[pool.add](/python/api/azure.batch.operations.pooloperations#azure_batch_operations_PoolOperations_add) 方法将池提交到 Batch 服务。
+[pool.add](/python/api/azure.batch.operations.pooloperations) 方法将池提交到 Batch 服务。
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -164,10 +162,10 @@ new_pool = batch.models.PoolAddParameter(
         image_reference=batchmodels.ImageReference(
             publisher="Canonical",
             offer="UbuntuServer",
-            sku="16.04-LTS",
+            sku="18.04-LTS",
             version="latest"
             ),
-        node_agent_sku_id="batch.node.ubuntu 16.04"),
+        node_agent_sku_id="batch.node.ubuntu 18.04"),
     vm_size=config._POOL_VM_SIZE,
     target_dedicated_nodes=config._POOL_NODE_COUNT
 )
@@ -176,7 +174,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-batch-job"></a>创建 Batch 作业
 
-Batch 作业是对一个或多个任务进行逻辑分组。 作业包含任务的公用设置，例如优先级以及运行任务的池。 此应用使用 [JobAddParameter](/python/api/azure.batch.models.jobaddparameter) 类在池中创建作业。 [job.add](/python/api/azure.batch.operations.joboperations#azure_batch_operations_JobOperations_add) 方法将池提交到 Batch 服务。 作业一开始没有任务。
+Batch 作业是对一个或多个任务进行逻辑分组。 作业包含任务的公用设置，例如优先级以及运行任务的池。 此应用使用 [JobAddParameter](/python/api/azure.batch.models.jobaddparameter) 类在池中创建作业。 [job.add](/python/api/azure.batch.operations.joboperations) 方法将池提交到 Batch 服务。 作业一开始没有任务。
 
 ```python
 job = batch.models.JobAddParameter(
@@ -189,7 +187,7 @@ batch_service_client.job.add(job)
 
 此应用使用 [TaskAddParameter](/python/api/azure.batch.models.taskaddparameter) 类创建任务对象的列表。 每个任务都使用 `command_line` 参数来处理输入 `resource_files` 对象。 在示例中，命令行运行 Bash shell `cat` 命令来显示文本文件。 此命令是一个用于演示的简单示例。 使用 Batch 时，可以在命令行中指定应用或脚本。 Batch 提供多种将应用和脚本部署到计算节点的方式。
 
-然后，应用使用 [task.add_collection](/python/api/azure.batch.operations.taskoperations#azure_batch_operations_TaskOperations_add_collection) 方法将任务添加到作业，使任务按顺序在计算节点上运行。 
+然后，应用使用 [task.add_collection](/python/api/azure.batch.operations.taskoperations) 方法将任务添加到作业，使任务按顺序在计算节点上运行。 
 
 ```python
 tasks = list()

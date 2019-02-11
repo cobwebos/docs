@@ -1,5 +1,5 @@
 ---
-title: 在 Linux 上的 Azure 应用服务中创建 Java Web 应用的快速入门
+title: 在 Linux 上创建 Java Web 应用 - Azure 应用服务
 description: 本快速入门介绍如何在数分钟内在 Linux 上的 Azure 应用服务中部署第一个 Java Hello World。
 services: app-service\web
 documentationcenter: ''
@@ -12,19 +12,19 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 03/07/2018
+ms.date: 12/10/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: e286942f092d2e8c22824a18f5a6503d04a1be0c
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: fe134591a979569048072877632260ea9728b4fc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247549"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159751"
 ---
-# <a name="quickstart-create-a-java-web-app-in-app-service-on-linux"></a>快速入门：在 Linux 上的应用服务中创建 Java Web 应用
+# <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>快速入门：在 Linux 上的应用服务中创建 Java 应用
 
-[Linux 上的应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门介绍如何将 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 与[用于 Azure Web 应用的 Maven 插件（预览版）](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)配合使用来部署 Java web 应用 web 存档 (WAR) 文件。
+[Linux 上的应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门介绍如何将 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 与[用于 Azure Web 应用的 Maven 插件（预览版）](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)配合使用来部署 Java Web 存档 (WAR) 文件。
 
 ![在 Azure 中运行应用的示例](media/quickstart-java/java-hello-world-in-browser.png)
 
@@ -34,7 +34,7 @@ ms.locfileid: "50247549"
 
 ## <a name="create-a-java-app"></a>创建 Java 应用
 
-在 Cloud Shell 提示符下，执行以下 Maven 命令来创建一个名为 `helloworld` 的新 Web 应用：
+在 Cloud Shell 提示符下，执行以下 Maven 命令来创建一个名为 `helloworld` 的新应用：
 
 ```bash
 mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp
@@ -62,12 +62,12 @@ code pom.xml
         <version>1.4.0</version>
         <configuration>
    
-            <!-- Web App information -->
+            <!-- App information -->
             <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
             <appName>${WEBAPP_NAME}</appName>
             <region>${REGION}</region>
    
-            <!-- Java Runtime Stack for Web App on Linux-->
+            <!-- Java Runtime Stack for App on Linux-->
             <linuxRuntime>tomcat 8.5-jre8</linuxRuntime>
    
         </configuration>
@@ -84,9 +84,9 @@ code pom.xml
 
 | 占位符 | Description |
 | ----------- | ----------- |
-| `RESOURCEGROUP_NAME` | 要在其中创建 Web 应用的新资源组的名称。 通过将应用的所有资源都放在一个组中，可以一起管理它们。 例如，删除资源组会删除与该应用关联的所有资源。 使用唯一的新资源组名称（例如 *TestResources*）更新此值。 将在后面的部分使用此资源组名称来清除所有 Azure 资源。 |
-| `WEBAPP_NAME` | 应用名称将成为部署到 Azure 时的 Web 应用 (WEBAPP_NAME.azurewebsites.net) 的主机名的一部分。 使用将用于托管 Java 应用的新 Azure Web 应用的唯一名称（例如 *contoso*）更新此值。 |
-| `REGION` | 托管着 Web 应用的 Azure 区域，例如 `westus2`。 可以从 Cloud Shell 或 CLI 使用 `az account list-locations` 命令获取区域列表。 |
+| `RESOURCEGROUP_NAME` | 要在其中创建应用的新资源组的名称。 通过将应用的所有资源都放在一个组中，可以一起管理它们。 例如，删除资源组会删除与该应用关联的所有资源。 使用唯一的新资源组名称（例如 *TestResources*）更新此值。 将在后面的部分使用此资源组名称来清除所有 Azure 资源。 |
+| `WEBAPP_NAME` | 应用名称将成为部署到 Azure 时应用 (WEBAPP_NAME.azurewebsites.net) 的主机名的一部分。 使用将托管 Java 应用的新应用服务应用的唯一名称（例如 *contoso*）更新此值。 |
+| `REGION` | 托管着应用的 Azure 区域，例如 `westus2`。 可以从 Cloud Shell 或 CLI 使用 `az account list-locations` 命令获取区域列表。 |
 
 ## <a name="deploy-the-app"></a>部署应用
 
@@ -100,7 +100,7 @@ mvn package azure-webapp:deploy
 
 ![在 Azure 中运行应用的示例](media/quickstart-java/java-hello-world-in-browser-curl.png)
 
-**祝贺你！** 现已将第一个 Java 应用部署到 Linux 应用服务。
+祝贺你！ 现已将第一个 Java 应用部署到 Linux 应用服务。
 
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
@@ -108,8 +108,10 @@ mvn package azure-webapp:deploy
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已使用 Maven 创建了一个 Java Web 应用，配置了[适用于 Azure Web 应用的 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)，然后将 Web 存档打包的 Java 应用部署到了 Linux 上的应用服务。 若要了解如何连接数据库、设置日志记录和监视、配置安全性、设置运行时选项，请转到适用于 Linux 上的应用服务的 Java 开发人员指南。
+在本快速入门中，你已使用 Maven 创建了一个 Java 应用，配置了[适用于 Azure Web 应用的 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)，然后将 Web 存档打包的 Java 应用部署到了 Linux 上的应用服务。 有关在 Linux 上的应用服务中托管 Java 应用程序的详细信息，请参阅以下教程和操作指南文章。
 
-> [!div class="nextstepaction"]
-> [Linux 上的应用服务 Java 开发人员指南](app-service-linux-java.md)
+- [教程：使用 PostgreSQL 部署 Java 企业应用](tutorial-java-enterprise-postgresql-app.md)
+- [配置 Tomcat 数据源](app-service-linux-java.md#connecting-to-data-sources)
+- [将 CI/CD 与 Jenkins 配合使用](/azure/jenkins/deploy-jenkins-app-service-plugin)
+- [设置应用程序性能监视工具](how-to-java-apm-monitoring.md)
 

@@ -3,21 +3,21 @@ title: Azure Active Directory 中“无法从此处访问”错误消息的潜�
 description: 排查收到“无法从此处访问”错误消息的潜在原因。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: c34b096766b6b7dda26c51559bf58e40d95715e7
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 668d69921fd2001cd52bc864e5ee272d179a7bbc
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651105"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770463"
 ---
 # <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>“无法从此处访问”错误消息的潜在原因
 访问组织的内部 Web 应用或服务时，可能会收到以下错误消息：无法从此处访问。 此消息表示组织已使阻止设备访问组织的资源的策略就位。 虽然你可能不必联系支持人员来解决此问题，但可以先尝试执行以下操作。
@@ -68,4 +68,4 @@ ms.locfileid: "49651105"
 ## <a name="next-steps"></a>后续步骤
 - [什么是 MyApps 门户？](active-directory-saas-access-panel-introduction.md)
 
-- [使用手机而非密码登录](microsoft-authenticator-app-phone-signin-faq.md)
+- [使用手机而非密码登录](user-help-auth-app-sign-in.md)

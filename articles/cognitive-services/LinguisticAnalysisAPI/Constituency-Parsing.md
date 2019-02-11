@@ -6,17 +6,17 @@ services: cognitive-services
 author: RichardSunMS
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 89832f2d936a08df8b6f9e846c3dd4a5665c06a4
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 778005ee321c981fec1d1271cee54229bb3a522f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238618"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214163"
 ---
 # <a name="constituency-parsing"></a>成分分析
 
@@ -65,7 +65,7 @@ ms.locfileid: "48238618"
 
 ## <a name="phrase-types"></a>短语类型
 
-| 标签 | Description | 示例 |
+| Label | 说明 | 示例 |
 |-------|-------------|---------|
 |ADJP   | 形容词短语 | "so rude" |
 |ADVP   | 副词短语 | "clear through" |
@@ -97,4 +97,4 @@ ms.locfileid: "48238618"
 
 ## <a name="specification"></a>规格
 
-本文中的树使用[宾州树库](https://catalog.ldc.upenn.edu/ldc99t42)中的 S 表达式。
+本文中的树使用[宾州树库](https://catalog.ldc.upenn.edu/LDC99T42)中的 S 表达式。

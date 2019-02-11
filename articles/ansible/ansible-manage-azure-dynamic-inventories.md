@@ -3,17 +3,17 @@ title: 使用 Ansible 管理 Azure 动态库存
 description: 了解如何使用 Ansible 管理 Azure 动态库存
 ms.service: ansible
 keywords: ansible, azure, devops, bash, cloudshell, 动态库存
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 08/09/2018
-ms.topic: article
-ms.openlocfilehash: 1f19d5918d81acb76936edf8989a556335a3c0df
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.topic: tutorial
+ms.openlocfilehash: cf404b84377a37f9a97f7e7c9c9f86402fe999e0
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261246"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359657"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>使用 Ansible 管理 Azure 动态库存
 使用 Ansible 可将各种源（包括 Azure 等云源）中的库存信息提取到动态库存中。 本文介绍如何使用 [Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) 配置一个 Ansible Azure 动态库存，并在该库存中创建两个虚拟机、标记其中的一个虚拟机，然后在标记的虚拟机上安装 Nginx。

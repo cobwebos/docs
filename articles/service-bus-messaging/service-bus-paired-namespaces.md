@@ -3,9 +3,9 @@ title: Azure 服务总线配对命名空间 | Microsoft Docs
 description: 配对命名空间实现的详细信息和成本
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 2440c8d3-ed2e-47e0-93cf-ab7fbb855d2e
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
-ms.author: spelluru
-ms.openlocfilehash: ac663cc382fcacd4960843c25aa6c95191210116
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: aschhab
+ms.openlocfilehash: 54376f3067e6aca52af8d283b42f6363f8016bff
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395196"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728718"
 ---
 # <a name="paired-namespace-implementation-details-and-cost-implications"></a>配对命名空间实现详细信息和成本影响
 
@@ -62,8 +62,8 @@ ms.locfileid: "47395196"
 | DefaultMessageTimeToLive |TimeSpan.MaxValue |
 | AutoDeleteOnIdle |TimeSpan.MaxValue |
 | LockDuration |1 分钟 |
-| EnableDeadLetteringOnMessageExpiration |是 |
-| EnableBatchedOperations |是 |
+| EnableDeadLetteringOnMessageExpiration |true |
+| EnableBatchedOperations |true |
 
 例如，为命名空间 **contoso** 创建的第一个积压工作队列名为 `contoso/x-servicebus-transfer/0`。
 
@@ -102,21 +102,21 @@ ms.locfileid: "47395196"
 ## <a name="next-steps"></a>后续步骤
 有关服务总线异步消息传送的详细讨论，请参阅[异步消息传递模式和高可用性][Asynchronous messaging patterns and high availability]。 
 
-[PairNamespaceAsync]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory#Microsoft_ServiceBus_Messaging_MessagingFactory_PairNamespaceAsync_Microsoft_ServiceBus_Messaging_PairedNamespaceOptions_
+[PairNamespaceAsync]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
 [SendAvailabilityPairedNamespaceOptions]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions
 [MessageSender]: /dotnet/api/microsoft.servicebus.messaging.messagesender
 [MessagingFactory]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
-[FailoverInterval]: /dotnet/api/microsoft.servicebus.messaging.pairednamespaceoptions#Microsoft_ServiceBus_Messaging_PairedNamespaceOptions_FailoverInterval
+[FailoverInterval]: /dotnet/api/microsoft.servicebus.messaging.pairednamespaceoptions
 [MessagingException]: /dotnet/api/microsoft.servicebus.messaging.messagingexception
 [TimeoutException]: https://msdn.microsoft.com/library/azure/system.timeoutexception.aspx
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [QueueDescription]: /dotnet/api/microsoft.servicebus.messaging.queuedescription
 [TimeSpan]: https://msdn.microsoft.com/library/azure/system.timespan.aspx
-[PingPrimaryInterval]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions#Microsoft_ServiceBus_Messaging_SendAvailabilityPairedNamespaceOptions_PingPrimaryInterval
+[PingPrimaryInterval]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions
 [QueueClient]: /dotnet/api/microsoft.servicebus.messaging.queueclient
 [TopicClient]: /dotnet/api/microsoft.servicebus.messaging.topicclient
-[ContentType]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ContentType
-[TimeToLive]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive
+[ContentType]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+[TimeToLive]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Asynchronous messaging patterns and high availability]: service-bus-async-messaging.md
 [0]: ./media/service-bus-paired-namespaces/IC673405.png
 [1]: ./media/service-bus-paired-namespaces/IC673406.png

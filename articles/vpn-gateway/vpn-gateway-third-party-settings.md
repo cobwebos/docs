@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 77b1de3a9def525fbffb2a0ae49bbcbaea835c58
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 389578cb45977890645020fe7fcd6c69c08c41f5
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093870"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694245"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>适用于 Azure VPN 网关的社区建议第三方 VPN 或防火墙设备设置
 
@@ -48,7 +48,7 @@ ms.locfileid: "47093870"
 
 ## <a name="next-step"></a>后续步骤
 
-[Azure 网关设置](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices#a-nameipsecaipsecike-parameters)
+[Azure 网关设置](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
 
-[已知的兼容设备](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices#validated-vpn-devices)
+[已知的兼容设备](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
 

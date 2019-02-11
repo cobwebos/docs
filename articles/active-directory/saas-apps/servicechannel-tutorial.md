@@ -1,27 +1,27 @@
 ---
-title: 教程：Azure Active Directory 与 ServiceChannel 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 ServiceChannel 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 ServiceChannel 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: c3546eab-96b5-489b-a309-b895eb428053
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2017
 ms.author: jeedes
-ms.openlocfilehash: 22e72d454626941b932cef2750cba008da20a214
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 4fb0d0d91dbdbb437bedd0ea58d95e08694dcaab
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114954"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55154247"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>教程：Azure Active Directory 与 ServiceChannel 的集成
+# <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>教程：Azure Active Directory 与 ServiceChannel 集成
 
 本教程介绍了如何将 ServiceChannel 与 Azure Active Directory (Azure AD) 进行集成。
 
@@ -112,7 +112,7 @@ ms.locfileid: "49114954"
 
     ![配置单一登录](./media/servicechannel-tutorial/tutorial-servicechannel_urls.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入 `http://adfs.<domain>.com/adfs/service/trust` 值
+    a. 在“标识符”文本框中，键入 `http://adfs.<domain>.com/adfs/service/trust` 值
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<customer domain>.servicechannel.com/saml/acs`
 
@@ -134,7 +134,7 @@ ms.locfileid: "49114954"
     | --- | --- |    
     | 角色| user.assignedroles |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
+    a. 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/servicechannel-tutorial/tutorial_servicechannel_04.png)
 
@@ -181,7 +181,7 @@ ms.locfileid: "49114954"
  
     ![创建 Azure AD 测试用户](./media/servicechannel-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -232,7 +232,7 @@ ms.locfileid: "49114954"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

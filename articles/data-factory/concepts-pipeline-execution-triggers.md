@@ -9,23 +9,22 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: shlo
-ms.openlocfilehash: 890ef4baf27e193fecc17d8435998604ce25e282
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: d103061289991fb149b7c8d76430b37a6b385f80
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162681"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064366"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
 > * [版本 1](v1/data-factory-scheduling-and-execution.md)
 > * [当前版本](concepts-pipeline-execution-triggers.md)
 
-Azure 数据工厂中的“管道运行”用于定义管道执行实例。 例如，假设你有一个管道，分别在上午 8:00、9:00 和 10:00 点执行。 在这种情况下，将分三次单独运行管道，也即有三次管道运行。 每次管道运行都有唯一的管道运行 ID。 运行 ID 是一个 GUID，用于对该特定的管道运行进行唯一定义。 
+Azure 数据工厂中的“管道运行”用于定义管道执行实例。 例如，假设你有一个管道，分别在上午 8:00、9:00 和 10:00 点执行。 在这种情况下，将分三次单独运行管道，也即有三次管道运行。 每次管道运行都有唯一的管道运行 ID。 运行 ID 是一个 GUID，用于对该特定的管道运行进行唯一定义。
 
 管道运行通常通过将自变量传递给管道中定义的参数进行实例化。 执行管道时，可以手动，也可以使用触发器。 本文提供了有关执行管道的两种方式的详细信息。
 
@@ -85,14 +84,14 @@ Azure 数据工厂中的“管道运行”用于定义管道执行实例。 例�
 - Python SDK
 
 ### <a name="rest-api"></a>REST API
-以下示例命令演示了如何使用 REST API 手动运行管道：  
+以下示例命令演示了如何使用 REST API 手动运行管道：
 
 ```
 POST
 https://management.azure.com/subscriptions/mySubId/resourceGroups/myResourceGroup/providers/Microsoft.DataFactory/factories/myDataFactory/pipelines/copyPipeline/createRun?api-version=2017-03-01-preview
 ```
 
-如需完整的示例，请参阅[快速入门：使用 REST API 创建数据工厂](quickstart-create-data-factory-rest-api.md)。
+有关完整示例，请参阅[快速入门：使用 REST API 创建数据工厂](quickstart-create-data-factory-rest-api.md)。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 以下示例命令演示了如何使用 Azure PowerShell 手动运行管道：
@@ -118,7 +117,7 @@ Invoke-AzureRmDataFactoryV2Pipeline -DataFactory $df -PipelineName "Adfv2QuickSt
 }
 ```
 
-如需完整的示例，请参阅[快速入门：使用 Azure PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。
+有关完整示例，请参阅[快速入门：使用 Azure PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。
 
 ### <a name="net-sdk"></a>.NET SDK
 以下示例调用演示了如何使用 .NET SDK 手动运行管道：
@@ -127,7 +126,7 @@ Invoke-AzureRmDataFactoryV2Pipeline -DataFactory $df -PipelineName "Adfv2QuickSt
 client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, pipelineName, parameters)
 ```
 
-如需完整的示例，请参阅[快速入门：使用 .NET SDK 创建数据工厂](quickstart-create-data-factory-dot-net.md)。
+有关完整示例，请参阅[快速入门：使用 .NET SDK 创建数据工厂](quickstart-create-data-factory-dot-net.md)。
 
 > [!NOTE]
 > 可以使用 .NET SDK 从 Azure Functions、自己的 Web 服务等位置调用数据工厂管道。
@@ -176,7 +175,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 如需计划触发器的详细信息和示例，请参阅[创建计划触发器](how-to-create-schedule-trigger.md)。
 
 ## <a name="schedule-trigger-definition"></a>计划触发器定义
-创建计划触发器时，请使用 JSON 定义指定计划和定期触发。 
+创建计划触发器时，请使用 JSON 定义指定计划和定期触发。
 
 若要使用计划触发器启动管道运行，请在触发器定义中包括特定管道的管道引用。 管道和触发器具有“多对多”关系。 多个触发器可以启动单个管道。 单个触发器可以启动多个管道。
 
@@ -196,7 +195,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
           "weekDays": [<<Monday-Sunday>>],
           "minutes": [<<0-60>>],
           "monthDays": [<<1-31>>],
-          "monthlyOccurences": [
+          "monthlyOccurrences": [
             {
               "day": <<Monday-Sunday>>,
               "occurrence": <<1-5>>
@@ -313,7 +312,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | **分钟数** | 运行触发器的小时中的分钟。 |- 整数<br />- 整数数组|
 | **小时数** | 运行触发器的日期中的小时。 |- 整数<br />- 整数数组|
 | **工作日** | 运行触发器的星期日期。 此值只能使用与星期相关的频率来指定。|<br />- Monday<br />- Tuesday<br />- Wednesday<br />- Thursday<br />- Friday<br />- Saturday<br />- Sunday<br />- 星期值的数组（最大数组值为 7）<br /><br />星期值不区分大小写|
-| **monthlyOccurrences** | 运行触发器的月份日期。 此值只能使用与月份相关的频率来指定。 |- **monthlyOccurence** 对象的数组：`{ "day": day,  "occurrence": occurence }`<br />- **day** 属性表示运行触发器那天为星期几。 例如，如果 **monthlyOccurrences** 属性的 **day** 值为 `{Sunday}`，则表示在当月的每个星期日运行触发器。 **day** 属性是必需的。<br />- **occurrence** 属性是指定的 **day** 在当月的匹配项。 例如，如果 **monthlyOccurrences** 属性的 **day** 和 **occurrence** 值为 `{Sunday, -1}`，则表示在当月的最后一个星期日运行触发器。 **occurrence** 属性是可选的。|
+| **monthlyOccurrences** | 运行触发器的月份日期。 此值只能使用与月份相关的频率来指定。 |- **monthlyOccurrence** 对象的数组：`{ "day": day, "occurrence": occurrence }`<br />- **day** 属性表示运行触发器那天为星期几。 例如，如果 **monthlyOccurrences** 属性的 **day** 值为 `{Sunday}`，则表示在当月的每个星期日运行触发器。 **day** 属性是必需的。<br />- **occurrence** 属性是指定的 **day** 在当月的匹配项。 例如，如果 **monthlyOccurrences** 属性的 **day** 和 **occurrence** 值为 `{Sunday, -1}`，则表示在当月的最后一个星期日运行触发器。 **occurrence** 属性是可选的。|
 | **monthDays** | 运行触发器的月份日期。 此值只能使用与月份相关的频率来指定。 |<= -1 且 >= -31 的任意值<br />>= 1 且 <= 31 的任意值<br />- 值组成的数组|
 
 ## <a name="tumbling-window-trigger"></a>翻转窗口触发器
@@ -373,7 +372,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | **重试功能** | 。 失败的管道运行的重试策略默认设置为 0，也可由用户在触发器定义中指定。 在管道运行因并发/服务器/数量限制（即状态代码 400：用户错误；429：请求过多；500：内部服务器错误）而失败时自动重试。 | 不支持。 |
 | **并发** | 。 用户可以为触发器显式设置并发限制。 允许 1 到 50 个并发的触发管道运行。 | 不支持。 |
 | **系统变量** | 支持使用 **WindowStart** 和 **WindowEnd** 系统变量。 用户可以访问在触发器定义中充当触发器系统变量的 `triggerOutputs().windowStartTime` 和 `triggerOutputs().windowEndTime`。 这两个值分别用作窗口开始时间和窗口结束时间。 例如，如果翻转窗口触发器每小时运行一次，则对于凌晨 1:00 到凌晨 2:00 这个窗口，相应的定义为 `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` 和 `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`。 | 不支持。 |
-| **管道-触发器关系** | 支持一对一关系。 只能触发一个管道。 | 支持多对多关系。 多个触发器可以启动单个管道。 单个触发器可以启动多个管道。 | 
+| **管道-触发器关系** | 支持一对一关系。 只能触发一个管道。 | 支持多对多关系。 多个触发器可以启动单个管道。 单个触发器可以启动多个管道。 |
 
 ## <a name="next-steps"></a>后续步骤
 参阅以下教程：

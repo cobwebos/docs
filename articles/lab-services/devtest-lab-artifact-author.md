@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: ad9e9e893dc831530b69a30cc3dd930e879e9d7b
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 05abc61da7af02c56dacd632175d6fbfa64cb9e1
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185112"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098555"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>为开发测试实验室虚拟机创建自定义项目
 
 请观看以下视频，了解本文所述步骤：
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/how-to-author-custom-artifacts/player]
-> 
-> 
+>
+>
 
 ## <a name="overview"></a>概述
 预配 VM 后，可使用项目来部署和设置应用程序。 项目由项目定义文件和存储在 Git 存储库的文件夹中的其他脚本文件组成。 项目定义文件包含 JSON 和可用于指定要在 VM 上安装的内容的表达式。 例如，可以定义项目名称、要运行的命令，以及运行命令时可用的参数。 可以按名称引用项目定义文件中的其他脚本文件。
@@ -53,7 +53,7 @@ ms.locfileid: "39185112"
       }
     }
 
-| 元素名称 | 必需？ | Description |
+| 元素名称 | 必需？ | 说明 |
 | --- | --- | --- |
 | $schema |否 |JSON 架构文件的位置。 JSON 架构文件可帮助测试定义文件的有效性。 |
 | title |是 |实验室中显示的项目的名称。 |
@@ -69,14 +69,14 @@ ms.locfileid: "39185112"
 若要定义参数，请使用以下结构：
 
     "parameters": {
-        "<parameterName>": {
-          "type": "<type-of-parameter-value>",
-          "displayName": "<display-name-of-parameter>",
-          "description": "<description-of-parameter>"
-        }
+      "<parameterName>": {
+        "type": "<type-of-parameter-value>",
+        "displayName": "<display-name-of-parameter>",
+        "description": "<description-of-parameter>"
       }
+    }
 
-| 元素名称 | 必需？ | Description |
+| 元素名称 | 必需？ | 说明 |
 | --- | --- | --- |
 | type |是 |参数值的类型。 请参阅以下允许类型列表。 |
 | displayName |是 |在实验室中显示给用户的参数的名称。 | |
@@ -96,13 +96,13 @@ ms.locfileid: "39185112"
 
 以下列表显示常见函数：
 
-* parameters(parameterName)：返回运行项目命令时提供的参数值。
+* **parameters(parameterName)**：返回运行项目命令时提供的参数值。
 * **concat(arg1, arg2, arg3,….. )**：合并多个字符串值。 此函数可结合使用各种类型的参数。
 
 以下示例显示如何使用表达式和函数构造值：
 
     runCommand": {
-         "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./startChocolatey.ps1'
+        "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./startChocolatey.ps1'
     , ' -RawPackagesList ', parameters('packages')
     , ' -Username ', parameters('installUsername')
     , ' -Password ', parameters('installPassword'))]"
@@ -113,7 +113,7 @@ ms.locfileid: "39185112"
 1. 安装 JSON 编辑器。 需要一个 JSON 编辑器来处理项目定义文件。 建议使用 [Visual Studio Code](https://code.visualstudio.com/)，它适用于 Windows、Linux 和 OS X。
 2. 获取示例 artifactfile.json 定义文件。 查看开发测试实验室团队在我们的 [GitHub 存储库](https://github.com/Azure/azure-devtestlab)中创建的项目。 我们已创建资源丰富的项目库，可帮助你创建自己的项目。 下载项目定义文件并对其进行更改以创建自己的项目。
 3. 利用 IntelliSense。 使用 IntelliSense 查看可用于构建项目定义文件的有效元素。 此外还可以查看元素值的不同选项。 例如，编辑“targetOsType”元素时，IntelliSense 显示 Windows 或 Linux 两种选择。
-4. 将项目存储在[开发测试实验室的公共 Git 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)或[自己的 Git 存储库](devtest-lab-add-artifact-repo.md)中。 在公共存储库中，可以查看他人共享的项目，可以直接使用或自定义它们来满足自己的需求。 
+4. 将项目存储在[开发测试实验室的公共 Git 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)或[自己的 Git 存储库](devtest-lab-add-artifact-repo.md)中。 在公共存储库中，可以查看他人共享的项目，可以直接使用或自定义它们来满足自己的需求。
    
    1. 为每个项目创建单独的目录。 目录名称应与项目名称相同。
    2. 将项目定义文件 (artifactfile.json) 存储在创建的目录中。
@@ -124,11 +124,9 @@ ms.locfileid: "39185112"
       ![项目文件夹示例](./media/devtest-lab-artifact-author/git-repo.png)
 5. 如果使用自己的存储库来存储项目，请按照以下文章中的说明将存储库添加到实验室：[为项目和模板添加 Git 存储库](devtest-lab-add-artifact-repo.md)。
 
-
 ## <a name="related-articles"></a>相关文章
 * [如何诊断开发测试实验室中的项目失败](devtest-lab-troubleshoot-artifact-failure.md)
 * [使用开发测试实验室中的资源管理器模板将 VM 加入到现有 Active Directory 域中](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何 [将 Git 项目存储库添加到实验室](devtest-lab-add-artifact-repo.md)。
-

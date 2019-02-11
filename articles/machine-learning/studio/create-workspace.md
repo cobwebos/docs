@@ -1,30 +1,27 @@
 ---
-title: 创建 Azure 机器学习工作室工作区 | Microsoft Docs
-description: 若要使用 Azure 机器学习工作室，需要具有“机器学习工作室”工作区。 此工作空间包含创建、管理和发布试验所需的工具。
+title: 创建工作区
+titleSuffix: Azure Machine Learning Studio
+description: '若要使用 Azure 机器学习工作室，需要具有“机器学习工作室”工作区。 此工作区包含创建、管理和发布试验所需的工具。 '
 services: machine-learning
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
-editor: cgronlun
-ms.assetid: aa96b784-ac6c-44bc-a28a-85d49fbe90a2
 ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
+ms.subservice: studio
 ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 8362468d329f12ad8ebf25c8d205ec7d35ac6c28
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 16c67c217c8ef33a360fd479a45317d6c42af494
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307213"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486311"
 ---
-# <a name="create-and-share-an-azure-machine-learning-workspace"></a>创建并共享 Azure 机器学习工作区
+# <a name="create-and-share-an-azure-machine-learning-studio-workspace"></a>创建并共享 Azure 机器学习工作室工作区
 
-若要使用 Azure 机器学习工作室，需要具有“机器学习工作室”工作区。 此工作空间包含创建、管理和发布试验所需的工具。
+若要使用 Azure 机器学习工作室，需要具有“机器学习工作室”工作区。 此工作区包含创建、管理和发布试验所需的工具。 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ### <a name="to-create-a-workspace"></a>创建工作区
 1. 登录到 [Azure 门户](https://portal.azure.com/)
@@ -60,7 +57,7 @@ ms.locfileid: "52307213"
     ![打开试验](./media/create-workspace/my-experiments.png)
 
 有关管理工作区的信息，请参阅[管理 Azure 机器学习工作区](manage-workspace.md)。
-如果在创建工作区时遇到问题，请参阅[故障排除指南：创建并连接到机器学习工作区](troubleshooting-creating-ml-workspace.md)。
+如果在创建工作区时遇到问题，请参阅[疑难解答指南：创建并连接到机器学习工作区](troubleshooting-creating-ml-workspace.md)。
 
 
 ## <a name="sharing-an-azure-machine-learning-workspace"></a>共享 Azure 机器学习工作区

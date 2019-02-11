@@ -9,48 +9,47 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 12/19/2018
 ms.author: shlo
-ms.openlocfilehash: 71e89828645cadbbbf60527fca9968fd8ed568ff
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 7edaa4c673c2cb94dc5bd0245ce66c9fe6a7dd3c
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055351"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214294"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Web 活动
-Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。 
+Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。
 
 ## <a name="syntax"></a>语法
 
 ```json
-{  
+{
    "name":"MyWebActivity",
    "type":"WebActivity",
-   "typeProperties":{  
+   "typeProperties":{
       "method":"Post",
       "url":"<URLEndpoint>",
-      "headers":{  
+      "headers":{
          "Content-Type":"application/json"
       },
-      "authentication":{  
-         "type":"ClientCertificate",  
+      "authentication":{
+         "type":"ClientCertificate",
          "pfx":"****",
          "password":"****"
       },
-      "datasets":[  
-         {  
+      "datasets":[
+         {
             "referenceName":"<ConsumedDatasetName>",
             "type":"DatasetReference",
-            "parameters":{  
+            "parameters":{
                ...
             }
          }
       ],
-      "linkedServices":[  
-         {  
+      "linkedServices":[
+         {
             "referenceName":"<ConsumedLinkedServiceName>",
             "type":"LinkedServiceReference"
          }
@@ -93,28 +92,40 @@ linkedServices | 传递给终结点的链接服务列表。 | 链接服务引用
 如果不需要身份验证，请排除“身份验证”属性。
 
 ### <a name="basic"></a>基本
-指定用户名和密码以用于基本身份验证。 
+指定用户名和密码以用于基本身份验证。
 
 ```json
-"authentication":{  
-   "type":"Basic,
+"authentication":{
+   "type":"Basic",
    "username":"****",
    "password":"****"
 }
 ```
 
 ### <a name="client-certificate"></a>客户端证书
-指定 base64 编码的 PFX 文件内容和密码。 
+指定 base64 编码的 PFX 文件内容和密码。
 
 ```json
-"authentication":{  
+"authentication":{
    "type":"ClientCertificate",
-   "pfx":"****",   
+   "pfx":"****",
    "password":"****"
 }
 ```
+
+### <a name="managed-identity"></a>托管标识
+
+使用数据工厂的托管标识指定要为其请求访问令牌的资源 URI。 若要调用 Azure 资源管理 API，请使用 `https://management.azure.com/`。 有关如何托管标识工作原理的详细信息，请参阅 [Azure 资源概述页面的托管标识](/azure/active-directory/managed-identities-azure-resources/overview)。
+
+```json
+"authentication": {
+    "type": "MSI",
+    "resource": "https://management.azure.com/"
+}
+```
+
 ## <a name="request-payload-schema"></a>请求有效负载架构
-当使用 POST/PUT 方法时，正文属性表示发送到终结点的有效负载。 可以将链接服务和数据集作为有效负载的一部分进行传递。 下面是有效负载的架构： 
+当使用 POST/PUT 方法时，正文属性表示发送到终结点的有效负载。 可以将链接服务和数据集作为有效负载的一部分进行传递。 下面是有效负载的架构：
 
 ```json
 {
@@ -133,11 +144,11 @@ linkedServices | 传递给终结点的链接服务列表。 | 链接服务引用
             }
         }]
     }
-} 
+}
 ```
 
 ## <a name="example"></a>示例
-在此示例中，管道中的 Web 活动调用了 REST 终结点。 它将 Azure SQL 链接服务和 Azure SQL 数据集传递到该终结点。 REST 终结点使用 Azure SQL 连接字符串连接到 Azure SQL Server，并返回 SQL Server 实例的名称。 
+在此示例中，管道中的 Web 活动调用了 REST 终结点。 它将 Azure SQL 链接服务和 Azure SQL 数据集传递到该终结点。 REST 终结点使用 Azure SQL 连接字符串连接到 Azure SQL Server，并返回 SQL Server 实例的名称。
 
 ### <a name="pipeline-definition"></a>管道定义
 
@@ -231,7 +242,7 @@ public HttpResponseMessage Execute(JObject payload)
 ```
 
 ## <a name="next-steps"></a>后续步骤
-查看数据工厂支持的其他控制流活动： 
+查看数据工厂支持的其他控制流活动：
 
 - [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)
 - [For Each 活动](control-flow-for-each-activity.md)

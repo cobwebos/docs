@@ -8,16 +8,19 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 09/28/2018
 ms.topic: conceptual
-ms.openlocfilehash: d741677252ba6787701b9ee9da84ebd38528d70e
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 7a7a32cf1d67e9a4bbe49996b258164eb25c3763
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432148"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446759"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>创建并测试新的模拟设备
 
 借助远程监视解决方案加速器，可以定义自己的模拟设备。 本文介绍如何定义新的模拟灯泡设备，然后在本地对其进行测试。 解决方案加速器包括诸如冷却器和卡车的模拟设备。 但是，可以定义自己的模拟设备以在部署实际设备之前对 IoT 解决方案进行测试。
+
+> [!NOTE]
+> 本文介绍如何使用设备模拟服务中托管的模拟设备。 如果想要创建真实设备，请参阅[将设备连接到远程监视解决方案加速器](iot-accelerators-connecting-devices.md)。
 
 本操作说明指南介绍如何自定义设备模拟微服务。 此微服务是远程监视解决方案加速器的一部分。 为了演示设备模拟功能，本操作说明指南在 Contoso IoT 应用程序中使用了两个方案：
 

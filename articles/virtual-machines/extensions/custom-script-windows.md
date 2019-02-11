@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/24/2018
+ms.date: 12/05/2018
 ms.author: roiyz
-ms.openlocfilehash: 2c8ac43d96c100f0c26281fea1d4e9eba41bc178
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 1370f541f8913d86db948a3165d6660a8cd66528
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282318"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963498"
 ---
 # <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
 
@@ -54,13 +54,13 @@ ms.locfileid: "51282318"
 * 编写幂等性的脚本，这样一来，如果脚本意外多次运行，将不会导致系统更改。
 * 确保这些脚本在运行时不需要用户输入。
 * 脚本可以运行 90 分钟，若运行时间超过 90 分钟，将导致扩展的预配失败。
-* 请勿将 reboot 置于脚本中，这会导致正在安装的其他扩展出现问题，并且在重启后，该扩展将不会继续。 
-* 如果所拥有的脚本会导致重启，则安装应用程序并运行脚本等。应该使用 Windows 计划任务或者使用 DSC 或 Chef、Puppet 扩展等工具来计划重启。
+* 不要重启置于脚本内，此操作会导致所安装的其他扩展出现问题。 扩展不会在重启之后继续。 
+* 如果脚本会导致重启，则安装应用程序并运行脚本等。可以使用 Windows 计划任务或者使用 DSC 或 Chef、Puppet 扩展等工具来计划重启。
 * 扩展将只运行脚本一次，如果想要在每次启动时运行脚本，则需要使用扩展创建 Windows 计划任务。
 * 如果想要计划脚本何时运行，应使用扩展创建 Windows 计划任务。 
 * 脚本运行时，Azure 门户或 CLI 中只会显示“正在转换”扩展状态。 如果希望更频繁地更新正在运行的脚本的状态，需要创建自己的解决方案。
 * 自定义脚本扩展本身不支持代理服务器，但可以在脚本中使用支持代理服务器的文件传输工具，如 Curl 
-* 请注意脚本或命令可能依赖的非默认目录位置，按逻辑对其进行处理。
+* 请注意脚本或命令可能依赖的非默认目录位置，按逻辑对这种情况进行处理。
 
 
 ## <a name="extension-schema"></a>扩展架构
@@ -92,7 +92,8 @@ ms.locfileid: "51282318"
         "settings": {
             "fileUris": [
                 "script location"
-            ]
+            ],
+            "timestamp":123456789
         },
         "protectedSettings": {
             "commandToExecute": "myExecutionCommand",
@@ -113,6 +114,7 @@ ms.locfileid: "51282318"
 | type | CustomScriptExtension | 字符串 |
 | typeHandlerVersion | 1.9 | int |
 | fileUris（例如） | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | 数组 |
+| timestamp（示例） | 123456789 | 32 位整数 |
 | commandToExecute（例如） | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | 字符串 |
 | storageAccountName（例如） | examplestorageacct | 字符串 |
 | storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 字符串 |
@@ -123,13 +125,14 @@ ms.locfileid: "51282318"
 #### <a name="property-value-details"></a>属性值详细信息
  * `commandToExecute`：（**必需**，字符串）要执行的入口点脚本。 如果命令包含机密（例如密码）或者 fileUris 敏感，请改用此字段。
 * `fileUris`：（可选，字符串数组）要下载的文件的 URL。
+* `timestamp`（可选，32 位整数）仅当需要更改此字段的值来触发脚本的重新运行时，才使用此字段。  任何整数值都是可以接受的，前提是必须不同于以前的值。
 * `storageAccountName`：（可选，字符串）存储帐户的名称。 如果指定存储凭据，所有 `fileUris` 都必须是 Azure Blob 的 URL。
 * `storageAccountKey`：（可选，字符串）存储帐户的访问密钥
 
 可以在公共设置或受保护设置中设置以下值，但扩展会拒绝任何同时在公共设置和受保护设置中设置以下值的配置。
 * `commandToExecute`
 
-虽然使用公共设置可能对调试很有用，但强烈建议使用受保护设置。
+虽然使用公共设置可能对调试很有用，但建议使用受保护设置。
 
 公共设置会以明文形式发送到将执行脚本的 VM。  受保护设置使用只有 Azure 和 VM 知道的密钥进行加密。 这些设置会在发送时保存到 VM 中，也就是说，如果设置已加密，则会在 VM 上加密保存。 用于对已加密值解密的证书存储在 VM 上，该证书用于在运行时对设置解密（如必要）。
 
@@ -182,7 +185,7 @@ Set-AzureRmVMExtension -ResourceGroupName myRG `
 ```
 
 ### <a name="running-scripts-from-a-local-share"></a>从本地共享运行脚本
-在此示例中，你可能希望使用本地 SMB 服务器作为脚本位置，请注意，除  *commandToExecute* 之外，不需要传入任何其他设置。
+在此示例中，你可能希望使用本地 SMB 服务器作为脚本位置，请注意，除 commandToExecute 之外，不需要传入任何其他设置。
 
 ```powershell
 $ProtectedSettings = @{"commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File \\filesvr\build\serverUpdate1.ps1"};
@@ -201,7 +204,7 @@ Set-AzureRmVMExtension -ResourceGroupName myRG
 ### <a name="how-to-run-custom-script-more-than-once-with-cli"></a>如何使用 CLI 多次运行自定义脚本
 如果想要多次运行自定义脚本扩展，则只能在以下条件下执行此操作：
 1. 扩展的“Name”参数与之前部署的扩展相同。
-2. 必须更新配置，否则命令将不会重新执行，例如，可以将动态属性（例如时间戳）添加到命令中。 
+2. 必须更新配置，否则不会重新执行命令。 可以将动态属性添加到命令中，如时间戳。
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
@@ -224,7 +227,7 @@ C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 ```
 其中，`<n>` 是一个十进制整数，可以在不同的扩展执行之间更改。  `1.*` 值与扩展的 `typeHandlerVersion` 的当前实际值匹配。  例如，实际目录可能是 `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2`。  
 
-执行 `commandToExecute` 命令时，扩展会将该目录（例如 `...\Downloads\2`）设置为当前工作目录。 这样可以通过 `fileURIs` 属性使用相对路径查找下载的文件。 请参阅下表中的示例。
+执行 `commandToExecute` 命令时，扩展会将该目录（例如 `...\Downloads\2`）设置为当前工作目录。 此过程使得可以通过 `fileURIs` 属性使用相对路径查找下载的文件。 请参阅下表中的示例。
 
 绝对下载路径可能会随时间而变化，因此在可能情况下，最好是在 `commandToExecute` 字符串中选择使用相对的脚本/文件路径。 例如：
 ```json
@@ -244,4 +247,4 @@ C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 还可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1c543c2357dd31bb06a19c7d53284c65a7ca7299
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 3e4410a5acb852ea9cd7f5ca24e67e8335a45e30
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928118"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692658"
 ---
 # <a name="create-a-vm-with-wordpress"></a>使用 WordPress 创建 VM
 
@@ -49,11 +49,11 @@ az group delete --name myResourceGroup
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |
-| [az vm open-port](https://docs.microsoft.com/cli/azure/vm#az_vm_open_port) | 创建网络安全组规则，以允许入站流量。 在此示例中，将为 HTTP 流量打开端口 80。 |
-| [az vm extension set](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | 将自定义脚本扩展添加到虚拟机，此扩展将调用脚本来安装 WordPress。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |
+| [az vm open-port](https://docs.microsoft.com/cli/azure/vm) | 创建网络安全组规则，以允许入站流量。 在此示例中，将为 HTTP 流量打开端口 80。 |
+| [az vm extension set](https://docs.microsoft.com/cli/azure/vm) | 将自定义脚本扩展添加到虚拟机，此扩展将调用脚本来安装 WordPress。 |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,14 +7,14 @@ author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 12/03/2018
 ms.author: glenga
-ms.openlocfilehash: a92a4183962f71005577478bf27df9b5fb945acf
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 83e5a15d8a7f9c01f6a180ebceb715600b8a39db
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634356"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849473"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions 中的 IP 地址
 
@@ -88,13 +88,13 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ## <a name="inbound-ip-address-changes"></a>入站 IP 地址更改
 
- 如果执行以下操作，入站 IP 地址**可能**会更改：
+如果执行以下操作，入站 IP 地址**可能**会更改：
 
 - 删除函数应用，然后在不同的资源组中重新创建它。
 - 删除资源组和区域组合中的最后一个函数应用，然后重新创建它。
 - 删除 SSL 绑定（例如，在[证书续订](../app-service/app-service-web-tutorial-custom-ssl.md#renew-certificates)期间）。
 
-如果未执行上面所列的操作，入站 IP 地址也可能会更改。
+在[消耗计划](functions-scale.md#consumption-plan)中运行函数应用时，如果未执行上面所列的操作，入站 IP 地址也可能会更改。
 
 ## <a name="outbound-ip-address-changes"></a>出站 IP 地址更改
 
@@ -103,7 +103,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 * 执行可能更改入站 IP 地址的任何操作。
 * 更改应用服务计划的定价层。 应用可在所有定价层中使用的所有可能出站 IP 地址列表在 `possibleOutboundIPAddresses` 属性中指定。 请参阅[查找出站 IP](#find-outbound-ip-addresses)。
 
-如果未执行上面所列的操作，入站 IP 地址也可能会更改。
+在[消耗计划](functions-scale.md#consumption-plan)中运行函数应用时，如果未执行上面所列的操作，出站 IP 地址也可能会更改。
 
 有意强制出站 IP 地址更改：
 

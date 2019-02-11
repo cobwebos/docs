@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: a730f6ccba9f935855b233ca804a8180aa7f504b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 0a0712e4985414263d1e90299d78d5e30fe78a3e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52580553"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608505"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-hdinsight"></a>教程：在 HDInsight 中生成 Apache Spark 机器学习应用程序 
 
@@ -97,7 +97,7 @@ ms.locfileid: "52580553"
     pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
     ```
 
-    有关管道及其工作原理的详细信息，请参阅 <a href="http://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Spark 机器学习管道</a>。
+    有关管道及其工作原理的详细信息，请参阅 <a href="https://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Apache Spark 机器学习管道</a>。
 
 5. 将管道拟合到培训文档中。
    
@@ -184,7 +184,7 @@ ms.locfileid: "52580553"
 10. 关闭笔记本以释放资源。 为此，请在 Notebook 的“文件”菜单中选择“关闭并停止”。 此操作会关闭 Notebook。
 
 ## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>将 Anaconda scikit-learn 库用于 Spark 机器学习
-HDInsight 中的 Apache Spark 群集包含 Anaconda 库。 它还包括适用于机器学习的 scikit-learn 库。 该库还包含用于直接从 Jupyter 笔记本生成示例应用程序的各种数据集。 有关使用 scikit-learn 库的示例，请参阅 [http://scikit-learn.org/stable/auto_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html)。
+HDInsight 中的 Apache Spark 群集包含 Anaconda 库。 它还包括适用于机器学习的 scikit-learn 库。 该库还包含用于直接从 Jupyter 笔记本生成示例应用程序的各种数据集。 有关使用 scikit-learn 库的示例，请参阅 [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html)。
 
 ## <a name="next-steps"></a>后续步骤
 

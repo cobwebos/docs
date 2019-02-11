@@ -14,16 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 61b804b876c91b5fcd12ce15bd7e2438f5d897a0
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 094f706878b82956398cd08100b3daf76b9f6cbc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617411"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203787"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>在 Linux 上创建第一个 Java Service Fabric Reliable Actors 应用程序
 > [!div class="op_single_selector"]
-> * [C# - Windows](service-fabric-create-your-first-application-in-visual-studio.md)
 > * [Java-Linux](service-fabric-create-your-first-linux-application-with-java.md)
 > * [C# - Linux](service-fabric-create-your-first-linux-application-with-csharp.md)
 >
@@ -179,7 +178,7 @@ public static void main(String[] args) throws Exception {
             ActorRuntime.registerActorAsync(HelloWorldActorImpl.class, (context, actorType) -> new FabricActorService(context, actorType, (a,b)-> new HelloWorldActorImpl(a,b)), Duration.ofSeconds(10));
             Thread.sleep(Long.MAX_VALUE);
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "Exception occured", e);
+            logger.log(Level.SEVERE, "Exception occurred", e);
             throw e;
         }
     }

@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: 9967813b193159b68aa0f008dae4440aa6e533dc
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: b368ef3b5503d90b0eb928113e8154aabca9c04a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33207385"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157133"
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>使用 Azure 门户创建具有 Web 应用程序防火墙的应用程序网关
 
@@ -33,7 +33,7 @@ ms.locfileid: "33207385"
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-在 [http://portal.azure.com](http://portal.azure.com) 登录到 Azure 门户
+在 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
@@ -119,7 +119,7 @@ ms.locfileid: "33207385"
 ### <a name="add-backend-servers"></a>添加后端服务器
 
 1. 单击“所有资源”，然后单击 **myAppGateway**。
-2. 单击“后端池”。 默认池已随应用程序网关自动创建。 单击 **appGateayBackendPool**。
+2. 单击“后端池”。 默认池已随应用程序网关自动创建。 单击 **appGatewayBackendPool**。
 3. 单击“添加目标”将所创建的每个虚拟机添加到后端池。
 
     ![添加后端服务器](./media/application-gateway-web-application-firewall-portal/application-gateway-backend.png)

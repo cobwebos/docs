@@ -5,23 +5,23 @@ services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: identity-protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 4b48ffb450459891118d5f526bbc73c4a2577ddd
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 8859202f18564d6db005fc4157696c904f9a68ce
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268827"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55767280"
 ---
 # <a name="how-to-configure-the-sign-in-risk-policy"></a>如何：配置登录风险策略
 
@@ -77,7 +77,7 @@ Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录�
 
 如果希望要求有风险的登录进行 MFA，则应当：
 
-1. 对受影响的用户启用[多重身份验证注册策略](#multi-factor-authentication-registration-policy)。
+1. 对受影响的用户启用[多重身份验证注册策略](howto-mfa-policy.md)。
 
 2. 要求受影响的用户登录无风险会话来执行 MFA 注册。
 

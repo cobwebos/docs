@@ -3,21 +3,21 @@ title: Windows 10 登录屏幕中的 Azure AD SSPR
 description: 在本教程中，你将在 Windows 10 登录屏幕上启用密码重置，以减少支持人员呼叫。
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 07/11/2018
+ms.date: 12/05/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: bec94e2017660e9804bbc232e0a3163afdaafcb6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: a36f9bf3ade623a6b623116c504c2b6a04fcdf2b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277760"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474864"
 ---
-# <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>教程：登录屏幕中的 Azure AD 密码重置
+# <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>教程：登录屏幕中的“Azure AD 密码重置”
 
 在本教程中，你将让用户能够从 Windows 10 登录屏幕重置其密码。 安装新的 Windows 10 April 2018 Update 后，其设备**已加入 Azure AD** 或**已加入混合 Azure AD** 的用户可以在其登录屏幕上使用“重置密码”链接。 单击此链接后，用户就会体验到熟悉的与以前相同的自助密码重置 (SSPR)。
 
@@ -28,10 +28,11 @@ ms.locfileid: "51277760"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Windows 10 的 2018 年 4 月更新或更高版本的客户端，并且它们应当：
-   * [已加入 Azure AD](../device-management-azure-portal.md) 或者 
-   * [已加入混合 Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md)
+* 至少必须运行 Windows 10 2018 年 4 月更新版，且设备必须符合下述条件之一：
+   * [已加入 Azure AD](../device-management-azure-portal.md)，或者
+   * [已加入混合 Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md)，可以通过网络连接到域控制器。
 * 必须启用 Azure AD 自助密码重置。
+* 如果 Windows 10 设备位于代理服务器或防火墙后面，则必须向 HTTPS 流量（端口 443）的“允许的 URL”列表添加 URL、`passwordreset.microsoftonline.com` 和 `ajax.aspnetcdn.com`。
 
 ## <a name="configure-reset-password-link-using-intune"></a>使用 Intune 配置“重置密码”链接
 
@@ -101,25 +102,33 @@ ms.locfileid: "51277760"
 
 用户可以在[重置工作或学校密码](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in)中发现此功能的使用指南
 
-## <a name="common-issues"></a>常见问题
+Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientType 的信息。
+
+![Azure AD 审核日志中的登录屏幕密码重置示例](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+
+## <a name="limitations"></a>限制
 
 使用 Hyper-V 测试此功能时，“重置密码”链接不显示。
 
 * 转到用于测试的 VM，单击“视图”，然后取消选中“增强会话”。
 
-使用远程桌面测试此功能时，“重置密码”链接不显示。
+使用远程桌面或增强型 VM 会话测试此功能时，“重置密码”链接不显示。
 
 * 目前不支持从远程桌面进行密码重置。
 
-如果通过注册表项或组策略禁用了 Windows 锁屏，则“重置密码”功能将不可用。
-
 如果策略要求使用 Ctrl+Alt+Del，或者锁屏通知已关闭，则“重置密码”将无效。
 
-Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientType 的信息。
+已知以下策略设置会干扰密码重置功能
 
-![Azure AD 审核日志中的登录屏幕密码重置示例](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+   * HideFastUserSwitching 设置为“启用”或 1
+   * DontDisplayLastUserName 设置为“启用”或 1
+   * NoLockScreen 设置为“启用”或 1
+   * 在设备上设置 EnableLostMode
+   * 将 Explorer.exe 替换为自定义 shell
 
-如果 Windows 10 计算机位于代理服务器或防火墙后面，应允许向 passwordreset.microsoftonline.com 和 ajax.aspnetcdn.com 传输 HTTPS 流量 (443)。
+此功能不适用于部署了 802.1x 网络身份验证的网络和“在用户登录前立即执行”选项。 对于部署了 802.1x 网络身份验证的网络，建议使用计算机身份验证来启用此功能。
+
+对于混合域加入方案，存在 SSPR 工作流将完成而不需要 Active Directory 域控制器的方案。 第一次使用新密码需要与域控制器连接。
 
 ## <a name="clean-up-resources"></a>清理资源
 

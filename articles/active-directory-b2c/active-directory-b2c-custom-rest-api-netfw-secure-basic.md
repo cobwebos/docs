@@ -3,27 +3,27 @@ title: 在 Azure Active Directory B2C 中使用 HTTP 基本身份验证保护 RE
 description: 使用 HTTP 基本身份验证保护 Azure AD B2C 中的自定义 REST API 声明交换。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: e6cff4e2daf86b63bc0db0d4f2d537322d2841df
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.subservice: B2C
+ms.openlocfilehash: 71a5ca62dc5d21e30a4944f8be57a77040f4f204
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409297"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733682"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>使用 HTTP 基本身份验证保护 RESTful 服务
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-在[相关的 Azure AD B2C 文章](active-directory-b2c-custom-rest-api-netfw.md)中，我们已创建一个无需身份验证即可集成到 Azure Active Directory B2C (Azure AD B2C) 用户旅程的 RESTful 服务 (Web API)。 
+在[相关的 Azure AD B2C 文章](active-directory-b2c-custom-rest-api-netfw.md)中，我们已创建一个无需身份验证即可集成到 Azure Active Directory B2C (Azure AD B2C) 用户旅程的 RESTful 服务 (Web API)。
 
-本文介绍如何将 HTTP 基本身份验证添加到 RESTful 服务，以便只有经过验证的用户（包括 B2C）可以访问你的 API。 使用 HTTP 基本身份验证在自定义策略中设置用户凭据（应用 ID 和应用机密）。 
+本文介绍如何将 HTTP 基本身份验证添加到 RESTful 服务，以便只有经过验证的用户（包括 B2C）可以访问你的 API。 使用 HTTP 基本身份验证在自定义策略中设置用户凭据（应用 ID 和应用机密）。
 
 有关详细信息，请参阅 [ASP.NET Web API 中的基本身份验证](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication)。
 
@@ -33,7 +33,7 @@ ms.locfileid: "47409297"
 ## <a name="step-1-add-authentication-support"></a>步骤 1：添加身份验证支持
 
 ### <a name="step-11-add-application-settings-to-your-projects-webconfig-file"></a>步骤 1.1：将应用程序设置添加到项目的 web.config 文件
-1. 打开先前创建的 Visual Studio 项目。 
+1. 打开先前创建的 Visual Studio 项目。
 
 2. 将以下应用程序设置添加到 web.config 文件中的 `appSettings` 元素下面：
 
@@ -205,7 +205,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
         {
             public void Configuration(IAppBuilder app)
             {
-                    app.Use<ClientAuthMiddleware>();
+                app.Use<ClientAuthMiddleware>();
             }
         }
     }
@@ -220,7 +220,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 若要发布项目，请在解决方案资源管理器中右键单击“Contoso.AADB2C.API”项目，选择“发布”。
 
 ## <a name="step-3-add-the-restful-services-app-id-and-app-secret-to-azure-ad-b2c"></a>步骤 3：将 RESTful 服务应用 ID 和应用机密添加到 Azure AD B2C
-RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭据存储在 Azure AD B2C 租户中。 自定义策略在调用 RESTful 服务时会提供凭据。 
+RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭据存储在 Azure AD B2C 租户中。 自定义策略在调用 RESTful 服务时会提供凭据。
 
 ### <a name="step-31-add-a-restful-services-client-id"></a>步骤 3.1：添加 RESTful 服务客户端 ID
 1. 在 Azure AD B2C 租户中，选择“B2C 设置” > “标识体验框架”。
@@ -239,7 +239,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 7. 对于“密钥用法”，请选择“签名”。
 
-8. 选择**创建**。
+8. 选择“创建”。
 
 9. 确认已创建 `B2C_1A_B2cRestClientId` 密钥。
 
@@ -259,7 +259,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 7. 对于“密钥用法”，请选择“签名”。
 
-8. 选择**创建**。
+8. 选择“创建”。
 
 9. 确认已创建 `B2C_1A_B2cRestClientSecret` 密钥。
 
@@ -275,7 +275,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
     <Item Key="AuthenticationType">Basic</Item>
     ```
 
-5. 紧靠在 `<Metadata>` 元素右括号的后面添加以下 XML 片段： 
+5. 紧靠在 `<Metadata>` 元素右括号的后面添加以下 XML 片段：
 
     ```xml
     <CryptographicKeys>

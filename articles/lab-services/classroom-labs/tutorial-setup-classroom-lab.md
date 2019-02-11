@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/14/2018
+ms.date: 01/16/2019
 ms.author: spelluru
-ms.openlocfilehash: babff55d6684feb1f0414970616260be96b994f4
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 3b425af972b0983db076ab103a33c57f7a127210
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706001"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095747"
 ---
-# <a name="tutorial-set-up-a-classroom-lab"></a>教程：设置课堂实验室 
+# <a name="tutorial-set-up-a-classroom-lab"></a>教程：设置教室实验室 
 在本教程中，请设置带虚拟机的课堂实验室，供学生在课堂上使用。  
 
 在本教程中，将执行以下操作：
@@ -32,7 +32,9 @@ ms.locfileid: "51706001"
 > * 将注册链接发送给学生
 
 ## <a name="prerequisites"></a>先决条件
-若要在实验室帐户中设置课堂实验室，你必须是实验室帐户中“实验室创建者”角色的成员。 用来创建实验室帐户的帐户会自动添加到此角色。 实验室所有者可以根据[将用户添加为“实验室创建者”角色](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)一文中的步骤将其他用户添加为“实验室创建者”角色。
+若要在实验室帐户中设置课堂实验室，你必须是实验室帐户中下述某个角色的成员：所有者、实验室创建者或参与者。 用来创建实验室帐户的帐户会自动添加到所有者角色。
+
+实验室所有者可以将其他用户添加到“实验室创建者”角色。 例如，实验室所有者可以将教授添加到“实验室创建者”角色。 然后，教授可以为其课堂创建带 VM 的实验室。 学生使用从教授处接收的注册链接注册到实验室。 注册以后，他们可以使用实验室中的 VM 完成课堂作业和家庭作业。 有关如何将用户添加为“实验室创建者”角色的详细步骤，请参阅[将用户添加为“实验室创建者”角色](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)。
 
 
 ## <a name="create-a-classroom-lab"></a>创建课堂实验室
@@ -93,7 +95,7 @@ ms.locfileid: "51706001"
 1. 实验室的**仪表板**随即显示。 
     
     ![课堂实验室仪表板](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
-4. 切换到“虚拟机”页，确认看到这些虚拟机处于“未分配”状态。 这些 VM 尚未分配给学生。 它们应该处于“已停止”状态。 可以在此页上启动学生 VM，连接到该 VM，停止该 VM，然后删除该 VM。 你可以在此页中启动这些 VM，也可以让你的学生启动它们。 
+4. 选择左侧菜单上的“虚拟机”或选择“虚拟机”磁贴，切换到“虚拟机”页。 确认看到这些虚拟机处于“未分配”状态。 这些 VM 尚未分配给学生。 它们应该处于“已停止”状态。 可以在此页上启动学生 VM，连接到该 VM，停止该 VM，然后删除该 VM。 你可以在此页中启动这些 VM，也可以让你的学生启动它们。 
 
     ![处于已停止状态的虚拟机](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
@@ -112,19 +114,12 @@ ms.locfileid: "51706001"
 ## <a name="send-registration-link-to-students"></a>将注册链接发送给学生
 
 1. 切换到“用户”视图（如果尚未转到该页）。 
-2. 选择“获取注册链接”磁贴。
+2. 在工具栏上选择“获取注册链接”。
+1. 在“用户注册”对话框中，选择“复制”按钮。 将链接复制到剪贴板。
 
-    ![学生注册链接](../media/tutorial-setup-classroom-lab/dashboard-user-registration-link.png)
-1. 在“用户注册”对话框中，选择“复制”按钮。 将链接复制到剪贴板。 
-
-    ![学生注册链接](../media/tutorial-setup-classroom-lab/registration-link.png)
-2. 在“用户注册”对话框中，选择“关闭”。 
-4. 与某个学生共享注册链接，使其能够注册课程。 如果已启用“限制选项”设置且列表中有一系列用户，请执行以下操作：
-    1. 在列表中选择用户的**电子邮件地址**。 
-    2. 此时会在默认电子邮件程序中看到一个窗口，其中填充了“收件人”地址。 
-    3. 粘贴此前复制的**注册 URL**。 
-    4. 发送该**电子邮件**。
-
+    ![注册链接](../media/tutorial-setup-classroom-lab/registration-link.png)
+1. 在“用户注册”对话框中，选择“关闭”。 
+2. 与某个学生共享注册链接，使其能够注册课程。
 
 ## <a name="next-steps"></a>后续步骤
 在本教程中，创建并配置了课堂实验室。 若要了解学生如何使用注册链接访问实验室中的 VM，请转到下一教程：

@@ -6,16 +6,17 @@ services: cognitive-services
 author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/14/2019
 ms.author: tulasim
-ms.openlocfilehash: 103da0c65bcf9b9bd24130082f844b9bd12a9a02
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.custom: seodec18
+ms.openlocfilehash: 1fa66c5fb5cdace556154816d1a1fa5a1811be68
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389711"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214596"
 ---
 # <a name="create-a-qna-maker-service"></a>创建 QnA Maker 服务
 
@@ -27,7 +28,7 @@ ms.locfileid: "49389711"
 
 2.  单击“添加新资源”，在搜索中键入“qna maker”，然后选择 QnA Maker 资源
 
-    ![新建 QnA Maker 服务](../media/qnamaker-how-to-setup-service/create-new-resource.png)
+    ![新建 QnA Maker 服务 - 添加新资源](../media/qnamaker-how-to-setup-service/create-new-resource.png)
 
 3.  阅读条款和条件后，单击“创建”。
 
@@ -35,7 +36,7 @@ ms.locfileid: "49389711"
 
 4. 在 **QnA Maker** 中，选择适当的层和区域。
 
-    ![新建 QnA Maker 服务](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
+    ![新建 QnA Maker 服务 - 定价层和区域](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
 
     * 使用唯一名称填写**名称**以标识此 QnA Maker 服务。 此名称还标识知识库将关联到的 QnA Maker 终结点。
     * 选择将部署 QnA Maker 资源的**订阅**。
@@ -57,7 +58,7 @@ ms.locfileid: "49389711"
 
 6.  部署完成后，你将看到订阅中创建的以下资源。
 
-    ![新建 QnA Maker 服务](../media/qnamaker-how-to-setup-service/resources-created.png)
+    ![新建 QnA Maker 服务资源](../media/qnamaker-how-to-setup-service/resources-created.png)
 
 ## <a name="next-steps"></a>后续步骤
 

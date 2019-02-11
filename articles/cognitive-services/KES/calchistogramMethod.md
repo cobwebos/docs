@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 0ca43d6f6879198b8f80794c1948439e15f312ad
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f994a254e661cd245d2e953efd3bd595d50c6fc7
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122750"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214307"
 ---
 # <a name="calchistogram-method"></a>calchistogram 方法
 calchistogram 方法可计算与结构化查询表达式匹配的对象，并计算其属性值的分布。
@@ -23,7 +23,7 @@ calchistogram 方法可计算与结构化查询表达式匹配的对象，并计
 ## <a name="request"></a>请求
 `http://<host>/calchistogram?expr=<expr>[&options]` 
 
-名称|值|Description
+Name|值|说明
 ----|-----|-----------
 expr | 文本字符串 | 指定用于计算直方图的索引实体的结构化查询表达式。
 attributes | 文本字符串（默认值为 ""） | 要包含在响应中的以逗号分隔的属性列表。
@@ -31,7 +31,7 @@ attributes | 文本字符串（默认值为 ""） | 要包含在响应中的以�
 offset  | 数字（默认值为 0） | 要返回的第一个结果的索引。
 
 ## <a name="response-json"></a>响应 (JSON)
-JSONPath | Description
+JSONPath | 说明
 ----|----
 $.expr | expr 参数来自请求。
 $.num_entities | 匹配实体的总数。

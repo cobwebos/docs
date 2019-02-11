@@ -8,20 +8,20 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
-ms.reviewer: carlrab
+ms.author: danil
+ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 04/04/2018
-ms.openlocfilehash: fb18507cc9b7aef92a07e6c34c99403e47be1c88
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.date: 12/19/2018
+ms.openlocfilehash: a2b4f85ac9c62c93e06f73090b6b144ff79319d1
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977091"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561869"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>使用 Intelligent Insights Azure SQL 数据库性能诊断日志
 
-本页提供有关如何使用 [Intelligent Insights](sql-database-intelligent-insights.md) 生成的 Azure SQL 数据库性能诊断日志、它的格式和它为满足自定义开发需求所包含的数据的信息。 可将此诊断日志发送到 [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md)、[Azure 事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)、[Azure 存储](sql-database-metrics-diag-logging.md#stream-into-storage)或第三方解决方案，以用于自定义 DevOps 警报和报告功能。
+本页提供有关如何使用 [Intelligent Insights](sql-database-intelligent-insights.md) 生成的 Azure SQL 数据库性能诊断日志、它的格式和它为满足自定义开发需求所包含的数据的信息。 可将此诊断日志发送到 [Azure Log Analytics](../azure-monitor/insights/azure-sql.md)、[Azure 事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)、[Azure 存储](sql-database-metrics-diag-logging.md#stream-into-storage)或第三方解决方案，以用于自定义 DevOps 警报和报告功能。
 
 ## <a name="log-header"></a>日志标头
 
@@ -102,7 +102,7 @@ Intelligent Insights 性能日志的下一部分包括通过内置人工智能�
 
 Intelligent Insights 日志的下一部分提供关于受检测到的性能问题影响的特定查询信息。 此信息公开为嵌入 impact_s 属性的一组对象。 影响属性包含实体和指标。 实体引用特定查询（类型：Query）。 唯一的查询哈希值在值 (Value) 属性下公开。 此外，每个公开的查询后跟指标和值，指示检测到的性能问题。
 
-在以下日志示例中，使用哈希 0x9102EXZ4 的 查询被检测到其执行持续时间延长（指标：DurationIncreaseSeconds）。 值 110 秒表示此特定查询的执行时间延长 110 秒。 因为可以检测到多个查询，所以此特定日志部分可能包含多个查询条目。
+在以下日志示例中，使用哈希 0x9102EXZ4 的查询被检测到其执行持续时间延长（指标：DurationIncreaseSeconds）。 值 110 秒表示此特定查询的执行时间延长 110 秒。 因为可以检测到多个查询，所以此特定日志部分可能包含多个查询条目。
 
 ```json
 "impact" : [{

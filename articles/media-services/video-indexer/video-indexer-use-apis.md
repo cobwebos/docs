@@ -1,5 +1,5 @@
 ---
-title: 使用视频索引器 API
+title: 使用视频索引器 API - Azure
 titlesuffix: Azure Media Services
 description: 本文介绍如何开始使用视频索引器 API。
 services: media-services
@@ -7,16 +7,16 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: d7af0d8961d5fa4d3f76b76a48ec613d954298ad
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: fcde97c76e11c6ecbdb22befcb1a8d1ce0437942
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291741"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299021"
 ---
-# <a name="use-the-video-indexer-api"></a>使用视频索引器 API
+# <a name="tutorial-use-the-video-indexer-api"></a>教程：使用视频索引器 API
 
 > [!Note]
 > 视频索引器 V1 API 已于 2018 年 8 月 1 日弃用。 从现在起，应该使用视频索引器 v2 API。 <br/>若要使用视频索引器 v2 API 进行开发，请参阅[此处](https://api-portal.videoindexer.ai/)的说明。 
@@ -82,7 +82,7 @@ ms.locfileid: "52291741"
 
 |**名称**|**参数值**|**说明**|
 |---|---|---|
-|试用|试用|表示试用帐户。|
+|试用|trail|表示试用帐户。|
 |美国西部|westus2|表示 Azure 美国西部 2 区域。|
 |北欧 |northeurope|表示 Azure 北欧区域。|
 |东亚|eastasia|表示 Azure 东亚区域。|

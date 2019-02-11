@@ -3,23 +3,23 @@ title: 使用 Azure 资源管理器模板创建服务总线授权规则 | Micros
 description: 使用 Azure 资源管理器模板为命名空间和队列创建服务总线授权规则
 services: service-bus-messaging
 documentationcenter: .net
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 7f1443a0-5fa8-4d90-8637-1a977ef0b1f0
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 09/11/2018
-ms.author: spelluru
-ms.openlocfilehash: 1250851386b9423b66bdbfd03292de56fd38850d
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 491c9f83767867daeef78138f52d815203b4290a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410096"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855833"
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板为命名空间和队列创建服务总线授权规则
 
@@ -148,6 +148,8 @@ ms.locfileid: "47410096"
         }
     ]
 ```
+
+有关 JSON 语法和属性，请参阅[命名空间](/azure/templates/microsoft.servicebus/namespaces)、[队列](/azure/templates/microsoft.servicebus/namespaces/queues)和 [AuthorizationRules](/azure/templates/microsoft.servicebus/namespaces/authorizationrules)。
 
 ## <a name="commands-to-run-deployment"></a>运行部署的命令
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]

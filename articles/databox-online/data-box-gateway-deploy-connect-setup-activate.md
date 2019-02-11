@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 2126871472b044f9b8c0df99c7cb14df348eab0e
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 887c1d554cd5bd2b935178a77a2de19e687ca3f2
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166740"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450398"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>教程：连接、设置、激活 Azure Data Box Gateway（预览版） 
 
@@ -84,14 +84,17 @@ ms.locfileid: "49166740"
     - 如果你的环境中启用了 DHCP，则会自动配置网络接口。 因此，系统会自动分配 IP 地址、子网、网关和 DNS。
     - 如果未启用 DHCP，则你可以根据需要分配静态 IP。
     - 可以将网络接口配置为 IPv4。
-   
+
+    >[!NOTE] 
+    > 建议不要将网络接口的本地 IP 地址从静态切换到 DHCP，除非有另一个 IP 地址连接到该设备。 如果使用一个网络接口并切换到 DHCP，则无法确定 DHCP 地址。 如果要更改为 DHCP 地址，请等待设备注册服务后再更改。 然后，可以在 Azure 门户中为你的服务查看“设备属性”中所有适配器的 IP。
+
 4. （可选）配置 Web 代理服务器。 尽管 Web 代理服务器配置是可选项，仍应注意，在使用 Web 代理时，只能在此处配置它。
    
    ![](./media/data-box-gateway-deploy-connect-setup-activate/image8.png)
    
    在“Web 代理”页中：
    
-   1. 以下述格式提供“Web 代理 URL”：*http://&lt;主机 IP 地址或 FDQN&gt;:端口号*。 请注意，不支持 HTTPS URL。
+   1. 以下述格式提供“Web 代理 URL”： http://&lt;主机 IP 地址或 FQDN&gt;:端口号。 请注意，不支持 HTTPS URL。
    2. 将“身份验证”指定为“基本”或“无”。
    3. 如果使用身份验证，则还需提供“用户名”和“密码”。
    4. 单击“应用”。 此时会验证并应用配置的 Web 代理设置。

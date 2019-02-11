@@ -3,19 +3,19 @@ title: 管理员管理用户和设备 - Azure MFA | Microsoft Docs
 description: 本文介绍如何更改用户设置，例如，强制用户再次完成验证过程。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: cf470ad14c27fd36cf60bb540e823b15fc58eded
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 620a36b8b39b826a289567a133c78bae8b7e77b8
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496899"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075034"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>管理云中 Azure 多重身份验证的用户设置
 
@@ -30,8 +30,8 @@ ms.locfileid: "52496899"
 
 ### <a name="how-to-require-users-to-provide-contact-methods-again"></a>如何要求用户再次提供联系方法
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧，选择“Azure Active Directory” > “用户和组” > “所有用户”。
-3. 选择“多重身份验证”。 多重身份验证页面将打开。 
+2. 在左侧，选择“Azure Active Directory” > “用户” > “所有用户”。
+3. 在右侧，选择工具栏上的“多重身份验证”。 多重身份验证页面将打开。 
 4. 选中要管理的用户或用户旁的框。 右侧将显示快速步骤选项列表。 
 5. 选择“管理用户设置”。
 6. 选中“要求选定用户重新提供的联系方式”框。
@@ -44,8 +44,8 @@ ms.locfileid: "52496899"
 
 ### <a name="how-to-delete-users-existing-app-passwords"></a>如何删除用户现有的应用密码
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧，选择“Azure Active Directory” > “用户和组” > “所有用户”。
-3. 选择“多重身份验证”。 多重身份验证页面将打开。 
+2. 在左侧，选择“Azure Active Directory” > “用户” > “所有用户”。
+3. 在右侧，选择工具栏上的“多重身份验证”。 多重身份验证页面将打开。 
 6. 选中要管理的用户或用户旁的框。 右侧将显示快速步骤选项列表。 
 7. 选择“管理用户设置”。
 8. 选中“删除选定用户生产的所有现有应用密码”框。
@@ -62,8 +62,8 @@ Azure 多重身份验证的可配置功能之一是为用户提供将设备标�
 
 ### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>如何还原用户所有已暂停设备上的 MFA
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧，选择“Azure Active Directory” > “用户和组” > “所有用户”。
-3. 选择“多重身份验证”。 多重身份验证页面将打开。 
+2. 在左侧，选择“Azure Active Directory” > “用户” > “所有用户”。
+3. 在右侧，选择工具栏上的“多重身份验证”。 多重身份验证页面将打开。 
 6. 选中要管理的用户或用户旁的框。 右侧将显示快速步骤选项列表。 
 7. 选择“管理用户设置”。
 8. 选中“还原所有已记住设置的多重身份验证”框

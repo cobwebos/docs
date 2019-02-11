@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: conceptual
-ms.date: 04/05/2018
+ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: dda3794826e1095d3392a84d3df68b22c0041934
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 3962fb93331cf9a74d9b5aca4622d6ff968f478b
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886008"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566098"
 ---
 # <a name="how-to-get-analytics-for-bing-videos-search-api"></a>如何获取适用于必应视频搜索 API 的分析
 

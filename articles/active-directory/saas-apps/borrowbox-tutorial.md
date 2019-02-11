@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 BorrowBox 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 BorrowBox 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 BorrowBox 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: dd8e4178-9a63-492a-bd48-782e94e404af
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a8ed2f04bf3004907cdd6e33bfb30260233fb101
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: efb905364e5ae4736b058472e66b3a8850a99fe3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157150"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167813"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>教程：Azure Active Directory 与 BorrowBox 的集成
+# <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>教程：Azure Active Directory 与 BorrowBox 集成
 
 在本教程中，了解如何将 BorrowBox 与 Azure Active Directory (Azure AD) 集成。
 
@@ -112,7 +112,7 @@ ms.locfileid: "50157150"
 
     ![图像](./media/borrowbox-tutorial/tutorial_borrowbox_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“设置其他 URL”。
+    a. 单击“设置其他 URL”。
 
     b. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://fe.bolindadigital.com/wldcs_bol_fo/b2i/mainPage.html?b2bSite=<ID>`。
 
@@ -127,7 +127,7 @@ ms.locfileid: "50157150"
 
 6. 在“用户属性和声明”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“编辑”图标，以打开“管理用户声明”对话框。
+    a. 单击“编辑”图标，以打开“管理用户声明”对话框。
 
     ![图像](./media/borrowbox-tutorial/i2-attribute.png)
 
@@ -159,7 +159,7 @@ ms.locfileid: "50157150"
 
     ![图像](./common/d_userproperties.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com

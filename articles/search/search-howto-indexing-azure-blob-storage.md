@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 搜索为 Azure Blob 存储编制索引
-description: 了解如何使用 Azure 搜索为 Azure Blob 存储编制索引，以及从文档中提取文本
+title: 为 Azure Blob 存储内容编制索引，以便进行全文搜索 - Azure 搜索
+description: 了解如何使用 Azure 搜索为 Azure Blob 存储编制索引，以及从文档中提取文本。
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: d2706d4b10303cb62066f0381f9a69b553c05cb4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec2018
+ms.openlocfilehash: 2a282b76805ab91215d6b34ea30a7008d8c8244b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406955"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467959"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>使用 Azure 搜索为 Azure Blob 存储中的文档编制索引
 本文说明如何使用 Azure 搜索服务为存储在 Azure Blob 存储中的文档（例如 PDF、Microsoft Office 文档和其他多种常用格式的文档）编制索引。 首先，本文说明了设置和配置 Blob 索引器的基础知识。 其次，本文更加深入地探讨了你可能会遇到的行为和场景。
@@ -33,7 +34,6 @@ Blob 索引器可从以下文档格式提取文本：
 
 > [!NOTE]
 > 某些功能（例如字段映射）在门户中尚不可用，必须以编程方式使用。
->
 >
 
 在这里，我们使用 REST API 演示流。
@@ -69,8 +69,8 @@ Blob 索引器可从以下文档格式提取文本：
 可通过以下一种方式提供 blob 容器的凭据：
 
 - **完全访问存储帐户连接字符串**：`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`。 可通过导航到“存储帐户”边栏选项卡 >“设置”>“密钥”（对于经典存储帐户）或“设置”>“访问密钥”（对于 Azure 资源管理器存储帐户），从 Azure 门户获取连接字符串。
-- **存储帐户共享访问签名** (SAS) 连接字符串：`BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`SAS 应当对容器和对象（在本例中为 blob）具有列出和读取权限。
--  **容器共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`SAS 应当对容器具有列出和读取权限。
+- **存储帐户共享访问签名** (SAS) 连接字符串：`BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` SAS 应具有容器和对象（本例中为 blob）的列表和读取权限。
+-  **容器共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` SAS 应具有容器的列表和读取权限。
 
 有关存储共享访问签名的详细信息，请参阅[使用共享访问签名](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 
@@ -128,7 +128,7 @@ Blob 索引器可从以下文档格式提取文本：
 * 文档的文本内容将提取到名为 `content` 的字符串字段中。
 
 > [!NOTE]
-> Azure 搜索根据定价层限制其提取的文本数：免费层 32,000 个字符，基本层 64,000 个字符，标准层、标准 S2 层和标准 S3 层 400 万个字符。 已截断的文本会在索引器状态响应中出现一条警告。  
+> Azure 搜索会根据定价层限制提取的文本数量：免费层为 32,000 个字符，基本层为 64,000 个字符，标准层、标准 S2 层和标准 S3 层为 400 万个字符。 已截断的文本会在索引器状态响应中出现一条警告。  
 
 * Blob 中用户指定的元数据属性（如果有）将逐字提取。
 * 标准 Blob 元数据属性将提取到以下字段中：
@@ -333,7 +333,7 @@ Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob �
 
 你可能希望从索引中的多个源“组装”文档。 例如，你可能希望将 blob 中的文本与 Cosmos DB 中存储的其他元数据进行合并。 甚至可以将推送索引 API 与各种索引器一起使用来基于多个部件搭建搜索文档。 
 
-若要使此方式可行，所有索引器和其他组件需要针对文档键达成一致。 有关详细演练，请参阅外部文章：[Combine documents with other data in Azure Search](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)（在 Azure 搜索中组合使用文档与其他数据）。
+若要使此方式可行，所有索引器和其他组件需要针对文档键达成一致。 有关详细演练，请参阅外部文章：[将文档与 Azure 搜索中的其他数据结合在一起](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)。
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>为纯文本编制索引 

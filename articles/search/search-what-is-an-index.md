@@ -1,6 +1,6 @@
 ---
-title: Azure 搜索中的索引 | Microsoft Docs
-description: 了解 Azure 搜索中的索引概念以及如何使用索引。
+title: 索引定义和概念 - Azure 搜索
+description: 介绍 Azure 搜索中的索引术语和概念，包括逆选索引的物理结构。
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -8,31 +8,25 @@ services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 11/08/2017
-ms.openlocfilehash: cc2c56d4463203aa2561e820540acdfff651d80a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 5a39021367c2f51125876081e9174eb372d7b9c9
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31793396"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353152"
 ---
-# <a name="indexes-in-azure-search"></a>Azure 搜索中的索引
-> [!div class="op_single_selector"]
-> * [概述](search-what-is-an-index.md)
-> * [门户](search-create-index-portal.md)
-> * [.NET](search-create-index-dotnet.md)
-> * [REST](search-create-index-rest-api.md)
-> 
-> 
+# <a name="indexes-and-indexing-overview-in-azure-search"></a>Azure 搜索中的索引和编制索引概述
 
-在 Azure 搜索中，索引是 Azure 搜索服务使用的文档及其他结构的永久存储。 文档是索引中的一个可搜索数据单元。 例如，电子商务零售商可能有所销售每件商品的文档，新闻机构可能有每篇报道的文档。 将这些概念对应到更为熟悉的数据库等效对象：*索引*在概念上类似于*表*，*文档*大致相当于表中的*行*。
+在 Azure 搜索中，*索引*是用于在 Azure 搜索服务上进行筛选和全文搜索的*文档*和其他构造的持久存储。 文档是索引中的一个可搜索数据单元。 例如，电子商务零售商可能有所销售每件商品的文档，新闻机构可能有每篇报道的文档。 将这些概念对应到更为熟悉的数据库等效对象：*索引*在概念上类似于*表*，*文档*大致相当于表中的*行*。
 
-在 Azure 搜索中添加/上传文档以及提交搜索查询时，提交的是搜索服务中特定索引的请求。
+在 Azure 搜索中添加或上传文档或者提交搜索查询时，你将向搜索服务中的特定索引发送请求。 将文档添加到索引的过程称为“编制索引”。
 
 ## <a name="field-types-and-attributes-in-an-azure-search-index"></a>Azure 搜索索引中的字段类型和属性
 定义架构时，必须在索引中指定每个字段的名称、类型和属性。 字段类型的作用是对该字段中存储的数据进行分类。 对各个字段设置属性的目的是指定字段的使用方式。 下表枚举了可以指定的类型和属性。
 
 ### <a name="field-types"></a>字段类型
-| Type | 说明 |
+| 类型 | Description |
 | --- | --- |
 | *Edm.String* |全文搜索可以选择性地标记化（断词、词干提取等）的文本。 |
 | *Collection(Edm.String)* |全文搜索可以选择性标记化的字符串列表。 理论上，集合中的项目数没有上限，但集合的有效负载大小上限为 16 MB。 |
@@ -46,7 +40,7 @@ ms.locfileid: "31793396"
 若要深入了解 Azure 搜索支持的数据类型，请参阅[此处](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)。
 
 ### <a name="field-attributes"></a>字段属性
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | *Key* |为每个文档提供唯一 ID 用于查找文档的字符串。 每个索引必须有一个 key。 只有一个字段可以是 key，并且此字段类型必须设置为 Edm.String。 |
 | *Retrievable* |指定是否可以在搜索结果中返回字段。 |

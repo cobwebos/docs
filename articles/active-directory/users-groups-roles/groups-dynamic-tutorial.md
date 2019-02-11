@@ -1,6 +1,6 @@
 ---
-title: 教程：使用动态组成员身份在 Azure Active Directory 中自动添加或删除用户
-description: 本教程介绍如何将组与用户成员身份规则配合使用，以便自动添加或删除用户
+title: 使用动态组成员身份添加或删除用户 - 教程 - Azure Active Directory
+description: 本教程介绍了如何将组与用户成员身份规则配合使用，以便自动添加或删除用户
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: tutorial
-ms.date: 08/07/2018
+ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: krbain
-ms.custom: it-pro
-ms.openlocfilehash: 2119bb60cbdc36f62623ce0db52885e17f3d3006
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.custom: it-pro;seo-update-azuread-jan
+ms.openlocfilehash: bf625b45fa47d4fa681521eb992bd2b07cc08946
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "40209137"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296239"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>教程：自动添加或删除组成员
 
@@ -77,7 +77,7 @@ ms.locfileid: "40209137"
 **删除来宾用户组**
 
 1. 使用一个其身份为租户全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“Azure Active Directory” > “组”。 依次选择“来宾用户 Contoso”组、省略号 (...)、“删除”。 删除组时，会删除任何分配的许可证。
+2. 选择“Azure Active Directory” > “组”。 依次选择“来宾用户 Contoso”组、省略号 (...)、“删除”。 删除组时，会删除任何已分配的许可证。
 
 **还原“所有用户”组**
 1. 选择“Azure Active Directory” > “组”。 选择“所有用户”组的名称，以便打开该组。

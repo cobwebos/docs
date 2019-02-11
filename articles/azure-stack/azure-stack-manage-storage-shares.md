@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 01/22/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 00fa1a78155e1add547b8b165f52cf3c1fba2dfe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: 97cdae49b4676500e29ac25b12712c94e575e5f8
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249891"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960558"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>管理 Azure Stack 的存储容量 
 
@@ -50,7 +51,7 @@ ms.locfileid: "51249891"
 
 卷上的共享保存租户数据。 租户数据包括页 Blob、块 Blob、追加 Blob、表、队列、数据库和相关的元数据存储。 由于存储对象（Blob 等）各自包含在单个共享中，因此每个对象的大小上限不能超过共享大小。 新对象的大小上限取决于创建新对象时共享中仍未使用的空间容量。
 
-当共享上的可用空间不足且[回收](#reclaim-capacity)空间的操作不成功或不可用时，Azure Stack 云操作员可以在共享之间[迁移](#migrate-a-container-between) Blob 容器。
+共享较低时的可用空间和操作[回收](#reclaim-capacity)空间不成功或不可用，Azure Stack 云操作员可以迁移 blob 容器从一个共享到另一个。
 
 - 有关容器和 Blob 的详细信息，请参阅“Azure Stack 中的重要功能和概念”中的 [Blob 存储](azure-stack-key-features.md#blob-storage)。
 - 有关租户用户如何使用 Azure Stack 中的 Blob 存储的详细信息，请参阅 [Azure Stack 存储服务](/azure/azure-stack/user/azure-stack-storage-overview#azure-stack-storage-services)。
@@ -79,7 +80,7 @@ VM 磁盘包括操作系统磁盘，由租户添加到容器。 VM 还可能包�
 
 ### <a name="use-powershell"></a>使用 PowerShell
 云操作员可以使用 PowerShell **Get-AzsStorageShare** cmdlet 来监视共享的存储容量。 Get-AzsStorageShare cmdlet 返回每个共享中总计、已分配和可用的空间（以字节为单位）。   
-![示例：返回共享的可用空间](media/azure-stack-manage-storage-shares/free-space.png)
+示例：![返回共享的可用空间](media/azure-stack-manage-storage-shares/free-space.png)
 
 - “容量总计”是共享中可用的总空间（以字节为单位）。 此空间用于存储服务维护的数据和元数据。
 - “已用容量”是存储租户数据和相关元数据的文件中所有盘区使用的数据量（以字节为单位）。
@@ -87,10 +88,10 @@ VM 磁盘包括操作系统磁盘，由租户添加到容器。 VM 还可能包�
 ### <a name="use-the-administrator-portal"></a>使用管理员门户
 云操作员可以使用管理员门户来查看所有共享的存储容量。
 
-1. 登录到[管理门户](https://adminportal.local.azurestack.external)。
-2. 选择**所有服务** > **存储**，打开您可以在其中查看使用情况信息的文件共享列表。 
+1. 登录到[管理员门户](https://adminportal.local.azurestack.external)。
+2. 选择“所有服务” > “存储”以打开文件共享列表，可以在其中查看使用情况信息。 
 
-  ![示例： 存储文件共享](media/azure-stack-manage-storage-shares/storage-file-shares.png)
+    ![示例：存储文件共享](media/azure-stack-manage-storage-shares/storage-file-shares.png)
 
   - “总计”是共享中可用的总空间（以字节为单位）。 此空间用于存储服务维护的数据和元数据。
   - “已用”是存储租户数据和相关元数据的文件中所有盘区使用的数据量（以字节为单位）。
@@ -101,12 +102,12 @@ VM 磁盘包括操作系统磁盘，由租户添加到容器。 VM 还可能包�
 > [!IMPORTANT]
 > 云操作员可以避免共享达到用完状态。 当共享利用率达到 100% 时，不再能够针对该共享运行存储服务。 若要在共享利用率达到 100% 时恢复可用空间和执行还原操作，必须联系 Microsoft 支持部门。
 
-**警告**：当文件共享利用率超过 80% 时，管理员门户中会显示“警告”警报：![示例：警告警报](media/azure-stack-manage-storage-shares/alert-warning.png)
+警告：当超过利用率的 80%时的文件共享时，您收到*警告*警报在管理门户中：![示例：警告性警报](media/azure-stack-manage-storage-shares/alert-warning.png)
 
 
-**严重**：当文件共享利用率超过 90% 时，管理员门户中会显示“严重”警报：![示例：严重警报](media/azure-stack-manage-storage-shares/alert-critical.png)
+**严重**：当超过利用率的 90%时的文件共享时，您收到*严重*警报在管理门户中：![示例：严重警报](media/azure-stack-manage-storage-shares/alert-critical.png)
 
-**查看详细信息**：在管理员门户中，可以打开警报详细信息来查看缓解选项：![示例：查看警报详细信息](media/azure-stack-manage-storage-shares/alert-details.png)
+**查看详细信息**:在管理门户中可以打开警报以查看缓解选项的详细信息：![示例：查看警报详细信息](media/azure-stack-manage-storage-shares/alert-details.png)
 
 
 ## <a name="manage-available-space"></a>管理可用空间
@@ -141,66 +142,66 @@ VM 磁盘包括操作系统磁盘，由租户添加到容器。 VM 还可能包�
 1. 确认已[安装并配置 Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。 有关详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](https://go.microsoft.com/fwlink/?LinkId=394767)。
 2.  检查容器，了解要迁移的共享中包含哪种数据。 若要识别卷中可迁移的最佳候选容器，请使用 **Get-AzsStorageContainer** cmdlet：
 
-    ````PowerShell  
+    ```PowerShell  
     $farm_name = (Get-AzsStorageFarm)[0].name
     $shares = Get-AzsStorageShare -FarmName $farm_name
     $containers = Get-AzsStorageContainer -ShareName $shares[0].ShareName -FarmName $farm_name
-    ````
+    ```
     然后检查 $containers：
 
-    ````PowerShell
+    ```PowerShell
     $containers
-    ````
+    ```
 
     ![示例：$Containers](media/azure-stack-manage-storage-shares/containers.png)
 
 3.  识别用于保存要迁移的容器的最佳目标共享：
 
-    ````PowerShell
+    ```PowerShell
     $destinationshares = Get-AzsStorageShare -SourceShareName
     $shares[0].ShareName -Intent ContainerMigration
-    ````
+    ```
 
     然后检查 $destinationshares：
 
-    ````PowerShell 
+    ```PowerShell 
     $destinationshares
-    ````
+    ```
 
     ![示例：$destination shares](media/azure-stack-manage-storage-shares/examine-destinationshares.png)
 
 4. 开始迁移容器。 迁移是异步操作。 如果在首次迁移完成之前开始迁移其他容器，请使用作业 ID 来跟踪每个容器的状态。
 
-  ````PowerShell
+  ```PowerShell
   $job_id = Start-AzsStorageContainerMigration -StorageAccountName $containers[0].Accountname -ContainerName $containers[0].Containername -ShareName $containers[0].Sharename -DestinationShareUncPath $destinationshares[0].UncPath -FarmName $farm_name
-  ````
+  ```
 
   然后检查 $jobId。 在以下示例中，请将 *d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0* 替换为要检查的作业 ID：
 
-  ````PowerShell
+  ```PowerShell
   $jobId
   d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0
-  ````
+  ```
 
 5. 使用作业 ID 检查迁移作业的状态。 容器迁移完成后，**MigrationStatus** 会设置为 **Complete**。
 
-  ````PowerShell 
+  ```PowerShell 
   Get-AzsStorageContainerMigrationStatus -JobId $job_id -FarmName $farm_name
-  ````
+  ```
 
   ![示例：迁移状态](media/azure-stack-manage-storage-shares/migration-status1.png)
 
 6.  可以取消正在进行的迁移作业。 系统会以异步方式处理已取消的迁移作业。 可以使用 $jobid 跟踪取消操作：
 
-  ````PowerShell
+  ```PowerShell
   Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
-  ````
+  ```
 
   ![示例：回滚状态](media/azure-stack-manage-storage-shares/rollback.png)
 
 7. 可以再次运行步骤 6 中的命令，直到系统确认迁移作业的状态为 **Canceled**：  
 
-    ![示例：“已取消”状态](media/azure-stack-manage-storage-shares/cancelled.png)
+    ![示例：已取消的状态](media/azure-stack-manage-storage-shares/cancelled.png)
 
 ### <a name="move-vm-disks"></a>移动 VM 磁盘
 *此选项仅适用于多节点部署。*

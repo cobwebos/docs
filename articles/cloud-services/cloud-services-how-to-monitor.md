@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: jeconnoc
-ms.openlocfilehash: e9fbe59c40fe55218429a3b479ddbbec7220c66a
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 844fef9a87c1db06c6415c59d4be26caf928382b
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42139826"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789460"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>云服务监视简介
 
-可以监视任何云服务的关键性能指标。 每个云服务角色收集极少量的数据：CPU 使用率、网络使用率和磁盘利用率。 如果云服务已将 `Microsoft.Azure.Diagnostics` 扩展应用到某个角色，则该角色可以收集其他数据点。 本文介绍适用于云服务的 Azure 诊断。
+可以监视任何云服务的关键性能指标。 每个云服务角色都会收集最少的数据：CPU 使用率、网络使用量和磁盘利用率。 如果云服务已将 `Microsoft.Azure.Diagnostics` 扩展应用到某个角色，则该角色可以收集其他数据点。 本文介绍适用于云服务的 Azure 诊断。
 
 使用基本监视时，默认情况下，将每隔 3 分钟从角色实例中采样和收集性能计数器数据。 此基本监视数据不会存储在存储帐户中，并且不会产生相关的额外费用。
 
@@ -93,13 +93,13 @@ ms.locfileid: "42139826"
 
 ## <a name="use-application-insights"></a>使用 Application Insights
 
-从 Visual Studio 发布云服务时，可以选择将诊断数据发送到 Application Insights。 可以在那时创建 Application Insights Azure 资源，或者将数据发送到现有 Azure 资源。 Application Insights 可以监视云服务的可用性、性能、故障和使用情况。 可将自定义图表添加到 Application Insights，以便查看最重要的数据。 在云服务项目中使用 Application Insights SDK 可以收集角色实例数据。 有关如何集成 Application Insights 的详细信息，请参阅[包含云服务的 Application Insights](../application-insights/app-insights-cloudservices.md)。
+从 Visual Studio 发布云服务时，可以选择将诊断数据发送到 Application Insights。 可以在那时创建 Application Insights Azure 资源，或者将数据发送到现有 Azure 资源。 Application Insights 可以监视云服务的可用性、性能、故障和使用情况。 可将自定义图表添加到 Application Insights，以便查看最重要的数据。 在云服务项目中使用 Application Insights SDK 可以收集角色实例数据。 有关如何集成 Application Insights 的详细信息，请参阅[包含云服务的 Application Insights](../azure-monitor/app/cloudservices.md)。
 
 请注意，尽管可以使用 Application Insights 来显示通过 Windows Azure 诊断扩展指定的性能计数器（和其他设置），但是只有将 Application Insights SDK 集成到辅助角色和 Web 角色，才能获得更丰富的体验。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [了解包含云服务的 Application Insights](../application-insights/app-insights-cloudservices.md)
+- [了解包含云服务的 Application Insights](../azure-monitor/app/cloudservices.md)
 - [设置性能计数器](diagnostics-performance-counters.md)
 

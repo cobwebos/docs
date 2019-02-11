@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 1bc93b083b0f6f0d813f209c9371ce38e8a9daa6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 7b5f4db51fca97f79f2b43bfcd5ce8dead3ba50b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228804"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470342"
 ---
 # <a name="using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS)
 
@@ -108,7 +108,7 @@ SAS 令牌是在客户端侧生成的字符串（请参阅 [SAS 示例](#sas-exa
 https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
 ```
 
-| 名称 | SAS 部分 | Description |
+| Name | SAS 部分 | 说明 |
 | --- | --- | --- |
 | Blob URI |`https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt` |Blob 的地址。 请注意，强烈建议使用 HTTPS。 |
 | 存储服务版本 |`sv=2015-04-05` |对于存储服务版本 2012-02-12 和更高版本，此参数指示要使用的版本。 |
@@ -128,7 +128,7 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&s
 https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015-04-05&ss=bf&srt=s&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B
 ```
 
-| 名称 | SAS 部分 | Description |
+| Name | SAS 部分 | 说明 |
 | --- | --- | --- |
 | 资源 URI |`https://myaccount.blob.core.windows.net/?restype=service&comp=properties` |Blob 服务终结点，包含用于获取服务属性（使用 GET 调用时）或设置服务属性（使用 SET 调用时）的参数。 |
 | 服务 |`ss=bf` |该 SAS 适用于 Blob 和文件服务 |
@@ -140,7 +140,7 @@ https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015
 ## <a name="controlling-a-sas-with-a-stored-access-policy"></a>使用存储访问策略控制 SAS
 共享访问签名可以采取以下两种形式的一种：
 
-* **临时 SAS：** 在创建临时 SAS 时，针对该 SAS 的开始时间、到期时间和权限都在 SAS URI 中指定（在省略开始时间的情况下，也可以是暗示的）。 这种类型的 SAS 可以创建为帐户 SAS 或服务 SAS。
+* **临时 SAS：** 在创建临时 SAS 时，针对该 SAS 的开始时间、到期时间和权限都在 SAS URI 中指定（在省略开始时间的情况下，也可以是隐式的）。 这种类型的 SAS 可以创建为帐户 SAS 或服务 SAS。
 * **具有存储访问策略的 SAS：** 存储访问策略是对资源容器（Blob 容器、表、队列或文件共享）定义的，可用于管理针对一个或多个共享访问签名的约束。 在将某一 SAS 与一个存储访问策略相关联时，该 SAS 将继承对该存储访问策略定义的约束：开始时间、到期时间和权限。
 
 > [!NOTE]
@@ -421,7 +421,7 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 共享访问签名用于将存储帐户的受限权限提供给不应具有帐户密钥的客户端。 因此，它们是安全模型的重要环节，适合使用 Azure 存储的任何应用程序。 如果按照本文中介绍的最佳实践执行，则可以使用 SAS 更灵活地访问存储帐户中的资源，且不会影响应用程序的安全性。
 
 ## <a name="next-steps"></a>后续步骤
-* [共享访问签名，第 2 部分：创建 SAS 并将 SAS 用于 Blob 存储](../blobs/storage-dotnet-shared-access-signature-part-2.md)
+* [共享访问签名，第 2 部分：创建 SAS 并将其用于 Blob 存储](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 * [管理对容器和 blob 的匿名读取访问](../blobs/storage-manage-access-to-resources.md)
 * [Delegating Access with a Shared Access Signature](https://msdn.microsoft.com/library/azure/ee395415.aspx)（使用共享访问签名委托访问）
 * [介绍表和队列 SAS](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)

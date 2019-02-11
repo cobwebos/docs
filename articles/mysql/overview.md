@@ -1,20 +1,18 @@
 ---
 title: Azure Database for MySQL 关系数据库服务概述
 description: 用于 MySQL 关系数据库服务的 Azure 数据库的概述。
-services: mysql
 ms.service: mysql
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
 ms.custom: mvc
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/14/2018
-ms.openlocfilehash: 4d0d78b978f6454170b52a95f538f143b9f24505
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 99039c4d6abb8a839886e9d623e92c9fb2c41787
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684786"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353322"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>什么是用于 MySQL 的 Azure 数据库？
 Azure Database for MySQL 是 Microsoft 云中基于 [MySQL 社区版](https://www.mysql.com/products/community/)数据库引擎版本 5.6 和 5.7 的一种关系数据库服务。 用于 MySQL 的 Azure 数据库提供以下功能：
@@ -49,7 +47,7 @@ Azure 行业领先的 99.99% 可用性服务级别协议 (SLA)（由 Microsoft �
 ## <a name="secure-your-data"></a>保护数据
 Azure 数据库沿袭了 Azure Database for MySQL 的若干数据安全性功能，包括限制访问、保护静止和移动数据，以及帮助监视活动等。 有关 Azure 平台安全性的信息，请访问 [Azure 信任中心](https://www.microsoft.com/en-us/trustcenter/security)。
 
-用于 MySQL 的 Azure 数据库服务为静态数据使用存储加密。 包括备份在内的数据都在磁盘中加密（运行查询时由引擎创建的临时文件除外）。 该服务使用包含在 Azure 存储加密中的 AES 256 位密码，并且密钥由系统进行管理。 存储加密始终可用，并且不能禁用。
+Azure Database for MySQL 服务对静态数据使用存储加密，并且符合 FIPS 140-2 标准。 包括备份在内的数据都在磁盘中加密（运行查询时由引擎创建的临时文件除外）。 该服务使用包含在 Azure 存储加密中的 AES 256 位密码，并且密钥由系统进行管理。 存储加密始终可用，并且不能禁用。
 
 默认情况下，将用于 MySQL 的 Azure 数据库服务配置为要求网络中传输的数据具备 [SSL 连接安全性](./concepts-ssl-connection-security.md)。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。 （可选）如果客户端应用程序不支持 SSL 连接，则可以禁止要求 SSL 连接到数据库服务。
 
@@ -65,4 +63,4 @@ Azure 数据库沿袭了 Azure Database for MySQL 的若干数据安全性功能
 现在，已阅读了用于 MySQL 的 Azure 数据库的简介并回答了“什么是用于 MySQL 的 Azure 数据库？”这个问题，因此可以继续完成以下内容：
 - 有关成本比较和计算器，请参阅定价页。 [定价](https://azure.microsoft.com/pricing/details/mysql/)
 - 从创建第一个服务器开始。 [使用 Azure 门户创建用于 MySQL 服务器的 Azure 数据库](quickstart-create-mysql-server-database-using-azure-portal.md)
-- 使用首选语言生成首个 应用：[Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [Go](./connect-go.md)
+- 使用首选语言生成首个应用：[Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [Go](./connect-go.md)

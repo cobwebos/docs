@@ -6,24 +6,24 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: scottwhi
-ms.openlocfilehash: 40b9685c56dd494e82c05bff9ed75f425a3006ff
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: d3619521644a9d0d3f44715a92cfef178cda73c9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886621"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158717"
 ---
 # <a name="examples-of-bing-insights-usage"></a>必应见解用法示例
 
-本部分包含必应如何在 Bing.com 上显示见解的示例。
+本文包含有关必应可能如何使用以及如何在 Bing.com 上显示图像见解的示例。
 
 ## <a name="pagesincluding-insight-example"></a>PagesIncluding 见解示例
 
-以下介绍了必应如何显示包含图像的网页。 本示例显示指向第一个网页的链接，并使用户可以展开和折叠包含图像的其他网页列表。
+下面显示指向第一个网页的链接，并允许用户展开和折叠包含图像的其他网页列表。
 
 ![包含扩展页面](./media/pages-including.PNG)
 
@@ -83,9 +83,7 @@ ms.locfileid: "48886621"
 
 ## <a name="next-steps"></a>后续步骤
 
-要了解这些示例背后的 JSON，请参阅[默认见解](default-insights-tag.md)和 [JSON 响应](overview.md#the-response)。
-
-要快速了解如何使用第一个请求，请参阅快速入门：[C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
+若要快速了解如何使用第一个请求，请参阅快速入门：[C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
 
 
 

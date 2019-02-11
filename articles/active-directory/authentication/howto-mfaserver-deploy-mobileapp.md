@@ -3,19 +3,19 @@ title: Azure MFA 服务器移动应用 Web 服务 | Microsoft Docs
 description: 将 MFA 服务器配置为使用 Microsoft Authenticator 应用向用户发送推送通知。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: d31cf6569f642d2c7b61abe25148f5cfb199f0a2
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 6d14d74e78f99e4969f53521b9a9248ffcd25306
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159434"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077586"
 ---
 # <a name="enable-mobile-app-authentication-with-azure-multi-factor-authentication-server"></a>使用 Azure 多重身份验证服务器启用移动应用身份验证
 

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: b842a80762989c34ae278a397cc49c088ff77fb2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 00e226134039d29efd744290c4bc63abd50adc89
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525512"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697826"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Azure 导入/导出服务日志文件格式
 当 Microsoft Azure 导入/导出服务在执行导入作业或导出作业的过程中针对驱动器执行某个操作时，会将日志写入到与该作业关联的存储帐户中的块 Blob 中。  
@@ -22,7 +22,7 @@ ms.locfileid: "39525512"
   
 -   发生错误时始终生成错误日志。  
   
--   详细日志默认未启用，但可通过对[放置作业](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)或[更新作业属性](/rest/api/storageimportexport/jobs#Jobs_Update)操作设置 `EnableVerboseLog` 属性来启用该日志。  
+-   详细日志默认未启用，但可通过对[放置作业](/rest/api/storageimportexport/jobs)或[更新作业属性](/rest/api/storageimportexport/jobs)操作设置 `EnableVerboseLog` 属性来启用该日志。  
   
 ## <a name="log-file-location"></a>日志文件位置  
 日志将写入到 `ImportExportStatesPath` 设置（可在“`Put Job`”操作中设置）指定的容器或虚拟目录中的块 Blob。 日志写入到的位置取决于为该作业指定身份验证的方式，以及为 `ImportExportStatesPath` 指定的值。 可通过存储帐户密钥或容器 SAS（共享访问签名）为作业指定身份验证。  
@@ -38,7 +38,7 @@ ms.locfileid: "39525512"
 |容器 SAS|默认值|名为 `waimportexport` 的虚拟目录，这是默认名称，位于 SAS 中指定的容器下方。<br /><br /> 例如，如果为作业指定的 SAS 是 `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`，则日志位置应为 `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport`|  
 |容器 SAS|用户指定的值|由用户命名的虚拟目录，位于 SAS 中指定的容器下方。<br /><br /> 例如，如果为作业指定的 SAS 是 `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`，指定的虚拟目录名为 `mylogblobs`，则日志位置应为 `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport/mylogblobs`。|  
   
-可以通过调用[获取作业](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)操作来检索错误日志和详细日志的 URL。 处理完驱动器后，将提供日志。  
+可以通过调用[获取作业](/rest/api/storageimportexport/jobs)操作来检索错误日志和详细日志的 URL。 处理完驱动器后，将提供日志。  
   
 ## <a name="log-file-format"></a>日志文件格式  
 这两种日志的格式相同：它是一个 Blob，包含在硬盘驱动器与客户帐户之间复制 Blob 时发生的事件的 XML 说明。  
@@ -74,7 +74,7 @@ page-range-list ::=
 <PageRangeList>  
       [<PageRange Offset="page-range-offset" Length="page-range-length"   
        [Hash="md5-hash"] Status="page-range-status"/>]  
-      [<PageRange Offset="page-range-offset" Length="page-range-length"   
+      [<PageRange Offset="page-range-offset" Length="page-range-length"   
        [Hash="md5-hash"] Status="page-range-status"/>]  
 </PageRangeList>  
   
@@ -82,7 +82,7 @@ block-list ::=
 <BlockList>  
       [<Block Offset="block-offset" Length="block-length" [Id="block-id"]  
        [Hash="md5-hash"] Status="block-status"/>]  
-      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
+      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
        [Hash="md5-hash"] Status="block-status"/>]  
 </BlockList>  
   
@@ -101,7 +101,7 @@ properties-status ::=
 
 下表介绍了日志文件的元素。  
   
-|XML 元素|Type|Description|  
+|XML 元素|Type|说明|  
 |-----------------|----------|-----------------|  
 |`DriveLog`|XML 元素|表示驱动器日志。|  
 |`Version`|属性，字符串|日志格式的版本。|  
@@ -142,10 +142,10 @@ properties-status ::=
 |`Properties/Path/@Hash`|属性，字符串|properties 文件的 Base16 编码 MD5 哈希。|  
 |`Blob/Status`|String|Blob 的处理状态。|  
   
-# <a name="drive-status-codes"></a>驱动器状态代码  
+## <a name="drive-status-codes"></a>驱动器状态代码  
 下表列出了驱动器的处理状态代码。  
   
-|状态代码|Description|  
+|状态代码|说明|  
 |-----------------|-----------------|  
 |`Completed`|驱动器已完成处理，未出现任何错误。|  
 |`CompletedWithWarnings`|驱动器已完成处理针对 Blob 指定的导入处置，但一个或多个 Blob 中出现警告。|  
@@ -174,7 +174,7 @@ properties-status ::=
 ## <a name="blob-status-codes"></a>Blob 状态代码  
 下表列出了 Blob 的处理状态代码。  
   
-|状态代码|Description|  
+|状态代码|说明|  
 |-----------------|-----------------|  
 |`Completed`|Blob 已完成处理，未出现错误。|  
 |`CompletedWithErrors`|Blob 已完成处理，但一个或多个页面范围或者块、元数据或属性中出现错误。|  
@@ -193,7 +193,7 @@ properties-status ::=
 ## <a name="import-disposition-status-codes"></a>导入处置状态代码  
 下表列出了导入处置的解决状态代码。  
   
-|状态代码|Description|  
+|状态代码|说明|  
 |-----------------|-----------------|  
 |`Created`|已创建 Blob。|  
 |`Renamed`|已根据重命名导入处置将 Blob 重命名。 `Blob/BlobPath` 元素包含已重命名的 Blob 的 URI。|  
@@ -204,7 +204,7 @@ properties-status ::=
 ## <a name="page-rangeblock-status-codes"></a>页面范围/块状态代码  
 下表列出了页面范围或块的处理状态代码。  
   
-|状态代码|Description|  
+|状态代码|说明|  
 |-----------------|-----------------|  
 |`Completed`|页面范围或块已完成处理，未出现任何错误。|  
 |`Committed`|块已提交，但不在完整块列表中，因为其他块已失败或放置完整块列表本身已失败。|  
@@ -220,7 +220,7 @@ properties-status ::=
 ## <a name="metadata-status-codes"></a>元数据状态代码  
 下表列出了 Blob 元数据的处理状态代码。  
   
-|状态代码|Description|  
+|状态代码|说明|  
 |-----------------|-----------------|  
 |`Completed`|元数据已完成处理，未出现错误。|  
 |`FileNameInvalid`|元数据文件名无效。|  
@@ -238,7 +238,7 @@ properties-status ::=
 ## <a name="properties-status-codes"></a>属性状态代码  
 下表列出了 Blob 属性的处理状态代码。  
   
-|状态代码|Description|  
+|状态代码|说明|  
 |-----------------|-----------------|  
 |`Completed`|属性已完成处理，未出现任何错误。|  
 |`FileNameInvalid`|properties 文件名无效。|  

@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: ca99f9ac36281ecddf41bcc228440adcad90412b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: e1cb588d68153a88d8b55b2696b376c4eb8704f5
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582411"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199257"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Azure 物联网 (IoT) 是什么？
 
@@ -34,6 +34,8 @@ IoT 解决方案的主要部分如下：设备、后端服务以及二者之间�
 * 房间中的存在传感器
 
 频繁用于原型制作的两种设备是 Microsoft 提供的基本 MX 芯片 IoT Devkit，以及 Raspberry PI 设备。 MX 芯片 Devkit 内置了用于温度、压强、湿度的传感器，此外还有陀螺仪、加速计、磁力仪和 Wi-Fi 芯片。 Raspberry PI 是一种 IoT 设备，可以为其附加多种不同的传感器，因此可以根据方案的需要进行具体的选择。 
+
+有关可用的 IoT 设备的详细信息，请查看行业最大的 [IoT 认证设备目录](https://catalog.azureiotsolutions.com/alldevices)。
 
 可以通过 [IoT 设备 SDK](../iot-hub/iot-hub-devguide-sdks.md) 生成在设备上运行的应用，以便执行所需任务。 可以通过 SDK 将遥测数据发送到 IoT 中心、从 IoT 中心接收消息和更新，等等。
 
@@ -103,7 +105,7 @@ IoT 解决方案的主要部分如下：设备、后端服务以及二者之间�
 
 Azure 中有多项 IoT 相关服务，确定需要使用哪一项服务可能并不容易。 某些服务（例如 IoT Central 和 IoT 解决方案加速器）提供模板，可以让你快速创建自己的解决方案并入门。 也可使用其他可用服务完整地开发自己的解决方案 -- 这完全取决于你需要多少帮助和多少控制。 下面是一个列表，列出了可用的服务及其功能。
 
-1. [**IoT Central**](../iot-central/overview-iot-central.md)：这是一项 SaaS 解决方案，用于连接、监视和管理 IoT 设备。 若要开始，请针对设备类型选择一个模板，然后创建一个供设备操作员使用的基本的 IoT Central 应用程序并对其进行测试。 此 IoT Central 应用程序也可用于监视设备并预配新设备。 此服务适用于不需深层服务自定义的直观解决方案。 
+1. [**IoT Central**](../iot-central/overview-iot-central.md)：这是一个 SaaS 解决方案，用于连接、监视和管理 IoT 设备。 若要开始，请针对设备类型选择一个模板，然后创建一个供设备操作员使用的基本的 IoT Central 应用程序并对其进行测试。 此 IoT Central 应用程序也可用于监视设备并预配新设备。 此服务适用于不需深层服务自定义的直观解决方案。 
 
 2. [**IoT 解决方案加速器**](/azure/iot-suite)：这是 PaaS 解决方案的集合，可以用于加快 IoT 解决方案的开发。 可以从提供的 IoT 解决方案着手，然后根据要求对该解决方案进行完整的自定义。 需要 Java 或 .NET 技能才能自定义后端，需要 JavaScript 技能才能自定义可视化效果。 
 
@@ -111,7 +113,7 @@ Azure 中有多项 IoT 相关服务，确定需要使用哪一项服务可能并
 
 4. [**IoT 中心设备预配服务**](/azure/iot-dps/)：这是一项适用于 IoT 中心的帮助程序服务，可以用于将设备安全地预配到 IoT 中心。 可以通过此服务轻松且快速地预配数百万台设备，不需逐一预配它们。 
 
-5. [**IoT Edge**](/azure/iot-edge/)：此服务在 IoT 中心基础上构建。 它可以用于在 IoT 设备上分析数据，不需在云中进行分析。 通过将部分工作负荷移至边缘，可以减少需要发送到云的消息的数目。 
+5. [**IoT Edge**](/azure/iot-edge/)：此服务基于 IoT 中心。 它可以用于在 IoT 设备上分析数据，不需在云中进行分析。 通过将部分工作负荷移至边缘，可以减少需要发送到云的消息的数目。 
 
 6. [**Azure 数字孪生**](../digital-twins/index.yml)：此服务用于创建物理环境的综合性模型。 可以为人员、空间和设备之间的关系和交互建模。 例如，可以预测某个工厂的维护需求、分析某个输电网络的实时电力需求，或者优化某个办公室的可用空间的使用。
 

@@ -1,28 +1,21 @@
 ---
-title: 应用程序生命周期管理 - Azure 机器学习工作室 | Microsoft Docs
+title: 应用程序生命周期管理
+titleSuffix: Azure Machine Learning Studio
 description: 在 Azure 机器学习工作室中应用应用程序生命周期管理最佳实践
-keywords: ALM, AML, Azure ML, 应用程序生命周期管理, 版本控制
 services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=haining, author=hning86)
-ms.author: amlstudiodocs
-manager: mwinkle
-editor: cgronlun
-ms.assetid: 1be6577d-f2c7-425b-b6b9-d5038e52b395
 ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: studio
 ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=haining, previous-author=hning86
 ms.date: 10/27/2016
-ms.openlocfilehash: e0255d43828b49e98494f8f8e9ee998c1af90685
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 26e469076e16f57300cf3e385620a723ddf51a4c
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307247"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510715"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Azure 机器学习工作室中的应用程序生命周期管理
 Azure 机器学习工作室是一个在 Azure 云平台中运行的工具，用于开发机器学习实验。 它类似于将 Visual Studio IDE 和可缩放云服务合并到单个平台。 可以将标准的应用程序生命周期管理 (ALM) 实践（从各种资产的版本管理到自动执行和部署）合并到 Azure 机器学习工作室中。 本文介绍一些选项和方法。

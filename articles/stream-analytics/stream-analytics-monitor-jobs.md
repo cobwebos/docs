@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: 2688f148185b1c1523178d190a7a2a76e6ceabef
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: fac56117c4c70e2735580abb52d05e008d660003
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30908779"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089407"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>以编程方式创建流分析作业监视器
 
@@ -33,14 +33,14 @@ ms.locfileid: "30908779"
 1. 创建 Visual Studio C# .NET 控制台应用程序。
 2. 在程序包管理器控制台中运行以下命令以安装 NuGet 包。 第一个是 Azure 流分析管理 .NET SDK。 第二个是 Azure Monitor SDK，用于启用监视功能。 最后一个是用于进行身份验证的 Azure Active Directory 客户端。
    
-   ```
+   ```powershell
    Install-Package Microsoft.Azure.Management.StreamAnalytics
    Install-Package Microsoft.Azure.Insights -Pre
    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
    ```
 3. 将下面的 appSettings 部分添加到 App.config 文件。
    
-   ```
+   ```csharp
    <appSettings>
      <!--CSM Prod related values-->
      <add key="ResourceGroupName" value="RESOURCE GROUP NAME" />
@@ -57,12 +57,12 @@ ms.locfileid: "30908779"
    ```
    将 *SubscriptionId* 和 *ActiveDirectoryTenantId* 的值替换为 Azure 订阅 ID 和租户 ID。 可以通过运行以下 PowerShell cmdlet 来获取这些值：
    
-   ```
+   ```powershell
    Get-AzureAccount
    ```
 4. 将以下 using 语句添加到项目中的源文件 (Program.cs)。
    
-   ```
+   ```csharp
      using System;
      using System.Configuration;
      using System.Threading;
@@ -74,8 +74,9 @@ ms.locfileid: "30908779"
      using Microsoft.IdentityModel.Clients.ActiveDirectory;
    ```
 5. 添加一个身份验证帮助器方法。
-   
-     公共静态字符串 GetAuthorizationHeader()
+
+```csharp   
+     public static string GetAuthorizationHeader()
    
          {
              AuthenticationResult result = null;
@@ -111,11 +112,13 @@ ms.locfileid: "30908779"
    
              throw new InvalidOperationException("Failed to acquire token");
      }
+```
 
 ## <a name="create-management-clients"></a>创建管理客户端
 
 以下代码将设置必需变量和管理客户端。
 
+```csharp
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
     string streamAnalyticsJobName = "<YOUR STREAM ANALYTICS JOB NAME>";
 
@@ -133,6 +136,7 @@ ms.locfileid: "30908779"
     StreamAnalyticsManagementClient(aadTokenCredentials, resourceManagerUri);
     InsightsManagementClient insightsClient = new
     InsightsManagementClient(aadTokenCredentials, resourceManagerUri);
+```
 
 ## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>为现有流分析作业启用监视功能
 
@@ -148,7 +152,7 @@ ms.locfileid: "30908779"
 > 用于替换以下代码中的 `<YOUR STORAGE ACCOUNT NAME>` 的存储帐户名称应该是与为其启用监视功能的流分析作业所在的同一订阅中的存储帐户。
 > 
 > 
-
+```csharp
     // Get an existing Stream Analytics job
     JobGetParameters jobGetParameters = new JobGetParameters()
     {
@@ -165,7 +169,7 @@ ms.locfileid: "30908779"
             }
     };
     insightsClient.ServiceDiagnosticSettingsOperations.Put(jobGetResponse.Job.Id, insightPutParameters);
-
+```
 
 
 ## <a name="get-support"></a>获取支持

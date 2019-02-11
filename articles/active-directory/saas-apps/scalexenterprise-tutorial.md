@@ -4,22 +4,22 @@ description: 了解如何在 Azure Active Directory 和 ScaleX Enterprise 之间
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: c2379a8d-a659-45f1-87db-9ba156d83183
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 04708806b9e1ba224e7b438f11c68dca82d6320e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c1847d268d7776fba2892257bf0992d0e17a727f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448812"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152053"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>教程：Azure Active Directory 与 ScaleX Enterprise 的集成
 
@@ -123,7 +123,7 @@ ms.locfileid: "39448812"
     在“登录 URL”文本框中，使用以下模式键入值：`https://platform.rescale.com/saml2/<company id>/sso/`
      
     > [!NOTE] 
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [ScaleX Enterprise 客户端支持团队](http://info.rescale.com/contact_sales)来获取这些值。 
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [ScaleX Enterprise 客户端支持团队](https://info.rescale.com/contact_sales)来获取这些值。 
 
 1. ScaleX 应用程序需要特定格式的 SAML 断言，这要求修改与 SAML 令牌属性配置之间的自定义属性映射。 单击“查看和编辑所有其他用户属性”复选框以打开自定义属性设置。
 
@@ -168,13 +168,13 @@ ms.locfileid: "39448812"
     
     a. 选择“创建可以通过 SSO 进行身份验证的任何用户”。
 
-    b. **服务提供商 saml**：粘贴 ***urn:oasis:names:tc:SAML:2.0:nameid-format:persistent*** 值
+    b. **服务提供商 saml**：粘贴 urn:oasis:names:tc:SAML:2.0:nameid-format:persistent 值
 
     c. **ACS 响应中的标识提供者名称电子邮件字段**：粘贴 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` 值
 
-    d. **标识提供者 EntityDescriptor 实体 ID：** 粘贴从 Azure 门户复制的 **SAML 实体 ID**。
+    d. **标识提供者 EntityDescriptor 实体 ID：** 粘贴从 Azure 门户复制的 SAML 实体 ID。
 
-    e. **标识提供者 SingleSignOnService URL：** 粘贴 Azure 门户中的 **SAML 单一登录服务 URL**。
+    e. **标识提供者 SingleSignOnService URL：** 粘贴 Azure 门户中的 SAML 单一登录服务 URL。
 
     f. **标识提供者公共 X509 证书：** 在记事本中打开从 Azure 下载的 X509 证书并将内容粘贴到此框中。 请确保证书内容的中间没有换行符。
     
@@ -183,7 +183,7 @@ ms.locfileid: "39448812"
     h. 单击“更新 SSO 设置”以保存设置。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -261,7 +261,7 @@ ms.locfileid: "39448812"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

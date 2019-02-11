@@ -4,9 +4,9 @@ description: 如何使用组策略为我的应用门户部署 Internet Explorer 
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a21a21f40e731e8bc1d20e01d3671c372df65d84
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 02f06d24aa501d4544cbc2d3803e543bdff7936d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622034"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192905"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>如何使用组策略部署 Internet Explorer 的访问面板扩展
 本教程说明如何使用组策略在用户的计算机上远程安装 Internet Explorer 的访问面板扩展。 需要登录到使用[基于密码的单一登录](what-is-single-sign-on.md#password-based-sso)配置的应用程序的 Internet Explorer 用户必须使用此扩展。
@@ -31,7 +31,7 @@ ms.locfileid: "51622034"
 
 ## <a name="prerequisites"></a>先决条件
 * 已设置 [Active Directory 域服务](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)，并且已将用户的计算机加入域。
-* 必须拥有“编辑设置”权限才能编辑组策略对象 (GPO)。 默认情况下，以下安全组的成员拥有此权限：域管理员、企业管理员和组策略创建者和所有者。 [了解详细信息。](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
+* 必须拥有“编辑设置”权限才能编辑组策略对象 (GPO)。 默认情况下，以下安全组的成员具有此权限：域管理员、企业管理员和组策略创建者所有者。 [了解详细信息。](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
 ## <a name="step-1-create-the-distribution-point"></a>步骤 1：创建分发点
 首先，必须将安装程序包放在网络位置中，该位置可以由要在其上远程安装扩展的计算机访问。 为此，请执行以下步骤：
@@ -44,7 +44,7 @@ ms.locfileid: "51622034"
    
     ![打开文件和存储服务](./media/deploy-access-panel-browser-extension/shares.png)
 4. 完成“新建共享向导”并设置权限，确保可以从用户的计算机访问该共享位置。 [了解有关共享的详细信息。](https://technet.microsoft.com/library/cc753175.aspx)
-5. 下载以下 Microsoft Windows 安装程序包（.msi 文件）：[Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
+5. 下载以下 Microsoft Windows Installer 程序包（.msi 文件）：[Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
 6. 将该安装程序包复制到共享中所需的位置。
    
     ![将 .msi 文件复制到共享。](./media/deploy-access-panel-browser-extension/copy-package.png)
@@ -80,7 +80,7 @@ ms.locfileid: "51622034"
 3. 右键单击“软件安装”，并选择“新建” > “包...”
    
     ![创建新的软件安装包](./media/deploy-access-panel-browser-extension/new-package.png)
-4. 转到包含[步骤 1：创建分发点](#step-1-create-the-distribution-point)中所述安装程序包的共享文件夹，选择 .msi 文件，并单击“打开”。
+4. 转到[步骤 1：创建分发点](#step-1-create-the-distribution-point)中包含安装程序包的共享文件夹，选择 .msi 文件，然后单击“打开”。
    
    > [!IMPORTANT]
    > 如果该共享也位于此服务器上，请验证是否可以通过网络文件路径（而不是本地文件路径）访问此 .msi。
@@ -97,7 +97,7 @@ ms.locfileid: "51622034"
 ## <a name="step-4-auto-enable-the-extension-for-internet-explorer"></a>步骤 4：自动启用 Internet Explorer 的扩展
 除了运行安装程序以外，还必须显式启用 Internet Explorer 的每个扩展，只有这样才能使用该扩展。 请执行以下步骤，使用组策略启用访问面板扩展：
 
-1. 根据在[步骤 3：分配安装包](#step-3-assign-the-installation-package)中选择的配置类型，在“组策略管理编辑器”窗口中转到以下路径之一：
+1. 在“组策略管理编辑器”窗口中，根据[步骤 3：分配安装包](#step-3-assign-the-installation-package)中选择的配置类型，转到以下路径之一：
    
    * `Computer Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`

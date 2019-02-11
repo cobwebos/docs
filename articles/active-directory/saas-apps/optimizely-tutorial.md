@@ -1,27 +1,27 @@
 ---
-title: 教程：Azure Active Directory 与 Optimizely 集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 Optimizely 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Optimizely 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 28ef03e1-9aad-4301-af97-d94e853edc74
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2018
 ms.author: jeedes
-ms.openlocfilehash: be56218e174e5d8b0e6bde394f2dfd40fc91e87d
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 19be60a7a2767b8ea2185e1336b3155143260fb6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42144752"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180749"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>教程：Azure Active Directory 与 Optimizely 的集成
+# <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>教程：Azure Active Directory 与 Optimizely 集成
 
 本教程介绍如何将 Optimizely 与 Azure Active Directory (Azure AD) 集成。
 
@@ -264,7 +264,7 @@ ms.locfileid: "42144752"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

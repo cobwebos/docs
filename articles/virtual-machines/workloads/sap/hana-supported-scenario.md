@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0e9d57c224150454677a03462368038ed8c63edf
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 4e8253238bf5edb5e0ea3f89fe67d6aa39f4a2d7
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576487"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855449"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA 大型实例的支持方案
 本文档介绍 HANA 大型实例 (HLI) 的支持方案及其体系结构详细信息。
@@ -32,11 +32,11 @@ ms.locfileid: "45576487"
 我们来一起了解本文档中使用的术语和定义。
 
 - SID：HANA 系统的系统标识符。
-- HLI：Hana 大型实例。
+- HLI：HANA 大型实例。
 - DR：灾难恢复站点。
 - 常规 DR：一种系统设置，具有仅用于 DR 的专用资源。
 - 多用途 DR：DR 站点上的系统，配置为使用非生产环境和生产实例（已配置为用于 DR 事件）。 
-- 单个 SID：安装了一个实例的系统。
+- 单一 SID：安装了一个实例的系统。
 - 多个 SID：配置了多个实例的系统。 也称为 MCOS 环境。
 
 
@@ -56,10 +56,10 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 
 预配的每台服务器都预先配置了以太网接口集。 以下是每个 HLI 单元上配置的以太网接口的详细信息。
 
-- **A**：此接口用于客户端访问。
+- **答**：此接口用于客户端访问。
 - **B**：此接口用于节点到节点的通信。 所有服务器上均配置了此接口（不论所请求的拓扑为何），但仅用于 
 - 横向扩展方案。
-- **C**：此接口用于建立节点到存储的连接。
+- **C**：此接口用于节点到存储的连接。
 - **D**：此接口用于建立节点到 ISCSI 设备的连接，以进行 STONITH 设置。 仅在请求 HSR 设置时配置此接口。  
 
 | NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
@@ -237,7 +237,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 - 对于 MCOS：卷大小分配取决于内存中的数据库大小。 请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)部分，了解多 SID 环境支持的内存中数据库大小。
 - 在 DR：在 DR HLI 单元为生产 HANA 实例安装配置卷和装入点（标记为“HANA 安装所需”）。 
-- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)以获取更多详细信息。
+- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)以获取更多详细信息。
 - SKU 第 I 类级别的启动卷将复制到 DR 节点。
 
 
@@ -286,7 +286,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 - 对于 MCOS：卷大小分配取决于内存中的数据库大小。 请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)部分，了解多 SID 环境支持的内存中数据库大小。
 - 在 DR：在 DR HLI 单元为生产 HANA 实例安装配置卷和装入点（标记为“HANA 安装所需”）。 
-- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)以获取更多详细信息。 
+- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)以获取更多详细信息。 
 - 在 DR：为 QA 实例安装配置 QA 的数据、日志备份、日志、共享卷（标记为“QA 实例安装”）。
 - SKU 第 I 类级别的启动卷将复制到 DR 节点。
 
@@ -395,7 +395,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 - STONITH：为 STONITH 设置配置 SBD。 但是，可选择是否使用 STONITH。
 - 在 DR：主节点和辅助节点复制需要两组存储卷。
 - 在 DR：在 DR HLI 单元为生产 HANA 实例安装配置卷和装入点（标记为“HANA 安装所需”）。 
-- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)以获取更多详细信息。 
+- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)以获取更多详细信息。 
 - 在 DR：为 QA 实例安装配置 QA 的数据、日志备份、日志、共享卷（标记为“QA 实例安装”）。
 - SKU 第 I 类级别的启动卷将复制到 DR 节点。
 
@@ -559,7 +559,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 ### <a name="key-considerations"></a>重要注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 -  在 DR：在 DR HLI 单元为生产 HANA 实例安装配置卷和装入点（标记为“HANA 安装所需”）。 
-- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)以获取更多详细信息。 
+- 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)以获取更多详细信息。 
 - SKU 第 I 类级别的启动卷将复制到 DR 节点。
 
 

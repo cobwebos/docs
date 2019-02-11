@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 中管理用户数据 | Microsoft Docs
 description: 了解如何在 Azure AD B2C 中删除或导出用户数据。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/06/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 49e9efa537ad1f2a1d7f06dd7f8a68a409c7d4e0
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.subservice: B2C
+ms.openlocfilehash: b03e02a783245459fa28126b73eac2459f6aad67
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42145502"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55182840"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理用户数据
 
@@ -47,7 +47,7 @@ Azure AD B2C 中的每个用户都分配有一个对象 ID。 对象 ID 可为�
 Azure AD B2C 用户数据仅限于：
 
 - **存储在 Azure Active Directory 中的数据**：可使用对象 ID 或任何登录名（如电子邮件地址或用户名）在 Azure AD B2C 身份验证用户旅程中检索数据。 
-- **特定于用户的审核事件报告** - 可使用对象 ID 对数据编制索引。
+- **特定于用户的审核事件报表**：可使用对象 ID 为数据编制索引。
 
 在下面的导出数据流示例中，由应用程序执行的所述步骤也能由目录中的后端进程或具有管理员角色的用户执行：
 

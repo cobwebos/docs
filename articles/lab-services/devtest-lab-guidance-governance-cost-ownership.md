@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 9b83d6ac908be1e62e3c6c2025ae31aa374bdeea
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 47f3e8ab14ecd50e958c57ba4c8f9f098fd5bb7b
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975067"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868355"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Azure 开发测试实验室基础设施治理 - 管理成本和所有权
 打算构建开发和测试环境时，成本和所有权是主要的考量。 本部分介绍如何在环境中进行成本优化并落实所有权。
@@ -40,7 +40,7 @@ ms.locfileid: "51975067"
  
 只有活动的 Visual Studio 订阅者（标准订阅、年度云订阅和月度云订阅）可使用企业开发/测试订阅中运行的 Azure 资源， 但最终用户也可访问该应用程序来提供反馈或执行验收测试。 在此订阅内，只能将资源用于开发和测试应用程序，且没有运行时间保证。
 
-如果决定使用开发测试套餐，则请注意，此权益专用于开发和应用程序测试。 订阅内的使用不带有财务支持的 SLA，Visual Studio Team Services 和 HockeyApp 的使用除外。
+如果决定使用开发测试套餐，则请注意，此权益专用于开发和应用程序测试。 订阅内的使用不带有财务支持的 SLA，Azure DevOps 和 HockeyApp 的使用除外。
 
 ## <a name="define-a-role-based-access-across-your-organization"></a>定义基于角色的跨组织访问权限
 ### <a name="question"></a>问题

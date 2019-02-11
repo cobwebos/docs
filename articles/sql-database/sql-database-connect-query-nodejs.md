@@ -11,12 +11,12 @@ ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 11/26/2018
-ms.openlocfilehash: 3a6060c59c2b338a2fad3327fe89dcf3df955ef5
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 250f03809a182e541fb58f73469f46d2b281b69f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496697"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756032"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>快速入门：使用 Node.js 查询 Azure SQL 数据库
 
@@ -27,8 +27,6 @@ ms.locfileid: "52496697"
 若要完成此示例，请确保具备以下先决条件：
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-
-- 针对所用计算机的公共 IP 地址制定[服务器级防火墙规则](sql-database-get-started-portal-firewall.md)
 
 - 适用于操作系统的 Node.js 相关软件：
 
@@ -43,7 +41,7 @@ ms.locfileid: "52496697"
 [!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
 > [!IMPORTANT]
-> 对于在其上执行本教程操作的计算机，必须为其公共 IP 地址制定防火墙规则。 如果使用其他计算机或其他公共 IP 地址，则[使用 Azure 门户创建服务器级防火墙规则](sql-database-get-started-portal-firewall.md)。
+> 对于在其上执行本教程操作的计算机，必须为其公共 IP 地址制定防火墙规则。 如果使用其他计算机或其他公共 IP 地址，则[使用 Azure 门户创建服务器级防火墙规则](sql-database-server-level-firewall-rule.md)。
 
 ## <a name="create-the-project"></a>创建项目
 
@@ -98,7 +96,7 @@ ms.locfileid: "52496697"
         console.log('Reading rows from the Table...');
 
         // Read all rows from table
-        request = new Request(
+        var request = new Request(
             "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName FROM [SalesLT].[ProductCategory] pc "
                 + "JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid",
             function(err, rowCount, rows)

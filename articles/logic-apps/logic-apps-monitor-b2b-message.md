@@ -9,25 +9,25 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: 15bfe871731f5a6a04cae623faf0bd27cdba27fc
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d5425cf7c2ea39770bbc3e9368f34d57d7279842
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233185"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53534870"
 ---
 # <a name="monitor-b2b-messages-with-azure-log-analytics-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的 Azure Log Analytics 监视 B2B 消息
 
 在集成帐户中的贸易合作伙伴之间建立 B2B 通信后，这些合作伙伴可以交换消息。 若要检查此通信是否按预期方式工作，可使用 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) 监视集成帐户的 AS2、X12 和 EDIFACT 消息，并为其设置诊断日志记录。 此服务可监视云和本地环境，有助于保持其可用性和性能以及收集运行时详细信息和事件以进行更丰富的调试。 此外可以[将此数据与其他服务一起使用](#extend-diagnostic-data)，例如 Azure 存储和 Azure 事件中心。
 
 > [!NOTE]
-> 此页面可能仍然引用了 Microsoft Operations Management Suite (OMS)，它将[于 2019 年 1 月停用](../log-analytics/log-analytics-oms-portal-transition.md)，但尽可能使用 Azure Log Analytics 替换这些步骤。 
+> 此页面可能仍然引用了 Microsoft Operations Management Suite (OMS)，它将[于 2019 年 1 月停用](../azure-monitor/platform/oms-portal-transition.md)，但尽可能使用 Azure Log Analytics 替换这些步骤。 
 
 ## <a name="prerequisites"></a>先决条件
 
 * 已设置诊断日志记录的逻辑应用。 了解[如何创建逻辑应用](quickstart-create-first-logic-app-workflow.md)以及[如何为逻辑应用设置日志记录](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)。
 
-* 满足上述要求后，还需要 Log Analytics 工作区，用于通过 Log Analytics 来监视和跟踪 B2B 通信。 如果没有 Log Analytics 工作区，请了解[如何创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)。
+* 满足上述要求后，还需要 Log Analytics 工作区，用于通过 Log Analytics 来监视和跟踪 B2B 通信。 如果没有 Log Analytics 工作区，请了解[如何创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
 
 * 关联到逻辑应用的集成帐户。 了解[如何创建关联到逻辑应用的集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。
 
@@ -121,10 +121,10 @@ ms.locfileid: "50233185"
 
 结合使用 Azure Log Analytics 后，可以扩展将逻辑应用的诊断数据用于其他 Azure 服务的方式，例如： 
 
-* [在 Azure 存储中存档 Azure 诊断日志](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
-* [将 Azure 诊断日志流式传输到 Azure 事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
+* [在 Azure 存储中存档 Azure 诊断日志](../azure-monitor/platform/archive-diagnostic-logs.md)
+* [将 Azure 诊断日志流式传输到 Azure 事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
 
-然后，可通过使用其他服务（如 [Azure 流分析](../stream-analytics/stream-analytics-introduction.md)和 [Power BI](../log-analytics/log-analytics-powerbi.md)）的遥测数据和分析来进行实时监视。 例如：
+然后，可通过使用其他服务（如 [Azure 流分析](../stream-analytics/stream-analytics-introduction.md)和 [Power BI](../azure-monitor/platform/powerbi.md)）的遥测数据和分析来进行实时监视。 例如：
 
 * [将数据从事件中心流式传输到流分析](../stream-analytics/stream-analytics-define-inputs.md)
 * [在 Power BI 中使用流分析来分析流数据，并创建实时分析仪表板](../stream-analytics/stream-analytics-power-bi-dashboard.md)

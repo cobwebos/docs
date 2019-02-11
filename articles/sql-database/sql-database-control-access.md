@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 49da7704c3b1c3c119528201f34f1352b0afbba4
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.date: 01/25/2019
+ms.openlocfilehash: 6153fbdb6e085d1c817fac5db5eddb5e2c6ae7fa
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362120"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465432"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Azure SQL 数据库和 SQL 数据仓库访问控制
 
@@ -40,7 +40,7 @@ SQL 数据库支持两种类型的身份验证：
 
 - **SQL 身份验证**：
 
-  此身份验证方法使用用户名和密码。 在为数据库创建逻辑服务器时，已指定一个包含用户名和密码的“服务器管理员”登录名。 通过这些凭据，可以使用数据库所有者（即“dbo”）的身份通过服务器上任何数据库的身份验证。 
+  此身份验证方法使用用户名和密码。 在为数据库创建 SQL 数据库服务器时，已指定一个包含用户名和密码的“服务器管理员”登录名。 通过这些凭据，可以使用数据库所有者（即“dbo”）的身份通过服务器上任何数据库的身份验证。 
 - **Azure Active Directory 身份验证**：
 
   此身份验证方法使用由 Azure Active Directory 托管的标识，并且受托管域和集成域支持。 请[尽可能](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode)使用 Active Directory 身份验证（集成安全性）。 如果想要使用 Azure Active Directory 身份验证，则必须创建名为“Azure AD 管理员”的另一个服务器管理员，用于管理 Azure AD 用户和组。 此管理员还能执行普通服务器管理员可以执行的所有操作。 有关如何创建 Azure AD 管理员以启用 Azure Active Directory 身份验证的演练，请参阅[通过使用 Azure Active Directory 身份验证连接到 SQL 数据库](sql-database-aad-authentication.md)。

@@ -9,21 +9,20 @@ ms.assetid: f8d46e1e-5c37-4408-80fb-c54be532a4ab
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f68e1077ebc26245b25eae3b0310db74b6d1357e
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 7ad328eec7e16b5368b78a0dfccbf5c09adb5c13
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046439"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330001"
 ---
 # <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据推送到 Azure 搜索索引
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](data-factory-azure-search-connector.md)
+> * [版本 1](data-factory-azure-search-connector.md)
 > * [版本 2（当前版本）](../connector-azure-search.md)
 
 > [!NOTE]
@@ -39,17 +38,17 @@ ms.locfileid: "37046439"
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从源数据存储将数据推送到 Azure 搜索索引。
 
-创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+创建管道的最简单方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-也可以使用以下工具创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+还可以使用以下工具来创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
-无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储： 
+无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
 1. 创建链接服务可将输入和输出数据存储链接到数据工厂。
-2. 创建数据集以表示复制操作的输入和输出数据。 
-3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 
+2. 创建数据集以表示复制操作的输入和输出数据。
+3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。
 
-使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于将数据复制到 Azure 搜索索引的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从本地 SQL Server 复制到 Azure 搜索索引](#json-example-copy-data-from-on-premises-sql-server-to-azure-search-index)部分。 
+使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于将数据复制到 Azure 搜索索引的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从本地 SQL Server 复制到 Azure 搜索索引](#json-example-copy-data-from-on-premises-sql-server-to-azure-search-index)部分。
 
 对于特定于 Azure 搜索索引的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息：
 
@@ -105,7 +104,7 @@ Azure 搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个
 | Int32 | Y |
 | Int64 | Y |
 | Double | Y |
-| 布尔 | Y |
+| Boolean | Y |
 | DataTimeOffset | Y |
 | String Array | N |
 | GeographyPoint | N |
@@ -114,11 +113,11 @@ Azure 搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个
 
 以下示例显示：
 
-1.  [AzureSearch](#linked-service-properties) 类型的链接服务。
-2.  [OnPremisesSqlServer](data-factory-sqlserver-connector.md#linked-service-properties) 类型的链接服务。
-3.  [SqlServerTable](data-factory-sqlserver-connector.md#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
-4.  [AzureSearchIndex](#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
-4.  包含复制活动的[管道](data-factory-create-pipelines.md)，其使用 [SqlSource](data-factory-sqlserver-connector.md#copy-activity-properties) 和 [AzureSearchIndexSink](#copy-activity-properties)。
+1. [AzureSearch](#linked-service-properties) 类型的链接服务。
+2. [OnPremisesSqlServer](data-factory-sqlserver-connector.md#linked-service-properties) 类型的链接服务。
+3. [SqlServerTable](data-factory-sqlserver-connector.md#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
+4. [AzureSearchIndex](#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+4. 包含复制活动的[管道](data-factory-create-pipelines.md)，其使用 [SqlSource](data-factory-sqlserver-connector.md#copy-activity-properties) 和 [AzureSearchIndexSink](#copy-activity-properties)。
 
 本示例每小时将时间序列数据从本地 SQL Server 数据库复制到 Azure 搜索索引。 此示例中使用的 JSON 属性会在示例后的各部分进行说明。
 
@@ -202,7 +201,7 @@ Azure 搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个
             "frequency": "Minute",
             "interval": 15
         }
-   }
+    }
 }
 ```
 
@@ -211,13 +210,13 @@ Azure 搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，**源**类型设置为 **SqlSource**，**接收器**类型设置为 **AzureSearchIndexSink**。 为 **SqlReaderQuery** 属性指定的 SQL 查询选择复制过去一小时的数据。
 
 ```JSON
-{  
-    "name":"SamplePipeline",
-    "properties":{  
+{
+  "name":"SamplePipeline",
+  "properties":{
     "start":"2014-06-01T18:00:00",
     "end":"2014-06-01T19:00:00",
     "description":"pipeline for copy activity",
-    "activities":[  
+    "activities":[
       {
         "name": "SqlServertoAzureSearchIndex",
         "description": "copy activity",
@@ -241,7 +240,7 @@ Azure 搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个
             "type": "AzureSearchIndexSink"
           }
         },
-       "scheduler": {
+        "scheduler": {
           "frequency": "Hour",
           "interval": 1
         },
@@ -252,8 +251,8 @@ Azure 搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个
           "timeout": "01:00:00"
         }
       }
-     ]
-   }
+    ]
+  }
 }
 ```
 
@@ -289,7 +288,7 @@ Azure 搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个
 
 还可以在复制活动定义中将源数据集中的列映射到接收器数据集中的列。 有关详细信息，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
 
-## <a name="performance-and-tuning"></a>性能和优化  
+## <a name="performance-and-tuning"></a>性能和优化
 若要了解影响数据移动（复制活动）性能的关键因素以及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。
 
 ## <a name="next-steps"></a>后续步骤

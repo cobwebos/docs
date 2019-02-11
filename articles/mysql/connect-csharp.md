@@ -1,24 +1,21 @@
 ---
 title: 通过 C# 连接到 Azure Database for MySQL
 description: 本快速入门提供一个 C# (.NET) 代码示例，使用该示例可连接到适用于 MySQL 的 Azure 数据库并查询其中的数据。
-services: MySQL
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: c92d28bd7515372c17af34d90a4ac73317a13630
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: e0536440ea38f127a34639ffb40e5015154ec550
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265014"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547450"
 ---
-# <a name="azure-database-for-mysql-use-net-c-to-connect-and-query-data"></a>适用于 MySQL 的 Azure 数据库：使用 .NET (C#) 进行连接并查询数据
+# <a name="azure-database-for-mysql-use-net-c-to-connect-and-query-data"></a>Azure Database for MySQL：使用 .NET (C#) 连接和查询数据
 本快速入门演示如何使用 C# 应用程序连接到 Azure Database for MySQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本主题假设你熟悉如何使用 C# 进行开发，但不太熟悉 Azure Database for MySQL 的用法。
 
 ## <a name="prerequisites"></a>先决条件

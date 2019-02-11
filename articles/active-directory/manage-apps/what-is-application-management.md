@@ -3,20 +3,20 @@ title: 使用 Azure Active Directory 管理应用程序 | Microsoft 文档
 description: 本文介绍将 Azure Active Directory 与本地、云和 SaaS 应用程序集成的好处。
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.topic: overview
 ms.workload: identity
 ms.date: 10/30/2018
 ms.author: barbkess
 ms.reviewer: arvinh
-ms.openlocfilehash: 577be6669442befec0c14a275505e2eebed72611
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e9cbc29950b1e5363691d44aa6e34391c541762b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418086"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155895"
 ---
 # <a name="application-management-with-azure-active-directory"></a>使用 Azure Active Directory 进行应用程序管理
 

@@ -9,17 +9,16 @@ ms.assetid: f3f07bc4-6dc3-4d4d-ac22-0be62189d578
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 3f234e49f1a28fd0881e47ede13ae72483ed31f3
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 5b70edd4f65538b52c70881258bc500a34b04d80
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053110"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025413"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>使用“监视和管理”应用监视和管理 Azure 数据工厂管道
 > [!div class="op_single_selector"]
@@ -60,7 +59,7 @@ ms.locfileid: "37053110"
 如果没有用于测试这些步骤的数据工厂应用程序，请完成教程：[使用数据工厂将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 ## <a name="understand-the-monitoring-and-management-app"></a>了解“监视和管理”应用
-左侧有三个选项卡：“资源浏览器”、“监视视图”和“警报”。 第一个选项卡（**资源浏览器**）在默认情况下处于选中状态。
+在左侧有三个选项卡：“资源浏览器”、“监视视图”和“警报”。 第一个选项卡（**资源浏览器**）在默认情况下处于选中状态。
 
 ### <a name="resource-explorer"></a>资源浏览器
 会看到如下内容：
@@ -146,7 +145,7 @@ ms.locfileid: "37053110"
 
 ![活动窗口资源管理器向左/向右键](./media/data-factory-monitor-manage-app/ActivityWindowExplorerLeftRightArrows.png)
 
-在图示视图底部，可看到这些按钮：放大、缩小、缩放到合适大小、比例 100%、锁定布局。 “锁定布局”按钮将防止意外移动图示视图中的表和管道。 它在默认情况下处于“打开”状态。 可将其关闭，还可在图示中移动实体。 将其关闭后，可使用最后一个按钮来自动放置表和管道。 还可以通过使用鼠标滚轮来放大或缩小。
+在图示视图底部，可以看到以下按钮：放大、缩小、缩放到合适大小、比例 100%、锁定布局。 “锁定布局”按钮将防止意外移动图示视图中的表和管道。 它在默认情况下处于“打开”状态。 可将其关闭，还可在图示中移动实体。 将其关闭后，可使用最后一个按钮来自动放置表和管道。 还可以通过使用鼠标滚轮来放大或缩小。
 
 ![图示视图缩放命令](./media/data-factory-monitor-manage-app/DiagramViewZoomCommands.png)
 
@@ -291,7 +290,7 @@ ms.locfileid: "37053110"
 选择活动窗口，单击第一个命令栏按钮的向下键，并选择“重新运行” / “与管道中的上游一起重新运行”。 选择“与管道中的上游一起重新运行”选项时，也将重新运行所有上游活动窗口。
     ![重新运行活动窗口](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
-还可在列表中选择多个活动窗口，并同时重新运行它们。 可能希望基于状态筛选活动窗口（例如：**失败**），并在解决导致活动窗口失败的问题后重新运行失败的活动窗口。 有关在列表中筛选活动窗口的详细信息，请参阅以下部分。  
+还可在列表中选择多个活动窗口，并同时重新运行它们。 你可能希望基于状态筛选活动窗口（例如：**失败**）--并在解决导致活动窗口失败的问题后重新运行失败的活动窗口。 有关在列表中筛选活动窗口的详细信息，请参阅以下部分。  
 
 ### <a name="pauseresume-multiple-pipelines"></a>暂停/恢复多个管道
 可以通过使用 Ctrl 键对两个或更多管道进行多选。 可以使用命令栏按钮（在下图的红色矩形中突出显示）来暂停/恢复它们。

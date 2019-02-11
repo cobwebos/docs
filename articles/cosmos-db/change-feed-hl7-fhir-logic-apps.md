@@ -1,21 +1,18 @@
 ---
-title: 更改 HL7 FHIR 资源的源 - Azure Cosmos DB | Microsoft Docs
+title: 适用于 HL7 FHIR 资源的更改源 - Azure Cosmos DB
 description: 了解如何使用 Azure 逻辑应用、Azure Cosmos DB 和服务总线设置 HL7 FHIR 患者卫生保健记录的更改通知。
-keywords: hl7 fhir
-services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: sngun
-ms.openlocfilehash: aab6e5247830ee444bcab0b15bda34e4464aaad1
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 765596500e3ac294dc79f0785b12b03370fa652a
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565473"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354478"
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>使用逻辑应用和 Azure Cosmos DB 通知患者 HL7 FHIR 医疗保健记录的更改
 
@@ -25,7 +22,7 @@ ms.locfileid: "51565473"
 
 ## <a name="project-requirements"></a>项目要求
 - 提供程序需发送 XML 格式的 HL7 综合临床文档架构 (C-CDA) 文档。 C-CDA 文档差不多包含每种类型的临床文档，包括家族病史和免疫记录等临床文档，以及管理、工作流和财务文档。 
-- 将 C-CDA 文档转换为 JSON 格式的 [HL7 FHIR 资源](http://hl7.org/fhir/2017Jan/resourcelist.html)。
+- 将 C-CDA 文档转换为 JSON 格式的 [HL7 FHIR 资源](https://hl7.org/fhir/2017Jan/resourcelist.html)。
 - 通过电子邮件发送 JSON 格式的修改后的 FHIR 资源文档。
 
 ## <a name="solution-workflow"></a>解决方案工作流 
@@ -40,9 +37,9 @@ ms.locfileid: "51565473"
 
 ## <a name="solution-architecture"></a>解决方案体系结构
 此解决方案需要三个逻辑应用才能满足上述要求并完成解决方案工作流。 这三个逻辑应用包括：
-1. HL7-FHIR-Mapping 应用：接收 HL7 C-CDA 文档，将其转换为 FHIR资源，然后保存到 Azure Cosmos DB。
-2. EHR 应用：查询 Azure Cosmos DB FHIR 存储库，并将响应保存到服务总线队列。 此逻辑应用使用 [API 应用](#api-app)检索新的和更改后的文档。
-3. **进程通知应用**：发送电子邮件通知，正文中包括 FHIR 资源文档。
+1. **HL7-FHIR-Mapping 应用**：接收 HL7 C-CDA 文档，将其转换为 FHIR 资源，然后保存到 Azure Cosmos DB。
+2. **EHR 应用**：查询 Azure Cosmos DB FHIR 存储库，并将响应保存到服务总线队列。 此逻辑应用使用 [API 应用](#api-app)检索新的和更改后的文档。
+3. **进程通知应用**：发送正文中包含 FHIR 资源文档的电子邮件通知。
 
 ![此 HL7 FHIR 医疗保健解决方案中使用的三个逻辑应用](./media/change-feed-hl7-fhir-logic-apps/health-care-solution-hl7-fhir.png)
 
@@ -64,11 +61,11 @@ ms.locfileid: "51565473"
     ![用于接收 HL7 FHIR 医疗保健记录的逻辑应用](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-json-transform.png)
 
 
-2. EHR 应用：查询 Azure Cosmos DB FHIR 存储库，并将响应保存到服务总线队列。 下面是 GetNewOrModifiedFHIRDocuments 应用的代码。
+2. **EHR 应用**：查询 Azure Cosmos DB FHIR 存储库，并将响应保存到服务总线队列。 下面是 GetNewOrModifiedFHIRDocuments 应用的代码。
 
     ![用于查询 Azure Cosmos DB 的逻辑应用](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-api-app.png)
 
-3. **进程通知应用**：发送电子邮件通知，正文中包括 FHIR 资源文档。
+3. **进程通知应用**：发送正文中包含 FHIR 资源文档的电子邮件通知。
 
     ![向患者发送电子邮件（正文中包括 HL7 FHIR 资源）的逻辑应用](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-send-email.png)
 
@@ -91,7 +88,7 @@ API 应用将连接到 Azure Cosmos DB，并按资源类型查询新的或修改
 - 集合 ID
 - HL7 FHIR 资源类型名称
 - 布尔：从头开始
-- 整型：返回的文档数目
+- Int：返回的文档数
 
 **输出**
 - 成功：状态代码：200，响应：文档列表（JSON 数组）
@@ -133,11 +130,11 @@ API 应用将连接到 Azure Cosmos DB，并按资源类型查询新的或修改
             /// <param name="maximumItemCount">-1 returns all (default)</param>
             /// <returns></returns>
             [Metadata("Get New or Modified FHIR Documents",
-                "Query for new or modifed FHIR Documents By Resource Type " +
+                "Query for new or modified FHIR Documents By Resource Type " +
                 "from Last Run Date or Beginning of Collection creation"
             )]
             [SwaggerResponse(HttpStatusCode.OK, type: typeof(Task<dynamic>))]
-            [SwaggerResponse(HttpStatusCode.NotFound, "No New or Modifed Documents found")]
+            [SwaggerResponse(HttpStatusCode.NotFound, "No New or Modified Documents found")]
             [SwaggerOperation("GetNewOrModifiedFHIRDocuments")]
             public async Task<dynamic> GetNewOrModifiedFhirDocuments(
                 [Metadata("Database Id", "Database Id")] string databaseId,
@@ -220,7 +217,7 @@ API 应用将连接到 Azure Cosmos DB，并按资源类型查询新的或修改
 
 ## <a name="summary"></a>摘要
 
-- 现已明确 Azure Cosmos DB 具有对新文档或修改后文档通知的原生支持，并且此功能简单易用。 
+- 已了解 Azure Cosmos DB 具有对新文档或修改后文档通知的原生支持，以及使用此功能非常简单。 
 - 通过利用逻辑应用，可以创建工作流，而无需编写任何代码。
 - 使用 Azure 服务总线队列处理 HL7 FHIR 文档的分布。
 

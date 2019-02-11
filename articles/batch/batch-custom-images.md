@@ -2,18 +2,18 @@
 title: 基于自定义映像预配 Azure Batch 池 | Microsoft Docs
 description: 基于自定义映像创建 Batch 池，以预配包含应用程序所需的软件和数据的计算节点。 自定义映像是配置计算节点以运行 Batch 工作负载的高效方法。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 10/04/2018
-ms.author: danlep
-ms.openlocfilehash: 7d0526dd233afd3976b22d257300681db0bfcead
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.author: lahugh
+ms.openlocfilehash: 0bc43b82a987ab065677bdbb56de73ef341c249d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885199"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752120"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>使用自定义映像创建虚拟机池 
 
@@ -50,7 +50,13 @@ ms.locfileid: "48885199"
 
 ### <a name="prepare-a-vm"></a>准备 VM 
 
-若要为映像创建新 VM，请使用 Batch 支持的 Azure 市场映像作为托管映像的基础映像，然后对其进行自定义。  若要获取 Azure Batch 支持的 Azure 市场映像参考列表，请参阅[列出节点代理 SKU](/rest/api/batchservice/account/listnodeagentskus) 操作。 不能使用第三方映像作为基础映像。
+若要为映像创建新 VM，请使用 Batch 支持的 Azure 市场映像作为托管映像的基础映像，然后对其进行自定义。  若要获取 Azure Batch 支持的 Azure 市场映像参考列表，请参阅[列出节点代理 SKU](/rest/api/batchservice/account/listnodeagentskus) 操作。 
+
+> [!NOTE]
+> 不能使用具有附加许可和购买条款的第三方映像作为基础映像。 有关这些市场映像的信息，请参阅 [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+) 或 [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+) VM 指南。
+
 
 * 确保使用托管磁盘创建 VM。 这是创建 VM 时的默认存储设置。
 * 不要在 VM 上安装自定义脚本扩展等 Azure 扩展。 如果映像包含预装的扩展，在部署 Batch 池时 Azure 可能会遇到问题。
@@ -63,7 +69,7 @@ ms.locfileid: "48885199"
 
 ### <a name="create-an-image-from-one-or-more-snapshots"></a>基于一个或多个快照创建映像
 
-若要基于快照创建托管映像，请使用 Azure 命令行工具，例如 [az image create](/cli/azure/image#az_image_create) 命令。 可以通过指定 OS 磁盘快照并选择性地指定一个或多个数据磁盘快照来创建映像。
+若要基于快照创建托管映像，请使用 Azure 命令行工具，例如 [az image create](/cli/azure/image) 命令。 可以通过指定 OS 磁盘快照并选择性地指定一个或多个数据磁盘快照来创建映像。
 
 ## <a name="create-a-pool-from-a-custom-image-in-the-portal"></a>在 Azure 门户中使用自定义映像创建池
 

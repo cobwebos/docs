@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: saudas
-ms.openlocfilehash: a17e2fa4bef6890d59f7e66c6ede349f8dee3b8a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 3e8342a719bf9ae7174195f88b97972d7f13193c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280447"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465779"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中支持的 Kubernetes 版本
 
 Kubernetes 社区大约会每隔三个月发布次要版本。 这些版本包括新增功能和改进。 修补程序版本更为频繁（有时会每周发布），并且仅用于次要版本中的关键 Bug 修复。 这些修补程序版本包括针对影响大量客户以及在生产中基于 Kubernetes 运行的产品的安全漏洞或重大 Bug 的修复。
 
-[acs-engine][acs-engine] 在第一天提供了新的 Kubernetes 次要版本。 AKS 服务级别目标 (SLO) 将根据版本的稳定性在 30 天内发布 AKS 群集的次要版本。
+[aks-engine][aks-engine] 在第一天提供了新的 Kubernetes 次要版本。 AKS 服务级别目标 (SLO) 将根据版本的稳定性在 30 天内发布 AKS 群集的次要版本。
 
 ## <a name="kubernetes-version-support-policy"></a>Kubernetes 版本支持策略
 
@@ -41,19 +41,20 @@ AKS 支持以下四个 Kubernetes 次要版本：
 az aks get-versions --location eastus --output table
 ```
 
-输出类似于以下示例，其中显示 Kubernetes 版本 *1.11.3* 是可用的最新版本：
+输出类似于以下示例，其中显示 Kubernetes 版本 1.12.4 是可用的最新版本：
 
 ```
 KubernetesVersion    Upgrades
--------------------  ----------------------
-1.11.3               None available
-1.11.2               1.11.3
-1.10.8               1.11.2, 1.11.3
-1.10.7               1.10.8, 1.11.2, 1.11.3
-1.9.10               1.10.7, 1.10.8
-1.9.9                1.9.10, 1.10.7, 1.10.8
-1.8.15               1.9.9, 1.9.10
-1.8.14               1.8.15, 1.9.9, 1.9.10
+-------------------  -----------------------
+1.12.4               None available
+1.11.6               1.12.4
+1.11.5               1.11.6, 1.12.4
+1.10.12              1.11.5, 1.11.6
+1.10.9               1.10.12, 1.11.5, 1.11.6
+1.9.11               1.10.9, 1.10.12
+1.9.10               1.9.11, 1.10.9, 1.10.12
+1.8.15               1.9.10, 1.9.11
+1.8.14               1.8.15, 1.9.10, 1.9.11
 ```
 
 ## <a name="faq"></a>常见问题解答
@@ -84,7 +85,7 @@ KubernetesVersion    Upgrades
 有关如何升级群集的信息，请参阅[升级 Azure Kubernetes 服务 (AKS) 群集][aks-upgrade]。
 
 <!-- LINKS - External -->
-[acs-engine]: https://github.com/Azure/acs-engine
+[aks-engine]: https://github.com/Azure/aks-engine
 [azure-update-channel]: https://azure.microsoft.com/updates/?product=kubernetes-service
 
 <!-- LINKS - Internal -->

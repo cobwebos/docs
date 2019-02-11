@@ -3,19 +3,18 @@ title: 教程：使用 Azure Databricks 针对流数据执行情绪分析
 description: 了解如何将 Azure Databricks 与事件中心以及认知服务 API 配合使用，以便以接近实时的速度对流数据运行情绪分析。
 services: azure-databricks
 author: lenadroid
+ms.author: alehall
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.workload: Active
-ms.date: 10/23/2018
-ms.author: alehall
-ms.openlocfilehash: cf396dea6ee467267ea73379ea04026fc8cc53b2
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.date: 12/07/2018
+ms.openlocfilehash: 449d721683bd59646506db57d78b9535aa7d614d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636571"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100170"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>教程：使用 Azure Databricks 针对流数据执行情绪分析
 
@@ -173,7 +172,7 @@ ms.locfileid: "51636571"
 
     选择“创建”。
 
-5. 创建帐户后，请从“概览”选项卡中选择“显示访问密钥”。
+5. 创建帐户后，请从“概述”选项卡中选择“显示访问密钥”。
 
     ![显示访问密钥](./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-get-access-keys.png "显示访问密钥")
 
@@ -313,7 +312,7 @@ val customEventhubParameters =
   EventHubsConf(connectionString)
   .setMaxEventsPerTrigger(5)
 
-val incomingStream = spark.readStream.format("eventhubs").option(customEventhubParameters.toMap).load()
+val incomingStream = spark.readStream.format("eventhubs").options(customEventhubParameters.toMap).load()
 
 incomingStream.printSchema
 

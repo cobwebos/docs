@@ -1,28 +1,31 @@
 ---
-title: 使用 Azure 门户创建 SQL 数据库警报 | Microsoft 文档
+title: 使用 Azure 门户设置警报和通知 | Microsoft Docs
 description: 使用 Azure 门户创建 SQL 数据库警报，可在满足指定条件时触发通知或自动化。
 services: sql-database
 ms.service: sql-database
-ms.subservice: performance
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: howto
 author: aamalvea
 ms.author: aamalvea
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: 11777013eca0ba3a759635ef99c2cfa04104e24b
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 64e743010b3ae615817639d9b2531b2f99979498
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978989"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156896"
 ---
-# <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>使用 Azure 门户为 Azure SQL 数据库和数据仓库创建警报
+# <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>使用 Azure 门户为 Azure SQL 数据库和数据仓库创建警报
 
 ## <a name="overview"></a>概述
-本文介绍如何使用 Azure 门户设置 Azure SQL 数据库和数据仓库警报。 本文还提供了有关设置警报期限的最佳做法。    
+本文介绍如何使用 Azure 门户设置 Azure SQL 数据库和数据仓库警报。 当某些指标（例如数据库大小或 CPU 使用率）达到阈值时，警报可以向你发送电子邮件或调用 Webhook。 本文还提供了有关设置警报期限的最佳做法。    
+
+> [!IMPORTANT]
+> 此功能在托管实例中尚不可用。 作为替代方法，你可以使用 SQL 代理根据[动态管理视图](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)发送某些指标的电子邮件警报。
 
 可以根据监控指标或事件接收 Azure 服务的警报。
 
@@ -38,21 +41,21 @@ ms.locfileid: "50978989"
 可使用以下项配置并获取有关警报规则的信息
 
 * [Azure 门户](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
-* [命令行接口 (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
+* [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
+* [命令行接口 (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
 * [Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>使用 Azure 门户创建指标的警报规则
 1. 在此[门户](https://portal.azure.com/)，查找想要监视的资源并选中它。
 2. 在“监视”部分下，选择“警报(经典)”。 对于不同的资源，文本和图标可能会略有不同。  
    
-     ![监视](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertsClassicButton.JPG)
+     ![监视](media/sql-database-insights-alerts-portal/AlertsClassicButton.JPG)
   
-   - **仅限 SQL DW** ：单击“DWU 使用情况”图表。 选择“查看经典警报”
+   - **仅 SQL DW**：单击“DWU 使用情况”图表。 选择“查看经典警报”
 
 3. 选择“添加指标警报(经典)”按钮，并填写字段。
    
-    ![添加警报](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPageClassic.JPG)
+    ![添加警报](media/sql-database-insights-alerts-portal/AddDBAlertPageClassic.JPG)
 4. **命名**警报规则，并选择也在通知电子邮件中显示的“说明”。
 5. 选择想要监视的“指标”为该指标选择一个“条件”和“阈值”。 还选择触发警报前指标规则必须满足的时间段。 例如，如果使用时间段"PT5M"，且警报针对 CPU 高于 80% 的情况，则平均 CPU 高于 80% 达到 5 分钟时触发警报。 第一次触发结束后，当平均 CPU 低于 80% 的时间超过 5 分钟时，将再次触发。 每 1 分钟对 CPU 进行一次测量。 请参阅下表，了解支持的时间窗口和每个警报使用的聚合类型（并非所有警报都使用平均值）。   
 6. 如果触发警报时希望向管理员和共同管理员发送电子邮件，则选择“向所有者发送电子邮件...”。
@@ -116,6 +119,6 @@ ms.locfileid: "50978989"
 
 ## <a name="next-steps"></a>后续步骤
 * [获取 Azure 监视概述](../monitoring-and-diagnostics/monitoring-overview.md)，包括可收集和监视的信息的类型。
-* 了解[在警报中配置 Webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md)的详细信息。
-* 获取[诊断日志概述](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)收集有关服务的详细高频率指标。
+* 了解[在警报中配置 Webhook](../azure-monitor/platform/alerts-webhooks.md)的详细信息。
+* 获取[诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md)收集有关服务的详细高频率指标。
 * 获取[指标集合概述](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。

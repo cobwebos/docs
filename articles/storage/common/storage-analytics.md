@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/03/2017
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: 0f237b4d742c0c7de1e836e2b9d83502cfe1a30d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 233a0685bffba1192193f97b8d98dabd7c65d3c9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230978"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239768"
 ---
 # <a name="storage-analytics"></a>存储分析
 
@@ -73,13 +73,13 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 
 下表说明了日志名称中的每个属性。
 
-| 属性 | Description |
+| 属性 | 说明 |
 | --- | --- |
 | <service-name> |存储服务的名称 例如：blob、table 或 queue。 |
-| YYYY |用四位数表示的日志年份。 例如：2011。 |
+| YYYY |用四位数表示的日志年份。 例如：2011. |
 | MM |用两位数表示的日志月份。 例如：07。 |
 | DD |用两位数表示的日志月份。 例如：07。 |
-| hh |用两位数表示的日志起始小时，采用 24 小时 UTC 格式。 例如：18。 |
+| hh |用两位数表示的日志起始小时，采用 24 小时 UTC 格式。 例如：18. |
 | mm |用两位数表示的日志起始分钟。 最新的存储分析版本中不支持该值，其值始终为 00。 |
 | <counter> |从零开始且具有六位数字的计数器，表示在 1 小时内为存储服务生成的日志 Blob 数。 此计数器从 000000 开始。 例如：000001。 |
 
@@ -96,7 +96,7 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 ### <a name="log-metadata"></a>日志元数据
 所有日志 Blob 与可用于确定 Blob 包含哪些日志记录数据的元数据一起存储。 下表说明了每个元数据属性。
 
-| 属性 | Description |
+| 属性 | 说明 |
 | --- | --- |
 | LogType |描述日志是否包含与读取、写入或删除操作有关的信息。 该值可能包含一种类型，也可能包含所有三种类型的组合并用逗号隔开。 示例 1：write；示例 2：read,write；示例 3：read,write,delete。 |
 | StartTime |日志中的项的最早时间，采用 YYYY-MM-DDThh:mm:ssZ 形式。 例如：2011-07-31T18:21:46Z。 |
@@ -135,9 +135,9 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 
 每天记录存储帐户的 Blob 服务的容量数据，并写入两个表实体。 一个实体提供用户数据的统计信息，另一个实体提供有关存储分析所使用的 `$logs` Blob 容器的统计信息。 `$MetricsCapacityBlob` 表包含以下统计信息：
 
-* **Capacity**：存储帐户的 Blob 服务使用的存储量（字节）。
+* **容量**：存储帐户的 Blob 服务使用的存储量（以字节为单位）。
 * **ContainerCount**：存储帐户的 Blob 服务中的 blob 容器数。
-* **ObjectCount**：存储帐户的 Blob 服务中的提交和未提交的块或页 blob 数量。
+* **ObjectCount**：存储帐户的 Blob 服务中已提交和未提交的块 blob 或页 blob 数量。
 
 有关容量指标的详细信息，请参阅[存储分析指标表架构](https://msdn.microsoft.com/library/hh343264.aspx)。
 

@@ -1,19 +1,20 @@
 ---
-title: 配置用于 Azure ExpressRoute Microsoft 对等互连的路由筛选器：PowerShell | Microsoft Docs
+title: 配置用于 Microsoft 对等互连的路由筛选器 - ExpressRoute：PowerShell：Azure | Microsoft Docs
 description: 本文介绍如何使用 PowerShell 配置用于 Microsoft 对等互连的路由筛选器
 documentationcenter: na
 services: expressroute
 author: ganesr
 ms.service: expressroute
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: ganesr
-ms.openlocfilehash: d4ef500185675ab84485c5dd6a9af4034c57b060
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec18
+ms.openlocfilehash: 30388185c415346b298dbada715b17e631c66769
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419257"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096290"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>配置用于 Microsoft 对等互连的路由筛选器：PowerShell
 > [!div class="op_single_selector"]
@@ -111,7 +112,7 @@ Get-AzureRmBgpServiceCommunity
 
 列出要在路由筛选器中使用的 BGP 团体值列表。 例如，用于 Dynamics 365 服务的 BGP 团体值为 12076:5040。
 
-## <a name="filter"></a>步骤 2：创建路由筛选器和筛选规则
+## <a name="filter"></a>步骤 2：创建路由筛选器和筛选器规则
 
 1 个路由筛选器只能有 1 个规则，并且规则类型必须是“允许”。 此规则可以有与之关联的 BGP 团体值列表。
 

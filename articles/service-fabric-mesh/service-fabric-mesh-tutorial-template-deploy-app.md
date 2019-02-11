@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/18/2018
+ms.date: 01/11/2019
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: cca18b2aa5cb6f27df45e4b63e55251bea058625
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 906efa00243cc622c374d442a7982d87d106079b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968843"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158836"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>教程：使用模板将应用程序部署到 Service Fabric 网格
 
@@ -51,7 +51,7 @@ ms.locfileid: "46968843"
 
 * [安装 Docker](service-fabric-mesh-howto-setup-developer-environment-sdk.md#install-docker)
 
-* [在本地安装 Azure CLI 和 Service Fabric 网格 CLI](service-fabric-mesh-howto-setup-cli.md#install-the-service-fabric-mesh-cli-locally)。
+* [在本地安装 Azure CLI 和 Service Fabric 网格 CLI](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli)。
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
@@ -109,7 +109,7 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry --sku 
 
 ## <a name="push-the-images-to-azure-container-registry"></a>向 Azure 容器注册表推送映像
 
-本教程使用待办事项示例应用程序作为示例。  [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) 和 [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) 服务的容器映像可在 Docker 中心找到。 有关如何在 Visual Studio 中构建应用程序的信息，请参阅[构建 Servic Fabric 网格 Web 应用](service-fabric-mesh-tutorial-create-dotnetcore.md)。 Service Fabric 网格可以运行 Windows 或 Linux Docker 容器。  如果你使用的是 Linux 容器，请在 Docker 中选择“切换到 Linux 容器”。  如果你使用的是 Windows 容器，请在 Docker 中选择“切换到 Windows 容器”。
+本教程使用待办事项示例应用程序作为示例。  [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) 和 [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) 服务的容器映像可在 Docker 中心找到。 有关如何在 Visual Studio 中构建应用程序的信息，请参阅[构建 Service Fabric 网格 Web 应用](service-fabric-mesh-tutorial-create-dotnetcore.md)。 Service Fabric 网格可以运行 Windows 或 Linux Docker 容器。  如果你使用的是 Linux 容器，请在 Docker 中选择“切换到 Linux 容器”。  如果你使用的是 Windows 容器，请在 Docker 中选择“切换到 Windows 容器”。
 
 要将映像推送到 ACR 实例，首先必须具有容器映像。 如果尚不具有任何本地容器映像，请使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令从 Docker 中心拉取 [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) 和 [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) 映像。
 
@@ -236,7 +236,7 @@ Service Fabric 网格应用程序是一种 Azure 资源，可以使用 Azure 资
   },
   "resources": [
     {
-      "apiVersion": "2018-07-01-preview",
+      "apiVersion": "2018-09-01-preview",
       "name": "MyMeshApplication",
       "type": "Microsoft.ServiceFabricMesh/applications",
       "location": "[parameters('location')]",
@@ -319,7 +319,7 @@ Service Fabric 网格应用程序是一种 Azure 资源，可以使用 Azure 资
       }
     },
     {
-      "apiVersion": "2018-07-01-preview",
+      "apiVersion": "2018-09-01-preview",
       "name": "ServiceAVolume",
       "type": "Microsoft.ServiceFabricMesh/volumes",
       "location": "[parameters('location')]",
@@ -346,7 +346,7 @@ Service Fabric 网格应用程序是一种 Azure 资源，可以使用 Azure 资
 在参数文件中，更新以下参数值：
 |参数|值|
 |---|---|
-|location|要将应用程序部署到的区域。  例如，“eastus”。|
+|位置|要将应用程序部署到的区域。  例如，“eastus”。|
 |registryPassword|之前在[检索注册表凭据](#retrieve-credentials-for-the-registry)中获取的密码。 模板中的此参数是安全字符串，不会显示在部署状态或 `az mesh service show` 命令中。|
 |registryUserName|在[检索注册表凭据](#retrieve-credentials-for-the-registry)中获取的用户名。|
 |registryServer|在[检索注册表凭据](#retrieve-credentials-for-the-registry)中获取的注册表服务器名称。|
@@ -359,16 +359,34 @@ Service Fabric 网格应用程序是一种 Azure 资源，可以使用 Azure 资
 az mesh deployment create --resource-group myResourceGroup --template-file c:\temp\mesh_rp.windows.json --parameters c:\temp\mesh_rp.windows.parameters.json
 ```
 
-几分钟后，应该看到：
+此命令将生成如下所示的 JSON 代码片段。 在 JSON 输出的 ```outputs``` 部分下，复制 ```publicIPAddress``` 属性。
 
-`todolistappNetwork has been deployed successfully on todolistappNetwork with public ip address <IP Address>`
+```json
+"outputs": {
+    "publicIPAddress": {
+    "type": "String",
+    "value": "40.83.78.216"
+    }
+}
+```
+
+此信息来自 ARM 模板中的 ```outputs``` 节。 如下所示，此节引用网关资源来获取公共 IP 地址。 
+
+```json
+  "outputs": {
+    "publicIPAddress": {
+      "value": "[reference('todolistappGateway').ipAddress]",
+      "type": "string"
+    }
+  }
+```
 
 ## <a name="open-the-application"></a>打开应用程序
 
 在应用程序成功部署后，获取服务终结点的公用 IP 地址。 部署命令将返回服务终结点的公共 IP 地址。 （可选）还可以通过查询网络资源来查找服务终结点的公共 IP 地址。 此应用程序的网络资源名称是 `todolistappNetwork`，使用以下命令提取与其相关的信息。 
 
 ```azurecli
-az mesh network show --resource-group myResourceGroup --name todolistappNetwork
+az mesh gateway show --resource-group myResourceGroup --name todolistappGateway
 ```
 
 在 Web 浏览器中导航到该 IP 地址。

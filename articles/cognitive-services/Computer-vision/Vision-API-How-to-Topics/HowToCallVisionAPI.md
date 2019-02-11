@@ -1,21 +1,22 @@
 ---
-title: 示例：调用计算机视觉 API
+title: 示例：调用分析图像 API - 计算机视觉
 titlesuffix: Azure Cognitive Services
 description: 了解如何通过使用 Azure 认知服务中的 REST 调用计算机视觉 API。
 services: cognitive-services
 author: KellyDF
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: sample
 ms.date: 01/20/2017
 ms.author: kefre
-ms.openlocfilehash: e8297fbe59ebe2dea9caf112ebea4517447cf9e0
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.custom: seodec18
+ms.openlocfilehash: 4cca3db778347e9bd8c8b881d85f0882f6b90f72
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981739"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216245"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>示例：如何调用计算机视觉 API
 
@@ -26,10 +27,10 @@ ms.locfileid: "45981739"
 
 ### <a name="Prerequisites">先决条件</a> 
 图像 URL 或本地存储图像的路径。
-  * 支持的输入方法：原始图像二进制，采用应用程序/业务流程流或图像 URL 的形式
-  * 支持的图像格式：JPEG、PNG、GIF、BMP
+  * 支持的输入方法：原始图像二进制，采用应用程序/八位字节流或图像 URL 的形式
+  * 支持的图像格式：JPEG、PNG、GIF 和 BMP
   * 图像文件大小：小于 4MB
-  * 图像尺寸：大于 50 x 50 像素
+  * 图像维度：大于 50 x 50 像素
   
 下面的示例演示了以下功能：
 
@@ -119,7 +120,7 @@ POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?details=cele
 
 本例中的所有 v1 查询参数的行为均相同。  如果 visualFeatures = categories 未指定，则将隐式启用。
 
-### <a name="Step3">步骤 3：检索并了解 analyze&visualFeatures=Tags, Description 的 JSON 输出 </a>
+### <a name="Step3">步骤 3：检索并了解 analyze&visualFeatures=Tags, Description 的 JSON 输出</a>
 
 下面是一个示例：
 ```

@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/16/2018
-ms.openlocfilehash: 38a7a4fa3ac0b9bfb554deeb8086dca398e5cdc1
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: f3a8dd001f4d1d930c700847f0725e00b7c29ecf
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956164"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715101"
 ---
 # <a name="quickstart-query-data-using-the-azure-data-explorer-python-library"></a>快速入门：使用 Azure 数据资源管理器 Python 库查询数据
 
@@ -32,7 +32,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 安装 azure-kusto-data。
 
 ```
-pip install azure-kusto-data==0.0.13
+pip install azure-kusto-data
 ```
 
 ## <a name="add-import-statements-and-constants"></a>添加导入语句和常量
@@ -66,7 +66,7 @@ KUSTO_CLUSTER = "https://help.kusto.windows.net/"
 KUSTO_DATABASE  = "Samples"
 ```
 
-现在构造连接字符串。 此示例使用设备身份验证来访问群集。 此外你可以使用 AAD 应用程序证书、AAD 应用程序密钥和 AAD 用户和密码。
+现在构造连接字符串。 此示例使用设备身份验证来访问群集。 此外可以使用 [AAD 应用程序证书](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24)、[AAD 应用程序密钥](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20)以及 [AAD 用户和密码](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34)。
 
 ```python
 KCSB = KustoConnectionStringBuilder.with_aad_device_authentication(KUSTO_CLUSTER)
@@ -75,7 +75,7 @@ KCSB.authority_id = AAD_TENANT_ID
 
 ## <a name="connect-to-azure-data-explorer-and-execute-a-query"></a>连接到Azure 数据资源管理器并执行查询
 
-针对群集执行查询，并将输出存储在数据帧中。 此代码运行时，它将返回如下消息：要登录，请使用 Web 浏览器打开页面 https://microsoft.com/devicelogin，并输入代码 F3W4VWZDM 进行身份验证。 按照步骤登录，然后返回以运行下一个代码块。
+针对群集执行查询，并将输出存储在数据帧中。 运行此代码时，它会返回如下消息：若要登录，请使用 Web 浏览器打开页面 https://microsoft.com/devicelogin，然后输入代码 F3W4VWZDM 进行身份验证。 按照步骤登录，然后返回以运行下一个代码块。
 
 ```python
 KUSTO_CLIENT  = KustoClient(KCSB)

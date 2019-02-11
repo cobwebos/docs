@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/18/2017
 ms.author: manayar
-ms.openlocfilehash: be56fd80229010090216413a7c1833d94e8bac25
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: b2d1738b85799079b3af7ab39c5cb1799a38d382
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739560"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339869"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>将规模集模板转换为托管磁盘规模集模板
 
@@ -126,7 +126,7 @@ ms.locfileid: "50739560"
 
 ## <a name="data-disks"></a>数据磁盘数
 
-进行上述更改后，规模集将使用托管磁盘作为 OS 磁盘，但数据磁盘怎么办？ 若要添加数据磁盘，请在与“osDisk”同一级别的“storageProfile”下添加“dataDisks”属性。 该属性的值是 JSON 对象列表，其中每个对象均具有属性“lun”（必须对于 VM 上的每个数据磁盘唯一）、“createOption”（“empty”是当前唯一支持的选项）和“diskSizeGB”（磁盘的大小，以 GB 为单位；必须大于 0 且小于 1024）， 如以下示例所示： 
+进行上述更改后，规模集将使用托管磁盘作为 OS 磁盘，但数据磁盘怎么办？ 若要添加数据磁盘，请在与“osDisk”同一级别的“storageProfile”下添加“dataDisks”属性。 该属性的值是 JSON 对象列表，其中每个对象均具有属性“lun”（必须对于 VM 上的每个数据磁盘唯一）、“createOption”（“empty”是当前唯一支持的选项）和“diskSizeGB”（磁盘的大小，以 GB 为单位；必须大于 0 且小于 1024）， 如以下示例所示：
 
 ```
 "dataDisks": [
@@ -144,7 +144,7 @@ ms.locfileid: "50739560"
 
 
 ## <a name="next-steps"></a>后续步骤
-有关使用规模集的示例 Resource Manager 模板，请在 [Azure 快速入门模板 github 存储库](https://github.com/Azure/azure-quickstart-templates)中搜索“vmss”。
+有关使用规模集的示例资源管理器模板，请在 [Azure 快速入门模板 GitHub 存储库](https://github.com/Azure/azure-quickstart-templates)中搜索“vmss”。
 
 有关一般信息，请参阅[规模集的主要登陆页](https://azure.microsoft.com/services/virtual-machine-scale-sets/)。
 

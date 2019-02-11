@@ -1,31 +1,31 @@
 ---
-title: Azure Active Directory 域服务：部署 Azure Active Directory 应用程序代理 | Microsoft 文档
+title: Azure Active Directory 域服务：部署 Azure Active Directory 应用程序代理 | Microsoft Docs
 description: 在 Azure Active Directory 域服务托管域上使用 Azure AD 应用程序代理
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 96ef005f095e5ab774a88ec766080f647414a7ce
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: e787d946aa62f0bcb6615d89192e7d9e4d91ffe4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155535"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197031"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>在 Azure AD 域服务托管域上部署 Azure AD 应用程序代理
 Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问的本地应用程序，帮助用户为远程辅助角色提供支持。 使用 Azure AD 域服务，现在可以将本地运行的旧版应用程序提升并转移到 Azure 基础结构服务。 然后，可以使用 Azure AD 应用程序代理发布这些应用程序，以允许组织中的用户进行安全远程访问。
 
-如果不熟悉 Azure AD 应用程序代理，可通过[如何提供对本地应用程序的安全远程访问](../active-directory/manage-apps/application-proxy.md)一文详细了解此功能。
+如果不熟悉 Azure AD 应用程序代理，可通过以下文章详细了解此功能：[如何提供对本地应用程序的安全远程访问](../active-directory/manage-apps/application-proxy.md)。
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
@@ -42,7 +42,7 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 ## <a name="task-1---enable-azure-ad-application-proxy-for-your-azure-ad-directory"></a>任务 1 - 为 Azure AD 目录启用 Azure AD 应用程序代理
 执行以下步骤可为 Azure AD 目录启用 Azure AD 应用程序代理。
 
-1. 在 [Azure 门户](http://portal.azure.com)中，以管理员身份登录。
+1. 在 [Azure 门户](https://portal.azure.com)中，以管理员身份登录。
 
 2. 单击“Azure Active Directory”以显示目录概述。 单击“企业应用程序”。
 

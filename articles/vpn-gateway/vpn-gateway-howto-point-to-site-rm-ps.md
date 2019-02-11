@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/24/2018
+ms.date: 11/30/2018
 ms.author: cherylmc
-ms.openlocfilehash: ced92cd28c12443234b47353548a9c968cc175ac
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: deba3962adb6d1fed8c52376c9c953a96bd6ce4e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095580"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699085"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>使用本机 Azure 证书身份验证配置与 VNet 的点到站点连接：PowerShell
 
@@ -51,7 +51,7 @@ ms.locfileid: "50095580"
 * **订阅：** 如果有多个订阅，请验证是否正在使用正确的订阅。
 * **资源组：TestRG**
 * **位置：美国东部**
-* **DNS 服务器**：要用于名称解析的 DNS 服务器的 IP 地址。 （可选）
+* **DNS 服务器：** 要用于名称解析的 DNS 服务器的 IP 地址。 （可选）
 * **GW 名称：Vnet1GW**
 * **公共 IP 名称：VNet1GWPIP**
 * **VpnType：RouteBased** 
@@ -60,22 +60,13 @@ ms.locfileid: "50095580"
 
 在本部分中，将登录并声明用于此配置的值。 声明的值会在示例脚本中使用。 更改这些值以反映自己的环境。 也可以使用声明的值完成这些步骤作为练习。
 
-1. 使用提升的权限打开 PowerShell 控制台，并登录到 Azure 帐户。 该 cmdlet 会提示提供登录凭据。 登录后它会下载帐户设置，以便这些信息可供 Azure PowerShell 使用。 如果未在本地运行 PowerShell，而是在浏览器中使用 Azure Cloud Shell“试用”，则可以跳到本部分的步骤 2。
+### <a name="sign-in"></a>登录
 
-  ```azurepowershell
-  Connect-AzureRmAccount
-  ```
-2. 获取 Azure 订阅的列表。
+[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
-  ```azurepowershell-interactive
-  Get-AzureRmSubscription
-  ```
-3. 指定要使用的订阅。
+### <a name="declare-variables"></a>声明变量
 
-  ```azurepowershell-interactive
-  Select-AzureRmSubscription -SubscriptionName "Name of subscription"
-  ```
-4. 声明要使用的值。 使用以下示例，在必要时会值替换为自己的值。
+声明要使用的值。 使用以下示例，在必要时会值替换为自己的值。
 
   ```azurepowershell-interactive
   $VNetName  = "VNet1"
@@ -406,6 +397,6 @@ VPN 客户端配置文件包含的设置用来对设备进行配置以通过 P2S
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
-连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。 若要详细了解网络和虚拟机，请参阅 [Azure 和 Linux VM 网络概述](../virtual-machines/linux/azure-vm-network-overview.md)。
+连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/)。 若要详细了解网络和虚拟机，请参阅 [Azure 和 Linux VM 网络概述](../virtual-machines/linux/azure-vm-network-overview.md)。
 
 有关 P2S 故障排除信息，请参阅[故障排除：Azure 点到站点连接问题](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)。

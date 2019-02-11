@@ -10,16 +10,16 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 0c6062fb9e9708b0fa6aef7a6d7390287cbf69d4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 58e59e4faa135e24124f494d90437b49caa30129
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124029"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098657"
 ---
-# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>方案：逻辑应用的异常处理和错误日志记录
+# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>场景：逻辑应用的异常处理和错误日志记录
 
-本方案介绍如何扩展逻辑应用以更好地支持异常处理。 我们已经通过一个实际用例回答了“Azure 逻辑应用是否支持异常和错误处理？”的问题
+本方案介绍如何扩展逻辑应用以更好地支持异常处理。 我们已使用实际的用例回答了以下问题：“Azure 逻辑应用是否支持异常和错误处理？”
 
 > [!NOTE]
 > 当前的 Azure 逻辑应用架构提供操作响应的标准模板。 此模板包括内部验证以及从 API 应用返回的错误响应。
@@ -57,7 +57,7 @@ ms.locfileid: "43124029"
 
 我们使用如下面示例中所示的“Request”触发器。
 
-```` json
+``` json
 "triggers": {
         "request": {
           "type": "request",
@@ -90,7 +90,7 @@ ms.locfileid: "43124029"
         }
       },
 
-````
+```
 
 
 ## <a name="steps"></a>Steps

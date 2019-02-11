@@ -1,6 +1,6 @@
 ---
-title: 教程 - 使用 PowerShell 将 Azure 专用 HSM 部署到现有虚拟网络中 | Microsoft Docs
-description: 使用 PowerShell 将 HSM 部署到现有虚拟网络中
+title: 教程：使用 PowerShell 部署到现有虚拟网络中 - Azure 专用 HSM | Microsoft Docs
+description: 本教程介绍如何使用 PowerShell 将专用 HSM 部署到现有虚拟网络中
 services: dedicated-hsm
 documentationcenter: na
 author: barclayn
@@ -8,17 +8,17 @@ manager: mbaldwin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: a714a52ecd6398fde459c5814b8a6cf223655eff
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 3f165b5d372168ef3ce6fea75547513a0148ae5b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52318751"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086295"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>教材 - 使用 PowerShell 将 HSM 部署到现有虚拟网络中
 
@@ -37,7 +37,7 @@ Azure 专用 HSM 服务提供供单个客户使用的物理设备，由客户对
 
 ## <a name="prerequisites"></a>先决条件
 
-Azure 专用 HSM 目前在 Azure 门户中不可用，因此与该服务的所有交互将通过命令行或 PowerShell 进行。 本教程将在 Azure Cloud Shell 中使用 PowerShell。 如果不熟悉 PowerShell，请按 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-5.0.0)中的入门说明操作。
+Azure 专用 HSM 目前在 Azure 门户中不可用，因此与该服务的所有交互将通过命令行或 PowerShell 进行。 本教程将在 Azure Cloud Shell 中使用 PowerShell。 如果不熟悉 PowerShell，请按以下入门说明操作：[Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-5.0.0)。
 
 假设：
 
@@ -143,6 +143,14 @@ $delegation = New-AzureRmDelegation `
 ```
 
 ```powershell
+$hsmsubnet = New-AzureRmVirtualNetworkSubnetConfig ` 
+  -Name hsmsubnet ` 
+  -AddressPrefix 10.2.1.0/24 ` 
+  -Delegation $delegation 
+
+```
+
+```powershell
 
 $gwsubnet= New-AzureRmVirtualNetworkSubnetConfig `
   -Name GatewaySubnet `
@@ -179,7 +187,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName myRG `
 
 ![预配状态](media/tutorial-deploy-hsm-powershell/progress-status.png)
 
-成功完成以后，会显示“provisioningState”: “成功”，此时可以登录到现有的虚拟机，并使用 SSH 确保 HSM 设备的可用性。
+成功完成以后，会显示“provisioningState”:“成功”，此时可以登录到现有的虚拟机，并使用 SSH 确保 HSM 设备的可用性。
 
 ## <a name="verifying-the-deployment"></a>验证部署
 

@@ -12,30 +12,30 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 1/9/2019
 ms.author: rkarlin
-ms.openlocfilehash: f4bc90b2d1a80125ae88b4b5c4c11e42a34a985a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 98d2d29e7822d9ca97ba488fcf67298a0b40efbf
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240420"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265458"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure 安全中心支持的平台和功能
 
-使用经典部署模式和资源管理器部署模式创建的虚拟机 (VM) 和计算机支持安全状态监视和建议。
+通过使用经典部署模式和资源管理器部署模式创建的虚拟机 (VM) 和计算机支持安全状态监视和建议。
 
 > [!NOTE]
 > 了解 Azure 资源的[经典部署模型和 Resource Manager 部署模型](../azure-classic-rm.md)。
 >
 >
 
-## <a name="supported-platforms"></a>支持的平台 
+## <a name="platforms-that-support-the-data-collection-agent"></a>支持数据收集代理的平台 
 
 本部分列出了 Azure 安全中心代理可在其上运行并从中收集数据的平台。
 
 ### <a name="supported-platforms-for-windows-computers-and-vms"></a>Windows 计算机和 VM 支持的平台
-支持的 Windows 操作系统：
+支持以下 Windows 操作系统：
 
 * Windows Server 2008
 * Windows Server 2008 R2
@@ -43,26 +43,25 @@ ms.locfileid: "51240420"
 * Windows Server 2012 R2
 * Windows Server 2016
 
+> [!NOTE]
+> 与 Windows Defender ATP 集成仅支持 Windows Server 2012 R2 和 Windows Server 2016。
+>
+>
 
 ### <a name="supported-platforms-for-linux-computers-and-vms"></a>Linux 计算机和 VM 支持的平台
-支持的 Linux 操作系统：
+支持以下 Linux 操作系统：
 
-* Ubuntu 版本 12.04 LTS、14.04 LTS、16.04 LTS
-* Debian 版本 6、7、8、9
-* CentOS 版本 5、6、7
-* Red Hat Enterprise Linux (RHEL) 版本 5、6、7
-* SUSE Linux Enterprise Server (SLES) 版本 11、12
-* Oracle Linux 版本 5、6、7
-* Amazon Linux 2012.09 - 2017
-* 仅 x86_64 平台（64 位）支持 Openssl 1.1.0
-
-> [!NOTE]
-> Linux 操作系统暂不支持虚拟机行为分析。
->
->
+* Ubuntu 版本 12.04 LTS、14.04 LTS 和 16.04 LTS。
+* Debian 版本 6、7、8 和 9。
+* CentOS 版本 5、6 和 7。
+* Red Hat Enterprise Linux (RHEL) 版本 5、6 和 7。
+* SUSE Linux Enterprise Server (SLES) 版本 11 和 12。
+* Oracle Linux 版本 5、6 和 7。
+* Amazon Linux 2012.09 - 2017。
+* 仅 x86_64 平台（64 位）支持 OpenSSL 1.1.0。
 
 ## <a name="vms-and-cloud-services"></a>VM 和云服务
-此外还支持云服务中运行的 VM。 仅监视云服务 web 和在生产槽运行的辅助角色。 若要了解有关云服务的详细信息，请参阅[云服务概述](../cloud-services/cloud-services-choose-me.md)。
+此外还支持云服务中运行的 VM。 仅监视云服务 Web 和在生产槽运行的辅助角色。 若要了解有关云服务的详细信息，请参阅[云服务概述](../cloud-services/cloud-services-choose-me.md)。
 
 
 ## <a name="supported-iaas-features"></a>支持的 IaaS 功能
@@ -75,24 +74,43 @@ ms.locfileid: "51240420"
 |环境|Azure|非 Azure|Azure|非 Azure|
 |VMBA 威胁检测警报|✔|✔|✔（在支持的版本上）|✔|
 |基于网络的威胁检测警报|✔|X|✔|X|
-|Windows Defender ATP 集成*|✔（在支持的版本上）|✔|X|X|
+|Windows Defender ATP 集成|✔（在支持的版本上）|✔|X|X|
 |允许缺失修补程序|✔|✔|✔|✔|
 |安全配置|✔|✔|✔|✔|
-|反恶意软件|✔|✔|X|X|
+|终结点保护|✔|✔|X|X|
 |JIT VM 访问|✔|X|✔|X|
 |自适应应用程序控制|✔|X|X|X|
 |FIM|✔|✔|✔|✔|
 |磁盘加密|✔|X|✔|X|
 |第三方部署|✔|X|✔|X|
 |NSG|✔|X|✔|X|
-|Filess 威胁检测|✔|✔|X|X|
+|无文件威胁检测|✔|✔|X|X|
 |网络映射|✔|X|✔|X|
 |自适应网络控制|✔|X|✔|X|
 
-\* 公共预览版目前支持这些功能。
 
+### <a name="supported-endpoint-protection-solutions"></a>受支持的终结点保护解决方案
 
-## <a name="supported-paas-features"></a>支持的 PaaS 功能
+下表提供了一个矩阵：
+ - 是否可以使用 Azure 安全中心安装每个解决方案。
+ - 安全中心可以发现哪些保护解决方案。 如果发现其中一个终结点保护解决方案，安全中心将建议不要安装。
+
+| 终结点保护| 平台 | 安全中心安装 | 安全中心发现 |
+|------|------|-----|-----|
+| Windows Defender (Microsoft Antimalware)| Windows Server 2016| 否，内置到 OS| 是 |
+| System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2、2012、2008 R2（请参阅以下备注） | 通过扩展 | 是 |
+| Trend Micro – 所有版本 | Windows Server 系列  | 否 | 是 |
+| Symantec v12.1.1100+| Windows Server 系列  | 否 | 是 |
+| McAfee v10+ | Windows Server 系列  | 否 | 是 |
+| Kaspersky| Windows Server 系列  | 否 | 否  |
+| Sophos| Windows Server 系列  | 否 | 否  |
+
+> [!NOTE]
+> - 在 Windows Server 2008 R2 虚拟机上检测 System Center Endpoint Protection (SCEP) 需要在 PowerShell 3.0（或更高版本）之后安装 SCEP。
+>
+>
+
+## <a name="supported-paas-features"></a>支持的 PaaS 功能 
 
 
 |服务|建议|威胁检测|
@@ -100,20 +118,22 @@ ms.locfileid: "51240420"
 |SQL|✔| ✔|
 |PostGreSQL*|✔| ✔|
 |MySQL*|✔| ✔|
-|Blob 存储帐户*|✔| ✔|
+|Azure Blob 存储帐户*|✔| ✔|
 |应用程序服务|✔| ✔|
 |云服务|✔| X|
-|Vnet|✔| NA|
+|VNet|✔| NA|
 |子网|✔| NA|
 |NIC|✔| ✔|
 |NSG|✔| NA|
 |订阅|✔| ✔|
 
-\* 公共预览版目前支持这些功能。
+\* 公共预览版目前支持这些功能。 
+
+
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md) - 了解如何规划和了解设计注意事项，以适应 Azure 安全中心
-- [Azure 安全中心按类型划分的安全警报](security-center-alerts-type.md#virtual-machine-behavioral-analysis) - 了解关于安全中心中虚拟机行为分析和故障转储内存分析的详细信息
-- [Azure 安全中心常见问题解答](security-center-faq.md) - 查找有关使用服务的常见问题
-- [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章
+- 了解如何[规划并理解设计注意事项，以便采用 Azure 安全中心](security-center-planning-and-operations-guide.md)。
+- 了解关于[安全中心中虚拟机行为分析和故障转储内存分析的详细信息](security-center-alerts-type.md#virtual-machine-behavioral-analysis)。
+- 查找[有关使用 Azure 安全中心的常见问题](security-center-faq.md)。
+- 查找[关于 Azure 安全性和符合性的博客文章](https://blogs.msdn.com/b/azuresecurity/)。

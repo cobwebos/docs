@@ -1,5 +1,5 @@
 ---
-title: 将 Draft 与 Azure 容器服务及 Azure 容器注册表配合使用
+title: （已弃用）将 Draft 与 Azure 容器服务及 Azure 容器注册表配合使用
 description: 创建 ACS Kubernetes 群集和 Azure 容器注册表，使用 Draft 在 Azure 中创建首个应用程序。
 services: container-service
 author: squillace
@@ -9,16 +9,19 @@ ms.topic: article
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: c635a869506918ab7ee032df349eb307987c1284
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bd1e4da67ef3f2ffce94c62e1dbc151aa4680e54
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432273"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854563"
 ---
-# <a name="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>结合使用 Draft 与 Azure 容器服务和 Azure 容器注册表，生成应用程序并将其部署到 Kubernetes
+# <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>（已弃用）结合使用 Draft 与 Azure 容器服务和 Azure 容器注册表，生成应用程序并将其部署到 Kubernetes
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> 有关本文中使用 Azure Kubernetes 服务的更新版本，请参阅 [结合使用 Draft 与 Azure Kubernetes 服务 (AKS)](../../aks/kubernetes-draft.md)。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 [Draft](https://aka.ms/draft) 是一种新的开放源工具，使用它可轻松地开发基于容器的应用程序并将其部署到 Kubernetes 群集，而无需了解大量有关 Docker 和 Kubernetes 的信息，甚至无需安装它们。 使用 Draft 之类的工具，你和你的团队可专注于使用 Kubernetes 生成应用程序，而不用太过关注基础结构。
 
@@ -95,7 +98,7 @@ waiting for AAD role to propagate.done
 }
 ```
 
-现在有了一个群集，可以使用 [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) 命令导入凭据。 现在群集有了本地配置文件，Helm 和 Draft 需要它来完成工作。
+现在有了一个群集，可以使用 [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes) 命令导入凭据。 现在群集有了本地配置文件，Helm 和 Draft 需要它来完成工作。
 
 ## <a name="install-and-configure-draft"></a>安装并配置 Draft
 

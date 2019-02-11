@@ -1,23 +1,24 @@
 ---
-title: 使用 C# 的 LUIS 机器人 - 教程 - Web 应用机器人 - Bot Framework SDK 4.0
-titleSuffix: Azure Cognitive Services
+title: 机器人 - C# - v4
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 使用 C# 构建集成了语言理解 (LUIS) 的聊天机器人。 此聊天机器人使用人力资源应用来快速实现一个机器人解决方案。 此机器人是使用 Bot Framework 4 和 Azure Web 应用机器人生成的。
 services: cognitive-services
 author: diberry
+ms.custom: seodec18
 manager: cjgronlund
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/25/2018
+ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 3ccec4fbd0fd69539e29e2f15f71115444bf0a48
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 98c65b7adfe35c1ca80846ff7619dad69c5ba266
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389286"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219220"
 ---
-# <a name="tutorial-luis-bot-in-c"></a>教程：使用 C# 的 LUIS 机器人
+# <a name="tutorial-luis-bot-in-c-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>教程：使用 Bot Framework 4.x 和 Azure Web 应用机器人的 C# 中的 LUIS 机器人
 使用 C#，可以构建集成了语言理解 (LUIS) 的聊天机器人。 此机器人使用 HomeAutomation 应用来实现机器人解决方案。 此机器人是使用 Azure [Web 应用机器人](https://docs.microsoft.com/azure/bot-service/)和 [Bot Framework 版本](https://github.com/Microsoft/botbuilder-js) v4 构建的。
 
 **本教程介绍如何执行下列操作：**
@@ -40,7 +41,7 @@ ms.locfileid: "49389286"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建新资源”。
 
-2. 在搜索框中，搜索并选择“Web 应用机器人”。 选择**创建**。
+2. 在搜索框中，搜索并选择“Web 应用机器人”。 选择“创建”。
 
 3. 在“机器人服务”中提供所需的信息：
 
@@ -63,7 +64,7 @@ ms.locfileid: "49389286"
     |SDK 语言|机器人的编程语言|**C#**|
     |聊天/基础机器人|机器人类型|**基础机器人**|
     
-5. 选择**创建**。 随即会创建机器人服务并将其部署到 Azure。 在此过程中，会创建名为 `luis-csharp-bot-XXXX` 的 LUIS 应用。 此名称基于上一部分所述的机器人名称和应用名称。
+5. 选择“创建”。 随即会创建机器人服务并将其部署到 Azure。 在此过程中，会创建名为 `luis-csharp-bot-XXXX` 的 LUIS 应用。 此名称基于上一部分所述的机器人名称和应用名称。
 
     [ ![创建 Web 应用机器人](./media/bfv4-csharp/create-web-app-service.png) ](./media/bfv4-csharp/create-web-app-service.png#lightbox)
 
@@ -300,6 +301,7 @@ Azure 机器人服务使用 Bot Framework SDK。 详细了解该 SDK 和机器�
 
 我们创建了一个 Azure 机器人服务，复制了机器人机密和 `.bot` 文件路径，并下载了代码的 zip 文件。 我们已将预生成的 HomeAutomation 域添加到在创建新 Azure 机器人服务过程中创建的 LUIS 应用，然后重新训练和并发布了该应用。 我们提取了代码项目，创建了环境文件 (`.env`)，并设置了机器人机密和 `.bot` 文件路径。 在 bot.js 文件中，我们添加了用于处理两个新意向的代码。 然后，我们在模拟器中测试了机器人，以查看针对某个新意向的话语做出的 LUIS 响应。 
 
+查看更多使用聊天机器人的[示例](https://github.com/Microsoft/AI)。 
 
 > [!div class="nextstepaction"]
 > [在 LUIS 中生成自定义域](luis-quickstart-intents-only.md)

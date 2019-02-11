@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: 95f01c9338afbf2ab5381001e4ab480185cedaeb
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 912a3ed558f8fabfcad517aeb7b7e864cf8f359e
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636877"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436919"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>了解数字孪生对象模型和空间智能图
 
@@ -48,11 +48,11 @@ Azure 数字孪生是一种 Azure IoT 服务，可提供物理环境及相关设
 - 角色：分配给空间图中的用户和设备的权限集，例如 `Space Administrator`、`User Administrator` 和 `Device Administrator`。
 - 角色分配：空间图中角色与对象之间的关联。 例如，可授予用户或服务主体管理空间图中某个空间的权限。
 - 安全密钥存储：为给定空间对象下的层次结构中的所有设备提供安全密钥，以允许设备与数字孪生进行安全通信。
-- 用户定义的函数 (UDF)：允许在空间图中进行可自定义的传感器遥测处理。 例如，UDF 可执行以下操作： 
-    - 设置传感器值。 
-    - 根据传感器读数执行自定义逻辑，并将输出设置为空间。 
-    - 将元数据附加到空间。 
-    - 满足预定义条件时发送通知。 目前，可以用 JavaScript 编写 UDF。
+- 用户定义的函数 (UDF)：允许在空间图中进行可自定义的传感器遥测处理。 例如，UDF 可执行以下操作：
+  - 设置传感器值。
+  - 根据传感器读数执行自定义逻辑，并将输出设置为空间。
+  - 将元数据附加到空间。
+  - 满足预定义条件时发送通知。 目前，可以用 JavaScript 编写 UDF。
 - 匹配器：用于确定为给定的遥测消息执行哪些 UDF 的对象。
 - 终结点：可以路由遥测消息和数字孪生事件的位置，例如 `Event Hub`、`Service Bus` 和 `Event Grid`。
 
@@ -103,9 +103,9 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 
 ## <a name="next-steps"></a>后续步骤
 
-* 要了解有关设备连接以及如何将遥测消息发送到数字孪生的信息，请参阅 [Azure 数字孪生设备连接与遥测数据入口](concepts-device-ingress.md)。
+- 要了解有关设备连接以及如何将遥测消息发送到数字孪生的信息，请参阅 [Azure 数字孪生设备连接与遥测数据入口](concepts-device-ingress.md)。
 
-* 要了解管理 API 限制和节流的信息，请参阅 [Azure 数字孪生 API 管理和限制](concepts-service-limits.md)。
+- 要了解管理 API 限制和节流的信息，请参阅 [Azure 数字孪生 API 管理和限制](concepts-service-limits.md)。
 
 <!-- Images -->
 [1]: media/concepts/digital-twins-spatial-graph-building.png

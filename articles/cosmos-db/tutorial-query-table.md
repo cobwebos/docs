@@ -1,24 +1,19 @@
 ---
-title: 如何查询 Azure Cosmos DB 中的表数据？ | Microsoft Docs
+title: 如何查询 Azure Cosmos DB 中的表数据？
 description: 了解如何查询 Azure Cosmos DB 中的表数据
-services: cosmos-db
-author: kanshiG
-manager: kfile
-editor: ''
-tags: ''
+author: wmengmsft
+ms.author: wmeng
 ms.service: cosmos-db
-ms.component: cosmosdb-table
-ms.devlang: na
+ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 11/15/2017
-ms.author: govindk
-ms.custom: mvc
-ms.openlocfilehash: 9d47928984330f2366da066c221e2bb502aa7193
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.reviewer: sngun
+ms.openlocfilehash: 9a47333c8cd8968c007a2d328e81d8ea8585971c
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442941"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037984"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>教程：使用表 API 查询 Azure Cosmos DB
 
@@ -90,7 +85,7 @@ https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and
 
 ```csharp
 CloudTableClient tableClient = account.CreateCloudTableClient();
-CloudTable table = tableClient.GetTableReference("people");
+CloudTable table = tableClient.GetTableReference("People");
 
 TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>()
     .Where(

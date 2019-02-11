@@ -4,15 +4,16 @@ description: 本文介绍了为了使用 Azure Site Recovery 执行 VMware 到 A
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
+services: site-recovery
 ms.topic: article
-ms.date: 11/11/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 85484c0d4c1838e158fe388afdfcbebc6de2f289
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 26ea184055f1496babf4f98f5d103b9af9c77ac0
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569740"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973445"
 ---
 # <a name="configuration-server-requirements-for-vmware-disaster-recovery-to-azure"></a>VMware 到 Azure 的灾难恢复的配置服务器要求
 

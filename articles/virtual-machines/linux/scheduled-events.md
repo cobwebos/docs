@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: f18892d32a385b41f3325623e21da1dd25af7253
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: df7f3dfa525c59ff8862c3b1a46f70be53a93a32
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42744701"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198739"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure 元数据服务：适用于 Linux VM 的计划事件
 
@@ -74,8 +74,8 @@ ms.locfileid: "42744701"
 
 | 版本 | 发布类型 | 区域 | 发行说明 | 
 | - | - | - | - | 
-| 2017-08-01 | 正式版 | 全部 | <li> 已从 Iaas VM 的资源名称中删除下划线<br><li>针对所有请求强制执行元数据标头要求 | 
-| 2017-03-01 | 预览 | 全部 | <li>初始版本
+| 2017-08-01 | 正式版 | All | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
+| 2017-03-01 | 预览 | All | <li>初始版本
 
 
 > [!NOTE] 
@@ -129,7 +129,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 | EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：VM 计划为暂停几秒钟。 暂停 CPU，但不会对内存、打开文件或网络连接造成影响。 <li>`Reboot`：VM 计划为重新启动。 （非持久性内存丢失。） <li>`Redeploy`：VM 计划为移动到另一个节点。 （临时磁盘丢失。） |
 | ResourceType | 此事件影响的资源的类型。 <br><br> 值： <ul><li>`VirtualMachine`|
 | 资源| 此事件影响的资源的列表。 此列表确保包含来自最多一个[更新域](manage-availability.md)的计算机，但可能不包含 UD 中的所有计算机。 <br><br> 示例： <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
-| EventStatus | 此事件的状态。 <br><br> 值： <ul><li>`Scheduled`：事件计划在 `NotBefore` 属性指定的时间之后启动。<li>`Started`：此事件已启动。</ul> 从不提供 `Completed` 或类似状态。 事件完成后不再返回事件。
+| EventStatus | 此事件的状态。 <br><br> 值： <ul><li>`Scheduled`：此事件计划在 `NotBefore` 属性指定的时间之后启动。<li>`Started`：此事件已启动。</ul> 从不提供 `Completed` 或类似状态。 事件完成后不再返回事件。
 | NotBefore| 一个时间，此事件可在该时间之后启动。 <br><br> 示例： <br><ul><li> 2016 年 9 月 19 日星期一 18:29:47 GMT  |
 
 ### <a name="event-scheduling"></a>事件计划
@@ -211,6 +211,6 @@ if __name__ == '__main__':
 
 ## <a name="next-steps"></a>后续步骤 
 - 观看 [Azure Friday 上的计划事件](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance)以查看演示。 
-- 在 [Azure 实例元数据计划事件 Github 存储库](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)中查看预定事件代码示例。
+- 在 [Azure 实例元数据计划事件 GitHub 存储库](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)中查看计划事件代码示例。
 - 详细了解[实例元数据服务](instance-metadata-service.md)中可用的 API。
 - 了解 [Azure 中 Linux 虚拟机的计划内维护](planned-maintenance.md)。

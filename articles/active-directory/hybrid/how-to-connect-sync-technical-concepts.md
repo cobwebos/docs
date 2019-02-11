@@ -4,23 +4,23 @@ description: 介绍 Azure AD Connect 同步的技术概念
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 731cfeb3-beaf-4d02-aef4-b02a8f99fd11
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: df3f244b70b52b6145b664c4e575c66542ada5b9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: b5af004cda60111259e95e833d6661e1d9d67ff1
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46309576"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487245"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect 同步：技术概念
 本文是[了解体系结构](how-to-connect-sync-technical-concepts.md)主题的总结。
@@ -86,7 +86,7 @@ metaverse 是相邻连接器空间中的所有已联接标识的合并视图。
 每当某条规则确定需要创建新的连接器空间对象时，它都称为设置。 但是，因为此操作只在连接器空间内发生，所以它不会延续到已连接数据源，直到执行导出。
 
 ## <a name="additional-resources"></a>其他资源
-* [Azure AD Connect Sync：自定义同步选项](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同步：自定义同步选项](how-to-connect-sync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
 
 <!--Image references-->

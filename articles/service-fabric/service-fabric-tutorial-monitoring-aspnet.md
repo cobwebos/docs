@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/14/2017
+ms.date: 01/17/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9bbff92b7706fd207894616b83580c4ddf85e5eb
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 27a114378cf72e766e894dc0dd6886197f56a841
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444778"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390251"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>教程：使用 Application Insights 在 Service Fabric 上监视和诊断 ASP.NET Core 应用程序
 
@@ -59,7 +59,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="set-up-an-application-insights-resource"></a>设置 Application Insights 资源
 
-Application Insights 是 Azure 的应用程序性能管理平台，也是 Service Fabric 建议用于应用程序监视和诊断的平台。 若要创建 Application Insights 资源，请导航到 [Azure 门户](https://portal.azure.com)。 单击左侧导航菜单中的“创建资源”，打开 Azure 市场。 单击“监视 + 管理”，然后单击“Application Insights”。
+Application Insights 是 Azure 的应用程序性能管理平台，也是 Service Fabric 建议用于应用程序监视和诊断的平台。 若要创建 Application Insights 资源，请导航到 [Azure 门户](https://portal.azure.com)。 单击左侧导航菜单中的“创建资源”，打开 Azure 市场。 单击“Application Insights”。
 
 ![创建新的 AI 资源](./media/service-fabric-tutorial-monitoring-aspnet/new-ai-resource.png)
 
@@ -76,13 +76,8 @@ Application Insights 是 Azure 的应用程序性能管理平台，也是 Servic
 
 执行以下步骤，为 VotingWeb 和 VotingData 服务配置 Application Insights：
 
-1. 右键单击服务的名称，然后单击“配置 Application Insights...”。
-
-    ![配置 AI](./media/service-fabric-tutorial-monitoring-aspnet/configure-ai.png)
->[!NOTE]
->根据项目类型，在右键单击服务名称时，可能需要单击“添加”->“Application Insights 遥测...”
-
-2. 单击“免费开始”。
+1. 右键单击服务的名称，然后选择“添加”->“Application Insights 遥测...”。    
+2. 单击“开始”。
 3. 登录到帐户（也可用于设置 Azure 订阅），选择在其中创建了 Application Insights 资源的订阅。 在“资源”下拉列表的“现有的 Application Insights 资源”下找到该资源。 单击“注册”将 Application Insights 添加到服务。
 
     ![注册 AI](./media/service-fabric-tutorial-monitoring-aspnet/register-ai.png)
@@ -101,8 +96,8 @@ Application Insights 有两个特定于 Service Fabric 的 NuGet，可以根据�
 2. 单击“NuGet - 解决方案”窗口顶部浏览菜单中的“浏览”，然后勾选搜索栏旁边的“包括预发行版”框。
 3. 搜索 `Microsoft.ApplicationInsights.ServiceFabric.Native`，然后单击相应的 NuGet 包。
 
->[!NOTE]
->可能需要采用类似的方式安装 Microsoft.ServiceFabric.Diagnostics.Internal 包，前提是此包在安装 Application Insights 包之前未预先安装
+    >[!NOTE]
+    >可能需要采用类似的方式安装 Microsoft.ServiceFabric.Diagnostics.Internal 包，前提是此包在安装 Application Insights 包之前未预先安装
 
 4. 在右侧单击应用程序中两项服务旁边的复选框“VotingWeb”和“VotingData”，然后单击“安装”。
     ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
@@ -191,11 +186,11 @@ ConfigureServices(services => services
 
 ![AI 跟踪详细信息](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
 
-可以通过应用映射更好地了解应用程序拓扑，尤其是在开始添加多个不同的一起运行的服务时。 也可通过它来获取有关请求成功率的基本数据，对失败的请求进行诊断，了解问题之所在。 若要详细了解如何使用应用映射，请参阅 [Application Insights 中的应用程序映射](../application-insights/app-insights-app-map.md)。
+可以通过应用映射更好地了解应用程序拓扑，尤其是在开始添加多个不同的一起运行的服务时。 也可通过它来获取有关请求成功率的基本数据，对失败的请求进行诊断，了解问题之所在。 若要详细了解如何使用应用映射，请参阅 [Application Insights 中的应用程序映射](../azure-monitor/app/app-map.md)。
 
 ## <a name="add-custom-instrumentation-to-your-application"></a>将自定义检测添加到应用程序
 
-虽然 Application Insights 提供了许多现成的遥测，但你可能需要添加更多的自定义检测。 这可能取决于业务需求，或者在应用程序出错时对诊断进行改进的需求。 Application Insights 有一个用于引入自定义事件和指标的 API，详见[此文](../application-insights/app-insights-api-custom-events-metrics.md)。
+虽然 Application Insights 提供了许多现成的遥测，但你可能需要添加更多的自定义检测。 这可能取决于业务需求，或者在应用程序出错时对诊断进行改进的需求。 Application Insights 有一个用于引入自定义事件和指标的 API，详见[此文](../azure-monitor/app/api-custom-events-metrics.md)。
 
 让我们向 VoteDataController.cs（位于“VotingData” > “控制器”下）添加一些自定义事件，以便跟踪在基础 votesDictionary 中添加和删除投票的时间。
 

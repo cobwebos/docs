@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: pim
-ms.date: 08/30/2018
+ms.subservice: pim
+ms.date: 01/23/2019
 ms.author: rolyon
-ms.openlocfilehash: d9a6ab49d619e487eee6fb13abe128cfc167b560
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: e6548c2635afd8e1ac784a1930c2277548647cfd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306683"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192742"
 ---
 # <a name="discover-azure-resources-to-manage-in-pim"></a>在 PIM 中发现要管理的 Azure 资源
 
@@ -52,12 +52,16 @@ ms.locfileid: "43306683"
 
 1. 在要管理的任何非托管资源旁添加复选标记。
 
+1. 单击“管理资源”以开始管理所选资源。
+
     > [!NOTE]
     > 管理组或订阅设为托管后就无法取消托管。 这可防止其他资源管理员删除 PIM 设置。
 
     ![发现 - 管理资源](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
-1. 单击“管理资源”以开始管理所选资源。
+1. 如果看到确认加入要管理的所选资源的消息，请单击“是”。
+
+    ![发现 - 管理资源消息](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
 
 ## <a name="next-steps"></a>后续步骤
 

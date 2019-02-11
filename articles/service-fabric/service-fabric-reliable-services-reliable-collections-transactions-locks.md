@@ -3,7 +3,7 @@ title: Azure Service Fabric 可靠集合中的事务和锁模式 | Microsoft Doc
 description: Azure Service Fabric 可靠状态管理器和可靠集合事务和锁定。
 services: service-fabric
 documentationcenter: .net
-author: mcoskun
+author: tylermsft
 manager: timlt
 editor: masnider,rajak
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,23 +13,23 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
-ms.author: mcoskun
-ms.openlocfilehash: 79be861a70abb0331d971b00e753691e77642637
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: twhitney
+ms.openlocfilehash: a7e2bfba736e3b6cee738d5a2b5283f51f60d7c5
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207360"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185386"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric 可靠集合中的事务和锁模式
 
 ## <a name="transaction"></a>事务
 事务是作为单个逻辑工作单元执行的一系列操作。
-事务必须显示以下 ACID 属性。 （请参阅：https://technet.microsoft.com/library/ms190612)
+事务必须显示以下 ACID 属性。 （请参阅： https://technet.microsoft.com/library/ms190612)
 * **原子性**：事务必须是原子工作单元。 换而言之，要么执行其所有数据修改，要么一个数据修改也不执行。
 * **一致性**：完成后，事务必须使所有数据处于一致状态。 事务结束时，所有内部数据结构必须都正确。
 * **隔离**：并发事务所做的修改必须与任何其他并发事务所做的修改隔离。 用于 ITransaction 中的某个操作的隔离级别由执行该操作的 IReliableState 确定。
-* **持久性**：事务完成后，其效果永久存在于系统中。 即使系统发生故障，修改也会保留。
+* **持续性**：事务完成后，其效果永久存在于系统中。 即使系统发生故障，修改也会保留。
 
 ### <a name="isolation-levels"></a>隔离级别
 隔离级别定义必须从其他事务所作修改中隔离事务的程度。

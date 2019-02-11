@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.component: bing-local-business
+ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: baf2f2ed3487bbc8b680a54d86b42d27d76a0ba9
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 5861ec60790cbdbf1144996b1d46eb223d5935d4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957213"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158020"
 ---
 # <a name="use-geographic-boundaries-to-filter-results-from-the-bing-local-business-search-api"></a>使用地理边界筛选必应本地业务搜索 API 的结果
 
@@ -33,9 +33,9 @@ ms.locfileid: "50957213"
 
 完整的查询：
 
-````
+```
 https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restaurant&localCircularView=47.6421,-122.13715,5000&appid=0123456789ABCDEF&mkt=en-us&form=monitr
-````
+```
 
 ## <a name="localmapview"></a>localMapView
 
@@ -45,9 +45,9 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restauran
 
 完整的查询：
 
-````
+```
 https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restaurant&localMapView=47.619987,-122.181671,47.6421,-122.13715&appid=0123456789ABCDEF&mkt=en-us&form=monitr
-````
+```
 
 ## <a name="next-steps"></a>后续步骤
 - [当地企业搜索 Java 快速入门](quickstarts/local-search-java-quickstart.md)

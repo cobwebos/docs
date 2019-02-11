@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 3cd6ef1716d455c5ac755122b8696dbc43fdf459
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: c1f4690d2ce10fe83d613b37ef2514effd2cef63
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581861"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598815"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>在计算机上安装 Jupyter 笔记本并连接到 HDInsight 上的 Apache Spark
 
@@ -22,9 +22,9 @@ ms.locfileid: "52581861"
 
 在计算机上安装 Jupyter 和 Spark magic 包括三个重要步骤。
 
-* 安装 Jupyter 笔记本
-* 安装 PySpark 和具有 Spark magic 的 Spark 内核
-* 配置 Spark magic 以访问 HDInsight 上的 Spark 群集
+* 安装 Jupyter 笔记本。
+* 安装 PySpark 和具有 Spark magic 的 Spark 内核。
+* 配置 Spark magic 以访问 HDInsight 上的 Spark 群集。
 
 有关适用于装有 HDInsight 群集的 Jupyter 笔记本的自定义内核和 Spark magic 的详细信息，请参阅 [Kernels available for Jupyter notebooks with Apache Spark Linux clusters on HDInsight](apache-spark-jupyter-notebook-kernels.md)（适用于装有 HDInsight 上的 Apache Spark Linux 群集的 Jupyter 笔记本的内核）。
 
@@ -36,14 +36,14 @@ ms.locfileid: "52581861"
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>在计算机上安装 Jupyter 笔记本
 
-必须先安装 Python 才能安装 Jupyter 笔记本。 Python 和 Jupyter 都作为 [Anaconda 分发版](https://www.continuum.io/downloads)的一部分提供。 安装 Anaconda 时，安装的是某个 Python 发行版。 安装 Anaconda 之后，可通过运行相应命令来添加 Jupyter 安装。
+必须先安装 Python 才能安装 Jupyter 笔记本。 Python 和 Jupyter 都作为 [Anaconda 分发版](https://www.anaconda.com/download/)的一部分提供。 安装 Anaconda 时，安装的是某个 Python 发行版。 安装 Anaconda 之后，可通过运行相应命令来添加 Jupyter 安装。
 
-1. 下载适用于平台的 [Anaconda 安装程序](https://www.continuum.io/downloads)，并运行安装程序。 运行安装向导时，请确保选择将 Anaconda 添加到 PATH 变量的选项。
+1. 下载适用于平台的 [Anaconda 安装程序](https://www.anaconda.com/download/)，并运行安装程序。 运行安装向导时，请确保选择将 Anaconda 添加到 PATH 变量的选项。
 1. 运行以下命令来安装 Jupyter。
 
         conda install jupyter
 
-    有关安装 Jupyter 的详细信息，请参阅[使用 Anaconda 安装 Jupyter](http://jupyter.readthedocs.io/en/latest/install.html)。
+    有关安装 Jupyter 的详细信息，请参阅[使用 Anaconda 安装 Jupyter](https://jupyter.readthedocs.io/en/latest/install.html)。
 
 ## <a name="install-the-kernels-and-spark-magic"></a>安装内核和 Spark magic
 
@@ -100,7 +100,7 @@ ms.locfileid: "52581861"
             "livy_server_heartbeat_timeout_seconds": 60,
             "heartbeat_retry_seconds": 1
 
-    >[!TIP]
+    >[!TIP]  
     >将发送检测信号，以确保会话不会泄漏。 计算机进入睡眠状态或关闭时不会发送检测信号，从而导致会话被清除。 对于群集 v3.4，如果要禁用此行为，可以从 Ambari UI 将 Livy 配置 `livy.server.interactive.heartbeat.timeout` 设置为 `0`。 对于群集 v3.5，如果未设置上述 3.5 配置，会话将不会删除。
 
 1. 启动 Jupyter。 从命令提示符使用以下命令。
@@ -120,7 +120,7 @@ ms.locfileid: "52581861"
 
     如果可以成功检索输出，则表示与 HDInsight 群集的连接已经过测试。
 
-    >[!TIP]
+    >[!TIP]  
     >如果想要更新笔记本配置以连接到不同的群集，请使用一组新值更新 config.json，如上述步骤 3 中所示。
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>为何要在计算机上安装 Jupyter？
@@ -132,7 +132,7 @@ ms.locfileid: "52581861"
 * 甚至不需要启动群集就能在本地使用笔记本。 只需创建一个群集以根据它来测试笔记本，而不需要手动管理笔记本或开发环境。
 * 配置自己的本地开发环境比在群集上配置 Jupyter 安装更容易。  可以利用本地安装的所有软件，而不需要配置一个或多个远程群集。
 
-> [!WARNING]
+> [!WARNING]  
 > 在本地计算机上安装 Jupyter 后，多个用户可以同时在同一个 Spark 群集上运行同一个笔记本。 在这种情况下，会创建多个 Livy 会话。 如果遇到问题并想要调试，则跟踪哪个 Livy 会话属于哪个用户将是一项复杂的任务。
 >
 >
@@ -141,9 +141,9 @@ ms.locfileid: "52581861"
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>方案
-* [Apache Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](apache-spark-use-bi-tools.md)
-* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 结合 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark 与 BI：将 HDInsight 中的 Spark 与 BI 工具配合使用来执行交互式数据分析](apache-spark-use-bi-tools.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 来通过 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检验结果](apache-spark-machine-learning-mllib-ipython.md)
 * [使用 HDInsight 中的 Apache Spark 分析网站日志](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>创建和运行应用程序
@@ -152,7 +152,7 @@ ms.locfileid: "52581861"
 
 ### <a name="tools-and-extensions"></a>工具和扩展
 * [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](apache-spark-intellij-tool-plugin.md)
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Apache Spark applications remotely（使用适用于 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Apache Spark 应用程序）](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Apache Spark 应用程序](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [在 HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本](apache-spark-zeppelin-notebook.md)
 * [在 HDInsight 的 Apache Spark 群集中可用于 Jupyter Notebook 的内核](apache-spark-jupyter-notebook-kernels.md)
 * [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](apache-spark-jupyter-notebook-use-external-packages.md)

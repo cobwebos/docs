@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/12/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 5da34e8e79c0df88cfad0b398aa8e1c22f158489
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.subservice: common
+ms.openlocfilehash: 6cecb2d5fde4fc651cf0ba971189ef62fa330c13
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428872"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241698"
 ---
 # <a name="manage-access-rights-to-azure-blob-and-queue-data-with-rbac-preview"></a>使用 RBAC 管理对 Azure Blob 和队列数据的访问权限（预览版）
 
@@ -27,10 +27,11 @@ Azure AD 标识可以是用户、组或应用程序服务主体，也可以是 A
 
 Azure 存储同时支持内置的和自定义 RBAC 角色。 Azure 存储提供以下内置 RBAC 角色用于 Azure AD：
 
-- [存储 Blob 数据参与者(预览)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor-preview)
-- [存储 Blob 数据读取器(预览)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview)
-- [存储队列数据参与者(预览)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor-preview)
-- [存储队列数据读取器(预览)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-reader-preview)
+- [存储 Blob 数据所有者（预览版）](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner-preview)：用来为 Azure Data Lake Storage Gen2（预览版）设置所有权和管理 POSIX 访问控制。 有关详细信息，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](../blobs/data-lake-storage-access-control.md)。
+- [存储 Blob 数据参与者（预览版）](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor-preview)：用来授予对 Blob 存储资源的读取/写入/删除权限。
+- [存储 Blob 数据读者（预览版）](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview)：用来授予对 Blob 存储资源的只读权限。
+- [存储队列数据参与者（预览版）](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor-preview)：用来授予对 Azure 队列的读取/写入/删除权限。
+- [存储队列数据读者（预览版）](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-reader-preview)：用来授予对 Azure 队列的只读权限。
 
 有关如何为 Azure 存储定义内置角色的详细信息，请参阅[了解角色定义](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#management-and-data-operations-preview)。
 
@@ -40,14 +41,14 @@ Azure 存储同时支持内置的和自定义 RBAC 角色。 Azure 存储提供�
 
 ## <a name="assign-a-role-to-a-security-principal"></a>向安全主体分配角色
 
-向 Azure 标识分配 RBAC 角色，以授予对存储帐户中容器或队列的权限。 可以将角色分配范围限定于存储帐户或特定的容器或队列。 下表总结了由内置角色授予的访问权限，具体取决于作用域： 
+向 Azure 标识分配 RBAC 角色，以授予对存储帐户中容器或队列的权限。 可以将角色分配范围限定于存储帐户或特定的容器或队列。 下表总结了由内置角色授予的访问权限，具体取决于作用域：
 
-|                                 |     Blob 数据参与者                                                 |     Blob 数据读取器                                                |     队列数据参与者                                  |     队列数据读取器                                 |
-|---------------------------------|------------------------------------------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------|----------------------------------------------------------|
-|    限定于订阅       |    对订阅中的所有容器和 blob 具有读/写访问权限       |    对订阅中的所有容器和 blob 具有读取访问权限       |    对订阅中的所有队列具有读/写访问权限       |    对订阅中的所有队列具有读取访问权限         |
-|    限定于资源组     |    对资源组中的所有容器和 blob 具有读/写访问权限     |    对资源组中的所有容器和 blob 具有读取访问权限     |    对资源组中的所有队列具有读/写访问权限     |    对资源组中的所有队列具有读取访问权限     |
-|    限定于存储帐户    |    对存储帐户中的所有容器和 blob 具有读/写访问权限    |    对存储帐户中的所有容器和 blob 具有读取访问权限    |    对存储帐户中的所有队列具有读/写访问权限    |    对存储帐户中的所有队列具有读取访问权限    |
-|    限定于容器/队列    |    对指定容器及其 blob 具有读/写访问权限              |    对指定容器及其 blob 具有读取访问权限              |    对指定队列具有读/写访问权限                  |    对指定队列具有读取访问权限                    |
+|范围|Blob 数据所有者|Blob 数据参与者|Blob 数据读取器|队列数据参与者|队列数据读取器|
+|---|---|---|---|---|---|
+|订阅级别|对订阅中的所有容器和 blob 具有读/写访问权限和 POSIX 访问控制管理权限|对订阅中的所有容器和 blob 具有读/写访问权限| 对订阅中的所有容器和 blob 具有读取访问权限|对订阅中的所有队列具有读/写访问权限|对订阅中的所有队列具有读取访问权限|
+|资源组级别|对资源组中的所有容器和 blob 具有读/写访问权限和 POSIX 访问控制管理权限|对资源组中的所有容器和 blob 具有读/写访问权限|对资源组中的所有容器和 blob 具有读取访问权限|对资源组中的所有队列具有读/写访问权限|对资源组中的所有队列具有读取访问权限|
+|存储帐户级别|对存储帐户中的所有容器和 blob 具有读/写访问权限和 POSIX 访问控制管理权限|对存储帐户中的所有容器和 blob 具有读/写访问权限|对存储帐户中的所有容器和 blob 具有读取访问权限|对存储帐户中的所有队列具有读/写访问权限|对存储帐户中的所有队列具有读取访问权限|
+|容器/队列级别|对指定容器及其 blob 具有读/写访问权限和 POSIX 访问控制管理权限。|对指定容器及其 blob 具有读/写访问权限|对指定容器及其 blob 具有读取访问权限|对指定队列具有读/写访问权限|对指定队列具有读取访问权限|
 
 > [!NOTE]
 > 作为 Azure 存储帐户的所有者，系统不会自动向你分配数据访问权限。 你必须为自己显式分配一个用于 Azure 存储的 RBAC 角色。 可以在订阅、资源组、存储帐户、容器或队列级别分配它。
@@ -61,38 +62,44 @@ Azure 存储同时支持内置的和自定义 RBAC 角色。 Azure 存储提供�
 若要在 Azure 门户中分配内置角色，以授予对存储帐户中所有容器或队列的访问权限，请执行以下操作：
 
 1. 在 [Azure 门户](https://portal.azure.com)中导航到存储帐户。
-2. 选择存储帐户，然后选择“访问控制(IAM)”以显示该帐户的访问控制设置。 单击“添加”按钮以添加新角色。
+1. 选择存储帐户，然后选择“访问控制(IAM)”以显示该帐户的访问控制设置。 选择“角色分配”选项卡以查看角色分配列表。
 
     ![显示存储访问控制设置的屏幕截图](media/storage-auth-aad-rbac/portal-access-control.png)
 
-3. 在“添加权限”窗口中，选择要分配给 Azure AD 标识的角色。 然后搜索以找到要为其分配该角色的标识。 例如，下图显示分配给用户的“存储 Blob 数据读取器(预览)”角色。
+1. 单击“添加角色分配”按钮以添加一个新角色。
+1. 在“添加角色分配”窗口中，选择要分配给 Azure AD 标识的角色。 然后搜索以找到要为其分配该角色的标识。 例如，下图显示分配给用户的“存储 Blob 数据读取器(预览)”角色。
 
     ![显示如何分配 RBAC 角色的屏幕截图](media/storage-auth-aad-rbac/add-rbac-role.png)
 
-4. 单击“ **保存**”。 分配有该角色的标识列出在该角色下。 例如，下图显示添加的用户现在对存储帐户中的所有 blob 数据具有读取权限。
+1. 单击“ **保存**”。 分配有该角色的标识列出在该角色下。 例如，下图显示所添加的用户现在对存储帐户中的所有 blob 数据具有读取权限。
 
     ![显示分配有角色的用户列表的屏幕截图](media/storage-auth-aad-rbac/account-scoped-role.png)
 
 ### <a name="assign-a-role-scoped-to-a-container-or-queue-in-the-azure-portal"></a>在 Azure 门户中分配限定于容器或队列的角色
 
+> [!IMPORTANT]
+> 不过，如果使用的是启用了分层命名空间的帐户，则无法执行此操作。
+
 分配限定于容器或队列的内置角色的步骤类似。 此处所示的过程将分配限定于容器的角色，但你可以按照相同的步骤分配限定于队列的角色： 
 
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到存储帐户并显示该帐户的“概述”。
-2. 在“Blob 服务”下选择“浏览 Blob”。 
-3. 找到要针对其分配角色的容器，并显示该容器的设置。 
-4. 选择“访问控制(IAM)”以显示容器的访问控制设置。
-5. 在“添加权限”窗口中，选择要分配给 Azure AD 标识的角色。 然后搜索以找到要为其分配该角色的标识。
-6. 单击“ **保存**”。 分配有该角色的标识列出在该角色下。 例如，下图显示添加的用户现在对名为 *sample-container* 的容器中的数据具有读取权限。
+1. 在“服务”下选择“Blob”。 
+1. 找到要针对其分配角色的容器，并显示该容器的设置。 
+1. 选择“访问控制(IAM)”以显示容器的访问控制设置。 选择“角色分配”选项卡以查看角色分配列表。
+
+    ![显示了容器访问控制设置的屏幕截图](media/storage-auth-aad-rbac/portal-access-control-container.png)
+1. 单击“添加角色分配”按钮以添加一个新角色。
+1. 在“添加角色分配”窗口中，选择要分配给 Azure AD 标识的角色。 然后搜索以找到要为其分配该角色的标识。
+1. 单击“ **保存**”。 分配有该角色的标识列出在该角色下。 例如，下图显示添加的用户现在对名为 *sample-container* 的容器中的数据具有读取权限。
 
     ![显示分配有角色的用户列表的屏幕截图](media/storage-auth-aad-rbac/container-scoped-role.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解 RBAC，请参阅[基于角色的访问控制入门](../../role-based-access-control/overview.md)。
+- 若要详细了解 RBAC，请参阅[什么是基于角色的访问控制 (RBAC)？](../../role-based-access-control/overview.md)
 - 若要了解如何使用 Azure PowerShell、Azure CLI 或 REST API 分配和管理 RBAC 角色分配，请参阅以下文章：
     - [使用 Azure PowerShell 管理基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-powershell.md)
     - [使用 Azure CLI 管理基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-cli.md)
     - [使用 REST API 管理基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-rest.md)
 - 若要了解如何从存储应用程序内授权访问容器和队列，请参阅[将 Azure AD 与 Azure 存储应用程序配合使用](storage-auth-aad-app.md)。
 - 有关适用于 Azure 容器和队列的 Azure AD 集成的其他信息，请参阅 Azure 存储团队博客文章[宣布推出适用于 Azure 存储的 Azure AD 身份验证预览版](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/)。
-- 

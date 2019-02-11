@@ -3,7 +3,7 @@ title: SQL Server VM 的 Azure 备份故障排除指南 | Microsoft Docs
 description: 有关将 SQL Server VM 备份到 Azure 的故障排除信息。
 services: backup
 documentationcenter: ''
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 editor: ''
 keywords: ''
@@ -11,17 +11,16 @@ ms.assetid: ''
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
-ms.author: markgal;anuragm
+ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: 1c87382c2aae70b022fb391f80f7c75b0a4e5fe6
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 0d910269a16223c610e4606cdd6660cc5d43947f
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296954"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296115"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>排查在 Azure 上备份 SQL Server 的问题
 
@@ -38,6 +37,15 @@ ms.locfileid: "36296954"
 ## <a name="troubleshooting-errors"></a>排查错误
 
 使用下表中的信息来排查在 Azure 中保护 SQL Server 时遇到的问题和错误。
+
+## <a name="alerts"></a>警报
+
+### <a name="backup-type-unsupported"></a>不受支持的备份类型
+
+| 严重性 | 说明 | 可能的原因 | 建议的操作 |
+|---|---|---|---|
+| 警告 | 此数据库的当前设置不支持关联策略中的特定备份类型。 | <li>**Master DB**：只能对 master 数据库执行完整数据库备份操作；既无法执行差异备份，也无法执行事务日志备份。 </li> <li>简单恢复模式中的任何数据库都不允许进行事务日志备份。</li> | 将数据库设置修改为支持策略中的所有备份类型。 或者，将当前策略更改为只包含受支持的备份类型。 否则，在计划备份期间将跳过不受支持的备份类型，或无法为临时备份执行备份作业。
+
 
 ## <a name="backup-failures"></a>备份失败
 
@@ -79,13 +87,13 @@ ms.locfileid: "36296954"
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
 | 由于数据源的事务日志已满，无法创建备份。 | 数据库事务日志空间已满。 | 若要解决此问题，请参阅 [SQL 文档](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error)。 |
-| 此 SQL 数据库不支持所请求的备份类型。 | Always On AG 次要副本不支持完整备份和差异备份。 | <ul><li>如果触发了临时备份，请在主节点上触发备份。</li><li>如果备份是由策略计划的，请确保已注册主节点。 若要注册节点，[请遵循发现 SQL Server 数据库的步骤](backup-azure-sql-database.md#discover-sql-server-databases)。</li></ul> | 
+| 此 SQL 数据库不支持所请求的备份类型。 | Always On AG 次要副本不支持完整备份和差异备份。 | <ul><li>如果触发了临时备份，请在主节点上触发备份。</li><li>如果备份是由策略计划的，请确保已注册主节点。 若要注册节点，[请遵循发现 SQL Server 数据库的步骤](backup-azure-sql-database.md#discover-sql-server-databases)。</li></ul> |
 
 ## <a name="restore-failures"></a>还原失败
 
 还原作业失败时显示以下错误代码。
 
-### <a name="usererrorcannotrestoreexistingdbwithoutforceoverwrite"></a>UserErrorCannotRestoreExistingDBWithoutForceOverwrite 
+### <a name="usererrorcannotrestoreexistingdbwithoutforceoverwrite"></a>UserErrorCannotRestoreExistingDBWithoutForceOverwrite
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
@@ -108,7 +116,7 @@ ms.locfileid: "36296954"
 
 以下错误代码表示注册失败。
 
-### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError 
+### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
@@ -125,6 +133,16 @@ ms.locfileid: "36296954"
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
 | Azure 备份服务使用 Azure VM 来宾代理执行备份，但来宾代理在目标服务器上不可用。 | 来宾代理未启用或不正常 | 手动[安装 VM 来宾代理](../virtual-machines/extensions/agent-windows.md)。 |
+
+## <a name="configure-backup-failures"></a>配置备份失败
+
+以下错误代码用于配置备份失败。
+
+### <a name="autoprotectioncancelledornotvalid"></a>AutoProtectionCancelledOrNotValid
+
+| 错误消息 | 可能的原因 | 建议的操作 |
+|---|---|---|
+| 自动保护意向被删除或不再有效。 | 在 SQL 实例上启用自动保护时，将为该实例中的所有数据库运行“配置备份”作业。 如果在作业运行时禁用自动保护，则会使用此错误代码取消**正在进行的**作业。 | 重新启用自动保护可保护所有剩余的数据库。 |
 
 ## <a name="next-steps"></a>后续步骤
 

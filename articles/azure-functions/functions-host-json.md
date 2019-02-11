@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: b429f9dab0411dba599fd696dff3d424916007e0
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: e24c5b2be1df41d84fa4461250f51cb009f77529
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635163"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331211"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x 的 host.json 参考  
 
@@ -96,7 +96,26 @@ ms.locfileid: "52635163"
 
 此设置是[日志记录](#logging)的子项。
 
-[!INCLUDE [applicationInsights](../../includes/functions-host-json-applicationinsights.md)]
+控制 [Application Insights 中的采样功能](./functions-monitoring.md#configure-sampling)。
+
+```json
+{
+    "applicationInsights": {
+        "samplingSettings": {
+          "isEnabled": true,
+          "maxTelemetryItemsPerSecond" : 5
+        }
+    }
+}
+```
+
+> [!NOTE]
+> 日志采样可能会导致一些执行不会显示在 Application Insights 监视器边栏选项卡中。
+
+|属性  |默认 | Description |
+|---------|---------|---------| 
+|isEnabled|true|启用或禁用采样。| 
+|maxTelemetryItemsPerSecond|5|开始采样所要达到的阈值。| 
 
 ## <a name="cosmosdb"></a>CosmosDB
 
@@ -185,7 +204,28 @@ ms.locfileid: "52635163"
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|定义启用哪种级别的文件日志记录。  选项包括 `never`、`always` 和 `debugOnly`。 |
 |logLevel|不适用|一个对象，它定义了用于筛选应用中的函数的日志类别。 版本 2.x 遵循 ASP.NET Core 布局进行日志类别筛选。 这允许你筛选特定函数的日志记录。 有关详细信息，请参阅 ASP.NET Core 文档中的[日志筛选](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 |
+|console|不适用| [控制台](#console)日志记录设置。 |
 |applicationInsights|不适用| [applicationInsights](#applicationinsights) 设置。 |
+
+## <a name="console"></a>console
+
+此设置是[日志记录](#logging)的子项。 它在未处于调试模式时控制控制台日志记录。
+
+```json
+{
+    "logging": {
+    ...
+        "console": {
+          "isEnabled": "false"
+        },
+    ...
+    }
+}
+```
+
+|属性  |默认 | Description |
+|---------|---------|---------| 
+|isEnabled|false|启用或禁用控制台日志记录。| 
 
 ## <a name="queues"></a>queues
 

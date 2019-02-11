@@ -3,7 +3,7 @@ title: 创建使用可用性区域的 Azure 规模集 | Microsoft Docs
 description: 了解如何创建使用可用性区域的 Azure 虚拟机规模集以增加冗余防止中断
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm
 ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
-ms.author: zarhoads
-ms.openlocfilehash: 062725ab5e486ff795ffa0f4a72dd3fdb0e6b948
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: cynthn
+ms.openlocfilehash: 32679e37062fbf77ce6ab03b6ea708c0d5eeea30
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468868"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816231"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>创建使用可用性区域的虚拟机规模集
 
@@ -65,7 +65,7 @@ ms.locfileid: "49468868"
 若要使用可用性区域，必须在[受支持的 Azure 区域](../availability-zones/az-overview.md#regions-that-support-availability-zones)中创建规模集。 可以使用下列方法之一创建使用可用性区域的规模集：
 
 - [Azure 门户](#use-the-azure-portal)
-- [Azure CLI](#use-the-azure-cli-20)
+- Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure 资源管理器模板](#use-azure-resource-manager-templates)
 
@@ -81,7 +81,7 @@ ms.locfileid: "49468868"
 
 创建使用可用性区域的规模集的过程与[入门文章](quick-create-cli.md)中详述的过程相同。 若要使用可用性区域，必须在受支持的 Azure 区域中创建规模集。
 
-在 [az vmss create](/cli/azure/vmss#az_vmss_create) 命令中添加 `--zones` 参数并指定要使用的区域（例如区域 *1*、*2* 或 *3*）。 以下示例在区域 1 中创建名为 myScaleSet 的单个区域规模集：
+在 [az vmss create](/cli/azure/vmss) 命令中添加 `--zones` 参数并指定要使用的区域（例如区域 *1*、*2* 或 *3*）。 以下示例在区域 1 中创建名为 myScaleSet 的单个区域规模集：
 
 ```azurecli
 az vmss create \
@@ -215,7 +215,7 @@ New-AzureRmVmss `
 }
 ```
 
-如果创建公用 IP 地址或负载均衡器，则指定 "sku": { "name": "Standard" }" 属性以创建区域冗余网络资源。 还需要创建网络安全组和规则以允许任意流量。 有关详细信息，请参阅 [Azure 负载均衡器标准概述](../load-balancer/load-balancer-standard-overview.md)和[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md)。
+如果创建公共 IP 地址或负载均衡器，则指定 "sku": { "name": "Standard" }" 属性以创建区域冗余网络资源。 还需要创建网络安全组和规则以允许任意流量。 有关详细信息，请参阅 [Azure 负载均衡器标准概述](../load-balancer/load-balancer-standard-overview.md)和[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md)。
 
 有关区域冗余规模集和网络资源的完整示例，请参阅[此示例资源管理器模板](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 

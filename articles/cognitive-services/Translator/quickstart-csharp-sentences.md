@@ -6,18 +6,18 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: abdd87b9a86ed2482d5b53c10260fe28821b34ce
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: daa1afd2caf5d5bfa2452858501f550e4c7e387b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333246"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212012"
 ---
-# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-c"></a>快速入门：使用文本翻译 REST API (C#) 获取句子长度
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-c"></a>快速入门：使用 C# 通过文本翻译 API 来确定句子长度
 
 本快速入门介绍如何使用 .NET Core 和文本翻译 API 来确定句子长度。
 
@@ -28,7 +28,7 @@ ms.locfileid: "52333246"
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Json.NET NuGet 包](https://www.nuget.org/packages/Newtonsoft.Json/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download) 或你喜欢用的文本编辑器
-* 语音服务的 Azure 订阅密钥
+* 适用于文本翻译的 Azure 订阅密钥
 
 ## <a name="create-a-net-core-project"></a>创建 .NET Core 项目
 

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/14/2018
 ms.author: mjbrown
-ms.openlocfilehash: 25824b9959a4fef536ca9fe247f29fc9aaece1f7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: a9f6676f1b2fdf812ec87595083ba6317a11873c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626426"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462141"
 ---
-# <a name="how-to-configure-time-to-live-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中配置生存时间
+# <a name="configure-time-to-live-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置生存时间
 
 在 Azure Cosmos DB 中，可以选择在容器级别配置生存时间 (TTL)，也可以在为容器完成设置之后，在项级别重写生存时间。 可以通过 Azure 门户或特定于语言的 SDK 配置容器的 TTL。 可以通过 SDK 配置项级别 TTL 重写。
 

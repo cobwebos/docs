@@ -1,39 +1,41 @@
 ---
-title: Azure Active Directory B2C 中的内置策略 | Microsoft Docs
-description: 有关 Azure Active Directory B2C 可扩展的策略框架以及如何创建各种策略类型的主题。
+title: Azure Active Directory B2C 中的用户流 | Microsoft Docs
+description: 详细了解 Azure Active Directory B2C 的可扩展策略框架以及如何创建各种用户流。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/26/2017
+ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: f26db8bcb50fa09a8d2829d477f90cac8c52533f
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.subservice: B2C
+ms.openlocfilehash: 88ac97c36a9b09b795a3ea792df6711fc1275422
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43337568"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163001"
 ---
-# <a name="azure-active-directory-b2c-built-in-policies"></a>Azure Active Directory B2C：内置策略
+# <a name="user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的用户流
 
+Azure Active Directory (Azure AD) B2C可扩展的策略框架是服务的核心优势。 策略充分描述了标识体验，例如注册、登录或配置文件编辑。 若要帮助设置最常见的标识任务，Azure AD B2C 门户应包括名为“用户流”的预定义且可配置的策略。 
 
-Azure Active Directory (Azure AD) B2C可扩展的策略框架是服务的核心优势。 策略充分描述了使用者标识体验，例如注册、登录或配置文件编辑。 例如，注册策略允许通过配置以下设置来控制行为：
+## <a name="what-are-user-flows"></a>什么是用户流？
 
-* 使用者可以用来注册应用程序的帐户类型（社交帐户，如 Facebook；或本地帐户，如电子邮件地址）
-* 在注册过程中从使用者收集的属性（例如，名字、邮政编码和鞋码）
-* Azure 多重身份验证的使用
-* 所有注册页面的界面外观
-* 应用程序在策略运行完成时收到的信息（表现为令牌中的声明）
+用户流可让你通过配置以下设置来控制应用程序的行为：
 
-可以在租户中创建多个不同类型的策略，并根据需要在应用程序中使用它们。 可以跨应用程序重复使用策略。 这种灵活性使开发人员可以定义和修改使用者标识体验，对其代码进行最小程度更改或不做更改。
+- 用于登录的帐户类型，例如 Facebook 等社交帐户，或本地帐户
+- 从使用者收集的属性，例如名字、邮政编码和鞋码
+- Azure 多重身份验证
+- 用户界面的自定义
+- 应用程序接收的信息（令牌中的声明） 
 
-可以通过简单的开发人员界面使用策略。 应用程序使用标准 HTTP 身份验证请求（在请求中传递策略参数）触发策略，并接收自定义令牌作为响应。 例如，调用注册策略的请求和调用登录策略的请求之间的唯一区别是在“p”查询字符串参数中使用的策略名称：
+可以在租户中创建多个不同类型的用户流，并根据需要在应用程序中使用它们。 可以跨应用程序重复使用用户流。 由于这种灵活性，只需对代码做出极少量的更改或根本不需要更改，即可定义和修改标识体验。 应用程序使用包含用户流参数的标准 HTTP 身份验证请求来触发用户流。 接收自定义[令牌](active-directory-b2c-reference-tokens.md)作为响应。 
+
+以下示例演示了指定要使用的用户流的“p”查询字符串参数：
 
 ```
-
 https://contosob2c.b2clogin.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Application ID
 &redirect_uri=https%3A%2F%2Flocalhost%3A44321%2F    // Your registered Reply URL, url encoded
@@ -42,12 +44,10 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 &scope=openid
 &nonce=dummy
 &state=12345                                        // Any value provided by your application
-&p=b2c_1_siup                                       // Your sign-up policy
-
+&p=b2c_1_siup                                       // Your sign-up user flow
 ```
 
 ```
-
 https://contosob2c.b2clogin.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Application ID
 &redirect_uri=https%3A%2F%2Flocalhost%3A44321%2F    // Your registered Reply URL, url encoded
@@ -56,51 +56,35 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 &scope=openid
 &nonce=dummy
 &state=12345                                        // Any value provided by your application
-&p=b2c_1_siin                                       // Your sign-in policy
-
+&p=b2c_1_siin                                       // Your sign-in user flow
 ```
 
-## <a name="create-a-sign-up-or-sign-in-policy"></a>创建注册或登录策略
+## <a name="user-flow-versions"></a>用户流版本
 
-此策略通过单一配置处理使用者注册和登录体验。 根据上下文，使用者被引导至正确的路径（注册或登录）。 它还描述了应用程序在成功注册或登录时会接收到的令牌的内容。[此处提供了](active-directory-b2c-devquickstarts-web-dotnet-susi.md)**注册或登录**策略的代码示例。  建议优先使用此策略，而不是使用**注册策略**或**登录**策略。  
+Azure 门户中一直在添加[新版本的用户流](user-flow-versions.md)。 当你开始使用 Azure AD B2C 时，系统会建议使用经过测试的用户流。 创建新用户流时，可从“建议”选项卡中选择所需的用户流。
 
-[!INCLUDE [active-directory-b2c-create-sign-in-sign-up-policy](../../includes/active-directory-b2c-create-sign-in-sign-up-policy.md)]
+目前建议使用以下用户流：
 
-## <a name="create-a-sign-up-policy"></a>创建注册策略
+- **注册和登录** - 通过一项配置处理注册和登录体验。 根据上下文将用户引导至正确的路径。 建议优先使用此用户流，而不要使用**注册**用户流或**登录**用户流。
+- **个人资料编辑** - 让用户编辑其个人资料信息。
+- **密码重置** - 用于配置是否允许用户重置其密码以及如何重置密码。
 
-[!INCLUDE [active-directory-b2c-create-sign-up-policy](../../includes/active-directory-b2c-create-sign-up-policy.md)]
+## <a name="linking-user-flows"></a>链接用户流
 
-## <a name="create-a-sign-in-policy"></a>创建登录策略
+使用本地帐户的**注册或登录**用户流在体验的第一个页面上包含“忘记了密码?”链接。 单击此链接不会自动触发密码重置用户流。 
 
-[!INCLUDE [active-directory-b2c-create-sign-in-policy](../../includes/active-directory-b2c-create-sign-in-policy.md)]
+而是将错误代码 `AADB2C90118` 返回给应用程序。 应用程序需要通过运行一个可重置密码的特定用户流来处理此错误代码。 有关示例，请查看演示用户流链接方法的[简单 ASP.NET 示例](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI)。
 
-## <a name="create-a-profile-editing-policy"></a>创建配置文件编辑策略
+## <a name="email-address-storage"></a>电子邮件地址存储
 
-[!INCLUDE [active-directory-b2c-create-profile-editing-policy](../../includes/active-directory-b2c-create-profile-editing-policy.md)]
-
-## <a name="create-a-password-reset-policy"></a>创建密码重置策略
-
-[!INCLUDE [active-directory-b2c-create-password-reset-policy](../../includes/active-directory-b2c-create-password-reset-policy.md)]
-
-## <a name="preview-policies"></a>预览策略
-
-因为我们将发布新功能，所以其中的某些功能可能在现有策略中不可用。  在这些策略供常规使用后，我们计划将较早版本替换为具有同一类型的最新版本。  你的现有策略将不会更改，为了利用这些新功能，必须创建新策略。
-
-## <a name="frequently-asked-questions"></a>常见问题
-
-### <a name="how-do-i-link-a-sign-up-or-sign-in-policy-with-a-password-reset-policy"></a>如何将注册或登录策略链接到密码重置策略？
-创建**注册或登录**策略时（使用本地帐户），会在体验的第一个页面上看到“忘记了密码?”链接。 单击此链接不会自动触发密码重置策略。 
-
-而是会将错误代码 **`AADB2C90118`** 返回给应用。 应用需要通过调用特定密码重置策略来处理此错误代码。 有关详细信息，请参阅[演示策略链接方法的示例](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI)。
-
-### <a name="should-i-use-a-sign-up-or-sign-in-policy-or-a-sign-up-policy-and-a-sign-in-policy"></a>应使用注册或登录策略还是注册策略和登录策略？
-建议优先使用**注册或登录**策略，而不是使用**注册**策略或**登录**策略。  
-
-**注册或登录**策略具有比**登录**策略更多的功能。 它还使你可以使用页面 UI 自定义，并具有更好的本地化支持。 
-
-如果无需对策略进行本地化，而只需将次要自定义功能用于品牌打造，并且要在其中内置密码重置，则建议使用**登录**策略。
+用户流中可能需要电子邮件地址。 如果用户使用社交标识提供者进行身份验证，电子邮件地址将存储在 **otherMails** 属性中。 如果本地帐户基于用户名，则电子邮件地址将存储在强身份验证详细信息属性中。 如果本地帐户基于电子邮件地址，则电子邮件地址将存储在 **signInNames** 属性中。
+ 
+不保证在所有这些情况下都会验证电子邮件地址。 租户管理员可以在本地帐户的基本策略中禁用电子邮件验证。 即使启用了电子邮件地址验证，但如果地址来自社交标识提供者并且尚未更改，则也不会验证地址。
+ 
+只会通过 Active Directory 图形 API 公开 **otherMails** 和 **signInNames** 属性。 强身份验证详细信息属性中的电子邮件地址不可用。
 
 ## <a name="next-steps"></a>后续步骤
-* [令牌、会话和单一登录配置](active-directory-b2c-token-session-sso.md)
-* [在使用者注册期间禁用电子邮件验证](active-directory-b2c-reference-disable-ev.md)
+
+若要创建建议的用户流，请遵照[教程：创建用户流](tutorial-create-tenant.md)中的说明。
+
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: cshoe
-ms.openlocfilehash: 9b2539d94c645f71b596e53429e6e0d8cc46b9ad
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a44b348e0c41e96c575555f2b5c275e196284c5b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016737"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074502"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 触发器和绑定概念
 
@@ -119,29 +119,29 @@ function generateRandomId() {
 在类库中，由特性而不是 function.json 文件提供这些触发器和绑定信息 &mdash; 队列和表名称、存储帐户、输入和输出 &mdash; 的函数参数。 下面是一个示例：
 
 ```csharp
- public static class QueueTriggerTableOutput
- {
-     [FunctionName("QueueTriggerTableOutput")]
-     [return: Table("outTable", Connection = "MY_TABLE_STORAGE_ACCT_APP_SETTING")]
-     public static Person Run(
-         [QueueTrigger("myqueue-items", Connection = "MY_STORAGE_ACCT_APP_SETTING")]JObject order, 
-         ILogger log)
-     {
-         return new Person() {
-                 PartitionKey = "Orders",
-                 RowKey = Guid.NewGuid().ToString(),
-                 Name = order["Name"].ToString(),
-                 MobileNumber = order["MobileNumber"].ToString() };
-     }
- }
+public static class QueueTriggerTableOutput
+{
+    [FunctionName("QueueTriggerTableOutput")]
+    [return: Table("outTable", Connection = "MY_TABLE_STORAGE_ACCT_APP_SETTING")]
+    public static Person Run(
+        [QueueTrigger("myqueue-items", Connection = "MY_STORAGE_ACCT_APP_SETTING")]JObject order,
+        ILogger log)
+    {
+        return new Person() {
+                PartitionKey = "Orders",
+                RowKey = Guid.NewGuid().ToString(),
+                Name = order["Name"].ToString(),
+                MobileNumber = order["MobileNumber"].ToString() };
+    }
+}
 
- public class Person
- {
-     public string PartitionKey { get; set; }
-     public string RowKey { get; set; }
-     public string Name { get; set; }
-     public string MobileNumber { get; set; }
- }
+public class Person
+{
+    public string PartitionKey { get; set; }
+    public string RowKey { get; set; }
+    public string Name { get; set; }
+    public string MobileNumber { get; set; }
+}
 ```
 
 ## <a name="supported-bindings"></a>支持的绑定
@@ -231,6 +231,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.ServiceBus --version <targ
 * [C# 脚本 (.csx)](#c-script-example)
 * [F#](#f-example)
 * [JavaScript](#javascript-example)
+* [Python](#python-example)
 
 ### <a name="c-example"></a>C# 示例
 
@@ -334,6 +335,29 @@ module.exports = function (context, input) {
     context.log('Node.js script processed queue message', json);
     context.done(null, json);
 }
+```
+
+### <a name="python-example"></a>Python 示例
+
+下面是 *function.json* 文件中的输出绑定：
+
+```json
+{
+    "name": "$return",
+    "type": "blob",
+    "direction": "out",
+    "path": "output-container/{id}"
+}
+```
+下面是 Python 代码：
+
+```python
+def main(input: azure.functions.InputStream) -> str:
+    return json.dumps({
+        'name': input.name,
+        'length': input.length,
+        'content': input.read().decode('utf-8')
+    })
 ```
 
 ## <a name="binding-datatype-property"></a>绑定 dataType 属性
@@ -589,9 +613,10 @@ module.exports = function (context, info) {
 如果 JSON 有效负载中的某些属性是包含属性的对象，可以使用点表示法直接引用这些对象。 例如，假设 JSON 如下所示：
 
 ```json
-{"BlobName": {
-  "FileName":"HelloWorld",
-  "Extension":"txt"
+{
+  "BlobName": {
+    "FileName":"HelloWorld",
+    "Extension":"txt"
   }
 }
 ```
@@ -649,6 +674,10 @@ public class BlobName
 ## <a name="functionjson-file-schema"></a>function.json 文件架构
 
 *function.json* 文件架构位于 [http://json.schemastore.org/function](http://json.schemastore.org/function)。
+
+## <a name="testing-bindings"></a>测试绑定
+
+在本地开发函数时，可使用 Visual Studio 2017 或 Visual Studio Code 测试绑定。 若要了解详细信息，请参阅[在 Azure Functions 中测试代码的策略](functions-test-a-function.md)。 此外，还可以使用 REST API 调用非 HTTP 绑定。 若要了解详细信息，请参阅[手动运行非 HTTP 触发的函数](functions-manually-run-non-http.md)。
 
 ## <a name="handling-binding-errors"></a>处理绑定错误
 

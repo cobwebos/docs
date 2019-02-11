@@ -1,6 +1,6 @@
 ---
-title: 为 Azure Active Directory 中的全局管理员提升访问权限 | Microsoft Docs
-description: 介绍如何使用 Azure 门户或 REST API 为 Azure Active Directory 中的全局管理员提升访问权限。
+title: 提升访问权限以管理所有 Azure 订阅和管理组 | Microsoft Docs
+description: 介绍如何使用 Azure 门户或 REST API 提升全局管理员的访问权限，以管理 Azure Active Directory 中的所有订阅和管理组。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,32 +12,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/15/2018
+ms.date: 01/15/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a2f66078a817f5e6ad7296df11634a1a6130a055
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 7552018c32078295c164023f909a604c6522c32f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321659"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437464"
 ---
-# <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>为 Azure Active Directory 中的全局管理员提升访问权限
+# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>提升访问权限以管理所有 Azure 订阅和管理组
 
-如果你是 Azure Active Directory (Azure AD) 中的[全局管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator)，则有时可能需要执行以下操作：
-
-- 在用户失去访问权限时重新获取对 Azure 订阅的访问权限
-- 授予其他用户或自己对 Azure 订阅的访问权限
-- 查看组织中的所有 Azure 订阅
-- 允许自动化应用（例如发票或审计应用）访问所有 Azure 订阅
-
-本文介绍在 Azure AD 中提升访问权限的不同方法。
+Azure Active Directory (Azure AD) 中的全局管理员不一定对目录中的所有订阅和管理组拥有访问权限。 本文介绍如何自我提升对所有订阅和管理组的访问权限。
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="overview"></a>概述
+## <a name="why-would-you-need-to-elevate-your-access"></a>为何需要提升访问权限？
 
-Azure AD 和 Azure 资源彼此独立保护。 也就是说，Azure AD 角色分配不授予对 Azure 资源的访问权限，Azure 角色分配页不授予对 Azure AD 的访问权限。 但是，如果你是 Azure AD 中的全局管理员，则可为自己分配对目录中所有 Azure 订阅和管理组的访问权限。 如果无权访问 Azure 订阅资源（如虚拟机或存储帐户），并且想使用全局管理员权限来获取这些资源的访问权限，则请使用此功能。
+全局管理员有时可能需要执行以下操作：
+
+- 在用户失去访问权限时重新获取对 Azure 订阅或管理组的访问权限
+- 授予其他用户或自己对 Azure 订阅或管理组的访问权限
+- 查看组织中的所有 Azure 订阅或管理组
+- 允许自动化应用（例如发票或审计应用）访问所有 Azure 订阅或管理组
+
+## <a name="how-does-elevate-access-work"></a>提升访问权限的工作原理是什么？
+
+Azure AD 和 Azure 资源彼此独立保护。 也就是说，Azure AD 角色分配不授予对 Azure 资源的访问权限，Azure 角色分配页不授予对 Azure AD 的访问权限。 但是，Azure AD 中的[全局管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator)可为自己分配对目录中所有 Azure 订阅和管理组的访问权限。 如果无权访问 Azure 订阅资源（如虚拟机或存储帐户），并且想使用全局管理员权限来获取这些资源的访问权限，则请使用此功能。
 
 提升访问权限时，将分配到 Azure 中根范围 (`/`) 的[用户访问管理员](built-in-roles.md#user-access-administrator)角色。 此角色可查看所有资源，并且可用于分配目录中任何订阅或管理组中的访问权限。 可以使用 PowerShell 删除用户访问管理员角色分配。
 
@@ -59,15 +61,25 @@ Azure AD 和 Azure 资源彼此独立保护。 也就是说，Azure AD 角色分
 
    ![Azure 资源的访问管理 - 屏幕截图](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
 
-   将开关设为“是”时，将分配到 Azure RBAC 中根范围 (/) 的用户访问管理员角色。 这将授予你在与此 Azure AD 目录关联的所有 Azure 订阅和管理组中分配角色的权限。 此开关仅适用于分配到 Azure AD 中全局管理员角色的用户。
+   将开关设为“是”时，你将分配到 Azure RBAC 中根范围 (/) 的用户访问管理员角色。 这将授予你在与此 Azure AD 目录关联的所有 Azure 订阅和管理组中分配角色的权限。 此开关仅适用于分配到 Azure AD 中全局管理员角色的用户。
 
-   将开关设为“否”时，用户帐户中的 Azure RBAC 中的用户访问管理员角色将会删除。 将无法再分配在与此 Azure AD 目录关联的所有 Azure 订阅和管理组中的角色。 只能查看和管理已获取访问权限的 Azure 订阅和管理组。
+   将开关设为“否”时，会从用户帐户中删除 Azure RBAC 中的用户访问管理员角色。 将无法再分配在与此 Azure AD 目录关联的所有 Azure 订阅和管理组中的角色。 只能查看和管理已获取访问权限的 Azure 订阅和管理组。
 
 1. 单击“保存”，保存设置。
 
-   此设置不是全局属性，仅适用于当前登录用户。
+   此设置不是全局属性，仅适用于当前已登录的用户。 无法提升所有全局管理员角色成员的访问权限。
 
-1. 在提升访问权限下执行需要完成的任务。 完成后，将开关重新设置为“否”。
+1. 注销然后重新登录可以刷新访问权限。
+
+    现在，你应该有权访问目录中的所有订阅和管理组。 你会注意到，系统为你分配了根范围的“用户访问管理员”角色。
+
+   ![根范围的订阅角色分配 - 屏幕截图](./media/elevate-access-global-admin/iam-root.png)
+
+1. 以提升的访问权限做出所需的更改。
+
+    有关如何分配角色的信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](role-assignments-portal.md)。 如果使用 Azure AD Privileged Identity Management (PIM)，请参阅[在 PIM 中发现要管理的 Azure 资源](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)或[在 PIM 中分配 Azure 资源角色](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)。
+
+1. 完成后，将“Azure 资源的访问管理”切换回到“否”。 由于此设置特定于用户，因此，必须以提升访问权限时所用的同一用户登录。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -89,16 +101,22 @@ RoleDefinitionName : User Access Administrator
 RoleDefinitionId   : 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9
 ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc
 ObjectType         : User
+CanDelegate        : False
 ```
 
 ### <a name="remove-a-role-assignment-at-the-root-scope-"></a>删除根范围 (/) 处的角色分配
 
-若要在根范围 (`/`) 删除用户的用户访问管理员角色分配，请运行 [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) 命令。
+若要在根范围 (`/`) 删除用户的用户访问管理员角色分配，请遵循以下步骤。
 
-```azurepowershell
-Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
-  -RoleDefinitionName "User Access Administrator" -Scope "/"
-```
+1. 以能够删除提升访问权限的用户身份登录。 此用户可以是提升访问权限时所用的同一用户，也可以是在根范围拥有提升访问权限的另一个全局管理员。
+
+
+1. 使用 [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) 命令删除用户访问管理员角色分配。
+
+    ```azurepowershell
+    Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
+      -RoleDefinitionName "User Access Administrator" -Scope "/"
+    ```
 
 ## <a name="rest-api"></a>REST API
 

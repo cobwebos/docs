@@ -6,18 +6,19 @@ services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 52b6265722d5cfbf8baf54e1785ace627aa0892f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: b1fc2e18dd5fc8e995c2d997683a4c5e5c501087
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341661"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188960"
 ---
-# <a name="extracting-text-with-ocr"></a>使用 OCR 提取文本
+# <a name="extracting-text-with-optical-character-recognition"></a>使用光学字符识别提取文本
 
 计算机视觉中的光学字符识别 (OCR) 技术可检测图像中的文本内容，并将已识别的文本提取到计算机可读的字符流中。 你可以将结果用于搜索和其他多个目的，如医疗记录、安全和银行。 它会自动检测语言。 OCR 可以节省时间，允许用户拍摄文本而非转录文本，从而为用户提供方便。
 
@@ -25,7 +26,7 @@ OCR 支持 25 种语言。 这些语言包括：阿拉伯语、简体中文、�
 
 如果需要，OCR 会围绕图像水平轴更正所识别文本的方向（以度为单位）。 OCR 提供每个字词的帧坐标，如下图所示。
 
-![OCR 概述](./Images/vision-overview-ocr.png)
+![一个示意图，描绘正在旋转的图像及其正在读取和画出的文本](./Images/vision-overview-ocr.png)
 
 ## <a name="ocr-requirements"></a>OCR 要求
 

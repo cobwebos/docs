@@ -1,47 +1,48 @@
 ---
-title: 什么是 Azure 机器学习工作室？ | Microsoft Docs
-description: 概述 Azure 机器学习工作室：一个拖放式工具，可以通过现成可用的算法库和模块快速构建模型。
+title: 什么是
+titleSuffix: Azure Machine Learning Studio
+description: Azure 机器学习工作室是一个拖放式工具，可以通过现成可用的算法库和模块快速构建模型。
 keywords: azure 机器学习,azure ml, 机器学习工作室
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 ms.assetid: e65c8fe1-7991-4a2a-86ef-fd80a7a06269
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: d893a0817be6ae8a271d403ed0477fa04238954b
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: bb01db14cec73b8c5668915a9eaab5e7728724df
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264397"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469103"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什么是 Azure 机器学习工作室？
 Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用于根据数据构建、测试和部署预测分析解决方案。 机器学习工作室将模型发布为可让自定义应用或 BI 工具（如 Excel）方便使用的 Web 服务。
 
-机器学习工作室是展开数据科研、执行预测分析、使用云资源和处理数据的中心位置。
+机器学习工作室中融合了数据科学、预测分析、云资源和数据。
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="the-machine-learning-studio-interactive-workspace"></a>机器学习工作室交互式工作区
-要开发预测分析模型，通常需要使用一个或多个源中的数据，通过各种数据操作和统计函数来转换及分析数据，并生成一组结果。 开发此类模型是一个迭代过程。 在修改各种函数及其参数时，结果会不断收敛，直到已训练的有效模型令人满意。
+要开发预测分析模型，通常需要使用一个或多个源中的数据，通过各种数据操作和统计函数来转换及分析数据，并生成一组结果。 开发此类模型是一个迭代过程。 在修改各种函数及其参数时，结果会不断趋于一致，直到已训练的有效模型令人满意。
 
-**Azure 机器学习工作室** 提供交互式的可视工作区，可在其中轻松构建、测试和迭代预测分析模型。 可以将***数据集***和分析***模块***拖放到交互式画布，将它们连接在一起构成***试验***，然后在机器学习工作室中运行。 要迭代模型设计，可以编辑试验，根据需要保存副本，并重新运行试验。 准备就绪后，可以将***训练实验***转换为***预测试验***，然后将其发布为 ***Web 服务***，使其他人可以访问模型。
+**Azure 机器学习工作室** 提供交互式的可视工作区，可在其中轻松构建、测试和迭代预测分析模型。 可以将 ***数据集*** 和分析 ***模块*** 拖放到交互式画布，将它们连接在一起构成 ***试验***，然后在机器学习工作室中运行。 若要在模型设计上迭代，则需要编辑试验，可根据需要保存一个副本，并重新运行该试验。 准备就绪后，可以将 ***训练实验*** 转换为 ***预测试验***，然后将其发布为 ***Web 服务”发布***，以便其他人可以访问模型。
 
-不需要编程，只需以可视方式连接数据集和模块，即可构造预测分析模型。
+不需要编程，只需以可视方式连接数据集和模块即可构建预测分析模型。
 
 > [!TIP]
 > 若要下载和打印 Microsoft Azure 机器学习工作室功能概述示意图，请参阅 [Overview diagram of Azure Machine Learning Studio capabilities](studio-overview-diagram.md)（Azure Machine 机器学习工作室功能概述）。
-> 
-> 
+>
+>
 
-![Azure 机器学习工作室示意图：创建试验、读取多个源的数据、写入评分的数据、写入模型。][ml-studio-overview]
+![Azure 机器学习工作室示意图：创建试验、读取多个源的数据、编写评分的数据、编写模型。][ml-studio-overview]
 
 ## <a name="get-started-with-machine-learning-studio"></a>机器学习工作室入门
 首次进入[机器学习工作室](https://studio.azureml.net)时，会看到“主页”。 可在此处查看文档、视频、网络研讨会，以及查找其他重要资源。
@@ -85,11 +86,11 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 有关创建预测分析解决方案的更完整演练，请参阅 [Develop a predictive solution with Azure Machine Learning](walkthrough-develop-predictive-solution.md)（使用 Azure 机器学习开发预测解决方案）。
 
 ### <a name="datasets"></a>数据集
-数据集是指已上传到机器学习工作室，可在建模过程中使用的数据。 机器学习工作室随附了许多示例数据集供试验，可以根据需要上传更多的数据集。 下面是随附数据集的一些例子：
+数据集是指已上传到机器学习工作室，可在建模过程中使用的数据。 机器学习工作室提供了许多示例数据集供试验，可以根据需要上传更多的数据集。 下面是随附数据集的一些例子：
 
 * **各种汽车的 MPG 数据** - 汽车的每加仑燃油英里数 (MPG) 值，按缸数、马力等参数列出。
 * **乳腺症数据** - 乳腺癌诊断数据。
-* **森林火灾数据** - 葡萄牙东北部森林火灾级别。
+* **森林火灾数据** - 葡萄牙东北部森林火灾的规模。
 
 构建试验时，可以从画布左侧的数据集列表中选择。
 
@@ -103,7 +104,7 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 * [线性回归][linear-regression] - 创建在线梯度下降线性回归模型。
 * [评分模型][score-model] - 为训练的分类或回归模型评分。
 
-构建试验时，可以从画布左侧的模块列表中选择。  
+构建试验时，可以从画布左侧提供的模块列表中选择。
 
 模块可能提供一组参数用于配置模块的内部算法。 在画布上选择模块时，模块的参数会显示在画布右侧的“属性”窗格中。 可以在该窗格中修改参数来调整模型。
 
@@ -117,11 +118,11 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 
 
 ## <a name="key-machine-learning-terms-and-concepts"></a>机器学习的重要术语和概念
-机器学习的术语有点难懂。 下面提供了重要术语的定义。 可以使用下面的“意见”部分告诉我们还要阐释哪些术语。
+机器学习的术语有点难懂。 下面提供了重要术语的定义。 可以使用下面的“评论”部分告诉我们还要阐释哪些术语。
 
 ### <a name="data-exploration-descriptive-analytics-and-predictive-analytics"></a>数据探索、描述性分析和预测分析
 
-**数据探索** 是收集大量的、通常是非结构化的数据集的相关信息，找到要重点分析的特征的过程。
+**数据探索** 是收集大量的、通常是非结构化的数据集的相关信息的过程，目的是找到要集中分析的特征。
 
 **数据挖掘** 指自动化的数据探索。
 
@@ -132,13 +133,13 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 ### <a name="supervised-and-unsupervised-learning"></a>监督式和非监督式学习
  **监督式学习** 算法使用带有标签的数据（即，包含所需示例答案的数据）进行训练。 例如，识别信用卡盗用的模型，是通过包含已知诈骗收费和有效收费标记数据点的数据集训练的。 大多数机器学习都是监督式的。
 
- **非监督式学习** 用于不带标签的数据，目标是查找数据中的关系。 例如，可以查找具有类似消费习惯的客户人口统计信息。
+ **非监督式学习** 用于不带标签的数据，目标是查找数据中的关系。 例如，可以查找具有类似消费习惯的客户群。
 
 ### <a name="model-training-and-evaluation"></a>模型训练和评估
 机器学习模型将尝试回答的问题或要预测的结果抽象化。 模型是通过现有数据训练和评估的。
 
 #### <a name="training-data"></a>训练数据
-通过数据训练模型时，将使用已知数据集，基于数据特征进行模型调整，以求获得最准确的结果。 在 Azure 机器学习中，模型是通过处理训练数据和功能模块（例如评分模块）的算法模块构建的。
+通过数据训练模型时，将使用已知数据集并基于数据特征对模型进行调整，以求获得最准确的结果。 在 Azure 机器学习中，模型是由处理训练数据的算法模块和功能模块（例如评分模块）构建的。
 
 在监督式学习中，如果要训练诈骗检测模型，可以使用一组标记为诈骗或有效的交易。 随机拆分数据集，并使用一部分数据训练模型，使用另一部分测试或评估模型。
 
@@ -147,7 +148,7 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 
 ## <a name="other-common-machine-learning-terms"></a>其他常见的机器学习术语
 * **算法**：通过数据处理、数学计算或自动推理来解决问题的一组独立规则。
-* **异常检测**：标记异常的事件或值，帮助发现问题的模型。 例如，信用卡诈骗检测可以查找异常的购买活动。
+* **异常检测**：标记异常事件或值，帮助发现问题的模型。 例如，信用卡诈骗检测可以查找异常的购买活动。
 * **分类数据**：按类别组织的、可分组的数据。 例如，汽车的分类数据集可以指定年份、制造商、车型和价格。
 * **分类**：根据类别分组已知的数据集，将数据点组织成不同类别的模型。
 * **特征工程**：提取或选择与数据集相关的特征，以便增强数据集并改善结果的过程。 例如，机票价格数据可通过星期几和假日来增强。 请参阅 [Feature selection and engineering in Azure Machine Learning](../team-data-science-process/create-features.md)（Azure 机器学习中的特征选择和工程）。
@@ -157,11 +158,11 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 * **分区**：将数据拆分成多个样本的方法。 有关详细信息，请参阅 [Partition and Sample](https://msdn.microsoft.com/library/azure/dn905960.aspx) （分区和采样）。
 * **预测**：预测是来自机器学习模型的一个或多个预测值。 有时称为“预测评分”。 但是，预测评分不是模型的最终输出。 评分之后还要评估模型。
 * **回归**：根据独立变量预测值的模型，例如根据汽车的年份和制造商预测汽车价格。
-* **评分**：使用机器学习工作室中的 [“评分模型”模块](https://msdn.microsoft.com/library/azure/dn905995.aspx) ，从训练分类或回归模型生成的预测值。 分类模型也返回预测值的机率评分。 从模型生成分数之后，即可使用 [“评估模型”模块](https://msdn.microsoft.com/library/azure/dn905915.aspx)来评估模型的准确性。
+* **评分**：使用机器学习工作室中的[“评分模型”模块](https://msdn.microsoft.com/library/azure/dn905995.aspx)，从训练分类或回归模型生成的预测值。 分类模型也返回预测值的机率评分。 从模型生成分数之后，即可使用 [“评估模型”模块](https://msdn.microsoft.com/library/azure/dn905915.aspx)来评估模型的准确性。
 * **样本**：用于代表整体的一部分数据集。 可以随机采样，或根据数据集的具体特征采样。
 
 ## <a name="next-steps"></a>后续步骤
-可以使用[分步指南](create-experiment.md)和[基于样本的构建](sample-experiments.md)了解预测分析和机器学习的基础知识。  
+可以使用[分步指南](create-experiment.md)和[基于样本的构建](sample-experiments.md)了解预测分析和机器学习的基础知识。
 
 
 <!-- Module References -->

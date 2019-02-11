@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: edddc40b17adde685f875dfaa6b20879c6e61b15
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 837c9d2b4b7dc0ce2c5ee3b25106eb5fea4ed7ea
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259150"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358977"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 的 Windows 虚拟机上运行的 SQL Server 常见问题解答
 
@@ -39,7 +39,7 @@ ms.locfileid: "51259150"
 
 1. **有哪些 SQL Server 虚拟机库映像可用？**
 
-   Azure 为所有 Windows 和 Linux 版本中的所有受支持 SQL Server 主要发行版维护虚拟机映像。 有关更多详细信息，请参阅 [Windows VM 映像](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo)和 [Linux VM 映像](../../linux/sql/sql-server-linux-virtual-machines-overview.md#create)的完整列表。
+   Azure 为所有 Windows 和 Linux 版本中的所有受支持 SQL Server 主要发行版维护虚拟机映像。 有关详细信息，请参阅 [Windows VM 映像](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo)和 [Linux VM 映像](../../linux/sql/sql-server-linux-virtual-machines-overview.md#create)的完整列表。
 
 1. **现有的 SQL Server 虚拟机库映像是否会更新？**
 
@@ -49,13 +49,19 @@ ms.locfileid: "51259150"
 
    是的。 Azure 只为每个主要版本维护一个映像。 例如，发布新的 SQL Server Service Pack 时，Azure 会将新映像添加到该 Service Pack 的库。 先前 Service Pack 的 SQL Server 映像将立即从 Azure 门户中删除。 但是，在接下来的三个月，仍可以通过 PowerShell 预配该映像。 三个月之后，先前的 Service Pack 映像不再可用。 如果 SQL Server 版本由于生命周期结束而不受支持，则也会应用此删除策略。
 
+
+1. **是否可以部署 Azure 门户中不可见的较旧的 SQL Server 映像？**
+
+   是的，使用 PowerShell。 有关使用 PowerShell 部署 SQL Server VM 的详细信息，请参阅[如何使用 Azure PowerShell 预配 SQL Server 虚拟机](virtual-machines-windows-ps-sql-create.md)。
+
 1. **是否可以从 SQL Server VM 创建 VHD 映像？**
 
    可以，但需注意以下事项。 如果将此 VHD 部署到 Azure 中的新 VM，则无法在门户网站中获取 SQL Server 配置部分。 此时必须通过 PowerShell 管理 SQL Server 配置选项。 此外，将会按该映像最初基于的 SQL VM 的费率进行计费。 即使在部署前已从 VHD 中删除 SQL Server，也是如此。 
 
 1. **是否可以设置虚拟机库中未显示的配置（例如 Windows 2008 R2 + SQL Server 2012）？**
 
-   不是。 对于包含 SQL Server 的虚拟机库映像，必须选择提供的的映像之一。
+   不是。 对于包含 SQL Server 的虚拟机图库映像，必须通过 Azure 门户或 [PowerShell](virtual-machines-windows-ps-sql-create.md) 选择提供的某个映像。 
+
 
 ## <a name="creation"></a>创建
 
@@ -73,14 +79,46 @@ ms.locfileid: "51259150"
 
    可通过两种方式来执行此操作。 可以预配[支持许可证的虚拟机映像](virtual-machines-windows-sql-server-iaas-overview.md#BYOL)之一，也称为自带许可 (BYOL)。 另一个选项是将 SQL Server 安装介质复制到 Windows Server VM 上，然后在 VM 上安装 SQL Server。 但是，如果手动安装 SQL Server，则没有门户集成，并且不支持 SQL Server IaaS 代理扩展，因此“自动备份”和“自动修补”等功能在此方案中不起作用。 出于此原因，我们建议使用 BYOL 库映像之一。 要在 Azure VM 上使用 BYOL 或自己的 SQL Server 媒体，必须获得 [Azure 上通过软件保障实现的许可移动性](https://azure.microsoft.com/pricing/license-mobility/)。 有关详细信息，请参阅 [SQL Server Azure VM 定价指南](virtual-machines-windows-sql-server-pricing-guidance.md)。
 
-1. **如果已通过即用即付库映像之一创建了 VM，是否可以将该 VM 更改为使用自己的 SQL Server 许可证？**
-
-   不是。 无法将按秒付费许可切换为使用自己的许可证。 请使用 [BYOL 映像](virtual-machines-windows-sql-server-iaas-overview.md#BYOL)之一创建新的 Azure 虚拟机，然后使用标准[数据迁移技术](virtual-machines-windows-migrate-sql.md)将数据库迁移到新的服务器。
 
 1. **如果 SQL Server 仅用于待机/故障转移，是否必须付费才能在 Azure VM 上为 SQL Server 授予许可？**
 
-   如果你具有[虚拟机许可常见问题解答](https://azure.microsoft.com/pricing/licensing-faq/)中所述的“软件保障”并且使用“许可证移动性”，则无需付费即可为在 HA 部署中作为被动次要副本参与的 SQL Server 授予许可。 否则，你需要付费才可为其授予许可。
+   如果有[虚拟机许可常见问题解答](https://azure.microsoft.com/pricing/licensing-faq/)中所述的“软件保障”并且使用“许可证移动性”，则无需付费即可为在 HA 部署中作为被动次要副本参与的 SQL Server 授予许可。 否则，你需要付费才可为其授予许可。
 
+1. **如果已通过即用即付库映像之一创建了 VM，是否可以将该 VM 更改为使用自己的 SQL Server 许可证？**
+
+   是的。 可以轻松地在两个许可模型之间切换，不管最初部署的映像是什么。 有关详细信息，请参阅[如何更改 SQL VM 的许可模型](virtual-machines-windows-sql-ahb.md)。
+
+1. **我应该使用 BYOL 映像还是 SQL VM RP 来创建新的 SQL VM？**
+
+   仅自带许可 (BYOL) 映像可供 EA 客户使用。 其他有软件保障的客户应该使用 SQL VM 资源提供程序来创建包含 [Azure 混合权益 (AHB)](https://azure.microsoft.com/pricing/licensing-faq/) 的 SQL VM。 
+
+1. **切换许可模型是否需要将 SQL Server 停机？**
+
+   不是。 [更改许可模型](virtual-machines-windows-sql-ahb.md)不需将 SQL Server 停机，因为更改会立即生效，不需重启 VM。 
+
+1. **CSP 订阅是否能够激活 Azure 混合权益？**
+
+   是的。 [更改许可模型](virtual-machines-windows-sql-ahb.md)适用于 CSP 订阅。 
+
+1. **将 VM 注册到新的 SQL VM 资源提供程序是否需额外付费？**
+
+   不是。 SQL VM 资源提供程序只是为 Azure VM 上的 SQL Server 启用更多的可管理性，不额外收费。 
+
+1. **SQL VM 资源提供程序是否适用于所有客户？**
+ 
+   是的。 所有客户都可以将 VM 注册到新的 SQL VM 资源提供程序。 但是，只有享受软件保障权益的客户能够在 SQL Server VM 上激活 [Azure 混合权益 (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/)（或 BYOL）。 
+
+1. **如果移动或删除 VM 资源，_* Microsoft.SqlVirtualMachine_* 资源会发生什么情况？** 
+
+   删除或移动 Microsoft.Compute/VirtualMachine 资源时，会通知关联的 Microsoft.SqlVirtualMachine 资源以异步方式复制此操作。
+
+1. **如果删除 _* Microsoft.SqlVirtualMachine_* 资源，VM 会发生什么情况？**
+
+   删除 Microsoft.SqlVirtualMachine 资源时，Microsoft.Compute/VirtualMachine 资源不受影响。 但是，许可更改会默认回退到原始的映像源。 
+
+1. **是否可以将自行部署的 SQL Server VM 注册到 SQL VM 资源提供程序？**
+
+   是的。 如果从自己的媒体部署 SQL Server，并安装 SQL IaaS 扩展，则可将 SQL Server VM 注册到资源提供程序，以便获取 SQL IaaS 扩展提供的可管理性权益。 但是，不能将自行部署的 SQL VM 转换为即用即付。  
 
 ## <a name="administration"></a>管理
 
@@ -90,7 +128,7 @@ ms.locfileid: "51259150"
 
 1. **是否可以卸载 SQL Server 的默认实例？**
 
-   可以，但需注意以下事项。 如前面的解答中所述，依赖于 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)的功能仅对默认实例起作用。 卸载默认实例后，该扩展会继续查找默认实例并可能生成事件日志错误。 这些错误来自以下两个来源：**Microsoft SQL Server 凭据管理**和 **Microsoft SQL Server IaaS 代理**。 其中一个错误可能类似于以下内容：
+   可以，但需注意以下事项。 如前面的解答中所述，依赖于 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)的功能仅对默认实例起作用。 卸载默认实例后，该扩展会继续查找默认实例并可能生成事件日志错误。 这些错误来自以下两个源：Microsoft SQL Server 凭据管理和 Microsoft SQL Server IaaS 代理。 其中一个错误可能类似于以下内容：
 
       建立与 SQL Server 的连接时，出现网络相关或特定于实例的错误。 找不到或无法访问服务器。
 

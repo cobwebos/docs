@@ -1,25 +1,25 @@
 ---
 title: 教程：Azure Active Directory 与 O.C. Tanner - AppreciateHub | Microsoft Docs
-description: 了解如何在 Azure Active Directory 和 O.C. Tanner - AppreciateHub 之间配置单一登录。
+description: 了解如何在 Azure Active Directory 和 O.C. Tanner - AppreciateHub 中创建名为“Britta Simon”的用户。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: dee8fbca-0b60-4a21-8917-1fb6919de5a0
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 2a3c6641c3fd9402ede2176e3c5c3f3ec15ed9de
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3a9b11b5d5e70e72a90683d4952b7d34f0303960
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438699"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163596"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oc-tanner---appreciatehub"></a>教程：Azure Active Directory 与 O.C. Tanner - AppreciateHub
 
@@ -138,7 +138,7 @@ ms.locfileid: "39438699"
 1. 要在 **O.C.Tanner-AppreciateHub** 端配置单一登录，需要将下载的元数据 XML 发送到 [O.C.Tanner - AppreciateHub 支持团队](mailto:sso@octanner.com)。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -218,7 +218,7 @@ ms.locfileid: "39438699"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

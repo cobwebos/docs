@@ -4,7 +4,7 @@ description: Azure Active Directory 门户中的“登录活动”报告简介
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d3705267520087e098e3e2bcc55e677935dc6097
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 932517e3f1dc70e44727a6d165430dba6e63ae5a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275327"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187787"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 * 此外，任何用户（非管理员）都可以访问自己的登录活动 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>访问登录活动需要什么 Azure AD 许可证？
-* 租户必须具有与之关联的 Azure AD Premium 许可证，才能查看包含所有登录活动的报告
+* 租户必须具有与之关联的 Azure AD Premium 许可证，才能查看包含所有登录活动的报告。 请参阅 [Azure Active Directory Premium 入门](../fundamentals/active-directory-get-started-premium.md)来升级 Azure Active Directory 版本。 请注意，如果在升级之前没有任何活动数据，则在升级到高级版许可证后，数据需要经过几天才会显示在报表中。
 
 ## <a name="sign-ins-report"></a>登录报告
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 * 多少用户超过一周都有登录行为？
 * 这些登录的状态怎样？
 
-可以通过在 [Azure 门户](https://portal.azure.com)的“Azure Active Directory”边栏选项卡的“活动”部分中选择“登录”来访问登录报告。
+可以通过在 [Azure 门户](https://portal.azure.com)的“Azure Active Directory”边栏选项卡的“活动”部分中选择“登录”来访问登录报告。 请注意，某些登录记录最多可能需要两个小时才会显示在门户中。
 
 ![登录活动](./media/concept-sign-ins/61.png "登录活动")
 
@@ -96,7 +96,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 若要将所报告数据的范围缩小到适当的级别，可以使用以下默认字段筛选登录数据：
 
 - 用户
-- Application
+- 应用程序
 - 登录状态
 - 条件性访问
 - 日期
@@ -161,8 +161,8 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 如果要在 **Windows 10** 计算机上运行脚本，则需要先执行一些其他步骤。 
 
-1. 安装 [AzureRM 模块](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.4.0l)。
-2. 通过打开 PowerShell 提示符并运行命令 **Import-Module AzureRM** 来导入模块。
+1. 安装 [Az 模块](/powershell/azure/install-az-ps)。
+2. 通过打开 PowerShell 提示符并运行命令 **Import-Module Az** 来导入模块。
 3. 运行 **Set-ExecutionPolicy unrestricted**，并选择 **Yes to All**。 
 4. 现在，可以在管理员模式下运行下载的 PowerShell 脚本以生成 CSV 文件。
 
@@ -196,14 +196,17 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 - 用户
 - 用户名
 - 应用程序 ID
-- Application
+- 应用程序
 - Client
 - 位置
 - IP 地址
 - 日期
 - 需要 MFA
 - 登录状态
- 
+
+> [!NOTE]
+> IP 地址的发布方式是，在 IP 地址和使用该地址的计算机所在的物理位置之间没有确定的连接。 从中心池发布 IP 地址的移动运营商和 VPN 通常与实际使用客户端设备的位置距离很远，这会导致 IP 地址映射变得复杂。 目前，在 Azure AD 报告中，最好是基于跟踪、注册表数据、反向查看和其他信息将 IP 地址转换为物理位置。
+
 在“用户”页中单击“活动”部分的“登录”即可完全了解所有用户登录活动。
 
 ![登录活动](./media/concept-sign-ins/08.png "登录活动")
@@ -233,6 +236,12 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 **登录** 选项可提供应用程序的所有登录事件的完整概览。
 
 ![登录活动](./media/concept-sign-ins/11.png "登录活动")
+
+## <a name="office-365-activity-logs"></a>Office 365 活动日志
+
+可以从 [Office 365 管理中心](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)查看 Office 365 活动日志。 尽管 Office 365 活动和 Azure AD 活动日志共享大量的目录资源，但只有 Office 365 管理中心提供 Office 365 活动日志的完整视图。 
+
+此外可以使用 [Office 365 管理 API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) 以编程方式访问 Office 365 活动日志。
 
 ## <a name="next-steps"></a>后续步骤
 

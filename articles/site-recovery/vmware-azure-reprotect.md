@@ -5,14 +5,14 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 12/17/2018
 ms.author: rajanaki
-ms.openlocfilehash: 3f661ab5ff2a127ba7507a64bb4520cbad740473
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 06337e205c472d26024289222dc8876d23b4184f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213281"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791863"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>故障转移到 Azure 后，将计算机重新保护并故障回复到本地站点
 
@@ -61,8 +61,8 @@ ms.locfileid: "50213281"
 
 主目标服务器接收故障回复数据。 默认情况下，主目标服务器在本地配置服务器上运行。 但是，可能需要创建单独的故障回复用主目标服务器，具体取决于故障回复流量。 下面介绍如何创建主目标服务器：
 
-* [创建 Linux 主目标服务器](vmware-azure-install-linux-master-target.md)以便故障回复 Linux VM。 这是必填字段。
-* （可选）创建单独的主目标服务器用于 Windows VM 故障回复。 为此，请再次运行统一安装程序，并选择创建主目标服务器。 [了解详细信息](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers)。
+* [创建 Linux 主目标服务器](vmware-azure-install-linux-master-target.md)以便故障回复 Linux VM。 这是必填字段。 请注意，不支持 LVM 上的主目标服务器。
+* （可选）创建单独的主目标服务器用于 Windows VM 故障回复。 为此，请再次运行统一安装程序，并选择创建主目标服务器。 [了解详细信息](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers)。 
 
 创建主目标服务器后，请执行以下任务：
 

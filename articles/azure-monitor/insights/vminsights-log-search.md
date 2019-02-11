@@ -8,29 +8,28 @@ manager: carmonm
 editor: tysonn
 ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: bfed4318d09a776f56a5a4b6218120d75a49fc80
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: e9e00dd9d05ff7339a6b5fd93e86bae61fbbf5ee
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713860"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188415"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>如何从用于 VM 的 Azure Monitor 查询日志（预览版）
-用于 VM 的 Azure Monitor 收集性能和连接指标、计算机和进程库存数据以及运行状况信息，并将其转发到 Azure Monitor 中的 Log Analytics 数据存储。  可在 Log Analytics 中[搜索](../../log-analytics/log-analytics-queries.md)此数据。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
+# <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>如何从用于 VM 的 Azure Monitor（预览版）查询日志
+用于 VM 的 Azure Monitor 收集性能和连接指标、计算机和进程库存数据以及运行状况信息，并将其转发到 Azure Monitor 中的 Log Analytics 数据存储。  可在 Log Analytics 中[搜索](../../azure-monitor/log-query/log-query-overview.md)此数据。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
 
 ## <a name="map-records"></a>映射记录
 除了在进程或计算机启动或载入到用于 VM 的 Azure Monitor 映射功能时生成的记录以外，还会针对每个唯一计算机和进程每小时生成一条记录。 这些记录的属性在下表中列出。 ServiceMapComputer_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中计算机资源的字段。 ServiceMapProcess_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中进程资源的字段。 ResourceName_s 字段与相应的 Azure Resource Manager 资源中的名称字段匹配。 
 
 包含内部生成的可用于标识唯一进程和计算机的属性：
 
-- 计算机：使用 *ResourceId* 或 *ResourceName_s* 唯一标识 Log Analytics 工作区中的计算机。
-- 进程：使用 *ResourceId* 唯一标识 Log Analytics 工作区中的进程。 *ResourceName_s* 在运行该进程的计算机 (MachineResourceName_s) 的上下文中唯一 
+- 计算机：使用 ResourceId 或 ResourceName_s 唯一标识 Log Analytics 工作区中的计算机。
+- 进程：使用 ResourceId 唯一标识 Log Analytics 工作区中的进程。 *ResourceName_s* 在运行该进程的计算机 (MachineResourceName_s) 的上下文中唯一 
 
 由于在指定的时间范围内，指定的进程和计算机可能存在多条记录，因此针对同一个计算机或进程的查询可能返回多条记录。 若要仅添加最新记录，请在查询中添加“| dedup ResourceId”。
 
@@ -238,5 +237,5 @@ let remoteMachines = remote | summarize by RemoteMachine;
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 如果你不太了解如何在 Log Analytics 中编写查询，请参考 Azure 门户中的[如何使用 Log Analytics 页](../../log-analytics/query-language/get-started-analytics-portal.md)编写 Log Analytics 查询。
-* 了解如何[编写搜索查询](../../log-analytics/query-language/search-queries.md)。
+* 如果你不太了解如何在 Log Analytics 中编写查询，请参考 Azure 门户中的[如何使用 Log Analytics 页](../../azure-monitor/log-query/get-started-portal.md)编写 Log Analytics 查询。
+* 了解如何[编写搜索查询](../../azure-monitor/log-query/search-queries.md)。

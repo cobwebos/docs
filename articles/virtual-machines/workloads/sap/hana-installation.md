@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad04b229e4c6ace3f87ba6e800c0a7c82eb76d92
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 10c8c0043d04d99ad10e475f903979edb0ddcb70
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633948"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266886"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何安装和配置 Azure 上的 SAP HANA（大型实例）
 
@@ -30,7 +30,7 @@ SAP HANA 的安装由你负责。 可以在 Azure 虚拟网络与 HANA 大型实
 > [!Note]
 > 根据 SAP 政策，SAP HANA 的安装必须由通过了“SAP 技术认证专员”考试、“SAP HANA 安装”认证考试的人员，或者 SAP 认证的系统集成商 (SI) 来完成。
 
-规划 HANA 2.0 的安装时，请参阅 [SAP 支持说明 #2235581 - SAP HANA：支持的操作系统](https://launchpad.support.sap.com/#/notes/2235581/E)，确保所要安装的 SAP HANA 版本支持该 OS。 HANA 2.0 支持的 OS 比 HANA 1.0 支持的 OS 限制性更强。 
+计划安装 HANA 2.0 时，请参阅 [SAP 支持说明 #2235581 - SAP HANA：支持的操作系统](https://launchpad.support.sap.com/#/notes/2235581/E)，确保所要安装的 SAP HANA 版本支持该 OS。 HANA 2.0 支持的 OS 比 HANA 1.0 支持的 OS 限制性更强。 
 
 > [!IMPORTANT] 
 > 对于类型 II 设备，目前仅支持 SLES 12 SP2 OS 版本。 
@@ -87,14 +87,14 @@ HANA 大型实例单元可以连接到此 SMT 实例。 （有关详细信息，
 
 根据 [SAP 支持说明 #1999997 - 常见问题解答：SAP HANA 内存](https://launchpad.support.sap.com/#/notes/1999997/E)，交付的 OS 映像的交换空间设置为 2GB。 如果客户需要不同的设置，则必须自行设置。
 
-[SUSE Linux Enterprise Server 12 SP1 for SAP Applications](https://www.suse.com/products/sles-for-sap/hana) 是为 Azure SAP HANA（大型实例）安装的 Linux 分发版。 此特定分发版提供特定于 SAP 的现成功能（包括在 SLES 上高效运行 SAP 所需的预设参数）。
+[SUSE Linux Enterprise Server 12 SP1 for SAP Applications](https://www.suse.com/products/sles-for-sap/download/) 是为 Azure SAP HANA（大型实例）安装的 Linux 分发版。 此特定分发版提供特定于 SAP 的现成功能（包括在 SLES 上高效运行 SAP 所需的预设参数）。
 
 请参阅 SUSE 网站上的[资源库/白皮书](https://www.suse.com/products/sles-for-sap/resource-library#white-papers)以及 SAP 社区网络 (SCN) 上的 [SAP on SUSE](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE)（基于 SUSE 的 SAP），了解多种与部署 SLES SAP HANA 相关的有用资源（包括设置高可用性、特定于 SAP 操作的安全强化等）。
 
 下面是与 SAP on SUSE 相关的其他有用链接：
 
 - [SAP HANA on SUSE Linux 站点](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE)
-- [Best practices for SAP: Enqueue replication – SAP NetWeaver on SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)（SAP 最佳做法：排队复制 - SAP NetWeaver on SUSE Linux Enterprise 12）
+- [Best Practice for SAP:Enqueue replication – SAP NetWeaver on SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)（SAP 最佳实践：排队复制 - 基于 SUSE Linux Enterprise 12 的 SAP NetWeaver）
 - [ClamSAP – SLES virus protection for SAP](http://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap)（ClamSAP - 适用于 SAP 的 SLES 病毒防护）（包括 SLES 12 for SAP Applications）
 
 下面是适用于实施 SAP HANA on SLES 12 的 SAP 支持说明：
@@ -102,7 +102,7 @@ HANA 大型实例单元可以连接到此 SMT 实例。 （有关详细信息，
 - [SAP support note #1944799 – SAP HANA guidelines for SLES operating system installation](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)（SAP 支持说明 #1944799 - 适用于 SLES 操作系统安装的 SAP HANA 指导原则）
 - [SAP support note #2205917 – SAP HANA DB recommended OS settings for SLES 12 for SAP applications](https://launchpad.support.sap.com/#/notes/2205917/E)（SAP 支持说明 #2205917 - SAP HANA DB 建议的适用于 SLES 12 for SAP Applications 的 OS 设置）
 - [SAP support note #1984787 – SUSE Linux Enterprise Server 12:  installation notes](https://launchpad.support.sap.com/#/notes/1984787)（SAP 支持说明 #1984787 - SUSE Linux Enterprise Server 12：安装说明）
-- [SAP support note #171356 – SAP software on Linux:  General information](https://launchpad.support.sap.com/#/notes/1984787)（SAP 支持说明 #171356 - Linux 上的 SAP 软件：常规信息）
+- [SAP support note #171356 – SAP software on Linux:General Information](https://launchpad.support.sap.com/#/notes/1984787)（SAP 支持说明 #171356 - Linux 上的 SAP 软件：常规信息）
 - [SAP support note #1391070 – Linux UUID solutions](https://launchpad.support.sap.com/#/notes/1391070)（SAP 支持说明 #1391070 - Linux UUID 解决方案）
 
 [Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) 是用于在 HANA 大型实例上运行 SAP HANA 的另一个产品。 现在有 RHEL 6.7 和 7.2 版本可用。 请注意，与仅支持 RHEL 7.2 及更高版本的本机 Azure VM 不同，HANA 大型实例还支持 RHEL 6.7。 但是我们建议使用 RHEL 7.x 版本。
@@ -113,13 +113,13 @@ HANA 大型实例单元可以连接到此 SMT 实例。 （有关详细信息，
 下面是适用于实施 SAP HANA on Red Hat 的 SAP 支持说明：
 
 - [SAP support note #2009879 - SAP HANA guidelines for Red Hat Enterprise Linux (RHEL) operating system](https://launchpad.support.sap.com/#/notes/2009879/E)（SAP 支持说明 #2009879 - 适用于 Red Hat Enterprise Linux (RHEL) 操作系统的 SAP HANA 指导原则）
-- [SAP support note #2292690 - SAP HANA DB: Recommended OS settings for RHEL 7](https://launchpad.support.sap.com/#/notes/2292690)（SAP 支持说明 #2292690 - SAP HANA DB：RHEL 7 的建议 OS 设置）
-- [SAP Support Note #2247020 - SAP HANA DB: Recommended OS settings for RHEL 6.7](https://launchpad.support.sap.com/#/notes/2247020)（SAP 支持说明 #2247020 - SAP HANA DB：RHEL 6.7 的建议 OS 设置）
+- [SAP support note #2292690 - SAP HANA DB:Recommended OS settings for RHEL 7](https://launchpad.support.sap.com/#/notes/2292690)（2292690 - SAP HANA DB：建议用于 RHEL 7 的 OS 设置）
+- [SAP Support Note #2247020 - SAP HANA DB:Recommended OS settings for RHEL 6.7](https://launchpad.support.sap.com/#/notes/2247020)（SAP 支持说明 #2247020 - SAP HANA DB：建议用于 RHEL 6.7 的 OS 设置）
 - [SAP support note #1391070 – Linux UUID solutions](https://launchpad.support.sap.com/#/notes/1391070)（SAP 支持说明 #1391070 - Linux UUID 解决方案）
-- [SAP support note #2228351 - Linux: SAP HANA Database SPS 11 revision 110 (or higher) on RHEL 6 or SLES 11](https://launchpad.support.sap.com/#/notes/2228351)（SAP 支持说明 #2228351 - Linux：RHEL 6 或 SLES 11 上的 SAP HANA Database SPS 11 修订版 110（或更高版本））
-- [SAP support note #2397039 - FAQ: SAP on RHEL](https://launchpad.support.sap.com/#/notes/2397039)（SAP 支持说明 #2397039 - 常见问题解答：SAP on RHEL）
-- [SAP support note #1496410 - Red Hat Enterprise Linux 6.x: Installation and upgrade](https://launchpad.support.sap.com/#/notes/1496410)（SAP 支持说明 #1496410 - Red Hat Enterprise Linux 6.x：安装和升级）
-- [SAP support note #2002167 - Red Hat Enterprise Linux 7.x: Installation and upgrade](https://launchpad.support.sap.com/#/notes/2002167)（SAP 支持说明 #2002167 - Red Hat Enterprise Linux 7.x：安装和升级）
+- [SAP support note #2228351 - Linux:SAP HANA Database SPS 11 revision 110 (or higher) on RHEL 6 or SLES 11](https://launchpad.support.sap.com/#/notes/2228351)（SAP 支持说明 #2228351 - Linux：RHEL 6 或 SLES 11 上的 SAP HANA Database SPS 11 修订版 110（或更高版本））
+- [SAP support note #2397039 - FAQ:SAP on RHEL](https://launchpad.support.sap.com/#/notes/2397039)（SAP 支持说明 #2397039 - 常见问题解答：基于 RHEL 的 SAP）
+- [SAP support note #1496410 - Red Hat Enterprise Linux 6.x:Installation and upgrade](https://launchpad.support.sap.com/#/notes/1496410)（SAP 支持说明 #1496410 - Red Hat Enterprise Linux 6.x：安装和升级）
+- [SAP support note #2002167 - Red Hat Enterprise Linux 7.x:Installation and upgrade](https://launchpad.support.sap.com/#/notes/2002167)（SAP 支持说明 #2002167 - Red Hat Enterprise Linux 7.x：安装和升级）
 
 ### <a name="time-synchronization"></a>时间同步
 
@@ -201,7 +201,7 @@ S72m HANA 大型实例单元上的命令 df -h 的输出如下所示：
 
 也可以在安装 SAP HANA 数据库之后使用 hdbparam 框架配置这些参数。 
 
-在 SAP HANA 2.0 中，hdbparam 框架已弃用。 因此，必须使用 SQL 命令设置这些参数。 有关详细信息，请参阅 [SAP 说明 #2399079：HANA 2 中已弃用 hdbparam](https://launchpad.support.sap.com/#/notes/2399079)。
+在 SAP HANA 2.0 中，hdbparam 框架已弃用。 因此，必须使用 SQL 命令设置这些参数。 有关详细信息，请参阅 [SAP note #2399079:Elimination of hdbparam in HANA 2](https://launchpad.support.sap.com/#/notes/2399079)（SAP 说明 #2399079：在 HANA 2 中弃用 hdbparam）。
 
 请参阅 [HLI 支持的方案](hana-supported-scenario.md)，详细了解体系结构的存储布局。
 

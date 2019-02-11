@@ -6,18 +6,19 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: 70fa8c5af4f00500c39ce3832e182a5532721799
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec18
+ms.openlocfilehash: 9e9f9b718928614bcd018677a2ddd094fe68f2c4
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419701"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218200"
 ---
-# <a name="qna-maker-rest-api-with-java"></a>QnA Maker REST API 与 Java 
+# <a name="how-to-use-the-qna-maker-rest-api-with-java"></a>如何将 QnA Maker REST API 与 Java 配合使用 
 <a name="HOLTop"></a>
 
 本文演示如何将 [Microsoft QnA Maker API](../Overview/overview.md)  与 Java 结合使用以执行下列操作。
@@ -37,7 +38,7 @@ ms.locfileid: "50419701"
 - [获取当前的字变更集。](#GetAlterations)
 - [替换当前的字变更集。](#PutAlterations)
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 

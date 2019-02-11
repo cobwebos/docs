@@ -1,27 +1,24 @@
 ---
-title: Azure Cosmos DB Gremlin API 简介 | Microsoft Docs
+title: Azure Cosmos DB Gremlin API 简介
 description: 了解如何在 Azure Cosmos DB 中通过使用 Apache TinkerPop 的 Gremlin 图形查询语言以较低的延迟存储、查询和遍历大量图形。
-services: cosmos-db
 author: LuisBosquez
-manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-graph
-ms.devlang: na
+ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/05/2018
 ms.author: lbosq
-ms.openlocfilehash: 809dead23a12f761d46c1be6a24951b8762dc1e1
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: a0d782ac1ba14e58e3cc377bb55ea25bb923c5c4
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092212"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038902"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB 简介：Gremlin API
 
 [Azure Cosmos DB](introduction.md) 是 Microsoft 针对任务关键型应用程序提供的全局分布式多模型数据库服务。 它是一个多模型数据库，支持文档、键-值、图形和纵栏表数据模型。 Azure Cosmos DB Gremlin API 用于存储和操作图形数据。 Gremlin API 支持对图形数据进行建模，并提供了用于遍历图形数据的 API。
 
-本文提供 Azure Cosmos DB Gremlin API 概述，并说明如何使用它存储具有数十亿顶点和边缘的大量图形。 可以使用毫秒级延迟的情况下查询图形，并轻松扩展图形结构和架构。 若要查询 Azure Cosmos DB，可以使用 [Apache TinkerPop](http://tinkerpop.apache.org) 图形遍历语言或 [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)。
+本文提供 Azure Cosmos DB Gremlin API 概述，并说明如何使用它存储具有数十亿顶点和边缘的大量图形。 可以使用毫秒级延迟的情况下查询图形，并轻松扩展图形结构和架构。 若要查询 Azure Cosmos DB，可以使用 [Apache TinkerPop](https://tinkerpop.apache.org) 图形遍历语言或 [Gremlin](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)。
 
 ## <a name="what-is-a-graph-database"></a>什么是图形数据库
 现实世界中的数据存在必然的联系。 传统数据建模以实体为重心。 对于许多应用程序，还需要进行建模，或是自然地为实体和关系建模。
@@ -32,7 +29,7 @@ ms.locfileid: "49092212"
 
 * **边** - 边表示顶点之间的关系。 例如，一个人可能认识其他人、涉及到某个事件以及最近处于某个位置。 
 
-* **属性** - 属性表示有关顶点和边的信息。 属性示例包括具有姓名和年龄的顶点。 边具有时间戳和/或权重。 更准确地讲，此模型称为[属性图形](http://tinkerpop.apache.org/docs/current/reference/#intro)。 Azure Cosmos DB 支持属性图形模型。
+* **属性** - 属性表示有关顶点和边的信息。 属性示例包括具有姓名和年龄的顶点。 边具有时间戳和/或权重。 更准确地讲，此模型称为[属性图形](https://tinkerpop.apache.org/docs/current/reference/#intro)。 Azure Cosmos DB 支持属性图形模型。
 
 例如，以下示例图形显示了人员、移动设备、兴趣和操作系统之间的关系：
 
@@ -82,18 +79,18 @@ Azure Cosmos DB 还可以在相同的容器/数据库中使用多个模型（例
 
 ## <a name="get-started"></a>入门
 
-可以使用 Azure 命令行接口 (CLI)、Azure PowerShell 或 Azure 门户来创建或访问 Azure Cosmos DB Gremlin API 帐户。 创建帐户后，可以使用 Gremlin API 服务终结点 `https://<youraccount>.gremlin.cosmosdb.azure.com`（提供适用于 Gremlin 的 WebSocket 前端）访问该帐户中的图形数据库。 可以将 TinkerPop 兼容的工具（例如 [Gremlin 控制台](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console)）配置为连接到此终结点，并在 Java、Node.js 或任何 Gremlin 客户端驱动程序中生成应用程序。
+可以使用 Azure 命令行接口 (CLI)、Azure PowerShell 或 Azure 门户来创建或访问 Azure Cosmos DB Gremlin API 帐户。 创建帐户后，可以使用 Gremlin API 服务终结点 `https://<youraccount>.gremlin.cosmosdb.azure.com`（提供适用于 Gremlin 的 WebSocket 前端）访问该帐户中的图形数据库。 可以将 TinkerPop 兼容的工具（例如 [Gremlin 控制台](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console)）配置为连接到此终结点，并在 Java、Node.js 或任何 Gremlin 客户端驱动程序中生成应用程序。
 
 下表显示可以对 Azure Cosmos DB 使用的常用 Gremlin 驱动程序：
 
 | 下载 | 文档 | 入门 | 支持的连接器版本 |
 | --- | --- | --- | --- |
-| [.NET](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [GitHub 上的 Gremlin.NET](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [使用 .NET 创建图形](create-graph-dotnet.md) | 3.4.0-RC2 |
-| [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](http://tinkerpop.apache.org/javadocs/current/full/) | [使用 Java 创建图形](create-graph-java.md) | 3.2.0+ |
+| [.NET](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [GitHub 上的 Gremlin.NET](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [使用 .NET 创建图形](create-graph-dotnet.md) | 3.4.0-RC2 |
+| [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](https://tinkerpop.apache.org/javadocs/current/full/) | [使用 Java 创建图形](create-graph-java.md) | 3.2.0+ |
 | [Node.js](https://www.npmjs.com/package/gremlin) | [GitHub 上的 Gremlin-JavaScript](https://github.com/jbmusso/gremlin-javascript) | [使用 Node.js 创建图形](create-graph-nodejs.md) | 2.6.0|
-| [Python](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [GitHub 上的 Gremlin-Python](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [使用 Python 创建图形](create-graph-python.md) | 3.2.7 |
+| [Python](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [GitHub 上的 Gremlin-Python](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [使用 Python 创建图形](create-graph-python.md) | 3.2.7 |
 | [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [GitHub 上的 Gremlin-PHP](https://github.com/PommeVerte/gremlin-php) | [使用 PHP 创建图形](create-graph-php.md) | 3.1.0 |
-| [Gremlin 控制台](https://tinkerpop.apache.org/downloads.html) | [TinkerPop 文档](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [使用 Gremlin 控制台创建图形](create-graph-gremlin-console.md) | 3.2.0 + |
+| [Gremlin 控制台](https://tinkerpop.apache.org/downloads.html) | [TinkerPop 文档](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [使用 Gremlin 控制台创建图形](create-graph-gremlin-console.md) | 3.2.0 + |
 
 ## <a name="graph-database-design-considerations"></a>图形数据库设计注意事项
 

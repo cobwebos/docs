@@ -1,22 +1,22 @@
 ---
-title: 将数据移到 Azure 虚拟机上的 SQL Server | Microsoft Docs
+title: 将数据移动到 SQL Server 虚拟机 - Team Data Science Process
 description: 将数据从平面文件或本地 SQL Server 移到 Azure 虚拟机上的 SQL Server。
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 649c98c235adc2435840c6c43d3e2f9d5755265f
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 7c87a0f478b6efbe7ae9ff07def8b4d0d730b111
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446188"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478485"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>将数据移到 Azure 虚拟机上的 SQL Server
 
@@ -26,7 +26,7 @@ ms.locfileid: "52446188"
 
 下表汇总了用于将数据移到 Azure 虚拟机上的 SQL Server 的选项。
 
-| <b>源</b> | <b>目标：Azure 虚拟机上的 SQL Server</b> |
+| <b>源</b> | <b>目标：Azure VM 上的 SQL Server</b> |
 | --- | --- |
 | <b>平面文件</b> |1.<a href="#insert-tables-bcp">命令行大容量复制实用程序 (BCP)</a><br> 2.<a href="#insert-tables-bulkquery">批量插入 SQL 查询</a><br> 3.<a href="#sql-builtin-utilities">SQL Server 中的图形内置实用程序</a> |
 | <b>本地 SQL Server</b> |1.<a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">将 SQL Server 数据库部署到 Microsoft Azure 虚拟机向导</a><br> 2.<a href="#export-flat-file">导出到平面文件</a><br> 3.<a href="#sql-migration">SQL 数据库迁移向导</a> <br> 4.<a href="#sql-backup">数据库备份和还原</a><br> |
@@ -64,20 +64,23 @@ BCP 是随 SQL Server 一起安装的命令行实用程序，并且是数据移�
 
 1. 确保在目标 SQL Server 数据库上创建数据库和表。 下面是如何使用 `Create Database` 和 `Create Table` 命令执行此操作的示例：
 
-        CREATE DATABASE <database_name>
+```sql
+CREATE DATABASE <database_name>
 
-        CREATE TABLE <tablename>
-        (
-            <columnname1> <datatype> <constraint>,
-            <columnname2> <datatype> <constraint>,
-            <columnname3> <datatype> <constraint>
-        )
+CREATE TABLE <tablename>
+(
+    <columnname1> <datatype> <constraint>,
+    <columnname2> <datatype> <constraint>,
+    <columnname3> <datatype> <constraint>
+)
+```
+
 2. 通过从已安装 bcp 的计算机的命令行执行以下命令，生成介绍表架构的格式文件。
 
     `bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n`
 3. 使用如下所示的 bcp 命令将数据插入数据库。 假设在同一台计算机上已安装 SQL Server，这应从命令行运行：
 
-    `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attemp -t \t -r \n`
+    `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attempt -t \t -r \n`
 
 > **优化 BCP 插入**，请参阅以下文章[优化批量导入的指南](https://technet.microsoft.com/library/ms177445%28v=sql.105%29.aspx)来优化此类插入。
 >
@@ -87,46 +90,47 @@ BCP 是随 SQL Server 一起安装的命令行实用程序，并且是数据移�
 如果正在移动的数据很大，可以通过在 PowerShell 脚本中同时并行执行多个 BCP 命令加快移动速度。
 
 > [!NOTE]
-> **大型数据引入**若要优化大型和超大型数据集的数据加载，请使用多个文件组和分区表对逻辑数据库和物理数据库表进行分区。 有关创建并将数据加载到分区表的详细信息，请参阅[并行加载 SQL 分区表](parallel-load-sql-partitioned-tables.md)。
+> **大型数据引入** 若要优化大型和超大型数据集的数据加载，请使用多个文件组和分区表对逻辑数据库和物理数据库表进行分区。 有关创建并将数据加载到分区表的详细信息，请参阅[并行加载 SQL 分区表](parallel-load-sql-partitioned-tables.md)。
 >
 >
 
 下面的示例 PowerShell 脚本演示如何使用 bcp 并行插入：
 
-    $NO_OF_PARALLEL_JOBS=2
+```powershell
+$NO_OF_PARALLEL_JOBS=2
 
-     Set-ExecutionPolicy RemoteSigned #set execution policy for the script to execute
-     # Define what each job does
-       $ScriptBlock = {
-           param($partitionnumber)
+Set-ExecutionPolicy RemoteSigned #set execution policy for the script to execute
+# Define what each job does
+$ScriptBlock = {
+    param($partitionnumber)
 
-           #Explictly using SQL username password
-           bcp database..tablename in datafile_path.csv -F 2 -f format_file_path.xml -U username@servername -S tcp:servername -P password -b block_size_to_move_in_single_attempt -t "," -r \n -o path_to_outputfile.$partitionnumber.txt
+    #Explicitly using SQL username password
+    bcp database..tablename in datafile_path.csv -F 2 -f format_file_path.xml -U username@servername -S tcp:servername -P password -b block_size_to_move_in_single_attempt -t "," -r \n -o path_to_outputfile.$partitionnumber.txt
 
-            #Trusted connection w.o username password (if you are using windows auth and are signed in with that credentials)
-            #bcp database..tablename in datafile_path.csv -o path_to_outputfile.$partitionnumber.txt -h "TABLOCK" -F 2 -f format_file_path.xml  -T -b block_size_to_move_in_single_attempt -t "," -r \n
-      }
-
-
-    # Background processing of all partitions
-    for ($i=1; $i -le $NO_OF_PARALLEL_JOBS; $i++)
-    {
-      Write-Debug "Submit loading partition # $i"
-      Start-Job $ScriptBlock -Arg $i      
-    }
+    #Trusted connection w.o username password (if you are using windows auth and are signed in with that credentials)
+    #bcp database..tablename in datafile_path.csv -o path_to_outputfile.$partitionnumber.txt -h "TABLOCK" -F 2 -f format_file_path.xml  -T -b block_size_to_move_in_single_attempt -t "," -r \n
+}
 
 
-    # Wait for it all to complete
-    While (Get-Job -State "Running")
-    {
-      Start-Sleep 10
-      Get-Job
-    }
+# Background processing of all partitions
+for ($i=1; $i -le $NO_OF_PARALLEL_JOBS; $i++)
+{
+    Write-Debug "Submit loading partition # $i"
+    Start-Job $ScriptBlock -Arg $i      
+}
 
-    # Getting the information back from the jobs
-    Get-Job | Receive-Job
-    Set-ExecutionPolicy Restricted #reset the execution policy
 
+# Wait for it all to complete
+While (Get-Job -State "Running")
+{
+    Start-Sleep 10
+    Get-Job
+}
+
+# Getting the information back from the jobs
+Get-Job | Receive-Job
+Set-ExecutionPolicy Restricted #reset the execution policy
+```
 
 ### <a name="insert-tables-bulkquery"></a>批量插入 SQL 查询
 [批量插入 SQL 查询](https://msdn.microsoft.com/library/ms188365)可用于将数据从基于行/列的文件导入数据库（受支持的类型在[准备用于批量导出或导入的数据 (SQL Server) ](https://msdn.microsoft.com/library/ms188609) 主题中有介绍）。
@@ -135,18 +139,22 @@ BCP 是随 SQL Server 一起安装的命令行实用程序，并且是数据移�
 
 1. 分析数据并设置任何自定义选项后再导入，以确保 SQL Server 数据库对于任何特殊的字段（例如日期）均假设相同的格式。 以下是如何将日期格式设置为“年-月-日”（如果数据包含“年-月-日”格式的日期）的示例：
 
-        SET DATEFORMAT ymd;    
+```sql
+SET DATEFORMAT ymd;
+```
 2. 使用批量导入语句导入数据：
 
-        BULK INSERT <tablename>
-        FROM    
-        '<datafilename>'
-        WITH
-        (
-        FirstRow=2,
-        FIELDTERMINATOR =',', --this should be column separator in your data
-        ROWTERMINATOR ='\n'   --this should be the row separator in your data
-        )
+```sql
+BULK INSERT <tablename>
+FROM
+'<datafilename>'
+WITH
+(
+    FirstRow = 2,
+    FIELDTERMINATOR = ',', --this should be column separator in your data
+    ROWTERMINATOR = '\n'   --this should be the row separator in your data
+)
+```
 
 ### <a name="sql-builtin-utilities"></a>SQL Server 中的内置实用程序
 可以使用 SQL Server 集成服务 (SSIS) 将数据从平面文件导入到 Azure 上的 SQL Server 虚拟机。

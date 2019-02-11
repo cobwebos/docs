@@ -1,22 +1,22 @@
 ---
-title: 使用 Key Vault 存储和访问 Azure Cosmos DB 密钥 | Microsoft Docs
+title: 使用 Key Vault 存储和访问 Azure Cosmos DB 密钥
 description: 使用 Azure Key Vault 来存储和访问 Azure Cosmos DB 连接字符串、密钥与 URI。
-services: cosmos-db
 author: rafats
-manager: kfile
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: rafats
-ms.openlocfilehash: b090c1593b49bec4f51fea8d498860e8af8b2f4b
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.reviewer: sngun
+ms.openlocfilehash: 8a3863ff67549c77692f8629c2e7315aec94faf8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053078"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463304"
 ---
-# <a name="use-key-vault-to-store-and-access-azure-cosmos-db-keys"></a>使用 Key Vault 存储和访问 Azure Cosmos DB 密钥
+# <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>使用 Azure Key Vault 保护 Azure Cosmos 密钥 
 
 对应用程序使用 Azure Cosmos DB 时，可以使用应用配置文件中的终结点 URI 和密钥来访问数据库、集合与文档。  但是，将密钥和 URL 直接放在应用程序代码中并不安全，因为它们将以明文格式向所有用户提供。 应确保通过一种安全机制提供 URI 和密钥。 这正是 Azure Key Vault 的作用所在，它能够安全地存储和管理应用程序机密。
 
@@ -34,7 +34,7 @@ ms.locfileid: "44053078"
 2. 选择“创建资源”>“安全性”>“Key Vault”。  
 3. 在“创建密钥保管库”部分，提供以下信息：  
    * **名称：** 提供 Key Vault 的唯一名称。  
-   * **订阅**：选择要使用的订阅。  
+   * **订阅：** 选择要使用的订阅。  
    * 在“资源组”下选择“新建”，然后输入资源组名称。  
    * 在“位置”下拉菜单中选择一个位置。  
    * 将其他选项保留默认值。  

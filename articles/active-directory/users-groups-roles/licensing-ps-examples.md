@@ -8,17 +8,17 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
 ms.date: 10/29/2018
 ms.author: curtand
-ms.openlocfilehash: d046b8e6c054131a4154654637f12dbdc26608a6
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 635bfd2a28c8ccd7f6e0b64d862141c73c5308db
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210425"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193193"
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 中基于组的许可的 PowerShell 示例
 
@@ -32,7 +32,7 @@ ms.locfileid: "50210425"
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>查看分配给组的产品许可证
 [Get-msolgroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) cmdlet 可用于检索组对象并检查“许可证”属性：它会列出当前分配给组的所有产品许可证。
-```
+```powershell
 (Get-MsolGroup -ObjectId 99c4216a-56de-42c4-a4ac-e411cd8c7c41).Licenses
 | Select SkuPartNumber
 ```
@@ -78,11 +78,11 @@ HTTP/1.1 200 OK
 ## <a name="get-all-groups-with-licenses"></a>获取所有具有许可证的组
 
 可通过运行以下命令，查找所有已分配有任意许可证的组：
-```
+```powershell
 Get-MsolGroup | Where {$_.Licenses}
 ```
 可显示更多有关分配了哪些产品的详细信息：
-```
+```powershell
 Get-MsolGroup | Where {$_.Licenses} | Select `
     ObjectId, `
     DisplayName, `
@@ -102,7 +102,7 @@ c2652d63-9161-439b-b74e-fcd8228a7074 EMSandOffice             {ENTERPRISEPREMIUM
 ## <a name="get-statistics-for-groups-with-licenses"></a>获取具有许可证的组的统计信息
 可报告具有许可证的组的基本统计信息。 在下面的示例中，脚本列出了总用户数、组已分配的具有许可证的用户数，以及组无法为其分配许可证的用户数。
 
-```
+```powershell
 #get all groups with licenses
 Get-MsolGroup -All | Where {$_.Licenses}  | Foreach {
     $groupId = $_.ObjectId;
@@ -160,7 +160,7 @@ Access to Offi... 11151866-5419-4d93-9141-0603bbf78b42 STANDARDPACK             
 
 ## <a name="get-all-groups-with-license-errors"></a>获取含有许可证错误的所有组
 查找组，这些组中包含一些无法为其分配许可证的用户：
-```
+```powershell
 Get-MsolGroup -HasLicenseErrorsOnly $true
 ```
 输出：
@@ -201,7 +201,7 @@ HTTP/1.1 200 OK
 
 如果某个组中包含一些许可证相关的错误，现在可以列出受这些错误影响的所有用户。 用户也可可含有其他组中的错误。 但在此示例中，通过检查用户的每个 **IndirectLicenseError** 条目的 **ReferencedObjectId** 属性，我们仅将结果限于与所涉及组相关的错误。
 
-```
+```powershell
 #a sample group with errors
 $groupId = '11151866-5419-4d93-9141-0603bbf78b42'
 
@@ -209,7 +209,7 @@ $groupId = '11151866-5419-4d93-9141-0603bbf78b42'
 Get-MsolGroupMember -All -GroupObjectId $groupId |
     #get full information about user objects
     Get-MsolUser -ObjectId {$_.ObjectId} |
-    #filter out users without license errors and users with licenense errors from other groups
+    #filter out users without license errors and users with license errors from other groups
     Where {$_.IndirectLicenseErrors -and $_.IndirectLicenseErrors.ReferencedObjectId -eq $groupId} |
     #display id, name and error detail. Note: we are filtering out license errors from other groups
     Select ObjectId, `
@@ -252,7 +252,7 @@ HTTP/1.1 200 OK
 > [!NOTE]
 > 此脚本将枚举租户中的所有用户，这对于大型租户来说可能不是最佳做法。
 
-```
+```powershell
 Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {   
     $user = $_;
     $user.IndirectLicenseErrors | % {
@@ -278,7 +278,7 @@ Drew Fogarty     f2af28fc-db0b-4909-873d-ddd2ab1fd58c 1ebd5028-6092-41d0-9668-12
 
 下面是该脚本的另一个版本，它只在包含许可证错误的组中搜索。 预期有问题的组较少的情况下，这可能最适用。
 
-```
+```powershell
 $groupIds = Get-MsolGroup -HasLicenseErrorsOnly $true
     foreach ($groupId in $groupIds) {
     Get-MsolGroupMember -All -GroupObjectId $groupId.ObjectID |
@@ -296,7 +296,7 @@ $groupIds = Get-MsolGroup -HasLicenseErrorsOnly $true
 针对某个用户对象，可以检查某特定的产品许可证是从组分配的还是直接分配的。
 
 以下两个示例函数可用于分析对单个用户的分配类型：
-```
+```powershell
 #Returns TRUE if the user has the license assigned directly
 function UserHasLicenseAssignedDirectly
 {
@@ -358,7 +358,7 @@ function UserHasLicenseAssignedFromGroup
 ```
 
 此脚本使用 SKU ID 作为输入，对租户中的每位用户执行这些功能 - 在本示例中，用于企业移动性 + 安全性的许可证在租户中的 ID 表示为：contoso:EMS：
-```
+```powershell
 #the license SKU we are interested in. use Msol-GetAccountSku to see a list of all identifiers in your tenant
 $skuId = "contoso:EMS"
 
@@ -436,7 +436,7 @@ HTTP/1.1 200 OK
 > [!NOTE]
 > 请务必先验证要删除的直接许可证没有比继承许可证启用更多的服务功能。 否则，删除直接许可证可能会禁用用户对服务和数据的访问。 当前无法借助 PowerShell 检查通过继承许可证与直接许可证启用了哪些服务。 在该脚本中，我们将指定要从组继承的服务的最低级别，并且将针对其进行检查，以确保用户不会意外丢失对服务的访问。
 
-```
+```powershell
 #BEGIN: Helper functions used by the script
 
 #Returns TRUE if the user has the license assigned directly

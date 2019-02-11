@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f5bd679c11139b7ac439247df81a7adb0b02b0fe
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 50926b7c8b06668770d9a00b8342d209fdb94649
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426312"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191099"
 ---
 # <a name="supplemental-lesson---ragged-hierarchies"></a>补充课程 - 不规则层次结构
 
@@ -23,7 +23,7 @@ ms.locfileid: "49426312"
 
 1400 兼容级别的表格模型有一个额外的针对层次结构的“隐藏成员”属性。 **默认**设置假定在任何级别都没有空白成员。 将层次结构添加到数据透视表或报表时，“隐藏空白成员”设置将从层次结构中排除空白成员。  
   
-本课预计完成时间：**20 分钟**  
+本课程预计完成时间：20 分钟  
   
 ## <a name="prerequisites"></a>先决条件  
 本补充课程主题是表格建模教程的一部分。 在执行本补充课程中的任务之前，应当已完成了前面的所有课程，或者具有已完成的“Adventure Works Internet 销售”示例模型项目。 
@@ -87,7 +87,7 @@ ms.locfileid: "49426312"
     =LOOKUPVALUE(DimEmployee[FullName],DimEmployee[EmployeeKey],PATHITEM([Path],5,1)) 
     ```
 
-6.  在“DimEmployee”表中，创建一个名为“Organization”的[层次结构](../tutorials/aas-lesson-9-create-hierarchies.md)。 按顺序添加以下列：“Level1”、“Level2”、“Level3”、“Level4”、“Level5”。
+6.  在“DimEmployee”表中，创建一个名为“Organization”的[层次结构](../tutorials/aas-lesson-9-create-hierarchies.md)。 按顺序添加以下列：Level1、Level2、Level3、Level4、Level5。
 
 7.  在“FactResellerSales”表中，创建以下[度量值](../tutorials/aas-lesson-6-create-measures.md)：
 

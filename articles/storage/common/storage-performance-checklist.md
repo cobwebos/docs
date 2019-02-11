@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: f865768e6ebfd9e01de1bd7e69c1224b66f2ea5e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: d627fa1ca52356c43c9a771f612ae6d043299678
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231782"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460822"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Microsoft Azure 存储性能和可伸缩性清单
 ## <a name="overview"></a>概述
@@ -147,7 +147,7 @@ Azure 存储使用基于范围的分区方案来对系统进行缩放和负载�
 这两种技术都有助于避免 Web 应用程序上出现不必要的负载（和瓶颈）。  
 
 #### <a name="useful-resources"></a>有用的资源
-有关 SAS 的详细信息，请参阅[共享访问签名，第 1 部分：了解 SAS 模型](../storage-dotnet-shared-access-signature-part-1.md)。  
+若要详细了解 SAS，请参阅[共享访问签名，第 1 部分：了解 SAS 模型](../storage-dotnet-shared-access-signature-part-1.md)。  
 
 有关 CORS 的详细信息，请参阅[对 Azure 存储服务的跨域资源共享 (CORS) 支持](https://msdn.microsoft.com/library/azure/dn535601.aspx)。  
 
@@ -255,7 +255,7 @@ Blob 服务支持 head 请求，这其中可能包含有关 Blob 的元数据。
 #### <a name="subheading21"></a>快速上传一个大型 Blob
 若要快速上传单个大型 Blob，客户端应用程序应并行上传其块或页（需考虑各个 Blob 的可伸缩性目标并综合考虑存储帐户的情况）。  请注意，Microsoft 提供的正式的 RTM 存储客户端库（.NET、Java）具有此方面的功能。  每个库均应使用下面指定的对象/属性来设置并发级别：  
 
-* .NET：将 BlobRequestOptions 对象上的 ParallelOperationThreadCount 设置为“used”。
+* .NET:将 BlobRequestOptions 对象上的 ParallelOperationThreadCount 设置为“used”。
 * Java/Android：使用 BlobRequestOptions.setConcurrentRequestCount()
 * Node.js：将 parallelOperationThreadCount 用于请求选项或 Blob 服务。
 * C++：使用 blob_request_options::set_parallelism_factor 方法。
@@ -286,7 +286,7 @@ Azure 存储支持两种类型的 Blob：页 Blob 和块 Blob。 在给定的使
 #### <a name="subheading25"></a>使用 JSON
 从存储服务 2013-08-15 版开始，表服务就支持使用 JSON 而非基于 XML 的 AtomPub 格式来传输表数据。 这最多可以减少 75% 的负载大小，可以显著改进应用程序的性能。
 
-有关详细信息，请参阅文章 [Microsoft Azure Tables: Introducing JSON](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx)（Microsoft Azure 表：JSON 简介）和 [Payload Format for Table Service Operations](https://msdn.microsoft.com/library/azure/dn535600.aspx)（表服务操作的有效负载格式）。
+有关详细信息，请参阅文章 [Microsoft Azure 表：JSON 简介](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx)和[表服务操作的有效负载格式](https://msdn.microsoft.com/library/azure/dn535600.aspx)。
 
 #### <a name="subheading26"></a>关闭 Nagle
 Nagle 的算法已跨 TCP/IP 网络进行了广泛的实施，是一种改进网络性能的方法。 不过，该方法并非适用于所有情况（例如高度交互式的环境）。 对于 Azure 存储，Nagle 的算法会对表请求和队列服务请求的执行造成负面影响，因此应尽可能禁用。  
@@ -303,8 +303,8 @@ Nagle 的算法已跨 TCP/IP 网络进行了广泛的实施，是一种改进网
 #### <a name="subheading27"></a>表和分区
 表划分为分区。 存储在分区中的每个实体共享相同的分区键，并具有唯一的行键，用于在该分区中标识自己。 分区具有好处，但也带来了可伸缩性限制。  
 
-* 优点：可以在同一个分区中更新单个事务、原子事务和批处理事务的实体，每种事务最多包含 100 个单独的存储操作（总大小限制为 4MB）。 此外，假定需要检索相同数量的实体，则在单个分区中查询数据要比跨多个分区查询数据更高效（不过，如果需要查询表数据，则请继续阅读以获取更进一步的建议）。
-* 可伸缩性限制：对存储在单个分区中的实体的访问不能进行负载均衡，因为分区支持原子批处理事务。 因此，总体说来单个表分区的可伸缩性目标低于表服务的相应目标。  
+* 好处：可以在同一个分区中更新单个事务、原子事务和批处理事务的实体，每种事务最多包含 100 个单独的存储操作（总大小限制为 4MB）。 此外，假定需要检索相同数量的实体，则在单个分区中查询数据要比跨多个分区查询数据更高效（不过，如果需要查询表数据，则请继续阅读以获取更进一步的建议）。
+* 可伸缩性限制：对存储在单个分区中的实体的访问无法进行负载均衡，因为分区支持原子批处理事务。 因此，总体说来单个表分区的可伸缩性目标低于表服务的相应目标。  
 
 考虑到表和分区的这些特点，应该采用以下设计原则：  
 
@@ -359,8 +359,8 @@ Nagle 的算法已跨 TCP/IP 网络进行了广泛的实施，是一种改进网
 ##### <a name="subheading36"></a>Upsert
 尽可能使用表的“Upsert”操作。 有两种类型的“Upsert”，两种都可能比传统的“插入”和“更新”操作更高效：  
 
-* **InsertOrMerge**：当需要上传一部分实体的属性，但不确定该实体是否存在时，可使用此操作。 如果实体存在，则该调用会更新包含在“Upsert”操作中的属性，保留所有现有的属性不变，而如果实体不存在，则会插入新的实体。 这类似于在查询中使用投影，因为只需上传在更改的属性。
-* **InsertOrReplace**：当需要上传某个全新的实体，却又不确定该实体是否存在时，可使用此操作。 仅当知道这个刚上传的实体完全正确时，才应使用此操作，因为该实体会完全覆盖旧实体。 例如，需要更新用于存储用户当前位置的实体，而不管应用程序以前是否存储过该用户的位置数据；新位置实体是完整的，不需要任何旧实体提供的任何信息。
+* **InsertOrMerge**：若要上传实体的一部分属性，但不确定实体是否已存在，可使用此操作。 如果实体存在，则该调用会更新包含在“Upsert”操作中的属性，保留所有现有的属性不变，而如果实体不存在，则会插入新的实体。 这类似于在查询中使用投影，因为只需上传在更改的属性。
+* **InsertOrReplace**：若要上传全新实体，但不确定实体是否已存在，可使用此操作。 仅当知道这个刚上传的实体完全正确时，才应使用此操作，因为该实体会完全覆盖旧实体。 例如，需要更新用于存储用户当前位置的实体，而不管应用程序以前是否存储过该用户的位置数据；新位置实体是完整的，不需要任何旧实体提供的任何信息。
 
 ##### <a name="subheading37"></a>将数据系列存储在单个实体中
 有时候，应用程序会存储一系列需要频繁进行一次性检索的数据：例如，应用程序可能会跟踪一段时间内的 CPU 使用情况，以便绘制过去 24 小时内数据的滚动图表。 一种方法是每小时构建一个表实体，每个实体代表一个具体的小时，并存储该小时的 CPU 使用情况。 为了针对该数据绘图，应用程序需要检索保留过去 24 小时内数据的实体。  

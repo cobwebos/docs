@@ -1,20 +1,19 @@
 ---
-title: Azure Policy 示例索引
+title: 策略示例索引
 description: Azure Policy 的示例索引
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 09/18/2018
+ms.date: 01/26/2019
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 32a1ef9b20314bb0b55277faeb20f2bdc1da2d11
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: af16a65214ea28f7a4b53a6fa0e6606edef1045a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054670"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100812"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy 示例
 
@@ -25,6 +24,8 @@ ms.locfileid: "47054670"
 [!INCLUDE [azure-policy-samples-compute](../../../../includes/azure-policy-samples-compute.md)]
 
 [!INCLUDE [azure-policy-samples-datalake](../../../../includes/azure-policy-samples-datalake.md)]
+
+[!INCLUDE [azure-policy-samples-keyvault](../../../../includes/azure-policy-samples-keyvault.md)]
 
 [!INCLUDE [azure-policy-samples-monitoring](../../../../includes/azure-policy-samples-monitoring.md)]
 

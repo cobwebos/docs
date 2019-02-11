@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 01/17/2019
 ms.author: douglasl
-ms.openlocfilehash: 60c715e97f6b1d2046fb4050ae41b27146c0610a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 0d7c8640cb2a3f6d4d1a32a555c03dc2eca48b9a
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623758"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901218"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>在 Azure 数据工厂中进行持续集成和交付 (CI/CD)
 
@@ -162,7 +161,7 @@ ms.locfileid: "51623758"
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 ### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>向 Azure Pipelines 代理授权
-第一次时，Azure Key Vault 任务可能会失败，出现“拒绝访问”错误。 请下载此发布的日志，并使用此命令找到 `.ps1` 文件，以便向 Azure Pipelines 代理授权。 可以直接运行此命令，也可以从文件中复制主体 ID，然后在 Azure 门户中手动添加访问策略。 （“获取”和“列出”是所需的最小权限）。
+最初，Azure Key Vault 任务在执行集成运行时期间可能失败，并出现“拒绝访问”错误。 请下载此发布的日志，并使用此命令找到 `.ps1` 文件，以便向 Azure Pipelines 代理授权。 可以直接运行此命令，也可以从文件中复制主体 ID，然后在 Azure 门户中手动添加访问策略。 （“获取”和“列出”是所需的最小权限）。
 
 ### <a name="update-active-triggers"></a>更新活动触发器
 如果尝试更新活动触发器，部署可能会失败。 若要更新活动触发器，需手动将其停止，在部署后再将其启动。 可以为此添加 Azure Powershell 任务，如以下示例所示：
@@ -184,7 +183,7 @@ ms.locfileid: "51623758"
 可以在部署后按照类似的步骤并使用类似的代码（通过 `Start-AzureRmDataFactoryV2Trigger` 函数）来重启触发器。
 
 > [!IMPORTANT]
-> 在持续集成和部署方案中，不同环境之间的集成运行时类型必须相同。 例如，如果在开发环境中有自承载集成运行时 (IR)，则在测试和生产等其他环境中同一 IR 的类型必须为自承载。 同样，如果跨多个阶段共享集成运行时，则必须在所有环境（如开发、测试和生产）中将 IR 配置为“链接自承载”。
+> 在持续集成和部署方案中，不同环境之间的集成运行时类型必须相同。 例如，如果在开发环境中有自承载集成运行时 (IR)，则在测试和生产等其他环境中同一 IR 的类型必须为自承载。 同样，如果跨多个阶段共享集成运行时，则必须在所有环境（如开发、测试和生产）中将集成运行时配置为“链接自承载”。
 
 ## <a name="sample-deployment-template"></a>示例部署模板
 
@@ -728,17 +727,17 @@ ms.locfileid: "51623758"
 
 ## <a name="sample-script-to-stop-and-restart-triggers-and-clean-up"></a>用来停止和重启触发器以及进行清理的示例脚本
 
-下面是一个示例脚本，用于在部署之前停止触发器并随后重启触发器。 此脚本还包括用于删除已移除资源的代码。 若要安装最新版本的 Azure PowerShell，请参阅[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.9.0)。
+下面是一个示例脚本，用于在部署之前停止触发器并随后重启触发器。 此脚本还包括用于删除已移除资源的代码。 若要安装最新版本的 Azure PowerShell，请参阅[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.9.0)。
 
 ```powershell
 param
 (
-    [parameter(Mandatory = $false)] [String] $rootFolder="$(env:System.DefaultWorkingDirectory)/Dev/",
-    [parameter(Mandatory = $false)] [String] $armTemplate="$rootFolder\arm_template.json",
-    [parameter(Mandatory = $false)] [String] $ResourceGroupName="sampleuser-datafactory",
-    [parameter(Mandatory = $false)] [String] $DataFactoryName="sampleuserdemo2",
-    [parameter(Mandatory = $false)] [Bool] $predeployment=$true
-
+    [parameter(Mandatory = $false)] [String] $rootFolder,
+    [parameter(Mandatory = $false)] [String] $armTemplate,
+    [parameter(Mandatory = $false)] [String] $ResourceGroupName,
+    [parameter(Mandatory = $false)] [String] $DataFactoryName,
+    [parameter(Mandatory = $false)] [Bool] $predeployment=$true,
+    [parameter(Mandatory = $false)] [Bool] $deleteDeployment=$false
 )
 
 $templateJson = Get-Content $armTemplate | ConvertFrom-Json
@@ -749,7 +748,7 @@ Write-Host "Getting triggers"
 $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
 $triggersTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/triggers" }
 $triggerNames = $triggersTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
-$activeTriggerNames = $triggersTemplate | Where-Object { $_.properties.runtimeState -eq "Started" -and $_.properties.pipelines.Count -gt 0} | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
+$activeTriggerNames = $triggersTemplate | Where-Object { $_.properties.runtimeState -eq "Started" -and ($_.properties.pipelines.Count -gt 0 -or $_.properties.pipeline.pipelineReference -ne $null)} | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
 $deletedtriggers = $triggersADF | Where-Object { $triggerNames -notcontains $_.Name }
 $triggerstostop = $triggerNames | where { ($triggersADF | Select-Object name).name -contains $_ }
 
@@ -762,7 +761,6 @@ if ($predeployment -eq $true) {
     }
 }
 else {
-
     #Deleted resources
     #pipelines
     Write-Host "Getting pipelines"
@@ -789,7 +787,7 @@ else {
     $integrationruntimesNames = $integrationruntimesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
     $deletedintegrationruntimes = $integrationruntimesADF | Where-Object { $integrationruntimesNames -notcontains $_.Name }
 
-    #delte resources
+    #Delete resources
     Write-Host "Deleting triggers"
     $deletedtriggers | ForEach-Object { 
         Write-Host "Deleting trigger "  $_.Name
@@ -820,7 +818,25 @@ else {
         Remove-AzureRmDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
     }
 
-    #Start Active triggers - After cleanup efforts (moved code on 10/18/2018)
+    if ($deleteDeployment -eq $true) {
+        Write-Host "Deleting ARM deployment ... under resource group: " $ResourceGroupName
+        $deployments = Get-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName
+        $deploymentsToConsider = $deployments | Where { $_.DeploymentName -like "ArmTemplate_master*" -or $_.DeploymentName -like "ArmTemplateForFactory*" } | Sort-Object -Property Timestamp -Descending
+        $deploymentName = $deploymentsToConsider[0].DeploymentName
+
+       Write-Host "Deployment to be deleted: " $deploymentName
+        $deploymentOperations = Get-AzureRmResourceGroupDeploymentOperation -DeploymentName $deploymentName -ResourceGroupName $ResourceGroupName
+        $deploymentsToDelete = $deploymentOperations | Where { $_.properties.targetResource.id -like "*Microsoft.Resources/deployments*" }
+
+        $deploymentsToDelete | ForEach-Object { 
+            Write-host "Deleting inner deployment: " $_.properties.targetResource.id
+            Remove-AzureRmResourceGroupDeployment -Id $_.properties.targetResource.id
+        }
+        Write-Host "Deleting deployment: " $deploymentName
+        Remove-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName -Name $deploymentName
+    }
+
+    #Start Active triggers - After cleanup efforts
     Write-Host "Starting active triggers"
     $activeTriggerNames | ForEach-Object { 
         Write-host "Enabling trigger " $_
@@ -837,7 +853,7 @@ else {
 
 下面是编写自定义参数文件时要使用一些准则。 若要查看此语法的示例，请参阅以下部分：[示例自定义参数文件](#sample)。
 
-1. 在定义文件中指定了数组时，你需要指示模板中的匹配属性是一个数组。 数据工厂使用数组的第一个对象中指定的定义来遍历数组中的所有对象。 第二个对象（一个字符串）成为属性的名称，这用作每次遍历的参数的名称。
+1. 在定义文件中指定了数组时，你需要指示模板中的匹配属性是一个数组。 数据工厂使用数组的集成运行时对象中指定的定义来遍历数组中的所有对象。 第二个对象（一个字符串）成为属性的名称，这用作每次遍历的参数的名称。
 
     ```json
     ...
@@ -958,3 +974,37 @@ else {
     }
 }
 ```
+
+## <a name="linked-resource-manager-templates"></a>链接的资源管理器模板
+
+如果你为数据工厂设置了持续集成和部署 (CI/CD)，则可能会注意到，随着工厂变得越来越大，你会达到资源管理器模板限制，例如，资源管理器模板中的最大资源数或最大有效负载。 对于这类情况，除了为工厂生成完整的资源管理器模板外，数据工厂现在还会生成链接的资源管理器模板。 因此，这将工厂有效负载拆分为多个文件，以便不会达到上面提到的限制。
+
+如果已配置了 Git，则会在 `adf_publish` 分支中在名为 `linkedTemplates` 的新文件夹下生成并保存链接的模板以及完整的资源管理器模板。
+
+![链接的资源管理器模板文件夹](media/continuous-integration-deployment/linked-resource-manager-templates.png)
+
+链接的资源管理器模板通常有一个主模板和一组链接到主模板的子模板。 父模板名为 `ArmTemplate_master.json`，子模板以如下模式命名：`ArmTemplate_0.json`、`ArmTemplate_1.json`，依此类推。 若要从使用完整的资源管理器模板转变为使用链接的模板，请更新 CI/CD 任务以指向 `ArmTemplate_master.json` 而非指向 `ArmTemplateForFactory.json`（即完整的资源管理器模板）。 资源管理器还要求将链接的模板上传到存储帐户，以便它们在部署期间可供 Azure 访问。 有关详细信息，请参阅[通过 VSTS 部署链接的 ARM 模板](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/)。
+
+不要忘记在执行部署任务之前和之后在 CI/CD 管道中添加数据工厂脚本。
+
+如果没有配置 Git，则可以通过**导出 ARM 模板**操作访问链接的模板。
+
+## <a name="best-practices-for-cicd"></a>CI/CD 最佳做法
+
+如果你使用数据工厂的 Git 集成，并且某个 CI/CD 管道会将更改从“开发”环境依次转移到“测试”和“生产”环境，则我们建议采用以下最佳做法：
+
+-   **Git 集成**。 只需使用 Git 集成配置开发数据工厂。 对测试和生产做出的更改将通过 CI/CD 部署，不需要采用 Git 集成。
+
+-   **数据工厂 CI/CD 脚本**。 在执行 CI/CD 中的资源管理器部署步骤之前，必须处理好停止触发器、执行不同类型的工厂清理等任务。 我们建议使用[此脚本](#sample-script-to-stop-and-restart-triggers-and-clean-up)，它可以处理所有这些任务。 使用相应的标志，在部署之前和之后各运行该脚本一次。
+
+-   **集成运行时和共享**。 集成运行时是数据工厂中的基础结构组件之一，它们不经常会发生更改，在 CI/CD 的各个阶段都是类似的。 因此，数据工厂预期集成运行时在 CI/CD 的所有阶段具有相同的名称和类型。 若要在所有阶段共享集成运行时 - 例如，自承载集成运行时 - 共享方法之一是将自承载 IR 托管在仅用于包含共享的集成运行时的三元工厂中。 然后，可以在开发/测试/生产环境中将这些集成运行时用作链接的 IR 类型。
+
+-   **Key Vault**。 使用建议的基于 Azure Key Vault 的链接服务时，可以通过为开发/测试/生产环境保留独立的 Key Vault，来进一步发挥 Key Vault 的优势。此外，可为每个 Key Vault 单独配置权限级别。 你可能不希望团队成员有权访问生产机密。 此外，我们建议在所有阶段保留相同的机密名称。 如果保留相同的名称，则无需在 CI/CD 中更改资源管理器模板，因为唯一需要更改的设置是 Key Vault 名称，这是一个资源管理器模板参数。
+
+## <a name="unsupported-features"></a>不支持的功能
+
+-   无法发布单个资源，因为数据工厂实体相互依赖。 例如，触发器依赖于管道，管道依赖于数据集和其他管道，等等。很难跟踪更改依赖项。 即使可以选择手动发布的资源，也可能只能选择整个更改集中的某个子集，导致发布后出现意外的行为。
+
+-   无法从专用分支发布。
+
+-   无法在 Bitbucket 上托管项目。

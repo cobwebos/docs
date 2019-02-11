@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 0b27cd314dd03375b2d2e6ba537cda74e2ec4310
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c01d911a59647956914518aa62a616823241ab3b
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313235"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304918"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>集成 Azure Active Directory 审核日志
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) 审核事件可以帮助识别 Azure Active Di
 
 
 >[!IMPORTANT]
-> Azure 日志集成功能将于 2019/06/01 弃用。 AzLog 下载将于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Azure 日志集成功能将于 2019/06/01 弃用。 AzLog 下载已于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 ## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>集成 Azure Active Directory 审核日志的步骤
 
@@ -73,7 +73,7 @@ Azure Active Directory (Azure AD) 审核事件可以帮助识别 Azure Active Di
 ## <a name="next-steps"></a>后续步骤
 若要了解有关 Azure 日志集成的详细信息，请参阅：
 
-* [适用于 Azure 日志的 Microsoft Azure 日志集成](https://www.microsoft.com/download/details.aspx?id=53324)：此“下载中心”页面提供了有关 Azure 日志集成的详细信息、系统要求和安装说明。
-* [Azure 日志集成简介](security-azure-log-integration-overview.md)：本文介绍 Azure 日志集成、其主要功能及其工作原理。
-* [Azure 日志集成常见问题解答](security-azure-log-integration-faq.md)：本文回答有关 Azure 日志集成的问题。
+* [适用于 Azure 日志的 Microsoft Azure 日志集成](https://www.microsoft.com/download/details.aspx?id=53324)：此下载中心页提供有关 Azure 日志集成的详细信息、系统要求和安装说明。
+* [Azure 日志集成简介](security-azure-log-integration-overview.md)：此文介绍 Azure 日志集成、其主要功能和工作原理。
+* [Azure 日志集成常见问题解答](security-azure-log-integration-faq.md)：本文回答了关于 Azure 日志的问题。
 * [Azure 诊断和 Azure 审核日志的新功能](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/)：此博客文章介绍 Azure 审核日志和其他功能，可帮助你深入了解 Azure 资源的操作。

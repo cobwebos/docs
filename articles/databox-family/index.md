@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: hub-page
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: fcda4fba376fbe1f527d60aa5a27f7e7f0713e3e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 09e0debba88ed87ab84b567e797d3ae63ec32a81
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977700"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157099"
 ---
 <h1>Azure Data Box</h1>
 <p>Azure Data Box 系列提供不同存储容量的产品，可帮助以快速、廉价且可靠的方式将数 TB 的数据发送到 Azure。 Microsoft 提供支持脱机或网络数据传输的专有存储设备，从而加快安全数据传输速度。</p>
@@ -35,7 +35,7 @@ ms.locfileid: "46977700"
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Disk <SUP>预览版</SUP></b>，用于数据小于 40 TB 的情况。 Microsoft 提供 1 至 5 个加密固态驱动器 (SSDs) 以复制数据，完成后需发回。</p>
+                            <p><b>Data Box Disk</b>，适用于数据大小 < 40 TB 的情况。 Microsoft 提供 1 至 5 个加密固态驱动器 (SSDs) 以复制数据，完成后需发回。</p>
                         </div>
                     </div>
                 </div>

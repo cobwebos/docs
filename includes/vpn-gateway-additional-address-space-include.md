@@ -5,29 +5,27 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 67904c1e487387f7ed99ba1c0e8d7ebf03e3dc06
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cc17df68280c342f863e69e6a253788d20caeba8
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30196962"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53443999"
 ---
 ### <a name="to-add-additional-address-space"></a>添加其他地址空间
 
-1. 若要添加更多地址空间，请在虚拟网络页的“设置”部分单击“地址空间”，打开“地址空间”页。
-2. 添加更多地址空间，然后单击页顶部的“保存”。
+1. 若要在地址空间中添加其他地址范围，请在虚拟网络页的“设置”部分中，选择“地址空间”。 此时将出现“地址空间”页。
+2. 添加其他地址范围，然后选择页面顶部的“保存”。
 
-  ![添加地址空间](./media/vpn-gateway-additional-address-space-include/address_space.png)
+   ![添加地址空间](./media/vpn-gateway-additional-address-space-include/address_space.png)
 
 ### <a name="to-create-additional-subnets"></a>创建额外的子网
 
-1. 若要创建子网，请在虚拟网络页的“设置”部分单击“子网”，打开“子网”页。 
-2. 在“子网”页中，单击“+子网”打开“添加子网”页。 为新子网命名，并指定地址范围。
+1. 若要创建子网，请在虚拟网络页的“设置”部分中选择“子网”。 此时将出现“子网”页。 
+2. 选择“子网”以打开“添加子网”页。 输入新子网的**名称**，并指定**地址范围**。
 
-  ![子网设置](./media/vpn-gateway-additional-address-space-include/add_subnet.png)
-3. 若要保存所做的更改，请单击页面底部的“确定”。
-
-  ![子网设置](./media/vpn-gateway-additional-address-space-include/ok.png)
+   ![子网设置](./media/vpn-gateway-additional-address-space-include/add_subnet.png)
+3. 若要保存所做的更改，请选择页面底部的“确定”。

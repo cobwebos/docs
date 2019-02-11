@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 9e9ccb1ba3d19e0240df869dfea1e27ac4124c34
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 947abea50685b04c3500a13a950375c32547efaf
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498728"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652959"
 ---
 # <a name="install-published-application---datameer"></a>安装已发布的应用程序 - Datameer
 
@@ -22,7 +22,7 @@ ms.locfileid: "52498728"
 
 ## <a name="about-datameer"></a>关于 Datameer
 
-Datameer 是 Hadoop 平台的本机应用程序，扩展了现有的 Azure HDInsight 功能，并针对结构化和非结构化数据提供快速的集成、准备和分析。 Datameer 可以访问 70 多种源和格式：结构化、半结构化和非结构化。 可以直接上传数据，或使用其独特的数据链接按需提取数据。 Datameer 自助服务功能和用户熟悉的电子表格界面降低了大数据技术的复杂性，并加速了见解的生成。 电子表格界面提供一个简单的机制，可在其中输入声明性的公式，然后转换这些公式以优化 Hadoop 作业。 借助 Datameer、商业智能 (BI) 和 Excel 方面技能，很快就能在云中使用 Hadoop。 有关详细信息，请参阅 [Datameer 文档](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft)。
+Datameer 是 Hadoop 平台的本机应用程序，扩展了现有的 Azure HDInsight 功能，并针对结构化和非结构化数据提供快速的集成、准备和分析。 Datameer 可以访问 70 多种源和格式：结构化、半结构化和非结构化。 可以直接上传数据，或使用其独特的数据链接按需提取数据。 Datameer 自助服务功能和用户熟悉的电子表格界面降低了大数据技术的复杂性，并加速了见解的生成。 电子表格界面提供一个简单的机制，可在其中输入声明性的公式，然后转换这些公式以优化 Hadoop 作业。 借助 Datameer、商业智能 (BI) 和 Excel 方面技能，很快就能在云中使用 Hadoop。 有关详细信息，请参阅 [Datameer 文档](https://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -106,9 +106,9 @@ Datameer 是 Hadoop 平台的本机应用程序，扩展了现有的 Azure HDIns
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Datameer 文档](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft)。
+* [Datameer 文档](https://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft)。
 * [安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)：了解如何将未发布的 HDInsight 应用程序部署到 HDInsight。
 * [发布 HDInsight 应用程序](hdinsight-apps-publish-applications.md)：了解如何将自定义 HDInsight 应用程序发布到 Azure 市场。
 * [MSDN：安装 HDInsight 应用程序](https://msdn.microsoft.com/library/mt706515.aspx)：了解如何定义 HDInsight 应用程序。
 * [使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)：了解如何使用脚本操作安装其他应用程序。
-* [在 HDInsight 中使用空边缘节点](hdinsight-apps-use-edge-node.md)：了解如何使用空边缘节点访问 HDInsight 群集、测试和托管 HDInsight 应用程序。
+* [在 HDInsight 中使用空边缘节点](hdinsight-apps-use-edge-node.md)：了解如何使用空边缘节点访问 HDInsight 群集，以及测试和托管 HDInsight 应用程序。

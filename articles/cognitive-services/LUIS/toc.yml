@@ -40,35 +40,33 @@ items:
   items:
   - name: 构建应用
     items:
-    - name: 1. 确定用户意图
+    - name: 确定用户意图
       href: luis-quickstart-intents-only.md
-    - name: 2. 识别常见意向
+    - name: 使用预生成的模型标识常见用户数据
       href: luis-tutorial-prebuilt-intents-entities.md
-    - name: 3. 提取格式正确的数据
-      href: luis-quickstart-intents-regex-entity.md
-    - name: 4. 提取确切的文本匹配项
-      href: luis-quickstart-intent-and-list-entity.md
-    - name: 5. 提取与上下文相关的数据
-      href: luis-quickstart-intent-and-hier-entity.md
-    - name: 6. 对相关的数据进行分组和提取
-      href: luis-tutorial-composite-entity.md
-    - name: 7. 提取名称
-      href: luis-quickstart-primary-and-secondary-data.md
-    - name: 8. 提取关键短语
-      href: luis-quickstart-intent-and-key-phrase.md
-    - name: 9. 提取情绪
+    - name: 从用户话语获取情绪
       href: luis-quickstart-intent-and-sentiment-analysis.md
+    - name: 通过正则表达式获取具有严格格式的数据
+      href: luis-quickstart-intents-regex-entity.md
+    - name: 通过列表获取确切的文本匹配项
+      href: luis-quickstart-intent-and-list-entity.md
+    - name: 通过分层实体获取与上下文相关的数据
+      href: luis-quickstart-intent-and-hier-entity.md
+    - name: 通过复合实体将相关的数据分组并进行提取
+      href: luis-tutorial-composite-entity.md
+    - name: 通过简单实体获取名称
+      href: luis-quickstart-primary-and-secondary-data.md
   - name: 改进应用
     items:
-    - name: 1. 修复不确定的预测
+    - name: 修复不确定的预测
       href: luis-tutorial-review-endpoint-utterances.md
-    - name: 2. 成批测试数据集
+    - name: 成批测试数据集
       href: luis-tutorial-batch-testing.md
-    - name: 3. 添加常见话语格式
+    - name: 添加常见话语格式
       href: luis-tutorial-pattern.md
-    - name: 4. 提取与上下文相关的模式
+    - name: 提取与上下文相关的模式
       href: luis-tutorial-pattern-roles.md
-    - name: 5. 提取自由格式数据
+    - name: 提取自由格式数据
       href: luis-tutorial-pattern-any.md
   - name: 使用机器人
     items:
@@ -79,7 +77,7 @@ items:
 - name: 示例
   items:
   - name: 代码示例
-    href: https://github.com/Microsoft/LUIS-Samples
+    href: https://github.com/Azure-Samples/cognitive-services-language-understanding
 - name: 概念
   items:
   - name: 最佳做法
@@ -222,12 +220,9 @@ items:
     - name: 使用仪表板
       displayName: analytics, usage
       href: luis-how-to-use-dashboard.md
-    - name: 创建终结点密钥
-      displayName: azure portal
+    - name: 将订阅密钥与 LUIS 应用配合使用
+      displayName: azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription
       href: luis-how-to-azure-subscription.md
-    - name: 将终结点密钥添加到应用
-      displayName: assign key, assign
-      href: luis-how-to-manage-keys.md
     - name: 管理版本
       href: luis-how-to-manage-versions.md
     - name: 管理作者和协作者
@@ -235,20 +230,17 @@ items:
       href: luis-how-to-collaborate.md
     - name: 管理创作密钥
       href: luis-how-to-account-settings.md
-    - name: 管理终结点使用情况
-      items:
-      - name: 使用 PowerShell 查看终结点使用情况
-        href: luis-how-to-manage-from-cloud-shell.md
-      - name: 使用流量管理器将终结点配额分布在各个密钥上
-        href: luis-traffic-manager.md
+    - name: 使用流量管理器将终结点配额分布在各个密钥上
+      href: luis-traffic-manager.md
   - name: 迁移到 V2 REST API
     href: luis-migration-api-v1-to-v2.md
-  - name: 以编程方式查找区域
+  - name: 使用容器
     items:
-    - name: 使用 REST API 和 C#
-      href: luis-find-region-csharp.md
-    - name: 使用 REST API 和 Node.js
-      href: luis-find-region-nodejs.md
+    - name: 安装并运行容器
+      displayName: docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now
+      href: luis-container-howto.md
+    - name: 配置容器
+      href: luis-container-configuration.md
 - name: 引用
   items:
   - name: 用户隐私
@@ -310,35 +302,43 @@ items:
     items:
     - name: C#
       items:
-      - name: SDK 中 IsInRole 中的声明
-        href: https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Language/LUIS
-      - name: 示例
-        href: https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS
       - name: NuGet - 创作
         href: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/
       - name: NuGet - 运行时
         href: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/
+      - name: 引用
+        href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet
+      - name: 示例
+        href: https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS
     - name: Go
       items:
-      - name: SDK 中 IsInRole 中的声明
-        href: https://aka.ms/luis-sdk-go
+      - name: SDK - 创作
+        href: https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis/authoring
+      - name: SDK - 运行时
+        href: https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis/runtime
+      - name: 引用
+        href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis/
     - name: Java
       items:
-      - name: SDK 中 IsInRole 中的声明
-        href: https://github.com/Azure/azure-sdk-for-java/tree/master/cognitiveservices/data-plane/language/luis
+      - name: Maven - 创作
+        href: https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring
+      - name: Maven - 运行时
+        href: https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime
+      - name: 引用
+        href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable
       - name: 示例
         href: https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Language/LanguageUnderstanding
     - name: Node.js
       items:
-      - name: SDK - 创作
+      - name: NPM - 创作
         href: https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring
-      - name: SDK - 运行时
+      - name: NPM - 运行时
         href: https://www.npmjs.com/package/azure-cognitiveservices-luis-runtime
       - name: 示例
         href: https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples/luis
     - name: Python
       items:
-      - name: SDK 中 IsInRole 中的声明
+      - name: Pip SDK
         href: https://pypi.org/project/azure-cognitiveservices-language-luis/
       - name: 示例
         href: https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/language/luis
@@ -360,6 +360,8 @@ items:
     href: https://azure.microsoft.com/services/cognitive-services/text-analytics/
   - name: 识别器 - 文本
     href: https://github.com/Microsoft/Recognizers-Text
+  - name: 智能展台
+    href: https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk
 - name: 资源
   items:
   - name: 区域可用性
@@ -384,9 +386,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: 知识库
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: d5a40f294e63ad72c667ed94fd367588537450c6
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 5c4f7435f08632a7e4d01708a1fff3a64239faab
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283257"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428709"

@@ -1,24 +1,24 @@
 ---
-title: 如何在 Azure Active Directory 中添加或更新用户的配置文件信息 | Microsoft Docs
-description: 了解如何将信息添加到用户的配置文件，包括配置文件图片、工作特定信息以及 Azure Active Directory 中的某些设置。
+title: 添加或更新用户的配置文件信息 - Azure Active Directory | Microsoft Docs
+description: 有关如何在 Azure Active Directory 中向用户配置文件添加信息（包括图片和作业详细信息）的说明。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.openlocfilehash: d4e2ebd88430cab1fe0734e342b1c9ba4a29af1b
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: d526a56f0d33ebaba664a455b9e541f0f2489a53
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45728940"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104353"
 ---
-# <a name="how-to-add-or-update-a-users-profile-information-using-azure-active-directory"></a>如何：使用 Azure Active Directory 添加或更新用户的配置文件信息
+# <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>使用 Azure Active Directory 添加或更新用户的配置文件信息
 使用 Azure Active Directory (Azure AD) 来添加用户配置文件信息，包括配置文件图片、工作特定信息和某些设置。 有关添加新用户的详细信息，请参阅[如何添加或删除 Azure Active Directory 中的用户](add-users-azure-active-directory.md)。
 
 ## <a name="add-or-change-profile-information"></a>添加或更改配置文件信息

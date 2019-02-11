@@ -5,10 +5,10 @@ services: active-directory
 keywords: Azure Active Directory Identity Protection, 取消阻止用户
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: a953d425-a3ef-41f8-a55d-0202c3f250a7
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: identity-protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: f8bf983033407bbf597af15f18f28ecf33b7558f
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: f430fe0b0e6a3a9786d094cfb15a577a21bf2799
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631678"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770765"
 ---
 # <a name="how-to-unblock-users"></a>如何：取消阻止用户
 

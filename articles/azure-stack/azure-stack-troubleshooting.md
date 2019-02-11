@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 01/23/2019
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: b6ec3283121a3403afb80ccad81f313decf16c88
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 01/23/2019
+ms.openlocfilehash: c59f563adee3b5db7060b26906b51096cbd60212
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957634"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238673"
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Microsoft Azure Stack 故障排除
 
@@ -32,11 +33,31 @@ ms.locfileid: "52957634"
 本部分针对故障排除问题提供的建议派生自多个来源，不保证能够解决具体的问题。 代码示例按原样提供，不保证生成预期的结果。 随着产品的不断改进，本部分的内容可能会频繁更新。
 
 ## <a name="deployment"></a>部署
-### <a name="deployment-failure"></a>部署失败
+### <a name="general-deployment-failure"></a>常规部署失败
 如果安装期间发生失败，可以使用部署脚本的 -rerun 选项从失败的步骤重新开始部署。  
 
 ### <a name="at-the-end-of-asdk-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>ASDK 部署结束时，PowerShell 会话仍保持打开状态，但不显示任何输出。
 此行为可能是选择 PowerShell 命令窗口后的默认行为。 开发工具包部署成功，但选择窗口时，脚本已暂停。 可以通过在命令窗口的标题栏中查找“select”一词，来验证安装是否已完成。  按 ESC 键取消选择窗口，然后即会显示完成消息。
+
+### <a name="deployment-fails-due-to-lack-of-external-access"></a>部署失败由于缺乏外部访问
+当部署阶段需要外部访问时失败时，将返回如下例所示异常：
+
+```
+An error occurred while trying to test identity provider endpoints: System.Net.WebException: The operation has timed out.
+   at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.GetResponse(WebRequest request)
+   at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.ProcessRecord()at, <No file>: line 48 - 8/12/2018 2:40:08 AM
+```
+如果发生此错误，请检查以确保通过查看满足了所有最小的网络要求[部署的网络流量文档](deployment-networking.md)。 网络检查器工具中也有适用于合作伙伴作为合作伙伴工具包的一部分。
+
+部署失败，出现上述异常通常是由于连接到 Internet 上的资源的问题
+
+若要验证这是你的问题，可以执行以下步骤：
+
+1. 打开 Powershell
+2. 输入 PSSession 中到 WAS01 或任何 ERCs Vm
+3. 运行 commandlet:Test-NetConnection login.windows.net -port 443
+
+如果此命令会失败，请验证 TOR 交换机和任何其他网络设备配置为[允许网络流量](azure-stack-network.md)。
 
 ## <a name="virtual-machines"></a>虚拟机
 ### <a name="default-image-and-gallery-item"></a>默认映像和库项

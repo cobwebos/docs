@@ -2,16 +2,16 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 09/04/2018
+ms.date: 01/23/2019
 ms.author: glenga
-ms.openlocfilehash: 7057f6a9652244f84754e29af738b7e0c5f1da4f
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: e330f5ecbfc240b048d887289224c164a91215bd
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133821"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904703"
 ---
-了解如何使用其他类型的触发器创建函数或如何将函数与其他 Azure 服务集成。
+创建第一个函数以后，即可向这个可以将消息写入存储队列的函数添加输出绑定。
 
-+ [创建按计划运行的函数](../articles/azure-functions/functions-create-scheduled-function.md) 
-+ [使用 Functions 将消息添加到 Azure 存储队列](../articles/azure-functions/functions-integrate-storage-queue-output-binding.md)
+> [!div class="nextstepaction"]
+> [使用 Functions 将消息添加到 Azure 存储队列](../articles/azure-functions/functions-integrate-storage-queue-output-binding.md)

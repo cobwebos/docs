@@ -1,6 +1,6 @@
 ---
-title: Azure 门户中 Azure 搜索服务管理
-description: 使用 Azure 门户管理 Azure 搜索，这是 Microsoft Azure 上托管的云搜索服务。
+title: 门户中 Azure 搜索的服务管理 - Azure 搜索
+description: 使用 Azure 门户管理 Azure 搜索服务（Microsoft Azure 上托管的云搜索服务）。
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
@@ -9,12 +9,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: heidist
-ms.openlocfilehash: fb09e12a5122f6e6671e55c5b5623afdd6b35c29
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.custom: seodec2018
+ms.openlocfilehash: 70343c0d66eb2a00ff2245b7e4876c2e94a96855
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842283"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314476"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure 门户中 Azure 搜索服务管理
 > [!div class="op_single_selector"]

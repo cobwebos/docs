@@ -1,34 +1,16 @@
 ---
-title: 通过 Excel 使用机器学习工作室 Web服务 - Azure 机器学习工作室 | Microsoft Docs
-description: Azure 机器学习工作室可以轻松地直接从 Excel 调用 Web 服务，而无需编写任何代码。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
-ms.author: amlstudiodocs
-manager: hjerez
-editor: cgronlun
-ms.assetid: 3f3cdd2f-1816-487e-ab78-530e01e9788f
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 2/1/2018
-ms.openlocfilehash: 7084e62df3cd4872d90661ad6b94e1ebf7b54d8d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312727"
+title:在 Excel 中使用 Web 服务 titleSuffix:Azure 机器学习工作室 description:Azure 机器学习工作室可以轻松地直接从 Excel 调用 Web 服务，而无需编写任何代码。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:2018/02/01
 ---
-# <a name="consuming-an-azure-machine-learning-web-service-from-excel"></a>使用 Excel 中的 Azure 机器学习 Web 服务
+# <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>从 Excel 使用 Azure 机器学习工作室 Web 服务
+
  Azure 机器学习工作室可以轻松地直接从 Excel 调用 Web 服务，而无需编写任何代码。
 
 如果使用的 Excel 2013 （或更高版本）或 Excel Online，则建议使用 Excel 的 [Excel 加载项](excel-add-in-for-web-services.md)。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="steps"></a>Steps
 发布 Web 服务。 [此页](walkthrough-5-publish-web-service.md)解释如何执行此操作。 目前，仅具有单个输出（即单个评分标签）的请求/响应服务支持 Excel 工作簿功能。 

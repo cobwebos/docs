@@ -10,14 +10,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 50e9162da5fda98d73ccfeea0776dc89ddd25dac
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a54c47c0f67052f2ce486a97e009293a118919d4
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256912"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994104"
 ---
-# <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>在 HDInsight 中上传 Hadoop 作业的数据
+# <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>在 HDInsight 中上传 Apache Hadoop 作业的数据
 
 Azure HDInsight 提供一个基于 Azure 存储和 Azure Data Lake Storage（Gen1 和 Gen2）的功能完备的 Hadoop 分布式文件系统 (HDFS)。 Azure 存储以及 Data lake Storage Gen1 和 Data lake Storage Gen2 设计为一个 HDFS 扩展，为客户提供无缝体验。 它们通过启用 Hadoop 生态系统中的整套组件以直接操作其管理的数据。 Azure 存储、Data Lake Storage Gen1 和 Data lake Storage Gen2 是独特的文件系统，并且已针对数据的存储和计算进行了优化。 有关使用 Azure Blob 存储的好处的信息，请参阅[将 Azure 存储与 HDInsight 配合使用][hdinsight-storage]、[将 Data Lake Storage Gen1 与 HDInsight 配合使用](hdinsight-hadoop-use-data-lake-store.md)和[将 Data Lake Storage Gen2 与 HDInsight 配合使用](../storage/data-lake-storage/use-hdi-cluster.md)。
 
@@ -44,7 +44,7 @@ Microsoft 提供以下实用工具用于操作 Azure 存储：
 | [AzCopy][azure-azcopy] |✔ | |✔ |
 | [Hadoop 命令](#commandline) |✔ |✔ |✔ |
 
-> [!NOTE]
+> [!NOTE]  
 > 尽管 Azure 经典 CLI、Azure PowerShell 和 AzCopy 都可从 Azure 外部使用，但是 Hadoop 命令只能在 HDInsight 群集上使用。 使用该命令只能将数据从本地文件系统载入 Azure 存储。
 >
 >
@@ -95,7 +95,7 @@ Azure 经典 CLI 是一个跨平台工具，可用于管理 Azure 服务。 使�
         azure storage blob download -a <storage-account-name> -k <primary-key> <container-name> <blob-name> <destination-file>
         ```
     
-> [!NOTE]
+> [!NOTE]  
 > 如果始终使用同一个存储帐户，可以设置以下环境变量，而无需为每条命令指定帐户和密钥：
 >
 > * **AZURE\_STORAGE\_ACCOUNT**：存储帐户名称
@@ -152,7 +152,7 @@ AzCopy on Linux 预览版已推出。  请参阅[宣布推出 AzCopy on Linux �
 
 若要使用 Hadoop 命令，必须先使用以下方法之一连接到头节点：
 
-* **基于 Windows 的 HDInsight**：[使用远程桌面连接](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
+* **基于 Windows 的 HDInsight**：[使用远程桌面进行连接](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
 * **基于 Linux 的 HDInsight**：使用 [SSH 或 PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md) 进行连接。
 
 连接之后，可以使用以下语法将文件上传到存储。
@@ -171,12 +171,10 @@ hadoop -copyFromLocal <localFilePath> <storageFilePath>
 
     wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
 
-若要查看可用于文件的其他 Hadoop 命令的列表，请参阅 [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
+若要查看可用于文件的其他 Hadoop 命令的列表，请参阅 [https://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
-> [!WARNING]
-> 在 HBase 群集上，写入数据为 256 KB 时会使用默认块大小。 虽然在使用 HBase Api 或 REST API 时可良好运行，但使用 `hadoop` 或 `hdfs dfs` 命令编写大于 ~12 GB 的数据会导致错误。 有关详细信息，请参阅本文的[在 Blob 上编写时的存储异常](#storageexception)部分。
->
->
+> [!WARNING]  
+> 在 Apache HBase 群集上，写入数据为 256 KB 时会使用默认块大小。 虽然在使用 HBase Api 或 REST API 时可良好运行，但使用 `hadoop` 或 `hdfs dfs` 命令编写大于 ~12 GB 的数据会导致错误。 有关详细信息，请参阅本文的[在 Blob 上编写时的存储异常](#storageexception)部分。
 
 ### <a name="graphical-clients"></a>图形客户端
 某些应用程序还提供可配合 Azure 存储空间使用的图形界面。 下表是其中一些应用程序的列表：
@@ -184,17 +182,17 @@ hadoop -copyFromLocal <localFilePath> <storageFilePath>
 | Client | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [用于 HDInsight 的 Microsoft Visual Studio 工具](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
-| [Azure 存储空间资源管理器](http://storageexplorer.com/) |✔ |✔ |✔ |
-| [Cloud Storage Studio 2](http://www.cerebrata.com/Products/CloudStorageStudio/) | | |✔ |
+| [Azure 存储空间资源管理器](https://storageexplorer.com/) |✔ |✔ |✔ |
+| [Cloud Storage Studio 2](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |✔ |
 | [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) | | |✔ |
-| [Azure 资源管理器](http://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
+| [Azure 资源管理器](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
 | [Cyberduck](https://cyberduck.io/) | |✔ |✔ |
 
 #### <a name="visual-studio-tools-for-hdinsight"></a>用于 HDInsight 的 Visual Studio 工具
 有关详细信息，请参阅[导航链接的资源](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources)。
 
 #### <a id="storageexplorer"></a>Azure 存储资源管理器
-*Azure 存储资源管理器*是用于在 Blob 中检查和更改数据的工具。 它是免费的开源工具，可从 [http://storageexplorer.com/](http://storageexplorer.com/) 下载。 也可以从此链接获取源代码。
+*Azure 存储资源管理器*是用于在 Blob 中检查和更改数据的工具。 它是免费的开源工具，可从 [https://storageexplorer.com/](https://storageexplorer.com/) 下载。 也可以从此链接获取源代码。
 
 使用该工具之前，必须知道 Azure 存储帐户名和帐户密钥。 有关如何获取此信息的说明，请参阅[创建、管理或删除存储帐户][azure-create-storage-account]中的“如何：查看、复制和重新生成存储访问密钥”部分。
 
@@ -273,7 +271,7 @@ Sqoop 是一种为在 Hadoop 和关系数据库之间传输数据而设计的工
 hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file.bin /example/data
 ```
 
-还可使用 Ambari 以全局方式增加 `fs.azure.write.request.size` 的值。 可使用以下步骤在 Ambari Web UI 中更改该值：
+还可使用 Apache Ambari 以全局方式增加 `fs.azure.write.request.size` 的值。 可使用以下步骤在 Ambari Web UI 中更改该值：
 
 1. 在浏览器中，转到群集的 Ambari Web UI。 该地址为 https://CLUSTERNAME.azurehdinsight.net，其中“CLUSTERNAME”是群集名称。
 
@@ -284,18 +282,18 @@ hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file
 
 ![通过 Ambari Web UI 更改值的图像](./media/hdinsight-upload-data/hbase-change-block-write-size.png)
 
-有关如何使用 Ambari 的详细信息，请参阅[使用 Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)。
+有关如何使用 Ambari 的详细信息，请参阅[使用 Apache Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)。
 
 ## <a name="next-steps"></a>后续步骤
 现在，已了解如何将数据导入 HDInsight，请阅读以下文章了解如何执行分析：
 
 * [Azure HDInsight 入门][hdinsight-get-started]
-* [以编程方式提交 Hadoop 作业][hdinsight-submit-jobs]
-* [将 Hive 与 HDInsight 配合使用][hdinsight-use-hive]
-* [将 Pig 与 HDInsight 配合使用][hdinsight-use-pig]
+* [以编程方式提交 Apache Hadoop 作业][hdinsight-submit-jobs]
+* [将 Apache Hive 和 HDInsight 配合使用][hdinsight-use-hive]
+* [将 Apache Pig 和 HDInsight 配合使用][hdinsight-use-pig]
 
 [azure-management-portal]: https://porta.azure.com
-[azure-powershell]: http://msdn.microsoft.com/library/windowsazure/jj152841.aspx
+[azure-powershell]: https://msdn.microsoft.com/library/windowsazure/jj152841.aspx
 
 [azure-storage-client-library]: /develop/net/how-to-guides/blob-storage/
 [azure-create-storage-account]:../storage/common/storage-create-storage-account.md
@@ -315,7 +313,7 @@ hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file
 
 [sqldatabase-create-configure]: ../sql-database-create-configure.md
 
-[apache-sqoop-guide]: http://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
+[apache-sqoop-guide]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
 [Powershell-install-configure]: /powershell/azureps-cmdlets-docs
 

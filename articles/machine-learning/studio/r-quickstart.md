@@ -1,28 +1,8 @@
 ---
-title: 适用于机器学习工作室的 R 语言快速入门教程 - Azure | Microsoft Docs
-description: 通过此 R 编程教程，快速在 Azure 机器学习工作室中使用 R 语言创建预测解决方案。
-keywords: 快速入门, r 语言, r 编程语言, r 编程教程
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
-editor: cgronlun
-ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/06/2017
-ms.openlocfilehash: eea61419e76f4363a286f796e6df28a4e90a9ed7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317664"
+title:R 语言的快速入门教程 titleSuffix:Azure 机器学习工作室 description:通过此 R 编程教程，快速在 Azure 机器学习工作室中使用 R 语言创建预测解决方案。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:01/06/2017
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>适用于 Azure 机器学习工作室的 R 编程语言快速入门教程
 
@@ -33,7 +13,7 @@ ms.locfileid: "52317664"
 
 Microsoft Azure 机器学习包含许多功能强大的机器学习和数据操作模块。 功能强大的 R 语言已被描述为分析通用语言。 幸运的是，使用 R 可以扩展 Azure 机器学习中的分析和数据操作。依靠 R 的灵活性和深入分析，这种组合具有可扩展性和易于部署 Azure 机器学习的特征。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ### <a name="forecasting-and-the-dataset"></a>预测和数据集
 预测是一种被广泛采用且非常有用的分析方法。 常见的用途包括预测季节性商品的销售、确定最优的库存级别和预测宏观经济变量。 通常使用时序模型进行预测。
@@ -1211,7 +1191,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 
 从这些结果可以看出，向模型中添加季节性因子使 RMS 误差显著减少。 不出所料，训练数据的 RMS 误差略小于预测数据的误差。
 
-## <a id="appendixa"></a>附录 A：RStudio 指南
+## <a id="appendixa"></a>附录 A：Rstudio 指南
 RStudio 的文档非常齐全，因此在本附录中，我提供了一些指向 RStudio 文档的重要章节的链接，可以帮助你入门。
 
 1. 创建项目
@@ -1228,7 +1208,7 @@ RStudio 的文档非常齐全，因此在本附录中，我提供了一些指向
    
    https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting 中记录了断点的故障排除功能。
 
-## <a id="appendixb"></a>附录 B：深入阅读
+## <a id="appendixb"></a>附录 B：延伸阅读
 此 R 编程教程介绍了在 Azure 机器学习工作室中使用 R 语言所需的基础知识。 如果不熟悉 R 语言，CRAN 上提供了两个简介：
 
 * 可以从 Emmanuel Paradis 的《R for Beginners》（面向初学者的 R 语言）开始，请访问 http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf。  
@@ -1248,7 +1228,7 @@ RStudio 的文档非常齐全，因此在本附录中，我提供了一些指向
 
 一些非常好的 Internet 资源：
 
-* DataCamp：在浏览器中舒适地观看 DataCamp 的 R 课程的视频和编码练习。 DataCamp 提供了关于最新的 R 技术和包的互动式课程。 获取免费交互式 R 教程，网址为 https://www.datacamp.com/courses/introduction-to-r
+* DataCamp：DataCamp 通过视频课程和编码练习在舒适的浏览器中教授 R。 DataCamp 提供了关于最新的 R 技术和包的互动式课程。 获取免费交互式 R 教程，网址为 https://www.datacamp.com/courses/introduction-to-r
 * 有关 R 入门指南，请访问 Programiz https://www.programiz.com/r-programming
 * 有关 Kelly Black 编写的快速 R 教程，请访问 Clarkson 大学 http://www.cyclismo.org/tutorial/R/
 * http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html 中列出了 60 个以上的 R 资源

@@ -10,17 +10,15 @@ ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.component: ''
-ms.openlocfilehash: 64daab1c5c6c372dc7b8808e2c5d3da75d0fffe6
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: cff96ecb4f4b20e7e3542f6ae6e3e7740b750235
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52430212"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729789"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -33,9 +31,9 @@ ms.locfileid: "52430212"
 
 网络性能监视器提供以下三种用途广泛的功能： 
 
-* [性能监视器](network-performance-monitor-performance-monitor.md)：可以跨云部署和本地位置、多个数据中心和分支机构、任务关健型多层应用程序或微服务监视网络连接。 使用性能监视器，可以在用户产生抱怨之前检测到网络问题。
+* [性能监视器](network-performance-monitor-performance-monitor.md)：可跨云部署和本地位置、多个数据中心和分支机构、任务关健型多层应用程序或微服务监视网络连接。 使用性能监视器，可以在用户产生抱怨之前检测到网络问题。
 
-* [服务连接性监视器](network-performance-monitor-service-endpoint.md)：可监视从用户到所关注的服务的连接，确定路径中存在的具体基础结构，并识别网络瓶颈的发生位置。 可以赶在用户之前了解中断情况，沿网络路径查看问题的具体位置。 
+* [服务连接监视器](network-performance-monitor-service-endpoint.md)：可以监视从用户到所关注的服务的连接，确定路径中存在的具体基础结构，并识别网络瓶颈的发生位置。 可以赶在用户之前了解中断情况，沿网络路径查看问题的具体位置。 
 
     此功能可以用来执行基于 HTTP、HTTPS、TCP 和 ICMP 的测试，以近实时的方式或根据历史事实的方式监视服务的可用性和响应时间。 还可以监视网络在多大程度上造成了包丢失和延迟。 使用网络拓扑图可以隔离导致网络速度下降的问题点。 凭借每个跃点上的延迟数据，可以确定从节点到服务这一段网络路径中出现的问题点。 可以通过内置的测试在不使用任何预配置的情况下监视 Office 365 和 Dynamics CRM 的网络连接。 可以使用此功能监视到任何支持 TCP 的终结点（例如网站、SaaS 应用程序、PaaS 应用程序和 SQL 数据库）的网络连接。
 
@@ -54,22 +52,22 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 * 英国南部
 * 美国弗吉尼亚州政府
 
-可在[文档](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117#regions)中查看支持 ExpressRoute 监视器的区域列表。
+可在[文档](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117)中查看支持 ExpressRoute 监视器的区域列表。
 
 
 ## <a name="set-up-and-configure"></a>安装和配置
 
 ### <a name="install-and-configure-agents"></a>安装并配置代理 
 
-使用[将 Windows 计算机连接到 Azure Log Analytics](../../log-analytics/log-analytics-om-agents.md) 和[将 Operations Manager 连接到 Log Analytics](../../log-analytics/log-analytics-om-agents.md) 中的基本过程安装代理。
+使用[将 Windows 计算机连接到 Azure Log Analytics](../../azure-monitor/platform/agent-windows.md) 和[将 Operations Manager 连接到 Log Analytics](../../azure-monitor/platform/om-agents.md) 中的基本过程安装代理。
 
 ### <a name="where-to-install-the-agents"></a>代理安装位置 
 
-* **性能监视器：** 将 Log Analytics 代理安装在至少一个已连接到每个子网的节点上。需要监视从每个子网到其他子网的网络连接。
+* **性能监视器**：将 Log Analytics 代理安装在至少一个已连接到每个子网的节点上。需要监视从每个子网到其他子网的网络连接。
 
     要监视某个网络链接，请在该链接的两个终结点上安装代理。 如果不确定网络的拓扑，请在具有关键工作负荷且这些负荷之间的网络性能需要进行监视的服务器上安装代理。 例如，如果需要监视 Web 服务器和运行 SQL 的服务器之间的网络连接，请将代理安装在这两个服务器上。 代理会监视主机之间的网络连接（链接），而不是主机本身。 
 
-* **服务终结点监视器**：要监视节点到服务终结点的网络连接，需在每个此类节点上安装 Log Analytics 代理。 例如，假设要监视从标记为 O1、O2 和 O3 的办公网站到 Office 365 的网络连接。 分别在 O1、O2 和 O3 中的至少一个节点上安装 Log Analytics 代理。 
+* **服务连接监视器**：要监视节点到服务终结点的网络连接，需在每个此类节点上安装 Log Analytics 代理。 例如，假设要监视从标记为 O1、O2 和 O3 的办公网站到 Office 365 的网络连接。 分别在 O1、O2 和 O3 中的至少一个节点上安装 Log Analytics 代理。 
 
 * **ExpressRoute 监视器**：在 Azure 虚拟网络中安装至少一个 Log Analytics 代理。 并在通过 ExpressRoute 专用对等互连连接的本地子网中安装至少一个代理。  
 
@@ -115,7 +113,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
    ![“性能监视器”视图](media/network-performance-monitor/npm-synthetic-transactions.png)
     
-   **服务连接性监视器**：此功能提供内置的预配置测试，用于监视代理到 Office 365 和 Dynamics 365 的网络连接。 通过选中 Office 365 和 Dynamics 365 服务旁边的复选框，选择需要监视的服务。 要选择要从其进行监视的代理，请选择“添加代理”。 如果不希望使用此功能，或希望在以后进行设置，请不要做出任何选择，而是选择“保存并继续”。
+   **服务连接监视器**：此功能提供内置的预配置测试，用于监视从代理到 Office 365 和 Dynamics 365 的网络连接。 通过选中 Office 365 和 Dynamics 365 服务旁边的复选框，选择需要监视的服务。 要选择要从其进行监视的代理，请选择“添加代理”。 如果不希望使用此功能，或希望在以后进行设置，请不要做出任何选择，而是选择“保存并继续”。
 
    ![“服务终结点监视器”视图](media/network-performance-monitor/npm-service-endpoint-monitor.png)
 
@@ -197,7 +195,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 * **ExpressRoute 监视器**：本页提供解决方案监视的各个 ExpressRoute 对等互连连接的运行状况摘要。 “拓扑”磁贴显示在网络中受监视的通过 ExpressRoute 线路的网络路径数。 选择此磁贴转到“拓扑”视图。
 
-* **服务连接性监视器**：本页提供所创建的不同测试的运行状况摘要。 “拓扑”磁贴显示受监视的终结点数。 选择此磁贴转到“拓扑”视图。
+* **服务连接监视器**：本页提供所创建的不同测试的运行状况摘要。 “拓扑”磁贴显示受监视的终结点数。 选择此磁贴转到“拓扑”视图。
 
 * **性能监视器**：本页提供解决方案监视的“网络”链接和“子网”链接的运行状况摘要。 “拓扑”磁贴显示在网络中受监视的网络路径数。 选择此磁贴转到“拓扑”视图。 
 
@@ -251,7 +249,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ## <a name="log-analytics-search"></a>Log Analytics 搜索 
 
-通过网络性能监视器仪表板和向下钻取页面以图形方式显示的所有数据也可以在 [Log Analytics 搜索](../../log-analytics/log-analytics-queries.md)中以本地方式使用。 可对存储库中的数据执行交互式分析，并关联来自不同源的数据。 还可以创建自定义警报和视图，并将数据导出到 Excel、Power BI 或可共享的链接。 仪表板的 **“常见查询”** 区域中有一些查询非常有用，可以基于这些查询创建自己的查询和报表。 
+通过网络性能监视器仪表板和向下钻取页面以图形方式显示的所有数据也可以在 [Log Analytics 搜索](../../azure-monitor/log-query/log-query-overview.md)中以本地方式使用。 可对存储库中的数据执行交互式分析，并关联来自不同源的数据。 还可以创建自定义警报和视图，并将数据导出到 Excel、Power BI 或可共享的链接。 仪表板的 **“常见查询”** 区域中有一些查询非常有用，可以基于这些查询创建自己的查询和报表。 
 
 ## <a name="alerts"></a>警报
 

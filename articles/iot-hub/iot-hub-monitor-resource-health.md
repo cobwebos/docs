@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: kgremban
-ms.openlocfilehash: 64d30ef859dd4a64a3e59d82e6fd8c30e30c5ea3
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 3b56097f8805b4c6d95256ae1753daf5ded266fb
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299718"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888390"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>监视 Azure IoT 中心的运行状况并快速诊断问题
 
@@ -401,8 +401,8 @@ Azure IoT 中心指示区域级别的运行状况。 如果区域性服务中断
 [lnk-ARH]: ../service-health/resource-health-overview.md
 [lnk-metrics]: iot-hub-metrics.md
 [lnk-migrate]: iot-hub-migrate-to-diagnostics-settings.md
-[lnk-AM-metrics]: ../monitoring-and-diagnostics/monitoring-supported-metrics.md
-[lnk-AM-schemas]: ../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md
+[lnk-AM-metrics]: ../azure-monitor/platform/metrics-supported.md
+[lnk-AM-schemas]: ../azure-monitor/platform/diagnostic-logs-schema.md
 [lnk-ARH-checks]: ../service-health/resource-health-checks-resource-types.md
 [lnk-monitoring-notifications]: iot-hub-monitoring-notifications-with-azure-logic-apps.md
 [lnk-devguide-heartbeat]: iot-hub-devguide-identity-registry.md#device-heartbeat

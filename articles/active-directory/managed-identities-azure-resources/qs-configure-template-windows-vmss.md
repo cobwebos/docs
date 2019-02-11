@@ -3,23 +3,23 @@ title: 使用模板在虚拟机规模集上配置 Azure 资源托管标识
 description: 分步说明如何使用 Azure 资源管理器模板在虚拟机规模集上配置 Azure 资源托管标识。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
-ms.author: daveba
-ms.openlocfilehash: c6bc77e5ee1fa5e180b41dca50640dc01fee0691
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.author: priyamo
+ms.openlocfilehash: 6fff8890a32cd6c3f0aeb506425964edcc841c5e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017510"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193465"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-azure-virtual-machine-scale-using-a-template"></a>使用模板在 Azure 虚拟机规模集上配置 Azure 资源托管标识
 
@@ -173,7 +173,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 > [!Note]
 > 要使用 Azure 资源管理器模板创建用户分配托管标识，请参阅[创建用户分配托管标识](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity)。
 
-### <a name="assign-a-user-assigned-managed-identity-to-a-virutal-machine-scale-set"></a>将用户分配托管标识分配给虚拟机规模集
+### <a name="assign-a-user-assigned-managed-identity-to-a-virtual-machine-scale-set"></a>将用户分配的托管标识分配给虚拟机规模集
 
 1. 在 `resources` 元素下添加以下条目，向虚拟机规模集分配用户分配托管标识。  请务必将 `<USERASSIGNEDIDENTITY>` 替换为你创建的用户分配的托管标识的名称。
    

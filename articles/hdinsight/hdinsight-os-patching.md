@@ -7,16 +7,18 @@ ms.author: omidm
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/21/2017
-ms.openlocfilehash: 8bde1e8846dbaee957e2498ea4fae0c5cf79a913
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.date: 01/24/2019
+ms.openlocfilehash: 402a4d59b57803b8a9c0094799ceee6a92df43f9
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141033"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911347"
 ---
 # <a name="os-patching-for-hdinsight"></a>针对 HDInsight 的 OS 修补 
-作为托管的 Hadoop 服务，HDInsight 负责修补 HDInsight 群集使用的基础 VM 的 OS。 自 2016 年 8 月 1 日起，我们已经为基于 Linux 的 HDInsight 群集（版本 3.4 或更高版本）更改了来宾 OS 修补策略。 新策略的目标是显著减少由于修补导致的重启次数。 新策略会继续在 Linux 群集上修补虚拟机 (VM)，每周一或周四从 12AM UTC 开始以交错的方式在任意给定群集的节点上进行。 但是由于来宾 OS 修补，任何给定 VM 每 30 天最多重启一次。 此外，自新创建群集的创建日期起 30 天内，该群集不会发生第一次重启。 重启 VM 后，修补程序即可生效。
+
+> [!IMPORTANT]
+> Ubuntu 映像可在发布后的 3 个月内用于创建新的 HDInsight 群集。 自 2019 年 1 月起，系统**不**会自动修补正在运行的群集。 客户必须使用脚本操作或其他机制来修补正在运行的群集。
 
 ## <a name="how-to-configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>如何为基于 Linux 的 HDInsight 群集配置 OS 修补计划
 需不定期重启 HDInsight 群集中的虚拟机，以便安装重要的安全修补程序。 自 2016 年 8 月 1 日起，已使用以下计划重启新的基于 Linux 的 HDInsight 群集（版本 3.4 或更高版本）：
@@ -31,9 +33,8 @@ ms.locfileid: "42141033"
 2. 设置重启频率（重启之间的天数）
 3. 设置在星期几进行重启
 
-> [!NOTE]
+> [!NOTE]  
 > 此脚本操作仅适用于 2016 年 8 月 1 日后创建的基于 Linux 的 HDInsight 群集。 仅在重启 VM 后，修补程序才生效。 
->
 
 ## <a name="how-to-use-the-script"></a>如何使用脚本 
 
@@ -52,10 +53,8 @@ ms.locfileid: "42141033"
     | 星期几 |1 到 7（含）。 值为 1 表示在星期一进行重启，值为 7 表示在星期日进行重启。例如，使用参数 1 60 2，则其结果为虚拟机每隔 60 天（最多）在星期二自动重启。 |
     | 持久性 |将脚本操作应用于现有群集时，可将该脚本标记为持久化。 通过缩放操作将新的辅助节点添加到群集时，应用持久化脚本。 |
 
-> [!NOTE]
-> 将其应用于现有群集时，必须将此脚本标记为持久化。 否则，通过缩放操作创建的任何新节点都将使用默认修补计划。
-如果在群集创建过程中应用该脚本，则其会自动持久化。
->
+> [!NOTE]  
+> 将其应用于现有群集时，必须将此脚本标记为持久化。 否则，通过缩放操作创建的任何新节点都将使用默认修补计划。  如果在群集创建过程中应用该脚本，则其会自动持久化。
 
 ## <a name="next-steps"></a>后续步骤
 

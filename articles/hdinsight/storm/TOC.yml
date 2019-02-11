@@ -5,7 +5,7 @@ items:
   items:
   - name: 概述
     href: apache-storm-overview.md
-  - name: 组件版本控制
+  - name: HDInsight 上的 Apache Hadoop 组件
     href: ../hdinsight-component-versioning.md
     maintainContext: true
   - name: HDInsight 4.0
@@ -42,11 +42,11 @@ items:
     - name: Apache Kafka 和 Apache Storm (Java)
       href: ../hdinsight-apache-storm-with-kafka.md
       maintainContext: true
-    - name: 事件中心、存储和 Data Lake Store (Java)
+    - name: 事件中心、存储和 Data Lake Storage (Java)
       href: https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/
     - name: 事件中心和 Apache Storm（C# 和 Java）
       href: apache-storm-develop-csharp-event-hub-topology.md
-    - name: Azure 存储/Data Lake Store (Java)
+    - name: Azure 存储/Data Lake Storage (Java)
       href: apache-storm-write-data-lake-store.md
     - name: 事件中心、Apache HBase (Java)
       href: apache-storm-sensor-data-analysis.md
@@ -121,6 +121,7 @@ items:
         href: ../hdinsight-hadoop-create-linux-clusters-portal.md
         maintainContext: true
       - name: 使用 Azure 资源管理器模板
+        displayName: resource manager template, arm template, resource manager group
         href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
         maintainContext: true
       maintainContext: true
@@ -156,7 +157,7 @@ items:
     - name: 上传 Apache Hadoop 作业的数据
       href: ../hdinsight-upload-data.md
       maintainContext: true
-    - name: 将多个 HDInsight 群集与 Data Lake Store 配合使用
+    - name: 将多个 HDInsight 群集与 Data Lake Storage 配合使用
       href: ../hdinsight-multiple-clusters-data-lake-store.md
       maintainContext: true
     - name: 使用 Apache Sqoop 导入和导出数据
@@ -187,7 +188,7 @@ items:
     - name: 迁移到 Resource Manager 开发工具
       href: ../hdinsight-hadoop-development-using-azure-resource-manager.md
       maintainContext: true
-    - name: '可用性和可靠性 '
+    - name: 可用性和可靠性
       href: ../hdinsight-high-availability-linux.md
       maintainContext: true
     - name: 将 HDInsight 群集升级到更新的版本
@@ -271,6 +272,9 @@ items:
     href: /rest/api/hdinsight/
   - name: REST (Apache Spark)
     href: /rest/api/hdinsightspark/
+  - name: 资源管理器模板
+    displayName: resource manager template, arm template, resource manager group
+    href: /azure/templates/microsoft.hdinsight/allversions
 - name: 相关内容
   items:
   - name: Windows 群集
@@ -316,9 +320,9 @@ items:
   - name: 适用于 HDInsight 的 Windows 工具
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 2d3a2999c69833f759cbaab0241136609e068bf2
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 6859775d1f05bde7dd9ae8bc7bd3c10c0dd2073b
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496245"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894133"

@@ -3,23 +3,23 @@ title: 使用 Linux VM 系统分配的托管标识访问 Azure 存储
 description: 本教程将指导你完成使用 Linux VM 系统分配的托管标识访问 Azure 存储的过程。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: daveba
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: daveba
-ms.openlocfilehash: e0261f96b1b097cba753ec905bc590a35e9a2c24
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.author: priyamo
+ms.openlocfilehash: 2b27553e16225a7bc0d9ca74c7ec013a231d64e6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623598"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755460"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>教程：使用 Linux VM 系统分配的托管标识通过访问密钥访问 Azure 存储
 
@@ -61,11 +61,11 @@ ms.locfileid: "51623598"
 
 ## <a name="grant-your-vms-system-assigned-managed-identity-access-to-use-storage-account-access-keys"></a>授权 VM 的系统分配的托管标识使用存储帐户访问密钥
 
-Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 Azure 资源的托管标识从资源管理器检索存储帐户访问密钥，并使用这些密钥访问存储。  在此步骤中，将向 VM 的系统分配的托管标识授予对存储帐户密钥的访问权限。   
+在此步骤中，将向 VM 的系统分配的托管标识授予对存储帐户密钥的访问权限。   
 
 1. 导航回新创建的存储帐户。
 2. 单击左侧面板中的“访问控制(IAM)”链接。  
-3. 单击页面顶部的“+ 添加”，为 VM 添加新的角色分配
+3. 单击页面顶部的“+ 添加角色分配”，为 VM 添加新的角色分配
 4. 在页面右侧，将“角色”设置为“存储帐户密钥操作员服务角色”。 
 5. 在下一个下拉列表中，把“将访问权限分配给”设置为资源“虚拟机”。  
 6. 接下来，确保“订阅”下拉列表中列出了正确的订阅，然后将“资源组”设置为“所有资源组”。  
@@ -198,4 +198,4 @@ az storage blob download -c <CONTAINER NAME> -n test.txt -f test-download.txt --
 在本教程中，你已学习了如何使用 Linux VM 系统分配的托管标识通过访问密钥来访问 Azure 存储。  若要详细了解 Azure 存储访问密钥，请参阅：
 
 > [!div class="nextstepaction"]
->[管理存储访问密钥](/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys)
+>[管理存储访问密钥](/azure/storage/common/storage-create-storage-account)

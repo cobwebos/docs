@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: e62910cc760a200abba6d56e4fa1eb87973285ec
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 748a9c0c583d4e1af9626527a440b19900898b87
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963588"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600295"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 词汇表：Azure 平台上的云术语字典
 
@@ -37,7 +37,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 又叫[应用服务应用](#app-service-app)。
 
 ## <a name="app-service-app"></a>应用服务应用
-[Azure 应用服务](app-service/app-service-web-overview.md)提供的用于托管网站或 Web 应用程序、Web API 或[移动应用后端](app-service-mobile/app-service-mobile-value-prop.md)的计算资源。 应用服务应用也称为“应用服务”、“Web 应用”、“API 应用”和“移动应用”。
+[Azure 应用服务](app-service/overview.md)提供的用于托管网站或 Web 应用程序、Web API 或[移动应用后端](app-service-mobile/app-service-mobile-value-prop.md)的计算资源。 应用服务应用也称为“应用服务”、“Web 应用”、“API 应用”和“移动应用”。
 
 ## <a name="availability-set"></a>可用性集
 可一起管理的、用于提供应用程序冗余和可靠性的虚拟机集合。 使用可用性集可确保在计划内或计划外维护事件期间，至少有一个虚拟机可用。  

@@ -4,23 +4,23 @@ description: 了解如何将用户帐户从 Azure AD 自动预配到 ServiceNow 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 4d6f06dd-a798-4c22-b84f-8a11f1b8592a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: b3ef6e2a6b9b51c271372aa3c9342b52a4260788
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: c55cc00481b2a74f02c4a7a03ce10ecac5d3a5c9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348100"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187413"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>教程：使用 Azure Active Directory 为 ServiceNow 配置自动用户预配
 
@@ -50,7 +50,7 @@ ms.locfileid: "44348100"
 
 Azure Active Directory 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只同步已“分配”到 Azure AD 中的应用程序的用户和组。
 
-在配置和启用预配服务前，需确定 Azure AD 中的哪些用户和/或组表示需要访问 ServiceNow 应用的用户。 确定后，可按照此处的说明将这些用户分配到 ServiceNow 应用：[向企业应用分配用户或组](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+在配置和启用预配服务前，需确定 Azure AD 中的哪些用户和/或组表示需要访问 ServiceNow 应用的用户。 确定后，可以按照此处的说明将这些用户分配到 ServiceNow 应用：[向企业应用分配用户或组](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
 
 > [!IMPORTANT]
@@ -105,7 +105,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 * [配置单一登录](servicenow-tutorial.md)
 
 

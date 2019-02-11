@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: 5f74ee390ac327a9e697d3dc67da4ea604b64d69
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 429c7c266357b4808ab3ebbb7f346cf22d9f479c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686886"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855378"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 开发人员指南
 
@@ -105,7 +105,9 @@ public class Function {
 
 ## <a name="jdk-runtime-availability-and-support"></a>JDK 运行时的可用性与支持 
 
-从 [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) 下载和使用[适用于 Azure 的 Azul Zulu](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) JDK，以进行本地 Java 函数应用开发。 JDK 适用于 Windows、Linux 和 macOS。 通过[符合条件的支持计划](https://azure.microsoft.com/support/plans/)提供 [Azure 支持](https://support.microsoft.com/en-us/help/4026305/sql-contact-microsoft-azure-support)。
+从 [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) 下载和使用[适用于 Azure 的 Azul Zulu Enterprise](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java 8 JDK，以进行本地 Java 函数应用开发。 将函数应用部署到云时，Azure Functions 使用 Azul Java 8 JDK 运行时。
+
+对于 JDK 和函数应用的问题，[Azure 支持](https://azure.microsoft.com/en-us/support/)可通过[限定的支持计划](https://azure.microsoft.com/support/plans/)获得。
 
 ## <a name="third-party-libraries"></a>第三方库 
 
@@ -270,7 +272,7 @@ public class Function {
 
 ## <a name="metadata"></a>元数据
 
-少量的触发器会连同输入数据一起发送[触发器元数据](/azure/azure-functions/functions-triggers-bindings#trigger-metadata-properties)。 可以使用注释 `@BindingName` 绑定到触发器元数据
+少量的触发器会连同输入数据一起发送[触发器元数据](/azure/azure-functions/functions-triggers-bindings)。 可以使用注释 `@BindingName` 绑定到触发器元数据
 
 
 ```Java
@@ -299,7 +301,7 @@ public class Function {
         @QueueOutput(name = "output", queueName = "test-output-java-metadata", connection = "AzureWebJobsStorage") OutputBinding<TestData> output,
         final ExecutionContext context
     ) {
-        context.getLogger().info("Java Queue trigger function processed a message: " + message + " whith metadaId:" + metadataId );
+        context.getLogger().info("Java Queue trigger function processed a message: " + message + " with metadaId:" + metadataId );
         TestData testData = new TestData();
         testData.id = metadataId;
         output.setValue(testData);
@@ -361,11 +363,11 @@ az webapp log download --resource-group resourcegroupname --name functionappname
 
 ## <a name="environment-variables"></a>环境变量
 
-在 Functions 中，服务连接字符串等[应用设置](https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings)在执行过程中将公开为环境变量。 可以使用 `System.getenv("AzureWebJobsStorage")` 访问这些设置
+在 Functions 中，服务连接字符串等[应用设置](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)在执行过程中将公开为环境变量。 可以使用 `System.getenv("AzureWebJobsStorage")` 访问这些设置
 
 示例：
 
-添加名为 testAppSetting、值为 testAppSettingValue 的 [AppSetting](https://docs.microsoft.com/en-us/azure/azure-functions/functions-how-to-use-azure-function-app-settings)
+添加名为 testAppSetting、值为 testAppSettingValue 的 [AppSetting](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings)
 
 ```java
 

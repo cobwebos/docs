@@ -3,23 +3,23 @@ title: 使用 Windows VM 系统分配的托管标识通过 SAS 凭据访问 Azur
 description: 本教程介绍了如何使用 Windows VM 系统分配的托管标识通过 SAS 凭据（而不是存储帐户访问密钥）访问 Azure 存储。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: daveba
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
-ms.author: daveba
-ms.openlocfilehash: ca9f2fa249a3d9f4387d0fa45e3c5874eea26120
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.date: 01/24/2019
+ms.author: priyamo
+ms.openlocfilehash: dc5d7b6d1047a3da2977f1d80c99e12d559a152d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625481"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184030"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>教程：使用 Windows VM 系统分配的托管标识通过 SAS 凭据访问 Azure 存储
 
@@ -37,6 +37,8 @@ ms.locfileid: "51625481"
 ## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="create-a-storage-account"></a>创建存储帐户 
 
@@ -68,7 +70,7 @@ Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用托�
 
 1. 导航回新创建的存储帐户。   
 2. 单击左侧面板中的“访问控制(IAM)”链接。  
-3. 单击页面顶部的“+ 添加”，为 VM 添加新的角色分配
+3. 单击页面顶部的“+ 添加角色分配”，为 VM 添加新的角色分配
 4. 在页面左侧，将“角色”设置为“存储帐户参与者”。  
 5. 在下一个下拉列表中，把“将访问权限分配给”设置为资源“虚拟机”。  
 6. 接下来，确保“订阅”下拉列表中列出了正确的订阅，然后将“资源组”设置为“所有资源组”。  
@@ -150,17 +152,17 @@ PS C:\> $sasCred
 sv=2015-04-05&sr=c&spr=https&se=2017-09-23T00%3A00%3A00Z&sp=rcw&sig=JVhIWG48nmxqhTIuN0uiFBppdzhwHdehdYan1W%2F4O0E%3D
 ```
 
-接下来，我们将创建一个名为“test.txt”的文件。 然后，通过 `New-AzureStorageContent` cmdlet 使用 SAS 凭据进行身份验证，将该文件上传到 blob 容器，然后下载该文件。
+接下来，我们将创建一个名为“test.txt”的文件。 然后，通过 `New-AzStorageContent` cmdlet 使用 SAS 凭据进行身份验证，将该文件上传到 blob 容器，然后下载该文件。
 
 ```bash
 echo "This is a test text file." > test.txt
 ```
 
-请务必首先使用 `Install-Module Azure.Storage` 安装 Azure 存储 cmdlet。 然后，可以使用 `Set-AzureStorageBlobContent` PowerShell cmdlet 上传刚创建的 blob：
+请务必首先使用 `Install-Module Azure.Storage` 安装 Azure 存储 cmdlet。 然后，可以使用 `Set-AzStorageBlobContent` PowerShell cmdlet 上传刚创建的 blob：
 
 ```powershell
-$ctx = New-AzureStorageContext -StorageAccountName <STORAGE-ACCOUNT-NAME> -SasToken $sasCred
-Set-AzureStorageBlobContent -File test.txt -Container <CONTAINER-NAME> -Blob testblob -Context $ctx
+$ctx = New-AzStorageContext -StorageAccountName <STORAGE-ACCOUNT-NAME> -SasToken $sasCred
+Set-AzStorageBlobContent -File test.txt -Container <CONTAINER-NAME> -Blob testblob -Context $ctx
 ```
 
 响应：
@@ -177,10 +179,10 @@ Context           : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 Name              : testblob
 ```
 
-也可以使用 `Get-AzureStorageBlobContent` PowerShell cmdlet 下载刚上传的 blob：
+也可以使用 `Get-AzStorageBlobContent` PowerShell cmdlet 下载刚上传的 blob：
 
 ```powershell
-Get-AzureStorageBlobContent -Blob testblob -Container <CONTAINER-NAME> -Destination test2.txt -Context $ctx
+Get-AzStorageBlobContent -Blob testblob -Container <CONTAINER-NAME> -Destination test2.txt -Context $ctx
 ```
 
 响应：

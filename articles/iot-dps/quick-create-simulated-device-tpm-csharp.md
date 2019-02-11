@@ -9,24 +9,26 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 812b707b9711d61d0a1326a86644e57ecbe84513
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f574c85252614fd24734657affe3264d72130dd3
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157882"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997006"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 C# 设备 SDK 创建和预配模拟的 TPM 设备
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
-以下步骤演示了如何在运行 Windows OS 的开发计算机上生成 Azure IoT 中心 C# SDK 模拟的 TPM 设备示例，以及如何通过设备预配服务和 IoT 中心连接该模拟设备。 示例代码使用 Windows TPM 模拟器作为设备的[硬件安全模块 (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)。 
+这些步骤展示如何使用[用于 C# 的 Azure IoT 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp)在运行 Windows OS 的开发计算机上模拟运行 TPM 设备。 该示例还使用设备预配服务将模拟设备连接到 IoT 中心。 
+
+示例代码使用 Windows TPM 模拟器作为设备的[硬件安全模块 (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)。 
 
 如果不熟悉自动预配过程，还务必查看[自动预配概念](concepts-auto-provisioning.md)。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
 
 Azure IoT 设备预配服务支持两类注册：
-- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关的设备。
-- [单个注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
+- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
+- [单独注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
 
 本文将演示单个注册。
 
@@ -35,14 +37,14 @@ Azure IoT 设备预配服务支持两类注册：
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>准备开发环境 
 
-1. 确保已在计算机上安装 [.NET Core SDK](https://www.microsoft.com/net/download/windows)。 
+1. 确保在计算机上已安装 [.NET Core 2.1 SDK 或更高版本](https://www.microsoft.com/net/download/windows)。 
 
 1. 确保在计算机上安装 `git` 并将其添加到可供命令窗口访问的环境变量。 请参阅[软件自由保护组织提供的 Git 客户端工具](https://git-scm.com/download/)，了解要安装的最新版 `git` 工具，其中包括 Git Bash，这是一个命令行应用，可以用来与本地 Git 存储库交互。 
 
-4. 打开命令提示符或 Git Bash。 克隆 Azure IoT SDK for C# GitHub 存储库：
+1. 打开命令提示符或 Git Bash。 克隆用于 C# GitHub 存储库的 Azure IoT 示例：
     
     ```cmd
-    git clone --recursive https://github.com/Azure/azure-iot-sdk-csharp.git
+    git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     ```
 
 ## <a name="provision-the-simulated-device"></a>预配模拟的设备
@@ -56,7 +58,7 @@ Azure IoT 设备预配服务支持两类注册：
 2. 在命令提示符处将目录更改为 TPM 设备预配示例的项目目录。
 
     ```cmd
-    cd .\azure-iot-sdk-csharp\provisioning\device\samples\ProvisioningDeviceClientTpm
+    cd .\azure-iot-samples-csharp\provisioning\Samples\device\TpmSample
     ```
 
 2. 键入以下命令，生成并运行 TPM 设备预配示例。 将 `<IDScope>` 值替换为预配服务的 ID 范围。 
@@ -65,21 +67,22 @@ Azure IoT 设备预配服务支持两类注册：
     dotnet run <IDScope>
     ```
 
-1. 命令窗口显示进行设备注册所需的“认可密钥”、“注册 ID”以及建议的“设备 ID”。 记下这些值。 
+    此命令将在单独的命令提示中启动 TPM 芯片模拟器。  
+
+1. 命令窗口显示进行设备注册所需的“认可密钥”、“注册 ID”以及建议的“设备 ID”。 记下这些值。 这些值将用于在设备预配服务实例中创建个人注册。 
    > [!NOTE]
    > 请勿混淆包含命令输出的窗口与包含 TPM 模拟器输出的窗口。 可能需要单击命令窗口，将其置于前台。
 
     ![命令窗口输出](./media/quick-create-simulated-device-tpm-csharp/output1.png) 
 
-
 4. 在 Azure 门户的设备预配服务摘要边栏选项卡上，选择“管理注册”。 选择“个人注册”选项卡，然后单击顶部的“添加个人注册”按钮。 
 
 5. 在“添加注册”下，输入以下信息：
     - 选择“TPM”作为标识证明*机制*。
-    - 输入 TPM 设备的*注册 ID* 和*认可密钥*。 
+    - 输入前面记录的 TPM 设备的“注册 ID”和“认可密钥”。
     - 可以选择与预配服务链接的 IoT 中心。
     - 输入唯一设备 ID。 可以输入在示例输出中建议的设备 ID，也可以输入自己的设备 ID。 如果使用自己的设备 ID，则请在为设备命名时，确保避免使用敏感数据。 
-    - 使用设备所需的初始配置更新“初始设备孪生状态”。
+    - （可选）使用设备所需的初始配置更新“初始设备孪生状态”。
     - 完成后，单击“保存”按钮。 
 
     ![在门户边栏选项卡中输入设备注册信息](./media/quick-create-simulated-device-tpm-csharp/enterdevice-enrollment.png)  

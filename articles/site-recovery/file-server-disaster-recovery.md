@@ -4,16 +4,16 @@ description: 本文介绍如何使用 Azure Site Recovery 保护文件服务器
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
-ms.topic: tutorial
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 11/27/2018
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 0eed8179396c80e4ea26ff90b53324b9a2891df0
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c6db0b9dda9f383ddc062c41bae0be0b56f7e69d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214896"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794084"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 保护文件服务器 
 
@@ -76,7 +76,7 @@ DFSR 使用称为远程差分压缩 (RDC) 的压缩算法，该算法可用于�
 
 **站点到站点连接**：必须在本地站点与 Azure 网络之间建立直接连接，以便能够在服务器之间通信。 与用作灾难恢复站点的 Azure 虚拟网络建立安全的站点到站点 VPN 连接。 有关详细信息，请参阅[在本地站点与 Azure 虚拟网络之间建立站点到站点 VPN 连接](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)。
 
-**Active Directory**：DFSR 依赖于 Active Directory。 这意味着，具有本地域控制器的 Active Directory 林将扩展到 Azure 中的灾难恢复站点。 即使未使用 DFSR，但如果需要授予/验证目标用户的访问权限，则也要执行这些步骤。 有关详细信息，请参阅[将本地 Active Directory 扩展到 Azure](https://docs.microsoft.com/azure/site-recovery/site-recovery-active-directory)。
+**Active Directory 域服务**：DFSR 依赖于 Active Directory。 这意味着，具有本地域控制器的 Active Directory 林将扩展到 Azure 中的灾难恢复站点。 即使未使用 DFSR，但如果需要授予/验证目标用户的访问权限，则也要执行这些步骤。 有关详细信息，请参阅[将本地 Active Directory 扩展到 Azure](https://docs.microsoft.com/azure/site-recovery/site-recovery-active-directory)。
 
 ## <a name="disaster-recovery-recommendation-for-azure-iaas-virtual-machines"></a>Azure IaaS 虚拟机的灾难恢复建议
 

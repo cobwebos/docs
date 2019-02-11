@@ -1,252 +1,123 @@
 ---
-title: 教程：电子商务目录审查 - 内容审查器
+title: 教程：审查电子商务产品图像 - 内容审查器
 titlesuffix: Azure Cognitive Services
-description: 通过机器学习和 AI 自动审查电子商务目录。
+description: 设置一个应用程序，以通过指定的标签分析和分类产品图像（使用 Azure 计算机视觉和自定义视觉），并标记令人反感的图像以作进一步的评审（使用 Azure 内容审查器）。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 09/25/2017
-ms.author: sajagtap
-ms.openlocfilehash: 0bd61c3f1a4f660076be4e87bb5443302e5dc013
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.date: 01/10/2019
+ms.author: pafarley
+ms.openlocfilehash: 833aa9caed3d1fd5d39a0c15e9fc03ad32091834
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363988"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218897"
 ---
-# <a name="tutorial-ecommerce-catalog-moderation-with-machine-learning"></a>教程：通过机器学习进行电子商务目录审查
+# <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>教程：使用 Azure 内容审查器审查电子商务产品图像
 
-在本教程中，我们学习如何通过将计算机辅助 AI 技术与人工审查相结合实现基于机器学习的智能电子商务目录审查以提供智能目录系统。
+本教程介绍如何使用 Azure 认知服务（包括内容审查器）有效分类和审查电子商务场景中的产品图像。 你将使用计算机视觉和自定义视觉向图像应用各种标记（标签），然后创建团队评审，以便将内容审查器的基于机器学习的技术与人工评审团队相结合，提供一个智能审查系统。
 
-![分类产品图像](images/tutorial-ecommerce-content-moderator.PNG)
+本教程演示如何：
 
-## <a name="business-scenario"></a>业务场景
+> [!div class="checklist"]
+> * 注册内容审查器并创建评审团队。
+> * 使用内容审查器的图像 API 扫描可能出现的成人和不雅内容。
+> * 使用计算机视觉服务扫描名人内容（或计算机视觉可检测到的其他标记）。
+> * 使用自定义视觉服务扫描国旗、玩具和笔（或其他自定义标记）。
+> * 提供组合的扫描结果，供人工评审和最终决策。
 
-使用计算机辅助技术产品图像分为以下几类并进行审查：
+GitHub 上的[电子商务目录审查示例](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)存储库中提供了完整的示例代码。
 
-1. 成人（裸露）
-2. 不雅（暗示性）
-3. 名人
-4. 美国国旗
-5. 玩具
-6. 笔
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="tutorial-steps"></a>教程步骤
+## <a name="prerequisites"></a>先决条件
 
-教程通过以下步骤引导你完成学习：
+- 内容审查器的订阅密钥。 遵照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅内容审查器服务并获取密钥。
+- 计算机视觉订阅密钥（遵照上面相同的说明获取）。
+- 任何版本的 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/)。
+- 为每个标签提供一组图像，供自定义视觉分类器使用（在本例中为玩具、笔和美国国旗）。
 
-1. 注册和创建内容审查器团队。
-2. 为可能出现的名人和国旗内容配置审查标记（标签）。
-3. 使用内容审查器的图像 API 扫描可能出现的成人和不雅内容。
-4. 使用计算机视觉 API 扫描可能出现的名人。
-5. 使用自定义影像服务扫描可能出现的国旗。
-6. 提供细致的扫描结果，供人工审查和最终决策。
+## <a name="create-a-review-team"></a>创建评审团队
 
-## <a name="create-a-team"></a>创建团队
+参阅[熟悉内容审查器](quick-start.md)快速入门，获取有关如何注册[内容审查器审查工具](https://contentmoderator.cognitive.microsoft.com/)和创建评审团队的说明。 记下“凭据”页上的“团队 ID”值。
 
-请参阅[快速入门](quick-start.md)页面来注册内容审查器和创建团队。 请注意，“团队 ID”来自“凭据”页面。
+## <a name="create-custom-moderation-tags"></a>创建自定义审查标记
 
-
-## <a name="define-custom-tags"></a>定义自定义标记
-
-请参阅[标记](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/tags)文章来添加自定义标记。 除了内置的“成人”和“不雅”标记外，新标记允许审查工具显示标记的描述性名称。
-
-在本例中，我们定义如下标记（“名人”、“国旗”、“美国”、“玩具”、“笔”）：
+接下来，在评审工具中创建自定义标记（在此过程中如需帮助，请参阅[标记](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/tags)一文）。 在本例中，我们将添加以下标记：“名人”、“美国”、“国旗”、“玩具”和“笔”。 请注意，并非所有标记都需要是计算机视觉中可检测到的类别（例如“名人”）；可以添加自己的自定义标记，不过，在添加后，必须训练自定义视觉分类器才能检测到这些标记。
 
 ![配置自定义标记](images/tutorial-ecommerce-tags2.PNG)
 
-## <a name="list-your-api-keys-and-endpoints"></a>列举 API 密钥和终结点
+## <a name="create-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 本教程使用三个 API 和相应的密钥和 API 终结点。
-2. API 终结点基于订阅区域和内容审查器审查团队 ID 有所不同。
+1. 在 Visual Studio 中打开“新建项目”对话框。 依次展开“已安装”、“Visual C#”，然后选择“控制台应用(.NET Framework)”。
+1. 将应用程序命名为 **EcommerceModeration**，然后单击“确定”。
+1. 如果要将此项目添加到现有的解决方案，请将此项目选作单一启动项目。
 
-> [!NOTE]
-> 本教程是为在下列终结点中可见的区域中使用订阅密钥专门设计的。 请务必匹配 API 密钥与地区 URL，否则密钥可能无法用于下列终结点：
+本教程将突出显示项目的核心代码，但不会介绍所需的每个代码行。 将示例项目（[电子商务目录审查示例](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)）中 _Program.cs_ 的整个内容复制到新项目的 _Program.cs_ 文件。 然后，逐步完成以下各个部分，以了解项目的工作原理以及如何自行使用该项目。
 
-         // Your API keys
-        public const string ContentModeratorKey = "XXXXXXXXXXXXXXXXXXXX";
-        public const string ComputerVisionKey = "XXXXXXXXXXXXXXXXXXXX";
-        public const string CustomVisionKey = "XXXXXXXXXXXXXXXXXXXX";
+## <a name="define-api-keys-and-endpoints"></a>定义 API 密钥和终结点
 
-        // Your end points URLs will look different based on your region and Content Moderator Team ID.
-        public const string ImageUri = "https://westus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessImage/Evaluate";
-        public const string ReviewUri = "https://westus.api.cognitive.microsoft.com/contentmoderator/review/v1.0/teams/YOURTEAMID/reviews";
-        public const string ComputerVisionUri = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0";
-        public const string CustomVisionUri = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.0/Prediction/XXXXXXXXXXXXXXXXXXXX/url";
+如前所述，本教程将使用三个认知服务；因此，需要三个对应的密钥和 API 终结点。 查看 **Program** 类中的以下字段： 
 
-## <a name="scan-for-adult-and-racy-content"></a>扫描成人和不雅内容
+[!code-csharp[define API keys and endpoint URIs](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=21-29)]
 
-1. 此函数将图像 URL 和键值对数组作为参数。
-2. 它调用内容审查器的图像 API 以获取成人和不雅分数。
-3. 如果分数大于 0.4（范围从 0 到 1），则将“ReviewTags”数组设为“True”。
-4. “ReviewTags”数组用于突出显示审查工具中的相应标记。
+需要使用订阅密钥的值（稍后将获取 `CustomVisionKey`）更新 `___Key` 字段，并且可能需要更改 `___Uri` 字段，使之包含正确的区域标识符。 在 `ReviewUri` 字段的 `YOURTEAMID` 部分填写之前创建的评审团队的 ID。 稍后再填充 `CustomVisionUri` 字段的最后一个部分。
 
-        public static bool EvaluateAdultRacy(string ImageUrl, ref KeyValuePair[] ReviewTags)
-        {
-            float AdultScore = 0;
-            float RacyScore = 0;
+## <a name="primary-method-calls"></a>主要方法调用
 
-            var File = ImageUrl;
-            string Body = $"{{\"DataRepresentation\":\"URL\",\"Value\":\"{File}\"}}";
+查看 **Main** 方法中循环访问图像 URL 列表的以下代码。 该代码使用三个不同的服务分析每个图像，在 **ReviewTags** 数组中记录已应用的标记，然后为审查人员创建一个评审（将图像发送到内容审查器评审工具）。 以下部分将介绍这些方法。 请注意，此处可以根据需要控制要发送哪些图像供评审，只需在条件语句中使用 **ReviewTags** 数组来检查已应用的标记即可。
 
-            HttpResponseMessage response = CallAPI(ImageUri, ContentModeratorKey, CallType.POST,
-                                                   "Ocp-Apim-Subscription-Key", "application/json", "", Body);
+[!code-csharp[Main: evaluate each image and create review](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=53-70)]
 
-            if (response.IsSuccessStatusCode)
-            {
-                // {“answers”:[{“answer”:“Hello”,“questions”:[“Hi”],“score”:100.0}]}
-                // Parse the response body. Blocking!
-                GetAdultRacyScores(response.Content.ReadAsStringAsync().Result, out AdultScore, out RacyScore);
-            }
+## <a name="evaluateadultracy-method"></a>EvaluateAdultRacy 方法
 
-            ReviewTags[0] = new KeyValuePair();
-            ReviewTags[0].Key = "a";
-            ReviewTags[0].Value = "false";
-            if (AdultScore > 0.4)
-            {
-                ReviewTags[0].Value = "true";
-            }
+查看 **Program** 类中的 **EvaluateAdultRacy** 方法。 此方法将图像 URL 和键值对数组用作参数。 它调用内容审查器的图像 API（使用 REST）获取图像的成人和不雅评分。 如果评分大于 0.4（范围从 0 到 1），则将 **ReviewTags** 数组中的相应值设置为 **True**。
 
-            ReviewTags[1] = new KeyValuePair();
-            ReviewTags[1].Key = "r";
-            ReviewTags[1].Value = "false";
-            if (RacyScore > 0.3)
-            {
-                ReviewTags[1].Value = "true";
-            }
-            return response.IsSuccessStatusCode;
-        }
+[!code-csharp[define EvaluateAdultRacy method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=73-113)]
 
-## <a name="scan-for-celebrities"></a>扫描名人
+## <a name="evaluatecustomvisiontags-method"></a>EvaluateCustomVisionTags 方法
 
-1. 注册[计算机视觉 API](https://azure.microsoft.com/services/cognitive-services/computer-vision/) 的[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)。
-2. 单击“获取 API 密钥”按钮。
-3. 接受条款。
-4. 要登录，从可用的 Internet 帐户列表中选择。
-5. 请注意，API 密钥已显示在服务页面上。
-    
-   ![计算机视觉 API 密钥](images/tutorial-computer-vision-keys.PNG)
-    
-6. 请参阅项目源代码，以了解使用计算机视觉 API 扫描图像的函数。
+下一个方法采用图像 URL 和计算机视觉订阅信息，并分析图像中是否存在名人。 如果找到一个或多个名人，则将 **ReviewTags** 数组中的相应值设置为 **True**。 
 
-         public static bool EvaluateComputerVisionTags(string ImageUrl, string ComputerVisionUri, string ComputerVisionKey, ref KeyValuePair[] ReviewTags)
-        {
-            var File = ImageUrl;
-            string Body = $"{{\"URL\":\"{File}\"}}";
+[!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=115-146)]
 
-            HttpResponseMessage Response = CallAPI(ComputerVisionUri, ComputerVisionKey, CallType.POST,
-                                                   "Ocp-Apim-Subscription-Key", "application/json", "", Body);
+## <a name="evaluatecustomvisiontags-method"></a>EvaluateCustomVisionTags 方法
 
-            if (Response.IsSuccessStatusCode)
-            {
-                ReviewTags[2] = new KeyValuePair();
-                ReviewTags[2].Key = "cb";
-                ReviewTags[2].Value = "false";
+接下来查看 **EvaluateCustomVisionTags** 方法。该方法分类实际产品 &mdash; 在本例中为国旗、玩具和笔。 遵照[如何生成分类器](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)指南中的说明生成自己的自定义图像分类器，以检测图像中是否存在国旗、玩具和笔（或选作自定义标记的任何内容）。
 
-                ComputerVisionPrediction CVObject = JsonConvert.DeserializeObject<ComputerVisionPrediction>(Response.Content.ReadAsStringAsync().Result);
+![包含笔、玩具和国旗训练图像的自定义视觉网页](images/tutorial-ecommerce-custom-vision.PNG)
 
-                if ((CVObject.categories[0].detail != null) && (CVObject.categories[0].detail.celebrities.Count() > 0))
-                {                 
-                    ReviewTags[2].Value = "true";
-                }
-            }
+训练分类器后，获取预测密钥和预测终结点 URL（检索这些信息时如需帮助，请参阅[获取 URL 和预测密钥](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key)），并将这些值分别分配到 `CustomVisionKey` 和 `CustomVisionUri` 字段。 该方法使用这些值来查询分类器。 如果分类器在图像中找到一个或多个自定义标记，此方法会将 **ReviewTags** 数组中的相应值设置为 **True**。 
 
-            return Response.IsSuccessStatusCode;
-        }
+[!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=148-171)]
 
-## <a name="classify-into-flags-toys-and-pens"></a>分类为国旗、玩具和笔
+## <a name="create-reviews-for-review-tool"></a>为评审工具创建评审
 
-1. [登录](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)到[自定义视觉 API 预览](https://www.customvision.ai/)。
-2. 使用[快速入门](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)构建自定义分类器来检测是否可能存在国旗、玩具和笔。
-   ![自定义视觉训练图像](images/tutorial-ecommerce-custom-vision.PNG)
-3. 为自定义分类器[获取预测终结点 URL](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api)。
-4. 请参阅项目源代码，以查看调用分类器预测终结点扫描图像的函数。
+前面的部分介绍了可以扫描传入图像中的成人和不雅内容（内容审查器）、名人（计算机视觉）和其他各种对象（自定义视觉）的方法。 接下来了解 CreateReview 方法。该方法将图像及其中应用的所有标记（作为元数据传入）上传到内容审查器审阅工具，使之可供人工审阅。 
 
-        public static bool EvaluateCustomVisionTags(string ImageUrl, string CustomVisionUri, string CustomVisionKey, ref KeyValuePair[] ReviewTags)
-        {
-            var File = ImageUrl;
-            string Body = $"{{\"URL\":\"{File}\"}}";
+[!code-csharp[define CreateReview method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=173-196)]
 
-            HttpResponseMessage response = CallAPI(CustomVisionUri, CustomVisionKey, CallType.POST,
-                                                   "Prediction-Key", "application/json", "", Body);
+图像将显示在[内容审查器评审工具](https://contentmoderator.cognitive.microsoft.com/)的“评审”选项卡中。
 
-            if (response.IsSuccessStatusCode)
-            {
-                // Parse the response body. Blocking!
-                SaveCustomVisionTags(response.Content.ReadAsStringAsync().Result, ref ReviewTags);
-            }
-            return response.IsSuccessStatusCode;
-        }       
- 
-## <a name="reviews-for-human-in-the-loop"></a>“人工干预”审查
+![内容审查器评审工具的屏幕截图，其中包含多个图像及其突出显示的标记](images/tutorial-ecommerce-content-moderator.PNG)
 
-1. 在上述部分中，已经扫描了成人和不雅（内容审查器）、名人（计算机视觉）和国旗（自定义视觉）的传入图像。
-2. 基于每次扫描的匹配阈值，将细致的案例提供给审查工具中的人工审查。
-        public static bool CreateReview(string ImageUrl, KeyValuePair[] Metadata) {
+## <a name="submit-a-list-of-test-images"></a>提交测试图像列表
 
-            ReviewCreationRequest Review = new ReviewCreationRequest();
-            Review.Item[0] = new ReviewItem();
-            Review.Item[0].Content = ImageUrl;
-            Review.Item[0].Metadata = new KeyValuePair[MAXTAGSCOUNT];
-            Metadata.CopyTo(Review.Item[0].Metadata, 0);
+在 **Main** 方法中可以看到，此程序将查找“C:Test”目录，该目录中的 _Urls.txt_ 文件包含图像 URL 列表。 请创建此类文件和目录，或者将路径更改为指向你的文本文件，并在此文件中填充要测试的图像的 URL。
 
-            //SortReviewItems(ref Review);
+[!code-csharp[Main: set up test directory, read lines](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=38-51)]
 
-            string Body = JsonConvert.SerializeObject(Review.Item);
+## <a name="run-the-program"></a>运行程序
 
-            HttpResponseMessage response = CallAPI(ReviewUri, ContentModeratorKey, CallType.POST,
-                                                   "Ocp-Apim-Subscription-Key", "application/json", "", Body);
-
-            return response.IsSuccessStatusCode;
-        }
-
-## <a name="submit-batch-of-images"></a>批量提交图像
-
-1. 本教程假设一个“C:Test”目录，其中有一个提供图像 Url 列表的文本文件。
-2. 下列代码检查文件是否存在，然后将所有 Url 读入内存。
-            // Check for a test directory for a text file with the list of Image URLs to scan var topdir = @"C:\test\"; var Urlsfile = topdir + "Urls.txt";
-
-            if (!Directory.Exists(topdir))
-                return;
-
-            if (!File.Exists(Urlsfile))
-            {
-                return;
-            }
-
-            // Read all image URLs in the file
-            var Urls = File.ReadLines(Urlsfile);
-
-## <a name="initiate-all-scans"></a>启动全部扫描
-
-1. 此顶级函数遍历之前提及的文本文件中的所有图像 URL。
-2. 它使用每个 API 进行扫描，如果匹配置信度分数低于标准，则为人工审查器创建审查。
-             // for each image URL in the file... foreach (var Url in Urls) { // Initiatize a new review tags array ReviewTags = new KeyValuePair[MAXTAGSCOUNT];
-
-                // Evaluate for potential adult and racy content with Content Moderator API
-                EvaluateAdultRacy(Url, ref ReviewTags);
-
-                // Evaluate for potential presence of celebrity (ies) in images with Computer Vision API
-                EvaluateComputerVisionTags(Url, ComputerVisionUri, ComputerVisionKey, ref ReviewTags);
-
-                // Evaluate for potential presence of custom categories other than Marijuana
-                EvaluateCustomVisionTags(Url, CustomVisionUri, CustomVisionKey, ref ReviewTags);
-
-                // Create review in the Content Moderator review tool
-                CreateReview(Url, ReviewTags);
-            }
-
-## <a name="license"></a>许可证
-
-所有 Microsoft 认知服务 SDK 和示例均获得 MIT 许可证的许可。 有关详细信息，请参阅[许可证](https://microsoft.mit-license.org/)。
-
-## <a name="developer-code-of-conduct"></a>开发人员行为准则
-
-使用认知服务（包括此客户端库和示例）的开发人员应遵循“面向 Microsoft 认知服务的开发人员行为准则”（参见 http://go.microsoft.com/fwlink/?LinkId=698895）。
+如果已遵循上述所有步骤，该程序应会处理每个图像（在所有三个服务中查询其相关标记），然后将图像连同标记信息一起上传到内容审查器评审工具。
 
 ## <a name="next-steps"></a>后续步骤
 
-通过使用 Github 上的[项目源文件](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)构建和扩展教程。
+在本教程中，你已设置一个程序用于分析产品图像，以便按产品类型对其进行标记，并使评审团队能够在内容审查方面做出明智的决策。 接下来，请了解有关图像审查的详细信息。
+
+> [!div class="nextstepaction"]
+> [评审已审查的图像](./review-tool-user-guide/review-moderated-images.md)

@@ -1,5 +1,5 @@
 ---
-title: 向上缩放 Azure 中的应用 | Microsoft Docs
+title: 纵向扩展功能和容量 - Azure 应用服务 | Microsoft Docs
 description: 了解如何扩展 Azure 应用服务中的应用规模以增加容量和功能。
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
-ms.openlocfilehash: 79450cdd0928304c3b98cf13f8aaca7a1bf11d33
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.custom: seodec18
+ms.openlocfilehash: 98d3d1f6fc0f2f30196f360811808579dfbab312
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43381929"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727473"
 ---
 # <a name="scale-up-an-app-in-azure"></a>向上缩放 Azure 中的应用
 
@@ -29,11 +30,11 @@ ms.locfileid: "43381929"
 
 本文介绍如何在 Azure 应用服务中缩放应用。 缩放的工作流有两种：纵向扩展和横向扩展；本文介绍纵向扩展工作流。
 
-* [向上缩放](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)：获取更多 CPU、内存、磁盘空间和额外功能，例如专用虚拟机 (VMs)、自定义域和证书、暂存槽、自动缩放以及更多功能。 可以通过更改应用所属的应用服务计划的定价层来提升。
-* [向外缩放](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)：增加用于运行应用的 VM 实例数。
+* [纵向扩展](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)：获取更多 CPU、内存、磁盘空间和额外功能，例如专用虚拟机 (VM)、自定义域和证书、过渡槽、自动缩放以及更多功能。 可以通过更改应用所属的应用服务计划的定价层来提升。
+* [横向扩展](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)：增加用于运行应用的 VM 实例数。
   最多可以向外缩放到 20 个实例，具体取决于定价层。 独立层中的[应用服务环境](environment/intro.md)会进一步将横向扩展计数增加到 100 个实例。 有关向外缩放的详细信息，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md)。 可在该文中了解如何使用自动缩放，即根据预定义的规则和计划自动缩放实例计数。
 
-缩放设置仅需几秒即可应用，并且会影响[应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)中的所有应用。
+缩放设置仅需几秒即可应用，并且会影响[应用服务计划](../app-service/overview-hosting-plans.md)中的所有应用。
 缩放设置不需要更改代码或重新部署应用程序。
 
 有关各个应用服务计划的定价和功能的信息，请参阅[应用服务定价详细信息](https://azure.microsoft.com/pricing/details/web-sites/)。  
@@ -98,7 +99,7 @@ ms.locfileid: "43381929"
   
     [Microsoft Azure 的虚拟机和云服务大小][vmsizes]
   
-* 有关 Azure应用服务最佳实践的信息，包括构建可缩放和可复原的体系结构，请参阅 [Best Practices: Azure App Service Web Apps](https://azure.microsoft.com/blog/best-practices-windows-azure-websites-waws/)（最佳实践：Azure 应用服务 Web 应用）。
+* 有关 Azure应用服务最佳实践的信息，包括构建可缩放和可复原的体系结构，请参阅[最佳实践：Azure 应用服务 Web 应用](https://azure.microsoft.com/blog/best-practices-windows-azure-websites-waws/)。
 * 有关缩放应用服务应用的视频，请参阅以下资源：
   
   * [When to Scale Azure Websites](https://azure.microsoft.com/resources/videos/azure-web-sites-free-vs-standard-scaling/)（何时缩放 Azure 网站）- 主讲人：Stefan Schackow
@@ -107,7 +108,7 @@ ms.locfileid: "43381929"
 
 <!-- LINKS -->
 [vmsizes]:https://azure.microsoft.com/pricing/details/app-service/
-[SQLaccountsbilling]:http://go.microsoft.com/fwlink/?LinkId=234930
+[SQLaccountsbilling]:https://go.microsoft.com/fwlink/?LinkId=234930
 [azuresubscriptions]:https://account.windowsazure.com/subscriptions
 [portal]: https://portal.azure.com/
 

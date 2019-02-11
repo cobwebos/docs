@@ -1,21 +1,19 @@
 ---
 title: 在 Spark 中使用 Azure Cosmos DB Cassandra API
 description: 本文是 Spark 中 Cosmos DB Cassandra API 集成的主页。
-services: cosmos-db
-author: anagha-microsoft
-manager: kfile
+author: kanshiG
+ms.author: govindk
+ms.reviewer: sngun
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
-ms.devlang: spark-scala
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: ankhanol
-ms.openlocfilehash: 165919fa3d456786e926f754dba378be38c12588
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 75d2930363b6ad1aeace22d7529df04f31deefe5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094238"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037218"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>从 Spark 连接到 Azure Cosmos DB Cassandra API
 

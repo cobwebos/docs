@@ -3,25 +3,25 @@ title: 使用 PowerShell 创建 Azure SQL 数据库弹性作业代理 | Microsof
 description: 了解如何使用 PowerShell 创建弹性作业代理。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: tutorial
 author: johnpaulkee
 ms.author: joke
-ms.reviwer: ''
+ms.reviwer: sstein
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: 56dd6eff7744ddddf57b747574ee9800174d6365
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 01/03/2019
+ms.openlocfilehash: 04a4c23808489e17d1759904cb6df01cd15eaafa
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055486"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656679"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>使用 PowerShell 创建弹性作业代理
 
-使用[弹性作业](elastic-jobs-overview.md)，可以跨多个数据库并行运行一个或多个 Transact-SQL (T-SQL) 脚本。
+使用[弹性作业](sql-database-job-automation-overview.md#elastic-database-jobs)，可以跨多个数据库并行运行一个或多个 Transact-SQL (T-SQL) 脚本。
 
 本教程介绍跨多个数据库运行查询所需的步骤：
 
@@ -39,32 +39,35 @@ ms.locfileid: "47055486"
 
 如果还没有 Azure 订阅，请在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-安装 **AzureRM.Sql** 4.8.1-preview 模块以获得最新弹性作业 cmdlet。 以管理员访问权限在 PowerShell 中运行以下命令。
+- 安装 **AzureRM.Sql** 4.8.1-preview 模块以获得最新弹性作业 cmdlet。 以管理访问权限在 PowerShell 中运行以下命令。
 
-```powershell
-# Installs the latest PackageManagement powershell package which PowershellGet v1.6.5 is dependent on
-Find-Package PackageManagement -RequiredVersion 1.1.7.2 | Install-Package -Force
+  ```powershell
+  # Installs the latest PackageManagement powershell package which PowershellGet v1.6.5 is dependent on
+  Find-Package PackageManagement -RequiredVersion 1.1.7.2 | Install-Package -Force
+  
+  # Installs the latest PowershellGet module which adds the -AllowPrerelease flag to Install-Module
+  Find-Package PowerShellGet -RequiredVersion 1.6.5 | Install-Package -Force
+  
+  # Restart your powershell session with administrative access
+  
+  # Places AzureRM.Sql preview cmdlets side by side with existing AzureRM.Sql version
+  Install-Module -Name AzureRM.Sql -AllowPrerelease -RequiredVersion 4.8.1-preview -Force
+  
+  # Import the AzureRM.Sql 4.8.1 module
+  Import-Module AzureRM.Sql -RequiredVersion 4.8.1
+  
+  # Confirm if module successfully imported - if the imported version is 4.8.1, then continue
+  Get-Module AzureRM.Sql
+  ```
 
-# Installs the latest PowershellGet module which adds the -AllowPrerelease flag to Install-Module
-Find-Package PowerShellGet -RequiredVersion 1.6.5 | Install-Package -Force
+- 除了 **AzureRM.Sql** 4.8.1-preview 模块之外，本教程还需要 *sqlserver* PowerShell 模块。 有关详细信息，请参阅[安装 SQL Server PowerShell 模块](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module)。
 
-# Restart your powershell session with administrative access
-
-# Places AzureRM.Sql preview cmdlets side by side with existing AzureRM.Sql version
-Install-Module -Name AzureRM.Sql -AllowPrerelease -RequiredVersion 4.8.1-preview -Force
-
-# Import the AzureRM.Sql 4.8.1 module
-Import-Module AzureRM.Sql -RequiredVersion 4.8.1
-
-# Confirm if module successfully imported - if the imported version is 4.8.1, then continue
-Get-Module AzureRM.Sql
-```
 
 ## <a name="create-required-resources"></a>创建所需资源
 
-创建弹性作业代理需要一个用作[作业数据库](elastic-jobs-overview.md#job-database)的数据库（S0 或更高级别）。 
+创建弹性作业代理需要一个用作[作业数据库](sql-database-job-automation-overview.md#job-database)的数据库（S0 或更高级别）。 
 
-*下面的脚本创建新的资源组、服务器以及可用作作业数据库的数据库。下面的脚本还创建了另外一个服务器，其中包含 2 个可以对其执行作业的空数据库。*
+*下面的脚本创建新的资源组、服务器以及可用作作业数据库的数据库。下面的脚本还创建了另外一个服务器，其中包含 2 个可以对其执行作业的空数据库。
 
 弹性作业没有特定的命名要求，因此可以使用所需的任何命名约定，只要其符合 [Azure 要求](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)即可。
 
@@ -207,9 +210,9 @@ $JobCred = $JobAgent | New-AzureRmSqlElasticJobCredential -Name "jobuser" -Crede
 
 ## <a name="define-the-target-databases-you-want-to-run-the-job-against"></a>定义需对其运行作业的目标数据库
 
-[目标组](elastic-jobs-overview.md#target-group)定义可以在其上执行作业步骤的数据库集（包含一个或多个数据库）。 
+[目标组](sql-database-job-automation-overview.md#target-group)定义可以在其上执行作业步骤的数据库集（包含一个或多个数据库）。 
 
-以下代码片段创建两个目标组：*ServerGroup* 和 *ServerGroupExcludingDb2*。 *ServerGroup* 的目标是执行时在服务器上存在的所有数据库，*ServerGroupExcludingDb2* 的目标是服务器上的所有数据库，*TargetDb2* 除外：
+以下代码片段将创建两个目标组：*ServerGroup* 和 *ServerGroupExcludingDb2*。 *ServerGroup* 的目标是执行时在服务器上存在的所有数据库，*ServerGroupExcludingDb2* 的目标是服务器上的所有数据库，*TargetDb2* 除外：
 
 ```powershell
 Write-Output "Creating test target groups..."

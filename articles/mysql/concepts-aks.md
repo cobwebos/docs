@@ -1,20 +1,17 @@
 ---
 title: 将 Azure Kubernetes 服务 (AKS) 与 Azure Database for MySQL 连接
 description: 了解如何将 Azure Kubernetes 服务与 Azure Database for MySQL 连接
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2018
-ms.openlocfilehash: 54deae9fcf9fdc786aa917bae518a2177a7acaff
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: d9f2e26a2bc89329ca9038c666c0d960289e2670
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52576954"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55485443"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>连接 Azure Kubernetes 服务和 Azure Database for MySQL
 
@@ -35,11 +32,19 @@ Azure Kubernetes 服务 (AKS) 提供可在 Azure 中使用的托管 Kubernetes �
 6. 转到 VM 的“网络”选项卡。
 7. 确认是否已启用**加速网络**。
 
+也可以通过 Azure CLI 使用以下两个命令：
+```azurecli
+az aks show --resource-group myResourceGroup --name myAKSCluster --query "nodeResourceGroup"
+```
+输出将是 AKS 创建的包含网络接口的生成资源组。 获取“nodeResourceGroup”名称并在下一个命令中使用它。 **EnableAcceleratedNetworking** 将是 true 或 false：
+```azurecli
+az network nic list --resource-group nodeResourceGroup -o table
+```
 
 ## <a name="open-service-broker-for-azure"></a>打开 Service Broker for Azure 
 [Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) 允许你直接从 Kubernetes 或 Cloud Foundry 预配 Azure 服务。 它是适用于 Azure 的 [Open Service Broker API](https://www.openservicebrokerapi.org/) 实现。
 
-通过 OSBA，可以使用 Kubernetes 的本机语言创建 Azure Database for MySQL 服务器并将其绑定到 AKS 群集。 在 [OSBA Github 页](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/mysql.md)上了解如何将 OSBA 和 Azure Database for MySQL 一起使用。 
+通过 OSBA，可以使用 Kubernetes 的本机语言创建 Azure Database for MySQL 服务器并将其绑定到 AKS 群集。 在 [OSBA GitHub 页](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/mysql.md)上了解如何将 OSBA 和 Azure Database for MySQL 一起使用。 
 
 
 

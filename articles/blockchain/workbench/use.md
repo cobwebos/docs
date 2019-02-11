@@ -1,25 +1,33 @@
 ---
 title: 在 Azure Blockchain Workbench 中使用应用程序
-description: 如何在 Azure Blockchain Workbench 中使用应用程序合同。
+description: 介绍如何在 Azure Blockchain Workbench 中使用应用程序合同的教程。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
-ms.topic: article
+ms.date: 01/08/2019
+ms.topic: tutorial
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 4fe6f164882ffce7bf22ec0c0b94107abcf6a20e
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 55207e1eb8fe1b88df7f9bfb84a1da505d0e0252
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240742"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332211"
 ---
-# <a name="using-applications-in-azure-blockchain-workbench"></a>在 Azure Blockchain Workbench 中使用应用程序
+# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>教程：在 Azure Blockchain Workbench 中使用应用程序
 
 可以使用 Blockchain Workbench 来创建合同并对其执行操作。 也可查看合同详细信息，例如状态和事务历史记录。
+
+将了解如何执行以下操作：
+
+> [!div class="checklist"]
+> * 创建新合同
+> * 对合同执行操作
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,7 +50,7 @@ ms.locfileid: "48240742"
 
     ![“新建合同”按钮](./media/use/contract-list.png)
 
-3. 此时会显示“新建合同”窗格。 指定初始参数值。 选择**创建**。
+3. 此时会显示“新建合同”窗格。 指定初始参数值。 选择“创建”。
 
     ![“新建合同”窗格](./media/use/new-contract.png)
 
@@ -82,4 +90,4 @@ ms.locfileid: "48240742"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [如何排查 Azure Blockchain Workbench 问题](troubleshooting.md)
+> [Azure Blockchain Workbench 应用程序版本控制](version-app.md)

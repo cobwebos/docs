@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 62c89861d784931b2a13297abac578010e0fea5f
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 61ec9d0639f4bee950be69ee951492974ac95c64
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250727"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867462"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>协调 Azure 开发测试实验室的实施
 本文提供快速部署和实施 Azure 开发测试实验室的建议方法。 下图突出显示了整个过程（规范性指导），同时反映了支持各种行业要求和方案的灵活性。
@@ -46,7 +46,7 @@ ms.locfileid: "48250727"
 2. 确定允许在实验室中使用的 VM 映像和大小。 确定是否可将自定义映像上传到 Azure，以便在开发测试实验室中使用。
 3. 通过为实验室（实验室所有者和实验室用户）创建初始的基于角色的访问控制 (RBAC) 来保护对实验室的访问。 我们建议对开发测试实验室的标识结合使用同步的 Active Directory 帐户和 Azure Active Directory。
 4. 将开发测试实验室配置为使用计划、成本管理、可认领 VM、自定义映像或公式等策略。
-5. 建立 VSTS/Git 等联机存储库。
+5. 建立 Azure Repos/Git 等联机存储库。
 6. 确定是要使用公共存储库、专用存储库，还是两者的组合。 组织用于部署和长期保留的 JSON 模板。
 7. 根据需要创建自定义项目。 此步骤是可选的。 
 
@@ -60,4 +60,4 @@ ms.locfileid: "48250727"
 5. 确保已完成相应的合规性与安全性评审
 
 ## <a name="next-steps"></a>后续步骤
-参阅本系列教程的下一篇文章：[Azure 开发测试实验室基础结构的监管](devtest-lab-guidance-governance-resources.md)
+请参阅本系列的下一篇文章：[Azure 开发测试实验室基础设施治理](devtest-lab-guidance-governance-resources.md)

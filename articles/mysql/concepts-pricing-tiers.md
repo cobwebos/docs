@@ -1,29 +1,26 @@
 ---
 title: Azure Database for MySQL 的定价层
 description: 本文介绍 Azure Database for MySQL 的定价层。
-services: mysql
 author: jan-eng
 ms.author: janeng
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
-ms.date: 10/10/2018
-ms.openlocfilehash: e3d0e54c32a08c613407f1a90c78cc63be929078
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.topic: conceptual
+ms.date: 01/15/2019
+ms.openlocfilehash: 145273d48060955005f1d93f30e79014244cf4ba
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091787"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321375"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL 定价层
 
-在“基本”、“常规用途”和“内存优化”这三个不同的定价层中，Azure Database for MySQL 服务器可以在其中的一个定价层中创建。 定价层的差异表现在可以预配的 vCore 中的计算量、每个 vCore 的内存，以及用于存储数据的存储技术。 所有资源都在 MySQL 服务器级别预配。 一个服务器可以有一个或多个数据库。
+可以在以下三个不同的定价层之一中创建 Azure Database for MySQL 服务器：“基本”、“常规用途”和“内存优化”。 定价层的差异表现在可以预配的 vCore 中的计算量、每个 vCore 的内存，以及用于存储数据的存储技术。 所有资源都在 MySQL 服务器级别预配。 一个服务器可以有一个或多个数据库。
 
 |    | **基本** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
 | 计算的代 | 第 4 代、第 5 代 | 第 4 代、第 5 代 | 第 5 代 |
-| vCore 数 | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
+| vCore 数 | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | 每个 vCore 的内存 | 2 GB | 5 GB | 10 GB |
 | 存储大小 | 5 GB 到 1 TB | 5GB 到 4TB | 5GB 到 4TB |
 | 存储类型 | Azure 标准存储 | Azure 高级存储 | Azure 高级存储 |
@@ -43,6 +40,9 @@ ms.locfileid: "49091787"
 
 计算资源以 vCore 的形式提供，代表基础硬件的逻辑 CPU。 目前提供两代计算（第 4 代和第 5 代）供你选择。 第 4 代逻辑 CPU 基于 Intel E5-2673 v3 (Haswell) 2.4-GHz 处理器。 第 5 代逻辑 CPU 基于 Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器。 可在以下区域获取第 4 代和第 5 代（“X”表示可用）。
 
+> [!IMPORTANT]
+> 从 2018 年 12 月 12 日开始，新客户将无法在巴西南部、加拿大中部、加拿大东部、东亚、美国东部 2、印度中部、印度西部、日本西部、美国中北部、美国西部预配第 4 计算代系服务器。 从 2019 年 2 月 1 日起，这些区域中此前创建的第 4 计算代系服务器将迁移到第 5 计算代系。
+
 | **Azure 区域** | **第 4 代** | **第 5 代** |
 |:---|:----------:|:--------------------:|
 | 美国中部 |  | X |
@@ -52,14 +52,14 @@ ms.locfileid: "49091787"
 | 美国中南部 | X | X |
 | 美国西部 | X | X |
 | 美国西部 2 |  | X |
+| 巴西南部 | X | X |
 | 加拿大中部 | X | X |
 | 加拿大东部 | X | X |
-| 巴西南部 | X | X |
 | 北欧 | X | X |
 | 西欧 |  | X |
 | 法国中部 |  | X |
-| 英国西部 |  | X |
 | 英国南部 |  | X |
+| 英国西部 |  | X |
 | 东亚 | X | X |
 | 东南亚 | X | X |
 | 澳大利亚东部 |  | X |
@@ -67,17 +67,22 @@ ms.locfileid: "49091787"
 | 澳大利亚中部 2 |  | X |
 | 澳大利亚东南部 |  | X |
 | 印度中部 | X | X |
-| 印度西部 | X | X |
 | 印度南部 |  | X |
+| 印度西部 | X | X |
 | 日本东部 | X | X |
 | 日本西部 | X | X |
 | 韩国中部 |  | X |
 | 韩国南部 |  | X |
+| 中国东部 1 | X |  |
+| 中国东部 2 |  | X |
+| 中国北部 1 | X |  |
+| 中国北部 2 |  | X |
 | 德国中部 |  | X |
 | 美国 DoD 中部  | X |  |
 | 美国 DoD 东部  | X |  |
 | 美国亚利桑那州政府 |  | X |
 | 美国德克萨斯州政府 |  | X |
+| 美国政府弗吉尼亚州 |  | X |
 
 ## <a name="storage"></a>存储
 

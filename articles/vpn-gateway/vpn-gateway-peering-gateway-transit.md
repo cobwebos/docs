@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: cced9a313664eaeaed4dd1298488670960b76413
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0d57e251b241297c461b117edec8fee6316b337b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195764"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508865"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>针对虚拟网络对等互连配置 VPN 网关传输
 
@@ -79,7 +79,7 @@ ms.locfileid: "32195764"
     - 设置“使用远程网关”选项
     - 单击“确定”
 
-    ![spokerm-to-hubrm](./media/vpn-gateway-peering-gateway-transit/spokerm-hubrm-peering.png)
+      ![spokerm-to-hubrm](./media/vpn-gateway-peering-gateway-transit/spokerm-hubrm-peering.png)
 
 2. 如果已创建对等互连，请导航到对等互连资源，然后启用“使用远程网关”选项（类似于步骤 (1) 中所示的屏幕截图）
 
@@ -90,7 +90,7 @@ ms.locfileid: "32195764"
     - 设置“允许网关传输”选项
     - 单击“确定”
 
-    ![hubrm-to-spokerm](./media/vpn-gateway-peering-gateway-transit/hubrm-spokerm-peering.png)
+      ![hubrm-to-spokerm](./media/vpn-gateway-peering-gateway-transit/hubrm-spokerm-peering.png)
 
 4. 如果已创建对等互连，请导航到对等互连资源，然后启用“允许网关传输”选项（类似于步骤 (3) 中所示的屏幕截图）
 

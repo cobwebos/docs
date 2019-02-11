@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 11/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: adb53bb5722bff2374097626e8a3f1679ca00788
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 98638c2fbd3f60ec0db009b52507eadcadd87ab4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633523"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172317"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
@@ -348,11 +348,11 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
  accountEnabled | true false | (device.accountEnabled -eq true)
  displayName | 任意字符串值 |(device.displayName -eq "Rob Iphone”)
  deviceOSType | 任意字符串值 | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iPhone")
- deviceOSVersion | 任意字符串值 | (device.OSVersion -eq "9.1")
+ deviceOSVersion | 任意字符串值 | (device.deviceOSVersion -eq "9.1")
  deviceCategory | 有效的设备类别名称 | (device.deviceCategory -eq "BYOD")
  deviceManufacturer | 任意字符串值 | (device.deviceManufacturer -eq "Samsung")
  deviceModel | 任意字符串值 | (device.deviceModel -eq "iPad Air")
- deviceOwnership | 个人、公司、未知 | (device.deviceOwnership -eq "Corporate")
+ deviceOwnership | 个人、公司、未知 | (device.deviceOwnership -eq "Company")
  domainName | 任意字符串值 | (device.domainName -eq "contoso.com")
  enrollmentProfileName | Apple 设备注册配置文件或 Windows Autopilot 配置文件名称 | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)
@@ -360,6 +360,9 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
  deviceId | 有效的 Azure AD 设备 ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | 有效的 Azure AD 对象 ID |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
  systemLabels | 任何与 Intune 设备属性匹配的字符串，用于标记现代工作区设备 | （device.systemLabels - 包含“M365Managed”）
+
+> [!Note]  
+> 对于 deviceOwnership，在创建设备的动态组时，需要将该值设置为“Company”。 而在 Intune 上，设备所有权表示为 Corporate。 请参阅 [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes)，了解更多详细信息。 
 
 ## <a name="next-steps"></a>后续步骤
 

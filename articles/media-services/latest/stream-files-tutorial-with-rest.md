@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 媒体服务上传、编码和流式传输 - REST | Microsoft Docs
-description: 按照本教程的步骤，使用 REST 通过 Azure 媒体服务上传文件、编码视频和流式传输内容。
+title: 使用 Azure 媒体服务基于 URL 对远程文件进行编码并流式传输 - REST | Microsoft Docs
+description: 按照本教程的步骤，使用 REST 通过 Azure 媒体服务基于 URL 对文件进行编码并流式传输内容。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -10,20 +10,20 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/11/2018
+ms.date: 01/23/2019
 ms.author: juliako
-ms.openlocfilehash: 67a0b6ced771519bd97934f8914ba420ee3119ce
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 0bd882ffd5048d0b33afc9ecf00c0ed6356b6e98
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615766"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883511"
 ---
-# <a name="tutorial-upload-encode-and-stream-videos-with-rest"></a>教程：使用 REST 上传、编码和流式传输视频
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - REST
 
 使用 Azure 媒体服务可以将媒体文件编码为可在各种浏览器和设备上播放的格式。 例如，可能需要以 Apple 的 HLS 或 MPEG DASH 格式流式传输内容。 在流式传输之前，应该对高质量的数字媒体文件进行编码。 有关编码指南，请参阅[编码概念](encoding-concept.md)。
 
-本教程介绍如何通过 REST 使用 Azure 媒体服务上传、编码和流式传输视频文件。 
+本教程介绍如何使用 REST 通过 Azure 媒体服务基于 URL 对文件进行编码并流式传输视频。 
 
 ![播放视频](./media/stream-files-tutorial-with-api/final-video.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "51615766"
 
 - 安装 [Postman](https://www.getpostman.com/) REST 客户端，以便执行一些 AMS REST 教程中所示的 REST API。 
 
-    我们使用的是 **Postman**，但任何 REST 工具都适用。 其他适用的工具有：具有 REST 插件的 Visual Studio Code 或 Telerik Fiddler。 
+    我们使用的是 **Postman**，但任何 REST 工具都适用。 其他替代工具包括：带有 REST 插件的 **Visual Studio Code** 或 **Telerik Fiddler**。 
 
 ## <a name="download-postman-files"></a>下载 Postman 文件
 
@@ -101,10 +101,10 @@ ms.locfileid: "51615766"
 
 1. 获取适用于服务主体身份验证的 Azure AD 令牌
 2. 创建输出资产
-3. 创建转换
-4. 创建作业 
-5. 创建流式处理定位符
-6. 列出流式处理定位符的路径
+3. 创建**转换**
+4. 创建**作业**
+5. 创建**流式处理定位符**
+6. 列出**流式处理定位符**的路径
 
 > [!Note]
 >  本教程假定你使用唯一名称创建所有资源。  
@@ -174,7 +174,7 @@ ms.locfileid: "51615766"
         ```json
         {
             "properties": {
-                "description": "Basic Transform using an Adaptive Streaming encoding preset from the libray of built-in Standard Encoder presets",
+                "description": "Standard Transform using an Adaptive Streaming encoding preset from the library of built-in Standard Encoder presets",
                 "outputs": [
                     {
                     "onError": "StopProcessingJob",
@@ -228,20 +228,20 @@ ms.locfileid: "51615766"
 
 此作业需要一些时间才能完成，完成时可发出通知。 若要查看作业的进度，建议使用事件网格。 事件网格旨在实现高可用性、一致性能和动态缩放。 使用事件网格，应用可以侦听和响应来自几乎所有 Azure 服务和自定义源的事件。 处理基于 HTTP 的反应事件非常简单，这有助于通过对事件的智能筛选和路由生成高效的解决方案。  请参阅[将事件路由到自定义 Web 终结点](job-state-events-cli-how-to.md)。
 
-作业通常将经历以下状态：“已计划”、“已排队”、“正在处理”、“已完成”（最终状态）。 如果作业出错，则显示“错误”状态。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消”。
+**作业**通常会经历以下状态：**已计划**、**已排队**、**正在处理**、**已完成**（最终状态）。 如果作业出错，则显示“错误”状态。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消”。
 
 ### <a name="create-a-streaming-locator"></a>创建流式处理定位符
 
-编码作业完成后，下一步是使输出资产中的视频可供客户端播放。 可通过两个步骤完成此操作：首先，创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators)，然后，生成客户端可以使用的流式 URL。 
+编码作业完成后，下一步是使输出**资产**中的视频可供客户端播放。 可通过两个步骤完成此操作：首先创建[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)，然后生成客户端可以使用的流式处理 URL。 
 
-创建 StreamingLocator 的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，StreamingLocator 立即生效，并持续到其被删除为止。 
+创建**流式处理定位符**的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，**流式处理定位符**立即生效，并持续到其被删除为止。 
 
-创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) 时，需要指定所需的 StreamingPolicyName。 在此示例中，将流式传输明文（或未加密的）内容，因此使用预定义的明文流式传输策略 (**PredefinedStreamingPolicy.ClearStreamingOnly**)。
+创建[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)时，需要指定所需的 **StreamingPolicyName**。 在此示例中，将流式传输明文（或未加密的）内容，因此使用预定义的明文流式传输策略 (**PredefinedStreamingPolicy.ClearStreamingOnly**)。
 
 > [!IMPORTANT]
 > 使用自定义的 [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) 时，应为媒体服务帐户设计有限的一组此类策略，并在需要同样的加密选项和协议时重新将这些策略用于 StreamingLocators。 
 
-媒体服务帐户具有对应于 StreamingPolicy 条目数的配额。 不应为每个 StreamingLocator 创建新的 StreamingPolicy。
+媒体服务帐户具有对应于**流式处理策略**条目数的配额。 不应为每个**流式处理定位符**创建新的**流式处理策略**。
 
 1. 在 Postman 的左窗口中，选择“流式处理策略”。
 2. 然后选择“创建流式处理定位符”。
@@ -267,7 +267,7 @@ ms.locfileid: "51615766"
 
 #### <a name="list-paths"></a>列出路径
 
-现已创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators)，可以获取流式策略 URL 了。
+创建[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)后，即可获取流式处理 URL
 
 1. 在 Postman 的左窗口中，选择“流式处理策略”。
 2. 然后，选择“列出路径”。
@@ -338,7 +338,7 @@ https://amsaccount-usw22.streaming.media.azure.net/cdb80234-1d94-42a9-b056-0eefa
 
 
 > [!NOTE]
-> 确保要从中进行流式传输的流式处理终结点正在运行。
+> 确保要从中进行流式传输的**流式处理终结点**正在运行。
 
 本文使用 Azure Media Player 测试流式传输。 
 
@@ -350,7 +350,7 @@ Azure Media Player 可用于测试，但不可在生产环境中使用。
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>清理媒体服务帐户中的资源
 
-通常情况下，除了打算重复使用的对象，用户应清理所有内容（通常将重复使用转换并保留 StreamingLocators 等）。 如果希望帐户在试验后保持干净状态，则应删除不打算重复使用的资源。  
+通常情况下，除了打算重复使用的对象，应清理所有内容（通常会重复使用**转换**并保留**流式处理定位符**等）。 如果希望帐户在试验后保持干净状态，则应删除不打算重复使用的资源。  
 
 若要删除资源，请在要删除的任意资源下选择“删除...”操作。
 

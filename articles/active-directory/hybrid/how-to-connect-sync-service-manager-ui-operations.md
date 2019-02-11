@@ -4,24 +4,24 @@ description: 了解 Azure AD Connect 的 Synchronization Service Manager 中的�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 97a26565-618f-4313-8711-5925eeb47cdc
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92de95cb3192fb9f551bea631ef878070f9173cf
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 7280314775856a438ee2084c93419a54d25996ed
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310316"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487330"
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>使用“Sync Service Manager 操作”选项卡
 

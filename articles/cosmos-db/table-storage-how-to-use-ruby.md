@@ -1,22 +1,20 @@
 ---
-title: 如何通过 Ruby 使用 Azure 表存储或 Azure Cosmos DB 表 API | Microsoft Docs
+title: 如何通过 Ruby 使用 Azure 表存储或 Azure Cosmos DB 表 API
 description: 使用 Azure 表存储或 Azure Cosmos DB 表 API 将结构化数据存储在云中。
-services: cosmos-db
-author: SnehaGunda
-manager: kfile
-editor: ''
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: ruby
 ms.topic: sample
 ms.date: 04/05/2018
-ms.author: sngun
-ms.openlocfilehash: d1583001550f5f272f4070006a4a6ac3be000de6
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+author: wmengmsft
+ms.author: wmeng
+ms.reviewer: sngun
+ms.openlocfilehash: 3603455674485a505a7dbc969554a881947940ae
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798264"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036250"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>如何通过 Ruby 使用 Azure 表存储或 Azure Cosmos DB 表 API
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -96,9 +94,9 @@ azure_table_service.insert_entity("testtable", entity)
 ## <a name="update-an-entity"></a>更新实体
 可使用多种方法来更新现有实体：
 
-* **update_entity()：** 通过替换来更新现有实体。
+* **update_entity()：** 通过替换现有实体来更新现有实体。
 * **merge_entity()：** 通过将新属性值合并到现有实体来更新现有实体。
-* **insert_or_merge_entity()：** 通过替换来更新现有实体。 如果不存在实体，将插入一个新实体。
+* **insert_or_merge_entity()：** 通过替换现有实体来更新现有实体。 如果不存在实体，将插入一个新实体。
 * **insert_or_replace_entity()：** 通过将新属性值合并到现有实体来更新现有实体。 如果不存在实体，将插入一个新实体。
 
 以下示例演示使用 update_entity() 更新实体：

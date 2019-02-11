@@ -1,5 +1,5 @@
 ---
-title: 使用 Docker Compose 配置在用于容器的 Azure Web 应用中创建多容器（预览版）应用
+title: 使用 Docker Compose 创建多容器应用 - Azure 应用服务
 description: 在数分钟内在用于容器的 Azure Web 应用中部署你的第一个多容器应用
 keywords: azure 应用服务, web 应用, linux, docker compose, 多容器, 用于容器的 web 应用, 多个容器, 容器, kubernetes, wordpress, azure db for mysql, 包含容器的生产数据库
 services: app-service\web
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: msangapu
-ms.custom: mvc
-ms.openlocfilehash: 1d54d914edb306b89dc6f2604aa5af3d17cb535d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.custom: seodec18
+ms.openlocfilehash: 404be7a064e0e4b09178830b7802192e8775e121
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576776"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316568"
 ---
-# <a name="create-a-multi-container-preview-app-using-web-app-for-containers"></a>使用用于容器的 Web 应用创建多容器（预览版）应用
+# <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>使用 Docker Compose 配置创建多容器（预览版）应用
 
 在[用于容器的 Web 应用](app-service-linux-intro.md)中可以灵活使用 Docker 映像。 本快速入门展示了如何在 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中使用 Docker Compose 配置将多容器应用部署到用于容器的 Web 应用。 有关 Kubernetes 和使用 Azure DB for MySQL 的完整端到端解决方案，请参阅[多容器教程](tutorial-multi-container-app.md)。
 

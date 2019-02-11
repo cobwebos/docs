@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: rogarana
-ms.openlocfilehash: 342b19927d290f5ff519d3fae5b84bcfa2b9d9cf
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: be994c9b3c9ee4f3c6ccd5c01e762c05f740be09
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711746"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469638"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-java-sdk-v7"></a>如何使用 Java SDK v7 上传、下载和列出 Blob
 
@@ -96,7 +96,7 @@ Deleting the source, and downloaded files
 
 首先创建对用于访问和管理 Blob 存储的对象的引用。 这些对象相互关联 - 每个对象被列表中的下一个对象使用。
 
-* 创建指向存储帐户的 [CloudStorageAccount](/java/api/com.microsoft.azure.management.storage._storage_account) 对象的实例。
+* 创建指向存储帐户的 [CloudStorageAccount](/java/api/com.microsoft.azure.management.storage.storageaccount) 对象的实例。
 
     “CloudStorageAccount”对象是存储帐户的表示形式，允许用户以编程方式设置和访问存储帐户属性。 使用“CloudStorageAccount”对象，可创建访问 blob 服务所需的“CloudBlobClient”实例。
 
@@ -167,7 +167,7 @@ for (ListBlobItem blobItem : container.listBlobs()) {
 
 ### <a name="download-blobs"></a>下载 Blob
 
-使用 [CloudBlob.DownloadToFile](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob.downloadtofile#com_microsoft_azure_storage_blob__cloud_blob_downloadToFile_final_String) 将 blob 下载到本地磁盘。
+使用 [CloudBlob.DownloadToFile](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob.downloadtofile) 将 blob 下载到本地磁盘。
 
 以下代码下载上一部分上传的 blob，对 blob 名称添加“_DOWNLOADED”后缀，以便可以在本地磁盘上看到两个文件。 
 

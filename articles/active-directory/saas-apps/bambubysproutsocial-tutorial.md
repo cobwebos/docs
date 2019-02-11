@@ -4,22 +4,22 @@ description: 了解如何在 Azure Active Directory 和 Bambu by Sprout Social �
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: d2b9ddbc-cab7-40d6-aca1-5b171cab4199
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 317fb1dd1235793d31ab39f5cb2a99766ca33150
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: aa995693f1b6b970c29c3c807667c7f730210fda
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116153"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55173643"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>教程：Azure Active Directory 与 Bambu by Sprout Social 集成
 
@@ -127,7 +127,7 @@ ms.locfileid: "49116153"
 1. 要在 **Bambu by Sprout Social** 中配置单一登录，需要将下载的“元数据 XML”和“SAML 单一登录服务 URL”发送到 [Bambu by Sprout Social 支持](mailto:support@getbambu.com)。 他们会进行此设置，以便同时在两端正确设置 SAML SSO 连接。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 <!--### Next steps
@@ -166,7 +166,7 @@ To ensure users can sign-in to Bambu by Sprout Social after it has been configur
  
     ![创建 Azure AD 测试用户](./media/bambubysproutsocial-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **Britta Simon**。
+    a. 在“名称”文本框中，键入 **Britta Simon**。
 
     b. 在“用户名”文本框中，键入 Britta Simon 的**电子邮件地址**。
 
@@ -212,12 +212,12 @@ To ensure users can sign-in to Bambu by Sprout Social after it has been configur
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的“Bambu by Sprout Social”磁贴时，应该会自动登录到“Bambu by Sprout Social”应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+单击访问面板中的“Bambu by Sprout Social”磁贴时，应该会自动登录到“Bambu by Sprout Social”应用程序。 有关访问面板的更多详细信息，请参阅 [访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

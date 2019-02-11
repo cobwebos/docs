@@ -1,13 +1,10 @@
 ---
-title: 为 VM（经典）配置专用 IP 地址 - Azure 经典 CLI | Microsoft Docs
+title: 为 VM（经典）配置专用 IP 地址 - Azure 经典 CLI
+titlesuffix: Azure Virtual Network
 description: 了解如何使用 Azure 经典命令行接口 (CLI) 为虚拟机（经典）配置专用 IP 地址。
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
-editor: tysonn
-tags: azure-service-management
-ms.assetid: 17386acf-c708-4103-9b22-ff9bf04b778d
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,13 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f340b9843ed5763a20d2035e3add86123a1298e8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2f71dc2bcd5463f81ae286bbe3099124eb3fa539
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971138"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023883"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-classic-cli"></a>使用 Azure 经典 CLI 为虚拟机（经典）配置专用 IP 地址
 
@@ -75,7 +71,7 @@ ms.locfileid: "46971138"
    * **TestService**。 将在其中创建 VM 的云服务的名称。
    * **bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v14.2**。 用于创建 VM 的映像。
    * **adminuser**。 Windows VM 的本地管理员。
-   * **AdminP@ssw0rd**： Windows VM 的本地管理员密码。
+   * <strong>AdminP@ssw0rd</strong>： Windows VM 的本地管理员密码。
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>如何检索 VM 的静态专用 IP 地址信息
 若要查看使用上述脚本创建的 VM 的静态专用 IP 地址信息，请运行以下 Azure CLI 命令并观察 *Network StaticIP* 的值：
@@ -118,7 +114,7 @@ ms.locfileid: "46971138"
 
 ## <a name="set-ip-addresses-within-the-operating-system"></a>在操作系统中设置 IP 地址
 
-我们建议，除非有必要，否则不要以静态方式在 VM 的操作系统中分配已分配给 Azure 虚拟机的专用 IP。 如果确实需要在操作系统中手动设置该专用 IP 地址，请确保它是分配给 Azure VM 的同一专用 IP 地址，否则可能会丢失与虚拟机的连接。 切勿在虚拟机的操作系统中手动分配已分配给 Azure 虚拟机的公共 IP 地址。
+我们建议，除非有必要，否则不要以静态方式在 VM 的操作系统中分配已分配给 Azure 虚拟机的专用 IP。 如果确实需要在操作系统中手动设置该专用 IP 地址，请确保它是分配给 Azure VM 的同一专用 IP 地址，否则可能会丢失与虚拟机的连接。 请勿在虚拟机的操作系统中手动分配已分配给 Azure 虚拟机的公共 IP 地址。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解[保留公共 IP](virtual-networks-reserved-public-ip.md) 地址。

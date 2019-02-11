@@ -4,23 +4,23 @@ description: 了解如何在 Azure Active Directory 和 Predictix Price Reportin
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 691d0c43-3aa1-4220-9e46-e7a88db234ad
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 3686a90cb088dae99d20df619c161251b5bdfd60
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f52827351fbb90805b1d00f08071740543da3d81
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438937"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55190881"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>教程：Azure Active Directory 与 Predictix Price Reporting 的集成
 
@@ -113,13 +113,14 @@ ms.locfileid: "39438937"
     a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname-pricing>.predictix.com/sso/request`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：
+    
     | |
     |--|
     | `https://<companyname-pricing>.predictix.com` |
     | `https://<companyname-pricing>.dev.predictix.com` |
 
     > [!NOTE] 
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Predictix Price Reporting 客户端支持团队](http://www.infor.com/company/customer-center/)获取这些值。 
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Predictix Price Reporting 客户端支持团队](https://www.infor.com/company/customer-center/)获取这些值。 
  
 1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -133,10 +134,10 @@ ms.locfileid: "39438937"
 
     ![Predictix Price Reporting 配置](./media/predictixpricereporting-tutorial/tutorial_predictixpricereporting_configure.png) 
 
-1. 要在 Predictix Price Reporting 端配置单一登录，需要将下载的证书 (Base64)、注销 URL、SAML 实体 ID 和 SAML 单一登录服务 URL 发送给 [Predictix Price Reporting 支持团队](http://www.infor.com/company/customer-center/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+1. 要在 Predictix Price Reporting 端配置单一登录，需要将下载的证书 (Base64)、注销 URL、SAML 实体 ID 和 SAML 单一登录服务 URL 发送给 [Predictix Price Reporting 支持团队](https://www.infor.com/company/customer-center/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -173,7 +174,7 @@ ms.locfileid: "39438937"
  
 ### <a name="create-a-predictix-price-reporting-test-user"></a>创建 Predictix Price Reporting 测试用户
 
-本部分需在 Predictix Price Reporting 中创建名为“Britta Simon”的用户。 与 [Predictix Price Reporting 支持团队](http://www.infor.com/company/customer-center/)合作，在 Predictix Price Reporting 平台中添加用户。
+本部分需在 Predictix Price Reporting 中创建名为“Britta Simon”的用户。 与 [Predictix Price Reporting 支持团队](https://www.infor.com/company/customer-center/)合作，在 Predictix Price Reporting 平台中添加用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -214,7 +215,7 @@ ms.locfileid: "39438937"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

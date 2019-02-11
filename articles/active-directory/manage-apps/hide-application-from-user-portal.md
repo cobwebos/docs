@@ -3,20 +3,20 @@ title: 使应用程序不出现在用户在 Azure Active Directory 中的体验�
 description: 如何使应用程序不出现在用户在 Azure Active Directory 访问面板或 Office 365 启动器的体验中。
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: barbkess
 ms.reviewer: kasimpso
-ms.openlocfilehash: f1203b4381055deca79a70e8d295e072feaf492a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: d9745dac425652e571c547a9f0c0ee3ba0d1073c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613558"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195369"
 ---
 # <a name="hide-applications-from-end-users-in-azure-active-directory"></a>在 Azure Active Directory 中向最终用户隐藏应用程序
 

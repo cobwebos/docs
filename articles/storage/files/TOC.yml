@@ -1,10 +1,15 @@
 items:
+- name: Azure 存储文档
+  href: /azure/storage/
 - name: 概述
   items:
   - name: 什么是 Azure 文件？
     href: storage-files-introduction.md
+  expanded: true
 - name: 快速入门
   items:
+  - name: 创建/使用文件共享 - Windows
+    href: storage-files-quick-create-use-windows.md
   - name: 创建文件共享 - 门户
     href: storage-how-to-use-files-portal.md
   - name: 创建文件共享 - PowerShell
@@ -13,26 +18,23 @@ items:
     href: storage-how-to-use-files-cli.md
   - name: 创建文件共享 - 存储资源管理器
     href: storage-how-to-use-files-storage-explorer.md
-  expanded: true
 - name: 教程
   items:
   - name: 使用 Azure 文件同步扩展 Windows 文件服务器
     href: storage-sync-files-extend-servers.md
 - name: 概念
   items:
-  - name: 计划
-    items:
-    - name: Azure 文件
-      href: storage-files-planning.md
-    - name: Azure 文件同步
-      href: storage-sync-files-planning.md
-    - name: 了解云分层
-      href: storage-sync-cloud-tiering.md
-  - name: 了解存储帐户
+  - name: 关于 Azure 文件
+    href: storage-files-planning.md
+  - name: 关于 Azure 文件同步
+    href: storage-sync-files-planning.md
+  - name: 关于云分层
+    href: storage-sync-cloud-tiering.md
+  - name: 关于存储帐户
     href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-  - name: 数据冗余
+  - name: 冗余
     items:
-    - name: 冗余概述
+    - name: Azure 存储复制
       href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 本地冗余存储
       href: ../common/storage-redundancy-lrs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
@@ -40,45 +42,86 @@ items:
       href: ../common/storage-redundancy-zrs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 异地冗余存储
       href: ../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+  - name: Azure 文件共享快照
+    href: storage-snapshots-files.md
   - name: 可伸缩性和性能目标
     href: storage-files-scale-targets.md
-  - name: 灾难恢复指南
+  - name: 安全
+    items:
+    - name: Azure 存储安全
+      href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: 静态数据加密
+      href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: 通过 SMB 进行 Azure AD 身份验证
+      href: storage-files-active-directory-overview.md
+    - name: 合规性产品
+      href: ../common/storage-compliance-offerings.md
+  - name: 开发
+    items:
+    - name: 管理并发
+      href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: 共享密钥身份验证
+      href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
+    - name: 共享访问签名 (SAS)
+      href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+  - name: 度量值
+    items:
+    - name: 诊断
+      href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: 存储分析
+      href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: Azure Monitor 中的指标
+      href: ../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - name: 灾难恢复和故障转移
     href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+  - name: 限制
   - name: 常见问题解答
     href: storage-files-faq.md
-- name: 如何
+- name: 操作指南
   items:
+  - name: 创建
+    items:
+    - name: 创建文件共享
+      href: storage-how-to-create-file-share.md
   - name: 部署
     items:
     - name: 部署 Azure 文件
       href: storage-files-deployment-guide.md
     - name: 部署 Azure 文件同步
       href: storage-sync-files-deployment-guide.md
-    - name: 文件同步代理和防火墙设置
+    - name: 配置文件同步代理和防火墙设置
       href: storage-sync-files-firewall-and-proxy.md
-    - name: Azure 文件同步发行说明
-      href: storage-files-release-notes.md
-  - name: 管理
+  - name: 装载
     items:
-    - name: 创建文件共享
-      href: storage-how-to-create-file-share.md
     - name: 通过 Windows 使用 Azure 文件
       href: storage-how-to-use-files-windows.md
     - name: 通过 Linux 使用 Azure 文件
       href: storage-how-to-use-files-linux.md
     - name: 通过 macOS 使用 Azure 文件
       href: storage-how-to-use-files-mac.md
+  - name: 管理
+    items:
     - name: 将服务器注册到 Azure 文件同步
       href: storage-sync-files-server-registration.md
-    - name: 了解文件共享快照
-      href: storage-snapshots-files.md
     - name: 添加 Azure 文件同步服务器终结点
       href: storage-sync-files-server-endpoint.md
-    - name: 将 PowerShell 用于中国云、政府云和德国云
+    - name: 管理 Azure 独立云中的存储
       href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-  - name: 传输数据
+    - name: 启动帐户故障转移
+      href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+  - name: 监视
     items:
-    - name: 向/从存储移动数据
+    - name: 监视 Azure 文件同步
+      href: storage-sync-files-monitoring.md
+    - name: 指标和日志记录
+      items:
+      - name: 迁移到新指标
+        href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - name: 启用和查看指标（经典）
+        href: ../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - name: 迁移
+    items:
+    - name: 将数据移入和移出 Azure 存储
       href: ../common/storage-moving-data.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: AzCopy on Windows
       href: ../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
@@ -86,8 +129,6 @@ items:
       href: ../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
   - name: 开发
     items:
-    - name: 管理并发
-      href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 配置连接字符串
       href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: .NET
@@ -100,29 +141,15 @@ items:
       href: storage-python-how-to-use-file-storage.md
   - name: 安全
     items:
-    - name: 安全指南
-      href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 配置防火墙和虚拟网络
       href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: 静态数据加密
-      href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 需要安全传输
       href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: 通过 SMB 进行 Azure AD 身份验证
-      items:
-      - name: 通过 SMB 进行 Azure AD 身份验证概述
-        href: storage-files-active-directory-overview.md
-      - name: 启用通过 SMB 进行 Azure AD 身份验证
-        href: storage-files-active-directory-enable.md
-    - name: 共享密钥身份验证
-      href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
-    - name: 共享访问签名 (SAS)
-      href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: 启用通过 SMB 进行 Azure AD 身份验证
+      href: storage-files-active-directory-enable.md
     - name: 为 Azure 存储客户端启用安全 TLS
       href: ../common/storage-security-tls.md
-    - name: 合规性产品
-      href: ../common/storage-compliance-offerings.md
-  - name: 监视和故障排除
+  - name: 故障排除
     items:
     - name: 排查 Windows 上的 Azure 文件问题
       href: storage-troubleshoot-windows-file-connection-problems.md
@@ -130,18 +157,6 @@ items:
       href: storage-troubleshoot-linux-file-connection-problems.md
     - name: 对 Azure 文件同步进行故障排除
       href: storage-sync-files-troubleshoot.md
-    - name: 监视、诊断和故障排除
-      href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: 指标和日志记录
-      items:
-      - name: Azure Monitor 中的指标
-        href: ../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: 迁移到新指标
-        href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: 存储分析
-        href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: 启用和查看指标（经典）
-        href: ../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
 - name: 引用
   items:
   - name: PowerShell
@@ -182,12 +197,16 @@ items:
       href: /rest/api/storagerp
     - name: 导入/导出
       href: /rest/api/storageimportexport
+  - name: 资源管理器模板
+    href: /azure/templates/microsoft.storage/allversions
   - name: 示例
     href: https://azure.microsoft.com/documentation/samples/?service=storage&term=file
 - name: 资源
   items:
   - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/?product=storage
+    href: https://azure.microsoft.com/roadmap/?category=storage
+  - name: Azure 文件同步发行说明
+    href: storage-files-release-notes.md
   - name: Azure 存储客户端工具
     href: ../common/storage-explorers.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
   - name: 堆栈溢出
@@ -234,9 +253,9 @@ items:
       href: https://github.com/Azure/azure-storage-cpp
     - name: Python
       href: https://github.com/Azure/azure-storage-python
-ms.openlocfilehash: bcfce193fdd41cf9c45e2967d565dc56ebbc2979
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 822e7e791818beef66bd0fab57537af6d1c1ae76
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970597"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770293"

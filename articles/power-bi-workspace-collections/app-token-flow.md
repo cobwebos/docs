@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: a51664144d0dba8eeb82999b212beaf79b4503b2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 125c3a925bf6eff04035bb755a07f19367d1abd2
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236924"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661082"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>通过 Power BI 工作区集合进行身份验证和授权
 
@@ -38,7 +38,7 @@ Power BI 工作区集合使用**密钥**和**应用令牌**进行身份验证和
 
 应用令牌可以包含下列声明：
 
-| 声明 | Description |    
+| 声明 | 说明 |    
 | --- | --- |
 | **ver** |应用令牌的版本。 当前版本为 0.2.0。 |
 | **aud** |令牌的目标接收方。 对于 Power BI 工作区集合，请使用：https:\//analysis.windows.net/powerbi/api。 |
@@ -84,7 +84,7 @@ Body
 
 ```
 
-SDK 中提供了可以更轻松地创建应用令牌的方法。 例如，对于 .NET，可以查看 [Microsoft.PowerBI.Security.PowerBIToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken) 类和 [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) 方法。
+SDK 中提供了可以更轻松地创建应用令牌的方法。 例如，对于 .NET，可以查看 [Microsoft.PowerBI.Security.PowerBIToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken) 类和 [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) 方法。
 
 对于 .NET SDK，可以参考 [Scopes](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.scopes)。
 
@@ -94,7 +94,7 @@ SDK 中提供了可以更轻松地创建应用令牌的方法。 例如，对于
 
 下面是针对 Power BI 工作区集合的可用作用域。
 
-|范围|Description|
+|范围|说明|
 |---|---|
 |Dataset.Read|提供对指定数据集进行读取的权限。|
 |Dataset.Write|提供向指定数据集进行写入的权限。|
@@ -176,7 +176,7 @@ Body
 
 ## <a name="see-also"></a>另请参阅
 
-[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_)  
+[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)  
 [Microsoft Power BI 工作区集合示例入门](get-started-sample.md)  
 [常见 Microsoft Power BI 工作区集合方案](scenarios.md)  
 [Microsoft Power BI 工作区集合入门](get-started.md)  

@@ -1,50 +1,44 @@
 ---
-title: 重新训练经典 Web 服务 - Azure 机器学习工作室 | Microsoft Docs
+title: 重新训练经典 Web 服务
+titleSuffix: Azure Machine Learning Studio
 description: 了解如何以编程方式重新训练模型并更新 Web 服务以使用 Azure 机器学习中的最新训练模型。
 services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
-ms.author: amlstudiodocs
-manager: hjerez
-editor: cgronlun
-ms.assetid: e36e1961-9e8b-4801-80ef-46d80b140452
 ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: studio
 ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 04/19/2017
-ms.openlocfilehash: e94fa4b6382a4672e5763b382a22fb812991cb03
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 04dac55feaa6826e1b8b591df61e8ad413f24dad
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308453"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509399"
 ---
-# <a name="retrain-a-classic-web-service"></a>重新训练经典 Web 服务
-部署的预测 Web 服务是默认的评分终结点。 默认终结点与原始训练和评分实验保持同步，因此不能替换默认终结点的训练模型。 要重新训练 Web 服务，必须将新的终结点添加到 Web 服务。 
+# <a name="retrain-a-classic-azure-machine-learning-studio-web-service"></a>重新训练经典 Azure 机器学习工作室 Web 服务
+部署的预测 Web 服务是默认的评分终结点。 默认终结点与原始训练和评分实验保持同步，因此不能替换默认终结点的训练模型。 要重新训练 Web 服务，必须将新的终结点添加到 Web 服务。
 
 ## <a name="prerequisites"></a>先决条件
-必须设置训练实验和预测实验，如[以编程方式重新训练机器学习模型](retrain-models-programmatically.md)中所示。 
+必须设置训练实验和预测实验，如[以编程方式重新训练机器学习模型](retrain-models-programmatically.md)中所示。
 
 > [!IMPORTANT]
-> 预测实验必须部署为经典机器学习 Web 服务。 
-> 
-> 
+> 预测实验必须部署为经典机器学习 Web 服务。
+>
+>
 
 有关部署 Web 服务的其他信息，请参阅[部署 Azure 机器学习 Web 服务](publish-a-machine-learning-web-service.md)。
 
 ## <a name="add-a-new-endpoint"></a>添加新的终结点
-已部署的预测 Web 服务包含与原始训练和评分实验训练模型保持同步的默认评分终结点。 若要使用新的训练模型更新 Web 服务，必须创建新的评分终结点。 
+已部署的预测 Web 服务包含与原始训练和评分实验训练模型保持同步的默认评分终结点。 若要使用新的训练模型更新 Web 服务，必须创建新的评分终结点。
 
 若要创建新的评分终结点，请在可以使用训练模型更新的预测 Web 服务上执行以下操作：
 
 > [!NOTE]
 > 确保将终结点添加到预测 Web 服务，而不是训练 Web 服务。 如果已正确部署训练和预测 Web 服务，应该看到已列出两个单独的 Web 服务。 预测 Web 服务应以“[predictive exp.]”结尾。
-> 
-> 
+>
+>
 
 以下两种方法可将新终结点添加到 Web 服务：
 
@@ -52,7 +46,7 @@ ms.locfileid: "52308453"
 2. 使用 Microsoft Azure Web 服务门户
 
 ### <a name="programmatically-add-an-endpoint"></a>以编程方式添加终结点
-可以使用在此 [GitHub 存储库](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint)中提供的示例代码添加评分终结点。
+可以使用此 [GitHub 存储库](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint)中提供的示例代码添加评分终结点。
 
 ### <a name="use-the-microsoft-azure-web-services-portal-to-add-an-endpoint"></a>使用 Microsoft Azure Web 服务门户添加终结点
 1. 在机器学习工作室的左侧导航栏中，单击“Web 服务”。

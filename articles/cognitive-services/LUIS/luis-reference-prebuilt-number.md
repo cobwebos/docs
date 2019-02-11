@@ -1,27 +1,28 @@
 ---
-title: LUIS 预构建实体数字参考 - Azure | Microsoft Docs
+title: 数字预生成实体
 titleSuffix: Azure
 description: 本文包含了语言理解 (LUIS) 中的数字预构建实体信息。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: b3ac42f5ecd1dc14055b0767e057a1da093042f9
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 12b5daec94b894f0fcd171963737d99ca670b77d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334561"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225931"
 ---
-# <a name="number-entity"></a>数字实体
+# <a name="number-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的数字预生成实体
 有许多方式使用数字值来量化、表达和描述信息片段。 本文仅包括了其中一些可能的示例。 LUIS 解释用户陈述中的变体并返回一致的数字值。 此实体已定型，因此不需要将包含数字的陈述示例添加到应用程序意向中。 
 
 ## <a name="types-of-number"></a>数字类型
-数字托管在 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) Github 存储库中
+数字托管在 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) GitHub 存储库中
 
 ## <a name="examples-of-number-resolution"></a>数字解析示例
 
@@ -42,7 +43,7 @@ LUIS 在它返回的 JSON 响应的 `resolution` 字段中包括 **`builtin.numb
 ## <a name="resolution-for-prebuilt-number"></a>预构建数字解析
 下面的示例显示了来自 LUIS 的 JSON 响应，其中包括了对陈述“two dozen”的值 24 的解析。
 
-```JSON
+```json
 {
   "query": "order two dozen eggs",
   "topScoringIntent": {

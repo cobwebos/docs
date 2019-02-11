@@ -1,21 +1,22 @@
 ---
-title: 使用 REST API 检索 Azure 负载均衡器指标 | Microsoft Docs
+title: 使用 REST API 检索指标
+titlesuffix: Azure Load Balancer
 description: 在给定的时间和日期范围内，使用 Azure REST API 收集负载均衡器的运行状况和利用率指标。
 services: sql-database
 author: KumudD
 ms.reviewer: routlaw
 manager: jeconnoc
 ms.service: load-balancer
-ms.custom: REST
+ms.custom: REST, seodec18
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: KumudD
-ms.openlocfilehash: 1fac461c3af4ea0a2e1f2257256969c47bc3d134
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 5f92ae386730032e7da278b9dd2b0effef313741
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094454"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752052"
 ---
 # <a name="get-load-balancer-utilization-metrics-using-the-rest-api"></a>使用 REST API 获取负载均衡器利用率指标
 
@@ -35,16 +36,16 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 以下标头是必需的： 
 
-|请求标头|Description|  
+|请求标头|说明|  
 |--------------------|-----------------|  
 |Content-Type：|必需。 设置为 `application/json`。|  
 |Authorization：|必需。 设置为有效的 `Bearer` [访问令牌](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
 
 ### <a name="uri-parameters"></a>URI 参数
 
-| 名称 | Description |
+| Name | 说明 |
 | :--- | :---------- |
-| subscriptionId | 用于标识 Azure 订阅的订阅 ID。 如果拥有多个订阅，请参阅[使用多个订阅](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions)。 |
+| subscriptionId | 用于标识 Azure 订阅的订阅 ID。 如果拥有多个订阅，请参阅[使用多个订阅](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
 | resourceGroupName | 包含该资源的资源组名称。 可以从 Azure 资源管理器 API、CLI 或门户获取此值。 |
 | loadBalancerName | Azure 负载均衡器的名称。 |
 | metricnames | 以逗号分隔的有效[负载均衡器指标](/azure/load-balancer/load-balancer-standard-diagnostics)列表。 |

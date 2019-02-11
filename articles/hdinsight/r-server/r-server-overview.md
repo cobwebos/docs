@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 1f53d87d6de76c0ff6954c9bd38d95e05981d822
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: a07f052cf89da039bb9fe091f1cd997c19d2fcc7
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499469"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584524"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>HDInsight 上的 ML Services 和开放源代码 R 功能简介
 
-> [!NOTE]
+> [!NOTE]  
 > 2017 年 9 月，Microsoft R Server 以 Microsoft Machine Learning Server 或 ML Server 的新名称发布。 因此，HDInsight 上的 R Server 群集现称为 HDInsight 上的机器学习服务或 ML Services 群集。 有关 R Server 名称更改的详细信息，请参阅 [Microsoft R Server 现在是 Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server#get-support-for-r-server)。
 
 可以在 Azure 中创建 HDInsight 群集时选择使用 Microsoft Machine Learning Server 部署。 提供此选项的群集类型名为 ML Services。 这项功能可让数据科研人员、统计人员和 R 程序员根据需要访问 HDInsight 上可缩放的分布式分析方法。
@@ -29,7 +29,7 @@ HDInsight 上的 ML Services 提供最新的功能，可针对载入 Azure Blob 
 
 群集的边缘节点为连接到群集和运行 R 脚本提供了便捷的位置。 使用边缘节点，可以选择跨边缘节点服务器的各个核心运行 ScaleR 的并行化分布式函数。 还可以通过使用 ScaleR 的 Hadoop Map Reduce 或 Apache Spark 计算上下文跨群集的各个节点运行这些函数。
 
-可以下载分析后生成的模型或预测，以便在本地使用。 也可以在 Azure 中的其他位置（由其是通过 [Azure 机器学习工作室](http://studio.azureml.net) [Web 服务](../../machine-learning/studio/publish-a-machine-learning-web-service.md)）操作这些模型。
+可以下载分析后生成的模型或预测，以便在本地使用。 也可以在 Azure 中的其他位置（由其是通过 [Azure 机器学习工作室](https://studio.azureml.net) [Web 服务](../../machine-learning/studio/publish-a-machine-learning-web-service.md)）操作这些模型。
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>HDInsight 上的 ML Services 入门
 

@@ -1,20 +1,19 @@
 ---
 title: 在 Azure Cosmos DB 中预配数据库吞吐量
 description: 了解如何在 Azure Cosmos DB 中预配数据库级别的吞吐量
-services: cosmos-db
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 4eba0381eb302ca4400fb5669b486fb3ad337993
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c648522e689c64de8e7e09b85ca3b6eb26b6945b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262516"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477193"
 ---
-# <a name="provision-throughput-for-a-database-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中为数据库预配吞吐量
+# <a name="provision-throughput-on-an-azure-cosmos-database"></a>在 Azure Cosmos 数据库上预配吞吐量
 
 本文介绍如何在 Azure Cosmos DB 中为数据库预配吞吐量。 可以为单个[容器](how-to-provision-container-throughput.md)预配吞吐量，也可以为数据库预配吞吐量，并在数据库中的容器之间共享吞吐量。 可以使用 Azure 门户或 Cosmos DB SDK 来预配数据库级别吞吐量。
 

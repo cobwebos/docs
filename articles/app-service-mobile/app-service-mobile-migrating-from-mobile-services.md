@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: 5001704f47af0c7b07744f1dceb7aa58bdb6448c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1c519c658db29152f7ecafa8ac244c922cf4cd9f
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32158862"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118986"
 ---
 # <a name="article-top"></a>将现有的 Azure 移动服务迁移到 Azure 应用服务
 借助 [Azure 应用服务正式版]，可轻松就地迁移 Azure 移动服务站点，使用 Azure 应用服务的所有功能。  本文档说明将站点从 Azure 移动服务迁移到 Azure 应用服务时的情形。
@@ -37,7 +37,7 @@ Microsoft 建议迁移 Azure 移动服务来利用 Azure 应用服务的各项�
 * 内置的 DevOps 工具，包括[过渡槽]、回滚和生产环境内测试。
 * [自动缩放]、负载均衡和[性能监视]。
 
-有关 Azure 应用服务优点的详细信息，请参阅 [Mobile Services vs.App Service]（移动服务与应用服务的比较）主题。
+有关 Azure 应用服务优点的详细信息，请参阅 [移动服务和应用服务]主题。
 
 ## <a name="before-you-begin"></a>准备工作
 在站点上开始任何主要任务之前，应该先备份移动服务脚本和 SQL 数据库。
@@ -176,7 +176,7 @@ PublishSettings 文件将下载到计算机。  此文件通常名为 sitename.P
 | Google |**MS\_GoogleClientID** |**MS\_GoogleClientSecret** | |
 | Azure AD |**MS\_AadClientID** | |**MS\_AadTenants** |
 
-注意：**MS\_AadTenants** 存储为租户域（移动服务门户中的“允许的租户”字段）的逗号分隔列表。
+注意：“MS\_AadTenants”存储为租户域（移动服务门户中的“允许的租户”字段）的逗号分隔列表。
 
 > [!WARNING]
 > **请不要使用“设置”菜单中的身份验证机制**
@@ -234,7 +234,7 @@ PublishSettings 文件将下载到计算机。  此文件通常名为 sitename.P
 ### <a name="notification-hubs"></a>通知中心
 移动服务使用通知中心来处理推送通知。  迁移后，可使用以下应用设置将通知中心链接到移动服务：
 
-| 应用程序设置 | 说明 |
+| 应用程序设置 | Description |
 |:--- |:--- |
 | **MS\_PushEntityNamespace** |通知中心命名空间 |
 | **MS\_NotificationHubName** |通知中心名称 |
@@ -267,7 +267,7 @@ PublishSettings 文件将下载到计算机。  此文件通常名为 sitename.P
 ### <a name="app-settings"></a>其他应用设置
 下面是从移动服务迁移的其他应用设置，可在“设置” > “应用设置”下使用：
 
-| 应用程序设置 | 说明 |
+| 应用程序设置 | Description |
 |:--- |:--- |
 | **MS\_MobileServiceName** |应用的名称 |
 | **MS\_MobileServiceDomainSuffix** |域前缀。 例如  azure-mobile.net |
@@ -310,7 +310,7 @@ Azure 应用服务中通常会禁用诊断日志记录。  若要启用诊断日
 2. 选择“所有资源”或“应用服务”，并单击已迁移的移动服务的名称。
 3. 默认情况下会打开“设置”边栏选项卡。
 4. 选择“功能”菜单下的“诊断日志”。
-5. 针对以下日志单击“打开”：“应用程序日志记录(文件系统)”、“详细错误消息”和“失败请求跟踪”
+5. 单击“打开”以获取以下日志：“应用程序日志记录（文件系统）”、“详细错误消息”和“失败请求跟踪”
 6. 对于 Web 服务器日志记录，请单击“文件系统”
 7. 单击“保存”
 
@@ -327,7 +327,7 @@ Azure 应用服务中通常会禁用诊断日志记录。  若要启用诊断日
 ### <a name="deleting-a-migrated-mobile-app-clone-causes-a-site-outage"></a>删除已迁移的移动应用克隆会导致站点中断
 如果使用 Azure PowerShell 克隆已迁移的移动服务，又删除该克隆，则会删除生产服务的 DNS 项。  不能再从 Internet 访问该站点。  
 
-解决方案：如果想要克隆站点，请通过门户进行。
+解决方法：如果想要克隆站点，请通过门户进行操作。
 
 ### <a name="changing-webconfig-does-not-work"></a>更改 Web.config 无效
 如果有 ASP.NET 站点，则无法应用对 `Web.config` 文件的更改。  Azure 应用服务在启动期间构建适当的 `Web.config` 文件来支持移动服务运行时。  可以使用 XML 转换文件来覆盖特定的设置（例如自定义标头）。  创建名为 `applicationHost.xdt` 的文件 - 此文件必须在 Azure 服务上的 `D:\home\site` 目录中结束。  通过自定义部署脚本或直接使用 Kudu 上传 `applicationHost.xdt` 文件。  下面展示了一个示例文档：
@@ -349,7 +349,7 @@ Azure 应用服务中通常会禁用诊断日志记录。  若要启用诊断日
 </configuration>
 ```
 
-有关详细信息，请参阅 GitHub 上的 [XDT Transform Samples]（XDT 转换示例）文档。
+有关详细信息，请参阅 GitHub 上的 [XDT 转换示例]文档。
 
 ### <a name="migrated-mobile-services-cannot-be-added-to-traffic-manager"></a>无法将迁移的移动服务添加到流量管理器
 创建流量管理器配置文件时，无法直接为配置文件选择已迁移的移动服务。  请使用“外部终结点”。  外部终结点只能通过 PowerShell 来添加。  有关详细信息，请参阅[流量管理器教程](https://azure.microsoft.com/blog/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/)。
@@ -374,27 +374,27 @@ Azure 应用服务中通常会禁用诊断日志记录。  若要启用诊断日
 
 <!-- Links -->
 [应用服务定价]: https://azure.microsoft.com/pricing/details/app-service/
-[Application Insights]: ../application-insights/app-insights-overview.md
+[Application Insights]: ../azure-monitor/app/app-insights-overview.md
 [自动缩放]: ../app-service/web-sites-scale.md
-[Azure 应用服务]: ../app-service/app-service-web-overview.md
+[Azure 应用服务]: ../app-service/overview.md
 [Azure 经典门户]: https://manage.windowsazure.com
 [Azure 门户]: https://portal.azure.com
 [Azure Region]: https://azure.microsoft.com/regions/
 [Azure 计划程序计划]: ../scheduler/scheduler-plans-billing.md
-[连续部署]: ../app-service/app-service-continuous-deployment.md
+[连续部署]: ../app-service/deploy-continuous-deployment.md
 [转换混合命名空间]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
-[curl]: http://curl.haxx.se/
+[curl]: https://curl.haxx.se/
 [自定义域名]: ../app-service/app-service-web-tutorial-custom-domain.md
-[Fiddler]: http://www.telerik.com/fiddler
+[Fiddler]: https://www.telerik.com/fiddler
 [Azure 应用服务正式版]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
 [Hybrid Connections]: ../app-service/app-service-hybrid-connections.md
-[日志记录]: ../app-service/web-sites-enable-diagnostic-log.md
+[日志记录]: ../app-service/troubleshoot-diagnostic-logs.md
 [移动应用 Node.js SDK]: https://github.com/azure/azure-mobile-apps-node
-[Mobile Services vs.App Service]: app-service-mobile-value-prop-migration-from-mobile-services.md
+[移动服务和应用服务]: app-service-mobile-value-prop-migration-from-mobile-services.md
 [通知中心]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [性能监视]: ../app-service/web-sites-monitor.md
-[Postman]: http://www.getpostman.com/
-[过渡槽]: ../app-service/web-sites-staged-publishing.md
+[Postman]: https://www.getpostman.com/
+[过渡槽]: ../app-service/deploy-staging-slots.md
 [VNet]: ../app-service/web-sites-integrate-with-vnet.md
-[XDT Transform Samples]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
+[XDT 转换示例]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
 [函数]: ../azure-functions/functions-overview.md

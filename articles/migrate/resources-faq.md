@@ -4,14 +4,14 @@ description: 解答有关 Azure Migrate 的常见问题
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 01/11/2019
 ms.author: snehaa
-ms.openlocfilehash: 2f04fe103d010a64a77b7d80730cf80007c3c126
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1e60ee5060f5f292ed6d03cf0680d9801a0c04f4
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256369"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746305"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - 常见问题解答 (FAQ)
 
@@ -33,7 +33,7 @@ Azure Migrate 是评估服务，可帮助发现本地工作负荷以及规划到
 
 ### <a name="whats-the-difference-between-using-azure-migrate-for-assessments-and-the-map-toolkit"></a>使用 Azure Migrate 和 Map Toolkit 进行评估有什么区别？
 
-[Azure Migrate](migrate-overview.md) 提供迁移评估，专门用于协助本地工作负载到 Azue 的迁移就绪和评估。 [Microsoft Assessment and Planning (MAP) Toolkit](https://www.microsoft.com/en-us/download/details.aspx?id=7826) 具有其他功能。 例如，较新版本的 Windows 客户端和服务器操作系统、软件使用情况跟踪等的迁移规划。对于这些情况，继续使用 MAP Toolkit。
+[Azure Migrate](migrate-overview.md) 提供迁移评估，专门用于协助本地工作负载到 Azue 的迁移就绪和评估。 [Microsoft 评估和规划 (MAP) 工具包](https://www.microsoft.com/en-us/download/details.aspx?id=7826)具有其他功能，例如更新版本的 Windows 客户端和服务器操作系统的迁移规划以及软件使用情况跟踪。 对于这些情况，继续使用 MAP Toolkit。
 
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery-deployment-planner"></a>Azure Migrate 与 Azure Site Recovery 部署规划器有何不同？
@@ -44,11 +44,18 @@ Azure Migrate 是一个迁移规划工具，而 Azure Site Recovery 部署规划
 
 **从 Hyper-V 迁移到 Azure**：Azure Migrate 目前仅支持评估要迁移到 Azure 的 VMware 虚拟机。 Azure Migrate 对 Hyper-V 的支持已在规划中。 在此期间，可以使用 Site Recovery 部署规划器。 在 Azure Migrate 实现 Hyper-V 支持后，可以使用 Azure Migrate 来规划 Hyper-V 工作负荷的迁移。
 
-将 VMware/Hyper-V 灾难恢复到 Azure：如果想要使用 Azure Site Recovery (Site Recovery) 在 Azure 中实现灾难恢复 (DR)，请使用 Site Recovery 部署规划器进行 DR 规划。 Site Recovery 部署规划器会针对本地环境执行深度的、特定于 ASR 的评估。 它会提供所需的建议，让 Site Recovery 成功执行复制、虚拟机故障转移等 DR 操作。  
+**从 VMware/Hyper-V 到 Azure 的灾难恢复**：如果想要使用 Azure Site Recovery (Site Recovery) 在 Azure 中实现灾难恢复 (DR)，请使用 Site Recovery 部署规划器进行 DR 规划。 Site Recovery 部署规划器会针对本地环境执行深度的、特定于 ASR 的评估。 它会提供所需的建议，让 Site Recovery 成功执行复制、虚拟机故障转移等 DR 操作。  
 
-### <a name="which-azure-regions-are-supported-by-azure-migrate"></a>Azure Migrate 支持哪些 Azure 区域？
+### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Azure Migrate 支持哪些 Azure 地域？
 
-Azure Migrate 当前支持“美国东部”和“美国中西部”作为迁移项目位置。 即使只能在美国中西部和美国东部创建迁移项目，也仍可以评估[多个目标位置](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties)的计算机。 项目位置仅用于存储已发现的数据。
+Azure Migrate 当前支持将欧洲、美国和 Azure 政府作为项目地域。 即使只能在这些地域创建迁移项目，也仍可以针对[多个目标位置](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties)评估计算机。 项目地域仅用于存储已发现的元数据。
+
+**地域** | **元数据存储位置**
+--- | ---
+Azure Government  | 美国政府弗吉尼亚州
+亚洲 | 东南亚
+欧洲 | 欧洲北部或欧洲西部
+美国 | 美国东部或美国中西部
 
 ### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>本地站点如何连接到 Azure Migrate？
 
@@ -57,6 +64,17 @@ Azure Migrate 当前支持“美国东部”和“美国中西部”作为迁移
 ### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>我可以使用 OVA 模板强化 VM 设置吗？
 
 只要 Azure Migrate 设备工作所需的通信和防火墙规则保持不变，就可以将其他组件（例如防病毒）添加到 OVA 模板中。   
+
+### <a name="to-harden-the-azure-migrate-appliance-what-are-the-recommended-antivirus-av-exclusions"></a>若要强化 Azure Migrate 设备，你们建议从防病毒软件 (AV) 中排除哪些项？
+
+在运行防病毒扫描的设备中，需要排除以下文件夹：
+
+- 包含 Azure Migrate 服务二进制文件的文件夹。 排除所有子文件夹。
+  %ProgramFiles%\ProfilerService  
+- Azure Migrate Web 应用程序。 排除所有子文件夹。
+  %SystemDrive%\inetpub\wwwroot
+- 数据库和日志文件的本地缓存。 Azure Migrate 服务需要对此文件夹拥有 RW 访问权限。
+  %SystemDrive%\Profiler
 
 ## <a name="discovery"></a>发现
 
@@ -90,7 +108,7 @@ Azure Migrate 支持两种发现：基于设备的发现和基于代理的发现
 
 ### <a name="would-there-be-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>是否会对已分析的 ESXi 主机环境造成任何性能影响？
 
-在[一次性发现方法](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods)中，为了收集性能数据，vCenter Server 上的统计信息级别将设置为 3。 设置为此级别将收集大量的故障排除数据，这些数据将存储在 vCenter Server 数据库中。 因此，它可能会在 vCenter Server 上导致一些性能问题。 对 ESXi 主机的影响微不足道。
+在[一次性发现方法](https://docs.microsoft.com/azure/migrate/concepts-collector)中，为了收集性能数据，vCenter Server 上的统计信息级别将设置为 3。 设置为此级别将收集大量的故障排除数据，这些数据将存储在 vCenter Server 数据库中。 因此，它可能会在 vCenter Server 上导致一些性能问题。 对 ESXi 主机的影响微不足道。
 
 我们已引入了性能数据持续分析（目前为预览版）。 使用持续分析，不再需要更改 vCenter Server 统计信息级别来运行基于性能的评估。 收集器设备现在将对本地计算机进行分析来度量虚拟机的性能数据。 这几乎不会对 ESXi 主机和 vCenter Server 造成性能影响。
 
@@ -130,16 +148,27 @@ Azure Migrate 支持两种发现：基于设备的发现和基于代理的发现
 
 在单个迁移项目中可以发现 1500 个虚拟机。 如果本地环境包含更多的计算机，请[详细了解](how-to-scale-assessment.md)如何在 Azure Migrate 中发现大型环境。
 
+
 ## <a name="assessment"></a>评估
 
 ### <a name="does-azure-migrate-support-enterprise-agreement-ea-based-cost-estimation"></a>Azure Migrate 是否支持基于企业协议 (EA) 的成本估计？
 
-Azure Migrate 目前不支持[企业协议产品/服务](https://azure.microsoft.com/offers/enterprise-agreement-support/)的成本估计。 解决方法是指定即用即付作为产品/服务，并在评估属性的“折扣”字段中手动指定折扣百分比（适用于订阅）。
+Azure Migrate 目前不支持[企业协议套餐](https://azure.microsoft.com/offers/enterprise-agreement-support/)的成本估计。 解决方法是指定即用即付作为套餐，并在评估属性的“折扣”字段中手动指定折扣百分比（适用于订阅）。
 
   ![折扣](./media/resources-faq/discount.png)
-  
+
+### <a name="what-is-the-difference-between-as-on-premises-sizing-and-performance-based-sizing"></a>基于本地的大小和基于性能的大小之间的区别是什么？
+
+将大小调整标准指定为本地大小调整时，Azure Migrate 不会考虑 VM 的性能数据，也不会根据内部部署配置调整 VM 的大小。 如果调整大小条件是基于性能的，则调整大小操作是根据使用率数据完成的。 例如，如果某个本地 VM 具有 4 个核心和 8 GB 内存，CPU 利用率为 50% 且内存利用率为 50%。 如果大小调整标准与本地的大小调整标准相同，则会建议采用具有 4 个核心和 8 GB 内存的 Azure VM SKU；但是，如果大小调整标准是基于性能的，则会建议采用具有 2 个核心和 4 GB 内存的 VM SKU，因为在提出大小建议时会考虑利用率百分比。 同样，对于磁盘，磁盘大小调整取决于两个评估属性 - 大小调整标准和存储类型。 如果大小调整标准是基于性能的并且存储类型是自动，则会考虑磁盘的 IOPS 和吞吐量值来确定目标磁盘类型（标准或高级）。 如果大小调整标准是基于性能的并且存储类型是高级，则会建议采用高级磁盘，并且会基于本地磁盘的大小选择 Azure 中的高级磁盘 SKU。 当大小调整标准与本地大小调整标准相同并且存储类型为标准或高级时，将使用同一逻辑来执行磁盘大小调整。
+
+### <a name="what-impact-does-performance-history-and-percentile-utilization-have-on-the-size-recommendations"></a>性能历史记录和利用百分率对大小建议有什么影响？
+
+这些属性仅适用于基于性能的大小调整。 Azure Migrate 收集本地计算机的性能历史记录并使用它来针对 Azure 中的 VM 大小和磁盘类型提出建议。 收集器设备持续分析本地环境，每 20 秒收集一次实时利用率数据。 设备对时长 20 秒的样本进行汇总，每隔 15 分钟创建单个数据点。 为了创建单个数据点，设备从所有时长 20 秒的样本中选择峰值并将其发送到 Azure。 当你在 Azure 中创建评估时，Azure Migrate 会根据性能持续时间和性能历史记录百分位值计算有效利用率值并使用它进行大小调整。 例如，如果你将性能持续时间设置为 1 天，将百分位值设置为 95%，则 Azure Migrate 将使用收集器在上一天发送的 15 分钟样本点，按升序对其进行排序，并选取第 95 百分位值作为有效利用率。 第 95 百分位值可以确保忽略任何离群值，如果选取第 99 百分位值，可能会出现离群值。 如果希望选取期间的峰值利用率并且不希望错过任何离群值，则应当选择第 99 百分位值。
 
 ## <a name="dependency-visualization"></a>依赖项可视化
+
+> [!NOTE]
+> 依赖项可视化功能在 Azure 政府中不可用。
 
 ### <a name="what-is-dependency-visualization"></a>什么是依赖项可视化？
 
@@ -151,7 +180,7 @@ Azure Migrate 目前不支持[企业协议产品/服务](https://azure.microsoft
 
 ### <a name="do-i-need-to-install-anything-for-dependency-visualization"></a>要实现依赖项可视化，是否需要安装任何软件？
 
-若要使用依赖项可视化，你需要在要评估的每台本地计算机上下载并安装代理。 
+若要使用依赖项可视化，你需要在要评估的每台本地计算机上下载并安装代理。
 
 - 需要在每台计算机上安装 [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)。
 - 需要在每台计算机上安装[依赖项代理](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure)。
@@ -169,7 +198,7 @@ Azure Migrate 目前不支持[企业协议产品/服务](https://azure.microsoft
 
 ### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-dependency-agent"></a>如何才能自动安装 Microsoft Monitoring Agent (MMA) 和依赖项代理？
 
-[此处](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)有一个脚本，可以使用它来安装依赖项代理。 对于 MMA，TechNet 上的[此处](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)有一个可以使用的脚本。
+[此处](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)有一个脚本，可以使用它来安装依赖项代理。 [此处](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)是有关如何使用命令行或自动方法安装 MMA 的说明。 对于 MMA，还可以在 Technet 上利用[此处](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)提供的脚本。
 
 除了脚本，还可以利用 System Center Configuration Manager (SCCM)、[Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) 之类的部署工具来部署代理。
 
@@ -184,10 +213,10 @@ Azure Migrate 目前不支持[企业协议产品/服务](https://azure.microsoft
 [此处](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems)列出了依赖项代理支持的 Linux 操作系统。
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>我在 Azure Migrate 中可视化依赖项时是否可以超过一小时的持续时间？
-否，Azure Migrate 允许依赖项可视化持续最多一小时的时间。 尽管 Azure Migrate 允许返回到历史记录中的某一特定日期可以推至上个月，但可视化依赖项的最长持续时间最多为一小时。 例如，你可以使用依赖项映射中的持续时间功能来查看昨天的依赖项，但只能查看一小时。
+否，Azure Migrate 允许依赖项可视化持续最多一小时的时间。 尽管 Azure Migrate 允许返回到历史记录中的某一特定日期可以推至上个月，但可视化依赖项的最长持续时间最多为一小时。 例如，你可以使用依赖项映射中的持续时间功能来查看昨天的依赖项，但只能查看一小时。 但是，可以使用 Log Analytics [查询依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics)（经过更长的持续时间）。
 
 ### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>包含 10 个以上 VM 的组是否支持依赖项可视化？
-你可以[可视化依赖项的组最多只能有 10 个 VM](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)，如果某个组的 VM 超过 10 个，建议先将该组拆分成较小的组，然后再可视化依赖项。
+可以[可视化最多包含 10 个 VM 的组的依赖项](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)。 如果某个组的 VM 超过 10 个，建议先将该组拆分成较小的组，然后再可视化依赖项。
 
 
 ## <a name="next-steps"></a>后续步骤

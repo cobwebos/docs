@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 42303177-9566-48ed-8abb-279fcf1e6ddb
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: brandwe
-ms.openlocfilehash: 89f2a4058006687fbe64ec64d98659e38f93f618
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 801da78de493b55655819ac16a9184d04a356786
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980570"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095968"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>快速入门：从 iOS 应用将用户登录并调用 Microsoft Graph API
 
@@ -43,10 +43,10 @@ ms.locfileid: "46980570"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要开始，请完成这些先决条件：
+开始前，请完成这些先决条件：
 
 * [下载应用框架](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/skeleton.zip)或[下载已完成的示例](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip)。
-* 拥有 Azure AD 租户，你可以在其中创建用户并注册应用程序。 如果还没有租户，请[了解如何获取租户](quickstart-create-new-tenant.md)。
+* 拥有可在其中创建用户和注册应用程序的 Azure AD 租户。 如果还没有租户，请[了解如何获取租户](quickstart-create-new-tenant.md)。
 
 > [!TIP]
 > 试用[开发人员门户](https://identity.microsoft.com/Docs/iOS)，只需花费几分钟时间，它就能帮助你开始使用 Azure AD。 开发人员门户可指导完成注册应用并将 Azure AD 集成到代码的整个过程。 完成上述过程后，会获得一个可对租户中的用户进行身份验证的简单应用程序，以及一个可以接受令牌并执行验证的后端。
@@ -240,7 +240,7 @@ ADAL 遵守的基本原理是，每当应用程序需要访问令牌时，它只
 > [!NOTE]
 > `AuthenticationResult` 对象包含一个 `tokenCacheStoreItem` 对象，后者可用于收集应用可能需要的信息。 在此快速入门中，`tokenCacheStoreItem` 用于确定身份验证是否已发生。
 
-## <a name="step-5-build-and-run-the-application"></a>步骤 5：生成并运行应用程序
+## <a name="step-5-build-and-run-the-application"></a>步骤 5：构建并运行应用程序
 
 祝贺你！ 现在，已有了一个可正常工作的 iOS 应用程序，它可以对用户进行身份验证，使用 OAuth 2.0 安全地调用 Web API，并获取有关用户的基本信息。
 

@@ -8,18 +8,20 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: 696bd6ec80f39e8a9f3418426a754ffc038171e2
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: af269085550f71323c8098b4cdf3c88ec8035dfe
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325076"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563297"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>将 Raspberry Pi 设备连接到远程监视解决方案加速器 (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-本教程介绍如何将物理设备连接到远程监视解决方案加速器。 在本教程中，将使用 Node.js，它对于资源约束最少的环境是一个不错的选择。
+本教程介绍如何将真实设备连接到远程监视解决方案加速器。 在本教程中，将使用 Node.js，它对于资源约束最少的环境是一个不错的选择。
+
+如果更喜欢模拟某个设备，请参阅[创建和测试新的模拟设备](iot-accelerators-remote-monitoring-create-simulated-device.md)。
 
 ### <a name="required-hardware"></a>所需硬件
 
@@ -36,7 +38,7 @@ ms.locfileid: "39325076"
 
 需要在台式机上安装 SSH 客户端，才能远程访问 Raspberry Pi 上的命令行。
 
-- Windows 不包括 SSH 客户端。 建议使用 [PuTTY](http://www.putty.org/)。
+- Windows 不包括 SSH 客户端。 建议使用 [PuTTY](https://www.putty.org/)。
 - 大多数 Linux 分发版和 Mac OS 包括命令行 SSH 实用工具。 有关详细信息，请参阅 [SSH Using Linux or Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md)（使用 Linux 或 Mac OS 的 SSH）。
 
 ### <a name="required-raspberry-pi-software"></a>所需的 Raspberry Pi 软件
@@ -94,24 +96,22 @@ ms.locfileid: "39325076"
 
 1. 在 **remote_monitoring.js** 文件中，添加以下 `require` 语句：
 
-    ```nodejs
+    ```javascript
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     var Client = require('azure-iot-device').Client;
-    var ConnectionString = require('azure-iot-device').ConnectionString;
     var Message = require('azure-iot-device').Message;
     var async = require('async');
     ```
 
 1. 在 `require` 语句之后添加以下变量声明。 将占位符值 `{device connection string}` 替换为针对远程监视解决方案中预配的设备记下的值：
 
-    ```nodejs
+    ```javascript
     var connectionString = '{device connection string}';
-    var deviceId = ConnectionString.parse(connectionString).DeviceId;
     ```
 
 1. 若要定义一些基本遥测数据，请添加以下变量：
 
-    ```nodejs
+    ```javascript
     var temperature = 50;
     var temperatureUnit = 'F';
     var humidity = 50;
@@ -122,12 +122,9 @@ ms.locfileid: "39325076"
 
 1. 若要定义一些属性值，请添加以下变量：
 
-    ```nodejs
-    var temperatureSchema = 'chiller-temperature;v1';
-    var humiditySchema = 'chiller-humidity;v1';
-    var pressureSchema = 'chiller-pressure;v1';
-    var interval = "00:00:05";
-    var deviceType = "Chiller";
+    ```javascript
+    var schema = "real-chiller;v1";
+    var deviceType = "RealChiller";
     var deviceFirmware = "1.0.0";
     var deviceFirmwareUpdateStatus = "";
     var deviceLocation = "Building 44";
@@ -136,49 +133,13 @@ ms.locfileid: "39325076"
     var deviceOnline = true;
     ```
 
-1. 添加以下变量以定义要发送到解决方案的报告属性。 这些属性包括用于说明设备使用的方法和遥测的元数据：
+1. 添加以下变量以定义要发送到解决方案的报告属性。 这些属性包括在 Web UI 中显示的元数据：
 
-    ```nodejs
+    ```javascript
     var reportedProperties = {
-      "Protocol": "MQTT",
       "SupportedMethods": "Reboot,FirmwareUpdate,EmergencyValveRelease,IncreasePressure",
       "Telemetry": {
-        "TemperatureSchema": {
-          "Interval": interval,
-          "MessageTemplate": "{\"temperature\":${temperature},\"temperature_unit\":\"${temperature_unit}\"}",
-          "MessageSchema": {
-            "Name": temperatureSchema,
-            "Format": "JSON",
-            "Fields": {
-              "temperature": "Double",
-              "temperature_unit": "Text"
-            }
-          }
-        },
-        "HumiditySchema": {
-          "Interval": interval,
-          "MessageTemplate": "{\"humidity\":${humidity},\"humidity_unit\":\"${humidity_unit}\"}",
-          "MessageSchema": {
-            "Name": humiditySchema,
-            "Format": "JSON",
-            "Fields": {
-              "humidity": "Double",
-              "humidity_unit": "Text"
-            }
-          }
-        },
-        "PressureSchema": {
-          "Interval": interval,
-          "MessageTemplate": "{\"pressure\":${pressure},\"pressure_unit\":\"${pressure_unit}\"}",
-          "MessageSchema": {
-            "Name": pressureSchema,
-            "Format": "JSON",
-            "Fields": {
-              "pressure": "Double",
-              "pressure_unit": "Text"
-            }
-          }
-        }
+        [schema]: ""
       },
       "Type": deviceType,
       "Firmware": deviceFirmware,
@@ -192,7 +153,7 @@ ms.locfileid: "39325076"
 
 1. 若要输出操作结果，请添加以下帮助程序函数：
 
-    ```nodejs
+    ```javascript
     function printErrorFor(op) {
         return function printError(err) {
             if (err) console.log(op + ' error: ' + err.toString());
@@ -202,7 +163,7 @@ ms.locfileid: "39325076"
 
 1. 添加以下帮助程序函数，用于随机化遥测值：
 
-    ```nodejs
+    ```javascript
     function generateRandomIncrement() {
         return ((Math.random() * 2) - 1);
     }
@@ -210,7 +171,7 @@ ms.locfileid: "39325076"
 
 1. 添加以下泛型函数以处理解决方案中的直接方法调用。 该函数显示调用的直接方法的相关信息，但在此示例中不以任何方式修改设备。 解决方案使用直接方法对设备进行操作：
 
-    ```nodejs
+    ```javascript
     function onDirectMethod(request, response) {
       // Implement logic asynchronously here.
       console.log('Simulated ' + request.methodName);
@@ -225,7 +186,7 @@ ms.locfileid: "39325076"
 
 1. 添加以下函数以处理解决方案中的 **FirmwareUpdate** 直接方法调用。 该函数验证直接方法负载中传入的参数，并以异步方式运行固件更新模拟：
 
-    ```node.js
+    ```javascript
     function onFirmwareUpdate(request, response) {
       // Get the requested firmware version from the JSON request body
       var firmwareVersion = request.payload.Firmware;
@@ -254,7 +215,7 @@ ms.locfileid: "39325076"
 
 1. 添加以下函数以模拟长时间运行的固件更新流（将进度报告回解决方案）：
 
-    ```node.js
+    ```javascript
     // Simulated firmwareUpdate flow
     function runFirmwareUpdateFlow(firmwareVersion, firmwareUri) {
       console.log('Simulating firmware update flow...');
@@ -332,15 +293,14 @@ ms.locfileid: "39325076"
 
 1. 添加以下代码将遥测数据发送到解决方案。 客户端应用将属性添加到消息，以确定消息架构：
 
-    ```node.js
+    ```javascript
     function sendTelemetry(data, schema) {
       if (deviceOnline) {
         var d = new Date();
         var payload = JSON.stringify(data);
         var message = new Message(payload);
-        message.properties.add('$$CreationTimeUtc', d.toISOString());
-        message.properties.add('$$MessageSchema', schema);
-        message.properties.add('$$ContentType', 'JSON');
+        message.properties.add('iothub-creation-time-utc', d.toISOString());
+        message.properties.add('iothub-message-schema', schema);
 
         console.log('Sending device message data:\n' + payload);
         client.sendEvent(message, printErrorFor('send event'));
@@ -352,7 +312,7 @@ ms.locfileid: "39325076"
 
 1. 添加以下代码，创建客户端实例：
 
-    ```nodejs
+    ```javascript
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
@@ -364,7 +324,7 @@ ms.locfileid: "39325076"
     * 为直接方法注册处理程序。 此示例对固件更新直接方法使用单独的处理程序。
     * 开始发送遥测。
 
-    ```nodejs
+    ```javascript
     client.open(function (err) {
       if (err) {
         printErrorFor('open')(err);
@@ -398,31 +358,19 @@ ms.locfileid: "39325076"
         });
 
         // Start sending telemetry
-        var sendTemperatureInterval = setInterval(function () {
+        var sendDeviceTelemetry = setInterval(function () {
           temperature += generateRandomIncrement();
-          var data = {
-            'temperature': temperature,
-            'temperature_unit': temperatureUnit
-          };
-          sendTelemetry(data, temperatureSchema)
-        }, 5000);
-
-        var sendHumidityInterval = setInterval(function () {
+          pressure += generateRandomIncrement();
           humidity += generateRandomIncrement();
           var data = {
+            'temperature': temperature,
+            'temperature_unit': temperatureUnit,
             'humidity': humidity,
-            'humidity_unit': humidityUnit
-          };
-          sendTelemetry(data, humiditySchema)
-        }, 5000);
-
-        var sendPressureInterval = setInterval(function () {
-          pressure += generateRandomIncrement();
-          var data = {
+            'humidity_unit': humidityUnit,
             'pressure': pressure,
             'pressure_unit': pressureUnit
           };
-          sendTelemetry(data, pressureSchema)
+          sendTelemetry(data, schema)
         }, 5000);
 
         client.on('error', function (err) {

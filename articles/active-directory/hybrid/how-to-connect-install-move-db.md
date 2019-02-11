@@ -3,19 +3,19 @@ title: 将 Azure AD Connect 数据库从 SQL Server Express 移到 SQL Server。
 description: 本文档介绍如何将 Azure AD Connect 数据库从本地 SQL Server Express 服务器移到远程 SQL Server。
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/19/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: a42deb6bc039602c4bda523d2ab1ee5a69bb5644
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 372470ffb1c296ee30702a2df0d8e9d00480a492
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46303530"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55485222"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>将 Azure AD Connect 数据库从 SQL Server Express 移到 SQL Server 
 
@@ -30,7 +30,7 @@ ms.locfileid: "46303530"
 请执行以下步骤，将 Azure AD Connect 数据库移到远程 SQL Server。
 
 1.  在 Azure AD Connect 服务器上转到“服务”，然后停止 **Microsoft Azure AD Sync** 服务。
-2. 找到 **%Program Files%\Microsoft Azure AD Sync/Data/** 文件夹，将 **ADSync.mdf** 和 **ADSync_log.mdf** 文件复制到远程 SQL Server。
+2. 找到 **%Program Files%\Microsoft Azure AD Sync/Data/** 文件夹，将 **ADSync.mdf** 和 **ADSync_log.ldf** 文件复制到远程 SQL Server。
 3. 在 Azure AD Connect 服务器上重启 **Microsoft Azure AD Sync** 服务。
 4. 转到“控制面板”>“程序”>“程序和功能”，以便卸载 Azure AD Connect。  选择“Microsoft Azure AD Connect”，然后单击顶部的“卸载”。
 5. 在远程 SQL Server 上，打开 SQL Server Management Studio。

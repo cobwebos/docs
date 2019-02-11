@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/02/2018
 ms.author: glenga
-ms.openlocfilehash: 15d2e40127579fbd278cc3dc18653d782a515caa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5f55122b3bf4bb7160459d524b20dd1303cc0fd8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957306"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835414"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Azure Functions 中支持的语言
 
@@ -37,11 +37,9 @@ ms.locfileid: "46957306"
 
 ### <a name="experimental-languages"></a>实验性语言
 
-1.x 版中的实验性语言扩展性不好，并且不支持所有绑定。 例如，1.x Python 速度慢，因为每次调用函数时，Functions 运行时都运行 python.exe。 并且虽然 Python 支持 HTTP 绑定，但它无法访问请求对象。
+1.x 版中的实验性语言扩展性不好，并且不支持所有绑定。 例如，对 1.x PowerShell 的实验支持仅限于 5.1 版，因为运行函数应用的 VM 上只默认安装了该版本。 如果要运行 PowerShell 脚本，请考虑 [Azure 自动化](https://azure.microsoft.com/services/automation/)。
 
-对 1.x PowerShell 的实验支持仅限于 5.1 版，因为运行函数应用的 VM 上只默认安装了该版本。 如果要运行 PowerShell 脚本，请考虑 [Azure 自动化](https://azure.microsoft.com/services/automation/)。
-
-不要对所依赖的任何内容使用实验性语言，因为对其没有官方支持。 不应针对实验性语言的问题开启支持案例。 
+不要对所依赖的任何内容使用实验性功能，因为对其没有官方支持。 不应针对实验性语言的问题开启支持案例。 
 
 2.x 版运行时不支持实验性语言。 只有在生产环境中支持该语言时，才会添加对新语言的支持。 
 
@@ -64,3 +62,6 @@ ms.locfileid: "46957306"
 
 > [!div class="nextstepaction"]
 > [Java](functions-reference-java.md)
+
+> [!div class="nextstepaction"]
+> [Python](functions-reference-python.md)

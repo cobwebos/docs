@@ -3,21 +3,21 @@ title: 迁移到新的弹性数据库作业 | Microsoft Docs
 description: 迁移到新的弹性数据库作业。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: johnpaulkee
 ms.author: joke
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: 650de0e0bcafe81de0426bc4ec229506c6ed4421
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.date: 12/18/2018
+ms.openlocfilehash: e8293f9ddeb112a6632779e44a0e5d84ae78e045
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242902"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564062"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>迁移到新的弹性数据库作业
 

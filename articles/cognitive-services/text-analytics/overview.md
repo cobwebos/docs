@@ -6,16 +6,16 @@ services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: 545d60207bbd1941920bc0e70096417c35486634
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 73505064bf5cde4e97cd210698e21883cc9f5e38
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634579"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227873"
 ---
 # <a name="what-is-text-analytics"></a>什么是文本分析？
 
@@ -27,11 +27,11 @@ ms.locfileid: "51634579"
 
 文本分析可能有不同的含义，但在认知服务中，文本分析 API 提供下表所述的四种分析。
 
-| 操作| Description | API |
+| 操作| 说明 | API |
 |-----------|-------------|------|
 |[**情绪分析**](how-tos/text-analytics-how-to-sentiment-analysis.md) | 通过在原始文本中分析有关积极和消极情绪的线索，确定客户如何看待你的品牌或主题。 此 API 针对每个文档返回介于 0 和 1 之间的情绪评分，1 是最积极的评分。<br /> 分析模型已使用 Microsoft 提供的大量文本正文和自然语言技术进行预先训练。 对于[选定的语言](text-analytics-supported-languages.md)，该 API 可以分析和评分提供的任何原始文本，并直接将结果返回给调用方应用程序。 | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) <br /> [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package)  |
 |[**关键短语提取**](how-tos/text-analytics-how-to-keyword-extraction.md) | 自动提取关键短语，以快速识别要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。  | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) <br /> [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) |
-|[**语言检测**](how-tos/text-analytics-how-to-language-detection.md) | 针对多达 120 种语言，该 API 将检测输入文本是使用哪种语言编写的，并报告请求中提交的每个文档的单个语言代码。 语言代码与表示评分强度的评分相搭配。 | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) <br />  [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) | 
+|[**语言检测**](how-tos/text-analytics-how-to-language-detection.md) | 针对多达 120 种语言，该 API 将检测输入文本是使用哪种语言编写的，并报告请求中提交的每个文档的单个语言代码。 语言代码与表示评分强度的评分相搭配。 | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) <br />  [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) |
 |[**实体识别（预览版）**](how-tos/text-analytics-how-to-entity-linking.md) | 识别文本中的实体并将其分类为人员、地点、组织、日期/时间、数量、百分比、货币等。 已知实体也可以在 Web 上识别并链接到更多信息。 | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) |
 
 ## <a name="use-containers"></a>使用容器
@@ -68,7 +68,7 @@ ms.locfileid: "51634579"
 
 | 限制 | 值 |
 |------------------------|---------------|
-| 单个文档的最大大小 | 5,000 个字符，由 `String.Length` 度量。 |
+| 单个文档的最大大小 | 5,000 个字符，由 [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) 度量。 |
 | 整个请求的最大大小 | 1 MB |
 | 一个请求中的文档数上限 | 1,000 个文档 |
 
@@ -76,7 +76,7 @@ ms.locfileid: "51634579"
 
 ## <a name="unicode-encoding"></a>Unicode 编码
 
-文本分析 API 使用 Unicode 编码来呈现文本和计算字符数。 可以 UTF-8 和 UTF-16 编码提交请求，这在字符计数方面没有可度量的差别。 Unicode 码位用作字符长度的启发因子，对文本分析数据限制的影响被视为等效。 如果你使用 `String.Length` 获取字符计数，则使用的方法也是我们用来度量数据大小的方法。
+文本分析 API 使用 Unicode 编码来呈现文本和计算字符数。 可以 UTF-8 和 UTF-16 编码提交请求，这在字符计数方面没有可度量的差别。 Unicode 码位用作字符长度的启发因子，对文本分析数据限制的影响被视为等效。 如果你使用 [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) 获取字符计数，则使用的方法也是我们用来度量数据大小的方法。
 
 ## <a name="next-steps"></a>后续步骤
 

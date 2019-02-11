@@ -1,5 +1,5 @@
 ---
-title: 如何对用于容器的 Azure Monitor（预览版）进行故障排除 | Microsoft Docs
+title: 如何对用于容器的 Azure Monitor 进行故障排除 | Microsoft Docs
 description: 本文介绍如何排查和解决用于容器的 Azure Monitor 存在的问题。
 services: azure-monitor
 documentationcenter: ''
@@ -8,20 +8,19 @@ manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/19/2018
+ms.date: 11/30/2018
 ms.author: magoedte
-ms.openlocfilehash: da35f88550bb7bd1a4543f03936dcd52ddd926d9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5a9211abdbc4c9ea7907dfac00d449317dd13089
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308353"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190741"
 ---
-# <a name="troubleshooting-azure-monitor-for-containers-preview"></a>对用于容器的 Azure Monitor（预览版）进行故障排除
+# <a name="troubleshooting-azure-monitor-for-containers"></a>对用于容器的 Azure Monitor 进行故障排除
 
 使用用于容器的 Azure Monitor 配置 Azure Kubernetes 服务 (AKS) 群集的监视时，可能会遇到阻止数据收集或报告状态的问题。 本文详细介绍了一些常见问题及其排查步骤。
 
@@ -99,7 +98,7 @@ ms.locfileid: "52308353"
 | 错误消息  | 操作 |  
 | ---- | --- |  
 | 错误消息 `No data for selected filters`  | 为新创建的群集建立监视数据流可能需要花费一些时间。 请等待至少 10 到 15 分钟，以便群集的数据出现。 |   
-| 错误消息 `Error retrieving data` | 为 Azure Kubenetes 服务群集设置运行状况和性能监视时，会在群集与 Azure Log Analytics 工作区之间建立连接。 Log Analytics 工作区用于存储你的群集的所有监视数据。 当 Log Analytics 工作区已删除或丢失时，可能会发生此错误。 通过查看 [管理访问权限](../../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json#workspace-information) 来检查你的工作区是否可用。 如果缺少工作区，则需要使用适用于容器的 Azure Monitor 重新载入你的群集。 若要重新载入，需要为群集[禁用](container-insights-optout.md)监视，并再次为容器[启用](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json#enable-monitoring-for-a-new-cluster) Azure Monitor。 |  
+| 错误消息 `Error retrieving data` | 为 Azure Kubenetes 服务群集设置运行状况和性能监视时，会在群集与 Azure Log Analytics 工作区之间建立连接。 Log Analytics 工作区用于存储你的群集的所有监视数据。 当 Log Analytics 工作区已删除或丢失时，可能会发生此错误。 通过查看 [管理访问权限](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json#workspace-information) 来检查你的工作区是否可用。 如果缺少工作区，则需要使用适用于容器的 Azure Monitor 重新载入你的群集。 若要重新载入，需要为群集[禁用](container-insights-optout.md)监视，并再次为容器[启用](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json#enable-monitoring-for-a-new-cluster) Azure Monitor。 |  
 | 通过 az aks cli 添加适用于容器的 Azure Monitor 后出现 `Error retrieving data` | 使用 `az aks cli` 进行载入时，适用于容器的 Azure Monitor 可能不会正确载入。 检查该解决方案是否已载入。 若要执行此操作，请转到你的 Log Analytics 工作区，并从左侧的面板中选择“解决方案”来查看该解决方案是否可用。 若要解决此问题，需要按照[如何部署适用于容器的 Azure Monitor](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json) 中的说明重新部署该解决方案。 |  
 
 为了帮助诊断问题，我们在[此处](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script)提供了一个可用的故障排除脚本。  

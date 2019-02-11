@@ -10,17 +10,16 @@ ms.assetid: 1704cdf8-30ad-49bc-a71c-4057e26e7350
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4ce344292577dd286abcd7fbf9e067800da0e0b3
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 8b12df3e31b46fa29f5726946be1d7509018fcbf
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958977"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025838"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>教程：使用 REST API 创建用于复制数据的 Azure 数据工厂管道 
 > [!div class="op_single_selector"]
@@ -40,14 +39,14 @@ ms.locfileid: "49958977"
 
 本文介绍如何使用 REST API 创建数据工厂，以便通过管道将数据从 Azure Blob 存储复制到 Azure SQL 数据库。 如果不熟悉 Azure 数据工厂，请在学习本教程之前，先通读 [Azure 数据工厂简介](data-factory-introduction.md)一文。   
 
-本教程会创建包含一个活动（复制活动）的管道。 复制活动可以将数据从支持的数据存储复制到支持的接收器数据存储。 如需可以用作源和接收器的数据存储的列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 该活动由全球可用的服务提供支持，能以安全、可靠、可缩放的方式在各种数据存储区间复制数据。 有关复制活动的详细信息，请参阅[数据移动活动](data-factory-data-movement-activities.md)。
+本教程会创建包含以下一个活动的管道：复制活动。 复制活动可以将数据从支持的数据存储复制到支持的接收器数据存储。 如需可以用作源和接收器的数据存储的列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 该活动由全球可用的服务提供支持，能以安全、可靠、可缩放的方式在各种数据存储区间复制数据。 有关复制活动的详细信息，请参阅[数据移动活动](data-factory-data-movement-activities.md)。
 
 一个管道可以有多个活动。 而且，可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[管道中的多个活动](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
 
 > [!NOTE]
 > 本文不会介绍所有数据工厂 REST API。 有关数据工厂 cmdlet 的综合文档，请参阅 [Data Factory REST API Reference](/rest/api/datafactory/) （数据工厂 REST API 参考）。
 >  
-> 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。
+> 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 有关如何使用 Azure 数据工厂转换数据的教程，请参阅[教程：使用 Hadoop 群集构建用于转换数据的管道](data-factory-build-your-first-pipeline.md)。
 
 ## <a name="prerequisites"></a>先决条件
 * 通读 [教程概述](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) ，完成 **先决条件** 步骤。
@@ -351,7 +350,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 请注意以下几点：
 
-* Azure 数据工厂的名称必须全局唯一。 如果在结果中看到错误：“数据工厂名称 ‘ADFCopyTutorialDF’ 不可用”，请执行以下步骤：   
+* Azure 数据工厂的名称必须全局唯一。 如果在结果中看到错误：“数据工厂名称 ‘ADFCopyTutorialDF’ 不可用”，请执行以下步骤：  
   
   1. 在 **datafactory.json** 文件中更改名称（例如，yournameADFCopyTutorialDF）。
   2. 在分配 **$cmd** 变量值的第一个命令中，将 ADFCopyTutorialDF 替换为新名称，然后运行该命令。 
@@ -360,7 +359,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
      有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
 * 只有 Azure 订阅的参与者/管理员才可以创建数据工厂实例
 * 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。
-* 如果收到错误：“**该订阅未注册为使用命名空间 Microsoft.DataFactory**”，请执行下列操作之一，尝试再次发布： 
+* 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，再尝试重新发布： 
   
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。 
 
@@ -377,7 +376,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 在创建管道之前，需要创建一些数据工厂项。 先创建链接服务，将源和目标数据存储链接到数据存储。 然后，定义输入和输出数据集，表示链接数据存储中的数据。 最后创建管道，其中包含使用这些数据集的活动。
 
 ## <a name="create-linked-services"></a>创建链接服务
-可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本教程中，请不要使用任何计算服务，例如 Azure HDInsight 或 Azure Data Lake Analytics。 可以使用两个数据存储，其类型为 Azure 存储（源）和 Azure SQL 数据库（目标）。 因此，请创建两个名为 AzureStorageLinkedService 和 AzureSqlLinkedService 的链接服务，其类型为 AzureStorage 和 AzureSqlDatabase。  
+可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本教程中，请不要使用任何计算服务，例如 Azure HDInsight 或 Azure Data Lake Analytics。 可以使用两个数据存储，其类型为 Azure 存储（源）和 Azure SQL 数据库（目标）。 因此，请创建两个分别名为 AzureStorageLinkedService 和 AzureSqlLinkedService 的链接服务，其类型分别为：AzureStorage 和 AzureSqlDatabase。  
 
 AzureStorageLinkedService 链接将 Azure 存储帐户链接到数据工厂。 已根据[先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)，在此存储帐户中创建了一个容器并上传了数据。   
 
@@ -487,7 +486,7 @@ Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务�
     Write-Host $results
     ```
 
-**祝贺你！** 现已成功创建 Azure 数据工厂，其中包含可将数据从 Azure Blob 存储复制到 Azure SQL 数据库的管道。
+祝贺你！  现已成功创建 Azure 数据工厂，其中包含可将数据从 Azure Blob 存储复制到 Azure SQL 数据库的管道。
 
 ## <a name="monitor-pipeline"></a>监视管道
 本步骤使用数据工厂 REST API 来监视管道生成的切片。

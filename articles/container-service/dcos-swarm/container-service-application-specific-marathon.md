@@ -1,5 +1,5 @@
 ---
-title: 特定于应用程序或用户的 Marathon 服务
+title: （已弃用）特定于应用程序或用户的 Marathon 服务
 description: 创建特定于应用程序或用户的 Marathon 服务
 services: container-service
 author: rgardler
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 04/12/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 4ff263fe0ca4f435199127ed64faadee1c2527f9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1ba5ca54c0aa604289eab9c4475297b12580b69a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164534"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996121"
 ---
-# <a name="create-an-application-or-user-specific-marathon-service"></a>创建特定于应用程序或用户的 Marathon 服务
+# <a name="deprecated-create-an-application-or-user-specific-marathon-service"></a>（已弃用）创建特定于应用程序或用户的 Marathon 服务
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Azure 容器服务提供了一组主服务器，我们可以在上面预配置 Apache Mesos 和 Marathon。 这些服务可用于在群集上安排应用程序，但最好不要将主服务器用于此目的。 例如，调整 Marathon 的配置需要登录到主服务器本身并执行更改，该过程鼓励使用与标准稍有不同并需要单独监控和管理的唯一主服务器。 此外，一个团队所需的配置可能并不是另一个团队的最佳配置。
 

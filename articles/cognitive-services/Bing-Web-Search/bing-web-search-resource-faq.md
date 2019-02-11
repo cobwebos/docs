@@ -1,21 +1,22 @@
 ---
 title: 常见问题解答 (FAQ) - 必应 Web 搜索 API
 titleSuffix: Azure Cognitive Services
-description: 获取有关必应 Web 搜索 API 的常见问题解答。
+description: 获取有关使用必应 Web 搜索 API 的常见问题解答。
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: troubleshooting
 ms.date: 10/06/2017
 ms.author: aahi
-ms.openlocfilehash: dbff161f96949100703451a64875079288574014
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec2018
+ms.openlocfilehash: d11165b22665eec09e5025a4daa5ecd1171b7d80
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162380"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159023"
 ---
 # <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 
@@ -65,4 +66,4 @@ CORS 代理安装起来很简单，可便于[教程应用](tutorial-bing-web-sea
 
 ## <a name="see-also"></a>另请参阅
 
- [Stack Overflow：认知服务](http://stackoverflow.com/questions/tagged/bing-api)
+ [堆栈溢出：认知服务](http://stackoverflow.com/questions/tagged/bing-api)

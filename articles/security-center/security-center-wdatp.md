@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
+ms.date: 12/13/2018
 ms.author: barclayn
-ms.openlocfilehash: 4bd2b72596912d968ad6fc323ce32e620336d932
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b73bf3e542801e58fbda6232eb063305785ce643
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316984"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536264"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender 高级威胁防护与 Azure 安全中心
 
@@ -27,19 +27,19 @@ Azure 安全中心通过与 [Windows Defender 高级威胁防护](https://www.mi
 
 Azure 安全中心客户现在可以使用 Windows Defender ATP 的功能：
 
-- **下一代后期安全漏洞检测传感器**：Windows 服务器的 Windows Defender ATP 传感器收集各种各样的行为信号。
+- **下一代入侵后检测传感器**：Windows 服务器的 Windows Defender ATP 传感器收集各种各样的行为信号。
 
-- **基于分析的由云支持的后期安全漏洞检测**：Windows Defender ATP 能够快速适应不断变化的威胁。 它使用高级分析和大数据。 Windows Defender ATP 借助 Intelligent Security Graph 的强大功能得以增强，并结合 Windows、Azure 和 Office 中的信号来检测未知威胁。 它提供可以采取措施的警报，并可让你快速做出响应。
+- **基于分析的、由云提供支持的入侵后检测**：Windows Defender ATP 可快速应对不断变化的威胁。 它使用高级分析和大数据。 Windows Defender ATP 借助 Intelligent Security Graph 的强大功能得以增强，并结合 Windows、Azure 和 Office 中的信号来检测未知威胁。 它提供可以采取措施的警报，并可让你快速做出响应。
 
 - **威胁智能**：Windows Defender ATP 可识别攻击者使用的工具、方法和过程。 检测这些信息后，它会生成警报。 它使用 Microsoft 威胁猎人和安全团队生成的，并由合作伙伴提供的情报补充的数据。
 
 以下功能现已在 Azure 安全中心推出：
 
-- **自动载入**：对于载入 Azure 安全中心的 Windows 服务器，将自动启用 Windows Defender ATP 传感器。
+- **自动加入**：对于加入 Azure 安全中心的 Windows 服务器，将自动启用 Windows Defender ATP 传感器。
 
-- **单一监视视图**：Azure 安全中心控制台显示 Windows Defender ATP 警报。
+- **单一虚拟管理平台**：Azure 安全中心控制台显示 Windows Defender ATP 警报。
 
-- **详细的机器调查**：Azure 安全中心客户可以访问 Windows Defender ATP 控制台来执行详细调查，以发现安全漏洞的范围。
+- **详细的计算机调查**：Azure 安全中心客户可以访问 Windows Defender ATP 控制台来执行详细调查，以发现入侵的范围。
 
 ![Azure 安全中心，其中显示了警报列表以及有关每条警报的一般信息](media/security-center-wdatp/image1.png)
 
@@ -57,7 +57,21 @@ Azure 安全中心客户现在可以使用 Windows Defender ATP 的功能：
 
 仅支持标准服务层的订阅中的服务器。
 
-## <a name="onboarding-instructions"></a>载入说明
+## <a name="onboarding-servers-to-security-center"></a>将服务器加入安全中心 
+
+若要将服务器加入到安全中心，请从“Windows Defender ATP 服务器加入”单击“到 Azure 安全中心加入服务器”。
+
+1. 在“加入”边栏选项卡中选择或创建用于存储数据的工作区。 <br>
+2. 如果看不到所有工作区，可能是由于缺少权限，请确保已将工作区设置到“Azure 安全标准”层。 有关详细信息，请参阅[升级到安全中心的标准层以增强安全性](security-center-pricing.md)。
+    
+3.  选择“添加服务器”以查看有关如何安装 Microsoft Monitoring Agent 的说明。 
+
+4.  加入后，可以在“计算和应用”下监视计算机。
+
+  ![加入计算机](media/security-center-wdatp/onboard-computers.png)
+
+
+## <a name="enable-windows-defender-atp-integration"></a>启用 Windows Defender ATP 集成
 
 若要查看是否启用了 Windows Defender ATP 集成，请选择“安全中心” > “安全策略” > “订阅” > “编辑设置”。
 
@@ -105,6 +119,6 @@ Azure 安全中心客户现在可以使用 Windows Defender ATP 的功能：
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 Azure 安全中心设置安全策略](security-center-azure-policy.md)：了解如何配置 Azure 订阅和资源组的安全策略。
-- [在 Azure 安全中心管理安全建议](security-center-recommendations.md)：了解安全建议如何帮助保护 Azure 资源。
-- [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md)：了解如何监视 Azure 资源的运行状况。
+- [在 Azure 安全中心设置安全策略](tutorial-security-policy.md)：了解如何为 Azure 订阅和资源组配置安全策略。
+- [管理 Azure 安全中心的安全建议](security-center-recommendations.md)：了解建议如何帮助你保护 Azure 资源。
+- [在 Azure 安全中心进行安全运行状况监视](security-center-monitoring.md)：了解如何监视 Azure 资源的运行状况。

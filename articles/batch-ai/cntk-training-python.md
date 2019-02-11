@@ -15,14 +15,17 @@ ms.devlang: Python
 ms.topic: quickstart
 ms.date: 08/15/2018
 ms.author: danlep
-ms.openlocfilehash: 0c805deb85a999d3c23be24b81c1d97ed5fe55eb
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 86ce9fd77ccf83ed6f5f1c722b4c8c809ef0eedf
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057427"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407909"
 ---
 # <a name="run-a-cntk-training-job-using-the-azure-python-sdk"></a>通过 Azure Python SDK 运行 CNTK 训练作业
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 本文介绍如何使用 Azure Python SDK 通过 Batch AI 服务定型示例 Microsoft Cognitive Toolkit (CNTK) 模型。
 

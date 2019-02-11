@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: manayar
-ms.openlocfilehash: 29c0a1a15db7670d83ff384a1ba0f37499389ef7
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 601c23bbcddeaeff89e1d1b1a4be8cb6b0256e51
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741872"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258775"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>了解虚拟机规模集模板
 [Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)是部署成组的相关资源的好办法。 本系列教程演示如何创建最小的可行规模集模板，以及如何修改此模板以满足各种场景。 所有示例都来自此 [GitHub 存储库](https://github.com/gatneil/mvss)。 
@@ -70,7 +70,7 @@ Resource Manager 模板还可用于定义以后要在模板中使用的变量。
    "resources": [
 ```
 
-所有资源都需要 `type`、`name`、`apiVersion` 和 `location` 属性。 此示例的第一个资源具有类型 `Microsft.Network/virtualNetwork`、名称 `myVnet` 和 apiVersion `2016-03-30`。 （若要找出资源类型的最新 API 版本，请参阅 [Azure REST API 文档](https://docs.microsoft.com/rest/api/)。）
+所有资源都需要 `type`、`name`、`apiVersion` 和 `location` 属性。 此示例的第一个资源具有类型 [Microsoft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks)、名称 `myVnet` 和 apiVersion `2016-03-30`。 （若要查找资源类型的最新 API 版本，请参阅 [Azure 资源管理器模板参考](/azure/templates/)。）
 
 ```json
      {
@@ -124,7 +124,7 @@ Resource Manager 模板还可用于定义以后要在模板中使用的变量。
        ],
 ```
 ## <a name="specify-scale-set-properties"></a>指定规模集属性
-规模集具有多个用于自定义规模集中 VM 的属性。 有关这些属性的完整列表，请参阅[规模集 REST API 文档](https://docs.microsoft.com/rest/api/virtualmachinescalesets/create-or-update-a-set)。 在本教程中，仅设置一些常用属性。
+规模集具有多个用于自定义规模集中 VM 的属性。 有关这些属性的完整列表，请参阅[模板参考](/azure/templates/microsoft.compute/virtualmachinescalesets)。 在本教程中，仅设置一些常用属性。
 ### <a name="supply-vm-size-and-capacity"></a>提供 VM 大小和容量
 规模集需要知道要创建的 VM 的大小（“sku name”） 和要创建的此类 VM的 数量（“sku capacity”）。 若要查看可用的 VM 大小，请参阅 [VM 大小文档](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes)。
 

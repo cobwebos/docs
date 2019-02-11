@@ -8,14 +8,14 @@ ms.service: security
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: jomolesk
-ms.openlocfilehash: 8c5e36daf8d404bd4db3a53769db45754f2734be
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 60f0c7db8e97c9fb90f18e41e9c8ae872d348331
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301977"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600670"
 ---
-# <a name="azure-security-and-compliance-blueprint-paas-web-application-for-uk-nhs"></a>Azure 安全性和符合性蓝图：符合 UK NHS 的 PaaS Web 应用程序
+# <a name="azure-security-and-compliance-blueprint-paas-web-application-for-uk-nhs"></a>Azure 安全性与合规性蓝图：面向英国 NHS 的 PaaS Web 应用程序
 
 ## <a name="overview"></a>概述
 
@@ -61,9 +61,9 @@ ms.locfileid: "44301977"
 
 以下部分详细描述了部署和实施要素。
 
-**Azure 资源管理器**：客户可以使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)以组的方式处理解决方案中的资源。 客户可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 客户可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 资源管理器提供安全、审核和标记功能，以帮助客户在部署后管理资源。
+**Azure 资源管理器**：[Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)使客户能够作为一个组使用解决方案中的资源。 客户可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 客户可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 资源管理器提供安全、审核和标记功能，以帮助客户在部署后管理资源。
 
-**应用服务环境 v2**：Azure 应用服务环境是一项应用服务功能，可提供完全隔离的专用环境，进而大规模地安全运行应用服务应用程序。
+**应用服务环境 v2**：Azure 应用服务环境是一项应用服务功能，可提供完全隔离和专用的环境，以便高度安全地运行应用服务应用程序。
 
 应用服务环境是隔离的，只运行单个应用程序，并始终部署到虚拟网络中。 此隔离功能使参考体系结构能够保持完全的租户隔离，从 Azure 的多租户环境中删除该租户。 此隔离功能必须满足 UK NHS 第 3 项原则的要求。 客户对于入站和出站的应用网络流量都有更细微的控制，且应用程序可以通过虚拟网络创建与本地公司资源的高速安全连接。 客户可根据负载指标、可用预算或定义的计划，在应用服务环境中“自动缩放”。
 
@@ -79,13 +79,13 @@ ms.locfileid: "44301977"
 - [Web 应用程序防火墙 - 限制数据](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall)
 - 允许 [Azure SQL 数据库流量](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-network-architecture-overview)
 
-**Azure Web 应用**：客户使用 [Azure Web 应用](https://docs.microsoft.com/azure/app-service/)可以采用所选编程语言构建和托管 Web 应用程序，而无需管理基础结构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps 或任何 Git 存储库进行自动部署。
+**Azure Web 应用**：[Azure 应用服务](https://docs.microsoft.com/azure/app-service/)让客户可以采用所选编程语言构建和托管 Web 应用程序，而无需管理基础结构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps 或任何 Git 存储库进行自动部署。
 
 ### <a name="virtual-network"></a>虚拟网络
 
 体系结构定义了一个地址空间为 10.200.0.0/16 的专用虚拟网络。
 
-**网络安全组**：[网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)包含允许或拒绝虚拟网络中的流量的访问控制列表。 网络安全组可用于在子网或单个虚拟机级别保护流量。 存在以下网络安全组：
+**网络安全组**：[网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)包含允许或拒绝虚拟网络中流量的访问控制列表。 网络安全组可用于在子网或单个虚拟机级别保护流量。 存在以下网络安全组：
 
 - 应用程序网关有 1 个网络安全组
 - 应用服务环境有 1 个网络安全组
@@ -110,9 +110,9 @@ ms.locfileid: "44301977"
 
 该体系结构通过加密、数据库审核和其他措施保护静态数据。
 
-**Azure 存储**：为了满足静态数据加密要求，所有 [Azure 存储](https://azure.microsoft.com/services/storage/)均使用[存储服务加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)。 这有助于保护数据，以支持 NHS Digital 定义的组织安全承诺和符合性要求。
+**Azure 存储**：为了满足静态数据加密要求，所有 [Azure 存储](https://azure.microsoft.com/services/storage/)都使用[存储服务加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)。 这有助于保护数据，以支持 NHS Digital 定义的组织安全承诺和符合性要求。
 
-**Azure 磁盘加密**：[Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)利用 Windows 的 BitLocker 功能为数据磁盘提供卷加密。 此解决方案与 Azure Key Vault 集成，可帮助控制和管理磁盘加密密钥。
+**Azure 磁盘加密**：[Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)利用 Windows 的 BitLocker 功能，为数据磁盘提供卷加密。 此解决方案与 Azure Key Vault 集成，可帮助控制和管理磁盘加密密钥。
 
 **Azure SQL 数据库**：Azure SQL 数据库实例使用以下数据库安全措施：
 
@@ -136,7 +136,7 @@ ms.locfileid: "44301977"
 
 ### <a name="security"></a>安全
 
-**机密管理**：解决方案使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 以下 Azure Key Vault 功能可帮助客户保护和访问此类数据：
+**机密管理**：此解决方案使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 以下 Azure Key Vault 功能可帮助客户保护和访问此类数据：
 
 - 根据需要配置高级访问权限策略。
 - 使用对密钥和机密所需的最低权限来定义 Key Vault 访问策略。
@@ -146,11 +146,11 @@ ms.locfileid: "44301977"
 - 启用 Key Vault 的诊断日志时，保留期设置为至少 365 天。
 - 对密钥进行允许的加密操作时，仅限必需的操作。
 
-**Azure 安全中心**：借助[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)，此解决方案可以在工作负荷中集中应用和管理安全策略，限制威胁曝露，以及检测和应对攻击。 此外，Azure 安全中心会访问 Azure 服务的现有配置，以提供配置与服务建议来帮助改善安全状况和保护数据。
+**Azure 安全中心**：借助 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)，此解决方案可在工作负载中集中应用和管理安全策略、限制威胁暴露，以及检测和应对攻击。 此外，Azure 安全中心会访问 Azure 服务的现有配置，以提供配置与服务建议来帮助改善安全状况和保护数据。
 
 Azure 安全中心使用各种检测功能，提醒客户针对其环境的潜在攻击。 这些警报包含有关触发警报的内容、目标资源以及攻击源的重要信息。 Azure 安全中心有一组[预定义的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)，这些警报在出现威胁或可疑活动时触发。 客户可以使用 Azure 安全中心的[自定义警报规则](https://docs.microsoft.com/azure/security-center/security-center-custom-alert)，根据从环境中收集到的数据定义新的安全警报。
 
-Azure 安全中心提供区分优先级的安全警报和事件，以方便发现和解决潜在安全问题。 针对检测到的每种威胁生成[威胁智能报告](https://docs.microsoft.com/azure/security-center/security-center-threat-report)，以帮助事件响应团队调查和解决威胁。
+Azure 安全中心提供区分优先级的安全警报和事件，以方便发现和解决潜在安全问题。 针对检测到的每种威胁生成[威胁智能报告](https://docs.microsoft.com/azure/security-center/security-center-threat-report)，帮助事件响应团队调查和解决威胁。
 
 **Azure 应用程序网关**：体系结构使用配置了 Web 应用程序防火墙并启用了 OWASP 规则集的 Azure 应用程序网关，来降低安全漏洞风险。 其他功能包括：
 
@@ -166,16 +166,16 @@ Azure 安全中心提供区分优先级的安全警报和事件，以方便发�
 ### <a name="logging-and-auditing"></a>日志记录和审核
 
 Azure 服务广泛记录系统和用户活动以及系统运行状况：
-- **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
+- **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的见解。 活动日志可帮助确定操作的发起方、发生的时间和状态。
 - **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。 所有诊断日志都将写入集中式加密 Azure 存储帐户进行存档。 保留期是允许用户配置的，最长为 730 天，具体取决于组织的保留期要求。
 
 **Log Analytics**：这些日志将整合到 [Log Analytics](https://azure.microsoft.com/services/log-analytics/) 中进行处理、存储和在仪表板上报告。 收集以后，数据会按数据类型整理到不同的表中，这样就可以对所有数据进行集中分析，不管其最初来源是什么。 此外，Azure 安全中心与 Log Analytics 集成，使客户能够使用 Log Analytics 查询来访问其安全事件数据，并将这些数据与其他服务中的数据合并。
 
 以下 Log Analytics [管理解决方案](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)是此体系结构的一部分：
--   [Active Directory 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署服务器基础结构的优先建议列表。
-- [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并为客户提供特定于部署服务器基础结构的优先建议列表。
+-   [Active Directory 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署的服务器基础结构的优先建议列表。
+- [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并为客户提供特定于部署的服务器基础结构的优先建议列表。
 - [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：代理运行状况解决方案报告已部署代理的数量及其地理分布，以及无响应的代理数量和提交操作数据的代理数量。
--   [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：Activity Log Analytics 解决方案可帮助分析客户所有 Azure 订阅的 Azure 活动日志。
+-   [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：Activity Log Analytics 解决方案可帮助分析客户的所有 Azure 订阅的 Azure 活动日志。
 
 **Azure 自动化**：[Azure 自动化](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)可以存储、运行和管理 Runbook。 在此解决方案中，Runbook 可帮助从 Azure SQL 数据库收集日志。 自动化[更改跟踪](https://docs.microsoft.com/azure/automation/automation-change-tracking)解决方案使得客户能够轻松识别环境中的更改。
 

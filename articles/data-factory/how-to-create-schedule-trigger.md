@@ -9,16 +9,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: c27c9c16e493dc596856288c4dbecff655e89396
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 70f8533843668a86607e31a551e6ebf9abeab6c4
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976343"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016624"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>创建按计划运行管道的触发器
 本文提供有关计划触发器和创建、启动和监视计划触发器的步骤的信息。 有关其他类型的触发器，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)。
@@ -67,7 +66,7 @@ ms.locfileid: "51976343"
     ![监视触发器运行](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-本部分介绍如何使用 Azure PowerShell 创建、启动和监视计划触发器。 若要查看此示例的运行过程，请先完成[快速入门：使用 Azure PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。 然后，将以下代码添加到 main 方法，该代码用于创建并启动一个每 15 分钟运行一次的计划触发器。 该触发器与快速入门中创建的名为 **Adfv2QuickStartPipeline** 的管道相关联。
+本部分介绍如何使用 Azure PowerShell 创建、启动和监视计划触发器。 若要查看此示例运行，请先查看[快速入门：使用 Azure PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。 然后，将以下代码添加到 main 方法，该代码用于创建并启动一个每 15 分钟运行一次的计划触发器。 该触发器与快速入门中创建的名为 **Adfv2QuickStartPipeline** 的管道相关联。
 
 1. 在 C:\ADFv2QuickStartPSH\ 文件夹中创建一个名为 **MyTrigger.json** 的且包含以下内容的 JSON 文件：
 
@@ -143,7 +142,7 @@ ms.locfileid: "51976343"
 
 
 ## <a name="net-sdk"></a>.NET SDK
-本部分介绍如何使用 .NET SDK 创建、启动和监视触发器。 若要查看此示例的运行过程，请先完成[快速入门：使用 .NET SDK 创建数据工厂](quickstart-create-data-factory-dot-net.md)。 然后，将以下代码添加到 main 方法，该代码用于创建并启动一个每 15 分钟运行一次的计划触发器。 该触发器与快速入门中创建的名为 **Adfv2QuickStartPipeline** 的管道相关联。
+本部分介绍如何使用 .NET SDK 创建、启动和监视触发器。 若要查看此示例运行，请先查看[快速入门：使用 .NET SDK 创建数据工厂](quickstart-create-data-factory-dot-net.md)。 然后，将以下代码添加到 main 方法，该代码用于创建并启动一个每 15 分钟运行一次的计划触发器。 该触发器与快速入门中创建的名为 **Adfv2QuickStartPipeline** 的管道相关联。
 
 若要创建并启动一个每 15 分钟运行一次的计划触发器，请将以下代码添加到 main 方法：
 
@@ -223,7 +222,7 @@ ms.locfileid: "51976343"
 
 
 ## <a name="python-sdk"></a>Python SDK
-本部分介绍如何使用 Python SDK 创建、启动和监视触发器。 若要查看此示例的运行过程，请先完成[快速入门：使用 Python SDK 创建数据工厂](quickstart-create-data-factory-python.md)。 然后，在 Python 脚本中的“monitor the pipeline run”代码块之后添加以下代码块。 此代码将创建在指定的开始时间和结束时间之间每 15 分钟运行一次的计划触发器。 请将 **start_time** 变量更新为当前 UTC 时间，将 **end_time** 变量更新为比当前 UTC 时间晚一小时。
+本部分介绍如何使用 Python SDK 创建、启动和监视触发器。 若要查看此示例运行，请先查看[快速入门：使用 Python SDK 创建数据工厂](quickstart-create-data-factory-python.md)。 然后，在 Python 脚本中的“monitor the pipeline run”代码块之后添加以下代码块。 此代码将创建在指定的开始时间和结束时间之间每 15 分钟运行一次的计划触发器。 请将 **start_time** 变量更新为当前 UTC 时间，将 **end_time** 变量更新为比当前 UTC 时间晚一小时。
 
 ```python
     # Create a trigger
@@ -246,7 +245,7 @@ ms.locfileid: "51976343"
 可以使用 Azure 资源管理器模板创建触发器。 有关分步说明，请参阅[使用资源管理器模板创建 Azure 数据工厂](quickstart-create-data-factory-resource-manager-template.md)。  
 
 ## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>将触发器开始时间传递给管道
-Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区的数据：**SliceStart**、**SliceEnd**、**WindowStart** 和 **WindowEnd**。 在 Azure 数据工厂的当前版本中，可以使用管道参数实现此行为。 触发器的开始时间和计划时间设置为管道参数的值。 在以下示例中，触发器的计划时间作为值传递给 **scheduledRunTime** 管道参数：
+Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区的数据：SliceStart、SliceEnd、WindowStart 和 WindowEnd。 在 Azure 数据工厂的当前版本中，可以使用管道参数实现此行为。 触发器的开始时间和计划时间设置为管道参数的值。 在以下示例中，触发器的计划时间作为值传递给 **scheduledRunTime** 管道参数：
 
 ```json
 "parameters": {
@@ -275,7 +274,7 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
           "weekDays": : [<<Monday-Sunday>>],
           "minutes": [<<0-59>>],
           "monthDays": [<<1-31>>],
-          "monthlyOccurences": [
+          "monthlyOccurrences": [
                {
                     "day": <<Monday-Sunday>>,
                     "occurrence": <<1-5>>
@@ -362,7 +361,7 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
 | **分钟数** | 运行触发器的小时中的分钟。 | <ul><li>Integer</li><li>整数数组</li></ul>
 | **小时数** | 运行触发器的日期中的小时。 | <ul><li>Integer</li><li>整数数组</li></ul> |
 | **工作日** | 运行触发器的工作日。 此值只能使用与星期相关的频率来指定。 | <ul><li>星期一、星期二、星期三、星期四、星期五、星期六、星期日</li><li>星期值的数组（最大数组值为 7）</li><li>星期值不区分大小写</li></ul> |
-| **monthlyOccurrences** | 运行触发器的月份日期。 此值只能使用与月份相关的频率来指定。 | <ul><li>**monthlyOccurence** 对象的数组：`{ "day": day,  "occurrence": occurence }`。</li><li>**day** 属性表示运行触发器那天为星期几。 例如，如果 **monthlyOccurrences** 属性的 **day** 值为 `{Sunday}`，则表示在当月的每个星期日运行触发器。 **day** 属性是必需的。</li><li>**occurrence** 属性是指定的 **day** 在当月的匹配项。 例如，如果 **monthlyOccurrences** 属性的 **day** 和 **occurrence** 值为 `{Sunday, -1}`，则表示在当月的最后一个星期日运行触发器。 **occurrence** 属性是可选的。</li></ul> |
+| **monthlyOccurrences** | 运行触发器的月份日期。 此值只能使用与月份相关的频率来指定。 | <ul><li>MonthlyOccurrence 对象的数组：`{ "day": day,  "occurrence": occurrence }`。</li><li>**day** 属性表示运行触发器那天为星期几。 例如，如果 **monthlyOccurrences** 属性的 **day** 值为 `{Sunday}`，则表示在当月的每个星期日运行触发器。 **day** 属性是必需的。</li><li>**occurrence** 属性是指定的 **day** 在当月的匹配项。 例如，如果 **monthlyOccurrences** 属性的 **day** 和 **occurrence** 值为 `{Sunday, -1}`，则表示在当月的最后一个星期日运行触发器。 **occurrence** 属性是可选的。</li></ul> |
 | **monthDays** | 运行触发器的月份日期。 此值只能使用与月份相关的频率来指定。 | <ul><li><= -1 且 >= -31 的任何值</li><li>>= 1 且 <= 31 的任何值</li><li>值组成的数组</li></ul> |
 
 

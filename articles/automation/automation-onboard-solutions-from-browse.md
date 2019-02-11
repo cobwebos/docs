@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 5bb36c693db5b2d7d46b772fd8b92bcda3667dc7
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f83c05f4d1dcb93bd424a733866f85edf04bbd05
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039422"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745260"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>在多台 VM 上启用更新管理、更改跟踪和清单解决方案
 
@@ -59,6 +59,25 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 ![无工作区](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
+在启用解决方案时，只有某些区域支持链接 Log Analytics 工作区和自动化帐户。
+
+下表显示了受支持的映射：
+
+|**Log Analytics 工作区区域**|**Azure 自动化区域**|
+|---|---|
+|AustraliaSoutheast|AustraliaSoutheast|
+|CanadaCentral|CanadaCentral|
+|CentralIndia|CentralIndia|
+|EastUS|EastUS2|
+|JapanEast|JapanEast|
+|SoutheastAsia|SoutheastAsia|
+|WestCentralUS|WestCentralUS|
+|西欧|西欧|
+|UKSouth|UKSouth|
+|USGovVirginia|USGovVirginia|
+|EastUS2EUAP|CentralUSEUAP|
+|美国西部 2|美国西部 2|
+
 取消选择不想启用的任何虚拟机旁边的复选框。 无法启用的虚拟机已被取消选择。
 
 单击“启用”以启用解决方案。 启用此解决方案最长需要 15 分钟的时间。
@@ -80,13 +99,13 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 1. 从 Azure 门户中打开自动化帐户，并在“自动化帐户”页左侧的“相关资源”部分下，选择“链接工作区”。
 
-1. 在“取消链接工作区”页上，单击“取消链接工作区”。
+2. 在“取消链接工作区”页上，单击“取消链接工作区”。
 
    ![“取消链接工作区”页](media/automation-onboard-solutions-from-browse/automation-unlink-workspace-blade.png).
 
    系统会提示用户确认是否要继续。
 
-1. 当 Azure 自动化尝试从 Log Analytics 工作区中取消链接该帐户时，可以在菜单中的“通知”下跟踪进度。
+3. 当 Azure 自动化尝试从 Log Analytics 工作区中取消链接该帐户时，可以在菜单中的“通知”下跟踪进度。
 
 如果使用了“更新管理”解决方案，可能会选择要删除在删除该解决方案后不再需要的以下项。
 
@@ -106,37 +125,37 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 ### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>VM 向一个不同的工作区进行报告：“\<workspaceName\>”。  请更改配置以将其用于启用
 
-**原因**：此错误表明你尝试载入的 VM 向另一个工作区进行报告。
+**原因**：此错误表明你尝试载入的 VM 向另一个工作区报告。
 
-**解决方案**：单击“用作配置”来更改目标自动化帐户和 Log Analytics 工作区。
+**解决方案**；单击“用作配置”来更改目标自动化帐户和 Log Analytics 工作区。
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>VM 向此订阅中不可用的工作区进行报告
 
-**原因**：虚拟机向其进行报告的工作区：
+**原因**：虚拟机向其报告的工作区：
 
 * 位于一个不同的订阅中，或者
 * 不再存在，或者
 * 位于你无权访问的资源组中
 
-**解决方案**：找到与 VM 向其进行报告的工作区关联的自动化帐户，并通过更改作用域配置来载入虚拟机。
+**解决方案**；找到与 VM 向其报告的工作区关联的自动化帐户，并通过更改作用域配置来载入虚拟机。
 
 ### <a name="vm-operating-system-version-or-distribution-is-not-supported"></a>VM 操作系统版本或分发版不受支持
 
-**原因：** 并非所有 Linux 分发版或所有 Windows 版本都支持此解决方案。
+原因：并非所有 Linux 分发版或所有 Windows 版本都支持此解决方案。
 
-**解决方案：** 指的是解决方案的[受支持客户端列表](automation-update-management.md#clients)。
+**解决方案：** 请参阅解决方案的[受支持客户端列表](automation-update-management.md#clients)。
 
 ### <a name="classic-vms-cannot-be-enabled"></a>无法启用经典 VM
 
 **原因**：使用经典部署模型的虚拟机不受支持。
 
-**解决方案**：将虚拟机迁移到资源管理器部署模型。 若要了解如何执行此操作，请参阅[迁移经典部署模型资源](../virtual-machines/windows/migration-classic-resource-manager-overview.md)。
+**解决方案**；将虚拟机迁移到资源管理器部署模型。 若要了解如何执行此操作，请参阅[迁移经典部署模型资源](../virtual-machines/windows/migration-classic-resource-manager-overview.md)。
 
 ### <a name="vm-is-stopped-deallocated"></a>VM 已停止。 （已解除分配）
 
-**原因**：虚拟机未处于**正在运行**状态。
+**原因**：虚拟机未处于“正在运行”状态。
 
-**解决方案**：为了将 VM 载入到解决方案，VM 必须正在运行。 单击“启动 VM”内联链接来启动 VM 且不离开页面。
+**解决方案**；为了将 VM 载入到解决方案，VM 必须处于运行状态。 单击“启动 VM”内联链接来启动 VM 且不离开页面。
 
 ## <a name="next-steps"></a>后续步骤
 

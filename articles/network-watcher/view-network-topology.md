@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: e5e9901d6265b48a7b57cdf2c146ebb623ad5c3d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 501659a93306342c7a212d135b4fdd89be096451
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992196"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428153"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>查看 Azure 虚拟网络的拓扑
 
@@ -46,7 +46,7 @@ ms.locfileid: "46992196"
 
 6. 选择“下载拓扑”，以 svg 格式将映像下载为可编辑文件。
 
-图中所示资源是虚拟网络中的网络组件子集。 例如，在显示网络安全组时，其中的安全规则不在图中显示。 线条表示以下两种关系中的一种：包含或关联，不过并未在图中进行区分。 若要查看虚拟网络中资源的完整列表以及资源之间关系的类型，请使用 [PowerShell](#powershell) 或 [Azure CLI](#azure-cli) 生成拓扑。
+图中所示资源是虚拟网络中的网络组件子集。 例如，在显示网络安全组时，其中的安全规则不在图中显示。 虽然未在图中进行区分，线条表示以下两种关系中的一种：包含或关联。 若要查看虚拟网络中资源的完整列表以及资源之间关系的类型，请使用 [PowerShell](#powershell) 或 [Azure CLI](#azure-cli) 生成拓扑。
 
 ## <a name = "azure-cli"></a>查看拓扑 - Azure CLI
 
@@ -85,7 +85,7 @@ ms.locfileid: "46992196"
 
 可以运行后续步骤中的命令：
 - 在 Azure Cloud Shell 中选择任意命令右上角的“试用”。 Azure Cloud Shell 是免费的交互式 Shell，它预安装有常用 Azure 工具并将其配置为与帐户一起使用。
-- 通过在计算机中运行 PowerShell。 如果在计算机中运行 PowerShell，则本文中的步骤要求使用 AzureRm 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。
+- 通过在计算机中运行 PowerShell。 如果在计算机中运行 PowerShell，则本文中的步骤要求使用 AzureRm 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 来创建与 Azure 的连接。
 
 所用帐户必须拥有所需的[权限](required-rbac-permissions.md)。
 
@@ -138,8 +138,8 @@ ms.locfileid: "46992196"
 
 在拓扑中返回的所有资源具有以下属性：
 
-- **名称**：资源的名称。
-- **ID**：资源的 URI。
+- **名称**：资源的名称
+- **Id**：资源的 URI。
 - **位置**：资源所在的 Azure 区域。
 - **关联**：引用对象的关联列表。 每个关联包含以下属性：
     - **AssociationType**：引用子对象和父对象之间的关系。 有效值为 *Contains* 或 *Associated*。

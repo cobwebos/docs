@@ -3,19 +3,19 @@ title: 向充当 Azure AD B2B 用户的本地托管合作伙伴帐户授予对�
 description: 使用 Azure AD B2B 协作时所用的相同凭据，向本地托管的外部合作伙伴授予对本地和云资源的访问权限。
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 722ab51d0f591b8f16924d1d5661385267b7f0e6
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: bdc3e4999eac66e3a21817ac1fc55a46d84aa58a
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295149"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076276"
 ---
 # <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>使用 Azure AD B2B 协作向本地托管的合作伙伴帐户授予对云资源的访问权限
 

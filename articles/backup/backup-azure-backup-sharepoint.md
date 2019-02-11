@@ -2,18 +2,18 @@
 title: 在 Azure 中使用 DPM/Azure 备份服务器保护 SharePoint 场
 description: 本文概述如何在 Azure 中使用 DPM/Azure 备份服务器保护 SharePoint 场
 services: backup
-author: adigan
-manager: Nkolli1
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/18/2018
-ms.author: adigan
-ms.openlocfilehash: b3b4d42d9a48d02639019f815cbf4fca15060771
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.date: 01/30/2019
+ms.author: kasinh
+ms.openlocfilehash: 79b4962e1c37858fbd52d65aff56476e55ffa371
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946039"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296454"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>将 SharePoint 场备份到 Azure
 使用 System Center Data Protection Manager (DPM) 将 SharePoint 场备份到 Microsoft Azure，其方法与备份其他数据源极为类似。 Azure 备份提供灵活的备份计划来创建每日、每周、每月或每年备份点，并提供适用于各种备份点的保留策略选项。 利用 DPM，不仅可以存储本地磁盘副本以实现快速的恢复时间目标 (RTO)，还可以将副本存储到 Azure 以进行经济高效的长期保留。
@@ -232,11 +232,11 @@ DPM 以 LocalSystem 帐户的形式运行。 若要备份 SQL Server 数据库�
 问：哪些 DPM 版本支持 SQL Server 2014 和 SQL 2012 (SP2)？<br>
 答：DPM 2012 R2 更新汇总 4 支持两者。
 
-问：如果使用 SQL AlwaysOn（使用磁盘上保护）配置了 SharePoint，我是否能将 SharePoint 项恢复到原始位置？<br>
+问：如果使用 SQL AlwaysOn（使用磁盘上保护）配置了 SharePoint，我能否将 SharePoint 项恢复到原始位置？<br>
 答：可以，该项可以恢复到原始 SharePoint 站点。
 
-问：如果使用 SQL AlwaysOn 配置了 SharePoint，我是否能将 SharePoint 数据库恢复到原始位置？<br>
-答：由于 SharePoint 数据库是在 SQL AlwaysOn 中配置的，因此除非删除可用性组，否则无法修改它们。 因此，DPM 无法将数据库还原到原始位置。 可以将 SQL Server 数据库恢复到另一个 SQL Server 实例。
+问：如果使用 SQL AlwaysOn 配置了 SharePoint，我能否将 SharePoint 数据库恢复到原始位置？<br>
+答：由于 SharePoint 数据库是在 SQL AlwaysOn 中配置的，因此，除非删除可用性组，否则无法修改它们。 因此，DPM 无法将数据库还原到原始位置。 可以将 SQL Server 数据库恢复到另一个 SQL Server 实例。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解有关使用 DPM 保护 SharePoint 的详细信息 — 参阅[视频系列 — 使用 DPM 保护 SharePoint](http://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)

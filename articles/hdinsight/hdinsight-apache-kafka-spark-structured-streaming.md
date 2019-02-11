@@ -1,26 +1,26 @@
 ---
-title: '教程：Apache Spark 结构化流式处理与 Apache Kafka - Azure HDInsight '
+title: 教程：Apache Spark 结构化流式处理与 Apache Kafka - Azure HDInsight
 description: 了解如何使用 Apache Spark 流式处理将数据传入或传出 Apache Kafka。 本教程使用 Spark on HDInsight 中的 Jupyter Notebook 流式传输数据。
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5f59f14f93b5bfc79c07b096a07ac109be0bedb6
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4dcf482e02d38e18b7b86fc57565a47510627d44
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499096"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652858"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>教程：将 Apache Spark 结构化流式处理与 Apache Kafka on HDInsight 配合使用
 
 本教程说明如何使用 [Apache Spark 结构化流式处理](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)和 [Apache Kafka](https://kafka.apache.org/) on Azure HDInsight 来读取和写入数据。
 
-Spark 结构化流式处理是建立在 Spark SQL 上的流处理引擎。 这允许以与批量计算相同的方式表达针对静态数据的流式计算。 
+Spark 结构化流式处理是建立在 Spark SQL 上的流处理引擎。 这允许以与批量计算相同的方式表达针对静态数据的流式计算。  
 
 本教程介绍如何执行下列操作：
 
@@ -41,7 +41,7 @@ Spark 结构化流式处理是建立在 Spark SQL 上的流处理引擎。 这�
 
 * 熟悉 Kafka 主题的创建。 有关详细信息，请参阅 [Apache Kafka on HDInsight 快速入门](kafka/apache-kafka-get-started.md)文档。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 本文档中的步骤需要一个包含 Spark on HDInsight 和 Kafka on HDInsight 群集的 Azure 资源组。 这些群集都位于 Azure 虚拟网络中，允许 Spark 群集直接与 Kafka 群集进行通信。
 > 
 > 为方便起见，本文档链接到了一个模板，该模板可创建所有所需 Azure 资源。 
@@ -118,7 +118,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 ![Azure 虚拟网络中的 Spark 和 Kafka 群集图表](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
 
-> [!NOTE]
+> [!NOTE]  
 > Kafka 服务仅限于虚拟网络内的通信。 通过 Internet 可访问群集上的其他服务，例如 SSH 和 Ambari。 有关可用于 HDInsight 的公共端口的详细信息，请参阅 [HDInsight 使用的端口和 URI](hdinsight-hadoop-port-settings-for-services.md)。
 
 若要创建 Azure 虚拟网络，然后在其中创建 Kafka 和 Spark 群集，请使用以下步骤：
@@ -135,7 +135,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     * Spark 2.2.0 on HDInsight 3.6 群集。
     * 包含 HDInsight 群集的 Azure 虚拟网络。
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > 本教程使用的结构化流式处理笔记本需要 Spark 2.2.0 on HDInsight 3.6。 如果使用早期版本的 Spark on HDInsight，则使用笔记本时会收到错误消息。
 
 2. 使用以下信息填充“自定义模板”部分的条目：
@@ -158,7 +158,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 4. 最后，选中“固定到仪表板”，并选择“购买”。 
 
-> [!NOTE]
+> [!NOTE]  
 > 创建群集可能需要长达 20 分钟的时间。
 
 ## <a name="upload-the-notebook"></a>上传 Notebook
@@ -198,7 +198,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 2. 找到要删除的资源组，然后右键单击列表右侧的“更多”按钮 (...)。
 3. 选择“删除资源组”，然后进行确认。
 
-> [!WARNING]
+> [!WARNING]  
 > 创建群集后便开始 HDInsight 群集计费，删除群集后停止计费。 群集以每分钟按比例收费，因此无需再使用群集时，应始终将其删除。
 > 
 > 删除 Kafka on HDInsight 群集会删除存储在 Kafka 中的任何数据。

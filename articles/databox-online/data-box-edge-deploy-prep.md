@@ -1,6 +1,6 @@
 ---
 title: 有关在 Azure 门户中做好准备以部署 Data Box Edge 的教程 | Microsoft Docs
-description: 本文为有关部署 Azure Data Box Edge 第一篇教程，涉及到如何在 Azure 门户中做好准备
+description: 本文为有关部署 Azure Data Box Edge 第一篇教程，涉及到如何在 Azure 门户中做好准备。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 10/08/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 35ac28d687c8bc6636a7d8e10f54ffb5b219a776
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 7764b0ceee1b540e9650d232b7087811d7376f28
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167454"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452082"
 ---
-# <a name="tutorial-prepare-to-deploy-azure-data-box-edge-preview"></a>教程：准备部署 Azure Data Box Edge（预览版）
+# <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>教程：准备部署 Azure Data Box Edge  
 
 
 本文是有关完全部署 Azure Data Box Edge 的教程系列的第一篇教程。 本教程介绍如何在 Azure 门户中做好准备，以部署 Data Box Edge 资源。 
@@ -33,7 +33,7 @@ ms.locfileid: "49167454"
 
 
 > [!IMPORTANT]
-> Data Box Edge 以预览版提供。 在订购和部署此解决方案之前，请查看 [Azure 预览版服务的条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
+> Data Box Edge 以预览版提供。 在订购和部署此解决方案之前，请查看 [Azure 预览版服务条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。  
 
 ### <a name="get-started"></a>入门
 
@@ -51,22 +51,21 @@ ms.locfileid: "49167454"
 
 ## <a name="prerequisites"></a>先决条件
 
-本部分说明 Data Box Edge 资源、Data Box Edge 设备和数据中心网络的配置先决条件。
+以下说明了 Data Box Edge 资源、Data Box Edge 设备和数据中心网络的配置先决条件。
 
 ### <a name="for-the-data-box-edge-resource"></a>在 Data Box Edge 资源方面
 
 在开始之前，请确保：
 
-* 应该为 Data Box Edge 资源启用 Microsoft Azure 订阅。
+* 为 Data Box Edge 资源启用 Microsoft Azure 订阅。
 * 具有 Microsoft Azure 存储帐户和访问凭据。
 
 ### <a name="for-the-data-box-edge-device"></a>对于 Data Box Edge 设备
 
 在部署物理设备之前，请确保：
-
 - 在数据中心的标准 19 英寸机架中提供一个 1U 插槽用于安装设备。 
-- 确保将设备安全放置在平坦、稳定的水平工作台面上。
-- 确认用于安装设备的位置具有来自独立源的标准交流电，或具有带不间断电源 (UPS) 的机架电源分配单元 (PDU)。
+- 将设备安全放置在平坦、稳定的水平工作台面上。
+- 用于安装设备的位置具有来自独立源的标准交流电，或具有带不间断电源 (UPS) 的机架电源分配单元 (PDU)。
 - 有权访问物理设备。
 
 
@@ -84,11 +83,11 @@ ms.locfileid: "49167454"
 
 如果现有的 Data Box Edge 资源可以管理物理设备，请跳过此步骤并转到[获取激活密钥](#get-the-activation-key)。
 
-在 Azure 门户中执行以下步骤以创建 Data Box 资源。
+若要创建 Data Box Edge 资源，在 Azure 门户中执行以下步骤。
 
 1. 使用 Microsoft Azure 凭据通过以下 URL 登录到 Azure 预览门户：[https://aka.ms/databox-edge](https://aka.ms/databox-edge)。 
 
-2. 选择要用于 Data Box Edge 预览版的订阅。 选择要部署 Data Box Edge 资源的区域。 在“Data Box Edge”选项中，单击“创建”。
+2. 选择要用于 Data Box Edge 预览版的订阅。 选择要部署 Data Box Edge 资源的区域。 在“Data Box Edge”选项中，选择“创建”。
 
     ![搜索 Data Box Edge 服务](media/data-box-edge-deploy-prep/data-box-edge-sku.png)
 
@@ -103,7 +102,7 @@ ms.locfileid: "49167454"
     
     ![创建 Data Box Edge 资源](media/data-box-edge-deploy-prep/data-box-edge-resource.png)
     
-4. 单击“确定”。
+4. 选择“确定”。
  
 创建资源需要几分钟时间。 成功创建资源后，你会收到相应的通知。
 
@@ -112,14 +111,14 @@ ms.locfileid: "49167454"
 
 Data Box Edge 资源启动并运行后，需要获取激活密钥。 此密钥用于激活 Data Box Edge 设备并将其连接到资源。 如果你仍在 Azure 门户中，则现在可以获取此密钥。
 
-1. 单击创建的资源，然后单击“概述”。
+1. 选择创建的资源，然后选择“概述”。
 
-2. 单击“生成密钥”以创建激活密钥。 单击复制图标复制密钥，并将其保存供日后使用。
+2. 选择“生成密钥”以创建激活密钥。 选择复制图标复制密钥并将其保存供日后使用。
 
     ![获取激活密钥](media/data-box-edge-deploy-prep/get-activation-key.png)
 
 > [!IMPORTANT]
-> - 生成的激活密钥将在 3 天后过期。 
+> - 生成的激活密钥将在三天后过期。 
 > - 如果密钥已过期，请生成新密钥。 旧密钥不再有效。
 
 ## <a name="next-steps"></a>后续步骤

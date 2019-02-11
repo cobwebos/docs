@@ -1,37 +1,33 @@
 ---
-title: 为应用程序配置 Azure AD SSO | Microsoft 文档
-description: 了解如何使用 SAML 和基于密码的 SSO 通过自助方式将应用连接到 Azure Active Directory
+title: 单一登录到非库应用程序 - Azure Active Directory | Microsoft Docs
+description: 在 Azure Active Directory (Azure AD) 中配置单一登录 (SSO) 到非库应用程序
 services: active-directory
 author: barbkess
-documentationcenter: na
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
-ms.devlang: na
+ms.subservice: app-mgmt
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/12/2018
+ms.date: 01/08/2019
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 29a2be1735561d31f934f1353a336b5e4d198227
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 1c364b3be0c2203c64e64df1bd0e4ab5ec2078a0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622187"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153873"
 ---
-# <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录
+# <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>在 Azure Active Directory 中配置单一登录到非库应用程序
 
-本文介绍可让管理员在*不编写任何代码*的情况下，针对不在 Azure Active Directory 应用库中的应用程序配置单一登录的功能。 此功能已在 2015 年 11 月 18 日技术预览中发布，并且已包含在 [Azure Active Directory Premium](../fundamentals/active-directory-whatis.md) 中。 要查找有关如何通过代码将自定义应用与 Azure AD 集成的开发人员指南，请参阅 [Azure AD 的身份验证方案](../develop/authentication-scenarios.md)。
+本文介绍可让管理员在*不编写任何代码*的情况下，针对不在 Azure Active Directory 应用库中的应用程序配置单一登录的功能。 要查找有关如何通过代码将自定义应用与 Azure AD 集成的开发人员指南，请参阅 [Azure AD 的身份验证方案](../develop/authentication-scenarios.md)。
 
 如[此文](what-is-single-sign-on.md)中所述，Azure Active Directory 应用程序库提供了一份已知能够支持 Azure Active Directory 单一登录的应用程序列表。 IT 专业人员或组织中的系统集成人员找到所要连接的应用程序后，可以遵循 Azure 门户中提供的分步说明启用单一登录。
 
-具有 [Azure Active Directory Premium](../fundamentals/active-directory-whatis.md) 许可证的客户还会额外获得以下功能：
+根据许可协议，这些功能也可使用。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/active-directory/)。 
 
-* 通过自助方式集成支持 SAML 2.0 标识提供者的任何应用程序（SP 发起或 IdP 发起）
-* 通过自助方式集成包含 HTML 登录页并使用[基于密码的 SSO](what-is-single-sign-on.md#password-based-sso) 的任何 Web 应用程序
+- 通过自助方式集成支持 SAML 2.0 标识提供者的任何应用程序（SP 发起或 IdP 发起）
+- 通过自助方式集成包含 HTML 登录页并使用[基于密码的 SSO](what-is-single-sign-on.md#password-based-sso) 的任何 Web 应用程序
 * 以自助方式连接使用 SCIM 协议进行用户预配的应用程序（如[此处所述](use-scim-to-provision-users-and-groups.md)）
 * 可在 [Office 365 应用启动器](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)或 [Azure AD 访问面板](what-is-single-sign-on.md#linked-sso)中添加任何应用程序的链接
 
@@ -46,7 +42,7 @@ ms.locfileid: "51622187"
 
 当在应用库中找不到所需的应用时，可以通过选择搜索结果中显示的“非库应用程序”标题来添加未列出的应用。 输入应用程序的名称后，便可以配置单一登录选项和行为。 
 
-**快速提示**：最佳实践是使用搜索函数来检查该应用程序是否已在应用程序库中。 如果找到该应用并且其说明中提到“单一登录”，则表示应用程序支持联合单一登录。
+**快速提示**：最佳做法是使用搜索函数来检查该应用程序是否已在应用程序库中。 如果找到该应用并且其说明中提到“单一登录”，则表示应用程序支持联合单一登录。
 
   ![搜索](./media/configure-single-sign-on-non-gallery-applications/customapp2.png)
 
@@ -163,7 +159,7 @@ ms.locfileid: "51622187"
 >
 
 ## <a name="existing-single-sign-on"></a>现有的单一登录
-选择此选项可将应用程序的链接添加到组织的 Azure AD 访问面板或 Office 365 门户。 可以使用此选项来添加当前正在使用 Azure Active Directory 联合身份验证服务（或其他联合身份验证服务）而不是 Azure AD 进行身份验证的自定义 Web 应用的链接。 或者，可以添加特定 SharePoint 页面或想要在用户访问面板上显示的其他网页的深层链接。 
+选择此选项可将应用程序的链接添加到组织的 Azure AD 访问面板或 Office 365 门户。 可以使用此选项来添加当前使用 Active Directory 联合身份验证服务（或其他联合身份验证服务）而不是 Azure AD 进行身份验证的自定义 Web 应用的链接。 或者，可以添加特定 SharePoint 页面或想要在用户访问面板上显示的其他网页的深层链接。 
 
 选择“下一步”后，系统会提示输入要链接到的应用程序的 URL。 完成上述操作后，可将用户和组分配到应用程序，使应用程序显示在这些用户的 [Office 365 应用启动器](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)或 [Azure AD 访问面板](end-user-experiences.md)中。
 

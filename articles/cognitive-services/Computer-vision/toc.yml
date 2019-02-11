@@ -100,12 +100,18 @@ items:
       href: quickstarts-sdk/csharp-hand-text-sdk.md
 - name: 教程
   items:
+  - name: 获取 Azure 图像的元数据
+    href: Tutorials/storage-lab-tutorial.md
   - name: 构建图像处理应用
     href: Tutorials/CSharpTutorial.md
 - name: 概念
   items:
   - name: 标记图像
     href: concept-tagging-images.md
+  - name: 检测对象
+    href: concept-object-detection.md
+  - name: 检测品牌
+    href: concept-brand-detection.md
   - name: 对图像进行分类
     href: concept-categorizing-images.md
   - name: 描述图像
@@ -162,16 +168,16 @@ items:
     href: https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739
   - name: SDK
     items:
-    - name: Windows
-      href: https://github.com/Microsoft/Cognitive-vision-windows
+    - name: .NET
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
     - name: Node.js
-      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules
+      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/computervision?view=azure-node-latest
     - name: Python
-      href: https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules
+      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/computervision?view=azure-python
     - name: Go
-      href: https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/computervision
-    - name: Android
-      href: https://github.com/Microsoft/Cognitive-vision-android
+      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/computervision
+    - name: Android (Java)
+      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable
     - name: Swift
       href: https://github.com/DanilaVladi/Microsoft-Cognitive-Services-Swift-SDK
 - name: 资源
@@ -192,9 +198,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=cognitive-services
   - name: 区域可用性
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: 1dfca8cfb4a43f65c9999a02afdf670cb99032ad
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 700b14c16f1016a403fdf15972cc52021135c64a
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276085"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562345"

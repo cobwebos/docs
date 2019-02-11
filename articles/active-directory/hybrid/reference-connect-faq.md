@@ -4,22 +4,22 @@ description: 本文解答有关 Azure AD Connect 的常见问题。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 4e47a087-ebcd-4b63-9574-0c31907a39a3
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 11/02/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 50ec49c22c64780c8f887b12eef1dd0e75c379ed
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f15556596063a09f68f024346e9fbe08663436c9
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010598"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497802"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
 
@@ -64,7 +64,7 @@ ms.locfileid: "51010598"
 **问：我的防火墙、网络设备或其他软硬件会限制在网络上打开连接的时间。使用 Azure AD Connect 时，客户端超时阈值应设为多少？**  
 所有网络软件、物理设备或其他软硬件限制最长连接时间的阈值应该至少为 5 分钟 (300 秒)，使装有 Azure AD Connect 客户端的服务器能够与 Azure Active Directory 连接。 此项建议同样适用于以前发布的 Microsoft 标识同步工具。
 
-**是否支持单一标签域 (SLD)？**  
+**问：是否支持单一标签域 (SLD)？**  
 虽然我们强烈建议不要使用此网络配置（[请参阅相关文章](https://support.microsoft.com/help/2269810/microsoft-support-for-single-label-domains)），但只要单级域的网络配置正常发挥作用，将 Azure AD Connect 同步与单标签域配合使用就是受支持的。
 
 **问：是否支持具有非连续 AD 域的林？**  

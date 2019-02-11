@@ -4,15 +4,16 @@ description: 总结了对使用 Azure Site Recovery 将 VMware VM 或物理服�
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
+services: site-recovery
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 8406cf2b31b87cdb4f6c9b6ba3d06559cf1d4d41
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 6ebf1abe6f3b115a254201184f47e6aad2febb2a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209796"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208170"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>将 VMware VM 和物理服务器灾难恢复到辅助站点时的支持矩阵
 

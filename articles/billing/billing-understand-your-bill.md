@@ -13,19 +13,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2018
-ms.author: cwatson
-ms.openlocfilehash: b9b1496c71e61fce815d225310c8beb57e8f9b19
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.date: 01/23/2019
+ms.author: banders
+ms.openlocfilehash: fdf346348be11a9f592fa3eff40e2f56e94ba656
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584564"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904312"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>了解 Microsoft Azure 帐单
 要了解 Azure 帐单，请在 Azure 门户中将发票与每日使用情况明细文件和成本管理报表进行比较。
 
 本文不适用于签署企业协议的 Azure 客户（EA 客户）。 如果你是 EA 客户，请参阅[了解签署企业协议的 Azure 客户的账单](billing-understand-your-bill-ea.md)。  
+
+有关 Azure 云解决方案提供商 (Azure CSP) 计划中的计费原理的说明（包括结算周期，定价和使用情况），请参阅 [Azure CSP 计费概述](/azure/cloud-solution-provider/billing/azure-csp-billing-overview/)。
 
 ## <a name="charges"></a>查看费用
 
@@ -42,8 +44,8 @@ ms.locfileid: "52584564"
  | 发票（PDF） | 使用情况明细 (CSV)|
  | --- | --- |
 |计费周期 | 计费周期 |
- |名称 |测定仪类别 |
- |类型 |测定仪子类别 |
+ |Name |测定仪类别 |
+ |Type |测定仪子类别 |
  |资源 |测定仪名称 |
  |区域 |测定仪区域 |
  |已耗用 |已耗用数量 |
@@ -142,4 +144,4 @@ Azure 不直接根据资源成本计费。 资源费用按一个或多个计量�
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

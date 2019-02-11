@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: e973c1895a331969eea9997f7122268a9ff783bd
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: e57257c6965f0da8c2d6ce990d2425847b73884f
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584734"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605783"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>使用 Azure Toolkit for IntelliJ 通过 VPN 在 HDInsight 中远程调试 Apache Spark 应用程序
 
@@ -34,8 +34,8 @@ ms.locfileid: "52584734"
 * **Oracle Java 开发工具包**。 可以从 [Oracle 网站](https://aka.ms/azure-jdks)安装它。
 * **IntelliJ IDEA**。 本文使用版本 2017.1。 可以从 [JetBrains 网站](https://www.jetbrains.com/idea/download/)安装它。
 * **Azure Toolkit for IntelliJ 中的 HDInsight 工具**。 用于 IntelliJ 的 Azure 工具包随附了用于 IntelliJ 的 HDInsight 工具。 有关 Azure 工具包的安装方法说明，请参阅[安装用于 IntelliJ 的 Azure 工具包](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation)。
-* **从 IntelliJ IDEA 登录到 Azure 订阅**。 遵照[使用用于 IntelliJ 的 Azure 工具包为 HDInsight 群集创建 Spark 应用程序](apache-spark-intellij-tool-plugin.md)中的说明操作。
-* **异常解决方法**。 在 Windows 计算机上运行 Spark Scala 应用程序进行远程调试时，可能会出现异常。 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) 中解释了此异常，其原因是 Windows 中缺少 WinUtils.exe 文件。 若要解决此错误，必须[下载该可执行文件](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)到某个位置（例如 **C:\WinUtils\bin**）。 添加环境变量 **HADOOP_HOME**，并将其值设置为 **C\WinUtils**。
+* **从 IntelliJ IDEA 登录到 Azure 订阅**。 遵照[使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序](apache-spark-intellij-tool-plugin.md)中的说明操作。
+* **异常解决方法**。 在 Windows 计算机上运行 Spark Scala 应用程序进行远程调试时，可能会出现异常。 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) 中解释了此异常，其原因是 Windows 中缺少 WinUtils.exe 文件。 若要解决此错误，必须[下载该可执行文件](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)到某个位置（例如 **C:\WinUtils\bin**）。 添加环境变量 **HADOOP_HOME**，并将其值设置为 **C\WinUtils**。
 
 ## <a name="step-1-create-an-azure-virtual-network"></a>步骤 1：创建 Azure 虚拟网络
 遵照以下链接中的说明创建 Azure 虚拟网络，并验证台式机与虚拟网络之间的连接。
@@ -47,7 +47,7 @@ ms.locfileid: "52584734"
 ## <a name="step-2-create-an-hdinsight-spark-cluster"></a>步骤 2：创建 HDInsight Spark 群集
 我们建议额外在 Azure HDInsight 上创建属于所创建 Azure 虚拟网络一部分的 Apache Spark 群集。 请参考[在 HDInsight 中创建基于 Linux 的群集](../hdinsight-hadoop-provision-linux-clusters.md)中提供的信息。 选择在上一步骤中创建的 Azure 虚拟网络作为可选配置的一部分。
 
-## <a name="step-3-verify-the-connectivity-between-the-cluster-head-node-and-your-desktop"></a>步骤 3：验证群集头节点与台式机之间的连接。
+## <a name="step-3-verify-the-connectivity-between-the-cluster-head-node-and-your-desktop"></a>步骤 3：验证群集头节点与台式机之间的连接
 1. 获取头节点的 IP 地址。 打开群集的 Ambari UI。 在群集边栏选项卡中，选择“仪表板”。
 
     ![在 Ambari 中选择“仪表板”](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/launch-ambari-ui.png)
@@ -266,14 +266,14 @@ ms.locfileid: "52584734"
 * 远程调试（视频）：[Use Azure Toolkit for IntelliJ to debug Apache Spark applications remotely on an HDInsight cluster](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)（使用 Azure Toolkit for IntelliJ 远程调试 HDInsight 群集上的 Apache Spark 应用程序）
 
 ### <a name="scenarios"></a>方案
-* [Apache Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](apache-spark-use-bi-tools.md)
-* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 结合 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark 与 BI：将 HDInsight 中的 Spark 与 BI 工具配合使用来执行交互式数据分析](apache-spark-use-bi-tools.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 来通过 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检验结果](apache-spark-machine-learning-mllib-ipython.md)
 * [使用 HDInsight 中的 Apache Spark 分析网站日志](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>创建和运行应用程序
 * [使用 Scala 创建独立的应用程序](../hdinsight-apache-spark-create-standalone-application.md)
-* [使用 Livy 在 Apache Spark 群集中远程运行作业](apache-spark-livy-rest-interface.md)
+* [使用 Apache Livy 在 Apache Spark 群集中远程运行作业](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>工具和扩展
 * [使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序](apache-spark-intellij-tool-plugin.md)

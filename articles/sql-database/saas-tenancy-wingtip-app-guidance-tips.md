@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: da8814cfd8fca8da061c27d9c5b69af15bff5007
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 12/18/2018
+ms.openlocfilehash: af0e642a1f8ec34e654295ae7dcf2960c8664d91
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054398"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565558"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>使用 Wingtip Tickets 示例 SaaS 应用的一般指南
 
@@ -57,7 +57,7 @@ ms.locfileid: "47054398"
 
 ### <a name="execute-the-scripts-by-pressing-f5"></a>按 F5 执行脚本
 
-多个脚本使用 $PSScriptRoot 来浏览文件夹，且仅在按 F5 执行脚本时才对 $PSScriptRoot 求值。  突出显示和运行某个选择的内容 (F8) 时，可能会生成错误，因此请在运行脚本时按 F5。
+多个脚本使用 $PSScriptRoot 来浏览文件夹，且仅在按 F5 执行脚本时才对 $PSScriptRoot 求值。  突出显示和运行某个选择的内容 (F8) 时，可能会生成错误，因此请在运行脚本时按 F5。
 
 ### <a name="step-through-the-scripts-to-examine-the-implementation"></a>以分步执行脚本的方式检查实现情况
 
@@ -94,7 +94,7 @@ ms.locfileid: "47054398"
 
    ![编录服务器](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. 演示凭据为：登录名 = *developer*，密码 = *P@ssword1*
+3. 演示凭据为：登录名 = developer，密码 = P@ssword1
 
     下图显示“每个租户一个数据库”模式的登录。 
     ![连接](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)

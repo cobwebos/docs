@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 资源管理器模板导入 SQL BACPAC 文件 | Microsoft Docs
-description: 了解如何使用 SQL 数据库扩展，以便通过 Azure 资源管理器模板导入 SQL BACPAC 文件
+description: 了解如何使用 SQL 数据库扩展，以便通过 Azure 资源管理器模板导入 SQL BACPAC 文件。
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -10,19 +10,19 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 12/06/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6349f3e6a30ce1b7a3162f54056901313327a101
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 877fb6807cb8a2aafe634b53630eaa30c6d7697a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612531"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495524"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>教程：使用 Azure 资源管理器模板导入 SQL BACPAC 文件
 
-了解如何使用 Azure SQL 数据库扩展来导入 BACPAC 文件。 在本教程中，请创建一个模板来部署 Azure SQL Server、SQL 数据库和 BACPAC 文件。 若要了解如何使用 Azure 资源管理器模板来部署 Azure 虚拟机扩展，请参阅 [# 教程：使用 Azure 资源管理器模板部署虚拟机扩展](./resource-manager-tutorial-deploy-vm-extensions.md)。
+了解如何使用 Azure SQL 数据库扩展，以通过 Azure 资源管理器模板导入 BACPAC 文件。 部署项目包括主模板文件以及完成部署所需的任何文件。 BACPAC 文件是一个项目。 在本教程中，你将创建一个模板来部署 Azure SQL Server、SQL 数据库并导入一个 BACPAC 文件。 若要了解如何使用 Azure 资源管理器模板来部署 Azure 虚拟机扩展，请参阅 [# 教程：使用 Azure 资源管理器模板部署虚拟机扩展](./resource-manager-tutorial-deploy-vm-extensions.md)。
 
 本教程涵盖以下任务：
 
@@ -34,6 +34,8 @@ ms.locfileid: "51612531"
 > * 验证部署
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -68,12 +70,13 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
     * `Microsoft.Sql/servers`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.sql/servers)。
     * `Microsoft.SQL/servers/securityAlertPolicies`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/securityalertpolicies)。
     * `Microsoft.SQL.servers/databases`。  请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)。
+
     在自定义模板之前，不妨对其进行一些基本的了解。
 4. 选择“文件”>“另存为”，将该文件的副本保存到名为 **azuredeploy.json** 的本地计算机。
 
 ## <a name="edit-the-template"></a>编辑模板
 
-需向模板添加两个其他的资源。
+向模板添加两个其他资源。
 
 * 若要允许 SQL 数据库扩展导入 BACPAC 文件，需允许访问 Azure 服务。 将以下 JSON 添加到 SQL 服务器定义：
 
@@ -82,7 +85,7 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
         "type": "firewallrules",
         "name": "AllowAllAzureIps",
         "location": "[parameters('location')]",
-        "apiVersion": "2014-04-01",
+        "apiVersion": "2015-05-01-preview",
         "dependsOn": [
             "[variables('databaseServerName')]"
         ],
@@ -130,28 +133,28 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
     * **storageKeyType**：要使用的存储密钥的类型。 值可以是 `StorageAccessKey` 或 `SharedAccessKey`。 由于提供的 BACPAC 文件在可以公开访问的 Azure 存储帐户上共享，因此此处使用“SharedAccessKey”。
     * **storageKey**：要使用的存储密钥。 如果存储密钥类型为 SharedAccessKey，则必须以“?”为前缀。
     * **storageUri**：要使用的存储 URI。 如果选择不使用提供的 BACPAC 文件，则需更新这些值。
-    * **administratorLoginPassword**：SQL 管理员的密码。 建议使用生成的密码。 请参阅[先决条件](#prerequisites)。
+    * **administratorLoginPassword**：SQL 管理员的密码。 使用生成的密码。 请参阅[先决条件](#prerequisites)。
 
 ## <a name="deploy-the-template"></a>部署模板
 
-有关部署过程，请参阅[部署模板](./resource-manager-tutorial-create-multiple-instances.md#deploy-the-template)部分。 改用以下 PowerShell 部署脚本：
+有关部署过程，请参阅[部署模板](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)部分。 改用以下 PowerShell 部署脚本：
 
 ```azurepowershell
 $deploymentName = Read-Host -Prompt "Enter the name for this deployment"
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$adminUsername = Read-Host -Prompt "Enter the virtual machine admin username"
+$adminUsername = Read-Host -Prompt "Enter the SQL admin username"
 $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
 
-New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-New-AzureRmResourceGroupDeployment -Name $deploymentName `
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+New-AzResourceGroupDeployment -Name $deploymentName `
     -ResourceGroupName $resourceGroupName `
     -adminUser $adminUsername `
     -adminPassword $adminPassword `
     -TemplateFile azuredeploy.json
 ```
 
-建议使用生成的密码。 请参阅[先决条件](#prerequisites)。
+使用生成的密码。 请参阅[先决条件](#prerequisites)。
 
 ## <a name="verify-the-deployment"></a>验证部署
 
@@ -170,7 +173,7 @@ New-AzureRmResourceGroupDeployment -Name $deploymentName `
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你部署了 SQL Server、SQL 数据库并导入了 BACPAC 文件。 若要了解如何跨多个区域部署 Azure 资源，以及如何使用安全部署做法，请参阅
+在本教程中，你部署了 SQL Server、SQL 数据库并导入了 BACPAC 文件。 BACPAC 文件存储在 Azure 存储帐户中。 得到该 URL 的任何人都可以访问该文件。 若要了解如何保护 BACPAC 文件（项目），请参阅
 
 > [!div class="nextstepaction"]
-> [使用 Azure 部署管理器](./resource-manager-tutorial-deploy-vm-extensions.md)
+> [保护项目](./resource-manager-tutorial-secure-artifacts.md)

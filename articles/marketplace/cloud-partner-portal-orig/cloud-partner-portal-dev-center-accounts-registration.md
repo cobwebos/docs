@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 8bfd4ca6a9bdac999653fa9448bf7e754e9e6180
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6482eea23707f451e59d21e70f7583a0cd6680cc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254462"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168237"
 ---
 <a name="create-a-microsoft-developer-account"></a>创建 Microsoft 开发人员帐户
 ====================================
@@ -106,7 +106,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
    ![选择国家/地区](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_04.png)
 
     >[!WARNING]
-    >“销售自”国家/地区：若要在 Azure 市场上销售服务，注册实体需要来自下拉列表中已批准的“销售自”国家/地区之一。 此限制是出于付款和税务的原因。 有关详细信息，请参阅“市场参与策略”。
+    >“销售自”国家/地区：若要在 Azure 市场上销售服务，已注册实体需要来自下拉列表中显示的已批准“销售自”国家/地区之一。 此限制是出于付款和税务的原因。 有关详细信息，请参阅“市场参与策略”。
 
 5. 选择“公司”作为“帐户类型”，然后选择“下一步”。
 
@@ -181,7 +181,8 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
     - 选择“**下一步**”。
 4.  输入税务详细信息，然后选择“下一步”。
 
->[警告！] 如果未在 Microsoft 开发人员中心帐户中提供银行帐户和税务信息，则你无法将商业套餐投入生成。
+>[!WARNING]
+>如果未在 Microsoft 开发人员中心帐户中提供银行帐户和税务信息，则你无法将商业套餐投入生成。
 
 ### <a name="developer-center-registration-issues"></a>开发人员中心注册问题
 

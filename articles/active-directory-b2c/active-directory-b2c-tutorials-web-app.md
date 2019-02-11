@@ -3,19 +3,19 @@ title: 教程 - 使用 Azure Active Directory B2C 允许 Web 应用程序进行�
 description: 有关如何使用 Azure Active Directory B2C 为 ASP.NET Web 应用程序提供用户登录功能的教程。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.author: davidmu
-ms.date: 1/23/2018
+ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
-ms.component: B2C
-ms.openlocfilehash: e215577fdb39b3dc1a9c5ce641c44e3cdef8fb45
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.subservice: B2C
+ms.openlocfilehash: 714d733e765f28d1244f6ee1c7b1cb237c0c4b1f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604087"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55198344"
 ---
 # <a name="tutorial-enable-a-web-application-to-authenticate-with-accounts-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 允许 Web 应用程序进行帐户身份验证
 
@@ -25,7 +25,7 @@ ms.locfileid: "45604087"
 
 > [!div class="checklist"]
 > * 在 Azure AD B2C 租户中注册示例 ASP.NET Web 应用。
-> * 创建适用于用户注册、登录、配置文件编辑和密码重置的策略。
+> * 创建适用于用户注册、登录、配置文件编辑和密码重置的用户流。
 > * 将示例 Web 应用配置为使用 Azure AD B2C 租户。 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -79,65 +79,87 @@ Azure AD B2C 对[客户端应用程序](../active-directory/develop/developer-gl
 
 此密钥在门户中显示一次。 请务必复制并保存密钥值。 需要此值来配置应用。 将此密钥保存在安全的地方。 不要公开共享此密钥。
 
-## <a name="create-policies"></a>创建策略
+## <a name="create-user-flows"></a>创建用户流
 
-Azure AD B2C 策略定义用户工作流。 例如，登录、注册、更改密码、编辑配置文件均为常见工作流。
+Azure AD B2C 用户流定义标识任务的用户体验。 例如，登录、注册、更改密码、编辑配置文件均为常见用户流。
 
-### <a name="create-a-sign-up-or-sign-in-policy"></a>创建注册或登录策略
+### <a name="create-a-sign-up-or-sign-in-user-flow"></a>创建注册或登录用户流
 
-若要注册用户，以便访问并登录 Web 应用，请创建**注册或登录策略**。
+若要注册用户，以便访问并登录 Web 应用，请创建**注册或登录用户流**。
 
-1. 在 Azure AD B2C 门户页中选择“注册或登录策略”，然后单击“添加”。
+1. 在 Azure AD B2C 门户页中选择“用户流”，然后单击“新建用户流”。
+2. 在“建议”选项卡上，单击“注册和登录”。
 
-    若要配置策略，请使用以下设置：
+    若要配置用户流，请使用以下设置：
 
-    ![添加注册或登录策略](media/active-directory-b2c-tutorials-web-app/add-susi-policy.png)
+    ![添加注册或登录用户流](media/active-directory-b2c-tutorials-web-app/add-susi-user-flow.png)
 
     | 设置      | 建议的值  | 说明                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **名称** | SiUpIn | 输入策略的**名称**。 策略名称带 **b2c_1_** 前缀。 在示例代码中，使用完整的策略名称 **b2c_1_SiUpIn**。 | 
+    | **名称** | SiUpIn | 输入该用户流的**名称**。 用户流名称以 **b2c_1_** 为前缀。 示例代码中使用了完整的用户流名称 **b2c_1_SiUpIn**。 | 
     | **标识提供者** | 电子邮件注册 | 用于唯一标识用户的标识提供者。 |
-    | **注册属性** | 显示名称和邮政编码 | 选择要在注册期间从用户处收集的属性。 |
-    | **应用程序声明** | 显示名称、邮政编码、用户为新用户、用户的对象 ID | 选择需要包括在[访问令牌](../active-directory/develop/developer-glossary.md#access-token)中的[声明](../active-directory/develop/developer-glossary.md#claim)。 |
 
-2. 单击“创建”以创建策略。 
+3. 在“用户特性和声明”下单击“显示更多”，然后选择以下设置：
 
-### <a name="create-a-profile-editing-policy"></a>创建配置文件编辑策略
+    ![添加注册或登录用户流](media/active-directory-b2c-tutorials-web-app/add-attributes-and-claims.png)
 
-若要允许用户自行重置其用户配置文件信息，请创建**配置文件编辑策略**。
+    | 列      | 建议的值  | Description                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **收集特性** | 显示名称和邮政编码 | 选择要在注册期间从用户处收集的属性。 |
+    | **返回声明** | 显示名称、邮政编码、用户为新用户、用户的对象 ID | 选择需要包括在[访问令牌](../active-directory/develop/developer-glossary.md#access-token)中的[声明](../active-directory/develop/developer-glossary.md#claim)。 |
 
-1. 在 Azure AD B2C 门户页中选择“配置文件编辑策略”，然后单击“添加”。
+4. 单击“确定”。
+5. 单击“创建”以创建用户流。 
 
-    若要配置策略，请使用以下设置：
+### <a name="create-a-profile-editing-user-flow"></a>创建配置文件编辑用户流
+
+若要允许用户自行重置其用户配置文件信息，请创建**配置文件编辑用户流**。
+
+1. 在 Azure AD B2C 门户页中选择“用户流”，然后单击“新建用户流”。
+2. 在“建议”选项卡上，单击“配置文件编辑”。
+
+    若要配置用户流，请使用以下设置：
 
     | 设置      | 建议的值  | 说明                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **名称** | SiPe | 输入策略的**名称**。 策略名称带 **b2c_1_** 前缀。 在示例代码中，使用完整的策略名称 **b2c_1_SiPe**。 | 
+    | **名称** | SiPe | 输入该用户流的**名称**。 用户流名称以 **b2c_1_** 为前缀。 示例代码中使用了完整的用户流名称 **b2c_1_SiPe**。 | 
     | **标识提供者** | 本地帐户登录名 | 用于唯一标识用户的标识提供者。 |
-    | **配置文件属性** | 显示名称和邮政编码 | 选择允许用户在配置文件编辑过程中修改的属性。 |
-    | **应用程序声明** | 显示名称、邮政编码、用户的对象 ID | 选择在成功地进行配置文件编辑之后，需要包括在[访问令牌](../active-directory/develop/developer-glossary.md#access-token)中的[声明](../active-directory/develop/developer-glossary.md#claim)。 |
 
-2. 单击“创建”以创建策略。 
+3. 在“用户特性”下单击“显示更多”，然后选择以下设置：
 
-### <a name="create-a-password-reset-policy"></a>创建密码重置策略
+    | 列      | 建议的值  | Description                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **收集特性** | 显示名称和邮政编码 | 选择允许用户在配置文件编辑过程中修改的属性。 |
+    | **返回声明** | 显示名称、邮政编码、用户的对象 ID | 选择在成功地进行配置文件编辑之后，需要包括在[访问令牌](../active-directory/develop/developer-glossary.md#access-token)中的[声明](../active-directory/develop/developer-glossary.md#claim)。 |
 
-若要在应用程序上启用密码重置，需要创建**密码重置策略**。 此策略描述了使用者在密码重置过程中的体验，以及应用程序在成功完成密码重置后会接收到的令牌内容。
+4. 单击“确定”。
+5. 单击“创建”以创建用户流。 
+
+### <a name="create-a-password-reset-user-flow"></a>创建密码重置用户流
+
+若要在应用程序上启用密码重置，需要创建**密码重置用户流**。 此用户流描述了使用者在密码重置过程中的体验，以及应用程序在成功完成密码重置后会接收到的令牌内容。
 
 1. 在 Azure AD B2C 门户页中选择“密码重置策略”，然后单击“添加”。
+2. 在“建议”选项卡上，单击“密码重置”。
 
-    若要配置策略，请使用以下设置。
+    若要配置用户流，请使用以下设置。
 
     | 设置      | 建议的值  | 说明                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **名称** | SSPR | 输入策略的**名称**。 策略名称带 **b2c_1_** 前缀。 在示例代码中，使用完整的策略名称 **b2c_1_SSPR**。 | 
+    | **名称** | SSPR | 输入该用户流的**名称**。 用户流名称以 **b2c_1_** 为前缀。 示例代码中使用了完整的用户流名称 **b2c_1_SSPR**。 | 
     | **标识提供者** | 使用电子邮件地址重置密码 | 这是用于唯一标识用户的标识提供者。 |
-    | **应用程序声明** | 用户的对象 ID | 选择在成功地进行密码重置之后，需要包括在[访问令牌](../active-directory/develop/developer-glossary.md#access-token)中的[声明](../active-directory/develop/developer-glossary.md#claim)。 |
 
-2. 单击“创建”以创建策略。 
+3. 在“应用程序声明”下单击“显示更多”，然后选择以下设置：
+    | 列      | 建议的值  | Description                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **返回声明** | 用户的对象 ID | 选择在成功地进行密码重置之后，需要包括在[访问令牌](../active-directory/develop/developer-glossary.md#access-token)中的[声明](../active-directory/develop/developer-glossary.md#claim)。 |
+
+4. 单击“确定”。
+5. 单击“创建”以创建用户流。 
 
 ## <a name="update-web-app-code"></a>更新 Web 应用代码
 
-注册 Web 应用并创建策略以后，需将应用配置为使用 Azure AD B2C 租户。 在本教程中，将配置一个示例 Web 应用（可从 GitHub 下载）。 
+现在，你已注册了一个 Web 应用并创建了用户流，接下来需要将该应用配置为使用你的 Azure AD B2C 租户。 在本教程中，将配置一个示例 Web 应用（可从 GitHub 下载）。 
 
 从 GitHub [下载 zip 文件](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip)或克隆示例 Web 应用。 确保将示例文件提取到文件夹中时，路径的总字符长度不到 260。
 
@@ -145,15 +167,15 @@ Azure AD B2C 策略定义用户工作流。 例如，登录、注册、更改密
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-示例 ASP.NET Web 应用是一个简单的任务列表应用，用于创建和更新待办事项列表。 此应用使用 [Microsoft OWIN 中间件组件](https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/)，允许用户注册使用 Azure AD B2C 租户中的应用。 创建 Azure AD B2C 策略之后，用户即可使用社交帐户来访问应用，也可创建一个可用作标识的帐户来访问应用。 
+示例 ASP.NET Web 应用是一个简单的任务列表应用，用于创建和更新待办事项列表。 此应用使用 [Microsoft OWIN 中间件组件](https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/)，允许用户注册使用 Azure AD B2C 租户中的应用。 创建 Azure AD B2C 用户流之后，用户即可使用社交帐户来访问应用，也可创建一个可用作标识的帐户来访问应用。 
 
 示例解决方案中有两个项目：
 
-**Web 应用示例应用 (TaskWebApp)：** 用于创建和编辑任务列表的 Web 应用。 此 Web 应用使用**注册或登录**策略来注册或登录用户。
+**Web 应用示例应用 (TaskWebApp)：** 用于创建和编辑任务列表的 Web 应用。 此 Web 应用使用**注册或登录**用户流来注册或登录用户。
 
 **Web API 示例应用 (TaskService)：** 一个 Web API，支持创建、读取、更新和删除任务列表的功能。 此 Web API 受 Azure AD B2C 保护，可以通过 Web 应用进行调用。
 
-若要在租户中使用应用注册，需更改应用，其中包括以前记录的应用程序 ID 和密钥。 此外，还需配置所创建的策略。 示例 Web 应用在 Web.config 文件中将配置值作为应用设置来定义。 若要更改应用设置，请执行以下操作：
+若要在租户中使用应用注册，需更改应用，其中包括以前记录的应用程序 ID 和密钥。 此外，还需配置所创建的用户流。 示例 Web 应用在 Web.config 文件中将配置值作为应用设置来定义。 若要更改应用设置，请执行以下操作：
 
 1. 在 Visual Studio 中打开 **B2C-WebAPI-DotNet** 解决方案。
 
@@ -171,11 +193,11 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 ### <a name="sign-up-using-an-email-address"></a>使用电子邮件地址注册
 
-1. 单击顶部横幅中的“注册/登录”链接，以 Web 应用用户身份注册。 这样就可以使用在前面的步骤中定义的 **b2c_1_SiUpIn** 策略。
+1. 单击顶部横幅中的“注册/登录”链接，以 Web 应用用户身份注册。 这将使用在前面的步骤中定义的 **b2c_1_SiUpIn** 用户流。
 
 2. Azure AD B2C 会显示带注册链接的登录页面。 由于你还没有帐户，因此请单击“立即注册”链接。 
 
-3. 注册工作流会显示一个页面，用于收集用户的标识并通过电子邮件地址对其进行验证。 注册工作流还收集用户的密码和请求的属性（在策略中定义）。
+3. 注册工作流会显示一个页面，用于收集用户的标识并通过电子邮件地址对其进行验证。 注册工作流还收集用户的密码和请求的属性（在用户流中定义）。
 
     请使用有效的电子邮件地址，并使用验证码进行验证。 设置密码。 输入请求的属性的值。 
 
@@ -191,7 +213,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何创建 Azure AD B2C 租户、如何创建策略，以及如何更新示例 Web 应用，以便使用 Azure AD B2C 租户。 若要了解如何注册、配置和调用受 Azure AD B2C 租户保护的 ASP.NET Web API，请继续完成下一教程。
+本教程介绍了如何创建 Azure AD B2C 租户、如何创建用户流，以及如何更新示例 Web 应用，以便使用 Azure AD B2C 租户。 若要了解如何注册、配置和调用受 Azure AD B2C 租户保护的 ASP.NET Web API，请继续完成下一教程。
 
 > [!div class="nextstepaction"]
 > [教程：使用 Azure Active Directory B2C 保护 ASP.NET Web API](active-directory-b2c-tutorials-web-api.md)

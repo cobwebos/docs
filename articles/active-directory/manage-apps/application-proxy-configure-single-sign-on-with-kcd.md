@@ -4,9 +4,9 @@ description: 介绍如何使用 Azure AD 应用程序代理提供单一登录。
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: dbb7fca08e8d5c59842f7ddfb02b463a42efadb7
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 5a19b5778a0504eff2e90683b79e7e83e352b33c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422277"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158955"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>使用应用程序代理通过 Kerberos 约束委派单一登录到应用程序
 
@@ -66,16 +66,18 @@ ms.locfileid: "52422277"
 1. 有关跨域使用 KCD 的先决条件列表，请参阅 [Kerberos Constrained Delegation across domains](https://technet.microsoft.com/library/hh831477.aspx)（跨域 Kerberos 约束委托）。
 2. 在连接器服务器上使用 `principalsallowedtodelegateto` 属性来使应用程序代理能够针对连接器服务器进行委派。 应用程序服务器是 `sharepointserviceaccount`，委派服务器是 `connectormachineaccount`。 对于 Windows 2012 R2，请使用以下代码作为示例：
 
-        $connector= Get-ADComputer -Identity connectormachineaccount -server dc.connectordomain.com
+```powershell
+$connector= Get-ADComputer -Identity connectormachineaccount -server dc.connectordomain.com
 
-        Set-ADComputer -Identity sharepointserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
+Set-ADComputer -Identity sharepointserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
 
-        Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+```
 
-Sharepointserviceaccount 可以是 SPS 计算机帐户，或者是用于运行 SPS 应用池的服务帐户。
+`sharepointserviceaccount` 可以是 SPS 计算机帐户，或者是用于运行 SPS 应用池的服务帐户。
 
 ## <a name="configure-single-sign-on"></a>配置单一登录 
-1. 根据[使用应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)中的说明发布应用程序。 请务必选择“Azure Active Directory”作为“预身份验证方法”。
+1. 根据[使用应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)中的说明发布应用程序。 请务必选择“Azure Active Directory”作为“预身份验证方法”。
 2. 应用程序显示在企业应用程序列表中之后，选择该应用程序并单击“单一登录”。
 3. 将单一登录模式设置为“集成 Windows 身份验证”。  
 4. 输入应用程序服务器的**内部应用程序 SPN**。 在本示例中，已发布应用程序的 SPN 为 http/www.contoso.com。 此 SPN 需要位于连接器可以向其提供委派的凭据的服务列表中。 

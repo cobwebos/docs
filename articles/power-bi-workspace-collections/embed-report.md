@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 94476486ed87662f3d6b989b8d5360dd792f8824
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: caa877a265fb8665e062cc0069247bca0994c4bf
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041174"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857091"
 ---
 # <a name="embed-a-report-in-power-bi-workspace-collections"></a>嵌入 Power BI 工作区集合中的报表
 
@@ -84,7 +84,7 @@ using (var response = request.GetResponse() as System.Net.HttpWebResponse)
 
 Power BI 工作区集合使用嵌入标记，即 HMAC 签名的 JSON Web 令牌。 令牌已使用 Power BI 工作区集合中的访问密钥签名。 默认情况下，嵌入令牌用于提供对要嵌入到应用程序的报表的只读访问权限。 嵌入令牌是针对特定报表颁发的，应该与嵌入 URL 相关联。
 
-应在服务器上创建访问令牌，因为要使用访问密钥对令牌进行签名/加密。 有关如何创建访问令牌的信息，请参阅[通过 Power BI 工作区集合进行身份验证和授权](app-token-flow.md)。 此外，还可以查看 [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) 方法。 以下示例演示了如何使用用于 Power BI 的 .NET SDK。
+应在服务器上创建访问令牌，因为要使用访问密钥对令牌进行签名/加密。 有关如何创建访问令牌的信息，请参阅[通过 Power BI 工作区集合进行身份验证和授权](app-token-flow.md)。 此外，还可以查看 [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) 方法。 以下示例演示了如何使用用于 Power BI 的 .NET SDK。
 
 将使用前面检索到的报表 ID。 创建嵌入令牌后，将使用访问密钥来生成可从 JavaScript 的角度使用的令牌。 *PowerBIToken 类*要求安装 [Power BI Core NuGut 包](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)。
 
@@ -147,7 +147,7 @@ var report = powerbi.embed($reportContainer.get(0), embedConfiguration);
 
 [示例入门](get-started-sample.md)  
 [在 Power BI 工作区集合中进行身份验证和授权](app-token-flow.md)  
-[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_)  
+[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)  
 [JavaScript 嵌入示例](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 [Power BI JavaScript 包](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)  
 [Power BI API NuGet 包](https://www.nuget.org/profiles/powerbi)

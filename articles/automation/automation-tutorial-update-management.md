@@ -4,17 +4,17 @@ description: 本文概述了如何使用 Azure 自动化更新管理来管理 Az
 services: automation
 author: zjalexander
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 09/18/2018
+ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 6046781f59b64dcec4769686a2acd710c7b68965
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: bd7072ce8212366bf3d8a0a9e0a30000debea2ea
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987301"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434608"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>使用 Azure 自动化管理 Windows 更新
 
@@ -82,48 +82,24 @@ ms.locfileid: "49987301"
 
 ## <a name="configure-alerts"></a>配置警报
 
-此步骤介绍如何设置一个警报，使其在更新成功部署时通过 Log Analytics 查询来发出通知，或者在部署失败时通过跟踪更新管理的主 runbook 来发出通知。
+在此步骤中，了解如何设置警报以获知更新部署的状态。
 
 ### <a name="alert-conditions"></a>警报条件
 
-对于每种类型的警报，需要定义不同的警报条件。
+在自动化帐户的“监视”下，转到“警报”，然后单击“+ 新建警报规则”。
 
-#### <a name="log-analytics-query-alert"></a>Log Analytics 查询警报
+自动化帐户已被选为资源。 如果要更改它，可以单击“选择”，然后在“选择资源”页上，在“按资源类型筛选”下拉列表中选择“自动化帐户”。 选择你的自动化帐户，然后选择“完成”。
 
-如果部署成功，则可根据 Log Analytics 查询来创建警报。 如果部署失败，则可使用 [Runbook 警报](#runbook-alert)步骤在协调更新部署的主 Runbook 失败时发出警报。 可以编写一个自定义查询来提供其他警报，以涵盖许多不同的方案。
+单击“添加条件”以选择适合更新部署的信号。 下表显示了更新部署的两个可用信号的详细信息：
 
-在 Azure 门户中转到“监视器”，然后选择“创建警报”。
+|信号名称|维度|说明|
+|---|---|---|
+|**汇总更新部署运行**|- 更新部署名称</br>- 状态|此信号用于提醒更新部署的总体状态。|
+|**汇总更新部署计算机运行**|- 更新部署名称</br>- 状态</br>- 目标计算机</br>- 更新部署运行 ID|此信号用于提醒针对特定计算机的更新部署的状态|
 
-在“1. 定义警报条件”下，单击“选择目标”。 在“按资源类型筛选”下，选择“Log Analytics”。 选择 Log Analytics 工作区，然后选择“完成”。
-
-![创建警报](./media/automation-tutorial-update-management/create-alert.png)
-
-选择“添加条件”。
-
-在“配置信号逻辑”下的表中选择“自定义日志搜索”。 在“搜索查询”文本框中输入以下查询：
-
-```loganalytics
-UpdateRunProgress
-| where InstallationStatus == 'Succeeded'
-| where TimeGenerated > now(-10m)
-| summarize by UpdateRunName, Computer
-```
-此查询返回计算机以及在指定的时间范围内完成的更新运行名称。
-
-在“警报逻辑”下，输入 **1** 作为“阈值”。 完成后，选择“完成”。
+对于维度值，请从列表中选择一个有效的值。 如果要查找的值不在列表中，请单击维度旁边的“\+”符号，然后输入自定义名称。 随后即可选择要查找的值。 如果想要从维度中选择所有值，请单击“选择 \*”按钮。 如果未选择维度的值，评估期间将忽略该维度。
 
 ![配置信号逻辑](./media/automation-tutorial-update-management/signal-logic.png)
-
-#### <a name="runbook-alert"></a>Runbook 警报
-
-对于失败的部署，必须在主 Runbook 失败时发出警告。
-在 Azure 门户中转到“监视器”，然后选择“创建警报”。
-
-在“1. 定义警报条件”下，单击“选择目标”。 在“按资源类型筛选”下选择“自动化帐户”。 选择你的自动化帐户，然后选择“完成”。
-
-对于“Runbook 名称”，请单击 **\+** 号，然后输入 **Patch-MicrosoftOMSComputers** 作为自定义名称。 对于“状态”，请选择“已失败”，或者单击 **\+** 号，以便输入“已失败”。
-
-![配置 Runbook 的信号逻辑](./media/automation-tutorial-update-management/signal-logic-runbook.png)
 
 在“警报逻辑”下，输入 **1** 作为“阈值”。 完成后，选择“完成”。
 
@@ -133,7 +109,7 @@ UpdateRunProgress
 
 ![配置信号逻辑](./media/automation-tutorial-update-management/define-alert-details.png)
 
-在“3. 定义操作组”下，选择“新建操作组”。 操作组是可以在多个警报中使用的一组操作。 这些操作可能包括但不限于电子邮件通知、Runbook、Webhook 以及其他操作。 若要了解有关操作组的详细信息，请参阅[创建和管理操作组](../monitoring-and-diagnostics/monitoring-action-groups.md)。
+在“操作组”下，选择“新建”。 操作组是可以在多个警报中使用的一组操作。 这些操作可能包括但不限于电子邮件通知、Runbook、Webhook 以及其他操作。 若要了解有关操作组的详细信息，请参阅[创建和管理操作组](../azure-monitor/platform/action-groups.md)。
 
 在“操作组名称”框中输入警报的名称和一个短名称。 使用此组发送通知时，短名称用来代替完整的操作组名称。
 
@@ -161,7 +137,7 @@ UpdateRunProgress
 
 * **要更新的组（预览）**：定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 有关详细信息，请参阅[动态组](automation-update-management.md#using-dynamic-groups)
 
-* **要更新的计算机**：选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。 要了解在 Log Analytics 中创建计算机组的不同方法，请参阅 [Log Analytics 中的计算机组](../log-analytics/log-analytics-computer-groups.md)
+* **要更新的计算机**：选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的准备情况将显示在“更新代理准备”列中。 要了解在 Log Analytics 中创建计算机组的不同方法，请参阅 [Log Analytics 中的计算机组](../azure-monitor/platform/computer-groups.md)
 
 * **更新分类**：选择更新部署包含在部署中的软件类型。 对于本教程，请保留所有选定的类型。
 
@@ -174,16 +150,16 @@ UpdateRunProgress
 
    有关分类类型的说明，请参阅[更新分类](automation-update-management.md#update-classifications)。
 
-* **要包含/排除的更新** - 这会打开“包含/排除”页。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的其他信息，请参阅[包含行为](automation-update-management.md#inclusion-behavior)
+* **要包含/排除的更新** - 这会打开“包含/排除”页。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的详细信息，请参阅[包含行为](automation-update-management.md#inclusion-behavior)
 
-* **计划设置**：“计划设置”窗格会打开。 默认开始时间为晚于当前时间 30 分钟。 可以将开始时间设置为 10 分钟之后的任何将来时间。
+* **计划设置**：打开“计划设置”窗格。 默认开始时间为晚于当前时间 30 分钟。 可以将开始时间设置为 10 分钟之后的任何将来时间。
 
    还可以指定部署是否只发生一次，或者设置一个定期计划。 在“重复”下选择“一次”。 保留默认值“1 天”，然后选择“确定”。 这样会设置定期计划。
 
 * **前脚本 + 后脚本**：选择要在部署前和部署后运行的脚本。 若要了解详细信息，请参阅[管理前脚本和后脚本](pre-post-scripts.md)。
 * **维护时段(分钟)**：保留默认值。 可以设置要进行更新部署的时间段。 此设置有助于确保在定义的服务时段内执行更改。
 
-* **重启选项**：此设置决定应如何处理重启。 可用选项包括：
+* **重启选项**:此设置确定应如何处理重启。 可用选项包括：
   * 需要时重新启动(默认)
   * 始终重新启动
   * 从不重新启动
@@ -239,3 +215,4 @@ UpdateRunProgress
 
 > [!div class="nextstepaction"]
 > [更新管理解决方案](../operations-management-suite/oms-solution-update-management.md?toc=%2fazure%2fautomation%2ftoc.json)
+

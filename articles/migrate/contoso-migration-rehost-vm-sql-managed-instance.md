@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: ae719e6daa3c07ffe298cfefcc5a0a2846a49032
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 76af79cc9ef1ebea30b30a291f451b7b0a4f3ba6
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231815"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694476"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Contoso 迁移：在 Azure VM 和 SQL 数据库托管实例上重新托管本地应用
 
@@ -33,7 +33,7 @@ ms.locfileid: "51231815"
 文章 4：在 Azure VM 和 SQL 数据库托管实例上重新托管应用 | Contoso 将其本地 SmartHotel 应用直接迁移到 Azure。 Contoso 使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM。 Contoso 使用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)将应用数据库迁移到 Azure SQL 数据库托管实例。 | 本文
 [文章 5：在 Azure VM 上重新托管应用](contoso-migration-rehost-vm.md) | Contoso 使用 Site Recovery 服务将其 SmartHotel 应用 VM 迁移到 Azure VM。 | 可用
 [文章 6：在 Azure VM 和 SQL Server AlwaysOn 可用性组中重新托管应用](contoso-migration-rehost-vm-sql-ag.md) | Contoso 迁移 SmartHotel 应用。 Contoso 使用 Site Recovery 迁移应用 VM。 它使用数据库迁移服务将应用数据库迁移到受 AlwaysOn 可用性组保护的 SQL Server 群集。 | 可用
-[文章 7：将 Linux 应用重新托管到 Azure VM](contoso-migration-rehost-linux-vm.md) | Contoso 使用 Site Recovery 将其 Linux osTicket 应用直接迁移到 Azure VM。 | 可用
+[文章 7：在 Azure VM 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm.md) | Contoso 使用 Site Recovery 将其 Linux osTicket 应用直接迁移到 Azure VM。 | 可用
 [文章 8：在 Azure VM 和 Azure Database for MySQL 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm-mysql.md) | Contoso 使用 Site Recovery 将其 Linux osTicket 应用迁移到 Azure VM。 它使用 MySQL Workbench 将应用数据库迁移到 Azure Database for MySQL。 | 可用
 [文章 9：在 Azure Web 应用和 Azure SQL 数据库中重构应用](contoso-migration-refactor-web-app-sql.md) | Contoso 将其 SmartHotel 应用迁移到 Azure Web 应用，并将应用数据库迁移到 Azure SQL Server 实例。 | 可用
 [文章 10：在 Azure Web 应用和 Azure Database for MySQL 中重构 Linux 应用](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso 将其 Linux osTicket 应用迁移到多个站点中的 Azure Web 应用。 该 Web 应用与 GitHub 集成以便持续交付。 Contoso 将应用数据库迁移到 Azure Database for MySQL 实例。 | 可用
@@ -53,10 +53,10 @@ ms.locfileid: "51231815"
 
 Contoso 的 IT 领导团队与公司的业务合作伙伴密切协作，以了解本次迁移要实现的业务目标：
 
-- **应对业务增长**：Contoso 正在发展壮大。 因此，公司的本地系统和基础结构面临的压力也越来越大。
+- **满足业务增长**：Contoso 在不断发展。 因此，公司的本地系统和基础结构面临的压力也越来越大。
 - **提高效率**：Contoso 需要摒弃不必要的流程，简化开发人员和用户流程。 业务要求 IT 反应迅速，不浪费时间或金钱，让公司可以更快满足客户需求。
 - **提高灵活性**：Contoso IT 需要对业务需求更加敏感。 它必须能够抢在市场变化之前作出反应，这样才能让公司在全球经济中取得成功。 同时它不能阻碍发展，成为业务的绊脚石。
-- **扩展**：随着公司业务成功发展，Contoso IT 部门必须提供能够同步成长的系统。
+- **缩放**：随着公司业务成功发展，Contoso IT 部门必须提供能够同步成长的系统。
 
 ## <a name="migration-goals"></a>迁移目标
 
@@ -131,7 +131,7 @@ Contoso 通过将利弊清单放置在一起来评估其建议的设计。
 
 ### <a name="azure-services"></a>Azure 服务
 
-服务 | Description | 成本
+服务 | 说明 | 成本
 --- | --- | ---
 [数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview) | 使用数据库迁移服务可从多个数据库源无缝迁移到 Azure 数据平台，且会尽量缩短停机时间。 | 了解[支持的区域](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability)和[数据库迁移服务定价](https://azure.microsoft.com/pricing/details/database-migration/)。
 [Azure SQL 数据库托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) | 托管实例是一个托管数据库服务，表示 Azure 云中完全托管的 SQL Server 实例。 它与最新版本的 SQL Server 数据库引擎使用相同的代码，并具有最新的功能、性能改进和安全修补。 | 使用 Azure 中运行的 SQL 数据库托管实例会产生容量相关的费用。 详细了解[托管实例定价](https://azure.microsoft.com/pricing/details/sql-database/managed/)。 
@@ -156,12 +156,12 @@ Contoso 计划按以下流程设置部署：
 
 > [!div class="checklist"]
 > * **步骤 1：设置 SQL 数据库托管实例**：Contoso 需要预创建一个托管实例，以便将本地 SQL Server 数据库迁移到其中。
-> * **步骤 2：准备数据库迁移服务**：Contoso 必须注册数据库迁移提供程序，创建实例，然后创建一个数据库迁移服务项目。 Contoso 还必须为数据库迁移服务设置共享访问签名 (SAS) 统一资源标识符 (URI)。 SAS URI 提供对 Contoso 存储帐户中资源的委托访问，因此 Contoso 可以向存储对象授予有限的权限。 Contoso 设置 SAS URI，因此数据库迁移服务可以访问该服务上传 SQL Server 备份文件的存储帐户容器。
+> * **步骤 2：准备数据库迁移服务**：Contoso 必须注册数据库迁移提供程序，创建实例，然后创建数据库迁移服务项目。 Contoso 还必须为数据库迁移服务设置共享访问签名 (SAS) 统一资源标识符 (URI)。 SAS URI 提供对 Contoso 存储帐户中资源的委托访问，因此 Contoso 可以向存储对象授予有限的权限。 Contoso 设置 SAS URI，因此数据库迁移服务可以访问该服务上传 SQL Server 备份文件的存储帐户容器。
 > * **步骤 3：为 Site Recovery 准备 Azure**：Contoso 必须创建一个存储帐户为 Site Recovery 保存复制数据。 它还必须创建 Azure 恢复服务保管库。
-> * **步骤 4：为 Site Recovery 准备本地 VMware**：Contoso 将准备帐户用来发现 VM 和安装代理，以在故障转移后连接 Azure VM。
+> * **步骤 4：为 Site Recovery 准备本地 VMware**：Contoso 将准备用于发现 VM 和安装代理的帐户，以便在故障转移后连接到 Azure VM。
 > * **步骤 5：复制 VM**：为了设置复制，Contoso 配置 Site Recovery 源和目标环境、设置复制策略，并开始将 VM 复制到 Azure 存储。
-> * **步骤 6：通过使用数据库迁移服务迁移数据库**：Contoso 迁移数据库。
-> * **步骤 7：通过使用 Site Recovery 迁移 VM**：Contoso 运行测试故障转移，确保一切正常工作。 然后，Contoso 运行完整故障转移将 VM 迁移到 Azure。
+> * **步骤 6：使用数据库迁移服务迁移数据库**：Contoso 迁移数据库。
+> * **步骤 7：使用 Site Recovery 迁移 VM**：Contoso 运行测试故障转移，确保一切正常运行。 然后，Contoso 运行完整故障转移将 VM 迁移到 Azure。
 
 ## <a name="step-1-prepare-a-sql-database-managed-instance"></a>步骤 1：准备 SQL 数据库托管实例
 
@@ -171,9 +171,9 @@ Contoso 计划按以下流程设置部署：
 - 创建托管实例后，Contoso 不应将资源添加到该子网。
 - 该子网不能有关联的网络安全组。
 - 子网必须有用户定义的路由 (UDR) 路由表。 分配的唯一路由应为 0.0.0.0/0 下一跃点 Internet。 
-- 可选的自定义 DNS：如果在 Azure 虚拟网络中指定了自定义 DNS，则必须将 Azure 的递归解析程序 IP 地址（例如 168.63.129.16）添加到列表。 了解如何[为托管实例配置自定义 DNS](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns)。
+- 可选的自定义 DNS:如果在 Azure 虚拟网络中指定了自定义 DNS，则必须将 Azure 的递归解析程序 IP 地址（例如 168.63.129.16）添加到列表。 了解如何[为托管实例配置自定义 DNS](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns)。
 - 该子网不能有关联的服务终结点（存储或 SQL）。 应在虚拟网络上禁用服务终结点。
-- 该子网必须至少有 16 个 IP 地址。 了解如何[调整托管实例的子网大小](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#determine-the-size-of-subnet-for-managed-instances)。
+- 该子网必须至少有 16 个 IP 地址。 了解如何[调整托管实例的子网大小](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration)。
 - 在 Contoso 混合环境中，自定义 DNS 设置为必需项。 Contoso 将 DNS 设置配置为使用一个或多个公司 Azure DNS 服务器。 详细了解 [DNS 自定义](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns)。
 
 ### <a name="set-up-a-virtual-network-for-the-managed-instance"></a>为托管实例设置虚拟网络
@@ -186,14 +186,14 @@ Contoso 管理员按如下所述设置虚拟网络：
     - SQLMI-DS-EUS2 (10.235.0.0.25)
     - SQLMI-SAW-EUS2 (10.235.0.128/29)。 此子网用于将目录附加到托管实例。
 
-    ![托管实例 - 创建虚拟网络](media/contoso-migration-rehost-vm-sql-managed-instance/mi-vnet.png)
+      ![托管实例 - 创建虚拟网络](media/contoso-migration-rehost-vm-sql-managed-instance/mi-vnet.png)
 
 4. 部署虚拟网络和子网之后，按如下所述进行网络对等互连：
 
     - 将 VNET-SQLMI-EUS2 与 VNET-HUB-EUS2（美国东部 2 的中心虚拟网络）进行对等互连。
     - 将 VNET-SQLMI-EUS2 与 VNET-PROD-EUS2（生产网络）进行对等互连。
 
-    ![网络对等互连](media/contoso-migration-rehost-vm-sql-managed-instance/mi-peering.png)
+      ![网络对等互连](media/contoso-migration-rehost-vm-sql-managed-instance/mi-peering.png)
 
 5. 设置自定义 DNS 设置。 DNS 先指向 Contoso 的 Azure 域控制器。 Azure DNS 为辅助设置。 Contoso Azure 域控制器位置如下所示：
 
@@ -202,12 +202,12 @@ Contoso 管理员按如下所述设置虚拟网络：
     - CONTOSODC4 地址：10.245.42.5
     - Azure DNS 解析程序：168.63.129.16
 
-     ![网络 DNS 服务器](media/contoso-migration-rehost-vm-sql-managed-instance/mi-dns.png)
+      ![网络 DNS 服务器](media/contoso-migration-rehost-vm-sql-managed-instance/mi-dns.png)
 
 *需要更多帮助？*
 
 - 简要了解 [SQL 数据库托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)。
-- 了解如何[为 SQL 数据库托管实例创建虚拟网络](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#create-a-new-virtual-network-for-managed-instances)。
+- 了解如何[为 SQL 数据库托管实例创建虚拟网络](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration)。
 - 了解如何[设置对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering)。
 - 了解如何[更新 Azure Active Directory DNS 设置](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-dns)。
 
@@ -238,7 +238,7 @@ Contoso 会考虑以下因素：
     
 *需要更多帮助？*
 
-了解如何[为托管实例设置路由](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-tutorial-portal#create-new-route-table-and-a-route)。
+了解如何[为托管实例设置路由](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-tutorial-portal)。
 
 ### <a name="create-a-managed-instance"></a>创建托管实例
 
@@ -254,7 +254,7 @@ Contoso 管理员现在可以预配 SQL 数据库托管实例：
     - 一个虚拟群集，用于应对 Contoso 有多个托管实例的情况。
     - SQL Server 数据库托管实例。 
 
-    ![托管实例](media/contoso-migration-rehost-vm-sql-managed-instance/mi-resources.png)
+      ![托管实例](media/contoso-migration-rehost-vm-sql-managed-instance/mi-resources.png)
 
 *需要更多帮助？*
 
@@ -442,8 +442,8 @@ Contoso 管理员现在配置源环境。 若要设置源环境，他们需要�
 1. 在“准备基础结构” > “复制设置” > “复制策略” >  “创建和关联”中，创建 **ContosoMigrationPolicy** 策略。
 2. 使用默认设置：
     - **RPO 阈值**：默认为 60 分钟。 此值确定创建恢复点的频率。 如果连续复制超出此限制，将生成警报。
-    - **恢复点保留期**：默认值为 24 小时。 此值指定每个恢复点的保留时长。 可以将复制的虚拟机恢复到窗口中的任何点。
-    - **应用一致性快照频率**：默认值为 1 小时。 此值指定应用程序一致性快照的创建频率。
+    - **恢复点保留期**：默认为 24 小时。 此值指定每个恢复点的保留时长。 可以将复制的虚拟机恢复到窗口中的任何点。
+    - **应用一致性快照频率**：默认为 1 小时。 此值指定应用程序一致性快照的创建频率。
  
     ![复制策略 - 创建](./media/contoso-migration-rehost-vm-sql-managed-instance/replication-policy.png)
 
@@ -609,13 +609,13 @@ Contoso 安全团队会审查 Azure VM 和 SQL 数据库托管实例，检查实
 
      ![托管实例安全 - 威胁检测](./media/contoso-migration-rehost-vm-sql-managed-instance/mi-security.png)  
 
-若要详细了解 VM 的安全做法，请参阅[Azure 中 IaaS 工作负荷的安全性最佳实践](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control)。
+若要详细了解 VM 的安全做法，请参阅[Azure 中 IaaS 工作负荷的安全性最佳实践](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms)。
 
 ### <a name="bcdr"></a>BCDR
 
 对于业务连续性和灾难恢复 (BCDR)，Contoso 采取了以下措施：
 
-- 保持数据安全：Contoso 使用 Azure 备份服务来备份 VM 上的数据。 [了解详情]https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+- 确保数据安全：Contoso 使用 Azure 备份服务备份 VM 上的数据。 [了解详细信息](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 - 使应用保持正常运行：Contoso 使用 Site Recovery 将 Azure 中的应用 VM 复制到次要区域。 [了解详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)。
 - 详细了解如何管理 SQL 托管实例，包括[数据库备份](https://docs.microsoft.com/azure/sql-database/sql-database-automated-backups)。
 

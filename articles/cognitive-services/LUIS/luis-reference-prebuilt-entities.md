@@ -1,23 +1,24 @@
 ---
-title: 预生成实体 - LUIS
+title: 所有预构建实体
 titleSuffix: Azure Cognitive Services
 description: 本文包含了语言理解 (LUIS) 中包括的预构建实体的列表。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: ff529e7b828c195be89c9d11fc5f50e04104642e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 4d5ce9775e7844fcc82aa993f5b01c7cc7ae4779
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567343"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213729"
 ---
-# <a name="entities-per-culture"></a>每个语言区域的实体
+# <a name="entities-per-culture-in-your-luis-model"></a>LUIS 模型中每个区域性的实体
 
 语言理解 (LUIS) 提供了预构建的实体。 当应用程序中包括预构建实体时，LUIS 会在终结点响应中包括对应的实体预测。 所有陈述示例都标记有实体。 **无法**修改预构建实体的行为。 除非另行说明，预构建实体在所有 LUIS 应用程序区域设置（语言区域）中都可用。 下表显示了每个语言区域支持的预构建实体。
 

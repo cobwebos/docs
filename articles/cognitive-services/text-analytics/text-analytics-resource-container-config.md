@@ -1,173 +1,179 @@
 ---
 title: 配置容器
-titlesuffix: Text Analytics - Cognitive Services - Azure
-description: 文本分析容器的配置设置。
+titlesuffix: Text Analytics - Azure Cognitive Services
+description: 文本分析为每个容器提供一个通用配置框架，以便可以轻松配置和管理容器的存储、日志记录、遥测和安全性设置。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 0f6b8fa27d2db45be2c677a52c53cff5847acf4a
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 2360cb56f40bf899cec5d4a5fb6637eaac59f4d1
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634879"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224320"
 ---
-# <a name="configure-containers"></a>配置容器
+# <a name="configure-text-analytics-docker-containers"></a>配置文本分析 docker 容器
 
 文本分析为每个容器提供一个通用配置框架，以便可以轻松配置和管理容器的存储、日志记录、遥测和安全性设置。
 
 ## <a name="configuration-settings"></a>配置设置
 
-文本分析容器中的配置设置是分层的，所有容器基于以下顶级结构使用共享的层次结构：
+[!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
-* [ApiKey](#apikey-configuration-setting)
-* [ApplicationInsights](#applicationinsights-configuration-settings)
-* [身份验证](#authentication-configuration-settings)
-* [计费](#billing-configuration-setting)
-* [Eula](#eula-configuration-setting)
-* [Fluentd](#fluentd-configuration-settings)
-* [日志记录](#logging-configuration-settings)
-* [Mounts](#mounts-configuration-settings)
-
-可以使用[环境变量](#configuration-settings-as-environment-variables)或[命令行参数](#configuration-settings-as-command-line-arguments)在实例化文本分析容器中的容器时指定配置设置。
-
-环境变量值替代命令行参数值，而这些参数值又替代容器映像的默认值。 换言之，如果在环境变量和命令行参数中为同一配置设置（例如 `Logging:Disk:LogLevel`）指定不同的值，然后实例化容器，则实例化的容器将使用环境变量中的值。
-
-### <a name="configuration-settings-as-environment-variables"></a>环境变量形式的配置设置
-
-可以使用 [ASP.NET Core 环境变量语法](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#configuration-by-environment)来指定配置设置。
-
-容器在实例化时读取用户环境变量。 如果存在环境变量，则环境变量的值将替代指定的配置设置的默认值。 使用环境变量的好处是可以在实例化容器之前设置多个配置设置，并且多个容器可以自动使用同一组配置设置。
-
-例如，以下命令使用环境变量将控制台日志记录级别配置为 [LogLevel.Information](https://msdn.microsoft.com)，然后从情绪分析容器映像实例化容器。 环境变量的值将替代默认配置设置。
-
-  ```Docker
-  SET Logging:Console:LogLevel=Information
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0 ApiKey=0123456789
-  ```
-
-### <a name="configuration-settings-as-command-line-arguments"></a>命令行参数形式的配置设置
-
-可以使用 [ASP.NET Core 命令行参数语法](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#arguments)来指定配置设置。
-
-可以在 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令的可选 `ARGS` 参数（用于从下载的容器映像实例化容器）中指定配置设置。 使用命令行参数的好处是每个容器都可以使用不同的自定义配置设置集。
-
-例如，以下命令从情绪分析容器映像实例化容器，并将控制台日志记录级别配置为 LogLevel.Information，从而替代默认配置设置。
-
-  ```Docker
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0 ApiKey=0123456789 Logging:Console:LogLevel=Information
-  ```
+> [!IMPORTANT]
+> [`ApiKey`](#apikey-setting)、[`Billing`](#billing-setting) 和 [`Eula`](#eula-setting) 设置一起使用。必须为所有三个设置提供有效值，否则容器将无法启动。 有关使用这些配置设置实例化容器的详细信息，请参阅[计费](how-tos/text-analytics-how-to-install-containers.md#billing)。
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey` 配置设置指定 Azure 上用于跟踪容器的计费信息的文本分析资源的配置密钥。 必须为此配置设置指定值，并且该值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的文本分析资源的有效配置密钥。
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，并且该值必须是为 [`Billing`](#billing-setting) 配置设置指定的_文本分析_资源的有效密钥。
 
-> [!IMPORTANT]
-> [`ApiKey`](#apikey-configuration-setting)、[`Billing`](#billing-configuration-setting) 和 [`Eula`](#eula-configuration-setting) 配置设置一起使用。必须为所有三个设置提供有效值，否则容器将无法启动。 有关使用这些配置设置实例化容器的详细信息，请参阅[计费](how-tos/text-analytics-how-to-install-containers.md#billing)。
+可以在以下位置找到此设置：
 
-## <a name="applicationinsights-configuration-settings"></a>ApplicationInsights 配置设置
+* Azure 门户：**文本分析的**资源管理，在“密钥”下
 
-使用 `ApplicationInsights` 节中的配置设置可以向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。 Application Insights 提供对容器的深入监视，深度可达代码级别。 可以轻松监视容器的可用性、性能和使用情况。 还可以快速识别和诊断容器中的错误，而无需等待用户报告这些错误。
+## <a name="applicationinsights-setting"></a>ApplicationInsights 设置
 
-下表描述了 `ApplicationInsights` 节支持的配置设置。
-
-| 名称 | 数据类型 | Description |
-|------|-----------|-------------|
-| `InstrumentationKey` | String | 容器遥测数据要发送到的 Application Insights 实例的检测密钥。 有关详细信息，请参阅 [Application Insights for ASP.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core)。 |
-
-## <a name="authentication-configuration-settings"></a>Authentication 配置设置
-
-`Authentication` 配置设置为容器提供 Azure 安全选项。 尽管本部分中的配置设置适用于文本分析容器中的所有容器，但配置设置值的使用方式特定于每个容器，容器不可完全照用本部分中的值。
-
-下表描述了 `Authentication` 节支持的配置设置。
-
-| 名称 | 数据类型 | Description |
-|------|-----------|-------------|
-| `ApiKey` | 字符串或数组 | 容器用来访问其他 Azure 资源的 Azure 订阅密钥（如果需要）。<br/> 如果容器使用多个订阅密钥，则此值将指定为字符串数组；否则，使用字符串值来指定容器所用的单个订阅密钥。 |
+[!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-`Billing` 配置设置指定 Azure 上用于跟踪容器的账单信息的文本分析资源的终结点 URI。 必须为此配置设置指定值，并且该值必须是 Azure 上文本分析资源的有效终结点 URI。
+`Billing` 设置指定 Azure 上用于计量容器的账单信息的文本分析资源的终结点 URI。 必须为此配置设置指定值，并且该值必须是 Azure 上的_文本分析_资源的有效终结点 URI。
+
+可以在以下位置找到此设置：
+
+* Azure 门户：**文本分析的**概述，标签为 `Endpoint`
+
+|必选| Name | 数据类型 | 说明 |
+|--|------|-----------|-------------|
+|是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0` |
+
+## <a name="eula-setting"></a>Eula 设置
+
+[!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
+
+## <a name="fluentd-settings"></a>Fluentd 设置
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
+
+## <a name="http-proxy-credentials-settings"></a>Http 代理凭据设置
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
+
+## <a name="logging-settings"></a>日志记录设置
+ 
+[!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
+
+## <a name="mount-settings"></a>装载设置
+
+使用绑定装载从容器读取数据并将数据写入容器。 可以通过在 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令中指定 `--mount` 选项来指定输入装载或输出装载。
+
+文本分析容器不使用输入或输出装载来存储训练或服务数据。 
+
+主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 docker 服务帐户使用的权限与主机安装位置权限之间的冲突，可能无法访问[主计算机](how-tos/text-analytics-how-to-install-containers.md#the-host-computer)的装载位置。 
+
+|可选| Name | 数据类型 | 说明 |
+|-------|------|-----------|-------------|
+|不允许| `Input` | String | 文本分析容器不使用此项。|
+|可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
+
+## <a name="hierarchical-settings"></a>分层设置
+
+[!INCLUDE [Container shared configuration hierarchical settings](../../../includes/cognitive-services-containers-configuration-shared-hierarchical-settings.md)]
+
+## <a name="example-docker-run-commands"></a>Docker 运行命令示例 
+
+以下示例使用的配置设置说明如何编写和使用 `docker run` 命令。  运行后，容器将继续运行，直到[停止](how-tos/text-analytics-how-to-install-containers.md#stop-the-container)它。
+
+* **行继续符**：以下各节中的 docker 命令使用反斜杠 `\` 作为行继续符。 根据主机操作系统的要求替换或删除字符。 
+* **参数顺序**：除非非常熟悉 docker 容器，否则不要更改参数顺序。
+
+将 {_argument_name_} 替换为为你自己的值：
+
+| 占位符 | 值 | 格式或示例 |
+|-------------|-------|---|
+|{BILLING_KEY} | Azure 门户的“文本分析密钥”页面上可用的文本分析资源的终结点密钥。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{BILLING_ENDPOINT_URI} | Azure 门户的“文本分析概述”页面上提供了账单终结点值。|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
 
 > [!IMPORTANT]
-> [`ApiKey`](#apikey-configuration-setting)、[`Billing`](#billing-configuration-setting) 和 [`Eula`](#eula-configuration-setting) 配置设置一起使用。必须为所有三个设置提供有效值，否则容器将无法启动。 有关使用这些配置设置实例化容器的详细信息，请参阅[计费](how-tos/text-analytics-how-to-install-containers.md#billing)。
+> 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](how-tos/text-analytics-how-to-install-containers.md#billing)。
+> ApiKey 值是来自 Azure 文本分析资源密钥页面的**密钥**。 
 
-## <a name="eula-configuration-setting"></a>Eula 配置设置
+## <a name="keyphrase-extraction-container-docker-examples"></a>keyPhrase 提取容器 docker 示例
 
-`Eula` 配置设置表示已接受容器的许可条款。 必须为此配置设置指定值，并且该值必须设置为 `accept`。
+以下 docker 示例适用于 Keyphrase 提取容器。 
 
-> [!IMPORTANT]
-> [`ApiKey`](#apikey-configuration-setting)、[`Billing`](#billing-configuration-setting) 和 [`Eula`](#eula-configuration-setting) 配置设置一起使用。必须为所有三个设置提供有效值，否则容器将无法启动。 有关使用这些配置设置实例化容器的详细信息，请参阅[计费](how-tos/text-analytics-how-to-install-containers.md#billing)。
-
-## <a name="fluentd-configuration-settings"></a>Fluentd 配置设置
-
-`Fluentd` 节管理 [Fluentd](https://www.fluentd.org)（用于统一日志记录的开源数据收集器）的配置设置。 文本分析容器包含一个 Fluentd 日志记录提供程序，让容器向 Fluentd 服务器写入日志和（可选）指标数据。
-
-下表描述了 `Fluentd` 节支持的配置设置。
-
-| 名称 | 数据类型 | Description |
-|------|-----------|-------------|
-| `Host` | String | Fluentd 服务器的 IP 地址或 DNS 主机名。 |
-| `Port` | Integer | Fluentd 服务器的端口。<br/> 默认值为 24224。 |
-| `HeartbeatMs` | Integer | 检测信号间隔，以毫秒为单位。 如果在此间隔过期之前未发送事件流量，则将检测信号发送到 Fluentd 服务器。 默认值为 60000 毫秒（1 分钟）。 |
-| `SendBufferSize` | Integer | 为发送操作分配的网络缓冲空间，以字节为单位。 默认值为 32768 字节（32 KB）。 |
-| `TlsConnectionEstablishmentTimeoutMs` | Integer | 与 Fluentd 服务器建立 SSL/TLS 连接的超时值，以毫秒为单位。 默认值为 10000 毫秒（10 秒）。<br/> 如果 `UseTLS` 设置为 false，则会忽略此值。 |
-| `UseTLS` | Boolean | 指示容器是否应使用 SSL/TLS 来与 Fluentd 服务器通信。 默认值为 false。 |
-
-## <a name="logging-configuration-settings"></a>Logging 配置设置
-
-`Logging` 配置设置管理容器的 ASP.NET Core 日志记录支持。 可对容器使用用于 ASP.NET Core 应用程序的相同配置设置和值。 文本分析容器支持以下日志记录提供程序：
-
-* [Console](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#console-provider)  
-  ASP.NET Core `Console` 日志记录提供程序。 支持此日志记录提供程序的所有 ASP.NET Core 配置设置和默认值。
-* [调试](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#debug-provider)  
-  ASP.NET Core `Debug` 日志记录提供程序。 支持此日志记录提供程序的所有 ASP.NET Core 配置设置和默认值。
-* 磁盘  
-  JSON 日志记录提供程序。 此日志记录提供程序将日志数据写入输出装入点。  
-  `Disk` 日志记录提供程序支持以下配置设置：  
-
-  | 名称 | 数据类型 | Description |
-  |------|-----------|-------------|
-  | `Format` | String | 日志文件的输出格式。<br/> **注意：** 此值必须设置为 `json` 才能启用日志记录提供程序。 如果指定了此值，但未同时在实例化容器时指定输出装入点，则会发生错误。 |
-  | `MaxFileSize` | Integer | 日志文件的最大大小，以 MB 为单位。 如果当前日志文件的大小达到或超过此值，则日志记录提供程序会启动新的日志文件。 如果指定 -1，则日志文件的大小仅受输出装入点的最大文件大小（如果有）的限制。 默认值为 1。 |
-
-有关配置 ASP.NET Core 日志记录支持的详细信息，请参阅[设置文件配置](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#settings-file-configuration)。
-
-## <a name="mounts-configuration-settings"></a>Mounts 配置设置
-
-文本分析容器提供的 Docker 容器在设计上是无状态且不可变的。 换言之，在容器中创建的文件将存储在可写的容器层中，该层只在运行容器时才会保存，并且不能轻松对其进行访问。 如果停止或删除该容器，将会销毁该容器以及其中创建的文件。
-
-但是，由于它们是 Docker 容器，因此你可以使用 Docker 存储选项（例如卷和绑定装入点）来读取和写入容器外部保存的数据（如果该容器支持这些操作）。 有关如何指定和管理 Docker 存储选项的详细信息，请参阅[管理 Docker 中的数据](https://docs.docker.com/storage/)。
-
-> [!NOTE]
-> 通常不需要更改这些配置设置的值。 指定容器的输入和输出装入点时，可以使用这些配置设置中指定的值作为目标。 有关指定输入和输出装入点的详细信息，请参阅[输入和输出装入点](#input-and-output-mounts)。
-
-下表描述了 `Mounts` 节支持的配置设置。
-
-| 名称 | 数据类型 | Description |
-|------|-----------|-------------|
-| `Input` | String | 输入装入点的目标。 默认值为 `/input`。 |
-| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 |
-
-### <a name="input-and-output-mounts"></a>输入和输出装入点
-
-默认情况下，每个容器可以支持一个输入装入点（容器可从中读取数据）和一个输出装入点（容器可将数据写入到其中）。 但是，容器并非一定要支持输入或输出装入点。每个容器可以同时使用输入和输出装入点来实现特定于容器的目的，此外，可以使用文本分析容器支持的日志记录选项。 下表列出了文本分析容器中每个容器支持的输入和输出装入点。
-
-| 容器 | 输入装入点 | 输出装入点 |
-|-----------|-------------|--------------|
-|[关键短语提取](#working-with-key-phrase-extraction) | 不支持 | 可选 |
-|[语言检测](#working-with-language-detection) | 不支持 | 可选 |
-|[情绪分析](#working-with-sentiment-analysis) | 不支持 | 可选 |
-
-可以通过在 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令（用于从下载的容器映像实例化容器）中指定 `--mount` 选项，来指定输入装入点或输出装入点。 默认情况下，输入装入点使用 `/input` 作为目标，输出装入点使用 `/output` 作为目标。 可在 `--mount` 选项中指定 Docker 容器主机可用的任何 Docker 存储选项。
-
-例如，以下命令在主机上的 `D:\Output` 文件夹中定义一个 Docker 绑定装入点作为输出装入点，然后从情绪分析容器映像实例化容器，并将 JSON 格式的日志文件保存到输出装入点。
+### <a name="basic-example"></a>基本示例 
 
   ```Docker
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 --mount type=bind,source=D:\Output,destination=/output mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0 ApiKey=0123456789 Logging:Disk:Format=json
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/keyphrase Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} 
   ```
+
+### <a name="logging-example-with-command-line-arguments"></a>使用命令行参数的日志记录示例
+
+  ```Docker
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/keyphrase Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} Logging:Console:LogLevel=Information
+  ```
+
+### <a name="logging-example-with-environment-variable"></a>带有环境变量的日志记录示例
+
+  ```Docker
+  SET Logging:Console:LogLevel=Information
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/keyphrase  Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY}
+  ```
+
+## <a name="language-detection-container-docker-examples"></a>语言检测容器 docker 示例
+
+以下 docker 示例适用于语言检测容器。 
+
+### <a name="basic-example"></a>基本示例
+
+  ```Docker
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/language Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} Logging:Console:LogLevel=Information
+  ```
+
+### <a name="logging-example-with-command-line-arguments"></a>使用命令行参数的日志记录示例
+
+  ```Docker
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/language Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} Logging:Console:LogLevel=Information
+  ```
+
+### <a name="logging-example-with-environment-variable"></a>带有环境变量的日志记录示例
+
+  ```Docker
+  SET Logging:Console:LogLevel=Information
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/language  Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY}
+  ```
+ 
+## <a name="sentiment-analysis-container-docker-examples"></a>情绪分析容器 docker 示例
+
+以下 docker 示例适用于情绪分析容器。 
+
+### <a name="basic-example"></a>基本示例
+
+  ```Docker
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} Logging:Console:LogLevel=Information
+  ```
+
+### <a name="logging-example-with-command-line-arguments"></a>使用命令行参数的日志记录示例
+
+  ```Docker
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} Logging:Console:LogLevel=Information
+  ```
+
+### <a name="logging-example-with-environment-variable"></a>带有环境变量的日志记录示例
+
+  ```Docker
+  SET Logging:Console:LogLevel=Information
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY}
+  ```
+
+## <a name="next-steps"></a>后续步骤
+
+* 查看[如何安装和运行容器](how-tos/text-analytics-how-to-install-containers.md)
+* 使用更多[认知服务容器](../cognitive-services-container-support.md)

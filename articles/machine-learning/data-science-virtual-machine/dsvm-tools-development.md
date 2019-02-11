@@ -1,26 +1,27 @@
 ---
 title: 数据科学虚拟机数据开发工具 - Azure | Microsoft Docs
-description: 数据科学虚拟机开发文档。
+description: 了解 Data Science Virtual Machine 上预安装的工具和集成开发环境。
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 2f642a91bd656cb74cdce2a98c44372a64f23cb9
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 663da31985759f47fff77dc5ad0f985d44559385
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50237871"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451574"
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>数据科学虚拟机开发工具
 
@@ -32,7 +33,7 @@ ms.locfileid: "50237871"
 | 它是什么？   | 常规用途 IDE      |
 | 支持的 DSVM 版本      | Windows      |
 | 典型用途      | 软件开发    |
-| 如何在 DSVM 上配置/安装它？      | 数据科学工作负载（Python 和 R 工具）、Azure 工作负载（Hadoop、Data Lake）、Node.js、SQL Server 工具、[用于 AI 的 Visual Studio Tools](https://github.com/Microsoft/vs-tools-for-ai)    |
+| 如何在 DSVM 上配置/安装它？      | 数据科学工作负荷（Python 和 R 工具）、Azure 工作负荷（Hadoop、Data Lake）、Node.js、SQL Server 工具、[用于 Visual Studio Code 的 Azure 机器学习](https://github.com/Microsoft/vs-tools-for-ai)    |
 | 如何使用/运行它？      | 桌面快捷方式 (`C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.exe`)    |
 | DSVM 上的相关工具      |     Visual Studio Code、RStudio、Juno  |
 

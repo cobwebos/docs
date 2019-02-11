@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 5f76b117b01090864e1bf33e986e8ec96f0bf376
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 23c53982919ad29c639a6441f206abb35ddb7a1b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31599928"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430785"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>使用 PowerShell 在可用性区域中创建 Windows 虚拟机
 
@@ -29,7 +29,7 @@ ms.locfileid: "31599928"
 
 若要使用可用性区域，请在[受支持的 Azure 区域](../../availability-zones/az-overview.md#regions-that-support-availability-zones)中创建虚拟机。
 
-请确保已安装最新的 Azure PowerShell 模块。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
+请确保已安装最新的 Azure PowerShell 模块。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 

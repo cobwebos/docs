@@ -1,28 +1,21 @@
 ---
-title: 将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型：PowerShell：Azure | Microsoft 文档
+title: 将线路从经典移至资源管理器 - ExpressRoute：PowerShell：Azure | Microsoft Docs
 description: 本页介绍如何使用 PowerShell 将经典线路转移到 Resource Manager 部署模型。
-documentationcenter: na
 services: expressroute
 author: ganesr
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 08152836-23e7-42d1-9a56-8306b341cd91
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/28/2018
+ms.topic: conceptual
+ms.date: 01/07/2019
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 0c3a1a57a89d716245dc075e47b7970cb228ff50
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.custom: seodec18
+ms.openlocfilehash: 984ccfa9bad99281418ba891ce188536ae13d8e5
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100413"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106760"
 ---
-# <a name="move-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model-using-powershell"></a>使用 PowerShell 将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型
+# <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>使用 PowerShell 将 ExpressRoute 线路从经典部署模型转移到资源管理器部署模型
 
 要在经典部署模型和 Resource Manager 部署模型中使用 ExpressRoute 线路，必须将该线路转移到 Resource Manager 部署模型。 以下部分可帮助使用 PowerShell 转移线路。
 
@@ -55,8 +48,8 @@ ms.locfileid: "37100413"
 3. 为 Azure 和 ExpressRoute 导入 PowerShell 模块。
 
   ```powershell
-  Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Azure.psd1'
-  Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\ExpressRoute\ExpressRoute.psd1'
+  Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
+  Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
   ```
 
 4. 使用下面的 cmdlet 获取所有 ExpressRoute 线路的服务密钥。 检索密钥后，复制要转移到 Resource Manager 部署模型的线路的**服务密钥**。

@@ -3,19 +3,19 @@ title: Windows 身份验证和 Azure MFA 服务器 | Microsoft 文档
 description: 部署 Windows 身份验证和 Azure 多重身份验证服务器。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: b61ecf1019442b29a4cf8120dbdd7ce9c1b4a51a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: e2f6c8986ec5ea21a0c12dfa3f7c0aec9b30ef49
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160080"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080699"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows 身份验证和 Azure 多重身份验证服务器
 

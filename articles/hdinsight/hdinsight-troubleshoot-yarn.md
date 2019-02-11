@@ -6,20 +6,19 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
-ms.date: 11/2/2017
-ms.openlocfilehash: c3904286fc998769b9a72522bd31d3a9797c55c2
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 12/06/2018
+ms.openlocfilehash: d5582038c35ba3b599be89b7b7939e644d55ea78
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008039"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408824"
 ---
-# <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 YARN 进行故障排除
+# <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Hadoop YARN 进行故障排除
 
 了解处理 Apache Ambari 中的 Apache Hadoop YARN 有效负载时的最常见问题及其解决方法。
 
 ## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>如何在群集上创建新的 YARN 队列？
-
 
 ### <a name="resolution-steps"></a>解决步骤 
 
@@ -60,7 +59,7 @@ YARN 计划程序 UI 中会立即显示这些更改。
 
 ### <a name="additional-reading"></a>其他阅读材料
 
-- [YARN CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
+- [Apache Hadoop YARN CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
 
 
 ## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>如何从群集下载 YARN 日志？
@@ -132,16 +131,9 @@ YARN 计划程序 UI 中会立即显示这些更改。
 
 ### <a name="additional-reading-2"></a>其他阅读材料
 
-- [使用 SSH 连接到 HDInsight (Hadoop)](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
+- [使用 SSH 连接到 HDInsight (Apache Hadoop)](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
 - [Apache Hadoop YARN 的概念和应用](https://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/)
 
 
 ### <a name="see-also"></a>另请参阅
 [使用 Azure HDInsight 进行故障排除](hdinsight-troubleshoot-guide.md)
-
-
-
-
-
-
-

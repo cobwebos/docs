@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: 75a3dcb5aeb3e30da570eb57d0d1495710624e54
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.subservice: common
+ms.openlocfilehash: 6a3fe8c7235a0cf475f188a3379e372cd777ce8c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141854"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477635"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>使用 PowerShell 管理 Azure 独立云中的存储
 
@@ -23,6 +23,8 @@ ms.locfileid: "42141854"
 * [由中国世纪互联运营的 Azure 中国云](http://www.windowsazure.cn/)
 * [Azure 德国云](../../germany/germany-welcome.md)
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ## <a name="using-an-independent-cloud"></a>使用独立云 
 
 若要在某个独立云中使用 Azure 存储，需要连接到该云而不是 Azure 公有云。 若要使用某个独立云而不是 Azure 公有云，需要：
@@ -31,28 +33,28 @@ ms.locfileid: "42141854"
 * 确定并使用可用的区域。
 * 使用正确的终结点后缀，它不同于 Azure 公有云。
 
-本文中的示例需要 Azure PowerShell 模块 4.4.0 或更高版本。 在 PowerShell 窗口中，运行 `Get-Module -ListAvailable AzureRM` 可查找版本。 如果未列出任何信息或需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 
+本文中的示例需要 Azure PowerShell 模块 Az 版本 0.7 或更高版本。 在 PowerShell 窗口中，运行 `Get-Module -ListAvailable Az` 可查找版本。 如果未列出任何信息或需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-运行 [Get-AzureRmEnvironment](/powershell/module/servicemanagement/azurerm.profile/get-azurermenvironment) cmdlet 以查看可用的 Azure 环境：
+运行 [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) cmdlet 以查看可用的 Azure 环境：
    
 ```powershell
-Get-AzureRmEnvironment
+Get-AzEnvironment
 ```
 
 登录到有权访问所要连接的云的帐户，并设置环境。 此示例演示如何登录到使用 Azure 政府云的帐户。   
 
 ```powershell
-Connect-AzureRmAccount –Environment AzureUSGovernment
+Connect-AzAccount –Environment AzureUSGovernment
 ```
 
 若要访问中国云，请使用环境 **AzureChinaCloud**。 若要访问德国云，请使用 **AzureGermanCloud**。
 
-此时，如果需要查看可在其中创建存储帐户或其他资源的位置列表，可以使用 [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) 查询所选云可用的位置。
+此时，如果需要查看可在其中创建存储帐户或其他资源的位置列表，可以使用 [Get-AzLocation](/powershell/module/az.resources/get-azlocation) 查询所选云可用的位置。
 
 ```powershell
-Get-AzureRmLocation | select Location, DisplayName
+Get-AzLocation | select Location, DisplayName
 ```
 
 下表显示了针对德国云返回的位置。
@@ -67,36 +69,36 @@ Get-AzureRmLocation | select Location, DisplayName
 
 其中每个环境的终结点后缀不同于 Azure 公有云终结点。 例如，Azure 公有云的 Blob 终结点后缀为 **blob.core.windows.net**。 政府云的 Blob 终结点后缀为 **blob.core.usgovcloudapi.net**。 
 
-### <a name="get-endpoint-using-get-azurermenvironment"></a>使用 Get-AzureRMEnvironment 获取终结点 
+### <a name="get-endpoint-using-get-azenvironment"></a>使用 Get-AzEnvironment 获取终结点 
 
-使用 [Get-AzureRMEnvironment](/powershell/module/azurerm.profile/get-azurermenvironment) 检索终结点后缀。 终结点是环境的 *StorageEndpointSuffix* 属性。 以下代码片段演示了如何执行此操作。 所有这些命令返回类似于“core.cloudapp.net”、“core.cloudapi.de”等的内容。将此内容追加到存储服务即可访问该服务。 例如，追加“queue.core.cloudapi.de”可访问德国云中的队列服务。
+使用 [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) 检索终结点后缀。 终结点是环境的 *StorageEndpointSuffix* 属性。 以下代码片段演示了如何执行此操作。 所有这些命令返回类似于“core.cloudapp.net”、“core.cloudapi.de”等的内容。将此内容追加到存储服务即可访问该服务。 例如，追加“queue.core.cloudapi.de”可访问德国云中的队列服务。
 
 此代码片段检索所有环境，以及每个环境的终结点后缀。
 
 ```powershell
-Get-AzureRmEnvironment | select Name, StorageEndpointSuffix 
+Get-AzEnvironment | select Name, StorageEndpointSuffix 
 ```
 
 此命令返回以下结果。
 
-| 名称| core.usgovcloudapi.net|
+| Name| core.usgovcloudapi.net|
 |----|----|
 | AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |
 | AzureGermanCloud | core.cloudapi.de|
 | AzureUSGovernment | core.usgovcloudapi.net |
 
-若要检索指定环境的所有属性，请调用 **Get-AzureRmEnvironment** 并指定云名称。 此代码片段返回属性列表；请在列表中查找 **StorageEndpointSuffix**。 以下示例适用于德国云。
+若要检索指定环境的所有属性，请调用 Get-AzEnvironment 并指定云名称。 此代码片段返回属性列表；请在列表中查找 **StorageEndpointSuffix**。 以下示例适用于德国云。
 
 ```powershell
-Get-AzureRmEnvironment -Name AzureGermanCloud 
+Get-AzEnvironment -Name AzureGermanCloud 
 ```
 
 结果如下所示：
 
 |属性名称|值|
 |----|----|
-| 名称 | AzureGermanCloud |
+| Name | AzureGermanCloud |
 | EnableAdfsAuthentication | False |
 | ActiveDirectoryServiceEndpointResourceI | http://management.core.cloudapi.de/ |
 | GalleryURL | https://gallery.cloudapi.de/ |
@@ -111,7 +113,7 @@ Get-AzureRmEnvironment -Name AzureGermanCloud
 若只要检索存储终结点后缀属性，请检索特定的云，并仅请求该属性。
 
 ```powershell
-$environment = Get-AzureRmEnvironment -Name AzureGermanCloud
+$environment = Get-AzEnvironment -Name AzureGermanCloud
 Write-Host "Storage EndPoint Suffix = " $environment.StorageEndpointSuffix 
 ```
 
@@ -129,7 +131,7 @@ Storage Endpoint Suffix = core.cloudapi.de
 # Get a reference to the storage account.
 $resourceGroup = "myexistingresourcegroup"
 $storageAccountName = "myexistingstorageaccount"
-$storageAccount = Get-AzureRmStorageAccount `
+$storageAccount = Get-AzStorageAccount `
   -ResourceGroupName $resourceGroup `
   -Name $storageAccountName 
   # Output the endpoints.
@@ -157,7 +159,7 @@ table endpoint = http://myexistingstorageaccount.table.core.usgovcloudapi.net/
 如果在本练习中创建了新的资源组和存储帐户，可以通过删除资源组来删除所有资产。 这会一并删除组中包含的所有资源。 在这种情况下，它会删除创建的存储帐户以及资源组本身。
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,26 +1,19 @@
 ---
-title: 创建和修改 ExpressRoute 线路：Azure 门户 | Microsoft 文档
-description: 本文介绍如何创建、预配、验证、更新、删除和取消预配 ExpressRoute 线路。
-documentationcenter: na
+title: 创建和修改 ExpressRoute 线路 - 门户：Azure | Microsoft Docs
+description: 创建、预配、验证、更新、删除和取消预配 ExpressRoute 线路。
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 68d59d59-ed4d-482f-9cbc-534ebb090613
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/20/2017
+ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
-ms.openlocfilehash: 94d7b743bdec0d22254144d5316e0d94f5660a55
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 974421662a33cd9167d3c39b31d8da20db9f505f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235320"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091521"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路
 > [!div class="op_single_selector"]
@@ -31,7 +24,7 @@ ms.locfileid: "51235320"
 > * [PowerShell（经典）](expressroute-howto-circuit-classic.md)
 >
 
-本文介绍如何使用 Azure 门户和 Azure 资源管理器部署模型创建 Azure ExpressRoute 线路。 以下步骤还说明如何查看线路状态，以及如何更新、删除和取消预配线路。
+本文可帮助你使用 Azure 门户和 Azure 资源管理器部署模型创建 ExpressRoute 线路。 还可以检查线路状态、更新、删除或取消预配线路。
 
 
 ## <a name="before-you-begin"></a>开始之前
@@ -84,19 +77,19 @@ ms.locfileid: "51235320"
 
 创建新的 ExpressRoute 线路时，线路将为以下状态：
 
-提供商状态：未预配<BR>
+提供程序状态：未预配<BR>
 线路状态：已启用
 
 ![启动预配过程](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
 
 当连接服务提供商正在为你启用线路时，线路将更改为以下状态：
 
-提供商状态：正在预配<BR>
+提供程序状态：设置<BR>
 线路状态：已启用
 
 只有 ExpressRoute 线路处于以下状态时，才能使用它。
 
-提供商状态：已预配<BR>
+提供程序状态：已预配<BR>
 线路状态：已启用
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5.定期检查线路密钥的状态

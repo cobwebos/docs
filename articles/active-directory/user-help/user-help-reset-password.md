@@ -3,20 +3,20 @@ title: 使用安全信息重置密码 - Azure Active Directory | Microsoft Docs
 description: 如果忘记密码，如何使用安全信息和双重验证来重置自己的密码。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: a95d5adb4ee0eb8aa71f7759e3f2b5520bda5ff4
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: d2fd09ea1055bcfdfc9f112f89e9234046767c23
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347629"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158870"
 ---
 # <a name="reset-your-work-or-school-password"></a>重置工作或学校密码
 
@@ -154,12 +154,12 @@ ms.locfileid: "39347629"
 
 以下是一些常见的错误案例及其解决方法：
 
-|问题|Description|解决方案|
+|问题|说明|解决方案|
 | --- | --- | --- |
 |尝试更改我的密码时收到错误。 |你的密码包含单词、短语或模式，这些使你的密码容易被猜出。| 请使用更强的密码重试。|
 |在输入我的用户 ID 后，我转到一个页面，该页面指示“请联系你的管理员”。|Microsoft 确定你的用户帐户密码由你的管理员在本地环境中管理。 因此，你无法使用“无法访问帐户”链接重置你的密码。 |请联系管理员获取进一步的帮助。|
 |在输入我的用户 ID 后，我收到一个错误，指示“你的帐户未针对密码重置进行启用”。|你的管理员尚未设置你的帐户，因此，你可以重置自己的密码。|管理员尚未通过“无法访问帐户”链接为组织启用密码重置功能，或未授权你使用该功能。<br><br> 若要重置密码，必须选择“联系管理员”链接，向公司管理员发送电子邮件并告知他们你想要重置密码。|
-|在输入我的用户 ID 后，我收到一个错误，指示“我们无法验证你的帐户”。|登录过程无法验证帐户信息。|可能看到此消息的原因有两个。<br><br>1.管理员为组织启用了密码重置功能，但你并未注册使用该服务。 若要注册以便进行密码重置，请根据你的验证方法参阅以下某篇文章：[设置安全信息以使用验证器应用（预览版）](security-info-setup-auth-app.md)、[设置安全信息以使用电话（预览版）](security-info-setup-phone-number.md)、[设置安全信息以使用短信消息（预览版）](security-info-setup-text-msg.md)、[设置安全信息以使用电子邮件（预览版）](security-info-setup-email.md)或[设置安全信息以使用安全性问题（预览版）](security-info-setup-questions.md)。<br><br>2.管理员未为组织启用密码重置功能。 在此情况下，必须选择“联系管理员”链接以向管理员发送电子邮件，请求重置密码。|
+|在输入我的用户 ID 后，我收到一个错误，指示“我们无法验证你的帐户”。|登录过程无法验证帐户信息。|可能看到此消息的原因有两个。<br><br>1.管理员为组织启用了密码重置功能，但你并未注册使用该服务。 若要注册以便进行密码重置，请根据你的验证方法查看以下文章之一：[设置安全信息以使用验证器应用（预览版）](security-info-setup-auth-app.md)、[设置安全信息以使用电话（预览版）](security-info-setup-phone-number.md)、[设置安全信息以使用短信消息（预览版）](security-info-setup-text-msg.md)、[设置安全信息以使用电子邮件（预览版）](security-info-setup-email.md)或[设置安全信息以使用安全性问题（预览版）](security-info-setup-questions.md)。<br><br>2.管理员未为组织启用密码重置功能。 在此情况下，必须选择“联系管理员”链接以向管理员发送电子邮件，请求重置密码。|
 
 ## <a name="next-steps"></a>后续步骤
 

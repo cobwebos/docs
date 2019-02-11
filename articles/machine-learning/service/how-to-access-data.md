@@ -1,22 +1,24 @@
 ---
-title: 使用 Azure 机器学习中的数据存储访问数据
-description: 如何在定型期间使用数据存储访问数据存储
+title: 访问数据存储中的数据以进行训练
+titleSuffix: Azure Machine Learning service
+description: 了解如何在使用 Azure 机器学习服务训练期间使用数据存储访问数据存储
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: ef183397cf7ca3f1f561f6951290b722df31e5ed
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.custom: seodec18
+ms.openlocfilehash: a4960f3e29011948ec30fbc24222d8a6dccf6b8a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620194"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252109"
 ---
-# <a name="how-to-access-data-during-training"></a>如何在定型期间访问数据
+# <a name="access-data-during-training-from-your-datastores"></a>在训练期间访问数据存储中的数据
 使用数据存储可以访问 Azure 机器学习工作流中的数据并与之交互。
 
 在 Azure 机器学习服务中，数据存储是基于 [Azure 存储](https://docs.microsoft.com/azure/storage/common/storage-introduction)的一种抽象。 数据存储可以引用 [Azure Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)或 [Azure 文件共享](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)作为基础存储。 

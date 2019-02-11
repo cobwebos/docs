@@ -3,24 +3,24 @@ title: Azure 服务总线消息传送概述 | Microsoft Docs
 description: 介绍服务总线消息传送
 services: service-bus-messaging
 documentationcenter: ''
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
-ms.author: spelluru
-ms.openlocfilehash: 7b4045737ea2be466a436e6abb0de6a1a61e6a5b
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.author: aschhab
+ms.openlocfilehash: ab1b68b8ca8339389a27d1c09aa8752cfdaec0d5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636578"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851773"
 ---
 # <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？
 
-Microsoft Azure 服务总线是一种完全托管的企业集成消息中转站。 服务总线最常用于将应用程序与服务彼此解耦，是一种用于异步数据和状态传输的可靠且安全的平台。 数据通过消息在不同的应用程序和服务之间传输。 消息采用二进制格式，可能包含 JSON、XML 或纯文本。 
+Microsoft Azure 服务总线是一种完全托管的企业[集成](http://azure.com/integration)消息中转站。 服务总线最常用于将应用程序与服务彼此解耦，是一种用于异步数据和状态传输的可靠且安全的平台。 数据通过消息在不同的应用程序和服务之间传输。 消息采用二进制格式，可能包含 JSON、XML 或纯文本。 
 
 一些常见的消息传送方案包括：
 

@@ -1,23 +1,23 @@
 ---
-title: Team Data Science Process 项目主管任务 - Azure | Microsoft Docs
-description: 数据科学团队项目的项目主管任务概述。
+title: Team Data Science Process 中项目主管的任务
+description: 项目主管预期要在数据科学团队项目中完成的任务的概述。
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 0b5129c4642a0c4381591f751bc4d5a51990b256
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: d574f62a51b8aed7acbd1ba7f8b427395add854a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442891"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454124"
 ---
-# <a name="project-lead-tasks"></a>项目主管任务
+# <a name="tasks-for-the-project-lead-in-the-team-data-science-process"></a>Team Data Science Process 中项目主管的任务
 
 本教程概述项目主管预期要在其项目团队中完成的任务。 目标在于创建致力于标准化 [Team Data Science Process](overview.md) (TDSP) 的协作型团队环境。 TDSP 是 Microsoft 开发的一个框架，它提供结构化的活动序列，可高效地执行基于云的预测分析解决方案。 有关致力于标准化此流程的数据科学团队要处理的人员角色及其相关任务的概述，请参阅 [Team Data Science Process 角色和任务](roles-tasks.md)。
 
@@ -27,14 +27,15 @@ ms.locfileid: "52442891"
 
 本主题目前包括项目主管工作流的任务 1、2 和 6。
 
->[AZURE.NOTE] 以下说明概述了使用 Azure DevOps 设置项目 TDSP 团队环境所要执行的步骤。 本文指定了如何使用 Azure DevOps 完成这些任务，因为这是我们在 Microsoft 中实现 TDSP 的方法。 如果组使用其他代码托管平台，团队主管需要完成的任务通常不会发生变化。 但是完成这些任务的方法会有所不同。
+> [!NOTE]
+> 以下说明概述了使用 Azure DevOps 设置项目 TDSP 团队环境所要执行的步骤。 本文指定了如何使用 Azure DevOps 完成这些任务，因为这是我们在 Microsoft 中实现 TDSP 的方法。 如果组使用其他代码托管平台，团队主管需要完成的任务通常不会发生变化。 但是完成这些任务的方法会有所不同。
 
 
 ## <a name="repositories-and-directories"></a>存储库和目录
 
 本教程使用存储库和目录的缩写名称。 使用这些名称，更易于跟踪存储库和目录之间的操作。 以下部分使用了此表示法（R 表示 Git 存储库，D 表示 DSVM 上的本地目录）：
 
-- **R3**：团队主管在 Git 上设置的团队 **ProjectTemplate** 存储库。
+- **R3**：团队主管在 Git 上设置的团队 ProjectTemplate 存储库。
 - **R5**：在 Git 上为项目设置的项目存储库。
 - **D3**：从 R3 克隆的本地目录。
 - **D5**：从 R5 克隆的本地目录。
@@ -89,9 +90,9 @@ ms.locfileid: "52442891"
 
 - 将项目模板存储库克隆到本地目录：团队 R3 - 克隆到 -> 本地 D3。
 - 将 DSProject1 存储库克隆到本地目录：团队 R5 - 克隆到 -> 本地 D5。
-- 将克隆的项目模板内容复制到 DSProject1 存储库的本地复本：D3 - 内容复制到 -> D5。
+- 将克隆的项目模板内容复制到 DSProject1 存储库的本地克隆：D3 - 复制内容到 -> D5。
 - （可选）自定义本地 D5。
-- 将本地 DSProject1 内容推送到团队存储库：D5 - 内容添加到 -> 团队 R5。
+- 将本地 DSProject1 内容推送到团队存储库：D5 - 添加内容到 -> 团队 R5。
 
 
 ### <a name="clone-your-project-template-repository-r3-to-a-directory-d3-on-your-local-machine"></a>将项目模板存储库 (R3) 克隆到本地计算机上的某个目录 (D3)。
@@ -195,7 +196,8 @@ ms.locfileid: "52442891"
     
 - 提交更改并推送。 
 
->[AZURE.NOTE] 如果这是首次提交到 Git 存储库，则需要在运行 `git commit` 命令之前，配置全局参数 *user.name* 和 *user.email*。 运行以下两个命令：
+> [!NOTE]
+> 如果这是首次提交到 Git 存储库，则需要在运行 `git commit` 命令之前，配置全局参数 *user.name* 和 *user.email*。 运行以下两个命令：
         
     git config --global user.name <your name>
     git config --global user.email <your email address>

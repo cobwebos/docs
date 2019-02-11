@@ -6,24 +6,24 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 9cbf0e60382ef17d68aab47cf5f24ea9b8434f13
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c46ffe2076d4b1491a3b27958dfbf5ed09115eaa
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366264"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221278"
 ---
 # <a name="what-is-conversation-learner"></a>什么是对话学习器？
 
 对话学习器使你能够构建和教授从示例交互中学习的对话接口。 
 
-与传统方法不同，对话学习器会考虑对话的端到端上下文来改进响应并提供更具吸引力的用户体验。 对话学习器涉及一组广泛的面向任务的用例，在后台应用机器学习，使机器人和智能代理不太可能阻挠用户、增加客户服务成本，并更直观地与之交互。
+与传统方法不同，对话学习器会考虑对话的端到端上下文来改进响应并提供更具吸引力的用户体验。 Conversation Learner 涉及一组广泛的面向任务的用例，在后台应用机器学习，使机器人和智能代理不太可能阻挠用户、增加客户服务成本，并促进更直观的交互。
 
-首先，开发人员输入他们想要模拟的原型对话。 随着输入更多的对话，模型不断进行更新，开发人员可以看到模型通用化到什么程度。 模型运行良好后，就可以将机器人部署到最终用户。 对话学习器记录与用户的对话，开发人员可以查看这些对话。 如果发现错误，开发人员可以进行现场更正，并对模型进行重新训练，模型立即可供使用。
+首先，开发人员输入他们想要模拟的原型对话。 当输入更多对话时，模型会进行学习。 模型运行良好后，就可以将机器人部署到最终用户。 对话学习器记录与用户的对话，开发人员可以查看这些对话。 如果发现错误，开发人员可以进行现场更正，并对模型进行重新训练，模型立即可供使用。
 
 这种方法会减少对话控制逻辑的手动编码，并使企业所有者或领域专家能够在没有先前机器学习知识的情况下促成对话接口。 无论是作为机器人、智能设备还是智能代理的一部分进行部署，对话学习器都可以快速迭代新技能、行为或能力，并快速提高其质量。 
 

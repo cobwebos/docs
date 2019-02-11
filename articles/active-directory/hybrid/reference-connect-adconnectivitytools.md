@@ -2,18 +2,19 @@
 title: Azure AD Connect：ADConnectivityTools PowerShell 参考 | Microsoft Docs
 description: 本文档提供 ADConnectivityTools.psm1 PowerShell 模块的参考信息。
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.date: 10/19/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9d63c35d82a98d816c18dd299a8e0e81baa5bc8d
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.topic: reference
+ms.openlocfilehash: 7d4533f928470c0e468ea833d1ccfb6f7d78bb15
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425218"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498312"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect：ADConnectivityTools PowerShell 参考
 以下文档提供了 Azure AD Connect 随附的 ADConnectivityTools.psm1 PowerShell 模块的参考信息。

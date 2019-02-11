@@ -1,25 +1,20 @@
 ---
-title: Azure PowerShell 脚本 - 重新生成 Azure Cosmos DB 帐户密钥 | Microsoft Docs
+title: Azure PowerShell 脚本 - 重新生成 Azure Cosmos DB 帐户密钥
 description: Azure PowerShell 脚本示例 - 重新生成 Azure Cosmos DB 帐户密钥
-services: cosmos-db
-documentationcenter: cosmosdb
-author: SnehaGunda
-manager: kfile
-tags: azure-service-management
 ms.service: cosmos-db
-ms.custom: mvc
+ms.subservice: cosmosdb-sql
+author: SnehaGunda
+ms.author: sngun
 ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: cosmosdb
-ms.workload: database
 ms.date: 05/10/2017
-ms.author: sngun
-ms.openlocfilehash: bf3ad12b34641f597fcf0f762d63b6d6fce8dc4f
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.reviewer: sngun
+ms.openlocfilehash: 2712e4d13895a9dbd10f0f0d5053015c6e0a25a8
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41917889"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034057"
 ---
 # <a name="regenerate-an-azure-cosmos-db-account-key-using-powershell"></a>使用 PowerShell 重新生成 Azure Cosmos DB 帐户密钥
 

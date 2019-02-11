@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: ded3c89774c39b5edee02b9e3c6807ce75ff16a4
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 734b0cf9373ea98ab33c06b45ad53b46a3355dd6
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566187"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976012"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple 安全性和数据保护
 
@@ -121,7 +121,7 @@ StorSimple Snapshot Manager 密码必须为 14 到 15 个字符，必须包含 3
 我们建议使用以下准则来帮助确保 StorSimple 密码具有很高强度并受到严密保护：
 
 * 每三个月更改一次密码。 每年会强制更改密码。
-* 使用强密码。 有关详细信息，请转到[创建更强密码并对其进行保护](https://blogs.microsoft.com/cybertrust/2014/08/25/create-stronger-passwords-and-protect-them/)。
+* 使用强密码。 有关详细信息，请转到[创建更强密码并对其进行保护](https://cloudblogs.microsoft.com/microsoftsecure/2014/08/25/create-stronger-passwords-and-protect-them/)。
 * 对于不同的访问机制，应始终使用不同的密码；你指定的每个密码应该是唯一的。
 * 不要与未被授权访问 StorSimple 设备的任何人共享密码。
 * 不要在任何人面前说出密码或提示密码格式。
@@ -210,10 +210,10 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 物理系列和虚拟系列的 StorSimple 设备管理器收集以下密钥实例中的个人信息：
 
 - 提醒用户设置，可在其中配置用户电子邮件地址。 管理员可查看和清除此信息。 这适用于 StorSimple 8000 系列设备和 StorSimple 虚拟阵列。
- * 要查看和清除 StorSimple 8000 系列的设置，请按照[查看和管理 StorSimple 警报](storsimple-8000-manage-alerts.md#configure-alert-settings)中的步骤操作
- * 要查看和清除 StorSimple 虚拟阵列的设置，请按照[查看和管理 StorSimple 警报](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)中的步骤操作
+  * 要查看和清除 StorSimple 8000 系列的设置，请按照[查看和管理 StorSimple 警报](storsimple-8000-manage-alerts.md#configure-alert-settings)中的步骤操作
+  * 要查看和清除 StorSimple 虚拟阵列的设置，请按照[查看和管理 StorSimple 警报](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)中的步骤操作
 - 可访问驻留在共享上的数据的用户。 会显示可访问共享数据的用户列表，并可供查看。 删除共享时也会删除此列表。 这仅适用于 StorSimple 虚拟阵列。
- * 要查看可访问共享的用户列表或删除某个共享，请按照[管理 StorSimple 虚拟阵列上的共享](storsimple-virtual-array-manage-shares.md)中的步骤操作
+  * 要查看可访问共享的用户列表或删除某个共享，请按照[管理 StorSimple 虚拟阵列上的共享](storsimple-virtual-array-manage-shares.md)中的步骤操作
 
 有关详细信息，请在[信任中心](https://www.microsoft.com/trustcenter)查看 Microsoft 隐私策略。
 
@@ -236,7 +236,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 **问：** 我丢失了服务数据加密密钥。 我该怎么办？
 
-**答：** 请与 Microsoft 支持部门联系。 支持部门可以登录到设备上的支持会话并帮助你获取密钥（前提是至少一台设备为联机状态）。 获取服务数据加密密钥后，应立即更改该密钥以保证仅自己知道新的密钥。 有关说明，请转到：
+**答：** 请联系 Microsoft 支持。 支持部门可以登录到设备上的支持会话并帮助你获取密钥（前提是至少一台设备为联机状态）。 获取服务数据加密密钥后，应立即更改该密钥以保证仅自己知道新的密钥。 有关说明，请转到：
 
 * [更改服务数据加密密钥](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 

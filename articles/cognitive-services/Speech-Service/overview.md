@@ -1,37 +1,36 @@
 ---
 title: 什么是语音服务？
 titleSuffix: Azure Cognitive Services
-description: 语音服务属于 Azure 认知服务，其中合并了多个以前单独提供的语音服务：必应语音（包括语音识别和文本转语音）、自定义语音和语音翻译。
+description: 语音服务是 Azure 认知服务的一部分，它将以前单独提供的几种语音服务结合在一起：必应语音（其中包括语音识别和文本转语音）、自定义语音和语音翻译。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: ba4204c23f3467ff07940fd6a72464e67604dde1
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: beb1382d2e076052583dd5bbc546259c8aae2f96
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470440"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217962"
 ---
-# <a name="what-is-the-speech-service"></a>什么是语音服务？
+# <a name="what-is-speech-services"></a>什么是语音服务？
 
-
-与其他 Azure 语音服务一样，此语音服务由在 Cortana 和 Microsoft Office 之类的产品中使用的语音技术提供支持。
+与其他 Azure 语音服务一样，语音服务由在 Cortana 和 Microsoft Office 之类的产品中使用的语音技术提供支持。
 
 语音服务合并了此前通过[必应语音 API](https://docs.microsoft.com/azure/cognitive-services/speech/home)、[语音翻译](https://docs.microsoft.com/azure/cognitive-services/translator-speech/)、[自定义语音](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home)和[自定义声音](http://customvoice.ai/)服务提供的 Azure 语音功能。 现在，可以通过一个订阅来访问所有这些功能。
 
-## <a name="main-speech-service-functions"></a>主要语音服务功能
+## <a name="main-speech-services-functions"></a>语音服务的主要功能
 
 语音服务的主要功能为语音转文本（也称为语音识别或听录）、文本转语音（语音合成）和语音翻译。
 
 |函数|功能|
 |-|-|
 |[语音转文本](speech-to-text.md)| <li>将连续的实时语音转换为文本。<li>可以从音频录音对语音进行批量转换。 <li>支持中间结果、语音结束检测、自动设置文本格式以及不雅内容屏蔽。 <li>可以通过调用[语言理解](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS)，从转换的语音获取用户意向。\*|
-|[文本到语音转换](text-to-speech.md)| <li>将文本转换为自然发音的语音。 <li>为许多支持的语言提供多种性别和/或方言。 <li>支持纯文本输入或语音合成标记语言 (SSML)。 |
+|[文本转语音](text-to-speech.md)| <li>**新增功能**：提供神经文本转语音的声音，几乎与人类语音无法区分（英语）。 <li>将文本转换为自然发音的语音。 <li>为许多支持的语言提供多种性别和/或方言。 <li>支持纯文本输入或语音合成标记语言 (SSML)。 |
 |[语音翻译](speech-translation.md)| <li>以近实时方式翻译流式传输音频。<li> 也可处理记录的语音。<li>以文本或合成语音的方式提供结果。 |
 
 
@@ -39,12 +38,12 @@ ms.locfileid: "49470440"
 
 可以使用自己的数据来训练语音服务的语音转文本和文本转语音功能下的模型。
 
-|功能|模型|目的|
+|Feature|模型|目的|
 |-|-|-|
 |语音转文本|[声学模型](how-to-customize-acoustic-models.md)|有助于转换特定发声对象和环境，例如汽车或工厂。|
 ||[语言模型](how-to-customize-language-model.md)|有助于转换特定于领域的词汇和语法，例如医学或 IT 专业术语。|
 ||[发音模型](how-to-customize-pronunciation.md)|有助于转换缩写和首字母缩写，例如“IOU”是“i owe you”的首字母缩写。 |
-|文本到语音转换|[语音字体](how-to-customize-voice-font.md)|根据人类语音的示例来训练模型，为应用提供它自己的语音。|
+|文本转语音|[语音字体](how-to-customize-voice-font.md)|根据人类语音的示例来训练模型，为应用提供它自己的语音。|
 
 自定义模型可以用在任何位置，只要可以在该位置使用应用的语音转文本或文本转语音功能中的标准模型。
 
@@ -54,16 +53,16 @@ ms.locfileid: "49470440"
 
 语音服务还有一个 [REST API](rest-apis.md)，此 API 适用于任何能够发出 HTTP 请求的编程语言。 此 REST 接口不提供 SDK 的流式处理实时功能。
 
-|<br>方法|语音<br>转文本|文本转<br>语音|语音<br>翻译|<br>Description|
+|<br>方法|语音<br>转文本|文本转<br>语音|语音<br>翻译|<br>说明|
 |-|-|-|-|-|
 |[语音 SDK](speech-sdk.md)|是|否|是|适用于 C#、C++ 和 Java 的本机 API，可以简化开发。|
-|[REST](rest-apis.md)|是|是|否|一个基于 HTTP 的简单 API，可以轻松地将语音添加到应用程序。|
+|[REST API](rest-apis.md)|是|是|否|一个基于 HTTP 的简单 API，可以轻松地将语音添加到应用程序。|
 
 ### <a name="websockets"></a>WebSockets
 
-语音服务还有 WebSocket 协议，用于流式传输语音转文本和语音翻译内容。 语音 SDK 使用这些协议与语音服务通信。 使用语音 SDK，而不是尝试实现你自己与语音服务的 WebSocket 通信。
+语音服务还支持 WebSocket 协议，用于流式传输语音转文本和语音翻译内容。 语音 SDK 使用这些协议与语音服务通信。 使用语音 SDK，而不是尝试实现你自己与语音服务的 WebSocket 通信。
 
-如果已经有可以通过 WebSockets 使用必应语音或语音翻译的代码，则可对其进行更新，使之能够使用语音服务。 WebSocket 协议是兼容的，仅终结点不同。
+如果已经有可以通过 WebSocket 使用必应语音或语音翻译的代码，则可更新代码以使用语音服务。 WebSocket 协议是兼容的，但是终结点不同。
 
 ### <a name="speech-devices-sdk"></a>语音设备 SDK
 
@@ -93,7 +92,7 @@ ms.locfileid: "49470440"
 
 通常，仅当来电中提出了某个问题时，才会查阅呼叫中心的录制内容。 借助语音服务，可以轻松将所有录制内容转录为文本。 可以轻松为文本编制索引以执行[全文搜索](https://docs.microsoft.com/azure/search/search-what-is-azure-search)，或应用[文本分析](https://docs.microsoft.com/azure/cognitive-services/Text-Analytics/)来检测情绪、语言和关键短语。
 
-如果呼叫中心录制内容使用了专业术语（例如产品名称或 IT 行话），则可创建一个[语言模型](how-to-customize-language-model.md)来向语音服务传授这些词汇。 自定义[声学模型](how-to-customize-acoustic-models.md)可帮助语音服务识别欠佳的电话连接。
+如果呼叫中心录制内容使用了专业术语（例如产品名称或 IT 行话），则可创建一个[语言模型](how-to-customize-language-model.md)来向语音服务传授这些词汇。 自定义[声学模型](how-to-customize-acoustic-models.md)可帮助语音服务理解欠佳的电话连接。
 
 有关此方案的详细信息，请详细阅读语音服务的[批处理脚本](batch-transcription.md)。
 

@@ -4,47 +4,72 @@ description: 本文介绍如何使用 Azure 门户为 Azure 流分析作业设�
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/26/2017
-ms.openlocfilehash: 4c676ab3039a02a4fda27ab00312133e5de8077a
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 01/19/2019
+ms.custom: seodec18
+ms.openlocfilehash: 4c0d32a201da5befbc8b68148f0b051e283ec289
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47090960"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412381"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>为 Azure 流分析作业设置警报
-可以设置警报，以便在指标达到指定的条件时触发警报。 例如，可为如下条件设置警报：
 
-`If there are zero input events in the last 5 minutes, send email notification to sa-admin@example.com`
+必须监视 Azure 流分析作业，以确保作业持续正常运行。 本文介绍如何针对要监视的常见方案设置警报。 
 
-可以通过门户对指标设置规则，也可以依据操作日志数据[通过编程方式](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a)进行配置。
+可以通过门户对指标设置规则，也可以基于操作日志数据以[编程方式](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a)进行配置。
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a>在 Azure 门户中设置警报
-1. 在 Azure 门户中，打开要为其创建警报的流分析作业。 
 
-2. 在“作业”边栏选项卡中，单击“监视”部分。  
+以下示例演示如何针对作业进入失败状态设置警报。 建议对所有作业设置此警报。
 
-3. 在“指标”边栏选项卡中，单击“添加警报”命令。
+1. 在 Azure 门户中，打开要为其创建警报的流分析作业。
 
-      ![Azure 门户设置](./media/stream-analytics-set-up-alerts/06-stream-analytics-set-up-alerts.png)  
+2. 在“作业”页上，导航到“监视”部分。  
 
-4. 输入名称和描述。
+3. 选择“指标”，然后单击“新建警报规则”。
 
-5. 使用选择器定义需发送警报的条件。
+   ![Azure 门户流分析警报设置](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
 
-6. 提供有关警报应发送到何处的信息。
+4. 流分析作业名称应会自动显示在“资源”下。 单击“添加条件”，然后选择“配置信号逻辑”下的“所有管理操作”。
 
-      ![为 Azure 流分析作业设置警报](./media/stream-analytics-set-up-alerts/stream-analytics-add-alert.png)  
+   ![选择流分析警报的信号名称](./media/stream-analytics-set-up-alerts/stream-analytics-condition-signal.png)  
+
+5. 在“配置信号逻辑”下，将“事件级别”更改为“所有”，将“状态”更改为“失败”。 将“事件发起者”保留空白，然后单击“完成”。
+
+   ![配置流分析警报的信号逻辑](./media/stream-analytics-set-up-alerts/stream-analytics-configure-signal-logic.png) 
+
+6. 选择现有的操作组或创建新组。 本示例创建了名为 **TIDashboardGroupActions** 的新操作组，其中包含一个“电子邮件”操作，该操作可将电子邮件发送到具有“所有者”Azure 资源管理器角色的用户。
+
+   ![为 Azure 流分析作业设置警报](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
+
+7. “资源”、“条件”和“操作组”都应该有对应的条目。
+
+   ![创建流分析警报规则](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
+
+   在“警报详细信息”中添加**警报规则名称**、**说明**和**资源组**，然后单击“创建警报规则”创建流分析作业的规则。
+
+   ![创建流分析警报规则](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
+
+## <a name="scenarios-to-monitor"></a>要监视的方案
+
+建议监视以下警报，以了解流分析作业的性能。 在过去 5 分钟时段内，应每隔一分钟评估这些指标。 如果作业遇到性能问题，可以使用查询并行化来优化它，并尝试增加流单元数。
+
+|指标|条件|时间聚合|阈值|纠正措施|
+|-|-|-|-|-|
+|SU% 利用率|大于|最大值|80|有多个因素可以提高 SU% 利用率。 可以使用查询并行化进行缩放，或者增加流单元数。 有关详细信息，请参阅[利用 Azure 流分析中的查询并行化](stream-analytics-parallelization.md)。|
+|运行时错误|大于|总计|0|检查活动或诊断日志，并对输入、查询或输出进行适当的更改。|
+|水印延迟|大于|最大值|当此指标在过去 15 分钟的平均值大于延迟容限（以秒为单位）时。 如果未修改延迟容限，默认值将设置为 5 秒。|尝试增加 SU 数量或将查询并行化。 有关 SU 的详细信息，请参阅[了解和调整流单元](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job)。 有关并行化查询的详细信息，请参阅[利用 Azure 流分析中的查询并行化](stream-analytics-parallelization.md)。|
+|输入反序列化错误|大于|总计|0|检查活动或诊断日志，并对输入进行适当的更改。 有关诊断日志的详细信息，请参阅[使用诊断日志对 Azure 流分析进行故障排除](stream-analytics-job-diagnostic-logs.md)|
+
+## <a name="get-help"></a>获取帮助
 
 有关在 Azure 门户中配置警报的详细信息，请参阅[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)。  
 
-
-## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

@@ -4,21 +4,21 @@ description: 演示如何使用联合设置混合标识环境。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/16/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 50868d32b35e77495965b9ee9d0023d23b43fd5a
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 35f158b97bdae897cd851463449f1f45e5e35867
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426377"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498176"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>教程：将单个 AD 林环境联合到云中
 
@@ -39,7 +39,7 @@ ms.locfileid: "52426377"
 >
 >在安装 Azure AD Connect 之前，所使用的脚本会创建常规 Active Directory 环境。  它们与所有教程相关。
 >
-> Github [此处](https://github.com/billmath/tutorial-phs)提供了本教程中使用的 PowerShell 脚本的副本。
+> GitHub [此处](https://github.com/billmath/tutorial-phs)提供了本教程中使用的 PowerShell 脚本的副本。
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 我们需要做的第一件事就是创建一个将用作我们的本地 Active Directory 服务器的虚拟机，以便启动并运行我们的混合标识环境。  

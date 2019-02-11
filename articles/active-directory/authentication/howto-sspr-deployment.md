@@ -3,19 +3,19 @@ title: 自助密码重置部署指南 - Azure Active Directory
 description: 提示：如何成功推出 Azure AD 自助密码重置功能
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: f786a20f61c8851c1d50a89edd392b9b974db076
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 0111cb077afe0412d0ab807955c666b42dd1ff31
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622314"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079607"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>如何成功推出自助密码重置功能
 
@@ -24,7 +24,7 @@ ms.locfileid: "39622314"
 > [!VIDEO https://www.youtube.com/embed/OZn5btP6ZXw]
 
 1. 使用组织的一小部分完成试点推广。
-   * 有关如何试点的信息，请参阅[教程：完成 Azure AD 自助密码重置试点推广](tutorial-sspr-pilot.md)。
+   * 有关如何进行试点推广的信息，可以参阅[教程：完成 Azure AD 自助密码重置试点推广](tutorial-sspr-pilot.md)。
 1. 培训支持人员。
    * 他们将如何帮助你的用户？
    * 你是否会强制用户使用 SSPR 而不允许支持人员协助用户？

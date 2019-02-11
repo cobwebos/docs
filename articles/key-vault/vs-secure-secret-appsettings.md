@@ -1,5 +1,5 @@
 ---
-title: 安全地保存 Web 应用的密钥应用程序设置 | Microsoft 文档
+title: 安全地保存 Web 应用程序的机密应用程序设置 - Azure 密钥保管库 | Microsoft Docs
 description: 如何使用 ASP.NET Core 密钥保管库提供程序、用户密钥或 .NET 4.7.1 配置生成器来安全地保存密钥应用程序设置（如 Azure 凭据或第三方 API 密钥）
 services: visualstudio
 documentationcenter: ''
@@ -10,30 +10,29 @@ ms.assetid: ''
 ms.service: ''
 ms.workload: web, azure
 ms.tgt_pltfrm: vs-getting-started
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/09/2017
+ms.date: 01/07/2019
 ms.author: cawa
-ms.openlocfilehash: 7578950af2dafdade3c97650dfd212240053dd3b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: df6330827a4fb8bb8e80af89855c3ea104584295
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625447"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662274"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>安全地保存 Web 应用的密钥应用程序设置
 
 ## <a name="overview"></a>概述
 本文介绍如何安全地保存 Azure 应用程序的密钥应用程序配置设置。
 
-传统上，所有 Web 应用配置设置都保存在配置文件（如 Web.config）中。这一做法会导致将密钥设置（如云凭据）签入到公共源代码管理系统（如 Github）。 同时，因为更改源代码和重新配置开发设置都需要开销，因此会难以遵循安全最佳实践。
+传统上，所有 Web 应用配置设置都保存在配置文件（如 Web.config）中。这一做法会导致将密钥设置（如云凭据）签入到公共源代码管理系统（如 GitHub）中。 同时，因为更改源代码和重新配置开发设置都需要开销，因此会难以遵循安全最佳实践。
 
 为了确保开发过程的安全性，创建了工具和框架库，以安全地保存应用程序密钥设置，并最大程度地减少对源代码的更改或不对其进行更改。
 
 ## <a name="aspnet-and-net-core-applications"></a>ASP.NET 和 .NET Core 应用程序
 
 ### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>将密钥设置保存在源代码管理文件夹外部的用户密钥存储中。
-如果你正在快速建立原型或无法访问 Internet，请先将源代码管理文件夹外部的密钥设置移动到用户密钥存储。 用户密钥存储是保存在用户探查器文件夹下的一个文件，因此密钥不会签入到源代码管理。 下图演示了[用户密钥](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio#SecretManager)的工作原理。
+如果你正在快速建立原型或无法访问 Internet，请先将源代码管理文件夹外部的密钥设置移动到用户密钥存储。 用户密钥存储是保存在用户探查器文件夹下的一个文件，因此密钥不会签入到源代码管理。 下图演示了[用户密钥](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio)的工作原理。
 
 ![用户密钥将密钥设置保持在源代码管理外部](./media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
 

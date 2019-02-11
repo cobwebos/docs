@@ -1,21 +1,21 @@
 ---
 title: 语言支持 - 内容审查器 API
 titleSuffix: Azure Cognitive Services
-description: 内容审查器 API 支持的自然语言列表。
+description: 这是内容审查器 API 支持的自然语言列表。
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5c170fd2871d0e487f705e1e7274fdfdda4049e6
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 91fe93df29717519e6bf3fcdb39b97b8ffde02d1
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276362"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225170"
 ---
 # <a name="language-support-for-content-moderator-api"></a>内容审查器 API 的语言支持
 

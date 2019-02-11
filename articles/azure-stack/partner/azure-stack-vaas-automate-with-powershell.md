@@ -13,12 +13,14 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 3c3e064ea229db97c59cc5b49107b568a2fdaa98
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.lastreviewed: 11/26/2018
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6287b4f07c99dd45628ed4b9eb1412200cf7cd43
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334442"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244600"
 ---
 # <a name="automate-azure-stack-validation-with-powershell"></a>自动执行使用 PowerShell 的 Azure Stack 验证
 
@@ -69,9 +71,9 @@ ms.locfileid: "52334442"
 
     **参数**
 
-    | 参数 | 说明 |
+    | 参数 | 描述 |
     | --- | --- |
-    | VaaSUserld | VaaS 用户 ID。 |
+    | VaaSUserId | VaaS 用户 ID。 |
     | VaaSUserPassword | VaaS 密码。 |
     | VaaSAccountTenantId | VaaS 租户 GUID。 |
     | VaaSSolutionName | 将运行测试通过在其下的 VaaS 解决方案的名称。 |
@@ -91,4 +93,4 @@ ms.locfileid: "52334442"
 若要了解有关 Azure Stack 上的 PowerShell 的详细信息，请查看最新模块。
 
 > [!div class="nextstepaction"]
-> [Azure Stack 模块](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.5.0)
+> [Azure Stack 模块](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.6.0)

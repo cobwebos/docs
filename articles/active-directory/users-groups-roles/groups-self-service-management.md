@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Active Directory 中设置自助式应用程序访问管理 | Microsoft Docs
+title: 在 Azure AD 中设置自助服务组管理 | Microsoft Docs
 description: 在 Azure Active Directory 中创建和管理安全组或 Office 365 组，并可以请求安全组或 Office 365 组成员身份
 services: active-directory
 documentationcenter: ''
@@ -8,23 +8,24 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: get-started-article
-ms.date: 09/11/2018
+ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: krbain
-ms.custom: it-pro
-ms.openlocfilehash: 7966705df2a352f2011d5f7611277e92d8e2d11a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.custom: it-pro;seo-update-azuread-jan
+ms.openlocfilehash: 2880e4e32d5a5e3d96b40fa4b696b9853e7b5e89
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294231"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296150"
 ---
 # <a name="set-up-azure-active-directory-for-self-service-group-management"></a>为自助服务组管理设置 Azure Active Directory
+
 用户可以在 Azure Active Directory (Azure AD) 中创建和管理其自己的安全组或 Office 365 组。 用户也可以请求安全组或 Office 365 组成员身份，组所有者可以批准或拒绝成员身份。 可以将组成员身份的日常控制委托给了解该成员身份的业务上下文的人员。 自助组管理功能仅适用于安全组和 Office 365 组，而不适用于已启用邮件的安全组或通讯组列表。
 
-自助服务组管理当前可用于两个基本方案：委派组管理和自助服务组管理。
+自助服务组管理为两种方案提供服务： 
 
 * **委托组管理** — 以管理对公司所用 SaaS 应用程序的访问权限的管理员为例。 由于有许多加入者和离开者，管理这些访问权限变得越来越繁琐，因此该管理员要求业务所有者创建一个新组。 管理员将该应用程序的访问权限分配给新组，并添加到所有人员已访问该应用程序的组。 然后，业务所有者可以添加更多用户，而这些用户会自动预配到该应用程序中。 业务所有者无需等待管理员管理用户的访问权限。 如果管理员将相同的权限授予不同业务组中的管理员，则该人员也可以管理自己的用户的访问权限。 业务所有者和管理员都无法查看或管理彼此的用户。 该管理员仍然可以看到有权访问该应用程序的所有用户，并可根据需要阻止访问权限。
 * **自助组管理** — 以下是该方案的一个示例：两个用户都拥有独立设置的 SharePoint Online 站点。 他们都想为对方的团队提供对其站点的访问权限。 要实现此目的，他们可以在 Azure AD 中创建一个组，各自在 SharePoint Online 中选择该组并为该组提供对其站点的访问权限。 当有人想要访问时，他们从访问面板发出请求，获得批准后便可自动访问这两个 SharePoint Online 站点。 后来，他们中的一人决定，允许访问其站点的所有人也访问特定的 SaaS 应用程序。 SaaS 应用程序的管理员可以将此应用程序的访问权限添加到 SharePoint Online 站点。 从那以后，他批准的任何请求都将提供对这两个 SharePoint Online 站点以及该 SaaS 应用程序的访问权限。

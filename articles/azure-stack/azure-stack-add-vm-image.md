@@ -6,21 +6,21 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: e5a4236b-1b32-4ee6-9aaa-fcde297a020f
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 11/05/2018
+ms.date: 1/18/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: a0dc3405cc0e1deb25c1f2772a5018dad95b87e9
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.lastreviewed: 06/08/2018
+ms.openlocfilehash: dce158e600d3bf5dbcc552aff82959208d7b47f8
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036583"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249055"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>在 Azure Stack 中提供虚拟机映像
 
@@ -40,23 +40,23 @@ ms.locfileid: "51036583"
    - Azure Stack 仅支持采用固定磁盘 VHD 格式的第一代 VM。 固定格式在文件内对逻辑磁盘采用线性结构，使磁盘偏移量 X 存储在 Blob 偏移量 X 的位置。在 Blob 末尾有一小段脚注，描述了 VHD 的属性。 若要确认磁盘是否为固定格式，请使用 [Get-VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd?view=win10-ps) PowerShell 命令。  
 
     > [!IMPORTANT]  
-    >  Azure Stack 不支持动态磁盘 VHD。 重设附加到 VM 的动态磁盘的大小会导致 VM 处于故障状态。 若要解决此问题，请删除 VM，但不删除 VM 的磁盘（存储帐户中的 VHD Blob）。 然后将 VHD 从动态磁盘转换为固定磁盘，接着重新创建虚拟机。
+    >  Azure Stack 不支持动态磁盘 VHD。 重设附加到 VM 的动态磁盘的大小会导致 VM 处于故障状态。 若要缓解此问题，请删除 VM，而不删除 VM 的磁盘，存储帐户中的 VHD blob。 然后将 VHD 从动态磁盘转换为固定磁盘，接着重新创建虚拟机。
 
-   * 将映像上传到 Azure Stack Blob 存储比上传到 Azure Blob 存储更高效，因为将映像推送到 Azure Stack 映像存储库的时间更短。
+   - 将映像上传到 Azure Stack Blob 存储比上传到 Azure Blob 存储更高效，因为将映像推送到 Azure Stack 映像存储库的时间更短。
 
-   * 上传 [Windows VM 映像](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/)时，请确保将“登录到 Azure”步骤替换为[配置 Azure Stack 操作员的 PowerShell 环境](azure-stack-powershell-configure-admin.md)步骤。  
+   - 上传 [Windows VM 映像](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/)时，请确保将“登录到 Azure”步骤替换为[配置 Azure Stack 操作员的 PowerShell 环境](azure-stack-powershell-configure-admin.md)步骤。  
 
-   * 记下在其中上传映像的 Blob 存储 URI。 Blob 存储 URI 的格式如下：*&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;*.vhd。
+   - 记下在其中上传映像的 Blob 存储 URI。 Blob 存储 URI 的格式如下：*&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;*.vhd。
 
-   * 若要使 Blob 可供匿名访问，请转到已在其中上传了 VM 映像 VHD 的存储帐户 Blob 容器。 选择“Blob”，然后选择“访问策略”。 也可改为生成容器的共享访问签名，然后将其作为 Blob URI 的一部分包括进去。 此步骤确保 blob 可用于将该项添加为映像。 如果 blob 不可匿名访问，则 VM 映像创建将处于失败状态。
+   - 若要使 Blob 可供匿名访问，请转到已在其中上传了 VM 映像 VHD 的存储帐户 Blob 容器。 选择**Blob**，然后选择**访问策略**。 （可选） 可以生成共享的访问签名的容器，并将其作为 blob URI 的一部分包含。 此步骤确保 blob 可用于将该项添加为映像。 如果 blob 不可匿名访问，则 VM 映像创建将处于失败状态。
 
-   ![转到存储帐户 Blob](./media/azure-stack-add-vm-image/image1.png)
+    ![转到存储帐户 Blob](./media/azure-stack-add-vm-image/image1.png)
 
-   ![将 Blob 访问权限设置为公共](./media/azure-stack-add-vm-image/image2.png)
+    ![将 Blob 访问权限设置为公共](./media/azure-stack-add-vm-image/image2.png)
 
-2. 以操作员身份登录到 Azure Stack。 在菜单中，选择“所有服务”。 然后，在“管理”类别中，选择“计算” > “VM 映像” > “添加”。
+2. 以操作员身份登录到 Azure Stack。 在菜单中，选择**所有服务** > **映像**下**计算** > **添加**。
 
-3. 在“添加 VM 映像”下，输入虚拟机映像的发布者、产品/服务、SKU 和版本。 这些名称段是指资源管理器模板中的 VM 映像。 确保正确地选择 **osType** 值。 对于“OS 磁盘 Blob URI”，请输入在其中上传了映像的 Blob URI。 然后选择“创建”，开始创建 VM 映像。
+3. 下**创建映像**、 输入名称、 订阅、 资源组，位置，OS 磁盘、 OS 类型、 存储 blob URI、 帐户类型和托管缓存。 然后选择“创建”，开始创建 VM 映像。
 
    ![开始创建映像](./media/azure-stack-add-vm-image/image4.png)
 
@@ -83,14 +83,14 @@ ms.locfileid: "51036583"
 
 3. 使用权限提升的提示符打开 PowerShell，并运行：
 
-  ````PowerShell  
+  ```PowerShell  
     Add-AzsPlatformimage -publisher "<publisher>" `
       -offer "<offer>" `
       -sku "<sku>" `
       -version "<#.#.#>” `
       -OSType "<ostype>" `
       -OSUri "<osuri>"
-  ````
+  ```
 
   **Add-AzsPlatformimage** cmdlet 指定 Azure 资源管理器模板用来引用 VM 映像的值。 这些值包括：
   - **publisher**  
@@ -144,7 +144,7 @@ ms.locfileid: "51036583"
   $ArmEndpoint = "<Resource Manager endpoint for your environment>"
 
   # For Azure Stack Development Kit, this value is set to https://graph.local.azurestack.external/. To get this value for Azure Stack integrated systems, contact your service provider.
-  $GraphAudience = "<GraphAuidence endpoint for your environment>"
+  $GraphAudience = "<GraphAudience endpoint for your environment>"
 
   # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
   Add-AzureRMEnvironment `
@@ -158,24 +158,24 @@ ms.locfileid: "51036583"
 
 5. 以 VHD 格式（而非 VHDX）准备一个 Windows 或 Linux 操作系统映像，将该映像上传到存储帐户，并获取可通过 PowerShell 从其中检索 VM 映像的 URI。  
 
-  ````PowerShell  
+  ```PowerShell  
     Add-AzureRmAccount `
       -EnvironmentName "AzureStackAdmin" `
       -TenantId $TenantID
-  ````
+  ```
 
 6. （可选）可以将数据磁盘阵列上传为 VM 映像的一部分。 使用 New-DataDiskObject cmdlet 创建数据磁盘。 通过权限提升的提示符打开 PowerShell，并运行：
 
-  ````PowerShell  
+  ```PowerShell  
     New-DataDiskObject -Lun 2 `
     -Uri "https://storageaccount.blob.core.windows.net/vhds/Datadisk.vhd"
-  ````
+  ```
 
 7. 使用权限提升的提示符打开 PowerShell，并运行：
 
-  ````PowerShell  
+  ```PowerShell  
     Add-AzsPlatformimage -publisher "<publisher>" -offer "<offer>" -sku "<sku>" -version "<#.#.#>” -OSType "<ostype>" -OSUri "<osuri>"
-  ````
+  ```
 
     有关 Add-AzsPlatformimage cmdlet 和 New-DataDiskObject cmdlet 的详细信息，请参阅 Microsoft PowerShell [Azure Stack 操作员模块文档](https://docs.microsoft.com/powershell/module/)。
 
@@ -189,13 +189,13 @@ ms.locfileid: "51036583"
 
 3. 使用权限提升的提示符打开 PowerShell，并运行：
 
-  ````PowerShell  
+  ```PowerShell  
   Remove-AzsPlatformImage `
     -publisher "<publisher>" `
     -offer "<offer>" `
     -sku "<sku>" `
     -version "<version>" `
-  ````
+  ```
   **Remove-AzsPlatformImage** cmdlet 指定 Azure 资源管理器模板用来引用 VM 映像的值。 这些值包括：
   - **publisher**  
     例如： `Canonical`  

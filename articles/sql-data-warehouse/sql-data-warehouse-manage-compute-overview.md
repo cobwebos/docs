@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 53a801a367e6948c3070224b7ff36a013a1faab3
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 47be738a4e5dcec144d482c28e39cbe950bba3e7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300844"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460380"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>管理 Azure SQL 数据仓库中的计算资源
 了解如何管理 Azure SQL 数据仓库中的计算资源。 可以通过暂停数据仓库来降低成本，或者根据性能需求缩放数据仓库。 

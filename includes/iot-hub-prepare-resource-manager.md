@@ -4,12 +4,12 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 2eacb55eaf355a4eef17b9e16075d8d12167266d
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 44eea4ec4fd335cd0061807521f96f2887751f7a
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166190"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54457061"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>准备对 Azure 资源管理器请求进行身份验证
 必须使用 [Azure 资源管理器][lnk-authenticate-arm] 配合 Azure Active Directory (AD) 来验证所有针对资源执行的操作。 最简单的配置方式是使用 PowerShell 或 Azure CLI。
@@ -42,8 +42,8 @@ ms.locfileid: "50166190"
    
    * **{Display name}**：应用程序的显示名称，例如 **MySampleApp**
    * **{Home page URL}：** 应用主页的 URL，例如 http://mysampleapp/home。 此 URL 不需要指向实际的应用程序。
-   * **{Application identifier}：** 唯一标识符，例如 http://mysampleapp。 此 URL 不需要指向实际的应用程序。
-   * **{Password}**：用于向应用进行身份验证的密码。
+   * **{Application identifier}：** 唯一的标识符，例如 **http://mysampleapp**。 此 URL 不需要指向实际的应用程序。
+   * **{Password}：** 用于向应用进行身份验证的密码。
      
      ```powershell
      $SecurePassword=ConvertTo-SecureString {password} –asplaintext –force
@@ -69,4 +69,4 @@ ms.locfileid: "50166190"
 * 密码
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
-[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps

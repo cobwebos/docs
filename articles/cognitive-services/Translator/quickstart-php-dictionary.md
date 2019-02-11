@@ -1,23 +1,23 @@
 ---
-title: 快速入门：查找备用翻译，PHP - 文本翻译 API
+title: 使用双语字典、PHP 查找字词 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用文本翻译 API 和 PHP 查找字词的备用翻译和示例。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: 4d48ab8d0178b2d3fbcba2ee631ee97b30518f88
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 7f45bcb02f1c3002cffff8b72a4f182f0bfa9497
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649750"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215488"
 ---
-# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-php"></a>快速入门：使用文本翻译 REST API (PHP) 查找备用翻译
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-php"></a>快速入门：通过 PHP 使用双语字典查找字词
 
 在本快速入门中，你将使用文本翻译 API 查找术语的可能备用翻译的详细信息，以及这些备用翻译的使用示例。
 

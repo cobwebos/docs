@@ -5,10 +5,10 @@ services: active-directory
 keywords: 身份保护, 应用的条件访问, Azure AD 的条件访问, 公司资源的安全访问, 条件访问策略
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: identity-protection
+ms.subservice: identity-protection
 ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 09528aab5f694aa017f9f16e2675d3c36c1bead3
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: a7dc8fc5e2a705612cecc3cf7d108d38f1e3b2bc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822120"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169274"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>快速入门：使用 Azure Active Directory Identity Protection 检测到会话风险后阻止访问  
 

@@ -1,6 +1,6 @@
 ---
-title: 如何为 Web 应用配置 TLS 相互身份验证
-description: 了解如何将 Web 应用配置为使用 TLS 客户端证书身份验证。
+title: 配置 TLS 相互身份验证 - Azure 应用服务
+description: 了解如何将应用配置为使用 TLS 客户端证书身份验证。
 services: app-service
 documentationcenter: ''
 author: naziml
@@ -14,40 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: naziml
-ms.openlocfilehash: 894a77be05de131ab122f18c62d209e9829357f9
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.custom: seodec18
+ms.openlocfilehash: d441329bc3f279e95b2ee302db53d78f786c3470
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056202"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650391"
 ---
-# <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>如何为 Web 应用配置 TLS 相互身份验证
+# <a name="how-to-configure-tls-mutual-authentication-for-azure-app-service"></a>如何为 Azure 应用服务配置 TLS 相互身份验证
 ## <a name="overview"></a>概述
-通过为 Azure Web 应用启用不同类型的身份验证可以限制对网站的访问。 执行此操作的方法之一是在通过 TLS/SSL 发送请求时使用客户端证书进行身份验证。 此机制称为 TLS 相互身份验证或客户端证书身份验证，本文将详细说明如何将 Web 应用设置为使用客户端证书身份验证。
+通过为 Azure 应用服务应用启用不同类型的身份验证可以限制对网站的访问。 执行此操作的方法之一是在通过 TLS/SSL 发送请求时使用客户端证书进行身份验证。 此机制称为 TLS 相互身份验证或客户端证书身份验证，本文将详细说明如何将应用设置为使用客户端证书身份验证。
 
 > **注意：** 如果通过 HTTP 而不是 HTTPS 访问站点，不会收到任何客户端证书。 因此，如果应用程序需要客户端证书，则不应允许通过 HTTP 对应用程序发出请求。
 > 
 > 
 
-[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
-
-## <a name="configure-web-app-for-client-certificate-authentication"></a>将 Web 应用配置为使用客户端证书身份验证
-要将 Web 应用设置为要求使用客户端证书，需要为 Web 应用添加 clientCertEnabled 站点设置并将该设置指定为 true。 也可在 SSL 证书边栏选项卡下的 Azure 门户中配置此设置。
+## <a name="configure-app-service-for-client-certificate-authentication"></a>将应用服务配置为使用客户端证书身份验证
+要将应用设置为要求使用客户端证书，需要为应用添加 clientCertEnabled 站点设置并将该设置指定为 true。 也可在 SSL 证书边栏选项卡下的 Azure 门户中配置此设置。
 
 可以使用 [ARMClient 工具](https://github.com/projectkudu/ARMClient)轻松创建 REST API 调用。 使用该工具登录之后，将需要发出以下命令：
 
     ARMClient PUT subscriptions/{Subscription Id}/resourcegroups/{Resource Group Name}/providers/Microsoft.Web/sites/{Website Name}?api-version=2015-04-01 @enableclientcert.json -verbose
 
-将 {} 中的所有内容替换为 Web 应用的信息，并创建包含以下 JSON 内容的 enableclientcert.json 文件：
+将 {} 中的所有内容替换为应用的信息，并创建包含以下 JSON 内容的 enableclientcert.json 文件：
 
     {
-        "location": "My Web App Location",
+        "location": "My App Location",
         "properties": {
             "clientCertEnabled": true
         }
     }
 
-确保将“location”的值更改为 Web 应用所在的位置，例如美国中北部、美国西部等。
+确保将“location”的值更改为应用所在的位置，例如美国中北部、美国西部等。
 
 还可以使用 https://resources.azure.com 将 `clientCertEnabled` 属性切换为 `true`。
 
@@ -55,11 +54,11 @@ ms.locfileid: "39056202"
 > 
 > 
 
-## <a name="accessing-the-client-certificate-from-your-web-app"></a>从 Web 应用访问客户端证书
+## <a name="accessing-the-client-certificate-from-app-service"></a>从应用服务访问客户端证书
 如果要使用 ASP.NET 并将应用配置为使用客户端证书身份验证，可通过 **HttpRequest.ClientCertificate** 属性使用证书。 对于其他应用程序堆栈，可以通过“X-ARR-ClientCert”请求标头中的 base64 编码值在应用中使用客户端证书。 应用程序可以基于此值创建证书，然后将它用于应用程序中的身份验证和授权。
 
 ## <a name="special-considerations-for-certificate-validation"></a>有关证书验证的特殊注意事项
-Azure Web 应用平台不会针对发送到应用程序的客户端证书进行任何验证。 验证此证书是 Web 应用的责任。 下面是为了进行身份验证而验证证书属性的示例 ASP.NET 代码。
+Azure 应用服务平台不会针对发送到应用程序的客户端证书进行任何验证。 验证此证书是应用的责任。 下面是为了进行身份验证而验证证书属性的示例 ASP.NET 代码。
 
     using System;
     using System.Collections.Specialized;

@@ -6,15 +6,16 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: ac842507cc52c9677e755d32b09758f787c5a1fb
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: c54f1f8ed8447c69dbfa924469d854ebdd97407f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584554"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252194"
 ---
 # <a name="introduction-to-azure-stack-networking"></a>Azure Stack 联网简介
 

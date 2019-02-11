@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 8c8376fcdcc33996ecc9340647c92a3abcf262c7
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 7440a08bd8ceb85cc569e1bb6d7c4ee1e52178a4
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129686"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352149"
 ---
 # <a name="copy-data-from-oracle-responsys-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Oracle Responsys 复制数据
 
@@ -45,10 +44,10 @@ Oracle Responsys 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：Responsys | 是 |
+| type | Type 属性必须设置为：Responsys | 是 |
 | endpoint | Responsys 服务器的终结点  | 是 |
 | clientId | 与 Responsys 应用程序关联的客户端 ID。  | 是 |
-| clientSecret | 与 Responsys 应用程序关联的客户端密码。 可以选择将此字段标记为 SecureString 以将其安全地存储在 ADF，或在 Azure Key Vault 中存储密码，并允许在此处 ADF 复制活动请求时执行数据复制 - 在[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)中了解详细信息。 | 是 |
+| clientSecret | 与 Responsys 应用程序关联的客户端密码。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
 | useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
 | usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
@@ -80,7 +79,12 @@ Oracle Responsys 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Oracle Responsys 数据集支持的属性列表。
 
-要从 Oracle Responsys 复制数据，请将数据集的 type 属性设置为“ResponsysObject”。 此类型的数据集中没有任何其他特定于类型的属性。
+要从 Oracle Responsys 复制数据，请将数据集的 type 属性设置为“ResponsysObject”。 支持以下属性：
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| type | 数据集的 type 属性必须设置为：ResponsysObject | 是 |
+| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -92,7 +96,8 @@ Oracle Responsys 链接服务支持以下属性：
         "linkedServiceName": {
             "referenceName": "<Oracle Responsys linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 
@@ -109,7 +114,7 @@ Oracle Responsys 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：ResponsysSource | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 是 |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

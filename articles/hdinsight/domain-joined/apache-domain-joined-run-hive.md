@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 43b3e293bf2990c953aeb2947b1113ee30175dee
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 51e9d12d9f8801102997266cfd6699a367b11126
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632809"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435509"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight 中配置 Apache Hive 策略
 了解如何为 Apache Hive 配置 Apache Ranger 策略。 本文将创建两个 Ranger 策略来限制对 hivesampletable 的访问。 HDInsight 群集附带 hivesampletable。 配置这些策略后，可以使用 Excel 和 ODBC 驱动程序连接到 HDInsight 中的 Hive 表。
@@ -28,10 +28,9 @@ ms.locfileid: "51632809"
 
 1. 通过浏览器连接到 Ranger 管理 UI。 URL 为 https://&lt;ClusterName>.azurehdinsight.net/Ranger/。
 
-   > [!NOTE]
-   > Ranger 使用的凭据与 Hadoop 群集不同。 若要防止浏览器使用缓存的 Hadoop 凭据，请使用新的 InPrivate 浏览器窗口连接到 Ranger 管理 UI。
-   >
-   >
+   > [!NOTE]  
+   > Ranger 使用的凭据与 Apache Hadoop 群集不同。 若要防止浏览器使用缓存的 Hadoop 凭据，请使用新的 InPrivate 浏览器窗口连接到 Ranger 管理 UI。
+
 2. 使用群集管理员域用户名和密码登录：
 
     ![HDInsight ESP Ranger 主页](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
@@ -59,7 +58,7 @@ ms.locfileid: "51632809"
 
      ![HDInsight ESP Ranger Hive 策略配置](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
-     > [!NOTE]
+     > [!NOTE]  
      > 如果“选择用户”中未填充域用户，请等待片刻时间让 Ranger 与 AAD 同步。
      >
      >
@@ -134,6 +133,6 @@ ms.locfileid: "51632809"
 * 有关使用企业安全性套餐配置 HDInsight 群集的信息，请参阅[使用 ESP 配置 HDInsight 群集](apache-domain-joined-configure.md)。
 * 有关管理具有 ESP 的 HDInsight 群集的信息，请参阅[管理具有 ESP 的 HDInsight 群集](apache-domain-joined-manage.md)。
 * 有关在具有 ESP 的 HDInsight 群集上使用 SSH 运行 Hive 查询，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。
-* 若要使用 Hive JDBC 连接 Hive，请参阅 [Connect to Hive on Azure HDInsight using the Hive JDBC driver](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md)（使用 Hive JDBC 驱动程序连接到 Azure HDInsight 上的 Hive）
-* 要使用 Hive ODBC 将 Excel 连接到 Hadoop，请参阅 [Connect Excel to Hadoop with the Microsoft Hive ODBC drive](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)（使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Hadoop）
-* 要使用 Power Query 将 Excel 连接到 Hadoop，请参阅 [Connect Excel to Hadoop by using Power Query](../hadoop/apache-hadoop-connect-excel-power-query.md)（使用 Power Query 将 Excel 连接到 Hadoop）
+* 若要使用 Hive JDBC 连接 Hive，请参阅 [Connect to Apache Hive on Azure HDInsight using the Hive JDBC driver](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md)（使用 Hive JDBC 驱动程序连接到 Azure HDInsight 上的 Apache Hive）
+* 若要使用 Hive ODBC 将 Excel 连接到 Hadoop，请参阅 [Connect Excel to Apache Hadoop with the Microsoft Hive ODBC drive](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)（使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Apache Hadoop）
+* 若要使用 Power Query 将 Excel 连接到 Hadoop，请参阅 [Connect Excel to Apache Hadoop by using Power Query](../hadoop/apache-hadoop-connect-excel-power-query.md)（使用 Power Query 将 Excel 连接到 Apache Hadoop）

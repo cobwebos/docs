@@ -1,46 +1,68 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: aa53bfd0028813479b99e84638eaf6f39dac5008
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 3770eebe0c0edcb4c7518b7c5250b4a673c429ce
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456280"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695638"
 documentType: LandingData
-title: 必应新闻搜索文档
+title: 必应新闻搜索 API 文档
+titleSuffix: Azure Cognitive Services
 metadata:
-  title: 必应新闻搜索文档 - 教程、快速入门和 API 参考 | Microsoft Docs
-  description: 了解如何使用必应新闻搜索 API 从与用户查询相关的 Web 获取新闻。 教程介绍了如何构建使用该服务的应用。
+  title: 必应新闻搜索 API 文档 - 教程、快速入门和 API 参考 | Microsoft Docs
+  description: 了解如何使用必应新闻搜索 API 在 Web 中搜索新闻。
   services: cognitive-services
   author: mikedodaro
   manager: rosh
   ms.service: cognitive-services
-  ms.component: bing-video-search
+  ms.subservice: bing-video-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/02/2017
+  ms.date: 01/16/2019
   ms.author: v-gedod
 abstract:
-  description: 通过返回必应确定与用户查询相关的新闻文章列表，必应新闻搜索 API 提供与必应新闻类似的体验。
+  description: 必应新闻搜索 API 可用于将必应的新闻搜索功能集成到应用程序中。 通过使用 API 发送搜索查询，可以从多个类别和源（类似于 bing.com/news）获取相关新闻文章。
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-news-search/search-the-web
+      html: <p>了解必应新闻搜索 API</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: 什么是必应新闻搜索 API？
+    - href: /azure/cognitive-services/bing-news-search/concepts/send-search-queries
+      html: <p>了解如何将搜索请求发送到必应新闻搜索 API。</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: 发送搜索查询
+    - href: /azure/cognitive-services/bing-news-search/concepts/search-for-news
+      html: <p>了解如何搜索多个类型和类别的新闻。</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: 搜索新闻
 - title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: 通过发出查询并查看 JSON 响应，开始使用必应新闻搜索 API：
+    text: 使用以下语言在 Web 中搜索新闻：
   - type: list
     style: icon48
     items:
     - image:
         src: media/index/logo_csharp.svg
-      href: csharp
+      href: news-search-sdk-quickstart
       text: C&#35;
     - image:
         src: media/index/logo_java.svg
-      href: java
+      href: news-sdk-java-quickstart
       text: Java
     - image:
         src: media/index/logo_nodejs.svg
-      href: nodejs
+      href: news-search-sdk-node-quickstart
       text: Node.js
     - image:
         src: media/index/logo_php.svg
@@ -48,7 +70,7 @@ sections:
       text: PHP
     - image:
         src: media/index/logo_python.svg
-      href: python
+      href: news-sdk-python-quickstart
       text: Python
     - image:
         src: media/index/logo_ruby.svg
@@ -59,7 +81,15 @@ sections:
   - type: paragraph
     text: 使用必应新闻搜索 API 开发应用程序：
   - type: paragraph
-    text: <a href="tutorial-bing-news-search-single-page-app">单页 Web 应用</a> &#124; <a href="tutorial-bing-news-search-single-page-app-source">源代码</a>
+    text: <a href="tutorial-bing-news-search-single-page-app">单页 Web 应用</a>
+- title: 示例
+  items:
+  - type: paragraph
+    text: 查找必应新闻搜索 API 的示例：
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="sdk.md">代码示例</a>
 - title: 引用
   items:
   - type: list
@@ -69,4 +99,8 @@ sections:
     - title: API
       html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference">必应新闻搜索 API v7</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference">必应新闻搜索 API v5</a></p>
     - title: SDK
-      html: <p><a href="sdk.md">必应搜索 SDK</a></p>
+      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingnews?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/newssearch?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/newssearch?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/newssearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/newssearch">Go</a></p>
+    - title: PowerShell
+      html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
+    - title: CLI
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>

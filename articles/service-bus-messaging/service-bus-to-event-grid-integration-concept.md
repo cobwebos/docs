@@ -3,9 +3,9 @@ title: Azure 服务总线到事件网格集成概述 | Microsoft Docs
 description: 服务总线消息传送和事件网格集成的说明
 services: service-bus-messaging
 documentationcenter: .net
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
 ms.service: service-bus-messaging
 ms.workload: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 09/15/2018
-ms.author: spelluru
-ms.openlocfilehash: 2173a24eb3bbaafe9dcf25461eb5357ba3a6e7ad
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.author: aschhab
+ms.openlocfilehash: 41514ca5911544da8608e0c7ebad18b33c33b494
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166893"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856904"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服务总线到事件网格的集成概述
 
@@ -36,10 +36,7 @@ Azure 服务总线已推出与 Azure 事件网格集成的新功能。 此功能
 ![19][]
 
 ### <a name="verify-that-you-have-contributor-access"></a>验证你是否有参与者访问权限
-
-转到服务总线命名空间，选择“访问控制(IAM)”，如下所示：
-
-![1][]
+转到“服务总线”命名空间，选择“访问控制(IAM)”，并选择“角色分配”选项卡。验证你是否拥有该命名空间的参与者访问权限。 
 
 ### <a name="events-and-event-schemas"></a>事件和事件架构
 
@@ -155,7 +152,7 @@ az eventgrid event-subscription create --resource-id $namespaceid --name “<YOU
 
 ## <a name="powershell-instructions"></a>PowerShell 说明
 
-确保已安装 Azure PowerShell。 [下载安装程序](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.4.0)。 按 **Windows + X**，然后使用管理员权限打开新的 PowerShell 控制台。 或者，也可以在 Azure 门户中使用命令外壳。
+确保已安装 Azure PowerShell。 [下载安装程序](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-5.4.0)。 按 **Windows + X**，然后使用管理员权限打开新的 PowerShell 控制台。 或者，也可以在 Azure 门户中使用命令外壳。
 
 ```PowerShell-interactive
 Connect-AzureRmAccount

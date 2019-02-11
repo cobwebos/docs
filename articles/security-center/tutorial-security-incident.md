@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: rkarlin
-ms.openlocfilehash: c2ecba5af4d0a8c95be59ad10cfc7ca8788439c9
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: facea1f0c9c92a07d888163cc44f67d927698002
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44026285"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849609"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>教程：响应安全事件
 安全中心使用高级分析和威胁智能来持续分析混合云工作负荷，在存在恶意活动时发出警报。 另外，你可以将其他安全产品和服务中的警报集成到安全中心，并根据自己的指示器或智能源创建自定义警报。 生成警报后，需采取快速行动进行调查和修正。 在本教程中，将了解如何：
@@ -33,7 +33,7 @@ ms.locfileid: "44026285"
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
-若要逐步执行本教程中介绍的功能，你必须位于安全中心的“标准”定价层。 可以尝试安全中心标准版，头 60 天免费。 快速入门教程“[将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)”详细介绍了如何升级到标准版。
+若要逐步执行本教程中介绍的功能，你必须位于安全中心的“标准”定价层。 可以免费试用安全中心标准版。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。 快速入门教程“[将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)”详细介绍了如何升级到标准版。
 
 ## <a name="triage-security-alerts"></a>会审安全警报
 安全中心提供所有安全警报的统一视图。 将会根据严重性设置安全警报的级别，并尽可能将相关的警报合并到一个安全事件中。 会审警报和事件时，应做到：

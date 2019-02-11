@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 容器服务引擎和 Swarm 模式的 CI/CD
+title: （已弃用）使用 Azure 容器服务引擎和 Swarm 模式的 CI/CD
 description: 使用 Docker Swarm 模式的 Azure 容器服务引擎、Azure 容器注册表和 Azure DevOps 持续交付多容器 .NET Core 应用程序
 services: container-service
 author: diegomrtnzg
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: 296c097ee3302eaa39210274b16c6352866eac8a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4befcbb6b2297c6f80fb577b1fe22053a8c77ada
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299570"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331072"
 ---
-# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>用于通过 Azure DevOps 在使用 ACS 引擎和 Docker Swarm 模式的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
+# <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>（已弃用）用于通过 Azure DevOps 在使用 ACS 引擎和 Docker Swarm 模式的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 本文基于[用于通过 Azure DevOps 在包含 Docker Swarm 的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道](container-service-docker-swarm-setup-ci-cd.md)文档
 
@@ -106,7 +108,7 @@ ms.locfileid: "44299570"
 
     ![Azure DevOps - 新建空的生成管道](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/create-empty-build-vsts.PNG)
 
-4. 然后单击“变量”选项卡并创建两个新变量：RegistryURL 和 AgentURL。 粘贴注册表和群集代理 DNS 的值。
+4. 然后，单击“变量”选项卡，并创建两个新变量：RegistryURL 和 AgentURL。 粘贴注册表和群集代理 DNS 的值。
 
     ![Azure DevOps - 生成变量配置](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-variables.png)
 
@@ -129,7 +131,7 @@ ms.locfileid: "44299570"
 * ProductsApi
 * 代理
 * RatingsApi
-* RecommandationsApi
+* RecommendationsApi
 * ShopFront
 
 每个映像都需要两个 Docker 步骤，其中一个步骤用于生成映像，另一个用于将映像推送到 Azure 容器注册表中。 

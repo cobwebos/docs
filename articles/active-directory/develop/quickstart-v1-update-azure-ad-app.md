@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: f311f951e09e064b8eac779b1082c666fe029479
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 437217bdd3cc2ae8724d6bf24134d8fe725daac7
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977228"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093302"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>快速入门：在 Azure Active Directory 中更新应用程序
 
@@ -111,7 +111,7 @@ ms.locfileid: "46977228"
   ```
 
   > [!NOTE]
-  > 必须以编程方式或者使用 GUID 生成工具（例如 [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx)）来生成 `id` 值。 `id` 表示 Web API 公开的范围的唯一标识符。 为客户端配置访问 Web API 的适当权限后，Azure AD 将为它颁发 OAuth2.0 访问令牌。 当客户端调用 Web API 时，会出示该访问令牌，其中的范围 (scp) 声明设置为客户端应用程序注册中请求的权限。
+  > 必须通过编程方式或 GUID 生成工具（例如 [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx)）来生成 `id` 值。 `id` 表示 Web API 公开的范围的唯一标识符。 为客户端配置访问 Web API 的适当权限后，Azure AD 将为它颁发 OAuth2.0 访问令牌。 当客户端调用 Web API 时，会出示该访问令牌，其中的范围 (scp) 声明设置为客户端应用程序注册中请求的权限。
   >
   > 以后可以根据需要公开其他范围。 请考虑 Web API 可能要公开与各种不同功能关联的多个范围。 在运行时，资源可以通过评估所收到的 OAuth 2.0 访问令牌中的范围 (`scp`) 声明，来控制对 Web API 的访问。
 

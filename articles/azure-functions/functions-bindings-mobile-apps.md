@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: eb77046c6e673012209f0db452b20bf25046cd67
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 5fd220f15f363c1987f1576009519e4b2feae6b9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250965"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814854"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions 的移动应用绑定 
 
@@ -31,7 +31,7 @@ ms.locfileid: "50250965"
 
 ## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
-[Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) NuGet 包 1.x 版中提供了移动应用绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/) GitHub 存储库中提供了此包的源代码。
+[Microsoft.Azure.WebJobs.Extensions.MobileApps](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) NuGet 包 1.x 版中提供了移动应用绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
@@ -44,7 +44,7 @@ ms.locfileid: "50250965"
 参阅语言特定的示例：
 
 * [C# 脚本 (.csx)](#input---c-script-example)
-* [JavaScript](#input---javascript-example)
+* JavaScript
 
 ### <a name="input---c-script-example"></a>输入 - C# 脚本示例
 
@@ -157,7 +157,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="input---usage"></a>输入 - 用法
 
-在 C# 函数中，当找到具有指定 ID 的记录时，该记录会传递到命名的 [JObject](http://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) 参数。 未找到该记录时，参数值为 `null`。 
+在 C# 函数中，当找到具有指定 ID 的记录时，该记录会传递到命名的 [JObject](https://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) 参数。 未找到该记录时，参数值为 `null`。 
 
 在 JavaScript 函数中，该记录会传递给 `context.bindings.<name>` 对象。 未找到该记录时，参数值为 `null`。 
 

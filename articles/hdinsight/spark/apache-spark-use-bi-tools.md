@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: e862000df1edc5101c0768f1f96c11953f1485c7
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: c058cfa3bc9fa976726731cedeb80eb76a1f0810
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583272"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999265"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>教程：使用 Power BI 在 HDInsight 中分析 Apache Spark 数据 
 
@@ -28,8 +28,8 @@ ms.locfileid: "52583272"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **完成[教程：在 Azure HDInsight 中的 Apache Spark 群集上加载数据并运行查询](./apache-spark-load-data-run-query.md)一文**。
-* **Power BI**[：Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) 和 [Power BI 试用订阅](https://app.powerbi.com/signupredirect?pbi_source=web)（可选）。
+* **完成文章[教程：在 Azure HDInsight 中的 Apache Spark 群集上加载数据并运行查询](./apache-spark-load-data-run-query.md)**。
+* **Power BI**：[Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) 和 [Power BI 试用订阅](https://app.powerbi.com/signupredirect?pbi_source=web)（可选）。
 
 
 ## <a name="verify-the-data"></a>验证数据
@@ -69,7 +69,7 @@ ms.locfileid: "52583272"
 ### <a name="create-a-report-in-power-bi-desktop"></a>在 Power BI Desktop 中创建报表
 使用 Spark 的前几步是连接到 Power BI Desktop 中的集群，从集群中加载数据，并根据此数据创建基本的可视化效果。
 
-> [!NOTE]
+> [!NOTE]  
 > 本文中所示的连接器当前处于预览状态。 通过 [Power BI 社区](https://community.powerbi.com/)站点或 [Power BI Ideas](https://ideas.powerbi.com/forums/265200-power-bi-ideas)（Power BI 想法）提供反馈。
 
 1. 打开 [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/)。
@@ -103,7 +103,7 @@ ms.locfileid: "52583272"
 
         关系图如下所示：
 
-        ![使用 Apache Spark BI 创建 Spark 数据可视化](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "使用 Apache Spark BI 创建 Spark 数据可视化")
+        ![使用 Apache Spark BI 创建 Spark 数据可视化](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "使用 Apache Spark BI 创建 Spark 数据可视化")
 
         默认情况下，视觉效果会显示 **ActualTemp** 和 **TargetTemp** 的总和。 单击“可视化效果”窗格中 ActualTemp 和 TragetTemp 旁边的向下键，可看到已选中“总和”。
 
@@ -113,7 +113,7 @@ ms.locfileid: "52583272"
 
         数据可视化效果应与屏幕截图中类似。 在视觉效果上移动光标可获取相关数据的工具提示。
 
-        ![使用 Apache Spark BI 创建 Spark 数据可视化](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "使用 Apache Spark BI 创建 Spark 数据可视化")
+        ![使用 Apache Spark BI 创建 Spark 数据可视化](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "使用 Apache Spark BI 创建 Spark 数据可视化")
 
 7. 依次单击“文件”和“保存”，再输入文件名 `BuildingTemperature.pbix` 。 
 
@@ -174,7 +174,7 @@ Power BI 服务允许在整个组织中共享报表和仪表板。 在本部分�
 >
 >
 
-1. Install [Tableau Desktop](http://www.tableau.com/products/desktop) on the computer where you are running this Apache Spark BI tutorial.
+1. Install [Tableau Desktop](https://www.tableau.com/products/desktop) on the computer where you are running this Apache Spark BI tutorial.
 
 2. Make sure that computer also has Microsoft Spark ODBC driver installed. You can install the driver from [here](https://go.microsoft.com/fwlink/?LinkId=616229).
 

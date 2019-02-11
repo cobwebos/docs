@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/22/2018
+ms.date: 12/13/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: b53f679f6f93dd5d4889fbe51f8b5caf62fc1a36
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: e52d5f3b30490227541e99e067c096a7df6dd911
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236705"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566182"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure 导入/导出服务：常见问题解答 
 下面是你在使用 Azure 导入/导出服务将数据传输到 Azure 存储时可能会提出的问题及其解答。 问题和解答分为以下几个类别：
@@ -66,7 +66,10 @@ ms.locfileid: "51236705"
 可以查看最长 90 天的已完成作业的状态。 已完成作业在 90 天后会被删除。
 
 ### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>如果我想要导入或导出 10 个以上驱动器，我应该怎样做？
-一个导入或导出作业在单个作业中只能引用 10 个驱动器。 若要寄送 10 个以上驱动器，应当创建多个作业。 与同一作业关联的驱动器必须放在同一个包裹中一起寄送。 当数据容量跨多个磁盘导入作业时，若需了解更多信息并获得指导，请通过 bulkimport@microsoft.com 联系 Microsoft。                                                              
+一个导入或导出作业在单个作业中只能引用 10 个驱动器。 若要寄送 10 个以上驱动器，应当创建多个作业。 与同一作业关联的驱动器必须放在同一个包裹中一起寄送。 当数据容量跨多个磁盘导入作业时，若需了解更多信息并获得指导，请通过 bulkimport@microsoft.com 联系 Microsoft。 
+
+### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>上传的 blob 显示状态为“租用已过期”。 我该怎么办？
+你可以忽略“租用已过期”字段。 导入/导出在上传期间对 blob 进行租用，以确保没有其他进程可以并行更新 blob。 “租用已过期”意味着导入/导出不再上传到它，并且 blob 可以供你使用。 
 
 ## <a name="shipping-disks"></a>寄送磁盘
 
@@ -135,7 +138,7 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
     ```
     WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>] 
     ```
-- 如果使用的是 [WAImportExport V2](https://www.microsoft.com/en-us/download/details.aspx?id=55280)，请指定“AlreadyEncrypted”，并在驱动器集 CSV 中提供密钥。
+- 如果使用的是 [WAImportExport V2](https://www.microsoft.com/download/details.aspx?id=55280)，请指定“AlreadyEncrypted”，并在驱动器集 CSV 中提供密钥。
     ```
     DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
     G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631 |

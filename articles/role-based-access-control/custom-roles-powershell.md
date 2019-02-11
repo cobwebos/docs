@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c8e5f34bb6b38a3f187d86a1ebc0c7019c7f1046
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 6020aa0a770075526d8d07c94b847b5933a26c2a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437012"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428103"
 ---
 # <a name="create-custom-roles-using-azure-powershell"></a>使用 Azure PowerShell 创建自定义角色
 
@@ -30,7 +30,7 @@ ms.locfileid: "37437012"
 若要创建自定义角色，需要具备以下条件：
 
 - 有权创建自定义角色，例如[所有者](built-in-roles.md#owner)或[用户访问管理员](built-in-roles.md#user-access-administrator)
-- 在本地安装了 [Azure PowerShell](/powershell/azure/install-azurerm-ps)
+- 在本地安装了 [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)
 
 ## <a name="list-custom-roles"></a>列出自定义角色
 

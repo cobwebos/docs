@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: asrastog
-ms.openlocfilehash: a5b8ce8cd753ee294a8d61ba8a3dfed872f0f31a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 69c890cfc3db04fe625ed7ad008f545c01844834
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956314"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993478"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 查询 Avro 数据
 
@@ -21,7 +21,7 @@ ms.locfileid: "46956314"
 
 挑战在于，当 Azure IoT 中心将消息路由到 Azure Blob 存储时，IoT 中心以 Avro 格式写入内容，该格式同时包括消息正文属性和消息属性。 IoT 中心仅支持以 Avro 数据格式将数据写入到 Blob 存储，此格式不用于任何其他终结点。 有关详细信息，请参阅有关使用 Azure 存储容器的文章。 尽管 Avro 格式可用于保存数据和消息，但将其用于查询数据将是一项挑战。 比较而言，JSON 或 CSV 格式更容易用来查询数据。
 
-<!-- https://review.docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-messages-d2c?branch=pr-en-us-51566#azure-blob-storage  NEW LINK FOR 'WHEN USING STORAGE CONTAINERS' -->
+<!-- https://review.docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c?branch=pr-en-us-51566#azure-blob-storage  NEW LINK FOR 'WHEN USING STORAGE CONTAINERS' -->
 
 为了解决非关系大数据需求和格式并应对这一挑战，可以使用许多大数据模式来对数据进行转换和缩放。 其中的一个模式“按查询付费”是 Azure Data Lake Analytics，它是本文重点要讨论的内容。 虽然可以在 Hadoop 或其他解决方案中轻松执行查询，但 Data Lake Analytics 通常更适合“按查询付费”方式。 
 
@@ -171,7 +171,7 @@ U-SQL 中有一个适用于 Avro 的“提取程序”。 有关详细信息，�
 
 在本教程中，你已学习了如何查询 Avro 数据以高效地将消息从 Azure IoT 中心路由到 Azure 服务。
 
-有关使用 IoT 中心完成端到端解决方案的示例，请参阅 [Azure IoT 解决方案加速器文档](../iot-accelerators/index.yml)。
+有关使用 IoT 中心完成端到端解决方案的示例，请参阅 [Azure IoT 解决方案加速器文档](/azure/iot-accelerators)。
 
 若要了解有关使用 IoT 中心开发解决方案的详细信息，请参阅 [IoT 中心开发人员指南](iot-hub-devguide.md)。
 

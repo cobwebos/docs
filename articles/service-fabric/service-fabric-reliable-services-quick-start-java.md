@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: d4e3419241d44744f8a692896848edb6cebb56a0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 84a495274ffadfe816ced21cd095f7a5e18d7f89
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049688"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199538"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 入门
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ ms.locfileid: "44049688"
 
 * **服务类型**：这是服务实现。 它由你编写的可扩展 `StatelessService` 的类、其中使用的任何其他代码或依赖项以及名称和版本号定义。
 * **命名服务实例**：若要运行服务，需要创建服务类型的命名实例，就像创建类类型的对象实例一样。 事实上，服务实例是编写的服务类的对象实例化。
-* **服务宿主**：创建的命名服务实例需在宿主中运行。 服务宿主是可以运行服务实例的进程。
+* **服务主机**：创建的命名服务实例需在主机中运行。 服务宿主是可以运行服务实例的进程。
 * **服务注册**：通过注册可将所有对象融合在一起。 只有将服务类型注册到服务宿主中的 Service Fabric 运行时后，Service Fabric 才能创建该类型的可运行实例。  
 
 ## <a name="create-a-stateless-service"></a>创建无状态服务
@@ -201,7 +201,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) 是一种字典实现，可用于将状态可靠地存储在服务中。 利用 Service Fabric 和 Reliable HashMaps，可以将数据直接存储在服务中而无需外部持久性存储。 Reliable HashMaps 可让数据具备高可用性。 Service Fabric 通过创建和管理服务的多个*副本*来实现此目的。 它还提供一个抽象 API，消除了管理这些副本及其状态转换所存在的复杂性。
+[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections.reliablehashmap) 是一种字典实现，可用于将状态可靠地存储在服务中。 利用 Service Fabric 和 Reliable HashMaps，可以将数据直接存储在服务中而无需外部持久性存储。 Reliable HashMaps 可让数据具备高可用性。 Service Fabric 通过创建和管理服务的多个*副本*来实现此目的。 它还提供一个抽象 API，消除了管理这些副本及其状态转换所存在的复杂性。
 
 Reliable Collections 可以存储任何 Java 类型（包括自定义类型），但需要注意以下几点：
 

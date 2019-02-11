@@ -1,6 +1,6 @@
 ---
-title: 教程 - 如何将 Azure Key Vault 与通过 Python 编写的 Azure Linux 虚拟机配合使用 | Microsoft Docs
-description: 教程：将 ASP.NET Core 应用程序配置为从 Key Vault 读取机密
+title: 教程 - 将 Azure Key Vault 与通过 Python 编写的 Azure 虚拟机配合使用 | Microsoft Docs
+description: 在本教程中，请配置一个 Python 应用程序，以便从密钥保管库读取机密
 services: key-vault
 documentationcenter: ''
 author: prashanthyv
@@ -12,47 +12,47 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 5f56022be7968d3be65fd06fef791d859acf14c0
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 1e364003093d5e37a75830386cafe855b0bdcad2
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585150"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467395"
 ---
-# <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-python"></a>教程：如何将 Azure Key Vault 与通过 Python 编写的 Azure Linux 虚拟机配合使用
+# <a name="tutorial-use-azure-key-vault-with-an-azure-virtual-machine-in-python"></a>教程：将 Azure Key Vault 与通过 Python 编写的 Azure 虚拟机配合使用
 
-Azure Key Vault 用于保护机密，例如访问应用程序、服务和 IT 资源所需的 API 密钥、数据库连接字符串。
+Azure Key Vault 用于保护机密，例如访问应用程序、服务和 IT 资源所需的 API 密钥和数据库连接字符串。
 
-本教程演练将 Azure Web 应用程序配置为使用 Azure 资源的托管标识，以从 Azure Key Vault 读取信息所要执行的步骤。 本教程基于 [Azure Web 应用](../app-service/app-service-web-overview.md)。 下面介绍如何：
+在本教程中，请执行相关的步骤，以便让 Azure Web 应用程序使用 Azure 资源的托管标识从 Azure Key Vault 读取信息。 学习如何：
 
 > [!div class="checklist"]
 > * 创建密钥保管库。
 > * 在密钥保管库中存储机密。
-> * 从密钥保管库检索机密。
 > * 创建一个 Azure 虚拟机。
 > * 为虚拟机启用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 > * 授予所需的权限，让控制台应用程序从密钥保管库读取数据。
-> * 从 Key Vault 检索机密
+> * 从密钥保管库检索机密。
 
-在我们进一步讨论之前，请阅读[基本概念](key-vault-whatis.md#basic-concepts)。
+在进一步讨论之前，请阅读[有关 Key Vault 的基本概念](key-vault-whatis.md#basic-concepts)。
 
 ## <a name="prerequisites"></a>先决条件
-* 所有平台：
-  * Git（[下载](https://git-scm.com/downloads)）。
-  * Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-  * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 2.0.4 或更高版本。 适用于 Windows、Mac 和 Linux。
+不管什么平台，你都需要以下各项：
 
-本教程使用托管服务标识
+* Git（[下载](https://git-scm.com/downloads)）。
+* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 2.0.4 或更高版本。 它适用于 Windows、Mac 和 Linux。
 
-## <a name="what-is-managed-service-identity-and-how-does-it-work"></a>什么是托管服务标识？其工作原理是什么？
-在进一步讨论之前，让我们了解 MSI。 Azure Key Vault 可以安全地存储凭据，因此不需将凭据置于代码中，但若要检索这些凭据，需向 Azure Key Vault 进行身份验证。 若要向 Key Vault 进行身份验证，需提供凭据！ 经典的启动问题。 通过 Azure 和 Azure AD，MSI 提供一个“启动标识”，可以大为简化启动过程。
+### <a name="managed-service-identity-and-how-it-works"></a>托管服务标识及其工作原理
+本教程使用托管服务标识 (MSI)。
 
-工作方式如下！ 为 Azure 服务（例如虚拟机、应用服务或 Functions）启用 MSI 时，Azure 会为 Azure Active Directory 中的服务实例创建一个[服务主体](key-vault-whatis.md#basic-concepts)，并将服务主体的凭据注入服务实例中。 
+Azure Key Vault 可以安全地存储凭据，因此不需要在代码中提供凭据。 若要检索它们，需向 Key Vault 进行身份验证。 若要对 Key Vault 进行身份验证，需要提供凭据。 这是经典的启动问题。 通过 Azure 和 Azure Active Directory (Azure AD)，MSI 提供一个“启动标识”，可以简化启动过程。
+
+为 Azure 服务（例如：虚拟机、应用服务或 Functions）启用 MSI 时，Azure 会为 Azure AD 中的服务实例创建一个[服务主体](key-vault-whatis.md#basic-concepts)。 Azure 将服务主体的凭据注入服务的实例。 
 
 ![MSI](media/MSI.png)
 
 接下来，代码会调用 Azure 资源上提供的本地元数据服务，以便获取访问令牌。
-代码使用从本地 MSI_ENDPOINT 获取的访问令牌，以便向 Azure Key Vault 服务进行身份验证。 
+代码使用从本地 MSI 终结点获取的访问令牌，以便向 Azure Key Vault 服务进行身份验证。 
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
@@ -80,7 +80,7 @@ az group create --name "<YourResourceGroupName>" --location "West US"
 
 接下来，在上一步骤创建的资源组中创建密钥保管库。 提供以下信息：
 
-* 密钥保管库名称：名称必须为 3-24 个字符的字符串，并且只能包含 0-9、a-z、A-Z 和 -。
+* Key Vault 名称：名称必须是 3-24 个字符的字符串，并且只能包含 0-9、a-z、A-Z 和连字符 (-)。
 * 资源组名称。
 * 位置：**美国西部**。
 
@@ -93,7 +93,7 @@ az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGr
 
 我们将添加机密以帮助说明这是如何工作的。 可以存储需要安全保存的，但同时也要提供给应用程序使用的 SQL 连接字符串或其他任何信息。
 
-键入以下命令，在名为 **AppSecret** 的密钥保管库中创建机密。 此机密将存储值“MySecret”。
+键入以下命令，在名为 *AppSecret* 的密钥保管库中创建机密。 此机密将存储值“MySecret”。
 
 ```azurecli
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
@@ -101,9 +101,9 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 
-使用 [az vm create](/cli/azure/vm#az_vm_create) 命令创建 VM。
+使用 [az vm create](/cli/azure/vm) 命令创建 VM。
 
-以下示例创建一个名为 *myVM* 的 VM 并添加一个名为 *azureuser* 的用户帐户。 `--generate-ssh-keys` 参数用来自动生成一个 SSH 密钥，并将其放置在默认密钥位置 (*~/.ssh*) 中。 若要改为使用一组特定的密钥，请使用 `--ssh-key-value` 选项。
+以下示例创建一个名为 *myVM* 的 VM 并添加一个名为 *azureuser* 的用户帐户。 `--generate-ssh-keys` 参数自动生成一个 SSH 密钥，并将其放置在默认密钥位置 (*~/.ssh*) 中。 若要改为使用一组特定的密钥，请使用 `--ssh-key-value` 选项。
 
 ```azurecli-interactive
 az vm create \
@@ -114,7 +114,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-创建 VM 和支持资源需要几分钟时间。 以下示例输出表明 VM 创建操作已成功。
+创建 VM 和支持资源需要几分钟时间。 以下示例输出表明 VM 创建操作已成功：
 
 ```
 {
@@ -129,16 +129,16 @@ az vm create \
 }
 ```
 
-记下 VM 输出中自己的 `publicIpAddress`。 在后续步骤中，将使用此地址访问 VM。
+记下 VM 输出中你自己的 `publicIpAddress` 值。 在后续步骤中，将使用此地址访问 VM。
 
-## <a name="assign-identity-to-virtual-machine"></a>为虚拟机分配标识
-在此步骤中，我们将为虚拟机创建一个系统分配标识，方法是在 Azure CLI 中运行以下命令
+## <a name="assign-an-identity-to-the-virtual-machine"></a>为虚拟机分配标识
+在此步骤中，我们将为虚拟机创建一个系统分配标识。 在 Azure CLI 中运行以下命令：
 
 ```
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
 ```
 
-请记下下面显示的 systemAssignedIdentity。 以上命令的输出将为 
+该命令的输出如下所示。 请记下 **systemAssignedIdentity** 的值。 
 
 ```
 {
@@ -147,55 +147,53 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 }
 ```
 
-## <a name="give-virtual-machine-identity-permission-to-key-vault"></a>为虚拟机标识提供 Key Vault 访问权限
-现在，我们可以运行以下命令，为上面创建的标识授予 Key Vault 访问权限
+## <a name="give-the-virtual-machine-identity-permission-to-the-key-vault"></a>为虚拟机标识提供密钥保管库访问权限
+现在可以提供针对密钥保管库的标识访问权限。 运行以下命令：
 
 ```
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-## <a name="login-to-the-virtual-machine"></a>登录到虚拟机
+## <a name="log-in-to-the-virtual-machine"></a>登录到虚拟机
 
-可以按此[教程](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon)的说明操作
+按[此教程](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon)的说明登录到虚拟机。
 
-## <a name="create-and-run-sample-python-app"></a>创建并运行示例 Python 应用
+## <a name="create-and-run-the-sample-python-app"></a>创建并运行示例 Python 应用
 
-下面是一个名为“Sample.py”的示例文件。 它使用 [requests](http://docs.python-requests.org/master/) 库进行 HTTP GET 调用。
+以下示例文件名为 *Sample.py*。 它使用 [requests](https://pypi.org/project/requests/2.7.0/) 库进行 HTTP GET 调用。
 
 ## <a name="edit-samplepy"></a>编辑 Sample.py
-创建 Sample.py 后，打开该文件并复制下面的代码
-
-下面是一个 2 步过程。 
-1. 从 VM 上的本地 MSI 终结点获取一个令牌，该终结点会转而从 Azure Active Directory 获取令牌
-2. 将令牌传递到 Key Vault，获取机密 
+创建 Sample.py 后，打开该文件并复制以下代码。 此代码是一个两步过程： 
+1. 从 VM 上的本地 MSI 终结点获取一个令牌。 该终结点转而从 Azure Active Directory 获取令牌。
+2. 将令牌传递到 Key Vault，获取机密。 
 
 ```
     # importing the requests library 
     import requests 
 
-    # Step 1: Fetch an access token from a Managed Identity enabled azure resource      
-    # Note that the resource here is https://vault.azure.net for public cloud and api-version is 2018-02-01
+    # Step 1: Fetch an access token from an MSI-enabled Azure resource      
+    # Note that the resource here is https://vault.azure.net for the public cloud, and api-version is 2018-02-01
     MSI_ENDPOINT = "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net"
     r = requests.get(MSI_ENDPOINT, headers = {"Metadata" : "true"}) 
       
-    # extracting data in json format 
-    # This request gets a access_token from Azure Active Directory using the local MSI endpoint
+    # Extracting data in JSON format 
+    # This request gets an access token from Azure Active Directory by using the local MSI endpoint
     data = r.json() 
     
-    # Step 2: Pass the access_token received from previous HTTP GET call to Key Vault
+    # Step 2: Pass the access token received from the previous HTTP GET call to the key vault
     KeyVaultURL = "https://prashanthwinvmvault.vault.azure.net/secrets/RandomSecret?api-version=2016-10-01"
     kvSecret = requests.get(url = KeyVaultURL, headers = {"Authorization": "Bearer " + data["access_token"]})
     
     print(kvSecret.json()["value"])
 ```
 
-运行后会看到机密值 
+运行以下命令后会看到机密值： 
 
 ```
 python Sample.py
 ```
 
-以上代码演示了如何在 Azure Windows 虚拟机中通过 Azure Key Vault 执行操作。 
+以上代码演示了如何在 Windows 虚拟机中通过 Azure Key Vault 执行操作。 
 
 ## <a name="next-steps"></a>后续步骤
 

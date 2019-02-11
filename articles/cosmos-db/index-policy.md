@@ -1,33 +1,33 @@
 ---
-title: Azure Cosmos DB 索引策略 | Microsoft Docs
+title: Azure Cosmos DB 索引编制策略
 description: 了解 Azure Cosmos DB 中索引的工作原理。 了解如何配置和更改索引策略，实现自动索引并提高性能。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2018
 ms.author: mjbrown
-ms.openlocfilehash: ffb70ce8c26b7774e90801271c55cd8a80906c90
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 6c145b58a1f0eaaf93fb5797028e11ba8338d6be
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628336"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460227"
 ---
-# <a name="indexing-policy-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
+# <a name="index-policy-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
 
 可以通过配置以下参数来替代 Azure Cosmos 容器上的默认索引策略：
 
-* **Include or exclude items and paths from the index**：在插入或替换容器中的项时，可以在索引中排除或包含特定项。 还可以包含或排除要跨容器编制索引的特定路径/属性。 路径可能包括通配符模式，例如 *。
+* **在索引中包括或排除项和路径**：在插入或替换容器中的项时，可以在索引中排除或包含特定项。 还可以包含或排除要跨容器编制索引的特定路径/属性。 路径可能包括通配符模式，例如 *。
 
-* **Configure index types**：除范围索引路径外，还可以添加其他类型的索引，例如空间。
+* **配置索引类型**：除范围索引路径外，还可以添加其他类型的索引，例如空间。
 
-* **Configure index modes**：通过在容器上使用索引策略，可以配置不同的索引模式，例如“一致”或“无”。
+* **配置索引模式**：通过在容器上使用索引策略，可以配置不同的索引模式，例如“一致”或“无”。
 
 ## <a name="indexing-modes"></a>索引模式 
 
 Azure Cosmos DB 支持两种索引模式，可以在 Azure Cosmos 容器上配置这些模式。 可以通过索引策略配置以下两种索引模式： 
 
-* **一致**：如果 Azure Cosmos 容器的策略设置为“一致”，则特定容器上的查询将按照为点读取指定的一致性级别进行（例如，强、有限过期性、会话或最终）。 
+* **一致**：如果 Azure Cosmos 容器的策略设置为“一致”，则特定容器上的查询将按照为点读取指定的一致性级别进行（例如，非常、有限过期性、会话或最终）。 
 
   更新项时，会同步更新索引。 例如，对项执行插入、替换、更新和删除操作将导致更新索引。 一致索引支持一致的查询，但代价是影响写入吞吐量。 写入吞吐量的降低取决于“索引中包含的路径”和“一致性级别”。 一致的索引模式适用于“快速写入和立即查询”的工作负荷。
 

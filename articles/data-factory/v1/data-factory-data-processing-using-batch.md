@@ -9,17 +9,16 @@ ms.assetid: 688b964b-51d0-4faa-91a7-26c7e3150868
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 0865c8b88788387eff173443d190658cc6488946
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: e053fa52b7b7cea1c35b68a0f2079eb5a590a76a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976853"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021571"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用数据工厂和 Batch 来处理大规模数据集
 > [!NOTE]
@@ -41,7 +40,7 @@ ms.locfileid: "51976853"
 * [Batch 基本信息](../../batch/batch-technical-overview.md)
 * [批处理功能概述](../../batch/batch-api-basics.md)
 
-（可选）若要了解有关 Batch 的详细信息，请参阅 [Batch 文档](https://docs.microsoft.com/en-us/azure/batch/)。
+（可选）若要了解有关 Batch 的详细信息，请参阅 [Batch 文档](https://docs.microsoft.com/azure/batch/)。
 
 ## <a name="why-azure-data-factory"></a>为什么使用 Azure 数据工厂？
 数据工厂是一项基于云的数据集成服务，可对数据移动和转换进行安排并使其实现自动化。 可以使用数据工厂创建将数据从本地和云数据存储移动到集中数据存储的托管数据管道。 Azure Blob 存储是一个示例。 可以使用数据工厂，通过 Azure HDInsight 和 Azure 机器学习等服务来处理/转换数据。 还可以计划数据管道，以便按计划方法（例如每小时、每天和每周）运行。 可以一目了然地监视和管理管道，以便确定问题和采取措施。
@@ -51,7 +50,7 @@ ms.locfileid: "51976853"
 * [数据工厂简介](data-factory-introduction.md)
 * [生成第一个数据管道](data-factory-build-your-first-pipeline.md)   
 
-（可选）若要了解有关数据工厂的详细信息，请参阅[数据工厂文档](https://docs.microsoft.com/en-us/rest/api/datafactory/v1/data-factory-data-factory)。
+（可选）若要了解有关数据工厂的详细信息，请参阅[数据工厂文档](https://docs.microsoft.com/rest/api/datafactory/v1/data-factory-data-factory)。
 
 ## <a name="data-factory-and-batch-together"></a>配合使用数据工厂和 Batch
 数据工厂包括内置活动。 例如，复制活动用于将数据从源数据存储复制/移动到目标数据存储。 Hive 活动用于在 Azure 上使用 Hadoop 群集 (HDInsight) 处理数据。 有关支持的转换活动列表，请参阅[数据转换活动](data-factory-data-transformation-activities.md)。
@@ -734,7 +733,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. 选择工具栏上的“部署”，创建并部署 **OutputDataset**。
 
-#### <a name="step-4-create-and-run-the-pipeline-with-a-custom-activity"></a>步骤 4：创建和运行带自定义活动的管道
+#### <a name="step-4-create-and-run-the-pipeline-with-a-custom-activity"></a>步骤 4：创建和运行含自定义活动的管道
 在此步骤中，创建含一个活动（之前创建的自定义活动）的管道。
 
 > [!IMPORTANT]
@@ -930,11 +929,11 @@ test custom activity Microsoft test custom activity Microsoft
 #### <a name="extend-the-sample"></a>扩展该示例
 可扩展此示例，深入了解数据工厂和 Batch 功能。 例如，若要在不同时间范围处理切片，请执行以下步骤：
 
-1. 在 `inputfolder` 中添加以下子文件夹中：2015-11-16-05、2015-11-16-06、201-11-16-07、2011-11-16-08 和 2015-11-16-09。 将输入文件放置在这些文件夹中。 将管道结束时间从 `2015-11-16T05:00:00Z` 更改为 `2015-11-16T10:00:00Z`。 在“图示”视图中，双击“InputDataset”，并确认输入切片是否就绪。 双击“OutputDataset”，查看输出切片的状态。 如果其处于“就绪”状态，请检查输出文件夹中的输出文件。
+1. 在 `inputfolder` 中添加以下子文件夹：2015-11-16-05、2015-11-16-06、201-11-16-07、2011-11-16-08 和 2015-11-16-09。 将输入文件放置在这些文件夹中。 将管道结束时间从 `2015-11-16T05:00:00Z` 更改为 `2015-11-16T10:00:00Z`。 在“图示”视图中，双击“InputDataset”，并确认输入切片是否就绪。 双击“OutputDataset”，查看输出切片的状态。 如果其处于“就绪”状态，请检查输出文件夹中的输出文件。
 
-1. 增加或减少**并发**设置，了解其对解决方案性能的影响，尤其是对 Batch 上进行的处理的影响。 有关**并发**设置的详细信息，请参阅“步骤 4：创建和运行带自定义活动的管道”。
+1. 增加或减少**并发**设置，了解其对解决方案性能的影响，尤其是对 Batch 上进行的处理的影响。 有关“并发”设置的详细信息，请参阅“步骤 4：创建和运行含自定义活动的管道”。
 
-1. 创建含较高/较低的**每个 VM 的最大任务数**的池。 若要使用创建的新池，请更新数据工厂解决方案中的 Batch 链接服务。 有关**每个 VM 的最大任务数**设置的详细信息，请参阅“步骤 4：创建和运行带自定义活动的管道”。
+1. 创建含较高/较低的**每个 VM 的最大任务数**的池。 若要使用创建的新池，请更新数据工厂解决方案中的 Batch 链接服务。 有关“每个 VM 的最大任务数”设置的详细信息，请参阅“步骤 4：创建和运行含自定义活动的管道”。
 
 1. 创建带有**自动缩放**功能的 Batch 池。 自动缩放 Batch 池中的计算节点是指动态调整应用程序使用的处理能力。 
 

@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 3995b544-e751-4e0f-ab8b-c9a3862da6ba
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 837d18a04a0cd22f29a5cbcb8b06b7e3f5fae255
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 303d794e558a5e85b4dd2bca3d9bbb4c2a1ff5dc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632800"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55151798"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>教程：Azure Active Directory 与 Infinite Campus 的集成
 
@@ -111,11 +111,11 @@ ms.locfileid: "52632800"
 
     ![配置单一登录](common/editconfigure.png)
 
-5. 在“基本 SAML 配置”部分中，如果你有**服务提供程序元数据文件**（步骤 **11.b**），请执行以下步骤：
+5. 在“基本 SAML 配置”部分，如果有**服务提供程序元数据文件**（跳到步骤 **11.c**），请执行以下步骤：
 
     a. 单击“上传元数据文件”。
 
-    ![图像](common/b9_saml.png)
+        ![image](common/b9_saml.png)
 
     b. 单击“文件夹徽标”来选择元数据文件并单击“上传”。
 
@@ -128,9 +128,9 @@ ms.locfileid: "52632800"
     d. 在“登录 URL”文本框中，使用以下模式键入 URL（域将因托管模型而异）：`https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
     > [!NOTE]
-    > 本教程稍后介绍的“Infinite Campus SSO 服务提供程序配置”页上会提供**服务提供程序元数据文件**。
+    > 本教程稍后介绍的“Infinite Campus SSO 服务提供程序配置”页上会提供**服务提供程序元数据文件**。 如果开始在 Infinite Campus 中使用新的 SAML 服务提供程序配置，请跳到**步骤 11**，完成服务提供程序元数据文件的导出。
 
-6. 如果没有**服务提供程序元数据文件**，请执行以下步骤：
+6. 如果没有**服务提供程序元数据文件**，请执行以下步骤（请注意，域因托管模型而异）：
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
@@ -169,10 +169,10 @@ ms.locfileid: "52632800"
     ![SSO](./media/infinitecampus-tutorial/tutorial_infinitecampus_sso.png)
 
     a. 选择“启用 SAML 单一登录”。
+    
+    b. 在“选择检索标识提供者(IDP)服务器数据的选项”部分，选择“元数据 URL”，在框中粘贴“应用联合元数据 URL”，然后单击“同步”。
 
-    b. 单击“服务提供程序元数据”链接，在计算机上保存服务提供程序元数据文件，并在“基本 SAML 配置”部分将其上传，以便在 Azure 门户中自动填充“标识符”和“回复 URL”值（请参考步骤 5）。
-
-    c. 在“选择检索标识提供者(IDP)服务器数据的选项”部分，选择“元数据 URL”并在文本框中粘贴“应用联合元数据 URL”，然后单击“同步”。
+    c. 单击“服务提供程序元数据”链接，在计算机上保存服务提供程序元数据文件，并在“基本 SAML 配置”部分将其上传，以便在 Azure 门户中自动填充“标识符”和“回复 URL”值（若要上传和自动填充值，请参阅步骤 4；若要手动输入值，请参阅步骤 5）。
 
     d. 单击“同步”后，将在“SSO 服务提供程序配置”页中自动填充值。
 

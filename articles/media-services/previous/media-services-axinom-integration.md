@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 81247863eb86752113989f6e48e79f5c8bc75505
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: d269818e82261c51b63379bb41f69efdc21de18a
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061148"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191252"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>使用 Axinom 将 Widevine 许可证传送到 Azure 媒体服务
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "37061148"
 ## <a name="overview"></a>概述
 Azure 媒体服务 (AMS) 已添加 Google Widevine 动态保护（有关详细信息，请参阅 [Mingfei 的博客](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)）。 此外，Azure 媒体播放器 (AMP) 还添加了 Widevine 支持（有关详细信息，请参阅 [AMP 文档](http://amp.azure.net/libs/amp/latest/docs/)）。 这是在配备了 MSE 和 EME 的现代浏览器上流式处理受 CENC 保护的 DASH 内容方面的一项重要成就，该保护是通过 multi-native-DRM（PlayReady 和 Widevine）来完成的。
 
-从媒体服务 .NET SDK 版本 3.5.2 开始，媒体服务允许配置 Widevine 许可证模板并获取 Widevine 许可证。 还可以通过以下 AMS 合作伙伴来交付 Widevine 许可证：[Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/)。
+从媒体服务 .NET SDK 版本 3.5.2 开始，媒体服务允许配置 Widevine 许可证模板并获取 Widevine 许可证。 还可以通过以下 AMS 合作伙伴来帮助交付 Widevine 许可证：[Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/)。
 
 本文介绍如何集成和测试由 Axinom 管理的 Widevine 许可证服务器。 具体而言，本文涵盖：  
 
@@ -44,11 +44,11 @@ Azure 媒体服务 (AMS) 已添加 Google Widevine 动态保护（有关详细�
 ![DASH 和 CENC](./media/media-services-axinom-integration/media-services-axinom1.png)
 
 ## <a name="content-protection"></a>内容保护
-若要了解如何配置动态保护和密钥传递策略，请查看 Mingfei 的博客：[如何通过 Azure 媒体服务配置 Widevine 打包](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)。
+有关动态保护和密钥交付策略的配置，请参阅 Mingfei 的博客：[How to configure Widevine packaging with Azure Media Services](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)（如何使用 Azure 媒体服务配置 Widevine 打包）。
 
 可以通过 multi-DRM 配置动态 CENC 保护，因为 DASH 流式处理具有下述两项特点：
 
-1. 适用于 MS Edge 和 IE11 的 PlayReady 保护，可能存在令牌授权限制。 令牌限制策略必须附带由 Azure Active Directory 之类的安全令牌服务 (STS) 颁发的令牌；
+1. 适用于 Microsoft Edge 和 IE11 的 PlayReady 保护，可能存在令牌授权限制。 令牌限制策略必须附带由 Azure Active Directory 之类的安全令牌服务 (STS) 颁发的令牌；
 2. 针对 Chrome 的 Widevine 保护，可能要求使用其他 STS 颁发的令牌进行令牌身份验证。 
 
 请参阅 [JWT 令牌生成](media-services-axinom-integration.md#jwt-token-generation)部分，了解为何不能将 Azure Active Directory 用作 Axinom 的 Widevine 许可证服务器的 STS。
@@ -200,5 +200,5 @@ Axinom Widevine 许可证服务器
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ### <a name="acknowledgments"></a>致谢
-我们诚挚地向以下人员表达谢意，是他们协助完成了本文档的写作工作：Kristjan Jõgi of Axinom、Mingfei Yan 和 Amit Rajput。
+我们诚挚地向以下人员表达谢意，是他们协助完成了本文档的写作工作：Kristjan Jõgi（来自 Axinom）、Mingfei Yan、和 Amit Rajput。
 

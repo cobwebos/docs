@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
-ms.openlocfilehash: 13fdf3257ed44212f45eeb3d2820a2022f54d777
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: d1baeb5ff32fcadaeca25244ce3167fe3fe4477a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585232"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249708"
 ---
 # <a name="introduction-to-azure-stack-storage"></a>Azure Stack 存储简介
 

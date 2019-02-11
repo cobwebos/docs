@@ -2,19 +2,18 @@
 title: Azure 备份的数据模型
 description: 本文介绍 Azure 备份报表的 Power BI 数据模型详细信息。
 services: backup
-author: adiganmsft
+author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/26/2017
 ms.author: adigan
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6b1531e23d0e5fd34eff59868055ccd855b423e4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: c6160570644da108ba713e8229b38f9587495c92
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444297"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299412"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Azure 备份报表的数据模型
 本文介绍用于创建 Azure 备份报表的 Power BI 数据模型。 使用此数据模型，可基于相关字段筛选现有报表，更重要是，还可使用模型中表格和字段创建自己的报表。 
@@ -33,7 +32,7 @@ Power BI 提供了自定义功能，可用于[通过数据模型创建报表](ht
 | #AlertsCreatedInPeriod |整数 |在选定时间段内创建的警报数 |
 | %ActiveAlertsCreatedInPeriod |百分比 |所选时间段内活动警报的百分比 |
 | %CriticalAlertsCreatedInPeriod |百分比 |所选时间段内严重警报的百分比 |
-| AlertOccurenceDate |日期 |警报的创建日期 |
+| AlertOccurrenceDate |日期 |警报的创建日期 |
 | AlertSeverity |文本 |警报的严重性，例如“严重” |
 | AlertStatus |文本 |警报的状态，例如“活动” |
 | AlertType |文本 |生成的警报的类型，例如“备份” |

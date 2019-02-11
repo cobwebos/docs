@@ -4,21 +4,21 @@ description: 管理 Azure 多重身份验证的使用方式包括更改联系信
 services: active-directory
 keywords: 多重身份验证客户端, 身份验证问题, 相关性 ID
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: richagi
 ms.assetid: d3372d9a-9ad1-4609-bdcf-2c4ca9679a3b
 ms.workload: identity
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: lizross
-ms.openlocfilehash: c3fd74731dbed2c2f36d97b3cb42b383f8e4ca0f
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 2129b1f70ea19bdb2144f0f2a9ca4a6dbac0acbd
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345083"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766804"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>管理双重验证设置
 本文解答了有关如何更新双重验证或多重身份验证设置的问题。 如果在登录帐户时遇到问题，请参阅[使用双重验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)获取疑难解答帮助。
@@ -74,7 +74,7 @@ ms.locfileid: "39345083"
 2. 下次登录任何设备时，会提示执行双重验证。
 
 ## <a name="how-do-i-clean-up-microsoft-authenticator-from-my-old-device-and-move-to-a-new-one"></a>如何从旧设备清除 Microsoft Authenticator 并将其迁移到新设备？
-从设备上卸载应用或者重置设备时，不会在后端删除激活信息。 有关详细信息，请参阅 [Microsoft Authenticator](microsoft-authenticator-app-how-to.md)。
+从设备上卸载应用或者重置设备时，不会在后端删除激活信息。 有关详细信息，请参阅 [Microsoft Authenticator](user-help-auth-app-download-install.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 在[使用双重验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)中获得疑难解答提示和帮助

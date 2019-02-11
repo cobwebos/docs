@@ -1,25 +1,24 @@
 ---
 title: Azure Cosmos DB 中的高可用性
 description: 本文介绍 Azure Cosmos DB 如何提供高可用性
-services: cosmos-db
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: dd018dca2de018733783605bfdb2802f91ebd76b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: eca20b775b97296510545c4d2f2f005fd91d6758
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621167"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471311"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 实现高可用性
 
 Azure Cosmos DB 以透明方式在与 Cosmos 帐户关联的所有 Azure 区域之间复制数据。 Cosmos DB 对数据采用多层冗余，如下图所示：
 
-![资源分区](./media/high-availability/figure1.png)
+![物理分区](./media/high-availability/cosmosdb-data-redundancy.png)
 
 - Cosmos 容器中的数据已水平分区。
 
@@ -49,7 +48,7 @@ Azure Cosmos DB 以透明方式在与 Cosmos 帐户关联的所有 Azure 区域�
 
 - 配置有多个写入区域的多区域帐户对于写入和读取都将具有高可用性。 区域性故障转移可在瞬间完成，不需要在应用程序中进行任何更改。
 
-- 配置为使用单个写入区域的多区域帐户：在发生写入区域服务中断期间，这些帐户将保持很高的读取可用性。 但是，对于写入，必须在 Cosmos 帐户中“启用自动故障转移”，才能将受影响区域故障转移到关联的另一区域。 故障转移将按指定的区域优先级进行。 最终，当受影响的区域重新联机时，将通过冲突源提供在服务中断期间保留在受影响写入区域中的未复制数据。 应用程序可以读取冲突源，根据应用程序特定的逻辑解决冲突，并相应地将更新后的数据写回 Cosmos 容器。 以前受影响的写入区域恢复后，它将自动用作读取区域。 可以调用手动故障转移，并将受影响的区域配置为写入区域。 可以使用 [Azure CLI 或 Azure 门户](how-to-manage-database-account.md#manual-failover)执行手动故障转移。  
+- 配置为使用单个写入区域的多区域帐户：在发生写入区域服务中断期间，这些帐户将保持很高的读取可用性。 但是，对于写入，必须在 Cosmos 帐户中“启用自动故障转移”，才能将受影响区域故障转移到关联的另一区域。 故障转移将按指定的区域优先级进行。 最终，当受影响的区域重新联机时，将通过冲突源提供在服务中断期间保留在受影响写入区域中的未复制数据。 应用程序可以读取冲突源，根据应用程序特定的逻辑解决冲突，并相应地将更新后的数据写回 Cosmos 容器。 以前受影响的写入区域恢复后，它将自动用作读取区域。 可以调用手动故障转移，并将受影响的区域配置为写入区域。 可以使用 [Azure CLI 或 Azure 门户](how-to-manage-database-account.md#manual-failover)执行手动故障转移。 在手动故障转移之前、期间或之后，**没有数据丢失或可用性丢失**。 应用程序仍然高度可用。 
 
 - 配置为使用单个写入区域的多区域帐户：在发生读取区域服务中断期间，这些帐户将保持很高的读写可用性。 受影响的区域将自动从写入区域断开连接，并标记为脱机。 Cosmos DB SDK 会将读取调用重定向到首选区域列表中的下一个可用区域。 如果首选区域列表中没有区域可用，则会自动让调用返回到当前的写入区域。 处理读取区域服务中断不需要对应用程序代码进行更改。 最终，当受影响区域重新联机时，以前受影响的读取区域将自动与当前写入区域同步，并再次可用于为读取请求提供服务。 后续的读取会重定向到恢复的区域，不需更改应用程序代码。 在故障转移和重新加入以前发生故障的区域期间，Cosmos DB 会持续遵循读取一致性保证。
 

@@ -1,22 +1,22 @@
 ---
-title: 对 Azure Blob 存储中的数据采样 | Microsoft Docs
-description: 对 Azure Blob 存储中的数据采样
+title: 对 Azure blob 存储中的数据采样 - Team Data Science Process
+description: 在 Azure blob 存储中数据进行采样的方法：通过以编程方式下载数据，并使用以 Python 编写的过程对其进行采样。
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 5fe7c11bd21e9c2f432f443a6a8dd5880646a1a2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 1c455106e5faa4aa20ec56f37788e0b8c324fee1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444182"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457762"
 ---
 # <a name="heading"></a>对 Azure blob 存储中的数据采样
 
@@ -25,7 +25,7 @@ ms.locfileid: "52444182"
 **为什么对数据进行采样？**
 如果计划要分析的数据集很大，通常最好是对数据进行向下采样，以将数据减至较小但具备代表性且更易于管理的规模。 这有利于数据了解、探索和功能设计。 它在 Cortana Analytics 进程中的作用是能够快速建立数据处理函数和机器学习模型的快速原型。
 
-此采样任务是[团队数据科学流程 (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 中的一个步骤。
+此采样任务是[团队数据科学流程 (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的一个步骤。
 
 ## <a name="download-and-down-sample-data"></a>下载和向下采样数据
 1. 从下列 Python 代码示例中，通过 blob 服务，从 Azure blob 存储下载数据： 

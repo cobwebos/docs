@@ -4,14 +4,14 @@ description: 了解如何安装移动服务代理以使用 Azure Site Recovery �
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 14be544c53bf3393466cfa33b2ad815f07d0005d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 30b177578464653499cdcde8cacf65defa5548ef
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007410"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846906"
 ---
 # <a name="install-the-mobility-service-for-disaster-recovery-of-vmware-vms-and-physical-servers"></a>安装移动服务以对 VMware VM 和物理服务器进行灾难恢复
 
@@ -24,7 +24,7 @@ ms.locfileid: "51007410"
 1. 确保计算机与进程服务器之间已建立网络连接。 如果尚未设置单独的进程服务器，则默认情况下它在配置服务器上运行。
 1. 创建可供进程服务器用来访问计算机的帐户。 该帐户应具有管理员权限（本地或域）。 只能将此帐户用于推送安装和代理更新。
 2. 如果未使用域帐户，请在本地计算机上禁用远程用户访问控制，如下所述：
-    - 在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System 注册表项下，添加一个新的 DWORD：**LocalAccountTokenFilterPolicy**。 将值设置为 **1**。
+    - 在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System 注册表项下，添加一个新的 DWORD：LocalAccountTokenFilterPolicy。 将值设置为 **1**。
     -  为此，请在命令提示符下运行以下命令：  
    `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d
 3. 在要保护的计算机上的 Windows 防火墙中，选择“允许应用或功能通过防火墙”。 启用“文件和打印机共享”和“Windows Management Instrumentation (WMI)”。 对于属于某个域的计算机，可以使用组策略对象 (GPO) 配置防火墙设置。

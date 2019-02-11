@@ -8,16 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/28/2016
 ms.author: trinadhk
-ms.openlocfilehash: 4d45db6ba6354f85c3ed67561751720b6f6f4b77
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0e599c95f40e62a4bb01a7ab698fe0ce1f738e49
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38465714"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635759"
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>管理 Azure 虚拟机备份
 
-本文指导管理 VM 备份，并说明门户仪表板中提供的备份警报信息。 本文中的指导的适用范围是将 VM 用于恢复服务保管库。 本文不介绍如何创建虚拟机，也不说明如何保护虚拟机。 如需在 Azure 中使用恢复服务保管库保护 Azure 资源管理器部署型 VM 的入门指导，请参阅[初步了解：将 VM 备份到恢复服务保管库](backup-azure-vms-first-look-arm.md)。
+本文指导管理 VM 备份，并说明门户仪表板中提供的备份警报信息。 本文中的指导的适用范围是将 VM 用于恢复服务保管库。 本文不介绍如何创建虚拟机，也不说明如何保护虚拟机。 如需在 Azure 中使用恢复服务保管库保护 Azure 资源管理器部署的 VM 的入门指导，请参阅[初步了解：将 VM 备份到恢复服务保管库](backup-azure-vms-first-look-arm.md)。
 
 ## <a name="manage-vaults-and-protected-virtual-machines"></a>管理保管库和受保护的虚拟机
 在 Azure 门户中，恢复服务保管库仪表板可用于访问有关保管库的信息，包括：
@@ -77,7 +77,7 @@ ms.locfileid: "38465714"
 
     ![带“设置”边栏选项卡的备份项仪表板](./media/backup-azure-manage-vms/item-dashboard-settings.png)
 
-    在保管库项仪表板中，可以完成许多关键性的管理任务，例如：
+    在保管库项仪表板中，可以完成许多关键任务，例如：
 
    * 更改策略或创建新的备份策略
    * 查看还原点及其一致性状态
@@ -85,7 +85,7 @@ ms.locfileid: "38465714"
    * 停止保护虚拟机
    * 恢复对虚拟机的保护
    * 删除备份数据（或恢复点）
-   * [还原备份磁盘](backup-azure-arm-restore-vms.md#restore-backed-up-disks)
+   * [还原备份磁盘](backup-azure-arm-restore-vms.md#create-new-restore-disks)
 
 以下过程的起点是保管库项仪表板。
 
@@ -214,4 +214,4 @@ ms.locfileid: "38465714"
     可以通过通知消息了解到备份数据已删除。
 
 ## <a name="next-steps"></a>后续步骤
-有关如何从恢复点重新创建虚拟机的信息，请查看 [Restore Azure VMs](backup-azure-arm-restore-vms.md)（还原 Azure VM）。 如果需要有关如何保护虚拟机的信息，请参阅 [First look: Back up VMs to a Recovery Services vault](backup-azure-vms-first-look-arm.md)（初步了解：将 VM 备份到恢复服务保管库）。 有关监视事件的信息，请参阅[监视 Azure 虚拟机备份的警报](backup-azure-monitor-vms.md)。
+有关如何从恢复点重新创建虚拟机的信息，请查看 [Restore Azure VMs](backup-azure-arm-restore-vms.md)（还原 Azure VM）。 如果需要有关如何保护虚拟机的信息，请参阅[初步了解：将 VM 备份到恢复服务保管库](backup-azure-vms-first-look-arm.md)。 有关监视事件的信息，请参阅[监视 Azure 虚拟机备份的警报](backup-azure-monitor-vms.md)。

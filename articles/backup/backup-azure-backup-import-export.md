@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: b55c5bc6096186e338d6960190169d5f4acc777d
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 94931546f3b8ddb18a5381de3baa31d66376badb
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955107"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810714"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 备份中的脱机备份工作流
 Azure 备份有多个可提升效率的内置功能，能在数据初始完整备份到 Azure 期间节省网络和存储成本。 初始完整备份通常传输大量数据，且需要较多网络带宽，相比之下，后续备份只传输增量部分。 通过脱机种子设定，Azure 备份可以使用磁盘将脱机备份数据上传到 Azure。
@@ -63,7 +63,7 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
     ![注册资源提供程序](./media/backup-azure-backup-import-export/registerimportexport.png)
 * 创建了一个暂存位置，它可以是计算机上的网络共享或任何其他内部或外部驱动器，并且有足够的磁盘空间来保存初始副本。 例如，如果尝试备份 500 GB 文件服务器，请确保暂存区域至少有 500 GB 空间。 （由于压缩，实际使用量更少。）
 * 将磁盘寄送到 Azure 时，请仅使用 2.5 英寸 SSD，或者 2.5 英寸或 3.5 英寸 SATA II/III 内部硬盘驱动器。 可以使用容量最高为 10 TB 的硬盘驱动器。 查看 [Azure 导入/导出服务文档](../storage/common/storage-import-export-requirements.md#supported-hardware)，了解服务支持的最新驱动器集。
-* SATA 驱动器必须连接到一台计算机（称为“副本计算机”），在这台计算机中完成将备份数据从暂存位置复制到 SATA 驱动器。 请确保已在副本计算机上启用 BitLocker。
+* SATA 驱动器必须连接到一台计算机（称为“副本计算机”），在这台计算机中完成将备份数据从暂存位置复制到 SATA 驱动器。 请确保已在*副本计算机*上启用 BitLocker。
 
 ## <a name="workflow"></a>工作流
 本部分介绍如何完成脱机备份工作流，以便将数据传送到 Azure 数据中心，并上传到 Azure 存储。 如有关于导入服务或流程的任何方面的问题，请参阅[导入服务概述文档](../storage/common/storage-import-export-service.md)。
@@ -75,9 +75,9 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 
   输入的说明如下：
 
-    * **暂存位置** — 初始备份副本写入到的临时存储位置。 暂存位置可以是在网络共享或本地计算机。 如果副本计算机与源计算机不同，建议指定暂存位置的完整网络路径。
+    * **暂存位置**：初始备份副本写入到的临时存储位置。 暂存位置可以是在网络共享或本地计算机。 如果副本计算机与源计算机不同，建议指定暂存位置的完整网络路径。
     * **Azure 资源管理器存储帐户**：任一 Azure 订阅中的资源管理器类型存储帐户的名称。
-    * **Azure 存储容器**：在将备份数据复制到恢复服务保管库之前，Azure 存储帐户中导入备份数据的目标存储 Blob 的名称。
+    * **Azure 存储容器**：Azure 存储帐户中目标存储 Blob 的名称，在备份数据复制到恢复服务保管库之前将其导入该账户。
     * **Azure 订阅 ID**：在其中创建了 Azure 存储帐户的 Azure 订阅的 ID。
     * **Azure 导入作业名称**：Azure 导入服务和 Azure 备份在跟踪磁盘上发送到 Azure 的数据的传输活动时使用的唯一名称。 
   
@@ -119,7 +119,7 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 
     ```.\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>```
 
-    | 参数 | Description |
+    | 参数 | 说明 |
     | --- | --- |
     | s:&lt;暂存位置路径&gt; |必需的输入，用于提供在**启动脱机备份**工作流中所输入的暂存位置路径。 |
     | p:&lt;发布设置文件的路径&gt; |可选的输入，用于提供在**启动脱机备份**工作流中所输入的 **Azure 发布设置**文件路径。 |

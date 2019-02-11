@@ -7,20 +7,20 @@ author: swhite-msft
 manager: cgronlun
 ms.assetid: 26CA595B-0866-43E8-93A2-F2B5E09D1F3B
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: aahi
-ms.openlocfilehash: d161d377b3ad8792e1be9c9a86a7aa53ff185468
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: e46c3c5722be6448999c4ed7f98b8babe609cd2c
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161310"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734362"
 ---
 # <a name="how-to-page-through-results-from-the-bing-web-search-api"></a>如何分页列出必应 Web 搜索 API 中的结果
 
-如果调用 Web 搜索 API，必应会返回结果列表。 此列表是与查询相关的所有结果的一部分。 若要获取可访问结果的总估计数，请访问答案对象的 [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#totalestimatedmatches) 字段。  
+如果调用 Web 搜索 API，必应会返回结果列表。 此列表是与查询相关的所有结果的一部分。 若要获取可访问结果的总估计数，请访问答案对象的 [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) 字段。  
 
 下面的示例展示了 Web 答案对象包含的 `totalEstimatedMatches` 字段。  
 

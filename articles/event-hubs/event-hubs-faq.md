@@ -1,20 +1,21 @@
 ---
-title: Azure 事件中心常见问题 | Microsoft Docs
-description: Azure 事件中心常见问题 (FAQ)
+title: 常见问题 - Azure 事件中心 | Microsoft Docs
+description: 本文提供了有关 Azure 事件中心的常见问题 (FAQ) 和解答的列表。
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
-ms.date: 10/07/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 9bd1649c0ec89abf660865971314becb6580852f
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: bcbb249c6cb3c886b94f8ad68dd668cb8858ac77
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300669"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354568"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 
@@ -64,7 +65,7 @@ bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093 request.timeout.ms=60000 security.p
 
 bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=";
 
-注意：如果 sasl.jaas.config 不是框架中受支持的配置，请找到用于设置 SASL 用户名和密码的配置，并改用这些配置。 将用户名设置为 $ConnectionString，将密码设置为事件中心连接字符串。
+注意：如果 sasl.jaas.config 不是框架中受支持的配置，请查找用于设置 SASL 用户名和密码的配置，并改为使用这些配置。 将用户名设置为 $ConnectionString，将密码设置为事件中心连接字符串。
 
 ### <a name="what-is-the-messageevent-size-for-kafka-enabled-event-hubs"></a>支持 Kafka 的事件中心的消息/事件大小是多少？
 支持 Kafka 的事件中心允许的最大消息大小为 1MB。
@@ -180,6 +181,9 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 如需所有事件中心配额的列表，请参阅[配额](event-hubs-quotas.md)。
 
 ## <a name="troubleshooting"></a>故障排除
+
+### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>为什么在从其他订阅中删除命名空间后无法创建该命名空间？ 
+从订阅中删除命名空间时，请等待 4 个小时，然后才能在另一个订阅中使用相同的名称重新创建它。 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>事件中心生成的异常有哪些，建议采取什么操作？
 

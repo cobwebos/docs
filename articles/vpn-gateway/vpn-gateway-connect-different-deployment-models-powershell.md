@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 5f133af5ec077821607bf3e942c8a931808d34fc
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: d515363e1413634d8222e043fff0b91aa464002c
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49953581"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509315"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>使用 PowerShell 从不同的部署模型连接虚拟网络
 
@@ -34,7 +34,7 @@ ms.locfileid: "49953581"
 
 ### <a name="pre"></a>先决条件
 
-* 已创建了两个 VNet。 如果需要创建资源管理器虚拟网络，请参阅[创建虚拟网络](../virtual-network/quick-create-powershell.md#create-a-virtual-network)。 若要创建经典虚拟网络，请参阅[创建经典 VNet](https://docs.microsoft.com/azure/virtual-network/create-virtual-network-classic)。
+* 已创建了两个 VNet。 如果需要创建资源管理器虚拟网络，请参阅[创建资源组和虚拟网络](../virtual-network/quick-create-powershell.md#create-a-resource-group-and-a-virtual-network)。 若要创建经典虚拟网络，请参阅[创建经典 VNet](https://docs.microsoft.com/azure/virtual-network/create-virtual-network-classic)。
 * 两个 VNet 的地址范围不相互重叠，也不与网关可能连接到的其他连接的任何范围重叠。
 * 已安装最新 PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 请确保安装服务管理 (SM) 和 Resource Manager (RM) cmdlet。 
 
@@ -263,7 +263,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 ## <a name="connect"></a>第 4 节 - 在网关之间创建连接
 在网关之间创建连接需要用到 PowerShell。 可能需要添加 Azure 帐户才能使用经典版 PowerShell cmdlet。 为此，请使用 Add-AzureAccount。
 
-1. 在 PowerShell 控制台中设置共享密钥。 运行 cmdlet 之前，请参阅已下载的网络配置文件，了解 Azure 所需要的确切名称。 指定包含空格的 VNet 的名称时，请使用单引号将值引起来。<br><br>在以下示例中，**-VNetName** 是经典 VNet 的名称，**-LocalNetworkSiteName** 是为本地网络站点指定的名称。 **-SharedKey** 是生成并指定的值。 在示例中，我们使用的是“abc123”，但可以生成和使用更复杂的。 重要的是，此处指定的值必须与下一步中创建连接时指定的值相同。 返回结果应显示“状态：成功”。
+1. 在 PowerShell 控制台中设置共享密钥。 运行 cmdlet 之前，请参阅已下载的网络配置文件，了解 Azure 所需要的确切名称。 指定包含空格的 VNet 的名称时，请使用单引号将值引起来。<br><br>在以下示例中，**-VNetName** 是经典 VNet 的名称，**-LocalNetworkSiteName** 是为本地网络站点指定的名称。 **-SharedKey** 是生成并指定的值。 在示例中，我们使用的是“abc123”，但可以生成和使用更复杂的。 重要的是，此处指定的值必须与下一步中创建连接时指定的值相同。 返回结果应显示“状态: 成功”。
 
   ```azurepowershell
   Set-AzureVNetGatewayKey -VNetName ClassicVNet `

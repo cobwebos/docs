@@ -1,21 +1,22 @@
 ---
-title: 语音服务区域
+title: 区域 - 语音服务
 titlesuffix: Azure Cognitive Services
 description: 语音服务区域的参考。
 services: cognitive-services
 author: mahilleb-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 01/14/2019
 ms.author: mahilleb
-ms.openlocfilehash: 8d36036332e939075ffac8763bec9c23d8e4a3f7
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.custom: seodec18
+ms.openlocfilehash: 32a8b4cbfd0d8b43d294155432a0feaf29036c4c
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712885"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218132"
 ---
 # <a name="speech-service-supported-regions"></a>语音服务支持的区域
 
@@ -45,11 +46,24 @@ ms.locfileid: "51712885"
 
 ### <a name="intent-recognition"></a>意向识别
 
-语音 SDK 的“意向识别”与 LIUS 共享区域支持。 有关可用区域的完整列表，请参阅[发布区域和终结点 - LUIS](https://docs.microsoft.comazure/cognitive-services/luis/luis-reference-regions)
+通过语音 SDK 实现**意向识别**的可用区域如下：
 
-若要了解哪些区域可通过语音 SDK 进行**意向识别**，请参阅[语言理解服务区域页](/azure/cognitive-services/luis/luis-reference-regions)。
+ 全球区域 | 区域 | 语音 SDK 参数
+ ------|-------|--------
+ 亚洲 | 东亚 | `eastasia`
+ 亚洲 | 东南亚 | `southeastasia`
+ 澳大利亚 | 澳大利亚东部 | `australiaeast`
+ 欧洲 | 北欧 | `northeurope`
+ 欧洲 | 西欧 | `westeurope`
+ 北美 | 美国东部 | `eastus`
+ 北美 | 美国东部 2 | `eastus2`
+ 北美 | 美国中南部 | `southcentralus`
+ 北美 | 美国中西部 | `westcentralus`
+ 北美 | 美国西部 | `westus`
+ 北美 | 美国西部 2 | `westus2`
+ 南美洲 | 巴西南部 | `brazilsouth`
 
-对于列出的每个发布区域，请使用提供的“API 区域名称”。 例如，对美国西部使用 `westus`。
+这是[语言理解服务 (LUIS)](/azure/cognitive-services/luis/luis-reference-regions) 支持的发布区域的子集。
 
 ## <a name="rest-apis"></a>REST API
 
@@ -57,12 +71,12 @@ ms.locfileid: "51712885"
 
 ### <a name="speech-to-text"></a>语音转文本
 
-有关语音转文本的参考文档，请参阅 [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#speech-to-text)。
+有关语音转文本的参考文档，请参阅 [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
 ### <a name="text-to-speech"></a>文本转语音
 
-有关文本转语音的参考文档，请参阅 [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#speech-to-text)。
+有关文本转语音的参考文档，请参阅 [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]

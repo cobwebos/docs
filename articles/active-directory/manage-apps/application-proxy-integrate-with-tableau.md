@@ -3,21 +3,21 @@ title: Azure Active Directory 应用程序代理和 Tableau | Microsoft 文档
 description: 了解如何使用 Azure Active Directory (Azure AD) 应用程序代理为 Tableau 部署提供远程访问。
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: a68b0465acdb416cd953e22d7f024eb399c94493
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: b775d9377b95c3c63e3c38cd477ce47209a6f419
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246368"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149963"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory 应用程序代理和 Tableau 
 
@@ -29,7 +29,7 @@ Azure Active Directory 应用程序代理和 Tableau 已展开合作，以确保
 
 - 已配置 [Tableau](https://onlinehelp.tableau.com/current/server/en-us/proxy.htm#azure)。 
 
-- 已安装[应用程序代理连接器](application-proxy-enable.md)。 
+- 已安装[应用程序代理连接器](application-proxy-add-on-premises-application.md)。 
 
  
 ## <a name="enabling-application-proxy-for-tableau"></a>为 Tableau 启用应用程序代理 
@@ -43,7 +43,7 @@ Azure Active Directory 应用程序代理和 Tableau 已展开合作，以确保
 
 对于：
 
-- 步骤 1-8 的详细说明，请参阅[使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)。 
+- 步骤 1-8 的详细说明，请参阅[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)。 
 - 如何查找应用程序代理字段的 Tableau 值的信息，请参阅 Tableau 文档。  
 
 **要发布应用程序**： 

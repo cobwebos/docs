@@ -1,21 +1,19 @@
 ---
 title: 快速入门：将 Cassandra API 与 .NET 配合使用 - Azure Cosmos DB
 description: 本快速入门介绍如何配合 Azure 门户 和 .NET 使用 Azure Cosmos DB Cassandra API 创建配置文件应用程序
-services: cosmos-db
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
+ms.subservice: cosmosdb-cassandra
 author: SnehaGunda
 ms.author: sngun
-ms.custom: quick start connect, mvc
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 3708027b766ff9070831dd3677e821565e0dd4fa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f4e39dbbdce2d272121a07b845f1b7c0c58385cd
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994949"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033105"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-and-azure-cosmos-db"></a>快速入门：使用 .NET 和 Azure Cosmos DB 生成 Cassandra 应用
 
@@ -96,7 +94,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 * 使用有连接到配置文件密钥空间的新会话的 IMapper 对象插入用户实体。
 
     ```csharp
-    mapper.Insert<User>(new User(1, "LyubovK", "Dubai"));
+    mapper.Insert<User>(new User(1, "LyubovK", "Dubai"));
     ```
     
 * 通过查询获取所有用户的信息。
@@ -118,7 +116,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 连接字符串信息使应用能与托管数据库进行通信。
 
-1. 在 [Azure 门户](http://portal.azure.com/)中，选择“连接字符串”。
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择“连接字符串”。
 
     使用 ![“复制”按钮](./media/create-cassandra-dotnet/copy.png) 屏幕右侧的按钮以复制“用户名”值。
 

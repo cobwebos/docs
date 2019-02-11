@@ -1,5 +1,6 @@
 ---
-title: 使用 IPv6 部署面向 Internet 的负载均衡器 - Azure 模板 | Microsoft 文档
+title: 使用 IPv6 部署面向 Internet 的负载均衡器 - Azure 模板
+titlesuffix: Azure Load Balancer
 description: 如何为 Azure 负载均衡器和负载均衡的 VM 部署 IPv6 支持。
 services: load-balancer
 documentationcenter: na
@@ -8,16 +9,17 @@ keywords: ipv6, azure 负载均衡器, 双堆栈, 公共 ip, 本机 ipv6, 移动
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 14a28fb341692c309ff4f965628b38a767c56633
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 4a8c7309a07238ef3410e42c3d631ad525f023cc
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740733"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039786"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>使用模板部署分配了 IPv6 的面向 Internet 的负载均衡器解决方案
 
@@ -131,3 +133,7 @@ Azure 资源管理器模板包含可根据需要自定义的多个变量和参�
 | lbName |指定负载均衡器的名称。 此名称会显示在门户中，或者通过 CLI 或 PowerShell 命令引用它时会用到它。 |
 
 模板中的其余变量是 Azure 创建资源时分配的派生值。 请不要更改这些变量。
+
+## <a name="next-steps"></a>后续步骤
+
+有关模板中负载均衡器的 JSON 语法和属性，请参阅 [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)。

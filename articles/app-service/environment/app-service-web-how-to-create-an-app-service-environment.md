@@ -1,5 +1,5 @@
 ---
-title: 如何创建应用服务环境 v1
+title: 如何创建应用服务环境 v1 - Azure
 description: 应用服务环境 v1 的创建流描述
 services: app-service
 documentationcenter: ''
@@ -12,14 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/11/2017
+ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: 1df3b790d0c6c0f597a8559551ff5e42c9f110e4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.custom: seodec18
+ms.openlocfilehash: 9bc796c4d0d449f72dc3234bc2825554eafaf77f
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230261"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339886"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>如何创建应用服务环境 v1 
 
@@ -55,21 +56,21 @@ ms.locfileid: "50230261"
 4. 选择虚拟网络和位置。 可以选择创建新的 VNet，也可以选择预先存在的 VNet。 如果选择新的 VNet，则可以指定名称和位置。 新 VNet 的地址范围为 192.168.250.0/23，并拥有定义为 192.168.250.0/24 的名称为 **default** 的子网。 还可以直接选择预先存在的经典或 Resource Manager VNet。 选择的 VIP 类型确定是否可以从 Internet（外部）直接访问 ASE，或 ASE 是否使用内部负载均衡器 (ILB)。 若要了解更多详细信息，请参阅[在应用服务环境中使用内部负载均衡器][ILBASE]。 如果选择外部 VIP 类型，则可以选择系统创建用于 IPSSL 的外部 IP 地址数量。 如果选择内部，则需要指定 ASE 要使用的子域。 可以将 ASE 部署到使用公用地址范围*或* RFC1918 地址空间（即，专用地址）的虚拟网络。 若要使用具有公用地址范围的虚拟网络，需要提前创建 VNet。 如果选择预先存在的 VNet，需要在 ASE 创建期间创建新的子网。 **不能在门户中使用预先创建的子网。如果使用 Resource Manager 模板创建 ASE，则可以创建具有预先存在的子网的 ASE。** 若要从模板创建 ASE，请使用此处的信息：[从模板创建应用服务环境][ILBAseTemplate]和[从模板创建 ILB 应用服务环境][ASEfromTemplate]。
 
 ### <a name="details"></a>详细信息
-创建的 ASE 具有 2 个前端和 2 个辅助角色。 前端充当 HTTP/HTTPS 终结点，并将流量发送到作为托管应用程序的角色的工作程序。 可以在创建 ASE 后调整数量，甚至可以设置这些资源池的自动缩放规则。 有关手动缩放、管理和监视应用服务环境的更多详细信息，请参阅此文：[如何配置应用服务环境][ASEConfig] 
+创建的 ASE 具有 2 个前端和 2 个辅助角色。 前端充当 HTTP/HTTPS 终结点，并将流量发送到作为托管应用程序的角色的工作程序。 可以在创建 ASE 后调整数量，甚至可以设置这些资源池的自动缩放规则。 有关如何手动缩放、管理和监视应用服务环境的更多详细信息，请访问：[如何配置应用服务环境][ASEConfig] 
 
 ASE 使用的子网中只能存在该 ASE。 该子网不能用于该 ASE 以外的任何对象
 
 ### <a name="after-app-service-environment-v1-creation"></a>创建应用服务环境 v1 后
 在创建 ASE 后可以调整：
 
-* 前端的数量（最小：2 个）
-* 辅助角色的数量（最小：2 个）
+* 前端的数量（最小值：2）
+* 辅助角色的数量（最小值：2）
 * 可用于 IP SSL 的 IP 地址数量
 * 前端或辅助角色使用的计算资源大小（前端最小大小为 P2）
 
-有关手动缩放、管理和监视应用服务环境的更多详细信息，请参阅此文：[如何配置应用服务环境][ASEConfig] 
+有关如何手动缩放、管理和监视应用服务环境的更多详细信息，请参阅此文：[如何配置应用服务环境][ASEConfig] 
 
-有关自动缩放的信息，请参阅此指南：[如何配置应用服务环境的自动缩放][ASEAutoscale]
+有关自动缩放的信息，请参阅此处的指南：[如何为应用服务环境配置自动缩放][ASEAutoscale]
 
 存在不可用于自定义（如数据库和存储器）的其他依赖项。 这些是由 Azure 处理且随系统出现的。 系统存储对于整个应用服务环境最多可支持 500 GB，Azure 会根据系统规模的需要来调整数据库。
 
@@ -85,8 +86,8 @@ ASE 使用的子网中只能存在该 ASE。 该子网不能用于该 ASE 以外
 <!--Links-->
 [WhatisASE]: app-service-app-service-environment-intro.md
 [ASEConfig]: app-service-web-configure-an-app-service-environment.md
-[AppServicePricing]: http://azure.microsoft.com/pricing/details/app-service/ 
+[AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/ 
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [ILBASE]: app-service-environment-with-internal-load-balancer.md
-[ILBAseTemplate]: http://azure.microsoft.com/documentation/templates/201-web-app-ase-create/
+[ILBAseTemplate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/
 [ASEfromTemplate]: app-service-app-service-environment-create-ilb-ase-resourcemanager.md

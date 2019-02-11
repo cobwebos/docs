@@ -3,23 +3,23 @@ title: 如何在虚拟机上使用 Azure 资源的托管标识获取访问令牌
 description: 在虚拟机上使用 Azure 资源的托管标识获取 OAuth 访问令牌的分步说明和示例。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: daveba
-ms.openlocfilehash: 86830d8a13e4d83ff48bcf7e2f2dfac41d764718
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.author: priyamo
+ms.openlocfilehash: b7ccdcf1cb1e75ab9a8113adc05b02196a0a2023
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106354"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166571"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>如何在 Azure VM 上使用 Azure 资源的托管标识获取访问令牌 
 
@@ -33,7 +33,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-如果打算使用本文中的 Azure PowerShell 示例，请务必安装最新版本的 [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM)。
+如果打算使用本文中的 Azure PowerShell 示例，请务必安装最新版本的 [Azure PowerShell](/powershell/azure/install-az-ps)。
 
 
 > [!IMPORTANT]
@@ -51,6 +51,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | [使用 HTTP 获取令牌](#get-a-token-using-http) | Azure 资源的托管标识令牌终结点的协议详细信息 |
 | [使用用于 .NET 的 Microsoft.Azure.Services.AppAuthentication 库获取令牌](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | 从 .NET 客户端使用 Microsoft.Azure.Services.AppAuthentication 库的示例
 | [使用 C# 获取令牌](#get-a-token-using-c) | 使用来自 C# 客户端的 Azure 资源的托管标识 REST 终结点示例 |
+| [使用 Java 获取令牌](#get-a-token-using-java) | 使用来自 Java 客户端的 Azure 资源的托管标识 REST 终结点的的示例 |
 | [使用 Go 获取令牌](#get-a-token-using-go) | 使用来自 Go 客户端的 Azure 资源的托管标识 REST 终结点的的示例 |
 | [使用 Azure PowerShell 获取令牌](#get-a-token-using-azure-powershell) | 使用来自 PowerShell 客户端的 Azure 资源的托管标识 REST 终结点示例 |
 | [使用 CURL 获取令牌](#get-a-token-using-curl) | 使用来自 Bash/CURL 客户端的 Azure 资源的托管标识 REST 终结点示例 |
@@ -68,7 +69,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
 ```
 
-| 元素 | Description |
+| 元素 | 说明 |
 | ------- | ----------- |
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | 实例元数据服务的 Azure 资源的托管标识终结点。 |
@@ -85,7 +86,7 @@ GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.
 Metadata: true
 ```
 
-| 元素 | Description |
+| 元素 | 说明 |
 | ------- | ----------- |
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
 | `http://localhost:50342/oauth2/token` | Azure 资源的托管标识终结点，其中 50342 是可配置的默认端口。 |
@@ -111,7 +112,7 @@ Content-Type: application/json
 }
 ```
 
-| 元素 | Description |
+| 元素 | 说明 |
 | ------- | ----------- |
 | `access_token` | 请求的访问令牌。 调用受保护 REST API 时，该令牌将作为“持有者”令牌嵌入在 `Authorization` 请求标头字段中，使 API 能够对调用方进行身份验证。 | 
 | `refresh_token` | 未由 Azure 资源的托管标识使用。 |
@@ -123,7 +124,7 @@ Content-Type: application/json
 
 ## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>使用用于 .NET 的 Microsoft.Azure.Services.AppAuthentication 库获取令牌
 
-对于 .NET 应用程序和函数，使用 Azure 资源的托管标识的最简单的方法是通过 Microsoft.Azure.Services.AppAuthentication 包。 此库还允许通过 Visual Studio、[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 或 Active Directory 集成身份验证使用用户帐户，在开发计算机上对代码进行本地测试。 有关此库的本地开发选项的详细信息，请参阅 [Microsoft.Azure.Services.AppAuthentication 参考]。 本部分演示如何开始在代码中使用此库。
+对于 .NET 应用程序和函数，使用 Azure 资源的托管标识的最简单的方法是通过 Microsoft.Azure.Services.AppAuthentication 包。 此库还允许通过 Visual Studio、[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 或 Active Directory 集成身份验证使用用户帐户，在开发计算机上对代码进行本地测试。 有关此库的本地开发选项的详细信息，请参阅 [Microsoft.Azure.Services.AppAuthentication 参考](/azure/key-vault/service-to-service-authentication)。 本部分演示如何开始在代码中使用此库。
 
 1. 向应用程序添加对 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 和 [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet 包的引用。
 
@@ -172,6 +173,50 @@ catch (Exception e)
     string errorText = String.Format("{0} \n\n{1}", e.Message, e.InnerException != null ? e.InnerException.Message : "Acquire token failed");
 }
 
+```
+
+## <a name="get-a-token-using-java"></a>使用 Java 获取令牌
+
+通过 Java 使用此 [JSON 库](https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core/2.9.4)检索令牌。
+
+```Java
+import java.io.*;
+import java.net.*;
+import com.fasterxml.jackson.core.*;
+ 
+class GetMSIToken {
+    public static void main(String[] args) throws Exception {
+ 
+        URL msiEndpoint = new URL("http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/");
+        HttpURLConnection con = (HttpURLConnection) msiEndpoint.openConnection();
+        con.setRequestMethod("GET");
+        con.setRequestProperty("Metadata", "true");
+ 
+        if (con.getResponseCode()!=200) {
+            throw new Exception("Error calling managed identity token endpoint.");
+        }
+ 
+        InputStream responseStream = con.getInputStream();
+ 
+        JsonFactory factory = new JsonFactory();
+        JsonParser parser = factory.createParser(responseStream);
+ 
+        while(!parser.isClosed()){
+            JsonToken jsonToken = parser.nextToken();
+ 
+            if(JsonToken.FIELD_NAME.equals(jsonToken)){
+                String fieldName = parser.getCurrentName();
+                jsonToken = parser.nextToken();
+ 
+                if("access_token".equals(fieldName)){
+                    String accesstoken = parser.getValueAsString();
+                    System.out.println("Access Token: " + accesstoken.substring(0,5)+ "..." + accesstoken.substring(accesstoken.length()-5));
+                    return;
+                }
+            }
+        }
+    }
+}
 ```
 
 ## <a name="get-a-token-using-go"></a>使用 Go 获取令牌
@@ -266,14 +311,14 @@ Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?ap
 有关如何分析响应中的访问令牌的示例：
 ```azurepowershell
 # Get an access token for managed identities for Azure resources
-$response = Invoke-WebRequest -Uri http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F `
+$response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' `
                               -Headers @{Metadata="true"}
 $content =$response.Content | ConvertFrom-Json
 $access_token = $content.access_token
 echo "The managed identities for Azure resources access token is $access_token"
 
 # Use the access token to get resource information for the VM
-$vmInfoRest = (Invoke-WebRequest -Uri https://management.azure.com/subscriptions/<SUBSCRIPTION-ID>/resourceGroups/<RESOURCE-GROUP>/providers/Microsoft.Compute/virtualMachines/<VM-NAME>?api-version=2017-12-01 -Method GET -ContentType "application/json" -Headers @{ Authorization ="Bearer $access_token"}).content
+$vmInfoRest = (Invoke-WebRequest -Uri 'https://management.azure.com/subscriptions/<SUBSCRIPTION-ID>/resourceGroups/<RESOURCE-GROUP>/providers/Microsoft.Compute/virtualMachines/<VM-NAME>?api-version=2017-12-01' -Method GET -ContentType "application/json" -Headers @{ Authorization ="Bearer $access_token"}).content
 echo "JSON returned from call to get VM info:"
 echo $vmInfoRest
 
@@ -316,7 +361,7 @@ Azure 资源的托管标识终结点通过 HTTP 响应消息标头的状态代�
 
 如果发生错误，相应的 HTTP 响应正文将包含 JSON 和错误详细信息：
 
-| 元素 | Description |
+| 元素 | 说明 |
 | ------- | ----------- |
 | error   | 错误标识符。 |
 | error_description | 错误的详细说明。 **错误说明随时可能更改。请不要编写会根据错误说明中的值生成分支片段的代码。**|
@@ -327,7 +372,7 @@ Azure 资源的托管标识终结点通过 HTTP 响应消息标头的状态代�
 
 | 状态代码 | 错误 | 错误说明 | 解决方案 |
 | ----------- | ----- | ----------------- | -------- |
-| 400 错误请求 | invalid_resource | AADSTS50001：在名为 *\<TENANT-ID\>* 的租户中找不到名为 *\<URI\>* 的应用程序。 如果应用程序尚未由租户管理员安装，或者尚未获得租户中的任何用户同意，则可能会发生这种情况。 可能将身份验证请求发送给了错误的租户。\ | （仅限 Linux） |
+| 400 错误请求 | invalid_resource | AADSTS50001：在名为 \<TENANT-ID\> 的租户中找不到名为 \<URI\> 的应用程序。 如果应用程序尚未由租户管理员安装，或者尚未获得租户中的任何用户同意，则可能会发生这种情况。 可能将身份验证请求发送给了错误的租户。\ | （仅限 Linux） |
 | 400 错误请求 | bad_request_102 | 未指定必需的元数据标头 | 请求中缺少 `Metadata` 请求标头字段，或者该字段的格式不正确。 必须将该值指定为 `true`（全小写）。 有关示例，请参阅[前面 REST 部分](#rest)中的“示例请求”。|
 | 401 未授权 | unknown_source | 未知源 *\<URI\>* | 检查是否已正确设置 HTTP GET 请求 URI 的格式。 必须将 `scheme:host/resource-path` 部分指定为 `http://localhost:50342/oauth2/token`。 有关示例，请参阅[前面 REST 部分](#rest)中的“示例请求”。|
 |           | invalid_request | 请求中缺少必需的参数、包含无效的参数值、多次包含某个参数，或格式不正确。 |  |

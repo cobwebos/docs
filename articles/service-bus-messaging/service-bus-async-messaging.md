@@ -3,23 +3,23 @@ title: 服务总线异步消息传送 | Microsoft 文档
 description: 介绍 Azure 服务总线异步消息传送。
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: f1435549-e1f2-40cb-a280-64ea07b39fc7
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2018
-ms.author: spelluru
-ms.openlocfilehash: 9bacce96e65a7aef611bec3ddae8b1872d5f9fae
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 0ff2fbf8ddfdd191c72cfdb36a9462076f8dec5b
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391457"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657291"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>异步消息传送模式和高可用性
 
@@ -109,7 +109,7 @@ public SendAvailabilityPairedNamespaceOptions(
 
 这些参数具有以下含义：
 
-* *secondaryNamespaceManager*：辅助命名空间的一个初始化 [NamespaceManager][NamespaceManager] 实例，[PairNamespaceAsync][PairNamespaceAsync] 方法可用它来设置辅助命名空间。 使用命名空间管理器来获取命名空间中队列的列表，并确保存在所需积压工作队列。 如果这些队列不存在，则会创建它们。 [NamespaceManager][NamespaceManager] 要求能够通过 **Manage** 声明创建令牌。
+* *secondaryNamespaceManager*：辅助命名空间的一个初始化 [NamespaceManager][NamespaceManager] 实例，[PairNamespaceAsync][PairNamespaceAsync] 方法可使用它来设置辅助命名空间。 使用命名空间管理器来获取命名空间中队列的列表，并确保存在所需积压工作队列。 如果这些队列不存在，则会创建它们。 [NamespaceManager][NamespaceManager] 要求能够通过 **Manage** 声明创建令牌。
 * *messagingFactory*：辅助命名空间的 [MessagingFactory][MessagingFactory] 实例。 [MessagingFactory][MessagingFactory] 对象用于发送消息；如果 [EnableSyphon][EnableSyphon] 属性设置为 **true**，它还能从积压工作队列接收消息。
 * *backlogQueueCount*：要创建的积压工作队列数。 此值必须至少为 1。 向积压工作发送消息时，随机选择这些队列之一。 如果将值设置为 1，则只能使用一个队列。 当发生这种情况并且该积压工作队列生成错误时，客户端将无法尝试使用其他积压工作队列，因而可能无法发送消息。 我们建议将此值设置为更大数值，默认将其设置为 10。 可以根据应用程序每天发送的数据量，将它设置为更大或更小的值。 每个积压工作队列可容纳至多 5 GB 的消息。
 * *failoverInterval*：将任何一个实体切换到辅助命名空间之前，主命名空间上将接受故障的时间长度。 在逐个实体的基础上发生故障转移。 单个命名空间中的实体常常位于服务总线中的不同节点内。 一个实体中存在故障不表示另一个实体中也存在故障。 可以将此值设置为 [System.TimeSpan.Zero][System.TimeSpan.Zero]，以便在第一次非暂时性故障之后立即向辅助命名空间进行故障转移。 任何 [IsTransient][IsTransient] 属性为 false 的 [MessagingException][MessagingException] 或 [System.TimeoutException][System.TimeoutException] 故障都将触发故障转移计时器。 其他异常（如 [UnauthorizedAccessException][UnauthorizedAccessException]）不会导致故障转移，因为它们指示客户端配置不正确。 [ServerBusyException][ServerBusyException] 不会引发故障转移，因为正确模式是等待 10 秒，再重新发送消息。
@@ -146,10 +146,10 @@ if (sendAvailabilityOptions.BacklogQueueCount < 1)
 [MessagingFactory]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
 [SendAvailabilityPairedNamespaceOptions]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions
 [NamespaceManager]: /dotnet/api/microsoft.servicebus.namespacemanager
-[PairNamespaceAsync]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory#Microsoft_ServiceBus_Messaging_MessagingFactory_PairNamespaceAsync_Microsoft_ServiceBus_Messaging_PairedNamespaceOptions_
-[EnableSyphon]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions#Microsoft_ServiceBus_Messaging_SendAvailabilityPairedNamespaceOptions_EnableSyphon
+[PairNamespaceAsync]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
+[EnableSyphon]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions
 [System.TimeSpan.Zero]: https://msdn.microsoft.com/library/system.timespan.zero.aspx
-[IsTransient]: /dotnet/api/microsoft.servicebus.messaging.messagingexception#Microsoft_ServiceBus_Messaging_MessagingException_IsTransient
+[IsTransient]: /dotnet/api/microsoft.servicebus.messaging.messagingexception
 [UnauthorizedAccessException]: https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx
-[BacklogQueueCount]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions?redirectedfrom=MSDN#Microsoft_ServiceBus_Messaging_SendAvailabilityPairedNamespaceOptions_BacklogQueueCount
+[BacklogQueueCount]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions?redirectedfrom=MSDN
 [paired namespaces]: service-bus-paired-namespaces.md

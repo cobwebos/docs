@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 36afc89ef583baa5484aa4e69c6969e7448c93c1
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: cecdb9f9af9c5194eb56cfefd63b31348f111980
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127578"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562753"
 ---
 # <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Magento 复制数据
 
@@ -45,7 +44,7 @@ Magento 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：Magento | 是 |
+| type | Type 属性必须设置为：Magento | 是 |
 | host | Magento 实例的 URL。 （即 192.168.222.110/magento3）  | 是 |
 | accessToken | 来自 Magento 的访问令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
@@ -62,8 +61,8 @@ Magento 链接的服务支持以下属性：
         "typeProperties": {
             "host" : "192.168.222.110/magento3",
             "accessToken": {
-                 "type": "SecureString",
-                 "value": "<accessToken>"
+                "type": "SecureString",
+                "value": "<accessToken>"
             },
             "useEncryptedEndpoints" : true,
             "useHostVerification" : true,
@@ -77,7 +76,12 @@ Magento 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Magento 数据集支持的属性列表。
 
-要从 Magento 复制数据，请将数据集的 type 属性设置为 MagentoObject。 此类型的数据集中没有任何其他特定于类型的属性。
+要从 Magento 复制数据，请将数据集的 type 属性设置为 MagentoObject。 支持以下属性：
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| type | 数据集的 type 属性必须设置为：MagentoObject | 是 |
+| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -89,7 +93,8 @@ Magento 链接的服务支持以下属性：
         "linkedServiceName": {
             "referenceName": "<Magento linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -98,14 +103,14 @@ Magento 链接的服务支持以下属性：
 
 有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Magento 源支持的属性列表。
 
-### <a name="magentosource-as-source"></a>作为源的 MagentoSource
+### <a name="magento-as-source"></a>Magento 作为源
 
 要从 Magento 复制数据，请将复制活动中的源类型设置为 MagentoSource。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：MagentoSource | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Customers"`。 | 是 |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Customers"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

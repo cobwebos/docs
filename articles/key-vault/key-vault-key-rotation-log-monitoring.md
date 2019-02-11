@@ -1,5 +1,5 @@
 ---
-title: 使用端到端密钥轮替和审核设置 Azure 密钥保管库 | Microsoft Docs
+title: 使用端到端密钥轮换和审核设置 Azure 密钥保管库 - Azure 密钥保管库 | Microsoft Docs
 description: 使用本操作指南帮助设置密钥轮替和监视密钥保管库日志。
 services: key-vault
 documentationcenter: ''
@@ -10,16 +10,15 @@ ms.assetid: 9cd7e15e-23b8-41c0-a10a-06e6207ed157
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/12/2018
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: bf3aba431e7b417b2213bc3410fd7722d7888d15
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4dbfd993a8464c569d30f11e305d4bae000a778f
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302011"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077702"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>使用密钥轮替和审核设置 Azure Key Vault
 
@@ -414,7 +413,7 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 
 单击“保存”后，Azure Functions 将下载必需的二进制文件。
 
-切换到“**集成**”选项卡，为计时器参数指定一个要在函数中使用的有意义名称。 在上面的代码中，需要称为 *myTimer* 的计时器。 按如下所示为计时器指定 [CRON 表达式](../app-service/web-sites-create-web-jobs.md#CreateScheduledCRON)：0 \*\*\*\*\*，这会导致函数一分钟运行一次。
+切换到“**集成**”选项卡，为计时器参数指定一个要在函数中使用的有意义名称。 在上面的代码中，需要称为 *myTimer* 的计时器。 按如下所示为计时器指定 [CRON 表达式](../app-service/webjobs-create.md#CreateScheduledCRON)：0 \*\*\*\*\*，这会导致函数一分钟运行一次。
 
 在同一个“集成”选项卡上，添加类型为“Azure Blob 存储”的输入。 这会指向 sync.txt 文件，其中包含该函数查看的最后一个事件的时间戳。 将在函数中按参数名称提供此文件。 在上面的代码中，Azure Blob 存储输入要求参数名称为 *inputBlob*。 选择将存储 sync.txt 文件的存储帐户（该存储帐户可以相同，也可以不同）。 在路径字段中，提供采用 {container-name}/path/to/sync.txt 格式存储文件的路径。
 

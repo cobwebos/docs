@@ -4,9 +4,9 @@ description: 介绍有关 Azure AD 应用程序代理连接器的基础知识。
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.date: 06/27/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 388fd812185bc8bd2ef68a1dbcea6303d30dcdf3
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 2bd87b69b332cf9acfdf7cbaa80900c9559c2c8e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230778"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159772"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布远程桌面
 
@@ -49,7 +49,7 @@ ms.locfileid: "50230778"
 
 - RD Web 和 RD 网关终结点必须位于同一台计算机上，并且有一个共用的根。 RD Web 和 RD 网关将作为具有应用程序代理的单个应用程序发布，因此，可以在两个应用程序之间体验单一登录。
 
-- 应该[已部署 RDS](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure) 并[已启用应用程序代理](application-proxy-enable.md)。
+- 应该[已部署 RDS](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure) 并[已启用应用程序代理](application-proxy-add-on-premises-application.md)。
 
 - 此方案假定你的最终用户通过 Windows 7 或 Windows 10 桌面版（通过 RD 网页连接）上的 Internet Explorer 进行访问。 如果需要支持其他操作系统，请参阅[对其他客户端配置的支持](#support-for-other-client-configurations)。
 
@@ -63,9 +63,9 @@ ms.locfileid: "50230778"
 
 ### <a name="publish-the-rd-host-endpoint"></a>发布 RD 主机终结点
 
-1. 使用以下值[发布新的应用程序代理应用程序](application-proxy-publish-azure-portal.md)：
+1. 使用以下值[发布新的应用程序代理应用程序](application-proxy-add-on-premises-application.md)：
    - 内部 URL：`https://\<rdhost\>.com/`，其中，`\<rdhost\>` 是 RD Web 和 RD 网关共享的共用根。
-   - 外部 URL：系统会根据应用程序的名称自动填充此字段，但可以修改它。 用户访问 RDS 时，会转到此 URL。
+   - 外部 URL：系统会根据应用程序的名称自动填充此字段，但你可以修改它。 用户访问 RDS 时，会转到此 URL。
    - 预身份验证方法：Azure Active Directory
    - 转换 URL 标头：否
 2. 将用户分配到已发布的 RD 应用程序。 确保这些用户也都有权访问 RDS。

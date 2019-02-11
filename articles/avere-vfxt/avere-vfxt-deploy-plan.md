@@ -4,14 +4,14 @@ description: 介绍部署 Avere vFXT for Azure 之前的规划工作
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: f0e5523565dc561ed457dbc340835ad1889cb876
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e60c92c22382112558307062afdeb87e08075765
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669864"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298919"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>规划 Avere vFXT 系统
 
@@ -29,11 +29,14 @@ ms.locfileid: "50669864"
 
 规划 Avere vFXT 系统的网络基础结构时，请遵循以下准则：
 
-* 应使用为 Avere vFXT 部署创建的新订阅来管理所有元素。 此策略可以简化成本跟踪和执行清理，同时还有助于划分资源配额。 由于 Avere vFXT 用于大量的客户端，在单个订阅中隔离客户端和群集可以防止在客户端预配期间其他关键工作负荷的资源受到限制。
+* 应使用为 Avere vFXT 部署创建的新订阅来管理所有元素。 优势包括： 
+  * 更简单的成本跟踪 - 在一个订阅中查看和审核由资源、基础结构和计算循环产生的所有成本。
+  * 更轻松的清理 - 完成项目后，可以删除整个订阅。
+  * 方便地对资源配额进行分区 - 通过将 Avere vFXT 客户端和群集隔离到单个订阅中，可以在提供大量的客户端用于高性能计算工作流时保护其他关键工作负荷免受可能的资源限制。
 
 * 将客户端计算系统定位在靠近 vFXT 群集的位置。 后端存储可以位于较远的位置。  
 
-* 为方便起见，请将 vFXT 群集和群集控制器 VM 定位在同一虚拟网络 (VNet) 和同一资源组中。 它们还应该使用相同的存储帐户。 
+* 为方便起见，请将 vFXT 群集和群集控制器 VM 定位在同一虚拟网络 (VNet) 和同一资源组中。 它们还应该使用相同的存储帐户。 （群集控制器创建群集，并且还可用于群集命令行管理。）  
 
 * 群集必须位于其自身的子网中，以避免与客户端或计算资源发生 IP 地址冲突。 
 
@@ -80,16 +83,46 @@ Avere vFXT 群集使用以下 IP 地址：
 
 ## <a name="back-end-data-storage"></a>后端数据存储
 
-当工作集不在缓存中时，是要将它存储在新的 Blob 容器、现有云还是硬件存储系统中？
+当数据不在缓存中时，Avere vFXT 群集应当将数据存储在何处？ 决定你的工作集是要长期存储在新的 Blob 容器中、现有云中还是硬件存储系统中。 
 
-若要对后端使用 Azure Blob 存储，应在创建 vFXT 群集的过程中创建一个新容器。 使用 ``create-cloud-backed-container`` 部署脚本并提供新 Blob 容器的存储帐户。 此选项会创建并配置新容器，以便在准备好群集后，该容器可供使用。 有关详细信息，请阅读[创建节点和配置群集](avere-vfxt-deploy.md#create-nodes-and-configure-the-cluster)。
+若要对后端使用 Azure Blob 存储，应在创建 vFXT 群集的过程中创建一个新容器。 此选项会创建并配置新容器，以便在准备好群集后，该容器可供使用。 
+
+有关详细信息，请阅读[创建 Avere vFXT for Azure](avere-vfxt-deploy.md#create-the-avere-vfxt-for-azure)。
 
 > [!NOTE]
 > 只能将空的 Blob 存储容器用作 Avere vFXT 系统的核心文件管理器。 vFXT 必须能够管理其对象存储，而无需保留现有数据。 
 >
 > 请阅读[将数据移到 vFXT 群集](avere-vfxt-data-ingest.md)，了解如何使用客户端计算机和 Avere vFXT 缓存高效地将数据复制到群集的新容器。
 
-若要使用现有的本地存储系统，必须在创建 vFXT 群集后将该系统添加到其中。 ``create-minimal-cluster`` 部署脚本会创建不带后端存储的 vFXT 群集。 有关如何将现有存储系统添加到 Avere vFXT 群集的详细说明，请阅读[配置存储](avere-vfxt-add-storage.md)。 
+若要使用现有的本地存储系统，必须在创建 vFXT 群集后将该系统添加到其中。 有关如何将现有存储系统添加到 Avere vFXT 群集的详细说明，请阅读[配置存储](avere-vfxt-add-storage.md)。
+
+## <a name="cluster-access"></a>群集访问 
+
+Avere vFXT for Azure 群集位于专用子网中，并且该群集没有公用 IP 地址。 必须采用某个方法来访问专用子网以执行群集管理和客户端连接。 
+
+访问选项包括：
+
+* 跳转主机 - 向专用网络中的一个单独 VM 分配一个公用 IP 地址，并使用它来创建到群集节点的 SSL 隧道。 
+
+  > [!TIP]
+  > 如果在群集控制器上设置公用 IP 地址，则可以使用它作为跳转主机。 有关详细信息，请阅读[群集控制器用作跳转主机](#cluster-controller-as-jump-host)。
+
+* 虚拟专用网络 (VPN) - 配置到专用网络的点到站点或站点到站点 VPN。
+
+* Azure ExpressRoute - 通过任一 ExpressRoute 合作伙伴配置专用连接。 
+
+有关这些选项的详细信息，请参阅[有关 Internet 通信的 Azure 虚拟网络文档](../virtual-network/virtual-networks-overview.md#communicate-with-the-internet)。
+
+### <a name="cluster-controller-as-jump-host"></a>群集控制器用作跳转主机
+
+如果你在群集控制器上设置了公用 IP 地址，则可以使用它作为跳转主机来从专用子网外部联系 Avere vFXT 群集。 但是，因为控制器有权修改群集节点，这会带来小小的安全风险。  
+
+为了提高具有公用 IP 地址时的安全性，请使用一个网络安全组来仅允许通过端口 22 进行的入站访问。
+
+创建群集时，可以选择是否在群集控制器上创建公用 IP 地址。 
+
+* 如果创建新的 VNET 或新子网，系统会为群集控制器分配一个公用 IP 地址。
+* 如果选择现有的 VNET 和子网，则群集控制器将仅具有专用 IP 地址。 
 
 ## <a name="next-step-understand-the-deployment-process"></a>后续步骤：了解部署过程
 

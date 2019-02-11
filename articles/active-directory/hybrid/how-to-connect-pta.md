@@ -1,26 +1,26 @@
 ---
-title: Azure AD Connect：直通身份验证 | Microsoft Docs
+title: Azure AD Connect：对直通身份验证进行故障排除 | Microsoft 文档
 description: 本文介绍 Azure Active Directory (Azure AD) 传递身份验证，以及它如何通过针对本地 Active Directory 验证用户密码来实现 Azure AD 登录。
 services: active-directory
 keywords: 什么是 Azure AD Connect 直通身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/21/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 899aeeb994ca5c9bf30dfca876dff61c1ccf3ea7
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: d4a1f220085f3f1429e9457e09a0279f62696293
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637573"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496204"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>使用 Azure Active Directory 传递身份验证的用户登录
 

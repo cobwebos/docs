@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
-ms.date: 10/29/2018
-ms.openlocfilehash: 6a5ee991ca21e60e6c2b14d5e3be560183eae4fa
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/25/2019
+ms.openlocfilehash: 957652a63768d25e6b180feb826551ec340b9bf0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232896"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453665"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>部署并探究一个多租户 SaaS 应用，该应用通过“每租户一个数据库”模式使用 SQL 数据库
 
@@ -129,7 +129,7 @@ Wingtip 应用程序使用  [*Azure 流量管理器*](../traffic-manager/traffi
 
     | URL 部分        | 说明       |
     | :-------------- | :---------------- |
-    | http://events.wingtip-dpt | Wingtip 应用的事件部分。<br /><br /> *-dpt* 部分将 Wingtip Tickets 的“每租户一个数据库”实现与其他实现区分开来。 例如，独立的“租户各有应用”(*-sa*) 实现 ，或多租户数据库 (*-mt*) 实现。 |
+    | http://events.wingtip-dpt | Wingtip 应用的事件部分。<br /><br /> *-dpt* 部分将 Wingtip Tickets 的“每租户一个数据库”实现与其他实现区分开来。 例如，单个“每租户应用”(-sa) 实现，或多租户数据库 (-mt) 实现。 |
     | .*&lt;user&gt;* | 在示例中为 *af1*。 |
     | .trafficmanager.net/ | 流量管理器、基 URL。 |
     | fabrikamjazzclub | 标识名为 Fabrikam Jazz Club 的租户。 |
@@ -248,7 +248,7 @@ LoadGenerator.ps1 运行几分钟后，可提供足够的数据，用于开始�
 - 第一个图表标记为“资源利用率”，显示池 eDTU 利用率。
 - 第二个图表显示池中最活跃的前五个数据库的 eDTU 利用率。
 
-这两个图表说明了弹性池和 SQL 数据库非常适合用于不可预测的 SaaS 应用程序工作负载。 这些图表表明，四个数据库中的每个数据库都激增到高达 40 eDTU，但所有数据库均可由一个 50 eDTU 池轻松提供支持。 50-eDTU 池甚至还可支持更大的工作负载。 如果将这些数据库预配为单一数据库，则每一个数据库都需要是 S2 (50 DTU) 才能支持激增情况。 四个独立 S2 数据库的成本几乎是池价格的三倍。 在实际情况下，SQL 数据库客户在 200 eDTU 的池中最多可运行 500 个数据库。 有关详细信息，请参阅[性能监视教程](saas-dbpertenant-performance-monitoring.md)。
+这两个图表说明了弹性池和 SQL 数据库非常适合用于不可预测的 SaaS 应用程序工作负载。 这些图表表明，四个数据库中的每个数据库都激增到高达 40 eDTU，但所有数据库均可由一个 50 eDTU 池轻松提供支持。 50-eDTU 池甚至还可支持更大的工作负载。 如果将这些数据库预配为单一数据库，则每一个数据库都需要是 S2 (50 DTU) 才能支持激增情况。 四个单一 S2 数据库的成本几乎是池价格的三倍。 在实际情况下，SQL 数据库客户在 200 eDTU 的池中最多可运行 500 个数据库。 有关详细信息，请参阅[性能监视教程](saas-dbpertenant-performance-monitoring.md)。
 
 ## <a name="additional-resources"></a>其他资源
 

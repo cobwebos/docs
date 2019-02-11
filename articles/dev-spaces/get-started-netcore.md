@@ -3,19 +3,19 @@ title: 使用 .NET Core 和 VS Code 在云中创建 Kubernetes 开发空间 | Mi
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 09/26/2018
 ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: bb3ddb0ffe16746a44318ea8d0bf0f1e3b3c3de1
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: b51bf83d2e44239ebd6bc17e25efaa2fe94250f3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705576"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467129"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>通过 .NET Core 开始使用 Azure Dev Spaces
 
@@ -31,7 +31,7 @@ ms.locfileid: "51705576"
 现在可以在 Azure 中创建基于 Kubernetes 的开发空间了。
 
 ## <a name="install-the-azure-cli"></a>安装 Azure CLI
-Azure Dev Spaces 需要进行最基本的本地计算机设置。 开发空间的大部分配置存储在云中，可以与其他用户共享。 本地计算机可以运行 Windows、Mac 或 Linux。 Linux 支持以下发行版：Ubuntu（18.04、16.04 和 14.04）、Debian 8 和 9、RHEL 7、Fedora 26+、CentOS 7、openSUSE 42.2、SLES 12。
+Azure Dev Spaces 需要进行最基本的本地计算机设置。 开发空间的大部分配置存储在云中，可以与其他用户共享。 本地计算机可以运行 Windows、Mac 或 Linux。 对于 Linux，支持以下发行版：Ubuntu（18.04、16.04 和 14.04），Debian 8 和 9、RHEL 7、Fedora 26+、CentOS 7、openSUSE 42.2 和 SLES 12。
 
 首先，请下载并运行 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 
 
@@ -72,7 +72,7 @@ az group create --name MyResourceGroup --location <region>
 使用以下命令创建 Kubernetes 群集：
 
 ```cmd
-az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.11.2 --enable-addons http_application_routing --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.10.9 --enable-addons http_application_routing --generate-ssh-keys
 ```
 
 创建群集需要几分钟时间。

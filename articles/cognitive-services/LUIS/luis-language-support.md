@@ -1,21 +1,22 @@
 ---
-title: 语言支持 - LUIS
+title: 语言支持
 titleSuffix: Azure Cognitive Services
 description: LUIS 在服务中具有多种功能。 并非所有功能都会同等地以各种语言提供。 请确保你所定位的语言文化支持你感兴趣的功能。 LUIS 应用特定于区域性，一旦设置即无法更改。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: a26fa1f64f1ef8ecef8140b1feab89fdd57875fe
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 85bd7b1c150eaa23ec5fa438a8fcbe2d5eb66f45
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569193"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220411"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
 
@@ -43,6 +44,7 @@ LUIS 理解以下语言：
 | 葡萄牙语(巴西) |`pt-BR` |-| ✔ |✔ |并非所有亚区域性|
 | 西班牙语(西班牙) |`es-ES` |-| ✔ |✔|✔|
 | 西班牙语(墨西哥)|`es-MX` |-|  -   |✔|✔|
+| 土耳其语 | `tr-TR` |-|-|-|仅情绪|
 
 
 [预生成实体](luis-reference-prebuilt-entities.md)和[预生成域](luis-reference-prebuilt-domains.md)具有不同的语言支持。

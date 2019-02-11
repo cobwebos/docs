@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 6ed1ef6019e339768c4ba6a62d8b4d99d844f254
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 66ba6aa874e84ce86d54d5ea0f827a83dc6564b4
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949514"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208545"
 ---
 # <a name="azure-and-linux"></a>Azure 和 Linux
 Microsoft Azure 正在不断集结各种集成的公有云服务，包括分析、虚拟机、数据库、移动、网络、存储和 Web&mdash;是托管解决方案的理想之选。  Microsoft Azure 提供可缩放的计算平台，允许即用即付，而无需投资购买本地硬件。  Azure 允许根据客户端所需的任何规模，随时扩展和缩减解决方案。
@@ -72,17 +72,17 @@ Azure 正在支持它的大多数 Linux 发行版中推出 [cloud-init](http://c
 Microsoft 与合作伙伴紧密合作，以确保可用映像进行更新并针对 Azure 运行时进行优化。  有关 Azure 合作伙伴的详细信息，请参阅以下链接：
 
 * Azure 上的 Linux - [认可的分发](endorsed-distros.md)
-* SUSE - [Azure 市场 - SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=%27SUSE%27)
+* SUSE - [Azure 市场 - SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SLES?tab=Overview)
 * Red Hat - [Azure 市场 - Red Hat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
 * Canonical - [Azure 市场 - Ubuntu Server 16.04 LTS](https://azure.microsoft.com/marketplace/partners/canonical/ubuntuserver1604lts/)
 * Debian - [Azure 市场 - Debian 8 "Jessie"](https://azure.microsoft.com/marketplace/partners/credativ/debian8/)
-* FreeBSD - [Azure 市场 - FreeBSD 10.3](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/)
+* FreeBSD - [Azure 市场 - FreeBSD 10.4](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
 * CoreOS - [Azure 市场 - CoreOS (Stable)](https://azure.microsoft.com/marketplace/partners/coreos/coreosstable/)
 * RancherOS - [Azure 市场 - RancherOS](https://azure.microsoft.com/marketplace/partners/rancher/rancheros/)
 * Bitnami - [Bitnami Library for Azure](https://azure.bitnami.com/)
 * Mesosphere - [Azure 市场 - Azure 上的 Mesosphere DC/OS](https://azure.microsoft.com/marketplace/partners/mesosphere/dcosdcos/)
 * Docker - [Azure 市场 - 具有 Docker Swarm 的 Azure 容器服务](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
-* Jenkins - [Azure 市场 - CloudBees Jenkins Platform](https://azure.microsoft.com/marketplace/partners/cloudbees/jenkins-platformjenkins-platform/)
+* Jenkins - [Azure 市场 - CloudBees Jenkins Platform](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudbees.cloudbees-core-contact)
 
 ## <a name="getting-started-with-linux-on-azure"></a>Azure 上的 Linux 入门
 若要开始使用 Azure，需要 Azure 帐户、已安装 Azure CLI 和一对 SSH 公钥和私钥。
@@ -111,7 +111,7 @@ VM 现在正在 Azure 上运行，用户可以登录。  使用密码通过 SSH 
 
 ## <a name="related-azure-components"></a>相关 Azure 组件
 ## <a name="storage"></a>存储
-* [Microsoft Azure 存储空间简介](../../storage/common/storage-introduction.md)
+* [Microsoft Azure 存储简介](../../storage/common/storage-introduction.md)
 * [使用 azure-cli 将磁盘添加到 Linux VM](add-disk.md)
 * [如何在 Azure 门户中将数据磁盘附加到 Linux VM](attach-disk-portal.md)
 

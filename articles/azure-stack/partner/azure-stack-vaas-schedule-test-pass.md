@@ -13,14 +13,15 @@ ms.topic: How to
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 3021fafe7d74f71450eec9b3720c974b04ada224
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.lastreviewed: 11/26/2018
+ms.openlocfilehash: cb26aae743d267866a8a7d1de76a319a0a681a08
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426921"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252058"
 ---
-# <a name="schedule-your-first-test"></a>计划第一次测试
+# <a name="scheduling-a-test"></a>计划测试
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
@@ -35,8 +36,8 @@ ms.locfileid: "52426921"
 在执行本快速入门之前，应完成以下各项：
 
 - [设置您的验证为服务资源](azure-stack-vaas-set-up-resources.md)
-- [部署本地代理](azure-stack-vaas-local-agent.md)（推荐）
-- [作为服务的关键概念验证](azure-stack-vaas-key-concepts.md)（推荐）
+- [部署本地代理](azure-stack-vaas-local-agent.md)（必需）
+- [作为服务的关键概念验证](azure-stack-vaas-key-concepts.md)（必需）
 
 ## <a name="start-a-workflow"></a>启动工作流
 

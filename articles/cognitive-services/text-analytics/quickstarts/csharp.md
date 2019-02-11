@@ -6,16 +6,16 @@ services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 10/01/2018
-ms.author: ashmaka
-ms.openlocfilehash: 59469b6c27ceb0ed96659198edd6ddbca12685e2
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.date: 01/02/2019
+ms.author: assafi
+ms.openlocfilehash: 5b6ae20445b74aa1713f9af5765684a9c01e2953
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283955"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224303"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 C# 调用文本分析认知服务
 <a name="HOLTop"></a>
@@ -28,15 +28,15 @@ ms.locfileid: "52283955"
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-还必须拥有在注册期间生成的[终结点和访问密钥](../How-tos/text-analytics-how-to-access-key.md)。 
+还必须拥有在注册期间生成的[终结点和访问密钥](../How-tos/text-analytics-how-to-access-key.md)。
 
 
-## <a name="install-the-nuget-sdk-package"></a>安装 Nuget SDK 包
+## <a name="install-the-nuget-sdk-package"></a>安装 NuGet SDK 包
 1. 在 Visual Studio 中创建一个新的控制台解决方案。
 1. 右键单击解决方案，然后单击“管理解决方案的 NuGet 包”
 1. 选中“包括预发行版”复选框。
 1. 选择“浏览”选项卡，然后搜索“Microsoft.Azure.CognitiveServices.Language.TextAnalytics”
-1. 选择 Nuget 包并安装。
+1. 选择 NuGet 包并安装它。
 
 > [!Tip]
 >  虽然可以直接从 C# 调用 [HTTP 终结点](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)，但使用 Microsoft.Azure.CognitiveServices.Language SDK 可以更轻松地调用服务，而不必担心 JSON 的序列化和反序列化。
@@ -47,7 +47,7 @@ ms.locfileid: "52283955"
 
 
 ## <a name="call-the-text-analytics-api-using-the-sdk"></a>使用 SDK 调用文本分析 API
-1. 将 Program.cs 替换为下面提供的代码。 此程序通过 3 个部分（语言提取、关键短语提取和情绪分析）演示了文本分析 API 的功能。
+1. 将 Program.cs 替换为下面提供的代码。 此程序通过三个部分（语言提取、关键短语提取和情绪分析）演示了文本分析 API 的功能。
 1. 将 `Ocp-Apim-Subscription-Key` 标头值替换为对订阅有效的访问密钥。
 1. 将 `Endpoint` 中的位置替换为注册的终结点。 可在 Azure 门户资源上找到该终结点。 终结点通常以“https://[region].api.cognitive.microsoft.com”开头，在此处请仅包括协议和主机名。
 1. 运行该程序。
@@ -68,13 +68,14 @@ namespace ConsoleApp1
     {
         /// <summary>
         /// Container for subscription credentials. Make sure to enter your valid key.
-        string subscriptionKey = ""; //Insert your Text Anaytics subscription key
+        private const string SubscriptionKey = ""; //Insert your Text Anaytics subscription key
+
         /// </summary>
         class ApiKeyServiceClientCredentials : ServiceClientCredentials
         {
             public override Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             {
-                request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+                request.Headers.Add("Ocp-Apim-Subscription-Key", SubscriptionKey);
                 return base.ProcessHttpRequestAsync(request, cancellationToken);
             }
         }
@@ -104,7 +105,7 @@ namespace ConsoleApp1
             // Printing language results.
             foreach (var document in result.Documents)
             {
-                Console.WriteLine("Document ID: {0} , Language: {1}", document.Id, document.DetectedLanguages[0].Name);
+                Console.WriteLine($"Document ID: {document.Id} , Language: {document.DetectedLanguages[0].Name}");
             }
 
             // Getting key-phrases
@@ -122,13 +123,13 @@ namespace ConsoleApp1
             // Printing keyphrases
             foreach (var document in result2.Documents)
             {
-                Console.WriteLine("Document ID: {0} ", document.Id);
+                Console.WriteLine($"Document ID: {document.Id} ");
 
                 Console.WriteLine("\t Key phrases:");
 
                 foreach (string keyphrase in document.KeyPhrases)
                 {
-                    Console.WriteLine("\t\t" + keyphrase);
+                    Console.WriteLine($"\t\t{keyphrase}");
                 }
             }
 
@@ -149,14 +150,14 @@ namespace ConsoleApp1
             // Printing sentiment results
             foreach (var document in result3.Documents)
             {
-                Console.WriteLine("Document ID: {0} , Sentiment Score: {1:0.00}", document.Id, document.Score);
+                Console.WriteLine($"Document ID: {document.Id} , Sentiment Score: {document.Score:0.00}");
             }
 
 
             // Identify entities
             Console.WriteLine("\n\n===== ENTITIES ======");
 
-            EntitiesBatchResult result4 = client.EntitiesAsync(
+            EntitiesBatchResultV2dot1 result4 = client.EntitiesAsync(
                     new MultiLanguageBatchInput(
                         new List<MultiLanguageInput>()
                         {
@@ -166,13 +167,13 @@ namespace ConsoleApp1
             // Printing entities results
             foreach (var document in result4.Documents)
             {
-                Console.WriteLine("Document ID: {0} ", document.Id);
+                Console.WriteLine($"Document ID: {document.Id} ");
 
                 Console.WriteLine("\t Entities:");
 
-                foreach (EntityRecord entity in document.Entities)
+                foreach (EntityRecordV2dot1 entity in document.Entities)
                 {
-                    Console.WriteLine("\t\t" + entity.Name);
+                    Console.WriteLine($"\t\t{entity.Name}\t\t{entity.WikipediaUrl}\t\t{entity.Type}\t\t{entity.SubType}");
                 }
             }
 
@@ -182,13 +183,46 @@ namespace ConsoleApp1
 }
 ```
 
+## <a name="application-output"></a>应用程序输出
+
+此应用程序显示以下信息：
+
+```console
+===== LANGUAGE EXTRACTION ======
+Document ID: 1 , Language: English
+Document ID: 2 , Language: Spanish
+Document ID: 3 , Language: Chinese_Simplified
+
+
+===== KEY-PHRASE EXTRACTION ======
+Document ID: 1
+         Key phrases:
+                幸せ
+Document ID: 2
+         Key phrases:
+                Stuttgart
+                Hotel
+Document ID: 3
+         Key phrases:
+                cat
+                rock
+Document ID: 4
+         Key phrases:
+                fútbol
+
+===== SENTIMENT ANALYSIS ======
+Document ID: 0 , Sentiment Score: 0.87
+Document ID: 1 , Sentiment Score: 0.11
+Document ID: 2 , Sentiment Score: 0.44
+Document ID: 3 , Sentiment Score: 1.00
+```
+
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [使用 Power BI 进行文本分析](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>另请参阅 
+## <a name="see-also"></a>另请参阅
 
- [文本分析概述](../overview.md)  
- [常见问题解答 (FAQ)](../text-analytics-resource-faq.md)
+ [文本分析概述](../overview.md)[常见问题解答 (FAQ)](../text-analytics-resource-faq.md)
 

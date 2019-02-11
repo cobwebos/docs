@@ -6,7 +6,7 @@ documentationcenter: na
 author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 10/24/2018
 ms.author: celested
 ms.reviewer: tomfitz
-ms.openlocfilehash: b60be3db14a756407e62540bb89f3b0924597067
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 708ec047a1c9883e34f2e255cd7a0f1237ded2bf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49959687"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096868"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体
 
@@ -65,9 +65,9 @@ ms.locfileid: "49959687"
    如果未看到所需订阅，请选择“全局订阅筛选器”。 请确保已为该门户选择所需的订阅。 
 
 1. 选择“访问控制 (IAM)”。
-1. 选择 **添加** 。
+1. 选择“添加角色分配”。
 
-   ![选择“添加”](./media/howto-create-service-principal-portal/select-add.png)
+   ![选择“添加角色分配”](./media/howto-create-service-principal-portal/select-add.png)
 
 1. 选择要分配到应用程序的角色。 若要允许应用程序执行诸如“重启”、“启动”和“停止”实例之类的操作，请选择“参与者”角色。 默认情况下，可用选项中不显示 Azure AD 应用程序。 若要查找应用程序，请搜索其名称并选中它。
 

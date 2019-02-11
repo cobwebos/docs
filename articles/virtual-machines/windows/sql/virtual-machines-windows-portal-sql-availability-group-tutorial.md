@@ -16,18 +16,18 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 42a4ea1e4dc352e56fbd65f69c9ed71e3b0c1038
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 65ccf45ea8ea1f8f553be0b2c599f5c1433fc3e8
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238069"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359708"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>在 Azure VM 中手动配置 Always On 可用性组
 
 本教程说明如何在 Azure 虚拟机上创建 SQL Server Always On 可用性组。 完整教程将创建一个数据库副本位于两个 SQL Server 上的可用性组。
 
-**估计所需时间**：如果满足先决条件，完成本教程大约需要 30 分钟。
+**时间估计**：如果满足先决条件，完成本教程大约需要 30 分钟。
 
 下图演示了在本教程中构建的内容。
 
@@ -45,12 +45,15 @@ ms.locfileid: "51238069"
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | 群集的文件共享见证 |  
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server 服务帐户 | 域帐户 |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server 代理服务帐户 | 域帐户 |  
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|防火墙端口已打开 | - SQL Server：默认实例使用 1433 <br/> - 数据库镜像终结点：5022 或任何可用端口 <br/> - 可用性组负载均衡器 IP 地址运行状况探测：59999 或任何可用端口 <br/> - 群集核心负载均衡器 IP 地址运行状况探测：58888 或任何可用端口 |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|防火墙端口已打开 | - SQL Server：对于默认实例，为 1433 <br/> - 数据库镜像终结点：5022 或任何可用端口 <br/> - 可用性组负载均衡器 IP 地址运行状况探测：59999 或任何可用端口 <br/> - 群集核心负载均衡器 IP 地址运行状况探测：58888 或任何可用端口 |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|添加故障转移群集功能 | 两个 SQL Server 都需要此功能 |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|安装域帐户 | - 每个 SQL Server 上的本地管理员 <br/> - 每个 SQL Server 实例的 SQL Server sysadmin 固定服务器角色的成员  |
 
 
 开始本教程之前，需要[完成先决条件以便在 Azure 虚拟机中创建 Always On 可用性组](virtual-machines-windows-portal-sql-availability-group-prereq.md)。 如果已完成这些先决条件，可跳到[创建群集](#CreateCluster)。
+
+  >[!NOTE]
+  > 本教程中的许多步骤都可以使用 Azure 快速入门模板自动执行。 有关详细信息，请参阅[使用 Azure 快速入门模板在 SQL Server VM 上为 Always On 可用性组创建 WSFC、侦听器和配置 ILB](virtual-machines-windows-sql-availability-group-quickstart-template.md)。
 
 
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
@@ -296,7 +299,7 @@ Repeat these steps on the second SQL Server.
 
     ![新建可用性组向导，选择初始数据同步](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. 在“选择初始数据同步”页上，选择“完全同步”，并指定一个共享网络位置。 具体位置，使用[创建的备份共享](#backupshare)。 在本示例中为 **\\\\\<第一个 SQL Server\>\Backup\\**。 单击“下一步”。
+8. 在“选择初始数据同步”页上，选择“完全同步”，并指定一个共享网络位置。 具体位置，使用[创建的备份共享](#backupshare)。 在本示例中为 **\\\\\<第一个 SQL Server\>\Backup\\\**。 单击“下一步”。
 
    >[!NOTE]
    >完全同步对 SQL Server 第一个实例上的数据库进行完整备份，并将其还原到第二个实例。 对于大型数据库，不建议使用完全同步，因为这可能要花费很长时间。 可以通过使用 `NO RECOVERY` 对数据库进行手动备份和还原来降低该时间。 如果配置可用性组之前，已在 SQL Server 上使用 `NO RECOVERY` 对数据库进行还原，请选择“仅联接”。 若想在配置可用性组之后进行备份，请选择“跳过初始数据同步”。

@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Storage Gen1 中的网络安全性 | Microsoft Docs
-description: 了解 Azure Data Lake Storage Gen1 中的 IP 防火墙和虚拟网络集成工作原理
+description: 了解 Azure Data Lake Storage Gen1 中的虚拟网络集成如何工作
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: 703a865eca90deabcb6bbc64a75fc2bad52b43b7
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: ed2d1256508e588000970879dae7ac653797fbf9
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287993"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883307"
 ---
-# <a name="virtual-network-integration-for-azure-data-lake-storage-gen1---preview"></a>用于 Azure Data Lake Storage Gen1 的虚拟网络集成 - 预览
+# <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>用于 Azure Data Lake Storage Gen1 的虚拟网络集成
 
-本文介绍用于 Azure Data Lake Storage Gen1 的虚拟网络集成（预览版）。 使用虚拟网络集成，可以将帐户配置为仅接受特定虚拟网络和子网的流量。 
+本文介绍了用于 Azure Data Lake Storage Gen1 的虚拟网络集成。 使用虚拟网络集成，可以将帐户配置为仅接受特定虚拟网络和子网的流量。 
 
 此功能有助于确保 Data Lake Storage 帐户免受外部威胁。
 
@@ -73,11 +73,11 @@ ms.locfileid: "51287993"
 
 ## <a name="limitations"></a>限制
 
-- 在 Data Lake Storage Gen1 虚拟网络集成功能推出之前创建的 HDI 群集必须重新创建，否则不支持这项新功能。
+- 在 Data Lake Storage Gen1 虚拟网络集成功能推出之前创建的 HDInsight 群集必须重新创建，否则不支持这项新功能。
  
-- 如果创建新的 HDInsight 群集且选择的 Data Lake Storage Gen1 帐户已启用虚拟网络集成功能，则此过程会失败。 首先，请禁用虚拟网络规则。 也可以在 Data Lake Storage 帐户的“防火墙和虚拟网络”边栏选项卡上选择“允许从所有网络和服务进行访问”。 有关详细信息，请参阅[例外](##Exceptions)部分。
+- 如果创建新的 HDInsight 群集且选择的 Data Lake Storage Gen1 帐户已启用虚拟网络集成功能，则此过程会失败。 首先，请禁用虚拟网络规则。 也可以在 Data Lake Storage 帐户的“防火墙和虚拟网络”边栏选项卡上选择“允许从所有网络和服务进行访问”。 然后，在最终重新启用虚拟网络规则或取消选择**允许来自所有网络和服务的访问**之前，创建 HDInsight 群集。 有关详细信息，请参阅[例外](##Exceptions)部分。
 
-- Data Lake Storage Gen1 虚拟网络集成预览版不适用于 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+- Data Lake Storage Gen1 虚拟网络集成不适用于 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
   
 - 支持虚拟网络的 Data Lake Storage Gen1 帐户中的文件和文件夹数据不能从门户进行访问。 此限制包括从虚拟网络中的某个 VM 进行的访问，以及使用数据资源管理器之类的活动。 帐户管理活动仍可使用。 支持虚拟网络的 Data Lake Storage 帐户中的文件和文件夹数据可以通过所有非门户资源进行访问。 这些资源包括 SDK 访问权限、PowerShell 脚本以及其他 Azure 服务（不是源自门户时）。 
 

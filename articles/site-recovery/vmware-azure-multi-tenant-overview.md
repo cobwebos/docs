@@ -5,16 +5,16 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 89e731d6c255092b087f0615bad49185c7181f1f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 2e68ad6d999a5ff003abe35a0cce75bc5f2cebef
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210748"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723920"
 ---
-# <a name="overview-of-multi-tenant-support-for-vmware-fisaster-recovery-to-azure-with-csp"></a>使用 CSP 从 VMware 灾难恢复到 Azure 的多租户支持概述
+# <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>使用 CSP 从 VMware 灾难恢复到 Azure 的多租户支持概述
 
 [Azure Site Recovery](site-recovery-overview.md) 支持适用于租户订阅的多租户环境。 它还支持适用于租户订阅的多租户，这些租户订阅通过 Microsoft 云解决方案提供商 (CSP) 计划创建和管理。
 
@@ -79,7 +79,7 @@ ms.locfileid: "50210748"
     * **网络**：网络分配
     * **资源**：将 VM 分配到资源池、迁移关闭的 VM、迁移打开的 VM
     * **任务**：创建任务、更新任务
-    * **VM - 配置**：全部
+    * **VM - 配置**：All
     - **VM - 交互**>回答问题、设备连接、配置 CD 介质、配置软盘介质、关机、开机、VMware 工具安装
     - **VM - 清单**> 从现有项创建、新建、注册、注销
     - **VM - 预配**>允许虚拟机下载、允许虚拟机文件上传

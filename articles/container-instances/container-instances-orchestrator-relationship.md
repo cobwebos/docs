@@ -5,15 +5,15 @@ services: container-instances
 author: seanmck
 ms.service: container-instances
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 11/30/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: c17bdb5a81640a7162ae735a4633a31cdfffbb1d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 08bc344a20ade3d8bb0f7dd23a854fd03ddac006
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803505"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845792"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure 容器实例和容器协调器
 
@@ -40,7 +40,7 @@ Azure 容器实例支持分层的协调方法，提供全部所需的调度和�
 
 由于容器实例的底层基础结构由 Azure 管理，因此容器协调器平台不需要考虑如何查找用于运行单个容器的适当主机。 云的弹性确保始终有一台可用的主机。 协调器可将重心放在简化多容器体系结构的开发的任务上，包括缩放和协调的升级。
 
-## <a name="potential-scenarios"></a>可能的方案
+## <a name="scenarios"></a>方案
 
 尽管协调器与 Azure 容器实例的集成仍处于初步阶段，但我们可以预见到将来会出现一些不同的环境：
 
@@ -54,13 +54,15 @@ Azure 容器实例支持分层的协调方法，提供全部所需的调度和�
 
 业务流程协调程序不必先增加群集中的虚拟机数目，然后将更多的容器部署到这些计算机，而可以直接在 Azure 容器实例中调度更多的容器，并删除不再需要的容器。
 
-## <a name="sample-implementation-virtual-kubelet-for-kubernetes"></a>示例实现：适用于 Kubernetes 的虚拟 Kubelet
+## <a name="sample-implementation-virtual-nodes-for-azure-kubernetes-service-aks"></a>示例实现：Azure Kubernetes 服务 (AKS) 的虚拟节点
 
-[虚拟 Kubelet][aci-connector-k8s] 项目演示了容器业务流程平台如何与 Azure 容器实例集成。
+可以使用在 Azure 容器实例中动态创建的虚拟节点，来快速缩放 [Azure Kubernetes 服务](../aks/intro-kubernetes.md) (AKS) 群集中的应用程序工作负载。 虚拟节点当前处于预览阶段，ACI 和 AKS 群集中运行的 Pod 可以借助它进行网络通信。 
 
-虚拟 Kubelet 通过注册为具有无限容器的节点，并在 Azure 容器实例中以容器组的形式调度 [pod][pod-doc] 创建，来模拟 Kubernetes [kubelet][kubelet-doc]。
+目前虚拟节点支持 Linux 容器实例。 可通过 [Azure CLI](https://go.microsoft.com/fwlink/?linkid=2047538) 或 [Azure门户](https://go.microsoft.com/fwlink/?linkid=2047545)开始使用虚拟节点。
 
-可为其他协调器生成能以类似方式与平台基元集成的连接器，以融合协调器 API 的能力以及在 Azure 容器实例中管理容器的速度优势和简便性。
+虚拟节点通过注册为具有无限容量的节点，来使用开源[虚拟 Kubelet][aci-connector-k8s] 模拟 Kubernetes [kubelet][kubelet-doc]。 虚拟 Kubelet 作为 Azure 容器实例中的容器组调度 [Pod][pod-doc] 创建。
+
+请参阅[虚拟 Kubelet](https://github.com/virtual-kubelet/virtual-kubelet) 项目，以获取更多将 Kubernetes API 扩展到无服务器容器平台的示例。
 
 ## <a name="next-steps"></a>后续步骤
 

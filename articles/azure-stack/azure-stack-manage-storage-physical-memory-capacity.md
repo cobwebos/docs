@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
-ms.reviewer: Thomas.Roettinger
-ms.openlocfilehash: 0516ee7a8319b85765280b4c84f5febec8343ada
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: thoroet
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: 4a9c7221fbb549494e3ed112e2ab4e66c4b7dadd
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965609"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770629"
 ---
 # <a name="manage-physical-memory-capacity-for-azure-stack"></a>管理 Azure Stack 的物理内存容量
 

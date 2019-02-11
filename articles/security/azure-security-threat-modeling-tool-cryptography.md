@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 4128d113535c67c0b440dc3fb275af05b5c1c1ae
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: be702571d178fc67eeb92de4e52a48d5bef72b18
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306139"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824620"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>安全框架：加密 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -29,7 +29,7 @@ ms.locfileid: "43306139"
 | **IoT 设备** | <ul><li>[在 IoT 设备上安全存储加密密钥](#keys-iot)</li></ul> | 
 | **IoT 云网关** | <ul><li>[生成足够长度的随机对称密钥用于向 IoT 中心进行身份验证](#random-hub)</li></ul> | 
 | **Dynamics CRM 移动客户端** | <ul><li>[确保实施要求使用 PIN 并允许远程擦除的设备管理策略](#pin-remote)</li></ul> | 
-| **Dynamics CRM Outlook 客户端** | <ul><li>[确保实施要求 PIN/密码/自动锁定并加密所有数据的设备管理策略（例如 Bitlocker）](#bitlocker)</li></ul> | 
+| **Dynamics CRM Outlook 客户端** | <ul><li>[确保实施要求 PIN/密码/自动锁定并加密所有数据的设备管理策略（例如 BitLocker）](#bitlocker)</li></ul> | 
 | **标识服务器** | <ul><li>[使用标识服务器时确保滚动更新签名密钥](#rolled-server)</li><li>[确保在标识服务器中使用强加密型客户端 ID 和客户端密码](#client-server)</li></ul> | 
 
 ## <a id="cipher-length"></a>只使用批准的对称块加密法和密钥长度
@@ -172,8 +172,8 @@ ms.locfileid: "43306139"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 设备 OS - Windows IoT Core、设备连接、Azure IoT 设备 SDK |
-| **参考**              | [Windows IoT Core 上的 TPM](https://developer.microsoft.com/windows/iot/docs/tpm)、[设置 Windows IoT Core 上的 TPM](https://developer.microsoft.com/windows/iot/win10/setuptpm)、[Azure IoT 设备 SDK TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
-| **步骤** | 对称或证书私钥安全存储在受硬件保护的存储（如 TPM 或智能卡芯片）中。 Windows 10 IoT Core 支持 TPM 用户，另外还可以使用多个兼容的 TPM： https://developer.microsoft.com/windows/iot/win10/tpm。 建议使用固件或离散 TPM。 软件 TPM 只应该用于开发和测试目的。 获取 TPM 并在其中预配密钥后，应该编写生成令牌的代码，但不要对令牌中的任何敏感信息进行硬编码。 | 
+| **参考**              | [Windows IoT Core 上的 TPM](https://developer.microsoft.com/windows/iot/docs/tpm)、[设置 Windows IoT Core 上的 TPM](https://docs.microsoft.com/windows/iot-core/secure-your-device/setuptpm)、[Azure IoT 设备 SDK TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
+| **步骤** | 对称或证书私钥安全存储在受硬件保护的存储（如 TPM 或智能卡芯片）中。 Windows 10 IoT Core 支持 TPM 用户，另外还可以使用多个兼容的 TPM： https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm。 建议使用固件或离散 TPM。 软件 TPM 只应该用于开发和测试目的。 获取 TPM 并在其中预配密钥后，应该编写生成令牌的代码，但不要对令牌中的任何敏感信息进行硬编码。 | 
 
 ### <a name="example"></a>示例
 ```
@@ -209,7 +209,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 | **参考**              | 不适用  |
 | **步骤** | 确保实施要求使用 PIN 并允许远程擦除的设备管理策略 |
 
-## <a id="bitlocker"></a>确保实施要求 PIN/密码/自动锁定并加密所有数据的设备管理策略（例如 Bitlocker）
+## <a id="bitlocker"></a>确保实施要求 PIN/密码/自动锁定并加密所有数据的设备管理策略（例如 BitLocker）
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
@@ -218,7 +218,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
-| **步骤** | 确保实施要求 PIN/密码/自动锁定并加密所有数据的设备管理策略（例如 Bitlocker） |
+| **步骤** | 确保实施要求 PIN/密码/自动锁定并加密所有数据的设备管理策略（例如 BitLocker） |
 
 ## <a id="rolled-server"></a>使用标识服务器时确保滚动更新签名密钥
 

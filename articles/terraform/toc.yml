@@ -7,6 +7,8 @@ items:
     href: terraform-overview.md
 - name: 快速入门
   items:
+  - name: 创建多服务应用程序
+    href: terrafom-quickstart.md
   - name: 安装和配置 Terraform
     href: /azure/virtual-machines/linux/terraform-install-configure
     maintainContext: true
@@ -22,8 +24,10 @@ items:
       href: terraform-slot-walkthru.md
   - name: 容器
     items:
-    - name: 使用 AKS 和 Terraform 创建 Kubernetes 群集
+    - name: 使用 AKS 创建 Kubernetes 群集
       href: terraform-create-k8s-cluster-with-tf-and-aks.md
+    - name: 将 AKS 与作为入口控制器的应用程序网关配合使用来创建 Kubernetes 群集
+      href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
   - name: 基础结构
     items:
     - name: 创建启用了 MSI 的 Terraform VM
@@ -68,9 +72,9 @@ items:
     href: https://azure.microsoft.com/solutions/devops/terraform/
   - name: Azure 路线图
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: 332af09ce1ae94c94ed68efa269e190823c3916d
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 352b6bcf9bbce9e38ba2b048d1b8997896870f24
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638352"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750233"

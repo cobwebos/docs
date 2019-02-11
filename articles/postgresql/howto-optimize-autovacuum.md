@@ -3,16 +3,15 @@ title: 在 Azure Database for PostgreSQL 服务器中优化 autovacuum
 description: 本文介绍如何在 Azure Database for PostgreSQL 服务器中优化 autovacuum。
 author: dianaputnam
 ms.author: dianas
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 3f35779337082b7280398bd13ef870c74f3ec082
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 21ac48ff473dcf494f96f87210bdfe09e4d82646
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685984"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103388"
 ---
 # <a name="optimizing-autovacuum-on-azure-database-for-postgresql-server"></a>在 Azure Database for PostgreSQL 服务器中优化 autovacuum 
 本文介绍如何在 Azure Database for PostgreSQL 上有效地优化 autovacuum。
@@ -34,7 +33,7 @@ PostgreSQL 使用 MVCC 实现更大的数据库并发。 每次更新都会导�
 - I/O 增加。
 
 ## <a name="monitoring-bloat-with-autovacuum-queries"></a>使用 autovacuum 查询监视膨胀情况
-下面的示例查询是在名为“XYZ”的表中识别死元组和活动元组的数量：'SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;'
+以下示例查询的目的是确定名为“XYZ”的表中的非活动元组和活动元组的数量：'SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;'
 
 ## <a name="autovacuum-configurations"></a>Autovacuum 配置
 控制 autovacuum 的配置参数围绕两个关键问题：
@@ -42,7 +41,7 @@ PostgreSQL 使用 MVCC 实现更大的数据库并发。 每次更新都会导�
 - 启动它以后应清除多少内容？
 
 下面是一些可以基于以上问题更新的 autovacuum 配置参数以及一些指导信息：
-参数|Description|默认值
+参数|说明|默认值
 ---|---|---
 autovacuum_vacuum_threshold|指定在任一表中触发清扫作业所需的已更新或已删除元组的最小数量。 默认值为 50 个元组。 此参数只能在 postgresql.conf 文件中或服务器命令行上设置。 可以通过更改表存储参数覆盖单独表的该项设置。|50
 autovacuum_vacuum_scale_factor|指定在决定是否触发清扫作业时要添加到 autovacuum_vacuum_threshold 的表大小的占比。 默认值为 0.2，即表大小的 20%。 此参数只能在 postgresql.conf 文件中或服务器命令行上设置。 可以通过更改表存储参数覆盖单独表的该项设置。|百分之 5

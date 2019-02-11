@@ -1,22 +1,20 @@
 ---
 title: 在 Azure Database for PostgreSQL 中进行监视和优化
 description: 本文介绍 Azure Database for PostgreSQL 中的监视和优化功能。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: 8ad7369bc940f682bb7c11c3ed4e3444f1bb056a
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: c936d7946398183f0b0aac025503bb172bc147af
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035078"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100999"
 ---
 # <a name="monitor-and-tune"></a>监视和优化
-监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for PostgreSQL 提供各种监视选项，可以深入了解服务器的行为。
+监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for PostgreSQL 提供各种监视选项，帮助用户深入了解服务器的行为。
 
 ## <a name="metrics"></a>度量值
 Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解为 PostgreSQL 服务器提供支持的资源的行为。 每项指标以一分钟为频率发出，历史记录长达 30 天。 可针对指标配置警报。 有关分步指南，请参阅[如何设置警报](howto-alert-on-metric.md)。 其他任务包括设置自动操作、执行高级分析和存档历史记录。 有关详细信息，请参阅 [Azure 指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
@@ -24,7 +22,7 @@ Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解�
 ### <a name="list-of-metrics"></a>指标列表
 这些指标适用于 Azure Database for PostgreSQL：
 
-|指标|指标显示名称|单位|Description|
+|指标|指标显示名称|单位|说明|
 |---|---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|使用的 CPU 百分比。|
 |memory_percent|内存百分比|百分比|使用的内存百分比。|
@@ -42,7 +40,7 @@ Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解�
 |backup_storage_used|使用的备份存储|字节|已使用的备份存储量。|
 
 ## <a name="server-logs"></a>服务器日志
-可以在服务器上启用日志记录。 这些日志也可通过 [Log Analytics](../log-analytics/log-analytics-queries.md)、事件中心和存储帐户中的 Azure 诊断日志获得。 若要了解有关日志记录的详细信息，请访问[服务器日志](concepts-server-logs.md)页。
+可以在服务器上启用日志记录。 这些日志也可通过 [Log Analytics](../azure-monitor/log-query/log-query-overview.md)、事件中心和存储帐户中的 Azure 诊断日志获得。 若要了解有关日志记录的详细信息，请访问[服务器日志](concepts-server-logs.md)页。
 
 ## <a name="query-store"></a>查询存储
 [查询存储](concepts-query-store.md)是一项公共预览功能，可以随着时间的推移跟踪查询性能，包括查询运行时统计信息和等待事件。 此功能将查询运行时性能信息保留在 query_store 架构下名为 azure_sys 的一个系统数据库中。 你可以通过各种配置旋钮控制数据的收集和存储。

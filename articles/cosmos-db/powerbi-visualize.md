@@ -1,21 +1,17 @@
 ---
-title: Azure Cosmos DB 连接器的 Power BI 教程 | Microsoft Docs
+title: Azure Cosmos DB 连接器的 Power BI 教程
 description: 使用此 Power BI 教程来导入 JSON、创建见解深入的报表以及使用 Azure Cosmos DB 和 Power BI 连接器来可视化数据。
-keywords: Power BI 教程, 可视化数据, Power BI 连接器
-services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: 782de7dc6e099fade0d2f1099ac19b9398562023
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: f6ba66aa37b4a1902f98d2a1fcf5f542fa6476d7
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622085"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043645"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>使用 Power BI 连接器可视化 Azure Cosmos DB 数据
 
@@ -36,7 +32,19 @@ ms.locfileid: "51622085"
 
 * 从 GitHub 下载[示例火山数据](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json)。
 
-* [创建一个 Azure Cosmos DB 数据库帐户](https://azure.microsoft.com/documentation/articles/create-account/)并使用 [Azure Cosmos DB 数据迁移工具](import-data.md)导入火山数据。
+* [创建一个 Azure Cosmos DB 数据库帐户](https://azure.microsoft.com/documentation/articles/create-account/)并使用 [Azure Cosmos DB 数据迁移工具](import-data.md)导入火山数据。 导入数据时，请考虑数据迁移工具中源和目标的以下设置：
+
+   * **源参数** 
+
+       * **导入源：** JSON 文件
+
+   * **目标参数** 
+
+      * **连接字符串：**`AccountEndpoint=<Your_account_endpoint>;AccountKey=<Your_primary_or_secondary_key>;Database= <Your_database_name>` 
+
+      * **分区键：**/Country 
+
+      * **集合吞吐量：** 1000 
 
 要在 PowerBI.com 中共享报表，必须在 PowerBI.com 中拥有帐户。  若要了解有关 Power BI 和 Power BI Pro 的详细信息，请参阅 [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing)。
 

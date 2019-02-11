@@ -1,26 +1,26 @@
 ---
-title: Azure Active Directory 域服务：启用 SharePoint 用户配置文件服务的支持 | Microsoft 文档
+title: Azure Active Directory 域服务：启用对 SharePoint 用户配置文件服务的支持 | Microsoft Docs
 description: 配置 Azure Active Directory 域服务托管域以支持 SharePoint Server 的配置文件同步
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 982984912494598e9791968e5ee3ccee52c5a7c9
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: deef9b317f394213eabb5ce0ce31dd294bc0dfd1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50154909"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155419"
 ---
 # <a name="configure-a-managed-domain-to-support-profile-synchronization-for-sharepoint-server"></a>配置托管域以支持 SharePoint Server 的配置文件同步
 SharePoint Server 包含一个用户配置文件服务用于用户配置文件同步。 若要设置用户配置文件服务，需要在 Active Directory 域中授予相应的权限。 有关详细信息，请参阅 [grant Active Directory Domain Services permissions for profile synchronization in SharePoint Server 2013](https://technet.microsoft.com/library/hh296982.aspx)（在 SharePoint Server 2013 中授予配置文件同步的 Active Directory 域服务权限）。

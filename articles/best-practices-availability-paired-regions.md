@@ -4,14 +4,14 @@ description: 了解 Azure 区域对，以确保应用程序在数据中心发生
 author: rayne-wiselman
 ms.service: multiple
 ms.topic: article
-ms.date: 07/03/2018
+ms.date: 12/23/2018
 ms.author: raynew
-ms.openlocfilehash: 983a551da26e08797b2a65f609cff17954a52828
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: d27db03977b84002b59d58327af7d14fbdc713c2
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954804"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792304"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>业务连续性和灾难恢复 (BCDR)：Azure 配对区域
 
@@ -19,7 +19,7 @@ ms.locfileid: "49954804"
 
 Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少包含一个 Azure 区域的规定世界区域。 Azure 区域是包含一个或多个数据中心的地理位置内的某个区域。
 
-每个 Azure 区域与同一地理位置中另一个区域配对。 但巴西南部除外，它与自身地理位置外部的某个区域配对。 Azure 将跨区域对序列化平台更新（计划内维护），以便一次只更新一个配对区域。 此外，如果发生影响多个区域的中断，则每对中的至少一个区域将优先进行恢复。
+每个 Azure 区域与同一地理位置中另一个区域配对。 但巴西南部除外，它与自身地理位置外部的某个区域配对。 Azure 将跨区域对序列化平台更新（计划内维护），以便一次只更新一个配对区域。 如果发生影响多个区域的中断，则每对中的至少一个区域将优先进行恢复。
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
@@ -30,7 +30,7 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 | 亚洲 |东亚 |东南亚 |
 | 澳大利亚 |澳大利亚东部 |澳大利亚东南部 |
 | 澳大利亚 |澳大利亚中部 |澳大利亚中部 2 |
-| 巴西 |巴西南部 2 |美国中南部 |
+| 巴西 |巴西南部 |美国中南部 |
 | 加拿大 |加拿大中部 |加拿大东部 |
 | 中国 |中国北部 |中国东部|
 | 中国 |中国北部 2 |中国东部 2|
@@ -38,7 +38,7 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 | 法国 |法国中部|法国南部|
 | 德国 |德国中部 |德国东北部 |
 | 印度 |印度中部 |印度南部 |
-| 印度 |印度西部 (1) |印度南部 |
+| 印度 |印度西部 |印度南部 |
 | 日本 |日本东部 |日本西部 |
 | 韩国 |韩国中部 |韩国南部 |
 | 北美 |美国东部 |美国西部 |
@@ -48,15 +48,15 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 | 英国 |英国西部 |英国南部 |
 | 美国国防部 |美国 DoD 东部 |美国 DoD 中部 |
 | 美国政府 |美国亚利桑那州政府 |美国德克萨斯州政府 |
-| 美国政府 |US Gov 爱荷华州 (3) |美国政府弗吉尼亚州 |
-| 美国政府 |美国弗吉尼亚州政府 (4) |美国德克萨斯州政府 |
+| 美国政府 |US Gov 爱荷华州 |美国政府弗吉尼亚州 |
+| 美国政府 |美国政府弗吉尼亚州 |美国德克萨斯州政府 |
 
 表 1 - Azure 区域对映射
 
-- (1) 印度西部的不同之处在于，它仅在一个方向与其他地区配对。 印度西部的次要区域是印度南部，而印度南部的次要区域是印度中部。
-- (2) 巴西南部与其他区域的不同之处在于，它与自身地理位置外部的区域配对。 巴西南部的次要区域是美国中南部，但是美国中南部的次要区域不是巴西南部。
-- (3) US Gov 爱荷华州的次要区域是 US Gov 弗吉尼亚州，但 US Gov 弗吉尼亚州的次要区域不是 US Gov 爱荷华州。
-- (4) 美国弗吉尼亚州政府的次要区域是美国德克萨斯州政府，但美国德克萨斯州政府的次要区域不是美国弗吉尼亚州政府。
+- 印度西部的不同之处在于，它仅在一个方向与其他区域配对。 印度西部的次要区域是印度南部，而印度南部的次要区域是印度中部。
+- 巴西南部与其他区域的不同之处在于，它与自身地理位置外部的区域配对。 巴西南部的次要区域是美国中南部，但是美国中南部的次要区域不是巴西南部。
+- US Gov 爱荷华州的次要区域是 US Gov 弗吉尼亚州，但 US Gov 弗吉尼亚州的次要区域不是 US Gov 爱荷华州。
+- 美国弗吉尼亚州政府的次要区域是美国德克萨斯州政府，但美国德克萨斯州政府的次要区域不是美国弗吉尼亚州政府。
 
 
 我们建议你跨区域对配置业务连续性和灾难恢复 (BCDR)，以便从 Azure 的隔离和可用性策略中受益。 对于支持多个活动区域的应用程序，我们建议尽可能使用区域对中的这两个区域。 这将确保应用程序的最佳可用性，并在发生灾难时最大限度地缩短恢复时间。 
@@ -77,7 +77,7 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 
 ![Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL 数据库** – 使用 Azure SQL 数据库异地复制，可以将事务的异步复制配置到全球任何区域；但是，我们建议在配对区域中为大多数灾难恢复方案部署这些资源。 有关详细信息，请参阅 [Azure SQL 数据库中的异地复制](sql-database/sql-database-geo-replication-overview.md)。
 
-![资源管理器](./media/best-practices-availability-paired-regions/4Green.png)**Azure 资源管理器** - 资源管理器原本就能跨区域提供服务管理组件的逻辑隔离。 这意味着某个区域发生逻辑故障不太可能会影响另一个区域。
+![资源管理器](./media/best-practices-availability-paired-regions/4Green.png)**Azure 资源管理器** - 资源管理器原本就能跨区域提供组件的逻辑隔离。 这意味着某个区域发生逻辑故障不太可能会影响另一个区域。
 
 ## <a name="benefits-of-paired-regions"></a>配对区域的优势
 如图 2 所示。  

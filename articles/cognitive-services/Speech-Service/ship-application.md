@@ -1,21 +1,22 @@
 ---
-title: 语音服务 SDK API 文档 - 教程和 API 参考
+title: 使用语音 SDK 开发应用 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用语音服务 SDK 创建和开发应用
+description: 了解如何使用语音 SDK 创建应用。
 services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 12/18/2018
 ms.author: wolfma
-ms.openlocfilehash: 7510b1501051b79f6bdaf33ec57647a7982fafda
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: b37ba55e0d9e1a93994f90630f92075deb4af7e5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469412"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206436"
 ---
 # <a name="ship-an-application"></a>交付应用程序
 
@@ -38,7 +39,7 @@ ms.locfileid: "49469412"
 
 所需语音 SDK 文件可部署在与应用程序相同的目录中。 这样，应用程序便可直接访问库。 请确保选择与应用程序匹配的正确版本 (Win32/x64)。
 
-| 名称 | 函数
+| Name | 函数
 |:-----|:----|
 | `Microsoft.CognitiveServices.Speech.core.dll` | 核心 SDK，对于本机和托管部署是必需的
 | `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` | 对于托管部署是必需的
@@ -54,7 +55,7 @@ ms.locfileid: "49469412"
 * cURL 库 (`libcurl.so.4`)
 * ALSA 应用程序的共享库 (`libasound.so.2`)
 
-举例来说，Ubuntu 16.04 上应该已默认安装 GNU C 库。 可使用以下命令安装后三个依赖项：
+举例来说，Ubuntu 16.04 或 18.04 上应该已默认安装 GNU C 库。 可使用以下命令安装后三个依赖项：
 
 ```sh
 sudo apt-get update

@@ -1,6 +1,6 @@
 ---
 title: 数据工厂（数据集成服务）简介 | Microsoft 文档
-description: 了解 Azure 数据工厂的定义：一种云数据集成服务，可对数据的移动和转换进行协调和自动化。
+description: 了解什么是 Azure 数据工厂：协调和自动执行数据移动和转换的云数据集成服务。
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -9,21 +9,20 @@ ms.assetid: cec68cb5-ca0d-473b-8ae8-35de949a009e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 0cdf10f4898ba103f9b6f65179300a10c9e33cdf
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 9bf8c51fda6985f88ecffa60b32c1c62e364a511
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43087165"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014924"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure 数据工厂简介 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](data-factory-introduction.md)
+> * [版本 1](data-factory-introduction.md)
 > * [版本 2（当前版本）](../introduction.md)
 
 > [!NOTE]
@@ -120,7 +119,7 @@ Azure 数据工厂中的管道（数据驱动型工作流）通常执行以下�
 
 ### <a name="relationship-between-data-factory-entities"></a>数据工厂实体之间的关系
 
-![示意图：数据工厂（云数据集成服务）- 重要概念](./media/data-factory-introduction/data-integration-service-key-concepts.png)
+![示意图：数据工厂（一种云数据集成服务）- 重要概念](./media/data-factory-introduction/data-integration-service-key-concepts.png)
 
 ## <a name="supported-regions"></a>支持的区域
 目前可在美国西部、美国东部和北欧区域创建数据工厂。 但是，数据工厂可以访问其他 Azure 区域的数据存储和计算数据，在数据存储之间移动数据或使用计算服务处理数据。

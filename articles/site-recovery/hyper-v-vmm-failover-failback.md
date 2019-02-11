@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 80a26f7f2c97fdbc5342d8845277facd79f22a62
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: ef360fd56c3530a49c2f36846db34b29ca1cf444
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210000"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788012"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>对复制到辅助本地站点的 Hyper-V VM 进行故障转移和故障回复
 
@@ -58,7 +58,7 @@ ms.locfileid: "50210000"
 3. 验证 VM 后，“提交”故障转移。 这会删除所有可用的恢复点。
 
 > [!WARNING]
-> **请勿取消正在进行的故障转移**：在故障转移开始前，停止 VM 复制。 如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。  
+> **不会取消正在进行的故障转移**：在故障转移开始前，VM 复制已停止。 如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。  
 
 
 ## <a name="reverse-replicate-and-failover"></a>反向复制和故障转移

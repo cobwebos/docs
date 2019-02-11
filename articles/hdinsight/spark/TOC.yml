@@ -17,7 +17,8 @@ items:
     href: apache-spark-jupyter-spark-sql-use-portal.md
   - name: 创建 Apache Spark 群集 - PowerShell
     href: apache-spark-jupyter-spark-sql-use-powershell.md
-  - name: 创建 Apache Spark 群集 - 模板
+  - name: 创建 Apache Spark 群集 - 资源管理器模板
+    displayName: resource manager template, arm template, resource manager group
     href: apache-spark-jupyter-spark-sql.md
 - name: 教程
   items:
@@ -42,7 +43,7 @@ items:
     - name: 使用 Azure 存储
       href: ../hdinsight-hadoop-use-blob-storage.md
       maintainContext: true
-    - name: 使用 Azure Data Lake Store
+    - name: 使用 Azure Data Lake Storage
       href: ../hdinsight-hadoop-use-data-lake-store.md
       maintainContext: true
   - name: 开发
@@ -93,14 +94,16 @@ items:
       href: apache-spark-zeppelin-notebook.md
   - name: 与其他 Azure 服务配合使用
     items:
-    - name: 与 Data Lake Store 配合使用
+    - name: 与 Data Lake Storage 配合使用
       href: apache-spark-use-with-data-lake-store.md
     - name: 连接到 Azure SQL 数据库
       href: apache-spark-connect-to-sql-database.md
     - name: 使用 Apache Spark 和 Cosmos DB 实现 lambda 体系结构
       href: ../../cosmos-db/lambda-architecture.md
+    - name: 使用 AutoML 运行 Azure ML 工作负荷
+      href: apache-spark-run-machine-learning-automl.md
       maintainContext: true
-  - name: Spark 流式处理
+  - name: Apache Spark 流式处理
     items:
     - name: 流式处理概述
       href: apache-spark-streaming-overview.md
@@ -243,6 +246,7 @@ items:
         href: ../hdinsight-hadoop-create-linux-clusters-portal.md
         maintainContext: true
       - name: 使用 Azure 资源管理器模板
+        displayName: resource manager template, arm template, resource manager group
         href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
       maintainContext: true
     - name: 创建按需群集
@@ -281,7 +285,7 @@ items:
     - name: 上传 Apache Hadoop 作业的数据
       href: ../hdinsight-upload-data.md
       maintainContext: true
-    - name: 将多个 HDInsight 群集与 Data Lake Store 配合使用
+    - name: 将多个 HDInsight 群集与 Data Lake Storage 配合使用
       href: ../hdinsight-multiple-clusters-data-lake-store.md
       maintainContext: true
     - name: 使用 Apache Sqoop 导入和导出数据
@@ -300,7 +304,7 @@ items:
         href: ../hadoop/apache-hadoop-use-sqoop-powershell.md
         maintainContext: true
       maintainContext: true
-    - name: 为工作流使用 Oozie
+    - name: 为工作流使用 Apache Oozie
       href: ../hdinsight-use-oozie-linux-mac.md
       maintainContext: true
     - name: 使用基于时间的 Apache Oozie 协调器
@@ -434,6 +438,9 @@ items:
     href: /rest/api/hdinsight/
   - name: REST API (Apache Spark)
     href: /rest/api/hdinsightspark/
+  - name: 资源管理器模板
+    displayName: resource manager template, arm template, resource manager group
+    href: /azure/templates/microsoft.hdinsight/allversions
 - name: 资源
   items:
   - name: 发行说明
@@ -456,9 +463,9 @@ items:
   - name: 适用于 HDInsight 的 Windows 工具
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 35ef5face0f64b6766993eeb7f546923726bd166
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 7c8adaa2fca41e5a2b501d10ba446c756e09740d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584326"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891576"

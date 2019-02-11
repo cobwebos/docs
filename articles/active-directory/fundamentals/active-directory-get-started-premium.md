@@ -1,29 +1,29 @@
 ---
-title: 如何注册 Azure Active Directory Premium 版本 | Microsoft Docs
-description: 有关如何注册 Azure Active Directory Premium 版本的分步说明。
+title: 注册 Premium 版本 - Azure Active Directory | Microsoft Docs
+description: 有关如何注册 Azure Active Directory Premium 版本的说明。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/07/2017
 ms.author: lizross
 ms.reviewer: piotrci
-ms.custom: it-pro
-ms.openlocfilehash: a0a992e62e7b1e375ff2591aa82bdc7733e9d26f
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: c230547621b853f62e630d3b01066b1870e12548
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394691"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093553"
 ---
-# <a name="how-to-sign-up-for-azure-active-directory-premium"></a>如何：注册 Azure Active Directory Premium
-可购买 Azure Active Directory (Azure AD) Premium 并将其与 Azure 订阅进行关联。 如果需要创建新的 Azure 订阅，则还需要激活许可计划和 Azure AD 服务访问权限。
+# <a name="sign-up-for-azure-active-directory-premium-editions"></a>注册 Azure Active Directory Premium 版本
+可购买 Azure Active Directory (Azure AD) Premium 版本并将其与 Azure 订阅进行关联。 如果需要创建新的 Azure 订阅，则还需要激活许可计划和 Azure AD 服务访问权限。
 
 > [!NOTE]
->在中国，使用 Azure Active Directory 全球实例的客户可以使用 Azure AD 高级和基本版。 中国区世纪互联所运营的 Azure 服务目前不支持 Azure AD Premium 和 Azure AD Basic 版本。 有关详细信息，请通过 [Azure Active Directory 论坛](https://feedback.azure.com/forums/169401-azure-active-directory/)与我们联系。
+>在中国，使用 Azure Active Directory 全球实例的客户可以使用 Azure AD 高级和基本版。 中国区 21Vianet 运营的 Azure 服务目前不支持 Azure AD Premium 和 Azure AD Basic 版本。 有关详细信息，请通过 [Azure Active Directory 论坛](https://feedback.azure.com/forums/169401-azure-active-directory/)与我们联系。
 
 在注册 Active Directory Premium 1 和 Premium 2 之前，必须先确定要使用哪个现有订阅或计划：
 
@@ -39,7 +39,7 @@ ms.locfileid: "49394691"
 Azure 或 Office 365 订阅者可在线购买 Azure Active Directory Premium 版本。 有关详细步骤，请参阅 [How to Purchase Azure Active Directory Premium - Existing Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer)（如何购买 Azure Active Directory Premium - 现有客户）或 [How to Purchase Azure Active Directory Premium - New Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers)（如何购买 Azure Active Directory Premium - 新客户）。
 
 ## <a name="sign-up-using-your-enterprise-mobility--security-licensing-plan"></a>通过企业移动性 + 安全性许可计划进行注册
-“企业移动性 + 安全性”是一个套件，其中包括 Azure AD Premium、Azure 信息保护服务和 Microsoft Intune。 如果已具有 EMS 许可证，可通过下述许可选项之一开始使用 Azure AD：
+“企业移动性 + 安全性”是一个套件，其中包括 Azure AD Premium、Azure 信息保护和 Microsoft Intune。 如果已具有 EMS 许可证，可通过下述许可选项之一开始使用 Azure AD：
 
 有关 EMS 的详细信息，请参阅[“企业移动性 + 安全性”网站](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)。
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 7e1f2411db828917d7a3c5e21348b553a5a5a3bb
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: d83a27d87ffadd15a27196a11ae3f69d84232efa
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087502"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719587"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>通过 Azure 逻辑应用保护对自定义 API 的调用
 
@@ -266,7 +266,7 @@ ms.locfileid: "50087502"
 
 <!-- Going further, to implement this authentication entirely in your own code, 
 and not use the Azure portal, learn how to 
-[authenticate with on-premises Active Directory in your Azure app](../app-service/app-service-authentication-overview.md).
+[authenticate with on-premises Active Directory in your Azure app](../app-service/overview-authentication-authorization.md).
 
 To create an application identity for your logic app and use that identity to call your API, 
 you must follow the previous steps. -->

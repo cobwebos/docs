@@ -3,23 +3,23 @@ title: 使用 Linux VM 系统分配的托管标识访问 Azure AD 图形 API
 description: 本教程将指导你完成使用 Linux VM 系统分配的托管标识访问 Azure AD 图形 API 的过程。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: daveba
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2018
-ms.author: daveba
-ms.openlocfilehash: b58bfc5345e06f82b2550ea2a1a53443946f2096
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.author: priyamo
+ms.openlocfilehash: ad2d20bc54a2de5a049beadac779fff47d39d9b4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427448"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167948"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>教程：使用 Linux VM 系统分配的托管标识访问 Azure AD 图形 API
 

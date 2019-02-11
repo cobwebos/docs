@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: erhopf
-ms.openlocfilehash: 564a12de2a0823372ce267f9ff2759ab17199a80
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 23f1aa8e6356c9a0d3ce7e680ae1b0ca7d0b1bc3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086023"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213797"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-python"></a>快速入门：使用文本翻译 API 通过 Python 来检测文本语言
 
@@ -163,7 +163,7 @@ python detect.py
 
 ## <a name="see-also"></a>另请参阅
 
-除了语言检测，还请了解如何使用文本翻译 API 执行以下操作：
+了解如何使用文本翻译 API 执行以下操作：
 
 * [翻译文本](quickstart-python-translate.md)
 * [直译文本](quickstart-python-transliterate.md)

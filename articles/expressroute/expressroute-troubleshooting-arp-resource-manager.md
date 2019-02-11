@@ -1,34 +1,28 @@
 ---
-title: 获取 ARP 表：Resource Manager：Azure ExpressRoute 故障排除 | Microsoft 文档
+title: 获取 ARP 表 - 故障排除 - ExpressRoute：Azure | Microsoft Docs
 description: 此页说明了如何为 ExpressRoute 线路获取 ARP 表
-documentationcenter: na
 services: expressroute
 author: ganesr
-manager: carolz
-editor: tysonn
-ms.assetid: 0a6bf1d5-6baf-44dd-87d3-1ebd2fd08bdc
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 01/30/2017
 ms.author: ganesr
-ms.openlocfilehash: a65b1ba2998eae33b3e73bd2492fbbf025eb5946
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.custom: seodec18
+ms.openlocfilehash: 1807bda35f6bfcc9dbbb30f054cedb9454a88a7f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23013132"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158564"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>在 Resource Manager 部署模型中获取 ARP 表
 > [!div class="op_single_selector"]
-> * [PowerShell - Resource Manager](expressroute-troubleshooting-arp-resource-manager.md)
+> * [PowerShell - 资源管理器](expressroute-troubleshooting-arp-resource-manager.md)
 > * [PowerShell - 经典](expressroute-troubleshooting-arp-classic.md)
 > 
 > 
 
-本文指导完成相关步骤，以便了解 ExpressRoute 线路的 ARP 表。 
+本文指导完成相关步骤，以便了解 ExpressRoute 线路的 ARP 表。
 
 > [!IMPORTANT]
 > 本文档旨在帮助你诊断和修复简单问题。 它不是为了替代 Microsoft 支持部门。 如果无法通过下述指南解决问题，则必须通过 [Microsoft 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)开具支持票证。
@@ -77,7 +71,7 @@ ARP 表示例：
         # ARP table for Azure private peering - Primary path
         Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Primary
 
-        # ARP table for Azure private peering - Secodary path
+        # ARP table for Azure private peering - Secondary path
         Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Secondary 
 
 下面为其中一个路径显示了示例性输出
@@ -98,7 +92,7 @@ ARP 表示例：
         # ARP table for Azure public peering - Primary path
         Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Primary
 
-        # ARP table for Azure public peering - Secodary path
+        # ARP table for Azure public peering - Secondary path
         Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Secondary 
 
 
@@ -120,7 +114,7 @@ ARP 表示例：
         # ARP table for Microsoft peering - Primary path
         Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Primary
 
-        # ARP table for Microsoft peering - Secodary path
+        # ARP table for Microsoft peering - Secondary path
         Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Secondary 
 
 

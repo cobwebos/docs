@@ -4,7 +4,7 @@ description: 将 Atlassian Jira 和 Confluence 与 Azure Active Directory (Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 65649c3fdc11d74b5888b26b81ae85e10f2788bd
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 77aba012d4e8d333d6f57f8f6a7a12927e6a35ec
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426870"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820540"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>将 Atlassian Jira 和 Confluence 与 Azure Active Directory 结合使用的管理员指南
 
@@ -70,7 +70,7 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 * Jira 核心和软件：6.0 到 7.12
 * Jira 服务台：3.0.0 到 3.5.0
 * JIRA 还支持 5.2。 有关更多详细信息，请单击 [Microsoft Azure Active Directory single sign-on for JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
-* Confluence：5.0 至 5.10
+* Confluence：5.0 到 5.10
 * Confluence：6.0.1
 * Confluence：6.1.1
 * Confluence：6.2.1
@@ -188,7 +188,7 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 * Jira 核心和软件：6.0 到 7.12
 * Jira 服务台：3.0.0 到 3.5.0
 * JIRA 还支持 5.2。 有关更多详细信息，请单击 [Microsoft Azure Active Directory single sign-on for JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
-* Confluence：5.0 至 5.10
+* Confluence：5.0 到 5.10
 * Confluence：6.0.1
 * Confluence：6.1.1
 * Confluence：6.2.1

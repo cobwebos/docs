@@ -3,22 +3,22 @@ title: Azure 服务总线端到端跟踪和诊断 | Microsoft Docs
 description: 服务总线客户端诊断和端到端跟踪概述
 services: service-bus-messaging
 documentationcenter: ''
-author: lmolkova
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
-ms.author: lmolkova
-ms.openlocfilehash: 4584104e9c9833b5f3f586581dd5a58f420fe0bd
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 2330e395244f33653af415b5db896fdc2aa2024d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165333"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852977"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>通过服务总线消息传递进行分布式跟踪和关联
 
@@ -30,7 +30,7 @@ ms.locfileid: "52165333"
 Microsoft Azure 服务总线消息传递已定义生成者与使用者应该用来传递此类跟踪上下文的有效负载属性。
 该协议基于 [HTTP 关联协议](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)。
 
-| 属性名称        | Description                                                 |
+| 属性名称        | 说明                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | 生成者针对队列发出的外部调用的唯一标识符。 请参阅 [HTTP 协议中的 Request-Id](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) 了解事实依据、注意事项和格式 |
 |  Correlation-Context | 操作上下文，将传播到操作处理流程涉及到的所有服务。 有关详细信息，请参阅 [HTTP 协议中的 Correlation-Context](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |
@@ -45,9 +45,9 @@ Microsoft Azure 服务总线消息传递已定义生成者与使用者应该用�
 [Microsoft Application Insights](https://azure.microsoft.com/services/application-insights/) 提供丰富的性能监视功能，包括自动请求和依赖项跟踪。
 
 请根据项目类型安装 Application Insights SDK：
-- [ASP.NET](../application-insights/app-insights-asp-net.md) - 安装版本 2.5-beta2 或更高版本
-- [ASP.NET Core](../application-insights/app-insights-asp-net-core.md) - 安装版本 2.2.0-beta2 或更高版本。
-这些链接提供了有关安装 SDK、创建资源和配置 SDK（如果需要）的详细信息。 针对非 ASP.NET 应用程序，请参阅[适用于控制台应用程序的 Azure Application Insights](../application-insights/application-insights-console.md) 一文。
+- [ASP.NET](../azure-monitor/app/asp-net.md) - 安装版本 2.5-beta2 或更高版本
+- [ASP.NET Core](../azure-monitor/app/asp-net-core.md) - 安装版本 2.2.0-beta2 或更高版本。
+这些链接提供了有关安装 SDK、创建资源和配置 SDK（如果需要）的详细信息。 针对非 ASP.NET 应用程序，请参阅[适用于控制台应用程序的 Azure Application Insights](../azure-monitor/app/console.md) 一文。
 
 如果使用[消息处理程序模式](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler)来处理消息，则无需执行其他操作，系统会自动跟踪由服务所完成的所有服务总线调用，并将其与其他遥测项关联。 否则，请参考以下示例手动进行消息处理跟踪。
 
@@ -83,7 +83,7 @@ async Task ProcessAsync(Message message)
 在本示例中，系统针对每个已处理的消息报告 `RequestTelemetry`，并提供时间戳、持续时间和结果（成功）。 遥测功能也会提供一组关联属性。
 在消息处理期间报告的嵌套跟踪和异常也带有关联属性的戳记，代表它们是 `RequestTelemetry` 的“子级”。
 
-如果在消息处理期间对支持的外部组件发出调用，则会自动跟踪和关联这些调用。 请参阅[使用 Application Insights .NET SDK 跟踪自定义操作](../application-insights/application-insights-custom-operations-tracking.md)来了解手动跟踪和关联。
+如果在消息处理期间对支持的外部组件发出调用，则会自动跟踪和关联这些调用。 请参阅[使用 Application Insights .NET SDK 跟踪自定义操作](../azure-monitor/app/custom-operations-tracking.md)来了解手动跟踪和关联。
 
 ### <a name="tracking-without-tracing-system"></a>在没有跟踪系统的情况下进行跟踪
 如果跟踪系统不支持自动服务总线调用跟踪，可以考虑将此类支持添加到跟踪系统或应用程序中。 本部分介绍服务总线 .NET 客户端发送的诊断事件。  
@@ -227,6 +227,6 @@ serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, D
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Application Insights 关联](../application-insights/application-insights-correlation.md)
-* 参阅 [Application Insights 监视依赖项](../application-insights/app-insights-asp-net-dependencies.md)，了解 REST、SQL 或其他外部资源是否会降低性能。
-* [使用 Application Insights .NET SDK 跟踪自定义操作](../application-insights/application-insights-custom-operations-tracking.md)
+* [Application Insights 关联](../azure-monitor/app/correlation.md)
+* 参阅 [Application Insights 监视依赖项](../azure-monitor/app/asp-net-dependencies.md)，了解 REST、SQL 或其他外部资源是否会降低性能。
+* [使用 Application Insights .NET SDK 跟踪自定义操作](../azure-monitor/app/custom-operations-tracking.md)

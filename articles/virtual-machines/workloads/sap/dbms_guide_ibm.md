@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/11/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 945dcf5776867a9b892a879569a4b58890cb1975
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 2c496f78650be6fc19197c82dc9534fbd256ac45
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075260"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422586"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 IBM DB2 Azure 虚拟机 DBMS 部署
 
@@ -235,7 +235,7 @@ ms.locfileid: "39075260"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -326,8 +326,8 @@ Azure 上发布了有关 SAP 工作负荷的各种文章。  建议从 [Azure �
 | [1999351] |适用于 SAP 的增强型 Azure 监视故障排除 |
 | [2178632] |Microsoft Azure 上的 SAP 关键监视度量值 |
 | [1409604] |Windows 上的虚拟化：增强型监视 |
-| [2191498] |使用 Azure 的 Linux 上的 SAP：增强型监视 |
-| [2233094] |DB6：Azure 上使用 IBM DB2 for Linux、UNIX 和 Windows 的 SAP 应用程序 — 附加信息 |
+| [2191498] |Azure 的 Linux 上的 SAP：增强型监视 |
+| [2233094] |DB6：Azure 上使用 IBM DB2 for Linux、UNIX 和 Windows 的 SAP 应用程序 - 附加信息 |
 | [2243692] |Microsoft Azure (IaaS) VM 上的 Linux：SAP 许可证问题 |
 | [1984787] |SUSE LINUX Enterprise Server 12：安装说明 |
 | [2002167] |Red Hat Enterprise Linux 7.x：安装和升级 |

@@ -1,5 +1,5 @@
 # [Data Lake Storage Gen1 文档](index.md)
-# [切换到 Data Lake Storage Gen2（预览版）文档](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction)
+# [切换到 Data Lake Storage Gen2 文档](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction)
 
 # 概述
 ## [Data Lake Storage Gen1 概述](data-lake-store-overview.md)
@@ -28,7 +28,7 @@
 ### [访问控制](data-lake-store-access-control.md)
 ### [保护存储的数据](data-lake-store-secure-data.md)
 ### [加密](data-lake-store-encryption.md)
-### [虚拟网络集成（预览版）](data-lake-store-network-security.md)
+### [虚拟网络集成](data-lake-store-network-security.md)
 
 ## 使用 Data Lake Storage Gen1 进行身份验证
 ### [身份验证选项](data-lakes-store-authentication-using-azure-active-directory.md)
@@ -92,6 +92,7 @@
 ## [Python（帐户管理）](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python)
 ## [Python（文件系统管理）](http://azure-datalake-store.readthedocs.io/en/latest)
 ## [REST](/rest/api/datalakestore)
+## [资源管理器模板](/azure/templates/microsoft.datalakestore/allversions)
 ## [Azure CLI](https://docs.microsoft.com/cli/azure/dls)
 
 # 资源

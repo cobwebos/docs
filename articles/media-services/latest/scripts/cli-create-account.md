@@ -12,24 +12,22 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/11/2018
+ms.date: 01/25/2019
 ms.author: juliako
-ms.openlocfilehash: a0ca9d8b51bc3cd5ed46b56a4d7fedb45211b136
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 41d9548aa33ee29c40179506ae824ab79b000859
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613484"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213168"
 ---
 # <a name="cli-example-create-an-azure-media-services-account"></a>CLI 示例：创建 Azure 媒体服务帐户
 
-本主题中的 Azure CLI 脚本演示如何创建 Azure 媒体服务帐户。
+本主题中的 Azure CLI 脚本演示如何创建 Azure 媒体服务帐户。 
 
-## <a name="prerequisites"></a>先决条件 
+媒体服务帐户和所有关联的存储帐户必须位于同一 Azure 订阅中。 建议在媒体服务帐户所在的位置使用存储帐户。
 
-在本地安装并使用 CLI，本文要求使用 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可确定你拥有的版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
-
-目前，并非所有[媒体服务 v3 CLI](https://aka.ms/ams-v3-cli-ref) 命令都可在 Azure Cloud Shell 中运行。 建议在本地使用 CLI。
+[!INCLUDE [media-services-cli-instructions.md](../../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="example-script"></a>示例脚本
 

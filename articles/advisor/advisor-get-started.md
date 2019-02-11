@@ -3,22 +3,21 @@ title: Azure 顾问入门 | Microsoft Docs
 description: Azure 顾问入门。
 services: advisor
 documentationcenter: NA
-author: manbeenkohli
+author: kasparks
 manager: ''
 ms.assetid: ''
 ms.service: advisor
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/10/2017
-ms.author: makohli
-ms.openlocfilehash: f6b6900425f86cf720e63cda8621ff438f0f9dea
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.author: kasparks
+ms.openlocfilehash: 6e66fed21223701cd6c61bd1e903b4e7d7fbe0d0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42145273"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850085"
 ---
 # <a name="get-started-with-azure-advisor"></a>Azure 顾问入门
 
@@ -35,7 +34,7 @@ ms.locfileid: "42145273"
 
 4. 顾问仪表板将显示针对所有所选订阅的建议的摘要。  可通过订阅筛选器下拉列表，选择要显示建议的订阅。
 
-5. 若要获取特定类别的建议，请单击其中一个选项卡：“高可用性”、“安全性”、“性能”或“成本”。 
+5. 若要获取特定类别的建议，请单击以下选项卡之一：“高可用性”、“安全”、“性能”或“成本”。 
 
   ![Azure 顾问仪表板](./media/advisor-overview/advisor-dashboard.png)
 

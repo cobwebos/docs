@@ -1,22 +1,22 @@
 ---
-title: 确认方案并计划分析过程 - Azure | Microsoft Docs
-description: 规划高级分析时需考虑一系列关键问题。
+title: 确定方案并计划分析过程 - Team Data Science Process
+description: 通过考虑一系列关键问题，确定高级分析数据处理的方案和计划。
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: b61f6c12aaa94fc61063e8d3bd7e339f1548781c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 8af2398246fac4c8cb1d097e22147bbf695e43a6
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446407"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728923"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>如何规定高级分析数据处理的方案和计划
 将环境设置为对数据集执行高级分析处理时，应计划包括哪些资源？ 本文为一系列提出的问题提供建议，有助于确定与用户方案相关的任务和资源。 [什么是 Team Data Science Process (TDSP)？](overview.md)中概述了预测分析的高级步骤顺序。 每个步骤都需要与用户特定方案相关的任务特定资源。 确定方案的关键问题涉及数据物流、特征、数据集的质量以及执行分析要使用的工具和语言。
@@ -71,8 +71,8 @@ ms.locfileid: "52446407"
 
 以 Azure 机器学习工作室环境为例：
 
-* 关于 Azure 机器学习工作室支持的数据格式和类型的列表，请参阅[受支持的数据格式和数据类型](../studio/import-data.md#data-formats-and-data-types-supported)部分。
-* 有关 Azure 机器学习工作室的数据限制的信息，请参阅[为机器学习导入和导出数据](../studio/faq.md#machine-learning-studio-questions)的**我的模块可以使用多大的数据集？** 部分
+* 关于 Azure 机器学习工作室支持的数据格式和类型的列表，请参阅[受支持的数据格式和数据类型](../studio/import-data.md#supported-data-formats-and-data-types)部分。
+
 
 有关分析过程中使用的其他 Azure 服务的限制的信息，请参阅 [Azure 订阅和服务限制、配额及约束](../../azure-subscription-service-limits.md)。
 

@@ -9,29 +9,28 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/22/2018
+ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 16275ddc4d4ad85bdac54244ceeec568603fdfef
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: c2f58a3510699cdf74e3150d3ad5882929f4f05b
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112093"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358705"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>复制活动中的架构映射
-本文介绍复制数据时，Azure 数据工厂复制活动如何将架构和数据类型从源数据映射到接收器数据。
+本文介绍在执行数据复制操作时，Azure 数据工厂复制活动如何将架构和数据类型从源数据映射到接收器数据。
 
 ## <a name="column-mapping"></a>列映射
 
-复制活动默认按列名称将源数据映射到接收器除非配置了[显式列映射](#explicit-column-mapping)。 更具体地说，复制活动包含以下内容：
+在表格形式的数据之间复制数据时，适用列映射。 复制活动默认按列名称将源数据映射到接收器除非配置了[显式列映射](#explicit-column-mapping)。 更具体地说，复制活动包含以下内容：
 
 1. 从源中读取数据并确定源架构
 
     * 对于数据存储/文件格式具有预定义架构的数据源，例如具有元数据的数据库/文件（vro/ORC/Parquet/带标头的文本），从查询结果或文件元数据中提取源架构。
-    * 对于具有灵活架构的数据源（如 Azure 表/Cosmos DB），根据查询结果推断源架构。 可以通过在提供数据集中提供“structure”覆盖它。
-    * 对于不包含标头的文本文件，使用模式“Prop_0”、“Prop_1”、...生成默认列名称，可通过在数据集中提供“structure”来覆盖它。
+    * 对于具有灵活架构的数据源（如 Azure 表/Cosmos DB），根据查询结果推断源架构。 可以通过在数据集中配置“structure”来覆盖它。
+    * 对于不包含标头的文本文件，使用模式“Prop_0”、“Prop_1”、...生成默认列名称，可通过在数据集中配置“structure”来覆盖它。
     * 对于 Dynamics 源，必须在数据集“structure”部分提供架构信息。
 
 2. 如果指定了显式列映射，则会应用它。
@@ -135,11 +134,86 @@ ms.locfileid: "37112093"
 }
 ```
 
-如果你使用 `"columnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"` 的语法指定列映射，则仍然按原样支持它。
+如果使用语法 `"columnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"` 指定列映射，则仍然按原样支持它。
 
 **列映射流：**
 
 ![列映射流](./media/copy-activity-schema-and-type-mapping/column-mapping-sample.png)
+
+## <a name="schema-mapping"></a>架构映射
+
+在分层数据和表格形式的数据之间复制数据（例如，将数据从 MongoDB/REST 复制到文本文件以及从 SQL 复制到 MangoDB 的 Auzre Cosmos DB API）时，适用架构映射。 复制活动 `translator` 部分支持以下属性：
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| type | 复制活动转换器的 type 属性必须设置为：**TabularTranslator** | 是 |
+| schemaMapping | 键值对的集合，代表从表格端到层次结构端的映射关系。<br/>- **键：** 在数据集结构中定义的表格数据的列名。<br/>- **值：** 要提取和映射的每个字段的 JSON 路径表达式。 对于根对象下的字段，请以根 $ 开头；对于按 `collectionReference` 属性选择的数组中的字段，请以数组元素开头。  | 是 |
+| collectionReference | 若要进行迭代操作，以同一模式从**数组字段中**的对象提取数据并按行和对象进行转换，请指定要进行交叉应用的该数组的 JSON 路径。 仅当分层数据为源时，才支持此属性。 | 否 |
+
+**示例：从 MongoDB 复制到 SQL：**
+
+例如，如果 MongoDB 文档的内容如下： 
+
+```json
+{
+    "id": {
+        "$oid": "592e07800000000000000000"
+    },
+    "number": "01",
+    "date": "20170122",
+    "orders": [
+        {
+            "prod": "p1",
+            "price": 23
+        },
+        {
+            "prod": "p2",
+            "price": 13
+        },
+        {
+            "prod": "p3",
+            "price": 231
+        }
+    ],
+    "city": [ { "name": "Seattle" } ]
+}
+```
+
+而你需要按以下格式通过平展数组中数据（order_pd 和 order_price）的方式将其复制到 Azure SQL 表中，并使用常见的根信息（数字、日期和城市）进行交叉联接：
+
+| orderNumber | orderDate | order_pd | order_price | city |
+| --- | --- | --- | --- | --- |
+| 01 | 20170122 | P1 | 23 | 西雅图 |
+| 01 | 20170122 | P2 | 13 | 西雅图 |
+| 01 | 20170122 | P3 | 231 | 西雅图 |
+
+将架构映射规则配置为以下复制活动 JSON 示例：
+
+```json
+{
+    "name": "CopyFromMongoDBToSqlAzure",
+    "type": "Copy",
+    "typeProperties": {
+        "source": {
+            "type": "MongoDbV2Source"
+        },
+        "sink": {
+            "type": "SqlSink"
+        },
+        "translator": {
+            "type": "TabularTranslator",
+            "schemaMapping": {
+                "orderNumber": "$.number", 
+                "orderDate": "$.date", 
+                "order_pd": "prod", 
+                "order_price": "price",
+                "city": " $.city[0].name"
+            },
+            "collectionReference":  "$.orders"
+        }
+    }
+}
+```
 
 ## <a name="data-type-mapping"></a>数据类型映射
 
@@ -152,10 +226,10 @@ ms.locfileid: "37112093"
 
 ### <a name="supported-data-types"></a>支持的数据类型
 
-数据工厂支持以下临时数据类型，在[数据集结构](concepts-datasets-linked-services.md#dataset-structure)配置中提供类型信息时，可以指定以下值：
+数据工厂支持以下临时数据类型：在[数据集结构](concepts-datasets-linked-services.md#dataset-structure)配置中配置类型信息时，可以指定以下值：
 
 * Byte[]
-* 布尔
+* Boolean
 * Datetime
 * Datetimeoffset
 * 小数
@@ -186,7 +260,7 @@ ms.locfileid: "37112093"
 
 在以下情况下，建议在数据集中指定“structure”：
 
-* 从无标头文本文件复制（输入数据集）。 可将文本文件的列名称指定为与相应接收器列的列名称相同，以避免提供显式的列映射。
+* 从无标头文本文件复制（输入数据集）。 可将文本文件的列名称指定为与相应接收器列的列名称相同，以避免配置显式的列映射。
 * 从具有灵活架构的数据存储（如 Azure 表/Cosmos DB）复制（输入数据集），以确保每次活动运行期间复制所需数据（列），而不让复制活动基于首行推断架构。
 
 

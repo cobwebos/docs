@@ -1,37 +1,38 @@
 ---
-title: 获取 .gif 图像 - 必应图像搜索 API
+title: 使用必应图像搜索 API 搜索 .gif 图像
 titleSuffix: Azure Cognitive Services
-description: 如何使用必应图像搜索 API 获取有关 .gif 图像的详细信息。
+description: 使用必应图像搜索 API 在 Web 中搜索 GIF 图像。
 services: cognitive-services
 author: MikeDodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: rosh
-ms.openlocfilehash: 82a096ccc1ead9bfb542663ae193539fc227c1fb
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.custom: seodec2018
+ms.openlocfilehash: 458acef9224349d5e4c223999243322474daac3d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870241"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55154927"
 ---
-# <a name="search-for-gif-images-using-the-bing-image-search-api"></a>使用必应图像搜索 API 搜索 .gif 图像
+# <a name="search-for-gif-images"></a>搜索 .gif 图像 
 
-借助必应图像搜索 API，还可以在整个 Web 上搜索最相关的 .gif 图像。  开发人员可以在各种会话场景中集成动人的 GIF。 
+借助必应图像搜索 API，还可以在整个 Web 上搜索最相关的 .gif 图像。  开发人员可以在各种会话场景中集成动人的 GIF。 
 
 以下 URL 是对动态 .gif 图像的查询。
-````
+```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
-````
+```
 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query) 参数指定搜索词。  前面的查询还使用 [imageType](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagetype) 筛选器参数指定 `animatedGif`。
 
 若要查看结果的示例，请使用以下 URL 搜索 bing.com。
-````
+```
 https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animatedgif
 
-````
+```
 ## <a name="query-parameters"></a>查询参数
 
 有关查询参数和选项的详细信息，请参阅[图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query-parameters)。 在标题[使用 Java 搜索动态 gif 的示例](#gifExample)下面有一个示例。
@@ -49,15 +50,15 @@ https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animate
 ## <a name="example-search-for-animated-gif-using-java"></a>使用 Java 搜索动态 gif 的示例
 
 以下 URL 搜索动态 .gif 图像：`q=interesting`
-````
+```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 
-````
+```
 如以下示例所示，URL 查询需要 [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#headers) 标头。
 
 以下 Java 示例生成并发送请求。
 
-````
+```
 package gifSearch;
 import java.net.*;
 import java.util.*;
@@ -166,7 +167,7 @@ class SearchResults{
  }
 }
 
-````
+```
 
 ## <a name="results"></a>结果
 该代码获得以下结果作为 JSON 对象：

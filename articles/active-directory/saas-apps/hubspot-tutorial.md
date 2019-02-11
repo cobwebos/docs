@@ -1,25 +1,25 @@
 ---
-title: 教程：Azure Active Directory 与 HubSpot 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 HubSpot 的集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 与 HubSpot 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 57343ccd-53ea-4e62-9e54-dee2a9562ed5
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 76a19668453b35b39359bef442f7f34a06623cbe
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: bf3302f4f7323307163ec540accb4cc652512463
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49432405"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178794"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>教程：Azure Active Directory 与 HubSpot 的集成
 
@@ -101,7 +101,7 @@ ms.locfileid: "49432405"
 
     ![配置单一登录][4]
 
-2. 在“选择单一登录方法”对话框中，对 SAML 模式单击“选择”以启用单一登录。
+2. 在“选择单一登录方法”对话框中，单击“SAML”模式对应的“选择”，以启用单一登录。
 
     ![配置单一登录](./media/hubspot-tutorial/tutorial_general_301.png)
 
@@ -117,7 +117,7 @@ ms.locfileid: "49432405"
 
     ![HubSpot 域和 URL 单一登录信息](./media/hubspot-tutorial/tutorial_hubspot_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://api.hubspot.com/login-api/v1/saml/login?portalId=<CUSTOMER ID>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://api.hubspot.com/login-api/v1/saml/login?portalId=<CUSTOMER ID>`
 
     b. 在“回复 URL”文本框中，键入使用以下模式的 URL：`https://api.hubspot.com/login-api/v1/saml/acs?portalId=<CUSTOMER ID>`
 
@@ -156,7 +156,7 @@ ms.locfileid: "49432405"
 
     ![配置单一登录](./media/hubspot-tutorial/config4.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“复制”按钮以复制“受众 URI (服务提供商实体 ID)”值，并将其粘贴到 Azure 门户中“基本 SAML 配置”部分的“标识符”文本框中。
+    a. 单击“复制”按钮以复制“受众 URI (服务提供商实体 ID)”值，并将其粘贴到 Azure 门户中“基本 SAML 配置”部分的“标识符”文本框中。
 
     b. 单击“复制”按钮以复制“登录 URI、ACS、收件人或重定向”值，并将其粘贴到 Azure 门户中“基本 SAML 配置”部分的“回复 URL”文本框中。
 
@@ -164,7 +164,7 @@ ms.locfileid: "49432405"
 
     d. 在“标识提供者单一登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
-    e. 在记事本中打开已下载的 **Certificate(Base64)** 文件。 将其内容复制到剪贴板，然后粘贴到“X.509 证书”框。
+    e. 在记事本中打开已下载的  **Certificate(Base64)**  文件。 将其内容复制到剪贴板，然后粘贴到“X.509 证书”框 ****。
 
     f. 单击“验证”。
 
@@ -172,7 +172,7 @@ ms.locfileid: "49432405"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
     ![创建 Azure AD 用户][100]
 
@@ -180,11 +180,11 @@ ms.locfileid: "49432405"
 
     ![创建 Azure AD 测试用户](./media/hubspot-tutorial/create_aaduser_01.png) 
 
-3. 在“用户属性”中，执行以下步骤。
+3. 在“用户属性”中，按照以下步骤操作。
 
     ![创建 Azure AD 测试用户](./media/hubspot-tutorial/create_aaduser_02.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com

@@ -3,19 +3,19 @@ title: 禁用 Azure AD SSPR 和 MFA 的聚合注册（公共预览版）
 description: 禁用 Azure AD 多重身份验证和自助密码重置注册（公共预览版）
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 3ce08f67f001a7c43602627b9eeda3ad60f867c1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: c7cdd2e62c76011f2ff4ada33353b85dcf564ef5
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39623215"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076649"
 ---
 # <a name="disable-azure-ad-converged-registration-public-preview"></a>禁用 Azure AD 聚合注册（公共预览版）
 

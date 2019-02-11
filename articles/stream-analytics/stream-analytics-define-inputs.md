@@ -4,17 +4,17 @@ description: 了解如何在 Azure 流分析中设置数据连接。 输入包�
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/27/2018
-ms.openlocfilehash: 2bd2a90c6bac280b6f68bde378b7f7d32b7fcd38
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 66e57d95125bd6404ec23302e4c336ab0b71ea78
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248738"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099726"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>将数据作为流分析的输入进行流式传输
 
@@ -26,10 +26,10 @@ ms.locfileid: "50248738"
 这些输入资源与流分析作业可以属于同一 Azure 订阅，也可以属于不同的订阅。
 
 ### <a name="compression"></a>压缩
-流分析支持跨所有数据流输入源的压缩功能。 当前支持的引用类型为 None、GZip、和 Deflate 压缩。 对压缩的支持不可用于参考数据。 如果输入格式为压缩的 Avro 数据，则会以透明方式对其进行处理。 不需要通过 Avro 序列化指定压缩类型。 
+流分析支持跨所有数据流输入源的压缩功能。 当前支持的引用类型包括：无、GZip 和 Deflate 压缩。 对压缩的支持不可用于参考数据。 如果输入格式为压缩的 Avro 数据，则会以透明方式对其进行处理。 不需要通过 Avro 序列化指定压缩类型。 
 
 ## <a name="create-edit-or-test-inputs"></a>创建、编辑或测试输入
-可以使用 [Azure 门户](https://portal.azure.com)来[创建新输入](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal#configure-input-to-the-job)以及查看或编辑流式处理作业上的现有输入。 还可以通过示例数据测试输入连接以及[测试查询](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job#test-your-query)。 编写查询时，将在 FROM 子句中列出输入。 可以在门户的“查询”页中获取可用输入的列表。 若要使用多个输入，可以对其执行 `JOIN` 操作，也可以编写多个 `SELECT` 查询。
+可以使用 [Azure 门户](https://portal.azure.com)来[创建新输入](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal#configure-job-input)以及查看或编辑流式处理作业上的现有输入。 还可以通过示例数据测试输入连接以及[测试查询](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job#test-your-query)。 编写查询时，将在 FROM 子句中列出输入。 可以在门户的“查询”页中获取可用输入的列表。 若要使用多个输入，可以对其执行 `JOIN` 操作，也可以编写多个 `SELECT` 查询。
 
 
 ## <a name="stream-data-from-event-hubs"></a>从事件中心对数据进行流式传输

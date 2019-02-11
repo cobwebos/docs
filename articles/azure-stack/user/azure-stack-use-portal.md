@@ -10,15 +10,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: efemmano
-ms.openlocfilehash: 4ec9affa78d1f244208a24bcf8a6603e867d4c08
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.lastreviewed: 01/25/2019
+ms.openlocfilehash: 026e37534169fda8dbbf5a568f72046bc6ff55f7
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086499"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252041"
 ---
 # <a name="use-the-azure-stack-portal"></a>使用 Azure Stack 门户
 
@@ -32,7 +33,7 @@ Azure Stack 操作员（服务提供商或组织中的管理员）将会告知�
 
 - 对于集成系统，URL 根据操作员所在的区域和外部域名的不同而异，格式为 https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt;。
 - 如果使用的是 Azure Stack 开发工具包，则门户地址为 https://portal.local.azurestack.external。
-- 所有 Azure Stack 部署默认时区设置为协调世界时 (UTC)。 在安装 Azure Stack 时，你可以选择时区，但是，在安装期间，它将自动恢复为默认设置 UTC。
+- 所有 Azure Stack 部署的默认时区都设置为协调世界时 (UTC)。 在安装 Azure Stack 时，你可以选择时区，但是，在安装期间，它将自动恢复为默认设置 UTC。
 
 ## <a name="customize-the-dashboard"></a>自定义仪表板
 
@@ -60,7 +61,7 @@ Azure Stack 操作员（服务提供商或组织中的管理员）将会告知�
 
     具体而言，我们建议查看以下入门文章：
 
-    - [重要注意事项：使用 Azure Stack 的服务或开发适用于 Azure Stack 的应用](azure-stack-considerations.md)
+    - [重要注意事项：使用 Azure Stack 的服务或构建适用于 Azure Stack 的应用](azure-stack-considerations.md)
     - 在文档的“使用服务”部分中，针对每项服务都提供了注意事项文章。 “注意事项”页面描述了 Azure 中提供的服务与 Azure Stack 中提供的相同服务之间的差异。 有关示例，请参阅 [VM 注意事项](azure-stack-vm-considerations.md)。 “使用服务”部分中可能包含特定于 Azure Stack 的其他信息。
 
       可以使用 Azure 文档来大致了解服务，但必须注意这些差异。 请注意，“快速入门教程”磁贴中的文档链接指向 Azure 文档。
@@ -73,4 +74,4 @@ Azure Stack 操作员（服务提供商或组织中的管理员）将会告知�
 
 ## <a name="next-steps"></a>后续步骤
 
-[重要注意事项：使用 Azure Stack 的服务或开发适用于 Azure Stack 的应用](azure-stack-considerations.md)
+[重要注意事项：使用 Azure Stack 的服务或构建适用于 Azure Stack 的应用](azure-stack-considerations.md)

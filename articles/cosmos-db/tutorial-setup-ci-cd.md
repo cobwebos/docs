@@ -1,21 +1,18 @@
 ---
 title: 通过 Azure Cosmos DB 模拟器生成任务设置 CI/CD 管道
 description: 教程：如何使用 Cosmos DB 模拟器生成任务在 Azure DevOps 中设置生成和发布工作流
-services: cosmos-db
-keywords: Azure Cosmos DB 模拟器
 author: deborahc
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/02/2018
 ms.author: dech
-ms.openlocfilehash: 782975cfa548d214515761e45b8f79a2219831e2
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.reviewer: sngun
+ms.openlocfilehash: 58b97dd2df29a829b843d20c14cdb15644357653
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036965"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053698"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>在 Azure DevOps 中通过 Azure Cosmos DB 模拟器生成任务设置 CI/CD 管道
 
@@ -23,7 +20,7 @@ ms.locfileid: "51036965"
 
 使用针对 Azure DevOps 的 Azure Cosmos DB 模拟器生成任务，可以在 CI 环境中执行相同的操作。 使用生成任务时，可以在生成和发布工作流中针对模拟器运行测试。 该任务启动一个包含已运行模拟器的 Docker 容器，并提供一个可供生成定义的其余部分使用的终结点。 可以根据需要创建并启动模拟器的多个实例，每一个都在单独的容器中运行。 
 
-本文演示如何在适用于 ASP.NET 应用程序的 Azure DevOps 中设置 CI 管道，该应用程序使用 Cosmos DB 模拟器生成任务来运行测试。 
+本文演示如何在适用于 ASP.NET 应用程序的 Azure DevOps 中设置 CI 管道，该应用程序使用 Cosmos DB 模拟器生成任务来运行测试。 可以使用类似的方法为 Node.js 或 Python 应用程序设置 CI 管道。 
 
 ## <a name="install-the-emulator-build-task"></a>安装模拟器生成任务
 
@@ -68,7 +65,7 @@ ms.locfileid: "51036965"
 
 现在需配置测试，以便使用模拟器。 模拟器生成任务导出环境变量“CosmosDbEmulator.Endpoint”，生成管道中的任何其他任务都可以针对其发出请求。 
 
-在本教程中，我们将使用 [Visual Studio 测试任务](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md)运行通过 **.runsettings** 文件配置的单元测试。 若要详细了解单元测试设置，请访问此[文档](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017)。
+在本教程中，我们将使用 [Visual Studio 测试任务](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md)运行通过 **.runsettings** 文件配置的单元测试。 若要详细了解单元测试设置，请访问此[文档](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017)。 本文档中使用的完整 Todo 应用程序代码示例可在 [Github](https://github.com/Azure-Samples/documentdb-dotnet-todo-app) 上找到
 
 下面是一个 **.runsettings** 文件的示例，该文件定义需传递到应用程序的单元测试中的参数。 请注意，所使用的 `authKey` 变量是模拟器的[已知密钥](https://docs.microsoft.com/azure/cosmos-db/local-emulator#authenticating-requests)。 此 `authKey` 是模拟器生成任务预期使用的密钥，应该在 **.runsettings** 文件中定义。
 
@@ -82,6 +79,8 @@ ms.locfileid: "51036965"
   </TestRunParameters>
 </RunSettings>
 ```
+
+如果正在为使用 Azure Cosmos DB 的 MongoDB API 的应用程序设置 CI/CD 管道，则连接字符串默认包含端口号 10255。 但是，此端口当前未打开，作为替代方法，你应该使用端口 10250 建立连接。 Azure Cosmos DB 用于 MongoDB 连接字符串的 API 保持不变，不同的是支持的端口号是 10250 而不是 10255。
 
 这些参数 (`TestRunParameters`) 通过应用程序的测试项目中的 `TestContext` 属性引用。 下面是一个针对 Cosmos DB 运行的测试的示例。
 

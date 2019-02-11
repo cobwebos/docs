@@ -6,14 +6,14 @@ author: roygara
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 11/14/2018
+ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: 13d28e43f9f712f5e597da8171ba9ebf4118bd49
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: f85d404df37d34f7363114fbbf34ceec3bbe7c0f
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712035"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042795"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 上传、下载和列出 Blob
 
@@ -21,9 +21,13 @@ ms.locfileid: "51712035"
 
 ## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+若要访问 Azure 存储，需要一个 Azure 订阅。 如果还没有订阅，则请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-本快速入门需要 Azure PowerShell 模块 3.6 版或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+本快速入门需要 Azure PowerShell 模块 Az 版本 0.7 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
+
+[!INCLUDE [storage-quickstart-tutorial-intro-include-powershell](../../../includes/storage-quickstart-tutorial-intro-include-powershell.md)]
 
 ## <a name="create-a-container"></a>创建容器
 
@@ -33,26 +37,26 @@ ms.locfileid: "51712035"
 
 ```powershell
 $containerName = "quickstartblobs"
-New-AzureStorageContainer -Name $containerName -Context $ctx -Permission blob
+new-azurestoragecontainer -Name $containerName -Context $ctx -Permission blob
 ```
 
 ## <a name="upload-blobs-to-the-container"></a>将 blob 上传到容器
 
 Blob 存储支持块 blob、追加 blob 和页 blob。 用于备份 IaaS VM 的 VHD 文件是页 Blob。 将追加 Blob 用于日志记录，例如有时需要写入到文件，再继续添加更多信息。 Blob 存储中存储的大多数文件都是块 blob。 
 
-要将文件上传到块 blob，请获取容器引用，然后获取对该容器中的块 blob 的引用。 具备 blob 引用后，可使用 [Set-AzureStorageBlobContent](/powershell/module/azure.storage/set-azurestorageblobcontent) 将数据上传到其中。 此操作将创建 Blob（如果该 Blob 不存在），或者覆盖 Blob（如果该 Blob 存在）。
+要将文件上传到块 blob，请获取容器引用，然后获取对该容器中的块 blob 的引用。 具备 blob 引用后，可使用 [set-azurestorageblobcontent](/powershell/module/azure.storage/set-azurestorageblobcontent) 将数据上传到该 blob。 此操作将创建 Blob（如果该 Blob 不存在），或者覆盖 Blob（如果该 Blob 存在）。
 
 以下示例将 Image001.jpg 和 Image002.png 从本地磁盘的 D:\\_TestImages 文件夹上传到创建的容器中。
 
 ```powershell
 # upload a file
-Set-AzureStorageBlobContent -File "D:\_TestImages\Image001.jpg" `
+set-azurestorageblobcontent -File "D:\_TestImages\Image001.jpg" `
   -Container $containerName `
   -Blob "Image001.jpg" `
   -Context $ctx 
 
 # upload another file
-Set-AzureStorageBlobContent -File "D:\_TestImages\Image002.png" `
+set-azurestorageblobcontent -File "D:\_TestImages\Image002.png" `
   -Container $containerName `
   -Blob "Image002.png" `
   -Context $ctx
@@ -62,30 +66,30 @@ Set-AzureStorageBlobContent -File "D:\_TestImages\Image002.png" `
 
 ## <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
 
-使用 [Get-AzureStorageBlob](/powershell/module/azure.storage/get-azurestorageblob) 获取容器中的 blob 列表。 此示例仅显示已上传的 blob 的名称。
+使用 [get-azurestorageblob](/powershell/module/azure.storage/get-azurestorageblob) 获取容器中 blob 的列表。 此示例仅显示已上传的 blob 的名称。
 
 ```powershell
-Get-AzureStorageBlob -Container $ContainerName -Context $ctx | select Name 
+get-azurestorageblob -Container $ContainerName -Context $ctx | select Name
 ```
 
 ## <a name="download-blobs"></a>下载 Blob
 
-将 blob 下载到本地磁盘。 对于要下载的每个 blob，请设置名称并调用 [Get-AzureStorageBlobContent](/powershell/module/azure.storage/get-azurestorageblobcontent) 以下载 blob。
+将 blob 下载到本地磁盘。 对于要下载的每个 blob，请设置名称并调用 [get-azurestorageblobcontent](/powershell/module/azure.storage/get-azurestorageblobcontent) 以下载 blob。
 
 此示例将 blob 下载到本地磁盘的 D:\\_TestImages\Downloads 中。 
 
 ```powershell
 # download first blob
-Get-AzureStorageBlobContent -Blob "Image001.jpg" `
+get-azurestorageblobcontent -Blob "Image001.jpg" `
   -Container $containerName `
   -Destination "D:\_TestImages\Downloads\" `
   -Context $ctx 
 
 # download another blob
-Get-AzureStorageBlobContent -Blob "Image002.png" `
+get-azurestorageblobcontent -Blob "Image002.png" `
   -Container $containerName `
   -Destination "D:\_TestImages\Downloads\" `
-  -Context $ctx 
+  -Context $ctx
 ```
 
 ## <a name="data-transfer-with-azcopy"></a>使用 AzCopy 传输数据
@@ -119,7 +123,7 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets-reference"></a>Microsoft Azure PowerShell 存储 cmdlet 参考
 
-* [存储 PowerShell cmdlet](/powershell/module/azurerm.storage#storage)
+* [存储 PowerShell cmdlet](/powershell/module/az.storage)
 
 ### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure 存储资源管理器
 

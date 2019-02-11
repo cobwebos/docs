@@ -1,29 +1,10 @@
 ---
-title: 在 Azure 机器学习工作室中创建文本分析模型 | Microsoft Docs
-description: 如何使用文本预处理、N 元语法或特征哈希模块在 Azure 机器学习工作室中创建文本分析模型
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=roastala, author=rastala)
-ms.author: amlstudiodocs
-manager: cgronlun
-editor: ''
-ms.assetid: 08cd6723-3ae6-4e99-a924-e650942e461b
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/14/2018
-ms.openlocfilehash: 10b4f8a494a9effc04db731f05eeb010f4fb0b6a
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262476"
+title:创建情绪分析模型 titleSuffix:Azure 机器学习工作室 description:如何在 Azure 机器学习工作室中使用用于文本预处理、N 元语法或特征哈希的模块创建文本分析模型 services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:03/14/2018
 ---
-# <a name="create-text-analytics-models-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中创建文本分析模型
+# <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中创建情绪分析模型
+
 可以使用 Azure 机器学习构建和实现文本分析模型的操作化。 例如，这些模型可以帮助你解决文档分类或情绪分析问题。
 
 在文本分析实验中，通常需要：
@@ -34,7 +15,7 @@ ms.locfileid: "52262476"
 4. 评分和验证模型
 5. 将模型部署到生产环境
 
-在本教程中，当我们使用“Amazon 书评数据集”逐步解说情绪分析模型时，可以学到这些步骤（请参阅研究报告 ”Biographies, Bollywood, Boom-boxes and Blenders: Domain Adaptation for Sentiment Classification”，作者：Association of Computational Linguistics (ACL) 的 John Blitzer、Mark Dredze 和 Fernando Pereira，2007 年）。此数据集是由评论分数（1-2 或 4-5）和自由格式文字组成。 目标是预测评论分数：低 (1-2) 或高 (4-5)。
+在本教程中，我们将使用 Amazon Book Reviews 数据集浏览情绪分析模型，同时学习这些步骤（请参阅以下研究论文：“Biographies, Bollywood, Boom-boxes and Blenders:Domain Adaptation for Sentiment Classification”，作者：John Blitzer、Mark Dredze 和 Fernando Pereira；Association of Computational Linguistics (ACL)，2007。）此数据集是由评论分数（1-2 或 4-5）和自由格式文字组成。 目标是预测评论分数：低 (1-2) 或高 (4-5)。
 
 可以在 Azure AI 库中找到本教程中涵盖的实验：
 
@@ -55,7 +36,7 @@ ms.locfileid: "52262476"
 
 预处理完毕后，我们将数据拆分为定型和测试集。
 
-## <a name="step-2-extract-numeric-feature-vectors-from-pre-processed-text"></a>步骤2：从预处理文本中提取数值特征向量
+## <a name="step-2-extract-numeric-feature-vectors-from-pre-processed-text"></a>步骤 2：从预处理文本中提取数值特征向量
 要生成文本数据模型，通常需要将自由格式文本转换为数字特征向量。 在此示例中，我们使用[从文本提取 N 元语法功能](https://msdn.microsoft.com/library/azure/mt762916.aspx)模块，将文本数据转换为此类格式。 此模块使用一列以空格分隔的字词，并计算出现在数据集中的字典的字词，或 N 元语法的字词。 然后，它将计算每条记录中每个字词或 N 元语法出现的次数，并从这些计数创建特征向量。 在本教程中，我们将 N 元语法大小设置为 2，这样我们的特征向量可包含单个字词和两个后续字词的组合。
 
 ![提取 N 元语法](./media/text-analytics-module-tutorial/extract-ngrams.png)

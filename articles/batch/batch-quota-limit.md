@@ -1,9 +1,9 @@
 ---
-title: Azure Batch 服务配额和限制 | Microsoft Docs
+title: 服务配额和限制 - Azure Batch | Microsoft Docs
 description: 了解默认的 Azure Batch 配额、限制和约束，以及如何请求提高配额
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2018
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0493783cb1253aab78ff39aa42eeabbec8ddb726
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.date: 12/18/2018
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 5194fa73d246cee039e113207bbde277b06d7130
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263590"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753193"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 
@@ -65,9 +65,9 @@ ms.locfileid: "52263590"
 | 每个计算节点的[并发任务](batch-parallel-node-tasks.md)数 | 4 x 节点核心数 |
 | 每个 Batch 帐户的[应用程序](batch-application-packages.md)数 | 20 |
 | 每个应用程序的应用程序包数 | 40 |
-| 最长任务生存期 | 7 天<sup>1</sup> |
+| 最长任务生存期 | 180 天<sup>1</sup> |
 
-<sup>1</sup> 最长任务生存期（从添加到作业时算起到任务完成时结束）为 7 天。 已完成的任务会无限期保存；最长生存期内未完成的任务的数据不可访问。
+<sup>1</sup> 最长任务生存期（从添加到作业时算起到任务完成时结束）为 180 天。 已完成的任务保存 7 天；最长生存期内未完成的任务的数据不可访问。
 
 ## <a name="view-batch-quotas"></a>查看 Batch 配额
 

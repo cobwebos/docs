@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: 94269056a7bf0a89c3d1b2f4968ad9ff90abbc82
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: e643dc2167457b9dc3183e101e816b3a1eb8f052
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106638"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422450"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hive 活动转换 Azure 虚拟网络中的数据
 本教程使用 Azure PowerShell 创建一个数据工厂管道，该管道可以使用 HDInsight 群集上的 Hive 活动转换 Azure 虚拟网络 (VNet) 中的数据。 在本教程中执行以下步骤：
@@ -38,10 +37,10 @@ ms.locfileid: "43106638"
 - **Azure 虚拟网络**。 如果没有 Azure 虚拟网络，请遵照[这些说明](../virtual-network/quick-create-portal.md)创建虚拟网络。 在本示例中，HDInsight 位于 Azure 虚拟网络中。 下面是 Azure 虚拟网络的示例配置。 
 
     ![创建虚拟网络](media/tutorial-transform-data-using-hive-in-vnet/create-virtual-network.png)
-- **HDInsight 群集**。 创建一个 HDInsight 群集，并遵循[使用 Azure 虚拟网络扩展 Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md) 一文中所述，将该群集加入到在前一步骤中创建的虚拟网络。 下面是虚拟网络中 HDInsight 的示例配置。 
+- **HDInsight 群集**。 创建一个 HDInsight 群集，并按照以下文章中所述，将该群集加入到在前一步骤中创建的虚拟网络：[使用 Azure 虚拟网络扩展 Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md)。 下面是虚拟网络中 HDInsight 的示例配置。 
 
     ![虚拟网络中的 HDInsight](media/tutorial-transform-data-using-hive-in-vnet/hdinsight-in-vnet-configuration.png)
-- **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明。
+- **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) 中的说明。
 
 ### <a name="upload-hive-script-to-your-blob-storage-account"></a>将 Hive 脚本上传到 Blob 存储帐户
 
@@ -89,7 +88,7 @@ ms.locfileid: "43106638"
     ```powershell
     $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" 
     ```
-2. 启动 **PowerShell**。 在完成本快速入门之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。 要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+2. 启动 **PowerShell**。 在完成本快速入门之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
     运行以下命令并输入用于登录 Azure 门户的用户名和密码：
         
@@ -106,7 +105,7 @@ ms.locfileid: "43106638"
     ```powershell
     Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"    
     ```  
-3. 创建资源组 ADFTutorialResourceGroup（如果在订阅中尚不存在）。 
+3. 创建资源组：ADFTutorialResourceGroup（如果在订阅中尚不存在）。 
 
     ```powershell
     New-AzureRmResourceGroup -Name $resourceGroupName -Location "East Us" 
@@ -152,9 +151,9 @@ ms.locfileid: "43106638"
 
    ![注册集成运行时](media/tutorial-transform-data-using-hive-in-vnet/register-integration-runtime.png)
 
-   成功注册自我托管的集成运行时后，会看到以下消息：“已成功注册”![](media/tutorial-transform-data-using-hive-in-vnet/registered-successfully.png)
+   成功注册自我托管的集成运行时后，会看到以下消息：![已成功注册](media/tutorial-transform-data-using-hive-in-vnet/registered-successfully.png)
 
-   将节点连接到云服务后，会看到以下页：“节点已连接”![](media/tutorial-transform-data-using-hive-in-vnet/node-is-connected.png)
+   将节点连接到云服务后，会看到以下页：![节点已连接](media/tutorial-transform-data-using-hive-in-vnet/node-is-connected.png)
 
 ## <a name="author-linked-services"></a>创作链接服务
 

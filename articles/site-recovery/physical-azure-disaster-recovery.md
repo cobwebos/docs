@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 4f4a61ad0c1b1fcab4773dcc16c5e22053c4158d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9c5f998470d3bf2a66d7de43bd54d5da4db57608
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230880"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221746"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>针对本地物理服务器设置到 Azure 的灾难恢复
 
@@ -27,8 +27,6 @@ ms.locfileid: "51230880"
 > * 设置源和目标复制环境
 > * 创建复制策略
 > * 为服务器启用复制
-
-[查看体系结构](concepts-hyper-v-to-azure-architecture.md)，这适用于此灾难恢复方案。
 
 ## <a name="prerequisites"></a>先决条件
 

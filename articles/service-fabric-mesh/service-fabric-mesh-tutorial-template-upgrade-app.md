@@ -12,19 +12,19 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/18/2018
+ms.date: 01/11/2019
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c82e0cd5bd6a15ff33f51b4e88f68c13080f595d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d27cc555a8cf96a07818e83b342cf145d9e98a96
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967959"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265901"
 ---
-# <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>教程：升级 Azure Service Fabric 网格中运行的应用程序
+# <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>教程：升级 Service Fabric 网格中运行的 Service Fabric 应用程序
 
-本教程是一个系列中的第三部分。 本教程介绍如何通过增加分配的 CPU 资源来升级[之前部署到 Service Fabric 网格中的 Service Fabric 应用程序](service-fabric-mesh-tutorial-template-deploy-app.md)。  本教程完成后，运行的 Web 前端服务将具有更高的 CPU 资源。
+本教程是一个系列中的第三部分。 本教程介绍如何通过增加分配的 CPU 资源来升级[之前部署到 Service Fabric 网格中的 Service Fabric 应用程序](service-fabric-mesh-tutorial-template-deploy-app.md)。  完成本教程后，你将拥有一个使用更高 CPU 资源运行的 Web 前端服务。
 
 在该系列的第三部分中，你会学习如何：
 
@@ -47,13 +47,13 @@ ms.locfileid: "46967959"
 
 * 如果没有 Azure 订阅，可以在开始前[创建免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 打开 [Azure Cloud Shell](service-fabric-mesh-howto-setup-cli.md) 或者[在本地安装 Azure CLI 和 Service Fabric 网格 CLI](service-fabric-mesh-howto-setup-cli.md#install-the-service-fabric-mesh-cli-locally)。
+* 打开 [Azure Cloud Shell](service-fabric-mesh-howto-setup-cli.md) 或者[在本地安装 Azure CLI 和 Service Fabric 网格 CLI](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli)。
 
 ## <a name="upgrade-application-configurations"></a>升级应用程序配置
 
 将应用程序部署到 Service Fabric 网格的一个主要优势是能够轻松地更新应用程序配置。  例如，更新服务的 CPU 或内存资源。
 
-本教程使用“待办事项列表”示例作为示例，该示例[以前已部署](service-fabric-mesh-tutorial-template-deploy-app.md)，现在应该处于运行状态。 应用程序有两项服务：WebFrontEnd 和 ToDoService。 每项服务在起初部署时的 CPU 资源数为 0.5。  若要查看 WebFrontEnd 服务的 CPU 资源数，请运行以下命令：
+本教程使用“待办事项列表”示例作为示例，该示例[以前已部署](service-fabric-mesh-tutorial-template-deploy-app.md)，现在应该处于运行状态。 此应用程序有两个服务：WebFrontEnd 和 ToDoService。 每项服务在起初部署时的 CPU 资源数为 0.5。  若要查看 WebFrontEnd 服务的 CPU 资源数，请运行以下命令：
 
 ```azurecli
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp

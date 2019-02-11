@@ -1,26 +1,20 @@
 ---
-title: Azure PowerShell 脚本 - 创建 Azure Cosmos DB Gremlin API 帐户 | Microsoft Docs
+title: Azure PowerShell 脚本 - 创建 Azure Cosmos DB Gremlin API 帐户
 description: Azure PowerShell 脚本示例 - 创建 Azure Cosmos DB Gremlin API 帐户
-services: cosmos-db
-documentationcenter: cosmosdb
-author: SnehaGunda
-manager: kfile
-tags: azure-service-management
 ms.service: cosmos-db
-ms.component: cosmosdb-graph
-ms.custom: mvc
+author: SnehaGunda
+ms.author: sngun
+ms.subservice: cosmosdb-graph
 ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: cosmosdb
-ms.workload: database
 ms.date: 05/29/2018
-ms.author: sngun
-ms.openlocfilehash: fdbbd8c623451108889a325092ec573d2c347b06
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.reviewer: sngun
+ms.openlocfilehash: 6d5a13d0b77f086e011cd36a4b427bf284f0efd6
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41920948"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034856"
 ---
 # <a name="azure-cosmos-db-create-a-gremlin-api-account-using-powershell"></a>Azure Cosmos DB：使用 PowerShell 创建 Gremlin API 帐户
 

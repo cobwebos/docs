@@ -4,19 +4,19 @@ description: 可允许来宾用户将其他来宾用户添加到 Azure AD，而�
 services: active-directory
 documentationcenter: ''
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: e7d76138f9d3701fa7e3177227fbeb4386434126
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 90b085ca0cf57391d24ddfbdfe56776afb26cc64
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983795"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075867"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation"></a>在没有邀请的情况下添加 B2B 协作来宾用户
 

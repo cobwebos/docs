@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
-ms.author: cwatson
-ms.openlocfilehash: 87f6437f836d46fc24ae016823a1b091bcd81943
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 0f29544890fe10f4914de393a4b153cfe393a2ec
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582036"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904295"
 ---
 # <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>了解适用于企业合约的 Azure 预留使用情况
 
@@ -76,7 +76,7 @@ ms.locfileid: "52582036"
 
 ## <a name="usage-summary-page-in-enterprise-portal"></a>企业门户中的使用情况摘要页
 
-Azure 预留使用情况也会出现在企业门户的使用情况摘要部分：![企业协议 (EA) 使用情况摘要](./media/billing-understand-reserved-instance-usage-ea/billing-ea-reserved-instance-usagesummary.png)
+Azure 预留使用情况也会出现在企业门户的使用情况摘要部分中：![企业协议 (EA) 使用情况摘要](./media/billing-understand-reserved-instance-usage-ea/billing-ea-reserved-instance-usagesummary.png)
 
 1. 不会收取 VM 的硬件组件费用，因为它已被预留涵盖。 对于 SQL 数据库预留，则会看到“服务名称”为“Azure SQL 数据库预留容量使用情况”的一行。
 2. 在此示例中，你没有 Azure 混合权益，因此会对你收取在 VM 中使用的 Windows 软件的费用。
@@ -95,5 +95,5 @@ Azure 预留使用情况也会出现在企业门户的使用情况摘要部分�
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 

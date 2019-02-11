@@ -4,7 +4,7 @@ description: 了解有关访问 Azure AD 报告 API 的先决条件
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f72d15707d9f56b9e9b5a5d527d1204007c40afa
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: ae2ed2ed2f82b3f01643db7603961c83f1723ed1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621966"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55154960"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>访问 Azure Active Directory 报告 API 的先决条件
 
@@ -214,6 +214,42 @@ ms.locfileid: "51621966"
 
     d. 复制密钥值。
 
+## <a name="troubleshoot-errors-in-the-reporting-api"></a>排查报告 API 中的错误
+
+本部分列出了使用 MS Graph API 访问活动报告时可能遇到的常见错误消息及其解决步骤。
+
+### <a name="500-http-internal-server-error-while-accessing-microsoft-graph-v2-endpoint"></a>访问 Microsoft Graph V2 终结点时出现 500 HTTP 内部服务器错误
+
+目前，我们不支持 Microsoft Graph v2 终结点，请务必使用 Microsoft Graph v1 终结点访问活动日志。
+
+### <a name="error-failed-to-get-user-roles-from-ad-graph"></a>错误：无法从 AD Graph 获取用户角色
+
+尝试使用 Graph 浏览器访问登录时，可能会收到此错误消息。 确保使用 Graph 浏览器 UI 中的两个登录按钮登录帐户，如下图所示。 
+
+![Graph 浏览器](./media/troubleshoot-graph-api/graph-explorer.png)
+
+### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>错误：无法从 AD Graph 执行 Premium 许可证检查 
+
+如果尝试使用 Graph 浏览器访问登录时收到此错误消息，请在左侧导航栏中选择帐户下方的“修改权限”，然后选择“Tasks.ReadWrite”和“Directory.Read.All”。 
+
+![修改权限 UI](./media/troubleshoot-graph-api/modify-permissions.png)
+
+
+### <a name="error-neither-tenant-is-b2c-or-tenant-doesnt-have-premium-license"></a>错误：租户既不是 B2C，也没有 Premium 许可证
+
+访问登录报告需要 Azure Active Directory Premium 1 (P1) 许可证。 如果访问登录时看到此错误消息，请确保你的租户已获得 Azure AD P1 许可证。
+
+### <a name="error-user-is-not-in-the-allowed-roles"></a>错误：用户不是允许的角色 
+
+如果在尝试使用 API 访问审核日志或登录时看到此错误消息，请确保帐户属于 Azure Active Directory 租户中的“安全读者”或“报表读者”角色。 
+
+### <a name="error-application-missing-aad-read-directory-data-permission"></a>错误：应用程序缺少 AAD“读取目录数据”权限 
+
+请按照[访问 Azure Active Directory 报告 API 的先决条件](howto-configure-prerequisites-for-reporting-api.md)中的步骤操作，确保应用程序使用正确的权限集运行。 
+
+### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>错误：应用程序缺少 MSGraph API“读取所有审核日志数据”权限
+
+请按照[访问 Azure Active Directory 报告 API 的先决条件](howto-configure-prerequisites-for-reporting-api.md)中的步骤操作，确保应用程序使用正确的权限集运行。 
 
 ## <a name="next-steps"></a>后续步骤
 

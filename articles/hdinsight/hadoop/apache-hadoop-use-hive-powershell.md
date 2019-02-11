@@ -9,26 +9,26 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4927c76c1bb6be6c27d2e559e6d1292008b3643b
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 8bd754533758d2c736e3951e5c7a10f63bb72bd8
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162310"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410170"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>使用 PowerShell 运行 Apache Hive 查询
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
 本文档提供使用 Azure PowerShell 以 Azure 资源组模式在 Apache Hadoop on HDInsight 群集上运行 Hive 查询的示例。
 
-> [!NOTE]
-> 本文档未详细描述示例中使用的 HiveQL 语句的作用。 有关此示例中使用的 HiveQL 的信息，请参阅[将 Hive 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-hive.md)。
+> [!NOTE]  
+> 本文档未详细描述示例中使用的 HiveQL 语句的作用。 有关此示例中使用的 HiveQL 的信息，请参阅[将 Apache Hive 与 HDInsight 上的 Apache Hadoop 配合使用](hdinsight-use-hive.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 基于 Linux 的 Apache Hadoop on HDInsight 群集版本 3.4 或更高版本。
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 * 具有 Azure PowerShell 的客户端。
@@ -42,7 +42,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Hive 查询�
 在远程 HDInsight 群集上运行 Hive 查询时，将使用以下 Cmdlet：
 
 * `Connect-AzureRmAccount`：在 Azure 订阅中进行 Azure PowerShell 身份验证。
-* `New-AzureRmHDInsightHiveJobDefinition`：使用指定的 HiveQL 语句创建“作业定义”。
+* `New-AzureRmHDInsightHiveJobDefinition`：使用指定的 HiveQL 语句创建作业定义。
 * `Start-AzureRmHDInsightJob`：将作业定义发送到 HDInsight 并启动作业。 将返回作业对象。
 * `Wait-AzureRmHDInsightJob`：使用作业对象来检查作业的状态。 它等到作业完成或超出等待时间。
 * `Get-AzureRmHDInsightJobOutput`：用于检索作业的输出。
@@ -78,7 +78,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Hive 查询�
         2012-02-03    18:55:54    SampleClass1    [ERROR]    incorrect    id
         2012-02-03    19:25:27    SampleClass4    [ERROR]    incorrect    id
 
-   > [!NOTE]
+   > [!NOTE]  
    > 对于较长的 HiveQL 查询，可以使用 Azure PowerShell **Here-Strings** cmdlet 或 HiveQL 脚本文件。 以下代码段显示了如何使用 `Invoke-Hive` cmdlet 来运行 HiveQL 脚本文件。 HiveQL 脚本文件必须上传到 wasb://。
    >
    > `Invoke-AzureRmHDInsightHiveJob -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
@@ -108,9 +108,9 @@ Get-AzureRmHDInsightJobOutput `
 
 有关 HDInsight 中的 Hive 的一般信息：
 
-* [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
+* [将 Apache Hive 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
 
 有关 HDInsight 上的 Hadoop 的其他使用方法的信息：
 
-* [将 Pig 与 Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
-* [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-mapreduce.md)
+* [将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
+* [将 MapReduce 与 HDInsight 上的 Apache Hadoop 配合使用](hdinsight-use-mapreduce.md)

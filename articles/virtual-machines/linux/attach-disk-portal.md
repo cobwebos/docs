@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 2823772787adf56dfbe216a68161f633eadba255
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.subservice: disks
+ms.openlocfilehash: 2c1b46f1c1726a473fe15e490f3000f3c5235a77
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001610"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477499"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>使用门户将数据磁盘附加到 Linux VM 
 本文介绍如何通过 Azure 门户将新磁盘和现有磁盘附加到 Linux 虚拟机。 也可以[在 Azure 门户中将数据磁盘附加到 Windows VM](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
@@ -96,7 +97,12 @@ dmesg | grep SCSI
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-此处，*sdc* 是我们需要的磁盘。 使用 `fdisk` 对磁盘进行分区，将其设置为分区 1 中的主磁盘，并接受其他默认值。 以下示例在 */dev/sdc* 上启动 `fdisk` 进程：
+此处，*sdc* 是我们需要的磁盘。 
+
+### <a name="partition-a-new-disk"></a>对新磁盘进行分区
+如果使用包含数据的现有磁盘，请跳到装载磁盘。 如果附加新磁盘，需要对磁盘进行分区。
+
+使用 `fdisk` 对磁盘进行分区，将其设置为分区 1 中的主磁盘，并接受其他默认值。 以下示例在 */dev/sdc* 上启动 `fdisk` 进程：
 
 ```bash
 sudo fdisk /dev/sdc
@@ -176,8 +182,8 @@ Writing inode tables: done
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
-
-现在，使用 `mkdir` 创建一个目录来装载文件系统。 以下示例在 */datadrive* 处创建一个目录：
+### <a name="mount-the-disk"></a>装载磁盘
+使用 `mkdir` 创建一个目录来装载文件系统。 以下示例在 */datadrive* 处创建一个目录：
 
 ```bash
 sudo mkdir /datadrive

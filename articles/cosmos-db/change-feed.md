@@ -2,18 +2,20 @@
 title: 使用 Azure Cosmos DB 中的更改源支持
 description: 使用 Azure Cosmos DB 的更改源支持跟踪文档中发生的更改，执行基于事件的处理（例如触发器），使缓存和分析系统保持最新状态。
 author: rafats
+ms.author: rafats
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.author: rafats
-ms.openlocfilehash: 4edf637d97070416c0dc2970f4bed483e5f4f34d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.reviewer: sngun
+ms.custom: seodec18
+ms.openlocfilehash: 95fd5b753d2018ebf422c4d9c88c2e3f6aba7bd8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621303"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452254"
 ---
-# <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB 中的更改源
+# <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的更改源 - 概述
 
 Azure Cosmos DB 中更改源支持的工作原理是侦听 Azure Cosmos DB 容器中发生的任何更改。 然后，它会按照所更改文档的修改顺序输出这些文档的排序列表。 这些更改将会持久保留且能以异步和增量方式进行处理。可将输出分配到一个或多个使用者供并行处理。 
 
@@ -31,7 +33,7 @@ Azure Cosmos DB 非常适合用于 IoT、游戏、零售和操作日志记录应
 
 目前，以下 Azure Cosmos DB API 和客户端 SDK 支持此功能。
 
-| **客户端驱动程序** | **Azure CLI** | **SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API**|**表 API** |
+| **客户端驱动程序** | **Azure CLI** | **SQL API** | **Cassandra API** | **Azure Cosmos DB 的 API for MongoDB** | **Gremlin API**|**表 API** |
 | --- | --- | --- | --- | --- | --- | --- |
 | .NET | NA | 是 | 否 | 否 | 是 | 否 |
 |Java|NA|是|否|否|是|否|
@@ -82,7 +84,7 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 
 以下是一些可通过更改源轻松实现的方案：
 
-* 在[无服务器](http://azure.com/serverless) Web 应用或移动应用中，可以跟踪各种事件（例如，对客户配置文件、首选项或其位置的更改），并触发特定的操作（例如，使用 [Azure Functions](#azure-functions) 向客户的设备发送推送通知）。 
+* 在[无服务器](https://azure.microsoft.com/en-us/solutions/serverless/) Web 应用或移动应用中，可以跟踪各种事件（例如，对客户配置文件、首选项或其位置的更改），并触发特定的操作（例如，使用 [Azure Functions](change-feed-functions.md) 向客户的设备发送推送通知）。
 
 * 例如，若要使用 Azure Cosmos DB 构建游戏，可使用更改源，根据已完成的游戏的分数实时更新排行榜。
 
@@ -120,7 +122,7 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，可以在以下文章中了解有关更改流的详细信息：
+接下来，请通过以下文章继续详细了解更改源：
 
 * [读取更改源的选项](read-change-feed.md)
 * [将更改源与 Azure Functions 配合使用](change-feed-functions.md)

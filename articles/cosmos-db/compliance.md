@@ -5,16 +5,16 @@ author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.author: dharmas-cosmos
+ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: f1f05987bee2931f6863298fc0ef7191fd5dbb87
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: f1be314db7bfc4cbdfcc809eb3b1d985583739a4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52166681"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470138"
 ---
-# <a name="azure-cosmos-db-compliance"></a>Azure Cosmos DB 符合性
+# <a name="compliance-in-azure-cosmos-db"></a>Azure Cosmos DB 符合性 
 
 Azure Cosmos DB 面向所有 Azure 区域提供。 Microsoft 为客户提供了五种不同的 Azure 云环境：
 

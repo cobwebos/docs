@@ -5,23 +5,23 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/29/2018
+ms.date: 01/28/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: fa58ecf4607efc1d212e40b98d199756d4b987f8
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 266e2be2775a6f9b74c714bd9112e38837bb6a6c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231791"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098332"
 ---
 # <a name="ethereum-proof-of-work-consortium-solution-template"></a>Ethereum 工作量证明联盟解决方案模板
 
 Ethereum 工作流证明联盟解决方案模板旨在利用最少的 Azure 和 Ethereum 知识使部署和配置多成员联盟 Ethereum 网络变得更加轻松、快捷。
 
-通过 Azure 门户中的少量用户输入和一键式部署，每个成员都可以使用全球范围内的 Microsoft Azure 计算、网络和存储服务来设置其网络内存占用。 每个成员的网络内存占用由一组负载均衡事务节点（应用程序或用户可以通过它们交互来提交事务）、一组记录事务的挖掘节点以及一个 VPN 网关组成。 随后的连接步骤连接网关以创建完全配置的多成员区块链网络
+使用 Azure 资源管理器模板，每个成员都可以使用 Microsoft Azure 计算、网络和存储服务预配其网络占用情况。 每个成员的网络内存占用由一组负载均衡事务节点（应用程序或用户与其进行交互来提交事务）、一组记录事务的挖掘节点以及一个 VPN 网关组成。 在部署后，你将连接网关来创建完全配置的多成员区块链网络。
 
 ## <a name="about-blockchain"></a>关于区块链
 
@@ -45,11 +45,11 @@ Ethereum 工作流证明联盟解决方案模板旨在利用最少的 Azure 和 
 
 ### <a name="log-analytics-details"></a>Log Analytics 详细信息
 
-每个部署还会创建一个新的 Log Analytics 实例或可以加入现有实例。 该操作允许监视组成部署网络的每个虚拟机的各种性能指标。
+每个部署还会创建一个新的 Log Analytics 实例，也可以加入现有实例。 Log Analytics 允许监视组成部署网络的每个虚拟机的各种性能指标。
 
 ## <a name="deployment-architecture"></a>部署体系结构
 
-### <a name="description"></a>Description
+### <a name="description"></a>说明
 
 此解决方案模板可以部署单个或多个基于区域的多成员 Ethereum 联盟网络。 每个区域的虚拟网络使用 VNET 网关和连接资源以链形拓扑连接到其他区域。 它还设置了一个注册器，其中包含每个区域内部署的所有挖掘程序和事务节点所需的信息。
 
@@ -82,17 +82,15 @@ Ethereum 工作流证明联盟解决方案模板旨在利用最少的 Azure 和 
 资源前缀 |用作命名资源基础的字符串（2 至 4 个字母数字字符）。 对于某些资源，字符串前面会追加唯一哈希，同时追加特定资源信息。|长度为 2 到 4 的字母数字字符|NA
 VM 用户名| 部署的每个 VM 的管理员用户名（仅限字母数字字符）|1 - 64 个字符 |gethadmin
 身份验证类型|对虚拟机进行身份验证的方法。 |密码或 SSH 公钥|密码
-密码（身份验证类型 = 密码）|部署的每个虚拟机的管理员帐户密码。 密码必须包含下列要求中的 3 项: 1 个大写字符，1 个小写字符，1 个数字和 1 个特殊字符。 <br />虽然所有 VM 最初都有相同的密码，但你可以在预配后更改密码。|12 - 72 个字符|NA
+密码（身份验证类型 = 密码）|部署的每个虚拟机的管理员帐户密码。 密码必须包含下列要求中的 3 项：1 个大写字符、1 个小写字符、1 个数字和 1 个特殊字符。 <br />虽然所有 VM 最初都有相同的密码，但可以在预配后更改密码。|12 - 72 个字符|NA
 SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell 密钥。|| NA
 订阅| 部署联盟网络的订阅||NA
 资源组| 部署联盟网络的资源组。||NA
 位置| 资源组的 Azure 区域。 ||NA
 
-
-
 ### <a name="operations-management-suite"></a>Operations Management Suite
 
-Operations Management Suite (OMS) 边栏选项卡允许你为网络配置 OMS 资源。 OMS 将从网络收集并显示有用的指标和日志，从而提供快速检查网络运行状况或调试问题的功能。 一旦达到容量，OMS 的免费产品将失败。
+Operations Management Suite (OMS) 允许你为网络配置 OMS 资源。 OMS 将从网络收集并显示有用的指标和日志，从而提供快速检查网络运行状况或调试问题的功能。 一旦达到容量，OMS 的免费产品将失败。
 
 ![新建 OMS](./media/ethereum-deployment/new-oms.png)
 
@@ -127,7 +125,7 @@ Operations Management Suite (OMS) 边栏选项卡允许你为网络配置 OMS �
 ---|---|---|---
 挖掘节点的数量|每个区域部署的挖掘节点的数量|2 - 15| 2
 挖掘节点存储性能|支持每个已部署挖掘节点的托管磁盘的类型。|标准或高级|标准
-挖掘节点虚拟机大小|用于挖掘节点的虚拟机大小。|标准 A、 <br />标准 D、 <br />标准 D-v2、 <br />标准 F 系列、 <br />标准 DS <br />和标准 FS|标准 D1v2
+挖掘节点虚拟机大小|用于挖掘节点的虚拟机大小。|标准 A、 <br />标准 D、 <br />标准 D-v2、 <br />标准 F 系列、 <br />标准 DS  <br />和标准 FS|标准 D1v2
 负载平衡事务节点数|设置为网络组成部分的交易节点的数量。|1 - 5| 2
 事务节点存储性能|支持每个已部署事务节点的托管磁盘的类型。|标准或高级|标准
 事务节点虚拟机大小|用于事务节点的虚拟机大小。|标准 A、 <br />标准 D、 <br />标准 D-v2、 <br />标准 F 系列、 <br />标准 DS  <br />和标准 FS|标准 D1v2
@@ -143,8 +141,8 @@ Operations Management Suite (OMS) 边栏选项卡允许你为网络配置 OMS �
 ConsortiumMember ID|与参与联盟网络的每个成员相关联的 ID，用于配置 IP 地址空间以避免冲突。 <br /><br />成员 ID 在同一网络中的不同组织之间应该是唯一的。 即使同一个组织部署到多个区域，也需要一个唯一的成员 ID。<br /><br />记下此参数的值，因为你需要与其他加入成员共享它。|0 - 255
 Ethereum 网络 ID|要部署的 Ethereum 联盟网络的网络 ID。 每个 Ethereum 网络都有自己的网络 ID，其中 1 是公共网络的 ID。 尽管挖掘节点的网络访问受到限制，但我们仍建议使用大量挖掘节点来防止冲突。|5 - 999,999,999| 10101010
 自定义起源块|自动生成起源块或提供自定义块的选项。|Yes/No| 否
-Ethereum 帐户密码（自定义起源块 = 否）|用于保护导入到每个节点的 Ethereum 帐户的管理员密码。 密码必须包含以下内容：1 个大写字符、1 个小写字符和 1 个数字。|12 个字符或更多|NA
-Ethereum 私钥密码（自定义起源块 = 否）|用于生成与生成的默认 Ethereum 帐户关联的 ECC 私钥的密码。 预生成的私钥不需要显式传入。<br /><br />考虑使用具有足够随机性的密码，以确保私钥强度强，并且不会与其他联盟成员重叠。 密码必须至少包含以下内容：1 个大写字符、1 个小写字符和 1 个数字。<br /><br />请注意，如果两个成员使用相同的密码，则所生成的帐户将相同。 如果单个组织试图跨区域部署并希望跨所有节点共享一个帐户 (coin base)，则相同的密码会很有用。|12 个字符或更多|NA
+Ethereum 帐户密码（自定义起源块 = 否）|用于保护导入到每个节点的 Ethereum 帐户的管理员密码。 密码必须包含：1 个大写字符、1 个小写字符和 1 个数字。|12 个字符或更多|NA
+Ethereum 私钥密码（自定义起源块 = 否）|用于生成与生成的默认 Ethereum 帐户关联的 ECC 私钥的密码。 预生成的私钥不需要显式传入。<br /><br />考虑使用具有足够随机性的密码，以确保私钥强度强，并且不会与其他联盟成员重叠。 密码必须至少包含：1 个大写字符、1 个小写字符和 1 个数字。<br /><br />请注意，如果两个成员使用相同的密码，则所生成的帐户将相同。 如果单个组织试图跨区域部署并希望跨所有节点共享一个帐户 (coin base)，则相同的密码会很有用。|12 个字符或更多|NA
 起源块（自定义起源块 = 是）|表示自定义起源块的 JSON 字符串。 你可以在自定义网络下找到有关起源块格式的详细信息。<br /><br />Ethereum 帐户仍在提供自定义起源块时创建。 考虑在起源块中指定一个预先配置好的 Ethereum 帐户，以便无需等待挖掘。|有效的 JSON |NA
 用于连接的共享密钥|用于 VNET 网关之间连接的共享密钥。| 12 个字符或更多|NA
 联盟数据 URL|指向由其他成员的部署提供的相关联盟配置数据的 URL。 <br /><br />此信息由已进行部署的已连接成员提供。 如果你部署了网络的其余部分，则 URL 是模板部署输出，名为 CONSORTIUM-DATA。||NA
@@ -154,7 +152,7 @@ Ethereum 私钥密码（自定义起源块 = 否）|用于生成与生成的默�
 
 ### <a name="summary"></a>摘要
 
-单击“摘要”边栏选项卡查看指定的输入并运行基本的部署前验证。
+单击“摘要”以查看指定的输入并运行基本的部署前验证。
 
 ![摘要](./media/ethereum-deployment/summary.png)
 
@@ -225,13 +223,13 @@ mn-ethwvu-reg1_2 |mn-ethwvu-reg1000002
 
 作为联盟的第一名成员（或已连接的成员），你需要向其他成员提供几条信息，以便他们可以加入并建立其连接。 具体而言：
 
-1. 共享联盟配置数据：有一组用于组织两个成员之间 Ethereum 连接的数据。 将必要的信息（包括起源块、联盟网络 ID 和引导节点）写入到领导者或其他已部署成员的事务节点上的文件中。 该文件的位置在名为 CONSORTIUM-DATA 的模板部署输出参数中列出。
-2. 对等信息终结点：对等信息注册器终结点用于从领导者或其他成员的部署中获取已连接到 Ethereum 网络的所有节点的信息。 DB 存储关于网络中每个已连接的节点的一组信息，如节点的主机名、专用 IP 地址等信息。这是名为 PEER_INFO_ENDPOINT 的模板部署输出参数。
-3. 对等信息主键：对等信息注册器主键用于访问领导者或其他成员的对等信息主键。 这是名为 PEER_INFO_PRIMARY_KEY 的模板部署输出参数。
+1. **共享联盟配置数据**：有一组用于组织两个成员之间 Ethereum 连接的数据。 将必要的信息（包括起源块、联盟网络 ID 和引导节点）写入到领导者或其他已部署成员的事务节点上的文件中。 该文件的位置在名为 CONSORTIUM-DATA 的模板部署输出参数中列出。
+2. **对等信息终结点**：对等信息注册器终结点用于从领导者或其他成员的部署中获取已连接到 Ethereum 网络的所有节点的信息。 DB 存储关于网络中每个已连接的节点的一组信息，如节点的主机名、专用 IP 地址等信息。这是名为 PEER_INFO_ENDPOINT 的模板部署输出参数。
+3. **对等信息主键**：对等信息注册器主键用于访问领导者或其他成员的对等信息主键。 这是名为 PEER_INFO_PRIMARY_KEY 的模板部署输出参数。
 
 
-4. VNET 网关：每个成员通过现有成员建立到整个区块链网络的连接。 要连接 VNET，你需要到要连接的成员的 VNET 网关的资源路径。 这是名为 CONSORTIUM_MEMBER_GATEWAY_ID 的模板部署输出参数。
-5. 共享密钥：联盟网络中两个正在建立连接的成员之间预先建立的机密。 这是在部署上下文之外同意的字母数字字符串（1 到 128 个字符之间）。 （例如，MySharedKeyAbc123）
+4. **VNET 网关**：每个成员通过现有成员建立到整个区块链网络的连接。 要连接 VNET，你需要到要连接的成员的 VNET 网关的资源路径。 这是名为 CONSORTIUM_MEMBER_GATEWAY_ID 的模板部署输出参数。
+5. **共享密钥**：联盟网络中两个正在建立连接的成员之间预先建立的机密。 这是在部署上下文之外同意的字母数字字符串（1 到 128 个字符之间）。 （例如，MySharedKeyAbc123）
 
 ### <a name="acceptance-of-new-member"></a>接受新成员
 
@@ -243,7 +241,7 @@ PowerShell/CLI 安装程序
 
 你将需要在本地安装最新版本的 Azure cmdlet，并打开一个会话。 确保使用 Azure 订阅凭证登录会话。
 
-PowerShell：建立连接
+**PowerShell：建立连接**
 
 下载 PowerShell 模块并将其存储在本地。 PowerShell 模块的位置指定为 PAIR-GATEWAY-PS-MODULE 模板部署输出参数。
 
@@ -261,24 +259,24 @@ Import-Module <filepath to downloaded file>
 
 最后，使用相应的输入运行该函数：
 
-- MyGatewayResourceId：网关的资源路径。 这是名为 CONSORTIUM_MEMBER_GATEWAY_ID 的模板部署输出参数。
-- OtherGatewayResourceId：加入成员的网关的资源路径。 这由加入成员提供，并且是也称为 CONSORTIUM_MEMBER_GATEWAY_ID 的模板部署输出参数。
-- ConnectionName：用于识别此网关连接的名称。
-- 共享密钥：联盟网络中两个正在建立连接的成员之间预先建立的机密。
+- **MyGatewayResourceId：** 网关的资源路径。 这是名为 CONSORTIUM_MEMBER_GATEWAY_ID 的模板部署输出参数。
+- **OtherGatewayResourceId：** 加入成员的网关的资源路径。 这由加入成员提供，并且是也称为 CONSORTIUM_MEMBER_GATEWAY_ID 的模板部署输出参数。
+- **ConnectionName：** 用于识别此网关连接的名称。
+- **共享密钥**：联盟网络中两个正在建立连接的成员之间预先建立的机密。
 
 CreateConnection - MyGatewayResourceId <resource path of your Gateway> -OtherGatewayResourceId <加入成员网关的资源路径> -ConnectionName myConnection -SharedKey "MySharedKeyAbc123"
 
-xPlat CLI：建立连接
+**xPlat CLI：建立连接**
 
 下载 Azure CLI 脚本并将其存储在本地。 Azure CLI 脚本的位置在名为 PAIR-GATEWAY-AZURE-CLI-SCRIPT 的模板部署参数中指定。
 
 使用相应的输入运行脚本：
 
-- MyGatewayResourceId：网关的资源路径。 这是名为 CONSORTIUM_MEMBER_GATEWAY_ID 的模板部署输出参数。
-- OtherGatewayResourceId：加入成员的网关的资源路径。 这由加入成员提供，并且是其部署的模板部署参数，也称为 CONSORTIUM_MEMBER_GATEWAY_ID 。
-- ConnectionName：用于识别此网关连接的名称。
-- 共享密钥：联盟网络中两个正在建立连接的成员之间预先建立的机密。
-- 位置：部署网关资源的 Azure 区域。
+- **MyGatewayResourceId：** 网关的资源路径。 这是名为 CONSORTIUM_MEMBER_GATEWAY_ID 的模板部署输出参数。
+- **OtherGatewayResourceId：** 加入成员的网关的资源路径。 这由加入成员提供，并且是其部署的模板部署参数，也称为 CONSORTIUM_MEMBER_GATEWAY_ID 。
+- **ConnectionName：** 用于识别此网关连接的名称。
+- **共享密钥**：联盟网络中两个正在建立连接的成员之间预先建立的机密。
+- **位置：** 部署网关资源的 Azure 区域。
 
 ``` powershell
 az network vpn-connection create --name $ConnectionName --resource-group

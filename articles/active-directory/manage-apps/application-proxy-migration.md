@@ -4,9 +4,9 @@ description: 如果要从 Microsoft Forefront 或 Unified Access Gateway 升级�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,23 +15,23 @@ ms.date: 07/27/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: c4ecb812156eae7402065cff4dc4bae3aef1554b
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: d0a28dc1eee1536a0cabe454cd899d9111edff88
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365169"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197732"
 ---
 # <a name="compare-remote-access-solutions"></a>比较远程访问解决方案
 
-Azure Active Directory 应用程序代理是 Microsoft 提供的两个远程访问解决方案之一。 另一个是 Web 应用程序代理（本地版本）。 这两个解决方案取代了 Microsoft 提供的早期产品： Microsoft Forefront 威胁管理网关 (TMG) 和统一访问网关 (UAG)。 通过本文了解如何对这四个解决方案进行比较。 对于仍在使用已弃用的 TMG 或 UAG 解决方案的用户，可借助本文规划迁移到其中一个应用程序代理。 
+Azure Active Directory 应用程序代理是 Microsoft 提供的两个远程访问解决方案之一。 另一个是 Web 应用程序代理（本地版本）。 这两个解决方案取代了 Microsoft 提供的早期产品：Microsoft Forefront 威胁管理网关 (TMG) 和统一访问网关 (UAG)。 通过本文了解如何对这四个解决方案进行比较。 对于仍在使用已弃用的 TMG 或 UAG 解决方案的用户，可借助本文规划迁移到其中一个应用程序代理。 
 
 
 ## <a name="feature-comparison"></a>功能比较
 
 通过此表了解如何对威胁管理网关 (TMG)、统一访问网关 (UAG)、Web 应用程序代理 (WAP) 和 Azure AD 应用程序代理 (AP) 进行比较。
 
-| 功能 | TMG | UAG | WAP | AP |
+| Feature | TMG | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
 | 证书身份验证 | 是 | 是 | - | - |
 | 有选择地发布浏览器应用 | 是 | 是 | 是 | 是 |

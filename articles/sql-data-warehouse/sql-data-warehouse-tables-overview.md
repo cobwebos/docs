@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: f09b9a93956c9d23e17c742c5f6ec4730591933b
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 290230237a68730a908c6fd0fb0df1d63035b93b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302307"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247334"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中设计表
 
@@ -103,7 +103,7 @@ SQL 数据仓库的一个基本功能是它可以跨 60 个[分布区](massively
 ## <a name="columnstore-indexes"></a>列存储索引
 默认情况下，SQL 数据仓库将表存储为聚集列存储索引。 对于大型表而言，这种数据存储形式可以实现较高的数据压缩率和查询性能。  聚集列存储索引通常是最佳选择，但在某些情况下，聚集索引或堆是适当的存储结构。
 
-有关列存储功能的列表，请参阅[列存储索引的新增功能](/sql/relational-databases/indexes/columnstore-indexes-whats-new)。 若要提高列存储索引性能，请参阅[最大化列存储索引的行组质量](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
+有关列存储功能的列表，请参阅[列存储索引的新增功能](/sql/relational-databases/indexes/columnstore-indexes-what-s-new)。 若要提高列存储索引性能，请参阅[最大化列存储索引的行组质量](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
 
 ## <a name="statistics"></a>统计信息
 查询优化器在创建用于执行查询的计划时，使用列级统计信息。 若要提高查询性能，必须基于各个列（尤其是查询联接中使用的列）创建统计信息。 创建和更新统计信息的过程不会自动发生。 在创建表之后[创建统计信息](/sql/t-sql/statements/create-statistics-transact-sql)。 添加或更改了大量的行之后更新统计信息。 例如，在执行加载后更新统计信息。 有关详细信息，请参阅[统计信息指南](sql-data-warehouse-tables-statistics.md)。
@@ -111,7 +111,7 @@ SQL 数据仓库的一个基本功能是它可以跨 60 个[分布区](massively
 ## <a name="commands-for-creating-tables"></a>用于创建表的命令
 可以创建一个新的空表。 还可以创建一个表并在其中填充 select 语句的结果。 下面是用于创建表的 T-SQL 命令。
 
-| T-SQL 语句 | Description |
+| T-SQL 语句 | 说明 |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) | 通过定义所有表列和选项来创建空表。 |
 | [创建外部表](/sql/t-sql/statements/create-external-table-transact-sql) | 创建外部表。 表定义存储在 SQL 数据仓库中。 表数据存储在 Azure Blob 存储或 Azure Data Lake Store 中。 |
@@ -133,7 +133,7 @@ SQL 数据仓库支持其他数据库所提供的许多（但不是全部）表�
 - [索引视图](/sql/relational-databases/views/create-indexed-views)
 - [序列](/sql/t-sql/statements/create-sequence-transact-sql)
 - [稀疏列](/sql/relational-databases/tables/use-sparse-columns)
-- [代理键]()。 使用[标识](sql-data-warehouse-tables-identity.md)实现。
+- 代理键。 使用[标识](sql-data-warehouse-tables-identity.md)实现。
 - [同义词](/sql/t-sql/statements/create-synonym-transact-sql)
 - [触发器](/sql/t-sql/statements/create-trigger-transact-sql)
 - [唯一索引](/sql/t-sql/statements/create-index-transact-sql)

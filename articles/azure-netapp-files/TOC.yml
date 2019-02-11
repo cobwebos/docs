@@ -1,0 +1,53 @@
+items:
+- name: Azure NetApp 文件文档
+  href: index.md
+- name: 概述
+  items:
+  - name: Azure NetApp 文件简介
+    href: azure-netapp-files-introduction.md
+  - name: 了解存储层次结构
+    href: azure-netapp-files-understand-storage-hierarchy.md
+- name: 快速入门
+  items:
+  - name: 注册 Azure NetApp 文件
+    href: azure-netapp-files-register.md
+  - name: 创建 NetApp 帐户
+    href: azure-netapp-files-create-netapp-account.md
+  - name: 设置容量池
+    href: azure-netapp-files-set-up-capacity-pool.md
+  - name: 将子网委托到 Azure NetApp 文件
+    href: azure-netapp-files-delegate-subnet.md
+  - name: 为 Azure NetApp 文件创建卷
+    href: azure-netapp-files-create-volumes.md
+  - name: 为卷配置导出策略（可选）
+    href: azure-netapp-files-configure-export-policy.md
+- name: 概念
+  items:
+  - name: Azure NetApp 文件的资源限制
+    href: azure-netapp-files-resource-limits.md
+- name: 操作指南
+  items:
+  - name: 管理卷
+    href: azure-netapp-files-manage-volumes.md
+  - name: 为虚拟机装载或卸载卷
+    href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
+  - name: 管理快照
+    href: azure-netapp-files-manage-snapshots.md
+  - name: 重设容量池或卷的大小
+    href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+  - name: 开发
+    items:
+    - name: REST
+      href: azure-netapp-files-develop-with-rest-api.md
+- name: 引用
+  items:
+  - name: REST
+    href: https://docs.microsoft.com/rest/api/netapp/
+  - name: 资源管理器模板
+    href: /azure/templates/microsoft.netapp/allversions
+ms.openlocfilehash: ec453db38182dd256a154f85fafc7c08f5bdfa6a
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959640"

@@ -1,5 +1,5 @@
 ---
-title: 在认知搜索管道中创建技能集（Azure 搜索）| Microsoft Docs
+title: 在认知搜索管道中创建技能集 - Azure 搜索
 description: 定义数据提取、自然语言处理或图像分析步骤，从 Azure 搜索使用的数据扩充和提取结构化信息。
 manager: pablocas
 author: luiscabrer
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: luisca
-ms.openlocfilehash: 997b106f748a2f18e8141f77f3b9ff8bb6b9d971
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.custom: seodec2018
+ms.openlocfilehash: 091a165dacbf0e98532f343745e56c4acf765b84
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268019"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320789"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>如何在扩充管道中创建技能集
 
@@ -28,8 +29,8 @@ ms.locfileid: "36268019"
 请记住以下要点：
 
 + 只能为每个索引器创建一个技能集。
-+ 一个技能集必须至少包含一个技能。
-+ 可以创建相同类型的多个技能（例如，图像分析技能的变体），但每个技能只能在同一个技能集中使用一次。
++ 技能组合必须具有至少一种技能。
++ 可以创建相同类型的多个技能（例如，图像分析技能的变体）。
 
 ## <a name="begin-with-the-end-in-mind"></a>一开始就想到最终结果
 

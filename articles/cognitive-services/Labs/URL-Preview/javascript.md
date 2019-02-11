@@ -1,23 +1,23 @@
 ---
-title: 快速入门：项目 URL 预览、JavaScript
+title: 快速入门：项目 URL 预览，JavaScript
 titlesuffix: Azure Cognitive Services
 description: 通过 JavaScript 快速开始使用必应 URL 预览 API 的脚本示例。
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: url-preview
+ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: f36609448819ed197cb92c0bc4d9cc0237fe6df8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 941cdd25eb6f16b580900fed6e41aa4bf8df15f7
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466930"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224875"
 ---
-# <a name="quickstart-url-preview-in-javascript"></a>快速入门：使用 JavaScript 实现 URL 预览 
+# <a name="quickstart-url-preview-in-javascript"></a>快速入门：JavaScript 中的 URL 预览 
 
 以下单页应用程序使用 JavaScript 创建 SwiftKey 站点的 URL 预览： https://swiftkey.com/en。 
 
@@ -34,7 +34,7 @@ ms.locfileid: "49466930"
 
 **原始 JSON 响应**
 
-````
+```
 {
   "_type": "WebPage",
   "name": "SwiftKey - Smart prediction technology for easier mobile typing",
@@ -46,7 +46,7 @@ ms.locfileid: "49466930"
   }
 }
 
-````
+```
 
 **正在运行的演示**
 

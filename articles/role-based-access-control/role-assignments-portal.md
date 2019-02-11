@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9f5d48a074f8069e243af5644f86ad3c3d8f559b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: c339556353967db26f022384f2cf877962dc6d83
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634857"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412302"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>使用 RBAC 和 Azure 门户管理访问权限
 
@@ -67,13 +67,13 @@ ms.locfileid: "52634857"
 
 1. 单击“访问权限检查”选项卡。
 
-    ![“访问控制”-“访问权限检查”选项卡](./media/role-assignments-portal/access-control-check-access.png)
+    ![“访问控制”-“检查访问权限”选项卡](./media/role-assignments-portal/access-control-check-access.png)
 
 1. 在“查找”列表中，选择要检查访问权限的安全主体类型。
 
 1. 在搜索框中，输入字符串以在目录中搜索显示名称、电子邮件地址或对象标识符。
 
-    ![访问权限检查选择列表](./media/role-assignments-portal/check-access-select.png)
+    ![“检查访问权限”选择列表](./media/role-assignments-portal/check-access-select.png)
 
 1. 单击安全主体以打开“分配”窗格。
 
@@ -166,6 +166,6 @@ ms.locfileid: "52634857"
 ## <a name="next-steps"></a>后续步骤
 
 * [教程：使用 RBAC 和 Azure 门户为用户授予访问权限](quickstart-assign-role-user-portal.md)
-* [教程：使用 RBAC 和 Azure PowerShell 授予用户的访问权限](tutorial-role-assignments-user-powershell.md)
-* [内置角色](built-in-roles.md)
+* [教程：使用 RBAC 和 Azure PowerShell 为用户授予访问权限](tutorial-role-assignments-user-powershell.md)
+* [对 Azure 中的 RBAC 进行故障排除](troubleshooting.md)
 * [使用 Azure 管理组来组织资源](../azure-resource-manager/management-groups-overview.md)

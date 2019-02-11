@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/23/2018
 ms.author: iainfou
-ms.openlocfilehash: 4e3f2f33cfffeacbcbeccc4f17f55b7d0e1a985c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: c109febc90c9dd8d9b17489c9e612f677695bd25
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50128826"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727086"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>创建 HTTPS 入口控制器并在 Azure Kubernetes 服务 (AKS) 中使用自己的 TLS 证书
 
@@ -179,7 +179,7 @@ $ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
 [...]
 ```
 
-`curl` 命令中的 *-v* 参数输出详细信息，包括收到的 TLS 证书。 在输出 curl 结果的中途，可以验证是否使用了你自己的 TLS 证书。 即使使用的是自签名证书，*-k* 参数也会继续加载页面。 以下示例显示使用了 *issuer: CN=demo.azure.com; O=aks-ingress-tls* 证书：
+`curl` 命令中的 *-v* 参数输出详细信息，包括收到的 TLS 证书。 在输出 curl 结果的中途，可以验证是否使用了你自己的 TLS 证书。 即使使用的是自签名证书，*-k* 参数也会继续加载页面。 以下示例显示了使用“颁发者:CN=demo.azure.com; O=aks-ingress-tls”证书：
 
 ```
 [...]
@@ -192,7 +192,7 @@ $ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
 [...]
 ```
 
-现在向地址添加 */hello-world-two* 路径，例如 *https://demo.azure.com/hello-world-two*。 第二个使用自定义标题的演示应用程序已返回，如以下精简版示例输出中所示：
+现在向地址添加“/hello-world-two”路径，例如 `https://demo.azure.com/hello-world-two`。 第二个使用自定义标题的演示应用程序已返回，如以下精简版示例输出中所示：
 
 ```
 $ curl -v -k --resolve demo.azure.com:443:137.117.36.18 https://demo.azure.com/hello-world-two
@@ -219,7 +219,7 @@ billowing-guppy 1           Tue Oct 23 16:41:38 2018    DEPLOYED    aks-hellowor
 listless-quokka 1           Tue Oct 23 16:41:30 2018    DEPLOYED    aks-helloworld-0.1.0                default
 ```
 
-通过 `helm delete` 命令删除版本。 以下示例删除 NGINX 入口部署和两个示例 AKS hello world 应用。
+通过 `helm delete` 命令删除发布。 以下示例删除 NGINX 入口部署和两个示例 AKS hello world 应用。
 
 ```
 $ helm delete virulent-seal billowing-guppy listless-quokka
@@ -262,7 +262,7 @@ kubectl delete secret aks-ingress-tls
 - 创建一个使用 Let's Encrypt 的入口控制器，以自动生成[具有动态公共 IP 地址][aks-ingress-tls]或[具有静态公共 IP 地址][aks-ingress-static-tls]的 TLS 证书
 
 <!-- LINKS - external -->
-[helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm#install-helm-cli
+[helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
 [helm-install]: https://docs.helm.sh/using_helm/#installing-helm
 

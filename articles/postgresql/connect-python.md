@@ -1,24 +1,21 @@
 ---
 title: 从 Python 连接到 Azure Database for PostgreSQL
 description: 本快速入门提供了一个 Python 代码示例，你可以使用它来连接到 Azure Database for PostgreSQL 并查询其中的数据。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc, devcenter
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 557d4217819449cd0513d4a21e331e660e37037b
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: eb6b23d8f8c476ba41bea918456fdf7fb9782920
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987675"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541126"
 ---
-# <a name="azure-database-for-postgresql-use-python-to-connect-and-query-data"></a>Azure Database for PostgreSQL：使用 Python 进行连接并查询数据
+# <a name="azure-database-for-postgresql-use-python-to-connect-and-query-data"></a>Azure Database for PostgreSQL：使用 Python 连接和查询数据
 本快速入门演示了如何使用 [Python](https://python.org) 连接到 Azure Database for PostgreSQL， 同时还演示了如何通过 macOS、Ubuntu Linux 和 Windows 平台，使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文中的步骤假定你熟悉如何使用 Python 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。
 
 ## <a name="prerequisites"></a>先决条件
@@ -66,7 +63,7 @@ ms.locfileid: "49987675"
 -  若要运行代码，请键入后跟文件名的 Python 命令，例如 `Python postgres.py`。
 
 > [!NOTE]
-> 从 Python 版本 3 开始，运行以下代码块时可能会看到错误 `SyntaxError: Missing parentheses in call to 'print'`：如果出现这种情况，请使用括号（例如 `print("string")`）将对命令 `print "string"` 的每个调用替换为函数调用。
+> 从 Python 版本 3 开始，在运行以下代码块时，可能会出现错误 `SyntaxError: Missing parentheses in call to 'print'`：如果发生这种情况，请将对命令 `print "string"` 的每个调用替换为使用括号的函数调用，例如 `print("string")`。
 
 ## <a name="connect-create-table-and-insert-data"></a>进行连接，创建表，然后插入数据
 通过以下代码进行连接，然后使用 [psycopg2.connect](http://initd.org/psycopg/docs/connection.html) 函数和 **INSERT** SQL 语句加载数据。 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) 函数用来针对 PostgreSQL 数据库执行 SQL 查询。 将 host、dbname、user 和 password 参数替换为创建服务器和数据库时指定的值。

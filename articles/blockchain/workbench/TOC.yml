@@ -6,6 +6,13 @@ items:
   - name: 关于 Azure Blockchain Workbench
     href: overview.md
   expanded: true
+- name: 教程
+  items:
+  - name: 创建区块链应用
+    href: create-app.md
+  - name: 使用区块链应用
+    href: use.md
+  expanded: true
 - name: 概念
   items:
   - name: 体系结构
@@ -16,12 +23,10 @@ items:
   items:
   - name: 部署 Workbench
     href: deploy.md
-  - name: 创建区块链应用
-    href: create-app.md
   - name: 管理 Workbench 用户
     href: manage-users.md
-  - name: 使用区块链应用
-    href: use.md
+  - name: 版本控制应用
+    href: version-app.md
   - name: 使用 Workbench API
     href: use-api.md
   - name: 排查应用问题
@@ -68,10 +73,10 @@ items:
   - name: Ethereum 工作量证明联盟
     href: ../templates/ethereum-deployment.md
   - name: Hyperledger Fabric 联盟
-    href: ../templates/hyperledger-fabric-single-member-blockchain.md
-ms.openlocfilehash: de9b0906450f3ba26ebfac6699c07d93039db6a7
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+    href: ../templates/hyperledger-fabric-consortium-blockchain.md
+ms.openlocfilehash: 9195465017217b50d67265feff88281c461e43aa
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239751"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884072"

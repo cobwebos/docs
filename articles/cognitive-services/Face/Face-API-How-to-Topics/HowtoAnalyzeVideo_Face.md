@@ -6,16 +6,16 @@ services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 007b35c1338f2837187ae55817bf815072f6f0c7
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 6ec414008226b45cf376845f4026e25712745b64
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127255"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214851"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>示例：如何实时分析视频
 
@@ -34,7 +34,7 @@ ms.locfileid: "46127255"
 
 ### <a name="a-simple-approach"></a>简单的方法
 
-近实时分析系统的最简单设计是无限循环，我们在每次迭代中捕捉一个帧，对它进行分析，然后使用结果：
+近实时分析系统的最简单设计是无限循环，在每次迭代中捕捉一个帧，对它进行分析，然后使用结果：
 
 ```CSharp
 while (true)
@@ -48,7 +48,7 @@ while (true)
 }
 ```
 
-如果分析由轻量级客户端算法组成，则适合采用这种方法。 但是，当在云端进行分析时，所涉及的延迟意味着 API 调用可能需要几秒钟的时间，在此期间，我们不会捕获图像，而线程基本上不执行任何操作。 我们的最大帧速率受 API 调用延迟的限制。
+如果分析由轻量级客户端算法组成，则适合采用这种方法。 但是，当在云端进行分析时，所涉及的延迟意味着 API 调用可能需要几秒钟的时间。 在此期间，我们不会捕获图像，而线程基本上不执行任何操作。 我们的最大帧速率受 API 调用延迟的限制。
 
 ### <a name="parallelizing-api-calls"></a>并行化 API 调用
 
@@ -69,22 +69,22 @@ while (true)
 }
 ```
 
-这将在单独的任务中启动每个分析，当我们继续捕捉新帧时，这些任务可以在后台运行。 这样可以避免在等待 API 调用返回时阻塞主线程，但是我们失去了简单版本提供的一些保证：多个 API 调用可能并行执行，但结果可能以错误的顺序返回。 这也可能导致多个线程同时进入 ConsumeResult() 函数，如果该函数非线程安全，这可能会很危险。 最后，这个简单的代码不会跟踪所创建的任务，因此异常将以无提示方式消失。 因此，我们要添加的最终要素是“使用者”线程，它将跟踪分析任务，引发异常，终止长时间运行的任务，并确保以正确的顺序使用结果，一次使用一个。
+此代码将在单独的任务中启动每个分析，当我们继续捕捉新帧时，这些任务可以在后台运行。 使用此方法时，我们可以避免在等待 API 调用返回时阻塞主线程，但是失去了简单版本提供的一些保证。 多个 API 调用可能并行执行，但结果可能以错误的顺序返回。 这也可能导致多个线程同时进入 ConsumeResult() 函数，如果该函数非线程安全，这可能会很危险。 最后，这个简单的代码不会跟踪所创建的任务，因此异常将以无提示方式消失。 因此，最终步骤是添加“使用者”线程，它将跟踪分析任务，引发异常，终止长时间运行的任务，并确保以正确的顺序使用结果。
 
 ### <a name="a-producer-consumer-design"></a>生产者-使用者设计
 
-在最终的“生产者-使用者”系统中，我们有一个生产者线程，看起来与我们之前的无限循环非常相似。 但是，生产者只需将任务放入队列即可跟踪它们，而不必在分析结果可用时立即使用它们。
+在最终的“生产者-使用者”系统中，我们有一个生产者线程，看起来与我们之前的无限循环类似。 但是，生产者只需将任务放入队列即可跟踪它们，而不必在分析结果可用时立即使用它们。
 
 ```CSharp
 // Queue that will contain the API call tasks. 
 var taskQueue = new BlockingCollection<Task<ResultWrapper>>();
-     
+     
 // Producer thread. 
 while (true)
 {
     // Grab a frame. 
     Frame f = GrabFrame();
- 
+ 
     // Decide whether to analyze the frame. 
     if (ShouldAnalyze(f))
     {
@@ -118,10 +118,10 @@ while (true)
 {
     // Get the oldest task. 
     Task<ResultWrapper> analysisTask = taskQueue.Take();
- 
+ 
     // Await until the task is completed. 
     var output = await analysisTask;
-     
+     
     // Consume the exception or result. 
     if (output.Exception != null)
     {
@@ -138,7 +138,7 @@ while (true)
 
 ### <a name="getting-started"></a>入门
 
-为了尽快启动和运行应用，我们实现了上述系统，希望它足够灵活，可以实现许多方案，同时又易于使用。 若要访问代码，请转到 [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis)。
+为了尽快启动和运行应用，需灵活实施上述系统。 若要访问代码，请转到 [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis)。
 
 该库包含 FrameGrabber 类，该类可实现上面所述的生产者-使用者系统，以处理来自网络摄像头的视频帧。 用户可以指定 API 调用的确切形式，该类将使用事件来让调用代码知道何时获取新帧或者新的分析结果何时可用。
 
@@ -149,7 +149,7 @@ using System;
 using VideoFrameAnalyzer;
 using Microsoft.ProjectOxford.Face;
 using Microsoft.ProjectOxford.Face.Contract;
-     
+     
 namespace VideoFrameConsoleApplication
 {
     class Program
@@ -191,7 +191,7 @@ namespace VideoFrameConsoleApplication
 
 第二个示例应用更有趣，允许针对视频帧选择调用哪个 API。 在左侧，应用显示实时视频预览，在右侧，它显示重叠在相应帧上的最新 API 结果。
 
-在大多数模式中，左侧的实时视频和右侧的可视化分析之间会有明显的延迟。 此延迟是进行 API 调用所需的时间。 例外情况是“EmotionsWithClientFaceDetect”模式，它使用 OpenCV 在客户端计算机上本地执行人脸检测，然后将全部图像提交给认知服务。 通过这样做，我们可以立即可视化检测到的人脸，然后在 API 调用返回后更新情感。 这证明了“混合”方法的可行性，即，可以在客户端上执行一些简单的处理，然后在必要时使用认知服务 API 通过更高级的分析进行补充。
+在大多数模式中，左侧的实时视频和右侧的可视化分析之间会有明显的延迟。 此延迟是进行 API 调用所需的时间。 例外情况是“EmotionsWithClientFaceDetect”模式，它使用 OpenCV 在客户端计算机上本地执行人脸检测，然后将全部图像提交给认知服务。 这样我们就可以立即可视化检测到的人脸，然后在 API 调用返回后更新情感。 这是“混合”方法的示例，其中的客户端可以执行一些简单的处理，认知服务 API 可以在需要时通过更高级的分析对其进行补充。
 
 ![HowToAnalyzeVideo](../../Video/Images/FramebyFrame.jpg)
 
@@ -206,26 +206,18 @@ namespace VideoFrameConsoleApplication
 
 2. 克隆 [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub 存储库
 
-3. 在 Visual Studio 2015 中打开示例，生成并运行示例应用程序：
-    - 对于 BasicConsoleSample，人脸 API 密钥直接在 [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 中进行硬编码。
+3. 在 Visual Studio 2015 中打开示例，然后生成并运行示例应用程序：
+    - 对于 BasicConsoleSample，人脸 API 密钥直接在  [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 中进行硬编码。
     - 对于 LiveCameraSample，应将密钥输入应用的“设置”窗格。 它们将作为用户数据保留在各会话中。
         
 
-当准备好进行集成时，只需从你自己的项目中引用 VideoFrameAnalyzer 库。 
-
-
-
-## <a name="developer-code-of-conduct"></a>开发人员行为准则
-
-与所有认知服务一样，使用我们的 API 和示例进行开发的开发人员需遵循“[Microsoft 认知服务开发人员行为准则](https://azure.microsoft.com/support/legal/developer-code-of-conduct/)”。 
-
-VideoFrameAnalyzer 的图像、语音、视频或文本理解功能使用 Microsoft 认知服务。 Microsoft 将接收你（通过此应用）上传的图像、音频、视频和其他数据，并可能将其用于服务改进目的。 我们呼吁你保护应用将其数据发送给 Microsoft 认知服务的人员。 
+当准备好进行集成时，请从你自己的项目中引用 VideoFrameAnalyzer 库。 
 
 ## <a name="summary"></a>摘要
 
-在本指南中，你已了解如何使用人脸 API、计算机视觉 API 和情感 API 对实时视频流运行近实时分析，以及如何使用我们的示例代码开始操作。  你可以在 [Microsoft 认知服务注册页面](https://azure.microsoft.com/try/cognitive-services/)上使用免费 API 密钥开始构建应用。 
+本指南介绍了如何使用人脸 API、计算机视觉 API 和情感 API 对实时视频流运行近实时分析，以及如何使用我们的示例代码开始操作。 可以在 [Azure 认知服务注册页](https://azure.microsoft.com/try/cognitive-services/)上使用免费 API 密钥开始构建应用。 
 
-请随时在 [GitHub 存储库](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)中提供反馈和建议，或者在我们的 [UserVoice 网站](https://cognitive.uservoice.com/)上提供更广泛的 API 反馈。
+请随时在 [GitHub 存储库](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)中提供反馈和建议，或者在我们的  [UserVoice 站点](https://cognitive.uservoice.com/)上提供更广泛的 API 反馈。
 
 ## <a name="related-topics"></a>相关主题
 - [如何识别图像中的人脸](HowtoIdentifyFacesinImage.md)

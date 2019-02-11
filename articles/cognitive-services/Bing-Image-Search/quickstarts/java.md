@@ -1,24 +1,25 @@
 ---
-title: 快速入门：使用 Java 执行图像搜索 - 必应图像搜索 API
+title: 快速入门：搜索图像 - 必应图像搜索 REST API 和 Java
 titleSuffix: Azure Cognitive Services
-description: 使用本快速入门进行你的第一次必应图像搜索 API 调用并接收 JSON 响应。 这个简单的 Java 应用程序会向 API 发送一个搜索查询并显示原始结果。
+description: 使用本快速入门，通过 Java 将图像搜索请求发送到必应图像搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 documentationcenter: ''
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: 63add2406b4535747c09299ecc0df6d1b6b47da3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 13edea67a93ecf2d2b53dcc04a2c1d49b864952e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315862"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203277"
 ---
-# <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-java"></a>快速入门：使用必应图像搜索 REST API 和 Java 发送搜索查询
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-java"></a>快速入门：使用必应图像搜索 REST API 和 Java 来搜索图像
 
 使用本快速入门进行你的第一次必应图像搜索 API 调用并接收 JSON 响应。 这个简单的 Java 应用程序会向 API 发送一个搜索查询并显示原始结果。
 
@@ -106,7 +107,6 @@ ms.locfileid: "52315862"
     JsonObject first_result = (JsonObject)results.get(0);
     String resultURL = first_result.get("thumbnailUrl").getAsString();
     ```
-4. 请不要忘记从应用程序代码中删除订阅密钥。
 
 ## <a name="json-response"></a>JSON 响应
 

@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: cfd59c3e64e019feb4efe4546872012a02402ad7
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 11/14/2018
+ms.openlocfilehash: 058c759e77c0d9cab3bd9a114a2d22606046390e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684318"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563314"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>在 Azure SQL 数据同步中自动复制架构更改
 
@@ -186,7 +186,7 @@ END
 
 1.  查询架构更改跟踪表，以列出 ID 大于上一步骤中检索到的 ID 的所有命令。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  忽略无法在终结点数据库中执行的命令。 需要处理架构不一致情况。 如果不一致性影响了应用程序，请还原原始架构更改。
+    a.  忽略无法在终结点数据库中执行的命令。 需要处理架构不一致情况。 如果不一致性影响了应用程序，请还原原始架构更改。
 
     b.  手动应用这些命令。
 

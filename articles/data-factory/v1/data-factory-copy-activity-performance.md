@@ -9,22 +9,21 @@ ms.assetid: 4b9a6a4f-8cf5-4e0a-a06f-8133a2b7bc58
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 505f7345af6224b767d6d3719c123d91f54e48f5
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 572f4535044e077ed245b0a231ccc9fa973a8a9b
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054286"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331634"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](data-factory-copy-activity-performance.md)
+> * [版本 1](data-factory-copy-activity-performance.md)
 > * [版本 2（当前版本）](../copy-activity-performance.md)
 
 > [!NOTE]
@@ -73,7 +72,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
     </tr>
     <tr>
         <td>网络</td>
-        <td>Internet 接口：10 Gbps；intranet 接口：40 Gbps</td>
+        <td>Internet 接口：10 Gbps；Intranet 接口：40 Gbps</td>
     </tr>
     </table>
 
@@ -109,7 +108,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 若要替代此默认值，请如下所示指定 **cloudDataMovementUnits** 属性的值。 **cloudDataMovementUnits** 属性的**允许值**为 2、4、8、16 和 32。 复制操作在运行时使用的**云 DMU 的实际数量**等于或小于配置的值，具体取决于数据模式。 有关为特定复制源和接收器配置更多单元时可能获得的性能增益级别的信息，请参阅[性能参考](#performance-reference)。
 
 ```json
-"activities":[  
+"activities":[
     {
         "name": "Sample copy activity",
         "description": "",
@@ -136,7 +135,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ### <a name="parallelcopies"></a>parallelCopies
 可使用 **parallelCopies** 属性指示要让“复制活动”使用的并行度。 可将此属性视为复制活动内，可从源并行读取或并行写入接收器数据存储的最大线程数。
 
-对于每个复制活动运行，数据工厂确定用于将数据从源数据存储复制到目标数据存储的并行复制数。 它使用的默认并行复制数取决于使用的源和接收器类型。  
+对于每个复制活动运行，数据工厂确定用于将数据从源数据存储复制到目标数据存储的并行复制数。 它使用的默认并行复制数取决于使用的源和接收器类型。
 
 | 源和接收器 | 由服务确定的默认并行复制计数 |
 | --- | --- |
@@ -147,7 +146,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 默认行为通常应可提供最佳吞吐量。 但是，若要控制托管数据存储的计算机上的负载或优化复制性能，可选择替代默认值并为 **parallelCopies** 属性指定值。 该值必须介于 1 和 32 之间（两者均含）。 在运行时，为了获得最佳性能，复制活动使用小于或等于所设置的值。
 
 ```json
-"activities":[  
+"activities":[
     {
         "name": "Sample copy activity",
         "description": "",
@@ -177,7 +176,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 >
 >
 
-若要更好地使用这两个属性，并提高数据移动吞吐量，请参阅[示例用例](#case-study-use-parallel-copy)。 无需配置 **parallelCopies** 即可利用默认行为。 如果已配置且 **parallelCopies** 太小，则可能不能充分利用多个云 DMU。  
+若要更好地使用这两个属性，并提高数据移动吞吐量，请参阅[示例用例](#case-study-use-parallel-copy)。 无需配置 **parallelCopies** 即可利用默认行为。 如果已配置且 **parallelCopies** 太小，则可能不能充分利用多个云 DMU。
 
 ### <a name="billing-impact"></a>计费影响
 请**务必**记住，会根据复制操作的总时间向你收费。 如果复制作业过去使用 1 个云单元花费 1 小时，现在使用 4 个单元花费 15 分钟，则总费用几乎相同。 例如，使用 4 个云单元。 第一个云单元花费 10 分钟，第二个花费 10 分钟，第三个花费 5 分钟，第四个花费 5 分钟，这些都属于一个复制活动运行。 将对总复制（数据移动）时间进行收费，即 10 + 10 + 5 + 5 = 30 分钟。 使用 **parallelCopies** 不会影响计费。
@@ -217,7 +216,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 以下是具有上表所述属性的复制活动的示例定义：
 
 ```json
-"activities":[  
+"activities":[
 {
     "name": "Sample copy activity",
     "type": "Copy",
@@ -274,9 +273,9 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 3. **将配置扩展至整个数据集**。 对执行结果和性能满意时，可以扩展定义和管道活动期以覆盖整个数据集。
 
 ## <a name="considerations-for-data-management-gateway"></a>数据管理网关注意事项
-**网关设置**：建议使用专用计算机托管数据管理网关。 请参阅[使用数据管理网关的注意事项](data-factory-data-management-gateway.md#considerations-for-using-gateway)。  
+**网关设置**：建议使用专用计算机托管数据管理网关。 请参阅[使用数据管理网关的注意事项](data-factory-data-management-gateway.md#considerations-for-using-gateway)。
 
-**网关监视和纵向/横向扩展**：具有一个或多个网关节点的单个逻辑网关可同时用于在同一时间运行的多个复制活动。 可在网关计算机上查看资源利用率（CPU、内存、网络（入站/出站）等）的近实时快照，以及在 Azure 门户中运行的并发作业数与限制。有关详细信息，请参阅[在门户中监视网关](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal)。 如果非常需要包含大量并发复制活动运行或需要复制大量数据的混合数据移动，请考虑[纵向或横向扩展网关](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations)，以便更好地利用资源或设置更多资源以允许复制。 
+**网关监视和纵向/横向扩展**：具有一个或多个网关节点的单个逻辑网关可同时用于在同一时间运行的多个复制活动。 可在网关计算机上查看资源利用率（CPU、内存、网络（入站/出站）等）的近实时快照，以及在 Azure 门户中运行的并发作业数与限制。有关详细信息，请参阅[在门户中监视网关](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal)。 如果非常需要包含大量并发复制活动运行或需要复制大量数据的混合数据移动，请考虑[纵向或横向扩展网关](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations)，以便更好地利用资源或设置更多资源以允许复制。
 
 ## <a name="considerations-for-the-source"></a>有关源的注意事项
 ### <a name="general"></a>常规
@@ -311,7 +310,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ### <a name="file-based-data-stores"></a>基于文件的数据存储
 （包括 Blob 存储、Data Lake Store、Amazon S3、本地文件系统和本地 HDFS）
 
-* **复制行为**：如果从基于文件的不同数据存储复制数据，则复制活动可通过 **copyBehavior** 属性提供三个选项。 它将保留层次结构、平展层次结构或合并文件。 保留或平展层次结构有少量的性能开销或没有性能开销，但合并文件会导致性能开销增加。
+* **复制行为**：如果从基于文件的不同数据存储复制数据，则复制活动可通过 copyBehavior 属性提供三个选项。 它将保留层次结构、平展层次结构或合并文件。 保留或平展层次结构有少量的性能开销或没有性能开销，但合并文件会导致性能开销增加。
 * **文件格式和压缩**：有关提高性能的更多方法，请参阅[序列化和反序列化注意事项](#considerations-for-serialization-and-deserialization)和[压缩注意事项](#considerations-for-compression)部分。
 * **Blob 存储**：目前，对于优化的数据传输和吞吐量，Blob 存储仅支持块 blob。
 * 对于需要使用**数据管理网关**的**本地文件系统**方案，请参阅[数据管理网关注意事项](#considerations-for-data-management-gateway)部分。
@@ -319,7 +318,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ### <a name="relational-data-stores"></a>关系数据存储
 （包括 SQL 数据库、SQL 数据仓库、SQL Server 数据库和 Oracle 数据库）
 
-* **复制行为**：根据已为 **sqlSink** 设置的属性，复制活动以不同的方式将数据写入目标数据库。
+* **复制行为**：根据已为 sqlSink 设置的属性，复制活动以不同的方式将数据写入目标数据库。
   * 数据移动服务默认使用大容量复制 API 以追加模式插入数据，这提供最佳性能。
   * 如果在接收器中配置存储过程，数据库一次会应用一行数据，而不是大容量加载。 性能会大大降低。 如果数据集较大，请考虑切换为使用 **sqlWriterCleanupScript** 属性（如适用）。
   * 如果为每个复制活动运行配置 **sqlWriterCleanupScript** 属性，该服务将触发脚本，然后使用大容量复制 API 插入数据。 例如，若要使用最新数据覆盖整个表，可指定一个脚本，先删除所有记录，再从源大容量加载新数据。
@@ -369,7 +368,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 请谨慎对待需要数据工厂同时连接到同一数据存储的数据集数和复制活动数。 许多并发复制作业可能会限制数据存储，并导致性能下降，复制作业内部重试，甚至在某些情况下导致执行失败。
 
 ## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>示例方案：从本地 SQL Server 复制到 Blob 存储
-**方案**：构建管道，以 CSV 格式将数据从本地 SQL Server 复制到 Blob 存储。 要使复制作业更快，应将 CSV 文件压缩为 bzip2 格式。
+**场景**：构建管道，以 CSV 格式将数据从本地 SQL Server 复制到 Blob 存储。 要使复制作业更快，应将 CSV 文件压缩为 bzip2 格式。
 
 **测试和分析**：复制活动的吞吐量小于 2 MBps，这比性能基准慢得多。
 
@@ -379,7 +378,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 2. **序列化和压缩数据**：网关将数据流序列化为 CSV 格式，并将数据压缩为 bzip2 流。
 3. **写入数据**：网关通过 Internet 将 bzip2 流上传到 Blob 存储。
 
-如你所见，数据以流式处理顺序方式进行处理和移动：SQL Server > LAN> 网关 > WAN > Blob 存储。 **整体性能受管道中最小吞吐量的限制**。
+如你所见，数据以流式处理顺序方式进行处理和移动：SQL Server > LAN > 网关 > WAN > Blob 存储。 **整体性能受管道中最小吞吐量的限制**。
 
 ![数据流](./media/data-factory-copy-activity-performance/case-study-pic-1.png)
 
@@ -387,7 +386,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 * **源**：SQL Server 本身由于负载过重而吞吐量低。
 * **数据管理网关**：
-  * **LAN**：网关的位置离 SQL Server 计算机很远，且带宽连接低。
+  * **LAN**：网关的位置离 SQL Server 计算机很远，且具有低带宽连接。
   * **网关**：网关已达到其执行以下操作的负载限制：
     * **序列化**：将数据流序列化为 CSV 格式时吞吐量缓慢。
     * **压缩**：选择慢速压缩编解码器（例如，bzip2，其采用 Core i7，速度为 2.8 MBps）。
@@ -405,13 +404,13 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 **方案 II**：将 20 个 Blob（每个 500 MB）从 Blob 存储复制到 Data Lake Store Analytics，然后优化性能。
 
-**分析和性能优化**：在此方案中，数据工厂通过使用单个复制（**parallelCopies** 设置为 1）和单一云数据移动单位，将数据从 Blob 存储复制到 Data Lake Store。 观察到的吞吐量将接近[性能参考部分](#performance-reference)中描述的吞吐量。   
+**分析和性能优化**：在此方案中，数据工厂通过使用单个复制（**parallelCopies** 设置为 1）和单一云数据移动单位，将数据从 Blob 存储复制到 Data Lake Store。 观察到的吞吐量将接近[性能参考部分](#performance-reference)中描述的吞吐量。
 
 ![方案 2](./media/data-factory-copy-activity-performance/scenario-2.png)
 
 **方案 III**：个别文件大小大于几十 MB 且总量很大。
 
-**分析和优化性能**：因为单一云 DMU 的资源限制，增加 **parallelCopies** 不会产生更好的复制性能。 而应指定更多云 DMU，获取更多资源来执行数据移动。 请勿指定 **parallelCopies** 属性的值。 数据工厂处理并行度。 在此情况下，如果将 **cloudDataMovementUnits** 设置为 4，则会产生大约 4 倍的吞吐量。
+**分析和性能优化**：因为单一云 DMU 的资源限制，增加 **parallelCopies** 不会产生更好的复制性能。 而应指定更多云 DMU，获取更多资源来执行数据移动。 请勿指定 **parallelCopies** 属性的值。 数据工厂处理并行度。 在此情况下，如果将 **cloudDataMovementUnits** 设置为 4，则会产生大约 4 倍的吞吐量。
 
 ![方案 3](./media/data-factory-copy-activity-performance/scenario-3.png)
 
@@ -423,4 +422,4 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 * Azure SQL 数据仓库：其功能以数据仓库单位 (DWU) 衡量；请参阅[管理 Azure SQL 数据仓库中的计算能力（概述）](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
 * Azure Cosmos DB：[Azure Cosmos DB 中的性能级别](../../cosmos-db/performance-levels.md)
 * 本地 SQL Server：[监视和优化性能](https://msdn.microsoft.com/library/ms189081.aspx)
-* 本地文件服务器：[Performance tuning for file servers](https://msdn.microsoft.com/library/dn567661.aspx)（文件服务器性能优化）
+* 本地文件服务器：[文件服务器性能优化](https://msdn.microsoft.com/library/dn567661.aspx)

@@ -9,20 +9,19 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: f9d1d2181649cf24784dc7ad11638946c9ee4406
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 4bf4c5c8339c8c56d91737fa1ff62f55b9c38696
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42146328"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019616"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 DB2 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](v1/data-factory-onprem-db2-connector.md)
+> * [版本 1](v1/data-factory-onprem-db2-connector.md)
 > * [当前版本](connector-db2.md)
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 DB2 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
@@ -62,13 +61,13 @@ DB2 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：Db2 | 是 |
+| type | type 属性必须设置为：**Db2** | 是 |
 | server |DB2 服务器的名称。 可以在冒号分隔的服务器名称后面指定端口号，例如 `server:port`。 |是 |
 | database |DB2 数据库的名称。 |是 |
-| authenticationType |用于连接 DB2 数据库的身份验证类型。<br/>允许的值为：Basic。 |是 |
+| authenticationType |用于连接 DB2 数据库的身份验证类型。<br/>允许的值为：**基本**。 |是 |
 | username |指定用于连接到 DB2 数据库的用户名。 |是 |
 | password |指定为用户名指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure Integration Runtime 时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：**
 
@@ -97,13 +96,13 @@ DB2 链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各个部分和属性的完整列表，请参阅数据集一文。 本部分提供 DB2 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 DB2 数据集支持的属性列表。
 
 要从 DB2 复制数据，请将数据集的 type 属性设置为“RelationalTable”。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：RelationalTable | 是 |
+| type | 数据集的 type 属性必须设置为：**RelationalTable** | 是 |
 | tableName | DB2 数据库中的表的名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -129,11 +128,11 @@ DB2 链接服务支持以下属性：
 
 ### <a name="db2-as-source"></a>DB2 作为源
 
-要从 DB2 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动**源**部分支持以下属性：
+要从 DB2 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：RelationalSource | 是 |
+| type | 复制活动源的 type 属性必须设置为：**RelationalSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
@@ -191,7 +190,7 @@ DB2 链接服务支持以下属性：
 | LongVarBinary |Byte[] |
 | LongVarChar |String |
 | LongVarGraphic |String |
-| 数字 |小数 |
+| Numeric |小数 |
 | Real |Single |
 | SmallInt |Int16 |
 | 时间 |TimeSpan |

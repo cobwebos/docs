@@ -6,18 +6,18 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: 598a861c207aaff6e61f7ffcb0fd6bf7a9b506a1
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: f69b85617a5d75f9f9cbf73a57280cd20847bbb6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335787"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208816"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>快速入门：通过 Python 在 QnA Maker 中创建知识库
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>快速入门：在 QnA Maker 中使用 Python 创建知识库
 
 本快速入门将指导你完成以编程方式创建和发布示例 QnA Maker 知识库的过程。 QnA Maker 自动从[数据源](../Concepts/data-sources-supported.md)中从半结构化内容（例如常见问题解答）中自动提取问题和解答。 用于知识库的模型是在 API 请求的正文中发送的 JSON 中定义的。 
 
@@ -30,7 +30,7 @@ ms.locfileid: "52335787"
 * [Python 3.7](https://www.python.org/downloads/)
 * 必须已有一个 QnA Maker 服务。 若要检索密钥，请在仪表板的“资源管理”下选择“密钥”。
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 
 ## <a name="create-a-knowledge-base-python-file"></a>创建知识库 Python 文件
 

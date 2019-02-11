@@ -15,16 +15,16 @@ ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5a67cdcef7f39830b747dec5f2c980483e1ab91
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f8c3c770cb7e30bda16b4857d5b337923d2417d2
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978329"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541551"
 ---
 # <a name="view-activity-logs-for-rbac-changes"></a>查看 RBAC 更改的活动日志
 
-有时需要了解基于角色的访问控制 (RBAC) 更改，如出于审核或故障排除目的。 只要有人更改了你订阅中的角色分配或角色定义，这些更改就会被记录到 [Azure 活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)中。 可以查看活动日志，了解在过去 90 天内发生的所有 RBAC 更改。
+有时需要了解基于角色的访问控制 (RBAC) 更改，如出于审核或故障排除目的。 只要有人更改了你订阅中的角色分配或角色定义，这些更改就会被记录到 [Azure 活动日志](../azure-monitor/platform/activity-logs-overview.md)中。 可以查看活动日志，了解在过去 90 天内发生的所有 RBAC 更改。
 
 ## <a name="operations-that-are-logged"></a>记录的操作
 
@@ -117,15 +117,15 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 以下是开始使用的基本步骤：
 
-1. [创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)。
+1. [创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
 
-1. 为工作区[配置 Activity Log Analytics 解决方案](../log-analytics/log-analytics-activity.md#configuration)。
+1. 为工作区[配置 Activity Log Analytics 解决方案](../azure-monitor/platform/collect-activity-logs.md#configuration)。
 
-1. [查看活动日志](../log-analytics/log-analytics-activity.md#using-the-solution)。 单击“Log Analytics”选项可以快速导航至 Activity Log Analytics 概述页面。
+1. [查看活动日志](../azure-monitor/platform/collect-activity-logs.md#using-the-solution)。 单击“Log Analytics”选项可以快速导航至 Activity Log Analytics 概述页面。
 
    ![门户中的 Log Analytics 选项](./media/change-history-report/azure-log-analytics-option.png)
 
-1. 可以选择使用[日志搜索](../log-analytics/log-analytics-log-search.md)页面或[高级分析门户](../log-analytics/query-language/get-started-analytics-portal.md)来查询并查看日志。 若要详细了解这两种选择，请参阅[日志搜索页面或高级分析门户](../log-analytics/log-analytics-log-search-portals.md)。
+1. 可以选择使用[日志搜索](../log-analytics/log-analytics-log-search.md)页面或[高级分析门户](../azure-monitor/log-query/get-started-portal.md)来查询并查看日志。 若要详细了解这两种选择，请参阅[日志搜索页面或高级分析门户](../azure-monitor/log-query/portals.md)。
 
 以下查询返回由目标资源提供程序组织的新角色分配：
 

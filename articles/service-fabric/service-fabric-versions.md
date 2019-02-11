@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/24/2018
 ms.author: TylerMSFT
-ms.openlocfilehash: 1041f37486c556ae29eed47728336a1ccb518e78
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 154869c3e6bcd44a71480a3cf7363537dddcebf9
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040353"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727675"
 ---
 # <a name="supported-service-fabric-versions"></a>支持的 Service Fabric 版本
 
@@ -42,5 +42,6 @@ ms.locfileid: "48040353"
 | 5.7.* | 5.4.164.* |低于或等于版本 2.7 |2017 年 12 月 15 日  |
 | 6.0.* | 5.6.205.* |版本 2.8 或更低版本 |2018 年 3 月 30 日     |
 | 6.1.* | 5.7.221.* |版本 3.0 或更低版本 |2018 年 7 月 15 日      |
-| 6.2.* | 6.0.232.* |版本 3.1 或更低版本 |2018 年 10 月 26 日 |
-| 6.3.* | 6.1.480.* |版本 3.2 或更低版本 |最新版本，因此尚无结束日期 |
+| 6.2.* | 6.0.232.* |版本 3.1 或更低版本 |2018 年 10 月 26 日   |
+| 6.3.* | 6.1.480.* |版本 3.2 或更低版本 |2019 年 2 月 28 日  |
+| 6.4.* | 6.2.301.* |版本 3.3 或更低版本 |最新版本，因此尚无结束日期 |

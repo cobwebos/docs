@@ -11,17 +11,17 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 11/09/2018
-ms.openlocfilehash: 44d6135c8a259d3d4c791d359136963483088c5a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.date: 01/25/2019
+ms.openlocfilehash: 78858ba888986b75a1da77caaec1ef02ffcdf307
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567887"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467690"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>复制到 SQL 数据库的单个数据库和池化数据库
 
-可以对 SQL Server 复制进行配置，以便复制到 Azure SQL 数据库中[逻辑服务器](sql-database-logical-servers.md)上的单个数据库和池化数据库。  
+可以对 SQL Server 复制进行配置，以便复制到 Azure SQL 数据库中 [SQL 数据库服务器](sql-database-servers.md)上的单一数据库和入池数据库。  
 
 ## <a name="supported-configurations"></a>**支持的配置：**
   
@@ -40,7 +40,7 @@ ms.locfileid: "51567887"
 - SQL Server 2014 (12.x) RTM CU10
 - SQL Server 2012 (11.x) SP2 CU8 或 SP3
 - 尝试使用旧版来配置复制可能导致错误 MSSQL_REPL20084（过程无法连接到订阅服务器）和 MSSQL_REPL40532（无法打开登录名所请求的服务器 \<name>。 登录失败）。  
-- 若要使用 Azure SQL 数据库的所有功能，必须使用最新版的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools](https://docs.microsoft.com//sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017)。  
+- 若要使用 Azure SQL 数据库的所有功能，必须使用最新版的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017)。  
   
 ## <a name="remarks"></a>备注
 
@@ -65,7 +65,7 @@ ms.locfileid: "51567887"
 
 1. 在本地 SQL Server 数据库上创建事务复制发布。  
 2. 在本地 SQL Server 上使用**新建订阅向导**或 Transact-SQL 语句创建一个推送，以便推送到 Azure SQL 数据库的订阅。  
-3. 对于 Azure SQL 数据库中的单一数据库和入池数据库，初始数据集是由快照代理创建并由分发代理分发和应用的快照。 使用 Azure SQL 数据库托管实例，还可以使用数据库备份来植入订阅服务器数据库。
+3. 对于 Azure SQL 数据库中的单一数据库和入池数据库，初始数据集是由快照代理创建并由分发代理分发和应用的快照。 使用托管实例数据库，还可以使用数据库备份来植入订阅服务器数据库。
 
 ### <a name="data-migration-scenario"></a>数据迁移方案  
 
@@ -107,10 +107,11 @@ Azure SQL 数据库订阅不支持以下选项：
 创建发布和推送订阅。 有关详细信息，请参阅：
   
 - [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)，方法是将 Azure SQL 数据库逻辑服务器名称用作订阅服务器（例如 **N'azuresqldbdns.database.windows.net'**），将 Azure SQL 数据库名称用作目标数据库（例如 **AdventureWorks**）。  
+- [创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)，方法是将 Azure SQL 数据库服务器名称用作订阅服务器（例如 N'azuresqldbdns.database.windows.net'），将 Azure SQL 数据库名称用作目标数据库（例如 AdventureWorks）。  
 
 ## <a name="see-also"></a>另请参阅  
 
+- [事务复制](sql-database-managed-instance-transactional-replication.md)
 - [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
 - [复制类型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)

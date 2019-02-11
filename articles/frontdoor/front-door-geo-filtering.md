@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/09/2018
 ms.author: sharadag
-ms.openlocfilehash: e36253600dd8039940209cb5912cb2e4c2e0fbcf
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: a2ba0fb34dd34129a134aa2639d06816f3523408
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988583"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865499"
 ---
 # <a name="geo-filtering-geographic-based-access-control-to-azure-front-door-service-frontends"></a>地区筛选：针对 Azure Front Door 服务前端的基于地理的访问控制
 
@@ -31,7 +31,7 @@ ms.locfileid: "49988583"
 
 |国家/地区代码 | 国家/地区名称 |
 | ----- | ----- |
-| AD | 俄罗斯联邦 |
+| AD | 安道尔 |
 | AE | 阿拉伯联合酋长国|
 | AF | 阿富汗|
 | AG | 安提瓜和巴布达|

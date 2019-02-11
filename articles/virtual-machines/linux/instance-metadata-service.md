@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 77b19b708b32003edc4555745a233a01d6f60b71
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 772070b73f1d2dcf83d15283f6be70ab4fef148b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026273"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155659"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -282,7 +282,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 ## <a name="instance-metadata-data-categories"></a>实例元数据数据类别
 可通过实例元数据服务获取以下数据类别：
 
-数据 | Description | 引入的版本 
+数据 | 说明 | 引入的版本 
 -----|-------------|-----------------------
 位置 | 正在运行 VM 的 Azure 区域 | 2017-04-02 
 名称 | VM 的名称 | 2017-04-02
@@ -409,6 +409,50 @@ Azure 具有各种主权云，如 [Azure 政府](https://azure.microsoft.com/ove
   echo $environment
 ```
 
+### <a name="failover-clustering-in-windows-server"></a>Windows Server 中的故障转移群集
+
+在某些情况下，在使用故障转移群集查询实例元数据服务时，必须向路由表添加路由。
+
+1. 使用管理员特权打开命令提示符。
+
+2. 运行以下命令，并记下 IPv4 路由表中网络目标 (`0.0.0.0`) 接口的地址。
+
+```bat
+route print
+```
+
+> [!NOTE] 
+> 为简单起见，启用了故障转移群集的 Windows Server VM 的以下示例输出仅包含 IPv4 路由表。
+
+```bat
+IPv4 Route Table
+===========================================================================
+Active Routes:
+Network Destination        Netmask          Gateway       Interface  Metric
+          0.0.0.0          0.0.0.0         10.0.1.1        10.0.1.10    266
+         10.0.1.0  255.255.255.192         On-link         10.0.1.10    266
+        10.0.1.10  255.255.255.255         On-link         10.0.1.10    266
+        10.0.1.15  255.255.255.255         On-link         10.0.1.10    266
+        10.0.1.63  255.255.255.255         On-link         10.0.1.10    266
+        127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
+        127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
+  127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+      169.254.0.0      255.255.0.0         On-link     169.254.1.156    271
+    169.254.1.156  255.255.255.255         On-link     169.254.1.156    271
+  169.254.255.255  255.255.255.255         On-link     169.254.1.156    271
+        224.0.0.0        240.0.0.0         On-link         127.0.0.1    331
+        224.0.0.0        240.0.0.0         On-link     169.254.1.156    271
+        224.0.0.0        240.0.0.0         On-link         10.0.1.10    266
+  255.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+  255.255.255.255  255.255.255.255         On-link     169.254.1.156    271
+  255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
+```
+
+3. 运行以下命令并使用网络目标 (`0.0.0.0`) 接口的地址，在此示例中为 `10.0.1.10`。
+
+```bat
+route add 169.254.169.254/32 10.0.1.10 metric 1 -p
+```
 
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>在 VM 内使用不同语言调用元数据服务的示例 
 
@@ -447,7 +491,7 @@ Puppet | https://github.com/keirans/azuremetadata
    * 若要获取该服务的支持，请针对长时间重试后仍无法获取元数据响应的 VM，在 Azure 门户中创建相关支持问题 
 9. 调用服务时请求超时？
    * 必须从分配给 VM 的网卡的主 IP 地址进行元数据调用，此外，在已更改路由的情况下，网卡外必须存在地址 169.254.0.0/16 的路由。
-10. 我更新了虚拟机规模集中的标记，但它们未显示在与 VM 不同的实例中，这是怎么回事？
+10. 我更新了虚拟机规模集中的标记，但与 VM 不同，它们未显示在实例中，这是怎么回事？
    * 目前，对于规模集，仅在重启/重置映像/或对实例的磁盘更改时，向 VM 显示标记。 
 
    ![实例元数据支持](./media/instance-metadata-service/InstanceMetadata-support.png)

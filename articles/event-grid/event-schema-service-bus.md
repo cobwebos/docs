@@ -6,18 +6,18 @@ author: banisadr
 manager: darosa
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/17/2018
+ms.date: 01/17/2019
 ms.author: babanisa
-ms.openlocfilehash: afb85f20c49821ca98e078791730a3376198e9e5
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: f44d2c1c5be6ac895b6f5ea9feca29c0f8ed09f3
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42140830"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467734"
 ---
 # <a name="azure-event-grid-event-schema-for-service-bus"></a>服务总线的 Azure 事件网格事件架构
 
-本文提供了服务总线事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
+本文提供了服务总线事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
 有关示例脚本和教程的列表，请参阅[服务总线事件源](event-sources.md#service-bus)。
 
@@ -25,7 +25,7 @@ ms.locfileid: "42140830"
 
 服务总线发出以下事件类型：
 
-| 事件类型 | Description |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | 当队列或订阅中存在活动消息，但却没有接收器在侦听时会引发此事件。 |
 | Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener | 当死信队列中存在活动消息，但却没有活动接收器时会引发此事件。 |
@@ -80,7 +80,7 @@ ms.locfileid: "42140830"
 
 事件具有以下顶级数据：
 
-| 属性 | Type | Description |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
@@ -93,7 +93,7 @@ ms.locfileid: "42140830"
 
 数据对象具有以下属性：
 
-| 属性 | Type | Description |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | namespaceName | 字符串 | 资源所在的服务总线命名空间。 |
 | requestUri | 字符串 | 发出此事件的特定队列或订阅的 URI。 |

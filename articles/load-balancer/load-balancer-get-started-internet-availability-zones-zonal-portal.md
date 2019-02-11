@@ -1,26 +1,29 @@
 ---
-title: 使用 Azure 门户创建具有区域性公用 IP 地址前端的公用负载均衡器标准 | Microsoft Docs
-description: 了解如何使用 Azure 门户创建具有区域性公用 IP 地址前端的公用负载均衡器标准
+title: 创建具有区域前端的负载均衡器 - Azure 门户
+titlesuffix: Azure Load Balancer
+description: 了解如何使用 Azure 门户创建带有区域前端的标准负载均衡器
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 ms.service: load-balancer
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: cc3d1e9f2d87da1ed7014674877212ea0be81bca
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 0a746ace4806495b17462b506f030811247240e2
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416760"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247185"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zonal-public-ip-address-frontend-using-azure-portal"></a>使用 Azure 门户创建具有区域性公用 IP 地址前端的公用负载均衡器标准
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-portal"></a>使用 Azure 门户创建具有区域性前端的标准负载均衡器
 
-本文分步指导你创建具有区域性前端的公用[负载均衡器标准](https://aka.ms/azureloadbalancerstandard)。 若要了解可用性区域如何与标准负载均衡器配合工作，请参阅[标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。 
+本文分步指导你创建具有区域性前端 IP 配置的公用[标准负载均衡器](https://aka.ms/azureloadbalancerstandard)。 若要了解可用性区域如何与标准负载均衡器配合工作，请参阅[标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -46,7 +49,7 @@ ms.locfileid: "50416760"
 7. 对于“资源组”，单击“新建”，然后键入 **myResourceGroupZLB** 作为资源组的名称。
 8. 对于“位置”，选择“西欧”，然后单击“确定”。 然后，负载均衡器将开始部署，成功完成部署需要几分钟的时间。
 
-    ![使用 Azure 门户创建区域冗余的负载均衡器标准](./media/load-balancer-get-started-internet-availability-zones-zonal-portal/load-balancer-zonal-frontend.png)
+    ![使用 Azure 门户创建区域冗余的标准负载均衡器](./media/load-balancer-get-started-internet-availability-zones-zonal-portal/load-balancer-zonal-frontend.png)
 
 
 ## <a name="next-steps"></a>后续步骤

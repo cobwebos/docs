@@ -4,23 +4,23 @@ description: 获取 Azure Active Directory 条件访问策略中受支持设置�
 services: active-directory.
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: 56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2018
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 2f9075cef671128cacc37f16e8bf29bf0f60401d
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 6c340cde488ee37d2454468356f1ceee03f74844
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619633"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55302098"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
@@ -53,6 +53,8 @@ ms.locfileid: "52619633"
 - Azure 信息保护 - [了解详细信息](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 
 - Azure RemoteApp
+
+- Azure SQL 数据库 - [了解详情](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
 
 - Microsoft Dynamics 365
 
@@ -148,8 +150,8 @@ ms.locfileid: "52619633"
 |    |    |
 |--- | ---|
 |路径 | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-|名称 | 1 |
-|类型 | REG_SZ (String) |
+|Name | 1 |
+|Type | REG_SZ (String) |
 |数据 | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx
 
 对于 Windows 8.1 和 7 中的 Chrome 支持，请创建以下注册表项：
@@ -157,8 +159,8 @@ ms.locfileid: "52619633"
 |    |    |
 |--- | ---|
 |路径 | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-|名称 | 1 |
-|类型 | REG_SZ (String) |
+|Name | 1 |
+|Type | REG_SZ (String) |
 |数据 | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}|
 
 这些浏览器支持设备身份验证，允许根据策略对设备进行识别和验证。 如果浏览器以专用模式运行，设备检查将失败。 
@@ -179,22 +181,29 @@ ms.locfileid: "52619633"
 |---|---|---|
 |Azure 远程应用|Azure 远程应用服务|Windows 10、Windows 8.1、Windows 7、iOS、Android 和 Mac OS X|
 |Dynamics CRM 应用|Dynamics CRM|Windows 10、Windows 8.1、iOS 和 Android|
-|“邮件/日历/联系人”应用、Outlook 2016、Outlook 2013（使用新式身份验证）|Office 365 Exchange Online|Windows 10|
+|“邮件/日历/人脉”应用、Outlook 2016、Outlook 2013 |Office 365 Exchange Online|Windows 10|
 |用于应用的 MFA 和位置策略。 不支持基于设备的策略。 |任何“我的应用”应用服务|Android 和 iOS|
 |Microsoft Teams 服务 - 控制支持 Microsoft Teams 及其所有客户端应用（Windows 桌面、iOS、Android、WP 和 Web 客户端）的所有服务|Microsoft Teams|Windows 10、Windows 8.1、Windows 7、iOS、Android 和 macOS |
-|Office 2016 应用、Office 2013（采用新式身份验证）、OneDrive 同步客户端（参见[说明](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)）|Office 365 SharePoint Online|Windows 8.1、Windows 7|
-|Office 2016 应用、通用 Office 应用、Office 2013（采用新式身份验证）、OneDrive 同步客户端（参见[说明](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)）、计划将来提供的 Office 组支持、计划将来提供的 SharePoint 应用支持|Office 365 SharePoint Online|Windows 10|
+|Office 2016 应用、Office 2013，OneDrive 同步客户端（请参阅[说明](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)）|Office 365 SharePoint Online|Windows 8.1、Windows 7|
+|Office 2016 应用、通用 Office 应用、Office 2013、OneDrive 同步客户端（参见[说明](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)）、计划将来提供的 Office 组支持、计划将来提供的 SharePoint 应用支持|Office 365 SharePoint Online|Windows 10|
 |Office 2016 for macOS（只有 Word、Excel、PowerPoint、OneNote）。 将来计划提供 OneDrive for Business 支持|Office 365 SharePoint Online|Mac OS X|
 |Office 移动应用|Office 365 SharePoint Online|Android、iOS|
 |Office Yammer 应用|Office 365 Yammer|Windows 10、iOS、Android|
 |Outlook 2016 (Office for macOS)|Office 365 Exchange Online|Mac OS X|
-|Outlook 2016、Outlook 2013（采用新式身份验证）、Skype for Business（采用新式身份验证）|Office 365 Exchange Online|Windows 8.1、Windows 7|
+|Outlook 2016、Outlook 2013、Skype for Business|Office 365 Exchange Online|Windows 8.1、Windows 7|
 |Outlook 移动应用|Office 365 Exchange Online|Android、iOS|
 |PowerBI 应用|PowerBI 服务|Windows 10、Windows 8.1、Windows 7、Android 和 iOS|
 |Skype for Business|Office 365 Exchange Online|Android、IOS |
 |Azure DevOps 应用|Azure DevOps|Windows 10、Windows 8.1、Windows 7、iOS 和 Android|
 
 
+## <a name="support-for-legacy-authentication"></a>支持旧式身份验证
+
+通过选择“其他客户端”，可以指定一个条件，该条件会影响通过邮件协议（如 IMAP、MAPI、POP、SMTP）使用基本身份验证的应用和不使用新式身份验证的旧版 Office 应用。  
+
+![其他客户端](./media/technical-reference/11.png)
+
+有关详细信息，请参阅[客户端应用](conditions.md#client-apps)。
 
 ## <a name="approved-client-app-requirement"></a>批准的客户端应用要求 
 
@@ -235,7 +244,7 @@ ms.locfileid: "52619633"
 
 - “需要批准的客户端应用”要求：
 
-    - 仅支持 iOS 和 Android 作为[设备平台条件](#device-platforms-condition)。
+    - 仅支持 iOS 和 Android 作为[设备平台条件](#device-platform-condition)。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -3,17 +3,15 @@ title: 配置 SSL 连接性以安全连接到 Azure Database for MariaDB
 description: 介绍了如何正确配置 Azure Database for MariaDB 和关联的应用程序，以正确使用 SSL 连接
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 00e8479eab927acccc8f797311a0a2d440bb96da
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 01/24/2019
+ms.openlocfilehash: 2966a2733904200f404d67c4e825d6b9deffdea2
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961665"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903020"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>配置应用程序的 SSL 连接性以安全连接到 Azure Database for MariaDB
 Azure Database for MariaDB 支持使用安全套接字层 (SSL) 将 Azure Database for MariaDB 服务器连接到客户端应用程序。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。
@@ -28,10 +26,14 @@ Azure Database for MariaDB 支持使用安全套接字层 (SSL) 将 Azure Databa
 ![保存自定义磁贴](./media/howto-configure-ssl/mysql-workbench-ssl.png) 对于现有连接，可以通过右键单击“连接”图标并选择“编辑”来绑定 SSL。 然后导航到“SSL”选项卡，并绑定证书文件。
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>使用 MySQL CLI 通过 SSL 连接到服务器
-绑定 SSL 证书的另一种方法是使用 MySQL 命令行接口执行以下命令：
+绑定 SSL 证书的另一种方法是使用 MySQL 命令行接口执行以下命令。 
+
 ```bash
-mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
+mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p --ssl-mode=REQUIRED --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
 ```
+
+> [!NOTE]
+> 在 Windows 上使用 MySQL 命令行接口时，可能会收到错误 `SSL connection error: Certificate signature check failed`。 如果发生这种情况，请将 `--ssl-mode=REQUIRED --ssl-ca={filepath}` 参数替换为 `--ssl`。
 
 ## <a name="enforcing-ssl-connections-in-azure"></a>在 Azure 中强制实施 SSL 连接 
 ### <a name="using-the-azure-portal"></a>使用 Azure 门户
@@ -49,7 +51,7 @@ az mariadb server update --resource-group myresource --name mydemoserver --ssl-e
 ```sql
 status
 ```
-通过查看输出来确认连接是否已加密，如果已加密，输出应显示为：“SSL: 使用中的密码为 AES256-SHA” 
+查看输出以确认连接是否已加密，如果已加密，输出应显示为：“SSL: 使用中的密码为 AES256-SHA” 
 
 ## <a name="sample-code"></a>代码示例
 若要从应用程序通过 SSL 与 Azure Database for MariaDB 建立安全连接，请参阅以下代码示例：

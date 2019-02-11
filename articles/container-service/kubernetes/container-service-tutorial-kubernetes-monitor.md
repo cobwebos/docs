@@ -1,24 +1,27 @@
 ---
-title: Azure 容器服务教程 - 监视 Kubernetes
+title: （已弃用）Azure 容器服务教程 - 监视 Kubernetes
 description: Azure 容器服务教程 - 使用 Log Analytics 监视 Kubernetes
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 04/05/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 249e286b16b78643c33b567f705a4c92991f5553
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6f95aa701228730682c0122dc1fd46d8a2537ce1
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404862"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001614"
 ---
-# <a name="monitor-a-kubernetes-cluster-with-log-analytics"></a>使用 Log Analytics 监视 Kubernetes 群集
+# <a name="deprecated-monitor-a-kubernetes-cluster-with-log-analytics"></a>（已弃用）使用 Log Analytics 监视 Kubernetes 群集
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> 有关使用 Azure Kubernetes 服务的此教程的更新版本，请参阅[用于容器的 Azure Monitor（预览版）概述](../../azure-monitor/insights/container-insights-overview.md)。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 监视 Kubernetes 群集和容器至关重要，特别是在使用多个应用大规模地管理生产群集时。
 
@@ -143,7 +146,7 @@ omsagent   3         3         3         0            3           <none>        
 
 ## <a name="access-monitoring-data"></a>访问监视数据
 
-在 Log Analytics 门户或 Azure 门户中，使用[容器解决方案](../../log-analytics/log-analytics-containers.md)查看和分析容器监视数据。
+在 Log Analytics 门户或 Azure 门户中，使用[容器解决方案](../../azure-monitor/insights/containers.md)查看和分析容器监视数据。
 
 若要使用 [Log Analytics 门户](https://mms.microsoft.com)安装容器解决方案，请转到“解决方案库”。 然后添加“容器解决方案”。 或者，添加 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.containersoms?tab=Overview)中的容器解决方案。
 
@@ -153,7 +156,7 @@ omsagent   3         3         3         0            3           <none>        
 
 同样，在 Azure 门户中，转到“Log Analytics”并选择工作区名称。 若要查看“容器”摘要磁贴，请单击“解决方案” > “容器”。 若要查看详细信息，请单击该磁贴。
 
-有关查询和分析监视数据的详细指南，请参阅 [Azure Log Analytics 文档](../../log-analytics/log-analytics-queries.md)。
+有关查询和分析监视数据的详细指南，请参阅 [Azure Log Analytics 文档](../../azure-monitor/log-query/log-query-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

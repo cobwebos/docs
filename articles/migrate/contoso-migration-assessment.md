@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 01/30/2019
 ms.author: raynew
-ms.openlocfilehash: 6b4b1b74ace534517157edc20c33236d516205c5
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: e948ee943db646ca83d39510485849b3c9956e90
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635010"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697443"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso 迁移：评估本地工作负荷是否适合迁移到 Azure
 
@@ -29,7 +29,7 @@ ms.locfileid: "52635010"
 [文章 4：在 Azure VM 和 SQL 数据库托管实例上重新托管应用](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso 将其本地 SmartHotel360 应用直接迁移到 Azure。 它使用 Azure Site Recovery 服务迁移应用前端。 它使用 Azure 数据库迁移服务将应用数据库迁移到 Azure SQL 数据库托管实例。 | 可用
 [文章 5：在 Azure VM 上重新托管应用](contoso-migration-rehost-vm.md) | Contoso 使用 Site Recovery 服务将其 SmartHotel360 应用 VM 迁移到 Azure VM。 | 可用
 [文章 6：在 Azure VM 和 SQL Server AlwaysOn 可用性组中重新托管应用](contoso-migration-rehost-vm-sql-ag.md) | Contoso 使用 Site Recovery 来迁移应用 VM，同时使用数据库迁移服务将应用数据库迁移到受 AlwaysOn 可用性组保护的 SQL Server 群集，从而迁移 SmartHotel360 应用。 | 可用
-[文章 7：将 Linux 应用重新托管到 Azure VM](contoso-migration-rehost-linux-vm.md) | Contoso 使用 Site Recovery 服务将其 Linux osTicket 应用直接迁移到 Azure VM。 | 可用
+[文章 7：在 Azure VM 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm.md) | Contoso 使用 Site Recovery 服务将其 Linux osTicket 应用直接迁移到 Azure VM。 | 可用
 [文章 8：在 Azure VM 和 Azure Database for MySQL 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm-mysql.md) | Contoso 使用 Site Recovery 将其 Linux osTicket 应用迁移到 Azure VM。 它使用 MySQL Workbench 将应用数据库迁移到 Azure Database for MySQL。 | 可用
 [文章 9：在 Azure Web 应用和 Azure SQL 数据库中重构应用](contoso-migration-refactor-web-app-sql.md) | Contoso 将其 SmartHotel360 应用迁移到 Azure Web 应用，并使用数据库迁移助手将应用数据库迁移到 Azure SQL Server 实例。 | 可用
 [文章 10：在 Azure Web 应用和 Azure Database for MySQL 中重构 Linux 应用](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso 使用 Azure 流量管理器将其 Linux osTicket 应用迁移到多个 Azure 区域上的 Azure Web 应用，并与 GitHub 集成以实现持续交付。 Contoso 将应用数据库迁移到 Azure Database for MySQL 实例。 | 可用
@@ -68,10 +68,10 @@ osTicket<br/><br/> （Contoso 服务台应用） | 通过 MySQL PHP (LAMP) 在 L
 
 Contoso 的 IT 领导团队与公司的业务合作伙伴密切协作，以了解本次迁移要实现的业务目标：
 
-- **应对业务增长**：Contoso 正在发展壮大。 因此，公司的本地系统和基础结构面临的压力也越来越大。
-- **增加效率**：Contoso 需要摒弃不必要的流程，简化开发人员和用户流程。 业务要求 IT 反应迅速，不浪费时间或金钱，让公司可以更快满足客户需求。
+- **满足业务增长**：Contoso 在不断发展。 因此，公司的本地系统和基础结构面临的压力也越来越大。
+- **提高效率**：Contoso 需要摒弃不必要的流程，简化开发人员和用户流程。 业务要求 IT 反应迅速，不浪费时间或金钱，让公司可以更快满足客户需求。
 - **提高灵活性**：Contoso IT 需要对业务需求更加敏感。 它必须能够抢在市场变化之前作出反应，这样才能让公司在全球经济中取得成功。 同时它不能阻碍发展，成为业务的绊脚石。
-- **扩展**：随着公司业务成功发展，Contoso IT 部门必须提供能够同步成长的系统。
+- **缩放**：随着公司业务成功发展，Contoso IT 部门必须提供能够同步成长的系统。
 
 ## <a name="assessment-goals"></a>评估目标
 
@@ -86,7 +86,7 @@ Contoso 云团队制定了迁移评估的目标：
 
 Contoso 使用 Microsoft 工具进行迁移评估。 这些工具符合公司的目标，并能为 Contoso 提供所需的所有信息。
 
-技术 | Description | 成本
+技术 | 说明 | 成本
 --- | --- | ---
 [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Contoso 使用数据迁移助手评估和检测可能影响其在 Azure 中数据库功能的兼容性问题。 数据迁移助手评估 SQL 源和目标之间的功能奇偶一致性。 它针对性能和可靠性提升提供建议。 | 数据迁移助手是一个可以免费下载的工具。
 [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-overview) | Contoso 使用 Azure Migrate 服务评估其 VMware VM。 Azure Migrate 评估计算机是否适合迁移。 它对在 Azure 中运行时的大小和成本进行估算。  | 截至 2018 年 5 月，使用 Azure Migrate 无需付费。
@@ -121,11 +121,11 @@ Contoso 使用 Microsoft 工具进行迁移评估。 这些工具符合公司的
 - 运行版本 6.5、6.0 或 5.5 的本地 vCenter Server 实例。
 - vCenter Server 中的一个只读帐户，或者创建该帐户的权限。
 - 在 vCenter Server 实例上使用 .ova 模板创建 VM 的权限。
-- 至少一台运行 5.0 或更高版本的 ESXi 主机。
+- 至少一台运行 5.5 或更高版本的 ESXi 主机。
 - 至少两个本地 VMware VM，一个 VM 运行一个 SQL Server 数据库。
 - 在每个 VM 上安装 Azure Migrate 代理的权限。
 - 这些 VM 应该有直接的 Internet 连接。  
-    - 可以仅限对[所需 URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites) 进行 Internet 访问。  
+    - 可以仅限对[所需 URL](https://docs.microsoft.com/azure/migrate/concepts-collector) 进行 Internet 访问。  
     - 如果 VM 未连接 Internet，则必须在其上安装 Azure [Log Analytics 网关](../azure-monitor/platform/gateway.md)，并代理通过它定向的流量。
 - 运行 SQL Server 实例的 VM 的 FQDN（用于数据库评估）。
 - 在 SQL Server VM 上运行的 Windows 防火墙应该允许在 TCP 端口 1433（默认）上进行外部连接。 此设置允许数据迁移助手进行连接。
@@ -136,11 +136,11 @@ Contoso 使用 Microsoft 工具进行迁移评估。 这些工具符合公司的
 
 > [!div class="checklist"]
 > * **步骤 1：下载并安装数据迁移助手**：Contoso 准备数据迁移助手，用于对本地 SQL Server 数据库进行评估。
-> * **步骤 2：使用数据迁移助手评估数据库**：Contoso 运行并分析数据库评估。
+> * **步骤 2：使用数据迁移助手评估本地数据库**：Contoso 运行并分析数据库评估。
 > * **步骤 3：使用 Azure Migrate 进行 VM 评估准备**：Contoso 设置本地帐户并调整 VMware 设置。
-> * **步骤 4：使用 Azure Migrate 发现本地 VM**：Contoso 创建 Azure Migrate 收集器 VM。 然后，Contoso 运行收集器以发现要评估的 VM。
-> * **步骤 5：使用 Azure Migrate 进行依赖关系分析准备**：Contoso 在 VM 上安装 Azure Migrate 代理，以便了解 VM 之间的依赖关系映射。
-> * **步骤 6：使用 Azure Migrate 评估 VM**：Contoso 检查依赖关系、对 VM 分组，然后运行评估。 在评估就绪以后，Contoso 对其进行分析，做好迁移准备。
+> * **步骤 4：使用 Azure Migrate 查找本地 VM**：Contoso 创建 Azure Migrate 收集器 VM。 然后，Contoso 运行收集器以发现要评估的 VM。
+> * **步骤 5：使用 Azure Migrate 进行依赖项分析准备**：Contoso 在 VM 上安装 Azure Migrate 代理，因此公司可以查看 VM 之间的依赖项映射。
+> * **步骤 6：使用 Azure Migrate 评估 VM**：Contoso 检查依赖项、对 VM 分组，然后运行评估。 在评估就绪以后，Contoso 对其进行分析，做好迁移准备。
 
 ## <a name="step-1-download-and-install-data-migration-assistant"></a>步骤 1：下载并安装数据迁移助手
 
@@ -206,7 +206,7 @@ Contoso 使用 Microsoft 工具进行迁移评估。 这些工具符合公司的
 > [!NOTE]
 > 对于大规模的评估：
 > - 并发运行多个评估，在“所有评估”页面上查看评估的状态。
-> - 将评估合并到一个 [SQL Server 数据库](https://docs.microsoft.com/sql/dma/dma-consolidatereports?view=ssdt-18vs2017#import-assessment-results-into-a-sql-server-database)中。
+> - 将评估合并到一个 [SQL Server 数据库](https://docs.microsoft.com/sql/dma/dma-consolidatereports?view=ssdt-18vs2017)中。
 > - 将评估合并到一个 [Power BI 报表](https://docs.microsoft.com/sql/dma/dma-powerbiassesreport?view=ssdt-18vs2017)中。
 
 ## <a name="step-3-prepare-for-vm-assessment-by-using-azure-migrate"></a>步骤 3：使用 Azure Migrate 进行 VM 评估准备
@@ -217,8 +217,8 @@ Contoso 需要创建可供 Azure Migrate 用来自动发现待评估 VM 的 VMwa
 
 VM 发现需要 vCenter Server 中具有以下属性的只读帐户：
 
-- **用户类型**：至少为只读用户。
-- **权限**：对于数据中心对象，选中“传播到子对象”复选框。 对于“角色”，选中“只读”。
+- **用户类型**：至少一个只读用户。
+- **权限**：对于数据中心对象，请选中“传播到子对象”复选框。 对于“角色”，选中“只读”。
 - **详细信息**：用户在数据中心级别进行分配，因此可以访问数据中心内的所有对象。
 - 若要限制访问权限，请在选中“传播到子对象”的情况下将“无访问权”角色分配给子对象（vSphere 主机、数据存储、VM 和网络）。
 
@@ -287,13 +287,7 @@ Azure Migrate 会创建一个称作*收集器设备*的本地 VM。 此 VM 可�
     **示例**
 
     ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. 生成的哈希应与这些设置匹配（版本 1.0.9.15）：
-
-    **算法** | **哈希值**
-    --- | ---
-    MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
-    SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
-    SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
+3. 生成的哈希值应与[此处](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#continuous-discovery)列出的哈希值匹配。
 
 ### <a name="create-the-collector-appliance"></a>创建收集器设备
 

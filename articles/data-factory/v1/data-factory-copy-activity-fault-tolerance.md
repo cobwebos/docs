@@ -8,22 +8,21 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5cfab02fc248139c76bd6123ac942832f8e1a21a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 3a255b21e8bfd7d78954603e9aa6e5ca39cee95b
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052505"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321987"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>通过跳过不兼容行向复制活动添加容错
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](data-factory-copy-activity-fault-tolerance.md)
+> * [版本 1](data-factory-copy-activity-fault-tolerance.md)
 > * [版本 2（当前版本）](../copy-activity-fault-tolerance.md)
 
 > [!NOTE]
@@ -39,7 +38,7 @@ ms.locfileid: "37052505"
 
 - **源数据类型与接收器本机类型不兼容**
 
-    例如：使用包含三个 INT 类型的列的架构定义，将数据从 Blob 存储中的 CSV 文件复制到 SQL 数据库。 包含数值数据的 CSV 文件行（如 `123,456,789`）会成功复制到接收器存储。 但是，包含非数字值的行（如 `123,456,abc`）会被检测为不兼容，并被跳过。
+    例如：将数据从 Blob 存储中的 CSV 文件复制到具有架构定义且包含三个 **INT** 类型列的 SQL 数据库。 包含数值数据的 CSV 文件行（如 `123,456,789`）会成功复制到接收器存储。 但是，包含非数字值的行（如 `123,456,abc`）会被检测为不兼容，并被跳过。
 
 - **源与接收器之间的列数不匹配**
 
@@ -62,8 +61,8 @@ ms.locfileid: "37052505"
     },
     "sink": {
         "type": "SqlSink",
-    },         
-    "enableSkipIncompatibleRow": true,           
+    },
+    "enableSkipIncompatibleRow": true,
     "redirectIncompatibleRowSettings": {
         "linkedServiceName": "BlobStorage",
         "path": "redirectcontainer/erroroutput"
@@ -83,7 +82,7 @@ ms.locfileid: "37052505"
 
 ![监视器跳过的不兼容行](./media/data-factory-copy-activity-fault-tolerance/skip-incompatible-rows-monitoring.png)
 
-如果配置为记录不兼容行，可以在下列路径中找到日志文件：`https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv` 在日志文件中，可以查看跳过的行和导致数据不兼容的根本原因。
+如果配置为记录不兼容的行，可以通过此路径找到日志文件：`https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv`。在日志文件中，可以看到跳过的行以及不兼容的根本原因。
 
 文件中记录了原始数据和对应的错误。 下面的示例展示了日志文件内容：
 ```

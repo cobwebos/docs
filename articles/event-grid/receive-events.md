@@ -6,14 +6,14 @@ author: banisadr
 manager: darosa
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/01/2018
+ms.date: 01/01/2019
 ms.author: babanisa
-ms.openlocfilehash: 7d8ee60f033d824a3ff83a7c6948c72160e24c1d
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: cb38fd17c0c1bfbe3e5957d8f432f0a43b285c93
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584279"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728616"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>将事件接收到 HTTP 终结点
 
@@ -51,8 +51,6 @@ ms.locfileid: "47584279"
 ## <a name="endpoint-validation"></a>终结点验证
 
 首先需要处理 `Microsoft.EventGrid.SubscriptionValidationEvent` 事件。 每次有人订阅某个事件时，事件网格都会在数据有效负载中通过 `validationCode` 向终结点发送一个验证事件。 终结点必须回显到响应正文中才能[证明此终结点有效且被你所拥有](security-authentication.md#webhook-event-delivery)。 如果你使用的是[事件网格触发器](../azure-functions/functions-bindings-event-grid.md)（而不是 Webhook 触发函数），系统会为你执行终结点验证。 如果使用第三方 API 服务（例如 [Zapier](https://zapier.com) 或 [IFTTT](https://ifttt.com/)），可能无法以编程方式回显验证码。 对于这些服务，可以使用订阅验证事件中发送的验证 URL 手动验证订阅。 在 `validationUrl` 属性中复制该 URL 并通过 REST 客户端或 Web 浏览器发送 GET 请求。
-
-“手动验证”功能处于预览状态。 若要使用它，必须安装用于 [Azure CLI](/cli/azure/install-azure-cli) 的[事件网格扩展](/cli/azure/azure-cli-extensions-list)。 可使用 `az extension add --name eventgrid` 进行安装。 如果使用的是 REST API，请确保使用的是 `api-version=2018-05-01-preview`。
 
 在 C# 中，`DeserializeEventGridEvents()` 函数会反序列化事件网格事件。 它将事件数据反序列化为适当的类型（如 StorageBlobCreatedEventData）。 `Microsoft.Azure.EventGrid.EventTypes` 类可用于获取受支持的事件类型和名称。
 

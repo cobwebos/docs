@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: d13bba54-96bd-4b81-bee9-c8025ffa1648
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: fcc0badc17675c1c8923c744afd3fa46e98fef32
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 1bf20faaf0626566b248a8c5cdba653b8b4e5a20
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954687"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081052"
 ---
 # <a name="integrating-with-azure-active-directory"></a>与 Azure Active Directory 集成
 
@@ -36,7 +36,7 @@ Azure Active Directory 为组织的云应用程序提供企业级标识管理。
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>支持使用 Azure AD 作为登录应用程序的方式
 **减少登录阻碍并降低支持成本。** 如果使用 Azure AD 登录应用程序，用户不需要记住更多的名称和密码。 作为开发人员，可以减少要存储和保护的密码。 无需重置忘记的密码，单凭这一点就能节省不少的精力。 使用 Azure AD 可以登录世界上最热门的一些云应用程序，包括 Office 365 和 Microsoft Azure。 Azure AD 包含了来自数百万家组织的几亿个用户，用户很可能已经登录到了 Azure AD。 深入了解如何[添加 Azure AD 登录支持](authentication-scenarios.md)。
 
-**简化应用程序的注册过程。**  在注册应用程序期间，Azure AD 可以发送有关用户的基本信息，以便可以预先填充注册表单，或者完全清除表单。 用户可以使用其 Azure AD 帐户，通过社交媒体和移动应用程序中常见的许可体验注册应用程序。 任何用户都可以注册和登录与 Azure AD 集成的应用程序，而无需 IT 人员的参与。 深入了解如何[注册应用程序进行 Azure AD 帐户登录](../../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md)。
+**简化应用程序的注册过程。**  在注册应用程序期间，Azure AD 可以发送有关用户的基本信息，以便可以预先填充注册表单，或者完全清除表单。 用户可以使用其 Azure AD 帐户，通过社交媒体和移动应用程序中常见的许可体验注册应用程序。 任何用户都可以注册和登录与 Azure AD 集成的应用程序，而无需 IT 人员的参与。 深入了解如何[注册应用程序进行 Azure AD 帐户登录](../../app-service/configure-authentication-provider-aad.md)。
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>浏览用户，管理用户设置，以及控制对应用程序的访问
 **浏览目录中的用户。**  在邀请其他人或授予访问权限时，可以使用 Graph API 来帮助用户搜索和浏览其组织中的其他人员，而无需键入电子邮件地址。 用户可以使用熟悉的通讯簿样式界面进行浏览，包括查看组织层次结构的详细信息。 深入了解[图形 API](active-directory-graph-api.md)。

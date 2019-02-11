@@ -2,17 +2,18 @@
 title: 教程 - 使用 Power BI Desktop 连接到 Azure Analysis Services | Microsoft Docs
 author: minewiskan
 manager: kfile
+description: 了解如何使用 Power BI Desktop 连接到 Azure Analysis Services。
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: ad97fd7569690d0d199b0ce1a82f31f8dfa64c26
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 5d021aa7a6d55bb071340ebcd8e7090a4b0c2e2f
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426118"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188804"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>教程：使用 Power BI Desktop 进行连接
 
@@ -29,10 +30,10 @@ ms.locfileid: "49426118"
 - 具有 adventureworks 示例模型数据库的 [*读取*](../analysis-services-server-admins.md) 权限。
 - [安装最新的 Power BI Desktop](https://powerbi.microsoft.com/desktop)。
 
-## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
+## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 在本教程中，登录到门户只是为了获取服务器名称。 通常，用户将从服务器管理员那里获取服务器名称。
 
-登录到[门户](https://portal.azure.com/)。
+登录[门户](https://portal.azure.com/)。
 
 ## <a name="get-server-name"></a>获取服务器名称
 若要从 Power BI Desktop 连接到服务器，首先需要服务器名称。 可以从门户获取服务器名称。
@@ -51,7 +52,7 @@ ms.locfileid: "49426118"
 
    ![指定服务器名称和模型数据库](./media/analysis-services-tutorial-pbid/aas-pbid-connect-aas-servername.png)
 
-3. 在出现提示时，输入登录凭据。 你输入的帐户必须至少具有 adventureworks 示例模型数据库的读取权限。
+3. 在系统提示时输入凭据。 你输入的帐户必须至少具有 adventureworks 示例模型数据库的读取权限。
 
     adventureworks 模型将在 Power BI Desktop 中打开，并且“报表”视图中将显示一个空白报表。 “字段”列表中会显示所有非隐藏的模型对象。 连接状态显示在右下角。
 

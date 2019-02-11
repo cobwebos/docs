@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
 ms.author: aahi
-ms.openlocfilehash: c28a3097e8b0733db229fc10778d0ac77a3b0a7a
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ae1cc8282b9e7d939e04bc9fc1a9865b21c54c7e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52306364"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187822"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>快速入门：使用用于 Python 的必应 Web 搜索 SDK
 
@@ -170,7 +170,7 @@ python -m pip install azure-cognitiveservices-search-websearch
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>限制必应返回的结果数
 
-此示例使用 `count` 和 `offset` 参数限制通过 SDK 的 [`search` 方法](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search)返回的结果数。 将会输出初始结果的 `name` 和 `URL`。
+此示例使用 `count` 和 `offset` 参数限制通过 SDK 的 [`search` 方法](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)返回的结果数。 将会输出初始结果的 `name` 和 `URL`。
 
 1. 将以下代码添加到 Python 项目：
     ```python
@@ -181,7 +181,7 @@ python -m pip install azure-cognitiveservices-search-websearch
         try:
             '''
             Set the query, offset, and count using the SDK's search method. See:
-            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search.
+            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python.
             '''
             web_data = client.web.search(query="Best restaurants in Seattle", offset=10, count=20)
             print("\r\nSearching for \"Best restaurants in Seattle\"")
@@ -207,7 +207,7 @@ python -m pip install azure-cognitiveservices-search-websearch
 
 ### <a name="filter-for-news-and-freshness"></a>新闻和新鲜度的筛选器
 
-此示例使用 `response_filter` 和 `freshness` 参数筛选通过 SDK 的 [`search` 方法](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations#search)获得的搜索结果。 返回的搜索结果仅限必应发现的过去 24 小时的新闻文章和网页。 将会输出初始结果的 `name` 和 `URL`。
+此示例使用 `response_filter` 和 `freshness` 参数筛选通过 SDK 的 [`search` 方法](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations)获得的搜索结果。 返回的搜索结果仅限必应发现的过去 24 小时的新闻文章和网页。 将会输出初始结果的 `name` 和 `URL`。
 
 1. 将以下代码添加到 Python 项目：
     ```python
@@ -217,7 +217,7 @@ python -m pip install azure-cognitiveservices-search-websearch
         try:
             '''
             Set the query, response_filter, and freshness using the SDK's search method. See:
-            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search.
+            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python.
             '''
             web_data = client.web.search(query="xbox",
                 response_filter=["News"],
@@ -255,7 +255,7 @@ python -m pip install azure-cognitiveservices-search-websearch
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>使用安全搜索、答案计数和提升筛选器
 
-此示例使用 `answer_count`、`promote` 和 `safe_search` 参数筛选通过 SDK 的 [`search` 方法](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search)获得的搜索结果。 将会显示初始结果的 `name` 和 `URL`。
+此示例使用 `answer_count`、`promote` 和 `safe_search` 参数筛选通过 SDK 的 [`search` 方法](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)获得的搜索结果。 将会显示初始结果的 `name` 和 `URL`。
 
 1. 将以下代码添加到 Python 项目：
     ```python
@@ -267,7 +267,7 @@ python -m pip install azure-cognitiveservices-search-websearch
         try:
             '''
             Set the query, answer_count, promote, and safe_search parameters using the SDK's search method. See:
-            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search.
+            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python.
             '''
             web_data = client.web.search(
                 query="Niagara Falls",

@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 8a67327497c96cba570d2ddb8c525bf5a60be790
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: da227151dd056dd5e852ae8790b6f20ac3c0c790
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308203"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653299"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Apache Phoenix 性能最佳做法
 
-[Apache Phoenix](https://phoenix.apache.org/) 性能的最重要方面是优化基础 [Apache HBase](http://hbase.apache.org/)。 Phoenix 在 HBase 的顶层创建一个关系数据模型，用于将 SQL 查询转换为 HBase 操作，例如扫描。 表架构的设计、主键中字段的选择和排序，以及索引的用法都会影响 Phoenix 的性能。
+[Apache Phoenix](https://phoenix.apache.org/) 性能的最重要方面是优化基础 [Apache HBase](https://hbase.apache.org/)。 Phoenix 在 HBase 的顶层创建一个关系数据模型，用于将 SQL 查询转换为 HBase 操作，例如扫描。 表架构的设计、主键中字段的选择和排序，以及索引的用法都会影响 Phoenix 的性能。
 
 ## <a name="table-schema-design"></a>表架构设计
 
@@ -225,9 +225,9 @@ Phoenix 索引是一个 HBase 表，存储索引表中的部分或全部数据�
 
     CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
 
-有关此选项和其他选项的详细信息，请参阅 [Phoenix 语法](http://phoenix.apache.org/language/index.html#options)。
+有关此选项和其他选项的详细信息，请参阅 [Apache Phoenix 语法](https://phoenix.apache.org/language/index.html#options)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Apache Phoenix 优化指南](https://phoenix.apache.org/tuning_guide.html)
-* [辅助索引](http://phoenix.apache.org/secondary_indexing.html)
+* [辅助索引](https://phoenix.apache.org/secondary_indexing.html)

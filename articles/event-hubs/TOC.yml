@@ -65,6 +65,8 @@ items:
   - name: 使用事件中心将数据流式传输到 Azure Databricks
     href: ../azure-databricks/databricks-stream-from-eventhubs.md
     maintainContext: true
+  - name: 在事件中心命名空间中启用虚拟网络集成和防火墙
+    href: event-hubs-tutorial-virtual-networks-firewalls.md
   - name: 用于 Apache Kafka 的事件中心
     items:
     - name: 将 Kafka 代理镜像到已启用 Apache Kafka 的事件中心
@@ -130,11 +132,17 @@ items:
       href: event-hubs-management-libraries.md
   - name: 获取事件中心连接字符串
     href: event-hubs-get-connection-string.md
+  - name: Java 开发
+    items:
+    - name: 创建 Spring Cloud Stream Binder 应用
+      href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
+    - name: 使用适用于 Apache Kafka 的 Spring Boot Starter
+      href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
   - name: 故障排除
     items:
     - name: 例外
       href: event-hubs-messaging-exceptions.md
-  - name: 使用 IP 筛选器
+  - name: 使用防火墙
     href: event-hubs-ip-filtering.md
   - name: 使用虚拟网络服务终结点
     href: event-hubs-service-endpoints.md
@@ -144,6 +152,9 @@ items:
     href: event-hubs-streaming-azure-diags-data.md
   - name: 使用不同的协议在应用程序之间交换事件
     href: event-hubs-exchange-events-different-protocols.md
+  - name: 创建 Spring Cloud Stream Binder 应用程序
+    href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub?view=azure-java-stable
+    maintainContext: true
 - name: 引用
   items:
   - name: Java
@@ -166,6 +177,8 @@ items:
       href: /dotnet/api/microsoft.azure.management.eventhub
   - name: REST
     href: /rest/api/eventhub
+  - name: 资源管理器模板
+    href: /azure/templates/microsoft.eventhub/allversions
   - name: 配额
     href: event-hubs-quotas.md
 - name: 资源
@@ -186,9 +199,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-eventhub
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: d6fb88ed6bfcf48cb35da068e50b670f4b1b685c
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 95e32aa7c38ba5cda4ac6a83bb72f5d28d5b5e9b
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726961"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55560781"

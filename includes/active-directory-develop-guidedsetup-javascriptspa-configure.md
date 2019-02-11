@@ -14,28 +14,14 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 2e65c5f0d6c2d493abcd61bea4077cbdd8ff95fa
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 135ee9f6b833165cd393b9c5ca582e0ee9499e0f
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52330755"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54057354"
 ---
 ## <a name="register-your-application"></a>注册应用程序
-
-可通过多种方法注册应用程序。 请选择最适合需求的选项：
-* [快速模式 - 使用 SPA 快速入门模板来配置应用](#option-1-register-your-application-express-mode)
-* [高级模式 - 手动配置应用设置](#option-2-register-your-application-advanced-mode)
-
-### <a name="option-1-register-your-application-express-mode"></a>选项 1：注册应用程序（快速模式）
-
-1. 登录到 [Azure 门户应用注册（预览版）](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)以注册应用程序。
-1. 在“注册应用程序”页上，输入应用程序的名称。
-1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。
-1. 完成后，选择“注册”。
-1. 遵照快速入门说明下载内容，并一键式自动配置新应用程序。
-
-### <a name="option-2-register-your-application-advanced-mode"></a>选项 2：注册应用程序（高级模式）
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)以注册应用程序。
 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。

@@ -47,6 +47,8 @@ items:
       href: stream-analytics-sql-output-perf.md
     - name: Blob 自定义路径模式
       href: stream-analytics-custom-path-patterns-blob-storage-output.md
+  - name: 作业的状态
+    href: job-states.md
   - name: 开窗函数
     href: stream-analytics-window-functions.md
   - name: 地理空间函数
@@ -62,7 +64,7 @@ items:
   - name: 检查点和重播
     href: stream-analytics-concepts-checkpoint-replay.md
   - name: 错误策略
-    href: output-error-policy.md
+    href: stream-analytics-output-error-policy.md
 - name: 操作方法指南
   items:
   - name: 管理
@@ -81,6 +83,8 @@ items:
       href: stream-analytics-job-reliability.md
     - name: 使用托管标识进行身份验证
       href: stream-analytics-managed-identities-adls.md
+    - name: 使用 SQL 参考
+      href: sql-reference-data.md
   - name: 构建解决方案
     items:
     - name: Twitter 情绪分析
@@ -155,7 +159,7 @@ items:
       href: stream-analytics-troubleshoot-output.md
     - name: 查询逻辑
       href: stream-analytics-troubleshoot-query.md
-    - name: 诊断日志
+    - name: 活动日志和诊断日志
       href: stream-analytics-job-diagnostic-logs.md
   - name: 与机器学习集成
     items:
@@ -348,7 +352,6 @@ items:
       href: /stream-analytics-query/data-types-azure-stream-analytics
     - name: 分析 JSON 和 AVRO 数据
       href: stream-analytics-parsing-json.md
-      maintainContext: true
   - name: 查询语言元素
     items:
     - name: 查询语言元素概述
@@ -379,7 +382,6 @@ items:
       href: /stream-analytics-query/where-azure-stream-analytics
     - name: WITH
       href: /stream-analytics-query/with-azure-stream-analytics
-    expanded: true
   - name: 时间管理
     items:
     - name: 时间管理概述
@@ -401,6 +403,8 @@ items:
     href: /dotnet/api/microsoft.azure.management.streamanalytics
   - name: REST
     href: /rest/api/streamanalytics
+  - name: 资源管理器模板
+    href: /azure/templates/microsoft.streamanalytics/allversions
 - name: 资源
   items:
   - name: 流分析预览版
@@ -427,9 +431,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: 白皮书 - 实时事件处理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: ae1d1362fd8cc38dbaaae3723a7ed7962fc8d6f8
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: d2038b8a663db50f4b2341ae3b2c39b499bb00c2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52891106"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882336"

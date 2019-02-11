@@ -1,21 +1,17 @@
 ---
-title: 使用模板部署 Web 应用 - Azure Cosmos DB | Microsoft Docs
+title: 使用模板部署 Web 应用 - Azure Cosmos DB
 description: 了解如何使用 Azure 资源管理器模板部署 Azure Cosmos DB 帐户、Azure 应用服务 Web 应用以及示例 Web 应用程序。
-services: cosmos-db, app-service\web
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: sngun
-ms.custom: mvc
-ms.openlocfilehash: 29a2335a3a4077866b71e4303c240ad8352371ba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1a63de4642850e425cc785e0d89197178ceec1a6
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243771"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041010"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署 Azure Cosmos DB 和 Azure 应用服务 Web 应用
 本教程说明如何使用 Azure 资源管理器模板来部署和集成 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714) Web 应用以及示例 Web 应用程序。
@@ -82,7 +78,7 @@ ms.locfileid: "51243771"
 
 <a id="Build"></a> 
 
-## <a name="step-3-deploy-the-document-account-and-web-app-sample"></a>步骤 3：部署 DocumentDB 帐户和 Web 应用示例
+## <a name="step-3-deploy-the-document-account-and-web-app-sample"></a>步骤 3：部署文档帐户和 Web 应用示例
 现在让我们来部署第二个模板。  此模板可用于演示如何以应用程序设置或自定义连接字符串的形式，将帐户终结点和主密钥等 Azure Cosmos DB 连接信息插入 Web 应用。 例如，你可能拥有自己的 Web 应用程序，并希望使用 Azure Cosmos DB 帐户部署这些应用程序，还要在部署期间自动填充连接信息。
 
 > [!TIP]
@@ -121,15 +117,15 @@ ms.locfileid: "51243771"
 ## <a name="next-steps"></a>后续步骤
 祝贺你！ 已使用 Azure 资源管理器模板部署了 Azure Cosmos DB、应用服务 Web 应用以及示例 Web 应用程序。
 
-* 若要了解有关 Azure Cosmos DB 的详细信息，请单击[此处](http://azure.com/docdb)。
+* 若要了解有关 Azure Cosmos DB 的详细信息，请单击[此处](https://azure.microsoft.com/services/cosmos-db/)。
 * 若要了解有关 Azure 应用服务 Web 应用的详细信息，请单击[此处](https://go.microsoft.com/fwlink/?LinkId=325362)。
 * 若要了解有关 Azure 资源管理器模板的详细信息，请单击[此处](https://msdn.microsoft.com/library/azure/dn790549.aspx)。
 
 ## <a name="whats-changed"></a>发生的更改
-* 有关从网站更改为 应用服务的指南，请参阅 [Azure 应用服务及其对现有 Azure 服务的影响](https://go.microsoft.com/fwlink/?LinkId=529714)
+* 有关从网站更改应用服务的指南，请参阅：[Azure 应用服务及其对现有 Azure 服务的影响](https://go.microsoft.com/fwlink/?LinkId=529714)
 
 > [!NOTE]
-> 如果想要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://go.microsoft.com/fwlink/?LinkId=523751)，可以通过该页面在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
+> 如果要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://go.microsoft.com/fwlink/?LinkId=523751)，可以在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 

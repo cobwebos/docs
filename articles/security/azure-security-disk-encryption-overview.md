@@ -1,26 +1,29 @@
 ---
-title: 适用于 IaaS VM 的 Azure 磁盘加密概述 | Microsoft Docs
+title: 概述 - 适用于 IaaS VM 的 Azure 磁盘加密 | Microsoft Docs
 description: 本文概述适用于 IaaS VM 的 Microsoft Azure 磁盘加密。
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/14/2018
-ms.openlocfilehash: 1328effbc495422e5190362c562928fbb1742e1b
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 1674a54ea78e7fea2cc39cb26fefc52b8764bc4c
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913200"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200847"
 ---
-# <a name="azure-disk-encryption-for-iaas-vms"></a>适用于 IaaS VM 的 Azure 磁盘加密 
-Microsoft Azure 致力于确保数据隐私性和数据自主性。 Azure 允许通过一系列高级技术加密、控制和管理加密密钥并控制和审核数据访问，从而控制 Azure 托管的数据。 此控制措施使 Azure 客户能够灵活选择最符合其业务需求的解决方案。 本文将介绍技术解决方案“适用于 Windows 和 Linux IaaS 虚拟机 (VM) 的 Azure 磁盘加密”。 此技术有助于保护数据，使组织能够信守在安全性与合规性方面作出的承诺。 
+# <a name="azure-disk-encryption-for-iaas-vms"></a>适用于 IaaS VM 的 Azure 磁盘加密
+
+Microsoft Azure 致力于确保数据隐私性和数据自主性。 Azure 允许通过一系列高级技术加密、控制和管理加密密钥并控制和审核数据访问，从而控制 Azure 托管的数据。 此控制措施使 Azure 客户能够灵活选择最符合其业务需求的解决方案。 本文介绍一个技术解决方案：“适用于 Windows 和 Linux IaaS 虚拟机 (VM) 的 Azure 磁盘加密。” 此技术有助于保护数据，使组织能够信守在安全性与合规性方面作出的承诺。 
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 
 ## <a name="overview"></a>概述
+
 Azure 磁盘加密是用于帮助加密 Windows 和 Linux IaaS VM 磁盘的功能。 磁盘加密利用 Windows 的行业标准 [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) 功能和 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能，为 OS 和数据磁盘提供卷加密。 此解决方案与 [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) 集成，用于控制和管理磁盘加密密钥与机密。 此解决方案还可确保 VM 磁盘上的所有数据在 Azure 存储中静态加密。
 
 在标准 VM 和使用 Azure 高级存储的 VM 的所有 Azure 公共区域和 Azure 政府区域中，适用于 Windows 和 Linux IaaS VM 的磁盘加密以正式版提供。 磁盘加密管理解决方案可以解决以下业务需求：
@@ -37,6 +40,7 @@ Azure 磁盘加密是用于帮助加密 Windows 和 Linux IaaS VM 磁盘的功�
 
 
 ## <a name="encryption-scenarios"></a>加密方案
+
 磁盘加密解决方案支持以下客户方案：
 
 * 在通过预加密 VHD 和加密密钥创建的新 Windows IaaS VM 上启用加密。
@@ -77,7 +81,7 @@ Azure 磁盘加密是用于帮助加密 Windows 和 Linux IaaS VM 磁盘的功�
 
 * 基本层 IaaS VM。
 * 在 Linux IaaS VM 的 OS 驱动器上禁用加密。
-* 在为 Linux Iaas VM 加密了 OS 驱动器的情况下禁止对数据驱动器加密。
+* 在为 Linux IaaS VM 加密了 OS 驱动器的情况下禁止对数据驱动器加密。
 * 使用经典 VM 创建方法创建的 IaaS VM。
 * 在 Linux IaaS VM 上启用客户自定义映像加密。
 * 与本地密钥管理系统集成。
@@ -87,6 +91,7 @@ Azure 磁盘加密是用于帮助加密 Windows 和 Linux IaaS VM 磁盘的功�
 * 使用基于软件的 RAID 系统配置 Windows VM。
 
 ## <a name="encryption-features"></a>加密功能
+
 为 Azure IaaS VM 启用并部署磁盘加密后，会根据提供的配置启用以下功能：
 
 * 加密 OS 卷以轻松保护存储中的引导卷。

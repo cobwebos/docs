@@ -3,19 +3,19 @@ title: 使用 Azure Active Directory B2C 设置通过 Facebook 帐户注册与�
 description: 使用 Azure Active Directory B2C，为应用程序中的客户提供通过 Facebook 帐户注册与登录的功能。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: b1fbf77bfb771bd94ed9acdecb3c54e4c6894687
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.subservice: B2C
+ms.openlocfilehash: ea1afb83c3e381c33b1c29c224d1ce0cc1d3d080
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182104"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163035"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Facebook 帐户注册与登录
 
@@ -38,7 +38,7 @@ ms.locfileid: "47182104"
 13. 选择“产品”，然后在“Facebook 登录”下选择“设置”。
 14. 在“Facebook 登录”下选择“设置”。
 15. 在“有效的 OAuth 重定向 URL”中输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为租户的名称。 单击页面底部的“保存更改”。
-16. 若要使 Facebook 应用程序可在 Azure AD B2C 中使用，选择“应用审核”，并将“公开我的应用程序?”设置为“是”，然后单击“确认”。
+16. 若要使 Facebook 应用程序可在 Azure AD B2C 中使用，请单击页面右上角的状态选择器，将其设置为“打开”以公开该应用程序，然后单击“确认”。  此时，状态应从“开发”变为“实时”。
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>将 Facebook 帐户配置为标识提供者
 

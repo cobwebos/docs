@@ -4,10 +4,10 @@ description: 排查应用程序代理的 Kerberos 约束委派配置问题
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 52157797bb01fc73c551ca9654b2360d161b653d
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 24221321549c1e530016eec36d726444e6fc529e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354607"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164174"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>排查应用程序代理的 Kerberos 约束委派配置问题
 
@@ -32,7 +32,7 @@ ms.locfileid: "44354607"
 
 本文作出以下假设：
 
--   Azure AD 应用程序代理的部署遵循[应用程序代理入门](application-proxy-enable.md)，对非 KCD 应用程序的常规访问按预期方式进行。
+-   Azure AD 应用程序代理的部署遵循[应用程序代理入门](application-proxy-add-on-premises-application.md)，对非 KCD 应用程序的常规访问按预期方式进行。
 
 -   发布的目标应用程序以 Kerberos 的 Internet Information Services (IIS) 和 Microsoft 实现为基础。
 
@@ -64,7 +64,7 @@ Azure AD 应用程序代理可以部署到许多类型的基础结构或环境�
 
    ![授权因缺少权限而失败](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
 
-这两个图像显示相同症状：SSO 失败。 拒绝用户访问应用程序。
+这两张图像显示了相同的故障：SSO 失败。 拒绝用户访问应用程序。
 
 ## <a name="troubleshooting"></a>故障排除
 

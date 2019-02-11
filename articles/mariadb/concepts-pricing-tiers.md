@@ -3,21 +3,19 @@ title: Azure Database for MariaDB 的定价层
 description: 本文介绍 Azure Database for MariaDB 的定价层。
 author: jan-eng
 ms.author: janeng
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 561244efd653294694cc16a1115962473e9a7cec
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: bb6e27f92f60712cce71ba6fca53b40af00ee714
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249020"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354444"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB 定价层
 
-在“基本”、“常规用途”和“内存优化”这三个不同的定价层中，Azure Database for MariaDB 服务器可以在其中的一个定价层中创建。 定价层的差异表现在可以预配的 vCore 中的计算量、每个 vCore 的内存，以及用于存储数据的存储技术。 所有资源都在 MariaDB 服务器级别预配。 一个服务器可以有一个或多个数据库。
+可在以下三个不同的定价层之一中创建 Azure Database for MariaDB 服务器：“基本”、“常规用途”和“内存优化”。 定价层的差异表现在可以预配的 vCore 中的计算量、每个 vCore 的内存，以及用于存储数据的存储技术。 所有资源都在 MariaDB 服务器级别预配。 一个服务器可以有一个或多个数据库。
 
 |    | **基本** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
@@ -55,8 +53,7 @@ ms.locfileid: "48249020"
 
 在创建服务器的过程中和之后，可以添加更多的存储容量。 “基本”层不提供 IOPS 保证。 在“常规用途”和“内存优化”定价层中，IOPS 与预配的存储大小按 3:1 的比例缩放。
 
-可以通过 Azure 门户或 Azure CLI 命令监视 I/O 使用情况。 要监视的相关指标是存储空间上限、存储百分比、已用存储和 IO 百分比。
-<!--[storage limit, storage percentage, storage used, and IO percent](concepts-monitoring.md)-->
+可以通过 Azure 门户或 Azure CLI 命令监视 I/O 使用情况。 要监视的相关指标是[存储上限、存储百分比、已用存储和 IO 百分比](concepts-monitoring.md)。
 
 ### <a name="reaching-the-storage-limit"></a>达到存储限制
 
@@ -66,7 +63,7 @@ ms.locfileid: "48249020"
 
 我们建议你设置警报，以便在服务器存储接近阈值时通知你，从而可以避免进入只读状态。 
 
-<!--For more information, see the documentation on [how to set up an alert](howto-alert-on-metric.md).-->
+有关详细信息，请参阅有关[如何设置警报](howto-alert-metric.md)的文档。
 
 ## <a name="backup"></a>备份
 

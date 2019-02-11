@@ -1,21 +1,17 @@
 ---
-title: Azure Cosmos DB 设计模式：社交媒体应用 |Microsoft Docs
+title: Azure Cosmos DB 设计模式：社交媒体应用
 description: 利用 Azure Cosmos DB 的存储灵活性和其他 Azure 服务了解社交网络的设计模式。
-keywords: 社交媒体应用
-services: cosmos-db
 author: ealsur
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: maquaran
-ms.openlocfilehash: 6c2911ac65b95ea0a705944fdd8fb9288af28498
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 8d6dfa292bd597c2e37f7111e3a068010dc4653c
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165673"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042677"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 进行社交
 
@@ -49,14 +45,14 @@ ms.locfileid: "52165673"
         "date":"2016-01-01",
         "body":"this is an awesome post stored on NoSQL",
         "createdBy":User,
-        "images":["http://myfirstimage.png","http://mysecondimage.png"],
+        "images":["https://myfirstimage.png","https://mysecondimage.png"],
         "videos":[
-            {"url":"http://myfirstvideo.mp4", "title":"The first video"},
-            {"url":"http://mysecondvideo.mp4", "title":"The second video"}
+            {"url":"https://myfirstvideo.mp4", "title":"The first video"},
+            {"url":"https://mysecondvideo.mp4", "title":"The second video"}
         ],
         "audios":[
-            {"url":"http://myfirstaudio.mp3", "title":"The first audio"},
-            {"url":"http://mysecondaudio.mp3", "title":"The second audio"}
+            {"url":"https://myfirstaudio.mp3", "title":"The first audio"},
+            {"url":"https://mysecondaudio.mp3", "title":"The second audio"}
         ]
     }
 
@@ -102,7 +98,7 @@ Azure Cosmos DB 的自动索引功能可确保为所有属性都编制索引。 
 
 可拥有“最新”的流，其中包含按创建日期排序的帖子。 或者可拥有一个“最热门”的流，其中包含过去 24 小时内点赞数较多的帖子。 甚至可以根据关注者和兴趣等逻辑为每个用户实现自定义流。 它仍然是一个帖子列表。 虽然如何生成这些列表还是一个问题，但读取性能不会受到阻碍。 在获得其中一个列表之后，使用 [IN 运算符](how-to-sql-query.md#WhereClause)向 Cosmos DB 发布单个查询以一次性获取帖子的所有页面。
 
-可以使用 [Azure 应用服务](https://azure.microsoft.com/services/app-service/) 的后台进程 - [Web 作业](../app-service/web-sites-create-web-jobs.md) - 来构建源流。 创建一个帖子后，可以通过使用 [Azure 存储](https://azure.microsoft.com/services/storage/)[队列](../storage/queues/storage-dotnet-how-to-use-queues.md)和 Web 作业（通过 [Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 触发）触发后台处理，从而根据自己的自定义逻辑实现流内的帖子传播。
+可以使用 [Azure 应用服务](https://azure.microsoft.com/services/app-service/) 的后台进程 - [Webjobs](../app-service/webjobs-create.md) - 来构建源流。 创建一个帖子后，可以通过使用 [Azure 存储](https://azure.microsoft.com/services/storage/)[队列](../storage/queues/storage-dotnet-how-to-use-queues.md)和 Web 作业（通过 [Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 触发）触发后台处理，从而根据自己的自定义逻辑实现流内的帖子传播。
 
 通过使用这种相同的技术创建最终一致性环境还可以以延迟方式处理评分和点赞。
 
@@ -208,15 +204,15 @@ Azure 搜索可实现它们称之为[索引器](https://msdn.microsoft.com/libra
 
 ## <a name="the-underlying-knowledge"></a>基础知识
 
-存储所有此内容（每天会不断增加）后，可能会思考这样一个问题：我可以使用所有来自用户的此信息流做些什么？
+存储所有日益增长的此内容后，你可能会考虑：我如何处理来自我的用户的所有此信息流？
 
-答案非常简单：将其投入使用并从中进行学习。
+答案非常简单：投入使用并从中进行学习。
 
 但是，可以学到什么？ 一些简单的示例包括[情绪分析](https://en.wikipedia.org/wiki/Sentiment_analysis)、基于用户偏好的内容建议，甚至自动执行内容审查器。内容审查器可确保通过社交网络发布的内容对该系列均安全。
 
 由于想要深入了解，可能会认为自己需要更多数学科学方面的知识才能提取出简单数据库和文件之外的这些模式和信息，其实不然。
 
-[Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)（[Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx) 的一部分）是一项全面托管的云服务，使你可以在简单的拖放界面中使用算法创建工作流、为 [R](https://en.wikipedia.org/wiki/R_\(programming_language\)) 中自己的算法编码，或使用一些已生成或现成的 API，如：[文本分析](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2)、[内容审查器或[建议](https://gallery.azure.ai/Solution/Recommendations-Solution)。
+[Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)（[Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx) 的一部分）是一项全面托管的云服务，让用户可以在简单的拖放界面中使用算法创建工作流、为 [R](https://en.wikipedia.org/wiki/R_\(programming_language\)) 中自己的算法编码，或使用一些已生成或现成的 API，如：[文本分析](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2)、[内容审查器或[建议](https://gallery.azure.ai/Solution/Recommendations-Solution)。
 
 若要完成上述任何一种机器学习方案，可使用 [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) 从不同源获取信息。 还可使用 [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) 来处理信息并生成可由 Azure 机器学习处理的输出。
 

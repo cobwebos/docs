@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 应用服务的应用程序代码中使用已上传的 SSL 证书 | Microsoft Docs
-description: ''
+title: 在应用程序代码中使用客户端 SSL 证书 - Azure 应用服务 | Microsoft Docs
+description: 了解如何使用客户端证书连接到需要它们的远程资源。
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: cephalin
-ms.openlocfilehash: 87c9cd5955dda1a379733e5ad48d58f8361f0e6b
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.custom: seodec18
+ms.openlocfilehash: 763aadc50a8760b4265dbfc21e9278f909b68433
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051470"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342011"
 ---
 # <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>在 Azure 应用服务的应用程序代码中使用 SSL 证书
 

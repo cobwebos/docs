@@ -10,22 +10,23 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-09/28/2018started-article
-ms.date: 09/28/2018
+ms.topic: get-started-article
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: 783262a5b55bd645ae3b85c1f00434648d7ee35f
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: b313772fb2737c015a02cfc36cec87797c95f619
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584961"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251956"
 ---
 # <a name="introducing-idns-for-azure-stack"></a>适用于 Azure Stack 的 iDNS 简介
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-iDNS 是一种 Azure Stack 网络功能，可用于解析外部 DNS 名称（例如， http://www.bing.com.)），它还允许你注册内部虚拟网络名称。 如此一来，就可按名称（而非 IP 地址）解析同一虚拟网络上的 VM。 使用此方法，不再需要提供自定义 DNS 服务器条目。 有关 DNS 的详细信息，请参阅[Azure DNS 概述](https://docs.microsoft.com/azure/dns/dns-overview)。
+iDNS 是一种 Azure Stack 网络功能，可用于解析外部 DNS 名称（例如， http://www.bing.com.)），它还允许你注册内部虚拟网络名称。 如此一来，就可按名称（而非 IP 地址）解析同一虚拟网络上的 VM。 使用此方法，不再需要提供自定义 DNS 服务器条目。 有关 DNS 的详细信息，请参阅 [Azure DNS 概述](https://docs.microsoft.com/azure/dns/dns-overview)。
 
 ## <a name="what-does-idns-do"></a>iDNS 有什么作用？
 

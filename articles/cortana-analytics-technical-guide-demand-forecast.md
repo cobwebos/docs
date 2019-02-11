@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/16/2016
 ms.author: garye
-ms.openlocfilehash: 88f6a27d4092e638403c641d72916ed9d2540708
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d055b6775c9c788ecbb3a868055fa2402a537a83
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427057"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231166"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>用于能源需求预测的 Cortana Intelligence 解决方案模板技术指南
 ## <a name="overview"></a>**概述**
@@ -163,8 +163,8 @@ Azure HDInsight 服务用于运行 [Hive](https://blogs.msdn.com/b/bigdatasuppor
 
 1. 在 Azure 流分析 (ASA) 中添加 Power BI 输出。
 
-   * 需要根据 [Azure 流分析和 Power BI：用于实时查看流数据的实时分析仪表板](stream-analytics/stream-analytics-power-bi-dashboard.md)中的说明，将 Azure 流分析作业的输出设置为 Power BI 仪表板。
-   * 在 [Azure 门户](https://portal.azure.com)中找到流分析作业。 作业名称应该是：解决方案名称+“streamingjob”+随机数字+“asapbi”（例如 demostreamingjob123456asapbi）。
+   * 需要按照 [Azure 流分析和 Power BI：用于实时查看流数据的实时分析仪表板](stream-analytics/stream-analytics-power-bi-dashboard.md)中的说明操作，将 Azure 流分析作业的输出设置为 Power BI 仪表板。
+   * 在 [Azure 门户](https://portal.azure.com)中找到流分析作业。 作业名称应为：解决方案名称+“streamingjob”+随机数字+“asapbi”（例如 demostreamingjob123456asapbi）。
    * 添加 ASA 作业的 PowerBI 输出。 将“输出别名”设置为“PBIoutput”。 将“数据集名称”和“表名称”设置为“EnergyStreamData”。 添加输出后，单击页面底部的“启动”启动流分析作业。 此时应会出现确认消息（例如，“已成功启动流分析作业 myteststreamingjob12345asablob”）。
 2. 登录到 [Power BI online](https://www.powerbi.com)
 

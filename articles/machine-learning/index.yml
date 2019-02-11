@@ -1,31 +1,28 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ef0ecc7a9e89168ed57c75ab24c3233692d77151
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 4581173f142170248a48d99683804bdb67f1703e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863561"
-documentType: LandingData
-title: Azure 机器学习文档
-metadata:
-  title: Azure 机器学习文档 - 教程和 API 参考 | Microsoft 文档
-  description: 了解如何将智能算法构建到应用、网站和机器人中，从而使它们通过自然的沟通方式观察、倾听、说出和理解用户需求。 教程、快速入门、API 参考和示例演示了操作方法。
-  services: machine-learning
-  author: j-martens
-  ms.service: machine-learning
-  ms.component: core
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 12/04/2018
-  ms.author: jmartens
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250668"
 abstract:
   description: 了解如何使用这些 Azure 机器学习产品在应用和网站中构建智能算法。  教程、快速入门、API 参考和示例演示了操作方法。
+documentType: LandingData
+metadata:
+  author: j-martens
+  description: 了解如何将智能算法构建到应用、网站和机器人中，从而使它们通过自然的沟通方式观察、倾听、说出和理解用户需求。 教程、快速入门、API 参考和示例演示了操作方法。
+  ms.author: jmartens
+  ms.subservice: core
+  ms.date: 12/04/2018
+  ms.devlang: na
+  ms.service: machine-learning
+  ms.tgt_pltfrm: na
+  ms.topic: landing-page
+  services: machine-learning
+  title: Azure 机器学习文档 - 教程和 API 参考 | Microsoft 文档
 sections:
 - items:
-  - type: list
-    style: cards
-    className: cardsM
+  - className: cardsM
     columns: 2
     items:
     - href: /azure/machine-learning/service/overview-what-is-azure-ml
@@ -33,45 +30,42 @@ sections:
       image:
         src: /azure/machine-learning/media/index/i_machine-learning.svg
       title: Azure 机器学习服务
-- title: 快速入门和教程
-  items:
-  - type: paragraph
-    text: 了解如何快速设置和使用 Azure 机器学习服务：
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/i_machine-learning.svg
-    rows:
-    - title: 开始在 Azure 门户中使用该服务
-      values:
-      - href: /azure/machine-learning/service/quickstart-get-started
-    - title: 开始通过 Python 使用该服务
-      values:
-      - href: /azure/machine-learning/service/quickstart-create-workspace-with-python
-    - title: 准备建模的数据
-      values:
-      - href: /azure/machine-learning/service/tutorial-data-prep
-    - title: 构建自己的机器学习模型
-      values:
-      - href: /azure/machine-learning/service/tutorial-train-models-with-aml
-    - title: 自动生成和调整算法
-      values:
-      - href: /azure/machine-learning/service/tutorial-auto-train-models
-    - title: 将模型部署为 Web 服务
-      values:
-      - href: /azure/machine-learning/service/tutorial-deploy-models-with-aml
-    - title: 使用机器学习模型
-      values:
-      - href: /azure/machine-learning/service/how-to-consume-web-service
-    - title: 构建和管理机器学习管道
-      values:
-      - href: /azure/machine-learning/service/how-to-create-your-first-pipeline
-- title: 其他 Microsoft 机器学习技术
-  items:
-  - type: list
     style: cards
-    className: cardsM
+    type: list
+- items:
+  - text: 进行设置并开始使用 Azure 机器学习服务：
+    type: paragraph
+  - text: <b>快速入门：</b>
+    type: paragraph
+  - items:
+    - html: <a href="service/quickstart-create-workspace-with-python">使用 Python 入门</a>
+    - html: <a href="service/quickstart-get-started">使用 Azure 门户入门</a>
+    style: unordered
+    type: list
+  - text: <b>MNIST 数据的图像分类教程：</b>
+    type: paragraph
+  - items:
+    - html: 第 1 部分：<a href="service/tutorial-train-models-with-aml">训练自己的模型</a>
+    - html: 第 2 部分：<a href="service/tutorial-deploy-models-with-aml">部署该模型</a>
+    style: unordered
+    type: list
+  - text: <b>使用纽约市出租车数据的回归建模教程：</b>
+    type: paragraph
+  - items:
+    - html: 第 1 部分：<a href="service/tutorial-data-prep">准备建模的数据</a>
+    - html: 第 2 部分：<a href="service/tutorial-auto-train-models">让自动化 ML 为你训练模型</a>
+    style: unordered
+    type: list
+  - text: <b>使用模型：</b>
+    type: paragraph
+  - items:
+    - html: <a href="service/how-to-consume-web-service">使用请求-响应模型</a>
+    - html: <a href="service/how-to-run-batch-predictions">使用 ML 管道进行批量预测</a>
+    style: unordered
+    type: list
+  title: 快速入门和教程
+- items:
+  - className: cardsM
     columns: 2
     items:
     - href: /azure/cognitive-services/
@@ -80,7 +74,7 @@ sections:
         src: /azure/machine-learning/media/index/cognitive-services.png
       title: 认知服务
     - href: /azure/machine-learning/studio/
-      html: <p>了解如何使用此协作型拖放式工具，根据数据生成、测试和部署预测分析解决方案。 了解详细信息... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+      html: <p>一项协作型拖放式工具，可以使用 R 或 Python 根据数据生成、测试和部署预测分析解决方案。 </p>
       image:
         src: /azure/machine-learning/media/index/machine-learning-studio.svg
       title: Azure 机器学习工作室
@@ -104,3 +98,7 @@ sections:
       image:
         src: /azure/machine-learning/media/index/virtualmachine.svg
       title: 数据科学虚拟机
+    style: cards
+    type: list
+  title: 其他 Microsoft 机器学习技术
+title: Azure 机器学习文档

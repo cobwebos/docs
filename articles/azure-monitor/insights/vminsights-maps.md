@@ -8,18 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 3e8230ea7b2d6d0e44468bd90289ee82d5a82367
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 73c94b79bb315c317d39ade704e2ee70a241a348
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713841"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187739"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>使用用于 VM 的 Azure Monitor（预览版）映射了解应用程序组件
 查看在 Azure 中运行的 Windows 和 Linux 虚拟机上发现的应用程序组件，并且可使用适用于 VM 的 Azure Monitor 通过两种方式观察环境，直接从虚拟机中观察或通过 VM 组在 Azure Monitor 中观察。 
@@ -52,7 +51,7 @@ ms.locfileid: "51713841"
 - 包含一个子句，以按计算机分组（例如“by Computer interval 1 minute”）。
 - 根据指标度量值选择警报。
 
-有关 Azure 警报和创建警报规则的详细信息，请参阅 [Azure Monitor 中的统一警报](../../monitoring-and-diagnostics/monitoring-overview-alerts.md)
+有关 Azure 警报和创建警报规则的详细信息，请参阅 [Azure Monitor 中的统一警报](../../azure-monitor/platform/alerts-overview.md)
 
 右上角的“图例”选项描述地图上的符号和角色。  若要放大以进一步查看地图并四处移动，可使用页面右下角的“缩放”控件设置缩放级别并使页面适应当前页的大小。  
 
@@ -107,7 +106,7 @@ ms.locfileid: "51713841"
 
 ![Azure Monitor 多 VM 映射概述](./media/vminsights-maps/map-multivm-azure-monitor-01.png)
 
-如果你有多个 Log Analytics 工作区，在页面顶部的“工作区”选择器中，请选择随解决方案启用并已向其报告虚拟机的工作区。 “组”选择器将返回与所选工作区相关的计算机的订阅、资源组、[计算机组](../../log-analytics/log-analytics-computer-groups.md)以及 VM 规模集。 你的选择仅应用于映射功能，不会延伸到到性能或映射。
+如果你有多个 Log Analytics 工作区，在页面顶部的“工作区”选择器中，请选择随解决方案启用并已向其报告虚拟机的工作区。 “组”选择器将返回与所选工作区相关的计算机的订阅、资源组、[计算机组](../../azure-monitor/platform/computer-groups.md)以及 VM 规模集。 你的选择仅应用于映射功能，不会延伸到到性能或映射。
 
 默认情况下，映射显示最近 30 分钟。 使用“时间范围”选择器，可查询历史时间范围（最多一小时），显示依赖项在过去（例如，发生事件期间或发生更改之前）的出现形式。   
 

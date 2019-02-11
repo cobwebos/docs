@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 11/22/2017
 ms.author: renash
-ms.component: files
-ms.openlocfilehash: 380a7be6a42109f90da5dbd39ea557c06be4be6a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: files
+ms.openlocfilehash: db11b457fda75c780a6b02715b4aced4c9f38ac1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253697"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452594"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 针对 Azure 文件进行开发
 
@@ -59,7 +59,7 @@ API | 使用时机 | 说明
 为完成此教程，需要在项目中引用两个包：
 
 * [适用于 .NET 的 Microsoft Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)：此包提供以编程方式访问存储帐户中数据资源的权限。
-* [适用于 .NET 的 Microsoft Azure Configuration Manager 库](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)：此包提供用于分析配置文件中连接字符串的类，而不考虑应用程序在何处运行。
+* [适用于 .NET 的 Microsoft Azure 配置管理器库](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)：此包提供用于分析配置文件中连接字符串的类，而不考虑应用程序在何处运行。
 
 可以使用 NuGet 获取这两个包。 执行以下步骤:
 
@@ -324,8 +324,8 @@ Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 
 可以用相同的方式将一个 Blob 复制到一个文件。 如果源对象是一个 Blob，则创建一个 SAS，以便在复制操作期间授予对该 Blob 的访问权限。
 
-## <a name="share-snapshots-preview"></a>共享快照（预览版）
-从 Azure 存储客户端库的 8.5 版开始，可以创建共享快照（预览版）。 还可以列出或浏览共享快照，以及删除共享快照。 共享快照的状态为只读，因此不允许对共享快照执行写入操作。
+## <a name="share-snapshots"></a>共享快照
+从 Azure 存储客户端库的 8.5 版开始，可以创建共享快照。 还可以列出或浏览共享快照，以及删除共享快照。 共享快照的状态为只读，因此不允许对共享快照执行写入操作。
 
 **创建共享快照**
 

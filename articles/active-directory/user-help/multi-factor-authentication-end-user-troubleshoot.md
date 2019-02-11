@@ -3,21 +3,21 @@ title: 双重验证故障排除 - Azure Active Directory | Microsoft Docs
 description: 为用户提供指导，让他们了解遇到 Azure 多重身份验证和双重验证问题时应采取什么操作。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
 ms.workload: identity
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: lizross
 ms.reviewer: kexia
-ms.openlocfilehash: fd722da236f3e1fff18e2561756635cd95f098e0
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 2ede7a172eda1122b0668984cc8e11937b3ae852
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346517"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768177"
 ---
 # <a name="get-help-with-two-step-verification"></a>获取有关双重验证的帮助
 
@@ -36,7 +36,7 @@ ms.locfileid: "39346517"
 
 - **你的手机丢失或你有了新的电话号码。** 如果手机丢失或你有了新的号码，可以使用其他方法登录或让管理员清除设置。 我们强烈建议你通知管理员手机丢失或被盗，这样可以对你的帐户进行相应的更新。 系统清除设置后，将在你下次登录时提示[注册双重验证](multi-factor-authentication-end-user-first-time.md)。
 
-- **未收到身份验证短信或来电。** 未收到身份验证短信或来电可能是出于多种原因。 如果过去在手机上成功收到短信或来电，则可能是手机提供商的问题，而不是帐户出现问题。 如果经常由于信号不佳导致延迟，建议在移动设备上使用 [Microsoft Authenticator 应用](microsoft-authenticator-app-how-to.md)。 此应用可以生成随机安全代码用于登录，而无需任何手机信号或 Internet 连接。<br><br>如果要尝试接收短信，请让你的朋友向你发送一条短信作为测试，确保你可以收到，如果你收到多条短信，请确保使用最新的代码。
+- **未收到身份验证短信或来电。** 未收到身份验证短信或来电可能是出于多种原因。 如果过去在手机上成功收到短信或来电，则可能是手机提供商的问题，而不是帐户出现问题。 如果经常由于信号不佳导致延迟，建议在移动设备上使用 [Microsoft Authenticator 应用](user-help-auth-app-download-install.md)。 此应用可以生成随机安全代码用于登录，而无需任何手机信号或 Internet 连接。<br><br>如果要尝试接收短信，请让你的朋友向你发送一条短信作为测试，确保你可以收到，如果你收到多条短信，请确保使用最新的代码。
 
 - **应用密码不起作用。** 应用密码会替换普通的密码，这适用于不支持双重验证的旧式桌面应用程序。 首先，请确保输入的密码正确。 如果问题未解决，尝试登录[创建新的应用密码](multi-factor-authentication-end-user-app-passwords.md)或联系管理员[，让其删除你的现有应用密码](../authentication/howto-mfa-userdevicesettings.md)，以便你可创建新密码。
 
@@ -61,4 +61,4 @@ ms.locfileid: "39346517"
 
 * [管理双重验证设置](multi-factor-authentication-end-user-manage-settings.md)
 
-* [Microsoft Authenticator 应用程序常见问题](microsoft-authenticator-app-faq.md)
+* [Microsoft Authenticator 应用程序常见问题](user-help-auth-app-faq.md)

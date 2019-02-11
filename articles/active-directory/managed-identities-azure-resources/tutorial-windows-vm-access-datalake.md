@@ -3,23 +3,23 @@ title: 如何使用 Windows VM 系统分配的托管标识访问 Azure Data Lake
 description: 本教程介绍了如何使用 Windows VM 系统分配的托管标识访问 Azure Data Lake Store。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/13/2018
-ms.author: daveba
-ms.openlocfilehash: 4beaf9f1a4206f6840bdb3277770e1996dbc83e1
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.author: priyamo
+ms.openlocfilehash: c1d1152c1f0b5345d91590efbd8826a9f2038f63
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623197"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150999"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure Data Lake Store
 

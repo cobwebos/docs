@@ -1,5 +1,5 @@
 ---
-title: 为应用服务环境配置 Web 应用程序防火墙 (WAF)
+title: 为应用服务环境配置 Web 应用程序防火墙 (WAF) - Azure
 description: 了解如何在应用服务环境的前面配置 Web 应用程序防火墙。
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: naziml
-ms.custom: mvc
-ms.openlocfilehash: e1c327051982ce36e94cd1fe0f824db5ec424da1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 4681dad55807705a2ce8e9908cbd3ee53fb3c32e
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226985"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631492"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>为应用服务环境配置 Web 应用程序防火墙 (WAF)
 ## <a name="overview"></a>概述
@@ -74,12 +74,12 @@ Barracuda WAF 使用 TCP 端口 8000 通过其管理门户进行配置。 如果
 
 ![管理仪表板][ManagementDashboard]
 
-单击“服务”选项卡可以根据 WAF 保护的服务配置 WAF。 有关配置 Barracuda WAF 的详细信息，请参阅[相关文档](https://techlib.barracuda.com/waf/getstarted1)。 在以下示例中，已配置处理 HTTP 和 HTTPS 流量的 Azure Web 应用。
+单击“服务”选项卡可以根据 WAF 保护的服务配置 WAF。 有关配置 Barracuda WAF 的详细信息，请参阅[相关文档](https://techlib.barracuda.com/waf/getstarted1)。 在以下示例中，已配置处理 HTTP 和 HTTPS 流量的应用服务应用。
 
 ![管理添加服务][ManagementAddServices]
 
 > [!NOTE]
-> 根据应用程序的配置方式与应用服务环境中正在使用的功能，需要转发非 80 和 443 TCP 端口的流量（例如，如果为 Web 应用设置了 IP SSL）。 有关应用服务环境中使用的网络端口的列表，请参阅[控制入站流量文档](app-service-app-service-environment-control-inbound-traffic.md)中的“网络端口”部分。
+> 根据应用程序的配置方式与应用服务环境中正在使用的功能，需要转发非 80 和 443 TCP 端口的流量（例如，如果为应用服务应用设置了 IP SSL）。 有关应用服务环境中使用的网络端口的列表，请参阅[控制入站流量文档](app-service-app-service-environment-control-inbound-traffic.md)中的“网络端口”部分。
 > 
 > 
 

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: 95f2947a30499ce563d5943dfa423ee89a172f47
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 686e008a83924460b1f85212b5c06796b6bc8217
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614509"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354206"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从本地 SQL Server 中的多个表加载到 Azure SQL 数据库。    
@@ -61,7 +60,7 @@ ms.locfileid: "51614509"
 
     下面是高级解决方案示意图： 
 
-    ![以增量方式加载数据](media\tutorial-incremental-copy-multiple-tables-portal\high-level-solution-diagram.png)
+    ![以增量方式加载数据](media/tutorial-incremental-copy-multiple-tables-portal/high-level-solution-diagram.png)
 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
@@ -160,7 +159,7 @@ ms.locfileid: "51614509"
 运行以下命令，在 SQL 数据库中创建存储过程。 此存储过程在每次管道运行后更新水印值。 
 
 ```sql
-CREATE PROCEDURE sp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
+CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
 AS
 
 BEGIN
@@ -185,7 +184,7 @@ CREATE TYPE DataTypeforCustomerTable AS TABLE(
 
 GO
 
-CREATE PROCEDURE sp_upsert_customer_table @customer_table DataTypeforCustomerTable READONLY
+CREATE PROCEDURE usp_upsert_customer_table @customer_table DataTypeforCustomerTable READONLY
 AS
 
 BEGIN
@@ -208,7 +207,7 @@ CREATE TYPE DataTypeforProjectTable AS TABLE(
 
 GO
 
-CREATE PROCEDURE sp_upsert_project_table @project_table DataTypeforProjectTable READONLY
+CREATE PROCEDURE usp_upsert_project_table @project_table DataTypeforProjectTable READONLY
 AS
 
 BEGIN
@@ -248,7 +247,7 @@ END
 1. 选择数据工厂的**位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 1. 选择“固定到仪表板”。     
 1. 单击“创建”。      
-1. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
+1. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”。 
 
     ![“正在部署数据工厂”磁贴](media/tutorial-incremental-copy-multiple-tables-portal/deploying-data-factory.png)
 1. 创建完成后，可以看到图中所示的“数据工厂”页。
@@ -277,7 +276,7 @@ END
 1. 在“名称”中输入 **MySelfHostedIR**，然后单击“下一步”。 
 
    ![自承载 IR 名称](./media/tutorial-incremental-copy-multiple-tables-portal/self-hosted-ir-name.png)
-1. 在“选项 1: 快速安装”部分单击“单击此处对此计算机启动快速安装”。 
+1. 在“选项 1: 快速安装”部分中单击“单击此处对此计算机启动快速安装”。 
 
    ![单击“快速安装”链接](./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png)
 1. 在“集成运行时(自承载)快速安装”窗口中，单击“关闭”。 
@@ -288,7 +287,7 @@ END
    ![集成运行时安装 -完成](./media/tutorial-incremental-copy-multiple-tables-portal/click-finish-integration-runtime-setup.png)
 1. 确认在 Integration Runtime 的列表中看到 **MySelfHostedIR**。
 
-       ![Integration runtimes - list](./media/tutorial-incremental-copy-multiple-tables-portal/integration-runtimes-list.png)
+    ![Integration Runtime - 列表](./media/tutorial-incremental-copy-multiple-tables-portal/integration-runtimes-list.png)
 
 ## <a name="create-linked-services"></a>创建链接服务
 可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本部分，请创建本地 SQL Server 数据库和 SQL 数据库的链接服务。 
@@ -505,7 +504,7 @@ END
     ![存储过程活动 - SQL 帐户](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
 1. 切换到“存储过程”选项卡，然后执行以下步骤：
 
-    1. 至于“存储过程名称”，请选择 `sp_write_watermark`。 
+    1. 至于“存储过程名称”，请选择 `usp_write_watermark`。 
     1. 选择“导入参数”。 
     1. 指定以下参数值： 
 
@@ -536,13 +535,13 @@ END
             "TABLE_NAME": "customer_table",
             "WaterMark_Column": "LastModifytime",
             "TableType": "DataTypeforCustomerTable",
-            "StoredProcedureNameForMergeOperation": "sp_upsert_customer_table"
+            "StoredProcedureNameForMergeOperation": "usp_upsert_customer_table"
         },
         {
             "TABLE_NAME": "project_table",
             "WaterMark_Column": "Creationtime",
             "TableType": "DataTypeforProjectTable",
-            "StoredProcedureNameForMergeOperation": "sp_upsert_project_table"
+            "StoredProcedureNameForMergeOperation": "usp_upsert_project_table"
         }
     ]
     ```
@@ -640,13 +639,13 @@ VALUES
             "TABLE_NAME": "customer_table",
             "WaterMark_Column": "LastModifytime",
             "TableType": "DataTypeforCustomerTable",
-            "StoredProcedureNameForMergeOperation": "sp_upsert_customer_table"
+            "StoredProcedureNameForMergeOperation": "usp_upsert_customer_table"
         },
         {
             "TABLE_NAME": "project_table",
             "WaterMark_Column": "Creationtime",
             "TableType": "DataTypeforProjectTable",
-            "StoredProcedureNameForMergeOperation": "sp_upsert_project_table"
+            "StoredProcedureNameForMergeOperation": "usp_upsert_project_table"
         }
     ]
     ```

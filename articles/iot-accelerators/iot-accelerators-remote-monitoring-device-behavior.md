@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: a983c7307308534140ab8999593ac4c8c6992a42
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: c2151a4b1eb2a853ed343f6720b4f53af5e5e449
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338500"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449514"
 ---
 # <a name="implement-the-device-model-behavior"></a>实现设备模型的行为
 
@@ -22,6 +22,9 @@ ms.locfileid: "43338500"
 - 按固定间隔运行，更新设备内部状态的**状态** JavaScript 文件。
 - 解决方案在设备上调用方法时运行的**方法** JavaScript 文件。
 
+> [!NOTE]
+> 设备模型行为仅适用于在设备模拟服务中托管的模拟设备。 如果想要创建真实设备，请参阅[将设备连接到远程监视解决方案加速器](iot-accelerators-connecting-devices.md)。
+
 在本文中，学习如何：
 
 >[!div class="checklist"]
@@ -29,7 +32,7 @@ ms.locfileid: "43338500"
 > * 定义模拟设备如何响应来自远程监视解决方案的方法调用
 > * 调试脚本
 
-[!INCLUDE [iot-accelerators-device-schema](../../includes/iot-accelerators-device-schema.md)]
+[!INCLUDE [iot-accelerators-device-behavior](../../includes/iot-accelerators-device-behavior.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

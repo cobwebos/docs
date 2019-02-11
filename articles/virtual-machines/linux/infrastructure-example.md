@@ -3,7 +3,7 @@ title: Azure 示例基础结构演练 | Microsoft Docs
 description: 了解用于在 Azure 中部署示例基础结构的关键设计和实施准则。
 documentationcenter: ''
 services: virtual-machines-linux
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 794182e3988a353b1e305a36da0475bacdea69b8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: d4b8cd07e50697139f68084f47c847ef8728c429
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469844"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888951"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>适用于 Linux VM 的 Azure 示例基础结构演练
 本文将逐步讲述如何构建示例应用程序基础结构。 我们将详细介绍如何设计简单在线商店的基础结构，此在线商店可将关于命名约定、可用性集、虚拟网络及负载均衡器的所有准则和决策聚集在一起；以及如何实际部署虚拟机 (VM)。
@@ -72,14 +72,14 @@ Adventure Works Cycles 确定其应使用 Azure 托管磁盘。 创建 VM 时，
 
 他们通过 Azure 门户使用以下设置创建了仅限云的虚拟网络：
 
-* 名称：AZOS-USE-VN01
+* 姓名：AZOS-USE-VN01
 * 位置：美国东部 2
 * 虚拟网络地址空间：10.0.0.0/8
 * 第一个子网：
-  * 名称：FrontEnd
+  * 姓名：FrontEnd
   * 地址空间：10.0.1.0/24
 * 第二个子网：
-  * 名称：BackEnd
+  * 姓名：BackEnd
   * 地址空间：10.0.2.0/24
 
 ## <a name="availability-sets"></a>可用性集

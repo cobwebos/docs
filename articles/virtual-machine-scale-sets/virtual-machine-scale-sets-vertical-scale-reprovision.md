@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: manayar
-ms.openlocfilehash: 8080cdf78333eed9541311ba67221c713341a21a
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 6cd42675fa70f338fd4e1223d6a48bf8c6773915
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741566"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579305"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>使用虚拟机规模集垂直自动缩放
 本文介绍如何使用或不使用重新设置对 Azure [虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)进行垂直缩放。 有关不在规模集中的 VM 的垂直缩放，请参阅[使用 Azure 自动化垂直缩放 Azure 虚拟机](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
@@ -84,7 +84,7 @@ ms.locfileid: "50741566"
 > 
 
 ## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>将警报添加到虚拟机规模集
-下面是 PowerShell 脚本，演示如何将警报添加到虚拟机规模集。 请参阅以下文章以获取可触发警报的指标名称：[Azure 监视器自动缩放常用指标](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)。
+下面是 PowerShell 脚本，演示如何将警报添加到虚拟机规模集。 请参阅以下文章以获取可触发警报的指标名称：[Azure Monitor 自动缩放常用指标](../azure-monitor/platform/autoscale-common-metrics.md)。
 
 ```
 $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail user@contoso.com
@@ -119,8 +119,8 @@ Add-AzureRmMetricAlertRule  -Name  $alertName `
 
 有关如何创建警报的详细信息，请参阅以下文章：
 
-* [Azure Monitor PowerShell 快速入门示例](../monitoring-and-diagnostics/insights-powershell-samples.md)
-* [Azure Monitor 跨平台 CLI 快速入门示例](../monitoring-and-diagnostics/insights-cli-samples.md)
+* [Azure Monitor PowerShell 快速入门示例](../azure-monitor/platform/powershell-quickstart-samples.md)
+* [Azure Monitor 跨平台 CLI 快速入门示例](../azure-monitor/platform/cli-samples.md)
 
 ## <a name="summary"></a>摘要
 本文对简单的垂直缩放示例进行了介绍。 借助这些构建基块 - 自动化帐户、Runbook、Webhook、警报，可以使用一组自定义操作连接各种事件。

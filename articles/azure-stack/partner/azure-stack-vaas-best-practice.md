@@ -12,13 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
-ms.reviewer: John.Haskin
-ms.openlocfilehash: d83eb501bbe685890decb3acbb8116164f4199db
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.reviewer: johnhas
+ms.lastreviewed: 11/26/2018
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2fa0912d120760ddba3b3d21f718e214e9d7c26b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422654"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238918"
 ---
 # <a name="best-practices-for-validation-as-a-service"></a>作为一项服务验证的最佳做法
 
@@ -26,7 +28,7 @@ ms.locfileid: "52422654"
 
 本文介绍如何管理即服务 (VaaS) 验证中的资源的最佳实践。 VaaS 资源的概述，请参阅[作为服务的关键概念验证](azure-stack-vaas-key-concepts.md)。
 
-## <a name="solution-management"></a>管理解决方案
+## <a name="solution-management"></a>解决方案管理
 
 ### <a name="naming-convention-for-vaas-solutions"></a>VaaS 解决方案的命名约定
 

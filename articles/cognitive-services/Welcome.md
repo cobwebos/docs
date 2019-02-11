@@ -5,27 +5,27 @@ services: cognitive-services
 author: nitinme
 manager: cgronlund
 ms.service: cognitive-services
-ms.component: ''
+ms.subservice: ''
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/17/2018
 ms.author: nitinme
-ms.openlocfilehash: f7a68aab4959c3793c7688504d73d2b539a26f83
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: f3dfd5907312ddd9c01be000c03ca6d0cadc0a52
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025389"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459853"
 ---
 # <a name="what-are-azure-cognitive-services"></a>什么是 Azure 认知服务？
 
-Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应用程序，无需拥有直接的 AI 或数据科学技能或知识。 Azure 认知服务是在 Microsoft 不断发展的机器学习 API 产品组合基础上的拓展，可让开发人员轻松地在其应用程序中添加认知功能 – 例如情绪和视频检测；面部、语音与视觉识别；语音与语言理解。 Azure 认知服务的目标是帮助开发人员创建可以看、听、说、理解甚至开始推理的应用程序。 Azure 认知服务中的服务目录可分为五大主要支柱类别：影像、语音、语言、搜索和知识。
+Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应用程序，而无需具备直接的 AI 或数据科学技能或知识。 Azure 认知服务是 Microsoft 不断发展的机器学习 API 产品组合基础上的拓展，可让开发人员轻松地在其应用程序中添加认知功能 – 例如情绪和视频检测；面部、语音与视觉识别；语音与语言理解。 Azure 认知服务的目标是帮助开发人员创建可以看、听、说、理解甚至开始推理的应用程序。 Azure 认知服务中的服务目录可分为五大主要支柱类别：视觉、语音、语言、搜索和知识。
 
-## <a name="vision-apis"></a>影像 API
+## <a name="vision-apis"></a>视觉 API
 
 |服务名称|服务说明|
 |:-----------|:------------------|
 |[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "计算机视觉")|使用计算机视觉服务，你可以访问用于处理图像并返回信息的高级算法。|
-|[自定义影像服务](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "自定义影像服务")（预览版）|通过自定义影像服务可以生成自定义图像分类器。|
+|[自定义视觉服务](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "自定义视觉服务")（预览版）|通过自定义视觉服务可以生成自定义图像分类器。|
 |[内容审查器](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "内容审查器")|内容审查器监视可能的冒犯性、不可取和危险内容。|
 |[人脸 API](https://docs.microsoft.com/azure/cognitive-services/face/ "人脸 API")|使用人脸 API 可访问高级人脸算法，支持人脸属性检测和识别。|
 |[情感 API](https://docs.microsoft.com/azure/cognitive-services/emotion/home "情感 API")（预览版）|情感 API 采用图像作为输入，并返回图像中的每张人脸与一组情感对应的置信度。|
@@ -50,7 +50,7 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 |[语言分析](https://docs.microsoft.com/azure/cognitive-services/linguisticanalysisapi/home "语言分析")（预览版）|语言分析提供可识别文本结构的自然语言处理工具。|
 |[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "文本分析")|文本分析提供对原始文本的自然语言处理，用于情绪分析、关键短语提取和语言检测。|
 |[文本翻译](https://docs.microsoft.com/azure/cognitive-services/translator/ "文本翻译")|文本翻译近乎实时地提供基于机器的文本翻译。||
-|[Web 语言模型](https://docs.microsoft.com/azure/cognitive-services/web-language-model/home "Web 语言模型")（预览版）|自然语言处理，用于预测字词排序、完成情况以及不带空格的字符串的字词断句。|
+|[Web 语言模型](https://docs.microsoft.com/azure/cognitive-services/web-language-model/home "Web 语言模型")（预览版）|用于预测无空格字符串的字序、补全和断字的自然语言处理。|
 
 ## <a name="search-apis"></a>搜索 API
 
@@ -89,6 +89,14 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 认知服务中的 API 托管在不断扩大的 Microsoft 托管数据中心网络上。 你可以在 [Azure 区域列表](https://azure.microsoft.com/regions)中找到每个 API 的区域可用性。
 
 正在寻找我们尚不支持的区域？ 请在我们的 [UserVoice 论坛](https://cognitive.uservoice.com/)上填写功能申请，告诉我们你的需求。
+
+## <a name="supported-cultural-languages"></a>支持的区域性语言
+
+ 认知服务在服务级别支持各种区域性语言。 可以在[支持的语言列表](language-support.md)中找到每个 API 的语言可用性。
+
+ ## <a name="container-support"></a>容器支持
+
+ 认知服务提供用于在 Azure 云或本地部署的容器。 详细了解[认知服务容器](cognitive-services-container-support.md)。
 
 ## <a name="support"></a>支持
 

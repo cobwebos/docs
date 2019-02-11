@@ -1,25 +1,25 @@
 ---
-title: 在 Azure 上使用 Scala 和 Spark 展开数据科学 | Microsoft Docs
+title: 在 Azure 上使用 Scala 和 Spark 展开数据科学 - Team Data Science Process
 description: 如何在 Azure HDInsight Spark 群集上通过 Spark 可缩放 MLlib 和 Spark ML 包使用 Scala 进行监管式的机器学习任务。
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 836fdb5da13465d77c6e9e6ede4780f5d4048597
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 3109c4e6190cd8e485ae9b28117c4688836dfc26
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447157"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470308"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>在 Azure 上使用 Scala 和 Spark 展开数据科研
-本文介绍如何在 Azure HDInsight Spark 群集上通过 Spark 可缩放 MLlib 和 Spark ML 包使用 Scala 进行监管式的机器学习任务。 它将指导完成[数据科学过程](https://aka.ms/datascienceprocess)所需的任务：数据引入和浏览、可视化、特征工程、建模和模型使用。 本文中的模型包括逻辑和线性回归、随机林和梯度提升树 (GBT)，以及两个常见的监管式机器学习任务：
+本文介绍如何在 Azure HDInsight Spark 群集上通过 Spark 可缩放 MLlib 和 Spark ML 包使用 Scala 进行监管式的机器学习任务。 它将指导完成[数据科学过程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)所需的任务：数据引入和浏览、可视化、特征工程、建模和模型使用。 本文中的模型包括逻辑和线性回归、随机林和梯度提升树 (GBT)，以及两个常见的监管式机器学习任务：
 
 * 回归问题：预测某个出租车行程的小费金额 ($)
 * 二元分类：预测某个出租车行程是否支付小费 (1/0)
@@ -41,7 +41,7 @@ ms.locfileid: "52447157"
 
 ## <a name="prerequisites"></a>先决条件
 * 必须拥有 Azure 订阅。 如果还没有 Azure 订阅，请[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* 需要 Azure HDInsight 3.4 Spark 1.6 群集来完成以下过程。 若要创建群集，请参阅[入门：在 Azure HDInsight 上创建 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)中的说明。 在“选择群集类型”菜单上设置群集类型和版本。
+* 需要 Azure HDInsight 3.4 Spark 1.6 群集来完成以下过程。 若要创建群集，请参阅[入门：在 Azure HDInsight 上创建 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md) 中的说明。 在“选择群集类型”菜单上设置群集类型和版本。
 
 ![HDInsight 群集类型配置](./media/scala-walkthrough/spark-cluster-on-portal.png)
 
@@ -411,7 +411,7 @@ MLlib 的建模和预测函数需要在使用前，对带有分类输入数据�
 
 **输出：**
 
-运行该单元格时间：4 秒。
+运行该单元格的时间：4 秒。
 
 ### <a name="sample-and-split-the-data-set-into-training-and-test-fractions"></a>将数据集采样和拆分为定型和测试分数
 此代码创建数据的随机采样（本示例中为 25%）。 尽管由于数据集的大小限制，本示例不需要进行采样，但本文介绍了如何采样，以便了解如何在需要时针对自己的问题使用它。 若样本很大，此操作可在定型模型时节省大量时间。 接下来将样本拆分为定型部分（本示例中为 75%）和测试部分（本示例中为 25%），用于分类和回归建模。
@@ -450,7 +450,7 @@ MLlib 的建模和预测函数需要在使用前，对带有分类输入数据�
 
 **输出：**
 
-运行该单元格时间：2 秒。
+运行该单元格的时间：2 秒。
 
 ### <a name="specify-training-variable-and-features-and-then-create-indexed-or-one-hot-encoded-training-and-testing-input-labeled-point-rdds-or-data-frames"></a>指定定型变量和特征，并创建索引或独热编码定型和测试输入标记点 RDD 或数据帧
 本部分包含的代码演示了如何将分类文本数据编制索引为标签点数据类型，并对其编码，以便其可用于定型和测试 MLlib 逻辑回归和其他分类模型。 标签点对象是 RDD，格式为 MLlib 中的大多数机器学习算法所需的输入数据。 [标签点](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point)是本地向量，可能密集，也可能稀疏，与标签/响应相关联。
@@ -493,7 +493,7 @@ MLlib 的建模和预测函数需要在使用前，对带有分类输入数据�
 
 **输出：**
 
-运行该单元格时间：4 秒。
+运行该单元格的时间：4 秒。
 
 ### <a name="automatically-categorize-and-vectorize-features-and-targets-to-use-as-inputs-for-machine-learning-models"></a>自动对特征和目标进行分类和矢量化，以用作机器学习模型的输入
 使用 Spark ML 对用于基于树的建模函数的目标和特征进行分类。 代码完成两个任务：
@@ -723,7 +723,7 @@ MLlib 的建模和预测函数需要在使用前，对带有分类输入数据�
 
 **输出：**
 
-ROC 曲线为 0.9846895479241554 下的面积
+ROC 曲线下的面积：0.9846895479241554
 
 ## <a name="regression-model-predict-tip-amount"></a>回归模型：预测小费金额
 在本部分中，创建两种类型的回归模型，预测小费金额：
@@ -775,7 +775,7 @@ ROC 曲线为 0.9846895479241554 下的面积
 
 **输出：**
 
-运行该单元格时间：13 秒。
+运行该单元格的时间：13 秒。
 
     # LOAD A SAVED LINEAR REGRESSION MODEL FROM BLOB STORAGE AND SCORE A TEST DATA SET
 
@@ -881,7 +881,7 @@ ROC 曲线为 0.9846895479241554 下的面积
 
 **输出：**
 
-测试 R sqr 为：0.7655383534596654
+测试 R-sqr 为：0.7655383534596654
 
 ## <a name="advanced-modeling-utilities-for-optimization"></a>用于优化的高级建模实用程序
 本部分中，使用开发人员经常用于模型优化的机器学习实用程序。 具体而言，可以通过使用参数扫描和交叉验证，以三种不同的方式优化机器学习模型：
@@ -938,7 +938,7 @@ ROC 曲线为 0.9846895479241554 下的面积
 
 **输出：**
 
-测试 R sqr 为：0.6226484708501209
+测试 R-sqr 为：0.6226484708501209
 
 ### <a name="optimize-the-binary-classification-model-by-using-cross-validation-and-hyper-parameter-sweeping"></a>使用交叉验证和超参数扫描优化二元分类模型
 本部分介绍如何使用交叉验证和超参数扫描优化二元分类模型。 这使用 Spark ML `CrossValidator` 函数。
@@ -982,7 +982,7 @@ ROC 曲线为 0.9846895479241554 下的面积
 
 **输出：**
 
-运行该单元格时间：33 秒。
+运行该单元格的时间：33 秒。
 
 ### <a name="optimize-the-linear-regression-model-by-using-custom-cross-validation-and-parameter-sweeping-code"></a>使用自定义交叉验证和参数扫描代码优化线性回归模型
 接下来，通过使用自定义代码优化模型，并通过使用最高准确性条件标识最佳模型参数。 然后，创建最终模型，根据测试数据评估模型，并在 Blob 存储中保存此模型。 最后，加载模型、测试数据评分并评估准确性。
@@ -1097,10 +1097,10 @@ ROC 曲线为 0.9846895479241554 下的面积
 
 **输出：**
 
-运行该单元格时间：61 秒。
+运行该单元格的时间：61 秒。
 
 ## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>通过 Scala 自动使用 Spark 构建的机器学习模型
-获取主题概述，了解包含在 Azure 中的数据科学过程的任务，请参阅[团队数据科学过程](https://aka.ms/datascienceprocess)。
+获取主题概述，了解包含在 Azure 中的数据科学过程的任务，请参阅[团队数据科学过程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)。
 
 [Team Data Science Process 演练](walkthroughs.md)针对特定方案，介绍了其他端到端演练，演示 Team Data Science Process 中的步骤。 该演练还展示了如何将云、本地工具以及服务结合到一个工作流或管道中，以创建智能应用程序。
 

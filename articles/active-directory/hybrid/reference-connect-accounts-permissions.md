@@ -4,7 +4,7 @@ description: 本主题介绍使用和创建的帐户以及所需的权限。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.reviewer: cychua
 ms.assetid: b93e595b-354a-479d-85ec-a95553dd9cc2
@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
-ms.component: hybrid
+ms.date: 01/24/2019
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: ef8b621b41bb43c46ef728e28d3b312ac49f1da3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 7234c1a5f7914ad3ce0ff415b387bfee386198c1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308777"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169597"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帐户和权限
 
@@ -136,7 +136,7 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 | Exchange 邮件公用文件夹 |对 [Exchange 邮件公用文件夹](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)中所述的公用文件夹属性的读取权限。 | 
 | 密码写回 |针对用户的属性的写入权限，详见[密码管理入门](../authentication/howto-sspr-writeback.md)。 |
 | 设备写回 |通过 PowerShell 脚本授予的权限，详见[设备写回](how-to-connect-device-writeback.md)。 |
-| 组写回 |读取、创建、更新和删除同步的 **Office 365 组**的组对象。  有关详细信息，请参阅[组写回](how-to-connect-preview.md#group-writeback)。|
+| 组写回 |允许你将 **Office 365 组**写回到已安装 Exchange 的林中。  有关详细信息，请参阅[组写回](how-to-connect-preview.md#group-writeback)。|
 
 ## <a name="upgrade"></a>升级
 从 Azure AD Connect 的一个版本升级到新版本时，需要拥有以下权限：
@@ -162,7 +162,7 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 ### <a name="adsync-service-account"></a>ADSync 服务帐户
 同步服务可在不同帐户下运行。 它可在**虚拟服务帐户** (VSA)、**组托管服务帐户** (gMSA/sMSA) 或常规用户帐户下运行。 2017 年 4 月版本的 Connect 的支持选项已更改（若进行全新安装）。 如果从早期版本的 Azure AD Connect 升级，这些附加选项将不可用。
 
-| 帐户的类型 | 安装选项 | Description |
+| 帐户的类型 | 安装选项 | 说明 |
 | --- | --- | --- |
 | [虚拟服务帐户](#virtual-service-account) | 快速和自定义，2017 年 4 月版及更高版本 | 此选项适用于所有快速安装，在域控制器上的安装除外。 对于自定义安装，除非使用了其他选项，否则它便是默认选项。 |
 | [组托管服务帐户](#group-managed-service-account) | 自定义，2017 年 4 月版及更高版本 | 如果使用远程 SQL Server，则建议使用组托管服务帐户。 |

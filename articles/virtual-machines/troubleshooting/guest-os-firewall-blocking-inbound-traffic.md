@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 3ddd2f122de832654be295c5978a88bec702558c
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0a0da446385c592bfeda2e01e209ef1fb75b7de3
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319016"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213105"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Azure VM 来宾 OS 防火墙阻止入站流量
 
@@ -31,17 +31,17 @@ ms.locfileid: "52319016"
 
 ## <a name="cause"></a>原因
 
-### <a name="cause-1"></a>原因 1 
+### <a name="cause-1"></a>原因 1
 
 未设置 RDP 规则来允许 RDP 流量。
 
-### <a name="cause-2"></a>原因 2 
+### <a name="cause-2"></a>原因 2
 
 来宾系统防火墙配置文件设置为阻止所有入站连接，包括 RDP 流量。
 
 ![防火墙设置](./media/guest-os-firewall-blocking-inbound-traffic/firewall-advanced-setting.png)
 
-## <a name="solution"></a>解决方案 
+## <a name="solution"></a>解决方案
 
 在执行这些步骤之前，请创建受影响 VM 的系统磁盘快照作为备份。 有关详细信息，请参阅 [拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
 
@@ -49,7 +49,7 @@ ms.locfileid: "52319016"
 
 ### <a name="online-troubleshooting"></a>联机故障排除
 
-连接到[串行控制台并打开 PowerShell 实例](serial-console-windows.md#open-cmd-or-powershell-in-serial-console)。 如果 VM 上未启用串行控制台，请转到“[脱机修复 VM](troubleshoot-rdp-internal-error.md#repair-the-vm-offline)”。
+连接到[串行控制台并打开 PowerShell 实例](serial-console-windows.md#use-cmd-or-powershell-in-serial-console)。 如果 VM 上未启用串行控制台，请转到“[脱机修复 VM](troubleshoot-rdp-internal-error.md#repair-the-vm-offline)”。
 
 #### <a name="mitigation-1"></a>缓解措施 1
 
@@ -80,7 +80,7 @@ ms.locfileid: "52319016"
     ```cmd
     netsh advfirewall firewall set rule group="Remote Desktop" new enable=yes
     ```
-    
+
     或者，要打开特定的远程桌面 (TCP-In) 规则，请运行以下命令：
 
     ```cmd
@@ -94,7 +94,7 @@ ms.locfileid: "52319016"
     ```
 
     完成故障排除并正确设置防火墙后，请重新启用防火墙。
-    
+
     > [!Note]
     > 无需重启 VM 即可应用这些更改。
 
@@ -102,7 +102,7 @@ ms.locfileid: "52319016"
 
 #### <a name="mitigation-2"></a>缓解措施 2
 
-1.  查询防火墙配置文件，确定入站防火墙策略是否设置为“BlockInboundAlways” **：
+1.  查询防火墙配置文件，确定入站防火墙策略是否设置为“ *BlockInboundAlways*”：
 
     ```cmd
     netsh advfirewall show allprofiles | more
@@ -115,7 +115,7 @@ ms.locfileid: "52319016"
     >    * *BlockInbound*：除非存在有效规则允许该流量，否则将阻止所有入站流量。
     >    * *BlockInboundAlways*：忽略所有防火墙规则，并阻止所有流量。
 
-2.  编辑“DefaultInboundAction”，将这些配置文件设置为“允许”流量 **  **** 。 为此，请运行以下命令：
+2.  编辑“ *DefaultInboundAction*” ，将这些配置文件设置为“ **允许**”流量 。 为此，请运行以下命令：
 
     ```cmd
     netsh advfirewall set allprofiles firewallpolicy allowinbound,allowoutbound
@@ -128,21 +128,21 @@ ms.locfileid: "52319016"
     ```
 
     > [!Note]
-    > 无需重启 VM 即可应用更改。 
+    > 无需重启 VM 即可应用更改。
 
 4.  再次尝试通过 RDP 访问 VM。
 
-### <a name="offline-mitigations"></a>脱机缓解措施 
+### <a name="offline-mitigations"></a>脱机缓解措施
 
 1.  [将系统磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。
 
 2.  开始与恢复 VM 建立远程桌面连接。
 
-3.  确保在磁盘管理控制台中将该磁盘标记为“联机” **** 。 请留意分配给附加系统磁盘的驱动器号。
+3.  确保在磁盘管理控制台中将该磁盘标记为“ **联机**” 。 请留意分配给附加系统磁盘的驱动器号。
 
 #### <a name="mitigation-1"></a>缓解措施 1
 
-请参阅 [如何在来宾 OS DOC 上启用/禁用某个防火墙规则]()。
+请参阅 [如何在来宾 OS 上启用/禁用某个防火墙规则](enable-disable-firewall-rule-guest-os.md)。
 
 #### <a name="mitigation-2"></a>缓解措施 2
 
@@ -150,7 +150,7 @@ ms.locfileid: "52319016"
 
 2.  开始与恢复 VM 建立远程桌面连接。
 
-3.  将系统磁盘附加到恢复 VM 后，请确保在磁盘管理控制台中将该磁盘标记为“联机” **** 。 请注意分配给附加的 OS 磁盘的驱动器号。
+3.  将系统磁盘附加到恢复 VM 后，请确保在磁盘管理控制台中将该磁盘标记为“ **联机**” 。 请注意分配给附加的 OS 磁盘的驱动器号。
 
 4.  打开提升后的 CMD 实例，然后运行以下脚本：
 
@@ -159,7 +159,7 @@ ms.locfileid: "52319016"
     robocopy f:\windows\system32\config f:\windows\system32\config.BACK /MT
 
     REM Mount the hive
-    reg load HKLM\BROKENSYSTEM f:\windows\system32\config\SYSTEM 
+    reg load HKLM\BROKENSYSTEM f:\windows\system32\config\SYSTEM
 
     REM Delete the keys to block all inbound connection scenario
     REG DELETE "HKLM\BROKENSYSTEM\ControlSet001\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile" /v DoNotAllowExceptions

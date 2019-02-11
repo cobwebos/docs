@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 mindWireless 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 mindWireless 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 mindWireless 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: bd00a339-27c9-4904-b66f-a95bf597ac3c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 6c6fe0a720795c67a7062f5a5971c699472fca07
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: deb7cf8368c5830bd575c617adf857448cfe2e48
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434340"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166487"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mindwireless"></a>教程：Azure Active Directory 与 mindWireless 的集成
+# <a name="tutorial-azure-active-directory-integration-with-mindwireless"></a>教程：Azure Active Directory 与 mindWireless 集成
 
 在本教程中，了解如何将 mindWireless 与 Azure Active Directory (Azure AD) 集成。
 
@@ -189,7 +189,7 @@ ms.locfileid: "39434340"
 
 ### <a name="create-a-mindwireless-test-user"></a>创建 mindWireless 测试用户
 
-在本部分，我们在 mindWireless 中创建名为 Britta Simon 的用户。 与 [mindWireless 支持团队](mailto:sdulloor@mindwireless.com)合作，在 mindWireless 平台中添加用户。 使用单一登录前，必须先创建并激活用户。 
+在本部分，我们在 mindWireless 中创建名为 Britta Simon 的用户。 与  [mindWireless 支持团队](mailto:sdulloor@mindwireless.com) 协作，将用户添加到 mindWireless 平台中。 使用单一登录前，必须先创建并激活用户。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -226,12 +226,12 @@ ms.locfileid: "39434340"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 mindWireless 磁贴时，应会自动登录到 mindWireless 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -4,9 +4,9 @@ description: 了解如何检查自动用户帐户预配作业的状态，以及�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: app-mgmt
 ms.devlang: na
@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.date: 09/09/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: af5d7174a2726a6ff8a62477149606ec5d43e94e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 833fe24f83a2f159fd00d24c67b6864ce614c445
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354641"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203906"
 ---
-# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>教程：有关自动用户帐户预配的报告
+# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>教程：针对自动用户帐户预配进行报告
 
 
 Azure Active Directory 包含一个[用户帐户预配服务](user-provisioning.md)，可帮助在 SaaS 应用和其他系统中自动预配/取消预配用户帐户，以进行端到端的标识生命周期管理。 Azure AD 支持对 [Azure AD 应用程序库](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured)的“特色”部分中的所有应用程序和系统使用预先集成的用户预配连接器。
@@ -42,7 +42,7 @@ Azure Active Directory 包含一个[用户帐户预配服务](user-provisioning.
 
 * **源系统** - Azure AD 预配服务从中同步的用户存储库。 Azure Active Directory 是大多数预先集成的预配连接器的源系统，但有一些例外（示例：Workday 入站同步）。
 
-* **目标系统** - Azure AD 预配服务要同步到的用户存储库。 此系统通常是某个 SaaS 应用程序（示例：Salesforce、ServiceNow、Google Apps、Dropbox for Business），但在某些情况下，也可能是 Active Directory 等本地系统（示例：目标为 Active Directory 的 Workday 入站同步）。
+* **目标系统** - Azure AD 预配服务要同步到的用户存储库。 这通常是一个 SaaS 应用程序（示例：Salesforce、ServiceNow、Google Apps、Dropbox for Business），但在某些情况下，也可以是诸如 Active Directory 的本地系统（示例：到 Active Directory 的 Workday 入站同步）。
 
 
 ## <a name="getting-provisioning-reports-from-the-azure-management-portal"></a>从 Azure 管理门户获取预配报告
@@ -68,7 +68,7 @@ Azure Active Directory 包含一个[用户帐户预配服务](user-provisioning.
 
 管理员应该先查看预配摘要报告，确定预配作业的工作运行状况。
 
- ![摘要报告](./media/check-status-user-account-provisioning/summary_report.PNG)
+ ![摘要报告](./media/check-status-user-account-provisioning/summary_report.PNG)
 
 ## <a name="provisioning-audit-logs"></a>预配审核日志
 预配服务执行的所有活动记录在 Azure AD 审核日志中，可在“审核日志”选项卡中的“帐户预配”类别下面查看这些日志。 记录的活动事件类型包括：
@@ -85,7 +85,7 @@ Azure Active Directory 包含一个[用户帐户预配服务](user-provisioning.
 
 1. 导入事件：已从源系统检索用户。
 
-2. 导入事件：已查询目标系统以检查检索的用户是否存在。
+2. 导入事件：已查询目标系统来检查检索的用户是否存在。
 
 3. 同步规则事件：已根据配置的属性映射规则和范围筛选器评估源和目标系统中的用户数据，以确定应执行哪个操作（如果有）。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: 0a20f7629fbc102ae05c51c7388bbfd6915d6204
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 15393f8e10fcda99820d0279d46edf88c7781ff8
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257356"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811956"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>高级媒体编码器高级工作流教程
 ## <a name="overview"></a>概述
@@ -692,8 +692,8 @@ Hello world 日志输出
 
 首先，我们需要确定想要修剪视频的哪一个点到哪一个点。 为了让它方便工作流较不具技术性的用户，请将两个属性发布到图形的根目录。 为此，请右键单击设计器图面并选择“添加属性”：
 
-* 第一个属性：类型为“TIMECODE”的“ClippingTimeStart”
-* 第二个属性：类型为“TIMECODE”的“ClippingTimeEnd”
+* 第一个属性：“ClippingTimeStart”的类型："TIMECODE"
+* 第二个属性：“ClippingTimeEnd”的类型："TIMECODE"
 
 ![添加属性对话框中的剪辑开始时间](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-clip-start-time.png)
 

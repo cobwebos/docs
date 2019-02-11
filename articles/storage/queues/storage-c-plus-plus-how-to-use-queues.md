@@ -9,13 +9,13 @@ ms.devlang: cpp
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: cbrooksmsft
-ms.component: queues
-ms.openlocfilehash: 36fa2e5bc7eda7c47017713008aec2a245213462
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: queues
+ms.openlocfilehash: b1a566c4179e940b82790c69b3036e3be9e352cc
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521561"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564521"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>如何通过 C++ 使用队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -42,9 +42,9 @@ ms.locfileid: "39521561"
 要安装适用于 C++ 的 Azure 存储客户端库，可以使用以下方法：
 
 * **Linux：** 按照[适用于 C++ 的 Azure 存储客户端库自述文件](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)页中提供的说明操作。
-* **Windows：** 在 Visual Studio 中，单击“工具”>“NuGet 包管理器”>“程序包管理器控制台”。 在 [NuGet 包管理器控制台](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)中，键入以下命令，并按 **ENTER**。
+* **Windows**：在 Visual Studio 中，单击“工具”>“NuGet 包管理器”>“包管理器控制台”。 在 [NuGet 包管理器控制台](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)中，键入以下命令，并按 **ENTER**。
 
-```  
+```powershell
 Install-Package wastorage
 ```
 
@@ -150,7 +150,7 @@ std::wcout << U("Peeked message content: ") << peeked_message.content_as_string(
 
 ```cpp
 // Retrieve storage account from connection-string.
-azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_conection_string);
+azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
 // Create the queue client.
 azure::storage::cloud_queue_client queue_client = storage_account.create_cloud_queue_client();
@@ -171,7 +171,7 @@ queue.update_message(changed_message, std::chrono::seconds(60), true);
 std::wcout << U("Changed message content: ") << changed_message.content_as_string() << std::endl;  
 ```
 
-## <a name="how-to-de-queue-the-next-message"></a>如何：取消下一条消息的排队
+## <a name="how-to-de-queue-the-next-message"></a>如何：取消对下一条消息的排队
 代码通过两个步骤来取消对队列中某条消息的排队。 调用 **get_message** 时，将获取队列中的下一条消息。 从 **get_message** 返回的消息对从此队列读取消息的其他任何代码不可见。 若要完成从队列中删除消息，还必须调用 **delete_message**。 此删除消息的两步过程可确保，如果代码因硬件或软件故障而无法处理消息，则代码的其他实例可以获取相同消息并重试。 代码在处理消息后会立即调用 **delete_message**。
 
 ```cpp

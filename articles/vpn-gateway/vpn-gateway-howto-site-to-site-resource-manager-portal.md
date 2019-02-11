@@ -1,18 +1,18 @@
 ---
-title: 将本地网络连接到 Azure 虚拟网络：站点到站点 VPN：门户 | Microsoft 文档
+title: 将本地网络连接到 Azure 虚拟网络：站点到站点 VPN：门户 | Microsoft Docs
 description: 通过公共 Internet 创建从本地网络到 Azure 虚拟网络的 IPsec 连接的步骤。 这些步骤有助于使用门户创建跨界站点到站点 VPN 网关连接。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 12/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: dd29b4af85826e350e116b31fa53031aacaba067
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 032b6a4f5147d06a4613a827a0372437dca47f47
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457113"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651633"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>在 Azure 门户中创建站点到站点连接
 
@@ -35,7 +35,7 @@ ms.locfileid: "49457113"
 在开始配置之前，请验证你是否符合以下条件：
 
 * 确保有一台兼容的 VPN 设备，并且可对其进行配置。 有关兼容的 VPN 设备和设备配置的详细信息，请参阅[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。
-* 确认 VPN 设备有一个面向外部的公共 IPv4 地址。 此 IP 地址不得位于 NAT 之后。
+* 确认 VPN 设备有一个面向外部的公共 IPv4 地址。
 * 如果不熟悉本地网络配置中的 IP 地址范围，则需咨询能够提供此类详细信息的人员。 创建此配置时，必须指定 IP 地址范围前缀，Azure 会将该前缀路由到本地位置。 本地网络的任何子网都不得与要连接到的虚拟网络子网重叠。 
 
 ### <a name="values"></a>示例值
@@ -47,18 +47,18 @@ ms.locfileid: "49457113"
 * **订阅：** 要使用的订阅
 * **资源组：** TestRG1
 * **位置：** 美国东部
-* **子网：** FrontEnd：10.1.0.0/24，BackEnd：10.1.1.0/24（可选，适用于本练习）
+* **子网：** FrontEnd：10.1.0.0/24，BackEnd：10.1.1.0/24（对于本练习来说是可选的）
 * **网关子网名称：** GatewaySubnet（会在门户中自动填充）
 * **网关子网地址范围：** 10.1.255.0/27
 * **DNS 服务器：** 8.8.8.8 - 可选。 DNS 服务器的 IP 地址。
-* **虚拟网关名称：** VNet1GW
+* **虚拟网络网关名称：** VNet1GW
 * **公共 IP：** VNet1GWIP
 * **VPN 类型：** 基于路由
 * **连接类型：** 站点到站点 (IPsec)
 * **网关类型：** VPN
 * **局域网网关名称：** Site1
 * **连接名称：** VNet1toSite1
-* **共享密钥：** 在此示例中，我们将使用 abc123。 但是，你可以使用与 VPN 硬件兼容的任何密钥。 重要的是连接两端的值要匹配。
+* **共享密钥：** 本示例使用“abc123”。 但是，你可以使用与 VPN 硬件兼容的任何密钥。 重要的是连接两端的值要匹配。
 
 ## <a name="CreatVNet"></a>1.创建虚拟网络
 

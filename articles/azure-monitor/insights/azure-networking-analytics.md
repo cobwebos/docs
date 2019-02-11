@@ -10,29 +10,27 @@ ms.assetid: 66a3b8a1-6c55-4533-9538-cad60c18f28b
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: richrund
-ms.component: ''
-ms.openlocfilehash: 061ad1cf8cf99d8100163bd6b7c9d72377075108
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 66bac977d05276833a357521a3a040c59b2f28fa
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52430272"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900283"
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Log Analytics 中的 Azure 网络监视解决方案
 
 Log Analytics 提供了用来监视网络的以下解决方案：
 * 网络性能监视器 (NPM)
- * 监视网络的运行状况
+    * 监视网络的运行状况
 * 要查看的 Azure 应用程序网关分析
- * Azure 应用程序网关日志
- * Azure 应用程序网关指标
+    * Azure 应用程序网关日志
+    * Azure 应用程序网关指标
 * 用于监视和审核云网络上的网络活动的解决方案
-* [流量分析](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
-* Azure 网络安全组分析
+    * [流量分析](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
+    * Azure 网络安全组分析
 
 ## <a name="network-performance-monitor-npm"></a>网络性能监视器 (NPM)
 
@@ -236,4 +234,4 @@ Set-AzureRmDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspac
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Log Analytics 中的日志搜索](../../log-analytics/log-analytics-queries.md)查看详细的 Azure 诊断数据。
+* 使用 [Log Analytics 中的日志搜索](../../azure-monitor/log-query/log-query-overview.md)查看详细的 Azure 诊断数据。

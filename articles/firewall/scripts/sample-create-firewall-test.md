@@ -8,12 +8,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 8/13/2018
 ms.author: victorh
-ms.openlocfilehash: 5100c5723cf3442520d969e3db6aa65439855551
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 3b55767a4375d41b1dc9c4357ca25e562a3cfabe
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230873"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438246"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>创建 Azure 防火墙测试环境
 
@@ -32,7 +32,7 @@ ms.locfileid: "50230873"
 > [!NOTE]
 >对于其他 Windows 版本，需要先安装 `PowerShellGet`，然后才能使用它。 可以运行 `Get-Module -Name PowerShellGet -ListAvailable | Select-Object -Property Name,Version,Path` 来确定它是否已安装在你的系统上。 如果输出为空，则需要安装最新的 [Windows Management Framework](https://www.microsoft.com/download/details.aspx?id=54616)。
 
-有关详细信息，请参阅[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.4.0)
+有关详细信息，请参阅[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.4.0)
 
 使用 Web 平台安装程序执行的任何现有 Azure PowerShell 安装都将与 PowerShellGet 安装冲突并且需要删除。
 

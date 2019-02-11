@@ -1,29 +1,23 @@
 ---
-title: 使用 Azure 机器学习工作室分析客户流失 | Microsoft Docs
+title: 分析客户流失
+titleSuffix: Azure Machine Learning Studio
 description: 使用 Azure 机器学习工作室开发集成模型对客户流失进行分析和评分的案例研究。
 services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
-editor: cgronlun
-ms.assetid: 1333ffe2-59b8-4f40-9be7-3bf1173fc38d
 ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: studio
 ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 0ab398cc87472e3ede361f48f8e755ef294746da
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 47d267a2c4c122d8acbb2d3bf40e6858b4d6b77c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314978"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244175"
 ---
-# <a name="analyzing-customer-churn-using-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室分析客户流失
+# <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室分析客户流失
 ## <a name="overview"></a>概述
 本文介绍使用 Azure 机器学习生成的客户流失分析项目的参考实现。 本文讨论用于整体解决行业客户流失问题的关联通用模型。 还将衡量使用机器学习生成的模型的准确性，并对进一步开发方向进行评估。  
 
@@ -31,11 +25,11 @@ ms.locfileid: "52314978"
 Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azure 机器学习前产品经理）对此实验进行了开发和测试。 Azure 文档团队有幸确认了他们的专业知识，感谢他们分享了这份白皮书。
 
 > [!NOTE]
-> 用于此实验的数据不会公开提供。 有关如何生成流失分析的机器学习模型示例，请参阅：[Azure AI 库](http://gallery.cortanaintelligence.com/)中的[零售流失模型模板](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1)
+> 用于此实验的数据不会公开提供。 有关如何生成用于流失分析的机器学习模型示例，请参阅：[Azure AI 库](http://gallery.cortanaintelligence.com/)中的[零售流失模型模板](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1)
 > 
 > 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="the-problem-of-customer-churn"></a>客户流失的问题
 消费者市场和所有营业行业中的企业都必须处理客户流失问题。 有时流失过多，会影响策略决策。 传统的解决方案是预测高倾向性的流失人员，并通过接待服务、市场营销活动或应用特殊处理方式来满足其需求。 这些方法可能因行业而异。 即使行业相同（例如，电信），不同的使用者群集使用的方法也不尽相同。
@@ -66,7 +60,7 @@ Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azu
 
 ![][2]
 
-*图 4：统一多模型原型*  
+图 4：统一多模型原型  
 
 如果要将整体方法传递到客户保留，那么模型间的交互是关键。 每个模型必然会随时间推移而降低；因此，该体系结构是隐式循环（类似于按照 CRISP-DM 数据挖掘标准 [***3***] 设置的原型）。  
 
@@ -85,7 +79,7 @@ Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azu
 
 ![][3]
 
-*图 5：流失建模方法的原型*  
+图 5：流失建模方法原型  
 
 以下部分提供了关于原型评分模型（使用机器学习工作室实现）的详细信息。  
 
@@ -104,15 +98,15 @@ Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azu
 
 ![][4]
 
-*图 6：数据源（模糊处理）的摘录*  
+图 6：数据源（模糊处理）摘录  
 
 ![][5]
 
-*图 7：从数据源中提取的功能*
+图 7：从数据源中提取的功能
  
 
 > 请注意，此数据是私有的，因此不能共享模型和数据。
-> 但是，有关使用公开可用数据的类似模型，请参阅 [Azure AI 库](http://gallery.cortanaintelligence.com/)中的以下示例实验：[Telco Customer Churn](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383)（电信客户流失）
+> 但是，有关使用公开可用数据的类似模型，请参阅 [Azure AI 库](http://gallery.cortanaintelligence.com/)中的以下示例实验：[Telco Customer Churn](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383)（电信客户流失）。
 > 
 > 若要了解如何能使用 Cortana Intelligence 套件实现流失分析，还推荐由高级经理 Wee Hyong Tok 制作的[此视频](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html)。 
 > 
@@ -130,7 +124,7 @@ Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azu
 
 ![][6]  
 
-*图 8：在机器学习工作室中创建模型*  
+图 8：在机器学习工作室中创建模型  
 
 ### <a name="scoring-methods"></a>评分方法
 使用标记的训练数据集对四种模型进行评分。  
@@ -147,7 +141,7 @@ Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azu
 
 ![][7]
 
-*图 9：Passau 原型的曲线下面积*
+图 9：Passau 原型的曲线下面积
 
 ### <a name="using-auc-to-compare-results"></a>使用 AUC 比较结果
 曲线下面积 (AUC) 是表示正值和负值的分数分布之间*可分性*的全局衡量指标。 它类似于传统的受试者工作特征 (ROC) 图，但一个重要的不同点是，AUC 指标不要求选择阈值。 相反，它会汇总**所有**可能选项的结果。 与此相反，传统的 ROC 图会显示垂直轴的阳性率和水平轴的阳性率，以及分类阈值变化。   
@@ -168,14 +162,14 @@ AUC 通常用作不同算法（或不同系统）的价值衡量，因为其允�
 
 ![][8]
 
-*图 10：准确性和精度之间的权衡*
+图 10：准确性和精度之间的权衡
 
 ### <a name="accuracy-and-precision-results-for-boosted-decision-tree-model"></a>提升决策树模型的准确性和精度结果
 下表显示使用提升决策树模型（恰巧是四种模型中最准确的）的机器学习原型的评分中的原始结果：  
 
 ![][9]
 
-*图 11：提升决策树模型特征*
+图 11：提升决策树模型特征
 
 ## <a name="performance-comparison"></a>性能比较
 我们比较了使用机器学习工作室模型评分的数据的速度，以及通过使用桌面版 SAS 企业挖掘程序 12.1 创建的可比较模型。  
@@ -219,11 +213,11 @@ Azure 机器学习中即将推出的另一项令人兴奋的功能是，可将�
 ## <a name="references"></a>参考
 [1] 预测分析：不只是预测，W. McKnight，信息管理，2011 年 7/8 月，18-20 页。  
 
-[2] Wikipedia article: [Accuracy and precision](http://en.wikipedia.org/wiki/Accuracy_and_precision)（Wikipedia 文章：准确性和精度）
+[2] Wikipedia 文章：[Accuracy and precision](http://en.wikipedia.org/wiki/Accuracy_and_precision)（准确性和精度）
 
-[3] [CRISP-DM 1.0: Step-by-Step Data Mining Guide](http://www.the-modeling-agency.com/crisp-dm.pdf)（CRISP-DM 1.0：分步数据挖掘指南）   
+[3] [CRISP-DM 1.0:Step-by-Step Data Mining Guide](http://www.the-modeling-agency.com/crisp-dm.pdf)（CRISP-DM 1.0：分步数据挖掘指南）   
 
-[4] [Big Data Marketing: Engage Your Customers More Effectively and Drive Value](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)（大数据市场营销：更有效地吸引客户并创造价值）
+[4] [Big Data Marketing:Engage Your Customers More Effectively and Drive Value](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)（大数据市场营销：更有效地吸引客户并创造价值）
 
 [5] [Azure AI 库](http://gallery.cortanaintelligence.com/) 中的 [电信流失模型模板](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) 
  
@@ -231,7 +225,7 @@ Azure 机器学习中即将推出的另一项令人兴奋的功能是，可将�
 ## <a name="appendix"></a>附录
 ![][10]
 
-*图 12：关于流失原型的演示文稿的屏幕快照*
+图 12：关于流失原型的演示文稿屏幕快照
 
 [1]: ./media/azure-ml-customer-churn-scenario/churn-1.png
 [2]: ./media/azure-ml-customer-churn-scenario/churn-2.png

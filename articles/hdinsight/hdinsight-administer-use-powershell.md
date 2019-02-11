@@ -7,14 +7,14 @@ author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/6/2018
+ms.date: 11/06/2018
 ms.author: tylerfox
-ms.openlocfilehash: 936e53ca328b0f54bfd75e7b3d4f6747b0037669
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 6701443807a2709edf08a2b979cd59bebacb7b5d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495174"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790140"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 HDInsight 中的 Apache Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -73,10 +73,8 @@ Remove-AzureRmResourceGroup -Name <Resource Group Name>
 ## <a name="scale-clusters"></a>缩放群集
 使用群集缩放功能可更改 Azure HDInsight 中运行的群集使用的工作节点数，而无需重新创建群集。
 
-> [!NOTE]
-> 只支持使用 HDInsight 3.1.3 或更高版本的群集。 如果不确定群集的版本，可以查看“属性”页。  请参阅[列出和显示群集](hdinsight-administer-use-portal-linux.md#list-and-show-clusters)。
->
->
+> [!NOTE]  
+> 只支持使用 HDInsight 3.1.3 或更高版本的群集。 如果不确定群集的版本，可以查看“属性”页。  请参阅[列出和显示群集](hdinsight-administer-use-portal-linux.md#showClusters)。
 
 更改 HDInsight 支持的每种类型的群集所用数据节点数的影响：
 
@@ -104,7 +102,7 @@ Remove-AzureRmResourceGroup -Name <Resource Group Name>
   * Storm Web UI
   * 命令行界面 (CLI) 工具
 
-    有关详细信息，请参阅 [Apache Storm 文档](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
+    有关详细信息，请参阅 [Apache Storm 文档](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
 
     HDInsight 群集上提供了 Storm Web UI：
 
@@ -158,10 +156,8 @@ $credential = New-Object System.Management.Automation.PSCredential($hadoopUserNa
 Grant-AzureRmHDInsightHttpServicesAccess -ClusterName $clusterName -HttpCredential $credential
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > 授予/撤销访问权限时，将重设群集用户的用户名和密码。
->
->
 
 也可通过门户执行授予和撤消访问权限。 请参阅[使用 Azure 门户管理 HDInsight][hdinsight-admin-portal]。
 
@@ -207,9 +203,9 @@ $resourceGroupName = $cluster.ResourceGroup
 
 
 ## <a name="submit-jobs"></a>提交作业
-**提交 Apache Hadoop MapReduce 作业**
+**提交 MapReduce 作业**
 
-请参阅[运行 HDInsight 随附的 Apache Hadoop MapReduce 示例](hadoop/apache-hadoop-run-samples-linux.md)。
+请参阅[运行 HDInsight 随附的 MapReduce 示例](hadoop/apache-hadoop-run-samples-linux.md)。
 
 **提交 Apache Hive 作业**
 
@@ -239,9 +235,9 @@ $resourceGroupName = $cluster.ResourceGroup
 * [以编程方式提交 Apache Hadoop 作业][hdinsight-submit-jobs]
 * [Azure HDInsight 入门][hdinsight-get-started]
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
 [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: juliako
-ms.openlocfilehash: f9ad7fcf414e90acc40ee5cd42e322a3b9e47f17
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 93222129b80592ef5b4e1ed2e1420d975fe9f108
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380551"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190710"
 ---
 # <a name="generate-a-thumbnail-sprite"></a>生成缩略图子画面 
 

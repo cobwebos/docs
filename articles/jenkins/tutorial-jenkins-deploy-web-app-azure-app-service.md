@@ -3,17 +3,17 @@ title: 教程 - 使用 Jenkins 从 GitHub 部署到 Azure 应用服务
 description: 设置 Jenkins 以便从 GitHub 持续集成 (CI) 和持续部署 (CD) 到适用于 Java Web 应用的 Azure 应用服务
 services: jenkins
 ms.service: jenkins
-author: tomarcher
+author: tomarchermsft
 ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 274de7ac63df0afc1a59e197deebeb7929cf1ef8
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 3554151490215f128efc6725b7aaa0628d503366
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51855007"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260105"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>教程：使用 Jenkins 持续集成和部署从 GitHub 部署到 Azure 应用服务
 
@@ -92,7 +92,7 @@ ms.locfileid: "51855007"
 > 
 > 这些步骤将创建个人访问令牌凭据，使 Jenkins 能够使用你的 GitHub 用户名和密码来利用 GitHub。 
 > 但是，如果你的 GitHub 帐户使用双重身份验证，请在 GitHub 中创建令牌，并将 Jenkins 设置为改用该令牌。 
-> 有关详细信息，请参阅 [Jenkins GitHub 插件](https://wiki.jenkins.io/display/JENKINS/Github+Plugin)文档。
+> 有关详细信息，请参阅 [Jenkins GitHub 插件](https://wiki.jenkins.io/display/JENKINS/GitHub+Plugin)文档。
 
 1. 在“管理 Jenkins”页中，选择“配置系统”。 
 
@@ -162,7 +162,7 @@ az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourS
 
    ![添加 Azure 服务主体凭据](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-service-principal-credentials.png)
 
-   | 属性 | 值 | Description | 
+   | 属性 | 值 | 说明 | 
    |----------|-------|-------------| 
    | **订阅 ID** | <*yourAzureSubscription-ID*> | 你的 Azure 订阅的 GUID 值 <p>**提示**：如果你不知道自己的 Azure 订阅 ID，请从命令行或 Cloud Shell 运行以下 Azure CLI 命令，然后使用 `id` GUID 值： <p>`az account list` | 
    | **客户端 ID** | <*yourAzureServicePrincipal-ID*> | 之前为 Azure 服务主体生成的 `appId` GUID 值 | 

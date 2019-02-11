@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 域服务：服务主体配置疑难解答 | Microsoft Docs
+title: Azure Active Directory 域服务：服务主体配置故障排除 | Microsoft Docs
 description: Azure AD 域服务的服务主体配置疑难解答
 services: active-directory-ds
 documentationcenter: ''
@@ -8,19 +8,19 @@ manager: ''
 editor: ''
 ms.assetid: f168870c-b43a-4dd6-a13f-5cfadc5edf2c
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: bba7c70a5078d309a55f898c24389d42a8a604ab
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 2c39e8f172283f512037e0d991b2c22eb816c8f6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035029"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191323"
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>排查托管域中无效的服务主体配置
 
@@ -28,7 +28,7 @@ ms.locfileid: "51035029"
 
 ## <a name="alert-aadds102-service-principal-not-found"></a>警报 AADDS102：找不到服务主体
 
-**警报消息：** *已从 Azure AD 目录中删除 Azure AD 域服务正常运行所需的服务主体。此配置影响 Microsoft 监视、管理、修补和同步托管域的功能*。
+**警报消息：** 已从 Azure AD 目录中删除 Azure AD 域服务正常工作所需的服务主体。*此配置影响 Microsoft 监视、管理、修补和同步托管域的功能*。
 
 [服务主体](../active-directory/develop/app-objects-and-service-principals.md)是指 Microsoft 用于管理、更新和维护托管域的应用程序。 如果删除服务主体，将中断 Microsoft 为域提供服务的功能。
 
@@ -50,7 +50,7 @@ ms.locfileid: "51035029"
 ## <a name="recreate-a-missing-service-principal-with-powershell"></a>使用 PowerShell 重新创建缺失的服务主体
 如果 Azure AD 目录中缺少 ID 为 ```2565bd9d-da50-47d4-8b85-4c97f669dc36``` 的服务主体，请按照以下步骤操作。
 
-**解决方法：** 需使用 Azure AD PowerShell 完成以下步骤。 有关安装 Azure AD PowerShell 的信息，请参阅[本文](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.)。
+**解决方法：** 需要 Azure AD PowerShell 来完成这些步骤。 有关安装 Azure AD PowerShell 的信息，请参阅[本文](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.)。
 
 若要解决此问题，在 PowerShell 窗口中键入以下命令：
 1. 安装 Azure AD PowerShell 模块并将其导入。
@@ -78,7 +78,7 @@ ms.locfileid: "51035029"
 ## <a name="re-register-to-the-microsoft-aad-namespace-using-the-azure-portal"></a>使用 Azure 门户重新注册到 Microsoft.AAD 命名空间
 如果 Azure AD 目录中缺少 ID 为 ```443155a6-77f3-45e3-882b-22b3a8d431fb```、```abba844e-bc0e-44b0-947a-dc74e5d09022``` 或 ```d87dcbc6-a371-462e-88e3-28ad15ec4e64``` 的服务主体，请按照以下步骤操作。
 
-**解决方法：** 请使用以下步骤还原目录上的域服务：
+**解决方法：** 使用以下步骤还原目录上的域服务：
 
 1. 导航到 Azure 门户中的[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)页。
 2. 从与托管域相关联的表中选择订阅
@@ -92,7 +92,7 @@ ms.locfileid: "51035029"
 **警报消息：** 应用程序 ID 为“d87dcbc6-a371-462e-88e3-28ad15ec4e64”的服务主体已删除并重新创建。 重新创建会导致在为托管域提供服务所需的 Azure AD 域服务资源上出现不一致的权限。 托管域上的密码同步可能会受影响。
 
 
-**解决方法：** 需使用 Azure AD PowerShell 完成以下步骤。 有关安装 Azure AD PowerShell 的信息，请参阅[本文](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.)。
+**解决方法：** 需要 Azure AD PowerShell 来完成这些步骤。 有关安装 Azure AD PowerShell 的信息，请参阅[本文](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.)。
 
 若要解决此问题，在 PowerShell 窗口中键入以下命令：
 1. 安装 Azure AD PowerShell 模块并将其导入。

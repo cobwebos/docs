@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 01/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c6c67f6f1500ee90a1e0e4a04309f3f7aa2f6d05
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: 894724b08876e96119bf72ce65e22c6ae884d8da
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "36338316"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306873"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP 是否在所有 Azure VPN 网关 SKU 上受支持？
 否，BGP 在 Azure **VpnGw1**、**VpnGw2**、**VpnGw3**、标准 VPN 网关和高性能 VPN 网关上受支持。 **基本** SKU。
@@ -68,7 +68,7 @@ Azure VPN 网关会将以下路由播发到本地 BGP 设备：
 能，可以将 BGP 连接和非 BGP 连接混合用于同一 Azure VPN 网关。
 
 ### <a name="does-azure-vpn-gateway-support-bgp-transit-routing"></a>Azure VPN 网关是否支持 BGP 传输路由？
-是，支持 BGP 传输路由，但例外是 Azure VPN 网关 **不** 会将默认路由播发到其他 BGP 对等节点。 若要启用跨多个 Azure VPN 网关的传输路由，必须在所有中间 VNet 到 VNet 连接上启用 BGP。
+是，支持 BGP 传输路由，但例外是 Azure VPN 网关 **不** 会将默认路由播发到其他 BGP 对等节点。 若要启用跨多个 Azure VPN 网关的传输路由，必须在所有中间 VNet 到 VNet 连接上启用 BGP。 有关详细信息，请参阅[关于 BGP](../articles/vpn-gateway/vpn-gateway-bgp-overview.md)。
 
 ### <a name="can-i-have-more-than-one-tunnel-between-azure-vpn-gateway-and-my-on-premises-network"></a>在 Azure VPN 网关和我的本地网络之间能否有多个隧道？
 能，可以在 Azure VPN 网关和本地网络之间建立多个 S2S VPN 隧道。 请注意，所有这些隧道都将计入 Azure VPN 网关的隧道总数，必须在两个隧道上启用 BGP。

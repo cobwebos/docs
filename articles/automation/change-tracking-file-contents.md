@@ -3,18 +3,18 @@ title: 使用 Azure 自动化查看文件内容更改
 description: 使用“更改跟踪”的文件内容更改功能查看已更改的文件内容。
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 07/03/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0582505d66bbef3064359fa4047676c4ba60b4e9
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: ad011d778ab575c146c202a7940e03a4451979fb
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37870046"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437995"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>查看“更改跟踪”跟踪的文件的内容
 
@@ -73,6 +73,7 @@ ms.locfileid: "37870046"
 访问有关更改跟踪的教程，详细了解解决方案的用法：
 
 > [!div class="nextstepaction"]
-> [排查环境中的更改错误](automation-tutorial-troubleshoot-changes.md)
+> [故障排除环境中的更改](automation-tutorial-troubleshoot-changes.md)
 
-* 使用 [Log Analytics 中的日志搜索](../log-analytics/log-analytics-log-searches.md)可查看详细的更改跟踪数据。
+* 使用 [Log Analytics 中的日志搜索](../log-analytics/log-analytics-log-searches.md)以查看详细的更改跟踪数据。
+

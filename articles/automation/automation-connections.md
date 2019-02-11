@@ -3,18 +3,18 @@ title: Azure 自动化中的连接资产
 description: Azure 自动化中的连接资产包含从 Runbook 或 DSC 配置连接到外部服务或应用程序所需的信息。 本文介绍了有关连接的详细信息，以及如何在文本和图形创作中使用连接。
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2018
+ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2a28c8056e6dc25148299415a63a32993e874e01
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: e00eb5756d34c7ca8cecc741b4832c583a6ed087
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284534"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439011"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure 自动化中的连接资产
 
@@ -23,13 +23,23 @@ ms.locfileid: "52284534"
 创建连接时，必须指定“连接类型”。 连接类型是定义了一组属性的模板。 连接为其连接类型中定义的每个属性定义值。 连接类型通过集成模块添加到 Azure 自动化，或使用 [Azure 自动化 API](https://msdn.microsoft.com/library/azure/mt163818.aspx) 进行创建，前提是集成模块包含连接类型，并且已导入到自动化帐户中。 否则，需创建指定自动化连接类型的元数据文件。  此方面的详细信息，请参阅[集成模块](automation-integration-modules.md)。  
 
 >[!NOTE]
->Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥加密并存储在 Azure 自动化中。 此密钥存储在密钥保管库中。 在存储安全资产之前，从密钥保管库加载密钥，然后使用该密钥加密资产。
+>Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥加密并存储在 Azure 自动化中。 此密钥存储在系统托管的密钥保管库中。 在存储安全资产之前，从密钥保管库加载密钥，然后使用该密钥加密资产。 此过程由 Azure 自动化管理。
+
+## <a name="connection-types"></a>连接类型
+
+Azure 自动化中有三种类型的内置连接：
+
+* **Azure** - 此连接可以用于管理经典资源。
+* **AzureClassicCertificate** - AzureClassicRunAs 帐户使用此连接。
+* **AzureServicePrincipal** - AzureRunAs 帐户使用此连接。
+
+在大多数情况下不需要创建连接资源，因为在创建 [RunAs 帐户](manage-runas-account.md)时已经创建了该连接。
 
 ## <a name="windows-powershell-cmdlets"></a>Windows PowerShell Cmdlet
 
 下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化连接。 可在自动化 Runbook 和 DSC 配置中使用的 [Azure PowerShell 模块](/powershell/azure/overview)已随附了这些 cmdlet。
 
-|Cmdlet|Description|
+|Cmdlet|说明|
 |:---|:---|
 |[Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection)|检索连接。 包括一个哈希表，其中包括连接的字段的值。|
 |[New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection)|创建新连接。|
@@ -40,7 +50,7 @@ ms.locfileid: "52284534"
 
 下表中的活动用于在 Runbook 或 DSC 配置中访问连接。
 
-|活动|Description|
+|活动|说明|
 |---|---|
 |[Get-AutomationConnection](/powershell/module/servicemanagement/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|获取要使用的连接。 返回包括该连接属性的哈希表。|
 
@@ -51,7 +61,7 @@ ms.locfileid: "52284534"
 ## <a name="python2-functions"></a>Python2 函数 
 下表中的函数用于在 Python2 Runbook 中访问连接。 
 
-| 函数 | Description | 
+| 函数 | 说明 | 
 |:---|:---| 
 | automationassets.get_automation_connection | 检索连接。 返回包括该连接属性的字典。 | 
 
@@ -154,3 +164,4 @@ azure_credential = get_automation_runas_credential(runas_connection)
 - 查看[图形创作中的链接](automation-graphical-authoring-intro.md#links-and-workflow)，了解如何引导和控制 Runbook 中的逻辑流。  
 
 - 要详细了解 Azure 自动化如何使用 PowerShell 模块，以及如何根据最佳实践创建自己的 PowerShell 模块（充当 Azure 自动化中的集成模块），请参阅[集成模块](automation-integration-modules.md)。  
+

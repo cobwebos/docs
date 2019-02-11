@@ -9,12 +9,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: 3932ad18ceedb36a4a8c1f9fc78eb8aef27a8a4f
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: db1bdeed75264e32d5a96800096b6b433c62c44a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51301010"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822623"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions 的 Microsoft Graph 绑定
 
@@ -63,7 +63,7 @@ Microsoft Graph 扩展提供了以下绑定：
 
 ### <a name="configuring-authentication--authorization"></a>配置身份验证/授权
 
-本文介绍的绑定需要使用一个标识。 这样 Microsoft Graph 就可以强制执行权限并审核交互。 此标识可以是访问你的应用程序的用户或应用程序本身。 若要配置此标识，请使用 Azure Active Directory 设置[应用服务身份验证/授权](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)。 还需要请求你的函数所需的任意资源权限。
+本文介绍的绑定需要使用一个标识。 这样 Microsoft Graph 就可以强制执行权限并审核交互。 此标识可以是访问你的应用程序的用户或应用程序本身。 若要配置此标识，请使用 Azure Active Directory 设置[应用服务身份验证/授权](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)。 还需要请求你的函数所需的任意资源权限。
 
 > [!Note] 
 > Microsoft Graph 扩展仅支持 Azure AD 身份验证。 用户需要使用工作或学校帐户登录。
@@ -215,8 +215,8 @@ module.exports = function (context, req) {
 |type||必需 - 必须设置为 `token`。|
 |direction||必需 - 必须设置为 `in`。|
 |**identity**|**标识**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
-|**userId**|**UserId**  |仅在将 identity 设置为 `userFromId` 时为必需。 与已登录用户关联的用户主体 ID。|
-|**userToken**|**UserToken**|仅在将 identity 设置为 `userFromToken` 时为必需。 函数应用的有效令牌。 |
+|**userId**|**UserId**  |仅在将 _identity_ 设置为 时为必需`userFromId`。 与已登录用户关联的用户主体 ID。|
+|**userToken**|**UserToken**|仅在将 _identity_ 设置为 时为必需`userFromToken`。 函数应用的有效令牌。 |
 |**资源**|**resource**|必需 - 正在为其请求令牌的 Azure AD 资源 URL。|
 
 <a name="token-input-code"></a>
@@ -226,7 +226,8 @@ module.exports = function (context, req) {
 
 通常会将此令牌作为字符串提供给代码。
 
-
+> [!Note]
+> 当使用 `userFromId`、`userFromToken` 或 `userFromRequest` 选项进行本地开发时，所需的令牌可以[手动获取](https://github.com/Azure/azure-functions-microsoftgraph-extension/issues/54#issuecomment-392865857)并在来自调用方客户端应用程序的 `X-MS-TOKEN-AAD-ID-TOKEN` 请求标头中指定。
 
 
 <a name="excel-input"></a>
@@ -349,8 +350,8 @@ module.exports = function (context, req) {
 |type||必需 - 必须设置为 `excel`。|
 |direction||必需 - 必须设置为 `in`。|
 |**identity**|**标识**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
-|**userId**|**UserId**  |仅在将 identity 设置为 `userFromId` 时为必需。 与已登录用户关联的用户主体 ID。|
-|**userToken**|**UserToken**|仅在将 identity 设置为 `userFromToken` 时为必需。 函数应用的有效令牌。 |
+|**userId**|**UserId**  |仅在将 _identity_ 设置为 时为必需`userFromId`。 与已登录用户关联的用户主体 ID。|
+|**userToken**|**UserToken**|仅在将 _identity_ 设置为 时为必需`userFromToken`。 函数应用的有效令牌。 |
 |**路径**|**路径**|必须 - OneDrive 中到 Excel 工作簿的路径。|
 |**worksheetName**|**WorksheetName**|表所在的工作表。|
 |**tableName**|**TableName**|表的名称。 如果未指定，将使用工作表的内容。|
@@ -510,8 +511,8 @@ module.exports = function (context, req) {
 |type||必需 - 必须设置为 `excel`。|
 |direction||必需 - 必须设置为 `out`。|
 |**identity**|**标识**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
-|**UserId** |**userId** |仅在将 identity 设置为 `userFromId` 时为必需。 与已登录用户关联的用户主体 ID。|
-|**userToken**|**UserToken**|仅在将 identity 设置为 `userFromToken` 时为必需。 函数应用的有效令牌。 |
+|**UserId** |**userId** |仅在将 _identity_ 设置为 时为必需`userFromId`。 与已登录用户关联的用户主体 ID。|
+|**userToken**|**UserToken**|仅在将 _identity_ 设置为 时为必需`userFromToken`。 函数应用的有效令牌。 |
 |**路径**|**路径**|必须 - OneDrive 中到 Excel 工作簿的路径。|
 |**worksheetName**|**WorksheetName**|表所在的工作表。|
 |**tableName**|**TableName**|表的名称。 如果未指定，将使用工作表的内容。|
@@ -655,8 +656,8 @@ module.exports = function (context, req) {
 |type||必需 - 必须设置为 `onedrive`。|
 |direction||必需 - 必须设置为 `in`。|
 |**identity**|**标识**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
-|**userId**|**UserId**  |仅在将 identity 设置为 `userFromId` 时为必需。 与已登录用户关联的用户主体 ID。|
-|**userToken**|**UserToken**|仅在将 identity 设置为 `userFromToken` 时为必需。 函数应用的有效令牌。 |
+|**userId**|**UserId**  |仅在将 _identity_ 设置为 时为必需`userFromId`。 与已登录用户关联的用户主体 ID。|
+|**userToken**|**UserToken**|仅在将 _identity_ 设置为 时为必需`userFromToken`。 函数应用的有效令牌。 |
 |**路径**|**路径**|必须 - OneDrive 中到文件的路径。|
 
 <a name="onedrive-input-code"></a>
@@ -802,8 +803,8 @@ module.exports = function (context, req) {
 |type||必需 - 必须设置为 `onedrive`。|
 |direction||必需 - 必须设置为 `out`。|
 |**identity**|**标识**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
-|**UserId** |**userId** |仅在将 identity 设置为 `userFromId` 时为必需。 与已登录用户关联的用户主体 ID。|
-|**userToken**|**UserToken**|仅在将 identity 设置为 `userFromToken` 时为必需。 函数应用的有效令牌。 |
+|**UserId** |**userId** |仅在将 _identity_ 设置为 时为必需`userFromId`。 与已登录用户关联的用户主体 ID。|
+|**userToken**|**UserToken**|仅在将 _identity_ 设置为 时为必需`userFromToken`。 函数应用的有效令牌。 |
 |**路径**|**路径**|必须 - OneDrive 中到文件的路径。|
 
 <a name="onedrive-output-code"></a>
@@ -952,8 +953,8 @@ module.exports = function (context, req) {
 |type||必需 - 必须设置为 `outlook`。|
 |direction||必需 - 必须设置为 `out`。|
 |**identity**|**标识**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
-|**userId**|**UserId**  |仅在将 identity 设置为 `userFromId` 时为必需。 与已登录用户关联的用户主体 ID。|
-|**userToken**|**UserToken**|仅在将 identity 设置为 `userFromToken` 时为必需。 函数应用的有效令牌。 |
+|**userId**|**UserId**  |仅在将 _identity_ 设置为 时为必需`userFromId`。 与已登录用户关联的用户主体 ID。|
+|**userToken**|**UserToken**|仅在将 _identity_ 设置为 时为必需`userFromToken`。 函数应用的有效令牌。 |
 
 <a name="outlook-output-code"></a>
 ### <a name="outlook-output---usage"></a>Outlook 输出 - 用法
@@ -1387,8 +1388,8 @@ module.exports = function (context, req) {
 |type||必需 - 必须设置为 `graphWebhookSubscription`。|
 |direction||必需 - 必须设置为 `out`。|
 |**identity**|**标识**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
-|**userId**|**UserId**  |仅在将 identity 设置为 `userFromId` 时为必需。 与已登录用户关联的用户主体 ID。|
-|**userToken**|**UserToken**|仅在将 identity 设置为 `userFromToken` 时为必需。 函数应用的有效令牌。 |
+|**userId**|**UserId**  |仅在将 _identity_ 设置为 时为必需`userFromId`。 与已登录用户关联的用户主体 ID。|
+|**userToken**|**UserToken**|仅在将 _identity_ 设置为 时为必需`userFromToken`。 函数应用的有效令牌。 |
 |**action**|**Action**|必需 - 指定绑定应执行的操作。 可以是以下值之一：<ul><li><code>create</code> - 注册新订阅。</li><li><code>delete</code> - 删除指定订阅。</li><li><code>refresh</code> - 刷新指定订阅，避免它过期。</li></ul>|
 |**subscriptionResource**|**SubscriptionResource**|仅在将 _action_ 设置为 `create` 时为必需。 指定 Microsoft Graph 资源，以监视其更改。 请参阅[使用 Microsoft Graph 中的 webhook]。 |
 |**changeType**|**ChangeType**|仅在将 _action_ 设置为 `create` 时为必需。 指示订阅资源中将触发通知的更改类型。 支持的值为：`created`、`updated`、`deleted`。 可以使用逗号分隔的列表组合多个值。|
@@ -1420,7 +1421,7 @@ module.exports = function (context, req) {
 参阅语言特定的示例：
 
 * [C# 脚本 (.csx)](#app-identity-refresh---c-script-example)
-* [JavaScript](#app-identity-refresh---javascript-example)
+* JavaScript
 
 ### <a name="app-identity-refresh---c-script-example"></a>应用标识刷新 - C# 脚本示例
 

@@ -2,23 +2,23 @@
 title: 用于 Azure 备份的 Azure 资源管理器模板
 description: Azure 备份 PowerShell 示例
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: sample
-ms.date: 04/18/2018
-ms.author: markgal
+ms.date: 01/31/2019
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 941357d0a8b7fb46a5c2dcebb70681452118f23f
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 96d4a61a14d3b1fac1c31c485edf66742c763673
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406375"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497751"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>用于 Azure 备份的 Azure 资源管理器模板
 
-下表包含可以与恢复服务保管库和 Azure 备份功能配合使用的 Azure 资源管理器模板的链接。
+下表包含可以与恢复服务保管库和 Azure 备份功能配合使用的 Azure 资源管理器模板的链接。 若要了解 JSON 语法和属性，请参阅 [Microsoft.RecoveryServices 资源类型](/azure/templates/microsoft.recoveryservices/allversions)。
 
 |   |   |
 |---|---|

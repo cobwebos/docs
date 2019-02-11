@@ -6,16 +6,16 @@ services: cognitive-services
 author: areddish
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 11/5/2018
 ms.author: areddish
-ms.openlocfilehash: 9cceec39c8a1609f73401ec18e2c8cb0a278c223
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 9c13c2747b75184c559f7520fd5932daf6a3ced0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164265"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208034"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>快速入门：使用自定义视觉 Python SDK 创建对象检测项目
 
@@ -181,7 +181,6 @@ print ("Done!")
 
 ```Python
 from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
-from azure.cognitiveservices.vision.customvision.prediction.prediction_endpoint import models
 
 # Now there is a trained endpoint that can be used to make a prediction
 

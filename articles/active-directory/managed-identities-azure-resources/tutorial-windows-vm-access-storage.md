@@ -3,23 +3,23 @@ title: 使用 Windows VM 系统分配的托管标识访问 Azure 存储
 description: 本教程将指导你完成使用 Windows VM 系统分配的托管标识访问 Azure 存储的过程。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: daveba
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
-ms.author: daveba
-ms.openlocfilehash: eeb615a89469ef8c165ed7ad76acaa01493f78ec
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.date: 01/24/2019
+ms.author: priyamo
+ms.openlocfilehash: e266ebca40ac9a3c1d6c1a77e30fed717f4b1b51
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625532"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753447"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>教程：使用 Windows VM 系统分配的托管标识通过访问密钥访问 Azure 存储
 
@@ -36,6 +36,8 @@ ms.locfileid: "51625532"
 ## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="create-a-storage-account"></a>创建存储帐户 
 
@@ -67,7 +69,7 @@ Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 VM �
 
 1. 导航回新创建的存储帐户。  
 2. 单击左侧面板中的“访问控制(IAM)”链接。  
-3. 单击页面顶部的“+ 添加”，为 VM 添加新的角色分配
+3. 单击页面顶部的“+ 添加角色分配”，为 VM 添加新的角色分配
 4. 在页面右侧，将“角色”设置为“存储帐户密钥操作员服务角色”。 
 5. 在下一个下拉列表中，把“将访问权限分配给”设置为资源“虚拟机”。  
 6. 接下来，确保“订阅”下拉列表中列出了正确的订阅，然后将“资源组”设置为“所有资源组”。  
@@ -119,17 +121,17 @@ $keysContent = $keysResponse.Content | ConvertFrom-Json
 $key = $keysContent.keys[0].value
 ```
 
-接下来，我们将创建一个名为“test.txt”的文件。 然后，通过 `New-AzureStorageContent` cmdlet 使用存储访问密钥进行身份验证，将该文件上传到 blob 容器，然后下载该文件。
+接下来，我们将创建一个名为“test.txt”的文件。 然后，通过 `New-AzStorageContent` cmdlet 使用存储访问密钥进行身份验证，将该文件上传到 blob 容器，然后下载该文件。
 
 ```bash
 echo "This is a test text file." > test.txt
 ```
 
-请务必首先使用 `Install-Module Azure.Storage` 安装 Azure 存储 cmdlet。 然后，可以使用 `Set-AzureStorageBlobContent` PowerShell cmdlet 上传刚创建的 blob：
+请务必首先使用 `Install-Module Az.Storage` 安装 Azure 存储 cmdlet。 然后，可以使用 `Set-AzStorageBlobContent` PowerShell cmdlet 上传刚创建的 blob：
 
 ```powershell
-$ctx = New-AzureStorageContext -StorageAccountName <STORAGE-ACCOUNT> -StorageAccountKey $key
-Set-AzureStorageBlobContent -File test.txt -Container <CONTAINER-NAME> -Blob testblob -Context $ctx
+$ctx = New-AzStorageContext -StorageAccountName <STORAGE-ACCOUNT> -StorageAccountKey $key
+Set-AzStorageBlobContent -File test.txt -Container <CONTAINER-NAME> -Blob testblob -Context $ctx
 ```
 
 响应：
@@ -146,10 +148,10 @@ Context           : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 Name              : testblob
 ```
 
-也可以使用 `Get-AzureStorageBlobContent` PowerShell cmdlet 下载刚上传的 blob：
+也可以使用 `Get-AzStorageBlobContent` PowerShell cmdlet 下载刚上传的 blob：
 
 ```powershell
-Get-AzureStorageBlobContent -Blob testblob -Container <CONTAINER-NAME> -Destination test2.txt -Context $ctx
+Get-AzStorageBlobContent -Blob testblob -Container <CONTAINER-NAME> -Destination test2.txt -Context $ctx
 ```
 
 响应：
@@ -171,5 +173,5 @@ Name              : testblob
 在本教程中，你已学习了如何创建系统分配的托管标识来使用访问密钥访问 Azure 存储。  若要详细了解 Azure 存储访问密钥，请参阅：
 
 > [!div class="nextstepaction"]
->[管理存储访问密钥](/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys)
+>[管理存储访问密钥](/azure/storage/common/storage-create-storage-account)
 

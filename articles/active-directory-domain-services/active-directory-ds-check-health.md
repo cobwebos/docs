@@ -4,23 +4,23 @@ description: 在 Azure 门户中使用运行状况页检查托管域的运行状
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: a9248e2310e509bbc4f527608246b47543a03fc4
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 03cbf5dd466af5413aee5e0f5f285bc53de292ad
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502171"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160131"
 ---
 # <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>检查 Azure AD 域服务托管域的运行状况
 
@@ -32,7 +32,7 @@ ms.locfileid: "39502171"
 2. 单击要查看其运行状况的域。
 3. 在左侧导航窗格中，单击“运行状况”。
 
-下图演示了一个示例运行状况页：![示例运行状况页](.\media\active-directory-domain-services-alerts\health-page.png)
+下图演示了一个示例运行状况页：![示例运行状况页](./media/active-directory-domain-services-alerts/health-page.png)
 
 >[!NOTE]
 > 托管域的运行状况每隔一小时评估一次。 对托管域进行更改后，请等到进入下一评估周期，以查看托管域的更新运行状况。 右上角的“上次评估时间”时间戳显示上次评估托管域运行状况的时间。
@@ -43,10 +43,10 @@ ms.locfileid: "39502171"
 
 | 状态 | 图标 | 说明 |
 | --- | :----: | --- |
-| 正在运行 | <img src= ".\media\active-directory-domain-services-alerts\running-icon.png" width = "15"> | 托管域平稳运行，未发生任何严重警报或警告警报。 此域可能发生了信息性的警报。 |
-| 需要注意（警告） | <img src= ".\media\active-directory-domain-services-alerts\warning-icon.png" width = "15"> | 托管域中未发生严重警报，但有一个或多个警告警报需要解决。 |
-| 需要注意（严重） | <img src= ".\media\active-directory-domain-services-alerts\critical-icon.png" width = "15"> | 托管域上发生了一个或多个严重警报。 此外，还可能会收到警告和/或信息性警报。 |
-| 正在部署 | <img src= ".\media\active-directory-domain-services-alerts\deploying-icon.png" width = "15"> | 正在部署域。 |
+| 正在运行 | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15"> | 托管域平稳运行，未发生任何严重警报或警告警报。 此域可能发生了信息性的警报。 |
+| 需要注意（警告） | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15"> | 托管域中未发生严重警报，但有一个或多个警告警报需要解决。 |
+| 需要注意（严重） | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15"> | 托管域上发生了一个或多个严重警报。 此外，还可能会收到警告和/或信息性警报。 |
+| 正在部署 | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15"> | 正在部署域。 |
 
 ## <a name="monitors"></a>监视器
 监视器是 Azure AD 域服务定期监视的托管域功能。 使监视器保持正常运行状态的最佳方法是解决托管域的任何现存警报。

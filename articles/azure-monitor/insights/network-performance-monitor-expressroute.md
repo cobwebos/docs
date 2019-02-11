@@ -10,17 +10,15 @@ ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: abshamsft
-ms.component: ''
-ms.openlocfilehash: 69088f7d07312d4110eafea369ea999f0597868b
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 2dcbe170a69c0c285cb6425427f94b5efced8712
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441989"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747452"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute 监视器
 
@@ -118,25 +116,14 @@ ms.locfileid: "52441989"
 
 可通过 LogAnalytics 查看通知代码并设置警报。 在“NPM 诊断”页面上，可看到触发的每条诊断消息的说明。
 
-| 通知代码（日志） | Description |
+| 通知代码（日志） | 说明 |
 | --- | --- |
-| 5101 | Microsoft Edge 子接口显示高延迟 |
-| 5102 | Microsoft Edge 子接口正在删除包 | 
-| 5103 | ExpressRoute 网关运行不正常 | 
-| 5201 | 服务提供商的链接显示高延迟 |
-| 5202 | 数据包不流自计划的 ExpressRoute 循环 |
-| 5301 | 客户的边缘路由器显示高延迟 | 
-| 5302 | 延迟是客户环境中的设备/链接所致。 似乎不是 ExpressRoute 线路出现问题 | 
 | 5501 | 无法遍历 ExpressRoute 线路的辅助连接 |
 | 5502 | 无法遍历 ExpressRoute 线路的主连接 |
 | 5503 | 在链接到此工作区的订阅中找不到线路 | 
-| 5506 | 利用率即将达到其最大容量 | 
-| 5507 | 利用率很低 |
 | 5508 | 无法确定流量是否通过路径的任何电路 |
 | 5510 | 流量未通过期望的线路 | 
 | 5511 | 流量未通过期望的虚拟网络 | 
-| 5512 | 无法确定流量是否通过期望的线路 |
-
 
 **线路已关闭。** 一旦本地资源与 Azure 虚拟网络之间的连接断开，网络性能监视器立即会发出通知。 此通知可以帮助你在收到用户事务升级之前采取主动措施，并减少停机时间。
 
@@ -160,4 +147,4 @@ ms.locfileid: "52441989"
  
 
 ## <a name="next-steps"></a>后续步骤
-[搜索日志](../../log-analytics/log-analytics-queries.md)以查看详细的网络性能数据记录。
+[搜索日志](../../azure-monitor/log-query/log-query-overview.md)以查看详细的网络性能数据记录。

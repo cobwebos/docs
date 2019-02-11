@@ -3,17 +3,17 @@ title: 适用于 Azure 的 Ansible 模块和版本矩阵
 description: 适用于 Azure 的 Ansible 模块和版本矩阵
 ms.service: ansible
 keywords: ansible, 角色, 矩阵, 版本, azure, devops
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/22/2018
 ms.topic: article
-ms.openlocfilehash: a71f28413028efe3547df7c464ec852fe2161f63
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 5265b6f6ebf779c83792ab2569c1b613d11070da
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649935"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051520"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Ansible 模块和版本矩阵
 
@@ -133,4 +133,4 @@ Ansible 配备了多个模块，这些模块可远程主机上直接执行或通
 azure_preview_module playbook 角色每三周发布一次。
 
 ## <a name="next-steps"></a>后续步骤
-如需与 playbook 角色相关的详细信息，请参阅[创建可重用的 Playbook](http://docs.ansible.com/ansible/latest/playbooks_reuse.html)。 
+如需与 playbook 角色相关的详细信息，请参阅[创建可重用的 Playbook](https://docs.ansible.com/ansible/latest/playbooks_reuse.html)。 

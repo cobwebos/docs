@@ -8,18 +8,18 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
 ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee441a8c9a0d8a70a2797f090a143189cdb6872a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 5a238b6b8ad64dec443110d922e2684ebde507d7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211530"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55198106"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>识别和解决 Azure Active Directory 中组的许可证分配问题
 
@@ -118,6 +118,12 @@ Azure AD 会尝试将该组中指定的所有许可证分配给每个用户。 �
 
 可以查看无法被分配许可证的用户，并且可以检查哪些产品受此问题的影响。
 
+## <a name="what-happens-when-a-group-with-licenses-assigned-is-deleted"></a>删除分配了许可证的组会发生什么情况？
+
+在删除组之前，必须先删除分配到该组的所有许可证。 但是，删除组中所有用户的许可证可能比较耗时。 删除组的许可证分配时，如果为用户分配了依赖的许可证，或者某个代理地址冲突问题阻止删除许可证，则删除操作可能失败。 如果用户的某个许可证依赖于删除组时一同删除的许可证，则用户的许可证分配将从继承转换为直接。
+
+例如，假设分配了 Office 365 E3/E5 的某个组启用了 Skype for Business 服务计划。 此外，假设直接为组中的几个成员分配了 Audio Conferencing 许可证。 删除该组时，基于组的许可会尝试删除所有用户的 Office 365 E3/E5。 由于 Audio Conferencing 依赖于 Skype for Business，对于分配了 Audio Conferencing 的所有用户，基于组的许可会将 Office 365 E3/E5 许可证转换为直接许可证分配。
+
 ## <a name="how-do-you-manage-licenses-for-products-with-prerequisites"></a>如何为有先决条件的产品管理许可证？
 
 你拥有的某些 Microsoft Online 产品可能是“附加产品”。 附加产品要求先为用户或组启用先决服务计划，才能向其分配许可证。 要使用基于组的许可，系统要求先决条件和附加产品服务计划存在于同一组中。 这是为了确保添加到组的任何用户都能收到功能齐全的产品。 请考虑以下示例：
@@ -146,8 +152,6 @@ Microsoft Workplace Analytics 是一个附加产品。 它包含同名单一服�
 
 > [!TIP]
 > 可为每个先决服务计划创建多个组。 例如，如果有用户使用 Office 365 Enterprise E1，也有用户 Office 365 Enterprise E3，则可创建两个组来授权 Microsoft Workplace Analytics：一个使用 E1 作为先决条件，另一个使用 E3。 这样，不需要额外的许可证，即可将附加产品分发到 E1 和 E3 用户。
-
-
 
 ## <a name="how-do-you-force-license-processing-in-a-group-to-resolve-errors"></a>如何强制处理组中的许可证以解决错误？
 

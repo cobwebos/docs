@@ -3,20 +3,18 @@ title: Azure Database for MariaDB 中的高可用性概念
 description: 本主题介绍了使用 Azure Database for MariaDB 时的高可用性概念
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 2f06c9515c6ee79ea7475452b7000d1babdbecfe
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 12/03/2018
+ms.openlocfilehash: e1e4103360c2864f6a63f2eb0c7f146cac779cb6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956517"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538151"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的高可用性概念
-Azure Database for MariaDB 服务提供有保证的高级别可用性。 有资金支持的服务级别协议 (SLA) 在正式版本发布后的可用性为 99.99%。 SLA 不适用于公共预览版。 使用此服务期间，几乎没有应用程序故障时间。
+Azure Database for MariaDB 服务提供有保证的高级别可用性。 有资金支持的服务级别协议 (SLA) 在正式版本发布后的可用性为 99.99%。 使用此服务期间，几乎没有应用程序故障时间。
 
 ## <a name="high-availability"></a>高可用性
 高可用性 (HA) 模型以节点级中断发生时的内置故障转移机制为依据。 硬件故障或响应服务部署都有可能会导致节点级中断发生。
@@ -34,4 +32,4 @@ Azure Database for MariaDB 服务提供有保证的高级别可用性。 有资�
 执行缩放操作期间，数据库连接会中断。 客户端应用程序的连接中断，未提交的未结事务也会遭取消。 在客户端应用程序重试连接或建立新连接后，网关便会将连接定向到新设置大小的实例。
 
 ## <a name="next-steps"></a>后续步骤
-- 有关该服务的概述，请参阅 [Azure Database for MariaDB 概述](overview.md)
+- 有关该服务的概述，请参阅 [Azure Database for MariaDB 概述](overview.md)

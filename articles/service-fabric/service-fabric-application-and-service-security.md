@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: ryanwi
-ms.openlocfilehash: fa6d46186ad833b68e60c24f742d210b7845759a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f83f7afa4173316f127c76f20967054bf13c9a6b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207904"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097881"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric 应用程序和服务安全性
 微服务体系结构可以带来[诸多好处](service-fabric-overview-microservices.md)。 但是，管理微服务的安全性有一定的难度，比管理传统单体式应用程序的安全性更复杂。 
@@ -46,7 +46,7 @@ ms.locfileid: "34207904"
 ## <a name="restrict-and-secure-access-using-an-api-gateway"></a>使用 API 网关限制和保护访问
 云应用程序通常都需要使用前端网关，为用户、设备或其他应用程序提供同一个入口点。 [API 网关](/azure/architecture/microservices/gateway)位于客户端与服务之间，是应用程序提供的所有服务的入口点。 它充当反向代理，将来自客户端的请求路由到服务。 它还可以执行各种横切任务，例如身份验证和授权、SSL 终止与速率限制。 如果未部署网关，则客户端必须直接向前端服务发送请求。
 
-在 Service Fabric 中，网关可以是任意无状态服务（例如 [ASP.NET Core 应用程序](service-fabric-reliable-services-communication-aspnetcore.md)），也可以是其他专为流量入口设计的服务（例如 [Træfik](https://docs.traefik.io/)、[事件中心](https://docs.microsoft.com/azure/event-hubs/)、[IoT 中心](https://docs.microsoft.com/azure/iot-hub/)或 [Azure API 管理](https://docs.microsoft.com/azure/api-management)）。
+在 Service Fabric 中，网关可以是任意无状态服务（如 [ASP.NET Core 应用程序](service-fabric-reliable-services-communication-aspnetcore.md)），也可以是其他专为流量入口设计的服务（如 [Traefik](https://docs.traefik.io/)、[事件中心](https://docs.microsoft.com/azure/event-hubs/)、[IoT 中心](https://docs.microsoft.com/azure/iot-hub/)或 [Azure API 管理](https://docs.microsoft.com/azure/api-management)）。
 
 API 管理直接与 Service Fabric 集成，以便可以使用一组丰富的路由规则向后端 Service Fabric 服务发布 API。  可以使用限制来保护对后端服务的访问、防止 DOS 攻击；还可以验证 API 密钥、JWT 令牌、证书和其他凭据。 有关详细信息，请参阅[有关 Service Fabric 与 Azure API 管理的概述](service-fabric-api-management-overview.md)。
 

@@ -4,109 +4,107 @@ description: 了解如何在 Azure Active Directory 和 NetSuite 之间配置单
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
+ms.reviewer: barbkess
 ms.assetid: dafa0864-aef2-4f5e-9eac-770504688ef4
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/11/2018
+ms.topic: tutorial
+ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 511fdcf587d16a59ff2bb11dfc55504b2218a569
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f93f6d01019b38fc157732ee221a5f73a156e809
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431398"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810391"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>教程：Azure Active Directory 与 NetSuite 集成
 
 本教程介绍如何将 NetSuite 与 Azure Active Directory (Azure AD) 集成。
-
 将 NetSuite 与 Azure AD 集成提供以下优势：
 
-- 可在 Azure AD 中控制谁有权访问 NetSuite
-- 可让用户使用其 Azure AD 帐户自动登录到 NetSuite（单一登录）
-- 可以在一个中心位置（即 Azure 门户）管理帐户
+* 可在 Azure AD 中控制谁有权访问 NetSuite。
+* 可以让用户使用其 Azure AD 帐户自动登录到 NetSuite（单一登录）。
+* 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 NetSuite 的集成，需要以下项：
 
-- Azure AD 订阅
-- 已启用 NetSuite 单一登录的订阅
-
-> [!NOTE]
-> 为了测试本教程中的步骤，我们不建议使用生产环境。
-
-测试本教程中的步骤应遵循以下建议：
-
-- 除非必要，请勿使用生产环境。
-- 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+* 已启用 NetSuite 单一登录的订阅
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
-1. 从库中添加 NetSuite
-1. 配置和测试 Azure AD 单一登录
+本教程会在测试环境中配置和测试 Azure AD 单一登录。
+
+* NetSuite 支持 IDP 发起的 SSO
+* NetSuite 支持实时用户预配
+* NetSuite 支持[自动用户预配](NetSuite-provisioning-tutorial.md)
 
 ## <a name="adding-netsuite-from-the-gallery"></a>从库中添加 NetSuite
+
 若要配置 NetSuite 与 Azure AD 的集成，需要从库中将 NetSuite 添加到托管 SaaS 应用列表。
 
 若要从库中添加 NetSuite，请执行以下步骤：
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
-    ![Active Directory][1]
+    ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+2. 转到“企业应用”，并选择“所有应用”选项。
 
-    ![应用程序][2]
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-1. 单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![应用程序][3]
+    ![“新增应用程序”按钮](common/add-new-app.png)
 
-1. 在搜索框中键入“NetSuite”，在结果面板中选择“NetSuite”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中键入“NetSuite”，在结果面板中选择“NetSuite”，然后单击“添加”按钮添加该应用程序。
 
-    ![结果列表中的 NetSuite](./media/netsuite-tutorial/tutorial_netsuite_addfromgallery.png)
+     ![结果列表中的 NetSuite](common/search-new-app.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+
 在本部分中，将基于名为“Britta Simon”的测试用户使用 NetSuite 配置和测试 Azure AD 单一登录。
-
-若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 NetSuite 用户。 换句话说，需要在 Azure AD 用户与 NetSuite 中的相关用户之间建立链接关系。
-
-可通过将 Azure AD 中“用户名”的值指定为 NetSuite 中“用户名”的值来建立此链接关系。
+若要运行单一登录，需要在 Azure AD 用户与 NetSuite 相关用户之间建立链接关系。
 
 若要配置和测试 NetSuite 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-1. **[创建 NetSuite 测试用户](#creating-a-netsuite-test-user)** - 在 NetSuite 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
+2. **[配置 NetSuite 单一登录](#configure-netsuite-single-sign-on)** - 在应用程序端配置单一登录。
+3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+5. **[创建 NetSuite 测试用户](#create-netsuite-test-user)** - 在 NetSuite 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-本部分介绍如何在 Azure 门户中启用 Azure AD 单一登录并在 NetSuite 应用程序中配置单一登录。
+在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
 若要配置 NetSuite 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 Azure 门户中，在“NetSuite”应用程序集成页上，单击“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“NetSuite”应用程序集成页上，选择“单一登录”。
 
-    ![配置单一登录][4]
+    ![配置单一登录链接](common/select-sso.png)
 
-1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
-    ![配置单一登录](./media/NetSuite-tutorial/tutorial_NetSuite_samlbase.png)
+    ![单一登录选择模式](common/select-saml-option.png)
 
-1. 在“NetSuite 域和 URL”部分中，执行以下步骤：
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
 
-    ![配置单一登录](./media/NetSuite-tutorial/tutorial_NetSuite_url.png)
+    ![编辑基本 SAML 配置](common/edit-urls.png)
+
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+
+    ![NetSuite 域和 URL 单一登录信息](common/idp-reply.png)
 
     在“回复 URL”文本框中，使用以下模式键入 URL：
 
@@ -121,49 +119,84 @@ ms.locfileid: "39431398"
     `https://<tenant-name>.na1.sandbox.NetSuite.com/saml2/acs`
 
     `https://<tenant-name>.na2.sandbox.NetSuite.com/saml2/acs`
-    
+
     > [!NOTE]
-    > 这些不是实际值。 使用实际回复 URL 更新这些值。 若要获取这些值，请与 [NetSuite 支持团队](http://www.NetSuite.com/portal/services/support.shtml)联系。
+    > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [NetSuite 客户端支持团队](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml)，获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
+5. NetSuite 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
 
-    ![配置单一登录](./media/NetSuite-tutorial/tutorial_NetSuite_certificate.png) 
+    ![图像](common/edit-attribute.png)
 
-1. 单击“保存”按钮。
+6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤：
+    
+    | 名称 | 源属性 | 
+    | ---------------| --------------- |
+    | 帐户  | `account id` |
 
-    ![配置单一登录](./media/NetSuite-tutorial/tutorial_general_400.png)
+    a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
-1. 在“NetSuite 配置”部分中，单击“配置 NetSuite”，打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
+    ![图像](common/new-save-attribute.png)
 
-    ![配置单一登录](./media/NetSuite-tutorial/tutorial_NetSuite_configure.png)
+    ![图像](common/new-attribute-details.png)
+
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
+
+    c. 将“命名空间”留空。
+
+    d. 选择“源”作为“属性”。
+
+    e. 在“源属性”列表中，键入为该行显示的属性值。
+
+    f. 单击“确定”
+
+    g. 单击“ **保存**”。
+
+    >[!NOTE]
+    >帐户属性的值不是实际值。 将更新此值（本教程稍后将会介绍）。
+
+4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的元数据 XML 并将其保存在计算机上。
+
+    ![证书下载链接](common/metadataxml.png)
+
+6. 在“设置 NetSuite”部分中，根据要求复制相应 URL。
+
+    ![复制配置 URL](common/copy-configuration-urls.png)
+
+    a. 登录 URL
+
+    b. Azure AD 标识符
+
+    c. 注销 URL
+
+### <a name="configure-netsuite-single-sign-on"></a>配置 NetSuite 单一登录
 
 1. 在浏览器中打开新标签页，并以管理员身分登录 NetSuite 公司站点。
 
-1. 在页面顶部的工具栏中，单击“设置”，然后导航至“公司”，并单击“启用功能”。
+2. 在页面顶部的工具栏中，单击“设置”，然后导航至“公司”，并单击“启用功能” **** ****  ****。
 
     ![配置单一登录](./media/NetSuite-tutorial/ns-setupsaml.png)
 
-1. 在页面中间的工具栏中，单击 **SuiteCloud**。
+3. 在页面中间的工具栏中，单击“SuiteCloud” ****。
 
     ![配置单一登录](./media/NetSuite-tutorial/ns-suitecloud.png)
 
-1. 在“管理身份验证”部分下，选择“SAML 单一登录”以在 NetSuite 中启用“SAML 单一登录”选项。
+4. 在“管理身份验证”部分下，选择“SAML 单一登录”以在 NetSuite 中启用“SAML 单一登录”选项 ****  **** 。
 
     ![配置单一登录](./media/NetSuite-tutorial/ns-ticksaml.png)
 
-1. 在页面顶部的工具栏中，单击“设置”。
+5. 在页面顶部的工具栏中，单击“设置” ****。
 
     ![配置单一登录](./media/NetSuite-tutorial/ns-setup.png)
 
-1. 从“设置任务”列表中，单击“集成”。
+6. 从“设置任务”列表中，单击“集成”。
 
     ![配置单一登录](./media/NetSuite-tutorial/ns-integration.png)
 
-1. 在“管理身份验证”部分中，单击“SAML 单一登录”。
+7. 在“管理身份验证”部分中，单击“SAML 单一登录”。
 
     ![配置单一登录](./media/NetSuite-tutorial/ns-saml.png)
 
-1. 在“SAML 设置”页的“NetSuite 配置”部分下，执行以下步骤：
+8. 在“SAML 设置”页的“NetSuite 配置”部分下，执行以下步骤：
 
     ![配置单一登录](./media/NetSuite-tutorial/ns-saml-setup.png)
   
@@ -173,15 +206,7 @@ ms.locfileid: "39431398"
 
     c. 单击“提交”。
 
-1. 在 Azure AD 中，单击“查看和编辑所有其他用户属性”复选框，并添加属性。
-
-    ![配置单一登录](./media/NetSuite-tutorial/ns-attributes.png)
-
-1. 在“属性名称”字段中，键入 `account`。 在“属性值”字段中，键入 NetSuite 帐户 ID。 此值是常量，会随帐户而改变。 下面提供了有关如何找出帐户 ID 的说明：
-
-    ![配置单一登录](./media/NetSuite-tutorial/ns-add-attribute.png)
-
-    a. 在 NetSuite 中，单击“设置”，然后导航至“公司”，并单击顶部导航菜单中的“公司信息”。
+9. 在 NetSuite 中，单击“设置”，然后导航至“公司”，并单击顶部导航菜单中的“公司信息”。
 
     ![配置单一登录](./media/NetSuite-tutorial/ns-com.png)
 
@@ -191,7 +216,7 @@ ms.locfileid: "39431398"
 
     c. 将已从 NetSuite 帐户复制的**帐户 ID** 粘贴到 Azure AD 中的“属性值”字段中。 
 
-1. 在用户能够单一登录到 NetSuite 之前，必须先在 NetSuite 中为他们分配适当的权限。 请按以下说明来分配这些权限。
+10. 在用户能够单一登录到 NetSuite 之前，必须先在 NetSuite 中为他们分配适当的权限。 请按以下说明来分配这些权限。
 
     a. 在顶部导航菜单中单击“设置”。
 
@@ -234,97 +259,75 @@ ms.locfileid: "39431398"
     ![配置单一登录](./media/NetSuite-tutorial/ns-add-role.png)
 
     m. 单击“ **保存**”。
- 
-### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
+
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-![创建 Azure AD 用户][100]
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
-**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+    ![“用户和组”以及“所有用户”链接](common/users.png)
 
-1. 在 **Azure 门户**的左侧导航窗格中，单击“Azure Active Directory”图标。
+2. 选择屏幕顶部的“新建用户”。
 
-    ![创建 Azure AD 测试用户](./media/NetSuite-tutorial/create_aaduser_01.png) 
+    ![“新建用户”按钮](common/new-user.png)
 
-1.  若要显示用户列表，请转到“用户和组”，单击“所有用户”。
-    
-    ![创建 Azure AD 测试用户](./media/NetSuite-tutorial/create_aaduser_02.png) 
+3. 在“用户属性”中，按照以下步骤操作。
 
-1. 在对话框顶部，单击“添加”以打开“用户”对话框。
- 
-    ![创建 Azure AD 测试用户](./media/NetSuite-tutorial/create_aaduser_03.png) 
+    ![“用户”对话框](common/user-properties.png)
 
-1. 在“用户”对话框页上，执行以下步骤：
- 
-    ![创建 Azure AD 测试用户](./media/NetSuite-tutorial/create_aaduser_04.png) 
+    a. 在“名称”字段中，输入 BrittaSimon。
+  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    例如： BrittaSimon@contoso.com
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    d. 单击“创建”。
 
-    c. 选择“显示密码”并记下“密码”的值。
-
-    d. 单击“创建”。 
-
-### <a name="creating-a-netsuite-test-user"></a>创建 NetSuite 测试用户
-
-本部分将在 NetSuite 中创建一个名为 Britta Simon 的用户。 NetSuite 支持默认启用的实时预配。
-此部分不存在任何操作项。 尝试访问 NetSuite 时，如果 NetSuite 中尚不存在用户，系统会创建一个新用户。
-
-
-### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 NetSuite 的权限，允许其使用 Azure 单一登录。
 
-![分配用户][200] 
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“NetSuite”。
 
-若要将 Britta Simon 分配到 NetSuite，请执行以下步骤：
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
+2. 在应用程序列表中，键入并选择“NetSuite”。
 
-    ![分配用户][201] 
+    ![应用程序列表中的 NetSuite 链接](common/all-applications.png)
 
-1. 在应用程序列表中，选择“NetSuite”。
+3. 在左侧菜单中，选择“用户和组”。
 
-    ![配置单一登录](./media/NetSuite-tutorial/tutorial_NetSuite_app.png) 
+    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 在左侧菜单中，单击“用户和组”。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
-    ![分配用户][202] 
+    ![“添加分配”窗格](common/add-assign-user.png)
 
-1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
 
-    ![分配用户][203]
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 
-1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+7. 在“添加分配”对话框中，单击“分配”按钮。
 
-1. 在“用户和组”对话框中单击“选择”按钮。
+### <a name="create-netsuite-test-user"></a>创建 NetSuite 测试用户
 
-1. 在“添加分配”对话框中单击“分配”按钮。
-    
-### <a name="testing-single-sign-on"></a>测试单一登录
+本部分将在 NetSuite 中创建一个名为 Britta Simon 的用户。 NetSuite 支持在默认情况下保持启用的实时用户预配。 此部分不存在任何操作项。 如果 NetSuite 中不存在用户，则会在身份验证后创建一个新用户。
+
+### <a name="test-single-sign-on"></a>测试单一登录 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-若要测试单一登录设置，请打开“访问面板”（网址为 [https://myapps.microsoft.com](https://myapps.microsoft.com/)），登录测试帐户，并单击“NetSuite”。
+单击访问面板中的 NetSuite 磁贴时，应当会自动登录到为其设置了 SSO 的 NetSuite。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
-* [配置用户预配](NetSuite-provisioning-tutorial.md)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/NetSuite-tutorial/tutorial_general_01.png
-[2]: ./media/NetSuite-tutorial/tutorial_general_02.png
-[3]: ./media/NetSuite-tutorial/tutorial_general_03.png
-[4]: ./media/NetSuite-tutorial/tutorial_general_04.png
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-[100]: ./media/NetSuite-tutorial/tutorial_general_100.png
-
-[200]: ./media/NetSuite-tutorial/tutorial_general_200.png
-[201]: ./media/NetSuite-tutorial/tutorial_general_201.png
-[202]: ./media/NetSuite-tutorial/tutorial_general_202.png
-[203]: ./media/NetSuite-tutorial/tutorial_general_203.png
+- [配置用户预配](NetSuite-provisioning-tutorial.md)
 

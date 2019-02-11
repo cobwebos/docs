@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 06/06/2017
 ms.author: celested
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 72b1ba51f306203092b420e6f2d6186b3307d35d
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 3c2953d44587d72517c6f619ee9c9f05aabff186
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422739"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094370"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>代理流中使用委托用户标识的服务到服务调用
 
@@ -103,11 +103,11 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 
 客户端应用程序由共享密钥或证书提供保护。
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一种情况：使用共享密钥访问令牌请求
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一种情况：使用共享机密访问令牌请求
 
 使用共享密钥时，服务到服务访问令牌请求包含以下参数：
 
-| 参数 |  | Description |
+| 参数 |  | 说明 |
 | --- | --- | --- |
 | grant_type |必填 | 令牌请求的类型。 OBO 请求使用 JSON Web 令牌 (JWT)，因此值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
 | assertion |必填 | 请求中使用的访问令牌值。 |
@@ -141,7 +141,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 使用证书的服务到服务访问令牌请求包含以下参数：
 
-| 参数 |  | Description |
+| 参数 |  | 说明 |
 | --- | --- | --- |
 | grant_type |必填 | 令牌请求的类型。 OBO 请求使用 JWT 访问令牌，因此值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
 | assertion |必填 | 请求中使用的令牌值。 |
@@ -179,9 +179,9 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 成功响应是具有以下参数的 JSON OAuth 2.0 响应：
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
-| token_type |指示令牌类型值。 Azure AD 唯一支持的类型是 **Bearer**。 有关持有者令牌的详细信息，请参阅 [OAuth2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
+| token_type |指示令牌类型值。 Azure AD 唯一支持的类型是 **Bearer**。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
 | 作用域 |令牌中授予的访问权限的范围。 |
 | expires_in |访问令牌有效的时间长度（以秒为单位）。 |
 | expires_on |访问令牌的过期时间。 该日期表示为自 1970-01-01T0:0:0Z UTC 至过期时间的秒数。 此值用于确定缓存令牌的生存期。 |
@@ -251,7 +251,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdW
 
 SAML 断言的服务到服务请求包含以下参数：
 
-| 参数 |  | Description |
+| 参数 |  | 说明 |
 | --- | --- | --- |
 | grant_type |必填 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
 | assertion |必填 | 请求中使用的访问令牌值。|
@@ -270,7 +270,7 @@ SAML 断言的服务到服务请求包含以下参数：
 
 ### <a name="response-with-saml-assertion"></a>使用 SAML 断言进行响应
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | token_type |指示令牌类型值。 Azure AD 唯一支持的类型是 **Bearer**。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
 | 作用域 |令牌中授予的访问权限的范围。 |
@@ -281,9 +281,9 @@ SAML 断言的服务到服务请求包含以下参数：
 | refresh_token |刷新令牌。 当前 SAML 断言过期后，调用方服务可以使用此令牌请求另一个访问令牌。 |
 
 - token_type：持有者
-- expires_in: 3296
-- ext_expires_in: 0
-- expires_on: 1529627844
+- expires_in：3296
+- ext_expires_in：0
+- expires_on：1529627844
 - 资源：`https://api.contoso.com`
 - access_token：\<SAML 断言\>
 - issued_token_type: urn:ietf:params:oauth:token-type:saml2

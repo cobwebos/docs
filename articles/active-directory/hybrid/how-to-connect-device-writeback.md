@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/08/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 389c519d5f63b311b2e9c2b1d48d6e09e02c7d81
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 2ed7cee529b1142576c4a8e480923f1e993bde3a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361061"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493608"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect：启用设备写回
 > [!NOTE]
@@ -57,10 +57,10 @@ ms.locfileid: "49361061"
 
 4. “设备容器”页提供了使用以下两个可用选项之一准备活动目录的选项：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **提供企业管理员凭据**：如果为需要设备写回的林提供企业管理员凭据，Azure AD Connect 将在配置设备写回期间自动准备林。
+    a. **提供企业管理员凭据**：如果为需要设备写回的林提供企业管理员凭据，Azure AD Connect 将在配置设备写回期间自动准备林。
 
     b. **下载 PowerShell 脚本**：Azure AD Connect 会自动生成 PowerShell 脚本，该脚本可以为设备写回准备 Active Directory。 如果无法在 Azure AD Connect 中提供企业管理员凭据，则建议下载 PowerShell 脚本。 将下载的 PowerShell 脚本 **CreateDeviceContainer.psq** 提供给设备将写回到的林的企业管理员。
-    ![准备 Active Diretory 林](./media/how-to-connect-device-writeback/devicecontainercreds.png)
+    ![准备 Active Directory 林](./media/how-to-connect-device-writeback/devicecontainercreds.png)
     
     执行以下操作来准备 Active Directory 林：
     * 该命令会在 CN=Device Registration Configuration,CN=Services,CN=Configuration,[forest-dn] 下创建并配置新的容器和对象（如果不存在）。
@@ -89,7 +89,7 @@ ms.locfileid: "49361061"
 
 首先：
 
-* 确保至少有一个林具有 Windows Server 2012R2。 设备对象类型必须存在。
+* 设备所在的林必须将林架构升级到 Windows 2012 R2 级别，以便显示设备对象和相关属性。
 * 如果安装向导已在运行，则不会检测到任何更改。 在此情况下，请先完成安装向导，再试一次。
 * 确保在初始化脚本中提供的帐户是 Active Directory 连接器实际使用的正确用户。 若要验证，请执行以下步骤：
   * 从“开始”菜单打开“同步服务”。

@@ -5,23 +5,23 @@ services: active-directory
 keywords: 对应用的条件访问, 使用 Azure AD 进行条件访问, 保护对公司资源的访问, 条件访问策略, 使用条款
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: e121cfddf8dc598771d630e011b4410217f5e92b
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 419368511065e6f45d7fb9b363f5806b47ce07e8
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901869"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076179"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>快速入门：在访问云应用之前要求接受使用条款 
 
@@ -78,7 +78,7 @@ ms.locfileid: "48901869"
 
     ![Azure Active Directory](./media/require-tou/02.png)
 
-5. 在“Azure Active Directory”页的“管理”部分，单击“条件性访问”。
+5. 在“Azure Active Directory”页的“安全性”部分中，单击“条件性访问”。
 
     ![条件性访问](./media/require-tou/03.png) 
 
@@ -94,7 +94,7 @@ ms.locfileid: "48901869"
 
     ![使用条款](./media/require-tou/112.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入“我的 TOU”。
+    a. 在“名称”文本框中，键入“我的 TOU”。
 
     b. 在“显示名称”文本框中，键入“我的 TOU”。
 
@@ -135,7 +135,7 @@ ms.locfileid: "48901869"
 
 1. 在“新建”页上的“名称”文本框中，键入“要求 Isabella 接受 TOU”。
 
-    ![名称](./media/require-tou/71.png)
+    ![Name](./media/require-tou/71.png)
 
 2. 在“分配”部分中，单击“用户和组”。
 
@@ -145,7 +145,7 @@ ms.locfileid: "48901869"
 
     ![用户和组](./media/require-tou/24.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“选择用户和组”，然后选择“用户和组”。
+    a. 单击“选择用户和组”，然后选择“用户和组”。
 
     b. 单击“选择”。
 
@@ -161,7 +161,7 @@ ms.locfileid: "48901869"
 
     ![选择云应用](./media/require-tou/26.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“选择应用”。
+    a. 单击“选择应用”。
 
     b. 单击“选择”。
 
@@ -178,9 +178,9 @@ ms.locfileid: "48901869"
 
     ![授权](./media/require-tou/111.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“授予访问权限”。
+    a. 选择“授予访问权限”。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“我的 TOU”。
+    a. 选择“我的 TOU”。
 
     b. 单击“选择”。
 
@@ -224,7 +224,7 @@ ms.locfileid: "48901869"
 
     ![云应用](./media/require-tou/16.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“云应用”。
+    a. 单击“云应用”。
 
     b. 在“云应用”页上，单击“选择应用”。
 

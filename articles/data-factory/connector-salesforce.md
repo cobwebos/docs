@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: jingwang
-ms.openlocfilehash: bc98fc2465c280c41a77823de239a5572c5d27e4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7550eac600f5b504d80bcc6b5465e24e8d423d2a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409571"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015077"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -73,7 +72,7 @@ Salesforce 链接服务支持以下属性。
 >[!IMPORTANT]
 >将数据复制到 Salesforce 时，不能使用默认 Azure 集成运行时执行复制。 换而言之，如果源链接服务未指定集成运行时，请使用靠近 Salesforce 实例的位置显式[创建 Azure 集成运行时](create-azure-integration-runtime.md#create-azure-ir)。 按如下示例所示关联 Salesforce 链接服务。
 
-**示例：在数据工厂中存储凭据**
+示例：**在数据工厂中存储凭据**
 
 ```json
 {
@@ -99,7 +98,7 @@ Salesforce 链接服务支持以下属性。
 }
 ```
 
-**示例：在 Key Vault 中存储凭据**
+示例：**在密钥保管库中存储凭据**
 
 ```json
 {
@@ -168,7 +167,7 @@ Salesforce 链接服务支持以下属性。
 ```
 
 >[!NOTE]
->为了向后兼容，从 Salesforce 中复制数据时，使用以前“RelationalTable”类型的数据集都将有效，而建议以切换到新的“SalesforceObject”类型。
+>为了向后兼容：从 Salesforce 复制数据时，如果使用以前的“RelationalTable”类型数据集，它会在你看到切换到新的“SalesforceObject”类型的建议时继续工作。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -227,7 +226,7 @@ Salesforce 链接服务支持以下属性。
 ```
 
 >[!NOTE]
->为了向后兼容，从 Salesforce 中复制数据时，使用以前“RelationalSource”类型的复制源都将有效，而建议以切换到新的“SalesforceSource”类型。
+>为了向后兼容：从 Salesforce 复制数据时，如果使用以前的“RelationalSource”类型副本，则当你看到切换到新的“SalesforceSource”类型的建议时，该源会继续工作。
 
 ### <a name="salesforce-as-a-sink-type"></a>将 Salesforce 用作接收器类型
 
@@ -239,9 +238,9 @@ Salesforce 链接服务支持以下属性。
 | writeBehavior | 操作写入行为。<br/>允许的值为 **Insert** 和 **Upsert**。 | 否（默认值为 Insert） |
 | externalIdFieldName | 更新插入操作的外部的 ID 字段名称。 指定的字段必须在 Salesforce 对象中定义为“外部 Id 字段”。 它相应的输入数据中不能有 NULL 值。 | 对于“Upsert”是必需的 |
 | writeBatchSize | 每批中写入到 Salesforce 的数据行计数。 | 否（默认值为5,000） |
-| ignoreNullValues | 指示是否忽略 NULL 值从输入数据期间写入操作。<br/>允许的值为 **true** 和 **false**。<br>- **True**：保留目标中的数据对象时进行更新插入或更新操作保持不变。 插入在执行插入操作时定义的默认值。<br/>- **False**：执行更新插入或更新操作时为 NULL 更新目标对象中的数据。 执行插入操作时插入 NULL 值。 | 否（默认值为 false） |
+| ignoreNullValues | 指示是否忽略 NULL 值从输入数据期间写入操作。<br/>允许的值为 **true** 和 **false**。<br>- **True**：执行更新插入或更新操作时，保持目标对象中的数据不变。 插入在执行插入操作时定义的默认值。<br/>- **False**：执行更新插入或更新操作时，将目标对象中的数据更新为 NULL。 执行插入操作时插入 NULL 值。 | 否（默认值为 false） |
 
-**示例：复制活动中的 Salesforce 接收器**
+示例：**复制活动中的 Salesforce 接收器**
 
 ```json
 "activities":[
@@ -313,7 +312,7 @@ Salesforce 链接服务支持以下属性。
 | Salesforce 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
 | 自动编号 |String |
-| 复选框 |布尔 |
+| 复选框 |Boolean |
 | 货币 |小数 |
 | 日期 |DateTime |
 | 日期/时间 |DateTime |

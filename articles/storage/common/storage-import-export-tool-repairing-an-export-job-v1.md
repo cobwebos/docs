@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: ef5a5f81c5eb3994f62469139c6e835bd802eaa9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 915cf1e66ec400e0d2461873d9fb3d66be9883fb
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522717"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756744"
 ---
 # <a name="repairing-an-export-job"></a>修复导出作业
 在完成导出作业后，可以在本地运行 Microsoft Azure 导入/导出工具来执行以下操作：  
@@ -30,7 +30,7 @@ ms.locfileid: "39522717"
 
 可以使用 **RepairExport** 指定以下参数：  
   
-|参数|Description|  
+|参数|说明|  
 |---------------|-----------------|  
 |**/r:<RepairFile\>**|必需。 修复文件的路径。该文件用于跟踪修复进度，以及恢复已中断的修复。 每个驱动器都必须有且仅有一个修复文件。 在开始对某个给定驱动器进行修复时，会传入尚不存在的某个修复文件的路径。 若要恢复已中断的修复，应该传入现有修复文件的名称。 始终必须指定与目标驱动器对应的修复文件。|  
 |**/logdir:<LogDirectory\>**|可选。 日志目录。 详细日志文件将写入此目录。 如果未指定任何日志目录，将使用当前目录作为日志目录。|  
@@ -81,7 +81,7 @@ WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bob
 ## <a name="using-repairexport-to-validate-drive-contents"></a>使用 RepairExport 验证驱动器内容  
 还可以使用提供 **RepairExport** 选项的 Azure 导入/导出服务来验证驱动器上的内容是否正确。 每个导出驱动器上的清单文件包含驱动器内容的 MD5 哈希。  
   
-Azure 导入/导出服务还可以在导出过程中将清单文件保存到某个存储帐户。 完成作业后，可通过[获取作业](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)操作获得清单文件的位置。 有关驱动器清单文件格式的详细信息，请参阅[导入/导出服务清单文件格式](storage-import-export-file-format-metadata-and-properties.md)。  
+Azure 导入/导出服务还可以在导出过程中将清单文件保存到某个存储帐户。 完成作业后，可通过[获取作业](/rest/api/storageimportexport/jobs)操作获得清单文件的位置。 有关驱动器清单文件格式的详细信息，请参阅[导入/导出服务清单文件格式](storage-import-export-file-format-metadata-and-properties.md)。  
   
 以下示例演示如何结合 **/ManifestFile** 和 **/CopyLogFile** 参数运行 Azure 导入/导出工具：  
   

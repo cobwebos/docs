@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.component: bing-local-business
+ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh; v-gedod
-ms.openlocfilehash: a86db516e76a91d6e4bec378c47baf6eec13d032
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 3e5fcf45ac1d8649203bdbb5b4aa3899332b3a1c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959046"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153328"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>发送和使用必应当地企业搜索 API 查询和响应
 

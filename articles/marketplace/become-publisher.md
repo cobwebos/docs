@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 35feb1b2aa593d403b3b54781ddbba41964d15e5
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 33edfdc58d82530bc1a5d0245b5e18e94b0a6dc1
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394827"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077549"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>成为云市场发布者
 
@@ -78,9 +78,9 @@ Microsoft 帐户（例如 *@outlook.com 或 @live.com*）用于访问多个 Micr
 我们的市场上架团队会验证你在步骤 3 提供的市场注册详细信息。 获得批准后，你会收到一封欢迎电子邮件，其中包含帐户凭据以及登录[云合作伙伴门户](https://cloudpartner.azure.com)的指南。
 
 请使用[云合作伙伴门户](https://cloudpartner.azure.com)来创建、发布和管理市场套餐。 收到表示批准的欢迎电子邮件以后，即可立即使用 Microsoft 帐户登录[云合作伙伴门户](https://cloudpartner.azure.com)，以便访问其他技术信息，了解如何将内容发布到市场以及如何创建套餐。 
-*   有关如何使用云合作伙伴门户的详细信息，请[访问“学习”部分的“入门”文章](https://cloudpartner.azure.com/#documentation/getting-started-with-the-cloud-partner-portal)。 必须登录云合作伙伴门户才能访问这些详细信息。
+*   有关如何使用云合作伙伴门户的详细信息，请[访问“学习”部分的“入门”文章](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal)。 必须登录云合作伙伴门户才能访问这些详细信息。
 *   如果有疑问，或者希望安排一次介绍如何上架的通话，请参阅此发布者指南中的其他文章，或者在云合作伙伴门户的“问题类型”>“市场上架”下提交支持请求。
-*   如果没有收到欢迎电子邮件，请检查垃圾邮件文件夹中是否有主题行为“欢迎使用 Microsoft 市场！”的电子邮件。 如果垃圾邮件文件夹中没有该电子邮件，请[联系 Microsoft 支持部门](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=&supportregion=&pesid=16230&forceorigin=esmc&ccsid=636595105151894820)。 在支持页上，请选择“问题类型”>“市场上架”。  我们的市场发布者上架团队将乐于为你提供咨询帮助。 
+*   如果没有收到欢迎电子邮件，请检查垃圾邮件文件夹中是否有主题行为“欢迎使用 Microsoft 市场！”的电子邮件。 如果垃圾邮件文件夹中没有该电子邮件，请[联系 Microsoft 支持部门](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=&supportregion=&pesid=16230&forceorigin=esmc&ccsid=636595105151894820)。 在支持页上，请选择：“问题类型”>“市场加入”。  我们的市场发布者上架团队将乐于为你提供咨询帮助。 
 
 
 ## <a name="5-register-in-dev-center-for-transact-publishing-option-only"></a>5.在开发人员中心注册（仅适用于“交易”发布选项） 
@@ -97,15 +97,15 @@ Microsoft 帐户（例如 *@outlook.com 或 @live.com*）用于访问多个 Micr
 完成[开发人员中心](https://developer.microsoft.com/store/register)注册以后，请将云合作伙伴配置文件与[开发人员中心](https://developer.microsoft.com/store/register)帐户关联在一起（在此处查看详细步骤）。 此步骤必须在发布交易套餐之前完成。 
 
 >[!Note]
->若要免除 99 美元的开发人员中心注册费，请完成[市场注册表](https://azuremarketplace.microsoft.com/en-us/sell/signup)，然后就会收到包含促销代码的电子邮件。 
+>若要免除 99 美元的开发人员中心注册费，请完成[市场注册表](https://azuremarketplace.microsoft.com/sell/signup)，然后就会收到包含促销代码的电子邮件。 
 
 >[!Important]
 >在创建 Microsoft 开发人员中心帐户之前，请确认组织尚未创建开发人员中心帐户，以免出现重复帐户。 有关详细信息，请访问[在开发人员中心注册](https://docs.microsoft.com/azure/marketplace/register-dev-center)部分。
 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解市场店面：[比较 AppSource 和 Azure 市场](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)
-*   [确定解决方案的列表类型](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
+* 了解市场店面：[比较 AppSource 和 Azure 市场](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)。
+*   [确定解决方案的列表类型](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。
 
  
 ---  

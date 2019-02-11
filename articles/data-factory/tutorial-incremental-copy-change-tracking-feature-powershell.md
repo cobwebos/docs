@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 246b423e69fa8fb73db45f44fa17c1bc65407681
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 3b09af19bd25ea3c64375869cd7db7f2b65923f6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090719"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423761"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储 
 在本教程中，请创建一个带管道的 Azure 数据工厂，以便根据源 Azure SQL 数据库中的**更改跟踪**信息将增量数据加载到 Azure Blob 存储。  
@@ -69,7 +68,7 @@ ms.locfileid: "43090719"
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="prerequisites"></a>先决条件
-* Azure PowerShell。 按[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明安装最新的 Azure PowerShell 模块。
+* Azure PowerShell。 按[如何安装和配置 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) 中的说明安装最新的 Azure PowerShell 模块。
 * **Azure SQL 数据库**。 将数据库用作**源**数据存储。 如果没有 Azure SQL 数据库，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)一文获取创建步骤。
 * **Azure 存储帐户**。 将 Blob 存储用作**接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)一文获取创建步骤。 创建名为 **adftutorial** 的容器。 
 
@@ -146,7 +145,7 @@ ms.locfileid: "43090719"
     ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-按[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明安装最新的 Azure PowerShell 模块。
+按[如何安装和配置 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) 中的说明安装最新的 Azure PowerShell 模块。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 1. 为资源组名称定义一个变量，稍后会在 PowerShell 命令中使用该变量。 将以下命令文本复制到 PowerShell，在双引号中指定 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称，然后运行命令。 例如：`"adfrg"`。 
@@ -189,7 +188,7 @@ ms.locfileid: "43090719"
     The specified Data Factory name 'ADFIncCopyChangeTrackingTestFactory' is already in use. Data Factory names must be globally unique.
     ```
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于**参与者**或**所有者**角色，或者是 Azure 订阅的**管理员**。
-* 要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
 
 ## <a name="create-linked-services"></a>创建链接服务
@@ -198,7 +197,7 @@ ms.locfileid: "43090719"
 ### <a name="create-azure-storage-linked-service"></a>创建 Azure 存储链接服务。
 在此步骤中，请将 Azure 存储帐户链接到数据工厂。
 
-1. 在 **C:\ADFTutorials\IncCopyChangeTrackingTutorial** 文件夹（如果此文件夹不存在，请创建）中，创建包含以下内容的名为 **AzureStorageLinkedService.json** 的 JSON 文件。 将 `<accountName>` 和 `<accountKey>` 分别替换为 Azure 存储帐户的名称和密钥，然后保存文件。
+1. 在 **C:\ADFTutorials\IncCopyChangeTrackingTutorial** 文件夹中，创建包含以下内容的名为 **AzureStorageLinkedService.json** 的 JSON 文件：（如果此文件夹尚未存在，请创建。） 将 `<accountName>` 和 `<accountKey>` 分别替换为 Azure 存储帐户的名称和密钥，然后保存文件。
 
     ```json
     {
@@ -215,7 +214,7 @@ ms.locfileid: "43090719"
     }
     ```
 2. 在 **Azure PowerShell** 中切换到 **C:\ADFTutorials\IncCopyChgTrackingTutorial** 文件夹。
-3. 运行 **Set-AzureRmDataFactoryV2LinkedService** cmdlet 创建链接服务：**AzureStorageLinkedService**。 在以下示例中，传递 **ResourceGroupName** 和 **DataFactoryName** 参数的值。 
+3. 运行 **Set-AzureRmDataFactoryV2LinkedService** cmdlet 来创建链接服务：**AzureStorageLinkedService**。 在以下示例中，传递 **ResourceGroupName** 和 **DataFactoryName** 参数的值。 
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -233,7 +232,7 @@ ms.locfileid: "43090719"
 ### <a name="create-azure-sql-database-linked-service"></a>创建 Azure SQL 数据库链接服务
 在此步骤中，将 Azure SQL 数据库链接到数据工厂。
 
-1. 在 **C:\ADFTutorials\IncCopyChangeTrackingTutorial** 文件夹中创建包含以下内容的名为 **AzureSQLDatabaseLinkedService.json** 的 JSON 文件：将 **&lt;server&gt;、&lt;database name&gt;、&lt;user id&gt; 和 &lt;password&gt;** 替换为你的 Azure SQL Server 名称、数据库名称、用户 ID 和密码，然后保存文件。 
+1. 在 **C:\ADFTutorials\IncCopyChangeTrackingTutorial** 文件夹中，创建包含以下内容的名为 **AzureSQLDatabaseLinkedService.json** 的 JSON 文件：将 server、database name **、&lt;user id&gt; 和 &lt;password&gt;** 分别替换为自己的 Azure SQL Server 名称、数据库名称、用户 ID 和密码，然后保存文件。 
 
     ```json
     {
@@ -249,7 +248,7 @@ ms.locfileid: "43090719"
         }
     }
     ```
-2. 在 **Azure PowerShell** 中运行 **Set-AzureRmDataFactoryV2LinkedService** cmdlet，以便创建链接服务 **AzureSQLDatabaseLinkedService**。 
+2. 在 **Azure PowerShell** 中，运行 **Set-AzureRmDataFactoryV2LinkedService** cmdlet 来创建链接服务：**AzureSQLDatabaseLinkedService**。 
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -288,7 +287,7 @@ ms.locfileid: "43090719"
     }   
     ```
 
-2.  运行 Set-AzureRmDataFactoryV2Dataset cmdlet 创建数据集：SourceDataset
+2.  运行 Set-AzureRmDataFactoryV2Dataset cmdlet 来创建数据集：SourceDataset
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
@@ -330,7 +329,7 @@ ms.locfileid: "43090719"
     ```
 
     在 Azure Blob 存储中创建 adftutorial 容器，这是先决条件的部分要求。 创建容器（如果不存在），或者将容器设置为现有容器的名称。 在本教程中，输出文件名是使用以下表达式动态生成的：@CONCAT('Incremental-', pipeline().RunId, '.txt')。
-2.  运行 Set-AzureRmDataFactoryV2Dataset cmdlet 创建数据集：SinkDataset
+2.  运行 Set-AzureRmDataFactoryV2Dataset cmdlet 来创建数据集：SinkDataset
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
@@ -368,7 +367,7 @@ ms.locfileid: "43090719"
     ```
 
     创建 table_store_ChangeTracking_version 表，这是先决条件的部分要求。
-2.  运行 Set-AzureRmDataFactoryV2Dataset cmdlet 创建数据集：WatermarkDataset
+2.  运行 Set-AzureRmDataFactoryV2Dataset cmdlet 来创建数据集：WatermarkDataset
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "ChangeTrackingDataset" -File ".\ChangeTrackingDataset.json"
@@ -387,7 +386,7 @@ ms.locfileid: "43090719"
 ## <a name="create-a-pipeline-for-the-full-copy"></a>创建用于完整复制的管道
 在这一步，请创建一个包含复制活动的管道，将完整数据从源数据存储（Azure SQL 数据库）复制到目标数据存储（Azure Blob 存储）。
 
-1. 在同一文件夹中，创建包含以下内容的 JSON 文件 FullCopyPipeline.json： 
+1. 创建一个 JSON 文件：在同一文件夹中，创建包含以下内容的 FullCopyPipeline.json： 
 
     ```json
     {
@@ -417,7 +416,7 @@ ms.locfileid: "43090719"
         }
     }
     ```
-2. 运行 Set-AzureRmDataFactoryV2Pipeline cmdlet，以便创建管道 FullCopyPipeline。
+2. 运行 Set-AzureRmDataFactoryV2Pipeline cmdlet 来创建管道：FullCopyPipeline。
     
    ```powershell
     Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "FullCopyPipeline" -File ".\FullCopyPipeline.json"
@@ -434,7 +433,7 @@ ms.locfileid: "43090719"
    ```
  
 ### <a name="run-the-full-copy-pipeline"></a>运行完整的复制管道
-使用 **Invoke-AzureRmDataFactoryV2Pipeline** cmdlet 运行管道 **FullCopyPipeline**。 
+运行管道：使用 **Invoke-AzureRmDataFactoryV2Pipeline** cmdlet 运行管道 **FullCopyPipeline**。 
 
 ```powershell
 Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName        
@@ -445,26 +444,26 @@ Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGr
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 单击“所有服务”，使用关键字 `data factories` 进行搜索，然后选择“数据工厂”。 
 
-    ![数据工厂菜单](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-data-factories-menu-1.png)
+    ![数据工厂菜单](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-data-factories-menu-1.png)
 3. 在数据工厂列表中搜索**你的数据工厂**，然后选择它来启动“数据工厂”页。 
 
-    ![搜索你的数据工厂](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-search-data-factory-2.png)
+    ![搜索你的数据工厂](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-search-data-factory-2.png)
 4. 在“数据工厂”页中，单击“监视和管理”磁贴。 
 
-    ![“监视和管理”磁贴](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-monitor-manage-tile-3.png)    
+    ![“监视和管理”磁贴](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png)    
 5. **数据集成应用程序**在单独的选项卡中启动。可以看到所有**管道运行**及其状态。 请注意，在以下示例中，管道运行的状态为“成功”。 单击“参数”列中的链接即可查看传递至管道的参数。 如果有错误，在“错误”列可以看到链接。 单击“操作”列中的链接。 
 
-    ![管道运行](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-pipeline-runs-4.png)    
+    ![管道运行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
 6. 单击“操作”列中的链接时，可以看到以下页面，其中显示管道的所有**活动运行**。 
 
-    ![活动运行](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-activity-runs-5.png)
+    ![活动运行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png)
 7. 若要切换回“管道运行”视图，请单击“管道”，如图所示。 
 
 
 ### <a name="review-the-results"></a>查看结果
 可以在 `adftutorial` 容器的 `incchgtracking` 文件夹中看到名为 `incremental-<GUID>.txt` 的文件。 
 
-![来自完整复制的输出文件](media\tutorial-incremental-copy-change-tracking-feature-powershell\full-copy-output-file.png)
+![来自完整复制的输出文件](media/tutorial-incremental-copy-change-tracking-feature-powershell/full-copy-output-file.png)
 
 该文件应该包含 Azure SQL 数据库中的数据：
 
@@ -495,7 +494,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 ## <a name="create-a-pipeline-for-the-delta-copy"></a>创建用于增量复制的管道
 在此步骤中，请创建一个包含以下活动的管道并定期运行。 **查找活动**从 Azure SQL 数据库获取旧的和新的 SYS_CHANGE_VERSION，然后将其传递至复制活动。 **复制活动**将两个 SYS_CHANGE_VERSION 值之间的插入/更新/删除数据从 Azure SQL 数据库复制到 Azure Blob 存储。 **存储过程活动**更新 SYS_CHANGE_VERSION 的值，以便进行下一次的管道运行。
 
-1. 在同一文件夹中，创建包含以下内容的 JSON 文件 IncrementalCopyPipeline.json： 
+1. 创建一个 JSON 文件：在同一文件夹中，创建包含以下内容的 IncrementalCopyPipeline.json： 
 
     ```json
     {
@@ -606,7 +605,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
     }
     
     ```
-2. 运行 Set-AzureRmDataFactoryV2Pipeline cmdlet，以便创建管道 FullCopyPipeline。
+2. 运行 Set-AzureRmDataFactoryV2Pipeline cmdlet 来创建管道：FullCopyPipeline。
     
    ```powershell
     Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
@@ -623,7 +622,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
    ```
 
 ### <a name="run-the-incremental-copy-pipeline"></a>运行增量复制管道
-使用 **Invoke-AzureRmDataFactoryV2Pipeline** cmdlet 运行管道：**IncrementalCopyPipeline**。 
+运行管道：使用 **Invoke-AzureRmDataFactoryV2Pipeline** cmdlet 运行管道 **IncrementalCopyPipeline**。 
 
 ```powershell
 Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName     
@@ -633,16 +632,16 @@ Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -Res
 ### <a name="monitor-the-incremental-copy-pipeline"></a>监视增量复制管道
 1. 在**数据集成应用程序**中，刷新“管道运行”视图。 确认在列表中看到 IncrementalCopyPipeline。 单击“操作”列中的链接。  
 
-    ![管道运行](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-pipeline-runs-6.png)    
+    ![管道运行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
 2. 单击“操作”列中的链接时，可以看到以下页面，其中显示管道的所有**活动运行**。 
 
-    ![活动运行](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-activity-runs-7.png)
+    ![活动运行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png)
 3. 若要切换回“管道运行”视图，请单击“管道”，如图所示。 
 
 ### <a name="review-the-results"></a>查看结果
 可以在 `adftutorial` 容器的 `incchgtracking` 文件夹中看到第二个文件。 
 
-![来自增量复制的输出文件](media\tutorial-incremental-copy-change-tracking-feature-powershell\incremental-copy-output-file.png)
+![来自增量复制的输出文件](media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-copy-output-file.png)
 
 该文件应该只包含 Azure SQL 数据库中的增量数据。 带 `U` 的记录是数据库中的更新行，带 `I` 的记录是添加的行。 
 

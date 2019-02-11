@@ -3,15 +3,16 @@ title: 可以通过 Azure Site Recovery 保护哪些工作负荷？ | Microsoft 
 description: 介绍可以通过将灾难恢复与 Azure Site Recovery 服务配合使用来保护的工作负荷。
 author: rayne-wiselman
 ms.service: site-recovery
+services: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 70f19213da9c311e306e09890f54185f6d2834dc
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 3ad3438f02ead9063a683a39d4ac5823274d55f7
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213231"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54155161"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>可以通过 Azure Site Recovery 保护哪些工作负荷？
 
@@ -47,7 +48,7 @@ Site Recovery 集成 Microsoft 应用程序，其中包括 SharePoint、Exchange
 | Active Directory、DNS |Y |Y |Y |Y |Y|
 | Web 应用（IIS、SQL） |Y |Y |Y |Y |Y|
 | System Center Operations Manager |Y |Y |Y |Y |Y|
-| Sharepoint |Y |Y |Y |Y |Y|
+| SharePoint |Y |Y |Y |Y |Y|
 | SAP<br/><br/>将非群集 SAP 站点复制到 Azure |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试）|
 | Exchange（非 DAG） |Y |Y |Y |Y |Y|
 | 远程桌面/VDI |Y |Y |Y |Y |Y|

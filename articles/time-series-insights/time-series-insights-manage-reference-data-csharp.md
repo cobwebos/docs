@@ -11,18 +11,19 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
-ms.openlocfilehash: 52456533d40c8efde6a196d4e480c06bce2f08ab
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: d15e229595ded0f814ebc4048d428f044b59e16d
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629179"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295723"
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>使用 C# 管理 Azure 时序见解环境的引用数据
 
 本文介绍可以进行编译以管理 Azure 时序见解环境参考数据的 C# 示例项目。
 
-## <a name="prerequistes"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 在编译和运行示例代码之前，请完成以下步骤：
 1. [创建参考数据集](time-series-insights-add-reference-data-set.md)。
 
@@ -240,4 +241,4 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 ```
 
 ## <a name="next-steps"></a>后续步骤
-[参考数据 API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api)
+[参考数据 API](/rest/api/time-series-insights/ga-reference-data-api)

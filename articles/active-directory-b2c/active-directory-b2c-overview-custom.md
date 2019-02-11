@@ -3,29 +3,29 @@ title: Azure Active Directory B2C 自定义策略 | Microsoft Docs
 description: 了解 Azure Active Directory B2C 自定义策略。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/04/2018
+ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 5634c14ee2b25600d66ff0f2c7385b2aaa9f1810
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.subservice: B2C
+ms.openlocfilehash: 92bd57822226e683f17582bb1534b84961f61032
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699492"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187158"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-自定义策略是定义 Azure Active Directory (Azure AD) B2C 租户行为的配置文件。 内置策略在 Azure AD B2C 门户中预定义，用于最常见的标识任务。 标识开发人员可以完全编辑自定义策略来完成许多不同的任务。
+自定义策略是定义 Azure Active Directory (Azure AD) B2C 租户行为的配置文件。 用户流在 Azure AD B2C 门户中预定义，用于最常见的标识任务。 标识开发人员可以完全编辑自定义策略来完成许多不同的任务。
 
-## <a name="comparing-built-in-policies-and-custom-policies"></a>内置策略和自定义策略的比较
+## <a name="comparing-user-flows-and-custom-policies"></a>比较用户流和自定义策略
 
-| | 内置策略 | 自定义策略 |
+| | 用户流 | 自定义策略 |
 |-|-------------------|-----------------|
 | 目标用户 | 具有或不具有标识专业知识的所有应用程序开发人员。 | 标识专业人员、系统集成人员、顾问和内部标识团队。 他们能够熟悉运作 OpenIDConnect 流，并了解标识提供者和基于声明的身份验证。 |
 | 配置方法 | 具有用户友好用户界面 (UI) 的 Azure 门户。 | 直接编辑 XML 文件，并上传到 Azure 门户。 |
@@ -33,7 +33,7 @@ ms.locfileid: "43699492"
 | 属性自定义 | 标准和自定义属性。 | 相同 |
 | 令牌和会话管理 | 自定义令牌和多个会话选项。 | 相同 |
 | 标识提供者 | 预定义的本地或社交提供程序。 | 基于标准的 OIDC、OAUTH 和 SAML。 |
-| 标识任务 | 使用本地帐户或许多社交帐户注册或登录。<br><br>自助密码重置。<br><br>配置文件编辑。<br><br>多重身份验证。<br><br>自定义令牌和会话。<br><br>访问令牌流。 | 使用自定义标识提供者或自定义范围完成与内置策略相同的任务。<br><br>注册时在另一系统中预配用户帐户。<br><br>使用自己的电子邮件服务提供程序发送欢迎电子邮件。<br><br>使用 Azure AD B2C 外部的用户存储。<br><br>使用 API 通过受信任的系统验证用户提供的信息。 |
+| 标识任务 | 使用本地帐户或许多社交帐户注册或登录。<br><br>自助密码重置。<br><br>配置文件编辑。<br><br>多重身份验证。<br><br>自定义令牌和会话。<br><br>访问令牌流。 | 使用自定义标识提供者或自定义范围完成与用户流相同的任务。<br><br>注册时在另一系统中预配用户帐户。<br><br>使用自己的电子邮件服务提供程序发送欢迎电子邮件。<br><br>使用 Azure AD B2C 外部的用户存储。<br><br>使用 API 通过受信任的系统验证用户提供的信息。 |
 
 ## <a name="policy-files"></a>策略文件
 
@@ -43,7 +43,7 @@ ms.locfileid: "43699492"
 - 扩展文件保存租户的唯一配置更改。
 - 信赖方 (RP) 文件注重单个任务的文件，由应用程序或服务（又称信赖方）直接调用。 每个唯一任务需要自身的 RP，根据品牌要求，该数字可能是“应用程序总数 x 用例总数”。
 
-Azure AD B2C 中的内置策略遵循上面描述的三文件模式，但开发人员只能看到 RP 文件，同时，Azure 门户会在后台对扩展文件进行更改。
+Azure AD B2C 中的用户流遵循上面描述的三文件模式，但开发人员只能看到 RP 文件，同时，Azure 门户会在后台对扩展文件进行更改。
 
 ## <a name="custom-policy-core-concepts"></a>自定义策略核心概念
 

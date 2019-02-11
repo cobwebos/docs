@@ -1,28 +1,10 @@
 ---
-title: 机器学习批处理执行服务作业的专用容量 - Azure 机器学习工作室 | Microsoft Docs
-description: 适用于机器学习作业的 Azure Batch 服务概述。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
-ms.author: amlstudiodocs
-manager: hjerez
-editor: cgronlun
-ms.service: machine-learning
-ms.component: studio
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/19/2017
-ms.openlocfilehash: 13e9921b15faff10ac250aa7c19d655ada782ce2
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308118"
+title:适用于机器学习工作室作业的 Azure Batch 服务 titleSuffix:Azure 机器学习工作室 description:适用于机器学习作业的 Azure Batch 服务概述。 可以通过批处理池处理创建池，在其中提交批处理作业。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio | Microsoft Docs' ms.date:2017/04/19
 ---
-# <a name="azure-batch-service-for-machine-learning-jobs"></a>适用于机器学习作业的 Azure Batch 服务
+# <a name="azure-batch-service-for-azure-machine-learning-studio-jobs"></a>适用于 Azure 机器学习工作室作业的 Azure Batch 服务
 
 机器学习批处理池处理为 Azure 机器学习批处理执行服务提供客户管理的缩放。 适用于机器学习的经典批处理发生在多租户环境中，限制了可以提交的并发作业的数目，作业按先进先出的原则排队处理。 这种不确定性意味着无法准确地预测作业何时会运行。
 

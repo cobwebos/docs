@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: juliako
-ms.openlocfilehash: 311bc6a67e2b63f6f514da5abacb00e5c3cb434f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 34eb7c48c8ebc36f9172f97dda845542b3840a19
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786316"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747673"
 ---
 # <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>使用按需流式处理操作导入一个 Postman 集合
 
 本文包含 Postman 集合的定义，该集合包含调用 Azure 媒体服务 REST API 的分组 HTTP 请求。 有关如何配置 Postman 以用于调用媒体服务 REST API 的信息，请参阅[配置 Postman 以便进行媒体服务 REST API 调用](media-rest-apis-with-postman.md)教程。
 
-```
+```json
 {
     "info": {
         "name": "Azure Media Services Operations",
@@ -4264,7 +4264,7 @@ ms.locfileid: "33786316"
                                 "MediaProcessors"
                             ]
                         },
-                        "description": "List MediaProcesors\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "List MediaProcessors\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 }

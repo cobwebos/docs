@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: aljo
-ms.openlocfilehash: 0d809f9a1b3abbb284c3f7e0c27eb9c236692a3f
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 91516e3284ebf3588c2dba31b67cc583e4d395db
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386459"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309410"
 ---
 # <a name="read-before-you-scale"></a>缩放前须知
 要缩放计算资源来满足你的应用程序工作负载，需要实施有目的性的计划，此操作在生产环境中总是需要几乎一个多小时才能完成，而且你还要对你的工作负载和业务环境了如指掌。事实上，如果从未执行过此操作，建议在继续本文档其余部分之前，首先阅读并理解 [Service Fabric 群集容量规划注意事项](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)。 该项建议的目的是避免出现意外的实时站点问题；此外，建议成功测试你决定针对非生产环境执行的操作。 可随时[报告生产问题或请求 Azure 付费支持](https://docs.microsoft.com/azure/service-fabric/service-fabric-support#report-production-issues-or-request-paid-support-for-azure)。 对于被分配根据适当情况执行这些操作的工程师，请参考本文了解缩放操作。但是，你必须决定并了解哪些操作适合你的情况，例如要缩放哪些资源（CPU、存储、内存）、按哪个方向进行缩放方向（垂直或水平），以及要执行哪些操作（资源模板部署、门户、PowerShell/CLI）。
 
-# <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>使用自动缩放规则或者手动来扩展和缩减 Service Fabric 群集
+## <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>使用自动缩放规则或者手动来扩展和缩减 Service Fabric 群集
 虚拟机规模集是一种 Azure 计算资源，可用于将一组 VM 作为一个集进行部署和管理。 在 Service Fabric 群集中定义的每个节点类型将设置为不同的虚拟机规模集。 然后，每个节点类型可以独立扩展或缩减、打开不同的端口集，并可以有不同的容量指标。 可在 [Service Fabric nodetypes](service-fabric-cluster-nodetypes.md) 文档中了解有关详细信息。 由于群集中的 Service Fabric 节点类型由后端的虚拟机规模集构成，因此需要为每个节点类型/虚拟机规模集设置自动缩放规则。
 
 > [!NOTE]
@@ -103,10 +103,10 @@ Service Fabric Explorer 中列出的节点是 Service Fabric 系统服务（特�
 
 若要确保在删除 VM 时删除节点，有两个选项：
 
-1) 为群集中的节点类型选择金级或银级持续性级别，这会提供基础结构集成。 这随后会在进行减少时自动从我们的系统服务 (FM) 状态中删除节点。
+1. 为群集中的节点类型选择金级或银级持续性级别，这会提供基础结构集成。 这随后会在进行减少时自动从我们的系统服务 (FM) 状态中删除节点。
 在[此处](service-fabric-cluster-capacity.md)了解有关持续性级别的详细信息
 
-2) 减少 VM 实例之后，需要调用 [Remove-ServiceFabricNodeState cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate)。
+2. 减少 VM 实例之后，需要调用 [Remove-ServiceFabricNodeState cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate)。
 
 > [!NOTE]
 > Service Fabric 群集需要有一定数量的节点可随时启动，以保持可用性和状态 - 称为“维持仲裁”。 因此，除非已事先执行[状态的完整备份](service-fabric-reliable-services-backup-restore.md)，否则关闭群集中的所有计算机通常是不安全的做法。

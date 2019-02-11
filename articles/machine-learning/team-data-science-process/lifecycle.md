@@ -1,28 +1,30 @@
 ---
-title: Team Data Science Process 生命周期 — Azure | Microsoft Docs
+title: Team Data Science Process 生命周期
 description: 执行数据科学项目所需的步骤
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 24807d00170ed46a95d2726e1172b15775e0376d
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 40d1af6e6258b5026853532f7963a76d4fc389db
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443383"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469220"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期
 
 Team Data Science Process (TDSP) 提供可用于构建数据科学项目的建议生命周期。 生命周期概述了执行项目时，其从开始到结束所遵循的步骤。 如果使用另一数据科学生命周期，例如数据挖掘的跨行业标准过程 [(CRISP-DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining)、数据库中的知识发现 [(KDD)](https://wikipedia.org/wiki/Data_mining#Process) 或组织自己的定制过程，仍可使用基于任务的 TDSP。 
 
 此生命周期为数据科学项目而设计，这些项目旨在作为智能应用程序的一部分提供。 这些应用程序部署机器学习或人工智能模型以进行预测分析。 探索数据科学项目和即席分析项目也可从使用此过程获益。 但对于这些项目，可能并不需要这里描述的一些步骤。 
+
+## <a name="five-lifecycle-stages"></a>五个生命周期阶段
 
 TDSP 生命周期由 5 个以迭代方式执行的主要阶段组成。 这些阶段包括：
 

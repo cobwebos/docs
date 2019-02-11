@@ -4,12 +4,12 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 1807dc67d09b521e66314fb98535fb2c1225d34f
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: e6dbfe225b6957406b7143d5db4a28cb50f13e7b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50964534"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55480602"
 ---
 下表列出了与不同服务层（S1、S2、S3、F1）关联的限制。 有关每个层中每个*单位*的成本信息，请参阅 [IoT 中心定价](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
@@ -48,6 +48,8 @@ ms.locfileid: "50964534"
 | 最大并发作业数 | 10（适用于 S3）、5（适用于 S2）、1（适用于 S1） |
 | 额外终结点最大数目 | 10（适用于 S1、S2、S3） |
 | 最大消息路由规则数 | 100（适用于 S1、S2、S3） |
+| 最大并发连接设备流数 | 50（仅适用于 S1、S2、S3 和 F1） |
+| 最大设备流数据传输 | 300 MB/天（仅适用于 S1、S2、S3 和 F1） |
 
 
 > [!NOTE]
@@ -55,7 +57,7 @@ ms.locfileid: "50964534"
 
 
 > [!NOTE]
-> 目前，可以连接到单个 IoT 中心的设备的最大数目是 500,000。 如果想要增加此限制，请联系 [Microsoft 支持](https://azure.microsoft.com/support/options/)。
+> 目前，可以连接到单个 IoT 中心的设备的最大数目是 1,000,000。 如果想要增加此限制，请联系 [Microsoft 支持](https://azure.microsoft.com/support/options/)。
 
 超过以下配额时，IoT 中心服务将限制请求：
 
@@ -72,3 +74,4 @@ ms.locfileid: "50964534"
 | 设备孪生更新 | 50/秒/单位（适用于 S3），最大为 10/秒或 1/秒/单位（适用于 S2），10/秒（适用于 S1） |
 | 作业操作 <br/> （创建、更新、列表、删除） | 83.33/秒/单位（5000/分钟/单位）（适用于 S3），1.67/秒/单位（100/分钟/单位）（适用于 S2），1.67/秒/单位（100/分钟/单位）（适用于 S1） |
 | 作业每设备操作吞吐量 | 50/秒/单位（适用于 S3），最大为 10/秒或 1/秒/单位（适用于 S2），10/秒（适用于 S1） |
+| 设备流启动率 | 5 个新流/秒（仅适用于 S1、S2、S3 和 F1） |

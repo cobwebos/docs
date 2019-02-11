@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: 3c875060a7abdf4431026e79ce966efdc89e4e77
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 93ed7620636535d45791a657d012a9c7056be09d
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236172"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303184"
 ---
 # <a name="introduction-to-azure-log-integration"></a>Azure 日志集成简介
 
 >[!IMPORTANT]
-> Azure 日志集成功能将于 2019/06/01 弃用。 AzLog 下载将于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Azure 日志集成功能将于 2019/06/01 弃用。 AzLog 下载已于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 Azure 日志集成可用于简化将 Azure 日志与本地安全信息和事件管理 (SIEM) 系统集成的任务。
 
- 建议的集成 Azure 日志的方法是使用 SIEM 供应商提供的连接器。 Azure Monitor 提供将日志流式传输到事件中心的功能，SIEM 供应商可以编写连接器以进一步将日志从事件中心集成到 SIEM 中。  有关此连接器工作原理的说明，请参阅[针对数据事件中心的监视器流监视](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)中的说明。 该文章还列出了直接 Azure 连接器已经可用的 SIEM。  
+ 建议的集成 Azure 日志的方法是使用 SIEM 供应商提供的连接器。 Azure Monitor 提供将日志流式传输到事件中心的功能，SIEM 供应商可以编写连接器以进一步将日志从事件中心集成到 SIEM 中。  有关此连接器工作原理的说明，请参阅[针对数据事件中心的监视器流监视](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)中的说明。 该文章还列出了直接 Azure 连接器已经可用的 SIEM。  
 
 > [!IMPORTANT]
 > 如果你的主要兴趣是收集虚拟机日志，则大多数 SIEM 供应商在其解决方案中都包括了此选项。 使用 SIEM 供应商的连接器始终是首选替代方法。
@@ -38,7 +38,7 @@ Azure 日志集成可用于简化将 Azure 日志与本地安全信息和事件�
 
 进一步阅读以了解有关 Azure 日志集成功能的更多信息：
 
-Azure 日志集成从 Windows 事件查看器日志收集 Windows 事件，从 Azure 资源收集 [Azure 活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)、[Azure 安全中心警报](../security-center/security-center-intro.md)和 [Azure 诊断日志](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)。 此集成可帮助你的 SIEM 解决方案为你的所有资产（无论是本地的还是云中的）提供统一的仪表板。 可以使用仪表板接收、聚合、关联和分析安全事件的警报。
+Azure 日志集成从 Windows 事件查看器日志收集 Windows 事件，从 Azure 资源收集 [Azure 活动日志](../azure-monitor/platform/activity-logs-overview.md)、[Azure 安全中心警报](../security-center/security-center-intro.md)和 [Azure 诊断日志](../azure-monitor/platform/diagnostic-logs-overview.md)。 此集成可帮助你的 SIEM 解决方案为你的所有资产（无论是本地的还是云中的）提供统一的仪表板。 可以使用仪表板接收、聚合、关联和分析安全事件的警报。
 
 > [!NOTE]
 > 当前，Azure 日志集成仅支持 Azure 商业版云和 Azure 政府版云。 不支持其他云。
@@ -60,7 +60,7 @@ Azure 日志集成支持 ArcSight、QRadar 和 Splunk。 与你的 SIEM 供应�
 |SIEM | 已在使用 Azure 日志集成器的客户 | 正在考察 SIEM 集成选项的客户|
 |---------|--------------------------|-------------------------------------------|
 |**Splunk** | 开始迁移到[适用于 Splunk 的 Azure Monitor 加载项](https://splunkbase.splunk.com/app/3534/)。 | 使用 [Splunk 连接器](https://splunkbase.splunk.com/app/3534/)。 |
-|**QRadar** | 迁移到或开始使用[将 Azure 监视数据流式传输到事件中心以便外部工具使用](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)的最后一部分中提到的 QRadar 连接器。 | 使用[将 Azure 监视数据流式传输到事件中心以便外部工具使用](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)的最后一部分中提到的 QRadar 连接器。 |
+|**QRadar** | 迁移到或开始使用[将 Azure 监视数据流式传输到事件中心以便外部工具使用](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)的最后一部分中提到的 QRadar 连接器。 | 使用[将 Azure 监视数据流式传输到事件中心以便外部工具使用](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)的最后一部分中提到的 QRadar 连接器。 |
 |**ArcSight** | 继续使用 Azure 日志集成器，直到有连接器可用，然后迁移到基于连接器的解决方案。  | 考虑使用 Azure Log Analytics 作为替代方法。 除非你愿意在有连接器变得可用时经历迁移过程，否则不要采用 Azure 日志集成。 |
 
 > [!NOTE]
@@ -74,7 +74,7 @@ Azure 日志集成支持 ArcSight、QRadar 和 Splunk。 与你的 SIEM 供应�
 
 * [Azure 日志集成入门](security-azure-log-integration-get-started.md)。 本教程将指导你完成 Azure 日志集成的安装。 它还介绍了如何集成来自 Windows Azure 诊断 (WAD) 存储的日志、Azure 活动日志、Azure 安全中心警报和 Azure Active Directory 审核日志。
 * [Azure 日志集成常见问题解答 (FAQ)](security-azure-log-integration-faq.md)。 此常见问题解答回答了关于 Azure 日志集成的常见问题。
-* 详细了解如何[将 Azure 监视数据流式传输到事件中心以便外部工具使用](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)。
+* 详细了解如何[将 Azure 监视数据流式传输到事件中心以便外部工具使用](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
 
 <!--Image references-->
 [1]: ./media/security-azure-log-integration-overview/azure-log-integration.png

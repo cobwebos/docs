@@ -1,21 +1,21 @@
 ---
 title: 使用 .NET 创建视频评审 - 内容审查器
 titlesuffix: Azure Cognitive Services
-description: 如何使用适用于 .NET 的内容审查器 SDK 创建视频评审
+description: 本文提供了信息和代码示例，可帮助你快速开始结合使用内容审查器 SDK 和 C# 来创建视频审查。
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/18/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 284ee24bbb0a15d107acf85e2d58072a0ecbbc6e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 86f629538db30719bc4793bfae16cf2fb8530097
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219034"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210175"
 ---
 # <a name="create-video-reviews-using-net"></a>使用 .NET 创建视频审查
 
@@ -35,12 +35,11 @@ ms.locfileid: "47219034"
 
 ## <a name="sign-up-for-content-moderator"></a>注册内容审查器
 
-必须有订阅密钥，才能通过 REST API 或 SDK 使用内容审查器服务。
-请参阅[快速入门](quick-start.md)，了解如何获取密钥。
+必须有订阅密钥，才能通过 REST API 或 SDK 使用内容审查器服务。 按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅内容审查器并获取密钥。
 
 ## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>注册评审工具帐户（如果未在上一步中完成）
 
-如果从 Azure 门户获得了内容审查器，还[注册评审工具帐户](https://contentmoderator.cognitive.microsoft.com/)并创建评审团队。 需要使用团队 ID 和评审工具来调用评审 API 以启动作业并在评审工具中查看评审。
+如果从 Azure 门户获得了内容审查器，还需要[注册评审工具帐户](https://contentmoderator.cognitive.microsoft.com/)并创建评审团队。 需要使用团队 ID 和评审工具来调用评审 API 以启动作业并在评审工具中查看评审。
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>确保 API 密钥可以调用评审 API 以创建评审
 

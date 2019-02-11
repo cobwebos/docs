@@ -1,24 +1,21 @@
 ---
 title: 通过 Python 连接到 Azure Database for MySQL
 description: 本快速入门提供了多个 Python 代码示例，你可以使用它来连接到 Azure Database for MySQL 并查询其中的数据。
-services: mysql
 author: jasonwhowell
 ms.author: jasonh
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 54b25aa141da15224d5d8034ba54783d3633f5be
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 3adfe85be46c338bcdb0eb429d7e81b8787cf12e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914730"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539630"
 ---
-# <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Azure Database for MySQL：使用 Python 进行连接并查询数据
+# <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Azure Database for MySQL：使用 Python 连接和查询数据
 本快速入门演示了如何使用 [Python](https://python.org) 连接到 Azure Database for MySQL。 该语言可以通过 Mac OS、Ubuntu Linux 和 Windows 平台，使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本主题假设你熟悉如何使用 Python 进行开发，但不太熟悉 Azure Database for MySQL 的用法。
 
 ## <a name="prerequisites"></a>先决条件

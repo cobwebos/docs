@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
 ms.author: trinadhk
-ms.openlocfilehash: 62b2744494fcd4d98bf75892dc95d86130dd04bb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fcb5941c56eda19f9c524a2c078a76483426b862
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261734"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266988"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>有助于保护使用 Azure 备份的混合备份的安全功能
 对安全问题（例如恶意软件、勒索软件、入侵）的关注在逐渐上升。 这些安全问题可能会代价高昂（就金钱和数据来说）。 为了防止此类攻击，Azure 备份现提供可保护混合备份的安全功能。 本文介绍如何通过 Azure 恢复服务代理和 Azure 备份服务器来启用和使用这些功能。 这些功能包括：
@@ -26,7 +26,7 @@ ms.locfileid: "51261734"
 > 如果使用基础结构即服务 (IaaS) VM 备份，则不应启用安全功能。 这些功能对于 IaaS VM 备份尚不可用，因此启用这些功能没有任何影响。 只有使用以下项才应启用安全功能： <br/>
 >  * **Azure 备份代理**。 最小代理版本 2.0.9052。 启用这些功能后，应升级到此代理版本，以执行关键操作。 <br/>
 >  * **Azure 备份服务器**。 Azure 备份服务器 Update 1 的最低 Azure 备份代理版本为 2.0.9052。 <br/>
->  * **System Center Data Protection Manager**。 Data Protection Manager 2012 R2 UR12 或 Data Protection Manager 2016 UR2 的最低 Azure 备份代理版本为 2.0.9052。 <br/> 
+>  * **System Center Data Protection Manager**。 Data Protection Manager 2012 R2 UR12 或 Data Protection Manager 2016 UR2 的最低 Azure 备份代理版本为 2.0.9052。 <br/>
 
 
 > [!NOTE]
@@ -62,7 +62,7 @@ ms.locfileid: "51261734"
 
 对于 **Azure 恢复服务代理**用户：
 
-1. 如果发生备份的计算机仍可用，请在 Azure 恢复服务中使用[将数据恢复到同一计算机](backup-azure-restore-windows-server.md#use-instant-restore-to-recover-data-to-the-same-machine)功能，从所有旧的恢复点恢复。
+1. 如果发生备份的计算机仍可用，则重新保护已删除的数据源，并在 Azure 恢复服务中使用[将数据恢复到同一计算机](backup-azure-restore-windows-server.md#use-instant-restore-to-recover-data-to-the-same-machine)功能，从所有旧的恢复点恢复。
 2. 如果该计算机不可用，则使用[恢复到备用计算机](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)功能，使用另一台 Azure 恢复服务计算机获取此数据。
 
 对于 **Azure 备份服务器**用户：
@@ -83,7 +83,7 @@ ms.locfileid: "51261734"
 
 > [!NOTE]
 
-> 目前，对于 DPM 和 MABS，**停止保护并删除数据**不支持安全 PIN。 
+> 目前，对于 DPM 和 MABS，**停止保护并删除数据**不支持安全 PIN。
 
 若要接收此 PIN，请执行以下操作：
 
@@ -109,8 +109,8 @@ ms.locfileid: "51261734"
 | Operation | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
 | 策略更改 |无法修改备份策略。 错误：由于内部服务错误 [0x29834]，当前操作失败。 请稍后重试操作。 如果该问题仍然存在，请联系 Microsoft 支持部门。 |原因：<br/>当启用安全设置、尝试缩短保留期范围至低于以上指定的最小值和使用不受支持的版本时，将出现此错误（本文第一条注释已指定所支持的版本）。 <br/>建议的操作<br/> 在这种情况下，应将保留期设置为高于指定保留期的最小值（以日计为七天、以周记为四周、以月计为三个月或以年计为一年），以进行策略相关的更新。 （可选）首选更新备份代理、Azure 备份服务器和/或 DPM UR 来利用所有的安全性更新。 |
-| 更改通行短语 |输入的安全 PIN 不正确。 (ID: 100130) 请提供正确的安全 PIN 来完成此操作。 |原因：<br/> 当执行关键操作（如更改通行短语）时输入无效或已过期的安全 PIN 将出现此错误。 <br/>建议的操作<br/> 若要完成该操作，必须输入有效的安全 PIN。 若要获取 PIN，登录到 Azure 门户并导航到“恢复服务保管库”>“设置”>“属性”>“生成安全 PIN”。 使用此 PIN 更改通行短语。 |
-| 更改通行短语 |操作失败。 ID：120002 |原因：<br/>当启用安全设置、尝试更改通行短语和使用不受支持的版本时，将出现此错误（本文第一条注释已指定有效版本）。<br/>建议的操作<br/> 若要更改通行短语，必须首先更新备份代理至最低版本 minimum 2.0.9052、更新Azure 备份服务器至最低更新 1 和/或更新 DPM 至最低 DPM 2012 R2 UR12 或 DPM 2016 UR2 （下载链接如下），然后输入有效的安全 PIN。 若要获取 PIN，登录到 Azure 门户并导航到“恢复服务保管库”>“设置”>“属性”>“生成安全 PIN”。 使用此 PIN 更改通行短语。 |
+| 更改通行短语 |输入的安全 PIN 不正确。 (ID:100130) 请提供正确的安全 PIN 来完成此操作。 |原因：<br/> 当执行关键操作（如更改通行短语）时输入无效或已过期的安全 PIN 将出现此错误。 <br/>建议的操作<br/> 若要完成该操作，必须输入有效的安全 PIN。 若要获取 PIN，登录到 Azure 门户并导航到“恢复服务保管库”>“设置”>“属性”>“生成安全 PIN”。 使用此 PIN 更改通行短语。 |
+| 更改通行短语 |操作失败。 ID:120002 |原因：<br/>当启用安全设置、尝试更改通行短语和使用不受支持的版本时，将出现此错误（本文第一条注释已指定有效版本）。<br/>建议的操作<br/> 若要更改通行短语，必须首先更新备份代理至最低版本 minimum 2.0.9052、更新Azure 备份服务器至最低更新 1 和/或更新 DPM 至最低 DPM 2012 R2 UR12 或 DPM 2016 UR2 （下载链接如下），然后输入有效的安全 PIN。 若要获取 PIN，登录到 Azure 门户并导航到“恢复服务保管库”>“设置”>“属性”>“生成安全 PIN”。 使用此 PIN 更改通行短语。 |
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 恢复服务保管库入门](backup-azure-vms-first-look-arm.md)，介绍如何启用这些功能。

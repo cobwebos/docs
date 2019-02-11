@@ -1,22 +1,21 @@
 ---
-title: 将公司 Internet 域指向流量管理器域名 | Microsoft Docs
+title: 将公司 Internet 域指向 Azure 流量管理器域名
 description: 本文将帮助将公司域名指向流量管理器域名。
 services: traffic-manager
-documentationcenter: ''
 author: kumudd
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: kumud
-ms.openlocfilehash: 45fe4fd8511cd1d725275a5a04bd4b6e13eb68f7
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: c11d8ddcd9a1c1f051ab779a66710ab3d968acab
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138389"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200575"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>将公司 Internet 域指向 Azure 流量管理器域
 

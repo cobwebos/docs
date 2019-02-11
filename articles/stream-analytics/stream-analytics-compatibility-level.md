@@ -2,18 +2,18 @@
 title: 了解 Azure 流分析作业的兼容性级别
 description: 了解如何设置 Azure 流分析作业的兼容性级别，并了解最新兼容性级别中的重大更改
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/15/2018
-ms.openlocfilehash: 83bbb777f5af6d29736db3b53ca39c449402c78e
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: b0e0f26abbf8eb5cbf1cf9ba2014204d773ae15d
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50977707"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187307"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 流分析作业的兼容性级别
  
@@ -27,7 +27,7 @@ ms.locfileid: "50977707"
 
 请确保在更新兼容性级别之前停止作业。 如果作业处于运行状态，则无法更新兼容性级别。 
 
-![门户中的兼容性级别](media\stream-analytics-compatibility-level/image1.png)
+![Azure 门户中的流分析兼容性级别](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
 
  
 在更新兼容性级别时，T-SQL 编译器会使用与所选兼容性级别相对应的语法来验证作业。 
@@ -40,11 +40,11 @@ ms.locfileid: "50977707"
 
   * **以前的版本：** Azure 流分析使用 DataContractSerializer，因此消息内容包括 XML 标记。 例如：
     
-   @\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001 
+    @\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001 
 
   * **当前版本：** 消息内容只包含流，没有其他的标记。 例如：
   
-   { "SensorId":"1", "Temperature":64} 
+    { "SensorId":"1", "Temperature":64} 
  
 * **字段名称保留区分大小写的做法**  
 
@@ -52,8 +52,8 @@ ms.locfileid: "50977707"
 
   * **当前版本：** 在由 Azure 流分析引擎处理时，字段名称保留区分大小写的做法。 
 
-  > [!NOTE] 
-  > 保留区分大小写尚不适用于使用 Edge 环境托管的流分析作业。 因此，如果在 Edge 上托管作业，所有字段名称都将转换为小写。 
+    > [!NOTE] 
+    > 保留区分大小写尚不适用于使用 Edge 环境托管的流分析作业。 因此，如果在 Edge 上托管作业，所有字段名称都将转换为小写。 
 
 * **FloatNaNDeserializationDisabled**  
 

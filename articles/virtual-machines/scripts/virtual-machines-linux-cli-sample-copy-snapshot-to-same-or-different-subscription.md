@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 904f564d2f3c0584851309780eb2ccca379534fa
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 2ff32bf5a8e3c5c31b13e2e8a1594f94647ed689
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29850195"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695383"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>使用 CLI 将托管磁盘的快照复制到同一订阅或不同订阅
 
@@ -43,8 +43,8 @@ ms.locfileid: "29850195"
 
 | 命令 | 说明 |
 |---|---|
-| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot#az_snapshot_show) | 使用快照的名称和资源组属性获取快照的所有属性。 Id 属性用于将快照复制到其他订阅。  |
-| [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot#az_snapshot_create) | 通过使用父快照的 Id 和名称在其他订阅中创建快照来复制快照。  |
+| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot) | 使用快照的名称和资源组属性获取快照的所有属性。 Id 属性用于将快照复制到其他订阅。  |
+| [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot) | 通过使用父快照的 Id 和名称在其他订阅中创建快照来复制快照。  |
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -52,4 +52,4 @@ ms.locfileid: "29850195"
 
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
 
-可以在 [Azure Linux VM 文档](../../app-service/app-service-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机和托管磁盘 CLI 脚本示例。
+可以在 [Azure Linux VM 文档](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机和托管磁盘 CLI 脚本示例。

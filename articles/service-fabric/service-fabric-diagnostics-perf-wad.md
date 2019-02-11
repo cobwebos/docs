@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 0675e06564fcacf5f7d14ef6986762f36df18b1b
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: a6941e28bdfd922a68ff484c57031326a9aa5c0b
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290316"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452626"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>使用 Windows Azure 诊断扩展进行性能监视
 
@@ -43,7 +43,7 @@ ms.locfileid: "52290316"
     }
     ```
 
-    `scheduledTransferPeriod` 定义所收集的计数器值被传输到 Azure 存储表和任何已配置接收器的频率。 
+    `scheduledTransferPeriod` 定义所收集的计数器值传输到 Azure 存储表和任何已配置接收器的频率。 
 
 3. 添加要收集到上一步中声明的 `PerformanceCounterConfiguration` 中的性能计数器。 要收集的每个计数器都通过 `counterSpecifier`、`sampleRate`、`unit`、`annotation` 和任何相关的 `sinks` 来定义。
 

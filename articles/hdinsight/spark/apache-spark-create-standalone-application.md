@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: d83c04946b67dd25bae306c2fa41a0864287bfc8
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: eef755c01a6703976383ee31b52bde14d32f0110
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499310"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604059"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>教程：使用 IntelliJ 在 HDInsight 中创建适用于 Apache Spark 的 Scala Maven 应用程序
 
@@ -26,7 +26,7 @@ ms.locfileid: "52499310"
 * 生成可以提交到 HDInsight Spark 群集的 jar 文件。
 * 使用 Livy 在 Spark 群集上运行应用程序。
 
-> [!NOTE]
+> [!NOTE]  
 > HDInsight 还提供了一个 IntelliJ IDEA 插件工具，用于简化在 Linux 上创建应用程序并提交到 HDInsight Spark 群集的过程。 有关详细信息，请参阅[使用适用于 IntelliJ IDEA 的 HDInsight 工具插件以创建和提交 Apache Spark 应用程序](apache-spark-intellij-tool-plugin.md)。
 > 
 

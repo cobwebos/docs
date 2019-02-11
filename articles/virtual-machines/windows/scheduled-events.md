@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 7a7267faae2067a873ee11bfbf4ef3027b285a0b
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 9130bf5c2708f7eecf6fc1b5db2ffbb3c2fffc30
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034942"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201272"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 元数据服务：适用于 Windows VM 的计划事件
 
@@ -64,8 +64,8 @@ Azure 元数据服务使用可从 VM 内访问的 REST 终结点公开有关正�
 
 | 版本 | 发布类型 | 区域 | 发行说明 | 
 | - | - | - | - |
-| 2017-08-01 | 正式版 | 全部 | <li> 已从 Iaas VM 的资源名称中删除下划线<br><li>针对所有请求强制执行元数据标头要求 | 
-| 2017-03-01 | 预览 | 全部 |<li>初始版本
+| 2017-08-01 | 正式版 | All | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
+| 2017-03-01 | 预览 | All |<li>初始版本
 
 > [!NOTE] 
 > 支持的计划事件的早期预览版发布 {最新} 为 api-version。 此格式不再受支持，并且会在未来被弃用。
@@ -116,10 +116,10 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 |属性  |  Description |
 | - | - |
 | EventId | 此事件的全局唯一标识符。 <br><br> 示例： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：计划将虚拟机暂停几秒。 暂停 CPU，但不会对内存、打开文件或网络连接造成影响。 <li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘丢失）。 |
+| EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：计划将虚拟机暂停几秒。 暂停 CPU，但不会对内存、打开文件或网络连接造成影响。 <li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘将丢失）。 |
 | ResourceType | 此事件影响的资源的类型。 <br><br> 值： <ul><li>`VirtualMachine`|
 | 资源| 此事件影响的资源的列表。 保证包含来自最多一个[更新域](manage-availability.md)的计算机，但可能不包含 UD 中的所有计算机。 <br><br> 示例： <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
-| 事件状态 | 此事件的状态。 <br><br> 值： <ul><li>`Scheduled`：事件计划在 `NotBefore` 属性指定的时间之后启动。<li>`Started`：此事件已启动。</ul> 未提供 `Completed` 或相似状态；事件完成后，将不再返回。
+| 事件状态 | 此事件的状态。 <br><br> 值： <ul><li>`Scheduled`：此事件计划在 `NotBefore` 属性指定的时间之后启动。<li>`Started`：此事件已启动。</ul> 未提供 `Completed` 或相似状态；事件完成后，将不再返回。
 | NotBefore| 一个时间，此事件可能会在该时间之后启动。 <br><br> 示例： <br><ul><li> 2016 年 9 月 19 日星期一 18:29:47 GMT  |
 
 ### <a name="event-scheduling"></a>事件计划
@@ -225,6 +225,6 @@ foreach($event in $scheduledEvents.Events)
 ## <a name="next-steps"></a>后续步骤 
 
 - 在 Azure Friday 上观看[计划事件演示](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance)。 
-- 在 [Azure 实例元数据计划事件 Github 存储库](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)中查看预定事件代码示例
+- 在 [Azure 实例元数据计划事件 GitHub 存储库](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)中查看计划事件代码示例
 - 详细了解[实例元数据服务](instance-metadata-service.md)中可用的 API。
 - 了解 [Azure 中 Windows 虚拟机的计划内维护](planned-maintenance.md)。

@@ -1,19 +1,21 @@
 ---
-title: 示例：在认知搜索管道中创建自定义技能（Azure搜索）| Microsoft Docs
+title: 示例：在认知搜索管道中创建自定义技能 - Azure搜索
 description: 演示如何使用映射到 Azure 搜索中认知搜索索引管道的自定义技能中的文本翻译 API。
 manager: pablocas
 author: luiscabrer
+services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 06/29/2018
 ms.author: luisca
-ms.openlocfilehash: a295bf741862bb58a86234b5c85f48d7a1b52be7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.custom: seodec2018
+ms.openlocfilehash: c49a6320b7ba37297a7c1c0775aef2c2d8c6c868
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786856"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104290"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>示例：使用文本翻译 API 创建自定义技能
 
@@ -37,6 +39,8 @@ ms.locfileid: "33786856"
 
 1. 在“新建项目”对话框中，选择“已安装”，展开“Visual C#” > “云”，选择“Azure Functions”，键入项目的名称，然后选择“确定”。 函数应用名称必须可以充当 C# 命名空间，因此请勿使用下划线、连字符或任何其他的非字母数字字符。
 
+1. 选择“Azure Functions v2 (.Net Core)”。 也可以使用版本 1 执行此操作，但下面的代码基于 v2 模板编写。
+
 1. 选择“HTTP 触发器”作为类型
 
 1. 对于存储帐户，可选择“无”，因为此函数不需要任何存储。
@@ -50,23 +54,29 @@ Visual Studio 将创建一个项目，并在该项目中创建一个包含所选
 现在，将文件 Function1.cs 的所有内容替换为以下代码：
 
 ```csharp
+using System;
+using System.Net.Http;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.IO;
+using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.WebJobs.Host;
 using Newtonsoft.Json;
-using System.Net.Http;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Text;
 
 namespace TranslateFunction
 {
     // This function will simply translate messages sent to it.
     public static class Function1
     {
+        static string path = "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0";
+
+        // NOTE: Replace this example key with a valid subscription key.
+        static string key = "<enter your api key here>";
+
         #region classes used to serialize the response
         private class WebApiResponseError
         {
@@ -92,21 +102,16 @@ namespace TranslateFunction
         }
         #endregion
 
-
-        /// <summary>
-        /// Note that this function can translate up to 1000 characters. If you expect to need to translate more characters, use 
-        /// the paginator skill before calling this custom enricher
-        /// </summary>
         [FunctionName("Translate")]
         public static IActionResult Run(
-            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)]HttpRequest req, 
+            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)]HttpRequest req,
             TraceWriter log)
         {
             log.Info("C# HTTP trigger function processed a request.");
 
             string recordId = null;
             string originalText = null;
-            string originalLanguage = null;
+            string toLanguage = null;
             string translatedText = null;
 
             string requestBody = new StreamReader(req.Body).ReadToEnd();
@@ -125,24 +130,15 @@ namespace TranslateFunction
 
             recordId = data?.values?.First?.recordId?.Value as string;
             originalText = data?.values?.First?.data?.text?.Value as string;
-            originalLanguage = data?.values?.First?.data?.language?.Value as string;
+            toLanguage = data?.values?.First?.data?.language?.Value as string;
 
             if (recordId == null)
             {
                 return new BadRequestObjectResult("recordId cannot be null");
             }
 
-            // Only translate records that actually need to be translated. 
-            if (!originalLanguage.Contains("en"))
-            {
-                translatedText = TranslateText(originalText, "en-us").Result;
-            }
-            else
-            {
-                // text is already in English.
-                translatedText = originalText;
-            }
-
+            translatedText = TranslateText(originalText, toLanguage).Result;
+        
             // Put together response.
             WebApiResponseRecord responseRecord = new WebApiResponseRecord();
             responseRecord.data = new Dictionary<string, object>();
@@ -153,47 +149,41 @@ namespace TranslateFunction
             response.values = new List<WebApiResponseRecord>();
             response.values.Add(responseRecord);
 
-            return (ActionResult)new OkObjectResult(response); 
+            return (ActionResult)new OkObjectResult(response);
         }
 
+
         /// <summary>
-        /// Use Cognitive Service to translate text from one language to antoher.
+        /// Use Cognitive Service to translate text from one language to another.
         /// </summary>
-        /// <param name="myText">The text to translate</param>
-        /// <param name="destinationLanguage">The language you want to translate to.</param>
+        /// <param name="originalText">The text to translate.</param>
+        /// <param name="toLanguage">The language you want to translate to.</param>
         /// <returns>Asynchronous task that returns the translated text. </returns>
-        async static Task<string> TranslateText(string myText, string destinationLanguage)
+        async static Task<string> TranslateText(string originalText, string toLanguage)
         {
-            string host = "https://api.microsofttranslator.com";
-            string path = "/V2/Http.svc/Translate";
+            System.Object[] body = new System.Object[] { new { Text = originalText } };
+            var requestBody = JsonConvert.SerializeObject(body);
 
-            // NOTE: Replace this example key with a valid subscription key.
-            string key = "064d8095730d4a99b49f4bcf16ac67f8";
+            var uri = $"{path}&to={toLanguage}";
 
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
+            string result = "";
 
-            List<KeyValuePair<string, string>> list = new List<KeyValuePair<string, string>>() {
-                new KeyValuePair<string, string>(myText, "en-us")
-            };
-
-            StringBuilder totalResult = new StringBuilder();
-
-            foreach (KeyValuePair<string, string> i in list)
+            using (var client = new HttpClient())
+            using (var request = new HttpRequestMessage())
             {
-                string uri = host + path + "?to=" + i.Value + "&text=" + System.Net.WebUtility.UrlEncode(i.Key);
+                request.Method = HttpMethod.Post;
+                request.RequestUri = new Uri(uri);
+                request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+                request.Headers.Add("Ocp-Apim-Subscription-Key", key);
 
-                HttpResponseMessage response = await client.GetAsync(uri);
+                var response = await client.SendAsync(request);
+                var responseBody = await response.Content.ReadAsStringAsync();
 
-                string result = await response.Content.ReadAsStringAsync();
+                dynamic data = JsonConvert.DeserializeObject(responseBody);
+                result = data?.First?.translations?.First?.text?.Value as string;
 
-                // Parse the response XML
-                System.Xml.XmlDocument xmlResponse = new System.Xml.XmlDocument();
-                xmlResponse.LoadXml(result);
-                totalResult.Append(xmlResponse.InnerText); 
             }
-
-            return totalResult.ToString();
+            return result;
         }
     }
 }
@@ -205,7 +195,7 @@ namespace TranslateFunction
 
 ## <a name="test-the-function-from-visual-studio"></a>从 Visual Studio 中测试函数
 
-按 F5 运行程序并测试函数行为。 使用 Postman 或 Fiddler 发出如下所示的调用：
+按 F5 运行程序并测试函数行为。 在此示例中，我们将使用下面的函数将西班牙语文本翻译成英语。 使用 Postman 或 Fiddler 发出如下所示的调用：
 
 ```http
 POST https://localhost:7071/api/Translate
@@ -219,7 +209,7 @@ POST https://localhost:7071/api/Translate
             "data":
             {
                "text":  "Este es un contrato en Inglés",
-               "language": "es"
+               "language": "en"
             }
         }
    ]
@@ -257,7 +247,6 @@ POST https://localhost:7071/api/Translate
 
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到资源组，然后查找发布的翻译函数。 在“管理”部分下，应可看到主机密钥。 对默认主机密钥选择“复制”图标。  
 
-
 ## <a name="test-the-function-in-azure"></a>在 Azure 中测试函数
 
 现在有了默认主机密钥，按以下方式测试函数：
@@ -274,7 +263,7 @@ POST https://translatecogsrch.azurewebsites.net/api/Translate?code=[enter defaul
             "data":
             {
                "text":  "Este es un contrato en Inglés",
-               "language": "es"
+               "language": "en"
             }
         }
    ]
@@ -303,7 +292,7 @@ POST https://translatecogsrch.azurewebsites.net/api/Translate?code=[enter defaul
           },
           {
             "name": "language",
-            "source": "/document/languageCode"
+            "source": "/document/destinationLanguage"
           }
         ],
         "outputs": [
@@ -322,5 +311,5 @@ POST https://translatecogsrch.azurewebsites.net/api/Translate?code=[enter defaul
 
 + [将自定义技能添加到认知搜索管道](cognitive-search-custom-skill-interface.md)
 + [如何定义技能组合](cognitive-search-defining-skillset.md)
-+ [创建技能组合 (REST)](ref-create-skillset.md)
++ [创建技能组合 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [如何映射扩充的域](cognitive-search-output-field-mapping.md)

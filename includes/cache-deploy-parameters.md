@@ -4,12 +4,12 @@ ms.service: redis-cache
 ms.topic: include
 ms.date: 11/21/2018
 ms.author: wesmc
-ms.openlocfilehash: 1ddb81de479317a098f9de8aa5756cbaae59cb72
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: dd9700c9472e07daf294eca12b766e3dc4832955
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52330758"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53111596"
 ---
 ### <a name="cacheskuname"></a>cacheSKUName
 新 Azure Redis 缓存的定价层。
@@ -22,7 +22,7 @@ ms.locfileid: "52330758"
       ],
       "defaultValue": "Basic",
       "metadata": {
-        "description": "The pricing tier of the new Azure Redis Cache."
+        "description": "The pricing tier of the new Azure Cache for Redis."
       }
     },
 
@@ -60,7 +60,7 @@ SKU 的系列。
       ],
       "defaultValue": 0,
       "metadata": {
-        "description": "The size of the new Azure Redis Cache instance. "
+        "description": "The size of the new Azure Cache for Redis instance. "
       }
     }
 

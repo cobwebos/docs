@@ -1,5 +1,5 @@
 ---
-title: Node.js 中的 Azure 搜索入门 | Microsoft Docs
+title: Node.js 中的 Azure 搜索入门 - Azure 搜索
 description: 介绍使用 Node.js 作为编程语言，在 Azure 的托管云搜索服务上生成搜索应用程序的方法。
 author: jj09
 manager: jlembicz
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 04/26/2017
 ms.author: jjed
-ms.openlocfilehash: 713e5304ca54039413f68ebc189dd049e77cdaa0
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.custom: seodec2018
+ms.openlocfilehash: 0b36ee9aa54f0d8dd3d246d6c5a96e767326d2d8
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527569"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634671"
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Node.js 中的 Azure 搜索入门
 > [!div class="op_single_selector"]
@@ -24,12 +25,12 @@ ms.locfileid: "39527569"
 
 了解如何生成使用 Azure 搜索作为搜索体验的自定义 Node.js 搜索应用程序。 本教程使用 [Azure 搜索服务 REST API](https://msdn.microsoft.com/library/dn798935.aspx) 构造用于此练习的对象和操作。
 
-在 Windows 8.1 上使用 [Node.js](https://Nodejs.org)、NPM、[Sublime Text 3](http://www.sublimetext.com/3) 和 Windows PowerShell 开发和测试此代码。
+在 Windows 8.1 上使用 [Node.js](https://Nodejs.org)、NPM、[Sublime Text 3](https://www.sublimetext.com/3) 和 Windows PowerShell 开发和测试此代码。
 
 若要运行此示例，必须具有 Azure 搜索服务，可在 [Azure 门户](https://portal.azure.com)注册此服务。 有关分步说明，请参阅 [在门户中创建 Azure 搜索服务](search-create-service-portal.md) 。
 
 ## <a name="about-the-data"></a>关于数据
-此示例应用程序使用的数据来自 [美国地质调查局 (USGS)](http://geonames.usgs.gov/domestic/download_data.htm)，对罗得岛州进行了筛选以减小数据集大小。 使用此数据生成搜索应用程序，该应用程序返回医院、学校等地标性建筑，以及河流、湖泊和山峰等地质特征。
+此示例应用程序使用的数据来自 [美国地质调查局 (USGS)](https://geonames.usgs.gov/domestic/download_data.htm)，对罗得岛州进行了筛选以减小数据集大小。 使用此数据生成搜索应用程序，该应用程序返回医院、学校等地标性建筑，以及河流、湖泊和山峰等地质特征。
 
 在此应用程序中， **DataIndexer** 程序通过使用 [索引器](https://msdn.microsoft.com/library/azure/dn798918.aspx) 构造，并从公共 Azure SQL 数据库检索筛选的 USGS 数据集，生成并加载索引。 程序代码中提供了联机数据源的凭据和连接信息。 无需进一步配置。
 

@@ -14,20 +14,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0ecb497e9b07119f6c32149a875f27ee7c338d74
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: e19f9acef256cdd0c690195bd56f971e3ec88c01
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344631"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494725"
 ---
 # <a name="manage-resources-with-azure-powershell"></a>使用 Azure PowerShell 管理资源
 
 [!INCLUDE [Resource Manager governance introduction](../../includes/resource-manager-governance-intro.md)]
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-如果选择在本地安装并使用 PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。
+如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="understand-scope"></a>了解范围
 
@@ -38,8 +40,8 @@ ms.locfileid: "51344631"
 让我们创建该资源组。
 
 ```azurepowershell-interactive
-Set-AzureRmContext -Subscription <subscription-name>
-New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
+Set-AzContext -Subscription <subscription-name>
+New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
 目前，资源组为空。
@@ -65,7 +67,7 @@ $adgroup = New-AzureADGroup -DisplayName VMDemoContributors `
   -MailNickName vmDemoGroup `
   -MailEnabled $false `
   -SecurityEnabled $true
-New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
+New-AzRoleAssignment -ObjectId $adgroup.ObjectId `
   -ResourceGroupName myResourceGroup `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
@@ -77,7 +79,7 @@ New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
 [Azure Policy](../azure-policy/azure-policy-introduction.md) 可帮助确保订阅中的所有资源符合企业标准。 订阅已经有多个策略定义。 若要查看可用的策略定义，请使用：
 
 ```azurepowershell-interactive
-(Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType
+(Get-AzPolicyDefinition).Properties | Format-Table displayName, policyType
 ```
 
 可以看到现有的策略定义。 策略类型为“内置”或“自定义”。 在这些定义中查找所述条件正是你要分配的条件的定义。 在本文中，分配的策略要符合以下条件：
@@ -90,21 +92,21 @@ New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
 $locations ="eastus", "eastus2"
 $skus = "Standard_DS1_v2", "Standard_E2s_v2"
 
-$rg = Get-AzureRmResourceGroup -Name myResourceGroup
+$rg = Get-AzResourceGroup -Name myResourceGroup
 
-$locationDefinition = Get-AzureRmPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed locations"}
-$skuDefinition = Get-AzureRmPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed virtual machine SKUs"}
-$auditDefinition = Get-AzureRmPolicyDefinition | where-object {$_.properties.displayname -eq "Audit VMs that do not use managed disks"}
+$locationDefinition = Get-AzPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed locations"}
+$skuDefinition = Get-AzPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed virtual machine SKUs"}
+$auditDefinition = Get-AzPolicyDefinition | where-object {$_.properties.displayname -eq "Audit VMs that do not use managed disks"}
 
-New-AzureRMPolicyAssignment -Name "Set permitted locations" `
+New-AzPolicyAssignment -Name "Set permitted locations" `
   -Scope $rg.ResourceId `
   -PolicyDefinition $locationDefinition `
   -listOfAllowedLocations $locations
-New-AzureRMPolicyAssignment -Name "Set permitted VM SKUs" `
+New-AzPolicyAssignment -Name "Set permitted VM SKUs" `
   -Scope $rg.ResourceId `
   -PolicyDefinition $skuDefinition `
   -listOfAllowedSKUs $skus
-New-AzureRMPolicyAssignment -Name "Audit unmanaged disks" `
+New-AzPolicyAssignment -Name "Audit unmanaged disks" `
   -Scope $rg.ResourceId `
   -PolicyDefinition $auditDefinition
 ```
@@ -114,7 +116,7 @@ New-AzureRMPolicyAssignment -Name "Audit unmanaged disks" `
 分配角色和策略以后，即可部署解决方案。 默认大小为 Standard_DS1_v2，这是允许的 SKU 之一。 运行此步骤时，会提示输入凭据。 输入的值将配置为用于虚拟机的用户名和密码。
 
 ```azurepowershell-interactive
-New-AzureRmVm -ResourceGroupName "myResourceGroup" `
+New-AzVm -ResourceGroupName "myResourceGroup" `
      -Name "myVM" `
      -Location "East US" `
      -VirtualNetworkName "myVnet" `
@@ -135,12 +137,12 @@ New-AzureRmVm -ResourceGroupName "myResourceGroup" `
 若要锁定虚拟机和网络安全组，请使用：
 
 ```azurepowershell-interactive
-New-AzureRmResourceLock -LockLevel CanNotDelete `
+New-AzResourceLock -LockLevel CanNotDelete `
   -LockName LockVM `
   -ResourceName myVM `
   -ResourceType Microsoft.Compute/virtualMachines `
   -ResourceGroupName myResourceGroup
-New-AzureRmResourceLock -LockLevel CanNotDelete `
+New-AzResourceLock -LockLevel CanNotDelete `
   -LockName LockNSG `
   -ResourceName myNetworkSecurityGroup `
   -ResourceType Microsoft.Network/networkSecurityGroups `
@@ -160,10 +162,10 @@ New-AzureRmResourceLock -LockLevel CanNotDelete `
 若要将标记应用到虚拟机，请使用：
 
 ```azurepowershell-interactive
-$r = Get-AzureRmResource -ResourceName myVM `
+$r = Get-AzResource -ResourceName myVM `
   -ResourceGroupName myResourceGroup `
   -ResourceType Microsoft.Compute/virtualMachines
-Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentation" } -ResourceId $r.ResourceId -Force
+Set-AzResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentation" } -ResourceId $r.ResourceId -Force
 ```
 
 ### <a name="find-resources-by-tag"></a>按标记查找资源
@@ -171,13 +173,13 @@ Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentatio
 若要使用标记名称和值来查找资源，请使用：
 
 ```azurepowershell-interactive
-(Find-AzureRmResource -TagName Environment -TagValue Test).Name
+(Find-AzResource -TagName Environment -TagValue Test).Name
 ```
 
 可以将返回的值用于管理任务，例如停止带有某个标记值的所有虚拟机。
 
 ```azurepowershell-interactive
-Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.ResourceType -eq "Microsoft.Compute/virtualMachines"} | Stop-AzureRmVM
+Find-AzResource -TagName Environment -TagValue Test | Where-Object {$_.ResourceType -eq "Microsoft.Compute/virtualMachines"} | Stop-AzVM
 ```
 
 ### <a name="view-costs-by-tag-values"></a>按标记值查看成本
@@ -199,20 +201,20 @@ Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.Reso
 在解除锁定之前，不能删除锁定的网络安全组。 若要解除锁定，请使用：
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceLock -LockName LockVM `
+Remove-AzResourceLock -LockName LockVM `
   -ResourceName myVM `
   -ResourceType Microsoft.Compute/virtualMachines `
   -ResourceGroupName myResourceGroup
-Remove-AzureRmResourceLock -LockName LockNSG `
+Remove-AzResourceLock -LockName LockNSG `
   -ResourceName myNetworkSecurityGroup `
   -ResourceType Microsoft.Network/networkSecurityGroups `
   -ResourceGroupName myResourceGroup
 ```
 
-如果不再需要资源组、VM 和所有相关的资源，可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 命令将其删除。
+如果不再需要资源组、VM 和所有相关的资源，可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令将其删除。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup
+Remove-AzResourceGroup -Name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>后续步骤

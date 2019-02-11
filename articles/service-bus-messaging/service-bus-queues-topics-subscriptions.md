@@ -3,18 +3,19 @@ title: Azure 服务总线消息传送队列、主题和订阅概述 | Microsoft 
 description: 服务总线消息传送实例概述。
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: spelluru
-ms.openlocfilehash: 047c4c37090db77f7a7a692604dd63c5effff9fa
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: aschhab
+ms.openlocfilehash: 7cacabf4f171189810e943043b5513e20113d962
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409755"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847025"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>服务总线队列、主题和订阅
 
@@ -32,15 +33,15 @@ Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件�
 
 ### <a name="create-queues"></a>创建队列
 
-使用 [Azure 门户](service-bus-quickstart-portal.md)、[PowerShell](service-bus-quickstart-powershell.md)、[CLI](service-bus-quickstart-cli.md) 或[资源管理器模板](service-bus-resource-manager-namespace-queue.md)创建队列。 然后使用 [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) 对象发送和接收消息。 
+使用 [Azure 门户](service-bus-quickstart-portal.md)、[PowerShell](service-bus-quickstart-powershell.md)、[CLI](service-bus-quickstart-cli.md) 或[资源管理器模板](service-bus-resource-manager-namespace-queue.md)创建队列。 然后使用 [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) 对象发送和接收消息。
 
-若要快速了解如何创建队列，然后向/从队列发送/接收消息，请参阅每个方法的[快速入门](service-bus-quickstart-portal.md)。 有关如何使用队列的更深入教程，请参阅[服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)。 
+若要快速了解如何创建队列，然后向/从队列发送/接收消息，请参阅每个方法的[快速入门](service-bus-quickstart-portal.md)。 有关如何使用队列的更深入教程，请参阅[服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)。
 
 有关工作示例，请参阅 GitHub 上的 [BasicSendReceiveUsingQueueClient 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingQueueClient)。
 
 ### <a name="receive-modes"></a>接收模式
 
-可以指定 Service Bus 接收消息所用的两种不同模式：*ReceiveAndDelete* 或 *PeekLock*。 使用 [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) 模式时，接收操作是一个单一快照。即，当服务总线收到请求时，会将该消息标记为“已使用”并将其返回给应用程序。 **ReceiveAndDelete** 模式是最简单的模式，最适合应用程序允许在出现故障时不处理消息的方案。 为了理解此方案，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线会将消息标记为“已使用”，因此当应用程序重新启动并重新开始使用消息时，它会漏掉在发生崩溃前使用的消息。
+可以指定服务总线接收消息所用的两种不同模式：ReceiveAndDelete 或 PeekLock。 使用 [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) 模式时，接收操作是一个单一快照。即，当服务总线收到请求时，会将该消息标记为“已使用”并将其返回给应用程序。 **ReceiveAndDelete** 模式是最简单的模式，最适合应用程序允许在出现故障时不处理消息的方案。 为了理解此方案，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线会将消息标记为“已使用”，因此当应用程序重新启动并重新开始使用消息时，它会漏掉在发生崩溃前使用的消息。
 
 使用 [PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) 模式时，接收操作分成了两步，从而有可能支持无法容忍遗漏消息的应用程序。 当服务总线收到请求时，它会找到要使用的下一个消息，将其锁定以防其他使用方接收它，然后将该消息返回给应用程序。 应用程序完成消息处理（或可靠地存储消息以供将来处理）后，它将通过对收到的消息调用 [CompleteAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) 完成接收过程的第二个阶段。 服务总线发现 **CompleteAsync** 调用时会将消息标记为“正在使用”。
 
@@ -56,9 +57,9 @@ Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件�
 
 ### <a name="create-topics-and-subscriptions"></a>创建主题和订阅
 
-创建主题与创建队列类似，如前一部分中所述。 然后使用 [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient) 类发送消息。 若要接收消息，可以创建主题的一个或多个订阅。 与队列类似，通过 [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) 对象而不是 [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) 对象从订阅接收消息。 创建订阅客户端，将主题名称、订阅名称和接收模式（可选）作为参数传递。 
+创建主题与创建队列类似，如前一部分中所述。 然后使用 [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient) 类发送消息。 若要接收消息，可以创建主题的一个或多个订阅。 与队列类似，通过 [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) 对象而不是 [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) 对象从订阅接收消息。 创建订阅客户端，将主题名称、订阅名称和接收模式（可选）作为参数传递。
 
-有关完整的工作示例，请参阅 Github 上的 [BasicSendReceiveUsingTopicSubscriptionClient 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingTopicSubscriptionClient)。
+有关完整的工作示例，请参阅 GitHub 上的 [BasicSendReceiveUsingTopicSubscriptionClient 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingTopicSubscriptionClient)。
 
 ### <a name="rules-and-actions"></a>规则和操作
 
@@ -66,7 +67,7 @@ Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件�
 
 有关完整的工作示例，请参阅GitHub上的 [TopicSubscriptionWithRuleOperationsSample 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/TopicSubscriptionWithRuleOperationsSample)。
 
-有关可能的筛选器值的详细信息，请参阅文档 [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) 和 [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) 类。 
+有关可能的筛选器值的详细信息，请参阅文档 [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) 和 [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) 类。
 
 ## <a name="next-steps"></a>后续步骤
 

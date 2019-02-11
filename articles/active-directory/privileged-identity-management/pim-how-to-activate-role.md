@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 11/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 534714accb504e4ce487950fef028ab675c46a87
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 75c8952b1fa7003b6a2c12c7e3e6be4983a25bba
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496410"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174102"
 ---
 # <a name="activate-my-azure-ad-directory-roles-in-pim"></a>在 PIM 中激活 Azure AD 目录角色
 
@@ -78,7 +78,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
 ## <a name="use-a-role-immediately-after-activation"></a>激活后立即使用角色
 
-在 PIM 中激活某个角色时，需要等待至少 10 分钟，然后你才能访问所需的管理门户，或者执行特定管理工作负荷中的功能。 若要强制更新权限，请使用**应用程序访问**页，如以下步骤所述。
+在 PIM 中激活某个角色时，需要等待至少 10 分钟，然后你才能访问所需的管理门户，或者执行特定管理工作负荷中的功能。 若要强制更新权限，请使用“应用程序访问”页，如以下步骤所述。
 
 1. 打开 Azure AD Privileged Identity Management。
 
@@ -88,7 +88,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
 1. 单击“Azure Active Directory”链接，在“所有用户”页上重新打开门户。
 
-    单击此链接时，会使当前令牌无效并强制 Azure 门户获取应包含已更新权限的新令牌。
+    单击此链接时，会使当前令牌失效并强制 Azure 门户获取应包含已更新权限的新令牌。
 
 ## <a name="view-the-status-of-your-requests"></a>查看请求的状态
 
@@ -138,7 +138,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
 ### <a name="permissions-not-granted-after-activating-a-role"></a>激活角色后未授予权限
 
-在 PIM 中激活某个角色时，需要等待至少 10 分钟，然后你才能访问所需的管理门户，或者执行特定管理工作负荷中的功能。 若要强制更新权限，请使用**应用程序访问**页，如前面[在激活后立即使用角色](#use-a-role-immediately-after-activation)中所述。
+在 PIM 中激活某个角色时，需要等待至少 10 分钟，然后你才能访问所需的管理门户，或者执行特定管理工作负荷中的功能。 若要强制更新权限，请使用“应用程序访问”页，如前面[在激活后立即使用角色](#use-a-role-immediately-after-activation)中所述。
 
 有关其他故障排除步骤，请参阅[排查提升的权限问题](https://social.technet.microsoft.com/wiki/contents/articles/37568.troubleshooting-elevated-permissions-with-azure-ad-privileged-identity-management.aspx)。
 

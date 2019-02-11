@@ -1,25 +1,20 @@
 ---
-title: 非对称路由 | Microsoft Docs
-description: 本文逐步讲解客户在与目标建立多个链接的网络中使用非对称路由时可能会遇到的问题。
+title: 非对称路由 - Azure ExpressRoute | Microsoft Docs
+description: 本文详细介绍在与一个目标建立有多个链接的网络中使用非对称路由时可能会遇到的问题。
 documentationcenter: na
 services: expressroute
 author: osamazia
-manager: carmonm
-editor: ''
-ms.assetid: a754bff9-95c9-44b5-9796-377fc21e8322
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+ms.topic: article
 ms.date: 10/10/2016
 ms.author: osamam
-ms.openlocfilehash: 8568c13d2834a0643e15ab1814a35c92123837d1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: 6ece48d892f46a4f8bbeb66d3ebda9f532b621b8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22710008"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076644"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>非对称路由与多个网络路径
 本文说明当网络源与目标之间有多个路径时，正向和返回网络流量如何选择不同的路由。
@@ -47,13 +42,13 @@ ms.locfileid: "22710008"
 通过 Azure ExpressRoute 连接到 Microsoft 时，网络会发生以下变化：
 
 * 与 Microsoft 建立多个链接。 一个链接是现有的 Internet 连接，另一个是通过 ExpressRoute 的连接。 发往 Microsoft 一些流量可能通过 Internet 传输，但通过 ExpressRoute 返回，反之亦然。
-* 可以通过 ExpressRoute 接收更明确的 IP 地址。 因此，对于通过 ExpressRoute 提供的服务而言，路由器始终偏向于针对网络到 Microsoft 的流量使用 ExpressRoute。
+* 可以通过 ExpressRoute 接收更明确的 IP 地址。 因此，对于通过 ExpressRoute 提供的服务，路由器始终首选 ExpressRoute 将网络中的流量传输到 Microsoft。
 
 为了了解这两项更改对网络的影响，让我们设想一些场景。 例如，只有一条线路通往 Internet，并且所有 Microsoft 服务都是通过 Internet 使用的。 在用户网络与 Microsoft 之间来回传输的流量遍历相同的 Internet 链接并通过防火墙。 防火墙在看到第一个数据包时记录流程，并允许返回数据包，因为此流程在于状态表中存在。
 
 ![非对称路由与 ExpressRoute](./media/expressroute-asymmetric-routing/AsymmetricRouting1.png)
 
-然后启用 ExpressRoute 并使用 Microsoft 通过 ExpressRoute 提供的服务。 Microsoft 提供的所有其他服务都通过 Internet 使用。 在连接到 ExpressRoute 的边缘服务器上部署不同的防火墙。 Microsoft 通过 ExpressRoute，针对特定服务向网络播发更明确的前缀。 路由基础结构选择 ExpressRoute 作为这些前缀的首选路径。 如果不是通过 ExpressRoute 向 Microsoft 播发公共 IP 地址，Microsoft 将通过 Internet 来与公共 IP 地址通信。 从网络到 Microsoft 的正向流量使用 ExpressRoute，来自 Microsoft 的反向流量使用 Internet。 当边缘服务器上的防火墙看到了在状态表中找不到的流程的响应数据包时，将丢弃返回流量。
+然后，启用 ExpressRoute，通过 ExpressRoute 使用 Microsoft 提供的服务。 Microsoft 提供的所有其他服务都通过 Internet 使用。 在连接到 ExpressRoute 的边缘服务器上部署不同的防火墙。 Microsoft 通过 ExpressRoute，针对特定服务向网络播发更明确的前缀。 路由基础结构选择 ExpressRoute 作为这些前缀的首选路径。 如果不是通过 ExpressRoute 向 Microsoft 播发公共 IP 地址，Microsoft 将通过 Internet 来与公共 IP 地址通信。 从网络到 Microsoft 的正向流量使用 ExpressRoute，来自 Microsoft 的反向流量使用 Internet。 当边缘服务器上的防火墙看到了在状态表中找不到的流程的响应数据包时，将丢弃返回流量。
 
 如果选择将同一网络地址转译 (NAT) 池用于 ExpressRoute 和 Internet，会发现网络中专用 IP 地址上的客户端有类似的问题。 Windows Update 等服务的请求通过 Internet 传递，因为这些服务的 IP 地址不通过 ExpressRoute 播发。 但是，返回流量通过 ExpressRoute 返回。 如果 Microsoft 从 Internet 和 ExpressRoute 收到具有相同子网掩码的 IP 地址，则首选基于 Internet 的 ExpressRoute。 如果在网络边缘上面向 ExpressRoute 的防火墙或其他有状态设备没有任何有关流程的先前信息，将丢弃属于该流程的数据包。
 

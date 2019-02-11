@@ -1,0 +1,62 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 843bc3c070435b6d49480ea269090641e0ebd007
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456470"
+documentType: LandingData
+title: Azure SQL 数据库：监视和优化
+metadata:
+  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
+  title: Azure SQL 数据库 - 监视和优化
+  meta.description: Learn how to monitor and tune your Azure SQL database.
+  services: sql-database
+  author: jovanpop-msft
+  manager: craigg
+  ms.service: sql-database
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: overview
+  ms.date: 01/25/2019
+  ms.author: jovanpop
+sections:
+- items:
+  - type: paragraph
+    text: 使用 Azure SQL 数据库，你可以轻松监视和优化数据库工作负荷。
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - title: 查询性能见解
+      href: /azure/sql-database/sql-database-query-performance
+      html: <p>使用 Azure 门户中的内置监视功能轻松监视 Azure SQL 数据库（独立数据库或入池数据库）中的资源使用情况。</p>
+    - title: Azure SQL 分析
+      href: https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql?toc=/azure/sql-database/toc.json
+      html: <p>使用 Azure SQL Analytics，可以在单个窗格中轻松监视一大批数据库、弹性池和实例。</p>
+    - title: 自动优化
+      href: /azure/sql-database/sql-database-automatic-tuning
+      html: <p>自动优化可以自动提供建议并修复查询计划问题，创建和删除索引以提高性能。</p>
+    - title: 智能性能见解
+      href: /azure/sql-database/sql-database-intelligent-insights
+      html: <p>Azure SQL 数据库中的内置智能可以检测数据库中导致性能不佳的干扰性事件，并根据情况提供缓解建议。</p>
+    - title: 性能建议
+      href: /azure/sql-database/sql-database-advisor
+      html: <p>Azure SQL 数据库提供了可帮助优化 Azure 门户中的数据库的建议。</p>
+    - title: 指标和日志记录
+      href: /azure/sql-database/sql-database-metrics-diag-logging
+      html: <p>将数据库诊断遥测数据流式传输到 Azure SQL Analytics、Azure 事件中心或 Azure Blob 存储以进行自定义集成。</p>
+- title: 更多资源
+  items:
+  - type: paragraph
+    text: 了解有助于优化数据库性能的其他功能。
+  - type: list
+    style: unordered
+    items:
+    - html: 详细了解 Azure SQL 数据库中的<a href="sql-database-monitor-tune-overview.md">监视和优化</a>。
+    - html: 了解<a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json">智能查询处理</a>可以如何改进数据库性能。
+    - html: 设置和操作<a href="sql-database-operate-query-store.md">查询存储</a> - 核心 SQL Server 技术，可以用来实时洞察查询性能。
+    - html: 详细了解如何使用<a href="sql-database-operate-query-store.md">动态管理视图</a>分析工作负载的性能。
+    - html: 了解如何使用 <a href="sql-database-xevent-db-diff-from-svr.md">XEvents</a> 监视数据库活动。
+    - html: 了解如何<a href="sql-database-performance-guidance.md">手动优化数据库</a>。

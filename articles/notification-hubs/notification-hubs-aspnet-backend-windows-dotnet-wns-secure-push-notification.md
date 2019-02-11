@@ -2,8 +2,8 @@
 title: Azure 通知中心安全推送
 description: 了解如何在 Azure 中发送安全推送通知。 代码示例是使用 .NET API 通过 C# 编写的。
 documentationcenter: windows
-author: dimazaid
-manager: kpiteira
+author: jwargo
+manager: patniko
 editor: spelluru
 services: notification-hubs
 ms.assetid: 5aef50f4-80b3-460e-a9a7-7435001273bd
@@ -12,24 +12,24 @@ ms.workload: mobile
 ms.tgt_pltfrm: windows
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/14/2018
-ms.author: dimazaid
-ms.openlocfilehash: 8d051107a5e114ed8aa5f4b5a629a439519157b3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 01/04/2019
+ms.author: jowargo
+ms.openlocfilehash: cf23ef5df3bdcaad23841da111fa06cc36b4cd57
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38696909"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475673"
 ---
-# <a name="azure-notification-hubs-secure-push"></a>Azure 通知中心安全推送
+# <a name="securely-push-notifications-from-azure-notification-hubs"></a>从 Azure 通知中心安全地推送通知
+
 > [!div class="op_single_selector"]
 > * [Windows Universal](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
 > * [iOS](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md)
 > * [Android](notification-hubs-aspnet-backend-android-secure-google-gcm-push-notification.md)
-> 
-> 
 
 ## <a name="overview"></a>概述
+
 利用 Microsoft Azure 中的推送通知支持，可以访问易于使用且横向扩展的多平台推送基础结构，这大大简化了为移动平台的使用者应用程序和企业应用程序实现推送通知的过程。
 
 由于法规或安全约束，有时应用程序可能想要在通知中包含某些无法通过标准推送通知基础结构传输的内容。 本教程介绍如何通过客户端设备和应用后端之间安全且经过验证的连接发送敏感信息，以便获得相同的体验。
@@ -50,115 +50,126 @@ ms.locfileid: "38696909"
 > [!NOTE]
 > 本教程假设已根据[通知中心入门（Windows 应用商店）](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)中所述创建并配置了通知中心。
 > 此外，请注意 Windows Phone 8.1 需要 Windows（而不是 Windows Phone）凭据，且后台任务无法在 Windows Phone 8.0 或 Silverlight 8.1 上正常运行。 对于 Windows 应用商店应用程序，只能在应用锁屏界面启用（单击 Appmanifest 中的复选框）的情况下，通过运行后台任务来接收通知。
-> 
-> 
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## <a name="modify-the-windows-phone-project"></a>修改 Windows Phone 项目
+
 1. 在 **NotifyUserWindowsPhone** 项目中，将以下代码添加到 App.xaml.cs 注册推送后台任务。 在 `OnLaunched()` 方法的末尾添加以下代码行：
-   
-        RegisterBackgroundTask();
+
+    ```c#
+    RegisterBackgroundTask();
+    ```
 2. 仍在 App.xaml.cs 中，紧跟 `OnLaunched()` 方法添加以下代码：
-   
-        private async void RegisterBackgroundTask()
+
+    ```c#
+    private async void RegisterBackgroundTask()
+    {
+        if (!Windows.ApplicationModel.Background.BackgroundTaskRegistration.AllTasks.Any(i => i.Value.Name == "PushBackgroundTask"))
         {
-            if (!Windows.ApplicationModel.Background.BackgroundTaskRegistration.AllTasks.Any(i => i.Value.Name == "PushBackgroundTask"))
-            {
-                var result = await BackgroundExecutionManager.RequestAccessAsync();
-                var builder = new BackgroundTaskBuilder();
-   
-                builder.Name = "PushBackgroundTask";
-                builder.TaskEntryPoint = typeof(PushBackgroundComponent.PushBackgroundTask).FullName;
-                builder.SetTrigger(new Windows.ApplicationModel.Background.PushNotificationTrigger());
-                BackgroundTaskRegistration task = builder.Register();
-            }
+            var result = await BackgroundExecutionManager.RequestAccessAsync();
+            var builder = new BackgroundTaskBuilder();
+
+            builder.Name = "PushBackgroundTask";
+            builder.TaskEntryPoint = typeof(PushBackgroundComponent.PushBackgroundTask).FullName;
+            builder.SetTrigger(new Windows.ApplicationModel.Background.PushNotificationTrigger());
+            BackgroundTaskRegistration task = builder.Register();
         }
+    }
+    ```
 3. 在 App.xaml.cs 文件的顶部添加以下 `using` 语句：
-   
-        using Windows.Networking.PushNotifications;
-        using Windows.ApplicationModel.Background;
+
+    ```c#
+    using Windows.Networking.PushNotifications;
+    using Windows.ApplicationModel.Background;
+    ```
 4. 从 Visual Studio 的“文件”菜单中，单击“全部保存”。
 
 ## <a name="create-the-push-background-component"></a>创建推送背景组件
+
 下一步是创建推送背景组件。
 
 1. 在“解决方案资源管理器”中，右键单击解决方案的顶层节点（在本例中为 **Solution SecurePush**），并依次单击“**添加**”和“**新建项目**”。
 2. 展开“**应用商店应用**，并依次单击“**Windows Phone 应用**”和“**Windows 运行时组件 (Windows Phone)**”。 将该项目命名为 **PushBackgroundComponent**，然后单击“**确定**”创建项目。
-   
+
     ![][12]
-3. 在“解决方案资源管理器”中，右键单击“**PushBackgroundComponent (Windows Phone 8.1)**”项目，并依次单击“**添加**”和“**类**”。 将新类命名为 **PushBackgroundTask.cs**。 单击“**添加**”生成类。
-4. 将 **PushBackgroundComponent** 命名空间定义的整个内容替换为以下代码，将占位符 `{back-end endpoint}` 替换为部署后端时获取的后端终结点：
-   
-        public sealed class Notification
+3. 在“解决方案资源管理器”中，右键单击“**PushBackgroundComponent (Windows Phone 8.1)**”项目，并依次单击“**添加**”和“**类**”。 将新类命名为 `PushBackgroundTask.cs`。 单击“**添加**”生成类。
+4. 将 `PushBackgroundComponent` 命名空间定义的整个内容替换为以下代码，将占位符 `{back-end endpoint}` 替换为部署后端时获取的后端终结点：
+
+    ```csharp
+    public sealed class Notification
+        {
+            public int Id { get; set; }
+            public string Payload { get; set; }
+            public bool Read { get; set; }
+        }
+
+        public sealed class PushBackgroundTask : IBackgroundTask
+        {
+            private string GET_URL = "{back-end endpoint}/api/notifications/";
+
+            async void IBackgroundTask.Run(IBackgroundTaskInstance taskInstance)
             {
-                public int Id { get; set; }
-                public string Payload { get; set; }
-                public bool Read { get; set; }
+                // Store the content received from the notification so it can be retrieved from the UI.
+                RawNotification raw = (RawNotification)taskInstance.TriggerDetails;
+                var notificationId = raw.Content;
+
+                // retrieve content
+                BackgroundTaskDeferral deferral = taskInstance.GetDeferral();
+                var httpClient = new HttpClient();
+                var settings = ApplicationData.Current.LocalSettings.Values;
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", (string)settings["AuthenticationToken"]);
+
+                var notificationString = await httpClient.GetStringAsync(GET_URL + notificationId);
+
+                var notification = JsonConvert.DeserializeObject<Notification>(notificationString);
+
+                ShowToast(notification);
+
+                deferral.Complete();
             }
-   
-            public sealed class PushBackgroundTask : IBackgroundTask
+
+            private void ShowToast(Notification notification)
             {
-                private string GET_URL = "{back-end endpoint}/api/notifications/";
-   
-                async void IBackgroundTask.Run(IBackgroundTaskInstance taskInstance)
-                {
-                    // Store the content received from the notification so it can be retrieved from the UI.
-                    RawNotification raw = (RawNotification)taskInstance.TriggerDetails;
-                    var notificationId = raw.Content;
-   
-                    // retrieve content
-                    BackgroundTaskDeferral deferral = taskInstance.GetDeferral();
-                    var httpClient = new HttpClient();
-                    var settings = ApplicationData.Current.LocalSettings.Values;
-                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", (string)settings["AuthenticationToken"]);
-   
-                    var notificationString = await httpClient.GetStringAsync(GET_URL + notificationId);
-   
-                    var notification = JsonConvert.DeserializeObject<Notification>(notificationString);
-   
-                    ShowToast(notification);
-   
-                    deferral.Complete();
-                }
-   
-                private void ShowToast(Notification notification)
-                {
-                    ToastTemplateType toastTemplate = ToastTemplateType.ToastText01;
-                    XmlDocument toastXml = ToastNotificationManager.GetTemplateContent(toastTemplate);
-                    XmlNodeList toastTextElements = toastXml.GetElementsByTagName("text");
-                    toastTextElements[0].AppendChild(toastXml.CreateTextNode(notification.Payload));
-                    ToastNotification toast = new ToastNotification(toastXml);
-                    ToastNotificationManager.CreateToastNotifier().Show(toast);
-                }
+                ToastTemplateType toastTemplate = ToastTemplateType.ToastText01;
+                XmlDocument toastXml = ToastNotificationManager.GetTemplateContent(toastTemplate);
+                XmlNodeList toastTextElements = toastXml.GetElementsByTagName("text");
+                toastTextElements[0].AppendChild(toastXml.CreateTextNode(notification.Payload));
+                ToastNotification toast = new ToastNotification(toastXml);
+                ToastNotificationManager.CreateToastNotifier().Show(toast);
             }
+        }
+    ```
 5. 在“解决方案资源管理器”中，右键单击“**PushBackgroundComponent (Windows Phone 8.1)**”项目，并单击“**管理 NuGet 包**”。
 6. 在左侧单击“**联机**”。
 7. 在“**搜索**”框中键入 **Http 客户端**。
 8. 在结果列表中，单击“**Microsoft HTTP 客户端库**”，并单击“**安装**”。 完成安装。
 9. 返回到 NuGet“**搜索**”框，键入 **Json.net**。 安装 **Json.NET** 包，并关闭“NuGet 包管理器”窗口。
-10. 在 **PushBackgroundTask.cs** 文件的顶部添加以下 `using` 语句：
-    
-        using Windows.ApplicationModel.Background;
-        using Windows.Networking.PushNotifications;
-        using System.Net.Http;
-        using Windows.Storage;
-        using System.Net.Http.Headers;
-        using Newtonsoft.Json;
-        using Windows.UI.Notifications;
-        using Windows.Data.Xml.Dom;
+10. 在 `PushBackgroundTask.cs` 文件的顶部，添加以下 `using` 语句：
+
+    ```c#
+    using Windows.ApplicationModel.Background;
+    using Windows.Networking.PushNotifications;
+    using System.Net.Http;
+    using Windows.Storage;
+    using System.Net.Http.Headers;
+    using Newtonsoft.Json;
+    using Windows.UI.Notifications;
+    using Windows.Data.Xml.Dom;
+    ```
 11. 在“解决方案资源管理器”的 **NotifyUserWindowsPhone (Windows Phone 8.1)** 项目中，右键单击“**引用**”，并单击“**添加引用...**”。在“引用管理器”对话框中，选中 **PushBackgroundComponent** 旁边的复选框，并单击“**确定**”。
 12. 在“解决方案资源管理器”中，双击 **NotifyUserWindowsPhone (Windows Phone 8.1)** 项目中的“**Package.appxmanifest**”。 在“**通知**”下，将“”设置为“”。
-    
+
     ![][3]
 13. 仍在 **Package.appxmanifest** 中，单击顶部附近的“**声明**”菜单。 在“**可用声明**”下拉列表中，单击“**后台任务**”，并单击“**添加**”。
 14. 在“**属性**”下的 **Package.appxmanifest** 中选中“**推送通知**”。
 15. 在“**应用设置**”下的 **Package.appxmanifest** 中，在“**入口点**”字段中键入 **PushBackgroundComponent.PushBackgroundTask**。
-    
+
     ![][13]
 16. 在“**文件**”菜单中，单击“ **全部保存**”。
 
 ## <a name="run-the-application"></a>运行应用程序
+
 若要运行应用程序，请执行以下操作：
 
 1. 在 Visual Studio 中运行此 **AppBackend** Web API 应用程序。 将显示 ASP.NET 网页。

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 143df8a8c82e84b193bdb48a3d41682fca19156b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ff96204d53d31940846d2ec74db57caf69d4329e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315421"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608624"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>将 Apache Kafka on HDInsight 与 Azure IoT 中心配合使用
 
@@ -48,7 +48,7 @@ ms.locfileid: "52315421"
 
 2. 若要将 .jar 文件上传到 Kafka on HDInsight 群集的边缘节点，请使用以下命令：
 
-    > [!NOTE]
+    > [!NOTE]  
     > 将 `sshuser` 替换为 HDInsight 群集的 SSH 用户帐户。 将 `new-edgenode` 替换为边缘节点名称。 将 `clustername` 替换为群集名称。 有关边缘节点的 SSH 终结点的详细信息，请参阅[将边缘节点与 HDInsight 配合使用](../hdinsight-apps-use-edge-node.md#access-an-edge-node)文档。
 
     ```bash
@@ -69,10 +69,10 @@ ms.locfileid: "52315421"
     sudo mv kafka-connect-iothub-assembly*.jar /usr/hdp/current/kafka-broker/libs/
     ```
 
-> [!TIP]
+> [!TIP]  
 > 如果在使用预生成的 .jar 文件执行本文档的剩余步骤时遇到问题，请尝试从源生成包。
 >
-> 若要生成连接器，必须创建一个包含 [Scala 生成工具](http://www.scala-sbt.org/)的 Scala 开发环境。
+> 若要生成连接器，必须创建一个包含 [Scala 生成工具](https://www.scala-sbt.org/)的 Scala 开发环境。
 >
 > 1. 将连接器的源从 [https://github.com/Azure/toketi-kafka-connect-iothub/](https://github.com/Azure/toketi-kafka-connect-iothub/) 下载到开发环境。
 >
@@ -132,7 +132,7 @@ ms.locfileid: "52315421"
         value.converter=org.apache.kafka.connect.storage.StringConverter
         ```
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > 做出此项更改后，可以使用 Kafka 随附的控制台生成方执行测试。 对于其他生产方和使用方，可能需要不同的转换器。 有关使用其他转换器值的信息，请参阅 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。
 
     * 在文件末尾添加包含以下文本的代码行：
@@ -141,7 +141,7 @@ ms.locfileid: "52315421"
         consumer.max.poll.records=10
         ```
 
-        > [!TIP]
+        > [!TIP]  
         > 此项更改会将接收器连接器限制为每次处理 10 条记录，防止该连接器发生超时。 有关详细信息，请参阅 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。
 
 6. 要保存文件，请使用 __Ctrl + X__、__Y__，并按 __Enter__。
@@ -178,7 +178,7 @@ ms.locfileid: "52315421"
             * __与事件中心兼容的终结点__
             * __分区__
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > 门户中的终结点值可能包含本示例不需要的额外文本。 提取与模式 `sb://<randomnamespace>.servicebus.windows.net/` 匹配的文本。
 
     * __在 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__ 中使用以下命令：
@@ -240,8 +240,8 @@ ms.locfileid: "52315421"
     在编辑器中，找到并更改以下条目：
 
     * `Kafka.Topic=PLACEHOLDER`：将 `PLACEHOLDER` 替换为 `iotin`。 从 IoT 中心收到的消息将放入 `iotin` 主题中。
-    * `IotHub.EventHubCompatibleName=PLACEHOLDER`：将 `PLACEHOLDER` 替换为事件中心兼容的名称。
-    * `IotHub.EventHubCompatibleEndpoint=PLACEHOLDER`：将 `PLACEHOLDER` 替换为事件中心兼容的终结点。
+    * `IotHub.EventHubCompatibleName=PLACEHOLDER`：将 `PLACEHOLDER` 替换为与事件中心兼容的名称。
+    * `IotHub.EventHubCompatibleEndpoint=PLACEHOLDER`：将 `PLACEHOLDER` 替换为与事件中心兼容的终结点。
     * `IotHub.Partitions=PLACEHOLDER`：将 `PLACEHOLDER` 替换为在上一步骤中获取的分区数。
     * `IotHub.AccessKeyName=PLACEHOLDER`：将 `PLACEHOLDER` 替换为 `service`。
     * `IotHub.AccessKeyValue=PLACEHOLDER`：将 `PLACEHOLDER` 替换为 `service` 策略的主密钥。
@@ -298,7 +298,7 @@ nnect.IotHubSourceTask:39)
 org.apache.kafka.connect.runtime.WorkerSourceTask:356)
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > 连接器启动时，可能会出现几条警告。 这些警告不会影响从 IoT 中心接收消息。
 
 若要停止连接器，请按 __Ctrl + C__。
@@ -320,7 +320,7 @@ IotHubSinkTask:47)
 t.runtime.WorkerSinkTask:262)
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > 连接器启动时，可能会出现几条警告。 可以放心地忽略这些警告。
 
 若要通过连接器发送消息，请使用以下步骤：
@@ -332,7 +332,7 @@ t.runtime.WorkerSinkTask:262)
     ```
 2. 若要将消息发送到 `iotout` 主题，请使用以下命令：
 
-    > [!WARNING]
+    > [!WARNING]  
     > 由于这是一个新的 SSH 连接，`$KAFKABROKERS` 变量不包含任何信息。 若要设置该变量，请使用以下方法之一：
     >
     > * 使用[配置 Apache Kafka](#configure-apache-kafka) 部分所述的前三个步骤。
@@ -346,7 +346,7 @@ t.runtime.WorkerSinkTask:262)
 
 3. 若要将消息发送到设备，请将一个 JSON 文档粘贴到 `kafka-console-producer` 的 SSH 会话中。
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > 必须将 `"deviceId"` 条目的值设置为设备 ID。 在以下示例中，设备名为 `fakepi`：
 
     ```text

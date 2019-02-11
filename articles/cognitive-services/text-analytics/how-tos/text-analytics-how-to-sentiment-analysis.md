@@ -5,16 +5,16 @@ services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: bbe9ffd0709157b5f0389ccc68a285b9c3829db9
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: e5ceb6208229baf3e07e4030992d5de85309789c
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632859"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212488"
 ---
 # <a name="example-how-to-detect-sentiment-in-text-analytics"></a>示例：如何在文本分析中检测情绪
 
@@ -77,7 +77,7 @@ ms.locfileid: "51632859"
 
 有关请求定义的详细信息，请参阅[如何调用文本分析 API](text-analytics-how-to-call-api.md)。 为方便起见，特重申以下几点：
 
-+ 创建 POST 请求。 请查看此请求的 API 文档：[情绪分析 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)
++ 创建 POST 请求。 查看此请求的 API 文档：[情绪分析 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)
 
 + 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTP 终结点，以便进行情绪分析。 它必须包含 `/sentiment` 资源：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
 

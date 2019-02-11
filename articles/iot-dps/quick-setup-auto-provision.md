@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cad0ec8c2e2f8972cd856b34b8abdd5afd3a6316
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 15d243218632ce9010d0f4542fb97f311e8a3166
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515193"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53182632"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>使用 Azure 门户设置 IoT 中心设备预配服务
 
@@ -37,11 +37,11 @@ ms.locfileid: "51515193"
 3. 提供新的设备预配服务实例的以下信息，然后单击“创建”。
 
     * **名称：** 为新的设备预配服务实例提供唯一名称。 如果输入的名称可用，会显示一个绿色复选标记。
-    * **订阅**：选择要用来创建此设备预配服务实例的订阅。
-    * **资源组：** 此字段允许你创建一个新的资源组，或者选择一个现有资源组来包含新实例。 选择包含你之前创建的 IoT 中心的同一资源组，例如 **TestResources**。 通过将所有相关资源都放在一个组中，可以一起管理它们。 例如，删除资源组会删除包含在该组中的所有资源。 有关详细信息，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-portal.md)。
-    * **位置**：选择离你的设备最近的位置。
+    * **订阅：** 选择要用来创建此设备预配服务实例的订阅。
+    * **资源组：** 此字段允许你创建新的资源组，或选择现有资源组来包含新实例。 选择包含你之前创建的 IoT 中心的同一资源组，例如 **TestResources**。 通过将所有相关资源都放在一个组中，可以一起管理它们。 例如，删除资源组会删除包含在该组中的所有资源。 有关详细信息，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-portal.md)。
+    * **位置：** 选择离你的设备最近的位置。
 
-    ![在门户边栏选项卡中输入有关设备预配服务实例的基本信息](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
+      ![在门户边栏选项卡中输入有关设备预配服务实例的基本信息](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
 
 4. 单击通知按钮可监视资源实例的创建过程。 成功部署服务以后，请单击“固定到仪表板”，然后单击“转到资源”。
 
@@ -59,9 +59,9 @@ ms.locfileid: "51515193"
 
     * **订阅：** 选择包含要与新的设备预配服务实例进行链接的 IoT 中心的订阅。
     * **IoT 中心：** 选择要与新的设备预配服务实例进行链接的 IoT 中心。
-    * **访问策略：** 选择 **iothubowner** 作为用于与 IoT 中心建立链接的凭据。  
+    * **访问策略：** 选择“iothubowner”作为用于与 IoT 中心建立链接的凭据。  
 
-    ![链接中心名称，以便链接到门户边栏选项卡中的设备预配服务实例](./media/quick-setup-auto-provision/link-iot-hub-to-dps-portal.png)  
+      ![链接中心名称，以便链接到门户边栏选项卡中的设备预配服务实例](./media/quick-setup-auto-provision/link-iot-hub-to-dps-portal.png)  
 
 3. 此时会在“链接的 IoT 中心”边栏选项卡下看到所选中心。 可能需要单击“刷新”才能显示“链接的 IoT 中心”。
 

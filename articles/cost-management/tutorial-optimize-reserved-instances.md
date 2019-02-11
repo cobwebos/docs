@@ -5,22 +5,22 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/17/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: db4a2356d3de91e4951acd69dc858730349019d6
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: a5376aed3e9cdb12be58cb07d7eb00303a03a963
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274546"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074871"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
 
-# <a name="tutorial-optimize-reserved-instances"></a>教程：优化预订实例
+# <a name="tutorial-optimize-reserved-instances"></a>教程：优化预留实例
 
 本教程介绍如何通过 Cloudyn 来优化 Azure 和 Amazon Web Services (AWS) 的预留实例成本和使用率。 云服务提供商提供的预订实例是一种长期合同承诺。在该合同中，你对将来使用 VM 的情况进行先期承诺。 与标准的即用即付 VM 定价模型相比，它可以节省大量的资金。 仅当完全使用预订实例的容量时，潜在的节省才会实现。
 
@@ -112,7 +112,7 @@ Cloudyn 通过以下方式支持预留实例和混合权益：
 
 但是，如果该 VM 只在 50% 的时间运行，则保本点会在 10 个月的时候出现，则每年只节省 $49.74。 在此示例中，你可能不会因购买该实例类型的预订而受益。 参看下图：
 
-![Azure 中的保本点](./media/tutorial-optimize-reserved-instances/azure04.png)
+![Azure VM 的收支平衡点示例](./media/tutorial-optimize-reserved-instances/azure04.png)
 
 ## <a name="view-ri-costs"></a>查看 RI 成本
 
@@ -127,11 +127,11 @@ Cloudyn 通过以下方式支持预留实例和混合权益：
 
 在 Cloudyn 门户中导航到“成本” > “成本分析”，然后选择“实际成本分析”或“时段实际成本”。 接下来设置筛选器。 例如，直接筛选 Azure/VM 服务，并按“资源类型”和“价格模型”分组。 参看下图：
 
-![预订实例的实际成本](./media/tutorial-optimize-reserved-instances/azure05.png)
+![预留实例的实际成本示例](./media/tutorial-optimize-reserved-instances/azure05.png)
 
 可以按服务（在此示例中为 **Azure/VM**）筛选，并按“价格模型”和“资源类型”分组，如下图所示：
 
-![“实际成本”报表组和筛选器](./media/tutorial-optimize-reserved-instances/azure06.png)
+![按价格模型和资源类型分组的实际成本报告组和筛选器的示例](./media/tutorial-optimize-reserved-instances/azure06.png)
 
 也可分析已付款的类型，例如一次性费用、使用费用、许可费用。
 
@@ -145,7 +145,7 @@ Cloudyn 通过以下方式支持预留实例和混合权益：
 
 若要进行查看，请导航到“成本” > “成本分析”，然后选择“摊销成本分析”或“时段摊销成本”。
 
-![摊销预订实例成本](./media/tutorial-optimize-reserved-instances/azure07.png)
+![显示摊销预留实例成本的示例报告](./media/tutorial-optimize-reserved-instances/azure07.png)
 
 ## <a name="optimize-aws-ri-costs"></a>优化 AWS RI 成本
 
@@ -166,25 +166,25 @@ Cloudyn 会比较按需实例使用情况，并会将其与可能的预订实例
 
 下图显示报表中的购买建议。
 
-![购买建议](./media/tutorial-optimize-reserved-instances/aws01.png)
+![在 EC2 购买建议报告中显示购买建议的示例](./media/tutorial-optimize-reserved-instances/aws01.png)
 
 在此示例中，Cloudyn\_A 帐户有 32 条预订实例购买建议。 如果遵循所有购买建议，则可能每年节省 $137,770。 请记住，Cloudyn 提供的购买建议假定运行工作负荷的用量会始终保持一致。
 
 若要查看详细信息，了解每个购买的建议原因，请单击“理由”下的加号 ( **+** )。 下面是列表中第一个建议的示例。
 
-![购买理由](./media/tutorial-optimize-reserved-instances/aws02.png)
+![显示购买理由详细信息的示例](./media/tutorial-optimize-reserved-instances/aws02.png)
 
 上一示例显示，运行按需工作负荷每年的成本是 $90,456。 但是，如果提前购买预订，则同一工作负荷的成本是 $56,592，每年节省 $33,864。
 
 单击“EC2 RI 购买影响”旁边的加号即可查看一年中的保本点，大致了解何时实现购买投资目标。 在以下示例中，在购买后大约八个月后，按需累计成本开始超过 RI 累计成本：
 
-![购买影响](./media/tutorial-optimize-reserved-instances/aws03.png)
+![显示购买影响详细信息的示例](./media/tutorial-optimize-reserved-instances/aws03.png)
 
 在该时间点开始省钱。
 
 可以查看“时段实例数”，验证提供的购买建议的准确性。 在此示例中可以看到，在过去 30 天内，对于该工作负荷来说，平均使用的实例数是 6。
 
-![时段实例数](./media/tutorial-optimize-reserved-instances/aws04.png)
+![显示实例随时间变化的历史使用情况的示例](./media/tutorial-optimize-reserved-instances/aws04.png)
 
 ## <a name="modify-unused-reservations"></a>修改未使用的预订
 
@@ -196,23 +196,23 @@ AWS 针对特定的可用性区域和地区销售预订实例。 如果已针对
 
 下图显示的报表包含未使用的预订实例。
 
-![未使用的预订](./media/tutorial-optimize-reserved-instances/unused-ri01.png)
+![显示有关未使用预留的摘要信息的示例](./media/tutorial-optimize-reserved-instances/unused-ri01.png)
 
 单击“详细信息”下的加号，查看特定预订的预订详细信息。
 
-![未使用的预订的详细信息](./media/tutorial-optimize-reserved-instances/unused-ri02.png)
+![显示未使用预留详细信息的示例](./media/tutorial-optimize-reserved-instances/unused-ri02.png)
 
 在前一示例中，各种可用性区域总共有 77 个未使用的预订。 第一个预订有 51 个未使用的实例。 在列表中向下查看，可能会发现预订实例修改，这些修改可以在 **us-east-1c** 可用性区域中使用 **m3.2xlarge** 实例类型来进行。
 
 对于列表中的第一个预订，请单击“修改”以打开“修改 RI”页，以便显示有关预订的数据。
 
-![修改 RI](./media/tutorial-optimize-reserved-instances/unused-ri03.png)
+![显示可以修改的预留的示例](./media/tutorial-optimize-reserved-instances/unused-ri03.png)
 
 可以修改的预订实例已列出。 在以下示例图中，有 51 个可以修改的未使用预订，但在两次预订之间，却需要 54 个预订。 如果修改未使用的预订，以便将其全部用完，则四个实例将继续按需运行。 就此示例来说，请对未使用的预订进行拆分，使第一个预订使用 30 个实例，第二个预订使用 21 个实例。
 
 单击第一个预订条目所对应的加号，将“预订数量”设置为 30。 对于第二个条目，请将预订数量设置为 **21**，然后单击“应用”。
 
-![更改预订数量](./media/tutorial-optimize-reserved-instances/unused-ri04.png)
+![显示预留数量更改的示例](./media/tutorial-optimize-reserved-instances/unused-ri04.png)
 
 预订的所有未使用的实例都已充分利用，51 个实例不再按需运行。 在此示例中，你通过显著减少按需使用量并使用已经付费的预订，为组织节省了资金。
 

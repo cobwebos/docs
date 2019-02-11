@@ -4,10 +4,10 @@ description: 如何排除在安装应用程序代理程序连接器时可能遇�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 2d528c04a9301998220b5564330f20ed014b68d6
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: c383bde930f9de21b3f2a532ef3f440e72445ddc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036918"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164497"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>安装应用程序代理程序连接器时出现问题
 
@@ -38,7 +38,7 @@ Microsoft AAD 应用程序代理连接器是一个内部域组件，该组件使
 
 ## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>验证与云应用程序代理服务和 Microsoft 登录页的连接性
 
-**目的︰** 验证连接器计算机是否可以连接到 AAD 应用程序代理注册终结点以及 Microsoft 登录页。
+**目的：** 验证连接器计算机是否可以连接到 AAD 应用程序代理注册终结点以及 Microsoft 登录页。
 
 1.  打开浏览器并转到以下网页：<https://aadap-portcheck.connectorporttest.msappproxy.net>，验证与美国中部和美国东部数据中心（使用端口 80 和 443）的连接是否正常。
 

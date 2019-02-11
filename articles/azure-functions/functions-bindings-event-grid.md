@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: ac15b95c19fb0184e902ebb43146a76b6ba2faaf
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 78290f6d1b31788c3f2de99996739cc8e7b20419
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283727"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810928"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
 本文介绍如何处理 Azure Functions 中的[事件网格](../event-grid/overview.md)事件。
 
-事件网格是一个 Azure 服务，它可以发送 HTTP 请求来告知发布方中发生的事件情况。 发布方是发起事件的服务或资源。 例如，Azure Blob 存储帐户是发布方，而 [Blob 上传或删除是事件](../storage/blobs/storage-blob-event-overview.md)。 某些 [Azure 服务原生支持向事件网格发布事件](../event-grid/overview.md#event-sources)。 
+事件网格是一个 Azure 服务，它可以发送 HTTP 请求来告知发布方中发生的事件情况。 发布方是发起事件的服务或资源。 例如，Azure Blob 存储帐户是发布方，而 [Blob 上传或删除是事件](../storage/blobs/storage-blob-event-overview.md)。 某些 [Azure 服务原生支持向事件网格发布事件](../event-grid/overview.md#event-sources)。
 
 事件处理程序接收并处理事件。 Azure Functions 是[原生支持处理事件网格事件的多个 Azure 服务](../event-grid/overview.md#event-handlers)之一。 本文将会介绍在收到事件网格发出的事件时，如何使用事件网格触发器调用某个函数。
 
@@ -48,8 +48,9 @@ ms.locfileid: "51283727"
 
 * [C#](#c-example)
 * [C# 脚本 (.csx)](#c-script-example)
+* [Java](#trigger---java-examples)
 * [JavaScript](#javascript-example)
-* [Java](#trigger---java-example)
+* [Python](#python-example)
 
 有关 HTTP 触发器示例，请参阅本文稍后介绍的[如何使用 HTTP 触发器](#use-an-http-trigger-as-an-event-grid-trigger)。
 
@@ -187,9 +188,47 @@ module.exports = function (context, eventGridEvent) {
 };
 ```
 
-### <a name="trigger---java-example"></a>触发器 - Java 示例
+### <a name="python-example"></a>Python 示例
 
-以下示例演示 *function.json* 文件中的一个触发器绑定以及使用该绑定并输出事件的 [Java 函数](functions-reference-java.md)。
+以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [Python 函数](functions-reference-python.md)。
+
+下面是 function.json 文件中的绑定数据：
+
+```json
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "event",
+      "direction": "in"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "__init__.py"
+}
+```
+
+下面是 Python 代码：
+
+```python
+import logging
+import azure.functions as func
+
+def main(event: func.EventGridEvent):
+    logging.info("Python Event Grid function processed a request.")
+    logging.info("  Subject: %s", event.subject)
+    logging.info("  Time: %s", event.event_time)
+    logging.info("  Data: %s", event.get_json())
+```
+
+### <a name="trigger---java-examples"></a>触发器 - Java 示例
+
+本部分包含以下示例：
+
+* [事件网格触发器、字符串参数](#event-grid-trigger-string-parameter-java)
+* [事件网格触发器、POJO 参数](#event-grid-trigger-pojo-parameter-java)
+
+以下示例显示了 *function.json* 文件和 [Java 函数](functions-reference-java.md)中的触发器绑定，这些函数使用绑定并打印出事件，首先接收 ```String``` 形式的事件，第二个接收 POJO 形式的事件。
 
 ```json
 {
@@ -203,19 +242,63 @@ module.exports = function (context, eventGridEvent) {
 }
 ```
 
-下面是 Java 代码：
+#### <a name="event-grid-trigger-string-parameter-java"></a>事件网格触发器、字符串参数 (Java)
 
 ```java
-@FunctionName("eventGridMonitor")
+  @FunctionName("eventGridMonitorString")
   public void logEvent(
-     @EventGridTrigger(name = "event") String content,
-      final ExecutionContext context
-  ) { 
-      context.getLogger().info(content);
-    }
+    @EventGridTrigger(
+      name = "event"
+    ) 
+    String content, 
+    final ExecutionContext context) {
+      // log 
+      context.getLogger().info("Event content: " + content);      
+  }
 ```
 
-在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 EventGrid 的参数使用 `EventGridTrigger` 注释。 带有这些注释的参数会导致函数在事件到达时运行。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。 
+#### <a name="event-grid-trigger-pojo-parameter-java"></a>事件网格触发器、POJO 参数 (Java)
+
+此示例使用以下 POJO 表示事件网格事件的顶级属性：
+
+```java
+import java.util.Date;
+import java.util.Map;
+
+public class EventSchema {
+
+  public String topic;
+  public String subject;
+  public String eventType;
+  public Date eventTime;
+  public String id;
+  public String dataVersion;
+  public String metadataVersion;
+  public Map<String, Object> data;
+
+}
+```
+
+到达后，事件的 JSON 有效负载被反序列化为 ```EventSchema``` POJO 以供函数使用。 这样，函数便能以面向对象的方式访问事件的属性。
+
+```java
+  @FunctionName("eventGridMonitor")
+  public void logEvent(
+    @EventGridTrigger(
+      name = "event"
+    ) 
+    EventSchema event, 
+    final ExecutionContext context) {
+      // log 
+      context.getLogger().info("Event content: ");
+      context.getLogger().info("Subject: " + event.subject);
+      context.getLogger().info("Time: " + event.eventTime); // automatically converted to Date by the runtime
+      context.getLogger().info("Id: " + event.id);
+      context.getLogger().info("Data: " + event.data);
+  }
+```
+
+在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 EventGrid 的参数使用 `EventGridTrigger` 注释。 带有这些注释的参数会导致函数在事件到达时运行。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
 
 ## <a name="attributes"></a>属性
 
@@ -295,7 +378,7 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 有关通用和特定于事件的属性的说明，请参阅事件网格文档中的[事件属性](../event-grid/event-schema.md#event-properties)。
 
-`EventGridEvent` 类型只定义顶级属性；`Data` 属性是 `JObject`。 
+`EventGridEvent` 类型只定义顶级属性；`Data` 属性是 `JObject`。
 
 ## <a name="create-a-subscription"></a>创建订阅
 
@@ -414,7 +497,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 选择“部署到 Azure”将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 部署可能需要几分钟才能完成。 部署成功后，请查看 Web 应用以确保它正在运行。 在 Web 浏览器中导航到 `https://<your-site-name>.azurewebsites.net`
 
@@ -444,7 +527,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 * 设置 `Content-Type: application/json` 标头。
 * 设置 `aeg-event-type: Notification` 标头。
-* 将 RequestBin 数据粘贴到请求正文。 
+* 将 RequestBin 数据粘贴到请求正文。
 * 使用以下模式发布到事件网格触发器函数的 URL：
 
 ```
@@ -509,19 +592,23 @@ Connections                   ttl     opn     rt1     rt5     p50     p90
 创建想要测试的类型的事件网格订阅，并在其中指定你的 ngrok 终结点。
 
 对于 Functions 1.x，请使用以下终结点模式：
+
 ```
 https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={functionname}
 ```
+
 对于 Functions 2.x，请使用以下终结点模式：
+
 ```
 https://{subdomain}.ngrok.io/runtime/webhooks/eventgrid?functionName={functionName}
 ```
+
 `functionName` 参数必须是在 `FunctionName` 特性中指定的名称。
 
 下面是使用 Azure CLI 的示例：
 
-```
-az eventgrid event-subscription create --resource-id /subscriptions/aeb4b7cb-b7cb-b7cb-b7cb-b7cbb6607f30/resourceGroups/eg0122/providers/Microsoft.Storage/storageAccounts/egblobstor0122 --name egblobsub0126 --endpoint https://263db807.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName=EventGridTrigger
+```azurecli
+az eventgrid event-subscription create --resource-id /subscriptions/aeb4b7cb-b7cb-b7cb-b7cb-b7cbb6607f30/resourceGroups/eg0122/providers/Microsoft.Storage/storageAccounts/egblobstor0122 --name egblobsub0126 --endpoint https://263db807.ngrok.io/runtime/webhooks/eventgrid?functionName=EventGridTrigger
 ```
 
 有关如何创建订阅的信息，请参阅本文前面所述的[创建订阅](#create-a-subscription)。
@@ -560,8 +647,8 @@ public static async Task<HttpResponseMessage> Run(
     var messages = await req.Content.ReadAsAsync<JArray>();
 
     // If the request is for subscription validation, send back the validation code.
-    if (messages.Count > 0 && string.Equals((string)messages[0]["eventType"], 
-        "Microsoft.EventGrid.SubscriptionValidationEvent", 
+    if (messages.Count > 0 && string.Equals((string)messages[0]["eventType"],
+        "Microsoft.EventGrid.SubscriptionValidationEvent",
         System.StringComparison.OrdinalIgnoreCase))
     {
         log.LogInformation("Validate request received");

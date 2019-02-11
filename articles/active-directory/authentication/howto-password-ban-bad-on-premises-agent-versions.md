@@ -3,19 +3,19 @@ title: 本地 Azure AD 密码保护代理版本发行历史记录
 description: 记录了版本发行和行为更改历史记录
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: 89d64a28d2fe43464995e434c9f3807047b29492
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: ccfe62e0002e3420303130840f1a0d393efb3420
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913630"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078757"
 ---
 # <a name="preview--azure-ad-password-protection-agent-version-history"></a>预览版：Azure AD 密码保护代理版本历史记录
 

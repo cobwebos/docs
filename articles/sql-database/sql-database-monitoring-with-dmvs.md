@@ -1,5 +1,5 @@
 ---
-title: 使用动态管理视图监视 Azure SQL 数据库 | Microsoft 文档
+title: 使用 DMV 监视性能 Azure SQL 数据库 | Microsoft Docs
 description: 了解如何通过使用动态管理视图检测常见性能问题来监视 Microsoft Azure SQL 数据库。
 services: sql-database
 ms.service: sql-database
@@ -7,19 +7,19 @@ ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: juliemsft
+ms.author: jrasnick
+ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: c690e9b864d4b2b378814b478ea4918a9f75fbba
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.date: 12/19/2018
+ms.openlocfilehash: 371632a28d22583f8b206e4d8b9d2b6b4e510ab0
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288521"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563943"
 ---
-# <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>使用动态管理视图监视 Azure SQL 数据库
+# <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>使用动态管理视图监视性能 Azure SQL 数据库
 
 Microsoft Azure SQL 数据库支持通过一部分动态管理视图来诊断性能问题，这些问题可能由查询受阻或长时间运行、资源瓶颈、不良查询计划等原因造成。 本主题提供有关如何通过使用动态管理视图检测常见性能问题的信息。
 
@@ -549,7 +549,7 @@ FROM sys.dm_db_resource_stats;
 Azure SQL 数据库在每个服务器的 **master** 数据库的 **sys.resource_stats** 视图中，公开每个活动数据库的资源耗用信息。 表中的数据以 5 分钟为间隔收集而得。 对于基本、标准和高级服务层，数据可能需要再耗费 5 分钟才会出现在表中，以使此数据更有利于历史分析而非接近实时的分析。 查询 **sys.resource_stats** 视图，以查看数据库的最近历史记录和验证你选择的保留是否提供了所需的性能。
 
 > [!NOTE]
-> 必须连接到逻辑 SQL 数据库服务器的 **master** 数据库，才能查询下面示例中的 **sys.resource_stats**。
+> 必须连接到 SQL 数据库服务器的 master 数据库，才能查询下面示例中的 sys.resource_stats。
 
 此示例演示如何公开此视图中的数据：
 
@@ -574,7 +574,7 @@ ORDER BY start_time DESC
     ORDER BY start_time DESC;
     ```
 
-2. 若要评估工作负荷与计算大小的适合程度，需要向下钻取资源指标的每个方面：CPU、读取数、写入数、辅助进程数和会话数。 下面是使用 **sys.resource_stats** 的修订查询，用于报告这些资源度量值的平均值和最大值：
+2. 若要评估工作负载与计算大小的适合程度，需要向下钻取资源指标的每个方面：CPU、读取数、写入数、辅助进程数和会话数。 下面是使用 **sys.resource_stats** 的修订查询，用于报告这些资源度量值的平均值和最大值：
 
     ```sql
     SELECT

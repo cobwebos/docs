@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d24cf56a898a4f4f8317246cbc2317e926256a77
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 56c646c2ab1f733c37a20cf6e6a5945b223beec4
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805680"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447269"
 ---
 <a name="managing-users-on-cloud-partner-portal"></a>管理云合作伙伴门户上的用户
 ======================================
@@ -36,7 +36,7 @@ ms.locfileid: "48805680"
 <a name="step-2-click-add-user"></a>步骤 2. 单击“添加用户”。
 -----------------------
 
-![选择 Adducer](./media/cloud-partner-portal-how-to-manage-users/adduser.png)
+![选择“添加用户”](./media/cloud-partner-portal-how-to-manage-users/adduser.png)
 
 <a name="step-3-type-email-address-and-select-a-role-assignment"></a>步骤 3. 键入电子邮件地址，并选择角色分配。
 --------------------------------------------------------
@@ -59,7 +59,8 @@ o 确保监视云合作伙伴门户上提供的电子邮件 ID，以获取任何
 <a name="step-4-select-the-publisher-name-you-want-to-add-to-the-new-user-then-click-add-to-complete-user-addition"></a>步骤 4. 选择要添加到新用户的发布者名称，然后单击“添加”以完成用户添加。
 ----------------------------------------------------------------------------------------------------------------------------
 
-> `NOTE: The ‘publisher names’ for which your email is added as an owner or contributor will show up in the drop-down list of Publisher for selection.`
+> [!NOTE]
+> 对其将你的电子邮件添加为所有者或参与者的“发布者名称”会显示在“发布者”下拉列表中以供选择。
 
 ![分配角色 - 选择发布者](./media/cloud-partner-portal-how-to-manage-users/assignselectpublisher.png)
 

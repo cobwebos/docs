@@ -218,7 +218,7 @@ ms.locfileid: "51823992"
  
 ### <a name="create-a-leapsome-test-user"></a>创建 Leapsome 测试用户
 
-本部分介绍了如何在 Leapsome 中创建用户“Britta Simon”。 与  [Leapsome 客户端支持团队](mailto:support@leapsome.com) 协作，共同添加需要在 Leapsome 平台中列入白名单的用户或域。 如果域是由团队添加，用户会自动预配到 Leapsome 平台。 使用单一登录前，必须先创建并激活用户。 
+本部分介绍了如何在 Leapsome 中创建用户“Britta Simon”。 与  [Leapsome 客户端支持团队](mailto:support@leapsome.com) 协作，共同添加需要在 Leapsome 平台中列入允许列表的用户或域。 如果域是由团队添加，用户会自动预配到 Leapsome 平台。 使用单一登录前，必须先创建并激活用户。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

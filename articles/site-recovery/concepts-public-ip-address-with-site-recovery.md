@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 80c38ecc766d60fba578e877998aeb216ea66012
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: eaf18cf7d7a5f150d3400e133bf0703bb03e7b8f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215270"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845971"
 ---
 # <a name="set-up-public-ip-addresses-after-failover"></a>设置故障转移后的公共 IP 地址
 

@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2018
 ms.author: mabrigg
-ms.openlocfilehash: 45c06afd0d298c467d8f0a3a42b68bf1948c6ed3
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.lastreviewed: 12/01/2018
+ms.openlocfilehash: c16f218903557a6d3a10f3ef201587d2885fffa9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726740"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239093"
 ---
 # <a name="azure-monitor-on-azure-stack"></a>Azure Stack 中的 Azure Monitor
 
@@ -126,7 +127,7 @@ Azure Stack 中的 **Microsoft.Compute** 资源提供程序包括：
  - [PowerShell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-powershell-samples)
  - [跨平台的命令行接口 (CLI)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-cli-samples)
  - [REST API](https://docs.microsoft.com/rest/api/monitor)
- - [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
+ - [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
 
 ## <a name="next-steps"></a>后续步骤
 

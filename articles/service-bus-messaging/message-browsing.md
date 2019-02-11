@@ -3,22 +3,22 @@ title: Azure 服务总线消息浏览 | Microsoft Docs
 description: 浏览和速览服务总线消息
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
-ms.author: spelluru
-ms.openlocfilehash: 7ce2e870be0178420d80682bd18adbef814c162f
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 425cf262b80e83a4d06074a567a2921eee12f9c2
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857459"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855935"
 ---
 # <a name="message-browsing"></a>消息浏览
 
@@ -34,7 +34,7 @@ Peek 还会返回锁定的消息，以及当前由其他接收程序处理但尚
 
 ## <a name="peek-apis"></a>Peek API
 
-[Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) 和 [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) 方法存在于所有 .NET 和 Java 客户端库以及所有接收程序对象中：MessageReceiver、MessageSession、QueueClient 和 SubscriptionClient。 Peek 适用于所有队列、订阅及其对应的死信队列。
+[Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) 和 [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) 方法存在于所有 .NET 和 Java 客户端库以及所有接收程序对象中：**MessageReceiver**、**MessageSession**、**QueueClient** 和 **SubscriptionClient**。 Peek 适用于所有队列、订阅及其对应的死信队列。
 
 如果重复调用，Peek 方法会按序号从低到高的顺序，枚举队列或订阅日志中的所有消息。 这是消息的排队顺序，并不是消息的最终检索顺序。
 

@@ -4,7 +4,7 @@ description: 本文将主要介绍 Azure Active Directory 活动内容包的错�
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ffce7eb1-99da-4ea7-9c4d-2322b755c8ce
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a76486eaf2f9df8eb47b8bb73f1577324152a80f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: e786a2af8f86b69116b612c266dd40bbe7580e30
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623292"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161845"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Azure Active Directory 活动日志内容包错误故障排除 
 
@@ -34,12 +34,13 @@ ms.locfileid: "51623292"
 
 - [刷新失败](troubleshoot-content-pack.md#refresh-failed) 
 - [无法更新数据源凭据](troubleshoot-content-pack.md#failed-to-update-data-source-credentials) 
-- [导入数据花费的时间过长](troubleshoot-content-pack.md#importing-of-data-is-taking-too-long)  
+- [导入数据的时间过长](troubleshoot-content-pack.md#importing-of-data-is-taking-too-long) 
+
 本文提供了有关可能的原因以及如何修复这些错误的信息。
  
 ## <a name="refresh-failed"></a>刷新失败 
  
-此错误是如何发现的：根据 Power BI 的电子邮件或刷新历史记录中的失败状态。 
+**此错误是如何发现的**：根据 Power BI 的电子邮件或刷新历史记录中的失败状态。 
 
 
 | 原因 | 如何解决 |
@@ -61,7 +62,7 @@ ms.locfileid: "51623292"
 
 ## <a name="data-import-is-too-slow"></a>数据导入速度太慢 
  
-**此错误是如何发现的**：在 Power BI 中，在连接内容包后，数据导入过程开始为 Azure AD 活动日志准备仪表板。 你会看到消息：**正在导入数据...** 且没有进一步的进展。  
+**此错误是如何发现的**：在 Power BI 中，在连接内容包后，数据导入过程开始为 Azure AD 活动日志准备仪表板。 将显示以下消息：**正在导入数据...** 且没有进一步的进展。  
 
 | 原因 | 如何解决 |
 | ---   | ---        |

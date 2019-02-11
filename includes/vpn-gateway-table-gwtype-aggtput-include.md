@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/12/2018
+ms.date: 12/05/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b698dd03473dd3cb708c47c6554869eebba48bf9
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 555a8e3e92dc1d12cb7c6d6e06d2511f15a2c862
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51597579"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52973113"
 ---
 |**SKU**   | S2S/VNet 到 VNet<br>隧道 | **P2S<br> SSTP 连接** | **P2S<br> IKEv2 连接** | 聚合<br>吞吐量基准 | **BGP** |
 |---       | ---        | ---       | ---            | ---       | --- |
@@ -25,7 +25,7 @@ ms.locfileid: "51597579"
 
 (*) 如果需要 30 个以上 S2S VPN 隧道，请使用[虚拟 WAN](../articles/virtual-wan/virtual-wan-about.md)。
 
-* 适用于 VPN 网关的聚合吞吐量基准组合了 S2S 和 P2S。 **如果有大量的 P2S 连接，则可能会对 S2S 连接造成负面影响，因为存在吞吐量限制。** 聚合吞吐量基准基于对通过单个网关聚合的多个隧道的测量。 受 Internet 流量情况和应用程序行为影响，该吞吐量无法保证。
+* 聚合吞吐量基准基于对通过单个网关聚合的多个隧道的测量。 适用于 VPN 网关的聚合吞吐量基准组合了 S2S 和 P2S。 **如果有大量的 P2S 连接，则可能会对 S2S 连接造成负面影响，因为存在吞吐量限制。** 受 Internet 流量情况和应用程序行为影响，无法保证聚合吞吐量基准。
 
 * 这些连接限制是独立的。 例如，在 VpnGw1 SKU 上可以有 128 个 SSTP 连接，还可以有 250 个 IKEv2 连接。
 
@@ -34,3 +34,5 @@ ms.locfileid: "51597579"
 * 可在 [SLA](https://azure.microsoft.com/support/legal/sla/vpn-gateway/) 页查看 SLA（服务级别协议）信息。
 
 * 仅在使用资源管理器部署模型的情况下才支持将 VpnGw1、VpnGw2 和 VpnGw3 用于 VPN 网关。
+
+* 基本 SKU 被视为旧版 SKU。 基本 SKU 具有某些功能限制。 使用基本 SKU 的网关无法调整为新网关 SKU 中的一种，必须更改为新的 SKU，这就需要删除并新建 VPN 网关。 使用基本 SKU 前，请验证所需功能是否受支持。

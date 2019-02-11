@@ -9,17 +9,16 @@ ms.assetid: 7bf6d8fd-04b5-499d-bd19-eff217aa4a9c
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1bf915bf702cdf9492cce1f32886c0049fbf9867
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bd9df4553a50f162a4fb2142b7085f813311754f
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242834"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015825"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>使用数据管理网关在本地源与云之间移动数据
 > [!NOTE]
@@ -69,7 +68,7 @@ ms.locfileid: "51242834"
    >
    >
 4. 选择要在其中创建数据工厂的 **Azure 订阅** 。
-5. 选择现有的 **资源组** ，或创建资源组。 本教程创建名为 **ADFTutorialResourceGroup** 的资源组。
+5. 选择现有的 **资源组** ，或创建资源组。 对于本教程，创建名为 **ADFTutorialResourceGroup** 的资源组。
 6. 在“新建数据工厂”页中单击“创建”。
 
    > [!IMPORTANT]
@@ -106,7 +105,7 @@ ms.locfileid: "51242834"
 
     ![网关 -“配置”页](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
-    此方法是执行以下操作最简单的方法（一键式操作）：下载、安装、配置和注册网关，只需一步操作即可完成。 可以看到计算机上已安装了 **Microsoft 数据管理网关配置管理器**应用程序。 还可以在文件夹 **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared** 中查找可执行文件 **ConfigManager.exe**。
+    此方法是执行以下操作最简单的方法（一键式操作）：下载、安装、配置和注册网关，只需一步操作即可完成。 可以看到计算机上已安装了 **Microsoft 数据管理网关配置管理器**应用程序。 还可以在以下文件夹中找到可执行文件 **ConfigManager.exe**：**C:\Program Files\Microsoft Data Management Gateway\2.0\Shared**。
 
     此外，还可使用此页中的链接手动下载和安装网关，并使用“新建密钥文”本框中显示的密钥对其进行注册。
 
@@ -119,7 +118,7 @@ ms.locfileid: "51242834"
 5. 等待几分钟，或一直等待直到看到以下通知消息：
 
     ![网关安装成功](./media/data-factory-move-data-between-onprem-and-cloud/gateway-install-success.png)
-6. 启动计算机上的“数据管理网关配置管理器”应用程序。 在“搜索”窗口中，键入“数据管理网关”，以便访问此实用程序。 还可以在文件夹 **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared** 中查找可执行文件 **ConfigManager.exe**
+6. 启动计算机上的“数据管理网关配置管理器”应用程序。 在“搜索”窗口中，键入“数据管理网关”，以访问此实用程序。 还可以在以下文件夹中找到可执行文件 **ConfigManager.exe**：**C:\Program Files\Microsoft Data Management Gateway\2.0\Shared**
 
     ![网关配置管理器](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDMGConfigurationManager.png)
 7. 确认可以看到 `adftutorialgateway is connected to the cloud service` 消息。 底部状态栏显示带有**绿色复选标记**的“已连接到云服务”。
@@ -154,7 +153,7 @@ ms.locfileid: "51242834"
 12. 左侧树视图中的“数据网关”下应会显示 **adftutorialgateway**。  单击此项可看到相关联的 JSON。
 
 ## <a name="create-linked-services"></a>创建链接服务
-本步骤创建两个链接服务：**AzureStorageLinkedService** 和 **SqlServerLinkedService**。 **SqlServerLinkedService** 用于链接本地 SQL Server 数据库，而 **AzureStorageLinkedService** 链接服务用于将 Azure blob 存储链接到数据工厂。 本演练稍后介绍如何创建管道，将数据从本地 SQL Server 数据库复制到 Azure blob 存储。
+此步骤创建两个链接服务：**AzureStorageLinkedService** 和 **SqlServerLinkedService**。 **SqlServerLinkedService** 用于链接本地 SQL Server 数据库，而 **AzureStorageLinkedService** 链接服务用于将 Azure blob 存储链接到数据工厂。 本演练稍后介绍如何创建管道，将数据从本地 SQL Server 数据库复制到 Azure blob 存储。
 
 #### <a name="add-a-linked-service-to-an-on-premises-sql-server-database"></a>将链接服务添加到本地 SQL Server 数据库
 1. 在“数据工厂编辑器”中，单击工具栏上的“新建数据存储”，并选择“SQL Server”。
@@ -281,7 +280,7 @@ ms.locfileid: "51242834"
    * **folderPath** 设置为 **adftutorial/outfromonpremdf**，其中 outfromonpremdf 为 adftutorial 容器中的文件夹。 如果不存在 **adftutorial** 容器，则创建该容器。
    * **availability** 设置为 **hourly**（**frequency** 设置为 **hour**，**interval** 设置为 **1**）。  数据工厂服务每小时在 Azure SQL 数据库的 **emp** 表中生成输出数据切片。
 
-   如果未指定**输出表**的 **fileName**，**folderPath** 中生成的文件根据以下格式命名：Data<Guid>.txt（例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt）。
+   如果未指定**输出表**的 **fileName**，**folderPath** 中生成的文件将按以下格式命名：Data.<Guid>.txt（例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt）。
 
    若要根据 **SliceStart** 时间动态设置 **folderPath** 和 **fileName**，请使用 partitionedBy 属性。 在以下示例中，folderPath 使用 SliceStart（所处理的切片的开始时间）中的年、月和日，fileName 使用 SliceStart 中的小时。 例如，如果切片生成于 2014-10-20T08:00:00，folderName 将设置为 wikidatagateway/wikisampledataout/2014/10/20，fileName 设置为 08.csv。
 
@@ -373,7 +372,7 @@ ms.locfileid: "51242834"
 3. 单击命令栏上的“部署”来部署数据集（表为矩形数据集）。 确认“管道”节点下的树视图中显示管道。  
 4. 现在，单击 X 两次，关闭页面，以返回到 ADFTutorialOnPremDF 的“数据工厂”页。
 
-**祝贺你！** 现已成功创建 Azure 数据工厂、链接服务、数据集和管道，并已计划好管道。
+祝贺你！ 现已成功创建 Azure 数据工厂、链接服务、数据集和管道，并已计划好管道。
 
 #### <a name="view-the-data-factory-in-a-diagram-view"></a>在图示视图中查看数据工厂
 1. 在“Azure 门户”中，单击主页上 **ADFTutorialOnPremDF** 数据工厂的“关系图”磁贴。 :

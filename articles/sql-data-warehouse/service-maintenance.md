@@ -6,16 +6,16 @@ author: antvgski
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/19/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 8b5b94c959ae9820cab338f3ee3317fb3ee166d6
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 05f82ae571bea41c15099b52282f4efe29b2c763
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286595"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468404"
 ---
 # <a name="planning-for-maintenance-on-your-azure-sql-data-warehouse"></a>计划对 Azure SQL 数据仓库的维护
 
@@ -32,9 +32,9 @@ ms.locfileid: "43286595"
 
 ## <a name="setting-up-alerts"></a>设置警报
 
-建议使用 [Azure Monitor](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md) 来设置计划内维护日志警报。 警报可以帮助你计划所需的维护，以便最大限度地降低对你的业务的影响。 
+建议使用 [Azure Monitor](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 来设置计划内维护日志警报。 警报可以帮助你计划所需的维护，以便最大限度地降低对你的业务的影响。 
 
-若要设置通知，请使用这些[日志警报说明](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)。 
+若要设置通知，请使用这些[日志警报说明](../azure-monitor/platform/alerts-activity-log-service-notifications.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 有关监视的详细信息，请参阅[监视工作负荷](sql-data-warehouse-manage-monitor.md)。

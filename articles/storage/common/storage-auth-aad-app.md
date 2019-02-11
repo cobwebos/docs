@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 11/21/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 03dd056363cd99f5354dc10ed5ae328eb39c3ec2
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.subservice: common
+ms.openlocfilehash: 4c39f47169071ceb9430f419a144e11f425d65b0
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291056"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240720"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues-preview"></a>从应用程序中使用 Azure Active Directory 进行身份验证以访问 blob 和队列（预览版）
 
@@ -66,7 +66,7 @@ ms.locfileid: "52291056"
 
 ![显示注册应用权限的屏幕截图](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
-## <a name="net-code-example-create-a-block-blob"></a>.NET 代码示例：创建块 blob
+## <a name="net-code-example-create-a-block-blob"></a>.NET 代码示例：创建块 Blob
 
 代码示例展示如何从 Azure AD 获取访问令牌。 访问令牌用于对指定用户进行身份验证，然后授权用于创建块 blob 的请求。 若要让此示例能够正常工作，请首先遵循上述部分列出的步骤。
 
@@ -79,11 +79,11 @@ ms.locfileid: "52291056"
 
 若要使用 Azure AD 验证安全主体的身份，需要在代码中包含一些已知值。
 
-#### <a name="azure-ad-oauth-endpoint"></a>Azure AD OAuth 终结点
+#### <a name="azure-ad-authority"></a>Azure AD 颁发机构
 
-OAuth 2.0 的基本 Azure AD 权威终结点如下所示，其中 *tenant-id* 是 Active Directory 租户 ID（或目录 ID）：
+对于 Microsoft 公有云，基本 Azure AD 颁发机构如下，其中 *tenant-id* 是 Active Directory 租户 ID（或目录 ID）：
 
-`https://login.microsoftonline.com/<tenant-id>/oauth2/token`
+`https://login.microsoftonline.com/<tenant-id>/`
 
 租户 ID 用于标识要用于身份验证的 Azure AD 租户。 若要检索租户 ID，请遵循**获取 Azure Active Directory 的租户 ID** 中概述的步骤。
 
@@ -138,11 +138,11 @@ using Microsoft.WindowsAzure.Storage.Blob;
 static string GetUserOAuthToken()
 {
     const string ResourceId = "https://storage.azure.com/";
-    const string AuthEndpoint = "https://login.microsoftonline.com/{0}/oauth2/token";
+    const string AuthInstance = "https://login.microsoftonline.com/{0}/";
     const string TenantId = "<tenant-id>"; // Tenant or directory ID
 
     // Construct the authority string from the Azure AD OAuth endpoint and the tenant ID. 
-    string authority = string.Format(CultureInfo.InvariantCulture, AuthEndpoint, TenantId);
+    string authority = string.Format(CultureInfo.InvariantCulture, AuthInstance, TenantId);
     AuthenticationContext authContext = new AuthenticationContext(authority);
 
     // Acquire an access token from Azure AD. 

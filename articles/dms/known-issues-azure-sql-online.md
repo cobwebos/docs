@@ -4,19 +4,19 @@ description: 了解在联机迁移到 Azure SQL 数据库时存在的已知问�
 services: database-migration
 author: pochiraju
 ms.author: rajpo
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2018
-ms.openlocfilehash: d228fbde230f89848d895bd1c004724b88de4431
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.date: 01/11/2019
+ms.openlocfilehash: b066c7f6c32b6e9fe1c1f63b5db88b4deaa2edae
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883816"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231812"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制
 
@@ -28,9 +28,9 @@ ms.locfileid: "48883816"
 
 如果源数据库包含一个或多个时态表，在执行“完整数据加载”操作期间数据库迁移将会失败，并可能出现以下消息：
 
-{ "resourceId":"/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType":"Database migration error", "errorEvents":"["Capture functionalities could not be set. RetCode: SQL_ERROR SqlState: 42000 NativeError: 13570 Message: [Microsoft][SQL Server Native Client 11.0][SQL Server]The use of replication is not supported with system-versioned temporal table '[Application. Cities]' Line: 1 Column: -1 "]" }
+{ "resourceId":"/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType":"Database migration error", "errorEvents":"["Capture functionalities could not be set. RetCode:SQL_ERROR SqlState:42000 NativeError:13570 Message: [Microsoft][SQL Server Native Client 11.0][SQL Server]The use of replication is not supported with system-versioned temporal table '[Application. Cities]' Line:1 Column: -1 "]" }
  
- ![时态表错误示例](media\known-issues-azure-sql-online\dms-temporal-tables-errors.png)
+ ![时态表错误示例](media/known-issues-azure-sql-online/dms-temporal-tables-errors.png)
 
 **解决方法**
 
@@ -52,7 +52,7 @@ ms.locfileid: "48883816"
 
 在执行“完整数据加载”操作期间，可能会出现一个 SQL 异常，指出“ntext 与 hierarchyid 不兼容”：
      
-![hierarchyid 错误示例](media\known-issues-azure-sql-online\dms-hierarchyid-errors.png)
+![hierarchyid 错误示例](media/known-issues-azure-sql-online/dms-hierarchyid-errors.png)
 
 **解决方法**
 
@@ -84,7 +84,7 @@ ms.locfileid: "48883816"
 如果大型对象 (LOB) 列的长度超过 32 KB，目标上的数据可能会截断。 可使用以下查询检查 LOB 列的长度： 
 
 ``` 
-SELECT max(len(ColumnName)) as LEN from TableName
+SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 ```
 
 **解决方法**
@@ -107,7 +107,7 @@ DMS 不会迁移源时间戳值；DMS 在目标表中生成新的时间戳值。
 
 如果“数据库详细状态”视图中显示迁移失败，选择顶部功能区中的“数据迁移错误”链接可能不会提供特定于该迁移失败的其他详细信息。
 
-![发生数据迁移错误时不提供详细信息的示例](media\known-issues-azure-sql-online\dms-data-migration-errors-no-details.png)
+![发生数据迁移错误时不提供详细信息的示例](media/known-issues-azure-sql-online/dms-data-migration-errors-no-details.png)
 
 **解决方法**
 
@@ -115,6 +115,6 @@ DMS 不会迁移源时间戳值；DMS 在目标表中生成新的时间戳值。
 
 1. 关闭“数据库详细状态”边栏选项卡以显示“迁移活动”屏幕。
 
-     ![迁移活动屏幕](media\known-issues-azure-sql-online\dms-migration-activity-screen.png)
+     ![迁移活动屏幕](media/known-issues-azure-sql-online/dms-migration-activity-screen.png)
 
 2. 选择“查看错误详细信息”以查看可帮助排查迁移错误的具体错误消息。

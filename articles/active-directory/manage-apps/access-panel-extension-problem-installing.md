@@ -4,10 +4,10 @@ description: 修复安装访问面板浏览器扩展时遇到的常见错误。
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 5/4/18
 ms.author: barbkess
 ms.reviewer: japere,asteen
-ms.openlocfilehash: aa0602ec0ecb97e9174fe6ef552b88fc30900d09
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 69a05b8fad222baa5ab367215751857e0d0385fb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354534"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153210"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>安装访问面板浏览器扩展
 
@@ -36,7 +36,7 @@ ms.locfileid: "44354534"
 
 对于基于密码的 SSO，可以使用以下任一浏览器：
 
-- **Microsoft Edge**：在 Windows 10 周年纪念版或更高版本上。 
+- **Microsoft Edge**：Windows 10 周年纪念版或更高版本。 
 - **Chrome**：在 Windows 7 或更高版本上，以及在 MacOS X 或更高版本上。
 - **Firefox 26.0 或更高版本**：在 Windows XP SP2 或更高版本上，以及在 Mac OS X 10.6 或更高版本上。
 
@@ -62,9 +62,9 @@ ms.locfileid: "44354534"
 也可以直接从以下站点下载适用于 Chrome 和 Microsoft Edge 的扩展：
 
 - [Chrome 扩展](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-- [Edge 扩展](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
+- [Microsoft Edge 扩展](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
 
-## <a name="use-the-my-apps-secure-sign-in-extension"></a>使用我的应用安全登录扩展
+## <a name="use-the-my-apps-secure-sign-in-extension"></a>使用“我的应用”安全登录扩展
 * 如果使用的我的应用 URL 不是 `https://myapps.microsoft.com`，请通过执行以下操作配置默认 URL：
    1. 未登录到该扩展时，请右键单击该扩展图标。
    2. 在菜单上，选择“我的应用 URL”。
@@ -93,7 +93,7 @@ ms.locfileid: "44354534"
     4. 现在，即使在执行远程操作时也可以浏览内部公司 URL
 
 > [!NOTE]
-> 上述选项仅适用于 Microsoft Edge、 Chrome 和 Firefox。
+> 上述选项仅适用于 Microsoft Edge、Chrome 和 Firefox。
 
 ## <a name="set-up-a-group-policy-for-internet-explorer"></a>设置 Internet Explorer 的组策略
 
@@ -126,4 +126,4 @@ ms.locfileid: "44354534"
 -   Fiddler 跟踪
 
 ## <a name="next-steps"></a>后续步骤
-[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](what-is-single-sign-on.md)
+[Azure Active Directory 的应用程序访问与单一登录是什么？](what-is-single-sign-on.md)

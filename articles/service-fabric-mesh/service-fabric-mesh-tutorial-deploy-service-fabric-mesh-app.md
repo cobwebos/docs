@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 467484824ec3a3ceffb6dfa692953406ed6acc1b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c08e5dc196c377b006be70339f402b2c023a3826
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963315"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299803"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>教程：部署 Service Fabric 网格应用程序
 
@@ -95,28 +95,37 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ContainerRegistry
 
 首次发布到 Azure 时，会将 Docker 映像推送到 Azure 容器注册表 (ACR)，此过程需要一段时间，具体时间取决于映像的大小。 后续发布同一项目会更快。 可以通过在 Visual Studio 的“输出”窗口中选择“Service Fabric 工具”窗格，来监视部署的进度。 完成部署后，“Service Fabric 工具”输出将以 URL 的形式显示应用程序的 IP 地址和端口。
 
-```json
+```
 Packaging Application...
 Building Images...
 Web1 -> C:\Code\ServiceFabricMeshApp\ToDoService\bin\Any CPU\Release\netcoreapp2.0\ToDoService.dll
-Uploading the images to Azure Container Registy...
+Uploading the images to Azure Container Registry...
 Deploying application to remote endpoint...
 The application was deployed successfully and it can be accessed at http://10.000.38.000:20000.
 ```
 
 打开 Web 浏览器并导航到该 URL，以查看 Azure 中运行的网站。
 
-## <a name="set-up-service-fabric-mesh-cli"></a>设置 Service Fabric 网格 CLI 
+## <a name="set-up-service-fabric-mesh-cli"></a>设置 Service Fabric 网格 CLI
+
 可以使用 Azure Cloud Shell 或本地安装的 Azure CLI 来完成剩余的步骤。 根据这些[说明](service-fabric-mesh-howto-setup-cli.md)安装 Azure Service Fabric 网格 CLI 扩展模块。
 
 ## <a name="check-application-deployment-status"></a>检查应用程序部署状态
 
 应用程序现已部署。 可以使用 `app show` 命令检查其状态。 
 
-教程应用的应用程序名称为 `ServiceMeshApp`。 使用以下命令收集有关应用程序的详细信息：
+教程应用的应用程序名称为 `todolistapp`。 使用以下命令收集有关应用程序的详细信息：
 
 ```azurecli-interactive
-az mesh app show --resource-group $rg --name ServiceMeshApp
+az mesh app show --resource-group $rg --name todolistapp
+```
+
+## <a name="get-the-ip-address-of-your-deployment"></a>获取部署的 IP 地址
+
+若要获取应用程序的 IP 地址，请使用以下命令：
+  
+```azurecli-interactive
+az mesh gateway show --resource-group myResourceGroup --name todolistappGateway
 ```
 
 ## <a name="see-all-applications-currently-deployed-to-your-subscription"></a>查看当前已部署到订阅中的所有应用程序

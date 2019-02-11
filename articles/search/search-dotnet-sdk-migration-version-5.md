@@ -1,20 +1,21 @@
 ---
-title: 升级到 Azure 搜索 .NET SDK 版本 5 | Microsoft Docs
-description: 升级到 Azure 搜索 .NET SDK 版本 5
+title: 升级到 Azure 搜索 .NET SDK 版本 5 - Azure 搜索
+description: 从旧版本将代码迁移到 Azure 搜索 .NET SDK 版本 5。 了解新增功能和所需的代码更改。
 author: brjohnstmsft
 manager: jlembicz
 services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 01/24/2019
 ms.author: brjohnst
-ms.openlocfilehash: b08507d7685ce87a4c176385f750a72d6ae51ba3
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.custom: seodec2018
+ms.openlocfilehash: d7684aa79ac9f58c2a047b01a6d9f5263795221d
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091134"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912044"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-5"></a>升级到 Azure 搜索 .NET SDK 版本 5
 如果使用的是版本 4.0-preview 或更早版本的 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk)，本文有助于升级应用程序，以便使用版本 5。
@@ -43,17 +44,26 @@ Azure 搜索 .NET SDK 的版本 5 针对 Azure 搜索 REST API 的最新正式�
 ## <a name="steps-to-upgrade"></a>升级步骤
 首先，按以下方法操作更新 `Microsoft.Azure.Search` 的 NuGet 引用：使用 NuGet 包管理器控制台，或者在 Visual Studio 中右键单击项目引用，然后选择“管理 NuGet 程序包...”。
 
-在 NuGet 已下载新的程序包及其依赖项后，请重新生成项目。 除非使用的预览功能不在新的 GA SDK 中，否则应重新成功生成（如果没有，请在 [GitHub](https://github.com/azure/azure-sdk-for-net/issues) 上告知我们）。 如果成功，一切准备就绪！
+在 NuGet 已下载新的程序包及其依赖项后，请重新生成项目。 项目重新生成可能会成功，具体取决于代码的结构。 如果成功，一切准备就绪！
+
+如果生成失败，应该会看到如下所示的生成错误：
+
+    The name 'SuggesterSearchMode' does not exist in the current context
+
+下一步是修复生成错误。 有关出错原因和修复方法的详细信息，请参阅[版本 5 中的重大更改](#ListOfChanges)。
 
 请注意，由于更改了 Azure 搜索 .NET SDK 的包，必须重新生成应用程序才能使用版本 5。 有关这些更改的详细信息，请参阅[版本 5 中的重大更改](#ListOfChanges)。
 
 可能会看到与已过时方法或属性有关的其他生成警告。 这些警告将包含有关使用哪些功能来替换已弃用功能的说明。 例如，如果应用程序使用 `IndexingParametersExtensions.DoNotFailOnUnsupportedContentType` 方法，则出现一个警告“此行为现在默认启用，因此不再需要调用此方法。”
 
-在修复了任何生成警告后，可以对应用程序进行更改，以利用新功能（如果愿意）。 有关 SDK 中的新功能的详细信息，请参阅[版本 5 中的新增功能](#WhatsNew)。
+在修复了任何生成错误或警告后，可以对应用程序进行更改，以利用新功能（如果愿意）。 有关 SDK 中的新功能的详细信息，请参阅[版本 5 中的新增功能](#WhatsNew)。
 
 <a name="ListOfChanges"></a>
 
 ## <a name="breaking-changes-in-version-5"></a>版本 5 中的重大更改
+
+### <a name="new-package-structure"></a>新的包结构
+
 版本 5 中最本质的重大更改是 `Microsoft.Azure.Search` 程序集及其内容已被分成四个独立的程序集，现在以四个独立的 NuGet 包进行分发：
 
  - `Microsoft.Azure.Search`：这是一个元数据包，其中包含所有其他 Azure 搜索包作为依赖项。 如果从 SDK 的早期版本进行升级，只需升级此包，重新生成就可开始使用新版本。
@@ -64,6 +74,10 @@ Azure 搜索 .NET SDK 的版本 5 针对 Azure 搜索 REST API 的最新正式�
 由于许多类型在程序集之间移动，所以从技术上来说这是重大更改。 这就是为什么需要重新生成应用程序才能升级到 SDK 的版本 5。
 
 除重新生成应用程序之外，版本 5 中只有少量可能需要更改代码的其他重大更改。
+
+### <a name="change-to-suggesters"></a>对建议器的更改 
+
+`Suggester` 构造函数不再为 `SuggesterSearchMode` 提供 `enum` 参数。 此枚举只有一个值，因此是多余的。 如果因此看到生成错误，只需删除对 `SuggesterSearchMode` 参数的引用即可。
 
 ### <a name="removed-obsolete-members"></a>删除了过时成员
 

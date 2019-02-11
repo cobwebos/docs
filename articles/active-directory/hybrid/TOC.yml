@@ -14,11 +14,61 @@ items:
     href: tutorial-passthrough-authentication.md
   - name: 将单个 AD 林环境联合到云中
     href: tutorial-federation.md
+  - name: 在 Azure AD Connect 中将 PHS 设置为 AD FS 的后备
+    href: tutorial-phs-backup.md
   expanded: true
 - name: 概念
   items:
+  - name: Azure AD Connect 和 Connect Health
+    items:
+    - name: 什么是 Azure AD Connect 和 Connect Health？
+      href: whatis-azure-ad-connect.md
+    - name: 选择正确的身份验证
+      href: https://docs.microsoft.com/azure/security/azure-ad-choose-authn
+    - name: 标识同步和重复属性复原
+      href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
+  - name: 密码哈希同步
+    items:
+    - name: 什么是密码哈希同步？
+      href: whatis-phs.md
+    - name: 密码哈希同步的工作原理
+      href: how-to-connect-password-hash-synchronization.md
+  - name: 直通身份验证
+    items:
+    - name: 什么是直通身份验证？
+      href: how-to-connect-pta.md
+    - name: 直通身份验证工作原理
+      href: how-to-connect-pta-how-it-works.md
+    - name: 直通身份验证的当前限制
+      href: how-to-connect-pta-current-limitations.md
+    - name: 针对直通身份验证的安全性深入研究
+      href: how-to-connect-pta-security-deep-dive.md
+    - name: 直通身份验证和用户隐私
+      href: how-to-connect-pta-user-privacy.md
+  - name: 联合
+    items:
+    - name: 什么是联合身份验证？
+      href: whatis-fed.md
+    - name: 联合身份验证的工作原理
+      href: how-to-connect-fed-whatis.md
+    - name: Azure AD 联合身份验证兼容性列表
+      href: how-to-connect-fed-compatibility.md
+  - name: 单一登录
+    items:
+    - name: 什么是单一登录？
+      href: how-to-connect-sso.md
+    - name: 单一登录工作原理
+      href: how-to-connect-sso-how-it-works.md
+    - name: 单一登录和用户隐私
+      href: how-to-connect-sso-user-privacy.md
   - name: Azure AD Connect Sync
     items:
+    - name: 什么是 Azure AD Connect Sync？
+      href: how-to-connect-sync-whatis.md
+    - name: Azure AD Connect 同步功能
+      href: how-to-connect-syncservice-features.md
+    - name: 什么是 Azure AD Connect 同步服务管理器？
+      href: how-to-connect-sync-service-manager-ui.md
     - name: Azure AD Connect 同步技术概念
       href: how-to-connect-sync-technical-concepts.md
     - name: 了解 Azure AD Connect 同步体系结构
@@ -33,8 +83,6 @@ items:
       href: concept-azure-ad-connect-sync-user-and-contacts.md
     - name: 了解影子属性
       href: how-to-connect-syncservice-shadow-attributes.md
-  - name: 标识同步和重复属性复原
-    href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
 - name: 操作指南
   items:
   - name: 安装和升级
@@ -87,6 +135,12 @@ items:
       href: plan-connect-userprincipalname.md
     - name: 有关实例的特殊注意事项
       href: reference-connect-instances.md
+    - name: 迁移
+      items:
+      - name: 从联合身份验证迁移到 PHS
+        href: plan-migrate-adfs-password-hash-sync.md
+      - name: 从联合身份验证迁移到 PTA
+        href: plan-migrate-adfs-pass-through-authentication.md
     - name: 混合标识设计注意事项
       items:
       - name: 混合标识设计注意事项概述
@@ -119,8 +173,6 @@ items:
         href: plan-hybrid-identity-design-considerations-tools-comparison.md
   - name: 管理 Azure AD Connect
     items:
-    - name: 什么是密码哈希同步？
-      href: how-to-connect-password-hash-synchronization.md
     - name: 启用设备写回
       href: how-to-connect-device-writeback.md
     - name: 设备选项
@@ -139,12 +191,14 @@ items:
       href: how-to-connect-azureadaccount.md
     - name: 更改 AD DS 连接器帐户密码
       href: how-to-connect-sync-change-addsacct-pass.md
-    - name: ADConnectivityTools PowerShell 模块是什么？
-      href: how-to-connect-adconnectivitytools.md
+  - name: 管理直通身份验证
+    items:
+    - name: 直通身份验证入门
+      href: how-to-connect-pta-quick-start.md
+    - name: 直通身份验证常见问题解答
+      href: how-to-connect-pta-faq.md
   - name: 管理联合身份验证服务
     items:
-    - name: 什么是通过 Azure AD Connect 进行的联合身份验证？
-      href: how-to-connect-fed-whatis.md
     - name: 使用 Azure AD Connect 管理联合身份验证
       href: how-to-connect-fed-management.md
     - name: 对联合身份验证的多域支持
@@ -159,40 +213,14 @@ items:
       href: how-to-connect-azure-ad-trust.md
     - name: 更改 O365 RP 的哈希算法
       href: how-to-connect-fed-sha256-guidance.md
-    - name: Azure AD 联合身份验证兼容性列表
-      href: how-to-connect-fed-compatibility.md
     - name: 使用 SAML 2.0 服务器作为 Idp
       href: how-to-connect-fed-saml-idp.md
     - name: 混合 Azure AD 加入所需的配置后任务
       href: how-to-connect-fed-hybrid-azure-ad-join-post-config-tasks.md
-  - name: 管理直通身份验证
-    items:
-    - name: 什么是直通身份验证？
-      href: how-to-connect-pta.md
-    - name: 直通身份验证入门
-      href: how-to-connect-pta-quick-start.md
-    - name: 直通身份验证工作原理
-      href: how-to-connect-pta-how-it-works.md
-    - name: 直通身份验证的当前限制
-      href: how-to-connect-pta-current-limitations.md
-    - name: 针对直通身份验证的安全性深入研究
-      href: how-to-connect-pta-security-deep-dive.md
-    - name: 直通身份验证和用户隐私
-      href: how-to-connect-pta-user-privacy.md
-    - name: 直通身份验证的当前限制
-      href: how-to-connect-pta-security-deep-dive.md
-    - name: 直通身份验证常见问题解答
-      href: how-to-connect-pta-faq.md
   - name: 管理单一登录
     items:
-    - name: 什么是单一登录？
-      href: how-to-connect-sso.md
     - name: 单一登录入门
       href: how-to-connect-sso-quick-start.md
-    - name: 单一登录工作原理
-      href: how-to-connect-sso-how-it-works.md
-    - name: 单一登录和用户隐私
-      href: how-to-connect-sso-user-privacy.md
     - name: 单一登录常见问题解答
       href: how-to-connect-sso-faq.md
   - name: 管理 Azure AD Connect Health
@@ -213,10 +241,6 @@ items:
       href: how-to-connect-health-alert-catalog.md
   - name: 管理 Azure AD Connect Sync
     items:
-    - name: 什么是 Azure AD Connect Sync？
-      href: how-to-connect-sync-whatis.md
-    - name: Azure AD Connect 同步功能
-      href: how-to-connect-syncservice-features.md
     - name: 管理操作任务
       href: how-to-connect-sync-operations.md
     - name: 更改默认配置的最佳做法
@@ -231,10 +255,10 @@ items:
       href: how-to-connect-sync-configure-filtering.md
     - name: 管理计划程序
       href: how-to-connect-sync-feature-scheduler.md
+    - name: 创建和自定义同步规则
+      href: how-to-connect-create-custom-sync-rule.md
     - name: Azure AD Connect 同步服务管理器
       items:
-      - name: 什么是 Azure AD Connect 同步服务管理器？
-        href: how-to-connect-sync-service-manager-ui.md
       - name: 管理“服务管理器操作”选项卡
         href: how-to-connect-sync-service-manager-ui-operations.md
       - name: 将连接器与服务管理器配合使用
@@ -245,6 +269,8 @@ items:
         href: how-to-connect-sync-service-manager-ui-mvsearch.md
   - name: 故障排除
     items:
+    - name: ADConnectivityTools PowerShell 模块是什么？
+      href: how-to-connect-adconnectivitytools.md
     - name: 连接
       href: tshoot-connect-connectivity.md
     - name: 同步过程中出错
@@ -265,6 +291,10 @@ items:
       href: tshoot-connect-recover-from-localdb-10gb-limit.md
     - name: SQL 连接
       href: tshoot-connect-tshoot-sql-connectivity.md
+    - name: 属性同步
+      href: tshoot-connect-attribute-not-syncing.md
+    - name: 安装问题
+      href: tshoot-connect-install-issues.md
 - name: 引用
   items:
   - name: 混合标识所需的端口和协议
@@ -303,9 +333,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: ADConnectivityTools 参考
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: 07a3bfd816cd57ecbe77bf7e7435be99a0321fd2
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 3baf6790640a8504089fc47472f3f8a9fc22a873
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335436"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765802"

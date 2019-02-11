@@ -78,6 +78,7 @@
 
 ## [PowerShell](analysis-services-powershell.md)
 ## [REST](/rest/api/analysisservices)
+## [资源管理器模板](/azure/templates/microsoft.analysisservices/servers)
 ## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)
 ## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)
 ## [表格模型脚本语言 (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
@@ -94,7 +95,7 @@
 ## [反馈](https://feedback.azure.com/forums/556165-azure-analysis-services)
 ## [定价](https://azure.microsoft.com/pricing/details/analysis-services/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
-## [堆栈溢出](https://stackoverflow.com/questions/tagged/azure-analysis-services)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-analysis-services)
 ## [视频](https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest)
 
 

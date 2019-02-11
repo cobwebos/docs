@@ -1,23 +1,23 @@
 ---
-title: 快速入门：查找备用翻译，C# - 文本翻译 API
+title: 快速入门：使用双语字典、C# 查找字词 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何使用 .NET Core 和文本翻译 API 获取术语的备用翻译，以及这些备用翻译的使用示例。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: d0921d67867e412ed1862c597297e27c2c56ae3b
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: a51485e383be4c7a492328064d0afcf92a385242
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334527"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218625"
 ---
-# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-c"></a>快速入门：使用文本翻译 REST API (C#) 查找备用翻译
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-c"></a>快速入门：通过 C# 使用双语字典查找字词
 
 本快速入门介绍如何使用 .NET Core 和文本翻译 API 获取术语的备用翻译，以及这些备用翻译的使用示例。
 
@@ -28,7 +28,7 @@ ms.locfileid: "52334527"
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Json.NET NuGet 包](https://www.nuget.org/packages/Newtonsoft.Json/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download) 或你喜欢用的文本编辑器
-* 语音服务的 Azure 订阅密钥
+* 适用于文本翻译的 Azure 订阅密钥
 
 ## <a name="create-a-net-core-project"></a>创建 .NET Core 项目
 

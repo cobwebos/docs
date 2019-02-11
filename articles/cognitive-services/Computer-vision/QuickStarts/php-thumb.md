@@ -1,21 +1,22 @@
 ---
-title: 快速入门：生成缩略图 - REST、PHP - 计算机视觉
+title: 快速入门：生成缩略图 - REST、PHP
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 PHP 基于图像生成缩略图。
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 3a652e4b937dc3600ffe7af7231322b14bd52e05
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: a9a3e2cb1dec8d47c468313f057e3845ea81900c
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342020"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222365"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-php-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 PHP 生成缩略图
 
@@ -33,7 +34,7 @@ ms.locfileid: "49342020"
 
 要创建和运行示例，请执行以下步骤：
 
-1. 安装 PHP5 [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2) 包。
+1. 安装 PHP5 [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2) 包。
    1. 以管理员身份打开命令提示符窗口。
    1. 运行以下命令：
 

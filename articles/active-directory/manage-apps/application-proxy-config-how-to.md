@@ -4,10 +4,10 @@ description: 了解如何通过简单几步创建并配置一个应用程序代�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: cf3e367dad528017a98e103962c57cb758da55cb
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 2a19dc92da29118d8455a892e54d9a9ae8f82f1f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354352"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179682"
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>如何配置应用程序代理应用程序
 
@@ -28,15 +28,15 @@ ms.locfileid: "44354352"
 
 ## <a name="recommended-documents"></a>建议的文档 
 
-若要了解通过管理门户对应用程序代理应用程序进行初始配置和创建，请遵循[使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)。
+若要了解通过管理门户对应用程序代理应用程序进行初始配置和创建，请遵循[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)。
 
-有关配置连接器的详细信息，请参阅[在 Azure 门户中启用应用程序代理](application-proxy-enable.md)。
+有关配置连接器的详细信息，请参阅[在 Azure 门户中启用应用程序代理](application-proxy-add-on-premises-application.md)。
 
 有关上传证书和使用自定义域的详细信息，请参阅[在 Azure AD 应用程序代理中使用自定义域](application-proxy-configure-custom-domain.md)。
 
 ## <a name="create-the-applicationsetting-the-urls"></a>创建应用程序/设置 URL
 
-如果按照[使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)文档中的步骤操作，但在创建应用程序时出错，请参阅错误详细信息以获取有关如何修复应用程序的信息和建议。 大多数的错误消息都包含建议的修复方法。 为避免常见的错误，请验证：
+如果按照[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)文档中的步骤操作，但在创建应用程序时出错，请参阅错误详细信息以获取有关如何修复应用程序的信息和建议。 大多数的错误消息都包含建议的修复方法。 为避免常见的错误，请验证：
 
 -   是有权创建应用程序代理应用程序的管理员
 
@@ -75,4 +75,4 @@ ms.locfileid: "44354352"
    ![通知提示](./media/application-proxy-config-how-to/error-message2.png)
 
 ## <a name="next-steps"></a>后续步骤
-[使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)
+[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)

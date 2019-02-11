@@ -1,20 +1,17 @@
 ---
 title: Azure Database for MySQL 中的限制
 description: 本文介绍了 Azure Database for MySQL 中的限制，例如连接数和存储引擎选项。
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
-ms.date: 06/30/2018
-ms.openlocfilehash: d73c0cc6416145fa3764d2ef938d6de7a4195c1b
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.topic: conceptual
+ms.date: 12/6/2018
+ms.openlocfilehash: 19fc20f21a57c2325254581c642b75c92c221fd9
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982872"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536077"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的限制
 以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。 另请参阅适用于 MySQL 数据库引擎的[常规限制](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)。
@@ -31,13 +28,15 @@ ms.locfileid: "45982872"
 |常规用途| 8| 1250|
 |常规用途| 16| 2500|
 |常规用途| 32| 5000|
+|常规用途| 64| 10000|
 |内存优化| 2| 600|
 |内存优化| 4| 1250|
 |内存优化| 8| 2500|
 |内存优化| 16| 5000|
+|内存优化| 32| 10000|
 
 当连接数超出限制时，可能会收到以下错误：
-> 错误 1040 (08004): 连接过多
+> 错误 1040 (08004)：连接过多
 
 ## <a name="storage-engine-support"></a>存储引擎支持
 

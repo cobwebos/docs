@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: c0255ff31353ca8fe0cf684af53a12654b400208
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6787f347661db61806180edde5c091a865051748
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407548"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103066"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI
 
@@ -59,9 +59,9 @@ IaaS 解决方案演示如何将本地基于 SQL 的解决方案迁移到 Azure�
 
 -   **[客户实现矩阵](https://aka.ms/healthcrmblueprint)**：一种 Microsoft Excel 工作簿，其中列出了相关的 HITRUST 要求，并说明了 Microsoft 和客户的相互责任。
 
--   **[健康审核](https://aka.ms/healthreviewpaper)**。 此解决方案已由 Coalfire systems, Inc. 审核。有关健康符合性（HIPAA 和 HITRUST）实施方面的审核和指南提供了审核员对此解决方案的审核意见，\'以及在将蓝图转换为生产就绪型部署过程中的注意事项。
+-   **[健康审核](https://aka.ms/healthreviewpaper)**。 此解决方案已由 Coalfire systems, Inc. 审核。有关健康符合性（HIPAA 和 HITRUST）实施方面的审核和指南提供了审核员对此解决方案的审核意见，以及在将蓝图转换为生产就绪型部署过程中的注意事项。
 
-# <a name="architectural-diagram"></a>体系结构图
+## <a name="architectural-diagram"></a>体系结构图
 
 
 ![](images/ra2.png)
@@ -91,7 +91,7 @@ IaaS 解决方案演示如何将本地基于 SQL 的解决方案迁移到 Azure�
 
 -   自定义角色分配：不适用
 
--   范围：ResourceGroup
+-   范围：resourceGroup
 
  ### <a name="data-scientist"></a>数据科学家
 
@@ -102,7 +102,7 @@ IaaS 解决方案演示如何将本地基于 SQL 的解决方案迁移到 Azure�
 
 -   自定义角色分配：不适用
 
--   范围：ResourceGroup
+-   范围：resourceGroup
 
 ### <a name="chief-medical-information-officer-cmio"></a>首席医疗信息官 (CMIO)
 
@@ -121,14 +121,14 @@ CMIO 有效地解决了医疗保健机构中医疗保健专业人员不懂信息
 
 -   自定义角色分配：有权运行 HealthcareDemo.ps1，负责病人入院和出院事项。
 
--   范围：ResourceGroup
+-   范围：resourceGroup
 
 ### <a name="auditor"></a>审核员
 
 
 审核员评估解决方案的符合性。 他们不能直接访问网络。
 
--   内置角色分配：[读者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
+-   内置角色分配：[读取者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
 
 -   自定义角色分配：不适用
 
@@ -150,19 +150,19 @@ CMIO 有效地解决了医疗保健机构中医疗保健专业人员不懂信息
 
 **站点管理员 -- Alex**
 
-电子邮件：Alex\_SiteAdmin
+*电子邮件：Alex\_SiteAdmin*
 
 Alex 的工作是对那些能够减轻本地网络管理负担并降低管理成本的技术进行评估。 Alex 已经对 Azure 进行了一段时间的评估，但仍然在努力地根据 HiTrust 符合性要求配置所需的服务，以便将病人数据存储在云中。 Alex 选择了 Azure 健康 AI 来部署没有符合性问题的健康解决方案，满足客户在 HiTrust 方面的要求。
 
 **数据科学家 -- Debra**
 
-电子邮件：Debra\_DataScientist
+*电子邮件：Debra\_DataScientist*
 
 Debra 负责创建和使用模型来分析医疗记录，以便深入了解病人护理。 Debra 使用 SQL 和 R 统计编程语言来创建其模型。
 
 **数据库分析师 -- Danny**
 
-电子邮件：Danny\_DBAnalyst
+*电子邮件：Danny\_DBAnalyst*
 
 有关 Microsoft SQL Server（用于存储 Contosoclinic 的所有病人数据）的事项，应主要联系 Danny。 Danny 是一位有经验的 SQL Server 管理员，最近开始熟悉 Azure SQL 数据库工作。
 
@@ -173,18 +173,18 @@ Caroline 使用住院时间 (LOS) 解决方案的预测来确定是否已在医�
 
 **医护管理员 -- Chris**
 
-电子邮件：Chris\_CareLineManager
+*电子邮件：Chris\_CareLineManager*
 
 作为直接在 Contosoclinic 负责管理病人入院和出院的人员，Chris 使用 LOS 解决方案生成的预测来确保安排足够的人员为住院病人提供照护。
 
 **审核员 -- Han**
 
-电子邮件：Han\_Auditor
+*电子邮件：Han\_Auditor*
 
 Han 是获得认证的审核员，拥有 ISO、SOC 和 HiTrust 方面的审核经验。 雇佣 Han 是为了审核 Contosoclinc 的网络。 Han 可以审核解决方案随附的“客户责任矩阵”，确保蓝图和 LOS 解决方案可以用来存储、处理和显示敏感的个人数据。
 
 
-# <a name="design-configuration"></a>设计配置
+## <a name="design-configuration"></a>设计配置
 
 
 此部分详述内置到蓝图中的默认配置和安全措施，大致可用于：
@@ -345,8 +345,8 @@ Han 是获得认证的审核员，拥有 ISO、SOC 和 HiTrust 方面的审核�
 ### <a name="machine-learning"></a>机器学习
 
 
--   已为机器学习工作室 Web 服务[启用日志记录](/azure/machine-learning/studio/web-services-logging)。
-- 使用[机器学习工作室](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) Workbench 需要开发各种试验，以便向解决方案集提供预测功能。 [集成 Workbench](/azure/machine-learning/desktop-workbench/using-git-ml-project) 有助于简化试验的管理。
+- 已为机器学习工作室 Web 服务[启用日志记录](/azure/machine-learning/studio/web-services-logging)。
+- 使用[机器学习工作室](/azure/machine-learning/studio/what-is-ml-studio)需要开发各种试验，以便向解决方案集提供预测功能。
 
 ## <a name="security"></a>安全性
 

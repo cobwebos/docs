@@ -1,22 +1,19 @@
 ---
 title: 教程：使用 Azure CLI 设计 Azure Database for PostgreSQL
 description: 本教程演示如何使用 Azure CLI 创建、配置和查询第一个 Azure Database for PostgreSQL 服务器。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 04/01/2018
-ms.openlocfilehash: c04eede63df50359af55f3956041df10fa2d075e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 937f57190236e3b5d3c92df5f50167880fef4bb4
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982335"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756710"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>教程：使用 Azure CLI 设计 Azure Database for PostgreSQL 
 在本教程中，需使用 Azure CLI（命令行接口）以及其他实用工具了解如何完成以下操作：
@@ -35,19 +32,19 @@ ms.locfileid: "46982335"
 
 如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
-如果有多个订阅，请选择资源所在的相应订阅或对资源进行计费的订阅。 使用 [az account set](/cli/azure/account#az_account_set) 命令选择帐户下的特定订阅 ID。
+如果有多个订阅，请选择资源所在的相应订阅或对资源进行计费的订阅。 使用 [az account set](/cli/azure/account) 命令选择帐户下的特定订阅 ID。
 ```azurecli-interactive
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
 ## <a name="create-a-resource-group"></a>创建资源组
-使用 [az group create](/cli/azure/group#az_group_create) 命令创建 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 以下示例在 `westus` 位置创建名为 `myresourcegroup` 的资源组。
+使用 [az group create](/cli/azure/group) 命令创建 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 以下示例在 `westus` 位置创建名为 `myresourcegroup` 的资源组。
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>创建 Azure Database for PostgreSQL 服务器
-使用 [az postgres server create](/cli/azure/postgres/server#az_postgres_server_create) 命令创建 [Azure Database for PostgreSQL 服务器](overview.md)。 服务器包含作为组进行管理的一组数据库。 
+使用 [az postgres server create](/cli/azure/postgres/server) 命令创建 [Azure Database for PostgreSQL 服务器](overview.md)。 服务器包含作为组进行管理的一组数据库。 
 
 下面的示例使用服务器管理员登录名 `myadmin` 在资源组 `myresourcegroup` 中创建名为 `mydemoserver` 的服务器。 服务器的名称映射到 DNS 名称，因此需要在 Azure 中全局唯一。 用自己的值替换 `<server_admin_password>`。 它是第 4 代常规用途服务器，带有 2 个 2 vCore。
 ```azurecli-interactive
@@ -68,9 +65,9 @@ sku-name 参数值遵循 {定价层}\_{计算层代}\_{vCore 数} 约定，如�
 
 ## <a name="configure-a-server-level-firewall-rule"></a>配置服务器级防火墙规则
 
-使用 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_create) 命令创建 Azure PostgreSQL 服务器级防火墙规则。 服务器级防火墙规则允许外部应用程序（如 [psql](https://www.postgresql.org/docs/9.2/static/app-psql.html) 或 [PgAdmin](https://www.pgadmin.org/)）通过 Azure PostgreSQL 服务防火墙连接到服务器。 
+使用 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) 命令创建 Azure PostgreSQL 服务器级防火墙规则。 服务器级防火墙规则允许外部应用程序（如 [psql](https://www.postgresql.org/docs/9.2/static/app-psql.html) 或 [PgAdmin](https://www.pgadmin.org/)）通过 Azure PostgreSQL 服务防火墙连接到服务器。 
 
-可以设置涵盖某个 IP 范围的防火墙规则，以便通过网络进行连接。 下面的示例使用 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_create) 创建允许从单个 IP 地址进行连接的防火墙规则 `AllowMyIP`。
+可以设置涵盖某个 IP 范围的防火墙规则，以便通过网络进行连接。 下面的示例使用 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) 创建允许从单个 IP 地址进行连接的防火墙规则 `AllowMyIP`。
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
@@ -195,9 +192,9 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 ```
 
 `az postgres server restore` 命令需以下参数：
-| 设置 | 建议的值 | Description  |
+| 设置 | 建议的值 | 说明  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  源服务器所在的资源组。  |
+| resource-group |  myresourcegroup |  源服务器所在的资源组。  |
 | 名称 | mydemoserver-restored | 通过还原命令创建的新服务器的名称。 |
 | restore-point-in-time | 2017-04-13T13:59:00Z | 选择要还原到的时间点。 此日期和时间必须在源服务器的备份保留期限内。 使用 ISO8601 日期和时间格式。 例如，可使用自己的本地时区（如 `2017-04-13T05:59:00-08:00`），或使用 UTC Zulu 格式 `2017-04-13T13:59:00Z`。 |
 | source-server | mydemoserver | 要从其还原的源服务器的名称或 ID。 |
@@ -218,4 +215,4 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 > * 更新数据
 > * 还原数据
 
-接下来了解如何使用 Azure 门户执行类似的任务，请查看本教程：[使用 Azure 门户设计第一个 Azure Database for PostgreSQL](tutorial-design-database-using-azure-portal.md)
+接下来，了解如何使用 Azure 门户执行类似任务，请查看此教程：[使用 Azure 门户设计第一个 Azure Database for PostgreSQL](tutorial-design-database-using-azure-portal.md)

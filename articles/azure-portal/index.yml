@@ -1,17 +1,17 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ceab905b2baf87446238d44151146b5066e55335
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 1d3ad4bd85237851b1aa5ab4c6f0899e19c02c97
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079706"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901490"
 documentType: LandingData
 title: Azure 门户自定义文档
 metadata:
   description: 了解如何自定义 Azure 门户。
   services: azure portal
   documentationcenter: ''
-  author: cwatson-cat
+  author: kfollis
   manager: dougeby
   editor: ''
   ms.assetid: 3e12c488-9c8c-4d0d-9b07-e018dec42fc6
@@ -21,7 +21,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.workload: na
   ms.date: 10/08/2018
-  ms.author: cwatson
+  ms.author: kfollis
 abstract:
   description: Azure 门户是一个基于 Web 的统一控制台，用于生成、管理和监视从简单 Web 应用到复杂云应用程序的一切内容。 它包括可自定义仪表板和可访问性选项。
 sections:

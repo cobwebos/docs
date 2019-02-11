@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: 24f834c907fee6f2ddae766ae7494f73a31447c5
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: f7050514d5f0de0cade09c6be672d7dfd3568da3
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33202800"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037406"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建应用程序网关
 
@@ -53,7 +53,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地�
 1. 打开保存的文件，并查看 **parameters** 下行中的内容
 1. Azure 资源管理器模板参数提供了在部署过程中可以填充的值的占位符。
 
-  | 参数 | 说明 |
+  | 参数 | Description |
   | --- | --- |
   | **subnetPrefix** |应用程序网关子网的 CIDR 块。 |
   | **applicationGatewaySize** | 应用程序网关的大小。  WAF 仅允许中型和大型网关。 |
@@ -68,7 +68,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地�
 
    * **type**。 模板创建的资源的类型。 在这种情况下，类型为 `Microsoft.Network/applicationGateways`，它表示应用程序网关。
    * **name**。 资源的名称。 请注意 `[parameters('applicationGatewayName')]` 的使用，这意味着该名称是在部署过程中由用户或参数文件作为输入提供的。
-   * **properties**。 资源的属性列表。 此模板在应用程序网关创建期间，使用虚拟网络与公共 IP 地址。
+   * **properties**。 资源的属性列表。 此模板在应用程序网关创建期间，使用虚拟网络与公共 IP 地址。 有关模板中应用程序网关的 JSON 语法和属性，请参阅 [Microsoft.Network/applicationGateways](/azure/templates/microsoft.network/applicationgateways)。
 
 1. 导航回 [https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf)。
 1. 单击 **azuredeploy-parameters.json**，并单击 **RAW**。
@@ -77,7 +77,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地�
 
     ```json
     {
-        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
             "addressPrefix": {
@@ -114,11 +114,11 @@ Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地�
     }
     ```
 
-1. 保存文件。 可以使用联机 JSON 验证工具（例如 [JSlint.com](http://www.jslint.com/)）测试 JSON 模板和参数模板。
+1. 保存文件。 可以使用联机 JSON 验证工具（例如 [JSlint.com](https://www.jslint.com/)）测试 JSON 模板和参数模板。
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>使用 PowerShell 部署 Azure 资源管理器模板
 
-如果从未使用过 Azure PowerShell，请参阅：[如何安装和配置 Azure PowerShell](/powershell/azure/overview)，并按照说明进行操作，以登录到 Azure 并选择订阅。
+如果从未使用过 Azure PowerShell，请访问：[如何安装和配置 Azure PowerShell](/powershell/azure/overview)，并按照说明进行操作，以登录到 Azure 并选择订阅。
 
 1. 登录 PowerShell
 
@@ -226,9 +226,9 @@ az group delete --name appgatewayRG
 
 ## <a name="next-steps"></a>后续步骤
 
-若要配置 SSL 卸载，请访问：[配置应用程序网关以进行 SSL 卸载](tutorial-ssl-cli.md)。
+如果想要配置 SSL 卸载，请访问：[配置应用程序网关以进行 SSL 卸载](tutorial-ssl-cli.md)。
 
-要将应用程序网关配置为与内部负载均衡器配合使用，请访问：[创建具有内部负载均衡器 (ILB) 的应用程序网关](redirect-internal-site-cli.md)。
+如果要将应用程序网关配置为与内部负载均衡器配合使用，请访问：[创建具有内部负载均衡器 (ILB) 的应用程序网关](redirect-internal-site-cli.md)。
 
 如需负载均衡选项的其他常规信息，请访问：
 

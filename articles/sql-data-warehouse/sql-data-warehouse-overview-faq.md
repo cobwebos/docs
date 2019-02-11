@@ -6,16 +6,16 @@ author: acomet
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: design
+ms.subservice: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: 35252b4d262833daef330a89f1874cc0835c480a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: d55c9db9af2eea9a56afe34c7a8689947a689bac
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306734"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462539"
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL 数据仓库常见问题解答
 
@@ -31,7 +31,7 @@ A. 请访问 [Microsoft 符合性]页面，查明产品（如 SOC 和 ISO）的�
 
 问： 是否可以连接 PowerBI？
 
-A. 能！ 尽管 PowerBI 支持使用 SQL DW 进行直接查询，但不适合大量用户或实时数据。 要将 PowerBI 用于生产用途，建议基于 Azure Analysis Services 或 Analysis Service IaaS 使用 PowerBI。 
+A.  能！ 尽管 PowerBI 支持使用 SQL DW 进行直接查询，但不适合大量用户或实时数据。 要将 PowerBI 用于生产用途，建议基于 Azure Analysis Services 或 Analysis Service IaaS 使用 PowerBI。 
 
 问： SQL 数据仓库容量限制有哪些？
 
@@ -82,21 +82,21 @@ A. 是的。 SQL 数据仓库还提供可与 SQL 数据库搭配使用的大多�
 
 A. 可在[连接字符串]页找到 DW 驱动程序支持
 
-问：使用 SQL 数据仓库时，PolyBase 支持哪些文件格式？
+问：使用 SQL 数据仓库时，PolyBase 支持什么文件格式？
 
-答：Orc、RC、Parquet 和平面分隔文本
+答：Orc、RC、Parquet 和带分隔符的平面文本
 
-问：使用 PolyBase 时可从 SQL DW 连接哪些内容？ 
+问：使用 PolyBase 时，可以从 SQL DW 连接到什么？ 
 
 答：[Azure Data Lake Store] 和 [Azure 存储 Blob]
 
-问：连接 Azure 存储 Blob 或 ADLS 时能否进行计算下推？ 
+问：连接到 Azure 存储 Blob 或 ADLS 时，能否进行计算下推？ 
 
 答：不能，SQL DW PolyBase 仅与存储组件交互。 
 
 问：能否连接到 HDI？
 
-答：HDI 可使用 ADLS 或 WASB 作为 HDFS 层。 如果将两者中任意一种作为 HDFS 层，可以将该数据加载到 SQL DW。 但是，无法生成 HDI 实例的下推计算。 
+答：HDI 可以将 ADLS 或 WASB 用作 HDFS 层。 如果将两者中任意一种作为 HDFS 层，可以将该数据加载到 SQL DW。 但是，无法生成 HDI 实例的下推计算。 
 
 ## <a name="next-steps"></a>后续步骤
 若要深入了解 SQL 数据仓库的概述信息，请参阅[概述]页。

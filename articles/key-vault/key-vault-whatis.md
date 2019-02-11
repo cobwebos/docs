@@ -1,6 +1,6 @@
 ---
-title: 什么是 Azure 密钥保管库？ | Microsoft Docs
-description: Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 通过 Azure 密钥保管库，客户可以使用受硬件安全模块 (HSM) 保护的密钥，来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。
+title: 什么是 Azure 密钥保管库？ - Azure Key Vault | Microsoft Docs
+description: Azure 密钥保管库可保护云应用程序和服务使用的加密密钥和机密。 客户可以使用受硬件安全模块 (HSM) 保护的密钥，来加密身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码。
 services: key-vault
 documentationcenter: ''
 author: barclayn
@@ -10,20 +10,20 @@ ms.assetid: e759df6f-0638-43b1-98ed-30b3913f9b82
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: d7de20e1de91e37b2437091e6d7503e2cb2a4590
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f8826f0c0cb63068313a570b050531511126dbc9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246525"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422917"
 ---
 # <a name="what-is-azure-key-vault"></a>什么是 Azure 密钥保管库？
 
 Azure Key Vault 有助于解决以下问题：
+
 - **机密管理** - Azure Key Vault 可以用来安全地存储令牌、密码、证书、API 密钥和其他机密，并对其访问进行严格控制。
 - **密钥管理** - Azure Key Vault 也可用作密钥管理解决方案。 可以通过 Azure Key Vault 轻松创建和控制用于加密数据的加密密钥。 
 - **证书管理** - Azure Key Vault 也是一项服务，可以用来轻松地预配、管理和部署公用和专用安全套接字层/传输层安全性 (SSL/TLS) 证书，这些证书可以与 Azure 以及你的内部连接资源配合使用。 
@@ -35,7 +35,7 @@ Azure Key Vault 是一个用于安全地存储和访问机密的工具。 机密
 
 从根本上说，可通过三种方式向 Key Vault 进行身份验证：
 
-1. 使用 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)（建议和最佳做法）：在 Azure 中的虚拟机上部署应用时，可以为虚拟机分配具有 Key Vault 访问权限的标识。 还可以将标识分配给[此处](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)列出的其他 Azure 资源。 这种方法的好处在于应用/服务不管理第一个机密的轮换。 Azure 会自动轮换标识。 
+1. **使用 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)**（**建议的做法和最佳做法**）：在 Azure 中的虚拟机上部署应用时，可以为虚拟机分配具有密钥保管库访问权限的标识。 还可以将标识分配给[此处](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)列出的其他 Azure 资源。 这种方法的好处在于应用/服务不管理第一个机密的轮换。 Azure 会自动轮换标识。 
 2. **使用服务主体和证书：** 第二个选项是使用服务主体和具有密钥保管库访问权限的关联证书。 应用程序所有者或开发人员负责轮换证书，因此，不建议使用此方式。
 3. **使用服务主体和机密：** 第三个选项（非首选项）是使用服务主体和机密向 Key Vault 进行身份验证。
 
@@ -43,6 +43,7 @@ Azure Key Vault 是一个用于安全地存储和访问机密的工具。 机密
 > 不应使用上面的第三个选项，因为很难自动轮换用于向 Key Vault 进行身份验证的启动机密。
 
 下面是一些关键术语：
+
 - **租户**：租户是拥有和管理特定的 Microsoft 云服务实例的组织。 它通常用来以确切的方式引用组织的 Azure 和 Office 365 服务集。
 - **保管库所有者**：保管库所有者可以创建密钥保管库并获得它的完全访问权限和控制权。 保管库所有者还可以设置审核来记录谁访问了机密和密钥。 管理员可以控制密钥生命周期。 他们可以滚动到密钥的新版本、对其进行备份，以及执行相关的任务。
 - **保管库使用者**：当保管库所有者为保管库使用者授予了访问权限时，使用者可以对密钥保管库内的资产执行操作。 可用操作取决于所授予的权限。
@@ -51,9 +52,9 @@ Azure Key Vault 是一个用于安全地存储和访问机密的工具。 机密
 - **服务主体** - Azure 服务主体是用户创建的应用、服务和自动化工具用来访问特定 Azure 资源的安全标识。 可将其视为具有特定角色，并且权限受到严格控制的“用户标识”（用户名和密码，或者证书）。 与普通的用户标识不同，服务主体只需执行特定的操作。 如果只向它授予执行管理任务所需的最低权限级别，则可以提高安全性。
 - **[Azure Active Directory (Azure AD)](../active-directory/active-directory-whatis.md)**：Azure AD 是租户的 Active Directory 服务。 每个目录有一个或多个域。 每个目录可以有多个订阅与之关联，但只有一个租户。 
 - **Azure 租户 ID**：租户 ID 是用于在 Azure 订阅中标识 Azure AD 实例的唯一方法。
-- **Azure 资源托管标识**：虽然 Azure Key Vault 可用于安全存储凭据以及其他密钥和机密，但代码需要向密钥保管库进行身份验证才能检索它们。 使用托管标识可为 Azure 服务提供 Azure AD 中的自动托管标识，更巧妙地解决了这个问题。 可以使用此标识向支持 Azure AD 身份验证的密钥保管库或任何服务证明身份，而无需在代码中放入任何凭据。 有关详细信息，请参阅下图以及 [Azure 资源托管标识概述](../active-directory/managed-identities-azure-resources/overview.md)。
+- **Azure 资源的托管标识**：虽然 Azure Key Vault 可用于安全存储凭据以及其他密钥和机密，但代码需要通过 Key Vault 的身份验证才能检索它们。 使用托管标识可为 Azure 服务提供 Azure AD 中的自动托管标识，更巧妙地解决了这个问题。 可以使用此标识向支持 Azure AD 身份验证的密钥保管库或任何服务证明身份，而无需在代码中放入任何凭据。 有关详细信息，请参阅下图以及 [Azure 资源托管标识概述](../active-directory/managed-identities-azure-resources/overview.md)。
 
-    ![Azure 资源托管标识工作原理图](./media/key-vault-whatis/msi.png)
+    ![Azure 资源托管标识的工作原理图](./media/key-vault-whatis/msi.png)
 
 ## <a name="key-vault-roles"></a>Key Vault 角色
 
@@ -67,15 +68,15 @@ Azure Key Vault 是一个用于安全地存储和访问机密的工具。 机密
 
 具有 Azure 订阅的任何人都可以创建和使用密钥保管库。 尽管密钥保管库能够为开发人员和安全管理员提供便利，但管理组织中其他 Azure 服务的管理员也可以实现和管理密钥保管库。 例如，此管理员可以使用 Azure 订阅登录、创建组织用来存储密钥的保管库，并负责执行操作任务，例如：
 
-* 创建或导入密钥或机密
-* 吊销或删除密钥或机密
-* 授权用户或应用程序访问密钥保管库，使它们能够管理或使用其密钥和机密
-* 配置密钥用法（例如，签名或加密）
-* 监视密钥用法
+- 创建或导入密钥或机密
+- 吊销或删除密钥或机密
+- 授权用户或应用程序访问密钥保管库，使它们能够管理或使用其密钥和机密
+- 配置密钥用法（例如，签名或加密）
+- 监视密钥用法
 
 然后，此管理员将为开发人员提供可从其应用程序调用的 URI，并为其安全管理员提供密钥用法日志记录信息。 
 
-![Azure 密钥保管库概述][1]
+![Azure 密钥保管库的工作原理概述][1]
 
 开发人员还可通过使用 API 直接管理密钥。 有关详细信息，请参阅 [密钥保管库开发人员指南](key-vault-developers-guide.md)。
 

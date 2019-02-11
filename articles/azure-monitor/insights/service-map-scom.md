@@ -8,18 +8,17 @@ manager: jwhit
 editor: tysonn
 ms.assetid: e8614a5a-9cf8-4c81-8931-896d358ad2cb
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren
-ms.openlocfilehash: b590a6ce6d92c78f2020d5ef7cffe6d7f277433c
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: bf0e672ea6f1d62442233993bd778c82a8a16037
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51827083"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187205"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>服务映射与 System Center Operations Manager 的集成
   > [!NOTE]
@@ -92,17 +91,17 @@ ms.locfileid: "51827083"
 ![Operations Manager 的“监视”窗格](media/service-map-scom/scom-monitoring.png)
 
 “服务映射”文件夹包含四个节点：
-* 活动警报：列出 Operations Manager 与服务映射之间通信相关的所有活动警报。  注意，这些警报不是要同步到 Operations Manager 的 Log Analytics 警报。 
+* **活动警报**：列出有关 Operations Manager 与服务映射之间通信相关的所有活动警报。  注意，这些警报不是要同步到 Operations Manager 的 Log Analytics 警报。 
 
 * **服务器**：列出配置为从服务映射同步的受监视服务器。
 
     ![Operations Manager 的“监视服务器”窗格](media/service-map-scom/scom-monitoring-servers.png)
 
-* 计算机组依赖关系视图：列出已从服务映射同步的所有计算机组。 可以单击任意组来查看其分布式应用程序关系图。
+* **计算机组依赖项视图**：列出从服务映射同步的所有计算机组。 可以单击任意组来查看其分布式应用程序关系图。
 
     ![Operations Manager 分布式应用程序关系图](media/service-map-scom/scom-group-dad.png)
 
-* **服务器依赖关系视图**：列出已从服务映射同步的所有服务器。 可以单击任一服务器来查看其分布式应用程序关系图。
+* **服务器依赖项视图**：列出从服务映射同步的所有服务器。 可以单击任一服务器来查看其分布式应用程序关系图。
 
     ![Operations Manager 分布式应用程序关系图](media/service-map-scom/scom-dad.png)
 
@@ -121,10 +120,10 @@ ms.locfileid: "51827083"
 
 ![Operations Manager 的“重写属性”窗口](media/service-map-scom/scom-overrides.png)
 
-* **Enabled**：启用/禁用自动更新。 
+* **启用**：启用或禁用自动更新。 
 * **IntervalMinutes**：重置更新间隔时间。 默认间隔为 1 小时。 如果想要更频繁地同步服务器映射，可以更改此值。
-* **TimeoutSeconds**：重置请求超时之前的时间长短。 
-* **TimeWindowMinutes**：重置数据查询的时限。 默认值为 60 分钟时限。 服务映射允许的最大值为 60 分钟。
+* **TimeoutSeconds**：重置请求超时前的时长。 
+* **TimeWindowMinutes**：重置查询数据的时间范围。 默认值为 60 分钟时限。 服务映射允许的最大值为 60 分钟。
 
 ## <a name="known-issues-and-limitations"></a>已知问题和限制
 

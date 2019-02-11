@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: 57058e9a86a338738315a08f218978e20fae95e2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 9491550aae8f88621d947572741f492adcf9cdd0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127839"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463219"
 ---
 # <a name="translator-text-api-v20"></a>文本翻译 API v2.0
 
@@ -76,7 +76,7 @@ ms.locfileid: "46127839"
 
 ### <a name="parameters"></a>parameters
 
-|参数|值|Description    |参数类型|数据类型|
+|参数|值|说明    |参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid  |(empty)    |必需。 如果使用了 Authorization 或 Ocp-Apim-Subscription-Key 标头，请将 appid 字段留空，否则请包括一个包含 "Bearer" + " " + "access_token" 的字符串。|query|字符串|
 |text|(empty)   |必需。 一个字符串，表示要翻译的文本。 文本大小不得超过 10000 个字符。|query|字符串|
@@ -84,7 +84,7 @@ ms.locfileid: "46127839"
 |to|(empty) |必需。 一个字符串，表示进行文本翻译时目标语言的语言代码。|query|字符串|
 |contentType|(empty)    |可选。 要翻译的文本的格式。 支持的格式为 text/plain（默认）和 text/html。 HTML 必须是格式正确的完整元素。|query|字符串|
 |category|(empty)   |可选。 一个字符串，包含翻译的类别（领域）。 默认为“general”。|query|字符串|
-|授权|(empty)  |必需，前提是 appid 字段或 Ocp-Apim-Subscription-Key 标头未指定。 授权令牌："Bearer" + " " + "access_token"。|标头的值开始缓存响应|字符串|
+|授权|(empty)  |必需，前提是 appid 字段或 Ocp-Apim-Subscription-Key 标头未指定。 授权令牌：“持有者” + “ ” + “访问令牌”。|标头的值开始缓存响应|字符串|
 |Ocp-Apim-Subscription-Key|(empty)  |必需，前提是 appid 字段或 Authorization 标头未指定。|标头的值开始缓存响应|字符串|
 
 
@@ -181,9 +181,9 @@ TranslateArray 方法接受 `application/xml` 或 `text/xml` 作为 `Content-Typ
 
 ### <a name="parameters"></a>parameters
 
-|参数|值|Description|参数类型|数据类型|
+|参数|值|说明|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
-|授权|(empty) |必需，前提是 appid 字段或 Ocp-Apim-Subscription-Key 标头未指定。 授权令牌："Bearer" + " " + "access_token"。|标头的值开始缓存响应|字符串|
+|授权|(empty) |必需，前提是 appid 字段或 Ocp-Apim-Subscription-Key 标头未指定。 授权令牌：“持有者” + “ ” + “访问令牌”。|标头的值开始缓存响应|字符串|
 |Ocp-Apim-Subscription-Key|(empty)|必需，前提是 appid 字段或 Authorization 标头未指定。|标头的值开始缓存响应|字符串|
 
 ### <a name="response-messages"></a>响应消息
@@ -222,7 +222,7 @@ TranslateArray 方法接受 `application/xml` 或 `text/xml` 作为 `Content-Typ
  
 ### <a name="parameters"></a>parameters
 
-|参数|值|Description|参数类型|数据类型|
+|参数|值|说明|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |区域设置|(empty) |必需。 一个表示组合的字符串，该组合包含一个与某种语言关联的 ISO 639 双字母小写区域性代码，以及一个用于将语言名称本地化的 ISO 3166 双字母大写子区域性代码，或者一个单纯的 ISO 639 小写区域性代码。|query|字符串|
@@ -256,7 +256,7 @@ TranslateArray 方法接受 `application/xml` 或 `text/xml` 作为 `Content-Typ
  
 ### <a name="parameters"></a>parameters
 
-|参数|值|Description|参数类型|数据类型|
+|参数|值|说明|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |授权|(empty)  |必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
@@ -289,7 +289,7 @@ TranslateArray 方法接受 `application/xml` 或 `text/xml` 作为 `Content-Typ
 
 ### <a name="parameters"></a>parameters
 
-|参数|值|Description|参数类型|数据类型|
+|参数|值|说明|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |授权|(empty)|必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
@@ -321,7 +321,7 @@ binary
 
 ### <a name="parameters"></a>parameters
 
-|参数|值|Description|参数类型|数据类型|
+|参数|值|说明|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |text|(empty)   |必需。 一个字符串，包含 wave 流对应的指定要朗读的语言的一个或多个句子。 要朗读的文本的大小不得超过 2000 个字符。|query|字符串|
@@ -357,7 +357,7 @@ binary
 
 ### <a name="parameters"></a>parameters
 
-|参数|值|Description|参数类型|数据类型|
+|参数|值|说明|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)  |必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |text|(empty)|必需。 一个字符串，所包含的一些文本需标识其语言。 文本大小不得超过 10000 个字符。|query| 字符串|
@@ -412,7 +412,7 @@ DetectArray 成功。 返回一个字符串数组，其包含的双字符语言�
  
 ### <a name="parameters"></a>parameters
 
-|参数|值|Description|参数类型|数据类型|
+|参数|值|说明|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |授权|(empty)|必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
@@ -446,7 +446,7 @@ DetectArray 成功。 返回一个字符串数组，其包含的双字符语言�
  
 ### <a name="parameters"></a>parameters
 
-|参数|值|Description|参数类型|数据类型   |
+|参数|值|说明|参数类型|数据类型   |
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |originalText|(empty)|必需。 一个字符串，包含要翻译的文本。 字符串的最大长度为 1000 个字符。|query|字符串|
@@ -523,9 +523,9 @@ AddTranslationArray 方法成功。 2018 年 1 月 31 日以后，不接受句�
  
 ### <a name="parameters"></a>parameters
 
-|参数|值|Description|参数类型|数据类型|
+|参数|值|说明|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
-|授权|(empty)|必需，前提是 appid 字段或 Ocp-Apim-Subscription-Key 标头未指定。 授权令牌："Bearer" + " " + "access_token"。|标头的值开始缓存响应|字符串|
+|授权|(empty)|必需，前提是 appid 字段或 Ocp-Apim-Subscription-Key 标头未指定。 授权令牌：“持有者” + “ ” + “访问令牌”。|标头的值开始缓存响应|字符串|
 |Ocp-Apim-Subscription-Key|(empty)|必需，前提是 appid 字段或 Authorization 标头未指定。|标头的值开始缓存响应|字符串|
 
 ### <a name="response-messages"></a>响应消息
@@ -556,12 +556,12 @@ integer
 
 ### <a name="parameters"></a>parameters
 
-|参数|值|Description|参数类型|数据类型|
+|参数|值|说明|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)  |必需。 如果使用了 Authorization 或 Ocp-Apim-Subscription-Key 标头，请将 appid 字段留空，否则请包括一个包含 "Bearer" + " " + "access_token" 的字符串。|query| 字符串|
 |text|(empty)   |必需。 一个字符串，表示要拆分成句子的文本。 文本大小不得超过 10000 个字符。|query|字符串|
 |语言   |(empty)    |必需。 一个表示字符串，表示输入文本的语言代码。|query|字符串|
-|授权|(empty)|必需，前提是 appid 字段或 Ocp-Apim-Subscription-Key 标头未指定。 授权令牌："Bearer" + " " + "access_token"。    |标头的值开始缓存响应|字符串|
+|授权|(empty)|必需，前提是 appid 字段或 Ocp-Apim-Subscription-Key 标头未指定。 授权令牌：“持有者” + “ ” + “访问令牌”。    |标头的值开始缓存响应|字符串|
 |Ocp-Apim-Subscription-Key|(empty)|必需，前提是 appid 字段或 Authorization 标头未指定。|标头的值开始缓存响应|字符串|
 
 ### <a name="response-messages"></a>响应消息
@@ -598,7 +598,8 @@ integer
 * `Category`：一个字符串，包含翻译的类别（领域）。 默认为“general”。
 * `ContentType`：唯一支持也是默认的选项为“text/plain”。
 * `IncludeMultipleMTAlternatives`：布尔标志，用于确定是否应从 MT 引擎返回多个备选项。 有效值为 true 和 false（区分大小写）。 默认值为 false，并且仅包括 1 个备选项。 将此标志设置为 true 即可在翻译中生成人工备选项，这些备选项已完全集成到协作翻译框架 (CTF) 中。 此功能允许为在 CTF 中没有备选项的句子返回备选项，其方法是从解码器的 n-best 列表中添加人工备选项。
-    - 评分 评分按下述方式应用：1) 最佳自动翻译的评分为 5。 2) CTF 中的备选项反映了审阅者的权威性，其评分为 -10 到 +10。 3) 自动生成的（N 个最佳）翻译备选项的评级为 0，匹配度为 100。
+    - 评级
+评级的适用范围如下：1) 最佳自动翻译评级为 5。 2) CTF 中的备选项反映了审阅者的权威性，其评分为 -10 到 +10。 3) 自动生成的（N 个最佳）翻译备选项的评级为 0，匹配度为 100。
     - 备选项数 返回的备选项的数目最多为 maxTranslations，但可以更少。
     - 语言对 此功能不可用于简体中文与繁体中文之间的翻译（双向）。 它可用于 Microsoft 翻译工具支持的所有其他语言对。
 * `State`：用户状态，可帮助关联请求和响应。 响应中将返回相同的内容。
@@ -628,7 +629,7 @@ integer
 
 这包括一个包含以下值的 `GetTranslationsResponse` 元素：
 
-* `Translations`：一系列已发现的匹配项，存储在 TranslationMatch（见下）对象中。 翻译可能包括原始文本的略变体（模糊匹配）。 翻译会排序：100% 匹配的在上面，模糊匹配的在下面。
+* `Translations`：一系列已发现的匹配项，存储在 TranslationMatch（见下）对象中。 翻译可能包括原始文本的略变体（模糊匹配）。 将对翻译进行排序：首先是 100% 匹配，然后是模糊匹配。
 * `From`：如果方法未指定源语言，则此项为自动语言检测的结果。 否则，它就会是给定的源语言。
 * `State`：用户状态，可帮助关联请求和响应。 包含的值与在 TranslateOptions 参数中给出的值相同。
 
@@ -650,7 +651,7 @@ MatchedOriginalText：此结果的匹配的原始文本。 只有在匹配的原
  
 ### <a name="parameters"></a>parameters
 
-|参数|值|Description|参数类型|数据类型|
+|参数|值|说明|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |text|(empty)|必需。 一个字符串，表示要翻译的文本。 文本大小不得超过 10000 个字符。|query|字符串|
@@ -704,10 +705,11 @@ MatchedOriginalText：此结果的匹配的原始文本。 只有在匹配的原
 * `From`：必需。 一个表示翻译文本语言代码的字符串。
 * `MaxTranslations`：必需。 一个整数，表示要返回的最大翻译数。
 * `Options`：可选。 一个 Options 对象，包含下面列出的值。 它们都是可选的，并且默认为最常用的设置。 指定的元素必须按字母顺序列出。
-    - Category：一个字符串，包含翻译的类别（领域）。 默认为“general”。
+    - 类别：一个字符串，包含翻译的类别（领域）。 默认为“general”。
     - `ContentType`：唯一支持也是默认的选项为“text/plain”。
     - `IncludeMultipleMTAlternatives`：布尔标志，用于确定是否应从 MT 引擎返回多个备选项。 有效值为 true 和 false（区分大小写）。 默认值为 false，并且仅包括 1 个备选项。 将此标志设置为 true 即可在翻译中生成人工备选项，这些备选项已完全集成到协作翻译框架 (CTF) 中。 此功能允许为在 CTF 中没有备选项的句子返回备选项，其方法是从解码器的 n-best 列表中添加人工备选项。
-        - 评分 评分按下述方式应用：1) 最佳自动翻译的评分为 5。 2) CTF 中的备选项反映了审阅者的权威性，其评分为 -10 到 +10。 3) 自动生成的（N 个最佳）翻译备选项的评级为 0，匹配度为 100。
+        - 评级
+评级的适用范围如下：1) 最佳自动翻译评级为 5。 2) CTF 中的备选项反映了审阅者的权威性，其评分为 -10 到 +10。 3) 自动生成的（N 个最佳）翻译备选项的评级为 0，匹配度为 100。
         - 备选项数 返回的备选项的数目最多为 maxTranslations，但可以更少。
         - 语言对 此功能不可用于简体中文与繁体中文之间的翻译（双向）。 它可用于 Microsoft 翻译工具支持的所有其他语言对。
 * `State`：用户状态，可帮助关联请求和响应。 响应中将返回相同的内容。
@@ -749,7 +751,7 @@ MatchedOriginalText：此结果的匹配的原始文本。 只有在匹配的原
 
 每个 `GetTranslationsResponse` 元素包含以下值：
 
-* `Translations`：一系列已发现的匹配项，存储在 `TranslationMatch`（见下）对象中。 翻译可能包括原始文本的略变体（模糊匹配）。 翻译会排序：100% 匹配的在上面，模糊匹配的在下面。
+* `Translations`：一系列已发现的匹配项，存储在 `TranslationMatch`（见下）对象中。 翻译可能包括原始文本的略变体（模糊匹配）。 将对翻译进行排序：首先是 100% 匹配，然后是模糊匹配。
 * `From`：如果方法未指定 `From` 语言，则此项为自动语言检测的结果。 否则，它就会是给定的源语言。
 * `State`：用户状态，可帮助关联请求和响应。 包含的值与在 `TranslateOptions` 参数中给出的值相同。
 
@@ -770,7 +772,7 @@ MatchedOriginalText：此结果的匹配的原始文本。 只有在匹配的原
  
 ### <a name="parameters"></a>parameters
 
-|参数|值|Description|参数类型|数据类型|
+|参数|值|说明|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |授权  |(empty)    |必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
 |Ocp-Apim-Subscription-Key|(empty)  |必需，前提是 `appid` 字段或 `Authorization` 标头未指定。|标头的值开始缓存响应|字符串|

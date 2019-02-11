@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 03/27/2018
 ms.author: robb
-ms.openlocfilehash: f7fd27dc9be161059dc62071fee33374106e18ef
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: aa7a925255b0c30b84c3b32bb53ba3f31c11fa6b
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061275"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162284"
 ---
 # <a name="service-health"></a>服务运行状况
 服务运行状况提供可定制的仪表板，用于跟踪 Azure 服务在使用区域中的运行状况。 在此仪表板中，可跟踪活动事件，例如正在处理的服务问题、即将开始的计划内维护或相关运行状况公告。 当事件转变为非活动状态时，将在运行状况历史记录中保留最多 90 天。 最后，可使用服务运行状况仪表板创建和管理服务运行状况警报，受服务问题影响时会主动发出通知。
@@ -60,7 +60,7 @@ ms.locfileid: "37061275"
 ![固定个性化运行状况图](./media/service-health-overview/azure-service-health-overview-6b.png)
 
 ## <a name="configure-service-health-alerts"></a>配置服务运行状况警报
-服务运行状况与 Azure Monitor 集成，当业务关键型资源受到影响时，它可以通过电子邮件、短信和 Webhook 通知发出警报。 针对相应的服务运行状况事件设置活动日志警报。 使用“操作组”将该警报路由到组织中的相应人员。 有关详细信息，请参阅[配置服务运行状况的警报](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)
+服务运行状况与 Azure Monitor 集成，当业务关键型资源受到影响时，它可以通过电子邮件、短信和 Webhook 通知发出警报。 针对相应的服务运行状况事件设置活动日志警报。 使用“操作组”将该警报路由到组织中的相应人员。 有关详细信息，请参阅[配置服务运行状况的警报](../azure-monitor/platform/alerts-activity-log-service-notifications.md)
 
 # <a name="next-steps"></a>后续步骤
-设置警报，以便收到运行状况问题的通知。 有关详细信息，请参阅[配置服务运行状况的警报](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)。 
+设置警报，以便收到运行状况问题的通知。 有关详细信息，请参阅[配置服务运行状况的警报](../azure-monitor/platform/alerts-activity-log-service-notifications.md)。 

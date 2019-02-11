@@ -1,25 +1,27 @@
 ---
-title: 在 Azure 上预配 Linux (Ubuntu) 数据科学虚拟机 | Microsoft Docs
+title: 创建 Ubuntu Linux Data Science Virtual Machine
+titleSuffix: Azure
 description: 在 Azure 上配置和创建适用于 Linux (Ubuntu) 的数据科学虚拟机，进行分析和机器学习。
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 ms.author: gokuma
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: cf5a15a55cf3f0d33edeec9440e745c9dce996c1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f0c9c06e953df16199acda5f821fdac35b86f07f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244859"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477550"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>在 Azure 上预配适用于 Linux (Ubuntu) 的数据科学虚拟机
 
@@ -27,13 +29,13 @@ ms.locfileid: "51244859"
 
   * [Caffe](http://caffe.berkeleyvision.org/)：一种以高速、清晰表达和模块化为理念建立起来的深度学习框架
   * [Caffe2](https://github.com/caffe2/caffe2)：Caffe 的跨平台版本
-  * [Microsoft 认知工具包](https://github.com/Microsoft/CNTK)：Microsoft Research 的深度学习软件工具包
+  * [Microsoft 认知工具包](https://github.com/Microsoft/CNTK)：Microsoft Research 提供的深度学习软件工具包
   * [H2O](https://www.h2o.ai/)：开源大数据平台和图形用户界面
   * [Keras](https://keras.io/)：Python 中基于 Theano 和 TensorFlow 的高级神经网络 API
   * [MXNet](http://mxnet.io/)：灵活、高效的深度学习库，具有许多语言绑定
   * [NVIDIA DIGITS](https://developer.nvidia.com/digits)：一种简化常见深度学习任务的图形系统
-  * [PyTorch](http://pytorch.org/)：高级 Python 库，有对动态网络的支持
-  * [TensorFlow](https://www.tensorflow.org/)：来自 Google 的机器智能的开源库
+  * [PyTorch](http://pytorch.org/)：高级 Python 库，支持动态网络
+  * [TensorFlow](https://www.tensorflow.org/)：Google 提供的用于机器智能的开源库
   * [Theano](http://deeplearning.net/software/theano/)：用于定义、优化和高效评估涉及多维数组的数学表达式的 Python 库
   * [Torch](http://torch.ch/)：一种广泛支持机器学习算法的科学计算框架
   * CUDA、cuDNN 和 NVIDIA 驱动程序
@@ -85,15 +87,15 @@ ms.locfileid: "51244859"
 1. 单击底部的“创建”打开向导。![configure-data-science-vm](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
 1. 以下部分提供用于创建 Microsoft 数据科学虚拟机的向导中每个步骤的输入（在上一图片的右侧枚举）。 以下是配置每个步骤所需的输入：
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **基本信息**：
+   a. **基本信息**：
    
-   * **名称**：待创建的数据科学服务器的名称。
-   * VM 磁盘类型：如果喜欢固态硬盘 (SSD)，请选择“高级 SSD”。 否则，请选择“标准 HDD”。 
-   * **用户名称**：第一个帐户登录 ID。
-   * **密码**：第一个帐户密码（可以使用 SSH 公钥代替密码）。
+   * **名称**：要创建的数据科学服务器的名称。
+   * **VM 磁盘类型**：如果希望使用固态硬盘 (SSD)，请选择“高级 SSD”。 否则，请选择“标准 HDD”。 
+   * **用户名**：第一个帐户登录 ID。
+   * **密码**：第一个帐户密码（可以使用 SSH 公钥而非密码）。
    * **订阅**：如果有多个订阅，请选择要在其上创建虚拟机并对其计费的订阅。 必须具有此订阅的资源创建权限。
    * **资源组**：可以创建新组或使用现有组。
-   * **位置**：选择最适合的数据中心。 通常，最合适的数据中心应拥有大部分数据，或者最接近物理位置以实现最快的网络访问。
+   * **位置**：选择最合适的数据中心。 通常，最合适的数据中心应拥有大部分数据，或者最接近物理位置以实现最快的网络访问。
    
    b. **大小**：
    
@@ -131,11 +133,11 @@ Linux VM 已通过 X2Go 服务器进行预配并且可接受客户端连接。 �
 1. 从 [X2Go ](http://wiki.x2go.org/doku.php/doc:installation:x2goclient) 为客户端平台下载并安装 X2Go 客户端。    
 1. 运行 X2Go 客户端，并选择“新建会话”。 这会打开具有多个选项卡的配置窗口。 输入下列配置参数:
    * **会话选项卡**：
-     * **主机**：主机名或 Linux 数据科学 VM 的 IP 地址。
+     * **主机**：Linux Data Science VM 的主机名或 IP 地址。
      * **登录名**：Linux VM 上的用户名。
      * **SSH 端口**：保留默认值 22。
-     * **会话类型**：将值更改为 XFCE。 Linux VM 目前仅支持 XFCE 桌面。
-   * **媒体选项卡**：如果无需使用声音支持和客户端打印功能，则可将其关闭。
+     * **会话类型**：将值更改为“XFCE”。 Linux VM 目前仅支持 XFCE 桌面。
+   * **媒体选项卡**：如果无需使用声音支持和客户端打印功能，可将其关闭。
    * **共享文件夹**：如果希望将目录从客户端计算机装入 Linux VM，则在此选项卡上添加要与 VM 共享的客户端计算机目录。
 
 通过 X2Go 客户端使用 SSH 客户端或 XFCE 图形桌面登录 VM 后，即可开始使用 VM 上安装和配置的工具。 在 XFCE 上，可看到许多工具的应用程序菜单快捷方式和桌面图标。
@@ -218,7 +220,7 @@ R 是数据分析和机器学习的最常用语言之一。 如果要使用 R �
 
 若要调用 Python 交互式会话，只需在 shell 中键入 **python**。 
 
-使用 ```conda``` 或 ````pip```` 安装其他 Python 库。 对于 pip，如果不需要默认值，请先激活正确环境：
+使用 ```conda``` 或 ```pip``` 安装其他 Python 库。 对于 pip，如果不需要默认值，请先激活正确环境：
 
     source activate root
     pip install <package>
@@ -269,7 +271,7 @@ Jupyter 上提供了一个示例 PySpark 笔记本，该笔记本可以在 Jupyt
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-不需要 Hadoop 相关服务时，可以通过运行 ````systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```` 停止这些服务。演示如何在远程 Spark 上下文（即，DSVM 上的独立 Spark 实例）中开发和测试 MRS 的示例在 `/dsvm/samples/MRS` 目录中提供。 
+不需要 Hadoop 相关服务时，可以通过运行 ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` 停止这些服务。演示如何在远程 Spark 上下文（即，DSVM 上的独立 Spark 实例）中开发和测试 MRS 的示例在 `/dsvm/samples/MRS` 目录中提供。 
 
 ### <a name="ides-and-editors"></a>IDE 和编辑器
 可以选择多个代码编辑器。 这包括 vi/VIM、Emacs、PyCharm、RStudio 和 IntelliJ。 IntelliJ、RStudio 和 PyCharm 是图形编辑器，需登录图形桌面才能使用。 这些编辑器具有用以启动的桌面和应用程序菜单快捷方式。
@@ -318,9 +320,9 @@ VM 上安装有以下 Azure 工具：
 
 * **Azure 命令行接口**：Azure CLI 允许通过 shell 命令创建和管理 Azure 资源。 若要调用 Azure 工具，只需键入 **azure 帮助**。 有关详细信息，请参阅 [Azure CLI 文档页](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)。
 * **Microsoft Azure 存储资源管理器**：Microsoft Azure 存储资源管理器是一个图形工具，用于浏览在 Azure 存储帐户中存储的对象，以及将数据上传到 Azure Blob 和从中下载数据。 可通过桌面快捷方式图标访问存储资源管理器。 可以通过键入 **StorageExplorer** 从 shell 提示符调用。 需从 X2Go 客户端登录，或者安装 X11 转发。
-* **Azure 库**：以下是一些预安装库。
+* **Azure 库**：下面是一些预安装的库。
   
-  * **Python**： Python 中的已安装 Azure 相关库包括 **azure** **azureml**、**pydocumentdb** 和 **pyodbc**。 使用前三个库，可以访问 Azure 存储服务、Azure 机器学习和 Azure Cosmos DB（Azure 上的 NoSQL 数据库）。 使用第四个库 pyodbc（以及 SQL Server 的 Microsoft ODBC 驱动程序），可以通过使用 ODBC 接口从 Python 访问 SQL Server、Azure SQL 数据库和 Azure SQL 数据仓库。 输入 **pip 列表**查看所有列出的库。 请确保在 Python 2.7 和 3.5 环境中都运行此命令。
+  * **Python**：Python 中已安装的 Azure 相关库包括 **azure**、**azureml**、**pydocumentdb** 和 **pyodbc**。 使用前三个库，可以访问 Azure 存储服务、Azure 机器学习和 Azure Cosmos DB（Azure 上的 NoSQL 数据库）。 使用第四个库 pyodbc（以及 SQL Server 的 Microsoft ODBC 驱动程序），可以通过使用 ODBC 接口从 Python 访问 SQL Server、Azure SQL 数据库和 Azure SQL 数据仓库。 输入 **pip 列表**查看所有列出的库。 请确保在 Python 2.7 和 3.5 环境中都运行此命令。
   * **R**：R 中的已安装 Azure 相关库包括 **AzureML** 和 **RODBC**。
   * **Java**：可在 VM 上的 **/dsvm/sdk/AzureSDKJava** 目录中找到 Azure Java 库列表。 密钥库是 Azure 存储和用于 SQL Server 的管理 API、Azure Cosmos DB 和 JDBC 驱动程序。  
 
@@ -343,11 +345,11 @@ Azure 机器学习是完全托管的云服务，允许构建、部署和共享�
 ### <a name="machine-learning-tools"></a>机器学习工具
 VM 附带一些已经预编译并已在本地预安装的机器学习工具和算法。 其中包括：
 
-* **Vowpal Wabbit**：快速在线学习算法。
+* **Vowpal Wabbit**：一种快速的在线学习算法。
 * **xgboost**：提供经过优化的提升树算法的工具。
-* Rattle：基于 R 的图形工具，可用于简单的数据浏览和建模。
+* **Rattle**：基于 R 的图形工具，可用于简单的数据浏览和建模。
 * **Python**：Anaconda Python 附带机器学习算法，这些算法含有库（如 Scikit-learn）。 可以通过使用 `pip install` 命令安装其他库。
-* LightGBM：快速、分布式、高性能的梯度提升框架，基于决策树算法。
+* **LightGBM**：快速、分布式、高性能的梯度提升框架，基于决策树算法。
 * **R**：有可供 R 使用的丰富的机器学习函数库。一些预安装的库包括lm、glm、randomForest 和 rpart。 可通过运行以下内容安装其他库：
   
         install.packages(<lib name>)

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: f86a86fd9858fcc6f0b78256da1e96effbcbe68c
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.subservice: files
+ms.openlocfilehash: 931098d688e39490aa0aadaa8ade8405e5ba8a12
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944212"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452237"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>快速入门：使用 Azure 存储资源管理器创建和管理 Azure 文件共享
 本指南介绍通过 Azure 存储资源管理器来使用 [Azure 文件共享](storage-files-introduction.md)的基本知识。 Azure 文件共享与其他文件共享一样，只不过是存储在云中并由 Azure 平台提供支持。 Azure 文件共享支持行业标准 SMB 协议，可以跨多个计算机、应用程序和实例进行文件共享。 
@@ -33,7 +33,7 @@ Azure 存储资源管理器是一个常用的客户端工具，可用于 Windows
 ## <a name="connect-storage-explorer-to-azure-resources"></a>将存储资源管理器连接到 Azure 资源
 首次启动存储资源管理器时，将会显示“Microsoft Azure 存储资源管理器 - 连接”窗口。 存储资源管理器提供了多种用来连接到存储帐户的方式： 
 
-- **使用 Azure 帐户登录**：可以通过用于你的组织或 Microsoft 帐户的用户凭据进行登录。 
+- **使用 Azure 帐户登录**：可以通过用于组织或 Microsoft 帐户的用户凭据进行登录。 
 - **使用连接字符串或 SAS 令牌连接到特定存储帐户**：连接字符串是一个特殊字符串，其中包含存储帐户名称和存储帐户密钥/SAS 令牌。 使用令牌，存储资源管理器可以直接访问存储帐户（而非仅仅看到 Azure 帐户中的所有存储帐户）。 若要详细了解连接字符串，请参阅[配置 Azure 存储连接字符串](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 - **使用存储帐户名称和密钥连接到特定的存储帐户**：使用存储帐户的存储帐户名称和密钥连接到 Azure 存储。
 

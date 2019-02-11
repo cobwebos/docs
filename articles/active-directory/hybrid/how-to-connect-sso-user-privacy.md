@@ -5,22 +5,22 @@ services: active-directory
 keywords: 什么是 Azure AD Connect, GDPR, Azure AD 所需的组件, SSO, 单一登录
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/21/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c7fc6146db93938ed861c6302d2cd8f40b894977
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a92fb875202b9d153dfaedd65abf83ca6ceef9ee
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310386"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495031"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>用户隐私和 Azure AD 无缝单一登录
 
@@ -67,5 +67,5 @@ Foreach ($file in $Files) {
 
 ## <a name="next-steps"></a>后续步骤
 * [查看信任中心上的 Microsoft 隐私策略](https://www.microsoft.com/trustcenter)
-- [故障排除](tshoot-connect-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
+  - [故障排除](tshoot-connect-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
+  - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。

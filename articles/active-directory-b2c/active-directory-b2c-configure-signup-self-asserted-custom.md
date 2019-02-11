@@ -3,19 +3,19 @@ title: 修改自定义策略中的注册和配置自断言提供程序 | Microso
 description: 有关在注册中添加声明和配置用户输入的演练
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/29/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 6b2a6d84fffecbe30bd2a47c795ee6143458ee2b
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.subservice: B2C
+ms.openlocfilehash: 2989af12407bdddf6e55e8967a0a574fff690208
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344988"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179202"
 ---
 # <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C：修改注册以添加新声明和配置用户输入。
 
@@ -266,7 +266,7 @@ ms.locfileid: "51344988"
 }
 ```
 
-## <a name="optional-remove-email-verification-from-signup-journey"></a>可选：从注册旅程中删除电子邮件验证
+## <a name="optional-remove-email-verification-from-signup-journey"></a>可选：在注册过程中删除电子邮件验证
 
 若要跳过电子邮件验证，策略作者可以选择删除 `PartnerClaimType="Verified.Email"`。 电子邮件地址是必需的，但除非删除了 “Required” = true，否则不会验证该地址。  请仔细考虑此选项是否适合用例！
 

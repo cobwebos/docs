@@ -4,9 +4,9 @@ description: 介绍在环境中实现 Azure AD 联接设备的所需步骤。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
-ms.component: devices
+ms.subservice: devices
 ms.assetid: 81d4461e-21c8-4fdd-9076-0e4991979f62
 ms.service: active-directory
 ms.workload: identity
@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 34b2658ef4b25b3d545932ceffd2f3cf8969034e
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: bb8ab22db18bbe170a20d253e601eb78855aafa7
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309356"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102730"
 ---
-# <a name="how-to-plan-your-azure-ad-join-implementation"></a>操作方法：计划 Azure AD 联接实现
+# <a name="how-to-plan-your-azure-ad-join-implementation"></a>如何：计划 Azure AD 加入实现
 
 
 通过 Azure AD 联接，可在保持用户高效、安全的同时，也将设备直接与 Azure AD 相联接，而无需与本地 Active Directory 相联接。 Azure AD 联接面向企业大规模和大范围的部署。   
@@ -113,7 +113,7 @@ Azure AD 联接适用于托管环境和联合环境。
 
 - **Azure AD**，无需进行其他设置。
 
-Azure AD 联接设备不支持[替代登录 ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)。 如果用户使用替代登录 ID，你应计划转换成使用其 Azure AD 中的主 UPN。
+Azure AD 加入设备不支持与 Azure AD UPN 不同的本地 UPN。 如果用户使用本地 UPN，你应计划转换成使用其 Azure AD 中的主 UPN。
 
 
 
@@ -155,7 +155,7 @@ Azure AD 联接设备的设备管理基于 MDM 平台（如 Intune）和 MDM CSP
 
 通过共同管理，可以使用 SCCM 来管理设备的某些特性，同时通过 MDM 平台提供策略。 Microsoft Intune 通过 SCCM 启用共同管理。 有关详细信息，请参阅[适用于 Windows 10 设备的共同管理](https://docs.microsoft.com/sccm/core/clients/manage/co-management-overview)。 如果使用除 Intune 之外的 MDM 产品，请与 MDM 提供商联系，了解适用的共同管理方案。
 
-**建议：** 请考虑用于 Azure AD 联接设备的仅限 MDM 管理。
+**建议：** 对于 Azure AD 联接设备的管理，请考虑使用“仅限 MDM 管理”这一种方法。
 
 
 
@@ -167,7 +167,7 @@ Azure AD 联接设备的设备管理基于 MDM 平台（如 Intune）和 MDM CSP
 
 ### <a name="cloud-based-applications"></a>基于云的应用程序
 
-如果将应用程序添加到 Azure AD 应用库，则用户通过 Azure AD 联接设备获得 SSO。 无需指定其他配置。 用户在 Edge 和 Chrome 浏览器上获取 SSO。 对于 Chrome，需要部署 [Windows 10 帐户扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 
+如果将应用程序添加到 Azure AD 应用库，则用户通过 Azure AD 联接设备获得 SSO。 无需指定其他配置。 用户在 Microsoft Edge 和 Chrome 浏览器上获取 SSO。 对于 Chrome，需要部署 [Windows 10 帐户扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 
 
 所有 Win32 应用程序，其：
 
@@ -213,7 +213,7 @@ Azure AD 联接设备不支持依赖计算机身份验证的本地应用程序�
 
 ### <a name="remote-desktop-services"></a>远程桌面服务
 
-Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混合 Azure AD 联接。 不支持未联接设备或非 Windows 设备的远程桌面。 有关详细信息，请参阅 [Connect to remote Azure Active Directory-joined PC](https://docs.microsoft.com/en-us/windows/client-management/connect-to-remote-aadj-pc)（连接到远程 Azure AD 联接电脑）
+Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混合 Azure AD 联接。 不支持未联接设备或非 Windows 设备的远程桌面。 有关详细信息，请参阅 [Connect to remote Azure Active Directory-joined PC](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc)（连接到远程 Azure AD 联接电脑）
 
 
 ## <a name="understand-your-provisioning-options"></a>了解预配选项

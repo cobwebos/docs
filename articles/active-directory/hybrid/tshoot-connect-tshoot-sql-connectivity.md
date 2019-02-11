@@ -1,24 +1,24 @@
 ---
-title: Azure AD Connect：排查 SQL 连接问题 | Microsoft Docs
+title: Azure AD Connect：排查 SQL 连接问题 | Microsoft 文档
 description: 介绍如何排查使用 Azure AD Connect 时出现的 SQL 连接问题。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/14/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5e56f429cd866ed8d0500e427d1927bbef0beb34
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: edc15f573017fe57db0540da63eff7f2ed723dd7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310306"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187466"
 ---
 # <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>排除使用 Azure AD Connect 时的 SQL 连接问题
 本文说明如何排查 Azure AD Connect 与 SQL Server 之间的连接问题。 

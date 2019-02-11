@@ -10,12 +10,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 3ca9af8c2c504f75322e00fdaaeac9a3e727a820
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: 282a20beb11172aa3a1d2c7326dc38ce8a7acfcf
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627121"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062649"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建时序见解资源
 
@@ -33,6 +34,7 @@ ms.locfileid: "39627121"
 
 - [Azure 资源管理器概述 - 模板部署](../azure-resource-manager/resource-group-overview.md#template-deployment)
 - [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../azure-resource-manager/resource-group-template-deploy.md)
+- [Microsoft.TimeSeriesInsights 资源类型](/azure/templates/microsoft.timeseriesinsights/allversions)
 
 GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) 快速入门模板。 此模板创建一个时序见解环境、一个配置为使用事件中心的事件的子事件源，以及授予环境数据访问权限的访问策略。 如果未指定现有的事件中心，则会连同部署创建一个事件中心。
 
@@ -91,7 +93,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
    | --- | --- |
    | eventHubNamespaceName | 源事件中心的命名空间。 |
    | eventHubName | 源事件中心的名称。 |
-   | consumerGroupName | 由时序见解服务用来从事件中心读取数据的使用者组的名称。 **注意：** 为了避免资源争用，此使用者组必须专门用于时序见解服务，而不能与其他读取者共享。 |
+   | consumerGroupName | 由时序见解服务用来从事件中心读取数据的使用者组的名称。 **注意：** 为了避免资源争用，此使用者组必须专门用于时序见解服务，而不能与其他读者共享。 |
    | environmentName | 环境的名称。 此名称不能包含：'<', '>', '%', '&', ':', '\\', '?', '/' 和任何控制字符。 允许其他所有字符。|
    | eventSourceName | 事件源子资源的名称。 此名称不能包含：'<', '>', '%', '&', ':', '\\', '?', '/' 和任何控制字符。 允许其他所有字符。 |
 

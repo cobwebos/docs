@@ -2,20 +2,20 @@
 title: 什么是 Azure 备份？
 description: 使用 Azure 备份，可以从 Windows Server、Windows 工作站、System Center DPM 服务器以及 Azure 虚拟机备份和还原数据与工作负荷。
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: 备份和还原;恢复服务;备份解决方案
 ms.service: backup
 ms.topic: overview
-ms.date: 8/2/2018
-ms.author: markgal
+ms.date: 01/31/2019
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0a5b9e6cdb5329705cb3c6d4676dfc8d987119e4
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 2601f81b4abecd98d645af9bc0d368e52534a04e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480967"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487874"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Azure 备份功能概述
 Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 Microsoft 云端数据。 Azure 备份将现有的本地或异地备份解决方案替换为安全可靠、性价比高的云端解决方案。 Azure 备份提供多个组件，可将其下载并部署到适当的计算机、服务器或云中。 依据要保护的内容选择部署的组件或代理。 无论是保护本地数据还是云端数据，所有 Azure 备份组件均可用于将数据备份到 Azure 的恢复服务保管库中。 请参阅本文稍后部分的 [Azure 备份组件表格](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use)，了解保护特定数据、应用程序或工作负荷所用的组件。
@@ -37,7 +37,7 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 
 **无限数据传输** - Azure 备份不会限制传输的入站或出站数据量。 Azure 备份也不会对传输的数据收费。 但如果使用 Azure 导入/导出服务来导入大量数据，则入站数据将产生相关费用。 有关此费用的详细信息，请参阅 [Azure 备份中的脱机备份工作流](backup-azure-backup-import-export.md)。 出站数据是指还原操作期间从恢复服务保管库传输的数据。
 
-**数据加密** - 该服务允许在公有云中安全地传输和存储数据。 加密密码将存储在本地，绝不会传输或存储到 Azure 中。 如有必要还原任何数据，只需具有加密密码或密钥即可。
+**数据加密** - 该服务允许在公有云中安全地传输和存储数据。 加密通行短语存储在本地，绝不会传输或存储到 Azure 中。 如有必要还原任何数据，只需具有加密密码或密钥即可。
 
 **应用程序一致性备份** - 应用程序一致性备份意味着恢复点包含还原备份副本所需的所有数据。 Azure 备份提供了应用程序一致性备份，确保了还原数据时无需额外的修补程序。 还原应用程序一致型数据可减少还原时间，因此可快速恢复到运行状态。
 
@@ -78,17 +78,17 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 | Azure IaaS VM (Linux) |在 Azure 中运行 |[Azure 备份（VM 扩展）](backup-azure-vms-introduction.md) |
 
 ## <a name="linux-support"></a>Linux 支持
-下表显示了支持 Linux 的 Azure 备份组件。  
+下表显示了 Linux 支持的 Azure 备份组件。  
 
-| 组件 | Linux（Azure 认可）支持 |
-| --- | --- |
-| Azure 备份 (MARS) 代理 |否（仅限基于 Windows 的代理） |
-| System Center DPM |<li> 在 Hyper-V 和 VMWare 上对 Linux 来宾 VM 进行文件一致性备份<br/> <li> 对 Hyper-V 和 VMWare Linux 来宾 VM 进行 VM 还原 </br> </br>  *文件一致性备份不适用于 Azure VM* <br/> |
-| Azure 备份服务器 |<li>在 Hyper-V 和 VMWare 上对 Linux 来宾 VM 进行文件一致性备份<br/> <li> 对 Hyper-V 和 VMWare Linux 来宾 VM 进行 VM 还原 </br></br> *文件一致性备份不适用于 Azure VM*  |
-| Azure IaaS VM 备份 |应用程序一致性备份，使用[前脚本和后脚本框架](backup-azure-linux-app-consistent.md)<br/> [精细文件恢复](backup-azure-restore-files-from-vm.md)<br/> [还原所有 VM 磁盘](backup-azure-arm-restore-vms.md#restore-backed-up-disks)<br/> [VM 还原](backup-azure-arm-restore-vms.md#create-a-new-vm-from-a-restore-point) |
+组件 | **Linux（Azure 认可）**
+--- | --- 
+Azure 备份 (MARS) 代理 | 否（仅限基于 Windows 的代理） 
+System Center DPM | 在 Hyper-V 和 VMWare 上对 Linux 来宾 VM 进行文件一致性备份<br/><br/> 对 Hyper-V 和 VMWare Linux 来宾 VM 进行 VM 还原</br></br> 文件一致性备份不适用于 Azure VM
+Azure 备份服务器 | 在 Hyper-V 和 VMWare 上对 Linux 来宾 VM 进行文件一致性备份<br/><br/> 对 Hyper-V 和 VMWare Linux 来宾 VM 进行 VM 还原</br></br> 文件一致性备份不适用于 Azure VM 
+Azure IaaS VM 备份 | 应用一致性备份，使用[前脚本和后脚本框架](backup-azure-linux-app-consistent.md)<br/><br/> [文件级恢复](backup-azure-restore-files-from-vm.md)<br/><br/> [从还原的磁盘创建 VM](backup-azure-arm-restore-vms.md#create-new-restore-disks)<br/><br/> [从恢复点创建 VM](backup-azure-arm-restore-vms.md#create-new-create-a-vm)。
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>结合使用高级存储 VM 和 Azure 备份
-Azure 备份会保护高级存储 VM。 Azure 高级存储是基于固态硬盘 (SSD) 的存储，用于支持 I/O 密集型工作负荷。 高级存储很适合虚拟机 (VM) 工作负荷。 有关高级存储的详细信息，请参阅[高级存储：Azure 虚拟机工作负荷的高性能存储](../virtual-machines/windows/premium-storage.md)一文。
+Azure 备份会保护高级存储 VM。 Azure 高级存储是基于固态硬盘 (SSD) 的存储，用于支持 I/O 密集型工作负荷。 高级存储很适合虚拟机 (VM) 工作负荷。 有关高级存储的详细信息，请参阅文章[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../virtual-machines/windows/premium-storage.md)。
 
 ### <a name="back-up-premium-storage-vms"></a>备份高级存储 VM
 在备份高级存储 VM 时，备份服务在高级存储帐户中创建名为“AzureBackup-”的临时暂存位置。 暂存位置大小与恢复点快照大小相同。 请确保高级存储帐户有足够的可用空间，可以容纳临时暂存位置。 有关详细信息，请参阅[高级存储限制](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)一文。 备份作业完成后，将删除暂存位置。 用于暂存位置的存储的价格与所有 [高级存储定价](../virtual-machines/windows/premium-storage.md#pricing-and-billing)一致。
@@ -114,7 +114,7 @@ Azure 备份可以还原使用托管磁盘的完整 VM，或者将托管磁盘�
 以下各节提供了相关表格，总结了每个 Azure 备份组件中各种功能是否可用或受支持。 请参阅各表格后的额外支持信息或详细信息。
 
 ### <a name="storage"></a>存储
-| 功能 | Azure 备份代理 | System Center DPM | Azure 备份服务器 | Azure IaaS VM 备份 |
+| Feature | Azure 备份代理 | System Center DPM | Azure 备份服务器 | Azure IaaS VM 备份 |
 | --- | --- | --- | --- | --- |
 | 恢复服务保管库 |![是][green] |![是][green] |![是][green] |![是][green] |
 | 磁盘存储 | |![是][green] |![是][green] | |
@@ -155,7 +155,7 @@ Azure 备份可以还原使用托管磁盘的完整 VM，或者将托管磁盘�
 **增量备份**通过仅存储上次备份后更改的数据块，从而实现高存储效率和高网络效率。 采用增量备份，没有必要进行定期的完整备份。 在示例中，第一个月进行完整备份后，存储块 A2、A3、A4 和 A9 将标记为“已更改”，然后转移到第二个月。 在第三个月，仅标记已更改的存储块 A5，并进行传输。 移动较少的数据可以节省存储和网络资源，从而降低 TCO。
 
 ### <a name="security"></a>安全
-| 功能 | Azure 备份代理 | System Center DPM | Azure 备份服务器 | Azure IaaS VM 备份 |
+| Feature | Azure 备份代理 | System Center DPM | Azure 备份服务器 | Azure IaaS VM 备份 |
 | --- | --- | --- | --- | --- |
 | 网络安全<br/> （到 Azure） |![是][green] |![是][green] |![是][green] |![是][green] |
 | 数据安全<br/> （在 Azure 中） |![是][green] |![是][green] |![是][green] |![是][green] |
@@ -174,7 +174,7 @@ Azure 备份可以还原使用托管磁盘的完整 VM，或者将托管磁盘�
 备份 Azure VM 时，需要在虚拟机 *内部* 设置加密。 Azure 备份支持 Azure 磁盘加密，后者在 Windows 虚拟机上使用 BitLocker，在 Linux 虚拟机上使用 **dm-crypt**。 在后端，Azure 备份使用 [Azure 存储服务加密](../storage/common/storage-service-encryption.md)来保护静态数据。
 
 ### <a name="network"></a>网络
-| 功能 | Azure 备份代理 | System Center DPM | Azure 备份服务器 | Azure IaaS VM 备份 |
+| Feature | Azure 备份代理 | System Center DPM | Azure 备份服务器 | Azure IaaS VM 备份 |
 | --- | --- | --- | --- | --- |
 | 网络压缩 <br/>（到**备份服务器**） | |![是][green] |![是][green] | |
 | 网络压缩 <br/>（到**恢复服务保管库**） |![是][green] |![是][green] |![是][green] | |
@@ -209,7 +209,7 @@ Azure 备份针对每个受保护实例实施 9999 个恢复点（也称为备�
 受保护实例的一些常见示例为虚拟机、应用程序服务器、数据库和运行 Windows 操作系统的个人计算机。 例如：
 
 * 运行 Hyper-V 或 Azure IaaS 虚拟机监控程序结构的虚拟机。 虚拟机的来宾操作系统可以是 Windows Server 或 Linux。
-* 应用程序服务器：它可为运行 Windows Server 和工作负荷（具有需备份的数据）的物理或虚拟机。 常见的工作负荷有 Microsoft SQL Server、Microsoft Exchange 服务器、Microsoft SharePoint 服务器和 Windows Server 上的文件服务器角色。 若要备份这些工作负荷，需要 System Center Data Protection Manager (DPM) 或 Azure 备份服务器。
+* 应用程序服务器：应用程序服务器可为运行 Windows Server 和工作负荷（具有需备份的数据）的物理计算机或虚拟机。 常见的工作负荷有 Microsoft SQL Server、Microsoft Exchange 服务器、Microsoft SharePoint 服务器和 Windows Server 上的文件服务器角色。 若要备份这些工作负荷，需要 System Center Data Protection Manager (DPM) 或 Azure 备份服务器。
 * 运行 Windows 操作系统的个人计算机、工作站或笔记本电脑。
 
 

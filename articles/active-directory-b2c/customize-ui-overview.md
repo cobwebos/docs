@@ -3,19 +3,19 @@ title: 有关 Azure Active Directory B2C 中的用户界面自定义 | Microsoft
 description: 了解如何为使用 Azure Active Directory B2C 的应用程序自定义用户界面。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: cec9e5bfea16e5ba11f8cd7324acf15188fb907a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.subservice: B2C
+ms.openlocfilehash: c81701dff8d7eebf08aa6b16c61e6915a905c729
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669354"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172708"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>有关 Azure Active Directory B2C 中的用户界面自定义
 
@@ -23,13 +23,13 @@ ms.locfileid: "50669354"
 
 根据你对于这些体验的不同需求，可通过不同方式自定义应用程序的 UI。 例如：
 
-- 如果使用[内置策略](active-directory-b2c-reference-policies.md)在应用程序中提供注册或登录、密码重置或配置文件编辑体验，则可使用 [Azure 门户来自定义 UI](tutorial-customize-ui.md)。
+- 如果使用[用户流](active-directory-b2c-reference-policies.md)在应用程序中提供注册或登录、密码重置或配置文件编辑体验，则可使用 [Azure 门户来自定义 UI](tutorial-customize-ui.md)。
 - 如果提供仅登录、其伴随的密码重置页面和验证电子邮件，请使用与 [Azure AD 登录页面](../active-directory/fundamentals/customize-branding.md)相同的自定义步骤。
 - 如果客户在登录前尝试编辑其个人资料，则会将其重定向到使用与自定义 Azure AD 登录页面相同的步骤进行自定义的页面。
 - 如果使用[自定义策略](active-directory-b2c-overview-custom.md)在应用程序中提供注册或登录、密码重置或配置文件编辑，则可使用[策略文件来自定义 UI](active-directory-b2c-ui-customization-custom.md)。
 - 如果需要根据客户的决策提供动态内容，则可使用可根据查询字符串中发送的参数[更改页面内容的自定义策略](active-directory-b2c-ui-customization-custom-dynamic.md)。 例如，可以基于从 Web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。
 
-Azure AD B2C 在客户的浏览器中运行代码，并使用称为[跨域资源共享 (CORS)](http://www.w3.org/TR/cors/) 的新式方法。 在运行时，从在策略中指定的 URL 加载内容。 可以为不同的页面指定不同的 URL。 从 URL 加载的内容与从 Azure AD B2C 插入的 HTML 片段合并后，会向客户显示页面。
+Azure AD B2C 在客户的浏览器中运行代码，并使用称为[跨域资源共享 (CORS)](https://www.w3.org/TR/cors/) 的新式方法。 在运行时，从在用户流或策略中指定的 URL 加载内容。 可以为不同的页面指定不同的 URL。 从 URL 加载的内容与从 Azure AD B2C 插入的 HTML 片段合并后，会向客户显示页面。
 
 在开始之前，请查看以下指南：
 
@@ -118,6 +118,6 @@ Azure AD B2C 在客户的浏览器中运行代码，并使用称为[跨域资源
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果使用内置策略，则可通过教程[在 Azure Active Directory B2C 中自定义应用程序的用户界面](tutorial-customize-ui.md)开始自定义 UI。
-- 如果使用自定义策略，则可使用本文[使用自定义策略在 Azure Active Directory B2C 中自定义应用程序的用户界面](active-directory-b2c-ui-customization-custom.md)开始自定义 UI。
+- 如果使用用户流，可以根据教程开始自定义 UI：[在 Azure Active Directory B2C 中自定义应用程序的用户界面](tutorial-customize-ui.md)。
+- 如果使用自定义策略，可以根据本文开始自定义 UI：[使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面](active-directory-b2c-ui-customization-custom.md)。
 

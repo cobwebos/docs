@@ -11,15 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 9d6bb8d4327b428bb47d1d44422d816e7b20ed87
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.lastreviewed: 12/19/2018
+ms.openlocfilehash: 112e9aa023fb29bd960b61139861db4007c61b4d
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847518"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962241"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>在 Azure Stack 中使用虚拟机时的注意事项
 
@@ -37,10 +38,12 @@ Azure Stack 虚拟机提供可按需缩放的计算资源。 在部署虚拟机 
 | 虚拟机扩展 |Azure 支持各种不同的虚拟机扩展。 若要了解可用的扩展，请参阅[虚拟机扩展和功能](../../virtual-machines/windows/extensions-features.md)一文。| Azure Stack 支持一部分可在 Azure 中使用的扩展，每个扩展有特定的版本。 Azure Stack 云管理员可以选择要将哪些扩展提供给其用户使用。 若要查看支持的扩展列表，请参阅本文的[虚拟机扩展](#virtual-machine-extensions)部分。 |
 | 虚拟机网络 | 分配给租户虚拟机的公共 IP 地址可通过 Internet 访问。<br><br><br>Azure 虚拟机有固定的 DNS 名称 | 只能在 Azure Stack 开发工具包环境中访问分配给租户虚拟机的公共 IP 地址。 用户必须能够通过 [RDP](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) 或 [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) 访问 Azure Stack 开发工具包，才能连接到在 Azure Stack 中创建的虚拟机。<br><br>在特定 Azure Stack 实例中创建的虚拟机的 DNS 名称基于云管理员配置的值。 |
 | 虚拟机存储 | 支持[托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)。 | 版本为 1808 及更高版本的 Azure Stack 支持托管磁盘。 |
-| 虚拟机磁盘性能 | 依赖于磁盘类型和大小。 | 取决于已附加磁盘的 VM 的 VM 大小来，指代[支持在 Azure Stack 中的虚拟机大小](azure-stack-vm-sizes.md)一文。
+| 虚拟机磁盘性能 | 取决于磁盘类型和大小。 | 取决于磁盘所附加到的 VM 的 VM 大小，请参阅 [Azure Stack 中支持的虚拟机大小](azure-stack-vm-sizes.md)一文。
 | API 版本 | Azure 始终提供所有虚拟机功能的最新 API 版本。 | Azure Stack 支持特定的 Azure 服务以及这些服务的特定 API 版本。 若要查看支持的 API 版本列表，请参阅本文的 [API 版本](#api-versions)部分。 |
-|虚拟机可用性集|多个容错域（每个区域 2 个或 3 个）<br>多个更新域<br>支持托管磁盘|多个容错域（每个区域 2 个或 3 个）<br>多个更新域（最多 20 个）<br>不支持托管磁盘|
-|虚拟机规模集|自动缩放支持|不支持自动缩放。<br>使用门户、资源管理器模板或 PowerShell 将更多实例添加到规模集。
+| Azure 实例元数据服务 | Azure 实例元数据服务提供有关运行虚拟机实例的信息，这些实例可用于管理和配置虚拟机。  | Azure Stack 不支持实例元数据服务。 |
+| 虚拟机可用性集|多个容错域（每个区域 2 个或 3 个）<br>多个更新域|多个容错域（每个区域 2 个或 3 个）<br>多个更新域（最多 20 个）|
+| 虚拟机规模集|支持自动缩放|不支持自动缩放。<br>使用门户、资源管理器模板或 PowerShell 将更多实例添加到规模集。 |
+| 虚拟机诊断 | Linux VM 诊断 | Azure Stack 不支持 Linux VM 诊断。 在部署启用 VM 诊断的 Linux VM 时，部署会失败。 如果通过诊断设置启用 Linux VM 的基本指标，部署也会失败。
 
 ## <a name="virtual-machine-sizes"></a>虚拟机大小
 
@@ -52,7 +55,7 @@ Azure Stack 施加了一些资源限制，以避免资源（服务器本地和�
 
 下表列出了 Azure Stack 支持的 VM 及其配置：
 
-| 类型           | 大小          | 支持的大小范围 |
+| Type           | 大小          | 支持的大小范围 |
 | ---------------| ------------- | ------------------------ |
 |常规用途 |基本 A        |[A0 - A4](azure-stack-vm-sizes.md#basic-a)                   |
 |常规用途 |标准 A     |[A0 - A7](azure-stack-vm-sizes.md#standard-a)              |
@@ -69,7 +72,7 @@ Azure Stack 施加了一些资源限制，以避免资源（服务器本地和�
 
 ## <a name="virtual-machine-extensions"></a>虚拟机扩展
 
- Azure Stack 包含少量的扩展。 可以通过市场联合来获取更新和其他扩展。
+Azure Stack 包含少量的扩展。 可以通过市场联合来获取更新和其他扩展。
 
 使用以下 PowerShell 脚本可获取 Azure Stack 环境中可用的虚拟机扩展的列表：
 
@@ -80,6 +83,8 @@ Get-AzureRmVmImagePublisher -Location local | `
   Select Type, Version | `
   Format-Table -Property * -AutoSize
 ```
+
+如果预配某个扩展在 VM 部署时间太长，通知而不是尝试停止该进程来解除分配或删除该 VM 的预配超时值。
 
 ## <a name="api-versions"></a>API 版本
 
@@ -103,8 +108,8 @@ Get-AzureRmResourceProvider | `
 
 必须根据产品使用权利和 Microsoft 许可条款使用 Windows 产品。 Azure Stack 使用[自动 VM 激活](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) (AVMA) 来激活 Windows Server 虚拟机 (VM)。
 
-- Azure Stack 主机使用 Windows Server 2016 的 AVMA 密钥激活 Windows。 运行 Windows Server 2012 或更高版本的所有 VM 都将自动激活。
-- 运行 Windows Server 2008 R2 的 VM 不会自动激活，必须使用 [MAK 激活](https://technet.microsoft.com/library/ff793438.aspx)进行激活。 若要使用 MAK 激活，必须提供自己的产品密钥。
+- Azure Stack 主机使用 Windows Server 2016 的 AVMA 密钥激活 Windows。 运行 Windows Server 2012 R2 或更高版本会自动激活的所有 Vm。
+- Vm 的运行 Windows Server 2012 或前面未自动激活，必须通过使用其激活[MAK 激活](https://technet.microsoft.com/library/ff793438.aspx)。 若要使用 MAK 激活，必须提供自己的产品密钥。
 
 Microsoft Azure 使用 KMS 激活来激活 Windows Vm。 如果将 VM 从 Azure Stack 移动到 Azure 并且遇到了激活问题，请参阅[排查 Azure Windows 虚拟机激活问题](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-activation-problems)。 可以在 Azure 支持团队博客文章 [Troubleshooting Windows activation failures on Azure VMs](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/)（排查 Azure VM 上的 Windows 激活故障）中找到其他信息。
 

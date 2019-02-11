@@ -11,14 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/16/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: 2a8a00ab034016e7121e4601b3ff5a16d8c721ac
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.custom: seodec18
+ms.openlocfilehash: 84bdc560a135f8f1eb7d6c86fe4f3749135ff7e1
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395065"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139038"
 ---
 # <a name="use-drm-dynamic-encryption-and-license-delivery-service"></a>使用 DRM 动态加密和许可证传送服务
 
@@ -58,7 +59,7 @@ ms.locfileid: "49395065"
 
 本文中所述的示例生成以下结果：
 
-![使用 DRM 提供保护](./media/protect-with-drm/ams_player.png)
+![具有 DRM 保护的视频的 AMS](./media/protect-with-drm/ams_player.png)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -116,7 +117,7 @@ ms.locfileid: "49395065"
 
 此作业需要一些时间才能完成，完成时可发出通知。 以下代码示例显示如何轮询服务以获取[作业](https://docs.microsoft.com/rest/api/media/jobs)状态。 对于生产应用程序，由于可能出现延迟，并不建议将轮询作为最佳做法。 如果在帐户上过度使用轮询，轮询会受到限制。 开发者应改用事件网格。 请参阅[将事件路由到自定义 Web 终结点](job-state-events-cli-how-to.md)。
 
-作业通常将经历以下状态：“已计划”、“已排队”、“正在处理”、“已完成”（最终状态）。 如果作业出错，则显示“错误”状态。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消”。
+**作业**通常会经历以下状态：**已计划**、**已排队**、**正在处理**、**已完成**（最终状态）。 如果作业出错，则显示“错误”状态。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消”。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#WaitForJobToFinish)]
 
@@ -147,7 +148,7 @@ ms.locfileid: "49395065"
 
 创建 **StreamingLocator** 的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，StreamingLocator 立即生效，并持续到其被删除为止。 
 
-创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) 时，需要指定所需的 **StreamingPolicyName**。 本教程使用某个预定义的 StreamingPolicies 来告知 Azure 媒体服务如何发布流式处理的内容。 在此示例中，请将 StreamingLocator.StreamingPolicyName 设置为“Predefined_MultiDrmCencStreaming”策略。 此策略指示需要在定位符中生成并设置两个内容密钥（信封和 CENC）。 因此，应用了信封、PlayReady 和 Widevine 加密（根据配置的 DRM 许可证将密钥传送到播放客户端）。 如果还想要使用 CBCS (FairPlay) 加密流，请使用“Predefined_MultiDrmStreaming”。 
+创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) 时，需要指定所需的 **StreamingPolicyName**。 本教程使用某个预定义的 StreamingPolicies 来告知 Azure 媒体服务如何发布流式处理的内容。 在此示例中，请将 StreamingLocator.StreamingPolicyName 设置为“Predefined_MultiDrmCencStreaming”策略。 此策略指示需要在定位符中生成并设置两个内容密钥（信封和 CENC）。 因此，应用了信封、PlayReady 和 Widevine 加密（根据配置的 DRM 许可证将密钥传送到播放客户端）。 如果还要使用 CBCS (FairPlay) 加密流，请使用“Predefined_MultiDrmStreaming”。 
 
 > [!IMPORTANT]
 > 使用自定义的 [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) 时，应为媒体服务帐户设计有限的一组此类策略，并在需要同样的加密选项和协议时重新将这些策略用于 StreamingLocators。 媒体服务帐户具有对应于 StreamingPolicy 条目数的配额。 不应为每个 StreamingLocator 创建新的 StreamingPolicy。

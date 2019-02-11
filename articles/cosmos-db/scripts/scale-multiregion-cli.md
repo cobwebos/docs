@@ -1,17 +1,19 @@
 ---
-title: Azure CLI 脚本 - Azure Cosmos DB 的多区域复制 | Microsoft Docs
+title: Azure CLI 脚本 - Azure Cosmos DB 的多区域复制
 description: Azure CLI 脚本示例 - Azure Cosmos DB 的多区域复制
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: d9f1420b5d2706ed4547e46639739c0f707559ab
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.reviewer: sngun
+ms.openlocfilehash: 268b15fb0f3e185be4c06c5c0ba20668d1635f04
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015191"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039548"
 ---
 # <a name="replicate-an-azure-cosmos-db-database-account-in-multiple-regions-and-configure-failover-priorities-using-the-azure-cli"></a>使用 Azure CLI 将 Azure Cosmos DB 数据库帐户复制到多个区域中并配置故障转移优先级
 

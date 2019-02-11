@@ -1,61 +1,55 @@
 ---
-title: Net# 神经网络 - Azure 机器学习工作室 | Microsoft Docs
-description: 有关 Net# 神经网络规范语言的语法，以及如何使用 Net# 和 Azure 机器学习工作室创建自定义神经网络模型的示例。
+title: 使用 Net# 创建自定义神经网络
+titleSuffix: Azure Machine Learning Studio
+description: Net# 神经网络规范语言的语法指南。 了解如何在 Azure 机器学习工作室中创建自定义神经网络模型。
 services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
-editor: cgronlun
-ms.assetid: cfd1454b-47df-4745-b064-ce5f9b3be303
 ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: studio
 ms.topic: reference
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 3aa364e92dd7ce3742d28ac2b36d9a7f16cbebbf
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: be6c04fe31aaa8d4b9081942b054575ff548cf5a
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315301"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300364"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>有关 Azure 机器学习工作室的 Net# 神经网络规范语言的指南
 
-Net# 是由 Microsoft 开发的一种用于定义神经网络体系结构的语言。 使用 Net# 定义神经网络的结构使定义复杂结构（如深层神经网络或任意维度的卷积）变得可能，这些复杂结构被认为可提高对数据的学习，如映像、音频或视频。
+Net# 是由 Microsoft 开发的用于定义复杂神经网络体系结构（例如深度神经网络或任意维度的卷积）的语言。 可使用复杂的结构改进图像、视频或音频等数据的学习。
 
 在下列上下文中，可以使用 Net# 体系结构规范：
 
-+ Microsoft Azure 机器学习工作室中的所有网络模块：[多类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)、[两类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)和[神经网络回归](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ MicrosoftML 中的神经网络函数：R 语言的 [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) 和 [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)，以及 Python 的 [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network)。
++ Microsoft Azure 机器学习工作室中的所有神经网络模块：[多类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)[双类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)和[神经网络回归](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
++ Microsoft ML Server 中的神经网络函数：R 语言的 [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) 和 [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)，以及 Python 的 [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network)。
 
 
-本文介绍了使用 Net# 开发自定义神经网络的基本概念和所需语法： 
+本文介绍了使用 Net# 开发自定义神经网络的基本概念和所需语法：
 
 + 神经网络要求以及如何定义主要组件
 + Net# 规范语言的语法和关键字
-+ 使用 Net# 创建的自定义神经网络的示例 
++ 使用 Net# 创建的自定义神经网络的示例
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="neural-network-basics"></a>神经网络基础知识
 
-神经网络结构包括了在层中组织的节点，以及节点之间的加权连接（或边缘）。 连接是有方向的，每个连接具有一个源节点和一个目标节点。  
+神经网络结构包括了在层中组织的节点，以及节点之间的加权连接（或边缘）。 连接是有方向的，每个连接具有一个源节点和一个目标节点。
 
-每个可训练层（隐藏或输出层）具有一个或多个**连接捆绑**。 连接捆绑包括一个源层和该源层中的连接规范。 给定捆绑中的所有连接共享同一源层和同一目标层。 在 Net # 中，连接捆绑将视为属于捆绑的目标层。
+每个可训练层（隐藏或输出层）具有一个或多个**连接捆绑**。 连接捆绑包括一个源层和该源层中的连接规范。 给定捆绑中的所有连接共享源层和目标层。 在 Net # 中，连接捆绑将视为属于捆绑的目标层。
 
-Net # 支持各种类型的连接捆绑，可自定义映射到隐藏层和映射到输出的输入方式。
+Net# 支持各种类型的连接捆绑，可自定义映射到隐藏层和映射到输出的输入方式。
 
 默认或标准捆绑是一个**完整捆绑**，其中源层中的每个节点都连接到目标层中的每个节点。
 
 此外，Net# 支持以下四种高级连接捆绑：
 
-+ **筛选捆绑**。 用户可通过使用源层节点和目标层节点的位置来定义一个谓词。 每当谓词为 True，节点即连接。
++ **筛选捆绑**。 可通过使用源层节点和目标层节点的位置来定义谓词。 每当谓词为 True，节点即连接。
 
-+ **卷积捆绑**。 用户可在源层中定义节点的小范围邻域。 目标层中的每个节点连接到源层中节点的一个邻域。
++ **卷积捆绑**。 可在源层中定义节点的小范围邻域。 目标层中的每个节点连接到源层中节点的一个邻域。
 
 + **池捆绑**和**响应规范化**捆绑。 这些与卷积捆绑类似，用户可在其中定义源层中小范围的邻域。 不同之处在于这些捆绑中边缘的权重不可训练。 相反，为源节点值应用预定义的函数可确定目标节点值。
 
@@ -69,19 +63,19 @@ Net # 支持各种类型的连接捆绑，可自定义映射到隐藏层和映�
 + 定义特殊的连接结构，如卷积和权重共享捆绑。
 + 指定不同的激活函数。
 
-有关规范语言语法的详细信息，请参阅 [结构规范](#Structure-specifications)。  
+有关规范语言语法的详细信息，请参阅 [结构规范](#Structure-specifications)。
 
 有关为某些常见机器学习任务定义神经网络的示例（从单一到复杂），请参阅[示例](#Examples-of-Net#-usage)。
 
 ## <a name="general-requirements"></a>一般要求
 
-+ 必须正好是一个输出层，至少一个输入层，以及零个或多个隐藏层。 
-+ 每层都有固定节点数，在任意维度的举行数组中按概念排列。 
-+ 输入层没有关联的训练参数，并表示实例数据进入网络的点。 
-+ 可训练层（隐藏和输出层）具有关联的培训参数，称为权重和偏差。 
-+ 源和目标节点必须处于不同的层。 
++ 必须正好是一个输出层，至少一个输入层，以及零个或多个隐藏层。
++ 每层都有固定节点数，在任意维度的举行数组中按概念排列。
++ 输入层没有关联的训练参数，并表示实例数据进入网络的点。
++ 可训练层（隐藏和输出层）具有关联的培训参数，称为权重和偏差。
++ 源和目标节点必须处于不同的层。
 + 连接必须是非循环的；换句话说，不能有导回初始源节点的连接链。
-+ 输出层不能是连接捆绑的源层。  
++ 输出层不能是连接捆绑的源层。
 
 ## <a name="structure-specifications"></a>结构规范
 
@@ -91,7 +85,7 @@ Net # 支持各种类型的连接捆绑，可自定义映射到隐藏层和映�
 
 常数声明是可选的。 它提供了一种方法来定义神经网络定义中其他位置使用的值。 声明语句包含标识符（后跟一个等号和值表达式）。
 
-例如，下面的语句定义一个常量 `x`：  
+例如，下面的语句定义一个常量 `x`：
 
 `Const X = 28;`
 
@@ -110,7 +104,7 @@ Net # 支持各种类型的连接捆绑，可自定义映射到隐藏层和映�
 ```Net#
 input Data auto;
 hidden Hidden[5,20] from Data all;
-output Result[2] from Hidden all;  
+output Result[2] from Hidden all;
 ```
 
 + 维度的乘积是层中节点数。 在此示例中，有两个维度 [5,20]，这意味着层中有 100 个节点。
@@ -127,7 +121,7 @@ output Result[2] from Hidden all;
 ```Net#
 input Data auto;
 hidden Hidden auto from Data all;
-output Result auto from Hidden all;  
+output Result auto from Hidden all;
 ```
 
 可训练层（隐藏或输出层）的层声明可选择包括输出函数（也称为激活函数），这会分类模型默认为 **sigmoid**，回归模型默认为 **linear**。 即使使用默认值，为了清楚起见，也可以显式声明激活函数。
@@ -172,10 +166,10 @@ output Result auto from Hidden all;
 ```Net#
 input Pixels [10, 20];
 hidden ByRow[10, 12] from Pixels where (s,d) => s[0] == d[0];
-hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;  
+hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 ```
 
-+ 在 `ByRow` 的谓词中，`s` 是输入层 `Pixels` 的节点的矩形数组中表示索引的参数，`d` 是隐藏层 `ByRow` 的节点的数组中表示索引的参数。 `s` 和 `d` 的类型是长度为 2 的整数元组。 从概念上讲，`s` 涵盖了 `0 <= s[0] < 10` 且 `0 <= s[1] < 20` 的所有整数对，`d` 涵盖了 `0 <= d[0] < 10` 且 `0 <= d[1] < 12` 的所有整数对。 
++ 在 `ByRow` 的谓词中，`s` 是输入层 `Pixels` 的节点的矩形数组中表示索引的参数，`d` 是隐藏层 `ByRow` 的节点的数组中表示索引的参数。 `s` 和 `d` 的类型是长度为 2 的整数元组。 从概念上讲，`s` 涵盖了 `0 <= s[0] < 10` 且 `0 <= s[1] < 20` 的所有整数对，`d` 涵盖了 `0 <= d[0] < 10` 且 `0 <= d[1] < 12` 的所有整数对。
 
 + 在谓词表达式的右侧端上有一个条件。 在本例中，对于 `s` 和 `d` 的每个值，该条件为 True，从源层节点到目标层节点有一个边缘。 因此，在所有 s[0] 等于 d[0] 的情况下，此筛选表达式指示捆绑包括从由 `s` 定义的节点到由 `d` 定义的节点的连接。
 
@@ -189,58 +183,58 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 
 ## <a name="convolutional-bundles"></a>卷积捆绑
 
-如果训练数据具有同类结构，则通常使用卷积捆绑来了解数据的高级功能。 例如，映像、音频或视频数据中的空间或临时维数可以很统一。  
+如果训练数据具有同类结构，则通常使用卷积捆绑来了解数据的高级功能。 例如，映像、音频或视频数据中的空间或临时维数可以很统一。
 
-卷积捆绑使用通过维度滑动的矩形**内核**。 实质上，每个内核定义一组在本地邻域中应用的权重，称为**内核应用程序**。 每个内核应用程序对应一个源层中的节点，称为**内核节点**。 内核的权重在多个连接中共享。 在卷积捆绑中，每个内核都是矩形状的，并且所有内核应用程序都具有相同大小。  
+卷积捆绑使用通过维度滑动的矩形**内核**。 实质上，每个内核定义一组在本地邻域中应用的权重，称为**内核应用程序**。 每个内核应用程序对应一个源层中的节点，称为**内核节点**。 内核的权重在多个连接中共享。 在卷积捆绑中，每个内核都是矩形状的，并且所有内核应用程序都具有相同大小。
 
 卷积捆绑支持一下属性：
 
 **InputShape** 可定义用于此卷积捆绑的源层维数。 值必须是正整数的元组。 整数的乘积必须等于源层中的节点数，否则，不需要与源层声明的维数匹配。 此元组的长度会成为卷积捆绑的**实参数量**值。 通常，实参数量表示函数可采用的参数或操作的数量。
 
-若要定义内核的形状和位置，可使用属性 **KernelShape**、**Stride**、**Padding**、**LowerPad** 或 **UpperPad**：   
+若要定义内核的形状和位置，可使用属性 **KernelShape**、**Stride**、**Padding**、**LowerPad** 或 **UpperPad**：
 
-+ **KernelShape**：（必需）为卷积捆绑定义每个内核的维数。 值必须是正整数的元组，其长度等于捆绑的实参数量。 此元组的每个组件必须不超过 **InputShape** 的相应组件。 
++ **KernelShape**：（必需）为卷积捆绑定义每个内核的维数。 值必须是正整数的元组，其长度等于捆绑的实参数量。 此元组的每个组件必须不超过 **InputShape** 的相应组件。
 
-+ **Stride**：（可选）定义卷积的滑动步大小（每个维度的每步大小），即中央节点之间的距离。 值必须是正整数的元组，其长度为捆绑的实参数量。 此元组的每个组件必须不超过 **KernelShape** 的相应组件。 默认值为一个元组，其所有组件都等于 1。 
++ **Stride**：（可选）定义卷积的滑动步大小（每个维度的每步大小），即中央节点之间的距离。 值必须是正整数的元组，其长度为捆绑的实参数量。 此元组的每个组件必须不超过 **KernelShape** 的相应组件。 默认值为一个元组，其所有组件都等于 1。
 
-+ **Sharing**：（可选）定义卷积的每个维度的权重共享。 值可以是单个布尔值或布尔值的元组（其长度为捆绑的实参数量）。 单个布尔值扩展为正确长度的元组，所有组件都等于指定值。 默认值为包含所有 True 值的元组。 
++ **Sharing**：（可选）定义卷积的每个维度的权重共享。 值可以是单个布尔值或布尔值的元组（其长度为捆绑的实参数量）。 单个布尔值扩展为正确长度的元组，所有组件都等于指定值。 默认值为包含所有 True 值的元组。
 
-+ **MapCount**：（可选）为卷积捆绑定义功能映射数。 值可以是单个正整数或正整数的元组（其长度为捆绑的实参数量）。 单个整数值扩展为正确长度的元组，第一个组件等于指定值，其他所有组件等于 1. 默认值为 1。 功能映射的总数是元组组件的乘积。 组件之间的总数的因数分解可确定目标节点中功能映射值的分组方式。 
++ **MapCount**：（可选）为卷积捆绑定义功能映射数。 值可以是单个正整数或正整数的元组（其长度为捆绑的实参数量）。 单个整数值扩展为正确长度的元组，第一个组件等于指定值，其他所有组件等于 1. 默认值为 1。 功能映射的总数是元组组件的乘积。 组件之间的总数的因数分解可确定目标节点中功能映射值的分组方式。
 
-+ **Weights**：（可选）定义捆绑的初始权重。 值必须是浮点值的元组，其长度为内核数乘以每个内核的权重数，会在本文后面部分中定义。 默认权重是随机生成的。  
++ **Weights**：（可选）定义捆绑的初始权重。 值必须是浮点值的元组，其长度为内核数乘以每个内核的权重数，会在本文后面部分中定义。 默认权重是随机生成的。
 
 有两组控制填充的属性，这两个属性相互排斥：
 
-+ **Padding**：（可选）确定是否应该使用**默认填充方案**来填充输入。 值可以是单个布尔值或布尔值的元组（其长度为捆绑的实参数量）。 
++ **Padding**：（可选）确定是否应该使用**默认填充方案**来填充输入。 值可以是单个布尔值或布尔值的元组（其长度为捆绑的实参数量）。
 
-    单个布尔值扩展为正确长度的元组，所有组件都等于指定值。 
-    
-    如果维度值为 True，则使用零值单元格将源按逻辑填充到维度以支持其他内核应用程序，从而使该维度中第一个和最后一个内核的中央节点称为源层的维度中的第一个和最后一个节点。 因此，每个维度中的“虚拟”节点数将自动确定，以使 `(InputShape[d] - 1) / Stride[d] + 1` 内核完全符合填充的源层。 
-    
+    单个布尔值扩展为正确长度的元组，所有组件都等于指定值。
+
+    如果维度值为 True，则使用零值单元格将源按逻辑填充到维度以支持其他内核应用程序，从而使该维度中第一个和最后一个内核的中央节点称为源层的维度中的第一个和最后一个节点。 因此，每个维度中的“虚拟”节点数将自动确定，以使 `(InputShape[d] - 1) / Stride[d] + 1` 内核完全符合填充的源层。
+
     如果维度值为 False，则将定义内核，使留出的每个端上的节点数都相同（最大差值为 1）。 此属性的默认值为一个元组，其所有组件都等于 False。
 
-+ **UpperPad** 和 **LowerPad**：（可选）对大量要使用的填充提供更好的控制。 **重要提示：** 当且仅当***没有***定义上述的 **Padding** 属性时，才能定义这些属性。 值必须是正整数值的元组，其长度为绑定的实参数量。 指定这些属性后，“虚拟”节点将添加到输入层的每个维度的上下两端。 每个维度的上下两端添加的节点数分别由 **LowerPad**[i] 和 **UpperPad**[i] 确定。 
++ **UpperPad** 和 **LowerPad**：（可选）对大量要使用的填充提供更好的控制。 **重要提示：** 当且仅当“没有”定义上述的“Padding”属性时，才能定义这些属性。 值必须是正整数值的元组，其长度为绑定的实参数量。 指定这些属性后，“虚拟”节点将添加到输入层的每个维度的上下两端。 每个维度的上下两端添加的节点数分别由 **LowerPad**[i] 和 **UpperPad**[i] 确定。
 
     若要确保内核只对应“真实”节点而不是“虚拟”节点，则必须符合以下条件：
-      - **LowerPad** 的每个组件必须严格小于 `KernelShape[d]/2`。 
-      - **UpperPad** 的每个组件不能大于 `KernelShape[d]/2`。 
-      - 这些属性的默认值为一个元组，其所有组件都等于 0。 
+      - **LowerPad** 的每个组件必须严格小于 `KernelShape[d]/2`。
+      - **UpperPad** 的每个组件不能大于 `KernelShape[d]/2`。
+      - 这些属性的默认值为一个元组，其所有组件都等于 0。
 
     设置 **Padding** = true 允许尽可能多的填充，使内核的“中心”保持在“真实”输入内。 这会对数学做出一些更改，以便计算输出大小。 通常情况下，输出大小 *D* 计算为 `D = (I - K) / S + 1`，其中 `I` 是输入大小，`K` 是内核大小，`S` 是 stride，`/` 表示整数除法（向零舍入）。 如果设置 UpperPad = [1, 1]，则输入大小 `I` 实际上是 29，因此 `D = (29 - 5) / 2 + 1 = 13`。 但是，当 **Padding** = true 时，`I` 实际上增长 `K - 1`，因此 `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14`。 通过为 **UpperPad** 和 **LowerPad** 指定值，相比只设置 **Padding** = true，可以更好地控制填充。
 
-有关卷积网络及其应用程序的详细信息，请参阅这些文章： 
+有关卷积网络及其应用程序的详细信息，请参阅这些文章：
 
 + [http://deeplearning.net/tutorial/lenet.html ](http://deeplearning.net/tutorial/lenet.html)
-+ [http://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf) 
-+ [http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf](http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf)  
++ [http://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf)
++ [http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf](http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf)
 
 ## <a name="pooling-bundles"></a>池捆绑
 
 **池捆绑**适用于类似卷积连接的几何，但是它使用源节点的预定义函数来派生目标节点值。 因此，池捆绑不具有可训练状态（权重或偏差）。 池捆绑支持所有卷积属性，除了 **Sharing**、**MapCount** 和 **Weights**。
 
-通常情况下，按相邻池单位汇总的内核不会重叠。 如果在每个维度中 Stride[d] 等于KernelShape[d] ，那么获取的层为传统本地池层，其广泛应用于卷积神经网络。 每个目标节点将计算源层中其内核的最大活动数或平均值。  
+通常情况下，按相邻池单位汇总的内核不会重叠。 如果在每个维度中 Stride[d] 等于KernelShape[d] ，那么获取的层为传统本地池层，其广泛应用于卷积神经网络。 每个目标节点将计算源层中其内核的最大活动数或平均值。
 
-以下示例对池捆绑进行了说明： 
+以下示例对池捆绑进行了说明：
 
 ```Net#
 hidden P1 [5, 12, 12]
@@ -248,29 +242,29 @@ hidden P1 [5, 12, 12]
   InputShape  = [ 5, 24, 24];
    KernelShape = [ 1,  2,  2];
    Stride      = [ 1,  2,  2];
-  }  
+  }
 ```
 
-+ 捆绑的实参数量为 3，也就是元组 `InputShape`、`KernelShape` 和 `Stride` 的长度。 
-+ 源层中的节点数为 `5 * 24 * 24 = 2880`。 
-+ 这是传统本地池层，因为 **KernelShape** 和 **Stride** 相等。 
++ 捆绑的实参数量为 3，也就是元组 `InputShape`、`KernelShape` 和 `Stride` 的长度。
++ 源层中的节点数为 `5 * 24 * 24 = 2880`。
++ 这是传统本地池层，因为 **KernelShape** 和 **Stride** 相等。
 + 目标层中的节点数为 `5 * 12 * 12 = 1440`。
 
-有关池层的详细信息，请参阅这些文章：  
+有关池层的详细信息，请参阅这些文章：
 
 + [http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)（第 3.4 节）
-+ [http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf) 
++ [http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf)
 + [http://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](http://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
 
 ## <a name="response-normalization-bundles"></a>响应规范化捆绑
 
-**响应规范化**是本地规范化方案，由 Geoffrey Hinton 等人在文章 [ImageNet Classiﬁcation with Deep Convolutional Neural Networks](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)（深层卷积神经网络的 ImageNet 分类）中首次引入。 
+**响应规范化**是本地规范化方案，由 Geoffrey Hinton 等人在 [ImageNet Classiﬁcation with Deep Convolutional Neural Networks](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)（深层卷积神经网络的 ImageNet 分类）一文中首次提出。
 
-响应规范化用于避免神经网络中的通用化。 一个神经元在一个非常高的激活级别中激发时，本地响应规范化层将抑制周围神经元的激活级别。 这是通过使用三个参数（`α`、`β` 和 `k`）和一个卷积结构（或邻域形状）来完成的。 目标层 **y** 中的每个神经元对应于源层中神经元 **x**。 **y** 的激活级别由以下公式指定，其中 `f` 是神经元的激活级别，`Nx` 是内核（或包含 **x** 邻域中神经元的集），由以下卷积结构定义：  
+响应规范化用于避免神经网络中的通用化。 一个神经元在一个非常高的激活级别中激发时，本地响应规范化层将抑制周围神经元的激活级别。 这是通过使用三个参数（`α`、`β` 和 `k`）和一个卷积结构（或邻域形状）来完成的。 目标层 **y** 中的每个神经元对应于源层中神经元 **x**。 **y** 的激活级别由以下公式指定，其中 `f` 是神经元的激活级别，`Nx` 是内核（或包含 **x** 邻域中神经元的集），由以下卷积结构定义：
 
 ![卷积结构的公式](./media/azure-ml-netsharp-reference-guide/formula_large.png)
 
-响应规范化捆绑支持所有卷积属性，除了 **Sharing**、**MapCount** 和 **Weights**。  
+响应规范化捆绑支持所有卷积属性，除了 **Sharing**、**MapCount** 和 **Weights**。
 
 + 如果内核包含与 ***x*** 相同的映射中的神经元，则规范化方案称为**相同映射规范化**。 若要定义相同映射规范化，那么 **InputShape** 中的第一个坐标必须具有值 1.
 
@@ -283,11 +277,11 @@ hidden P1 [5, 12, 12]
 
 除了前面所述的四个属性，响应规范化捆绑还支持以下属性：
 
-+ **Alpha**：（必需）指定一个与前面公式中的 `α` 对应的浮点值。 
-+ **Beta**：（必需）指定一个与前面公式中的 `β` 对应的浮点值。 
++ **Alpha**：（必需）指定一个与前面公式中的 `α` 对应的浮点值。
++ **Beta**：（必需）指定一个与前面公式中的 `β` 对应的浮点值。
 + **Offset**：（可选）指定一个与前面公式中的 `k` 对应的浮点值。 默认为 1。
 
-下面的示例使用这些属性定义回应规范化捆绑：  
+下面的示例使用这些属性定义回应规范化捆绑：
 
 ```Net#
 hidden RN1 [5, 10, 10]
@@ -296,16 +290,16 @@ from P1 response norm {
   KernelShape = [ 1,  3,  3];
   Alpha = 0.001;
   Beta = 0.75;
-  }  
+  }
 ```
 
-+ 源层包括五个映射，每个具有一个 12x12 维度，总计 1440 个节点。 
-+ 值 **KernelShape** 指示这是一个相同的映射规范化层，其中邻域为一个 3x3 矩形。 
-+ **Padding** 的默认值为 False，因此目标层的每个维度中只有 10 个节点。 要包括一个与源层中每个节点对应的目标层中的节点，可添加 Padding = [true, true, true]；然后将 RN1 的大小更改为 [5, 12, 12]。  
++ 源层包括五个映射，每个具有一个 12x12 维度，总计 1440 个节点。
++ 值 **KernelShape** 指示这是一个相同的映射规范化层，其中邻域为一个 3x3 矩形。
++ **Padding** 的默认值为 False，因此目标层的每个维度中只有 10 个节点。 要包括一个与源层中每个节点对应的目标层中的节点，可添加 Padding = [true, true, true]；然后将 RN1 的大小更改为 [5, 12, 12]。
 
 ## <a name="share-declaration"></a>共享声明
 
-Net # 可选择支持定义具有共享权重的多个捆绑。 如果任意两个捆绑的结构相同，则其权重可以共享。 以下语法可定义具有共享权重的捆绑：  
+Net # 可选择支持定义具有共享权重的多个捆绑。 如果任意两个捆绑的结构相同，则其权重可以共享。 以下语法可定义具有共享权重的捆绑：
 
 ```Net#
 share-declaration:
@@ -335,7 +329,7 @@ share-declaration:
     identifier
 ```
 
-例如，以下共享声明指定层名称，指示应共享两个权重和偏差：  
+例如，以下共享声明指定层名称，指示应共享两个权重和偏差：
 
 ```Net#
 Const {
@@ -354,22 +348,22 @@ output Result [2] {
   from H1 all;
   from H2 all;
   }
-share { H1, H2 } // share both weights and biases  
+share { H1, H2 } // share both weights and biases
 ```
 
-+ 输入功能划分为两个相等大小的输入层。 
-+ 隐藏层则计算两个输入层上的更高级别的功能。 
-+ 共享声明指定 *H1* 和 *H2* 必须从其各自的输入中以相同的方式进行计算。  
++ 输入功能划分为两个相等大小的输入层。
++ 隐藏层则计算两个输入层上的更高级别的功能。
++ 共享声明指定 *H1* 和 *H2* 必须从其各自的输入中以相同的方式进行计算。
 
-或者，可以使用两个单独的共享声明来指定，如下所示：  
+或者，可以使用两个单独的共享声明来指定，如下所示：
 
 ```Net#
-share { Data1 => H1, Data2 => H2 } // share weights  
+share { Data1 => H1, Data2 => H2 } // share weights
 <!-- -->
-    share { 1 => H1, 1 => H2 } // share biases  
+    share { 1 => H1, 1 => H2 } // share biases
 ```
 
-只有在层包含单个捆绑时，才可以使用缩写形式。 一般情况下，只有在相关结构相同时（即具有相同大小、相同卷积几何等），才能共享。  
+只有在层包含单个捆绑时，才可以使用缩写形式。 一般情况下，只有在相关结构相同时（即具有相同大小、相同卷积几何等），才能共享。
 
 ## <a name="examples-of-net-usage"></a>Net # 用法的示例
 
@@ -382,21 +376,21 @@ share { Data1 => H1, Data2 => H2 } // share weights
 ```Net#
 input Data auto;
 hidden H [200] from Data all;
-output Out [10] sigmoid from H all;  
+output Out [10] sigmoid from H all;
 ```
 
-该示例阐释了一些基本的命令，如下所示：  
+该示例阐释了一些基本的命令，如下所示：
 
-+ 第一行定义了输入层（名为 `Data`）。 使用 `auto` 关键字时，神经网络会自动包括输入示例中的所有功能列。 
++ 第一行定义了输入层（名为 `Data`）。 使用 `auto` 关键字时，神经网络会自动包括输入示例中的所有功能列。
 + 第二行创建隐藏层。 为该隐藏层指定了名称 `H`，该层有 200 个节点。 这一层完全连接到输入层。
-+ 第三行定义了输出层（名为 `O`），其中包含 10 个输出节点。 如果神经网络用于分类，则每个类有一个输出节点。 关键字 **sigmoid** 指示输出函数将应用于输出层。
++ 第三行定义了输出层（名为 `Out`），其中包含 10 个输出节点。 如果神经网络用于分类，则每个类有一个输出节点。 关键字 **sigmoid** 指示输出函数将应用于输出层。
 
 ### <a name="define-multiple-hidden-layers-computer-vision-example"></a>定义多个隐藏层：计算机影像示例
 
-下面的示例将演示如何使用多个自定义隐藏层，定义稍微复杂一些的神经网络。  
+下面的示例将演示如何使用多个自定义隐藏层，定义稍微复杂一些的神经网络。
 
 ```Net#
-// Define the input layers 
+// Define the input layers
 input Pixels [10, 20];
 input MetaData [7];
 
@@ -405,18 +399,18 @@ hidden ByRow [10, 12] from Pixels where (s,d) => s[0] == d[0];
 hidden ByCol [5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 
 // Define the third hidden layer, which uses as source the hidden layers ByRow and ByCol
-hidden Gather [100] 
+hidden Gather [100]
 {
 from ByRow all;
 from ByCol all;
 }
 
 // Define the output layer and its sources
-output Result [10]  
+output Result [10]
 {
 from Gather all;
 from MetaData all;
-}  
+}
 ```
 
 此示例说明了神经网络规范语言的多个功能：
@@ -429,11 +423,11 @@ from MetaData all;
 
 ### <a name="define-a-convolutional-network-for-multiclass-classification-digit-recognition-example"></a>为多类分类定义卷积网络：数字识别示例
 
-以下网络的定义旨在识别数字，并说明了自定义神经网络的一些高级技术。  
+以下网络的定义旨在识别数字，并说明了自定义神经网络的一些高级技术。
 
 ```Net#
 input Image [29, 29];
-hidden Conv1 [5, 13, 13] from Image convolve 
+hidden Conv1 [5, 13, 13] from Image convolve
   {
   InputShape  = [29, 29];
   KernelShape = [ 5,  5];
@@ -441,7 +435,7 @@ hidden Conv1 [5, 13, 13] from Image convolve
   MapCount    = 5;
   }
 hidden Conv2 [50, 5, 5]
-from Conv1 convolve 
+from Conv1 convolve
   {
   InputShape  = [ 5, 13, 13];
   KernelShape = [ 1,  5,  5];
@@ -450,14 +444,14 @@ from Conv1 convolve
   MapCount    = 10;
   }
 hidden Hid3 [100] from Conv2 all;
-output Digit [10] from Hid3 all;  
+output Digit [10] from Hid3 all;
 ```
 
 + 此结构具有单个输入层 `Image`。
 + 关键字 `convolve` 指示名为 `Conv1` 和 `Conv2` 的层是卷积层。 每个这些层声明都后跟一个卷积属性列表。
 + Net 具有第三个隐藏层 `Hid3`，该层完全连接到第二个隐藏层 `Conv2`。
 + 输出层 `Digit` 仅连接到第三个隐藏层 `Hid3`。 关键字 `all` 指示输出层完全连接到 `Hid3`。
-+ 卷积的实参数量为 3：元组 `InputShape`、`KernelShape`、`Stride, and ` 的长度。 
++ 卷积的实参数量为 3：元组 `InputShape`、`KernelShape`、`Stride, and ` 的长度。
 + 每个内核的权重数为 `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26` 或 `26 * 50 = 1300`。
 + 可以计算每个隐藏层中的节点，如下所示：
 
@@ -465,8 +459,8 @@ output Digit [10] from Hid3 all;
     `NodeCount\[2] = (13 - 5) / 2 + 1 = 5`
 
 + 可通过使用层的声明维数 [50, 5, 5] 来计算节点总数，如下所示：`MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
-+ 因为只有 `d == 0` 时 `Sharing[d]` 为 False，因此内核数为 `MapCount * NodeCount\[0] = 10 * 5 = 50`。 
++ 因为只有 `d == 0` 时 `Sharing[d]` 为 False，因此内核数为 `MapCount * NodeCount\[0] = 10 * 5 = 50`。
 
 ## <a name="acknowledgements"></a>致谢
 
-用于自定义神经网络体系结构的 Net# 语言由 Microsoft 的 Shon Katzenberger（架构师，机器学习）和 Alexey Kamenev（软件工程师，Microsoft Research）开发。 在内部，其用于机器学习项目和应用程序，其范围包括从映像检测到文本分析。 有关详细信息，请参阅 [Neural Nets in Azure ML - Introduction to Net#](http://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)（Azure ML 中的神经网络 - Net# 简介）
+用于自定义神经网络体系结构的 Net# 语言由 Microsoft 的 Shon Katzenberger（架构师，机器学习）和 Alexey Kamenev（软件工程师，Microsoft Research）开发。 在内部，其用于机器学习项目和应用程序，其范围包括从映像检测到文本分析。 有关详细信息，请参阅 [Neural Nets in Azure Machine Learning studio - Introduction to Net#](http://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)（Azure 机器学习工作室中的神经网络 - Net# 简介）

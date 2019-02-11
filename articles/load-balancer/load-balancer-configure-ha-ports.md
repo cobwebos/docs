@@ -1,22 +1,25 @@
 ---
-title: 为 Azure 负载均衡器配置高可用性端口 | Microsoft Docs
+title: 为 Azure 负载均衡器配置高可用性端口
+titlesuffix: Azure Load Balancer
 description: 了解如何使用高可用性端口对所有端口上的内部流量进行负载均衡
 services: load-balancer
 documentationcenter: na
 author: rdhillon
+manager: narayan
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 8e1b94dbdef66c6423d16ffcbc9df4cd60a13c69
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: d4464f6188efb479f21a23bf936a8222061d9987
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415536"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244131"
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>为内部负载均衡器配置高可用性端口
 

@@ -2,27 +2,27 @@
 title: Azure AD 直通身份验证 - 快速入门 | Microsoft 文档
 description: 本文介绍如何开始使用 Azure Active Directory (Azure AD) 直通身份验证。
 services: active-directory
-keywords: Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需组件, SSO, 单一登录
+keywords: Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/27/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 95083ec1d909333596fd36ad998022778a4f9ec9
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 6cde81fd647c4f0eb4923bf9e69cf618f6f2d53a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582729"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494786"
 ---
-# <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory 直通身份验证：快速入门
+# <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory 传递身份验证：快速入门
 
 ## <a name="deploy-azure-ad-pass-through-authentication"></a>部署 Azure AD 直通身份验证
 
@@ -58,13 +58,13 @@ ms.locfileid: "52582729"
 4. 如果服务器和 Azure AD 之间存在防火墙，请配置以下项：
    - 确保身份验证代理可以通过以下端口向 Azure AD 提出“出站”请求：
 
-    | 端口号 | 用途 |
-    | --- | --- |
-    | **80** | 下载证书吊销列表 (Crl) 的同时验证 SSL 证书 |
-    | **443** | 处理与服务的所有出站通信 |
-    | **8080**（可选） | 如果端口 443 不可用，身份验证代理每隔十分钟通过端口 8080 报告其状态。 此状态显示在 Azure AD 门户上。 用户登录不会使用端口 8080。 |
-
-    如果防火墙根据原始用户强制实施规则，请打开这些端口以允许来自作为网络服务运行的 Windows 服务的流量。
+     | 端口号 | 用途 |
+     | --- | --- |
+     | **80** | 下载证书吊销列表 (Crl) 的同时验证 SSL 证书 |
+     | **443** | 处理与服务的所有出站通信 |
+     | **8080**（可选） | 如果端口 443 不可用，身份验证代理每隔十分钟通过端口 8080 报告其状态。 此状态显示在 Azure AD 门户上。 用户登录不会使用端口 8080。 |
+     
+     如果防火墙根据原始用户强制实施规则，请打开这些端口以允许来自作为网络服务运行的 Windows 服务的流量。
    - 如果防火墙或代理允许执行 DNS 允许列表，可以将与 \*.msappproxy.net 和 \*.servicebus.windows.net 的连接加入允许列表。  否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
    - 身份验证代理首次注册需要访问 login.windows.net 和 login.microsoftonline.net。 另外，还请为这些 URL 打开防火墙。
    - 为验证证书，请取消阻止以下 URL：mscrl.microsoft.com:80、crl.microsoft.com:80、ocsp.msocsp.com:80 和 www.microsoft.com:80。 由于这些 URL 与其他 Microsoft 产品一起用于证书验证，因此可能已取消阻止这些 URL。
@@ -97,13 +97,13 @@ ms.locfileid: "52582729"
 4. 验证“直通身份验证”功能是否显示为“已启用”。
 5. 选择“直通身份验证”。 “直通身份验证”窗格列出了已安装身份验证代理的服务器。
 
-![Azure Active Directory 管理中心：Azure AD Connect 窗格](./media/how-to-connect-pta-quick-start/pta7.png)
+![Azure Active Directory 管理中心：“Azure AD Connect”窗格](./media/how-to-connect-pta-quick-start/pta7.png)
 
-![Azure Active Directory 管理中心：直通身份验证窗格](./media/how-to-connect-pta-quick-start/pta8.png)
+![Azure Active Directory 管理中心：“传递身份验证”窗格](./media/how-to-connect-pta-quick-start/pta8.png)
 
 在此阶段，租户中所有托管域的用户都可以使用直通身份验证登录。 但是，联合域中的用户将继续使用 AD FS 或以前配置的其他联合身份验证提供程序登录。 如果将联合域转换为托管域，则该域中的所有用户将自动开始使用直通身份验证登录。 直通身份验证功能不会影响仅限云的用户。
 
-## <a name="step-4-ensure-high-availability"></a>步骤 4： 确保高可用性
+## <a name="step-4-ensure-high-availability"></a>步骤 4：确保高可用性
 
 如果计划在生产环境中部署直通身份验证，则应安装其他独立身份验证代理。 在没有运行 Azure AD Connect 的服务器上安装这些身份验证代理。 此设置可提供用户登录请求的高可用性。
 
@@ -144,10 +144,10 @@ ms.locfileid: "52582729"
 ## <a name="next-steps"></a>后续步骤
 - [从 AD FS 迁移到传递身份验证](https://aka.ms/adfstoptadp) - 从 AD FS（或其他联合技术）迁移到传递身份验证的详细指南。
 - [智能锁定](../authentication/howto-password-smart-lockout.md)：了解如何在租户中配置智能锁定功能以保护用户帐户。
-- [当前限制](how-to-connect-pta-current-limitations.md)：了解直通身份验证支持和不支持的方案。
-- [技术深入了解](how-to-connect-pta-how-it-works.md)：了解直通身份验证功能的工作原理。
-- [常见问题](how-to-connect-pta-faq.md)：查找常见问题的解答。
-- [故障诊断](tshoot-connect-pass-through-authentication.md)：了解如何解决直通身份验证功能的常见问题。
-- [安全深入了解](how-to-connect-pta-security-deep-dive.md)：获取直通身份验证功能的技术信息。
-- [Azure AD 无缝 SSO](how-to-connect-sso.md)：深入了解此补充功能。
+- [当前限制](how-to-connect-pta-current-limitations.md)：了解传递身份验证支持和不支持的方案。
+- [技术深入了解](how-to-connect-pta-how-it-works.md)：了解传递身份验证功能的工作原理。
+- [常见问题](how-to-connect-pta-faq.md)：查看有关常见问题的解答。
+- [故障排除](tshoot-connect-pass-through-authentication.md)：了解如何解决传递身份验证功能的常见问题。
+- [深入了解安全性](how-to-connect-pta-security-deep-dive.md)：获取传递身份验证功能的技术信息。
+- [Azure AD 无缝 SSO](how-to-connect-sso.md)：详细了解此补充功能。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect)：使用 Azure Active Directory 论坛来提交新的功能请求。

@@ -3,23 +3,23 @@ title: 如何使用 Azure 门户在 Azure VM 上配置 Azure 资源托管标识
 description: 分步说明如何使用 Azure 门户在 Azure VM 上配置 Azure 资源托管标识。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/10/2018
-ms.author: daveba
-ms.openlocfilehash: f0d207bb5db8d27765c608f07a9d2ed9dc2f08dd
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.author: priyamo
+ms.openlocfilehash: e7b20c092a0655c1453daaa67d730a7b49a6330a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514989"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181584"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>使用 Azure 门户在 VM 上配置 Azure 资源托管标识
 

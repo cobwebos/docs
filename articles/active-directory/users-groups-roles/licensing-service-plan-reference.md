@@ -1,26 +1,25 @@
 ---
-title: Azure Active Directory 中用于许可的产品名称和服务计划标识符 | Microsoft Docs
-description: 用于在 Azure 门户、Office 365 门户、PowerShell 或 Microsoft Graph 中管理 Azure AD 许可的标识符映射
+title: 用于许可的产品名称和服务计划标识符 - Azure AD | Microsoft Docs
+description: 用于在 Azure 门户、Office 365 门户、PowerShell 或 Microsoft Graph 中管理 Azure Active Directory 许可的标识符映射
 services: active-directory
 keywords: Azure Active Directory 许可服务计划
 documentationcenter: ''
-author: piotrci
+author: curtand
 manager: mtillman
 editor: ''
-ms.assetid: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 8/17/2018
-ms.author: piotrci
-ms.openlocfilehash: 7ebf0149af9e012d3b0135c7ee9b8167c4cf76c9
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.date: 01/28/2019
+ms.author: curtand
+ms.reviewer: sumitp
+ms.custom: it-pro;seo-update-azuread-jan
+ms.openlocfilehash: 3d2c15d3658ed93348c5ec23198d2cc97a94e0aa
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42140629"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297865"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>用于许可的产品名称和服务计划标识符
 
@@ -28,7 +27,7 @@ ms.locfileid: "42140629"
 
 - **产品名称**：在管理门户中使用
 - **字符串 ID**：由 PowerShell v1.0 cmdlet 在对许可证执行操作时使用
-- **Guid ID**：Azure AD Graph 和 Microsoft Graph 使用的 GUID
+- **GUID**：Azure AD Graph 和 Microsoft Graph 使用的 GUID
 - **包含的服务计划**：产品中与字符串 ID 和 GUID 对应的服务计划列表
 
 >[!NOTE]
@@ -137,7 +136,7 @@ ms.locfileid: "42140629"
 | DYN365_ENTERPRISE_TEAM_MEMBERS    | 6a54b05e-4fab-40e7-9828-428db3b336fa |
 | EMPLOYEE_SELF_SERVICE | ba5f0cfa-d54a-4ea0-8cf4-a7e1dc4423d8 |
 
-### <a name="service-exchange-online"></a>服务：*Exchange Online*
+### <a name="service-exchange-online"></a>服务：Exchange Online
 
 无法一起分配以下服务计划：
 
@@ -198,7 +197,7 @@ ms.locfileid: "42140629"
 | MCOPSTN2  | 5a10155d-f5c1-411a-a8ec-e99aae125390 |
 | MCOPSTN5  | 54a152dc-90de-4996-93d2-bc47e670fc06 |
 
-### <a name="service-yammer"></a>服务：*Yammer*
+### <a name="service-yammer"></a>服务：Yammer
 
 无法一起分配以下服务计划：
 

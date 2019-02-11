@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: spelluru
-ms.openlocfilehash: 6c8498a43b127fecc02473177ac955ae51a647d6
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: ee78227f645cbeded7a5c689750db835faf1055f
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854110"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728306"
 ---
 # <a name="how-to-use-azure-relay-wcf-relays-with-net"></a>如何将 Azure Relay WCF 中继与 .NET 配合使用
 本文介绍如何使用 Azure 中继服务。 相关示例用 C# 编写并使用服务总线程序集中包含的 Windows Communication Foundation (WCF) API 及扩展。 有关 Azure 中继的详细信息，请参阅 [Azure 中继概述](relay-what-is-it.md)。
@@ -116,7 +116,7 @@ Console.ReadLine();
 sh.Close();
 ```
 
-在本示例中，将创建两个位于同一协定实施中的终结点。 一个是本地的，一个通过 Azure 中继进行投影。 两者之间的主要区别是绑定；本地终结点使用 [NetTcpBinding](https://msdn.microsoft.com/library/system.servicemodel.nettcpbinding.aspx)，而中继终结点和地址使用 [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding#microsoft_servicebus_nettcprelaybinding)。 本地终结点有一个使用不同端口的本地网络地址。 中继终结点有一个由字符串 `sb`、命名空间名称、路径“solver”组成的终结点地址。 这会生成 URI `sb://[serviceNamespace].servicebus.windows.net/solver`，将服务终结点标识为具有完全限定的外部 DNS 名称的服务总线（中继）TCP 终结点。 如果将替换占位符的代码放入`Main`服务**应用程序的**  函数中，则会获得功能服务。 如果希望服务专门侦听中继，请删除本地终结点声明。
+在本示例中，将创建两个位于同一协定实施中的终结点。 一个是本地的，一个通过 Azure 中继进行投影。 两者之间的主要区别是绑定；本地终结点使用 [NetTcpBinding](https://msdn.microsoft.com/library/system.servicemodel.nettcpbinding.aspx)，而中继终结点和地址使用 [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding)。 本地终结点有一个使用不同端口的本地网络地址。 中继终结点有一个由字符串 `sb`、命名空间名称、路径“solver”组成的终结点地址。 这会生成 URI `sb://[serviceNamespace].servicebus.windows.net/solver`，将服务终结点标识为具有完全限定的外部 DNS 名称的服务总线（中继）TCP 终结点。 如果将替换占位符的代码放入`Main`服务**应用程序的**  函数中，则会获得功能服务。 如果希望服务专门侦听中继，请删除本地终结点声明。
 
 ### <a name="configure-a-service-host-in-the-appconfig-file"></a>在 App.config 文件中配置服务主机
 还可以使用 App.config 文件配置主机。 在此情况下，服务托管代码如以下示例所示。
@@ -161,7 +161,7 @@ sh.Close();
 
 ### <a name="create-the-client"></a>创建客户端
 #### <a name="configure-a-client-programmatically"></a>以编程方式配置客户端
-要使用该服务，可以使用 [ChannelFactory](https://msdn.microsoft.com/library/system.servicemodel.channelfactory.aspx) 对象构造 WCF 客户端。 服务总线使用通过 ACS 实现的基于令牌的安全模型。 [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) 类代表具有内置工厂方法的安全令牌提供程序，这些方法可返回一些众所周知的令牌提供程序。 以下示例使用 [CreateSharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider#Microsoft_ServiceBus_TokenProvider_CreateSharedAccessSignatureTokenProvider_System_String_) 方法处理相应 SAS 令牌的获取。 名称和密钥是根据上一部分所述从门户获取的凭据。
+要使用该服务，可以使用 [ChannelFactory](https://msdn.microsoft.com/library/system.servicemodel.channelfactory.aspx) 对象构造 WCF 客户端。 服务总线使用通过 ACS 实现的基于令牌的安全模型。 [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) 类代表具有内置工厂方法的安全令牌提供程序，这些方法可返回一些众所周知的令牌提供程序。 以下示例使用 [CreateSharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) 方法处理相应 SAS 令牌的获取。 名称和密钥是根据上一部分所述从门户获取的凭据。
 
 首先，在客户端项目中引用服务中的 `IProblemSolver` 约定代码或将其复制到客户端项目中。
 

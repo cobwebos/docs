@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 960d2d402f223b306aa6ff05b567d13525e3d525
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 9b462ba594122b86580b9d136a844db070eea92d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340352"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217639"
 ---
 # <a name="what-is-bing-speech"></a>必应语音是什么？
 
@@ -28,10 +28,10 @@ ms.locfileid: "49340352"
 
 ## <a name="speech-to-text-speech-recognition"></a>语音转文本（语音识别）
 
-Microsoft 语音识别 API 将音频流转录为应用程序可以向用户显示或作为命令输入操作的文本。 它为开发人员提供了两种将语音添加到其应用的方式：REST API 或基于 Websocket 的客户端库。
+Microsoft 语音识别 API 将音频流转录为应用程序可以向用户显示或作为命令输入操作的文本。 它为开发者提供了两种向其应用添加语音的方法：REST API **或**基于 Websocket 的客户端库。
 
-- [REST API](GetStarted/GetStartedREST.md)：开发人员可使用从其应用到服务的 HTTP 调用来进行语音识别。
-- [客户端库](GetStarted/GetStartedClientLibraries.md)：对于高级功能，开发人员可下载 Microsoft 语音客户端库，并链接到其应用。  客户端库在使用不同语言（C#、Java、JavaScript、ObjectiveC）的多种平台（Windows、Android、iOS）上可用。 与 REST API 不同，客户端库使用基于 Websocket 的协议。
+- [REST API](GetStarted/GetStartedREST.md)：开发者可使用从其应用到服务的 HTTP 调用来进行语音识别。
+- [客户端库](GetStarted/GetStartedClientLibraries.md)：对于高级功能，开发者可下载 Microsoft 语音客户端库，并链接到其应用。  客户端库在使用不同语言（C#、Java、JavaScript、ObjectiveC）的多种平台（Windows、Android、iOS）上可用。 与 REST API 不同，客户端库使用基于 Websocket 的协议。
 
 | 用例 | [REST API](GetStarted/GetStartedREST.md) | [客户端库](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|
@@ -60,4 +60,4 @@ Microsoft 语音识别 API 将音频流转录为应用程序可以向用户显�
 
 ### <a name="next-steps"></a>后续步骤
 
-- 开始使用 Microsoft 文本转语音服务，请参阅[文本转语音 API 参考](api-reference-rest/bingvoiceoutput.md)。 有关文本转语音支持的语言和语音的完整列表，请参阅[支持的区域设置和语音字体](api-reference-rest/bingvoiceoutput.md#SupLocales)。
+- 开始使用 Microsoft 文本转语音服务，请参阅：[文本转语音 API 参考](api-reference-rest/bingvoiceoutput.md)。 有关文本转语音支持的语言和语音的完整列表，请参阅[支持的区域设置和语音字体](api-reference-rest/bingvoiceoutput.md#SupLocales)。

@@ -3,20 +3,20 @@ title: 设置安全信息以使用短信消息 - Azure Active Directory | Micros
 description: 设置安全信息以使用短信 (SMS) 消息验证身份。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: e5edfc92fc23c3235e4d4b9ca23f83c7adc3accf
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 0f11b8b91f1dad208e8d14e21a20c316fe46074c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158393"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191409"
 ---
 # <a name="set-up-security-info-to-use-text-messaging-preview"></a>设置安全信息以使用短信消息（预览版）
 

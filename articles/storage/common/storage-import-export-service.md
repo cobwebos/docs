@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: 480d67917abf3a8aaca64aa9aae30be5acf55e11
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: ccfc91e85196cbc8295bce71e512d9cf856a23c8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528550"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453376"
 ---
 # <a name="what-is-azure-importexport-service"></a>什么是 Azure 导入/导出服务？
 
@@ -27,7 +27,7 @@ ms.locfileid: "39528550"
 
 如果通过网络上传或下载数据速度太慢，或者获取额外的网络带宽因成本过高而受到限制，则可考虑使用 Azure 导入/导出服务。 该服务用于以下方案：
 
-* **将数据迁移到云**：将大量数据快速且经济高效地转移到 Azure。
+* **将数据迁移到云**：将大量数据经济高效地快速迁移到 Azure。
 * **内容分发**：将数据快速发送到客户站点。
 * **备份**：将本地数据备份后存储在 Azure 存储中。
 * **数据恢复**：恢复存储在存储中的大量数据，然后将其递送到本地位置。
@@ -38,7 +38,7 @@ ms.locfileid: "39528550"
 
 - **导入/导出服务**：该服务在 Azure 门户中提供，可帮助用户创建和跟踪数据导入（上传）和导出（下载）作业。  
 
-- WAImportExport 工具：这是命令行工具，可执行以下任务： 
+- **WAImportExport 工具**：这是命令行工具，可执行以下任务： 
     - 准备要寄送的磁盘驱动器，以便进行导入。
     - 在将数据导入到驱动器的过程中提供辅助。
     - 通过 BitLocker 加密驱动器上的数据。
@@ -52,7 +52,7 @@ ms.locfileid: "39528550"
 >
 > WAImportExport 工具仅兼容 64 位 Windows 操作系统。 有关支持的特定 OS 版本，请转到 [Azure 导入/导出要求](storage-import-export-requirements.md#supported-operating-systems)。
 
-- **磁盘驱动器**：可以将固态驱动器 (SSD) 或硬盘驱动器 (HDD) 发送到 Azure 数据中心。 创建导入作业时，需要发送包含数据的磁盘驱动器。 创建导出作业时，需要将空驱动器发送到 Azure 数据中心。 有关特定磁盘类型的信息，请转到[支持的磁盘类型](storage-import-export-requirements.md#supported-hardware)。
+- **磁盘驱动器**：可以将固态硬盘 (SSD) 或硬盘驱动器 (HDD) 发送到 Azure 数据中心。 创建导入作业时，需要发送包含数据的磁盘驱动器。 创建导出作业时，需要将空驱动器发送到 Azure 数据中心。 有关特定磁盘类型的信息，请转到[支持的磁盘类型](storage-import-export-requirements.md#supported-hardware)。
 
 ## <a name="how-does-importexport-work"></a>“导入/导出”的工作原理是什么？
 

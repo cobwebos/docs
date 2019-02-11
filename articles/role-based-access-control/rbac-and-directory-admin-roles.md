@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/07/2018
+ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 5e32968ae83ef826fbc8e81f1b04eca687642343
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 9fce35f811a4d2440ba73e4f305ede6891928069
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637662"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633276"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色
 
@@ -77,13 +77,13 @@ Azure RBAC 是基于 [Azure 资源管理器](../azure-resource-manager/resource-
 
 只有 Azure 门户和 Azure 资源管理器 API 支持 Azure RBAC。 分配有 RBAC 角色的用户、组和应用程序无法使用 [Azure 经典部署模型 API](../azure-resource-manager/resource-manager-deployment-model.md)。
 
-在 Azure 门户中，使用 RBAC 的角色分配显示在“访问控制(IAM)”边栏选项卡上。 在整个门户中都可以找到此边栏选项卡，例如，在订阅、资源组和各种资源所在的部分。
+在 Azure 门户中，使用 RBAC 的角色分配显示在“访问控制(IAM)”边栏选项卡上。 在整个门户中都可以找到此边栏选项卡，例如，在管理组、订阅、资源组和各种资源所在的部分。
 
-![Azure 门户中的“访问控制(IAM)”边栏选项卡](./media/rbac-and-directory-admin-roles/access-control.png)
+![Azure 门户中的“访问控制(IAM)”边栏选项卡](./media/rbac-and-directory-admin-roles/access-control-role-assignments.png)
 
 单击“角色”选项时，会看到内置角色和自定义角色的列表。
 
-![Azure 门户中的内置角色](./media/rbac-and-directory-admin-roles/built-in-roles.png)
+![Azure 门户中的内置角色](./media/rbac-and-directory-admin-roles/roles-list.png)
 
 ## <a name="azure-ad-administrator-roles"></a>Azure AD 管理员角色
 

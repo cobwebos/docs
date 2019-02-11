@@ -1,25 +1,25 @@
 ---
-title: 快速入门：必应自动建议 API、C#
+title: 快速入门：必应自动建议 API，C#
 titlesuffix: Azure Cognitive Services
 description: 获取信息和代码示例，以帮助你快速开始使用必应自动建议 API。
 services: cognitive-services
 author: v-jaswel
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: c735145724577f92e75079f550c99aa9e6656542
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: fc0590b61c5e6b42a3f3f805021abfa4553bd289
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829574"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184404"
 ---
 # <a name="quickstart-for-bing-autosuggest-api-with-c"></a>通过 C# 使用必应自动建议 API 快速入门
 
-本文展示了如何将[必应自动推荐 API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) 与 C# 配合使用。 必应自动推荐 API 根据用户在搜索框中输入的部分查询字符串返回建议查询的列表。 通常情况下，每当用户在搜索框中键入新字符时均会调用此 API，然后搜索框的下拉列表中会显示建议。 本文介绍如何发送请求，以针对 sail 返回建议的查询字符串。
+本文介绍如何结合使用[必应自动建议 API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) 与 C#。 必应自动推荐 API 根据用户在搜索框中输入的部分查询字符串返回建议查询的列表。 通常情况下，每当用户在搜索框中键入新字符时均会调用此 API，然后搜索框的下拉列表中会显示建议。 本文介绍如何发送请求，以针对 sail 返回建议的查询字符串。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,7 +30,7 @@ ms.locfileid: "48829574"
 ## <a name="get-autosuggest-results"></a>获取自动建议结果
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
-2. 添加下方提供的代码。
+2. 添加以下提供的代码。
 3. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
 4. 运行该程序。
 

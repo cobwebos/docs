@@ -4,17 +4,17 @@ title: Azure 认知服务文档
 description: 了解如何将智能算法构建到应用、网站和机器人中，使它们通过自然的沟通方式观察、倾听、说出、理解和解释用户需求。 教程、快速入门、API 参考和示例演示了如何使用这些 API。
 services: cognitive-services
 author: nitinme
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.author: nitinme
 ms.date: 10/23/2018
 ms.topic: hub-page
-ms.openlocfilehash: 5f5e4ae85f18870ab6ed22ca010977efc28be058
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 389dd4e8b6f2157c1c53528506435a97a07a493e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633880"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55872928"
 ---
 <h1>Azure 认知服务文档</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">了解如何将智能算法构建到应用、网站和机器人中，从而使它们通过自然的沟通方式观察、倾听、说出和理解用户需求。 教程、快速入门、API 参考和示例演示了操作方法。</p>
@@ -58,6 +58,26 @@ ms.locfileid: "51633880"
                 </div>
             </a>
         </li>
+        <li>
+            <a href="/azure/cognitive-services/authentication/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/i_guidelines.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>对请求进行身份验证</h3>
+                                <p>了解如何通过 Azure 认知服务对请求进行身份验证。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+
         <li>
             <a href="/azure/cognitive-services/language-support/">
                 <div class="cardSize">
@@ -111,7 +131,7 @@ ms.locfileid: "51633880"
                     <div class="cardText">
                         <h3>使用计算机视觉分析图像</h3>
                         <p><a href="/azure/cognitive-services/Computer-vision/quickstarts-sdk/csharp-analyze-sdk">使用 C#</a></p>
-                        <p><a href="/azure/cognitive-services/Computer-vision/Quickstarts/java-analyze">使用 Java</a></p>
+                        <p><a href="/azure/cognitive-services/bing-visual-search/quickstarts/java">使用 Java</a></p>
                         <p><a href="/azure/cognitive-services/Computer-vision/Quickstarts/node-analyze">使用 Node.js</a></p>
                         <p><a href="/azure/cognitive-services/Computer-vision/Quickstarts/python-analyze">使用 Python</a></p>
                     </div>
@@ -277,8 +297,8 @@ ms.locfileid: "51633880"
                     <div class="cardText">
                         <h3>视觉 API</h3>
                         <p><a href="/azure/cognitive-services/computer-vision/">计算机视觉</a></p>
-                        <p><a href="/azure/cognitive-services/content-moderator/overview">内容审查器</a></p>
-                        <p><a href="/azure/cognitive-services/Custom-Vision-Service/home"><span>自定义视觉服务&nbsp;<sup style="font-size:70%">预览</sup></span></a></p>
+                        <p><a href="/azure/cognitive-services/content-moderator/">内容审查器</a></p>
+                        <p><a href="/azure/cognitive-services/Custom-Vision-Service/"><span>自定义视觉服务&nbsp;<sup style="font-size:70%">预览</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/face/">人脸 API</a></p>
                         <p><a href="/azure/cognitive-services/video-indexer/video-indexer-overview">视频索引器</a></p>
                         <p><a href="/azure/cognitive-services/emotion/home"><span>情感 API&nbsp;<sup style="font-size:70%">即将停用</sup></span></a></p>

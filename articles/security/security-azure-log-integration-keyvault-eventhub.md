@@ -8,24 +8,24 @@ editor: TomShinder
 ms.assetid: ''
 ms.service: security
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: b91d405b8ada1446a477dc10a116b5dfdf349131
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f9eb4489894632502b7df97cd1149bd027164d19
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440040"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437413"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure 日志集成教程：使用事件中心处理 Azure Key Vault 事件
 
 >[!IMPORTANT]
-> Azure 日志集成功能将于 2019/06/01 弃用。 AzLog 下载将于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Azure 日志集成功能将于 2019/06/01 弃用。 AzLog 下载已于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 可以使用 Azure 日志集成检索已记录的事件并使其可供安全信息和事件管理 (SIEM) 系统使用。 本教程展示如何使用 Azure 日志集成处理通过 Azure 事件中心获取的日志。
 
-用于集成 Azure 日志的首选方法是通过使用 SIEM 供应商的 Azure Monitor 连接器并遵循这些[说明](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)。 但是，如果你的 SIEM 供应商未提供 Azure Monitor 连接器，你或许可以使用 Azure 日志集成作为临时解决方案（如果你的 SIEM 受 Azure 日志集成支持），直到有此类连接器可用。
+集成 Azure 日志的首选方法是，使用 SIEM 供应商的 Azure Monitor 连接器并遵循这些[说明](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。 但是，如果你的 SIEM 供应商未提供 Azure Monitor 连接器，你或许可以使用 Azure 日志集成作为临时解决方案（如果你的 SIEM 受 Azure 日志集成支持），直到有此类连接器可用。
 
  
 应使用本教程，按照以下示例步骤操作，了解 Azure 日志集成和事件中心如何协同工作以及每个步骤如何支持该解决方案。 然后可使用此处学到的内容，创建自己的步骤来满足公司的独特需求。
@@ -56,31 +56,31 @@ ms.locfileid: "39440040"
  
 1. 一个能够访问 Internet 且满足 Azure 日志集成安装要求的系统。 该系统可以位于云服务中，也可以托管在本地。
 
-1. 已安装了 [Azure 日志集成](https://www.microsoft.com/download/details.aspx?id=53324)。 若要安装它，请执行以下操作：
+1. 已安装了 Azure 日志集成。 若要安装它，请执行以下操作：
 
    a. 使用远程桌面连接到步骤 2 中提到的系统。   
-   b. 将 Azure 日志集成安装程序复制到该系统。 可以[下载安装文件](https://www.microsoft.com/download/details.aspx?id=53324)。   
-   c. 启动安装程序，并接受 Microsoft 软件许可条款。   
-   d. 如果你将提供遥测信息，请使复选框保持选中状态。 如果不希望向 Microsoft 发送使用情况信息，请清除复选框。
-   
+   b. 将 Azure 日志集成安装程序复制到该系统。 c. 启动安装程序，并接受 Microsoft 软件许可条款。
+
+1. 如果你将提供遥测信息，请使复选框保持选中状态。 如果不希望向 Microsoft 发送使用情况信息，请清除复选框。
+
    有关 Azure 日志集成以及如何安装它的详细信息，请参阅[包含 Azure 诊断日志记录和 Windows 事件转发功能的 Azure 日志集成](security-azure-log-integration-get-started.md)。
 
 1. 最新 PowerShell 版本。
- 
+
    如果已安装了 Windows Server 2016，则已至少具有 PowerShell 5.0。 如果使用的是任何其他版本的 Windows Server，则可能安装了较早版本的 PowerShell。 可以通过在 PowerShell 窗口中输入 ```get-host``` 来检查版本。 如果未安装 PowerShell 5.0，可以[下载它](https://www.microsoft.com/download/details.aspx?id=50395)。
 
    在至少具有 PowerShell 5.0 后，可以继续安装最新版本：
-   
+
    a. 在 PowerShell 窗口中输入 ```Install-Module Azure``` 命令。 完成安装步骤。    
    b. 输入 ```Install-Module AzureRM``` 命令。 完成安装步骤。
 
-   有关详细信息，请参阅[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.0.0)。
+   有关详细信息，请参阅[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.0.0)。
 
 
 ## <a name="create-supporting-infrastructure-elements"></a>创建支持基础结构元素
 
 1. 打开一个提升权限的 PowerShell 窗口并转至 **C:\Program Files\Microsoft Azure Log Integration**。
-1. 通过运行脚本 LoadAzLogModule.ps1 导入 AzLog cmdlet。 输入 `.\LoadAzLogModule.ps1` 命令。 （请注意该命令中的“.\”。）应看到与下面类似的内容：</br>
+1. 通过运行脚本 LoadAzLogModule.ps1 导入 AzLog cmdlet。 输入 `.\LoadAzLogModule.ps1` 命令。 （请注意该命令中的“\"。）应看到与下面类似的内容：</br>
 
    ![已加载的模块列表](./media/security-azure-log-integration-keyvault-eventhub/loaded-modules.png)
 
@@ -93,7 +93,7 @@ ms.locfileid: "39440040"
 
    ![PowerShell 窗口](./media/security-azure-log-integration-keyvault-eventhub/login-azurermaccount.png)
 1. 创建变量来存储后面将使用的值。 输入以下每个 PowerShell 行。 可能需要调整值来匹配你的环境。
-    - ```$subscriptionName = ‘Visual Studio Ultimate with MSDN’```（你的订阅名称可能不同。 可以在前面命令的输出中看到该名称。）
+    - ```$subscriptionName = 'Visual Studio Ultimate with MSDN'```（你的订阅名称可能不同。 可以在前面命令的输出中看到该名称。）
     - ```$location = 'West US'```（此变量将用来传递应当在其中创建资源的位置。 可以将此变量更改为你选择的任何位置。）
     - ```$random = Get-Random```
     - ``` $name = 'azlogtest' + $random```（名称可以是任何内容，但应当仅包含 小写字母和数字。）
@@ -129,7 +129,7 @@ ms.locfileid: "39440040"
     
     ```Add-AzureRmLogProfile -Name $name -ServiceBusRuleId $sbruleid -Locations $locations```
     
-    有关 Azure 日志配置文件的详细信息，请参阅 [Azure 活动日志概述](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)。
+    有关 Azure 日志配置文件的详细信息，请参阅 [Azure 活动日志概述](../azure-monitor/platform/activity-logs-overview.md)。
 
 > [!NOTE]
 > 尝试创建日志配置文件时可能会收到错误消息。 然后，你可以在文档中检查 Get-AzureRmLogProfile 和 Remove-AzureRmLogProfile。 如果运行 Get-AzureRmLogProfile，则可以看到有关日志配置文件的信息。 可以通过输入 ```Remove-AzureRmLogProfile -name 'Log Profile Name' ``` 命令来删除现有的日志配置文件。

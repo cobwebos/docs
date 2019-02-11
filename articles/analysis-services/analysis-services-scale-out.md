@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/13/2018
+ms.date: 01/18/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8cfbc72e239a7a5b38cee6752803e79735e2adc9
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 213a695d99c50cea5962237c6210e6efcdbc5f6a
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321268"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411673"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services 横向扩展
 
@@ -74,15 +74,19 @@ ms.locfileid: "49321268"
 ![横向扩展滑块](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
 ### <a name="rest-api"></a>REST API
+
 使用**同步**操作。
 
 #### <a name="synchronize-a-model"></a>同步模型   
+
 `POST https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
 #### <a name="get-sync-status"></a>获取同步状态  
+
 `GET https://<region>.asazure.windows.net/servers/<servername>/models/<modelname>/sync`
 
 ### <a name="powershell"></a>PowerShell
+
 在使用 PowerShell 之前，请[安装或更新最新的 AzureRM 模块](https://github.com/Azure/azure-powershell/releases)。 
 
 若要设置查询副本数，请使用 [Set-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver)。 指定可选的 `-ReadonlyReplicaCount` 参数。
@@ -101,9 +105,9 @@ ms.locfileid: "49321268"
 
 ## <a name="troubleshoot"></a>故障排除
 
-**问题：** 用户收到错误 **Cannot find server '\<Name of the server>' instance in connection mode 'ReadOnly'.**（在连接模式 "ReadOnly" 下找不到服务器“<服务器名称>”实例。）
+**问题：** 用户收到错误“在连接模式 "ReadOnly" 下找不到服务器“\<服务器名称>”实例”。
 
-**解决方案：** 选择“从查询池分离处理服务器”选项时，使用默认连接字符串（不带 :rw）的客户端连接将重定向到查询池副本。 如果查询池中的副本因尚未完成同步而尚未联机，则重定向的客户端连接可能会失败。 若要防止连接失败，在完成横向扩展和同步操作之前，请不要选择从查询池分离处理服务器。 可以使用内存和 QPU 指标来监视同步状态。
+**解决方案：** 选择“从查询池分离处理服务器”选项时，使用默认连接字符串（不带 :rw）的客户端连接将重定向到查询池副本。 如果查询池中的副本因尚未完成同步而尚未联机，则重定向的客户端连接可能会失败。 若要防止连接失败，执行同步时查询池中必须至少有两个服务器。 每个服务器单独同步，而其他服务器保持联机。 如果在处理期间选择在查询池中没有处理服务器，则可以选择将其从池中删除以进行处理，然后在处理完成后但在同步之前将其添加回池中。 可以使用内存和 QPU 指标来监视同步状态。
 
 ## <a name="related-information"></a>相关信息
 

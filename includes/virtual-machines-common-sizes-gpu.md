@@ -8,16 +8,21 @@ ms.topic: include
 ms.date: 11/14/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: b6df4ada1aa13e20c7ad52d2b58cdf9c783f9e24
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: fd37c0c118812bb3554b19fec9bf5ae3f33a2fdc
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51716135"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54314091"
 ---
 GPU 优化 VM 大小是具有单个或多个 NVIDIA GPU 的专用虚拟机。 这些大小是针对计算密集型、图形密集型和可视化工作负荷设计的。 本文介绍有关 GPU、vCPU、数据磁盘和 NIC 的数量和类型的信息。 此分组中的每个大小还包括存储吞吐量及网络带宽。 
 
 * NC、NCv2、NCv3 ND 和 NDv2 的大小针对计算密集型和网络密集型应用程序和算法进行了优化。 一些示例包括基于 CUDA 和 OpenCL 的应用程序和模拟、AI 和深度学习。 NCv3 系列专用于采用 NVIDIA Tesla V100 GPU 的高性能计算工作负载。  ND 系列专用于进行深度学习的培训和推理方案。 该系列使用 NVIDIA Tesla P40 GPU。
+
+* NC 系列采用 Intel Xeon® E5-2690 v3 2.60GHz 处理器。
+
+* NCSv3、NCSv2 和 ND 系列采用 Intel Xeon® E5-2690 v4 2.60GHz 处理器。
+                      
 * **NV 和 NVv2** 大小已使用 OpenGL 和 DirectX 之类的框架针对远程可视化效果、流式处理、游戏、编码和 VDI 方案进行了优化和设计。  这些 VM 由 NVIDIA Tesla M60 GPU 提供支持。
 
 
@@ -27,7 +32,7 @@ GPU 优化 VM 大小是具有单个或多个 NVIDIA GPU 的专用虚拟机。 �
 
 高级存储缓存：不支持
 
-NC 系列 VM 采用 [NVIDIA Tesla K80](http://images.nvidia.com/content/pdf/kepler/Tesla-K80-BoardSpec-07317-001-v05.pdf) 卡。 通过将 CUDA 用于能源勘探应用、碰撞模拟、光纤跟踪渲染、深度学习等领域，用户可以更快地分析数据。 NC24r 配置提供了针对紧密耦合的并行计算工作负荷优化的低延迟、高吞吐量网络接口。
+NC 系列 VM 采用 [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) 卡。 通过将 CUDA 用于能源勘探应用、碰撞模拟、光纤跟踪渲染、深度学习等领域，用户可以更快地分析数据。 NC24r 配置提供了针对紧密耦合的并行计算工作负荷优化的低延迟、高吞吐量网络接口。
 
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数 |
@@ -94,7 +99,7 @@ NCv3 系列 VM 采用 [NVIDIA Tesla V100](http://www.nvidia.com/content/PDF/Volt
 
 高级存储缓存：支持
 
-无限宽带：不支持
+Infiniband：不支持
 
 
 NDv2 系列虚拟机是 GPU 系列的新成员，经过专门设计以满足 HPC、AI 和机器学习工作负荷方面的需求。 它具有 8 个互连的 NVIDIA Tesla V100 NVLINK GPU、40 个 Intel Skylake 核心以及 672 GiB 的系统内存。 NDv2 实例为利用 Cuda、TensorFlow、Pytorch、Caffe 的 HPC 和 AI 以及其他框架提供卓越的 FP32 和 FP64 性能。
@@ -104,8 +109,8 @@ NDv2 系列虚拟机是 GPU 系列的新成员，经过专门设计以满足 HPC
 
 
 | 大小              | vCPU | GPU              | 内存  | NIC 数（最大值） | 最大 磁盘大小           | 最大 数据磁盘（每个 1023 GB） | 最大网络带宽 | 
-|-------------------|-------------|-------------------|--------|------------------|---------|------------|--------------------------|--------------------|--------------------------------|-----------------------------------------|-----------------------|------------|
-| Standard_ND40s_v2 | 40     | 8 V100 (NVlilnk) | 672 GiB | 8          | 临时存储 1344/2948XIO | 32    | 24000 Mbps             | 
+|-------------------|------|------------------|---------|------------|--------------------------|--------------------------------|-----------------------|
+| Standard_ND40s_v2 | 40   | 8 V100 (NVlilnk) | 672 GiB | 8          | 临时存储 1344/2948XIO | 32                             | 24000 Mbps           |
 
 ## <a name="nd-series"></a>ND 系列
 

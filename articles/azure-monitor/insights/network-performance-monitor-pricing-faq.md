@@ -9,19 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: ajaycode
-ms.component: ''
-ms.openlocfilehash: 9e9fdfce9dbb165227f88e9f72bc219dce8f3307
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d2d1ca3e41de36d423de24fdbade8c17507642b5
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52430162"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734294"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure 网络性能监视器的定价变化
 
@@ -29,7 +27,7 @@ ms.locfileid: "52430162"
 
 网络性能监视器包括三个组件：
 * [性能监视器](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
-* [服务终结点监视器](https://docs.microsoft.com/azure/networking/network-monitoring-overview#service-endpoint-monitor)
+* [服务终结点监视器](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
 * [ExpressRoute 监视器](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
 
 以下各部分介绍了 NPM 组件的定价变化。
@@ -121,5 +119,5 @@ ExpressRoute 监视器的费用根据监视期间生成的数据量计费。 有
 
 ## <a name="references"></a>参考
 
-[Log Analytics 定价常见问题解答](https://azure.microsoft.com/pricing/details/log-analytics/) - 常见问题解答部分提供了有关免费层、每个节点的定价和其他定价详细信息。
+[Log Analytics 定价常见问题解答](https://azure.microsoft.com/pricing/details/log-analytics/)：常见问题解答部分提供了有关免费层、每个节点的定价和其他定价详细信息。
 

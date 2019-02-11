@@ -5,22 +5,22 @@ keywords: SHA1,SHA256,O365,联合,aadconnect,adfs,ad fs,更改 sha,联合身份�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: cf6880e2-af78-4cc9-91bc-b64de4428bbd
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: billmath
-ms.openlocfilehash: ca200c76596dc1a4f31bf36f00bb1661d12d19f7
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 2e7a26f6cdf1e8744f579eee2c61435d24fcebeb
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426332"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493059"
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>更改 Office 365 信赖方信任的签名哈希算法
 ## <a name="overview"></a>概述

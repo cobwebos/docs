@@ -9,32 +9,32 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6138cc337c35924405fa3f6489e7e40bfc5779c9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ec80be0ece3596eab418ac39507954142944e34a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007002"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260481"
 ---
-# <a name="install-and-use-giraph-on-windows-based-hdinsight-clusters"></a>在基于 Windows 的 HDInsight 群集上安装并使用 Giraph
+# <a name="install-and-use-apache-giraph-on-windows-based-hdinsight-clusters"></a>在基于 Windows 的 HDInsight 群集上安装并使用 Apache Giraph
 
-了解如何使用 Giraph 通过脚本操作来自定义基于 Windows 的 HDInsight 群集，以及如何使用 Giraph 来处理大型关系图。 有关在基于 Linux 的群集中使用 Giraph 的信息，请参阅[在 HDInsight Hadoop 群集 (Linux) 上安装并使用 Giraph](hdinsight-hadoop-giraph-install-linux.md)。
+了解如何使用 Apache Giraph 通过脚本操作来自定义基于 Windows 的 HDInsight 群集，以及如何使用 Giraph 来处理大型关系图。 有关在基于 Linux 的群集中使用 Giraph 的信息，请参阅[在 HDInsight Hadoop 群集 (Linux) 上安装 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)。
 
-> [!IMPORTANT]
-> 本文档中的步骤仅适用于基于 Windows 的 HDInsight 群集。 Windows 上仅可使用低于 HDInsight 3.4 版本的 HDInsight。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。 有关如何在基于 Linux 的 HDInsight 群集上安装 Giraph 的信息，请参阅[在 HDInsight Hadoop 群集 (Linux) 上安装并使用 Giraph](hdinsight-hadoop-giraph-install-linux.md)。
+> [!IMPORTANT]  
+> 本文档中的步骤仅适用于基于 Windows 的 HDInsight 群集。 Windows 上仅可使用低于 HDInsight 3.4 版本的 HDInsight。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。 有关如何在基于 Linux 的 HDInsight 群集上安装 Giraph 的信息，请参阅[在 HDInsight Hadoop 群集 (Linux) 上安装 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)。
 
 
 可以使用*脚本操作*，在 Azure HDInsight 的任何一种群集（Hadoop、Storm、HBase、Spark）上安装 Giraph。 用于在 HDInsight 群集上安装 Giraph 的示例脚本可从只读 Azure 存储 Blob ([https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1)) 获得。 示例脚本仅适用于 HDInsight 群集版本 3.1。 有关 HDInsight 群集版本的详细信息，请参阅 [HDInsight 群集版本](hdinsight-component-versioning.md)。
 
 **相关文章**
 
-* [在 HDInsight Hadoop 群集 (Linux) 上安装 Giraph](hdinsight-hadoop-giraph-install-linux.md)
-* [在 HDInsight 中创建 Hadoop 群集](hdinsight-provision-clusters.md)：有关如何创建 HDInsight 群集的一般信息。
+* [在 HDInsight Hadoop 群集 (Linux) 上安装 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
+* [在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-provision-clusters.md)：有关如何创建 HDInsight 群集的一般信息。
 * [使用脚本操作自定义 HDInsight 群集][hdinsight-cluster-customize]：有关使用脚本操作自定义 HDInsight 群集的一般信息。
 * [为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions.md)。
 
 ## <a name="what-is-giraph"></a>什么是 Giraph？
-<a href="http://giraph.apache.org/" target="_blank">Apache Giraph</a> 允许使用 Hadoop 执行图形处理，并可以在 Azure HDInsight 上使用。 图形可为对象之间的关系建模，例如，为大型网络（例如 Internet）上的路由器之间的连接建模，或者为社交网络上的人物之间的关系建模（有时称为社交图形）。 通过图形处理，可以推理图形中对象之间的关系，例如：
+<a href="https://giraph.apache.org/" target="_blank">Apache Giraph</a> 允许使用 Hadoop 执行图形处理，并可以在 Azure HDInsight 上使用。 图形可为对象之间的关系建模，例如，为大型网络（例如 Internet）上的路由器之间的连接建模，或者为社交网络上的人物之间的关系建模（有时称为社交图形）。 通过图形处理，可以推理图形中对象之间的关系，例如：
 
 * 根据当前的关系识别潜在的朋友。
 * 识别网络中两台计算机之间的最短路由。
@@ -61,7 +61,7 @@ ms.locfileid: "51007002"
     可以添加多个脚本操作，以在群集上安装多个组件。 在添加了脚本后，单击复选标记以开始创建群集。
 
 ## <a name="use-giraph"></a>使用 Giraph
-我们将使用 SimpleShortestPathsComputation 示例来演示有关查找图形中对象之间最短路径的基本 <a href = "http://people.apache.org/~edwardyoon/documents/pregel.pdf">Pregel</a> 实现。 请执行以下步骤，以上传示例数据和示例 jar，使用 SimpleShortestPathsComputation 示例运行作业，然后查看结果。
+我们将使用 SimpleShortestPathsComputation 示例来演示有关查找图形中对象之间最短路径的基本 <a href = "https://people.apache.org/~edwardyoon/documents/pregel.pdf">Pregel</a> 实现。 请执行以下步骤，以上传示例数据和示例 jar，使用 SimpleShortestPathsComputation 示例运行作业，然后查看结果。
 
 1. 将示例数据文件上传到 Azure Blob 存储。 在本地工作站上，创建名为 **tiny_graph.txt** 的新文件。 该文件应该包含以下几行：
 
@@ -71,16 +71,16 @@ ms.locfileid: "51007002"
         [3,0,[[0,3],[1,1],[4,4]]]
         [4,0,[[3,4],[2,4]]]
 
-    将 tiny_graph.txt 文件上传到 HDInsight 群集的主存储。 有关如何上传数据的说明，请参阅[在 HDInsight 中上传 Hadoop 作业的数据](hdinsight-upload-data.md)。
+    将 tiny_graph.txt 文件上传到 HDInsight 群集的主存储。 有关如何上传数据的说明，请参阅[在 HDInsight 中上传 Apache Hadoop 作业的数据](hdinsight-upload-data.md)。
 
-    此数据使用 [source\_id, source\_value,[[dest\_id], [edge\_value],...]] 格式，描述定向图形中对象之间的关系。每一行代表 sourceid** 对象与一个或多个 **dest\_id** 对象之间的关系。 **edge\_value**（或权重）可被视为 **source_id** 和 **dest\_id** 之间的连接强度或距离。
+    此数据使用 [source\_id, source\_value,[[dest\_id], [edge\_value],...]] 格式，描述定向图形中对象之间的关系。每一行代表 **source\_id** 对象与一个或多个 **dest\_id** 对象之间的关系。 **edge\_value**（或权重）可被视为 **source_id** 和 **dest\_id** 之间的连接强度或距离。
 
     使用表示对象间距离的值（或权重）绘制图形后，上述数据可能与下面类似。
 
     ![tiny_graph.txt 中的对象绘制为圆圈，线条表示对象之间的不同距离](./media/hdinsight-hadoop-giraph-install/giraph-graph.png)
 2. 运行 SimpleShortestPathsComputation 示例。 使用 tiny_graph.txt 文件作为输入，通过以下 Azure PowerShell cmdlet 来运行该示例。
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > 使用 Azure Service Manager 管理 HDInsight 资源的 Azure PowerShell 支持**已弃用**，已在 2017 年 1 月 1 日删除。 本文档中的步骤使用的是与 Azure 资源管理器兼容的新 HDInsight cmdlet。
     >
     > 请按照 [安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中的步骤安装最新版本的 Azure PowerShell。 如果脚本需要修改后才能使用与 Azure 资源管理器兼容的新 cmdlet，请参阅[迁移到适用于 HDInsight 群集的基于 Azure 资源管理器的开发工具](hdinsight-hadoop-development-using-azure-resource-manager.md)，了解详细信息。
@@ -153,22 +153,22 @@ ms.locfileid: "51007002"
 
     ![将对象绘制为圆圈，并绘制对象之间的最短路径](./media/hdinsight-hadoop-giraph-install/giraph-graph-out.png)
 
-## <a name="install-giraph-using-aure-powershell"></a>使用 Azure PowerShell 安装 Giraph
-请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell)。  此示例演示如何使用 Azure PowerShell 安装 Spark。 需要自定义脚本以使用 [https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1)。
+## <a name="install-giraph-using-azure-powershell"></a>使用 Azure PowerShell 安装 Giraph
+请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell)。  此示例演示如何使用 Azure PowerShell 安装 Apache Spark。 需要自定义脚本以使用 [https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1)。
 
 ## <a name="install-giraph-using-net-sdk"></a>使用 .NET SDK 安装 Giraph
 请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell)。 此示例演示如何使用 .NET SDK 安装 Spark。 需要自定义脚本以使用 [https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1)。
 
 ## <a name="see-also"></a>另请参阅
-* [在 HDInsight Hadoop 群集 (Linux) 上安装 Giraph](hdinsight-hadoop-giraph-install-linux.md)
-* [在 HDInsight 中创建 Hadoop 群集](hdinsight-provision-clusters.md)：有关如何创建 HDInsight 群集的一般信息。
+* [在 HDInsight Hadoop 群集 (Linux) 上安装 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
+* [在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-provision-clusters.md)：有关如何创建 HDInsight 群集的一般信息。
 * [使用脚本操作自定义 HDInsight 群集][hdinsight-cluster-customize]：有关使用脚本操作自定义 HDInsight 群集的一般信息。
 * [为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions.md)。
-* [在 HDInsight 群集上安装并使用 Spark][hdinsight-install-spark]：有关安装 Spark 的脚本操作示例。
-* [在 HDInsight 群集上安装 Solr](hdinsight-hadoop-solr-install.md)：有关如何安装 Solr 的脚本操作示例。
+* [在 HDInsight 群集上安装并使用 Apache Spark][hdinsight-install-spark]：有关如何安装 Spark 的脚本操作示例。
+* [在 HDInsight 群集上安装并使用 Apache Spark](hdinsight-hadoop-solr-install.md)：有关如何安装 Solr 的脚本操作示例。
 
 [tools]: https://github.com/Blackmist/hdinsight-tools
-[aps]: http://azure.microsoft.com/documentation/articles/install-configure-powershell/
+[aps]: https://azure.microsoft.com/documentation/articles/install-configure-powershell/
 
 [powershell-install]: /powershell/azureps-cmdlets-docs
 [hdinsight-provision]: hdinsight-provision-clusters.md

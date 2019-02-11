@@ -4,21 +4,21 @@ description: 演示如何使用密码哈希同步设置混合标识环境。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/17/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4e8a39e16bd67169aac8dd7328338197b604e93f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 43eb3a5e7c1d99c42f6690c0747d1599d6e1e19f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426904"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493414"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>教程：使用密码哈希同步 (PHS) 集成单个 AD 林
 
@@ -38,7 +38,7 @@ ms.locfileid: "52426904"
 >
 >在安装 Azure AD Connect 之前，所使用的脚本会创建常规 Active Directory 环境。  它们与所有教程相关。
 >
-> Github [此处](https://github.com/billmath/tutorial-phs)提供了本教程中使用的 PowerShell 脚本的副本。
+> GitHub [此处](https://github.com/billmath/tutorial-phs)提供了本教程中使用的 PowerShell 脚本的副本。
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 我们需要做的第一件事就是创建一个将用作我们的本地 Active Directory 服务器的虚拟机，以便启动并运行我们的混合标识环境。  请执行以下操作：

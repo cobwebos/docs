@@ -1,20 +1,19 @@
 ---
-title: Azure Policy 示例 - 已批准的 VM 映像
+title: 示例 - 已批准的 VM 映像
 description: 此示例策略要求在环境中仅部署已批准的自定义映像。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 09/18/2018
+ms.date: 01/26/2019
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: d4216c785155ac5462dbcb1b48bf58e7bc718601
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 19e6fa5c7286eea26397f0bd69aec1ac9cf03140
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965358"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103872"
 ---
 # <a name="approved-vm-images"></a>已批准的 VM 映像
 
@@ -54,7 +53,7 @@ ms.locfileid: "46965358"
 
 ## <a name="parameters"></a>parameters
 
-|名称 |Type |字段 |Description |
+|Name |Type |字段 |说明 |
 |---|---|---|---|
 |imageIds |Array |Microsoft.Compute/imageIds |已批准的 VM 映像的列表|
 
@@ -87,16 +86,16 @@ PowerShell 还支持 `-PolicyParameterObject`，这要求向该 cmdlet 传递一
 
 ```azurepowershell-interactive
 # Create the Policy Definition (Subscription scope)
-$definition = New-AzureRmPolicyDefinition -Name 'allowed-custom-images' -DisplayName 'Approved VM images' -description 'This policy governs the approved VM images' -Policy 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/allowed-custom-images/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/allowed-custom-images/azurepolicy.parameters.json' -Mode All
+$definition = New-AzPolicyDefinition -Name 'allowed-custom-images' -DisplayName 'Approved VM images' -description 'This policy governs the approved VM images' -Policy 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/allowed-custom-images/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/allowed-custom-images/azurepolicy.parameters.json' -Mode All
 
-# Set the scope to a resource group; may also be a subscription or management group
-$scope = Get-AzureRmResourceGroup -Name 'YourResourceGroup'
+# Set the scope to a resource group; may also be a resource, subscription, or management group
+$scope = Get-AzResourceGroup -Name 'YourResourceGroup'
 
 # Set the Policy Parameter (JSON format)
 $policyparam = '{ "imageIds": { "value": [ "/subscriptions/<subscriptionId>/resourceGroups/YourResourceGroup/providers/Microsoft.Compute/images/ContosoStdImage", "/Subscriptions/<subscriptionId>/Providers/Microsoft.Compute/Locations/centralus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2016-Datacenter/Versions/2016.127.20180510" ] } }'
 
 # Create the Policy Assignment
-$assignment = New-AzureRmPolicyAssignment -Name 'allowed-custom-images-assignment' -DisplayName 'Approved VM images Assignment' -Scope $scope.ResourceId -PolicyDefinition $definition -PolicyParameter $policyparam
+$assignment = New-AzPolicyAssignment -Name 'allowed-custom-images-assignment' -DisplayName 'Approved VM images Assignment' -Scope $scope.ResourceId -PolicyDefinition $definition -PolicyParameter $policyparam
 ```
 
 ### <a name="remove-with-azure-powershell"></a>使用 Azure PowerShell 删除
@@ -105,10 +104,10 @@ $assignment = New-AzureRmPolicyAssignment -Name 'allowed-custom-images-assignmen
 
 ```azurepowershell-interactive
 # Remove the Policy Assignment
-Remove-AzureRmPolicyAssignment -Id $assignment.ResourceId
+Remove-AzPolicyAssignment -Id $assignment.ResourceId
 
 # Remove the Policy Definition
-Remove-AzureRmPolicyDefinition -Id $definition.ResourceId
+Remove-AzPolicyDefinition -Id $definition.ResourceId
 ```
 
 ### <a name="azure-powershell-explanation"></a>Azure PowerShell 说明
@@ -117,11 +116,11 @@ Remove-AzureRmPolicyDefinition -Id $definition.ResourceId
 
 | 命令 | 说明 |
 |---|---|
-| [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition) | 创建新的 Azure Policy 定义。 |
-| [Get-AzureRmResourceGroup](/powershell/module/azurerm.resources/get-azurermresourcegroup) | 获取单个资源组。 |
-| [New-AzureRmPolicyAssignment](/powershell/module/azurerm.resources/new-azurermpolicyassignment) | 创建新的 Azure Policy 分配。 在此示例中，我们向其提供了一个定义，但它也可以接受计划。 |
-| [Remove-AzureRmPolicyAssignment](/powershell/module/azurerm.resources/remove-azurermpolicyassignment) | 删除现有的 Azure Policy 分配。 |
-| [Remove-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/remove-azurermpolicydefinition) | 删除现有的 Azure Policy 定义。 |
+| [New-AzPolicyDefinition](/powershell/module/az.resources/New-Azpolicydefinition) | 创建新的 Azure Policy 定义。 |
+| [Get-AzResourceGroup](/powershell/module/az.resources/Get-Azresourcegroup) | 获取单个资源组。 |
+| [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) | 创建新的 Azure Policy 分配。 在此示例中，我们向其提供了一个定义，但它也可以接受计划。 |
+| [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-Azpolicyassignment) | 删除现有的 Azure Policy 分配。 |
+| [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-Azpolicydefinition) | 删除现有的 Azure Policy 定义。 |
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -133,7 +132,7 @@ Remove-AzureRmPolicyDefinition -Id $definition.ResourceId
 # Create the Policy Definition (Subscription scope)
 definition=$(az policy definition create --name 'allowed-custom-images' --display-name 'Approved VM images' --description 'This policy governs the approved VM images' --rules 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/allowed-custom-images/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/allowed-custom-images/azurepolicy.parameters.json' --mode All)
 
-# Set the scope to a resource group; may also be a subscription or management group
+# Set the scope to a resource group; may also be a resource, subscription, or management group
 scope=$(az group show --name 'YourResourceGroup')
 
 # Set the Policy Parameter (JSON format)

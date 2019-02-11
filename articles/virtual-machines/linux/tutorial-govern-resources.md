@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 10/12/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 715a8e5bab9e5d16b8c0e54298101df856d51a9a
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 040f073cc410911ea88112b3206623e90cece0ca
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309853"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756167"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>教程：了解如何使用 Azure CLI 管理 Linux 虚拟机
 
@@ -57,7 +57,7 @@ az group create --name myResourceGroup --location "East US"
 
 通常情况下，与其向单个用户分配角色，不如使用其用户需要执行类似操作的 Azure Active Directory 组， 然后向该组分配相应的角色。 就本文来说，请使用现有的组来管理虚拟机，或者使用门户来[创建 Azure Active Directory 组](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
-创建新组或找到现有组以后，请使用 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) 命令将新的 Azure Active Directory 组分配到资源组的“虚拟机参与者”角色。
+创建新组或找到现有组以后，请使用 [az role assignment create](/cli/azure/role/assignment) 命令将新的 Azure Active Directory 组分配到资源组的“虚拟机参与者”角色。
 
 ```azurecli-interactive
 adgroupId=$(az ad group show --group <your-group-name> --query objectId --output tsv)
@@ -71,7 +71,7 @@ az role assignment create --assignee-object-id $adgroupId --role "Virtual Machin
 
 ## <a name="azure-policy"></a>Azure Policy
 
-[Azure Policy](../../azure-policy/azure-policy-introduction.md) 可帮助确保订阅中的所有资源符合企业标准。 订阅已经有多个策略定义。 若要查看可用的策略定义，请使用 [az policy definition list](/cli/azure/policy/definition#az_policy_definition_list) 命令：
+[Azure Policy](../../azure-policy/azure-policy-introduction.md) 可帮助确保订阅中的所有资源符合企业标准。 订阅已经有多个策略定义。 若要查看可用的策略定义，请使用 [az policy definition list](/cli/azure/policy/definition) 命令：
 
 ```azurecli-interactive
 az policy definition list --query "[].[displayName, policyType, name]" --output table
@@ -83,7 +83,7 @@ az policy definition list --query "[].[displayName, policyType, name]" --output 
 * 限制虚拟机的 SKU。
 * 审核不使用托管磁盘的虚拟机。
 
-在下面的示例中，你将基于显示名称检索三个策略定义。 并且使用 [az policy assignment create](/cli/azure/policy/assignment#az_policy_assignment_create) 命令将这些定义分配到资源组。 对于某些策略，你将提供参数值来指定允许的值。
+在下面的示例中，你将基于显示名称检索三个策略定义。 并且使用 [az policy assignment create](/cli/azure/policy/assignment) 命令将这些定义分配到资源组。 对于某些策略，你将提供参数值来指定允许的值。
 
 ```azurecli-interactive
 # Get policy definitions for allowed locations, allowed SKUs, and auditing VMs that don't use managed disks
@@ -145,7 +145,7 @@ az vm create --resource-group myResourceGroup --name myVM --image UbuntuLTS --ge
 
 若要创建或删除管理锁，必须有权执行 `Microsoft.Authorization/locks/*` 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。
 
-若要锁定虚拟机和网络安全组，请使用 [az lock create](/cli/azure/lock#az_lock_create) 命令：
+若要锁定虚拟机和网络安全组，请使用 [az lock create](/cli/azure/lock) 命令：
 
 ```azurecli-interactive
 # Add CanNotDelete lock to the VM
@@ -177,7 +177,7 @@ az group delete --name myResourceGroup
 
 [!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 
-若要将标记应用于虚拟机，请使用 [az resource tag](/cli/azure/resource#az_resource_tag) 命令。 资源上的任何现有标记都不会保留。
+若要将标记应用于虚拟机，请使用 [az resource tag](/cli/azure/resource) 命令。 资源上的任何现有标记都不会保留。
 
 ```azurecli-interactive
 az resource tag -n myVM \
@@ -188,7 +188,7 @@ az resource tag -n myVM \
 
 ### <a name="find-resources-by-tag"></a>按标记查找资源
 
-若要通过标记名称和值查找资源，请使用 [az resource list](/cli/azure/resource#az_resource_list) 命令：
+若要通过标记名称和值查找资源，请使用 [az resource list](/cli/azure/resource) 命令：
 
 ```azurecli-interactive
 az resource list --tag Environment=Test --query [].name
@@ -206,7 +206,7 @@ az vm stop --ids $(az resource list --tag Environment=Test --query "[?type=='Mic
 
 ## <a name="clean-up-resources"></a>清理资源
 
-在解除锁定之前，不能删除锁定的网络安全组。 若要删除锁，请检索锁的 ID，并将其提供给 [az lock delete](/cli/azure/lock#az_lock_delete) 命令：
+在解除锁定之前，不能删除锁定的网络安全组。 若要删除锁，请检索锁的 ID，并将其提供给 [az lock delete](/cli/azure/lock) 命令：
 
 ```azurecli-interactive
 vmlock=$(az lock show --name LockVM \
@@ -220,7 +220,7 @@ nsglock=$(az lock show --name LockNSG \
 az lock delete --ids $vmlock $nsglock
 ```
 
-如果不再需要资源组、VM 和所有相关的资源，可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令将其删除。 退出 SSH 会话，返回 VM，然后删除资源，如下所示：
+如果不再需要资源组、VM 和所有相关的资源，可以使用 [az group delete](/cli/azure/group) 命令将其删除。 退出 SSH 会话，返回 VM，然后删除资源，如下所示：
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

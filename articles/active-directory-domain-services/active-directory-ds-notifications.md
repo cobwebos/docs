@@ -4,23 +4,23 @@ description: Azure AD 域服务通知设置
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: b9af1792-0b7f-4f3e-827a-9426cdb33ba6
 ms.service: active-directory
-ms.component: domains
+ms.subservice: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: f5049d6092bfc6b3f70ebafdc501e02ad9fe7936
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: d2cdff4b0b961083d8f8ac6e2eb8b1b46d30c06b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49432158"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159208"
 ---
 # <a name="notification-settings-in-azure-ad-domain-services"></a>Azure AD 域服务中的通知设置
 
@@ -41,7 +41,7 @@ ms.locfileid: "49432158"
 
 下图是电子邮件通知的示例：
 
-![电子邮件通知示例](.\media\active-directory-domain-services-alerts\email-alert.png)
+![电子邮件通知示例](./media/active-directory-domain-services-alerts/email-alert.png)
 
 电子邮件指明存在警报的托管域，并提供检测时间以及指向 Azure 门户中 Azure AD 域服务运行状况页的链接。
 

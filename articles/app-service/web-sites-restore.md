@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中还原应用
+title: 还原应用 - Azure 应用服务
 description: 了解如何从备份还原应用。
 services: app-service
 documentationcenter: ''
@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 69e0e8282ee0b8503fe11a57b8ba6037247822dd
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.custom: seodec18
+ms.openlocfilehash: 1e8bebdb3f54ac59ec19ef798cc3e794473bbec0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160495"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721455"
 ---
 # <a name="restore-an-app-in-azure"></a>在 Azure 中还原应用
-本文将演示如何在 [Azure 应用服务](../app-service/app-service-web-overview.md) 中还原已事先备份的应用（请参阅[在 Azure 中备份应用](web-sites-backup.md)）。 可以根据需要将应用及其链接的数据库还原到以前的状态，或者基于原始应用的备份之一创建新的应用。 Azure 应用服务支持用于备份和还原的以下数据库：
+本文将演示如何在 [Azure 应用服务](../app-service/overview.md) 中还原已事先备份的应用（请参阅[在 Azure 中备份应用](manage-backup.md)）。 可以根据需要将应用及其链接的数据库还原到以前的状态，或者基于原始应用的备份之一创建新的应用。 Azure 应用服务支持用于备份和还原的以下数据库：
 - [SQL 数据库](https://azure.microsoft.com/services/sql-database/)
 - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
 - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
@@ -90,8 +91,8 @@ ms.locfileid: "39160495"
 
 相关示例如下所示：
 
-- [Azure CLI 示例](app-service-cli-samples.md)
-- [Azure PowerShell 示例](app-service-powershell-samples.md)
+- [Azure CLI 示例](samples-cli.md)
+- [Azure PowerShell 示例](samples-powershell.md)
 
 <!-- ## Next Steps
 You can backup and restore App Service apps using REST API. -->

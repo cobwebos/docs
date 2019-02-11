@@ -3,18 +3,18 @@ title: 在 Azure 上的更新管理部署中配置前脚本和后脚本（预览
 description: 本文介绍如何配置和管理更新部署的前脚本和后脚本
 services: automation
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d84596b586ea54dd4a64faf46b32226862d83198
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 4c34c6c6e0a3f618cbd9337993aa6d176962fe6b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584610"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428233"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>管理前脚本和后脚本（预览版）
 
@@ -56,7 +56,7 @@ ms.locfileid: "52584610"
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext 属性
 
-|属性  |Description  |
+|属性  |说明  |
 |---------|---------|
 |SoftwareUpdateConfigurationName     | 软件更新配置的名称        |
 |SoftwareUpdateConfigurationRunId     | 运行的唯一 ID。        |
@@ -100,10 +100,7 @@ ms.locfileid: "52584610"
    }
 ```
 
-在[软件更新配置 - 按名称获取](/rest/api/automation/softwareupdateconfigurations/getbyname#examples)中可以找到所有属性的完整示例
-
-> [!NOTE]
-> **SoftwareUpdateConfigurationRunContext** 参数目前不包括使用[动态组（预览版）](automation-update-management.md#using-dynamic-groups)添加到部署中的计算机。
+可以在以下位置找到包含所有属性的完整示例：[软件更新配置 - 按名称获取](/rest/api/automation/softwareupdateconfigurations/getbyname#examples)
 
 ## <a name="samples"></a>示例
 
@@ -227,3 +224,4 @@ if ($summary.Type -eq "Error")
 
 > [!div class="nextstepaction"]
 > [管理 Azure Windows VM 的更新和修补程序](automation-tutorial-update-management.md)
+

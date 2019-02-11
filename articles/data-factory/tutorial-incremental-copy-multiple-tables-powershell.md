@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 0cec1fb09503d3cc685b718c2497a363dfd15824
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 3902e6ae93159266de9f9e9cc0f355a37976a8ed
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868388"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425656"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从本地 SQL Server 中的多个表加载到 Azure SQL 数据库。    
@@ -59,7 +58,7 @@ ms.locfileid: "48868388"
 
     下面是高级解决方案示意图： 
 
-    ![以增量方式加载数据](media\tutorial-incremental-copy-multiple-tables-powershell\high-level-solution-diagram.png)
+    ![以增量方式加载数据](media/tutorial-incremental-copy-multiple-tables-powershell/high-level-solution-diagram.png)
 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
@@ -158,7 +157,7 @@ ms.locfileid: "48868388"
 运行以下命令，在 SQL 数据库中创建存储过程。 此存储过程在每次管道运行后更新水印值。 
 
 ```sql
-CREATE PROCEDURE sp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
+CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
 AS
 
 BEGIN
@@ -183,7 +182,7 @@ CREATE TYPE DataTypeforCustomerTable AS TABLE(
 
 GO
 
-CREATE PROCEDURE sp_upsert_customer_table @customer_table DataTypeforCustomerTable READONLY
+CREATE PROCEDURE usp_upsert_customer_table @customer_table DataTypeforCustomerTable READONLY
 AS
 
 BEGIN
@@ -206,7 +205,7 @@ CREATE TYPE DataTypeforProjectTable AS TABLE(
 
 GO
 
-CREATE PROCEDURE sp_upsert_project_table @project_table DataTypeforProjectTable READONLY
+CREATE PROCEDURE usp_upsert_project_table @project_table DataTypeforProjectTable READONLY
 AS
 
 BEGIN
@@ -223,7 +222,7 @@ END
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-按[安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明安装最新的 Azure PowerShell 模块。
+按[安装和配置 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) 中的说明安装最新的 Azure PowerShell 模块。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 1. 为资源组名称定义一个变量，稍后会在 PowerShell 命令中使用该变量。 将以下命令文本复制到 PowerShell，在双引号中指定 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称，然后运行命令。 例如 `"adfrg"`。 
@@ -268,7 +267,7 @@ END
     The specified Data Factory name 'ADFIncMultiCopyTutorialFactory' is already in use. Data Factory names must be globally unique.
     ```
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。
-* 要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、SQL 数据库等）和计算资源（Azure HDInsight 等）可以位于其他区域中。
+* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、SQL 数据库等）和计算资源（Azure HDInsight 等）可以位于其他区域中。
 
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 
@@ -614,7 +613,7 @@ END
                             "type": "SqlServerStoredProcedure",
                             "typeProperties": {
     
-                                "storedProcedureName": "sp_write_watermark",
+                                "storedProcedureName": "usp_write_watermark",
                                 "storedProcedureParameters": {
                                     "LastModifiedtime": {
                                         "value": "@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}",
@@ -681,13 +680,13 @@ END
                 "TABLE_NAME": "customer_table",
                 "WaterMark_Column": "LastModifytime",
                 "TableType": "DataTypeforCustomerTable",
-                "StoredProcedureNameForMergeOperation": "sp_upsert_customer_table"
+                "StoredProcedureNameForMergeOperation": "usp_upsert_customer_table"
             },
             {
                 "TABLE_NAME": "project_table",
                 "WaterMark_Column": "Creationtime",
                 "TableType": "DataTypeforProjectTable",
-                "StoredProcedureNameForMergeOperation": "sp_upsert_project_table"
+                "StoredProcedureNameForMergeOperation": "usp_upsert_project_table"
             }
         ]
     }
@@ -704,22 +703,22 @@ END
 
 1. 选择“所有服务”，使用关键字“数据工厂”进行搜索，然后选择“数据工厂”。 
 
-    ![数据工厂菜单](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-data-factories-menu-1.png)
+    ![数据工厂菜单](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-data-factories-menu-1.png)
 
 1. 在数据工厂列表中搜索你的数据工厂，然后选择它来打开“数据工厂”页。 
 
-    ![搜索你的数据工厂](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-search-data-factory-2.png)
+    ![搜索你的数据工厂](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-search-data-factory-2.png)
 
 1. 在“数据工厂”页中，选择“监视和管理”磁贴。 
 
-    ![“监视和管理”磁贴](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-monitor-manage-tile-3.png)
+    ![“监视和管理”磁贴](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-monitor-manage-tile-3.png)
 
 1. **数据集成应用程序**在单独的选项卡中打开。可以看到所有管道运行及其状态。 请注意，在以下示例中，管道运行的状态为“成功”。 选择“参数”列中的链接即可查看传递至管道的参数。 如果出现错误，请查看“错误”列中的链接。 选择“操作”列中的链接。 
 
-    ![管道运行](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-pipeline-runs-4.png)    
+    ![管道运行](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
 1. 选择“操作”列中的链接时，可以看到以下页面，其中显示管道的所有活动运行： 
 
-    ![活动运行](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-activity-runs-5.png)
+    ![活动运行](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-activity-runs-5.png)
 
 1. 若要回到“管道运行”视图，请选择“管道”，如图所示。 
 
@@ -801,11 +800,11 @@ VALUES
     ```
 1. 按照[监视管道](#monitor-the-pipeline)部分的说明监视管道运行。 由于管道状态为“正在进行”，因此可以在“操作”下看到另一操作链接，用于取消管道运行。 
 
-    ![“正在进行”的管道运行](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-pipeline-runs-6.png)
+    ![“正在进行”的管道运行](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-6.png)
 
 1. 选择“刷新”对列表进行刷新，直到管道运行成功。 
 
-    ![刷新管道运行](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-pipeline-runs-succeded-7.png)
+    ![刷新管道运行](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-succeded-7.png)
 
 1. 也可选择“操作”下的“查看活动运行”链接，查看与此管道运行相关联的所有活动运行。 
 

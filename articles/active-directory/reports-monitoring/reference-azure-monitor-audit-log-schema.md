@@ -4,7 +4,7 @@ description: 介绍在 Azure Monitor（预览版）中使用的 Azure AD 审核�
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
-ms.date: 11/13/2018
+ms.subservice: report-monitor
+ms.date: 12/14/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0335c17c85313762c28aec8ba283e1944cceefd1
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 0f6a5a345d5b0759e7dcb396b60d7466ae99cb16
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621388"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179593"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>解释 Azure Monitor 中的 Azure AD 审核日志架构（预览版）
 
@@ -101,9 +101,52 @@ ms.locfileid: "51621388"
 } 
 ```
 
+```json
+{
+    "records": [
+    {
+        "time": "2018-12-10T00:03:46.6161822Z",
+        "resourceId": "/tenants/7918d4b5-0442-4a97-be2d-36f9f9962ece/providers/Microsoft.aadiam",
+        "operationName": "Update policy",
+        "operationVersion": "1.0",
+        "category": "AuditLogs",
+        "tenantId": "7918d4b5-0442-4a97-be2d-36f9f9962ece",
+        "resultSignature": "None",
+        "durationMs": 0,
+        "callerIpAddress": "<null>",
+        "correlationId": "192298c1-0994-4dd6-b05a-a6c5984c31cb",
+        "identity": "MS-PIM",
+        "level": "Informational",
+        "properties": {
+            "id": "Directory_VNXV4_28148892",
+            "category": "Policy",
+            "correlationId": "192298c1-0994-4dd6-b05a-a6c5984c31cb",
+            "result": 0,
+            "resultReason": "",
+            "activityDisplayName": "Update policy",
+            "activityDateTime": "2018-12-10T00:03:46.6161822+00:00",
+            "loggedByService": "Core Directory",
+            "operationType": "Update",
+            "initiatedBy": {},
+            "targetResources": [
+            {
+                "id": "5e7a8ae7-165d-44a4-a4f4-6141f8c8ef40",
+                "displayName": "Default Policy",
+                "type": "Policy",
+                "modifiedProperties": []
+            }
+            ],
+            "additionalDetails": []
+        }
+    }
+    ]
+}
+
+```
+
 ## <a name="field-and-property-descriptions"></a>字段和属性说明
 
-| 字段名 | Description |
+| 字段名 | 说明 |
 |------------|-------------|
 | time       | 日期和时间 (UTC)。 |
 | operationName | 操作的名称。 |
@@ -123,7 +166,7 @@ ms.locfileid: "51621388"
 
 <br>
 
-| 属性名称 | Description |
+| 属性名称 | 说明 |
 |---------------|-------------|
 | AuditEventCategory | 审核事件的类型。 它可以是“用户管理”、“应用程序管理”或其他类型。|
 | 标识类型 | 类型可以是“应用程序”或“用户”。 |

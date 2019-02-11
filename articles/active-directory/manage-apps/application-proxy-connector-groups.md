@@ -3,9 +3,9 @@ title: 在 Azure AD 应用代理中使用连接器组在单独的网络和位置
 description: 介绍如何在 Azure AD 应用程序代理中创建和管理连接器组。
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: aebb042c065652bef568f6bc1be2ee8bfde43988
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 8905ea028668f00d92f18bf7d8412e29ffc8283f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622627"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153577"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>使用连接器组在单独的网络和位置上发布应用程序。
 
@@ -32,7 +32,7 @@ ms.locfileid: "51622627"
 >如果有大型应用程序代理部署，则不向默认连接器组分配任何应用程到。 这样一来，将新连接器分配给活动的连接器组之前，新连接器不接收任何实时流量。 此配置还可以通过将连接器移回默认组，让它们处于空闲模式，从而你可以在不会影响用户的状态下执行维护。
 
 ## <a name="prerequisites"></a>先决条件
-为了为连接器分组，必须先确保[已安装多个连接器](application-proxy-enable.md)。 安装新的连接器时，该连接器会自动加入**默认**连接器组。
+为了为连接器分组，必须先确保[已安装多个连接器](application-proxy-add-on-premises-application.md)。 安装新的连接器时，该连接器会自动加入**默认**连接器组。
 
 ## <a name="create-connector-groups"></a>创建连接器组
 使用以下步骤创建任意数量的连接器组。 
@@ -73,11 +73,11 @@ ms.locfileid: "51622627"
 
 例如，组织有许多虚拟机连接到其自己的 IaaS 托管虚拟网络。 为了允许员工使用这些应用程序，这些专用网络使用站点到站点 VPN 连接到公司网络。 这为位于本地的员工提供了良好的体验。 但是，这可能不适合远程员工，因为它需要额外的本地基础结构来路由访问权限，如下图所示：
 
-![AzureAD Iaas 网络](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
+![AzureAD IaaS 网络](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
   
 使用 Azure AD 应用程序代理连接器组，可以启用常见服务来保护对所有应用程序的访问，而不会对公司网络创建额外的依赖项：
 
-![AzureAD Iaas 多个云供应商](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
+![AzureAD IaaS 的多个云供应商](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
 
 ### <a name="multi-forest--different-connector-groups-for-each-forest"></a>多林 - 每个林使用不同连接器组
 

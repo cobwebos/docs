@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door 服务 - 通过 Azure 的应用程序传送套件进行负载均衡 | Microsoft Docs
+title: Azure Front Door 服务 - 通过 Azure 的应用程序交付套件进行负载均衡 | Microsoft Docs
 description: 本文介绍 Azure 建议通过其应用程序传送套件进行负载均衡
 services: frontdoor
 documentationcenter: ''
@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 4c9f92481af1e69a111869cb6fc1305923bb0484
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 5403b5506a3758ede5ad06640335b873b6b9aa96
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026001"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820812"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>使用 Azure 的应用程序传送套件进行负载均衡
 
 ## <a name="introduction"></a>介绍
-Microsoft Azure 提供多项全局或区域服务用于管理网络流量的分布方式及负载均衡方式：流量管理器、Front Door 服务、应用程序网关以及负载均衡器。  将这些服务与 Azure 的许多区域和分区体系结构一起使用，能够生成可靠且可缩放的高性能应用程序。
+Microsoft Azure 提供了多种全球和区域服务，用于管理网络流量的分布和负载均衡方式：流量管理器、Front Door 服务、应用程序网关和负载均衡器。  将这些服务与 Azure 的许多区域和分区体系结构一起使用，能够生成可靠且可缩放的高性能应用程序。
 
 ![应用程序传送套件 ][1]
  
@@ -51,7 +51,7 @@ Front Door 在 Microsoft 网络边缘终止 HTTP 请求，并主动进行探测�
 
 ## <a name="choosing-a-global-load-balancer"></a>选择全局负载均衡器
 选择是将负载均衡器还是 Azure Front Door 用作全局负载均衡器时，应考虑这两个服务的异同点。   它们均提供以下功能：
-- **多地冗余：** 如果一个区域出现故障，则将流量无缝路由到最近的区域，无需应用程序所有者做出任何干预。
+- **多地域冗余：** 如果一个区域出现故障，则将流量无缝路由到最近的区域，无需应用程序所有者做出任何干预。
 - **最近区域路由：** 自动将流量路由到最近的区域
 
 </br>下表说明流量管理器和 Azure Front Door 服务之间的差异：</br>
@@ -60,7 +60,7 @@ Front Door 在 Microsoft 网络边缘终止 HTTP 请求，并主动进行探测�
 | --------------- | ------------------------ |
 |**任何协议：** 流量管理器在 DNS 层运行，因此可以路由任何类型的网络流量，比如 HTTP、TCP、UDP 等。 | **HTTP 加速：** 在 Microsoft 网络边缘代理 Front Door 流量。  因此，HTTP(S) 请求在延迟和吞吐量方面有所改善，降低了 SSL 协商的延迟并使用热连接从 AFD 连接到应用程序。|
 |**本地路由：** 在 DNS 层进行路由，始终点到点地路由流量。  即使在自己的网络上使用流量管理器，从分公司路由到本地数据中心亦可采用一条直接的路径。 | **独立的可伸缩性：** Front Door 适用于 HTTP 请求，因此，可根据各个应用程序微服务的规则和运行状况，将路由到不同 URL 路径的请求路由到不同的后端/区域服务池（微服务）。|
-|计费形式：基于 DNS 的计费随用户数增加，适用于具有更多用户和更高稳定性的服务，从而为使用率较高的情况降低费用。 |**内联安全性：** Front Door 启用流量限速和 IP ACL 等规则，使你能在流量达到应用程序前保护后端。 
+|**计费形式：** 基于 DNS 的计费随用户数增加，适用于具有更多用户和更高稳定性的服务，从而为使用率较高的情况降低费用。 |**内联安全性：** Front Door 启用流量限速和 IP ACL 等规则，使你能在流量达到应用程序前保护后端。 
 
 </br>由于 Front Door 对 HTTP 工作负载具有的性能、可操作性和安全性优势，我们建议客户为其 HTTP 工作负载使用 Front Door。    流量管理器和 Front Door 可并行使用，为应用程序提供全部流量。 
 

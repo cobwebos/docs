@@ -1,5 +1,5 @@
 ---
-title: Saas 应用：监视多个 Azure SQL 数据库的性能 | Microsoft Docs
+title: SaaS 应用：监视多个 Azure SQL 数据库的性能 | Microsoft Docs
 description: 在多租户 SaaS 应用中监视和管理 Azure SQL 数据库和池的性能
 services: sql-database
 ms.service: sql-database
@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 86fdd7b0bd8ac76ddb2ac30ff324b80101c177e8
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 01/25/2019
+ms.openlocfilehash: d02e552ede4480ee0c4977dc32bbe347ca7db393
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353894"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459479"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理 Azure SQL 数据库和池的性能
 
 本教程将探讨 SaaS 应用程序中使用的几个关键性能管理方案。 使用负载生成器来模拟所有租户数据库中的活动，演示 SQL 数据库和弹性池内置的监视和警报功能。
 
-Wingtip Tickets SaaS Database Per Tenant 应用使用单租户数据模型，在该模型中，每个地点（租户）都有其自己的数据库。 与许多 SaaS 应用程序一样，预期的租户工作负荷模式为不可预测的偶发型。 换言之，票证销售可能会发生在任意时刻。 为了充分利用此典型的数据库使用模式，可将租户数据库部署到弹性数据库池中。 弹性池可以在多个数据库之间共享资源，从而优化解决方案的成本。 使用此类模式时，必须监视数据库和池的资源使用情况，确保实现合理的跨池负载均衡。 此外还需确保各个数据库有足够的资源，且池没有达到其 [eDTU](sql-database-service-tiers.md#dtu-based-purchasing-model) 限制。 本教程探讨如何通过多种方式来监视和管理数据库和池，以及如何采取纠正措施来响应工作负荷的变化。
+Wingtip Tickets SaaS Database Per Tenant 应用使用单租户数据模型，在该模型中，每个地点（租户）都有其自己的数据库。 与许多 SaaS 应用程序一样，预期的租户工作负荷模式为不可预测的偶发型。 换言之，票证销售可能会发生在任意时刻。 为了充分利用此典型的数据库使用模式，可将租户数据库部署到弹性池中。 弹性池可以在多个数据库之间共享资源，从而优化解决方案的成本。 使用此类模式时，必须监视数据库和池的资源使用情况，确保实现合理的跨池负载均衡。 此外还需确保各个数据库有足够的资源，且池没有达到其 [eDTU](sql-database-service-tiers.md#dtu-based-purchasing-model) 限制。 本教程探讨如何通过多种方式来监视和管理数据库和池，以及如何采取纠正措施来响应工作负荷的变化。
 
 本教程介绍如何执行下列操作：
 
@@ -42,7 +42,7 @@ Wingtip Tickets SaaS Database Per Tenant 应用使用单租户数据模型，在
 
 ## <a name="introduction-to-saas-performance-management-patterns"></a>SaaS 性能管理模式简介
 
-数据库性能管理包括：编译和分析性能数据，并对该数据作出反应，即通过调整参数，使应用程序的响应时间维持在可接受的范围。 托管多个租户时，如果工作负荷不可预测，则可以使用弹性数据库池这种经济有效的方式，为一组数据库提供资源并进行相应的管理。 就某些工作负荷模式来说，只要有两个 S3 数据库就可以在池中进行管理。
+数据库性能管理包括：编译和分析性能数据，并对该数据作出反应，即通过调整参数，使应用程序的响应时间维持在可接受的范围。 托管多个租户时，如果工作负载不可预测，则可用弹性池这种经济有效的方式，为一组数据库提供资源并进行相应的管理。 就某些工作负荷模式来说，只要有两个 S3 数据库就可以在池中进行管理。
 
 ![应用程序关系图](./media/saas-dbpertenant-performance-monitoring/app-diagram.png)
 
@@ -75,7 +75,7 @@ Wingtip Tickets SaaS Database Per Tenant 应用使用单租户数据模型，在
 
 脚本会在不到五分钟的时间内部署 17 个租户。
 
-New-TenantBatch 脚本使用嵌套或链接形式的一组[资源管理器](../azure-resource-manager/index.md)模板来创建一批租户。这些租户在默认情况下会通过复制编录服务器上的数据库 basetenantdb 来创建新的租户数据库，然后将这些数据库注册到目录中，最后再使用租户名称和地点类型初始化这些数据库。 这与应用预配新租户的方式是一致的。 对 basetenantdb 所做的任何更改都将应用到此后预配的任何新租户。 请参阅[架构管理教程](saas-tenancy-schema-management.md)，了解如何对现有租户数据库（包括 basetenantdb 数据库）进行架构更改。
+New-TenantBatch 脚本使用嵌套或链接形式的一组[资源管理器](../azure-resource-manager/index.yml)模板来创建一批租户。这些租户在默认情况下会通过复制编录服务器上的数据库 basetenantdb 来创建新的租户数据库，然后将这些数据库注册到目录中，最后再使用租户名称和地点类型初始化这些数据库。 这与应用预配新租户的方式是一致的。 对 basetenantdb 所做的任何更改都将应用到此后预配的任何新租户。 请参阅[架构管理教程](saas-tenancy-schema-management.md)，了解如何对现有租户数据库（包括 basetenantdb 数据库）进行架构更改。
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>模拟所有租户数据库上的使用情况
 
@@ -169,7 +169,7 @@ Wingtip Tickets SaaS Database Per Tenant 是一个 SaaS 应用，SaaS 应用上�
 
 1. 在 [Azure 门户](https://portal.azure.com)中，打开 tenants1-dpt-&lt;USER&gt; 服务器。
 1. 单击“+ 新建池”，在当前服务器上创建一个池。
-1. 在“弹性数据库池”模板上，执行以下操作：
+1. 在“弹性池”模板上，执行以下操作：
 
     1. 将名称设置为 Pool2。
     1. 将定价层保留为“标准池”。
@@ -189,9 +189,9 @@ Wingtip Tickets SaaS Database Per Tenant 是一个 SaaS 应用，SaaS 应用上�
 
 现在可看到 Pool1 中的资源使用率下降，而 Pool2 的负载情况与之相似。
 
-## <a name="manage-performance-of-a-single-database"></a>管理单一数据库的性能
+## <a name="manage-performance-of-an-individual-database"></a>管理单个数据库的性能
 
-如果池中的单一数据库遇到负载持续过高的问题，该数据库会占用池中的大部分资源，影响其他数据库（具体取决于池配置）。 如果该活动要持续一段时间，则可暂时将数据库移出池。 这样数据库就能获得需要的其他资源，并将其与其他数据库隔离开来。
+如果池中的单个数据库遇到负载持续过高的问题，该数据库可能会占用池中的大部分资源，进而影响其他数据库（具体要取决于池配置）。 如果该活动要持续一段时间，则可暂时将数据库移出池。 这样数据库就能获得需要的其他资源，并将其与其他数据库隔离开来。
 
 本练习模拟 Contoso 音乐厅在销售热门音乐会票时遇到的负载过高的情况。
 
@@ -203,7 +203,7 @@ Wingtip Tickets SaaS Database Per Tenant 是一个 SaaS 应用，SaaS 应用上�
 
 1. 在 [Azure 门户](https://portal.azure.com)，浏览到 tenants1-dpt-\<user\> 服务器上的数据库列表。 
 1. 单击“contosoconcerthall”数据库。
-1. 单击“contosoconcerthall”所在的池。 在“弹性数据库池”部分中找到该池。
+1. 单击“contosoconcerthall”所在的池。 在“弹性池”部分中找到该池。
 
 1. 检查“弹性池监视”图表，查找增加的池 eDTU 使用率。 一到两分钟后，较高的负载就会开始进入，很快就会看到池达到 100% 利用率。
 2. 检查“弹性数据库监视”屏幕，其中会显示过去一小时内最繁忙的数据库。 据屏幕显示，contosoconcerthall 数据库很快就会成为最繁忙的 5 个数据库之一。

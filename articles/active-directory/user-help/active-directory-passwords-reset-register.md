@@ -3,21 +3,21 @@ title: 注册自助密码重置 - Azure Active Directory | Microsoft Docs
 description: 注册身份验证数据，以便进行 Azure AD 自助密码重置
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.assetid: ''
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
-ms.openlocfilehash: f8b4fb8861760d2b5b10f61b3ab6a8c718f849b6
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: c7291af37e0691c22d93ac84e66fabba91890726
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106351"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55186801"
 ---
 # <a name="register-for-self-service-password-reset"></a>注册自助密码重置
 
@@ -31,10 +31,10 @@ ms.locfileid: "47106351"
 1. 在设备上打开 Web 浏览器，并转到[密码重置注册页](https://aka.ms/ssprsetup)。
 2. 输入管理员提供的用户名和密码。
 3. 可以使用以下一个或多个选项进行配置和验证，具体取决于 IT 人员的配置。 如果管理员有权使用你的信息，则可以填充其中的某些信息。
-    * **办公电话**：只能由管理员设置此选项。
+    * **办公电话**：仅管理员可设置此选项。
     * **身份验证电话**：将此选项设置为你可以访问的其他电话号码。 例如，可以接收短信或呼叫的手机号码。
     * **身份验证电子邮件**：将此选项设置为在不使用所要重置的密码的情况下可以访问的备用电子邮件地址。
-    * **安全提问**：管理员已批准此问题列表供你回答。 不能多次使用同一问题或答案。
+    * **安全性问题**：管理员已批准此问题列表供你回答。 不能多次使用同一问题或答案。
 4. 提供并验证管理员所需的信息。 如果有多个选项可用，我们建议注册多个方法。 这样，在某个方法不可用时，可以灵活使用其他方法。 例如，在旅行时无法使用办公电话的情况下。
 
     ![注册身份验证方法并选择“完成”][Register]

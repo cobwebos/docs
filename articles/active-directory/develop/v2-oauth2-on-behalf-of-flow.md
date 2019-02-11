@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 06/06/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0fc81a75e79d7f570bd55c9c30a464e5bbb9ad1c
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: e7c393f1eb654d30c5e06869f404c8523c56a21e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423419"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093136"
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Azure Active Directory v2.0 和 OAuth 2.0 代理流
 
@@ -64,10 +64,10 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 
 有两种情况，具体取决于客户端应用程序选择由共享密钥还是由证书保护。
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一种情况：使用共享密钥访问令牌请求
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一种情况：使用共享机密访问令牌请求
 使用共享密钥时，服务到服务访问令牌请求包含以下参数：
 
-| 参数 |  | Description |
+| 参数 |  | 说明 |
 | --- | --- | --- |
 | grant_type |必填 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须是 **urn:ietf:params:oauth:grant-type:jwt-bearer**。 |
 | client_id |必填 | [应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)分配给该应用的应用程序 ID。 |
@@ -97,7 +97,7 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 ### <a name="second-case-access-token-request-with-a-certificate"></a>第二种情况：使用证书访问令牌请求
 使用证书的服务到服务访问令牌请求包含以下参数：
 
-| 参数 |  | Description |
+| 参数 |  | 说明 |
 | --- | --- | --- |
 | grant_type |必填 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须是 **urn:ietf:params:oauth:grant-type:jwt-bearer**。 |
 | client_id |必填 | [应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)分配给该应用的应用程序 ID。 |
@@ -131,9 +131,9 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 ## <a name="service-to-service-access-token-response"></a>服务到服务访问令牌响应
 成功响应是具有以下参数的 JSON OAuth 2.0 响应。
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
-| token_type |指示令牌类型值。 Azure AD 唯一支持的类型是 **Bearer**。 有关持有者令牌的详细信息，请参阅 [OAuth2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
+| token_type |指示令牌类型值。 Azure AD 唯一支持的类型是 **Bearer**。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
 | 作用域 |令牌中授予的访问权限的范围。 |
 | expires_in |访问令牌有效的时间长度（以秒为单位）。 |
 | access_token |请求的访问令牌。 调用方服务可以使用此令牌向接收方服务进行身份验证。 |

@@ -1,30 +1,11 @@
 ---
-title: 机器学习工作室中的简单试验 | Microsoft Docs
-description: 本机器学习教程逐步讲解如何轻松完成数据科研试验。 使用回归算法预测汽车价格。
-keywords: 试验, 线性回归, 机器学习算法, 机器学习教程, 预测建模技术, 数据科研试验
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
-editor: cgronlun
-ms.assetid: b6176bb2-3bb6-4ebf-84d1-3598ee6e01c6
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: tutorial
-ms.date: 03/20/2017
-ms.openlocfilehash: 7ee1df8c38ac2dbfc6618febd223d5c4bbf32be6
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425704"
+title:简单试验 titleSuffix:Azure 机器学习工作室 description:本机器学习教程逐步讲解如何轻松完成数据科研试验。 使用回归算法预测汽车价格。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: tutorial
+
+author: garyericson ms.author: garye ms.custom: seodec18 ms.date:03/20/2017
 ---
-# <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>机器学习教程：在 Azure 机器学习工作室中创建第一个数据科研试验
+
+# <a name="tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>教程：在 Azure 机器学习工作室中创建你的第一个数据科学试验
 
 本教程适合从未使用过 **Azure 机器学习工作室**的用户。
 
@@ -41,7 +22,7 @@ ms.locfileid: "52425704"
 - [机器学习基础知识及算法示例](basics-infographic-with-algorithm-examples.md) - 以信息图方式图文并茂地详细介绍了机器学习工作室包含的各类机器学习算法。
 - [Machine Learning Guide](https://gallery.cortanaintelligence.com/Tutorial/Machine-Learning-Guide-1)（机器学习指南）- 此指南介绍的内容与上面的信息图类似，只是采用了交互的方式。
 - [机器学习算法备忘](algorithm-cheat-sheet.md)和[如何选择 Microsoft Azure 机器学习的算法](algorithm-choice.md) - 可供用户下载的海报及深度讨论工作室算法的相关文章。
-- [Machine Learning Studio: Algorithm and Module Help](https://msdn.microsoft.com/library/azure/dn905974.aspx)（机器学习工作室：算法和模块帮助）- 包括机器学习算法在内的所有工作室模块的完整参考。
+- [机器学习工作室：算法和模块帮助](https://msdn.microsoft.com/library/azure/dn905974.aspx) - 包括机器学习算法在内的所有工作室模块的完整参考。
 
 
 
@@ -304,7 +285,7 @@ ms.locfileid: "52425704"
 
 针对本例中的模型显示了以下统计信息：
 
-- **平均绝对误差** (MAE)：绝对误差的平均值（ *误差* 是指预测值与实际值之间的差异）。
+- **平均绝对误差** (MAE)：绝对误差的平均值（*误差* 是指预测值与实际值之间的差异）。
 - **均方根误差** (RMSE)：对测试数据集所做预测的平均误差的平方根。
 - **相对绝对误差**：相对于实际值与所有实际值平均值之间的绝对差异的绝对误差平均值。
 - **相对平方误差**：相对于实际值与所有实际值平均值之间的平方差异的平方误差平均值。

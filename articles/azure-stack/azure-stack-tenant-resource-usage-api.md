@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: ab5dad550e590cd70f54ad5c8d4727d0f6370190
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: db0cdfce5903b8866985b0545494351e2796d8e2
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379706"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244617"
 ---
 # <a name="tenant-resource-usage-api"></a>租户资源用量 API
 
@@ -82,7 +83,7 @@ GET /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?reportedSta
 | *subscriptionId* |Azure 用户的订阅标识符 |
 | *usageStartTime* |此用量聚合所属的用量存储桶 UTC 开始时间。 |
 | *usageEndTime* |此用量聚合所属的用量存储桶 UTC 结束时间。 |
-| *instanceData* |实例详细信息的键/值对（采用新格式）：<br>  *resourceUri*：完全限定的资源 ID，其中包括资源组和实例名称 <br>  *location*：运行此服务的区域 <br>  *tags*：用户指定的资源标记 <br>  *additionalInfo*：更多关于所消耗资源的详细信息（例如 OS 版本或映像类型） |
+| *instanceData* |实例详细信息的键/值对（采用新格式）：<br>  *resourceUri*：完全限定的资源 ID，包括资源组和实例名称 <br>  *location*：运行此服务的区域 <br>  *tags*：用户指定的资源标记 <br>  *additionalInfo*：更多详细信息，有关所消耗资源的例如，OS 版本或映像类型 |
 | *quantity* |此时间范围内发生的资源消耗量。 |
 | *meterId* |所消耗资源的唯一 ID（也称为 *ResourceID*） |
 

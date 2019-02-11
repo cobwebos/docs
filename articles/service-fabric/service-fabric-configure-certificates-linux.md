@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/26/2018
 ms.author: v-jamebr
-ms.openlocfilehash: aa84dc4cb23a0fa2fa854e1f3d6da1234ec00bd6
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 503b0dffa00c6cba973f4bc51d8e3b2f3a7b8c57
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386631"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200405"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Linux 群集上的证书和安全性
 
@@ -43,7 +43,7 @@ Service Fabric 通常要求在 Linux 群集节点上的 */var/lib/sfcerts* 目�
 
 ### <a name="using-x509-securitycredentialstype"></a>使用 X509 SecurityCredentialsType
 
-使用 .NET 或 Java SDK，可为 **SecurityCredentialsType** 指定 **X509**。 此值对应于 `SecurityCredentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric._security_credentials)) 类型的 `X509Credentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric._x509_credentials))。
+使用 .NET 或 Java SDK，可为 **SecurityCredentialsType** 指定 **X509**。 此值对应于 `SecurityCredentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)) 类型的 `X509Credentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials))。
 
 **X509** 引用在证书存储中查找证书。 以下 XML 显示用于指定证书位置的参数：
 
@@ -74,7 +74,7 @@ Service Fabric 通常要求在 Linux 群集节点上的 */var/lib/sfcerts* 目�
 
 ### <a name="using-x5092-securitycredentialstype"></a>使用 X509_2 SecurityCredentialsType
 
-使用 Java SDK，可为 **SecurityCredentialsType** 指定 **X509_2**。 此值对应于 `SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric._security_credentials)) 类型的 `X509Credentials2` ([Java](https://docs.microsoft.com/java/api/system.fabric._x509_credentials2))。 
+使用 Java SDK，可为 **SecurityCredentialsType** 指定 **X509_2**。 此值对应于 `SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)) 类型的 `X509Credentials2` ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2))。 
 
 使用 **X509_2** 引用时，请指定路径参数，以便可以在除 */var/lib/sfcerts* 以外的目录中查找证书。  以下 XML 显示用于指定证书位置的参数： 
 

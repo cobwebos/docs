@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 32198387be680fd01558e900e4c438cde2cdc5b1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 867af6de05d1d9ab54cf8a4bf02221acc43a2b28
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266184"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075628"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure 市场‎商业交易功能和注意事项
 
@@ -177,8 +177,9 @@ Microsoft 使客户能够订购、许可和使用发布者软件，受 Azure 市
 |付款计算日期（每月第 15 天） | 2018 年 10 月 1 日 |
 |付款日期 | 2018 年 10 月 15 日 |
 
-如果客户使用企业协议购买：  
-|Description    |    日期  |
+如果客户使用企业协议购买：
+
+| Description |    日期  |
 |----------|----------|
 |订购期 | 2018 年 8 月 15 日 - 2018 年 8 月 30 日 |
 |期限结束（季度） | 2018 年 9 月 30 日 |
@@ -213,7 +214,7 @@ Microsoft 使客户能够订购、许可和使用发布者软件，受 Azure 市
 
 有关详细信息和法律策略，请参阅[发布者协议](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf)（请参见云合作伙伴门户）。
 
-若要获取有关计费问题的帮助，请[创建支持事件](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636764613233453423)，并根据所用的产品/服务类型选择虚拟机或 Web 应用（又称 SaaS 应用）。
+若要获取有关计费问题的帮助，请[创建支持事件](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&pesid=16230&forceorigin=esmc&ccsid=636764613233453423)，并根据所用的产品/服务类型选择虚拟机或 Web 应用（又称 SaaS 应用）。
 
 ## <a name="transact-requirements"></a>交易要求
 

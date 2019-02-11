@@ -1,5 +1,5 @@
 ---
-title: 如何向 Azure 时序见解环境添加参考数据集
+title: 如何向 Azure 时序见解环境添加引用数据集 | Microsoft Docs
 description: 本文介绍了如何添加参考数据集来增强 Azure 时序见解环境中的数据。
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,12 +10,13 @@ ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/15/2018
-ms.openlocfilehash: 45520a556d109158987dd47e33a1efb52a1cd356
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: seodec18
+ms.openlocfilehash: a14f568e2485e59cb3e567eb9ee5c5eb20b02afc
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364731"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198416"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>使用 Azure 门户为时序见解环境创建引用数据集
 
@@ -97,4 +98,4 @@ ms.locfileid: "46364731"
 
 ## <a name="next-steps"></a>后续步骤
 * 以编程方式[管理引用数据](time-series-insights-manage-reference-data-csharp.md)。
-* 如需完整的 API 引用，请参阅[引用数据 API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api)文档。
+* 如需完整的 API 引用，请参阅[引用数据 API](/rest/api/time-series-insights/ga-reference-data-api)文档。

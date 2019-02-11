@@ -5,23 +5,23 @@ services: active-directory
 keywords: Azure AD Connect 直通身份验证, GDPR, Azure AD 所需的组件, SSO, 单一登录
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/23/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: bcb448296313eedebb8f8389b320c5da5f1a80dd
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2247eb8e82e959b3c95778c154842b5f98708001
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46305646"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496272"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>用户隐私和 Azure Active Directory 直通身份验证
 
@@ -72,7 +72,7 @@ Foreach ($file in $Files) {
 
 ### <a name="delete-authentication-agent-trace-log-files"></a>删除身份验证代理跟踪日志文件
 
-应该每隔 48 小时定期检查 **%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace\** 的内容，并删除此文件夹的内容。 
+应每隔 48 小时定期检查 <strong>%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace\< 的内容，并删除此文件夹的内容。 
 
 >[!IMPORTANT]
 >如果身份验证代理服务正在运行，则无法删除此文件夹中的当前日志文件。 重试之前请停止该服务。 为避免用户登录失败，应事先配置直通身份验证以实现[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)。

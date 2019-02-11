@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 中的业务流程步骤形式的 REST API 声
 description: 有关与 API 集成的 Azure Active Directory B2C 自定义策略的主题。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: dddb42f53d4bb59113df937799bd4de10d31491c
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.subservice: B2C
+ms.openlocfilehash: 55740b74aef5ce3d2def5ad22cfe3ededa1204d8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338773"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189669"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>演练：在 Azure AD B2C 用户旅程中以业务流程步骤的形式集成 REST API 声明交换
 
@@ -45,7 +45,7 @@ IEF 在声明中发送数据，同时也在声明中接收数据。 REST API 声
 
 - 根据[入门](active-directory-b2c-get-started-custom.md)中所述配置一个 Azure AD B2C 租户，以完成本地帐户注册/登录。
 - 要交互的 REST API 终结点。 该演练采用简单的 Azure 函数应用 webhook 作为示例。
-- *建议*：完成[验证步骤形式的 REST API 声明交换演练](active-directory-b2c-rest-api-validation-custom.md)。
+- *建议*：[以验证步骤的形式完成 REST API 声明交换演练](active-directory-b2c-rest-api-validation-custom.md)。
 
 ## <a name="step-1-prepare-the-rest-api-function"></a>步骤 1：准备 REST API 函数
 
@@ -97,6 +97,7 @@ return request.CreateResponse<ResponseContent>(
                 <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==</Item>
                 <Item Key="AuthenticationType">None</Item>
                 <Item Key="SendClaimsIn">Body</Item>
+                <Item Key="AllowInsecureAuthInProduction">true</Item>
             </Metadata>
             <InputClaims>
                 <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="email" />
@@ -114,7 +115,7 @@ return request.CreateResponse<ResponseContent>(
 
 `<OutputClaims>` 元素定义 IEF 预期从 REST 服务收到的声明。 不管收到了多少个声明，IEF 都只使用此处指定的声明。 在本示例中，以 `city` 形式收到的声明将映射到 IEF 声明 `city`。
 
-## <a name="step-3-add-the-new-claim-city-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>步骤 3：将新的声明 `city` 添加到 TrustFrameworkExtensions.xml 文件的架构
+## <a name="step-3-add-the-new-claim-city-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>步骤 3：将新的 `city` 声明添加到 TrustFrameworkExtensions.xml 文件的架构
 
 声明 `city` 未在我们架构中的任何位置定义。 因此，请在元素 `<BuildingBlocks>` 中添加一个定义。 你可以在 TrustFrameworkExtensions.xml 文件的开头处找到此元素。
 
@@ -133,7 +134,7 @@ return request.CreateResponse<ResponseContent>(
 </BuildingBlocks>
 ```
 
-## <a name="step-4-include-the-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-trustframeworkextensionsxml"></a>步骤 4：在 TrustFrameworkExtensions.xml 中的配置文件编辑用户旅程内以业务流程步骤的形式加入 REST 服务声明交换
+## <a name="step-4-include-the-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-trustframeworkextensionsxml"></a>步骤 4：在 TrustFrameworkExtensions.xml 中的配置文件编辑用户旅程内以业务流程步骤的形式包含 REST 服务声明交换
 
 在用户完成身份验证（以下 XML 中的业务流程步骤 1-4）并提供更新的配置文件信息（步骤 5）后，在配置文件编辑用户旅程中添加步骤。
 
@@ -211,7 +212,7 @@ return request.CreateResponse<ResponseContent>(
 </UserJourney>
 ```
 
-## <a name="step-5-add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>步骤 5：将声明 `city` 添加到信赖方策略文件，以便将该声明发送到应用程序
+## <a name="step-5-add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>步骤 5：将 `city` 声明添加到信赖方策略文件，以便将该声明发送到应用程序
 
 编辑 ProfileEdit.xml 信赖方 (RP) 文件并修改 `<TechnicalProfile Id="PolicyProfile">` 元素以添加如下内容：`<OutputClaim ClaimTypeReferenceId="city" />`。
 
@@ -233,7 +234,7 @@ return request.CreateResponse<ResponseContent>(
 覆盖现有的策略版本。
 
 1.  （可选：）在继续下一步之前，请（通过下载的方式）保存现有的扩展文件版本。 为保证初始复杂度较低，建议不要上传多个扩展文件版本。
-2.  （可选：）通过更改 `PolicyId="B2C_1A_TrustFrameworkProfileEdit"` 为策略编辑文件重新命名新版策略 ID。
+2.  （可选：）通过更改 `PolicyId="B2C_1A_TrustFrameworkProfileEdit"` 为策略编辑文件重命名新版策略 ID。
 3.  上传扩展文件。
 4.  上传策略编辑 RP 文件。
 5.  使用“立即运行”测试策略。 查看 IEF 返回给应用程序的令牌。

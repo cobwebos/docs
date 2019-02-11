@@ -2,19 +2,19 @@
 title: 使用 Azure 流分析生成 IoT 解决方案
 description: 使用收费站方案了解流分析 IoT 解决方案的入门教程
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
-ms.reviewer: jasonh, sngun
+ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/21/2018
-ms.openlocfilehash: e70a1210d44e5bfec914006afaf18eff772cac47
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: f372c2a85a9a03c7ead779bd4db64722891c9a4c
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978785"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321562"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>使用流分析构建 IoT 解决方案
 
@@ -36,7 +36,7 @@ ms.locfileid: "50978785"
 ## <a name="scenario-introduction-hello-toll"></a>方案简介：“你好，收费站！”
 收费站是常见景象。 在世界各地的高速公路、桥梁和隧道旁边都会看到它们。 每个收费站有多个收费亭。 在手动收费亭前，要停下来向办事员支付通行费。 在自动收费亭前，穿过收费亭时，每个收费亭上的传感器将扫描安装在汽车挡风玻璃上的 RFID 卡。 我们可以轻松地将车辆通过这些收费站的情况想象成能够执行许多有趣操作的事件流。
 
-![收费亭前汽车的图片](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image1.jpg)
+![收费亭前汽车的图片](media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth.jpg)
 
 ## <a name="incoming-data"></a>传入的数据
 本解决方案使用两个数据流。 安装在收费站入口和出口的传感器产生第一个流。 第二个流是包含汽车注册数据的静态查找数据集。
@@ -106,15 +106,15 @@ ms.locfileid: "50978785"
 | --- | --- |
 | LicensePlate |汽车的牌照号码 |
 | RegistrationId |汽车的注册 ID |
-| 已过期 |汽车的注册状态：0 代表汽车注册仍有效，1 代表汽车注册已过期 |
+| 已过期 |车辆的注册状态：0 代表车辆注册仍有效，1 代表车辆注册已过期 |
 
 ## <a name="set-up-the-environment-for-azure-stream-analytics"></a>设置 Azure 流分析的环境
 若要完成本解决方案，需要一个 Microsoft Azure 订阅。 如果没有 Azure 帐户，可以[请求免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 请务必按照本文末尾的“清理 Azure 帐户”部分中的步骤操作，以便充分利用 Azure 额度。
 
-## <a name="deploy-the-sample"></a>部署示例 
-只需单击几下鼠标，就能轻松将多个资源一起部署在某个资源组中。 解决方案定义托管在 [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp) 上的 github 存储库中。
+## <a name="deploy-the-sample"></a>部署示例
+只需单击几下鼠标，就能轻松将多个资源一起部署在某个资源组中。 解决方案定义托管在 [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp) 上的 GitHub 存储库中。
 
 ### <a name="deploy-the-tollapp-template-in-the-azure-portal"></a>在 Azure 门户中部署 TollApp 模板
 1. 若要将 TollApp 环境部署到 Azure，请使用此链接[部署 TollApp Azure 模板](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-stream-analytics%2Fmaster%2FSamples%2FTollApp%2FVSProjects%2FTollAppDeployment%2Fazuredeploy.json)。
@@ -123,11 +123,11 @@ ms.locfileid: "50978785"
 
 3. 选择要对其中各种资源计费的订阅。
 
-4. 指定具有唯一名称的新资源组，例如 `MyTollBooth`。 
+4. 指定具有唯一名称的新资源组，例如 `MyTollBooth`。
 
 5. 选择 Azure 位置。
 
-6. 在“间隔”中指定若干秒。 此值将在示例 Web 应用中使用，指定将数据发送到事件中心的频率。 
+6. 在“间隔”中指定若干秒。 此值将在示例 Web 应用中使用，指定将数据发送到事件中心的频率。
 
 7. **选中**表示同意条款和条件的复选框。
 
@@ -149,7 +149,7 @@ ms.locfileid: "50978785"
    - 一个 Azure 事件中心
    - 两个 Web 应用
 
-## <a name="examine-the-sample-tollapp-job"></a>检查示例 TollApp 作业 
+## <a name="examine-the-sample-tollapp-job"></a>检查示例 TollApp 作业
 1. 从上一部分创建的资源组着手，选择以名称 **tollapp** 开头的流分析流式处理作业（名称包含随机字符，以确保唯一性）。
 
 2. 在该作业的“概述”页上，观察“查询”框以查看查询语法。
@@ -185,7 +185,7 @@ ms.locfileid: "50978785"
 ## <a name="review-the-cosmosdb-output-data"></a>查看 CosmosDB 输出数据
 1. 找到包含 TollApp 资源的资源组。
 
-2. 选择名称模式为 **tollapp<random>-cosmos** 的 Azure Cosmos DB 帐户。
+2. 选择名称模式为 **tollapp\<random\>-cosmos** 的 Azure Cosmos DB 帐户。
 
 3. 选择“数据资源管理器”标题打开“数据资源管理器”页。
 
@@ -195,7 +195,7 @@ ms.locfileid: "50978785"
 
 6. 选择每个 ID 以查看 JSON 文档。 请注意每个 tollid、windowend 时间和该时限内的汽车计数。
 
-7. 再过三分钟后，将显示另外四个文档，每个 tollid 对应一个文档。 
+7. 再过三分钟后，将显示另外四个文档，每个 tollid 对应一个文档。
 
 
 ## <a name="report-total-time-for-each-car"></a>报告每辆汽车的总时间
@@ -229,9 +229,9 @@ AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 7. 在“启动作业”窗格中选择“立即”。
 
 ### <a name="review-the-total-time-in-the-output"></a>查看输出中的总时间
-重复前一部分所述的步骤，查看流式处理作业返回的 CosmosDB 输出数据。 查看最新的 JSON 文档。 
+重复前一部分所述的步骤，查看流式处理作业返回的 CosmosDB 输出数据。 查看最新的 JSON 文档。
 
-例如，以下文档显示了某辆示例汽车的特定牌照、entrytime 和 exittime，以及 DATEDIFF 计算的 durationinminutes 字段（显示该汽车在收费亭停留了两分钟）： 
+例如，以下文档显示了某辆示例汽车的特定牌照、entrytime 和 exittime，以及 DATEDIFF 计算的 durationinminutes 字段（显示该汽车在收费亭停留了两分钟）：
 ```JSON
 {
     "tollid": 4,
@@ -249,7 +249,7 @@ AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 ```
 
 ## <a name="report-vehicles-with-expired-registration"></a>报告注册已过期的汽车
-Azure 流分析可以使用参考数据静态快照来与时态数据流联接。 为了演示此功能，请使用以下示例问题。 Registration 输入是一个静态 blob json 文件，其中列出牌照过期时间。 基于牌照执行联接，可将参考数据与通过收费亭的每辆汽车进行比较。 
+Azure 流分析可以使用参考数据静态快照来与时态数据流联接。 为了演示此功能，请使用以下示例问题。 Registration 输入是一个静态 blob json 文件，其中列出牌照过期时间。 基于牌照执行联接，可将参考数据与通过收费亭的每辆汽车进行比较。
 
 如果某辆商用车已向收费公司注册，则可以直接通过收费亭，而不用停车接受检查。 使用注册查找表来识别注册已过期的所有商用车。
 
@@ -264,7 +264,7 @@ WHERE Registration.Expired = '1'
 
 1. 重复前一部分所述的步骤，更新 TollApp 流式处理作业查询语法。
 
-2. 重复前一部分所述的步骤，查看流式处理作业返回的 CosmosDB 输出数据。 
+2. 重复前一部分所述的步骤，查看流式处理作业返回的 CosmosDB 输出数据。
 
 示例输出：
 ```json
@@ -289,28 +289,28 @@ Azure 流分析可弹性缩放，因而能够处理大量数据。 Azure 流分�
 ```sql
 SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*)AS Count
 INTO CosmosDB
-FROM EntryStream 
-TIMESTAMP BY EntryTime 
+FROM EntryStream
+TIMESTAMP BY EntryTime
 PARTITION BY PartitionId
 GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 ```
 
 将流式处理作业纵向扩展为更多的流单元：
 
-1. **停止**当前作业。 
+1. **停止**当前作业。
 
 2. 在“< > 查询”页中更新查询语法，然后保存更改。
 
 3. 在流式处理作业的“配置”标题下，选择“缩放”。
-   
+
 4. 将“流单元”滑块从 1 滑到 6。 流单元定义作业能够接收的计算能力大小。 选择“保存”。
 
-5. **启动**流式处理作业，以演示其他缩放操作。 Azure 流分析可在更多的计算资源之间分配工作，并可以使用 PARTITION BY 子句中指定的列将不同资源中的工作分区，从而提高吞吐量。 
+5. **启动**流式处理作业，以演示其他缩放操作。 Azure 流分析可在更多的计算资源之间分配工作，并可以使用 PARTITION BY 子句中指定的列将不同资源中的工作分区，从而提高吞吐量。
 
 ## <a name="monitor-the-job"></a>监视作业
-“监视器”区域包含正在运行的作业的相关统计信息。 需要完成首次配置，才能使用同一区域中的存储帐户（按本文档其余部分命名收费站）。   
+“监视器”区域包含正在运行的作业的相关统计信息。 需要完成首次配置，才能使用同一区域中的存储帐户（按本文档其余部分命名收费站）。
 
-![监视器屏幕截图](media/stream-analytics-build-an-iot-solution-using-stream-analytics/monitoring.png)
+![Azure 流分析作业监视](media/stream-analytics-build-an-iot-solution-using-stream-analytics/stream-analytics-job-monitoring.png)
 
 还可通过作业仪表板的“设置”区域访问“活动日志”。
 

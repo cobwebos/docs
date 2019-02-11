@@ -1,25 +1,26 @@
 ---
-title: 使用 1000 个示例话语进行批处理测试
-titleSuffix: Azure Cognitive Services
+title: 批处理测试
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 使用语言理解 (LUIS) 批处理测试集来查找意向和实体不正确的话语。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 1560b8e574b0932e258353648c73f030ef19d314
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: dcc5e463eab6c5de612df45963f160156315a34a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333490"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213219"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>使用一组示例话语进行批处理测试
 
- 批处理测试是对当前已训练的模型进行的全面测试，以衡量其 LUIS 性能。 
+ 批处理测试是对当前已训练的模型进行的全面测试，以衡量其 LUIS 性能。 用于批处理测试的数据集不应包括意向中的示例话语或从预测运行时终结点接收的话语。 
 
 <a name="batch-testing"></a>
 
@@ -64,9 +65,6 @@ ms.locfileid: "52333490"
 若要查看批处理测试结果，请选择“查看结果”。
 
 ![批处理测试结果](./media/luis-how-to-batch-test/run-test-results.png)
-
-<!-- Select the **See results** link that appears after you run the test. A scatter graph known as an error matrix displays. The data points represent the utterances in the dataset. Green points indicate correct prediction, and red ones indicate incorrect prediction. The filtering panel on the right side of the screen displays a list of all intents and entities in the app, with a green point for intents/entities that were predicted correctly in all dataset utterances, and a red point for those items with errors. Also, for each intent/entity, you can see the number of correct predictions out of the total utterances.-->
-
 
 <a name="filter-chart-results-by-intent-or-entity"></a>  
 

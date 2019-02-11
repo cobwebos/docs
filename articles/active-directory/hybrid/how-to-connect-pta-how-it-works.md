@@ -1,28 +1,28 @@
 ---
-title: Azure AD Connect：直通身份验证 - 工作原理 | Microsoft 文档
+title: Azure AD Connect：直通身份验证 - 工作原理 | Microsoft Docs
 description: 本文介绍了 Azure Active Directory 直通身份验证的工作原理
 services: active-directory
 keywords: Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/19/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 437800483004cdbff89814579137f4057133d0fb
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 517288f257dcd4e397db5cc432d0168b136fe265
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913780"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488642"
 ---
-# <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory 直通身份验证：技术深入研究
+# <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory 传递身份验证：技术深入了解
 本文简要介绍了 Azure Active Directory (Azure AD) 直通身份验证的工作原理。 有关深入的技术和安全信息，请参阅[深入了解安全性](how-to-connect-pta-security-deep-dive.md)一文。
 
 ## <a name="how-does-azure-active-directory-pass-through-authentication-work"></a>Azure Active Directory 直通身份验证的工作原理是什么？
@@ -51,12 +51,12 @@ ms.locfileid: "50913780"
 
 ## <a name="next-steps"></a>后续步骤
 - [当前限制](how-to-connect-pta-current-limitations.md)：了解支持和不支持的方案。
-- [快速入门](how-to-connect-pta-quick-start.md)：快速了解 Azure AD 直通身份验证。
+- [快速入门](how-to-connect-pta-quick-start.md)：快速启动并运行 Azure AD 传递身份验证。
 - [从 AD FS 迁移到传递身份验证](https://aka.ms/adfstoPTADP) - 从 AD FS（或其他联合技术）迁移到传递身份验证的详细指南。
 - [智能锁定](../authentication/howto-password-smart-lockout.md)：在租户中配置智能锁定功能以保护用户帐户。
-- [常见问题](how-to-connect-pta-faq.md)：查找常见问题的解答。
-- [故障诊断](tshoot-connect-pass-through-authentication.md)：了解如何解决直通身份验证功能的常见问题。
+- [常见问题解答](how-to-connect-pta-faq.md)：查看有关常见问题的解答。
+- [故障排除](tshoot-connect-pass-through-authentication.md)：了解如何解决传递身份验证功能的常见问题。
 - [深入了解安全性](how-to-connect-pta-security-deep-dive.md)：深入了解有关直通身份验证功能的技术信息。
-- [Azure AD 无缝 SSO](how-to-connect-sso.md)：深入了解此补充功能。
+- [Azure AD 无缝 SSO](how-to-connect-sso.md)：详细了解此补充功能。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect)：使用 Azure Active Directory 论坛来提交新的功能请求。
 

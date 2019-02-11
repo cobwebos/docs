@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 6d701878886cb1d5cc20a57614a474537f06a728
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/18/2018
+ms.openlocfilehash: 24375ca3fec50c1a9e194918ac4f824ab6fa81be
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242902"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568254"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>具有弹性数据库工具和行级安全性的多租户应用程序
 
@@ -41,7 +41,7 @@ ms.locfileid: "51242902"
 
 - 使用 Visual Studio（2012 或更高版本）
 - 创建三个 Azure SQL 数据库
-- 下载示例项目：[Azure SQL 的弹性数据库工具 - 多租户分片](https://go.microsoft.com/?linkid=9888163)
+- 下载示例项目：[适用于 Azure SQL 的弹性数据库工具 - 多租户分片](https://go.microsoft.com/?linkid=9888163)
   - 在 **Program.cs** 的开头填入数据库的信息 
 
 此项目通过添加对多租户分片数据库的支持，扩展了 [Azure SQL 的弹性数据库工具 - 实体框架集成](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md)中所述的项目。 此项目生成一个简单的控制台应用程序，用于创建博客和文章。 此项目包括四个租户，以及两个多租户分片数据库。 上图说明了此配置。 
@@ -54,10 +54,10 @@ ms.locfileid: "51242902"
 
 请注意，由于 RLS 尚未在分片数据库中启用，其中的每个测试都会揭露一个问题：租户能够看到不属于他们的博客，并且系统不会阻止应用程序插入错误租户的博客。 本文的余下部分介绍如何通过使用 RLS 强制隔离租户来解决这些问题。 执行以下两个步骤： 
 
-1. **应用程序层**：打开连接后，将应用程序代码修改为始终设置 SESSION\_CONTEXT 中的当前 TenantId。 示例项目已通过这种方式设置 TenantId。 
+1. **应用层**：将应用程序代码修改为打开连接后始终在 SESSION\_CONTEXT 中设置当前 TenantId。 示例项目已通过这种方式设置 TenantId。 
 2. **数据层**：在每个分片数据库中创建一个 RLS 安全策略，以根据 SESSION\_CONTEXT 中存储的 TenantId 筛选行。 针对每个分片数据库创建一个 策略，否则不会筛选多租户分片中的行。 
 
-## <a name="1-application-tier-set-tenantid-in-the-sessioncontext"></a>1.应用程序层：在 SESSION\_CONTEXT 中设置 TenantId
+## <a name="1-application-tier-set-tenantid-in-the-sessioncontext"></a>1.应用层：在 SESSION\_CONTEXT 中设置 TenantId
 
 首先，使用弹性数据库客户端库的数据依赖路由 API 连接到分片数据库。 应用程序仍需告知数据库，哪个 TenantId 在使用连接。 TenantId 告知 RLS 安全策略，必须筛选掉哪些属于其他租户的行。 将当前 TenantId 存储在连接的 [SESSION\_CONTEXT](https://docs.microsoft.com/sql/t-sql/functions/session-context-transact-sql) 中。
 
@@ -341,8 +341,8 @@ GO
 
 ### <a name="maintenance"></a>维护
 
-- **添加新分片**：对所有新分片执行 T-SQL 脚本以启用 RLS，否则，不会筛选针对这些分片的查询。
-- **添加新表**：每当创建新表时，将 FILTER 和 BLOCK 谓词添加到所有分片上的安全策略， 否则不会筛选对新表的查询。 根据 [Apply Row-Level Security automatically to newly created tables](https://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx)（自动向新建的表应用行级安全性）（博客）中所述，此添加操作可以使用 DDL 触发器来自动完成。
+- **添加新分片**：对所有新分片执行 T-SQL 脚本以启用 RLS，否则不会筛选针对这些分片的查询。
+- **添加新表**：每次创建新表时，将 FILTER 和 BLOCK 谓词添加到所有分片上的安全策略。 否则不会筛选对新表的查询。 根据 [Apply Row-Level Security automatically to newly created tables](https://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx)（自动向新建的表应用行级安全性）（博客）中所述，此添加操作可以使用 DDL 触发器来自动完成。
 
 ## <a name="summary"></a>摘要
 

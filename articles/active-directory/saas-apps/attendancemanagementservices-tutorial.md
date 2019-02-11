@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 1f56e612-728b-4203-a545-a81dc5efda00
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: jeedes
-ms.openlocfilehash: c5422c9894c66348d571b757e50073d2a5501c7b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 331a8d07004a8915d27b28ca0fba940b1aa3ab72
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440092"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164803"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>教程：Azure Active Directory 与 Attendance Management Services 的集成
 
@@ -113,7 +113,7 @@ ms.locfileid: "39440092"
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://id.obc.jp/<tenant information >/`
 
     > [!NOTE]
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Attendance Management Services 客户支持团队](http://www.obcnet.jp/)来获取这些值。
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Attendance Management Services 客户支持团队](https://www.obcnet.jp/)来获取这些值。
 
 1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -150,7 +150,7 @@ ms.locfileid: "39440092"
     f. 单击“注册”
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！ 从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！ 从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -247,12 +247,12 @@ ms.locfileid: "39440092"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Attendance Management Services 磁贴时，应该会自动登录 Attendance Management Services 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

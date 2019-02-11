@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: a36ad31531e41782f5be457450737a74f476c543
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 478b1352d0bf2eec9af62e519b50e61dea6cc8fc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584870"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158425"
 ---
 # <a name="api-management-advanced-policies"></a>API 管理高级策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -103,7 +103,7 @@ ms.locfileid: "52584870"
 ```
 
 #### <a name="example"></a>示例
- 以下示例演示了如何进行内容筛选，方法是：在使用 `Starter` 产品时删除从后端服务接收的响应中的数据元素。 有关配置和使用此策略的演示，请观看 [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)（Cloud Cover 第 177 集：Vlad Vinogradsky 讲述更多 API 管理功能），快进到 34:30。 若要大致了解用于此演示的 [Dark Sky Forecast API](https://developer.forecast.io/)，请从 31:50 开始观看。
+ 以下示例演示了如何进行内容筛选，方法是：在使用 `Starter` 产品时删除从后端服务接收的响应中的数据元素。 有关配置和使用此策略的演示，请参阅 [Cloud Cover 第 177 集：更多的 API 管理功能与 VLAD Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) 并快进到 34:30。 若要大致了解用于此演示的 [Dark Sky Forecast API](https://developer.forecast.io/)，请从 31:50 开始观看。
 
 ```xml
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->
@@ -449,7 +449,7 @@ status code and media type. If no example or schema found, the content is empty.
 > [!NOTE]
 >  仅指定 `interval` 时，则会执行**固定**时间间隔的重试。
 > 仅指定 `interval` 和 `delta` 时，将使用**线性**时间间隔重试算法，其中，两次重试之间的等待时间按以下公式计算：`interval + (count - 1)*delta`。
-> 指定 `interval`、`max-interval`、`delta` 时，将应用**指数**时间间隔重试算法，其中，两次重试之间的等待时间的值按以下公式以指数方式从 `interval` 增长到 `max-interval`：`min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`。
+> 指定 `interval`、`max-interval`、`delta` 时，将应用指数时间间隔重试算法，其中，两次重试之间的等待时间根据以下公式从 `interval` 值呈指数增长到 `max-interval` 值：`min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`。
 
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。 请注意，此策略会继承子策略使用限制。

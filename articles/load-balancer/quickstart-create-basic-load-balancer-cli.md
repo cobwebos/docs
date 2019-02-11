@@ -1,40 +1,39 @@
 ---
-title: 快速入门：创建公共负载均衡器 - Azure CLI | Microsoft Docs
+title: 快速入门：创建基本负载均衡器 - Azure CLI
+titlesuffix: Azure Load Balancer
 description: 本快速入门介绍如何使用 Azure CLI 创建公共负载均衡器
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
+manager: twooley
 tags: azure-resource-manager
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
-ms.assetid: ''
+ms.custom: mvc
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/19/2018
+ms.date: 01/25/2019
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 3eb7ae721b0c275ffa39e04904e19c067b949214
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a947b5983f4a7d58878fc15785cfbcbcbba7f226
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965478"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733835"
 ---
-# <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>快速入门：使用 Azure CLI 创建公共负载均衡器以对 VM 进行负载均衡
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>快速入门：使用 Azure CLI 创建负载均衡器以对 VM 进行负载均衡
 
-本快速入门演示如何创建 Azure 负载均衡器。 为了测试负载均衡器，需要部署两个运行 Ubuntu 服务器的虚拟机 (VM)，并在二者之间对一个 Web 应用进行负载均衡。
+本快速入门介绍如何创建 Azure 负载均衡器，以在 Azure 中的虚拟机之间对 Internet 流量进行负载均衡。 为了测试负载均衡器，需要部署两个运行 Ubuntu 服务器的虚拟机 (VM)，并在二者之间对一个 Web 应用进行负载均衡。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.28 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.28 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](https://docs.microsoft.com/cli/azure/group#create) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+使用 [az group create](https://docs.microsoft.com/cli/azure/group) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 以下示例在 eastus 位置创建名为 myResourceGroupLB 的资源组：
 
@@ -46,7 +45,7 @@ ms.locfileid: "46965478"
 
 ## <a name="create-a-public-ip-address"></a>创建公共 IP 地址
 
-若要通过 Internet 访问 Web 应用，需要负载均衡器有一个公共 IP 地址。 使用 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) 在 *myResourceGroupLB* 中创建名为 *myPublicIP* 的公共 IP 地址。
+若要通过 Internet 访问 Web 应用，需要负载均衡器有一个公共 IP 地址。 使用 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) 在 *myResourceGroupLB* 中创建名为 *myPublicIP* 的公共 IP 地址。
 
 ```azurecli-interactive
   az network public-ip create --resource-group myResourceGroupLB --name myPublicIP
@@ -62,7 +61,7 @@ ms.locfileid: "46965478"
 
 ### <a name="create-the-load-balancer"></a>创建负载均衡器
 
-使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) 创建名为 **myLoadBalancer** 的公共 Azure 负载均衡器，该负载均衡器包括名为 **myFrontEndPool** 的前端池、名为 **myBackEndPool** 的后端池（与在前一步中创建的公共 IP 地址 **myPublicIP** 相关联）。
+使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) 创建名为 **myLoadBalancer** 的公共 Azure 负载均衡器，该负载均衡器包括名为 **myFrontEndPool** 的前端池、名为 **myBackEndPool** 的后端池（与在前一步中创建的公共 IP 地址 **myPublicIP** 相关联）。
 
 ```azurecli-interactive
   az network lb create \
@@ -75,7 +74,7 @@ ms.locfileid: "46965478"
 
 ### <a name="create-the-health-probe"></a>创建运行状况探测
 
-运行状况探测器会检查所有虚拟机实例，以确保它们可以发送网络流量。 探测器检查失败的虚拟机实例将从负载均衡器中删除，直到它恢复联机状态并且探测器检查确定它运行正常。 使用 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#create) 创建运行状况探测，以监视虚拟机的运行状况。 
+运行状况探测器会检查所有虚拟机实例，以确保它们可以发送网络流量。 探测器检查失败的虚拟机实例将从负载均衡器中删除，直到它恢复联机状态并且探测器检查确定它运行正常。 使用 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) 创建运行状况探测，以监视虚拟机的运行状况。 
 
 ```azurecli-interactive
   az network lb probe create \
@@ -88,7 +87,7 @@ ms.locfileid: "46965478"
 
 ### <a name="create-the-load-balancer-rule"></a>创建负载均衡器规则
 
-负载均衡器规则定义传入流量的前端 IP 配置和后端 IP 池以接收流量，同时定义所需源和目标端口。 使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#create) 创建负载均衡器规则 *myLoadBalancerRuleWeb*，以便侦听前端池 *myFrontEndPool* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *myBackEndPool*。 
+负载均衡器规则定义传入流量的前端 IP 配置和后端 IP 池以接收流量，同时定义所需源和目标端口。 使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) 创建负载均衡器规则 *myLoadBalancerRuleWeb*，以便侦听前端池 *myFrontEndPool* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *myBackEndPool*。 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -109,7 +108,7 @@ ms.locfileid: "46965478"
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
-使用 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) 在 *myResourceGroup* 中创建名为 *myVnet* 的虚拟网络，该虚拟网络包含名为 *mySubnet* 的子网。
+使用 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) 在 *myResourceGroup* 中创建名为 *myVnet* 的虚拟网络，该虚拟网络包含名为 *mySubnet* 的子网。
 
 ```azurecli-interactive
   az network vnet create \
@@ -169,7 +168,7 @@ done
 
 ### <a name="create-an-availability-set"></a>创建可用性集
 
-使用 [az vm availabilityset create](/cli/azure/network/nic#az-network-availabilityset-create) 创建可用性集
+使用 [az vm availabilityset create](/cli/azure/network/nic) 创建可用性集
 
  ```azurecli-interactive
   az vm availability-set create \

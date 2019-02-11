@@ -1,5 +1,5 @@
 ---
-title: 在 Visual Studio 中管理 Azure Servic Fabric 应用程序 | Microsoft Docs
+title: 在 Visual Studio 中管理 Azure Service Fabric 应用程序 | Microsoft Docs
 description: 使用 Visual Studio 来创建、开发、打包、部署和调试 Azure Service Fabric 应用程序和服务。
 services: service-fabric
 documentationcenter: .net
@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
-ms.openlocfilehash: 2e7b7d9b0a194b13de9bdf759f4f3be645ed7c2e
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: b90c39416a522b42932dd82214316e586ba4293a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442163"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192547"
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>使用 Visual Studio 简化 Service Fabric 应用程序的编写和管理
 可以通过 Visual Studio 管理 Azure Service Fabric 应用程序和服务。 [设置开发环境](service-fabric-get-started.md)之后，可以使用 Visual Studio 创建 Service Fabric 应用程序、添加服务，或在本地开发群集中打包、注册和部署应用程序。
@@ -47,7 +47,7 @@ Visual Studio 提供一个名为“应用程序调试模式”的属性，它控
 
 #### <a name="application-debug-modes"></a>应用程序调试模式
 
-1. 刷新应用程序此模式能快速更改和调试代码并支持调试时编辑静态 Web 文件。 此模式只能在本地开发群集处于 [1 节点模式] 下时有效。 这是默认的应用程序调试模式。(/service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode)。
+1. 刷新应用程序此模式能快速更改和调试代码并支持调试时编辑静态 Web 文件。 此模式只有在本地开发群集处于 1 节点模式下时有效。 这是默认的应用程序调试模式。
 2. **删除应用程序**：在调试会话结束后，删除应用程序。
 3. 自动升级调试会话结束时，应用程序继续运行。 下一个调试会话将部署视为升级。 此升级过程会暂留用户在上一个调试会话中输入的所有数据。
 4. 保留应用程序调试会话结束时，应用程序在群集中继续运行。 在下一个调试会话开始时将删除应用程序。

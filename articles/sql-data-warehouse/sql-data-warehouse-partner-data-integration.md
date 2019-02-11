@@ -6,22 +6,22 @@ author: jrowlandjones
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
+ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: f3e45d62f5117ade9109733d3cc5aba629bf9c7d
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: c45c40f6244f76f15e98369b89d4c9a5b9e537aa
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389728"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473737"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>SQL 数据仓库数据集成合作伙伴
 要创建数据仓库解决方案，请从行业领先的各种工具中进行选择。 本文重点介绍其数据集成解决方案支持 Azure SQL 数据仓库的 Microsoft 合作伙伴公司。
 
 ## <a name="data-integration-partners"></a>数据集成合作伙伴
-| 合作伙伴 | Description | 链接 | 视频 |
+| 合作伙伴 | 说明 | 链接 | 视频 |
 | --- | --- | --- | --- |
 | ![Alteryx][1] |**Alteryx**<br> Alteryx Designer 通过可重复的工作流进行自助性数据分析，在数小时内即可获得深入的见解，这与传统方法动辄需数周的时间形成鲜明的对比！ Alteryx Designer 使用同一种直观的用户界面将数据准备、数据混合和分析组合在一起，有助于数据分析师进行预测、统计和空间分析。 |[市场][alteryx_marketplace]<br>[网站][alteryx_designer_website]<br>[白皮书][alteryx_whitepaper]<br>[数据表][alteryx_designer_datasheet]<br>[Twitter][alteryx_designer_twitter]<br>[YouTube][alteryx_designer_youtube] |[![Alteryx 视频](./media/sql-data-warehouse-partner-data-integration/alteryx_designer_video.jpg)](https://www.youtube.com/watch?v=CdqSDPyNDKc) |
 | ![Attunity][2] |**Attunity**<br>Attunity CloudBeam 提供自动化且经过优化的解决方案，用于将数据加载到 SQL 数据仓库。 该解决方案采用“单击即加载”设计，可以简化并加速批量加载，并支持从许多异构数据库（包括 SQL Server、Oracle、DB2、Sybase 和 mySQL）进行递增复制。 |[市场][attunity_marketplace]<br>[快速入门][attunity_quickstart]<br>[网站][attunity_cloudbeam_website]<br>[数据表][attunity_cloudbeam_datasheet]<br>[Twitter][attunity_cloudbeam_twitter]<br>[YouTube][attunity_cloudbeam_youtube] |[![Attunity 视频](./media/sql-data-warehouse-partner-data-integration/attunity_video.jpg)](https://www.youtube.com/watch?v=w14zuSjMlok) |
@@ -70,7 +70,7 @@ ms.locfileid: "49389728"
 <!--Website Links -->
 [alteryx_designer_website]:http://www.alteryx.com/partners/microsoft/
 [attunity_cloudbeam_website]:http://www.attunity.com/attunity-cloudbeam-for-azure/
-[bryte_systems_azure_website]:http://www.bryte.com.au/azure-integration/
+[bryte_systems_azure_website]:http://www.bryteflow.com/
 [informatica_Cloud_Services_website]:https://www.informatica.com/products/cloud-integration.html
 [informatica_PowerCenter_website]:https://www.informatica.com/products/data-integration/powercenter.html
 [redgate_website]:http://dataplatformstudio.com/
@@ -82,7 +82,7 @@ ms.locfileid: "49389728"
 
 <!--[bryte_systems_marketplace]:https://azure.microsoft.com/marketplace/partners/bryte/bryteflow-cdc-free-trial/--> 
 
-[informatica_Cloud_Services_marketplace]:https://azuremarketplace.microsoft.com/marketplace/partners/informatica/informatica-cloud-services/
+[informatica_Cloud_Services_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/informatica.ics-byol
 
 <!--[informatica_PowerCenter_std_marketplace]:https://azure.microsoft.com/marketplace/partners/informatica/informatica-powercenter-standard-10-0pc-std-10-0-windows/
 [informatica_PowerCenter_adv_marketplace]:https://azure.microsoft.com/marketplace/partners/informatica/informatica-powercenter-advanced-10-0pc-adv-10-0-ubuntu/-->

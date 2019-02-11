@@ -9,20 +9,19 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 52bbf93d73af281f3959e056a4d5b959e7286cb5
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 9a0abcd70b4aeb2369604bafa924136122206e0a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590324"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022273"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](v1/data-factory-sap-business-warehouse-connector.md)
+> * [版本 1](v1/data-factory-sap-business-warehouse-connector.md)
 > * [当前版本](connector-sap-business-warehouse.md)
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 SAP Business Warehouse (BW) 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
@@ -61,7 +60,7 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：SapBw | 是 |
+| type | type 属性必须设置为：**SapBw** | 是 |
 | server | SAP BW 实例所驻留的服务器的名称。 | 是 |
 | systemNumber | SAP BW 系统的系统编号。<br/>允许值：用字符串表示的两位十进制数。 | 是 |
 | clientId | SAP W 系统中的客户端的客户端 ID。<br/>允许值：用字符串表示的三位十进制数。 | 是 |
@@ -96,7 +95,7 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各个部分和属性的完整列表，请参阅数据集一文。 本部分提供 SAP BW 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 SAP BW 数据集支持的属性列表。
 
 要从 SAP BW 复制数据，请将数据集的 type 属性设置为“RelationalTable”。 RelationalTable 类型的 SAP BW 数据集不支持任何类型特定的属性。
 
@@ -122,11 +121,11 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 
 ### <a name="sap-bw-as-source"></a>SAP BW 作为源
 
-要从 SAP BW 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动**源**部分支持以下属性：
+要从 SAP BW 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：RelationalSource | 是 |
+| type | 复制活动源的 type 属性必须设置为：**RelationalSource** | 是 |
 | query | 指定要从 SAP BW 实例读取数据的 MDX 查询。 | 是 |
 
 **示例：**
@@ -167,25 +166,25 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 
 | SAP BW 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
-| ACCP | int |
+| ACCP | Int |
 | CHAR | String |
 | CLNT | String |
-| CURR | 小数 |
+| CURR | Decimal |
 | CUKY | String |
-| DEC | 小数 |
+| DEC | Decimal |
 | FLTP | Double |
 | INT1 | Byte |
 | INT2 | Int16 |
-| INT4 | int |
+| INT4 | Int |
 | LANG | String |
 | LCHR | String |
 | LRAW | Byte[] |
 | PREC | Int16 |
-| QUAN | 小数 |
+| QUAN | Decimal |
 | RAW | Byte[] |
 | RAWSTRING | Byte[] |
 | STRING | String |
-| 单位 | String |
+| UNIT | String |
 | DATS | String |
 | NUMC | String |
 | TIMS | String |

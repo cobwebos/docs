@@ -1,22 +1,22 @@
 ---
 title: 在 Azure IoT Central 中定义新设备类型 | Microsoft Docs
 description: 本教程向构建人员介绍如何在 Azure IoT Central 应用程序中定义新设备类型。 其中介绍了如何为类型定义遥测、状态、属性和设置。
-author: tbhagwat3
-ms.author: tanmayb
+author: dominicbetts
+ms.author: dobett
 ms.date: 10/30/2018
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: peterpr
-ms.openlocfilehash: dd81c10bcda6665de7ffabe94a4c1be991687797
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+manager: philmea
+ms.openlocfilehash: 1ed1790d9fe1cdaa8d00b45e0684531984906c7f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963579"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661813"
 ---
-# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>教程：在 Azure IoT Central 应用程序中定义新设备类型
+# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>教程：在 Azure IoT Central 应用程序中定义新的设备类型
 
 本教程向构建人员介绍如何使用设备模板在 Microsoft Azure IoT Central 应用程序中定义新的设备类型。 设备模板定义设备类型的遥测、状态、属性和设置。
 
@@ -42,6 +42,8 @@ ms.locfileid: "50963579"
 > * 使用设置和属性
 > * 使用命令
 > * 在仪表板中查看模拟设备
+
+[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -75,7 +77,7 @@ ms.locfileid: "50963579"
 
 ## <a name="create-a-new-custom-device-template"></a>创建新的自定义设备模板
 
-构建人员可在应用程序中创建和编辑设备模板。 创建设备模板时，Azure IoT Central 将会基于该模板生成模拟设备。 模拟设备生成遥测数据，使你能够在连接物理设备之前测试应用程序的行为。
+构建人员可在应用程序中创建和编辑设备模板。 创建设备模板时，Azure IoT Central 将会基于该模板生成模拟设备。 模拟设备生成遥测数据，使你能够在连接实际设备之前测试应用程序的行为。
 
 若要将新设备模板添加到应用程序，需要转到“应用程序生成器”页。 为此，请在左侧导航菜单中选择“应用程序生成器”。
 
@@ -155,7 +157,7 @@ ms.locfileid: "50963579"
 
 ## <a name="define-event-measurement"></a>定义事件度量
 
-可以使用“事件”来定义设备发送的时间点数据，以指明某个重要的事件，例如，发生错误或组件故障。 与处理遥测度量一样，Azure IoT Central 可以模拟设备事件，使你能够在连接物理设备之前测试应用程序的行为。 在“度量”视图中为设备类型定义事件度量。
+可以使用“事件”来定义设备发送的时间点数据，以指明某个重要的事件，例如，发生错误或组件故障。 与处理遥测度量一样，Azure IoT Central 可以模拟设备事件，使你能够在连接实际设备之前测试应用程序的行为。 在“度量”视图中为设备类型定义事件度量。
 
 1. 若要添加“风扇电机错误”事件度量，请选择“新建度量”。 然后选择“事件”作为度量类型：
 
@@ -191,7 +193,7 @@ ms.locfileid: "50963579"
 
 ## <a name="define-state-measurement"></a>定义状态度量
 
-可以使用“状态”来定义和可视化设备或其组件在一段时间内的状态。 与处理遥测度量一样，Azure IoT Central 可以模拟设备状态，使你能够在连接物理设备之前测试应用程序的行为。 在“度量”视图中为设备类型定义状态度量。
+可以使用“状态”来定义和可视化设备或其组件在一段时间内的状态。 与处理遥测度量一样，Azure IoT Central 可以模拟设备状态，使你能够在连接实际设备之前测试应用程序的行为。 在“度量”视图中为设备类型定义状态度量。
 
 1. 若要添加“风扇模式”度量，请选择“新建度量”。 然后选择“状态”作为度量类型：
 
@@ -269,7 +271,7 @@ ms.locfileid: "50963579"
     | 最小值        | 20              |
     | 最大值        | 200             |
     | 初始值        | 80              |
-    | Description          | 设置空调的目标温度 |
+    | 说明          | 设置空调的目标温度 |
 
     然后选择“保存”：
 
@@ -299,7 +301,7 @@ ms.locfileid: "50963579"
     | 显示名称         | 位置             |
     | 字段名称           | 位置             |
     | 初始值        | 华盛顿州西雅图          |
-    | Description          | 设备位置      |
+    | 说明          | 设备位置      |
 
     在其他字段中保留默认值。
 
@@ -316,7 +318,7 @@ ms.locfileid: "50963579"
     | 显示名称         | 最后维修日期       |
     | 字段名称           | serviceDate             |
     | 初始值        | 2018/1/1                |
-    | Description          | 最后维修日期           |
+    | 说明          | 最后维修日期           |
 
     ![配置设备属性](./media/tutorial-define-device-type/configureproperties2.png)
 
@@ -335,7 +337,7 @@ ms.locfileid: "50963579"
     | 显示名称         | 固件版本        |
     | 字段名称           | firmwareVersion         |
     | 数据类型            | text                    |
-    | Description          | 空调的固件版本 |
+    | 说明          | 空调的固件版本 |
 
     ![配置固件版本](./media/tutorial-define-device-type/configureproperties3.png)
     
@@ -350,7 +352,7 @@ ms.locfileid: "50963579"
     | 显示名称         | 序列号           |
     | 字段名称           | serialNumber            |
     | 数据类型            | text                    |
-    | Description          | 空调的序列号  |
+    | 说明          | 空调的序列号  |
 
     ![配置序列号](./media/tutorial-define-device-type/configureproperties4.png)
     
@@ -377,7 +379,7 @@ ms.locfileid: "50963579"
     | 字段名称           | echo            |
     | 默认超时      | 30              |
     | 显示类型         | text            |
-    | Description          | 设备命令  |  
+    | 说明          | 设备命令  |  
 
     可以向命令添加其他输入，方法是针对“输入字段”单击“+”。
 

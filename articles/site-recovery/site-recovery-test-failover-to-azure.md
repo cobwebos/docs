@@ -3,16 +3,17 @@ title: 使用 Azure Site Recovery 运行到 Azure 的灾难恢复演练 | Micros
 description: 了解如何使用 Azure Site Recovery 服务运行从本地到 Azure 的灾难恢复演练。
 author: rayne-wiselman
 manager: carmonm
+services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 173a64181c1e8c051c6856fa8353f484540917e7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 19f41256866b42962be36bbb97f5f6d3c06d7fed
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249704"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976541"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>运行 Azure 灾难恢复演练 
 
@@ -32,9 +33,9 @@ ms.locfileid: "51249704"
 2. 选择要故障转移到的“恢复点”。 可以使用以下选项之一：
     - **最新处理**：此选项将计划中的所有 VM 故障转移到由 Site Recovery 处理的最新恢复点。 若要查看特定 VM 的最新恢复点，请检查 VM 设置中的“最新恢复点”。 此选项提供低 RTO（恢复时间目标），因为无需费时处理未经处理的数据。
     - **最新的应用一致**：此选项将计划中的所有 VM 故障转移到由 Site Recovery 处理的最新应用程序一致恢复点。 若要查看特定 VM 的最新恢复点，请检查 VM 设置中的“最新恢复点”。
-    - **最新**：此选项首先处理已发送到 Site Recovery 服务的所有数据，为每个 VM 创建恢复点，然后将其故障转移到该恢复点。 此选项提供最低的 RPO（恢复点目标），因为故障转移后创建的 VM 具有触发故障转移时复制到 Site Recovery 的所有数据。
-    - **最新多 VM 已处理**：此选项适用于包含一个或多个已启用多 VM 一致性的 VM 的恢复计划。 已启用该设置的 VM 会故障转移到最新的常用多 VM 一致恢复点。 其他 VM 故障转移到最新的已处理恢复点。  
-    - **最新多 VM 应用一致性**：此选项适用于包含一个或多个已启用多 VM 一致性的 VM 的恢复计划。 属于复制组的 VM 会故障转移到最新的常用多 VM 应用程序一致恢复点。 其他 VM 故障转移到其最新的应用程序一致恢复点。
+    - **最新**：此选项首先处理已发送到 Site Recovery 服务的所有数据，为每台 VM 创建恢复点，然后将 VM 故障转移到该恢复点。 此选项提供最低的 RPO（恢复点目标），因为故障转移后创建的 VM 具有触发故障转移时复制到 Site Recovery 的所有数据。
+    - **最新处理的多 VM**：此选项适用于包含一台或多台已启用多 VM 一致性的 VM 的恢复计划。 已启用该设置的 VM 会故障转移到最新的常用多 VM 一致恢复点。 其他 VM 故障转移到最新的已处理恢复点。  
+    - **最新的多 VM 应用一致**：此选项适用于包含一台或多台已启用多 VM 一致性的 VM 的恢复计划。 属于复制组的 VM 会故障转移到最新的常用多 VM 应用程序一致恢复点。 其他 VM 故障转移到其最新的应用程序一致恢复点。
     - **自定义**：使用此选项可将特定的 VM 故障转移到特定的恢复点。
 3. 选择要在其中创建测试 VM 的 Azure 虚拟网络。
 
@@ -55,7 +56,7 @@ ms.locfileid: "51249704"
 1. **先决条件**：运行先决条件检查，确保符合故障转移所需的所有条件。
 2. **故障转移**：故障转移会处理并准备好数据，以便能够基于这些数据创建 Azure VM。
 3. **最新**：如果选择了最新的恢复点，则会基于发送到服务的数据创建恢复点。
-4. **开始**：此步骤使用上一步骤中处理的数据创建 Azure 虚拟机。
+4. **启动**：此步骤使用上一步骤中处理的数据创建 Azure 虚拟机。
 
 ### <a name="failover-timing"></a>故障转移时间
 

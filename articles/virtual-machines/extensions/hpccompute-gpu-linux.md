@@ -12,40 +12,38 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/20/2018
+ms.date: 01/09/2019
 ms.author: roiyz
-ms.openlocfilehash: 307bdb5fa7a5d14a77c71d0ea40634a55d8507b6
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 3e3d31f146fb49fdab8d955754572e4ea74dd3f6
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42141923"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198382"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>适用于 Linux 的 NVIDIA GPU 驱动程序扩展
 
 ## <a name="overview"></a>概述
 
-此扩展在 Linux N 系列 VM 上安装 NVIDIA GPU 驱动程序。 根据 VM 系列，此扩展安装 CUDA 或 GRID 驱动程序。 使用此扩展安装 NVIDIA 驱动程序时，即表示你接受并同意 NVIDIA 最终用户许可协议的条款。 在安装过程中，虚拟机可能会重新启动以完成驱动程序安装。
+此扩展在 Linux N 系列 VM 上安装 NVIDIA GPU 驱动程序。 根据 VM 系列，此扩展安装 CUDA 或 GRID 驱动程序。 使用此扩展安装 NVIDIA 驱动程序时，即表示你接受并同意 [NVIDIA 最终用户许可协议](https://go.microsoft.com/fwlink/?linkid=874330)的条款。 在安装过程中，VM 可能会重新启动以完成驱动程序安装。
 
 此扩展也可用于在 [Windows N 系列 VM](hpccompute-gpu-windows.md) 上安装 NVIDIA GPU 驱动程序。
-
-NVIDIA 最终用户许可协议条款位于此处 - https://go.microsoft.com/fwlink/?linkid=874330
 
 ## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 
-此扩展支持以下 OS：
+此扩展支持以下 OS 发行版，具体取决于特定 OS 版本对驱动程序的支持。
 
 | 分发 | 版本 |
 |---|---|
-| Linux：Ubuntu | 16.04 LTS |
-| Linux：Red Hat Enterprise Linux | 7.3, 7.4 |
-| Linux：CentOS | 7.3, 7.4 |
+| Linux：Ubuntu | 16.04 LTS、18.04 LTS |
+| Linux：Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |
+| Linux：CentOS | 7.3, 7.4, 7.5, 7.6 |
 
 ### <a name="internet-connectivity"></a>Internet 连接
 
-用于 NVIDIA GPU 驱动程序的 Microsoft Azure 扩展要求目标虚拟机连接到 Internet 并具有访问权限。
+用于 NVIDIA GPU 驱动程序的 Microsoft Azure 扩展要求目标 VM 连接到 Internet 并具有访问权限。
 
 ## <a name="extension-schema"></a>扩展架构
 
@@ -63,7 +61,7 @@ NVIDIA 最终用户许可协议条款位于此处 - https://go.microsoft.com/fwl
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.1",
+    "typeHandlerVersion": "1.2",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -71,14 +69,24 @@ NVIDIA 最终用户许可协议条款位于此处 - https://go.microsoft.com/fwl
 }
 ```
 
-### <a name="property-values"></a>属性值
+### <a name="properties"></a>属性
 
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | 日期 |
 | 发布者 | Microsoft.HpcCompute | 字符串 |
 | type | NvidiaGpuDriverLinux | 字符串 |
-| typeHandlerVersion | 1.1 | int |
+| typeHandlerVersion | 1.2 | int |
+
+### <a name="settings"></a>设置
+
+所有设置都是可选的。 默认行为是，如果安装驱动程序时不要求更新内核，则不进行更新，请安装最新的受支持驱动程序和 CUDA 工具包（根据情况）。
+
+| 名称 | Description | 默认值 | 有效值 | 数据类型 |
+| ---- | ---- | ---- | ---- | ---- |
+| updateOS | 更新内核，即使安装驱动程序时不需要更新 | false | true、false | 布尔值 |
+| driverVersion | NV：GRID 驱动程序版本<br> NC/ND：CUDA 工具包版本。 将自动安装所选 CUDA 的最新驱动程序。 | 最新 | GRID：“410.71”、“390.75”、“390.57”、“390.42”<br> CUDA：“10.0.130”、“9.2.88”、“9.1.85” | 字符串 |
+| installCUDA | 安装 CUDA 工具包。 仅适用于 NC/ND 系列 VM。 | true | true、false | 布尔值 |
 
 
 ## <a name="deployment"></a>部署
@@ -104,7 +112,7 @@ NVIDIA 最终用户许可协议条款位于此处 - https://go.microsoft.com/fwl
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.1",
+    "typeHandlerVersion": "1.2",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -122,12 +130,14 @@ Set-AzureRmVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "NvidiaGpuDriverLinux" `
     -ExtensionType "NvidiaGpuDriverLinux" `
-    -TypeHandlerVersion 1.1 `
+    -TypeHandlerVersion 1.2 `
     -SettingString '{ `
     }'
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
+
+以下示例镜像了上述 Azure 资源管理器和 PowerShell 示例，并添加了自定义设置作为非默认驱动程序安装的示例。 具体而言，它更新 OS 内核并安装特定的 CUDA 工具包版本驱动程序。
 
 ```azurecli
 az vm extension set `
@@ -135,8 +145,10 @@ az vm extension set `
   --vm-name myVM `
   --name NvidiaGpuDriverLinux `
   --publisher Microsoft.HpcCompute `
-  --version 1.1 `
+  --version 1.2 `
   --settings '{ `
+    "updateOS": true, `
+    "driverVersion": "9.1.85", `
   }'
 ```
 
@@ -165,13 +177,12 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 退出代码 | 含义 | 可能的操作 |
 | :---: | --- | --- |
 | 0 | 操作成功 |
-| 1 | 扩展的用法不正确。 | 请带着执行输出日志联系支持人员。 |
-| 10 | 用于 Hyper-V 和 Azure 的 Linux Integration Services 不可用或未安装。 | 请检查 lspci 输出。 |
-| 11 | 在此 VM 大小上找不到 NVIDIA GPU。 | 请使用[支持的 VM 大小和 OS](../linux/n-series-driver-setup.md)。 |
+| 1 | 扩展的用法不正确 | 检查执行输出日志 |
+| 10 | 用于 Hyper-V 和 Azure 的 Linux Integration Services 不可用或未安装 | 检查 lspci 的输出 |
+| 11 | 在此 VM 大小上找不到 NVIDIA GPU | 使用[受支持的 VM 大小和 OS](../linux/n-series-driver-setup.md) |
 | 12 | 不支持的映像产品/服务 |
 | 13 | 不支持的 VM 大小 | 请使用 N 系列 VM 部署 |
-| 14 | 操作失败 | |
-| 21 | 在 Ubuntu 上更新失败 | 请检查“sudo apt-get update”的输出 |
+| 14 | 操作失败 | 检查执行输出日志 |
 
 
 ### <a name="support"></a>支持

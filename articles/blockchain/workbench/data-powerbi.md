@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: b1020389ef28c18c03536d686cd47ef0c65b9204
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e50a82f0f141fec266a8348c0a1a8b5fbdb38b45
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240417"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329836"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>通过 Microsoft Power BI 使用 Azure Blockchain Workbench 数据
 
@@ -25,9 +25,9 @@ ms.locfileid: "48240417"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 下载 [PowerBI Desktop](https://aka.ms/pbidesktopstore)。
+* 下载 [Power BI Desktop](https://aka.ms/pbidesktopstore)。
 
-## <a name="connecting-powerbi-to-data-in-azure-blockchain-workbench"></a>将 PowerBI 连接到 Azure Blockchain Workbench 中的数据
+## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>将 Power BI 连接到 Azure Blockchain Workbench 中的数据
 
 1.  打开 Power BI Desktop。
 2.  选择“获取数据”。
@@ -49,7 +49,7 @@ ms.locfileid: "48240417"
 
     ![导航器](./media/data-powerbi/navigator.png)
 
-7.  选择要包括的视图。 对于演示用途，我们包括了 **vwContractAction**，该视图提供了已对某个合约执行的所有操作的详细信息。
+7.  选择要包括的视图。 为了演示，我们包括了 **vwContractAction**，该视图提供了已对某个合同执行的操作的相关详细信息。
 
     ![选择视图](./media/data-powerbi/select-views.png)
 

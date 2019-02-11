@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 3c7a1dd9ba688c5cc9776dbfba0841c9a06065dc
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6447061e79946abf8070daf29eeb57bad7b6fa55
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419684"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184961"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 Java 设备和服务 SDK 与组登记来创建和预配模拟的 X.509 设备
 
@@ -49,20 +49,20 @@ ms.locfileid: "50419684"
             - 选择刚刚创建的 **_RootCA.pem_** 文件。
             - 完成后，单击“保存”按钮。
 
-        ![添加证书](./media/tutorial-group-enrollments/add-certificate.png)
+           ![添加证书](./media/tutorial-group-enrollments/add-certificate.png)
 
         1. 选择新建的证书：
             - 单击“生成验证码”。 复制生成的代码。
             - 运行验证步骤。 输入验证码，或者在运行的 PowerShell 窗口中右键单击进行粘贴。  按 **Enter**。
             - 在 Azure 门户中选择新建的 **_verifyCert4.pem_** 文件。 单击“验证”。
 
-            ![验证证书](./media/tutorial-group-enrollments/validate-certificate.png)
+              ![验证证书](./media/tutorial-group-enrollments/validate-certificate.png)
 
     1. 最后，请运行创建设备证书并清理资源的步骤。
 
-    > [!NOTE]
-    > 创建设备证书时，请确保只在设备名称中使用小写字母数字和连字符。
-    >
+       > [!NOTE]
+       > 创建设备证书时，请确保只在设备名称中使用小写字母数字和连字符。
+       >
 
 
 ## <a name="create-a-device-enrollment-entry"></a>创建设备注册项

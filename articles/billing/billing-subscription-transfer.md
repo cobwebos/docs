@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: cwatson
+ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a841ae168119546e8be32ce6f614656f775709ee
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 153b75d4477d61637732e6c2da614113656c4ea4
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583306"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902527"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅所有权转让给其他帐户
 
@@ -31,9 +31,6 @@ ms.locfileid: "52583306"
 > [!IMPORTANT]
 > 
 > 如果将订阅转让给新的 Azure AD 租户，则[基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 中的所有角色分配都将从源租户中永久删除，不会迁移到目标租户。
-
-> [!div class="nextstepaction"]
-> [帮助改进 Azure 计费文档](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>转让 Azure 订阅的所有权
 
@@ -98,7 +95,7 @@ ms.locfileid: "52583306"
 | [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)                      | MS-AZR-0003P        |
 | [即用即付开发/测试](https://azure.microsoft.com/offers/ms-azr-0023p/)             | MS-AZR-0023P        |
 | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)           | MS-AZR-0063P        |
-| [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/) | MS-AZR-0064P        |
+| [Visual Studio Enterprise：BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/) | MS-AZR-0064P        |
 | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)         | MS-AZR-0059P        |
 | [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)    | MS-AZR-0060P        |
 
@@ -177,4 +174,4 @@ Azure 订阅在帐户管理员所属的目录中创建。 更改目录时，将�
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

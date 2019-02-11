@@ -1,21 +1,22 @@
 ---
 title: 在 Azure Database for MySQL 中创建和管理只读副本
 description: 本文介绍了如何使用 Azure CLI 在 Azure Database for MySQL 中设置和管理只读副本。
-services: mysql
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/07/2018
-ms.openlocfilehash: c1c550e6b99b9933b66c85e1de7e0a5cc2eb711d
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.date: 01/23/2019
+ms.openlocfilehash: 67cfa45d602b6bf9de27a0b559c58e28b79d1c84
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564837"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732815"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for MySQL 中创建和管理只读副本
+
+> [!IMPORTANT]
+> 只读副本功能目前以公共预览版提供。
 
 在本文中，你将了解如何使用 Azure CLI 在与 Azure Database for MySQL 服务中的主服务器相同的 Azure 区域内创建和管理只读副本。
 
@@ -36,10 +37,11 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 ```
 
 `az mysql server replica create` 命令需要以下参数：
+
 | 设置 | 示例值 | 说明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  要在其中创建副本服务器的资源组。  |
-| name | mydemoreplicaserver | 所创建的新副本服务器的名称。 |
+| 名称 | mydemoreplicaserver | 所创建的新副本服务器的名称。 |
 | source-server | mydemoserver | 要从中进行复制的现有主服务器的名称或 ID。 |
 
 > [!NOTE]
@@ -57,14 +59,15 @@ az mysql server replica stop --name mydemoreplicaserver --resource-group myresou
 ```
 
 `az mysql server replica stop` 命令需要以下参数：
+
 | 设置 | 示例值 | 说明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  副本服务器所在的资源组。  |
-| name | mydemoreplicaserver | 要停止在其上进行复制的副本服务器的名称。 |
+| 名称 | mydemoreplicaserver | 要停止在其上进行复制的副本服务器的名称。 |
 
 ## <a name="delete-a-replica-server"></a>删除副本服务器
 
-可以通过运行 **[az mysql server delete](/cli/azure/mysql/server#az_mysql_server_delete)** 命令删除只读副本服务器。
+可以通过运行 **[az mysql server delete](/cli/azure/mysql/server)** 命令删除只读副本服务器。
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoreplicaserver
@@ -75,7 +78,7 @@ az mysql server delete --resource-group myresourcegroup --name mydemoreplicaserv
 > [!IMPORTANT]
 > 删除主服务器会停止复制到所有副本服务器，并删除主服务器本身。 副本服务器成为现在支持读取和写入的独立服务器。
 
-若要删除主服务器，可以运行 **[az mysql server delete](/cli/azure/mysql/server#az_mysql_server_delete)** 命令。
+若要删除主服务器，可以运行 **[az mysql server delete](/cli/azure/mysql/server)** 命令。
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoserver
@@ -90,6 +93,7 @@ az mysql server replica list --server-name mydemoserver --resource-group myresou
 ```
 
 `az mysql server replica list` 命令需要以下参数：
+
 | 设置 | 示例值 | 说明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  要在其中创建副本服务器的资源组。  |

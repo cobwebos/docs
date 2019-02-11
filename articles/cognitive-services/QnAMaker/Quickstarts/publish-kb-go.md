@@ -1,21 +1,22 @@
 ---
-title: 快速入门：发布知识库 - REST、Go - QnA Maker
-titleSuffix: Azure Cognitive Services
-description: 此基于 REST 的快速入门将指导你完成发布知识库的过程，发布操作会将经过测试的知识库的最新版本推送至代表“已发布”知识库的专用 Azure 搜索索引。 还会创建一个终结点，可在应用程序或聊天机器人中调用此终结点。
+title: 发布知识库、REST 和 Go
+titleSuffix: QnA Maker - Azure Cognitive Services
+description: 此基于 Go REST 的快速入门将指导你完成发布知识库的过程，发布操作会将经过测试的知识库的最新版本推送至代表“已发布”知识库的专用 Azure 搜索索引。 还会创建一个终结点，可在应用程序或聊天机器人中调用此终结点。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: b10180ad89890c314aec7059347186fa66b354f6
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 3750615cc1010bfe67d1b93937a424009d973e70
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165075"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209208"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-go"></a>快速入门：在 QnA Maker 中通过 Go 发布知识库
 
@@ -33,10 +34,10 @@ ms.locfileid: "52165075"
 
     ![QnA Maker 知识库 ID](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-    如果还没有知识库，可以创建一个用于此快速入门的示例知识库：[创建新的知识库](create-new-kb-csharp.md)。
+    如果还没有知识库，可以创建一个用于本快速入门的示例知识库：[创建新的知识库](create-new-kb-csharp.md)。
 
 > [!NOTE] 
-> 完整的解决方案文件可从 [**Azure-Samples/cognitive-services-qnamaker-go** Github 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/tree/master/documentation-samples/quickstarts/publish-knowledge-base)获得。
+> 完整的解决方案文件可从 [Azure-Samples/cognitive-services-qnamaker-go GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/tree/master/documentation-samples/quickstarts/publish-knowledge-base)获得。
 
 ## <a name="create-a-go-file"></a>创建 Go 文件
 

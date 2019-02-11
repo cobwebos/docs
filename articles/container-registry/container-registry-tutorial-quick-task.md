@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Azure 容器注册表任务在云中生成容器映像
+title: 教程 - 在云中生成容器映像 - Azure 容器注册表任务
 description: 本教程介绍如何使用 Azure 容器注册表任务（ACR 任务）在 Azure 中生成 Docker 容器映像，然后将其部署到 Azure 容器实例。
 services: container-registry
 author: dlepow
@@ -7,15 +7,15 @@ ms.service: container-registry
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 7ac4fb62c6832920634de96c3e5befb15ce3b3a4
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 9d3b1c14ce872cd02fc8d4a8c2596d7d1e270895
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854722"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754367"
 ---
-# <a name="tutorial-build-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>教程：使用 Azure 容器注册表任务在云中生成容器映像
+# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>教程：使用 Azure 容器注册表任务在云中生成并部署容器映像
 
 **ACR 任务**是 Azure 容器注册表中的功能套件，用于在 Azure 中以简化、高效的方式生成 Docker 容器映像。 本文介绍如何使用 ACR 任务的快速任务功能。
 
@@ -201,12 +201,12 @@ az keyvault secret set \
   --value $(az ad sp create-for-rbac \
                 --name $ACR_NAME-pull \
                 --scopes $(az acr show --name $ACR_NAME --query id --output tsv) \
-                --role reader \
+                --role acrpull \
                 --query password \
                 --output tsv)
 ```
 
-上述命令中的 `--role` 参数配置具有“读取者”角色的服务主体，该服务主体对注册表拥有仅限提取的访问权限。 若要授予推送和提取访问权限，请将 `--role` 参数更改为 *contributor*。
+上述命令中的 `--role` 参数使用“acrpull”角色配置服务主体，该角色授予其对注册表的只拉取访问权限。 若要同时授予推送和拉取访问权限，请将 `--role` 参数更改为“acrpush”。
 
 接下来，将服务主体的 appId（传递给 Azure 容器注册表用于身份验证的“用户名”）存储在保管库中：
 

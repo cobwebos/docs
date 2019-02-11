@@ -1,24 +1,27 @@
 ---
-title: Azure 容器服务教程 - 部署应用程序
+title: （已弃用）Azure 容器服务教程 - 部署应用程序
 description: Azure 容器服务教程 - 部署应用程序
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: e7f9c0c3ad11cb6988f528503d614ab26dcc0968
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: dafbb8d1221d5e9c6194611ad338b3714a089cea
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41920022"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998778"
 ---
-# <a name="run-applications-in-kubernetes"></a>在 Kubernetes 中运行应用程序
+# <a name="deprecated-run-applications-in-kubernetes"></a>（已弃用）在 Kubernetes 中运行应用程序
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> 有关使用 Azure Kubernetes 服务的此教程的更新版本，请参阅[教程：在 Azure Kubernetes 服务 (AKS) 中运行应用程序](../../aks/tutorial-kubernetes-deploy-application.md)。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 在本教程中（第 4 部分，共 7 部分），示例应用程序会部署到 Kubernetes 群集中。 已完成的步骤包括：
 

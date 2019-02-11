@@ -6,18 +6,18 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 847794d46addc7f3cba09437c2d2c6e8a3a04e89
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 77edf892c3c2ca1434331fb5560f0db8ca16e306
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165410"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470869"
 ---
-# <a name="translator-text-api-30-translate"></a>文本翻译 API 3.0：翻译
+# <a name="translator-text-api-30-translate"></a>文本翻译 API 3.0：Translate
 
 翻译文本。
 
@@ -42,11 +42,11 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>from</td>
-    <td>可选参数。<br/>指定输入文本的语言。 可以使用 `translation` 范围来查找[支持的语言](.\v3-0-languages.md)，了解哪些语言可以翻译。 如果未指定 `from` 参数，则会应用自动语言检测来确定源语言。</td>
+    <td>可选参数。<br/>指定输入文本的语言。 可以使用 `translation` 范围来查找[支持的语言](./v3-0-languages.md)，了解哪些语言可以翻译。 如果未指定 `from` 参数，则会应用自动语言检测来确定源语言。</td>
   </tr>
   <tr>
     <td>to</td>
-    <td>必需参数。<br/>指定输出文本的语言。 目标语言必须是 `translation` 范围中包含的[支持的语言](.\v3-0-languages.md)之一。 例如，若要翻译为德语，请使用 `to=de`。<br/>可以在查询字符串中重复使用此参数，这样就可以同时翻译为多种语言。 例如，若要翻译为德语和意大利语，请使用 `to=de&to=it`。</td>
+    <td>必需参数。<br/>指定输出文本的语言。 目标语言必须是 `translation` 范围中包含的[支持的语言](./v3-0-languages.md)之一。 例如，若要翻译为德语，请使用 `to=de`。<br/>可以在查询字符串中重复使用此参数，这样就可以同时翻译为多种语言。 例如，若要翻译为德语和意大利语，请使用 `to=de&to=it`。</td>
   </tr>
   <tr>
     <td>textType</td>
@@ -173,7 +173,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>Description</th>
+  <th>说明</th>
     <tr>
     <td>X-RequestId</td>
     <td>服务生成的用于标识请求的值。 它用于故障排除目的。</td>
@@ -190,7 +190,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 <table width="100%">
   <th width="20%">状态代码</th>
-  <th>Description</th>
+  <th>说明</th>
   <tr>
     <td>200</td>
     <td>成功。</td>
@@ -392,10 +392,10 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
     <td>不雅词语会在输出中使用标记进行替换。 标记取决于 `ProfanityMarker` 参数。<br/><br/>
 如果 `ProfanityMarker=Asterisk`，不雅词语会被替换为 `***`：<br/>
     **示例源（日语）**：彼はジャッカスです。<br/>
-    **示例翻译（中文）**：他是一个\*\*\*。<br/><br/>
+    **示例翻译（中文）**：他是一个 \*\*\*。<br/><br/>
 如果 `ProfanityMarker=Tag`，则不雅词语会被括在 XML 标记 &lt;profanity&gt; 和 &lt;/profanity&gt; 中：<br/>
     **示例源（日语）**：彼はジャッカスです。<br/>
-    **示例翻译（中文）**：他是一个&lt;profanity&gt;笨蛋&lt;/profanity&gt;。
+    **示例翻译（中文）**：他是一个 &lt;profanity&gt;笨蛋&lt;/profanity&gt;。
   </tr>
 </table> 
 

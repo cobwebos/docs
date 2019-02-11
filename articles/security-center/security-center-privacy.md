@@ -3,7 +3,7 @@ title: 在 Azure 安全中心内管理用户数据 | Microsoft Docs
 description: " 了解如何在 Azure 安全中心内管理用户数据。 "
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
-ms.author: terrylan
-ms.openlocfilehash: fcaac3d248b676e4b7b1fe0344b54e52ce1fb558
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: rkarlin
+ms.openlocfilehash: 35868545c46acb65ba487c546b66d8834bcb81a7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302667"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543183"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>在 Azure 安全中心内管理用户数据
 本文提供了有关如何在 Azure 安全中心内管理用户数据的信息。 管理用户数据包括访问、删除或导出数据的能力。
@@ -98,7 +98,7 @@ GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Securi
 [警报数据](security-center-managing-and-responding-alerts.md)被视为安全数据，并且保留两年。
 
 ## <a name="auditing-and-reporting"></a>审核和报告
-安全联系人、实时数据和警报更新的审核日志保留在 [Azure 活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)中。
+安全联系人、实时数据和警报更新的审核日志保留在 [Azure 活动日志](../azure-monitor/platform/activity-logs-overview.md)中。
 
 ## <a name="next-steps"></a>后续步骤
 有关管理用户数据的详细信息，请参阅[管理在 Azure 安全中心调查中发现的用户数据](security-center-investigation-user-data.md)。

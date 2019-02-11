@@ -1,27 +1,27 @@
 ---
-title: 如何使用 Azure Active Directory 编辑组信息 | Microsoft Docs
-description: 了解如何使用 Azure Active Directory 编辑组信息。
+title: 编辑组信息 - Azure Active Directory | Microsoft Docs
+description: 有关如何使用 Azure Active Directory 编辑组信息的说明。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: lizross
 ms.reviewer: krbain
-ms.custom: it-pro
-ms.openlocfilehash: a02987fdce3a15cd5d416234e3717df6d33622ec
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: af9d53fa88da802202f3a561ed73b2d18d763f77
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731333"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097786"
 ---
-# <a name="how-to-edit-your-group-information-using-azure-active-directory"></a>如何：使用 Azure Active Directory 编辑组信息
+# <a name="edit-your-group-information-using-azure-active-directory"></a>使用 Azure Active Directory 编辑组信息
 
-使用 Azure Active Directory，可编辑组的设置，包括更新其名称、描述或成员类型。
+使用 Azure Active Directory (Azure AD) 可编辑组的设置，包括更新其名称、描述或成员身份类型。
 
 ## <a name="to-edit-your-group-settings"></a>编辑组设置
 1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
@@ -50,7 +50,7 @@ ms.locfileid: "45731333"
 
     - **组类型。** 创建组类型后将无法更改。 若要更改“组类型”，则必须删除该组并创建新组。
     
-    - **成员身份类型。** 更改成员身份类型。 有关各种可用成员身份类型，请参阅[如何：使用 Azure Active Directory 门户创建基本组并添加成员](active-directory-groups-create-azure-portal.md)
+    - **成员身份类型。** 更改成员身份类型。 有关各种可用成员身份类型的详细信息，请参阅[如何：使用 Azure Active Directory 门户创建基本组并添加成员](active-directory-groups-create-azure-portal.md)。
     
     - **对象 ID。** 无法更改对象 ID，但可将其复制以在组的 PowerShell 命令中使用。 有关 PowerShell cmdlet 的详细信息，请参阅[用于配置组设置的 Azure Active Directory cmdlet](../users-groups-roles/groups-settings-v2-cmdlets.md)。
 

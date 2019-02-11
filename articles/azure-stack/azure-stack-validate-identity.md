@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/23/2018
+ms.date: 12/04/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 0a46344893c8ad62bd85f9abb84d434c0331d507
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.reviewer: unknown
+ms.lastreviewed: 12/04/2018
+ms.openlocfilehash: 4fb636a91389309b44f2308efec1a6c257c41078
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984190"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242580"
 ---
 # <a name="validate-azure-identity"></a>验证 Azure 标识 
 使用 Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 验证 Azure Active Directory (Azure AD) 是否已准备好与 Azure Stack 配合使用。 在开始 Azure Stack 部署之前，请验证 Azure 标识解决方案。  
@@ -48,7 +49,7 @@ ms.locfileid: "49984190"
 **Azure Active Directory 环境：**
  - 标识将用于 Azure Stack 的 Azure AD 帐户并确保它是 Azure Active Directory 全局管理员。
  - 标识 Azure AD 租户名称。 该租户名称必须是你的 Azure Active Directory 的“主”域名。 例如， *contoso.onmicrosoft.com*。 
- - 标识将使用的 AzureEnvironement：*AzureCloud*、*AzureGermanCloud* 或 *AzureChinaCloud*。
+ - 确定将使用的 AzureEnvironment。 支持的环境名称参数值为 AzureCloud、 AzureChinaCloud 或 AzureUSGovernment 具体取决于正在使用的 Azure 订阅。
 
 ## <a name="validate-azure-identity"></a>验证 Azure 标识 
 1. 在满足先决条件的计算机上，打开一个管理 PowerShell 提示符，然后运行以下命令来安装 AzsReadinessChecker：  
@@ -59,13 +60,13 @@ ms.locfileid: "49984190"
    > `$serviceAdminCredential = Get-Credential serviceadmin@contoso.onmicrosoft.com -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant"` 
 
 3. 从 PowerShell 提示符下，运行以下命令来启动对 Azure AD 的验证。 
-   - 将 AzureEnvironment 的值指定为 *AzureCloud*、*AzureGermanCloud* 或 *AzureChinaCloud*。  
+   - 为 AzureEnvironment 指定环境名称值。 支持的环境名称参数值为 AzureCloud、 AzureChinaCloud 或 AzureUSGovernment 具体取决于正在使用的 Azure 订阅。  
    - 指定 Azure Active Directory 租户名称替换*contoso.onmicrosoft.com*。 
 
-   > `Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment AzureCloud -AADDirectoryTenantName contoso.onmicrosoft.com`
-4. 运行该工具后，查看输出。 确认状态是否**确定**有关安装要求。 成功的验证如下图所示： 
+   > `Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment <environment name> -AADDirectoryTenantName contoso.onmicrosoft.com`
+4. 运行该工具后，查看输出。 对于安装要求，确认状态为“正常”。 成功的验证如下图所示： 
  
-````PowerShell
+```PowerShell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -76,7 +77,7 @@ Finished Azure Identity Validation
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsAzureIdentityValidation Completed
-````
+```
 
 
 ## <a name="report-and-log-file"></a>报表和日志文件
@@ -97,7 +98,7 @@ Invoke-AzsAzureIdentityValidation Completed
 
 ### <a name="expired-or-temporary-password"></a>过期的或临时密码 
  
-````PowerShell
+```PowerShell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -111,8 +112,8 @@ Finished Azure Identity Validation
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsAzureIdentityValidation Completed
-````
-**原因**-因为密码已过期，或者是临时的帐户不能登录。     
+```
+**原因** - 因为密码已过期或者是临时的，所以帐户无法登录。     
 
 **解决方法** - 在 PowerShell 中，运行以下命令，然后根据提示来重置密码。  
 > `Login-AzureRMAccount`
@@ -120,7 +121,7 @@ Invoke-AzsAzureIdentityValidation Completed
 或者，以帐户身份登录到 https://portal.azure.com，将会强制用户更改密码。
 ### <a name="unknown-user-type"></a>未知用户类型 
  
-````PowerShell
+```PowerShell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -134,13 +135,13 @@ Finished Azure Identity Validation
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsAzureIdentityValidation Completed
-````
-**原因**-帐户无法登录到指定的 Azure Active Directory (AADDirectoryTenantName)。 在本例中，将 *AzureChinaCloud* 指定为了 *AzureEnvironment*。
+```
+**原因** - 帐户无法登录到指定的 Azure Active Directory (AADDirectoryTenantName)。 在本例中，将 *AzureChinaCloud* 指定为了 *AzureEnvironment*。
 
-**解决方法** - 确认帐户对指定的 Azure 环境有效。 在 PowerShell 中运行以下命令以验证该帐户是否对特定环境有效： Login-azurermaccount-EnvironmentName AzureChinaCloud 
+**解决方法** - 确认帐户对指定的 Azure 环境有效。 在 PowerShell 中，运行以下命令来验证帐户对特定的环境有效： Login-azurermaccount-EnvironmentName AzureChinaCloud 
 ### <a name="account-is-not-an-administrator"></a>帐户不是管理员 
  
-````PowerShell
+```PowerShell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -154,7 +155,7 @@ Finished Azure Identity Validation
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsAzureIdentityValidation Completed
-````
+```
 
 **原因** - 虽然帐户可以成功登录，但帐户不是 Azure Active Directory (AADDirectoryTenantName) 的管理员。  
 

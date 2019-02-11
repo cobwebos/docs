@@ -26,18 +26,18 @@
 
 # 示例
 ## Azure CLI
-### [Web 应用](https://docs.microsoft.com/azure/app-service/app-service-cli-samples)
+### [Web 应用](https://docs.microsoft.com/azure/app-service/samples-cli)
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
 ## Azure PowerShell
-### [Web 应用](https://docs.microsoft.com/azure/app-service/app-service-powershell-samples)
+### [Web 应用](https://docs.microsoft.com/azure/app-service/samples-powershell)
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/powershell-samples)
 
 # 概念
 ## [计费和订阅](https://docs.microsoft.com/azure/billing/billing-getting-started)
-## [宿主比较](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm)
-## [什么是应用服务？](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
+## [宿主比较](https://docs.microsoft.com/azure/app-service/overview-compare)
+## [什么是应用服务？](https://docs.microsoft.com/azure/app-service/overview)
 ## 虚拟机
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/overview)
@@ -55,7 +55,7 @@
 ### [无服务器应用](https://docs.microsoft.com/azure/azure-functions/functions-reference)
 ### [微服务群集](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal)
 ## 部署
-### [来自源控件的 Web 和移动应用](https://docs.microsoft.com/azure/app-service/app-service-continuous-deployment)
+### [来自源控件的 Web 和移动应用](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment)
 ### [本地微服务](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-with-a-local-cluster)
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
@@ -76,11 +76,11 @@
 ### [Web 和移动应用](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl)
 
 ## 备份
-### [Web 和移动应用](https://docs.microsoft.com/azure/app-service/web-sites-backup)
+### [Web 和移动应用](https://docs.microsoft.com/azure/app-service/manage-backup)
 ### [虚拟机](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
 
 ## 监视
-### [Web 和移动应用](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log)
+### [Web 和移动应用](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs)
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitoring)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-monitoring)
 ### [微服务](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-overview)

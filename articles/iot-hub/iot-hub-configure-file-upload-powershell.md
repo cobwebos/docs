@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: b99874ce87c6e161fcd62ec871c6aee277ec946e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e8f37adc07bffb8a1e770085ecee6f813d3c2932
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232284"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425605"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>使用 PowerShell 配置 IoT 中心文件上传
 
@@ -24,7 +24,7 @@ ms.locfileid: "51232284"
 
 * 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
-* [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。
+* [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)。
 
 * Azure IoT 中心。 如果没有 IoT 中心，可以使用 [New-AzureRmIoTHub cmdlet](https://docs.microsoft.com/powershell/module/azurerm.iothub/new-azurermiothub) 创建一个，或使用门户[创建 IoT 中心](iot-hub-create-through-portal.md)。
 
@@ -98,7 +98,7 @@ Get-AzureRmStorageAccountKey `
 
 * **存储容器**：当前 Azure 订阅中要与 IoT 中心关联的 Azure 存储帐户中的 Blob 容器。 检索在上一部分中必要的存储帐户信息。 IoT 中心会自动生成对此 Blob 容器具有写入权限的 SAS URI，以供设备上传文件时使用。
 
-* 接收已上传文件的通知：启用或禁用文件上传通知。
+* **接收已上传文件的通知**：启用或禁用文件上传通知。
 
 * **SAS TTL**：此设置是 IoT 中心返回给设备的 SAS URI 生存时间。 默认设置为一小时。
 

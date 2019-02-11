@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
 ms.author: victorh
-ms.openlocfilehash: d6bbf6f555afe53b749ac68be38b26eb6980a9aa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cde06aaf149785f464cd354c95c8f39575bad73b
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999590"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698205"
 ---
 # <a name="create-an-application-gateway-using-the-azure-cli"></a>使用 Azure CLI 创建应用程序网关
 
@@ -27,7 +27,7 @@ ms.locfileid: "46999590"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.4 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.4 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -41,7 +41,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>创建网络资源 
 
-使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) 创建虚拟网络和子网。 使用 [az network public-ip create](/cli/azure/network/public-ip#az-public-ip-create) 创建公共 IP 地址。
+使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) 创建虚拟网络和子网。 使用 [az network public-ip create](/cli/azure/network/public-ip) 创建公共 IP 地址。
 
 ```azurecli-interactive
 az network vnet create \
@@ -133,7 +133,7 @@ done
 
 ## <a name="create-the-application-gateway"></a>创建应用程序网关
 
-使用 [az network application-gateway create](/cli/azure/network/application-gateway#az-application-gateway-create) 创建应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将添加网络接口的专用 IP 地址作为应用程序网关后端池中的服务器。
+使用 [az network application-gateway create](/cli/azure/network/application-gateway) 创建应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将添加网络接口的专用 IP 地址作为应用程序网关后端池中的服务器。
 
 ```azurecli-interactive
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')

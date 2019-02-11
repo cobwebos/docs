@@ -3,15 +3,16 @@ title: 关于使用 Azure Site Recovery 进行 VMware VM 到 Azure 的灾难恢�
 description: 本文概述了使用 Azure Site Recovery 服务执行从 VMware VM 到 Azure 的灾难恢复。
 author: rayne-wiselman
 ms.service: site-recovery
+services: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 9368ff848c9be075a08d5a80a49ffc64f5392cad
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 38f344ef9e24816a17975c60a5863be46da1364b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214692"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210329"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>关于 VMware VM 到 Azure 的灾难恢复
 
@@ -71,7 +72,7 @@ Site Recovery 可复制受支持的 VMware VM 或物理服务器上运行的任�
 
 1. 需要设置几个帐户：
 
-    - 如果要复制 VMware VM，则 Site Recovery 需要一个帐户才能访问 vCenter SErver 或 vSphere ESXi 主机以自动发现 VM。
+    - 如果要复制 VMware VM，则 Site Recovery 需要一个帐户才能访问 vCenter Server 或 vSphere ESXi 主机以自动发现 VM。
     - 需要一个帐户才能在要复制的每台物理计算机或 VM 上安装 Site Recovery 移动服务代理。
 
 2. 如果以前没有这样做，则需要检查 VMware 基础架构的兼容性。
@@ -88,16 +89,16 @@ Site Recovery 可复制受支持的 VMware VM 或物理服务器上运行的任�
 在 Azure 和本地基础结构就位后，可以设置灾难恢复。
 
 1. 若要了解需要部署的组件，请查看 [VMware 到 Azure 体系结构](vmware-azure-architecture.md)，以及[物理机到 Azure 体系结构](physical-azure-architecture.md)。 其中包含许多组件，请务必了解它们如何搭配在一起。
-2. 源环境：作为部署中的第一步，需要设置复制源环境。 指定要复制的内容以及要复制到的位置。
-3. 配置服务器：需要设置本地源环境中的配置服务器：
+2. **源环境**：作为部署中的第一步，需要设置复制源环境。 指定要复制的内容以及要复制到的位置。
+3. **配置服务器**：需要设置本地源环境中的配置服务器：
     - 配置服务器是一台本地计算机。 对于 VMware 灾难恢复，建议将其作为可通过可下载的 OVF 模板部署的 VMware VM 来部署。
     - 配置服务器协调本地环境与 Azure 之间的通信
     - 其他几个组件在配置服务器计算机上运行。
         - 进程服务器接收、优化复制数据并将复制数据发送到 Azure 存储。 它还会处理要复制的计算机上的移动服务的自动安装，并在 VMware 服务器上执行 VM 的自动发现。
         - 主目标服务器处理从 Azure 进行故障回复期间产生的复制数据。
     - 设置过程包括在保管库中注册配置服务器、下载 MySQL Server 和 VMware PowerCLI，以及指定为自动发现和移动服务安装所创建的帐户。
-4. 目标环境：通过指定 Azure 订阅、存储和网络设置来设置目标 Azure 环境。
-5. 复制策略：指定复制的方式。 设置包括创建和存储恢复点的频率，以及是否应创建应用一致性快照。
+4. **目标环境**：通过指定 Azure 订阅、存储和网络设置来设置目标 Azure 环境。
+5. **复制策略**：指定复制的方式。 设置包括创建和存储恢复点的频率，以及是否应创建应用一致性快照。
 6. **启用复制**。 为本地计算机启用复制。 如果你创建了一个帐户用于安装移动服务，则在为计算机启用复制时将进行安装。 
 
 *需要更多帮助？*

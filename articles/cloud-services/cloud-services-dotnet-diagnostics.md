@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeconnoc
-ms.openlocfilehash: f9f26f14944986bc673a3b7529adb055ad16d058
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 6a22a3dabf1aa71e0d092c4145523da9b0121c8c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003055"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322203"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>在 Azure 云服务中启用 Azure 诊断
 有关 Azure 诊断的背景信息，请参阅 [Azure 诊断概述](../azure-diagnostics.md)。
@@ -39,7 +39,7 @@ ms.locfileid: "39003055"
 6. 生成解决方案以验证无误。
 
 ### <a name="step-2-instrument-your-code"></a>步骤 2：检测代码
-将 WorkerRole.cs 的内容替换为以下代码。 继承自 [EventSource 类][EventSource Class]的 SampleEventSourceWriter 类实现四个日志记录方法：**SendEnums**、**MessageMethod**、**SetOther** 和 **HighFreq**。 **WriteEvent** 方法的第一个参数定义相关事件的 ID。 Run 方法实现一个无限循环，该循环每隔 10 秒调用 **SampleEventSourceWriter** 类中实现的每个日志记录方法。
+将 WorkerRole.cs 的内容替换为以下代码。 继承自 [EventSource 类][EventSource Class]的 SampleEventSourceWriter 类实现了四个日志记录方法：**SendEnums**、**MessageMethod**、**SetOther** 和 **HighFreq**。 **WriteEvent** 方法的第一个参数定义相关事件的 ID。 Run 方法实现一个无限循环，该循环每隔 10 秒调用 **SampleEventSourceWriter** 类中实现的每个日志记录方法。
 
 ```csharp
 using Microsoft.WindowsAzure.ServiceRuntime;
@@ -197,7 +197,7 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -Diagnostic
 如果遇到问题，请参阅 [Azure 诊断疑难解答](../azure-diagnostics-troubleshooting.md)，以获取有关常见问题的帮助。
 
 ## <a name="next-steps"></a>后续步骤
-若要更改你收集的数据、排查问题或者了解有关诊断的一般信息，请参阅[有关 Azure 虚拟机的诊断文章列表](../monitoring-and-diagnostics/azure-diagnostics.md#cloud-services-using-azure-diagnostics)。
+若要更改你收集的数据、排查问题或者了解有关诊断的一般信息，请参阅[有关 Azure 虚拟机的诊断文章列表](../azure-monitor/platform/diagnostics-extension-overview.md#cloud-services-using-azure-diagnostics)。
 
 [EventSource Class]: http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 

@@ -3,26 +3,26 @@ title: 获取对Azure Active Directory B2B 协作的支持 | Microsoft Docs
 description: 什么是 Azure Active Directory B2B 协作的支持体验？
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: reference
 ms.date: 05/26/2017
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 1474bf13a6d364fcbd90adee09a1a60bcafc2ccb
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 7e1c40af9a3a923d8158b2f333d21b880a07f101
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985271"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55073929"
 ---
 # <a name="getting-support-for-b2b-collaboration"></a>获取对 B2B 协作的支持
 
 已读完文档且执行了适当步骤，但仍无法实现某些操作？ 打开支持票证（需要支持计划）：
 
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到“帮助和支持”边栏选项卡，并选择“新支持请求”：
-  - 问题类型：技术
+  - 问题类型：技术方面
   - 订阅：选择受影响的订阅
     - 服务：Active Directory
     - 支持计划：选择相关的支持计划

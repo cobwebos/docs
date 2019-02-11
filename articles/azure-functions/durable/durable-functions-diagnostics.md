@@ -8,24 +8,24 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: f7d13c946ce9d74d23ceef63c31e3858591ae42e
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 4f6d49a60df09e78c3cbeee22d43827ecc9f9f64
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637702"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118415"
 ---
-# <a name="diagnostics-in-durable-functions-azure-functions"></a>Durable Functions 中的诊断 (Azure Functions)
+# <a name="diagnostics-in-durable-functions-in-azure"></a>Azure Durable Functions 中的诊断
 
 可以使用多个选项通过 [Durable Functions](durable-functions-overview.md) 诊断问题。 其中有些选项与适用于正则函数的选项相同，还有一些选项是 Durable Functions 特有的。
 
 ## <a name="application-insights"></a>Application Insights
 
-使用 [Application Insights](../../application-insights/app-insights-overview.md) 是在 Azure Functions 中执行诊断和监视的建议方法。 这同样适用于 Durable Functions。 有关如何在函数应用中利用 Application Insights 的概述，请参阅[监视 Azure Functions](../functions-monitoring.md)。
+使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 是在 Azure Functions 中执行诊断和监视的建议方法。 这同样适用于 Durable Functions。 有关如何在函数应用中利用 Application Insights 的概述，请参阅[监视 Azure Functions](../functions-monitoring.md)。
 
-Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流程的端到端执行。 可在 Azure 门户中使用 [Application Insights Analytics](../../application-insights/app-insights-analytics.md) 工具来查找和查询这些事件。
+Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流程的端到端执行。 可在 Azure 门户中使用 [Application Insights Analytics](../../azure-monitor/app/analytics.md) 工具来查找和查询这些事件。
 
 ### <a name="tracking-data"></a>跟踪数据
 
@@ -33,23 +33,25 @@ Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流�
 
 * **hubName**：运行业务流程的任务中心的名称。
 * **appName**：函数应用的名称。 当有多个函数应用共享同一个 Application Insights 实例时，此字段非常有用。
-* **slotName**：运行当前函数应用的[部署槽位](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/)。 利用部署槽位控制业务流程的版本时，此字段非常有用。
+* **slotName**：当前函数应用在其中运行的[部署槽位](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/)。 利用部署槽位控制业务流程的版本时，此字段非常有用。
 * **functionName**：业务流程协调程序或活动函数的名称。
-* **functionType**：函数的类型，例如“业务流程协调程序”或“活动”。
+* **functionType**：函数的类型，例如 **Orchestrator** 或 **Activity**。
 * **instanceId**：业务流程实例的唯一 ID。
 * **state**：实例的生命周期执行状态。 有效值包括：
-    * **Scheduled**：函数已计划执行，但尚未开始运行。
-    * **Started**：函数已开始运行，但尚未进入等待或完成状态。
-    * **Awaited**：业务流程协调程序已计划某项工作，正在等待该工作完成。
-    * **Listening**：业务流程协调程序正在侦听外部事件通知。
-    * **Completed**：函数已成功完成。
-    * **Failed**：函数失败并出错。
+  * **Scheduled**：函数已计划执行，但尚未开始运行。
+  * **Started**：函数已开始运行，但尚未进入等待或完成状态。
+  * **Awaited**：业务流程协调程序已计划某项工作，正在等待该工作完成。
+  * **Listening**：业务流程协调程序正在侦听外部事件通知。
+  * **Completed**：函数已成功完成。
+  * **Failed**：函数失败并出错。
 * **reason**：与跟踪事件关联的其他数据。 例如，如果某个实例正在等待外部事件通知，则此字段指示该实例正在等待的事件的名称。 如果函数失败，此字段会包含错误详细信息。
 * **isReplay**：指示跟踪事件是否用于重播执行的布尔值。
-* **extensionVersion**：持久任务扩展的版本。 在报告扩展中可能存在的 bug 时，此字段是特别重要的数据。 如果长时间运行的实例在运行时发生更新，它可能会报告多个版本。 
+* **extensionVersion**：持久任务扩展的版本。 在报告扩展中可能存在的 bug 时，此字段是特别重要的数据。 如果长时间运行的实例在运行时发生更新，它可能会报告多个版本。
 * **sequenceNumber**：事件的执行序列号。 与时间戳组合使用可以帮助按执行时间对事件进行排序。 *请注意，如果主机在实例正在运行时重新启动，则此数字将重置为零，因此始终先按时间戳然后按 sequenceNumber 排序很重要。*
 
-可在 `host.json` 文件的 `logger` 节中配置发出到 Application Insights 的跟踪数据的详细程度。
+可以在 `host.json` 文件的 `logger` (Functions 1.x) 或 `logging` (Functions 2.x) 节中配置对发出到 Application Insights 的数据的跟踪详细程度。
+
+#### <a name="functions-1x"></a>Functions 1.x
 
 ```json
 {
@@ -63,9 +65,23 @@ Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流�
 }
 ```
 
+#### <a name="functions-2x"></a>Functions 2.x
+
+```json
+{
+    "logging": {
+        "logLevel": {
+          "Host.Triggers.DurableTask": "Information",
+        },
+    }
+}
+```
+
 默认情况下，会发出所有非重播跟踪事件。 可通过将 `Host.Triggers.DurableTask` 设置为 `"Warning"` 或 `"Error"` 来减少数据量，在这种情况下，只会在发生异常情况时发出跟踪事件。
 
 若要启用发出详细业务流程重播事件，可以在 `host.json` 文件中的 `durableTask` 下将 `LogReplayEvents` 设置为 `true`，如下所示：
+
+#### <a name="functions-1x"></a>Functions 1.x
 
 ```json
 {
@@ -75,12 +91,24 @@ Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流�
 }
 ```
 
+#### <a name="functions-2x"></a>Functions 2.x
+
+```javascript
+{
+    "extensions": {
+        "durableTask": {
+            "logReplayEvents": true
+        }
+    }
+}
+```
+
 > [!NOTE]
 > 默认情况下，Azure Functions 运行时会对 Application Insights 遥测数据采样，以免过度频繁地发出数据。 如果在短时间内发生了许多的生命周期事件，此行为可能会导致跟踪信息丢失。 [Azure Functions 监视文章](../functions-monitoring.md#configure-sampling)介绍了如何配置此行为。
 
 ### <a name="single-instance-query"></a>单实例查询
 
-以下查询显示 [Hello Sequence](durable-functions-sequence.md) 函数业务流程的单个实例的历史跟踪数据。 该查询是使用 [Application Insights 查询语言 (AIQL)](https://aka.ms/LogAnalyticsLanguageReference) 编写的。 它会筛选出重播执行，以便仅显示逻辑执行路径。 可以通过按 `timestamp` 和 `sequenceNumber` 排序来安排事件顺序，如以下查询中所示： 
+以下查询显示 [Hello Sequence](durable-functions-sequence.md) 函数业务流程的单个实例的历史跟踪数据。 该查询是使用 [Application Insights 查询语言 (AIQL)](https://aka.ms/LogAnalyticsLanguageReference) 编写的。 它会筛选出重播执行，以便仅显示逻辑执行路径。 可以通过按 `timestamp` 和 `sequenceNumber` 排序来安排事件顺序，如以下查询中所示：
 
 ```AIQL
 let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
@@ -92,7 +120,7 @@ traces
 | extend instanceId = customDimensions["prop__instanceId"]
 | extend state = customDimensions["prop__state"]
 | extend isReplay = tobool(tolower(customDimensions["prop__isReplay"]))
-| extend sequenceNumber = tolong(customDimensions["prop__sequenceNumber"]) 
+| extend sequenceNumber = tolong(customDimensions["prop__sequenceNumber"])
 | where isReplay != true
 | where instanceId == targetInstanceId
 | sort by timestamp asc, sequenceNumber asc
@@ -102,7 +130,6 @@ traces
 结果是显示业务流程执行路径的跟踪事件的列表，包括所有活动函数，按执行时间以升序排序。
 
 ![Application Insights 查询](./media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
-
 
 ### <a name="instance-summary-query"></a>实例摘要查询
 
@@ -123,6 +150,7 @@ traces
 | project timestamp, instanceId, functionName, state, output, appName = cloud_RoleName
 | order by timestamp asc
 ```
+
 结果是实例 ID 的列表及其当前运行时状态。
 
 ![Application Insights 查询](./media/durable-functions-diagnostics/app-insights-single-summary-query.png)
@@ -131,24 +159,24 @@ traces
 
 直接从业务流程协调程序函数写入日志时，必须注意业务流程协调程序的重播行为。 例如，考虑以下业务流程协调程序函数：
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```cs
 public static async Task Run(
-    DurableOrchestrationContext ctx,
+    DurableOrchestrationContext context,
     ILogger log)
 {
     log.LogInformation("Calling F1.");
-    await ctx.CallActivityAsync("F1");
+    await context.CallActivityAsync("F1");
     log.LogInformation("Calling F2.");
-    await ctx.CallActivityAsync("F2");
+    await context.CallActivityAsync("F2");
     log.LogInformation("Calling F3");
-    await ctx.CallActivityAsync("F3");
+    await context.CallActivityAsync("F3");
     log.LogInformation("Done!");
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
 
 ```javascript
 const df = require("durable-functions");
@@ -188,20 +216,20 @@ Done!
 
 ```cs
 public static async Task Run(
-    DurableOrchestrationContext ctx,
+    DurableOrchestrationContext context,
     ILogger log)
 {
-    if (!ctx.IsReplaying) log.LogInformation("Calling F1.");
-    await ctx.CallActivityAsync("F1");
-    if (!ctx.IsReplaying) log.LogInformation("Calling F2.");
-    await ctx.CallActivityAsync("F2");
-    if (!ctx.IsReplaying) log.LogInformation("Calling F3");
-    await ctx.CallActivityAsync("F3");
+    if (!context.IsReplaying) log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    if (!context.IsReplaying) log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    if (!context.IsReplaying) log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
     log.LogInformation("Done!");
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+#### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
 
 ```javascript
 const df = require("durable-functions");
@@ -230,21 +258,36 @@ Done!
 
 使用自定义业务流程状态，可以为业务流程协调程序函数设置自定义状态值。 此状态是通过 HTTP 状态查询 API 或 `DurableOrchestrationClient.GetStatusAsync` API 提供的。 自定义业务流程状态为业务流程协调程序函数实现了更丰富的监视。 例如，业务流程协调程序函数代码可以包括 `DurableOrchestrationContext.SetCustomStatus` 调用来更新长时间运行的操作的进度。 然后，客户端（例如网页或其他外部系统）可以定期查询 HTTP 状态查询 API 以获得更丰富的进度信息。 下面提供了使用 `DurableOrchestrationContext.SetCustomStatus` 的示例：
 
+### <a name="c"></a>C#
+
 ```csharp
-public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext ctx)
+public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext context)
 {
     // ...do work...
 
     // update the status of the orchestration with some arbitrary data
     var customStatus = new { completionPercentage = 90.0, status = "Updating database records" };
-    ctx.SetCustomStatus(customStatus);
+    context.SetCustomStatus(customStatus);
 
     // ...do more work...
 }
 ```
 
-> [!NOTE]
-> 适用于 JavaScript 的自定义业务流程状态将在即将发布的版本中提供。
+### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    // ...do work...
+
+    // update the status of the orchestration with some arbitrary data
+    const customStatus = { completionPercentage: 90.0, status: "Updating database records", };
+    context.df.setCustomStatus(customStatus);
+
+    // ...do more work...
+});
+```
 
 在业务流程正在运行时，外部客户端可以提取此自定义状态：
 
@@ -253,7 +296,7 @@ GET /admin/extensions/DurableTaskExtension/instances/instance123
 
 ```
 
-客户端将收到以下响应： 
+客户端将收到以下响应：
 
 ```http
 {
@@ -267,7 +310,7 @@ GET /admin/extensions/DurableTaskExtension/instances/instance123
 ```
 
 > [!WARNING]
->  自定义状态有效负载限制为 16 KB 的 UTF-16 JSON 文本，因为它需要能够容纳在 Azure 表存储列中。 如果需要更大的有效负载，可以使用外部存储。
+> 自定义状态有效负载限制为 16 KB 的 UTF-16 JSON 文本，因为它需要能够容纳在 Azure 表存储列中。 如果需要更大的有效负载，可以使用外部存储。
 
 ## <a name="debugging"></a>调试
 

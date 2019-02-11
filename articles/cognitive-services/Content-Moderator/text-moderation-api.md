@@ -5,18 +5,18 @@ services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/30/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 4c4a0ccfc93a6a48a0178183b94cc03cb576930a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0b5cfdd69539caa7f9dcceb3e1d435d3a7e97fed
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226562"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225459"
 ---
-# <a name="text-moderation"></a>文本审查
+# <a name="learn-text-moderation-concepts"></a>了解文本审查概念
 
 使用内容审查器的计算机辅助文本审查和[人工评审](Review-Tool-User-Guide/human-in-the-loop.md)功能来审核文本内容。
 

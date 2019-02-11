@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: df1fbcb09310985b7ca9d9fd2e7a987fc6e2b2dc
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: e7d08ec0d25e7666acb510c4bae5533975b21039
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457028"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296536"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -55,7 +54,7 @@ ms.locfileid: "49457028"
 
 可以使用复制活动**复制**基于文件的两个数据存储间的文件，这种情况下，数据可以高效复制而无需任何序列化/反序列化。
 
-复制活动还支持以指定格式（**Text、JSON、Avro、ORC 和 Parquet**）从文件中读取并写入到文件，并且支持压缩编解码器 **GZip、Deflate、BZip2 和 ZipDeflate**。 有关详细信息，请参阅[支持的文件和压缩格式](supported-file-formats-and-compression-codecs.md)。
+复制活动还支持以指定的格式读取和写入文件：支持文本、JSON、Avro、ORC 和 Parquet，以及压缩编解码器 GZip、Deflate、BZip2 和 ZipDeflate。 有关详细信息，请参阅[支持的文件和压缩格式](supported-file-formats-and-compression-codecs.md)。
 
 例如，可执行以下复制活动：
 
@@ -128,9 +127,9 @@ ms.locfileid: "49457028"
 
 ### <a name="syntax-details"></a>语法详细信息
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
-| type | 复制活动的类型属性必须设置为：**复制** | 是 |
+| type | 复制活动的 type 属性必须设置为：**Copy** | 是 |
 | inputs | 指定创建的指向源数据的数据集。 复制活动仅支持单个输入。 | 是 |
 | outputs | 指定创建的指向接收器数据的数据集。 复制活动仅支持单个输出。 | 是 |
 | typeProperties | 一组用来配置复制活动的属性。 | 是 |
@@ -156,7 +155,10 @@ ms.locfileid: "49457028"
 
 ![监视活动运行](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
-单击“操作”下的“详细信息”链接，查看复制活动的执行详细信息和性能特征。 它显示复制方案的以下信息：从源复制到接收器的数据量/行/文件、吞吐量、所执行的步骤和相应的持续时间，以及使用的配置。
+单击“操作”下的“详细信息”链接，查看复制活动的执行详细信息和性能特征。 它显示复制方案的以下信息：从源复制到接收器的数据量/行/文件、吞吐量、所执行的步骤和相应的持续时间，以及使用的配置。 
+
+>[!TIP]
+>对于某些方案，你还会在复制监视页面的顶部看到“**性能优化提示**”，这告诉你所识别出的瓶颈并指导你进行一些更改来提升复制吞吐量，请参阅[此处](#performance-and-tuning)包含详细信息的示例。
 
 **示例：从 Amazon S3 复制到 Azure Data Lake Store**
 ![监视活动运行详细信息](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
@@ -168,19 +170,20 @@ ms.locfileid: "49457028"
 
 “复制活动运行结果”->“输出”部分中也会返回复制活动执行详细信息和性能特征。 下面是一个详细清单；将只显示适用于用户复制方案的内容。 了解如何从[快速入门监视部分](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run)监视活动运行。
 
-| 属性名称  | Description | 单位 |
+| 属性名称  | 说明 | 单位 |
 |:--- |:--- |:--- |
 | dataRead | 从源中读取的数据大小 | Int64 值（**字节**） |
 | DataWritten | 写入接收器的数据大小 | Int64 值（**字节**） |
 | filesRead | 从文件存储复制数据时要复制的文件数。 | Int64 值（未指定单位） |
+| fileScanned | 正在扫描的源文件存储中的文件数量。 | Int64 值（未指定单位） |
 | filesWritten | 将数据复制到文件存储时要复制的文件数。 | Int64 值（未指定单位） |
 | rowsCopied | 正在复制（不适用于二进制复制）的行数。 | Int64 值（未指定单位） |
 | rowsSkipped | 跳过的不兼容行数。 可以通过将“enableSkipIncompatibleRow”设置为 true 来启用该功能。 | Int64 值（未指定单位） |
 | throughput | 数据传输比率 | 浮点数 (**KB/s**) |
 | copyDuration | 复制持续时间 | Int32 值（秒） |
-| sqlDwPolyBase | 如果将数据复制到 SQL 数据仓库时使用了 PolyBase。 | 布尔 |
-| redshiftUnload | 如果从 Redshift 复制数据时使用了 UNLOAD。 | 布尔 |
-| hdfsDistcp | 如果从 HDFS 复制数据时使用了 DistCp。 | 布尔 |
+| sqlDwPolyBase | 如果将数据复制到 SQL 数据仓库时使用了 PolyBase。 | Boolean |
+| redshiftUnload | 如果从 Redshift 复制数据时使用了 UNLOAD。 | Boolean |
+| hdfsDistcp | 如果从 HDFS 复制数据时使用了 DistCp。 | Boolean |
 | effectiveIntegrationRuntime | 以 `<IR name> (<region if it's Azure IR>)` 格式显示运行活动时使用的集成运行时。 | 文本（字符串） |
 | usedDataIntegrationUnits | 复制期间的有效数据集成单位。 | Int32 值 |
 | usedParallelCopies | 复制期间的有效 parallelCopies。 | Int32 值|
@@ -232,6 +235,14 @@ ms.locfileid: "49457028"
 ## <a name="performance-and-tuning"></a>性能和优化
 
 请参阅[复制活动性能和优化指南](copy-activity-performance.md)，其中介绍了影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素。 还列出了在内部测试期间观察到的性能，并讨论了优化复制活动性能的多种方法。
+
+在某些情况下，当你在 ADF 中执行复制活动时，会直接在[复制活动监视页面](#monitor-visually)上看到“**性能优化提示**”，如以下示例所示。 它不仅告诉你针对给定复制运行所识别出的瓶颈，而且还指导你进行一些更改来提升复制吞吐量。 目前的性能优化提示提供如下建议：在将数据复制到 Azure SQL 数据仓库时使用 PolyBase；在数据存储端资源出现瓶颈时增加 Azure Cosmos DB RU 或 Azure SQL DB DTU；删除不必要的暂存副本等等。性能优化规则也将逐渐丰富。
+
+**示例：复制到 Azure SQL DB 时的性能优化提示**
+
+在此示例中，在复制运行期间，ADF 注意到接收器 Azure SQL DB 达到了很高的 DTU 利用率，这会减慢写入操作，因此，建议使用更多的 DTU 来增加 Azure SQL DB 层。 
+
+![包含性能优化提示的复制监视](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
 ## <a name="incremental-copy"></a>增量复制 
 数据工厂支持以递增方式将增量数据从源数据存储复制到目标数据存储的方案。 请参阅[教程：以递增方式复制数据](tutorial-incremental-copy-overview.md)。 

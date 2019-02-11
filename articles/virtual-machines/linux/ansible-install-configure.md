@@ -3,17 +3,17 @@ title: 在 Azure 虚拟机上安装 Ansible
 description: 了解如何在 Ubuntu、CentOS 和 SLES 上安装和配置 Ansible 以管理 Azure 资源
 ms.service: ansible
 keywords: ansible, azure, devops, bash, cloudshell, playbook, bash
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 08/21/2018
-ms.openlocfilehash: b714470cd12bb7a0cd2d2a00b4f09467726f505d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: abf5857ed105f85e51c7eac4a5d1eb8cabe7a44a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987044"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815109"
 ---
 # <a name="install-ansible-on-azure-virtual-machines"></a>在 Azure 虚拟机上安装 Ansible
 
@@ -32,7 +32,7 @@ ms.locfileid: "46987044"
 登录到 Linux 计算机，然后选择下述发行版之一，了解安装 Ansible 的步骤：
 
 - [CentOS 7.4](#centos-74)
-- [Ubuntu 16.04 LTS](#ubuntu1604-lts)
+- Ubuntu 16.04 LTS
 - [SLES 12 SP2](#sles-12-sp2)
 
 ### <a name="centos-74"></a>CentOS 7.4

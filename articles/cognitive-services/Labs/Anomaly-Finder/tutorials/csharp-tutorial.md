@@ -1,21 +1,21 @@
 ---
-title: 教程：异常情况检测、C#
+title: 教程：异常情况检测，C#
 titlesuffix: Azure Cognitive Services
 description: 探索使用异常情况检测 API 的 C# 应用。 将原始数据点发送到 API 并获得预期值和异常点。
 services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.component: anomaly-detection
+ms.subservice: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: f99ce765c1d9417fd5ca88b49214eca8a3b0bf49
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 64183ea09203ea965bb889fe4741fdaf4dbd1e02
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887643"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228009"
 ---
 # <a name="tutorial-anomaly-detection-with-c-application"></a>教程：使用 C# 应用程序进行异常情况检测
 
@@ -35,7 +35,7 @@ ms.locfileid: "48887643"
 
 ## <a name="get-and-use-the-example"></a>获取并使用示例
 
-可以将异常情况检测示例应用程序从 [Github](https://github.com/MicrosoftAnomalyDetection/csharp-sample.git) 克隆到计算机。 
+可以将异常情况检测示例应用程序从 [GitHub](https://github.com/MicrosoftAnomalyDetection/csharp-sample.git) 克隆到计算机。 
 <a name="Step1"></a>
 ### <a name="install-the-example"></a>安装示例
 

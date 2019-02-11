@@ -9,30 +9,30 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 8795930c6b676e7e710f112e8d9eedd6ab9084b5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 12/19/2018
+ms.openlocfilehash: 3ceb8569d952f2947870ce7314f869623b2d87f9
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164559"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562940"
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>在 Azure SQL 数据库中操作 Query Store
+
 Azure 中的 Query Store 是完全托管的数据库功能，可持续收集和提供有关所有查询的详细历史信息。 可以将 Query Store 视为一个航班数据记录器，它可以大幅简化云与本地客户的查询性能故障排除。 本文说明在 Azure 中操作 Query Store 的具体方法。 使用这些预先收集的查询数据，可以快速诊断并解决性能问题，因此将更多的时间投入到业务上。 
 
 从 2015 年 11 月开始，Query Store 已在 Azure SQL 数据库中[全球推出](https://azure.microsoft.com/updates/general-availability-azure-sql-database-query-store/)。 Query Store 是性能分析和优化功能（例如 [SQL 数据库顾问和性能仪表板](https://azure.microsoft.com/updates/sqldatabaseadvisorga/)）的基础。 在本文发布时，Query Store 正在 Azure 中运行 200,000 多个用户数据库，不间断地收集多个月的查询相关信息。
 
 > [!IMPORTANT]
 > Microsoft 即将为所有 Azure SQL 数据库（现有的和新的）激活 Query Store。 
-> 
-> 
 
 ## <a name="optimal-query-store-configuration"></a>最佳的 Query Store 配置
+
 本部分描述最佳的配置默认值，这些默认值旨在确保 Query Store 以及依赖功能（例如 [SQL 数据库顾问和性能仪表板](https://azure.microsoft.com/updates/sqldatabaseadvisorga/)）能够可靠运行。 默认配置已针对持续数据收集操作进行优化，即，在 OFF/READ_ONLY 状态下花费最少的时间。
 
-| 配置 | Description | 默认 | 注释 |
+| 配置 | 说明 | 默认 | 注释 |
 | --- | --- | --- | --- |
 | MAX_STORAGE_SIZE_MB |指定 Query Store 在客户数据库中占用的数据空间的限制 |100 |对新数据库强制实施 |
 | INTERVAL_LENGTH_MINUTES |定义聚合和持久化查询计划收集运行时统计信息的时段大小。 每个活动查询计划将为此配置定义的时间段包含最多一行 |60 |对新数据库强制实施 |
@@ -44,19 +44,17 @@ Azure 中的 Query Store 是完全托管的数据库功能，可持续收集和�
 
 > [!IMPORTANT]
 > 在 Query Store 的最终激活阶段，会在所有 Azure SQL 数据库中自动应用这些默认值（请参阅上面的重要说明）。 激活后，Azure SQL 数据库不会更改客户设置的配置值，除非这些值对主要工作负荷或 Query Store 的可靠运行造成负面影响。
-> 
-> 
 
 如果想要保持使用自定义设置，请[结合 Query Store 选项使用 ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx)，将配置还原到以前的状态。 请查看 [Query Store 最佳实践](https://msdn.microsoft.com/library/mt604821.aspx)，了解如何选择最佳的配置参数。
 
 ## <a name="next-steps"></a>后续步骤
+
 [SQL 数据库性能见解](sql-database-performance.md)
 
 ## <a name="additional-resources"></a>其他资源
+
 有关详细信息，请查看以下文章：
 
-* [数据库的航班数据记录器](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database) 
-* [使用 Query Store 监视性能](https://msdn.microsoft.com/library/dn817826.aspx)
-* [Query Store 使用方案](https://msdn.microsoft.com/library/mt614796.aspx)
- 
-
+- [数据库的航班数据记录器](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database)
+- [使用 Query Store 监视性能](https://msdn.microsoft.com/library/dn817826.aspx)
+- [Query Store 使用方案](https://msdn.microsoft.com/library/mt614796.aspx)

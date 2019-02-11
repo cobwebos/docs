@@ -5,14 +5,14 @@ author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/11/2018
-ms.author: nisoneji
-ms.openlocfilehash: b890dce5d94c2177c8fc8cdb5477b92df15c8095
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 12/28/2018
+ms.author: mayg
+ms.openlocfilehash: 55d6f1393f4f180776557ea9a2651064d61c3e06
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211020"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301490"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>运行用于从 VMware 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器
 本文为适用于 VMware 到 Azure 生产部署的 Azure Site Recovery Deployment Planner 用户指南。
@@ -65,7 +65,7 @@ ms.locfileid: "50211020"
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
 
-| 参数名称 | Description |
+| 参数名称 | 说明 |
 |---|---|
 | -Operation | StartProfiling |
 | -Server | 要分析其 VM 的 vCenter 服务器/vSphere ESXi 主机的完全限定域名或 IP 地址。|
@@ -138,11 +138,14 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 ## <a name="generate-report"></a>生成报告
 该工具生成一个启用了宏的 Microsoft Excel 文件（XLSM 文件）作为报告输出，对所有部署建议进行了汇总。 该报告名为 DeploymentPlannerReport_<unique numeric identifier>.xlsm，置于指定目录中。
 
+>[!NOTE]
+>该报告需要将小数点符号配置为“.”，以便在运行部署计划器的服务器上生成成本估算。 如果已在 Windows 计算机上设置了“,”作为小数点符号，请转到“控制面板”中的“更改日期、时间或数字格式”，然后转到“其他设置”将小数点符号更改为“.”。
+
 完成分析后，可在报告生成模式下运行该工具。 下表包含一系列必需的和可选的工具参数，适用于在报告生成模式下 运行。
 
 `ASRDeploymentPlanner.exe -Operation GenerateReport /?`
 
-|参数名称 | Description |
+|参数名称 | 说明 |
 |-|-|
 | -Operation | GenerateReport |
 | -Server |  vCenter/vSphere 服务器完全限定域名或 IP 地址（使用的名称或 IP 地址与分析时使用的相同），其中包含需要生成其报告的已分析 VM。 请注意，如果在分析时使用了 vCenter 服务器，则不能使用 vSphere 服务器来生成报告，反之亦然。|
@@ -160,23 +163,23 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 | -EndDate | （可选）采用 MM-DD-YYYY:HH:MM 格式（24 小时制）的结束日期和时间。 “EndDate”必须与“StartDate”一起指定。 如果指定 EndDate，会根据从 StartDate 到 EndDate 收集的分析数据生成报告。 |
 | -GrowthFactor | （可选）增长系数，以百分比表示。 默认值为 30%。 |
 | -UseManagedDisks | （可选）UseManagedDisks - 是/否。 默认值为“是”。 计算可放置到单个存储帐户中的虚拟机数量时要考虑到：对虚拟机进行的故障转移/测试性故障转移是在托管磁盘而不是非托管磁盘上完成的。 |
-|-SubscriptionId |（可选）订阅 GUID。 可以根据订阅、与订阅相关联的套餐、特定的目标 Azure 区域和指定的货币，按照最新的价格使用此参数生成成本估算报表。|
+|-SubscriptionId |（可选）订阅 GUID。 请注意，当你需要根据订阅、与订阅相关联的套餐使用“指定的货币”中的特定目标 Azure 区域的最新价格生成成本估算报告时，此参数是必需的。|
 |-TargetRegion|（可选）充当复制目标的 Azure 区域。 由于 Azure 的成本因区域而异，因此可使用此参数来生成特定目标 Azure 区域的报表。<br>默认值为 WestUS2 或上次使用的目标区域。<br>请参阅[支持的目标区域](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions)的列表。|
 |-OfferId|（可选）与给定订阅关联的套餐。 默认值为 MS-AZR-0003P（即用即付）。|
 |-Currency|（可选）在生成的报表中显示的成本所采用的货币。 默认为美元 ($) 或上次使用的货币。<br>请参阅[支持的货币](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies)的列表。|
 
 默认情况下，此工具配置为在分析后为最多 1000 个 VM 生成报告。 若要更改限制，可以更改 *ASRDeploymentPlanner.exe.config* 文件中的 MaxVMsSupported 项值。
-```
+```xml
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
 ```
 
-#### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>示例 1：当分析数据位于本地驱动器上时，使用默认值生成报告
+#### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>示例 1：当分析数据位于本地驱动器上时，使用默认值生成报表
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”
 ```
 
-#### <a name="example-2-generate-a-report-when-the-profiled-data-is-on-a-remote-server"></a>示例 2：当分析数据位于远程服务器上时生成报告
+#### <a name="example-2-generate-a-report-when-the-profiled-data-is-on-a-remote-server"></a>示例 2：当分析数据位于远程服务器上时生成报表
 应该对远程目录拥有读/写访问权限。
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “\\PS1-W2K12R2\vCenter1_ProfiledData” -VMListFile “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
@@ -187,12 +190,12 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Serve
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -Bandwidth 100 -GoalToCompleteIR 24
 ```
 
-#### <a name="example-4-generate-a-report-with-a-5-percent-growth-factor-instead-of-the-default-30-percent"></a>示例 4：使用 5% 的增长系数而不是默认值 30% 来生成报告
+#### <a name="example-4-generate-a-report-with-a-5-percent-growth-factor-instead-of-the-default-30-percent"></a>示例 4：使用 5% 的增长系数而不是默认值 30% 来生成报表
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualzation VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -GrowthFactor 5
+ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -GrowthFactor 5
 ```
 
-#### <a name="example-5-generate-a-report-with-a-subset-of-profiled-data"></a>示例 5：使用分析数据的子集生成报告
+#### <a name="example-5-generate-a-report-with-a-subset-of-profiled-data"></a>示例 5：使用分析数据的子集生成报表
 例如，有 30 天的分析数据，但只想生成 20 天的报告。
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -StartDate  01-10-2017:12:30 -EndDate 01-19-2017:12:30
@@ -204,6 +207,8 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Serve
 ```
 
 #### <a name="example-7-generate-a-report-for-south-india-azure-region-with-indian-rupee-and-specific-offer-id"></a>示例 7：使用印度卢比和特定的产品/服务 ID，生成一个针对“印度南部”Azure区域的报表
+
+请注意，订阅 ID 是生成特定货币的成本报告所必需的。
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -SubscriptionID 4d19f16b-3e00-4b89-a2ba-8645edf42fe5 -OfferID MS-AZR-0148P -TargetRegion southindia -Currency INR
 ```
@@ -214,7 +219,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 该工具默认使用分析所有 VM 期间收集的读/写 IOPS、写入 IOPS 和数据变动量的第 95 百分位值。 此指标可确保系统不使用第 100 百分位峰值（在发生临时事件时，可能会出现在 VM 中）来确定目标存储帐户和源带宽需求。 例如，临时事件可能是一天运行一次的备份作业、定期发生的数据库索引编制或分析报告生成活动，或者其他类似的短期时间点事件。
 
 使用第 95 百分位值可以反映真实的工作负荷特征，使这些工作负荷在 Azure 中运行时提供最佳性能。 我们预计不需要更改此数字。 如果更改此值（例如更改为第 90 百分位），则可在默认文件夹中更新并保存配置文件“ASRDeploymentPlanner.exe.config”，针对现有的分析数据生成新报告。
-```
+```xml
 <add key="WriteIOPSPercentile" value="95" />      
 <add key="ReadWriteIOPSPercentile" value="95" />      
 <add key="DataChurnPercentile" value="95" />
@@ -252,7 +257,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 
 `ASRDeploymentPlanner.exe -Operation GetThroughput /?`
 
-|参数名称 | Description |
+|参数名称 | 说明 |
 |-|-|
 | -Operation | GetThroughput |
 |-Virtualization|指定虚拟化类型（VMware 或 Hyper-V）。|

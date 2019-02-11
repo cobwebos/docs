@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: d2b6b7a5d2baf9e46cca18aec97f31beda1e2a38
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a992851deda0659509c0ee4ea5de76b19734f017
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736727"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867593"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>使用 StorSimple Device Manager 管理 StorSimple 虚拟阵列的存储帐户凭据
 
@@ -69,13 +69,13 @@ StorSimple 虚拟阵列的 StorSimple Device Manager 服务边栏选项卡的“
 
 1. 导航到 Device Manager 服务，选择并双击它。 这会打开“概述”边栏选项卡。
 2. 在“配置”部分中，选择“存储帐户凭据”。
-3. 单击 **“添加”**。
+3. 单击“添加”。
 4. 在“添加存储帐户”边栏选项卡中，执行以下操作：
    
     1. 对于“订阅”，选择“当前”。
     2. 提供 Azure 存储帐户的名称。
     3. 选择“启用”，创建用于在 StorSimple 设备和云之间传输网络通信的安全通道。 仅当要在私有云中操作时，才选择“禁用”。
-    4. 单击 **“添加”**。 成功创建存储帐户后，将收到通知。<br></br>
+    4. 单击“添加”。 成功创建存储帐户后，将收到通知。<br></br>
    
         ![添加现有的存储帐户凭据](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
@@ -83,7 +83,7 @@ StorSimple 虚拟阵列的 StorSimple Device Manager 服务边栏选项卡的“
 
 1. 导航到 Device Manager 服务，选择并双击它。 这会打开“概述”边栏选项卡。
 2. 在“配置”部分中，选择“存储帐户凭据”。 这会列出与 StorSimple Device Manager 服务关联的任何现有存储帐户凭据。
-3. 单击 **“添加”**。
+3. 单击“添加”。
 4. 在“添加存储帐户”边栏选项卡中，执行以下操作：
    
     1. 对于“订阅”，选择“其他”。
@@ -94,7 +94,7 @@ StorSimple 虚拟阵列的 StorSimple Device Manager 服务边栏选项卡的“
    
     4. 若要启用 SSL，请单击“启用”按钮以创建用于在 StorSimple Device Manager 服务和云之间传输网络通信的安全通道。 仅当要在私有云中操作时，才单击“禁用”按钮。
    
-    5. 单击 **“添加”**。 成功创建存储帐户凭据后，将收到通知。
+    5. 单击“添加”。 成功创建存储帐户凭据后，将收到通知。
 
 5. 新创建的存储帐户凭据会显示在 StorSimple 配置 Device Manager 服务边栏选项卡上的“存储帐户凭据”下。
    
@@ -148,7 +148,7 @@ StorSimple 虚拟阵列的 StorSimple Device Manager 服务边栏选项卡的“
     
 4. 在 StorSimple Device Manager 服务中，需要更新前面在 Microsoft Azure 存储服务中更改的密钥。 在“同步存储帐户密钥”边栏选项卡中，如果更改了主访问密钥（重新生成），请单击“主”，并单击“同步密钥”。 如果更改了辅助密钥，请单击“辅助”，并单击“同步密钥”。
    
-    ![同步访问密钥](./media/storsimple-virtual-array-manage-storage-accounts/ova-sync-acess-key.png)
+    ![同步访问密钥](./media/storsimple-virtual-array-manage-storage-accounts/ova-sync-access-key.png)
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。

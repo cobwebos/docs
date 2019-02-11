@@ -1,27 +1,26 @@
 ---
-title: 步骤 6：访问机器学习工作室 Web 服务 | Microsoft Docs
-description: 开发预测解决方案演练的步骤 6：访问活动的 Azure 机器学习工作室 Web 服务。
+title: 步骤 6：访问 Web 服务 - Azure 机器学习工作室 | Microsoft Docs
+description: 开发预测解决方案演练的步骤 6：访问可用的 Azure 机器学习工作室 Web 服务。
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 editor: cgronlun
 ms.assetid: 6a65c89a-40ab-4673-8dd8-8eee0a150e3b
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 5402f228a650a1a3d3282180a52f9e9f9cc10a3a
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b84d3be06d1d560776a3fcc86668e20bf58d3b0b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52306448"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467418"
 ---
 # <a name="walkthrough-step-6-access-the-azure-machine-learning-studio-web-service"></a>演练步骤 6：访问 Azure 机器学习工作室 Web 服务
 
@@ -30,7 +29,7 @@ ms.locfileid: "52306448"
 1. [创建机器学习工作区](walkthrough-1-create-ml-workspace.md)
 2. [上传现有数据](walkthrough-2-upload-data.md)
 3. [创建新试验](walkthrough-3-create-new-experiment.md)
-4. [定型和评估模型](walkthrough-4-train-and-evaluate-models.md)
+4. [培训和评估模型](walkthrough-4-train-and-evaluate-models.md)
 5. [部署 Web 服务](walkthrough-5-publish-web-service.md)
 6. **访问 Web 服务**
 

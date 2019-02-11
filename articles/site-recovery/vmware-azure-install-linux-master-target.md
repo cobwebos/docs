@@ -1,17 +1,19 @@
 ---
 title: 安装 Linux 主目标服务器以便故障回复到本地站点 | Microsoft Docs
 description: 了解如何设置 Linux 主目标服务器，以便在使用 Azure Site Recovery 将 VMware VM 灾难恢复到 Azure 期间故障回复到本地站点。
-author: nsoneji
+author: mayurigupta13
+services: site-recovery
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/11/2018
-ms.author: nisoneji
-ms.openlocfilehash: 415b50b94052e7d428ddfa55d5288c8954a3ff1a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 11/27/2018
+ms.author: mayg
+ms.openlocfilehash: 68892faf707a767ba9c25ce7317f775708e61a90
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212363"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217979"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>安装用于故障回复的 Linux 主目标服务器
 将虚拟机故障转移到 Azure 后，可将虚拟机故障回复到本地站点。 若要故障回复，需要在本地站点中重新保护 Azure 中的虚拟机。 对于此过程，需要安装一个本地主目标服务器用于接收流量。 
@@ -20,6 +22,7 @@ ms.locfileid: "50212363"
 
 > [!IMPORTANT]
 > 从主目标服务器版本 9.10.0 开始，只能在 Ubuntu 16.04 服务器上安装最新的主目标服务器。 CentOS6.6 服务器不支持新安装。 但是，可继续使用 9.10.0 版本升级旧版主目标服务器。
+> 不支持 LVM 上的主目标服务器。
 
 ## <a name="overview"></a>概述
 本文提供 Linux 主目标的相关安装说明。
@@ -38,10 +41,10 @@ ms.locfileid: "50212363"
 ## <a name="sizing-guidelines-for-creating-master-target-server"></a>创建主目标服务器时的大小调整准则
 
 根据下列大小调整准则创建主目标：
-- RAM：6GB 或更多
+- **RAM**：6 GB 或更多
 - **OS 磁盘大小**：100 GB 或更多（用于安装 OS）
-- 保留驱动器的附加磁盘大小：1TB
-- CPU 内核数：4 个内核或更多
+- **保留驱动器的附加磁盘大小**：1 TB
+- **CPU 核心数**：4 个核心或更多
 
 支持以下受支持的 Ubuntu 内核。
 
@@ -59,7 +62,7 @@ ms.locfileid: "50212363"
 
 按下列步骤安装 Ubuntu 16.04.2 64 位操作系统。
 
-1.   转至[下载链接](https://www.ubuntu.com/download/server/thank-you?version=16.04.2&architecture=amd64)，并选择最接近的镜像，从中下载 Ubuntu 16.04.2 最简版 64 位 ISO。
+1.   转至[下载链接](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso)，并选择最接近的镜像，从中下载 Ubuntu 16.04.2 最简版 64 位 ISO。
 将 Ubuntu 16.04.2 最简版 64 位 ISO 保存在 DVD 驱动器中，并启动系统。
 
 1.  选择“英语”作为首选语言，再按 Enter。
@@ -127,7 +130,7 @@ ms.locfileid: "50212363"
 
     ![选择软件](./media/vmware-azure-install-linux-master-target/image19-ubuntu.png)
 
-1. 在安装 GRUB 启动加载程序的选项中，选择“是”，再按 Enter。
+1. 在选择是否安装 GRUB 启动加载程序时，选择“是”，再按 Enter。
      
     ![GRUB 启动安装程序](./media/vmware-azure-install-linux-master-target/image20.png)
 
@@ -182,7 +185,7 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
 #### <a name="download-and-install-additional-packages"></a>下载并安装其他包
 
 > [!NOTE]
-> 在下载并安装其他包之前，请确保已建立 Internet 连接。 如果没有 Internet 连接，需手动找到并安装这些 RPM 包。
+> 在下载并安装其他包之前，请确保已建立 Internet 连接。 如果没有 Internet 连接，需手动找到并安装这些 Deb 包。
 
  `apt-get install -y multipath-tools lsscsi python-pyasn1 lvm2 kpartx`
 

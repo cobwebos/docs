@@ -6,18 +6,19 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: cd3d159e4482b43c6356ab7b657a79fa59159c60
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.custom: seodec18
+ms.openlocfilehash: 7e7e362a2536f7adf2a7d68b096ab76d73f15a61
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214981"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496221"
 ---
-# <a name="qna-maker-rest-api-with-nodejs"></a>QnA Maker REST API 与 Node.js 
+# <a name="how-to-use-the-qna-maker-rest-api-with-nodejs"></a>如何将 QnA Maker REST API 与 Node.js 配合使用 
 <a name="HOLTop"></a>
 
 本文介绍如何将 [Microsoft QnA Maker API](../Overview/overview.md)  与 Node.js 配合使用来执行下列操作。
@@ -37,7 +38,7 @@ ms.locfileid: "50214981"
 - [获取当前的字变更集。](#GetAlterations)
 - [替换当前的字变更集。](#PutAlterations)
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -56,7 +57,7 @@ ms.locfileid: "50214981"
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -252,7 +253,7 @@ create_kb (path, content, function (result) {
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -453,7 +454,7 @@ Press any key to continue.
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -565,7 +566,7 @@ publish_kb (path, '', function (result) {
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -698,7 +699,7 @@ replace_kb (path, content, function (result) {
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -831,7 +832,7 @@ get_qna (path, function (result) {
 1. 将 `kb` 值替换为要从中查询答案的知识库的 ID。 请注意，此知识库必须已经使用 [Publish](#Publish) 方法发布。
 1. 运行该程序。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -960,7 +961,7 @@ get_answers (method, content, function (result) {
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1075,7 +1076,7 @@ get_kb (path, function (result) {
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1203,7 +1204,7 @@ Press any key to continue.
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1315,7 +1316,7 @@ delete_kb (path, '', function (result) {
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1416,7 +1417,7 @@ get_keys (path, function (result) {
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1542,7 +1543,7 @@ refresh_keys (path, content, function (result) {
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1649,7 +1650,7 @@ get_alterations (path, function (result) {
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');

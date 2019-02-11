@@ -10,13 +10,13 @@ author: ajlam
 ms.author: andrela
 ms.reviewer: v-masebo
 manager: craigg
-ms.date: 11/20/2018
-ms.openlocfilehash: afa975a593fd962050c9f894ec091d7f64579138
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.date: 12/01/2018
+ms.openlocfilehash: 3a036ac1260923a5030b8b0c3345482346c183fe
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52332606"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563112"
 ---
 # <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>快速入门：使用 Java 查询 Azure SQL 数据库
 
@@ -27,8 +27,6 @@ ms.locfileid: "52332606"
 若要完成此示例，请确保具备以下先决条件：
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-
-- 针对所用计算机的公共 IP 地址制定[服务器级防火墙规则](sql-database-get-started-portal-firewall.md)
 
 - 已为操作系统安装与 Java 相关的软件：
 
@@ -44,13 +42,13 @@ ms.locfileid: "52332606"
 
 ## <a name="create-the-project"></a>创建项目
 
-1. 从 Terminal 创建名为 sqltest 的新 Maven 项目。
+1. 从命令提示符创建名为 sqltest 的新 Maven 项目。
 
     ```bash
     mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=sqltest" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0" --batch-mode
     ```
 
-1. 将目录更改为 *sqltest*，然后使用喜欢的文本编辑器打开 pom.xml。 使用以下代码，将 **Microsoft JDBC Driver for SQL Server** 添加到项目的依赖项。
+1. 将文件夹更改为 *sqltest*，然后使用喜欢的文本编辑器打开 pom.xml。 使用以下代码，将 **Microsoft JDBC Driver for SQL Server** 添加到项目的依赖项。
 
     ```xml
     <dependency>
@@ -93,10 +91,10 @@ ms.locfileid: "52332606"
         public static void main(String[] args) {
 
             // Connect to database
-            String hostName = "your_server.database.windows.net";
-            String dbName = "your_database";
-            String user = "your_username";
-            String password = "your_password";
+            String hostName = "your_server.database.windows.net"; // update me
+            String dbName = "your_database"; // update me
+            String user = "your_username"; // update me
+            String password = "your_password"; // update me
             String url = String.format("jdbc:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;"
                 + "hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
             Connection connection = null;
@@ -139,14 +137,14 @@ ms.locfileid: "52332606"
 
 ## <a name="run-the-code"></a>运行代码
 
-1. 在命令提示符下运行此程序。
+1. 在命令提示符下运行此应用。
 
     ```bash
     mvn package -DskipTests
     mvn -q exec:java "-Dexec.mainClass=com.sqldbsamples.App"
     ```
 
-1. 验证是否已返回前 20 行，然后关闭应用程序窗口。
+1. 验证是否返回了前 20 行，然后关闭应用窗口。
 
 ## <a name="next-steps"></a>后续步骤
 

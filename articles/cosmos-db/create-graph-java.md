@@ -1,22 +1,19 @@
 ---
-title: 使用 Java 创建 Azure Cosmos DB 图形数据库 | Microsoft Docs
+title: 使用 Java 创建 Azure Cosmos DB 图形数据库
 description: 演示一个可以用来连接到 Azure Cosmos DB 并使用 Gremlin 查询其中图形数据的 Java 代码示例。
-services: cosmos-db
 author: luisbosquez
-manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-graph
-ms.custom: quick start connect, mvc
+ms.subservice: cosmosdb-graph
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: lbosq
-ms.openlocfilehash: bd857cbef3b052e85d0b666f211d5f158b8931c2
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 54a371b5cd5049ba7ac73e3b49408c30a74a8f78
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420874"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040687"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB：使用 Java 和 Azure 门户创建图形数据库
 
@@ -31,7 +28,7 @@ ms.locfileid: "50420874"
 
 Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 使用 Azure Cosmos DB，可以快速创建和查询托管的文档、表和图形数据库。 
 
-本快速入门使用适用于 Azure Cosmos DB 的 Azure 门户工具，创建简单的图形数据库。 本快速入门还介绍了如何使用 [Gremlin API](graph-introduction.md) 数据库（该数据库使用 OSS [Apache TinkerPop](http://tinkerpop.apache.org/) 驱动程序）快速创建 Java 控制台应用。 本快速入门中的说明适用于任何能够运行 Java 的操作系统。 借助本快速入门，可以熟悉如何通过 UI 或编程方式（以首选方式为准）创建和修改图形。 
+本快速入门使用适用于 Azure Cosmos DB 的 Azure 门户工具，创建简单的图形数据库。 本快速入门还介绍了如何使用 [Gremlin API](graph-introduction.md) 数据库（该数据库使用 OSS [Apache TinkerPop](https://tinkerpop.apache.org/) 驱动程序）快速创建 Java 控制台应用。 本快速入门中的说明适用于任何能够运行 Java 的操作系统。 借助本快速入门，可以熟悉如何通过 UI 或编程方式（以首选方式为准）创建和修改图形。 
 
 ## <a name="prerequisites"></a>先决条件
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -41,7 +38,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 * [Java 开发工具包 (JDK) 1.7+](https://aka.ms/azure-jdks)
     * 在 Ubuntu 上运行 `apt-get install default-jdk`，以便安装 JDK。
     * 请确保设置 JAVA_HOME 环境变量，使之指向在其中安装了 JDK 的文件夹。
-* [下载](http://maven.apache.org/download.cgi)和[安装](http://maven.apache.org/install.html) [Maven](http://maven.apache.org/) 二进制存档
+* [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html) [Maven](https://maven.apache.org/) 二进制存档
     * 在 Ubuntu 上，可以通过运行 `apt-get install maven` 来安装 Maven。
 * [Git](https://www.git-scm.com/)
     * 在 Ubuntu 上，可以通过运行 `sudo apt-get install git` 来安装 Git。
@@ -109,7 +106,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 现在，返回到 Azure 门户，获取连接信息，并将信息复制到应用程序中。 借助这些设置，应用程序可以与托管的数据库进行通信。
 
-1. 在 [Azure 门户](http://portal.azure.com/)中，单击“密钥”。 
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击“密钥”。 
 
     复制 URI 值的第一部分。
 

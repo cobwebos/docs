@@ -5,17 +5,17 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: include
 ms.custom: include file
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 1cc382049261c82b3aa085a21fe31f3d562b292b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 732bfd1c9139ab66411181fd18803bb311fa1cd2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47044095"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55480247"
 ---
 > [!NOTE] 
-> 完整的解决方案文件可从 [**Azure-Samples/cognitive-services-qnamaker-python** Github 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-python)获得。
+> 完整的解决方案文件可从 [Azure-Samples/cognitive-services-qnamaker-python GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-python)获得。

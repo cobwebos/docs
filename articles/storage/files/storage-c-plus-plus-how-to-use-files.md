@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renashahmsft
-ms.component: files
-ms.openlocfilehash: f2b6a03ce4e2c03f148fda67cfad1c4d51636b7a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: files
+ms.openlocfilehash: ee6f2c46bf8faa04cbb16f463d12991ee83d8603
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234963"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457692"
 ---
 # <a name="develop-for-azure-files-with-c"></a>使用 C++ 针对 Azure 文件进行开发
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "51234963"
 若要安装用于 C++ 的 Azure 存储客户端 2.4.0，可以使用以下方法之一：
 
 * **Linux：** 按照[适用于 C++ 的 Azure 存储客户端库自述文件](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)页中提供的说明操作。
-* **Windows：** 在 Visual Studio 中，单击“工具”&gt;“NuGet 包管理器”&gt;“程序包管理器控制台”。 在 [NuGet 包管理器控制台](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)中，键入以下命令，并按 **ENTER**。
+* **Windows**：在 Visual Studio 中，单击“工具”&gt;“NuGet 包管理器”&gt;“包管理器控制台”。 在 [NuGet 包管理器控制台](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)中，键入以下命令，并按 **ENTER**。
   
 ```
 Install-Package wastorage
@@ -159,7 +159,7 @@ azure::storage::cloud_file_directory root_dir =
   share.get_root_directory_reference();
 
 // Output URI of each item.
-azure::storage::list_file_and_diretory_result_iterator end_of_results;
+azure::storage::list_file_and_directory_result_iterator end_of_results;
 
 for (auto it = directory.list_files_and_directories(); it != end_of_results; ++it)
 {

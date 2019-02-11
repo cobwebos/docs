@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: a4c4017d7fa798559817c281d159148ec675d158
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 400ae8ffe86b5ba66a53835c720f911ddb889bd9
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281347"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386496"
 ---
 # <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>通过查询 Azure Log Analytics 监视 Azure HDInsight 群集
 
@@ -46,7 +46,7 @@ ms.locfileid: "51281347"
 
 5. 在左窗格的“类型”下选择要深入了解的指标，然后选择“应用”。 以下屏幕快照显示已选定 `metrics_resourcemanager_queue_root_default_CL` 类型。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 可能需要选择“[+]更多”按钮来查找所需指标。 此外，“应用”按钮位于列表底部，因此必须向下滚动才能看到它。
 
     请注意，文本框中的查询改为以下屏幕截图中突出显示的框中的内容：
@@ -115,7 +115,7 @@ ms.locfileid: "51281347"
 1. 从 Azure 门户打开 Log Analytics 工作区。
 2. 在左侧菜单中，选择“警报”。
 3. 选择要编辑或删除的警报。
-4. 可选择以下选项：“保存”、“放弃”、“禁用”和“删除”。
+4. 可以使用以下选项：**保存**、**放弃**、**禁用**和**删除**。
 
     ![HDInsight Log Analytics 警报删除编辑](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 

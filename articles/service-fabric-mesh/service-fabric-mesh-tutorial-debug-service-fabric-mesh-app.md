@@ -12,21 +12,21 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/18/2018
+ms.date: 10/31/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 27e4c8f6ac24d40a6afacf10175413745f5151d9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6e7f6499a78b21ad81af5d541966e18090467532
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997006"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787624"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>教程：调试在本地开发群集中运行的 Service Fabric 网格应用程序
 
 本教程是系列教程的第二部分，介绍如何生成并调试本地开发群集上的 Azure Service Fabric 网格应用。
 
-本教程的内容：
+在本教程中，将学习：
 
 > [!div class="checklist"]
 > * 生成 Azure Service Fabric 网格应用程序时会发生什么情况
@@ -74,7 +74,9 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 
 完成本地部署并且 Visual Studio 运行应用后，浏览器窗口中会打开默认的示例网页。
 
-**调试提示**
+## <a name="debugging-tips"></a>调试提示
+
+按照[优化 Visual Studio 性能](service-fabric-mesh-howto-optimize-vs.md)中的说明，大大加快第一次调试运行 (F5) 速度。
 
 目前存在导致调用 `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` 无法连接到服务的问题。 只要主机 IP 地址发生变化，就会发生这种情况。 若要解决此问题：
 
@@ -91,12 +93,12 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 ### <a name="debug-in-visual-studio"></a>在 Visual Studio 中进行调试
 
 在 Visual Studio 中调试 Service Fabric 网格应用程序时，使用的是本地 Service Fabric 开发群集。 若要查看如何从后端服务检索待办事项，请调试到 OnGet() 方法中。
-1. 在“WebFrontEnd”项目中，打开“页面” > “Index.cshtml” > “Index.cshtml.cs”，在 **Get** 方法（第 17 行）中设置一个断点。
-2. 在“ToDoService”项目中打开“TodoController.cs”，在 **OnGet** 方法（第 15 行）中设置一个断点。
+1. 在“WebFrontEnd”项目中，打开“页面” > “Index.cshtml” > “Index.cshtml.cs”，在 **OnGet** 方法（第 17 行）中设置一个断点。
+2. 在“ToDoService”项目中打开“TodoController.cs”，在 **Get** 方法（第 15 行）中设置一个断点。
 3. 返回浏览器并刷新页面。 命中 Web 前端 `OnGet()` 方法中的断点。 可以检查 `backendUrl` 变量，以查看 **service.yaml** 文件中定义的环境变量如何合并到用于联系后端服务的 URL 中。
 4. 逐步执行 (F10) `client.GetAsync(backendUrl).GetAwaiter().GetResult())` 调用，直到命中控制器的 `Get()` 断点。 在此方法中，可以查看如何从内存中列表检索待办事项列表。
 5. 完成后，按 **Shift+F5** 停止在 Visual Studio 中调试项目。
- 
+
 ## <a name="next-steps"></a>后续步骤
 
 本教程的此部分介绍了：

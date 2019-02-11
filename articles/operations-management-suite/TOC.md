@@ -36,7 +36,7 @@
 #### [代理运行状况](oms-solution-agenthealth.md)
 #### [警报管理](../azure-monitor/platform/alert-management-solution.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Azure 网络分析](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-#### [容器](../log-analytics/log-analytics-containers.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+#### [容器](../azure-monitor/insights/containers.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [密钥保管库分析](../azure-monitor/insights/azure-key-vault.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [网络性能监视器](../azure-monitor/insights/network-performance-monitor.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Office 365](oms-solution-office-365.md)

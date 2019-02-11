@@ -6,18 +6,18 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: erhopf
-ms.openlocfilehash: e302c1aa1cd4021b0d449fd981181b790546c0f8
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: f9fe1f40f758ead06c1e86fc0daeb64b72c5fd8b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647470"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476496"
 ---
-# <a name="tutorial-write-a-wpf-application-for-translator-text-using-c35"></a>教程：使用 C# 编写用于文本翻译的 WPF 应用程序
+# <a name="tutorial-write-a-wpf-application-for-translator-text-using-c35"></a>教程：使用 C&#35; 编写 WPF 应用程序以进行文本翻译
 
 在本教程中，将使用文本翻译 API (V3) 构建交互式文本翻译工具，该 API 是 Azure 中 Microsoft 认知服务的一部分。 将了解如何执行以下操作：
 

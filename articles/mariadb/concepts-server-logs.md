@@ -3,17 +3,15 @@ title: Azure Database for MariaDB 的服务器日志
 description: 介绍了 Azure Database for MariaDB 中提供的日志，以及用于启用不同日志记录级别的可用参数。
 author: rachel-msft
 ms.author: raagyema
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d982af64517ed452d907f62a39e975d472951392
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a26f61eb199d8f370e1a9dd010932dc868b74ae4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992977"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545172"
 ---
 # <a name="server-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的服务器日志
 在 Azure Database for MariaDB 中，慢查询日志可供用户使用。 不支持访问事务日志。 可以使用慢查询日志来查明性能瓶颈以进行故障排除。

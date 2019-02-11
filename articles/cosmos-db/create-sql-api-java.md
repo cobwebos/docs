@@ -1,27 +1,25 @@
 ---
-title: 使用 Java 创建 Azure Cosmos DB 文档数据库 | Microsoft Docs | Microsoft Docs'
+title: 使用 Java 创建 Azure Cosmos DB 文档数据库
 description: 演示一个可以用来连接到 Azure Cosmos DB SQL API 并进行查询的 Java 代码示例
-services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
-ms.custom: quick start connect, mvc, devcenter
+ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 10/24/2018
-ms.author: moderakh
-ms.openlocfilehash: 399db2d7ed5d1c94fe359cb55e9b90df3d99e003
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.author: sngun
+ms.openlocfilehash: 8fd99b1c68be08ca7c2f4b7cdeaaa8b5b64859e4
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421282"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197414"
 ---
 # <a name="create-and-manage-resources-of-an-azure-cosmos-db-sql-api-account-using-a-java-application"></a>使用 Java 应用程序创建和管理 Azure Cosmos DB SQL API 帐户的资源
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
+> * [.NET（预览版）](create-sql-api-dotnet-preview.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
@@ -39,7 +37,7 @@ ms.locfileid: "50421282"
 * [Java 开发工具包 (JDK) 1.8+](https://aka.ms/azure-jdks)
     * 在 Ubuntu 上运行 `apt-get install default-jdk`，以便安装 JDK。
     * 请确保设置 JAVA_HOME 环境变量，使之指向在其中安装了 JDK 的文件夹。
-* [下载](http://maven.apache.org/download.cgi)和[安装](http://maven.apache.org/install.html) [Maven](http://maven.apache.org/) 二进制存档
+* [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html) [Maven](https://maven.apache.org/) 二进制存档
     * 在 Ubuntu 上，可以通过运行 `apt-get install maven` 来安装 Maven。
 * [Git](https://www.git-scm.com/)
     * 在 Ubuntu 上，可以通过运行 `sudo apt-get install git` 来安装 Git。
@@ -77,7 +75,7 @@ ms.locfileid: "50421282"
 
 此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 否则，可以跳到[运行应用](#run-the-app)。 
 
-* `AsyncDocumentClient` 初始化。 [AsyncDocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client) 为 Azure Cosmos DB 数据库服务提供客户端逻辑表示。 此客户端用于对服务配置和执行请求。
+* `AsyncDocumentClient` 初始化。 [AsyncDocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient) 为 Azure Cosmos DB 数据库服务提供客户端逻辑表示。 此客户端用于对服务配置和执行请求。
 
     ```java
     client = new AsyncDocumentClient.Builder()
@@ -88,7 +86,7 @@ ms.locfileid: "50421282"
              .build();
     ```
 
-* [Database](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._database) 创建。
+* [Database](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.database) 创建。
 
     ```java
     Database databaseDefinition = new Database();
@@ -99,7 +97,7 @@ ms.locfileid: "50421282"
             .await();
     ```
 
-* [DocumentCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._document_collection) 创建。
+* [DocumentCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.documentcollection) 创建。
 
     ```java
     DocumentCollection collectionDefinition = new DocumentCollection();
@@ -112,7 +110,7 @@ ms.locfileid: "50421282"
             .await();
     ```
 
-* 使用 [createDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._document) 方法创建文档。
+* 使用 [createDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.document) 方法创建文档。
 
     ```java
     // Any Java object within your code
@@ -129,7 +127,7 @@ ms.locfileid: "50421282"
 
     ```
 
-* 使用 [queryDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client.querydocuments?view=azure-java-stable) 方法，对 JSON 执行 SQL 查询。
+* 使用 [queryDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.querydocuments?view=azure-java-stable) 方法，对 JSON 执行 SQL 查询。
 
     ```java
     FeedOptions queryOptions = new FeedOptions();

@@ -1,5 +1,5 @@
 ---
-title: 如何在 Azure 时序见解中使用 API 进行身份验证和授权
+title: 如何在 Azure 时序见解中使用 API 进行身份验证和授权 | Microsoft Docs
 description: 本文介绍如何为调用 Azure 时序见解 API 的自定义应用程序配置身份验证和授权。
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: cbd851737d7122ff8b0c75eb2050ab481c8cecc0
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.custom: seodec18
+ms.openlocfilehash: b9f3561155038e91bc278f5d7ddc995adb53ad78
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958459"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197991"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure 时序见解 API 的身份验证和授权
 
@@ -105,7 +106,7 @@ ms.locfileid: "49958459"
 
 ## <a name="next-steps"></a>后续步骤
 - 有关调用时序见解 API 的示例代码，请参阅[使用 C# 查询数据](time-series-insights-query-data-csharp.md)。
-- 有关 API 参考信息，请参阅[查询 API 参考](/rest/api/time-series-insights/time-series-insights-reference-queryapi)。
+- 有关 API 参考信息，请参阅[查询 API 参考](/rest/api/time-series-insights/ga-query-api)。
 
 > [!div class="nextstepaction"]
 > [创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)

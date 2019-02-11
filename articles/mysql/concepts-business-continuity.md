@@ -1,20 +1,17 @@
 ---
 title: 有关使用 Azure Database for MySQL 确保业务连续性的概述
 description: 有关使用 Azure Database for MySQL 确保业务连续性的概述。
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 8d0a8ac1aedcac26f6ac67e0e1f2a9d265a9b576
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9b9e2362553eb93cbb111b70cf29a1cc1524e77e
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714337"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554531"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql"></a>有关使用 Azure Database for MySQL 确保业务连续性的概述
 
@@ -49,7 +46,7 @@ Azure 数据中心会罕见地发生中断。 发生中断时，可能仅导致�
 另一个选项是使用 Azure Database for MySQL 的异地还原功能，该功能使用异地冗余备份来还原服务器。 即使托管你的服务器的区域处于脱机状态，也可访问这些备份。 可以使用这些备份还原到任何其他区域并使服务器恢复联机。
 
 > [!IMPORTANT]
-> 只有当为服务器预配了异地冗余备份存储时，异地还原才是可行的。 如果要从现有服务器的本地冗余切换到异地冗余备份，必须使用现有服务器的 pg_dump 进行转储，然后将其还原到配置了异地冗余的新建服务器中。
+> 只有当为服务器预配了异地冗余备份存储时，异地还原才是可行的。 如果要从现有服务器的本地冗余切换到异地冗余备份，必须使用现有服务器的 mysqldump 进行转储，然后将其还原到配置了异地冗余备份的新建服务器中。
 
 ## <a name="next-steps"></a>后续步骤
 

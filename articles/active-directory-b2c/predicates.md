@@ -3,19 +3,19 @@ title: Predicates 和 PredicateValidations - Azure Active Directory B2C | Micros
 description: 针对 Azure Active Directory B2C 标识体验框架架构的社交帐户声明转换示例。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: d00bbddc6523f75b3208a41296b5b94f9f06a5ed
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.subservice: B2C
+ms.openlocfilehash: 9bd015076cdbd70768b1359fac0cfc893d871513
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432165"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149588"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predicates 和 PredicateValidations
 
@@ -33,33 +33,33 @@ Predicate 元素定义基本验证，用以检查声明类型的值并返回 `tr
 
 Predicates 元素包含以下元素：
 
-| 元素 | 出现次数 | 描述 |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | Predicate | 1:n | 谓词列表。 | 
 
 Predicate 元素包含以下属性：
 
-| 属性 | 必选 | 描述 |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于谓词的标识符。 其他元素可以在策略中使用此标识符。 |
-| Method | 是 | 用于验证的方法类型。 可能的值为：IsLengthRange、MatchesRegex、IncludesCharacters 或 IsDateRange。 IsLengthRange 值检查字符串声明值的长度是否在指定的最小和最大参数的范围内。 MatchesRegex 值检查字符串声明值是否与正则表达式相匹配。 IncludesCharacters 值检查字符串声明值是否包含字符集。 IsDateRange 值检查日期声明值是否在指定的最小和最大参数范围内。 |
+| 方法 | 是 | 用于验证的方法类型。 可能的值：IsLengthRange、MatchesRegex、IncludesCharacters 或 IsDateRange。 IsLengthRange 值检查字符串声明值的长度是否在指定的最小和最大参数的范围内。 MatchesRegex 值检查字符串声明值是否与正则表达式相匹配。 IncludesCharacters 值检查字符串声明值是否包含字符集。 IsDateRange 值检查日期声明值是否在指定的最小和最大参数范围内。 |
 
 Predicate 元素包含以下元素：
 
-| 元素 | 出现次数 | 描述 |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | UserHelpText | 1:1 | 检查失败时向用户发送的错误消息。 此字符串可以使用[语言自定义](localization.md)进行本地化 |
-| parameters | 1:1 | 字符串验证的方法类型参数。 | 
+| parameters | 1:1 | 用于字符串验证的方法类型参数。 | 
 
 Parameters 元素包含以下元素：
 
-| 元素 | 出现次数 | 描述 |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | 参数 | 1:n | 用于字符串验证的方法类型参数。 | 
 
 Parameter 元素包含以下属性：
 
-| 元素 | 出现次数 | 描述 |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | ID | 1:1 | 该参数的标识符。 |
 
@@ -132,56 +132,56 @@ Parameter 元素包含以下属性：
 
 PredicateValidations 元素包含以下元素：
 
-| 元素 | 出现次数 | 描述 |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | PredicateValidation | 1:n | 谓词验证列表。 | 
 
 PredicateValidation 元素包含以下属性：
 
-| 属性 | 必选 | 描述 |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于谓词验证的标识符。 ClaimType 元素可以在策略中使用此标识符。 |
 
 PredicateValidation 元素包含以下元素：
 
-| 元素 | 出现次数 | 描述 |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | PredicateGroups | 1:n | 谓词组列表。 | 
 
 PredicateGroups 元素包含以下元素：
 
-| 元素 | 出现次数 | 描述 |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | PredicateGroup | 1:n | 谓词列表。 | 
 
 PredicateGroup 元素包含以下属性：
 
-| 属性 | 必选 | 描述 |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于谓词组的标识符。  |
 
 PredicateGroup 元素包含以下元素：
 
-| 元素 | 出现次数 | 描述 |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | UserHelpText | 1:1 |  谓词的说明，可以帮助用户了解应键入哪些值。 | 
 | PredicateReferences | 1:n | 谓词引用的列表。 | 
 
 PredicateReferences 元素包含以下属性：
 
-| 属性 | 必选 | 描述 |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | MatchAtLeast | 否 | 指定该值针对要接受的输入必须至少匹配多个谓词定义。 |
 
 PredicateReferences 元素包含以下元素：
 
-| 元素 | 出现次数 | 描述 |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | PredicateReference | 1:n | 对谓词的引用。 | 
 
 PredicateReference 元素包含以下属性：
 
-| 属性 | 必选 | 描述 |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于谓词验证的标识符。  |
 

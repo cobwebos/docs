@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: a9f5f22cbd6e7cb39e1abb2ef712ffcfc27f55a4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 908b7e40c0509d7034b86985ac0775635726a6b9
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406137"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329797"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>将 Cloud Foundry 与 Azure 集成
 
 [Cloud Foundry](https://docs.cloudfoundry.org/) 是在云提供程序的 IaaS 平台顶层运行的 PaaS 平台。 它跨云提供程序提供一致的应用程序部署体验。 此外，它还能与各种 Azure 服务集成，提供企业级的高可用性、可伸缩性和成本节省。
-[Cloud Foundry 有 6 个可在线灵活缩放的子系统](https://docs.cloudfoundry.org/concepts/architecture/)，包括：路由、身份验证、应用程序生命周期管理、服务管理、消息传递和监视。 对于每个子系统，可将 Cloud Foundry 配置为利用相应的 Azure 服务。 
+[Cloud Foundry 有 6个子系统](https://docs.cloudfoundry.org/concepts/architecture/)，可灵活联机缩放，包括：路由、身份验证，应用程序生命周期管理、服务管理、消息传送和监视。 对于每个子系统，可将 Cloud Foundry 配置为利用相应的 Azure 服务。 
 
 ![Azure 集成体系结构上的 Cloud Foundry](media/CFOnAzureEcosystem-colored.png)
 

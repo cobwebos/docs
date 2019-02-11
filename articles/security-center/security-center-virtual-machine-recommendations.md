@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/18/2018
+ms.date: 12/12/2018
 ms.author: rkarlin
-ms.openlocfilehash: 626b9199f3de6fe9aba03ba537aa6e6b6e28ba5c
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b77e814f9f339dff4539a04ab8b492e9777abe0d
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310917"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537641"
 ---
 # <a name="understand-azure-security-center-resource-recommendations"></a>了解 Azure 安全中心资源建议
 
@@ -76,7 +76,7 @@ ms.locfileid: "52310917"
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
 * [在 Azure 安全中心保护计算机和应用程序](security-center-virtual-machine-protection.md)
-* [在 Azure 安全中心中设置安全策略](security-center-azure-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
+* [在 Azure 安全中心中设置安全策略](tutorial-security-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。
 * [Azure 安全中心常见问题解答](security-center-faq.md) - 查找有关使用服务的常见问题。
 

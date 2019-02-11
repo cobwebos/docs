@@ -1,22 +1,22 @@
 ---
-title: 使用 Hive 查询在 Hive 表中浏览数据 | Microsoft Docs
-description: 使用 Hive 查询在 Hive 表中浏览数据。
+title: 使用 Hive 查询在 Hive 表中浏览数据 - Team Data Science Process
+description: 使用用于在 HDInsight Hadoop 群集的 Hive 表中浏览数据的示例 Hive 脚本。
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: c50c6de28c60bbe6a6c0d510e62f35cd037d6e95
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 863177eef8b58c0bbea76daa12fff079909a5a6d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443306"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451304"
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>使用 Hive 查询在 Hive 表中浏览数据
 

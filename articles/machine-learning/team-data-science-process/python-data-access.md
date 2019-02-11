@@ -1,29 +1,29 @@
 ---
-title: 通过机器学习 Python 客户端库访问数据集 | Microsoft Docs
+title: 通过 Python 客户端库访问数据集 - Team Data Science Process
 description: 安装并使用 Python 客户端库以从本地 Python 环境安全访问和管理 Azure 机器学习数据。
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 43812b68b10f9e4f8510d24cb08c8bb368b3b8f8
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: bf0e679ab46752d71ba4f5ef2b014e0cb2b4c6ad
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445749"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471991"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>使用 Azure 机器学习 Python 客户端库通过 Python 访问数据集
 Microsoft Azure 机器学习 Python 客户端库的预览可允许从本地 Python 环境安全访问 Azure 机器学习数据集，以及允许在工作区创建并管理数据集。
 
 本主题说明如何执行以下操作：
 
-* 安装机器学习 Python 客户端库 
+* 安装机器学习 Python 客户端库
 * 访问和上传数据集，包括如何获取授权以从本地 Python 环境访问 Azure 机器学习数据集的说明
 * 从实验访问中间数据集
 * 使用 Python 客户端库枚举数据集、访问元数据、读取数据集内容、创建新的数据集和更新现有数据集
@@ -49,7 +49,7 @@ Microsoft Azure 机器学习 Python 客户端库的预览可允许从本地 Pyth
 
     pip install azureml
 
-或者，可以从 [github](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python) 上的源中下载和安装。
+或者，可以从 [GitHub](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python) 上的源中下载和安装。
 
     python setup.py install
 
@@ -61,7 +61,7 @@ Microsoft Azure 机器学习 Python 客户端库的预览可允许从本地 Pyth
 ## <a name="datasetAccess"></a>使用 Studio 代码片段以访问数据集
 通过 Python 客户端库，能够以编程方式从已运行的实验中访问现有的数据集。
 
-从 Studio Web 界面，可生成代码片段，其中包括所有下载和反序列化数据集作为位置计算机上 pandas DataFrame 对象的必要信息。
+从 Studio Web 界面，可生成代码片段，其中包括下载和反序列化数据集作为本地计算机上 pandas DataFrame 对象的所有必要信息。
 
 ### <a name="security"></a>数据访问的安全
 Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和授权令牌。 这些将提供工作区的完全访问，必须受到保护，如密码。
@@ -74,11 +74,11 @@ Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和�
 
 若要获取授权令牌，可以执行以下任一操作：
 
-* 向所有者请求令牌。 所有者可从 Studio 中其工作区“设置”页面中访问授权令牌。 从左窗格中选择“设置”，单击“授权令牌”以查看主要和次要令牌。  尽管主要或次要授权都可在代码片段中使用，但是建议所有者只共享次要授权令牌。
+* 向所有者请求令牌。 所有者可从 Studio 中其工作区“设置”页面中访问授权令牌。 从左窗格中选择“设置”，单击“授权令牌”以查看主要和次要令牌。 尽管主要或次要授权都可在代码片段中使用，但是建议所有者只共享次要授权令牌。
 
 ![授权令牌](./media/python-data-access/ml-python-access-settings-tokens.png)
 
-* 请求升级为所有者角色。  要执行此操作，当前工作区所有者需要先你将从工作区中删除，然后重新邀请你作为所有者加入。
+* 请求升级为所有者角色。 要执行此操作，当前工作区所有者需要先你将从工作区中删除，然后重新邀请你作为所有者加入。
 
 开发人员获取工作区 ID 和授权令牌之后，能够使用代码片段访问工作区，无论其角色是什么。
 
@@ -92,10 +92,10 @@ Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和�
     ![数据集][datasets]
 4. 从显示的窗口中选择代码片段，并将其复制到剪贴板。
    
-    ![访问代码][dataset-access-code]
+    ![“生成数据访问代码”按钮][dataset-access-code]
 5. 将代码粘贴到本地 Python 应用程序的 Notebook 中。
    
-    ![Notebook][ipython-dataset]
+    ![将代码粘贴到笔记本中][ipython-dataset]
 
 ## <a name="accessingIntermediateDatasets"></a>从机器学习试验访问中间数据集
 在机器学习工作室中运行实验之后，就可以从模块的输出节点中访问中间数据集。 中间数据集是指模型工具运行后，已创建并用于中间步骤的数据。
@@ -133,10 +133,10 @@ Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和�
     ![上下文菜单][experiment]
 8. 从显示的窗口中选择代码片段，并将其复制到剪贴板。
    
-    ![访问代码][intermediate-dataset-access-code]
+    ![从上下文菜单生成访问代码][intermediate-dataset-access-code]
 9. 将代码粘贴到 Notebook 中。
    
-    ![Notebook][ipython-intermediate-dataset]
+    ![将代码粘贴到笔记本中][ipython-intermediate-dataset]
 10. 可使用 matplotlib 将数据可视化。 这会在直方图的年龄列中显示：
     
     ![直方图][ipython-histogram]

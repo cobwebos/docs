@@ -3,23 +3,23 @@ title: Azure 资源的托管标识
 description: Azure 资源托管标识概述。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: ''
 ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
 ms.date: 10/23/2018
-ms.author: daveba
-ms.openlocfilehash: e025d9041358fbb9dee9b64519e012c4c1988024
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.author: priyamo
+ms.openlocfilehash: 7cd599ff75827ca8b0c6f7683cae01210a8fc8ab
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987254"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183401"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>什么是 Azure 资源的托管标识？
 
@@ -34,7 +34,15 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 > [!NOTE]
 > Azure 资源托管标识是以前称为托管服务标识 (MSI) 的服务的新名称。
 
-## 如何使用此功能？<a name="how-does-it-work"></a>
+## <a name="terminology"></a>术语
+
+以下术语用于 Azure 资源文档集的托管标识：
+
+- **客户端 ID** - Azure AD 生成的唯一标识符，在其初始预配期间与应用程序和服务主体绑定。
+- **主体 ID** - 托管标识的服务主体对象的对象 ID，用于授予对 Azure 资源的基于角色的访问权限。
+- **Azure 实例元数据服务 (IMDS)** - 一个 REST 终结点，可供通过 Azure 资源管理器创建的所有 IaaS VM 使用。 该终结点位于已知不可路由的 IP 地址 (169.254.169.254)，该地址只能从 VM 中访问。
+
+## Azure 资源托管标识的工作原理<a name="how-does-it-work"></a>
 
 托管标识分为两种类型：
 
@@ -114,8 +122,8 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 
 了解如何将托管标识与其他 Azure 服务配合使用：
 
-* [Azure 应用服务](/azure/app-service/app-service-managed-service-identity)
-* [Azure Functions](/azure/app-service/app-service-managed-service-identity)
+* [Azure 应用服务](/azure/app-service/overview-managed-identity)
+* [Azure Functions](/azure/app-service/overview-managed-identity)
 * [Azure 逻辑应用](/azure/logic-apps/create-managed-service-identity)
 * [Azure 服务总线](../../service-bus-messaging/service-bus-managed-service-identity.md)
 * [Azure 事件中心](../../event-hubs/event-hubs-managed-service-identity.md)

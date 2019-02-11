@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: fbb92fd1186881a359f77a9c6b68816763dd8f9b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 044fe3de265d298ecd366a50b9db77eeea32bbb7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628300"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457932"
 ---
-# <a name="database-transactions-and-optimistic-concurrency-control"></a>数据库事务和乐观并发控制
+# <a name="transactions-and-optimistic-concurrency-control"></a>事务和乐观并发控制
 
 数据库事务提供一种安全且可预测的编程模型来处理数据的并发更改。 利用 SQL Server 等传统关系数据库，你可以使用存储过程和/或触发器编写业务逻辑，然后将其发送到该服务器以便直接在数据库引擎中执行。 使用传统关系数据库时需要处理两种不同的编程语言 - 非事务性应用程序编程语言（例如 JavaScript、Python、C#、Java 等）和由数据库本机执行的事务性编程语言 (T-SQL)。
 
@@ -53,9 +53,9 @@ Azure Cosmos DB 中的数据库引擎支持使用快照隔离且完全符合 ACI
 
 基于 Azure Cosmos DB 的通信协议层，项的并发更新受 OCC 限制。 Azure Cosmos 数据库可确保要更新（或删除）项的客户端版本与 Azure Cosmos 容器中该项的版本相同。 这可保证你的写入内容不会被他人的写入内容意外覆盖，反之亦然。 在多用户环境中，乐观并发控制可防止意外删除或更新项的错误版本。 在这种情况下，可防止项出现令人痛恨的“丢失更新”或“丢失删除”问题。
 
-存储在 Azure Cosmos 容器中的每个项都具有系统定义的 `__etag` 属性。 每次更新项时，`__etag` 的值都由服务器自动生成和更新。 `__etag` 可与客户端提供的 if-match 标头配合使用，使服务器能够决定是否可以条件性地更新某项。 如果 if-match 标头的值与服务器上的 `__etag` 的值匹配，则会更新该项。 如果 if-match 请求标头值不再是最新值，则服务器会拒绝该操作，并提供“HTTP 412 前置条件失败”响应消息。 然后客户端可重新提取该项，以在服务器上获取该项的当前版本，或用该项自己的 `__etag` 值覆盖服务器中该项的版本。 此外，`__etag` 可以与 if-none-match 标头配合使用，以确定是否需要重新提取资源。 
+存储在 Azure Cosmos 容器中的每个项都具有系统定义的 `_etag` 属性。 每次更新项时，`_etag` 的值都由服务器自动生成和更新。 `_etag` 可与客户端提供的 if-match 标头配合使用，使服务器能够决定是否可以条件性地更新某项。 如果 if-match 标头的值与服务器上的 `_etag` 的值匹配，则会更新该项。 如果 if-match 请求标头值不再是最新值，则服务器会拒绝该操作，并提供“HTTP 412 前置条件失败”响应消息。 然后客户端可重新提取该项，以在服务器上获取该项的当前版本，或用该项自己的 `_etag` 值覆盖服务器中该项的版本。 此外，`_etag` 可以与 if-none-match 标头配合使用，以确定是否需要重新提取资源。 
 
-每次更新项时，项的 __etag 值都会发生更改。 对于替换项操作，必须在请求选项中显式表达 if-match。 有关示例，请参阅 [GitHub](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L398-L446) 中的示例代码。 将对存储过程接触的所有写入项隐式检查 `__etag` 值。 如果检查到任何冲突，存储过程将回退事务并引发异常。 通过此方法，将以原子方式应用存储过程中的所有写入内容或不应用任何写入内容。 这是应用程序重新应用更新并重试原始客户端请求的信号。
+每次更新项时，项的 _etag 值都会发生更改。 对于替换项操作，必须在请求选项中显式表达 if-match。 有关示例，请参阅 [GitHub](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L398-L446) 中的示例代码。 将对存储过程接触的所有写入项隐式检查 `_etag` 值。 如果检查到任何冲突，存储过程将回退事务并引发异常。 通过此方法，将以原子方式应用存储过程中的所有写入内容或不应用任何写入内容。 这是应用程序重新应用更新并重试原始客户端请求的信号。
 
 ## <a name="next-steps"></a>后续步骤
 

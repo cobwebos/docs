@@ -7,30 +7,30 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
-ms.component: blobs
-ms.openlocfilehash: 36b4fbac13e012de2fbef137c6637fd7e2daea8f
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.subservice: blobs
+ms.openlocfilehash: 81e0e89a8ad17c92a707bae001d2861404cd0d10
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161287"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238833"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 使用 Azure 存储 GPv2 帐户可以直接通过名为 *$web* 的存储容器提供静态内容（HTML、CSS、JavaScript 和图像文件）。 利用 Azure 存储中的托管，可以使用无服务器体系结构，包括 [Azure Functions](/azure/azure-functions/functions-overview) 和其他 PaaS 服务。
 
-与静态网站托管相比，依赖于服务器端代码的动态站点最适合使用 [Azure Web 应用](/azure/app-service/app-service-web-overview)来托管。
+与静态网站托管相比，依赖于服务器端代码的动态站点最适合使用 [Azure 应用服务](/azure/app-service/overview)来托管。
 
 ## <a name="how-does-it-work"></a>工作原理
-在存储帐户中启用静态网站托管时，请选择默认文件的名称，并选择性地提供自定义 404 页面的路径。 启用该功能后，将创建名为 *$web* 的容器（如果不存在）。 
+在存储帐户中启用静态网站托管时，请选择默认文件的名称，并选择性地提供自定义 404 页面的路径。 启用该功能后，将创建名为 *$web* 的容器（如果不存在）。
 
 *$web* 容器中的文件：
 
 - 通过匿名访问请求来提供
 - 仅通过对象读取操作来提供
 - 区分大小写
-- 可遵循以下模式在公共 Web 中提供： 
+- 可遵循以下模式在公共 Web 中提供：
     - `https://<ACCOUNT_NAME>.<ZONE_NAME>.web.core.windows.net/<FILE_NAME>`
-- 可遵循以下模式通过 Blob 存储终结点来提供： 
+- 可遵循以下模式通过 Blob 存储终结点来提供：
     - `https://<ACCOUNT_NAME>.blob.core.windows.net/$web/<FILE_NAME>`
 
 使用 Blob 存储终结点上传文件。 例如，将文件上传到此位置：
@@ -97,10 +97,10 @@ az storage blob service-properties update --account-name <ACCOUNT_NAME> --static
 az storage account show -n <ACCOUNT_NAME> -g <RESOURCE_GROUP> --query "primaryEndpoints.web" --output tsv
 ```
 
-将对象从源目录上传到 *$web* 容器：
+将对象从源目录上传到 $web 容器。 请确保正确地转义命令中对 $web 容器的引用。 例如，如果在 Azure 门户中使用 CloudShell 中的 Azure CLI，请转义 $web 容器，如下所示：
 
 ```azurecli-interactive
-az storage blob upload-batch -s <SOURCE_PATH> -d $web --account-name <ACCOUNT_NAME>
+az storage blob upload-batch -s <SOURCE_PATH> -d \$web --account-name <ACCOUNT_NAME>
 ```
 
 ## <a name="deployment"></a>部署
@@ -120,7 +120,7 @@ az storage blob upload-batch -s <SOURCE_PATH> -d $web --account-name <ACCOUNT_NA
 
 将通过挂接到不同的指标 API 来生成指标数据。 门户只会显示在给定时间范围内使用的 API 成员，以便重点关注可返回数据的成员。 为确保能够选择所需的 API 成员，第一步是展开时间范围。
 
-单击时间范围按钮，选择“过去 24 小时”，然后单击“应用” 
+单击时间范围按钮，选择“过去 24 小时”，然后单击“应用”
 
 ![Azure 存储静态网站指标 - 时间范围](./media/storage-blob-static-website/storage-blob-static-website-metrics-time-range.png)
 
@@ -144,7 +144,7 @@ az storage blob upload-batch -s <SOURCE_PATH> -d $web --account-name <ACCOUNT_NA
 
 ![Azure 存储静态网站指标 - GetWebContent](./media/storage-blob-static-website/storage-blob-static-website-metrics-getwebcontent.png)
 
-启用后，指标仪表板会报告有关 *$web* 容器中的文件的流量统计信息。
+启用后，指标仪表板会报告有关 $web 容器中的文件的流量统计信息。
 
 ## <a name="faq"></a>常见问题解答
 
@@ -161,6 +161,6 @@ az storage blob upload-batch -s <SOURCE_PATH> -d $web --account-name <ACCOUNT_NA
 * [使用 Azure CDN 通过 HTTPS 访问包含自定义域的 Blob](storage-https-custom-domain-cdn.md)
 * [为 blob 或 Web 终结点配置自定义域名](storage-custom-domain-name.md)
 * [Azure Functions](/azure/azure-functions/functions-overview)
-* [Azure Web 应用](/azure/app-service/app-service-web-overview)
+* [Azure 应用服务](/azure/app-service/overview)
 * [生成首个无服务器 Web 应用程序](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
 * [教程：在 Azure DNS 中托管域](../../dns/dns-delegate-domain-azure-dns.md)

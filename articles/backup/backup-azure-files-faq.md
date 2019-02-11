@@ -2,18 +2,18 @@
 title: 备份 Azure 文件常见问题解答
 description: 本文详述如何保护 Azure 文件共享。
 services: backup
-author: markgalioto
-ms.author: markgal
-ms.date: 2/21/2018
+author: rayne-wiselman
+ms.author: raynew
+ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: de91559d9c3626bdd07c2e497a8aa0b124f00b57
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 91a0e1fd66861f8747c6c6da21f2c54ed40bd200
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37434829"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492792"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有关如何备份 Azure 文件的问题
 本文回答了有关如何备份 Azure 文件的常见问题。 某些答案提供内含全面信息的文章的链接。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -39,31 +39,34 @@ ms.locfileid: "37434829"
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>可以在哪些地理区域备份 Azure 文件共享？ <br/>
 Azure 文件共享备份目前为预览版，只在以下地理区域提供： 
--   澳大利亚东部 (AE) 
+- 澳大利亚东部 (AE) 
 - 澳大利亚东南部 (ASE) 
 - 巴西南部 (BRS)
 - 加拿大中部 (CNC)
--   加拿大东部 (CE)
--   美国中部 (CUS)
--   东亚 (EA)
--   美国东部 (EUS)
--   美国东部 2 (EUS2)
+- 加拿大东部 (CE)
+- 美国中部 (CUS)
+- 东亚 (EA)
+- 美国东部 (EUS)
+- 美国东部 2 (EUS2)
 - 日本东部 (JPE)
 - 日本西部 (JPW)
--   印度中部 (INC) 
+- 印度中部 (INC) 
 - 印度南部 (INS)
 - 韩国中部 (KRC)
 - 韩国南部 (KRS)
--   美国中北部 (NCUS) 
--   北欧 (NE) 
--   美国中南部 (SCUS) 
--   东南亚 (SEA)
--   英国南部 (UKS) 
--   英国西部 (UKW) 
--   西欧 (WE) 
--   美国西部 (WUS)
--   美国中西部 (WCUS)
--   美国西部 2 (WUS 2)
+- 美国中北部 (NCUS) 
+- 北欧 (NE) 
+- 美国中南部 (SCUS) 
+- 东南亚 (SEA)
+- 英国南部 (UKS) 
+- 英国西部 (UKW) 
+- 西欧 (WE) 
+- 美国西部 (WUS)
+- 美国中西部 (WCUS)
+- 美国西部 2 (WUS 2)
+- US Gov 亚利桑那州 (UGA)
+- US Gov 德克萨斯州 (UGT)
+- US Gov 弗吉尼亚州 (UGV)
 
 如果需要在上面没有列出的特定地理区域使用，请向 [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com) 发送邮件。
 
@@ -91,11 +94,14 @@ Azure 文件共享的备份不支持启用了虚拟网络的存储帐户。 在�
 
 ## <a name="manage-backup"></a>管理备份
 
+### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares-br"></a>是否可以使用 PowerShell 配置/管理/还原 Azure 文件共享的备份？ <br/>
+是的。 请参阅[此处](backup-azure-afs-automation.md)的详细文档
+
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-it-br"></a>能否访问 Azure 备份生成的快照并将其装载？ <br/>
 可以访问 Azure 备份生成的所有快照，只需在门户、PowerShell 或 CLI 中查看快照即可。 若要详细了解 Azure 文件共享快照，请参阅 [Azure 文件的共享快照（预览版）概述](../storage/files/storage-snapshots-files.md)。
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups-br"></a>可以为备份配置的最长保留期是多长？ <br/>
-Azure 文件共享备份允许保留每日备份长达 120 天。
+Azure 文件共享的备份提供了配置保留期最多为 180 天的策略的功能。 但是，使用 [PowerShell 中的“按需备份”选项](backup-azure-afs-automation.md#trigger-an-on-demand-backup)，你甚至可以将恢复点保留 10 年。
 
 ### <a name="what-happens-when-i-change-the-backup-policy-for-an-azure-file-share-br"></a>更改 Azure 文件共享的备份策略时，会发生什么情况？ <br/>
 在文件共享上应用新策略时，将遵循新策略的计划和保留期。 如果延长保留期，则会对现有的恢复点进行标记，按新策略要求保留它们。 如果缩短保留期，则会将其标记为在下一清理作业中删除，然后就会将其删除。

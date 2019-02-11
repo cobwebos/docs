@@ -1,26 +1,29 @@
 ---
-title: 将数据移入和移出 Azure Blob 存储 | Microsoft Docs
+title: 将数据移入和移出 Azure Blob 存储 - Team Data Science Process
 description: 将数据移入和移出 Azure Blob 存储
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: fa3fd5dfdd0fbdb8200b0c5c8df512caedbe735c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: ca5a75ec61a0f75b3a008762561fed8231fce33d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441836"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453750"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage"></a>将数据移入和移出 Azure Blob 存储
 
 团队数据科学过程要求引入或载入各种不同存储环境中的数据在过程的每个阶段中都以最合适的方式进行处理或分析。
+
+## <a name="different-technologies-for-moving-data"></a>用于移动数据的不同技术
+
 以下文章介绍了如何使用不同技术将数据移入和移出 Azure Blob 存储。
 
 * [Azure 存储资源管理器](move-data-to-azure-blob-using-azure-storage-explorer.md)
@@ -35,6 +38,8 @@ ms.locfileid: "52441836"
 > 
 > 
 
+## <a name="using-azure-data-factory"></a>使用 Azure 数据工厂
+
 或者，可使用 [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)来执行以下操作： 
 
 * 创建和计划从 Azure Blob 存储下载数据的管道， 
@@ -45,7 +50,7 @@ ms.locfileid: "52441836"
 有关详细信息，请参阅[使用 Azure 数据工厂和 Azure 机器学习创建预测管道](../../data-factory/transform-data-using-machine-learning.md)。
 
 ## <a name="prerequisites"></a>先决条件
-本文档假定已有 Azure 订阅、存储帐户，以及该帐户对应的存储密钥。 上传/下载数据之前，必须知道 Azure 存储帐户名和帐户密钥。
+本文假定已有 Azure 订阅、存储帐户，以及该帐户对应的存储密钥。 上传/下载数据之前，必须知道 Azure 存储帐户名和帐户密钥。
 
 * 若要设置 Azure 订阅，请参阅[免费试用一个月版](https://azure.microsoft.com/pricing/free-trial/)。
 * 有关创建存储帐户的说明和有关获取帐户和密钥的信息，请参阅[关于 Azure 存储帐户](../../storage/common/storage-create-storage-account.md)。

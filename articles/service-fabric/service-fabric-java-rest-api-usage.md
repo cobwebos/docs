@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/27/2017
 ms.author: rapatchi
-ms.openlocfilehash: 987959742335940dca8eb57c54d593aea90dec15
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 116defb43126932c1a9ce0e7a9d588e731abff78
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111178"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55182024"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Azure Service Fabric Java 客户端 API
 
@@ -71,7 +71,7 @@ ms.locfileid: "37111178"
     autorest --input-file=servicefabric.json --java --output-folder=java-rest-api-code --namespace=servicefabricrest
     ```
    
-   以下命令使用 ``servicefabric.json`` 规范文件作为输入，在 ``java-rest-api-     code`` 文件夹中生成 Java 客户端代码，然后将代码封装在 ``servicefabricrest`` 命名空间中。 执行此步骤后，会生成 ``models`` 和 ``implemenation`` 两个文件夹，并会在 ``java-rest-api-code`` 文件夹中生成 ``ServiceFabricClientAPIs.java`` 和 ``package-info.java`` 两个文件。
+   以下命令使用 ``servicefabric.json`` 规范文件作为输入，在 ``java-rest-api-     code`` 文件夹中生成 Java 客户端代码，然后将代码封装在 ``servicefabricrest`` 命名空间中。 执行此步骤后，会生成 ``models`` 和 ``implementation`` 两个文件夹，并会在 ``java-rest-api-code`` 文件夹中生成 ``ServiceFabricClientAPIs.java`` 和 ``package-info.java`` 两个文件。
 
 
 ## <a name="include-and-use-the-generated-client-in-your-project"></a>在项目中包括和使用生成的客户端

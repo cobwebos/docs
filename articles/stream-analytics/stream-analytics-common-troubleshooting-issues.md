@@ -2,19 +2,19 @@
 title: 排查 Azure 流分析中的常见问题
 description: 本文介绍 Azure 流分析中的几个常见问题及其排查步骤。
 services: stream-analytics
-author: jasonwhowell
-manager: kfile
+author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/12/2018
-ms.openlocfilehash: 2fe180873f8f410d80b06d29d16881eb49f7fc2a
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: a2c7ceae342124f06fcfe8dc18b1a69f7176f4e1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978429"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090969"
 ---
 # <a name="common-issues-in-stream-analytics-and-steps-to-troubleshoot"></a>流分析的常见问题以及故障排除的步骤
 
@@ -24,9 +24,9 @@ ms.locfileid: "50978429"
  
  当流分析作业从某个输入收到格式不当的消息时，它会丢弃该消息并通过警告来通知用户。 警告符号显示在流分析作业的“输入”磁贴上（该警告符号在作业运行状态中始终存在）：
 
-![“输入”磁贴](media/stream-analytics-malformed-events/inputs_tile.png)
+![Azure 流分析仪表板上的“输入”磁贴](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
-若要查看详细信息，请启用诊断日志来查看警告详细信息。 对于格式不当的输入事件，执行日志包含一条类似以下内容的消息：“消息: 无法将来自资源 <blob URI> 的输入事件反序列化为 json”。 
+若要查看详细信息，请启用诊断日志来查看警告详细信息。 对于格式不正确的输入事件，执行日志包含具有如下所示消息的条目：“消息：无法将资源 <blob URI> 的输入事件反序列化为 json”。 
 
 ### <a name="troubleshooting-steps"></a>疑难解答步骤
 
@@ -34,7 +34,7 @@ ms.locfileid: "50978429"
 
 2. 输入详细信息磁贴会显示一组有关问题的详细信息的警告。 下面是一个示例警告消息，警告消息显示了格式不正确的 JSON 数据所在的分区、偏移量和序列号。 
 
-   ![包含偏移量的警告消息](media/stream-analytics-malformed-events/warning_message_with_offset.png)
+   ![输入包含偏移量的警告消息](media/stream-analytics-malformed-events/warning-message-with-offset.png)
 
 3. 若要获取格式不正确的 JSON 数据，请运行 CheckMalformedEvents.cs 代码。 [GitHub 示例存储库](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH)中提供了此示例。 此代码读取分区 ID、偏移量并列显位于该偏移位置的数据。 
 
@@ -42,7 +42,7 @@ ms.locfileid: "50978429"
 
 5. 还可以[使用服务总线资源管理器从 IoT 中心读取事件](https://code.msdn.microsoft.com/How-to-read-events-from-an-1641eb1b)。
 
-## <a name="delayed-output"></a>延迟输出
+## <a name="delayed-output"></a>延迟了输出
 
 ### <a name="first-output-is-delayed"></a>首次输出延迟
 启动流分析作业后，将会读取输入事件，但在某些情况下，生成的输出可能出现延迟。

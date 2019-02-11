@@ -3,19 +3,19 @@ title: TrustFrameworkPolicy - Azure Active Directory B2C | Microsoft Docs
 description: 在 Azure Active Directory B2C 中指定自定义策略的 TrustFrameworkPolicy 元素。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 16e98811b65e215d8688e030ea8dcbb1f9446a5b
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.subservice: B2C
+ms.openlocfilehash: 558e9c3a3bfd43f6ceb958bc3be55d58e1eb7f91
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44382468"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150231"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -25,8 +25,8 @@ ms.locfileid: "44382468"
 
 ```XML
 <TrustFrameworkPolicy
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="https://www.w3.org/2001/XMLSchema"
   xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
   PolicySchemaVersion="0.3.0.0"
   TenantId="mytenant.onmicrosoft.com"
@@ -38,7 +38,7 @@ ms.locfileid: "44382468"
 
 **TrustFrameworkPolicy** 元素包含以下属性：
 
-| 属性 | 必选 | Description |
+| 属性 | 必选 | 说明 |
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | 是 | 用于执行策略的架构版本。 值必须是 `0.3.0.0` |
 | TenantObjectId | 否 | Azure Active Directory (Azure AD) B2C 租户的唯一对象标识符。 |
@@ -53,8 +53,8 @@ ms.locfileid: "44382468"
 
 ``` XML
 <TrustFrameworkPolicy
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+   xmlns:xsd="https://www.w3.org/2001/XMLSchema"
    xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
    PolicySchemaVersion="0.3.0.0"
    TenantId="mytenant.onmicrosoft.com"
@@ -88,7 +88,7 @@ ms.locfileid: "44382468"
 
 **BasePolicy** 元素包含以下元素：
 
-| 元素 | 出现次数 | Description |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Azure AD B2C 租户的标识符。 |
 | PolicyId | 1:1 | 父策略的标识符。 |
@@ -98,8 +98,8 @@ ms.locfileid: "44382468"
 
 ``` XML
 <TrustFrameworkPolicy
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+   xmlns:xsd="https://www.w3.org/2001/XMLSchema"
    xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
    PolicySchemaVersion="0.3.0.0"
    TenantId="mytenant.onmicrosoft.com"

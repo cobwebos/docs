@@ -13,19 +13,19 @@ ms.topic: reference
 ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfdd0c647021c453095ec4e05c042992011389b9
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 08897b2085c2a8f0eafb90b77486d60a0edce190
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975884"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359861"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
-Azure Functions 以两种不同的模式运行：消耗量计划和 Azure 应用服务计划。 消耗量计划在代码运行时自动分配计算能力。 应用在需要处理负载时会扩展，在代码未运行时会缩小。 无需为空闲的 VM 付费或提前保留容量。
+Azure Functions 以两种不同的模式运行：消耗计划和 Azure 应用服务计划。 消耗量计划在代码运行时自动分配计算能力。 应用在需要处理负载时会扩展，在代码未运行时会缩小。 无需为空闲的 VM 付费或提前保留容量。
 
 > [!NOTE]  
-> [Linux 托管](functions-create-first-azure-function-azure-cli-linux.md)目前仅在应用服务计划中提供。
+> 适用于 Linux 的消耗计划[现在以公共预览版提供](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/)。
 
 如果不熟悉 Azure Functions，请参阅 [Azure Functions 概述](functions-overview.md)。
 
@@ -66,9 +66,9 @@ Azure Functions 以两种不同的模式运行：消耗量计划和 Azure 应用
 * 需要仅对应用服务计划可用的功能，例如应用服务环境支持、VNET/VPN 连接性和更大的 VM。
 * 想要在 Linux 上运行函数应用，或者想要提供要在其上运行函数的自定义映像。
 
-VM 使得成本不再取决于执行数量、执行时间和所用内存。 因此，支付的费用不会超过分配的 VM 实例的费用。 如需详细了解如何使用应用服务计划，请参阅 [Azure 应用服务计划深入概述](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 
+VM 使得成本不再取决于执行数量、执行时间和所用内存。 因此，支付的费用不会超过分配的 VM 实例的费用。 如需详细了解如何使用应用服务计划，请参阅 [Azure 应用服务计划深入概述](../app-service/overview-hosting-plans.md)。 
 
-借助应用服务计划，可通过添加更多 VM 实例手动进行扩展，也可启用自动缩放。 有关详细信息，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/monitoring-autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)。 还可以通过选择不同的应用服务计划来进行增加。 有关详细信息，请参阅[增加 Azure 中的应用](../app-service/web-sites-scale.md)。 
+借助应用服务计划，可通过添加更多 VM 实例手动进行扩展，也可启用自动缩放。 有关详细信息，请参阅[手动或自动缩放实例计数](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)。 还可以通过选择不同的应用服务计划来进行增加。 有关详细信息，请参阅[增加 Azure 中的应用](../app-service/web-sites-scale.md)。 
 
 在应用服务计划上运行 JavaScript 函数时，应选择具有较少 vCPU 的计划。 有关详细信息，请参阅[选择单核应用服务计划](functions-reference-node.md#considerations-for-javascript-functions)。  
 

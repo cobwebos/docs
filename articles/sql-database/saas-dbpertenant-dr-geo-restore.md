@@ -1,5 +1,5 @@
 ---
-title: SaaS 应用程序：使用 Azure SQL 数据库异地冗余备份进行灾难恢复 | Microsoft Docs
+title: SaaS 应用：使用 Azure SQL 数据库异地冗余备份进行灾难恢复 | Microsoft Docs
 description: 了解发生中断时，应如何使用 Azure SQL 数据库异地冗余备份来恢复多租户 SaaS 应用
 services: sql-database
 ms.service: sql-database
@@ -11,17 +11,17 @@ author: AyoOlubeko
 ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: a78632ed6215c467f53938569621cfb18f9e51ca
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 01/14/2019
+ms.openlocfilehash: 14c43fbc138d6d70b65f6afd1ef174488e066796
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352918"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567734"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>使用异地还原通过数据库备份恢复多租户 SaaS 应用程序
 
-本教程探讨如何对使用“每租户一个数据库”模型实现的多租户 SaaS 应用程序实施完整的灾难恢复方案。 使用[异地还原](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups)，将自动保留的异地冗余备份中的目录和租户数据库还原到备用恢复区域。 中断解决后，使用[异地复制](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)将更改后的数据库遣返回原始区域。
+本教程探讨如何对使用“每租户一个数据库”模型实现的多租户 SaaS 应用程序实施完整的灾难恢复方案。 使用[异地还原](sql-database-recovery-using-backups.md)，将自动保留的异地冗余备份中的目录和租户数据库还原到备用恢复区域。 中断解决后，使用[异地复制](sql-database-geo-replication-overview.md)将更改后的数据库遣返回原始区域。
 
 ![异地还原体系结构](media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
 
@@ -63,12 +63,12 @@ ms.locfileid: "49352918"
 本教程使用 Azure SQL 数据库和 Azure 平台的功能解决这些问题：
 
 * [Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)可用于尽快预留全部所需容量。 Azure 资源管理器模板用于在恢复区域中预配原始服务器和弹性池的镜像。 预配新租户还需分别创建一个服务器和一个池。
-* [弹性数据库客户端库](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-client-library) (EDCL) 可用于创建和维护租户数据库目录。 扩展后的目录包含定期更新的池和数据库配置信息。
-* EDCL [分片管理恢复功能](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-recovery-manager)可用于在恢复和遣返期间维护目录中的数据库位置条目。  
-* [异地还原](https://docs.microsoft.com/azure/sql-database/sql-database-disaster-recovery)可用于恢复自动维护的异地冗余备份中的目录和租户数据库。 
+* [弹性数据库客户端库](sql-database-elastic-database-client-library.md) (EDCL) 可用于创建和维护租户数据库目录。 扩展后的目录包含定期更新的池和数据库配置信息。
+* EDCL [分片管理恢复功能](sql-database-elastic-database-recovery-manager.md)可用于在恢复和遣返期间维护目录中的数据库位置条目。  
+* [异地还原](sql-database-disaster-recovery.md)可用于恢复自动维护的异地冗余备份中的目录和租户数据库。 
 * [异步还原操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)（按租户的优先顺序发送）将由系统针对每个池进行排队，然后进行批量处理，确保池不会重载。 必要时，可在执行前或执行期间取消这些操作。   
-* [异地复制](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)可用于在中断后将数据库遣返回原始区域。 使用异地复制可确保不会发生数据丢失，同时可将对租户的影响降到最低。
-* [SQL 服务器 DNS 别名](https://docs.microsoft.com/azure/sql-database/dns-alias-overview)可允许目录同步进程连接到位于任何位置的活动目录。  
+* [异地复制](sql-database-geo-replication-overview.md)可用于在中断后将数据库遣返回原始区域。 使用异地复制可确保不会发生数据丢失，同时可将对租户的影响降到最低。
+* [SQL 服务器 DNS 别名](dns-alias-overview.md)可允许目录同步进程连接到位于任何位置的活动目录。  
 
 ## <a name="get-the-disaster-recovery-scripts"></a>获取灾难恢复脚本
 
@@ -320,7 +320,7 @@ ms.locfileid: "49352918"
   
 1. 在 PowerShell ISE 中，打开 ...\Learning Modules\Business Continuity 和 Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 脚本，请验证是否仍在其 PowerShell 实例中运行目录同步进程。 必要时，可通过进行如下设置将其重启：
 
-    $DemoScenario = 1：开始将租户服务器、池和数据库配置信息同步到目录中.
+    $DemoScenario = 1：开始将租户服务器、池和数据库配置信息同步到目录中。
 
     选择 F5 运行脚本。
 
@@ -378,4 +378,4 @@ ms.locfileid: "49352918"
 
 ## <a name="additional-resources"></a>其他资源
 
-[其他基于 Wingtip SaaS 应用程序编写的教程](https://docs.microsoft.com/azure/sql-database/sql-database-wtp-overview#sql-database-wingtip-saas-tutorials)
+[其他基于 Wingtip SaaS 应用程序编写的教程](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

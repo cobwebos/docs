@@ -1,22 +1,25 @@
 ---
-title: Go 语言快速入门 - 更改模型并训练 LUIS 应用
-description: 在本 Go 语言快速入门中，你将向家庭自动化应用中添加示例话语并训练该应用。 示例话语是映射到意向的对话式用户文本。 通过提供意向的示例话语，可以教 LUIS 识别用户提供的文本类型属于哪种意向。
-titleSuffix: Microsoft Cognitive Services
+title: 更改、训练应用，Go
+description: 在本 Go 语言快速入门中，你将向家庭自动化应用中添加示例话语并训练该应用。
+titleSuffix: Language Understanding - Microsoft Cognitive Services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 2cd8c1aa2deb2af97d4f720efa0e40146b15b888
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: edbc7066beebe9b54446bee086578c0836d93a1d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031860"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220172"
 ---
 # <a name="quickstart-change-model-using-go"></a>快速入门：使用 Go 更改模型
+
+在本快速入门中，你将向 LUIS 终结点传递话语并返回意向和实体。
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -66,7 +69,7 @@ ms.locfileid: "47031860"
 
 2. 通过在命令提示符下输入以下文本从命令行运行 Go 应用程序： 
 
-    ```CMD
+    ```console
     add-utterances -appID <your-app-id> -authoringKey <add-your-authoring-key> -version <your-version-id> -region westus -utteranceFile utterances.json
 
     ```
@@ -75,7 +78,7 @@ ms.locfileid: "47031860"
 
     此命令提示符将显示以下结果：
 
-    ```CMD
+    ```console
     add example utterances requested
     [
         {

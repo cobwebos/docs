@@ -13,18 +13,46 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: a6245472f0fc3f65dcbeebdf251387efed5f02b8
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.lastreviewed: 11/26/2018
+ms.openlocfilehash: 5252eed66018cd2028545567dfe62ca7ba17be7e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333002"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247810"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>作为一项服务验证的发行说明
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 本文包含有关作为服务进行 Azure Stack 验证发行说明。
+
+## <a name="version-405"></a>版本 4.0.5
+2019 年 1 月 17日
+
+-  更新地址存储池不一致的磁盘标识测试。 版本:5.1.14.0  -> 5.1.15.0
+-  Azure Stack 每月更新验证更新地址为已批准的软件和内容验证不一致。 版本:5.1.14.0  -> 5.1.15.0
+-  OEM 扩展包验证更新，以执行必要的检查*之前*Azure Stack 更新步骤。 版本:5.1.14.0  -> 5.1.15.0
+-  内部的 bug 修复
+
+
+
+## <a name="version-402"></a>版本 4.0.2
+
+2019 年 1 月 7日
+
+如果运行 Azure Stack 每月更新验证工作流和 OEM 更新包的版本不是 1810年或更高版本，一旦到达 OEM 更新步骤您将收到错误。 这是一个 bug。 正在开发了修复程序。缓解步骤如下所示：
+
+1.  OEM 更新作为正常运行。
+2.  在包的成功的应用程序后执行 Test-azurestack 并保存输出。
+3.  取消测试。
+4.  发送到已保存的输出VaaSHelp@microsoft.com接收通过测试运行结果。
+
+## <a name="version-402"></a>版本 4.0.2
+
+2018 年 11 月 30日
+
+- 内部的 bug 修复
 
 ## <a name="version-401"></a>版本 4.0.1
 
@@ -49,7 +77,7 @@ ms.locfileid: "52333002"
 
 - 更新 VaaS 先决条件和 VHD
 
-    `Install-VaaSPrerequisites` 现在需要云管理员凭据来在包验证过程中解决问题。 在文档[下载并安装代理](azure-stack-vaas-local-agent.md#download-and-install-the-agent)已使用以下更新：
+    `Install-VaaSPrerequisites` 现在需要用于解决方案验证过程中解决问题的云管理员凭据。 在文档[下载并安装代理](azure-stack-vaas-local-agent.md#download-and-install-the-agent)已使用以下更新：
 
     ```PowerShell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
@@ -76,7 +104,7 @@ ms.locfileid: "52333002"
 
   - 包签名通知
 
-    OEM 自定义包作为包验证工作流的一部分提交时，将验证的包格式，以确保它遵循已发布的规范。 如果包不符合，则运行将失败。 电子邮件通知将发送到租户的已注册 Azure Active Directory 联系人的电子邮件地址。
+    OEM 自定义包作为解决方案验证工作流的一部分提交时，将验证包格式，以确保它遵循已发布的规范。 如果包不符合，则运行将失败。 电子邮件通知将发送到租户的已注册 Azure Active Directory 联系人的电子邮件地址。
 
   - 交互式测试类别
 

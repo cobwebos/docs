@@ -3,19 +3,19 @@ title: 什么是 Azure Active Directory B2B 协作？ | Microsoft Docs
 description: Azure Active Directory B2B 协作支持来宾用户访问权限，以便安全地与外部合作伙伴共享资源和协作。
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: overview
 ms.date: 09/14/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: mal
-ms.openlocfilehash: 609f48d0c2ba41d658850ade367d9b225941b105
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: d8aecb4dd8c680c876cf43f6c0bcbe1a4f911f41
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982602"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55082106"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>什么是 Azure Active Directory B2B 中的来宾用户访问权限？
 
@@ -73,7 +73,7 @@ ms.locfileid: "45982602"
 
 使用按组织需求自定义的方法引入外部合作伙伴。
 - 使用 [B2B 协作邀请 API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)，可自定义载入体验，包括创建自助服务注册门户。 
-- 使用我们[在 Github 上](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web)为自助服务门户提供的示例代码。
+- 使用我们[在 GitHub 上](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web)为自助服务门户提供的示例代码。
 
 ![注册门户](media/what-is-b2b/sign-up-portal.png)
 

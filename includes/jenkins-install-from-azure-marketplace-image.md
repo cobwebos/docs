@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/12/2018
 ms.author: tarcher
 ms.custom: Jenkins
-ms.openlocfilehash: d5a832909f060ad8c8b3f0e7c7ea4504e5e5aadb
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 4025dcc5824991baa9a52dbb912a5c07f4273d58
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36943464"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54383293"
 ---
 1. 在浏览器中，打开[用于 Jenkins 的 Azure 市场映像](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview)。
 
@@ -53,6 +53,7 @@ ms.locfileid: "36943464"
     - **公共 IP 地址** - IP 地址名称默认为在前一页中指定的带有 -IP 后缀的 Jenkins 名称。 可以选择相应选项更改该默认设置。
     - **域名标签** - 为 Jenkins 虚拟机的完全限定 URL 指定值。
     - **Jenkins 版本类型** - 从以下选项中选择所需的版本类型：`LTS`、`Weekly build` 或 `Azure Verified`。 `LTS` 和 `Weekly build` 选项在 [Jenkins LTS 版本行](https://jenkins.io/download/lts/)一文中进行说明。 `Azure Verified` 选项是指已经过验证可以在 Azure 上运行的 [Jenkins LTS 版本](https://jenkins.io/download/lts/)。 
+    - **JDK 类型** - 要安装的 JDK。 默认为经测试的 Zulu，即 OpenJDK 的认证版本。
 
     ![在“设置”选项卡中输入适用于 Jenkins 的虚拟机设置。](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-settings.png)
 

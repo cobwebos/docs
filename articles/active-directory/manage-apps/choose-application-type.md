@@ -4,22 +4,22 @@ description: 了解可以与 Azure AD 集成的应用程序支持类型及其相
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
-ms.openlocfilehash: 3fe268b6491a2a3cc1237173506ef5a91beb7d26
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: e10784957365df62e64c306c97ea17fb6a5e7c49
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625075"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55202920"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中添加应用程序时选择应用程序类型
 了解可以添加到 Azure Active Directory (Azure AD) 的四种类型的应用程序。 在 Azure Active Directory 中添加应用程序时，系统将提示你选择四种应用程序类型之一。 
@@ -68,11 +68,11 @@ Azure AD 中的上述四种应用程序类型都支持以下功能：
 
 -   **禁用 Azure AD 单一登录** - 如果尚未准备好将此应用程序与使用 Azure AD 的单一登录集成，或只是要进行测试，则选择禁用 Azure AD 单一登录**单一登录模式**
 
--   **链接登录** - 如果具有已连接到现有单一登录解决方案的应用程序，或只是想在用户的[应用程序访问面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)或 [Office 365 应用程序启动器](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)中为其发布简单链接，则选择[链接登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work)**单一登录模式**
+-   **链接登录** - 如果具有已连接到现有单一登录解决方案的应用程序，或只是想在用户的[应用程序访问面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)或 [Office 365 应用程序启动器](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)中为其发布简单链接，则选择[链接登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)**单一登录模式**
 
--   **基于密码的登录** - 如果应用程序呈现 HTML 用户名和密码字段，且想要安全存储该用户名和密码，以便稍后将其重播到应用程序，则选择[基于密码的登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work)**单一登录模式**
+-   **基于密码的登录** - 如果应用程序呈现 HTML 用户名和密码字段，且想要安全存储该用户名和密码，以便稍后将其重播到应用程序，则选择[基于密码的登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)**单一登录模式**
 
--   **基于 SAML 的登录** - 如果应用程序支持 SAML 或 OpenID Connect 协议，或希望能够根据在 SAML 声明中定义的规则将用户映射到特定应用程序角色，则选择[基于 SAML 的登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work)单一登录模式*
+-   **基于 SAML 的登录** - 如果应用程序支持 SAML 或 OpenID Connect 协议，或希望能够根据在 SAML 声明中定义的规则将用户映射到特定应用程序角色，则选择[基于 SAML 的登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)单一登录模式*
 
    >[!NOTE]
    >如果已为应用程序配置了应用程序代理，则此选项不可用。
@@ -101,7 +101,7 @@ Azure AD 中的上述四种应用程序类型都支持以下功能：
 
 -   基于 [OpenID Connect 1.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) 的登录
 
--   基于 [WS-Federation 1.2](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html) 的登录
+-   基于 [WS-Federation 1.2](https://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html) 的登录
 
 -   基于 [SAML 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-protocol-reference) 的登录
 

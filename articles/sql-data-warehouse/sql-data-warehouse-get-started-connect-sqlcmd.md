@@ -1,21 +1,21 @@
 ---
 title: 连接到 Azure SQL 数据仓库 sqlcmd |Microsoft 文档
-description: 使用 [sqlcmd][sqlcmd] 命令行实用工具连接和查询 Azure SQL 数据仓库。
+description: 使用 sqlcmd 命令行实用程序连接并查询 Azure SQL 数据仓库。
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
+ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 94f3955f9ce94fa52e89180fa649c4e412b80109
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: e0e423ef0503bc4d23fddf4e1b9ff985636d2ec2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247707"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463508"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>使用 sqlcmd 连接到 SQL 数据仓库
 > [!div class="op_single_selector"]
@@ -38,8 +38,8 @@ ms.locfileid: "43247707"
 
 若要使用 SQL Server 身份验证，需要添加用户名/密码参数：
 
-* **用户 (-U)：** 采用`<`用户`>`格式的服务器用户
-* **密码 (-P)：** 与用户关联的密码
+* **用户 (-U)：** 采用 `<`User`>` 格式的服务器用户
+* **密码 (-P)：** 与用户关联的密码。
 
 例如，连接字符串可能如下所示：
 
@@ -62,7 +62,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 > 
 > 
 
-## <a name="2-query"></a>2.查询
+## <a name="2-query"></a>2.Query
 连接后，可以对实例发出任何支持的 Transact-SQL 语句。  在此示例中，查询以交互模式进行提交。
 
 ```sql

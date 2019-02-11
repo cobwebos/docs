@@ -1,23 +1,20 @@
 ---
-title: Azure Cosmos DB 的表 API 简介 | Microsoft Docs
-description: 了解如何通过常用 OSS MongoDB API 使用 Azure Cosmos DB 以低延迟存储和查询大量键值对数据。
-services: cosmos-db
+title: Azure Cosmos DB 表 API 简介
+description: 了解如何通过 Azure Tables API 使用 Azure Cosmos DB 以低延迟存储和查询大量键值对数据。
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-table
-ms.devlang: na
+ms.subservice: cosmosdb-table
 ms.topic: overview
 ms.date: 11/20/2017
 ms.author: sngun
-ms.openlocfilehash: 07c1edd53ff30cc3128443cb8984d1a5467c4395
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 68190ad15ed70ac831c21582d60bc54da5d3c14b
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240046"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043917"
 ---
-# <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB：表 API 简介
+# <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB 简介：表 API
 
 [Azure Cosmos DB](introduction.md) 提供的表 API 适用于为 Azure 表存储编写且需要以下高级功能的应用程序：
 
@@ -25,7 +22,7 @@ ms.locfileid: "50240046"
 * 全球范围内[专用的吞吐量](partition-data.md)。
 * 99% 的情况下低至个位数的毫秒级延迟。
 * 保证高可用性。
-* [自动编制辅助索引](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)。
+* [自动编制辅助索引](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)。
 
 为 Azure 表存储编写的应用程序无需更改代码便可使用表 API 迁移到 Azure Cosmos DB，并可充分利用高级功能。 表 API 包含可用于 .NET、Java、Python 和 Node.js 的客户端 SDK。
 

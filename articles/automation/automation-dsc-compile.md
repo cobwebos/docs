@@ -3,18 +3,18 @@ title: 在 Azure Automation State Configuration 中编译配置
 description: 本文介绍如何编译 Azure 自动化的 Desired State Configuration (DSC) 配置。
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ca3c29101e17a7970ba782b5c49267bf9f18482e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d49ab32ace1ad0900c4867a41aba56900ef2bcaa
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257150"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423402"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>在 Automation State Configuration 中编译 DSC 配置
 
@@ -130,7 +130,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 
 ## <a name="composite-resources"></a>复合资源
 
-借助**复合资源**，可将 DSC 配置用作某个配置中的嵌套资源。 这样，便可将多个配置应用到单个资源。 有关**复合资源**的详细信息，请参阅[复合资源：将 DSC 配置用作资源](/powershell/dsc/authoringresourcecomposite)。
+借助**复合资源**，可将 DSC 配置用作某个配置中的嵌套资源。 这样，便可将多个配置应用到单个资源。 请参阅[复合资源：将 DSC 配置用作资源](/powershell/dsc/authoringresourcecomposite)，了解有关**复合资源**的详细信息。
 
 > [!NOTE]
 > 若要正确编译**复合资源**，首先必须确保复合资源所依赖的所有 DSC 资源已事先安装在 Azure 自动化帐户模块存储库中，否则复合资源不会正确导入。
@@ -197,7 +197,7 @@ Configuration ConfigurationDataSample
 }
 ```
 
-可以使用 PowerShell 编译上述 DSC 配置。 以下 PowerShell 将两个节点配置添加到 Azure Automation State Configuration“拉”服务器：**ConfigurationDataSample.MyVM1** 和 **ConfigurationDataSample.MyVM3**：
+可以使用 PowerShell 编译上述 DSC 配置。 以下 PowerShell 将两个节点配置添加到 Azure Automation State Configuration 拉取服务器：**ConfigurationDataSample.MyVM1** 和 **ConfigurationDataSample.MyVM3**：
 
 ```powershell
 $ConfigData = @{
@@ -261,7 +261,7 @@ Configuration CredentialSample
 }
 ```
 
-可以使用 PowerShell 编译上述 DSC 配置。 以下 PowerShell 将两个节点配置添加到 Azure Automation State Configuration“拉”服务器：**CredentialSample.MyVM1** 和 **CredentialSample.MyVM2**。
+可以使用 PowerShell 编译上述 DSC 配置。 以下 PowerShell 将两个节点配置添加到 Azure Automation State Configuration 拉取服务器：**CredentialSample.MyVM1** 和 **CredentialSample.MyVM2**。
 
 ```powershell
 $ConfigData = @{

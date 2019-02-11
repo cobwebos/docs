@@ -7,14 +7,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: cwatson
+ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: de7b0a2746c79242cb6538595ca3205455a2cc5c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f83499e52b6405ec5475795a80c5a4325043a441
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582730"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904482"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>了解如何将预留折扣应用于 Azure Cosmos DB
 
@@ -71,7 +71,7 @@ ms.locfileid: "52582730"
 请考虑以下预留要求：
 
 * 所需吞吐量：50,000 RU/秒  
-* 使用的区域：2 
+* 使用的区域数：2 
 
 在本例中，总按需费用针对这两个区域中数量为 500 的 100 RU/秒计量。 每小时的总 RU/秒消耗量为 100,000。 
 
@@ -97,7 +97,7 @@ ms.locfileid: "52582730"
 
 澳大利亚中部 2 区域的 50,000 个使用单位相当于 75,000 RU/秒的可计费使用量（或规范化使用量）。 该值的计算方式为：吞吐量消耗 * reservation_discount_ratio_for_that_region。 计算结果等于 75,000 RU/秒的可计费或规范化使用量。 该值的计算方式为：50,000 * 1.5 = 75,000 RU/秒。
 
-预购 100,000 RU/秒可抵消澳大利亚中部 2 的 75,000 RU/秒。 留下 25,000 RU/秒给法国南部区域。 在剩余的 25,000 RU/秒中，会向法国南部区域应用 15,384 RU/秒的预留折扣。 该折扣值的计算方式为：25000 / 1.625 = 15,384 RU/秒。 按照正常的即用即付费率收取法国南部区域中剩余的 34,616 RU/秒的费用。 
+预购 100,000 RU/秒可抵消澳大利亚中部 2 的 75,000 RU/秒。 留下 25,000 RU/秒给法国南部区域。 在剩余的 25,000 RU/秒中，会向法国南部区域应用 15,384 RU/秒的预留折扣。 该折扣值的计算方式为：25,000 / 1.625 = 15,384 RU/秒。 按照正常的即用即付费率收取法国南部区域中剩余的 34,616 RU/秒的费用。 
 
 Azure 计费系统将向第一个处理且与预留配置相匹配的实例分配预留计费权益。 例如，在本例中为澳大利亚中部 2。
 
@@ -117,5 +117,5 @@ Azure 计费系统将向第一个处理且与预留配置相匹配的实例分�
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 

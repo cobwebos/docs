@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中管理应用服务计划 | Microsoft Docs
+title: 管理应用服务计划 - Azure | Microsoft Docs
 description: 了解如何执行不同的任务来管理应用服务计划。
 keywords: 应用服务, azure 应用服务, 缩放, 应用服务计划, 更改, 创建, 管理
 services: app-service
@@ -15,16 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: f426982163a5e49264bc4f222f6869d9cbb40c89
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.custom: seodec18
+ms.openlocfilehash: 936abe80a66c1dbe99e7d8a255fe8995a2df0803
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166060"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715642"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>在 Azure 中管理应用服务计划
 
-[Azure 应用服务计划](azure-web-sites-web-hosting-plans-in-depth-overview.md)提供应用服务应用需要运行的资源。 本指南介绍如何管理应用服务计划。
+[Azure 应用服务计划](overview-hosting-plans.md)提供应用服务应用需要运行的资源。 本指南介绍如何管理应用服务计划。
 
 ## <a name="create-an-app-service-plan"></a>创建应用服务计划
 
@@ -35,7 +36,7 @@ ms.locfileid: "49166060"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“新建” > “Web + 移动”，然后选择“Web 应用”或其他应用服务应用类型。
 
-1. 选择现有的应用服务计划，或者为新应用创建计划。
+2. 选择现有的应用服务计划，或者为新应用创建计划。
 
    ![在 Azure 门户中创建应用。][createWebApp]
 

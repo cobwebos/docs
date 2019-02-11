@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 146ea6431516f7b78d23cd4b36aff43110639e83
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 700295c94428021445f6cbbd84175046d57b9147
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633089"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054871"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>使用 Service Fabric 诊断常见情况
 
-本文阐述了用户在使用 Service Fabric 进行监视和诊断时遇到的常见情况。 所阐述的情况涵盖了 Service Fabric 的全部 3 层：应用程序、群集和基础结构。 每个解决方案均使用 Application Insights 和 Log Analytics（Azure 监视工具）来完成每种情况。 每个解决方案中的步骤都向用户介绍了如何在 Service Fabric 环境中使用 Application Insights 和 Log Analytics。
+本文阐述了用户在使用 Service Fabric 进行监视和诊断时遇到的常见情况。 所介绍的方案涵盖了 Service Fabric 的所有 3 层：应用程序、群集和基础结构。 每个解决方案均使用 Application Insights 和 Log Analytics（Azure 监视工具）来完成每种情况。 每个解决方案中的步骤都向用户介绍了如何在 Service Fabric 环境中使用 Application Insights 和 Log Analytics。
 
 ## <a name="prerequisites-and-recommendations"></a>先决条件和建议
 
@@ -56,7 +56,7 @@ ms.locfileid: "52633089"
 
     ![AI 应用映射边栏选项卡](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![AI 应用映射](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
 
-    有关应用程序映射的详细信息，请访问[应用程序映射文档](../application-insights/app-insights-app-map.md)
+    有关应用程序映射的详细信息，请访问[应用程序映射文档](../azure-monitor/app/app-map.md)
 
 ## <a name="how-do-i-create-an-alert-when-a-node-goes-down"></a>如何在节点出现故障时创建警报
 
@@ -139,8 +139,8 @@ ms.locfileid: "52633089"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 AI 中设置警报](../application-insights/app-insights-alerts.md)以获取有关性能或使用情况的通知
-* [Application Insights 中的智能检测](../application-insights/app-insights-proactive-diagnostics.md)针对发送给 AI 的遥测进行主动分析，向你警告潜在的性能问题
+* [在 AI 中设置警报](../azure-monitor/app/alerts.md)以获取有关性能或使用情况的通知
+* [Application Insights 中的智能检测](../azure-monitor/app/proactive-diagnostics.md)针对发送给 AI 的遥测进行主动分析，向你警告潜在的性能问题
 * 详细了解有助于进行检测和诊断的 Log Analytics [警报](../log-analytics/log-analytics-alerts.md)。
 * 对于本地群集，Log Analytics 提供可用于向 Log Analytics 发送数据的网关（HTTP 正向代理）。 有关更多信息，请参阅[使用 Log Analytics 网关将无法访问 Internet 的计算机连接到 Log Analytics](../azure-monitor/platform/gateway.md)
 * 掌握 Log Analytics 中提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能

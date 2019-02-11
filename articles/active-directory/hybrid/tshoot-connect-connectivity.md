@@ -1,10 +1,10 @@
 ---
-title: Azure AD Connect：排查连接问题 | Microsoft Docs
+title: Azure AD Connect：排查连接问题 | Microsoft 文档
 description: 介绍如何使用 Azure AD Connect 排查连接问题。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 3aa41bb5-6fcb-49da-9747-e7a3bd780e64
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5d5eee525c6f071840d186cb6bd54faf9bf2787b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5b17cf1bfae884e1fbdf47dabd78a1c6c3e1c7a0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310661"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55151594"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>使用 Azure AD Connect 排查连接问题
 本文说明 Azure AD Connect 与 Azure AD 之间的连接的工作方式，以及如何排查连接问题。 这些问题很有可能出现在包含代理服务器的环境中。
@@ -42,7 +42,7 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 
 针对这些 URL，下表列出了连接到 Azure AD 时最起码需要的配置。 此列表未包含任何可选功能，例如密码写回或 Azure AD Connect Health。 本文中描述这些功能是为了帮助排查初始配置问题。
 
-| 代码 | 端口 | Description |
+| 代码 | 端口 | 说明 |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |用于下载 CRL 列表。 |
 | \*.verisign.com |HTTP/80 |用于下载 CRL 列表。 |
@@ -167,17 +167,52 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 ### <a name="authentication-cancelled"></a>身份验证已取消
 多重身份验证 (MFA) 质询已取消。
 
+<div id="connect-msolservice-failed">
+<!--
+  Empty div just to act as an alias for the "Connect To MS Online Failed" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
+
 ### <a name="connect-to-ms-online-failed"></a>未能连接到 MS Online
 身份验证成功，但 Azure AD PowerShell 出现身份验证问题。
+
+<div id="get-msoluserrole-failed">
+<!--
+  Empty div just to act as an alias for the "Azure AD Global Admin Role Needed" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
 
 ### <a name="azure-ad-global-admin-role-needed"></a>需要 Azure AD 全局管理员角色
 用户已成功完成身份验证。 但用户未分配有全局管理员角色。 此处介绍[如何将全局管理员角色分配给](../users-groups-roles/directory-assign-admin-roles.md)用户。 
 
+<div id="privileged-identity-management">
+<!--
+  Empty div just to act as an alias for the "Privileged Identity Management Enabled" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
+
 ### <a name="privileged-identity-management-enabled"></a>Privileged Identity Management 已启用
 身份验证成功。 已启用 Privileged Identity Management，但你目前不是全局管理员。 有关详细信息，请参阅 [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md)。
 
+<div id="get-msolcompanyinformation-failed">
+<!--
+  Empty div just to act as an alias for the "Company Information Unavailable" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
+
 ### <a name="company-information-unavailable"></a>公司信息不可用
 身份验证成功。 无法从 Azure AD 检索公司信息。
+
+<div id="get-msoldomain-failed">
+<!--
+  Empty div just to act as an alias for the "Domain Information Unavailable" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
 
 ### <a name="domain-information-unavailable"></a>域信息不可用
 身份验证成功。 无法从 Azure AD 检索域信息。

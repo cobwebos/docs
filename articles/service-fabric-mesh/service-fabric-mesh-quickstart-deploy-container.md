@@ -5,16 +5,16 @@ services: service-fabric-mesh
 keywords: 未咨询 SEO 专家的情况下，请不要添加或编辑关键字。
 author: rwike77
 ms.author: ryanwi
-ms.date: 08/24/2018
+ms.date: 11/27/2018
 ms.topic: quickstart
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: d50ebeef686de7e467e2a71b6bb33f207414bcc8
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 2f54f11ffc6db9af4c7d74ef6c0806a8b8b8fe74
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541460"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754755"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>快速入门：将 Hello World 部署到 Service Fabric 网格
 
@@ -48,14 +48,32 @@ az group create --name myResourceGroup --location eastus
 使用 `az mesh deployment create` 命令在资源组中创建应用程序。  运行以下内容：
 
 ```azurecli-interactive
-az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json --parameters "{'location': {'value': 'eastus'}}" 
+az mesh deployment create --resource-group myResourceGroup --template-uri https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json --parameters "{'location': {'value': 'eastus'}}" 
 ```
 
-上面的命令使用 [mesh_rp.linux.json 模板](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json)部署 Linux 应用程序。 若要部署 Windows 应用程序，请使用 [mesh_rp.windows.json 模板](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.windows.json)。 Windows 容器映像大于 Linux 容器映像，可能需要更多时间进行部署。
+上面的命令使用 [linux.json 模板](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json)部署 Linux 应用程序。 若要部署 Windows 应用程序，请使用 [windows.json 模板](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.windows.json)。 Windows 容器映像大于 Linux 容器映像，可能需要更多时间进行部署。
 
-几分钟后，该命令返回：
+此命令将生成如下所示的 JSON 代码片段。 在 JSON 输出的 ```outputs``` 部分下，复制 ```publicIPAddress``` 属性。
 
-`helloWorldApp has been deployed successfully on helloWorldNetwork with public ip address <IP Address>` 
+```json
+"outputs": {
+    "publicIPAddress": {
+    "type": "String",
+    "value": "40.83.78.216"
+    }
+}
+```
+
+此信息来自 ARM 模板中的 ```outputs``` 节。 如下所示，此节引用网关资源来获取公共 IP 地址。 
+
+```json
+  "outputs": {
+    "publicIPAddress": {
+      "value": "[reference('helloWorldGateway').ipAddress]",
+      "type": "string"
+    }
+  }
+```
 
 ## <a name="open-the-application"></a>打开应用程序
 在应用程序成功部署后，从 CLI 输出中复制服务终结点的公用 IP 地址。 在 Web 浏览器中打开该 IP 地址。 此时将显示包含 Azure Service Fabric 网格徽标的网页。
@@ -95,5 +113,5 @@ az group delete --name myResourceGroup
 [sfm-app-browser]: ./media/service-fabric-mesh-quickstart-deploy-container/HelloWorld.png
 
 <!-- Links / Internal -->
-[az-group-delete]: /cli/azure/group#az_group_delete
+[az-group-delete]: /cli/azure/group
 [azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest

@@ -1,21 +1,21 @@
 ---
-title: 在 Nodejs 中使用列表实体自动标记实体 | Microsoft Docs
+title: Extact 文本匹配实体
 description: 了解如何添加有助于 LUIS 标记字词或短语变体的列表实体。
 services: cognitive-services
 author: diberry
 titleSuffix: Azure
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 42fde2b24f851129e24257bbfe6d65a96e235485
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: fe9276cb0af96baa8d818b1f2e965c83cb6b26c2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036773"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211485"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>使用列表实体提升实体检测 
 本教程展示了如何使用[列表实体](luis-concept-entity-types.md)提升实体检测。 无需标记列表实体，因为它们与术语完全匹配。  
@@ -37,7 +37,7 @@ ms.locfileid: "47036773"
 > [!Tip]
 > 如果尚无订阅，可注册[免费帐户](https://azure.microsoft.com/free/)。
 
-本教程中的所有代码都存储在 [LUIS 示例 Github 存储库](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-list-entity)中。 
+本教程中的所有代码都可在 [Azure 示例 GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity)中找到。 
 
 ## <a name="use-homeautomation-app"></a>使用 HomeAutomation 应用
 使用 HomeAutomation 应用，可以控制灯等设备、娱乐系统和供热制冷等环境控制系统。 这些系统有多个不同名称，包括制造商名称、别名、首字母缩略词和行话。 
@@ -81,15 +81,16 @@ HomeAutomation.Device 实体非常适用于数量较少的设备或几乎没有�
 
 运行下面的命令，安装 NPM 依赖项，并通过运行代码来创建列表实体：
 
-```Javascript
+```console
 npm install && node add-entity-list.js
 ```
 
 代码运行输出的是列表实体 ID：
 
-```Javascript
+```console
 026e92b3-4834-484f-8608-6114a83b03a6
 ```
+
 ## <a name="train-the-model"></a>训练模型
 定型 LUIS，让新列表能够影响查询结果。 定型过程分为两部分，然后在定型完成后检查状态。 有多个模型的应用可能需要一段时间才能完成定型。 下面的代码先定型应用，然后等到定型成功完成。 此代码使用等待并重试策略，以免发生 429“请求次数过多”错误。 
 
@@ -99,13 +100,13 @@ npm install && node add-entity-list.js
 
 运行下面的命令，通过运行代码来定型应用：
 
-```Javascript
+```console
 node train.js
 ```
 
 代码运行输出的是，LUIS 模型的每次定型迭代状态。 执行下面的代码只需要检查一次定型：
 
-```Javascript
+```console
 1 trained = true
 [ { modelId: '2c549f95-867a-4189-9c35-44b95c78b70f',
     details: { statusId: 2, status: 'UpToDate', exampleCount: 45 } },
@@ -130,13 +131,13 @@ node train.js
 
 运行下面的命令，通过运行代码来查询应用：
 
-```Javascript
+```console
 node publish.js
 ```
 
 下面的输出包括任何查询的终结点 URL。 实际 JSON 结果包括实际 appID。 
 
-```JSON
+```json
 { 
   versionId: null,
   isStaging: false,
@@ -157,13 +158,13 @@ node publish.js
 
 运行下面的命令，通过运行代码来查询应用：
 
-```Javascript
+```console
 node train.js
 ```
 
 输出的是查询结果。 因为此代码向查询字符串添加详细名称/值对，所以输出包括所有意向及其分数：
 
-```JSON
+```json
 {
   "query": "turn up the heat",
   "topScoringIntent": {

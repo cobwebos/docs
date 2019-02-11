@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric（预览版）中的定期备份和还原 | Microsoft Docs
+title: Azure Service Fabric 中的定期备份和还原 | Microsoft Docs
 description: 使用 Service Fabric 的定期备份和还原功能来实现应用程序数据的定期数据备份。
 services: service-fabric
 documentationcenter: .net
@@ -12,16 +12,16 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/04/2018
+ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: bcbb8e60d14615d4bddb4a1efa5ecf1487aab093
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b8f7142b2bd8e07e4b92c37b7e06bc4fe09efb73
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234674"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580410"
 ---
-# <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Azure Service Fabric（预览版）中的定期备份和还原
+# <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric 中的定期备份和还原
 > [!div class="op_single_selector"]
 > * [Azure 上的群集](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
 > * [独立群集](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
@@ -41,10 +41,6 @@ Service Fabric 跨多个节点复制状态，确保服务高度可用。 即使�
 Service Fabric 提供了一个内置 API，用于执行时间点[备份和还原](service-fabric-reliable-services-backup-restore.md)。 应用程序开发者可使用这些 API 定期备份服务状态。 此外，如果服务管理员想要在特定时间从服务外部触发备份，就像在升级应用程序之前一样，开发者需要将备份（和还原）作为服务的 API 公开。 维护备份是以上操作的额外成本。 例如，你可能希望每半小时进行 5 次递增备份，然后进行完整备份。 完整备份后，可删除以前的递增备份。 此方法需要额外的代码，因而在应用程序开发期间产生额外成本。
 
 定期备份应用程序数据是管理分布式应用程序以及防范数据丢失或长时间丢失服务可用性的基本要求。 Service Fabric 提供可选的备份和还原服务，因此无需编写任何其他代码，便可配置有状态可靠服务（包括角色服务）的定期备份。 它还有助于还原以前执行的备份。 
-
-> [!NOTE]
-> 定期备份和还原功能目前仅限于预览版，不受生产工作负载的支持。 
->
 
 Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关的以下功能：
 
@@ -114,7 +110,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 
 ### <a name="create-backup-policy"></a>创建备份策略
 
-第一步是创建描述备份计划的备份策略、备份数据的目标存储、策略名称以及触发完整备份之前允许的最大递增备份。 
+第一步是创建描述备份计划的备份策略、备份数据的目标存储、策略名称、触发完整备份之前允许的最大递增备份以及备份存储的保留策略。 
 
 对于备份存储，请创建文件共享并为所有 Service Fabric 节点计算机提供对此文件共享的读写访问权限。 此示例假定名为 `BackupStore` 的共享存在于 `StorageServer` 上。
 
@@ -131,18 +127,27 @@ $StorageInfo = @{
     StorageKind = 'FileShare'
 }
 
+$RetentionPolicy = @{ 
+    RetentionPolicyType = 'Basic'
+    RetentionDuration =  'P10D'
+}
+
 $BackupPolicy = @{
     Name = 'BackupPolicy1'
     MaxIncrementalBackups = 20
     Schedule = $ScheduleInfo
     Storage = $StorageInfo
+    RetentionPolicy = $RetentionPolicy
 }
 
 $body = (ConvertTo-Json $BackupPolicy)
-$url = "http://localhost:19080/BackupRestore/BackupPolicies/$/Create?api-version=6.2-preview"
+$url = "http://localhost:19080/BackupRestore/BackupPolicies/$/Create?api-version=6.4"
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ```
+
+> [!IMPORTANT]
+> 由于运行时中的问题，请确保保留策略中的保留期配置为小于 24 天，否则将导致备份还原服务进入仲裁丢失后副本故障转移。
 
 ### <a name="enable-periodic-backup"></a>启用定期备份
 在定义策略以满足应用程序的数据保护要求后，备份策略应与应用程序相关联。 根据需要，备份策略可与应用程序、服务或分区相关联。
@@ -155,7 +160,7 @@ $BackupPolicyReference = @{
 }
 
 $body = (ConvertTo-Json $BackupPolicyReference)
-$url = "http://localhost:19080/Applications/SampleApp/$/EnableBackup?api-version=6.2-preview"
+$url = "http://localhost:19080/Applications/SampleApp/$/EnableBackup?api-version=6.4"
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ``` 
@@ -173,7 +178,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 执行以下 PowerShell 脚本，调用 HTTP API 来枚举为 `SampleApp` 应用程序内所有分区创建的备份。
 
 ```powershell
-$url = "http://localhost:19080/Applications/SampleApp/$/GetBackups?api-version=6.2-preview"
+$url = "http://localhost:19080/Applications/SampleApp/$/GetBackups?api-version=6.4"
 
 $response = Invoke-WebRequest -Uri $url -Method Get
 
@@ -220,10 +225,13 @@ CreationTimeUtc         : 2018-04-01T20:09:44Z
 FailureError            : 
 ```
 
-## <a name="preview-limitation-caveats"></a>预览限制/注意事项
+## <a name="known-issues"></a>已知问题
+- 确保保留期配置为小于 24 天。 
+- 十进制分隔符不为“.”的区域设置中不会出现备份还原服务
+- 备份还原服务未能在使用基于 gMSA 的安全进行保护的群集上出现。
+
+## <a name="limitation-caveats"></a>限制/注意事项
 - PowerShell cmdlet 中没有生成的 Service Fabric。
-- 不支持 Service Fabric CLI。
--  不支持自动备份清除。 设置基于脚本的外部自动化时可以参考[备份保留脚本](https://github.com/Microsoft/service-fabric-scripts-and-templates/tree/master/scripts/BackupRetentionScript)来清除备份。
 - Linux 上不支持 Service Fabric 群集。
 
 ## <a name="next-steps"></a>后续步骤

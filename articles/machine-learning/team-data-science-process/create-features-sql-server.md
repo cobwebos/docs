@@ -1,22 +1,22 @@
 ---
-title: 使用 SQL 和 Python 在 SQL Server 中为数据创建特征 | Microsoft Docs
-description: 处理 SQL Azure 中的数据
+title: 使用 SQL 和 Python 在 SQL Server 中创建功能 - Team Data Science Process
+description: 使用 SQL 和 Python 为 Azure 上的 SQL Server VM 中存储的数据生存功能 - 这是 Team Data Science Process 的一部分。
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 7178f368f7ede8918f316caa46234f63db6414ee
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: ce3fdef6429452eeee522896b47ed71de6a10201
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445440"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451727"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>使用 SQL 和 Python 在 SQL Server 中为数据创建功能
 本文档演示如何在 Azure 上为存储于 SQL Server VM 中的数据生成功能，用于帮助算法更有效地从数据中进行学习。 可以使用 SQL 或 Python 等编程语言来完成此任务。 下面演示了这两种方法。
@@ -114,7 +114,7 @@ ms.locfileid: "52445440"
 Python 中的 [Pandas 库](http://pandas.pydata.org/)提供一组丰富的数据结构，以及针对 Python 编程的数据操作的数据分析工具。 以下代码读取从 SQL Server 数据库返回到 Pandas 数据帧的结果：
 
     # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
+    data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 
 现在可根据 [Panda 创建 Azure blob 存储数据](create-features-blob.md) 主题中的说明来使用 Pandas 数据框架。
 

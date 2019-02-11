@@ -1,23 +1,24 @@
 ---
-title: 通过 Azure 门户自定义 Azure 事件网格的事件 | Microsoft Docs
-description: 使用 Azure 事件网格和 PowerShell 发布一个主题，然后订阅该事件。
+title: 将自定义事件发送到 Web 终结点 - 事件网格，Azure 门户
+description: 使用 Azure 事件网格和 Azure 门户发布自定义主题，然后订阅该主题的事件。 事件由 Web 应用程序处理。
 services: event-grid
 keywords: ''
-author: tfitzmac
-ms.author: tomfitz
-ms.date: 10/02/2018
+author: spelluru
+ms.author: spelluru
+ms.date: 12/07/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 630130bde0440a8a5f51589386f42214f27af59a
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.custom: seodec18
+ms.openlocfilehash: c42d59cc1615c95bcbe0c85e567d5b2c80c55ea9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040620"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463263"
 ---
-# <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>使用 Azure 门户和事件网格创建和路由自定义事件
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>快速入门：使用 Azure 门户和事件网格将自定义事件路由到 Web 终结点
 
-Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 Azure 门户创建一个自定义主题，然后订阅该自定义主题，再触发可查看结果的事件。 通常，你将事件发送到用于处理事件数据并执行操作的终结点。 但是，为了简化本文，你将事件发送到收集并显示消息的 Web 应用。
+Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 Azure 门户创建一个自定义主题，然后订阅该自定义主题，再触发可查看结果的事件。 通常，你会将事件发送到处理事件数据并执行操作的终结点。 但是，为了简化本文，你将事件发送到收集并显示消息的 Web 应用。
 
 完成后即可看到事件数据已发送到 Web 应用。
 
@@ -41,11 +42,11 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 
 
    ![搜索事件网格主题](./media/custom-event-quickstart-portal/search-event-grid.png)
 
-1. 选择**创建**。
+1. 选择“创建”。
 
    ![开始执行步骤](./media/custom-event-quickstart-portal/select-create.png)
 
-1. 为自定义主题提供唯一名称。 主题名称必须唯一，因为它由 DNS 条目表示。 请不要使用图中所示的名称。 应创建自己的名称。 为资源组提供名称。 选择**创建**。
+1. 为自定义主题提供唯一名称。 主题名称必须唯一，因为它由 DNS 条目表示。 请不要使用图中所示的名称。 而是创建自己的名称 - 它必须介于 3 到 50 个字符之间，并且只包含值 a-z、A-Z、0-9 和“-”。 为资源组提供名称。 选择“创建”。
 
    ![提供事件网格主题值](./media/custom-event-quickstart-portal/create-custom-topic.png)
 
@@ -67,7 +68,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 
 
 ## <a name="create-a-message-endpoint"></a>创建消息终结点
 
-在订阅自定义主题之前，让我们创建事件消息的终结点。 通常情况下，终结点基于事件数据执行操作。 为了简化此快速入门，将部署用于显示事件消息的[预建 Web 应用](https://github.com/Azure-Samples/azure-event-grid-viewer)。 部署的解决方案包括应用服务计划、应用服务 Web 应用和 GitHub 中的源代码。
+在订阅自定义主题之前，让我们创建事件消息的终结点。 通常情况下，终结点基于事件数据执行操作。 为了简化此快速入门，将部署用于显示事件消息的[预建的 Web 应用](https://github.com/Azure-Samples/azure-event-grid-viewer)。 所部署的解决方案包括应用服务计划、应用服务 Web 应用和 GitHub 中的源代码。
 
 1. 选择“部署到 Azure”将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
 
@@ -103,7 +104,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 
 
 1. 完成提供事件订阅值后，选择“创建”。
 
-再次查看 Web 应用，并注意订阅验证事件已发送给它。 选择眼睛图标以展开事件数据。 事件网格发送验证事件，以便终结点可以验证它是否想要接收事件数据。 Web 应用包含用于验证订阅的代码。
+再次查看 Web 应用，并注意现已向该应用发送了订阅验证事件。 选择眼睛图标以展开事件数据。 事件网格发送验证事件，以便终结点可以验证它是否想要接收事件数据。 Web 应用包含用于验证订阅的代码。
 
 ![查看订阅事件](./media/custom-event-quickstart-portal/view-subscription-event.png)
 

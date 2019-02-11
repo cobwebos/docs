@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure IoT Edge SQL 模块存储数据 | Microsoft Docs
+title: 教程：使用 SQL 模块存储数据 - Azure IoT Edge | Microsoft Docs
 description: 了解如何使用 SQL Server 模块将数据存储到本地的 IoT Edge 设备
 services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/19/2018
+ms.date: 01/18/2019
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 95041ca77930d87bff6ea31e2eab89a6634cfcf5
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 2b99207f35bd83c9e02ad636a070ae538ae3472c
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442958"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412217"
 ---
-# <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教程：使用 SQL Server 数据库在边缘存储数据
+# <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教程：使用 SQL Server 数据库存储边缘中的数据
 
 使用 Azure IoT Edge 和 SQL Server 在边缘存储和查询数据。 Azure IoT Edge 有基本的存储功能，可以在设备脱机的情况下缓存消息，在重新建立连接后再转发这些消息。 不过，你可能需要更高级的存储功能，例如在本地查询数据的功能。 整合本地数据库以后，IoT Edge 设备就可以执行更复杂的计算而不需维持到 IoT 中心的连接。 例如，计算机上的传感器一月一次将数据上传到云，以便报告和改进计算机学习模块。 不过，如果现场技术人员正在计算机上工作，则该技术人员可以在本地访问过去数天的传感器数据。
 
@@ -38,6 +38,9 @@ Azure IoT Edge 设备：
 
 * 可以按照适用于 [Linux](quickstart-linux.md) 或 [Windows 设备](quickstart.md)的快速入门中的步骤，将开发计算机或虚拟机用作 Edge 设备。
 
+  > [!NOTE]
+  > SQL Server 仅支持 Linux 容器。 若要将 Windows 设备用作 Edge 设备来测试本教程，必须对其进行配置，使之使用 Linux 容器。 请参阅[在 Windows 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-windows-with-linux.md)，了解为 Windows 上的 Linux 容器配置 IoT Edge 运行时所需完成的先决条件和安装步骤。
+
 云资源：
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。 
@@ -46,13 +49,13 @@ Azure IoT Edge 设备：
 
 * [Visual Studio Code](https://code.visualstudio.com/)。 
 * [适用于 Visual Studio Code 的 C#（由 OmniSharp 提供支持）扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。 
-* [适用于 Visual Studio Code 的 Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。 
+* [适用于 Visual Studio Code 的 Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。 
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。 
 * [Docker CE](https://docs.docker.com/install/)。 
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
-本教程将使用适用于 Visual Studio Code 的 Azure IoT Edge 扩展来生成模块并从文件创建**容器映像**。 然后将该映像推送到用于存储和管理映像的**注册表**。 最后，从注册表部署在 IoT Edge 设备上运行的映像。  
+本教程将使用适用于 Visual Studio Code 的 Azure IoT 工具来生成模块并从文件创建**容器映像**。 然后将该映像推送到用于存储和管理映像的**注册表**。 最后，从注册表部署在 IoT Edge 设备上运行的映像。  
 
 可以使用任意兼容 Docker 的注册表来保存容器映像。 两个常见 Docker 注册表服务分别是 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)和 [Docker 中心](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)。 本教程使用 Azure 容器注册表。 
 
@@ -81,13 +84,13 @@ Azure IoT Edge 设备：
 
 若要将数据发送到数据库中，需要通过一个模块将数据进行适当的结构化并存储在表中。 
 
-以下步骤将介绍如何使用 Visual Studio Code 和 Azure IoT Edge 扩展来创建 IoT Edge 函数。
+以下步骤将介绍如何使用 Visual Studio Code 和 Azure IoT 工具来创建 IoT Edge 函数。
 
 1. 打开 Visual Studio Code。
 
 2. 打开 VS Code 命令面板，方法是选择“视图” > “命令面板”。
 
-3. 在命令面板中，键入并运行“Azure IoT Edge: 新建 IoT Edge 解决方案”命令。 在命令面板中提供以下信息，以便创建解决方案： 
+3. 在命令面板中，键入并运行“Azure IoT Edge: New IoT Edge solution”命令。 在命令面板中提供以下信息，以便创建解决方案： 
 
    | 字段 | 值 |
    | ----- | ----- |
@@ -97,9 +100,13 @@ Azure IoT Edge 设备：
    | 提供模块名称 | 将模块命名为 **sqlFunction**。 |
    | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是在上一步预先填充的。 将 **localhost:5000** 替换为 Azure 容器注册表中的登录服务器值。 可以在 Azure 门户的容器注册表的“概览”页中检索登录服务器。 最终的字符串看起来类似于 \<注册表名称\>.azurecr.io/sqlFunction。 |
 
-   VS Code 窗口将加载你的 IoT Edge 解决方案工作区：一个 \.vscode 文件夹、一个 modules 文件夹、一个部署清单模板文件， 以及一个 \.env 文件。 
+   VS Code 窗口将加载你的 IoT Edge 解决方案空间。 
    
-4. 只要你创建新的 IoT Edge 解决方案，VS Code 就会提示你在 \.env 文件中提供注册表凭据。 此文件会被 git 忽略，IoT Edge 扩展会在以后使用它，以便通过注册表访问 IoT Edge 设备。 打开 \.env 文件。 
+4. 在你的 IoT Edge 解决方案中，打开 \.env 文件。 
+
+   只要你创建新的 IoT Edge 解决方案，VS Code 就会提示你在 \.env 文件中提供注册表凭据。 此文件会被 git 忽略，IoT Edge 扩展会在以后使用它，以便通过注册表访问 IoT Edge 设备。 
+
+   如果你在上一步骤中未提供容器注册表而是接受了默认的 localhost:5000，则不会具有 \.env 文件。
 
 5. 在 .env 文件中，为 IoT Edge 运行时提供注册表凭据，使之能够访问模块映像。 找到 **CONTAINER_REGISTRY_USERNAME** 和 **CONTAINER_REGISTRY_PASSWORD** 部分并在等号后插入你的凭据： 
 
@@ -159,7 +166,7 @@ Azure IoT Edge 设备：
                        {
                            //Execute the command and log the # rows affected.
                            var rows = await cmd.ExecuteNonQueryAsync();
-                           log.Info($"{rows} rows were updated");
+                           logger.LogInformation($"{rows} rows were updated");
                        }
                    }
 
@@ -207,83 +214,65 @@ Azure IoT Edge 设备：
 
 7. 保存 **sqlFunction.cs** 文件。 
 
+8. 打开 **sqlFunction.csproj** 文件。
+
+9. 找到包引用所在的组，并为 SqlClient include 添加一个新的引用。 
+
+   ```csproj
+   <PackageReference Include="System.Data.SqlClient" Version="4.5.1"/>
+   ```
+
+10. 保存 **sqlFunction.csproj** 文件。
+
 ## <a name="add-a-sql-server-container"></a>添加 SQL Server 容器
 
 [部署清单](module-composition.md)声明将要由 IoT Edge 运行时安装在 IoT Edge 设备上的具体模块。 已在上一部分提供了生成自定义 Functions 模块所需的代码，但 SQL Server 模块已经生成。 只需要求 IoT Edge 运行时包括它，然后在设备上配置它即可。 
 
 1. 在 Visual Studio Code 资源管理器中打开 **deployment.template.json** 文件。 
 
-2. 找到 **modules** 节。 应该会列出两个模块：**tempSensor** 模块，用于生成模拟数据，以及 **sqlFunction** 模块。
+1. 找到 **modules** 节。 应该会列出两个模块：**tempSensor** 模块，用于生成模拟数据，以及 **sqlFunction** 模块。
 
-3. 如果使用了 Windows 容器，请修改 **sqlFunction.settings.image** 部分。
-
-   ```json
-   "image": "${MODULES.sqlFunction.windows-amd64}"
-   ```
-
-4. 添加以下代码来声明第三个模块。 在 sqlFunction 部分后添加一个逗号并插入以下内容：
+1. 添加以下代码来声明第三个模块。 在 sqlFunction 部分后添加一个逗号并插入以下内容：
 
    ```json
    "sql": {
-       "version": "1.0",
-       "type": "docker",
-       "status": "running",
-       "restartPolicy": "always",
-       "env":{},
-       "settings": {
-           "image": "",
-           "createOptions": ""
-       }
+     "version": "1.0",
+     "type": "docker",
+     "status": "running",
+     "restartPolicy": "always",
+     "env":{},
+     "settings": {
+       "image": "",
+       "createOptions": ""
+     }
    }
    ```
 
-   ![添加 SQL Server 容器](./media/tutorial-store-data-sql-server/view_json_sql.png)
+   ![将 SQL Server 模块添加到清单](./media/tutorial-store-data-sql-server/view_json_sql.png)
 
-5. 根据 IoT Edge 设备的 Docker 容器的类型，使用以下代码更新 **sql** 模块参数：
-   * Windows 容器：
-
+1. 使用下面的代码更新 **sql** 模块参数：
       ```json
       "env": {
-         "ACCEPT_EULA": {"value": "Y"},
-         "SA_PASSWORD": {"value": "Strong!Passw0rd"}
-       },
-       "settings": {
-          "image": "microsoft/mssql-server-windows-developer",
-          "createOptions": {
-              "HostConfig": {
-                  "Mounts": [{"Target": "C:\\\\mssql","Source": "sqlVolume","Type": "volume"}],
-                  "PortBindings": {
-                      "1433/tcp": [{"HostPort": "1401"}]
-                  }
-              }
+        "ACCEPT_EULA": {"value": "Y"},
+        "SA_PASSWORD": {"value": "Strong!Passw0rd"}
+      },
+      "settings": {
+        "image": "mcr.microsoft.com/mssql/server:latest",
+        "createOptions": {
+          "HostConfig": {
+            "Mounts": [{"Target": "/var/opt/mssql","Source": "sqlVolume","Type": "volume"}],
+            "PortBindings": {
+              "1433/tcp": [{"HostPort": "1401"}]
+            }
           }
-      }
-      ```
-
-   * Linux 容器：
-
-      ```json
-      "env": {
-         "ACCEPT_EULA": {"value": "Y"},
-         "SA_PASSWORD": {"value": "Strong!Passw0rd"}
-       },
-       "settings": {
-          "image": "mcr.microsoft.com/mssql/server:latest",
-          "createOptions": {
-              "HostConfig": {
-                  "Mounts": [{"Target": "/var/opt/mssql","Source": "sqlVolume","Type": "volume"}],
-                  "PortBindings": {
-                      "1433/tcp": [{"HostPort": "1401"}]
-                  }
-              }
-          }
+        }
       }
       ```
 
    >[!Tip]
-   >每当在生产环境中创建 SQL Server 容器时，都应该[更改默认的系统管理员密码](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker#change-the-sa-password)。
+   >每当在生产环境中创建 SQL Server 容器时，都应该[更改默认的系统管理员密码](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker)。
 
-6. 保存 **deployment.template.json** 文件。
+1. 保存 **deployment.template.json** 文件。
 
 ## <a name="build-your-iot-edge-solution"></a>生成 IoT Edge 解决方案
 
@@ -322,11 +311,11 @@ Azure IoT Edge 设备：
 
    ![为单个设备创建部署](./media/tutorial-store-data-sql-server/create-deployment.png)
 
-6. 在文件资源管理器中导航到解决方案中的 **config** 文件夹，然后选择 **deployment.json**。 单击“选择 Edge 部署清单”。 
+6. 在文件资源管理器中导航到解决方案中的 **config** 文件夹，然后选择 **deployment.amd64**。 单击“选择 Edge 部署清单”。 
 
-如果部署成功，则会在 VS Code 输出中列显确认消息。 
+如果部署成功，则会在 VS Code 输出中输出确认消息。 
 
-也可查看设备上的所有模块是否都已启动并运行。 在 IoT Edge 设备上运行以下命令，以便查看模块的状态。 可能需要几分钟时间。
+在 VS Code 的“Azure IoT 中心设备”部分中刷新设备状态。 新模块将会列出，并且在接下来的几分钟内将随着容器的安装和启动开始报告为正在运行。 也可查看设备上的所有模块是否都已启动并运行。 在 IoT Edge 设备上运行以下命令，以便查看模块的状态。 
 
    ```cmd/sh
    iotedge list
@@ -334,47 +323,21 @@ Azure IoT Edge 设备：
 
 ## <a name="create-the-sql-database"></a>创建 SQL 数据库
 
-对设备应用部署清单时，会运行三个模块。 tempSensor 模块生成模拟环境数据。 sqlFunction 模块会提取数据并针对数据库设置其格式。 
+对设备应用部署清单时，会运行三个模块。 tempSensor 模块生成模拟环境数据。 sqlFunction 模块会提取数据并针对数据库设置其格式。 本部分介绍如何设置用于存储温度数据的 SQL 数据库。 
 
-本部分介绍如何设置用于存储温度数据的 SQL 数据库。 
+在 IoT Edge 设备上运行以下命令。 这些命令连接到在你的设备上运行的 **sql** 模块，并创建数据库和表来存放发送到它的温度数据。 
 
-1. 在命令行工具中连接到数据库。 
-   * Windows 容器：
-   
-      ```cmd
-      docker exec -it sql cmd
-      ```
-    
-   * Linux 容器： 
-
+1. 在 IoT Edge 设备上的命令行工具中，连接到你的数据库。 
       ```bash
       sudo docker exec -it sql bash
       ```
 
 2. 打开 SQL 命令工具。
-   * Windows 容器：
-
-      ```cmd
-      sqlcmd -S localhost -U SA -P "Strong!Passw0rd"
-      ```
-
-   * Linux 容器： 
-
       ```bash
       /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
       ```
 
 3. 创建数据库： 
-
-   * Windows 容器
-      ```sql
-      CREATE DATABASE MeasurementsDB
-      ON
-      (NAME = MeasurementsDB, FILENAME = 'C:\mssql\measurementsdb.mdf')
-      GO
-      ```
-
-   * Linux 容器
       ```sql
       CREATE DATABASE MeasurementsDB
       ON
@@ -402,7 +365,7 @@ Azure IoT Edge 设备：
    GO
    ```
 
-   ![查看本地数据](./media/tutorial-store-data-sql-server/view-data.png)
+   ![查看本地数据库的内容](./media/tutorial-store-data-sql-server/view-data.png)
 
 
 

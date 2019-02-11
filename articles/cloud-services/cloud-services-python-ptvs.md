@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: d9871b399ff06fb08d817c0d892b667b4ef0242d
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: db540326ccdf1683394eda4e168a684e8e2ae3db
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41918299"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605868"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>用于 Visual Studio 的 Python 工具中的 Python Web 角色和辅助角色
 
@@ -36,7 +36,7 @@ ms.locfileid: "41918299"
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>什么是 Python Web 角色和辅助角色？
-Azure 为运行应用程序提供了三种计算模型：[Azure 应用服务中的 Web 应用功能][execution model-web sites]、[Azure 虚拟机][execution model-vms]和 [Azure 云服务][execution model-cloud services]。 这三种模型都支持 Python。 云服务（包括 Web 角色和辅助角色）提供了 *平台即服务 (PaaS)*。 在云服务中，Web 角色提供专用的 Internet Information Services (IIS) Web 服务器来托管前端 Web 应用程序，而辅助角色可独立于用户交互或输入运行异步任务、运行时间较长的任务或永久性任务。
+Azure 提供了三种用于运行应用程序的计算模型：[Azure 应用服务中的 Web 应用功能][execution model-web sites]、[Azure 虚拟机][execution model-vms]和 [Azure 云服务][execution model-cloud services]。 这三种模型都支持 Python。 云服务（包括 Web 角色和辅助角色）提供了 *平台即服务 (PaaS)*。 在云服务中，Web 角色提供专用的 Internet Information Services (IIS) Web 服务器来托管前端 Web 应用程序，而辅助角色可独立于用户交互或输入运行异步任务、运行时间较长的任务或永久性任务。
 
 有关详细信息，请参阅 [什么是云服务？]。
 
@@ -346,7 +346,7 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 <!--Link references-->
 
 [什么是云服务？]: cloud-services-choose-me.md
-[execution model-web sites]: ../app-service/app-service-web-overview.md
+[execution model-web sites]: ../app-service/overview.md
 [execution model-vms]:../virtual-machines/windows/overview.md
 [execution model-cloud services]: cloud-services-choose-me.md
 [Python Developer Center]: /develop/python/

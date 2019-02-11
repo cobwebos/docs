@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 6c0dc122-2cd8-4d70-be5a-3943459d308e
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: d60053de98e93d7414b1df3d80aff41ffe1e4756
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 28d1387e5c1efd85ab0b944f7cffc4fe215eb73f
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620160"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734481"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v1.0 终结点中的权限和许可
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) 对 OAuth 和 OpenID Connect (OIDC) 流广泛�
 
 Azure AD 定义两种权限：
 
-* **委托的权限** - 由包含登录用户的应用使用。 对于这些应用，用户或管理员需许可应用请求的权限，并向应用授予委托的权限，以便在对 API 发出调用时，该应用可充当登录的用户。 根据 API，用户可能无法直接许可 API，而是[要求管理员提供“管理员同意”](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)。
+* **委托的权限** - 由包含登录用户的应用使用。 对于这些应用，用户或管理员需许可应用请求的权限，并向应用授予委托的权限，以便在对 API 发出调用时，该应用可充当登录的用户。 根据 API，用户可能无法直接许可 API，而是[要求管理员提供“管理员同意”](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)。
 * **应用程序权限** - 由无需存在登录用户即可运行的应用使用；例如，以后台服务或守护程序形式运行的应用。 应用程序权限只能[由管理员许可](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant)，因为它们通常非常强大，允许访问跨用户边界的数据，或者访问仅限管理员访问的数据。
 
 有效权限是应用在对 API 发出请求时拥有的权限。 
@@ -60,7 +60,7 @@ Azure AD 中的权限提供多个属性用于帮助用户、管理员或应用�
 > (Get-AzureADServicePrincipal -filter "DisplayName eq 'Microsoft Graph'").AppRoles
 > ```
 
-| 属性名称 | Description | 示例 |
+| 属性名称 | 说明 | 示例 |
 | --- | --- | --- |
 | `ID` | 这是唯一标识此权限的 GUID 值。 | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca |
 | `IsEnabled` | 指示此权限是否可供使用。 | true |

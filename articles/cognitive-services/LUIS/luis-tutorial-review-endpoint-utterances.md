@@ -1,23 +1,24 @@
 ---
-title: 教程 1：通过主动学习评审终结点陈述
+title: 审核终结点陈述
 titleSuffix: Azure Cognitive Services
-description: 通过验证或更正 LUIS 不确定的、通过 LUIS HTTP 终结点收到的陈述，改进应用预测。 某些陈述可能需要针对意向进行验证，而另一些陈述可能需要针对实体进行验证。 你应当在计划的 LUIS 维护中定期评审终结点陈述。
+description: 通过验证或更正 LUIS 不确定的、通过 LUIS HTTP 终结点收到的陈述，改进应用预测。 某些陈述可能需要针对意向进行验证，而另一些陈述可能需要针对实体进行验证。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 8fbe856826770eb38cd4a6d921c1b0f4eacf9c2a
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 30927f4a8213f3ca8b94a2c799e6204be003e2a7
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426955"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213194"
 ---
-# <a name="tutorial-1-fix-unsure-predictions"></a>教程 1：修复不确定的预测
+# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>教程：通过查看终结点话语来修复不确定的预测
 在本教程中，你将通过验证或更正 LUIS 不确定的、通过 LUIS HTTPS 终结点收到的陈述，改进应用预测。 某些陈述可能需要针对意向进行验证，而另一些陈述可能需要针对实体进行验证。 你应当在计划的 LUIS 维护中定期评审终结点陈述。 
 
 此审核过程是 LUIS 了解应用领域的另一种方式。 LUIS 已选择了审核列表中显示的陈述。 此列表具有以下特点：
@@ -32,7 +33,7 @@ ms.locfileid: "52426955"
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * 使用现有的教程应用
+> * 导入示例应用
 > * 查看终结点话语
 > * 更新短语列表
 > * 训练应用
@@ -41,19 +42,19 @@ ms.locfileid: "52426955"
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>使用现有应用
+## <a name="import-example-app"></a>导入示例应用
 
 继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
 
-如果没有上一个教程中的 HumanResources 应用，请执行以下步骤：
+请执行以下步骤：
 
-1.  下载并保存[应用 JSON 文件](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json)。
+1.  下载并保存[应用 JSON 文件](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json)。
 
 2. 将 JSON 导入到新应用中。
 
 3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `review`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
 
-    如果将本教程作为新导入的应用使用，则还需训练和发布表述，然后通过[脚本](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js)或浏览器中的终结点将其添加到终结点。 要添加的表述如下：
+    如果将本教程作为新导入的应用使用，则还需训练和发布表述，然后通过[脚本](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js)或浏览器中的终结点将其添加到终结点。 要添加的表述如下：
 
    [!code-nodejs[Node.js code showing endpoint utterances to add](~/samples-luis/examples/demo-upload-endpoint-utterances/endpoint.js?range=15-26)]
 
@@ -132,7 +133,7 @@ ms.locfileid: "52426955"
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `Are there any natural language processing jobs in my department right now?`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 
 
-  ```JSON
+  ```json
   {
     "query": "are there any natural language processing jobs in my department right now?",
     "topScoringIntent": {

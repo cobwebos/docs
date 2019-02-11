@@ -4,23 +4,23 @@ description: 了解如何在 Azure 门户中使用 Azure Active Directory 报告
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2bba11cd8b0e90f7835872e496c790aa56fcddc8
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 7225ebd91c4c236b5f54574f1657239420c9f541
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276867"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55165398"
 ---
-# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>操作方法：使用 Azure Active Directory 报告对登录错误进行故障排除
+# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>如何：使用 Azure Active Directory 报告对登录错误进行故障排除
 
 使用 Azure Active Directory (Azure AD) 中的[登录报告](concept-sign-ins.md)可找到有关管理组织中应用程序访问权限问题的答案，包括：
 
@@ -35,7 +35,7 @@ ms.locfileid: "52276867"
 
 需要：
 
-* 一个使用高级 (P1/P2) 许可证的 Azure AD 租户。 
+* 一个使用高级 (P1/P2) 许可证的 Azure AD 租户。 请参阅 [Azure Active Directory Premium 入门](../fundamentals/active-directory-get-started-premium.md)来升级 Azure Active Directory 版本。
 * 一位属于该租户的全局管理员、安全管理员、安全读者或报表读者角色的用户。 此外，任何用户都可以访问自己的登录活动。 
 
 ## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>使用登录报告对登录错误进行故障排除

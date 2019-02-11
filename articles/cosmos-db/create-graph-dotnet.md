@@ -1,22 +1,19 @@
 ---
-title: 使用 Gremlin API 生成 Azure Cosmos DB .NET Framework 或 Core 应用程序 | Microsoft Docs
+title: 使用 Gremlin API 构建 Azure Cosmos DB .NET Framework 或 Core 应用程序
 description: 演示了一个可以用来连接和查询 Azure Cosmos DB 的 .NET Framework/Core 代码示例
-services: cosmos-db
 author: luisbosquez
-manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-graph
-ms.custom: quick start connect, mvc
+ms.subservice: cosmosdb-graph
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: e6166bc815c3065f4c204122b982ffb3c752d489
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: d929eb5d9aa8e2e84f76039a6f0ac73a65078957
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574352"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037848"
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-gremlin-api"></a>Azure Cosmos DB：使用 Gremlin API 生成 .NET Framework 或 Core 应用程序
 
@@ -31,7 +28,7 @@ ms.locfileid: "45574352"
 
 Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。 
 
-本快速入门教程演示如何使用 Azure 门户创建 Azure Cosmos DB [Gremlin API](graph-introduction.md) 帐户、数据库和图形（容器）。 然后使用开源驱动程序 [Gremlin.Net](http://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) 生成并运行控制台应用。  
+本快速入门教程演示如何使用 Azure 门户创建 Azure Cosmos DB [Gremlin API](graph-introduction.md) 帐户、数据库和图形（容器）。 然后使用开源驱动程序 [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) 生成并运行控制台应用。  
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -143,14 +140,13 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 * 通过将 `GremlinClient` 对象与异步任务配合使用来执行每一个 Gremlin 查询（第 63 行）。 此时会从上面定义的字典中读取 Gremlin 查询（第 26 行）：
 
     ```csharp
-    var task = gremlinClient.SubmitAsync<dynamic>(query.Value);
-    task.Wait();
+    var results = await gremlinClient.SubmitAsync<dynamic>(query.Value);
     ```
 
 * 使用 Newtonsoft.Json 中的 `JsonSerializer` 类，检索结果并读取已格式化为字典的值：
 
     ```csharp
-    foreach (var result in task.Result)
+    foreach (var result in results)
     {
         // The vertex results are formed as dictionaries with a nested dictionary for their properties
         string output = JsonConvert.SerializeObject(result);
@@ -162,7 +158,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
 
-1. 从 [Azure 门户](http://portal.azure.com/)中，导航到你的图形数据库帐户。 在“概述”选项卡中，可以看到两个终结点： 
+1. 从 [Azure 门户](https://portal.azure.com/)中，导航到你的图形数据库帐户。 在“概述”选项卡中，可以看到两个终结点： 
  
    **.Net SDK URI** - 使用 Microsoft.Azure.Graphs 库连接到图形帐户时将使用此值。 
 

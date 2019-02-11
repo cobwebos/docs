@@ -1,28 +1,22 @@
 ---
-title: ExpressRoute 客户路由器配置示例 | Microsoft Docs
+title: 路由器配置示例 – Azure ExpressRoute | Microsoft Docs
 description: 本页提供 Cisco 和 Juniper 路由器的路由器配置示例。
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: carmonm
-editor: ''
-ms.assetid: 564826bc-017a-4683-a385-37c9fa814948
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 12/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: 032e584dc5abf59e9e3e8d80673b402f1fbf721b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: 2d7fb060896de8df266489451a11ba343760c747
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23013102"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079953"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>用于设置和管理路由的路由器配置示例
-本页提供适用于 Cisco IOS XE 和 Juniper MX 系列路由器的接口与路由配置示例。 这些示例仅供指导，不能按原样使用。 可以与供应商合作，以便为网络指定适当的配置。 
+本页提供处理 ExpressRoute 时适用于 Cisco IOS XE 和 Juniper MX 系列路由器的接口与路由配置示例。 这些示例仅供指导，不能按原样使用。 可以与供应商合作，以便为网络指定适当的配置。 
 
 > [!IMPORTANT]
 > 本页中的示例仅供指导。 必须与供应商的销售/技术团队和网络团队合作，以便指定符合需要的适当配置。 对于本页中所列配置的相关问题，Microsoft 将不提供支持。 有关支持问题，必须与设备供应商联系。

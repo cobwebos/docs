@@ -1,21 +1,22 @@
 ---
-title: C# 快速入门 - 预测意向 - LUIS
-titleSuffix: Azure Cognitive Services
-description: 本快速入门使用可用的公共 LUIS 应用从会话文本中确定用户的意向。 使用 C# 将用户的意向作为文本发送到公共应用的 HTTP 预测终结点。 在终结点处，LUIS 应用公共应用的模型来分析自然语言文本的含义，确定总体意向并提取与应用的主题域相关的数据。
+title: 获取意向，C#
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: 此 C# 快速入门使用可用的公共 LUIS 应用从会话文本中确定用户的意向。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 51c23029cc771db5351575ce329944a9f06dd286
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 81a05ed3e981c2a35221830a16b5859ee5c1bd4f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035838"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225510"
 ---
 # <a name="quickstart-get-intent-using-c"></a>快速入门：使用 C# 获取意向
 
@@ -46,11 +47,11 @@ ms.locfileid: "47035838"
 
 1. 在 Visual Studio 中创建新的控制台应用程序。 
 
-    ![LUIS 用户设置菜单访问](media/luis-get-started-cs-get-intent/visual-studio-console-app.png)
+    ![在 Visual Studio 中创建新的控制台应用程序](media/luis-get-started-cs-get-intent/visual-studio-console-app.png)
 
 2. 在 Visual Studio 项目中，在解决方案资源管理器中，选择“添加引用”，然后从“程序集”选项卡中选择“System.Web”。
 
-    ![LUIS 用户设置菜单访问](media/luis-get-started-cs-get-intent/add-system-dot-web-to-project.png)
+    ![选择“添加”引用，然后从“程序集”选项卡中选择 System.Web](media/luis-get-started-cs-get-intent/add-system-dot-web-to-project.png)
 
 3. 将 Program.cs 改写为以下代码：
     

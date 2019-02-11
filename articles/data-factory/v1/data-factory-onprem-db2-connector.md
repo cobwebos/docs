@@ -9,21 +9,20 @@ ms.assetid: c1644e17-4560-46bb-bf3c-b923126671f1
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 88e56f522545f9c1f38bf0d0fdbcebdc171c294b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: c7a3893c35031d05ea8aade0ad5d30b5a56176fd
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046524"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015128"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>使用 Azure 数据工厂复制活动从 DB2 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](data-factory-onprem-db2-connector.md)
+> * [版本 1](data-factory-onprem-db2-connector.md)
 > * [版本 2（当前版本）](../connector-db2.md)
 
 > [!NOTE]
@@ -86,7 +85,7 @@ ms.locfileid: "37046524"
 | **server** |DB2 服务器的名称。 |是 |
 | **database** |DB2 数据库的名称。 |是 |
 | **schema** |DB2 数据库中架构的名称。 此属性区分大小写。 |否 |
-| **authenticationType** |用于连接 DB2 数据库的身份验证类型。 可能的值为：Anonymous、Basic 和 Windows。 |是 |
+| **authenticationType** |用于连接 DB2 数据库的身份验证类型。 可能的值包括：Anonymous、Basic 和 Windows。 |是 |
 | **username** |如果使用 Basic 或 Windows 身份验证，则表示用户帐户的名称。 |否 |
 | **password** |用户帐户的密码。 |否 |
 | **gatewayName** |应该由数据工厂服务用来连接到本地 DB2 数据库的网关的名称。 |是 |

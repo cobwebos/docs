@@ -4,23 +4,23 @@ description: 有关 Azure Active Directory 报告的常见问题解答。
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5cbf0895274672c053158cf07acb344908b37831
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 0f5d8a18f32cdd0cfe850ba90e283d8cea4ccb00
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623462"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162166"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>有关 Azure Active Directory 报告的常见问题解答
 
@@ -54,13 +54,13 @@ ms.locfileid: "51623462"
 
 **问：获得 Azure AD Premium 许可证后是否能查看上个月的数据？**
 
-答：如果最近刚切换到高级版本（包括试用版），则最初最多能看到 7 天的数据。 随着数据累积，可以看到过去 30 天的数据。
+**答：** 如果最近刚切换到高级版本（包括试用版），则最初最多能看到 7 天的数据。 随着数据累积，可以看到过去 30 天的数据。
 
 ---
 
 **问：若要查看到 Azure 门户的活动登录或通过 API 获取数据，是否需要是全局管理员？**
 
-**答：** 否。如果你是租户的**安全读取者**或**安全管理员**，也可以通过门户或 API 访问报告数据。 当然，**全局管理员**也有权访问这些数据。
+**答：** 否。如果你是租户的安全读取者或安全管理员，也可以通过门户或 API 访问报告数据。 当然，**全局管理员**也有权访问这些数据。
 
 ---
 
@@ -94,7 +94,7 @@ ms.locfileid: "51623462"
 
 **问：应使用哪些 API 获取有关 Office 365 活动日志的信息？**
 
-**答：** 可使用 [Office 365 管理 API](https://msdn.microsoft.com/office-365/office-365-managment-apis-overview) 通过一个 API 访问 Office 365 活动日志。
+**答：** 可使用 [Office 365 管理 API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) 通过一个 API 访问 Office 365 活动日志。
 
 ---
 
@@ -108,25 +108,25 @@ ms.locfileid: "51623462"
 
 **问：Identity Protection 中存在风险事件，但登录报告中未显示相应的登录。** 这是正常情况吗？
 
-**答：** 是的，标识保护会评估所有身份验证流的风险，无论其为交互式还是非交互式。 但是，所有登录报告仅显示交互式登录。
+**答：** 是的，Identity Protection 会评估所有身份验证流的风险，无论其为交互式还是非交互式。 但是，所有登录报告仅显示交互式登录。
 
 ---
 
-问：如何了解 Azure 门户中被标记为存在风险的用户或登录的原因？
+**问：如何了解 Azure 门户中被标记为存在风险的用户或登录的原因？**
 
-**答：** 如果使用的是 **Azure AD Premium** 订阅，可以选择单击“已标记为存在风险的用户”中的用户或选择“有风险的登录”报告来了解潜在风险事件的详细信息。 如果使用的是 **Free** 或 **Basic** 订阅，则可以查看有风险的用户和有风险的登录报告，但无法查看潜在风险事件的信息。
+**答：** 如果使用的是 Azure AD Premium 订阅，可以选择单击“已标记为存在风险的用户”中的用户或选择“有风险的登录”报告中的记录来了解潜在风险事件的详细信息。 如果使用的是 **Free** 或 **Basic** 订阅，则可以查看有风险的用户和有风险的登录报告，但无法查看潜在风险事件的信息。
 
 ---
 
 **问：在登录和有风险的登录报告中，IP 地址是如何计算的？**
 
-答：IP 地址的发布方式是，在 IP 地址和使用该地址的计算机所在的物理位置之间没有确定的连接。 有多种因素会导致映射 IP 地址进一步变得复杂，例如，从中心池发布 IP 地址的移动运营商和 VPN 通常与实际使用客户端设备的位置距离很远。 目前，在 Azure AD 报告中，最好是基于跟踪、注册表数据、反向查看和其他信息将 IP 地址转换为物理位置。 
+**答：** IP 地址的发布方式是，在 IP 地址和使用该地址的计算机所在的物理位置之间没有确定的连接。 有多种因素会导致映射 IP 地址进一步变得复杂，例如，从中心池发布 IP 地址的移动运营商和 VPN 通常与实际使用客户端设备的位置距离很远。 目前，在 Azure AD 报告中，最好是基于跟踪、注册表数据、反向查看和其他信息将 IP 地址转换为物理位置。 
 
 ---
 
 **问：风险事件“检测到具有附加风险的登录”指示什么？**
 
-**答：** 为了让你深入了解环境中所有具有风险的登录，对于执行了 Azure AD Identity Protection 订阅者专用的检测登录，“登录时检测到其他风险”将充当其占位符。
+**答：** 为了深入了解环境中所有具有风险的登录，对于执行了 Azure AD Identity Protection 订阅者专用的检测登录，“登录时检测到其他风险”将充当其占位符。
 
 ---
 
@@ -138,7 +138,7 @@ ms.locfileid: "51623462"
 
 **问：如何开始使用？**
 
-**答：** 若要开始使用：
+**答：** 开始操作：
     * 导航到 [Azure门户](https://portal.azure.com)中的登录报告。 
     * 单击要进行故障排除的登录。
     * 导航到“条件访问”选项卡。在这里，可以查看影响登录的所有策略以及每个策略的结果。 
@@ -158,7 +158,7 @@ ms.locfileid: "51623462"
     * **未应用**：这可能是因为不符合策略条件。
     * **未启用**：这是由于策略处于禁用状态。 
     
-**问：所有登录报告中的策略名称与 CA 中的策略名称不匹配，为什么？**
+**问：所有登录报告中的策略名称与 CA 中的策略名称不匹配。为什么？**
 
 **答：** 所有登录报告中的策略名称均基于登录时的 CA 策略名称。 如果你后来（即登录后）更新了策略名称，则这可能与 CA 中的策略名称不一致。
 

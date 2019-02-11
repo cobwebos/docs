@@ -9,20 +9,19 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: ca64c87a0211ae00218493fe7bfddcbbb81a032a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 8ceae771f1a66f6d999dd0dc2b1f298d4aae8f86
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109433"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017287"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](v1/data-factory-create-pipelines.md)
+> * [版本 1](v1/data-factory-create-pipelines.md)
 > * [当前版本](concepts-pipelines-activities.md)
 
 本文帮助你了解 Azure 数据工厂中的管道和活动，并帮助你利用它们为数据移动和数据处理方案构造端到端数据驱动工作流。
@@ -95,15 +94,15 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 }
 ```
 
-标记 | Description | Type | 必选
+标记 | Description | 类型 | 必选
 --- | ----------- | ---- | --------
-名称 | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\”</li></ul> | String | 是
+名称 | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\”</li></ul> | String | 是
 description | 指定描述管道用途的文本。 | String | 否
 活动 | **activities** 节中可定义有一个或多个活动。 请参阅[活动 JSON](#activity-json) 一节，以了解有关活动 JSON 元素的详细信息。 | Array | 是
 parameters | **参数**部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | 列出 | 否
 
 ## <a name="activity-json"></a>活动 JSON
-**activities** 节中可定义有一个或多个活动。 有两种主要的活动类型：执行活动和控制活动。
+**activities** 节中可定义有一个或多个活动。 有两种主要类型的活动：执行和控制活动。
 
 ### <a name="execution-activities"></a>执行活动
 执行活动包括[数据移动](#data-movement-activities)和[数据转换活动](#data-transformation-activities)。 它们具有以下顶级结构：
@@ -130,7 +129,7 @@ parameters | **参数**部分可在在管道内定义一个或多个参数，使
 
 标记 | Description | 必选
 --- | ----------- | ---------
-名称 | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li></ul>
+名称 | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li></ul>
 description | 描述活动用途的文本 | 是
 type | 活动的类型。 有关不同的活动类型，请参阅[数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)和[控制活动](#control-activities)部分。 | 是
 linkedServiceName | 活动使用的链接服务的名称。<br/><br/>活动可能需要你指定链接到所需计算环境的链接服务。 | 对 HDInsight 活动、Azure 机器学习批处理评分活动和存储过程活动是必需的。 <br/><br/>对其他活动均非必需
@@ -173,7 +172,7 @@ JSON 名称 | Description | 允许的值 | 必选
 timeout | 指定活动运行的超时。 | Timespan | 不是。 默认超时为 7 天。
 retry | 最大重试次数 | Integer | 不是。 默认值为 0
 retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | Integer | 不是。 默认为 20 秒
-secureOutput | 当设置为 true 时，来自活动的输出被视为安全的，不会记录到监视中。 | 布尔 | 不是。 默认值为 false。
+secureOutput | 当设置为 true 时，来自活动的输出被视为安全的，不会记录到监视中。 | Boolean | 不是。 默认值为 false。
 
 ### <a name="control-activity"></a>控制活动
 控制活动具有以下顶级结构：
@@ -194,7 +193,7 @@ secureOutput | 当设置为 true 时，来自活动的输出被视为安全的�
 
 标记 | Description | 必选
 --- | ----------- | --------
-名称 | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li><ul>
+名称 | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li><ul>
 description | 描述活动用途的文本 | 是
 type | 活动的类型。 有关不同的活动类型，请参阅[数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)和[控制活动](#control-activities)部分。 | 是
 typeProperties | typeProperties 部分的属性取决于每个活动类型。 要查看活动的类型属性，请单击链接转到上一节中的活动。 | 否
@@ -203,14 +202,14 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 ### <a name="activity-dependency"></a>活动依赖项
 活动依赖项定义后续活动对以前活动的依赖方式，确定是否继续执行下一个任务的条件。 活动可能依赖于具有不同依赖项条件的一个或多个以前的活动。
 
-不同的依赖项条件有：成功、失败、跳过和完成。
+不同依赖项条件有：成功、失败、跳过、完成。
 
 例如，如果管道具有活动 A -> 活动 B，则可能发生的不同情况是：
 
-- 活动 B 对活动 A 具有的依赖项条件为**成功**：活动 B 仅在活动 A 的最终状态为成功时才运行
-- 活动 B 对活动 A 具有的依赖项条件为**失败**：活动 B 仅在活动 A 的最终状态为失败时才运行
-- 活动 B 对活动 A 具有的依赖项条件为**完成**：活动 B 在活动 A 的最终状态为成功或失败时运行
-- 活动 B 对活动 A 具有的依赖项条件为**跳过**：活动 B 在活动 A 的最终状态为跳过时运行。 在活动 X -> 活动 Y -> 活动 Z 的情况下出现跳过，其中每个活动仅在以前的活动成功后才运行。 如果活动 X 失败，则活动 Y 的状态为“跳过”，因为它从不执行。 类似，活动 Z 的状态也为“跳过”。
+- 活动 B 对活动 A 具有依赖项条件“成功”：只有活动 A 的最终状态为“成功”，活动 B 才运行
+- 活动 B 对活动 A 具有依赖项条件“失败”：只有活动 A 的最终状态为“失败”，活动 B 才运行
+- 活动 B 对活动 A 具有依赖项条件“完成”：如果活动 A 的最终状态为“成功”或“失败”，则活动 B 运行
+- 活动 B 对活动 A 具有依赖项条件“跳过”：如果活动 A 的最终状态为“跳过”，则活动 B 运行。 在活动 X -> 活动 Y -> 活动 Z 的情况下出现跳过，其中每个活动仅在以前的活动成功后才运行。 如果活动 X 失败，则活动 Y 的状态为“跳过”，因为它从不执行。 类似，活动 Z 的状态也为“跳过”。
 
 #### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>示例：活动 2 是否运行取决于活动 1 是否成功运行
 

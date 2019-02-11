@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: d7e8d41d3136513e1bce466f1b3e8ecf43c42a01
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 01/25/2019
+ms.openlocfilehash: 74f89778ffa1715c5434b6bfe8191b3373a311ca
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687261"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452339"
 ---
 # <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>使用 PowerShell 在 SQL 数据库和 SQL Server 本地数据库之间进行同步
 
@@ -26,16 +26,19 @@ ms.locfileid: "51687261"
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 来创建与 Azure 的连接。
 
 有关 SQL 数据同步的概述，请参阅[使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](../sql-database-sync-data.md)。
+
+> [!IMPORTANT]
+> 目前，Azure SQL 数据同步不支持 Azure SQL 数据库托管实例。
 
 ## <a name="sample-script"></a>示例脚本
 
 ```powershell-interactive
 # prerequisites: 
-# 1. Create an Azure Database from AdventureWorksLT sample database as hub database
-# 2. Create an Azure Database in the same region as sync database
+# 1. Create an Azure SQL Database from AdventureWorksLT sample database as hub database
+# 2. Create an Azure SQL Database in the same region as sync database
 # 3. Create an on premises SQL Server Database as member database
 # 4. Update the parameters below before running the sample
 #

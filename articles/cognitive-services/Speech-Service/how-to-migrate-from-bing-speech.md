@@ -6,16 +6,16 @@ services: cognitive-services
 author: wsturman
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: fdd22e14e0b7636dbc337a20dd69bf93696bb924
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: b862975cda4a73d087d9aa0d5816fdcb9e0149dc
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416274"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217997"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>从必应语音迁移到语音服务
 
@@ -37,7 +37,7 @@ ms.locfileid: "50416274"
 
 语音服务非常类似于必应语音，但有以下差异。
 
-功能 | 必应语音 | 语音服务 | 详细信息
+Feature | 必应语音 | 语音服务 | 详细信息
 -|-|-|-
 C++ SDK | :heavy_minus_sign: | :heavy_check_mark: | 语音服务支持 Windows 和 Linux。
 Java SDK | :heavy_check_mark: | :heavy_check_mark: | 语音服务支持 Android 和语音设备。

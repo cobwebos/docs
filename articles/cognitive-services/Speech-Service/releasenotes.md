@@ -1,30 +1,72 @@
 ---
-title: 语音服务 SDK 文档
+title: 发行说明 - 语音服务
 titlesuffix: Azure Cognitive Services
-description: 发行说明 - 最新版本中的内容更改
+description: 请参阅 Azure 语音服务的功能发布、改进、bug 修复和已知问题的运行日志。
 services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 12/18/2018
 ms.author: wolfma
-ms.openlocfilehash: ff09926d61d64294a4f12ccf959f6685910539f1
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec18
+ms.openlocfilehash: 80cf0d9970eb7052eeb19fb297176453864202cf
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317885"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55205689"
 ---
 # <a name="release-notes"></a>发行说明
 
-## <a name="speech-service-sdk-110"></a>语音服务 SDK 1.1.0
+## <a name="speech-sdk-120-2018-december-release"></a>语音 SDK 1.2.0：2018 年 12 月版本
+
+**新功能**
+
+* Python
+  * 此版本支持 Python 的 Beta 版本（3.5 及更高版本）。 有关详细信息，请[参阅此处](quickstart-python.md)。
+* JavaScript
+  * 适用于 JavaScript 的语音 SDK 已开放了源代码。 [GitHub](https://github.com/Microsoft/cognitive-services-speech-sdk-js) 上提供了源代码。
+  * 我们现在支持 Node.js，可以在[此处](quickstart-js-node.md)找到详细信息。
+  * 已删除了对音频会话的长度限制，将自动在后台进行重新连接。
+* 连接对象
+  * 可以从识别器中访问连接对象。 此对象允许你显式启动服务连接并订阅连接事件和断开连接事件。
+    （这在 JavaScript 和 Python 中尚不可用。）
+* 支持 Ubuntu 18.04。
+* Android
+  * 在生成 APK 期间启用了 ProGuard 支持。
+
+**改进**
+
+* 改进了内部线程的使用，减少了线程、锁和互斥的数量。
+* 改进了错误报告 / 信息。 在某些情况下，错误消息没有完全传播出去。
+* 更新了 JavaScript 中的开发依赖项来使用最新模块。
+
+**Bug 修复**
+
+* 修复了由于 RecognizeAsync 中的类型不匹配导致的内存泄漏。
+* 在某些情况下，异常会被泄露。
+* 修复了翻译事件参数中的内存泄漏。
+* 修复了长时间运行的会话中与重新连接相关的锁定问题。
+* 修复了可能会导致失败的翻译缺少最终结果的问题。
+* C#：如果在主线程中没有等待异步操作，则可能会在异步任务完成之前释放识别器。
+* Java:修复了导致 Java VM 故障的一个问题。
+* Objective-C：修复了枚举映射；之前返回 RecognizedIntent 而非 RecognizingIntent。
+* JavaScript：在 SpeechConfig 中将默认输出格式设置为“simple”。
+* JavaScript：删除了 JavaScript 和其他语言中配置对象中的属性之间的不一致。
+
+**示例**
+
+* 更新并修复了几个示例（例如，翻译的输出语音，等等）。
+* 在[示例存储库](https://aka.ms/csspeech/samples)中添加了 Node.js 示例。
+
+## <a name="speech-sdk-110"></a>语音 SDK 1.1.0
 
 **新功能**
 
 * 对 Android x86/x64 的支持。
-* 代理支持：在 SpeechConfig 对象中，你现在可以调用某个函数来设置代理信息（主机名、端口、用户名和密码）。 此功能在 iOS 上尚不可用。
+* 代理支持：在 SpeechConfig 对象中，现在可以调用某个函数来设置代理信息（主机名、端口、用户名和密码）。 此功能在 iOS 上尚不可用。
 * 改进了错误代码和消息。 如果识别返回了错误，这在过去会将 `Reason`（在已取消事件中）或 `CancellationDetails`（在识别结果中）设置为 `Error`。 取消的事件现在包含两个附加的成员：`ErrorCode` 和 `ErrorDetails`。 如果服务器随所报告的错误返回了附加的错误信息，则现在将在新成员中提供该信息。
 
 **改进**
@@ -50,7 +92,7 @@ ms.locfileid: "52317885"
 
 * 在[示例存储库](https://aka.ms/csspeech/samples)中添加了拉取和推送流用法的 C++ 和 C# 示例。
 
-## <a name="speech-service-sdk-101"></a>语音服务 SDK 1.0.1
+## <a name="speech-sdk-101"></a>语音 SDK 1.0.1
 
 可靠性改进和 bug 修复：
 
@@ -83,7 +125,7 @@ ms.locfileid: "52317885"
 * 使用语音 SDK 生成的 UWP 应用现在可以通过 Windows 应用认证工具包 (WACK)。
   请查看 [UWP 快速入门](quickstart-csharp-uwp.md)。
 * 在 Linux (Ubuntu 16.04 x64) 上支持 .NET Standard 2.0。
-* 实验性：在 Windows (64-bit) 和 Linux (Ubuntu 16.04 x64) 上支持 Java 8。
+* 试验：在 Windows (64-bit) 和 Linux (Ubuntu 16.04 x64) 上支持 Java 8。
   请查看 [Java 运行时环境快速入门](quickstart-java-jre.md)。
 
 **功能性更改**
@@ -108,7 +150,7 @@ ms.locfileid: "52317885"
 
 * 支持 Android 平台（API 23：Android 6.0 Marshmallow 或更高版本）。 查看 [Android 快速入门](quickstart-java-android.md)。
 * 在 Windows 上支持 .NET Standard 2.0。 查看 [.NET Core 快速入门](quickstart-csharp-dotnetcore-windows.md)。
-* 实验：在 Windows 上支持 UWP（版本 1709 或更高版本）。
+* 试验：在 Windows 上支持 UWP（版本 1709 或更高版本）。
   * 请查看 [UWP 快速入门](quickstart-csharp-uwp.md)。
   * 注意：使用语音 SDK 生成的 UWP 应用尚未通过 Windows 应用认证工具包 (WACK)。
 * 通过自动重新连接支持识别功能长时间运行。
@@ -175,6 +217,6 @@ ms.locfileid: "52317885"
 
 已添加更多示例，还将持续更新。 有关最新的示例集，请参阅[语音 SDK 示例 GitHub 存储库](https://aka.ms/csspeech/samples)。
 
-## <a name="cognitive-services-speech-sdk-0212733-2018-may-release"></a>认知服务语音 SDK 0.2.12733：2018 年 5 月版本
+## <a name="cognitive-services-speech-sdk-0212733-2018-may-release"></a>认知服务语音 0.2.12733：2018 年 5 月版本
 
 此版本是认知服务语音 SDK 的第一个公共预览版本。

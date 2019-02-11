@@ -1,33 +1,29 @@
 ---
-title: 将 Apache Spark 连接到 Azure Cosmos DB | Microsoft Docs
+title: 将 Apache Spark 连接到 Azure Cosmos DB
 description: 了解可将 Apache Spark 连接到 Azure Cosmos DB 的 Azure Cosmos DB Spark 连接器。 可以在 Microsoft 提供的多租户全局分布式数据库系统上执行分布式聚合。
-keywords: apache spark
-services: cosmos-db
 author: tknandu
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: 62395ff5370a057ca1888dd135b83be9d6f34f8d
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 6d80de23f815d96ba78f023f46a530561d5ec39d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51707174"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034635"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>使用 Apache Spark 到 Azure Cosmos DB 的连接器加速大数据分析
  
-通过 Apache Spark 到 Azure Cosmos DB 的连接器，Azure Cosmos DB 可充当 Apache Spark 作业的输入源或输出接收器。 将 [Spark](http://spark.apache.org/) 连接到 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 后，可以解决瞬息万变的数据科学问题。 可以使用 Azure Cosmos DB 快速保存和查询数据。 该连接器有效利用本机 Azure Cosmos DB 托管的索引。 针对快速变化的多区域分布式数据执行分析和向下推送谓词筛选时，这些索引可以实现可更新的列。 此类数据的范围包括物联网 (IoT)、数据科学和分析方案，等等。
+通过 Apache Spark 到 Azure Cosmos DB 的连接器，Azure Cosmos DB 可充当 Apache Spark 作业的输入源或输出接收器。 将 [Spark](https://spark.apache.org//) 连接到 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 后，可以解决瞬息万变的数据科学问题。 可以使用 Azure Cosmos DB 快速保存和查询数据。 该连接器有效利用本机 Azure Cosmos DB 托管的索引。 针对快速变化的多区域分布式数据执行分析和向下推送谓词筛选时，这些索引可以实现可更新的列。 此类数据的范围包括物联网 (IoT)、数据科学和分析方案，等等。
 
 ## <a name="connector-components"></a>连接器组件
 
 Spark 到 Azure Cosmos DB 的连接器具有以下组件：
 
-* 使用 [Azure Cosmos DB](http://documentdb.com) 可跨数目不限的地理区域预配和弹性缩放吞吐量与存储。  
+* 使用 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 可跨数目不限的地理区域预配和弹性缩放吞吐量与存储。  
 
-* [Apache Spark](http://spark.apache.org/) 是专为速度、易用性和复杂分析打造的强大开源处理引擎。  
+* [Apache Spark](https://spark.apache.org/) 是专为速度、易用性和复杂分析打造的强大开源处理引擎。  
 
 * 使用 [Azure Databricks 上的 Apache Spark 群集](https://docs.azuredatabricks.net/getting-started/index.html)可在 Spark 群集上运行 Spark 作业。
 
@@ -179,7 +175,7 @@ Spark 与 Azure Cosmos DB 之间的通信速度会大幅提高，因为数据在
 
 4. 提取 Twitter 源示例的内容并打开 config.py 文件。 更新 masterKey、host、databaseId、collectionId 和 preferredLocations 值。  
 
-5. 转到 `http://apps.twitter.com/`，并注册 Twitter 源应用程序。 命名应用程序后，需要输入“使用者密钥”、“使用者机密”、“访问令牌”和“访问令牌机密”。 复制这些值，并在 config.py 文件中更新它们，以向 Twitter 源应用程序授予对 Twitter 的 编程访问权限。   
+5. 转到 `https://apps.twitter.com/`，并注册 Twitter 源应用程序。 命名应用程序后，需要输入“使用者密钥”、“使用者机密”、“访问令牌”和“访问令牌机密”。 复制这些值，并在 config.py 文件中更新它们，以向 Twitter 源应用程序授予对 Twitter 的 编程访问权限。   
 
 6. 保存 config.py 文件。 打开命令提示符并使用以下命令运行 Python 应用程序：
 
@@ -513,4 +509,4 @@ Java SDK 支持以下配置映射的值：
 * [聚合示例](https://github.com/Azure/azure-cosmosdb-spark/wiki/Aggregations-Examples)
 * [示例脚本和 Notebook](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples)
 
-此外，还可以查看 [Apache Spark SQL、数据帧和数据集指南](http://spark.apache.org/docs/latest/sql-programming-guide.html)以及 [Azure HDInsight 上的 Apache Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) 一文。
+此外，还可以查看 [Apache Spark SQL、数据帧和数据集指南](https://spark.apache.org/docs/latest/sql-programming-guide.html)以及 [Azure HDInsight 上的 Apache Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) 一文。

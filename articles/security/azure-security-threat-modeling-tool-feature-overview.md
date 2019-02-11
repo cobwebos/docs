@@ -3,9 +3,9 @@ title: Microsoft 威胁建模工具 - Azure | Microsoft 文档
 description: 了解威胁建模工具中提供的所有功能
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 76e49fc0e680acbc2b7b7c62b69fbf72d6690acf
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 601f3bf05388406c8f96a7351f7fb3aa4de2650a
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
-ms.locfileid: "26754739"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389327"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>威胁建模工具功能概述
 
@@ -46,7 +46,7 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 ![菜单项](./media/azure-security-threat-modeling-tool-feature-overview/menuitems.png)
 
-| 标签                               | 详细信息      |
+| Label                               | 详细信息      |
 | --------------------------------------- | ------------ |
 | **文件** | <ul><li>打开、保存和关闭文件</li><li>登录和注销 OneDrive 帐户。</li><li>共享链接（视图和编辑）。</li><li>查看文件信息。</li><li>将新模板应用于现有模型。</li></ul> |
 | **编辑** | 撤消和重做操作，以及复制、粘贴和删除。 |
@@ -107,7 +107,7 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 | 元素属性                               | 详细信息      |
 | --------------------------------------- | ------------ |
-| **Name** | 用于命名流程、存储、交互方和流，以便可以轻松识别它们。 |
+| **名称** | 用于命名流程、存储、交互方和流，以便可以轻松识别它们。 |
 | **超出范围** | 如果选择此选项，则该元素会从威胁生成矩阵中移除（不推荐）。 |
 | **超出范围的原因** | 告知用户选择超出范围原因的理由字段。 |
 
@@ -119,7 +119,7 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 ### <a name="open-a-model"></a>打开模型
 
-将鼠标悬停在“打开模型”上会显示 2 个选项：“从计算机打开”和“从 OneDrive 打开”。 第一个选项将打开“文件打开”屏幕。 第二个选项会将你转到 OneDrive 的登录过程。 身份验证成功后，可以选择文件夹和文件。
+将鼠标指针悬停在“打开模型”上可显示两个选项：**从此计算机打开**和**从 OneDrive 打开**。 第一个选项将打开“文件打开”屏幕。 第二个选项会将你转到 OneDrive 的登录过程。 身份验证成功后，可以选择文件夹和文件。
 
 ![打开模型](./media/azure-security-threat-modeling-tool-feature-overview/openmodel.png)
 
@@ -139,15 +139,15 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 可以使用以下两种方法在网格上添加元素：
 
-- 拖放：将所需元素拖到网格中。 然后使用元素属性提供其他信息。
-- 右键单击：右键单击网格上的任意位置，然后从下拉菜单中选择项。 所选元素的通用表示将显示在屏幕上。
+- **拖放**：将所需元素拖到网格中。 然后使用元素属性提供其他信息。
+- **右键单击**：右键单击网格上的任意位置，然后从下拉菜单中选择项。 所选元素的通用表示将显示在屏幕上。
 
 ### <a name="connect-elements"></a>连接元素
 
 可以使用以下两种方法连接元素：
 
-- 拖放：将所需的数据流拖至网格中，并将两端连接到相应的元素。
-- 单击 + Shift：单击第一个元素（发送数据），按住 Shift 键，然后选择第二个元素（接收数据）。 右键单击并选择“连接”。 如果你使用的是双向数据流，顺序就不那么重要了。
+- **拖放**：将所需的数据流拖至网格中，并将两端连接到相应的元素。
+- **单击 + Shift**：单击第一个元素（发送数据），按住 Shift 键，然后选择第二个元素（接收数据）。 右键单击并选择“连接”。 如果你使用的是双向数据流，顺序就不那么重要了。
 
 ### <a name="properties"></a>属性
 
@@ -181,7 +181,7 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 选择威胁后，可以使用三种不同的功能：
 
-| 功能                               | 信息      |
+| Feature                               | 信息      |
 | --------------------------------------- | ------------ |
 | **已读指示器** | <p>将威胁标记为已读，可帮助你跟踪已查看的项。</p><p>![已读/未读指示器](./media/azure-security-threat-modeling-tool-feature-overview/readmode.png)</p> |
 | **交互焦点** | <p>关系图中属于威胁的交互会突出显示。</p><p>![交互焦点](./media/azure-security-threat-modeling-tool-feature-overview/interactionfocus.png)</p> |
@@ -207,5 +207,5 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要为社区提供模板，请转到我们的 [GitHub](https://github.com/Microsoft/threat-modeling-templates) 页。 
-* 若要开始使用此工具，请转到[下载](https://aka.ms/tmtpreview)页。
+- 将你的问题、评论和疑问发送至 tmtextsupport@microsoft.com。 **[下载](https://aka.ms/threatmodelingtool)** 威胁建模工具以开始。
+- 若要为社区提供模板，请转到我们的 [GitHub](https://github.com/Microsoft/threat-modeling-templates) 页。

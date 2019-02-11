@@ -9,21 +9,24 @@ ms.devlang: ''
 ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
-ms.reviewer: ''
+ms.reviewer: douglasl
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: fa5ce7264fd003e0a49d6408acae070577879cdd
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 12/20/2018
+ms.openlocfilehash: cd4c5dc877bf565e5218d431506bbeccd5dc6382
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686613"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567259"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL 数据同步最佳做法 
 
 本文介绍了针对 Azure SQL 数据同步的最佳做法。
 
 有关 SQL 数据同步的概述，请参阅[使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
+
+> [!IMPORTANT]
+> 目前，Azure SQL 数据同步**不**支持 Azure SQL 数据库托管实例。
 
 ## <a name="security-and-reliability"></a>安全性和可靠性
 

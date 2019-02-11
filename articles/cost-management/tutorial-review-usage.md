@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/31/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 7b9c9a600d105d4b7fbbeb4f52ee42b5eb2bcaaa
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: e240cbadbee87938107c4a9bf034c47db42acf92
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275864"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098640"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -51,15 +51,15 @@ Azure 成本管理提供了与 Cloudyn 类似的功能。 Azure 成本管理是�
 
 下面是一个示例报表：
 
-![示例报表](./media/tutorial-review-usage/actual-cost01.png)
+![时段实际成本报表示例](./media/tutorial-review-usage/actual-cost01.png)
 
 此报表显示过去 30 天的所有支出。 若要仅查看 Azure 服务的支出，请应用“服务”组，然后针对所有 Azure 服务进行筛选。 下图显示了筛选出的服务。
 
-![筛选出的服务](./media/tutorial-review-usage/actual-cost02.png)
+![显示筛选出的 Azure 服务的示例](./media/tutorial-review-usage/actual-cost02.png)
 
 在前面的示例中，从 2018 年 10 月 29 日开始，支出较之前的要少。 但是，列数过多可能会使趋势不明显。 可以将报表视图更改为折线图或面积图，以查看在其他视图中显示的数据。 下图更清楚地显示了这一趋势。
 
-![报表中的趋势](./media/tutorial-review-usage/actual-cost03.png)
+![显示 Azure VM 成本趋势递减的示例](./media/tutorial-review-usage/actual-cost03.png)
 
 继续此示例，可以看到 Azure VM 的成本下降。 当天其他 Azure 服务的成本也开始下降。 那么，是什么导致了支出缩减呢？ 在此示例中，已经完成了一个大型工作项目，因此对许多 Azure 服务的使用也下降。
 
@@ -77,31 +77,39 @@ Azure 成本管理提供了与 Cloudyn 类似的功能。 Azure 成本管理是�
 
 在门户顶部的菜单中，单击“优化器” > “大小优化” > “经济高效的大小调整建议”。 如果有用，请应用筛选器来减少结果。 下面是一个示例图像：
 
-![Azure VM](./media/tutorial-review-usage/sizing01.png)
+![Azure VM 的经济高效的大小调整建议报告](./media/tutorial-review-usage/sizing01.png)
 
 在此示例中，按照建议更改 VM 实例类型可以节省 2,382 美元。 单击“详细信息”下的加号 (+) 获取第一个建议。 以下是有关第一个建议的详细信息。
 
-![建议详细信息](./media/tutorial-review-usage/sizing02.png)
+![显示建议详细信息的示例](./media/tutorial-review-usage/sizing02.png)
 
 单击“候选项列表”旁的加号可查看 VM 实例 ID。
 
-![候选项列表](./media/tutorial-review-usage/sizing03.png)
+![显示要调整大小的 VM 候选项列表的示例](./media/tutorial-review-usage/sizing03.png)
 
 若要观看有关检测低效使用情况的教程视频，请观看[在 Cloudyn 中优化 VM 大小](https://youtu.be/1xaZBNmV704)。
 
-Azure 成本管理也为 Azure 服务提供成本节省建议 有关详细信息，请参阅[教程：通过建议优化成本](tutorial-acm-opt-recommendations.md)。
+Azure 成本管理也为 Azure 服务提供成本节省建议 有关详细信息，请参阅[教程：根据建议优化成本](tutorial-acm-opt-recommendations.md)。
 
 ## <a name="create-alerts-for-unusual-spending"></a>针对异常支出创建警报
 
-你可以针对支出异常和超支风险自动向利益干系人发出警报。 你可以使用支持基于预算和成本阈值的警报报表快速轻松地创建警报。
+出现支出异常和超支风险时，可以通过警报自动通知利益相关者。 可以使用支持基于预算和成本阈值的警报的报表创建警报。
 
-可以使用任何成本报表针对任何支出创建警报。 在此示例中，当 Azure VM 支出接近总预算时，使用“实际成本随着时间推移”报表通知你。 创建警报需要执行以下所有步骤。 在门户顶部的菜单中，单击“成本” > “成本分析” > “时段实际成本”。 将“组”设置为“服务”，并将“按服务筛选”设置为“Azure/VM”。 在报表的右上角，单击“操作”，然后选择“计划报表”。
+当你在 Azure VM 上的支出接近总预算时，此示例使用“一段时间的实际成本”报表来发送通知。 在此场景中，你的总预算为 20,000 美元，你希望在成本接近预算的一半（9,000 美元）时收到通知，在成本为 10,000 美元时再次收到警报。
 
-在“保存或计划此报告”框中，使用“计划”选项卡以所需频率向自己发送报表电子邮件。 请务必选择“通过电子邮件发送”。 你所用的任何标记、分组和筛选均包含在通过电子邮件发送的报表中。 单击“阈值”选项卡，然后选择“实际成本与阈值”。 如果总预算为 20,000 美元，希望在成本接近大约一半时获得通知，则在 10,000 美元创建“红色警报”，在 9,000 美元创建“黄色警报”。 在输入的值中不要包含逗号。 然后，选择连续警报的数目。 当你收到的警报总数达到指定数目时，就不会再发送任何其他警报。 保存计划的报表。
+1. 在 Cloudyn 门户顶部的菜单中，选择“成本” > “成本分析” > “时段实际成本”。 
+2. 将“组”设置为“服务”，并将“按服务筛选”设置为“Azure/VM”。 
+3. 在报表的右上角，选择“操作”，然后选择“计划报表”。
+4. 若要按计划的时间间隔向自己发送有关报表的电子邮件，请在“保存或计划此报表”对话框中选择“计划”选项卡。 请务必选择“通过电子邮件发送”。 你使用的任何标记、分组和筛选均包含在通过电子邮件发送的报表中。 
+5. 选择“阈值”选项卡，然后选择“实际成本与阈值”**。**。 
+   1. 在“红色警报”阈值框中，输入 10000。 
+   2. 在“黄色警报”阈值框中，输入 9000。 
+   3. 在“连续警报数”框中，输入要接收的连续警报的数目。 当你收到的警报总数达到指定数目时，就不会再发送任何其他警报。 
+6. 选择“保存”。
 
-![示例报表](./media/tutorial-review-usage/schedule-alert01.png)
+![基于支出阈值显示红色和黄色警报的示例](./media/tutorial-review-usage/schedule-alert01.png)
 
-还可以选择“成本百分比与预算”阈值指标来创建警报。 通过使用该指标，可以使用预算百分比，而不是货币值。
+还可以选择“成本百分比与预算”阈值指标来创建警报。 这样就可以将阈值指定为预算的百分比而不是货币值。
 
 ## <a name="export-data"></a>导出数据
 

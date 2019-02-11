@@ -8,12 +8,12 @@ ms.assetid: 0c771e7a-6fcd-417f-9247-897177719567
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 07323f1b0541555ef71919e026ecaf2494056dad
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ec646ad1e9e1330a7e0b3f3f0576cee9d58c08e1
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406492"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353254"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>采用 Azure 数据目录的方法和过程
 本文介绍如何在组织中采用 **Azure 数据目录**。 要成功采用 **Azure 数据目录**，请将重点放在三个要点上：定义愿景、找到组织内的重要业务用例，以及选择试运行项目。
@@ -66,7 +66,7 @@ ms.locfileid: "47406492"
 * **定义团队目标** - 团队如何实现其目标？ 别只是专注在数据目录，因为在此阶段必须保持公正客观。 请记住重点是业务成果而非技术。
 * **定义业务问题** - 团队在查找和了解数据资产方面所面临的问题是什么？ 例如，在网络文件夹的 Excel 工作簿中可能可以找到关于重要数据源的信息，而团队可能花费许多时间在查找这些工作簿。
 * **了解与改变有关的团队文化** - 许多采用上的挑战来自对于改变的抗拒，而非来自新工具的实现。 在识别用例时，团队对于改变的态度非常重要，由于他们可能早就有现成的处理程序，因而有“我们一直是这样做的”或“既然没有损坏，为何要修理？”的心态。 如果受到影响的人员了解改变带来什么价值，他们就乐于采用新工具或处理程序，并因此感谢所要解决的问题有如此重要。
-* **将注意力持续放在数据资产上** - 在介绍团队所面临的业务问题时，需要“直捣黄龙”，将注意力放在与更有效利用企业数据资产有关的事务上。
+* **关注与数据资产相关的内容** - 在讨论团队所面临的业务问题时，需要“直捣黄龙”，将注意力放在与更有效利用企业数据资产有关的事务上。
 
 下面是与数据目录有关的一些示例用例：
 

@@ -13,11 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-ms.openlocfilehash: 237310c607eb8488e53631b6e69d01703d1ebf99
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 87bdfcc827155e5dd0a02ffb1640bf7e9cd4e479
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715777"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Azure 应用服务中针对移动应用的身份验证和授权
 
@@ -25,7 +26,7 @@ ms.lasthandoff: 04/05/2018
 
 本文重点介绍了移动应用开发。 若要快速了解如何将应用服务身份验证和授权用于移动应用，请参阅以下教程之一：[向 iOS 应用添加身份验证][iOS]（或 [Android]、[Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms] 或 [Cordova]）。 
 
-有关应用服务中的身份验证和授权如何工作的信息，请参阅 [Azure 应用服务中的身份验证和授权](../app-service/app-service-authentication-overview.md)。
+有关应用服务中的身份验证和授权如何工作的信息，请参阅 [Azure 应用服务中的身份验证和授权](../app-service/overview-authentication-authorization.md)。
 
 ## <a name="authentication-with-provider-sdk"></a>在使用提供者 SDK 的情况下进行身份验证
 
@@ -43,7 +44,7 @@ ms.lasthandoff: 04/05/2018
 
 获取提供者令牌后，需将其发送到应用服务进行验证。 应用服务在验证令牌后会创建新的应用服务令牌，将其返回给客户端。 移动应用客户端 SDK 提供的帮助器方法可用于管理此交换，并可自动将令牌附加到针对应用程序后端的所有请求。 开发人员也可以保留对提供者令牌的引用。
 
-有关身份验证流的详细信息，请参阅[应用服务身份验证流](../app-service/app-service-authentication-overview.md#authentication-flow)。 
+有关身份验证流的详细信息，请参阅[应用服务身份验证流](../app-service/overview-authentication-authorization.md#authentication-flow)。 
 
 ## <a name="authentication-without-provider-sdk"></a>在不使用提供者 SDK 的情况下进行身份验证
 
@@ -51,10 +52,10 @@ ms.lasthandoff: 04/05/2018
 
 启动此流程的代码包括在每个平台的身份验证教程中。 在流程结束时，客户端 SDK 将拥有一个应用服务令牌，该令牌自动附加到针对应用程序后端的所有请求。
 
-有关身份验证流的详细信息，请参阅[应用服务身份验证流](../app-service/app-service-authentication-overview.md#authentication-flow)。 
+有关身份验证流的详细信息，请参阅[应用服务身份验证流](../app-service/overview-authentication-authorization.md#authentication-flow)。 
 ## <a name="more-resources"></a>更多资源
 
-以下教程展示了如何通过[服务器定向流](../app-service/app-service-authentication-overview.md#authentication-flow)向移动客户端添加身份验证：
+以下教程展示了如何通过[服务器定向流](../app-service/overview-authentication-authorization.md#authentication-flow)向移动客户端添加身份验证：
 
 * [将身份验证添加到 iOS 应用][iOS]
 * [将身份验证添加到 Android 应用][Android]
@@ -64,21 +65,21 @@ ms.lasthandoff: 04/05/2018
 * [将身份验证添加到 Xamarin.Forms 应用][Xamarin.Forms]
 * [将身份验证添加到 Cordova 应用][Cordova]
 
-若要为 Azure Active Directory 使用[客户端定向流](../app-service/app-service-authentication-overview.md#authentication-flow)，请参阅以下资源：
+若要为 Azure Active Directory 使用[客户端定向流](../app-service/overview-authentication-authorization.md#authentication-flow)，请参阅以下资源：
 
 * [使用适用于 iOS 的 Active Directory 身份验证库][ADAL-iOS]
 * [使用适用于 Android 的 Active Directory 身份验证库][ADAL-Android]
 * [使用适用于 Windows 和 Xamarin 的 Active Directory 身份验证库][ADAL-dotnet]
 
-若要为 Facebook 使用[客户端定向流](../app-service/app-service-authentication-overview.md#authentication-flow)，请参阅以下资源：
+若要为 Facebook 使用[客户端定向流](../app-service/overview-authentication-authorization.md#authentication-flow)，请参阅以下资源：
 
 * [使用 Facebook SDK for iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#facebook-sdk)
 
-若要为 Twitter 使用[客户端定向流](../app-service/app-service-authentication-overview.md#authentication-flow)，请参阅以下资源：
+若要为 Twitter 使用[客户端定向流](../app-service/overview-authentication-authorization.md#authentication-flow)，请参阅以下资源：
 
 * [使用 Twitter Fabric for iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#twitter-fabric)
 
-若要为 Google 使用[客户端定向流](../app-service/app-service-authentication-overview.md#authentication-flow)，请参阅以下资源：
+若要为 Google 使用[客户端定向流](../app-service/overview-authentication-authorization.md#authentication-flow)，请参阅以下资源：
 
 * [使用适用于 iOS 的 Google 登录 SDK](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
 
@@ -90,11 +91,11 @@ ms.lasthandoff: 04/05/2018
 [Windows]: ../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-users.md
 [Cordova]: ../app-service-mobile/app-service-mobile-cordova-get-started-users.md
 
-[AAD]: app-service-mobile-how-to-configure-active-directory-authentication.md
-[Facebook]: app-service-mobile-how-to-configure-facebook-authentication.md
-[Google]: app-service-mobile-how-to-configure-google-authentication.md
-[MSA]: app-service-mobile-how-to-configure-microsoft-authentication.md
-[Twitter]: app-service-mobile-how-to-configure-twitter-authentication.md
+[AAD]: ../app-service/configure-authentication-provider-aad.md
+[Facebook]: ../app-service/configure-authentication-provider-facebook.md
+[Google]: configure-authentication-provider-google.md
+[MSA]: ../app-service/configure-authentication-provider-microsoft.md
+[Twitter]: ../app-service/configure-authentication-provider-twitter.md
 
 [custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
 

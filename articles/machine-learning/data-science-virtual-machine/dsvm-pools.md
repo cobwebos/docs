@@ -6,43 +6,28 @@ services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 12/10/2018
 ms.author: gokuma
-ms.openlocfilehash: 0740ff7542d066442146b8e80e188ad5ba49a2b5
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 5cce7f691204a0fd116627fadde1076a4505fcb2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309392"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452799"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>创建数据科学虚拟机共享池
 
 本文讨论如何创建供团队使用的数据科学虚拟机 (DSVM) 共享池。 使用共享池的好处是提高资源利用率、方便共享和协作，以及提高管理 DSVM 资源的效率。 
 
-可以使用许多方法和技术创建 DSVM 池。 本文重点介绍批处理池和交互式 VM 池。
-
-## <a name="batch-processing-pool"></a>批处理池
-若要设置主要用于以脱机批处理方式运行作业的 DSVM 池，则可使用 [Azure Batch AI](https://docs.microsoft.com/azure/batch-ai/) 或 [Azure Batch](https://docs.microsoft.com/azure/batch/) 服务。 本文重点介绍 Azure Batch AI。
-
-支持将 Ubuntu 版 DSVM 用作 Azure Batch AI 中的一个映像。 在创建 Azure Batch AI 群集的 Azure CLI 或 Python SDK 中，可以指定 `image` 参数并将其设置为 `UbuntuDSVM`。 可以从 Azure 上提供的[大量 VM 实例选项](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)中选择所需处理节点的类型：是基于 GPU 的实例还是仅限 CPU 的实例、CPU 数目和内存。 
-
-将 Batch AI 中的 Ubuntu DSVM 映像与基于 GPU 的节点配合使用时，所有必需的 GPU 驱动程序和深度学习框架都会预先安装。 预先安装将为你节省大量准备批处理节点的时间。 事实上，如果是在 Ubuntu DSVM 上进行交互式开发，你会注意到 Batch AI 节点和环境具有完全相同的设置和配置。 
-
-通常在创建 Batch AI 群集时，你还会创建所有节点装载的文件共享。 文件共享用于输入和输出数据，以及存储批处理作业代码/脚本。 
-
-创建 Batch AI 群集以后，即可使用同一 CLI 或 Python SDK 来提交要运行的作业。 只需按运行批处理作业所用时间付费。 
-
-有关详细信息，请参阅：
-* 分步演示如何使用 [Azure CLI](https://docs.microsoft.com/azure/batch-ai/quickstart-cli) 来管理 Batch AI
-* 分步演示如何使用 [Python](https://docs.microsoft.com/azure/batch-ai/quickstart-python) 来管理 Batch AI
-* [Batch AI 工作程序](https://github.com/Azure/BatchAI)，用于演示如何将各种 AI 和深度学习框架与 Batch AI 配合使用
+可以使用许多方法和技术创建 DSVM 池。 本文重点介绍交互式 VM 池。 另一个可选的托管计算基础结构是 Azure 机器学习计算。 有关详细信息，请参阅[设置计算目标](../service/how-to-set-up-training-targets.md#amlcompute)。
 
 ## <a name="interactive-vm-pool"></a>交互式 VM 池
 

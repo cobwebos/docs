@@ -9,22 +9,23 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
+ms.lastreviewed: 10/15/2018
 keywords: ''
-ms.openlocfilehash: bf412809f9d10296ad600e64abb6d870dbb88d3e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: dce59cf012a8c3bc5b6b3baf705b5619bdf43104
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339672"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252299"
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Azure Stack 数据中心集成 - DNS
-若要能够访问 Azure Stack 终结点 (**门户**， **adminportal**，**管理**， **adminmanagement**，等等。) 从 Azure Stack 外部，您需要将 Azure Stack DNS 服务与托管你想要在 Azure Stack 中使用的 DNS 区域的 DNS 服务器集成。
+若要能够从 Azure Stack 外部访问 Azure Stack 终结点（**门户**、**adminportal**、**管理**、**adminmanagement** 等），需将 Azure Stack DNS 服务与托管 DNS 区域（要在 Azure Stack 中使用）的 DNS 服务器集成。
 
 ## <a name="azure-stack-dns-namespace"></a>Azure Stack DNS 命名空间
 部署 Azure Stack 时，必须提供与 DNS 相关的一些重要信息。
 
 
-|字段  |说明  |示例|
+|字段  |描述  |示例|
 |---------|---------|---------|
 |区域|Azure Stack 部署的地理位置。|`east`|
 |外部域名|需要用于 Azure Stack 部署的区域的名称。|`cloud.fabrikam.com`|
@@ -121,7 +122,7 @@ Azure Stack DNS 服务器的 FQDN 具有以下格式：
 
 若要将 Azure Stack 与 DNS 基础结构集成，最简单也最安全的方式是将区域从托管父区域的服务器进行条件性转发。 如果可以直接控制为 Azure Stack 外部 DNS 命名空间托管父区域的 DNS 服务器，建议使用此方法。
 
-如果不熟悉如何通过 DNS 进行条件性转发，请参阅以下 TechNet 文章：[Assign a Conditional Forwarder for a Domain Name](https://technet.microsoft.com/library/cc794735)（为域名分配条件性转发器），或者参阅特定于 DNS 解决方案的文档。
+如果您不熟悉如何执行操作条件使用 DNS 转发，请参阅以下 TechNet 文章：[为域名分配条件性转发器](https://technet.microsoft.com/library/cc794735)，或特定于你的 DNS 解决方案的文档。
 
 如果已将外部 Azure Stack DNS 区域指定为类似公司域名的子域那样，则无法使用条件性转发。 必须配置 DNS 委托。
 

@@ -26,6 +26,7 @@
 # 引用
 ## [Azure PowerShell](/powershell/module/azurerm.scheduler)
 ## [REST API](/rest/api/scheduler)
+## [资源管理器模板](/azure/templates/microsoft.scheduler/allversions)
 
 # 资源
 ## [Azure 计划程序路线图](https://azure.microsoft.com/updates/?product=scheduler)

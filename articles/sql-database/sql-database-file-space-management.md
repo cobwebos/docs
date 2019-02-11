@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: carlrab
+ms.reviewer: jrasnick, carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 2de57a4ade91293fb1164815f83e87517068544e
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.date: 01/25/2019
+ms.openlocfilehash: 94b793d4ab68ae4d2b8a28961d76eed1ea875ff7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277880"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468625"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>管理 Azure SQL 数据库中的文件空间
 本文介绍 Azure SQL 数据库中不同类型的存储空间，以及当需要显式管理分配给数据库和弹性池的文件空间时可以执行的步骤。
@@ -27,6 +27,7 @@ ms.locfileid: "51277880"
 在 Azure SQL 数据库中存在工作负荷模式，其中数据库基础数据文件的分配可能会大于已使用数据页的数量。 如果使用的空间不断增大，并且后续删除了数据，则可能会出现这种情况。 这是因为分配的文件空间不会自动回收。
 
 在以下情况下，可能需要监视文件空间用量并收缩数据文件：
+
 - 当分配给数据库的文件空间达到池的最大大小时，允许在弹性池中增大数据。
 - 允许减少单一数据库或弹性池的最大大小。
 - 允许将单一数据库或弹性池更改为最大大小更小的其他服务层或性能层。
@@ -118,6 +119,7 @@ SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 可使用以下查询确定弹性池的存储空间数量。  
 
 ### <a name="elastic-pool-data-space-used"></a>已用的弹性池数据空间
+
 修改以下查询，返回已用的弹性池数据空间量。  查询结果以 MB 为单位。
 
 ```sql
@@ -234,9 +236,9 @@ ALTER DATABASE [db1] SET AUTO_SHRINK ON
 ## <a name="next-steps"></a>后续步骤
 
 - 有关数据库最大大小的信息，请参阅：
-  - [适用于单一数据库的 Azure SQL 数据库基于 vCore 的购买模型限制](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases)
-  - [使用基于 DTU 的购买模型的单一数据库的资源限制](https://docs.microsoft.com/azure/sql-database/sql-database-dtu-resource-limits-single-databases)
-  - [适用于弹性池的 Azure SQL 数据库基于 vCore 的购买模型限制](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools)
-  - [使用基于 DTU 的购买模型的弹性池的资源限制](https://docs.microsoft.com/azure/sql-database/sql-database-dtu-resource-limits-elastic-pools)
+  - [适用于单一数据库的 Azure SQL 数据库基于 vCore 的购买模型限制](sql-database-vcore-resource-limits-single-databases.md)
+  - [使用基于 DTU 的购买模型的单一数据库的资源限制](sql-database-dtu-resource-limits-single-databases.md)
+  - [适用于弹性池的 Azure SQL 数据库基于 vCore 的购买模型限制](sql-database-vcore-resource-limits-elastic-pools.md)
+  - [使用基于 DTU 的购买模型的弹性池的资源限制](sql-database-dtu-resource-limits-elastic-pools.md)
 - 有关 `SHRINKDATABASE` 命令的详细信息，请参阅 [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)。 
 - 有关碎片和重新生成索引的详细信息，请参阅[重新组织和重新生成索引](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)。

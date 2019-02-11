@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2018
 ms.author: juliako
-ms.openlocfilehash: 9edfa8ea0c9e469d09cef7ddbd1c7edda4484b47
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 43da365a6424fa9d489db1f5cd74ff6aeb8f0d7c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444623"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819877"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>使用 .NET 将文件上传到媒体服务帐户
 > [!div class="op_single_selector"]
@@ -54,9 +54,9 @@ ms.locfileid: "42444623"
   
     如果资产已经过存储加密，则必须配置资产传送策略。 有关详细信息，请参阅[配置资产传送策略](media-services-dotnet-configure-asset-delivery-policy.md)。
 
-如果指定使用 **CommonEncrypted** 选项或 **EnvelopeEncypted** 选项加密资产，则需要将资产关联到 **ContentKey**。 有关详细信息，请参阅[如何创建 ContentKey](media-services-dotnet-create-contentkey.md)。 
+如果指定使用 **CommonEncrypted** 选项或 **EnvelopeEncrypted** 选项加密资产，则需要将资产关联到 **ContentKey**。 有关详细信息，请参阅[如何创建 ContentKey](media-services-dotnet-create-contentkey.md)。 
 
-如果指定使用 StorageEncrypted 选项加密资产，适用于 .NET 的媒体服务 SDK 将为资产创建 StorateEncrypted ContentKey。
+如果指定使用 **StorageEncrypted** 选项加密资产，适用于 .NET 的媒体服务 SDK 将为资产创建 **StorageEncrypted** **ContentKey**。
 
 本文说明如何使用媒体服务 .NET SDK 以及媒体服务 .NET SDK 扩展将文件上传到媒体服务资产中。
 
@@ -201,7 +201,7 @@ ms.locfileid: "42444623"
 
 可以使用任何能够将资产文件上传到 blob 存储容器 URI（由 IngestManifest 的 **IIngestManifest.BlobStorageUriForUpload** 属性提供）的高速客户端应用程序。 
 
-以下代码显示如何使用 .NET SDK 上传资产文件。
+以下代码展示如何使用 .NET SDK 上传资产文件。
 
 ```csharp
     static void UploadBlobFile(string containerName, string filename)

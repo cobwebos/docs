@@ -12,49 +12,134 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 01/31/2019
 ms.author: sethm
 ms.reviewer: jiahan
-ms.openlocfilehash: 4bd36744cc417e85f49e58f9a08d2b9006da9fe4
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.lastreviewed: 01/05/2019
+ms.openlocfilehash: acd92c711f432cf103b9309247704ff348287ff6
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284023"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964060"
 ---
-# <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack 托管磁盘：差异和注意事项
-本文总结了 Azure Stack 托管磁盘和 Azure 托管磁盘之间的已知差异。 有关 Azure Stack 与 Azure 之间的大致差异的详细信息，请参阅[重要注意事项](azure-stack-considerations.md)一文。
+# <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack 托管磁盘： 差异和注意事项
 
-托管磁盘通过管理与 VM 磁盘关联的[存储帐户](/azure/azure-stack/azure-stack-manage-storage-accounts)简化了 IaaS VM 的磁盘管理。
+本文汇总了的已知的差异[Azure Stack 托管磁盘](azure-stack-manage-vm-disks.md)并[适用于 Azure 托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)。 有关 Azure Stack 与 Azure 之间的大致差异的详细信息，请参阅[重要注意事项](azure-stack-considerations.md)一文。
+
+托管磁盘通过管理与 VM 磁盘关联的[存储帐户](../azure-stack-manage-storage-accounts.md)简化了 IaaS VM 的磁盘管理。
+
+> [!Note]  
+> 可从 1808年更新 Azure Stack 上的托管的磁盘。 创建虚拟机使用 Azure Stack 门户从 1811年更新时，它是默认情况下启用。
   
-
 ## <a name="cheat-sheet-managed-disk-differences"></a>速查表：托管磁盘差异
 
 | Feature | Azure（公有云） | Azure Stack |
 | --- | --- | --- |
 |静态数据加密 |Azure 存储服务加密 (SSE)、Azure 磁盘加密 (ADE)     |BitLocker 128 位 AES 加密      |
-|映像          | 支持托管自定义映像 |尚不支持|
+|映像          | 支持托管自定义映像 |支持|
 |备份选项 |支持 Azure 备份服务 |尚不支持 |
 |灾难恢复选项 |支持 Azure Site Recovery |尚不支持|
-|磁盘类型     |高级 SSD、 标准 SSD （预览版） 和标准 HDD |高级 SSD、标准 HDD |
+|磁盘类型     |高级 SSD、标准 SSD（预览版）和标准 HDD。 |高级 SSD、标准 HDD |
 |高级磁盘  |完全支持 |可部署，但无性能限制或保证  |
 |高级磁盘 IOPS  |取决于磁盘大小  |每个磁盘 2300 IOPS |
 |高级磁盘吞吐量 |取决于磁盘大小 |每个磁盘 145 MB/秒 |
-|磁盘大小  |Azure 高级磁盘： P4 (32 GiB) 到 P80 (32 TiB)<br>Azure 标准 SSD 盘： E10 (128 GiB) 到 E80 (32 TiB)<br>Azure 标准 HDD 磁盘： S4 (32 GiB) 到 S80 (32 TiB) |M4: 32 GiB<br>M6: 64 GiB<br>M10: 128 GiB<br>M15: 256 GiB<br>M20: 512 GiB<br>M30: 1024 GiB |
+|磁盘大小  |Azure 高级磁盘：P4 (32 GiB) 到 P80 (32 TiB)<br>Azure 标准 SSD 磁盘：E10 (128 GiB) 到 E80 (32 TiB)<br>Azure 标准 HDD 磁盘：S4 (32 GiB) 到 S80 (32 TiB) |M4：32 GiB<br>M6：64 GiB<br>M10：128 GiB<br>M15：256 GiB<br>M20：512 GiB<br>M30：1024 GiB |
+|磁盘快照复制|支持附加到正在运行的 VM 的快照 Azure 托管磁盘|尚不支持 |
 |磁盘性能分析 |支持的聚合指标和每磁盘指标 |尚不支持 |
-|迁移      |提供从现有非托管 Azure 资源管理器 VM 迁移的工具，而无需重新创建 VM  |尚不支持 |
+|迁移      |提供工具，用于从现有的非托管 Azure 资源管理器 Vm 而无需重新创建 VM 迁移  |尚不支持 |
 
+> [!NOTE]  
+> Azure Stack 中的托管磁盘 IOP 和吞吐量是一个上限数字而非预配的数字，这可能会受在 Azure Stack 中运行的硬件和工作负荷影响。
 
 ## <a name="metrics"></a>度量值
-存储指标也有一些差异：
-- 使用 Azure Stack，存储指标中的事务数据不区分内部或外部网络带宽。
-- 存储指标中的 Azure Stack 事务数据不包含虚拟机对所装载磁盘的访问。
 
+存储指标也有一些差异：
+
+- 使用 Azure Stack，存储度量值中的事务数据不区分内部或外部网络带宽。
+- Azure Stack 事务数据在存储度量值不包括与装入的磁盘的虚拟机访问。
 
 ## <a name="api-versions"></a>API 版本
+
 Azure Stack 托管磁盘支持以下 API 版本：
+
 - 2017-03-30
 
+## <a name="managed-images"></a>托管的映像
+
+Azure Stack 支持*的托管映像*，帮助实现你只能创建托管的通用 VM （非托管和托管） 上创建托管的映像对象的磁盘今后的 Vm。 托管的映像启用以下两种方案：
+
+- 你已通用化非托管的 Vm，并想要使用今后的托管的磁盘。
+- 具有通用托管的 VM 并想要创建多个，类似托管 Vm。
+
+### <a name="migrate-unmanaged-vms-to-managed-disks"></a>将非托管的 Vm 迁移到托管磁盘
+
+按照说明进行操作[此处](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-vhd-in-a-storage-account)从存储帐户中的通用 VHD 创建托管的映像。 此映像可用于创建今后的托管的 Vm。
+
+### <a name="create-managed-image-from-vm"></a>从 VM 创建托管的映像
+
+创建从现有的映像托管后磁盘使用脚本的 VM[此处](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-managed-disk-using-powershell)，下面的示例脚本从现有的图像对象创建类似的 Linux VM:
+
+```powershell
+# Variables for common values
+$resourceGroup = "myResourceGroup"
+$location = "redmond"
+$vmName = "myVM"
+$imagerg = "managedlinuxrg"
+$imagename = "simplelinuxvmm-image-2019122"
+
+# Create user object
+$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+
+# Create a resource group
+New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+
+# Create a subnet configuration
+$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
+
+# Create a virtual network
+$vnet = New-AzureRmVirtualNetwork -ResourceGroupName $resourceGroup -Location $location `
+  -Name MYvNET -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
+
+# Create a public IP address and specify a DNS name
+$pip = New-AzureRmPublicIpAddress -ResourceGroupName $resourceGroup -Location $location `
+  -Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
+
+# Create an inbound network security group rule for port 3389
+$nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP  -Protocol Tcp `
+  -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
+  -DestinationPortRange 3389 -Access Allow
+
+# Create a network security group
+$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location $location `
+  -Name myNetworkSecurityGroup -SecurityRules $nsgRuleRDP
+
+# Create a virtual network card and associate with public IP address and NSG
+$nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName $resourceGroup -Location $location `
+  -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
+
+$image = get-azurermimage -ResourceGroupName $imagerg -ImageName $imagename
+# Create a virtual machine configuration
+$vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize Standard_D1 | `
+Set-AzureRmVMOperatingSystem -Linux -ComputerName $vmName -Credential $cred | `
+Set-AzureRmVMSourceImage -Id $image.Id | `
+Add-AzureRmVMNetworkInterface -Id $nic.Id
+
+# Create a virtual machine
+New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
+```
+
+有关详细信息，请参阅 Azure 托管映像文章[在 Azure 中创建通用 VM 的托管的映像](../../virtual-machines/windows/capture-image-resource.md)并[从托管映像创建 VM](../../virtual-machines/windows/create-vm-generalized-managed.md)。
+
+## <a name="configuration"></a>配置
+
+应用 1808年后更新或更高版本，必须执行以下配置，然后才能使用托管磁盘：
+
+- 如果订阅 1808年更新之前创建的请执行以下步骤可更新订阅。 否则，此订阅中部署 Vm 可能会失败并显示错误消息"磁盘管理器内部错误。"
+   1. 在租户门户中转到“订阅”，找到相应订阅。 依次单击“资源提供程序”、“Microsoft.Compute”、“重新注册”。
+   2. 在同一订阅下，转到“访问控制(标识和访问管理)”，验证“Azure Stack - 托管磁盘”是否已列出。
+- 如果使用多租户环境，让云操作员 （用户可能在您自己的组织中或从服务提供商） 到重新配置每个来宾目录中的步骤[这篇文章](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)。 否则，在与该来宾目录相关联的订阅中部署 Vm 可能会失败并显示错误消息"磁盘管理器内部错误。"
 
 ## <a name="next-steps"></a>后续步骤
-[了解 Azure Stack 虚拟机](azure-stack-compute-overview.md)
+
+- [了解 Azure Stack 虚拟机](azure-stack-compute-overview.md)

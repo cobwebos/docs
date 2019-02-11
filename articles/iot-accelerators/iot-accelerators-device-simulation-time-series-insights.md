@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 时序见解可视化设备模拟遥测数据 | Microsoft Docs
+title: 使用时序见解可视化设备模拟遥测数据 - Azure | Microsoft Docs
 description: 了解如何配置时序见解环境以浏览和分析设备模拟解决方案加速器所生成的遥测数据。
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 49cecca4e5ebef9f43fdda16cfa1fdc2ad7b6f94
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: aea02cbde32d9485bd49ec39a6f300021c6ef927
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382964"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53597692"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>使用时序见解可视化从设备模拟解决方案加速器发送的遥测数据
 

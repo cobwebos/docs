@@ -1,22 +1,22 @@
 ---
-title: 使用 SSIS 连接器将数据移入或移出 Azure Blob 存储 | Microsoft Docs
+title: 使用 SSIS 连接器移动 Blob 存储数据 - Team Data Science Process
 description: 使用 SSIS 连接器将数据移入或移出 Azure Blob 存储。
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 2eda0490392e26d386faa4c1e379b50738a56cbb
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: d8cb0829698b13e2193850c29f98492df6c48d4f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443349"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468506"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>使用 SSIS 连接器将数据移入或移出 Azure Blob 存储
 [用于 Azure 的 SQL Server Integration Services 功能包](https://msdn.microsoft.com/library/mt146770.aspx)提供了可用于连接到 Azure，在 Azure 和本地数据源之间传输数据以及处理存储在 Azure 中的数据的组件。
@@ -42,8 +42,8 @@ ms.locfileid: "52443349"
 
 若要使用 **SSIS 连接器**，则必须下载：
 
-* **SQL Server 2014 或 2016 Standard（或更高版本）**：安装包括 SQL Server Integration Services。
-* **用于 Azure 的 Microsoft SQL Server 2014 或 2016 Integration Services 功能包**：可以从 [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) 和 [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) 页面分别下载这两个功能包。
+* **SQL Server 2014 或 2016 标准版（或更高版本）**：安装包括 SQL Server Integration Services。
+* **适用于 Azure 的 Microsoft SQL Server 2014 或 2016 Integration Services 功能包**：可以从 [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) 和 [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) 页面分别下载这两个功能包。
 
 > [!NOTE]
 > SSIS 随 SQL Server 一起安装，但并不包括在 Express 版本中。 若要深入了解 SQL Server 各种版本中包含哪些应用程序，请参阅 [SQL Server Editions](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)（SQL Server 版本）
@@ -52,7 +52,7 @@ ms.locfileid: "52443349"
 
 有关 SSIS 的培训资料，请参阅 [Hands On Training for SSIS](https://www.microsoft.com/sql-server/training-certification)（SSIS 培训指导）
 
-若要深入了解如何使用 SISS 启动并运行以生成简单的提取、转换和加载 (ETL) 包，请参阅 [SSIS教程：创建简单的 ETL 包](https://msdn.microsoft.com/library/ms169917.aspx)。
+有关如何使用 SISS 生成简单的提取、转换和加载 (ETL) 包进行启动并运行的信息，请参阅 [SSIS 教程：创建简单的 ETL 包](https://msdn.microsoft.com/library/ms169917.aspx)。
 
 ## <a name="download-nyc-taxi-dataset"></a>下载 NYC 出租车数据集
 此处所述的示例使用公开发布的数据集 - [NYC 出租车行程](http://www.andresmh.com/nyctaxitrips/)。 此数据集包含 2013 年纽约市内约 1.73 亿次出租车行程。 有两种类型的数据：行程详细信息数据和费用数据。 因为每个月都有一个文件，因此共有 24 个文件，每个未压缩的文件大约有 2GB。
@@ -64,7 +64,7 @@ ms.locfileid: "52443349"
 
 以下是任务使用的参数：
 
-| 字段 | Description |
+| 字段 | 说明 |
 | --- | --- |
 | **AzureStorageConnection** |指定现有 Azure 存储连接管理器或新建一个 Azure 存储连接管理器，该管理器引用指向 blob 文件的托管位置的 Azure 存储帐户。 |
 | **BlobContainer** |指定将上传的文件保存为 blob 的 blob 容器名称。 |

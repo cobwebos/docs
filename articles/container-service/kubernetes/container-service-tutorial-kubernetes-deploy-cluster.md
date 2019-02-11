@@ -1,24 +1,27 @@
 ---
-title: Azure 容器服务教程 - 部署群集
+title: （已弃用）Azure 容器服务教程 - 部署群集
 description: Azure 容器服务教程 - 部署群集
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 09/14/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 8403e5d8dd3bad07e412b08709dcb8c28201bcdf
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 58fef0357a903f2ab1d238bbab7b2d9dca673eb4
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434418"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662051"
 ---
-# <a name="deploy-a-kubernetes-cluster-in-azure-container-service"></a>在 Azure 容器服务中部署 Kubernetes 群集
+# <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>（已弃用）在 Azure 容器服务中部署 Kubernetes 群集
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> 有关使用 Azure Kubernetes 服务的此教程的更新版本，请参阅[教程：部署 Azure Kubernetes 服务 (AKS) 群集](../../aks/tutorial-kubernetes-deploy-cluster.md)。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Kubernetes 为容器化应用程序提供一个分布式平台。 通过 Azure 容器服务，使预配生产就绪的 Kubernetes 群集变得简单快捷。 在本教程的第 3 部分（共 7 部分），便成功部署了一个 Azure 容器服务 Kubernetes 群集。 已完成的步骤包括：
 
@@ -51,7 +54,7 @@ az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --
 
 若要从客户端计算机连接到 Kubernetes 群集，请使用 [kubectl](https://kubernetes.io/docs/user-guide/kubectl/)（Kubernetes 命令行客户端）。 
 
-如果使用的是 Azure CloudShell，则 kubectl 已安装。 如果想在本地安装，请使用 [az acs kubernetes install-cli](/cli/azure/acs/kubernetes#install-cli) 命令。
+如果使用的是 Azure CloudShell，则 kubectl 已安装。 如果想在本地安装，请使用 [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) 命令。
 
 如果在 Linux 或 macOS 中运行，则可能需要使用 sudo 进行运行。 在 Windows 上，确保以管理员身份运行 shell。
 
@@ -63,7 +66,7 @@ az acs kubernetes install-cli
 
 ## <a name="connect-with-kubectl"></a>使用 kubectl 进行连接
 
-若要配置 kubectl 以连接到 Kubernetes 群集，请运行 [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) 命令。
+若要配置 kubectl 以连接到 Kubernetes 群集，请运行 [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes) 命令。
 
 ```azurecli-interactive 
 az acs kubernetes get-credentials --resource-group myResourceGroup --name myK8SCluster

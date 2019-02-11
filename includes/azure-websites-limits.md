@@ -4,17 +4,17 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 515aeac3531a45080824df126ad674353f70cdb8
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: d66f36e737e100a0d8e60b85b51f6dcf632e6d3e
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279461"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54404680"
 ---
 | 资源 | 免费 | 共享 | 基本 | 标准 | 高级 (v2) | 隔离 </th> |
 | --- | --- | --- | --- | --- | --- | --- |
-| 每个[应用服务计划](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)的 [Web 应用、移动应用或 API 应用数](https://azure.microsoft.com/services/app-service/)<sup>1</sup> |10 |100 |无限制<sup>2</sup> |无限制<sup>2</sup> |无限制<sup>2</sup> |无限制<sup>2</sup>|
-| [应用服务计划](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) |每个区域 1 个 |每个资源组 10 个 |每个资源组 100 个 |每个资源组 100 个 |每个资源组 100 个 |每个资源组 100 个|
+| 每个[应用服务计划](../articles/app-service/overview-hosting-plans.md)的 [Web 应用、移动应用或 API 应用数](https://azure.microsoft.com/services/app-service/)<sup>1</sup> |10 |100 |无限制<sup>2</sup> |无限制<sup>2</sup> |无限制<sup>2</sup> |无限制<sup>2</sup>|
+| [应用服务计划](../articles/app-service/overview-hosting-plans.md) |每个区域仅 10 个 |每个资源组 10 个 |每个资源组 100 个 |每个资源组 100 个 |每个资源组 100 个 |每个资源组 100 个|
 | 计算实例类型 |共享 |共享 |专用<sup>3</sup> |专用<sup>3</sup> |专用<sup>3</sup></p> |专用<sup>3</sup>|
 | [横向扩展](../articles/app-service/web-sites-scale.md)（最大实例数） |1 个共享 |1 个共享 |3 个专用<sup>3</sup> |10 个专用<sup>3</sup> |20 个专用<sup>3</sup>|100 个专用<sup>4</sup>|
 | 存储<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
@@ -24,18 +24,18 @@ ms.locfileid: "52279461"
 | 带宽 |165 MB |无限制，收取[数据传输费](https://azure.microsoft.com/pricing/details/data-transfers/) |无限制，收取[数据传输费](https://azure.microsoft.com/pricing/details/data-transfers/) |无限制，收取[数据传输费](https://azure.microsoft.com/pricing/details/data-transfers/) |无限制，收取[数据传输费](https://azure.microsoft.com/pricing/details/data-transfers/) |无限制，收取[数据传输费](https://azure.microsoft.com/pricing/details/data-transfers/) |
 | 应用程序体系结构 |32 位 |32 位 |32 位/64 位 |32 位/64 位 |32 位/64 位 |32 位/64 位 |
 | 每个实例的 Web 套接字数<sup>7</sup> |5 |35 |350 |不受限制 |不受限制 |不受限制 |
-| 每个应用程序的并发[调试器连接数](../articles/app-service/web-sites-dotnet-troubleshoot-visual-studio.md) |1 |1 |1 |5 |5 |5 |
+| 每个应用程序的并发[调试器连接数](../articles/app-service/troubleshoot-dotnet-visual-studio.md) |1 |1 |1 |5 |5 |5 |
 | 每个订阅的应用服务证书数<sup>10</sup>| 不支持 | 不支持 |10 |10 |10 |10 |
 | 每个应用的自定义域数</a> |0（仅 azurewebsites.net 子域）|500 |500 |500 |500 |500 |
 | 自定义域 [SSL 支持](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |不支持。 默认可用的 *.azurewebsites.net 的通配符证书。|不支持。 默认可用的 *.azurewebsites.net 的通配符证书。|无限制的 SNI SSL 连接 |包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接 |包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接 | 包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接|
 | 集成负载均衡器 | |X |X |X |X |X<sup>9</sup> |
 | [始终打开](../articles/app-service/web-sites-configure.md) | | |X |X |X |X |
-| [计划备份](../articles/app-service/web-sites-backup.md) | | | | 计划每 2 小时备份一次，每天最多 12 个备份（手动 + 计划） | 计划每小时备份一次，每天最多 50 个备份（手动 + 计划） | 计划每小时备份一次，每天最多 50 个备份（手动 + 计划） |
+| [计划备份](../articles/app-service/manage-backup.md) | | | | 计划每 2 小时备份一次，每天最多 12 个备份（手动 + 计划） | 计划每小时备份一次，每天最多 50 个备份（手动 + 计划） | 计划每小时备份一次，每天最多 50 个备份（手动 + 计划） |
 | [自动缩放](../articles/app-service/web-sites-scale.md) | | | |X |X |X |
-| [WebJobs](../articles/app-service/web-sites-create-web-jobs.md)<sup>8</sup> |X |X |X |X |X |X |
+| [WebJobs](../articles/app-service/webjobs-create.md)<sup>8</sup> |X |X |X |X |X |X |
 | [Azure 计划程序](https://azure.microsoft.com/services/scheduler/)支持 | |X |X |X |X |X |
 | [终结点监视](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
-| [过渡槽](../articles/app-service/web-sites-staged-publishing.md) | | | |5 |20 |20 |
+| [过渡槽](../articles/app-service/deploy-staging-slots.md) | | | |5 |20 |20 |
 | SLA | |  |99.9% |99.95%|99.95%|99.95%|  
 
 <sup>1</sup> 除非另有说明，否则应用和存储配额依每个应用服务计划为准。  

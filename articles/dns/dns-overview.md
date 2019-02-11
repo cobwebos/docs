@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: overview
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 9535ad73300406408a94a6f38f001e45ba7409a2
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 51869bcc2ee892bc150102595de09782eb01547c
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093089"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770514"
 ---
 # <a name="what-is-azure-dns"></a>什么是 Azure DNS？
 
 Azure DNS 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。
 
-不能使用 Azure DNS 来购买域名。 对于年度费用，可以使用 [Azure Web 应用](https://docs.microsoft.com/azure/app-service/custom-dns-web-site-buydomains-web-app#buy-the-domain)或第三方域名注册机构购买域名。 然后，可以将域托管在 Azure DNS 中来管理记录。 有关详细信息，请参阅 [向 Azure DNS 委派域](dns-domain-delegation.md)。
+不能使用 Azure DNS 来购买域名。 对于年度费用，可以使用[应用服务域](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain#buy-the-domain)或第三方域名注册机构购买域名。 然后，可以将域托管在 Azure DNS 中来管理记录。 有关详细信息，请参阅 [向 Azure DNS 委派域](dns-domain-delegation.md)。
 
 Azure DNS 附带了以下功能。
 
@@ -32,7 +32,7 @@ Azure DNS 中的 DNS 域托管在 DNS 名称服务器的 Azure 全球网络上�
 
 * [基于角色的访问控制](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control)：控制谁有权访问针对组织的特定操作。
 
-* [活动日志](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#activity-logs)：监视你的组织中的用户对资源进行了怎样的修改，或者在进行故障排除时查找错误。
+* [活动日志](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)：监视你的组织中的用户对资源进行了怎样的修改，或者在进行故障排除时查找错误。
 
 * [资源锁定](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)：锁定订阅、资源组或资源。 锁定可以防止组织中的其他用户意外删除或修改重要资源。
 

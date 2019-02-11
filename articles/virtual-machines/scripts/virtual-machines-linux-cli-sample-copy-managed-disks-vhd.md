@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 脚本示例 - 将托管磁盘的基础 VHD 导出/复制到存储帐户 | Microsoft Docs
-description: Azure CLI 脚本示例 - 将托管磁盘的基础 VHD 导出/复制到存储帐户
+title: Azure CLI 示例 - 将托管磁盘复制到存储帐户
+description: Azure CLI 示例 - 将托管磁盘导出或复制到存储帐户。
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
-ms.custom: mvc
-ms.openlocfilehash: c5f06a8c8fb707a2bf0451f8e9ed391ac0c5bad9
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.custom: mvc,seodec18
+ms.openlocfilehash: 6252049c2258c391aa4483dd51ec0d9ee766bed0
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48045227"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727128"
 ---
-# <a name="exportcopy-the-underlying-vhd-of-a-managed-disk-to-a-storage-account-with-cli"></a>使用 CLI 将托管磁盘的基础 VHD 导出/复制到存储帐户
+# <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>使用 Azure CLI 将托管磁盘导出/复制到存储帐户
 
 此脚本将托管磁盘的基础 VHD 导出到相同或不同区域中的存储帐户。 它首先生成托管磁盘的 SAS URI，然后使用该 SAS URI 将 VHD 复制到存储帐户。 使用此脚本复制托管磁盘以进行区域扩展。 
 
@@ -44,7 +44,7 @@ ms.locfileid: "48045227"
 | 命令 | 说明 |
 |---|---|
 | [az disk grant-access](https://docs.microsoft.com/cli/azure/disk?view=azure-cli-latest#az-disk-grant-access) | 生成只读 SAS，使用该 SAS 可以将基础 VHD 文件复制到存储帐户或将其下载到本地  |
-| [az storage blob copy start](https://docs.microsoft.com/cli/azure/storage/blob/copy#az_storage_blob_copy_start) | 将 blob 从一个存储帐户异步复制到另一个存储帐户 |
+| [az storage blob copy start](https://docs.microsoft.com/cli/azure/storage/blob/copy) | 将 blob 从一个存储帐户异步复制到另一个存储帐户 |
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -54,4 +54,4 @@ ms.locfileid: "48045227"
 
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
 
-可以在 [Azure Linux VM 文档](../../app-service/app-service-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机和托管磁盘 CLI 脚本示例。
+可以在 [Azure Linux VM 文档](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机和托管磁盘 CLI 脚本示例。

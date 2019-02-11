@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: 76a164ffcf918ebedcf4647f24a61ca3a271e967
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.reviewer: jiahan
+ms.lastreviewed: 01/11/2019
+ms.openlocfilehash: fdc75f169ebd4b85e5e413277c265922fb27dfdb
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361909"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239717"
 ---
 # <a name="mysql-resource-provider-maintenance-operations"></a>MySQL 资源提供程序维护操作
 
@@ -94,7 +95,7 @@ $session | Remove-PSSession
 
 *这些说明仅适用于 Azure Stack 集成系统。*
 
-如果 SQL 和 MySQL 资源提供程序中使用 Azure Stack 集成系统，Azure Stack 运营商将负责轮换以下的资源提供程序基础结构机密，以确保它们不过期：
+在 Azure Stack 集成系统中使用 SQL 和 MySQL 资源提供程序时，Azure Stack 操作员负责轮换以下资源提供程序基础结构机密以确保它们不会过期：
 
 - [部署期间提供的](azure-stack-pki-certs.md)外部 SSL 证书。
 - 部署期间提供的资源提供程序 VM 本地管理员帐户密码。
@@ -152,7 +153,7 @@ $session | Remove-PSSession
 
 ### <a name="secretrotationmysqlproviderps1-parameters"></a>SecretRotationMySQLProvider.ps1 参数
 
-|参数|说明|
+|参数|描述|
 |-----|-----|
 |AzCredential|Azure Stack 服务管理员帐户凭据。|
 |CloudAdminCredential|Azure Stack 云管理域帐户凭据。|

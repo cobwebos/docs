@@ -9,15 +9,15 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: 420a1c2ee09f84586f99864878e226df59606f2d
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: d017a2758ccd1530c4558f3dc92559f807df36b9
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496866"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332092"
 ---
 # <a name="scp-programming-guide"></a>SCP 编程指南
-SCP 是一个用于构建实时、可靠、一致和高性能的数据处理应用程序的平台。 它在 [Apache Storm](http://storm.incubator.apache.org/) 的基础上构建而成 -- Storm 是开源软件 (OSS) 社区设计的一个流处理系统。 Storm 由 Nathan Marz 设计，在 Twitter 上进行开源。 其利用 [Apache ZooKeeper](http://zookeeper.apache.org/)（另一个 Apache 项目）来实现高可靠性的分布式协调和状态管理。 
+SCP 是一个用于构建实时、可靠、一致和高性能的数据处理应用程序的平台。 它在 [Apache Storm](https://storm.incubator.apache.org/) 的基础上构建而成 -- Storm 是开源软件 (OSS) 社区设计的一个流处理系统。 Storm 由 Nathan Marz 设计，在 Twitter 上进行开源。 其利用 [Apache ZooKeeper](https://zookeeper.apache.org/)（另一个 Apache 项目）来实现高可靠性的分布式协调和状态管理。 
 
 SCP 项目不仅已移植到 Windows 的 Storm 中，还为 Windows 生态系统增加了扩展和自定义。 扩展包括 .NET 开发人员经验和库，自定义包括基于 Windows 的部署。 
 
@@ -228,7 +228,7 @@ SCP 应用程序可使用 `State` 对象在 [Apache ZooKeeper](https://zookeeper
     /// <summary>
     /// Retrieve all states that were previously uncommitted, excluding all aborted states 
     /// </summary>
-    /// <returns>Uncommited States</returns>
+    /// <returns>Uncommitted States</returns>
     public IEnumerable<State> GetUnCommitted();
 
     /// <summary>
@@ -249,7 +249,7 @@ SCP 应用程序可使用 `State` 对象在 [Apache ZooKeeper](https://zookeeper
     /// List all the committed states
     /// </summary>
     /// <returns>Registries contain the Committed State </returns> 
-    public IEnumerable<Registry> Commited();
+    public IEnumerable<Registry> Committed();
 
     /// <summary>
     /// List all the Aborted State in the StateStore
@@ -346,7 +346,7 @@ SCPRuntime 提供以下两种方法：
         }
 
 ## <a name="topology-specification-language"></a>拓扑规范语言
-SCP 拓扑规范是一种特定于域的语言，用于描述和配置 SCP 拓扑。 它基于 Storm 的 Clojure DSL (<http://storm.incubator.apache.org/documentation/Clojure-DSL.html>) 并通过 SCP 进行扩展。
+SCP 拓扑规范是一种特定于域的语言，用于描述和配置 SCP 拓扑。 它基于 Storm 的 Clojure DSL (<https://storm.incubator.apache.org/documentation/Clojure-DSL.html>) 并通过 SCP 进行扩展。
 
 拓扑规范可通过 ***runspec*** 命令直接提交到 Storm 群集进行执行。
 
@@ -594,7 +594,7 @@ HelloWorld 是一个简单的 SCP.Net 编程示例。 它使用非事务性拓�
     }
 
 ### <a name="helloworldtx"></a>HelloWorldTx
-**HelloWorldTx** 示例展示如何实施事务性拓扑。 它有一个名为生成器的 Spout、一个名为 partial-count 的批处理 Bolt 以及一个名为 count-sum 的提交 Bolt。 还有三个预先创建的 txt 文件：DataSource0.txt、DataSource1.txt 和 DataSource2.txt。
+**HelloWorldTx** 示例展示如何实施事务性拓扑。 它有一个名为生成器的 Spout、一个名为 partial-count 的批处理 Bolt 以及一个名为 count-sum 的提交 Bolt。 还有三个预创建的 txt 文件：DataSource0.txt、DataSource1.txt 和 DataSource2.txt。
 
 在每个事务中，Spout 生成器从预先创建的三个文件中随机选择两个文件，并将那两个文件的名称发送给 partial-count Bolt。 Bolt partial-count 从接收到的元组获取文件名，然后打开文件并计算文件中的字词数量，最后将计算出的字词数量发送给 count-sum Bolt。 count-sum Bolt 对总计数进行汇总。
 

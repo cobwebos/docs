@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: a944c397-ed3f-4d45-b9b2-6d4bcb6b0a09
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
-ms.openlocfilehash: af3402aab6e4a3a1b0401d66d42e82e449552867
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 637988179228fbf0a6000de74a1185af98277e3c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977996"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178947"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>教程：Azure Active Directory 与 Peakon 集成
 
@@ -114,7 +114,7 @@ Peakon 与 Azure AD 集成提供以下优势：
 
     ![Peakon 域和 URL 单一登录信息](./media/peakon-tutorial/tutorial_peakon_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://app.peakon.com/saml/<companyid>/metadata`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://app.peakon.com/saml/<companyid>/metadata`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://app.peakon.com/saml/<companyid>/assert`
 
@@ -133,7 +133,7 @@ Peakon 与 Azure AD 集成提供以下优势：
 
 7. 在“设置 Peakon”部分中，根据要求复制相应的 URL。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 登录 URL
+    a. 登录 URL
 
     b. Azure AD 标识符
 
@@ -143,7 +143,7 @@ Peakon 与 Azure AD 集成提供以下优势：
 
 8. 在另一个 Web 浏览器窗口中，以管理员身份登录 Peakon。
 
-9. 在页面左侧的菜单栏中，单击“配置”，然后导航到“集成” **** ****。
+9. 在页面左侧的菜单栏中，单击“ **配置**”，然后导航到“ **集成**”。
 
     ![配置](./media/peakon-tutorial/tutorial_peakon_config.png)
 
@@ -159,15 +159,15 @@ Peakon 与 Azure AD 集成提供以下优势：
 
     ![SAML](./media/peakon-tutorial/tutorial_peakon_saml.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“SSO 登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
+    a. 在“SSO 登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
     b. 在“SSO 注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
     c. 单击“选择文件”，将从 Azure 门户下载的证书上传到“证书”框中。
 
-    d. 单击该图标以复制“实体 ID”，并将其粘贴到 Azure 门户中“基本 SAML 配置”部分的“标识符”文本框中 **** **** **** 。
+    d. 单击该 **图标**以复制“**实体 ID**”，并将其粘贴到 Azure 门户中“ **基本 SAML 配置**”部分的“ **标识符**”文本框中。 
 
-    e. 单击该图标以复制“回复 URL (ACS)”，并将其粘贴到 Azure 门户中“基本 SAML 配置”部分的“回复 URL”文本框中 **** **** **** 。
+    e. 单击该 **图标**以复制“**回复 URL (ACS)**”，并将其粘贴到 Azure 门户中“ **基本 SAML 配置**”部分的“ **回复 URL**”文本框中。 
 
     f. 单击“保存”
 
@@ -187,7 +187,7 @@ Peakon 与 Azure AD 集成提供以下优势：
 
     ![创建 Azure AD 测试用户](common/create_aaduser_02.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
@@ -205,11 +205,11 @@ Peakon 与 Azure AD 集成提供以下优势：
 
 1. 以管理员身份登录到 Peakon 公司站点。
 
-2. 在页面左侧的菜单栏中，单击“配置”，然后导航到“员工” **** ****。
+2. 在页面左侧的菜单栏中，单击“ **配置**”，然后导航到“ **员工**”。
 
     ![员工](./media/peakon-tutorial/tutorial_peakon_employee.png)
 
-3. 单击页面右上角的“添加员工” ****。
+3. 单击页面右上角的“ **添加员工**”。
 
       ![添加员工](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
 
@@ -217,7 +217,7 @@ Peakon 与 Azure AD 集成提供以下优势：
 
      ![新增员工](./media/peakon-tutorial/tutorial_peakon_create.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”文本框中，键入名字“Britta”和姓氏“Simon”。
+    a. 在“姓名”文本框中，键入名字“Britta”和姓氏“Simon”。
 
     b. 在“电子邮件”文本框中，键入电子邮件地址，如 Brittasimon@contoso.com。
 

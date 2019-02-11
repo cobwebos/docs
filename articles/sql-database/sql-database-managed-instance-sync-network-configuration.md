@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
-ms.date: 03/07/2018
-ms.openlocfilehash: d5de908166e8de1d45a36f97aee8934653e59623
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 12/13/2018
+ms.openlocfilehash: 02c64fcd51862d8ff9f107adb0ca5cfda5812a88
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163149"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567105"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>Azure 应用服务托管计划的同步网络配置
 
@@ -47,4 +47,4 @@ ms.locfileid: "47163149"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关配置托管实例的 VNet 的信息，请参阅[托管实例 VNet 配置](sql-database-managed-instance-vnet-configuration.md)。
+- 有关为托管实例配置 VNet 的信息，请参阅[托管实例 VNet 体系结构](sql-database-managed-instance-connectivity-architecture.md)和[如何配置现有 VNet](sql-database-managed-instance-configure-vnet-subnet.md)。

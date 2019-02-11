@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: bdf5b5188dd584c5eb20f72ff4a98ba6904bc53e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 6663e3fc48408de83e92f39e8c8070005818852d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702368"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097959"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure 流分析 JavaScript 用户定义的聚合（预览）
  
@@ -28,7 +28,7 @@ Azure 流分析支持以 JavaScript 编写的用户定义的聚合 (UDA)，可�
 
 AccumulateOnly 聚合只能将新事件累积到其状态中，算法不允许将值分散。 无法实现从状态值中分散事件信息时，请选择此聚合类型。 下面是 AccumulatOnly 聚合的 JavaScript 模板：
 
-````JavaScript
+```JavaScript
 // Sample UDA which state can only be accumulated.
 function main() {
     this.init = function () {
@@ -43,13 +43,13 @@ function main() {
         return this.state;
     }
 }
-````
+```
 
 ### <a name="accumulatedeaccumulate-aggregates"></a>AccumulateDeaccumulate 聚合
 
 AccumulateDeaccumulate 聚合允许从状态中分散以前积累的某个值，例如，从事件值列表中删除某个键值对，或者从求和聚合的状态中减去某个值。 下面是 AccumulateDeaccumulate 聚合的 JavaScript 模板：
 
-````JavaScript
+```JavaScript
 // Sample UDA which state can be accumulated and deaccumulated.
 function main() {
     this.init = function () {
@@ -72,7 +72,7 @@ function main() {
         return this.state;
     }
 }
-````
+```
 
 ## <a name="uda---javascript-function-declaration"></a>UDA - JavaScript 函数声明
 
@@ -129,7 +129,7 @@ computeResult() 方法基于当前状态返回聚合结果。 在时间窗口（
 1. 在“新建函数”视图中，选择“JavaScript UDA”作为函数类型，然后，编辑器中会显示默认的 UDA 模板。
 1. 填入“TWA”作为 UDA 别名，并按如下所示更改函数实现：
 
-    ````JavaScript
+    ```JavaScript
     // Sample UDA which calculate Time-Weighted Average of incoming values.
     function main() {
         this.init = function () {
@@ -167,7 +167,7 @@ computeResult() 方法基于当前状态返回聚合结果。 在时间窗口（
             return result;
         }
     }
-    ````
+    ```
 
 1. 单击“保存”按钮后，该 UDA 会显示在函数列表中。
 
@@ -177,7 +177,7 @@ computeResult() 方法基于当前状态返回聚合结果。 在时间窗口（
 
 在 Azure 门户中打开作业，编辑查询，并调用具有必需前缀“uda.”的 TWA() 函数。 例如：
 
-````SQL
+```SQL
 WITH value AS
 (
     SELECT
@@ -191,13 +191,13 @@ SELECT
     uda.TWA(value) as NoseDoseTWA
 FROM value
 GROUP BY TumblingWindow(minute, 5)
-````
+```
 
 ## <a name="testing-query-with-uda"></a>使用 UDA 测试查询
 
 创建包含以下内容的本地 JSON 文件，将该文件上传到流分析作业，并测试上述查询。
 
-````JSON
+```JSON
 [
   {"EntryTime": "2017-06-10T05:01:00-07:00", "NoiseLevelDB": 80, "DurationSecond": 22.0},
   {"EntryTime": "2017-06-10T05:02:00-07:00", "NoiseLevelDB": 81, "DurationSecond": 37.8},
@@ -223,7 +223,7 @@ GROUP BY TumblingWindow(minute, 5)
   {"EntryTime": "2017-06-10T05:20:00-07:00", "NoiseLevelDB": 113, "DurationSecond": 25.1},
   {"EntryTime": "2017-06-10T05:22:00-07:00", "NoiseLevelDB": 110, "DurationSecond": 5.3}
 ]
-````
+```
 
 ## <a name="get-help"></a>获取帮助
 

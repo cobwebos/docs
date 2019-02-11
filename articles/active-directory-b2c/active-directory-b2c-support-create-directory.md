@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 中创建租户故障排除 | Microsoft Do
 description: 创建 Azure Active Directory 租户或 Azure Active Directory B2C 租户时出现的问题和解决方法。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 1d510f51ed28c28c698437f905c4911a8c32e5ce
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: B2C
+ms.openlocfilehash: b8075e084481a9951c13896fa4db41613adc388f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234980"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160350"
 ---
 # <a name="troubleshoot-creating-an-azure-active-directory-or-azure-active-directory-b2c-tenant"></a>创建 Azure Active Directory 租户或 Azure Active Directory B2C 租户故障排除 
 

@@ -3,21 +3,21 @@ title: SQL 数据库的 XEvent 事件文件代码 | Microsoft 文档
 description: 提供一个双阶段代码示例的 PowerShell 和 Transact-SQL，该示例演示 Azure SQL 数据库的扩展事件中的事件文件目标。 完成此方案部分必须用到 Azure 存储空间。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: ''
+ms.reviewer: jrasnik
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 8577b6a1d0f57820cbdd4096b0e8412096ff3af3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/19/2018
+ms.openlocfilehash: 035d2731a78ad6216f56255fb87e32444366ea97
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232070"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563485"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>SQL 数据库中扩展事件的事件文件目标代码
 
@@ -50,7 +50,7 @@ ms.locfileid: "51232070"
   
   * 这些模块提供 **New-AzureStorageAccount** 等命令。
 
-## <a name="phase-1-powershell-code-for-azure-storage-container"></a>阶段 1：Azure 存储空间容器的 PowerShell 代码
+## <a name="phase-1-powershell-code-for-azure-storage-container"></a>阶段 1：Azure 存储容器的 PowerShell 代码
 
 此 PowerShell 是两阶段代码示例的第 1 阶段。
 
@@ -230,7 +230,7 @@ Now shift to the Transact-SQL portion of the two-part code sample!';
 
 记下 PowerShell 脚本结束时输出的几个命名值。 必须将这些值编辑成阶段 2 中使用的 Transact-SQL 脚本。
 
-## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>阶段 2：使用 Azure 存储空间容器的 Transact-SQL 代码
+## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>阶段 2：使用 Azure 存储容器的 Transact-SQL 代码
 
 * 在此代码示例的第 1 阶段，已运行 PowerShell 脚本来创建 Azure 存储容器。
 * 接下来在第 2 阶段，以下 Transact-SQL 脚本必须使用该容器。

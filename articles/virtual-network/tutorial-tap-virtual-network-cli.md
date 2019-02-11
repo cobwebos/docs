@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kaanan
-ms.openlocfilehash: 36de5ec6f7384663106bfb88ee9f236cced6930a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0662b66d44533a888d491810ba45efac9a397aa1
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997941"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700836"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>通过 Azure CLI 使用虚拟网络 TAP
 
@@ -79,7 +79,7 @@ ms.locfileid: "46997941"
    - 将 Azure 内部负载均衡器的前端 IP 配置检索到后续步骤中使用的变量中。 ID 是用于聚合 TAP 流量的终结点。 以下示例在名为 *myResourceGroup* 的资源组中检索名为 *myInternalLoadBalancer* 的负载均衡器的 *frontendipconfig1* 前端 IP 配置的 ID：
 
       ```azurecli-interactive
-      FrondendIpConfigId=$(az network lb fronend-ip show \
+      FrontendIpConfigId=$(az network lb frontend-ip show \
       --name frontendipconfig1 \
       --lb-name myInternalLoadBalancer \
       --resource-group myResourceGroup \

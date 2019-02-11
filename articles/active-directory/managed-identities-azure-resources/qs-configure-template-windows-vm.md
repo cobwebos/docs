@@ -3,23 +3,23 @@ title: 如何使用模板在 Azure VM 上配置 Azure 资源的托管标识
 description: 分步说明如何使用 Azure 资源管理器模板在 Azure VM 上配置 Azure 资源的托管标识。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
-ms.author: daveba
-ms.openlocfilehash: 78920bfe000287daef7b4efcaa8339d599d6f57e
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.author: priyamo
+ms.openlocfilehash: f3535135f0c3eb31321afc17350064e4fca071d2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578495"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158989"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>使用模板在 Azure VM 上配置 Azure 资源的托管标识
 

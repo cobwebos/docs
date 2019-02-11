@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: babanisa
-ms.openlocfilehash: 3865a94192a65a2cb8a761cc1da30317f605548b
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 81f9db7e90e2cef85d41561cc677db3d6422ef45
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287194"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079862"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>将 CloudEvents 架构与事件网格配合使用
 
@@ -21,7 +21,7 @@ ms.locfileid: "51287194"
 
 CloudEvents 提供的常用事件架构适合发布和使用基于云的事件，因此可简化互操作性。 可以通过此架构使用统一的工具、以标准方式路由和处理事件，以及以通用方式反序列化外部事件架构。 使用通用架构可以更轻松地跨平台集成工作。
 
-CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com/cloudevents/spec/blob/master/community/contributors.md)通过 [Cloud Native Compute Foundation](https://www.cncf.io/) 构建的。 它目前的发布版本为 0.1。
+CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com/cloudevents/spec/blob/master/community/contributors.md)通过 [Cloud Native Computing Foundation](https://www.cncf.io/) 构建的。 它目前的发布版本为 0.1。
 
 本文介绍如何将 CloudEvents 架构与事件网格配合使用。
 
@@ -60,7 +60,7 @@ CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com
 
 CloudEvents v0.1 提供以下属性：
 
-| CloudEvents        | 类型     | 示例 JSON 值             | Description                                                        | 事件网格映射
+| CloudEvents        | Type     | 示例 JSON 值             | 说明                                                        | 事件网格映射
 |--------------------|----------|--------------------------------|--------------------------------------------------------------------|-------------------------
 | eventType          | String   | "com.example.someevent"          | 发生的事件的类型                                   | eventType
 | eventTypeVersion   | String   | "1.0"                            | eventType 的版本（可选）                            | dataVersion

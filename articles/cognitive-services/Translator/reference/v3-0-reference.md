@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 6f679536d69f700fd6678eb3bbbb869e42439cde
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 4d1c33480e408f892517cde6d42e103b34218f26
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853347"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459055"
 ---
 # <a name="translator-text-api-v30"></a>文本翻译 API v3.0
 
@@ -31,20 +31,41 @@ ms.locfileid: "51853347"
 
 ## <a name="base-urls"></a>基 URL
 
-文本 API v3.0 在以下云中可用：
+Microsoft Translator 位于多个数据中心位置之外。 目前位于 6 个 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions)中：
 
-| 说明 | 区域 | 基 URL                                        |
-|-------------|--------|-------------------------------------------------|
-| Azure       | 全局 | api.cognitive.microsofttranslator.com           |
+* **美洲：** 美国西部 2 和美国中西部 
+* **亚太区：** 亚洲东南部和韩国南部
+* **欧洲：** 欧洲北部和欧洲西部
+
+在大多数情况下，对 Microsoft 文本翻译 API 的请求由距离请求的来源位置最近的数据中心处理。 如果数据中心发生故障，则可能会在该区域之外路由请求。
+
+若要强制特定数据中心处理该请求，请将 API 请求中的全球终结点更改为所需的区域终结点：
+
+|说明|区域|基 URL|
+|:--|:--|:--|
+|Azure|全局|  api.cognitive.microsofttranslator.com|
+|Azure|北美|   api-nam.cognitive.microsofttranslator.com|
+|Azure|欧洲|  api-eur.cognitive.microsofttranslator.com|
+|Azure|亚太区|    api-apc.cognitive.microsofttranslator.com|
 
 
 ## <a name="authentication"></a>身份验证
 
-在 Microsoft 认知服务中订阅文本翻译 API 并使用订阅密钥（Azure 门户中提供）进行身份验证。 
+在 Microsoft 认知服务中订阅文本翻译 API 或[认知服务一体化](https://azure.microsoft.com/pricing/details/cognitive-services/)并使用订阅密钥（Azure 门户中提供）进行身份验证。 
 
-最简单的方法是使用请求标头 `Ocp-Apim-Subscription-Key` 将 Azure 密钥传递给翻译服务。
+有三个标头可用于对你的订阅进行身份验证。 下表介绍了每个标头的使用方式：
 
-另一种方法是使用密钥从令牌服务获取授权令牌。 然后，使用 `Authorization` 请求标头将授权令牌传递给翻译服务。 若要获取授权令牌，请向以下 URL 发出 `POST` 请求：
+|标头|说明|
+|:----|:----|
+|Ocp-Apim-Subscription-Key|如果要传递密钥，请与认知服务订阅一起使用。<br/>该值是文本翻译 API 订阅的 Azure 密钥。|
+|授权|如果要传递身份验证令牌，请与认知服务订阅一起使用。<br/>该值是持有者令牌：`Bearer <token>`。|
+|Ocp-Apim-Subscription-Region|如果要传递一体化密钥，请与认知服务一体化订阅一起使用。<br/>值为该一体化订阅所在的区域。 不使用一体化订阅时，此值是可选的。|
+
+###  <a name="secret-key"></a>密钥
+第一个选项是使用 `Ocp-Apim-Subscription-Key` 标头进行身份验证。 只需将 `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` 标头添加到你的请求。
+
+### <a name="authorization-token"></a>授权令牌
+或者，可以交换访问令牌的密钥。 此令牌作为 `Authorization` 标头包含在每个请求中。 若要获取授权令牌，请向以下 URL 发出 `POST` 请求：
 
 | 环境     | 身份验证服务 URL                                |
 |-----------------|-----------------------------------------------------------|
@@ -55,6 +76,7 @@ ms.locfileid: "51853347"
 ```
 // Pass secret key using header
 curl --header 'Ocp-Apim-Subscription-Key: <your-key>' --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken'
+
 // Pass secret key using query string parameter
 curl --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken?Subscription-Key=<your-key>'
 ```
@@ -67,20 +89,21 @@ Authorization: Bearer <Base64-access_token>
 
 身份验证令牌的有效期为 10 分钟。 在对翻译 API 进行多次调用时，应重新使用该令牌。 但是，如果程序在很长一段时间内向翻译 API 发出请求，则程序必须定期（例如每 8 分钟）请求一个新的访问令牌。
 
-总而言之，客户端向翻译 API 发出的请求将包括从下表中获取的一个授权标头：
+### <a name="all-in-one-subscription"></a>一体化订阅
 
-<table width="100%">
-  <th width="30%">标头</th>
-  <th>说明</th>
-  <tr>
-    <td>Ocp-Apim-Subscription-Key</td>
-    <td>如果要传递密钥，请与认知服务订阅一起使用。<br/>该值是文本翻译 API 订阅的 Azure 密钥。</td>
-  </tr>
-  <tr>
-    <td>授权</td>
-    <td>如果要传递身份验证令牌，请与认知服务订阅一起使用。<br/>该值是持有者令牌：“持有者 <token>”。</td>
-  </tr>
-</table> 
+最后一个身份验证选项是使用认知服务的一体化订阅。 这样便可以使用一个密钥对多个服务的请求进行身份验证。 
+
+使用一体化密钥时，必须将两个身份验证标头包含在你的请求中。 第一个标头可传递密钥，第二个标头可指定与你的订阅关联的区域。 
+* `Ocp-Api-Subscription-Key`
+* `Ocp-Apim-Subscription-Region`
+
+如果使用参数 `Subscription-Key` 传递查询字符串中的密钥，则必须使用查询参数 `Subscription-Region` 指定区域。
+
+如果使用持有者令牌，则必须从区域终结点中获取令牌：`https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`。
+
+可用区域包括 `australiaeast`、`brazilsouth`、`canadacentral`、`centralindia`、`centraluseuap`、`eastasia`、`eastus`、`eastus2`、`japaneast`、`northeurope`、`southcentralus`、`southeastasia`、`uksouth`、`westcentralus`、`westeurope`、`westus` 和 `westus2`。
+
+一体化文本 API 订阅需要指定区域。
 
 ## <a name="errors"></a>错误
 
@@ -102,7 +125,7 @@ Authorization: Bearer <Base64-access_token>
 ```
 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 常见错误代码包括：
 
-| 代码 | Description |
+| 代码 | 说明 |
 |:----|:-----|
 | 400000| 某个请求输入无效。|
 | 400001| “scope”参数无效。|

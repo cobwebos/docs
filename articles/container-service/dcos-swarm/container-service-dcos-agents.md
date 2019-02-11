@@ -1,5 +1,5 @@
 ---
-title: Azure 容器服务的 DC/OS 代理池
+title: （已弃用）Azure 容器服务的 DC/OS 代理池
 description: 公共和专用代理池如何使用 Azure 容器服务的 DC/OS 群集
 services: container-service
 author: iainfoulds
@@ -9,14 +9,17 @@ ms.topic: article
 ms.date: 01/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9c614d18b96c182fa166a4bc43fb1bb2f8d5d6f5
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: ee1a2a75d6a003a6bc53c5216dd01d379193ea77
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976719"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994937"
 ---
-# <a name="dcos-agent-pools-for-azure-container-service"></a>Azure 容器服务的 DC/OS 代理池
+# <a name="deprecated-dcos-agent-pools-for-azure-container-service"></a>（已弃用）Azure 容器服务的 DC/OS 代理池
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
+
 Azure 容器服务中的 DC/OS 群集包含两个池（公共池和专用池）中的代理节点。 可将应用程序部署到任一个池，从而影响容器服务中计算机之间的可访问性。 计算机可以向 Internet 公开（公共）或保持在内部（专用）。 本文简要概述了使用公共池和专用池的原因。
 
 

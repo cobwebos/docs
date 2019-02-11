@@ -1,5 +1,5 @@
 ---
-title: Azure 资源管理器请求限制 | Microsoft Docs
+title: 请求限制 - Azure 资源管理器 | Microsoft Azure
 description: 介绍在达到订阅限制时，如何对 Azure 资源管理器请求使用限制。
 services: azure-resource-manager
 documentationcenter: na
@@ -10,16 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/17/2018
+ms.date: 12/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: fdc98c6d88b18f770d1869acbea5998ad4571287
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.custom: seodec18
+ms.openlocfilehash: 0a4be349bfd8ce546ee2a27c206a7bd86306c27a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981807"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493552"
 ---
 # <a name="throttling-resource-manager-requests"></a>限制 Resource Manager 请求
+
 对于每个 Azure 订阅和租户，资源管理器的限制为每小时最多 12,000 个读取请求和 1,200 个写入请求。 这些限制的范围局限于发出请求的主体 ID 以及订阅 ID 或租户 ID。 如果请求来自多个主体 ID，则对订阅或租户的限制大于每小时 12,000 和 1,200 个。
 
 请求适用于订阅或租户。 订阅请求（例如，检索订阅中的资源组）涉及到传递订阅 ID。 租户请求（例如，检索有效的 Azure 位置）不包括订阅 ID。
@@ -30,10 +32,12 @@ ms.locfileid: "45981807"
 
 达到限制时，会收到 HTTP 状态代码“429 请求过多”。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="remaining-requests"></a>剩余的请求数
 可以通过检查响应标头来确定剩余的请求数。 每个请求包含剩余读取和写入请求数的值。 下表描述了可在其中检查这些值的标头：
 
-| 响应标头 | Description |
+| 响应标头 | 说明 |
 | --- | --- |
 | x-ms-ratelimit-remaining-subscription-reads |划归到订阅的剩余读取数。 执行读取操作时返回此值。 |
 | x-ms-ratelimit-remaining-subscription-writes |划归到订阅的剩余写入数。 执行写入操作时返回此值。 |
@@ -65,7 +69,7 @@ $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 如果想要查看剩余的调试请求数，可以在“PowerShell”cmdlet 中提供“-Debug”参数。
 
 ```powershell
-Get-AzureRmResourceGroup -Debug
+Get-AzResourceGroup -Debug
 ```
 
 这会返回许多值，包括以下响应值：
@@ -84,7 +88,7 @@ x-ms-ratelimit-remaining-subscription-reads: 14999
 若要获取写入限制，请使用写入操作： 
 
 ```powershell
-New-AzureRmResourceGroup -Name myresourcegroup -Location westus -Debug
+New-AzResourceGroup -Name myresourcegroup -Location westus -Debug
 ```
 
 这会返回许多值，包括以下值：

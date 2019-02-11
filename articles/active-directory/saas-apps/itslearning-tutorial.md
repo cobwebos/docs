@@ -1,27 +1,27 @@
 ---
-title: 教程：Azure Active Directory 与 itslearning 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 itslearning 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 itslearning 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 60587ba3-1396-4b8a-9ac1-e22a98e5e0ac
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: c6fc86d5179a5f7113e955ebc8f6b8994f30cb26
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ba2ef138c1b41b6d3b95a678f36fff3506831b17
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446075"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180630"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>教程：Azure Active Directory 与 itslearning 集成
+# <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>教程：Azure Active Directory 与 itslearning 的集成
 
 本教程介绍如何将 itslearning 与 Azure Active Directory (Azure AD) 集成。
 
@@ -131,7 +131,7 @@ ms.locfileid: "39446075"
 1. 若要在 itslearning 端配置单一登录，需要将下载的元数据 XML 发送给 [itslearning 支持团队](mailto:support@itslearning.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -167,7 +167,7 @@ ms.locfileid: "39446075"
  
 ### <a name="creating-an-itslearning-test-user"></a>创建 itslearning 测试用户
 
-本部分将在 itslearning 中创建一个名为“Britta Simon”的用户。 若要在 itslearning 平台中添加用户，请与 [itslearning 客户端支持团队](mailto:support@itslearning.com)协作。 使用单一登录前，必须先创建并激活用户。
+本部分将在 itslearning 中创建一个名为“Britta Simon”的用户。 若要在 itslearning 平台中添加用户，请与  [itslearning 客户端支持团队](mailto:support@itslearning.com) 协作。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -212,7 +212,7 @@ ms.locfileid: "39446075"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

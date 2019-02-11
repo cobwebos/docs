@@ -1,21 +1,22 @@
 ---
-title: 快速入门：提取打印的文本 (OCR) - REST、Node.js - 计算机视觉
+title: 快速入门：提取印刷体文本 - REST、Node.js
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 Node.js 从图像中提取印刷体文本。
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 02ff205f2408fed19d7831e7a1344eac2bc6f261
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: c9dc64a39e86271131ef188c39d927455d0bd289
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344262"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215152"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-nodejs-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 Node.js 提取印刷体文本 (OCR)
 

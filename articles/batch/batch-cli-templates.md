@@ -1,22 +1,23 @@
 ---
-title: 使用模板端到端运行 Azure Batch 作业 | Microsoft Docs
+title: 使用模板端到端运行作业 - Azure Batch | Microsoft Docs
 description: 使用模板文件和 Azure CLI 创建 Batch 池、作业和任务。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
 ms.devlang: na
 ms.topic: article
 ms.workload: big-compute
-ms.date: 08/02/2018
-ms.author: danlep
-ms.openlocfilehash: 753a36eb6fb7a0c007c62bbab7fe7390e706b1f5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 12/07/2018
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 5e592845f96cb0734daf3c9e07d60005de260386
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964286"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547671"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>使用 Azure Batch CLI 模板和文件传输
 
@@ -37,7 +38,7 @@ Batch 模板基于 [Azure CLI 中现有的 Batch 支持](batch-cli-get-started.m
 
 作业通常使用输入数据文件并产生输出数据文件。 默认情况下，每个 Batch 帐户都与一个存储帐户相关联。 可以使用 CLI 将文件传输到此存储帐户以及从此存储帐户传输文件，不需要进行编码，也不需要任何存储凭据。
 
-例如，[ffmpeg](http://ffmpeg.org/) 是处理音频和视频文件的常用应用程序。 下面是使用 Azure Batch CLI 来调用 ffmpeg 以将源视频文件转码为不同分辨率的步骤。
+例如，[ffmpeg](https://ffmpeg.org/) 是处理音频和视频文件的常用应用程序。 下面是使用 Azure Batch CLI 来调用 ffmpeg 以将源视频文件转码为不同分辨率的步骤。
 
 -   创建池模板。 创建模板的用户了解如何调用 ffmpeg 应用程序及其需求；他们可指定适当的操作系统、VM 大小、安装 ffmpeg 的方法（例如，从应用程序包或使用包管理器进行安装），以及其他池属性值。 已创建参数，因此当使用模板时，仅需指定池 ID 和 VM 数。
 

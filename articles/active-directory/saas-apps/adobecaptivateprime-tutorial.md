@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 2f95b226-1465-47f4-b8b7-de4b0772abbc
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jeedes
-ms.openlocfilehash: bbeae2cadde3e64f17b20eafabaf5e2dbf5a5cc6
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: aa20e4544fcd78330c0daa15b9aa058ba80af2d5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044062"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171943"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>教程：Azure Active Directory 与 Adobe Captivate Prime 集成
 
@@ -108,7 +108,7 @@ ms.locfileid: "39044062"
 
     ![Adobe Captivate Prime 域和 URL 单一登录信息](./media/adobecaptivateprime-tutorial/tutorial_adobecaptivateprime_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入一个 URL：`https://captivateprime.adobe.com`
+    a. 在“标识符”文本框中，键入一个 URL：`https://captivateprime.adobe.com`
 
     b. 在“回复 URL”文本框中，键入 URL：`https://captivateprime.adobe.com/saml/SSO`
 
@@ -150,7 +150,7 @@ ms.locfileid: "39044062"
 
     ![“用户”对话框](./media/adobecaptivateprime-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -160,7 +160,7 @@ ms.locfileid: "39044062"
   
 ### <a name="create-an-adobe-captivate-prime-test-user"></a>创建 Adobe Captivate Prime 测试用户
 
-在本部分中，在 Adobe Captivate Prime 中创建一个名为 Britta Simon 的用户。 与 [Adobe Captivate Prime 支持团队](mailto:captivateprimesupport@adobe.com)协作，将用户添加到 Adobe Captivate Prime 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分中，在 Adobe Captivate Prime 中创建一个名为 Britta Simon 的用户。 与  [Adobe Captivate Prime 支持团队](mailto:captivateprimesupport@adobe.com)协作，将用户添加到 Adobe Captivate Prime 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -197,12 +197,12 @@ ms.locfileid: "39044062"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Adobe Captivate Prime 磁贴时，应当会自动登录到 Adobe Captivate Prime 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

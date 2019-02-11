@@ -10,16 +10,15 @@ ms.assetid: 4c321939-8a5b-42ca-83c4-2f5f647ca13e
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: c7cd9dfa019ca0d8560833b10a3e8a1a37a1e1ac
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4d897512e5c53222cb77906200e1a33e2eeec78e
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296544"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074047"
 ---
 # <a name="authentication-requests-and-responses"></a>身份验证、请求和响应
 

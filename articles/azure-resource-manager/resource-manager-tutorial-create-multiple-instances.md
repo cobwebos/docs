@@ -13,16 +13,18 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5f355604e2bff1c3f03c8237f30cbe41ce7e5810
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 8541d66e106656f122809eec2cd547259f0ae4d7
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616141"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495952"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>教程：使用资源管理器模板创建多个资源实例
 
 了解如何在 Azure 资源管理器模板中进行迭代操作，以创建 Azure 资源的多个实例。 在本教程中，你将修改一个模板，以便创建三个存储帐户实例。
+
+本教程涵盖以下任务：
 
 > [!div class="checklist"]
 > * 打开快速入门模板
@@ -30,6 +32,8 @@ ms.locfileid: "51616141"
 > * 部署模板
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -120,18 +124,18 @@ ms.locfileid: "51616141"
 
 若要列出全部三个存储帐户，请省略 --name 参数：
 
-# <a name="clitabcli"></a>[CLI](#tab/CLI)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
 az storage account list --resource-group $resourceGroupName
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
-Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName
+Get-AzStorageAccount -ResourceGroupName $resourceGroupName
 ```
 
 ---
@@ -149,7 +153,7 @@ Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你学习了如何创建多个存储帐户实例。 到目前为止，你已创建了一个存储帐户或多个存储帐户实例。 在下一教程中，我们将开发包含多个资源和多个资源类型的模板。 某些资源具有依赖的资源。
+在本教程中，你学习了如何创建多个存储帐户实例。 下一教程介绍如何在资源组之间移动资源。
 
 > [!div class="nextstepaction"]
-> [创建所依赖的资源](./resource-manager-tutorial-create-templates-with-dependent-resources.md)
+> [移动资源](./resource-manager-tutorial-move-resources.md)

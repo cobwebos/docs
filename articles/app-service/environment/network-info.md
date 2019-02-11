@@ -1,5 +1,5 @@
 ---
-title: Azure 应用服务环境的网络注意事项
+title: 应用服务环境的网络注意事项 - Azure
 description: 介绍 ASE 网络流量，以及如何在 ASE 中设置 NSG 和 UDR
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: 535f70658593ff5a9ae1642ae7a97646e3fefb63
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.custom: seodec18
+ms.openlocfilehash: d22b181baa9b9e6d01fb92a3644078ecbd6af7be
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288248"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191592"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
@@ -26,8 +27,8 @@ ms.locfileid: "51288248"
 
  Azure [应用服务环境][Intro]是指将 Azure App Service 部署到 Azure 虚拟网络 (VNet) 的子网中。 应用服务环境 (ASE) 具有两种部署类型：
 
-- 外部 ASE：在 Internet 可访问的 IP 地址上公开 ASE 托管的应用。 有关详细信息，请参阅[创建外部 ASE][MakeExternalASE]。
-- ILB ASE：在 VNet 中的 IP 地址上公开 ASE 托管的应用。 内部终结点是一个内部负载均衡器 (ILB)，因此该类部署被称为 ILB ASE。 有关详细信息，请参阅[创建和使用 ILB ASE][MakeILBASE]。
+- **外部 ASE**：在 Internet 可访问的 IP 地址上公开 ASE 托管的应用。 有关详细信息，请参阅[创建外部 ASE][MakeExternalASE]。
+- **ILB ASE**：在 VNet 中的 IP 地址上公开 ASE 托管的应用。 内部终结点是一个内部负载均衡器 (ILB)，因此该类部署被称为 ILB ASE。 有关详细信息，请参阅[创建和使用 ILB ASE][MakeILBASE]。
 
 应用服务环境有两个版本：ASEv1 和 ASEv2。 有关 ASEv1 的信息，请参阅[应用服务环境 v1 简介][ASEv1Intro]。 可在经典 VNet 或资源管理器 VNet 中部署 ASEv1。 而 ASEv2 只能部署到资源管理器 VNet 中。
 
@@ -130,18 +131,18 @@ ASE 入站访问依赖项如下：
 
 ## <a name="functions-and-web-jobs"></a>函数和 Web 作业 ##
 
-函数和 Web 作业依赖于 SCM 站点，但支持在门户中使用，即使应用位于 ILB ASE 中，但前提是浏览器可以访问 SCM 站点。  如果在 ILB ASE 上使用自签名证书，需要让浏览器信任该证书。  对于 IE 和 Edge 而言，这意味着该证书必须在计算机信任存储中。  如果使用的是 Chrome，则意味着已提前接受浏览器中的证书，因为假设直接访问了 SCM 站点。  最佳解决方法是使用浏览器信任链中的商业证书。  
+函数和 Web 作业依赖于 SCM 站点，但支持在门户中使用，即使应用位于 ILB ASE 中，但前提是浏览器可以访问 SCM 站点。  如果在 ILB ASE 上使用自签名证书，需要让浏览器信任该证书。  对于 IE 和 Microsoft Edge 而言，这意味着该证书必须位于计算机信任存储区。  如果使用的是 Chrome，则意味着已提前接受浏览器中的证书，因为假设直接访问了 SCM 站点。  最佳解决方法是使用浏览器信任链中的商业证书。  
 
 ## <a name="ase-ip-addresses"></a>ASE IP 地址 ##
 
 ASE 具有一些需要注意的 IP 地址。 它们是：
 
-- 公共入站 IP 地址：用于外部 ASE 中的应用流量，以及外部 ASE 和 ILB ASE 中的管理流量。
-- 出站公共 IP：用作 ASE 发出、离开 VNet 且不经过 VPN 的出站连接的“来源”IP。
-- ILB IP 地址：如果使用 ILB ASE。
-- 应用分配的基于 IP 的 SSL 地址：仅当配置了基于 IP 的 SSL 时在外部 ASE 上使用。
+- **公共入站 IP 地址**：用于外部 ASE 中的应用流量，以及外部 ASE 和 ILB ASE 中的管理流量。
+- **出站公共 IP**：用作 ASE 发出、离开 VNet 且不经过 VPN 的出站连接的“来源”IP。
+- **ILB IP 地址**：如果使用 ILB ASE。
+- **应用分配的基于 IP 的 SSL 地址**：仅当配置了基于 IP 的 SSL 时在外部 ASE 上使用。
 
-在 ASE UI 上的 Azure 门户中的 ASEv2 内可以轻松查看所有这些 IP 地址。 若使用 ILB ASE，将列出 ILB 的 IP。
+在 Azure 门户中的 ASEv2 内，可从 ASE UI 轻松查看所有这些 IP 地址。 若使用 ILB ASE，将列出 ILB 的 IP。
 
    > [!NOTE]
    > 只要 ASE 处于启动和运行状态，这些 IP 地址就不会更改。  如果 ASE 变成暂停和还原状态，ASE 所使用的地址就会更改。 ASE 变成暂停状态的通常原因是阻止了入站管理访问或阻止了对 ASE 依赖项的访问。 
@@ -150,7 +151,7 @@ ASE 具有一些需要注意的 IP 地址。 它们是：
 
 ### <a name="app-assigned-ip-addresses"></a>应用分配的 IP 地址 ###
 
-使用外部 ASE 时，可将 IP 地址分配到各个应用。 无法使用 ILB ASE 实现这一点。 若要深入了解如何将应用配置为自备 IP 地址，请参阅[将现有的自定义 SSL 证书绑定到 Azure Web 应用](../app-service-web-tutorial-custom-ssl.md)。
+使用外部 ASE 时，可将 IP 地址分配到各个应用。 无法使用 ILB ASE 实现这一点。 若要深入了解如何将应用配置为自备 IP 地址，请参阅[将现有的自定义 SSL 证书绑定到 Azure 应用服务](../app-service-web-tutorial-custom-ssl.md)。
 
 当应用使用其自身的基于 IP 的 SSL 地址时，ASE 将保留两个映射到该 IP 地址的端口。 它们分别用于 HTTP 流量和 HTTPS 流量。 这些端口列在 ASE UI 上的“ IP 地址”部分中。 流量必须能够从 VIP 抵达这些端口，否则无法访问应用。 配置网络安全组 (NSG) 时，请务必牢记此要求。
 
@@ -234,10 +235,10 @@ ASE 具有一些需要注意的 IP 地址。 它们是：
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
-[Pricing]: http://azure.microsoft.com/pricing/details/app-service/
+[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
 [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
-[Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
+[Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [ASEManagement]: ./management-addresses.md

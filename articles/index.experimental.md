@@ -1,14 +1,8 @@
----
+--- 
 layout: HubPage
 hide_bc: true
 title: Microsoft Azure 文档
 description: 了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。
-ms.openlocfilehash: f60d41e2e6333c9d6331f18d4639ababaf748d89
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426319"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -321,9 +315,9 @@ ms.locfileid: "52426319"
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/redis-cache/">
+                                            <a href="/azure/azure-cache-for-redis/">
                                                 <img src="media/index/RedisCache.svg" alt="" />
-                                                <p>Redis 缓存</p>
+                                                <p>用于 Redis 的 Azure 缓存</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1874,7 +1868,7 @@ ms.locfileid: "52426319"
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/redis-cache/">
+                                <a href="/azure/azure-cache-for-redis/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -1884,7 +1878,7 @@ ms.locfileid: "52426319"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Redis 缓存</h3>
+                                                    <h3>用于 Redis 的 Azure 缓存</h3>
                                                     <p>对数据进行高吞吐量、低延迟访问，构建快速、可缩放的应用程序</p>
                                                 </div>
                                             </div>
@@ -3318,7 +3312,7 @@ ms.locfileid: "52426319"
                                                     <a href="/powershell/azure/get-started-azureps">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/powershell/azure/install-azurerm-ps">下载 PowerShell</a>
+                                                    <a href="/powershell/azure/azurerm/install-azurerm-ps">下载 PowerShell</a>
                                                 </p>
                                                 <p>
                                                     <a href="/powershell/azure/overview">参考</a>

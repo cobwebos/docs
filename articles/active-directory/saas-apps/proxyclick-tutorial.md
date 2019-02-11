@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Proxyclick 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Proxyclick 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Proxyclick 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 5c58a859-71c2-4542-ae92-e5f16a8e7f18
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/21/2018
 ms.author: jeedes
-ms.openlocfilehash: d93c5486d9c23558995742fc27e1222834cf4452
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b1ef02112261c612fec3297815ab8683f3236d3f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446307"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170753"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>教程：Azure Active Directory 与 Proxyclick 的集成
+# <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>教程：Azure Active Directory 与 Proxyclick 集成
 
 本教程介绍了如何将 Proxyclick 与 Azure Active Directory (Azure AD) 进行集成。
 
@@ -256,12 +256,12 @@ ms.locfileid: "39446307"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Proxyclick 磁贴时，应当会自动登录到 Proxyclick 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

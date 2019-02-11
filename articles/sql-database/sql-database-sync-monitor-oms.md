@@ -11,19 +11,22 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 0a130613d6d2086fda55ca015b1c0ca77c909e3d
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 12/20/2018
+ms.openlocfilehash: 75bbae000fa0fbbf783b3df43bd51ed2f8a73e96
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684607"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561410"
 ---
 # <a name="monitor-sql-data-sync-with-log-analytics"></a>使用 Log Analytics 监视 SQL 数据同步 
 
 若要检查 SQL 数据同步活动日志并检测错误和警告，以前必须在 Azure 门户手动检查 SQL 数据同步，或者使用 PowerShell 或 REST API。 请按照本文中的步骤配置自定义解决方案，以便改进数据同步监控体验。 可以自定义该解决方案以适合你的方案。
 
 有关 SQL 数据同步的概述，请参阅[使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
+
+> [!IMPORTANT]
+> 目前，Azure SQL 数据同步不支持 Azure SQL 数据库托管实例。
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>监视所有同步组的仪表板 
 
@@ -97,7 +100,7 @@ ms.locfileid: "51684607"
 
     2.  同步组信息。
 
-    3.  Log Analytics 信息。 在 Azure 门户 | 设置 | 连接的源中查找此信息。 有关将数据发送到 Log Analytics 的详细信息，请参阅[使用 HTTP 数据收集器 API（预览版）将数据发送到 Log Analytics](../log-analytics/log-analytics-data-collector-api.md)。
+    3.  Log Analytics 信息。 在 Azure 门户 | 设置 | 连接的源中查找此信息。 有关将数据发送到 Log Analytics 的详细信息，请参阅[使用 HTTP 数据收集器 API（预览版）将数据发送到 Log Analytics](../azure-monitor/platform/data-collector-api.md)。
 
 11. 在“测试”窗格中运行 runbook。 检查以确保它已运行成功。
 
@@ -181,9 +184,9 @@ ms.locfileid: "51684607"
 
 在大多数情况下，此解决方案是免费的。
 
-Azure 自动化：Azure 自动化帐户可能会产生成本，具体要取决于你的使用情况。 每月前 500 分钟的作业运行时间是免费的。 在大多数情况下，此解决方案预计每个月使用不到 500 分钟。 为了避免收费，请计划 Runbook 以两个小时或更长的间隔运行。 有关详细信息，请参阅[自动化定价](https://azure.microsoft.com/pricing/details/automation/)。
+**Azure 自动化：** Azure 自动化帐户可能会产生成本，具体取决于使用情况。 每月前 500 分钟的作业运行时间是免费的。 在大多数情况下，此解决方案预计每个月使用不到 500 分钟。 为了避免收费，请计划 Runbook 以两个小时或更长的间隔运行。 有关详细信息，请参阅[自动化定价](https://azure.microsoft.com/pricing/details/automation/)。
 
-**Log Analytics：** 可能会有与 Log Analytics 相关的成本，具体要取决于你的使用情况。 免费层包括每日 500 MB 的引入数据。 在大多数情况下，此解决方案预计每天引入的数据不超过 500 MB。 若要减少使用，请使用 runbook 中包含的“仅失败筛选”。 如果你每天使用的数据超过 500 MB，请升级到付费层，以避免在达到此限制时停止分析的风险。 有关详细信息，请参阅[Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)。
+**Log Analytics：** 可能会有与 Log Analytics 相关的成本，具体取决于使用情况。 免费层包括每日 500 MB 的引入数据。 在大多数情况下，此解决方案预计每天引入的数据不超过 500 MB。 若要减少使用，请使用 runbook 中包含的“仅失败筛选”。 如果你每天使用的数据超过 500 MB，请升级到付费层，以避免在达到此限制时停止分析的风险。 有关详细信息，请参阅[Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)。
 
 ## <a name="code-samples"></a>代码示例
 

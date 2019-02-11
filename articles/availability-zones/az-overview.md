@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 08/31/2018
 ms.author: cynthn
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: f1fd272bc25486e3abd068be5ddc01f5ac5f5f76
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 11b29a1639be5bf6a7820b872cbc2ce78f002b4f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566272"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565169"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>什么是 Azure 中的可用性区域？
 可用性区域是一个高可用性产品/服务，在数据中心发生故障时可以保护应用程序和数据。 可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。 区域中可用性区域的物理隔离可以在发生数据中心故障的情况下保护应用程序和数据。 区域冗余服务可跨可用性区域复制应用程序和数据，以防范单点故障。 Azure 凭借可用性区域提供一流的 99.99% VM 运行时间 SLA。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 说明了 Azure 作为整体的保证可用性。
@@ -40,7 +40,7 @@ Azure 区域中的可用性区域是容错域和更新域的组合。 例如，�
 ## <a name="regions-that-support-availability-zones"></a>支持可用性区域的地区
 
 - 美国中部
-- 美国东部 2（预览版）
+- 美国东部 2
 - 法国中部
 - 北欧
 - 东南亚 
@@ -61,7 +61,7 @@ Azure 区域中的可用性区域是容错域和更新域的组合。 例如，�
 - 区域冗余存储
 - SQL 数据库
 - 事件中心
-- 服务总线
+- 服务总线（仅限高级层）
 - VPN 网关
 - ExpressRoute
 - 应用程序网关（预览版）
@@ -79,8 +79,8 @@ Azure 区域中的可用性区域是容错域和更新域的组合。 例如，�
 - [使用具有区域性前端的标准负载均衡器在区域内对 VM 进行负载均衡](../load-balancer/load-balancer-standard-public-zonal-cli.md)
 - [区域冗余存储](../storage/common/storage-redundancy-zrs.md)
 - [SQL 数据库](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
-- [事件中心异地灾难恢复](../event-hubs/event-hubs-geo-dr.md#availability-zones-preview)
-- [服务总线异地灾难恢复](../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview)
+- [事件中心异地灾难恢复](../event-hubs/event-hubs-geo-dr.md#availability-zones)
+- [服务总线异地灾难恢复](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
 - [创建区域冗余的虚拟网关](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
 
 

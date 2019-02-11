@@ -1,21 +1,22 @@
 ---
-title: 教程：计算机视觉 API JavaScript
+title: 教程：执行图像操作 - JavaScript
 titlesuffix: Azure Cognitive Services
 description: 介绍一款使用 Azure 认知服务计算机视觉 API 的基本 JavaScript 应用。 执行 OCR、创建缩略图，并处理图像中的视觉特征。
 services: cognitive-services
 author: KellyDF
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: kefre
-ms.openlocfilehash: c024e517eb59c7d3b61408e477c94004ccb01a54
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 1ad25b383e3d275324b57ae1c343560c82b2a3a2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341304"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215225"
 ---
 # <a name="tutorial-computer-vision-api-javascript"></a>教程：计算机视觉 API JavaScript
 
@@ -418,7 +419,7 @@ getThumbnail 函数包装 REST API 调用以分析图像。 在成功返回后�
  * @param {boolean} smartCropping Set to true to use the smart cropping feature which crops to the
  *                                more interesting area of an image; false to crop for the center
  *                                of the image.
- * @param {<img> element} imageElement The img element in the DOM which will display the thumnail image.
+ * @param {<img> element} imageElement The img element in the DOM which will display the thumbnail image.
  * @param {<textarea> element} responseTextArea - The text area to display the Response Headers returned
  *                             from the REST API call, or to display the error message if there was 
  *                             an error.
@@ -634,7 +635,7 @@ function ReadHandwrittenImage(sourceImageUrl, responseTextArea) {
         "handwriting": "true",
     };
 
-    // This operation requrires two REST API calls. One to submit the image for processing,
+    // This operation requires two REST API calls. One to submit the image for processing,
     // the other to retrieve the text found in the image. 
     //
     // Perform the first REST API call to submit the image for processing.

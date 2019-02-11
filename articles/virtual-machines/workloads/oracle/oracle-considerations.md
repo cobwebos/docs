@@ -14,12 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 6435c866f6cdf5abea3862a718579f3a6e4d7378
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.custom: seodec18
+ms.openlocfilehash: 50e5dfa21cf7a8f7203e7d96640e3cf5215130a6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493058"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191455"
 ---
 # <a name="oracle-solutions-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure 上的 Oracle 解决方案及其部署
 本文介绍在 Microsoft Azure 上成功部署各种 Oracle 解决方案所需的信息。 这些解决方案以 Oracle 在 Azure 市场中发布的虚拟机映像为基础。 若要获取当前可用映像的列表，请运行以下命令：
@@ -57,8 +58,7 @@ Oracle 支持在基于 Oracle Linux 的虚拟机映像上的 Azure 中运行 Ora
 附加磁盘依赖于 Azure Blob 存储服务。 每个标准磁盘理论上每秒最多能够完成大约 500 个输入/输出操作 (IOPS)。 高级磁盘产品主要针对高性能数据库工作负荷，每个磁盘 IOPS 高达 5000。 尽管可使用单个磁盘（如果这可满足性能需求），但是如果使用多个附加磁盘，将数据库数据分散到这些磁盘上，然后使用 Oracle 自动存储管理 (ASM)，通常可以提高有效 IOPS 性能。 请参阅 [Oracle 自动存储概述](http://www.oracle.com/technetwork/database/index-100339.html)，了解更多 Oracle ASM 的具体信息。 有关如何在 Linux Azure VM 上安装和配置 Oracle ASM 的示例，可查看[安装和配置 Oracle 自动存储管理](configure-oracle-asm.md)教程。
 
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Real Application Cluster (Oracle RAC)
-Oracle Real RAC 可用于减少本地多节点群集配置中单一节点的故障。 它依赖于网络多播和共享磁盘这两项本地技术，而这两项技术并非源自超大规模公有云环境。 如果数据库解决方案需要 Azure 中的 Oracle RAC，需要使用第三方软件来启用这些技术。  
-  **Microsoft Azure 认证**产品称为 [FlashGrid Node for Oracle RAC](https://azuremarketplace.microsoft.com/marketplace/apps/flashgrid-inc.flashgrid-racnode?tab=Overview) 处于可以使用 Azure 市场发布：FlashGrid inc.有关此解决方案以及它如何在 Azure 中工作的详细信息，请参阅 [FlashGrid 解决方案页](https://www.flashgrid.io/oracle-rac-in-azure/)。
+Oracle Real RAC 可用于减少本地多节点群集配置中单一节点的故障。 它依赖于网络多播和共享磁盘这两项本地技术，而这两项技术并非源自超大规模公有云环境。 如果数据库解决方案需要 Azure 中的 Oracle RAC，需要使用第三方软件来启用这些技术。 有关 Oracle RAC 的详细信息，请参阅 [FlashGrid 解决方案页](https://www.flashgrid.io/oracle-rac-in-azure/)。
 
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>高可用性和灾难恢复注意事项
 在 Azure 中使用 Oracle 数据库时，用户负责实现高可用性和灾难恢复解决方案，避免出现任何停机。 

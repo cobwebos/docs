@@ -1,5 +1,6 @@
 ---
-title: 创建公共负载均衡器 - Azure 模板 | Microsoft Docs
+title: 创建公共负载均衡器 - Azure 模板
+titlesuffix: Azure Load Balancer
 description: 了解如何使用模板在资源管理器中创建公共负载均衡器
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: af638c01121aa3a7f1d533cd8b50403f909d6b8e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5f6a0ce0c9d863b5ab4922e7228a873ed5398600
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235609"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033275"
 ---
 # <a name="creating-a-public-load-balancer-using-a-template"></a>使用模板创建公共负载均衡器
 
@@ -78,3 +80,5 @@ ms.locfileid: "51235609"
 [配置负载均衡器分发模式](load-balancer-distribution-mode.md)
 
 [配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)
+
+有关模板中负载均衡器的 JSON 语法和属性，请参阅 [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)。

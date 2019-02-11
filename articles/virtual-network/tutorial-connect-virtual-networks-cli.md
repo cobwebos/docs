@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 0f98f815c0417d1ee8ad5708589b5402a033f83a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e690ae8cd8f6b2ae52c0c8a9dae12c51f8921531
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989527"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694561"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>通过 Azure CLI 使用虚拟网络对等互连连接虚拟网络
 
@@ -37,17 +37,17 @@ ms.locfileid: "46989527"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.28 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.28 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
 
 ## <a name="create-virtual-networks"></a>创建虚拟网络
 
-创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group#az_group_create) 创建资源组。 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
+创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 创建虚拟网络。 以下示例创建地址前缀为 *10.0.0.0/16* 且名为 *myVirtualNetwork1* 的虚拟网络。
+使用 [az network vnet create](/cli/azure/network/vnet) 创建虚拟网络。 以下示例创建地址前缀为 *10.0.0.0/16* 且名为 *myVirtualNetwork1* 的虚拟网络。
 
 ```azurecli-interactive 
 az network vnet create \
@@ -71,7 +71,7 @@ az network vnet create \
 
 ## <a name="peer-virtual-networks"></a>将虚拟网络对等互连
 
-对等互连是在虚拟网络 ID 之间建立的，因此必须先使用 [az network vnet show](/cli/azure/network/vnet#az_network_vnet_show) 获取每个虚拟网络的 ID，并将 ID 存储在变量中。
+对等互连是在虚拟网络 ID 之间建立的，因此必须先使用 [az network vnet show](/cli/azure/network/vnet) 获取每个虚拟网络的 ID，并将 ID 存储在变量中。
 
 ```azurecli-interactive
 # Get the id for myVirtualNetwork1.
@@ -88,7 +88,7 @@ vNet2Id=$(az network vnet show \
   --out tsv)
 ```
 
-使用 [az network vnet peering create](/cli/azure/network/vnet/peering#az_network_vnet_peering_create) 创建从 *myVirtualNetwork1* 到 *myVirtualNetwork2* 的对等互连。 如果未指定 `--allow-vnet-access` 参数，将建立对等互连，但没有通信可以通过它进行。
+使用 [az network vnet peering create](/cli/azure/network/vnet/peering) 创建从 *myVirtualNetwork1* 到 *myVirtualNetwork2* 的对等互连。 如果未指定 `--allow-vnet-access` 参数，将建立对等互连，但没有通信可以通过它进行。
 
 ```azurecli-interactive
 az network vnet peering create \
@@ -110,7 +110,7 @@ az network vnet peering create \
   --allow-vnet-access
 ```
 
-在前一个命令执行后返回的输出中，可以看到 **peeringState** 为“已连接”。 Azure 还将 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态更改为“已连接”。 使用 [az network vnet peering show](/cli/azure/network/vnet/peering#az_network_vnet_peering_show) 确认 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态是否已更改为“已连接”。
+在前一个命令执行后返回的输出中，可以看到 **peeringState** 为“已连接”。 Azure 还将 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态更改为“已连接”。 使用 [az network vnet peering show](/cli/azure/network/vnet/peering) 确认 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态是否已更改为“已连接”。
 
 ```azurecli-interactive
 az network vnet peering show \
@@ -128,7 +128,7 @@ az network vnet peering show \
 
 ### <a name="create-the-first-vm"></a>创建第一个 VM
 
-使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM。 以下示例在 *myVirtualNetwork1* 虚拟网络中创建一个名为 *myVm1* 的 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 `--no-wait` 选项会在后台创建 VM，因此可继续执行下一步。
+使用 [az vm create](/cli/azure/vm) 创建 VM。 以下示例在 *myVirtualNetwork1* 虚拟网络中创建一个名为 *myVm1* 的 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 `--no-wait` 选项会在后台创建 VM，因此可继续执行下一步。
 
 ```azurecli-interactive
 az vm create \
@@ -192,7 +192,7 @@ ping 10.0.0.4 -c 4
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组及其包含的所有资源，可以使用 [az group delete](/cli/azure/group#az_group_delete) 将其删除。
+如果不再需要资源组及其包含的所有资源，可以使用 [az group delete](/cli/azure/group) 将其删除。
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes

@@ -3,19 +3,19 @@ title: 通过网络策略服务器扩展集成 VPN 与 Azure MFA | Microsoft Doc
 description: 使用 Microsoft Azure 的网络策略服务器扩展将 VPN 基础结构与Azure MFA 进行集成。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: f08bf6a65a93c31d76c5b336cc6ef433153d71c4
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: ed6cf5cff5ed2c132031a48606c8f5125fd93ba4
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423111"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079420"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 网络策略服务器扩展集成 VPN 基础结构与 Azure MFA
 
@@ -242,7 +242,7 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
 7. 在“添加 RADIUS 服务器”窗口中，进行以下操作：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“服务器名称”框中，输入上一部分中配置的 RADIUS 服务器的名称或 IP 地址。
+    a. 在“服务器名称”框中，输入上一部分中配置的 RADIUS 服务器的名称或 IP 地址。
 
     b. 对于“共享密钥”，选择“更改”，然后输入之前创建和记录的共享密钥密码。
 

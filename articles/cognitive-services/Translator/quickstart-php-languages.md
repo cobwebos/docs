@@ -1,21 +1,21 @@
 ---
-title: 快速入门：获取受支持的语言，PHP - 文本翻译 API
+title: 快速入门：获取支持的语言，PHP - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用文本翻译 API 和 PHP 获取翻译、音译和字典查找支持的语言列表以及示例。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: e208e66c906531bb084438539c76e0a07c3caa9a
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 8bb3860f1ed81799640d81414f8e00b35585e168
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647234"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206827"
 ---
 # <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-php"></a>快速入门：通过文本翻译 REST API (PHP) 获取受支持的语言
 

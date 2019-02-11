@@ -38,7 +38,7 @@ ms.locfileid: "51515312"
 <img src="./media/service-fabric-application-upgrade-tutorial-powershell/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 
-## <a name="step-1-build-and-deploy-the-visual-objects-sample"></a>步骤 1：构建和部署视觉对象示例
+## <a name="step-1-build-and-deploy-the-visual-objects-sample"></a>步骤 1：构建和部署 Visual Objects 示例
 单击右键应用程序项目 **VisualObjectsApplication**，并选择“**发布**”命令生成并发布应用程序。  有关详细信息，请参阅 [Service Fabric 应用程序升级教程](service-fabric-application-upgrade-tutorial.md)。  或者，也可以使用 PowerShell 来部署应用程序。
 
 > [!NOTE]
@@ -46,7 +46,7 @@ ms.locfileid: "51515312"
 > 
 > 
 
-在 Visual Studio 中构建项目后，可以使用 PowerShell 命令 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) 将应用程序包复制到 ImageStore。 如果要在本地验证应用包，请使用 [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) cmdlet。 下一个步骤是使用 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) cmdlet 将应用程序注册到 Service Fabric 运行时。 以下步骤是使用 [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet 启动应用程序的实例。  这三个步骤类似于使用 Visual Studio 中的“**部署**”菜单项。  完成预配后，应从映像存储区中清除复制的应用程序包以减少占用的资源。  如果不再需要某一应用程序类型，它应出于同样的原因将其注销。 有关详细信息，请按照[使用 PowerShell 部署和删除应用程序](service-fabric-application-upgrade-tutorial-powershell.md)。
+在 Visual Studio 中构建项目后，可以使用 PowerShell 命令 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) 将应用程序包复制到 ImageStore。 如果要在本地验证应用包，请使用 [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) cmdlet。 下一个步骤是使用 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) cmdlet 将应用程序注册到 Service Fabric 运行时。 接下来的一步骤是使用 [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet 启动应用程序实例。  这三个步骤类似于使用 Visual Studio 中的“**部署**”菜单项。  完成预配后，应从映像存储区中清除复制的应用程序包以减少占用的资源。  如果不再需要某一应用程序类型，它应出于同样的原因将其注销。 有关详细信息，请按照[使用 PowerShell 部署和删除应用程序](service-fabric-application-upgrade-tutorial-powershell.md)。
 
 现在可以使用 [Service Fabric Explorer 查看群集和应用程序](service-fabric-visualizing-your-cluster.md)。 应用程序具有一个 Web 服务，可通过在 Internet Explorer 地址栏中键入 [http://localhost:8081/visualobjects](http://localhost:8081/visualobjects) 导航到该 Web 服务。  应在屏幕上看到一些四处移动的浮动视觉对象。  此外，可使用 [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) 检查应用程序状态。
 
@@ -77,7 +77,7 @@ ms.locfileid: "51515312"
 现在请生成项目，方法是选择 **ActorService** 项目，并单击右键并选择 Visual Studio 中的“**生成**”选项。 如果选择“**全部重新生成**”，应该更新所有项目的版本，因为代码已更改。 接下来，将更新的应用程序打包，方法是右键单击“***VisualObjectsApplication***”，选择 Service Fabric 菜单，然后选择“**打包**”。 此操作将创建可部署的应用程序包。  更新的应用程序已准备就绪，可供部署。
 
 ## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>步骤 3：确定运行状况策略和升级参数
-请熟悉[应用程序升级参数](service-fabric-application-upgrade-parameters.md)和[升级过程](service-fabric-application-upgrade.md)，充分了解所应用的各种升级参数、超时和运行状况标准。 对于本演练，服务运行状况评估标准设置为默认值（即推荐值），这意味着在升级后所有服务和实例均应为*运行状况正常*。  
+请熟悉[应用程序升级参数](service-fabric-application-upgrade-parameters.md)和[升级过程](service-fabric-application-upgrade.md)，充分了解所应用的各种升级参数、超时和运行状况条件。 对于本演练，服务运行状况评估标准设置为默认值（即推荐值），这意味着在升级后所有服务和实例均应为*运行状况正常*。  
 
 但是，让我们将 *HealthCheckStableDuration* 增加到 180 秒（这样该服务在进行下一个更新域的升级之前将至少保持 120 秒的运行状况正常）。  我们还将 *UpgradeDomainTimeout* 设置为 1200 秒，将 *UpgradeTimeout* 设置为 3000 秒。
 
@@ -92,11 +92,11 @@ UpgradeDomainTimeoutSec = 1200
 UpgradeTimeout = 3000
 
 ## <a name="step-4-prepare-application-for-upgrade"></a>步骤 4：准备应用程序升级
-现在，应用程序已生成并准备好进行升级。 如果以管理员身份打开 PowerShell 窗口并键入 [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps)，会看到已部署 **VisualObjects** 的 1.0.0.0 应用程序类型。  
+现在，应用程序已生成并准备好进行升级。 如果以管理员身份打开 PowerShell 窗口并键入 [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps)，会看到已部署好的 1.0.0.0 应用程序类型的名为 **VisualObjects** 的应用程序。  
 
 应用程序包存储在解压 Service Fabric SDK 的位置，其相对路径为 *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*。 该目录中应会出现一个“Package”文件夹，这是存储应用程序包的位置。 请检查时间戳，确保它是最新版本（可能还需要相应地修改路径）。
 
-现在，让我们将更新的应用程序包复制到 Service Fabric ImageStore（Service Fabric 存储应用程序包的位置）。 参数 *ApplicationPackagePathInImageStore* 告知 Service Fabric 可在何处找到应用程序包。 我们已使用以下命令将更新的应用程序放入“VisualObjects\_V2”（可能需要再次相应地修改路径）。
+现在，让我们将更新后的应用程序包复制到 Service Fabric ImageStore（Service Fabric 存储应用程序包的位置）。 参数 *ApplicationPackagePathInImageStore* 告知 Service Fabric 可在何处找到应用程序包。 我们可以使用以下命令将更新的应用程序放入“VisualObjects\_V2”（可能需要再次相应地修改路径）。
 
 ```powershell
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug\Package -ApplicationPackagePathInImageStore "VisualObjects\_V2"
@@ -134,7 +134,7 @@ Get-ServiceFabricApplicationUpgrade fabric:/VisualObjects
 
 几分钟后，使用上述 PowerShell 命令获得的状态应说明所有更新域均已升级（已完成）。 此外，浏览器窗口中的视觉对象已开始旋转！
 
-可以练习从版本 2 升级到版本 3，或者从版本 2 升级到版本 1。 从版本 2 过渡到版本 1 也被视为升级。 尝试使用超时和运行状况策略，以加深熟悉程度。 部署到 Azure 群集时，需要正确设置参数。 最好保守地设置超时。
+可以练习从版本 2 升级到版本 3，或者从版本 2 升级到版本 1。 从版本 2 过渡到版本 1 也被视为升级。 尝试练习使用超时和运行状况策略，以便加深对它的熟悉。 部署到 Azure 群集时，需要正确设置参数。 最好保守地设置超时。
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)逐步讲解了如何使用 Visual Studio 进行应用程序升级。

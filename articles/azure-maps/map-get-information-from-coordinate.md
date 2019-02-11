@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: ada579af44d1d0b4ea08a8ae9eadbec386e44f08
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 20616adf649924a13e80411aa5135889a175f442
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823004"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750182"
 ---
 # <a name="get-information-from-a-coordinate"></a>从坐标获取信息
 
@@ -33,7 +33,7 @@ ms.locfileid: "51823004"
 
 第三个代码块将鼠标光标的样式更新为指针和 [popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) 对象。 有关说明，可以参阅[在地图上添加弹出窗口](./map-add-popup.md)。
 
-第四个代码块针对鼠标单击添加[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)。 单击鼠标后，它会使用被单击点的坐标创建搜索查询。 然后它使用地图的 [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.search?view=azure-iot-typescript-latest#getsearchaddressreverse) 终结点来查询坐标地址。
+第四个代码块针对鼠标单击添加[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)。 单击鼠标后，它会使用被单击点的坐标创建搜索查询。 然后它使用地图的 [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.search?view=azure-iot-typescript-latest) 终结点来查询坐标地址。
 
 对于成功的响应，它收集被单击位置的地址，并通过 popup 类的 [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) 函数定义弹出窗口内容和位置。
 

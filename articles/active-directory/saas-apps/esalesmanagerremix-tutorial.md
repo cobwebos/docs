@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 89b5022c-0d5b-4103-9877-ddd32b6e1c02
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: d96fd1eacc98e88dc8578b259781cc661cf85933
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 2e2bc0c7e590796a533d9f593eb61e57def91fc8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442823"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187992"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>将 Azure Active Directory 与 E Sales Manager Remix 集成
 
@@ -203,7 +203,7 @@ ms.locfileid: "39442823"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 选择**创建**。
+    d. 选择“创建”。
  
 ### <a name="create-an-e-sales-manager-remix-test-user"></a>创建 E Sales Manager Remix 测试用户
 
@@ -267,7 +267,7 @@ ms.locfileid: "39442823"
 
 在访问面板中选择 E Sales Manager Remix 磁贴时，应会自动登录到 E Sales Manager Remix 应用程序。
 
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: mihauss
-ms.component: blobs
-ms.openlocfilehash: 0e7487525dc23482cbd3029b626e7bb30dd51b50
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.subservice: blobs
+ms.openlocfilehash: e78b1f94338f177601b1e93fcc7974a228be062b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398554"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239978"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure 存储 Blob 的软删除
 Azure 存储现提供 Blob 对象软删除，目的是为了在应用程序或其他存储帐户用户错误地修改或删除数据后可以更轻松地恢复数据。
@@ -41,7 +41,7 @@ Azure 存储现提供 Blob 对象软删除，目的是为了在应用程序或�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-overwrite.png)
 
-软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。使用 B1 覆盖 B0 时会生成 B0 的软删除快照。使用 B2 覆盖 B1 时会生成 B1 的软删除快照。
+软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。使用 B1 覆盖 B0 时会生成 B0 的软删除快照。使用 B2 覆盖 B1 时会生成 B1 的软删除快照*。
 
 > [!NOTE]  
 > 对目标 blob 的帐户启用软删除时，软删除仅对复制操作提供覆盖保护。
@@ -59,7 +59,7 @@ Azure 存储现提供 Blob 对象软删除，目的是为了在应用程序或�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-include.png)
 
-软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。此处调用了“删除 Blob”来删除 B2 和所有相关快照 。活动 blob B2 和所有相关快照均被标记为软删除。
+软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。此处调用了“删除 Blob”来删除 B2 和所有相关快照 。活动 blob B2 和所有相关快照均被标记为软删除*。
 
 > [!NOTE]  
 > 覆盖软删除 blob 时，将自动生成写入操作前 blob 状态的软删除快照。 新 blob 将继承被覆盖 blob 的层级。
@@ -170,26 +170,29 @@ Copy a snapshot over the base blob:
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-promote-snapshot.png)
 
 ### <a name="powershell"></a>PowerShell
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 若要启用软删除，请更新 blob 客户端的服务属性。 下面的示例为订阅中的帐户子集启用了软删除：
 
 ```powershell
-Set-AzureRmContext -Subscription "<subscription-name>"
-$MatchingAccounts = Get-AzureRMStorageAccount | where-object{$_.StorageAccountName -match "<matching-regex>"}
-$MatchingAccounts | Enable-AzureStorageDeleteRetentionPolicy -RetentionDays 7
+Set-AzContext -Subscription "<subscription-name>"
+$MatchingAccounts = Get-AzStorageAccount | where-object{$_.StorageAccountName -match "<matching-regex>"}
+$MatchingAccounts | Enable-AzStorageDeleteRetentionPolicy -RetentionDays 7
 ```
 可以使用以下命令验证是否启用了软删除：
 
 ```powershell
-$MatchingAccounts | Get-AzureStorageServiceProperty -ServiceType Blob
+$MatchingAccounts | Get-AzStorageServiceProperty -ServiceType Blob
 ```
 
 若要恢复意外删除的 blob，请对这些 blob 调用撤销删除。 请记住，如果对活动和软删除 blob 调用撤销删除 Blob，则会将所有相关软删除快照还原为活动状态。 下面的示例对容器中的所有软删除和活动 blob 调用了撤销删除：
 ```powershell
 # Create a context by specifying storage account name and key
-$ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
+$ctx = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
 # Get the blobs in a given container and show their properties
-$Blobs = Get-AzureStorageBlob -Container $StorageContainerName -Context $ctx -IncludeDeleted
+$Blobs = Get-AzStorageBlob -Container $StorageContainerName -Context $ctx -IncludeDeleted
 $Blobs.ICloudBlob.Properties
 
 # Undelete the blobs
@@ -198,8 +201,8 @@ $Blobs.ICloudBlob.Undelete()
 若要查找当前的软删除保留策略，请使用以下命令：
 
 ```azurepowershell-interactive
-   $account = Get-AzureRmStorageAccount -ResourceGroupName myresourcegroup -Name storageaccount
-   Get-AzureStorageServiceProperty -ServiceType Blob -Context $account.Context
+   $account = Get-AzStorageAccount -ResourceGroupName myresourcegroup -Name storageaccount
+   Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
 ```
 
 ### <a name="azure-cli"></a>Azure CLI 

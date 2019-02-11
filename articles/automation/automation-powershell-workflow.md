@@ -3,18 +3,18 @@ title: 了解 Azure 自动化的 PowerShell 工作流
 description: 本文旨在作为熟悉 PowerShell 创作人员的一个速成教程，以便其了解 PowerShell 和 PowerShell 工作流之间的具体差异，并介绍适用于自动化 runbook 的概念。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/04/2018
+ms.date: 12/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 00f6f84a2065a67e999149e4b0f9e28f18e5e297
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7ab6b387a28df06758e5e0c1ce197781fc4be3c5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239417"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436801"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>了解自动化 runbook 的关键 PowerShell 工作流概念
 
@@ -193,10 +193,10 @@ Workflow Copy-Files
 }
 ```
 
-可以使用 **ForEach-Parallel** 构造同时处理集合中每个项的命令。 尽管脚本块中的命令按顺序运行，但集合中的项是并行处理的。 此脚本块使用如下所示的语法。 在此示例中，将同时对集合中的所有项启动 Activity1。 对于每个项，Activity2 会在 Activity1 完成后启动。 只有在对所有项完成 Activity1 和 Activity2 后，Activity3 才会启动。
+可以使用 **ForEach-Parallel** 构造同时处理集合中每个项的命令。 尽管脚本块中的命令按顺序运行，但集合中的项是并行处理的。 此脚本块使用如下所示的语法。 在此示例中，将同时对集合中的所有项启动 Activity1。 对于每个项，Activity2 会在 Activity1 完成后启动。 只有在对所有项完成 Activity1 和 Activity2 后，Activity3 才会启动。 我们使用 `ThrottleLimit` 参数来限制并行度。 `ThrottleLimit` 太高会导致问题。 `ThrottleLimit` 参数的理想值取决于环境中的许多因素。 你应该尝试从较低的值开始并尝试不同的增加值，直到找到适合你的特定环境的值。
 
 ```powershell
-ForEach -Parallel ($<item> in $<collection>)
+ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
 {
     <Activity1>
     <Activity2>
@@ -211,7 +211,7 @@ Workflow Copy-Files
 {
     $files = @("C:\LocalPath\File1.txt","C:\LocalPath\File2.txt","C:\LocalPath\File3.txt")
 
-    ForEach -Parallel ($File in $Files)
+    ForEach -Parallel -ThrottleLimit 10 ($File in $Files)
     {
         Copy-Item -Path $File -Destination \\NetworkPath
         Write-Output "$File copied."
@@ -296,3 +296,4 @@ workflow CreateTestVms
 ## <a name="next-steps"></a>后续步骤
 
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅 [我的第一个 PowerShell 工作流 Runbook](automation-first-runbook-textual.md)
+

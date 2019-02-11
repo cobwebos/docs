@@ -4,22 +4,22 @@ description: 了解添加自定义非库应用程序时常见的问题
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: 290e68e8367570bee3497a039f98d140a8d3ffe1
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 65a6eee2be0dfdd75370c153c8c8e5010c24d096
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423620"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160860"
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>添加非库应用程序的问题
 

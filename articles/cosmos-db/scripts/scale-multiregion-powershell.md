@@ -1,25 +1,20 @@
 ---
-title: Azure PowerShell 脚本 - Azure Cosmos DB 的多区域复制 | Microsoft Docs
+title: Azure PowerShell 脚本 - Azure Cosmos DB 的多区域复制
 description: Azure PowerShell 脚本示例 - Azure Cosmos DB 的多区域复制
-services: cosmos-db
-documentationcenter: cosmosdb
-author: SnehaGunda
-manager: kfile
-tags: azure-service-management
 ms.service: cosmos-db
-ms.custom: mvc
+ms.subservice: cosmosdb-sql
+author: SnehaGunda
+ms.author: sngun
 ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: cosmosdb
-ms.workload: database
 ms.date: 05/10/2017
-ms.author: sngun
-ms.openlocfilehash: 99d6a0852fbdb031b34abca433569f9297ecd740
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.reviewer: sngun
+ms.openlocfilehash: 832f22e969fbec51390792105df51a6af2a71851
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41918572"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037882"
 ---
 # <a name="replicate-an-azure-cosmos-db-database-account-in-multiple-regions-and-configure-failover-priorities-using-powershell"></a>使用 PowerShell 将 Azure Cosmos DB 数据库帐户复制到多个区域中并配置故障转移优先级
 

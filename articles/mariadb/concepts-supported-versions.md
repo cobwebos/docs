@@ -3,17 +3,15 @@ title: Azure Database for MariaDB 中支持的版本
 description: 说明 Azure Database for MariaDB 中支持的版本。
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: aa83b9955839aaa03aa2ebf46c9e464dc75c8d3a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 69330e9d5a05fbcc892889f70a04f5eb4a4a2fb9
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977496"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541415"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>支持的 Azure Database for MariaDB 服务器版本
 已使用 InnoDB 引擎从开放源代码 [MariaDB 服务器](https://downloads.mariadb.org/)开发了 Azure Database for MariaDB。 Azure Database for MariaDB 目前支持以下版本：

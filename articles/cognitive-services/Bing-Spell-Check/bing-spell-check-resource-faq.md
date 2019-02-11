@@ -6,16 +6,16 @@ services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 07/26/2017
 ms.author: heidist
-ms.openlocfilehash: e6662ffcbab9ea274a67bc4437ca1600f1625ff1
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 90acc80b19058c2a7eb963f9e423883846519b2c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801499"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164922"
 ---
 # <a name="frequently-asked-questions-about-the-bing-spell-check-api"></a>有关必应拼写检查 API 的常见问题
 

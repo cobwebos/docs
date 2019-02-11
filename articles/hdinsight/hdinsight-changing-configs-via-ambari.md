@@ -8,16 +8,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: abb80bb0877f99dfb1623e320078e935f581d833
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 14b634e610fb0da71c5f0d742a250b18cea70dc7
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498672"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722917"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>使用 Apache Ambari 优化 HDInsight 群集配置
 
-HDInsight 为大规模数据处理应用程序提供 [Apache Hadoop](https://hadoop.apache.org/) 群集。 对这些复杂的多节点群集进行管理、监视和优化可能存在一定的难度。 [Apache Ambari](http://ambari.apache.org/) 是可用于管理和监视 HDInsight Linux 群集的 Web 界面。  对于 Windows 群集，请使用 [Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)。
+HDInsight 为大规模数据处理应用程序提供 [Apache Hadoop](https://hadoop.apache.org/) 群集。 对这些复杂的多节点群集进行管理、监视和优化可能存在一定的难度。 [Apache Ambari](https://ambari.apache.org/) 是可用于管理和监视 HDInsight Linux 群集的 Web 界面。  对于 Windows 群集，请使用 [Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)。
 
 有关使用 Ambari Web UI 的简介，请参阅[使用 Apache Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)
 
@@ -189,7 +189,7 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
     ![Hive 执行 - 中间压缩](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > 若要压缩中间文件，请选择一个 CPU 开销较低的压缩编解码器，即使该编解码器不能提供较高的压缩输出。
 
 1. 若要设置中间压缩编解码器，请将自定义属性 `mapred.map.output.compression.codec` 添加到 `hive-site.xml` 或 `mapred-site.xml` 文件。
@@ -210,7 +210,7 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
     这会使用 Snappy 压缩来压缩中间文件。 添加该属性后，它会显示在“自定义 hive-site”窗格中。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 此过程会修改 `$HADOOP_HOME/conf/hive-site.xml` 文件。
 
 ### <a name="compress-final-output"></a>压缩最终输出
@@ -299,7 +299,7 @@ Hive 中的默认联接类型是“随机联接”。 在 Hive 中，特殊的�
 
     ![高级 pig-properties](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
  
-> [!NOTE]
+> [!NOTE]  
 > 任何会话级设置都会重写 `pig.properties` 文件中的属性值。
 
 ### <a name="tune-execution-engine"></a>优化执行引擎
@@ -395,9 +395,9 @@ HBase 堆大小指定区域服务器和主服务器要使用的最大堆数量�
 
 所有编辑内容都存储在称作 *Memstore* 的内存缓冲区中。 此机制增大了可在单个操作中写入磁盘的总数据量，并可加速以后对最近编辑内容的访问。 Memstore 大小由以下两个参数定义：
 
-* `hbase.regionserver.global.memstore.UpperLimit`：定义 Memstore 总共可以使用的区域服务器最大内存百分比。
+* `hbase.regionserver.global.memstore.UpperLimit`：定义 Memstore 总共可以使用的区域服务器的最大内存百分比。
 
-* `hbase.regionserver.global.memstore.LowerLimit`：定义 Memstore 总共可以使用的区域服务器最小内存百分比。
+* `hbase.regionserver.global.memstore.LowerLimit`：定义 Memstore 总共可以使用的区域服务器的最小内存百分比。
 
 若要优化随机读取，可以减小 Memstore 的上限和下限。
 
@@ -408,7 +408,7 @@ HBase 堆大小指定区域服务器和主服务器要使用的最大堆数量�
 
 ![HBase 提取的行数](./media/hdinsight-changing-configs-via-ambari/hbase-num-rows-fetched.png)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 设置此值时，请不要使扫描程序中的下一次方法调用间隔时间大于扫描程序的超时时间。 扫描程序超时期限由 `hbase.regionserver.lease.period` 属性定义。
 
 

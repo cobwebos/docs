@@ -7,18 +7,17 @@ editor: tysonn
 services: azure-monitor
 documentationcenter: azure-monitor
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: bwren
-ms.openlocfilehash: f85f0785f180bf333477bd45508f8c670349669e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 68986b3d60566ee190a92c6ccf8cda767824350f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980468"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000153"
 ---
 # <a name="azure-monitor-branding-changes"></a>Azure Monitor 品牌更改
 本文介绍了最近对 Azure 管理服务所做的品牌和名称更改。 
@@ -47,4 +46,4 @@ Operations Management Suite (OMS) 之前捆绑到以下 Azure 管理服务，用
 ## <a name="next-steps"></a>后续步骤
 
 - 阅读 [Azure Monitor 概述](overview.md)，其中介绍了它的各种组件和功能。
-- 了解 [OMS 门户的转换](../log-analytics/log-analytics-oms-portal-transition.md)。
+- 了解 [OMS 门户的转换](../azure-monitor/platform/oms-portal-transition.md)。

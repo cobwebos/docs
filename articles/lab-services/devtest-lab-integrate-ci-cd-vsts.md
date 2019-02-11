@@ -1,6 +1,6 @@
 ---
-title: 将 Azure 开发测试实验室集成到 VSTS 持续集成和交付管道 | Microsoft Docs
-description: 了解如何将 Azure 开发测试实验室集成到 VSTS 持续集成和交付管道
+title: 将 Azure 开发测试实验室集成到 Azure 管道持续集成和交付管道 | Microsoft Docs
+description: 了解如何将 Azure 开发测试实验室集成到 Azure 管道持续集成和交付管道
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: b7ce07547eccd52a8b10d4cffecaf1456778da4a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: bcc39f2d8cf1ca0440f8028464d9041435914477
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301202"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263401"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>将 Azure 开发测试实验室集成到 Azure DevOps 持续集成和交付管道
 可使用 Azure DevOps 中安装的 *Azure 开发测试实验室任务*扩展，将 CI/CD 生成与发布管道与 Azure 开发测试实验室轻松集成。 该扩展将安装三个任务： 
@@ -85,7 +85,7 @@ ms.locfileid: "44301202"
 
 1. 将该脚本签入到源代码管理系统。 为其命名，例如 **GetLabVMParams.ps1**。
 
-   在发布管道中，在代理上运行此脚本时，如果使用 *Azure 文件复制*或*目标计算机上的 PowerShell* 等任务步骤，则该脚本会收集将应用部署到 VM 所需的值。 这些任务通常用于将应用部署到 Azure VM。 这些任务需要 VM 资源组名称、IP 地址和完全限定的域名 (FDQN) 等值。
+   在发布管道中，在代理上运行此脚本时，如果使用 *Azure 文件复制*或*目标计算机上的 PowerShell* 等任务步骤，则该脚本会收集将应用部署到 VM 所需的值。 这些任务通常用于将应用部署到 Azure VM。 这些任务需要 VM 资源组名称、IP 地址和完全限定的域名 (FQDN) 等值。
 
 ## <a name="create-a-release-pipeline-in-release-management"></a>在 Release Management 中创建发布管道
 若要创建发布管道，请执行以下操作：
@@ -138,7 +138,7 @@ ms.locfileid: "44301202"
 1. 在发布管道中，选择“添加任务”，然后在“部署选项卡”上添加“Azure PowerShell”任务。 对任务进行如下配置：
 
    > [!NOTE]
-   > 若要收集开发测试实验室 VM 的详细信息，请参阅[部署：Azure PowerShell](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/AzurePowerShell) 并执行脚本。
+   > 若要收集开发测试实验室 VM 的详细信息，请参阅[部署：Azure PowerShell](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzurePowerShellV3) 并执行脚本。
 
    a. 对于“Azure 连接类型”，选择“Azure 资源管理器”。
 
@@ -150,7 +150,7 @@ ms.locfileid: "44301202"
       ```
       $(System.DefaultWorkingDirectory/Contoso/Scripts/GetLabVMParams.ps1
       ```
-   e. 对于“脚本参数”**，输入在上一任务中自动填充了实验室 VM ID 的环境变量的名称，例如： 
+   e. 对于“脚本参数”，输入在上一任务中自动填充了实验室 VM ID 的环境变量的名称，例如： 
       ```
       -labVmId '$(labVMId)'
       ```

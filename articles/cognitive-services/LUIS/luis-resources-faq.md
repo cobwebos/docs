@@ -1,23 +1,24 @@
 ---
-title: FAQ - 常见问题解答 - 语言理解 (LUIS)
+title: 常见问题 (FAQ)
 titleSuffix: Azure Cognitive Services
 description: 本文包含有关语言理解 (LUIS) 的常见问题的解答。
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 services: cognitive-services
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: d371ead3280bca5239a9ee6bf2c4275414141fb4
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 704c3c6b4c998526936e7532fcd92c85ccce54e9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284364"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222178"
 ---
-# <a name="language-understanding-faq"></a>语言理解常见问题解答
+# <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
 本文包含有关语言理解 (LUIS) 的常见问题的解答。
 
@@ -74,7 +75,7 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 LUIS 根据[区域性](luis-language-support.md#tokenization)将表述[标记化](luis-glossary.md#token)。 原始值和标记化值均可用于[数据提取](luis-concept-data-extraction.md#tokenized-entity-returned)。
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>如何创建并分配 LUIS 终结点密钥？
-根据[服务](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)级别在 Azure 中[创建终结点密钥](luis-how-to-azure-subscription.md#create-luis-endpoint-key)。 在**[密钥和终结点](luis-how-to-manage-keys.md)** 页上[分配密钥](luis-how-to-manage-keys.md#assign-endpoint-key)。 此操作没有相应的 API。 然后，必须更改针对此终结点的 HTTP 请求才能[使用新终结点密钥](luis-concept-keys.md#use-endpoint-key-in-query)。
+根据[服务](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)级别在 Azure 中[创建终结点密钥](luis-how-to-azure-subscription.md)。 在**[密钥和终结点](luis-how-to-azure-subscription.md)** 页上[分配密钥](luis-how-to-azure-subscription.md)。 此操作没有相应的 API。 然后，必须更改针对此终结点的 HTTP 请求才能[使用新终结点密钥](luis-concept-keys.md#use-endpoint-key-in-query)。
 
 ### <a name="how-do-i-interpret-luis-scores"></a>如何解释 LUIS 分数？
 系统应该使用最高得分意向，不管其值如何。 例如，分数低于 0.5（不到 50%）不一定意味着 LUIS 的置信度低。 提供更多训练数据有助于提高最可能意向的[分数](luis-concept-prediction-score.md)。
@@ -83,6 +84,14 @@ LUIS 根据[区域性](luis-language-support.md#tokenization)将表述[标记化
 应用的“仪表板”中的终结点总命中数会定期更新，但 Azure 门户中与 LUIS 终结点密钥相关联的指标的更新频率更高。
 
 如果在“仪表板”中看不到更新的终结点命中数，请登录到 Azure 门户，找到与 LUIS 终结点密钥相关联的资源，然后打开“指标”以选择“总调用数”指标。 如果将终结点密钥用于多个 LUIS 应用，则 Azure 门户中的指标会显示使用该密钥的所有 LUIS 应用进行的调用的聚合数。
+
+### <a name="is-there-a-powershell-command-to-the-endpoint-quota"></a>终结点配额是否有 PowerShell 命令？
+
+可以使用 PowerShell 命令查看终结点配额：
+
+```powershell
+Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
+``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>我的 LUIS 应用昨天还可以正常使用，但今天却出现 403 错误。 我没有更改应用。 如何解决问题？
 根据下一常见问题解答中的[说明](#how-do-i-create-and-assign-a-luis-endpoint-key)创建一个 LUIS 终结点密钥，然后将其分配给应用。 然后，必须更改针对此终结点的 HTTP 请求才能[使用新终结点密钥](luis-concept-keys.md#use-endpoint-key-in-query)。
@@ -194,33 +203,39 @@ LUIS 根据[区域性](luis-language-support.md#tokenization)将表述[标记化
 ### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>什么 LUIS 区域支持 Bot Framework 语音启动？
 仅中部（美国）实例中的 LUIS 应用支持[语音启动](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)。
 
+## <a name="api-programming-strategies"></a>API 编程策略
+
+### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>如何以编程方式获取资源的 LUIS 区域？ 
+
+通过 C# 或 Node.Js 使用 LUIS 示例以编程方式[查找区域](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region)。 
+
 ## <a name="luis-service"></a>LUIS 服务
 
-### <a name="is-luis-available-on-premises-or-in-private-cloud"></a>是否可以在本地或私有云中使用 LUIS？
-不是。
+### <a name="is-language-understanding-luis-available-on-premises-or-in-private-cloud"></a>是否可以在本地或私有云中使用语言理解 (LUIS)？
 
+是，如果具有计量使用情况的必要连接，则可以为这些方案使用 LUIS [容器](luis-container-howto.md)。 
 
 ### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>在 Build 2018 大会上，我了解到一项语言理解功能或演示，但我不记得它的名称了，它叫什么呢？
 
 以下功能是在 Build 2018 大会上发布的：
 
-|名称|内容|
+|Name|内容|
 |--|--|
 |增强功能|[正则表达式](luis-concept-data-extraction.md##regular-expression-entity-data)实体和[关键短语](luis-concept-data-extraction.md#key-phrase-extraction-entity-data)实体
 |模式|模式[概念](luis-concept-patterns.md)、[教程](luis-tutorial-pattern.md)、[操作方法](luis-how-to-model-intent-pattern.md)<br>[Patterns.Any](luis-concept-entity-types.md) 实体概念，包括用作例外的[显式列表](luis-concept-patterns.md#explicit-lists)<br>[角色](luis-concept-roles.md)概念|
 |集成|[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)集成（集成了[情绪分析](luis-how-to-publish-app.md#enable-sentiment-analysis)）<br>[语音](https://docs.microsoft.com/azure/cognitive-services/speech)集成（集成了语音启动和[语音 SDK](https://aka.ms/SpeechSDK)）|
 |Dispatch 工具|Dispatch 命令行[工具](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps)是 [BotBuilder-tools](https://github.com/Microsoft/botbuilder-tools) 的一部分，可以将多个 LUIS 应用和 QnA Maker 应用组合成单个 LUIS 应用，以便增强机器人中的意向识别功能
 
-此外还包括其他创作 [API 路由](https://github.com/Microsoft/LUIS-Samples/blob/master/authoring-routes.md)。
+此外还包括其他创作 [API 路由](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/authoring-routes.md)。
 
 视频：
-* [Azure Friday At Build 2018: Cognitive Services - Language (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)（Build 2018 中的 Azure Friday：认知服务 - 语言 (LUIS)）
+* [Build 2018 中的 Azure Friday：认知服务 - 语言 (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
 * [Build 2018 AI Show - What’s New with Language Understanding Service](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)（Build 2018 AI 演示 - 语言理解服务的新增功能）
 * [Build 2018 会议 - 机器人智能、语音功能和 NLU 最佳做法](https://channel9.msdn.com/events/Build/2018/BRK3208)
 * [Build 2018 - LUIS Updates](https://channel9.msdn.com/events/Build/2018/THR3118/player)（Build 2018 - LUIS 更新）
 
 项目：
-* [Contoso 咖啡店机器人](https://github.com/botbuilderbuild2018/build2018demo)演示 - Github 上的源代码
+* [Contoso 咖啡店机器人](https://github.com/botbuilderbuild2018/build2018demo)演示 - GitHub 上的源代码
 
 ## <a name="next-steps"></a>后续步骤
 

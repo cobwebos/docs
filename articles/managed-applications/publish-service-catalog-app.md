@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: a2e6e78268f97136533b4f72ce28373642b6c394
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 7e9db85fb91dd0c9a33cc8205bdb30a648dfd38a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801261"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438728"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>创建并发布托管应用程序定义
 
@@ -30,7 +30,7 @@ ms.locfileid: "48801261"
 
 对于本文，托管应用程序只具有存储帐户。 它用于说明发布托管应用程序的步骤。 有关完整示例，请参阅 [Azure 托管应用程序的示例项目](sample-projects.md)。
 
-本文中的 PowerShell 示例需要 Azure PowerShell 6.2 或更高版本。 如果需要，请[更新版本](/powershell/azure/install-azurerm-ps)。
+本文中的 PowerShell 示例需要 Azure PowerShell 6.2 或更高版本。 如果需要，请[更新版本](/powershell/azure/azurerm/install-azurerm-ps)。
 
 ## <a name="create-the-resource-template"></a>创建资源模板
 

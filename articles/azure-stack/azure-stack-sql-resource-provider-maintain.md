@@ -11,19 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: 360661402289ab9b06eb01be447dc98942c93302
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.reviewer: jiahan
+ms.lastreviewed: 01/11/2019
+ms.openlocfilehash: 85c3e27171ad0e760c6c7aab39ac923bba8cbcaf
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364077"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250725"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>SQL 资源提供程序维护操作
 
-SQL 资源提供程序在锁定的虚拟机上运行。 若要启用维护操作，需要更新虚拟机的安全性。 若要使用“最低特权”原则执行此操作，可以使用 [PowerShell Just Enough Administration (JEA)](https://docs.microsoft.com/powershell/jea/overview) 终结点 *DBAdapterMaintenance*。 资源提供程序安装包包含此操作的脚本。
+SQL 资源提供程序在锁定的虚拟机上运行。 若要启用维护操作，需要更新虚拟机的安全性。 若要执行此操作使用最低特权原则，可以使用[PowerShell Just Enough Administration (JEA)](https://docs.microsoft.com/powershell/jea/overview)终结点*DBAdapterMaintenance*。 资源提供程序安装包包含此操作的脚本。
 
 ## <a name="patching-and-updating"></a>修补和更新
 
@@ -32,16 +33,6 @@ SQL 资源提供程序在锁定的虚拟机上运行。 若要启用维护操作
 ### <a name="provider-virtual-machine"></a>提供程序虚拟机
 
 由于资源提供程序在用户虚拟机上运行，因此需要应用已发布的修补升级。 可以使用修补升级周期提供的 Windows 更新包将更新应用到 VM。
-
-## <a name="backuprestoredisaster-recovery"></a>备份/还原/灾难恢复
-
- 由于 SQL 资源提供程序是一个加载项组件，在 Azure Stack 业务连续性灾难恢复 (BCDR) 过程中不会备份它。 Microsoft 将提供以下操作的脚本：
-
-- 备份状态信息（存储在 Azure Stack 存储帐户中）。
-- 还原资源提供程序（如果需要完整堆栈恢复）。
-
->[!NOTE]
->如果需要执行恢复，则必须在还原资源提供程序之前恢复数据库服务器。
 
 ## <a name="updating-sql-credentials"></a>更新 SQL 凭据
 
@@ -55,7 +46,7 @@ SQL 资源提供程序在锁定的虚拟机上运行。 若要启用维护操作
 
 *这些说明仅适用于 Azure Stack 集成系统。*
 
-如果 SQL 和 MySQL 资源提供程序中使用 Azure Stack 集成系统，Azure Stack 运营商将负责轮换以下的资源提供程序基础结构机密，以确保它们不过期：
+在 Azure Stack 集成系统中使用 SQL 和 MySQL 资源提供程序时，Azure Stack 操作员负责轮换以下资源提供程序基础结构机密以确保它们不会过期：
 
 - [部署期间提供的](azure-stack-pki-certs.md)外部 SSL 证书。
 - 部署期间提供的资源提供程序 VM 本地管理员帐户密码。
@@ -109,7 +100,7 @@ SQL 资源提供程序在锁定的虚拟机上运行。 若要启用维护操作
 
 ### <a name="secretrotationsqlproviderps1-parameters"></a>SecretRotationSQLProvider.ps1 参数
 
-|参数|说明|
+|参数|描述|
 |-----|-----|
 |AzCredential|Azure Stack 服务管理员帐户凭据。|
 |CloudAdminCredential|Azure Stack 云管理域帐户凭据。|

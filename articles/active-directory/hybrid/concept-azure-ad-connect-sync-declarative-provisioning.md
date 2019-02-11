@@ -4,7 +4,7 @@ description: 介绍 Azure AD Connect 中的声明性预配配置模型。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: cfbb870d-be7d-47b3-ba01-9e78121f0067
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9242ffc0c87ee9f314745463b8287ad7531a982d
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a59a7610a067a292d9b5dd7bb1a611b4bade05e9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310286"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193805"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect 同步：了解声明性预配
 本主题介绍 Azure AD Connect 中的配置模型。 该模型称为声明性预配，让用户能够轻松地更改配置。 本主题介绍的许多内容都是高级内容，在大部分客户方案中并非必要。
@@ -52,7 +52,7 @@ ms.locfileid: "46310286"
 
 范围模块支持以下运算。
 
-| Operation | Description |
+| Operation | 说明 |
 | --- | --- |
 | EQUAL、NOTEQUAL |计算某个值是否等于属性值的字符串比较。 对于多值属性，请参阅 ISIN 和 ISNOTIN。 |
 | LESSTHAN、LESSTHAN_OR_EQUAL |计算某个值是否小于属性值的字符串比较。 |
@@ -91,7 +91,7 @@ ms.locfileid: "46310286"
 删除 metaverse 对象后，所有与标记为“预配”的出站同步规则关联的对象都将标记为要删除。
 
 ## <a name="transformations"></a>转换
-转换用于定义属性应该如何从源流动到目标。 流可以是以下**流类型**之一：直接、常数或表达式。 直接流会按原样流动属性值，而不进行其他转换。 常数值会设置指定的值。 表达式会使用声明性预配表达式语言来表达应该如何转换。 有关表达式语言的详细信息，请参阅[了解声明性预配表达式语言](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)主题。
+转换用于定义属性应该如何从源流动到目标。 流可以是以下“流类型”之一：直接、常数或表达式。 直接流会按原样流动属性值，而不进行其他转换。 常数值会设置指定的值。 表达式会使用声明性预配表达式语言来表达应该如何转换。 有关表达式语言的详细信息，请参阅[了解声明性预配表达式语言](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)主题。
 
 ![预配或联接](./media/concept-azure-ad-connect-sync-declarative-provisioning/transformations1.png)  
 
@@ -158,9 +158,9 @@ ms.locfileid: "46310286"
 
 **概述主题**
 
-* [Azure AD Connect 同步：理解和自定义同步](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同步：了解和自定义同步](how-to-connect-sync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
 
 **参考主题**
 
-* [Azure AD Connect 同步：函数参考](reference-connect-sync-functions-reference.md)
+* [Azure AD Connect 同步：函数引用](reference-connect-sync-functions-reference.md)

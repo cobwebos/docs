@@ -1,59 +1,75 @@
 ---
-title: 快速入门：必应新闻搜索 SDK、Python
+title: 快速入门：执行新闻搜索 - 适用于 Python 的必应新闻搜索 SDK
 titleSuffix: Azure Cognitive Services
-description: 设置必应新闻搜索 SDK 控制台应用程序。
+description: 使用本快速入门，可以使用适用于 Python 的必应新闻搜索 SDK 搜索新闻，并处理响应。
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 02/14/2018
+ms.date: 01/10/2019
 ms.author: v-gedod
-ms.openlocfilehash: 6e029b7e830b6ec157d03d17dc24e65282a9c742
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 453da9f5765a0cf9bfdf58026a6d7a2d5a1a2d9f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316797"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197188"
 ---
-# <a name="quickstart-bing-news-search-sdk-with-python"></a>快速入门：通过 Python 使用必应新闻搜索 SDK
+# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-python"></a>快速入门：使用适用于 Python 的必应新闻搜索 SDK 执行新闻搜索
 
-新闻搜索 SDK 包含用于 Web 查询以及对结果进行分析的 REST API 功能。 
+使用本快速入门开始使用适用于 Python 的必应新闻搜索 SDK 搜索新闻。 虽然必应新闻搜索具有与大多数编程语言兼容的 REST API，但该 SDK 提供了一种简单方法来将服务集成到应用程序中。 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py) 上找到此示例的源代码。
 
-Git Hub 上提供了 [Python 必应新闻搜索 SDK 示例的源代码](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py)。
+## <a name="prerequisites"></a>先决条件
 
-## <a name="application-dependencies"></a>应用程序依赖项
-在“搜索”下获取[认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/)。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+* [Python](https://www.python.org/) 2.x 或 3.x
 
-安装 Python（若尚未安装）。 SDK 与 Python 2.7、3.3、3.4、3.5 和 3.6 兼容。
+建议使用[虚拟环境](https://docs.python.org/3/tutorial/venv.html)进行 python 开发。 可以使用 [venv 模块](https://pypi.python.org/pypi/virtualenv)安装并初始化虚拟环境。 必须安装适用于 Python 2.7 的 virtualenv。 可以使用以下命令创建虚拟环境：
 
-常规 Python 开发建议是使用[虚拟环境](https://docs.python.org/3/tutorial/venv.html)。 使用 [venv 模块](https://pypi.python.org/pypi/virtualenv)安装并初始化虚拟环境。 必须安装适用于 Python 2.7 的 virtualenv。
-```
+```console
 python -m venv mytestenv
 ```
-安装必应新闻搜索 SDK 依赖项：
-```
-cd mytestenv
+
+可以使用以下命令安装必应新闻搜索 SDK 依赖项：
+    
+```console
 python -m pip install azure-cognitiveservices-search-newssearch
 ```
-## <a name="news-search-client"></a>新闻搜索客户端
-在“搜索”下获取[认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/)。 添加以下导入：
-```
-from azure.cognitiveservices.search.newssearch import NewsSearchAPI
-from msrest.authentication import CognitiveServicesCredentials
 
-subscription_key = "YOUR-SUBSCRIPTION-KEY"
-```
-创建 `CognitiveServicesCredentials` 的实例。 对客户端进行实例化：
-```
-client = NewsSearchAPI(CognitiveServicesCredentials(subscription_key))
-```
-搜索结果，并输出第一个网页结果：
-```
-news_result = client.news.search(query="Quantum Computing", market="en-us", count=10)
-print("Search news for query \"Quantum Computing\" with market and count")
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
+## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
+
+1. 在你最喜欢使用的 IDE 或编辑器中新建一个 Python 文件，并导入以下库。 为订阅密钥和搜索词创建变量。
+
+    ```python
+    from azure.cognitiveservices.search.newssearch import NewsSearchAPI
+    from msrest.authentication import CognitiveServicesCredentials
+    subscription_key = "YOUR-SUBSCRIPTION-KEY"
+    search_term = "Quantum Computing"
+    ```
+
+## <a name="initialize-the-client-and-send-a-request"></a>初始化客户端并发送请求
+
+1. 创建 `CognitiveServicesCredentials` 的实例。 对客户端进行实例化：
+    
+    ```python
+    client = NewsSearchAPI(CognitiveServicesCredentials(subscription_key))
+    ```
+
+2. 向新闻搜索 API 发送搜索查询并存储响应。
+
+    ```python
+    news_result = client.news.search(query=search_term, market="en-us", count=10)
+    ```
+
+## <a name="parse-the-response"></a>分析响应
+
+如果找到任何搜索结果，则输出第一个网页结果：
+
+```python
 if news_result.value:
     first_news_result = news_result.value[0]
     print("Total estimated matches value: {}".format(news_result.total_estimated_matches))
@@ -65,97 +81,9 @@ if news_result.value:
     print("First news provider: {}".format(first_news_result.provider[0].name))
 else:
     print("Didn't see any news result data..")
-
-```
-使用筛选器以及 `freshness` 和 `sortBy` 参数搜索关于“Artificial Intelligence”的最新新闻。 验证结果数，并输出第一个新闻项结果的 `totalEstimatedMatches`、`name`、`url`、`description`、`published time` 和 `name of provider`。
-```
-def news_search_with_filtering(subscription_key):
-
-    client = NewsSearchAPI(CognitiveServicesCredentials(subscription_key))
-
-    try:
-        news_result = client.news.search(
-            query="Artificial Intelligence",
-            market="en-us",
-            freshness="Week",
-            sort_by="Date"
-        )
-        print("\r\nSearch most recent news for query \"Artificial Intelligence\" with freshness and sortBy")
-
-        if news_result.value:
-            first_news_result = news_result.value[0]
-            print("News result count: {}".format(len(news_result.value)))
-            print("First news name: {}".format(first_news_result.name))
-            print("First news url: {}".format(first_news_result.url))
-            print("First news description: {}".format(first_news_result.description))
-            print("First published time: {}".format(first_news_result.date_published))
-            print("First news provider: {}".format(first_news_result.provider[0].name))
-        else:
-            print("Didn't see any news result data..")
-
-    except Exception as err:
-        print("Encountered exception. {}".format(err))
-
-```
-使用安全搜索搜索关于电影和电视娱乐的分类新闻。 验证结果数，并输出第一个新闻项结果的 `category`、`name`、`url`、`description`、`published time` 和 `name of provider`。
-```
-def news_category(subscription_key):
-
-    client = NewsSearchAPI(CognitiveServicesCredentials(subscription_key))
-
-    try:
-        news_result = client.news.category(
-            category="Entertainment_MovieAndTV",
-            market="en-us",
-            safe_search="strict"
-        )
-        print("\r\nSearch category news for movie and TV entertainment with safe search")
-
-        if news_result.value:
-            first_news_result = news_result.value[0]
-            print("News result count: {}".format(len(news_result.value)))
-            print("First news category: {}".format(first_news_result.category))
-            print("First news name: {}".format(first_news_result.name))
-            print("First news url: {}".format(first_news_result.url))
-            print("First news description: {}".format(first_news_result.description))
-            print("First published time: {}".format(first_news_result.date_published))
-            print("First news provider: {}".format(first_news_result.provider[0].name))
-        else:
-            print("Didn't see any news result data..")
-
-    except Exception as err:
-        print("Encountered exception. {}".format(err))
-
-
-```
-在必应中搜索新闻热门主题。  验证结果数，并输出第一个新闻结果的 `name`、`text of query`、`webSearchUrl`、`newsSearchUrl` 和 `image Url`。
-```
-def news_trending(subscription_key):
-
-    client = NewsSearchAPI(CognitiveServicesCredentials(subscription_key))
-
-    try:
-        trending_topics = client.news.trending(market="en-us")
-        print("\r\nSearch news trending topics in Bing")
-
-        if trending_topics.value:
-            first_topic = trending_topics.value[0]
-            print("News result count: {}".format(len(trending_topics.value)))
-            print("First topic name: {}".format(first_topic.name))
-            print("First topic query: {}".format(first_topic.query.text))
-            print("First topic image url: {}".format(first_topic.image.url))
-            print("First topic webSearchUrl: {}".format(first_topic.web_search_url))
-            print("First topic newsSearchUrl: {}".format(first_topic.news_search_url))
-        else:
-            print("Didn't see any topics result data..")
-
-    except Exception as err:
-        print("Encountered exception. {}".format(err))
-
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-[认知服务 Python SDK 示例](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)。
-
-
+> [!div class="nextstepaction"]
+[创建单页 Web 应用](tutorial-bing-news-search-single-page-app.md)

@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Log Analytics 中收集自定义日志 | Microsoft Docs
-description: Log Analytics 可以从 Windows 和 Linux 计算机上的文本文件中收集事件。  本文介绍如何定义新的自定义日志，以及这些日志在 Log Analytics 工作区中创建的记录的详细信息。
+title: 在 Log Analytics 中收集自定义日志 | Microsoft Docs
+description: Log Analytics 可以从 Windows 和 Linux 计算机上的文本文件中收集事件。  本文介绍如何定义新的自定义日志，以及这些日志在 Log Analytics 中创建的记录的详细信息。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -8,22 +8,20 @@ manager: carmonm
 editor: tysonn
 ms.assetid: aca7f6bb-6f53-4fd4-a45c-93f12ead4ae1
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/27/2018
+ms.date: 01/09/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 494d4f39965849ebef7dfbbacc7114dd95f48641
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 624091d4b5c1e17a301d9087f56ec5f9b0fecc5c
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336369"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198773"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Log Analytics 中的自定义日志
-Log Analytics 中的自定义日志数据源可以从 Windows 和 Linux 计算机上的文本文件中收集事件。 许多应用程序将信息记录到文本文件，而不是标准日志记录服务（例如 Windows 事件日志或 Syslog）。  收集后，使用 Log Analytics 的[自定义字段](../../log-analytics/log-analytics-custom-fields.md)功能可将日志中的每个记录解析到各个字段中。
+Log Analytics 中的自定义日志数据源可以从 Windows 和 Linux 计算机上的文本文件中收集事件。 许多应用程序将信息记录到文本文件，而不是标准日志记录服务（例如 Windows 事件日志或 Syslog）。 在收集后，可以将数据分析到查询中的各个字段，或者在收集期间将数据提取到各个字段。
 
 ![自定义日志收集](media/data-sources-custom-logs/overview.png)
 
@@ -37,7 +35,7 @@ Log Analytics 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 - 日志文件必须使用 ASCII 或 UTF-8 编码。  不支持其他格式，如 UTF-16。
 
 >[!NOTE]
->如果日志文件中存在重复项，Log Analytics 将收集这些项。  但是，搜索结果将不一致，其中过滤结果显示的事件比结果计数更多。  重要的是，你要验证日志以确定创建它的应用程序是否是导致该行为的原因，并在可能的情况下对其进行处理，然后再创建自定义日志收集定义。  
+>如果日志文件中存在重复项，Log Analytics 将收集这些项。  但是，查询结果将不一致，其中过滤结果显示的事件比结果计数更多。  重要的是，你要验证日志以确定创建它的应用程序是否是导致该行为的原因，并在可能的情况下对其进行处理，然后再创建自定义日志收集定义。  
 >
   
 >[!NOTE]
@@ -101,17 +99,14 @@ Log Analytics 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 ### <a name="step-5-validate-that-the-custom-logs-are-being-collected"></a>步骤 5. 验证是否正在收集自定义日志
 新自定义日志的初始数据可能需要一个小时才能在 Log Analytics 中出现。  它将从指定路径的日志中，收集在自定义日志的定义时间之后生成的条目。  它不会在自定义日志创建过程中保留上传的条目，但是它将收集它找到的日志文件中的现有条目。
 
-Log Analytics 开始从自定义日志收集后，它的记录就可用于日志搜索。  将为自定义日志指定的名称用作查询的“类型”。
+Log Analytics 开始从自定义日志收集后，它的记录将可用于日志查询。  将为自定义日志指定的名称用作查询中的**类型**。
 
 > [!NOTE]
-> 如果搜索缺少 RawData 属性，则可能需要关闭并重新打开浏览器。
->
->
+> 如果查询中缺少 RawData 属性，则可能需要关闭并重新打开浏览器。
+
 
 ### <a name="step-6-parse-the-custom-log-entries"></a>步骤 6. 分析自定义日志条目
-全部日志条目将存储在名为 **RawData** 的单个属性中。  你很可能希望将每个条目中信息的不同部分分离到存储在记录中的单个属性中。  使用 Log Analytics 的[自定义字段](../../log-analytics/log-analytics-custom-fields.md)功能执行此操作。
-
-此处不提供分析自定义日志条目的详细步骤。  请参考[自定义字段](../../log-analytics/log-analytics-custom-fields.md)文档，获取此信息。
+全部日志条目将存储在名为 **RawData** 的单个属性中。  你很可能希望将每个条目中信息的不同部分分离到每条记录的各个属性中。 请参考[在 Log Analytics 中分析文本数据](../log-query/parse-text.md)来了解用于将 **RawData** 分析到多个属性中的选项。
 
 ## <a name="removing-a-custom-log"></a>删除自定义日志
 在 Azure 门户中使用以下过程删除以前定义的自定义日志。
@@ -123,7 +118,7 @@ Log Analytics 开始从自定义日志收集后，它的记录就可用于日志
 ## <a name="data-collection"></a>数据收集
 Log Analytics 大概每隔 5 分钟就会从每个自定义日志中收集新条目。  代理将记录其在每个日志文件中的位置。  如果代理在一段时间内处于脱机状态，Log Analytics 将从其上次脱机的位置收集条目，即使这些条目创建于代理脱机期间。
 
-日志条目的全部内容写入到名为 **RawData** 的单个属性中。  创建自定义日志后，通过定义[自定义字段](../../log-analytics/log-analytics-custom-fields.md)，可以将此解析到可单独分析和搜索的多个属性中。
+日志条目的全部内容写入到名为 **RawData** 的单个属性中。  请参阅[在 Log Analytics 中分析文本数据](../log-query/parse-text.md)来了解用于将每个导入的日志条目分析到多个属性中的方法。
 
 ## <a name="custom-log-record-properties"></a>自定义日志记录属性
 自定义日志记录的类型与提供的日志名称一致，且具有下表中的属性。
@@ -132,18 +127,8 @@ Log Analytics 大概每隔 5 分钟就会从每个自定义日志中收集新条
 |:--- |:--- |
 | TimeGenerated |Log Analytics 收集记录的日期和时间。  如果日志使用基于时间的分隔符，则此时间是从条目中收集的时间。 |
 | SourceSystem |从中收集记录的代理类型。 <br> OpsManager – Windows 代理，直接连接或 System Center Operations Manager <br> Linux - 所有 Linux 代理 |
-| RawData |收集的条目的完整文本。 |
+| RawData |收集的条目的完整文本。 你很可能希望[将此数据分析到各个属性中](../log-query/parse-text.md)。 |
 | ManagementGroupName |System Center Operations Manager 代理的管理组名称。  对于其他代理，这是 AOI-\<工作区 ID\> |
-
-## <a name="log-searches-with-custom-log-records"></a>使用自定义日志记录进行日志搜索
-与任何其他数据源中的记录一样，自定义日志的记录存储在 Log Analytics 工作区中。  它们将具有与定义日志时提供的名称匹配的类型，因此可以在搜索中使用类型属性来检索从特定的日志收集的记录。
-
-下表提供了日志搜索的不同示例，它们从自定义日志中检索记录。
-
-| Query | Description |
-|:--- |:--- |
-| MyApp_CL |名为 MyApp_CL 的自定义日志的所有事件。 |
-| MyApp_CL &#124; where Severity_CF=="error" |来自名为 MyApp_CL 的自定义日志，且 *Severity_CF* 自定义字段值为 *error* 的所有事件。 |
 
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>添加自定义日志的演示示例
@@ -180,6 +165,18 @@ Log Analytics 大概每隔 5 分钟就会从每个自定义日志中收集新条
 
 ![具有自定义字段的日志查询](media/data-sources-custom-logs/query-02.png)
 
+## <a name="alternatives-to-custom-logs"></a>自定义日志的替代方法
+虽然如果数据符合列出的条件，则自定义日志很有用，但如下所示的情况需要其他策略：
+
+- 数据不符合所需的结构，如具有不同格式的时间戳。
+- 日志文件不符合要求，如文件编码或不受支持的文件夹结构。
+- 集合之前需要对数据进行预处理或筛选。 
+
+在不能使用自定义日志收集数据的情况下，请考虑下列备用策略：
+
+- 使用自定义脚本或其它方式将数据写入到 Log Analytics 收集的 [Windows 事件](data-sources-windows-events.md)或 [Syslog](data-sources-syslog.md)。 
+- 使用 [HTTP 数据收集器 API](data-collector-api.md) 将数据直接发送到 Log Analytics。 [使用 Azure 自动化 runbook 收集 Log Analytics 中的数据](runbook-datacollect.md)中提供了使用 Azure 自动化 runbook 的示例。
+
 ## <a name="next-steps"></a>后续步骤
-* 使用[自定义字段](../../log-analytics/log-analytics-custom-fields.md)将自定义日志中的条目解析为单个字段。
-* 了解[日志搜索](../../log-analytics/log-analytics-queries.md)以便分析从数据源和解决方案中收集的数据。
+* 请参阅[在 Log Analytics 中分析文本数据](../log-query/parse-text.md)来了解用于将每个导入的日志条目分析到多个属性中的方法。
+* 了解[日志查询](../log-query/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。

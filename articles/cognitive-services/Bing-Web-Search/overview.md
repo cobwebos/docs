@@ -1,27 +1,28 @@
 ---
-title: 什么是必应 Web 搜索？
+title: 什么是必应 Web 搜索 API？
 titleSuffix: Azure Cognitive Services
 description: 必应 Web 搜索 API 是一项 RESTful 服务，可以针对用户查询提供即时应答。 搜索结果可以轻松地进行配置，可以包括网页、图像、视频、新闻、翻译等。 结果以 JSON 形式提供，并取决于搜索相关性和必应 Web 搜索订阅。
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: overview
 ms.date: 08/14/2018
 ms.author: aahi
-ms.openlocfilehash: 738941afadbad318d383a119967e3f98c098a9c1
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec2018
+ms.openlocfilehash: 46d79b1ac6c56ba953eb0908e46338387b69ff1f
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52160709"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768217"
 ---
-# <a name="what-is-bing-web-search"></a>什么是必应 Web 搜索？
+# <a name="what-is-the-bing-web-search-api"></a>什么是必应 Web 搜索 API？
 
 必应 Web 搜索 API 是一项 RESTful 服务，可以针对用户查询提供即时应答。 搜索结果可以轻松地进行配置，可以包括网页、图像、视频、新闻、翻译等。 结果以 JSON 形式提供，并取决于搜索相关性和必应 Web 搜索订阅。
 
-此 API 适用于需要访问的所有内容都是与用户的搜索查询相关的应用程序。 如果要生成的应用程序只需特定类型的结果，可以考虑使用[必应图像搜索 API](../Bing-Image-Search/overview.md)、[必应视频搜索 API](../Bing-Video-Search/search-the-web.md) 或[必应新闻搜索 API](../Bing-News-Search/search-the-web.md)。 如需必应搜索 API 的完整列表，请参阅[认知服务 API](https://docs.microsoft.com/azure/cognitive-services#cognitive-services-apis)。
+此 API 适用于需要访问的所有内容都是与用户的搜索查询相关的应用程序。 如果要生成的应用程序只需特定类型的结果，可以考虑使用[必应图像搜索 API](../Bing-Image-Search/overview.md)、[必应视频搜索 API](../Bing-Video-Search/search-the-web.md) 或[必应新闻搜索 API](../Bing-News-Search/search-the-web.md)。 如需必应搜索 API 的完整列表，请参阅[认知服务 API](https://docs.microsoft.com/azure/cognitive-services)。
 
 想要了解其工作原理？ 尝试[必应 Web 搜索 API 演示](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/)。
 
@@ -29,7 +30,7 @@ ms.locfileid: "52160709"
 
 除了即时应答，必应 Web 搜索还提供其他特性和功能，用于为用户自定义搜索结果。
 
-| Feature | Description |
+| Feature | 说明 |
 |---------|-------------|
 | [以实时方式建议搜索词](../bing-autosuggest/get-suggested-search-terms.md) | 改进应用程序体验，方法是在用户键入时通过必应自动建议 API 显示建议的搜索词。 |
 | [通过内容类型筛选和限制结果](filter-answers.md) | 针对网页、图像、视频、安全搜索等使用筛选器和查询参数自定义和优化搜索结果。 |

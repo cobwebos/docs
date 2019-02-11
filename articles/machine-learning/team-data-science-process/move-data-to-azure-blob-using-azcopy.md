@@ -1,22 +1,22 @@
 ---
-title: 使用 AzCopy 将数据移入和移出 Azure Blob 存储 | Microsoft Docs
+title: 使用 AzCopy 移动 Blob 存储数据 - Team Data Science Process
 description: 使用 AzCopy 将数据移动到 Azure Blob 存储或从中移动数据
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 9e8b852b9f13e8f41daff27e305bc9c0cda78cb7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 3165aad326ad476eb5064f0b99acd8c3f5a036d8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442992"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474694"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azcopy"></a>使用 AzCopy 将数据移入和移出 Azure Blob 存储
 AzCopy 是一个命令行实用程序，用于将数据上传、复制到 Microsoft Azure Blob、文件和表存储以及从其中下载和复制数据。

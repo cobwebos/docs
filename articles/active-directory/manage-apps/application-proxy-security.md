@@ -4,23 +4,23 @@ description: 介绍使用 Azure AD 应用程序代理时的安全注意事项
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2017
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 985ea1f16cff010041d61d808280cb47f2b77aa9
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 0937ad12ad74209e84ee1316a090af8a6469a044
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618353"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55151611"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理远程访问应用时的安全注意事项
 
@@ -48,7 +48,7 @@ Azure AD 应用程序代理依赖于使用 Azure AD 安全令牌服务 (STS) 执
 
 使用[条件性访问](../conditional-access/overview.md)可以针对允许哪些流量访问后端应用程序来定义限制。 可以基于位置、身份验证强度和用户风险配置文件，创建限制登录的策略。
 
-还可以使用条件性访问配置多重身份验证策略，为用户身份验证再添一层安全保障。 
+还可以使用条件性访问配置多重身份验证策略，为用户身份验证再添一层安全保障。 此外，还可以通过 Azure AD 条件性访问将应用程序路由到 Microsoft Cloud App Security，以便通过[访问](https://docs.microsoft.com/en-us/cloud-app-security/access-policy-aad)和[会话](https://docs.microsoft.com/en-us/cloud-app-security/session-policy-aad)策略提供实时监视和控制
 
 ### <a name="traffic-termination"></a>流量终止
 
@@ -110,8 +110,8 @@ Azure AD 应用程序代理由两个部分组成：
 
 首次设置连接器时会发生以下流量事件：
 
-1. 在安装连接器的过程中，将连接器注册到服务。 系统会提示用户输入其 Azure AD 管理员凭据。 从此身份验证获取令牌，并将其提供给 Azure AD 应用程序代理服务。
-2. 应用程序代理服务评估该令牌。 它检查用户是否为租户中的公司管理员。 如果用户不是管理员，则终止此过程。
+1. 在安装连接器的过程中，将连接器注册到服务。 系统会提示用户输入其 Azure AD 管理员凭据。 从此身份验证获取令牌，并将其提供给 Azure AD 应用程序代理服务。
+2. 应用程序代理服务评估该令牌。 它检查用户是否为租户中的公司管理员。 如果用户不是管理员，则终止此过程。
 3. 连接器生成客户端证书请求，并将此请求连同令牌一起传递给应用程序代理服务。 该服务转而验证令牌并为客户端证书请求签名。
 4. 以后，连接器将使用此客户端证书来与应用程序代理服务通信。
 5. 连接器使用其客户端证书从服务执行初始的系统配置数据提取，并准备好接收请求。
@@ -176,7 +176,7 @@ Azure AD 应用程序代理由两个部分组成：
 
 收到响应后，连接器将与应用程序代理服务建立出站连接，以返回标头详细信息并开始流式传输返回的数据。
 
-#### <a name="5-the-service-streams-data-to-the-user"></a>5.服务将数据流式传输给用户。 
+#### <a name="5-the-service-streams-data-to-the-user"></a>5.服务将数据流式传输给用户。 
 
 此时可能会发生某些应用程序处理活动。 如果已将应用程序代理配置为转换应用程序中的标头或 URL，则会在此步骤中根据需要进行该项处理。
 

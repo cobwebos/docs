@@ -1,5 +1,5 @@
 ---
-title: 在 Linux 上的 Azure 应用服务中创建 Python Web 应用 | Microsoft Docs
+title: 在 Linux 上创建 Python 应用 - Azure 应用服务 | Microsoft Docs
 description: 数分钟内在 Linux 上的 Azure 应用服务中部署第一个 Python hello world 应用。
 services: app-service\web
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/09/2018
+ms.date: 01/23/2019
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 5f9d694d47c0bd0765af7871d7e535a4174c30ff
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec18
+ms.openlocfilehash: be78c91a4fb5c1e79e7b58620f65c9f17bfb4bae
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404708"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226479"
 ---
-# <a name="create-a-python-web-app-in-azure-app-service-on-linux-preview"></a>在 Linux 上的 Azure 应用服务（预览）中创建 Python Web 应用
+# <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>在 Linux 上的 Azure 应用服务（预览）中创建 Python 应用
 
 [Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门展示了如何使用 [Azure CLI](/cli/azure/install-azure-cli) 在 Linux 应用服务中，在内置 Python 映像（预览）之上部署 Python 应用。
 
@@ -34,7 +34,7 @@ ms.locfileid: "49404708"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本快速入门教程：
+完成本快速入门教程需要：
 
 * <a href="https://www.python.org/downloads/" target="_blank">安装 Python 3.7</a>
 * <a href="https://git-scm.com/" target="_blank">安装 Git</a>
@@ -48,9 +48,11 @@ git clone https://github.com/Azure-Samples/python-docs-hello-world
 cd python-docs-hello-world
 ```
 
+存储库包含一个 *application.py*，后者会告知应用服务：存储库包含 Flask 应用。 有关详细信息，请参阅[容器启动过程和自定义项](how-to-configure-python.md)。
+
 ## <a name="run-the-app-locally"></a>在本地运行应用
 
-在本地运行应用程序，这样就能了解将它部署到 Azure 时它的外观应该是什么样的。 打开终端窗口，使用以下命令安装所需的依赖项，并启动内置开发服务器。 
+在本地运行应用程序，以便你能了解将它部署到 Azure 时它的外观应该是什么样的。 打开终端窗口，使用以下命令安装所需的依赖项，并启动内置开发服务器。 
 
 ```bash
 # In Bash
@@ -85,17 +87,17 @@ flask run
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
-[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
 
-浏览到该站点查看使用内置映像新建的 Web 应用。 将 _&lt;应用名称>_ 替换为 Web 应用名称。
+浏览到该站点查看使用内置映像新建的应用。 将 _&lt;app name>_ 替换为你的应用名称。
 
 ```bash
 http://<app_name>.azurewebsites.net
 ```
 
-新 Web 应用应该如下所示：
+新应用应该如下所示：
 
-![空 Web 应用页面](media/quickstart-php/app-service-web-service-created.png)
+![空应用页](media/quickstart-php/app-service-web-service-created.png)
 
 [!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
@@ -129,11 +131,11 @@ To https://user2234@cephalin-python.scm.azurewebsites.net/cephalin-python.git
 http://<app_name>.azurewebsites.net
 ```
 
-Python 示例代码在包含内置映像的 Web 应用中运行。
+Python 示例代码在包含内置映像的 Linux 上的应用服务中运行。
 
 ![在 Azure 中运行应用的示例](media/quickstart-python/hello-world-in-browser.png)
 
-**祝贺你！** 现已将第一个 Python 应用部署到 Linux 应用服务。
+祝贺你！ 现已将第一个 Python 应用部署到 Linux 应用服务。
 
 ## <a name="update-locally-and-redeploy-the-code"></a>在本地更新并重新部署代码
 
@@ -154,19 +156,19 @@ git push azure master
 
 ![已更新的在 Azure 中运行应用的示例](media/quickstart-python/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>管理新 Azure Web 应用
+## <a name="manage-your-new-azure-app"></a>管理新的 Azure 应用
 
-转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理创建的 Web 应用。
+转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理已创建的应用。
 
-在左侧菜单中单击“应用服务”，然后单击 Azure Web 应用的名称。
+在左侧菜单中单击“应用程序服务”，然后单击 Azure 应用的名称。
 
-![在门户中导航到 Azure Web 应用](./media/quickstart-python/app-service-list.png)
+![在门户中导航到 Azure 应用](./media/quickstart-python/app-service-list.png)
 
-将看到 Web 应用的概述页。 在此处可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。
+这里我们可以看到应用的“概述”页。 并可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。
 
 ![Azure 门户中的应用服务页](media/quickstart-python/app-service-detail.png)
 
-左侧菜单提供用于配置应用的不同页面。 
+左侧菜单提供了用于配置应用的不同页面。 
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
@@ -178,7 +180,7 @@ Linux 上的应用服务中内置的 Python 映像目前处于预览状态，你
 > [将 Python 与 PostgreSQL 配合使用](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [配置自定义启动命令](how-to-configure-python.md#custom-startup-command)
+> [配置自定义启动命令](how-to-configure-python.md#customize-startup-command)
 
 > [!div class="nextstepaction"]
 > [故障排除](how-to-configure-python.md#troubleshooting)

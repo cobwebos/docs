@@ -4,11 +4,11 @@ description: 了解如何使用 Azure 门户管理设备。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: devices
+ms.subservice: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 0497cba4cae66e63f710c9678f6d87c2f9fb8fb1
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 6dc1467026089b922df4d1d8655d1dbdda56ffdc
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515074"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100132"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>如何使用 Azure 门户管理设备
 

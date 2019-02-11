@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: babad23743a0a3c9631c0bcf406de3521174264a
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 861a4d4d64f970a13aba68f831d2148f8a354ef4
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887201"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732152"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>如何排查“Azure Functions 运行时无法访问”的问题
 
@@ -37,6 +37,7 @@ ms.locfileid: "48887201"
 1. 存储帐户应用程序设置已删除
 1. 存储帐户凭据无效
 1. 无法访问存储帐户
+1. 每日执行配额已满
 
 ## <a name="storage-account-deleted"></a>存储帐户已删除
 
@@ -70,7 +71,7 @@ ms.locfileid: "48887201"
 
 ## <a name="storage-account-credentials-invalid"></a>存储帐户凭据无效
 
-如果重新生成存储密钥，则必须更新上面的“存储帐户”连接字符串。 [在此处阅读有关存储密钥管理的详细信息](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#manage-your-storage-account)
+如果重新生成存储密钥，则必须更新上面的“存储帐户”连接字符串。 [在此处阅读有关存储密钥管理的详细信息](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)
 
 ## <a name="storage-account-inaccessible"></a>无法访问存储帐户
 
@@ -79,12 +80,19 @@ Function App 必须能够访问存储帐户。 阻止 Function 访问存储帐�
 * 在没有正确网络规则的情况下部署到应用服务环境的 Function App 允许在存储帐户中传入和传出流量
 * 存储帐户防火墙已启用，但未配置为允许在 Function 中传入和传出流量。 [在此处阅读有关存储帐户防火墙配置的详细信息](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 
+## <a name="daily-execution-quota-full"></a>每日执行配额已满
+
+如果你配置了每日执行配额，则会暂时禁用 Function App，并且许多门户控件将不可用。 
+
+* 若要进行验证，请在门户中检查“平台功能”>“Function App 设置”。 如果超过配额，则将看到以下消息
+    * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
+* 删除配额并重启应用可解决此问题。
 
 ## <a name="next-steps"></a>后续步骤
 
 现在，Function App 已恢复，请查看快速入门和开发人员参考，以便重新启动并运行！
 
-* [创建第一个 Azure Function](functions-create-first-azure-function.md)  
+* [创建第一个 Azure 函数](functions-create-first-azure-function.md)  
   使用 Azure Functions 快速入门立即投入并创建第一个函数。 
 * [Azure Functions 开发人员参考](functions-reference.md)  
   提供有关 Azure Functions 运行时的更多技术信息，并为编码函数及定义触发器和绑定提供参考。
@@ -92,5 +100,5 @@ Function App 必须能够访问存储帐户。 阻止 Function 访问存储帐�
   介绍可用于测试函数的各种工具和技巧。
 * [如何缩放 Azure Functions](functions-scale.md)  
   讨论 Azure Functions 提供的服务计划（包括使用托管计划）以及如何选择合适的计划。 
-* [详细了解 Azure 应用服务](../app-service/app-service-web-overview.md)  
+* [详细了解 Azure 应用服务](../app-service/overview.md)  
   Azure Functions 利用 Azure 应用服务执行核心功能，例如部署、环境变量和诊断。 

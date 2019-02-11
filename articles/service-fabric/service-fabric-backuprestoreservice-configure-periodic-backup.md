@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: eeaa0e9a940f16c2416418959c98cd17e4816afc
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 14d7ae7cc347b771dfdb1209bc8d55c484d00db0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387627"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193720"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>了解 Azure Service Fabric 中的定期备份配置
 
@@ -27,7 +27,7 @@ ms.locfileid: "49387627"
 
 1. **创建备份策略**：在此步骤中，根据需求创建一个或多个备份策略。
 
-2. **启用备份**：在此步骤中，将在**步骤 1** 中创建的备份策略关联到所需的实体，即“应用程序”、“服务”或“分区”。
+2. **启用备份**：在此步骤中，将在“步骤 1”中创建的备份策略关联到所需的实体，即“应用程序”、“服务”或“分区”。
 
 ## <a name="create-backup-policy"></a>创建备份策略
 
@@ -45,7 +45,7 @@ ms.locfileid: "49387627"
 
 * **备份计划**：要执行定期备份的时间或频率。 可以将备份安排为按指定的时间间隔或者每日/每周在固定的时间进行。
 
-    1. **基于频率的备份计划**：如果需要按固定时间间隔执行数据备份，应使用此计划类型。 两个连续备份之间的所需时间间隔是使用 ISO8601 格式定义的。 基于频率的备份计划支持的最高时间间隔分辨率为分钟。
+    1. **基于频率的备份计划**：如果需要按固定时间间隔执行数据备份，应使用此计划类型。 两个连续备份之间的所需时间间隔是使用 ISO8601 格式定义的。 基于频率的备份计划支持的时间间隔分辨率为分钟。
         ```json
         {
             "ScheduleKind": "FrequencyBased",
@@ -54,7 +54,7 @@ ms.locfileid: "49387627"
         ```
 
     2. **基于时间的备份计划**：如果需要在每天或每周的特定时间执行数据备份，应使用此计划类型。 计划频率类型可以是每日或每周。
-        1. **“每日”基于时间的备份计划**：如果需要在每天的特定时间执行数据备份，应使用此计划类型。 若要指定此计划类型，请将 `ScheduleFrequencyType` 设置为 _Daily_，将 `RunTimes` 以 ISO8601 格式设置为每天中的所需时间的列表，随时间一起指定的日期将被忽略。 例如，`0001-01-01T18:00:00` 表示每天下午 6:00，忽略日期部分 _0001-01-01_。 下面的示例展示了在每天上午 9:00 和下午 6:00  点触发每日备份的配置。
+        1. **每日基于时间的备份计划**：如果需要在某天的特定时间执行数据备份，应使用此计划类型。 若要指定此计划类型，请将 `ScheduleFrequencyType` 设置为 _Daily_，将 `RunTimes` 以 ISO8601 格式设置为每天中的所需时间的列表，随时间一起指定的日期将被忽略。 例如，`0001-01-01T18:00:00` 表示每天下午 6:00，忽略日期部分 _0001-01-01_。 下面的示例展示了在每天上午 9:00 和下午 6:00  点触发每日备份的配置。
 
             ```json
             {
@@ -67,7 +67,7 @@ ms.locfileid: "49387627"
             }
             ```
 
-        2. **“每周”基于时间的备份计划**：如果需要在某天的特定时间执行数据备份，应使用此计划类型。 若要指定此计划类型，请将 `ScheduleFrequencyType` 设置为 _Weekly_，将 `RunDays` 设置为需要触发备份的星期几的列表，将 `RunTimes` 以 ISO8601 格式设置为每天中的所需时间的列表，随时间一起指定的日期将被忽略。 要触发定期备份的星期几的列表。 下面的示例展示了从星期一到星期五在上午 9:00 和下午 6:00  点触发每日备份的配置。
+        2. **每周基于时间的备份计划**：如果需要在某天的特定时间执行数据备份，应使用此计划类型。 若要指定此计划类型，请将 `ScheduleFrequencyType` 设置为 _Weekly_，将 `RunDays` 设置为需要触发备份的星期几的列表，将 `RunTimes` 以 ISO8601 格式设置为每天中的所需时间的列表，随时间一起指定的日期将被忽略。 要触发定期备份的星期几的列表。 下面的示例展示了从星期一到星期五在上午 9:00 和下午 6:00  点触发每日备份的配置。
 
             ```json
             {
@@ -98,7 +98,7 @@ ms.locfileid: "49387627"
         }
         ```
 
-    2. **文件共享**：当需要将数据备份存储在本地时，应当为“独立的”群集选择此存储类型。 描述此存储类型需要提供要将备份上传到的文件共享路径。 可以使用以下选项之一配置对文件共享的访问权限
+    2. **文件共享**：需要将数据备份存储在本地时，应为独立的群集选择此存储类型。 描述此存储类型需要提供要将备份上传到的文件共享路径。 可以使用以下选项之一配置对文件共享的访问权限
         1. _集成 Windows 身份验证_，这会将对文件共享的访问权限提供给属于 Service Fabric 群集的所有计算机。 在这种情况下，请设置以下字段来配置基于“文件共享”的备份存储。
 
             ```json
@@ -110,6 +110,7 @@ ms.locfileid: "49387627"
             ```
 
         2. _使用用户名和密码保护文件共享_，这会将对文件共享的访问权限提供给特定用户。 在指定文件共享存储时还可以指定辅助用户名和辅助密码来提供回退凭据，以防使用主用户名和主密码进行身份验证失败。 在这种情况下，请设置以下字段来配置基于“文件共享”的备份存储。
+
             ```json
             {
                 "StorageKind": "FileShare",
@@ -125,6 +126,20 @@ ms.locfileid: "49387627"
 > [!NOTE]
 > 请确保存储可靠性满足或高于备份数据的可靠性要求。
 >
+
+* **保留策略**：指定要在配置存储中保留备份的策略。 只支持基本保留策略。
+    1. **基本保留策略**：此保留策略允许通过删除不再需要的备份文件来确保最佳存储利用率。 可指定 `RetentionDuration` 来设置需要在存储中保留备份的时间跨度。 `MinimumNumberOfBackups` 是一个可选参数，可指定该参数以确保无论 `RetentionDuration` 如何始终保留指定数量的备份。 以下示例说明了要将备份保留 10 天的配置，并且不允许备份数量低于 20。
+
+        ```json
+        {
+            "RetentionPolicyType": "Basic",
+            "RetentionDuration" : "P10D",
+            "MinimumNumberOfBackups": 20
+        }
+        ```
+
+> [!IMPORTANT]
+> 由于运行时中的问题，请确保保留策略中的保留期配置为小于 24 天，否则将导致备份还原服务进入仲裁丢失后副本故障转移。
 
 ## <a name="enable-periodic-backup"></a>启用定期备份
 在定义备份策略来满足数据备份要求后，应当将备份策略与“应用程序”、“服务”或“分区”相关联。
@@ -179,6 +194,13 @@ ms.locfileid: "49387627"
 
 * 为“分区”禁用备份策略将停止因为分区处的备份策略而发生的所有定期数据备份。
 
+* 禁用实体（应用程序/服务/分区）的备份时，可将 `CleanBackup` 设置为 true 以删除配置存储中的所有备份。
+    ```json
+    {
+        "CleanBackup": true 
+    }
+    ```
+
 ## <a name="suspend--resume-backup"></a>暂停和恢复备份
 某些情况下可能需要临时暂停定期数据备份。 在这种情况下，可以根据需要在“应用程序”、“服务”或“分区”上使用“暂停备份”API。 定期备份暂停将在应用程序层次结构的子树中从应用暂停的点开始向下传递。 
 
@@ -195,6 +217,11 @@ ms.locfileid: "49387627"
 * 如果暂停是在“服务”上应用的，则应当使用[恢复服务备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup) API 进行恢复。
 
 * 如果暂停是在“分区”上应用的，则应当使用[恢复分区备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API 进行恢复。
+
+### <a name="difference-between-suspend-and-disable-backups"></a>暂停备份与禁用备份之间的差异
+当特定的应用程序、服务或分区不再需要备份时，应当禁用备份。 用户可以在将“清理备份”参数设置为 true 的情况下调用“禁用备份”请求，这意味着所有现有备份也将被删除。 但是，暂停将用于以下场景：当用户希望暂时关闭备份时，例如，当本地磁盘已满或者上传备份由于已知的网络问题等而失败时。 
+
+只能在先前显式启用备份的级别调用禁用，但是可以在当前直接或通过继承/层次结构启用备份的任何级别应用暂停。 例如，如果在某个应用程序级别启用了备份，则用户只能在该应用程序级别调用禁用，但是可以在该应用程序上以及该应用程序下的任何服务或分区上调用暂停。 
 
 ## <a name="auto-restore-on-data-loss"></a>在数据丢失时自动还原
 服务分区可能会由于意外故障而导致数据丢失。 例如，分区的三个副本中的两个（包括主副本）的磁盘数据已损坏或被擦除。
@@ -218,11 +245,11 @@ ms.locfileid: "49387627"
 
 下面是有关受支持变体的简要信息。
 
-- [获取应用程序备份列表](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist)：返回属于给定 Service Fabric 应用程序的每个分区的可用备份的列表。
+- [获取应用程序备份列表](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist)：返回属于给定 Service Fabric 应用程序的每个分区的可用备份列表。
 
-- [获取服务备份列表](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist)：返回属于给定 Service Fabric 服务的每个分区的可用备份的列表。
+- [获取服务备份列表](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist)：返回属于给定 Service Fabric 服务的每个分区的可用备份列表。
  
-- [获取分区备份列表](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist)：返回指定分区的可用备份的列表。
+- [获取分区备份列表](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist)：返回指定分区的可用备份列表。
 
 ## <a name="next-steps"></a>后续步骤
 - [备份还原 REST API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)

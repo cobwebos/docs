@@ -5,21 +5,21 @@ services: iot-accelerators
 author: avneet723
 ms.service: iot-accelerators
 ms.topic: include
-ms.date: 10/29/2018
+ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
-ms.openlocfilehash: 900d75f826830ea7336044a892506d3bec546e30
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 1f31189a83b6659371fcd0b34423f2fb681526c2
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283899"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55148081"
 ---
 ## <a name="download-the-source-code"></a>下载源代码
 
-远程监视源代码存储库中包含运行微服务 Docker 映像时所需的 Docker 配置文件。
+远程监视源代码存储库中包含运行微服务 Docker 映像时所需的源代码和 Docker 配置文件。
 
-若要克隆并创建本地版本的存储库，请通过命令行环境导航到本地计算机上的合适文件夹。 然后，运行下列命令集之一来克隆 .NET 或 Java 存储库：
+若要克隆并创建本地版本的存储库，请通过命令行环境导航到本地计算机上的合适文件夹。 然后，运行下列命令集之一来克隆 .NET 存储库：
 
 若要下载最新版本的 .NET 微服务实现，请运行：
 
@@ -29,17 +29,6 @@ git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-mon
 # To retrieve the latest submodules, run the following command:
 
 cd azure-iot-pcs-remote-monitoring-dotnet
-git submodule foreach git pull origin master
-```
-
-若要下载最新版本的 Java 微服务实现，请运行：
-
-```cmd/sh
-git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-java.git
-
-# To retrieve the latest submodules, run the following command:
-
-cd azure-iot-pcs-remote-monitoring-java
 git submodule foreach git pull origin master
 ```
 
@@ -70,11 +59,13 @@ git submodule foreach git pull origin master
 
     脚本使用解决方案名称在 Azure 中创建资源组。 此资源组包含解决方案加速器使用的 Azure 资源。 不再需要相关的资源后，可以删除此资源组。
 
-    此脚本还向本地计算机添加一组前缀为 **PCS** 的环境变量。 在本地启动 Docker 容器时，它们将从这些环境变量读取其配置值。
+    此脚本还向本地计算机添加一组前缀为 **PCS** 的环境变量。 在本地启动 Docker 容器或微服务项目时，它们将从这些环境变量读取其配置值。
 
-> [!TIP]
-> 脚本在完成后会显示环境变量的列表。 如果将这些值保存到 **services\\scripts\\local\\.env** 文件，则可以将它们用于将来的解决方案加速器部署。 请注意，运行 **docker-compose** 时，在本地计算机上设置的任何环境变量将覆盖 **services\\scripts\\local\\.env** 文件中的值。
+    > [!TIP]
+    > 在此脚本完成时，它还会将环境变量保存到一个名为 **\<your home folder\>\\.pcs\\\<solution name\>.env** 的文件中。 可以将它们用于将来的解决方案加速器部署。 请注意，运行 **docker-compose** 时，在本地计算机上设置的任何环境变量将覆盖 **services\\scripts\\local\\.env** 文件中的值。
+
+1. 退出命令行环境。
 
 ### <a name="use-existing-azure-resources"></a>使用现有的 Azure 资源
 
-如果已创建了所需的 Azure 资源，请在本地计算机上创建相应的环境变量。 你可能已在 **services\\scripts\\local\\.env** 文件中将这些值保存为你的上个部署的一部分。 请注意，运行 **docker-compose** 时，在本地计算机上设置的环境变量将覆盖 **services\\scripts\\local\\.env** 文件中的值。
+如果已创建了所需的 Azure 资源，请在本地计算机上创建相应的环境变量。 可以将这些变量保存在部署中的 **\<your home folder\>\\.pcs\\\<solution name\>.env** 文件中。 请注意，运行 **docker-compose** 时，在本地计算机上设置的环境变量将覆盖 **services\\scripts\\local\\.env** 文件中的值。

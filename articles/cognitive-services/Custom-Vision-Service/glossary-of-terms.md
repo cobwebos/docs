@@ -6,16 +6,16 @@ services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 05/08/2017
 ms.author: anroth
-ms.openlocfilehash: ae68db3de5d1f7eaacbe355133b9b7b61f145f04
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 8d3962459bc173e2db19cfa4728e7eb683511eb3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363405"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217129"
 ---
 # <a name="glossary-of-terms-for-custom-vision-service"></a>自定义影像服务的术语表
 

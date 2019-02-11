@@ -1,23 +1,24 @@
 ---
-title: 快速入门：分析本地图像 - REST、C# - 计算机视觉
+title: 快速入门：分析本地图像 - REST、C#
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 C# 来分析本地图像。
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: pafarley
-ms.openlocfilehash: 046d0e0bc860ad3751c52ab8714cec2055b8330a
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: 4de419abfa72f9423111ebc0a8ba5a0d2e8a96e7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51851800"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171807"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-c35-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 C&#35; 分析本地图像
+# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-c35-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 C# 分析本地图像
 
 在本快速入门中，你将使用计算机视觉的 REST API 分析本地存储的图像以提取视觉特征。 使用[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)方法，可以根据图像内容提取视觉特征。
 

@@ -15,18 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: erikre
-ms.openlocfilehash: e2f59771d7ae2c818fe2f4c93441bf27f8e312ae
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 1319c44dab465ec2d1fa5ead99e7f3cba8965850
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274098"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265628"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>面向企业客户的报告 API 概述
 报告 API 使企业 Azure 客户能够以编程方式将消耗数据和计费数据提取到首选的数据分析工具。 企业客户与 Azure 签订了[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)，以达成协商的货币承诺并获取自定义 Azure 资源定价的访问权限。
-
-> [!div class="nextstepaction"]
-> [帮助改进 Azure 计费文档](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="enabling-data-access-to-the-api"></a>实现对 API 的数据访问
 * **生成或检索 API 密钥** - 登录到 Enterprise Portal，并导航到“报告”>“下载使用情况”>“API 访问密钥”，生成或检索 API 密钥。

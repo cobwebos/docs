@@ -1,5 +1,5 @@
 ---
-title: 证书和 Azure 应用服务环境
+title: 证书和应用服务环境 – Azure
 description: 解释与 ASE 上的证书相关的多个主题
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: 3d417d560d8a88100f31def27c7db5f9b2493062
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.custom: seodec18
+ms.openlocfilehash: bcb0c806d916b9dff4461cad829a1d75e8df7cf6
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167609"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271889"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>证书和应用服务环境 
 
@@ -33,7 +34,7 @@ ASE 是单租户系统。 由于它是单一租户，某些只能在 ASE 中使�
 可以使用两个选项配置 ILB ASE 的证书。  可为 ILB ASE 设置通配符默认证书，或者在 ASE 中的单个 Web 应用上设置证书。  无论做出哪种选择，都必须正确配置以下证书属性：
 
 - **使用者：** 对于通配符 ILB ASE 证书，此属性必须设置为 *.[根域]。 如果为应用创建证书，则此属性应是 [应用名称].[根域]
-- **使用者可选名称**：此属性必须同时通配符 ILB ASE 证书的 *.[根域] 和 *.scm.[根域]。 如果为应用创建证书，则此属性应是 [应用名称].[根域] 和 [应用名称].scm.[根域]
+- **使用者可选名称：** 此属性必须同时包括通配符 ILB ASE 证书的 *.[根域] 和 *.scm.[根域]。 如果为应用创建证书，则此属性应是 [应用名称].[根域] 和 [应用名称].scm.[根域]
 
 作为第三种变体，可以创建在证书 SAN 中包含所有应用名称的 ILB ASE 证书，而不使用通配符引用。 此方法的问题在于，需要事先知道要放入 ASE 的应用名称，或者需要不断更新 ILB ASE 证书。
 

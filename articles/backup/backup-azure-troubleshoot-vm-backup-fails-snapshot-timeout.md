@@ -1,5 +1,5 @@
 ---
-title: Azure 备份故障排除：客户代理状态不可用
+title: 对 Azure 备份失败进行故障排除：来宾部署状态不可用
 description: 与代理、扩展和磁盘相关的 Azure 备份失败的症状、原因及解决方法。
 services: backup
 author: genlin
@@ -7,16 +7,16 @@ manager: cshepard
 keywords: Azure 备份；VM 代理；网络连接；
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 10/30/2018
+ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: d8b78551a762b4388344aaf3b44e7472127737ae
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: e96c637e3c01ccfc27afa967d830c7d0254d11e7
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977108"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104229"
 ---
-# <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure 备份故障排除：代理或扩展的问题
+# <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 
 本文提供故障排查步骤，可帮助解决与 VM 代理和扩展通信相关的 Azure 备份错误。
 
@@ -25,7 +25,7 @@ ms.locfileid: "51977108"
 ## <a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable - VM 代理无法与 Azure 备份通信
 
 **错误代码**：UserErrorGuestAgentStatusUnavailable <br>
-**错误消息**：VM 代理无法与 Azure 备份通信<br>
+**错误消息**：VM 代理无法与 Azure 备份进行通信<br>
 
 注册并计划备份服务的 VM 后，备份将通过与 VM 代理进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：<br>
 **原因 1：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
@@ -52,25 +52,24 @@ ms.locfileid: "51977108"
 * 如果每天触发多个备份，则也可能发生此问题。 目前，我们建议每天只创建一个备份，因为即时 RP 只保留 7 天，并且在任意给定时间，只能将 18 个即时 RP 与一个 VM 相关联。 <br>
 
 建议的操作：<br>
-若要解决此问题，请删除资源组中的锁，并重试触发清理的操作。
-
+若要解决此问题，请删除 VM 资源组中的锁，并重试触发清理的操作。
 > [!NOTE]
-    > 备份服务将创建一个单独的资源组而非 VM 的资源组来存储还原点集合。 建议客户不要锁定为备份服务使用而创建的资源组。 备份服务创建的资源组的命名格式为：AzureBackupRG_`<Geo>`_`<number>`，例如 AzureBackupRG_northeurope_1
+    > 备份服务将创建一个单独的资源组而非 VM 的资源组来存储还原点集合。 建议客户不要锁定为备份服务使用而创建的资源组。 备份服务创建的资源组的命名格式为：AzureBackupRG_`<Geo>`_`<number>` 例如：AzureBackupRG_northeurope_1
 
 **步骤 1：[删除还原点资源组中的锁](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **步骤 2：[清理还原点集合](#clean_up_restore_point_collection)**<br>
 
-## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured - 备份服务对密钥保管库没有足够的权限，无法备份已加密的 VM。
+## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured - 备份服务对密钥保管库没有足够的权限，无法备份已加密的 VM
 
 **错误代码**：UserErrorKeyvaultPermissionsNotConfigured <br>
-**错误消息**：备份服务对密钥保管库没有足够的权限，无法备份已加密的 VM。 <br>
+**错误消息**：备份服务对 Key Vault 没有足够的权限，无法备份已加密的 VM。 <br>
 
 要使备份操作在加密的 VM 上成功，该服务必须具有访问密钥保管库的权限。 这可以使用 [Azure 门户](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption#provide-permissions-to-backup)或通过 [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection) 来完成
 
 ## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - 由于虚拟机上无网络连接，快照操作失败
 
 **错误代码**：ExtensionSnapshotFailedNoNetwork<br>
-**错误消息**：由于虚拟机未建立网络连接，快照操作失败<br>
+**错误消息**：由于虚拟机上无网络连接，快照操作失败<br>
 
 注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：    
 **原因 1：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
@@ -91,7 +90,7 @@ ms.locfileid: "51977108"
 ## <a name="backupoperationfailed--backupoperationfailedv2---backup-fails-with-an-internal-error"></a>BackUpOperationFailed/BackUpOperationFailedV2 - 备份失败并出现内部错误
 
 **错误代码**：BackUpOperationFailed/BackUpOperationFailedV2 <br>
-**错误消息**：备份失败并出现内部错误 - 请在几分钟后重试操作 <br>
+**错误消息**：发生内部错误，备份失败 - 请在几分钟后重试操作 <br>
 
 注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
 **原因 1：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
@@ -106,14 +105,33 @@ ms.locfileid: "51977108"
 **错误代码**：UserErrorUnsupportedDiskSize <br>
 **错误消息**：当前 Azure 备份不支持大于 1023GB 的磁盘大小 <br>
 
-对磁盘大小大于 1023GB 的 VM 进行备份时，备份操作可能会失败，因为你的保管库未升级到 Azure VM 备份堆栈 V2。 升级到 Azure VM 备份堆栈 V2 后，最多可支持 4TB。 首先查看这些[优势](backup-upgrade-to-vm-backup-stack-v2.md)、[注意事项](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade)，然后根据这些[说明](backup-upgrade-to-vm-backup-stack-v2.md#upgrade)继续进行升级。  
+对磁盘大小大于 1023GB 的 VM 进行备份时，备份操作可能会失败，因为你的保管库未升级到即时还原。 升级到即时还原将提供高达 4TB 的支持，请参阅[此文](backup-instant-restore-capability.md#upgrading-to-instant-restore)。 升级后，订阅最多需要两个小时才能利用此功能。 重试该操作之前，请提供足够的缓冲区。  
 
 ## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported - 当前，Azure 备份不支持标准 SSD 磁盘
 
 **错误代码**：UserErrorStandardSSDNotSupported <br>
 **错误消息**：当前，Azure 备份不支持标准 SSD 磁盘 <br>
 
-当前，只有对于已升级到 Azure VM 备份堆栈 V2 的保管库，Azure 备份才支持标准 SSD 磁盘。 首先查看这些[优势](backup-upgrade-to-vm-backup-stack-v2.md)、[注意事项](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade)，然后根据这些[说明](backup-upgrade-to-vm-backup-stack-v2.md#upgrade)继续进行升级。
+目前，Azure 备份仅支持升级到[即时还原](backup-instant-restore-capability.md)的保管库的标准 SSD 磁盘。
+
+## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress - 无法启动备份，因为另一个备份操作当前正在进行中
+
+**错误代码**：UserErrorBackupOperationInProgress <br>
+**错误消息**：无法启动备份，因为另一个备份操作当前正在进行中<br>
+
+最近的备份作业失败，因为某个现有的备份作业正在进行。 在当前作业完成前，无法启动新的备份作业。 在触发或计划其他备份操作之前，请确保完成当前正在进行的备份操作。 若要检查备份作业状态，请执行以下步骤：
+
+1. 登录到 Azure 门户，单击“所有服务”。 键入“恢复服务”，然后单击“恢复服务保管库”。 此时会显示恢复服务保管库列表。
+2. 在恢复服务保管库列表中，选择在其中配置了备份的保管库。
+3. 在保管库仪表板菜单中，单击“备份作业”显示所有备份作业。
+
+    * 如果某个备份作业正在进行，请等待它完成或取消备份作业。
+        * 若要取消备份作业，请右键单击备份作业并单击“取消”或使用 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0)。
+    * 如果已在另一个保管库中重新配置了备份，则确保旧保管库中没有正在运行的备份作业。 如果存在，则取消备份作业。
+        * 若要取消备份作业，请右键单击备份作业并单击“取消”或使用 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0)
+4. 请重试备份操作。
+
+如果计划备份操作花费时间长且与下一个备份配置冲突，请查看[最佳做法](backup-azure-vms-introduction.md#best-practices)、[备份性能](backup-azure-vms-introduction.md#backup-performance)和[还原注意事项](backup-azure-vms-introduction.md#restore-considerations)。
 
 
 ## <a name="causes-and-solutions"></a>原因和解决方法
@@ -123,44 +141,19 @@ VM 无法根据部署要求访问 Internet。 或者现有的限制阻止访问 
 
 若要正常工作，备份扩展需要连接到 Azure 公共 IP 地址。 扩展将命令发送到 Azure 存储终结点 (HTTPS URL)，以管理 VM 快照。 如果扩展无法访问公共 Internet，则备份最终会失败。
 
-可以部署代理服务器来路由 VM 流量。
-##### <a name="create-a-path-for-https-traffic"></a>创建 HTTPS 流量路径
-
-1. 若有网络限制（例如，网络安全组），请部署 HTTPS 代理服务器来路由流量。
-2. 若要允许从 HTTPS 代理服务器访问 Internet，请将规则（若有）添加到网络安全组。
-
-若要了解如何为 VM 备份设置 HTTPS 代理，请参阅[准备环境以备份 Azure 虚拟机](backup-azure-arm-vms-prepare.md#establish-network-connectivity)。
-
-无论是备份的 VM 还是路由流量的代理服务器，都需要对 Azure 公共 IP 地址的访问权限
-
 ####  <a name="solution"></a>解决方案
-若要解决此问题，请尝试下列方法：
-
-##### <a name="allow-access-to-azure-storage-that-corresponds-to-the-region"></a>允许访问与该区域对应的 Azure 存储
-
-可以使用[服务标记](../virtual-network/security-overview.md#service-tags)允许与特定区域存储建立连接。 确保允许访问存储帐户的规则的优先级高于阻止 Internet 访问的规则。
-
-![使用区域存储标记的网络安全组](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
-
-若要了解配置服务标记的分步过程，请观看[此视频](https://youtu.be/1EjLQtbKm1M)。
-
-> [!WARNING]
-> 存储服务标记以预览版提供。 它们只在特定的区域中可用。 有关区域列表，请参阅[存储的服务标记](../virtual-network/security-overview.md#service-tags)。
-
-如果使用 Azure 托管磁盘，可能需要在防火墙上打开另一个端口 (8443)。
-
-此外，如果子网不具有 Internet 出站流量的路由，则需要将具有服务标记“Microsoft.Storage”的服务终结点添加到子网。
+若要解决网络问题，请参阅[建立网络连接](backup-azure-arm-vms-prepare.md#establish-network-connectivity)。
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>代理安装在 VM 中，但无响应（针对 Windows VM）
 
 #### <a name="solution"></a>解决方案
 VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理可帮助获取最新版本。 此外，还有助于与服务重新开始通信。
 
-1. 确定 Windows 来宾代理服务是否在 VM 服务 (services.msc) 中运行。 尝试重启 Windows 来宾代理服务并启动备份。    
-2. 如果“服务”中未显示 Windows 来宾代理服务，请在控制面板中转到“程序和功能”，确定是否已安装 Windows 来宾代理服务。
-4. 如果“程序和功能”中显示了 Windows 来宾代理，请将其卸载。
+1. 确定 Windows Azure 来宾代理服务是否在 VM 服务 (services.msc) 中运行。 尝试重启 Windows Azure 来宾代理服务并启动备份。    
+2. 如果服务中未显示 Windows Azure 来宾代理服务，请在“控制面板”中转到“程序和功能”，确定是否已安装 Windows Azure 来宾代理服务。
+4. 如果“程序和功能”中显示了 Windows Azure 来宾代理，请将其卸载。
 5. 下载并安装[最新版本的代理 MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 必须拥有管理员权限才能完成安装。
-6. 检查能否在服务中看到 Windows 来宾代理服务。
+6. 检查服务中是否显示了 Windows Azure 来宾代理服务。
 7. 运行按需备份：
     * 在门户中，选择“立即备份”。
 

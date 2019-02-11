@@ -1,20 +1,19 @@
 ---
-title: Azure Policy 示例 - 审核 SQL 数据库的透明数据加密
+title: 示例 - 审核 SQL 数据库的透明数据加密
 description: 如果 SQL 数据库未启用透明数据加密，则此示例策略会进行审核。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 10/29/2018
+ms.date: 01/23/2019
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: d7e8571c0b8301da953d84893ac48934a2392d55
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 8bc9fdb6d1008d6d57edaab0bdbf3892584f3be2
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229997"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853793"
 ---
 # <a name="audit-sql-database-encryption"></a>审核 SQL 数据库加密
 
@@ -37,9 +36,9 @@ ms.locfileid: "50229997"
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh.md)]
 
 ```azurepowershell-interactive
-$definition = Get-AzureRmPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/17k78e20-9358-41c9-923c-fb736d382a12
+$definition = Get-AzPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/17k78e20-9358-41c9-923c-fb736d382a12
 
-New-AzureRmPolicyAssignment -name "SQL TDE Audit" -PolicyDefinition $definition -Scope <scope>
+New-AzPolicyAssignment -name "SQL TDE Audit" -PolicyDefinition $definition -Scope <scope>
 ```
 
 ### <a name="clean-up-powershell-deployment"></a>清理 PowerShell 部署
@@ -47,7 +46,7 @@ New-AzureRmPolicyAssignment -name "SQL TDE Audit" -PolicyDefinition $definition 
 运行以下命令删除策略分配。
 
 ```azurepowershell-interactive
-Remove-AzureRmPolicyAssignment -Name "SQL TDE Audit" -Scope <scope>
+Remove-AzPolicyAssignment -Name "SQL TDE Audit" -Scope <scope>
 ```
 
 ## <a name="deploy-with-azure-cli"></a>使用 Azure CLI 进行部署

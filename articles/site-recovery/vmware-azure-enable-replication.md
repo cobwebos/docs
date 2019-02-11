@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure Site Recovery 为 VMware 灾难恢复启用 VMware VM 复制 | Microsoft Docs
 description: 本文介绍如何使用 Azure Site Recovery 启用 VMware VM 复制以便灾难恢复到 Azure。
-author: asgang
+author: mayurigupta13
 ms.service: site-recovery
-ms.date: 07/06/2018
+ms.date: 1/29/2019
 ms.topic: conceptual
-ms.author: asgang
-ms.openlocfilehash: c6c5aeece9e49a44654d63a7dc243991a62f2d9a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.author: mayg
+ms.openlocfilehash: 51086b894de7a02ec78302323512c7766dc9f4fb
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566346"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226327"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>为 VMware VM 启用到 Azure 的复制
 
@@ -39,7 +39,7 @@ ms.locfileid: "51566346"
 
 ## <a name="enable-replication"></a>启用复制
 
-1. 单击“步骤 2: 复制应用程序” > “源”。 首次启用复制后，请在保管库中单击“+复制”，对其他计算机启用复制。
+1. 单击“步骤 2：复制应用程序” > “源”。 首次启用复制后，请在保管库中单击“+复制”，对其他计算机启用复制。
 2. 在“源”页 >“源”中，选择配置服务器。
 3. 在“计算机类型”中，选择“虚拟机”或“物理机”。
 4. 在“vCenter/vSphere 虚拟机监控程序”中，选择管理 vSphere 主机的 vCenter 服务器，或选择该主机。 如果要复制物理机，则此设置无关紧要。
@@ -59,7 +59,7 @@ ms.locfileid: "51566346"
 8. 选择 Azure VM 在故障转移后启动时所要连接的 Azure 网络和子网。 该网络必须位于与恢复服务保管库相同的区域中。 选择“立即为选定的计算机配置”，将网络设置应用到选择保护的所有计算机。 选择“稍后配置”以选择每个计算机的 Azure 网络。 如果没有网络，需要[创建一个](#set-up-an-azure-network)。 若要使用资源管理器创建网络，请单击“新建”。 选择适用的子网，然后单击“确定”。
 
     ![启用复制目标设置](./media/vmware-azure-enable-replication/enable-rep3.png)
-9. 在“虚拟机” > “选择虚拟机”中，选择要复制的每个虚拟机。 只能选择可以启用复制的计算机。 然后单击“确定”。
+9. 在“虚拟机” > “选择虚拟机”中，选择要复制的每个虚拟机。 只能选择可以启用复制的计算机。 然后单击“确定”。 如果无法查看/选择特定虚拟机，请单击[此处](https://aka.ms/doc-plugin-VM-not-showing)解决此问题。
 
     ![启用复制 选择虚拟机](./media/vmware-azure-enable-replication/enable-replication5.png)
 10. 在“属性” > “配置属性”中，选择进程服务器用于在虚拟机上自动安装移动服务的帐户。  
@@ -86,18 +86,20 @@ ms.locfileid: "51566346"
 
 1. 单击“设置” > “复制的项”，然后选择虚拟机。 “概要”页显示有关虚拟机设置和状态的信息。
 2. 在“属性”中，可以查看 VM 的复制和故障转移信息。
-3. 在“计算和网络” > “计算属性”中，可以指定 Azure VM 名称和目标大小。 如有必要，请修改名称使其符合 Azure 要求。
+3. 在“计算和网络” > “计算属性”中，可以更改多个 VM 属性：
+* Azure VM 名称 - 如有必要，请修改名称使其符合 Azure 要求
+* 目标 VM 大小或类型 - 默认 VM 大小是根据源 VM 大小选择的。 在故障转移之前，你随时可以根据需要选择不同的 VM 大小。 请注意，VM 磁盘大小也取决于源磁盘大小，并且它只能在故障转移后进行更改。 详细了解[标准](../virtual-machines/windows/disks-standard-ssd.md#scalability-and-performance-targets)与[高级](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)磁盘大小和 IOPS。
 
     ![“计算和网络”属性](./media/vmware-azure-enable-replication/vmproperties.png)
 
-4.  可以选择虚拟机会在故障转移后成为其中一部分的[资源组](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines)。 在故障转移前，可以随时更改此设置。 故障转移后，如果将虚拟机迁移到其他资源组，则会中断该虚拟机的保护设置。
-5. 如果需要虚拟机在故障转移后成为某个[可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)的一部分，可以选择一个可用性集。 选择可用性集时，请记住：
+*  资源组 - 可以选择虚拟机在故障转移后会成为其中一部分的[资源组](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines)。 在故障转移前，可以随时更改此设置。 故障转移后，如果将虚拟机迁移到其他资源组，则会中断该虚拟机的保护设置。
+* 可用性集 - 如果需要虚拟机在故障转移后成为某个[可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)的一部分，可以选择一个可用性集。 选择可用性集时，请记住：
 
     * 仅会列出属于指定资源组的可用性集。  
     * 具有不同虚拟网络的虚拟机不能属于同一可用性集。
     * 仅大小相同的虚拟机可以属于同一可用性集。
-5. 还可查看和添加有关目标网络、子网和分配给 Azure VM 的 IP 地址的信息。
-6. 在“磁盘”中，可看到要复制的 VM 上的操作系统和数据磁盘。
+4. 还可查看和添加有关目标网络、子网和分配给 Azure VM 的 IP 地址的信息。
+5. 在“磁盘”中，可看到要复制的 VM 上的操作系统和数据磁盘。
 
 ### <a name="configure-networks-and-ip-addresses"></a>配置网络和 IP 地址
 
@@ -120,7 +122,7 @@ Microsoft 软件保障客户可以使用 Azure 混合权益来节省迁移到 Az
 
 ## <a name="common-issues"></a>常见问题
 
-* 每个磁盘的大小应小于 1 TB。
+* 每个磁盘的大小应小于 4 TB。
 * OS 磁盘应是基本磁盘而不是动态磁盘。
 * 对于第 2 代虚拟机/已启用 UEFI 的虚拟机，操作系统系列应是 Windows，并且启动盘应小于 300 GB。
 
@@ -128,4 +130,5 @@ Microsoft 软件保障客户可以使用 Azure 混合权益来节省迁移到 Az
 
 保护完成且虚拟机处于受保护状态后，可以尝试[故障转移](site-recovery-failover.md)，检查应用程序是否出现在 Azure 中。
 
-如果要禁用保护，请了解如何[清理注册和保护设置](site-recovery-manage-registration-and-protection.md)。
+* 若要禁用保护，请了解如何[清理注册和保护设置](site-recovery-manage-registration-and-protection.md)。
+* 了解如何[使用 Powershell 为虚拟机自动执行复制](vmware-azure-disaster-recovery-powershell.md)

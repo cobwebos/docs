@@ -1,23 +1,24 @@
 ---
-title: 对 LUIS 应用进行批处理测试 - 语言理解
-titleSuffix: Azure Cognitive Services
+title: 批处理测试
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 使用批处理测试持续优化应用程序并改进其语言理解能力。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/24/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 44abadc653c4679f37152e6592c882475b139bdd
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: a5e3d52727d9f86631760a6ba33bae2172bb532b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333898"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212527"
 ---
-# <a name="batch-testing-in-luis"></a>LUIS 中的批处理测试
+# <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>对 LUIS 门户中的 1000 个话语执行批处理测试
 
 批处理测试验证你的[活动](luis-concept-version.md#active-version)定型模型，以判断其预测准确性。 批处理测试可帮助你在图表中查看当前定型的模型中的每个意向和实体的准确性。 查看批处理测试结果，以采取适当操作来提升准确性，例如，如果应用经常无法标识正确意向，则向意向添加更多示例表达。
 
@@ -47,7 +48,7 @@ ms.locfileid: "52333898"
 
 批处理文件包含表达。 每个表达都必须具有任何你预测可被检测到的[机器学习实体](luis-concept-entity-types.md#types-of-entities)随附的预期意向预测。 
 
-## <a name="batch-syntax-template"></a>批处理语法模板
+## <a name="batch-syntax-template-for-intents-with-entities"></a>使用实体的意向的批处理语法模板
 
 使用以下模板启动批处理文件：
 
@@ -74,6 +75,22 @@ ms.locfileid: "52333898"
 ```
 
 批处理文件使用 startPos 和 endPos 属性来记录实体的开始和结束。 值从零开始，不得以空格开始或结束。 这与使用 startIndex 和 endIndex 属性的查询日志不同。 
+
+## <a name="batch-syntax-template-for-intents-without-entities"></a>不使用实体的意向的批处理语法模板
+
+使用以下模板启动没有实体的批处理文件：
+
+```JSON
+[
+  {
+    "text": "example utterance goes here",
+    "intent": "intent name goes here",
+    "entities": []
+  }
+]
+```
+
+如果不想测试实体，请包含 `entities` 属性并将值设置为空数组 `[]`。
 
 
 ## <a name="common-errors-importing-a-batch"></a>导入批处理文件的常见错误

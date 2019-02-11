@@ -3,19 +3,19 @@ title: Azure AD 身份验证方法
 description: Azure AD 中有哪些可用的 MFA 和 SSPR 身份验证方法
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: d8d7850e7d5253cfec4431fed3e09f4007995494
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7951044f850d93659ca458d3bcc46376e7e6b34a
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249687"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077346"
 ---
 # <a name="what-are-authentication-methods"></a>有哪些身份验证方法？
 

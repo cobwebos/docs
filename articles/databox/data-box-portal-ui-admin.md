@@ -6,24 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 08/28/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: f4ea5e282e9b915cffeac7daff07f5934be1a424
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 6b6d0d1a7e14035f7a1b7998ec4b3e68761539f5
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51974983"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158102"
 ---
-# <a name="use-azure-portal-to-administer-your-data-box-disk-preview"></a>使用 Azure 门户管理 Data Box 磁盘（预览版）
+# <a name="use-azure-portal-to-administer-your-data-box-disk"></a>使用 Azure 门户管理 Data Box Disk
 
 本文中的教程适用于 Microsoft Azure Data Box 磁盘预览版。 本文介绍了可对 Data Box 磁盘执行的一些复杂工作流和管理任务。 
 
 可以通过 Azure 门户管理 Data Box 磁盘。 本文重点介绍可以使用 Azure 门户执行的任务。 使用 Azure 门户可以管理订单、管理磁盘，以及跟踪订单在从头到尾的处理过程中的状态。
-
-> [!IMPORTANT]
-> Data Box 磁盘以预览版提供。 在部署此解决方案之前，请查看 [Azure 预览版服务的条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 
 ## <a name="cancel-an-order"></a>取消订单
 

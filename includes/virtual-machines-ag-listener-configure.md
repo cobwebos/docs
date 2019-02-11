@@ -4,18 +4,18 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 93aa77edaedbd3984e9e83ccfb7374422952e83a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: e24ed3921872a4c754967841634ebab23b972e59
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227420"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55736198"
 ---
 可用性组侦听器是 SQL Server 可用性组侦听的 IP 地址和网络名称。 若要创建可用性组侦听器，请执行以下操作：
 
 1. <a name="getnet"></a>获取群集网络资源的名称。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 使用 RDP 连接到托管主副本的 Azure 虚拟机。 
+    a. 使用 RDP 连接到托管主副本的 Azure 虚拟机。 
 
     b. 打开故障转移群集管理器。
 
@@ -26,7 +26,7 @@ ms.locfileid: "50227420"
 1. <a name="addcap"></a>添加客户端接入点。  
     客户端接入点是应用程序用来连接到可用性组中数据库的网络名称。 可在故障转移群集管理器中创建客户端接入点。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 展开群集名称，并单击“角色”。
+    a. 展开群集名称，并单击“角色”。
 
     b. 在“角色”窗格中，右键单击可用性组名称，并选择“添加资源” > “客户端接入点”。
 
@@ -41,7 +41,7 @@ ms.locfileid: "50227420"
 
 1. <a name="congroup"></a>配置可用性组的 IP 资源。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“资源”选项卡，并展开创建的客户端接入点。  
+    a. 单击“资源”选项卡，并展开创建的客户端接入点。  
     客户端接入点处于脱机状态。
 
    ![客户端接入点](./media/virtual-machines-ag-listener-configure/94-newclientaccesspoint.png) 
@@ -58,7 +58,7 @@ ms.locfileid: "50227420"
 
 1. <a name = "dependencyGroup"></a>使 SQL Server 可用性组资源依赖于客户端接入点。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在故障转移群集管理器中，单击“角色”，并单击可用性组。
+    a. 在故障转移群集管理器中，单击“角色”，并单击可用性组。
 
     b. 在“资源”选项卡的“其他资源”下，右键单击可用性资源组，并单击“属性”。 
 
@@ -70,7 +70,7 @@ ms.locfileid: "50227420"
 
 1. <a name="listname"></a>使客户端接入点资源依赖于 IP 地址。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在故障转移群集管理器中，单击“角色”，并单击可用性组。 
+    a. 在故障转移群集管理器中，单击“角色”，并单击可用性组。 
 
     b. 在“资源”选项卡中，右键单击“服务器名称”下面的客户端接入点资源，并单击“属性”。 
 
@@ -86,7 +86,7 @@ ms.locfileid: "50227420"
 
 1. <a name="setparam"></a>在 PowerShell 中设置群集参数。
 
-  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将以下 PowerShell 脚本复制到某个 SQL Server 实例。 请更新环境的变量。
+  a. 将以下 PowerShell 脚本复制到某个 SQL Server 实例。 请更新环境的变量。
 
   - `$ListenerILBIP` 是在 Azure 负载均衡器上为可用性组侦听程序创建的 IP 地址。
     
@@ -120,7 +120,7 @@ ms.locfileid: "50227420"
 
 1. <a name="setwsfcparam"></a>在 PowerShell 中设置群集参数。
   
-  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将以下 PowerShell 脚本复制到某个 SQL Server 实例。 请更新环境的变量。
+  a. 将以下 PowerShell 脚本复制到某个 SQL Server 实例。 请更新环境的变量。
 
   - `$ClusterCoreIP` 是在 Azure 负载均衡器上为 WSFC 核心群集资源创建的 IP 地址。 它不同于可用性组侦听程序的 IP 地址。
 
@@ -130,7 +130,7 @@ ms.locfileid: "50227420"
   $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
   $IPResourceName = "<ClusterIPResourceName>" # the IP Address resource name
   $ClusterCoreIP = "<n.n.n.n>" # the IP Address of the Cluster IP resource. This is the static IP address for the load balancer you configured in the Azure portal.
-  [int]$ClusterProbePort = <nnnnn> # The probe port from the WSFCEndPointprobe in the Azure portal. This port must be different from the probe port for the availability grouop listener probe port.
+  [int]$ClusterProbePort = <nnnnn> # The probe port from the WSFCEndPointprobe in the Azure portal. This port must be different from the probe port for the availability group listener probe port.
   
   Import-Module FailoverClusters
   

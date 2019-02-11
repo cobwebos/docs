@@ -1,21 +1,22 @@
 ---
-title: 将 Azure Blob 存储事件路由到自定义 Web 终结点 | Microsoft Docs
-description: 使用 Azure 事件网格订阅 Blob 存储事件。
+title: 将 Azure Blob 存储事件发送到 Web 终结点 - Azure CLI | Microsoft Docs
+description: 使用 Azure 事件网格订阅 Blob 存储事件。 将事件发送到 WebHook。 处理 Web 应用程序中的事件。
 services: storage,event-grid
 author: cbrooksmsft
 ms.author: cbrooks
-ms.date: 08/23/2018
+ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: storage
-ms.component: blobs
-ms.openlocfilehash: 78ee6f198bf4e16e3b2b0deb8fdb0b68c0fe9b73
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.subservice: blobs
+ms.custom: seodec18
+ms.openlocfilehash: f38c6fec7ff98e7d5c46661741ff036edb791673
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735075"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756370"
 ---
-# <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-azure-cli"></a>利用 Azure CLI 将 Blob 存储事件路由到自定义 Web 终结点
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>快速入门：使用 Azure CLI 将存储事件路由到 Web 终结点
 
 Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 Azure CLI 订阅 Blob 存储事件，然后触发可查看结果的事件。
 
@@ -32,13 +33,13 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
 如果选择在本地安装并使用 CLI，本文需要运行最新版的 Azure CLI（2.0.24 或更高版本）。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-如果不使用 Cloud Shell，必须先使用 `az login` 进行登录。
+如果不使用 Cloud Shell，则必须先使用 `az login` 登录。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
 事件网格主题是 Azure 资源，必须放置在 Azure 资源组中。 该资源组是在其中部署和管理 Azure 资源的逻辑集合。
 
-使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 
+使用 [az group create](/cli/azure/group) 命令创建资源组。 
 
 下面的示例在 westcentralus 位置创建了一个名为 `<resource_group_name>` 的资源组。  将 `<resource_group_name>` 替换为资源组的唯一名称。
 
@@ -117,7 +118,7 @@ touch testfile.txt
 az storage blob upload --file testfile.txt --container-name testcontainer --name testfile.txt
 ```
 
-你已经触发事件，而事件网格则已将消息发送到你在订阅时配置的终结点。 查看 Web 应用以查看刚刚发送的事件。
+现已触发事件，并且事件网格已将消息发送到订阅时配置的终结点。 查看 Web 应用以查看刚刚发送的事件。
 
 
 ```json

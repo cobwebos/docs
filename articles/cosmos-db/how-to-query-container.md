@@ -1,26 +1,25 @@
 ---
 title: 在 Azure Cosmos DB 中查询容器
 description: 了解如何在 Azure Cosmos DB 中查询容器
-services: cosmos-db
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 5d64aa8b50cdde23d1bb8980510cfac202204f9a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 08d9978134ce214a468691ec367fb1797f6e86fc
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262448"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457745"
 ---
-# <a name="query-containers-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中查询容器
+# <a name="query-an-azure-cosmos-container"></a>查询 Azure Cosmos 容器
 
 本文介绍如何在 Azure Cosmos DB 中查询容器（集合、图形、表）。
 
 ## <a name="in-partition-query"></a>分区中查询
 
-从容器中查询数据时，Cosmos DB 会自动将查询路由到筛选器中所指定分区键值（如果有）对应的分区。 例如，此查询将只路由到包含分区键“XMS-0001”的分区。
+从容器中查询数据时，如果查询指定了分区键筛选器，Azure Cosmos DB 会自动将查询路由到筛选器中所指定分区键值对应的分区。 例如，以下查询将路由到 DeviceId 分区，该分区保存与分区键值“XMS-0001”对应的所有文档。
 
 ```csharp
 // Query using partition key into a class called, DeviceReading

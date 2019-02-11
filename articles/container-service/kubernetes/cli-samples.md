@@ -1,22 +1,24 @@
 ---
-title: Azure 容器服务脚本示例
+title: （已弃用）Azure 容器服务脚本示例
 description: Azure 容器服务脚本示例
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: sample
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 704a9ddfc6cb880c3e2edc887d08c489c0b3fd95
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b64f7af8eda9a4f62463486b00480efbd8cffe57
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32161848"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992567"
 ---
-# <a name="azure-cli-samples-for-azure-container-service"></a>用于 Azure 容器服务的 Azure CLI 示例
+# <a name="deprecated-azure-cli-samples-for-azure-container-service"></a>（已弃用）用于 Azure 容器服务的 Azure CLI 示例
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 下表包含指向使用 Azure CLI 生成的 bash 脚本的链接。
 

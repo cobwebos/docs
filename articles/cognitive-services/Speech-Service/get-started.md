@@ -1,21 +1,22 @@
 ---
 title: 免费试用语音服务
 titleSuffix: Azure Cognitive Services
-description: 了解可以如何免费试用语音服务。
+description: 以简单、经济的方式开始使用语音服务。 可利用 30 天免费试用了解此服务的功能并确定它能否满足应用程序需求。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: erhopf
-ms.openlocfilehash: 4e29f2e77ad2b4e993fbe6a39b90325a0738f538
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 2317341d508f6e4f681c396f649179691f5485f3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471384"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208885"
 ---
 # <a name="try-the-speech-service-for-free"></a>免费试用语音服务
 
@@ -36,7 +37,7 @@ ms.locfileid: "49471384"
 1. 选择“语音 API”选项卡。
 
    ![“语音服务”选项卡](media/index/try-speech-api-free-trial1.png)
-   
+
 1. 在“语音服务”下，选择“获取 API 密钥”按钮。
 
    ![API 密钥](media/index/try-speech-api-free-trial2.png)

@@ -1,22 +1,22 @@
 ---
-title: Azure 容器实例概述
-description: 了解 Azure 容器实例
+title: 什么是 Azure 容器实例？
+description: Azure 容器实例服务提供了在 Azure 中运行隔离容器的最简捷方式，既无需管理虚拟机，也不必采用更高级的业务流程协调程序。
 services: container-instances
 author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
-ms.date: 10/02/2018
+ms.date: 11/30/2018
 ms.author: seanmck
-ms.custom: mvc
-ms.openlocfilehash: 33d6d89e91ecdec00c1b17ecddf91128e9d07526
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.custom: seodec18, mvc
+ms.openlocfilehash: ba454965ff2bb78ebe526e71d9280200b1f4b08b
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802094"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187188"
 ---
-# <a name="azure-container-instances"></a>Azure 容器实例
+# <a name="what-is-azure-container-instances"></a>什么是 Azure 容器实例？
 
 容器正在变成对云应用程序执行打包、部署和管理操作的首选方式。 Azure 容器实例提供了在 Azure 中运行容器的最简捷方式，既无需管理任何虚拟机，也不必采用更高级的服务。
 
@@ -37,6 +37,8 @@ ms.locfileid: "48802094"
 ## <a name="custom-sizes"></a>自定义大小
 
 容器通常优化成只运行单个应用程序，但此类应用程序的具体需求可能差异很大。 Azure 容器实例允许确切地指定 CPU 核心数和内存量，因此可提供最佳的利用方式。 费用取决于具体请求并按秒计收，因此可以根据实际需求来严格控制花费。
+
+对于计算密集型作业（如机器学习），Azure 容器实例可以安排 Linux 容器使用 NVIDIA Tesla [GPU 资源](container-instances-gpu.md)（预览版）。
 
 ## <a name="persistent-storage"></a>持久性存储
 
@@ -59,7 +61,7 @@ Azure 容器实例支持对共享主机、本地网络、存储和生命周期�
 目前以预览版提供，Azure 容器实例的此功能允许[将容器实例部署到 Azure 虚拟网络中](container-instances-vnet.md)。 通过将容器实例部署到虚拟网络的子网中，这些实例可以与虚拟网络中的其他资源（包括本地资源）进行安全通信（通过 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)或 [ExpressRoute](../expressroute/expressroute-introduction.md)）。
 
 > [!IMPORTANT]
-> 容器组到虚拟网络的部署目前处于预览状态，并且某些[限制适用](container-instances-vnet.md#preview-limitations)。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
+> Azure 容器实例的某些功能处于预览状态，并且某些[限制适用](container-instances-vnet.md#preview-limitations)。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，这些功能的某些方面可能会有所更改。
 
 ## <a name="next-steps"></a>后续步骤
 

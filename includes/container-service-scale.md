@@ -4,13 +4,15 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: 15f582e80c486a1d12f98e34063af7af84ed6f0a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 2ed74a4ba19af3a441bcf26a48890f033e6c365f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571803"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002248"
 ---
+[!INCLUDE [ACS deprecation](container-service-deprecation.md)]
+
 [部署 Azure 容器服务群集](../articles/container-service/dcos-swarm/container-service-deployment.md)后，可能需要更改代理节点数。 例如，可能需要更多代理，以便运行更多容器应用程序或实例。 
 
 可以使用 Azure 门户或 Azure CLI 更改 DC/OS、Docker Swarm 或 Kubernetes 群集中的代理节点数。 

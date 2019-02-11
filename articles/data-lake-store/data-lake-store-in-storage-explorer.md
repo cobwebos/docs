@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: 537c94976dbb4f7753b7fafb3b6c94e97cc2cc17
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 6cc4a5d5bfc2056f2517bcbcecb19b9f6b2f437a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126320"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966256"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>使用存储资源管理器管理 Azure Data Lake Storage Gen1 资源
 
@@ -30,7 +30,7 @@ ms.locfileid: "46126320"
 ## <a name="prerequisites"></a>先决条件
 若要完成本文中的步骤，需要符合以下先决条件：
 
-*   Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial)。
+*   Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial)。
 *   Data Lake Storage Gen1 帐户。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)。
 
 ## <a name="install-storage-explorer"></a>安装存储资源管理器
@@ -136,7 +136,7 @@ Data Lake Storage Gen1 帐户的资源包含文件夹和文件。
 
    ![显示上传正在进行的对话框](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-drag.png) 
 
-> [!NOTE] 
+> [!NOTE]
 > 直接在本地计算机上拖动文件夹和文件即可开始上传。 
        
 ### <a name="download-folders-or-files-to-your-local-computer"></a>将文件夹或文件下载到本地计算机
@@ -164,7 +164,7 @@ Data Lake Storage Gen1 帐户的资源包含文件夹和文件。
 
 ![用于复制文件夹的选择](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-copy-paste.png)
 
-> [!NOTE] 
+> [!NOTE]
 > 不支持跨存储类型进行的复制/粘贴操作。 可以复制 Data Lake Storage Gen1 文件夹或文件，然后将其粘贴到另一 Data Lake Storage Gen1 帐户中。 但是，不能将 Data Lake Storage Gen1 文件夹或文件复制粘贴到 Azure Blob 存储中，反之亦然。
 > 
 > 复制/粘贴操作的工作原理是，先将文件夹或文件下载到本地计算机，然后再将其上传到目标。 此工具不在后端执行该操作。 大型文件的复制/粘贴操作速度较慢。 目前正在对高性能的文件复制/移动进行优化。

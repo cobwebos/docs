@@ -1,10 +1,10 @@
 ---
-title: 解释 Azure Monitor（预览版）中的 Azure Active Directory 登录日志架构 | Microsoft Docs
+title: Azure Monitor（预览版）中的 Azure Active Directory 登录日志架构 | Microsoft Docs
 description: 介绍在 Azure Monitor（预览版）中使用的 Azure AD 登录日志架构
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4a610780d11452a8207a1108e4469bc9de62ecb8
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 3c67446f1e828ae528f2e4eb4a0292da2c993ded
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51620912"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156286"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor-preview"></a>解释 Azure Monitor（预览版）中的 Azure AD 登录日志架构
 
@@ -150,7 +150,7 @@ ms.locfileid: "51620912"
 
 ## <a name="field-descriptions"></a>字段说明
 
-| 字段名 | Description |
+| 字段名 | 说明 |
 |------------|-------------|
 | 时间 | 日期和时间 (UTC)。 |
 | ResourceId | 此值未映射，可以放心地忽略此字段。  |
@@ -172,4 +172,4 @@ ms.locfileid: "51620912"
 ## <a name="next-steps"></a>后续步骤
 
 * [解释 Azure Monitor 中的审核日志架构](reference-azure-monitor-audit-log-schema.md)
-* [详细了解 Azure 诊断日志](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+* [详细了解 Azure 诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)

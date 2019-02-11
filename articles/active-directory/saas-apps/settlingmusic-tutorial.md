@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Settling music 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Settling music 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Settling music 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 6f86a8a2-4bd0-40cc-b1b4-752fce123328
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: jeedes
-ms.openlocfilehash: fda6ca2efb670c8087252428e417a3e0901fa748
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 900254e42410aafa0d8e58048c7d88efa94dfed5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449057"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178539"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-settling-music"></a>教程：Azure Active Directory 与 Settling music 的集成
+# <a name="tutorial-azure-active-directory-integration-with-settling-music"></a>教程：Azure Active Directory 与 Settling music 集成
 
 本教程介绍了如何将 Settling music 与 Azure Active Directory (Azure AD) 进行集成。
 
@@ -189,7 +189,7 @@ ms.locfileid: "39449057"
  
 ### <a name="create-a-settling-music-test-user"></a>创建 Settling music 测试用户
 
-在本部分中，将在 Settling music 中创建一个名为 Britta Simon 的用户。 与 [Settling music Client 支持团队](https://rakurakuseisan.jp/)协作，在 Settling music 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Settling music 中创建一个名为 Britta Simon 的用户。 与  [Settling music 客户端支持团队](https://rakurakuseisan.jp/)协作，将用户添加到 Settling music 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -226,12 +226,12 @@ ms.locfileid: "39449057"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Settling music 磁贴时，应当会自动登录到 Settling music 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 8e1494594546c432123b8b1b98d646e8637eea99
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 8d0e00223fcd55a1049900b502b52745837bf8fc
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622833"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462550"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>使用 PowerShell（资源管理器）设置 Hyper-V VM 到辅助站点的灾难恢复
 
@@ -276,4 +276,4 @@ ms.locfileid: "51622833"
 
 ## <a name="next-steps"></a>后续步骤
 
-[详细了解](/powershell/module/azurerm.recoveryservices.backup/#recovery)如何将 Site Recovery 和资源管理器 PowerShell cmdlet 配合使用。
+[详细了解](/powershell/module/azurerm.recoveryservices.backup/)如何将 Site Recovery 和资源管理器 PowerShell cmdlet 配合使用。

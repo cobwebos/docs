@@ -4,9 +4,9 @@ description: 如何使用组策略为我的应用门户部署 Internet Explorer 
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9ebd949460f826c9529b9f392bc4a7f4918ee170
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: cfff06c193ea4dd77c40201a59673428e60b9fac
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715034"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188756"
 ---
 # <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Internet Explorer 访问面板扩展故障排除
 本文将帮助用户解决以下问题：
@@ -28,7 +28,7 @@ ms.locfileid: "44715034"
 * 使用 Internet Explorer 时无法通过我的应用门户访问应用。
 * 即使已安装软件，也看到“安装软件”消息。
 
-如果是管理员，另请参阅[如何使用组策略部署 Internet Explorer 的访问面板扩展](deploy-access-panel-browser-extension.md)
+如果你是管理员，另请参阅：[如何使用组策略部署 Internet Explorer 的访问面板扩展](deploy-access-panel-browser-extension.md)
 
 ## <a name="run-the-diagnostic-tool"></a>运行诊断工具
 可以下载并运行访问面板诊断工具，使用访问面板扩展来诊断安装问题：

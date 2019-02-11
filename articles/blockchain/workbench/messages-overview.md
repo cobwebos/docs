@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/12/2018
+ms.date: 1/8/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: f8f3584475415cf9ca19458f6da78d34df37f438
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 34731bb96a83a901b3fc1a59ce1846083d69bfd7
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614355"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103377"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench 消息集成
 
@@ -307,7 +307,7 @@ Blockchain Workbench 返回的事务提交 **create contract action** 响应示�
 
 ### <a name="input-api-error-codes-and-messages"></a>输入 API 错误代码和消息
 
-**错误代码 4000：错误的请求错误**
+**错误代码 4000:错误的请求错误**
 - connectionId 无效
 - CreateUserRequest 反序列化失败
 - CreateContractRequest 反序列化失败
@@ -319,12 +319,12 @@ Blockchain Workbench 返回的事务提交 **create contract action** 响应示�
 - 合同 {由账本标识符标识} 没有函数 {工作流函数名称}
 - UserChainIdentifier 不存在
 
-**错误代码 4090：冲突错误**
+**错误代码 4090:冲突错误**
 - 用户已存在
 - 合同已存在
 - 合同操作已存在
 
-**错误代码 5000：内部服务器错误**
+**错误代码 5000:内部服务器错误**
 - 异常消息
 
 ## <a name="event-notifications"></a>事件通知
@@ -345,8 +345,8 @@ Blockchain Workbench 返回的事务提交 **create contract action** 响应示�
 
 ### <a name="consuming-event-grid-events-with-logic-apps"></a>配合逻辑应用使用事件网格事件
 
-1.  在 Azure 门户中创建一个新的 **Azure 逻辑应用**。
-2.  在门户中打开 Azure 逻辑应用时，系统会提示选择触发器。 选择“Azure 事件网格 - 发生资源事件时”。
+1. 在 Azure 门户中创建一个新的 **Azure 逻辑应用**。
+2. 在门户中打开 Azure 逻辑应用时，系统会提示选择触发器。 选择“Azure 事件网格 - 发生资源事件时”。
 3. 显示工作流设计器后，系统会提示登录。
 4. 选择订阅。 资源为 **Microsoft.EventGrid.Topics**。 从 Azure Blockchain Workbench 资源组的资源名称中选择“资源名称”。
 5. 从 Blockchain Workbench 的资源组中选择“事件网格”。
@@ -355,11 +355,11 @@ Blockchain Workbench 返回的事务提交 **create contract action** 响应示�
 
 可以使用服务总线主题通知用户有关 Blockchain Workbench 中发生的事件。 
 
-1.  浏览到 Workbench 资源组中的“服务总线”。
-2.  选择“主题”。
-3.  选择“workbench-external”。
-4.  创建此主题的新订阅。 获取该订阅的密钥。
-5.  创建一个程序，用于订阅此订阅的事件。
+1. 浏览到 Workbench 资源组中的“服务总线”。
+2. 选择“主题”。
+3. 选择“egress-topic”。
+4. 创建此主题的新订阅。 获取该订阅的密钥。
+5. 创建一个程序，用于订阅此订阅的事件。
 
 ### <a name="consuming-service-bus-messages-with-logic-apps"></a>配合逻辑应用使用服务总线消息
 
@@ -373,240 +373,531 @@ Blockchain Workbench 返回的事务提交 **create contract action** 响应示�
 
 根据 OperationName，通知消息采用以下消息类型之一。
 
-### <a name="accountcreated"></a>AccountCreated
+### <a name="block-message"></a>块消息
 
-指示已请求将新帐户添加到指定的链。
-
-| 名称    | Description  |
-|----------|--------------|
-| UserId  | 创建的用户的 ID。 |
-| ChainIdentifier | 在区块链网络上创建的用户的地址。 在 Ethereum 中，此值为用户的“链中”地址。 |
-
-``` csharp
-public class NewAccountRequest : MessageModelBase
-{
-  public int UserID { get; set; }
-  public string ChainIdentifier { get; set; }
-}
-```
-
-### <a name="contractinsertedorupdated"></a>ContractInsertedOrUpdated
-
-指示已发出在分布式账本中插入或更新合同的请求。
+包含有关单个块的信息。 *BlockMessage* 中的某个节包含块级信息，另一个节包含事务信息。
 
 | 名称 | Description |
-|-----|--------------|
-| ChainID | 与请求关联的链的唯一标识符 |
-| BlockId | 账本中块的唯一标识符 |
-| ContractId | 合同的唯一标识符 |
-| ContractAddress |       账本中合同的地址 |
-| TransactionHash  |     账本中事务的哈希 |
-| OriginatingAddress |   事务发起方的地址 |
-| ActionName       |     操作的名称 |
-| IsUpdate        |      标识此操作是否为更新 |
-| parameters       |     一个对象列表，用于标识发送到操作的参数的名称、值和数据类型 |
-| TopLevelInputParams |  如果已将某个合同连接到其他一个或多个合同，则这些项是来自顶级合同的参数。 |
+|------|-------------|
+| block | 包含[块信息](#block-information) |
+| transactions | 包含块的[事务信息](#transaction-information)集合 |
+| connectionId | 连接的唯一标识符 |
+| messageSchemaVersion | 消息传送架构版本 |
+| messageName | **BlockMessage** |
+| additionalInformation | 提供的附加信息 |
 
-``` csharp
-public class ContractInsertOrUpdateRequest : MessageModelBase
+#### <a name="block-information"></a>块信息
+
+| 名称              | Description |
+|-------------------|-------------|
+| blockId           | Azure Blockchain Workbench 中的块的唯一标识符 |
+| blockNumber       | 账本中块的唯一标识符 |
+| blockHash         | 块的哈希 |
+| previousBlockHash | 前一个块的哈希 |
+| blockTimestamp    | 块的时间戳 |
+
+#### <a name="transaction-information"></a>事务信息
+
+| 名称               | Description |
+|--------------------|-------------|
+| transactionId      | Azure Blockchain Workbench 中的事务的唯一标识符 |
+| transactionHash    | 账本中事务的哈希 |
+| from               | 事务来源账本中的唯一标识符 |
+| to                 | 事务目标账本中的唯一标识符 |
+| provisioningStatus | 标识事务的当前预配过程状态。 可能的值包括： </br>0 – API 已在数据库中创建事务</br>1 – 事务已发送到账本</br>2 – 事务已成功提交到账本</br>3 或 4 - 事务无法提交到账本</br>5 - 事务已成功提交到账本 |
+
+Blockchain Workbench 中的 *BlockMessage* 示例：
+
+``` json
 {
-    public int ChainId { get; set; }
-    public int BlockId { get; set; }
-    public int ContractId { get; set; }
-    public string ContractAddress { get; set; }
-    public string TransactionHash { get; set; }
-    public string OriginatingAddress { get; set; }
-    public string ActionName { get; set; }
-    public bool IsUpdate { get; set; }
-    public List<ContractProperty> Parameters { get; set; }
-    public bool IsTopLevelUpdate { get; set; }
-    public List<ContractInputParameter> TopLevelInputParams { get; set; }
+    "block": {
+        "blockId": 123
+        "blockNumber": 1738312,
+        "blockHash": "0x03a39411e25e25b47d0ec6433b73b488554a4a5f6b1a253e0ac8a200d13fffff",
+        "previousBlockHash": null,
+        "blockTimestamp": "2018-10-09T23:35:58Z",
+    },
+    "transactions": [
+        {
+            "transactionId": 234
+            "transactionHash": "0xa4d9c95b581f299e41b8cc193dd742ef5a1d3a4ddf97bd11b80d123fec27ffff",
+            "from": "0xd85e7262dd96f3b8a48a8aaf3dcdda90f60dffff",
+            "to": null,
+            "provisioningStatus": 1
+        },
+        {
+            "transactionId": 235
+            "transactionHash": "0x5c1fddea83bf19d719e52a935ec8620437a0a6bdaa00ecb7c3d852cf92e1ffff",
+            "from": "0xadd97e1e595916e29ea94fda894941574000ffff",
+            "to": "0x9a8DDaCa9B7488683A4d62d0817E965E8f24ffff",
+            "provisioningStatus": 2
+        }
+    ],
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "BlockMessage",
+    "additionalInformation": {}
 }
 ```
 
-#### <a name="updatecontractaction"></a>UpdateContractAction
+### <a name="contract-message"></a>合同消息
 
-指示已发出针对分布式账本中特定合同执行操作的请求。
+包含有关合同的信息。 该消息中的某个节包含合同属性，另一个节包含事务信息。 修改了特定块的合同的所有事务包含在 transaction 节中。
 
-| 名称                     | Description                                                                                                                                                                   |
-|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ContractActionId         | 此合同操作的唯一标识符 |
-| ChainIdentifier          | 链的唯一标识符 |
-| ConnectionId             | 连接的唯一标识符 |
-| UserChainIdentifier      | 在区块链网络上创建的用户的地址。 在 Ethereum 中，此地址是用户的**链上**地址。 |
-| ContractLedgerIdentifier | 账本中合同的地址 |
-| WorkflowFunctionName     | 工作流函数的名称 |
-| WorkflowName             | 工作流的名称 |
-| WorkflowBlobStorageURL   | Blob 存储中合同的 URL |
-| ContractActionParameters | 合同操作的参数 |
-| TransactionHash          | 账本中事务的哈希 |
-| 预配状态      | 操作的当前预配状态。</br>0 – 已创建</br>1 – 正在处理</br>2 – 完成</br> “完成”表示账本已确认成功添加此项 |
+| 名称 | Description |
+|------|-------------|
+| blockId | Azure Blockchain Workbench 中的块的唯一标识符 |
+| blockHash | 块的哈希 |
+| modifyingTransactions | [修改了合同的事务](#modifying-transaction-information) |
+| contractId | Azure Blockchain Workbench 中的合同的唯一标识符 |
+| contractLedgerIdentifier | 账本中合同的唯一标识符 |
+| contractProperties | [合同的属性](#contract-properties) |
+| isNewContract | 指示此合同是否是新建的。 可能的值为：true：此合同是新建的合同。 false：此合同是合同更新。 |
+| connectionId | 连接的唯一标识符 |
+| messageSchemaVersion | 消息传送架构版本 |
+| messageName | **ContractMessage** |
+| additionalInformation | 提供的附加信息 |
 
-```csharp
-public class ContractActionRequest : MessageModelBase
+#### <a name="modifying-transaction-information"></a>修改事务信息
+
+| 名称               | Description |
+|--------------------|-------------|
+| transactionId | Azure Blockchain Workbench 中的事务的唯一标识符 |
+| transactionHash | 账本中事务的哈希 |
+| from | 事务来源账本中的唯一标识符 |
+| to | 事务目标账本中的唯一标识符 |
+
+#### <a name="contract-properties"></a>合同属性
+
+| 名称               | Description |
+|--------------------|-------------|
+| workflowPropertyId | Azure Blockchain Workbench 中工作流属性的唯一标识符 |
+| 名称 | 工作流属性的名称 |
+| 值 | 工作流属性的值 |
+
+Blockchain Workbench 中的 *ContractMessage* 示例：
+
+``` json
 {
-    public int ContractActionId { get; set; }
-    public int ConnectionId { get; set; }
-    public string UserChainIdentifier { get; set; }
-    public string ContractLedgerIdentifier { get; set; }
-    public string WorkflowFunctionName { get; set; }
-    public string WorkflowName { get; set; }
-    public string WorkflowBlobStorageURL { get; set; }
-    public IEnumerable<ContractActionParameter> ContractActionParameters { get; set; }
-    public string TransactionHash { get; set; }
-    public int ProvisioningStatus { get; set; }
+    "blockId": 123,
+    "blockhash": "0x03a39411e25e25b47d0ec6433b73b488554a4a5f6b1a253e0ac8a200d13fffff",
+    "modifyingTransactions": [
+        {
+            "transactionId": 234,
+            "transactionHash": "0x5c1fddea83bf19d719e52a935ec8620437a0a6bdaa00ecb7c3d852cf92e1ffff",
+            "from": "0xd85e7262dd96f3b8a48a8aaf3dcdda90f60dffff",
+            "to": "0xf8559473b3c7197d59212b401f5a9f07ffff"
+        },
+        {
+            "transactionId": 235,
+            "transactionHash": "0xa4d9c95b581f299e41b8cc193dd742ef5a1d3a4ddf97bd11b80d123fec27ffff",
+            "from": "0xd85e7262dd96f3b8a48a8aaf3dcdda90f60dffff",
+            "to": "0xf8559473b3c7197d59212b401f5a9f07b429ffff"
+        }
+    ],
+    "contractId": 111,
+    "contractLedgerIdentifier": "0xf8559473b3c7197d59212b401f5a9f07b429ffff",
+    "contractProperties": [
+        {
+            "workflowPropertyId": 1,
+            "name": "State",
+            "value": "0"
+        },
+        {
+            "workflowPropertyId": 2,
+            "name": "Description",
+            "value": "1969 Dodge Charger"
+        },
+        {
+            "workflowPropertyId": 3,
+            "name": "AskingPrice",
+            "value": "30000"
+        },
+        {
+            "workflowPropertyId": 4,
+            "name": "OfferPrice",
+            "value": "0"
+        },
+        {
+            "workflowPropertyId": 5,
+            "name": "InstanceAppraiser",
+            "value": "0x0000000000000000000000000000000000000000"
+        },
+        {
+            "workflowPropertyId": 6,
+            "name": "InstanceBuyer",
+            "value": "0x0000000000000000000000000000000000000000"
+        },
+        {
+            "workflowPropertyId": 7,
+            "name": "InstanceInspector",
+            "value": "0x0000000000000000000000000000000000000000"
+        },
+        {
+            "workflowPropertyId": 8,
+            "name": "InstanceOwner",
+            "value": "0x9a8DDaCa9B7488683A4d62d0817E965E8f24ffff"
+        },
+        {
+            "workflowPropertyId": 9,
+            "name": "ClosingDayOptions",
+            "value": "[21,48,69]"
+        }
+    ],
+    "isNewContract": false,
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "ContractMessage",
+    "additionalInformation": {}
 }
 ```
 
-### <a name="updateuserbalance"></a>UpdateUserBalance
+### <a name="event-message-contract-function-invocation"></a>事件消息：合同函数调用
 
-指示已发出在特定分布式账本中更新用户余额的请求。
+包含调用合同函数时的信息，例如函数名称、参数输入和函数调用方。
 
-> [!NOTE]
-> 只会针对需要帐户投资的账本生成此消息。
-> 
+| 名称 | Description |
+|------|-------------|
+| eventName                   | **ContractFunctionInvocation** |
+| caller                      | [调用方信息](#caller-information) |
+| contractId                  | Azure Blockchain Workbench 中的合同的唯一标识符 |
+| contractLedgerIdentifier    | 账本中合同的唯一标识符 |
+| functionName                | 函数的名称 |
+| parameters                  | [参数信息](#parameter-information) |
+| transaction                 | [事务信息](#eventmessage-transaction-information) |
+| inTransactionSequenceNumber | 块中事务的序列号 |
+| connectionId                | 连接的唯一标识符 |
+| messageSchemaVersion        | 消息传送架构版本 |
+| messageName                 | **EventMessage** |
+| additionalInformation       | 提供的附加信息 |
 
-| 名称    | Description                              |
-|---------|------------------------------------------|
-| 地址 | 已投资用户的地址 |
-| Balance | 用户余额         |
-| ChainID | 链的唯一标识符     |
+#### <a name="caller-information"></a>调用方信息
 
+| 名称 | Description |
+|------|-------------|
+| type | 调用方类型，例如用户或合同 |
+| id | Azure Blockchain Workbench 中调用方的唯一标识符 |
+| ledgerIdentifier | 账本中调用方的唯一标识符 |
 
-``` csharp
-public class UpdateUserBalanceRequest : MessageModelBase
-{
-    public string Address { get; set; }
-    public decimal Balance { get; set; }
-    public int ChainID { get; set; }
-}
-```
+#### <a name="parameter-information"></a>参数信息
 
-### <a name="insertblock"></a>InsertBlock
-
-消息指示已发出在分布式账本中添加块的请求。
-
-| 名称           | Description                                                            |
-|----------------|------------------------------------------------------------------------|
-| ChainId        | 要在其中添加块的链的唯一标识符             |
-| BlockId        | Azure Blockchain Workbench 中的块的唯一标识符 |
-| BlockHash      | 块的哈希                                                 |
-| BlockTimeStamp | 块的时间戳                                            |
-
-``` csharp
-public class InsertBlockRequest : MessageModelBase
-{
-    public int ChainId { get; set; }
-    public int BlockId { get; set; }
-    public string BlockHash { get; set; }
-    public int BlockTimestamp { get; set; }
-}
-```
-
-### <a name="inserttransaction"></a>InsertTransaction
-
-消息提供有关在分布式账本中添加事务的请求的详细信息。
-
-| 名称            | Description                                                            |
-|-----------------|------------------------------------------------------------------------|
-| ChainId         | 要在其中添加块的链的唯一标识符             |
-| BlockId         | Azure Blockchain Workbench 中的块的唯一标识符 |
-| TransactionHash | 事务的哈希                                           |
-| 源            | 事务发起方的地址                      |
-| 目标              | 事务的目标接收方的地址              |
-| 值           | 在事务中包含的值                                 |
-| IsAppBuilderTx  | 标识这是否为 Blockchain Workbench 事务                         |
-
-``` csharp
-public class InsertTransactionRequest : MessageModelBase
-{
-    public int ChainId { get; set; }
-    public int BlockId { get; set; }
-    public string TransactionHash { get; set; }
-    public string From { get; set; }
-    public string To { get; set; }
-    public decimal Value { get; set; }
-    public bool IsAppBuilderTx { get; set; }
-}
-```
-
-### <a name="assigncontractchainidentifier"></a>AssignContractChainIdentifier
-
-提供有关合同的链标识符分配的详细信息。 例如，Ethereum 区块链中的账本上某个合同的地址。
-
-| 名称            | Description                                                                       |
-|-----------------|-----------------------------------------------------------------------------------|
-| ContractId      | Azure Blockchain Workbench 中的合同的唯一标识符 |
-| ChainIdentifier | 链中合同的标识符                             |
-
-``` csharp
-public class AssignContractChainIdentifierRequest : MessageModelBase
-{
-    public int ContractId { get; set; }
-    public string ChainIdentifier { get; set; }
-}
-```
-
-## <a name="classes-used-by-message-types"></a>消息类型使用的类
-
-### <a name="messagemodelbase"></a>MessageModelBase
-
-所有消息的基础模型。
-
-| 名称          | Description                          |
-|---------------|--------------------------------------|
-| OperationName | 操作的名称           |
-| RequestId     | 请求的唯一标识符 |
-
-``` csharp
-public class MessageModelBase
-{
-    public string OperationName { get; set; }
-    public string RequestId { get; set; }
-}
-```
-
-### <a name="contractinputparameter"></a>ContractInputParameter
-
-包含参数的名称、值和类型。
-
-| 名称  | Description                 |
-|-------|-----------------------------|
-| 名称  | 参数的名称  |
+| 名称 | Description |
+|------|-------------|
+| 名称 | 参数名称 |
 | 值 | 参数值 |
-| 类型  | 参数的类型  |
 
-``` csharp
-public class ContractInputParameter
+#### <a name="event-message-transaction-information"></a>事件消息事务信息
+
+| 名称               | Description |
+|--------------------|-------------|
+| transactionId      | Azure Blockchain Workbench 中的事务的唯一标识符 |
+| transactionHash    | 账本中事务的哈希 |
+| from               | 事务来源账本中的唯一标识符 |
+| to                 | 事务目标账本中的唯一标识符 |
+
+Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 示例：
+
+``` json
 {
-    public string Name { get; set; }
-    public string Value { get; set; }
-    public string Type { get; set; }
+    "eventName": "ContractFunctionInvocation",
+    "caller": {
+        "type": "User",
+        "id": 21,
+        "ledgerIdentifier": "0xd85e7262dd96f3b8a48a8aaf3dcdda90f60ffff"
+    },
+    "contractId": 34,
+    "contractLedgerIdentifier": "0xf8559473b3c7197d59212b401f5a9f07b429ffff",
+    "functionName": "Modify",
+    "parameters": [
+        {
+            "name": "description",
+            "value": "a new description"
+        },
+        {
+            "name": "price",
+            "value": "4567"
+        }
+    ],
+    "transaction": {
+        "transactionId": 234,
+        "transactionHash": "0x5c1fddea83bf19d719e52a935ec8620437a0a6bdaa00ecb7c3d852cf92e1ffff",
+        "from": "0xd85e7262dd96f3b8a48a8aaf3dcdda90f60dffff",
+        "to": "0xf8559473b3c7197d59212b401f5a9f07b429ffff"
+    },
+    "inTransactionSequenceNumber": 1,
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "EventMessage",
+    "additionalInformation": { }
 }
 ```
 
-#### <a name="contractproperty"></a>ContractProperty
+### <a name="event-message-application-ingestion"></a>事件消息：应用程序引入
 
-包含属性的 ID、名称、值和类型。
+包含将应用程序上传到 Workbench 时的信息，例如所上传应用程序的名称和版本。
 
-| 名称  | Description                |
-|-------|----------------------------|
-| ID    | 属性的 ID    |
-| 名称  | 属性的名称  |
-| 值 | 属性的值 |
-| 类型  | 属性类型  |
+| 名称 | Description |
+|------|-------------|
+| eventName | **ApplicationIngestion** |
+| applicationId | Azure Blockchain Workbench 中应用程序的唯一标识符 |
+| applicationName | 应用程序名称 |
+| applicationDisplayName | 应用程序显示名称 |
+| applicationVersion | 应用程序版本 |
+| applicationDefinitionLocation | 应用程序配置文件所在的 URL |
+| contractCodes | 应用程序的[合同代码](#contract-code-information)集合 |
+| applicationRoles | 应用程序的[应用程序角色](#application-role-information)集合 |
+| applicationWorkflows | 应用程序的[应用程序工作流](#application-workflow-information)集合 |
+| connectionId | 连接的唯一标识符 |
+| messageSchemaVersion | 消息传送架构版本 |
+| messageName | **EventMessage** |
+| additionalInformation | 此处提供的其他信息包括应用程序工作流状态和转换信息。 |
 
-``` csharp
-public class ContractProperty
+#### <a name="contract-code-information"></a>合同代码信息
+
+| 名称 | Description |
+|------|-------------|
+| id | Azure Blockchain Workbench 中合同代码文件的唯一标识符 |
+| ledgerId | Azure Blockchain Workbench 中账本的唯一标识符 |
+| 位置 | 合同代码文件所在的 URL |
+
+#### <a name="application-role-information"></a>应用程序角色信息
+
+| 名称 | Description |
+|------|-------------|
+| id | Azure Blockchain Workbench 中应用程序角色的唯一标识符 |
+| 名称 | 应用程序角色的名称 |
+
+#### <a name="application-workflow-information"></a>应用程序工作流信息
+
+| 名称 | Description |
+|------|-------------|
+| id | Azure Blockchain Workbench 中应用程序工作流的唯一标识符 |
+| 名称 | 应用程序工作流名称 |
+| displayName | 应用程序工作流显示名称 |
+| functions | [应用程序工作流的函数](#workflow-function-information)集合|
+| states | [应用程序工作流的状态](#workflow-state-information)集合 |
+| 属性 | 应用程序[工作流属性信息](#workflow-property-information) |
+
+##### <a name="workflow-function-information"></a>工作流函数信息
+
+| 名称 | Description |
+|------|-------------|
+| id | Azure Blockchain Workbench 中应用程序工作流函数的唯一标识符 |
+| 名称 | 函数名称 |
+| parameters | 函数的参数 |
+
+##### <a name="workflow-state-information"></a>工作流状态信息
+
+| 名称 | Description |
+|------|-------------|
+| 名称 | 状态名称 |
+| displayName | 状态显示名称 |
+| style | 状态样式（success 或 failure） |
+
+##### <a name="workflow-property-information"></a>工作流属性信息
+
+| 名称 | Description |
+|------|-------------|
+| id | Azure Blockchain Workbench 中应用程序工作流属性的唯一标识符 |
+| 名称 | 属性名称 |
+| type | 属性类型 |
+
+Blockchain Workbench 中的 *EventMessage ApplicationIngestion* 示例：
+
+``` json
 {
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string Value { get; set; }
-    public string DataType { get; set; }
+    "eventName": "ApplicationIngestion",
+    "applicationId": 31,
+    "applicationName": "AssetTransfer",
+    "applicationDisplayName": "Asset Transfer",
+    "applicationVersion": “1.0”,
+    "applicationDefinitionLocation": "http://url"
+    "contractCodes": [
+        {
+            "id": 23,
+            "ledgerId": 1,
+            "location": "http://url"
+        }
+    ],
+    "applicationRoles": [
+            {
+                "id": 134,
+                "name": "Buyer"
+            },
+            {
+                "id": 135,
+                "name": "Seller"
+            }
+       ],
+    "applicationWorkflows": [
+        {
+            "id": 89,
+            "name": "AssetTransfer",
+            "displayName": "Asset Transfer",
+            "functions": [
+                {
+                    "id": 912,
+                    "name": "",
+                    "parameters": [
+                        {
+                            "name": "description",
+                            "type": {
+                                "name": "string"
+                             }
+                        },
+                        {
+                            "name": "price",
+                            "type": {
+                                "name": "int"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 913,
+                    "name": "modify",
+                    "parameters": [
+                        {
+                            "name": "description",
+                            "type": {
+                                "name": "string"
+                             }
+                        },
+                        {
+                            "name": "price",
+                            "type": {
+                                "name": "int"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "states": [ 
+                 {
+                      "name": "Created",
+                      "displayName": "Created",
+                      "style" : "Success"
+                 },
+                 {
+                      "name": "Terminated",
+                      "displayName": "Terminated",
+                      "style" : "Failure"
+                 }
+            ],
+            "properties": [
+                {
+                    "id": 879,
+                    "name": "Description",
+                    "type": {
+                                "name": "string"
+                     }
+                },
+                {
+                    "id": 880,
+                    "name": "Price",
+                    "type": {
+                                "name": "int"
+                     }
+                }
+            ]
+        }
+    ]
+    "connectionId": [ ],
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "EventMessage",
+    "additionalInformation":
+        {
+            "states" :
+            [
+                {
+                    "Name": "BuyerAccepted",
+                    "Transitions": [
+                        {
+                            "DisplayName": "Accept"
+                            "AllowedRoles": [ ],
+                            "AllowedInstanceRoles": [ "InstanceOwner" ],
+                            "Function": "Accept",
+                            "NextStates": [ "SellerAccepted" ]
+                        }
+                    ]
+                }
+            ]
+        }
+}
+```
+
+### <a name="event-message-role-assignment"></a>事件消息：角色分配
+
+包含在 Workbench 中为用户分配角色时的信息，例如，谁执行了角色分配，以及角色名称和相应的应用程序。
+
+| 名称 | Description |
+|------|-------------|
+| eventName | **RoleAssignment** |
+| applicationId | Azure Blockchain Workbench 中应用程序的唯一标识符 |
+| applicationName | 应用程序名称 |
+| applicationDisplayName | 应用程序显示名称 |
+| applicationVersion | 应用程序版本 |
+| applicationRole        | 有关[应用程序角色](#roleassignment-application-role)的信息 |
+| assigner               | 有关[分配者](#roleassignment-assigner)的信息 |
+| assignee               | 有关[被分配者](#roleassignment-assignee)的信息 |
+| connectionId           | 连接的唯一标识符 |
+| messageSchemaVersion   | 消息传送架构版本 |
+| messageName            | **EventMessage** |
+| additionalInformation  | 提供的附加信息 |
+
+#### <a name="roleassignment-application-role"></a>RoleAssignment 应用程序角色
+
+| 名称 | Description |
+|------|-------------|
+| id | Azure Blockchain Workbench 中应用程序角色的唯一标识符 |
+| 名称 | 应用程序角色的名称 |
+
+#### <a name="roleassignment-assigner"></a>RoleAssignment 分配者
+
+| 名称 | Description |
+|------|-------------|
+| id | Azure Blockchain Workbench 中用户的唯一标识符 |
+| type | 分配者的类型 |
+| chainIdentifier | 账本中用户的唯一标识符 |
+
+#### <a name="roleassignment-assignee"></a>RoleAssignment 被分配者
+
+| 名称 | Description |
+|------|-------------|
+| id | Azure Blockchain Workbench 中用户的唯一标识符 |
+| type | 被分配者的类型 |
+| chainIdentifier | 账本中用户的唯一标识符 |
+
+Blockchain Workbench 中的 *EventMessage RoleAssignment* 示例：
+
+``` json
+{
+    "eventName": "RoleAssignment",
+    "applicationId": 31,
+    "applicationName": "AssetTransfer",
+    "applicationDisplayName": "Asset Transfer",
+    "applicationVersion": “1.0”,
+    "applicationRole": {
+        "id": 134,
+        "name": "Buyer"
+    },
+    "assigner": {
+        "id": 1,
+        "type": null,
+        "chainIdentifier": "0xeFFC7766d38aC862d79706c3C5CEEf089564ffff"
+    },
+    "assignee": {
+        "id": 3,
+        "type": null,
+        "chainIdentifier": "0x9a8DDaCa9B7488683A4d62d0817E965E8f24ffff"
+    },
+    "connectionId": [ ],
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "EventMessage",
+    "additionalInformation": { }
 }
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [智能合同集成模式](integration-patterns.md)
+- [智能合同集成模式](integration-patterns.md)

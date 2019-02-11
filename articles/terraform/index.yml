@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 38f55894925febb66a50f019de15f8e7dcd9ef23
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 5f8e4ead27c05ec9efd08628773ba698dbbcdbca
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666973"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458680"
 documentType: LandingData
 title: “Azure 上的 Terraform”文档
 metadata:
@@ -13,7 +13,7 @@ metadata:
   services: terraform
   ms.service: terraform
   keywords: terraform, azure, devops, 教程, 示例, 参考
-  author: tomarcher
+  author: tomarchermsft
   manager: jeconnoc
   ms.author: tarcher
   ms.topic: landing-page
@@ -43,12 +43,13 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/terraform/terraform-create-k8s-cluster-with-tf-and-aks">使用 AKS 和 Terraform 创建 Kubernetes 群集</a>。
+    - html: <a href="/azure/terraform/terraform-create-k8s-cluster-with-tf-and-aks">使用 AKS 创建 Kubernetes 群集</a>。
+    - html: <a href="/azure/terraform/terraform-create-k8s-cluster-with-aks-applicationgateway-ingress">将 AKS 与作为入口控制器的应用程序网关配合使用来创建 Kubernetes 群集</a>。
     - html: <a href="/azure/terraform/terraform-vm-msi">使用 Azure 市场映像创建启用了 MSI 身份验证的 Terraform VM</a>。
     - html: <a href="/azure/terraform/terraform-create-vm-cluster-module">使用 Azure Terraform 模块创建负载均衡的 VM 群集</a>。
     - html: <a href="/azure/terraform/terraform-create-vm-cluster-with-infrastructure">在 Azure Cloud Shell 中创建负载均衡的 VM 群集</a>。
-    - html: <a href="/azure/terraform/terraform-create-vm-scaleset-network-disks-hcl">配置带有网络和存储的 VM 规模集。</a>
-    - html: <a href="/azure/terraform/terraform-create-vm-scaleset-network-disks-using-packer-hcl">从 Packer 自定义映像预配 VM 规模集。</a>
+    - html: <a href="/azure/terraform/terraform-create-vm-scaleset-network-disks-hcl">为 VM 规模集配置网络和存储</a>
+    - html: <a href="/azure/terraform/terraform-create-vm-scaleset-network-disks-using-packer-hcl">从 Packer 自定义映像预配 VM 规模集</a>
 - title: 示例
   items:
   - type: paragraph
@@ -58,7 +59,7 @@ sections:
     className: spaced noBullet
     items:
     - html: <a href="https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples">GitHub</a>
-- title: 引用
+- title: 参考
   items:
   - type: list
     style: cards

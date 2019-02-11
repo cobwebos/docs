@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: f24baaf07f86722bc461cbb79e262f63b46c8a1f
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: b3d6f30aa2a7858d673199e55090e96fb9aba915
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619939"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337623"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure 安全中心规划和操作指南
 本指南适用于其组织正计划使用 Azure 安全中心的信息技术 (IT) 专业人员、IT 架构师、信息安全分析师和云管理员。
@@ -195,7 +195,7 @@ Azure 安全中心使用 Microsoft Monitoring Agent（Log Analytics 服务同样
 ### <a name="monitoring-for-new-or-changed-resources"></a>监视新的或更改的资源
 大多数 Azure 环境是动态的，新资源会定期出现和消失，也会出现新配置或新变化等。安全中心可确保用户能够查看这些新资源的安全状态。
 
-将新资源（VM、SQL 数据库）添加到 Azure 环境时，安全中心会自动发现这些资源，并开始监视其安全性。 这还包括 PaaS Web 角色和辅助角色。 如果在 [安全策略](security-center-azure-policy.md)中启用了数据收集功能，则会自动为虚拟机启用更多监视功能。
+将新资源（VM、SQL 数据库）添加到 Azure 环境时，安全中心会自动发现这些资源，并开始监视其安全性。 这还包括 PaaS Web 角色和辅助角色。 如果在 [安全策略](tutorial-security-policy.md)中启用了数据收集功能，则会自动为虚拟机启用更多监视功能。
 
 ![关键领域](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig3-newUI.png)
 

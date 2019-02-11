@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure IoT Edge 部署 Azure 机器学习 | Microsoft 文档
+title: 教程：将 Azure 机器学习部署到设备 - Azure IoT Edge | Microsoft Docs
 description: 在本教程中，请将 Azure 机器学习作为一个模块部署到边缘设备
 author: kgremban
 manager: philmea
@@ -8,17 +8,17 @@ ms.date: 11/15/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: c98dc9019421133b83ab9aec29f725852315f6ba
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 464d16d4bbcbdbefd36ce1132630ad702d7a0c90
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977195"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076957"
 ---
-# <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>教程：将 Azure 机器学习作为 IoT Edge 模块（预览版）进行部署
+# <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>教程：将 Azure 机器学习作为 IoT Edge 模块进行部署（预览版）
 
-可以使用 IoT Edge 模块部署代码，以直接将业务逻辑实现到 IoT Edge 设备。 本教程逐步演示如何部署 Azure 机器学习模块，以便根据模拟的机器温度数据预测设备故障时间。 有关 IoT Edge 上的 Azure ML 的详细信息，请参阅 [Azure 机器学习文档](../machine-learning/service/how-to-deploy-to-iot.md)。
+可以使用 IoT Edge 模块部署代码，以直接将业务逻辑实现到 IoT Edge 设备。 本教程逐步演示如何部署 Azure 机器学习模块，以便根据模拟的机器温度数据预测设备故障时间。 有关 IoT Edge 上的 Azure 机器学习服务的详细信息，请参阅 [Azure 机器学习文档](../machine-learning/service/how-to-deploy-to-iot.md)。
 
 本教程中创建的 Azure 机器学习模块将读取设备生成的环境数据，并将消息标记为异常或正常。
 
@@ -31,7 +31,7 @@ ms.locfileid: "51977195"
 > * 查看生成的数据
 
 >[!NOTE]
->Azure IoT Edge 上的 Azure 机器学习模块为公开预览版。 
+>Azure IoT Edge 上的 Azure 机器学习模块为公开预览版。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,7 +45,7 @@ Azure IoT Edge 设备：
 
 云资源：
 
-* Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。 
+* Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 * Azure 机器学习工作区。 按照[准备好在 IoT Edge 上部署模型](../machine-learning/service/how-to-deploy-to-iot.md)中的说明创建一个。
 
 
@@ -53,7 +53,7 @@ Azure IoT Edge 设备：
 
 >[!NOTE]
 >
-> Azure 机器学习预览版不支持 IoT Edge 中默认启用的进程标识安全功能。 
+> Azure 机器学习预览版不支持 IoT Edge 中默认启用的进程标识安全功能。
 > 以下是禁用它的步骤。 不过，这不适合在生产中使用。 这些步骤只是在 Linux 上是必需的，因为在执行 Windows Edge 运行时安装时你已完成了这些步骤。
 
 若要在 IoT Edge 设备上禁用进程标识，需在 IoT Edge 守护程序配置的 **connect** 部分中为 **workload_uri** 和 **management_uri** 提供 IP 地址和端口。
@@ -88,8 +88,8 @@ export IOTEDGE_HOST="http://172.17.0.1:15580"
 ```
 
 
-## <a name="create-the-azure-ml-container"></a>创建 Azure ML 容器
-在本部分中，你将下载已训练的模型文件并将它们转换为 Azure ML 容器。
+## <a name="create-the-azure-machine-learning-service-container"></a>创建 Azure 机器学习服务容器
+在本部分中，你将下载已训练的模型文件并将它们转换为 Azure 机器学习服务容器。
 
 按照[准备好在 IoT Edge 上部署模型](../machine-learning/service/how-to-deploy-to-iot.md)文档中的说明，使用机器学习模型创建 Docker 容器。  Docker 映像所需的所有组件都在 [Azure IoT Edge Git 存储库的 AI 工具包](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial)中。
 
@@ -113,9 +113,9 @@ export IOTEDGE_HOST="http://172.17.0.1:15580"
 
 1. 选择“设置模块”。
 
-1. 在“注册表设置”部分，添加从 Azure 容器注册表复制的凭据。 
+1. 在“注册表设置”部分，添加从 Azure 容器注册表复制的凭据。
 
-   ![添加注册表凭据](./media/tutorial-deploy-machine-learning/registry-settings.png)
+   ![将注册表凭据添加到清单](./media/tutorial-deploy-machine-learning/registry-settings.png)
 
 1. 如果以前已将 tempSensor 模块部署到 IoT Edge 设备，则它可能会自动填充。 如果它尚未出现在模块列表中，请添加它。
 
@@ -156,7 +156,7 @@ export IOTEDGE_HOST="http://172.17.0.1:15580"
 
 ### <a name="view-data-on-your-iot-edge-device"></a>查看 IoT Edge 设备上的数据
 
-在 IoT Edge 设备上，可以查看从每个单独的模块发送的消息。 
+在 IoT Edge 设备上，可以查看从每个单独的模块发送的消息。
 
 如果在 Linux 设备上执行这些命令，可能需要使用 `sudo` 以获取提升的权限。
 
@@ -174,15 +174,15 @@ export IOTEDGE_HOST="http://172.17.0.1:15580"
 
 ### <a name="view-data-arriving-at-your-iot-hub"></a>查看到达 IoT 中心的数据
 
-可以使用 [Visual Studio Code 的 Azure IoT Toolkit 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)查看 IoT 中心接收的设备到云消息。
+可以使用[用于 Visual Studio Code 的 Azure IoT 中心工具包扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)（以前称为 Azure IoT 工具包扩展）查看 IoT 中心接收的设备到云消息。
 
-以下步骤介绍如何设置 Visual Studio Code，以便监视到达 IoT 中心的设备到云消息。 
+以下步骤介绍如何设置 Visual Studio Code，以便监视到达 IoT 中心的设备到云消息。
 
 1. 在 Visual Studio Code 中，选择“IoT 中心设备”。
 
 2. 选择 **...**，然后从菜单中选择“设置 IoT 中心连接字符串”。
 
-   ![IoT 中心设备“更多”菜单](./media/tutorial-deploy-machine-learning/set-connection.png)
+   ![设置 IoT 中心连接字符串](./media/tutorial-deploy-machine-learning/set-connection.png)
 
 3. 在页面顶部打开的文本框中，输入你的 IoT 中心的 iothubowner 连接字符串。 你的 IoT Edge 设备应当会出现在“IoT 中心设备”列表中。
 
@@ -190,13 +190,13 @@ export IOTEDGE_HOST="http://172.17.0.1:15580"
 
 5. 观察每五秒来自 tempSensor 的消息。 消息正文包含 machinelearningmodule 提供的名为 **anomaly**、值为 true 或 false 的属性。 如果模型成功运行，**AzureMLResponse** 属性包含值“OK”。
 
-   ![消息正文中的 Azure ML 响应](./media/tutorial-deploy-machine-learning/ml-output.png)
+   ![消息正文中的 Azure 机器学习服务响应](./media/tutorial-deploy-machine-learning/ml-output.png)
 
-## <a name="clean-up-resources"></a>清理资源 
+## <a name="clean-up-resources"></a>清理资源
 
-如果打算继续学习下一篇建议的文章，可以保留已创建的资源和配置，以便重复使用。 还可以继续使用相同的 IoT Edge 设备作为测试设备。 
+如果打算继续学习下一篇建议的文章，可以保留已创建的资源和配置，以便重复使用。 还可以继续使用相同的 IoT Edge 设备作为测试设备。
 
-否则，可以删除本文中创建的本地配置和 Azure 资源，以避免收费。 
+否则，可以删除本文中创建的本地配置和 Azure 资源，以避免收费。
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 

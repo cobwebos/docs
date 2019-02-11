@@ -2,19 +2,19 @@
 title: Azure 备份服务器可备份哪些内容
 description: 本文提供了一个支持矩阵，列出了受 Azure 备份服务器保护的所有工作负荷、数据类型和安装。
 services: backup
-author: markgalioto
+author: rayne-wiselman
 ms.service: backup
 keywords: ''
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.author: markgal
+ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: a48944beda52e134fcd02f6d12a35789a41aad31
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: e0ac5b318939ef576eae0d0caabc8a9c794b9641
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614729"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871238"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure 备份服务器保护矩阵
 
@@ -61,24 +61,24 @@ ms.locfileid: "51614729"
 |SQL Server|SQL Server 2008|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|Y|Y|Y|所有部署方案：数据库|
 |SQL Server|SQL Server 2008|Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）<br /> <br /> Azure Stack|Y|Y|Y|所有部署方案：数据库|
 |SQL Server|SQL Server 2008|VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /> <br /> Azure Stack|Y|Y|Y|所有部署方案：数据库|
-|Exchange|Exchange 2016|物理服务器<br/><br/> 本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|Y|Y|Y|保护（所有部署方案）：独立 Exchange 服务器，数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱，DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
-|Exchange|Exchange 2016|VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /> <br /> Azure Stack|Y|Y|Y|保护（所有部署方案）：独立 Exchange 服务器，数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱，DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
-|Exchange|Exchange 2013|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|Y|Y|Y|保护（所有部署方案）：独立 Exchange 服务器，数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱，DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
-|Exchange|Exchange 2013|VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /> <br /> Azure Stack|Y|Y|Y |保护（所有部署方案）：独立 Exchange 服务器，数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱，DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
-|Exchange|Exchange 2010|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|Y|Y|Y|保护（所有部署方案）：独立 Exchange 服务器，数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱，DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
-|Exchange|Exchange 2010|VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /> <br /> Azure Stack|Y|Y|Y |保护（所有部署方案）：独立 Exchange 服务器，数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱，DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
-|SharePoint|SharePoint 2016|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /><br />Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）<br /><br />VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /> <br /> Azure Stack|Y|Y|Y |N|保护（所有部署方案）：场，前端 Web 服务器内容<br /><br />恢复（所有部署方案）：场、数据库、Web 应用程序、文件或列表项、SharePoint 搜索、前端 Web 服务器<br /><br />请注意，不支持保护使用内容数据库的 SQL Server 2012 AlwaysOn 功能的 SharePoint 场。|
-|SharePoint|SharePoint 2013|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|Y|Y|Y|保护（所有部署方案）：场，前端 Web 服务器内容<br /><br />恢复（所有部署方案）：场、数据库、Web 应用程序、文件或列表项、SharePoint 搜索、前端 Web 服务器<br /><br />请注意，不支持保护使用内容数据库的 SQL Server 2012 AlwaysOn 功能的 SharePoint 场。|
+|Exchange|Exchange 2016|物理服务器<br/><br/> 本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|Y|Y|Y|保护（所有部署方案）：独立 Exchange 服务器、数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱、DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
+|Exchange|Exchange 2016|VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /> <br /> Azure Stack|Y|Y|Y|保护（所有部署方案）：独立 Exchange 服务器、数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱、DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
+|Exchange|Exchange 2013|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|Y|Y|Y|保护（所有部署方案）：独立 Exchange 服务器、数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱、DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
+|Exchange|Exchange 2013|VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /> <br /> Azure Stack|Y|Y|Y |保护（所有部署方案）：独立 Exchange 服务器、数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱、DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
+|Exchange|Exchange 2010|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|Y|Y|Y|保护（所有部署方案）：独立 Exchange 服务器、数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱、DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
+|Exchange|Exchange 2010|VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /> <br /> Azure Stack|Y|Y|Y |保护（所有部署方案）：独立 Exchange 服务器、数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱、DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
+|SharePoint|SharePoint 2016|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /><br />Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）<br /><br />VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /> <br /> Azure Stack|Y|Y|Y |N|保护（所有部署方案）：场、前端 Web 服务器内容<br /><br />恢复（所有部署方案）：场、数据库、Web 应用程序、文件或列表项、SharePoint 搜索、前端 Web 服务器<br /><br />请注意，不支持保护使用内容数据库的 SQL Server 2012 AlwaysOn 功能的 SharePoint 场。|
+|SharePoint|SharePoint 2013|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|Y|Y|Y|保护（所有部署方案）：场、前端 Web 服务器内容<br /><br />恢复（所有部署方案）：场、数据库、Web 应用程序、文件或列表项、SharePoint 搜索、前端 Web 服务器<br /><br />请注意，不支持保护使用内容数据库的 SQL Server 2012 AlwaysOn 功能的 SharePoint 场。|
 |SharePoint|SharePoint 2013|Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）- DPM 2012 R2 更新汇总 3 及更高版本<br /> <br /> Azure Stack|Y|Y|Y|保护（所有部署方案）：场、SharePoint 搜索、前端 Web 服务器内容<br /><br />恢复（所有部署方案）：场、数据库、Web 应用程序、文件或列表项、SharePoint 搜索、前端 Web 服务器<br /><br />请注意，不支持保护使用内容数据库的 SQL Server 2012 AlwaysOn 功能的 SharePoint 场。|
 |SharePoint|SharePoint 2013|VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /> <br /> Azure Stack|Y|Y|Y |保护（所有部署方案）：场、SharePoint 搜索、前端 Web 服务器内容<br /><br />恢复（所有部署方案）：场、数据库、Web 应用程序、文件或列表项、SharePoint 搜索、前端 Web 服务器<br /><br />请注意，不支持保护使用内容数据库的 SQL Server 2012 AlwaysOn 功能的 SharePoint 场。|
 |SharePoint|SharePoint 2010|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|Y|Y|Y|保护（所有部署方案）：场、SharePoint 搜索、前端 Web 服务器内容<br /><br />恢复（所有部署方案）：场、数据库、Web 应用程序、文件或列表项、SharePoint 搜索、前端 Web 服务器|
 |SharePoint|SharePoint 2010|Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）<br /> <br /> Azure Stack|Y|Y|Y |保护（所有部署方案）：场、SharePoint 搜索、前端 Web 服务器内容<br /><br />恢复（所有部署方案）：场、数据库、Web 应用程序、文件或列表项、SharePoint 搜索、前端 Web 服务器|
 |SharePoint|SharePoint 2010|VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /> <br /> Azure Stack|Y|Y|Y|保护（所有部署方案）：场、SharePoint 搜索、前端 Web 服务器内容<br /><br />恢复（所有部署方案）：场、数据库、Web 应用程序、文件或列表项、SharePoint 搜索、前端 Web 服务器|
-|Hyper-V 主机 - Hyper-V 主机服务器、群集或 VM 上的 DPM 保护代理|Windows Server 2016|物理服务器<br /><br />本地 Hyper-V 虚拟机|Y|Y|N|保护：Hyper-V 计算机、群集共享卷 (CSV)<br /><br />恢复：文件和文件夹、卷、虚拟硬盘驱动器的虚拟机项目级恢复|
-|Hyper-V 主机 - Hyper-V 主机服务器、群集或 VM 上的 DPM 保护代理|Windows Server 2012 R2 - 数据中心和标准版|物理服务器<br /><br />本地 Hyper-V 虚拟机|Y|Y|Y|保护：Hyper-V 计算机、群集共享卷 (CSV)<br /><br />恢复：文件和文件夹、卷、虚拟硬盘驱动器的虚拟机项目级恢复|
-|Hyper-V 主机 - Hyper-V 主机服务器、群集或 VM 上的 DPM 保护代理|Windows Server 2012 - 数据中心和标准版|物理服务器<br /><br />本地 Hyper-V 虚拟机|Y|Y|Y|保护：Hyper-V 计算机、群集共享卷 (CSV)<br /><br />恢复：文件和文件夹、卷、虚拟硬盘驱动器的虚拟机项目级恢复|
-|Hyper-V 主机 - Hyper-V 主机服务器、群集或 VM 上的 DPM 保护代理|Windows Server 2008 R2 SP1 - 数据中心和标准版|物理服务器<br /><br />本地 Hyper-V 虚拟机|Y|Y|Y|保护：Hyper-V 计算机、群集共享卷 (CSV)<br /><br />恢复：文件和文件夹、卷、虚拟硬盘驱动器的虚拟机项目级恢复|
-|Hyper-V 主机 - Hyper-V 主机服务器、群集或 VM 上的 DPM 保护代理|Windows Server 2008 SP2|物理服务器<br /><br />本地 Hyper-V 虚拟机|N|N|N|保护：Hyper-V 计算机、群集共享卷 (CSV)<br /><br />恢复：文件和文件夹、卷、虚拟硬盘驱动器的虚拟机项目级恢复|
+|Hyper-V 主机 - Hyper-V 主机服务器、群集或 VM 上的 DPM 保护代理|Windows Server 2016|物理服务器<br /><br />本地 Hyper-V 虚拟机|Y|Y|N|保护：Hyper-V 计算机、群集共享卷 (CSV)<br /><br />恢复：虚拟机、文件和文件夹的项目级恢复、卷、虚拟硬盘驱动器|
+|Hyper-V 主机 - Hyper-V 主机服务器、群集或 VM 上的 DPM 保护代理|Windows Server 2012 R2 - 数据中心和标准版|物理服务器<br /><br />本地 Hyper-V 虚拟机|Y|Y|Y|保护：Hyper-V 计算机、群集共享卷 (CSV)<br /><br />恢复：虚拟机、文件和文件夹的项目级恢复、卷、虚拟硬盘驱动器|
+|Hyper-V 主机 - Hyper-V 主机服务器、群集或 VM 上的 DPM 保护代理|Windows Server 2012 - 数据中心和标准版|物理服务器<br /><br />本地 Hyper-V 虚拟机|Y|Y|Y|保护：Hyper-V 计算机、群集共享卷 (CSV)<br /><br />恢复：虚拟机、文件和文件夹的项目级恢复、卷、虚拟硬盘驱动器|
+|Hyper-V 主机 - Hyper-V 主机服务器、群集或 VM 上的 DPM 保护代理|Windows Server 2008 R2 SP1 - 数据中心和标准版|物理服务器<br /><br />本地 Hyper-V 虚拟机|Y|Y|Y|保护：Hyper-V 计算机、群集共享卷 (CSV)<br /><br />恢复：虚拟机、文件和文件夹的项目级恢复、卷、虚拟硬盘驱动器|
+|Hyper-V 主机 - Hyper-V 主机服务器、群集或 VM 上的 DPM 保护代理|Windows Server 2008 SP2|物理服务器<br /><br />本地 Hyper-V 虚拟机|N|N|N|保护：Hyper-V 计算机、群集共享卷 (CSV)<br /><br />恢复：虚拟机、文件和文件夹的项目级恢复、卷、虚拟硬盘驱动器|
 |VMware VM|VMware vCenter/vSphere ESX/ESXi 许可版本 5.5/6.0/6.5 |物理服务器、 <br/>本地 Hyper-V VM、 <br/> VMWare 中的 Windows VM|Y|Y|Y（具有 UR1）|群集共享卷 (CSV)、NFS 和 SAN 存储中的 VMware VM<br /> 文件和文件夹的项目级恢复仅适用于 Windows VM，不支持 VMware vApp。|
 |Linux|以 Hyper-V 或 VMware 来宾身份运行的 Linux|物理服务器、 <br/>本地 Hyper-V VM、 <br/> VMWare 中的 Windows VM|Y|Y|Y|Hyper-V 必须在 Windows Server 2012 R2 或 Windows Server 2016 上运行。 保护：整个虚拟机<br /><br />恢复：整个虚拟机 <br/><br/> 有关支持的 Linux 分发版和版本的完整列表，请参阅 [Azure 认可的分发中的 Linux](../virtual-machines/linux/endorsed-distros.md) 一文。|
 

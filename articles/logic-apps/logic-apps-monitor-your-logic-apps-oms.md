@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: c65cc24f9b0083e9c873465008490bf00ea83852
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 70242de62e976b05e2708dfd4991915c854d4bb4
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232370"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995644"
 ---
 # <a name="monitor-logic-apps-with-azure-log-analytics"></a>使用 Azure Log Analytics 监视逻辑应用
 
@@ -23,11 +23,11 @@ ms.locfileid: "50232370"
 若要为现有逻辑应用启用 Azure Log Analytics，请按照这些步骤[启用诊断日志记录并将逻辑应用运行时数据发送到 Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)。
 
 > [!NOTE]
-> 此页面之前描述了如何使用 Microsoft Operations Management Suite (OMS) 执行这些任务的步骤，该解决方案将[在 2019 年 1 月停用](../log-analytics/log-analytics-oms-portal-transition.md)，取而代之的将是使用 Azure Log Analytics 执行这些步骤的内容。 
+> 此页面之前描述了如何使用 Microsoft Operations Management Suite (OMS) 执行这些任务的步骤，该解决方案将[在 2019 年 1 月停用](../azure-monitor/platform/oms-portal-transition.md)，取而代之的将是使用 Azure Log Analytics 执行这些步骤的内容。 
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，需要一个 Log Analytics 工作区。 了解[如何创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)。 
+在开始之前，需要一个 Log Analytics 工作区。 了解[如何创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。 
 
 ## <a name="turn-on-diagnostics-logging-when-creating-logic-apps"></a>创建逻辑应用时请启用诊断日志记录
 
@@ -58,7 +58,7 @@ ms.locfileid: "50232370"
 
 如果在创建逻辑应用时已启用了 Log Analytics，可跳过此步骤。 你已经安装了逻辑应用管理解决方案。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有服务”。 在搜索框中，查找“log analytics”，并选择“Log Analytics”。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有服务”。 在搜索框中查找“log analytics”，并选择“Log Analytics”。
 
    ![选择“Log Analytics”](./media/logic-apps-monitor-your-logic-apps-oms/find-log-analytics.png)
 
@@ -116,7 +116,7 @@ ms.locfileid: "50232370"
 
      任何新添加的跟踪属性可能需要 10-15 分钟时间，才会首次显示。 了解[如何将跟踪属性添加到逻辑应用](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details)。
 
-   * **重新提交：** 可以重新提交一个或多个已失败、已成功或仍在运行的逻辑应用运行。 选择要重新提交的运行所对应的复选框，然后选择“重新提交”。 
+   * **重新提交：** 可以重新提交一个或多个已失败、成功或仍在运行的逻辑应用运行。 选择要重新提交的运行所对应的复选框，然后选择“重新提交”。 
 
      ![重新提交逻辑应用运行](media/logic-apps-monitor-your-logic-apps-oms/logic-app-resubmit.png)
 

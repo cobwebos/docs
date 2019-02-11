@@ -1,8 +1,7 @@
 ---
-title: 验证 Azure 流量管理器设置 | Microsoft Docs
-description: 本文帮助验证流量管理器设置
+title: 验证 Azure 流量管理器设置
+description: 本文帮助验证流量管理器设置。
 services: traffic-manager
-documentationcenter: ''
 author: kumudd
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: ce6467f2cdb47dd7cc61897831019a34e174478f
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 1e954e3c4ebba245d91cfb84ab583b314150e5b2
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140445"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200779"
 ---
 # <a name="verify-traffic-manager-settings"></a>验证流量管理器设置
 

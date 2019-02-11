@@ -1,21 +1,18 @@
 ---
 title: 使用 Azure CLI 创建和管理 Azure Database for PostgreSQL 防火墙规则
 description: 本文介绍如何使用 Azure CLI 命令行创建和管理 Azure Database for PostgreSQL 防火墙规则。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 05/4/2018
-ms.openlocfilehash: 041f1c426f8f181255e315978878d146a14bc88b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: bde43a02b844d0dc0be8b6a270ac94e0b1422b69
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410249"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733274"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-azure-cli"></a>使用 Azure CLI 创建和管理 Azure Database for PostgreSQL 防火墙规则
 使用服务器级防火墙规则，管理员可以管理特定 IP 地址或一系列 IP 地址对 Azure Database for PostgreSQL 服务器的访问权限。 使用便捷的 Azure CLI 命令，可创建、更新、删除、列出和显示防火墙规则，用于管理服务器。 有关 Azure Database for PostgreSQL 防火墙规则的概述，请参阅 [Azure Database for PostgreSQL 服务器防火墙规则](concepts-firewall-rules.md)
@@ -29,7 +26,7 @@ ms.locfileid: "47410249"
 [az postgres server firewall-rule](/cli/azure/postgres/server/firewall-rule) 命令用于配置防火墙规则。
 
 ## <a name="list-firewall-rules"></a>列出防火墙规则 
-若要列出现有服务器防火墙规则，请运行 [az postgres server firewall-rule list](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_list) 命令。
+若要列出现有服务器防火墙规则，请运行 [az postgres server firewall-rule list](/cli/azure/postgres/server/firewall-rule) 命令。
 ```azurecli-interactive
 az postgres server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver
 ```
@@ -38,7 +35,7 @@ az postgres server firewall-rule list --resource-group myresourcegroup --server-
 az postgres server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver --output table
 ```
 ## <a name="create-firewall-rule"></a>创建防火墙规则
-若要在服务器上创建新的防火墙规则，请运行 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_create) 命令。 
+若要在服务器上创建新的防火墙规则，请运行 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) 命令。 
 
 ```
 To allow access to a singular IP address, provide the same address in the `--start-ip-address` and `--end-ip-address`, as in this example, replacing the IP shown here with your specific IP.
@@ -57,7 +54,7 @@ az postgres server firewall-rule create --resource-group myresourcegroup --serve
 成功后，命令输出会列出已创建的防火墙规则的详细信息，默认情况下采用 JSON 格式。 如果失败，输出会改为显示错误消息。
 
 ## <a name="update-firewall-rule"></a>更新防火墙规则 
-使用 [az postgres server firewall-rule update](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_update) 命令更新服务器上的现有防火墙规则。 输入现有防火墙规则的名称，提供要更新的起始 IP 和结束 IP 属性。
+使用 [az postgres server firewall-rule update](/cli/azure/postgres/server/firewall-rule) 命令更新服务器上的现有防火墙规则。 输入现有防火墙规则的名称，提供要更新的起始 IP 和结束 IP 属性。
 ```azurecli-interactive
 az postgres server firewall-rule update --resource-group myresourcegroup --server-name mydemoserver --name AllowIpRange --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.0
 ```
@@ -66,14 +63,14 @@ az postgres server firewall-rule update --resource-group myresourcegroup --serve
 > 如果不存在防火墙规则，更新命令将创建一个。
 
 ## <a name="show-firewall-rule-details"></a>显示防火墙规则详细信息
-还可以通过运行 [az postgres server firewall-rule show](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_show) 命令显示现有服务器级防火墙规则的详细信息。
+还可以通过运行 [az postgres server firewall-rule show](/cli/azure/postgres/server/firewall-rule) 命令显示现有服务器级防火墙规则的详细信息。
 ```azurecli-interactive
 az postgres server firewall-rule show --resource-group myresourcegroup --server-name mydemoserver --name AllowIpRange
 ```
 成功后，命令输出会列出指定的防火墙规则的详细信息，默认情况下采用 JSON 格式。 如果失败，输出会改为显示错误消息。
 
 ## <a name="delete-firewall-rule"></a>删除防火墙规则
-若要撤销对服务器的某个 IP 范围的访问，可通过执行 [az postgres server firewall-rule delete](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_delete) 命令删除现有防火墙规则。 输入现有防火墙规则的名称。
+若要撤销对服务器的某个 IP 范围的访问，可通过执行 [az postgres server firewall-rule delete](/cli/azure/postgres/server/firewall-rule) 命令删除现有防火墙规则。 输入现有防火墙规则的名称。
 ```azurecli-interactive
 az postgres server firewall-rule delete --resource-group myresourcegroup --server-name mydemoserver --name AllowIpRange
 ```

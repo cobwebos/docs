@@ -2,19 +2,18 @@
 title: 使用 Azure 备份代理备份文件和文件夹
 description: 使用 Microsoft Azure 备份代理将 Windows 文件和文件夹备份到 Azure。 创建恢复服务保管库，安装备份代理，定义备份策略，以及对文件和文件夹运行初始备份。
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
-keywords: 备份保管库; 备份 Windows 服务器; 备份 windows;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
-ms.author: markgal
-ms.openlocfilehash: 8107af53a78960d29f506c77f8ba9697c7a49d1c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: raynew
+ms.openlocfilehash: 73074898c29a240e31b181025f8cc92f25de5061
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252898"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382742"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>通过 Resource Manager 部署模型将 Windows Server 或客户端备份到 Azure
 本文介绍如何通过 Resource Manager 部署模型使用 Azure 备份将 Windows Server（或 Windows 客户端）文件和文件夹备份到 Azure。
@@ -49,9 +48,9 @@ ms.locfileid: "51252898"
 
 6. 在“资源组”部分：
 
-    * 如果要创建新的资源组，请选择“新建”。
+    * 单击“选择现有...”  下拉菜单以查看可用的资源组列表。
     或
-    * 选择“使用现有项”，并单击下拉菜单查看可用的资源组列表。
+    * 如果要创建新的资源组，请选择“新建”。
 
   有关资源组的完整信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)。
 
@@ -71,21 +70,21 @@ ms.locfileid: "51252898"
 
 1. 在“恢复服务保管库”边栏选项卡中，单击新保管库。
 
-    ![在恢复服务保管库列表中选择新保管库](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
+    ![在恢复服务保管库列表中选择新保管库](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault.png)
 
-    选择保管库时，“恢复服务保管库”边栏选项卡会缩窄，“设置”边栏选项卡（*顶部有保管库的名称*）和保管库详细信息边栏选项卡会打开。
+    选择保管库时，“恢复服务保管库”边栏选项卡会缩窄，“概述”边栏选项卡（*顶部有保管库的名称*）和保管库详细信息边栏选项卡会打开。
 
-    ![查看新保管库的存储配置](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
+    ![查看新保管库的存储配置](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-overview.png)
 
-2. 在新保管库的“设置”边栏选项卡中，使用垂直滚动条向下滚动到“管理”部分，并单击“备份基础结构”。
+2. 在新保管库的“设置”部分中，转到“属性”。
 
-  此时会打开“备份基础结构”边栏选项卡。
+  此时“属性”边栏选项卡将打开。
 
-3. 在“备份基础结构”边栏选项卡中，单击“备份配置”打开“备份配置”边栏选项卡。
+3. 在“属性”边栏选项卡中，单击“备份配置”边栏选项卡下的“更新”。 此时“备份配置”边栏选项卡将打开。
 
-  ![设置新保管库的存储配置](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
+  ![设置新保管库的存储配置](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
-4. 为保管库选择合适的存储复制选项。
+4. 为保管库选择适当的存储复制选项，然后单击“保存”。
 
   ![存储配置选择](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
@@ -183,6 +182,8 @@ ms.locfileid: "51252898"
 备份策略是有关以下事项的计划：何时创建恢复点，以及恢复点保留的时间长度。 可以使用 Microsoft Azure 备份代理为文件和文件夹创建备份策略。
 
 ### <a name="to-create-a-backup-schedule"></a>创建备份计划
+
+在要备份的计算机上设置备份计划。 请注意，设置的备份时间可能不同于本地计算机时间，因为 Azure 备份不会采用夏令时 (DST)。
 1. 打开 Microsoft Azure 备份代理。 可以通过在计算机中搜索 **Microsoft Azure 备份**找到该代理。
 
     ![启动 Azure 备份代理](./media/backup-configure-vault/snap-in-search.png)

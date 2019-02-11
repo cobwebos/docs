@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 中配置资源所有者密码凭据流 | 
 description: 了解如何在 Azure AD B2C 中配置资源所有者密码凭据流。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 2ea9356f1292669f115d2bb482419435320f644c
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.subservice: B2C
+ms.openlocfilehash: ce65f71349ae6d7e86ebae1ee2067653a63b89b4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978819"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161050"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 中配置资源所有者密码凭据流
 
@@ -35,14 +35,17 @@ ms.locfileid: "50978819"
 - **服务器到服务器**：身份保护系统在交互过程中需要从调用方（本地客户端）收集的可靠 IP 地址。 在服务器端 API 调用中，仅使用服务器的 IP 地址。 如果超过了失败身份验证的动态阈值，则身份保护系统可能将重复的 IP 地址识别为攻击者。
 - **机密客户端流**：应用程序客户端 ID 已验证，但应用程序机密未验证。
 
-##  <a name="create-a-resource-owner-policy"></a>创建资源所有者策略
+##  <a name="create-a-resource-owner-user-flow"></a>创建资源所有者用户流
 
-1. 以 Azure AD B2C 租户的全局管理员身份登录 Azure 门户。
-2. 若要切换到 Azure AD B2C 租户，请在门户右上角选择 B2C 目录。
-3. 在“策略”下，选择“资源所有者策略”。
-4. 提供策略名称（例如 *ROPC_Auth*），然后选择“应用程序声明”。
-5. 选择应用程序所需的应用程序声明，例如 *Display Name*、*Email Address* 和 *Identity Provider*。
-6. 选择“确定”，然后选择“创建”。
+1.  以 Azure AD B2C 租户的全局管理员身份登录 Azure 门户。
+2.  若要切换到 Azure AD B2C 租户，请在门户右上角选择 B2C 目录。
+3.  单击“用户流”，然后选择“新建用户流”。
+4.  单击“全部”选项卡，然后选择“资源所有者”。
+5.  提供用户流名称，例如 ROPC_Auth。
+6.  在“应用程序声明”下，单击“显示更多”。
+7.  选择应用程序所需的应用程序声明，例如“显示名称”、“电子邮件”和“标识提供者”。
+8.  选择“确定”，然后选择“创建”。
+9.  单击“运行用户流”。
 
    你随后会看到一个终结点，如以下示例所示：
 
@@ -57,9 +60,9 @@ ms.locfileid: "50978819"
 4. 保留所有其他值不变，然后选择“创建”。
 5. 选择新应用程序，并记下应用程序 ID 供以后使用。
 
-## <a name="test-the-policy"></a>测试策略
+## <a name="test-the-user-flow"></a>测试用户流
 
-使用最喜欢的 API 开发应用程序来生成 API 调用，然后查看响应以调试策略。 使用下表中的信息构建如下所示的调用作为 POST 请求的正文：
+使用最喜欢的 API 开发应用程序来生成 API 调用，然后查看响应以调试用户流。 使用下表中的信息构建如下所示的调用作为 POST 请求的正文：
 - 将 *\<yourtenant.onmicrosoft.com>* 替换为 B2C 租户的名称。
 - 将 *\<B2C_1A_ROPC_Auth>* 替换为资源所有者密码凭据策略的全名。
 - 将 *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* 替换为注册时提供的应用程序 ID。

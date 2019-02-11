@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/13/2017
 ms.author: tamram
-ms.openlocfilehash: a7aaacf316799540a6a72b699ba8ea8bb389c8a8
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 026c399af70a0c97446fba28b5dd7ca1ed82b89c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
-ms.locfileid: "25984155"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635487"
 ---
 # <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>创建存储帐户并轮换其帐户访问密钥
 
@@ -39,7 +39,7 @@ ms.locfileid: "25984155"
 运行以下命令来删除资源组、存储帐户和所有相关资源。
 
 ```powershell
-Remove-AzureRmResourceGroup -Name rotatekeystestrg
+Remove-AzResourceGroup -Name rotatekeystestrg
 ```
 
 ## <a name="script-explanation"></a>脚本说明
@@ -48,11 +48,11 @@ Remove-AzureRmResourceGroup -Name rotatekeystestrg
 
 | 命令 | 说明 |
 |---|---|
-| [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) | 获取所有位置以及每个位置支持的资源提供程序。 |
-| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | 创建 Azure 资源组。 |
-| [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) | 创建存储帐户。 |
-| [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) | 获取 Azure 存储帐户的访问密钥。 |
-| [New-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/new-azurermstorageaccountkey) | 重新生成 Azure 存储帐户的访问密钥。 |
+| [Get-AzLocation](/powershell/module/az.resources/get-azlocation) | 获取所有位置以及每个位置支持的资源提供程序。 |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建 Azure 资源组。 |
+| [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | 创建存储帐户。 |
+| [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | 获取 Azure 存储帐户的访问密钥。 |
+| [New-AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) | 重新生成 Azure 存储帐户的访问密钥。 |
 
 ## <a name="next-steps"></a>后续步骤
 

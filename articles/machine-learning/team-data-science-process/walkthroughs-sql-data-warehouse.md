@@ -1,22 +1,22 @@
 ---
-title: 在 Azure 上使用 T-SQL 和 Python 的 SQL 数据仓库数据科学演练 | Microsoft Docs
+title: 使用 T-SQL、Python 对 SQL 数据仓库进行分析 - Team Data Science Process
 description: 演练如何使用 SQL 数据仓库进行预测分析的示例。
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 425b28a3bfff46de3cb37562be8c6f868117a421
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: c545e73e51ea33db1ced546bf47465197b3fb8e4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444982"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457626"
 ---
 # <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>在 Azure 上使用 T-SQL 和 Python 的 SQL 数据仓库数据科学演练
 

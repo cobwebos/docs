@@ -3,21 +3,21 @@ title: Azure AD 密码保护预览版
 description: 使用 Azure AD 密码保护预览版在本地 Active Directory 中禁止弱密码
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: ca412e94f65c7e1ed9a547ec9dcabc62fac7d42f
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: b99c1b99fe87c755d6092876ccd598d926289192
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741821"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077824"
 ---
-# <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>预览版：为 Windows Server Active Directory 实施 Azure AD 密码保护
+# <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>预览版：为 Windows Server Active Directory 强制执行 Azure AD 密码保护
 
 |     |
 | --- |

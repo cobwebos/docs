@@ -1,24 +1,24 @@
 ---
-title: 在 Azure Active Directory 中添加组织的隐私信息 | Microsoft Docs
-description: 如何在 Azure Active Directory (Azure AD) 的“属性”区域中添加组织的隐私信息。
+title: 添加组织的隐私信息 - Azure Active Directory | Microsoft Docs
+description: 有关如何在 Azure Active Directory“属性”区域中添加组织的隐私信息的顺明。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: lizross
 ms.reviewer: bpham
-ms.custom: it-pro
-ms.openlocfilehash: f32eeee8f02cee32eb05e14aa98387a20cb2e626
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: bfbb9a035c3f7a00de1610f1240448ff7b0b4abf
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48903728"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452592"
 ---
-# <a name="how-to-add-your-privacy-info-using-azure-active-directory"></a>操作说明：使用 Azure Active Directory 添加隐私信息
+# <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>使用 Azure Active Directory 添加组织的隐私信息
 本文介绍租户管理员如何通过 Azure 门户将与隐私相关的信息添加到组织的 Azure Active Directory (Azure AD) 租户。
 
 强烈建议添加你的全局隐私联系人和组织的隐私声明，以便内部员工和外部来宾可以查看你的策略。 由于隐私声明是为每个企业唯一创建和定制的，我们强烈建议你与律师联系以获取帮助。

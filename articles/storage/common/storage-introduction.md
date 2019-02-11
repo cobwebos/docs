@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: get-started-article
-ms.date: 07/11/2018
+ms.date: 01/02/2019
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: b1fb9be6c05edbd85a709632a001fe1c1b8b4c6c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: a82ea1e7f584cd9cab794d147c3f19f04e23732b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247783"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474796"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure 存储简介
 
@@ -22,7 +22,7 @@ Azure 存储是 Microsoft 提供的适用于现代数据存储场景的云存储
 - **持久且具有高可用性。** 冗余可确保数据在发生短暂的硬件故障时是安全的。 还可以选择在各个数据中心或地理区域之间复制数据，从而在发生本地灾难或自然灾害时提供额外的保护。 以此方式复制的数据在发生意外中断时将保持高可用性。 
 - **安全。** 该服务将对写入到 Azure 存储的所有数据进行加密。 Azure 存储可以精细地控制谁可以访问你的数据。
 - **可缩放。** Azure 存储设计为可大规模缩放以满足当今的应用程序在数据存储和性能方面的需求。 
-- **托管的。** Microsoft Azure 会替你处理维护和任何严重问题。
+- **托管的。** Microsoft Azure 为你处理硬件维护、更新和关键问题。
 - **易访问。** 可以通过 HTTP 或 HTTPS 从世界上的任何位置访问 Azure 存储中的数据。 Microsoft 以各种语言（NET、Java、Node.js、Python、PHP、Ruby、Go 和其他语言）提供了适用于 Azure 存储的 SDK 以及成熟的 REST API。 Azure 存储支持通过 Azure PowerShell 或 Azure CLI 运行脚本。 而且，Azure 门户和 Azure 存储资源管理器提供了用于处理数据的简单可视化解决方案。  
 
 ## <a name="azure-storage-services"></a>Azure 存储服务
@@ -31,8 +31,8 @@ Azure 存储包括以下数据服务：
 
 - [Azure Blob](../blobs/storage-blobs-introduction.md)：适用于文本和二进制数据的可大规模缩放的对象存储。
 - [Azure 文件](../files/storage-files-introduction.md)：适用于云或本地部署的托管文件共享。
-- [Azure 队列](../queues/storage-queues-introduction.md)：用于在应用程序组件之间进行可靠的消息传送的消息传送存储。 
-- [Azure 表](../tables/table-storage-overview.md)：一种 NoSQL 存储，适合用作结构化数据的无模式存储。
+- [Azure 队列](../queues/storage-queues-introduction.md)：用于在应用程序组件之间进行可靠的消息传送的消息存储。 
+- [Azure 表](../tables/table-storage-overview.md)：一种 NoSQL 存储，适合用作结构化数据的无架构存储。
 
 对每个服务的访问都通过存储帐户进行。 若要开始使用，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
 
@@ -50,7 +50,7 @@ Blob 存储最适合用于：
 
 可以通过 HTTP 或 HTTPS 从世界上的任何位置访问 Blob 存储中的对象。 用户或客户端应用程序可以通过 URL、[Azure 存储 REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage)、[Azure CLI](https://docs.microsoft.com/cli/azure/storage) 或 Azure 存储客户端库访问 Blob。 存储客户端库以多种语言提供，包括 [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client)、[Java](https://docs.microsoft.com/java/api/overview/azure/storage/client)、[Node.js](http://azure.github.io/azure-storage-node)、[Python](https://azure-storage.readthedocs.io/)、[PHP](http://azure.github.io/azure-storage-php/) 和 [Ruby](http://azure.github.io/azure-storage-ruby)。
 
-有关 Blob 存储的详细信息，请参阅 [Azure 中的对象存储简介](../blobs/storage-blobs-introduction.md)。
+有关 Blob 存储的详细信息，请参阅 [Blob 存储简介](../blobs/storage-blobs-introduction.md)。
 
 ## <a name="azure-files"></a>Azure 文件
 可以通过 [Azure 文件](../files/storage-files-introduction.md)设置可用性高的网络文件共享，以便使用标准的服务器消息块 (SMB) 协议对其进行访问。 这意味着，多个 VM 可以共享启用了读取和写入访问权限的相同文件。 也可使用 REST 接口或存储客户端库来读取文件。
@@ -89,30 +89,9 @@ Azure 存储还包括虚拟机使用的托管和非托管磁盘功能。 有关�
 
 ## <a name="types-of-storage-accounts"></a>存储帐户的类型
 
-下表显示了各种存储帐户，以及可以将哪些对象与每种帐户配合使用。
+[!INCLUDE [storage-account-types-include](../../../includes/storage-account-types-include.md)]
 
-|存储帐户的类型|通用标准|通用高级|Blob 存储（热访问层和冷访问层）|
-|-----|-----|-----|-----|
-|支持的服务| Blob 服务、文件服务、队列服务和表服务 | Blob 服务 | Blob 服务|
-|支持的 Blob 类型|块 Blob、页 Blob 和追加 Blob | 页 Blob | 块 Blob 和追加 Blob|
-
-### <a name="general-purpose-storage-accounts"></a>通用存储帐户
-
-有两类通用存储帐户。
-
-#### <a name="standard-storage"></a>标准存储
-
-使用最广泛的存储帐户是标准存储帐户，适用于所有类型的数据。 标准存储帐户使用磁介质来存储数据。
-
-#### <a name="premium-storage"></a>高级存储
-
-高级存储为主要用于 VHD 文件的页 Blob 提供高性能存储。 高级存储帐户使用 SSD 来存储数据。 Microsoft 建议对所有 VM 使用高级存储。
-
-### <a name="blob-storage-accounts"></a>Blob 存储帐户
-
-Blob 存储帐户是专用于存储块 Blob 和追加 Blob 的存储帐户。 不能在这些帐户中存储页 Blob，因此不能存储 VHD 文件。 这些帐户允许将访问层设置为“热”或“冷”；该层可以随时进行更改。
-
-热访问层用于频繁访问的文件 -- 所支付的存储费用较高，但 Blob 访问费用则要低得多。 对于存储在冷访问层中的 Blob，所支付的 Blob 访问费用较高，但存储费用则要低得多。
+有关存储帐户类型的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。 
 
 ## <a name="accessing-your-blobs-files-and-queues"></a>访问 Blob、文件和队列
 
@@ -161,16 +140,7 @@ SSE 自动加密所有性能层（标准和高级）、所有部署模型（Azur
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>将数据传输到和移出 Azure 存储
 
-可以使用 AzCopy 命令行实用程序在存储帐户内或跨存储帐户复制 Blob 和文件数据。 如需帮助，请参阅以下文章之一：
-
-* [使用 Windows 版 AzCopy 传输数据](storage-use-azcopy.md)
-* [使用 Linux 版 AzCopy 传输数据](storage-use-azcopy-linux.md)
-
-AzCopy 在 [Azure 数据移动库](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)的基础上构建，当前以预览版提供。
-
-可以使用 Azure 导入/导出服务将大量 Blob 数据导入或导出存储帐户。 你需要准备多个硬盘驱动器并将其邮寄到 Azure 数据中心，由该中心的人员将数据传入/传出硬盘驱动器，再将硬盘驱动器寄回给你。 有关导入/导出服务的详细信息，请参阅[使用 Microsoft Azure 导入/导出服务将数据传输到 Blob 存储中](../storage-import-export-service.md)。
-
-若要快速以低成本且可靠的方式将大量 Blob 数据导入到存储帐户中，还可以使用 Azure Data Box 磁盘。 Microsoft 通过区域运营商向你的数据中心发运最多 5 个容量为 40 TB 的加密固态磁盘 (SSD)。 你快速配置磁盘，通过 USB 连接将数据复制到磁盘，然后将磁盘发运回 Azure。 在 Azure 数据中心内，你的数据自动从驱动器上传到云。 有关此解决方案的详细信息，请转到 [Azure Data Box 磁盘概述](https://docs.microsoft.com/azure/databox/data-box-disk-overview)。
+有多个选项用于将数据移入或移出 Azure 存储。 选择哪个选项取决于数据集的大小和网络带宽。 有关详细信息，请参阅[选择 Azure 数据传输解决方案](storage-choose-data-transfer-solution.md)。
 
 ## <a name="pricing"></a>定价
 

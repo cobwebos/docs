@@ -7,18 +7,18 @@ author: Juliako
 manager: femila
 editor: ''
 ms.service: media-services
-ms.workload: ''
+ms.workload: na
 ms.topic: article
-ms.date: 11/21/2018
+ms.date: 01/22/2019
 ms.author: juliako
-ms.openlocfilehash: 598587a0fe726ccf65f062833f84b352ca03c077
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a1d52e0c6f87b9075d73508c97bd270d67d3ecf5
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315522"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817616"
 ---
-# <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明 
+# <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
 为了让大家随时了解最新的开发成果，本文将提供以下方面的信息：
 
@@ -26,7 +26,6 @@ ms.locfileid: "52315522"
 * 已知问题
 * Bug 修复
 * 已弃用的功能
-* 更改计划
 
 ## <a name="known-issues"></a>已知问题
 
@@ -34,6 +33,23 @@ ms.locfileid: "52315522"
 > 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI 或支持的 SDK 之一。
 
 有关详细信息，请参阅[有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md#known-issues)。
+
+## <a name="january-2019"></a>2019 年 1 月
+
+### <a name="media-encoder-standard-and-mpi-files"></a>Media Encoder Standard 和 MPI 文件 
+
+使用 Media Encoder Standard 编码生成 MP4 文件时，新的 .mpi 文件会生成并添加到输出资产中。 此 MPI 文件旨在提高动态打包和流式处理方案的性能。
+
+不应修改或删除该 MPI 文件，也不应在存在（或不存在）此类文件的情况下采用服务中的任何依赖项。
+
+## <a name="december-2018"></a>2018 年 12 月
+
+V3 API 的正式版中的更新包括：
+       
+* **AssetFilters** 和 **AccountFilters** 不再需要 **PresentationTimeRange** 属性。 
+* 已删除 **Jobs** 和 **Transforms** 的 $top 和 $skip 查询选项，并添加了 $orderby。 在添加新排序功能的过程中，我们发现之前意外地公开了 $top 和 $skip 选项，尽管它们并未实现。
+* 重新启用了枚举可扩展性。 此功能在 SDK 的预览版中已启用，但在正式版中被意外禁用。
+* 已重命名两个预定义的流式处理策略。 **SecureStreaming** 现在名为 **MultiDrmCencStreaming**。 **SecureStreamingWithFairPlay** 现在名为 **Predefined_MultiDrmStreaming**。
 
 ## <a name="november-2018"></a>2018 年 11 月
 

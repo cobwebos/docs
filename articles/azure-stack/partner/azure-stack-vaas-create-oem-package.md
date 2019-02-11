@@ -12,13 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
-ms.reviewer: John.Haskin
-ms.openlocfilehash: fc2659fb9bbe043a61f1ad49bb4290b7ccf834f8
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.reviewer: johnhas
+ms.lastreviewed: 11/26/2018
+ROBOTS: NOINDEX
+ms.openlocfilehash: 415cdecc33b7360d482d37a3cb9d4f1bce528ab1
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422008"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251786"
 ---
 # <a name="create-an-oem-package"></a>创建一个 OEM 包
 
@@ -28,7 +30,7 @@ Azure Stack OEM 扩展包是由哪个 OEM 特定的内容添加到 Azure Stack �
 
 ## <a name="creating-the-package"></a>创建包
 
-创建并验证后，可以在 VaaS 使用 OEM 扩展包。  在继续之前，确保已完成的步骤[创建一个 OEM 包](https://microsoft.sharepoint.com/:w:/r/teams/cloudsolutions/Sacramento/_layouts/15/Doc.aspx?sourcedoc=%7BD7406069-7661-419C-B3B1-B6A727AB3972%7D&file=Azure%20Stack%20OEM%20Extension%20Package.docx&action=default&mobileredirect=true)。 然后将包提交给 Microsoft 以及 VaaS 测试结果以在包验证工作流中的登录。 以下步骤详细说明了如何绑定到单个 zip 文件 VaaS 可使用生成的文件。
+创建并验证后，可以在 VaaS 使用 OEM 扩展包。  在继续之前，确保已完成的步骤[创建一个 OEM 包](https://microsoft.sharepoint.com/:w:/r/teams/cloudsolutions/Sacramento/_layouts/15/Doc.aspx?sourcedoc=%7BD7406069-7661-419C-B3B1-B6A727AB3972%7D&file=Azure%20Stack%20OEM%20Extension%20Package.docx&action=default&mobileredirect=true)。 然后将包提交给 Microsoft 以及以解决方案验证工作流中的登录 VaaS 测试结果。 以下步骤详细说明了如何绑定到单个 zip 文件 VaaS 可使用生成的文件。
 
 1. 标识包的以下内容：
     - 名为可执行文件 `<Publisher>-<Model>-<Version>.exe`
@@ -49,7 +51,7 @@ Azure Stack OEM 扩展包是由哪个 OEM 特定的内容添加到 Azure Stack �
 
 ![正确压缩的包内容](media/vaas-create-oem-package-3.png)
 
-可上传到 VaaS 和包验证工作流中由 Microsoft 签名的 zip 文件。
+可上传到 VaaS 和由 Microsoft 签名解决方案验证工作流中的 zip 文件。
 
 ## <a name="next-steps"></a>后续步骤
 

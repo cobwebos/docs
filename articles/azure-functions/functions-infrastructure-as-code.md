@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: d63686524c619b349a590c389e20e473b0d98641
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 488b3797c7e18855a60b84a77a05e4e0a5654475
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091466"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023647"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
@@ -36,6 +36,12 @@ ms.locfileid: "44091466"
 * [Azure 存储](../storage/index.yml)帐户
 * 托管计划（消耗计划或应用服务计划）
 * 函数应用 
+
+有关这些资源的 JSON 语法和属性，请参阅：
+
+* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+* [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)
+* [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)
 
 ### <a name="storage-account"></a>存储帐户
 
@@ -167,7 +173,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ## <a name="deploy-a-function-app-on-the-app-service-plan"></a>基于应用服务计划部署函数应用
 
-在应用服务计划中，函数应用在基本、标准和高级 SKU 中的专用 VM 上运行，类似于 Web 应用。 如需详细了解如何使用应用服务计划，请参阅 [Azure 应用服务计划深入概述](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 
+在应用服务计划中，函数应用在基本、标准和高级 SKU 中的专用 VM 上运行，类似于 Web 应用。 如需详细了解如何使用应用服务计划，请参阅 [Azure 应用服务计划深入概述](../app-service/overview-hosting-plans.md)。 
 
 有关 Azure 资源管理器模板示例，请参阅[基于 Azure 应用服务计划的函数应用]。
 
@@ -269,13 +275,13 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 以下示例使用 Markdown：
 
 ```markdown
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>)
+[![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>)
 ```
 
 以下示例使用 HTML：
 
 ```html
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"></a>
 ```
 
 ## <a name="next-steps"></a>后续步骤

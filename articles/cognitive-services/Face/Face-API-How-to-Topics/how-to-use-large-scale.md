@@ -6,16 +6,16 @@ services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: e8bbf78da84ddb77ce956e37f91be46e96144991
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 9289f7178a6e285b447041937f191d283fc2f2f0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123073"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222892"
 ---
 # <a name="example-how-to-use-the-large-scale-feature"></a>示例：如何使用大规模功能
 
@@ -41,8 +41,8 @@ LargePersonGroup 最多可以包含 1,000,000 人，每人最多 248 张面部�
 
 - LargePersonGroup：人员集合，容量高达 1,000,000。
 - LargeFaceList：人脸集合，容量高达 1,000,000。
-- 定型：一个预处理过程，用于确保 Identification/FindSimilar 的性能。
-- Identification：从 PersonGroup 或 LargePersonGroup 中识别一张或多张人脸。
+- 训练：一个预处理过程，用于确保 Identification/FindSimilar 的性能。
+- 识别：从 PersonGroup 或 LargePersonGroup 中识别一张或多张人脸。
 - FindSimilar：从 FaceList 或 LargeFaceList 中搜索相似的人脸。
 
 ## <a name="step-1-authorize-the-api-call"></a>步骤 1：授权 API 调用
@@ -212,7 +212,7 @@ using (Stream stream = File.OpenRead(QueryImagePath))
 如上所示，数据管理和 FindSimilar 部分几乎一样。
 唯一的例外是，全新的预处理定型操作必须在 LargeFaceList 中完成，然后 FindSimilar 才能正常工作。
 
-## <a name="step-3-train-suggestions"></a>步骤 3：定型建议
+## <a name="step-3-train-suggestions"></a>步骤 3：训练建议
 
 尽管定型操作可加快 [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) 和 [Identification](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)，但定型时间非常煎熬，尤其是涉及大规模操作时。
 下表列出了不同规模的估计定型时间：

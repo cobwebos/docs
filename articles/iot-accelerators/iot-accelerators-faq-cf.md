@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: e9e88fc9aa3aad902c140ac176e31571b9e55ee3
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: ef55f25657d1decb09e438d443e7c289823f7d9d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353735"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605902"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>连接的工厂解决方案加速器的常见问题解答
 
@@ -27,7 +27,7 @@ ms.locfileid: "49353735"
 
 ### <a name="what-is-opc-ua"></a>OPC UA 是什么？
 
-OPC 统一体系结构 (UA) 发布于 2008 年，是一种独立于平台、以服务为导向的互操作性标准。 OPC UA 为工业电脑、PLC 和传感器等多种行业体系和设备所采用。 OPC UA 将 OPC 经典规范的功能集成到一种具有内置安全性的可扩展框架。 它是一种由 OPC 基金会倡导的标准。 [OPC 基金会](http://opcfoundation.org/)是一个拥有 440 多个成员的非营利性组织。 组织的目标是使用 OPC 规范通过以下方面促进多供应商、多平台的安全可靠互操作性：
+OPC 统一体系结构 (UA) 发布于 2008 年，是一种独立于平台、以服务为导向的互操作性标准。 OPC UA 为工业电脑、PLC 和传感器等多种行业体系和设备所采用。 OPC UA 将 OPC 经典规范的功能集成到一种具有内置安全性的可扩展框架。 它是一种由 OPC 基金会倡导的标准。 [OPC 基金会](https://opcfoundation.org/)是一个拥有 440 多个成员的非营利性组织。 组织的目标是使用 OPC 规范通过以下方面促进多供应商、多平台的安全可靠互操作性：
 
 * 基础结构
 * 规范
@@ -78,7 +78,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 1. 若要启动所有模拟容器：
     * 导出名称为 IOTHUB_CONNECTIONSTRING 的 shell 变量。 使用 `<name of your deployment>.config.user` 文件中 IotHubOwnerConnectionString 设置的值。 例如：
 
-        ```
+        ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
         ```
 
@@ -142,7 +142,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 若要在连接的工厂解决方案中启用互动地图，必须具有 Azure Maps 帐户。
 
-从 [www.azureiotsolutions.com](http://www.azureiotsolutions.com) 部署时，部署过程会将 Azure Maps 帐户添加到包含解决方案加速器服务的资源组。
+从 [www.azureiotsolutions.com](https://www.azureiotsolutions.com) 部署时，部署过程会将 Azure Maps 帐户添加到包含解决方案加速器服务的资源组。
 
 在连接的工厂 GitHub 存储库中使用 `build.ps1` 脚本进行部署时，请将生成窗口中的环境变量 `$env:MapApiQueryKey` 设置为 [Azure Maps 帐户的密钥](../azure-maps/how-to-manage-account-keys.md)。 互动地图随后会自动启用。
 
@@ -174,15 +174,15 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
     ```json
     [
-      {
-        "ApplicationUri": "<the_value_of_OpcUri_of_your_station",
-        "DisplayName": "<name_of_the_datapoint>",
-        "NodeId": "value_of_NodeId_of_your_datapoint_in_the_station",
-        "Value": {
-          "Value": <datapoint_value>,
-          "SourceTimestamp": "<timestamp>"
-        }
-      }
+      {
+        "ApplicationUri": "<the_value_of_OpcUri_of_your_station",
+        "DisplayName": "<name_of_the_datapoint>",
+        "NodeId": "value_of_NodeId_of_your_datapoint_in_the_station",
+        "Value": {
+          "Value": <datapoint_value>,
+          "SourceTimestamp": "<timestamp>"
+        }
+      }
     ]
     ```
 

@@ -1,5 +1,5 @@
 ---
-title: Azure DC/OS 群集中的负载均衡容器
+title: （已弃用）Azure DC/OS 群集中的负载均衡容器
 description: 在 Azure 容器服务 DC/OS 群集中跨多容器进行负载均衡。
 services: container-service
 author: rgardler
@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 8e8ad913c6e5b8e947b17ed8920285de3fcfd8ae
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1e4c978a8767154fb6a1f9a822cb0dd8d1b8796e
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964354"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331021"
 ---
-# <a name="load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>Azure 容器服务 DC/OS 群集中的负载均衡容器
+# <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>（已弃用）在 Azure 容器服务 DC/OS 群集中对容器进行负载均衡
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 本文将探讨如何使用 Marathon-LB 在 DC/OS 托管 Azure 容器服务中创建内部负载均衡器。 利用此配置可水平扩展应用程序。 还能通过将负载均衡器和应用程序容器分别放在公共群集和专用群集上来利用公共和专用代理群集。 在本教程中：
 

@@ -2,19 +2,18 @@
 title: Azure 备份的 Log Analytics 数据模型
 description: 本文介绍 Azure 备份数据的 Log Analytics 数据模型详细信息。
 services: backup
-author: adiganmsft
+author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/24/2017
 ms.author: adigan
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f9cdb11bad5d4aa94fdc083a0fc7dc6a2c5787cd
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5921ca696076a16e39252a6cb3bfae98854b5a85
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635146"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299566"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure 备份数据的 Log Analytics 数据模型
 使用 Log Analytics 数据模型可以创建报告。 使用数据模型可以创建自定义的查询和仪表板，但也可以根据需要自定义 Azure 备份数据。
@@ -25,12 +24,12 @@ ms.locfileid: "52635146"
 ### <a name="alert"></a>警报
 此表提供警报相关字段的详细信息。
 
-| 字段 | 数据类型 | Description |
+| 字段 | 数据类型 | 说明 |
 | --- | --- | --- |
 | AlertUniqueId_s |文本 |生成的警报的唯一标识符 |
 | AlertType_s |文本 |警报的类型，例如 Backup |
 | AlertStatus_s |文本 |警报的状态，例如 Active |
-| AlertOccurenceDateTime_s |日期/时间 |警报的创建日期和时间 |
+| AlertOccurrenceDateTime_s |日期/时间 |警报的创建日期和时间 |
 | AlertSeverity_s |文本 |警报的严重性，例如 Critical |
 | EventName_s |文本 |事件的名称。 始终为 AzureBackupCentralReport |
 | BackupItemUniqueId_s |文本 |与警报关联的备份项的唯一标识符 |
@@ -52,7 +51,7 @@ ms.locfileid: "52635146"
 ### <a name="backupitem"></a>BackupItem
 此表提供备份项相关字段的详细信息。
 
-| 字段 | 数据类型 | Description |
+| 字段 | 数据类型 | 说明 |
 | --- | --- | --- |
 | EventName_s |文本 |事件的名称。 始终为 AzureBackupCentralReport |  
 | BackupItemUniqueId_s |文本 |备份项的唯一标识符 |
@@ -78,7 +77,7 @@ ms.locfileid: "52635146"
 ### <a name="backupitemassociation"></a>BackupItemAssociation
 此表提供有关备份项与各个实体之间的关联的详细信息。
 
-| 字段 | 数据类型 | Description |
+| 字段 | 数据类型 | 说明 |
 | --- | --- | --- |
 | EventName_s |文本 |此字段表示此事件的名称，始终为 AzureBackupCentralReport |  
 | BackupItemUniqueId_s |文本 |备份项的唯一 ID |
@@ -101,7 +100,7 @@ ms.locfileid: "52635146"
 ### <a name="job"></a>作业
 此表提供作业相关字段的详细信息。
 
-| 字段 | 数据类型 | Description |
+| 字段 | 数据类型 | 说明 |
 | --- | --- | --- |
 | EventName_s |文本 |事件的名称。 始终为 AzureBackupCentralReport |
 | BackupItemUniqueId_s |文本 |备份项的唯一标识符 |
@@ -131,7 +130,7 @@ ms.locfileid: "52635146"
 ### <a name="policy"></a>策略
 此表提供策略相关字段的详细信息。
 
-| 字段 | 数据类型 | Description |
+| 字段 | 数据类型 | 说明 |
 | --- | --- | --- |
 | EventName_s |文本 |此字段表示此事件的名称，始终为 AzureBackupCentralReport |
 | SchemaVersion_s |文本 |此字段表示架构的当前版本，值为 **V1** |
@@ -171,7 +170,7 @@ ms.locfileid: "52635146"
 ### <a name="policyassociation"></a>PolicyAssociation
 此表提供有关策略与各个实体之间的关联的详细信息。
 
-| 字段 | 数据类型 | Description |
+| 字段 | 数据类型 | 说明 |
 | --- | --- | --- |
 | EventName_s |文本 |此字段表示此事件的名称，始终为 AzureBackupCentralReport |
 | SchemaVersion_s |文本 |此字段表示架构的当前版本，值为 **V1** |
@@ -192,7 +191,7 @@ ms.locfileid: "52635146"
 ### <a name="protectedserver"></a>ProtectedServer
 此表提供了受保护服务器相关字段的详细信息。
 
-| 字段 | 数据类型 | Description |
+| 字段 | 数据类型 | 说明 |
 | --- | --- | --- |
 | EventName_s |文本 |此字段表示此事件的名称，始终为 AzureBackupCentralReport |
 | ProtectedServerName_s |文本 |受保护的服务器的名称 |
@@ -217,7 +216,7 @@ ms.locfileid: "52635146"
 ### <a name="protectedserverassociation"></a>ProtectedServerAssociation
 此表提供有关受保护服务器与其他实体之间的关联的详细信息。
 
-| 字段 | 数据类型 | Description |
+| 字段 | 数据类型 | 说明 |
 | --- | --- | --- |
 | EventName_s |文本 |此字段表示此事件的名称，始终为 AzureBackupCentralReport |
 | SchemaVersion_s |文本 |此字段表示架构的当前版本，值为 **V1** |
@@ -238,7 +237,7 @@ ms.locfileid: "52635146"
 ### <a name="storage"></a>存储
 此表提供存储相关字段的详细信息。
 
-| 字段 | 数据类型 | Description |
+| 字段 | 数据类型 | 说明 |
 | --- | --- | --- |
 | CloudStorageInBytes_s |十进制数 |备份所用的云备份存储量，基于最新值进行计算 |
 | ProtectedInstances_s |十进制数 |用于计算账单中前端存储量的受保护实例的数目，基于最新值进行计算 |
@@ -261,7 +260,7 @@ ms.locfileid: "52635146"
 ### <a name="vault"></a>保管库
 此表提供保管库相关字段的详细信息。
 
-| 字段 | 数据类型 | Description |
+| 字段 | 数据类型 | 说明 |
 | --- | --- | --- |
 | EventName_s |文本 |此字段表示此事件的名称，始终为 AzureBackupCentralReport |
 | SchemaVersion_s |文本 |此字段表示架构的当前版本，值为 **V1** |
@@ -281,4 +280,4 @@ ms.locfileid: "52635146"
 | ResourceType |文本 |正在收集其数据的资源类型。 例如 Vaults |
 
 ## <a name="next-steps"></a>后续步骤
-查看用于创建 Azure 备份报告的数据模型后，可以开始在 Log Analytics 中[创建仪表板](../azure-monitor/platform/dashboards.md)。
+查看用于创建 Azure 备份报告的数据模型后，可以开始在 Log Analytics 中[创建仪表板](../azure-monitor/learn/tutorial-logs-dashboards.md)。

@@ -9,21 +9,20 @@ ms.assetid: 10ca7d9a-7715-4446-bf59-2d2876584550
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7c6751a0432d66aee0ff3056b212dc1b348e333f
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 433a8b2f9fb1f4c4599afbb807e9270992a98a52
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045820"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331531"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](data-factory-on-premises-mongodb-connector.md)
+> * [版本 1](data-factory-on-premises-mongodb-connector.md)
 > * [版本 2（当前版本）](../connector-mongodb.md)
 
 > [!NOTE]
@@ -32,7 +31,7 @@ ms.locfileid: "37045820"
 
 本文介绍如何使用 Azure 数据工厂中的复制活动从本地 MongoDB 数据库移动数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
 
-可以将数据从本地 MongoDB 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 MongoDB 数据存储移至其他数据存储，而不支持将数据从其他数据存储移至 MongoDB 数据存储。 
+可以将数据从本地 MongoDB 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 MongoDB 数据存储移至其他数据存储，而不支持将数据从其他数据存储移至 MongoDB 数据存储。
 
 ## <a name="prerequisites"></a>先决条件
 若要使 Azure 数据工厂服务能够连接到本地 MongoDB 数据库，必须安装以下组件：
@@ -48,17 +47,17 @@ ms.locfileid: "37045820"
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 MongoDB 数据存储移动数据。
 
-创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+创建管道的最简单方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-也可以使用以下工具创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+还可以使用以下工具来创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
-无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储： 
+无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
 1. 创建链接服务可将输入和输出数据存储链接到数据工厂。
-2. 创建数据集以表示复制操作的输入和输出数据。 
-3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 
+2. 创建数据集以表示复制操作的输入和输出数据。
+3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。
 
-使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从本地 MongoDB 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 MongoDB 复制到 Azure Blob](#json-example-copy-data-from-mongodb-to-azure-blob) 部分。 
+使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从本地 MongoDB 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 MongoDB 复制到 Azure Blob](#json-example-copy-data-from-mongodb-to-azure-blob) 部分。
 
 对于特定于 MongoDB 源的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息：
 
@@ -69,7 +68,7 @@ ms.locfileid: "37045820"
 | --- | --- | --- |
 | type |type 属性必须设置为：**OnPremisesMongoDb** |是 |
 | server |MongoDB 服务器的 IP 地址或主机名。 |是 |
-| port |MongoDB 服务器用于侦听客户端连接的 TCP 端口。 |（可选）默认值：27017 |
+| port |MongoDB 服务器用于侦听客户端连接的 TCP 端口。 |可选，默认值：27017 |
 | authenticationType |Basic 或 Anonymous。 |是 |
 | username |用于访问 MongoDB 的用户帐户。 |是（如果使用基本身份验证）。 |
 | password |用户密码。 |是（如果使用基本身份验证）。 |
@@ -126,11 +125,11 @@ ms.locfileid: "37045820"
         "typeProperties":
         {
             "authenticationType": "<Basic or Anonymous>",
-            "server": "< The IP address or host name of the MongoDB server >",  
+            "server": "< The IP address or host name of the MongoDB server >",
             "port": "<The number of the TCP port that the MongoDB server uses to listen for client connections.>",
             "username": "<username>",
             "password": "<password>",
-           "authSource": "< The database that you want to use to check your credentials for authentication. >",
+            "authSource": "< The database that you want to use to check your credentials for authentication. >",
             "databaseName": "<database name>",
             "gatewayName": "<mygateway>"
         }
@@ -152,16 +151,16 @@ ms.locfileid: "37045820"
 }
 ```
 
-**MongoDB 输入数据集：** 设置“external”: ”true”将告知数据工厂服务：表在数据工厂外部且不由数据工厂中的活动生成。
+**MongoDB 输入数据集：** 设置“external”：true 将告知数据工厂服务：表在数据工厂外部且不由数据工厂中的活动生成。
 
 ```json
 {
-     "name":  "MongoDbInputDataset",
+    "name": "MongoDbInputDataset",
     "properties": {
         "type": "MongoDbCollection",
         "linkedServiceName": "OnPremisesMongoDbLinkedService",
         "typeProperties": {
-            "collectionName": "<Collection name>"    
+            "collectionName": "<Collection name>"
         },
         "availability": {
             "frequency": "Hour",
@@ -247,7 +246,7 @@ ms.locfileid: "37045820"
                 "typeProperties": {
                     "source": {
                         "type": "MongoDbSource",
-                        "query": "$$Text.Format('select * from  MyTable where LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)"
+                        "query": "$$Text.Format('select * from MyTable where LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)"
                     },
                     "sink": {
                         "type": "BlobSink",
@@ -297,7 +296,7 @@ Azure 数据工厂服务通过使用 MongoDB 集合中最新的 100 个文档来
 | MongoDB 类型 | .NET Framework 类型 |
 | --- | --- |
 | 二进制 |Byte[] |
-| 布尔 |布尔 |
+| Boolean |Boolean |
 | 日期 |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
@@ -310,7 +309,7 @@ Azure 数据工厂服务通过使用 MongoDB 集合中最新的 100 个文档来
 > [!NOTE]
 > 若要了解对使用虚拟表的数组的支持，请参阅以下[支持使用虚拟表的复杂类型](#support-for-complex-types-using-virtual-tables)一节。
 
-目前，不支持以下 MongoDB 数据类型：DBPointer、JavaScript、Max/Min key、Regular Expression、Symbol、Timestamp、Undefined
+目前不支持以下 MongoDB 数据类型：DBPointer、JavaScript、最大/最小键、正则表达式、符号、时间戳、未定义
 
 ## <a name="support-for-complex-types-using-virtual-tables"></a>支持使用虚拟表的复杂类型
 Azure 数据工厂使用内置的 ODBC 驱动程序连接到 MongoDB 数据库，并从中复制数据。 对于数组或文档间不同类型的对象等复杂类型，该驱动程序会将数据重新标准化到相应虚拟表中。 具体而言，如果表中包含此类列，该驱动程序会生成以下虚拟表：

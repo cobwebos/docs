@@ -7,6 +7,16 @@ items:
     href: Overview/overview.md
 - name: 快速入门
   items:
+  - name: 创建新的知识库
+    href: How-To/create-knowledge-base.md
+  - name: 发布知识库
+    href: How-To/publish-knowledge-base.md
+  - name: 从知识库中获取答案
+    items:
+    - name: 使用 Postman
+      href: Quickstarts/get-answer-from-kb-using-postman.md
+    - name: 使用 cURL
+      href: Quickstarts/get-answer-from-kb-using-cURL.md
   - name: 使用 REST API
     items:
     - name: 创建新的知识库
@@ -73,13 +83,9 @@ items:
     items:
     - name: 创建并发布知识库
       href: Quickstarts/create-publish-knowledge-base.md
-    - name: 创建知识库
-      href: How-To/create-knowledge-base.md
     - name: 向知识库添加聊天内容
       href: How-to/chit-chat-knowledge-base.md
-    - name: 将元数据与 GenerateAnswer API 配合使用
-      href: How-To/metadata-generateanswer-usage.md
-    - name: 从预览版迁移知识库
+    - name: 迁移知识库
       href: Tutorials/migrate-knowledge-base.md
     - name: 编辑知识库
       href: How-To/edit-knowledge-base.md
@@ -87,13 +93,15 @@ items:
       href: How-To/collaborate-knowledge-base.md
     - name: 以另一种语言创建知识库
       href: How-To/language-knowledge-base.md
-    - name: 发布知识库
-      href: How-To/publish-knowledge-base.md
     - name: 测试知识库
       href: How-To/test-knowledge-base.md
-  - name: 与其他服务集成
+    - name: 使用主动学习改进知识库
+      href: How-to/improve-knowledge-base.md
+  - name: 使用知识库
     items:
-    - name: 集成 QnA Maker 和 LUIS
+    - name: 将元数据与 GenerateAnswer API 配合使用
+      href: How-To/metadata-generateanswer-usage.md
+    - name: 使用机器人
       href: Tutorials/integrate-qnamaker-luis.md
   - name: 管理服务
     items:
@@ -136,6 +144,28 @@ items:
   - name: HTTP 响应代码
     displayName: 200, 2xx, 400, 401, 403, 404
     href: http-response-codes.md
+  - name: SDK
+    items:
+    - name: C#
+      items:
+      - name: NuGet
+        href: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/
+    - name: Go
+      items:
+      - name: SDK 中 IsInRole 中的声明
+        href: https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v4.0/qnamaker
+    - name: Node.js
+      items:
+      - name: NPM
+        href: https://www.npmjs.com/package/azure-cognitiveservices-qnamaker
+    - name: Python
+      items:
+      - name: Pip
+        href: https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/
+    - name: Ruby
+      items:
+      - name: Gem
+        href: https://rubygems.org/gems/azure_cognitiveservices_qnamaker
 - name: 资源
   items:
   - name: 区域可用性
@@ -154,9 +184,9 @@ items:
     href: https://docs.microsoft.com/search/index?search=QnAMaker
   - name: 博客
     href: https://blog.botframework.com/category/QnAMaker/
-ms.openlocfilehash: e9adfa628172efa5417a14202e5f5832088fedca
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: bf02f89a0a3269552f53d1f17adad3f6003dbbee
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835754"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818560"

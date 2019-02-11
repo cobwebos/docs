@@ -8,19 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 49aad8b1-3e05-4588-956c-6fdd7715cda1
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 1b6f157ce8a184885fcd1cd6bbde912516916db9
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: fc625192464dce174b4c2a6d8a2a98343519699f
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52429722"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186117"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>使用 System Center Operations Manager 运行状况检查（预览版）解决方案优化环境
 
@@ -99,7 +97,7 @@ Log Analytics 基于工作负荷的管理包生成，提供增值服务。 每�
 2. 在“分发”选项卡上，单击“选定的计算机”框旁边的“添加”，添加要将该帐户分发到的管理服务器。  单击“确定”两次以保存更改。
 3. 在“运行方式配置”下，单击“配置文件”。
 4. 搜索“SCOM 评估配置文件”。
-5. 配置文件名应为：“Microsoft System Center Advisor SCOM 评估运行方式配置文件”。
+5. 配置文件名称应为：“Microsoft System Center Advisor SCOM 评估运行方式配置文件”。
 6. 右键单击该配置文件并更新其属性，添加最近创建的运行方式帐户。
 
 ### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>向运行方式帐户授予具体权限的 SQL 脚本
@@ -161,7 +159,7 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>为特定的管理服务器启用规则
 
 1. 在 Operations Manager 操作控制台的“创作”工作区的“规则”窗格中，搜索规则“Microsoft System Center Advisor SCOM 评估运行评估规则”。
-2. 在搜索结果中，选择包含“类型: 管理服务器”字样的规则。
+2. 在搜索结果中，选择包含文本“类型:管理服务器”的规则。
 3. 右键单击该规则，并单击“重写” > “对于类为管理服务器的特定对象”。
 4.  在可用管理服务器列表中，选择要在其上运行该规则的管理服务器。  这应该是前面配置的，要与运行方式帐户关联的同一个管理服务器。
 5.  请务必将“已启用”参数值的重写值更改为 **True**。<br><br> ![重写参数](./media/scom-assessment/rule.png)
@@ -173,7 +171,7 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 评估默认配置为每隔 10,080 分钟（即七天）运行一次。 最小可以将该值重写为 1440 分钟（即一天）。 该值表示连续运行评估的最小间隔时间。 若要重写该间隔，请使用以下步骤。
 
 1. 在 Operations Manager 控制台的“创作”工作区的“规则”部分中，搜索规则“Microsoft System Center Advisor SCOM 评估运行评估规则”。
-2. 在搜索结果中，选择包含“类型: 管理服务器”字样的规则。
+2. 在搜索结果中，选择包含文本“类型:管理服务器”的规则。
 3. 右键单击该规则，并单击“重写规则” > “对于类为管理服务器的所有对象”。
 4. 将“间隔”参数值更改为所需的间隔值。 在以下示例中，该值设置为 1440 分钟（一天）。<br><br> ![间隔参数](./media/scom-assessment/interval.png)<br>  
 
@@ -238,7 +236,7 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
     ```
 
     >[!NOTE]
-    > 如果工作区已升级到[新 Log Analytics 查询语言](../../log-analytics/log-analytics-queries.md)，则上述查询会更改为如下所示。
+    > 如果工作区已升级到[新 Log Analytics 查询语言](../../azure-monitor/log-query/log-query-overview.md)，则上述查询会更改为如下所示。
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -263,7 +261,7 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
     ```
 
     >[!NOTE]
-    > 如果工作区已升级到[新 Log Analytics 查询语言](../../log-analytics/log-analytics-queries.md)，则上述查询会更改为如下所示。
+    > 如果工作区已升级到[新 Log Analytics 查询语言](../../azure-monitor/log-query/log-query-overview.md)，则上述查询会更改为如下所示。
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -304,4 +302,4 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [搜索日志](../../log-analytics/log-analytics-queries.md)以了解如何分析详细的 System Center Operations Manager 运行状况检查数据和建议。
+- [搜索日志](../../azure-monitor/log-query/log-query-overview.md)以了解如何分析详细的 System Center Operations Manager 运行状况检查数据和建议。

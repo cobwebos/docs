@@ -1,21 +1,22 @@
 ---
-title: 使用 Node.js 以编程方式生成 LUIS 应用 | Microsoft Docs
+title: 使用 Node.js 导入陈述
 titleSuffix: Azure
 description: 了解如何使用 LUIS Authoring API 以编程方式从 CSV 格式的预先存在数据生成 LUIS 应用。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: 729e19deb5efc91fb874214299f34fbb46d9bbdc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e4b1e9bcdedd802b1937aad25027a1ab8546f674
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034036"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495490"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>使用 Node.js 以编程方式生成 LUIS 应用
 
@@ -25,7 +26,7 @@ LUIS 提供与 [LUIS](luis-reference-regions.md) 网站功能相同的编程 API
 
 * 登录 [LUIS](luis-reference-regions.md) 网站，并在“帐户设置”中找到[创作密钥](luis-concept-keys.md#authoring-key)。 使用此密钥调用 Authoring API。
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 本教程从用户请求的一家虚拟公司的 CSV 格式日志文件开始。 可从[此处](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/IoT.csv)下载。
+* 本教程从用户请求的一家虚拟公司的 CSV 格式日志文件开始。 可从[此处](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv)下载。
 * 使用 NPM 安装最新的 Node.js。 从[此处](https://nodejs.org/en/download/)下载它。
 * **[建议]** 用于 IntelliSense 和调试的 Visual Studio Code 可从[此处](https://code.visualstudio.com/)免费下载。
 
@@ -34,12 +35,12 @@ LUIS 提供与 [LUIS](luis-reference-regions.md) 网站功能相同的编程 API
 
 打开 `IoT.csv` 文件。 它包含对虚构家庭自动化服务的用户查询日志，包括分类方式、用户所说的内容以及一些包含有用信息的列。 
 
-![CSV 文件](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
+![预先存在数据的 CSV 文件](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
 
 可以看到“RequestType”列可能是意向，“Request”列显示了一个示例陈述。 如果其他字段出现在陈述中，则可能是实体。 由于有意向、实体和示例陈述，因此需要一个简单的示例应用。
 
 ## <a name="steps-to-generate-a-luis-app-from-non-luis-data"></a>从非 LUIS 数据生成 LUIS 应用的步骤
-若要从源文件生成新的 LUIS 应用，首先分析 CSV 文件中的数据并将此数据转换为可以使用 Authoring API 将其上传到 LUIS 的格式。 从已分析的数据，收集存在的意向和实体的信息。 然后进行 API 调用，以创建应用，并添加从已分析的数据收集的意向和实体。 创建 LUIS 应用后，可以从已分析的数据中添加示例陈述。 可以在下面的代码的最后一部分看到此流程。 复制或[下载](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/index.js)此代码并将其保存在 `index.js`。
+若要从源文件生成新的 LUIS 应用，首先分析 CSV 文件中的数据并将此数据转换为可以使用 Authoring API 将其上传到 LUIS 的格式。 从已分析的数据，收集存在的意向和实体的信息。 然后进行 API 调用，以创建应用，并添加从已分析的数据收集的意向和实体。 创建 LUIS 应用后，可以从已分析的数据中添加示例陈述。 可以在下面的代码的最后一部分看到此流程。 复制或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/index.js)此代码并将其保存在 `index.js`。
 
    [!code-javascript[Node.js code for calling the steps to build a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/index.js)]
 
@@ -69,33 +70,33 @@ LUIS 提供与 [LUIS](luis-reference-regions.md) 网站功能相同的编程 API
         }
 ```
 
-在此示例中，`intentName` 来自 CSV 文件中“Request”列标题下的用户请求，`entityName` 来自具有密钥信息的其他列。 例如，如果有“操作”或“设备”条目，并且该字符串也出现在实际请求中，则可将其标记为实体。 下面的代码演示此分析过程。 可以复制或[下载](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_parse.js)它并将其保存在 `_parse.js`。
+在此示例中，`intentName` 来自 CSV 文件中“Request”列标题下的用户请求，`entityName` 来自具有密钥信息的其他列。 例如，如果有“操作”或“设备”条目，并且该字符串也出现在实际请求中，则可将其标记为实体。 下面的代码演示此分析过程。 可以复制或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_parse.js)它并将其保存在 `_parse.js`。
 
    [!code-javascript[Node.js code for parsing a CSV file to extract intents, entities, and labeled utterances](~/samples-luis/examples/build-app-programmatically-csv/_parse.js)]
 
 
 
 ## <a name="create-the-luis-app"></a>创建 LUIS 应用
-将数据分析到 JSON 后，将其添加到 LUIS 应用。 下面的代码创建 LUIS 应用。 复制或[下载](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_create.js)它，并将其保存到 `_create.js`。
+将数据分析到 JSON 后，将其添加到 LUIS 应用。 下面的代码创建 LUIS 应用。 复制或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_create.js)它，并将其保存到 `_create.js`。
 
    [!code-javascript[Node.js code for creating a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/_create.js)]
 
 
 ## <a name="add-intents"></a>添加意向
-创建应用后需要向其添加意向。 下面的代码创建 LUIS 应用。 复制或[下载](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_intents.js)它，并将其保存到 `_intents.js`。
+创建应用后需要向其添加意向。 下面的代码创建 LUIS 应用。 复制或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_intents.js)它，并将其保存到 `_intents.js`。
 
    [!code-javascript[Node.js code for creating a series of intents](~/samples-luis/examples/build-app-programmatically-csv/_intents.js)]
 
 
 ## <a name="add-entities"></a>添加实体
-以下代码向 LUIS 应用添加实体。 复制或[下载](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_entities.js)它，并将其保存到 `_entities.js`。
+以下代码向 LUIS 应用添加实体。 复制或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_entities.js)它，并将其保存到 `_entities.js`。
 
    [!code-javascript[Node.js code for creating entities](~/samples-luis/examples/build-app-programmatically-csv/_entities.js)]
    
 
 
 ## <a name="add-utterances"></a>添加表达
-LUIS 应用中定义了实体和意向后，可以添加陈述。 下面的代码使用 [Utterances_AddBatch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) API，它允许每次添加最多 100 个陈述。  复制或[下载](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_upload.js)它，并将其保存到 `_upload.js`。
+LUIS 应用中定义了实体和意向后，可以添加陈述。 下面的代码使用 [Utterances_AddBatch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) API，它允许每次添加最多 100 个陈述。  复制或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_upload.js)它，并将其保存到 `_upload.js`。
 
    [!code-javascript[Node.js code for adding utterances](~/samples-luis/examples/build-app-programmatically-csv/_upload.js)]
 
@@ -106,9 +107,9 @@ LUIS 应用中定义了实体和意向后，可以添加陈述。 下面的代�
 ### <a name="install-nodejs-dependencies"></a>安装 Node.js 依赖项
 在终端/命令行中，从 NPM 安装 Node.js 依赖项。
 
-````
+```console
 > npm install
-````
+```
 
 ### <a name="change-configuration-settings"></a>更改配置设置
 若要使用此应用程序，需要将 index.js 文件中的值更改为自己的终结点密钥，并提供希望应用拥有的名称。 还可以设置应用的区域性或更改版本号。
@@ -116,28 +117,31 @@ LUIS 应用中定义了实体和意向后，可以添加陈述。 下面的代�
 打开 index.js 文件，并在文件顶部更改这些值。
 
 
-````JavaScript
+```javascript
 // Change these values
 const LUIS_programmaticKey = "YOUR_PROGRAMMATIC_KEY";
 const LUIS_appName = "Sample App";
 const LUIS_appCulture = "en-us"; 
 const LUIS_versionId = "0.1";
-````
+```
+
 ### <a name="run-the-script"></a>运行脚本
 使用 Node.js 从终端/命令行运行脚本。
 
-````
+```console
 > node index.js
-````
+```
+
 或
-````
+
+```console
 > npm start
-````
+```
 
 ### <a name="application-progress"></a>应用程序进度
 应用程序运行时，命令行显示进度。 命令行输出包括 LUIS 的响应格式。
 
-````
+```console
 > node index.js
 intents: ["TurnOn","TurnOff","Dim","Other"]
 entities: ["Operation","Device","Room"]
@@ -157,7 +161,7 @@ retrying add examples...
 
 Results of add utterances = [{"response":[{"value":{"UtteranceText":"turn on the lights","ExampleId":-67649},"hasError":false},{"value":{"UtteranceText":"turn the heat on","ExampleId":-69067},"hasError":false},{"value":{"UtteranceText":"switch on the kitchen fan","ExampleId":-3395901},"hasError":false},{"value":{"UtteranceText":"turn off bedroom lights","ExampleId":-85402},"hasError":false},{"value":{"UtteranceText":"turn off air conditioning","ExampleId":-8991572},"hasError":false},{"value":{"UtteranceText":"kill the lights","ExampleId":-70124},"hasError":false},{"value":{"UtteranceText":"dim the lights","ExampleId":-174358},"hasError":false},{"value":{"UtteranceText":"hi how are you","ExampleId":-143722},"hasError":false},{"value":{"UtteranceText":"answer the phone","ExampleId":-69939},"hasError":false},{"value":{"UtteranceText":"are you there","ExampleId":-149588},"hasError":false},{"value":{"UtteranceText":"help","ExampleId":-81949},"hasError":false},{"value":{"UtteranceText":"testing the circuit","ExampleId":-11548708},"hasError":false}]}]
 upload done
-````
+```
 
 
 

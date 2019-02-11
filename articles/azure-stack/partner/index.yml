@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 26c0353bddb9455b1bda8961f3c05e0f6c7cc176
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: e5b2d8d46066a849e01b479867c4287f0da5ee5b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647708"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245219"
 documentType: LandingData
 title: Azure Stack 合作伙伴文档
 metadata:
@@ -20,7 +20,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/25/2018
   ms.author: mabrigg
-  ms.reviewer: John.Haskin
+  ms.reviewer: johnhas
 abstract:
   description: 可以使用作为服务的验证检查您的硬件与 Azure Stack 配合使用。 该服务是本机 Azure 服务设计为供解决方案合作伙伴共同工程与 Microsoft Azure Stack 产品/服务。
 sections:

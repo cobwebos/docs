@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 23ec5cd6eee3333922b5371a0ece631ebbc20939
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 1ddb993a3e4d41647a4afcf5a5daed03a834db9f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248025"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825982"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
 
@@ -25,13 +25,13 @@ ms.locfileid: "50248025"
 
 ## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
-[Microsoft.Azure.WebJobs.Extensions.SendGrid](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet 包 2.x 版本中提供了 SendGrid 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.SendGrid/) GitHub 存储库中提供了此包的源代码。
+[Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet 包 2.x 版本中提供了 SendGrid 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.SendGrid/) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="packages---functions-2x"></a>包 - Functions 2.x
 
-[Microsoft.Azure.WebJobs.Extensions.SendGrid](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet 包 3.x 版本中提供了 SendGrid 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub 存储库中提供了此包的源代码。
+[Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet 包 3.x 版本中提供了 SendGrid 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -47,17 +47,21 @@ ms.locfileid: "50248025"
 
 以下示例演示使用服务总线队列触发器和 SendGrid 输出绑定的 [C# 函数](functions-dotnet-class-library.md)。
 
+#### <a name="synchronous-c-example"></a>同步 C# 示例：
+
 ```cs
 [FunctionName("SendEmail")]
 public static void Run(
-    [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] OutgoingEmail email,
+    [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
     [SendGrid(ApiKey = "CustomSendGridKeyAppSettingName")] out SendGridMessage message)
 {
-    message = new SendGridMessage();
-    message.AddTo(email.To);
-    message.AddContent("text/html", email.Body);
-    message.SetFrom(new EmailAddress(email.From));
-    message.SetSubject(email.Subject);
+var emailObject = JsonConvert.DeserializeObject<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
+
+var message = new SendGridMessage();
+message.AddTo(emailObject.To);
+message.AddContent("text/html", emailObject.Body);
+message.SetFrom(new EmailAddress(emailObject.From));
+message.SetSubject(emailObject.Subject);
 }
 
 public class OutgoingEmail
@@ -66,6 +70,33 @@ public class OutgoingEmail
     public string From { get; set; }
     public string Subject { get; set; }
     public string Body { get; set; }
+}
+```
+#### <a name="asynchronous-c-example"></a>异步 C# 示例：
+
+```cs
+[FunctionName("SendEmail")]
+public static async void Run(
+ [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
+ [SendGrid(ApiKey = "CustomSendGridKeyAppSettingName")] IAsyncCollector<SendGridMessage> messageCollector)
+{
+ var emailObject = JsonConvert.DeserializeObject<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
+
+ var message = new SendGridMessage();
+ message.AddTo(emailObject.To);
+ message.AddContent("text/html", emailObject.Body);
+ message.SetFrom(new EmailAddress(emailObject.From));
+ message.SetSubject(emailObject.Subject);
+ 
+ await messageCollector.AddAsync(message);
+}
+
+public class OutgoingEmail
+{
+ public string To { get; set; }
+ public string From { get; set; }
+ public string Subject { get; set; }
+ public string Body { get; set; }
 }
 ```
 
@@ -81,13 +112,19 @@ public class OutgoingEmail
 {
     "bindings": [
         {
-            "name": "message",
-            "type": "sendGrid",
-            "direction": "out",
-            "apiKey" : "MySendGridKey",
-            "to": "{ToEmail}",
-            "from": "{FromEmail}",
-            "subject": "SendGrid output bindings"
+          "type": "queueTrigger",
+          "name": "mymsg",
+          "queueName": "myqueue",
+          "connection": "AzureWebJobsStorage",
+          "direction": "in"
+        },
+        {
+          "type": "sendGrid",
+          "name": "$return",
+          "direction": "out",
+          "apiKey": "SendGridAPIKeyAsAppSetting",
+          "from": "{FromEmail}",
+          "to": "{ToEmail}"
         }
     ]
 }
@@ -99,27 +136,28 @@ C# 脚本代码如下所示：
 
 ```csharp
 #r "SendGrid"
+
 using System;
 using SendGrid.Helpers.Mail;
-using Microsoft.Extensions.Logging;
+using Microsoft.Azure.WebJobs.Host;
 
-public static void Run(ILogger log, string input, out Mail message)
+public static SendGridMessage Run(Message mymsg, ILogger log)
 {
-     message = new Mail
-    {        
-        Subject = "Azure news"          
-    };
-
-    var personalization = new Personalization();
-    personalization.AddTo(new Email("recipient@contoso.com"));   
-
-    Content content = new Content
+    SendGridMessage message = new SendGridMessage()
     {
-        Type = "text/plain",
-        Value = input
+        Subject = $"{mymsg.Subject}"
     };
-    message.AddContent(content);
-    message.AddPersonalization(personalization);
+    
+    message.AddContent("text/plain", $"{mymsg.Content}");
+
+    return message;
+}
+public class Message
+{
+    public string ToEmail { get; set; }
+    public string FromEmail { get; set; }
+    public string Subject { get; set; }
+    public string Content { get; set; }
 }
 ```
 
@@ -204,7 +242,7 @@ public static void Run(
 
 ## <a name="hostjson-settings"></a>host.json 设置
 
-本部分介绍版本 2.x 中可用于此绑定的全局配置设置。 下面的示例 host.json 文件仅包含此绑定的 2.x 版本设置。 有关版本 2.x 中的全局配置设置的详细信息，请参阅 [Azure Functions 版本 2.x 的 host.json参考](functions-host-json.md)。
+本部分介绍版本 2.x 中可用于此绑定的全局配置设置。 下面的示例 host.json 文件仅包含此绑定的 2.x 版本设置。 有关版本 2.x 中的全局配置设置的详细信息，请参阅 [Azure Functions 版本 2.x 的 host.json 参考](functions-host-json.md)。
 
 > [!NOTE]
 > 有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](functions-host-json-v1.md)。
@@ -220,7 +258,7 @@ public static void Run(
 }
 ```  
 
-|属性  |默认 | Description |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
 |from|不适用|所有函数的发件人电子邮件地址。| 
 

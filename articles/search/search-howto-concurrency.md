@@ -1,5 +1,5 @@
 ---
-title: 如何管理 Azure 搜索中对资源的并发写入
+title: 如何管理对资源的并发写入 - Azure 搜索
 description: 使用乐观并发，避免在更新或删除 Azure 搜索索引、索引器及数据源的过程中出现冲突。
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/21/2017
 ms.author: heidist
-ms.openlocfilehash: f5fa495c1266c847cabc0eb4e35b85132550bc3c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 017f665f3d0d19746854e2cf566034f801b32a04
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31796374"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310196"
 ---
 # <a name="how-to-manage-concurrency-in-azure-search"></a>如何管理 Azure 搜索中的并发
 
@@ -24,9 +25,9 @@ ms.locfileid: "31796374"
 
 ## <a name="how-it-works"></a>工作原理
 
-乐观并发通过写入索引、索引器、数据源和 synonymMap 资源的 API 调用中的访问条件检查实现。 
+乐观并发通过写入索引、索引器、数据源和 synonymMap 资源的 API 调用中的访问条件检查实现。
 
-所有资源均有一个[实体标记 (ETag)](https://en.wikipedia.org/wiki/HTTP_ETag)，它提供对象版本信息。 通过先检查 ETag，确保资源的 ETag 与本地副本匹配，可避免典型工作流（获取、本地修改、更新）中的并发更新。 
+所有资源均有一个[实体标记 (ETag)](https://en.wikipedia.org/wiki/HTTP_ETag)，它提供对象版本信息。 通过先检查 ETag，确保资源的 ETag 与本地副本匹配，可避免典型工作流（获取、本地修改、更新）中的并发更新。
 
 + REST API 在请求头使用 [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)。
 + .NET SDK 通过 accessCondition 对象，对资源设置 [If-Match | If-Match-None 标头](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) 来设置 ETag。 从 [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) 继承的任何对象都具有 accessCondition 对象。
@@ -34,7 +35,7 @@ ms.locfileid: "31796374"
 每次更新资源时，其 ETag 将自动更改。 实现并发管理时，只需对更新请求设置一个前提条件，要求远程资源的 ETag 与在客户端上修改的资源副本的 ETag 相同。 如果并发进程已更改远程资源，ETag 将不满足前提条件，请求将失败并出现 HTTP 412。 如果使用 .NET SDK，这表示为 `CloudException`，此时 `IsAccessConditionFailed()` 扩展方法返回 true。
 
 > [!Note]
-> 只存在一个并发机制。 无论对资源更新使用哪个 API，都始终使用该机制。 
+> 只存在一个并发机制。 无论对资源更新使用哪个 API，都始终使用该机制。
 
 <a name="samplecode"></a>
 ## <a name="use-cases-and-sample-code"></a>用例和示例代码
@@ -111,7 +112,7 @@ ms.locfileid: "31796374"
             {
                 indexForClient2.Fields.Add(new Field("b", DataType.Boolean));
                 serviceClient.Indexes.CreateOrUpdate(
-                    indexForClient2, 
+                    indexForClient2,
                     accessCondition: AccessCondition.IfNotChanged(indexForClient2));
 
                 Console.WriteLine("Whoops; This shouldn't happen");
@@ -167,9 +168,9 @@ ms.locfileid: "31796374"
 
 ## <a name="design-pattern"></a>设计模式
 
-用于实现乐观并发的设计模式应包含一个循环用于重试访问条件检查，包含一个访问条件测试，并在尝试重新应用更改前选择性地检索更新后的资源。 
+用于实现乐观并发的设计模式应包含一个循环用于重试访问条件检查，包含一个访问条件测试，并在尝试重新应用更改前选择性地检索更新后的资源。
 
-此代码片段演示如何向已有的索引添加 synonymMap。 此代码来自[适用于 Azure 搜索的同义词（预览版）C# 教程](https://docs.microsoft.com/azure/search/search-synonyms-tutorial-sdk). 
+此代码片段演示如何向已有的索引添加 synonymMap。 此代码来自[适用于 Azure 搜索的同义词（预览版）C# 教程](https://docs.microsoft.com/azure/search/search-synonyms-tutorial-sdk).
 
 代码片段获取“hotels”索引，检查更新操作上的对象版本，在条件失败时引发异常，然后重试该操作（最多三次），从服务器开始索引检索以获取最新版本。
 
@@ -211,10 +212,11 @@ ms.locfileid: "31796374"
 
 尝试修改以下任一示例，将 ETag 或 AccessCondition 对象包含在内。
 
-+ [Github 上的 REST API 示例](https://github.com/Azure-Samples/search-rest-api-getting-started) 
-+ [Github 上的 .NET SDK 示例](https://github.com/Azure-Samples/search-dotnet-getting-started)。 此解决方案包括“DotNetEtagsExplainer”项目，后者包含本文所示的代码。
++ [GitHub 上的 REST API 示例](https://github.com/Azure-Samples/search-rest-api-getting-started)
++ [GitHub 上的 .NET SDK 示例](https://github.com/Azure-Samples/search-dotnet-getting-started)。 此解决方案包括“DotNetEtagsExplainer”项目，后者包含本文所示的代码。
 
 ## <a name="see-also"></a>另请参阅
 
-  [Common HTTP request and response headers](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)  （常见 HTTP 请求和响应标头）  
-  [HTTP 状态代码](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)[索引操作 (REST API)](https://docs.microsoft.com/\rest/api/searchservice/index-operations)
+[常见的 HTTP 请求和响应标头](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
+[HTTP 状态代码](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
+[索引操作 (REST API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)

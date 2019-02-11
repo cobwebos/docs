@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9553d1dd5dd8d8ff11ea480618b471b9898985e3
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 9d82ff29b988925f244fc33d7124fe43487895b8
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456552"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341229"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>使用对称密钥预配旧设备
 
@@ -90,7 +90,7 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
 4. 运行以下命令，生成特定于你的开发客户端平台的 SDK 版本。 将在 `cmake` 目录中生成模拟设备的 Visual Studio 解决方案。 
 
     ```cmd
-    cmake -Dhsm_type_symm_key:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
     
     如果 `cmake` 找不到 C++ 编译器，则可能会在运行以上命令时出现生成错误。 如果出现这种情况，请尝试在 [Visual Studio 命令提示符](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)窗口中运行该命令。 
@@ -98,7 +98,7 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
     生成成功后，最后的几个输出行如下所示：
 
     ```cmd/sh
-    $ cmake -Dhsm_type_symm_key:BOOL=ON ..
+    $ cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     -- Building for: Visual Studio 15 2017
     -- Selecting Windows SDK version 10.0.16299.0 to target Windows 10.0.17134.
     -- The C compiler identification is MSVC 19.12.25835.0
@@ -122,13 +122,13 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
 
     - **组名**：输入 **mylegacydevices**。
 
-    - **证明类型**：选择**对称密钥**。
+    - **证明类型**：选择“对称密钥”。
 
-    - **自动生成密钥**：选中此复选框。
+    - **自动生成密钥**：选中此框。
 
-    - **选择将设备分配到中心的方式**：选择**静态配置**以便可以分配到特定的中心。
+    - **选择要如何将设备分配到中心**：选择“静态配置”，以便可以分配到特定的中心。
 
-    - **选择可将该组分配到的 IoT 中心**：选择某一个中心。
+    - **选择此组可分配到的 IoT 中心**：选择你的中心之一。
 
     ![为对称密钥证明添加注册组](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
@@ -239,22 +239,25 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. 右键单击“prov\_dev\_client\_sample”项目，然后选择“设为启动项目”。 
-
-7. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到“hsm\_security\_client”项目并展开它。 展开“源文件”，然后打开“hsm\_client\_key.c”。 
-
-    找到 `REGISTRATION_NAME` 和 `SYMMETRIC_KEY_VALUE` 常量的声明。 对文件进行以下更改并保存该文件。
-
-    使用设备唯一注册 ID 更新 `REGISTRATION_NAME` 常量的值。
-    
-    使用派生的设备密钥更新 `SYMMETRIC_KEY_VALUE` 常量的值。
+6. 在 **prov\_dev\_client\_sample.c** 中，找到已注释掉的对 `prov_dev_set_symmetric_key_info()` 的调用。
 
     ```c
-    static const char* const REGISTRATION_NAME = "sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6";
-    static const char* const SYMMETRIC_KEY_VALUE = "Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=";
+    // Set the symmetric key if using they auth type
+    //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-7. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。 在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。
+    取消注释该函数调用，并将占位符值（包括尖括号）替换为设备的唯一注册 ID 以及生成的派生设备密钥。
+
+    ```c
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6", "Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=");
+    ```
+   
+    保存文件。
+
+7. 右键单击“prov\_dev\_client\_sample”项目，然后选择“设为启动项目”。 
+
+8. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。 在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。
 
     以下输出是模拟设备成功启动并连接到要分配到 IoT 中心的预配服务实例的示例：
 
@@ -273,7 +276,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
     Press enter key to exit:
     ```
 
-8. 在门户中，导航到模拟设备分配到的 IoT 中心，然后单击“IoT 设备”选项卡。将模拟设备成功预配到中心以后，设备 ID 会显示在“IoT 设备”边栏选项卡上，“状态”为“已启用”。 你可能需要单击顶部的“刷新”按钮。 
+9. 在门户中，导航到模拟设备分配到的 IoT 中心，然后单击“IoT 设备”选项卡。将模拟设备成功预配到中心以后，设备 ID 会显示在“IoT 设备”边栏选项卡上，“状态”为“已启用”。 你可能需要单击顶部的“刷新”按钮。 
 
     ![设备注册到 IoT 中心](./media/how-to-legacy-device-symm-key/hub-registration.png) 
 

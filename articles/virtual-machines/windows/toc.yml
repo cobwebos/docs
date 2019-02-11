@@ -167,6 +167,8 @@ items:
       href: windows-desktop-multitenant-hosting-deployment.md
   - name: 保护 VM
     items:
+    - name: 实时访问
+      href: ../../security-center/security-center-just-in-time.md
     - name: 加密
       displayName: encryption
       href: encrypt-disks.md
@@ -179,16 +181,29 @@ items:
     - name: 创建密钥保管库
       href: key-vault-setup.md
   - name: 保护 VM
-    href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     items:
-    - name: 备份单个 VM
+    - name: 备份 VM
+      href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
       items:
-      - name: Azure 门户
-        href: ../../backup/quick-backup-vm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-      - name: Azure PowerShell
-        href: ../../backup/quick-backup-vm-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: 备份多个 VM
-      href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      - name: 备份单个 VM
+        href: ../../backup/quick-backup-vm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: 备份多个 VM
+        href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: 还原磁盘
+        href: ../../backup/tutorial-restore-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: 还原单个文件
+        href: ../../backup/tutorial-restore-files.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: 为 VM 设置灾难恢复
+      href: ../../site-recovery/site-recovery-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      items:
+      - name: 为 VM 启用灾难恢复
+        href: ../../site-recovery/azure-to-azure-tutorial-enable-replication.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: 为 VM 运行灾难恢复演练
+        href: ../../site-recovery/azure-to-azure-tutorial-dr-drill.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: 将 VM 故障转移到另一个区域
+        href: ../../site-recovery/azure-to-azure-tutorial-failover-failback.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: 将 VM 移到另一个区域
+      href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
   - name: 管理 VM
     items:
     - name: VM 使用情况
@@ -244,6 +259,8 @@ items:
       items:
       - name: 概述
         href: shared-image-galleries.md
+      - name: 使用 PowerShell 创建共享映像
+        href: shared-images.md
       - name: 使用 CLI 创建共享映像
         href: ../linux/shared-images.md
       - name: 排查共享映像问题
@@ -344,8 +361,6 @@ items:
       items:
       - name: 非托管 VM 到托管磁盘
         href: convert-unmanaged-to-managed-disks.md
-      - name: 单个经典 VM 到资源管理器
-        href: migrate-single-classic-to-resource-manager.md
   - name: 管理网络
     href: ps-common-network-ref.md
     items:
@@ -411,7 +426,7 @@ items:
         href: migration-classic-resource-manager-faq.md
 - name: 故障排除
   href: ../troubleshooting/index.md
-- name: 引用
+- name: 参考
   items:
   - name: Azure CLI
     href: /cli/azure/vm
@@ -429,6 +444,8 @@ items:
     href: /rest/api/compute
   - name: 托管磁盘 REST
     href: /rest/api/compute/disks
+  - name: 资源管理器模板
+    href: /azure/templates/microsoft.compute/allversions
 - name: 资源
   items:
   - name: 创作模板
@@ -449,9 +466,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: 常见问题解答
     href: faq.md
-ms.openlocfilehash: 45e2dba5a95660e123754c1770d68de5493a1c10
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 770b828330bc0ad10b0aa78277f0872368cf201c
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979431"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299859"

@@ -4,18 +4,19 @@ description: 本文介绍如何使用实时 Power BI 仪表板直观显示 Azure
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/27/2017
-ms.openlocfilehash: e84903870110091d527e870600d9a67bdc9cc6e5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: d7f67015d4df20ea39c1225d52be36340b8f65d1
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556970"
 ---
-# <a name="tutorial-stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>教程：流分析和 Power BI：针对流数据的实时分析仪表板
+# <a name="tutorial-stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>教程：流分析和 Power BI：针对流式处理数据的实时分析仪表板
 Azure 流分析使你可以利用其中一种领先的商业智能工具 [Microsoft Power BI](https://powerbi.com/)。 本文将介绍如何使用 Power BI 作为 Azure 流分析作业的输出，以创建商业智能工具。 此外，还将介绍如何创建和使用实时仪表板。
 
 本文是流分析[实时欺诈检测](stream-analytics-real-time-fraud-detection.md)教程的延续。 本文是在该教程中所创建工作流的基础上编写的，并添加了 Power BI 输出，以便可视化流分析作业检测到的欺诈性电话呼叫。 
@@ -43,23 +44,23 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
 4. 在“接收器”下，选择“Power BI”。
 
-   ![创建 Power BI 的输出](./media/stream-analytics-power-bi-dashboard/create-pbi-ouptut.png)
+   ![创建 Power BI 的输出](./media/stream-analytics-power-bi-dashboard/create-power-bi-ouptut.png)
 
 5. 单击“授权”。
 
     此时将打开一个窗口，可在其中为工作或学校帐户提供 Azure 凭据。 
 
-    ![输入凭据，以便访问 Power BI](./media/stream-analytics-power-bi-dashboard/authorize-area.png)
+    ![输入凭据，以便访问 Power BI](./media/stream-analytics-power-bi-dashboard/power-bi-authorization-credentials.png)
 
 6. 输入凭据。 请注意，输入凭据还意味着允许流分析作业访问 Power BI 区域。
 
 7. 返回“新建输出”边栏选项卡后，请输入以下信息：
 
-    * 组工作区：在 Power BI 租户中选择要在其下创建数据集的工作区。
-    * 数据集名称：输入“`sa-dataset`”。 可使用其他名称。 如果使用其他名称，请记下该名称，稍后会用到。
-    * 表名称：输入“`fraudulent-calls`”。 目前，流分析作业的 Power BI 输出在 1 个数据集中只能有 1 个表。
+    * **组工作区**：在 Power BI 租户中选择要在其下创建数据集的工作区。
+    * **数据集名称**：输入 `sa-dataset` 。 可使用其他名称。 如果使用其他名称，请记下该名称，稍后会用到。
+    * **表名称**：输入 `fraudulent-calls` 。 目前，流分析作业的 Power BI 输出在 1 个数据集中只能有 1 个表。
 
-    ![PBI 工作区](./media/stream-analytics-power-bi-dashboard/create-pbi-ouptut-with-dataset-table.png)
+    ![Power BI 工作区数据集和表](./media/stream-analytics-power-bi-dashboard/create-pbi-ouptut-with-dataset-table.png)
 
     > [!WARNING]
     > 如果 Power BI 已有 1 个数据集和 1 个表，且与流分析作业中指定的数据集和表同名，则会覆盖现有的数据集和表。
@@ -70,8 +71,8 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
 数据集是使用以下设置创建的；
 
-* **defaultRetentionPolicy: BasicFIFO**：数据为 FIFO，最多 200,000 行。
-* defaultMode: pushStreaming：数据集支持流磁贴和基于报表的传统视觉对象（即 推送）。
+* **defaultRetentionPolicy：BasicFIFO**：数据为 FIFO，最多 200,000 行。
+* **defaultMode：pushStreaming**：数据集支持流式处理磁贴和基于报表的传统视觉对象（即 推送）。
 
 目前，无法其他标志创建数据集。
 
@@ -89,6 +90,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
     >[!NOTE]
     >如果在欺诈检测教程中未对输入 `CallStream` 命名，请在查询的 FROM 和 JOIN 子句中替换 `CallStream` 的名称。
 
+        ```SQL
         /* Our criteria for fraud:
         Calls made from the same caller to two phone switches in different locations (for example, Australia and Europe) within five seconds */
 
@@ -106,6 +108,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
         /* Where the switch location is different */
         WHERE CS1.SwitchNum != CS2.SwitchNum
         GROUP BY TumblingWindow(Duration(second, 1))
+        ```
 
 4. 单击“ **保存**”。
 
@@ -119,7 +122,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
     * 请转到 telcogenerator.exe 和修改的 telcodatagen.exe.config 文件所在的文件夹。
     * 运行以下命令：
 
-            telcodatagen.exe 1000 .2 2
+       `telcodatagen.exe 1000 .2 2`
 
 2. 在“查询”边栏选项卡中，单击 `CallStream` 输入旁边的点，然后选择“来自输入的示例数据”。
 
@@ -145,7 +148,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
 1. 转到 [Powerbi.com](https://powerbi.com)，然后使用工作或学校帐户登录。 如果流分析作业查询输出了结果，则可看到数据集已创建：
 
-    ![Power BI 中的流式处理数据集](./media/stream-analytics-power-bi-dashboard/streaming-dataset.png)
+    ![Power BI 中的流式处理数据集位置](./media/stream-analytics-power-bi-dashboard/stream-analytics-streaming-dataset.png)
 
 2. 在工作区中，单击“+&nbsp;创建”。
 
@@ -157,27 +160,27 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
 4. 在窗口顶部，单击“添加磁贴”，选择“自定义流式处理数据”，然后单击“下一步”。
 
-    ![自定义流数据集](./media/stream-analytics-power-bi-dashboard/custom-streaming-data.png)
+    ![Power BI 中的自定义流式处理数据集磁贴](./media/stream-analytics-power-bi-dashboard/custom-streaming-data.png)
 
 5. 在“你的数据集”下，选择数据集，然后单击“下一步”。
 
-    ![流数据集](./media/stream-analytics-power-bi-dashboard/your-streaming-dataset.png)
+    ![Power BI 中的流式处理数据集](./media/stream-analytics-power-bi-dashboard/your-streaming-dataset.png)
 
 6. 在“可视化效果类型”下选择“卡”，然后在“字段”列表中选择“fraudulentcalls”。
 
-    ![新磁贴的可视化效果详细信息](./media/stream-analytics-power-bi-dashboard/add-fraud.png)
+    ![新磁贴的可视化效果详细信息](./media/stream-analytics-power-bi-dashboard/add-fraudulent-calls-tile.png)
 
-7. 单击“资源组名称” 的 Azure 数据工厂。
+7. 单击“下一步”。
 
 8. 填写磁贴详细信息，例如标题和副标题。
 
     ![新磁贴的标题和副标题](./media/stream-analytics-power-bi-dashboard/pbi-new-tile-details.png)
 
-9. 单击“应用” 。
+9. 单击“应用”。
 
     现已创建一个欺诈计数器！
 
-    ![欺诈计数器](./media/stream-analytics-power-bi-dashboard/fraud-counter.png)
+    ![Power BI 仪表板中的欺诈计数器](./media/stream-analytics-power-bi-dashboard/power-bi-fraud-counter-tile.png)
 
 8. 再次按照上述步骤添加磁贴（从步骤 4 开始）。 这一次，请执行以下操作：
 
@@ -186,7 +189,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
     * 添加值，然后选择“fraudulentcalls”。
     * 对于“要显示的时间窗口”，请选择最近 10 分钟。
 
-    ![创建折线图磁贴](./media/stream-analytics-power-bi-dashboard/pbi-create-tile-line-chart.png)
+    ![在 Power BI 中创建折线图磁贴](./media/stream-analytics-power-bi-dashboard/pbi-create-tile-line-chart.png)
 
 9. 单击“下一步”，添加标题和副标题，然后单击“应用”。
 
@@ -209,7 +212,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
 可以使用以下公式来计算时间范围值（以秒为单位）：
 
-![Equation1](./media/stream-analytics-power-bi-dashboard/equation1.png)  
+![计算时间范围值（以秒为单位）的公式](./media/stream-analytics-power-bi-dashboard/compute-window-seconds-equation.png)  
 
 例如：
 
@@ -219,10 +222,11 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
 因此，公式为：
 
-![Equation2](./media/stream-analytics-power-bi-dashboard/equation2.png)  
+![基于示例条件的公式](./media/stream-analytics-power-bi-dashboard/power-bi-example-equation.png)  
 
 对于此配置，可将原始查询更改为以下内容：
 
+```SQL
     SELECT
         MAX(hmdt) AS hmdt,
         MAX(temp) AS temp,
@@ -234,7 +238,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
     GROUP BY
         TUMBLINGWINDOW(ss,4),
         dspl
-
+```
 
 ### <a name="renew-authorization"></a>续订授权
 如果自作业创建后或上次身份验证后更改了密码，需要重新对 Power BI 帐户进行身份验证。 如果在 Azure Active Directory (Azure AD) 租户中配置了多重身份验证，还需要每两周续订一次 Power BI 授权。 如果不续订，操作日志中会出现缺少作业输出或者 `Authenticate user error` 之类的表现。

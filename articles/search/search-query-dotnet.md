@@ -1,6 +1,6 @@
 ---
-title: 查询索引（.NET API - Azure 搜索）| Microsoft Docs
-description: 在 Azure 搜索中生成搜索查询，并使用搜索参数对搜索结果进行筛选和排序。
+title: 使用 .NET SDK 在代码中查询索引 - Azure 搜索
+description: 用于在 Azure 搜索中生成搜索查询的 C# 代码示例。 将搜索参数添加到筛选器并对搜索结果进行排序。
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -9,12 +9,13 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/19/2017
-ms.openlocfilehash: 5b7f454fed6206ac57799d6f1e86152cd52dc9e9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: 5c89902da5e773c60c8e2694159ddeed874ecab2
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254411"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316992"
 ---
 # <a name="query-your-azure-search-index-using-the-net-sdk"></a>使用 .NET SDK 查询 Azure 搜索索引
 > [!div class="op_single_selector"]

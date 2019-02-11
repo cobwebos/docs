@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 4c5243ec14a4494222168bb33b3e840b96f8465e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 3d7bbdb25815027625b6f56b25e64c4a07b3728f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345248"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222484"
 ---
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
@@ -117,8 +117,8 @@ void initializeRecoClient()
 客户端库为语音识别的典型方案提供预实现的识别客户端类：
 
 * `DataRecognitionClient`：通过 PCM 数据进行语音识别（例如，从文件或音频源）。 数据被分解到多个缓冲区后，再将每个缓冲区发送到语音服务。 未对缓冲区做出更改，所以用户可以按需应用自己的静音检测。 如果数据来自 WAV 文件，则可以直接将数据从文件发送到语音服务。 如果有原始数据（例如蓝牙音频），则首先应将格式标头发送到语音服务，然后再发送该数据。
-* `MicrophoneRecognitionClient`：通过麦克风音频进行语音识别。 请确保麦克风已开启，且麦克风数据已发送到语音识别服务。 内置“静音检测器”在发送到识别服务前已应用到麦克风数据。
-* `DataRecognitionClientWithIntent` 和 `MicrophoneRecognitionClientWithIntent`：除了识别文本，这些客户端返回有关说话人意向的结构化信息，应用程序可以用这些信息来推动进一步的操作。 要使用“意向”检测，需要首先使用 [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) 定型模型。
+* `MicrophoneRecognitionClient`：对来自麦克风的音频进行语音识别。 请确保麦克风已开启，且麦克风数据已发送到语音识别服务。 内置“静音检测器”在发送到识别服务前已应用到麦克风数据。
+* `DataRecognitionClientWithIntent` 和 `MicrophoneRecognitionClientWithIntent`：除了识别文本，这些客户端还会返回有关说话人意向的结构化信息，应用程序可以用这些信息来促进更多操作。 要使用“意向”检测，需要首先使用 [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) 定型模型。
 
 ### <a name="recognition-language"></a>识别语言
 
@@ -128,17 +128,17 @@ void initializeRecoClient()
 
 使用 `SpeechRecognitionServiceFactory` 创建客户端时，还需要指定 `SpeechRecognitionMode`：
 
-* `ShortPhrase`：最长 15 秒的语音。 将数据发送到服务时，客户端接收到多个部分结果和一个具有多个 n-best 选择的最终结果。
-* `LongDictation`：最长两分钟的陈述。 将数据发送到服务时，基于服务指示的语句停顿位置，客户端会接收到多个部分结果和多个最终结果。
+* `ShortPhrase`：最长 15 秒的话语。 将数据发送到服务时，客户端接收到多个部分结果和一个具有多个 n-best 选择的最终结果。
+* `LongDictation`：最长两分钟的话语。 将数据发送到服务时，基于服务指示的语句停顿位置，客户端会接收到多个部分结果和多个最终结果。
 
 ### <a name="attach-event-handlers"></a>附加事件处理程序
 
 可以将各种事件处理程序附加到创建的客户端：
 
-* **部分结果事件**：每次语音服务预测你可能会说的内容时，甚至在你说完（如果使用 `MicrophoneRecognitionClient`）或完成发送数据（如果使用 `DataRecognitionClient`）之前，都会调用此事件。
+* **部分结果事件**：：每次语音服务预测你可能会说的内容时，甚至在你说完（如果使用 `MicrophoneRecognitionClient`）或完成发送数据（如果使用 `DataRecognitionClient`）之前，都会调用此事件。
 * **错误事件**：服务检测到错误时调用。
-* **意向事件**：在最终识别结果被解析为结构化 JSON 意向后，在“WithIntent”客户端（仅限 `ShortPhrase` 模式）进行调用。
-* **结果事件**：
+* **意向事件**：在最终识别结果被分析为结构化 JSON 意向后，在“WithIntent”客户端上（仅以 `ShortPhrase` 模式）进行调用。
+* 结果事件：
   * 在 `ShortPhrase` 模式下，在你说完后调用此事件并返回 n-best 结果。
   * 在 `LongDictation` 模式下，基于服务指示的语句停顿位置，多次调用事件处理程序。
   * 对于每个最优选择，返回置信度值和几种不同形式的已识别文本。 有关详细信息，请参阅[输出格式](../Concepts.md#output-format)。

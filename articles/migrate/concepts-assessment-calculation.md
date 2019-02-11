@@ -4,14 +4,14 @@ description: 概述 Azure Migrate 服务中的评估计算。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 11/28/2018
 ms.author: raynew
-ms.openlocfilehash: f7f06636e025eda604caa65ca82d4dd7eb909d3f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ab4af59b71dada84fd99df0299aeccfd5662d474
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165681"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849167"
 ---
 # <a name="assessment-calculations"></a>评估计算
 
@@ -21,7 +21,6 @@ ms.locfileid: "47165681"
 ## <a name="overview"></a>概述
 
 Azure Migrate 评估包含三个阶段。 评估的第一步是适用性分析，第二步是大小估计，最后一步是每月成本估计。 如果一台计算机通过了前一个阶段，则只能按顺序进入下一个阶段。 例如，如果一台计算机未通过 Azure 适用性检查，将被标记为不适合迁移到 Azure，并且不会进行大小调整和成本估算。
-
 
 ## <a name="azure-suitability-analysis"></a>Azure 适用性分析
 
@@ -54,15 +53,15 @@ Azure Migrate 使用以下逻辑来基于操作系统确认 VM 的 Azure 迁移�
 
 **操作系统** | **详细信息** | **Azure 迁移就绪性状态**
 --- | --- | ---
-Windows Server 2016 和所有 SP | Azure 提供完全支持。 | Azure 已就绪
-Windows Server 2012 R2 和所有 SP | Azure 提供完全支持。 | Azure 已就绪
-Windows Server 2012 和所有 SP | Azure 提供完全支持。 | Azure 已就绪
-Windows Server 2008 R2 和所有 SP | Azure 提供完全支持。| Azure 已就绪
-Windows Server 2008（32 位和 64 位） | Azure 提供完全支持。 | Azure 已就绪
+Windows Server 2016 和所有 SP | Azure 提供完全支持。 | 已做好 Azure 迁移准备
+Windows Server 2012 R2 和所有 SP | Azure 提供完全支持。 | 已做好 Azure 迁移准备
+Windows Server 2012 和所有 SP | Azure 提供完全支持。 | 已做好 Azure 迁移准备
+Windows Server 2008 R2 和所有 SP | Azure 提供完全支持。| 已做好 Azure 迁移准备
+Windows Server 2008（32 位和 64 位） | Azure 提供完全支持。 | 已做好 Azure 迁移准备
 Windows Server 2003、2003 R2 | 这些操作系统的支持日期已结束，需要[自定义支持协议 (CSA)](https://aka.ms/WSosstatement) 以获取 Azure 支持。 | Azure 有条件的就绪，请考虑在迁移到 Azure 前升级 OS。
 Windows 2000、98、95、NT、3.1、MS-DOS | 这些操作系统的支持日期已结束，计算机可以在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪，建议在迁移到 Azure 前升级 OS。
-Windows Client 7、8 和 10 | Azure 仅支持 [Visual Studio 订阅。](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) | Azure 有条件的就绪
-Windows 10 专业版桌面 | Azure 提供了对[多租户托管权限](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)的支持。 | Azure 有条件的就绪
+Windows Client 7、8 和 10 | Azure 仅支持 [Visual Studio 订阅。](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) | 已做好特定条件下的 Azure 迁移准备
+Windows 10 专业版桌面 | Azure 提供了对[多租户托管权限](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)的支持。 | 已做好特定条件下的 Azure 迁移准备
 Windows Vista、XP Professional | 这些操作系统的支持日期已结束，计算机可以在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪，建议在迁移到 Azure 前升级 OS。
 Linux | Azure 予以认可这些 [Linux 操作系统](../virtual-machines/linux/endorsed-distros.md)。 其他 Linux 操作系统可能在 Azure 中启动，但建议在迁移到 Azure 前将 OS 升级到认可的版本。 | 如果版本受到认可，则为 Azure 已就绪。<br/><br/>如果版本不受认可，则为 Azure 有条件的就绪。
 其他操作系统<br/><br/> 例如 Oracle Solaris、Apple Mac 操作系统、FreeBSD 等。 | Azure 不认可这些操作系统。 计算机课在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪，建议在迁移到 Azure 前安装已升级的 OS。  
@@ -79,7 +78,7 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
 
 对于基于性能的大小调整，Azure Migrate 首先从附加到 VM 的磁盘开始，然后是网络适配器，再基于本地 VM 的计算要求映射 Azure VM。
 
-- 存储：Azure Migrate 尝试将附加到计算机的每个磁盘映射到 Azure 中的磁盘。
+- **存储**：Azure Migrate 尝试将附加到计算机的每个磁盘映射到 Azure 中的磁盘。
 
     > [!NOTE]
     > Azure Migrate 仅支持托管磁盘进行评估。
@@ -90,12 +89,12 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
     - 如果有多个合格的磁盘，将选择成本最低的磁盘。
     - 如果磁盘的性能数据不可用，那么所有磁盘都将映射到 Azure 中的标准磁盘。
 
-- 网络：Azure Migrate 将尝试查找可支持本地计算机所附加的网络适配器数量以及这些网络适配器所要求的性能的 Azure VM。
+- **网络**：Azure Migrate 将尝试查找可支持本地计算机所附加的网络适配器数量以及这些网络适配器所要求的性能的 Azure VM。
     - 为获取本地 VM 的有效网络性能，Azure Migrate 将从计算机（网络流出）、跨所有网络适配器聚合每秒传输的数据 (MBps)，并应用舒适因子。 此数值用于查找可支持所需网络性能的 Azure VM。
     - 除了网络性能，它还会考虑 Azure VM 是否可支持所需的网络适配器数量。
     - 如果没有任何网络性能数据可用，则 VM 大小调整仅考虑网络适配器计数。
 
-- 计算：计算存储和网络需求后，Azure Migrate 将考虑 CPU 和内存需求以查找 Azure 中合适的 VM 大小。
+- **计算**：计算存储和网络需求后，Azure Migrate 将考虑 CPU 和内存需求以查找 Azure 中合适的 VM 大小。
     - Azure Migrate 查看已利用的内核和内存，并应用舒适因子来获取有效的内核和内存。 将基于该数量尝试在 Azure 中查找合适的 VM 大小。
     - 如果找不到合适的大小，计算机将标记为不适用于 Azure。
     - 如果找到了合适的大小，Azure Migrate 将应用存储和网络计算。 然后它将应用位置和定价层设置，以提供最终的 VM 大小建议。
@@ -119,29 +118,21 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
 
    下面是关于为什么评估可能会获得较低置信度分级的原因：
 
-   **一次性发现**
-
-   - vCenter Server 中的统计信息设置未设置为级别 3。 由于一次性发现模型取决于 vCenter Server 的统计信息设置，如果 vCenter Server 中的统计设置低于级别 3，则不会从 vCenter Server 收集磁盘和网络的性能数据。 在这种情况下，Azure Migrate 针对磁盘和网络提供的建议不考虑利用率。 在不考虑磁盘的 IOPS/吞吐量的情况下，Azure Migrate 无法确定磁盘是否需要 Azure 中的高级磁盘，因此，在这种情况下，Azure Migrate 建议所有磁盘是标准磁盘。
-   - 在启动发现之前，vCenter Server 中的统计设置已短时间设置为级别 3。 例如，如果在今天将统计设置级别更改为 3，并在明天（24 小时后）使用收集器设备启动发现，则可考虑此方案。 如果是创建一天的评估，你就有了所有数据点，对评估的置信度分级将是 5 星。 但是，如果在评估属性中将性能时段更改为一个月，则置信度分级会下降，因为最后一个月的磁盘和网络性能数据将不可用。 若要考虑最后一个月的性能数据，建议将 vCenter Server 统计设置保留为级别 3 一个月，然后再启动发现。
-
-   **持续发现**
-
    - 在创建评估的过程中，你没有对环境进行分析。 例如，如果创建性能持续时间设置为 1 天的评估，则在对所有数据点启用发现之后，需要等待至少一天才能收集。
 
-   **常见原因**  
-
    - 一些 VM 在进行评估计算期间关闭。 如果某些 VM 停机了一段时间，则无法收集该时段的性能数据。
+
    - 在进行评估计算期间创建了一些 VM。 例如，如果要针对最后一个月的性能历史记录创建评估，但仅仅在一周前，在环境中创建了一些 VM， 则在这种情况下，新建 VM 的性能历史记录并非在整个期间都有。
 
    > [!NOTE]
-   > 如果任何评估的置信度分级低于 4 星，对于一次性收集模型，建议将 vCenter Server 统计设置级别更改为 3，等待要考虑进行评估的期间（1 天/1 周/1 月），然后进行发现和评估。 对于持续发现模型，需要等待至少一天，设备才会分析环境，然后重新计算评估。 如果前述操作无法完成，则基于性能的大小调整可能不可靠，建议通过更改评估属性切换到“按本地大小调整”。
+   > 如果任何评估的置信度评级低于五星，我们建议等待至少一天以便设备对环境进行分析，然后重新计算评估。 如果前述操作无法完成，则基于性能的大小调整可能不可靠，建议通过更改评估属性切换到“按本地大小调整”。
 
 ## <a name="monthly-cost-estimation"></a>每月成本估计
 
 大小建议完成后，Azure Migrate 将计算迁移后计算和存储成本。
 
-- 计算成本：使用建议的 Azure VM 大小，Azure Migrate 使用计费 API 来计算 VM 每月成本。 该计算会考虑操作系统、软件保障、预留实例、VM 运行时间、位置和货币设置。 它将所有计算机的成本求和，计算每月总计算成本。
-- 存储成本：一台计算机的每月存储成本的计算方法为，将连接到该计算机的所有磁盘的每月成本求和。 Azure Migrate 通过将所有计算机的存储成本求和，计算每月总存储成本。 当前该计算不考虑在评估设置中指定的优惠。
+- **计算成本**：使用建议的 Azure VM 大小，Azure Migrate 使用计费 API 来计算 VM 每月成本。 该计算会考虑操作系统、软件保障、预留实例、VM 运行时间、位置和货币设置。 它将所有计算机的成本求和，计算每月总计算成本。
+- **存储成本**：一台计算机的每月存储成本的计算方法为，将连接到该计算机的所有磁盘的每月成本求和。 Azure Migrate 通过将所有计算机的存储成本求和，计算每月总存储成本。 当前该计算不考虑在评估设置中指定的优惠。
 
 成本以在评估设置中指定的币种显示。
 

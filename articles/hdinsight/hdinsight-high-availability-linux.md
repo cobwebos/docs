@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: d3326ef4bba5649f5420c1d92b6117d44edba47b
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 89878b2774727d49d81ebec4c2a3c2cee355d8e8
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281976"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743657"
 ---
-# <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>HDInsight 中 Hadoop 群集的可用性和可靠性
+# <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 群集的可用性和可靠性
 
-HDInsight 群集提供两个头节点，提升 Hadoop 服务和作业运行的可用性与可靠性。
+HDInsight 群集提供了两个头节点，以提升 Apache Hadoop 服务和作业运行的可用性与可靠性。
 
 Hadoop 通过将服务和数据复制到群集的多个节点中来实现高可用性和可靠性。 不过，Hadoop 的标准分发功能通常只能有一个头节点。 单个头节点发生任何中断都可能导致群集停止工作。 HDInsight 提供了两个头节点来提高 Hadoop 的可靠性和可用性。
 
@@ -29,25 +29,25 @@ Hadoop 通过将服务和数据复制到群集的多个节点中来实现高可�
 
 HDInsight 群集中的节点是使用 Azure 虚拟机实现的。 以下部分介绍可配合 HDInsight 使用的节点类型。 
 
-> [!NOTE]
+> [!NOTE]  
 > 并非所有节点类型都可用于某个群集类型。 例如，Hadoop 群集类型就没有任何 Nimbus 节点。 有关 HDInsight 群集类型使用的节点详细信息，请参阅[在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md#cluster-types)文档的“群集类型”部分。
 
 ### <a name="head-nodes"></a>头节点
 
-为确保 Hadoop 服务的高可用性，HDInsight 提供了两个头节点。 这两个头节点同时处于活动状态并在 HDInsight 群集中运行。 某些服务，例如 HDFS 或 YARN，在任何给定的时间仅能在其中一个头节点上处于“活动”状态。 HiveServer2 或 Hive MetaStore 等其他服务同时在这两个头节点上处于活动状态。
+为确保 Hadoop 服务的高可用性，HDInsight 提供了两个头节点。 这两个头节点同时处于活动状态并在 HDInsight 群集中运行。 某些服务，例如 Apache HDFS 或 Apache Hadoop YARN，在任何给定的时间仅能在其中一个头节点上处于“活动”状态。 HiveServer2 或 Hive MetaStore 等其他服务同时在这两个头节点上处于活动状态。
 
 头节点（以及 HDInsight 中的其他节点）的主机名中包含一个数字值。 例如 `hn0-CLUSTERNAME` 或 `hn4-CLUSTERNAME`。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 请勿将数字值与某个节点是主节点还是辅助节点相关联。 使用数字值是为了为每个节点提供唯一名称。
 
 ### <a name="nimbus-nodes"></a>Nimbus 节点
 
-Storm 群集提供了 Nimbus 节点。 Nimbus 节点通过在辅助角色节点之间分发和监视处理资源来提供类似于 Hadoop JobTracker 的功能。 HDInsight 为 Storm 群集提供了两个 Nimbus 节点
+Apache Storm 群集提供了 Nimbus 节点。 Nimbus 节点通过在辅助角色节点之间分发和监视处理资源来提供类似于 Hadoop JobTracker 的功能。 HDInsight 为 Storm 群集提供了两个 Nimbus 节点
 
-### <a name="zookeeper-nodes"></a>Zookeeper 节点
+### <a name="apache-zookeeper-nodes"></a>Apache Zookeeper 节点
 
-[ZooKeeper](http://zookeeper.apache.org/) 节点用于为头节点上的主服务进行领导选拨。 它们还用来确保服务、数据（辅助角色）节点和网关知道主服务在哪个头节点上处于活动状态。 默认情况下，HDInsight 提供三个 ZooKeeper 节点。
+[ZooKeeper](https://zookeeper.apache.org/) 节点用于为头节点上的主服务进行领导选拨。 它们还用来确保服务、数据（辅助角色）节点和网关知道主服务在哪个头节点上处于活动状态。 默认情况下，HDInsight 提供三个 ZooKeeper 节点。
 
 ### <a name="worker-nodes"></a>辅助角色节点
 
@@ -63,7 +63,7 @@ Storm 群集提供了 Nimbus 节点。 Nimbus 节点通过在辅助角色节点�
 
 ## <a name="accessing-the-nodes"></a>访问节点
 
-可以通过公共网关经 Internet 访问群集。 访问仅限连接到头节点和边缘节点（如果存在）。 访问头节点上运行的服务不会受存在多个头节点的影响。 公共网关将请求路由到托管所请求服务的头节点。 例如，如果 Ambari 当前托管在辅助头节点上，网关会将 Ambari 收到的请求路由到该节点。
+可以通过公共网关经 Internet 访问群集。 访问仅限连接到头节点和边缘节点（如果存在）。 访问头节点上运行的服务不会受存在多个头节点的影响。 公共网关将请求路由到托管所请求服务的头节点。 例如，如果 Apache Ambari 当前托管在辅助头节点上，网关会将 Ambari 收到的请求路由到该节点。
 
 通过公共网关进行访问仅限端口 443 (HTTPS)、22 和 23。
 
@@ -79,7 +79,7 @@ Storm 群集提供了 Nimbus 节点。 Nimbus 节点通过在辅助角色节点�
 
 HDInsight 群集中的节点具有内部 IP 地址和 FQDN，这些只能从群集访问。 使用内部 FQDN 或 IP 地址访问群集上的服务时，应该使用 Ambari 来验证访问服务时使用的 IP 或 FQDN。
 
-例如，Oozie 服务只能在一个头节点上运行，而且从 SSH 会话使用 `oozie` 命令需要有该服务的 URL。 可以通过 Ambari 使用以下命令来检索该 URL：
+例如，Apache Oozie 服务只能在一个头节点上运行，而且从 SSH 会话使用 `oozie` 命令需要有该服务的 URL。 可以通过 Ambari 使用以下命令来检索该 URL：
 
     curl -u admin:PASSWORD "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
 
@@ -87,7 +87,7 @@ HDInsight 群集中的节点具有内部 IP 地址和 FQDN，这些只能从群�
 
     "oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
 
-若要详细了解如何使用 Ambari REST API，请参阅[使用 Ambari REST API 监视和管理 HDInsight](hdinsight-hadoop-manage-ambari-rest-api.md)。
+若要详细了解如何使用 Ambari REST API，请参阅[使用 Apache Ambari REST API 监视和管理 HDInsight](hdinsight-hadoop-manage-ambari-rest-api.md)。
 
 ### <a name="accessing-other-node-types"></a>访问其他节点类型
 
@@ -121,7 +121,7 @@ HDInsight 群集中的节点具有内部 IP 地址和 FQDN，这些只能从群�
 
 ![组件状态](./media/hdinsight-high-availability-linux/nodeservices.png)
 
-有关如何使用 Ambari 的详细信息，请参阅[使用 Ambari Web UI 监视和管理 HDInsight](hdinsight-hadoop-manage-ambari.md)。
+有关如何使用 Ambari 的详细信息，请参阅[使用 Apache Ambari Web UI 监视和管理 HDInsight](hdinsight-hadoop-manage-ambari.md)。
 
 ### <a name="ambari-rest-api"></a>Ambari REST API
 
@@ -158,7 +158,7 @@ Ambari REST API 可以通过 Internet 使用。 HDInsight 公共网关处理以�
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services
 
-若要详细了解如何使用 Ambari REST API，请参阅[使用 Ambari REST API 监视和管理 HDInsight](hdinsight-hadoop-manage-ambari-rest-api.md)。
+若要详细了解如何使用 Ambari REST API，请参阅[使用 Apache Ambari REST API 监视和管理 HDInsight](hdinsight-hadoop-manage-ambari-rest-api.md)。
 
 #### <a name="service-components"></a>服务组件
 
@@ -191,12 +191,12 @@ Ambari REST API 可以通过 Internet 使用。 HDInsight 公共网关处理以�
 
 有关可用命令的列表，请在 `sftp>` 提示符下输入 `help`。
 
-> [!NOTE]
-> 使用 SFTP 连接时，还会出现一个图形界面用于可视化文件系统。 例如，通过 [MobaXTerm](http://mobaxterm.mobatek.net/) 可以使用类似于 Windows 资源管理器的界面浏览文件系统。
+> [!NOTE]  
+> 使用 SFTP 连接时，还会出现一个图形界面用于可视化文件系统。 例如，通过 [MobaXTerm](https://mobaxterm.mobatek.net/) 可以使用类似于 Windows 资源管理器的界面浏览文件系统。
 
 ### <a name="ambari"></a>Ambari
 
-> [!NOTE]
+> [!NOTE]  
 > 若要通过 Ambari 访问日志文件，必须使用 SSH 隧道。 个体服务的 Web 接口没有通过 Internet 公开。 有关使用 SSH 隧道的信息，请参阅[使用SSH 隧道](hdinsight-linux-ambari-ssh-tunnel.md)文档。
 
 在 Ambari Web UI 中选择要查看其日志的服务（例如 YARN）。 然后使用“快速链接”选择要查看其日志的头节点。
@@ -213,7 +213,7 @@ Ambari REST API 可以通过 Internet 使用。 HDInsight 公共网关处理以�
 
     ![群集创建向导的图像，其中包含节点大小选项](./media/hdinsight-high-availability-linux/headnodesize.png)
 
-* Azure 经典 CLI：使用 `azure hdinsight cluster create` 命令时，可以使用 `--headNodeSize`、`--workerNodeSize` 和 `--zookeeperNodeSize` 参数设置头节点、辅助角色节点与 ZooKeeper 节点的大小。
+* **Azure 经典 CLI**：使用 `azure hdinsight cluster create` 命令时，可以使用 `--headNodeSize`、`--workerNodeSize` 和 `--zookeeperNodeSize` 参数设置头节点、辅助角色节点与 ZooKeeper 节点的大小。
 
 * **Azure PowerShell**：使用 `New-AzureRmHDInsightCluster` cmdlet 时，可以使用 `-HeadNodeVMSize`、`-WorkerNodeSize` 和 `-ZookeeperNodeSize` 参数设置头节点、辅助角色节点与 ZooKeeper 节点的大小。
 
@@ -221,10 +221,10 @@ Ambari REST API 可以通过 Internet 使用。 HDInsight 公共网关处理以�
 
 请使用以下链接深入了解本文档中所述的内容。
 
-* [Ambari REST 参考](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
+* [Apache Ambari REST 参考](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
 * [安装和配置 Azure 经典 CLI](../cli-install-nodejs.md)
 * [安装和配置 Azure PowerShell](/powershell/azure/overview)
-* [使用 Ambari 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)
+* [使用 Apache Ambari 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)
 * [配置基于 Linux 的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
 
 [preview-portal]: https://portal.azure.com/

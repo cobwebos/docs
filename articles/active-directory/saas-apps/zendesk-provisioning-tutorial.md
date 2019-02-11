@@ -1,5 +1,5 @@
 ---
-title: 教程：在 Azure Active Directory 中配置 Zendesk 实现自动用户预配 | Microsoft Docs
+title: 教程：使用 Azure Active Directory 为 Zendesk 配置自动用户预配 | Microsoft Docs
 description: 了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Zendesk 和取消其预配。
 services: active-directory
 documentationcenter: ''
@@ -8,21 +8,21 @@ writer: zhchia
 manager: beatrizd-msft
 ms.assetid: na
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: 2dc965547511d27ed43a88c1f45b50593b30a937
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 919c4d3dc08d81fa5fe95a7e63df8d02258aab80
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347930"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194315"
 ---
-# <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>教程：配置 Zendesk 实现自动用户预配
+# <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>教程：为 Zendesk 配置自动用户预配
 
 本教程的目的是演示要将 Azure AD 配置为自动将用户和/或组预配到 Zendesk 以及取消其预配需在 Zendesk 和 Azure Active Directory (Azure AD) 中执行的步骤。 
 
@@ -77,6 +77,10 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ### <a name="important-tips-for-assigning-users-to-zendesk"></a>将用户分配到 Zendesk 的重要提示
 
+*    现在，Zendesk 角色将在 Azure 门户 UI 中自动动态填充。 在将 Zendesk 角色分配给用户之前，请确保针对 Zendesk 完成初始同步，以检索 Zendesk 租户中的最新角色。
+
+*    建议将单个 Azure AD 用户分配到 Zendesk 来测试初始自动用户预配配置。 测试成功后，可以稍后分配其他用户和/或组。
+  
 *   建议将单个 Azure AD 用户分配到 Zendesk 来测试自动用户预配配置。 其他用户和/或组可以稍后分配。
 
 *   如果将用户分配到 Zendesk，必须在分配对话框中选择任何特定于应用程序的有效角色（如果有）。 具有“默认访问权限”角色的用户排除在预配之外。
@@ -164,6 +168,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ## <a name="connector-limitations"></a>连接器限制
 * Zendesk 仅支持对“代理”角色的用户使用组。 有关详细信息，请参阅 [Zendesk 的文档](https://support.zendesk.com/hc/en-us/articles/203661966-Creating-managing-and-using-groups)。
+* 将自定义角色分配给用户和/或组时，Azure AD 自动用户预配服务还将分配默认角色“代理”。 只能为“代理”分配自定义角色。 有关详细信息，请参阅此 [Zendesk API 文档](https://developer.zendesk.com/rest_api/docs/support/users#json-format-for-agent-or-admin-requests)。  
 
 ## <a name="additional-resources"></a>其他资源
 

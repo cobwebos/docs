@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 10/08/2018
+ms.date: 01/25/2019
 ms.author: danlep
-ms.openlocfilehash: 5934e955d2a18d111c625670bced134df37ef045
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7a300826db512a813282eea71d2e898f0221a977
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409588"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077737"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure 市场中查找 Windows VM 映像
 
@@ -28,22 +28,27 @@ ms.locfileid: "49409588"
 
 你还可以使用 [Azure 市场](https://azuremarketplace.microsoft.com/)店面、[Azure 门户](https://portal.azure.com)或 [Azure CLI](../linux/cli-ps-findimage.md) 浏览可用的映像和产品/服务。 
 
-请确保已安装并配置了最新的 [Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
+请确保已安装并配置了最新的 [Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
 ## <a name="table-of-commonly-used-windows-images"></a>常用 Windows 映像表
+
+此表显示了指示的发布者和产品/服务可用的 SKU 的子集。
+
 | 发布者 | 产品/服务 | SKU |
 |:--- |:--- |:--- |:--- |
+| MicrosoftWindowsServer |WindowsServer |2019-Datacenter |
+| MicrosoftWindowsServer |WindowsServer |2019-Datacenter-Core |
+| MicrosoftWindowsServer |WindowsServer |2019-Datacenter-with-Containers |
 | MicrosoftWindowsServer |WindowsServer |2016-Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2016-Datacenter-Server-Core |
 | MicrosoftWindowsServer |WindowsServer |2016-Datacenter-with-Containers |
 | MicrosoftWindowsServer |WindowsServer |2012-R2-Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2012-Datacenter |
-| MicrosoftWindowsServer |WindowsServer |2008-R2-SP1 |
 | MicrosoftDynamicsNAV |DynamicsNAV |2017 |
-| MicrosoftSharePoint |MicrosoftSharePointServer |2016 |
-| MicrosoftSQLServer |SQL2017-WS2016 |Enterprise |
+| MicrosoftSharePoint |MicrosoftSharePointServer |2019 |
+| MicrosoftSQLServer |SQL2019-WS2016 |Enterprise |
 | MicrosoftRServer |RServer-WS2016 |Enterprise |
 
 ## <a name="navigate-the-images"></a>浏览映像
@@ -76,14 +81,14 @@ ms.locfileid: "49409588"
     $offerName="<offer>"
     Get-AzureRMVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
     ```
-    
+
 4. 填写你选择的 SKU 名称并获取映像版本：
 
     ```powershell
     $skuName="<SKU>"
     Get-AzureRMVMImage -Location $locName -Publisher $pubName -Offer $offerName -Sku $skuName | Select Version
     ```
-    
+
 从 `Get-AzureRMVMImage` 命令的输出中，可以选择要部署新虚拟机的版本映像。
 
 以下示例显示了命令及其输出的完整序列：
@@ -99,16 +104,21 @@ Get-AzureRMVMImagePublisher -Location $locName | Select PublisherName
 PublisherName
 -------------
 ...
-a10networks
-aiscaler-cache-control-ddos-and-url-rewriting-
-alertlogic
-AlertLogic.Extension
-Barracuda.Azure.ConnectivityAgent
-barracudanetworks
-basho
-boxless
-bssw
-Canonical
+abiquo
+accedian
+accellion
+accessdata-group
+accops
+Acronis
+Acronis.Backup
+actian-corp
+actian_matrix
+actifio
+activeeon
+adgs
+advantech
+advantech-webaccess
+advantys
 ...
 ```
 
@@ -136,7 +146,7 @@ $offerName="WindowsServer"
 Get-AzureRMVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
 ```
 
-输出：
+部分输出：
 
 ```
 Skus
@@ -153,12 +163,17 @@ Skus
 2016-Datacenter-smalldisk
 2016-Datacenter-with-Containers
 2016-Datacenter-with-RDSH
+2019-Datacenter
+2019-Datacenter-Core
+2019-Datacenter-Core-smalldisk
+2019-Datacenter-Core-with-Containers
+...
 ```
 
-然后，对于 *2016-Datacenter* SKU：
+然后，对于 *2019-Datacenter* SKU：
 
 ```powershell
-$skuName="2016-Datacenter"
+$skuName="2019-Datacenter"
 Get-AzureRMVMImage -Location $locName -Publisher $pubName -Offer $offerName -Sku $skuName | Select Version
 ```
 
@@ -175,22 +190,21 @@ Get-AzureRMVMImage -Location $locName -Publisher $pubName -Offer $offerName -Sku
 例如，*Windows Server 2016 Datacenter* 映像没有附加条款，因此，`PurchasePlan` 信息为 `null`：
 
 ```powershell
-$version = "2016.127.20170406"
+$version = "2019.0.20190115"
 Get-AzureRMVMImage -Location $locName -Publisher $pubName -Offer $offerName -Skus $skuName -Version $version
 ```
 
 输出：
 
 ```
-Id               : /Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2016-Datacenter/
-                   Versions/2016.127.20170406
+Id               : /Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2016-Datacenter/Versions/2019.0.20190115
 Location         : westus
 PublisherName    : MicrosoftWindowsServer
 Offer            : WindowsServer
-Skus             : 2016-Datacenter
-Version          : 2016.127.20170406
+Skus             : 2019-Datacenter
+Version          : 2019.0.20190115
 FilterExpression :
-Name             : 2016.127.20170406
+Name             : 2019.0.20190115
 OSDiskImage      : {
                      "operatingSystem": "Windows"
                    }
@@ -202,21 +216,20 @@ DataDiskImages   : []
 以下示例显示了适用于 *Data Science Virtual Machine - Windows 2016* 映像的类似命令，该映像具有以下 `PurchasePlan` 属性：`name`、`product` 和 `publisher`。 某些映像还具有 `promotion code` 属性。 若要部署此映像，请参阅以下部分，以接受条款并启用编程式部署。
 
 ```powershell
-Get-AzureRMVMImage -Location "westus" -Publisher "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"
+Get-AzureRMVMImage -Location "westus" -Publisher "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "19.01.14"
 ```
 
 输出：
 
 ```
-Id               : /Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/microsoft-ads/ArtifactTypes/VMIma
-                   ge/Offers/windows-data-science-vm/Skus/windows2016/Versions/0.2.02
+Id               : /Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/microsoft-ads/ArtifactTypes/VMImage/Offers/windows-data-science-vm/Skus/windows2016/Versions/19.01.14
 Location         : westus
 PublisherName    : microsoft-ads
 Offer            : windows-data-science-vm
 Skus             : windows2016
-Version          : 0.2.02
+Version          : 19.01.14
 FilterExpression :
-Name             : 0.2.02
+Name             : 19.01.14
 OSDiskImage      : {
                      "operatingSystem": "Windows"
                    }
@@ -243,12 +256,11 @@ Get-AzureRmMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-sc
 Publisher         : microsoft-ads
 Product           : windows-data-science-vm
 Plan              : windows2016
-LicenseTextLink   : https://storelegalterms.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DV
-                    M%253a24WINDOWS2016%253a24OC5SKMQOXSED66BBSNTF4XRCS4XLOHP7QMPV54DQU7JCBZWYFP35IDPOWTUKXUC7ZAG7W6ZMDD6NHWNKUIVSYBZUTZ245F44SU5AD7Q.txt
+LicenseTextLink   : https://storelegalterms.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24OC5SKMQOXSED66BBSNTF4XRCS4XLOHP7QMPV54DQU7JCBZWYFP35IDPOWTUKXUC7ZAG7W6ZMDD6NHWNKUIVSYBZUTZ245F44SU5AD7Q.txt
 PrivacyPolicyLink : https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx
 Signature         : 2UMWH6PHSAIM4U22HXPXW25AL2NHUJ7Y7GRV27EBL6SUIDURGMYG6IIDO3P47FFIBBDFHZHSQTR7PNK6VIIRYJRQ3WXSE6BTNUNENXA
 Accepted          : False
-Signdate          : 2/23/2018 7:43:00 PM
+Signdate          : 1/25/2019 7:43:00 PM
 ```
 
 使用 [Set-AzureRmMarketplaceterms](/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) cmdlet 接受或拒绝条款。 对于映像的每个订阅，只需接受条款一次。 请务必使用字母全部小写的参数值。 
@@ -302,7 +314,7 @@ $offerName = "windows-data-science-vm"
 
 $skuName = "windows2016"
 
-$version = "0.2.02"
+$version = "19.01.14"
 
 $vmConfig = Set-AzureRmVMSourceImage -VM $vmConfig -PublisherName $publisherName -Offer $offerName -Skus $skuName -Version $version
 ...
@@ -310,6 +322,7 @@ $vmConfig = Set-AzureRmVMSourceImage -VM $vmConfig -PublisherName $publisherName
 然后将 VM 配置与网络配置对象一起传递给 `New-AzureRmVM` cmdlet。
 
 ## <a name="next-steps"></a>后续步骤
+
 若要使用基本映像信息通过 `New-AzureRmVM` cmdlet 快速创建虚拟机，请参阅[使用 PowerShell 创建 Windows 虚拟机](quick-create-powershell.md)。
 
 参阅 PowerShell 脚本示例来[创建完全配置的虚拟机](../scripts/virtual-machines-windows-powershell-sample-create-vm.md)。

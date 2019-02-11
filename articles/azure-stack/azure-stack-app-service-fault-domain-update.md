@@ -1,5 +1,5 @@
 ---
-title: Azure Stack 上的应用服务：容错域更新 | Microsoft Docs
+title: 在 Azure Stack 上的应用服务：容错域更新 |Microsoft Docs
 description: 如何跨容错域在 Azure Stack 上重新分配 Azure 应用服务
 services: azure-stack
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: anwestg
-ms.openlocfilehash: d361b4165c1fbbf79321e3f6d2ade711f9173c56
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.lastreviewed: 09/05/2018
+ms.openlocfilehash: 249e4b466e9be567111aaa22b40ca3e5dadb6cac
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267209"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246375"
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>如何跨容错域在 Azure Stack 上重新分配 Azure 应用服务
 
@@ -49,7 +50,7 @@ ms.locfileid: "48267209"
 
 1. 登录到 Azure Stack 管理员门户。
 1. 选择“所有服务”。
-2. 在中**计算**类别中，选择**虚拟机规模集**。 部署为应用服务部署一部分的现有规模集将连同实例计数信息一起列出。 以下屏幕截图显示了规模集的示例。
+2. 在“计算”类别中，选择“虚拟机规模集”。 部署为应用服务部署一部分的现有规模集将连同实例计数信息一起列出。 以下屏幕截图显示了规模集的示例。
 
       ![列在虚拟机规模集 UX 中的 Azure 应用服务规模集][1]
 

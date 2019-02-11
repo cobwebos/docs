@@ -10,16 +10,15 @@ ms.assetid: e17b4c9b-4ff3-472f-8c9d-d130eb443968
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: d2f9327841e0c6193a89df6459b4d8fffb14c05e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f2ba077b23a1fb12d1b547f8c9e3013135db1d87
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302837"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076019"
 ---
 # <a name="certificate-creation-methods"></a>证书创建方法
 
@@ -39,7 +38,7 @@ ms.locfileid: "44302837"
 4. 所选 CA 使用 X509 证书进行响应。
 5. 应用程序通过合并 CA 中的 X509 证书来完成新证书创建过程。
 
--   **使用已知的证书颁发者提供者创建证书：** 此方法要求你执行一项一次性任务，即创建一个证书颁发者对象。 在密钥保管库中创建证书颁发者对象以后，即可在 KV 证书的策略中引用其名称。 请求创建此类 KV 证书时，将在保管库中创建一个密钥对，并使用所引用的证书颁发者对象中的信息与证书颁发者提供者服务通信，以便获取 x509 证书。 从证书颁发者服务中检索 x509 证书并将其与密钥对合并以完成 KV 证书创建过程。  
+-   **使用已知的证书颁发者提供程序创建证书：** 此方法要求你执行一项一次性任务，即创建一个证书颁发者对象。 在密钥保管库中创建证书颁发者对象以后，即可在 KV 证书的策略中引用其名称。 请求创建此类 KV 证书时，将在保管库中创建一个密钥对，并使用所引用的证书颁发者对象中的信息与证书颁发者提供者服务通信，以便获取 x509 证书。 从证书颁发者服务中检索 x509 证书并将其与密钥对合并以完成 KV 证书创建过程。  
 
 ![通过与 Key Vault 配合使用的证书颁发机构创建证书](media/certificate-authority-2.png)  
 
@@ -93,7 +92,7 @@ KV 证书创建是一个异步过程。 此操作会创建 KV 证书请求并返
 
 请注意，向证书颁发者提供者下单时，该提供者可能会接受 x509 证书扩展和证书有效期，也可能会将其替代，具体取决于证书类型。  
 
- 授权：需要证书/创建权限。
+ Authorization:需要证书/创建权限。
 
  ## <a name="see-also"></a>另请参阅
  - [关于密钥、机密和证书](about-keys-secrets-and-certificates.md)

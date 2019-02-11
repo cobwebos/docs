@@ -1,5 +1,5 @@
 ---
-title: Linux 上的 Azure 应用服务的 Java 企业支持 | Microsoft Docs
+title: Linux 上的 Java 企业支持 - Azure 应用服务 | Microsoft Docs
 description: 在 Linux 上使用 Wildfly 和 Azure 应用服务部署 Java 企业应用的开发人员指南。
 keywords: Azure 应用服务, Web 应用, linux, oss, java, wildfly, 企业
 services: app-service
@@ -12,16 +12,17 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: a6d50e6f405294bf8e91018dd4d7b6008cd49ada
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec18
+ms.openlocfilehash: 408141650a11a81f0c6000c6e7927af8333e2afe
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161866"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548470"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>Linux 上应用服务的 Java 企业指南
 
-Linux 上的Azure 应用服务使 Java 开发人员能够在完全托管的基于 Linux 的服务上构建、部署和缩放 Java 企业 (JEE) 应用程序。  基础 Java 企业运行时环境是开源 [Wildfly](http://wildfly.org/) 应用程序服务器。
+Linux 上的Azure 应用服务使 Java 开发人员能够在完全托管的基于 Linux 的服务上构建、部署和缩放 Java 企业 (JEE) 应用程序。  基础 Java 企业运行时环境是开源 [Wildfly](https://wildfly.org/) 应用程序服务器。
 
 本指南提供 Java 企业开发人员可在适用于 Linux 的应用服务中使用的重要概念和说明。 如果从未使用适用于 Linux 的 Azure 应用服务部署 Java 应用程序，则应先完成 [Java 快速入门](quickstart-java.md)。 有关 Java 应用的应用服务的问题，请参阅 [Java 开发人员指南](app-service-linux-java.md)和 [Linux 应用服务常见问题解答](app-service-linux-faq.md)。
 
@@ -48,7 +49,7 @@ Web 应用实例是无状态的，因此必须在启动时配置启动的每个�
 /opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/path/to/your/jboss_commands.cli
 ```
 
-将启动脚本上传到应用服务实例中的 `/home/site/deployments/tools`。 有关获取 FTP 凭据的说明，请参阅[本文档](/azure/app-service/app-service-deployment-credentials#userscope)。 
+将启动脚本上传到应用服务实例中的 `/home/site/deployments/tools`。 有关获取 FTP 凭据的说明，请参阅[本文档](/azure/app-service/deploy-configure-credentials#userscope)。 
 
 将 Azure 门户中的“启动脚本”字段设置为启动 shell 脚本的位置，例如 `/home/site/deployments/tools/your-startup-script.sh`。
 
@@ -81,7 +82,7 @@ Web 应用实例是无状态的，因此必须在启动时配置启动的每个�
 2. 按照“模块和依赖项”中概述的步骤创建和上传 XML 模块描述符、JBoss CLI 脚本、启动脚本和 JDBC .jar 依赖项。
 
 
-有关使用 [PostgreSQL](https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7)、[MySQL](https://dev.mysql.com/doc/connector-j/5.1/connector-j-usagenotes-jboss.html) 和 [SQL 数据库](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#d0e3898)配置 Wildfly 的详细信息已可供参阅。 可使用这些自定义说明以及上述通用方法将数据源定义添加到服务器。
+有关使用 [PostgreSQL](https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7)、[MySQL](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#Using_other_Databases-Using_MySQL_as_the_Default_DataSource) 和 [SQL 数据库](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#d0e3898)配置 Wildfly 的详细信息已可供参阅。 可使用这些自定义说明以及上述通用方法将数据源定义添加到服务器。
 
 ## <a name="messaging-providers"></a>消息提供程序
 
@@ -103,7 +104,7 @@ Web 应用实例是无状态的，因此必须在启动时配置启动的每个�
 - 如果重启或减少应用程序实例，应用程序服务器中的用户会话状态将会丢失。
 - 如果应用程序具有较长的会话超时设置或固定数量的用户，则自动调整的新实例可能需要一些时间才能接收负载，因为只有新会话将路由到新启动的实例。
 
-可将 Wildfly 配置为使用外部会话存储，例如 [Redis 缓存](/azure/redis-cache/)。 需要[禁用现有 ARR 实例相关性](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)配置，才能关闭基于会话的 cookie 路由，以及允许配置的 Wildfly 会话存储运行不受干扰。
+可将 Wildfly 配置为使用外部会话存储，例如 [Azure Redis 缓存](/azure/azure-cache-for-redis/)。 需要[禁用现有 ARR 实例相关性](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)配置，才能关闭基于会话的 cookie 路由，以及允许配置的 Wildfly 会话存储运行不受干扰。
 
 ## <a name="enable-web-sockets"></a>启用 Web 套接字
 
@@ -114,5 +115,5 @@ Web 应用实例是无状态的，因此必须在启动时配置启动的每个�
 应用服务提供的工具有助于解决应用程序的问题。
 
 -   通过单击左侧导航窗格中的“诊断日志”启用日志记录。 单击“文件系统”，设置存储配额和保持期，然后保存更改。 可在 `/home/LogFiles/` 下找到这些日志。
--   [使用 SSH 连接到应用程序实例](/app-service-linux-ssh-support)，查看所运行应用程序的日志。
+-   [使用 SSH 连接到应用程序实例](app-service-linux-ssh-support.md)，查看所运行应用程序的日志。
 -   检查门户“诊断日志”窗格中的诊断日志，或使用 Azure CLI 命令：` az webapp log tail --name <your-app-name> --resource-group <your-apps-resource-group> `

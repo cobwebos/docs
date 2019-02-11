@@ -1,26 +1,26 @@
 ---
 title: 加速的数据库恢复 - Azure SQL 数据库 | Microsoft Docs
-description: Azure SQL 数据库具有一项新功能，可为单个数据库、弹性池和 Azure SQL 数据仓库提供快速且一致的数据库恢复、即时事务回滚和主动性的日志截断。
+description: Azure SQL 数据库具有一项新功能，可为 Azure SQL 数据库中的单一数据库和入池数据库以及 Azure SQL 数据仓库中的数据库提供快速且一致的数据库恢复、即时事务回滚和主动性的日志截断。
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: mashamsft
+ms.author: mathoma
+ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/11/2018
-ms.openlocfilehash: 20ad792ffa1c06e75cd39e4549b8d897a663db3e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.date: 01/25/2019
+ms.openlocfilehash: 6d962a40fe0e1a7658c0d5ac30c7fd04bfb7fb0f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239955"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475442"
 ---
 # <a name="accelerated-database-recovery-preview"></a>加速的数据库恢复（预览）
 
-加速的数据库恢复 (ADR) 是一项新的 SQL 数据库引擎功能，通过重新设计 SQL 数据库引擎恢复过程，极大地提高数据库可用性（尤其是存在长期运行的事务时）。 ADR 目前可用于单个数据库、弹性池和 Azure SQL 数据仓库。 ADR 的主要优点是：
+**加速的数据库恢复 (ADR)** 是一项新的 SQL 数据库引擎功能，通过重新设计 SQL 数据库引擎恢复过程，极大地提高数据库可用性（尤其是存在长期运行的事务时）。 ADR 目前可用于 Azure SQL 数据库中的单一数据库和入池数据库，以及 Azure SQL 数据仓库中的数据库。 ADR 的主要优点是：
 
 - **快速且一致的数据库恢复**
 
@@ -127,4 +127,4 @@ ADR 的四个关键的组成要素为：
 
 ## <a name="to-enable-adr-during-this-preview-period"></a>在此预览期间启用 ADR
 
-请在此功能的预览期间，发送一封电子邮件至 [adr@microsoft.com](mailto:adr@microsoft.com) 以了解详细信息并试用加速的数据库恢复 (ADR)。 请在此电子邮件中提供你的逻辑服务器名称（适用于单一数据库、弹性池和 Azure 数据仓库）。 由于这是一项预览功能，测试服务器应为非生产服务器。
+请在此功能的预览期间，发送一封电子邮件至 [adr@microsoft.com](mailto:adr@microsoft.com) 以了解详细信息并试用加速的数据库恢复 (ADR)。 在电子邮件中，包含 SQL 数据库服务器的名称（适用于 SQL 数据库中的单一数据库和入池数据库，以及 Azure 数据仓库中的数据库）。 由于这是一项预览功能，测试服务器应为非生产服务器。

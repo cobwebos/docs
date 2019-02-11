@@ -6,23 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 1a4fe30881f06d8af851a67f389a6faafbe3dfef
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 6a7f7943e9d567a953c0e21697dfe4fdedd6e8f0
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389456"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744783"
 ---
-# <a name="azure-data-box-disk-limits-preview"></a>Azure Data Box 磁盘限制（预览版）
+# <a name="azure-data-box-disk-limits"></a>Azure Data Box 磁盘限制
 
 
 在部署和操作 Microsoft Azure Data Box 磁盘解决方案时请考虑这些限制。 
-
-> [!IMPORTANT] 
-> Azure Data Box 磁盘以预览版提供。 在部署此解决方案之前，请查看[预览版的使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
-
 
 ## <a name="data-box-service-limits"></a>Data Box 服务限制
 
@@ -70,8 +66,8 @@ ms.locfileid: "49389456"
 
 | Azure 对象类型 | 默认限制                                             |
 |-------------------|-----------------------------------------------------------|
-| 块 blob        | ~ 8 TB                                                 |
-| 页 blob         | 1 TB <br> （以页 Blob 格式上传的任何文件都必须是 512 字节对齐的（整数倍），否则上传将失败。 <br> VHD 和 VHDX 是 512 字节对齐的。） |
+| 块 blob        | ~ 4.75 TiB                                                 |
+| 页 blob         | 8 TiB <br> （以页 Blob 格式上传的任何文件都必须是 512 字节对齐的（整数倍），否则上传将失败。 <br> VHD 和 VHDX 是 512 字节对齐的。） |
 
 
 ## <a name="azure-block-blob-and-page-blob-naming-conventions"></a>Azure 块 blob 和页 blob 命名约定

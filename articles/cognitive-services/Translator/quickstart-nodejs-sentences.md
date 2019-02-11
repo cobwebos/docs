@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 08c01f8c73f8d25b824a97d31f1681d9a7eb302e
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: b27bad7b3e34353ec7e2d33cab3614affc31322b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249095"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215548"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-with-nodejs"></a>快速入门：使用 Node.js 通过文本翻译 API 来确定句子长度
 
@@ -68,7 +68,7 @@ if (!subscriptionKey) {
 使用通过请求模块提供的 `request()` 方法，可以以 `options` 对象的形式传递 HTTP 方法、URL、请求参数、标头和 JSON 正文。 在此代码片段中，我们将配置请求：
 
 >[!NOTE]
-> 有关终结点、路由和请求参数的详细信息，请参阅[文本翻译 API 3.0：字典 Break 语句](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence)。
+> 有关终结点、路由和请求参数的详细信息，请参阅[文本翻译 API 3.0：断句](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence)。
 
 ```javascript
 let options = {

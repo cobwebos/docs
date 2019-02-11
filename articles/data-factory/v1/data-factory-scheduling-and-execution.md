@@ -9,17 +9,16 @@ ms.assetid: 088a83df-4d1b-4ac1-afb3-0787a9bd1ca5
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: bd8b682e073e86bb824d31d6ebab20a80f807730
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a70c3ddb624639411dbee961b1c4d59ac1277147
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054596"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016080"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>数据工厂计划和执行
 > [!NOTE]
@@ -62,7 +61,7 @@ ms.locfileid: "37054596"
 ## <a name="specify-schedule-for-a-dataset"></a>为数据集指定计划
 数据工厂管道中的每个活动可获取零个或多个输入**数据集**，并生成一个或多个输出数据集。 对于活动，可以指定从该处有可用的输入的数据或使用生成的输出数据的频率**可用性**的数据集定义中的部分。 
 
-**可用性**部分中的**频率**指定时间单位。 频率的允许值为：分钟、小时、天、周和月。 可用性部分中的**间隔**属性指定频率的乘数。 例如：如果频率设置为“天”且间隔设置为 1 的输出数据集，每天生成输出数据。 如果将频率指定为分钟，建议将间隔设置为小于 15 的值。 
+**可用性**部分中的**频率**指定时间单位。 频率允许的值包括：Minute、Hour、Day、Week 和 Month。 可用性部分中的**间隔**属性指定频率的乘数。 例如：如果频率设置为“天”且间隔设置为 1 的输出数据集，每天生成输出数据。 如果将频率指定为分钟，建议将间隔设置为小于 15 的值。 
 
 在下面的示例中，输入有可用的数据每小时和每小时生成一次输出数据 (`"frequency": "Hour", "interval": 1`)。 
 
@@ -185,12 +184,12 @@ ms.locfileid: "37054596"
 ### <a name="dataset-availability"></a>数据集可用性 
 下表描述了可在 **availability** 节中使用的属性：
 
-| 属性 | 说明 | 必选 | 默认 |
+| 属性 | 说明 | 必需 | 默认值 |
 | --- | --- | --- | --- |
 | 频率 |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |NA |
-| interval |指定频率的乘数<br/><br/>“频率 x 间隔”确定生成切片的频率。<br/><br/>若需要数据集每小时生成切片，请将“Frequency”<b></b>设置为“Hour”<b></b>，将“interval”<b></b>设置为“1”<b></b>。<br/><br/><b>注意</b>：如果将 Frequency 指定为 Minute，建议将 interval 设置为小于 15 的值 |是 |NA |
+| interval |指定频率的乘数<br/><br/>“频率 x 间隔”确定生成切片的频率。<br/><br/>若需要数据集每小时生成切片，则将“频率”<b></b>设置为“小时”<b></b>，“间隔”<b></b>设置为“1”<b></b>。<br/><br/><b>注意</b>：如果将 Frequency 指定为 Minute，建议将 interval 设置为小于 15 的值 |是 |NA |
 | style |指定是否应在间隔的开头/结尾生成切片。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>若将 Month 设置为 Month，style 设置为 EndOfInterval，则会在每月的最后一天生成切片。 若将 style 设为 StartOfInterval，会在每月的第一天生成切片。<br/><br/>若将 Frequency 设置为 Day，style 设置为 EndOfInterval，则会在一天的最后一小时生成切片。<br/><br/>若将 Frequency 设置为 Hour，style 设置为 EndOfInterval，则会在一小时结束时生成切片。 例如，对于下午 1 点到下午 2 点期间的切片，则在下午 2 点生成切片。 |否 |EndOfInterval |
-| anchorDateTime |定义计划程序用于计算数据集切片边界的时间中的绝对位置。 <br/><br/><b>注意</b>：如果 AnchorDateTime 的日期部分比频率部分更精细，则忽略更精细部分。 <br/><br/>例如，如果“interval”<b></b>是“每小时”<b></b>（frequency: hour 且 interval: 1），而 <b> AnchorDateTime</b> 包含<b>分钟和秒</b>，则将忽略 AnchorDateTime 的<b>分钟和秒</b>部分。 |否 |01/01/0001 |
+| anchorDateTime |定义计划程序用于计算数据集切片边界的时间中的绝对位置。 <br/><br/><b>注意</b>：如果 AnchorDateTime 的日期部分比频率部分更精细，则忽略更精细部分。 <br/><br/>例如，如果“间隔”<b></b>是“每小时”<b></b>（frequency：hour 且 interval：: 1），而 <b> AnchorDateTime</b> 包含<b>分钟和秒</b>，则将忽略 AnchorDateTime 的<b>分钟和秒</b>部分。 |否 |01/01/0001 |
 | offset |所有数据集切片的开始和结束之间偏移的时间跨度。 <br/><br/><b>注意</b>：如果同时指定了 anchorDateTime 和 offset，则结果是组合偏移。 |否 |NA |
 
 ### <a name="offset-example"></a>偏移示例
@@ -233,7 +232,7 @@ ms.locfileid: "37054596"
 
 数据集定义中的**策略**部分定义了数据集切片必须满足的标准或条件。 下表描述了可在 **policy** 节中使用的属性：
 
-| 策略名称 | 说明 | 适用对象 | 必选 | 默认 |
+| 策略名称 | 说明 | 适用对象 | 必需 | 默认 |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB | 验证 **Azure Blob** 中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob |否 |NA |
 | minimumRows | 验证 **Azure SQL 数据库**中的数据或 **Azure 表**是否包含最小行数。 |<ul><li>Azure SQL 数据库</li><li>Azure 表</li></ul> |否 |NA |
@@ -276,7 +275,7 @@ ms.locfileid: "37054596"
 | retry |Integer<br/><br/>最大值可为 10 |0 |将切片的数据处理标记为“失败”之前的重试次数。 数据切片的活动执行次数不能超过指定的重试次数。 出现故障后尽快重试。 |
 | timeout |TimeSpan |00:00:00 |活动的超时。 示例：00:10:00（表示超时 10 分钟）<br/><br/>如果不指定值或值为 0，则表示无限超时。<br/><br/>如果某个切片的数据处理时间超出了超时值，将取消该处理，且系统尝试重试处理。 重试次数取决于重试属性。 发生超时时，会将状态设置为“超时”。 |
 | delay |TimeSpan |00:00:00 |启动切片的数据处理前，需指定延迟。<br/><br/>延迟超过预期执行时间后，启动数据切片的活动执行。<br/><br/>示例：00:10:00（表示延迟 10 分钟） |
-| longRetry |Integer<br/><br/>最大值：10 |1 |切片执行失败之前的长重试次数。<br/><br/>longRetryInterval 指定尝试 longRetry 的间隔。 因此，如果需要指定重试尝试之间的时间，请使用 longRetry。 如果同时指定 Retry 和 longRetry，则每次 longRetry 尝试均包含 Retry 尝试，且最大尝试次数为 Retry * longRetry。<br/><br/>例如，如果活动策略中具有以下设置：<br/>Retry: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>假设仅执行一个切片（状态为“等待”），且活动执行每次都失败。 最初将有 3 次连续执行尝试。 每次尝试后，切片状态为“重试”。 前 3 次尝试结束后，切片状态为“长重试”。<br/><br/>1 小时（即 longRetryInteval 的值）后，开始另一组 3 次连续执行尝试。 之后，切片的状态变为“失败”，且不会再进行重试。 因此，共进行了 6 次尝试。<br/><br/>如果某次执行成功，切片状态“就绪”，且不会再重试。<br/><br/>如果依赖数据在非确定性时间到达，或处理数据的总体环境难以捉摸，可以使用 longRetry。 在这种情况下，一遍遍重试效果可能不理想，但一段时间后再重试可能会输出想要的结果。<br/><br/>注意：不要为 longRetry 或 longRetryInterval 设置高值。 通常，较高值可能会引起其他系统问题。 |
+| longRetry |Integer<br/><br/>最大值：10 |1 |切片执行失败之前的长重试次数。<br/><br/>longRetryInterval 指定尝试 longRetry 的间隔。 因此，如果需要指定重试尝试之间的时间，请使用 longRetry。 如果同时指定 Retry 和 longRetry，则每次 longRetry 尝试均包含 Retry 尝试，且最大尝试次数为 Retry * longRetry。<br/><br/>例如，如果活动策略中具有以下设置：<br/>Retry:3<br/>longRetry:2<br/>longRetryInterval:01:00:00<br/><br/>假设仅执行一个切片（状态为“等待”），且活动执行每次都失败。 最初将有 3 次连续执行尝试。 每次尝试后，切片状态为“重试”。 前 3 次尝试结束后，切片状态为“长重试”。<br/><br/>1 小时（即 longRetryInteval 的值）后，开始另一组 3 次连续执行尝试。 之后，切片的状态变为“失败”，且不会再进行重试。 因此，共进行了 6 次尝试。<br/><br/>如果某次执行成功，切片状态“就绪”，且不会再重试。<br/><br/>如果依赖数据在非确定性时间到达，或处理数据的总体环境难以捉摸，可以使用 longRetry。 在这种情况下，一遍遍重试效果可能不理想，但一段时间后再重试可能会输出想要的结果。<br/><br/>注意：不要为 longRetry 或 longRetryInterval 设置高值。 通常，较高值可能会引起其他系统问题。 |
 | longRetryInterval |TimeSpan |00:00:00 |长重试尝试之间的延迟 |
 
 有关详细信息，请参阅[管道](data-factory-create-pipelines.md)一文。 
@@ -333,7 +332,7 @@ ms.locfileid: "37054596"
 
 **输入数据集**
 
-删除文件夹中某给定日期的每小时输入文件。 输入的 Availability 设置为 **Hour** (frequency: Hour, interval: 1)。
+删除文件夹中某给定日期的每小时输入文件。 输入的 Availability 设置为 **Hour**（frequency：Hour，interval：1）。
 
 ```json
 {
@@ -362,7 +361,7 @@ ms.locfileid: "37054596"
 ```
 **输出数据集**
 
-每天在当天的文件夹中创建一个输出文件。 输出的 Availability 设置为 **Day** (frequency: Day and interval: 1)。
+每天在当天的文件夹中创建一个输出文件。 输出的 Availability 设置为 **Day**（frequency：Day 且 interval：1）。
 
 ```json
 {
@@ -453,7 +452,7 @@ Hive 脚本接收相应的 *DateTime* 信息作为参数，这些参数使用 **
 
 必须为每个活动运行指定：数据工厂应对每周输入数据集使用上一周的数据切片。 使用以下代码段中所示的 Azure 数据工厂函数实现此行为。
 
-**Input1：Azure blob**
+**输入 1：Azure blob**
 
 第一个输入是每日更新的 Azure blob。
 
@@ -483,7 +482,7 @@ Hive 脚本接收相应的 *DateTime* 信息作为参数，这些参数使用 **
 }
 ```
 
-**Input2：Azure blob**
+**输入 2：Azure blob**
 
 Input2 是每周更新的 Azure blob。
 
@@ -515,7 +514,7 @@ Input2 是每周更新的 Azure blob。
 
 **输出：Azure blob**
 
-每天在当天的文件夹中创建一个输出文件。 输出的 Availability 设置为 **day** (frequency: Day, interval: 1)。
+每天在当天的文件夹中创建一个输出文件。 输出的 Availability 设置为 **day**（frequency：Day，interval：1）。
 
 ```json
 {

@@ -1,23 +1,23 @@
 ---
-title: 快速入门：识别文本中的语言，C# - 文本翻译 API
+title: 快速入门：检测文本语言，C# - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何使用 .NET Core 和文本翻译 REST API 来检测所提供文本的语言。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: 8f98c4cbca87fd77e3c09c1028bfcb3181907412
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 33c192009088aff3313bb970a319fa49bfca6e0e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335690"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220291"
 ---
-# <a name="quickstart-detect-text-language-with-the-translator-text-rest-api-c"></a>快速入门：使用文本翻译 REST API (C#) 检测文本语言
+# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-c"></a>快速入门：使用文本翻译 API 通过 C# 来检测文本语言
 
 本快速入门介绍如何使用 .NET Core 和文本翻译 REST API 来检测所提供文本的语言。
 
@@ -28,7 +28,7 @@ ms.locfileid: "52335690"
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Json.NET NuGet 包](https://www.nuget.org/packages/Newtonsoft.Json/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download) 或你喜欢用的文本编辑器
-* 语音服务的 Azure 订阅密钥
+* 适用于文本翻译的 Azure 订阅密钥
 
 ## <a name="create-a-net-core-project"></a>创建 .NET Core 项目
 

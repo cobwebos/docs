@@ -1,27 +1,8 @@
 ---
-title: 使用示例数据集 - Azure 机器学习工作室 | Microsoft Docs
-description: 机器学习工作室中包含的示例模型中使用的数据集说明。 可以将这些示例数据集用于实验。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
-editor: cgronlun
-ms.assetid: 03a0b844-e8a7-4896-996f-d3c7a0db7a50
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/19/2018
-ms.openlocfilehash: 57d9e1c7b501b67a441dc3490356261fa29ebb7d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308828"
+title:使用示例数据集 titleSuffix:Azure 机器学习工作室 description:机器学习工作室中包含的示例模型中使用的数据集说明。 可以将这些示例数据集用于实验。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:2018/01/19
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中使用示例数据集
 [top]: #machine-learning-sample-datasets
@@ -34,7 +15,7 @@ ms.locfileid: "52308828"
 通过将其中的任何数据集拖放到实验画布中，即可在自己的实验中使用它们。
 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 <table>
 
@@ -48,7 +29,7 @@ ms.locfileid: "52308828"
   <td>
 1994 年人口普查数据库的子集（其中在职人士年龄大于 16，调整后的收入指数大于 100）。
 <p></p>
-<b>用途</b>：使用人口统计信息对国民进行分类，预测是否有国民的年收入超过 50K。
+<b>用途：</b>使用人口统计信息对人员分类，预测某人的年收入是否超过 5 万。
 <p></p>
 <b>相关研究：</b>Kohavi, R.、Becker, B.（1996 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
@@ -113,7 +94,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
   <td>
 肿瘤学研究所提供的三个癌症相关数据集之一，经常出现在机器学习文献中。 将诊断信息与来自约 300 个组织样本的实验室分析的特征相结合。
 <p></p>
-<b>用途：</b>基于 9 种属性（其中有一些是线性的，一些是无条件的）分类癌症类型。 
+<b>用途：</b>基于 9 种属性（其中有一些是线性的，一些是无条件的）对癌症类型分类。 
 <p></p>
 <b>相关研究：</b>Wohlberg, W.H.、Street, W.N. 和 Mangasarian, O.L. （1995 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
@@ -168,7 +149,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>使用回归或分类来预测基于两个实值响应之一的能效等级。 对于多类分类，将响应变量舍入为最接近的整数。 
 <p></p>
-<b>相关研究：</b>Xifara, A. 和 Tsanas, A.（2012 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
+<b>相关研究：</b>Xifara, A. & Tsanas, A.（2012 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
 
 <tr>

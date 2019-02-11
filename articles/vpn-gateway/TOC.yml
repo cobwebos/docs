@@ -175,12 +175,14 @@ items:
       href: vpn-gateway-delete-vnet-gateway-powershell.md
   - name: 网关 SKU（旧版）
     href: vpn-gateway-about-skus-legacy.md
-  - name: 配置第三方 VPN 设备
+  - name: 配置 VPN 设备
     items:
     - name: 概述和 Azure 配置
       href: vpn-gateway-3rdparty-device-config-overview.md
     - name: 示例：Cisco ASA 设备（IKEv2/无 BGP）
       href: vpn-gateway-3rdparty-device-config-cisco-asa.md
+  - name: 为 P2S 转换到公共 CA 网关证书
+    href: vpn-gateway-point-to-site-gateway-public-ca.md
   - name: 故障排除
     href: vpn-gateway-troubleshoot.md
     items:
@@ -252,9 +254,9 @@ items:
     href: https://azure.microsoft.com/support/legal/sla
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=vpn-gateway
-ms.openlocfilehash: aa9cb293365a6a2ec20e2d9ce0423310b59c5314
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: d3e9783ab898478d5f356a573458a7034c67ac0d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242069"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894865"

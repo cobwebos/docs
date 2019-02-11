@@ -2,18 +2,18 @@
 title: 管理 Azure 恢复服务保管库和服务器
 description: 在 Azure 恢复服务保管库中管理作业和警报。
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/21/2018
-ms.author: markgal
-ms.openlocfilehash: c9b3b027a52a6847c566c385c304edc195f7fdda
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: raynew
+ms.openlocfilehash: 552ba28a9635cdd484ccd598726dcea0b3bcbc60
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250690"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261496"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>监视和管理恢复服务保管库
 
@@ -67,7 +67,7 @@ ms.locfileid: "51250690"
 
 ![根据严重警报筛选的“备份警报”菜单](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
 
-上图中的“备份警报”菜单已根据以下条件进行筛选：“状态”为“活动”、“严重性”为“严重”、时间为过去 24 小时。
+上图中的“备份警报”菜单按以下条件筛选：“状态”为“活动”，“严重性”为“严重”，时间为前 24 小时。
 
 ## <a name="manage-backup-alerts"></a>管理备份警报
 

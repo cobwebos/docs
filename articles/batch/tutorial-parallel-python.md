@@ -2,20 +2,20 @@
 title: 运行并行工作负荷 - Azure Batch Python
 description: 教程 - 在 Azure Batch 中使用 Batch Python 客户端库通过 ffmpeg 并行处理媒体文件
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 09/24/2018
-ms.author: danlep
+ms.date: 11/29/2018
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 3636faa9478555b64bb94f7dcfb1f3f587ecdca9
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: f537ccfd18685cd5aa8ee06910fc80ac3d2056c9
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814162"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750403"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>教程：使用 Python API 通过 Azure Batch 运行并行工作负荷
 
@@ -65,7 +65,7 @@ git clone https://github.com/Azure-Samples/batch-python-ffmpeg-tutorial.git
 pip install -r requirements.txt
 ```
 
-打开 `batch_python_tutorial_ffmpeg.py` 文件。 使用特定于帐户的值更新 Batch 帐户和存储帐户凭据字符串。 例如：
+打开 `config.py` 文件。 使用特定于帐户的值更新 Batch 帐户和存储帐户凭据字符串。 例如：
 
 
 ```Python
@@ -75,8 +75,6 @@ _BATCH_ACCOUNT_URL = 'https://mybatchaccount.mybatchregion.batch.azure.com'
 _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
-
-[!INCLUDE [batch-credentials-include](../../includes/batch-credentials-include.md)]
 
 ### <a name="run-the-app"></a>运行应用
 
@@ -89,7 +87,7 @@ python batch_python_tutorial_ffmpeg.py
 运行示例应用程序时，控制台输出如下所示。 在执行期间启动池的计算节点时，会遇到暂停并看到`Monitoring all tasks for 'Completed' state, timeout in 00:30:00...`。 
    
 ```
-Sample start: 12/12/2017 3:20:21 PM
+Sample start: 11/28/2018 3:20:21 PM
 
 Container [input] created.
 Container [output] created.
@@ -105,7 +103,7 @@ Monitoring all tasks for 'Completed' state, timeout in 00:30:00...
 Success! All tasks completed successfully within the specified timeout period.
 Deleting container [input]....
 
-Sample end: 12/12/2017 3:29:36 PM
+Sample end: 11/28/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
@@ -166,13 +164,13 @@ input_files = [
 
 ### <a name="create-a-pool-of-compute-nodes"></a>创建计算节点池
 
-然后，该示例会调用 `create_pool` 以在 Batch 帐户中创建计算节点池。 这个定义的函数使用 Batch [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) 类来设置节点数、VM 大小和池配置。 在这里，[VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) 对象指定对 Azure 市场中发布的 Ubuntu Server 16.04 LTS 映像的 [ImageReference](/python/api/azure.batch.models.imagereference)。 Batch 支持 Azure 市场中的各种 VM 映像以及自定义 VM 映像。
+然后，该示例会调用 `create_pool` 以在 Batch 帐户中创建计算节点池。 这个定义的函数使用 Batch [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) 类来设置节点数、VM 大小和池配置。 在这里，[VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) 对象指定对 Azure 市场中发布的 Ubuntu Server 18.04 LTS 映像的 [ImageReference](/python/api/azure.batch.models.imagereference)。 Batch 支持 Azure 市场中的各种 VM 映像以及自定义 VM 映像。
 
 节点数和 VM 大小使用定义的常数进行设置。 Batch 支持专用节点和[低优先级](batch-low-pri-vms.md)节点。可以在池中使用这其中的一种，或者两种都使用。 专用节点为池保留。 低优先级节点在 Azure 有剩余 VM 容量时以优惠价提供。 如果 Azure 没有足够的容量，低优先级节点会变得不可用。 默认情况下，此示例创建的池只包含 5 个大小为 *Standard_A1_v2* 的低优先级节点。 
 
 除了物理节点属性，此池配置还包括 [StartTask](/python/api/azure.batch.models.starttask) 对象。 StartTask 在每个节点加入池以及每次重新启动节点时在该节点上运行。 在此示例中，StartTask 运行的 Bash shell 命令用于在节点上安装 ffmpeg 包和依赖项。
 
-[pool.add](/python/api/azure.batch.operations.pooloperations#azure_batch_operations_PoolOperations_add) 方法将池提交到 Batch 服务。
+[pool.add](/python/api/azure.batch.operations.pooloperations) 方法将池提交到 Batch 服务。
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -181,10 +179,10 @@ new_pool = batch.models.PoolAddParameter(
         image_reference=batchmodels.ImageReference(
             publisher="Canonical",
             offer="UbuntuServer",
-            sku="16.04-LTS",
+            sku="18.04-LTS",
             version="latest"
             ),
-        node_agent_sku_id="batch.node.ubuntu 16.04"),
+        node_agent_sku_id="batch.node.ubuntu 18.04"),
     vm_size=_POOL_VM_SIZE,
     target_dedicated_nodes=_DEDICATED_POOL_NODE_COUNT,
     target_low_priority_nodes=_LOW_PRIORITY_POOL_NODE_COUNT,
@@ -202,7 +200,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-job"></a>创建作业
 
-Batch 作业可指定在其中运行任务的池以及可选设置，例如工作的优先级和计划。 此示例通过调用 `create_job` 创建一个作业。 这个定义的函数使用 [JobAddParameter](/python/api/azure.batch.models.jobaddparameter) 类在池中创建作业。 [job.add](/python/api/azure.batch.operations.joboperations#azure_batch_operations_JobOperations_add) 方法将池提交到 Batch 服务。 作业一开始没有任务。
+Batch 作业可指定在其中运行任务的池以及可选设置，例如工作的优先级和计划。 此示例通过调用 `create_job` 创建一个作业。 这个定义的函数使用 [JobAddParameter](/python/api/azure.batch.models.jobaddparameter) 类在池中创建作业。 [job.add](/python/api/azure.batch.operations.joboperations) 方法将池提交到 Batch 服务。 作业一开始没有任务。
 
 ```python
 job = batch.models.JobAddParameter(
@@ -218,7 +216,7 @@ batch_service_client.job.add(job)
 
 此示例在运行命令行后为 MP3 文件创建 [OutputFile](/python/api/azure.batch.models.outputfile) 对象。 每个任务的输出文件（在此示例中为一个）都会使用任务的 `output_files` 属性上传到关联的存储帐户中的一个容器。
 
-然后，应用使用 [task.add_collection](/python/api/azure.batch.operations.taskoperations#azure_batch_operations_TaskOperations_add_collection) 方法将任务添加到作业，使任务按顺序在计算节点上运行。 
+然后，应用使用 [task.add_collection](/python/api/azure.batch.operations.taskoperations) 方法将任务添加到作业，使任务按顺序在计算节点上运行。 
 
 ```python
 tasks = list()

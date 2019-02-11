@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 9057d9f5d63598ea249e8f3193b84fd715018829
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 175fdcc1bf8d28c0eeb6eeccaa54c996c837ef81
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109965"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744439"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>使数据分析管道可操作化
 
@@ -30,13 +30,13 @@ ms.locfileid: "43109965"
 | 2017 | 1 | 3 | AS | 9.435449 | 5.482143 | 572289 |
 | 2017 | 1 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
 
-示例管道等待一个新时间段的航班数据到达，然后将详细航班信息存储到 Hive 数据仓库，用于长期分析。 管道还创建一个较小的数据集，用于汇总每日航班数据。 此每日航班汇总数据发送到 SQL 数据库，为网站等提供报表。
+示例管道等待一个新时间段的航班数据到达，然后将详细航班信息存储到 Apache Hive 数据仓库，用于长期分析。 管道还创建一个较小的数据集，用于汇总每日航班数据。 此每日航班汇总数据发送到 SQL 数据库，为网站等提供报表。
 
 下图展示了此示例管道。
 
 ![航班数据管道](./media/hdinsight-operationalize-data-pipeline/pipeline-overview.png)
 
-## <a name="oozie-solution-overview"></a>Oozie 解决方案概述
+## <a name="apache-oozie-solution-overview"></a>Apache Oozie 解决方案概述
 
 此管道使用 HDInsight Hadoop 群集上运行的 Apache Oozie。
 
@@ -98,7 +98,7 @@ Azure SQL 数据库现已准备就绪。
 #### <a name="provision-an-hdinsight-hadoop-cluster"></a>预配置 HDInsight Hadoop 群集
 
 1. 在 Azure 门户中，选择“+新建”，并搜索 HDInsight。
-2. 选择**创建**。
+2. 选择“创建”。
 3. 在“基础知识”窗格上，为群集提供一个唯一的名称并选择 Azure 订阅。
 
     ![HDInsight 群集名称和订阅](./media/hdinsight-operationalize-data-pipeline/hdi-name-sub.png)
@@ -139,7 +139,7 @@ Azure SQL 数据库现已准备就绪。
 
 若要使用 Oozie Web 控制台查看协调器和工作流实例的状态，请将 SSH 隧道设为 HDInsight 群集。 有关详细信息，请参阅 [SSH 隧道](hdinsight-linux-ambari-ssh-tunnel.md)。
 
-> [!NOTE]
+> [!NOTE]  
 > 还可以结合使用 Chrome 和 [Foxy Proxy](https://getfoxyproxy.org/) 扩展，跨 SSH 隧道浏览群集的 Web 资源。 将其配置为通过隧道端口 9876 上的主机 `localhost` 代理所有请求。 此方法与适用于 Linux 的 Windows 子系统（也称为 Windows 10 上的 Bash）兼容。
 
 1. 运行以下命令将 SSH 隧道打开到群集：
@@ -156,7 +156,7 @@ Azure SQL 数据库现已准备就绪。
 
 ### <a name="configure-hive"></a>配置 Hive
 
-1. 下载包含一个月航班数据的示例 CSV 文件。 从 [HDInsight Github 存储库](https://github.com/hdinsight/hdinsight-dev-guide)下载其 ZIP 文件 `2017-01-FlightData.zip`，并将其解压到 CSV 文件 `2017-01-FlightData.csv`。 
+1. 下载包含一个月航班数据的示例 CSV 文件。 从 [HDInsight GitHub 存储库](https://github.com/hdinsight/hdinsight-dev-guide)下载其 ZIP 文件 `2017-01-FlightData.zip`，并将其解压到 CSV 文件 `2017-01-FlightData.csv`。 
 
 2. 将此 CSV 文件复制到附加到 HDInsight 群集的 Azure 存储帐户，并将其置于 `/example/data/flights` 文件夹中。
 
@@ -430,7 +430,7 @@ day=03
 | 月份 | 用于计算航班汇总的日期的月份部分。 原样保留。 |
 | day | 用于计算航班汇总的日期的月份部分的日期。 原样保留。 |
 
-> [!NOTE]
+> [!NOTE]  
 > 确保先使用特定于环境的值更新 `job.properties` 文件的副本，再部署和运行 Oozie 工作流。
 
 ### <a name="deploy-and-run-the-oozie-workflow"></a>部署和运行 Oozie 工作流
@@ -545,15 +545,15 @@ day=03
 
 可以看到，大部分协调器仅将配置信息传递到工作流实例。 但是，有几点需要强调。
 
-* 第 1 点：`coordinator-app` 元素上的 `start` 和 `end` 属性控制协调器运行的时间间隔。
+* 第 1 点：`coordinator-app` 元素本身上的 `start` 和 `end` 属性控制协调器运行的时间间隔。
 
     ```
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    协调器负责按照 `frequency` 属性指定的间隔，在 `start` 和 `end` 日期范围内计划操作。 每个计划的操作反过来按配置运行工作流。 在上面的协调器定义中，协调器被配置为从 2017 年 1 月 1 日到 2017 年 1 月 5 日运行操作。 频率通过 [Oozie 表达式语言](http://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation)频率表达式 `${coord:days(1)}` 设置为 1 天。 通过此操作，协调器会按每天一次的频率计划一个操作（以及工作流）。 对于过去的日期范围，如本示例所示，操作将计划为无延迟运行。 操作运行计划的开始日期称为“名义时间”。 例如，若要处理 2017 年 1 月 1 日的数据，协调器将把操作的名义时间计划为 2017-01-01T00:00:00 GMT。
+    协调器负责按照 `frequency` 属性指定的间隔，在 `start` 和 `end` 日期范围内计划操作。 每个计划的操作反过来按配置运行工作流。 在上面的协调器定义中，协调器被配置为从 2017 年 1 月 1 日到 2017 年 1 月 5 日运行操作。 频率通过 [Oozie 表达式语言](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation)频率表达式 `${coord:days(1)}` 设置为 1 天。 通过此操作，协调器会按每天一次的频率计划一个操作（以及工作流）。 对于过去的日期范围，如本示例所示，操作将计划为无延迟运行。 操作运行计划的开始日期称为“名义时间”。 例如，若要处理 2017 年 1 月 1 日的数据，协调器将把操作的名义时间计划为 2017-01-01T00:00:00 GMT。
 
-* 第 2 点：在工作流的日期范围内，`dataset` 元素指定 HDFS 中查找特定日期范围的数据的位置，并配置 Oozie 如何确定数据是否可进行处理。
+* 第 2 点：在工作流的日期范围内，`dataset` 元素指定 HDFS 中查找特定日期范围的数据的位置，并配置 Oozie 如何确定数据是否还可进行处理。
 
     ```
     <dataset name="ds_input1" frequency="${coord:days(1)}" initial-instance="2016-12-31T00:00Z" timezone="UTC">
@@ -578,7 +578,7 @@ day=03
 
 结合上述三点的结果是：协调器按照逐日的方式计划源数据的处理。 
 
-* 第 1 点：协调器从名义时间 2017-01-01 开始。
+* 第 1 点：协调器从名义时间 2017-01-01 开始运行。
 
 * 第 2 点：Oozie 在 `sourceDataFolder/2017-01-FlightData.csv` 中查找可用数据。
 
@@ -651,6 +651,6 @@ sqlDatabaseTableName=dailyflights
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Apache Oozie 文档](http://oozie.apache.org/docs/4.2.0/index.html)
+* [Apache Oozie 文档](https://oozie.apache.org/docs/4.2.0/index.html)
 
 <!-- * Build the same pipeline [using Azure Data Factory](tbd.md).  -->

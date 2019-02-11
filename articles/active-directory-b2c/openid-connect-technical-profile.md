@@ -3,29 +3,29 @@ title: 在 Azure Active Directory B2C 的自定义策略中定义 OpenId Connect
 description: 在 Azure Active Directory B2C 的自定义策略中定义 OpenId Connect 技术配置文件。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 40922080857563b86d538586b90513381edb5d89
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.subservice: B2C
+ms.openlocfilehash: 730d32fd5b9451c2b4edfe0fb1e50c06c2156815
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44382466"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159465"
 ---
 # <a name="define-a-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OpenId Connect 技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C 为 [OpenId Connect](http://openid.net/2015/04/17/openid-connect-certification-program/) 协议标识提供者提供支持。 OpenID Connect 1.0 在 OAuth 2.0 基础上提供一个标识层，代表现代身份验证协议的最新技术。  使用 OpenId Connect 技术配置文件，可以与基于 OpenId Connect 的标识提供者（例如 Azure AD）联合，方便用户使用其现有的社交或企业标识登录。
+Azure Active Directory (Azure AD) B2C 为 [OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) 协议标识提供者提供支持。 OpenID Connect 1.0 在 OAuth 2.0 基础上提供一个标识层，代表现代身份验证协议的最新技术。  使用 OpenId Connect 技术配置文件，可以与基于 OpenId Connect 的标识提供者（例如 Azure AD）联合，方便用户使用其现有的社交或企业标识登录。
 
 ## <a name="protocol"></a>协议
 
-**Protocol** 元素的 **Name** 属性必须设置为 `OpenIdConnect`。 例如，**MSA-OIDC** 技术配置文件的协议为 `OpenIdConnect`：
+“Protocol”元素的“Name”属性必须设置为 `OpenIdConnect`。 例如，**MSA-OIDC** 技术配置文件的协议为 `OpenIdConnect`：
 
 ```XML
 <TechnicalProfile Id="MSA-OIDC">
@@ -73,7 +73,7 @@ Azure Active Directory (Azure AD) B2C 为 [OpenId Connect](http://openid.net/201
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 必选 | Description |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
 | IdTokenAudience | 否 | id_token 的受众。 在指定此项的情况下，Azure AD B2C 会检查令牌是否位于标识提供者返回的声明中，以及是否与指定的令牌相同。 |
@@ -92,7 +92,7 @@ Azure Active Directory (Azure AD) B2C 为 [OpenId Connect](http://openid.net/201
 
 **CryptographicKeys** 元素包含以下属性：
 
-| 属性 | 必选 | Description |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 标识提供者应用程序的客户端机密。 只有在将 **response_types** 元数据设置为 `code` 的情况下，才需要加密密钥。 在这种情况下，Azure AD B2C 会再次进行调用，以便用授权代码来交换访问令牌。 如果元数据已设置为 `id_token`，则可省略加密密钥。  |  
 

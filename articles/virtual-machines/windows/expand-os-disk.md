@@ -15,12 +15,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: kirpas
-ms.openlocfilehash: 097aa128affb6a7ac0770c861ab70ec9d04e2d98
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.subservice: disks
+ms.openlocfilehash: 3d5d0d4b17bcdc5e0461b977c4c832762a46b99b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319109"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456181"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>如何扩展虚拟机的 OS 驱动器
 

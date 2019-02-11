@@ -1,6 +1,6 @@
 items:
 - name: Azure 资源管理器文档
-  href: index.md
+  href: index.yml
 - name: 概述
   items:
   - name: 什么是资源管理器？
@@ -20,6 +20,8 @@ items:
     href: resource-manager-tutorial-create-encrypted-storage-accounts.md
   - name: 创建多个实例
     href: resource-manager-tutorial-create-multiple-instances.md
+  - name: 移动资源
+    href: resource-manager-tutorial-move-resources.md
   - name: 设置资源部署顺序
     href: resource-manager-tutorial-create-templates-with-dependent-resources.md
   - name: 使用条件
@@ -32,8 +34,12 @@ items:
     href: resource-manager-tutorial-deploy-vm-extensions.md
   - name: 部署 SQL 扩展
     href: resource-manager-tutorial-deploy-sql-extensions-bacpac.md
+  - name: 保护项目
+    href: resource-manager-tutorial-secure-artifacts.md
   - name: 使用安全部署实践
     href: deployment-manager-tutorial.md
+  - name: 排查模板部署问题
+    href: resource-manager-tutorial-troubleshoot.md
 - name: 示例
   items:
   - name: 资源管理器模板
@@ -42,20 +48,38 @@ items:
     href: https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager
 - name: 概念
   items:
+  - name: 模板
+    items:
+    - name: 模板文件结构
+      href: resource-group-authoring-templates.md
+    - name: parameters
+      href: resource-manager-templates-parameters.md
+    - name: 变量
+      href: resource-manager-templates-variables.md
+    - name: 函数
+      href: resource-group-authoring-templates.md#functions
+    - name: 资源
+      href: resource-manager-templates-resources.md
+    - name: Outputs
+      href: resource-manager-templates-outputs.md
+  - name: 指南
+    items:
+    - name: 模板最佳实践
+      href: template-best-practices.md
+    - name: 订阅监管
+      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold
+      maintainContext: true
+    - name: 用于提供云一致性的模板
+      href: templates-cloud-consistency.md
   - name: 资源提供程序和类型
     href: resource-manager-supported-services.md
   - name: 管理组
     href: management-groups-overview.md
   - name: 部署管理器
     href: deployment-manager-overview.md
-  - name: 订阅监管
-    href: /azure/architecture/cloud-adoption-guide/subscription-governance
-    maintainContext: true
-  - name: 用于提供云一致性的模板
-    href: templates-cloud-consistency.md
   - name: 部署模式
     href: deployment-modes.md
-  - name: 资源删除
+  - name: 资源的删除
     href: resource-group-delete.md
   - name: 资源管理器部署和经典部署
     href: resource-manager-deployment-model.md
@@ -63,94 +87,83 @@ items:
   items:
   - name: 创建模板
     items:
-    - name: 模板节
-      href: resource-group-authoring-templates.md
-      items:
-      - name: parameters
-        href: resource-manager-templates-parameters.md
-      - name: 变量
-        href: resource-manager-templates-variables.md
-      - name: 函数
-        href: resource-group-authoring-templates.md#functions
-      - name: 资源
-        href: resource-manager-templates-resources.md
-      - name: Outputs
-        href: resource-manager-templates-outputs.md
-    - name: 链接的模板和嵌套的模板
-      href: resource-group-linked-templates.md
-    - name: 资源依赖关系
+    - name: 创建模板
+      href: how-to-create-template.md
+    - name: 在订阅级别创建资源组和资源
+      href: deploy-to-subscription.md
+    - name: 定义资源依赖关系
       href: resource-group-define-dependencies.md
+    - name: 将模板模块化
+      href: resource-group-linked-templates.md
+    - name: 管理机密
+      href: resource-manager-keyvault-parameter.md
     - name: 创建多个实例
       href: resource-group-create-multiple.md
-    - name: 在模板中创建资源组
-      href: create-resource-group-in-template.md
-    - name: 在订阅中创建资源
-      href: deploy-to-subscription.md
+    - name: 使用模板扩展
+      href: resource-manager-use-extensions.md
     - name: 更新资源
       href: /azure/architecture/building-blocks/extending-templates/update-resource
-  - name: 部署
+  - name: 部署模板
     items:
-    - name: Azure PowerShell
-      items:
-      - name: 部署模板
-        href: resource-group-template-deploy.md
-      - name: 使用 SAS 令牌部署专用模板
-        href: resource-manager-powershell-sas-token.md
-      - name: 导出模板并进行重新部署
-        href: resource-manager-export-template-powershell.md
-    - name: Azure CLI
-      items:
-      - name: 部署模板
-        href: resource-group-template-deploy-cli.md
-      - name: 使用 SAS 令牌部署专用模板
-        href: resource-manager-cli-sas-token.md
-      - name: 导出模板并进行重新部署
-        href: resource-manager-export-template-cli.md
-    - name: Azure 门户
-      items:
-      - name: 部署资源
-        href: resource-group-template-deploy-portal.md
-      - name: 导出模板
-        href: resource-manager-export-template.md
-    - name: REST API
+    - name: 使用 Azure 门户进行部署
+      href: resource-group-template-deploy-portal.md
+    - name: 使用 Azure CLI 进行部署
+      href: resource-group-template-deploy-cli.md
+    - name: 使用 Azure PowerShell 进行部署
+      href: resource-group-template-deploy.md
+    - name: 使用 REST API 进行部署
       href: resource-group-template-deploy-rest.md
-    - name: 多个资源组或订阅
+    - name: 导出模板
+      items:
+      - name: 使用门户
+        href: resource-manager-export-template.md
+      - name: 使用 Azure CLI
+        href: resource-manager-export-template-cli.md
+      - name: 使用 Azure PowerShell
+        href: resource-manager-export-template-powershell.md
+    - name: 使用 SAS 令牌保护模板
+      items:
+      - name: 使用 Azure CLI
+        href: resource-manager-cli-sas-token.md
+      - name: 使用 PowerShell
+        href: resource-manager-powershell-sas-token.md
+    - name: 部署到多个资源组或订阅
       href: resource-manager-cross-resource-group-deployment.md
     - name: Azure DevOps Services 中的持续集成
       href: ../vs-azure-tools-resource-groups-ci-in-vsts.md
       maintainContext: true
-    - name: 在部署期间传递安全值
-      href: resource-manager-keyvault-parameter.md
-  - name: 管理
+  - name: 管理资源
     items:
-    - name: Azure PowerShell
-      href: powershell-azure-resource-manager.md
-    - name: Azure CLI
-      href: cli-azure-resource-manager.md
-    - name: Azure 门户
+    - name: 使用 Azure 门户进行管理
       href: resource-group-portal.md
-    - name: 使用标记来组织资源
-      href: resource-group-using-tags.md
-    - name: 将资源移到新组或订阅
+    - name: 使用 Azure PowerShell 进行管理
+      href: powershell-azure-resource-manager.md
+    - name: 使用 Azure CLI 进行管理
+      href: cli-azure-resource-manager.md
+    - name: 移动资源
       href: resource-group-move-resources.md
       items:
       - name: 根据资源类型移动支持
         href: move-support-resources.md
+    - name: 使用标记组织资源
+      href: resource-group-using-tags.md
+    - name: 锁定资源
+      href: resource-group-lock-resources.md
+    - name: 用于访问订阅的身份验证 API
+      href: resource-manager-api-authentication.md
     - name: 创建 EA 订阅
       href: programmatically-create-subscription.md
     - name: 授予访问权限以创建 EA 订阅
       href: grant-access-to-create-subscription.md
-    - name: 用于访问订阅的身份验证 API
-      href: resource-manager-api-authentication.md
-    - name: 锁定资源
-      href: resource-group-lock-resources.md
-  - name: 审核
+    - name: 跨租户进行身份验证
+      href: authenticate-multi-tenant.md
+  - name: 审核部署
     items:
     - name: 查看活动日志
       href: resource-group-audit.md
     - name: 查看部署操作
       href: resource-manager-deployment-operations.md
-  - name: 故障排除
+  - name: 对部署进行故障排除
     items:
     - name: 排查部署错误
       href: resource-manager-common-deployment-errors.md
@@ -211,7 +224,7 @@ items:
     href: /rest/api/resources/
   - name: REST - 部署管理器
     href: /rest/api/deploymentmanager/
-  - name: PowerShell
+  - name: Azure PowerShell
     href: /powershell/module/azurerm.resources
   - name: Azure CLI
     href: /cli/azure/resource
@@ -230,14 +243,14 @@ items:
   - name: 服务更新
     href: https://azure.microsoft.com/updates/?product=azure-resource-manager
   - name: 堆栈溢出
-    href: http://stackoverflow.com/questions/tagged/azure-resource-manager
+    href: https://stackoverflow.com/questions/tagged/azure-resource-manager
   - name: 管理个人数据
     href: resource-manager-personal-data.md
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 472d31764efb3793508502ce8585bac3f9a948cc
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0256bc1bf00680a36d1a8f4286757e56243e54f5
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315318"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329144"

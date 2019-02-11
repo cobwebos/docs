@@ -3,28 +3,28 @@ title: 性能建议 - Azure SQL 数据库 | Microsoft Docs
 description: Azure SQL 数据库提供有关 SQL 数据库的建议，以提升当前查询性能。
 services: sql-database
 ms.service: sql-database
-ms.subservice: performance
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
-ms.reviewer: carlrab
+ms.author: danil
+ms.reviewer: jrasnik
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 6a92e4d842734d38f79146ba2b5f112600f3dc3c
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 12/19/2018
+ms.openlocfilehash: 6dd404ec0ab9e88c9e5bc4af4b939b3aa1f2e675
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064078"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55560866"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>SQL 数据库性能建议
 
 Azure SQL 数据库与应用程序一起自行学习和进行适应性调整。 它提供可最大限度提高 SQL 数据库性能的自定义建议。 SQL 数据库持续评估并分析 SQL 数据库的使用情况历史记录。 提供的建议以数据库唯一工作负载模式为依据，有助于提升性能。
 
 > [!TIP]
-> [自动优化](sql-database-automatic-tuning.md)是性能优化的推荐方式。 [智能见解](sql-database-intelligent-insights.md)是监视性能的推荐方式。 
+> [自动调整](sql-database-automatic-tuning.md)是自动调整一些最常见的数据库性能问题的推荐方法。 [查询性能见解](sql-database-query-performance.md)是基本 Azure SQL 数据库性能监控需求的推荐方法。 [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) 是针对大规模高级数据库性能监控的推荐方法，具有内置智能功能，可自动执行性能故障排除。
 >
 
 ## <a name="create-index-recommendations"></a>“创建索引”建议

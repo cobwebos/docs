@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: juliako;johndeu;anilmur
-ms.openlocfilehash: 1521d18ab94c647aebf303b660574afe6612474d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3f01d5342fbeeb5cb5e19af63a0dd91128778859
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250506"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823226"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>使用工作流设计器创建高级编码工作流
 ## <a name="overview"></a>概述

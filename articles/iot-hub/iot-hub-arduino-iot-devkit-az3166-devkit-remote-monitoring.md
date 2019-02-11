@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 79a44e3f5303aaf0d337333b482c2df670e0b3da
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 954a57bb9253e4f18d61c3a699b6e721568da292
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42141250"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157393"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>将 MXChip IoT DevKit 连接到 Azure IoT 远程监视解决方案加速器
 
@@ -82,7 +82,7 @@ ms.locfileid: "42141250"
 4. 展开左侧的“ARDUINO 示例”部分，浏览到“MXCHIP AZ3166 的示例 > AzureIoT”，然后选择“RemoteMonitoring”。 它将打开一个新的 VS Code 窗口，其中包含一个项目文件夹。
 
    > [!NOTE]
-   > 如果无意中关闭了窗格，可以重新打开它。 使用 `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) 打开命令面板，键入“Arduino”，然后找到并选择“Arduino: Examples”。
+   > 如果无意中关闭了窗格，可以重新打开它。 使用 `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) 打开命令面板，键入“Arduino”，然后找到并选择“Arduino:Examples”。
 
 ## <a name="provision-required-azure-services"></a>预配所需的 Azure 服务
 
@@ -127,7 +127,7 @@ DevKit 将重新启动并开始运行代码。
 如果遇到问题，请参阅 [IoT 开发人员工具包常见问题解答](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)，或通过以下渠道联系我们：
 
 * [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
-* [堆栈溢出](https://stackoverflow.com/questions/tagged/iot-devkit)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>后续步骤
 

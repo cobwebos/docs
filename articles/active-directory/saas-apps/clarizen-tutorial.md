@@ -1,135 +1,131 @@
 ---
-title: 教程：Azure Active Directory 与 Clarizen 的集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 Clarizen 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Clarizen 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/10/2017
+ms.topic: tutorial
+ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 855f147b0622ecc0831f2bc464e83d245af9e574
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: f4c7efdb0a43c352450056a9f6f79e3e189c820c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158665"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458306"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>教程：Azure Active Directory 与 Clarizen 的集成
+# <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>教程：Azure Active Directory 与 Clarizen 集成
 
-本教程介绍了如何将 Azure Active Directory (Azure AD) 与 Clarizen 进行集成。 此集成可提供以下优势：
+在本教程中，了解如何将 Clarizen 与 Azure Active Directory (Azure AD) 集成。
+将 Clarizen 与 Azure AD 集成可提供以下优势：
 
-- 可以在 Azure AD 中控制谁有权访问 Clarizen。
-- 可以让用户使用其 Azure AD 帐户自动登录到 Clarizen（单一登录）。
-- 可在一个中心位置（即 Azure 门户）管理帐户。
+* 可以在 Azure AD 中控制谁有权访问 Clarizen。
+* 可让用户使用其 Azure AD 帐户自动登录到 Clarizen（单一登录）。
+* 可在中心位置（即 Azure 门户）管理帐户。
 
-本教程中的方案包括两个主要任务：
-
-1. 从库中添加 Clarizen。
-1. 配置和测试 Azure AD 单一登录。
-
-如果想要了解有关软件即服务 (SaaS) 应用与 Azure AD 集成的更多详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
+
 若要配置 Azure AD 与 Clarizen 的集成，需要以下项：
 
-- Azure AD 订阅
-- 一个启用了单一登录的 Clarizen 订阅
+* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+* 已启用 Clarizen 单一登录的订阅
 
-若要测试本教程中的步骤，请遵循以下建议：
+## <a name="scenario-description"></a>方案描述
 
-- 在测试环境中测试 Azure AD 单一登录。 除非必要，请勿使用生产环境。
-- 如果没有 Azure AD 测试环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
+本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-## <a name="add-clarizen-from-the-gallery"></a>从库中添加 Clarizen
+* Clarizen 支持 **IDP** 发起的 SSO
+
+## <a name="adding-clarizen-from-the-gallery"></a>从库中添加 Clarizen
+
 要配置 Clarizen 与 Azure AD 的集成，需要从库中将 Clarizen 添加到托管 SaaS 应用列表。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，在左窗格中，单击 **Azure Active Directory** 图标。
+**若要从库中添加 Clarizen，请执行以下步骤：**
 
-    ![Azure Active Directory 图标][1]
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
-1. 单击“企业应用程序”。 然后单击“所有应用程序”。
+    ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-    ![单击“企业应用程序”和“所有应用程序”][2]
+2. 转到“企业应用”，并选择“所有应用”选项。
 
-1. 单击对话框顶部的“添加”按钮。
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-    ![“添加”按钮][3]
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-1. 在搜索框中，键入“Clarizen”。
+    ![“新增应用程序”按钮](common/add-new-app.png)
 
-    ![在搜索框中键入“Clarizen”](./media/clarizen-tutorial/tutorial_clarizen_000.png)
+4. 在搜索框中键入 **Clarizen**，在结果面板中选择“Clarizen”，然后单击“添加”按钮添加该应用程序。
 
-1. 在结果窗格中，选择“Clarizen”，并单击“添加”以添加该应用程序。
-
-    ![在结果窗格中选择 Clarizen](./media/clarizen-tutorial/tutorial_clarizen_0001.png)
+     ![结果列表中的“Clarizen”](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-在以下各部分中，将基于测试用户 Britta Simon 配置和测试 Clarizen 的 Azure AD 单一登录。
 
-若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Clarizen 用户。 换句话说，需要在 Azure AD 用户与 Clarizen 中相关用户之间建立链接关系。 可以通过将 Azure AD 中“用户名”的值分配为 Clarizen 中“用户名”的值来建立此链接关系。
+在本部分，我们基于名为 **Britta Simon** 的测试用户来配置并测试 Clarizen 的 Azure AD 单一登录。
+若要正常使用单一登录，需要在 Azure AD 用户与 Clarizen 相关用户之间建立链接关系。
 
-若要配置和测试 Clarizen 的 Azure AD 单一登录，请完成以下构建基块：
+若要配置和测试 Clarizen 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)**，让用户能够使用此功能。
-1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)**，以便使用 Britta Simon 测试 Azure AD 单一登录。
-1. **[创建 Clarizen 测试用户](#create-a-clarizen-test-user)**，在 Clarizen 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
-1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)**，使 Britta Simon 能够使用 Azure AD 单一登录。
-1. **[测试单一登录](#test-single-sign-on)**，验证配置是否正常工作。
+1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
+2. **[配置 Clarizen 单一登录](#configure-clarizen-single-sign-on)** - 在应用程序端配置单一登录设置。
+3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+5. **[创建 Clarizen 测试用户](#create-clarizen-test-user)** - 在 Clarizen 中创建 Britta Simon 的对应用户，并将其关联到其在 Azure AD 中的表示形式。
+6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
-在 Azure 门户中启用 Azure AD 单一登录并在 Clarizen 应用程序中配置单一登录。
 
-1. 在 Azure 门户中，在 **Clarizen** 应用程序集成页上，单击“单一登录”。
+在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
-    ![单击“单一登录”][4]
+若要配置 Clarizen 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在“单一登录”对话框中，选择“基于 SAML 的登录”作为“模式”以启用单一登录。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Clarizen”应用程序集成页上，选择“单一登录”。
 
-    ![选择“基于 SAML 的登录”](./media/clarizen-tutorial/tutorial_clarizen_01.png)
+    ![配置单一登录链接](common/select-sso.png)
 
-1. 在“Clarizen 域和 URL”部分中，执行以下步骤：
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
-    ![标识符和回复 URL 的框](./media/clarizen-tutorial/tutorial_clarizen_02.png)
+    ![单一登录选择模式](common/select-saml-option.png)
 
-    a. 在“标识符”框中，键入以下值：**Clarizen**
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
 
-    b. 在“回复 URL”框中，使用以下模式键入 URL：**https://<company name>.clarizen.com/Clarizen/Pages/Integrations/SAML/SamlResponse.aspx**
+    ![编辑基本 SAML 配置](common/edit-urls.png)
+
+4. 在“设置 SAML 单一登录”页上，执行以下步骤：
+
+    ![Clarizen 域和 URL 单一登录信息](common/idp-intiated.png)
+
+    a. 在“标识符”文本框中，键入值：`Clarizen`
+
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://.clarizen.com/Clarizen/Pages/Integrations/SAML/SamlResponse.aspx`
 
     > [!NOTE]
     > 这些不是实际值。 必须使用实际的标识符和回复 URL。 此处，我们建议使用唯一的字符串值作为标识符。 若要获取实际值，请与 [Clarizen 支持团队](https://success.clarizen.com/hc/en-us/requests/new)联系。
 
-1. 在“SAML 签名证书”部分中，单击“创建新证书”。
+4. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
-    ![单击“创建新证书”](./media/clarizen-tutorial/tutorial_clarizen_03.png)    
+    ![证书下载链接](common/certificatebase64.png)
 
-1. 在“创建新证书”对话框中，单击日历图标，并选择一个到期日期。 然后单击“保存”。
+6. 在“设置 Clarizen”部分，根据要求复制相应的 URL。
 
-    ![选择并保存到期日期](./media/clarizen-tutorial/tutorial_general_300.png)
+    ![复制配置 URL](common/copy-configuration-urls.png)
 
-1. 在“SAML 签名证书”部分中，选择“激活新证书”，并单击“保存”。
+    a. 登录 URL
 
-    ![选中“激活新证书”复选框](./media/clarizen-tutorial/tutorial_clarizen_04.png)
+    b. Azure AD 标识符
 
-1. 在“滚动更新证书”对话框中，单击“确定”。
+    c. 注销 URL
 
-    ![单击“确定”以确认要激活证书](./media/clarizen-tutorial/tutorial_general_400.png)
-
-1. 在“SAML 签名证书”部分中，单击“证书(Base64)”，并在计算机上保存证书文件。
-
-    ![单击“证书(Base64)”以开始下载](./media/clarizen-tutorial/tutorial_clarizen_05.png)
-
-1. 在“Clarizen 配置”部分中，单击“配置 Clarizen”打开“配置登录”窗口。
-
-    ![单击“配置 Clarizen”](./media/clarizen-tutorial/tutorial_clarizen_06.png)
-
-    ![“配置登录”窗口，其中包括了文件和 URL](./media/clarizen-tutorial/tutorial_clarizen_07.png)
+### <a name="configure-clarizen-single-sign-on"></a>配置 Clarizen 单一登录
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Clarizen 公司站点。
 
@@ -149,44 +145,66 @@ ms.locfileid: "44158665"
 
     b. 单击“上传”以上传所下载的证书。
 
-    c. 在“登录 URL”框中，输入 Azure AD 应用程序配置窗口中“SAML 单一登录服务 URL”的值。
+    c. 在“登录 URL”框中，输入 Azure AD 应用程序配置窗口中的“登录 URL”值。
 
-    d. 在“注销 URL”框中，输入 Azure AD 应用程序配置窗口中“注销 URL”的值。
+    d. 在“注销 URL”框中，输入 Azure AD 应用程序配置窗口中的“注销 URL”值。
 
     e. 选择“使用 POST”。
 
     f. 单击“ **保存**”。
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-在 Azure 门户中，创建一个名为 Britta Simon 的测试用户。
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
-![Azure AD 测试用户的姓名和电子邮件地址][100]
+本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户中，在左窗格中，单击 **Azure Active Directory** 图标。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
-    ![Azure Active Directory 图标](./media/clarizen-tutorial/create_aaduser_01.png)
+    ![“用户和组”以及“所有用户”链接](common/users.png)
 
-1. 单击“用户和组”，并单击“所有用户”以显示用户列表。
+2. 选择屏幕顶部的“新建用户”。
 
-    ![单击“用户和组”以及“所有用户”](./media/clarizen-tutorial/create_aaduser_02.png)
+    ![“新建用户”按钮](common/new-user.png)
 
-1. 在对话框顶部，单击“添加”以打开“用户”对话框。
+3. 在“用户属性”中，按照以下步骤操作。
 
-    ![“添加”按钮](./media/clarizen-tutorial/create_aaduser_03.png)
+    ![“用户”对话框](common/user-properties.png)
 
-1. 在“用户”对话框中，执行以下步骤：
+    a. 在“名称”字段中，输入 BrittaSimon。
+  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    例如： BrittaSimon@contoso.com
 
-    ![“用户”对话框，其中填写了姓名、电子邮件地址和密码](./media/clarizen-tutorial/create_aaduser_04.png)
-
-    a. 在“姓名”框中，键入“BrittaSimon”。
-
-    b. 在“用户名”框中，键入 Britta Simon 帐户的电子邮件地址。
-
-    c. 选择“显示密码”并记下“密码”的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
     d. 单击“创建”。
 
-### <a name="create-a-clarizen-test-user"></a>创建 Clarizen 测试用户
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+
+在本部分，我们通过授予 Britta Simon 访问 Clarizen 的权限，使其能够使用 Azure 单一登录。
+
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Clarizen”。
+
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+
+2. 在应用程序列表中，选择“Clarizen”。
+
+    ![“应用程序”列表中的“Clarizen”链接](common/all-applications.png)
+
+3. 在左侧菜单中，选择“用户和组”。
+
+    ![“用户和组”链接](common/users-groups-blade.png)
+
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+
+    ![“添加分配”窗格](common/add-assign-user.png)
+
+5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+
+7. 在“添加分配”对话框中，单击“分配”按钮。
+
+### <a name="create-clarizen-test-user"></a>创建 Clarizen 测试用户
 
 本部分的目的是在 Clarizen 中创建名为“Britta Simon”的用户。
 
@@ -215,53 +233,17 @@ ms.locfileid: "44158665"
     > [!NOTE]
     > Azure Active Directory 帐户持有者将收到一封电子邮件，并且将单击其中的链接以在激活帐户前确认帐户。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-通过向 Britta Simon 授予对 Clarizen 的访问权限使她能够使用 Azure 单一登录。
 
-![分配的测试用户][200]
+### <a name="test-single-sign-on"></a>测试单一登录 
 
-1. 在 Azure 门户中，打开应用程序视图，浏览到目录视图，单击“企业应用程序”，并单击“所有应用程序”。
+在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-    ![单击“企业应用程序”和“所有应用程序”][201]
-
-1. 在应用程序列表中，选择“Clarizen”。
-
-    ![在列表中选择 Clarizen](./media/clarizen-tutorial/tutorial_clarizen_50.png)
-
-1. 在左窗格中，单击“用户和组”。
-
-    ![单击“用户和组”][202]
-
-1. 单击“添加”按钮。 然后，在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加”按钮和“添加分配”对话框][203]
-
-1. 在“用户和组”对话框中，在用户列表中选择“Britta Simon”。
-
-1. 在“用户和组”对话框中，单击“选择”按钮。
-
-1. 在“添加分配”对话框中，单击“分配”按钮。
-
-### <a name="test-single-sign-on"></a>测试单一登录
-使用访问面板测试 Azure AD 单一登录配置。
-
-当在访问面板中单击 Clarizen 磁贴时，应当会自动登录 Clarizen 应用程序。
+在访问面板中单击“Clarizen”磁贴时，应会自动登录到设置了 SSO 的 Clarizen。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/clarizen-tutorial/tutorial_general_01.png
-[2]: ./media/clarizen-tutorial/tutorial_general_02.png
-[3]: ./media/clarizen-tutorial/tutorial_general_03.png
-[4]: ./media/clarizen-tutorial/tutorial_general_04.png
-
-[100]: ./media/clarizen-tutorial/tutorial_general_100.png
-
-[200]: ./media/clarizen-tutorial/tutorial_general_200.png
-[201]: ./media/clarizen-tutorial/tutorial_general_201.png
-[202]: ./media/clarizen-tutorial/tutorial_general_202.png
-[203]: ./media/clarizen-tutorial/tutorial_general_203.png
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

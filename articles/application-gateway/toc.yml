@@ -30,6 +30,8 @@ items:
     href: tutorial-url-redirect-cli.md
   - name: 自动缩放和区域冗余
     href: tutorial-autoscale-ps.md
+  - name: 重写 HTTP 标头
+    href: tutorial-http-header-rewrite-powershell.md
 - name: 示例
   items:
   - name: Azure PowerShell
@@ -54,12 +56,16 @@ items:
     href: application-gateway-autoscaling-zone-redundant.md
   - name: 重定向支持
     href: redirect-overview.md
+  - name: 重写 HTTP 标头
+    href: rewrite-http-headers.md
   - name: 多租户支持
     href: application-gateway-web-app-overview.md
   - name: 运行状况监视
     href: application-gateway-probe-overview.md
   - name: WebSocket 支持
     href: application-gateway-websocket.md
+  - name: 常见问题解答
+    href: application-gateway-faq.md
 - name: 操作指南
   items:
   - name: 管理 Web 流量
@@ -120,6 +126,8 @@ items:
         href: redirect-external-site-cli.md
     - name: HTTP 到 HTTPS
       items:
+      - name: Azure 门户
+        href: redirect-http-to-https-portal.md
       - name: Azure PowerShell
         href: redirect-http-to-https-powershell.md
       - name: Azure CLI
@@ -132,6 +140,10 @@ items:
         href: redirect-internal-site-cli.md
     - name: 使用 Azure PowerShell 重定向 Web 流量
       href: tutorial-url-redirect-powershell.md
+  - name: 在现有网关中重写 HTTP 标头
+    items:
+    - name: Azure PowerShell
+      href: add-http-header-rewrite-rule-powershell.md
   - name: 多租户支持
     items:
     - name: 配置多租户支持
@@ -146,7 +158,7 @@ items:
       href: application-gateway-create-probe-ps.md
   - name: 故障排除
     items:
-    - name: 排查 Azure 中应用程序网关的问题 – ILB ASE
+    - name: 排查应用程序网关的问题 – ILB ASE
       href: create-gateway-internal-load-balancer-app-service-environment.md
     - name: 排查“错误的网关”(502) 错误
       href: application-gateway-troubleshooting-502.md
@@ -187,12 +199,10 @@ items:
   - name: 区域可用性
     href: https://azure.microsoft.com/regions/services/
   - name: 堆栈溢出
-    href: http://stackoverflow.com/questions/tagged/azure-application-gateway
-  - name: 常见问题解答
-    href: application-gateway-faq.md
-ms.openlocfilehash: 945db004a91da966b8f10b7bfb0dbf3b84799bad
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+    href: https://stackoverflow.com/questions/tagged/azure-application-gateway
+ms.openlocfilehash: 3eb1167d496a5b509eec923564c072142bce3c91
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275157"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382986"

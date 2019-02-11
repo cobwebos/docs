@@ -3,7 +3,7 @@ title: 弹性数据库工具词汇表 | Microsoft 文档
 description: 弹性数据库工具所用术语的解释
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,15 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 7af8e25fa46155d5054d494485de336c68caa7f2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.date: 12/04/2018
+ms.openlocfilehash: 446203b45744a95c32cd41d9ded26fd960ac8a22
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239060"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561427"
 ---
 # <a name="elastic-database-tools-glossary"></a>弹性数据库工具词汇表
+
 Azure SQL 数据库中的[弹性数据库工具](sql-database-elastic-scale-introduction.md)功能的术语定义如下。 这些工具用于管理[分片映射](sql-database-elastic-scale-shard-map-management.md)，包括[客户端库](sql-database-elastic-database-client-library.md)、[拆分/合并工具](sql-database-elastic-scale-overview-split-and-merge.md)、[弹性池](sql-database-elastic-pool.md)和[查询](sql-database-elastic-query-overview.md)。 
 
 [使用弹性数据库工具添加分片](sql-database-elastic-scale-add-a-shard.md)和[使用 RecoveryManager 类解决分片映射问题](sql-database-elastic-database-recovery-manager.md)中用到了这些术语。
@@ -30,7 +31,7 @@ Azure SQL 数据库中的[弹性数据库工具](sql-database-elastic-scale-intr
 
 **依赖于数据的路由**：使应用程序能够连接到给定了特定分片键的分片的功能。 请参阅[依赖于数据的路由](sql-database-elastic-scale-data-dependent-routing.md)。 与**[多分片查询](sql-database-elastic-scale-multishard-querying.md)** 进行比较。
 
-**全局分片映射**：**分片集**内分片键及其各自分片之间的映射。 全局分片映射存储在**分片映射管理器**中。 与**局部分片映射**进行比较。
+**全局分片映射**：分片集内分片键及其各自分片之间的映射。 全局分片映射存储在**分片映射管理器**中。 与**局部分片映射**进行比较。
 
 **列表分片映射**：在其中单独映射分片键的分片映射。 与**范围分片映射**进行比较。   
 
@@ -52,7 +53,7 @@ Azure SQL 数据库中的[弹性数据库工具](sql-database-elastic-scale-intr
 
 **分片**：用于存储分片数据集中的数据的 Azure SQL 数据库。 
 
-**分片弹性**：执行**横向缩放**和**纵向缩放**的能力。
+**分片弹性**：执行横向缩放和纵向缩放的能力。
 
 **分片表**：已进行分片的表，即在基于其分片键值的分片中分发其数据。 
 

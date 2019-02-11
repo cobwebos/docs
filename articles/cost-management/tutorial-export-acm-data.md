@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/21/2018
+ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: e671c75b1ceee0e42b3af9ddc149edf2f3b0040c
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.custom: seodec18
+ms.openlocfilehash: 4ad93dad2044526f5825823540325b73f2d0d7ae
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822348"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053528"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 
@@ -50,11 +50,11 @@ ms.locfileid: "51822348"
 
 为导出键入一个名称，然后选择“每日导出本月截止到现在的成本”选项。 单击“下一步”。
 
-![新建导出：导出类型](./media/tutorial-export-acm-data/basics_exports.png)
+![显示导出类型的新导出示例](./media/tutorial-export-acm-data/basics_exports.png)
 
 指定 Azure 存储帐户的订阅，然后选择存储帐户。  指定要将导出文件放置到其中的存储容器和目录路径。  单击“下一步”。
 
-![新建导出：存储](./media/tutorial-export-acm-data/storage_exports.png)
+![显示存储帐户详细信息的新导出示例](./media/tutorial-export-acm-data/storage_exports.png)
 
 查看导出详细信息，然后单击“创建”。
 
@@ -62,21 +62,37 @@ ms.locfileid: "51822348"
 
 最初，在导出运行之前，可能需要一到两个小时。 但是，在导出文件中显示数据之前，它可能需要四个小时。
 
+### <a name="export-schedule"></a>导出计划
+
+计划的导出受刚开始创建导出时的时间以及星期几的影响。 创建计划的导出以后，随后的每次导出都会在一天的同一时间运行。 例如，你创建了一个在每日下午 1:00 进行的导出。 下一次导出在第二天下午 1:00 运行。 当前时间以相同的方式影响所有其他的导出类型—它们始终在一天的同一时间运行，与刚开始创建导出时的运行时间一样。 在另一示例中，你创建一个在每周一下午 4:00 进行的导出。 下一次导出在下一个星期一的下午 4:00 运行。 导出的数据在运行导出后四小时内即可可用。
+
+每次导出都会创建新文件，因此旧的导出不会被覆盖。
+
+有三种类型的导出选项：
+
+**每日导出本月至今的成本** – 初始导出立即运行。 后续导出在第二天运行，其时间与初始导出一样。 最新数据是根据以前的每日导出聚合的。
+
+**过去七天的每周成本** – 初始导出立即运行。 后续导出在每周的特定星期几运行，其时间与初始导出一样。 成本是过去七天的。
+
+**自定义** – 可以使用 week-to-date 和 month-to-date 选项计划每周和每月的导出。 初始导出会立即运行。
+
+![“新建导出 - 基本信息”选项卡，显示自定义的每周 week-to-date 选择](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
+
 ## <a name="verify-that-data-is-collected"></a>验证收集的数据
 
 可以轻松验证正在收集的成本管理数据，并使用 Azure 存储资源管理器查看导出的 CSV 文件。
 
 在导出列表中，单击存储帐户名称。 在存储帐户页上，单击“在资源管理器中打开”。 如果看到确认框，单击“是”，即可在 Azure 存储资源管理器中打开文件。
 
-![存储帐户页](./media/tutorial-export-acm-data/storage-account-page.png)
+![存储帐户页面，其中显示示例信息和“在资源管理器中打开”链接](./media/tutorial-export-acm-data/storage-account-page.png)
 
 在存储资源管理器中，导航到你想要打开的容器，并选择与当前月份相对应的文件夹。 然后将显示 CSV 文件列表。 选择一个文件，然后单击“打开”。
 
-![存储资源管理器](./media/tutorial-export-acm-data/storage-explorer.png)
+![存储资源管理器中显示的示例信息](./media/tutorial-export-acm-data/storage-explorer.png)
 
 该文件将通过设置为打开 CSV 文件扩展名的程序或应用程序打开。 下面是 Excel 中的一个示例。
 
-![示例导出数据](./media/tutorial-export-acm-data/example-export-data.png)
+![Excel 中显示的导出 CSV 数据示例](./media/tutorial-export-acm-data/example-export-data.png)
 
 ## <a name="access-exported-data-from-other-systems"></a>从其他系统访问导出的数据
 

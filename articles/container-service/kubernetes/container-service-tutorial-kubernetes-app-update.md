@@ -1,24 +1,27 @@
 ---
-title: Azure 容器服务教程 - 更新应用程序
+title: （已弃用）Azure 容器服务教程 - 更新应用程序
 description: Azure 容器服务教程 - 更新应用程序
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9cb5769d7f54a1036bf14199c87961c95ed2e7ce
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 99e282b720bb29ed5fb94ad2c9779ae56a019836
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432400"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993518"
 ---
-# <a name="update-an-application-in-kubernetes"></a>更新 Kubernetes 中的应用程序
+# <a name="deprecated-update-an-application-in-kubernetes"></a>（已弃用）在 Kubernetes 中更新应用程序
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> 有关使用 Azure Kubernetes 服务的此教程的更新版本，请参阅[教程：在 Azure Kubernetes 服务 (AKS) 中更新应用程序](../../aks/tutorial-kubernetes-app-update.md)。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 在 Kubernetes 中部署应用程序后，可以指定新的容器映像或映像版本，从而更新应用程序。 这样做时，更新会进行暂存，因此只有一部分部署会同时更新。 借助这种暂存更新，可以让应用程序在更新期间继续运行。 如果发生部署故障，还可以利用它的回滚机制。 
 

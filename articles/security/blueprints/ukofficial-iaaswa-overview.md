@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: d40e23a7cc113a9db297a7dbf00a2372063dfb52
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a7461f6160c4c848106b16b1a9eaacb96ddf7499
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059209"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699136"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure 安全性和符合性蓝图 - 适用于英国官方的三层 IaaS Web 应用程序
 
@@ -129,7 +129,7 @@ ms.locfileid: "39059209"
 
 ### <a name="deployment-architecture"></a>部署体系结构：
 
-**本地网络**：在组织中实施的专用局域网。
+**本地网络**：组织中实现的专用局域网。
 
 **生产 VNet**：生产 [VNet](https://docs.microsoft.com/azure/Virtual-Network/virtual-networks-overview)（虚拟网络）托管 Azure 中运行的应用程序和其他运营资源。 每个 VNet 可以包含用于隔离和管理网络流量的多个子网。
 
@@ -180,15 +180,15 @@ ms.locfileid: "39059209"
 
 ### <a name="identity"></a>标识
 
-**Active Directory 域服务**：此体系结构在 Azure 中提供 Active Directory 域服务。 有关在 Azure 中实施 Active Directory 的具体建议，请参阅以下文章：
+**Active Directory 域服务**：此体系结构在 Azure 中提供 Active Directory 域服务部署。 有关在 Azure 中实施 Active Directory 的具体建议，请参阅以下文章：
 
 [将 Active Directory 域服务 (AD DS) 扩展到 Azure](https://docs.microsoft.com/azure/guidance/guidance-identity-adds-extend-domain)。
 
 [有关在 Azure 虚拟机上部署 Windows Server Active Directory 的指导](https://msdn.microsoft.com/library/azure/jj156090.aspx)。
 
-**Active Directory 集成**：客户可能希望使用 [Azure Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity#using-azure-active-directory) 集成或 [Azure 中已加入本地林的 Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity#using-active-directory-in-azure-joined-to-an-on-premises-forest) 作为专用 AD DS 体系结构的替代方案。
+**Active Directory 集成**：客户可能希望使用 [Azure Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity) 集成或 [Azure 中已加入本地林的 Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity) 作为专用 AD DS 体系结构的替代方案。
 
-### <a name="security"></a>“安全”
+### <a name="security"></a>安全
 
 **管理安全性**：此蓝图允许管理员使用 RDP 从受信任的源连接到管理 VNet 和 Jumpbox。 使用 NSG 控制管理 VNet 的网络流量。 仅限受信任 IP 范围内可访问包含 Jumpbox 的子网的流量访问端口 3389。
 
@@ -204,7 +204,7 @@ ms.locfileid: "39059209"
 
 **关注点分离**：此参考体系结构将用于管理运营和业务运营的 VNet 分离开来。 将 VNet 和子网分离可以实现流量管理，包括根据 [Microsoft 云服务和网络安全](https://docs.microsoft.com/azure/best-practices-network-security)最佳做法，在网段之间使用 NSG 来限制传入和传出流量。
 
-**资源管理**：将 VM、VNet 和负载均衡器等 Azure 资源分组到 [Azure 资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groupsresource)可对其进行管理。 然后，可将基于资源的访问控制角色分配到每个资源组，以将访问权限限制给已获授权的用户。
+**资源管理**：将 VM、VNet 和负载均衡器等 Azure 资源分组到 [Azure 资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)可对其进行管理。 然后，可将基于资源的访问控制角色分配到每个资源组，以将访问权限限制给已获授权的用户。
 
 **访问控制限制**：使用[基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) 管理应用程序中的资源；可以使用[自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) RBAC 来限制 DevOps 可在每个层上执行的操作。 授予权限时，请使用[最低特权原则](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1)。 记录所有管理操作并执行定期审核，确保所有配置更改按计划进行。
 

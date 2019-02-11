@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2018
 ms.author: barclayn
-ms.openlocfilehash: 4096cf3a44b7c32ed94fdd2ef5dcbad9db08a386
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 3f7d44a2a34f6b52c2229cf6491e99c65d5bb525
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42143964"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052983"
 ---
 # <a name="pen-testing"></a>渗透测试
 使用 Azure 进行应用程序测试和部署的一个优点是可快速创建环境。  不必为请求、获取以及“搭架和堆叠”本地硬件担心。
@@ -40,7 +40,7 @@ ms.locfileid: "42143964"
 可以执行的标准测试包括：
 
 * 对终结点进行测试，以发现[开放 Web 应用程序安全项目 (OWASP) 的前 10 个漏洞](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)
-* 终结点的[模糊测试](https://blogs.microsoft.com/cybertrust/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)
+* 终结点的[模糊测试](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)
 * 终结点的[端口扫描](https://en.wikipedia.org/wiki/Port_scanner)
 
 用户不能执行的一类测试是任何类型的[拒绝服务 (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) 攻击。 其中包括：发起 DoS 攻击，或者执行相关的测试，以便确定、演示或模拟任何类型的 DoS 攻击。

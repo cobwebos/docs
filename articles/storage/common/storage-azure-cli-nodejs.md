@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: 28c9e342aec3eb3ba61b46f4f80c7d097b0653b6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 211051254e08d69c06afd4242599c909048e7e17
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258708"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464834"
 ---
 # <a name="using-the-azure-classic-cli-with-azure-storage"></a>结合使用 Azure 经典 CLI 与 Azure 存储
 
@@ -35,7 +35,7 @@ Azure 经典 CLI 提供了一组开源且跨平台的命令，可结合 Azure �
 ## <a name="get-started-with-azure-storage-and-the-azure-classic-cli-in-5-minutes"></a>在 5 分钟内开始使用 Azure 存储和 Azure 经典 CLI
 本指南使用 Ubuntu 作为示例，但其他 OS 平台的操作应与此类似。
 
-**Azure 新用户：** 获取一个 Microsoft Azure 订阅以及与该订阅关联的 Microsoft 帐户。 有关 Azure 购买选项的信息，请参阅[免费试用](https://azure.microsoft.com/pricing/free-trial/)、[购买选项](https://azure.microsoft.com/pricing/purchase-options/)和[会员套餐](https://azure.microsoft.com/pricing/member-offers/)（适用于 MSDN、Microsoft 合作伙伴网络和 BizSpark 以及其他 Microsoft 计划的成员）。
+**第一次使用 Azure：** 获取 Microsoft Azure 订阅，以及与此订阅关联的 Microsoft 帐户。 有关 Azure 购买选项的信息，请参阅[免费试用](https://azure.microsoft.com/pricing/free-trial/)、[购买选项](https://azure.microsoft.com/pricing/purchase-options/)和[会员套餐](https://azure.microsoft.com/pricing/member-offers/)（适用于 MSDN、Microsoft 合作伙伴网络和 BizSpark 以及其他 Microsoft 计划的成员）。
 
 请参阅[在 Azure Active Directory (Azure AD) 中分配管理员角色](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)，以了解有关 Azure 订阅的更多信息。
 
@@ -78,7 +78,7 @@ Azure 经典 CLI 提供了一组开源且跨平台的命令，可结合 Azure �
 5. 在本地计算机中，打开首选的文本编辑器（例如 vim）。 在文本编辑器中键入上述脚本。
 6. 现在，需要基于配置设置更新脚本变量。
 
-   * **<storage_account_name>**：使用脚本中给定的名称，或输入存储帐户的新名称。 **重要提示：** 在 Azure 中，存储帐户的名称必须是唯一的。 它还必须为小写！
+   * **<storage_account_name>**：使用脚本中给定的名称，或输入存储帐户的新名称。 **重要提示：** 在 Azure 中，存储帐户名必须是唯一的。 它还必须为小写！
    * **<storage_account_key>**：存储帐户的访问密钥。
    * **<container_name>**：使用脚本中给定的名称，或输入容器的新名称。
    * **<image_to_upload>**：输入本地计算机上图片的路径，例如：“~/images/HelloWorld.png”。
@@ -132,7 +132,7 @@ azure storage container create mycontainer
 ```
 
 > [!NOTE]
-> 有三种级别的匿名读取访问权限：**Off**、**Blob** 和 **Container**。 要防止对 Blob 进行匿名访问，请将 Permission 参数设置为 **Off**。 默认情况下，新容器是专用容器，只能由帐户所有者访问。 要允许对 Blob 资源进行匿名公共读取访问，但不允许访问容器元数据或容器中的 Blob 列表，请将 Permission 参数设置为 **Blob**。 要允许对 Blob 资源、容器元数据和容器中的 Blob 列表进行完全公开读取访问，请将 Permission 参数设置为 **Container**。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../blobs/storage-manage-access-to-resources.md)。
+> 有三种级别的匿名读取访问：“关”、“Blob”和“容器”。 要防止对 Blob 进行匿名访问，请将 Permission 参数设置为 **Off**。 默认情况下，新容器是专用容器，只能由帐户所有者访问。 要允许对 Blob 资源进行匿名公共读取访问，但不允许访问容器元数据或容器中的 Blob 列表，请将 Permission 参数设置为 **Blob**。 要允许对 Blob 资源、容器元数据和容器中的 Blob 列表进行完全公开读取访问，请将 Permission 参数设置为 **Container**。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../blobs/storage-manage-access-to-resources.md)。
 >
 >
 

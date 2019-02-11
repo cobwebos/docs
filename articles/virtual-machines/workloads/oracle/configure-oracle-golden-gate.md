@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: f0ae48cadf2e90dc685a24aff54d89f86a11c287
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 5d7e21661d7ee905ff77a4856544d358924cd9ea
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494287"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700870"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上实现 Oracle Golden Gate 
 
@@ -51,7 +51,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南�
 
 ### <a name="sign-in-to-azure"></a>登录 Azure 
 
-使用 [az login](/cli/azure/reference-index#az_login) 命令登录 Azure 订阅。 然后，遵照屏幕指令进行操作。
+使用 [az login](/cli/azure/reference-index) 命令登录 Azure 订阅。 然后，遵照屏幕指令进行操作。
 
 ```azurecli
 az login
@@ -59,7 +59,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 Azure 资源组是在其中部署 Azure 资源以及可以从中管理这些资源的逻辑容器。 
+使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署 Azure 资源以及可以从中管理这些资源的逻辑容器。 
 
 以下示例在 `westus` 位置创建名为 `myResourceGroup` 的资源组。
 
@@ -81,7 +81,7 @@ az vm availability-set create \
 
 ### <a name="create-a-virtual-machine"></a>创建虚拟机
 
-使用 [az vm create](/cli/azure/vm#az_vm_create) 命令创建 VM。 
+使用 [az vm create](/cli/azure/vm) 命令创建 VM。 
 
 以下示例创建两个 VM，分别名为 `myVM1` 和 `myVM2`。 如果默认密钥位置中不存在 SSH 密钥，则创建这些密钥。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 86d64ef0e9abab4368569c2f7c5ccd633660085c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 796cbcfc7ab905c54b878a5ccc866efbf9242fb6
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583207"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652075"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Apache Spark 流式处理概述
 
@@ -203,7 +203,7 @@ Spark 流式传输 API 中可用的滑动窗口函数包括 window、countByWind
 
 ## <a name="checkpointing"></a>检查点
 
-为提供复原和容错功能，Spark 流式处理依赖检查点，确保即使出现节点故障，流处理仍可以不间断地继续。 在 HDInsight 中，Spark 创建持久存储（Azure 存储或 Data Lake Store）的检查点。 这些检查点存储关于流式处理应用程序的元数据，例如应用程序定义的配置和操作，以及已排队但尚未处理的所有批处理。 在某些情况下，检查点还包括将数据保存在 RDD 中以便更快速地基于由 Spark 托管的 RDD 中存在的内容重新生成数据状态。
+为提供复原和容错功能，Spark 流式处理依赖检查点，确保即使出现节点故障，流处理仍可以不间断地继续。 在 HDInsight 中，Spark 创建持久存储（Azure 存储或 Data Lake Storage）的检查点。 这些检查点存储关于流式处理应用程序的元数据，例如应用程序定义的配置和操作，以及已排队但尚未处理的所有批处理。 在某些情况下，检查点还包括将数据保存在 RDD 中以便更快速地基于由 Spark 托管的 RDD 中存在的内容重新生成数据状态。
 
 ## <a name="deploying-spark-streaming-applications"></a>部署 Spark 流式处理应用程序
 

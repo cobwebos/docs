@@ -3,19 +3,19 @@ title: Azure MFA 服务器或服务在本地还是在云中？
 description: 作为 Azure AD 管理员，我是否需要了解应部署哪个版本的 MFA？
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 696c331111fef9d6fc238b733e15230ab3ee1e56
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 783564f8c924cc0b7f94d94748ead35300250ded
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378010"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075561"
 ---
 # <a name="which-version-of-azure-mfa-is-right-for-my-organization"></a>哪个版本的 Azure MFA 适合我的组织？
 
@@ -55,7 +55,7 @@ ms.locfileid: "49378010"
 
 下表是云中多重身份验证和多重身份验证服务器的功能比较。
 
-| 功能 | 云中的 MFA | MFA 服务器 |
+| Feature | 云中的 MFA | MFA 服务器 |
 | --- |:---:|:---:|
 | 将移动应用通知用作第二个因素 | ● | ● |
 | 将移动应用验证码用作第二个因素 | ● | ● |

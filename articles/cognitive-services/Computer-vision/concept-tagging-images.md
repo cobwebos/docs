@@ -1,25 +1,26 @@
 ---
-title: 标记图像 - 计算机视觉
+title: 将内容标记应用于图像 - 计算机视觉
 titleSuffix: Azure Cognitive Services
-description: 使用计算机视觉 API 标记图像的相关概念。
+description: 了解与计算机视觉 API 的图像标记功能相关的概念。
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 0025cdcfaa64a262a5ca54ab4db5a84f6a5768ba
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 6724f95575e1f918fa29033cd53caaef8c97c81c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338907"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149648"
 ---
-# <a name="tagging-images"></a>标记图像
+# <a name="applying-content-tags-to-images"></a>将内容标记应用于图像
 
-计算机视觉在超过 2000 个可识别对象、生物、风景和操作的基础上返回标记。 如果标记含混不清或者不常见，API 响应会提供“提示”，明确已知设置上下文中的标记的含义。 标记未组织为分类，并且不存在继承层次结构。 内容标记的集合构成在完整句子中显示为用户可读语言的图像“说明”的基础。 请注意，此时图像说明仅支持英语。
+计算机视觉在上千个可识别对象、生物、风景和操作的基础上返回标记。 如果标记含混不清或者不常见，API 响应会提供“提示”，明确已知设置上下文中的标记的含义。 标记未组织为分类，并且不存在继承层次结构。 内容标记的集合构成在完整句子中显示为用户可读语言的图像“说明”的基础。 请注意，此时图像说明仅支持英语。
 
 上传图像或指定图像 URL 后，计算机视觉算法在对象、生物和图像中标识的操作的基础上输出标记。 标记并不局限于主体（如前景中的人员），还包括设置（室内或室外）、家具、工具、工厂、动物、附件、小工具等。
 
@@ -27,7 +28,7 @@ ms.locfileid: "49338907"
 
 以下 JSON 响应表明计算机视觉在示例图像中检测到标记可视功能时所返回的内容。
 
-![House_Yard](./Images/house_yard.png).
+![一座蓝色的房子和前院](./Images/house_yard.png).
 
 ```json
 {

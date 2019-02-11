@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/06/2018
+ms.date: 01/26/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f8310885ddf7e2229054f36b8fda92b92c1ab01e
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7916995d2630e9b33e3695c5c505925851ba4934
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406494"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092740"
 ---
 # <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>教程：监视和更新 Azure 中的 Linux 虚拟机
 
@@ -153,7 +153,7 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 5. （可选）选中“电子邮件所有者、参与者和阅读者”对应的框，以便向他们发送电子邮件通知。 默认操作是在门户中显示通知。
 6. 选择“确定”按钮。
 
-## <a name="manage-package-updates"></a>管理程序包更新
+## <a name="manage-software-updates"></a>管理软件更新
 
 使用更新管理可以管理 Azure Linux VM 的更新和修补程序。
 可以直接在 VM 中快速评估可用更新的状态、计划所需更新的安装以及查看部署结果，验证更新是否已成功应用到 VM。
@@ -175,15 +175,14 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 工作区提供了一个位置来查看和分析来自多个数据源的数据。
 若要在需要更新的 VM 上执行其他操作，可使用 Azure 自动化运行针对 VM 的 Runbook，例如下载和应用更新。
 
-验证过程还会检查 VM 是否预配了 Microsoft Monitoring Agent (MMA) 和自动化混合 Runbook 辅助角色。
-此代理用于与虚拟机通信并获取关于更新状态的信息。
+验证过程还会检查 VM 是否预配了 Log Analytics 代理和自动化混合 Runbook 辅助角色。 此代理用于与虚拟机通信并获取关于更新状态的信息。
 
 选择 Log Analytics 工作区和自动化帐户，然后选择“启用”以启用此解决方案。 启用此解决方案最长需要 15 分钟的时间。
 
 如果在载入过程中发现缺少下列任何先决条件，则会自动添加这些条件：
 
 * [Log Analytics](../../log-analytics/log-analytics-overview.md) 工作区
-* [自动化](../../automation/automation-offering-get-started.md)
+* [自动化帐户](../../automation/automation-offering-get-started.md)
 * VM 上已启用[混合 runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)
 
 “更新管理”屏幕随即打开。 配置要使用的位置、Log Analytics 工作区和自动化帐户，然后选择“启用”。 如果这些字段灰显，则意味着已为 VM 启用其他自动化解决方案，因此必须使用同一工作区和自动化帐户。
@@ -208,7 +207,7 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 * 更新分类- 选择部署中包含的更新部署的软件类型。 分类类型：
   * 关键和安全更新
   * 其他更新
-* **要排查的更新** - 可以提供一个列表，其中包含在更新部署过程中应跳过的包名。 包名支持通配符（例如，\*kernal\*）。
+* **要排查的更新** - 可以提供一个列表，其中包含在更新部署过程中应跳过的包名。 包名支持通配符（例如，\*kernel\*）。
 
   ![更新计划设置屏幕](./media/tutorial-monitoring/manage-updates-exclude-linux.png)
 
@@ -291,22 +290,9 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 
 ## <a name="advanced-monitoring"></a>高级监视
 
-可以使用 [Azure 自动化](../../automation/automation-intro.md)提供的“更新管理”及“更改和清单”等解决方案对 VM 进行更高级的监视。
+可以使用[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-overview.md) 之类的解决方案对 VM 进行更高级的分析，此类解决方案分析 Windows 和 Linux VM 的性能与运行状况，包括其不同的进程以及与其他资源和外部进程之间的相互依赖关系，可以大规模监视 Azure 虚拟机 (VM)。 对 Azure VM 的配置管理与 [Azure 自动化](../../automation/automation-intro.md)更改跟踪和清单解决方案一起提供，这样可以轻松地确定环境中的更改。 对更新符合性的管理与 Azure 自动化更新管理解决方案一起提供。   
 
-可以访问 Log Analytics 工作区时，可以通过选择“设置”下的“高级设置”来找到工作区密钥和工作区标识符。 请将 \<workspace-key\> 和 \<workspace-id\> 替换为 Log Analytics 工作区中的值，然后即可使用 **az vm extension set** 将扩展添加到 VM：
-
-```azurecli-interactive
-az vm extension set \
-  --resource-group myResourceGroupMonitor \
-  --vm-name myVM \
-  --name OmsAgentForLinux \
-  --publisher Microsoft.EnterpriseCloud.Monitoring \
-  --version 1.3 \
-  --protected-settings '{"workspaceKey": "<workspace-key>"}' \
-  --settings '{"workspaceId": "<workspace-id>"}'
-```
-
-几分钟后，应该会在 Log Analytics 工作区中看到新 VM。
+在 VM 连接到的 Log Analytics 工作区中，也可通过[丰富的查询语言](../../azure-monitor/log-query/log-query-overview.md)检索、合并和分析收集的数据。 
 
 ![Log Analytics](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 

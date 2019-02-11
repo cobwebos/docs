@@ -3,18 +3,18 @@ title: 将 Azure 自动化作业数据转发到 Log Analytics
 description: 本文展示了如何将作业状态和 Runbook 作业流发送到 Azure Log Analytics，以提供更多见解和管理信息。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 13ba4d774cbc347830c32385ba4927a0df687159
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 0125c64a96929db9c8846ca7ad731fa3dc795f98
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035464"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432959"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>将作业状态和作业流从自动化转发到 Log Analytics
 
@@ -84,7 +84,7 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 来自 Azure 自动化的诊断将在 Log Analytics 中创建两种类型的记录，并标记为 **AzureDiagnostics**。 下面的查询使用了升级后的 Log Analytics 查询语言。 有关旧查询语言与新 Azure Log Analytics 查询语言之间的共有查询的相关信息，请访问 [Legacy to new Azure Log Analytics Query Language cheat sheet](https://docs.loganalytics.io/docs/Learn/References/Legacy-to-new-to-Azure-Log-Analytics-Language)（新旧 Azure Log Analytics 查询语言速查表）。
 
 ### <a name="job-logs"></a>作业日志
-| 属性 | Description |
+| 属性 | 说明 |
 | --- | --- |
 | TimeGenerated |执行 Runbook 作业的日期和时间。 |
 | RunbookName_s |Runbook 的名称。 |
@@ -106,7 +106,7 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 
 
 ### <a name="job-streams"></a>作业流
-| 属性 | Description |
+| 属性 | 说明 |
 | --- | --- |
 | TimeGenerated |执行 Runbook 作业的日期和时间。 |
 | RunbookName_s |Runbook 的名称。 |
@@ -138,10 +138,10 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 若要创建警报规则，首先请针对应该调用警报的 Runbook 作业记录创建日志搜索。 单击“警报”按钮以创建和配置警报的规则。
 
 1. 在 Log Analytics“概述”页面中，单击“日志搜索”。
-2. 通过在查询字段中键入以下搜索，为警报创建日志搜索查询：`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`  还可以使用以下命令按 RunbookName 分组：`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
+2. 在查询字段中键入以下搜索，针对警报创建日志搜索查询：`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`；也可以使用以下命令按 RunbookName 分组：`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
    如果设置了在工作区中收集来自多个自动化帐户或订阅的日志，则可以按照订阅或自动化帐户来为警报分组。 可以在 JobLogs 搜索中的“资源”字段中找到自动化帐户名称。
-1. 若要打开“创建规则”屏幕，请单击页面顶部的“+ 新建警报规则”。 有关用于配置警报的选项的详细信息，请参阅 [Azure 中的日志警报](../monitoring-and-diagnostics/monitor-alerts-unified-log.md)。
+1. 若要打开“创建规则”屏幕，请单击页面顶部的“+ 新建警报规则”。 有关用于配置警报的选项的详细信息，请参阅 [Azure 中的日志警报](../azure-monitor/platform/alerts-unified-log.md)。
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>查找已完成但出错的所有作业
 除了在失败时发出警报外，还可以发现 Runbook 作业何时发生非终止错误。 在这些情况下，PowerShell 会生成一个错误流，但非终止错误不会导致作业暂停或失败。    
@@ -182,4 +182,5 @@ Log Analytics 可以更直观地显示自动化作业的运行情况，并且可
 * 若要详细了解如何使用 Log Analytics 构造不同的搜索查询和查看自动化作业日志，请参阅 [Log Analytics 中的日志搜索](../log-analytics/log-analytics-log-searches.md)。
 * 若要了解如何通过 Runbook 创建和检索输出及错误消息，请参阅 [Runbook 输出和消息](automation-runbook-output-and-messages.md)。
 * 若要详细了解 Runbook 执行方式、如何监视 Runbook 作业和其他技术详细信息，请参阅[跟踪 Runbook 作业](automation-runbook-execution.md)。
-* 若要了解有关 Log Analytics 和数据收集源的详细信息，请参阅[在 Log Analytics 中收集 Azure 存储数据概述](../log-analytics/log-analytics-azure-storage.md)。
+* 若要了解有关 Log Analytics 和数据收集源的详细信息，请参阅[在 Log Analytics 中收集 Azure 存储数据概述](../azure-monitor/platform/collect-azure-metrics-logs.md)。
+

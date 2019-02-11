@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: a3f837b41ba6ec7ecadb3e34917a8088e4d1e2d9
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 25b33242b9f7bddf0497067f111ca3fb4a1ea570
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233508"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600706"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>创建可从 Azure 逻辑应用调用的自定义 API
 
@@ -25,11 +25,11 @@ ms.locfileid: "50233508"
 * 帮助客户使用服务来管理专业或个人任务。
 * 扩展服务的市场宣传、可发现性和使用。
 
-连接器本质上是 Web API，此类 API 将 REST 用于可插入接口、将 [Swagger 元数据格式](http://swagger.io/specification/)用于文档、将 JSON 用作其数据交换格式。 因为连接器是通过 HTTP 终结点进行通信的 REST API，所以可以使用任何语言生成连接器，如 .NET、Java 或 Node.js。 此外，还可在 [Azure 应用服务](../app-service/app-service-web-overview.md)上托管API，前者是一款平台即服务 (PaaS) 产品，可为 API 托管提供一种最简单且可缩放性最高的最佳方法。 
+连接器本质上是 Web API，此类 API 将 REST 用于可插入接口、将 [Swagger 元数据格式](http://swagger.io/specification/)用于文档、将 JSON 用作其数据交换格式。 因为连接器是通过 HTTP 终结点进行通信的 REST API，所以可以使用任何语言生成连接器，如 .NET、Java 或 Node.js。 此外，还可在 [Azure 应用服务](../app-service/overview.md)上托管API，前者是一款平台即服务 (PaaS) 产品，可为 API 托管提供一种最简单且可缩放性最高的最佳方法。 
 
 对于要用于逻辑应用的自定义 API，API 可以提供在逻辑应用工作流中执行特定任务的[操作](./logic-apps-overview.md#logic-app-concepts)。 API 还可充当[触发器](./logic-apps-overview.md#logic-app-concepts)，在新数据或事件满足指定条件时启动逻辑应用工作流。 本主题介绍根据想要 API 提供的行为，在 API 中生成操作和触发器可以遵循的常见模式。
 
-可在 [Azure App Service](../app-service/app-service-web-overview.md) 上托管API，它是一款平台即服务 (PaaS) 产品，可提供简单的高缩放性 API 托管。
+可在 [Azure App Service](../app-service/overview.md) 上托管API，它是一款平台即服务 (PaaS) 产品，可提供简单的高缩放性 API 托管。
 
 > [!TIP] 
 > 虽然可以将 API 部署为 Web 应用，但请考虑将 API 部署为 API 应用，这样可以更轻松地在云和本地生成、托管和使用 API。 不必更改 API 中的任何代码 - 可直接将代码部署到 API 应用。 例如，了解如何生成使用以下语言创建的 API 应用： 
@@ -104,9 +104,9 @@ ms.locfileid: "50233508"
    
    `202 ACCEPTED` 响应应包含这些标头：
    
-   * 必需：用于指定逻辑应用引擎检查 API 作业状态的 URL 的绝对路径的 `location` 标头
+   * 必需：`location` 标头，用于指定逻辑应用引擎检查 API 作业状态的 URL 的绝对路径
 
-   * 可选：用于指定引擎检查 `location` URL 获知作业状态之前应等待秒数的 `retry-after` 标头。 
+   * 可选：`retry-after` 标头，用于指定引擎检查 `location` URL 获知作业状态之前应等待的秒数。 
 
      默认情况下，引擎每隔 20 秒检查一次。 若要指定不同的时间间隔，请包括 `retry-after` 标头和下次轮询前的秒数。
 
@@ -134,9 +134,9 @@ ms.locfileid: "50233508"
 
 对于此模式，在控制器上设置两个终结点：`subscribe` 和 `unsubscribe`
 
-*  `subscribe` 终结点：当执行到达工作流中的 API 操作时，逻辑应用引擎调用 `subscribe` 终结点。 此步骤导致逻辑应用创建 API 将存储的回叫 URL，然后等待工作完成时 API 的回叫。 API 通过 HTTP POST 回叫 URL，并将任何返回的内容和标头作为输入传递到逻辑应用。
+*  `subscribe` 终结点：在执行到达工作流中的 API 操作时，逻辑应用引擎调用 `subscribe` 终结点。 此步骤导致逻辑应用创建 API 将存储的回叫 URL，然后等待工作完成时 API 的回叫。 API 通过 HTTP POST 回叫 URL，并将任何返回的内容和标头作为输入传递到逻辑应用。
 
-* `unsubscribe` 终结点： 如果逻辑应用运行已取消，逻辑应用引擎将调用 `unsubscribe` 终结点。 然后 API 可以取消注册回叫 URL，并根据需要停止任何进程。
+* `unsubscribe` 终结点：如果已取消逻辑应用运行，逻辑应用引擎调用 `unsubscribe` 终结点。 然后 API 可以取消注册回叫 URL，并根据需要停止任何进程。
 
 ![Webhook 操作模式](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 

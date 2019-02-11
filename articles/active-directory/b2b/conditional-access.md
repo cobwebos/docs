@@ -3,19 +3,19 @@ title: Azure Active Directory B2B 协作用户的条件性访问 | Microsoft Doc
 description: Azure Active Directory B2B 协作支持多重身份验证 (MFA)，以便对公司应用程序进行选择性访问
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 47d41884a50450399df6273502096e0e630dbcf3
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: d692392ba28899924ca42f7df47311d949633862
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981756"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080000"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>B2B 协作用户的条件性访问
 
@@ -84,7 +84,7 @@ ms.locfileid: "45981756"
 
 最后，资源租户 MFA 还适用于 MSA 和社交 ID，以及尚未设置 MFA 的合作伙伴组织。
 
-因此，在针对 B2B 用户进行 MFA 方面，建议始终需要在邀请方租户中进行 MFA。 此要求可能会导致有些时候需要进行两次 MFA，但是无论在什么时候访问邀请方租户，最终用户体验都是可以预测的：Sally 必须注册邀请方租户的 MFA。
+因此，在针对 B2B 用户进行 MFA 方面，建议始终需要在邀请方租户中进行 MFA。 此要求可能会导致有些情况下需要进行两次 MFA，但是无论在什么时候访问邀请方租户，最终用户体验都是可以预测的：Sally 必须注册邀请方租户的 MFA。
 
 ### <a name="device-based-location-based-and-risk-based-conditional-access-for-b2b-users"></a>B2B 用户基于设备、位置和风险的条件性访问
 

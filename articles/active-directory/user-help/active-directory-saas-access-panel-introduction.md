@@ -3,21 +3,21 @@ title: Azure Active Directory 中的 MyApps 门户是什么？ | Microsoft Docs
 description: 了解如何使用各种形式的 MyApps 门户（Web 浏览器、Android 应用、iPhone 和 iPad 应用）访问 SaaS 应用程序。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: c0252d01-7e6e-4f79-a70e-600479577dfd
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: d9ed140d404387b94428cea5d925911806b62552
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: eee58708d6aec717d0f79f5c79a0c879b52d56a5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705849"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176363"
 ---
 # <a name="what-is-the-myapps-portal"></a>什么是 MyApps 门户？
 
@@ -41,9 +41,9 @@ MyApps 门户与 Azure 门户不同。 它不需要你拥有 Azure 订阅。
 
 ## <a name="access-the-myapps-portal"></a>访问 MyApps 门户
 
-可以通过转到 `http://myapps.microsoft.com` 访问 MyApps 门户。
+可以通过转到 `https://myapps.microsoft.com` 访问 MyApps 门户。
 
-如果为登录页配置了自定义商标，则可以将组织的域追加到 URL 来加载此商标（例如 `http://myapps.microsoft.com/<your domain>.com`）。
+如果为登录页配置了自定义商标，则可以将组织的域追加到 URL 来加载此商标（例如 `https://myapps.microsoft.com/<your domain>.com`）。
 
 可以使用已在 Azure 门户中配置的任何活动域名或已验证域名，如下所示：![Wingtip Toys 域名][2]  
 
@@ -65,7 +65,7 @@ MyApps 门户至少要求使用支持 JavaScript 且已启用 CSS 的浏览器�
 
 
 MyApps 门户扩展当前适用于：
-- **Microsoft Edge**：Windows 10 周年纪念版或更高版本上。 
+- **Microsoft Edge**：Windows 10 周年纪念版或更高版本。 
 - **Chrome**：在 Windows 7 或更高版本上，以及在 MacOS X 或更高版本上。
 - **Firefox 26.0 或更高版本**：在 Windows XP SP2 或更高版本上，以及在 Mac OS X 10.6 或更高版本上。
 - **Internet Explorer 11**：在 Windows 7 或更高版本上（支持受限）。

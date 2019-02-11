@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 77f4eeec1aa87f42c90d4e93f98f460a8b54b9a9
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 503e056a3fa87e48f61d26661110b9bb89456a51
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167403"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338516"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上 Azure VM 中 SAP HANA 的高可用性
 
@@ -104,11 +104,11 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 1. 在 Azure 门户中打开[数据库模板][template-multisid-db]。
 1. 输入以下参数：
     * **SAP 系统 ID**：输入要安装的 SAP 系统的 SAP 系统 ID。 该 ID 将用作所要部署的资源的前缀。
-    * **OS 类型**：选择一个 Linux 分发版。 对于此示例，请选择“RHEL 7”。
+    * **OS 类型**：选择一个 Linux 发行版。 对于此示例，请选择“RHEL 7”。
     * **数据库类型**：选择“HANA”。
     * **SAP 系统大小**：输入新系统将提供的 SAPS 数量。 如果不确定系统需要多少 SAPS，请咨询 SAP 技术合作伙伴或系统集成商。
     * **系统可用性**：选择“HA”。
-    * **管理员用户名、管理员密码或 SSH 密钥**：创建的可用于登录计算机的新用户。
+    * **管理员用户名、管理员密码或 SSH 密钥**：创建可用于登录计算机的新用户。
     * **子网 ID**：如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：**/subscriptions/\<订阅 ID>/resourceGroups/\<资源组名称>/providers/Microsoft.Network/virtualNetworks/\<虚拟网络名称>/subnets/\<子网名称>**。 如果要创建新的虚拟网络，请将其留空
 
 ### <a name="manual-deployment"></a>手动部署
@@ -120,9 +120,9 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 1. 创建负载均衡器（内部）。
    * 选择在步骤 2 中创建的虚拟网络。
 1. 创建虚拟机 1。  
-   最低使用 Red Hat Enterprise Linux 7.4 for SAP HANA。 本示例使用 Red Hat Enterprise Linux 7.4 for SAP HANA 映像 <https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74forSAPHANA-ARM> 选择在步骤 3 中创建的可用性集。
+   最低使用 Red Hat Enterprise Linux 7.4 for SAP HANA。 本示例使用 Red Hat Enterprise Linux 7.4 for SAP HANA 映像 <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> 选择在步骤 3 中创建的可用性集。
 1. 创建虚拟机 2。  
-   最低使用 Red Hat Enterprise Linux 7.4 for SAP HANA。 本示例使用 Red Hat Enterprise Linux 7.4 for SAP HANA 映像 <https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74forSAPHANA-ARM> 选择在步骤 3 中创建的可用性集。
+   最低使用 Red Hat Enterprise Linux 7.4 for SAP HANA。 本示例使用 Red Hat Enterprise Linux 7.4 for SAP HANA 映像 <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> 选择在步骤 3 中创建的可用性集。
 1. 添加数据磁盘。
 1. 配置负载均衡器。 首先创建前端 IP 池：
 
@@ -305,28 +305,28 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
    * 从 HANA DVD 运行 hdblcm 程序。 在提示符下输入以下值：
    * 选择安装：输入 **1**。
    * 选择要安装的其他组件：输入 **1**。
-   * 输入安装路径 [/hana/shared]：按 Enter。
-   * 输入本地主机名 [..]：按 Enter。
-   * 是否要将其他主机添加到系统? (y/n) [n]：按 Enter。
+   * 输入安装路径 [/hana/shared]：选择 Enter。
+   * 输入本地主机名 [..]：选择 Enter。
+   * 是否要将其他主机添加到系统? (y/n) [n]：选择 Enter。
    * 输入 SAP HANA 系统 ID：输入 HANA 的 SID，例如：**HN1**。
    * 输入实例编号 [00]：输入 HANA 实例编号。 如果使用了 Azure 模板或者遵循了本文的手动部署部分，请输入 **03**。
-   * 选择数据库模式/输入索引 [1]：按 Enter。
+   * 选择数据库模式 / 输入索引 [1]：选择 Enter。
    * 选择系统用途/输入索引 [4]：选择系统用途值。
-   * 输入数据卷的位置 [/hana/data/HN1]：按 Enter。
-   * 输入日志卷的位置 [/hana/log/HN1]：按 Enter。
-   * 是否限制最大内存分配? [n]：按 Enter。
-   * 输入主机 '...' 的证书主机名 [...]：按 Enter。
+   * 输入数据卷的位置 [/hana/data/HN1]：选择 Enter。
+   * 输入日志卷的位置 [/hana/log/HN1]：选择 Enter。
+   * 是否限制最大内存分配? [n]：选择 Enter。
+   * 输入主机 '...' [...] 的证书主机名：选择 Enter。
    * 输入 SAP 主机代理用户 (sapadm) 密码：输入主机代理用户密码。
-   * 确认 SAP 主机代理用户 (sapadm) 密码：再次输入主机代理用户密码以确认。
+   * 确认 SAP 主机代理用户 (sapadm) 密码：再次输入主机代理用户密码以进行确认。
    * 输入系统管理员 (hdbadm) 密码：输入系统管理员密码。
-   * 确认系统管理员 (hdbadm) 密码：再次输入系统管理员密码以确认。
-   * 输入系统管理员主目录 [/usr/sap/HN1/home]：按 Enter。
-   * 输入系统管理员登录 Shell [/ bin/sh]：按 Enter。
-   * 输入系统管理员用户 ID [1001]：按 Enter。
-   * 输入用户组 (sapsys) 的 ID [79]：按 Enter。
+   * 确认系统管理员 (hdbadm) 密码：再次输入系统管理员密码以进行确认。
+   * 输入系统管理员主目录 [/usr/sap/HN1/home]：选择 Enter。
+   * 输入系统管理员登录 Shell [/ bin/sh]：选择 Enter。
+   * 输入系统管理员用户 ID [1001]：选择 Enter。
+   * 输入用户组 (sapsys) 的 ID [79]：选择 Enter。
    * 输入数据库用户 (SYSTEM) 密码：输入数据库用户密码。
-   * 确认数据库用户 (SYSTEM) 密码：再次输入数据库用户密码以确认。
-   * 重新引导计算机后是否重新启动系统? [n]：按 Enter。
+   * 确认数据库用户 (SYSTEM) 密码：再次输入数据库用户密码以进行确认。
+   * 重新引导计算机后是否重新启动系统? [n]：选择 Enter。
    * 是否继续? (y/n)：验证摘要。 按 **y** 继续。
 
 1. **[A]** 升级 SAP 主机代理。

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: a5f6f09ee6c8504b64cad7ef5313501a65907a90
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 02821abd8769a89fc1c7ad9d0dd5cf4e5a245e5f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632578"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435304"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 与 MapReduce 流式处理配合使用
 
@@ -29,7 +29,7 @@ Apache Hadoop 流式处理是一个实用工具，通过它可以使用脚本或
 
 __基于 Linux 的 HDInsight__ 群集使用 [Mono (https://mono-project.com)](https://mono-project.com) 运行 .NET 应用程序。 HDInsight 版本 3.6 附带了 Mono 版本 4.2.1。 有关包含在 HDInsight 中的 Mono 版本的详细信息，请参阅 [HDInsight 组件版本](../hdinsight-component-versioning.md)。 若要使用 Mono 的特定版本，请参阅[安装或更新 Mono](../hdinsight-hadoop-install-mono.md) 文档。
 
-有关 Mono 与 .NET Framework 版本的兼容性的详细信息，请参阅 [Mono 兼容性](http://www.mono-project.com/docs/about-mono/compatibility/)。
+有关 Mono 与 .NET Framework 版本的兼容性的详细信息，请参阅 [Mono 兼容性](https://www.mono-project.com/docs/about-mono/compatibility/)。
 
 ## <a name="how-hadoop-streaming-works"></a>Hadoop 流式处理的工作原理
 
@@ -157,7 +157,7 @@ namespace reducer
 
     * 如果此条目可以展开，则在使用 __Azure 存储帐户__作为该群集的默认存储。 要查看该群集的默认存储上的文件，请展开该条目，并双击“（默认容器）”。
 
-    * 如果此条目无法展开，则在使用 __Azure Data Lake Store__ 作为该群集的默认存储。 若要查看该群集的默认存储上的文件，请双击“（默认存储帐户）”条目。
+    * 如果此条目无法展开，则在使用 __Azure Data Lake Storage__ 作为该群集的默认存储。 若要查看该群集的默认存储上的文件，请双击“（默认存储帐户）”条目。
 
 5. 若要上传 .exe 文件，请使用以下方法之一：
 
@@ -165,7 +165,7 @@ namespace reducer
 
         ![上传图标](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/upload.png)
     
-    * 如果使用的是 __Azure Data Lake Store__，请右键单击文件列表中的空白区域，并选择“上传”。 最后，选择“mapper.exe”文件，并单击“打开”。
+    * 如果使用的是 __Azure Data Lake Storage__，请右键单击文件列表中的空白区域，并选择“上传”。 最后，选择“mapper.exe”文件，并单击“打开”。
 
     上传“mapper.exe”完成后，请为“reducer.exe”文件重复该上传过程。
 
@@ -175,7 +175,7 @@ namespace reducer
 
 2. 使用以下命令之一启动 MapReduce 作业：
 
-    * 如果使用 __Data Lake Store__ 作为默认存储：
+    * 如果使用 __Data Lake Storage__ 作为默认存储：
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files adl:///mapper.exe,adl:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
@@ -236,6 +236,6 @@ namespace reducer
 
 有关将 MapReduce 与 HDInsight 配合使用的详细信息，请参阅[将 MapReduce 与 HDInsight 配合使用](hdinsight-use-mapreduce.md)。
 
-有关将 C# 与 Hive 和 Pig 配合使用的信息，请参阅[将 C# 用户定义函数与 Hive 和 Pig 配合使用](apache-hadoop-hive-pig-udf-dotnet-csharp.md)。
+有关将 C# 与 Hive 和 Pig 配合使用的信息，请参阅[将 C# 用户定义函数与 Apache Hive 和 Apache Pig 配合使用](apache-hadoop-hive-pig-udf-dotnet-csharp.md)。
 
-有关在 HDInsight 上将 C# 与 Storm 配合使用的信息，请参阅[为 HDInsight 上的 Storm 开发 C# 拓扑](../storm/apache-storm-develop-csharp-visual-studio-topology.md)。
+有关在 HDInsight 上将 C# 与 Storm 配合使用的信息，请参阅[为 HDInsight 上的 Apache Storm 开发 C# 拓扑](../storm/apache-storm-develop-csharp-visual-studio-topology.md)。

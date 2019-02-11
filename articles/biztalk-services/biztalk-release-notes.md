@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: f990aa086997d51e59df4285aabeccd31dcce822
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 10e790c2edb22b3c7926216535d76c50261589f3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253425"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260311"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Azure BizTalk 服务发行说明
 
@@ -35,10 +35,10 @@ Microsoft Azure BizTalk 服务发行说明包含此版本中的已知问题。
 ## <a name="update-history"></a>更新历史记录
 ### <a name="october-update"></a>10 月更新
 * 支持组织帐户：  
-  * 方案：使用 Microsoft 帐户（如 user@live.com）注册 BizTalk 服务部署。 在此方案中，仅 Microsoft 帐户用户可使用 BizTalk 服务门户管理 BizTalk 服务。 不可使用组织帐户。  
-  * **方案**：使用 Azure Active Directory 中的组织帐户（如 user@fabrikam.com 或 user@contoso.com）注册 BizTalk 服务部署。 在此方案中，仅同一组织内的 Azure Active Directory 用户可使用 BizTalk 服务门户管理 BizTalk 服务。 不可使用 Microsoft 帐户。  
+  * **场景**：使用 Microsoft 帐户（如 user@live.com）注册 BizTalk 服务部署。 在此方案中，仅 Microsoft 帐户用户可使用 BizTalk 服务门户管理 BizTalk 服务。 不可使用组织帐户。  
+  * **场景**：使用 Azure Active Directory 中的组织帐户（如 user@fabrikam.com 或 user@contoso.com）注册 BizTalk 服务部署。 在此方案中，仅同一组织内的 Azure Active Directory 用户可使用 BizTalk 服务门户管理 BizTalk 服务。 不可使用 Microsoft 帐户。  
 * 创建 BizTalk 服务时，会在 BizTalk 服务门户中自动注册。
-  * **方案**：首次登录 Azure、创建 BizTalk 服务，然后选择“管理”。 BizTalk 服务门户打开时，BizTalk 服务会自动注册并可供部署。  
+  * **场景**：首次登录 Azure、创建 BizTalk 服务，然后选择“管理”。 BizTalk 服务门户打开时，BizTalk 服务会自动注册并可供部署。  
     请参阅[在 BizTalk 服务门户中注册和更新 BizTalk 服务部署](https://msdn.microsoft.com/library/azure/hh689837.aspx)。  
 
 ### <a name="august-14-update"></a>8 月 14 日更新
@@ -175,12 +175,12 @@ Visual Studio 中不显示**测试映射**属性。 如果“属性”窗口和�
 ### <a name="bridges-do-not-use-updated-certificate-even-after-a-certificate-has-been-updated-in-the-artifact-store"></a>即使某证书已在项目存储中更新，网桥也不使用更新后的证书
 请考虑以下方案：  
 
-**方案 1：使用基于指纹的证书保护从网桥到服务终结点的消息传输**  
+**场景 1：使用基于指纹的证书保护从网桥到服务终结点的消息传输**  
 请考虑在 BizTalk 服务项目中使用基于指纹的证书的方案。 在 BizTalk 服务门户中使用相同名称但不同指纹更新了证书，但未更新相应的 BizTalk 服务项目。 在此情况下，网桥可能继续处理消息，因为旧证书数据可能仍在通道缓存中。 随后，消息处理失败。  
 
 **解决方法**：更新 BizTalk 服务项目中的证书，并重新部署该项目。  
 
-**方案 2：使用基于名称的行为识别用于保护从网桥到服务终结点的消息传输的证书**
+**场景 2：使用基于名称的行为识别用于保护从网桥到服务终结点的消息传输的证书**
 
 请考虑在 BizTalk 服务项目中使用基于名称的行为来识别证书的方案。 在 BizTalk 服务门户中更新了证书，但未更新相应 BizTalk 服务项目。 在此情况下，网桥可能继续处理消息，因为旧证书数据可能仍在通道缓存中。 随后，消息处理失败。  
 
@@ -199,7 +199,7 @@ Visual Studio 中不显示**测试映射**属性。 如果“属性”窗口和�
 ### <a name="upgrade-token-provider-error-after-upgrading-from-biztalk-services-preview-to-general-availability-ga"></a>升级：从 BizTalk 服务预览版升级到正式版 (GA) 后发生令牌提供程序错误
 存在使用活动批处理的 EDI 或 AS2 协议。 将 BizTalk 服务从预览版升级到 GA 后，可能发生以下错误：
 
-* 错误：令牌提供程序无法提供安全令牌。 令牌提供程序返回了消息：无法解析远程名称。
+* 错误：令牌提供程序无法提供安全令牌。 令牌提供程序返回了消息：无法解析远程名称”的问题。
 * 已取消批任务。
 
 **解决方法**：将 BizTalk 服务更新到正式版 (GA) 后，重新部署协议。  

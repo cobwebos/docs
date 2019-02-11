@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 6a0a2dec6beeecca3779f4b047d3b5fe6295a1e6
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 62056b27669f334f1d8007d5284979ac4701f9d9
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495306"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650501"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>使用 Apache Spark REST API 将远程作业提交到 HDInsight Spark 群集
 
-了解如何使用 [Apache Livy](https://livy.incubator.apache.org/)，这是 [Apache Spark](https://spark.apache.org/) REST API，用来将远程作业提交到 Azure HDInsight Spark 群集。 有关详细文档，请参阅 [http://livy.incubator.apache.org/](http://livy.incubator.apache.org/)。
+了解如何使用 [Apache Livy](https://livy.incubator.apache.org/)，这是 [Apache Spark](https://spark.apache.org/) REST API，用来将远程作业提交到 Azure HDInsight Spark 群集。 有关详细文档，请参阅 [https://livy.incubator.apache.org/](https://livy.incubator.apache.org/)。
 
 可以使用 Livy 运行交互式 Spark shell，或提交要在 Spark 上运行的批处理作业。 本文介绍如何使用 Livy 提交批处理作业。 本文中的代码片段使用 cURL 向Livy Spark 终结点发出 REST API 调用。
 
@@ -26,7 +26,7 @@ ms.locfileid: "52495306"
 
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 
-* [cURL](http://curl.haxx.se/)。 本文使用 cURL 演示如何对 HDInsight Spark 群集发出 REST API 调用。
+* [cURL](https://curl.haxx.se/)。 本文使用 cURL 演示如何对 HDInsight Spark 群集发出 REST API 调用。
 
 ## <a name="submit-an-apache-livy-spark-batch-job"></a>提交 Apache Livy Spark 批处理作业
 在提交批处理作业之前，必须将应用程序 jar 上传到与群集关联的群集存储。 可以使用命令行实用工具 [**AzCopy**](../../storage/common/storage-use-azcopy.md) 来执行此操作。 可以使用其他各种客户端来上传数据。 有关详细信息，请参阅[在 HDInsight 中上传 Apache Hadoop 作业的数据](../hdinsight-upload-data.md)。
@@ -182,7 +182,7 @@ HDInsight 3.5 群集及更高版本群集默认情况下禁止使用本地文件
 
 ## <a name="next-step"></a>后续步骤
 
-* [Apache Livy REST API 文档](http://livy.incubator.apache.org/docs/latest/rest-api.html)
+* [Apache Livy REST API 文档](https://livy.incubator.apache.org/docs/latest/rest-api.html)
 * [管理 Azure HDInsight 中 Apache Spark 群集的资源](apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](apache-spark-job-debugging.md)
 

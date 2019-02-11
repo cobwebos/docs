@@ -4,7 +4,7 @@ description: 了解如何通过 Azure 门户下载登录报表
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 9131f208-1f90-4cc1-9c29-085cacd69317
 ms.service: active-directory
@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0e6e72424530d18b55f68077ba7c3328d9a2e549
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 74602a64820d277de2222e29e5d9b59354d709f0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621422"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197375"
 ---
 # <a name="quickstart-download-a-sign-in-report-using-the-azure-portal"></a>快速入门：通过 Azure 门户下载登录报表
 
-在此快速入门中，你将学习如何下载租户过去 24 小时的登录数据。
+在此快速入门中，你将学习如何下载租户过去 24 小时的登录数据。 最多可从 Azure 门户下载 5000 条记录。 记录按最近时间进行排序，因此默认情况下获取的是最近 5000 条记录。 
 
 ## <a name="prerequisites"></a>先决条件
 
 需要：
 
-* 一名 Azure Active Directory 租户，具有可查看登录活动报表的高级许可证。 
+* 一名 Azure Active Directory 租户，具有可查看登录活动报表的高级许可证。 请参阅 [Azure Active Directory Premium 入门](../fundamentals/active-directory-get-started-premium.md)来升级 Azure Active Directory 版本。 请注意，如果在升级之前没有任何活动数据，则在升级到高级版许可证后，数据需要经过几天才会显示在报表中。
 * 一位属于该租户的安全管理员、安全读者、报表读者或全局管理员角色的用户。 此外，该租户中的用户均可访问其自己的登录信息。
 
 ## <a name="quickstart-download-a-sign-in-report"></a>快速入门：下载登录报表

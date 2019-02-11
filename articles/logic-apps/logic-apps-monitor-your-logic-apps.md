@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: c2e487f421d2dfc875efde82c078f557f7bd03d2
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: e06bf20a04c6a57ae5988d4cc334ec7a3cdd4bf1
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405729"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543850"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>针对 Azure 逻辑应用监视状态、设置诊断日志记录，并启用警报
 
@@ -74,7 +74,7 @@ ms.locfileid: "49405729"
 
 对于针对运行时详细信息和事件的更丰富调试，可以使用 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) 设置诊断日志记录。 Log Analytics 是 Azure 中的一个服务，用于监视云和本地环境，帮助使其保持较高的可用性和性能。 
 
-在开始之前，需要具有 Log Analytics 工作区。 了解[如何创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)。
+在开始之前，需要具有 Log Analytics 工作区。 了解[如何创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，查找并选择“逻辑应用”。 
 
@@ -155,10 +155,10 @@ ms.locfileid: "49405729"
 
 结合使用 Azure Log Analytics 后，可以扩展将逻辑应用的诊断数据用于其他 Azure 服务的方式，例如： 
 
-* [在 Azure 存储中存档 Azure 诊断日志](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
-* [将 Azure 诊断日志流式传输到 Azure 事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
+* [在 Azure 存储中存档 Azure 诊断日志](../azure-monitor/platform/archive-diagnostic-logs.md)
+* [将 Azure 诊断日志流式传输到 Azure 事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
 
-然后，可通过使用其他服务（如 [Azure 流分析](../stream-analytics/stream-analytics-introduction.md)和 [Power BI](../log-analytics/log-analytics-powerbi.md)）的遥测数据和分析来进行实时监视。 例如：
+然后，可通过使用其他服务（如 [Azure 流分析](../stream-analytics/stream-analytics-introduction.md)和 [Power BI](../azure-monitor/platform/powerbi.md)）的遥测数据和分析来进行实时监视。 例如：
 
 * [将数据从事件中心流式传输到流分析](../stream-analytics/stream-analytics-define-inputs.md)
 * [在 Power BI 中使用流分析来分析流数据，并创建实时分析仪表板](../stream-analytics/stream-analytics-power-bi-dashboard.md)
@@ -174,7 +174,7 @@ ms.locfileid: "49405729"
 
 ## <a name="set-up-alerts-for-your-logic-app"></a>为逻辑应用设置警报
 
-要监视逻辑应用的特定指标或超出的阈值，请[在 Azure 中设置警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)。 了解 [Azure 中的指标](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。 
+要监视逻辑应用的特定指标或超出的阈值，请[在 Azure 中设置警报](../azure-monitor/platform/alerts-overview.md)。 了解 [Azure 中的指标](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。 
 
 若要在不使用 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) 的情况下设置警报，请按照下列步骤执行。 有关更高级的警报条件和操作，也可以[设置 Log Analytics](#azure-diagnostics)。
 
@@ -207,7 +207,7 @@ ms.locfileid: "49405729"
 
 ## <a name="azure-diagnostics-event-settings-and-details"></a>Azure 诊断事件设置和详细信息
 
-每个诊断事件都有关于逻辑应用和该事件的详细信息，例如状态、开始时间、结束时间等。 若要以编程方式设置监视、跟踪和日志记录，可以将这些详细信息用于 [Azure 逻辑应用适用的 REST API](https://docs.microsoft.com/rest/api/logic) 和 [Azure 诊断适用的 REST API](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftlogicworkflows)。
+每个诊断事件都有关于逻辑应用和该事件的详细信息，例如状态、开始时间、结束时间等。 若要以编程方式设置监视、跟踪和日志记录，可以将这些详细信息用于 [Azure 逻辑应用适用的 REST API](https://docs.microsoft.com/rest/api/logic) 和 [Azure 诊断适用的 REST API](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows)。
 
 例如，`ActionCompleted` 事件具有可用于跟踪和监视的 `clientTrackingId` 和 `trackedProperties` 属性：
 

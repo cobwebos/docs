@@ -4,10 +4,10 @@ description: 关于应用程序为何在访问面板上显示的疑难解答
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewr: japere
-ms.openlocfilehash: 85e0eccf8ed30f5fc91bd892463fe6f1bd835d75
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 83aa3b1b132c52944d350a9d2b5231857a10c7fb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354359"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191748"
 ---
 # <a name="how-applications-appear-on-the-access-panel"></a>应用程序为何在访问面板上显示
 

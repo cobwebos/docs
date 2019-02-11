@@ -3,19 +3,19 @@ title: Azure 多重身份验证的安全指南
 description: 本文档提供有关配合使用 Azure MFA 与 Azure 帐户的指导
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 8b6ed6a7e71da2f302df4b41656c8a63e93be2b0
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 34b7607ffe8e23b09782fee8394c00f23909af6b
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159067"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078145"
 ---
 # <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>将 Azure 多重身份验证与 Azure AD 帐户配合使用时的安全指南
 

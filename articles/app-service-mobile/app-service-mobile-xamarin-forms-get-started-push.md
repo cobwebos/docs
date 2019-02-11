@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
-ms.openlocfilehash: 2658dcb0d206086aad1443e2dc720b6f1f55906f
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 99f2d9fb7c9a74e57eff3cd0b007fcee459cab88
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818152"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000193"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>向 Xamarin.Forms 应用添加推送通知
 
@@ -423,4 +423,4 @@ ms.locfileid: "42818152"
 <!-- URLs. -->
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532
-[apns object]: http://go.microsoft.com/fwlink/p/?LinkId=272333
+[apns object]: https://go.microsoft.com/fwlink/p/?LinkId=272333

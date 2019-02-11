@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 50e70ab9be87c15816dc6471a2a29afd0f17d907
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 76db38a59d2239de79ebcdcfd454ac60a8f514be
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301239"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299871"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>数据仓库单位 (DWU) 和计算数据仓库单位 (cDWU)
 针对选择理想数目的数据仓库单位（DWU、cDWU）来优化价格和性能以及如何更改单位数提供了建议。 
@@ -62,7 +62,7 @@ WITH
 每个性能层用于其数据仓库单位测量的单位都略有不同。 当规模单位直接转换为计费时，这种差异会反映在发票上。
 
 - 第 1 代数据仓库以数据仓库单位计量 (DWU)。
-- 第 2 代数据仓库以计算数据仓库单位计量 (cDWU)。 
+- 第 2 代数据仓库以计算数据仓库单位 (cDWU) 计量。 
 
 DWU 和 cDWU 都支持增加或减少计算，以及在无需使用数据仓库时暂停计算。 这些操作均可按需进行。 第 2 代还会在计算节点上使用基于本地磁盘的缓存以提高性能。 缩放或暂停系统时，缓存将失效，因此在达到最佳性能前，缓存需要预热一段时间。  
 
@@ -90,6 +90,8 @@ SQL 数据仓库是一个向外扩展系统，可预配大量计算和查询大�
 ## <a name="permissions"></a>权限
 
 更改数据仓库单位需要 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) 中所述的权限。 
+
+Azure 资源的内置角色（如 SQL DB 参与者和 SQL Server 参与者）可以更改 DWU 设置。 
 
 ## <a name="view-current-dwu-settings"></a>查看当前的 DWU 设置
 

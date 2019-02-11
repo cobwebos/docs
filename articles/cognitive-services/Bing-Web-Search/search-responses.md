@@ -1,21 +1,22 @@
 ---
-title: 搜索响应 - 必应 Web 搜索 API
+title: 必应 Web 搜索 API 响应结构和答案类型
 titleSuffix: Azure Cognitive Services
-description: 了解必应 Web 搜索 API 提供的应答类型和响应。
+description: 了解必应 Web 搜索 API 使用的应答类型和响应。
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 8/13/2018
 ms.author: aahi
-ms.openlocfilehash: c7626f08dcfad76724a4d1f5d88fbd10c78c62c6
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec2018
+ms.openlocfilehash: f76c9bfa5dc6a3542ace7025e0889ee64cd2e783
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164758"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188620"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>必应 Web 搜索 API 响应结构和答案类型  
 
@@ -287,7 +288,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 数学表达式可包含以下符号：
 
-|符号|Description|
+|符号|说明|
 |------------|-----------------|
 |+|加|
 |-|减|
@@ -295,13 +296,13 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 |*|乘|
 |^|幂|
 |!|阶乘|
-|.|小数|
+|.|Decimal|
 |()|优先级分组|
 |[]|函数|
 
 数学表达式可包含以下常量：
 
-|符号|Description|
+|符号|说明|
 |------------|-----------------|
 |Pi|3.14159...|
 |Degree|度|
@@ -311,7 +312,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 数学表达式可包含以下函数：
 
-|符号|Description|
+|符号|说明|
 |------------|-----------------|
 |Sqrt|平方根|
 |Sin[x]、Cos[x]、Tan[x]<br />Csc[x]、Sec[x]、Cot[x]|三角函数（以弧度为单位的参数）|

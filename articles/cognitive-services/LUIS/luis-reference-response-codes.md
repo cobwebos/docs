@@ -1,23 +1,25 @@
 ---
-title: 语言理解 (LUIS) API HTTP 响应代码 - Azure | Microsoft Docs
+title: API HTTP 响应代码
 titleSuffix: Azure
 description: 了解从 LUIS 创作和终结点 API 返回的 HTTP 响应代码
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 6ffab581420c3c74ed659be2b82e2f9c7fda13d0
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: fd0d8cc492a8a35d66aa4b20b792bf317b9e8c11
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443825"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218846"
 ---
-# <a name="luis-api-http-response-codes"></a>LUIS API HTTP 响应代码
+# <a name="common-api-response-codes-and-their-meaning"></a>常见的 API 响应代码及其含义
+
 [创作](https://aka.ms/luis-authoring-apis)和[终结点](https://aka.ms/luis-endpoint-apis) API 返回 HTTP 响应代码。 响应消息包含特定于某个请求的信息，而 HTTP 响应状态代码是通用的。 
 
 ## <a name="common-status-codes"></a>常见状态代码
@@ -37,3 +39,7 @@ ms.locfileid: "52443825"
 |410|终结点|需要重新训练和重新发布应用程序|
 |414|终结点|查询超过最大字符限制|
 |429|创作、终结点|超出速率限制（请求数/秒）|
+
+## <a name="next-steps"></a>后续步骤
+
+* REST API [创作](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)和[终结点](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)文档

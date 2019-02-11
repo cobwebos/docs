@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/12/2018
+ms.date: 1/8/2019
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 33fce88e7108ee45236e20b1f20dde56bb7446b5
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: fcba3aef29e1566f9dfb2b151c15fe683be94fdb
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616378"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266581"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>部署 Azure Blockchain Workbench
 
@@ -43,6 +43,9 @@ Azure Blockchain Workbench 是使用 Azure 市场中的解决方案模板部署�
 ![示例部署](media/deploy/example-deployment.png)
 
 Blockchain Workbench 的成本是基础 Azure 服务成本的总和。 Azure 服务的定价信息可以使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)进行计算。
+
+> [!IMPORTANT]
+> 如果使用具有较低服务限制的订阅（如 Azure 免费层订阅），则部署可能会由于 VM 内核配额不足而失败。 在部署之前，使用[虚拟机 vCPU 配额](../../virtual-machines/windows/quotas.md)一文中的指导检查配额。 默认 VM 选择需要 6 个 VM 内核。 更改为较小的 VM（如标准 DS1 v2）会将内核数减少到 4。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -99,7 +102,7 @@ Azure Blockchain Workbench 需要 Azure AD 配置和应用程序注册。 可以
     |---------|--------------|
     | 监视 | 选择是否要允许 Azure Monitor 监视区块链网络 |
     | Azure Active Directory 设置 | 选择“稍后添加”。</br>注意：如果选择[预配置 Azure AD](#azure-ad-configuration) 或要重新部署，请选择“立即添加”。 |
-    | VM 选择 | 为区块链网络选择首选的 VM 大小。 |
+    | VM 选择 | 为区块链网络选择首选的 VM 大小。 如果使用具有较低服务限制的订阅（如 Azure 免费层），请选择较小的 VM（如标准 DS1 v2）。 |
 
     对于**使用现有**：
 
@@ -107,7 +110,7 @@ Azure Blockchain Workbench 需要 Azure AD 配置和应用程序注册。 可以
 
     * 终结点必须是 Ethereum 权威证明 (PoA) 区块链网络。
     * 终结点必须可通过网络公开访问。
-    * PoA 区块链网络应配置为将燃料价格设置为零。
+    * PoA 区块链网络应配置为将天然气价格设置为零。
 
     > [!NOTE]
     > Blockchain Workbench 帐户不会获得资助。 如果需要资金，交易将会失败。
@@ -116,7 +119,7 @@ Azure Blockchain Workbench 需要 Azure AD 配置和应用程序注册。 可以
 
     | 设置 | Description  |
     |---------|--------------|
-    | Ethereum RPC 终结点 | 提供现有 PoA 区块链网络的 RPC 终结点。 终结点以 https:// 或 http:// 开头，以端口号结尾。 例如： `https://network.westus.cloudapp.com:8540` |
+    | Ethereum RPC 终结点 | 提供现有 PoA 区块链网络的 RPC 终结点。 终结点以 https:// 或 http:// 开头，以端口号结尾。 例如： `http<s>://<network-url>:<port>` |
     | Azure Active Directory 设置 | 选择“稍后添加”。</br>注意：如果选择[预配置 Azure AD](#azure-ad-configuration) 或要重新部署，请选择“立即添加”。 |
     | VM 选择 | 为区块链网络选择首选的 VM 大小。 |
 
@@ -213,7 +216,7 @@ Blockchain Workbench 部署要求注册 Azure AD 应用程序。 需要使用 Az
 接下来，需将清单修改为使用 Azure AD 中的应用程序角色，以指定 Blockchain Workbench 管理员。  有关应用程序清单的详细信息，请参阅 [Azure Active Directory 应用程序清单](../../active-directory/develop/reference-app-manifest.md)。
 
 1. 针对已注册的应用程序，在其详细信息窗格中选择“清单”。
-2. 生成 GUID。 可以运行 PowerShell 命令 [guid] :: NewGuid () 或 New-GUID cmdlet 来生成 GUID。 还可以使用 GUID 生成器网站。
+2. 生成 GUID。 可以运行 PowerShell 命令 [guid] ::NewGuid () 或 New-GUID cmdlet 来生成 GUID。 还可以使用 GUID 生成器网站。
 3. 稍后将要更新清单的 **appRoles** 节。 在“编辑清单”窗格中选择“编辑”，将 `"appRoles": []` 替换为所提供的 JSON。 请务必将 **id** 字段的值替换为生成的 GUID。 
 
     ![编辑清单](media/deploy/edit-manifest.png)
@@ -237,7 +240,7 @@ Blockchain Workbench 部署要求注册 Azure AD 应用程序。 需要使用 Az
     > [!IMPORTANT]
     > 需要使用“管理员”值来标识 Blockchain Workbench 管理员。
 
-4. 在清单中，还需要将 **Oauth2AllowImplictFlow** 值更改为 **true**。
+4. 在清单中，还需要将“Oauth2AllowImplicitFlow”值更改为“true”。
 
     ``` json
     "oauth2AllowImplicitFlow": true,

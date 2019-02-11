@@ -1,21 +1,21 @@
 ---
-title: Azure 容器实例教程 - 准备 Azure 容器注册表
-description: Azure 容器实例教程第 2 部分（共 3 部分）- 准备 Azure 容器注册表
+title: 教程 - 准备用于 Azure 容器实例的容器注册表
+description: Azure 容器实例教程第 2 部分（共 3 部分）- 准备 Azure 容器注册表并推送映像
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: e7cf9c5fad6219e71205c181b2dbb6828595afdd
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 4ee7411853127d331e70e486bbf9f21e0ce6c153
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855436"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750301"
 ---
-# <a name="tutorial-deploy-and-use-azure-container-registry"></a>教程：部署和使用 Azure 容器注册表
+# <a name="tutorial-deploy-an-azure-container-registry-and-push-a-container-image"></a>教程：部署 Azure 容器注册表并推送容器映像
 
 这是三部分教程的第二部分。 本教程的[第一部分](container-instances-tutorial-prepare-app.md)为 Node.js Web 应用程序创建了 Docker 容器映像。 在本教程中，我们将此映像推送到 Azure 容器注册表。 如果尚未创建容器映像，请返回[教程 1 - 创建容器映像](container-instances-tutorial-prepare-app.md)。
 
@@ -222,7 +222,7 @@ v1
 <!-- LINKS - Internal -->
 [az-acr-create]: /cli/azure/acr#az-acr-create
 [az-acr-login]: /cli/azure/acr#az-acr-login
-[az-acr-repository-list]: /cli/azure/acr/repository#az-acr-list
+[az-acr-repository-list]: /cli/azure/acr/repository
 [az-acr-repository-show-tags]: /cli/azure/acr/repository#az-acr-repository-show-tags
 [az-acr-show]: /cli/azure/acr#az-acr-show
 [az-group-create]: /cli/azure/group#az-group-create

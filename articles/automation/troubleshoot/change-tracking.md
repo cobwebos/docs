@@ -3,18 +3,18 @@ title: 对 Azure 更改跟踪问题进行故障排除
 description: 本文提供了有关对更改跟踪进行故障排除的信息
 services: automation
 ms.service: automation
-ms.component: change-tracking
+ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 10/24/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2f2e66a1fab31ce6099ab426d6e8ce144e155efb
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 63dc7148904089a31ff95764898a8dac72c37049
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50088255"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421329"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory"></a>对更改跟踪和清单进行故障排除
 

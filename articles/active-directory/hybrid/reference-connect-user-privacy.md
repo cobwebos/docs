@@ -4,22 +4,22 @@ description: 本文介绍如何保证 Azure AD Connect 符合 GDPR 的规定。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 05/21/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 337268db7365e417153ca3df3d545c135c5f2924
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cd28174a4e8719031d96016b88d5230d4490beb7
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46309406"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55485188"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>用户隐私和 Azure AD Connect 
 

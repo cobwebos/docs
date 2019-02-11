@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e6c5f4623f3483dcfb0dde0f55b77161eee2c562
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: aff3f47624fe21e1d0f020e8e5732e60b4b53657
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50035123"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54084049"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>了解 VM 重启 - 维护和停机
 有三种情况可能会导致 Azure 中的虚拟机受影响：计划外硬件维护、意外停机、计划内维护。
@@ -32,7 +32,7 @@ ms.locfileid: "50035123"
 
 * [在可用性集中配置多个虚拟机以确保冗余]
 * [在可用性集中对 VM 使用托管磁盘]
-* [使用 Scheduled Events 主动响应影响事件的 VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
+* [使用计划事件主动响应影响事件的 VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
 * [将每个应用程序层配置到不同的可用性集中]
 * [将负载均衡器与可用性集组合在一起]
 * [使用可用性区域防范数据中心级故障]
@@ -65,6 +65,10 @@ ms.locfileid: "50035123"
 1. **将与同一 VM 关联的所有磁盘（OS 和数据）放置在同一存储帐户中**
 2. 在向存储帐户添加更多 VHD 之前，请**查看存储帐户中非托管磁盘的数量[限制](../articles/storage/common/storage-scalability-targets.md)**
 3. 为可用性集中的每个 VM 使用单独的存储帐户。 同一可用性集中的多个 VM 不能共享存储帐户。 不同可用性集中的 VM 共享存储帐户是可以接受的，只要遵循上述最佳做法即可 ![托管磁盘 FD](./media/virtual-machines-common-manage-availability/umd-updated.png)
+
+## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>使用计划事件主动响应影响事件的 VM
+
+如果订阅[计划事件](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)，则将通知 VM 即将发生会对 VM 造成影响的维护事件。 启用计划事件后，可在执行维护活动之前为虚拟机提供最少的时间。 例如，可能会影响 VM 的主机 OS 更新将作为事件排队等候，通知中将详述其影响，以及在未采取任何操作的情况下执行维护的时间。 当 Azure 检测到即将发生可能影响 VM 的硬件失败时，计划事件也会排队等候，以便决定执行修复的时间。 客户可以使用事件在维护前执行任务，例如，保存状态、故障转移到辅助 VM 等。 完成用于妥善处理维护事件的逻辑后，可批准未完成的计划事件，以允许平台继续进行维护。
 
 ## <a name="configure-each-application-tier-into-separate-availability-sets"></a>将每个应用程序层配置到不同的可用性集中
 如果虚拟机几乎都是相同的，并且对应用程序的用途是一样的，我们建议针对每个应用程序层配置可用性集。  如果将两个不同的层置于同一可用性集中，则同一应用程序层中的所有虚拟机可以同时重启。 通过在可用性集中为每个层配置至少两个虚拟机，可以确保每个层中至少有一个虚拟机可用。

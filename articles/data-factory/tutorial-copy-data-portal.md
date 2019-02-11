@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: f7d6f34c75069f91e06d58c960249d040b2bda8a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 5c7e6a4da9880677fbc4aad76b820ba596058bb6
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299182"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025243"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂，将数据从 Azure Blob 存储复制到 SQL 数据库
 在本教程中，请使用 Azure 数据工厂用户界面 (UI) 创建数据工厂。 此数据工厂中的管道将数据从 Azure Blob 存储复制到 SQL 数据库。 本教程中的配置模式适用于从基于文件的数据存储复制到关系数据存储。 如需可以用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
@@ -74,7 +73,7 @@ ms.locfileid: "44299182"
 
 1. 允许 Azure 服务访问 SQL Server。 确保 SQL Server 的“允许访问 Azure 服务”处于“打开”状态，以便数据工厂可以将数据写入 SQL Server。 若要验证并启用此设置，请执行以下步骤：
 
-    a. 在左侧选择“更多服务” > “SQL Server”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在左侧选择“更多服务” > “SQL Server”。
 
     b. 选择服务器，然后选择“设置”下的“防火墙”。
 
@@ -97,7 +96,7 @@ ms.locfileid: "44299182"
 1. 选择要在其中创建数据工厂的 Azure **订阅**。 
 1. 对于“资源组”，请执行以下步骤之一：
      
-    a. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
 
     b. 选择“新建”，并输入资源组的名称。 
          
@@ -188,7 +187,7 @@ ms.locfileid: "44299182"
     ![链接服务](./media/tutorial-copy-data-portal/new-azure-sql-database-linked-service-button.png)       
 1. 在“新建链接服务”窗口中执行以下步骤： 
 
-    a. 在“名称”下输入 **AzureSqlDatabaseLinkedService**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”下输入 **AzureSqlDatabaseLinkedService**。
 
     b. 在“服务器名称”下选择 SQL Server 实例。
 
@@ -217,7 +216,7 @@ ms.locfileid: "44299182"
 
     ![“管道”选项卡](./media/tutorial-copy-data-portal/pipeline-tab-2.png)        
 
-### <a name="confugure-mapping"></a>配置映射
+### <a name="configure-mapping"></a>配置映射
 
 转到“属性”窗口底部的“映射”选项卡，选择“导入架构”。 请注意，源文件中的第一和第二列映射到 SQL 数据库中的“FirstName”和“LastName”。
 
@@ -264,7 +263,7 @@ ms.locfileid: "44299182"
     ![新建按钮](./media/tutorial-copy-data-portal/add-trigger-new-button.png)
 1. 在“新建触发器”窗口中，执行以下步骤： 
 
-    a. 在“名称”下输入 **RunEveryMinute**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”下输入 **RunEveryMinute**。
 
     b. 在“结束”下选择“在特定日期”。
 

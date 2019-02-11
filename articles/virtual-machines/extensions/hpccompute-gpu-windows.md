@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/15/2018
+ms.date: 01/09/2019
 ms.author: roiyz
-ms.openlocfilehash: ee74d4520e867604f50c70f2b6449f12ff3bd8b9
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4bb27959bb57f3d59621e5bbbfaba9aa0c331432
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495972"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200677"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>适用于 Windows 的 NVIDIA GPU 驱动程序扩展
 
@@ -37,7 +37,7 @@ ms.locfileid: "52495972"
 
 | 分发 | 版本 |
 |---|---|
-| Windows 10 | 核心 |
+| Windows 10（最高版本 1803）| 核心 |
 | Windows Server 2016 | 核心 |
 | Windows Server 2012R2 | 核心 |
 
@@ -78,17 +78,8 @@ ms.locfileid: "52495972"
 | type | NvidiaGpuDriverWindows | 字符串 |
 | typeHandlerVersion | 1.2 | int |
 
-### <a name="settings"></a>设置
-
-所有设置都是可选的。 默认行为是安装最新支持的驱动程序（如果适用）。
-
-| 名称 | Description | 默认值 | 有效值 | 数据类型 |
-| ---- | ---- | ---- | ---- | ---- |
-| driverVersion | NV：GRID 驱动程序版本<br> NC/ND：CUDA 驱动程序版本 | 最新 | GRID: "411.81", "391.81", "391.58", "391.03"<br> CUDA: "398.75", "397.44", "390.85" | 字符串 |
-| installGridND | 在 ND 系列 VM 上安装 GRID 驱动程序 | false | true、false | 布尔值 |
 
 ## <a name="deployment"></a>部署
-
 
 ### <a name="azure-resource-manager-template"></a>Azure 资源管理器模板 
 
@@ -135,8 +126,6 @@ Set-AzureRmVMExtension
 
 ### <a name="azure-cli"></a>Azure CLI
 
-以下示例镜像了上述 ARM 和 PowerShell 示例，并添加了自定义设置作为非默认驱动程序安装的示例。 具体来说，即使正在预配 ND 系列 VM，它也会安装特定 GRID 驱动程序。
-
 ```azurecli
 az vm extension set `
   --resource-group myResourceGroup `
@@ -145,8 +134,6 @@ az vm extension set `
   --publisher Microsoft.HpcCompute `
   --version 1.2 `
   --settings '{ `
-    "driverVersion": "391.03",
-    "installGridND": true
   }'
 ```
 

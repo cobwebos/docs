@@ -1,21 +1,19 @@
 ---
 title: 快速入门：将 Cassandra API 与 Node.js 配合使用 - Azure Cosmos DB
 description: 本快速入门介绍如何配合 Node.js 使用 Azure Cosmos DB Cassandra API 创建配置文件应用程序
-services: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
-ms.custom: quick start connect, mvc
+ms.subservice: cosmosdb-cassandra
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: e7b4bc51ab71fa1043afdab019d27fd089d0356c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1fd2ab85631cf613297f260748c3b2b03e8a9870
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980077"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510504"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-and-azure-cosmos-db"></a>快速入门：使用 Node.js 和 Azure Cosmos DB 生成 Cassandra 应用
 
@@ -36,7 +34,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 此外，还需要：
 * [Node.js](https://nodejs.org/en/) 版本 v0.10.29 或更高版本
-* [Git](http://git-scm.com/)
+* [Git](https://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -46,7 +44,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-现在从 github 克隆 Cassandra API 应用，设置连接字符串，并运行应用。 会看到以编程方式处理数据是多么容易。 
+现在从 GitHub 克隆 Cassandra API 应用，设置连接字符串，并运行应用。 会看到以编程方式处理数据是多么容易。 
 
 1. 打开命令提示符。 创建名为 `git-samples` 的新文件夹。 然后，关闭命令提示符。
 
@@ -72,7 +70,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 * 用户名和密码值是使用 Azure 门户中的连接字符串页设置的。 `path\to\cert` 提供 X509 证书的路径。 
 
-   ```nodejs
+   ```javascript
    var ssl_option = {
         cert : fs.readFileSync("path\to\cert"),
         rejectUnauthorized : true,
@@ -83,19 +81,19 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 * 使用 contactPoint 信息初始化 `client`。 从 Azure 门户中检索 contactPoint。
 
-    ```nodejs
+    ```javascript
     const client = new cassandra.Client({contactPoints: [config.contactPoint], authProvider: authProviderLocalCassandra, sslOptions:ssl_option});
     ```
 
 * `client` 连接到 Azure Cosmos DB Cassandra API。
 
-    ```nodejs
+    ```javascript
     client.connect(next);
     ```
 
 * 创建新的键空间。
 
-    ```nodejs
+    ```javascript
     function createKeyspace(next) {
         var query = "CREATE KEYSPACE IF NOT EXISTS uprofile WITH replication = {\'class\': \'NetworkTopologyStrategy\', \'datacenter1\' : \'1\' }";
         client.execute(query, next);
@@ -105,7 +103,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 * 创建新表。
 
-   ```nodejs
+   ```javascript
    function createTable(next) {
     var query = "CREATE TABLE IF NOT EXISTS uprofile.user (user_id int PRIMARY KEY, user_name text, user_bcity text)";
         client.execute(query, next);
@@ -115,7 +113,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 * 插入键/值实体。
 
-    ```nodejs
+    ```javascript
     ...
        {
           query: 'INSERT INTO  uprofile.user  (user_id, user_name , user_bcity) VALUES (?,?,?)',
@@ -127,7 +125,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 * 用于获取所有键值的查询。
 
-    ```nodejs
+    ```javascript
    var query = 'SELECT * FROM uprofile.user';
     client.execute(query, { prepare: true}, function (err, result) {
       if (err) return next(err);
@@ -140,7 +138,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     
 * 用于获取键-值的查询。
 
-    ```nodejs
+    ```javascript
     function selectById(next) {
         console.log("\Getting by id");
         var query = 'SELECT * FROM uprofile.user where user_id=1';
@@ -158,7 +156,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 连接字符串使应用能与托管数据库进行通信。
 
-1. 在 [Azure 门户](http://portal.azure.com/)中，选择“连接字符串”。 
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择“连接字符串”。 
 
     使用 ![“复制”按钮](./media/create-cassandra-nodejs/copy.png) 复制最上面的值“联系点”。
 

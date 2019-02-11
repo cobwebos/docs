@@ -4,7 +4,7 @@ description: 本教程指导使用 .NET SDK 完成创建频道的步骤，该频
 services: media-services
 documentationcenter: ''
 author: anilmur
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 4df5e690-ff63-47cc-879b-9c57cb8ec240
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/09/2017
+ms.date: 01/17/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: aaf9fba7b3a2667577c26ade9cd88bcc87c60f61
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 85d32af93586b460c2885d7ed58c0f5aa5df8a44
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243839"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828343"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>如何使用 Azure 媒体服务执行实时流式处理以通过 .NET 创建多比特率流
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ ms.locfileid: "51243839"
 > 
 > 
 
-1. 将视频摄像机连接到计算机。 启动并配置可以通过以下协议之一输出单比特率流的本地实时编码器：RTMP 或平滑流式处理。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。
+1. 将视频摄像机连接到计算机。 启动并配置一个可通过以下协议之一输出单比特率流的本地实时编码器：RTMP 或平滑流式处理。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。
 
     此步骤也可以在创建频道后执行。
 
@@ -126,8 +126,8 @@ namespace EncodeLiveStreamWithAmsClear
     class Program
     {
         private const string ChannelName = "channel001";
-        private const string AssetlName = "asset001";
-        private const string ProgramlName = "program001";
+        private const string AssetName = "asset001";
+        private const string ProgramName = "program001";
 
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
@@ -196,7 +196,7 @@ namespace EncodeLiveStreamWithAmsClear
         public static IChannel CreateAndStartChannel()
         {
             var channelInput = CreateChannelInput();
-            var channePreview = CreateChannelPreview();
+            var channelPreview = CreateChannelPreview();
             var channelEncoding = CreateChannelEncoding();
 
             ChannelCreationOptions options = new ChannelCreationOptions
@@ -204,7 +204,7 @@ namespace EncodeLiveStreamWithAmsClear
                 EncodingType = ChannelEncodingType.Standard,
                 Name = ChannelName,
                 Input = channelInput,
-                Preview = channePreview,
+                Preview = channelPreview,
                 Encoding = channelEncoding
             };
 
@@ -227,6 +227,10 @@ namespace EncodeLiveStreamWithAmsClear
         /// <returns></returns>
         private static ChannelInput CreateChannelInput()
         {
+            // When creating a Channel, you can specify allowed IP addresses in one of the following formats: 
+            // IpV4 address with 4 numbers
+            // CIDR address range
+        
             return new ChannelInput
             {
                 StreamingProtocol = StreamingProtocol.FragmentedMP4,
@@ -251,6 +255,10 @@ namespace EncodeLiveStreamWithAmsClear
         /// <returns></returns>
         private static ChannelPreview CreateChannelPreview()
         {
+            // When creating a Channel, you can specify allowed IP addresses in one of the following formats: 
+            // IpV4 address with 4 numbers
+            // CIDR address range
+        
             return new ChannelPreview
             {
                 AccessControl = new ChannelAccessControl
@@ -288,7 +296,7 @@ namespace EncodeLiveStreamWithAmsClear
         /// <returns></returns>
         public static IAsset CreateAndConfigureAsset()
         {
-            IAsset asset = _context.Assets.Create(AssetlName, AssetCreationOptions.None);
+            IAsset asset = _context.Assets.Create(AssetName, AssetCreationOptions.None);
 
             IAssetDeliveryPolicy policy =
             _context.AssetDeliveryPolicies.Create("Clear Policy",
@@ -309,7 +317,7 @@ namespace EncodeLiveStreamWithAmsClear
         /// <returns></returns>
         public static IProgram CreateAndStartProgram(IChannel channel, IAsset asset)
         {
-            IProgram program = channel.Programs.Create(ProgramlName, TimeSpan.FromHours(3), asset.Id);
+            IProgram program = channel.Programs.Create(ProgramName, TimeSpan.FromHours(3), asset.Id);
             Log("Program created", program.Id);
 
             Log("Starting program");
@@ -363,8 +371,8 @@ namespace EncodeLiveStreamWithAmsClear
             assetFile.Update();
 
             Log("Showing slate");
-            var showSlateOpeartion = channel.SendShowSlateOperation(TimeSpan.FromMinutes(1), slateAsset.Id);
-            TrackOperation(showSlateOpeartion, "Show slate");
+            var showSlateOperation = channel.SendShowSlateOperation(TimeSpan.FromMinutes(1), slateAsset.Id);
+            TrackOperation(showSlateOperation, "Show slate");
 
             Log("Hiding slate");
             var hideSlateOperation = channel.SendHideSlateOperation();
@@ -454,7 +462,7 @@ namespace EncodeLiveStreamWithAmsClear
         /// <param name="operationId">The operation Id.</param> 
         /// <param name="channel">
         /// If the operation succeeded, 
-        /// the entity Id associated with the sucessful operation is returned in the out parameter.</param>
+        /// the entity Id associated with the successful operation is returned in the out parameter.</param>
         /// <returns>Returns false if the operation is still in progress; otherwise, true.</returns> 
         private static bool IsCompleted(IOperation operation, out string entityId)
         {

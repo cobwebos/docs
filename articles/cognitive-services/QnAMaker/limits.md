@@ -1,23 +1,24 @@
 ---
 title: 限制和边界 - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker 限制的完整列表。
+description: QnA Maker 对部分知识库和服务具有元限制。 为了测试和发布，请务必将知识库保留在这些限制内。
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: 53fadc0e3ea21b94ca656774baf077192c0394b4
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.custom: seodec18
+ms.openlocfilehash: 443ecdeab057c863763501e5da7d36e9fb6a4eea
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50137287"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223130"
 ---
-# <a name="qna-maker-limits"></a>QnA Maker 限制
+# <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知识库限制和边界
 QnA Maker 限制的完整列表。
 
 ## <a name="knowledge-bases"></a>知识库
@@ -26,7 +27,9 @@ QnA Maker 限制的完整列表。
 
 |**Azure 搜索层** | **免费** | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
-|已发布知识库的最大允许数量（最大索引 - 1（为测试保留））|2|14|49|199|199|2,999|
+|已发布知识库的最大允许数量|2|14|49|199|199|2,999|
+
+ 例如，如果你的层有 15 个允许的索引，则可以发布 14 个知识库（每个已发布的知识库有 1 个索引）。 第 15 个索引 `testkb` 用于所有知识库以进行创作和测试。 
 
 ## <a name="extraction-limits"></a>提取限制
 * 可提取文件的最大数量和最大文件大小：请参阅 [QnAMaker 定价](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)
@@ -49,7 +52,7 @@ QnA Maker 限制的完整列表。
 * 文件名长度：200
 * 支持的文件格式:：“.tsv”、“.pdf”、“.txt”、“.docx”、“.xlsx”。
 * 备用问题的最大数量：100
-* 问-答对的最大数量：取决于所选的 [Azure 搜索层](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits) 
+* 问题答案对的最大数量：取决于选择的 [Azure 搜索层](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits) 
 
 ## <a name="create-knowledge-base-call-limits"></a>创建知识库调用限制：
 表示每个创建知识库操作的限制；即，单击“创建知识库”或调用 CreateKnowledgeBase API。
@@ -63,3 +66,11 @@ QnA Maker 限制的完整列表。
 * 添加或删除的备用问题的最大数量：100
 * 添加或删除的元数据字段的最大数量：10
 * 可以刷新的 URL 的最大数量：5
+
+## <a name="next-steps"></a>后续步骤
+
+了解何时以及如何更改服务层：
+
+* [QnA Maker](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku)：当你需要在知识库中有更多问题和解答而超出当前层的能力范围时，请升级 QnA Maker 服务定价层。
+* [搜索](how-to/upgrade-qnamaker-service.md#upgrade-app-service) - 当知识库需要处理来自客户端应用的更多请求时，请升级应用服务定价层。
+* [应用服务](how-to/upgrade-qnamaker-service.md#upgrade-azure-search-service)：当计划拥有许多知识库时，请升级 Azure 搜索服务定价层。

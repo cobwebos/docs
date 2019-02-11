@@ -3,19 +3,19 @@ title: 使用 Azure Active Directory B2C 设置通过 Google 帐户注册与登�
 description: 使用 Azure Active Directory B2C 提供在应用程序中通过 Google 帐户注册与登录到客户的设置。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 5f6ce3564cf4056dc9295e1885be425bbe3d7701
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.subservice: B2C
+ms.openlocfilehash: af8a727bf9733b744b1ed429420cd8fde6e3e6f1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165294"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176125"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Google 帐户注册与登录
 

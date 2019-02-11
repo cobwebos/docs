@@ -1,27 +1,8 @@
 ---
-title: 部署机器学习工作室 Web 服务 - Azure | Microsoft Docs
-description: 如何将训练实验转换为预测实验、准备进行部署，并将其部署为 Azure 机器学习工作室 Web 服务。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
-ms.author: amlstudiodocs
-manager: hjerez
-editor: cgronlun
-ms.assetid: 73a3e9c6-00d0-41d4-8cf1-2ec87713867e
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/06/2017
-ms.openlocfilehash: d96755f00aa5023d57c9c4c2b2457902c337e29d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314262"
+title:部署机器学习工作室 Web 服务 titleSuffix:Azure 机器学习工作室 description:如何将训练实验转换为预测实验、准备进行部署，并将其部署为 Azure 机器学习工作室 Web 服务。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date:2017/01/06
 ---
 # <a name="deploy-an-azure-machine-learning-studio-web-service"></a>部署 Azure 机器学习工作室 Web 服务
 Azure 机器学习让用户能够生成、测试和部署预测分析解决方案。
@@ -32,7 +13,7 @@ Azure 机器学习让用户能够生成、测试和部署预测分析解决方�
 * **[将其转换为预测试验]** - 利用现有数据定型模型后，你就可以使用它来对新数据进行评分，为预测准备并简化你的试验。
 * **[将其部署为 Web 服务]** - 可将预测试验部署为[全新]或[经典] Azure Web 服务。 用户可以将数据发送到模型并接收该模型的预测。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="create-a-training-experiment"></a>创建训练实验
 为了训练预测分析模型，使用 Azure 机器学习工作室创建一个训练实验，其中包括加载训练数据、准备必要数据、应用机器学习算法和评估结果的各种模块。 可以迭代实验，尝试不同的机器学习算法来比较和评估结果。

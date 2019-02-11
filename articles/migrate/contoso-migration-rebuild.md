@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 0c44e57f99ea8fea91fd8178400c648e8dcd982b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a4e5087e53d4505d54b5ff4b8d17ad6166c6174b
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309804"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002495"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Contoso 迁移：在 Azure 中重新生成本地应用
 
@@ -30,24 +30,24 @@ ms.locfileid: "52309804"
 [文章 4：在 Azure VM 和 SQL 托管实例上重新托管应用](contoso-migration-rehost-vm-sql-managed-instance.md) | 演示 Contoso 如何将 SmartHotel360 应用直接迁移到 Azure。 Contoso 使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM，使用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)将应用数据库迁移到 SQL 托管实例。 | 可用
 [文章 5：在 Azure VM 上重新托管应用](contoso-migration-rehost-vm.md) | 展示 Contoso 如何在仅使用 Site Recovery 的情况下迁移 SmartHotel360 应用 VM。 | 可用
 [文章 6：将应用重新托管到 Azure VM 和 SQL Server AlwaysOn 可用性组](contoso-migration-rehost-vm-sql-ag.md) | 展示 Contoso 如何迁移 SmartHotel360 应用。 Contoso 使用 Site Recovery 来迁移应用 VM，同时使用数据库迁移服务将应用数据库迁移到受 AlwaysOn 可用性组保护的 SQL Server 群集。 | 可用
-[文章 7：将 Linux 应用重新托管到 Azure VM](contoso-migration-rehost-linux-vm.md) | 展示 Contoso 如何使用 Site Recovery 将 Linux osTicket 应用直接迁移到 Azure VM | 可用
+[文章 7：在 Azure VM 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm.md) | 展示 Contoso 如何使用 Site Recovery 将 Linux osTicket 应用直接迁移到 Azure VM | 可用
 [文章 8：在 Azure VM 和 Azure MySQL 服务器上重新托管 Linux 应用](contoso-migration-rehost-linux-vm-mysql.md) | 演示 Contoso 如何使用 Site Recovery 将 Linux osTicket 应用迁移到 Azure VM，以及如何使用 MySQL 工作台将应用数据库迁移到 Azure MySQL 服务器实例。 | 可用
 [文章 9：基于 Azure Web 应用和 Azure SQL 数据库重构应用](contoso-migration-refactor-web-app-sql.md) | 演示 Contoso 如何将 SmartHotel360 应用迁移到 Azure Web 应用，并将应用数据库迁移到 Azure SQL Server 实例 | 可用
 [文章 10：将 Linux 应用重构到 Azure Web 应用和 Azure MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | 演示 Contoso 如何将 Linux 应用 osTicket 迁移到多个站点中的 Azure Web 应用，并集成 GitHub 以实现持续交付。 他们将应用数据库迁移到 Azure MySQL 实例。 | 可用
-[文章 11：重构 Azure DevOps Services 上的 TFS](contoso-migration-tfs-vsts.md) | 展示 Contoso 如何通过将本地 Team Foundation Server (TFS) 部署迁移到 Azure 中的 Azure DevOps Services 来迁移该部署。 | 可用
+[文章 11：在 Azure DevOps Services 上重构 TFS](contoso-migration-tfs-vsts.md) | 展示 Contoso 如何通过将本地 Team Foundation Server (TFS) 部署迁移到 Azure 中的 Azure DevOps Services 来迁移该部署。 | 可用
 [文章 12：将应用重新架构到 Azure 容器和 SQL 数据库](contoso-migration-rearchitect-container-sql.md) | 展示 Contoso 如何将其 SmartHotel 应用迁移并重新架构到 Azure。 他们将应用 Web 层重新架构为 Windows 容器，将应用数据库重新架构到 Azure SQL 数据库中。 | 可用
 文章 13：在 Azure 中重新生成应用 | 展示 Contoso 如何使用一系列 Azure 功能和服务（包括应用服务、Azure Kubernetes、Azure Functions、认知服务和 Cosmos DB）重新生成其 SmartHotel 应用。 | 本文
 [文章 14：到 Azure 的大规模迁移](contoso-migration-scale.md) | 尝试过组合迁移后，Contoso 准备大规模整体迁移到 Azure。 | 可用
 
-在本文中，Contoso 将 VMware VM 上运行的双层 Windows. VMware VM 上运行的 NET SmartHotel360 应用迁移到 Azure。 此应用作为开源应用提供，可在 [github](https://github.com/Microsoft/SmartHotel360) 上下载。
+在本文中，Contoso 将 VMware VM 上运行的双层 Windows. VMware VM 上运行的 NET SmartHotel360 应用迁移到 Azure。 此应用作为开源应用提供，可在 [github](https://github.com/Microsoft/SmartHotel360-Backend) 上下载。
 
 ## <a name="business-drivers"></a>业务驱动因素
 
 IT 领导团队与其业务合作伙伴密切协作，以了解合作伙伴希望在本次迁移中实现的目标：
 
-- 解决业务增长：Contoso 在不断发展，并且想要为 Contoso 网站上的客户提供独特的体验。
+- **满足业务增长**：Contoso 在不断发展，并且想要为 Contoso 网站上的客户提供独特的体验。
 - **敏捷性**：Contoso 必须能够抢在市场变化之前做出反应，这样才能在全球经济环境中取得成功。 
-- 扩展：随着业务成功发展，Contoso IT 团队必须提供能够同步成长的系统。
+- **缩放**：随着业务成功发展，Contoso IT 团队必须提供能够同步成长的系统。
 - **成本**：Contoso 希望将许可成本降至最低。
 
 ## <a name="migration-goals"></a>迁移目标
@@ -137,11 +137,11 @@ Contoso 按如下方式运行迁移：
 
 > [!div class="checklist"]
 > * **步骤 1：预配 AKS 和 ACR**：Contoso 使用 PowerShell 预配托管 AKS 群集和 Azure 容器注册表
-> * 步骤 2：生成 Docker 容器：使用 Azure DevOps 为 Docker 容器设置 CI，并将容器推送到 ACR。
+> * **步骤 2：生成 Docker 容器**：使用 Azure DevOps 为 Docker 容器设置 CI，并将容器推送到 ACR。
 > * **步骤 3：部署后端微服务**：部署后端微服务将利用的基础结构的其余部分。
 > * **步骤 4：部署前端基础结构**：部署前端基础结构，包括存储宠物照片的 blob 存储、Cosmos DB 和视觉 API。
 > * **步骤 5：迁移后端**：部署微服务并在 AKS 上运行以迁移后端。
-> * 步骤 6：发布前端：将 SmartHotel360 应用发布到 Azure 应用服务以及宠物服务将调用的 Function App。
+> * **步骤 6：发布前端**：将 SmartHotel360 应用发布到 Azure 应用服务以及宠物服务将调用的 Function App。
 
 
 
@@ -226,7 +226,7 @@ Contoso 创建 Azure DevOps 项目，配置 CI 生成来创建容器，然后将
     ![Azure DevOps](./media/contoso-migration-rebuild/vsts1.png) 
 
 
-3. 导入 [GitHub 存储库](https://github.com/Microsoft/SmartHotel360-Azure-backend.git)。
+3. 导入 [GitHub 存储库](https://github.com/Microsoft/SmartHotel360-Backend)。
 
     ![Azure DevOps](./media/contoso-migration-rebuild/vsts2.png)
     

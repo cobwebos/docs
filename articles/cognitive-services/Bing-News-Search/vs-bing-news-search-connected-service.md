@@ -1,23 +1,23 @@
 ---
-title: 教程：必应新闻搜索、C#
+title: 使用 Visual Studio 和 C# 中的连接服务连接到必应新闻搜索 API
 titleSuffix: Azure Cognitive Services
 description: 从 ASP.NET Core Web 应用程序连接到必应新闻搜索。
 services: cognitive-services
 author: ghogen
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: f1f5c590216975ce6b0813da6d9d98279d591454
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: e90b630b46f9c54175e30cf28e631ba40146f9ce
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804338"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189164"
 ---
-# <a name="tutorial-connect-to-bing-news-search-api-by-using-connected-services-in-visual-studio"></a>教程：使用 Visual Studio 中的连接服务连接到必应新闻搜索 API
+# <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>教程：使用 Visual Studio 和 C# 中的连接服务连接到必应新闻搜索 API
 
 通过使用必应新闻搜索，可使应用和服务能够利用作用于 Web 的无广告搜索引擎的强大功能。 必应新闻搜索是认知服务提供的搜索服务之一。
 
@@ -260,7 +260,7 @@ ms.locfileid: "48804338"
            
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要资源组时，可将其删除。 这会删除认知服务及相关资源。 若要通过门户删除资源组，请执行以下操作：
+不再需要资源组时，可将其删除。 这会删除认知服务及相关资源。 要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 选择要删除的资源组。
 2. 选择“删除资源组”。

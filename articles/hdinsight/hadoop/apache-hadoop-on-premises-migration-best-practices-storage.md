@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4f4aedd1d85a83e6f55d5729b82b88e2e9e8c00d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 8f22885d67537194342115f07e4d04bc4b5c66da
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415927"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911738"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 存储最佳做法
 
 本文提供有关 Azure HDInsight 系统数据存储的建议。 本文是帮助用户将本地 Apache Hadoop 系统迁移到 Azure HDInsight 的最佳做法系列教程中的其中一篇。
 
-## <a name="choose-the-right-storage-system-for-hdinsight-clusters"></a>为 HDInsight 群集选择合适的存储系统
+## <a name="choose-right-storage-system-for-hdinsight-clusters"></a>为 HDInsight 群集选择合适的存储系统
 
 可在 Azure 存储或 Azure Data Lake Storage 重新创建本地 Apache Hadoop 文件系统 (HDFS) 目录结构。 可安全地删除用于计算的 HDInsight 群集，而不会丢失用户数据。 这两种服务既可以用作默认文件系统，也可以用作 HDInsight 群集的附加文件系统。 HDInsight 群集和存储帐户必须位于同一区域。
 
@@ -34,9 +34,12 @@ HDInsight 群集可将 Azure 存储中的 blob 容器用作默认文件系统或
 
 可以使用以下格式之一访问存储在 Azure 存储中的数据：
 
-- `wasb:///`：使用未加密通信访问默认存储。
-- `wasbs:///`：使用加密通信访问默认存储。
-- `wasb://<container-name>@<account-name>.blob.core.windows.net/`：与非默认存储帐户通信时使用。 
+|数据访问格式 |说明 |
+|---|---|
+|`wasb:///`|使用未加密通信访问默认存储。|
+|`wasbs:///`|使用加密通信访问默认存储。|
+|`wasb://<container-name>@<account-name>.blob.core.windows.net/`|与非默认存储帐户通信时使用。 |
+
 
 [Azure 存储可伸缩性和性能目标](../../storage/common/storage-scalability-targets.md)列出了 Azure 存储帐户的当前限制。 如果应用程序的需求超过单个存储帐户的伸缩性目标，则在构建时让应用程序使用多个存储帐户，并将数据对象分布到这些存储帐户中。
 
@@ -96,15 +99,15 @@ Data Lake Storage Gen2 的一个基本功能是，在 Blob 存储服务中添加
 
 过去，基于云的分析必须在性能、管理和安全性方面做出妥协。 Azure Data Lake Storage (ADLS) Gen2 的主要功能如下：
 
-- **Hadoop 兼容访问**：Azure Data Lake Storage Gen2 允许你管理和访问数据，就像在  [Hadoop 分布式文件系统 (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 中一样。  [Azure HDInsight](../index.yml) 中包含的所有 Apache Hadoop 环境中都提供了新的  [ABFS 驱动程序](../../storage/data-lake-storage/abfs-driver.md) 。 通过此驱动程序可访问存储在 Data Lake Storage Gen2 中的数据。
+- **Hadoop 兼容访问**：使用 Azure Data Lake Storage Gen2，可以像使用  [Hadoop 分布式文件系统 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 一样管理和访问数据。  [Azure HDInsight](../index.yml) 中包含的所有 Apache Hadoop 环境中都提供了新的  [ABFS 驱动程序](../../storage/data-lake-storage/abfs-driver.md) 。 通过此驱动程序可访问存储在 Data Lake Storage Gen2 中的数据。
 
-- **POSIX 权限的超集**：Data Lake Gen2 的安全模型完全支持 ACL 和 POSIX 权限以及特定于 Data Lake Storage Gen2 的一些额外粒度。 可以通过管理工具或 Hive 和 Spark 等框架配置设置。
+- **POSIX 权限的超集**：Data Lake Gen2 的安全模型完全支持 ACL 和 POSIX 权限，以及特定于 Data Lake Storage Gen2 的一些额外粒度。 可以通过管理工具或 Hive 和 Spark 等框架配置设置。
 
-- 成本效益：Data Lake Storage Gen2 具有低成本的存储容量和事务。 随着数据在其整个生命周期中的转换，账单费率变化通过诸如  [Azure Blob 存储生命周期](../../storage/common/storage-lifecycle-managment-concepts.md)的内置功能使成本保持在最低水平。
+- **经济高效**：Data Lake Storage Gen2 具有低成本的存储容量和事务。 随着数据在其整个生命周期中的转换，账单费率变化通过诸如  [Azure Blob 存储生命周期](../../storage/common/storage-lifecycle-management-concepts.md)的内置功能使成本保持在最低水平。
 
-- 使用 Blob 存储工具、框架和应用：Data Lake Storage Gen2 可以继续使用目前适用于 Blob 存储的各种工具、框架和应用程序。
+- **使用 Blob 存储工具、框架和应用**：Data Lake Storage Gen2 可以继续使用目前存在的适用于 Blob 存储的各种工具、框架和应用程序。
 
-- **优化的驱动程序**：Azure Blob 文件系统驱动程序 (ABFS) 针对大数据分析进行了 [专门优化](../../storage/data-lake-storage/abfs-driver.md) 。 相应的 REST API 通过 dfs 终结点 dfs.core.windows.net 进行显示。
+- **已优化的驱动程序**：Azure Blob 文件系统驱动程序 (ABFS) 针对大数据分析进行了 [专门优化](../../storage/data-lake-storage/abfs-driver.md) 。 相应的 REST API 通过 dfs 终结点 dfs.core.windows.net 进行显示。
 
 可以使用以下格式之一访问存储在 ADLS Gen2 中的数据：
 - `abfs:///`：访问群集的默认 Data Lake Storage。
@@ -114,8 +117,9 @@ Data Lake Storage Gen2 的一个基本功能是，在 Blob 存储服务中添加
 
 - [Azure Data Lake Storage Gen2 预览版简介](../../storage/data-lake-storage/introduction.md)
 - [Azure Blob FileSystem 驱动程序 (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
+- [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
 
-## <a name="protect-azure-storage-key-visibility-within-the-on-premises-hadoop-cluster-configuration"></a>在本地 Hadoop 群集配置中保护 Azure 存储密钥可见性
+## <a name="secure-azure-storage-keys-within-on-premises-hadoop-cluster-configuration"></a>在本地 Hadoop 群集配置中保护 Azure 存储密钥
 
 添加到 Hadoop 配置文件的 Azure 存储密钥在本地 HDFS 和 Azure Blob 存储之间建立连接。 可以使用 Hadoop 凭据提供程序框架对这些密钥进行加密来保护这些密钥。 加密后，可以安全地存储和访问它们。
 
@@ -144,18 +148,21 @@ hadoop credential create fs.azure.account.key.account.blob.core.windows.net -val
 hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode.xx.internal.cloudapp.net/path/to/jceks /user/user1/ wasb:<//yourcontainer@youraccount.blob.core.windows.net/>user1
 ```
 
-## <a name="restrict-access-to-azure-storage-data-using-sas-signatures"></a>使用 SAS 签名限制对 Azure 存储数据的访问
+## <a name="restrict-azure-storage-data-access-using-sas"></a>使用 SAS 限制 Azure 存储数据访问
 
 默认情况下，HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权限。 Blob 容器上的共享访问签名 (SAS) 可用于限制对数据的访问，例如为用户提供对数据的只读访问权限。
 
 ### <a name="using-the-sas-token-created-with-python"></a>使用通过 python 创建的 SAS 令牌
 
 1. 打开 [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) 文件并更改以下值：
-    - policy_name：要创建的存储策略所用的名称。
-    - storage_account_name：存储帐户的名称。
-    - storage_account_key：存储帐户的密钥。
-    - storage_container_name：想要限制访问的存储帐户中的容器。
-    - example_file_path：上传到容器的文件的路径
+
+    |令牌属性|说明|
+    |---|---|
+    |policy_name|要创建的存储策略所用的名称。|
+    |storage_account_name|存储帐户的名称。|
+    |storage_account_key|存储帐户的密钥。|
+    |storage_container_name|想要限制访问的存储帐户中的容器。|
+    |example_file_path|上传到容器的文件的路径。|
 
 2. SASToken.py 文件附带 `ContainerPermissions.READ + ContainerPermissions.LIST` 权限，可以根据用例进行调整。
 
@@ -183,14 +190,14 @@ hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode
 
 3. 遗憾的是，hadoop 凭证提供程序和解密密钥提供程序 (ShellDecryptionKeyProvider) 当前不能与 SAS 令牌配合使用，因此目前无法对其可见性提供保护。
 
-有关详细信息，请参阅[使用 Azure 存储共享访问签名来限制访问 HDInsight 中的数据](../hdinsight-storage-sharedaccesssignature-permissions.md)
+有关详细信息，请参阅[使用 Azure 存储共享访问签名来限制访问 HDInsight 中的数据](../hdinsight-storage-sharedaccesssignature-permissions.md)。
 
 ## <a name="use-data-encryption-and-replication"></a>使用数据加密和复制
 
 所有写入 Azure 存储的数据都使用 [存储服务加密 (SSE)](../../storage/common/storage-service-encryption.md) 进行自动加密。 始终复制 Azure 存储帐户中的数据以实现高可用性。 创建存储帐户时，可以选择以下复制选项之一：
 
 - [本地冗余存储 (LRS)](../../storage/common/storage-redundancy-lrs.md)
-- [区域冗余存储空间 (ZRS)](../../storage/common/storage-redundancy-zrs.md)
+- [区域冗余存储 (ZRS)](../../storage/common/storage-redundancy-zrs.md)
 - [异地冗余存储 (GRS)](../../storage/common/storage-redundancy-grs.md)
 - [读取访问异地冗余存储 (RA-GRS)](../../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
 
@@ -201,7 +208,7 @@ Azure Data Lake Storage 提供本地冗余存储 (LRS)，但还应将关键数�
 - [Azure 存储复制](../../storage/common/storage-redundancy.md)
 - [Azure Data Lake Storage (ADLS) 灾难恢复指南](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
 
-## <a name="attach-additional-azure-storage-accounts-to-the-cluster"></a>将其他 Azure 存储帐户附加到该群集
+## <a name="attach-additional-azure-storage-accounts-to-cluster"></a>将其他 Azure 存储帐户附加到该群集
 
 在 HDInsight 创建过程中，将选择 Azure 存储帐户或者 Azure Data Lake Storage 作为默认文件系统。 除了此默认存储帐户，在群集创建过程中或群集创建完成后，还可以从同一 Azure 订阅或不同 Azure 订阅添加其他存储帐户。
 
@@ -218,6 +225,6 @@ Azure Data Lake Storage 提供本地冗余存储 (LRS)，但还应将关键数�
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读本系列的下一篇文章：
+阅读本系列教程的下一篇文章：
 
 - [有关从本地迁移到 Azure HDInsight Hadoop 的数据迁移最佳做法](apache-hadoop-on-premises-migration-best-practices-data-migration.md)

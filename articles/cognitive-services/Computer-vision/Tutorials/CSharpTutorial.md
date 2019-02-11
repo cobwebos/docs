@@ -6,16 +6,17 @@ services: cognitive-services
 author: PatrickFarley
 manager: nolachar
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: d1fa468874cdc51bad3421f700a69f3ffb268635
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: b944325287593a028d28545731370dc9ea6a5ac2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342647"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224915"
 ---
 # <a name="tutorial-build-an-image-processing-app---c35"></a>教程：构建图像处理应用 - C#
 
@@ -87,7 +88,7 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Face-Windo
 
 1. 在导航窗格中的“选择场景”处，选择示例应用当前包含的场景之一：  
 
-   | 场景 | Description |
+   | 场景 | 说明 |
    |----------|-------------|
    |分析图像 | 使用[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)操作来分析本地或远程图像。 可以选择视觉特征和语言进行分析，并查看图像和结果。  |
    |使用域模型分析图像 | 使用[列出域特定模型](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd)操作列出可供选择的域模型，并使用[识别域特定内容](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200)操作使用所选域模型分析本地或远程图像。 此外还可以选择分析的语言。 |
@@ -97,11 +98,8 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Face-Windo
    |识别文本 V2（英语） | 使用[识别文本](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)和[获取识别文本操作结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)操作以异步方式识别图像和提取图像中的打印文本或手写文本。 |
    |获取缩略图 | 使用[获取缩略图](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)操作生成本地或远程图像的缩略图。 |
 
-   > [!IMPORTANT]
-   > Microsoft 会收到上传的图像，并且可能会将其用于改进计算机视觉 API 和相关服务。 提交图像即表明你确认遵循我们的[开发人员行为准则](https://azure.microsoft.com/support/legal/developer-code-of-conduct/)。
-
    以下屏幕截图展示了在分析样本图像后为分析图像场景提供的页面。
-   ![分析图像场景页面](../Images/Analyze_Image_Example.PNG)
+   ![“分析图像”页的屏幕截图](../Images/Analyze_Image_Example.PNG)
 
 ## <a name="explore-the-sample-app"></a>探索示例应用
 

@@ -1,6 +1,6 @@
 ---
-title: 通过一个 Azure Data Lake Store 帐户使用多个 HDInsight 群集 - Azure
-description: 了解如何通过单个 Data Lake Store 帐户使用多个 HDInsight 群集
+title: 通过一个 Azure Data Lake Storage 帐户使用多个 HDInsight 群集 - Azure
+description: 了解如何通过单个 Data Lake Storage 帐户使用多个 HDInsight 群集
 keywords: hdinsight 存储, hdfs, 结构化数据, 非结构化数据, data lake store
 services: hdinsight,storage
 author: hrasheed-msft
@@ -10,29 +10,29 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: f92100e6e4dd7569a109aa01f3c998777568cce3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0760d850bdc6dab84722f00f1061d53f9b95cfcf
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51004578"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912412"
 ---
-# <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>通过一个 Azure Data Lake Store 帐户使用多个 HDInsight 群集
+# <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>通过一个 Azure Data Lake Storage 帐户使用多个 HDInsight 群集
 
-从 HDInsight 版本 3.5 开始，可以创建将 Azure Data Lake Store 用作默认文件系统的 HDInsight 群集。
-Data Lake Store 支持无限存储，因此不仅非常适合用于托管大量数据，而且还适合用于托管共享单个 Data Lake Store 帐户的多个 HDInsight 群集。 有关如何创建使用 Data Lake Store 作为存储的 HDInsight 群集的说明，请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
+从 HDInsight 版本 3.5 开始，可以创建将 Azure Data Lake Storage 帐户用作默认文件系统的 HDInsight 群集。
+Data Lake Storage 支持无限存储，因此不仅非常适合用于托管大量数据，而且还适合用于托管共享单个 Data Lake Storage 帐户的多个 HDInsight 群集。 有关如何创建使用 Data Lake Storage 作为存储的 HDInsight 群集的说明，请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
 
-本文向 Data Lake Store 管理员提供有关设置可在多个**活动** HDInsight 群集之间使用的单个和共享 Data Lake Store 帐户的建议。 这些建议适用于在共享的 Data Lake Store 帐户中托管多个安全以及不安全的 Hadoop 群集。
+本文就如何设置可在多个**活动** HDInsight 群集之间使用的单个和共享 Data Lake Storage 帐户，向 Data Lake Storage 管理员提供了一些建议。 这些建议适用于在共享的 Data Lake Storage 帐户中托管多个安全以及不安全的 Apache Hadoop 群集。
 
 
-## <a name="data-lake-store-file-and-folder-level-acls"></a>Data Lake Store 文件级和文件夹级 ACL
+## <a name="data-lake-storage-file-and-folder-level-acls"></a>Data Lake Storage 文件级和文件夹级 ACL
 
-本文的余下部分假设你非常熟悉 Azure Data Lake Store 中的文件级和文件夹级 ACL，[Azure Data Lake Store 中的访问控制](../data-lake-store/data-lake-store-access-control.md)对此做了详细介绍。
+本文的余下部分假设你非常熟悉 Azure Data Lake Storage 中的文件级和文件夹级 ACL，[Azure Data Lake Storage 中的访问控制](../data-lake-store/data-lake-store-access-control.md)对此做了详细介绍。
 
-## <a name="data-lake-store-setup-for-multiple-hdinsight-clusters"></a>多个 HDInsight 群集的 Data Lake Store 设置
-我们使用一个双级文件夹层次结构来解释有关通过一个 Data Lake Store 帐户使用多个 HDInsight 群集的建议。 假设 Data Lake Store 帐户采用文件夹结构 **/clusters/finance**。 由于采用此结构，财务组织所需的所有群集都可以使用 /clusters/finance 作为存储位置。 将来，如果另一个组织（例如营销）想要使用同一个 Data Lake Store 帐户创建 HDInsight 群集，则可以创建 /clusters/marketing。 我们暂时只使用 **/clusters/finance**。
+## <a name="data-lake-storage-setup-for-multiple-hdinsight-clusters"></a>多个 HDInsight 群集的 Data Lake Storage 设置
+我们使用一个双级文件夹层次结构来解释有关通过一个 Data Lake Storage 帐户使用多个 HDInsight 群集的建议。 假设 Data Lake Storage 帐户采用文件夹结构 **/clusters/finance**。 由于采用此结构，财务组织所需的所有群集都可以使用 /clusters/finance 作为存储位置。 将来，如果另一个组织（例如营销组织）想要使用同一个 Data Lake Storage 帐户创建 HDInsight 群集，则可以创建 /clusters/marketing。 我们暂时只使用 **/clusters/finance**。
 
-若要让 HDInsight 群集有效地使用此文件夹结构，Data Lake Store 管理员必须根据表中所述分配适当的权限。 表中所示的权限对应于访问 ACL，而不是默认 ACL。 
+若要让 HDInsight 群集有效地使用此文件夹结构，Data Lake Storage 管理员必须根据表中所述分配适当的权限。 表中所示的权限对应于访问 ACL，而不是默认 ACL。 
 
 
 |Folder  |权限  |拥有用户  |拥有组  | 命名用户 | 命名用户权限 | 命名组 | 命名组权限 |
@@ -43,7 +43,7 @@ Data Lake Store 支持无限存储，因此不仅非常适合用于托管大量�
 
 在表中，
 
-- **admin** 是 Data Lake Store 帐户的创建者和管理员。
+- **admin** 是 Data Lake Storage 帐户的创建者和管理员。
 - **Service principal** 是与帐户关联的 Azure Active Directory (AAD) 服务主体。
 - **FINGRP** 是在 AAD 中创建的用户组，其中包含财务组织中的用户。
 
@@ -51,7 +51,7 @@ Data Lake Store 支持无限存储，因此不仅非常适合用于托管大量�
 
 需要考虑一些要点。
 
-- 在将存储帐户用于群集**之前**，Data Lake Store 管理员必须使用适当的权限创建并预配双级文件夹结构 (**/clusters/finance/**)。 创建群集时不会自动创建此结构。
+- 在将存储帐户用于群集**之前**，Data Lake Storage 管理员必须使用适当的权限创建并预配双级文件夹结构 (**/clusters/finance/**)。 创建群集时不会自动创建此结构。
 - 上面的示例建议将拥有组 **/clusters/finance** 设置为 **FINGRP**，并允许 FINGRP 对从根目录开始的整个文件夹层次结构进行 **r-x** 访问。 这可以确保 FINGRP 的成员能够导航从根目录开始的文件夹结构。
 - 如果不同的 AAD 服务主体可以在 **/clusters/finance** 下创建群集，则粘性位（如果已针对 **finance** 文件夹设置）可确保一个服务主体创建的文件夹不能被另一个服务主体删除。
 - 设置好文件夹结构和权限后，HDInsight 群集创建过程会在 **/clusters/finance/** 下面创建一个特定于群集的存储位置。 例如，名为 fincluster01 的群集的存储可以是 **/clusters/finance/fincluster01**。 下表显示了 HDInsight 群集创建的文件夹的所有权和权限。
@@ -68,7 +68,7 @@ Data Lake Store 支持无限存储，因此不仅非常适合用于托管大量�
 
 ## <a name="limit-on-clusters-sharing-a-single-storage-account"></a>对共享单个存储帐户的群集的限制
 
-可共享单个 Data Lake Store 帐户的群集数限制取决于这些群集上正在运行的工作负荷。 使用过多的群集或者在共享某个存储帐户的群集上运行很大的工作负荷可能会导致存储帐户入口/出口受到限制。
+可共享单个 Data Lake Storage 帐户的群集数限制取决于这些群集上正在运行的工作负荷。 使用过多的群集或者在共享某个存储帐户的群集上运行很大的工作负荷可能会导致存储帐户入口/出口受到限制。
 
 ## <a name="support-for-default-acls"></a>默认 ACL 的支持
 
@@ -76,11 +76,11 @@ Data Lake Store 支持无限存储，因此不仅非常适合用于托管大量�
 
 ## <a name="known-issues-and-workarounds"></a>已知问题和解决方法
 
-本部分列出有关将 HDInsight 与 Data Lake Store 配合使用的已知问题及其解决方法。
+本部分列出有关将 HDInsight 与 Data Lake Storage 配合使用的已知问题及其解决方法。
 
-### <a name="publicly-visible-localized-yarn-resources"></a>公开可见的本地化 YARN 资源
+### <a name="publicly-visible-localized-apache-hadoop-yarn-resources"></a>公开可见的本地化 Apache Hadoop YARN 资源
 
-创建新的 Azure Data Lake Store 帐户时，会自动预配访问 ACL 权限位设置为 770 的根目录。 根文件夹的拥有用户设置为创建帐户的用户（Data Lake Store 管理员），拥有组设置为创建帐户的用户的主要组。 不会为“其他对象”提供任何访问权限。
+创建新的 Azure Data Lake Storage 帐户时，会自动预配访问 ACL 权限位设置为 770 的根目录。 根文件夹的拥有用户设置为创建帐户的用户（Data Lake Storage 管理员），拥有组设置为创建帐户的用户的主要组。 不会为“其他对象”提供任何访问权限。
 
 这些设置已知会影响 [YARN 247](https://hwxmonarch.atlassian.net/browse/YARN-247) 中捕获的一个特定 HDInsight 用例。 作业提交可能失败并出现类似于下面的错误消息：
 
@@ -94,5 +94,4 @@ Data Lake Store 支持无限存储，因此不仅非常适合用于托管大量�
 ## <a name="see-also"></a>另请参阅
 
 * [快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
-
-
+* [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](hdinsight-hadoop-use-data-lake-storage-gen2.md)

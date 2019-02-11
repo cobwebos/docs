@@ -1,23 +1,25 @@
 ---
-title: 快速入门：使用 Ruby 执行图像搜索 - 必应图像搜索 API
-description: 使用本快速入门进行你的第一次必应图像搜索 API 调用并接收 JSON 响应。 这个简单的 Ruby 应用程序会向 API 发送一个搜索查询并显示原始结果。
+title: 快速入门：搜索图像 - 必应图像搜索 REST API 和 Ruby
+titleSuffix: Azure Cognitive Services
+description: 使用本快速入门，通过 Ruby 将图像搜索请求发送到必应图像搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 documentationcenter: ''
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: d5772b46c167b873ed4f5d60a110d31a5c8308a5
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: d8a3daa377d58522cea36adedc53b9145bfa99bf
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315930"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194009"
 ---
-# <a name="quickstart-send-search-queries-using-the-rest-api-and-ruby"></a>快速入门：使用 REST API 和 Ruby 发送搜索查询
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-ruby"></a>快速入门：使用必应图像搜索 REST API 和 Ruby 来搜索图像
 
 使用本快速入门进行你的第一次必应图像搜索 API 调用并接收 JSON 响应。 这个简单的 Ruby 应用程序会向 API 发送一个搜索查询并显示原始结果。
 

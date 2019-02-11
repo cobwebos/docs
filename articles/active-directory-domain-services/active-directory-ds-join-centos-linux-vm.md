@@ -1,26 +1,26 @@
 ---
-title: Azure Active Directory 域服务：将 CentOS VM 加入托管域 | Microsoft 文档
+title: Azure Active Directory 域服务：将 CentOS VM 加入托管域 | Microsoft Docs
 description: 将 CentOS Linux 虚拟机加入 Azure AD 域服务
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 16100caa-f209-4cb0-86d3-9e218aeb51c6
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: cfa0ab1fdf72e3d363b5845c8602b0bea7ff6a12
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 9ea236718b7fd9b808a5092dddec9574f6b93b48
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155178"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167149"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>将 CentOS Linux 虚拟机加入托管域
 本文介绍了如何将 Azure 中的 CentOS Linux 虚拟机加入 Azure AD 域服务托管域。

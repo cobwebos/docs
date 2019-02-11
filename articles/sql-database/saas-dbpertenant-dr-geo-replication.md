@@ -11,20 +11,20 @@ author: AyoOlubeko
 ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/09/2018
-ms.openlocfilehash: f24c76fb6b7ca24573a97aa122659fe5ca019550
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 01/25/2019
+ms.openlocfilehash: b2be42e4984ac7000cfb31ce6575c529b752db2d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056329"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471141"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>使用数据库异地复制实现多租户 SaaS 应用程序的灾难恢复
 
-本教程探讨如何对使用“租户各有一个数据库”(database-per-tenant) 模型实施的多租户 SaaS 应用程序完全实现灾难恢复。 若要防止应用中断，可以使用[_异地复制_](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)在备用恢复区域中创建目录和租户数据库的副本。 如果发生中断，可以快速故障转移到这些副本，以恢复正常业务运营。 故障转移后，原始区域中的数据库将成为恢复区域中数据库的辅助副本。 这些副本重新联机后，会自动同步到恢复区域中数据库的状态。 解决中断后，故障回复到原始生产区域中的数据库。
+本教程探讨如何对使用“租户各有一个数据库”(database-per-tenant) 模型实施的多租户 SaaS 应用程序完全实现灾难恢复。 若要防止应用中断，可以使用[_异地复制_](sql-database-geo-replication-overview.md)在备用恢复区域中创建目录和租户数据库的副本。 如果发生中断，可以快速故障转移到这些副本，以恢复正常业务运营。 故障转移后，原始区域中的数据库将成为恢复区域中数据库的辅助副本。 这些副本重新联机后，会自动同步到恢复区域中数据库的状态。 解决中断后，故障回复到原始生产区域中的数据库。
 
 本教程探讨故障转移和故障回复工作流。 将了解如何执行以下操作：
-> [!div classs="checklist"]
+> [!div class="checklist"]
 
 >* 将数据库和弹性池配置信息同步到租户目录中
 >* 在备用区域中设置由应用程序、服务器和池构成的恢复环境
@@ -53,9 +53,9 @@ ms.locfileid: "47056329"
 必须仔细考虑所有组成部分，尤其是大规模操作时。 在总体上，该计划必须实现多个目标：
 
 * 设置
-    * 在恢复区域中建立和维护镜像映像环境。 在此恢复环境中创建弹性池和复制任何单一数据库可以在恢复区域中保留容量。 维护此环境的工作包括预配新租户数据库时复制这些数据库。  
+    * 在恢复区域中建立和维护镜像映像环境。 在此恢复环境中创建弹性池和复制任何数据库可以在恢复区域中保留容量。 维护此环境的工作包括预配新租户数据库时复制这些数据库。  
 * 恢复
-    * 如果使用缩减的恢复环境来最大限度地降低日常成本，则必须扩大池和单一数据库以在恢复区域中获得完全运转能力
+    * 如果使用缩减的恢复环境来最大限度地降低日常成本，则必须扩大池和数据库，以在恢复区域中获得完全运转能力
     * 尽快在恢复区域中启用新租户预配  
     * 按优先顺序对租户还原进行优化
     * 优化为在可行的情况下同时执行多个步骤，以尽快让租户联机
@@ -67,10 +67,10 @@ ms.locfileid: "47056329"
 在本教程中，这些难题是使用 Azure SQL 数据库和 Azure 平台的功能解决的：
 
 * [Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)：尽快预留全部所需容量。 Azure 资源管理器模板用于在恢复区域中预配生产服务器和弹性池的镜像映像。
-* [异地复制](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)：为所有数据库创建以异步方式复制的只读辅助副本。 在中断期间，故障转移到恢复区域中的副本。  解决中断后，故障回复到原始生产区域中的数据库，且不会丢失任何数据。
+* [异地复制](sql-database-geo-replication-overview.md)：为所有数据库创建以异步方式复制的只读辅助副本。 在中断期间，故障转移到恢复区域中的副本。  解决中断后，故障回复到原始生产区域中的数据库，且不会丢失任何数据。
 * [异步](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)故障转移操作按租户的优先顺序，以最大程度地减少大量数据库的故障转移时间。
-* [分片管理恢复功能](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-recovery-manager)：在恢复和遣返期间更改目录中的数据库条目。 无需重新配置应用，这些功能就能让应用连接到租户数据库，而不管位置如何。
-* [SQL Server DNS 别名](https://docs.microsoft.com/azure/sql-database/dns-alias-overview)：实现新租户的无缝预配，不管应用在哪个区域中运行。 使用 DNS 别名还能让目录同步进程连接到活动目录，而不管该目录位于哪个位置。
+* [分片管理恢复功能](sql-database-elastic-database-recovery-manager.md)：在恢复和遣返期间更改目录中的数据库条目。 无需重新配置应用，这些功能就能让应用连接到租户数据库，而不管位置如何。
+* [SQL Server DNS 别名](dns-alias-overview.md)：实现新租户的无缝预配，不管应用在哪个区域中运行。 使用 DNS 别名还能让目录同步进程连接到活动目录，而不管该目录位于哪个位置。
 
 ## <a name="get-the-disaster-recovery-scripts"></a>获取灾难恢复脚本 
 
@@ -92,8 +92,8 @@ ms.locfileid: "47056329"
 启动恢复进程前，请查看应用程序的健康状态。
 1. 在 Web 浏览器中打开 Wingtip Tickets 事件中心（ http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net - 请将 &lt;user&gt; 替换为部署的用户值）。
     * 滚动到页面底部，注意页脚中的目录服务器名称和位置。 该位置是部署应用的区域。
-    *提示：将鼠标悬停在位置上可以放大显示内容。*
-    ![原始区域中的事件中心正常状态](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
+    提示：将鼠标悬停在该位置上可以放大显示内容。
+    ![原始区域中的事件中心运行状况状态](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. 单击 Contoso Concert Hall 租户并打开其事件页。
     * 在页脚中，注意租户服务器名称。 位置与目录服务器的位置相同。
@@ -126,7 +126,7 @@ ms.locfileid: "47056329"
 此任务启动一个过程来部署重复的应用实例，并将目录和所有租户数据库复制到恢复区域。
 
 > [!Note]
-> 本教程将在 Wingtip Tickets 示例应用程序中添加异地复制保护。 在生产场景中，对于使用异地复制的应用程序，每个租户从一开始就预配了异地复制的数据库。 请参阅[使用 Azure SQL 数据库设计高可用性服务](https://docs.microsoft.com/azure/sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)
+> 本教程将在 Wingtip Tickets 示例应用程序中添加异地复制保护。 在生产场景中，对于使用异地复制的应用程序，每个租户从一开始就预配了异地复制的数据库。 请参阅[使用 Azure SQL 数据库设计高可用性服务](sql-database-designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)
 
 1. 在 *PowerShell ISE* 中，打开 ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 脚本，并设置以下值：
     * **$DemoScenario = 2**：创建镜像映像恢复环境，并复制目录和租户数据库
@@ -135,12 +135,14 @@ ms.locfileid: "47056329"
 ![同步过程](media/saas-dbpertenant-dr-geo-replication/replication-process.png)  
 
 ## <a name="review-the-normal-application-state"></a>查看正常的应用程序状态
+
 此时，应用程序在原始区域中正常运行，并受异地复制的保护。  恢复区域中存在所有数据库的只读辅助副本。 
+
 1. 在 Azure 门户中查看资源组，可以看到，在恢复区域中创建的某个资源组带有-recovery 后缀。 
 
-1. 浏览恢复资源组中的资源。  
+2. 浏览恢复资源组中的资源。  
 
-1. 单击 _tenants1-dpt-&lt;user&gt;-recovery_ 服务器上的 Contoso Concert Hall 数据库。  单击左侧的“异地复制”。 
+3. 单击 _tenants1-dpt-&lt;user&gt;-recovery_ 服务器上的 Contoso Concert Hall 数据库。  单击左侧的“异地复制”。 
 
     ![Contoso Concert 异地复制链接](media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication.png) 
 
@@ -193,6 +195,7 @@ ms.locfileid: "47056329"
 > 若要浏览恢复作业的代码，请查看 ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\RecoveryJobs 文件夹中的 PowerShell 脚本。
 
 ### <a name="review-the-application-state-during-recovery"></a>在恢复期间查看应用程序状态
+
 在流量管理器中禁用应用程序终结点时，应用程序不可用。 将目录故障转移到恢复区域并将所有租户标记为脱机后，应用程序会重新联机。 尽管应用程序可用，但在故障转移每个租户的数据库之前，这些租户在事件中心会显示脱机状态。 必须将应用程序设计为能够处理脱机租户数据库。
 
 1. 恢复目录数据库后的短时间内，请在 Web 浏览器中刷新 Wingtip Tickets 事件中心。
@@ -301,7 +304,7 @@ ms.locfileid: "47056329"
 ## <a name="next-steps"></a>后续步骤
 
 本教程介绍了如何：
-> [!div classs="checklist"]
+> [!div class="checklist"]
 
 >* 将数据库和弹性池配置信息同步到租户目录中
 >* 在备用区域中设置由应用程序、服务器和池构成的恢复环境
@@ -313,4 +316,4 @@ ms.locfileid: "47056329"
 
 ## <a name="additional-resources"></a>其他资源
 
-* [其他基于 Wingtip SaaS 应用程序编写的教程](https://docs.microsoft.com/azure/sql-database/sql-database-wtp-overview#sql-database-wingtip-saas-tutorials)
+* [其他基于 Wingtip SaaS 应用程序编写的教程](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

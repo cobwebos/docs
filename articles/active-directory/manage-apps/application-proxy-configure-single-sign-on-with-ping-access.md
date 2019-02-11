@@ -4,9 +4,9 @@ description: 使用 PingAccess 和应用代理发布应用程序，以支持基�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 200c87bdf2f0d686cd2e768d3b6b9a7fe3a5691b
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 5d93eb08b81f6507bc8bc023ceab7c8677546c6a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282509"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191944"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>使用应用程序代理和 PingAccess 通过基于标头的身份验证进行单一登录
 
@@ -51,7 +51,7 @@ PingAccess for Azure Active Directory 是一种 PingAccess 产品/服务，能�
 
 如果已经启用应用程序代理，并且安装了连接器，则可以跳过此部分，转到[使用应用程序代理将应用添加到 Azure AD](#add-your-app-to-azure-ad-with-application-proxy)。
 
-应用程序代理连接器是一个 Windows Server 服务，可将远程员工的流量定向到已发布的应用。 有关详细的安装说明，请参阅[在 Azure 门户中启用应用程序代理](application-proxy-enable.md)。
+应用程序代理连接器是一个 Windows Server 服务，可将远程员工的流量定向到已发布的应用。 有关详细的安装说明，请参阅[在 Azure 门户中启用应用程序代理](application-proxy-add-on-premises-application.md)。
 
 1. 以全局管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“Azure Active Directory” > “应用程序代理”。
@@ -66,7 +66,7 @@ PingAccess for Azure Active Directory 是一种 PingAccess 产品/服务，能�
 
 需要在 Azure 门户中执行两项操作。 首先，需要使用应用程序代理发布应用程序。 然后，需要收集一些有关应用的信息，以便在执行 PingAccess 步骤期间使用。
 
-按以下步骤发布应用。 有关步骤 1-8 更详细的演练，请参阅[使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)。
+按以下步骤发布应用。 有关步骤 1-8 更详细的演练，请参阅[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)。
 
 1. 以全局管理员身份登录到 [Azure 门户](https://portal.azure.com)（如果在上一部分中未登录）。
 2. 选择“Azure Active Directory” > “企业应用程序”。

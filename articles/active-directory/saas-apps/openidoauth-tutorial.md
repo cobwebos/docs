@@ -4,22 +4,22 @@ description: 从 Azure AD 应用库配置 OpenID/OAuth 应用程序的步骤。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: daveba
+ms.reviewer: barbkess
 ms.assetid: eedebb76-e78c-428f-9cf0-5891852e79fb
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/25/2018
+ms.topic: tutorial
+ms.date: 01/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 04639e6d27854d9c25b97936b163cfaaa25fc375
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: f2ed840065b4efd4b0e519333307388dca61827d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287432"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807008"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>从 Azure AD 应用库配置 OpenID/OAuth 应用程序
 
@@ -27,19 +27,19 @@ ms.locfileid: "51287432"
 
 1. 在 [Azure 门户](https://portal.azure.com) 的左窗格中，选择“Azure Active Directory”。 
 
-    ![“Azure Active Directory”按钮](./media/openidoauth-tutorial/tutorial_general_01.png)
+    ![“Azure Active Directory”按钮](common/select-azuread.png))
 
 2. 转到“企业应用程序” > “所有应用程序”。
 
-    ![“企业应用程序”边栏选项卡](./media/openidoauth-tutorial/tutorial_general_02.png)
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
 3. 选择对话框顶部的“新建应用程序”。
 
-    ![“新建应用程序”按钮](./media/openidoauth-tutorial/tutorial_general_03.png)
+    ![“新增应用程序”按钮](common/add-new-app.png)
 
 4. 在搜索框中，键入应用程序的名称。 在结果面板中选择所需的应用程序并注册该应用程序。
 
-    ![添加应用程序](./media/openidoauth-tutorial/addfromgallery.png)
+    ![结果列表中的 Openid](common/search-new-app.png)
 
     > [!NOTE]
     > 对于 OpenID Connect 和 OAuth 应用，“添加”按钮默认处于禁用状态。 在这里，租户管理员应该选择“注册”按钮并向应用程序提供许可。 该应用程序随即会添加到客户租户中，可在租户中进行配置。 无需显式添加应用程序。

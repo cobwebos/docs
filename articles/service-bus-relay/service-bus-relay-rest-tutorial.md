@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 40562c77cf38ad316d64f68b54dd4174dae6da1a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: e0f85e11b2be8a615f949e0d37325dbd748f728a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614466"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103269"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Azure WCF 中继 REST 教程
 本教程介绍如何生成简单的服务总线主机应用程序，该应用程序公开基于 REST 的接口。 REST 使 Web 客户端（例如 Web 浏览器）可通过 HTTP 请求访问服务总线 API。
@@ -61,7 +61,7 @@ WCF 协定和 REST 样式的协定的主要区别在于是否向 [OperationContr
 4. 通过安装服务总线 NuGet 包，向项目添加对服务总线和 **System.ServiceModel.dll** 的引用。 该包自动添加对服务总线库和 WCF **System.ServiceModel**的引用。 在“解决方案资源管理器”中，右键单击“ImageListener”项目，并单击“管理 NuGet 包”。 单击“浏览”选项卡，并搜索 `Microsoft Azure Service Bus`。 单击“安装” 并接受使用条款。
 5. 必须在项目中显式添加对 **System.ServiceModel.dll** 的引用：
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。
+    a. 在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。
    
     b. 在“添加引用”对话框中，单击左侧的“框架”选项卡，并在“搜索”框中键入“System.ServiceModel.Web”。 选择“System.ServiceModel.Web”复选框，并单击“确定”。
 6. 在 Program.cs 文件顶部添加以下 `using` 语句。
@@ -439,9 +439,9 @@ namespace Microsoft.ServiceBus.Samples
       </behaviors>
     </system.serviceModel>
     <appSettings>
-        <!-- Service Bus specific app setings for messaging connections -->
+        <!-- Service Bus specific app settings for messaging connections -->
         <add key="Microsoft.ServiceBus.ConnectionString"
-            value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey="YOUR_SAS_KEY"/>
+            value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YOUR_SAS_KEY>"/>
     </appSettings>
 </configuration>
 ```

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: bcda662790c1af72e28b8968142bab15f62e83bf
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 45208b5c6538ea523a7b87d6dbdeb99e792783ff
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127141"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021044"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Amazon Marketplace Web 服务复制数据
 
@@ -45,7 +44,7 @@ Amazon Marketplace Web 服务链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：“AmazonMWS” | 是 |
+| type | type 属性必须设置为：AmazonMWS | 是 |
 | endpoint | Amazon MWS 服务器的终结点（即，mws.amazonservices.com）  | 是 |
 | marketplaceID | 要从中检索数据的 Amazon Marketplace ID。 要从多个市场 ID 检索数据，请将其用逗号 (`,`) 分隔。 （即，A2EUQ1WTGCTBG2）  | 是 |
 | sellerID | Amazon 卖方 ID。  | 是 |
@@ -85,7 +84,12 @@ Amazon Marketplace Web 服务链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Amazon Marketplace Web 服务数据集支持的属性列表。
 
-要从 Amazon Marketplace Web 服务复制数据，请将数据集的 type 属性设置为“AmazonMWSObject”。 此类型的数据集中没有任何其他特定于类型的属性。
+要从 Amazon Marketplace Web 服务复制数据，请将数据集的 type 属性设置为“AmazonMWSObject”。 支持以下属性：
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| type | 数据集的 type 属性必须设置为：AmazonMWSObject | 是 |
+| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -97,7 +101,8 @@ Amazon Marketplace Web 服务链接服务支持以下属性：
         "linkedServiceName": {
             "referenceName": "<AmazonMWS linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 
@@ -107,14 +112,14 @@ Amazon Marketplace Web 服务链接服务支持以下属性：
 
 有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Amazon Marketplace Web 服务数据源支持的属性列表。
 
-### <a name="amazonmwssource-as-source"></a>以 AmazonMWSSource 作为源
+### <a name="amazon-mws-as-source"></a>Amazon MWS 作为源
 
 要从 Amazon Marketplace Web 服务复制数据，请将复制活动中的源类型设置为“AmazonMWSSource”。 复制活动**源**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**AmazonMWSSource** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`。 | 是 |
+| type | 复制活动源的 type 属性必须设置为：AmazonMWSSource | 是 |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

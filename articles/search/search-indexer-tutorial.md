@@ -1,5 +1,5 @@
 ---
-title: 有关在 Azure 搜索中为 Azure SQL 数据库编制索引的教程 | Microsoft Docs
+title: 有关在 Azure 门户中为 Azure SQL 数据库编制索引的教程 - Azure 搜索
 description: 在本教程中，对 Azure SQL 数据库进行爬网，提取可搜索的数据并填充 Azure 搜索索引。
 author: HeidiSteen
 manager: cgronlun
@@ -9,14 +9,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: b40d3a74904d6814eb01b5d41d10632e8c9af5be
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.custom: seodec2018
+ms.openlocfilehash: 872871d2ab9a9c693ad81081f24c8de68457982d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988789"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312045"
 ---
-# <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>教程：使用 Azure 搜索索引器对 Azure SQL 数据库进行爬网
+# <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>教程：使用 Azure 搜索索引器搜索 Azure SQL 数据库
 
 本教程演示如何配置索引器，以便从示例 Azure SQL 数据库提取可搜索的数据。 [索引器](search-indexer-overview.md)是 Azure 搜索组件，用于对外部数据源进行爬网，使用内容来填充[搜索索引](search-what-is-an-index.md)。 Azure SQL 数据库的索引器是所有索引器中使用最广泛的。 
 
@@ -272,7 +273,7 @@ public string HotelName { get; set; }
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成本教程后，最快的清理方式是删除包含 Azure 搜索服务的资源组。 现在，你可以删除资源组以永久删除其中的所有内容。 在门户中，资源组名称显示在 Azure 搜索服务的“概述”页上。
+完成本教程后，最快的清理方式是删除包含 Azure 搜索服务的资源组。 现在，可以删除资源组以永久删除其中的所有内容。 在门户中，资源组名称显示在 Azure 搜索服务的“概述”页上。
 
 ## <a name="next-steps"></a>后续步骤
 

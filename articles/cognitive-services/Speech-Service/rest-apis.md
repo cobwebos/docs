@@ -1,317 +1,64 @@
 ---
-title: 语音服务 REST API
-description: 语音服务 REST API 的参考。
+title: 语音服务 REST API - 语音服务
+titleSuffix: Azure Cognitive Services
+description: 了解如何使用语音转文本和文本转语音 REST API。 本文介绍授权选项、查询选项，以及如何构建请求和接收响应。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: a8aa2600c8f3bcbc9d2ebc7f55ac0d2f038d8ecd
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: f369ab0ec8c460137f7e2b16a7f2696357d84c50
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566612"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247436"
 ---
 # <a name="speech-service-rest-apis"></a>语音服务 REST API
 
-Azure 认知服务语音服务的 REST API 与[必应语音 API](https://docs.microsoft.com/azure/cognitive-services/Speech) 提供的 API 类似。 该终结点与必应语音服务使用的终结点不同。 可以使用区域终结点，但必须使用对应于所用终结点的订阅密钥。
-
-## <a name="speech-to-text"></a>语音转文本
-
-下表显示了语音转文本 REST API 的终结点。 使用与订阅区域匹配的终结点。
-
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
-
-> [!NOTE]
-> 如果已自定义声学/语言模型或发音，请改用自定义终结点。
-
-此 API 仅支持短话语。 请求最多可包含 10 秒的音频，总共持续 14 秒。 REST API 仅返回最终结果，不返回部分或中间结果。 语音服务还提供一个可以听录较长音频的[批处理听录](batch-transcription.md) API。
-
-
-### <a name="query-parameters"></a>查询参数
-
-可将以下参数包含在 REST 请求的查询字符串中。
-
-|参数名称|必需/可选|含义|
-|-|-|-|
-|`language`|必选|要识别的语言的标识符。 请参阅[支持的语言](language-support.md#speech-to-text)。|
-|`format`|可选<br>默认值：`simple`|结果格式，`simple` 或 `detailed` 简单结果包括 `RecognitionStatus`、`DisplayText`、`Offset` 和持续时间。 详细结果包括多个具有置信度值的候选项，以及四种不同的表示形式。|
-|`profanity`|可选<br>默认值：`masked`|如何处理识别结果中的亵渎内容。 可以是 `masked`（将亵渎内容替换为星号）、`removed`（删除所有亵渎内容）或 `raw`（包含亵渎内容）。
-
-### <a name="request-headers"></a>请求标头
-
-在 HTTP 请求标头中发送以下字段。
-
-|标头|含义|
-|------|-------|
-|`Ocp-Apim-Subscription-Key`|语音服务订阅密钥。 必须提供此标头或 `Authorization`。|
-|`Authorization`|前面带有单词 `Bearer` 的授权令牌。 必须提供此标头或 `Ocp-Apim-Subscription-Key`。 请参阅[身份验证](#authentication)。|
-|`Content-type`|描述音频数据的格式和编解码器。 目前，此值必须是 `audio/wav; codec=audio/pcm; samplerate=16000`。|
-|`Transfer-Encoding`|可选。 如果提供，则必须是 `chunked`，以便将音频数据发送到多个小区块而不是单个文件。|
-|`Expect`|如果使用分块传输，则发送 `Expect: 100-continue`。 语音服务将确认初始请求并等待附加的数据。|
-|`Accept`|可选。 如果提供，则必须包含 `application/json`，因为语音服务以 JSON 格式提供结果。 （如果未指定默认值，则某些 Web 请求框架会提供不兼容的默认值，因此，最佳做法是始终包含 `Accept`。）|
-
-### <a name="audio-format"></a>音频格式
-
-在 HTTP `POST` 请求的正文中发送音频。 它必须采用下表中的格式之一：
-
-| 格式 | 编解码器 | Bitrate | 采样率 |
-|--------|-------|---------|-------------|
-| WAV | PCM | 16 位 | 16 kHz，单声道 |
-| OGG | OPUS | 16 位 | 16 kHz，单声道 |
-
->[!NOTE]
->语音服务中的 REST API 和 WebSocket 支持上述格式。 [语音 SDK](/index.yml) 目前仅支持使用 PCM 编解码器的 WAV 格式。
-
-### <a name="chunked-transfer"></a>分块传输
-
-分块传输 (`Transfer-Encoding: chunked`) 有助于降低识别延迟，因为它允许语音服务在传输期间开始处理音频文件。 REST API 不提供部分结果或临时结果。 此选项专门用于改善响应能力。
-
-以下代码演示如何分块发送音频。 只有第一个区块应该包含音频文件的标头。 `request` 是连接到相应 REST 终结点的 HTTPWebRequest 对象。 `audioFile` 是音频文件在磁盘上的路径。
-
-```csharp
-using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
-{
-
-    /*
-    * Open a request stream and write 1024 byte chunks in the stream one at a time.
-    */
-    byte[] buffer = null;
-    int bytesRead = 0;
-    using (Stream requestStream = request.GetRequestStream())
-    {
-        /*
-        * Read 1024 raw bytes from the input audio file.
-        */
-        buffer = new Byte[checked((uint)Math.Min(1024, (int)fs.Length))];
-        while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) != 0)
-        {
-            requestStream.Write(buffer, 0, bytesRead);
-        }
-
-        // Flush
-        requestStream.Flush();
-    }
-}
-```
-
-### <a name="example-request"></a>示例请求
-
-下面是一个典型的请求。
-
-```HTTP
-POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
-Accept: application/json;text/xml
-Content-Type: audio/wav; codec="audio/pcm"; samplerate=16000
-Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
-Host: westus.stt.speech.microsoft.com
-Transfer-Encoding: chunked
-Expect: 100-continue
-```
-
-### <a name="http-status"></a>HTTP 状态
-
-响应的 HTTP 状态指示成功或一般错误状态。
-
-HTTP 代码|含义|可能的原因
--|-|-|
-100|继续|已接受初始请求。 继续发送剩余的数据。 （与分块传输配合使用。）
-200|OK|请求成功；响应正文是一个 JSON 对象。
-400|错误的请求|语言代码未提供或不是支持的语言；音频文件无效。
-401|未授权|指定区域中的订阅密钥或授权令牌无效，或终结点无效。
-403|禁止|缺少订阅密钥或授权令牌。
-
-### <a name="json-response"></a>JSON 响应
-
-结果以 JSON 格式返回。 根据查询参数，将返回 `simple` 或 `detailed` 格式。
-
-#### <a name="the-simple-format"></a>`simple` 格式 
-
-此格式包括以下顶级字段。
-
-|字段名|内容|
-|-|-|
-|`RecognitionStatus`|状态，例如 `Success` 表示成功识别。 请参见此[表](rest-apis.md#recognitionstatus)。|
-|`DisplayText`|经过大小写转换、添加标点、执行反向文本规范化（将口头文本转换为短形式，例如，200 表示“two hundred”，或“Dr.Smith”表示“doctor smith”）和屏蔽亵渎内容之后的识别文本。 仅在成功时提供。|
-|`Offset`|在音频流中开始识别语音的时间（以 100 纳秒为单位）。|
-|`Duration`|在音频流中识别语音的持续时间（以 100 纳秒为单位）。|
-
-#### <a name="the-detailed-format"></a>`detailed` 格式 
-
-此格式包括以下顶级字段。
-
-|字段名|内容|
-|-|-|
-|`RecognitionStatus`|状态，例如 `Success` 表示成功识别。 请参见此[表](rest-apis.md#recognition-status)。|
-|`Offset`|在音频流中开始识别语音的时间（以 100 纳秒为单位）。|
-|`Duration`|在音频流中识别语音的持续时间（以 100 纳秒为单位）。|
-|`NBest`|相同语音的备选解释列表，从最有可能到最不可能进行排名。 请参阅 [NBest 说明](rest-apis.md#nbest)。|
-
-#### <a name="nbest"></a>NBest
-
-`NBest` 字段是相同语音的备选解释列表，从最有可能到最不可能进行排名。 第一个条目与主要识别结果相同。 每个条目包含以下字段：
-
-|字段名|内容|
-|-|-|
-|`Confidence`|条目的置信度评分，从 0.0（完全不可信）到 1.0（完全可信）
-|`Lexical`|已识别文本的词法形式：识别的实际单词。
-|`ITN`|已识别文本的反向文本规范化（“规范”）形式，已应用电话号码、数字、缩写（“doctor smith”缩写为“dr smith”）和其他转换。
-|`MaskedITN`| 可根据请求提供应用了亵渎内容屏蔽的 ITN 形式。
-|`Display`| 已识别文本的显示形式，其中添加了标点符号和大小写形式。
-
-#### <a name="recognitionstatus"></a>RecognitionStatus
-
-`RecognitionStatus` 字段可能包含以下值。
-
-|状态值|Description
-|-|-|
-| `Success` | 识别成功并且存在 DisplayText 字段。 |
-| `NoMatch` | 在音频流中检测到语音，但没有匹配目标语言的字词。 通常表示识别语言不同于讲话用户所用的语言。 |
-| `InitialSilenceTimeout` | 音频流的开始仅包含静音，并且服务在等待语音时超时。 |
-| `BabbleTimeout` | 音频流的开始仅包含噪音，并且服务在等待语音时超时。 |
-| `Error` | 识别服务遇到内部错误，无法继续。 如果可能，请重试。 |
-
-> [!NOTE]
-> 如果音频仅包含亵渎内容，并且 `profanity` 查询参数设置为 `remove`，则服务不会返回语音结果。
-
-### <a name="sample-responses"></a>示例响应
-
-下面是 `simple` 识别的典型响应。
-
-```json
-{
-  "RecognitionStatus": "Success",
-  "DisplayText": "Remind me to buy 5 pencils.",
-  "Offset": "1236645672289",
-  "Duration": "1236645672289"
-}
-```
-
-下面是 `detailed` 识别的典型响应。
-
-```json
-{
-  "RecognitionStatus": "Success",
-  "Offset": "1236645672289",
-  "Duration": "1236645672289",
-  "NBest": [
-      {
-        "Confidence" : "0.87",
-        "Lexical" : "remind me to buy five pencils",
-        "ITN" : "remind me to buy 5 pencils",
-        "MaskedITN" : "remind me to buy 5 pencils",
-        "Display" : "Remind me to buy 5 pencils.",
-      },
-      {
-        "Confidence" : "0.54",
-        "Lexical" : "rewind me to buy five pencils",
-        "ITN" : "rewind me to buy 5 pencils",
-        "MaskedITN" : "rewind me to buy 5 pencils",
-        "Display" : "Rewind me to buy 5 pencils.",
-      }
-  ]
-}
-```
-
-## <a name="text-to-speech"></a>文本到语音转换
-
-下面是语音服务文本转语音 API 的 REST 终结点。 请使用与订阅区域匹配的终结点。
-
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
-
-语音服务支持 24-KHz 音频输出，此外还支持必应语音所支持的 16-Khz 输出。 在 `X-Microsoft-OutputFormat` HTTP 标头中可以使用四种 24-KHz 输出格式，支持两种 24-KHz 语音：`Jessa24kRUS` 和 `Guy24kRUS`。
-
-区域设置 | 语言   | 性别 | 服务名称映射
--------|------------|--------|------------
-en-US  | 美式英语 | 女 | “Microsoft 服务器语音的文本转语音（en-US，Jessa24kRUS）”
-en-US  | 美式英语 | 男   | “Microsoft 服务器语音的文本转语音（en-US，Guy24kRUS）”
-
-[支持的语言](language-support.md#text-to-speech)中提供了可用语音的完整列表。
-
-### <a name="request-headers"></a>请求标头
-
-在 HTTP 请求标头中发送以下字段。
-
-|标头|含义|
-|------|-------|
-|`Authorization`|前面带有单词 `Bearer` 的授权令牌。 必需。 请参阅[身份验证](#authentication)。|
-|`Content-Type`|输入内容类型：`application/ssml+xml`。|
-|`X-Microsoft-OutputFormat`|输出音频格式。 请参阅下表。|
-|`User-Agent`|应用程序名称。 必需；长度必须小于 255 个字符。|
-
-可用音频输出格式 (`X-Microsoft-OutputFormat`) 整合了比特率和编码。
-
-|||
-|-|-|
-`raw-16khz-16bit-mono-pcm`         | `raw-8khz-8bit-mono-mulaw`
-`riff-8khz-8bit-mono-mulaw`     | `riff-16khz-16bit-mono-pcm`
-`audio-16khz-128kbitrate-mono-mp3` | `audio-16khz-64kbitrate-mono-mp3`
-`audio-16khz-32kbitrate-mono-mp3`  | `raw-24khz-16bit-mono-pcm`
-`riff-24khz-16bit-mono-pcm`        | `audio-24khz-160kbitrate-mono-mp3`
-`audio-24khz-96kbitrate-mono-mp3`  | `audio-24khz-48kbitrate-mono-mp3`
-
-> [!NOTE]
-> 如果所选语音和输出格式具有不同的比特率，则根据需要对音频重新采样。 但是，24khz 语音不支持 `audio-16khz-16kbps-mono-siren` 和 `riff-16khz-16kbps-mono-siren` 输出格式。
-
-### <a name="request-body"></a>请求正文
-
-要转换为语音的文本将作为 HTTP `POST` 请求的正文，以纯文本（ASCII 或 UTF-8）或[语音合成标记语言](speech-synthesis-markup.md) (SSML) 格式 (UTF-8) 发送。 纯文本请求使用服务的默认语音和语言。 发送 SSML 可使用不同的声音。
-
-### <a name="sample-request"></a>示例请求
-
-以下 HTTP 请求使用 SSML 正文来选择语音。 正文长度不得超过 1,000 个字符。
-
-```xml
-POST /cognitiveservices/v1 HTTP/1.1
-
-X-Microsoft-OutputFormat: raw-16khz-16bit-mono-pcm
-Content-Type: application/ssml+xml
-Host: westus.tts.speech.microsoft.com
-Content-Length: 225
-Authorization: Bearer [Base64 access_token]
-
-<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
-    name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>
-        Microsoft Speech Service Text-to-Speech API
-</voice></speak>
-```
-
-### <a name="http-response"></a>HTTP 响应
-
-响应的 HTTP 状态指示成功或一般错误状态。
-
-HTTP 代码|含义|可能的原因
--|-|-|
-200|OK|请求成功；响应正文是一个音频文件。
-400 |错误的请求 |必需参数缺失、为空或为 null。 或者，传递给必需参数或可选参数的值无效。 常见问题是标头太长。
-401|未授权 |请求未经授权。 确保订阅密钥或令牌有效并在正确的区域中。
-413|请求实体太大|SSML 输入超过了 1024 个字符。
-429|请求过多|已经超过了订阅允许的配额或请求速率。
-502|错误的网关 | 网络或服务器端问题。 也可能表示标头无效。
-
-如果 HTTP 状态为 `200 OK`，则响应正文包含采用所请求格式的音频文件。 可以一边传输一边播放此文件，或者将其保存到缓冲区或文件中，以便日后播放或用于其他目的。
+作为 [Speech SDK](speech-sdk.md) 的替代服务，语音服务可让你通过一组 REST API 进行语音转文本和文本转语音转换。 每个可访问的终结点都与某个区域相关联。 应用程序需要所用终结点的订阅密钥。
+
+在使用 REST API 之前，应了解：
+* 使用 REST API 的语音转文本请求只能包含 10 秒的录制音频。
+* 语音转文本 REST API 仅返回最终结果。 不提供部分结果。
+* 文本转语音 REST API 需要授权标头。 这意味着，需要完成令牌交换才能访问该服务。 有关详细信息，请参阅[身份验证](#authentication)。
 
 ## <a name="authentication"></a>身份验证
 
-向语音服务的 REST API 发送请求需要提供订阅密钥或访问令牌。 一般情况下，最简单的方法是直接发送订阅密钥。 然后，语音服务将为你获取访问令牌。 为了尽量缩短响应时间，可以改用访问令牌。
+向语音转文本或文本转语音 REST API 发出的每个请求都需要授权标头。 下表列出了每个服务支持的标头：
 
-若要获取令牌，请向区域语音服务 `issueToken` 终结点提供订阅密钥，如下表中所示。 请使用与订阅区域匹配的终结点。
+| 支持的授权标头 | 语音转文本 | 文本转语音 |
+|------------------------|----------------|----------------|
+| Ocp-Apim-Subscription-Key | 是 | 否 |
+| Authorization:持有者 | 是 | 是 |
+
+使用 `Ocp-Apim-Subscription-Key` 标头时，只需提供订阅密钥。 例如：
+
+```
+'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
+```
+
+使用 `Authorization: Bearer` 标头时，需要向 `issueToken` 终结点发出请求。 在此请求中，交换有效期为 10 分钟的访问令牌的订阅密钥。 下面的几个部分将介绍如何获取令牌、使用令牌和刷新令牌。
+
+### <a name="how-to-get-an-access-token"></a>如何获取访问令牌
+
+若要获取访问令牌，需使用 `Ocp-Apim-Subscription-Key` 和订阅密钥向 `issueToken` 终结点发出请求。
+
+支持以下区域和终结点：
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
 
-每个访问令牌的有效期为 10 分钟。 随时可以获取新令牌。 如果需要，可以在发送每个语音 REST API 请求之前的那一刻获取令牌。 为了最大限度地减少流量和延迟，我们建议将同一个令牌使用 9 分钟。
+使用这些示例创建访问令牌请求。
 
-以下部分介绍如何获取令牌以及如何在请求中使用令牌。
+#### <a name="http-sample"></a>HTTP 示例
 
-### <a name="get-a-token-http"></a>获取令牌：HTTP
+此示例是获取令牌的简单 HTTP 请求。 请将 `YOUR_SUBSCRIPTION_KEY` 替换为语音服务订阅密钥。 如果订阅不在美国西部区域，请将 `Host` 标头替换为所在区域的主机名。
 
-下面是一个获取令牌的示例 HTTP 请求。 将 `YOUR_SUBSCRIPTION_KEY` 替换为语音服务订阅密钥。 如果订阅不在美国西部区域，请将 `Host` 标头替换为所在区域的主机名。
-
-```
+```http
 POST /sts/v1.0/issueToken HTTP/1.1
 Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 Host: westus.api.cognitive.microsoft.com
@@ -319,11 +66,11 @@ Content-type: application/x-www-form-urlencoded
 Content-Length: 0
 ```
 
-对此请求的响应主体是 Java Web 令牌 (JWT) 格式的访问令牌。
+响应正文包含 Java Web 令牌 (JWT) 格式的访问令牌。
 
-### <a name="get-a-token-powershell"></a>获取令牌：PowerShell
+#### <a name="powershell-sample"></a>PowerShell 示例
 
-以下 Windows PowerShell 脚本演示如何获取访问令牌。 将 `YOUR_SUBSCRIPTION_KEY` 替换为语音服务订阅密钥。 如果订阅不在美国西部区域，请相应地更改给定 URI 的主机名。
+此示例是获取访问令牌的简单 PowerShell 脚本。 请将 `YOUR_SUBSCRIPTION_KEY` 替换为语音服务订阅密钥。 请务必使用与订阅匹配的正确区域终结点。 此示例目前设置为“美国西部”。
 
 ```Powershell
 $FetchTokenHeader = @{
@@ -340,24 +87,21 @@ $OAuthToken
 
 ```
 
-### <a name="get-a-token-curl"></a>获取令牌：cURL
+#### <a name="curl-sample"></a>cURL 示例
 
-cURL 是 Linux（及面向 Linux 的 Windows 子系统）中提供的一种命令行工具。 以下 cURL 命令演示如何访问令牌。 将 `YOUR_SUBSCRIPTION_KEY` 替换为语音服务订阅密钥。 如果订阅不在美国西部区域，请相应地更改给定 URI 的主机名。
+cURL 是 Linux（及面向 Linux 的 Windows 子系统）中提供的一种命令行工具。 此 cURL 命令演示如何获取访问令牌。 请将 `YOUR_SUBSCRIPTION_KEY` 替换为语音服务订阅密钥。 请务必使用与订阅匹配的正确区域终结点。 此示例目前设置为“美国西部”。
 
-> [!NOTE]
-> 为方便阅读，该命令分行显示，但在 shell 提示符下，请独行输入。
-
-```
+```cli
 curl -v -X POST
- "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken"
- -H "Content-type: application/x-www-form-urlencoded"
- -H "Content-Length: 0"
+ "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
+ -H "Content-type: application/x-www-form-urlencoded" \
+ -H "Content-Length: 0" \
  -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
 
-### <a name="get-a-token-c"></a>获取令牌：C#
+#### <a name="c-sample"></a>C# 示例
 
-以下 C# 类演示如何访问令牌。 实例化该类时，请传递语音服务订阅密钥。 如果订阅不在美国西部区域，请相应地更改 `FetchTokenUri` 的主机名。
+此 C# 类演示如何获取访问令牌。 实例化该类时，请传递语音服务订阅密钥。 如果订阅不在美国西部区域，请更改 `FetchTokenUri` 的值，以便与订阅的区域相匹配。
 
 ```cs
 /*
@@ -396,11 +140,13 @@ public class Authentication
 }
 ```
 
-### <a name="use-a-token"></a>使用令牌
+### <a name="how-to-use-an-access-token"></a>如何使用访问令牌
 
-要在 REST API 请求中使用令牌，请在 `Authorization` 标头的 `Bearer` 单词后面提供该令牌。 下面是包含令牌的文本转语音 REST 请求示例。 请将 `YOUR_ACCESS_TOKEN` 替换为实际令牌。 在 `Host` 标头中使用正确的主机名。
+应将访问令牌作为 `Authorization: Bearer <TOKEN>` 标头发送到服务。 每个访问令牌的有效期为 10 分钟。 随时可以获取新令牌，但是，为了最大限度地减少流量和延迟，我们建议使用同一令牌 9 分钟。
 
-```xml
+下面是向文本转语音 REST API 发出的示例 HTTP 请求：
+
+```http
 POST /cognitiveservices/v1 HTTP/1.1
 Authorization: Bearer YOUR_ACCESS_TOKEN
 Host: westus.tts.speech.microsoft.com
@@ -414,11 +160,9 @@ Connection: Keep-Alive
 </voice></speak>
 ```
 
-### <a name="renew-authorization"></a>续订授权
+### <a name="how-to-renew-an-access-token-using-c"></a>如何使用 C# 续订访问令牌
 
-授权令牌在 10 分钟后过期。 在令牌过期之前获取新令牌可以续订授权。 例如，可以在 9 分钟后获取新令牌。
-
-以下 C# 代码是先前所述的类的直接替换项。 `Authentication` 类使用计时器每隔 9 分钟自动获取一个新的访问令牌。 此方法可确保在程序运行期间始终具备有效令牌。
+此 C# 代码是前面所述类的直接替换项。 `Authentication` 类使用计时器每隔 9 分钟自动获取新的访问令牌。 此方法可确保在程序运行期间始终具备有效令牌。
 
 > [!NOTE]
 > 如果不使用计时器，可以存储上次获取令牌时的时间戳。 然后，可以在令牌即将过期时才请求新令牌。 这样可以避免在不必要的情况下请求新令牌，此方法可能更适合用于不常发出语音请求的程序。
@@ -426,9 +170,6 @@ Connection: Keep-Alive
 如上述一样，请确保 `FetchTokenUri` 值与订阅区域匹配。 实例化该类时，请传递订阅密钥。
 
 ```cs
-/*
-    * This class demonstrates how to maintain a valid access token.
-    */
 public class Authentication
 {
     public static readonly string FetchTokenUri =
@@ -500,6 +241,276 @@ public class Authentication
     }
 }
 ```
+
+## <a name="speech-to-text-api"></a>语音转文本 API
+
+语音转文本 REST API 仅支持简短话语。 请求可以包含最长 10 秒、总持续时间为 14 秒的音频。 REST API 只返回最终结果，不返回部分或中间结果。
+
+如果必须为应用程序发送更长的音频，请考虑使用[语音 SDK](speech-sdk.md) 或[批处理脚本](batch-transcription.md)。
+
+### <a name="regions-and-endpoints"></a>区域和终结点
+
+使用 REST API 的语音转文本听录支持以下区域。 请务必选择与订阅区域匹配的终结点。
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+
+### <a name="query-parameters"></a>查询参数
+
+可将以下参数包含在 REST 请求的查询字符串中。
+
+| 参数 | 说明 | 必需/可选 |
+|-----------|-------------|---------------------|
+| `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 必选 |
+| `format` | 指定结果格式。 接受的值为 `simple` 和 `detailed`。 简单结果包括 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 详细响应包括多个具有置信度值的结果，以及四种不同的表示形式。 默认设置是 `simple`。 | 可选 |
+| `profanity` | 指定如何处理识别结果中的不雅内容。 接受的值为 `masked`（将亵渎内容替换为星号）、`removed`（删除结果中的所有亵渎内容）或 `raw`（包含结果中的亵渎内容）。 默认设置是 `masked`。 | 可选 |
+
+### <a name="request-headers"></a>请求标头
+
+下表列出了语音转文本请求的必需和可选标头。
+
+|标头| 说明 | 必需/可选 |
+|------|-------------|---------------------|
+| `Ocp-Apim-Subscription-Key` | 语音服务订阅密钥。 | 此标头或 `Authorization` 是必需的。 |
+| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 此标头或 `Ocp-Apim-Subscription-Key` 是必需的。 |
+| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必选 |
+| `Transfer-Encoding` | 指定要发送分块的音频数据，而不是单个文件。 仅当要对音频数据进行分块时才使用此标头。 | 可选 |
+| `Expect` | 如果使用分块传输，则发送 `Expect: 100-continue`。 语音服务将确认初始请求并等待附加的数据。| 如果发送分块的音频数据，则是必需的。 |
+| `Accept` | 如果提供此标头，则值必须是 `application/json`。 语音服务以 JSON 格式提供结果。 如果未指定默认值，则某些 Web 请求框架会提供不兼容的默认值，因此，最佳做法是始终包含 `Accept`。 | 可选，但建议提供。 |
+
+### <a name="audio-formats"></a>音频格式
+
+在 HTTP `POST` 请求的正文中发送音频。 它必须采用下表中的格式之一：
+
+| 格式 | 编解码器 | Bitrate | 采样率 |
+|--------|-------|---------|-------------|
+| WAV | PCM | 16 位 | 16 kHz，单声道 |
+| OGG | OPUS | 16 位 | 16 kHz，单声道 |
+
+>[!NOTE]
+>语音服务中的 REST API 和 WebSocket 支持上述格式。 [语音 SDK](speech-sdk.md) 目前仅支持使用 PCM 编解码器的 WAV 格式。
+
+### <a name="sample-request"></a>示例请求
+
+这是一个典型的 HTTP 请求。 以下示例包括主机名和必需的标头。 必须注意，服务同时预期提供音频数据，但此示例未包括这些数据。 如前所述，建议进行分块，但不是非要这样做。
+
+```HTTP
+POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
+Accept: application/json;text/xml
+Content-Type: audio/wav; codecs=audio/pcm; samplerate=16000
+Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
+Host: westus.stt.speech.microsoft.com
+Transfer-Encoding: chunked
+Expect: 100-continue
+```
+
+### <a name="http-status-codes"></a>HTTP 状态代码
+
+每个响应的 HTTP 状态代码指示成功或一般错误。
+
+| HTTP 状态代码 | 说明 | 可能的原因 |
+|------------------|-------------|-----------------|
+| 100 | 继续 | 已接受初始请求。 继续发送剩余的数据。 （与分块传输配合使用。） |
+| 200 | OK | 请求成功；响应正文是一个 JSON 对象。 |
+| 400 | 错误的请求 | 语言代码未提供或不是支持的语言；音频文件无效。 |
+| 401 | 未授权 | 指定区域中的订阅密钥或授权令牌无效，或终结点无效。 |
+| 403 | 禁止 | 缺少订阅密钥或授权令牌。 |
+
+### <a name="chunked-transfer"></a>分块传输
+
+分块传输 (`Transfer-Encoding: chunked`) 有助于降低识别延迟，因为它允许语音服务在传输期间开始处理音频文件。 REST API 不提供部分结果或临时结果。 此选项专门用于改善响应能力。
+
+此代码示例演示如何以块的形式发送音频。 只有第一个区块应该包含音频文件的标头。 `request` 是连接到相应 REST 终结点的 HTTPWebRequest 对象。 `audioFile` 是音频文件在磁盘上的路径。
+
+```csharp
+
+    HttpWebRequest request = null;
+    request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
+    request.SendChunked = true;
+    request.Accept = @"application/json;text/xml";
+    request.Method = "POST";
+    request.ProtocolVersion = HttpVersion.Version11;
+    request.Host = host;
+    request.ContentType = @"audio/wav; codecs=audio/pcm; samplerate=16000";
+    request.Headers["Ocp-Apim-Subscription-Key"] = args[1];
+    request.AllowWriteStreamBuffering = false;
+
+using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
+{
+    /*
+    * Open a request stream and write 1024 byte chunks in the stream one at a time.
+    */
+    byte[] buffer = null;
+    int bytesRead = 0;
+    using (Stream requestStream = request.GetRequestStream())
+    {
+        /*
+        * Read 1024 raw bytes from the input audio file.
+        */
+        buffer = new Byte[checked((uint)Math.Min(1024, (int)fs.Length))];
+        while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) != 0)
+        {
+            requestStream.Write(buffer, 0, bytesRead);
+        }
+
+        // Flush
+        requestStream.Flush();
+    }
+}
+```
+
+### <a name="response-parameters"></a>响应参数
+
+结果以 JSON 格式提供。 `simple` 格式包含以下顶级字段。
+
+| 参数 | 说明  |
+|-----------|--------------|
+|`RecognitionStatus`|状态，例如 `Success` 表示成功识别。 请参阅下表。|
+|`DisplayText`|经过大小写转换、添加标点、执行反向文本规范化（将口头文本转换为短形式，例如，200 表示“two hundred”，或“Dr.Smith”表示“doctor smith”）和屏蔽亵渎内容之后的识别文本。 仅在成功时提供。|
+|`Offset`|在音频流中开始识别语音的时间（以 100 纳秒为单位）。|
+|`Duration`|在音频流中识别语音的持续时间（以 100 纳秒为单位）。|
+
+`RecognitionStatus` 字段可包含以下值：
+
+| 状态 | 说明 |
+|--------|-------------|
+| `Success` | 识别成功并且存在 `DisplayText` 字段。 |
+| `NoMatch` | 在音频流中检测到语音，但没有匹配目标语言的字词。 通常表示识别语言不同于讲话用户所用的语言。 |
+| `InitialSilenceTimeout` | 音频流的开始仅包含静音，并且服务在等待语音时超时。 |
+| `BabbleTimeout` | 音频流的开始仅包含噪音，并且服务在等待语音时超时。 |
+| `Error` | 识别服务遇到内部错误，无法继续。 如果可能，请重试。 |
+
+> [!NOTE]
+> 如果音频仅包含亵渎内容，并且 `profanity` 查询参数设置为 `remove`，则服务不会返回语音结果。
+
+`detailed` 格式包含的数据与 `simple` 格式相同，另外还包含 `NBest`，这是相同语音识别结果的替代解释。 这些结果从最有可能到最不可能进行排名。第一个条目与主要识别结果相同。  使用 `detailed` 格式时，将以 `Display` 形式为 `NBest` 列表中的每条结果提供 `DisplayText`。
+
+`NBest` 列表中的每个对象包括：
+
+| 参数 | 说明 |
+|-----------|-------------|
+| `Confidence` | 条目的置信度评分，从 0.0（完全不可信）到 1.0（完全可信） |
+| `Lexical` | 已识别文本的词法形式：识别的实际单词。 |
+| `ITN` | 已识别文本的反向文本规范化（“规范”）形式，已应用电话号码、数字、缩写（“doctor smith”缩写为“dr smith”）和其他转换。 |
+| `MaskedITN` | 可根据请求提供应用了亵渎内容屏蔽的 ITN 形式。 |
+| `Display` | 已识别文本的显示形式，其中添加了标点符号和大小写形式。 此参数与将格式设置为 `simple` 时提供的 `DisplayText` 相同。 |
+
+### <a name="sample-responses"></a>示例响应
+
+这是 `simple` 识别的典型响应。
+
+```json
+{
+  "RecognitionStatus": "Success",
+  "DisplayText": "Remind me to buy 5 pencils.",
+  "Offset": "1236645672289",
+  "Duration": "1236645672289"
+}
+```
+
+这是 `detailed` 识别的典型响应。
+
+```json
+{
+  "RecognitionStatus": "Success",
+  "Offset": "1236645672289",
+  "Duration": "1236645672289",
+  "NBest": [
+      {
+        "Confidence" : "0.87",
+        "Lexical" : "remind me to buy five pencils",
+        "ITN" : "remind me to buy 5 pencils",
+        "MaskedITN" : "remind me to buy 5 pencils",
+        "Display" : "Remind me to buy 5 pencils.",
+      },
+      {
+        "Confidence" : "0.54",
+        "Lexical" : "rewind me to buy five pencils",
+        "ITN" : "rewind me to buy 5 pencils",
+        "MaskedITN" : "rewind me to buy 5 pencils",
+        "Display" : "Rewind me to buy 5 pencils.",
+      }
+  ]
+}
+```
+
+## <a name="text-to-speech-api"></a>文本转语音 API
+
+文本转语音 REST API 支持神经和标准文本转语音，每种语音支持区域设置标识的特定语言和方言。
+
+* 有关语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。
+* 有关区域可用性的信息，请参阅[区域](regions.md#text-to-speech)。
+
+> [!IMPORTANT]
+> 标准语音、自定义语音和神经语音的费用各不相同。 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
+
+### <a name="request-headers"></a>请求标头
+
+下表列出了语音转文本请求的必需和可选标头。
+
+| 标头 | 说明 | 必需/可选 |
+|--------|-------------|---------------------|
+| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关其他信息，请参阅[身份验证](#authentication)。 | 必选 |
+| `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 必选 |
+| `X-Microsoft-OutputFormat` | 指定音频输出格式。 有关接受值的完整列表，请参阅[音频输出](#audio-outputs)。 | 必选 |
+| `User-Agent` | 应用程序名称。 此名称必须小于 255 个字符。 | 必选 |
+
+### <a name="audio-outputs"></a>音频输出
+
+这是在每个请求中作为 `X-Microsoft-OutputFormat` 标头发送的受支持音频格式的列表。 每种格式合并了比特率和编码类型。 语音服务支持 24 KHz、16 KHz 和 8 KHz 音频输出。
+
+|||
+|-|-|
+| `raw-16khz-16bit-mono-pcm` | `raw-8khz-8bit-mono-mulaw` |
+| `riff-8khz-8bit-mono-alaw` | `riff-8khz-8bit-mono-mulaw` |
+| `riff-16khz-16bit-mono-pcm` | `audio-16khz-128kbitrate-mono-mp3` |
+| `audio-16khz-64kbitrate-mono-mp3` | `audio-16khz-32kbitrate-mono-mp3` |
+| `raw-24khz-16bit-mono-pcm` | `riff-24khz-16bit-mono-pcm` |
+| `audio-24khz-160kbitrate-mono-mp3` | `audio-24khz-96kbitrate-mono-mp3` |
+| `audio-24khz-48kbitrate-mono-mp3` | |
+
+> [!NOTE]
+> 如果所选语音和输出格式具有不同的比特率，则根据需要对音频重新采样。 但是，24khz 语音不支持 `audio-16khz-16kbps-mono-siren` 和 `riff-16khz-16kbps-mono-siren` 输出格式。
+
+### <a name="request-body"></a>请求正文
+
+每个 `POST` 请求的正文作为[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 发送。 SSML 允许选择文本到语音转换服务返回的合成语音的语音和语言。 有关受支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。
+
+> [!NOTE]
+> 如果使用自定义语音，请求正文可以作为纯文本（ASCII 或 UTF-8）发送。
+
+### <a name="sample-request"></a>示例请求
+
+此 HTTP 请求使用 SSML 指定语音和语言。 正文不能超过 1,000 个字符。
+
+```http
+POST /cognitiveservices/v1 HTTP/1.1
+
+X-Microsoft-OutputFormat: raw-16khz-16bit-mono-pcm
+Content-Type: application/ssml+xml
+Host: westus.tts.speech.microsoft.com
+Content-Length: 225
+Authorization: Bearer [Base64 access_token]
+
+<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
+    name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>
+        Microsoft Speech Service Text-to-Speech API
+</voice></speak>
+```
+
+### <a name="http-status-codes"></a>HTTP 状态代码
+
+每个响应的 HTTP 状态代码指示成功或一般错误。
+
+| HTTP 状态代码 | 说明 | 可能的原因 |
+|------------------|-------------|-----------------|
+| 200 | OK | 请求成功；响应正文是一个音频文件。 |
+| 400 | 错误的请求 | 必需参数缺失、为空或为 null。 或者，传递给必需参数或可选参数的值无效。 常见问题是标头太长。 |
+| 401 | 未授权 | 请求未经授权。 确保订阅密钥或令牌有效并在正确的区域中。 |
+| 413 | 请求实体太大 | SSML 输入超过了 1024 个字符。 |
+| 429 | 请求过多 | 已经超过了订阅允许的配额或请求速率。 |
+| 502 | 错误的网关 | 网络或服务器端问题。 也可能表示标头无效。 |
+
+如果 HTTP 状态为 `200 OK`，则响应正文包含采用所请求格式的音频文件。 可以一边传输一边播放此文件，或者将其保存到缓冲区或文件中。
 
 ## <a name="next-steps"></a>后续步骤
 

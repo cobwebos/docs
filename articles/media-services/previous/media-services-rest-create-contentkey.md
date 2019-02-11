@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: 9fb28d618a9375dec19e75d04ef0a6bc5de334b6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4e4d01371733a2292c69174e4cb135e995e5e935
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242630"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189092"
 ---
 # <a name="create-content-keys-with-rest"></a>使用 REST 创建内容密钥
 > [!div class="op_single_selector"]
@@ -30,9 +30,9 @@ ms.locfileid: "51242630"
 
 媒体服务允许传送加密的资产。 **ContentKey** 提供对**资产**的安全访问。 
 
-创建新资产时（例如，[上传文件](media-services-rest-upload-files.md)之前），可以指定以下加密选项：**StorageEncrypted**、**CommonEncryptionProtected** 或 **EnvelopeEncryptionProtected**。 
+创建新资产时（例如，[上传文件](media-services-rest-upload-files.md)之前），可以指定以下加密选项：StorageEncrypted、CommonEncryptionProtected 或 EnvelopeEncryptionProtected。 
 
-将资产传送到客户端时，可以使用以下两个加密选项之一[将资产配置为动态加密](media-services-rest-configure-asset-delivery-policy.md)：**DynamicEnvelopeEncryption** 或 **DynamicCommonEncryption**。
+将资产传送到客户端时，可以使用以下两个加密选项之一[将资产配置为动态加密](media-services-rest-configure-asset-delivery-policy.md)：DynamicEnvelopeEncryption 或 DynamicCommonEncryption。
 
 加密的资产必须与 **ContentKey** 关联。 本文介绍如何创建内容密钥。
 
@@ -71,9 +71,9 @@ ms.locfileid: "51242630"
 
 本文中未说明如何生成 AES 密钥、加密密钥以及计算校验和。 
 
->[!NOTE]
-
->访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
+> [!NOTE]
+> 
+> 访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
 
 ## <a name="connect-to-media-services"></a>连接到媒体服务
 

@@ -1,27 +1,21 @@
 ---
-title: 如何将机器学习工作室模型变为 Web 服务 - Azure | Microsoft Docs
+title: 机器学习模型如何变为 Web 服务
+titleSuffix: Azure Machine Learning Studio
 description: Azure 机器学习模型如何从开发实验逐步进展为运营 Web 服务的机制概述。
 services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
-ms.author: amlstudiodocs
-manager: hjerez
-editor: cgronlun
-ms.assetid: 25e0c025-f8b0-44ab-beaf-d0f2d485eb91
 ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: studio
 ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 1254f41d4961956acc8f7abc7d5490fedbb8c5d0
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a2e7c45615c1f9d07ef3392ee10579a1b5e3588f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310093"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477975"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>机器学习工作室模型如何从实验逐步变为运营 Web 服务
 Azure 机器学习工作室提供交互式画布，允许开发、运行、测试和迭代表示预测分析模型的***实验***。 有大量各种不同的模块可用于：
@@ -38,9 +32,9 @@ Azure 机器学习工作室提供交互式画布，允许开发、运行、测�
 在本文中，我们提供了有关机器学习模型如何从开发实验逐步进展为运营 Web 服务的机制概述。
 
 > [!NOTE]
-> 还有其他方法可用于开发和部署机器学习模型，但本文的重点是如何使用机器学习工作室。 例如，若要阅读如何使用 R 创建经典预测 Web 服务的说明，请参阅博客文章 [Build & Deploy Predictive Web Apps Using RStudio and Azure ML](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx)（使用 RStudio 和 Azure ML 生成和部署预测 Web 应用）。
-> 
-> 
+> 还有其他方法可用于开发和部署机器学习模型，但本文的重点是如何使用机器学习工作室。 例如，若要阅读如何使用 R 创建经典预测 Web 服务的说明，请参阅博客文章[使用 RStudio 和 Azure 机器学习工作室生成和部署预测 Web 应用](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx)。
+>
+>
 
 虽然 Azure 机器学习工作室主要是为了帮助你开发和部署*预测分析模型*，但也可以使用工作室来开发不包括预测分析模型的试验。 例如，实验可能只是输入数据，对其进行操作，并输出结果。 就像预测分析实验一样，可以将此非预测实验部署为 Web 服务，但它是一个更简单的过程，因为实验不会对机器学习模型进行训练或评分。 尽管这不是通常使用工作室的方法，但我们会将其包括在稍后的讨论中，以便可以提供有关工作室工作原理的完整说明。
 
@@ -69,8 +63,8 @@ Azure 机器学习工作室提供交互式画布，允许开发、运行、测�
 
 > [!NOTE]
 > 单击“**预测 Web 服务**”时，会启动将训练实验转换为预测实验的自动进程，并且这在大多数情况下可正常运行。 如果训练实验过于复杂（例如，有多种联合使用的训练途径），可能需要手动执行此转换。 有关详细信息，请参阅[如何准备模型以便在 Azure 机器学习工作室中进行部署](convert-training-experiment-to-scoring-experiment.md)。
-> 
-> 
+>
+>
 
 ### <a name="the-web-service"></a>Web 服务
 预测实验准备就绪让你感到满意后，即可基于 Azure 资源管理器将服务部署为经典 Web 服务或新的 Web 服务。 要通过将其部署为*经典机器学习 Web 服务*来实施模型，请单击“**部署 Web 服务**”，然后选择“**部署 Web 服务[经典]**”。 要作为*新的机器学习 Web 服务*进行部署，请单击“**部署 Web 服务**”，并选择“**部署 Web 服务[新]**”。 用户现在可以使用 Web 服务 REST API 将数据发送到模型并接收返回的结果。 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。
@@ -95,7 +89,7 @@ Web 服务现已部署，并且可以像预测的 Web 服务一样对其进行�
 
 如果不更改该模型，而只是更改 Web 服务处理数据的方式，则可以编辑预测试验，然后单击“部署 Web 服务”，再次选择“部署 Web 服务[经典]”或“部署 Web 服务[新]”。 Web 服务将停止，会对更新的预测实验进行部署，并重新启动 Web 服务。
 
-以下是一个示例：假设预测实验返回输入数据的整个行与预测结果。 可能决定想要 Web 服务只返回结果。 那么，可以在预测实验中添加**项目列**，紧接在输出端口前，以排除除了结果之外的列。 单击“**部署 Web 服务**”时，并再次选择“**部署 Web 服务[经典]**”或“**部署 Web 服务[新]**”，Web 服务将更新。
+下面是一个示例：假设预测试验返回输入数据的整个行与预测结果。 可能决定想要 Web 服务只返回结果。 那么，可以在预测实验中添加**项目列**，紧接在输出端口前，以排除除了结果之外的列。 单击“**部署 Web 服务**”时，并再次选择“**部署 Web 服务[经典]**”或“**部署 Web 服务[新]**”，Web 服务将更新。
 
 **想要使用新数据重新训练模型**
 
@@ -103,7 +97,7 @@ Web 服务现已部署，并且可以像预测的 Web 服务一样对其进行�
 
 1. **Web 服务运行时重新训练模型** - 如果要在预测 Web 服务正在运行时重新训练模型，可以通过对训练实验进行部分修改，以使其成为***重新训练实验***来完成此操作，然后可以将其部署为***重新训练 Web* 服务**。 有关如何执行此操作的说明，请参阅[以编程方式重新训练机器学习模型](retrain-models-programmatically.md)。
 2. **返回原始训练实验并使用不同的训练数据来开发模型** - 预测实验链接到 Web 服务，但训练实验不是以此方式直接链接。 如果修改原始训练实验并单击“**设置 Web 服务**”，它将创建一个*新的*预测实验，在其部署时会创建一项*新的* Web 服务。 它不只是更新原始 Web 服务。
-   
+
    如果需要修改训练实验，请打开它并单击“**另存为**”以制作副本。 这会使原始训练实验、预测实验和 Web 服务保持不变。 现在可以使用更改来创建新的 Web 服务。 部署了新的 Web 服务后，可以决定是否要停止以前的 Web 服务，或使其与新的服务一起运行。
 
 **想要训练不同的模型**
@@ -119,6 +113,6 @@ Web 服务现已部署，并且可以像预测的 Web 服务一样对其进行�
 
 有关整个过程的示例，请参阅：
 
-* [机器学习教程：在 Azure 机器学习工作室中创建第一个实验](create-experiment.md)
+* [机器学习教程：在 Azure 机器学习工作室中创建第一个试验](create-experiment.md)
 * [演练：在 Azure 机器学习中为信用风险评估开发预测分析解决方案](walkthrough-develop-predictive-solution.md)
 

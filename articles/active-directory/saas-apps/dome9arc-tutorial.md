@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Dome9 Arc 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Dome9 Arc 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Dome9 Arc 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 4c12875f-de71-40cb-b9ac-216a805334e5
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 0b6730d6c365484dc19273069785e6824218113e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: a313acecf0660e527508f28e1ea86485996cc4f9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387848"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191391"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-dome9-arc"></a>教程：Azure Active Directory 与 Dome9 Arc 的集成
+# <a name="tutorial-azure-active-directory-integration-with-dome9-arc"></a>教程：Azure Active Directory 与 Dome9 Arc 集成
 
 本教程介绍如何将 Dome9 Arc 与 Azure Active Directory (Azure AD) 集成。
 
@@ -111,7 +111,7 @@ ms.locfileid: "49387848"
 
     ![Dome9 Arc 域和 URL 单一登录信息](./media/dome9arc-tutorial/tutorial_dome9arc_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入 URL：`https://secure.dome9.com/`
+    a. 在“标识符”文本框中，键入 URL：`https://secure.dome9.com/`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://secure.dome9.com/sso/saml/yourcompanyname`
 
@@ -137,7 +137,7 @@ ms.locfileid: "49387848"
     | --------------- | --------------- | 
     | memberof | user.assignedroles |
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
+    a. 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录 add 属性](./media/dome9arc-tutorial/tutorial_dome9_04.png)
 
@@ -178,7 +178,7 @@ ms.locfileid: "49387848"
 
     ![Dome9 Arc 配置](./media/dome9arc-tutorial/configure3.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“帐户 ID”文本框中输入公司名称。 此值将在“Azure 门户 URL”部分提到的回复 URL 中使用。
+    a. 在“帐户 ID”文本框中输入公司名称。 此值将在“Azure 门户 URL”部分提到的回复 URL 中使用。
 
     b. 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者”文本框中。
 
@@ -212,7 +212,7 @@ ms.locfileid: "49387848"
 
     ![“用户”对话框](./media/dome9arc-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -243,7 +243,7 @@ ms.locfileid: "49387848"
 
     ![添加员工](./media/dome9arc-tutorial/user3.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件”文本框中，键入用户的电子邮件，例如 Brittasimon@contoso.com。
+    a. 在“电子邮件”文本框中，键入用户的电子邮件，例如 Brittasimon@contoso.com。
 
     b. 在“名字”文本框中，键入用户的名字（如 Britta）。
 
@@ -288,12 +288,12 @@ ms.locfileid: "49387848"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Dome9 Arc 磁贴时，会自动登录到 Dome9 Arc 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

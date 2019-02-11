@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c2f779788b6beb59f91572877a8eb180d21b3752
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 7c3de22c536aeebe90417625df763ba6dd15f823
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388205"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106777"
 documentType: LandingData
 title: Azure SignalR 服务文档
 metadata:
@@ -16,7 +16,6 @@ metadata:
   manager: wesmc
   ms.service: signalr
   ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 09/12/2018
   ms.author: wesmc
@@ -31,7 +30,7 @@ sections:
     style: icon48
     items:
     - image:
-        src: http://docs.microsoft.com/media/logos/logo_NETcore.svg
+        src: https://docs.microsoft.com/media/logos/logo_NETcore.svg
       text: ASP.NET Core
       href: /azure/azure-signalr/signalr-quickstart-dotnet-core
     - image:
@@ -63,7 +62,7 @@ sections:
     style: unordered
     items:
     - html: <a href="https://docs.microsoft.com/aspnet/core">ASP.NET Core SDK</a>
-    - html: <a href="https://github.com/Azure/azure-functions-signalrservice-extension">Azure Functions 绑定</a>
+    - html: <a href="/azure/azure-functions/functions-bindings-signalr-service">Azure Functions 绑定</a>
     - html: <a href="https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md">REST API</a>
   - type: paragraph
     text: 使用客户端 SDK 连接到 Azure SignalR

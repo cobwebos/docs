@@ -1,23 +1,24 @@
 ---
-title: 快速入门：通过适用于 C# 的必应图像搜索 SDK 搜索图像
+title: 快速入门：搜索图像 - 适用于 C# 的必应图像搜索 SDK
 description: 在本快速入门中，你将使用必应图像搜索 SDK（它是 API 的包装程序并包含相同的功能）创建你的第一个图像搜索。 这个简单的 C# 应用程序会发送图像搜索查询、分析 JSON 响应，并显示所返回的第一个图像的 URL。
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
-ms.openlocfilehash: 2df767ef92ca056535e2d70a53a1588c9e89c647
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 8895cdd5cb40af94ad54d431744d4a3bcccc5567
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316780"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157085"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-c"></a>快速入门，使用必应图像搜索 SDK 和 C# 搜索图像
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-c"></a>快速入门：通过适用于 C# 的必应图像搜索 SDK 搜索图像
 
 在本快速入门中，你将使用必应图像搜索 SDK（它是 API 的包装程序并包含相同的功能）创建你的第一个图像搜索。 这个简单的 C# 应用程序会发送图像搜索查询、分析 JSON 响应，并显示所返回的第一个图像的 URL。
 
@@ -53,8 +54,12 @@ string subscriptionKey = "ENTER YOUR KEY HERE";
 Images imageResults = null;
 // the image search term to be used in the query
 string searchTerm = "canadian rockies";
+
 //initialize the client
-var client = new ImageSearchAPI(new ApiKeyServiceClientCredentials(subscriptionKey));
+//NOTE: If you're using version 1.2.0 or below for the Bing Image Search SDK, 
+// use ImageSearchAPI() instead of ImageSearchClient() to initialize your search client.
+
+var client = new ImageSearchClient(new ApiKeyServiceClientCredentials(subscriptionKey));
 ```
 
 ## <a name="send-a-search-query-using-the-client"></a>使用客户端发送搜索查询

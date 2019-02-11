@@ -3,19 +3,19 @@ title: 什么是 Azure Active Directory B2C？ | Microsoft Docs
 description: 了解如何使用 Azure Active Directory B2C 创建和管理应用程序登录体验。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 10/23/2018
+ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: fdb856f92bf790df0065cfc74ce5896f1d10c47b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.subservice: B2C
+ms.openlocfilehash: a7ae48d65a5cceb11339c4f304a3149741c2a7e8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954088"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172759"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>什么是 Azure Active Directory B2C？
 
@@ -60,9 +60,9 @@ Azure AD B2C 依次与标识提供程序、客户、其他系统和本地目录�
 
 Azure AD B2C 可防范应用程序遭受拒绝服务攻击和密码攻击。 Azure AD B2C 使用检测和缓解技术（例如 SYN Cookie、速率和连接限制）来防范资源遭受拒绝服务攻击。 此外，还包括针对暴力破解密码攻击和字典密码攻击的缓解措施。
 
-#### <a name="built-in-policies"></a>内置策略
+#### <a name="user-flows"></a>用户流
 
-发送到 Azure AD B2C 的每个请求都指定了一个策略。 策略控制应用程序与 Azure AD B2C 的交互方式。 已针对注册、登录和配置文件编辑等最常见的标识任务预定义了内置策略。  例如，注册策略允许通过配置以下设置来控制行为：
+发送到 Azure AD B2C 的每个请求都指定了一个用户流，这个用户流是一个策略，用于控制应用程序如何与 Azure AD B2C 交互的行为。 Azure AD B2C 门户中提供了最常见标识任务（例如注册、登录和配置文件编辑）的预定义用户流。  例如，注册用户流允许通过配置以下设置来控制行为：
 
 - 客户用来注册应用程序的社交帐户
 - 从客户收集的数据，例如名字或邮政编码

@@ -3,23 +3,23 @@ title: 如何在虚拟机规模集上配置 Azure 资源的托管标识
 description: 分步说明如何使用 Azure 门户在虚拟机规模集上配置 Azure 资源的托管标识。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
-ms.author: daveba
-ms.openlocfilehash: 0a6440b7fffe1aec26ba4755f21fa2f56935887e
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.author: priyamo
+ms.openlocfilehash: 18344ff6c2145f4be5fa79fa16f4e61a2a2386b1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377575"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193363"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>使用 Azure 门户在虚拟机规模集上配置 Azure 资源的托管标识
 
@@ -62,7 +62,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="remove-system-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>从虚拟机规模集中删除系统分配的托管标识
 
-如果虚拟机规模集不再需要系统分配的托管标识，请执行以下操作：
+如果虚拟机规模集不再需要系统分配托管标识，请执行以下操作：
 
 1. 使用与包含虚拟机规模集的 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.com)。 此外，请确保该帐户属于可授予对虚拟机规模集的写权限的角色。
 
@@ -82,7 +82,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 - [在 Azure 门户中创建虚拟机规模集](../../virtual-machine-scale-sets/quick-create-portal.md)
 
-### <a name="assign-a-user-assigned-managed-identity-to-an-existing-virtual-machine-scale-set"></a>将用户分配的托管标识分配到现有虚拟机规模集
+### <a name="assign-a-user-assigned-managed-identity-to-an-existing-virtual-machine-scale-set"></a>将用户分配托管标识分配到现有虚拟机规模集
 
 1. 使用与包含虚拟机规模集的 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.com)。
 2. 导航到所需的虚拟机规模集，依次单击“标识”、“用户分配”和“添加”。**\+**

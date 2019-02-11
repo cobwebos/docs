@@ -1,23 +1,27 @@
 ---
-title: 了解 LUIS 中的版本控制
-titleSuffix: Azure Cognitive Services
-description: 了解如何通过版本管理语言理解 (LUIS) 更改
+title: 版本控制
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: LUIS 中的版本与传统编程中的版本类似。 每个版本都是应用的即时快照。 在对应用进行更改之前，请创建新版本。 可更轻松地返回到确切应用，然后尝试将应用的意向和话语还原到以前的状态。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 01/15/2019
 ms.author: diberry
-ms.openlocfilehash: 61be39fc870eb73a5836f8e60a3495aff877d7ed
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: e71fc5bb0bd8ce54b471829df20336a9dea0ccda
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637842"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217078"
 ---
-# <a name="versions"></a>版本
+# <a name="understand-how-and-when-to-use-a-luis-version"></a>了解如何以及何时使用 LUIS 版本
+
+LUIS 中的版本与传统编程中的版本类似。 每个版本都是应用的即时快照。 在对应用进行更改之前，请创建新版本。 可更轻松地返回到具体版本，然后尝试将意向和言语移动到以前的状态。
+
 通过[版本](luis-how-to-manage-versions.md)创建同一应用的不同模型。 
 
 ## <a name="version-id"></a>版本 ID

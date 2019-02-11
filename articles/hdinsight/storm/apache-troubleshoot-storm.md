@@ -8,13 +8,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
-ms.date: 11/2/2017
-ms.openlocfilehash: b2f80b2d66de9e5f270c7b062c57d0efc3ab0f36
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 5634d812b3fbd4e904516767b008f63104b3d7b7
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499340"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632732"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Storm 进行故障排除
 
@@ -53,7 +54,7 @@ lib 文件夹中有一些 .Jar 文件，其中包含导出/导入操作的实现
 
 在 ZooKeeper 节点中运行 [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) 脚本即可导出再导入数据。 需将该脚本更新为正确的 Hortonworks 数据平台 (HDP) 版本。 （我们正努力使这些脚本在 HDInsight 中通用化。 可以通过群集上的任何节点运行通用脚本，而无需用户进行修改。）
 
-导出命令会将元数据写入所设置位置中的 Apache Hadoop 分布式文件系统 (HDFS) 路径（在 Azure Blob 存储或 Azure Data Lake Store 存储中）。
+导出命令会将元数据写入所设置位置中的 Apache Hadoop 分布式文件系统 (HDFS) 路径（在 Azure Blob 存储或 Azure Data Lake Storage 中）。
 
 ### <a name="examples"></a>示例
 
@@ -86,7 +87,7 @@ lib 文件夹中有一些 .Jar 文件，其中包含导出/导入操作的实现
  
 /usr/hdp 中可能包含特定 HDP 版本的多个二进制文件（例如 /usr/hdp/2.5.0.1233/storm）。 /usr/hdp/current/storm-client 文件与群集上运行的最新版本建立了符号链接。
 
-有关详细信息，请参阅[使用 SSH 连接到 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)和 [Storm](http://storm.apache.org/)。
+有关详细信息，请参阅[使用 SSH 连接到 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)和 [Apache Storm](https://storm.apache.org/)。
  
 ## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>如何确定 Storm 群集的部署拓扑？
 首先，请识别连同 HDInsight Storm 一起安装的所有组件。 Storm 群集由四个节点类别组成：

@@ -1,5 +1,6 @@
 ---
-title: 针对 Azure 中的多个 IP 配置进行负载均衡 | Microsoft Docs
+title: 在多个 IP 配置上进行负载均衡 - Azure 门户
+titlesuffix: Azure Load Balancer
 description: 在主要和辅助 IP 配置间进行负载均衡。
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: se0dec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 0f092c471a7908eabe481adc8c722993818840b8
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 4920d2a6c26da12effc2b44be8d3c6cbdb5e2a6f
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219505"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199130"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>使用 Azure 门户对多个 IP 配置进行负载均衡
 

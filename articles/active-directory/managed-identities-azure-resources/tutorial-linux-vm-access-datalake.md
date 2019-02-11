@@ -3,23 +3,23 @@ title: 使用 Linux VM 系统分配的托管标识访问 Azure Data Lake Store
 description: 本教程介绍了如何使用 Linux VM 系统分配的托管标识访问 Azure Data Lake Store。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: daveba
-ms.openlocfilehash: 212e0cf390f7a67325b111d4028e0908c772b081
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.author: priyamo
+ms.openlocfilehash: 3ce33687d5368de82fe928ad6e26f9547d7ddbb1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622714"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171212"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>教程：使用 Linux VM 系统分配的托管标识访问 Azure Data Lake Store
 

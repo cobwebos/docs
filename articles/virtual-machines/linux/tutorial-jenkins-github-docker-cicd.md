@@ -3,7 +3,7 @@ title: 教程 - 在 Azure 中使用 Jenkins 创建开发管道 | Microsoft Docs
 description: 教程 - 本教程介绍如何在 Azure 中创建一个 Jenkins 虚拟机，用于在每次提交代码后从 GitHub 拉取数据，并生成新的 Docker 容器来运行应用。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/27/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1a29d58ca96793c44878a6755cc74edeab6a7c4b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: be4549b8b9cca3f4aa48a21fb9377dbd203dde69
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470840"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751117"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>教程：使用 Jenkins、GitHub 和 Docker 在 Azure 中的 Linux VM 上创建开发基础结构
 
@@ -69,13 +69,13 @@ runcmd:
   - service jenkins restart
 ```
 
-使用 [az group create](/cli/azure/group#az_group_create) 创建资源组，才能创建 VM。 以下示例在 *eastus* 位置创建名为 *myResourceGroupJenkins* 的资源组。
+使用 [az group create](/cli/azure/group) 创建资源组，才能创建 VM。 以下示例在 *eastus* 位置创建名为 *myResourceGroupJenkins* 的资源组。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupJenkins --location eastus
 ```
 
-现使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM。 使用 `--custom-data` 参数传递到 cloud-init 配置文件中。 如果已将 *cloud-init-jenkins.txt* 文件保存在现有工作目录的外部，请提供该文件的完整路径。
+现使用 [az vm create](/cli/azure/vm) 创建 VM。 使用 `--custom-data` 参数传递到 cloud-init 配置文件中。 如果已将 *cloud-init-jenkins.txt* 文件保存在现有工作目录的外部，请提供该文件的完整路径。
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupJenkins \
@@ -88,7 +88,7 @@ az vm create --resource-group myResourceGroupJenkins \
 
 创建并配置 VM 需要几分钟的时间。
 
-若要允许 Web 流量抵达 VM，请使用 [az vm open-port](/cli/azure/vm#az_vm_open_port) 为 Jenkins 流量打开端口 *8080*，并为用于运行示例应用的 Node.js 应用打开端口 *1337*：
+若要允许 Web 流量抵达 VM，请使用 [az vm open-port](/cli/azure/vm) 为 Jenkins 流量打开端口 *8080*，并为用于运行示例应用的 Node.js 应用打开端口 *1337*：
 
 ```azurecli-interactive 
 az vm open-port --resource-group myResourceGroupJenkins --name myVM --port 8080 --priority 1001
@@ -160,7 +160,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 返回到 GitHub Web UI，选择分叉的存储库，然后选择“index.js”文件。 选择铅笔图标编辑该文件，使第 6 行的内容如下：
 
-```nodejs
+```javascript
 response.end("Hello World!");
 ```
 

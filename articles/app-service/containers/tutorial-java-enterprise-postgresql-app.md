@@ -1,5 +1,5 @@
 ---
-title: 在基于 Linux 的 Azure 应用服务中生成 Java Enterprise Web 应用 | Microsoft Docs
+title: 在 Linux 上构建 Java Enterprise Web 应用 - Azure 应用服务 | Microsoft Docs
 description: 了解如何在基于 Linux 的 Azure 应用服务的 Wildfly 中运行 Java Enterprise 应用。
 author: JasonFreeberg
 manager: routlaw
@@ -10,16 +10,17 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
-ms.openlocfilehash: 0772dbb1aaa6b00994bd653c19b006114377dc5f
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec18
+ms.openlocfilehash: 3a668783e8257ef9074d12b30ff0afc3a40325f4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165452"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539715"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>教程：在 Azure 中生成 Java EE 和 Postgres Web 应用
 
-本教程将介绍如何在 Azure 应用服务中创建 Java Enterprise Edition Web 应用，并将其连接到 Postgres 数据库。 完成本教程后，即可使用 [WildFly](http://www.wildfly.org/about/) 应用程序将数据存储到[用于 Postgres 的 Azure 数据库](https://azure.microsoft.com/services/postgresql/)，后者运行在[适用于 Linux 的 Azure 应用服务](app-service-linux-intro.md)中。
+本教程将介绍如何在 Azure 应用服务中创建 Java Enterprise Edition Web 应用，并将其连接到 Postgres 数据库。 完成本教程后，即可使用 [WildFly](https://www.wildfly.org/about/) 应用程序将数据存储到[用于 Postgres 的 Azure 数据库](https://azure.microsoft.com/services/postgresql/)，后者运行在[适用于 Linux 的 Azure 应用服务](app-service-linux-intro.md)中。
 
 在本教程中，将了解如何：
 > [!div class="checklist"]
@@ -32,8 +33,8 @@ ms.locfileid: "52165452"
 ## <a name="prerequisites"></a>先决条件
 
 1. [下载并安装 Git](https://git-scm.com/)
-1. [下载并安装 Maven 3](https://maven.apache.org/install.html)
-1. [下载并安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
+2. [下载并安装 Maven 3](https://maven.apache.org/install.html)
+3. [下载并安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 ## <a name="clone-and-edit-the-sample-app"></a>克隆并编辑示例应用
 
@@ -169,7 +170,7 @@ az postgres server create -n <desired-name> -g <same-resource-group> --sku-name 
 
 ### <a name="ftp-the-configuration-files"></a>通过 FTP 传输配置文件
 
-需将 `wildfly_config/` 的内容通过 FTP 传输到应用服务实例。 若要获取 FTP 凭据，请单击 Azure 门户的应用服务边栏选项卡上的“获取发布配置文件”按钮。 FTP 用户名和密码将出现在已下载的 XML 文档中。 有关发布配置文件的详细信息，请参阅[此文档](https://docs.microsoft.com/azure/app-service/app-service-deployment-credentials)。
+需将 `wildfly_config/` 的内容通过 FTP 传输到应用服务实例。 若要获取 FTP 凭据，请单击 Azure 门户的应用服务边栏选项卡上的“获取发布配置文件”按钮。 FTP 用户名和密码将出现在已下载的 XML 文档中。 有关发布配置文件的详细信息，请参阅[此文档](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials)。
 
 使用所选 FTP 工具，将 `wildfly_config/` 中的四个文件传输到 `/home/site/deployments/tools/`。 （请注意，不应传输目录，只传输文件本身。）
 

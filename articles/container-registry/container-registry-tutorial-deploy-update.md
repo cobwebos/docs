@@ -1,5 +1,5 @@
 ---
-title: Azure 容器注册表教程 - 将已更新的映像推送到区域部署
+title: 教程 - 将已更新的容器映像推送到区域性 Azure 应用部署
 description: 将修改后的 Docker 映像推送到异地复制的 Azure 容器注册表，然后查看已自动部署到多个区域中运行的 Web 应用的更改。 由三个部分构成的教程系列的第三部分。
 services: container-registry
 author: dlepow
@@ -7,15 +7,15 @@ ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 96e46c84039b7c72d5419972c7a5a401eab64659
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: d9faa89d33dde7da35ad4490b78b9a1d023274ae
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855504"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256615"
 ---
-# <a name="tutorial-push-an-updated-image-to-regional-deployments"></a>教程：将已更新的映像推送到区域部署
+# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>教程：将已更新的容器映像推送到异地复制的容器注册表以进行区域性 Web 应用部署
 
 本文是由三个部分构成的教程系列的第三部分。 在[前一篇教程](container-registry-tutorial-deploy-app.md)中，已针对两个不同的区域性 Web 应用部署配置了异地复制。 在本教程中，我们首先修改应用程序，然后生成新的容器映像并将其推送到异地复制的注册表。 最后，查看 Azure 容器注册表 Webhook 在两个 Web 应用实例中自动部署的更改。
 

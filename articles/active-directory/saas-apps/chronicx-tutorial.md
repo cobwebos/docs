@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: f3f19be6-6ee8-413c-919c-4884ffe685ca
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 51eab8099aee6378893f24e0cea6aa37a4995495
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 982a639fe7a57c2db484acc6b272e5314637d1c4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428142"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167659"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chronicx"></a>教程：Azure Active Directory 与 ChronicX® 集成
 
@@ -162,7 +162,7 @@ ms.locfileid: "39428142"
 本部分的目的是在 ChronicX® 中创建名为 Britta Simon 的用户。 ChronicX® 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 如果尚不存在用户，则在尝试访问 ChronicX® 期间创建一个新用户。
 
 >[!Note]
->如果需要手动创建用户，请联系 [ChronicX® 支持团队](https://www.casebank.com/contact-us/)。
+>如果需要手动创建用户，请联系  [ChronicX® 支持团队](https://www.casebank.com/contact-us/)。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -199,12 +199,12 @@ ms.locfileid: "39428142"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 ChronicX® 磁贴时，应当会自动登录到 ChronicX® 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

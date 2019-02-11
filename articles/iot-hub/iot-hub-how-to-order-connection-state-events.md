@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: 77615705ade42a2afcc8e3a9f662b0551a2411fd
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 06b917c956507de3eb3b1536356285d7a954fb8b
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582439"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730070"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>使用 Azure Cosmos DB 将来自 Azure IoT 中心的设备连接事件排序
 
@@ -200,11 +200,11 @@ ms.locfileid: "52582439"
 
 2. 按如下所示填写条件，以便仅对“设备已连接”和“设备已断开连接”事件执行此操作：
 
-  * 选择值：**eventType**
-  * 将“等于”更改为“结尾是”
-  * 选择值：**nected**
+   * 选择值：**eventType**
+   * 将“等于”更改为“结尾是”
+   * 选择值：**nected**
 
-   ![填写条件](./media/iot-hub-how-to-order-connection-state-events/condition-detail.png)
+     ![填写条件](./media/iot-hub-how-to-order-connection-state-events/condition-detail.png)
 
 3. 如果条件为 true，请单击“添加操作”。
   
@@ -341,7 +341,7 @@ ms.locfileid: "52582439"
 
 3. 选择“删除”。 
 
-若要在 Azure 门户中删除 Azure Cosmos DB 帐户，请右键单击该帐户名，然后单击“删除帐户”。 参阅有关[删除 Azure Cosmos DB 帐户](https://docs.microsoft.com/azure/cosmos-db/manage-account#delete)的详细说明。
+若要在 Azure 门户中删除 Azure Cosmos DB 帐户，请右键单击该帐户名，然后单击“删除帐户”。 参阅有关[删除 Azure Cosmos DB 帐户](https://docs.microsoft.com/azure/cosmos-db/manage-account)的详细说明。
 
 ## <a name="next-steps"></a>后续步骤
 

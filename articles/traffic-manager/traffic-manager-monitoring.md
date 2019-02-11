@@ -2,21 +2,20 @@
 title: Azure 流量管理器终结点监视 | Microsoft Docs
 description: 本文介绍流量管理器如何利用终结点监视和终结点自动故障转移，帮助 Azure 客户部署高可用性应用程序
 services: traffic-manager
-documentationcenter: ''
 author: KumudD
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/22/2017
+ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: 15b609bbf4ab048722f2512371eeffece92b3245
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 923c2aae6d426e736e34c06fc84025ca98fe4f48
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138134"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199624"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>流量管理器终结点监视
 
@@ -31,7 +30,7 @@ Azure 流量管理器包括内置的终结点监视和终结点自动故障转�
 * **路径**。 此配置设置仅对需要指定路径设置的 HTTP 和 HTTPS 协议有效。 为 TCP 监视协议提供此设置会导致错误。 对于 HTTP 和 HTTPS 协议，指定监视功能要访问的网页或文件的相对路径和名称。 正斜杠 (/) 是相对路径的有效条目。 此值表示文件位于根目录中（默认设置）。
 * **自定义标头设置**：此配置设置用于将特定的 HTTP 标头添加到运行状况检查，以便流量管理器将该检查发送到配置文件中的终结点。 自定义标头可以在配置文件级别指定，使之适用于该配置文件中的所有终结点，以及/或者在终结点级别指定，使之仅适用于该终结点。 可以使用自定义标头进行运行状况检查，通过指定主机标头，将多租户环境中的终结点正确路由到目标。 也可使用此设置来添加唯一标头，以便标识源自流量管理器的 HTTP(S) 请求并对其进行不同的处理。
 * **预期的状态代码范围**：可以通过此设置以 200-299、301-301 格式指定多个成功代码范围。 如果这些状态代码是在启动运行状况检查时作为响应从终结点接收的，则流量管理器会将这些终结点标记为正常。 最多可以指定 8 个状态代码范围。 此设置仅适用于 HTTP 和 HTTPS 协议以及所有终结点。 此设置位于流量管理器配置文件级别。默认情况下，将值 200 定义为成功状态代码。
-* **探测间隔**。 此值指定通过流量管理器探测代理检查终结点运行状况的频率。 此处可指定两个值：30 秒（常规探测）和 10 秒（快速探测）。 如果未提供值，配置文件将设置默认值 30 秒。 有关快速探测定价的详细信息，请访问[流量管理器定价](https://azure.microsoft.com/pricing/details/traffic-manager)。
+* **探测间隔**。 此值指定通过流量管理器探测代理检查终结点运行状况的频率。 可以指定以下两个值：30 秒（正常探测）和 10 秒（快速探测）。 如果未提供值，配置文件将设置默认值 30 秒。 有关快速探测定价的详细信息，请访问[流量管理器定价](https://azure.microsoft.com/pricing/details/traffic-manager)。
 * **容许的失败次数**。 此值指定在将终结点标记为不正常之前，流量管理器探测代理容许的失败次数。 该值可介于 0 到 9 之间。 值为 0 表示监视失败一次就将该终结点标记为不正常。 如果未指定任何值，则使用默认值 3。
 * **探测超时**。 此属性指定在将运行状况检查探测发送到终结点时，流量管理器探测代理应等待多长时间才可认为检查失败。 如果探测间隔设置为 30 秒，可将超时值设置为 5 - 10 秒。 如果未指定任何值，使用默认值 10 秒。 如果探测间隔设置为 10 秒，可将超时值设置为 5 - 9 秒。 如果未指定任何超时值，使用默认值 9 秒。
 

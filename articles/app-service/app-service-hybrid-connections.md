@@ -1,5 +1,5 @@
 ---
-title: Azure 应用服务混合连接 | Microsoft Docs
+title: 混合连接 - Azure 应用服务 | Microsoft Docs
 description: 如何创建混合连接并使用它来访问不同网络中的资源
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: ccompy
-ms.openlocfilehash: 69897e288a90a731d95db82d0ff978d776c12580
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.custom: seodec18
+ms.openlocfilehash: 40ff05e9fbc00747145c653878010ad9da0c37ec
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42139802"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653384"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure 应用服务混合连接 #
 
@@ -54,7 +55,7 @@ ms.locfileid: "42139802"
 - 由于该功能在网络级别运行，它并不知道应用使用的语言以及终结点使用的技术。
 - 可以通过单个应用使用它在多个网络中提供访问。 
 
-### <a name="things-you-cannot-do-with-hybrid-connections"></a>混合连接无法实现的操作 ###
+### <a name="things-you-cannot-do-with-hybrid-connections"></a>混合连接无法提供的功能 ###
 
 混合连接无法实现以下操作：
 
@@ -136,7 +137,7 @@ ms.locfileid: "42139802"
 要将一个或多个混合连接添加到 HCM，请执行以下操作：
 
 1. 启动 HCM UI。
-1. 选择“配置另一个混合连接”。
+2. 选择“配置另一个混合连接”。
 ![配置新混合连接的屏幕截图][8]
 
 1. 使用 Azure 帐户登录。
@@ -166,7 +167,7 @@ ms.locfileid: "42139802"
 
 ### <a name="manually-add-a-hybrid-connection"></a>手动添加混合连接 ###
 
-要让订阅外部的某人能够托管给定混合连接的 HCM 实例，可与其共享该混合连接的网关连接字符串。 网关连接字符串位于 [Azure 门户][portal]的“混合连接”属性中。 要使用该字符串，请在 HCM 中选择“手动输入”，并粘贴网关连接字符串。
+若要让订阅外部的某人托管给定混合连接的 HCM 实例，可与他（她）共享该混合连接的网关连接字符串。 网关连接字符串位于 [Azure 门户][portal]的“混合连接”属性中。 要使用该字符串，请在 HCM 中选择“手动输入”，并粘贴网关连接字符串。
 
 ![手动添加混合连接][11]
 
@@ -176,7 +177,7 @@ ms.locfileid: "42139802"
 
 ## <a name="adding-a-hybrid-connection-to-your-app-programmatically"></a>以编程方式向应用添加混合连接 ##
 
-下面提到的 API 可直接用于管理连接到 Web 应用的混合连接。 
+下面提到的 API 可直接用于管理连接到应用的混合连接。 
 
     /subscriptions/[subscription name]/resourceGroups/[resource group name]/providers/Microsoft.Web/sites/[app name]/hybridConnectionNamespaces/[relay namespace name]/relays/[hybrid connection name]?api-version=2016-08-01
 
@@ -197,7 +198,7 @@ ms.locfileid: "42139802"
       }
     }
 
-要使用此信息，一种方式是使用 armclient（可从 [ARMClient][armclient] github 项目中获取）。 下面是将预先存在的混合连接附加到 Web 应用的示例。 按照上述架构创建一个 JSON 文件，如：
+要使用此信息，一种方式是使用 armclient（可从 [ARMClient][armclient] GitHub 项目中获取）。 下面是将预先存在的混合连接附加到应用的示例。 按照上述架构创建一个 JSON 文件，如：
 
     {
       "name": "relay-demo-hc",
@@ -229,7 +230,7 @@ ms.locfileid: "42139802"
 
 ## <a name="biztalk-hybrid-connections"></a>BizTalk 混合连接 ##
 
-此功能的早期形式被称为 BizTalk 混合连接。 此功能于 2018 年 5 月 31 日结束并停止操作。 BizTalk 混合连接已从所有 Web 应用中删除，无法通过门户或 API 访问。 如果仍在混合连接管理器中配置了这些旧连接，则会看到“已停用”状态且底部显示“生命周期结束”。
+此功能的早期形式被称为 BizTalk 混合连接。 此功能于 2018 年 5 月 31 日结束并停止操作。 BizTalk 混合连接已从所有应用中删除，无法通过门户或 API 访问。 如果仍在混合连接管理器中配置了这些旧连接，则会看到“已停用”状态且底部显示“生命周期结束”。
 
 ![HCM 中的 BizTalk 混合连接][12]
 
@@ -249,8 +250,8 @@ ms.locfileid: "42139802"
 [12]: ./media/app-service-hybrid-connections/hybridconn-bt.png
 
 <!--Links-->
-[HCService]: http://docs.microsoft.com/azure/service-bus-relay/relay-hybrid-connections-protocol/
-[portal]: http://portal.azure.com/
-[oldhc]: http://docs.microsoft.com/azure/biztalk-services/integration-hybrid-connection-overview/
-[sbpricing]: http://azure.microsoft.com/pricing/details/service-bus/
+[HCService]: https://docs.microsoft.com/azure/service-bus-relay/relay-hybrid-connections-protocol/
+[portal]: https://portal.azure.com/
+[oldhc]: https://docs.microsoft.com/azure/biztalk-services/integration-hybrid-connection-overview/
+[sbpricing]: https://azure.microsoft.com/pricing/details/service-bus/
 [armclient]: https://github.com/projectkudu/ARMClient/

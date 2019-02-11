@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: afb6c8345cd71e7d39b7f3a0b2307c99cf31b449
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1a34ad340463faf0cdccdb7fa8b87283de60b4cc
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253324"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141605"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>适用于 Windows Server 的 Service Fabric 独立包的内容
 在[下载的](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric 独立包中，可找到以下文件：
@@ -40,6 +40,7 @@ ms.locfileid: "51253324"
 | Tools\ServiceFabricUpdateService.zip |用于为不具有 Internet 访问权限的群集启用自动代码升级的工具。 在[此处](service-fabric-cluster-upgrade-windows-server.md)可以找到更多详细信息|
 
 **模板** 
+
 | **文件名** | **简短说明** |
 | --- | --- |
 | ClusterConfig.Unsecure.DevCluster.json |群集配置示例文件，其中包含非安全型三节点式单计算机（或虚拟机）开发群集的设置，这些设置包括群集中每个节点的信息。 |
@@ -51,7 +52,7 @@ ms.locfileid: "51253324"
 | ClusterConfig.gMSA.Windows.MultiMachine.json |群集配置示例文件，其中包含安全型多计算机（或虚拟机）群集的所有设置，这些设置包括安全群集中每个节点的信息。 使用[组托管服务帐户](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx)保护该群集。 |
 
 ## <a name="cluster-configuration-samples"></a>群集配置示例
-可在以下 GitHub 页面找到最新版本的群集配置模板：[独立群集配置示例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。
+可在以下 GitHub 页中找到最新版本的群集配置模板：[独立群集配置示例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。
 
 ## <a name="independent-runtime-package"></a>独立运行时包
 在从[下载链接 - Service Fabric 运行时 - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354) 部署群集的过程中，会自动下载最新的运行时包。

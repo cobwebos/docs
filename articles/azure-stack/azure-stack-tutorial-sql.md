@@ -15,14 +15,15 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 50f5662fa574b512ab607e17dbdfcf1861e2f5c6
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.lastreviewed: 10/23/2018
+ms.openlocfilehash: 27a1f385468c2fac59bdb2a5365e798e975b7c87
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954879"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251991"
 ---
-# <a name="tutorial-offer-highly-available-sql-databases"></a>教程： 提供高度可用的 SQL 数据库
+# <a name="tutorial-offer-highly-available-sql-databases"></a>教程：提供高度可用的 SQL 数据库
 
 Azure Stack 操作员，可以配置承载 SQL Server 数据库服务器 Vm。 SQL 宿主服务器后成功，由创建和管理 Azure Stack，用户已订阅的 SQL 服务可以轻松地创建 SQL 数据库。
 

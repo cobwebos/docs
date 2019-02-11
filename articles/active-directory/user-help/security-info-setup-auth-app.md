@@ -3,20 +3,20 @@ title: 设置安全信息以使用验证器应用 - Azure Active Directory | Mic
 description: 设置安全信息以使用 Microsoft Authenticator 应用验证身份。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 776f98269e3e0c31766246ca96636528f60c3e09
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 6ee75b0ee465e330d78b166b0da12232b7915ae7
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160620"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766055"
 ---
 # <a name="set-up-security-info-to-use-an-authenticator-app-preview"></a>设置安全信息以使用验证器应用（预览版）
 
@@ -28,7 +28,7 @@ ms.locfileid: "44160620"
 
 根据组织的设置，可能会在登录时提示你设置 Microsoft Authenticator 应用。 否则，若要开始在安全信息中设置 Microsoft Authenticator 应用，请执行[管理安全信息](security-info-manage-settings.md)中的步骤。
 
-若要下载 Microsoft Authenticator 应用并了解其详细信息，请参阅 [Microsoft Authenticator 应用入门](microsoft-authenticator-app-how-to.md)。
+若要下载 Microsoft Authenticator 应用并了解其详细信息，请参阅 [Microsoft Authenticator 应用入门](user-help-auth-app-download-install.md)。
 
 >[!Note]
 >如果不想使用 Microsoft Authenticator 应用，可在设置过程中选择其他应用。 本文使用 Microsoft Authenticator 应用。 如果看不到验证器应用选项，则可能是因为组织不允许你使用验证器应用进行验证。 如果是这样，则将需要选择另一种方法，或与管理员联系以获取进一步帮助。

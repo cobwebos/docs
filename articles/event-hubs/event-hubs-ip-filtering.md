@@ -1,38 +1,36 @@
 ---
-title: Azure 事件中心 IP 筛选器 | Microsoft Docs
-description: 使用 IP 筛选阻止从特定 IP 地址到 Azure 事件中心的连接。
+title: Azure 事件中心防火墙规则 | Microsoft Docs
+description: 使用防火墙规则允许从特定 IP 地址到 Azure 事件中心的链接。
 services: event-hubs
 documentationcenter: ''
 author: spelluru
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
+ms.custom: seodec18
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: d0114821b5239146f64dde0b01652dc320994585
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 707290d7bf453ca71dd3c5cf8b39c917b3a1c479
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408143"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268268"
 ---
-# <a name="use-ip-filters"></a>使用 IP 筛选器
+# <a name="use-firewall-rules"></a>使用防火墙规则
 
-对于只应通过某些已知站点访问 Azure 事件中心的方案，可使用 IP 筛选器功能配置相关规则，以拒绝或接受源自特定 IPv4 地址的流量。 例如，这些地址可能是企业 NAT 网关地址。
+对于只应从某些已知站点访问 Azure 事件中心的方案，可使用防火墙规则配置相关规则，以接受源自特定 IPv4 地址的流量。 例如，这些地址可能是企业 NAT 网关地址。
 
 ## <a name="when-to-use"></a>使用时机
 
-下面是两个重要用例，在要针对特定 IP 地址阻止事件中心接收流量时，这两个用例非常有用：
-
-- 事件中心应仅从指定范围内的 IP 地址接收流量并拒绝任何其他流量。 例如，结合使用事件中心和 [Azure Express Route][express-route]，以创建到本地基础结构的专用连接。 
-- 需要拒绝来自事件中心管理员已标识为可疑地址的 IP 地址的流量。
+如果想要设置事件中心命名空间，使其只接收来自特定 IP 地址范围的流量并拒绝其他流量，那么可以利用防火墙规则来阻止来自其他 IP 地址的事件中心终结点。例如，结合使用事件中心和 [Azure 快速路由][express-route]来创建到本地基础结构的专用链接。
 
 ## <a name="how-filter-rules-are-applied"></a>筛选器规则的应用方式
 
 IP 筛选器规则应用于事件中心命名空间级别。 因此，这些规则适用于通过任何受支持协议从客户端发出的所有连接。
 
-如果某 IP 地址与事件中心命名空间上的拒绝 IP 规则匹配，则将拒绝来自该地址的任何连接尝试并将其标记为“未经授权”。 响应不会提及 IP 规则。
+如果某 IP 地址与事件中心命名空间上的允许 IP 规则不匹配，则将拒绝来自该地址的任何连接尝试并将其标记为“未经授权”。 响应不会提及 IP 规则。
 
 ## <a name="default-setting"></a>默认设置
 
@@ -42,68 +40,107 @@ IP 筛选器规则应用于事件中心命名空间级别。 因此，这些规�
 
 IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决定了将执行接受操作还是执行拒绝操作。
 
-例如，如果希望接受 70.37.104.0/24 范围中的地址并拒绝任何其他地址，则网格中的第一个规则应接受 70.37.104.0/24 地址范围。 下一个规则应通过使用 0.0.0.0/0 范围拒绝所有地址。
+>[!WARNING]
+> 实现防火墙可以阻止其他 Azure 服务与事件中心进行交互。
+>
+> 实施 IP 筛选（防火墙）时，受信任的 Microsoft 服务不受支持，但很快就会变得可用。
+>
+> 不适用于 IP 筛选的常见 Azure 方案（请注意，该列表内容并不详尽）-
+> - Azure Monitor
+> - Azure 流分析
+> - 与 Azure 事件网格的集成
+> - Azure IoT 中心路由
+> - Azure IoT Device Explorer
+> - Azure 数据资源管理器
+>
+> 以下 Microsoft 服务必须在虚拟网络中
+> - Azure Web 应用
+> - Azure Functions
 
-> [!NOTE]
-> 拒绝 IP 地址即可阻止其他 Azure 服务（例如门户中的 Azure 流分析、Azure 虚拟机或设备资源管理器）与事件中心交互。
-
-### <a name="creating-an-ip-filter-rule-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建 IP 筛选器规则
+### <a name="creating-a-firewall-rule-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建防火墙规则
 
 > [!IMPORTANT]
-> 事件中心的**标准**和**专用**层支持虚拟网络。 基本层不支持它。 
+> 事件中心的标准层和专用层支持防火墙规则。 基本层不支持它。
 
 以下资源管理器模板可用于向现有的事件中心命名空间添加 IP 筛选器规则。
 
 模板参数：
 
-- ipFilterRuleName 必须是不区分大小写的唯一字母数字字符串，长度不超过 128 个字符。
-- ipFilterAction 是要应用到 IP 筛选规则的“拒绝”或“接受”操作。
 - ipMask 是单个 IPv4 地址或者是以 CIDR 表示法表示的一个 IP 地址块。 例如，在 CIDR 表示法中，70.37.104.0/24 表示从 70.37.104.0 到 70.37.104.255 的 256 个 IPv4 地址，其中 24 表示范围的有效前缀位数。
 
+> [!NOTE]
+> 虽然不可能具有拒绝规则，但 Azure 资源管理器模板的默认操作设置为“允许”，不限制连接。
+> 制定虚拟网络或防火墙规则时，必须更改“defaultAction”
+> 
+> from
+> ```json
+> "defaultAction": "Allow"
+> ```
+> to
+> ```json
+> "defaultAction": "Deny"
+> ```
+>
+
 ```json
-{  
-   "$schema":"http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-   "contentVersion":"1.0.0.0",
-   "parameters":{     
-          "namespaceName":{  
-             "type":"string",
-             "metadata":{  
-                "description":"Name of the namespace"
-             }
-          },
-          "ipFilterRuleName":{  
-             "type":"string",
-             "metadata":{  
-                "description":"Name of the Authorization rule"
-             }
-          },
-          "ipFilterAction":{  
-             "type":"string",
-             "allowedValues": ["Reject", "Accept"],
-             "metadata":{  
-                "description":"IP Filter Action"
-             }
-          },
-          "IpMask":{  
-             "type":"string",
-             "metadata":{  
-                "description":"IP Mask"
-             }
-          }
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "eventhubNamespaceName": {
+        "type": "string",
+        "metadata": {
+          "description": "Name of the Event Hubs namespace"
+        }
       },
+      "location": {
+        "type": "string",
+        "metadata": {
+          "description": "Location for Namespace"
+        }
+      }
+    },
+    "variables": {
+      "namespaceNetworkRuleSetName": "[concat(parameters('eventhubNamespaceName'), concat('/', 'default'))]",
+    },
     "resources": [
-        {
-            "apiVersion": "2018-01-01-preview",
-            "name": "[concat(parameters('namespaceName'), '/', parameters('ipFilterRuleName'))]",
-            "type": "Microsoft.EventHub/Namespaces/IPFilterRules",
-            "properties": {
-                "FilterName":"[parameters('ipFilterRuleName')]",
-                "Action":"[parameters('ipFilterAction')]",              
-                "IpMask": "[parameters('IpMask')]"
+      {
+        "apiVersion": "2018-01-01-preview",
+        "name": "[parameters('eventhubNamespaceName')]",
+        "type": "Microsoft.EventHub/namespaces",
+        "location": "[parameters('location')]",
+        "sku": {
+          "name": "Standard",
+          "tier": "Standard"
+        },
+        "properties": { }
+      },
+      {
+        "apiVersion": "2018-01-01-preview",
+        "name": "[variables('namespaceNetworkRuleSetName')]",
+        "type": "Microsoft.EventHub/namespaces/networkruleset",
+        "dependsOn": [
+          "[concat('Microsoft.EventHub/namespaces/', parameters('eventhubNamespaceName'))]"
+        ],
+        "properties": {
+          "virtualNetworkRules": [<YOUR EXISTING VIRTUAL NETWORK RULES>],
+          "ipRules": 
+          [
+            {
+                "ipMask":"10.1.1.1",
+                "action":"Allow"
+            },
+            {
+                "ipMask":"11.0.0.0/24",
+                "action":"Allow"
             }
-        } 
-    ]
-}
+          ],
+          "defaultAction": "Deny"
+        }
+      }
+    ],
+    "outputs": { }
+  }
 ```
 
 若要部署模板，请按照 [Azure 资源管理器][lnk-deploy]的说明进行操作。

@@ -3,19 +3,19 @@ title: 使用 Azure Active Directory B2C 设置通过 GitHub 帐户注册与登�
 description: 使用 Azure Active Directory B2C，为应用程序中的客户提供通过 GitHub 帐户注册与登录的功能。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 12/07/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 7f8b2c6dc570f7a610c0d661da0c6df7491647bd
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.subservice: B2C
+ms.openlocfilehash: 60fd7ec53681f9b96970d8a33e5610115e579615
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182172"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166078"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 GitHub 帐户注册与登录
 
@@ -30,7 +30,7 @@ ms.locfileid: "47182172"
 1. 使用 GitHub 凭据登录 [GitHub 开发人员](https://github.com/settings/developers)网站。
 2. 选择“OAuth 应用”，然后选择“新建 OAuth 应用”。
 3. 输入**应用程序名称**和**主页 URL**。
-4. 在“授权回调 URL”中输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。
+4. 在“授权回调 URL”中输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。 输入租户名称时，全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
 5. 单击“注册应用程序”。
 6. 复制“客户端 ID”和“客户端密钥”的值。 将标识提供者添加到租户时需要这两个值。
 
@@ -41,6 +41,6 @@ ms.locfileid: "47182172"
 3. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。
 4. 选择“标识提供者”，然后选择“添加”。
 5. 提供“名称”。 例如，输入“GitHub”。
-6. 选择“标识提供者类型”，选择“Github (预览版)”，并单击“确定”。
-7. 选择“设置此标识提供者”，然后输入你之前记录为“客户端 ID”的客户端 ID，并输入你记录为之前创建的 Github 帐户应用程序的“客户端密码”的客户端密码。
-8. 单击“确定”，并单击“创建”以保存 Github 帐户配置。
+6. 选择“标识提供者类型”，选择“GitHub (预览版)”，并单击“确定”。
+7. 选择“设置此标识提供者”，然后输入你之前记录为“客户端 ID”的客户端 ID，并输入你记录为之前创建的 GitHub 帐户应用程序的“客户端密码”的客户端密码。
+8. 单击“确定”，并单击“创建”以保存 GitHub 帐户配置。

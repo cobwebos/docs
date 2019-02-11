@@ -1,32 +1,34 @@
 ---
-title: Azure Policy 定义结构
+title: 策略定义结构的详细信息
 description: 介绍 Azure Policy 如何使用资源策略定义，通过描述何时强制实施策略和要实现的效果为组织中的资源建立约定。
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/30/2018
+ms.date: 01/29/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: b5c7d0c6d54272518b19ffec0d8f02ebbcfe55d9
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.custom: seodec18
+ms.openlocfilehash: d54fd12125902aa5019643df24d78ae81f7fc31f
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283284"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296650"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
-Azure Policy 使用的资源策略定义，可使你通过描述何时强制实施策略和要实现的效果为组织中的资源建立约定。 通过定义约定，可以控制成本并更轻松地管理资源。 例如，可指定仅允许特定类型的虚拟机。 或者，可要求所有资源都拥有特定标记。 策略由所有子资源继承。 因此，如果将策略应用到资源组，则会将其应用到该资源组中的所有资源。
+Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述资源符合性，以及在资源不符合的情况下会产生什么影响。
+通过定义约定，可以控制成本并更轻松地管理资源。 例如，可指定仅允许特定类型的虚拟机。 或者，可要求所有资源都拥有特定标记。 策略由所有子资源继承。 如果将策略应用到资源组，则会将其应用到该资源组中的所有资源。
 
 可以在此处找到 Azure Policy 使用的架构：[https://schema.management.azure.com/schemas/2018-05-01/policyDefinition.json](https://schema.management.azure.com/schemas/2018-05-01/policyDefinition.json)
 
 使用 JSON 创建策略定义。 策略定义包含以下项的元素：
 
-- 模式
-- 参数
+- mode
+- parameters
 - 显示名称
-- 说明
+- description
 - 策略规则
   - 逻辑评估
   - 效果
@@ -66,6 +68,8 @@ Azure Policy 使用的资源策略定义，可使你通过描述何时强制实�
 
 所有 Azure Policy 示例均位于[策略示例](../samples/index.md)内。
 
+[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
+
 ## <a name="mode"></a>Mode
 
 **模式**确定将对策略评估哪些资源类型。 支持的模式包括：
@@ -73,9 +77,9 @@ Azure Policy 使用的资源策略定义，可使你通过描述何时强制实�
 - `all`：评估资源组和所有资源类型
 - `indexed`：仅评估支持标记和位置的资源类型
 
-大多数情况下，建议将“mode”设置为 `all`。 通过门户创建的所有策略定义使用 `all` 模式。 如果使用 PowerShell 或 Azure CLI，则可以手动指定 **mode** 参数。 如果策略定义不包含 **mode** 值，为提供向后兼容性，在 Azure PowerShell 中默认为 `all`，在 Azure CLI 中默认为 `null`，该值等同于 `indexed`。
+大多数情况下，建议将“mode”设置为 `all`。 通过门户创建的所有策略定义使用 `all` 模式。 如果使用 PowerShell 或 Azure CLI，则可以手动指定 **mode** 参数。 如果策略定义不包含 **mode** 值，为提供后向兼容性，在 Azure PowerShell 中默认为 `all`，在 Azure CLI 中默认为 `null`。 `null` 模式等同于使用 `indexed` 来支持后向兼容性。
 
-在创建强制执行标记或位置的策略时，应该使用 `indexed`。 这并不是必须的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 在这一点上，资源组是一个例外。 尝试在资源组上强制执行位置或标记的策略应将“mode”设为 `all`，并专门针对 `Microsoft.Resources/subscriptions/resourceGroup` 类型。 请在[强制执行资源组标记](../samples/enforce-tag-rg.md)查看相关示例。
+在创建强制执行标记或位置的策略时，应该使用 `indexed`。 虽然并不是必需的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 资源组是一个例外。 在资源组上强制执行位置或标记的策略应将“mode”设为 `all`，并专门针对 `Microsoft.Resources/subscriptions/resourceGroup` 类型。 请在[强制执行资源组标记](../samples/enforce-tag-rg.md)查看相关示例。
 
 ## <a name="parameters"></a>parameters
 
@@ -86,7 +90,8 @@ Azure Policy 使用的资源策略定义，可使你通过描述何时强制实�
 > 策略或计划定义的参数定义只能在策略或计划的初始创建期间配置。 以后无法更改参数定义。
 > 这可以防止策略或计划的现有分配间接被设为无效。
 
-例如，可以定义资源属性策略来限制资源的部署位置。 在这种情况下，创建策略时需声明以下参数：
+例如，可以定义策略来限制资源的部署位置。
+创建策略时需声明以下参数：
 
 ```json
 "parameters": {
@@ -123,7 +128,7 @@ Azure Policy 使用的资源策略定义，可使你通过描述何时强制实�
 
 ## <a name="definition-location"></a>定义位置
 
-创建计划或策略时，需要指定定义位置。 定义位置必须是一个管理组或订阅，并且决定了可以将计划或策略分配到的范围。 资源必须是用于分配的目标定义位置的层次结构中的直系成员或子代。
+创建计划或策略时，需要指定定义位置。 定义位置必须是管理组或订阅。 此位置决定了计划或策略的分配范围。 资源必须是用于分配的目标定义位置的层次结构中的直系成员或子代。
 
 如果定义位置是：
 
@@ -132,7 +137,7 @@ Azure Policy 使用的资源策略定义，可使你通过描述何时强制实�
 
 ## <a name="display-name-and-description"></a>显示名称和说明
 
-可使用“显示名称”和“说明”来标识策略定义，并提供其使用上下文。
+请使用“displayName”和“description”来标识策略定义，并提供其使用上下文。 **displayName** 的最大长度为 128 个字符，**description** 的最大长度为 512 个字符。
 
 ## <a name="policy-rule"></a>策略规则
 
@@ -197,14 +202,14 @@ Azure Policy 使用的资源策略定义，可使你通过描述何时强制实�
 - `"notContainsKey": "keyName"`
 - `"exists": "bool"`
 
-使用 like 和 notLike 条件时，可以在值中指定通配符 `*`。
-值不得包含多个通配符 `*`。
+使用 like 和 notLike 条件时，请在值中指定通配符 `*`。
+值不应包含多个通配符 `*`。
 
-当使用 match 和 notMatch 条件时，请提供 `#` 来表示数字，提供 `?` 来表示字母，提供 `.` 来匹配所有字符，并提供任何其他字符来表示该实际字符。 例如，请参阅[允许多名称模式](../samples/allow-multiple-name-patterns.md)。
+当使用 match 和 notMatch 条件时，请提供 `#` 来匹配数字，提供 `?` 来表示字母，提供 `.` 来匹配所有字符，并提供任何其他字符来匹配该实际字符。 例如，请参阅[允许多个名称模式](../samples/allow-multiple-name-patterns.md)。
 
 ### <a name="fields"></a>字段
 
-使用字段构成条件。 字段显示用于描述资源状态的资源请求负载属性。
+使用字段构成条件。 字段匹配资源请求有效负载中的属性，并说明资源的状态。
 
 支持以下字段：
 
@@ -214,6 +219,9 @@ Azure Policy 使用的资源策略定义，可使你通过描述何时强制实�
 - `kind`
 - `type`
 - `location`
+  - 对于不限位置的资源，请使用 **global**。 如需示例，请参阅[示例 - 允许的位置](../samples/allowed-locations.md)。
+- `identity.type`
+  - 返回在资源上启用的类型：[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)。
 - `tags`
 - `tags.<tagName>`
   - 其中 **\<tagName\>** 是要验证其条件的标记的名称。
@@ -247,7 +255,7 @@ Azure Policy 使用的资源策略定义，可使你通过描述何时强制实�
 
 值可以是字符串或 JSON 格式对象。
 
-借助 AuditIfNotExists 和 DeployIfNotExists，可以评估相关资源是否存在，并在该资源不存在时应用规则和相应的作用。 例如，可以要求为所有虚拟网络部署网络观察程序。 有关未部署虚拟机扩展时的审核示例，请参阅[如果扩展不存在，则进行审核](../samples/audit-ext-not-exist.md)。
+AuditIfNotExists 和 DeployIfNotExists 评估相关的资源是否存在，并应用规则。 如果资源与规则不匹配，则会实现效果。 例如，可以要求为所有虚拟网络部署网络观察程序。 有关更多信息，请参阅[在扩展不存在的情况下审核](../samples/audit-ext-not-exist.md)示例。
 
 **DeployIfNotExists** 效果需要策略规则的 **details** 部分中的 **roleDefinitionId** 属性。 有关详细信息，请参阅[修正 - 配置策略定义](../how-to/remediate-resources.md#configure-policy-definition)。
 
@@ -265,14 +273,14 @@ Azure Policy 使用的资源策略定义，可使你通过描述何时强制实�
 
 ### <a name="policy-functions"></a>策略函数
 
-[资源管理器模板函数](../../../azure-resource-manager/resource-group-template-functions.md)的子集可在策略规则中使用。 目前支持的函数如下：
+多个[资源管理器模板函数](../../../azure-resource-manager/resource-group-template-functions.md)可在策略规则中使用。 目前支持的函数如下：
 
 - [parameters](../../../azure-resource-manager/resource-group-template-functions-deployment.md#parameters)
 - [concat](../../../azure-resource-manager/resource-group-template-functions-array.md#concat)
 - [resourceGroup](../../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)
 - [subscription](../../../azure-resource-manager/resource-group-template-functions-resource.md#subscription)
 
-此外，`field` 函数可用于策略规则。 此函数主要用于 **AuditIfNotExists** 和 **DeployIfNotExists**，以引用所评估资源上的字段。 可以在 [DeployIfNotExists 示例](effects.md#deployifnotexists-example)中看到此函数的示例。
+此外，`field` 函数可用于策略规则。 `field` 主要用于 **AuditIfNotExists** 和 **DeployIfNotExists**，以引用所评估资源上的字段。 可以在 [DeployIfNotExists 示例](effects.md#deployifnotexists-example)中看到这种用法的示例。
 
 #### <a name="policy-function-examples"></a>策略函数示例
 
@@ -312,20 +320,20 @@ Azure Policy 使用的资源策略定义，可使你通过描述何时强制实�
 
 ## <a name="aliases"></a>别名
 
-可以使用属性别名来访问资源类型的特定属性。 通过别名，可限制允许用于特定资源属性的值和条件。 每个别名会映射到给定资源类型不同 API 版本的路径。 在策略评估期间，策略引擎会获取该 API 版本的属性路径。
+可以使用属性别名来访问资源类型的特定属性。 通过别名，可限制允许用于资源属性的值和条件。 每个别名会映射到给定资源类型不同 API 版本的路径。 在策略评估期间，策略引擎会获取该 API 版本的属性路径。
 
-别名列表始终不断增长。 要发现 Azure Policy 当前支持哪些别名，请使用以下方法之一：
+别名列表始终不断增长。 若要找出 Azure Policy 当前支持哪些别名，请使用以下方法之一：
 
 - Azure PowerShell
 
   ```azurepowershell-interactive
-  # Login first with Connect-AzureRmAccount if not using Cloud Shell
+  # Login first with Connect-AzAccount if not using Cloud Shell
 
-  # Use Get-AzureRmPolicyAlias to list available providers
-  Get-AzureRmPolicyAlias -ListAvailable
+  # Use Get-AzPolicyAlias to list available providers
+  Get-AzPolicyAlias -ListAvailable
 
-  # Use Get-AzureRmPolicyAlias to list aliases for a Namespace (such as Azure Automation -- Microsoft.Automation)
-  Get-AzureRmPolicyAlias -NamespaceMatch 'automation'
+  # Use Get-AzPolicyAlias to list aliases for a Namespace (such as Azure Automation -- Microsoft.Automation)
+  Get-AzPolicyAlias -NamespaceMatch 'automation'
   ```
 
 - Azure CLI
@@ -416,11 +424,11 @@ Azure Policy 使用的资源策略定义，可使你通过描述何时强制实�
     - "127.0.0.1" != "192.168.1.1" 的计算结果为 true。
     - **ipRules** 数组中至少有一个 _value_ 属性被评估为 false，因此评估将停止。
 
-由于条件的计算结果为 false，因此将不会触发**拒绝**效果。
+由于条件的计算结果为 false，因此不会触发**拒绝**效果。
 
 ## <a name="initiatives"></a>计划
 
-使用计划可组合多个相关策略定义，以简化分配和管理，因为可将组作为单个项使用。 例如，可以将所有相关标记策略组合为单个计划。 将应用计划，而非单独分配每个策略。
+使用计划可组合多个相关策略定义，以简化分配和管理，因为可将组作为单个项使用。 例如，可以将相关标记策略组合为单个计划。 将应用计划，而非单独分配每个策略。
 
 下面的示例演示如何创建用于处理 `costCenter` 和 `productName` 这两个标记的计划。 它使用两个内置策略来应用默认标记值。
 
@@ -502,5 +510,5 @@ Azure Policy 使用的资源策略定义，可使你通过描述何时强制实�
 - 查看[了解策略效果](effects.md)
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)
 - 了解如何[获取符合性数据](../how-to/getting-compliance-data.md)
-- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)
+- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 15a5e3e566b03f29f33c3f21aa6581a03b0abe2e
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: cec481ca355ecf081f6aaff8228957f0adf226f6
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29851001"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691382"
 ---
 # <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-the-same-subscription-with-cli"></a>使用 CLI 基于相同订阅的存储帐户中的 VHD 文件创建托管磁盘
 
@@ -43,7 +43,7 @@ ms.locfileid: "29851001"
 
 | 命令 | 说明 |
 |---|---|
-| [az disk create](https://docs.microsoft.com/cli/azure/disk#az_disk_create) | 使用相同订阅的存储帐户中的 VHD 的 URI 创建托管磁盘 |
+| [az disk create](https://docs.microsoft.com/cli/azure/disk) | 使用相同订阅的存储帐户中的 VHD 的 URI 创建托管磁盘 |
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -51,4 +51,4 @@ ms.locfileid: "29851001"
 
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
 
-可以在 [Azure Linux VM 文档](../../app-service/app-service-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机和托管磁盘 CLI 脚本示例。
+可以在 [Azure Linux VM 文档](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机和托管磁盘 CLI 脚本示例。

@@ -1,23 +1,19 @@
 ---
-title: 用于 Node.js 的 Azure Cosmos DB 表 API | Microsoft Docs
+title: 用于 Node.js 的 Azure Cosmos DB 表 API
 description: 了解有关 Azure Cosmos DB 表 API 的全部信息，包括发布日期、停用日期和各版本之间进行的更改。
-services: cosmos-db
-author: yarong
-manager: kfile
-editor: ''
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: nodejs
 ms.topic: reference
 ms.date: 11/20/2017
-ms.author: yaronyg
-ms.custom: ''
-ms.openlocfilehash: 4bdcb7c587ef05ced3c163136c52c81433a98cf4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+author: wmengmsft
+ms.author: wmeng
+ms.openlocfilehash: 1cf72069d545fc1f4c337a1b67f5fd4aa2ef143c
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468698"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043713"
 ---
 # <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>用于 Node.js 的 Azure Cosmos DB 表 API：发行说明和资源
 > [!div class="op_single_selector"]
@@ -31,7 +27,7 @@ ms.locfileid: "49468698"
 |   |   |
 |---|---|
 |**SDK 下载**|[NPM](https://www.npmjs.com/package/azure-storage)|
-|**API 文档**|[Node.js API 参考文档](http://azure.github.io/azure-storage-node/)|
+|**API 文档**|[Node.js API 参考文档](https://azure.github.io/azure-storage-node/)|
 |**参与 SDK**|[GitHub](https://github.com/Azure/azure-storage-node#contribute)|
 
 > [!IMPORTANT]

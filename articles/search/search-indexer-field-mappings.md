@@ -1,6 +1,6 @@
 ---
-title: Azure 搜索索引器中的字段映射
-description: 针对字段名称和数据表示的差异配置帐户的 Azure 搜索索引器字段映射
+title: 使用索引器进行自动索引的字段映射 - Azure 搜索
+description: 针对字段名称和数据表示的差异配置帐户的 Azure 搜索索引器字段映射。
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: 01edc7001ec463cb16d8b6c715794b0028508143
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec2018
+ms.openlocfilehash: 94a7274c0e950661d118ad5421e7c763fe555434
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404707"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312691"
 ---
 # <a name="field-mappings-in-azure-search-indexers"></a>Azure 搜索索引器中的字段映射
 使用 Azure 搜索索引器时，偶尔可能发现自己处于输入数据与目标索引架构不完全匹配的情形。 在这些情况下，可以使用**字段映射**将数据转换为所需形状。

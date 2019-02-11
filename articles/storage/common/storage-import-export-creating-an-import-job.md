@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: d7a9da4ac3560e67a6f7bc8b79a7c2dd37995d4d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 15ec4f006147cdffb46598d22a937aec429fd8ac
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258004"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729398"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>为 Azure 导入/导出服务创建导入作业
 
@@ -61,14 +61,14 @@ ms.locfileid: "51258004"
 
  遵循以下步骤获取寄送位置：
 
--   指定存储帐户位置的名称。 可在 Azure 门户中存储帐户的“仪表板”上的“位置”字段下找到该值，或者使用服务管理 API 操作[获取存储帐户属性](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties)来查询该值。
+-   指定存储帐户位置的名称。 可在 Azure 门户中存储帐户的“仪表板”上的“位置”字段下找到该值，或者使用服务管理 API 操作[获取存储帐户属性](/rest/api/storagerp/storageaccounts)来查询该值。
 
 -   通过调用“`Get Location`”操作来检索可用于处理此存储帐户的位置。
 
 -   如果位置的 `AlternateLocations` 属性包含位置本身，则可以使用此位置。 否则，请使用某个备用位置再次调用“`Get Location`”操作。 原始位置可能会出于维护目的而暂时关闭。
 
 ## <a name="creating-the-import-job"></a>创建导入作业
-若要创建导入作业，请调用[放置作业](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)操作。 需要提供以下信息：
+若要创建导入作业，请调用[放置作业](/rest/api/storageimportexport/jobs)操作。 需要提供以下信息：
 
 -   作业的名称。
 

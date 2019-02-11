@@ -28,6 +28,7 @@
 # 引用
 ## [代码示例](https://azure.microsoft.com/resources/samples/?service=data-catalog)
 ## [REST](/rest/api/datacatalog/)
+## [资源管理器模板](/azure/templates/microsoft.datacatalog/catalogs)
 ## [搜索语法参考](/rest/api/datacatalog/data-catalog-search-syntax-reference)
 ## [开发人员概念](data-catalog-developer-concepts.md)
 
@@ -39,5 +40,5 @@
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [发行说明](../active-directory/fundamentals/whats-new.md)
 ## [服务更新](https://azure.microsoft.com/updates/?product=data-catalog)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-data-catalog)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-catalog)
 ## [术语](data-catalog-terminology.md)

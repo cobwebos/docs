@@ -1,23 +1,23 @@
 ---
-title: 快速入门：在 Azure Active Directory 中查看组织的组和成员 | Microsoft Docs
-description: 本快速入门提供有关如何使用 Azure 门户搜索和查看组织的组及其分配的成员的步骤。
+title: 快速入门：查看组织的组和成员 - Azure Active Directory | Microsoft Docs
+description: 介绍如何搜索和查看组织的组及其分配的成员。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: lizross
-ms.custom: it-pro
+ms.custom: it-pro, seodec18
 ms.reviewer: krbain
-ms.openlocfilehash: 9da9f055163f5df4ea064bd46caa811e39fba20c
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: e03a5181bf9cbbfedfdd739eaa68e5757f29a116
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056397"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104285"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
@@ -45,11 +45,11 @@ ms.locfileid: "47056397"
     
     - **组类型：** 选择“安全性”
     
-    - **组名称：** 键入“MDM 策略 - 西部”
+    - **组名称：** 键入 MDM policy - West
     
-    - **成员身份类型：** 选择“已分配”
+    - **成员身份类型：** 选择“分配”。
 
-3. 选择**创建**。
+3. 选择“创建”。
 
 ## <a name="create-a-new-user"></a>创建新用户
 创建名为 _Alain Charon_ 的新用户。 在将某个用户添加为组成员之前，该用户必须事先存在。 有关创建用户的详细信息，请参阅[如何添加或删除用户](add-users-azure-active-directory.md)。
@@ -58,9 +58,9 @@ ms.locfileid: "47056397"
 
 2. 填写“用户”页：
 
-    - **名称：** 键入 _Alain Charon_。
+    - **名称：** 键入 Alain Charon。
 
-    - **用户名：** 键入 *alain@contoso.com*。
+    - **用户名：** 键入 alain@contoso.com。
 
 3. 复制“密码”框中提供的自动生成的密码，然后选择“创建”。
 

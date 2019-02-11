@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 00164789d7f37277127878911c3f368a56ec7710
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 3454f9eecf1f06391b21bc7a3dcd89b7f8e78853
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616966"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105349"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
@@ -104,7 +104,14 @@ sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. 根据新添加的存储库刷新包列表。
+7. 将 Azul JDK 密钥添加到 APT Keyring 并设置其存储库。
+
+    ```bash
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x219BD9C9
+    sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
+    ```
+
+8. 根据新添加的存储库刷新包列表。
 
     ```bash
     sudo apt-get update
@@ -172,7 +179,7 @@ SDK 安装随附的 Service Fabric 运行时包含下表中所述的包。
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | OpenJDK 1.8 | Implicit from npm | 最新 |
+Ubuntu | 2.0.0 | AzulJDK 1.8 | Implicit from npm | 最新 |
 RHEL | - | OpenJDK 1.8 | Implicit from npm | 最新 |
 
 ## <a name="set-up-a-local-cluster"></a>设置本地群集
@@ -232,14 +239,14 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 
 ## <a name="set-up-java-development"></a>设置 Java 开发
 
-若要使用 Java 生成 Service Fabric 服务，请安装 JDK 1.8 和 Gradle 以运行生成任务。 以下代码片段安装 Open JDK 1.8 和 Gradle。 Service Fabric Java 库是从 Maven 拉取的。
+若要使用 Java 生成 Service Fabric 服务，请安装 Gradle 以运行生成任务。 运行以下命令来安装 Gradle。 Service Fabric Java 库是从 Maven 拉取的。
 
 
 * Ubuntu
 
     ```bash
-    sudo apt-get install openjdk-8-jdk-headless
-    sudo apt-get install gradle
+    curl -s https://get.sdkman.io | bash
+    sdk install gradle 5.1
     ```
 
 * Red Hat Enterprise Linux 7.4（Service Fabric 预览版支持）

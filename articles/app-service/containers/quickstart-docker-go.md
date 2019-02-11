@@ -1,5 +1,5 @@
 ---
-title: 在用于容器的 Azure Web 应用中部署 Docker/Go 应用
+title: 在 Linux 上创建 Docker/Go 应用 - Azure 应用服务
 description: 如何将运行 Go 应用程序的 Docker 映像部署到用于容器的 Azure Web 应用。
 keywords: azure 应用服务, web 应用, go, docker, 容器
 services: app-service
@@ -11,13 +11,13 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 01/17/2018
 ms.author: msangapu
-ms.custom: mvc
-ms.openlocfilehash: f1d58adcc017367a3de8ee6130a3333f86fb501c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.custom: seodec18
+ms.openlocfilehash: 9bf773a9804356dac153dca8730ffe520a250d28
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423239"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600302"
 ---
 # <a name="deploy-a-dockergo-web-app-in-web-app-for-containers"></a>在用于容器的 Web 应用中部署 Docker/Go Web 应用
 
@@ -37,7 +37,7 @@ ms.locfileid: "39423239"
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
-使用 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令在 `myAppServicePlan` 应用服务计划中创建 [Web 应用](../app-service-web-overview.md)。 不要忘记将 `<app name>` 替换为全局唯一的应用名称。
+使用 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令在 `myAppServicePlan` 应用服务计划中创建 [Web 应用](../overview.md)。 不要忘记将 `<app name>` 替换为全局唯一的应用名称。
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name microsoft/azure-appservices-go-quickstart
@@ -70,7 +70,7 @@ http://<app_name>.azurewebsites.net/hello
 
 ![在 Azure 中运行应用的示例](media/quickstart-docker-go/hello-world-in-browser.png)
 
-**祝贺你！** 已将运行 Go 应用程序的自定义 Docker 映像部署到用于容器的 Web 应用。
+祝贺你！ 已将运行 Go 应用程序的自定义 Docker 映像部署到用于容器的 Web 应用。
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 

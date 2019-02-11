@@ -5,16 +5,16 @@ description: 本指南介绍自定义翻译中的文档格式和命名约定。 
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: fef4ecd207fd32b5a92a4c072832f3ab45b58300
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: afd3192117bd22c62fd8e36752515166e4c6e043
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626725"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225469"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>文档格式和命名约定指南
 
@@ -22,7 +22,7 @@ ms.locfileid: "51626725"
 
 下表包含了可用于生成翻译系统的所有受支持文件格式：
 
-| 格式            | 扩展   | Description                                                                                                                                                                                                                                                                    |
+| 格式            | 扩展   | 说明                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | XLIFF             | .XLF、.XLIFF | 并行文档格式，是翻译记忆系统的导出格式。 使用的语言在该文件中定义。                                                                                                                                                              |
 | TMX               | .TMX         | 并行文档格式，是翻译记忆系统的导出格式。 使用的语言在该文件中定义。                                                                                                                                                              |
@@ -43,11 +43,13 @@ ms.locfileid: "51626725"
 
 可将文档组合到单个 zip 文件并上传。 自定义翻译支持 zip 文件格式（ZIP、GZ 和 TGZ）。
 
-zip 文件中的每个文档必须遵循以下命名约定：
+扩展名为 TXT、HTML、HTM、PDF、DOCX、ALIGN 的 zip 文件中的每个文档都必须遵循以下命名约定：
 
 {document name}\_{language code}：其中，{document name} 是文档的名称，{language code} 是 ISO 语言 ID（两个字符），指示文档包含采用该语言的句子。 语言代码的前面必须有下划线 (_)。
 
 例如，若要在 zip 中为英语到西班牙语翻译系统上传两个并行文档，则应将文件命名为“data_en”和“data_es”。
+
+无需翻译记忆库文件（TMX、XLF、XLIFF、LCL、XLSX）即可遵循特定的语言命名约定。  
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,19 +2,19 @@
 title: Azure HDInsight 中的群集容量规划
 description: 如何指定 HDInsight 群集的容量和性能。
 services: hdinsight
-author: maxluk
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/22/2017
-ms.author: maxluk
-ms.openlocfilehash: 853bf9cfce458e6f112101b1382dd5bfd5df202d
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.date: 12/04/2018
+ms.author: hrasheed
+ms.openlocfilehash: 7eb18b5560e849796770ce9d24574d7a3d0db262
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499116"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716134"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight 群集的容量规划
 
@@ -32,23 +32,23 @@ ms.locfileid: "52499116"
 
 Azure 区域确定群集的物理预配位置。 为了将读写延迟最小化，群集应靠近数据所在的位置。
 
-许多 Azure 区域提供 HDInsight。 若要查找最靠近的区域，请参阅 [Azure 产品的上市区域](https://azure.microsoft.com/regions/services/)中“数据 + 分析”下面的“HDInsight Linux”项。
+许多 Azure 区域提供 HDInsight。 若要查找最靠近的区域，请参阅“[产品上市区域](https://azure.microsoft.com/regions/services/)”中“分析”下面的“HDInsight”项。
 
 ## <a name="choose-storage-location-and-size"></a>选择存储位置和大小
 
 ### <a name="location-of-default-storage"></a>默认存储的位置
 
-默认存储（Azure 存储帐户或 Azure Data Lake Store）必须与群集位于同一位置。 所有位置都提供 Azure 存储。 Data Lake Store Gen1 已在某些区域中提供 - 请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/regions/services/) 中“存储”下面列出的当前 Data Lake Store 可用性。
+默认存储（Azure 存储帐户或 Azure Data Lake Storage）必须与群集位于同一位置。 所有位置都提供 Azure 存储。 Data Lake Storage Gen1 已在某些区域中提供 - 请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/regions/services/) 中“存储”下面列出的当前 Data Lake Storage 可用性。
 
 ### <a name="location-of-existing-data"></a>现有数据的位置
 
-如果已有一个包含数据的存储帐户或 Data Lake Store，并想要将此存储用作群集的默认存储，则必须在与此存储相同的位置部署群集。
+如果已有一个包含数据的存储帐户或 Data Lake Storage，并想要将此存储用作群集的默认存储，则必须在与此存储相同的位置部署群集。
 
 ### <a name="storage-size"></a>存储大小
 
-部署 HDInsight 群集之后，可以附加更多 Azure 存储帐户，或访问其他 Data Lake Store。 所有存储帐户必须与群集位于同一位置。 Data Lake Store 可以位于不同的位置，不过，这可能会造成某种程度的数据读/写延迟。
+部署 HDInsight 群集之后，可以附加更多 Azure 存储帐户，或访问其他 Data Lake Storage。 所有存储帐户必须与群集位于同一位置。 Data Lake Storage 可以位于不同的位置，不过，这可能会造成某种程度的数据读/写延迟。
 
-Azure 存储具有某些[容量限制](../azure-subscription-service-limits.md#storage-limits)，而 Data Lake Store Gen1 几乎不受限制。
+Azure 存储具有某些[容量限制](../azure-subscription-service-limits.md#storage-limits)，而 Data Lake Storage Gen1 几乎不受限制。
 
 群集可以访问不同存储帐户的组合。 典型示例包括：
 
@@ -71,11 +71,11 @@ Azure 存储具有某些[容量限制](../azure-subscription-service-limits.md#s
 
 VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 
-* CPU：VM 大小支配核心数。 核心越多，每个节点可实现的并行计算度就越大。 此外，某些 VM 类型的核心更快。
+* CPU：VM 大小决定核心数。 核心越多，每个节点可实现的并行计算度就越大。 此外，某些 VM 类型的核心更快。
 
-* RAM：VM 大小还支配 VM 中可用的 RAM 量。 对于在内存中存储而不是从磁盘读取待处理数据的工作负荷，请确保工作节点能够提供足够的内存来容纳这些数据。
+* RAM：VM 大小还决定 VM 中可用的 RAM 量。 对于在内存中存储而不是从磁盘读取待处理数据的工作负荷，请确保工作节点能够提供足够的内存来容纳这些数据。
 
-* 网络：对于大多数群集类型，群集处理的数据并不在本地磁盘上，而是在 Data Lake Store 或 Azure 存储等外部存储服务中。 考虑节点 VM 与存储服务之间的网络带宽和吞吐量。 通常，更大 VM 的可用网络带宽越高。 有关详细信息，请参阅 [VM 大小概述](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)。
+* 网络：对于大多数群集类型，群集处理的数据并不在本地磁盘上，而是在 Data Lake Storage 或 Azure 存储之类的外部存储服务中。 考虑节点 VM 与存储服务之间的网络带宽和吞吐量。 通常，更大 VM 的可用网络带宽越高。 有关详细信息，请参阅 [VM 大小概述](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)。
 
 ## <a name="choose-the-cluster-scale"></a>选择群集规模
 
@@ -89,7 +89,7 @@ VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 
 在群集的生存期内会产生费用。 如果只是需要在特定的时间启动并运行群集，可以使用 [Azure 数据工厂创建按需群集](hdinsight-hadoop-create-linux-clusters-adf.md)。 还可以创建 PowerShell 脚本用于预配和删除群集，然后使用 [Azure 自动化](https://azure.microsoft.com/services/automation/)计划这些脚本。
 
-> [!NOTE]
+> [!NOTE]  
 > 删除某个群集时，也会一并删除其默认 Hive 元存储。 若要保留元存储供下一次重新创建群集时使用，可以使用 Azure 数据库或 [Apache Oozie](https://oozie.apache.org/) 等外部元数据存储。
 <!-- see [Using external metadata stores](hdinsight-using-external-metadata-stores.md). -->
 
@@ -97,13 +97,33 @@ VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 
 有时，多节点群集上多个映射和化简组件的并行执行可能导致出错。 为了帮助查明问题，可以通过在单节点群集上运行多个并发作业来尝试执行分布式测试，然后延伸这种方法，在包含多个节点的群集上并发运行多个作业。 若要在 Azure 中创建单节点 HDInsight 群集，请使用高级选项。
 
-也可以在本地计算机上安装单节点开发环境，并在该环境中测试解决方案。 Hortonworks 为基于 Hadoop 的解决方案提供单节点本地开发环境，非常有利于初始开发、概念证明和测试。 有关详细信息，请参阅 [Hortonworks 沙盒](http://hortonworks.com/products/hortonworks-sandbox/)。
+也可以在本地计算机上安装单节点开发环境，并在该环境中测试解决方案。 Hortonworks 为基于 Hadoop 的解决方案提供单节点本地开发环境，非常有利于初始开发、概念证明和测试。 有关详细信息，请参阅 [Hortonworks 沙盒](https://hortonworks.com/products/hortonworks-sandbox/)。
 
 若要识别单节点本地群集上的问题，可以重新运行失败的作业并调整输入数据，或使用更小的数据集。 这些作业的运行方式取决于平台和应用程序类型。
 
 ## <a name="quotas"></a>配额
 
-确定目标群集 VM 大小、规模和类型之后，请检查订阅的当前配额容量限制。 达到配额限制时，可能无法部署新群集，或通过添加更多工作节点来横向扩展现有群集。 最容易达到的配额限制是订阅、区域和 VM 系列级别的 CPU 核心配额。 例如，订阅的总核心数限制可能为 200，而区域中的核心限制为 30，VM 实例上的核心限制为 30。 可以[联系支持部门来请求提高配额](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)。
+确定目标群集 VM 大小、规模和类型之后，请检查订阅的当前配额容量限制。 达到配额限制时，可能无法部署新群集，或通过添加更多工作节点来横向扩展现有群集。 唯一存在配额限制的是每个订阅的区域级别的 CPU 核心配额。 例如，订阅可能会在美国东部区域有 30 个核心的限制。 如果需要请求增加配额，请执行以下操作：
+
+1. 转到 Azure 门户
+1. 单击页面左下方的“帮助和支持”。
+1. 单击“新建支持请求”。
+1. 在“新建支持请求”页面的“基本信息”选项卡下，选择以下选项：
+    - “问题类型”：“服务和订阅限制(配额)”
+    - “订阅”：想要修改的订阅
+    - “配额类型”：**HDInsight**
+    
+    ![创建支持请求来增加 HDInsight 核心配额](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
+
+1. 单击“下一步”。
+1. 在“详细信息”页面，输入问题的说明，然后选择问题的严重性和首选联系方法。
+1. 单击“下一步:查看 + 创建”。
+1. 在“查看 + 创建”选项卡中，单击“创建”。
+
+> [!NOTE]  
+> 如果需要增加专用区域中的 HDInsight 核心配额，请[提交允许列表请求](https://aka.ms/canaryintwhitelist)。
+
+可以[联系支持部门来请求提高配额](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)。
 
 但是，存在一些固定的配额限制，例如，单个 Azure 订阅最多只能有 10,000 个核心。 有关这些限制的详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](https://docs.microsoft.com/azure/azure-subscription-service-limits#limits-and-the-azure-resource-manager)。
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 613cdd14ad196058458b090024cc6b9a4b8a80b6
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: a37b069d533dc51067aba4f9d9bd87608b116ae6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018615"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466449"
 ---
 # <a name="translator-text-api-30-transliterate"></a>文本翻译 API 3.0：Transliterate
 
@@ -42,15 +42,15 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   </tr>
   <tr>
     <td>语言</td>
-    <td>必需参数。<br/>指定要从一个脚本转换为另一个脚本的文本的语言。 通过查询服务的[支持的语言](.\v3-0-languages.md)获得的 `transliteration` 范围中列出了可能的语言。</td>
+    <td>必需参数。<br/>指定要从一个脚本转换为另一个脚本的文本的语言。 通过查询服务的[支持的语言](./v3-0-languages.md)获得的 `transliteration` 范围中列出了可能的语言。</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>*必需参数*。<br/>指定输入文本所使用的脚本。 使用 `transliteration` 范围查找[支持的语言](.\v3-0-languages.md)，以找到可用于选定语言的输入脚本。</td>
+    <td>*必需参数*。<br/>指定输入文本所使用的脚本。 使用 `transliteration` 范围查找[支持的语言](./v3-0-languages.md)，以找到可用于选定语言的输入脚本。</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>*必需参数*。<br/>指定输出脚本。 使用 `transliteration` 范围查找[支持的语言](.\v3-0-languages.md)，以找到可用于选定输入语言和输入脚本组合的输出脚本。</td>
+    <td>*必需参数*。<br/>指定输出脚本。 使用 `transliteration` 范围查找[支持的语言](./v3-0-languages.md)，以找到可用于选定输入语言和输入脚本组合的输出脚本。</td>
   </tr>
 </table> 
 
@@ -115,7 +115,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>Description</th>
+  <th>说明</th>
   <tr>
     <td>X-RequestId</td>
     <td>服务生成的用于标识请求的值。 它用于故障排除目的。</td>
@@ -128,7 +128,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 <table width="100%">
   <th width="20%">状态代码</th>
-  <th>Description</th>
+  <th>说明</th>
   <tr>
     <td>200</td>
     <td>成功。</td>

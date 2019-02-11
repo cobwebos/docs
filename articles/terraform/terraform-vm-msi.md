@@ -4,17 +4,17 @@ description: 结合托管标识和远程状态管理使用市场映像创建 Ter
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, MSI, 虚拟机, 远程状态, azure
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: a162d0c19bef28e6e4566d39c2dc3b82a87a4aa9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3f10e5dfd0a4aac859c1a946b5f0a680899e0888
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242086"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852535"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>结合 Azure 资源的托管标识使用 Azure 市场映像创建 Terraform Linux 虚拟机
 
@@ -37,7 +37,7 @@ ms.locfileid: "51242086"
 
 3. 在 Terraform 详细信息选项卡的右下角选择“创建”按钮。
 
-    ![创建 Terraform 虚拟机](media\terraformmsi.png)
+    ![创建 Terraform 虚拟机](media/terraformmsi.png)
 
 4. 以下部分提供在向导中创建 Terraform Linux 虚拟机所要执行的每个步骤的输入。 以下部分列出了配置每个步骤所需的输入。
 
@@ -56,7 +56,7 @@ ms.locfileid: "51242086"
 
 2. **其他设置**
 
-   * **大小**：虚拟机的大小。 
+   * **大小**：虚拟机大小。 
    * **VM 磁盘类型**：SSD 或 HDD。
 
 3. **Terraform 摘要**
@@ -85,7 +85,7 @@ Terraform VM 映像执行以下步骤：
 
 `. ~/tfEnv.sh`
 
-上述脚本使用 [AZ CLI v 2.0 交互式登录](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in)机制在 Azure 中进行身份验证，并在整个订阅中分配虚拟机托管标识参与者权限。 
+上述脚本使用 [AZ CLI v 2.0 交互式登录](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)机制在 Azure 中进行身份验证，并在整个订阅中分配虚拟机托管标识参与者权限。 
 
  VM 具有 Terraform 远程状态后端。 若要在 Terraform 部署中启用该后端，请将 tfTemplate 目录中的 remoteState.tf 文件复制到 Terraform 脚本所在的根目录。  
 

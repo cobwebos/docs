@@ -19,8 +19,16 @@ items:
         href: data-box-deploy-ordered.md
       - name: 2 - 设置
         href: data-box-deploy-set-up.md
-      - name: 3 - 复制数据
-        href: data-box-deploy-copy-data.md
+      - name: 3 - 连接和复制
+        items:
+        - name: 通过 SMB
+          href: data-box-deploy-copy-data.md
+        - name: 通过 NFS
+          href: data-box-deploy-copy-data-via-nfs.md
+        - name: 通过 REST
+          href: data-box-deploy-copy-data-via-rest.md
+        - name: 通过数据复制服务
+          href: data-box-deploy-copy-data-via-copy-service.md
       - name: 4 - 返回、上传、验证
         href: data-box-deploy-picked-up.md
     - name: 概念
@@ -28,7 +36,11 @@ items:
       - name: 阅读安全指南
         href: data-box-safety.md
       - name: 审查要求
-        href: data-box-system-requirements.md
+        items:
+        - name: 对于 Data Box
+          href: data-box-system-requirements.md
+        - name: 对于 Data Box Blob 存储
+          href: data-box-system-requirements-rest.md
       - name: 了解限制
         href: data-box-limits.md
       - name: 检查安全性
@@ -41,6 +53,8 @@ items:
         href: data-box-portal-admin.md
       - name: 通过本地 Web UI 进行管理
         href: data-box-local-web-ui-admin.md
+      - name: 将数据移到 blob 层
+        href: data-box-how-to-set-data-tier.md
       - name: 为设备布线
         href: data-box-cable-options.md
       - name: 联系支持人员
@@ -98,9 +112,9 @@ items:
       href: https://azure.microsoft.com/pricing/details/storage/databox/
     - name: Data Box Disk 定价
       href: https://azure.microsoft.com/pricing/details/storage/databox/disk/
-ms.openlocfilehash: bd23df1abd99ba3fd89a4b382c6c5f00c8b80f1f
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 3b9479dd43a4d98b5dec28878b16e6c781d39d58
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739186"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428846"

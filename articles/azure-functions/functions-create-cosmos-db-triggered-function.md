@@ -12,16 +12,16 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 4fc1c0b87aa5312be0ccac50681e952dc7f1c4ed
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e08d76199817dfe15ba190d2deedf450c986c65a
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251723"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904278"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>创建由 Azure Cosmos DB 触发的函数
 
-了解如何创建在数据添加到 Azure Cosmos DB 或在其中更改数据时触发的函数。 若要了解有关 Azure Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB：使用 Azure Functions 的无服务器数据库计算](..\cosmos-db\serverless-computing-database.md)。
+了解如何创建在数据添加到 Azure Cosmos DB 或在其中更改数据时触发的函数。 若要了解有关 Azure Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB：使用 Azure Functions 的无服务器数据库计算](../cosmos-db/serverless-computing-database.md)。
 
 ![在日志中查看消息。](./media/functions-create-cosmos-db-triggered-function/quickstart-completed.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "51251723"
 
     ![定义 taskCollection](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection2.png)
 
-    | 设置|建议的值|Description |
+    | 设置|建议的值|说明 |
     | ---|---|--- |
     | **数据库 ID** | 任务 |新数据库的名称。 它必须匹配函数绑定中定义的名称。 |
     | **集合 ID** | Items | 新集合的名称。 它必须匹配函数绑定中定义的名称。  |
@@ -140,8 +140,6 @@ ms.locfileid: "51251723"
 
 ## <a name="next-steps"></a>后续步骤
 
-你已经创建一个函数，当在 Azure Cosmos DB 中添加或修改文档时会运行此函数。
+你已经创建一个函数，当在 Azure Cosmos DB 中添加或修改文档时会运行此函数。 有关 Azure Cosmos DB 触发器的详细信息，请参阅[适用于 Azure Functions 的 Azure Cosmos DB 绑定](functions-bindings-cosmosdb.md)。
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
-
-有关 Azure Cosmos DB 触发器的详细信息，请参阅[适用于 Azure Functions 的 Azure Cosmos DB 绑定](functions-bindings-cosmosdb.md)。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 6/8/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: a7fe2cf151b79b02f4f8996ad938d8fc262a5f77
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b2733bed4418fdfcaefb20c04683cb6a229134e9
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49400130"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53594262"
 ---
 # <a name="enable-write-accelerator"></a>启用写入加速器
 
@@ -41,7 +41,7 @@ ms.locfileid: "49400130"
 对 Azure 磁盘/VHD 使用写入加速器时，需遵循以下限制：
 
 - 必须将高级磁盘缓存设置为“无”或“只读”。 不支持其他所有缓存模式。
-- 尚不支持已启用写入加速器的磁盘上的快照。 此限制会导致 Azure 备份服务无法对虚拟机的所有磁盘执行应用程序一致的快照。
+- 启用了写入加速器的磁盘当前不支持快照。 在备份期间，Azure 备份服务会自动排除连接到 VM 且启用了写入加速器的磁盘。
 - 仅较小的 I/O (<=32 KiB) 大小会采用加速路径。 在以下工作负荷情形下，I/O 写入到磁盘的更改不会采用加速路径：数据大容量加载或者数据在持久保存到存储之前，不同 DBMS 的事务日志缓冲区已较大程度上填满。
 
 写入加速器在每个 VM 中支持的 Azure 高级存储 VHD 数目有限制。 当前限制为：

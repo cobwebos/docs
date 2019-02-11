@@ -3,7 +3,7 @@ title: 使用 Java 和 VS Code 在云中创建 Kubernetes 开发空间 | Microso
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 author: stepro
 ms.author: stephpr
 ms.date: 09/26/2018
@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
 manager: mmontwil
-ms.openlocfilehash: 6bee2d4e41c383edac81a6b511cf5cfc5d68da9f
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 9dc219078377d8b8da5d1700fb2a93133649d924
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636612"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475767"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>通过 Java 开始使用 Azure Dev Spaces
 
@@ -71,7 +71,7 @@ az group create --name MyResourceGroup --location <region>
 使用以下命令创建 Kubernetes 群集：
 
 ```cmd
-az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.11.2 --enable-addons http_application_routing --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.10.9 --enable-addons http_application_routing --generate-ssh-keys
 ```
 
 创建群集需要几分钟时间。

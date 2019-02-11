@@ -3,25 +3,25 @@ title: 在 Azure Active Directory B2C 的自定义策略中定义 OAuth2 技术�
 description: 在 Azure Active Directory B2C 的自定义策略中定义 OAuth2 技术配置文件。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 3f1e34b4d527d076a0bac2e0cb6ef3a901296c57
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.subservice: B2C
+ms.openlocfilehash: 86682525ae5246f9335e64e7dd3a812eaaf3c273
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612469"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157714"
 ---
 # <a name="define-a-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OAuth2 技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C 为 OAuth2 协议标识提供者提供支持。 这是用于授权和委托身份验证的主要协议。 有关详细信息，请参阅 [RFC 6749 - OAuth 2.0 授权框架](http://tools.ietf.org/html/rfc6749)。 使用 OAuth2 技术配置文件，可以与基于 OAuth2 的标识提供者（例如 Facebook 和 Live.com）联合，方便用户使用其现有的社交或企业标识登录。
+Azure Active Directory (Azure AD) B2C 为 OAuth2 协议标识提供者提供支持。 这是用于授权和委托身份验证的主要协议。 有关详细信息，请参阅 [RFC 6749 - OAuth 2.0 授权框架](https://tools.ietf.org/html/rfc6749)。 使用 OAuth2 技术配置文件，可以与基于 OAuth2 的标识提供者（例如 Facebook 和 Live.com）联合，方便用户使用其现有的社交或企业标识登录。
 
 ## <a name="protocol"></a>协议
 
@@ -76,7 +76,7 @@ Azure Active Directory (Azure AD) B2C 为 OAuth2 协议标识提供者提供支�
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 必选 | Description |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
 | IdTokenAudience | 否 | id_token 的受众。 在指定此项的情况下，Azure AD B2C 会检查令牌是否位于标识提供者返回的声明中，以及是否与指定的令牌相同。 |
@@ -100,7 +100,7 @@ Azure Active Directory (Azure AD) B2C 为 OAuth2 协议标识提供者提供支�
 
 **CryptographicKeys** 元素包含以下属性：
 
-| 属性 | 必选 | Description |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 标识提供者应用程序的客户端机密。 只有在将 **response_types** 元数据设置为 `code` 的情况下，才需要加密密钥。 在这种情况下，Azure AD B2C 会再次进行调用，以便用授权代码来交换访问令牌。 如果元数据已设置为 `id_token`，则可省略加密密钥。  |  
 

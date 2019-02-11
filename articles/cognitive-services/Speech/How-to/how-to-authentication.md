@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: e3bfdcfaaf752321997636811b282ea920e6144a
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 163ec61dc534255470626468195dcab28b3e3250
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344194"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221821"
 ---
 # <a name="authenticate-to-the-speech-api"></a>对语音 API 进行身份验证
 
@@ -34,7 +34,7 @@ ms.locfileid: "49344194"
 
 若要使用语音 REST API，需要传递请求标头 `Ocp-Apim-Subscription-Key` 字段中的订阅密钥。
 
-名称| 格式| Description
+Name| 格式| 说明
 ----|-------|------------
 Ocp-Apim-Subscription-Key | ASCII | YOUR_SUBSCRIPTION_KEY
 
@@ -72,7 +72,7 @@ https://api.cognitive.microsoft.com/sts/v1.0/issueToken
 
 以下代码示例演示如何获取访问令牌。 将 `YOUR_SUBSCRIPTION_KEY` 替换为自己的订阅密钥：
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/Powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```Powershell
 $FetchTokenHeader = @{
@@ -96,7 +96,7 @@ $OAuthToken
 curl -v -X POST "https://api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Content-type: application/x-www-form-urlencoded" -H "Content-Length: 0" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/CSharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
     /*
@@ -159,7 +159,7 @@ Connection: Keep-Alive
 > [!NOTE]
 > 将 `YOUR_AUDIO_FILE` 替换为预先录制的音频文件的路径。 将 `YOUR_ACCESS_TOKEN` 替换为在上一步[获取授权令牌](#get-an-authorization-token)中获得的授权令牌。
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/Powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```Powershell
 
@@ -189,7 +189,7 @@ $RecoResponse
 curl -v -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/CSharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 HttpWebRequest request = null;

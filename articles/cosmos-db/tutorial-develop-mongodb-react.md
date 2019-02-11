@@ -1,29 +1,26 @@
 ---
-title: 适用于 Azure 的 MongoDB、React 和 Node.js 教程 | Microsoft Docs
+title: 适用于 Azure 的 MongoDB、React 和 Node.js 教程
 description: 了解如何通过 React 和 Node.js 在 Azure Cosmos DB 上创建 MongoDB 应用，所使用的 API 与本视频教程系列中用于 MongoDB 的 API 完全相同。
-services: cosmos-db
 author: johnpapa
-manager: kfile
-editor: ''
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
-ms.custom: mvc
-ms.openlocfilehash: 28651f0b9a2c775292b5c9406f676b45fc4e5d14
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.reviewer: sngun
+ms.openlocfilehash: 2033c309a63c7135ba845aebbfc4e353380429f6
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701776"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043271"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>通过 React 和 Azure Cosmos DB 创建 MongoDB 应用  
 
-本视频教程包含多个部分，演示了如何使用 React 前端创建 hero 跟踪应用。 该应用使用适用于服务器的 Node 和 Express，通过 [MongoDB API](mongodb-introduction.md) 连接到 Azure Cosmos DB，然后将 React 前端连接到应用的服务器部分。 本教程还演示了如何在 Azure 门户中对 Azure Cosmos DB 进行点击缩放，以及如何将应用部署到 Internet，方便每个人跟踪其最喜欢的 hero。 
+本视频教程包含多个部分，演示了如何使用 React 前端创建 hero 跟踪应用。 该应用使用适用于服务器的 Node 和 Express，连接到使用 [Azure Cosmos DB 的 MongoDB API](mongodb-introduction.md) 配置的 Cosmos 数据库，然后将 React 前端连接到应用的服务器部分。 本教程还演示了如何在 Azure 门户中对 Cosmos DB 进行点击缩放，以及如何将应用部署到 Internet，方便每个人跟踪其最喜欢的 hero。 
 
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 支持 MongoDB 客户端连接，因此可以用 Azure Cosmos DB 来代替 MongoDB，所用代码与用于 MongoDB 应用的代码相同，而优势则会增强，例如简化云部署、缩放，大大加快读写速度。  
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 支持与 MongoDB 的有线协议兼容性，让客户能用 Azure Cosmos DB 代替 MongoDB。  
 
 本教程分为多个部分，涵盖以下任务：
 

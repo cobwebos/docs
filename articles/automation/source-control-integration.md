@@ -3,18 +3,18 @@ title: Azure 自动化中的源代码管理集成
 description: 本文介绍 Azure 自动化中源代码管理与 GitHub 的集成。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/26/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5778c38d5a0c44e42b83fd139078be1f0bb45f7f
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 400cf53172fbd1ce5803cf3de298749afbf45cd4
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023740"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430188"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure 自动化中的源代码管理集成
 
@@ -47,22 +47,25 @@ Azure 自动化支持 3 种类型的源代码管理：
 
 在“源代码管理摘要”页上，填写信息并单击“保存”。 下表显示了可用字段的说明。
 
-|属性  |Description  |
+|属性  |说明  |
 |---------|---------|
 |源代码管理名称     | 源代码管理的友好名称        |
-|源代码管理类型     | 源代码管理源的类型。 可用选项包括：</br> Github</br>Azure DevOps (Git)</br> Azure DevOps (TFVC)        |
+|源代码管理类型     | 源代码管理源的类型。 可用选项包括：</br> GitHub</br>Azure DevOps (Git)</br> Azure DevOps (TFVC)        |
 |存储库     | 存储库或项目的名称。 此值从源代码管理存储库中拉取。 示例：$/ContosoFinanceTFVCExample         |
 |分支     | 要从源文件中提取的分支。 分支目标确定不适用于 TFVC 源代码管理类型。          |
 |文件夹路径     | 包含要同步的 runbook 的文件夹。示例：/Runbooks         |
 |自动同步     | 在源代码管理存储库中提交时打开或关闭自动同步         |
 |发布 Runbook     | 如果设置为“打开”，在从源代码管理同步 runbook 后，它们将自动发布。         |
-|Description     | 用于提供其他详细信息的一个文本字段        |
+|说明     | 用于提供其他详细信息的一个文本字段        |
 
 ![源代码管理摘要](./media/source-control-integration/source-control-summary.png)
 
+> [!NOTE]
+> 配置源代码管理时请确保使用正确的帐户登录。 如果有疑问，请在浏览器中打开新的选项卡并从 visualstudio.com 或 github.com 中注销，然后再次尝试连接源代码管理。
+
 ## <a name="syncing"></a>同步
 
-如果在配置源代码管理集成时配置了自动同步，则将自动启动初始同步。 如果未设置自动同步，请从“源代码管理(预览版)”页面上的表中选择源。 单击“开始同步”以开始同步过程。  
+如果在配置源代码管理集成时配置了自动同步，则将自动启动初始同步。 如果未设置自动同步，请从“源代码管理(预览版)”页面上的表中选择源。 单击“开始同步”以开始同步过程。
 
 可以通过单击“同步作业”选项卡来查看当前同步作业或之前的同步作业的状态。在“源代码管理”下拉列表中，选择一个源代码管理。
 
@@ -109,7 +112,7 @@ Source Control Sync Summary:
 
 ### <a name="github"></a>GitHub
 
-|范围  |Description  |
+|范围  |说明  |
 |---------|---------|
 |**存储库**     |         |
 |repo:status     | 访问提交状态         |
@@ -141,3 +144,4 @@ Source Control Sync Summary:
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关 Runbook 类型、其优点和限制的详细信息，请参阅 [Azure 自动化 Runbook 类型](automation-runbook-types.md)
+

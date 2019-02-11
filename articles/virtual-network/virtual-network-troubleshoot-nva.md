@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 2a0f6b75c540f319848805e8a9bda7b166d5d709
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 13cec39278577a818ef43f1215fd2e6653f15ed2
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138642"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678434"
 ---
 #  <a name="network-virtual-appliance-issues-in-azure"></a>Azure 中的网络虚拟设备问题
 
 在 Microsoft Azure 中使用第三方网络虚拟设备 (NVA) 时，可能会遇到 VM 或 VPN 连接问题和错误。 本文介绍了帮助你验证适用于 NVA 配置的基本 Azure 平台要求的基本步骤。
 
-NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支持。 如果遇到涉及 NVA 的连接或路由问题，则应直接[联系 NVA 的供应商](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
+NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支持。 
+
+> [!NOTE]
+> 如果遇到涉及 NVA 的连接或路由问题，则应直接[联系 NVA 的供应商](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -37,6 +40,7 @@ NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支�
 - 虚拟网络子网上的 UDR，用于定向来自 NVA 的流量
 - NVA 内的路由表和规则（例如，从 NIC1 到 NIC2）
 - 跟踪 NVA NIC 以验证接收和发送网络流量
+- 使用标准 SKU 和公共 IP 时，必须创建一个 NSG，并有明确的规则允许将流量路由到 NVA。
 
 ## <a name="basic-troubleshooting-steps"></a>基本故障排除步骤
 
@@ -73,6 +77,8 @@ NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支�
           Execute: $nic2 #and check for an expected output:
           EnableIPForwarding   : True
           NetworkSecurityGroup : null
+
+**使用标准 SKU 公共 IP 时检查 NSG** 使用标准 SKU 和公共 IP 时，必须创建一个 NSG，并有明确的规则允许将流量路由到 NVA。
 
 **检查流量是否可路由到 NVA**
 

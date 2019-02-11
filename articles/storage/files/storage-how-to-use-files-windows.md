@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
-ms.component: files
-ms.openlocfilehash: ee6b93c26918b4f70eb23e7055db813f35d3787d
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.subservice: files
+ms.openlocfilehash: 4361ec72f5f9cff924900ddd712aa1aa029c5ef4
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445729"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509014"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>将 Azure 文件共享与 Windows 配合使用
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 Azure 文件共享可以在 Windows 和 Windows Server 中无缝使用。 本文讨论将 Azure 文件共享与 Windows 和 Windows Server 配合使用时的注意事项。
@@ -43,13 +43,22 @@ ms.locfileid: "52445729"
 ## <a name="prerequisites"></a>先决条件 
 * **存储帐户名称**：需提供存储帐户的名称才能装载 Azure 文件共享。
 
-* **存储帐户密钥**：需提供主要（或辅助）存储帐户密钥才能装载 Azure 文件共享。 目前不支持使用 SAS 密钥进行装载。
+* **存储帐户密钥**：需提供主要（或辅助）存储密钥才能装载 Azure 文件共享。 目前不支持使用 SAS 密钥进行装载。
 
-* **确保端口 445 已打开**：SMB 协议要求 TCP 端口 445 处于打开状态；如果阻止了端口 445，则连接会失败。 可以通过 `Test-NetConnection` cmdlet 来查看防火墙是否在阻止端口 445。 记得将 `your-storage-account-name` 替换为存储帐户的相应名称。
+* **确保端口 445 处于打开状态**：SMB 协议要求 TCP 端口 445 处于打开状态；如果端口 445 被阻止，则连接会失败。 可以通过 `Test-NetConnection` cmdlet 来查看防火墙是否在阻止端口 445。 以下 PowerShell 代码假定你已安装 AzureRM PowerShell 模块。有关详细信息，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 记得将 `<your-storage-account-name>` 和 `<your-resource-group-name>` 替换为存储帐户的相应名称。
 
     ```PowerShell
-    Test-NetConnection -ComputerName <your-storage-account-name>.file.core.windows.net -Port 445
-    
+    $resourceGroupName = "<your-resource-group-name>"
+    $storageAccountName = "<your-storage-account-name>"
+
+    # This command requires you to be logged into your Azure account, run Login-AzureRmAccount if you haven't
+    # already logged in.
+    $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
+
+    # The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
+    # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
+    # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
+    Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
     ```
 
     如果连接成功，则会看到以下输出：
@@ -74,24 +83,24 @@ ms.locfileid: "52445729"
 若要将预期使用 SMB 文件共享的业务线 (LOB) 应用程序直接迁移到 Azure，通常的模式是使用 Azure 文件共享，而不是在 Azure VM 中运行专用的 Windows 文件服务器。 若要成功地迁移业务线应用程序以使用 Azure 文件共享，一项重要的考量是，许多业务线应用程序在运行时使用系统权限有限的专用服务帐户（而非 VM 的管理帐户）的上下文。 因此，必须确保通过服务帐户（而非管理帐户）的上下文来装载/保存 Azure 文件共享的凭据。
 
 ### <a name="persisting-azure-file-share-credentials-in-windows"></a>在 Windows 中保留 Azure 文件共享凭据  
-可以使用 [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) 实用程序将存储帐户凭据存储在 Windows 中。 这意味着，在尝试通过 UNC 路径访问 Azure 文件共享或装载 Azure 文件共享时，不需指定凭据。 若要保存存储帐户的凭据，请运行以下 PowerShell 命令，根据需要替换 `<your-storage-account-name>` 和 `<your-resoure-group-name>`。
+可以使用 [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) 实用程序将存储帐户凭据存储在 Windows 中。 这意味着，在尝试通过 UNC 路径访问 Azure 文件共享或装载 Azure 文件共享时，不需指定凭据。 若要保存存储帐户的凭据，请运行以下 PowerShell 命令，根据需要替换 `<your-storage-account-name>` 和 `<your-resource-group-name>`。
 
 ```PowerShell
 $resourceGroupName = "<your-resource-group-name>"
 $storageAccountName = "<your-storage-account-name>"
 
-# These commands require you to be logged into your Azure account, run Login-AzureRmAccount if you haven't
+# These commands require you to be logged into your Azure account, run Login-AzAccount if you haven't
 # already logged in.
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-$storageAccountKeys = Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
+$storageAccountKeys = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
 
 # The cmdkey utility is a command-line (rather than PowerShell) tool. We use Invoke-Expression to allow us to 
 # consume the appropriate values from the storage account variables. The value given to the add parameter of the
 # cmdkey utility is the host address for the storage account, <storage-account>.file.core.windows.net for Azure 
 # Public Regions. $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign 
 # clouds or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-Invoke-Expression -Command "cmdkey /add:$([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) " + `
-    "/user:AZURE\$($storageAccount.StorageAccountName) /pass:$($storageAccountKeys[0].Value)"
+Invoke-Expression -Command ("cmdkey /add:$([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) " + `
+    "/user:AZURE\$($storageAccount.StorageAccountName) /pass:$($storageAccountKeys[0].Value)")
 ```
 
 可以使用 list 参数验证 cmdkey 实用程序是否已存储该存储帐户的凭据：
@@ -135,11 +144,11 @@ $resourceGroupName = "<your-resource-group-name>"
 $storageAccountName = "<your-storage-account-name>"
 $fileShareName = "<your-file-share-name>"
 
-# These commands require you to be logged into your Azure account, run Login-AzureRmAccount if you haven't
+# These commands require you to be logged into your Azure account, run Login-AzAccount if you haven't
 # already logged in.
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-$storageAccountKeys = Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
-$fileShare = Get-AzureStorageShare -Context $storageAccount.Context | Where-Object { 
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
+$storageAccountKeys = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
+$fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object { 
     $_.Name -eq $fileShareName -and $_.IsSnapshot -eq $false
 }
 

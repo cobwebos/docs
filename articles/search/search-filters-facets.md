@@ -1,6 +1,6 @@
 ---
-title: Azure 搜索中的分面筛选器 | Microsoft Docs
-description: 按用户安全标识、语言、地理位置或数字值进行条件筛选可以减少 Azure 搜索（Microsoft Azure 上的托管云搜索服务）中的查询返回的搜索结果。
+title: 用于应用中搜索导航的分面筛选器 - Azure 搜索
+description: 按用户安全标识、地理位置或数字值进行条件筛选可以减少 Azure 搜索（Microsoft Azure 上托管的云搜索服务）中的查询返回的搜索结果。
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: heidist
-ms.openlocfilehash: 3f2cfea52d3c3f4bfc75364d0662a4218219152d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 94a0d3f19e595ac040d908ea47d6332ceae0943c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792403"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314799"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>如何在 Azure 搜索中生成分面筛选器 
 

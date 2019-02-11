@@ -1,22 +1,22 @@
 ---
-title: 浏览 Azure 上 SQL Server 虚拟机中的数据 | Microsoft Docs
+title: 浏览 SQL Server 虚拟机中的数据 - Team Data Science Process
 description: 在 Azure 上的 SQL Server 虚拟机中浏览数据和生成功能
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 73e56497834344e0e41d89313086c051683b4fbb
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 7b0ae144cce1213b5476ba1cccc94d994ebeda60
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442551"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464120"
 ---
 # <a name="heading"></a>在 Azure 上处理 SQL Server 虚拟机中的数据
 本文档介绍如何浏览数据，并针对存储在 Azure 的 SQL Server VM 中的数据生成功能。 可通过使用 SQL 或 Python 等编程语言的数据整理来实现上述目的。
@@ -132,7 +132,7 @@ ms.locfileid: "52442551"
 Python 中的 [Pandas 库](http://pandas.pydata.org/)提供一组丰富的数据结构，以及针对 Python 编程的数据操作的数据分析工具。 下面的代码读取 SQL Server 数据库返回的结果到 Pandas 数据帧:
 
     # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
+    data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 
 现可使用 Pandas 数据帧，如文章[处理数据科学环境中的 Azure Blob 数据](data-blob.md)所述。
 

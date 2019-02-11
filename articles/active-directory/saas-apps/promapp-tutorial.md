@@ -1,25 +1,25 @@
 ---
-title: 教程：Azure Active Directory 与 Promapp 集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 Promapp 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Promapp 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 418d0601-6e7a-4997-a683-73fa30a2cfb5
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 6bcd1add3985112fe60aab22f1799e40ad8889b2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d2fbcc5dcf97eeb63c058ca49260d50c815bd14d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421856"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184234"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>教程：Azure Active Directory 与 Promapp 的集成
 
@@ -113,6 +113,7 @@ ms.locfileid: "39421856"
     ![配置单一登录](./media/promapp-tutorial/tutorial_promapp_url.png)
 
     a. 在“标识符”文本框中，使用以下模式键入 URL：
+    
     | |
     |--|
     | `https://go.promapp.com/TENANTNAME/`|
@@ -171,7 +172,7 @@ ms.locfileid: "39421856"
     c. 在记事本中打开下载的证书，复制除第一行 (**-----BEGIN CERTIFICATE-----**) 和最后一行 (**-----END CERTIFICATE-----**) 之外的证书内容，将其粘贴到“SSO-x.509 证书”文本框中，然后单击“保存”。
         
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -246,7 +247,7 @@ Promapp 应用程序支持实时预配。 这意味着，在尝试使用访问�
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1328119917276b8135c4a6d4188b67bcff2fc069
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 16c9e1cb568533e8dcad046c4ee21bfeaf19d5b7
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632741"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407841"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>将 Apache Ambari Hive 视图与 HDInsight 中的 Apache Hadoop 配合使用
 
@@ -26,7 +26,7 @@ ms.locfileid: "51632741"
 
 * 基于 Linux 的 Apache Hadoop on HDInsight 群集版本 3.4 或更高版本。
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 * Web 浏览器
@@ -81,7 +81,7 @@ ms.locfileid: "51632741"
 
    * `SELECT`：选择 t4 列包含值 [ERROR] 的所有行的计数。
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > 将“数据库”选择保留为“默认”。 本文档中的示例使用 HDInsight 附带的默认数据库。
 
 5. 要启动查询，请使用工作表下方的“执行”按钮。 按钮变为橙色，文本更改为“停止”。
@@ -93,7 +93,7 @@ ms.locfileid: "51632741"
 
     可使用“日志”选项卡查看作业创建的日志记录信息。
 
-   > [!TIP]
+   > [!TIP]  
    > 通过位于“查询处理结果”部分左上角的“保存结果”下拉对话框，可下载或保存结果。
 
 ### <a name="visual-explain"></a>可视化说明
@@ -106,7 +106,7 @@ ms.locfileid: "51632741"
 
 要显示查询的 Tez UI，选择工作表下方的“Tez”选项卡。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Tez 不用于解析所有查询。 无需使用 Tez 即可解析许多查询。 
 
 如果使用 Tez 来解析查询，会显示有向无环图 (DAG)。 若要查看之前运行的查询的 DAG，或调试 Tez 进程，请改用 [Tez 视图](../hdinsight-debug-ambari-tez-view.md)。
@@ -129,7 +129,7 @@ ms.locfileid: "51632741"
 
 ![“保存的查询”选项卡图像](./media/apache-hadoop-use-hive-ambari-view/saved-queries.png)
 
-> [!TIP]
+> [!TIP]  
 > 保存的查询存储在默认群集存储中。 可在路径 `/user/<username>/hive/scripts` 下找到保存的查询。 它们存储为纯文本 `.hql` 文件。
 >
 > 如果删除群集但保留存储，可使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)或 Data Lake 存储资源管理器（通过 [Azure 门户](https://portal.azure.com)）等实用工具来检索查询。
@@ -165,8 +165,8 @@ create temporary function myawesomeudf as 'com.myudfs.Awesome';
 
 有关如何在 HDInsight 中将 UDF 与 Hive 配合使用的详细信息，请参阅以下文章：
 
-* [在 HDInsight 中将 Python 与 Hive 和 Pig 配合使用](python-udf-hdinsight.md)
-* [如何将自定义 Hive UDF 添加到 HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [在 HDInsight 中将 Python 与 Apache Hive 和 Apache Pig 配合使用](python-udf-hdinsight.md)
+* [如何将自定义 Apache Hive UDF 添加到 HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
 ## <a name="hive-settings"></a>Hive 设置
 
@@ -176,9 +176,9 @@ create temporary function myawesomeudf as 'com.myudfs.Awesome';
 
 有关 HDInsight 中 Hive 的常规信息：
 
-* [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
+* [将 Apache Hive 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
 
 有关 HDInsight 上的 Hadoop 的其他使用方法的信息：
 
-* [将 Pig 与 Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
-* [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-mapreduce.md)
+* [将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
+* [将 MapReduce 与 HDInsight 上的 Apache Hadoop 配合使用](hdinsight-use-mapreduce.md)

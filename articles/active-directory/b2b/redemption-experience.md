@@ -3,19 +3,19 @@ title: B2B 协作邀请兑换 - Azure Active Directory | Microsoft Docs
 description: 介绍最终用户的 Azure AD B2B 协作邀请兑换体验，包括对隐私条款的同意。
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 7819ed3e18092e8b7bdf52225e7025b4b6d8146a
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 4f282edc08b16e226e6028b01f04dc62c1a57fea
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981875"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077246"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B 协作邀请兑换
 
@@ -26,7 +26,7 @@ ms.locfileid: "45981875"
 
 ## <a name="redemption-through-a-direct-link"></a>通过直接链接兑换
 
-来宾邀请者可通过发送指向共享应用的直接链接来邀请来宾用户。 对于来宾用户，兑换体验就像登录与其共享的应用一样简单。 他们可单击指向该应用的链接，查看并接受隐私条款，然后无缝访问该应用。 在大多数情况下，来宾用户不再需要单击邀请电子邮件中的兑换 URL。
+来宾邀请者可通过发送[指向共享应用的直接链接](../manage-apps/end-user-experiences.md#direct-sign-on-links)来邀请来宾用户。 对于来宾用户，兑换体验就像登录与其共享的应用一样简单。 他们可单击指向该应用的链接，查看并接受隐私条款，然后无缝访问该应用。 在大多数情况下，来宾用户不再需要单击邀请电子邮件中的兑换 URL。
 
 如果通过用户界面邀请来宾用户，或选择将发送邀请电子邮件作为 PowerShell 邀请体验的一部分，则受邀用户仍会收到邀请电子邮件。 此电子邮件可用于以下特殊情况：
 
@@ -51,7 +51,13 @@ ms.locfileid: "45981875"
 
 ![显示访问面板中用户设置的屏幕截图](media/redemption-experience/ConsentScreen.png) 
 
-有关如何以租户管理员身份链接到组织隐私声明的信息，请参阅[操作说明：在 Azure Active Directory 中添加组织的隐私信息](https://aka.ms/adprivacystatement)。
+有关如何以租户管理员身份链接到组织隐私声明的信息，请参阅[如何：在 Azure Active Directory 中添加组织的隐私信息](https://aka.ms/adprivacystatement)。
+
+## <a name="terms-of-use"></a>使用条款
+
+可以使用 Azure AD 使用条款功能在初始兑换过程中向来宾用户显示使用条款。 在 Azure Active Directory 中，可以在“管理” > “组织关系” > “使用条款”下或在“安全性” > “条件访问” > “使用条款”下访问此功能。 有关详细信息，请参阅 [Azure AD 使用条款功能](../governance/active-directory-tou.md)。
+
+![显示新使用条款的屏幕截图](media/redemption-experience/organizational-relationships-terms-of-use.png) 
 
 ## <a name="next-steps"></a>后续步骤
 

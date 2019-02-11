@@ -3,19 +3,19 @@ title: 了解 Azure Active Directory B2C 中的初学者包的自定义策略 | 
 description: 有关 Azure Active Directory B2C 自定义策略的主题。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: ebcd7a677acde12558b0f566bce9172a0d00233b
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.subservice: B2C
+ms.openlocfilehash: dbd57e53fbaec4368e3c8ce9600bce1d37bcab8f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442468"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55173201"
 ---
 # <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>了解 Azure AD B2C 自定义策略初学者包的自定义策略
 

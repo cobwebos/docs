@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 10/24/2018
-ms.openlocfilehash: 31b09818f901ecf957364ae77fd8c6e636b04342
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.date: 12/03/2018
+ms.openlocfilehash: 3186261b935d48343eab2fd818cd8ed936f41f3f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712137"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472774"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异
 
@@ -145,7 +145,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="collation"></a>Collation
 
-服务器排序规则为 `SQL_Latin1_General_CP1_CI_AS`，不可更改。 请参阅[排序规则](https://docs.microsoft.com/sql/t-sql/statements/collations)。
+默认实例排序规则为 `SQL_Latin1_General_CP1_CI_AS` 并可以被指定为创建参数。 请参阅[排序规则](https://docs.microsoft.com/sql/t-sql/statements/collations)。
 
 ### <a name="database-options"></a>数据库选项
 
@@ -228,14 +228,14 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="distributed-transactions"></a>分布式事务
 
-托管实例目前不支持 MSDTC 也不支持[弹性事务](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-transactions-overview)。
+托管实例目前不支持 MSDTC 也不支持[弹性事务](sql-database-elastic-transactions-overview.md)。
 
 ### <a name="extended-events"></a>扩展事件
 
 不支持对 XEvents 使用某些特定于 Windows 的目标：
 
 - 不支持 `etw_classic_sync target`。 在 Azure Blob 存储中存储 `.xel` 文件。 请参阅 [etw_classic_sync 目标](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etwclassicsynctarget-target)。
-- 不支持 `event_file target`。 在 Azure Blob 存储中存储 `.xel` 文件。 请参阅 [event_file 目标](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#eventfile-target)。
+- 不支持 `event_file target`。 在 Azure Blob 存储中存储 `.xel` 文件。 请参阅 [event_file 目标](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target)。
 
 ### <a name="external-libraries"></a>外部库
 
@@ -277,9 +277,10 @@ WITH PRIVATE KEY (<private_key_options>)
 ### <a name="logins--users"></a>登录名/用户
 
 - 支持使用 `FROM CERTIFICATE`、`FROM ASYMMETRIC KEY` 和 `FROM SID` 创建的 SQL 登录名。 请参阅 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql)。
-- 不支持使用 `CREATE LOGIN ... FROM WINDOWS` 语法创建的 Windows 登录名。
-- 创建实例的 Azure Active Directory (Azure AD) 用户具有[不受限制的管理特权](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#unrestricted-administrative-accounts)。
-- 可以使用 `CREATE USER ... FROM EXTERNAL PROVIDER` 语法创建非管理员 Azure Active Directory (Azure AD) 数据库级用户。 请参阅 [CREATE USER ...FROM EXTERNAL PROVIDER](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users)
+- 支持使用 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) 语法或 [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) 语法创建的 Azure Active Directory (AAD) 登录（公共预览版）。
+- 不支持使用 `CREATE LOGIN ... FROM WINDOWS` 语法创建的 Windows 登录名。 使用 Azure Active Directory 登录名和用户。
+- 创建实例的 Azure Active Directory (Azure AD) 用户具有[不受限制的管理特权](sql-database-manage-logins.md#unrestricted-administrative-accounts)。
+- 可以使用 `CREATE USER ... FROM EXTERNAL PROVIDER` 语法创建非管理员 Azure Active Directory (Azure AD) 数据库级用户。 请参阅 [CREATE USER ...FROM EXTERNAL PROVIDER](sql-database-manage-logins.md#non-administrator-users)
 
 ### <a name="polybase"></a>Polybase
 
@@ -429,12 +430,12 @@ WITH PRIVATE KEY (<private_key_options>)
 
 例如，托管实例可以将一个大小为 1.2 TB 的文件放在 4 TB 磁盘上，将 248 个文件（每个大小为 1 GB）放在单独的 128 GB 磁盘上。 在本示例中：
 
-- 磁盘存储总大小为 1 x 4 TB + 248 x 128 GB = 35 TB。
+- 分配的磁盘存储总大小为 1 x 4 TB + 248 x 128 GB = 35 TB。
 - 实例上的数据库的总预留空间为 1 x 1.2 TB + 248 x 1 GB = 1.4 TB。
 
-这说明在某些情况下，由于文件分布非常具体，托管实例可能会出乎意料地达到为附加的 Azure 高级磁盘预留的 35TB。
+这说明在某些情况下，由于文件分布很具体，托管实例可能会出乎意料地达到为附加的 Azure 高级磁盘预留的 35 TB。
 
-在此示例中，只要未添加新文件，现有数据库将继续工作并且可以毫无问题地增长。 但是，由于没有足够的空间用于新磁盘驱动器，因此无法创建或还原新数据库，即使所有数据库的总大小未达到实例大小限制也是如此。 这种情况下返回的错误并不明确。
+在此示例中，只要未添加新文件，现有数据库就会继续工作并且可以毫无问题地增长。 但是，由于没有足够的空间用于新磁盘驱动器，因此无法创建或还原新数据库，即使所有数据库的总大小未达到实例大小限制也是如此。 这种情况下返回的错误并不明确。
 
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>在还原数据库期间不正确地配置了 SAS 密钥
 
@@ -443,7 +444,10 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="tooling"></a>工具
 
-访问托管实例时，SQL Server Management Studio 和 SQL Server Data Tools 可能会出现一些问题。 将发布正式版之前，我们将解决所有工具问题。
+访问托管实例时，SQL Server Management Studio (SSMS) 和 SQL Server Data Tools (SSDT) 可能会出现一些问题。
+
+- 目前不支持将 Azure AD 登录名和用户（公共预览版）用于 SSDT。
+- Azure AD 登录名和用户（公共预览版）的脚本在 SSMS 中不受支持。
 
 ### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>在某些视图、日志和消息中，数据库名称不正确
 
@@ -451,7 +455,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="database-mail-profile"></a>数据库邮件配置文件
 
-只能有一个数据库邮件配置文件，并且该配置文件必须命名为 `AzureManagedInstance_dbmail_profile`。 很快将会去除此暂时性限制。
+只能有一个数据库邮件配置文件，并且该配置文件必须命名为 `AzureManagedInstance_dbmail_profile`。
 
 ### <a name="error-logs-are-not-persisted"></a>错误日志不会持久保留
 
@@ -496,9 +500,15 @@ using (var scope = new TransactionScope())
 
 ### <a name="clr-modules-and-linked-servers-sometime-cannot-reference-local-ip-address"></a>CLR 模块和链接的服务器有时无法引用本地 IP 地址
 
-放置在托管实例中的 CLR 模块和链接的服务器/分布式查询如果引用了当前实例，则它们有时候无法解析本地实例的 IP。 这是暂时性错误。
+放置在托管实例中的 CLR 模块和链接的服务器/分布式查询如果引用了当前实例，则它们有时候无法解析本地实例的 IP。 此错误是暂时性问题。
 
 **解决方法**：如果可能，请在 CLR 模块中使用上下文连接。
+
+### <a name="tde-encrypted-databases-dont-support-user-initiated-backups"></a>TDE 加密数据库不支持用户启动的备份
+
+不能在使用透明数据加密 (TDE) 加密的数据库上执行 `BACKUP DATABASE ... WITH COPY_ONLY`。 TDE 强制使用内部 TDE 密钥对备份进行加密，并且该密钥无法导出，因此将无法还原备份。
+
+**解决方法**：使用自动备份和时点还原，或在数据库上禁用加密。
 
 ## <a name="next-steps"></a>后续步骤
 

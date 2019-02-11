@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 4c96ca70b9b6a82dcccec443ac0b1e06f96a2396
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: fd7e7151d8ec676239ed810fb700149aab0fe0fa
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31597405"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427396"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>通过警报和 Azure Functions，使用数据包捕获执行主动网络监视
 
@@ -35,7 +35,7 @@ Azure 中部署的资源全天候运行。 但你和你的同事无法全天候�
 
 ## <a name="prerequisites"></a>先决条件
 
-* 最新版本的 [Azure PowerShell](/powershell/azure/install-azurerm-ps)。
+* 最新版本的 [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)。
 * 网络观察程序的现有实例。 [创建网络观察程序的实例](network-watcher-create.md)（如果还没有这样一个实例的话）。
 * 在网络观察程序所在的同一区域中的现有虚拟机，装有 [Windows 扩展](../virtual-machines/windows/extensions-nwa.md)或 [Linux 虚拟机扩展](../virtual-machines/linux/extensions-nwa.md)。
 
@@ -331,7 +331,7 @@ $Encryptedpassword
 
     ![复制函数 URL][2]
 
-如果需要在 webhook POST 请求的有效负载中使用自定义属性，请参阅[针对 Azure 指标警报配置 webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md)。
+如果需要在 webhook POST 请求的有效负载中使用自定义属性，请参阅[针对 Azure 指标警报配置 webhook](../azure-monitor/platform/alerts-webhooks.md)。
 
 ## <a name="configure-an-alert-on-a-vm"></a>在 VM 上配置警报
 
@@ -343,7 +343,7 @@ $Encryptedpassword
 
   |**设置** | **值** | **详细信息** |
   |---|---|---|
-  |**Name**|TCP_Segments_Sent_Exceeded|警报规则的名称。|
+  |**名称**|TCP_Segments_Sent_Exceeded|警报规则的名称。|
   |**说明**|发送的 TCP 段已超出阈值|警报规则的说明。||
   |**指标**|发送的 TCP 段| 用于触发警报的指标。 |
   |**条件**|大于| 评估指标时要使用的条件。|

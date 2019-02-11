@@ -1,5 +1,5 @@
 ---
-title: 为 Azure 流分析 Edge 作业开发 .NET Standard 用户定义函数（预览版）
+title: 为 Azure 流分析 Edge 作业（预览版）开发 .NET Standard 函数
 description: 了解如何为流分析 Edge 作业编写 c# 用户定义函数。
 services: stream-analytics
 author: mamccrea
@@ -8,13 +8,14 @@ manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: f0da25410fe81a93501df940ffbb0e115456a9e8
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 5df4c9dfe18b02ade3a37717da9c68acbfcf1853
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247801"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106594"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-edge-jobs-preview"></a>为 Azure 流分析 Edge 作业开发 .NET Standard 用户定义函数（预览版）
 
@@ -82,15 +83,15 @@ Azure 流分析的 Visual Studio 工具可用于轻松编写 UDF、在本地（�
 
 4. 你会在“解决方案资源管理器”中看到“引用”下方列出的 UDFTest。
 
-   ![在 Azure 流分析 Edge 解决方案资源管理器中查看用户定义的函数引用](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-added-reference.png)
+   ![在解决方案资源管理器中查看用户定义的函数引用](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-added-reference.png)
 
 5. 右键单击“Functions”文件夹，然后选择“新项”。
 
-   ![在 Visual Studio 的 Azure 流分析 Edge 解决方案中向 Functions 添加新项](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png)
+   ![在 Azure 流分析 Edge 解决方案中向 Functions 添加新项](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png)
 
 6. 将 C# 函数“SquareFunction.json”添加到 Azure 流分析项目中。
 
-   ![从 Visual Studio 的流分析 Edge 项列表中选择 C Sharp 函数](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png)
+   ![从 Visual Studio 的流分析 Edge 项选择 CSharp 函数](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png)
 
 7. 双击“解决方案资源管理器”中的函数，以打开配置对话框。
 
@@ -133,6 +134,6 @@ UDF 预览目前有以下限制：
 
 ## <a name="next-steps"></a>后续步骤
 
-* [教程：为 Azure 流分析 Edge 作业编写 C# 用户定义函数（预览版）](stream-analytics-edge-csharp-udf.md)
+* [教程：为 Azure 流分析 Edge 作业（预览版）编写 C# 用户定义函数](stream-analytics-edge-csharp-udf.md)
 * [教程：Azure 流分析 JavaScript 用户定义的函数](stream-analytics-javascript-user-defined-functions.md)
 * [使用 Visual Studio 查看 Azure 流分析作业](stream-analytics-vs-tools.md)

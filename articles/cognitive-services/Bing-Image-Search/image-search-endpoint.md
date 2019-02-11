@@ -1,34 +1,34 @@
 ---
-title: 图像搜索终结点 - 必应图像搜索 API
+title: 必应图像搜索 API 的终结点
 titleSuffix: Azure Cognitive Services
 description: 必应图像搜索 API 的可用终结点列表。
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: v-gedod
-ms.openlocfilehash: ca38943908bf3eee04c40cf4decf81fd20b08a1f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 7208f1b3f1658c23a6b38c661a37b050c92ca891
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295914"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55204076"
 ---
-# <a name="image-search-endpoints"></a>图像搜索终结点
+# <a name="endpoints-for-the-bing-image-search-api"></a>必应图像搜索 API 的终结点
 
 图像搜索 API 包括 3 个终结点。  终结点 1 基于查询返回来自 Web 的图像。 终结点 2 返回 [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imageinsightsresponse)。  终结点 3 返回热门图像。
 ## <a name="endpoints"></a>终结点
 若要使用必应 API 获取图像结果，请向以下某个终结点发送请求。 使用标头和 URL 参数来定义更多规范。
 
-终结点 1：返回与 `?q=""` 定义的用户搜索查询相关的图像。
+**终结点 1：** 返回与 `?q=""` 定义的用户搜索查询相关的图像。
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search
 ```
 
-终结点 2：使用有关 `GET` 或 `POST` 返回关于图像的见解。
+**终结点 2：** 使用有关 `GET` 或 `POST` 返回关于图像的见解。
 ```
  GET or POST https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```
@@ -37,7 +37,7 @@ GET 请求返回有关图像的见解，例如包含图像的网页。 包括 [i
 或者，你可以在 `POST` 请求的正文中包含二进制图像，并将 [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) 参数设置为 `RecognizedEntities`。 这将返回 [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#insightstoken)，用作后续 `GET` 请求中的参数，该参数返回图像中的有关人的信息。  将 `modules` 设置为 `All` 获取所有见解（`POST` 的结果中的 `RecognizedEntities` 除外），无需使用 `insightsToken` 进行其他调用。
 
 
-终结点 3：基于其他人的搜索请求返回热门图像。 这些图像被分成不同类别，例如，基于值得注意的人或事件。
+**终结点 3：** 基于其他人的搜索请求返回热门图像。 这些图像被分成不同类别，例如，基于值得注意的人或事件。
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/trending
 ```
@@ -49,7 +49,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/trending
 对图像搜索请求的响应包括作为 JSON 对象的结果。 有关分析结果的示例，请参阅[教程](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)和[源代码](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app-source)。
 
 ## <a name="next-steps"></a>后续步骤
-必应 API 支持根据其类型返回结果的搜索操作。 所有搜索终结点均将结果作为 JSON 响应对象返回。  所有终结点支持后列查询：按经度、纬度和搜索半径返回特定语言和/或位置的查询。
+必应 API 支持根据其类型返回结果的搜索操作。 所有搜索终结点均将结果作为 JSON 响应对象返回。  所有终结点支持后列查询：按经度、纬度和搜索半径返回特定语言和/或位置的查询。
 
 有关每个终结点支持的参数的完整信息，请参阅每个类型的参考页面。
 有关使用图像搜索 API 的基本请求的示例，请参阅[图像搜索快速入门](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/search-the-web)。

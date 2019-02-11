@@ -2,24 +2,20 @@
 title: 在 Azure Stack 上安装 Azure 备份服务器 | Microsoft Docs
 description: 使用 Azure 备份服务器保护或备份 Azure Stack 中的工作负荷。
 services: backup
-documentationcenter: ''
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
-editor: ''
-keywords: Azure 备份服务器；保护工作负荷；备份工作负荷
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 6/5/2018
-ms.author: markgal
-ms.openlocfilehash: 5092a677bcbeac179e26fa0591b6a1cfbc3263d4
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.topic: conceptual
+ms.date: 01/31/2019
+ms.author: raynew
+ms.openlocfilehash: 8269cde7c1be5ba5671bafdae850d88c43db27ea
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576691"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497921"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>在 Azure Stack 上安装 Azure 备份服务器
 
@@ -37,7 +33,7 @@ Azure 备份服务器保护以下 Azure Stack 虚拟机工作负荷。
 | Windows Server 半年频道 - Datacenter/Enterprise/Standard | 卷、文件、文件夹 |
 | Windows Server 2016 - Datacenter/Enterprise/Standard | 卷、文件、文件夹 |
 | Windows Server 2012 R2 - Datacenter/Enterprise/Standard | 卷、文件、文件夹 |
-| Windows Server 2012 - Datacenter/Entprise/Standard | 卷、文件、文件夹 |
+| Windows Server 2012 - Datacenter/Enterprise/Standard | 卷、文件、文件夹 |
 | Windows Server 2008 R2 - Datacenter/Enterprise/Standard | 卷、文件、文件夹 |
 | SQL Server 2016 | 数据库 |
 | SQL Server 2014 | 数据库 |
@@ -91,7 +87,7 @@ Azure 备份服务器虚拟机必须加入域。 拥有管理员特权的域用�
 
 ## <a name="using-an-iaas-vm-in-azure-stack"></a>在 Azure Stack 中使用 IaaS VM
 
-为 Azure 备份服务器选择服务器时，请从 Windows Server 2012 R2 Datacenter 或 Windows Server 2016 Datacenter 库映像着手。 [在 Azure 门户中创建第一个 Windows 虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)一文提供了使用建议的虚拟机的入门教程。 建议的服务器虚拟机 (VM) 必须至少符合以下要求：3.5-GB RAM 双核 A2 标准大小。
+为 Azure 备份服务器选择服务器时，请从 Windows Server 2012 R2 Datacenter 或 Windows Server 2016 Datacenter 库映像着手。 [在 Azure 门户中创建第一个 Windows 虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)一文提供了使用建议的虚拟机的入门教程。 建议服务器虚拟机 (VM) 最低要求应为：包含 2 核、3.5 GB RAM 的 A2 标准。
 
 使用 Azure 备份服务器保护工作负荷有许多细微差异需要注意。 可通过[将 DPM 安装为 Azure 虚拟机](https://technet.microsoft.com/library/jj852163.aspx)一文了解这些细微差异。 部署计算机前，请先阅读完本文。
 

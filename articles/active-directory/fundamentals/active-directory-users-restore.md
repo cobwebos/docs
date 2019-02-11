@@ -1,25 +1,25 @@
 ---
-title: 如何在 Azure Active Directory 中还原或永久删除最近删除的用户 | Microsoft Docs
-description: 了解如何使用 Azure Active Directory 查看可还原的用户、还原已删除的用户或永久删除用户。
+title: 还原或永久删除最近删除的用户 - Azure Active Directory | Microsoft Docs
+description: 如何使用 Azure Active Directory 查看可还原的用户、还原已删除的用户或永久删除用户。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 12/17/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro
-ms.openlocfilehash: 88d3c672cd072cd4b252f7ce4ede3a4c7b13a7db
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 70d62275506a730e889b60dbdf8cab87c69f08f1
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736166"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102011"
 ---
-# <a name="how-to-restore-or-permanently-remove-a-recently-deleted-user-with-azure-active-directory"></a>如何：使用 Azure Active Directory 还原或永久删除最近删除的用户
+# <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>使用 Azure Active Directory 还原或删除最近删除的用户
 删除用户后，帐户将保持挂起状态 30 天。 在此 30 天期间，可以还原用户帐户及其所有属性。 30 天期限过后，将自动且永久删除用户。
 
 可在 Azure 门户中使用 Azure Active Directory (Azure AD) 查看可还原的用户、还原已删除的用户或永久删除用户。

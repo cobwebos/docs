@@ -10,16 +10,16 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.date: 10/15/2017
-ms.openlocfilehash: 274fa3153f6a354b121b7fd8338d8e0d2d94f4f4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 52aea4e47473d4dd27519ae53322b0e72d93f20e
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230806"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062887"
 ---
 # <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建和部署逻辑应用
 
-使用 Azure 逻辑应用提供的 Azure 资源管理器模板，不仅可以创建用于自动处理工作流的逻辑应用，还可以定义对部署使用的资源和参数。 可以将此模板用于自己的业务方案，也可以根据需要自定义此模板。 详细了解[逻辑应用的资源管理器模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json)和 [Azure 资源管理器模板结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)。
+使用 Azure 逻辑应用提供的 Azure 资源管理器模板，不仅可以创建用于自动处理工作流的逻辑应用，还可以定义对部署使用的资源和参数。 可以将此模板用于自己的业务方案，也可以根据需要自定义此模板。 详细了解[逻辑应用的资源管理器模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json)和 [Azure 资源管理器模板结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)。 有关 JSON 语法和属性，请参阅 [Microsoft.Logic 资源类型](/azure/templates/microsoft.logic/allversions)。
 
 ## <a name="define-the-logic-app"></a>定义逻辑应用
 

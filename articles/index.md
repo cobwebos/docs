@@ -6,12 +6,12 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: ef9cb669db24cf2b68de955047e8e2d2f9fb04e9
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 3ed8c9b12bbccd0e31df4874a3798f0244666e62
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499642"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301622"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -211,6 +211,7 @@ Go</a>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/machine-learning/">机器学习</a></li>
                                                     <li><a class="barLink" href="/azure/cognitive-services/">认知服务</a></li>
+                                                    <li><a class="barLink" href="/azure/notebooks/">Azure Notebook</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -297,22 +298,22 @@ Azure DevOps Projects </a>
                                                 <ul class="noBullet">
                                                     <li>
                                                         <a class="barLink" href="/learn/modules/tour-azure-services-and-features/">
-                                                            <img src="/learn/achievements/tour-azure-services-and-features.svg" alt="">
+                                                            <img src="https://docs.microsoft.com/learn/achievements/tour-azure-services-and-features.svg" alt="">
 浏览 Azure 服务和功能 </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/learn/modules/principles-cloud-computing/">
-                                                            <img src="/learn/achievements/principles-cloud-computing.svg" alt="">
+                                                            <img src="https://docs.microsoft.com/learn/achievements/principles-cloud-computing.svg" alt="">
 云计算原则 </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/learn/modules/control-azure-services-with-cli/">
-                                                            <img src="/learn/achievements/control-azure-services-with-cli.svg" alt="">
+                                                            <img src="https://docs.microsoft.com/learn/achievements/control-azure-services-with-cli.svg" alt="">
 使用 CLI 控制 Azure 服务 </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/learn/modules/automate-azure-tasks-with-powershell/">
-                                                            <img src="/learn/achievements/automate-azure-tasks-with-powershell.svg" alt="">
+                                                            <img src="https://docs.microsoft.com/learn/achievements/automate-azure-tasks-with-powershell.svg" alt="">
 将脚本与 PowerShell 配合使用，自动完成 Azure 任务 </a>
                                                     </li>
                                                     <li>
@@ -380,12 +381,6 @@ Azure DevOps Projects </a>
                                             <a href="/azure/container-instances/">
                                                 <img src="media/index/ContainerInstances.svg" alt="" />
                                                 <p>Azure 容器实例</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/azure/batch-ai/">
-                                                <img src="media/index/Azure_batch_ai.svg" alt="" />
-                                                <p>Azure Batch AI</p>
                                             </a>
                                         </li>
                                         <li>
@@ -458,9 +453,9 @@ Azure DevOps Projects </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/redis-cache/">
+                                            <a href="/azure/azure-cache-for-redis/">
                                                 <img src="media/index/RedisCache.svg" alt="" />
-                                                <p>Redis 缓存</p>
+                                                <p>用于 Redis 的 Azure 缓存</p>
                                             </a>
                                         </li>
                                         <li>
@@ -580,12 +575,6 @@ Azure DevOps Projects </a>
                                             <a href="/azure/event-grid/">
                                                 <img src="media/index/azure_event_grid.svg" alt="" />
                                                 <p>事件网格</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/azure/biztalk-services/">
-                                                <img src="media/index/BizTalkServices.svg" alt="" />
-                                                <p>BizTalk 服务</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -762,12 +751,6 @@ Azure DevOps Projects </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/batch-ai/">
-                                                <img src="media/index/Azure_batch_ai.svg" alt="" />
-                                                <p>Azure Batch AI</p>
-                                            </a>
-                                        </li>
-                                        <li>
                                             <a href="https://docs.microsoft.com/bot-framework/bot-service-overview-introduction">
                                                 <img src="media/index/bot-service.svg" alt="" />
                                                 <p>Azure 机器人服务</p>
@@ -798,6 +781,11 @@ Azure DevOps Projects </a>
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/notebooks">
+                                                <img src="media/index/notebooks.svg" alt="" />
+                                                <p>Azure Notebook</p>
+                                            </a>
+                                        </li>                                        <li>
                                             <a href="/azure/search/">
                                                 <img src="media/index/Search.svg" alt="" />
                                                 <p>Azure 搜索</p>
@@ -1024,7 +1012,7 @@ Azure DevOps Projects </a>
                                         </li>
                                         <li>
                                             <a href="/azure/cost-management/">
-                                                <img src="media/index/billing.svg" alt="" />
+                                                <img src="media/index/cost-management.svg" alt="" />
                                                 <p>成本管理</p>
                                             </a>
                                         </li>
@@ -1060,7 +1048,7 @@ Azure DevOps Projects </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/storage/data-lake-storage/introduction">
+                                            <a href="/azure/storage/blobs/data-lake-storage-introduction">
                                                 <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
                                                 <p>Data Lake Storage Gen2</p>
                                             </a>
@@ -1225,9 +1213,14 @@ Azure DevOps Projects </a>
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/storage/blobs/data-lake-storage-introduction">
+                                                <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
+                                                <p>Data Lake Storage Gen2</p>
+                                            </a>
+                                            <li>
                                             <a href="/azure/data-lake-store/">
                                                 <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
-                                                <p>Data Lake Store</p>
+                                                <p>Data Lake Storage Gen1</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -1435,6 +1428,12 @@ Azure DevOps Projects </a>
                                             <a href="/azure/api-management/">
                                                 <img src="media/index/APIManagement.svg" alt="" />
                                                 <p>API 管理</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure-sphere/">
+                                                <img src="media/index/azure_sphere.svg" alt="" />
+                                                <p>Azure Sphere</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -1756,7 +1755,7 @@ Azure DevOps Projects </a>
                                         </li>
                                         <li>
                                             <a href="/azure/cost-management/">
-                                                <img src="media/index/billing.svg" alt="" />
+                                                <img src="media/index/cost-management.svg" alt="" />
                                                 <p>成本管理</p>
                                             </a>
                                         </li>
@@ -1894,25 +1893,6 @@ Azure DevOps Projects </a>
                                                 <div class="cardText">
                                                     <h3>容器实例</h3>
                                                     <p>使用单个命令轻松运行容器</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/batch-ai/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/batch-ai.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Azure Batch AI</h3>
-                                                    <p>轻松地以并行方式大规模试验并训练深度学习和 AI 模型</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2367,7 +2347,7 @@ Azure DevOps Projects </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/storage/data-lake-storage/introduction">
+                                <a href="/azure/storage/blobs/data-lake-storage-introduction">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2378,7 +2358,7 @@ Azure DevOps Projects </a>
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Lake Storage Gen2</h3>
-                                                    <p>与 Blob 存储集成的、高度可缩放的安全 Data Lake 存储</p>
+                                                    <p>基于 Blob 存储构建的高度可缩放的安全 Data Lake 存储</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3090,7 +3070,7 @@ Azure DevOps Projects </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/redis-cache/">
+                                <a href="/azure/azure-cache-for-redis/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -3100,7 +3080,7 @@ Azure DevOps Projects </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Redis 缓存</h3>
+                                                    <h3>用于 Redis 的 Azure 缓存</h3>
                                                     <p>具有高吞吐量、低延迟的数据访问的强大应用程序</p>
                                                 </div>
                                             </div>
@@ -3532,6 +3512,25 @@ Azure DevOps Projects </a>
                                 </a>
                             </li>
                             <li>
+                                <a href="/azure/storage/blobs/data-lake-storage-introduction">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Data Lake Storage Gen2</h3>
+                                                    <p>基于 Blob 存储构建的高度可缩放的安全 Data Lake 存储</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/data-lake-store/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -3542,7 +3541,7 @@ Azure DevOps Projects </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Lake Store</h3>
+                                                    <h3>Data Lake Storage Gen1</h3>
                                                     <p>适用于大数据分析工作负荷的超大规模存储库</p>
                                                 </div>
                                             </div>
@@ -3575,7 +3574,7 @@ Azure DevOps Projects </a>
                         <a href="#ai">AI + 机器学习</a>
                         <ul id="ai" class="cardsA">
                             <li class="fullSpan">
-                                <h2>人工智能</h2>
+                                <h2>人工智能 + 机器学习</h2>
                             </li>
                             <li>
                                 <a href="/azure/azure-databricks/">
@@ -3590,25 +3589,6 @@ Azure DevOps Projects </a>
                                                 <div class="cardText">
                                                     <h3>Azure Databricks</h3>
                                                     <p>使用 Spark 群集创建 Azure Databricks 工作区</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/batch-ai/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/Azure_batch_ai.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Azure Batch AI</h3>
-                                                    <p>轻松地以并行方式大规模试验并训练深度学习和 AI 模型</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3704,6 +3684,25 @@ Azure DevOps Projects </a>
                                                 <div class="cardText">
                                                     <h3>认知服务</h3>
                                                     <p>向应用、网站和机器人注入智能，以便观察、倾听、说话和理解</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/notebooks/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/notebooks.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Notebook</h3>
+                                                    <p>在预配置的云环境中托管和运行 Jupyter 笔记本</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -4289,6 +4288,25 @@ Azure DevOps Projects </a>
                                     </div>
                                 </a>
                             </li>
+                            <li>
+                                <a href="/azure-sphere/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/azure_sphere.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Sphere</h3>
+                                                    <p>创建安全性非常高的基于 MCU 的联网设备</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -4364,25 +4382,6 @@ Azure DevOps Projects </a>
                                                 <div class="cardText">
                                                     <h3>事件网格</h3>
                                                     <p>实现大规模的可靠事件传递</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/biztalk-services/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/BizTalkServices.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>BizTalk 服务</h3>
-                                                    <p>将企业与云无缝集成</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -5289,7 +5288,7 @@ Azure DevOps Projects </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/azure-resource-manager/resource-group-overview">
+                                <a href="/azure/azure-resource-manager/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -5409,7 +5408,7 @@ Azure DevOps Projects </a>
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/billing.svg" alt="" />
+                                                        <img src="media/index/cost-management.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -5647,7 +5646,7 @@ Azure DevOps Projects </a>
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/billing.svg" alt="" />
+                                                        <img src="media/index/cost-management.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">

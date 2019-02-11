@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: danlep
-ms.openlocfilehash: 804b7c0ff31575e6d62497fd5166e1a38a273076
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3784dd701b3ac44971e134f1b160fcfe2de2d9b3
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965568"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731795"
 ---
-# <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>详细步骤：创建和管理用于 Azure 中 Linux VM 的身份验证的 SSH 密钥 
+# <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>详细步骤：创建和管理 Azure 中的 Linux VM 用于身份验证的 SSH 密钥 
 使用安全外壳 (SSH) 密钥对，可在 Azure 上创建默认使用 SSH 密钥进行身份验证的 Linux 虚拟机，从而无需密码即可登录。 使用 Azure 门户、Azure CLI、资源管理器模板或其他工具创建的 VM 可在部署中包含 SSH 公钥，为 SSH 连接设置 SSH 密钥身份验证。 
 
 本文提供创建和管理用于 SSH 客户端连接的 SSH RSA 公钥/私钥文件对的详细背景和步骤。 如果想要快捷命令，请参阅[如何创建适用于 Azure 中 Linux VM 的 SSH 公钥/私钥对](mac-create-ssh-keys.md)。
@@ -38,7 +38,7 @@ SSH 私钥应使用非常安全的密码来保护它。 此密码只用于访问
 
 ## <a name="ssh-keys-use-and-benefits"></a>SSH 密钥的使用和优势
 
-通过指定公钥创建 Azure VM 时，Azure 将公钥（以 `.pub` 格式）复制到 VM 上的 `~/.ssh/authorized_keys` 文件夹。 `~/.ssh/authorized_keys` 中的 SSH 密钥用于在 SSH 登录连接时质询客户端以匹配相应的私钥。 在使用 SSH 密钥进行身份验证的 Azure Linux VM 中，Azure 会将 SSHD 服务器配置为不允许密码登录，仅允许 SSH 密钥登录。 因此，使用 SSH 密钥创建 Azure Linux VM 可确保 VM 部署的安全，不必进行通常在部署完后需要进行的配置步骤（即在 `sshd_config` 文件中禁用密码）。
+通过指定公钥创建 Azure VM 时，Azure 将公钥（以 `.pub` 格式）复制到 VM 上的 `~/.ssh/authorized_keys` 文件夹。 `~/.ssh/authorized_keys` 中的 SSH 密钥用于在 SSH 连接时质询客户端以匹配相应的私钥。 在使用 SSH 密钥进行身份验证的 Azure Linux VM 中，Azure 会将 SSHD 服务器配置为不允许密码登录，仅允许 SSH 密钥登录。 因此，使用 SSH 密钥创建 Azure Linux VM 可确保 VM 部署的安全，不必进行通常在部署完后需要进行的配置步骤（即在 `sshd_config` 文件中禁用密码）。
 
 如果不希望使用 SSH 密钥，可以将 Linux VM 设置为使用密码身份验证。 如果 VM 不向 Internet 公开，使用密码可能已足够。 但是，仍需要管理每台 Linux VM 的密码和维护正常密码策略和做法（如最小密码长度）并定期进行更新。 使用 SSH 密钥可降低跨多台 VM 管理单个凭据的复杂性。
 
@@ -130,11 +130,11 @@ ls -al ~/.ssh
 
 ## <a name="generate-keys-automatically-during-deployment"></a>部署期间自动生成密钥
 
-如果使用 [Azure CLI](/cli/azure) 创建 VM，则可以选择通过运行具有 `--generate-ssh-keys` 选项的 [az vm create](/cli/azure/vm#az_vm_create) 命令生成 SSH 公钥和私钥文件。 密钥存储在 ~/.ssh 目录中。 请注意，如果该位置已存在密钥，此命令选项不会覆盖这些密钥。
+如果使用 [Azure CLI](/cli/azure) 创建 VM，则可以选择通过运行具有 `--generate-ssh-keys` 选项的 [az vm create](/cli/azure/vm) 命令生成 SSH 公钥和私钥文件。 密钥存储在 ~/.ssh 目录中。 请注意，如果该位置已存在密钥，此命令选项不会覆盖这些密钥。
 
 ## <a name="provide-ssh-public-key-when-deploying-a-vm"></a>部署 VM 时提供 SSH 公钥
 
-若要创建使用 SSH 密钥进行身份验证的 Linux VM，请在使用 Azure 门户、CLI、资源管理器模板或其他方法创建 VM 时提供 SSH 公钥。 使用门户时，请输入公钥本身。 如果借助现有公钥使用 [Azure CLI](/cli/azure) 创建 VM，请通过运行具有 `--ssh-key-value` 选项的 [az vm create](/cli/azure/vm#az_vm_create) 命令来指定此公钥的值或位置。 
+若要创建使用 SSH 密钥进行身份验证的 Linux VM，请在使用 Azure 门户、CLI、资源管理器模板或其他方法创建 VM 时提供 SSH 公钥。 使用门户时，请输入公钥本身。 如果借助现有公钥使用 [Azure CLI](/cli/azure) 创建 VM，请通过运行具有 `--ssh-key-value` 选项的 [az vm create](/cli/azure/vm) 命令来指定此公钥的值或位置。 
 
 如果不熟悉 SSH 公钥的格式，则可通过运行 `cat` 来查看公钥（如下所示），注意需将 `~/.ssh/id_rsa.pub` 替换成自己的公钥文件位置：
 
@@ -148,7 +148,7 @@ cat ~/.ssh/id_rsa.pub
 ssh-rsa XXXXXXXXXXc2EAAAADAXABAAABAXC5Am7+fGZ+5zXBGgXS6GUvmsXCLGc7tX7/rViXk3+eShZzaXnt75gUmT1I2f75zFn2hlAIDGKWf4g12KWcZxy81TniUOTjUsVlwPymXUXxESL/UfJKfbdstBhTOdy5EG9rYWA0K43SJmwPhH28BpoLfXXXXXG+/ilsXXXXXKgRLiJ2W19MzXHp8z3Lxw7r9wx3HaVlP4XiFv9U4hGcp8RMI1MP1nNesFlOBpG4pV2bJRBTXNXeY4l6F8WZ3C4kuf8XxOo08mXaTpvZ3T1841altmNTZCcPkXuMrBjYSJbA8npoXAXNwiivyoe3X2KMXXXXXdXXXXXXXXXXCXXXXX/ azureuser@myserver
 ```
 
-如果将公钥文件的内容复制粘贴到 Azure 门户或资源管理器模板，请确保不会复制额外的空格或添加额外的换行符。 例如，如果使用 macOS，则可将公钥文件（默认为 `~/.ssh/id_rsa.pub`）通过管道传送到 pbcopy，以便复制内容（也可通过其他 Linux 程序执行此类操作，例如 xclip）。
+如果将公钥文件的内容复制粘贴到 Azure 门户或资源管理器模板，请确保不会复制额外的空格或添加额外的换行符。 例如，如果使用 macOS，则可将公钥文件（默认为 `~/.ssh/id_rsa.pub`）通过管道传送到 **pbcopy**，以便复制内容（也可通过其他 Linux 程序执行此类操作，例如 `xclip`）。
 
 如果更愿意使用多行格式的公钥，则可基于之前创建的公钥在 pem 容器中生成 RFC4716 格式的密钥。
 
@@ -169,6 +169,8 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
 如果在创建密钥对时提供的是通行短语，则在登录过程中遇到提示时，请输入该通行短语。 （服务器添加到 `~/.ssh/known_hosts` 文件夹。系统不会要求再次进行连接，除非更改了 Azure VM 上的公钥，或者从 `~/.ssh/known_hosts` 中删除了服务器名称。）
+
+如果 VM 使用的是实时访问策略，则需要先请求访问权限，然后才能连接到 VM。 有关实时策略的详细信息，请参阅[使用实时策略管理虚拟机访问](../../security-center/security-center-just-in-time.md)。
 
 ## <a name="use-ssh-agent-to-store-your-private-key-passphrase"></a>使用 ssh-agent 来存储私钥密码
 

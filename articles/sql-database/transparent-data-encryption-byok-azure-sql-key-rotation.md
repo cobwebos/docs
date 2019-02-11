@@ -1,8 +1,25 @@
 ---
-title: PowerShell - 轮换 TDE 保护器 - Azure SQL 数据库 | Microsoft Docs' description: 了解如何轮换用于 Azure SQL Server 的透明数据加密 (TDE) 保护器。
-services: sql-database ms.service: sql-database ms.subservice: security ms.custom: ms.devlang: ms.topic: conceptual author: aliceku ms.author: aliceku ms.reviewer: vanto manager: jhubbard ms.date: 08/07/2017
---- 
-# <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>使用 PowerShell 轮换透明数据加密 (TDE) 保护器 
+title: PowerShell - 轮换 TDE 保护器 - Azure SQL 数据库 | Microsoft Docs
+description: 了解如何轮换 Azure SQL Server 的透明数据加密 (TDE) 保护器。
+services: sql-database
+ms.service: sql-database
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: aliceku
+ms.author: aliceku
+ms.reviewer: vanto
+manager: jhubbard
+ms.date: 12/06/2018
+ms.openlocfilehash: 14a39d283d9ec4f8d5267e6a6628609ac79879ee
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567496"
+---
+# <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>使用 PowerShell 轮换透明数据加密 (TDE) 保护器
 
 本文介绍使用 Azure Key Vault 中的 TDE 保护器针对 Azure SQL Server 进行的密钥轮换。 轮换 Azure SQL Server 的 TDE 保护器意味着切换到新的非对称密钥，后者可以对服务器上的数据库进行保护。 密钥轮换是一种联机操作，应该只需数秒即可完成，因为只需在解密数据库的数据加密密钥后重新将其加密即可，不需对整个数据库进行操作。
 
@@ -90,4 +107,4 @@ services: sql-database ms.service: sql-database ms.subservice: security ms.custo
 
 - 了解如何在出现安全风险的情况下，删除可能已泄漏的 TDE 保护器：[删除可能已泄漏的密钥](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md) 
 
-- TDE 的自带密钥支持入门：[通过 PowerShell 使用 Key Vault 中的自有密钥启用 TDE](transparent-data-encryption-byok-azure-sql-configure.md)
+- 开始使用 TDE 的自带密钥支持：[通过 PowerShell 并使用 Key Vault 中自己的密钥来启用 TDE](transparent-data-encryption-byok-azure-sql-configure.md)

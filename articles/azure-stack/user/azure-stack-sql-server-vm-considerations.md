@@ -12,15 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: e784185cfc7f2c588db354bab1cfb36934b9c417
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: d9855f107f9888fbfbcb10a3df849e78c87c0605
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585860"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246756"
 ---
 # <a name="optimize-sql-server-performance"></a>优化 SQL Server 性能
 
@@ -29,7 +30,7 @@ ms.locfileid: "47585860"
 创建 SQL Server 映像时，[请考虑在 Azure Stack 门户中预配虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。 在 Azure Stack 管理门户中下载来自市场管理的 SQL IaaS 扩展，并下载所选的 SQL 虚拟机虚拟硬盘驱动器 (VHD)。 其中包括 SQL2014SP2、SQL2016SP1 和 SQL2017。
 
 > [!NOTE]  
-> 虽然本文介绍的是如何使用全球 Azure 门户预配 SQL Server 虚拟机，但相关指南也适用于 Azure Stack，只是存在以下差异：SSD 不适用于操作系统磁盘；托管磁盘不可用；存储配置存在微小差异。
+> 虽然本文介绍如何预配 SQL Server 虚拟机使用全局 Azure 门户，该指南也适用于 Azure Stack 具有以下差异：SSD 不适用于操作系统磁盘、 托管的磁盘不可用，并有一些细微差别存储配置中。
 
 本文重点介绍如何在 Azure Stack 虚拟机上获取 SQL Server 的最佳性能。 如果工作负荷要求较低，可能不需要每项建议的优化。 评估这些建议时应考虑性能需求和工作负荷模式。
 
@@ -55,9 +56,9 @@ ms.locfileid: "47585860"
 
 对于性能敏感型应用程序，建议使用以下[虚拟机大小](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes)：
 
-- **SQL Server Enterprise 版本：** DS3 或更高级别
+- **SQL Server Enterprise edition:** DS3 或更高版本
 
-- **SQL Server Standard 版本和 Web 版本：** DS2 或更高级别
+- **SQL Server Standard edition 和 Web edition:** DS2 或更高版本
 
 使用 Azure Stack 时，DS 和 DS_v2 虚拟机系列没有性能差异。
 
@@ -76,11 +77,11 @@ ms.locfileid: "47585860"
 
 Azure Stack 虚拟机上有三种主要磁盘类型：
 
-- **操作系统磁盘：** 创建 Azure Stack 虚拟机时，该平台至少将一个磁盘（标记为 **C** 驱动器）附加到虚拟机作为操作系统磁盘。 此磁盘是一个 VHD，在存储空间中存储为一个页 blob。
+- **操作系统磁盘：** 当你创建的 Azure Stack 虚拟机时，平台将附加至少一个磁盘 (标记为**C**驱动器) 到您的操作系统磁盘的虚拟机。 此磁盘是一个 VHD，在存储空间中存储为一个页 blob。
 
-- **临时磁盘：** Azure Stack 虚拟机包含另一个称为临时磁盘的磁盘（标记为 **D** 驱动器）。 这是可用于暂存空间的节点上的一个磁盘。
+- **临时磁盘：** Azure Stack 虚拟机包含另一个称为临时磁盘 (标记为**D**驱动器)。 这是可用于暂存空间的节点上的一个磁盘。
 
-- **数据磁盘：** 可以将其他磁盘作为数据磁盘附加到虚拟机，这些磁盘在存储中存储为页 Blob。
+- **数据磁盘：** 作为数据磁盘附加到虚拟机更多的磁盘和这些磁盘作为页 blob 存储在存储中。
 
 以下部分说明了有关使用这些不同磁盘的建议。
 
@@ -101,7 +102,7 @@ Azure Stack 虚拟机上有三种主要磁盘类型：
 > [!NOTE]  
 > 在门户中预配 SQL Server 虚拟机时，可以编辑存储配置。 Azure Stack 根据配置来配置一个或多个磁盘。 多个磁盘会组合成一个存储池。 数据文件和日志文件一起位于此配置中。
 
-- **磁盘条带化：** 为提高吞吐量，可以添加更多的数据磁盘，并使用磁盘条带化。 若要确定所需数据磁盘数，请分析日志文件以及数据和 TempDB 文件所需的 IOPS 数和带宽。 请注意，IOPS 限制是按数据磁盘来设置的，取决于虚拟机系列而不是虚拟机大小。 但是，网络带宽限制取决于虚拟机大小。 请参阅 [Azure Stack 中的虚拟机大小](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes)中的表，了解更多详细信息。 遵循以下指南：
+- **磁盘条带化：** 为提高吞吐量，可以添加更多数据磁盘，并使用磁盘条带化。 若要确定所需数据磁盘数，请分析日志文件以及数据和 TempDB 文件所需的 IOPS 数和带宽。 请注意，IOPS 限制是按数据磁盘来设置的，取决于虚拟机系列而不是虚拟机大小。 但是，网络带宽限制取决于虚拟机大小。 请参阅 [Azure Stack 中的虚拟机大小](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes)中的表，了解更多详细信息。 遵循以下指南：
 
     - 对于 Windows Server 2012 或更高版本，请按照以下指南使用[存储空间](https://technet.microsoft.com/library/hh831739.aspx)：
 
@@ -120,8 +121,8 @@ Azure Stack 虚拟机上有三种主要磁盘类型：
 
 - 根据负载预期确定与你的存储池相关联的磁盘数。 请记住，不同的虚拟机大小允许不同数量的附加数据磁盘。 有关详细信息，请参阅 [Azure Stack 中支持的虚拟机大小](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes)。
 - 若要获取针对数据磁盘的最大可能 IOPS，建议添加[虚拟机大小](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes)支持的最大数量的数据磁盘并使用磁盘条带化。
-- **NTFS 分配单元大小：** 当格式化数据磁盘时，建议对数据和日志文件以及 TempDB 使用 64-KB 分配单元大小。
-- **磁盘管理做法：** 删除数据磁盘时，请在更改过程中停止 SQL Server 服务。 另外，请勿更改磁盘上的缓存设置，因为这样做不会改进性能。
+- **NTFS 分配单元大小：** 格式化数据磁盘时，建议为数据和日志文件以及 TempDB 使用 64-KB 分配单元大小。
+- **磁盘管理实践：** 当删除数据磁盘，请在更改期间停止 SQL Server 服务。 另外，请勿更改磁盘上的缓存设置，因为这样做不会改进性能。
 
 > [!WARNING]  
 > 在进行这些操作时，如果没有停止 SQL 服务，则可能导致数据库损坏。

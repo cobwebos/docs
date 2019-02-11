@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 5a3fccba6465e6043db3f95ffdb65f1a8d8a7009
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: a7ba66fae3f2a8426cc333cca109a4c6793d1da2
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279342"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724311"
 ---
-# <a name="connect-to-hdinsight-hadoop-using-ssh"></a>使用 SSH 连接到 HDInsight (Hadoop)
+# <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>使用 SSH 连接到 HDInsight (Apache Hadoop)
 
-了解如何使用[安全外壳 (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) 安全地连接到 Azure HDInsight 上的 Hadoop。 
+了解如何使用[安全外壳 (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) 安全地连接到 Azure HDInsight 上的 Apache Hadoop。 
 
 HDInsight 可以使用 Linux (Ubuntu) 作为 Hadoop 群集中节点的操作系统。 下表包含使用 SSH 客户端连接到基于 Linux 的 HDInsight 时所需的地址和端口信息：
 
@@ -30,7 +30,7 @@ HDInsight 可以使用 Linux (Ubuntu) 作为 Hadoop 群集中节点的操作系�
 | `<clustername>-ssh.azurehdinsight.net` | 22 | 主头节点 |
 | `<clustername>-ssh.azurehdinsight.net` | 23 | 辅助头节点 |
 
-> [!NOTE]
+> [!NOTE]  
 > 将 `<edgenodename>` 替换为边缘节点的名称。
 >
 > 将 `<clustername>` 替换为群集的名称。
@@ -39,7 +39,7 @@ HDInsight 可以使用 Linux (Ubuntu) 作为 Hadoop 群集中节点的操作系�
 >
 > 有关使用边缘节点的详细信息，请参阅 [Use edge nodes in HDInsight](hdinsight-apps-use-edge-node.md#access-an-edge-node)（在 HDInsight 中使用边缘节点）。
 
-> [!TIP]
+> [!TIP]  
 > 首先连接到 HDInsight 时，SSH 客户端可能会显示一个警告，指出无法验证主机。 当系统提示时，请选择“是”，将主机添加到 SSH 客户端的受信任服务器列表。
 >
 > 如果此前已使用同一名称连接到某个服务器，则可能会收到一个警告，指出存储的主机密钥与服务器的主机密钥不匹配。 请参阅 SSH 客户端的文档，了解如何删除服务器名称的现有条目。
@@ -50,20 +50,20 @@ Linux、Unix 和 macOS 系统提供 `ssh` 和 `scp` 命令。 `ssh` 客户端通
 
 默认情况下，Microsoft Windows 不安装任何 SSH 客户端。 `ssh` 和 `scp` 客户端通过以下包提供给 Windows 使用：
 
-* OpenSSH 客户端 (Beta)：在 Fall Creators Update 中转到“设置” > “应用和功能” > “管理可选功能” > “添加功能”，选择“OpenSSH 客户端”。 
+* OpenSSH 客户端（Beta 版本）：在 Fall Creators Update 中转到“设置” > “应用和功能” > “管理可选功能” > “添加功能”，选择“OpenSSH 客户端”。 
 
-    > [!NOTE]
+    > [!NOTE]  
     > 如果在启用此功能后 `ssh` 和 `scp` 命令在 PowerShell 中不可用，请注销后再重新登录。
 
-* [基于 Windows 10 的 Ubuntu 上的 Bash](https://msdn.microsoft.com/commandline/wsl/about)：通过 Windows 命令行中的 Bash 提供 `ssh` 和 `scp` 命令。
+* [Windows 10 版 Bash on Ubuntu](https://msdn.microsoft.com/commandline/wsl/about)：通过 Windows 命令行中的 Bash 提供 `ssh` 和 `scp` 命令。
 
-* [OpenSSH 客户端 (Beta)](https://blogs.msdn.microsoft.com/powershell/2017/12/15/using-the-openssh-beta-in-windows-10-fall-creators-update-and-windows-server-1709/)：这是 Windows 10 Fall Creators Update 中引入的可选功能。
+* [OpenSSH 客户端（Beta 版本）](https://blogs.msdn.microsoft.com/powershell/2017/12/15/using-the-openssh-beta-in-windows-10-fall-creators-update-and-windows-server-1709/)：这是 Windows 10 Fall Creators Update 中引入的可选功能。
 
 * [Azure Cloud Shell](../cloud-shell/quickstart.md)：此 Cloud Shell 在浏览器中提供 Bash 环境，并提供 `ssh`、`scp` 等常用 Linux 命令。
 
 * [Git (https://git-scm.com/)](https://git-scm.com/)：通过 GitBash 命令行提供 `ssh` 和 `scp` 命令。
 
-还有多个图形 SSH 客户端，如 [PuTTY (http://www.chiark.greenend.org.uk/~sgtatham/putty/)](http://www.chiark.greenend.org.uk/~sgtatham/putty/) 和 [MobaXterm (http://mobaxterm.mobatek.net/)](http://mobaxterm.mobatek.net/)。 尽管可以使用这些客户端连接到 HDInsight，但连接的过程与使用 `ssh` 实用工具时不同。 有关详细信息，请参阅所用图形客户端的文档。
+还有多个图形 SSH 客户端，如 [PuTTY (https://www.chiark.greenend.org.uk/~sgtatham/putty/)](https://www.chiark.greenend.org.uk/~sgtatham/putty/) 和 [MobaXterm (https://mobaxterm.mobatek.net/)](https://mobaxterm.mobatek.net/)。 尽管可以使用这些客户端连接到 HDInsight，但连接的过程与使用 `ssh` 实用工具时不同。 有关详细信息，请参阅所用图形客户端的文档。
 
 ## <a id="sshkey"></a>身份验证：SSH 密钥
 
@@ -77,8 +77,7 @@ SSH 密钥使用[公钥加密](https://en.wikipedia.org/wiki/Public-key_cryptogr
 
 * 如果将__多个私钥__用于不同的服务器，可以考虑使用 [ssh-agent (https://en.wikipedia.org/wiki/Ssh-agent)](https://en.wikipedia.org/wiki/Ssh-agent) 之类的实用工具。 在建立 SSH 会话时，可以通过 `ssh-agent` 实用工具自动选择要使用的密钥。
 
-> [!IMPORTANT]
->
+> [!IMPORTANT]  
 > 如果使用密码保护私钥，使用该密钥时必须输入密码。 为提供方便，`ssh-agent` 等实用工具可以缓存密码。
 
 ### <a name="create-an-ssh-key-pair"></a>创建 SSH 密钥对
@@ -93,7 +92,7 @@ SSH 密钥使用[公钥加密](https://en.wikipedia.org/wiki/Public-key_cryptogr
 
 * __私钥__用于在 HDInsight 群集中对客户端进行身份验证。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 可以使用密码保护密钥。 通行短语其实是基于私钥的密码。 即使有人获取了私钥，但他们必须知道该密码才能使用该私钥。
 
 ### <a name="create-hdinsight-using-the-public-key"></a>使用公钥创建 HDInsight
@@ -109,10 +108,10 @@ SSH 密钥使用[公钥加密](https://en.wikipedia.org/wiki/Public-key_cryptogr
 
 可以使用密码保护 SSH 帐户。 使用 SSH 连接到 HDInsight 时，系统会提示输入密码。
 
-> [!WARNING]
+> [!WARNING]  
 > Microsoft 不建议将密码身份验证用于 SSH。 密码可能被猜出，容易受到暴力破解攻击。 我们建议[使用 SSH 密钥进行身份验证](#sshkey)。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > SSH 帐户密码在创建 HDInsight 群集 70 天后过期。 如果密码过期，可以使用[管理 HDInsight](hdinsight-administer-use-portal-linux.md#change-passwords) 文档中的信息更改它。
 
 ### <a name="create-hdinsight-using-a-password"></a>使用密码创建 HDInsight
@@ -168,12 +167,12 @@ sudo service sshd restart
     ssh sshuser@edgnodename.clustername-ssh.azurehdinsight.net
     ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 前面的示例假定你使用的是密码身份验证，或者系统会自动进行证书身份验证。 如果使用 SSH 密钥对进行身份验证，且系统不会自动使用证书，则请使用 `-i` 参数指定私钥。 例如，`ssh -i ~/.ssh/mykey sshuser@clustername-ssh.azurehdinsight.net`。
 
 连接以后，提示符会改为指示 SSH 用户名和连接到的节点。 例如，在以 `sshuser` 身份连接到主头节点时，提示符为 `sshuser@hn0-clustername:~$`。
 
-### <a name="connect-to-worker-and-zookeeper-nodes"></a>连接到工作节点和 Zookeeper 节点
+### <a name="connect-to-worker-and-apache-zookeeper-nodes"></a>连接到工作节点和 Apache Zookeeper 节点
 
 工作节点和 Zookeeper 节点不能从 Internet 直接访问， 但可以从群集头节点或边缘节点访问。 以下是连接到其他节点的一般步骤：
 
@@ -185,20 +184,20 @@ sudo service sshd restart
 
         ssh sshuser@wn0-myhdi
 
-    若要检索节点名称列表，请参阅[使用 Ambari REST API 管理 HDInsight](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) 文档。
+    若要检索节点名称列表，请参阅[使用 Apache Ambari REST API 管理 HDInsight](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) 文档。
 
 如果 SSH 帐户使用某个__密码__进行了保护，请在连接时输入该密码。
 
 如果 SSH 帐户使用 __SSH 密钥__进行了保护，请确保在客户端启用 SSH 转发。
 
-> [!NOTE]
+> [!NOTE]  
 > 直接访问群集中所有节点的另一种方法是在 Azure 虚拟网络中安装 HDInsight。 然后，可将远程计算机加入相同的虚拟网络，这样就可以直接访问群集中的所有节点。
 >
 > 有关详细信息，请参阅将 [Use a virtual network with HDInsight](hdinsight-extend-hadoop-virtual-network.md)（对 HDInsight 使用虚拟网络）。
 
 ### <a name="configure-ssh-agent-forwarding"></a>配置 SSH 代理转发
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 以下步骤假设在基于 Linux 或 UNIX 的系统上操作，并且能够使用基于 Windows 10 的 Bash。 如果这些步骤不适用于系统，可能需要查阅 SSH 客户端的文档。
 
 1. 使用文本编辑器打开 `~/.ssh/config`。 如果此文件不存在，可以在命令行中输入 `touch ~/.ssh/config` 来创建。
@@ -244,7 +243,7 @@ scp test.txt sshuser@clustername-ssh.azurehdinsight.net:
 scp sshuser@clustername-ssh.azurehdinsight.net:test.txt .
 ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > `scp` 只能访问群集中单个节点的文件系统。 它不能用来访问适用于群集且兼容 HDFS 的存储中的数据。
 >
 > 需要通过 SSH 会话上传要使用的资源时，请使用 `scp`。 例如，上传一个 Python 脚本，然后通过 SSH 会话运行该脚本。
@@ -253,7 +252,7 @@ scp sshuser@clustername-ssh.azurehdinsight.net:test.txt .
 >
 > * [使用 Azure 存储的 HDInsight](hdinsight-hadoop-use-blob-storage.md)。
 >
-> * [使用 Azure Data Lake Store 的 HDInsight](hdinsight-hadoop-use-data-lake-store.md)。
+> * [使用 Azure Data Lake Storage 的 HDInsight](hdinsight-hadoop-use-data-lake-store.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,20 +3,20 @@ title: 配置应用程序的用户许可 - Azure Active Directory | Microsoft Do
 description: 了解如何管理用户许可应用程序权限的方式。 可以通过授予管理员许可来来简化用户体验。 这些方法适用于 Azure Active Directory (Azure AD) 租户中的所有最终用户。
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: 25f5d79b900cf15a9bdcb8f037fa95494c63b7e1
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 8f2d1580cfbf23bd54498243a8bfac43c32973ea
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50088239"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183010"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>配置最终用户对 Azure Active Directory 中应用程序的许可方式
 了解如何配置用户许可应用程序权限的方式。 可以通过授予管理员许可来来简化用户体验。 本文提供配置用户许可的不同方式。 这些方法适用于 Azure Active Directory (Azure AD) 租户中的所有最终用户。 
@@ -26,6 +26,8 @@ ms.locfileid: "50088239"
 ## <a name="prerequisites"></a>先决条件
 
 授予管理员许可需要以全局管理员、应用程序管理员或云应用程序管理员的身份登录。
+
+若要限制对应用程序的访问，你需要要求用户分配，然后将用户或组分配到应用程序。  有关详细信息，请参阅[分配用户和组的方法](methods-for-assigning-users-and-groups.md)。
 
 ## <a name="grant-admin-consent-to-enterprise-apps-in-the-azure-portal"></a>在 Azure 门户中授予对企业应用的管理员许可
 
@@ -73,4 +75,4 @@ ms.locfileid: "50088239"
 
 [同意并为 AzureAD v2.0 聚合应用授予权限](../develop/active-directory-v2-scopes.md)
 
-[AzureAD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

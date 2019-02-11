@@ -1,25 +1,19 @@
 ---
-title: Azure 虚拟网络性能故障排除 | Microsoft Docs
+title: 排查虚拟网络性能问题：Azure | Microsoft Docs
 description: 此页提供一种标准化方法来测试 Azure 网络链接性能。
 services: expressroute
-documentationcenter: na
 author: tracsman
-manager: rossort
-editor: ''
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 12/20/2017
 ms.author: jonor
-ms.openlocfilehash: 56f011632a2aa3ef0632efd5ace472c0fc79a329
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.custom: seodec18
+ms.openlocfilehash: dfd55ac12587cf99cc3fc3ff8eac4f4572229396
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2017
-ms.locfileid: "27318688"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753492"
 ---
 # <a name="troubleshooting-network-performance"></a>网络性能故障排除
 ## <a name="overview"></a>概述
@@ -185,7 +179,7 @@ AzureCT PowerShell 模块有两个组成部分 - [可用性测试][Availability 
 
 | | | | | | |
 |-|-|-|-|-|-|
-|ExpressRoute<br/>Location|Azure<br/>区域|估计<br/>距离 (km)|Latency|1 会话<br/>带宽|最大值<br/>带宽|
+|ExpressRoute<br/>位置|Azure<br/>区域|估计<br/>距离 (km)|Latency|1 会话<br/>带宽|最大值<br/>带宽|
 | 西雅图 | 美国西部 2        |    191 km |   5 ms | 262.0 Mbits/sec |  3.74 Gbits/sec | 21
 | 西雅图 | 美国西部          |  1,094 km |  18 ms |  82.3 Mbits/sec |  3.70 Gbits/sec | 20
 | 西雅图 | 美国中部       |  2,357 km |  40 ms |  38.8 Mbits/sec |  2.55 Gbits/sec | 17
@@ -195,7 +189,7 @@ AzureCT PowerShell 模块有两个组成部分 - [可用性测试][Availability 
 | 西雅图 | 美国东部          |  3,699 km |  74 ms |  21.1 Mbits/sec |  1.78 Gbits/sec | 15
 | 西雅图 | 日本东部       |  7,705 km | 106 ms |  14.6 Mbits/sec |  1.22 Gbits/sec | 28
 | 西雅图 | 英国南部         |  7,708 km | 146 ms |  10.6 Mbits/sec |   896 Mbits/sec | 24
-| 西雅图 | 欧洲西部      |  7,834 km | 153 ms |  10.2 Mbits/sec |   761 Mbits/sec | 23
+| 西雅图 | 西欧      |  7,834 km | 153 ms |  10.2 Mbits/sec |   761 Mbits/sec | 23
 | 西雅图 | 澳大利亚东部   | 12,484 km | 165 ms |   9.4 Mbits/sec |   794 Mbits/sec | 26
 | 西雅图 | 东南亚   | 12,989 km | 170 ms |   9.2 Mbits/sec |   756 Mbits/sec | 25
 | 西雅图 | 巴西南部*   | 10,930 km | 189 ms |   8.2 Mbits/sec |   699 Mbits/sec | 22
@@ -216,7 +210,7 @@ AzureCT PowerShell 模块有两个组成部分 - [可用性测试][Availability 
 <!--Link References-->
 [Performance Doc]: https://github.com/Azure/NetworkMonitoring/blob/master/AzureCT/PerformanceTesting.md
 [Availability Doc]: https://github.com/Azure/NetworkMonitoring/blob/master/AzureCT/AvailabilityTesting.md
-[Network Docs]: https://docs.microsoft.com/azure/index#pivot=services&panel=network
+[Network Docs]: https://docs.microsoft.com/azure/index
 [Ticket Link]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview
 [ACT]: http://aka.ms/AzCT
 

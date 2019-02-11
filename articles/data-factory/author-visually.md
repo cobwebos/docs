@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/7/2018
+ms.date: 01/09/2019
 ms.author: shlo
-ms.openlocfilehash: 7a0d72ac67b329cb6d25be955205a2bbcef38e81
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 323d22363ee52ff6ccf7575b00c6b8b31a0fa156
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281687"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188488"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure 数据工厂中的视觉对象创作
 Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部署资源为你的数据工厂而无需编写任何代码。 通过此无代码的界面，可将活动拖放到管道画布上、执行测试运行、以迭代方式进行调试，以及部署和监视管道运行。 可通过两种方法使用 UX 执行视觉对象创作：
@@ -47,7 +46,7 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 ### <a name="configure-an-azure-repos-git-repository-with-azure-data-factory"></a>使用 Azure 数据工厂配置 Azure Repos Git 存储库
 用户可通过两种方法使用数据工厂配置 Azure Repos Git 存储库。
 
-#### <a name="method1"></a> 配置方法 1（Azure Repos Git 存储库）：“让我们开始吧”页
+#### <a name="method1"></a> 配置方法 1（Azure Repos Git 存储库）：“开始使用”页
 
 在 Azure 数据工厂，转到**让我们开始吧**页。 选择“配置代码存储库”：
 
@@ -77,11 +76,11 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 
 ![配置 UX 创作的代码存储库设置](media/author-visually/configure-repo-2.png)
 
-## <a name="use-a-different-azure-active-directory-tenant"></a>使用不同的 Azure Active Directory 租户
+### <a name="use-a-different-azure-active-directory-tenant"></a>使用不同的 Azure Active Directory 租户
 
 可在不同的 Azure Active Directory 租户中创建 Azure Repos Git 存储库。 若要指定不同的 Azure AD 租户，必须对所用 Azure 订阅拥有管理员权限。
 
-## <a name="use-your-personal-microsoft-account"></a>使用 Microsoft 个人帐户
+### <a name="use-your-personal-microsoft-account"></a>使用 Microsoft 个人帐户
 
 若要将 Microsoft 个人帐户用于 Git 集成，可以将你的 Azure 个人存储库链接到贵组织的 Active Directory。
 
@@ -95,7 +94,7 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 
 有关将 Azure 存储库连接到贵组织的 Active Directory 的详细信息，请参阅[将 Azure DevOps 组织连接到 Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad)。
 
-## <a name="switch-to-a-different-git-repo"></a>切换到不同 Git 存储库
+### <a name="switch-to-a-different-git-repo"></a>切换到不同 Git 存储库
 
 若要切换到不同 Git 存储库，请在“数据工厂概述”页的右上角找到该图标，如以下屏幕截图所示。 如果看不到该图标，请清除本地浏览器缓存。 选择该图标以删除与当前存储库的关联。
 
@@ -103,7 +102,7 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 
 ![删除与当前 Git 存储库的关联](media/author-visually/remove-repo.png)
 
-## <a name="use-version-control"></a>使用版本控制
+### <a name="use-version-control"></a>使用版本控制
 版本控制（也称为_源代码管理_）系统允许开发人员协作处理代码并跟踪对基本代码所做的更改。 源代码管理是用于多开发人员项目的重要工具。
 
 与数据工厂关联的每个 Azure Repos Git 存储库都有一个协作分支。 （默认协作分支为 `master`）。 用户还可以通过单击“+ 新建分支”创建功能分支，并在功能分支中进行开发工作。
@@ -114,7 +113,7 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 
 ![创建新的拉取请求](media/author-visually/create-pull-request.png)
 
-## <a name="configure-publishing-settings"></a>配置发布设置
+### <a name="configure-publishing-settings"></a>配置发布设置
 
 若要配置发布分支（即在其中保存资源管理器模板的分支），将 `publish_config.json` 文件添加到协作分支的根文件夹中。 数据工厂读取此文件，查找字段 `publishBranch`，并使用所提供的值创建新的分支（如果尚不存在）。 然后它将所有资源管理器模板都保存到指定位置。 例如：
 
@@ -132,13 +131,39 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 
 加载工厂时数据工厂仅读取 `publish_config.json` 文件。 如果已在门户中加载工厂，请刷新浏览器，以便所做的更改生效。
 
-## <a name="publish-code-changes"></a>发布代码更改
+### <a name="publish-code-changes"></a>发布代码更改
 将更改合并至协作分支（默认为 `master`）后，选择“发布”以将主分支中的代码更改手动发布至数据工厂服务。
 
 ![将更改发布至数据更改服务](media/author-visually/publish-changes.png)
 
 > [!IMPORTANT]
 > 主分支不表示数据工厂服务中部署的内容。 必须将主分支手动发布到数据工厂服务。
+
+### <a name="advantages-of-git-integration"></a>Git 集成的优点
+
+-   **源代码管理**。 随着数据工厂工作负载变得至关重要，你可能需要将工厂与 Git 集成，以利用以下几种源代码管理优势：
+    -   跟踪/审核更改的功能。
+    -   还原导致 bug 的更改的功能。
+-   **部分保存**。 在工厂中进行大量更改后，便将发现，在常规实时模式下，无法将更改保存为草稿，这是因为你尚未准备就绪，或者是因为你不希望因电脑发生故障而丢失更改。 通过 Git 集成，可以继续以增量方式保存更改，并且仅在准备就绪后才发布到工厂。 Git 会充当工作的暂存位置，直到对更改进行测试并感到满意为止。
+-   **协作和控制**。 如果有多个团队成员参与同一工厂，则可能需要通过代码评审流程让团队成员相互协作。 此外，还可以设置工厂，以免工厂的每一位参与者都有权部署到工厂。 可以仅允许团队成员通过 Git 进行更改，但只允许团队中的某些人将更改“发布”到工厂。
+-   **显示差异**。 在 Git 模式下，可以看到即将发布到工厂的有效负载的精细差异。 此差异显示了自上次发布到工厂后已修改/添加/删除的所有资源/实体。 基于此差异，可以继续进行发布，也可以返回并检查更改，稍后再回来。
+-   **更好的 CI/CD**。 如果使用的是 Git 模式，则可以将发布管道配置为开发工厂中发生任何更改后立即自动触发。 此外，还可以自定义工厂中可用作资源管理器模板的参数的属性。 仅将所需属性集保留为参数并将其他所有内容进行硬编码可能很有用。
+-   **性能更好**。 在 Git 模式下，平均工厂的加载速度比常规实时模式下的快 10 倍，因为资源是通过 Git 下载的。
+
+### <a name="best-practices-for-git-integration"></a>Git 集成的最佳做法
+
+-   **权限**。 通常情况下，你不希望所有团队成员都有权更新工厂。
+    -   所有团队成员都应具有对数据工厂的读取权限。
+    -   应仅允许选定的一组人员发布到工厂，为此，他们需要成为工厂“数据工厂参与者”角色的成员。
+    -   对于源代码管理，其中一种良好做法是不允许直接签入到协作分支。 此要求可防止 bug，因为每次签入都会通过拉取请求过程。
+-   **切换模式**。
+    -    进入 Git 模式后，我们不建议来回切换到实时模式，这主要是因为在切换回 Git 时，将无法看到在实时模式下进行的任何更改。 请尝试在 Git 模式下进行更改，然后通过 UI 将其发布。
+    -   同样，也不要使用任何数据工厂 powershell cmdlet，因为它们通过直接将提供的更改应用于实时工厂，会实现同样的效果。
+-   **使用 Azure Key Vault 中的密码**。
+    -   我们强烈建议使用 AzureKeyVault 将任何连接字符串或密码存储到数据工厂链接服务。
+    -   我们不会在 Git 中存储任何此类机密信息（出于安全原因），因此对链接服务的任何更改都会立即发布到实时工厂。 有时候并不需要进行此类立即发布，因为这些更改可能尚未经过测试，这违背了 Git 的目的。
+    -   因此，必须从使用基于 Azure Key Vault 的链接服务中获取所有此类机密。
+    -   使用 Key Vault 的其他一些优势在于，这可使 CICD 变得更轻松，因为它不要求在资源管理器模板部署期间提供这些机密。
 
 ## <a name="author-with-github-integration"></a>使用 GitHub 集成进行创作
 
@@ -164,7 +189,7 @@ GitHub 与数据工厂的集成支持公共 GitHub（即 [https://github.com](ht
 
 用户可通过两种方法使用数据工厂配置 GitHub 存储库。
 
-配置方法 1（公共存储库）：“让我们开始吧”页
+**配置方法 1（公共存储库）：“开始使用”页**
 
 在 Azure 数据工厂中，转到“开始使用” **** 页。 选择“配置代码存储库” ****：
 
@@ -196,7 +221,7 @@ GitHub 与数据工厂的集成支持公共 GitHub（即 [https://github.com](ht
 
 可通过两种方法使用数据工厂配置 GitHub Enterprise 存储库。
 
- #### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>配置方法 1（Enterprise 存储库）：“让我们开始吧”页
+ #### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>配置方法 1（Enterprise 存储库）：“开始使用”页
 
 在 Azure 数据工厂中，转到“开始使用” **** 页。 选择“配置代码存储库” ****：
 

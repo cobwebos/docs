@@ -1,5 +1,5 @@
 ---
-title: Azure App Service IP 限制 | Microsoft Docs
+title: 限制客户端 IP - Azure 应用服务 | Microsoft Docs
 description: 如何将 IP 限制与 Azure App Service 配合使用
 author: ccompy
 manager: stefsch
@@ -12,20 +12,21 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 7/30/2018
+ms.date: 07/30/2018
 ms.author: ccompy
-ms.openlocfilehash: 9ffeb01a46b62202292f6e1ea91f47cd87954387
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.custom: seodec18
+ms.openlocfilehash: 337d71c84ace7f44c2668cf2344d9083c4a85bee
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219122"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651056"
 ---
 # <a name="azure-app-service-static-ip-restrictions"></a>Azure App Service 静态 IP 限制 #
 
 通过 IP 限制，可定义允许访问应用的 IP 地址的允许/拒绝列表（按优先级排序）。 此允许列表可能包含 IPv4 和 IPv6 地址。 如果存在一个或多个条目，则在列表末尾会存在一个隐式的“拒绝所有”。 
 
-IP 限制功能适用于所有应用服务托管工作负荷，包括 Web 应用、Api 应用、Linux 应用、Linux 容器应用和 Functions。 
+IP 限制功能适用于所有应用服务托管工作负荷，包括 Web 应用、API 应用、Linux 应用、Linux 容器应用和 Functions。 
 
 向应用发出请求时，将针对 IP 限制列表评估 FROM IP 地址。 如果列表中的规则不允许访问该地址，则服务会以 [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) 状态代码进行答复。
 

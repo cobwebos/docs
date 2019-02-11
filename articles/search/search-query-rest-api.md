@@ -1,6 +1,6 @@
 ---
-title: 查询索引（REST API - Azure 搜索）| Microsoft Docs
-description: 在 Azure 搜索中生成搜索查询，并使用搜索参数对搜索结果进行筛选和排序。
+title: 使用 REST API 在代码中查询索引 - Azure 搜索
+description: Azure 搜索中用于构建搜索查询的 HTTP 命令和 REST API 代码。 将搜索参数添加到筛选器并对搜索结果进行排序。
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -8,12 +8,13 @@ services: search
 ms.service: search
 ms.topic: quickstart
 ms.date: 04/20/2018
-ms.openlocfilehash: 035dc4ac349513867253e5593e01fab4fec62f6b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.custom: seodec2018
+ms.openlocfilehash: e453e05a692e862179dcd78298b215a2384cba2c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32186505"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092776"
 ---
 # <a name="query-your-azure-search-index-using-the-rest-api"></a>使用 REST API 查询 Azure 搜索索引
 > [!div class="op_single_selector"]

@@ -1,6 +1,6 @@
 ---
-title: 缩放媒体保留单位 - Azure |Microsoft Docs
-description: 本主题概述了如何使用 Azure 媒体服务调整媒体处理的规模。
+title: 通过 CLI 使用 Azure 媒体服务创建筛选器 | Microsoft Docs
+description: 本主题展示如何通过 CLI 使用媒体服务创建筛选器。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: juliako
-ms.openlocfilehash: 9099429097efb17629e88318430f004f0f763cc5
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.custom: seodec18
+ms.openlocfilehash: 2ba3de32f4ec3b9f6faf1d5a51da9c1c91e4a2e4
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336392"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099300"
 ---
 # <a name="creating-filters-with-cli"></a>使用 CLI 创建筛选器 
 
@@ -28,15 +29,14 @@ ms.locfileid: "52336392"
 
 ## <a name="prerequisites"></a>先决条件 
 
-- 在本地安装并使用 CLI，本文要求使用 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可确定你拥有的版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
-
-    目前，并非所有[媒体服务 v3 CLI](https://aka.ms/ams-v3-cli-ref) 命令都可在 Azure Cloud Shell 中运行。 建议在本地使用 CLI。
 - [创建媒体服务帐户](create-account-cli-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称。 
-- 请参阅[筛选器和动态清单](filters-dynamic-manifest-overview.md)。
+- 查看[筛选器和动态清单](filters-dynamic-manifest-overview.md)。
+
+[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="define-a-filter"></a>定义筛选器 
 
-以下示例定义添加到最终清单的曲目择条件。 此筛选器包括带有 EC-3 的任何英语曲目和比特率在 0-1000000 范围内的任何视频曲目。
+以下示例定义添加到最终清单的曲目择条件。 此筛选器包括属于 EC-3 的任何音频曲目和比特率在 0-1000000 范围内的任何视频曲目。
 
 REST 中定义的筛选器包括“属性”包装器 JSON 对象。  
 
@@ -47,11 +47,6 @@ REST 中定义的筛选器包括“属性”包装器 JSON 对象。
             {
                 "property": "Type",
                 "value": "Audio",
-                "operation": "Equal"
-            },
-            {
-                "property": "Language",
-                "value": "en",
                 "operation": "Equal"
             },
             {
@@ -82,8 +77,10 @@ REST 中定义的筛选器包括“属性”包装器 JSON 对象。
 
 以下 [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) 命令创建帐户筛选器，其中包含[之前定义的](#define-a-filter)筛选器曲目选项。 
 
+该命令允许你传递一个可选 `--tracks` 参数，该参数包含表示曲目选择的 JSON。  使用 @{file} 从文件加载 JSON。 如果在本地使用 Azure CLI，请指定整个文件路径：
+
 ```azurecli
-az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @C:\tracks.json
+az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @tracks.json
 ```
 
 此外，请参阅[筛选器的 JSON 示例](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create_an_account_filter)。
@@ -93,7 +90,7 @@ az ams account-filter create -a amsAccount -g resourceGroup -n filterName --trac
 以下 [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest) 命令创建资产筛选器，其中包含[之前定义的](#define-a-filter)筛选器曲目选项。 
 
 ```azurecli
-az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @C:\tracks.json
+az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
 ```
 
 此外，请参阅[筛选器的 JSON 示例](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create_an_asset_filter)。

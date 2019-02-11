@@ -4,18 +4,18 @@ description: 本教程指导创建、测试和发布一个简单的 PowerShell R
 keywords: azure powershell, powershell 脚本教程, powershell 自动化
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 11/27/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5e154a6416b24a38e5d544186001b03d5bf10eb4
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: f083a5a9fe8027467eb95711a15725859f59e4fa
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446800"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438042"
 ---
 # <a name="my-first-powershell-runbook"></a>我的第一个 PowerShell Runbook
 

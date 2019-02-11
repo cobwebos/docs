@@ -4,14 +4,14 @@ description: Avere vFXT for Azure 的先决条件
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: d32c664049b7e7c1231e78c552e7c61d016fbe84
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 9c3301ba16bfaeb7014658a380e287a36a505be8
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51286752"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299198"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>准备创建 Avere vFXT
 
@@ -33,22 +33,20 @@ ms.locfileid: "51286752"
 具有订阅所有者权限的用户应创建 vFXT 群集。 以下操作（以及一些其他操作）需要订阅所有者权限：
 
 * 接受 Avere vFXT 软件的条款
-* 创建群集节点访问角色
-* 允许群集控制器节点管理资源组和虚拟网络 
-* 允许群集控制器创建和修改群集节点 
+* 创建群集节点访问角色 
 
 如果不希望授予所有者对创建 vFXT 的用户的访问权限，有以下两种解决方法：
 
 * 如果满足以下条件，资源组所有者可以创建群集：
 
-  * 订阅所有者必须[接受 Avere vFXT 软件条款](#accept-software-terms-in-advance)并[创建群集节点访问角色](avere-vfxt-deploy.md#create-the-cluster-node-access-role)。
+  * 订阅所有者必须[接受 Avere vFXT 软件条款](#accept-software-terms)并[创建群集节点访问角色](#create-the-cluster-node-access-role)。 
   * 必须在资源组内部署所有 Avere vFXT 资源，包括：
     * 群集控制器
     * 群集节点
     * Blob 存储
     * 网络元素
  
-* 如果创建了额外的访问角色并提前分配了给用户，则没有所有者权限的用户也可以创建 vFXT 群集。 但是，此角色为这些用户提供了重要权限。 [本文](avere-vfxt-non-owner.md)介绍如何授权非所有者创建群集。
+* 没有所有者权限的用户可以通过提前使用基于角色的访问控制 (RBAC) 为用户分配权限来创建 vFXT 群集。 此方法为这些用户提供了重要权限。 [本文](avere-vfxt-non-owner.md)介绍了如何创建访问角色来授权非所有者创建群集。
 
 ## <a name="quota-for-the-vfxt-cluster"></a>vFXT 群集的配额
 
@@ -64,12 +62,12 @@ ms.locfileid: "51286752"
 |存储帐户（可选） |v2|
 |数据后端存储（可选） |一个新的 LRS Blob 容器 |
 
-## <a name="accept-software-terms-in-advance"></a>提前接受软件条款
+## <a name="accept-software-terms"></a>接受软件条款
 
 > [!NOTE] 
 > 如果订阅所有者创建 Avere vFXT 群集，则不需要此步骤。
 
-在创建群集之前，必须接受 Avere vFXT 软件的服务条款。 如果你不是订阅所有者，请让订阅所有者提前接受条款。 每个订阅只需执行一次此步骤。
+在创建群集期间，必须接受 Avere vFXT 软件的服务条款。 如果你不是订阅所有者，请让订阅所有者提前接受条款。 每个订阅只需执行一次此步骤。
 
 提前接受软件条款： 
 
@@ -86,6 +84,74 @@ ms.locfileid: "51286752"
    az vm image accept-terms --urn microsoft-avere:vfxt:avere-vfxt-controller:latest
    ```
 
-## <a name="next-step-create-the-vfxt-cluster"></a>下一步：创建 vFXT 群集
+## <a name="create-access-roles"></a>创建访问角色 
+
+[基于角色的访问控制](../role-based-access-control/index.yml) (RBAC) 授权 vFXT 控制器和群集节点执行必要的任务。
+
+* 群集控制器需要有权创建和修改 VM 才能创建群集。 
+
+* 作为群集常规操作的一部分，各个 vFXT 节点需要执行读取 Azure 资源属性、管理存储和控制其他节点的网络接口设置等操作。
+
+在创建 Avere vFXT 群集之前，必须定义要用于群集节点的自定义角色。 
+
+对于群集控制器，可以接受来自模板的默认角色。 默认角色向群集控制器授予资源组所有者权限。 如果想要为控制器创建自定义角色，请参阅[自定义的控制器访问角色](avere-vfxt-controller-role.md)。
+
+> [!NOTE] 
+> 只有订阅所有者或者具有“所有者”或“用户访问管理员”角色的用户可以创建角色。 角色可以提前创建。  
+
+### <a name="create-the-cluster-node-access-role"></a>创建群集节点访问角色
+
+<!-- caution - this header is linked to in the template so don't change it unless you can change that -->
+
+必须先创建群集节点角色，然后才能创建 Avere vFXT for Azure 群集。
+
+> [!TIP] 
+> Microsoft 内部用户应当使用名为“Avere 群集运行时操作员”的现有角色而非尝试创建一个。 
+
+1. 复制此文件。 在 AssignableScopes 行中添加你的订阅 ID。
+
+   （此文件的当前版本在 github.com/Azure/Avere 存储库中存储为 [AvereOperator.txt](https://github.com/Azure/Avere/blob/master/src/vfxt/src/roles/AvereOperator.txt)。）  
+
+   ```json
+   {
+      "AssignableScopes": [
+          "/subscriptions/PUT_YOUR_SUBSCRIPTION_ID_HERE"
+      ],
+      "Name": "Avere Operator",
+      "IsCustom": "true",
+      "Description": "Used by the Avere vFXT cluster to manage the cluster",
+      "NotActions": [],
+      "Actions": [
+          "Microsoft.Compute/virtualMachines/read",
+          "Microsoft.Network/networkInterfaces/read",
+          "Microsoft.Network/networkInterfaces/write",
+          "Microsoft.Network/virtualNetworks/subnets/read",
+          "Microsoft.Network/virtualNetworks/subnets/join/action",
+          "Microsoft.Network/networkSecurityGroups/join/action",
+          "Microsoft.Resources/subscriptions/resourceGroups/read",
+          "Microsoft.Storage/storageAccounts/blobServices/containers/delete",
+          "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+          "Microsoft.Storage/storageAccounts/blobServices/containers/write"
+      ],
+      "DataActions": [
+          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
+          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
+      ]
+   }
+   ```
+
+1. 将此文件另存为 ``avere-operator.json`` 或容易记住的类似文件名。 
+
+
+1. 打开 Azure Cloud shell，然后使用你的订阅 ID 进行登录（如[本文档中上文](#accept-software-terms)所述）。 使用此命令以创建角色：
+
+   ```bash
+   az role definition create --role-definition /avere-operator.json
+   ```
+
+创建群集时将使用此角色名称。 在本例中，名称为 ``avere-operator``。
+
+## <a name="next-step-create-the-vfxt-cluster"></a>后续步骤：创建 vFXT 群集
 
 完成这些任务后，就可以开始创建群集。 阅读[部署 vFXT 群集](avere-vfxt-deploy.md)，查看说明。

@@ -1,5 +1,5 @@
 ---
-title: Azure 开发测试实验室基础结构的监管
+title: Azure 开发测试实验室基础设施治理
 description: 本文提供有关监管 Azure 开发测试实验室基础结构的指导。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 016daa7ed57650a42b224df4e4173c7593893eb7
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 8165efaa10eb31410f00dfa9bfffb2c02d7396ae
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250750"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872317"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Azure 开发测试实验室基础结构的监管 - 公司策略与合规性
 本文提供有关监管 Azure 开发测试实验室基础结构的公司策略与合规性的指导。 
@@ -42,10 +42,10 @@ ms.locfileid: "48250750"
 ### <a name="answer"></a>Answer
 作为组织总体监管和配置管理策略的一部分，我们建议使用集中式存储库。 使用多个存储库时，它们可能会逐渐变成孤立的非托管软件。 使用中心存储库时，多个团队可对其项目使用此存储库中的项目。 此方法强制实施标准化、安全性和易管理性方面的措施，并消除了重复工作。 在集中化过程中，建议采取以下措施来实现长期管理和可持续性：
 
-- 将 Visual Studio Team Services 与 Azure 订阅用于身份验证和授权的同一 Azure Active Directory 租户相关联。
+- 将 Azure Repos 与 Azure 订阅用于身份验证和授权的同一 Azure Active Directory 租户相关联。
 - 在 Azure Active Directory 中创建名为“所有开发测试实验室开发人员”的集中管理的组。 应将参与项目开发的任何开发人员置于此组中。
-- 可以使用同一个 Azure Active Directory 组来提供对 Visual Studio Team Services 存储库和实验室的访问。
-- 在 Visual Studio Team Services 中，应使用分支或分叉将开发中存储库与主要生产存储库相隔离。 在正确完成代码评审后，使用拉取请求将内容仅添加到主分支。 代码评审员批准更改后，负责主分支维护工作的开发人员主管合并更新的代码。 
+- 可使用同一个 Azure Active Directory 组来提供对 Azure Repos 存储库和实验室的访问。
+- 在 Azure Repos 中，应使用分支或分叉将开发中存储库与主要生产存储库相隔离。 在正确完成代码评审后，使用拉取请求将内容仅添加到主分支。 代码评审员批准更改后，负责主分支维护工作的开发人员主管合并更新的代码。 
 
 ## <a name="corporate-security-policies"></a>企业安全策略
 

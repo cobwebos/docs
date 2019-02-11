@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/12/2018
-ms.openlocfilehash: 87aaf7108fabe0e4d96c4a2edd15db8531f1a828
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 88538aa9528059458f6e73485f4839693caa943b
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578318"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054480"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板在 Azure Databricks 上运行 Spark 作业
 
@@ -80,7 +80,7 @@ ms.locfileid: "51578318"
 开始学习本部分之前，必须完成以下先决条件：
 
 * [创建 Azure Blob 存储帐户](../storage/common/storage-quickstart-create-account.md)
-* [从 Github](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) 下载示例 JSON 文件。
+* [从 GitHub](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) 下载示例 JSON 文件。
 * 将示例 JSON 文件上传到所创建的 Azure Blob 存储帐户。 可以使用 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)上传该文件。
 
 执行以下任务在 Databricks 中创建笔记本、将该笔记本配置为从 Azure Blob 存储帐户读取数据，然后针对这些数据运行 Spark SQL 作业。
@@ -178,7 +178,7 @@ ms.locfileid: "51578318"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，我们已在 Azure Databricks 中创建一个 Spark 群集，并使用 Azure 存储中的数据运行了一个 Spark 作业。 我们还可以查看 [Spark 数据源](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)，了解如何将其他数据源中的数据导入 Azure Databricks。 此外，可以了解如何使用资源管理器模板[创建采用自定义 VNET 地址的 Azure Databricks 工作区](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace-with-custom-vnet-address)。
+在本文中，我们已在 Azure Databricks 中创建一个 Spark 群集，并使用 Azure 存储中的数据运行了一个 Spark 作业。 我们还可以查看 [Spark 数据源](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)，了解如何将其他数据源中的数据导入 Azure Databricks。 此外，可以了解如何使用资源管理器模板[创建采用自定义 VNET 地址的 Azure Databricks 工作区](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace-with-custom-vnet-address)。 有关要在模板中使用的 JSON 语法和属性，请参阅 [Microsoft.Databricks/workspaces](/azure/templates/microsoft.databricks/workspaces) 模板参考。
 
 请继续学习下一篇文章，了解如何使用 Azure Databricks 执行 ETL（提取、转换和加载数据）操作。
 

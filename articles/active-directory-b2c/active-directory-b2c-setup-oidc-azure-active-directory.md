@@ -1,28 +1,28 @@
 ---
-title: 在 Azure Active Directory B2C 中使用内置策略设置登录 Azure Active Directory 帐户 | Microsoft Docs
-description: 在 Azure Active Directory B2C 中使用内置策略设置登录 Azure Active Directory 帐户。
+title: 在 Azure Active Directory B2C 中设置登录 Azure Active Directory 组织 | Microsoft Docs
+description: 在 Azure Active Directory B2C 中设置登录特定 Azure Active Directory 组织。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 86e5381096633e58d7a1a28ac94728136273c685
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.subservice: B2C
+ms.openlocfilehash: 9078cbfd14e61b2de0d513e513413ae3c79137e3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312776"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166214"
 ---
-# <a name="set-up-sign-in-azure-active-directory-accounts-a-built-in-policy-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用内置策略设置登录 Azure Active Directory 帐户
+# <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置登录特定 Azure Active Directory 组织
 
 >[!NOTE]
 > 此功能目前以公共预览版提供。 请勿在生产环境中使用该功能。
 
-本文介绍如何使用 Azure Active Directory (Azure AD) B2C 中的内置策略为特定 Azure Active Directory (Azure AD) 组织中的用户启用登录。
+本文介绍如何使用 Azure Active Directory (Azure AD) B2C 中的用户流为特定 Azure Active Directory (Azure AD) 组织中的用户启用登录。
 
 ## <a name="create-an-azure-ad-app"></a>创建 Azure AD 应用
 

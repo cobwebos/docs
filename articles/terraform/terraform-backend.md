@@ -2,17 +2,17 @@
 title: 将 Azure 存储用作 Terraform 后端
 description: 在 Azure 存储中存储 Terraform 状态的简介。
 services: terraform
-author: neilpeterson
+author: tomarchermsft
 ms.service: terraform
 ms.topic: article
 ms.date: 09/13/2018
-ms.author: nepeters
-ms.openlocfilehash: 48351dc0351b7a717a610ac9552e11362707e150
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: tarcher
+ms.openlocfilehash: 149d2bb5ca26afd530be60c5a22e449b8b2ae1ff
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127998"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381878"
 ---
 # <a name="store-terraform-state-in-azure-storage"></a>在 Azure 存储中存储 Terraform 状态
 
@@ -114,7 +114,7 @@ resource "azurerm_resource_group" "state-demo-secure" {
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Terraform 支持的配置的详细信息，请参阅 [Terraform 后端文档][terraform-backend]。
+有关 Terraform 后端配置的详细信息，请参阅 [Terraform 后端文档][terraform-backend]。
 
 <!-- LINKS - internal -->
 [azure-key-vault]: ../key-vault/quick-create-cli.md

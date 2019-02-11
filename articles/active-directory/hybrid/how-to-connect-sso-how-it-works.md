@@ -5,30 +5,31 @@ services: active-directory
 keywords: 什么是 Azure AD Connect, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/14/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6f93d7c4b76d635a221c2711ce9d4ef0de2286f6
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: a499ed3e374c7d1bf68de5a61f2e3b0c08b0d8cf
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687395"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487312"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory 无缝单一登录：深入技术探究
+# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory 无缝单一登录：技术深入了解
 
 本文从技术层面详细介绍了 Azure Active Directory 无缝单一登录（无缝 SSO）功能的工作原理。
 
 ## <a name="how-does-seamless-sso-work"></a>无缝 SSO 的工作原理
 
 本节包含三个部分：
+
 1. 无缝 SSO 功能的设置。
 2. 如何使用无缝 SSO 在 Web 浏览器上执行单个用户登录事务。
 3. 如何使用无缝 SSO 在本机客户端上执行单个用户登录事务。
@@ -36,6 +37,7 @@ ms.locfileid: "51687395"
 ### <a name="how-does-set-up-work"></a>如何进行设置？
 
 可使用 Azure AD Connect 启用无缝 SSO，如[此处](how-to-connect-sso-quick-start.md)所示。 启用该功能时，请执行以下步骤：
+
 - 在每个 AD 林的本地 Active Directory (AD) 中创建一个名为 `AZUREADSSOACC` 的计算机帐户（表示 Azure AD）。
 - 与 Azure AD 安全共享计算机帐户的 Kerberos 解密密钥。 如果有多个 AD 林，则每个林都有其自己的 Kerberos 解密密钥。
 - 此外，创建两个 Kerberos 服务主体名称 (SPN) 来表示 Azure AD 登录期间使用的两个 URL。
@@ -56,8 +58,8 @@ ms.locfileid: "51687395"
 2. 如果用户尚未登录，该用户将被重定向到 Azure AD 登录页面。
 3. 用户在 Azure AD 登录页键入其用户名。
 
-  >[!NOTE]
-  >对于[某些应用程序](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso)，可跳过步骤 2 和 3。
+   >[!NOTE]
+   >对于[某些应用程序](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso)，可跳过步骤 2 和 3。
 
 4. Azure AD 在后台使用 JavaScript，通过“401 未授权”响应质询浏览器，以提供 Kerberos 票证。
 5. 然后，浏览器请求从 Active Directory 获取用于 `AZUREADSSOACC` 计算机帐户（表示 Azure AD）的票证。

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: f5ba6a001f8933283e0867367ef7bd8d3918c3fd
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 59a3a92640c7f0bc434881921e520d1b9cb352c3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405372"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265480"
 ---
-# <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Azure 安全性和符合性蓝图：适用于 FedRAMP 的 IaaS Web 应用程序
+# <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Azure 安全性与合规性蓝图：适用于 FedRAMP 的 laaS Web 应用
 
 ## <a name="overview"></a>概述
 
@@ -95,7 +95,7 @@ ms.locfileid: "49405372"
 - 1 个 NSG 用于 SQL Server (SQLNSG)
 - 1 个 NSG 用于 Web 层 (WEBNSG)
 
-**子网**：每个子网都与其相应的 NSG 相关联。
+**子网**：每个子网与其相应的 NSG 关联。
 
 ### <a name="data-at-rest"></a>静态数据
 
@@ -103,7 +103,7 @@ ms.locfileid: "49405372"
 
 **Azure 存储**：为了满足静态数据加密要求，所有存储帐户都使用[存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)。
 
-**SQL Server**：SQL Server 配置为使用[透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption)，实时加密和解密数据和日志文件，以保护静态信息。 TDE 可确保存储的数据免遭他人未经授权的访问。
+**SQL Server**：SQL Server 配置为使用[透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption)，可实时加密和解密数据和日志文件，从而保护静态信息。 TDE 可确保存储的数据免遭他人未经授权的访问。
 
 客户也可配置以下 SQL Server 安全措施：
 -   使用 [AD 身份验证和授权](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)可在一个中心位置集中管理数据库用户和其他 Microsoft 服务的标识。
@@ -124,7 +124,7 @@ ms.locfileid: "49405372"
 - 可以通过部署的 IaaS Active Directory 实例在 OS 级别对部署的 IaaS 虚拟机进行标识管理。
 
 ### <a name="security"></a>安全
-**机密管理**：解决方案使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 Azure Key Vault 用于管理适用于此参考体系结构的 IaaS 虚拟机磁盘加密密钥和机密。
+**机密管理**：此解决方案使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 Azure Key Vault 用于管理适用于此参考体系结构的 IaaS 虚拟机磁盘加密密钥和机密。
 
 **修补程序管理**：通过此 Azure 安全性和符合性蓝图自动化部署的 Windows 虚拟机默认配置为从 Windows 更新服务接收自动更新。 另外，此解决方案还部署 Azure 自动化解决方案，通过此方案可以创建更新部署，以便在需要时将修补程序部署到 Windows 服务器上。
 
@@ -142,7 +142,7 @@ ms.locfileid: "49405372"
 
 **高可用性**：计划内或计划外维护活动期间，至少有一台虚拟机可用，满足 99.95% Azure SLA。 解决方案在一个[可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)中部署所有 Web 层和数据层虚拟机。 可用性集可确保虚拟机能够跨多个隔离的硬件群集分布，从而改进可用性。 另外，此解决方案将可用性集中的 SQL Server 虚拟机部署为 [AlwaysOn 可用性组](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)。 AlwaysOn 可用性组功能有助于实现高可用性和灾难恢复功能。
 
-**恢复服务保管库**：[恢复服务保管库](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)存储备份数据并保护此体系结构中的所有 Azure 虚拟机配置。 通过恢复服务保管库，客户可以从 IaaS VM 还原文件和文件夹，而无需还原整个 VM，从而实现更快的还原时间。
+**恢复服务保管库**：[恢复服务保管库](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)存储备份数据并保护此体系结构中的所有 Azure 虚拟机配置。 通过恢复服务保管库，客户可以从 IaaS VM 还原文件和文件夹，而无需还原整个 VM，从而缩短还原时间。
 
 **云见证**：[云见证](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness)是在 Windows Server 2016 中利用 Azure 作为仲裁点的一种故障转移群集仲裁见证。 与其他任何仲裁见证一样，云见证可获得投票并可参与仲裁计算，但它使用标准公开可用的 Azure Blob 存储。 这消除了在公有云中托管的 VM 的额外维护开销。
 
@@ -150,20 +150,20 @@ ms.locfileid: "49405372"
 
 Log Analytics 可广泛记录系统和用户活动以及系统运行状况。 [Log Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) 解决方案收集并分析 Azure 和本地环境中的资源生成的数据。
 
-- **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
+- **活动日志：**[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的见解。 活动日志可帮助确定操作的发起方、发生的时间和状态。
 - **诊断日志：**[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)是每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志，以及应用程序网关访问和防火墙日志。
 - **日志存档：** 所有诊断日志都将写入集中式加密 Azure 存储帐户进行存档。 保留期是允许用户配置的，最长为 730 天，具体取决于组织的保留期要求。 这些日志连接到 Azure Log Analytics 进行处理、存储和仪表板报告。
 
 此外，以下监视解决方案作为此体系结构的一部分进行安装。 请注意，客户负责配置这些解决方案，使之符合 FedRAMP 安全控制的要求：
--   [AD 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案定期评估服务器环境的风险和运行状况，并且提供特定于部署服务器基础结构的优先建议列表。
--   [反恶意软件评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware)：反恶意软件解决方案报告恶意软件、威胁和防护状态。
--   [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)：Azure 自动化解决方案存储、运行和管理 Runbook。
+-   [AD 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署服务器基础结构的优先建议列表。
+-   [反恶意软件评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware)：反恶意软件解决方案用于报告恶意软件、威胁和防护状态。
+-   [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)：Azure 自动化解决方案用于存储、运行和管理 runbook。
 -   [安全和审核](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)：“安全和审核”仪表板通过提供有关安全域、值得注意的问题、检测、威胁智能和常见安全性查询的指标，提供对资源安全状态的高级见解。
--   [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案定期评估服务器环境的风险和运行状况，并且为客户提供特定于已部署服务器基础结构的优先建议列表。
--   [更新管理](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management)：“更新管理”解决方案允许客户管理操作系统安全更新，包括可用更新的状态以及安装所需更新的过程。
--   [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：“代理运行状况”解决方案报告已部署代理的数量及其地理分布，以及无响应的代理数量和提交操作数据的代理数量。
+-   [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并为客户提供特定于部署服务器基础结构的优先建议列表。
+-   [更新管理](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management)：更新管理解决方案允许客户管理操作系统安全更新，包括可用更新的状态以及安装所需更新的过程。
+-   [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：代理运行状况解决方案报告已部署代理的数量及其地理分布，以及无响应的代理数量和提交操作数据的代理数量。
 -   [Azure 活动日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：Activity Log Analytics 解决方案可帮助分析客户的所有 Azure 订阅的 Azure 活动日志。
--   [更改跟踪](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：“更改跟踪”解决方案使得客户能够轻松识别环境中的更改。
+-   [更改跟踪](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：更改跟踪解决方案使得客户能够轻松识别环境中的更改。
 
 **Azure Monitor**
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 通过使组织能够审核、创建警报和存档数据（包括在客户的 Azure 资源中跟踪 API 调用），帮助用户跟踪性能、维护安全性和确定趋势。

@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 0bfb652d9e64b9dbf61ad4032f1449fd484cc80a
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: ad58257313c60b4757c83793886ce32a2997332b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233543"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996549"
 ---
 # <a name="track-b2b-messages-with-azure-log-analytics"></a>使用 Azure Log Analytics 跟踪 B2B 消息
 
@@ -27,7 +27,7 @@ ms.locfileid: "50233543"
 * 搜索功能
 
 > [!NOTE]
-> 此页面之前描述了如何使用 Microsoft Operations Management Suite (OMS) 执行这些任务的步骤，该解决方案将[在 2019 年 1 月停用](../log-analytics/log-analytics-oms-portal-transition.md)，取而代之的将是使用 Azure Log Analytics 执行这些步骤的内容。 
+> 此页面之前描述了如何使用 Microsoft Operations Management Suite (OMS) 执行这些任务的步骤，该解决方案将[在 2019 年 1 月停用](../azure-monitor/platform/oms-portal-transition.md)，取而代之的将是使用 Azure Log Analytics 执行这些步骤的内容。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,19 +37,19 @@ ms.locfileid: "50233543"
 
 * [将诊断数据发布到 Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)（如果尚未发布）。
 
-* 满足上述要求后，还需要 Log Analytics 工作区，用于通过 Log Analytics 来跟踪 B2B 通信。 如果没有 Log Analytics 工作区，请了解[如何创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)。
+* 满足上述要求后，还需要 Log Analytics 工作区，用于通过 Log Analytics 来跟踪 B2B 通信。 如果没有 Log Analytics 工作区，请了解[如何创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
 
 ## <a name="install-logic-apps-b2b-solution"></a>安装逻辑应用 B2B 解决方案
 
-请先将逻辑应用 B2B 解决方案添加到 Log Analytics，方可让 Log Analytics 跟踪逻辑应用的 B2B 消息。 详细了解如何[将解决方案添加到 Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md)。
+请先将逻辑应用 B2B 解决方案添加到 Log Analytics，方可让 Log Analytics 跟踪逻辑应用的 B2B 消息。 详细了解如何[将解决方案添加到 Log Analytics](../azure-monitor/learn/quick-create-workspace.md)。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有服务”。 在搜索框中，查找“log analytics”，并选择“Log Analytics”。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有服务”。 在搜索框中查找“log analytics”，并选择“Log Analytics”。
 
    ![选择“Log Analytics”](media/logic-apps-track-b2b-messages-omsportal/find-log-analytics.png)
 
 1. 在“Log Analytics”下，查找并选择你的 Log Analytics 工作区。 
 
-   ![选择“Log Analytics 工作区”](media/logic-apps-track-b2b-messages-omsportal/select-log-analytics-workspace.png)
+   ![选择 Log Analytics 工作区](media/logic-apps-track-b2b-messages-omsportal/select-log-analytics-workspace.png)
 
 1. 在“开始使用 Log Analytics” > “配置监视解决方案”下，选择“查看解决方案”。
 

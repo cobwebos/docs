@@ -8,19 +8,19 @@ manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: 56ccb219-11b2-4e43-9f07-5a76e3cd8da8
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: ergreenl
-ms.openlocfilehash: cf205249c4d07cee1ff17c9c726283cfddca1fce
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 7210610f8a082c34f8e87ef715b8252c2821bc83
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155212"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187090"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Azure 云解决方案提供商 (CSP) 的 Azure Active Directory (AD) 域服务
 本文介绍如何在 Azure CSP 订阅中使用 Azure AD 域服务。
@@ -72,18 +72,18 @@ Azure AD 域服务现在支持 Azure CSP 订阅。 用户现可在关联到客�
 ## <a name="administering-azure-ad-domain-services-managed-domains-in-csp-subscriptions"></a>在 CSP 订阅中管理 Azure AD 域服务托管域
 在 Azure CSP 订阅中管理托管域时，请注意以下注意事项：
 
-* **CSP 管理代理可使用其凭据预配托管域：** Azure AD 域服务支持 Azure CSP 订阅。 因此，CSP 合作伙伴管理代理组中的用户可预配新的 Azure AD 域服务托管域。
+* **CSP 管理代理可以使用其凭据预配托管域：** Azure AD 域服务支持 Azure CSP 订阅。 因此，CSP 合作伙伴管理代理组中的用户可预配新的 Azure AD 域服务托管域。
 
-* **CSP 可使用 PowerShell 为客户编写新建托管域的脚本：** 有关详细信息，请参阅[如何使用 PowerShell 启用 Azure AD 域服务](active-directory-ds-enable-using-powershell.md)。
+* **CSP 可以使用 PowerShell 为其客户编写新的托管域创建脚本：** 有关详细信息，请参阅[如何使用 PowerShell 启用 Azure AD 域服务](active-directory-ds-enable-using-powershell.md)。
 
-* **CSP 管理代理无法使用其凭据对托管域执行进行中的管理任务：** CSP 管理员用户无法使用其凭据在托管域中执行日常管理任务。 这些用户不在客户的 Azure AD 目录中，并且其凭据在客户的 Azure AD 目录中不可用。 因此，Azure AD 域服务对这些用户的 Kerberos 和 NTLM 密码哈希值不具有访问权限。 因此，无法在 Azure AD 域服务托管域上对这些用户进行身份验证。
+* **CSP 管理代理不能使用其凭据在托管域上执行进行中的管理任务：** CSP 管理员用户不能使用其凭据在托管域中执行日常管理任务。 这些用户不在客户的 Azure AD 目录中，并且其凭据在客户的 Azure AD 目录中不可用。 因此，Azure AD 域服务对这些用户的 Kerberos 和 NTLM 密码哈希值不具有访问权限。 因此，无法在 Azure AD 域服务托管域上对这些用户进行身份验证。
 
   > [!WARNING]
   > 必须在客户的目录中创建用户帐户，从而对托管域执行进行中的管理任务。
   > 无法使用 CSP 管理员用户的凭据登录到托管域。 使用客户 Azure AD 目录中用户帐户的凭据进行登录。 对于将虚拟机加入到托管域、管理 DNS、管理组策略等任务，这些凭据是必需的。
   >
 
-* **为进行中的管理而创建的用户帐户必须添加到“AAD DC 管理员”组：**“AAD DC 管理员”组有权在托管域上执行某些委托的管理任务。 这些任务包括配置 DNS、创建组织单位、管理组策略等。为使 CSP 合作伙伴在托管域上执行此类任务，需要在客户的 Azure AD 目录中创建用户帐户。 此帐户的凭据必须与 CSP 合作伙伴的管理代理共享。 此外，此用户帐户必须添加到“AAD DC 管理员”组，从而在托管域上启用要使用此用户帐户执行的配置任务。
+* **必须将为进行中的管理创建的用户帐户添加到“AAD DC 管理员”组：**“AAD DC 管理员”组有权在托管域上执行某些委托的管理任务。 这些任务包括配置 DNS、创建组织单位、管理组策略等。为使 CSP 合作伙伴在托管域上执行此类任务，需要在客户的 Azure AD 目录中创建用户帐户。 此帐户的凭据必须与 CSP 合作伙伴的管理代理共享。 此外，此用户帐户必须添加到“AAD DC 管理员”组，从而在托管域上启用要使用此用户帐户执行的配置任务。
 
 
 ## <a name="next-steps"></a>后续步骤

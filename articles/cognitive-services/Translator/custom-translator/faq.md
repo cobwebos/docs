@@ -5,16 +5,16 @@ description: 提供有关自定义翻译的常见问题的解答。
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: reference
-ms.openlocfilehash: 38ebde9179d79c091edb269c1be4c9c956f34006
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 4d63eb817f7dc1ff957223cb5e9181fbc441fe29
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626710"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227482"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 
@@ -46,7 +46,7 @@ ms.locfileid: "51626710"
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>如果我的数据已进行句子对齐，如何跳过对齐和断句？
 
-对于 TMX 文件和扩展名为 `.align` 的文本文件，自定义翻译会跳过句子对齐和断句。 对于已完美对齐且无需进一步处理的 `.align` 文件，用户可以通过某个选项在自定义翻译中进行断句和对齐处理。 我们建议仅对完美对齐的文件使用 `.align` 扩展名。
+对于 TMX 文件和扩展名为 `.align` 的文本文件，自定义翻译会跳过句子对齐和断句。 对于已完美对齐且无需进一步处理的 `.align` 文件，用户可以通过某个选项跳过自定义翻译器的断句和对齐处理。 我们建议仅对完美对齐的文件使用 `.align` 扩展名。
 
 如果提取的句子数与具有相同基本名称的两个文件不匹配，自定义翻译仍会针对 `.align` 文件运行句子对齐程序。
 

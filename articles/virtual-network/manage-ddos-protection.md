@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure 门户管理 Azure DDoS 保护标准 | Microsoft Docs
+title: 使用 Azure 门户管理 Azure DDoS 保护标准
+titlesuffix: Azure Virtual Network
 description: 了解如何在 Azure Monitor 中使用 Azure DDoS 保护标准遥测来缓解攻击。
 services: virtual-network
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: jdial
-ms.openlocfilehash: 66b2930e06cef1a31602df3d358c78f42c8cd2cf
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 360c0d9a96b8dac2f08b89caa8c1fd36e8a54b3f
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406358"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020415"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>使用 Azure 门户管理 Azure DDoS 保护标准
 
@@ -114,7 +115,7 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 
 若要模拟 DDoS 攻击来验证警报，请参阅[验证 DDoS 检测](#validate-ddos-detection)。
 
-还可以了解有关为创建警报而[配置 webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 和[逻辑应用](../logic-apps/logic-apps-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的详细信息。
+还可以了解有关为创建警报而[配置 webhook](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 和[逻辑应用](../logic-apps/logic-apps-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的详细信息。
 
 ## <a name="use-ddos-protection-telemetry"></a>使用 DDoS 防护遥测
 
@@ -129,9 +130,9 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 
 指标名称提供不同的数据包类型和字节数与数据包数，每个指标都有如下所示的标记名称基本构造：
 
-- **丢弃的标记名称（例如，丢弃的入站数据包 DDoS）**：由 DDoS 防护系统丢弃/清理的数据包数。
-- **转发的标记名称（例如，转发的入站数据包 DDoS）**：由 DDoS 系统转发到目标 VIP 的数据包数 - 未筛选的流量。
-- **无标记名称（例如，入站数据包 DDoS）**：进入到清理系统的总数据包数 – 表示丢弃的和转发的数据包的和。
+- **丢弃的标记名称**（例如，**丢弃的入站数据包 DDoS**）：由 DDoS 防护系统丢弃/清理的数据包数。
+- **转发的标记名称**（例如，**转发的入站数据包 DDoS**）：由 DDoS 系统转发到目标 VIP 的数据包数 - 未筛选的流量。
+- **无标记名称**（例如，**入站数据包 DDoS**）：进入到清理系统的总数据包数 - 表示丢弃的数据包和转发的数据包的和。
 
 若要模拟 DDoS 攻击来验证遥测，请参阅[验证 DDoS 检测](#validate-ddos-detection)。
 
@@ -156,9 +157,9 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 5. 为“资源类型”选择“公共 IP 地址”，然后选择要为其记录指标的特定公共 IP 地址。
 6. 选择“启用诊断以收集 DDoSMitigationReports 日志”，然后根据需要选择任意多个以下选项：
 
-    - **存档到存储帐户**：将数据写入 Azure 存储帐户。 若要了解有关此选项的详细信息，请参阅[存档诊断日志](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-    - **流式传输到事件中心**：允许日志接收器使用 Azure 事件中心选取日志。 事件中心将启用与 Splunk 或其他 SIEM 系统的集成。 若要了解有关此选项的详细信息，请参阅[将诊断日志流式传输到事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-    - **发送到 Log Analytics**：将日志写入到 Azure Log Analytics 服务。 若要了解有关此选项的详细信息，请参阅[收集用于 Log Analytics 的诊断日志](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+    - **存档到存储帐户**：数据写入 Azure 存储帐户。 若要了解有关此选项的详细信息，请参阅[存档诊断日志](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+    - **流式传输到事件中心**：允许日志接收器使用 Azure 事件中心选取日志。 事件中心将启用与 Splunk 或其他 SIEM 系统的集成。 若要了解有关此选项的详细信息，请参阅[将诊断日志流式传输到事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+    - **发送到 Log Analytics**：将日志写入到 Azure Log Analytics 服务。 若要了解有关此选项的详细信息，请参阅[收集用于 Log Analytics 的诊断日志](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 增量缓解报告和攻击后缓解报告都包括以下字段
 - 攻击途径
@@ -178,9 +179,9 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 5. 为“资源类型”选择“公共 IP 地址”，然后选择要为其记录指标的特定公共 IP 地址。
 6. 选择“启用诊断以收集 DDoSMitigationFlowLogs 日志”，然后根据需要选择任意多个以下选项：
 
-    - **存档到存储帐户**：将数据写入 Azure 存储帐户。 若要了解有关此选项的详细信息，请参阅[存档诊断日志](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-    - **流式传输到事件中心**：允许日志接收器使用 Azure 事件中心选取日志。 事件中心将启用与 Splunk 或其他 SIEM 系统的集成。 若要了解有关此选项的详细信息，请参阅[将诊断日志流式传输到事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-    - **发送到 Log Analytics**：将日志写入到 Azure Log Analytics 服务。 若要了解有关此选项的详细信息，请参阅[收集用于 Log Analytics 的诊断日志](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+    - **存档到存储帐户**：数据写入 Azure 存储帐户。 若要了解有关此选项的详细信息，请参阅[存档诊断日志](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+    - **流式传输到事件中心**：允许日志接收器使用 Azure 事件中心选取日志。 事件中心将启用与 Splunk 或其他 SIEM 系统的集成。 若要了解有关此选项的详细信息，请参阅[将诊断日志流式传输到事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+    - **发送到 Log Analytics**：将日志写入到 Azure Log Analytics 服务。 若要了解有关此选项的详细信息，请参阅[收集用于 Log Analytics 的诊断日志](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 1. 若要在 Azure 分析仪表板中查看流日志数据，可从 https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip 导入示例仪表板
 
 流日志具有以下字段： 

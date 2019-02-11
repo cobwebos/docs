@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/23/2018
 ms.author: jingwang
-ms.openlocfilehash: 1c321d96efc7af387fb30b6ed608eb871cb7de5f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fc222d2524a709ee8b0f3fc8283d7ffb27575772
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230489"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321970"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 PostgreSQL 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -71,8 +70,8 @@ PostgreSQL 链接的服务支持以下属性：
         "type": "PostgreSql",
         "typeProperties": {
             "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
+                "type": "SecureString",
+                "value": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
             }
         },
         "connectVia": {
@@ -117,7 +116,7 @@ PostgreSQL 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：RelationalTable | 是 |
+| type | 数据集的 type 属性必须设置为：**RelationalTable** | 是 |
 | tableName | PostgreSQL 数据库中的表名。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -147,7 +146,7 @@ PostgreSQL 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：RelationalSource | 是 |
+| type | 复制活动源的 type 属性必须设置为：**RelationalSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"query": "SELECT * FROM \"MySchema\".\"MyTable\""`。 | 否（如果指定了数据集中的“tableName”） |
 
 > [!NOTE]

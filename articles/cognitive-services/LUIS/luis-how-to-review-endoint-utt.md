@@ -1,23 +1,24 @@
 ---
-title: 查看语言理解 (LUIS) 的终结点话语
-titleSuffix: Azure Cognitive Services
+title: 查看用户陈述
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 主动学习概念是 LUIS 的突破性特征。 一旦 LUIS 具有终结点查询，主动学习就会通过选择不确定的话语来提高结果的质量。 如果标记这些陈述并进行训练和发布，则 LUIS 将可以更准确地识别陈述。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: a5e0dabe251d14389923df3efe41f6ba80f41bdd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 13a9fba996ea2929bb7165c395176fbfb8c051c3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030789"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208043"
 ---
-# <a name="review-endpoint-utterances"></a>查看终结点话语
+# <a name="how-to-review-endpoint-utterances-in-luis-portal"></a>如何评审 LUIS 门户中的终结点陈述
 
 主动学习[概念](luis-concept-review-endpoint-utterances.md)是 LUIS 的突破性特征。 一旦 LUIS 有了终结点查询，LUIS 便可使用主动学习提升结果质量。 在主动学习过程中，LUIS 会检查所有终结点陈述，并选择不确定的陈述。 如果标记这些陈述并进行训练和发布，则 LUIS 将可以更准确地识别陈述。 
 

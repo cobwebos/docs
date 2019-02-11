@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7d4d680e3460fbeff73c2f334c6461da7967374d
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 0cd3f506205a3ee4f4435b16fd2185eeb20aef3c
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
-ms.locfileid: "27786401"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447218"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 管理 StorSimple 虚拟阵列的警报
 
@@ -39,7 +39,6 @@ StorSimple Device Manager 服务中的警报功能提供了一种实时查看和
 > [!NOTE]
 > 最多可为每个虚拟阵列输入 20 个电子邮件地址。
 
-
 为虚拟阵列启用电子邮件通知后，每次发生关键警报时，通知列表成员都将收到电子邮件消息。 消息将从 *storsimple-alerts-noreply@mail.windowsazure.com* 发出，并描述警报条件。 收件人可以单击“取消订阅”将自己从电子邮件通知列表中删除。
 
 #### <a name="to-enable-email-notification-for-alerts"></a>为警报启用电子邮件通知
@@ -54,7 +53,7 @@ StorSimple Device Manager 服务中的警报功能提供了一种实时查看和
    
    1. 在“启用电子邮件通知”字段中，选择“是”。
    2. 如果希望服务管理员和所有协同管理员接收警报通知，请在“电子邮件服务管理员”字段中选择“是”。
-   3. 在“其他电子邮件收件人”字段中，输入应接收警报通知的所有其他收件人的电子邮件地址。 以 *someone@somewhere.com* 格式输入名称。使用分号分隔电子邮件地址。 对于每个虚拟设备，最多可以配置 20 个电子邮件地址。
+   3. 在“其他电子邮件收件人”字段中，输入应接收警报通知的所有其他收件人的电子邮件地址。 以 *someone@somewhere.com* 格式输入名称。 使用分号分隔电子邮件地址。 对于每个虚拟设备，最多可以配置 20 个电子邮件地址。
       
        ![警报通知配置](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
    4. 若要发送测试电子邮件通知，请单击“发送测试电子邮件”。 StorSimple Device Manager 服务在转发测试通知时会显示状态消息。
@@ -63,8 +62,8 @@ StorSimple Device Manager 服务中的警报功能提供了一种实时查看和
       
       > [!NOTE]
       > 如果无法发送测试通知消息，StorSimple Device Manager 服务会显示相应的消息。 请单击“确定”，并在几分钟后重试发送测试通知消息。
-      > 
-      > 
+      >
+      >
    5. 在页面底部，单击“保存”保存配置。 出现确认提示时，单击“是”。
       
       ![警报测试通知电子邮件已发送](./media/storsimple-virtual-array-manage-alerts/alerts10.png)
@@ -102,11 +101,11 @@ StorSimple 虚拟阵列可在响应各种条件时生成警报。 以下是最�
 
 如果需要将信息发送到 Microsoft 支持部门，可将警报详细信息复制到文本文件。 遵循建议消除本地警报条件后，应从列表中清除该警报。 从列表中选择该警报，并单击“清除”。 要清除多个警报，请选择每个警报，单击除“警报”列以外的所有列，并在选择要清除的所有警报之后单击“清除”。
 
-单击“清除”时，可以提供有关警报的注释，以及采用的解决问题的步骤。 
+单击“清除”时，可以提供有关警报的注释，以及采用的解决问题的步骤。
 
 ![警报注释](./media/storsimple-virtual-array-manage-alerts/alerts17.png)
 
-如果新信息触发另一个事件，系统将清除某些事件。 
+如果新信息触发另一个事件，系统将清除某些事件。
 
 ## <a name="sort-and-review-alerts"></a>排序和查看警报
 
@@ -131,21 +130,21 @@ StorSimple 虚拟阵列可在响应各种条件时生成警报。 以下是最�
 
 | 警报文本 | 事件 | 详细信息/建议的操作 |
 |:--- |:--- |:--- |
-| 设备 *<device name>* 未连接到云。 |已命名的设备无法连接到云。 |无法连接到云。 这可能由以下原因之一造成：<ul><li>设备上的网络设置可能出现问题。</li><li>存储帐户凭据可能出现问题。</li></ul>有关排查连接问题的详细信息，请转到设备的[本地 web UI](storsimple-ova-web-ui-admin.md)。 |
+| 设备 <设备名> 未连接到云。 |已命名的设备无法连接到云。 |无法连接到云。 这可能由以下原因之一造成：<ul><li>设备上的网络设置可能出现问题。</li><li>存储帐户凭据可能出现问题。</li></ul>有关排查连接问题的详细信息，请转到设备的[本地 web UI](storsimple-ova-web-ui-admin.md)。 |
 
 ### <a name="configuration-alerts"></a>配置警报
 
 | 警报文本 | 事件 | 详细信息/建议的操作 |
 |:--- |:--- |:--- |
 | 本地虚拟设备配置不受支持。 |降低性能。 |当前配置可能导致性能降低。 确保服务器满足最低配置要求。 有关详细信息，请转到 [StorSimple 虚拟阵列要求](storsimple-ova-system-requirements.md)。 |
-| <*device name*> 上的预配磁盘空间不足。 |磁盘空间警告。 |预配磁盘空间不足。 要释放空间，请考虑将工作负荷移动到另一个卷或共享，或者删除数据。 |
+| <设备名\> 上的预配磁盘空间已用完。 |磁盘空间警告。 |预配磁盘空间不足。 要释放空间，请考虑将工作负荷移动到另一个卷或共享，或者删除数据。 |
 
 ### <a name="job-failure-alerts"></a>作业失败警报
 
 | 警报文本 | 事件 | 详细信息/建议的操作 |
 |:--- |:--- |:--- |
-| 无法完成 <*device name*> 的备份。 |备份作业失败。 |无法创建备份。 考虑以下操作之一：<ul><li>连接问题可能正在阻止备份操作成功完成。 请确保没有任何连接问题。 有关排查连接问题的详细信息，请转到虚拟设备的[本地 Web UI](storsimple-ova-web-ui-admin.md)。</li><li>已达到可用存储限制。 若要释放空间，请考虑删除不再需要的所有备份。</li></ul> 解决问题、清除警报并重试操作。 |
-| 无法完成 <*device name*> 的克隆。 |克隆作业失败。 |无法创建克隆。 考虑以下操作之一：<ul><li>备份列表可能无效。 刷新列表以验证它是否仍然有效。</li><li>连接问题可能正在阻止克隆操作成功完成。 请确保没有任何连接问题。</li><li>已达到可用存储限制。 若要释放空间，请考虑删除不再需要的所有备份。</li></ul>解决问题、清除警报并重试操作。 |
+| 无法完成 <设备名\> 的备份。 |备份作业失败。 |无法创建备份。 考虑以下操作之一：<ul><li>连接问题可能正在阻止备份操作成功完成。 请确保没有任何连接问题。 有关排查连接问题的详细信息，请转到虚拟设备的[本地 Web UI](storsimple-ova-web-ui-admin.md)。</li><li>已达到可用存储限制。 若要释放空间，请考虑删除不再需要的所有备份。</li></ul> 解决问题、清除警报并重试操作。 |
+| 无法完成 <设备名\> 的克隆。 |克隆作业失败。 |无法创建克隆。 考虑以下操作之一：<ul><li>备份列表可能无效。 刷新列表以验证它是否仍然有效。</li><li>连接问题可能正在阻止克隆操作成功完成。 请确保没有任何连接问题。</li><li>已达到可用存储限制。 若要释放空间，请考虑删除不再需要的所有备份。</li></ul>解决问题、清除警报并重试操作。 |
 
 ### <a name="networking-alerts"></a>网络警报
 | 警报文本 | 事件 | 详细信息/建议的操作 |
@@ -157,15 +156,14 @@ StorSimple 虚拟阵列可在响应各种条件时生成警报。 以下是最�
 | 警报文本 | 事件 | 详细信息/建议的操作 |
 |:--- |:--- |:--- |
 | 在数据传输中遇到意外延迟。 |数据传输较慢。 |当超出存储服务的可伸缩性目标时，会发生限制错误。 存储服务这样做是为了确保没有单个客户端或租户可以在损害其他客户端或租户的情况下使用服务。 有关 Azure 存储帐户疑难解答的详细信息，请转到[监视、诊断和排查 Microsoft Azure 存储问题](../storage/common/storage-monitoring-diagnosing-troubleshooting.md)。 |
-| <*device name*> 上的本地预留磁盘空间不足。 |响应时间较长。 |在本地设备上预留 <*device name*> 的总预配大小的 10%，现在预留空间不足。 <*device name*> 上的工作负荷正在生成更高的改动率，或者最近迁移了大量数据。 这可能导致性能降低。 若要解决此问题，请考虑采取以下措施之一：<ul><li>增加此设备的云带宽。</li><li>减少工作负荷或将工作负荷移到其他卷或共享。</li></ul> |
+| <设备名\> 上的本地保留磁盘空间不足。 |响应时间较长。 |在本地设备上预留 <设备名\> 的总预配大小的 10%，现在预留空间不足。 <*设备名*\> 上的工作负荷正在生成更高的改动率，或者最近迁移了大量数据。 这可能导致性能降低。 若要解决此问题，请考虑采取以下措施之一：<ul><li>增加此设备的云带宽。</li><li>减少工作负荷或将工作负荷移到其他卷或共享。</li></ul> |
 
 ### <a name="security-alerts"></a>安全警报
 
 | 警报文本 | 事件 | 详细信息/建议的操作 |
 |:--- |:--- |:--- |
-| <*device name*> 的密码将在 <*number*> 天后到期。 |密码警告。 |密码将在 <number< 天后到期。 请考虑更改密码。 有关详细信息，请转到 [更改 StorSimple 虚拟阵列设备管理员密码](storsimple-virtual-array-change-device-admin-password.md)。 |
+| <设备名\> 的密码将在 <number\> 天后到期。 |密码警告。 |密码将在 <number\> 天后到期。 请考虑更改密码。 有关详细信息，请转到 [更改 StorSimple 虚拟阵列设备管理员密码](storsimple-virtual-array-change-device-admin-password.md)。 |
 
 ## <a name="next-steps"></a>后续步骤
 
 * [了解 StorSimple 虚拟阵列](storsimple-ova-overview.md)。
-

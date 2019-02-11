@@ -1,12 +1,10 @@
 ---
-title: 测试 Azure VM 网络吞吐量 | Microsoft Docs
+title: 测试 Azure VM 网络吞吐量
+titlesuffix: Azure Virtual Network
 description: 了解如何测试 Azure 虚拟机网络吞吐量。
 services: virtual-network
 documentationcenter: na
 author: steveesp
-manager: Gerald DeGrace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: 45efaebb9539c4c0e2542966df6ab890b64d12ee
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b02f5011b9482481ca3fbe439061c160b3c73a1e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023810"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016607"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>带宽/吞吐量测试 (NTTTCP)
 
@@ -29,10 +27,11 @@ ms.locfileid: "50023810"
 
 #### <a name="deploying-vms-for-testing"></a>部署 VM 以进行测试
 为了达到此测试的目的，两个 VM 应位于同一云服务或同一可用性集中，这样我们便可使用其内部 IP 并从测试中排除负载均衡器。 也可以使用 VIP 进行测试，但这类测试不在本文的讨论范围内。
- 
+
 记下接收方的 IP 地址。 暂且将该 IP 称为“a.b.c.r”
 
-记下 VM 上的核心数。 我们将其称为“\#num\_cores” 
+记下 VM 上的核心数。 暂且将其称为“\#num\_cores”
+
 在发送方 VM 和接收方 VM 上运行 NTTTCP 测试 300 秒（5 分钟）。
 
 提示：第一次设置此测试时，可以尝试更短的测试时间，以更快地获取反馈。 在工具按预期工作后，将测试时间扩展到 300 秒，以获取最准确的结果。

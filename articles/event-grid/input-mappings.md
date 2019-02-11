@@ -2,18 +2,18 @@
 title: 将自定义字段映射到 Azure 事件网格架构
 description: 介绍如何将自定义架构转换为 Azure 事件网格架构。
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/07/2018
-ms.author: tomfitz
-ms.openlocfilehash: ce9df1d45de82c759883dc90d50c28551bf62cdf
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.date: 01/07/2019
+ms.author: spelluru
+ms.openlocfilehash: 2c768790421ac74fa483877f09e66b1b4b5d5f35
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287298"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476608"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>将自定义字段映射到事件网格架构
 
@@ -103,7 +103,7 @@ az eventgrid event-subscription create \
 az eventgrid event-subscription create \
   --source-resource-id $topicid \
   --name eventsub2 \
-  --event-delivery-schema inputeventschema \
+  --event-delivery-schema custominputschema \
   --endpoint <endpoint_URL>
 ```
 

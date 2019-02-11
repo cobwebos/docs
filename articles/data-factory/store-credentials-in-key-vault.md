@@ -8,16 +8,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/22/2017
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 3428fb5034435d9f3444347329171d803136177c
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: ff070adbda2a36261ca24eb0cc993ca22eada1c7
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944662"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661235"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>在 Azure Key Vault 中存储凭据
 
@@ -28,9 +27,6 @@ ms.locfileid: "49944662"
 ## <a name="prerequisites"></a>先决条件
 
 此功能依赖于数据工厂服务标识。 从[数据工厂服务标识](data-factory-service-identity.md)了解其工作原理，并确保数据工厂已关联一个服务标识。
-
->[!TIP]
->在 Azure Key Vault 中创建机密时，输入 ADF 链接服务要求的机密属性的整个值（例如，连接字符串/密码/服务主体密钥等）。 例如，对于 Azure 存储链接服务，将 `DefaultEndpointsProtocol=http;AccountName=myAccount;AccountKey=myKey;` 作为 AKV 机密，然后引用 ADF 的“connectionString”字段；对于 Dynamics 链接服务，将 `myPassword` 作为 AKV 机密，然后引用 ADF 的“paassword”字段。 若要详细了解所支持的属性，请参阅各连接器/计算文章。
 
 ## <a name="steps"></a>Steps
 

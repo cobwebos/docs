@@ -9,17 +9,18 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: patricka
 ms.reviewer: fiseraci
+ms.lastreviewed: 11/05/2018
 keywords: ''
-ms.openlocfilehash: 83177363803c8f5c505c083614000dfa8f0df60d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 8622619c56b618a1f5e4c91efcd047ab0ba9ce0a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036897"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247691"
 ---
 # <a name="azure-stack-datacenter-integration---physical-device-auditing"></a>Azure Stack 数据中心集成 - 物理设备审核
 
-基板管理控制器 (Bmc) 和网络交换机等 Azure Stack 中的所有物理设备发出审核日志。 可以将审核日志集成到整体审核解决方案。 由于设备因不同的 Azure Stack OEM 硬件供应商而异，所以请联系你的供应商来获取有关审核集成的文档。
+Azure Stack 中的所有物理设备（例如基板管理控制器 (BMC) 和网络交换机）都会发出审核日志。 可以将它们集成到整体审核解决方案中。 由于设备因不同的 Azure Stack OEM 硬件供应商而异，所以请联系你的供应商来获取有关审核集成的文档。
 以下各部分提供了有关 Azure Stack 中的物理设备审核的一些常规信息。  
 
 ## <a name="physical-device-access-auditing"></a>物理设备访问审核

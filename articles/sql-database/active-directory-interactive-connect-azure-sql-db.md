@@ -10,23 +10,20 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: MirekS
 ms.reviewer: GeneMi
-ms.date: 04/06/2018
+ms.date: 01/25/2019
 manager: craigg
-ms.openlocfilehash: 80944e73f21d75943d4fa71c7ac9500e47bab250
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 7a05c6b4fac031482d77827a817ef56920a0c314
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055520"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464545"
 ---
 # <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>使用 ActiveDirectoryInteractive 模式连接到 Azure SQL 数据库
 
 本文提供可连接到 Microsoft Azure SQL 数据库的可运行 C# 代码示例。 C# 程序使用支持 Azure AD 多重身份验证 (MFA) 的身份验证交互模式。 例如，连接尝试可以包括正发送至手机的验证代码。
 
 有关 SQL 工具 MFA 支持的详细信息，请参阅 [SQL Server Data Tools (SSDT) 中的 Azure Active Directory 支持](https://docs.microsoft.com/sql/ssdt/azure-active-directory)。
-
-
-
 
 ## <a name="sqlauthenticationmethod-activedirectoryinteractive-enum-value"></a>SqlAuthenticationMethod .ActiveDirectoryInteractive 枚举值
 
@@ -54,11 +51,9 @@ ms.locfileid: "47055520"
 >
 > [https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod)
 
-
 ## <a name="preparations-for-c-by-using-the-azure-portal"></a>通过使用 Azure 门户准备 C#
 
 我们假定已[创建 Azure SQL 数据库服务器](sql-database-get-started-portal.md)且该服务器可用。
-
 
 ### <a name="a-create-an-app-registration"></a>A. 创建应用注册
 
@@ -66,28 +61,28 @@ ms.locfileid: "47055520"
 
 1. “Azure 门户”&gt;“Azure Active Directory”&gt;“应用注册”
 
-    ![应用注册](media\active-directory-interactive-connect-azure-sql-db\sshot-create-app-registration-b20.png)
+    ![应用注册](media/active-directory-interactive-connect-azure-sql-db/sshot-create-app-registration-b20.png)
 
 2. 生成并显示“应用程序 ID”值。
 
-    ![显示的应用 ID](media\active-directory-interactive-connect-azure-sql-db\sshot-application-id-app-regis-mk49.png)
+    ![显示的应用 ID](media/active-directory-interactive-connect-azure-sql-db/sshot-application-id-app-regis-mk49.png)
 
 3. “已注册应用”&gt;“设置”&gt;“所需权限”&gt;“添加”
 
-    ![已注册应用的权限设置](media\active-directory-interactive-connect-azure-sql-db\sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
+    ![已注册应用的权限设置](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
 
 4. “所需权限”&gt;“添加 API 访问”&gt;“选择一个 API”&gt;“Azure SQL 数据库”
 
-    ![为 Azure SQL 数据库添加对 API 的访问](media\active-directory-interactive-connect-azure-sql-db\sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
+    ![为 Azure SQL 数据库添加对 API 的访问](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
 
 5. “API 访问”&gt;“选择权限”&gt;“委托的权限”
 
-    ![为 Azure SQL 数据库委托对 API 的权限](media\active-directory-interactive-connect-azure-sql-db\sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
+    ![为 Azure SQL 数据库委托对 API 的权限](media/active-directory-interactive-connect-azure-sql-db/sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
 
 
 ### <a name="b-set-azure-ad-admin-on-your-sql-database-server"></a>B. 在 SQL 数据库服务器上设置 Azure AD 管理员
 
-每个 Azure SQL 数据库服务器都有自己的 Azure AD SQL 逻辑服务器。 对于本 C# 方案，必须为 Azure SQL 服务器设置 Azure AD 管理员。
+每个 Azure SQL 单一数据库和弹性池都有其自己的 Azure AD SQL 数据库服务器。 对于本 C# 方案，必须为 Azure SQL 服务器设置 Azure AD 管理员。
 
 1. “SQL Server”&gt;“Active Directory 管理员”&gt;“设置管理员”
 
@@ -124,13 +119,13 @@ C# 程序依赖于命名空间“Microsoft.IdentityModel.Clients.ActiveDirectory
 
 C# 示例依赖的一个命名空间是“System.Data.SqlClient”。 需要特别注意的是枚举“SqlAuthenticationMethod”。 此枚举有以下值：
 
-- **SqlAuthenticationMethod.ActiveDirectory *Interactive***：将此值与 Azure AD 用户名一起使用，实现多重身份验证 MFA。
+- **SqlAuthenticationMethod.ActiveDirectory *Interactive***：&nbsp;将此值与 Azure AD 用户名一起使用，实现多重身份验证 MFA。
     - 此值是本文的重点。 它通过显示用户密码的对话框，接着显示 MFA 验证的对话框（如果 MFA 应用于此用户）来生成交互式体验。
     - 此值自 .NET Framework 版本 4.7.2 起提供。
 
-- **SqlAuthenticationMethod.ActiveDirectory *Integrated***：对*联合*帐户使用此值。 对于联合帐户，Windows 域已知用户名。 此方法不支持 MFA。
+- **SqlAuthenticationMethod.ActiveDirectory *Integrated***：&nbsp;对“联合”帐户使用此值。 对于联合帐户，Windows 域已知用户名。 此方法不支持 MFA。
 
-- **SqlAuthenticationMethod.ActiveDirectory *Password***：使用此值进行需要 Azure AD 用户和用户密码的身份验证。 Azure SQL 数据库执行身份验证。 此方法不支持 MFA。
+- **SqlAuthenticationMethod.ActiveDirectory *Password***：&nbsp;使用此值进行需要 Azure AD 用户和用户密码的身份验证。 Azure SQL 数据库执行身份验证。 此方法不支持 MFA。
 
 
 
@@ -183,11 +178,11 @@ C# 示例依赖的一个命名空间是“System.Data.SqlClient”。 需要特�
 
 - “System.Data.SqlClient”命名空间：
     - 搜索：&nbsp; [https://docs.microsoft.com/dotnet/api/?term=System.Data.SqlClient](https://docs.microsoft.com/dotnet/api/?term=System.Data.SqlClient)
-    - 指向：&nbsp; [System.Data.Client](https://docs.microsoft.com/dotnet/api/system.data.sqlclient)
+    - 指向：&nbsp;[System.Data.Client](https://docs.microsoft.com/dotnet/api/system.data.sqlclient)
 
 - “Microsoft.IdentityModel.Clients.ActiveDirectory”命名空间：
     - 搜索：&nbsp; [https://docs.microsoft.com/dotnet/api/?term=Microsoft.IdentityModel.Clients.ActiveDirectory](https://docs.microsoft.com/dotnet/api/?term=Microsoft.IdentityModel.Clients.ActiveDirectory)
-    - 指向：&nbsp; [Microsoft.IdentityModel.Clients.ActiveDirectory](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory)
+    - 指向：&nbsp;[Microsoft.IdentityModel.Clients.ActiveDirectory](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory)
 
 
 #### <a name="c-source-code-in-two-parts"></a>C# 源代码，分两部分

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: a2e1604a51b8343d926dda3b258d38b19266deeb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 630413d15df04d27599389f647c57876fff9d295
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246678"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094421"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Power BI 工作区集合入门示例
 
@@ -24,7 +24,7 @@ ms.locfileid: "51246678"
 > [!IMPORTANT]
 > Power BI 工作区集合已弃用，到 2018 年 6 月 或合同指示时可用。 建议你规划到 Power BI Embedded 的迁移以避免应用程序中断。 有关如何将数据迁移到 Power BI Embedded 的信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
 
-往下继续之前，要保存以下资源：在将 Power BI 报表集成到示例应用以及自己的应用时，它们会有所帮助。
+在继续之前，需要保存以下资源：在将 Power BI 报表集成到示例应用和自己的应用中时，这些资源都可以提供帮助。
 
 * [示例工作区 Web 应用](https://go.microsoft.com/fwlink/?LinkId=761493)
 * [Power BI 工作区集合 API 参考](https://msdn.microsoft.com/library/azure/mt711507.aspx)
@@ -71,7 +71,7 @@ Checking import state... Succeeded
 Web 应用示例是一个示例应用程序，用于呈现**工作区**中导入的报表。 下面介绍了如何配置 Web 应用示例。
 
 1. 在 **PowerBI Embedded** Visual Studio 解决方案中，右键单击“EmbedSample”Web 应用程序，并选择“设为启动项目”。
-2. 在 **web.config** 的 **EmbedSample** Web 应用程序中，编辑 **appSettings** 中的 **AccessKey** 和 **WorkspaceCollection** 名称，以及 **WorkspaceId**。
+2. 在 **EmbedSample** Web 应用程序的 **web.config** 中，编辑 **appSettings**：**AccessKey**、**WorkspaceCollection** 名称和 **WorkspaceId**。
 
     ```
     <appSettings>
@@ -93,7 +93,7 @@ Web 应用示例是一个示例应用程序，用于呈现**工作区**中导入
 
 ## <a name="explore-the-sample-code"></a>探索示例代码
 
-**Microsoft Power BI 工作区集合**示例是一个 Web 应用示例，演示了如何将 **Power BI** 报表集成到应用中。 它采用模型-视图-控制器 (MVC) 设计模式来演示最佳做法。 本部分重点介绍可以在 **PowerBI Embedded** Web 应用解决方案中浏览的示例代码。 模型-视图-控制器 (MVC) 模式根据用户输入的三个单独的类（模型、视图和控件）对域、演示文稿和操作分开进行建模。 若要了解关于 MVC 的详细信息，请参阅 [Learn About ASP.NET](http://www.asp.net/mvc)（了解 ASP.NET）。
+**Microsoft Power BI 工作区集合**示例是一个 Web 应用示例，演示了如何将 **Power BI** 报表集成到应用中。 它采用模型-视图-控制器 (MVC) 设计模式来演示最佳做法。 本部分重点介绍可以在 **PowerBI Embedded** Web 应用解决方案中浏览的示例代码。 模型-视图-控制器 (MVC) 模式将域、表示和基于用户输入的操作的建模分为三个单独的类：模型、视图和控制。 若要了解关于 MVC 的详细信息，请参阅 [Learn About ASP.NET](http://www.asp.net/mvc)（了解 ASP.NET）。
 
 **Microsoft Power BI 工作区集合**示例代码分隔方式如下所示。 每个部分在 PowerBI embedded.sln 解决方案中都包括了文件名称，以便轻松查找示例中的代码。
 
@@ -111,7 +111,7 @@ Web 应用示例是一个示例应用程序，用于呈现**工作区**中导入
         public List<Report> Reports { get; set; }
     }
 
-**ReportViewModel.cs**：表示一个 Power BI 报表。
+**ReportViewModel.cs**：表示单个 Power BI 报表。
 
     public classReportViewModel
     {
@@ -128,7 +128,7 @@ Web 应用示例是一个示例应用程序，用于呈现**工作区**中导入
 Data Source=tcp:MyServer.database.windows.net,1433;Initial Catalog=MyDatabase
 ```
 
-使用一般的服务器和数据库属性会失败。 例如：Server=tcp:MyServer.database.windows.net,1433;Database=MyDatabase
+使用一般的服务器和数据库属性会失败。 例如：Server=tcp:MyServer.database.windows.net,1433;Database=MyDatabase,
 
 ### <a name="view"></a>查看
 
@@ -136,7 +136,7 @@ Data Source=tcp:MyServer.database.windows.net,1433;Initial Catalog=MyDatabase
 
 **Reports.cshtml**：循环访问 **Model.Reports** 以创建 **ActionLink**。 **ActionLink** 包含以下内容：
 
-| 部分 | Description |
+| 部分 | 说明 |
 | --- | --- |
 | 标题 |报表的名称。 |
 | QueryString |指向报表 ID 的链接。 |
@@ -228,7 +228,7 @@ ActionResult Reports()
 ```
 init: function() {
     var embedUrl = this.getEmbedUrl();
-    var iframeHtml = '<igrame style="width:100%;height:100%;" src="' + embedUrl + 
+    var iframeHtml = '<iframe style="width:100%;height:100%;" src="' + embedUrl + 
         '" scrolling="no" allowfullscreen="true"></iframe>';
     this.element.innerHTML = iframeHtml;
     this.iframe = this.element.childNodes[0];

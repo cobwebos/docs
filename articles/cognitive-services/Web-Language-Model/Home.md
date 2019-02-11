@@ -6,17 +6,17 @@ services: cognitive-services
 author: piyushbehre
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: web-language-model
+ms.subservice: web-language-model
 ms.topic: overview
 ms.date: 08/12/2016
 ms.author: pibehre
 ROBOTS: NOINDEX
-ms.openlocfilehash: 99d48e2abdc166fe6472195c86d890c3c1060cfa
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a4dfe5bb9651e3c5ff9706de829389a1b9df1305
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863782"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464919"
 ---
 # <a name="what-is-the-web-language-model-api-preview"></a>什么是 Web 语言模型 API？ （预览版）
 
@@ -44,7 +44,7 @@ Web 语言模型 API 支持四个查找操作：
 1. 订阅服务。
 2. 下载 [SDK](https://www.github.com/microsoft/cognitive-weblm-windows)。
 3. 运行 SDK 示例代码。
-4. 有关终结点的完整详细信息，包括采用各种语言的代码片段，请参阅 [API 参考](http://web.archive.org/web/20170503191852/ https://westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104/operations/55de9ca4e597ed19b0de8a51)。
+4. 有关终结点的完整详细信息，包括采用各种语言的代码片段，请参阅 [API 参考](http://web.archive.org/web/20170503191852/westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104/operations/55de9ca4e597ed19b0de8a51)。
 
 ## <a name="underlying-technology"></a>基础技术
 

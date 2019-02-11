@@ -1,24 +1,21 @@
 ---
 title: 通过 C++ 连接到 Azure Database for MySQL
 description: 本快速入门提供一个 C++ 代码示例，使用该示例可连接到 Azure Database for MySQL 并查询其中的数据。
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc
-ms.devlang: C++
+ms.devlang: cpp
 ms.topic: quickstart
 ms.date: 04/12/2018
-ms.openlocfilehash: 6d9deba8c7e6317ab349f86d5a1730f05288ea35
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: b262359b91a2545682e7611c44cfccd2b08da0c1
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987658"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544186"
 ---
-# <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database for MySQL：使用 Connector/C++ 进行连接并查询数据
+# <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database for MySQL：使用 Connector/C++ 连接和查询数据
 本快速入门演示如何使用 C++ 应用程序连接到 Azure Database for MySQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本主题假设你熟悉如何使用 C++ 进行开发，但不太熟悉 Azure Database for MySQL 的用法。
 
 ## <a name="prerequisites"></a>先决条件
@@ -41,10 +38,10 @@ ms.locfileid: "49987658"
    2. 运行该安装程序，并遵照安装提示完成安装。
 
 ### <a name="configure-visual-studio"></a>配置 Visual Studio
-1. 在 Visual Studio 的“项目”->“属性”->“链接器”->“常规”>“其他库目录”中，添加 C++ 连接器的“lib\opt”目录（即 C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\lib\opt）。
+1. 从 Visual Studio 的“项目”->“属性”->“链接器”->“常规”>“其他库目录”中，添加 C++ 连接器的“lib\opt”目录（即：C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\lib\opt）。
 2. 在 Visual Studio 的“项目”->“属性”->“C/C++”->“常规”->“其他 Include 目录”中：
-   - 添加 c++ 连接器的“\include”目录（即 C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\include\)。
-   - 添加 Boost 库的根目录（即 C:\boost_1_64_0\)。
+   - 添加 c++ 连接器的“\include”目录（即：C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\include\)）。
+   - 添加 Boost 库的根目录（即：C:\boost_1_64_0\)）。
 3. 在 Visual Studio 的“项目”->“属性”->“链接器”->“输入”->“其他依赖项”中，将 **mysqlcppconn.lib** 添加到文本字段。
 4. 将 **mysqlcppconn.dll** 从步骤 3 中的 C++ 连接器库文件夹复制到应用程序可执行文件所在的目录，或者将其添加到环境变量，方便应用程序找到它。
 

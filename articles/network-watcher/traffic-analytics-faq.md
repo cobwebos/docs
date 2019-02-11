@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 451480f5046d5ed8a1bd7262fd8f6a800e66dfc7
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: e2b08dbbeb078a4e139400112e9cdd9416878214
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582490"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382999"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -35,7 +35,6 @@ ms.locfileid: "52582490"
 
 帐户必须符合以下某项条件才能启用流量分析：
 
-- 必须在订阅级别将帐户分配给以下角色之一：帐户管理员、服务管理员或共同管理员。
 - 帐户必须在订阅范围内具有以下任何一种基于角色的访问控制 (RBAC) 角色：所有者、参与者、读者或网络参与者。
 - 如果未将帐户分配给之前列出的某一角色，则必须在订阅级别将其分配给分配有以下操作的自定义角色。
             
@@ -61,7 +60,7 @@ ms.locfileid: "52582490"
 如果未看到任何输出，请与相应的订阅管理员联系以获取运行命令的权限。 有关详细信息，请参阅[使用 Azure PowerShell 管理基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)。
 
 
-## <a name="in-which-azure-regions-are-traffic-analytics-available"></a>可在哪些 Azure 区域使用流量分析？
+## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>流量分析在哪些 Azure 区域中可用？
 
 可以在以下任何受支持的区域中对 NSG 使用流量分析：
 - 加拿大中部
@@ -133,7 +132,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 首次显示仪表板最长可能需要花费 30 分钟。 解决方案必须先聚合足够的数据以派生有意义的见解。 然后才能生成报告。 
 
-## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>如果收到此消息：“在选定的时间间隔内无法在此工作区中找到任何数据。 尝试更改时间间隔，或者选择其他工作区”，该如何解决？
+## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>如果收到以下消息：“在所选时间间隔内在此工作区中未找到任何数据。 尝试更改时间间隔，或者选择其他工作区”，该如何解决？
 
 请尝试以下选项：
 - 在上部菜单栏中更改时间间隔。
@@ -142,7 +141,7 @@ Log Analytics 工作区必须存在于以下区域中：
     
 如果问题仍未解决，请在 [User Voice 论坛](https://feedback.azure.com/forums/217313-networking?category_id=195844)中咨询。
 
-## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>如果收到此消息：“首次分析 NSG 流日志。 此过程可能需要 20-30 分钟才能完成。 请过一段时间回来查看。 2) 如果上述步骤不起作用，并且工作区位于免费 SKU，则在此处检查工作区使用情况，以验证是否超出配额，或者参阅常见问题解答中的其他信息”，该如何解决？
+## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>如果收到以下消息：“正在首次分析 NSG 流日志。 此过程可能需要 20-30 分钟才能完成。 请过一段时间回来查看。 2) 如果上述步骤不起作用，并且工作区位于免费 SKU，则在此处检查工作区使用情况，以验证是否超出配额，或者参阅常见问题解答中的其他信息”，该如何解决？
 
 出现此消息的可能原因有：
 - 流量分析最近才启用，可能尚未聚合足够的数据，无法获得有意义的见解。
@@ -150,7 +149,7 @@ Log Analytics 工作区必须存在于以下区域中：
     
 如果问题仍未解决，请在 [User Voice 论坛](https://feedback.azure.com/forums/217313-networking?category_id=195844)中咨询。
     
-## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>如果收到此消息：“似乎我们已获得资源数据（拓扑），但没有流信息。 同时，请单击此处查看资源数据，并参阅常见问题解答了解其他信息”，该如何解决？
+## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>如果收到以下消息：“似乎我们已获得资源数据（拓扑），但没有流信息。 同时，请单击此处查看资源数据，并参阅常见问题解答了解其他信息”，该如何解决？
 
 仪表板上显示了资源信息，但未显示与流相关的统计信息。 由于资源之间没有通信流，因此可能不显示数据。 请在 60 分钟后重新检查状态。 如果问题仍未解决，并且确信资源之间存在通信流，请在 [User Voice 论坛](https://feedback.azure.com/forums/217313-networking?category_id=195844)中咨询。
 
@@ -225,7 +224,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 ## <a name="how-is-traffic-analytics-priced"></a>流量分析如何计费？
 
-流量分析计量。 该计量的基础是由服务处理流日志数据，并将生成的增强日志存储在 Log Analytics 工作区中。 
+流量分析是计量式的。 该计量的基础是由服务处理流日志数据，并将生成的增强日志存储在 Log Analytics 工作区中。 
 
 例如，根据[定价计划](https://azure.microsoft.com/pricing/details/network-watcher/)，就美国中西部地区而言，如果流量分析处理的存储帐户中存储的流日志数据为 10 GB，而 Log Analytics 工作区中引入的增强日志为 1 GB 则适用的费用是：10 x 2.3$ + 1 x 2.76$ = 25.76$
 
@@ -286,7 +285,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 虚拟子网拓扑页面包含两个主要部分：
     
 - **标题**：虚拟子网拓扑顶部的标题提供用于选择流量分布筛选器（例如“活动”、“中型”和“网关子网”）的按钮。 选择某按钮时，将在拓扑上应用相应的筛选器。 例如，如果选择“活动”按钮，则拓扑会突出显示部署中的活动虚拟子网。
-- **拓扑**：标题下的拓扑部分显示虚拟子网之间的流量分布。
+- **拓扑**：标题下的拓扑部分显示虚拟子网络之间的流量分布。
     
 ### <a name="keyboard-navigation-on-the-banner"></a>标题中的键盘导航
     

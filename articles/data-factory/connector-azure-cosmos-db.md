@@ -1,6 +1,6 @@
 ---
-title: 使用数据工厂在 Azure Cosmos DB 中复制或粘贴数据 | Microsoft Docs
-description: 了解如何使用数据工厂将数据从受支持的源数据存储复制到 Azure Cosmos DB，或从 Azure Cosmos DB 复制到受支持的接收器存储。
+title: 使用数据工厂在 Azure Cosmos DB (SQL API) 中复制或粘贴数据 | Microsoft Docs
+description: 了解如何使用数据工厂将数据从受支持的源数据存储复制到 Azure Cosmos DB (SQL API)，或从 Azure Cosmos DB 复制到受支持的接收器存储。
 services: data-factory, cosmosdb
 documentationcenter: ''
 author: linda33wj
@@ -9,18 +9,17 @@ ms.reviewer: douglasl
 ms.service: multiple
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2018
+ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: c10a933f371bfc84b863413134f2fdf5ff9c0e34
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 6dd7707c489bbbad7a97a0ec0a76e7c631bd1465
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161831"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359249"
 ---
-# <a name="copy-data-to-or-from-azure-cosmos-db-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Cosmos DB 中复制或粘贴数据
+# <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Cosmos DB (SQL API) 中复制或粘贴数据
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [版本 1](v1/data-factory-azure-documentdb-connector.md)
@@ -28,11 +27,14 @@ ms.locfileid: "52161831"
 
 本文概述如何使用 Azure 数据工厂中的复制活动在 Azure Cosmos DB (SQL API) 中复制和粘贴数据。 本文是根据总体概述复制活动的 [Azure 数据工厂中的复制活动](copy-activity-overview.md)编写的。
 
+>[!NOTE]
+>此连接器仅支持向/从 Cosmos DB SQL API 复制数据。 有关 MongoDB，请参阅[适用于 MangoDB 的 Auzre Cosmos DB API 的连接器](connector-azure-cosmos-db-mongodb-api.md)。 目前不支持其他 API 类型。
+
 ## <a name="supported-capabilities"></a>支持的功能
 
-可将数据从 Azure Cosmos DB 复制到任一支持的接收器数据存储，或从任一支持的源数据存储复制到 Azure Cosmos DB。 有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
+可将数据从 Azure Cosmos DB (SQL API) 复制到任一支持的接收器数据存储，或从任一支持的源数据存储复制到 Azure Cosmos DB (SQL API)。 有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
 
-可以使用 Azure Cosmos DB 连接器：
+可以使用 Azure Cosmos DB (SQL API) 连接器：
 
 - 在 Azure Cosmos DB [SQL API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction) 中复制和粘贴数据。
 - 以 **insert** 或 **upsert** 的形式写入 Azure Cosmos DB。
@@ -47,11 +49,11 @@ ms.locfileid: "52161831"
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-对于特定于 Azure Cosmos DB 的数据工厂实体，以下部分提供有关可用于定义这些实体的属性的详细信息。
+对于特定于 Azure Cosmos DB (SQL API) 的数据工厂实体，以下部分提供有关可用于定义这些实体的属性的详细信息。
 
 ## <a name="linked-service-properties"></a>链接服务属性
 
-Azure Cosmos DB 链接服务支持以下属性：
+Azure Cosmos DB (SQL API) 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -63,7 +65,7 @@ Azure Cosmos DB 链接服务支持以下属性：
 
 ```json
 {
-    "name": "CosmosDbLinkedService",
+    "name": "CosmosDbSQLAPILinkedService",
     "properties": {
         "type": "CosmosDb",
         "typeProperties": {
@@ -82,11 +84,11 @@ Azure Cosmos DB 链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-本部分列出了 Azure Cosmos DB 数据集支持的属性。 
+本部分列出了 Azure Cosmos DB (SQL API) 数据集支持的属性。 
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 
 
-若要在 Azure Cosmos DB 中复制或粘贴数据，请将数据集的 **type** 属性设置为 **DocumentDbCollection**。 支持以下属性：
+若要在 Azure Cosmos DB (SQL API) 中复制或粘贴数据，请将数据集的 **type** 属性设置为 **DocumentDbCollection**。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -97,7 +99,7 @@ Azure Cosmos DB 链接服务支持以下属性：
 
 ```json
 {
-    "name": "CosmosDbDataset",
+    "name": "CosmosDbSQLAPIDataset",
     "properties": {
         "type": "DocumentDbCollection",
         "linkedServiceName":{
@@ -124,13 +126,13 @@ Azure Cosmos DB 链接服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-本部分列出了Azure Cosmos DB 源和接收器支持的属性。
+本部分列出了Azure Cosmos DB (SQL API) 源和接收器支持的属性。
 
 有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)。
 
-### <a name="azure-cosmos-db-as-source"></a>Azure Cosmos DB 作为源
+### <a name="azure-cosmos-db-sql-api-as-source"></a>Azure Cosmos DB (SQL API) 用作源
 
-若要从 Azure Cosmos DB 复制数据，请将复制活动中的 **source** 类型设置为 **DocumentDbCollectionSource**。 
+若要从 Azure Cosmos DB (SQL API) 复制数据，请将复制活动中的 **source** 类型设置为 **DocumentDbCollectionSource**。 
 
 复制活动 **source** 节支持以下属性：
 
@@ -145,11 +147,11 @@ Azure Cosmos DB 链接服务支持以下属性：
 ```json
 "activities":[
     {
-        "name": "CopyFromCosmosDB",
+        "name": "CopyFromCosmosDBSQLAPI",
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "<Document DB input dataset name>",
+                "referenceName": "<Cosmos DB SQL API input dataset name>",
                 "type": "DatasetReference"
             }
         ],
@@ -172,9 +174,9 @@ Azure Cosmos DB 链接服务支持以下属性：
 ]
 ```
 
-### <a name="azure-cosmos-db-as-sink"></a>Azure Cosmos DB 作为接收器
+### <a name="azure-cosmos-db-sql-api-as-sink"></a>Azure Cosmos DB (SQL API) 用作接收器
 
-若要将数据复制到 Azure Cosmos DB，请将复制活动中的 **sink** 类型设置为 **DocumentDbCollectionSink**。 
+若要将数据复制到 Azure Cosmos DB (SQL API)，请将复制活动中的 **sink** 类型设置为 **DocumentDbCollectionSink**。 
 
 复制活动 **source** 节支持以下属性：
 
@@ -182,7 +184,7 @@ Azure Cosmos DB 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 **type** 属性必须设置为 **DocumentDbCollectionSink**。 |是 |
 | writeBehavior |描述如何将数据写入 Azure Cosmos DB。 允许的值为 **insert** 和 **upsert**。<br/><br/>**upsert** 的行为是，如果已存在具有相同 ID 的文档，则替换该文档；否则将插入该文档。<br /><br />**注意**：如果未在原始文档中指定 ID，或未通过列映射指定 ID，则数据工厂会自动为文档生成 ID。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |
-| writeBatchSize | 数据工厂使用 [Azure Cosmos DB 批量执行程序库](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)将数据写入 Azure Cosmos DB。 **writeBatchSize** 属性控制提供给库的文档的大小。 可尝试增加 writeBatchSize 的值以提高性能，并在文档大小较大时降低该值 - 请参阅下面的提示。 |否<br />（默认值为 **10,000**） |
+| writeBatchSize | 数据工厂使用 [Azure Cosmos DB 批量执行程序库](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)将数据写入 Azure Cosmos DB。 **writeBatchSize** 属性控制 ADF 提供给库的文档的大小。 可尝试增加 writeBatchSize 的值以提高性能，并在文档大小较大时降低该值 - 请参阅下面的提示。 |否<br />（默认值为 **10,000**） |
 | nestingSeparator |**源**列名称中的特殊字符，指示需要嵌套的文档。 <br/><br/>例如，当 **nestedSeparator** 为 **.**（点）时，输出数据集结构中的 `Name.First` 在 Azure Cosmos DB 文档中生成以下 JSON 结构： `"Name": {"First": "[value maps to this column from source]"}`  |否<br />（默认值为 **.** （点）） |
 
 >[!TIP]
@@ -193,7 +195,7 @@ Azure Cosmos DB 链接服务支持以下属性：
 ```json
 "activities":[
     {
-        "name": "CopyToCosmosDB",
+        "name": "CopyToCosmosDBSQLAPI",
         "type": "Copy",
         "inputs": [
             {
@@ -222,7 +224,7 @@ Azure Cosmos DB 链接服务支持以下属性：
 
 ## <a name="import-or-export-json-documents"></a>导入或导出 JSON 文档
 
-使用此 Azure Cosmos DB 连接器，可以轻松地：
+使用此 Azure Cosmos DB(SQL API) 连接器，可以轻松地：
 
 * 将各种源（包括 Azure Blob 存储、Azure Data Lake Store 或 Azure 数据工厂所支持的其他基于文件的存储）中的 JSON 文档导入 Azure Cosmos DB。
 * 将 JSON 文档从 Azure Cosmos DB 集合导出到各种基于文件的存储。

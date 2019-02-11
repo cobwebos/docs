@@ -3,19 +3,19 @@ title: 使用 Azure 自动化跟踪更改
 description: 借助更改跟踪解决方案可以确定环境中发生的软件和 Windows 服务更改。
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/12/2018
+ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2678b9a1b80b1c9de6f1b554ce43bcd4f2dd5d50
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 11b7928512dd1f1d6b284b088af304c6752711f5
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166995"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301435"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的更改
 
@@ -51,19 +51,18 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 * Debian GNU/Linux 8 和 9
 * Ubuntu Linux 14.04 LTS 和 16.04 LTS
 
-## <a name="enable-change-tracking-and-inventory"></a>启用更改跟踪和库存
+## <a name="onboard"></a>启用更改跟踪和库存
 
-若要开始跟踪更改，需要为自动化帐户启用更改跟踪和库存解决方案。
+若要开始跟踪更改，需要启用更改跟踪和库存解决方案。 可通过多种方法将计算机加入到更改跟踪和库存。 以下是推荐和支持的方法，可用于加入此解决方案。
 
-1. 在 Azure 门户中，导航到自动化帐户
-2. 选择“配置”下的“更改跟踪”。
-3. 选择现有的 Log Analytics 工作区，或“创建新工作区”并单击“启用”。
-
-此操作将启用自动化帐户的解决方案。 启用解决方案最多可能需要 15 分钟。 启用解决方案后，蓝色横幅会通知你。 导航回到“更改跟踪”页以管理解决方案。
+* [通过虚拟机](automation-onboard-solutions-from-vm.md)
+* [通过浏览多个计算机](automation-onboard-solutions-from-browse.md)
+* [通过自动化帐户](automation-onboard-solutions-from-automation-account.md)
+* [使用 Azure 自动化 runbook](automation-onboard-solutions.md)
 
 ## <a name="configuring-change-tracking-and-inventory"></a>配置更改跟踪和库存
 
-若要了解如何将计算机载入到解决方案中，请访问：[载入自动化解决方案](automation-onboard-solutions-from-automation-account.md)。 有了通过更改跟踪和库存解决方案载入的计算机后，便可以配置要跟踪的项了。启用的新文件或注册表项来跟踪时，将会为更改跟踪和库存启用它。
+若要了解如何将计算机加入到解决方案中，请访问：[加入自动化解决方案](automation-onboard-solutions-from-automation-account.md)。 有了通过更改跟踪和库存解决方案载入的计算机后，便可以配置要跟踪的项了。启用的新文件或注册表项来跟踪时，将会为更改跟踪和库存启用它。
 
 若要跟踪 Windows 和 Linux 上文件中的更改，请使用文件的 MD5 哈希。 然后使用这些哈希检测自上一个库存以来是否进行了更改。
 
@@ -85,7 +84,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 |递归     | 在查找要跟踪的项时，确定是否使用递归。        |
 |使用 Sudo     | 此设置确定在检查该项时是否使用 Sudo。         |
 |链接     | 此设置确定在遍历目录时如何处理符号链接。<br> **忽略** - 忽略符号链接，不包括引用的文件/目录。<br>**追随** - 在递归期间追随符号链接，并且包含引用的文件/目录。<br>**管理** - 追随符号链接并允许更改返回的内容。     |
-|上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：“True”或“False”。|
+|上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：**True** 或 **False**。|
 
 > [!NOTE]
 > 不建议使用“管理”链接选项。 不支持文件内容检索。
@@ -105,11 +104,11 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 |组     | 用于对文件进行逻辑分组的组名。        |
 |输入路径     | 用于查看文件的路径，例如：“c:\temp\\\*.txt”<br>还可以使用环境变量，例如“%winDir%\System32\\\*.*”       |
 |递归     | 在查找要跟踪的项时，确定是否使用递归。        |
-|上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：“True”或“False”。|
+|上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：**True** 或 **False**。|
 
 ## <a name="wildcard-recursion-and-environment-settings"></a>通配符、递归和环境设置
 
-借助递归可指定通配符以简化目录上的跟踪，借助环境变量可在具有多个或动态驱动器名称的环境中跟踪文件。 以下是配置递归时应了解的常用信息列表：
+借助递归可指定通配符以简化目录上的跟踪，借助环境变量可在具有多个或动态驱动器名称的环境中跟踪文件。 以下列表显示配置递归时应了解的常用信息：
 
 * 跟踪多个文件时需要使用通配符
 * 如果使用通配符，则只能在路径的最后一段中使用。 （例如 C:\folder\\file 或 /etc/*.conf）
@@ -118,7 +117,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 
 ## <a name="configure-file-content-tracking"></a>配置文件内容跟踪
 
-可以使用文件内容更改跟踪功能查看文件更改之前和之后的内容。 这适用于 Windows 和 Linux 文件，每次更改文件时，文件的内容都存储在存储帐户中，并以内联或并排的方式显示更改之前和之后的文件。 若要了解详细信息，请参阅[查看所跟踪文件的内容](change-tracking-file-contents.md)。
+可以使用文件内容更改跟踪功能查看文件更改之前和之后的内容。 这适用于 Windows 和 Linux 文件。每次更改文件时，文件的内容都存储在存储帐户中，并以内联或并排的方式显示更改之前和之后的文件。 若要了解详细信息，请参阅[查看所跟踪文件的内容](change-tracking-file-contents.md)。
 
 ![查看文件中的更改](./media/change-tracking-file-contents/view-file-changes.png)
 
@@ -155,8 +154,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 
 更改跟踪解决方案当前遇到以下问题：
 
-* 没有为 Windows 10 创意者更新和 Windows Server 2016 Core RS3 计算机收集修补程序更新。
-* 对于 Windows 文件，更改跟踪当前无法检测将新文件添加到跟踪文件夹路径的时间
+* 没有在 Windows Server 2016 Core RS3 计算机上收集修补程序更新。
 
 ## <a name="change-tracking-data-collection-details"></a>更改跟踪数据收集详细信息
 
@@ -172,13 +170,24 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 | Windows 软件 | 30 分钟 |
 | Linux 软件 | 5 分钟 |
 
+下表显示了用于更改跟踪的每台计算机的跟踪项限制。
+
+| **资源** | **限制**| **说明** |
+|---|---|---|
+|文件|500||
+|注册表|250||
+|Windows 软件|250|不包括软件更新|
+|Linux 包|1250||
+|服务|250||
+|守护程序|250||
+
 ### <a name="windows-service-tracking"></a>Windows 服务跟踪
 
 Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请转到“更改跟踪”。 在“Windows 服务”选项卡上的“编辑设置”下，有一个滑块，可用于将 Windows 服务的收集频率从短短 10 秒更改为长达 30 分钟。 请将滑块移至所需的频率，它会自动进行保存。
 
 ![Windows 服务滑块](./media/automation-change-tracking/windowservices.png)
 
-代理仅跟踪更改，这可以优化代理的性能。 将阈值设置得过高时，如果服务还原到其原始状态，则可能错过更改。 将频率设置为较小的值可以捕获可能会错过的更改。
+代理仅跟踪更改，这可以优化代理的性能。 如果服务还原到其原始状态，则设置高的阈值可能错过更改。 将频率设置为较小的值可以捕获可能会错过的更改。
 
 > [!NOTE]
 > 虽然代理可以按 10 秒的间隔跟踪更改，但数据仍要在几分钟后才能显示在门户中。 代理仍会跟踪和记录该事件内在门户中显示的更改。
@@ -261,6 +270,41 @@ Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请�
 |ConfigurationData<br>&#124; where   ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"<br>&#124; where SvcState == "Stopped"<br>&#124; summarize arg_max(TimeGenerated, *) by SoftwareName, Computer         | 显示已设置为“自动”，但报告为“已停止”的 Windows 服务的最新库存记录<br>结果仅限于该 SoftwareName 和 Computer 的最新记录      |
 |ConfigurationChange<br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Removed"<br>&#124; order by TimeGenerated desc|显示已删除软件的更改记录|
 
+## <a name="alert-on-changes"></a>进行更改时发出警报
+
+更改跟踪和清单的主要功能是能够根据混合环境的配置状态以及配置状态的更改发出警报。  
+
+在以下示例中，屏幕截图显示已在计算机上修改文件 `C:\windows\system32\drivers\etc\hosts`。 此文件很重要的原因是，Windows 使用 Hosts 文件将主机名解析成 IP 地址，其优先级甚至高于 DNS，这可能导致连接问题，或者导致流量被重定向到恶意网站或其他危险的网站。
+
+![一个图表，显示 hosts 文件的更改情况](./media/automation-change-tracking/changes.png)
+
+若要进一步分析此更改，请单击“Log Analytics”，转到“日志搜索”。 进入“日志搜索”以后，使用查询 `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` 搜索对 Hosts 文件所做的内容更改。 此查询查找的更改包括对特定文件的文件内容的更改，该文件的完全限定路径包含“hosts”一词。 也可将路径部分更改为完全限定的形式（例如 `FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"`），以便请求特定的文件。
+
+在查询返回所需结果后，单击日志搜索体验中的“新建警报规则”按钮，打开警报创建页。 也可在 Azure 门户中通过 **Azure Monitor** 导航到该体验。 在警报创建体验中，再次检查我们的查询，然后修改警报逻辑。 在本示例中，你希望在检测到更改的情况下触发警报，即使只在环境中的所有计算机上检测到一个更改。
+
+![一个显示更改查询（用于跟踪对 hosts 文件的更改）的图像](./media/automation-change-tracking/change-query.png)
+
+在设置条件逻辑以后，请分配操作组，以便执行操作来响应触发的警报。 在此示例中，我设置了要发送的电子邮件以及要创建的 ITSM 票证。  也可执行许多其他的有用操作，例如触发 Azure Function、自动化 runbook、Webhook 或逻辑应用。
+
+![一个图像，显示如何配置一个可以针对更改发出警报的操作组](./media/automation-change-tracking/action-groups.png)
+
+在设置所有参数和逻辑以后，可以将警报应用到环境。
+
+### <a name="alert-suggestions"></a>警报建议
+
+就更改跟踪或清单数据来说，虽然针对 Hosts 文件的更改发出警报是一种很好的应用警报的方式，但还有更多适用于警报的情形，其中包括在以下部分定义的情况及其示例。
+
+|Query  |说明  |
+|---------|---------|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "Files" and FileSystemPath contains " c:\\windows\\system32\\drivers\\"|用于跟踪对系统关键文件的更改|
+|ConfigurationChange <br>&#124; where FieldsChanged contains "FileContentChecksum" and FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"|用于跟踪对关键配置文件的修改|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "WindowsServices" and SvcName contains "w3svc" and SvcState == "Stopped"|用于跟踪对系统关键服务的更改|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "Daemons" and SvcName contains "ssh" and SvcState != "Running"|用于跟踪对系统关键服务的更改|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Added"|用于需锁定软件配置的环境|
+|ConfigurationData <br>&#124; where SoftwareName contains "Monitoring Agent" and CurrentVersion != "8.0.11081.0"|用于查看哪些计算机安装了过时的或不符合标准的软件版本。 它报告最新报告的配置状态，而不报告更改。|
+|ConfigurationChange <br>&#124; where RegistryKey == "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\QualityCompat"| 用于跟踪对重要的防病毒键的更改|
+|ConfigurationChange <br>&#124; where RegistryKey contains "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\SharedAccess\\Parameters\\FirewallPolicy"| 用于跟踪对防火墙设置的更改|
+
 ## <a name="next-steps"></a>后续步骤
 
 访问有关更改跟踪的教程，详细了解解决方案的用法：
@@ -269,3 +313,4 @@ Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请�
 > [故障排除环境中的更改](automation-tutorial-troubleshoot-changes.md)
 
 * 使用 [Log Analytics 中的日志搜索](../log-analytics/log-analytics-log-searches.md)以查看详细的更改跟踪数据。
+

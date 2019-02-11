@@ -3,7 +3,7 @@ title: Azure SQL 数据库服务层 - DTU | Microsoft Docs
 description: 了解单一数据库和入池数据库的服务层以提供计算大小和存储大小。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: 00e5a77bdf8554d473194b2e84947d7adb10df90
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 01/25/2019
+ms.openlocfilehash: 6319deb36088317cb289134b7068720e97cb10b7
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955246"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507648"
 ---
 # <a name="dtu-based-service-tiers"></a>基于 DTU 的服务层
 
@@ -31,6 +31,7 @@ ms.locfileid: "49955246"
 ## <a name="compare-the-dtu-based-service-tiers"></a>比较基于 DTU 的服务层
 
 选择服务层首要考虑的是业务连续性、存储和性能需求。
+
 ||基本|标准|高级|
 | :-- | --: |--:| --:| --:|
 |目标工作负荷|开发和生产|开发和生产|开发和生产||
@@ -71,7 +72,7 @@ ms.locfileid: "49955246"
 ||||||
 
 > [!IMPORTANT]
-> 除以下区域外的所有区域当前均提供超过 1 TB 的高级层存储：美国中西部、中国东部、USDoDCentral、德国中部、USDoDEast、US Gov 西南部、USGov Iowa、德国东北部、中国北部。 在其他区域，高级层中的最大存储限制为 1 TB。 请参阅 [P11-P15 当前限制](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
+> 除以下区域外，所有区域目前均提供超过 1 TB 的高级层存储：美国中西部、中国东部、US DoD 中部、德国中部、US DoD 东部、US Gov 西南部、USGov 爱荷华州、德国东北部和中国北部。 在其他区域，高级层中的最大存储限制为 1 TB。 请参阅 [P11-P15 当前限制](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 
@@ -103,7 +104,7 @@ ASDB 将度量联机事务处理 (OLTP) 工作负荷中最常发生的基本数�
 
 工作负荷由九种事务类型组成，如下表中所示。 每种事务旨在强调数据库引擎和系统硬件中的特定一组系统特征，与其他事务形成高反差。 此方法可更方便地评估不同组件对总体性能的影响。 例如，事务“Read Heavy”将从磁盘生成大量的读取操作。
 
-| 事务类型 | Description |
+| 事务类型 | 说明 |
 | --- | --- |
 | Read Lite |SELECT；在内存中；只读 |
 | Read Medium |SELECT；大多数在内存中；只读 |

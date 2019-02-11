@@ -2,18 +2,19 @@
 title: Cosmos DB 的 Azure 流分析输出
 description: 本文介绍如何使用 Azure 流分析保存 Azure Cosmos DB 的输出以进行 JSON 输出，从而实现对非结构化 JSON 数据进行数据存档和低延迟查询。
 services: stream-analytics
-author: jseb225
-ms.author: jeanb
+author: mamccrea
+ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 11/21/2017
-ms.openlocfilehash: 9bdb012db2e7502d765fd342a636591bbbcb2c6c
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.date: 01/11/2019
+ms.custom: seodec18
+ms.openlocfilehash: 1f142d7551859396b789ee0594880f077e4a7f9f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311732"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267124"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB 的 Azure 流分析输出  
 流分析可以针对 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 进行 JSON 输出，从而支持对非结构化 JSON 数据进行数据存档和低延迟查询。 本文档介绍有关实现此配置的一些最佳做法。
@@ -57,16 +58,17 @@ ms.locfileid: "52311732"
 写入多个固定容器的做法已过时，不建议使用此方法来横向扩展流分析作业。 [Cosmos DB 中的分区和缩放](../cosmos-db/sql-api-partition-data.md)一文提供了更多详细信息。
 
 ## <a name="cosmos-db-settings-for-json-output"></a>JSON 输出的 Cosmos DB 设置
-创建 Cosmos DB 作为流分析中的输出时，会生成如下所示的信息提示。 本部分提供属性定义的说明。
 
+创建 Cosmos DB 作为流分析中的输出时，会生成如下所示的信息提示。 本部分提供属性定义的说明。
 
 ![documentdb 流分析输出屏幕](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
 
-字段           | Description 
--------------   | -------------
-输出别名    | 用于在 ASA 查询中引用此输出的别名   
-帐户名    | Azure Cosmos DB 帐户的名称或终结点 URI 
-帐户密钥     | Azure Cosmos DB 帐户的共享访问密钥
-数据库        | Azure Cosmos DB 数据库名称
-集合名称 | 要使用的集合的集合名称。 `MyCollection` 是有效的输入示例 - 必须存在一个名为 `MyCollection` 的集合。  
-文档 ID     | 可选。 输出事件中用作唯一键的列名称，插入或更新操作必须基于该键。 如果留空，则插入所有事件，但不使用更新选项。
+|字段           | Description|
+|-------------   | -------------|
+|输出别名    | 用于在 ASA 查询中引用此输出的别名。|
+|订阅    | 选择自己的 Azure 订阅。|
+|帐户 ID      | Azure Cosmos DB 帐户的名称或终结点 URI。|
+|帐户密钥     | Azure Cosmos DB 帐户的共享访问密钥。|
+|数据库        | Azure Cosmos DB 数据库名称。|
+|集合名称模式 | 要使用的集合的集合名称。 `MyCollection` 是有效的输入示例 - 必须存在一个名为 `MyCollection` 的集合。  |
+|文档 ID     | 可选。 输出事件中用作唯一键的列名称，插入或更新操作必须基于该键。 如果留空，则插入所有事件，但不使用更新选项。|

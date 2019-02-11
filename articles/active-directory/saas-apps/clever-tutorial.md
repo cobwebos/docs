@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Clever 的集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 Clever 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Clever 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 069ff13a-310e-4366-a147-d6ec5cca12a5
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 483d03fcc72e0a93111d10b0221164459de27d12
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e65f0cb3ef30fb5b001acdb72481c1c3b55ca058
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431855"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197307"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clever"></a>教程：Azure Active Directory 与 Clever 的集成
+# <a name="tutorial-azure-active-directory-integration-with-clever"></a>教程：Azure Active Directory 与 Clever 集成
 
 本教程介绍了如何将 Azure Active Directory (Azure AD) 与 Clever 进行集成。
 
@@ -117,7 +117,7 @@ ms.locfileid: "39431855"
     > [!NOTE]
     > 登录 URL 值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Clever 客户端支持团队](https://clever.com/about/contact/)来获取此值。
 
-1. 在“SAML 签名证书”部分中，单击”复制”按钮来复制“应用联合元数据 URL”，并将其粘贴到记事本。
+1. 在“SAML 签名证书” 部分中，单击“复制”按钮来复制“应用联合元数据 URL”，并将其粘贴到记事本 **** **** 。
     
     ![配置单一登录](./media/clever-tutorial/tutorial_metadataurl.png)
 
@@ -214,7 +214,7 @@ ms.locfileid: "39431855"
 
 若要使 Azure AD 用户能够登录到 Clever，必须将其预配到 Clever 中。
 
-对于 Clever，请与 [Clever 客户端支持团队](https://clever.com/about/contact/)协作来在 Clever 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+对于 Clever，请与  [Clever 客户端支持团队](https://clever.com/about/contact/) 协作将用户添加到 Clever 平台中。 使用单一登录前，必须先创建并激活用户。
 
 >[!NOTE]
 >可以使用 Clever 提供的任何其他 Clever 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
@@ -254,12 +254,12 @@ ms.locfileid: "39431855"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Clever 磁贴时，应当会自动登录到 Clever 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

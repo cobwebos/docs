@@ -8,20 +8,20 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/08/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ad6ddacad322e4c2f952591be786d46cbcb95a21
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: e81e842e059e09f24627138ba9fbf6510a603efe
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637552"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353288"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Durable Functions 中的计时器 (Azure Functions)
 
 [Durable Functions](durable-functions-overview.md) 提供了供在业务流程协调程序函数中使用的“持久计时器”，这些计时器用来为异步操作实现延迟或设置超时。 在业务流程协调程序函数中应当使用持久计时器，而不是使用 `Thread.Sleep` 和 `Task.Delay` (C#) 或 `setTimeout()` 和 `setInterval()` (JavaScript)。
 
-通过在 [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) 中调用 [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) 方法创建持久计时器。 该方法返回一个将在指定的日期和时间恢复运行的任务。
+通过在 .NET 中调用 [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) 的 [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) 方法或在 JavaScript 中调用 `DurableOrchestrationContext` 的 `createTimer` 方法来创建持久计时器。 该方法返回一个将在指定的日期和时间恢复运行的任务。
 
 ## <a name="timer-limitations"></a>计时器限制
 
@@ -29,13 +29,13 @@ ms.locfileid: "52637552"
 
 > [!NOTE]
 > * 由于 Azure 存储中的限制，持久计时器的持续时间不能超过 7 天。 我们正在致力于解决[将计时器扩展到 7 天以上的功能请求](https://github.com/Azure/azure-functions-durable-extension/issues/14)。
-> * 在计算持久计时器的相对截止时间时，请始终使用 [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) 而非 `DateTime.UtcNow`，如以下示例中所示。
+> * 在计算持久计时器的相对截止时间时，请始终在 .NET 中使用 [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) 而非 `DateTime.UtcNow`，始终在 JavaScript 中使用 `currentUtcDateTime` 而非 `Date.now` 或 `Date.UTC`，如以下示例中所示。
 
 ## <a name="usage-for-delay"></a>延迟的用法
 
 下面的示例演示了如何使用持久计时器来延迟执行。 示例连续十天每天都会发出账单通知。
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("BillingIssuer")]
@@ -51,11 +51,11 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript"></a>JavaScript
+### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
 
 ```js
 const df = require("durable-functions");
-const moment = require("moment-js");
+const moment = require("moment");
 
 module.exports = df.orchestrator(function*(context) {
     for (let i = 0; i < 10; i++) {
@@ -68,13 +68,13 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!WARNING]
-> 请避免在业务流程协调程序函数中出现无限循环。 有关如何安全有效地实现无限循环方案的信息，请参阅[永久业务流程](durable-functions-eternal-orchestrations.md)。 
+> 请避免在业务流程协调程序函数中出现无限循环。 有关如何安全有效地实现无限循环方案的信息，请参阅[永久业务流程](durable-functions-eternal-orchestrations.md)。
 
 ## <a name="usage-for-timeout"></a>超时的用法
 
 此示例演示了如何使用持久计时器来实现超时。
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("TryGetQuote")]
@@ -105,17 +105,17 @@ public static async Task<bool> Run(
 }
 ```
 
-#### <a name="javascript"></a>JavaScript
+### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
 
 ```js
 const df = require("durable-functions");
-const moment = require("moment-js");
+const moment = require("moment");
 
 module.exports = df.orchestrator(function*(context) {
     const deadline = moment.utc(context.df.currentUtcDateTime).add(30, "s");
 
     const activityTask = context.df.callActivity("GetQuote");
-    const timeoutTask = context.df.createTimer(deadline);
+    const timeoutTask = context.df.createTimer(deadline.toDate());
 
     const winner = yield context.df.Task.any([activityTask, timeoutTask]);
     if (winner === activityTask) {
@@ -142,4 +142,3 @@ module.exports = df.orchestrator(function*(context) {
 
 > [!div class="nextstepaction"]
 > [了解如何引发和处理外部事件](durable-functions-external-events.md)
-

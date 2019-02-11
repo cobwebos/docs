@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 140c92d260ac6423127e478e304cbebcf9c42124
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: d607c75bc451774e6bf269eb658236d93a85021f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42142055"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854371"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 Liquid 模板执行高级 JSON 转换
 
@@ -25,16 +25,18 @@ ms.locfileid: "42142055"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有订阅，可以[从免费的 Azure 帐户着手](https://azure.microsoft.com/free/)。 另外，也可以[注册即用即付订阅](https://azure.microsoft.com/pricing/purchase-options/)。
+* Azure 订阅。 如果没有订阅，可以[从免费的 Azure 帐户着手](https://azure.microsoft.com/free/)。 或者[注册即用即付订阅](https://azure.microsoft.com/pricing/purchase-options/)。
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
 * 基本[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
+* 关于 [Liquid 模板语言](https://shopify.github.io/liquid/)的基本知识。
+
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>为集成帐户创建 Liquid 模板或映射
 
 1. 对于此示例，请创建此步骤中所述的示例 Liquid 模板。
-如果希望在 Liquid 模板中使用任何筛选器，请确保这些筛选器以大写字母开头。 详细了解 [Liquid 筛选器](https://shopify.github.io/liquid/basics/introduction/#filters)。 
+如果希望在 Liquid 模板中使用任何筛选器，请确保这些筛选器以大写字母开头。 了解有关 [Liquid 筛选器](https://shopify.github.io/liquid/basics/introduction/#filters)的更多信息，此类筛选器使用 [DotLiquid](https://dotliquidmarkup.org/) 和 C# 命名约定。
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
@@ -67,7 +69,7 @@ ms.locfileid: "42142055"
 
    | 属性 | 值 | 说明 | 
    |----------|-------|-------------|
-   | **Name** | JsonToJsonTemplate | 映射的名称，在此示例中为“JsonToJsonTemplate” | 
+   | **名称** | JsonToJsonTemplate | 映射的名称，在此示例中为“JsonToJsonTemplate” | 
    | **映射类型** | **liquid** | 你的映射的类型。 对于 JSON 到 JSON 转换，必须选择“liquid”。 | 
    | **Map** | "SimpleJsonToJsonTemplate.liquid" | 用于转换的现有 Liquid 模板或映射文件，在此示例中为“SimpleJsonToJsonTemplate.liquid”。 若要查找此文件，可使用文件选取器。 |
    ||| 
@@ -80,7 +82,7 @@ ms.locfileid: "42142055"
 
 2. 在逻辑应用设计器中，向逻辑应用中添加[请求触发器](../connectors/connectors-native-reqres.md#use-the-http-request-trigger)。
 
-3. 在触发器下，选择“新建步骤”。 在搜索框中，输入“liquid”作为筛选器，然后选择以下操作：“将 JSON 转换为 JSON-Liquid”
+3. 在触发器下，选择“新建步骤”。 在搜索框中，输入“liquid”作为筛选器，然后选择以下操作：**将 JSON 转换为 JSON - Liquid**
 
    ![查找并选择 Liquid 操作](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
@@ -117,7 +119,7 @@ Liquid 并非仅可用于 JSON 转换。 下面列出了使用 Liquid 的其他�
    ``` json
    {{content.firstName | Append: ' ' | Append: content.lastName}}
    ```
-   下面是输入和输出示例：
+   下面是示例输入和输出：
   
    ![将 JSON 输出为文本的示例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
 
@@ -130,7 +132,7 @@ Liquid 并非仅可用于 JSON 转换。 下面列出了使用 Liquid 的其他�
         {{item}}
     {% endJSONArrayFor -%}]
    ```
-   下面是输入和输出示例：
+   下面是示例输入和输出：
 
    ![将 XML 输出为 JSON 的示例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltojson.png)
 
@@ -142,7 +144,7 @@ Liquid 并非仅可用于 JSON 转换。 下面列出了使用 Liquid 的其他�
    {{content.firstName | Append: ' ' | Append: content.lastName}}
    ```
 
-   下面是输入和输出示例：
+   下面是示例输入和输出：
 
    ![将 XML 输出为文本的示例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
 

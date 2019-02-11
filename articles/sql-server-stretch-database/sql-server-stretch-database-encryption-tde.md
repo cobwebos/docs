@@ -4,22 +4,20 @@ description: 为 Azure 上的 SQL Server Stretch Database 启用透明数据加�
 services: sql-server-stretch-database
 documentationcenter: ''
 author: douglaslMS
-manager: barbkess
-editor: ''
+manager: craigg
 ms.assetid: a44ed8f5-b416-4c41-9b1e-b7271f10bdc3
 ms.service: sql-server-stretch-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2016
 ms.author: douglasl
-ms.openlocfilehash: ceb355d2ba872ed5d3886c6dc82ca75b1854db0a
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 1e40e3d9eb1231666acda89c752ebc8f517e8fc6
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23055352"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53741532"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>为 Azure 上的 Stretch Database 启用透明数据加密 (TDE)
 > [!div class="op_single_selector"]

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 341c689616e85b148790df092f238449e1d72075
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 77b704e9359e582664bad8e08e9389cfac8eaca7
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442687"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121390"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Azure API 管理中的用户配置文件模板
 通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页面的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](api-management-template-resources.md#strings)、[字形资源](api-management-template-resources.md#glyphs)和[页面控件](api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
@@ -452,7 +452,7 @@ ms.locfileid: "52442687"
           <strong>  
             {% case app.state %}  
             {% when ApplicationStateModel.Registered %}  
-            {% localized "ApplicationListStrings|WebDevelopersAppNotSubminted" %}  
+            {% localized "ApplicationListStrings|WebDevelopersAppNotSubmitted" %}  
   
             {% when ApplicationStateModel.Unpublished %}  
             {% localized "ApplicationListStrings|WebDevelopersAppNotPublished" %}  

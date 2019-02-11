@@ -3,19 +3,19 @@ title: 部署 Azure AD 密码保护预览版
 description: 部署 Azure AD 密码保护预览版，以禁止错误的本地密码
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: 02c2b7560a0a609f6d902af78877d5f0236615d3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: efa684d75cd30dcbfc971d0ef0a3717cc15bd0e4
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011487"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081273"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>预览版：部署 Azure AD 密码保护
 
@@ -85,6 +85,9 @@ Microsoft 建议在审核模式下开始任何部署。 审核模式是默认的
 
 2. 使用 AzureADPasswordProtectionProxy.msi MSI 包安装密码策略代理服务软件。
    * 安装该软件不需要重新启动。 可以使用标准的 MSI 过程将软件安装自动化，例如：`msiexec.exe /i AzureADPasswordProtectionProxy.msi /quiet /qn`
+
+      > [!NOTE]
+      > 在安装 AzureADPasswordProtectionProxy.msi MSI 包之前，Windows 防火墙服务必须正在运行，否则将发生安装错误。 如果 Windows 防火墙配置为不运行，则解决方法是在安装过程中暂时启用并启动 Windows 防火墙服务。 代理软件在安装后对 Windows 防火墙软件没有特定的依赖关系。 如果使用的是第三方防火墙，则还必须对其进行配置以满足部署要求（允许对端口 135 和代理 RPC 服务器端口（无论是动态的还是静态的）进行入站访问）。 [请参阅部署要求](howto-password-ban-bad-on-premises-deploy.md#deployment-requirements)
 
 3. 以管理员身份打开 PowerShell 窗口。
    * Azure AD 密码保护代理软件包含名为 AzureADPasswordProtection 的新 PowerShell 模块。 以下步骤假设从 PowerShell 模块运行各个 cmdlet、已打开新的 PowerShell 窗口，并已导入新模块，如下所示：

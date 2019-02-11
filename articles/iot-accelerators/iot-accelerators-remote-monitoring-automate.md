@@ -1,5 +1,5 @@
 ---
-title: 教程：在基于 Azure 的远程监视解决方案中检测设备问题 | Microsoft Docs
+title: 教程：在远程监视解决方案中检测设备问题 - Azure | Microsoft Docs
 description: 本教程介绍如何使用规则和操作在远程监视解决方案中自动检测基于阈值的设备问题。
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 7ebe81565bc6bd28747f3a251b39a3c010493307
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 91ee5087e5f41cda3648c2ecadcfcf16fd32a249
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51819094"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598664"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>教程：检测连接到监视解决方案的设备问题
 

@@ -6,18 +6,19 @@ services: cognitive-services
 author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/14/2019
 ms.author: tulasim
-ms.openlocfilehash: ad3c01ebf37c8b544830b281144090694eeadfcd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.custom: seodec18
+ms.openlocfilehash: e607ca75f12cf81ac8ca177083ba8678aed02207
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033715"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223793"
 ---
-# <a name="qnamaker-troubleshooting"></a>QnAMaker 故障排除
+# <a name="troubleshooting-tips-to-support-the-qna-maker-service-and-runtime"></a>用于支持 QnA Maker 服务和运行时的故障排除技巧
 QnAMaker 由托管在用户的 Azure 帐户的组件组成。 若要进行调试工作，用户可能需要对其 QnAMaker Azure 资源进行操作，或向 QnAMaker 支持团队提供与设置相关的其他信息。
 
 ## <a name="how-to-get-latest-qnamaker-runtime-updates"></a>如何获取最新的 QnAMaker 运行时更新
@@ -39,11 +40,11 @@ QnAMaker 运行时是在 Azure 门户中[创建 QnAMaker 服务](./set-up-qnamak
     
 1. 在 [Azure 门户](https://portal.azure.com)中转到 QnAMaker 服务（资源组）
 
-    ![QnAMaker Azure 资源组](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
+    ![Azure 门户中的 QnAMaker Azure 资源组](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
 
 2. 单击“应用服务”
 
-     ![QnAMaker 应用服务](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
+     ![选择“QnAMaker 应用服务”](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
 
 3. 在“概述”部分可以找到主机名 URL
 
@@ -53,4 +54,4 @@ QnAMaker 运行时是在 Azure 门户中[创建 QnAMaker 服务](./set-up-qnamak
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用 QnAMaker API](./upgrade-qnamaker-service.md)
+> [使用主动学习改进知识库问题](./improve-knowledge-base.md)

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: 67bfde828287d9892ad404f3d950dbe373503a56
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 5172ba9881f80e202bdc69689e67befb79101dc0
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51827100"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450654"
 ---
 # <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>将 IoT Edge 设备添加到远程监视解决方案加速器
 
@@ -42,7 +42,7 @@ ms.locfileid: "51827100"
 
 ## <a name="install-the-iot-edge-runtime"></a>安装 IoT Edge 运行时
 
-必须先在物理设备上安装 IoT Edge 运行时，才能向 Edge 设备部署模块。 以下操作指南说明了如何在常见设备平台上安装运行时：
+必须先在真实设备上安装 IoT Edge 运行时，然后才能向 Edge 设备部署模块。 以下操作指南说明了如何在常见设备平台上安装运行时：
 
 - [在 Linux (x64) 上安装 Azure IoT Edge 运行时](../iot-edge/how-to-install-iot-edge-linux.md)
 - [在 Linux (ARM32v7/armhf) 上安装 Azure IoT Edge 运行时](../iot-edge/how-to-install-iot-edge-linux-arm.md)

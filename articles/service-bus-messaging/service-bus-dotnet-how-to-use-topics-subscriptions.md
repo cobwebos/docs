@@ -3,23 +3,23 @@ title: Azure 服务总线主题和订阅入门 | Microsoft Docs
 description: 编写一个 C# .NET Core 控制台应用程序，以便使用服务总线消息传递主题和订阅。
 services: service-bus-messaging
 documentationcenter: .net
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 09/03/2018
-ms.author: spelluru
-ms.openlocfilehash: d48d658883324637e1026ac00312ade86ccc1400
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 535dd04efd9f150365b24ae175ee90fbb247305f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230574"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846670"
 ---
 # <a name="get-started-with-service-bus-topics"></a>服务总线主题入门
 

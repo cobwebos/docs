@@ -1,5 +1,5 @@
 ---
-title: Azure 应用服务中启用了 CORS 的 RESTful API | Microsoft Docs
+title: 使用 CORS 托管 RESTful API - Azure 应用服务 | Microsoft Docs
 description: 了解如何通过 Azure 应用服务来托管包含 CORS 支持的 RESTful API。
 services: app-service\api
 documentationcenter: dotnet
@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/21/2018
 ms.author: cephalin
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 4d8a95ee4afc844868cfda78087773a6a37c07c2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18
+ms.openlocfilehash: b8c1130a45f60b9caaacd365cd1c256f50ed7675
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445423"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629555"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>教程：在 Azure 应用服务中托管启用了 CORS 的 RESTful API
 
-[Azure 应用服务](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。 另外，应用服务还为 RESTful API 提供对[跨域资源共享 (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) 的内置支持。 本教程介绍如何将 ASP.NET Core API 应用部署到提供 CORS 支持的应用服务。 请使用命令行工具来配置应用，使用 Git 来部署应用。 
+[Azure 应用服务](overview.md)提供高度可缩放、自修补的 Web 托管服务。 另外，应用服务还为 RESTful API 提供对[跨域资源共享 (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) 的内置支持。 本教程介绍如何将 ASP.NET Core API 应用部署到提供 CORS 支持的应用服务。 请使用命令行工具来配置应用，使用 Git 来部署应用。 
 
 本教程介绍如何执行下列操作：
 
@@ -58,7 +58,7 @@ ms.locfileid: "52445423"
 git clone https://github.com/Azure-Samples/dotnet-core-api
 ```
 
-此存储库包含的应用是根据以下教程创建的：[使用 Swagger 的 ASP.NET Core Web API 帮助页](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio)。 它使用 Swagger 生成器来提供 [Swagger UI](https://swagger.io/swagger-ui/) 和 Swagger JSON 终结点。
+此存储库包含基于以下教程创建的应用：[使用 Swagger 的 ASP.NET Core Web API 帮助页](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio)。 它使用 Swagger 生成器来提供 [Swagger UI](https://swagger.io/swagger-ui/) 和 Swagger JSON 终结点。
 
 ### <a name="run-the-application"></a>运行应用程序
 
@@ -132,7 +132,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-### <a name="browse-to-the-azure-web-app"></a>浏览到 Azure Web 应用
+### <a name="browse-to-the-azure-app"></a>浏览到 Azure 应用
 
 在浏览器中导航到 `http://<app_name>.azurewebsites.net/swagger`，开始使用 Swagger UI。
 

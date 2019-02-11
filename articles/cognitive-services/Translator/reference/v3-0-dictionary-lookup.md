@@ -6,20 +6,20 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 41b610f3504a8eb6619613e3ad0aa7c1c4cf9f66
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: b6178c4e9c197539359058347b2409210d976569
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127833"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458918"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>文本翻译 API 3.0：字典查找
 
-为某个单词和少量的惯用语提供替代翻译。 每条翻译都包含语性和回译列表。 回译可让用户在语境中理解该翻译。 使用[字典示例](.\v3-0-dictionary-examples.md)操作可以进一步向下钻取，以查看每个翻译对的用法示例。
+为某个单词和少量的惯用语提供替代翻译。 每条翻译都包含语性和回译列表。 回译可让用户在语境中理解该翻译。 使用[字典示例](./v3-0-dictionary-examples.md)操作可以进一步向下钻取，以查看每个翻译对的用法示例。
 
 ## <a name="request-url"></a>请求 URL
 
@@ -42,11 +42,11 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
   </tr>
   <tr>
     <td>from</td>
-    <td>必需参数。<br/>指定输入文本的语言。 源语言必须是 `dictionary` 范围中包含的[支持的语言](.\v3-0-languages.md)之一。</td>
+    <td>必需参数。<br/>指定输入文本的语言。 源语言必须是 `dictionary` 范围中包含的[支持的语言](./v3-0-languages.md)之一。</td>
   </tr>
   <tr>
     <td>to</td>
-    <td>必需参数。<br/>指定输出文本的语言。 目标语言必须是 `dictionary` 范围中包含的[支持的语言](.\v3-0-languages.md)之一。</td>
+    <td>必需参数。<br/>指定输出文本的语言。 目标语言必须是 `dictionary` 范围中包含的[支持的语言](./v3-0-languages.md)之一。</td>
   </tr>
 </table>
 
@@ -92,17 +92,17 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 成功的响应是一个 JSON 数组，其中的每个结果对应于输入数组中的一个字符串。 结果对象包括以下属性：
 
-  * `normalizedSource`：一个字符串，提供源字词的规范化形式。 例如，如果请求为“JOHN”，则规范化形式为“john”。 此字段的内容将成为[查找示例](.\v3-0-dictionary-examples.md)的输入。
+  * `normalizedSource`：一个字符串，提供源术语的规范化形式。 例如，如果请求为“JOHN”，则规范化形式为“john”。 此字段的内容将成为[查找示例](./v3-0-dictionary-examples.md)的输入。
     
-  * `displaySource`：一个字符串，以最适合向最终用户显示的形式提供源字词。 例如，如果输入为“JOHN”，则显示形式将反映该名字的一般拼写方式：“John”。 
+  * `displaySource`：一个字符串，以最适合向最终用户显示的形式提供源术语。 例如，如果输入为“JOHN”，则显示形式将反映该名字的一般拼写方式：“John”。 
 
-  * `translations`：源字词的翻译列表。 每个列表元素都是一个具有以下属性的对象：
+  * `translations`：源术语的翻译列表。 每个列表元素都是一个具有以下属性的对象：
 
-    * `normalizedTarget`：一个字符串，以目标语言提供此字词的规范化形式。 此值应用作[查找示例](.\v3-0-dictionary-examples.md)的输入。
+    * `normalizedTarget`：一个字符串，以目标语言提供此术语的规范化形式。 此值应用作[查找示例](./v3-0-dictionary-examples.md)的输入。
 
-    * `displayTarget`：一个字符串，使用目标语言以最适合向最终用户显示的形式提供字词。 一般情况下，此值只是在大小写方面与 `normalizedTarget` 不同。 例如，专有名词“Juan”的拼写方式包括 `normalizedTarget = "juan"` 和 `displayTarget = "Juan"`。
+    * `displayTarget`：一个字符串，使用目标语言以最适合向最终用户显示的形式提供术语。 一般情况下，此值只是在大小写方面与 `normalizedTarget` 不同。 例如，专有名词“Juan”的拼写方式包括 `normalizedTarget = "juan"` 和 `displayTarget = "Juan"`。
 
-    * `posTag`：一个字符串，用于将此字词与词性标记相关联。
+    * `posTag`：一个字符串，用于将此术语与词性标记相关联。
 
         | 标记名称 | 说明  |
         |----------|--------------|
@@ -125,11 +125,11 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
     
     * `backTranslations`：目标的“回译”列表。 例如，目标可以翻译成的源单词。 保证该列表包含请求的源单词（例如，如果查找的源单词是“fly”，则保证“fly”在 `backTranslations` 列表中）。 但是，不能保证该单词位于第一个位置，并且它往往不是在第一个位置。 `backTranslations` 列表的每个元素是以下属性描述的对象：
 
-        * `normalizedText`：一个字符串，提供目标回译成的源单词的规范化形式。 此值应用作[查找示例](.\v3-0-dictionary-examples.md)的输入。        
+        * `normalizedText`：一个字符串，提供目标回译成的源术语的规范化形式。 此值应用作[查找示例](./v3-0-dictionary-examples.md)的输入。        
 
-        * `displayText`：一个字符串，以最适合向最终用户显示的形式，提供目标回译成的源单词。
+        * `displayText`：一个字符串，以最适合向最终用户显示的形式，提供目标回译成的源术语。
 
-        * `numExamples`：一个整数，表示此翻译对可用的示例数。 必须通过单独调用[查找示例](.\v3-0-dictionary-examples.md)来检索实际示例。 提供该数字的主要目的是方便在 UX 中显示。 例如，如果示例数大于零，则用户界面可以添加回译的超链接；如果没有任何示例，则以纯文本形式显示回译。 请注意，调用[查找示例](.\v3-0-dictionary-examples.md)后返回的实际示例数可能小于 `numExamples`，因为可能对“fly”应用了其他筛选，以删除“错误的”示例。
+        * `numExamples`：一个整数，表示此翻译对可用的示例数。 必须通过单独调用[查找示例](./v3-0-dictionary-examples.md)来检索实际示例。 提供该数字的主要目的是方便在 UX 中显示。 例如，如果示例数大于零，则用户界面可以添加回译的超链接；如果没有任何示例，则以纯文本形式显示回译。 请注意，调用[查找示例](./v3-0-dictionary-examples.md)后返回的实际示例数可能小于 `numExamples`，因为可能对“fly”应用了其他筛选，以删除“错误的”示例。
         
         * `frequencyCount`：一个整数，表示此翻译对在数据中出现的频率。 此字段的主要用途是在用户界面中提供一种方式用于将回译排序，使最常见的字词出现在最前面。
 

@@ -6,18 +6,19 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: a93d6d939f1ccdaa7cbbe16de1e380227489ac45
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.custom: seodec18
+ms.openlocfilehash: 34290704bf5220302a0ce73aa59c1a3b212f2723
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211479"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217656"
 ---
-# <a name="qna-maker-rest-api-with-c"></a>QnA Maker REST API 与 C# 
+# <a name="how-to-use-the-qna-maker-rest-api-with-c"></a>如何将 QnA Maker REST API 与 C# 配合使用 
 <a name="HOLTop"></a>
 
 本文演示如何将 [Microsoft QnA Maker API](../Overview/overview.md)  与 C# 结合使用以执行下列操作。
@@ -37,7 +38,7 @@ ms.locfileid: "50211479"
 - [获取当前的字变更集。](#GetAlterations)
 - [替换当前的字变更集。](#PutAlterations)
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -5,9 +5,9 @@ services: active-directory
 keywords: 企业状态漫游, Windows 云, 如何启用企业状态漫游
 documentationcenter: ''
 author: tanning
-manager: mtillman
+manager: daveba
 editor: curtand
-ms.component: devices
+ms.subservice: devices
 ms.assetid: f71d66fd-7f9e-45eb-9cfe-5d989870f8a4
 ms.service: active-directory
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: 9dc223015f85d83278d48494bf05693c7932bdde
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: a4f1e45f25e00a000127499f86d941501fc54138
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50128746"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098674"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>在 Azure Active Directory 中启用企业状态漫游
 企业状态漫游可供任何拥有Azure AD Premium 或企业移动性 + 安全性 (EMS) 许可证的组织使用。 有关如何获取 Azure AD 订阅的详细信息，请参阅 [Azure AD 产品页](https://azure.microsoft.com/services/active-directory)。
@@ -46,9 +46,9 @@ ms.locfileid: "50128746"
 国家/地区值 | 数据托管位置
 ---------------------|-------------------------
 “法国”或“赞比亚”等 EMEA 国家 | 欧洲的一个或多个 Azure 区域 
-“美国”或“加拿大”等北美国家 | 美国的一个或多个 Azure 区域
+“美国”或“加拿大”等北美国家/地区 | 美国的一个或多个 Azure 区域
 “澳大利亚”或“新西兰”等 APAC 国家 | 亚洲的一个或多个 Azure 区域
-南美国家和南极洲区域 | 美国的一个或多个 Azure 区域
+南美国家/地区和南极洲区域 | 美国的一个或多个 Azure 区域
 
 国家/地区值在 Azure AD 目录创建过程中设置，无法进行后续修改。 如需有关数据存储位置的更多详细信息，请向 [Azure 支持](https://azure.microsoft.com/support/options/)提交票证。
 

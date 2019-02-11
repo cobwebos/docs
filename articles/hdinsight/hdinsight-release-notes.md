@@ -2,30 +2,30 @@
 title: Azure HDInsight 发行说明
 description: Azure HDInsight 的最新发行说明。 获取 Hadoop、Spark、R Server、Hive 和更多工具的开发技巧和详细信息。
 services: hdinsight
-ms.reviewer: jasonh
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 07/01/2018
-ms.author: hrasheed
-ms.openlocfilehash: 663cf6ba2eec4b2abbc6ab4a37e05b756ee67ee9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 01/02/2019
+ms.openlocfilehash: 49087792efa5e377beadc78746bcf99c88954e9b
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016805"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000065"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Azure HDInsight 发行说明
 
 本文提供有关**最新** Azure HDInsight 版本更新的信息。 有关较早版本的信息，请参阅 [HDInsight 发行说明存档](hdinsight-release-notes-archive.md)。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 版本控制文章](hdinsight-component-versioning.md)。
 
 ## <a name="summary"></a>摘要
 
-Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Hadoop 和 Spark 分析服务之一。 [加上 HDInsight 以半价销售](https://azure.microsoft.com/blog/azure-hdinsight-announcements-significant-price-reduction-and-amazing-new-capabilities/#_blank)，客户在迁移到云后，能够实现前所未有的成本节省。
+Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和 Apache Spark 分析服务之一。 [加上 HDInsight 以半价销售](https://azure.microsoft.com/blog/azure-hdinsight-announcements-significant-price-reduction-and-amazing-new-capabilities/#_blank)，客户在迁移到云后，能够实现前所未有的成本节省。
 
 ## <a name="new-features"></a>新增功能
 
@@ -33,15 +33,15 @@ Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Hadoop 和 Spark 
 
 1.  ***更新 Hadoop 和其他开源项目*** - 除了超过 20 个开源项目的 1000 多个 bug 修复，此更新还包含 **Spark (2.3)** 和 **Kafka (1.0)** 的新版本。
 
-    a.  [**Spark 2.3 中的新增功能**](https://spark.apache.org/releases/spark-release-2-3-0.html)
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  [**Apache Spark 2.3 中的新增功能**](https://spark.apache.org/releases/spark-release-2-3-0.html)
 
-    b.  [**Kafka 1.0 中的新增功能**](https://www.apache.org/dist/kafka/1.0.0/RELEASE_NOTES.html)
+    b.  [**Apache Kafka 1.0 中的新增功能**](https://kafka.apache.org/downloads#1.0.0)
 
 2.  ***将 R Server 9.1 更新到机器学习服务 9.3*** - 通过此发布，我们为数据科学家和工程师提供通过算法革新和便捷的操作化增强的最佳开放源代码，均在其首选语言中提供（达到 Apache Spark 速度）。 此版本扩展了 R Server 的功能，添加了对 Python 的支持，群集名称因而从 R Server 更改为 ML Services。 
 
 3.  ***支持 Azure Data Lake Storage Gen2*** - HDInsight 将支持 Azure Data Lake Storage Gen2 的预览版本。 在可用区域中，客户可以选择将 ADLS Gen2 帐户作为 HDInsight 群集的主要存储或辅助存储。
 
-4.  ***HDInsight 企业安全性产品/服务更新（预览版）*** -（预览版）[虚拟网络服务终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)支持 Azure Blob 存储、ADLS Gen1、Cosmos DB 和 Azure DB。
+4.  ***HDInsight 企业安全性套餐更新（预览版）*** -（预览版）[虚拟网络服务终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)支持 Azure Blob 存储、ADLS Gen1、Cosmos DB 和 Azure DB。
 
 ## <a name="component-versions"></a>组件版本
 
@@ -331,7 +331,7 @@ HDP 2.6.4 提供 Hadoop Common 2.7.3 和以下 Apache 修补程序：
 
 -   [*HIVE-18587*](https://issues.apache.org/jira/browse/HIVE-18587)：插入 DML 事件可能尝试针对目录计算校验和。
 
--   [*HIVE-18613*](https://issues.apache.org/jira/browse/HIVE-18613)：扩展 JsonSerDe 以支持二进制类型。
+-   [*HIVE-18613*](https://issues.apache.org/jira/browse/HIVE-18613)：扩展 JsonSerDe 以支持 BINARY 类型。
 
 -   [*HIVE-18626*](https://issues.apache.org/jira/browse/HIVE-18626)：复制负载“with”子句不会将配置传递给任务。
 
@@ -587,7 +587,7 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 
 -   [PHOENIX-3112](https://issues.apache.org/jira/browse/PHOENIX-3112)：无法正确处理部分行扫描。
 
--   [PHOENIX-3240](https://issues.apache.org/jira/browse/PHOENIX-3240)：Pig 加载程序中的 ClassCastException。
+-   [PHOENIX-3240](https://issues.apache.org/jira/browse/PHOENIX-3240)：Pig 加载程序中出现 ClassCastException。
 
 -   [PHOENIX-3452](https://issues.apache.org/jira/browse/PHOENIX-3452)：NULLS FIRST/NULL LAST 不应影响 GROUP BY 是否为顺序保留。
 
@@ -799,7 +799,7 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 
 此版本提供了 Zeppelin 0.7.3，但未提供其他 Apache 修补程序。
 
--   [ZEPPELIN-3072](https://issues.apache.org/jira/browse/ZEPPELIN-3072)：如果存在过多的笔记本，Zeppelin UI 将会变慢/无响应。
+-   [ZEPPELIN-3072](https://issues.apache.org/jira/browse/ZEPPELIN-3072)：如果存在过多的 Notebook，Zeppelin UI 将会变慢/无响应。
 
 -   [ZEPPELIN-3129](https://issues.apache.org/jira/browse/ZEPPELIN-3129)：Zeppelin UI 不会在 IE 中注销。
 
@@ -1300,14 +1300,24 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 
 |**Apache 组件**|**Apache JIRA**|**摘要**|**详细信息**|
 |--|--|--|--|
-|**Spark 2.3** |**不适用** |**Apache Spark 发行说明中所述的更改** |- 提供了“弃用”文档和“行为变更”指南： https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />- 对于 SQL 部分，提供了另一篇详细“迁移”指南（从 2.3 到 2.2）： http://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
-|Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark 作业成功完成，但出现 HDFS 磁盘配额已满错误 |**场景：** 当运行 **insert overwrite** 命令的用户的回收站文件夹中设置了配额时运行该命令。<br /><br />**以前的行为：** 作业会成功，但无法将数据移到回收站。 结果可能错误地包含表中以前存在的一些数据。<br /><br />**新行为：** 如果移到回收站失败，会永久删除文件。|
-|**Kafka 1.0**|**不适用**|**Apache Spark 发行说明中所述的更改** |http://kafka.apache.org/10/documentation.html#upgrade_100_notable|
-|**Hive/Ranger** | |INSERT OVERWRITE 需要其他 ranger hive 策略 |**场景：****INSERT OVERWRITE** 需要其他 ranger hive 策略<br /><br />**以前的行为：** Hive **INSERT OVERWRITE** 查询像往常一样成功。<br /><br />**新行为：** 升级到 HDP 2.6.x 之后，Hive **INSERT OVERWRITE** 查询意外失败并出现错误：<br /><br />编译语句时出错：失败: HiveAccessControlException 权限被拒绝: 用户 jdoe 对 /tmp/ 没有写入权限\*(状态=42000，代码=40000)<br /><br />从 HDP-2.6.0 开始，Hive **INSERT OVERWRITE** 查询需要 Ranger URI 策略才能允许写入操作，即使已通过 HDFS 策略为用户授予了写入特权。<br /><br />**解决方法/预期的客户操作：**<br /><br />1.在 Hive 存储库下创建新策略。<br />2.在显示“数据库”的下拉列表中，选择“URI”。<br />3.更新路径（示例：/tmp/*）<br />4.添加用户和组并保存。<br />5.重试 insert 查询。|
+|**Spark 2.3** |**不适用** |**Apache Spark 发行说明中所述的更改** |- 提供了“弃用”文档和“行为变更”指南： https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />- 对于 SQL 部分，提供了另一篇详细“迁移”指南（从 2.3 到 2.2）： https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
+|Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark 作业成功完成，但出现 HDFS 磁盘配额已满错误 |**场景**：当运行 **insert overwrite** 命令的用户的回收站文件夹中设置了配额时运行该命令。<br /><br />**以前的行为：** 作业会成功，但无法将数据移到回收站。 结果可能错误地包含表中以前存在的一些数据。<br /><br />**新行为：** 如果移到回收站失败，会永久删除文件。|
+|**Kafka 1.0**|**不适用**|**Apache Spark 发行说明中所述的更改** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
+|**Hive/Ranger** | |INSERT OVERWRITE 需要其他 ranger hive 策略 |**场景**：**INSERT OVERWRITE** 需要其他 ranger hive 策略<br /><br />**以前的行为：** Hive **INSERT OVERWRITE** 查询像往常一样成功。<br /><br />**新行为：** 升级到 HDP 2.6.x 之后，Hive **INSERT OVERWRITE** 查询意外失败并出现错误：<br /><br />编译语句时出错:失败:HiveAccessControlException 权限被拒绝: 用户 jdoe 对 /tmp/ 没有写入特权\*(状态=42000，代码=40000)<br /><br />从 HDP-2.6.0 开始，Hive **INSERT OVERWRITE** 查询需要 Ranger URI 策略才能允许写入操作，即使已通过 HDFS 策略为用户授予了写入特权。<br /><br />**解决方法/预期的客户操作：**<br /><br />1.在 Hive 存储库下创建新策略。<br />2.在显示“数据库”的下拉列表中，选择“URI”。<br />3.更新路径（示例：/tmp/*）<br />4.添加用户和组并保存。<br />5.重试 insert 查询。|
 |**HDFS**|**不适用** |HDFS 应受多个 KMS RUI 的支持 |**以前的行为：** dfs.encryption.key.provider.uri 属性用于配置 KMS 提供程序路径。<br /><br />**新行为：** 现已弃用 dfs.encryption.key.provider.uri，改用 hadoop.security.key.provider.path 来配置 KMS 提供程序路径。|
 |**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|用于禁用计划程序的选项 |**受影响的组件：** Zeppelin-Server<br /><br />**以前的行为：** 以前的 Zeppelin 版本未提供用于禁用计划程序的选项。<br /><br />**新行为：** 默认情况下，用户不再会看到计划程序，因为它默认已禁用。<br /><br />**解决方法/预期的客户操作：** 若要启用计划程序，需要通过 Ambari 在 Zeppelin 中的自定义 zeppelin 站点设置下添加值为 true 的 azeppelin.notebook.cron.enable。|
 
 ## <a name="known-issues"></a>已知问题
+
+-   **HDInsight 与 ADLS Gen 2 集成** 使用 Azure Data Lake Storage Gen 2 的 HDInsight ESP 群集在用户目录和权限上存在两个问题：
+   
+   1. 用户的主目录未在头节点 1 上创建。 解决方法是，手动创建目录并将所有权更改为相应用户的 UPN。
+   
+   2. /hdp 目录的权限当前未设置为 751。 这需要设置为该值 
+      ```bash
+      chmod 751 /hdp 
+      chmod –R 755 /hdp/apps
+      ```
 
 -   **Spark 2.3**
 
@@ -1317,7 +1327,7 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 
     -   如果 Azure Data Lake Storage（第 2 代）是群集的默认存储，则 Spark 示例笔记本不可用。
 
--   **企业安全性产品/服务**
+-   **企业安全性套餐**
 
     - Spark Thrift 服务器不接受来自 ODBC 客户端的连接。
       解决方法步骤：
@@ -1330,9 +1340,9 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 
     -   [RANGER-1607](https://issues.apache.org/jira/browse/RANGER-1607)：从以前的 HDP 版本升级到 HDP 2.6.2 时 Ranger 服务检查失败的解决方法。
 
-        >[!NOTE]
-        >仅当已在 Ranger 中启用 SSL 时。 
-    
+        > [!NOTE]  
+        > 仅当已在 Ranger 中启用 SSL 时。 
+     
     尝试通过 Ambari 从以前的 HDP 版本升级到 HDP 2.6.1 时会出现此问题。 Ambari 使用 curl 调用对 Ambari 中的 Ranger 服务执行服务检查。 如果 Ambari 使用的 JDK 版本是 JDK-1.7，curl 调用将会失败并出现以下错误：
     
     `curl: (35) error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure`
@@ -1353,7 +1363,7 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
             
             SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
     
-    >[!NOTE]
+    >[!NOTE]  
     >所述的值是工作示例，可能不会反映你的环境。 确保设置这些属性的方式与配置环境的方式相匹配。   
 
 -   **RangerUI：转义在策略窗体中输入的策略条件文本**
@@ -1374,7 +1384,7 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
     
     **解决方法**
     
-    - **选项 \#1：通过 Ranger Rest API 创建/更新策略**
+    - **选项\# 1：通过 Ranger Rest API 创建/更新策略**
         
         REST URL： http://&lt;host&gt;:6080/service/plugins/policies
         
@@ -1396,7 +1406,7 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
         
         `curl -H "Content-Type: application/json" -X PUT http://localhost:6080/service/plugins/policies/18 -u admin:admin -d '{"id":18,"guid":"ea78a5ed-07a5-447a-978d-e636b0490a54","isEnabled":true,"createdBy":"Admin","updatedBy":"Admin","createTime":1490802077000,"updateTime":1490802077000,"version":1,"service":"tagdev","name":"P0101","policyType":0,"description":"","resourceSignature":"e5fdb911a25aa7f77af5a9546938d9ed","isAuditEnabled":true,"resources":{"tag":{"values":["tags"],"isExcludes":false,"isRecursive":false}},"policyItems":[{"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}],"users":[],"groups":["public"],"conditions":[{"type":"ip-range","values":["tags.attributes['type']=abc"]}],"delegateAdmin":false}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"dataMaskPolicyItems":[],"rowFilterPolicyItems":[]}'`
         
-    - **选项 \#2：应用 Javascript 更改**
+    - **选项\# 2：应用 Javascript 更改**
         
         更新 JS 文件的步骤：
         
@@ -1409,6 +1419,10 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
             val = \_.escape(val);//Line No:460
             
             删除上述行之后，Ranger UI 将允许你创建策略条件可以包含特殊字符的策略，并且针对同一策略执行策略评估将会成功。
+
+**HDInsight 与 ADLS Gen 2 集成：ESP 群集存在用户目录和权限问题**
+    1.  用户的主目录未在头节点 1 上创建。 解决方法是，手动创建这些目录并将所有权更改为相应用户的 UPN。
+    2.  /hdp 的权限当前未设置为 751。 这需要设置为 a.  chmod 751 /hdp b.  chmod -R 755 /hdp/apps
 
 ## <a name="deprecation"></a>弃用
 

@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 10/05/2018
+ms.date: 10/19/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 761b68ca99df8ae5b4d379b95e7d2a300f7e6238
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 98ea4d78a473123708be6e371587252acad6ffcd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48874142"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55205121"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Azure 虚拟网络网关（VPN 网关）与 Azure 虚拟 WAN vpngateway 之间有什么差别？
 
@@ -57,7 +57,7 @@ ms.locfileid: "48874142"
 
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other"></a>连接到虚拟中心的分支 VNet 是否能够相互通信？
 
-是的。 可以直接在连接到虚拟中心的分支之间建立 VNet 对等互连。 有关详细信息，请参阅[虚拟网络对等互连](../articles/virtual-network/virtual-network-peering-overview.md)。
+是的。 分支 VNet 可以通过虚拟网络对等互连直接通信。 但是，我们不支持通过中心进行可传递通信的 VNet。 有关详细信息，请参阅[虚拟网络对等互连](../articles/virtual-network/virtual-network-peering-overview.md)。
 
 ### <a name="can-i-deploy-and-use-my-favorite-network-virtual-appliance-in-an-nva-vnet-with-azure-virtual-wan"></a>是否可以在 Azure 虚拟 WAN 中部署和使用我偏爱的网络虚拟设备（在 NVA VNet 中）？
 

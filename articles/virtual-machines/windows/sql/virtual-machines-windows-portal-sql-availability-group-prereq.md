@@ -16,18 +16,18 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: 2d8a98e6ab38f4156b6e2f5bda81b44e1789a6ed
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 11e255c8cc32f17efa9fc9e8f39e869fba032d75
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253068"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359827"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>完成用于在 Azure 虚拟机中创建 Alwayson 可用性组的必备组件配置
 
 本教程演示如何完成用于[在 Azure 虚拟机 (VM) 中创建 SQL Server AlwaysOn 可用性组](virtual-machines-windows-portal-sql-availability-group-tutorial.md)的必备组件配置。 完成必备组件配置后，会在单个资源组中拥有 1 个域控制器、2 个 SQL Server VM 和 1 个见证服务器。
 
-预估时间：可能需要几个小时才能完成必备组件配置。 大部分时间花费在创建虚拟机上。
+**时间估计**：可能需要几个小时才能完成必备组件配置。 大部分时间花费在创建虚拟机上。
 
 下图演示了在本教程中构建的内容。
 
@@ -108,7 +108,7 @@ Azure 会将返回到门户仪表板，并在创建新网络时发出通知。
 
     如果看不到 SQL-HA-RG，请单击“资源组”并根据资源组名称筛选进行查找。
 2. 单击资源列表中的 **autoHAVNET**。 
-3. 在“autoHAVNET”虚拟网络中的“设置”下，单击“子网”。
+3. 在“autoHAVNET”虚拟网络中的“设置”下，选择“子网”。
 
     请记下已创建的子网。
 
@@ -135,7 +135,7 @@ Azure 会将返回到门户仪表板，并在创建新网络时发出通知。
 
 ## <a name="create-availability-sets"></a>创建可用性集
 
-创建虚拟机前，需创建可用性集。 可用性集可减少计划内或计划外维护事件的停机时间。 Azure 可用性集是 Azure 置于物理容错域和更新域上的逻辑资源组。 容错域确保可用性集的成员具有不同的电源和网络资源。 更新域确保可用性集的成员不会同时停机进行维护。 有关其他信息，请参阅[管理虚拟机的可用性](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+创建虚拟机前，需创建可用性集。 可用性集可减少计划内或计划外维护事件的停机时间。 Azure 可用性集是 Azure 置于物理容错域和更新域上的逻辑资源组。 容错域确保可用性集的成员具有不同的电源和网络资源。 更新域确保可用性集的成员不会同时停机进行维护。 有关详细信息，请参阅[管理虚拟机的可用性](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 需要两个可用性集。 一个用于域控制器， 另一个用于 SQL Server VM。
 
@@ -189,7 +189,7 @@ Azure 会将返回到门户仪表板，并在创建新网络时发出通知。
 | **子网** |admin |
 | **公共 IP 地址** |*与 VM 同名* |
 | **网络安全组** |*与 VM 同名* |
-| **可用性集** |adavailabilityset </br>**容错域**:2</br>**更新域**:2|
+| **可用性集** |adavailabilityset </br>**容错域**:2 </br>**更新域**:2|
 | **诊断** |已启用 |
 | **诊断存储帐户** |*自动创建* |
 
@@ -462,6 +462,10 @@ Azure 将创建虚拟机。
 6. 单击“安装”以添加功能。
 
 在另一个 SQL Server VM 上重复上述步骤。
+
+  >[!NOTE]
+  > 执行完此步骤以及实际将 SQL Server VM 加入故障转移群集，现在可以使用 Azure 快速入门模板自动执行。 有关详细信息，请参阅[使用 Azure 快速入门模板在 SQL Server VM 上为 Always On 可用性组创建 WSFC、侦听器和配置 ILB](virtual-machines-windows-sql-availability-group-quickstart-template.md)。
+
 
 ## <a name="a-nameendpoint-firewall-configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall">在每个 SQL Server VM 上配置防火墙
 

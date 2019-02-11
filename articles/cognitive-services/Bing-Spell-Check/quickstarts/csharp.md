@@ -1,21 +1,21 @@
 ---
-title: 快速入门：必应拼写检查 API、C#
+title: 快速入门：必应拼写检查 API，C#
 titlesuffix: Azure Cognitive Services
 description: 获取信息和代码示例，以帮助你快速开始使用必应拼写检查 API。
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: aahi
-ms.openlocfilehash: fbad56b59664a6c75e6bec911e891145a18b1161
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 77ad43b63d5548cf57024bc0c2b707e51f1c8496
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315165"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189810"
 ---
 # <a name="quickstart-for-bing-spell-check-api-with-c"></a>通过 C# 使用必应拼写检查 API 快速入门
 

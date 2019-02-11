@@ -1,28 +1,29 @@
 ---
 title: 数据科学虚拟机的数据平台 - Azure | Microsoft Docs
-description: 数据科学虚拟机的数据平台。
+description: 了解 Data Science Virtual Machine 支持的数据平台和工具。
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: b3f340006801287383c2afb2924706affbd77a51
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 27e0deae9c35ad8fa00659e3e3e505cace6e9014
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31411023"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733427"
 ---
-# <a name="data-platforms"></a>数据平台
+# <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine 支持的数据平台
 
 借助数据科学虚拟机 (DSVM)，可生成针对各种数据平台的分析。 除远程数据平台接口外，DSVM 还提供用于快速开发和原型制作的本地实例。 
 
@@ -94,7 +95,7 @@ SQL Server 采用标准方式安装。 可在 `C:\Program Files\Microsoft SQL Se
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-不需要 Hadoop 相关服务时，可通过运行 ````systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```` 停止这些服务。演示如何在远程 Spark 上下文（即 DSVM 上的独立 Spark 实例）中开发和测试 MRS 的示例在 `/dsvm/samples/MRS` 目录中提供。 
+不需要 Hadoop 相关服务时，可通过运行 ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` 停止这些服务。演示如何在远程 Spark 上下文（即 DSVM 上的独立 Spark 实例）中开发和测试 MRS 的示例在 `/dsvm/samples/MRS` 目录中提供。 
 
 
 ### <a name="how-is-it-configured--installed-on-the-dsvm"></a>如何在 DSVM 上配置/安装它？ 
@@ -104,5 +105,5 @@ SQL Server 采用标准方式安装。 可在 `C:\Program Files\Microsoft SQL Se
 |Linux   | /dsvm/tools/spark-X.X.X-bin-hadoopX.X|
 
 
-用于通过 Azure Blob 或 Azure Data Lake 存储 (ADLS) 访问数据并使用 Microsoft MMLSpark 机器学习库的库已在 $SPARK_HOME/jars 中预先安装。 Spark 启动时，这些 JAR 会自动加载。 默认情况下，Spark 使用本地磁盘上的数据。 为了让 DSVM 上的 Spark 实例能够访问存储在 Azure blob 或 ADLS 上的数据，需要根据 $SPARK_HOME/conf/core-site.xml.template（其中有用于 Blob 和 ADLS 配置的占位符）中找到的模板，使用 Azure blob 和 Azure Data Lake 存储的正确凭据创建/配置 `core-site.xml` 文件。 可在[此处](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory#create-an-active-directory-application)找到创建 ADLS 服务凭据的详细步骤。 在 core-site.xml 文件中输入 Azure blob 或 ADLS 的凭据后，可使用 wasb:// 和 adl:// 这两个 URI 前缀引用存储在这些源中的数据。 
+用于通过 Azure Blob 或 Azure Data Lake 存储 (ADLS) 访问数据并使用 Microsoft MMLSpark 机器学习库的库已在 $SPARK_HOME/jars 中预先安装。 Spark 启动时，这些 JAR 会自动加载。 默认情况下，Spark 使用本地磁盘上的数据。 为了让 DSVM 上的 Spark 实例能够访问存储在 Azure blob 或 ADLS 上的数据，需要根据 $SPARK_HOME/conf/core-site.xml.template（其中有用于 Blob 和 ADLS 配置的占位符）中找到的模板，使用 Azure blob 和 Azure Data Lake 存储的正确凭据创建/配置 `core-site.xml` 文件。 可在[此处](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)找到创建 ADLS 服务凭据的详细步骤。 在 core-site.xml 文件中输入 Azure blob 或 ADLS 的凭据后，可使用 wasb:// 和 adl:// 这两个 URI 前缀引用存储在这些源中的数据。 
 

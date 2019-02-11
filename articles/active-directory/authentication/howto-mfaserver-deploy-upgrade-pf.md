@@ -3,19 +3,19 @@ title: 将 PhoneFactor 升级到 Azure MFA 服务器 | Microsoft 文档
 description: 从旧版 PhoneFactor 代理升级以后，开始使用 Azure MFA 服务器。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: f9e67a34ec1237eab0d1c567720cf905acda5def
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: e7e34d3d90191889a87990ab5814e67d4359b8fc
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160794"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078248"
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>将 PhoneFactor 代理升级到 Azure 多重身份验证服务器
 

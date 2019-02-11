@@ -1,6 +1,6 @@
 ---
 title: Azure 事件中心功能概述 | Microsoft Docs
-description: 有关 Azure 事件中心功能的概述和详细信息
+description: 本文详细介绍 Azure 事件中心的功能和术语。
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -8,18 +8,19 @@ manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a3f7245d8a648249a4e7179cc02982eae8561037
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 917a551b8a187db6645e523d0189533e333d5371
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280567"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075160"
 ---
-# <a name="event-hubs-features-overview"></a>事件中心功能概述
+# <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中心的功能和术语
 
 Azure 事件中心是可缩放的事件处理服务，它引入并处理大量事件和数据，具有低延迟和高可靠性。 有关简要概述，请参阅[什么是事件中心？](event-hubs-what-is-event-hubs.md)。
 

@@ -1,21 +1,22 @@
 ---
-title: Azure Active Directory 部署计划 | Microsoft Docs
-description: 提供有关如何部署 Azure Active Directory 功能的端到端指南
+title: 部署计划 - Azure Active Directory | Microsoft Docs
+description: 有关如何部署多个 Azure Active Directory 功能的端到端指南。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: lizross
-ms.openlocfilehash: f5a148cba172b4e1e4490b52afb3b500da3a593c
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: dc231fc17a864401873c2f5acefbac6aa4816215
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434154"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102662"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署计划
 正在查找有关如何部署某些 Azure Active Directory (Azure AD) 功能的端到端指南？ 以下部署计划详述了成功推出部分更常用 Azure AD 功能所需的业务价值、规划注意事项、设计和运营过程。 
@@ -24,7 +25,7 @@ ms.locfileid: "47434154"
 
 欢迎对文档提供反馈。 请参与这个简短的[调查](https://aka.ms/deploymentplanfeedback)，说出你对文档的看法。 
 
-|场景 |Description |
+|场景 |说明 |
 |-|-|
 |[单一登录](https://aka.ms/SSODPDownload)|进行单一登录时，只需使用单个用户帐户登录一次，就能访问开展业务所需的全部应用和资源。 登录之后，可以从 Microsoft Office 转到 SalesForce，再转到 Box，无需再次进行身份验证（例如键入密码）。|
 |[Workday 驱动的入站用户预配](https://aka.ms/WorkdayDeploymentPlan)|Workday 驱动的到 Active Directory 的入站用户预配为正在进行的标识管理奠定了基础，并提高了依赖权威标识数据的业务流程的质量。 使用此功能，可以通过配置将 Joiner-Mover-Leaver 流程（例如新雇佣、终止、转移）映射到 IT 预配操作（例如创建、启用、禁用、删除帐户等）的规则，无缝地管理员工和临时工的标识生命周期。|

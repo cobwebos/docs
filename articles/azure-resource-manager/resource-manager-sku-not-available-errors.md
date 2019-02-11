@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: d1279b5319ddd52ff2f3f6b4e696b73e8fe67607
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 1dd0532452c3558e53f0236998953d2055ed328c
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468681"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55489677"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>解决 SKU 不可用的错误
 
 本文介绍如何解决 SkuNotAvailable 错误。 如果在该区域或满足业务需求的备用区域中找不到合适的 SKU，请将 [SKU 请求](https://aka.ms/skurestriction)提交到 Azure 支持。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>症状
 
@@ -41,10 +42,10 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 ## <a name="solution-1---powershell"></a>解决方案 1 - PowerShell
 
-要确定区域中可用的 SKU，请使用 [Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) 命令。 按位置筛选结果。 必须拥有最新版本 PowerShell 才能运行此命令。
+要确定区域中可用的 SKU，请使用 [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) 命令。 按位置筛选结果。 必须拥有最新版本 PowerShell 才能运行此命令。
 
 ```azurepowershell-interactive
-Get-AzureRmComputeResourceSku | where {$_.Locations -icontains "centralus"}
+Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
 ```
 
 结果包括位置的 SKU 列表以及针对该 SKU 的任何限制。 请注意，SKU 可能被列为 `NotAvailableForSubscription`。

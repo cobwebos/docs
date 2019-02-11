@@ -10,12 +10,13 @@ ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/09/2018
-ms.openlocfilehash: e265a66b841530d1133d760ebdcdf56046d1aee1
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: seodec18
+ms.openlocfilehash: c44b09e15a227e11426d2798fc071778ca47ebd3
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364062"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557457"
 ---
 # <a name="understand-data-retention-in-time-series-insights"></a>了解时序见解中的数据保留
 

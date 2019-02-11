@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 7/10/2018
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b269b8db59c4aeecf182b6ea11b92a3980a2cd6d
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: a3a059e8edc286b2c1433c9b414dc275a433e2fd
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567411"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217673"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>使用 Azure 备份来备份和还原已加密的虚拟机
 本文介绍使用 Azure 备份来备份和还原虚拟机 (VM) 的步骤。 此外，提供有关受支持的方案、先决条件以及针对错误案例的疑难解答步骤的详细信息。
@@ -27,6 +27,10 @@ ms.locfileid: "51567411"
    | --- | --- | --- |
    | **非托管 VM**  | 是 | 是  |
    | **托管 VM**  | 是 | 是  |
+
+   > [!NOTE]
+   > Azure 备份支持使用独立密钥加密的 VM。 目前不支持属于用于加密 VM 的证书的一部分的任何密钥。
+   >   
 
 ## <a name="prerequisites"></a>先决条件
 * 已使用 [Azure 磁盘加密](../security/azure-security-disk-encryption.md)将 VM 加密。
@@ -41,7 +45,7 @@ ms.locfileid: "51567411"
 ### <a name="configure-backup"></a>配置备份
 1. 如果已打开恢复服务保管库，请转到下一步。 如果未打开恢复服务保管库，而是位于 Azure 门户中，请选择“所有服务”。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在资源列表中，键入“恢复服务”。
+   a. 在资源列表中，键入“恢复服务”。
 
    b. 开始键入时，会根据输入筛选该列表。 出现“**恢复服务保管库**”时，请选择它。
 
@@ -124,6 +128,8 @@ ms.locfileid: "51567411"
 成功提供权限后，可继续为加密的 VM 启用备份。
 
 ## <a name="restore-an-encrypted-vm"></a>还原已加密的 VM
+除了以前提供的对带有 Azure AD 的 Azure 加密 VM 还原支持外，Azure 备份现在还支持还原[不带 Azure AD 的 Azure 加密 VM](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-prerequisites-aad)。<br>
+
 若要还原已加密的 VM，请先遵循[选择 VM 还原配置](backup-azure-arm-restore-vms.md#choose-a-vm-restore-configuration)的“还原已备份的磁盘”部分中所述的步骤来还原磁盘。 之后，可以使用以下选项之一：
 
 * 遵循[从已还原的磁盘创建 VM](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) 中的 PowerShell 步骤从已还原的磁盘创建完整 VM。
@@ -132,7 +138,7 @@ ms.locfileid: "51567411"
 ## <a name="troubleshooting-errors"></a>排查错误
 | Operation | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-|备份 | 备份服务对 Key Vault 没有足够的权限，无法备份已加密的 VM。 | 应遵循[上一部分中的步骤](#provide-permissions-to-azure-backup)为备份服务提供这些权限。 或者，可以遵循[使用 PowerShell 备份和还原虚拟机](backup-azure-vms-automation.md#enable-protection)一文“启用保护”部分中的 PowerShell 步骤执行操作。 |  
-| 还原 |无法还原此加密的 VM，因为与此 VM 关联的 Key Vault 不存在。 |参考 [Azure Key Vault 入门](../key-vault/key-vault-get-started.md)创建 Key Vault。 参阅[使用 Azure 备份还原 Key Vault 密钥和机密](backup-azure-restore-key-secret.md)来还原密钥和机密（如果不存在）。 |
-| 还原 |无法还原此加密的 VM，因为与此 VM 关联的密钥和机密不存在。 |参阅[使用 Azure 备份还原 Key Vault 密钥和机密](backup-azure-restore-key-secret.md)来还原密钥和机密（如果不存在）。 |
-| 还原 |备份服务未获授权访问订阅中的资源。 |如前所述，请先遵循[选择 VM 还原配置](backup-azure-arm-restore-vms.md#choose-a-vm-restore-configuration)的“还原已备份的磁盘”部分中所述的步骤来还原磁盘。 之后，使用 PowerShell [从已还原的磁盘创建 VM](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。 |
+|备份 | 错误代码：UserErrorKeyVaultPermissionsNotConfigured<br><br>错误消息：Azure 备份服务对 Key Vault 没有足够的权限，无法备份加密的虚拟机。 | 应遵循[上一部分中的步骤](#provide-permissions-to-azure-backup)为备份服务提供这些权限。 或者，可以遵循[使用 PowerShell 备份和还原虚拟机](backup-azure-vms-automation.md#enable-protection)一文“启用保护”部分中的 PowerShell 步骤执行操作。 |  
+| 还原 | 无法还原此加密的 VM，因为与此 VM 关联的 Key Vault 不存在。 |参考 [Azure Key Vault 入门](../key-vault/key-vault-get-started.md)创建 Key Vault。 参阅[使用 Azure 备份还原 Key Vault 密钥和机密](backup-azure-restore-key-secret.md)来还原密钥和机密（如果不存在）。 |
+| 还原 | 错误代码：UserErrorKeyVaultKeyDoesNotExist<br><br> 错误消息：无法还原此加密 VM，因为与之关联的密钥不存在。 |参阅[使用 Azure 备份还原 Key Vault 密钥和机密](backup-azure-restore-key-secret.md)来还原密钥和机密（如果不存在）。 |
+| 还原 | 错误代码：ProviderAuthorizationFailed/UserErrorProviderAuthorizationFailed<br><br>错误消息：备份服务没有权限访问订阅中的资源。 |如前所述，请先遵循[选择 VM 还原配置](backup-azure-arm-restore-vms.md#choose-a-vm-restore-configuration)的“还原已备份的磁盘”部分中所述的步骤来还原磁盘。 之后，使用 PowerShell [从已还原的磁盘创建 VM](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。 |

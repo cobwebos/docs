@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: c7626c6edceddcfbd4d95ff6efc4678836a4502c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e79ffba90f0812d79bcb7ab808e2b6ba80e1c61b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247987"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756659"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>排查 Hyper-V 到 Azure 的复制和故障转移的问题
 
@@ -115,7 +115,7 @@ ms.locfileid: "51247987"
         - 计数器：“Write Bytes / Sec”</br>
         - 根据 VM 或其应用的繁忙程度，此数据变动率将会提高或保持在较高级别。
         - 对于 Site Recovery 的标准存储，平均源磁盘数据变动率为 2 MB/秒。 [了解详细信息](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
-    - 此外，可以[验证存储可伸缩性目标](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#scalability-targets-for-a-storage-account)。
+    - 此外，可以[验证存储可伸缩性目标](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets)。
 8. 运行[部署规划器](hyper-v-deployment-planner-run.md)。
 9. 查看有关[网络](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)和[存储](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)的建议。
 
@@ -125,7 +125,7 @@ ms.locfileid: "51247987"
 1. 在事件日志中检查 VSS 错误和建议：
     - 在 Hyper-V 主机服务器上，通过“事件查看器” > “应用程序和服务日志” > “Microsoft” > “Windows” > “Hyper-V” > “管理”打开 Hyper-V 管理事件日志。
     - 检查是否有任何事件指示发生应用一致的快照失败。
-    - 典型的错误为：“Hyper-V 无法为虚拟机 'XYZ' 生成 VSS 快照集: 编写器遇到非暂时性错误。 如果服务无响应，重启 VSS 服务可能会解决问题。”
+    - 典型错误如下：“Hyper-V 无法为虚拟机 “XYZ” 生成 VSS 快照集:编写器遇到了非暂时性错误。 如果服务无响应，重启 VSS 服务可能会解决问题。”
 
 2. 若要为 VM 生成 VSS 快照，请检查 VM 上是否已安装 Hyper-V Integration Services，并已启用备份 (VSS) 集成服务。
     - 确保 Integration Services VSS 服务/守护程序在来宾上运行，并处于“正常”状态。
@@ -136,7 +136,7 @@ ms.locfileid: "51247987"
 
 **错误代码** | **消息** | **详细信息**
 --- | --- | ---
-**0x800700EA** | “Hyper-V 无法为虚拟机生成 VSS 快照集: 更多数据可用。 (0x800700EA)。 如果备份操作正在进行，VSS 快照集生成可能失败。<br/><br/> 虚拟机复制操作失败: 更多数据可用。” | 检查是否在 VM 上启用了动态磁盘。 不支持此操作。
+**0x800700EA** | “Hyper-V 无法为虚拟机生成 VSS 快照集:更多数据可用。 (0x800700EA)。 如果备份操作正在进行，VSS 快照集生成可能失败。<br/><br/> 虚拟机复制操作失败:更多数据可用。” | 检查是否在 VM 上启用了动态磁盘。 不支持此操作。
 **0x80070032** | “由于版本与 Hyper-V 预期的版本不匹配，Hyper-V 卷影复制请求程序无法连接到虚拟机 <./VMname>” | 检查是否安装了最新的 Windows 更新。<br/><br/> [升级](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date)到最新版本的 Integration Services。
 
 

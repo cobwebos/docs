@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 052db91d-ccff-4098-8ae3-2f76eca90539
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b6fe50b24a20f81500ac1ed5008fcb6c59c0243a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 97b0530f3a260b4ad82c4287b4b37595ab1cf25d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449394"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187328"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bpmonline"></a>教程：Azure Active Directory 与 Bpm’online 集成
 
@@ -123,7 +123,7 @@ ms.locfileid: "39449394"
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请联系 [Bpm’online 客户端支持团队](mailto:support@bpmonline.com)。 
 
-1. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。
+1. 在“SAML 签名证书” 部分中，单击“复制”按钮来复制“应用联合元数据 URL”，并将其粘贴到记事本 **** **** 。
     
     ![配置单一登录](./media/bpmonline-tutorial/tutorial_metadataurl.png)
      
@@ -167,7 +167,7 @@ ms.locfileid: "39449394"
  
 ### <a name="create-a-bpmonline-test-user"></a>创建 Bpm’online 测试用户
 
-在此部分中，将在 Bpm’online 中创建名为 Britta Simon 的用户。 与 [Bpm’online 支持团队](mailto:support@bpmonline.com)协作，共同在 Bpm’online 平台中添加用户。 使用单一登录前，必须先创建并激活用户。 
+在此部分中，将在 Bpm’online 中创建名为 Britta Simon 的用户。 与  [Bpm’online 支持团队](mailto:support@bpmonline.com) 协作，将用户添加到 Bpm’online 平台中。 使用单一登录前，必须先创建并激活用户。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -204,12 +204,12 @@ ms.locfileid: "39449394"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击“访问面板”中的“Bpm’online”磁贴后，应该会自动登录 Bpm’online 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

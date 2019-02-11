@@ -1,6 +1,6 @@
 ---
-title: 在 Linux 上的 Azure 应用服务中对用户进行端到端身份验证和授权 | Microsoft Docs
-description: 了解如何使用应用服务身份验证和授权来确保应用服务应用的安全性，包括确保访问远程 API 时的安全性。
+title: 在 Linux 上对用户进行端到端身份验证和授权 - Azure 应用服务 | Microsoft Docs
+description: 了解如何使用应用服务身份验证和授权来确保 Linux 上运行的应用服务应用的安全性，包括确保访问远程 API 时的安全性。
 keywords: 应用服务, azure 应用服务, authN, authZ, 安全, 安全性, 多层, azure active directory, azure ad
 services: app-service\web
 documentationcenter: dotnet
@@ -14,16 +14,17 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/26/2018
 ms.author: cephalin
-ms.openlocfilehash: a468c5d0f73cc182927f26ea9b7a85e2c5afb7c8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.custom: seodec18
+ms.openlocfilehash: ed056bf28881f391ed1ba16a875259e8e420b39d
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33766353"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296077"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>教程：在 Linux 上的 Azure 应用服务中对用户进行端到端身份验证和授权
 
-[Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 另外，应用服务提供对[用户身份验证和授权](../app-service-authentication-overview.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)的内置支持。 本教程介绍如何通过应用服务身份验证和授权来确保应用的安全性。 本教程使用带 Angular.js 前端的 ASP.NET Core 应用，但这只是为了举例。 应用服务身份验证和授权支持所有的语言运行时，你可以按照本教程的说明来了解如何将其应用到首选语言。
+[Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 另外，应用服务提供对[用户身份验证和授权](../overview-authentication-authorization.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)的内置支持。 本教程介绍如何通过应用服务身份验证和授权来确保应用的安全性。 本教程使用带 Angular.js 前端的 ASP.NET Core 应用，但这只是为了举例。 应用服务身份验证和授权支持所有的语言运行时，你可以按照本教程的说明来了解如何将其应用到首选语言。
 
 本教程使用示例应用来演示如何确保自包含应用的安全性（参见[为后端应用启用身份验证和授权](#enable-authentication-and-authorization-for-back-end-app)）。
 
@@ -59,7 +60,7 @@ ms.locfileid: "33766353"
 
 ## <a name="create-local-net-core-app"></a>创建本地 .NET Core 应用
 
-在此步骤中，将设置本地 .NET Core 项目。 请使用同一项目来部署后端 API 应用和前端 Web 应用。
+在此步骤中，你将设置本地 .NET Core 项目。 请使用同一项目来部署后端 API 应用和前端 Web 应用。
 
 ### <a name="clone-and-run-the-sample-application"></a>克隆和运行示例应用程序
 
@@ -85,7 +86,7 @@ dotnet run
 
 ### <a name="create-azure-resources"></a>创建 Azure 资源
 
-在 Cloud Shell 中运行以下命令，以便创建两个 Web 应用。 将 _&lt;front\_end\_app\_name>_ 和 _&lt;back\_end\_app\_name>_ 替换为两个全局唯一的应用名称（有效字符为 `a-z`、`0-9`、`-`）。 有关每个命令的详细信息，请参阅[在 Linux 上的应用服务中创建 .NET Core Web 应用](quickstart-dotnetcore.md)。
+在 Cloud Shell 中运行以下命令，以便创建两个应用服务应用。 将 _&lt;front\_end\_app\_name>_ 和 _&lt;back\_end\_app\_name>_ 替换为两个全局唯一的应用名称（有效字符为 `a-z`、`0-9`、`-`）。 有关每个命令的详细信息，请参阅[在 Linux 上的应用服务中创建 .NET Core 应用](quickstart-dotnetcore.md)。
 
 ```azurecli-interactive
 az group create --name myAuthResourceGroup --location "West Europe"
@@ -128,7 +129,7 @@ git commit -m "add CORS to back end"
 
 ### <a name="push-to-azure-from-git"></a>从 Git 推送到 Azure
 
-在本地终端窗口中，运行以下 Git 命令，部署到后端应用。 将 _&lt;deploymentLocalGitUrl-of-back-end-app>_ 替换为在[创建 Azure 资源](#create-azure-resources)中保存的 Git remote 的 URL。 当 Git 凭据管理器提示输入凭据时，请确保输入[部署凭据](../app-service-deployment-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)，而不是用于登录到 Azure 门户的凭据。
+在本地终端窗口中，运行以下 Git 命令，部署到后端应用。 将 _&lt;deploymentLocalGitUrl-of-back-end-app>_ 替换为在[创建 Azure 资源](#create-azure-resources)中保存的 Git remote 的 URL。 当 Git 凭据管理器提示输入凭据时，请确保输入[部署凭据](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)，而不是用于登录到 Azure 门户的凭据。
 
 ```bash
 git remote add backend <deploymentLocalGitUrl-of-back-end-app>
@@ -142,7 +143,7 @@ git remote add frontend <deploymentLocalGitUrl-of-front-end-app>
 git push frontend master
 ```
 
-### <a name="browse-to-the-azure-web-apps"></a>浏览到 Azure Web 应用
+### <a name="browse-to-the-azure-apps"></a>浏览到 Azure 应用
 
 在浏览器中导航到以下 URL，然后会看到两个应用在运行。
 
@@ -237,7 +238,7 @@ git push frontend master
 
 在此步骤中，请为两个应用启用身份验证和授权。 另请配置前端应用，以便生成一个访问令牌，用于对后端应用进行经身份验证的调用。
 
-请将 Azure Active Directory 用作标识提供者。 有关详细信息，请参阅[为应用服务应用程序配置 Azure Active Directory 身份验证](../app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)。
+请将 Azure Active Directory 用作标识提供者。 有关详细信息，请参阅[为应用服务应用程序配置 Azure Active Directory 身份验证](../configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)。
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>启用针对后端应用的身份验证和授权
 
@@ -316,7 +317,7 @@ git push frontend master
 
 现在已配置好了应用。 前端现在可以通过适当的访问令牌访问后端了。
 
-若要了解如何为其他提供程序完成此配置，请参阅[刷新访问令牌](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#refresh-access-tokens)。
+若要了解如何为其他提供程序完成此配置，请参阅[刷新访问令牌](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#refresh-identity-provider-tokens)。
 
 ## <a name="call-api-securely-from-server-code"></a>通过服务器代码安全地调用 API
 
@@ -430,7 +431,7 @@ git push frontend master
 
 ## <a name="clean-up-resources"></a>清理资源
 
-在前面的步骤中，在资源组中创建了 Azure 资源。 如果认为将来不需要这些资源，请在 Cloud Shell 中运行以下命令删除资源组：
+在前面的步骤中，你在资源组中创建了 Azure 资源。 如果认为将来不需要这些资源，请在 Cloud Shell 中运行以下命令删除资源组：
 
 ```azurecli-interactive
 az group delete --name myAuthResourceGroup
@@ -452,7 +453,7 @@ az group delete --name myAuthResourceGroup
 > * 使用服务器代码中的访问令牌
 > * 使用客户端（浏览器）代码中的访问令牌
 
-转到下一教程，了解如何向 Web 应用映射自定义 DNS 名称。
+转到下一教程，了解如何将自定义 DNS 名称映射到应用。
 
 > [!div class="nextstepaction"]
-> [将现有的自定义 DNS 名称映射到 Azure Web 应用](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+> [将现有的自定义 DNS 名称映射到 Azure 应用服务](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)

@@ -3,21 +3,22 @@ title: Azure Linux 虚拟机上的 SQL Server 概述 | Microsoft Docs
 description: 了解如何在 Azure Linux 虚拟机上运行完整的 SQL Server 版本。 获取到所有 Linux SQL Server VM 映像和相关内容的直接链接。
 services: virtual-machines-linux
 documentationcenter: ''
-author: rothja
-manager: jhubbard
+author: MashaMSFT
+manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: get-started-article
 ms.workload: iaas-sql-server
 ms.date: 04/10/2018
-ms.author: jroth
-ms.openlocfilehash: 9c24536d8d5647e4a2c19afa17c35050e1f11c20
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 18f9dd5318c6aecff8819178168469d9334e5e29
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31424113"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332398"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Azure 虚拟机 (Linux) 上的 SQL Server 概述
 
@@ -63,7 +64,7 @@ Azure 虚拟机在全球许多不同的[地理区域](https://azure.microsoft.co
 
 ### <a name="storage"></a>存储
 
-* [Microsoft Azure 存储空间简介](../../../storage/common/storage-introduction.md)
+* [Microsoft Azure 存储简介](../../../storage/common/storage-introduction.md)
 
 ### <a name="networking"></a>网络
 

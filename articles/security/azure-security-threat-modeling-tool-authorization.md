@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: eec628a5084dc663978e16e617192802d3ecfcfa
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: ddf40538fc3d6e39fe48ff49311f86314008b4ce
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307650"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994766"
 ---
 # <a name="security-frame-authorization--mitigations"></a>安全框架：授权 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -349,7 +349,7 @@ WHERE userID=:id < - session var
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型、NET Framework 3 |
 | **属性**              | 不适用  |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_unauthorized_access) |
+| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **步骤** | <p>此服务不使用授权控制。 当客户端调用特定的 WCF 服务时，WCF 将提供多种授权方案，用于验证调用方是否有权在服务器上执行服务方法。 如果没有为 WCF 服务启用授权控制，经过身份验证的用户可以实现特权升级。</p>|
 
 ### <a name="example"></a>示例

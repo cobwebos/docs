@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 2fce90f971d13b94c73012d4089cca05739c5440
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 7f6e95b28482ed6d75bb76773da05aebd1855a66
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853704"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093375"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric 网络模式
 可将 Azure Service Fabric 群集与其他 Azure 网络功能集成。 本文说明如何创建使用以下功能的群集：
@@ -81,7 +81,7 @@ DnsSettings              : {
 
 1. 将子网参数更改为现有子网的名称，然后添加两个新参数以引用现有的虚拟网络：
 
-    ```
+    ```json
         "subnet0Name": {
                 "type": "string",
                 "defaultValue": "default"
@@ -108,26 +108,26 @@ DnsSettings              : {
 
 2. 注释掉 `Microsoft.Compute/virtualMachineScaleSets` 的 `nicPrefixOverride` 属性，因为你使用的是现有子网，并且已在步骤 1 中禁用了此变量。
 
-    ```
+    ```json
             /*"nicPrefixOverride": "[parameters('subnet0Prefix')]",*/
     ```
 
 3. 将 `vnetID` 变量更改为指向现有虚拟网络：
 
-    ```
+    ```json
             /*old "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",*/
             "vnetID": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingVNetRGName'), '/providers/Microsoft.Network/virtualNetworks/', parameters('existingVNetName'))]",
     ```
 
 4. 从资源中删除 `Microsoft.Network/virtualNetworks`，使 Azure 不会创建新的虚拟网络：
 
-    ```
+    ```json
     /*{
     "apiVersion": "[variables('vNetApiVersion')]",
     "type": "Microsoft.Network/virtualNetworks",
     "name": "[parameters('virtualNetworkName')]",
     "location": "[parameters('computeLocation')]",
-    "properities": {
+    "properties": {
         "addressSpace": {
             "addressPrefixes": [
                 "[parameters('addressPrefix')]"
@@ -151,7 +151,7 @@ DnsSettings              : {
 
 5. 从 `Microsoft.Compute/virtualMachineScaleSets` 的 `dependsOn` 属性中注释掉虚拟网络，避免非得要创建新的虚拟网络：
 
-    ```
+    ```json
     "apiVersion": "[variables('vmssApiVersion')]",
     "type": "Microsoft.Computer/virtualMachineScaleSets",
     "name": "[parameters('vmNodeType0Name')]",
@@ -185,7 +185,7 @@ DnsSettings              : {
 
 1. 添加现有静态 IP 资源组名称、名称和完全限定的域名 (FQDN) 的参数：
 
-    ```
+    ```json
     "existingStaticIPResourceGroup": {
                 "type": "string"
             },
@@ -199,7 +199,7 @@ DnsSettings              : {
 
 2. 删除 `dnsName` 参数。 （静态 IP 已有名称。）
 
-    ```
+    ```json
     /*
     "dnsName": {
         "type": "string"
@@ -209,13 +209,13 @@ DnsSettings              : {
 
 3. 添加一个变量来引用现有的静态 IP 地址：
 
-    ```
+    ```json
     "existingStaticIP": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingStaticIPResourceGroup'), '/providers/Microsoft.Network/publicIPAddresses/', parameters('existingStaticIPName'))]",
     ```
 
 4. 从资源中删除 `Microsoft.Network/publicIPAddresses`，使 Azure 不会创建新的 IP 地址：
 
-    ```
+    ```json
     /*
     {
         "apiVersion": "[variables('publicIPApiVersion')]",
@@ -237,7 +237,7 @@ DnsSettings              : {
 
 5. 从 `Microsoft.Network/loadBalancers` 的 `dependsOn` 属性中注释掉 IP 地址，避免非得要创建新的 IP 地址：
 
-    ```
+    ```json
     "apiVersion": "[variables('lbIPApiVersion')]",
     "type": "Microsoft.Network/loadBalancers",
     "name": "[concat('LB', '-', parameters('clusterName'), '-', parameters('vmNodeType0Name'))]",
@@ -251,7 +251,7 @@ DnsSettings              : {
 
 6. 在 `Microsoft.Network/loadBalancers` 资源中，将 `frontendIPConfigurations` 的 `publicIPAddress` 元素更改为引用现有的静态 IP 地址而不是新建的 IP 地址：
 
-    ```
+    ```json
                 "frontendIPConfigurations": [
                         {
                             "name": "LoadBalancerIPConfig",
@@ -267,7 +267,7 @@ DnsSettings              : {
 
 7. 在 `Microsoft.ServiceFabric/clusters` 资源中，将 `managementEndpoint` 更改为静态 IP 地址的 DNS FQDN。 如果使用安全群集，请确保将 *http://* 更改为 *https://*。 （请注意，此步骤仅适用于 Service Fabric 群集。 如果使用虚拟机规模集，请跳过此步骤。）
 
-    ```
+    ```json
                     "fabricSettings": [],
                     /*"managementEndpoint": "[concat('http://',reference(concat(parameters('lbIPName'),'-','0')).dnsSettings.fqdn,':',parameters('nt0fabricHttpGatewayPort'))]",*/
                     "managementEndpoint": "[concat('http://',parameters('existingStaticIPDnsFQDN'),':',parameters('nt0fabricHttpGatewayPort'))]",
@@ -294,7 +294,7 @@ DnsSettings              : {
 
 1. 删除 `dnsName` 参数。 （不需要此参数。）
 
-    ```
+    ```json
     /*
     "dnsName": {
         "type": "string"
@@ -304,7 +304,7 @@ DnsSettings              : {
 
 2. （可选）如果使用静态分配方法，可添加静态 IP 地址参数。 如果使用动态分配方法，则无需执行此步骤。
 
-    ```
+    ```json
             "internalLBAddress": {
                 "type": "string",
                 "defaultValue": "10.0.0.250"
@@ -313,7 +313,7 @@ DnsSettings              : {
 
 3. 从资源中删除 `Microsoft.Network/publicIPAddresses`，使 Azure 不会创建新的 IP 地址：
 
-    ```
+    ```json
     /*
     {
         "apiVersion": "[variables('publicIPApiVersion')]",
@@ -335,7 +335,7 @@ DnsSettings              : {
 
 4. 删除 `Microsoft.Network/loadBalancers` 的 IP 地址 `dependsOn` 属性，避免非得要创建新的 IP 地址。 添加虚拟网络 `dependsOn` 属性，因为负载均衡器现在依赖于虚拟网络中的子网：
 
-    ```
+    ```json
                 "apiVersion": "[variables('lbApiVersion')]",
                 "type": "Microsoft.Network/loadBalancers",
                 "name": "[concat('LB','-', parameters('clusterName'),'-',parameters('vmNodeType0Name'))]",
@@ -348,7 +348,7 @@ DnsSettings              : {
 
 5. 将负载均衡器的 `frontendIPConfigurations` 设置从使用 `publicIPAddress` 更改为使用子网和 `privateIPAddress`。 `privateIPAddress` 使用预定义的静态内部 IP 地址。 要使用动态 IP 地址，请删除 `privateIPAddress` 元素，然后将 `privateIPAllocationMethod` 更改为 **Dynamic**。
 
-    ```
+    ```json
                 "frontendIPConfigurations": [
                         {
                             "name": "LoadBalancerIPConfig",
@@ -369,7 +369,7 @@ DnsSettings              : {
 
 6. 在 `Microsoft.ServiceFabric/clusters` 资源中，将 `managementEndpoint` 更改为指向内部负载均衡器地址。 如果使用安全群集，请确保将 *http://* 更改为 *https://*。 （请注意，此步骤仅适用于 Service Fabric 群集。 如果使用虚拟机规模集，请跳过此步骤。）
 
-    ```
+    ```json
                     "fabricSettings": [],
                     /*"managementEndpoint": "[concat('http://',reference(concat(parameters('lbIPName'),'-','0')).dnsSettings.fqdn,':',parameters('nt0fabricHttpGatewayPort'))]",*/
                     "managementEndpoint": "[concat('http://',reference(variables('lbID0')).frontEndIPConfigurations[0].properties.privateIPAddress,':',parameters('nt0fabricHttpGatewayPort'))]",
@@ -394,7 +394,7 @@ DnsSettings              : {
 
 1. 添加静态内部负载均衡器 IP 地址参数。 （有关使用动态 IP 地址的说明，请参阅本文的前面部分。）
 
-    ```
+    ```json
             "internalLBAddress": {
                 "type": "string",
                 "defaultValue": "10.0.0.250"
@@ -405,7 +405,7 @@ DnsSettings              : {
 
 3. 若要添加现有网络变量的内部版本，请复制并粘贴这些变量，并在名称中添加“-Int”：
 
-    ```
+    ```json
     /* Add internal load balancer networking variables */
             "lbID0-Int": "[resourceId('Microsoft.Network/loadBalancers', concat('LB','-', parameters('clusterName'),'-',parameters('vmNodeType0Name'), '-Internal'))]",
             "lbIPConfig0-Int": "[concat(variables('lbID0-Int'),'/frontendIPConfigurations/LoadBalancerIPConfig')]",
@@ -418,7 +418,7 @@ DnsSettings              : {
 
 4. 如果从使用应用程序端口 80、由门户生成的模板开始，则默认门户模板会在外部负载均衡器上添加 AppPort1（端口 80）。 在此情况下，请将 AppPort1 从外部负载均衡器 `loadBalancingRules` 和探测中删除，以便将其添加到内部负载均衡器中：
 
-    ```
+    ```json
     "loadBalancingRules": [
         {
             "name": "LBHttpRule",
@@ -495,7 +495,7 @@ DnsSettings              : {
 
 5. 添加第二个 `Microsoft.Network/loadBalancers` 资源。 该资源与[仅限内部的负载均衡器](#internallb)部分中创建的内部负载均衡器类似，不过它使用的是“-Int”负载均衡器变量，并且仅实现应用程序端口 80。 这样做还会删除 `inboundNatPools`，以便将 RDP 终结点保留在公共负载均衡器上。 如果要将 RDP 放在内部负载均衡器上，请将 `inboundNatPools` 从外部负载均衡器移到此内部负载均衡器：
 
-    ```
+    ```json
             /* Add a second load balancer, configured with a static privateIPAddress and the "-Int" load balancer variables. */
             {
                 "apiVersion": "[variables('lbApiVersion')]",
@@ -580,7 +580,7 @@ DnsSettings              : {
 
 6. 在 `Microsoft.Compute/virtualMachineScaleSets` 资源的 `networkProfile` 中，添加内部后端地址池：
 
-    ```
+    ```json
     "loadBalancerBackendAddressPools": [
                                                         {
                                                             "id": "[variables('lbPoolID0')]"

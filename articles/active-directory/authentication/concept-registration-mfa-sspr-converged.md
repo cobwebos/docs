@@ -3,19 +3,19 @@ title: Azure AD SSPR 和 MFA 的聚合式注册（公共预览）
 description: Azure AD 多重身份验证和自助密码重置注册（公共预览）
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 01/30/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 44a5b32b68b0365e957d97a516f0d767e6501c0f
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: a3058eb3472b2bc9109ebc7b93b83b9f27091edd
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630318"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487585"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>针对自助密码重置和 Azure 多重身份验证的聚合式注册（公共预览）
 

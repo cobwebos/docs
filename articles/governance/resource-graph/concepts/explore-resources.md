@@ -1,23 +1,26 @@
 ---
-title: 使用 Resource Graph 浏览 Azure 资源
+title: 浏览 Azure 资源
 description: 了解如何使用 Resource Graph 查询语言浏览资源并发现资源的连接方式。
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/22/2018
+ms.date: 01/23/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: bcd25b95d1369ef98662384945123126ebbbd70f
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.custom: seodec18
+ms.openlocfilehash: 090ea6fa38f07dda2f3769398c082e302edebe94
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086890"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095462"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>使用 Resource Graph 浏览 Azure 资源
 
 Azure Resource Graph 提供快速、大规模浏览和发现 Azure 资源的功能。 它专为快速响应而设计，是了解你的环境以及构成 Azure 资源的属性的好方法。
+
+[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="explore-virtual-machines"></a>浏览虚拟机
 
@@ -37,7 +40,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1"
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1"
+Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1"
 ```
 
 JSON 结果的结构类似于下面的示例：
@@ -173,7 +176,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | summarize
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by location"
+Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by location"
 ```
 
 JSON 结果的结构类似于下面的示例：
@@ -211,7 +214,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' and propert
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | project name, resourceGroup"
+Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | project name, resourceGroup"
 ```
 
 ### <a name="virtual-machines-connected-to-premium-managed-disks"></a>连接到高级托管磁盘的虚拟机
@@ -233,7 +236,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualmachines' and propert
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
+  Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
 ```
 
 结果是磁盘 ID 列表。
@@ -250,7 +253,7 @@ Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualmachines' an
     "disk_id": "/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166"
   }
 ]
-````
+```
 
 ```Query
 where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'
@@ -267,7 +270,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/disks' and id == '/subscript
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'"
+Search-AzGraph -Query "where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'"
 ```
 
 JSON 结果的结构类似于下面的示例：

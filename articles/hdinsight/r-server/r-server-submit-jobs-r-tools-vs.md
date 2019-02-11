@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: d9d34441f36ea60141ed2659b3e33efdaac94ad3
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 351734ea394b8820e87799a6d9a87979dd9c3807
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497118"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604525"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>从针对 Visual Studio 的 R 工具提交作业
 
@@ -35,7 +35,7 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 
 4. 在计算机上安装 [ML Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows)。 ML Server 提供 [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) 和 `RxSpark` 函数。
 
-5. 安装 [PuTTY](http://www.putty.org/) 以提供计算上下文，用于从本地客户端针对 HDInsight 群集运行 `RevoScaleR` 函数。
+5. 安装 [PuTTY](https://www.putty.org/) 以提供计算上下文，用于从本地客户端针对 HDInsight 群集运行 `RevoScaleR` 函数。
 
 6. 可以选择向 Visual Studio 环境应用数据科学设置，从而为 R 工具的工作区提供新的布局。
     1. 若要保存当前的 Visual Studio 设置，请使用“工具”>“导入和导出设置”命令，然后选择“导出选定的环境设置”并指定文件名。 若要还原这些设置，请使用相同的命令，并选择“导入选定的环境设置”。
@@ -44,7 +44,7 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 
         ![数据科学设置...](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > 通过使用步骤 1 中的方法，也可以保存和还原个性化的数据科学家布局，而不必重复使用“数据科学设置”命令。
 
 ## <a name="execute-local-r-methods"></a>执行本地 R 方法

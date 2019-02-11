@@ -3,22 +3,21 @@ title: 在 Azure Active Directory B2C 中使用 Node.js 保护 Web API | Microso
 description: 如何构建可从 B2C 租户接受令牌的 Node.js Web API。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 93c3bd3f902f08c8f019744b3f30745c1fd9fa01
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.subservice: B2C
+ms.openlocfilehash: 84fd2356099ec11db011f20310938e3fc68f3bae
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442417"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55165960"
 ---
-# <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C：使用 Node.js 保护 Web API
-<!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
+# <a name="secure-a-web-api-by-using-nodejs-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 Node.js 保护 Web API
 
 借助 Azure Active Directory (Azure AD) B2C，可以使用 OAuth 2.0 访问令牌来保护 Web API。 这些令牌允许使用 Azure AD B2C 的客户端应用对 API 进行身份验证。 本文说明如何创建一个“待办事项列表”API，使用户能够添加和列出任务。 Web API 使用 Azure AD B2C 进行保护，只允许经过身份验证的用户管理其待办事项列表。
 
@@ -36,7 +35,7 @@ ms.locfileid: "37442417"
 3. 配置一个客户端应用程序用于调用“待办事项列表”Web API。
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>获取 Azure AD B2C 目录
-只有在创建目录或租户之后，才可使用 Azure AD B2C。  目录是所有用户、应用、组等对象的容器。  如果没有容器，请先 [创建 B2C 目录](active-directory-b2c-get-started.md) ，再继续。
+只有在创建目录或租户之后，才可使用 Azure AD B2C。  目录是所有用户、应用、组等对象的容器。  如果没有容器，请先 [创建 B2C 目录](tutorial-create-tenant.md) ，再继续。
 
 ## <a name="create-an-application"></a>创建应用程序
 接下来，需要在 B2C 目录中创建一个应用，以便为 Azure AD 提供一些必要信息，使它与应用安全通信。 在本例中，由于客户端应用与 Web API 构成一个逻辑应用，因此由单个 **应用程序 ID**表示。 若要创建应用，请遵循 [这些说明](active-directory-b2c-app-registration.md)。 请务必：
@@ -47,17 +46,13 @@ ms.locfileid: "37442417"
 * 复制分配给应用的 **应用程序 ID** 。 稍后需要此数据。
 
 ## <a name="create-your-policies"></a>创建策略
-在 Azure AD B2C 中，每个用户体验由 [策略](active-directory-b2c-reference-policies.md)定义。 此应用包含两种标识体验：注册和登录。 需要按 [策略参考文章](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)中所述，为每个类型创建一个策略。  创建三个策略时，请务必：
+在 Azure AD B2C 中，每个用户体验由 [策略](active-directory-b2c-reference-policies.md)定义。 此应用程序包含两种标识体验：注册和登录。 你需要为每种类型创建一个策略。  创建策略时，请务必：
 
 * 在注册策略中，选择“显示名称”和其他注册属性。
 * 在每个策略中，选择“显示名称”和“对象 ID”应用程序声明。  也可以选择其他声明。
 * 创建每个策略后，请复制策略的 **名称** 。 其前缀应为 `b2c_1_`。  稍后需要这些策略名称。
 
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
-
-创建三个策略后，可以开始构建应用。
-
-若要了解 Azure AD B2C 中策略的工作原理，请先阅读 [.NET Web 应用入门教程](active-directory-b2c-devquickstarts-web-dotnet.md)。
+创建策略后，可以开始构建应用。
 
 ## <a name="download-the-code"></a>下载代码
 本教程的代码 [保留在 GitHub 上](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS)。 若要根据说明构建示例，请 [下载 .zip 文件格式的骨干项目](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/skeleton.zip)。 也可以克隆骨干项目：
@@ -71,12 +66,12 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-Nod
 ## <a name="download-nodejs-for-your-platform"></a>下载适用于平台的 Node.js
 若要成功使用本示例，需要正确安装 Node.js。
 
-从 [nodejs.org](http://nodejs.org)安装 Node.js。
+从 [nodejs.org](https://nodejs.org)安装 Node.js。
 
 ## <a name="install-mongodb-for-your-platform"></a>为平台安装 MongoDB
 若要成功使用本示例，需要正确安装 MongoDB。 将使用 MongoDB 来使 REST API 持久保留在服务器实例之间。
 
-从 [mongodb.org](http://www.mongodb.org)安装 MongoDB。
+从 [mongodb.org](https://www.mongodb.org)安装 MongoDB。
 
 > [!NOTE]
 > 本演练假设对 MongoDB 使用默认的安装和服务器终结点，在编写本文时，该终结点为 `mongodb://localhost`。
@@ -549,7 +544,7 @@ Restify 和 Express 为 REST API 服务器提供深度自定义功能，但此�
 
 
 var server = restify.createServer({
-    name: "Microsoft Azure Active Directroy TODO Server",
+    name: "Microsoft Azure Active Directory TODO Server",
     version: "2.0.1"
 });
 
@@ -692,7 +687,7 @@ var findById = function(id, fn) {
 var oidcStrategy = new OIDCBearerStrategy(options,
     function(token, done) {
         log.info('verifying the user');
-        log.info(token, 'was the token retreived');
+        log.info(token, 'was the token retrieved');
         findById(token.sub, function(err, user) {
             if (err) {
                 return done(err);

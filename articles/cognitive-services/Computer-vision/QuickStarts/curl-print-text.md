@@ -1,21 +1,22 @@
 ---
-title: 快速入门：提取打印的文本 (OCR) - REST、cURL - 计算机视觉
+title: 快速入门：提取印刷体文本 - REST、cURL
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 cURL 从图像中提取印刷体文本。
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: pafarley
-ms.openlocfilehash: 6917e6f4ba0c2f8045d3f7da9a2e23acd949cf48
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: a04c941618ea4e8a7a72fe09c0babb6e0b73ef41
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341236"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228468"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-curl-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 cURL 提取印刷体文本 (OCR)
 

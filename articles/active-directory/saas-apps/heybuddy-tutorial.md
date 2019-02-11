@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 HeyBuddy 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 HeyBuddy 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 HeyBuddy 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: d51b5af6-018e-4678-9a3f-b70438394f67
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 3ef345d866de16b856d3c8b56fa086b83b74ae0f
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 123b74298ebb01e8ebcfd70d023b4e71a879e7f9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289544"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197885"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-heybuddy"></a>教程：Azure Active Directory 与 HeyBuddy 的集成
+# <a name="tutorial-azure-active-directory-integration-with-heybuddy"></a>教程：Azure Active Directory 与 HeyBuddy 集成
 
 本教程介绍如何将 HeyBuddy 与 Azure Active Directory (Azure AD) 集成。
 
@@ -114,7 +114,7 @@ ms.locfileid: "51289544"
 
     ![HeyBuddy 域和 URL 单一登录信息](./media/heybuddy-tutorial/tutorial_heybuddy_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://api.heybuddy.com/auth/<ENTITY ID>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://api.heybuddy.com/auth/<ENTITY ID>`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `YourCompanyInstanceofHeyBuddy`
 
@@ -130,11 +130,11 @@ ms.locfileid: "51289544"
 
 6. 在“用户属性和声明”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
-    | 名称  | 源属性  |
+    | Name  | 源属性  |
     | --------------- | --------------- |
     | 角色               | user.assignedroles |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”以打开“管理用户声明”对话框。
+    a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
     ![图像](./common/new_save_attribute.png)
 
@@ -150,7 +150,7 @@ ms.locfileid: "51289544"
 
     f. 单击“ **保存**”。
 
-7. 在“SAML 签名证书”页的“SAML 签名证书”部分中，单击复制**图标**来复制应用联合元数据 URL，并将其粘贴到记事本。 **** 
+7. 在“SAML 签名证书”页的“SAML 签名证书”部分中，单击复制**图标**来复制应用联合元数据 URL，并将其粘贴到记事本 **。** 
 
     ![证书下载链接](./media/heybuddy-tutorial/tutorial_heybuddy_certificate.png) 
 
@@ -172,7 +172,7 @@ ms.locfileid: "51289544"
 
     ![创建 Azure AD 测试用户](common/create_aaduser_02.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com

@@ -6,13 +6,14 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
-ms.date: 11/2/2017
-ms.openlocfilehash: ab7602f7bae4dfb77a733dd7efe011a29b730377
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 2108de8988e973644e0622a4b76a04408949298e
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581579"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635134"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Spark 进行故障排除
 
@@ -217,7 +218,7 @@ java.lang.OutOfMemoryError
 
 ### <a name="additional-reading"></a>其他阅读材料
 
-- [Apache Spark 内存管理概述](http://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
+- [Apache Spark 内存管理概述](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
 - [在 HDInsight 群集上调试 Apache Spark 应用程序](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
 
 

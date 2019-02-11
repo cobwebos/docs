@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: tamram
-ms.component: blobs
-ms.openlocfilehash: 74d6acb03f9ba984d35caf1f5c7963f686cda5a7
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.subservice: blobs
+ms.openlocfilehash: f0fe4bef436576bec90d1d770d262c2c22d280a3
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219250"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694578"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>为 Azure 存储帐户配置自定义域名
 
@@ -154,7 +154,7 @@ ms.locfileid: "51219250"
 
 ### <a name="azure-cli"></a>Azure CLI
 
-若要删除自定义域注册，请使用 [az storage account update](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_update) CLI 命令，并为 `--custom-domain` 参数值指定空字符串 (`""`)。
+若要删除自定义域注册，请使用 [az storage account update](https://docs.microsoft.com/cli/azure/storage/account) CLI 命令，并为 `--custom-domain` 参数值指定空字符串 (`""`)。
 
 * 命令格式：
 
@@ -176,12 +176,14 @@ ms.locfileid: "51219250"
 
 ### <a name="powershell"></a>PowerShell
 
-若要删除自定义域注册，请使用 [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount) PowerShell cmdlet，并为 `-CustomDomainName` 参数值指定空字符串 (`""`)。
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+若要删除自定义域注册，请使用 [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) PowerShell cmdlet，并为 `-CustomDomainName` 参数值指定空字符串 (`""`)。
 
 * 命令格式：
 
   ```powershell
-  Set-AzureRmStorageAccount `
+  Set-AzStorageAccount `
       -ResourceGroupName "<resource-group-name>" `
       -AccountName "<storage-account-name>" `
       -CustomDomainName ""
@@ -190,7 +192,7 @@ ms.locfileid: "51219250"
 * 命令示例：
 
   ```powershell
-  Set-AzureRmStorageAccount `
+  Set-AzStorageAccount `
       -ResourceGroupName "myresourcegroup" `
       -AccountName "mystorageaccount" `
       -CustomDomainName ""

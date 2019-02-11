@@ -4,23 +4,23 @@ description: 了解 Azure AD Connect 的 Synchronization Service Manager 中的�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 20234dd4-3328-4817-b7ff-268f953d376d
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 77b487809d263aad96bcb1ff0a9bd0ca185fff5d
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: dd2ed1f7d4201c744ea5a9d1de6988c3acf6d4a3
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46304956"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55489404"
 ---
 # <a name="sync-service-manager-metaverse-search"></a>Sync Service Manager Metaverse 搜索
 

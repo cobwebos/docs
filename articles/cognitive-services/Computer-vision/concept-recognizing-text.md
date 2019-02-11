@@ -1,21 +1,22 @@
 ---
-title: 识别印刷文本和手写文本 - 计算机视觉
+title: 识别印刷文本、手写文本 - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 与使用计算机视觉 API 识别图像中的印刷文本和手写文本相关的概念。
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 6827bf5f983834dc5222a3f3028386f8bbcb253a
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 6ee2b3282a5f895c61b9f0b55aa3353e534b6e37
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338094"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191035"
 ---
 # <a name="recognizing-printed-and-handwritten-text"></a>识别打印文本和手写文本
 

@@ -4,22 +4,22 @@ description: 了解如何在 Azure Active Directory 和 Salesforce 之间配置�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 49384b8b-3836-4eb1-b438-1c46bb9baf6f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: e2a5020bec94614971b6e9e7f4dcf94a0df96108
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 3906b59e6b00d5ba2e735a044ec3f935f4086aab
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888386"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155045"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>教程：为 Salesforce 配置自动用户预配
 
@@ -75,7 +75,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 5. 在“管理员凭据”部分中，提供以下配置设置：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“管理员用户名”文本框中，键入在 Salesforce.com 中已分配“系统管理员”配置文件的 Salesforce 帐户名称。
+    a. 在“管理员用户名”文本框中，键入在 Salesforce.com 中已分配“系统管理员”配置文件的 Salesforce 帐户名称。
 
     b. 在“管理员密码”文本框中，键入此帐户的密码。
 

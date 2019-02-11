@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 780247b5cfc70a333bac640f2e478e72f820b1f3
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 7f99b6d2f6fc1c6d1c270bd66965d978749ac63f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266166"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455926"
 ---
-# <a name="how-to-restore-azure-cosmos-db-data-from-a-backup"></a>如何从备份还原 Azure Cosmos DB 数据
+# <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中从备份还原数据 
 
 如果意外删除了数据库或容器，可以[提交支持票证]( https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)或[联系 Azure 支持]( https://azure.microsoft.com/support/options/)，以便从自动联机备份中还原数据。 Azure 支持仅适用于选定计划（例如标准计划、开发人员计划以及更高级别的计划）。 不适用于基本计划。 若要了解不同的支持方案，请参阅 [Azure 支持计划](https://azure.microsoft.com/support/plans/)页。 
 

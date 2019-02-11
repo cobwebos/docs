@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 45badbdbe1a7e1f2028a00d54458db35a4f7d440
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 4f950734081be6cf76770b1c6cb2feca7efdae70
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127995"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221397"
 ---
 # <a name="interpret-method"></a>interpret 方法
 
@@ -25,7 +25,7 @@ interpret 方法采用自然语言查询字符串，并根据语法和索引数�
 
 `http://<host>/interpret?query=<query>[&<options>]`
 
-名称|值| Description
+Name|值| 说明
 ----|----|----
 query    | 文本字符串 | 用户输入的查询。  如果 complete 设置为 1，查询将被解释为生成查询自动完成建议的前缀。        
 complete | 0（默认值）或 1 | 1 意味着自动完成建议是基于语法和索引数据生成的。         
@@ -37,7 +37,7 @@ timeout  | 数字（默认值为 1000） | 超时（以毫秒为单位）。 仅
 
 ## <a name="response-json"></a>响应 (JSON)
 
-JSONPath     | Description
+JSONPath     | 说明
 ---------|---------
 $.query |query 参数来自请求。
 $.interpretations   |将输入查询与语法相匹配的 0 种或多种方法数组。

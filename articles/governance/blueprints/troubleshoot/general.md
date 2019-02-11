@@ -1,19 +1,20 @@
 ---
-title: 排查使用 Azure 蓝图时出现的错误
+title: 排查常见错误
 description: 了解如何排查创建和分配蓝图时出现的问题
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
-ms.topic: conceptual
+ms.date: 12/11/2018
+ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: b910f90e70af4ce6d4243c06bfe5bd03d25d74d6
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.custom: seodec18
+ms.openlocfilehash: 04c038eb11cc40cec3552feff183bea55b22bb57
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092928"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261921"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>排查使用 Azure 蓝图时出现的错误
 
@@ -51,6 +52,20 @@ ms.locfileid: "50092928"
 #### <a name="resolution"></a>解决方法
 
 更改蓝图，使其不与错误详细信息中的策略冲突。 如果无法进行此更改，替代方法是更改策略分配的作用域，以使蓝图不再与策略冲突。
+
+### <a name="escape-function-parameter"></a>场景：蓝图参数是一个函数
+
+#### <a name="issue"></a>问题
+
+作为函数的蓝图参数在传递到项目之前处理。
+
+#### <a name="cause"></a>原因
+
+将使用函数的蓝图参数（例如 `[resourceGroup().tags.myTag]`）传递到项目会导致在项目上设置的函数的处理结果而不是动态函数。
+
+#### <a name="resolution"></a>解决方法
+
+若要将函数作为参数传递，请使用 `[` 转义整个字符串，使蓝图参数如 `[[resourceGroup().tags.myTag]`。 转义字符会导致蓝图在处理蓝图时将值视为字符串。 然后，蓝图将该函数放置在项目中，使其按预期动态化。
 
 ## <a name="next-steps"></a>后续步骤
 

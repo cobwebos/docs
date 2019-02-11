@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: a4875997-3aac-4e4c-b7fe-2b4b829151ce
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 756d00786005fb6de26ff363d4e233fc28b48687
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 6e763c1512e52111e1294c5cad8b4bea46ff0406
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426836"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100611"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory v2.0 和 OpenID Connect 协议
 
@@ -51,7 +51,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 `{tenant}` 可采用四个值的其中之一：
 
-| 值 | Description |
+| 值 | 说明 |
 | --- | --- |
 | `common` |同时拥有 Microsoft 个人帐户和工作/学校帐户的用户可以从 Azure Active Directory (Azure AD) 登录到应用程序。 |
 | `organizations` |仅拥有工作/学校帐户的用户可以从 Azure AD 登录到应用程序。 |
@@ -86,7 +86,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 * 请求必须包含 `nonce` 参数。
 
 > [!IMPORTANT]
-> 为了成功请求 ID 令牌，[注册门户](https://apps.dev.microsoft.com)中的应用注册必须已为 Web 客户端启用[隐式授权](v2-oauth2-implicit-grant-flow.md)。 如果未启用，将返回 `unsupported_response` 错误：“输入参数“response_type”提供的值不允许用于此客户端。 预期值为“code””
+> 为了成功请求 ID 令牌，[注册门户](https://apps.dev.microsoft.com)中的应用注册必须已为 Web 客户端启用[隐式授权](v2-oauth2-implicit-grant-flow.md)。 如果未启用，将返回 `unsupported_response` 错误：“为输入参数 'response_type' 提供的值不允许用于此客户端。 预期值为“code””
 
 例如：
 
@@ -107,7 +107,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > 单击下面的链接可执行此请求。 登录后，浏览器将重定向到 https://localhost/myapp/，且地址栏中有一个 ID 令牌。 请注意，此请求使用 `response_mode=fragment`（仅用于演示）。 建议使用 `response_mode=form_post`。
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| 参数 | 条件 | Description |
+| 参数 | 条件 | 说明 |
 | --- | --- | --- |
 | tenant |必选 |可以使用请求路径中的 `{tenant}` 值来控制哪些用户可以登录到该应用程序。 允许的值为 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参见[协议基础知识](active-directory-v2-protocols.md#endpoints)。 |
 | client_id |必选 |[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)分配给该应用的应用程序 ID。 |
@@ -137,7 +137,7 @@ Content-Type: application/x-www-form-urlencoded
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | id_token |应用请求的 ID 令牌。 可以使用 `id_token` 参数验证用户身份，并开始与该用户的会话。 有关 ID 令牌及其内容的详细信息，请参阅 [`id_tokens` 参考](id-tokens.md)。 |
 | state |如果请求中包含 `state` 参数，响应中应该出现相同的值。 应用程序应该验证请求和响应中的状态值是否完全相同。 |
@@ -154,7 +154,7 @@ Content-Type: application/x-www-form-urlencoded
 error=access_denied&error_description=the+user+canceled+the+authentication
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | error |可用于分类发生的错误类型和响应错误的错误代码字符串。 |
 | error_description |可帮助用户识别身份验证错误根本原因的特定错误消息。 |
@@ -163,7 +163,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 下表描述了可在错误响应的 `error` 参数中返回的错误代码：
 
-| 错误代码 | Description | 客户端操作 |
+| 错误代码 | 说明 | 客户端操作 |
 | --- | --- | --- |
 | invalid_request |协议错误，例如缺少必需的参数。 |修复并重新提交请求。 这是通常在初始测试期间捕获的开发错误。 |
 | unauthorized_client |客户端应用程序无法请求授权代码。 |客户端应用程序未注册到 Azure AD 中或者未添加到用户的 Azure AD 租户时，通常会出现这种情况。 应用程序可以提示用户，说明如何安装该应用程序并将其添加到 Azure AD。 |
@@ -199,7 +199,7 @@ GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
 
-| 参数 | 条件 | Description |
+| 参数 | 条件 | 说明 |
 | ----------------------- | ------------------------------- | ------------ |
 | post_logout_redirect_uri | 建议 | 用户在成功注销后将重定向到的 URL。如果不包括参数，将向用户显示一条 v2.0 终结点生成的常规消息。 此 URL 必须与在应用注册门户中为应用程序注册的重定向 URI 之一匹配。 |
 
@@ -253,7 +253,7 @@ Content-Type: application/x-www-form-urlencoded
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&state=12345
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | id_token |应用请求的 ID 令牌。 可以使用 ID 令牌验证用户的身份，并开始与用户的会话。 有关 ID 令牌及其内容的详细信息，请参阅 [`id_tokens` 参考](id-tokens.md)。 |
 | 代码 |应用程序请求的授权代码。 应用程序可以使用授权代码请求目标资源的访问令牌。 授权代码生存期非常短。 通常情况下，授权代码会在约 10 分钟后过期。 |
@@ -271,7 +271,7 @@ Content-Type: application/x-www-form-urlencoded
 error=access_denied&error_description=the+user+canceled+the+authentication
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | error |可用于分类发生的错误类型和响应错误的错误代码字符串。 |
 | error_description |可帮助用户识别身份验证错误根本原因的特定错误消息。 |

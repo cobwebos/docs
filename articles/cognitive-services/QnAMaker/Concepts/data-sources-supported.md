@@ -6,16 +6,16 @@ services: cognitive-services
 author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 01/04/2019
 ms.author: tulasim
-ms.openlocfilehash: ee88c8dca1521f4cdc2e3ea141d5c1d497061bb4
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b30f910b7eebabe02443e5b3ce328a89a25c7a6f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422348"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213695"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>QnA Maker 内容的数据源
 
@@ -25,9 +25,9 @@ QnA Maker 从半结构化内容（例如常见问题解答、产品手册、指�
 
 |源类型|内容类型| 示例|
 |--|--|--|
-|代码|常见问题解答（平面，包含节或主题主页）|[普通的常见问题解答](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs)、[带链接的常见问题解答](https://www.microsoft.com/software-download/faq)、[带主题主页的常见问题解答](https://support.microsoft.com/products/windows?os=windows-10)|
-|PDF / DOC|常见问题解答、产品手册、小册子、论文、海报策略、支持指南、结构化 QnA，等等。|[Structured QnA.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx)、[Sample Product Manual.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)、[Sample semi-structured.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx)、[Sample white paper.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
-|Excel|结构化 QnA 文件（包括 RTF、 HTML 支持）|[Sample QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
+|代码|常见问题解答<br> （平面，包含节或主题主页）<br>支持页面 <br> （单页操作指南文章、故障排除文章，等等）|[纯文本常见问题解答](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs)、 <br>[包含链接的常见问题解答](https://www.microsoft.com/software-download/faq)、<br> [包含主题主页的常见问题解答](https://support.microsoft.com/products/windows?os=windows-10)<br>[支持文章](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
+|PDF / DOC|常见问题解答、<br> 产品手册、<br> 小册子、<br> 论文、<br> 传单策略、<br> 支持指南、<br> 结构化 QnA，<br> 等等|[Structured QnA.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx)、<br> [Sample Product Manual.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)、<br> [Sample semi-structured.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx)、<br> [Sample white paper.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
+|Excel|结构化 QnA 文件<br> （包括 RTF、HTML 支持）|[Sample QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |TXT/TSV|结构化 QnA 文件|[示例 chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 
 ## <a name="data-source-locations"></a>数据源位置
@@ -36,7 +36,7 @@ QnA Maker 从半结构化内容（例如常见问题解答、产品手册、指�
 
 ## <a name="faq-urls"></a>常见问题解答 URL
 
-QnA Maker 可以通过 3 种不同的形式支持常见问题解答网页：普通常见问题解答页、带链接的常见问题解答页、包含主题主页的常见问题解答页。
+QnA Maker 可以支持 3 种不同形式的常见问题解答网页：纯文本常见问题解答页、带有链接的常见问题解答页、具有主题主页的常见问题解答页。
 
 ### <a name="plain-faq-pages"></a>纯文本常见问题解答页
 
@@ -44,7 +44,7 @@ QnA Maker 可以通过 3 种不同的形式支持常见问题解答网页：普�
 
 下面是普通常见问题解答页的示例：
 
-![纯文本常见问题解答页](../media/qnamaker-concepts-datasources/plain-faq.png) 
+![知识库的纯文本常见问题解答页示例](../media/qnamaker-concepts-datasources/plain-faq.png) 
 
  
 ### <a name="faq-pages-with-links"></a>带链接的常见问题解答页 
@@ -53,7 +53,7 @@ QnA Maker 可以通过 3 种不同的形式支持常见问题解答网页：普�
 
 下面的示例是一个常见问题解答页，其中的链接位于同一页上的不同部分：
 
- ![部分链接常见问题解答页](../media/qnamaker-concepts-datasources/sectionlink-faq.png) 
+ ![知识库的部分链接常见问题解答页示例](../media/qnamaker-concepts-datasources/sectionlink-faq.png) 
 
 
 ### <a name="faq-pages-with-a-topics-homepage"></a>带主题主页的常见问题解答页
@@ -62,7 +62,17 @@ QnA Maker 可以通过 3 种不同的形式支持常见问题解答网页：普�
 
 下面的示例是一个常见问题解答页，其中的主题主页有一个链接，链接到不同页中的常见问题解答部分。 
 
- ![深层链接常见问题解答页](../media/qnamaker-concepts-datasources/topics-faq.png) 
+ ![知识库的深层链接常见问题解答页示例](../media/qnamaker-concepts-datasources/topics-faq.png) 
+
+
+### <a name="support-urls"></a>支持 URL
+
+QnA Maker 可以处理半结构化支持网页，例如，介绍如何执行给定任务、如何诊断和解决给定问题以及适用于给定流程的最佳做法的网文。 提取最适用于结构清晰且具有分层标题的文档。
+
+> [!NOTE]
+> 提取支持文章是一项新功能，并且处于早期阶段。 它最适用于结构良好且未包含复杂页眉/页脚的简单页面。
+
+![QnA Maker 支持从在分层标题中提供了清晰结构的半结构化网页进行提取](../media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)
 
 
 ## <a name="pdf-doc-files"></a>PDF/DOC 文件
@@ -77,7 +87,7 @@ QnA Maker 根据视觉线索（例如字体大小、字体样式、编号、颜�
 
 下面是一个手册示例，其中包含索引页和分层内容。
 
- ![产品手册示例](../media/qnamaker-concepts-datasources/product-manual.png) 
+ ![知识库的产品手册示例](../media/qnamaker-concepts-datasources/product-manual.png) 
 
 > [!NOTE]
 > 提取最适用于具有目录和/或索引页的手册，以及具有分层标题的清晰结构。
@@ -106,7 +116,7 @@ Answer2
 
 下面是结构化 QnA Word 文档的示例：
 
- ![结构化 QnA 文档](../media/qnamaker-concepts-datasources/structured-qna-doc.png) 
+ ![知识库的结构化常见问题解答文档示例](../media/qnamaker-concepts-datasources/structured-qna-doc.png) 
 
 ## <a name="structured-txt-tsv-and-xls-files"></a>结构化 *TXT*、*TSV* 和 *XLS* 文件
 
@@ -121,7 +131,7 @@ Answer2
 
 下面是结构化 QnA *.xls* 文件的示例，包含 HTML 内容：
 
- ![结构化 QnA Excel](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
+ ![知识库的结构化常见问题解答 Excel 示例](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
 
 ## <a name="structured-data-format-through-import"></a>通过导入提供的结构化数据格式
 
@@ -139,6 +149,23 @@ Answer2
 ## <a name="formatting-considerations"></a>格式设置注意事项
 
 导入文件或 URL 后，它将转换为 Markdown 并以该格式存储。 如果转换过程未正确转换文件中的链接和 URL，则应在“编辑”页上编辑问题和答案。 
+
+|格式|目的|
+|--|--|
+|`\n\n`| 新建行|
+|`\n*`|有序列表的项目符号点|
+
+## <a name="editing-your-knowledge-base-locally"></a>在本地编辑知识库
+
+创建知识库后，建议在 [QnA Maker 门户](https://qnamaker.ai)中对知识库文本进行编辑，而不是通过导出并重新导入本地文件来进行编辑。 但是，有时可能需要在本地编辑知识库。 
+
+从“设置”页面上导出知识库，然后使用 Microsoft Excel 编辑知识库。 如果选择使用其他应用程序来编辑你的已导出 TSV 文件，则应用程序可能会引发语法错误，因为它不是完全符合 TSV。 Microsoft Excel 的 TSV 文件通常不会引发任何格式设置错误。 
+
+在完成编辑后，从“设置”页重新导入 TSV 文件。 这将完全将当前知识库替换为导入的知识库。 
+
+## <a name="testing-your-markdown"></a>测试 Markdown
+
+使用 **[CommonMark](https://commonmark.org/help/tutorial/index.html)** 教程验证 Markdown。 此教程具有用于快速复制/粘贴验证的**试一试**功能。 
 
 ## <a name="next-steps"></a>后续步骤
 

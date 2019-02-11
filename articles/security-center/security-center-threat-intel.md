@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: c41cb48e61b4c2bd1dc81e508c8218fad688bbaf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 85930ef8d0753c28cf4bfa2eb2eb487e419ed5f3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241713"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092075"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>安全警报地图和威胁智能
 本文可帮助你使用 Azure 安全中心安全警报冲突和基于安全事件的威胁智能地图来解决与安全相关的问题。
@@ -70,7 +70,7 @@ ms.locfileid: "51241713"
 
 6. 仪表板分为四个磁贴：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  威胁类型。 汇总了所选工作区中检测到的威胁类型。
+    a.  威胁类型。 汇总了所选工作区中检测到的威胁类型。
 
     b.  源国家/地区。 根据流量的源位置聚合流量。
 

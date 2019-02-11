@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/11/2019
+ms.lastreviewed: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: e1a52dffe0b87b140ee8f0da9379a33f8b071f39
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: jiahan
+ms.openlocfilehash: ea8669189b5fc8d797fc03f579ea52e7c11a7078
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960662"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246953"
 ---
 # <a name="deploy-the-sql-server-resource-provider-on-azure-stack"></a>在 Azure Stack 上部署 SQL Server 资源提供程序
 
@@ -39,6 +40,7 @@ ms.locfileid: "52960662"
 
   |最低 Azure Stack 版本|SQL RP 版本|
   |-----|-----|
+  |版本 1808 (1.1808.0.97)|[SQL RP 版本 1.1.33.0](https://aka.ms/azurestacksqlrp11330)|  
   |版本 1808 (1.1808.0.97)|[SQL RP 版本 1.1.30.0](https://aka.ms/azurestacksqlrp11300)|
   |版本 1804 (1.0.180513.1)|[SQL RP 版本 1.1.24.0](https://aka.ms/azurestacksqlrp11240)
   |     |     |
@@ -58,8 +60,11 @@ _仅适用于集成系统安装_。 必须提供 [Azure Stack 部署 PKI 要求]
 
 ## <a name="deploy-the-sql-resource-provider"></a>部署 SQL 资源提供程序
 
-安装所有必备组件后，请运行 **DeploySqlProvider.ps1** 脚本部署 SQL 资源提供程序。 DeploySqlProvider.ps1 脚本是从针对 Azure Stack 版本下载的 SQL 资源提供程序二进制文件中提取的。
+已安装所有必备组件后，可以运行**DeploySqlProvider.ps1**脚本，以部署 SQL 资源提供程序。 DeploySqlProvider.ps1 脚本是从针对 Azure Stack 版本下载的 SQL 资源提供程序二进制文件中提取的。
 
+ > [!IMPORTANT]
+ > 在部署之前的资源提供程序，查看发行说明以了解有关新功能、 修复和可能会影响你的部署任何已知的问题的信息。
+ 
 若要部署 SQL 资源提供程序，请打开一个权限提升的 PowerShell（不是 PowerShell ISE）**新**窗口，并切换到解压缩后的 SQL 资源提供程序二进制文件所在的目录。 我们建议使用新的 PowerShell 窗口，以避免已加载的 PowerShell 模块造成问题。
 
 运行 DeploySqlProvider.ps1 脚本，以完成以下任务：
@@ -78,7 +83,7 @@ _仅适用于集成系统安装_。 必须提供 [Azure Stack 部署 PKI 要求]
 
 可在命令行中指定以下参数。 如果未指定参数或任何参数验证失败，系统会提示提供所需的参数。
 
-| 参数名称 | 说明 | 注释或默认值 |
+| 参数名称 | 描述 | 注释或默认值 |
 | --- | --- | --- |
 | **CloudAdminCredential** | 访问特权终结点时所需的云管理员凭据。 | _必需_ |
 | **AzCredential** | Azure Stack 服务管理员帐户的凭据。 使用部署 Azure Stack 时所用的相同凭据。 | _必需_ |
@@ -132,6 +137,10 @@ $CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domai
 
 # Change the following as appropriate.
 $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+
+# Clear the existing login information from the Azure PowerShell context.
+Clear-AzureRMContext -Scope CurrentUser -Force
+Clear-AzureRMContext -Scope Process -Force
 
 # Change to the directory folder where you extracted the installation files. Do not provide a certificate on ASDK!
 . $tempDir\DeploySQLProvider.ps1 `

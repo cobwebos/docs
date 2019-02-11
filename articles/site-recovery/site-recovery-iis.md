@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Site Recovery 为基于 IIS 的多层 Web 应用程序设置灾难恢复 | Microsoft Docs
 description: 了解如何使用 Azure Site Recovery 复制 IIS Web 场虚拟机。
-author: nsoneji
-manager: gauravd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
-ms.author: nisoneji
-ms.openlocfilehash: bac995829e90fea35eebf5e5e57a0ffb85bbba0c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 11/27/2018
+ms.author: mayg
+ms.openlocfilehash: aa42371692cd5d0dc96835db5b66fe0877b90665
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211819"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320491"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>为基于 IIS 的多层 Web 应用程序设置灾难恢复
 

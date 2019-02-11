@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: 53643b185825d4cc03073144e1b3547452629c08
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 2fbc155afc3fd5280f2baf4eccabb895c158b89f
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497610"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913560"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -81,9 +81,9 @@ IoT 中心不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准
 
   有关如何生成 SAS 令牌的详细信息，请参阅[使用 IoT 中心安全令牌][lnk-sas-tokens]的设备部分。
 
-  测试时，也可以使用 [Visual Studio Code 的跨平台 Azure IoT 工具包扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)或 [Device Explorer][lnk-device-explorer] 工具快速生成可以复制并粘贴到自己的代码中的 SAS 令牌：
+  测试时，也可以使用跨平台[适用于 Visual Studio Code 的 Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)或 [Device Explorer][lnk-device-explorer] 工具快速生成可以复制并粘贴到自己的代码中的 SAS 令牌：
 
-对于 Azure IoT 工具包：
+对于 Azure IoT 工具：
 
   1. 展开 Visual Studio Code 左下角的“AZURE IOT 中心设备”选项卡。
   2. 右键单击设备，然后选择“为设备生成 SAS 令牌”。
@@ -198,29 +198,27 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 请求 ID 可以是消息属性值的任何有效值（如 [IoT 中心消息传送开发人员指南][lnk-messaging]中所述），且需要验证确保状态是整数。
 
-响应正文包含设备孪生的 properties 节。 以下代码片段表明，标识注册表项的正文限制为“properties”成员，例如：
+响应正文包含设备孪生的 properties 节，如以下响应示例所示：
 
 ```json
 {
-    "properties": {
-        "desired": {
-            "telemetrySendFrequency": "5m",
-            "$version": 12
-        },
-        "reported": {
-            "telemetrySendFrequency": "5m",
-            "batteryLevel": 55,
-            "$version": 123
-        }
+    "desired": {
+        "telemetrySendFrequency": "5m",
+        "$version": 12
+    },
+    "reported": {
+        "telemetrySendFrequency": "5m",
+        "batteryLevel": 55,
+        "$version": 123
     }
 }
 ```
 
 可能的状态代码为：
 
-|状态 | Description |
+|状态 | 说明 |
 | ----- | ----------- |
-| 200 | Success |
+| 204 | 成功（不返回任何内容） |
 | 429 | 请求过多（受限），如 [IoT 中心限制][lnk-quotas]中所述 |
 | 5** | 服务器错误 |
 
@@ -249,7 +247,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 可能的状态代码为：
 
-|状态 | Description |
+|状态 | 说明 |
 | ----- | ----------- |
 | 200 | Success |
 | 400 | 错误的请求。 格式不正确的 JSON |
@@ -279,11 +277,12 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" + rid, twin_repor
 ```json
 {
     "telemetrySendFrequency": "5m",
-    "route": null
+    "route": null,
+    "$version": 8
 }
 ```
 
-对于属性更新，`null` 值表示正在删除 JSON 对象成员。
+对于属性更新，`null` 值表示正在删除 JSON 对象成员。 另请注意，`$version` 指示孪生的所需属性部分的新版本。
 
 > [!IMPORTANT]
 > IoT 中心仅在连接设备时才会生成更改通知。 请确保实现[设备重新连接流][lnk-devguide-twin-reconnection]，让 IoT 中心和设备应用之间的所需属性保持同步。

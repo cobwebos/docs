@@ -4,10 +4,10 @@ description: 了解 Azure Active Directory 中有哪些针对 SaaS 应用的属�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/09/2018
 ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c54df9c4a01dbdb7713d03ff81108f28a60ec727
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: eaf6890223526b213ac4ec1180288b95fe6eaa29
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354703"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149856"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 Salesforce、Google Apps 等等。 如果已为第三方 SaaS 应用程序启用用户预配，Azure 门户将以属性映射的形式控制其属性值。
@@ -64,8 +64,8 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 前面的部分介绍了属性映射类型属性。
 除此属性外，属性映射还支持以下属性：
 
-- **源属性** - 来自源系统的用户属性（例如 Azure Active Directory）。
-- **目标属性** – 目标系统中的用户属性（例如 ServiceNow）。
+- **源属性** - 来自源系统的用户属性（示例：Azure Active Directory）。
+- **目标属性** - 目标系统中的用户属性（示例：ServiceNow）。
 - 使用此属性匹配对象 – 是否应使用此映射唯一标识源系统和目标系统之间的用户。 这通常在 Azure AD 中的 userPrincipalName 或邮件属性上设置，其通常映射到目标应用程序中的用户名字段。
 - 匹配优先级 – 可设置多个匹配属性。 当存在匹配时，会按照此字段定义的顺序进行评估。 一旦找到匹配，就不会进一步评估其他匹配属性。
 - **应用此映射**

@@ -1,17 +1,17 @@
 ---
-title: Azure Batch 渲染器管理器支持
+title: 渲染器管理器支持 - Azure Batch
 description: 通过 Azure Batch 渲染器管理器集成将 Azure 用于渲染
 services: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 066aab598628701bf7a60b0f4f20d996348fa5ce
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 4eeece4946b4f957d9f864da7c46d77d119863b5
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406715"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539916"
 ---
 # <a name="using-azure-batch-with-render-farm-managers"></a>将 Azure Batch 与渲染器场管理器配合使用
 

@@ -1,28 +1,8 @@
 ---
-title: 使用 API 管理以管理机器学习工作室 Web 服务 - Azure | Microsoft Docs
-description: 介绍如何使用 API 管理来管理 AzureML Web 服务的指南。
-keywords: 机器学习, API 管理
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
-ms.author: amlstudiodocs
-manager: hjerez
-editor: cgronlun
-ms.assetid: 05150ae1-5b6a-4d25-ac67-fb2f24a68e8d
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/03/2017
-ms.openlocfilehash: 0a262b2f8716c6d950dc84793a88277f62c3e6a9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308233"
+title:使用 API 管理管理机器学习工作室 Web 服务 titleSuffix:Azure 机器学习工作室 description:介绍如何使用 API 管理来管理 AzureML Web 服务的指南。 通过定义用户访问权限、使用限制和仪表板监视管理 REST API 终结点。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:2017/11/03
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>使用 API 管理以管理 Azure 机器学习工作室 Web 服务
 ## <a name="overview"></a>概述
@@ -224,7 +204,7 @@ AzureML 是用于机器学习的 Azure 服务，支持轻松生成、部署和�
 ![yes-to-publish](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>测试 Web 服务
-AzureML Web 服务包含 RSS（请求/响应服务）和 BES（批处理执行服务）终结点。 RSS 适用于同步执行。 BES 适用于异步作业执行。 若要通过下面的 Python 源示例测试 Web 服务，可能需要下载并安装 Azure SDK for Python（请参阅[如何安装 Python](../../python-how-to-install.md)）。
+AzureML Web 服务包含 RSS（请求/响应服务）和 BES（批处理执行服务）终结点。 RSS 适用于同步执行。 BES 适用于异步作业执行。 若要通过下面的示例 Python 源测试 Web 服务，可能需要下载并安装 Azure SDK for Python（请参阅：[如何安装 Python](../../python-how-to-install.md)）。
 
 还需要下面源示例实验的“工作区”、“服务”和“api_key”。 在 Web 服务仪表板中单击实验的“请求/响应”或“批处理执行”，查找工作区和服务。
 

@@ -12,19 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/27/2018
+ms.date: 1/7/2019
 ms.author: borisb
-ms.openlocfilehash: 4ccfc7d185281f4c3a76e211aecff0f60298c92a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 7ab8b66d516368bf866aa9d2a202ccd261394b93
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446477"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243141"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>用于 Azure 中按需 Red Hat Enterprise Linux VM 的 Red Hat 更新基础结构
  [Red Hat 更新基础结构](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) 允许云提供程序（如 Azure）镜像 Red Hat 托管的存储库内容，创建包含 Azure 特定内容的自定义存储库，并将其提供给最终用户 VM 使用。
 
 已预先配置 Red Hat Enterprise Linux (RHEL) 即用即付 (PAYG) 映像来访问 Azure RHUI。 不需要任何其他配置。 要获取最新更新，请在 RHEL 实例准备好后运行 `sudo yum update`。 RHEL PAYG 软件费涵盖了此服务。
+
+[此处](./rhel-images.md)提供了关于 Azure 中的 RHEL 映像的更多信息，包括发布和保留策略。
+
+可以在 [Red Hat Enterprise Linux Life Cycle](https://access.redhat.com/support/policy/updates/errata)（Red Hat Enterprise Linux 生命周期）页找到有关 RHEL 所有版本的 Red Hat 支持策略的信息。
 
 ## <a name="important-information-about-azure-rhui"></a>有关 Azure RHUI 的重要信息
 * Azure RHUI 目前仅支持每个 RHEL 系列（RHEL6 或 RHEL7）中的最新次要版本。 要将连接到 RHUI 的 RHEL VM 实例升级到最新次要版本，请运行 `sudo yum update`。
@@ -35,15 +39,45 @@ ms.locfileid: "52446477"
 
 * RHEL PAYG 映像价格涵盖了 Azure 托管 RHUI 的访问权限。 从 Azure 托管的 RHUI 注销 PAYG RHEL VM 不会将虚拟机转换为自带许可 (BYOL) 类型的 VM。 如果向另一更新源注册同一 VM，可能会产生间接双倍费用。 第一次你需要支付 Azure RHEL 软件费。 第二次你需要支付之前已购买的 Red Hat 订阅费。 如果始终需要使用 Azure 托管的 RHUI 以外的更新基础结构，请考虑创建并部署自己的（BYOL 类型）映像。 [为 Azure 创建和上传基于 Red Hat 的虚拟机](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)介绍了此过程。
 
-* Azure 中的两类 RHEL PAYG 映像（RHEL for SAP HANA 和 RHEL for SAP Business Applications）已根据 SAP 认证需要，连接到保留在特定 RHEL 次要版本上的专用 RHUI 通道。 
+* Azure 中的 RHEL SAP PAYG 映像（RHEL for SAP、RHEL for SAP HANA 以及 RHEL for SAP Business Application）已根据 SAP 认证需要，连接到保留在特定 RHEL 次要版本上的专用 RHUI 通道。
 
 * 对 Azure 托管的 RHUI 的访问限制为 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)内的 VM。 若要通过本地网络基础结构代理所有 VM 流量，可能需要为 RHEL PAYG VM 设置用户定义的路由才能访问 Azure RHUI。
 
+### <a name="rhel-eus-and-version-locking-rhel-vms"></a>RHEL EUS 和版本锁定 RHEL VM
+某些客户可能希望将其 RHEL VM 锁定在特定的 RHEL 次版本。 可以通过对存储库进行更新以指向扩展的更新支持存储库来将 RHEL VM 的版本锁定到特定的次版本。 使用以下指令将 RHEL VM 锁定到特定的次版本：
+
+>[!NOTE]
+> 这仅适用于 EUS 可用的 RHEL 版本。 在撰写本文时，这包括 RHEL 7.2-7.6。 有关更多详细信息，请访问 [Red Hat Enterprise Linux 生命周期](https://access.redhat.com/support/policy/updates/errata)页。
+
+1. 禁用非 EUS 存储库：
+    ```bash
+    sudo yum --disablerepo='*' remove 'rhui-azure-rhel7'
+    ```
+
+1. 添加 EUS 存储库：
+    ```bash
+    yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7-eus.config' install 'rhui-azure-rhel7-eus'
+    ```
+
+1. 锁定 releasever 变量：
+    ```bash
+    echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
+    ```
+
+    >[!NOTE]
+    > 以上指令会将 RHEL 次版本锁定到当前次版本。 如果希望进行升级并锁定到不是最新版本的较高次版本，请输入具体的次版本。 例如，`echo 7.5 > /etc/yum/vars/releasever` 会将 RHEL 版本锁定到 RHEL 7.5
+
+1. 更新 RHEL VM
+    ```bash
+    sudo yum update
+    ```
+
 ### <a name="the-ips-for-the-rhui-content-delivery-servers"></a>RHUI 内容传送服务器的 IP
 
-在 RHEL 按需映像可用的所有区域中都提供了 RHUI。 目前包括 [Azure 状态仪表板](https://azure.microsoft.com/status/)页上列出的所有公共区域、Azure 美国政府区域和 Microsoft Azure 德国区域。 
+在 RHEL 按需映像可用的所有区域中都提供了 RHUI。 目前包括 [Azure 状态仪表板](https://azure.microsoft.com/status/)页上列出的所有公共区域、Azure 美国政府区域和 Microsoft Azure 德国区域。
 
-如果使用网络配置进一步限制来自 RHEL PAYG VM 的访问，根据所处环境，请确保允许使用以下 IP 以便 `yum update` 能够正常工作： 
+如果使用网络配置进一步限制来自 RHEL PAYG VM 的访问，根据所处环境，请确保允许使用以下 IP 以便 `yum update` 能够正常工作：
+
 
 ```
 # Azure Global
@@ -65,29 +99,30 @@ ms.locfileid: "52446477"
 
 2016 年 9 月，我们部署了更新的 Azure RHUI。 2017 年 4 月，我们关闭了旧版 Azure RHUI。 如果一直在使用 2016 年 9 月或之后的 RHEL PAYG 映像（或其快照），则会自动连接到新的 Azure RHUI。 但是，如果在 VM 上使用旧版本的快照，则需手动更新其配置以访问 Azure RHUI，如以下部分所述。
 
-新的 Azure RHUI 服务器通过 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)进行配置。 在流量管理器中，任何 VM 都可使用单一终结点 (rhui-1.microsoft.com)，而无需考虑区域。 
+新的 Azure RHUI 服务器通过 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)进行配置。 在流量管理器中，任何 VM 都可使用单一终结点 (rhui-1.microsoft.com)，而无需考虑区域。
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>更新 VM 上已过期的 RHUI 客户端证书
 
-如果使用较旧的 RHEL VM 映像（例如，RHEL 7.4（映像 URN：`RedHat:RHEL:7.4:7.4.2018010506`），则由于 SSL 客户端证书现已过期（于 2018 年 11 月 21 日），你将遇到与 RHUI 的连接问题。 若要解决此问题，请使用以下命令更新 VM 上的 RHUI 客户端程序包 
+如果使用较旧的 RHEL VM 映像（例如，RHEL 7.4（映像 URN：`RedHat:RHEL:7.4:7.4.2018010506`）），则由于 SSL 客户端证书现已过期，你将遇到与 RHUI 的连接问题。 你看到的错误可能类似于“SSL 对等机已拒绝你的证书，因为已过期”。 若要解决此问题，请使用以下命令更新 VM 上的 RHUI 客户端程序包：
 
 ```bash
-sudo yum update -y --disablerepo=* --enablerepo=rhui-microsoft-* rhui-azure-rhel7
+sudo yum update -y --disablerepo='*' --enablerepo='*-microsoft-*'
 ```
 
-或者，运行 `sudo yum update` 也会更新此程序包，尽管你将看到其他存储库的“SSL 证书已过期”错误。 更新后，应恢复与其他 RHUI 存储库的正常连接。
+另外，运行 `sudo yum update` 也会更新客户端证书包，尽管你将看到其他存储库的“SSL 证书已过期”错误。 更新后，应当还原与其他 RHUI 存储库的正常连接，以便能够成功运行 `sudo yum update`。
+
 
 ### <a name="troubleshoot-connection-problems-to-azure-rhui"></a>排查 Azure RHUI 连接问题
 如果从 Azure RHEL PAYG VM 连接到 Azure RHUI 时遇到问题，请按照下列步骤操作：
 
 1. 检查 Azure RHUI 终结点的 VM 配置：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 检查 `/etc/yum.repos.d/rh-cloud.repo` 文件 `[rhui-microsoft-azure-rhel*]` 部分的 `baseurl` 是否包含对 `rhui-[1-3].microsoft.com` 的引用。 如果是，则使用的是新 Azure RHUI。
+    a. 检查 `/etc/yum.repos.d/rh-cloud.repo` 文件 `[rhui-microsoft-azure-rhel*]` 部分的 `baseurl` 是否包含对 `rhui-[1-3].microsoft.com` 的引用。 如果是，则使用的是新 Azure RHUI。
 
     b. 如果它指向 `mirrorlist.*cds[1-4].cloudapp.net` 模式的位置，则需要更新配置。 你使用的是旧 VM 快照，需要将其更新为指向新的 Azure RHUI。
 
 1. Azure 托管的 RHUI 仅限 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)内的 VM 进行访问。
- 
+
 1. 如果使用新配置并已确认 VM 从 Azure IP 范围建立了连接，但仍无法连接到 Azure RHUI，请向 Microsoft 或 Red Hat 提出支持案例。
 
 ### <a name="manual-update-procedure-to-use-the-azure-rhui-servers"></a>执行手动更新过程以使用 Azure RHUI 服务器
@@ -96,7 +131,7 @@ sudo yum update -y --disablerepo=* --enablerepo=rhui-microsoft-* rhui-azure-rhel
 1. 通过 curl 下载公钥签名。
 
    ```bash
-   curl -o RPM-GPG-KEY-microsoft-azure-release https://download.microsoft.com/download/9/D/9/9d945f05-541d-494f-9977-289b3ce8e774/microsoft-sign-public.asc 
+   curl -o RPM-GPG-KEY-microsoft-azure-release https://download.microsoft.com/download/9/D/9/9d945f05-541d-494f-9977-289b3ce8e774/microsoft-sign-public.asc
    ```
 
 1. 验证下载密钥的有效性。
@@ -137,20 +172,20 @@ sudo yum update -y --disablerepo=* --enablerepo=rhui-microsoft-* rhui-azure-rhel
    ```
 
 1. 下载、验证和安装客户端 RPM 包管理器 (RPM)。
-    
+
     >[!NOTE]
     >包版本已发生更改。 如果手动连接到 Azure RHUI，可通过从库预配最新的映像，找到每个 RHEL 系列的最新版客户端包。
-  
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 下载。 
-   
+
+   a. 下载。
+
     - 适用于 RHEL 6：
         ```bash
-        curl -o azureclient.rpm https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel6/rhui-azure-rhel6-2.2-74.noarch.rpm 
+        curl -o azureclient.rpm https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel6/rhui-azure-rhel6-2.2-74.noarch.rpm
         ```
-    
+
     - 适用于 RHEL 7：
         ```bash
-        curl -o azureclient.rpm https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel7/rhui-azure-rhel7-2.2-74.noarch.rpm  
+        curl -o azureclient.rpm https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel7/rhui-azure-rhel7-2.2-74.noarch.rpm
         ```
 
    b. 验证。
@@ -178,4 +213,6 @@ sudo yum update -y --disablerepo=* --enablerepo=rhui-microsoft-* rhui-azure-rhel
 1. 完成后，验证是否可以从 VM 访问 Azure RHUI。
 
 ## <a name="next-steps"></a>后续步骤
-要通过 Azure 市场 PAYG 映像创建 Red Hat Enterprise Linux VM 并利用 Azure 托管的 RHUI，请转到 [Azure 市场](https://azure.microsoft.com/marketplace/partners/redhat/)。 
+* 要通过 Azure 市场 PAYG 映像创建 Red Hat Enterprise Linux VM 并利用 Azure 托管的 RHUI，请转到 [Azure 市场](https://azure.microsoft.com/marketplace/partners/redhat/)。
+* 若要详细了解 Azure 中的 Red Hat 映像，请转到此[文档页面](./rhel-images.md)。
+* 可以在 [Red Hat Enterprise Linux Life Cycle](https://access.redhat.com/support/policy/updates/errata)（Red Hat Enterprise Linux 生命周期）页找到有关 RHEL 所有版本的 Red Hat 支持策略的信息。

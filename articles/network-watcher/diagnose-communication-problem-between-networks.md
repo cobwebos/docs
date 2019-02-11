@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: d89c5a3f2545edd7c02b67fa9d2e2b78937a9791
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: c8d1f659078a36bc57e92b01e6e32502be7a0ea9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779518"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434744"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>教程：使用 Azure 门户诊断网络之间的通信问题
 
@@ -31,12 +31,12 @@ ms.locfileid: "32779518"
 > * 诊断网关连接问题
 > * 解决网关问题
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要使用 VPN 诊断，必须有一个现成的正在运行的 VPN 网关。 如果没有现成的需要诊断的 VPN 网关，可以使用 [PowerShell 脚本](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)部署一个。 可通过以下程序运行 PowerShell 脚本：
-    - **本地安装的 PowerShell**：脚本要求使用 AzureRM PowerShell 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。
+    - **本地安装的 PowerShell**：脚本要求使用 AzureRM PowerShell 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 来创建与 Azure 的连接。
     - **Azure Cloud Shell**：[Azure Cloud Shell](https://shell.azure.com/powershell) 安装并配置了最新版的 PowerShell，并允许登录到 Azure。
 
 脚本需要大约一小时来创建 VPN 网关。 剩余步骤假定要诊断的网关是通过此脚本部署的。 如果改为诊断你自己的现有网关，结果会有所不同。

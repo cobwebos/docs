@@ -3,7 +3,7 @@ title: CLI 示例 - 创建 Azure SQL 数据库 | Microsoft Docs
 description: 使用此 Azure CLI 示例脚本创建 SQL 数据库。
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: standalone-database
 ms.custom: ''
 ms.devlang: azurecli
 ms.topic: sample
@@ -11,13 +11,13 @@ author: CarlRabeler
 manager: craigg
 ms.author: carlrab
 ms.reviewer: ''
-ms.date: 09/20/2018
-ms.openlocfilehash: d239236e9e6f7133aa57eb617c3cc9e8626fc178
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 01/25/2019
+ms.openlocfilehash: 24f45ea22a50e471a2947b926b817f06aefa9aa8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055469"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451778"
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>使用 CLI 创建单一 Azure SQL 数据库并配置防火墙规则
 
@@ -48,9 +48,9 @@ az group delete --name myResourceGroup
 | 命令 | 说明 |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 创建用于托管 SQL 数据库的逻辑服务器。 |
-| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | 创建一个防火墙规则，以允许从输入的 IP 地址范围访问服务器上的所有 SQL 数据库。 |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | 在逻辑服务器中创建 SQL 数据库。 |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 创建托管单一数据库或弹性池的 SQL 数据库服务器。 |
+| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | 创建一个防火墙规则，允许从输入的 IP 地址范围访问 SQL 数据库服务器上的所有单一数据库和弹性池。 |
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | 创建单一数据库或弹性池。 |
 | [az group delete](/cli/azure/resource#az-resource-delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤

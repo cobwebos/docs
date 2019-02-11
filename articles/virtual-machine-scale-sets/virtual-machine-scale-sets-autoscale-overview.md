@@ -3,7 +3,7 @@ title: Azure 虚拟机规模集自动缩放概述 | Microsoft Docs
 description: 了解可以通过哪些不同的方法，根据性能或固定的计划自动缩放 Azure 虚拟机规模集
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7c50e78fc7f4f5b6f779b696a3d16520d3ffccd5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 610f3073594f73f04a68865593be6bfb4188d4f1
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465315"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883290"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集自动缩放概述
 Azure 虚拟机规模集可以自动增加或减少运行应用程序的 VM 实例数。 这种自动且弹性的行为可以减少监视和优化应用程序性能所需的管理开销。 创建规则，用于定义提供正面客户体验而可接受的性能。 如果满足定义的这些阈值，自动缩放规则会采取措施来调整规模集的容量。 还可以计划事件，以便在固定的时间自动增加或减少规模集的容量。 本文概述所提供的性能指标，以及自动缩放可以执行的操作。
@@ -122,7 +122,7 @@ Azure 诊断扩展是在 VM 实例中运行的代理。 该代理可监视性能
 ## <a name="application-level-metrics-with-app-insights"></a>App Insights 中的应用程序级指标
 若要更深入地洞察应用程序的性能，可以使用 Application Insights。 在应用程序中安装一个小型检测包，用于监视应用并将遥测数据发送到 Azure。 可以监视应用程序响应时间、页面加载性能和会话计数等指标。 基于可能对客户体验造成影响的、可采取行动的见解触发规则时，可以使用这些应用程序指标创建粒度级的嵌入式自动缩放规则。
 
-有关 App Insights 的详细信息，请参阅[什么是 Application Insights](../application-insights/app-insights-overview.md)。
+有关 App Insights 的详细信息，请参阅[什么是 Application Insights](../azure-monitor/app/app-insights-overview.md)。
 
 
 ## <a name="scheduled-autoscale"></a>计划的自动缩放
@@ -146,4 +146,4 @@ Azure 诊断扩展是在 VM 实例中运行的代理。 该代理可监视性能
 
 有关如何管理 VM 实例的信息，请参阅[使用 Azure PowerShell 管理虚拟机规模集](virtual-machine-scale-sets-windows-manage.md)。
 
-若要了解如何在触发自动缩放规则时生成警报，请参阅[在 Azure Monitor 中使用自动缩放操作发送电子邮件和 Webhook 警报通知](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)。 还可以[在 Azure Monitor 中使用审核日志发送电子邮件和 Webhook 警报通知](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)。
+若要了解如何在触发自动缩放规则时生成警报，请参阅[在 Azure Monitor 中使用自动缩放操作发送电子邮件和 Webhook 警报通知](../azure-monitor/platform/autoscale-webhook-email.md)。 还可以[在 Azure Monitor 中使用审核日志发送电子邮件和 Webhook 警报通知](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)。

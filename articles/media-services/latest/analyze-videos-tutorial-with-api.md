@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒体服务分析视频 | Microsoft Docs
+title: 通过 .NET 使用媒体服务来分析视频 - Azure | Microsoft Docs
 description: 按照本教程的步骤，使用 Azure 媒体服务分析视频。
 services: media-services
 documentationcenter: ''
@@ -9,26 +9,24 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.custom: mvc
-ms.date: 11/08/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 3f0d6784f7b7c476313c5cc4190cacd99e4c3973
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.custom: seodec18
+ms.openlocfilehash: 191a6c9dc1cc5a24c1a46af21c5b63e3ff27a290
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612748"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150387"
 ---
-# <a name="tutorial-analyze-videos-with-media-services-v3-using-apis"></a>教程：通过 API 使用媒体服务 v3 分析视频
+# <a name="tutorial-analyze-videos-with-media-services-v3-using-net"></a>教程：通过 .NET 使用媒体服务 v3 来分析视频
 
 本教程介绍如何使用 Azure 媒体服务分析视频。 在很多情况下，用户可能会希望深入了解录制的视频或音频内容。 例如，若要提高客户满意度，组织可运行语音转文本处理，将客户支持录音转换为具有索引和仪表板的可搜索目录。 然后即可获得有关其业务的见解，如常见投诉列表、此类投诉的来源，以及其他有用信息。
 
 本教程演示如何：    
 
 > [!div class="checklist"]
-> * 创建媒体服务帐户
-> * 访问媒体服务 API
-> * 配置示例应用
+> * 下载本主题中所述的示例应用
 > * 检查用于分析指定视频的代码
 > * 运行应用
 > * 检查输出
@@ -39,15 +37,10 @@ ms.locfileid: "51612748"
 ## <a name="prerequisites"></a>先决条件
 
 - 如果没有安装 Visual Studio，可下载 [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)。
-- 在本地安装并使用 CLI，本文要求使用 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可确定你拥有的版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
+- [创建媒体服务帐户](create-account-cli-how-to.md)。<br/>请务必记住用于资源组名称和媒体服务帐户名称的值。
+- 遵循[使用 Azure CLI 访问 Azure 媒体服务 API](access-api-cli-how-to.md) 中的步骤并保存凭据。 需要使用这些凭据来访问 API。
 
-    目前，并非所有[媒体服务 v3 CLI](https://aka.ms/ams-v3-cli-ref) 命令都可在 Azure Cloud Shell 中运行。 建议在本地使用 CLI。
-
-- [创建媒体服务帐户](create-account-cli-how-to.md)。
-
-    请务必记住用于资源组名称和媒体服务帐户名称的值。
-
-## <a name="download-the-sample"></a>下载示例
+## <a name="download-and-configure-the-sample"></a>下载并配置示例
 
 使用以下命令将包含 .NET 示例的 GitHub 存储库克隆到计算机：  
 
@@ -57,7 +50,7 @@ ms.locfileid: "51612748"
 
 该示例位于 [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/AnalyzeVideos) 文件夹。
 
-[!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
+打开下载的项目中的 [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/appsettings.json)。 将值替换为在[访问 API](access-api-cli-how-to.md) 中获取的凭据。
 
 ## <a name="examine-the-code-that-analyzes-the-specified-video"></a>检查用于分析指定视频的代码
 
@@ -65,8 +58,8 @@ ms.locfileid: "51612748"
 
 该示例执行以下操作：
 
-1. 创建转换和用于分析视频的作业。
-2. 创建输入资产，并将视频上传到其中。 该资产用作作业的输入。
+1. 创建**转换**和用于分析视频的**作业**。
+2. 创建输入**资产**，并将视频上传到其中。 该资产用作作业的输入。
 3. 创建用于存储作业输出的输出资产。 
 4. 提交作业。
 5. 检查作业的状态。
@@ -115,7 +108,7 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 #### <a name="job"></a>作业
 
-如上所述，[转换](https://docs.microsoft.com/rest/api/media/transforms)对象为脚本，[作业则是](https://docs.microsoft.com/rest/api/media/jobs)对媒体服务的实际请求，请求将转换应用到给定输入视频或音频内容。 作业指定输入视频位置和输出位置等信息。 可使用以下方法指定视频位置：HTTPS URL、SAS URL 或媒体服务帐户中的资产。 
+如上所述，[转换](https://docs.microsoft.com/rest/api/media/transforms)对象为脚本，[作业则是](https://docs.microsoft.com/rest/api/media/jobs)对媒体服务的实际请求，请求将转换应用到给定输入视频或音频内容。 作业指定输入视频位置和输出位置等信息。 可以使用以下项指定视频的位置：HTTPS URL、SAS URL 或媒体服务帐户中的资产。 
 
 在此示例中，作业输入是一个本地视频。  
 
@@ -129,7 +122,7 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 事件网格旨在实现高可用性、一致性能和动态缩放。 使用事件网格，应用可以侦听和响应来自几乎所有 Azure 服务和自定义源的事件。 处理基于 HTTP 的反应事件非常简单，这有助于通过对事件的智能筛选和路由生成高效的解决方案。 请参阅[将事件路由到自定义 Web 终结点](job-state-events-cli-how-to.md)。
 
-作业通常将经历以下状态：“已计划”、“已排队”、“正在处理”、“已完成”（最终状态）。 如果作业出错，则显示“错误”状态。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消”。
+**作业**通常会经历以下状态：**已计划**、**已排队**、**正在处理**、**已完成**（最终状态）。 如果作业出错，则显示“错误”状态。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消”。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#WaitForJobToFinish)]
 

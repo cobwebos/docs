@@ -6,20 +6,20 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: 9ce2f65af89e186a3cd32bd2900b5444fb556b08
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 35d12d0114f9677905c85a9df94ecd074e5f8f75
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636707"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729517"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>设备连接与遥测数据入口
 
 设备和传感器发送的遥测数据构成了任何 IoT 解决方案的主干。 如何表示这些不同的资源并在某个位置的上下文中管理它们是 IoT 应用开发中的一个首要问题。 Azure 数字孪生将设备和传感器与空间智能图相结合，简化了 IoT 解决方案的开发过程。
 
-若要开始，请在空间图的根位置创建 Azure IoT 中心资源。 IoT 中心资源允许根空间下的所有设备发送消息。 创建 IoT 中心后，将设备注册到数字孪生实例中的传感器。 这些设备可以通过 [Azure IoT 设备 SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks) 向数字孪生服务发送数据。
+若要开始，请在空间图的根位置创建 Azure IoT 中心资源。 IoT 中心资源允许根空间下的所有设备发送消息。 创建 IoT 中心后，将设备注册到数字孪生实例中的传感器。 这些设备可以通过 [Azure IoT 设备 SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) 向数字孪生服务发送数据。
 
 有关载入设备的分步指南，请参阅[部署和配置数字孪生的教程](tutorial-facilities-setup.md)。 步骤概览：
 
@@ -67,7 +67,7 @@ YOUR_MANAGEMENT_API_URL/devices?hardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=Con
 
  **消息**的有效负载内容可以是最大为 256 KB 的任意数据。 [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) 类型的属性预期需要满足几项要求。 下表显示了系统支持的必需和可选属性。
 
-| 属性名称 | 值 | 必选 | Description |
+| 属性名称 | 值 | 必选 | 说明 |
 |---|---|---|---|
 | DigitalTwins-Telemetry | 1.0 | 是 | 在系统中标识消息的常量值。 |
 | DigitalTwins-SensorHardwareId | `string(72)` | 是 | 发送**消息**的传感器的唯一标识符。 该值必须与对象的 HardwareId 属性匹配，以便系统可以处理它。 例如，`00FF0643BE88-CO2`。 |
@@ -80,5 +80,4 @@ YOUR_MANAGEMENT_API_URL/devices?hardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=Con
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解 Azure 数字孪生的数据处理和用户定义的函数功能，请阅读 [Azure 数字孪生数据处理和用户定义的函数](concepts-user-defined-functions.md)。
-
+- 若要了解 Azure 数字孪生的数据处理和用户定义的函数功能，请阅读 [Azure 数字孪生数据处理和用户定义的函数](concepts-user-defined-functions.md)。

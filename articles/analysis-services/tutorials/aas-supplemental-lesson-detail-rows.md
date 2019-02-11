@@ -5,21 +5,21 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7ed4ba27332123d41a9e031f221eedb57fa228b9
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: f52d6ebf4a65a6a182b24017d652693c6f5e4072
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49425954"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190232"
 ---
 # <a name="supplemental-lesson---detail-rows"></a>补充课程 - 详细信息行
 
 在本补充课程中，将使用 DAX 编辑器来定义自定义详细信息行表达式。 详细信息行表达式是关于度量值的一个属性，向最终用户提供关于度量值的聚合结果的详细信息。 
   
-本课预计完成时间：**10 分钟**  
+本课程预计完成时间：10 分钟  
   
 ## <a name="prerequisites"></a>先决条件  
 本补充课程是表格建模教程的一部分。 在执行本补充课程中的任务之前，应当已完成了前面的所有课程，或者具有已完成的“Adventure Works Internet 销售”示例模型项目。  

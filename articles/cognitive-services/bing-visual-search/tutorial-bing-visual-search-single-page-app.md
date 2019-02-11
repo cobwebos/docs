@@ -1,46 +1,37 @@
 ---
-title: 教程：生成单页 Web 应用 - 必应视觉搜索
+title: " 构建单页 Web 应用 - 必应视觉搜索"
 titleSuffix: Azure Cognitive Services
-description: 介绍如何在单页 Web 应用程序中使用必应视觉搜索 API。
+description: 了解如何将必应视觉搜索 API 集成到单页 Web 应用程序中。
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-visual-search
-ms.topic: tutorial
+ms.subservice: bing-visual-search
+ms.topic: article
 ms.date: 10/04/2017
 ms.author: aahi
-ms.openlocfilehash: fe7159e88bd70ba8af23909559264fa5f210ef10
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: ca210130a1319ffc1f9dfd867d6c320ea0bd68b1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443879"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192641"
 ---
-# <a name="tutorial-visual-search-single-page-web-app"></a>教程：视觉搜索单页 Web 应用
+# <a name="create-a-visual-search-single-page-web-app"></a>创建视觉搜索单页 Web 应用 
 
 必应视觉搜索 API 提供的体验类似于 Bing.com/images 上所示的图像详细信息。 借助视觉搜索，可以指定图像并取回有关图像的见解，如视觉上相似的图像、购物源、包含图像的网页等。 
 
-对于本教程，你需要以 S9 价格层开始订阅，如[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/) 中所示。 
+本文介绍了如何扩展必应图像搜索 API 的单页 Web 应用。 若要查看该教程或获取此处使用的源代码，请参阅[教程：创建必应图像搜索 API 的单页应用](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)。 
 
-若要在 Azure 门户中开始订阅，请执行以下操作：
-1. 在 Azure 门户顶部显示 `Search resources, services, and docs` 的文本框中输入“BingSearchV7”。  
-2. 在“市场”下的下拉列表中，选择 `Bing Search v7`。
-3. 输入新资源的 `Name`。
-4. 选择 `Pay-As-You-Go` 订阅。
-5. 选择 `S9` 定价层。
-6. 单击 `Enable` 即可开始订阅。
+[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchApp.html) 上提供了此应用程序的完整源代码（在扩展它以使用必应视觉搜索 API 后）。
 
-本教程从必应图像搜索教程扩展单页 Web 应用（请参阅[单页 Web 应用](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)）。 有关开始本教程的完整源代码，请参阅[单页 Web 应用（源代码）](../Bing-Image-Search/tutorial-bing-image-search-single-page-app-source.md)。 有关本教程的最终源代码，请参阅 [视觉搜索单页 Web 应用](tutorial-bing-visual-search-single-page-app-source.md)。
+## <a name="prerequisites"></a>先决条件
 
-涵盖的任务包括：
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-> [!div class="checklist"]
-> * 使用图像 insights 令牌调用必应视觉搜索 API
-> * 显示相似的图像
+## <a name="call-the-bing-visual-search-api-and-handle-the-response"></a>调用必应视觉搜索 API 并处理响应
 
-## <a name="call-bing-visual-search"></a>调用必应视觉搜索
-编辑必应图像搜索教程，并将以下代码添加到第 409 行的脚本元素的末尾。 此代码调用必应视觉搜索 API 并显示结果。
+编辑必应图像搜索教程，并将以下代码添加到 `<script>` 元素的末尾（在结尾 `</script>` 标记之前）。 以下代码处理来自 API 的视觉对象搜索响应，循环访问结果并显示它们。
 
 ``` javascript
 function handleVisualSearchResponse(){
@@ -70,7 +61,12 @@ function handleVisualSearchResponse(){
         }
     }
 }
+```
 
+以下代码向 API 发送一个搜索请求，使用事件侦听器来调用 `handleVisualSearchResponse()`。
+
+
+```javascript
 function bingVisualSearch(insightsToken){
     let visualSearchBaseURL = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch',
         boundary = 'boundary_ABC123DEF456',
@@ -105,13 +101,15 @@ function bingVisualSearch(insightsToken){
 ```
 
 ## <a name="capture-insights-token"></a>捕获 insights 令牌
-将以下代码添加到第 151 行的 `searchItemsRenderer` 对象中。 此代码添加“查找类似”链接，该链接在单击时调用 `bingVisualSearch` 函数。 该函数将 imageInsightsToken 接收为参数。
+
+将以下代码添加到 `searchItemsRenderer` 对象中。 此代码添加“查找类似”链接，该链接在单击时调用 `bingVisualSearch` 函数。 该函数将 imageInsightsToken 接收为参数。
 
 ``` javascript
 html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + "\");'>find similar</a><br>");
 ```
 
 ## <a name="display-similar-images"></a>显示相似的图像
+
 将以下 HTML 代码添加到第 601 行。 此标记代码添加了一个用于显示必应视觉搜索 API 调用结果的元素。
 
 ``` html
@@ -126,5 +124,4 @@ html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [视觉搜索单页 Web 应用源](tutorial-bing-visual-search-single-page-app-source.md)
-> [必应视觉搜索 API 参考](https://aka.ms/bingvisualsearchreferencedoc)
+> [裁剪并上传图像](tutorial-visual-search-crop-area-results.md)

@@ -1,84 +1,50 @@
 ---
-title: 快速入门：识别 Java 中的语音（Windows 或 Linux）
+title: 快速入门：识别语音，Java (Windows, Linux) - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 了解如何识别 Java 中的语音（Windows 或 Linux）
+description: 本快速入门介绍如何创建一个简单的 Java 应用程序，用于从计算机的麦克风中捕获和转录用户语音。
 services: cognitive-services
 author: fmegen
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 12/18/2018
 ms.author: fmegen
-ms.openlocfilehash: 2b39084443690b99391268acb6352763657e2a3c
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 86a57704b20790628a89bce0f8cda4e0599fd103
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218570"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220563"
 ---
-# <a name="quickstart-recognize-speech-in-java-on-windows-or-linux-by-using-the-speech-service-sdk"></a>快速入门：在 Windows 或 Linux 上使用语音服务 SDK 通过 Java 识别语音
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>快速入门：使用适用于 Java 的语音 SDK 识别语音
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-在本文中，请使用[语音服务 SDK](speech-sdk.md) 创建一个 Java 控制台应用程序。 可以通过电脑的麦克风实时将语音转录为文本。 此应用程序是使用语音 SDK Maven 程序包和 Eclipse Java IDE (v4.8) 在 64 位 Windows 或 Ubuntu Linux 16.04 上构建的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
+在本文中，请使用[语音服务 SDK](speech-sdk.md) 创建一个 Java 控制台应用程序。 可以通过电脑的麦克风实时将语音转录为文本。 此应用程序是使用语音 SDK Maven 程序包和 Eclipse Java IDE (v4.8) 在 64 位 Windows 或 64 位 Ubuntu Linux 16.04/18.04 上构建的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
 
 > [!NOTE]
 > 对于语音设备 SDK 和 Roobo 设备，请参阅[语音设备 SDK](speech-devices-sdk.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要具有语音服务订阅密钥才能完成此快速入门。 你可以免费获得一个。 有关详细信息，请参阅[免费试用语音服务](get-started.md)。
+本快速入门需要：
 
+* 操作系统：Windows（64 位）或 Ubuntu Linux 16.04/18.04（64 位）
+* [Eclipse Java IDE](https://www.eclipse.org/downloads/)
+* [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) 或 [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* 语音服务的 Azure 订阅密钥。 [免费获得一个](get-started.md)。
+
+如果是运行 Ubuntu 16.04/18.04，请确保在启动 Eclipse 之前安装了这些依赖项。
+
+```console
+sudo apt-get update
+sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
+```
 
 ## <a name="create-and-configure-project"></a>创建并配置项目
 
-如果使用的是 Ubuntu 16.04，在启动 Eclipse 之前，请运行以下命令来确保已安装了必需的程序包。
-
-  ```sh
-  sudo apt-get update
-  sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
-  ```
-
-1. 启动 Eclipse。
-
-1. 在 Eclipse Launcher 中，在“工作区”字段中输入某个新工作区目录的名称。 然后选择“启动”。
-
-   ![Eclipse Launcher 的屏幕截图](media/sdk/qs-java-jre-01-create-new-eclipse-workspace.png)
-
-1. 片刻之后，Eclipse IDE 的主窗口将会显示。 如果出现了欢迎屏幕，请将其关闭。
-
-1. 从 Eclipse 菜单栏上，通过选择“文件” > “新建” > “项目”创建一个新项目。
-
-1. 将显示“新建项目”对话框。 选择“Java 项目”，然后选择“下一步”。
-
-   ![“新建项目”对话框的屏幕截图，其中突出显示了 Java 项目](media/sdk/qs-java-jre-02-select-wizard.png)
-
-1. “新建 Java 项目”向导随即启动。 在“项目名称”字段中，输入 **quickstart**，然后选择 **JavaSE 1.8** 作为执行环境。 选择“完成”。
-
-   ![“新建 Java 项目”向导的屏幕截图](media/sdk/qs-java-jre-03-create-java-project.png)
-
-1. 如果出现了“打开关联的透视图?”窗口，请选择“打开透视图”。
-
-1. 在**包资源管理器**中，右键单击 **quickstart** 项目。 从上下文菜单中选择“配置” > “转换为 Maven 项目”。
-
-   ![包资源管理器的屏幕截图](media/sdk/qs-java-jre-04-convert-to-maven-project.png)
-
-1. 此时将显示“新建 POM”窗口。 在“组 ID”字段中输入 **com.microsoft.cognitiveservices.speech.samples**，然后在“项目 ID”字段中输入 **quickstart**。 然后选择“完成”。
-
-   ![“新建 POM”窗口的屏幕截图](media/sdk/qs-java-jre-05-configure-maven-pom.png)
-
-1. 打开 **pom.xml** 文件并对其进行编辑。
-
-   * 在文件末尾，在右标记 `</project>` 前面，创建一个 `repositories` 元素，使其中包含对语音 SDK 的 Maven 存储库的引用，如下所示：
-
-     [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#repositories)]
-
-  * 还添加一个 `dependencies` 元素，使用语音 SDK 1.1.0 版本作为依赖项：
-
-     [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#dependencies)]
-
-   * 保存更改。
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -105,16 +71,15 @@ ms.locfileid: "51218570"
 
 ![成功识别后的控制台输出的屏幕截图](media/sdk/qs-java-jre-07-console-output.png)
 
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-在 `quickstart/java-jre` 文件夹中查找此示例。
-
 ## <a name="next-steps"></a>后续步骤
 
+GitHub 上提供了其他示例，例如如何从音频文件中读取语音。
+
 > [!div class="nextstepaction"]
-> [使用适用于 Java 的语音 SDK 从语音中识别意向](how-to-recognize-intents-from-speech-java.md)
+> [浏览 GitHub 上的 Java 示例](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>另请参阅
 
-- [翻译语音](how-to-translate-speech-csharp.md)
+- [快速入门：翻译语音，Java（Windows、Linux）](quickstart-translate-speech-java-jre.md)
 - [自定义声学模型](how-to-customize-acoustic-models.md)
 - [自定义语言模型](how-to-customize-language-model.md)

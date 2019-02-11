@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: da1ee39f-89d3-4d36-96f1-4eabbc662343
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
@@ -17,20 +17,20 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 2d8741f6c65002d7f3701784e5fffe67b0e9bf50
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 179d0d9cf8b75d9776914f2647e062ffbc6a91ac
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287228"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101553"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入门：从 Android 应用将用户登录并调用 Microsoft Graph API
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入门：从 Android 应用登录用户并调用 Microsoft Graph API
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
 如果你要开发 Android 应用程序，Microsoft 可让 Azure Active Directory (Azure AD) 用户拥有简单直接的登录体验。 Azure AD 允许应用程序通过 Microsoft Graph 或你自己的受保护 Web API 访问用户数据。
 
-Azure AD 身份验证库 (ADAL) Android 库使用行业标准的 OAuth 2.0 和 OpenID Connect 来支持 [Microsoft Azure Active Directory 帐户](https://azure.microsoft.com/services/active-directory/)，从而使你的应用能够开始使用 [Microsoft Azure 云](https://cloud.microsoft.com) & [Microsoft Graph API](https://developer.microsoft.com/graph)。
+Azure AD 身份验证库 (ADAL) Android 库使用行业标准的 OAuth 2.0 和 OpenID Connect 支持 [Microsoft Azure Active Directory 帐户](https://azure.microsoft.com/services/active-directory/)，因此你的应用能够开始使用 [Microsoft Azure 云](https://cloud.microsoft.com) 和 [Microsoft Graph API](https://developer.microsoft.com/graph)。
 
 在本快速入门中，你将学习如何：
 
@@ -51,23 +51,23 @@ Azure AD 身份验证库 (ADAL) Android 库使用行业标准的 OAuth 2.0 和 O
 
 ## <a name="sample-code"></a>代码示例
 
-可以[在 Github 上](https://github.com/Azure-Samples/active-directory-android)找到完整的示例代码。
+可以[在 GitHub 上](https://github.com/Azure-Samples/active-directory-android)找到完整的示例代码。
 
 ```Java
 // Initialize your app with MSAL
 AuthenticationContext mAuthContext = new AuthenticationContext(
-        MainActivity.this, 
-        AUTHORITY, 
+        MainActivity.this,
+        AUTHORITY,
         false);
 
 
 // Perform authentication requests
 mAuthContext.acquireToken(
-    getActivity(), 
-    RESOURCE_ID, 
-    CLIENT_ID, 
-    REDIRECT_URI,  
-    PromptBehavior.Auto, 
+    getActivity(),
+    RESOURCE_ID,
+    CLIENT_ID,
+    REDIRECT_URI,
+    PromptBehavior.Auto,
     getAuthInteractiveCallback());
 
 // ...
@@ -95,7 +95,7 @@ mAuthResult.getAccessToken()
     - 选择“添加”，在“选择 API”中选择“Microsoft Graph”。
     - 选择“登录并读取用户配置文件”权限，然后按“选择”进行保存。
         - 此权限映射到 `User.Read` 作用域。
-    - 可选：在“所需权限”>“Windows Azure Active Directory”内删除选定权限“登录并读取用户配置文件”。 这将避免用户同意页面两次列出该权限。
+    - 可选：在“所需权限 > Windows Azure Active Directory”内，删除选定权限“登录并读取用户配置文件”。 这将避免用户同意页面两次列出该权限。
 
 4. 恭喜！ 应用已配置成功。 在下一部分中，你需要：
     - `Application ID`
@@ -127,7 +127,7 @@ mAuthResult.getAccessToken()
 
 1. 有关库机制以及如何配置新方案和功能的详细信息，请查看 [ADAL Android Wiki](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki)。
 2. 在本机方案中，应用将使用嵌入式 Web 视图，并且不会退出应用。 `Redirect URI` 可以是任意值。
-3. 发现任何问题或有任何要求？ 可以在 Stackoverflow 上使用标记 `azure-active-directory` 创建问题或发贴。
+3. 发现任何问题或有任何要求？ 可以在 Stack Overflow 上使用标记 `azure-active-directory` 创建问题或发贴。
 
 ### <a name="cross-app-sso"></a>跨应用 SSO
 

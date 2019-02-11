@@ -20,20 +20,26 @@ items:
 - name: 发行说明
   href: release-notes.md
   items:
-  - name: 2018 年 10 月
-    href: release-notes-october-2018.md
-  - name: 2018 年 9 月
-    href: release-notes-september-2018.md
-  - name: 2018 年 8 月
-    href: release-notes-august-2018.md
-  - name: 2018 年 7 月
-    href: release-notes-july-2018.md
-  - name: 2018 年 6 月
-    href: release-notes-june-2018.md
-  - name: 2018 年 5 月
-    href: release-notes-may-2018.md
-  - name: 2018 年 4 月
-    href: release-notes-april-2018.md
+  - name: 版本 10.0.10106.0
+    href: release-notes-10-0-10106-0.md
+  - name: 已存档的发行说明
+    items:
+    - name: 2018 年 12 月
+      href: release-notes-december-2018.md
+    - name: 2018 年 10 月
+      href: release-notes-october-2018.md
+    - name: 2018 年 9 月
+      href: release-notes-september-2018.md
+    - name: 2018 年 8 月
+      href: release-notes-august-2018.md
+    - name: 2018 年 7 月
+      href: release-notes-july-2018.md
+    - name: 2018 年 6 月
+      href: release-notes-june-2018.md
+    - name: 2018 年 5 月
+      href: release-notes-may-2018.md
+    - name: 2018 年 4 月
+      href: release-notes-april-2018.md
 - name: 快速入门
   items:
   - name: 创建和连接
@@ -78,7 +84,7 @@ items:
     - name: 多重身份验证
       href: ../sql-database/sql-database-ssms-mfa-authentication.md?toc=/azure/sql-data-warehouse/toc.json
     - name: 审核
-      href: sql-data-warehouse-auditing-overview.md
+      href: ../sql-database/sql-database-auditing.md?toc=/azure/sql-data-warehouse/toc.json
     - name: 行级别安全性
       href: column-level-security.md
     - name: 行级别安全性
@@ -239,8 +245,6 @@ items:
       href: sql-data-warehouse-how-to-monitor-cache.md
     - name: 还原数据仓库
       href: sql-data-warehouse-restore.md
-    - name: 自动化性能级别
-      href: manage-compute-with-azure-functions.md
   - name: 集成
     items:
     - name: 使用机器学习
@@ -305,9 +309,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: 数据管理
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: f971671b20921a2e92e85054fe770acea040360a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: fb943b243319517da70db85a43804084724501d1
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964486"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297049"

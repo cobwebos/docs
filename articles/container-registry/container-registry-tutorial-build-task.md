@@ -1,21 +1,21 @@
 ---
-title: 教程 - 使用 Azure 容器注册表任务自动化容器映像生成
-description: 本教程介绍如何配置一个任务，以便在向 Git 存储库提交源代码时在云中自动触发容器映像生成。
+title: 教程 - 自动化容器映像生成 - Azure 容器注册表任务
+description: 本教程介绍如何配置一个 Azure 容器注册表任务，以便在向 Git 存储库提交源代码时在云中自动触发容器映像生成。
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 27dbee3b292a9139ce53ef7b09a4cceba56082e4
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: dd99a6b49894b3489d1cc01f1fcbc56d29247b41
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857221"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756353"
 ---
-# <a name="tutorial-automate-container-image-builds-with-azure-container-registry-tasks"></a>教程：使用 Azure 容器注册表任务自动化容器映像生成
+# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>教程：提交源代码时，在云中自动化容器映像生成
 
 除[快速任务](container-registry-tutorial-quick-task.md)以外，ACR 任务还支持通过生成任务自动执行 Docker 容器映像生成。 本教程介绍如何使用 Azure CLI 创建一个任务，以便在将源代码提交到 Git 存储库时，在云中自动触发映像生成。
 
@@ -41,7 +41,7 @@ ms.locfileid: "48857221"
 
 ### <a name="container-registry"></a>容器注册表
 
-Azure 订阅中必须具有 Azure 容器注册表才能完成此教程。 如果需要注册表，请参阅[前面教程](container-registry-tutorial-quick-task.md)，或[快速入门：使用 Azure CLI 创建容器注册表](container-registry-get-started-azure-cli.md)。
+Azure 订阅中必须具有 Azure 容器注册表才能完成此教程。 如果需要注册表，请参阅[上一教程](container-registry-tutorial-quick-task.md)或[快速入门：使用 Azure CLI 创建容器注册表](container-registry-get-started-azure-cli.md)。
 
 ## <a name="overview-of-acr-tasks"></a>ACR 任务概述
 
@@ -155,7 +155,7 @@ $ az acr task create \
           "branch": "master",
           "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node",
           "sourceControlAuthProperties": null,
-          "sourceControlType": "Github"
+          "sourceControlType": "GitHub"
         },
         "sourceTriggerEvents": [
           "commit"
@@ -324,10 +324,10 @@ da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-task]: /cli/azure/acr#az-acr-task
-[az-acr-task-create]: /cli/azure/acr#az-acr-task-create
-[az-acr-task-run]: /cli/azure/acr#az-acr-task-run
-[az-acr-task-list-runs]: /cli/azure/acr#az-acr-task-list-runs
+[az-acr-task]: /cli/azure/acr
+[az-acr-task-create]: /cli/azure/acr
+[az-acr-task-run]: /cli/azure/acr
+[az-acr-task-list-runs]: /cli/azure/acr
 [az-login]: /cli/azure/reference-index#az-login
 
 <!-- IMAGES -->

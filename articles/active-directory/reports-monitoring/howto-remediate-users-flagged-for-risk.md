@@ -3,23 +3,23 @@ title: Azure Active Directory 门户中“标记为风险用户”的用户的�
 description: 了解 Azure Active Directory 门户中“标记为风险用户”的用户的安全报告
 services: active-directory
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c43497a69b3188b4bc38e91b6ff9b1cc8b6bd21a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 866074393321393471a4abc8f93e9e6a8f65b5b4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624142"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160825"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>修正 Azure Active Directory 门户中“标记为风险用户”的用户
 
@@ -31,7 +31,7 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 
 ## <a name="access-the-users-flagged-for-risk-report"></a>访问标记为存在风险的用户的报告
 
-可以在 Azure 门户中通过[“有风险的用户”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk)报告查看已标记为存在风险的用户。 如果你没有 Azure AD，可以在 [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) 上免费注册。 
+可以在 Azure 门户中通过[“有风险的用户”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers)报告查看已标记为存在风险的用户。 如果你没有 Azure AD，可以在 [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) 上免费注册。 
 
 从“已标记为存在风险的用户”报告中，你可以针对每个用户采取以下操作：
 
@@ -58,9 +58,9 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 
 采取以下措施修正受影响的帐户，确保环境安全：
 
-1.  [验证](http://aka.ms/MFAValid)多重身份验证和自助密码重置的信息是否正确。 
-2.  为所有用户[启用多重身份验证](http://aka.ms/MFAuth)。 
-3.  对每个受影响的帐户使用此[修正脚本](http://aka.ms/remediate)以自动执行以下步骤： 
+1.  [验证](https://aka.ms/MFAValid)多重身份验证和自助密码重置的信息是否正确。 
+2.  为所有用户[启用多重身份验证](https://aka.ms/MFAuth)。 
+3.  对每个受影响的帐户使用此[修正脚本](https://aka.ms/remediate)以自动执行以下步骤： 
 
     a. 重置密码以保护帐户安全并终止活动会话。
 
@@ -84,10 +84,10 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 
 除此之外，还应采取以下措施：
 
-- 在解决异常活动问题时，阅读并实施此[指南](http://aka.ms/fixaccount)。 
-- [启用审核管道](http://aka.ms/improvesecurity)来帮助你分析在租户上进行的活动。 完成后，系统会开始在审核存储中填充活动日志。 此时，还可以利用[安全性和符合性中心的搜索和调查资源](http://aka.ms/sccsearch)。 
-- 使用此[脚本](http://aka.ms/mailboxaudit1)对所有帐户启用邮箱审核功能。 
-- 查看所有邮箱的委托权限和邮件转发规则。 可以使用此 [PowerShell 脚本](http://aka.ms/delegateforwardrules)来执行此任务。 
+- 在解决异常活动问题时，阅读并实施此[指南](https://aka.ms/fixaccount)。 
+- [启用审核管道](https://aka.ms/improvesecurity)来帮助你分析在租户上进行的活动。 完成后，系统会开始在审核存储中填充活动日志。 此时，还可以利用[安全性和符合性中心的搜索和调查资源](https://aka.ms/sccsearch)。 
+- 使用此[脚本](https://aka.ms/mailboxaudit1)对所有帐户启用邮箱审核功能。 
+- 查看所有邮箱的委托权限和邮件转发规则。 可以使用此 [PowerShell 脚本](https://aka.ms/delegateforwardrules)来执行此任务。 
 
 ## <a name="next-steps"></a>后续步骤
 

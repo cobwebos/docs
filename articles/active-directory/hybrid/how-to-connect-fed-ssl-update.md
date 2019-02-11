@@ -2,25 +2,25 @@
 title: Azure AD Connect - 更新 AD FS 场的 SSL 证书 | Microsoft Docs
 description: 本文档详述了使用 Azure AD Connect 更新 AD FS 场的 SSL 证书的步骤。
 services: active-directory
-manager: mtillman
+manager: daveba
 editor: billmath
 ms.assetid: 7c781f61-848a-48ad-9863-eb29da78f53c
-ms.service: active-directory
+ms.service: active-directory  
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/09/2018
-ms.component: hybrid
+ms.subservice: hybrid
 author: billmath
 ms.custom: seohack1
 ms.author: billmath
-ms.openlocfilehash: 8320eae9e1c12123a4379887124dee810998c4e3
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 74f90a84bbf58edb719ccbdc9603aa3f1574681d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46309526"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493298"
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>更新 Active Directory 联合身份验证服务 (AD FS) 场的 SSL 证书
 
@@ -82,7 +82,7 @@ Azure AD Connect 会尝试通过以下方式自动获取有关 AD FS 场的信�
 
 ![配置完成](./media/how-to-connect-fed-ssl-update/configurecomplete.png)   
 
-## <a name="faqs"></a>常见问题
+## <a name="faqs"></a>常见问题解答
 
 * **对于新的 AD FS SSL 证书，证书的使用者名称应该是什么？**
 

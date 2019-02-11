@@ -1,5 +1,5 @@
 ---
-title: 图像分析认知搜索技能（Azure 搜索）| Microsoft Docs
+title: 图像分析认知搜索技能 - Azure 搜索
 description: 在 Azure 搜索扩充管道中使用 ImageAnalysis 认知技能通过图像分析来提取语义文本。
 services: search
 manager: pablocas
@@ -8,21 +8,24 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 01/17/2019
 ms.author: luisca
-ms.openlocfilehash: 8ec3b6c5dfdd63de45e287cf0b68e90c7b0cbbd8
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.custom: seodec2018
+ms.openlocfilehash: f658f6bb9e66eda13dbf4213e37dcd96b17f76e7
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829540"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411011"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>图像分析认知技能
 
-图像分析技能根据图像内容提取一组丰富的可视特征。 例如，可从图像生成标题栏、生成标记或识别名人和地标。
+图像分析技能根据图像内容提取一组丰富的可视特征。 例如，可从图像生成标题栏、生成标记或识别名人和地标。 此技能使用认知服务中的[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)提供的机器学习模型。 
 
 > [!NOTE]
-> Azure 搜索目前提供公共预览版。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 
+> 从 2018 年 12 月 21 日开始，可以[将认知服务资源附加到 Azure 搜索技能集](cognitive-search-attach-cognitive-services.md)。 这会使我们能够开始对技能集执行收费。 在此日期，我们还会开始将图像提取视为文档破解阶段的一部分进行计费。 我们将继续提供文档文本提取服务而不收取额外费用。
+>
+> 执行[内置认知技能](cognitive-search-predefined-skills.md)将按[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services)进行收费，其费率与以往直接执行任务的费率相同。 图像提取是 Azure 搜索收费项，目前以预览价格提供。 有关详细信息，请参见 [Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)或[如何计费](search-sku-tier.md#how-billing-works)。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Vision.ImageAnalysisSkill 
@@ -31,7 +34,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 参数区分大小写。
 
-| 参数名称     | Description |
+| 参数名称     | 说明 |
 |--------------------|-------------|
 | defaultLanguageCode   |  表示要返回的语言的字符串。 该服务以指定的语言返回识别结果。 如果未指定此参数，则默认值为“en”。 <br/><br/>支持的语言为： <br/>en - 英语（默认） <br/> zh - 简体中文|
 |visualFeatures |   表示要返回的可视特征类型的一组字符串。 有效的可视特征类型包括：  <ul><li> categories - 根据认知服务[文档](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)中定义的分类对图像内容进行分类。</li><li> tags - 使用与图像内容相关字词的详细列表来标记图像。</li><li>Description - 用完整的英文句子描述图像内容。</li><li>Faces - 检测人脸是否存在。 如果存在，则生成位置、性别和年龄。</li><li> ImageType - 检测图像是剪贴画还是素描。</li><li>   Color - 确定主题色、主色以及图像是否为黑白。</li><li>Adult - 检测图片是否具有色情性质（描绘裸体或性行为）。 也检测性暗示内容。</li></ul> 可视特征的名称区分大小写。|
@@ -243,7 +246,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 ## <a name="error-cases"></a>错误案例
 在以下错误案例中，未提取任何元素。
 
-| 错误代码 | Description |
+| 错误代码 | 说明 |
 |------------|-------------|
 | NotSupportedLanguage | 不支持提供的语言。 |
 | InvalidImageUrl | 图片 URL 格式不正确或无法访问。|

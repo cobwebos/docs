@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: ea9f55d7c6002aaba2fd4fdc2a76b93f98e1d6b0
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 754d2a246a86585e9f05f8a070c51e158f73affd
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805684"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342589"
 ---
 # <a name="monitor-a-deployed-instance-of-a-managed-application"></a>监视部署的托管应用程序实例
 
@@ -48,7 +48,7 @@ ms.locfileid: "48805684"
 
    ![创建警报](./media/monitor-managed-application-portal/create-new-alert.png)
 
-可以针对托管应用程序实例或托管应用程序中的资源创建警报。 有关创建警报的信息，请参阅 [Microsoft Azure 中的警报概述](../monitoring-and-diagnostics/monitoring-overview-alerts.md)。
+可以针对托管应用程序实例或托管应用程序中的资源创建警报。 有关创建警报的信息，请参阅 [Microsoft Azure 中的警报概述](../azure-monitor/platform/alerts-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,21 +3,21 @@ title: 教程：使用传递身份验证 (PTA) 将单个 AD 林集成到 Azure |
 description: 演示如何使用传递身份验证设置混合标识环境。
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/18/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: df4a1ef30997bef6b83e66182404d0e2659a5d51
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: a56edba483b1ba045d801681b85d755a510606cd
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422298"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493705"
 ---
-# <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>教程：使用传递身份验证 (PTA) 集成单个 AD 林
+# <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>教程：使用直通身份验证 (PTA) 集成单个 AD 林
 
 ![创建](media/tutorial-passthrough-authentication/diagram.png)
 
@@ -36,7 +36,7 @@ ms.locfileid: "52422298"
 >
 >在安装 Azure AD Connect 之前，所使用的脚本会创建常规 Active Directory 环境。  它们与所有教程相关。
 >
-> Github [此处](https://github.com/billmath/tutorial-phs)提供了本教程中使用的 PowerShell 脚本的副本。
+> GitHub [此处](https://github.com/billmath/tutorial-phs)提供了本教程中使用的 PowerShell 脚本的副本。
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 我们需要做的第一件事就是创建一个将用作我们的本地 Active Directory 服务器的虚拟机，以便启动并运行我们的混合标识环境。  

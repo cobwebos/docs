@@ -3,7 +3,7 @@ title: 使用 Azure Dev Space 时如何管理机密 | Microsoft Docs
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 05/11/2018
@@ -11,12 +11,12 @@ ms.topic: article
 ms.technology: azds-kubernetes
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
-ms.openlocfilehash: 49e9a974dc01548c250f0b0a8b9b5afac5f286ff
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 7081412172b617632073cad4e76d7c8fc4e81519
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705491"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466551"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>使用 Azure Dev Space 时如何管理机密
 
@@ -112,5 +112,5 @@ Azure Dev Spaces 提供两个建议用于存储机密的选项：一是存储在
 
 ## <a name="next-steps"></a>后续步骤
 
-现在可以使用这些方法安全地连接到数据库或 Redis 缓存，或者访问安全的 Azure 服务。
+通过这些方法，现在可以安全地连接到数据库、Azure Redis 缓存，或者访问安全的 Azure 服务。
  

@@ -1,20 +1,17 @@
 ---
 title: 配置 SSL 连接性以安全连接到 Azure Database for MySQL
 description: 介绍了如何正确配置 Azure Database for MySQL 和关联的应用程序，以正确使用 SSL 连接
-services: mysql
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-manager: kfile
 ms.service: mysql
-ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 5787d49623862654a7ef906e8f75ac822b25c0e3
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.topic: conceptual
+ms.date: 01/24/2019
+ms.openlocfilehash: d938b4485dccc3b5be3d1af612b407a67e04f397
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803216"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902204"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>配置应用程序的 SSL 连接性以安全连接到 Azure Database for MySQL
 Azure Database for MySQL 支持使用安全套接字层 (SSL) 将 Azure Database for MySQL 服务器连接到客户端应用程序。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。
@@ -29,10 +26,14 @@ Azure Database for MySQL 支持使用安全套接字层 (SSL) 将 Azure Database
 ![保存自定义磁贴](./media/howto-configure-ssl/mysql-workbench-ssl.png) 对于现有连接，可以通过右键单击“连接”图标并选择“编辑”来绑定 SSL。 然后导航到“SSL”选项卡，并绑定证书文件。
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>使用 MySQL CLI 通过 SSL 连接到服务器
-绑定 SSL 证书的另一种方法是使用 MySQL 命令行接口执行以下命令：
-```dos
-mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
+绑定 SSL 证书的另一种方法是使用 MySQL 命令行接口执行以下命令。 
+
+```bash
+mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p --ssl-mode=REQUIRED --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
 ```
+
+> [!NOTE]
+> 在 Windows 上使用 MySQL 命令行接口时，可能会收到错误 `SSL connection error: Certificate signature check failed`。 如果发生这种情况，请将 `--ssl-mode=REQUIRED --ssl-ca={filepath}` 参数替换为 `--ssl`。
 
 ## <a name="step-3--enforcing-ssl-connections-in-azure"></a>步骤 3：在 Azure 中强制实施 SSL 连接 
 ### <a name="using-the-azure-portal"></a>使用 Azure 门户

@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: v-gedod
-ms.openlocfilehash: 794a2c77c5601b76f258b2b73f5a01f3c6b8f8c9
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 2f7e6cd577b1eabbaabdfe87fca8ea0f036a062d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712290"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149384"
 ---
 # <a name="web-search-endpoint"></a>Web 搜索终结点
 
@@ -25,7 +25,7 @@ ms.locfileid: "51712290"
 
 若要使用必应 API 获取 Web 搜索结果，请向以下终结点发送 `GET` 请求。 标头和 URL 参数定义了更多规范。
 
-终结点：返回与 `?q=""` 定义的用户搜索查询相关的 Web 结果。
+**终结点**：返回与 `?q=""` 定义的用户搜索查询相关的 Web 结果。
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/search

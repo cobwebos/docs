@@ -1,20 +1,17 @@
 ---
 title: 使用 Azure 门户创建和管理 Azure Database for MySQL 服务器
 description: 本文介绍了如何使用 Azure 门户快速创建一个新的 Azure Database for MySQL 服务器，以及如何使用 Azure 门户管理该服务器。
-services: mysql
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-manager: kfile
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 065eb708a1d80b0eac618bd9039a859db6ef1340
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 39ffe1b71fb002658110c63c825e0515f38e2b9e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265578"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537318"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MySQL 服务器
 本主题介绍了如何快速创建新的 Azure Database for MySQL 服务器。 它还提供了有关如何使用 Azure 门户来管理服务器的信息。 服务器管理包括查看服务器详细信息和数据库、重置密码、缩放资源以及删除服务器。

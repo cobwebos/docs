@@ -7,20 +7,20 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: ae792df428d897277e15df9db3ff6f99a5b8859e
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: e183ed5ecda3053ed052952f4db5adfb016bfa68
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527280"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459038"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>为导入作业准备硬盘驱动器的示例工作流
 本主题讲解如何完成为导入作业准备驱动器的整个过程。  
   
 本示例将以下数据导入到名为 `mystorageaccount` 的 Microsoft Azure 存储帐户：  
   
-|位置|Description|  
+|位置|说明|  
 |--------------|-----------------|  
 |H:\Video|视频集合，总共 5 TB。|  
 |H:\Photo|照片集合，总共 30 GB。|  
@@ -29,7 +29,7 @@ ms.locfileid: "39527280"
   
 导入作业将这些数据导入到存储帐户中的以下目标：  
   
-|Source|目标虚拟目录或 Blob|  
+|源|目标虚拟目录或 Blob|  
 |------------|-------------------------------------------|  
 |H:\Video|https://mystorageaccount.blob.core.windows.net/video|  
 |H:\Photo|https://mystorageaccount.blob.core.windows.net/photo|  
@@ -67,11 +67,11 @@ ms.locfileid: "39527280"
   
 此外，可为所有文件设置以下元数据：  
   
--   **UploadMethod：** Microsoft Azure 导入/导出服务  
+-   **UploadMethod：** Windows Azure 导入/导出服务  
   
 -   **DataSetName：** SampleData  
   
--   **CreationDate：** 10/1/2013  
+-   **CreationDate：** 2013 年 10 月 1 日  
   
 若要为导入的文件设置元数据，请创建包含以下内容的文本文件 `c:\WAImportExport\SampleMetadata.txt`：  
   
@@ -169,4 +169,4 @@ WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:BlueRayIso /srcfile:K:\Temp
 ## <a name="next-steps"></a>后续步骤
 
 * [为导入作业准备硬盘驱动器](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-* [常用命令快速参考](../storage-import-export-tool-quick-reference-v1.md) 
+* [常用命令快速参考](../storage-import-export-tool-quick-reference-v1.md) 

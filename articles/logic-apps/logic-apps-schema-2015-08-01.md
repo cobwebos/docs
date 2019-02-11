@@ -4,18 +4,18 @@ description: 针对 Azure 逻辑应用中的逻辑应用定义更新了架构版
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
-author: stepsic-microsoft-com
-ms.author: stepsic
-ms.reviewer: klam, estfan, LADocs
+author: kevinlam1
+ms.author: klam
+ms.reviewer: estfan, LADocs
 ms.assetid: 0d03a4d4-e8a8-4c81-aed5-bfd2a28c7f0c
 ms.topic: article
 ms.date: 05/31/2016
-ms.openlocfilehash: dd05543c2a727f010432ecb54c2dc3e77a245de4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: ec6f98ca0f0260a0d7bed16538f557931cd2e33e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122771"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080004"
 ---
 # <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Azure 逻辑应用的架构更新 - 2015 年 8 月 1 日预览版
 
@@ -72,12 +72,16 @@ Microsoft 代表你管理某些 API，例如 Office 365、Salesforce、Twitter �
 }
 ```
 
-`host` 对象是特定于 API 连接的输入的一部分，并包含以下部分：`api` 和 `connection`。 `api` 对象为承载该托管 API 的位置指定运行时 URL。 可以通过调用 `GET https://management.azure.com/subscriptions/<Azure-subscription-ID>/providers/Microsoft.Web/managedApis/?api-version=2015-08-01-preview` 来查看所有可用的托管 API。
+`host` 对象是特定于 API 连接的输入的一部分，并包含以下部分：`api` 和 `connection`。 `api` 对象为承载该托管 API 的位置指定运行时 URL。 可以通过调用此方法来查看所有可用的托管 API：
+
+```text
+GET https://management.azure.com/subscriptions/<Azure-subscription-ID>/providers/Microsoft.Web/locations/<location>/managedApis?api-version=2015-08-01-preview
+```
 
 使用 API 时，该 API 可以定义也可以不定义任何连接参数。 因此，如果 API 未定义这些参数，则不需要任何连接。 如果 API 定义了这些参数，则必须创建含有指定名称的连接。  
 然后，可以在 `host` 对象内的 `connection` 对象中引用该名称。 若要在资源组中创建连接，请调用此方法：
 
-```
+```text
 PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Web/connections/<name>?api-version=2015-08-01-preview
 ```
 
@@ -99,8 +103,8 @@ PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceG
 
 ### <a name="deploy-managed-apis-in-an-azure-resource-manager-template"></a>在 Azure 资源管理器模板中部署托管 API
 
-只要不要求进行交互式登录，便可以在 Azure 资源管理器模板中创建完整应用。
-如果要求登录，则可以使用 Azure 资源管理器模板执行所有设置，但还必须访问 Azure 门户来对连接进行授权。 
+如果不要求交互式登录，则可通过使用资源管理器模板创建完整应用。
+如果要求登录，仍可使用资源管理器模板，但必须通过 Azure 门户来对连接进行授权。 
 
 ``` json
 "resources": [ {
@@ -194,7 +198,7 @@ PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceG
 
 ### <a name="your-custom-web-apis"></a>自定义 Web API
 
-如果使用自己的 API（而不是 Microsoft 托管的 API），则应使用内置 **HTTP** 操作调用它们。 若要获得理想体验，应该为 API 公开一个 Swagger 终结点。 此终结点使逻辑应用设计器可以呈现 API 的输入和输出。 如果没有 Swagger，则设计器只能将输入和输出显示为不透明的 JSON 对象。
+如果使用自己的 API（而不是 Microsoft 托管的 API），则应使用内置 **HTTP** 操作调用这些 API。 理想情况下，应为 API 提供 Swagger 终结点。 此终结点可帮助逻辑应用设计器显示 API 的输入和输出。 如果没有 Swagger 终结点，则设计器只能将输入和输出显示为不透明的 JSON 对象。
 
 下面是演示新 `metadata.apiDefinitionUrl` 属性的示例：
 
@@ -259,7 +263,7 @@ PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceG
 }
 ```
 
-现在，可以构建类似以下示例的等效 HTTP 操作，同时保持逻辑应用定义的参数部分不变：
+现在，可生成类似的 HTTP 操作并让逻辑应用定义的 `parameters` 部分保持不变，例如：
 
 ``` json
 "actions": {
@@ -292,8 +296,8 @@ PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceG
 | `metadata.apiDefinitionUrl` | 若要在逻辑应用设计器中使用此操作，请包括元数据终结点，该终结点是通过以下方式构造的：`{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard`。 |
 | `inputs.uri` | 构造方式：`{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
 | `inputs.method` | 始终是 `POST` |
-| `inputs.body` | 等同于 API 应用参数 |
-| `inputs.authentication` | 等同于 API 应用身份验证 |
+| `inputs.body` | 与 API 应用参数相同 |
+| `inputs.authentication` | 与 API 应用身份验证相同 |
 
 此方法应适用于所有 API 应用操作。 但是请记住，以前的这些 API 应用不再受支持。 因此，应移到以前的其他两个选项（托管 API 或托管自定义 Web API）之一。
 
@@ -407,15 +411,15 @@ PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceG
 
 ## <a name="native-http-listener"></a>本机 HTTP 侦听器
 
-HTTP 侦听器功能现在已内置。 因此，不再需要部署 HTTP 侦听器 API 应用。 在此处了解[有关如何使逻辑应用终结点可调用的完整详细信息](../logic-apps/logic-apps-http-endpoint.md)。 
+HTTP 侦听器功能现为内置功能，因此不需要部署 HTTP 侦听器 API 应用。 有关详细信息，请了解如何[使逻辑应用终结点可调用](../logic-apps/logic-apps-http-endpoint.md)。 
 
-由于进行了这些更改，我们已删除 `@accessKeys()` 函数，并将它替换为 `@listCallbackURL()` 函数以便用于获取终结点（如果必要）。 此外，现在必须在逻辑应用中至少定义一个触发器。 如果要对工作流执行 `/run` 操作，则必须具有 `manual`、`apiConnectionWebhook` 或 `httpWebhook` 触发器之一。
+由于这些更改，逻辑应用将 `@accessKeys()` 函数替换为 `@listCallbackURL()` 函数，后者可在必要时获取终结点。 此外，现在必须在逻辑应用中定义至少一个触发器。 如果要对工作流执行 `/run` 操作，则必须使用以下触发器类型之一：`Manual`、`ApiConnectionWebhook` 或 `HttpWebhook`
 
 <a name="child-workflows"></a>
 
 ## <a name="call-child-workflows"></a>调用子工作流
 
-以前，调用子工作流需要转到该工作流，获取访问令牌，然后将令牌粘贴到要调用该子工作流的逻辑应用定义中。 借助新的架构，逻辑应用引擎会在运行时自动为子工作流生成 SAS，因此不必将任何密码粘贴到定义中。 下面是一个示例：
+以前，调用子工作流需要转到该工作流，获取访问令牌，然后将令牌粘贴到要调用该子工作流的逻辑应用定义中。 借助此架构，逻辑应用引擎会在运行时自动为子工作流生成 SAS，因此不必将任何机密粘贴到定义中。 下面是一个示例：
 
 ``` json
 "myNestedWorkflow": {
@@ -441,9 +445,9 @@ HTTP 侦听器功能现在已内置。 因此，不再需要部署 HTTP 侦听�
 }
 ```
 
-第二个改进是我们为子工作流提供了对传入请求的完全访问权限。 这意味着可以在查询部分和标头对象中传递参数，并且可以完全自定义整个正文。
+此外，子工作流会获取对传入请求的完全访问权限。 因此，可在 `queries` 部分以及在 `headers` 对象中传递参数。 还可完全定义整个 `body` 部分。
 
-最后，需要对子工作流进行更改。 之前可以直接调用子工作流；而现在，必须在工作流中为要调用的父级定义触发器终结点。 通常，会添加类型为 `manual` 的触发器，并在父定义中使用该触发器。 请注意，`host` 属性明确具有 `triggerName`，你必须始终指定所调用的触发器。
+最终，子工作流会拥有这些所需的更改。 尽管之前可以直接调用子工作流，但现在必须在工作流中为要调用的父级定义触发器终结点。 通常，会添加类型为 `Manual` 的触发器，并在父定义中使用该触发器。 `host` 属性明确具有 `triggerName`，因为必须始终指定要调用的触发器。
 
 ## <a name="other-changes"></a>其他更改
 
@@ -453,8 +457,8 @@ HTTP 侦听器功能现在已内置。 因此，不再需要部署 HTTP 侦听�
 
 ### <a name="renamed-parse-function-to-json"></a>已将“parse()”函数重命名为“json()”
 
-我们即将添加更多内容类型，因此已将 `parse()` 函数重命名为 `json()`。
+`parse()` 函数现已针对未来的内容类型重命名为 `json()` 函数。
 
-## <a name="coming-soon-enterprise-integration-apis"></a>即将推出：企业集成 API
+## <a name="enterprise-integration-apis"></a>企业集成 API
 
-我们尚没有托管版本的企业集成 API，如 AS2。 同时，可以通过 HTTP 操作使用现有的已部署 BizTalk API。 有关详细信息，请参阅[集成路线图](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/)中的“使用已部署的 API 应用”。 
+此架构尚不支持企业集成 API 的托管版本，例如 AS2。 但是，可以通过 HTTP 操作使用现有的已部署 BizTalk API。 有关详细信息，请参阅[集成路线图](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/)中的“使用已部署的 API 应用”。 

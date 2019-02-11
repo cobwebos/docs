@@ -6,36 +6,35 @@ services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: ce90c5f691a0a8a333161f3135856d720d1de310
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 318d80049caf1328aac1cc4423b0de10df7a8c58
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226579"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211502"
 ---
-# <a name="quickstart-create-reviews-using-net"></a>快速入门：使用 .NET 创建评审
+# <a name="quickstart-create-reviews-using-net"></a>快速入门：使用 .NET 创建审阅
 
-本文中的信息和代码示例可帮助你开始使用[用于 .NET 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)，执行下列操作：
+本文中的信息和代码示例可帮助你快速开始使用[适用于 .NET 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)来执行下列操作：
  
 - 为人工审查方创建一组审阅
 - 获取人工审查方的现有审阅的状态
 
-通常情况下，内容会先经过一些自动审查，然后才会计划人工审阅。 本文只介绍了如何创建审阅以供人工审查。 有关更完整的方案，请参阅 [Facebook 内容审查](facebook-post-moderation.md)和[电子商务目录审查](ecommerce-retail-catalog-moderation.md)教程。
+通常情况下，内容会先经过一些自动审查，然后才会计划人工审阅。 本文只介绍了如何创建审阅以供人工审查。 有关更完整的方案，请参阅 [Facebook 内容审核](facebook-post-moderation.md)和[审核电子商务产品图像](ecommerce-retail-catalog-moderation.md)教程。
 
 若要更好地理解本文，需要已熟悉如何使用 Visual Studio 和 C#。
 
 ## <a name="sign-up-for-content-moderator"></a>注册内容审查器
 
-必须有订阅密钥，才能通过 REST API 或 SDK 使用内容审查器服务。
-请参阅[快速入门](quick-start.md)，了解如何获取密钥。
+必须有订阅密钥，才能通过 REST API 或 SDK 使用内容审查器服务。 按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅内容审查器并获取密钥。
 
 ## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>注册评审工具帐户（如果未在上一步中完成）
 
-如果从 Azure 门户获得了内容审查器，还[注册评审工具帐户](https://contentmoderator.cognitive.microsoft.com/)并创建评审团队。 需要使用团队 ID 和评审工具来调用评审 API 以启动作业并在评审工具中查看评审。
+如果从 Azure 门户获得了内容审查器，还需要[注册评审工具帐户](https://contentmoderator.cognitive.microsoft.com/)并创建评审团队。 需要使用团队 ID 和评审工具来调用评审 API 以启动作业并在评审工具中查看评审。
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>确保 API 密钥可以调用评审 API 以创建评审
 
@@ -76,7 +75,7 @@ ms.locfileid: "47226579"
 
 ### <a name="create-the-content-moderator-client"></a>Create the Content Moderator client
 
-添加以下代码以为订阅创建内容审查器客户端。
+添加以下代码来为订阅创建内容审查器客户端。
 
 > [!IMPORTANT]
 > 使用区域标识符和订阅密钥的值更新 AzureRegion 和 CMSubscriptionKey 字段。
@@ -520,4 +519,4 @@ ms.locfileid: "47226579"
 
 ## <a name="next-steps"></a>后续步骤
 
-获取适用于 .NET 的此内容审查器和其他内容审查器快速入门的[内容审查器 .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 和 [Visual Studio 解决方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)，并开始集成。
+为适用于 .NET 的此内容审查器快速入门和其他内容审查器快速入门获取[内容审查器 .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 和 [Visual Studio 解决方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)，并开始集成。

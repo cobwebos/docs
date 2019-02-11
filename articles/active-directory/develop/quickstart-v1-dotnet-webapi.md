@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 67e74774-1748-43ea-8130-55275a18320f
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 239c0d0adbe89dd3d1d7bc7244a52ab079a36ad4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f44955e13cb5774119dc083f4a3220b432d9cd9e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952539"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098058"
 ---
 # <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>快速入门：生成一个与 Azure AD 集成以进行身份验证和授权的 .NET Web API
 
@@ -48,7 +48,7 @@ ms.locfileid: "46952539"
 * [下载应用框架](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip)或[下载已完成的示例](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip)。 每个下载项目都是 Visual Studio 2013 解决方案。
 * 拥有一个用于注册应用程序的 Azure AD 租户。 如果还没有此租户，请[了解如何获取租户](quickstart-create-new-tenant.md)。
 
-## <a name="step-1-register-an-application-with-azure-ad"></a>步骤 1：向 Azure AD 注册应用程序
+## <a name="step-1-register-an-application-with-azure-ad"></a>步骤 1：将应用程序注册到 Azure AD
 
 要帮助保护应用程序，首先需要在租户中创建一个应用程序，并为 Azure AD 提供一些关键信息。
 
@@ -62,7 +62,7 @@ ms.locfileid: "46952539"
     * **名称**向用户描述应用程序。 输入**待办事项列表服务**。
     * “重定向 URI”是 Azure AD 用来返回应用程序请求的任何令牌的方案与字符串组合。 为此值输入 `https://localhost:44321/`。
 
-6. 从应用程序的“设置”>“属性”页中，更新应用 ID URI。 输入租户特定的标识符。 例如，输入 `https://contoso.onmicrosoft.com/TodoListService`。
+6. 在应用程序的“设置”>“属性”页中，更新应用 ID URI。 输入租户特定的标识符。 例如，输入 `https://contoso.onmicrosoft.com/TodoListService`。
 7. 保存配置。 让门户保持打开状态，因为稍后你还需要注册客户端应用程序。
 
 ## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>步骤 2：将应用设置为使用 OWIN 身份验证管道

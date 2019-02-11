@@ -6,15 +6,16 @@ author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 01/14/2019
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.openlocfilehash: 59c59705e840d3cdd0d3c5310d84d711cd00c96a
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: 7899f235853991160e4d8b2c2c832d9a77171e83
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393992"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242189"
 ---
 # <a name="update-windows-defender-antivirus-on-azure-stack"></a>在 Azure Stack上更新 Windows Defender 防病毒
 

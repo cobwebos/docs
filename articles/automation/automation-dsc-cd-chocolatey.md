@@ -3,18 +3,18 @@ title: 使用 Chocolatey 进行 Azure Automation State Configuration 持续部�
 description: 使用 Azure Automation State Configuration、DSC 和 Chocolatey 包管理器进行 DevOps 持续部署。  包含完整 JSON 资源管理器模板和 PowerShell 源代码的示例。
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d3957038410e7a7d80e1ac710f0c227047b636a7
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 53ecff7df849d19ff7fe1d4c1c8dbd472326b06e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284789"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424449"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>用例：使用 Automation State Configuration 和 Chocolatey 持续部署到虚拟机
 
@@ -58,9 +58,9 @@ Chocolatey 可以处理各种类型的安装包，例如 MSI、MSU、ZIP。 如�
 
 也许你已从头开始完成了部分或大部分工作。 创建和编译 nuspec 并将其存储在 NuGet 服务器中是一件很简单的事。 此外，你已在管理 VM。 持续部署的下一步需要设置拉取服务器（一次）、向它注册节点（一次），然后创建配置并存储到节点中（初步）。 接下来，当包升级并部署到存储库时，请刷新“拉”服务器中的“配置”和“节点配置”（根据需要重复）。
 
-如果不是从资源管理器模板开始，也没关系。 有一些 PowerShell Cmdlet 可帮助你向拉取服务器注册 VM，以及完成余下的所有工作。 有关详细信息，请参阅以下文章：[载入由 Azure Automation State Configuration 管理的计算机](automation-dsc-onboarding.md)。
+如果不是从资源管理器模板开始，也没关系。 有一些 PowerShell Cmdlet 可帮助你向拉取服务器注册 VM，以及完成余下的所有工作。 有关详细信息，请参阅以下文章：[加入 Azure Automation State Configuration 管理的计算机](automation-dsc-onboarding.md)。
 
-## <a name="step-1-setting-up-the-pull-server-and-automation-account"></a>步骤 1：设置“拉”服务器和自动化帐户
+## <a name="step-1-setting-up-the-pull-server-and-automation-account"></a>步骤 1：设置拉取服务器和自动化帐户
 
 在经过身份验证的 (`Connect-AzureRmAccount`) PowerShell 命令行中：（如果设置请求服务器，则可能需要几分钟时间）
 
@@ -71,12 +71,12 @@ New-AzureRmAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location M
 
 可以将自动化帐户放入以下任何区域（即位置）：美国东部 2、美国中南部、美国弗吉尼亚州政府、西欧、东南亚、日本东部、印度中部和澳大利亚东南部、加拿大中部、北欧。
 
-## <a name="step-2-vm-extension-tweaks-to-the-resource-manager-template"></a>步骤 2：VM 扩展根据资源管理器模板调整
+## <a name="step-2-vm-extension-tweaks-to-the-resource-manager-template"></a>步骤 2：VM 扩展根据资源管理器模板进行调整
 
 此 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/dsc-extension-azure-automation-pullserver)提供了 VM 注册（使用 PowerShell DSC VM 扩展）的详细信息。
 此步骤将新的 VM 注册到“拉”服务器的 State Configuration 节点列表中。 此注册的一部分指定要应用到节点的节点配置。 此节点配置尚无需存在于请求服务器中，因此该操作最初可以在步骤 4 中执行。 但在步骤 2 中，需要确定节点名称和配置名称。 在本用例中，节点名称为“isvbox”，配置名称为“ISVBoxConfig”。 因此，节点配置名称（会在 DeploymentTemplate.json 中指定）为“ISVBoxConfig.isvbox”。
 
-## <a name="step-3-adding-required-dsc-resources-to-the-pull-server"></a>步骤 3：将所需的 DSC 资源添加到“拉”服务器
+## <a name="step-3-adding-required-dsc-resources-to-the-pull-server"></a>步骤 3：将所需的 DSC 资源添加到拉取服务器
 
 PowerShell 库自动将 DSC 资源安装到 Azure 自动化帐户。
 导航到所需的资源，并单击“部署到 Azure 自动化”按钮。
@@ -86,7 +86,7 @@ PowerShell 库自动将 DSC 资源安装到 Azure 自动化帐户。
 Azure 门户最近添加的另一种技术允许提取新模块或更新现有模块。 依次单击“自动化帐户资源”、“资产”磁贴和“模块”磁贴。 通过“浏览库”图标可以查看库中的模块列表，向下钻取详细信息，并最终导入自动化帐户。 这是让模块随时保持最新状态的绝佳方法。 而且，导入功能会检查与其他模块的依赖性，以确保所有模块都保持同步。
 
 还有手动方法。 适用于 Windows 计算机的 PowerShell 集成模块的文件夹结构与 Azure 自动化所需的文件夹结构稍有不同。
-需要稍微缩放一下。 但这并不困难，并且每个资源只需调整一次（除非将来想要升级）。有关创作 PowerShell 集成模块的详细信息，请参阅以下文章：[Authoring Integration Modules for Azure Automation](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)（创作 Azure 自动化的集成模块）
+需要稍微缩放一下。 但这并不困难，并且每个资源只需调整一次（除非将来想要升级）。有关创作 PowerShell 集成模块的详细信息，请参阅以下文章：[创作 Azure 自动化的集成模块](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)
 
 - 将所需的模块安装到工作站，如下所示：
   - 安装 [Windows Management Framework v5](https://aka.ms/wmf5latest)（对于 Windows 10 不需要安装）
@@ -105,7 +105,7 @@ Azure 门户最近添加的另一种技术允许提取新模块或更新现有�
 
 随附的示例针对 cChoco 和 xNetworking 执行这些步骤。 有关 cChoco 的特殊处理，请参阅[注释](#notes)。
 
-## <a name="step-4-adding-the-node-configuration-to-the-pull-server"></a>步骤 4：将节点配置添加到“拉”服务器
+## <a name="step-4-adding-the-node-configuration-to-the-pull-server"></a>步骤 4：将节点配置添加到拉取服务器
 
 首次将配置导入到“拉”服务器并进行编译并没有什么特别之处。 后续导入/编译相同的配置时，过程完全相同。 每次更新包且需要向外推送到生产环境时，在确保配置文件（包括包的新版本）正确之后，就可以执行此步骤。 下面是配置文件和 PowerShell：
 

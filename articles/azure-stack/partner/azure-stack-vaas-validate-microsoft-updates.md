@@ -10,21 +10,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/26/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 8e0009bf0fc34d3e0d22755d93d941b85db62ffd
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.lastreviewed: 01/14/2019
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4e6f5a17544c1419eb6101acdd6590f034ea4aa3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334459"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241452"
 ---
 # <a name="validate-software-updates-from-microsoft"></a>验证来自 Microsoft 的软件更新
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Microsoft 会定期发布到 Azure Stack 软件更新。 这些更新提供给 Azure Stack 联合工程合作伙伴提前进行公开，以便它们可以针对其解决方案对更新进行验证，并向 Microsoft 提供反馈。
+Microsoft 会定期发布到 Azure Stack 软件更新。 这些更新提供给 Azure Stack coengineering 合作伙伴。 中的公开可用的提前提供了更新。 可以针对你的解决方案检查更新，并向 Microsoft 提供反馈。
 
 [!INCLUDE [azure-stack-vaas-workflow-validation-completion](includes/azure-stack-vaas-workflow-validation-completion.md)]
 
@@ -34,13 +36,17 @@ Microsoft 会定期发布到 Azure Stack 软件更新。 这些更新提供给 A
 
 ## <a name="create-a-workflow"></a>创建工作流
 
-更新验证使用相同的工作流作为**包验证**。 按照的说明[创建包验证工作流](azure-stack-vaas-validate-oem-package.md#create-a-package-validation-workflow)。
+更新验证使用相同的工作流作为**解决方案验证**。
 
 ## <a name="run-tests"></a>运行测试
 
-更新验证使用相同的工作流作为**包验证**。 按照的说明[执行包验证测试](azure-stack-vaas-validate-oem-package.md#run-package-validation-tests)。
+1. 更新验证使用相同的工作流作为**解决方案验证**。 
 
-不需要请求更新验证签名的包。
+2. 按照的说明[运行解决方案验证测试](azure-stack-vaas-validate-oem-package.md#run-package-validation-tests)。 请改为选择以下测试：
+    - 每月的 Azure Stack 更新验证
+    - 云模拟引擎
+
+你不需要请求更新验证签名的包。
 
 ## <a name="next-steps"></a>后续步骤
 

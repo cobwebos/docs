@@ -9,34 +9,56 @@ items:
     href: about-iot-hub.md
 - name: 快速入门
   items:
-  - name: 发送遥测数据 (C)
-    href: quickstart-send-telemetry-c.md
-  - name: 发送遥测数据 (Node.js)
-    href: quickstart-send-telemetry-node.md
-  - name: 发送遥测数据 (.NET)
-    href: quickstart-send-telemetry-dotnet.md
-  - name: 发送遥测数据 (Java)
-    href: quickstart-send-telemetry-java.md
-  - name: 发送遥测数据 (Python)
-    href: quickstart-send-telemetry-python.md
-  - name: 发送遥测数据 (Android)
-    href: quickstart-send-telemetry-android.md
-  - name: 发送遥测数据 (iOS)
-    href: quickstart-send-telemetry-ios.md
-  - name: 控制设备 (Node.js)
-    href: quickstart-control-device-node.md
-  - name: 控制设备 (.NET)
-    href: quickstart-control-device-dotnet.md
-  - name: 控制设备 (Java)
-    href: quickstart-control-device-java.md
-  - name: 控制设备 (Python)
-    href: quickstart-control-device-python.md
-  - name: 控制设备 (Android)
-    href: quickstart-control-device-android.md
+  - name: 发送遥测
+    items:
+    - name: C
+      href: quickstart-send-telemetry-c.md
+    - name: Node.js
+      href: quickstart-send-telemetry-node.md
+    - name: .NET
+      href: quickstart-send-telemetry-dotnet.md
+    - name: Java
+      href: quickstart-send-telemetry-java.md
+    - name: Python
+      href: quickstart-send-telemetry-python.md
+    - name: Android
+      href: quickstart-send-telemetry-android.md
+    - name: iOS
+      href: quickstart-send-telemetry-ios.md
+  - name: 控制设备
+    items:
+    - name: Node.js
+      href: quickstart-control-device-node.md
+    - name: .NET
+      href: quickstart-control-device-dotnet.md
+    - name: Java
+      href: quickstart-control-device-java.md
+    - name: Python
+      href: quickstart-control-device-python.md
+    - name: Android
+      href: quickstart-control-device-android.md
+  - name: 使用设备流进行通信（预览版）
+    items:
+    - name: C#
+      href: quickstart-device-streams-echo-csharp.md
+    - name: Node.js
+      href: quickstart-device-streams-echo-nodejs.md
+    - name: C
+      href: quickstart-device-streams-echo-c.md
+  - name: 使用设备流发送 SSH/RDP 流量（预览版）
+    items:
+    - name: C#
+      href: quickstart-device-streams-proxy-csharp.md
+    - name: Node.js
+      href: quickstart-device-streams-proxy-nodejs.md
+    - name: C
+      href: quickstart-device-streams-proxy-c.md
 - name: 教程
   items:
   - name: 路由消息
     href: tutorial-routing.md
+  - name: 使用指标和诊断日志
+    href: tutorial-use-metrics-and-diags.md
   - name: 执行手动故障转移
     href: tutorial-manual-failover.md
   - name: 配置设备
@@ -63,6 +85,8 @@ items:
     href: iot-hub-configuration-best-practices.md
   - name: Azure IoT SDK 平台支持
     href: iot-hub-device-sdk-platform-support.md
+  - name: IoT 中心设备流概述（预览版）
+    href: iot-hub-device-streams-overview.md
   - name: 开发人员指南
     href: iot-hub-devguide.md
     items:
@@ -156,6 +180,8 @@ items:
         href: iot-hub-how-to-develop-for-mobile-devices.md
       - name: 管理连接和可靠的消息传送
         href: iot-hub-reliability-features-in-sdks.md
+      - name: 针对 Android Things 平台进行开发
+        href: iot-hub-how-to-android-things.md
     - name: 查询中心路由中的 Avro 数据
       href: iot-hub-query-avro-data.md
     - name: 订阅来自事件网格的设备连接状态事件
@@ -230,7 +256,7 @@ items:
       items:
       - name: 使用 Azure 门户
         href: iot-hub-create-through-portal.md
-      - name: 使用用于 VS Code 的 Azure IoT 工具包
+      - name: 使用用于 VS Code 的 Azure IoT Tools
         href: iot-hub-create-use-iot-toolkit.md
       - name: 使用 Azure PowerShell
         href: iot-hub-create-using-powershell.md
@@ -300,16 +326,20 @@ items:
         href: iot-hub-arduino-iot-devkit-az3166-door-monitor.md
     - name: 扩展的 IoT 方案
       items:
-      - name: 使用用于 VS Code 的 Azure IoT 工具包管理云设备消息传送
+      - name: 使用用于 VS Code 的 Azure IoT Tools 管理云设备消息传送
         href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
+      - name: 使用用于 Visual Studio 的 Cloud Explorer 管理云设备消息传送
+        href: iot-hub-visual-studio-cloud-device-messaging.md
       - name: Power BI 中的数据可视化
         href: iot-hub-live-data-visualization-in-power-bi.md
       - name: 使用 Web 应用进行数据可视化
         href: iot-hub-live-data-visualization-in-web-apps.md
       - name: 使用 Azure 机器学习预测天气
         href: iot-hub-weather-forecast-machine-learning.md
-      - name: 使用用于 VS Code 的 Azure IoT 工具包进行设备管理
+      - name: 使用用于 VS Code 的 Azure IoT Tools 进行设备管理
         href: iot-hub-device-management-iot-toolkit.md
+      - name: 使用用于 Visual Studio 的 Cloud Explorer 进行设备管理
+        href: iot-hub-device-management-visual-studio.md
       - name: 使用适用于 Azure CLI 的 IoT 扩展进行设备管理
         href: iot-hub-device-management-iot-extension-azure-cli-2-0.md
       - name: 使用逻辑应用执行远程监视和发送通知
@@ -346,6 +376,8 @@ items:
     href: https://docs.microsoft.com/rest/api/iothub/iothubresource
   - name: REST（证书）
     href: https://docs.microsoft.com/rest/api/iothub/certificates
+  - name: 资源管理器模板
+    href: /azure/templates/microsoft.devices/iothub-allversions
 - name: 相关内容
   items:
   - name: 解决方案
@@ -392,8 +424,8 @@ items:
     href: iot-hub-customer-data-requests.md
   - name: Azure 路线图
     href: https://azure.microsoft.com/roadmap/?category=iot
-  - name: Azure IoT 工具包
-    href: https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit
+  - name: Azure IoT Tools
+    href: https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools
   - name: DeviceExplorer 工具
     href: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer
   - name: iothub-diagnostics 工具
@@ -412,9 +444,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 5022e1e8f4e8b8c0464be9391ccf2189079e2819
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: fe459c18d9b59b04dcf40cb313968631dc83d85c
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422807"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746976"

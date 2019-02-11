@@ -1,28 +1,28 @@
 ---
-title: 什么是 Azure Active Directory 体系结构？ | Microsoft Docs
-description: 了解什么是 Azure Active Directory 租户，以及如何通过 Azure Active Directory 管理 Azure。
+title: 体系结构概述 - Azure Active Directory | Microsoft Docs
+description: 了解什么是 Azure Active Directory 租户，以及如何使用 Azure Active Directory 管理 Azure。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-custom: it-pro
-ms.openlocfilehash: 62ade1318b670b4eecf1be1a9255fe497d094a1a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 683627efe6946ec68e40f84b7bd7b3d3c8f30985
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733205"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094200"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>什么是 Azure Active Directory 体系结构？
-使用 Azure Active Directory (Azure AD) 可以安全地管理用户对 Azure 服务和资源的访问。 Azure AD 随附了整套标识管理功能。 有关 Azure AD 功能的信息，请参阅[什么是 Azure Active Directory？](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
+使用 Azure Active Directory (Azure AD) 可以安全地管理用户对 Azure 服务和资源的访问。 Azure AD 随附了整套标识管理功能。 有关 Azure AD 功能的信息，请参阅[什么是 Azure Active Directory？](active-directory-whatis.md)
 
-在 Azure AD 中可以创建及管理用户和组，并使用权限来允许和拒绝对企业资源的访问。 有关标识管理的信息，请参阅 [Azure 标识管理基础知识](https://docs.microsoft.com/azure/active-directory/fundamentals-identity)。
+在 Azure AD 中可以创建及管理用户和组，并使用权限来允许和拒绝对企业资源的访问。 有关标识管理的信息，请参阅 [Azure 标识管理基础知识](active-directory-whatis.md)。
 
 ## <a name="azure-ad-architecture"></a>Azure AD 体系结构
 Azure AD 的地理分布式体系结构整合了全面监视、自动重新路由、故障转移和恢复功能，使我们能够为客户提供公司级的可用性与性能。
@@ -34,7 +34,7 @@ Azure AD 的地理分布式体系结构整合了全面监视、自动重新路�
  *  数据中心
 
 ### <a name="service-architecture-design"></a>服务体系结构设计
-构建可访问、可用且数据丰富的系统的最常见方法是使用 Azure AD 数据层的独立构建基块或缩放单元。缩放单元称为分区。 
+构建可访问、可用且数据丰富的系统的最常见方法是通过独立的构建块或缩放单元。 对于 Azure AD 数据层，缩放单元称为“分区”。 
 
 数据层包含多个可提供读写功能的前端服务。 下图显示了单目录分区的组件在整个地理分布式数据中心内的分布方式。 
 

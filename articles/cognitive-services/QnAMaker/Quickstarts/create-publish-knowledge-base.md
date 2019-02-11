@@ -5,16 +5,16 @@ description: 可以根据自己的内容（例如常见问题解答或产品手�
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: c57edd897797d4352706283072aa19444948436b
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 41a8f11f817ec550ef3423d85eb107796bdd1b28
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49644779"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216942"
 ---
 # <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>创建、训练和发布 QnA Maker 知识库
 
@@ -57,9 +57,7 @@ ms.locfileid: "49644779"
 
 11. 在右上角选择“保存并训练”，以便保存所做的编辑并训练 QnA Maker 模型。 如果不保存，编辑的内容不会保留。
 
-   ![保存并训练](../media/qnamaker-quickstart-kb/add-qna-pair2.png)
-
-12. 在右上角选择“测试”，以便测试所做的更改是否已生效。 在框中输入“你好”，然后选择 Enter。 此时会看到已创建的作为响应的解答。
+12. 在右上角选择“测试”，以便测试所做的更改是否已生效。 在框中输入“`hi there`”，然后选择 Enter。 此时会看到已创建的作为响应的解答。
 
 13. 选择“检查”，更详细地检查响应。 测试窗口用于测试对 KB 所做的更改，然后会发布这些更改。
 

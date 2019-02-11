@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: bc724f57a25e2ca12d334192d2171899345e72de
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: be0dd7147e3864befa90434ade86b4032cd45cc3
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247375"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013179"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>安全框架：通信安全 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -34,7 +34,7 @@ ms.locfileid: "51247375"
 | **移动客户端** | <ul><li>[实施证书绑定](#cert-pinning)</li></ul> |
 | **WCF** | <ul><li>[启用 HTTPS - 安全传输通道](#https-transport)</li><li>[WCF：将消息安全保护级别设置为 EncryptAndSign](#message-protection)</li><li>[WCF：使用最低特权帐户运行 WCF 服务](#least-account-wcf)</li></ul> |
 | **Web API** | <ul><li>[强制要求发往 Web API 的所有流量都通过 HTTPS 连接传输](#webapi-https)</li></ul> |
-| **Azure Redis 缓存** | <ul><li>[确保与 Azure Redis 缓存之间的通信通过 SSL 进行](#redis-ssl)</li></ul> |
+| **用于 Redis 的 Azure 缓存** | <ul><li>[确保与 Azure Redis 缓存之间的通信通过 SSL 进行](#redis-ssl)</li></ul> |
 | **IoT 现场网关** | <ul><li>[保护设备与现场网关之间的通信](#device-field)</li></ul> |
 | **IoT 云网关** | <ul><li>[使用 SSL/TLS 保护设备与云网关之间的通信](#device-cloud)</li></ul> |
 
@@ -146,7 +146,7 @@ ms.locfileid: "51247375"
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [OWASP HTTP 严格传输安全性速查表](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
-| **步骤** | <p>HTTP 严格传输安全性 (HSTS) 是 Web 应用程序使用特殊响应标头指定的一个选用的安全增强功能。 支持的浏览器收到此标头后，将阻止通过 HTTP 将任何通信发送到指定的域，并改为通过 HTTPS 发送所有通信。 它还可以防止浏览器中出现 HTTPS 点击提示。</p><p>若要实现 HSTS，必须在代码或配置中为网站全局配置以下响应标头。Strict-Transport-Security: max-age=300; includeSubDomains。HSTS 可解决以下威胁：</p><ul><li>用户将 http://example.com 加入书签或手动键入此 URL，可能会受到中间人攻击：HSTS 会自动将 HTTP 请求重定向到目标域的 HTTPS</li><li>纯粹只进行 HTTPS 通信的 Web 应用程序无意中包含 HTTP 链接或通过 HTTP 提供内容：HSTS 会自动将 HTTP 请求重定向到目标域的 HTTPS</li><li>中间人攻击者尝试使用无效的证书来截获受害用户发送的流量，并希望该用户接受错误的证书：HSTS 不允许用户重写无效的证书消息</li></ul>|
+| **步骤** | <p>HTTP 严格传输安全性 (HSTS) 是 Web 应用程序使用特殊响应标头指定的一个选用的安全增强功能。 支持的浏览器收到此标头后，将阻止通过 HTTP 将任何通信发送到指定的域，并改为通过 HTTPS 发送所有通信。 它还可以防止浏览器中出现 HTTPS 点击提示。</p><p>若要实现 HSTS，必须在代码或配置中为网站全局配置以下响应标头。Strict-Transport-Security: max-age=300; includeSubDomains。HSTS 可解决以下威胁：</p><ul><li>用户将 http://example.com 加入书签或手动键入时容易受到中间人攻击者的攻击：HSTS 会自动将 HTTP 请求重定向到目标域的 HTTPS</li><li>纯粹只进行 HTTPS 通信的 Web 应用程序无意中包含 HTTP 链接或通过 HTTP 提供内容：HSTS 会自动将 HTTP 请求重定向到目标域的 HTTPS</li><li>中间人攻击者试图使用无效的证书来截获受害用户发送的流量，并希望此用户接受错误的证书：HSTS 不允许用户替代无效的证书消息</li></ul>|
 
 ## <a id="sqlserver-validation"></a>确保加密 SQL Server 连接并验证证书
 
@@ -289,7 +289,7 @@ namespace CertificatePinningExample
 | **适用的技术** | NET Framework 3 |
 | **属性**              | 不适用  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_transport_security_enabled) |
-| **步骤** | 应用程序配置应确保始终使用 HTTPS 来访问敏感信息。<ul><li>**说明：** 如果应用程序需要处理敏感信息但未使用消息级加密，则只能允许它通过加密的传输通道来通信。</li><li>**建议：** 确保禁用 HTTP 传输，改为启用 HTTPS 传输。 例如，将 `<httpTransport/>` 替换为 `<httpsTransport/>` 标记。 不要依赖使用网络配置（防火墙）来保证只能通过安全通道访问应用程序。 从哲学的观点来讲，应用程序不应依赖于网络来保证其安全性。</li></ul><p>从实践的观点来讲，负责保护网络的人不会一直跟进应用程序的不断变化的安全要求。</p>|
+| **步骤** | 应用程序配置应确保始终使用 HTTPS 来访问敏感信息。<ul><li>**解释：** 如果应用程序需要处理敏感信息并且没有使用消息级别加密，则只应允许它通过加密的传输通道进行通信。</li><li>**建议：** 确保禁用 HTTP 传输，改为启用 HTTPS 传输。 例如，将 `<httpTransport/>` 替换为 `<httpsTransport/>` 标记。 不要依赖使用网络配置（防火墙）来保证只能通过安全通道访问应用程序。 从哲学的观点来讲，应用程序不应依赖于网络来保证其安全性。</li></ul><p>从实践的观点来讲，负责保护网络的人不会一直跟进应用程序的不断变化的安全要求。</p>|
 
 ## <a id="message-protection"></a>WCF：将消息安全保护级别设置为 EncryptAndSign
 
@@ -300,10 +300,10 @@ namespace CertificatePinningExample
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 不适用  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
-| **步骤** | <ul><li>**说明：** 当保护级别设置为“none”时，将禁用消息保护。 保密性和完整性是使用适当的设置级别实现的。</li><li>**建议：**<ul><li>当 `Mode=None` 时 - 禁用消息保护</li><li>当 `Mode=Sign` 时 - 将消息签名但不加密；当数据完整性非常重要时应使用该设置</li><li>当 `Mode=EncryptAndSign` 时 - 将消息签名并加密</li></ul></li></ul><p>请考虑禁用加密，仅当只是需要验证信息的完整性而不关心机密性时，才为消息签名。 对于需要验证原始发送者但不传输任何敏感数据的操作或服务约定，这种做法可能很有用。 降低保护级别时，请小心不要在消息中包含任何个人身份信息 (PII)。</p>|
+| **步骤** | <ul><li>**解释：** 当保护级别设置为“none”时，将禁用消息保护。 保密性和完整性是使用适当的设置级别实现的。</li><li>**建议：**<ul><li>当 `Mode=None` 时 - 禁用消息保护</li><li>当 `Mode=Sign` 时 - 将消息签名但不加密；当数据完整性非常重要时应使用该设置</li><li>当 `Mode=EncryptAndSign` 时 - 将消息签名并加密</li></ul></li></ul><p>请考虑禁用加密，仅当只是需要验证信息的完整性而不关心机密性时，才为消息签名。 对于需要验证原始发送者但不传输任何敏感数据的操作或服务约定，这种做法可能很有用。 降低保护级别时，请小心不要在消息中包含任何个人身份信息 (PII)。</p>|
 
 ### <a name="example"></a>示例
-以下示例演示了如何将服务和操作配置为只将消息签名。 `ProtectionLevel.Sign` 的服务约定示例：下面是在服务约定级别使用 ProtectionLevel.Sign 的示例： 
+以下示例演示了如何将服务和操作配置为只将消息签名。 `ProtectionLevel.Sign` 服务协定示例：以下是在服务协定级别处使用 ProtectionLevel.Sign 的示例： 
 ```
 [ServiceContract(Protection Level=ProtectionLevel.Sign] 
 public interface IService 
@@ -313,7 +313,7 @@ public interface IService
 ```
 
 ### <a name="example"></a>示例
-`ProtectionLevel.Sign` 的操作约定示例（用于精细控制）：下面是在操作约定级别使用 `ProtectionLevel.Sign` 的示例：
+`ProtectionLevel.Sign` 操作协定示例（用于精细控制）：以下是在 OperationContract 级别处使用 `ProtectionLevel.Sign` 的示例：
 
 ```
 [OperationContract(ProtectionLevel=ProtectionLevel.Sign] 
@@ -329,7 +329,7 @@ string GetData(int value);
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 不适用  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648826.aspx ) |
-| **步骤** | <ul><li>**说明：** 不要使用管理员或高特权帐户运行 WCF 服务。 否则，如果服务遭到入侵，将导致严重影响。</li><li>**建议：** 最低特权帐户托管 WCF 服务，因为这样可以在遭到攻击时减小应用程序的受攻击面，降低潜在损失。 如果服务帐户需要 MSMQ、事件日志、性能计数器和文件系统等基础结构资源的其他访问权限，应该授予对这些资源的相应权限，使 WCF 服务能够成功运行。</li></ul><p>如果服务需要代表原始调用方访问特定的资源，请使用模拟和委派来传送调用方的标识，以便在下游进行授权检查。 在开发方案中，请使用本地网络服务帐户，这是一个特权降低的特殊内置帐户。 在生产方案中，请创建最低特权的自定义域服务帐户。</p>|
+| **步骤** | <ul><li>**解释：** 不要在管理员或高特权帐户下运行 WCF 服务。 否则，如果服务遭到入侵，将导致严重影响。</li><li>**建议：** 请使用最低特权帐户托管 WCF 服务，因为这样可以在遭到攻击时减小应用程序的攻击面，降低潜在损害。 如果服务帐户需要 MSMQ、事件日志、性能计数器和文件系统等基础结构资源的其他访问权限，应该授予对这些资源的相应权限，使 WCF 服务能够成功运行。</li></ul><p>如果服务需要代表原始调用方访问特定的资源，请使用模拟和委派来传送调用方的标识，以便在下游进行授权检查。 在开发方案中，请使用本地网络服务帐户，这是一个特权降低的特殊内置帐户。 在生产方案中，请创建最低特权的自定义域服务帐户。</p>|
 
 ## <a id="webapi-https"></a>强制要求发往 Web API 的所有流量都通过 HTTPS 连接传输
 
@@ -376,12 +376,12 @@ public class ValuesController : ApiController
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure Redis 缓存 | 
+| 组件               | 用于 Redis 的 Azure 缓存 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [Azure Redis SSL 支持](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
-| **步骤** | Redis 服务器不能现成地支持 SSL，但 Azure Redis 缓存可提供此支持。 如果要连接到 Azure Redis 缓存并且客户端支持 SSL（如 StackExchange.Redis），则你应使用 SSL。 默认将为新的 Azure Redis 缓存实例禁用非 SSL 端口。 请确保安全的默认设置不会更改，除非 Redis 客户端依赖 SSL 支持。 |
+| **步骤** | Redis 服务器不能现成地支持 SSL，但 Azure Redis 缓存则可以。 如果要连接到 Azure Redis 缓存并且客户端支持 SSL（如 StackExchange.Redis），则应使用 SSL。 默认情况下，为新的 Azure Redis 缓存实例禁用了非 SSL 端口。 请确保安全的默认设置不会更改，除非 Redis 客户端依赖 SSL 支持。 |
 
 请注意，Redis 旨在由受信任环境中的受信任客户端访问。 这意味着，我们通常不建议将 Redis 实例直接在 Internet 中公开，一般情况下，在不受信任的客户端可以直接访问 Redis TCP 端口或 UNIX 套接字的环境中，也不建议公开 Redis 实例。 
 

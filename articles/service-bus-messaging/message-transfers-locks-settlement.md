@@ -3,22 +3,22 @@ title: Azure 服务总线消息传输、锁定和处置 | Microsoft Docs
 description: 服务总线消息传输和处置操作概述
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
-ms.author: spelluru
-ms.openlocfilehash: a1835e26f67427f84abd8a3cf24ad196fec8e99d
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.author: aschhab
+ms.openlocfilehash: a78409a15acb4e60fc4200778d0f33b3fb566e85
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854416"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846433"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>消息传输、锁定和处置
 
@@ -96,7 +96,7 @@ for (int i = 0; i < 100; i++)
 
 ## <a name="settling-receive-operations"></a>处置接收操作
 
-对于接收操作，服务总线 API 客户端启用两种不同的显式模式：接收并删除和扫视锁定。
+对于接收操作，服务总线 API 客户端启用两种不同的显式模式：*Receive-and-Delete* 和 *Peek-Lock*。
 
 [接收并删除](/dotnet/api/microsoft.servicebus.messaging.receivemode)模式告知代理将它发送到接收客户端的所有消息都在发送时视为已处置。 这意味着在代理将消息置于线路上之后，它会立即被视为已使用。 如果消息传输失败，则消息会丢失。
 

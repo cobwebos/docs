@@ -1,30 +1,29 @@
 ---
-title: Azure 机器学习工作室 REST API 错误代码 | Microsoft Docs
+title: REST API 错误代码 - Azure 机器学习工作室 | Microsoft Docs
 description: 在 Azure 机器学习 Web 服务中执行操作时，可能会返回这些错误代码。
 keywords: ''
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 0923074b-3728-439d-a1b8-8a7245e39be4
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 274fbced61318a6617b04ea3092e8e2f96a10940
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: cb8d0120a4a686321c65016f6e5e41cbee963933
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314895"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478111"
 ---
-# <a name="machine-learning-studio-rest-api-error-codes"></a>机器学习工作室 REST API 错误代码
+# <a name="azure-machine-learning-studio-rest-api-error-codes"></a>Azure 机器学习工作室 REST API 错误代码
  
 在 Azure 机器学习工作室 Web 服务中执行操作时，可能会返回以下错误代码。
  

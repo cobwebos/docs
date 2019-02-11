@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 6f510ac394b939996defe0a7ed49317ec0aabe3b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 9ec502f63df23bab311a45972e31e6df13fa9281
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211989"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792963"
 ---
 # <a name="about-migration"></a>关于迁移
 
@@ -22,7 +22,7 @@ ms.locfileid: "50211989"
 下面是可以使用 Site Recovery 迁移的内容：
 
 - **从本地迁移到 Azure**：将本地 Hyper-V VM、VMware VM 和物理服务器迁移到 Azure。 迁移之后，在本地计算机上运行的工作负荷将在 Azure VM 上运行。 
-- **在 Azure 中迁移**：在 Azure 区域之间迁移 Azure VM。 
+- **在 Azure 内迁移**：在 Azure 区域之间迁移 Azure VM。 
 - **迁移 AWS**：将 AWS Windows 实例迁移到 Azure IaaS VM。 
 
 

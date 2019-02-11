@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2ef88fff1313a0e7b1aa0abb502629512daaf636
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: e45c5a37c4ba12d93ff7f78bb465cb650a7faffb
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633829"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435083"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 用户定义函数与 Apache Hive 和 Apache Pig 流式处理配合使用
 
@@ -45,7 +45,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 * 使用 [Mono (https://mono-project.com)](https://mono-project.com) 运行 .NET 应用程序的__基于 Linux 的 HDInsight__ 群集。 HDInsight 版本 3.6 附带了 Mono 版本 4.2.1。
 
-    有关 Mono 与 .NET Framework 版本的兼容性的详细信息，请参阅 [Mono 兼容性](http://www.mono-project.com/docs/about-mono/compatibility/)。
+    有关 Mono 与 .NET Framework 版本的兼容性的详细信息，请参阅 [Mono 兼容性](https://www.mono-project.com/docs/about-mono/compatibility/)。
 
     若要使用 Mono 的特定版本，请参阅[安装或更新 Mono](../hdinsight-hadoop-install-mono.md) 文档。
 
@@ -55,12 +55,12 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 ## <a name="create-the-c-projects"></a>创建 C\# 项目
 
-### <a name="hive-udf"></a>Hive UDF
+### <a name="apache-hive-udf"></a>Apache Hive UDF
 
 1. 打开 Visual Studio 并创建一个解决方案。 对于项目类型，选择“控制台应用(.NET Framework)”，并将新项目命名为“HiveCSharp”。
 
     > [!IMPORTANT]
-    > 如果使用的是基于 Linux 的 HDInsight 群集，请选择“.NET Framework 4.5”。 有关 Mono 与 .NET Framework 版本的兼容性的详细信息，请参阅 [Mono 兼容性](http://www.mono-project.com/docs/about-mono/compatibility/)。
+    > 如果使用的是基于 Linux 的 HDInsight 群集，请选择“.NET Framework 4.5”。 有关 Mono 与 .NET Framework 版本的兼容性的详细信息，请参阅 [Mono 兼容性](https://www.mono-project.com/docs/about-mono/compatibility/)。
 
 2. 将 Program.cs 的内容替换为以下代码：
 
@@ -115,7 +115,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 3. 生成项目。
 
-### <a name="pig-udf"></a>Pig UDF
+### <a name="apache-pig-udf"></a>Apache Pig UDF
 
 1. 打开 Visual Studio 并创建一个解决方案。 对于项目类型，选择“控制台应用程序”，并将新项目命名为“PigUDF”。
 
@@ -168,7 +168,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
     * 如果此条目可以展开，则在使用 __Azure 存储帐户__作为该群集的默认存储。 要查看该群集的默认存储上的文件，请展开该条目，并双击“（默认容器）”。
 
-    * 如果此条目无法展开，则在使用 __Azure Data Lake Store__ 作为该群集的默认存储。 若要查看该群集的默认存储上的文件，请双击“（默认存储帐户）”条目。
+    * 如果此条目无法展开，则在使用 __Azure Data Lake Storage__ 作为该群集的默认存储。 若要查看该群集的默认存储上的文件，请双击“（默认存储帐户）”条目。
 
 6. 若要上传 .exe 文件，请使用以下方法之一：
 
@@ -176,11 +176,11 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
         ![上传图标](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
     
-    * 如果使用的是 __Azure Data Lake Store__，请右键单击文件列表中的空白区域，并选择“上传”。 最后，选择“HiveCSharp.exe”文件并单击“打开”。
+    * 如果使用的是 __Azure Data Lake Storage__，请右键单击文件列表中的空白区域，并选择“上传”。 最后，选择“HiveCSharp.exe”文件并单击“打开”。
 
     上传“HiveCSharp.exe”完成后，请为“PigUDF.exe”文件重复该上传过程。
 
-## <a name="run-a-hive-query"></a>运行 Hive 查询
+## <a name="run-an-apache-hive-query"></a>运行 Apache Hive 查询
 
 1. 在 Visual Studio 中，打开“服务器资源管理器”。
 
@@ -193,7 +193,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
     ```hiveql
     -- Uncomment the following if you are using Azure Storage
     -- add file wasb:///HiveCSharp.exe;
-    -- Uncomment the following if you are using Azure Data Lake Store
+    -- Uncomment the following if you are using Azure Data Lake Storage
     -- add file adl:///HiveCSharp.exe;
 
     SELECT TRANSFORM (clientid, devicemake, devicemodel)
@@ -212,7 +212,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 6. 单击“刷新”以刷新摘要，直到“作业状态”更改为“已完成”。 若要查看作业输出，请单击“作业输出”。
 
-## <a name="run-a-pig-job"></a>运行 Pig 作业
+## <a name="run-an-apache-pig-job"></a>运行 Apache Pig 作业
 
 1. 使用以下方法之一连接到 HDInsight 群集：
 
@@ -256,10 +256,10 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文档中，已了解了如何在 HDInsight 上通过 Hive 和 Pig 使用 .NET Framework 应用程序。 如果希望了解如何将 Python 与 Hive 和 Pig 配合使用，请参阅[在 HDInsight 中将 Python 与 Hive 和 Pig 配合使用](python-udf-hdinsight.md)。
+在本文档中，已了解了如何在 HDInsight 上通过 Hive 和 Pig 使用 .NET Framework 应用程序。 如果希望了解如何将 Python 与 Hive 和 Pig 配合使用，请参阅[在 HDInsight 中将 Python 与 Apache Hive 和 Apache Pig 配合使用](python-udf-hdinsight.md)。
 
 若要了解使用 Pig 和 Hive 的其他方式以及如何使用 MapReduce，请参阅以下文档：
 
-* [将 Hive 与 HDInsight 配合使用](hdinsight-use-hive.md)
-* [将 Pig 与 HDInsight 配合使用](hdinsight-use-pig.md)
+* [将 Apache Hive 和 HDInsight 配合使用](hdinsight-use-hive.md)
+* [将 Apache Pig 和 HDInsight 配合使用](hdinsight-use-pig.md)
 * [将 MapReduce 与 HDInsight 配合使用](hdinsight-use-mapreduce.md)

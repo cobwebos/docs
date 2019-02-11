@@ -4,12 +4,12 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: f69342bb68b82070ed9b9d82c8800315308febed
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 2d041ccbcf85f1931ca8ebc8b17595c9221c03cc
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50159166"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54414503"
 ---
 ## <a name="add-a-consumer-group-to-your-iot-hub"></a>将使用者组添加到 IoT 中心
 
@@ -19,9 +19,6 @@ ms.locfileid: "50159166"
 
 1. 在 [Azure 门户](https://portal.azure.com/)中打开 IoT 中心。
 
-2. 在左窗格中单击“终结点”，在中间窗格中选择“事件”，在右窗格的“使用者组”下面输入名称，然后单击“保存”。
+2. 在左窗格中单击“内置终结点”，在顶部窗格中选择“事件”，在右窗格的“使用者组”下面输入名称。 更改**默认 TTL** 值并将其恢复为原始值后，单击“保存”。
 
    ![在 IoT 中心创建使用者组](./media/iot-hub-get-started-create-consumer-group/iot-hub-create-consumer-group-azure.png)
-
-
-   

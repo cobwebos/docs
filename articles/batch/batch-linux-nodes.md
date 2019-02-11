@@ -3,7 +3,7 @@ title: '在虚拟机计算节点上运行 Linux - Azure Batch | Microsoft 文档
 description: 了解如何处理 Azure Batch 中 Linux 虚拟机池上的并行计算工作负荷。
 services: batch
 documentationcenter: python
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: na
 ms.date: 06/01/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 45407fb2eca5527c8b24f199c9470311a0e5d6a9
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 1e11f5cfcd80d3aa29530736a7e334c9af741322
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976751"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733716"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>在 Batch 池中预配 Linux 计算节点
 
@@ -67,7 +67,7 @@ Batch 节点代理是一个程序，它在池中的每个节点上运行，并�
 >
 >
 
-## <a name="create-a-linux-pool-batch-python"></a>创建 Linux 池：Batch Python
+## <a name="create-a-linux-pool-batch-python"></a>创建 Linux 池：批处理 Python
 下面的代码片段示范如何使用[用于 Python 的 Microsoft Azure Batch 客户端库][py_batch_package]创建 Ubuntu Server 计算节点池。 有关 Batch Python 模块的参考文档可在“阅读文档”上的 [azure.batch package][py_batch_docs] 处找到。
 
 此代码片段显式创建 [ImageReference][py_imagereference]，并指定它的每个属性（publisher、offer、SKU、version）。 但是，我们建议在生产代码中使用 [list_node_agent_skus][py_list_skus] 方法在运行时从可用映像和节点代理 SKU 组合中做出决定和选择。
@@ -145,7 +145,7 @@ vmc = batchmodels.VirtualMachineConfiguration(
     node_agent_sku_id = ubuntu1404agent.id)
 ```
 
-## <a name="create-a-linux-pool-batch-net"></a>创建 Linux 池：Batch .NET
+## <a name="create-a-linux-pool-batch-net"></a>创建 Linux 池：批处理 .NET
 以下代码片段示范如何使用 [Batch .NET][nuget_batch_net] 客户端库创建 Ubuntu Server 计算节点池。 可以在 docs.microsoft.com 上找到 [Batch .NET 参考文档][api_net]。
 
 以下代码片段使用 [PoolOperations][net_pool_ops].[ListNodeAgentSkus][net_list_skus] 方法从当前支持的市场映像和节点代理 SKU 组合列表中做出选择。 这种做法非常有效，因为支持的组合列表可能随着时间改变。 通常情况下，添加支持的组合。
@@ -350,6 +350,6 @@ GitHub 上 [azure-batch-samples][github_samples] 存储库中的 [Python 代码�
 [py_batch_package]: https://pypi.python.org/pypi/azure-batch
 [py_computenodeuser]: https://docs.microsoft.com/python/api/azure.batch.models.computenodeuser
 [py_imagereference]: https://docs.microsoft.com/python/api/azure.mgmt.batch.models.imagereference
-[py_list_skus]: https://docs.microsoft.com/python/api/azure-batch/azure.batch.operations.AccountOperations?view=azure-python#list-node-agent-skus
+[py_list_skus]: https://docs.microsoft.com/python/api/azure-batch/azure.batch.operations.AccountOperations?view=azure-python
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 [vm_pricing]: https://azure.microsoft.com/pricing/details/virtual-machines/

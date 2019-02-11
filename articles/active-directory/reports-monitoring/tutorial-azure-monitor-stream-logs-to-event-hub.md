@@ -4,7 +4,7 @@ description: 了解如何设置 Azure 诊断，以便将 Azure Active Directory 
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 045f94b3-6f12-407a-8e9c-ed13ae7b43a3
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7582c578e91fb3e36d7a0ecc1da7ede0cefc0f4c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 5c9567c08db25eaeb79e2d27ce1295a54ccf5595
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623753"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174714"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub-preview"></a>教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心（预览版）
 
@@ -77,7 +77,7 @@ ms.locfileid: "51623753"
 * **配置支持的 SIEM 工具**。 若要从事件中心读取数据，大多数工具需要事件中心连接字符串和对 Azure 订阅的某些权限。 带有 Azure Monitor 集成的第三方工具包括但不限于：
     * **Splunk**：若要详细了解如何将 Azure AD 日志与 Splunk 集成，请参阅[使用 Azure Monitor 将 Azure AD 日志与 Splunk 集成](tutorial-integrate-activity-logs-with-splunk.md)。
     
-    * **IBM QRadar**：DSM 和 Azure 事件中心协议可以从 [IBM 支持](http://www.ibm.com/support)站点下载。 若要详细了解如何与 Azure 集成，请访问 [IBM QRadar Security Intelligence Platform 7.3.0](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0) 站点。
+    * **IBM QRadar**：DSM 和 Azure 事件中心协议可以从 [IBM 支持](https://www.ibm.com/support)站点下载。 若要详细了解如何与 Azure 集成，请访问 [IBM QRadar Security Intelligence Platform 7.3.0](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0) 站点。
     
     * **Sumo Logic**：若要设置 Sumo Logic 以使用事件中心的数据，请参阅[安装 Azure AD 应用并查看仪表板](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards)。 
 

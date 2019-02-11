@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 38f15acd16acca2edd558a36ba434a1b0ab045fb
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 9fd9eaf1e62d063026e0e656346baaaade87064f
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50670244"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187138"
 ---
 # <a name="avere-cluster-dns-configuration"></a>Avere 群集 DNS 配置
 
@@ -80,6 +80,6 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 * DNS 域名
 * DNS 搜索域
 
-有关使用此页面的详细信息，请阅读“Avere 群集配置指南”中的 [DNS 设置](<http://library.averesystems.com/ops_guide/4_7/gui_admin_network.html#gui-dns>)。
+有关使用此页面的详细信息，请阅读“Avere 群集配置指南”中的 [DNS 设置](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>)。
 
 

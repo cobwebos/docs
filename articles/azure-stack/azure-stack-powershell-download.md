@@ -11,15 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 5b90ebc554738c89816cf88f8984ffab01c87d4d
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: 05dd3b292f90964c6af21890aaeafab9849a09ed
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451306"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242971"
 ---
 # <a name="download-azure-stack-tools-from-github"></a>从 GitHub 下载 Azure Stack 工具
 
@@ -51,7 +52,7 @@ cd AzureStack-Tools-master
 
 **AzureStack-Tools** 存储库包含支持以下 Azure Stack 功能的 PowerShell 模块：  
 
-| 功能 | 说明 | 谁可以使用此模块？ |
+| 功能 | 描述 | 谁可以使用此模块？ |
 | --- | --- | --- |
 | [云功能](user/azure-stack-validate-templates.md) | 使用此模块可获取云的云功能。 例如，可以使用此模块来获取 API 版本和 Azure 资源管理器资源等云功能。 还可以使用此模块获取 Azure Stack 和 Azure 云的 VM 扩展。 | 云操作员和用户 |
 | [Azure Stack 的资源管理器策略](user/azure-stack-policy-module.md) | 使用此模块可以配置版本和服务可用性与 Azure Stack 相同的 Azure 订阅或 Azure 资源组。 | 云操作员和用户 |

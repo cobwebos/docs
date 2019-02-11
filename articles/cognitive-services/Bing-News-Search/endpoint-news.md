@@ -6,43 +6,52 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: conceptual
-ms.date: 11/28/2017
+ms.date: 1/10/2019
 ms.author: v-gedod
-ms.openlocfilehash: 0ed8b9048c04c4aff5214cea697810a0c573559e
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: a41886927fcc34d7549cbf160dd2e7aa2e9a21c4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800539"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203668"
 ---
-# <a name="bing-news-search-endpoints"></a>必应新闻搜索终结点
-“新闻搜索 API”返回新闻文章、网页、图像、视频和[实体](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)。 实体包含有关人员、地点或主题的摘要信息。
-## <a name="endpoints"></a>终结点
-若要使用必应 API 获取新闻搜索结果，请向以下某个终结点发送 `GET` 请求。 标头和 URL 参数定义了更多规范。
+# <a name="bing-news-search-api-endpoints"></a>必应新闻搜索 API 终结点
 
-终结点 1：根据用户的搜索查询返回新闻项。 如果搜索查询为空，则该调用将返回热门新闻文章。 查询 `?q=""` 选项也可以与 `/news` URL 结合使用。 有关可用性，请参阅[支持的国家/地区和市场](language-support.md#supported-markets-for-news-search-endpoint)。
+“新闻搜索 API”返回新闻文章、网页、图像、视频和[实体](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)。 实体包含有关人员、地点或主题的摘要信息。
+
+## <a name="endpoints"></a>终结点
+
+若要使用必应新闻搜索 API 获取新闻搜索结果，请向以下某个终结点发送 `GET` 请求。 标头和 URL 参数定义了更多规范。
+
+### <a name="news-items-by-search-query"></a>搜索查询的新闻项
+
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search
 ```
 
-终结点 2：按类别返回热门新闻项。 可以使用 `category=business`、`category=sports` 或 `category=entertainment` 专门请求热门商业、体育或娱乐文章。  `category` 参数只能与 `/news` URL 结合使用。 指定类别有一些正式要求；请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters)文档中的 `category`。 有关可用性，请参阅[支持的国家/地区和市场](language-support.md#supported-markets-for-news-endpoint)。
+基于搜索查询返回的新闻项。 如果搜索查询为空，API 将返回不同类别的热门资讯文章。 通过 URL 编码搜索术语发送查询并将其附加到 `q=""` 参数。 有关可用性，请参阅[支持的国家/地区和市场](language-support.md#supported-markets-for-news-search-endpoint)。
+
+### <a name="top-news-items-by-category"></a>类别的热门新闻项
+
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-终结点 3：返回当前趋向于社交网络的新闻主题。 当包含 `/trendingtopics` 选项时，必应搜索会忽略其他几个参数，例如 `freshness` 和 `?q=""`。 有关可用性，请参阅[支持的国家/地区和市场](language-support.md#supported-markets-for-news-trending-endpoint)。
+按类别返回热门新闻项。 可以使用 `category=business`、`category=sports` 或 `category=entertainment` 专门请求热门商业、体育或娱乐文章。  `category` 参数只能与 `/news` URL 结合使用。 指定类别有一些正式要求；请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters)文档中的 `category`。 通过 URL 编码搜索术语发送查询并将其附加到 `q=""` 参数。 有关可用性，请参阅[支持的国家/地区和市场](language-support.md#supported-markets-for-news-endpoint)。
+
+### <a name="trending-news-topics"></a>热门新闻主题 
+
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics
 ```
 
-有关标头、参数、市场代码、响应对象、错误等的详细信息，请参阅[必应新闻搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) 参考。
-## <a name="response-json"></a>响应 JSON
-对新闻搜索请求的响应包括作为 JSON 对象的结果。 分析结果需要处理每种类型元素的过程。 有关示例，请参阅[教程](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/tutorial-bing-news-search-single-page-app)和[源代码](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/tutorial-bing-news-search-single-page-app-source)。
+返回当前社交网络上热门的新闻主题。 当包含 `/trendingtopics` 选项时，必应搜索会忽略其他几个参数，例如 `freshness` 和 `?q=""`。 有关可用性，请参阅[支持的国家/地区和市场](language-support.md#supported-markets-for-news-trending-endpoint)。
 
 ## <a name="next-steps"></a>后续步骤
-必应 API 支持根据其类型返回结果的搜索操作。 所有搜索终结点均将结果作为 JSON 响应对象返回。  所有终结点支持后列查询：按经度、纬度和搜索半径返回特定语言和/或位置的查询。
 
-有关每个终结点支持的参数的完整信息，请参阅每个类型的参考页面。
+有关标头、参数、市场代码、响应对象、错误等的详细信息，请参阅[必应新闻搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) 参考。
+
+若要完整了解每个终结点支持的参数，请参阅每种类型对应的参考页面。
 有关使用新闻搜索 API 的基本请求的示例，请参阅[必应新闻搜索快速入门](https://docs.microsoft.com/azure/cognitive-services/bing-news-search)。

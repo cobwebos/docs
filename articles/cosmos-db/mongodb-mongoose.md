@@ -1,27 +1,26 @@
 ---
-title: 将 Mongoose 框架与 Azure Cosmos DB 配合使用 | Microsoft Docs
-description: 了解如何将 Node.js Mongoose 应用连接到 Azure Cosmos DB
-services: cosmos-db
-author: slyons
-manager: kfile
+title: 将 Node.js Mongoose 应用程序连接到 Azure Cosmos DB
+description: 了解如何在 Azure Cosmos DB 中使用 Mongoose 框架来存储和管理数据。
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 01/08/2018
-ms.author: sclyon
-ms.openlocfilehash: 8cfa53a1792d8e01c05aad8e4a1a0b5239a092c1
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 12/26/2018
+author: sivethe
+ms.author: sivethe
+ms.custom: seodec18
+ms.openlocfilehash: 6cdfa7492a9916cc3e2300ad71e21acfb68e3d30
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857375"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352234"
 ---
-# <a name="azure-cosmos-db-using-the-mongoose-framework-with-azure-cosmos-db"></a>Azure Cosmos DB：将 Mongoose 框架与 Azure Cosmos DB 配合使用
+# <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>将 Node.js Mongoose 应用程序连接到 Azure Cosmos DB
 
-本教程演示在 Azure Cosmos DB 中存储数据时如何使用 [Mongoose 框架](http://mongoosejs.com/)。 本演练针对 Azure Cosmos DB 使用 MongoDB API。 不熟悉该接口的读者应知道，Mongoose 是 Node.js 中适用于 MongoDB 的对象建模框架，提供简单直接的、基于架构的解决方案来为应用程序数据建模。
+本教程演示了在 Cosmos DB 中存储数据时如何使用 [Mongoose 框架](https://mongoosejs.com/)。 我们使用 Azure Cosmos DB 的用于 MongoDB 的 API 来执行本演练。 不熟悉该接口的读者应知道，Mongoose 是 Node.js 中适用于 MongoDB 的对象建模框架，提供简单直接的、基于架构的解决方案来为应用程序数据建模。
 
-Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。
+Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Cosmos DB 核心的全球分布和水平缩放功能。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,9 +30,9 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 [Node.js](https://nodejs.org/) 版本 v0.10.29 或更高版本。
 
-## <a name="create-an-azure-cosmos-db-account"></a>创建 Azure Cosmos DB 帐户
+## <a name="create-a-cosmos-account"></a>创建 Cosmos 帐户
 
-让我们创建一个 Azure Cosmos DB 帐户。 如果已经有想要使用的帐户，可以跳到 [安装 Node.js 应用程序](#SetupNode)。 如果使用 Azure Cosmos DB 模拟器，请遵循 [Azure Cosmos DB 模拟器](local-emulator.md)中的步骤设置该模拟器，并直接跳到[设置 Node.js 应用程序](#SetupNode)。
+让我们创建一个 Cosmos 帐户。 如果已经有想要使用的帐户，可以跳到 [安装 Node.js 应用程序](#SetupNode)。 如果使用 Azure Cosmos DB 模拟器，请遵循 [Azure Cosmos DB 模拟器](local-emulator.md)中的步骤设置该模拟器，并直接跳到[设置 Node.js 应用程序](#SetupNode)。
 
 [!INCLUDE [cosmos-db-create-dbaccount-mongodb](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
@@ -74,7 +73,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     COSMOSDB_PASSWORD=cosmos-secret
     ```
 
-1. 将以下代码添加到 index.js 末尾，以使用 Mongoose 框架连接到 Azure Cosmos DB。
+1. 将以下代码添加到 index.js 末尾，以使用 Mongoose 框架连接到 Cosmos DB。
     ```JavaScript
     mongoose.connect(process.env.COSMOSDB_CONNSTR+"?ssl=true&replicaSet=globaldb", {
       auth: {
@@ -90,19 +89,19 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
     连接到 Azure Cosmos DB 后，可以在 Mongoose 中立即开始设置对象模型。
 
-## <a name="caveats-to-using-mongoose-with-azure-cosmos-db"></a>有关将 Mongoose 与 Azure Cosmos DB 配合使用的注意事项
+## <a name="caveats-to-using-mongoose-with-cosmos-db"></a>有关将 Mongoose 与 Cosmos DB 配合使用的注意事项
 
-对于创建的每个模型，Mongoose 会在幕后创建新的 MongoDB 集合。 但是，考虑到 Azure Cosmos DB 的按集合计费模型，如果有多个稀疏填充的对象模型，则它可能不是最具成本效益的方式。
+对于你创建的每个模型，Mongoose 都会创建一个新集合。 但是，考虑到 Cosmos DB 的按集合计费模型，如果有多个稀疏填充的对象模型，则它可能不是最具成本效益的方式。
 
 本演练介绍上述两种模型。 首先演练如何为每个集合存储一种类型的数据。 这是 Mongoose 的实际行为。
 
-Mongoose 还存在称作[鉴别器](http://mongoosejs.com/docs/discriminators.html)的概念。 鉴别器是架构继承机制。 使用鉴别器可在同一底层 MongoDB 集合的底层创建多个具有重叠架构的模型。
+Mongoose 还存在称作[鉴别器](https://mongoosejs.com/docs/discriminators.html)的概念。 鉴别器是架构继承机制。 使用鉴别器可在同一底层 MongoDB 集合的底层创建多个具有重叠架构的模型。
 
 可将各种数据模型存储在同一集合中，然后在查询时使用筛选子句，只提取所需的数据。
 
 ### <a name="one-collection-per-object-model"></a>每个对象模型一个集合
 
-默认的 Mongoose 行为是在每次创建对象模型时创建一个 MongoDB 集合。 本部分探讨如何使用适用于 Azure Cosmos DB 的 MongoDB 实现此目的。 当对象模型包含大量数据时，我们建议对 Azure Cosmos DB 使用此方法。 这是 Mongoose 的默认操作模型，因此，如果你熟悉 Mongoose 的话，则可能也熟悉此模型。
+默认的 Mongoose 行为是在每次创建对象模型时创建一个 MongoDB 集合。 本部分探讨了如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 来实现此目的。 当对象模型包含大量数据时，我们建议使用此方法。 这是 Mongoose 的默认操作模型，因此，如果你熟悉 Mongoose 的话，则可能也熟悉此模型。
 
 1. 再次打开 ```index.js```。
 
@@ -153,7 +152,7 @@ Mongoose 还存在称作[鉴别器](http://mongoosejs.com/docs/discriminators.ht
     });
     ```
 
-1. 最后，将对象保存到 Azure Cosmos DB。 这会在幕后创建一个集合。
+1. 最后，将对象保存到 Cosmos DB。 这会在幕后创建一个集合。
 
     ```JavaScript
     family.save((err, saveFamily) => {
@@ -182,11 +181,11 @@ Mongoose 还存在称作[鉴别器](http://mongoosejs.com/docs/discriminators.ht
     });
     ```
 
-1. 现在，请转到 Azure 门户，可以看到 Azure Cosmos DB 中创建了两个集合。
+1. 现在，请转到 Azure 门户，可以看到 Cosmos DB 中创建了两个集合。
 
-    ![Node.js 教程 - Azure 门户的屏幕截图，其中显示 Azure Cosmos DB 帐户，并突出显示了多个集合名称 - Node 数据库][mutiple-coll]
+    ![Node.js 教程 - Azure 门户的屏幕截图，其中显示 Azure Cosmos DB 帐户，并突出显示了多个集合名称 - Node 数据库][multiple-coll]
 
-1. 最后，我们从 Azure Cosmos DB 读取数据。 由于我们使用的是默认 Mongoose 操作模型，读取操作与 Mongoose 的其他读取操作相同。
+1. 最后，我们从 Cosmos DB 读取数据。 由于我们使用的是默认 Mongoose 操作模型，读取操作与 Mongoose 的其他读取操作相同。
 
     ```JavaScript
     Family.find({ 'children.gender' : "male"}, function(err, foundFamily){
@@ -196,7 +195,7 @@ Mongoose 还存在称作[鉴别器](http://mongoosejs.com/docs/discriminators.ht
 
 ### <a name="using-mongoose-discriminators-to-store-data-in-a-single-collection"></a>使用 Mongoose 鉴别器在单个集合中存储数据
 
-在此方法中，我们使用 [Mongoose 鉴别器](http://mongoosejs.com/docs/discriminators.html)来帮助优化每个 Azure Cosmos DB 集合的成本。 使用鉴别器可以定义区分的“键”，使用该键可以存储、区分和筛选不同的对象模型。
+在此方法中，我们使用 [Mongoose 鉴别器](https://mongoosejs.com/docs/discriminators.html)来帮助优化每个集合的成本。 使用鉴别器可以定义区分的“键”，使用该键可以存储、区分和筛选不同的对象模型。
 
 我们将在此处创建一个基对象模型、定义区分键，并将“Family”和“VacationDestinations”作为扩展添加到基模型。
 
@@ -301,7 +300,7 @@ Mongoose 还存在称作[鉴别器](http://mongoosejs.com/docs/discriminators.ht
     });
     ```
 
-可以看到，Mongoose 鉴别器的用法非常简单。 如果你的某个应用使用 Mongoose 框架，可以根据本教程中所述的方法，让该应用程序在 Azure Cosmos DB 上的 MongoDB API 中正常运行，且无需做出过多的更改。
+可以看到，Mongoose 鉴别器的用法非常简单。 如果你的某个应用使用 Mongoose 框架，可以根据本教程中所述的方法，让该应用程序使用 Azure Cosmos 的用于 MongoDB 的 API 正常运行，且无需做出过多的更改。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -309,7 +308,9 @@ Mongoose 还存在称作[鉴别器](http://mongoosejs.com/docs/discriminators.ht
 
 ## <a name="next-steps"></a>后续步骤
 
-在[针对 MongoDB 功能和语法的 MongoDB API 支持](mongodb-feature-support.md)中详细了解 Azure Cosmos DB MongoDB API 支持的 MongoDB 操作、运算符、阶段、命令和选项。
+- 了解如何将 [Studio 3T](mongodb-mongochef.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
+- 了解如何将 [Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
+- 使用 Azure Cosmos DB 的用于 MongoDB 的 API 浏览 MongoDB [示例](mongodb-samples.md)。
 
 [alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png
-[mutiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png
+[multiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png

@@ -11,14 +11,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 03/09/2018
+ms.date: 12/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: b90009c1cd08a1004e58c4b9f25cd6350712fbcd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 704aa488d40a18d7be0b64c9fc9a1bd33f8a3d96
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358602"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184536"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>解决资源提供程序注册的错误
 
@@ -47,9 +47,9 @@ Message: The subscription is not registered to use namespace {resource-provider-
 
 可能由于下三种原因之一而收到此错误：
 
-1. 尚未为订阅注册资源提供程序
-1. 资源类型不支持该 API 版本
-1. 资源类型不支持该位置
+* 尚未为订阅注册资源提供程序
+* 资源类型不支持该 API 版本
+* 资源类型不支持该位置
 
 ## <a name="solution-1---powershell"></a>解决方案 1 - PowerShell
 
@@ -101,10 +101,22 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
 可以通过门户查看注册状态，并注册资源提供程序命名空间。
 
+1. 在门户中，选择“所有服务”。
+
+   ![选择所有服务](./media/resource-manager-register-provider-errors/select-all-services.png)
+
+1. 选择 **订阅**。
+
+   ![选择订阅](./media/resource-manager-register-provider-errors/select-subscriptions.png)
+
+1. 从订阅列表中，选择要用于注册资源提供程序的订阅。
+
+   ![选择订阅以注册资源提供程序](./media/resource-manager-register-provider-errors/select-subscription-to-register.png)
+
 1. 对于订阅，选择“资源提供程序”。
 
    ![选择资源提供程序](./media/resource-manager-register-provider-errors/select-resource-provider.png)
 
-1. 查看资源提供程序的列表，根据需要选择“注册”链接，注册尝试部署的类型的资源提供程序。
+1. 查看资源提供程序列表，根据需要选择“注册”链接，注册尝试部署的类型的资源提供程序。
 
    ![列出资源提供程序](./media/resource-manager-register-provider-errors/list-resource-providers.png)

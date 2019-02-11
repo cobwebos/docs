@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 01/03/2019
 ms.author: danlep
-ms.openlocfilehash: e03a35b31c9089abe973c7e4388b508f668a3970
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 73c61c62a84642b93ed96cdd80e258a1128fef6a
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619837"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077465"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>将容器实例部署到 Azure 虚拟网络
 
@@ -33,25 +33,28 @@ ms.locfileid: "52619837"
 
 将容器组部署到虚拟网络时存在某些限制。
 
-* 不支持 Windows 容器
 * 若要将容器组部署到某个子网，该子网不能包含其他任何资源类型。 将容器组部署到现有子网之前，请从该子网中删除所有现有资源，或创建新的子网。
 * 部署到虚拟网络的容器组目前不支持公共 IP 地址或 DNS 名称标签。
 * 由于涉及到其他网络资源，将容器组部署到虚拟网络通常是比部署标准容器实例要慢一些。
 
 ## <a name="preview-limitations"></a>预览版限制
 
-尽管此功能已推出预览版，但在将容器实例部署到虚拟网络时仍然存在以下限制。
+尽管此功能已推出预览版，但在将容器实例部署到虚拟网络时仍然存在以下限制。 
 
-**支持的**区域：
+**支持的区域和资源限制**
 
-* 北欧 (northeurope)
-* 西欧 (westeurope)
-* 美国西部 (westus)
+| 位置 | 操作系统 | CPU | 内存 (GB) |
+| -------- | :---: | :---: | :-----------: |
+| 西欧 | Linux | 4 | 14 |
+| 美国东部、美国西部 | Linux | 2 | 3.5 |
+| 澳大利亚东部、北欧 | Linux | 1 | 1.5 |
 
-**不支持的**网络资源：
+容器资源限制可能与这些区域中非网络容器实例的限制不同。 目前，仅 Linux 容器支持此功能。 计划提供 Windows 支持。
 
-* 网络安全组
+**不受支持的网络资源和功能**
+
 * Azure 负载均衡器
+* 虚拟网络对等互连
 
 将容器组部署到虚拟网络后，**删除网络资源**需要执行[额外的步骤](#delete-network-resources)。
 

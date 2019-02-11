@@ -1,6 +1,6 @@
 ---
-title: 上传数据（.NET - Azure 搜索）| Microsoft Docs
-description: 了解如何使用 .NET SDK 将数据上传到 Azure 搜索中的索引。
+title: 使用 .NET SDK 在代码中上传数据 - Azure 搜索
+description: 了解如何使用 C# 示例代码和 .NET SDK 将数据上传到 Azure 搜索中的全文可搜索索引。
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -9,12 +9,13 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/13/2017
-ms.openlocfilehash: dc59531b282f6c99dd399ac384a8c6264ee260ea
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: a34a48f8816315602fc497d4f39dcfee7fe2b032
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258759"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634892"
 ---
 # <a name="upload-data-to-azure-search-using-the-net-sdk"></a>使用 .NET SDK 将数据上传到 Azure 搜索
 > [!div class="op_single_selector"]
@@ -148,7 +149,7 @@ Console.WriteLine("Waiting for documents to be indexed...\n");
 Thread.Sleep(2000);
 ```
 
-注意对 `Index` 的调用周围的 `try`/`catch` catch 块处理编制索引可能出现的重要错误情况。 如果 Azure 搜索服务无法为 Batch 中的某些文档编制索引，`Documents.Index` 将引发 `IndexBatchException`。 如果在服务负载过大时为文档编制索引，可能会发生这种情况。 **强烈建议在代码中显式处理这种情况。** 可以延迟为失败的文档编制索引，并重试，也可以像此示例一样记录并继续执行，还可以执行其他操作，具体取决于应用程序对数据一致性的要求。
+注意对 `Index` 的调用周围的 `try`/`catch` catch 块处理编制索引可能出现的重要错误情况。 如果 Azure 搜索服务无法为 Batch 中的某些文档编制索引，`Documents.Index` 将引发 `IndexBatchException`。 如果在服务负载过大时为文档编制索引，可能会发生这种情况。 **强烈建议在代码中显式处理这种情况。**  可以延迟为失败的文档编制索引，并重试，也可以像此示例一样记录并继续执行，还可以执行其他操作，具体取决于应用程序对数据一致性的要求。
 
 最后，上面示例中的代码延迟了两秒钟。 编制索引在 Azure 搜索服务中异步进行，因此，示例应用程序需要等待很短时间，以确保文档可用于搜索。 此类延迟通常仅在演示、测试和示例应用程序中是必需的。
 
@@ -204,14 +205,14 @@ public partial class Hotel
 }
 ```
 
-要注意的第一个问题是，`Hotel` 的每个公共属性均对应于索引定义中的一个字段，但有一个重要差异：每个字段的名称均以小写字母开头（“骆驼拼写法”），而 `Hotel` 的每个公共属性名称均以大写字母开头（“帕斯卡拼写法”）。 在执行目标架构不受应用程序开发人员控制的数据绑定的 .NET 应用程序中，这种情况很常见。 不必违反 .NET 命名准则将属性名设为 camel 大小写，而可以使用 `[SerializePropertyNamesAsCamelCase]` 属性指示 SDK 将属性名自动映射到 camel 大小写。
+首先要注意的是 `Hotel` 的每个公共属性都对应于索引定义中的一个字段，但有一个重要差异：每个字段的名称以小写字母开头（“骆驼拼写法”），而 `Hotel` 的每个公共属性的名称以大写字母开头（“帕斯卡拼写法”）。 在执行目标架构不受应用程序开发人员控制的数据绑定的 .NET 应用程序中，这种情况很常见。 不必违反 .NET 命名准则将属性名设为 camel 大小写，而可以使用 `[SerializePropertyNamesAsCamelCase]` 属性指示 SDK 将属性名自动映射到 camel 大小写。
 
 > [!NOTE]
-> Azure 搜索 .NET SDK 使用 [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm) 库将自定义模型对象序列化为 JSON 和从 JSON 反序列化。 如果需要，可以自定义此序列化。 可在[使用 JSON.NET 的自定义序列](search-howto-dotnet-sdk.md#JsonDotNet)中了解更多详细信息。 此类的一个示例是对上面的示例代码中的 `DescriptionFr` 属性使用 `[JsonProperty]` 特性。
+> Azure 搜索 .NET SDK 使用 [NewtonSoft JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm) 库将自定义模型对象序列化为 JSON 和从 JSON 反序列化。 如果需要，可以自定义此序列化。 可在[使用 JSON.NET 的自定义序列](search-howto-dotnet-sdk.md#JsonDotNet)中了解更多详细信息。 此类的一个示例是对上面的示例代码中的 `DescriptionFr` 属性使用 `[JsonProperty]` 特性。
 > 
 > 
 
-有关 `Hotel` 类的第二个重要问题是公共属性的数据类型。 这些属性的 .NET 类型映射到它们在索引定义中的等效字段类型。 例如，`Category` 字符串属性映射到 `DataType.String` 类型的 `category` 字段。 `bool?` 和 `DataType.Boolean`、`DateTimeOffset?`和 `DataType.DateTimeOffset` 等之间存在相似的类型映射。 [Azure 搜索 .NET SDK 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_)中的 `Documents.Get` 方法记录了类型映射的具体规则。
+有关 `Hotel` 类的第二个重要问题是公共属性的数据类型。 这些属性的 .NET 类型映射到它们在索引定义中的等效字段类型。 例如，`Category` 字符串属性映射到 `DataType.String` 类型的 `category` 字段。 `bool?` 和 `DataType.Boolean`、`DateTimeOffset?`和 `DataType.DateTimeOffset` 等之间存在相似的类型映射。 [Azure 搜索 .NET SDK 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)中的 `Documents.Get` 方法记录了类型映射的具体规则。
 
 使用自己的类作为文档的这种功能可以在这两个方向上正常工作；此外，还可以检索搜索结果，并使用 SDK 自动将结果反序列化为所选类型，如 [下一篇文章](search-query-dotnet.md)中所示。
 
@@ -224,7 +225,7 @@ public partial class Hotel
 
 设计自己的模型类以映射到 Azure 搜索索引时，建议将值类型的属性（如 `bool` 和 `int`）声明为可以为 null（例如，`bool?` 而不是 `bool`）。 如果使用不可为 null 属性，必须 **保证** 索引中的所有文档的对应字段都不包含 null 值。 该 SDK 和 Azure 搜索服务都不会帮助强制实施此检查。
 
-这不只是假想的问题：假设将新字段添加到 `DataType.Int32`类型的现有索引。 更新索引定义后，所有文档的该新字段都具有 null 值（因为 Azure 搜索中的所有类型都可以为 null）。 如果随后使用该字段具有不可为 null `int` 属性的模型类，则在尝试检索文档时会获得如下所示的 `JsonSerializationException`：
+这不只是假想的问题：假设将新字段添加到 `DataType.Int32` 类型的现有索引。 更新索引定义后，所有文档的该新字段都具有 null 值（因为 Azure 搜索中的所有类型都可以为 null）。 如果随后使用该字段具有不可为 null `int` 属性的模型类，则在尝试检索文档时会获得如下所示的 `JsonSerializationException`：
 
     Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 

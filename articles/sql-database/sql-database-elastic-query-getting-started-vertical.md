@@ -3,7 +3,7 @@ title: 跨数据库查询（垂直分区）入门 | Microsoft 文档
 description: 如何在垂直分区数据库中使用弹性数据库查询
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 07/03/2018
-ms.openlocfilehash: e665e00c9f769f4ee1f6e468ee6a03ee28271d5b
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.date: 01/25/2019
+ms.openlocfilehash: 116a465a0ddc913e342e0ffcc1fb29f5bf969419
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239776"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464154"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>跨数据库查询（纵向分区）入门（预览）
 
@@ -33,7 +33,7 @@ ms.locfileid: "50239776"
 
 ## <a name="create-the-sample-databases"></a>创建示例数据库
 
-首先，我们在相同或不同逻辑服务器中创建两个数据库 **Customers** 和 **Orders**。
+首先，我们在相同或不同 SQL 数据库服务器中创建两个数据库：Customers 和 Orders。
 
 在 **Orders** 数据库中执行以下查询以创建 **OrderInformation** 表并输入示例数据。
 

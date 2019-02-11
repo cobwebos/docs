@@ -1,12 +1,10 @@
 ---
-title: Azure 虚拟网络中资源的名称解析 | Microsoft Docs
+title: Azure 虚拟网络中资源的名称解析
+titlesuffix: Azure Virtual Network
 description: Azure IaaS 名称解析方案、混合解决方案、不同的云服务之间、Active Directory 和使用自己的 DNS 服务器。
 services: virtual-network
 documentationcenter: na
 author: subsarma
-manager: vitinnan
-editor: ''
-ms.assetid: 5d73edde-979a-470a-b28c-e103fcf07e3e
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: 53e3a298dd8a3eebca1943d9bade51187f14d722
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: e63db9dd5dcd48e19c75608c39c4c0b62db24527
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40037936"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221192"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虚拟网络中资源的名称解析
 
@@ -125,7 +123,7 @@ options timeout:1 attempts:5
 resolv.conf 文件通常是自动生成的，不应进行编辑。 添加 *options* 行的具体步骤因发行版而异：
 
 * **Ubuntu**（使用 resolvconf）：
-  1. 将 *options* 行添加到 **/etc/resolveconf/resolv.conf.d/head**。
+  1. 将 options 行添加到 /etc/resolveconf/resolv.conf.d/tail。
   2. 运行 `resolvconf -u` 以进行更新。
 * **SUSE**（使用 netconf）：
   1. 将“timeout:1 attempts:5”添加到“/etc/sysconfig/network/config”中的 NETCONFIG_DNS_RESOLVER_OPTIONS="" 参数。 
@@ -159,7 +157,7 @@ DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本�
 
 如果需要，可以使用 PowerShell 或 API 确定内部 DNS 后缀：
 
-* 对于 Azure 资源管理器部署模型中的虚拟网络，可以通过[网络接口卡 REST API](/rest/api/virtualnetwork/networkinterfaces/get)、[Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) PowerShell cmdlet 和 [az network nic show](/cli/azure/network/nic#az-network-nic-show) Azure CLI 命令获取该后缀。
+* 对于 Azure 资源管理器部署模型中的虚拟网络，可以通过[网络接口卡 REST API](/rest/api/virtualnetwork/networkinterfaces)、[Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) PowerShell cmdlet 和 [az network nic show](/cli/azure/network/nic#az-network-nic-show) Azure CLI 命令获取该后缀。
 * 在经典部署模型中，可以通过 [Get Deployment API](https://msdn.microsoft.com/library/azure/ee460804.aspx) 调用或 [Get-AzureVM -Debug](/powershell/module/servicemanagement/azure/get-azurevm) cmdlet 获取该后缀。
 
 如果不想将查询转发到 Azure，应提供自己的 DNS 解析。 DNS 解决方案需要：
@@ -197,6 +195,11 @@ DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本�
 > 
 
 使用 Azure 资源管理器部署模型时，可为虚拟网络和网络接口指定 DNS 服务器。 有关详细信息，请参阅[管理虚拟网络](manage-virtual-network.md)和[管理网络接口](virtual-network-network-interface.md)。
+
+> [!NOTE]
+> 如果为虚拟网络选择自定义 DNS 服务器，则必须至少指定一个 DNS 服务器 IP 地址；否则，虚拟网络将忽略配置，而改用由 Azure 提供的 DNS。
+> 
+> 
 
 使用经典部署模型时，可以在 Azure 门户或[网络配置文件](https://msdn.microsoft.com/library/azure/jj157100)中指定虚拟网络的 DNS 服务器。 对于云服务器，可以通过[服务配置文件](https://msdn.microsoft.com/library/azure/ee758710)或者在 PowerShell 中使用 [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm) 指定 DNS 服务器。
 

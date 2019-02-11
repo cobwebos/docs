@@ -1,5 +1,5 @@
 ---
-title: 在用于容器的 Web 应用中创建多容器（预览版）应用
+title: 在 Web 应用中为容器创建多容器应用 - Azure 应用服务
 description: 了解如何配合 WordPress 和 MySQL 应用，通过 Docker Compose 和 Kubernetes 配置文件在 Azure 上使用多个容器。
 keywords: azure 应用服务, web 应用, linux, docker compose, 多容器, 用于容器的 web 应用, 多个容器, 容器, kubernetes, wordpress, azure db for mysql, 包含容器的生产数据库
 services: app-service
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: msangapu
-ms.custom: mvc
-ms.openlocfilehash: c8002b10e2c7c0823cd59bf300283d04fca5ce2e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.custom: seodec18
+ms.openlocfilehash: c9759b8900f0579ccd56d001d50d65aedce2b445
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390204"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716032"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>教程：在用于容器的 Web 应用中创建多容器（预览版）应用
 
@@ -68,7 +68,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../../includes/resource-group.md)]
 
-在 Cloud Shell 中，使用 [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令创建资源组。 以下示例在“美国中南部”位置创建名为 *myResourceGroup* 的资源组。 若要查看**标准**层中 Linux 上的应用服务支持的所有位置，请运行 [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) 命令。
+在 Cloud Shell 中，使用 [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令创建资源组。 下面的示例命令在“美国中南部”位置创建名为 *myResourceGroup* 的资源组。 若要查看**标准**层中 Linux 上的应用服务支持的所有位置，请运行 [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) 命令。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -210,7 +210,7 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_n
 ```
 
 > [!TIP]
-> 甚至可以让防火墙规则更严格，即[只使用应用所使用的出站 IP 地址](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)。
+> 你甚至可以让防火墙规则更严格，即[只使用应用所使用的出站 IP 地址](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)。
 >
 
 ### <a name="create-the-wordpress-database"></a>创建 WordPress 数据库
@@ -235,7 +235,7 @@ az mysql db create --resource-group myResourceGroup --server-name <mysql_server_
 
 ### <a name="configure-database-variables-in-wordpress"></a>在 WordPress 中配置数据库变量
 
-若要将 WordPress 应用连接到这个新的 MySQL 服务器，请配置几个特定于 WordPress 的环境变量，包括 `MYSQL_SSL_CA` 定义的 SSL CA 路径。 以下[自定义映像](https://docs.microsoft.com/azure/app-service/containers/tutorial-multi-container-app#use-a-custom-image-for-mysql-ssl-and-other-configurations)中提供了来自 [DigiCert](http://www.digicert.com/) 的 [Baltimore 网络信任根证书](https://www.digicert.com/digicert-root-certificates.htm)。
+若要将 WordPress 应用连接到这个新的 MySQL 服务器，请配置几个特定于 WordPress 的环境变量，包括 `MYSQL_SSL_CA` 定义的 SSL CA 路径。 以下[自定义映像](https://docs.microsoft.com/azure/app-service/containers/tutorial-multi-container-app#use-a-custom-image-for-mysql-ssl-and-other-configurations)中提供了来自 [DigiCert](https://www.digicert.com/) 的 [Baltimore 网络信任根证书](https://www.digicert.com/digicert-root-certificates.htm)。
 
 若要进行这些更改，请在 Cloud Shell 中使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令。 应用设置区分大小写，用空格分开。
 
@@ -563,7 +563,7 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_n
 ```
 
 > [!TIP]
-> 甚至可以让防火墙规则更严格，即[只使用应用所使用的出站 IP 地址](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)。
+> 你甚至可以让防火墙规则更严格，即[只使用应用所使用的出站 IP 地址](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)。
 >
 
 ### <a name="create-the-wordpress-database"></a>创建 WordPress 数据库

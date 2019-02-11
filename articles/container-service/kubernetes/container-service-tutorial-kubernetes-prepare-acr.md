@@ -1,24 +1,27 @@
 ---
-title: Azure 容器服务教程 - 准备 ACR
+title: （已弃用）Azure 容器服务教程 - 准备 ACR
 description: Azure 容器服务教程 - 准备 ACR
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 735aca5509373f840c56e28887088f7a696ca137
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: d0107e09bf8706ba7d4c813814103ca109262d8d
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024080"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657393"
 ---
-# <a name="deploy-and-use-azure-container-registry"></a>部署并使用 Azure 容器注册表
+# <a name="deprecated-deploy-and-use-azure-container-registry"></a>（已弃用）部署和使用 Azure 容器注册表
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> 有关使用 Azure Kubernetes 服务的此教程的更新版本，请参阅[教程：部署和使用 Azure 容器注册表](../../aks/tutorial-kubernetes-prepare-acr.md)。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Azure 容器注册表 (ACR) 是用于 Docker 容器映像的基于 Azure 的专用注册表。 本教程的第 2 部分（共 7 部分）演示了如何部署 Azure 容器注册表实例并向其推送容器映像。 已完成的步骤包括：
 
@@ -138,7 +141,7 @@ Result
 azure-vote-front
 ```
 
-然后，若要查看特定映像的标记，请使用 [az acr repository show-tags](/cli/azure/acr/repository#show-tags) 命令。
+然后，若要查看特定映像的标记，请使用 [az acr repository show-tags](/cli/azure/acr/repository) 命令。
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository azure-vote-front --output table

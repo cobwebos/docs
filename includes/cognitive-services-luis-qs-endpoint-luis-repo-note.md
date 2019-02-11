@@ -4,18 +4,18 @@ description: include 文件
 services: cognitive-services
 author: diberry
 manager: cgronlun
-ms.service: cognitive-services
-ms.component: luis
-ms.topic: include
 ms.custom: include file
+ms.service: cognitive-services
+ms.subservice: luis
+ms.topic: include
 ms.date: 08/16/2018
 ms.author: diberry
-ms.openlocfilehash: f9b057a54ad71d8e2a1e1fc8ee7593d9c7adc0d7
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: dbd530774a5856d3f0a8b4a22443a92ad6fd25a1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47043987"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55480372"
 ---
-> [!NOTE] 
+> [!NOTE]
 > [LUIS-Samples Github 存储库](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/analyze-text/)中提供了完整的解决方案。

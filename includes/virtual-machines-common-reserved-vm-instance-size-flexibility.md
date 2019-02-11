@@ -1,15 +1,15 @@
 ---
 author: manish-shukla01
-ms.author: manshuk
+ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 08-03-2018
-ms.openlocfilehash: 41216fe12e10f72f76043f1a8bc361b538259ac1
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.date: 11-20-2018
+ms.openlocfilehash: 83b29aa1f0c12661eb1724eb505ad46987ed1019
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39720889"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54906279"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>虚拟机预留实例的虚拟机大小灵活性
 
@@ -20,7 +20,7 @@ ms.locfileid: "39720889"
 - Standard_DS3_v2
 - Standard_DS4_v2
 
-但是，该预留折扣不适用于在其他表中列出的 VM 大小，例如高内存 DSv2 系列表中的 VM 大小 Standard_DS11_v2、Standard_DS12_v2 等。
+但是，该预留折扣不适用于在其他表中列出的 VM 大小，例如高内存 DSv2 系列表中的 VM 大小：Standard_DS11_v2、Standard_DS12_v2 等。
 
 在大小系列组中，预留折扣适用于多少 VM 取决于在购买预留时选取的 VM 大小， 也取决于运行的 VM 的大小。 在下述表中列出的比率列比较了每个 VM 大小在该组中的相对占用量。 请使用比率值来计算如何将预留折扣应用到运行的 VM。
 
@@ -117,9 +117,16 @@ ms.locfileid: "39720889"
 | 大小 | 比率|
 |---|---|
 |Standard_DS11_v2|1|
+|Standard_DS11-1_v2|1|
 |Standard_DS12_v2|2|
+|Standard_DS12-1_v2|2|
+|Standard_DS12-2_v2|2|
 |Standard_DS13_v2|4|
+|Standard_DS13-2_v2|4|
+|Standard_DS13-4_v2|4|
 |Standard_DS14_v2|8|
+|Standard_DS14-4_v2|8|
+|Standard_DS14-8_v2|8|
 |Standard_DS15_v2|10|
 
 有关详细信息，请参阅[内存优化虚拟机大小](../articles/virtual-machines/windows/sizes-memory.md#dsv2-series-11-15)。
@@ -178,12 +185,21 @@ ms.locfileid: "39720889"
 
 | 大小 | 比率|
 |---|---|
-| Standard_E2s_v3|1|
+|Standard_E2s_v3|1|
 |Standard_E4s_v3|2|
+|Standard_E4-2s_v3|2|
 |Standard_E8s_v3|4|
+|Standard_E8-2s_v3|4|
+|Standard_E8-4s_v3|4|
 |Standard_E16s_v3|8|
+|Standard_E16-4s_v3|8|
+|Standard_E16-8s_v3|8|
 |Standard_E32s_v3|16|
+|Standard_E32-8s_v3|16|
+|Standard_E32-16s_v3|16|
 |Standard_E64s_v3|32|
+|Standard_E64-16s_v3|32|
+|Standard_E64-32s_v3|32|
 
 有关详细信息，请参阅[内存优化虚拟机大小](../articles/virtual-machines/windows/sizes-memory.md#esv3-series)。
 
@@ -289,9 +305,15 @@ Standard_F16|16|
 
 | 大小 | 比率|
 |---|---|
-| Standard_M8ms|1|
+|Standard_M8ms|1|
+|Standard_M8-2ms|1|
+|Standard_M8-4ms|1|
 |Standard_M16ms|2|
+|Standard_M16-4ms|2|
+|Standard_M16-8ms|2|
 |Standard_M32ms|4|
+|Standard_M32-8ms|4|
+|Standard_M32-16ms|4|
 
 有关详细信息，请参阅[内存优化虚拟机大小](../articles/virtual-machines/windows/sizes-memory.md#m-series)。
 
@@ -309,7 +331,11 @@ Standard_F16|16|
 | 大小 | 比率|
 |---|---|
 | Standard_M64ms|1|
+|Standard_M64-16ms|1|
+|Standard_M64-32ms|1|
 |Standard_M128ms|2|
+|Standard_M128-32ms|2|
+|Standard_M128-64ms|2|
 
 有关详细信息，请参阅[内存优化虚拟机大小](../articles/virtual-machines/windows/sizes-memory.md#m-series)。
 

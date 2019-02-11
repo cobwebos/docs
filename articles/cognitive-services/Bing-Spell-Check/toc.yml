@@ -5,6 +5,9 @@ items:
   items:
   - name: 什么是必应拼写检查 API？
     href: proof-text.md
+  - name: 比较必应搜索 API
+    href: ../Bing-Web-Search/bing-api-comparison.md
+    maintainContext: true
 - name: REST API 快速入门
   items:
   - name: C#
@@ -34,16 +37,33 @@ items:
     href: tutorials/spellcheck-source.md
 - name: 操作指南
   items:
-  - name: 使用和显示要求
-    href: UseAndDisplayRequirements.md
   - name: 从 v5 升级到 v7
     href: bing-spell-check-upgrade-guide-v5-to-v7.md
+- name: 示例
+  items:
+  - name: 代码示例
+    href: sdk.md
 - name: 引用
   items:
   - name: 必应拼写检查 API v7
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference
   - name: 必应拼写检查 API v5（旧版）
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference
+  - name: SDK
+    items:
+    - name: .NET
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet
+    - name: Node.js
+      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/spellcheck?view=azure-node-latest
+    - name: Python
+      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/spellcheck?view=azure-python
+    - name: Go
+      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/spellcheck
+    - name: Java
+      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/spellcheck?view=azure-java-stable
+  - name: 使用和显示要求
+    href: ../Bing-Web-Search/use-display-requirements.md
+    maintainContext: true
 - name: 资源
   items:
   - name: 适用于必应拼写检查 API 的分析
@@ -64,9 +84,9 @@ items:
     href: https://azure.microsoft.com/services/cognitive-services/spell-check/
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/598195-bing-spell-check
-ms.openlocfilehash: 539de32b27a8fdb00479b280c0a0a18fe887f2b4
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a993da847ca775a18efba42a82045d450a1e9f59
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432675"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512085"

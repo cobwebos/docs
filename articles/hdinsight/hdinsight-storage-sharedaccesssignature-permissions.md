@@ -9,21 +9,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 08ffc3a9eb4942cb21c0a800d493b87b016d7f87
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c3cb9b7988269f394615b6498bbe7af5bb0ab1e1
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016161"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743351"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure 存储共享访问签名来限制访问 HDInsight 中的数据
 
 HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权限。 可以在 Blob 容器中使用共享访问签名来限制对数据的访问。 共享访问签名 (SAS) 是可用于限制数据访问权限的一项 Azure 存储帐户功能。 例如，它可以提供对数据的只读访问。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 对于使用 Apache Ranger 的解决方案，请考虑使用已加入域的 HDInsight。 有关详细信息，请参阅[配置已加入域的 HDInsight](./domain-joined/apache-domain-joined-configure.md) 文档。
 
-> [!WARNING]
+> [!WARNING]  
 > HDInsight 必须对群集的默认存储拥有完全访问权限。
 
 ## <a name="requirements"></a>要求
@@ -34,9 +34,9 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
   * Visual Studio 的版本必须是 2013、2015 或 2017
   * Python 的版本必须是 2.7 或更高
 
-* 基于 Linux 的 HDInsight 群集或 [Azure PowerShell][powershell] - 如果拥有现有的基于 Linux 的群集，可以使用 Ambari 将共享访问签名添加到群集。 如果没有，则可以使用 Azure PowerShell 创建群集，并在创建群集期间添加共享访问签名。
+* 基于 Linux 的 HDInsight 群集或 [Azure PowerShell][powershell] - 如果拥有现有的基于 Linux 的群集，可以使用 Apache Ambari 将共享访问签名添加到群集。 如果没有，则可以使用 Azure PowerShell 创建群集，并在创建群集期间添加共享访问签名。
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 * 来自 [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature) 的示例文件。 此存储库包含以下项：
@@ -66,7 +66,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 4. 将重新生成用于创建 SAS 的帐户密钥。 重新生成密钥会导致使用以前密钥的所有应用程序身份验证失败。 将所有组件更新为使用新密钥。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 共享访问签名 URI 与用于创建签名的帐户密钥和关联的存储访问策略（如果有）相关联。 如果未指定存储访问策略，则吊销共享访问签名的唯一方法是更改帐户密钥。
 
 建议始终使用存储访问策略。 使用存储策略时，可以根据需要撤销签名或延长过期日期。 本文档中的步骤使用存储访问策略生成 SAS。
@@ -83,7 +83,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
    * StorageConnectionString：想要为其创建存储策略和 SAS 的存储帐户的连接字符串。 格式应为 `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey`，其中 `myaccount` 是存储帐户名称，`mykey` 是存储帐户密钥。
 
-   * ContainerName：想要限制访问的存储帐户中的容器。
+   * ContainerName：存储帐户中你要限制对其的访问的容器。
 
    * SASPolicyName：要创建的存储策略所用的名称。
 
@@ -101,13 +101,13 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
    * policy\_name：要创建的存储策略所用的名称。
 
-   * storage\_account\_name：存储帐户的名称。
+   * storage\_account\_name：你的存储帐户的名称。
 
    * storage\_account\_key：存储帐户的密钥。
 
-   * storage\_container\_name：想要限制访问的存储帐户中的容器。
+   * storage\_container\_name：存储帐户中你要限制对其的访问的容器。
 
-   * example\_file\_path：上传到容器的文件的路径
+   * example\_file\_path：上传到容器的文件的路径。
 
 2. 运行该脚本。 脚本完成后，会显示如以下文本所示的 SAS 令牌：
 
@@ -177,13 +177,13 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
     如果要创建基于 Linux 的群集，系统会提示输入 SSH 用户帐户名称和密码。 此帐户用于远程登录到群集。
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > 出现输入 HTTP/s 或 SSH 用户名和密码的提示时，必须提供符合以下条件的密码：
    >
-   > * 长度必须至少为 10 个字符
-   > * 必须至少包含一个数字
-   > * 必须至少包含一个非字母数字字符
-   > * 必须至少包含一个大写或小写字母
+   > * 长度必须至少为 10 个字符。
+   > * 必须至少包含一个数字。
+   > * 必须至少包含一个非字母数字字符。
+   > * 必须至少包含一个大写或小写字母。
 
 需要等待一段时间让此脚本完成，通常大约是 15 分钟。 如果脚本完成且没有发生任何错误，则会创建群集。
 
@@ -208,7 +208,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
     完成更改后，单击“确定”。
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > 必须重启几个服务才能使更改生效。
 
 6. 在 Ambari Web UI 中，从左侧的列表中选择“HDFS”，并从右侧的“服务操作”下拉列表中选择“重启所有受影响项”。 出现提示时，选择“确认全部重启”。
@@ -290,17 +290,17 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 **解决方法**：使用符合以下条件的密码：
 
-* 长度必须至少为 10 个字符
-* 必须至少包含一个数字
-* 必须至少包含一个非字母数字字符
-* 必须至少包含一个大写或小写字母
+* 长度必须至少为 10 个字符。
+* 必须至少包含一个数字。
+* 必须至少包含一个非字母数字字符。
+* 必须至少包含一个大写或小写字母。
 
 ## <a name="next-steps"></a>后续步骤
 
 现在你已了解如何将访问受限的存储添加到 HDInsight 群集，接下来请了解在群集上处理数据的其他方法：
 
-* [将 Hive 与 HDInsight 配合使用](hadoop/hdinsight-use-hive.md)
-* [将 Pig 与 HDInsight 配合使用](hadoop/hdinsight-use-pig.md)
+* [将 Apache Hive 和 HDInsight 配合使用](hadoop/hdinsight-use-hive.md)
+* [将 Apache Pig 和 HDInsight 配合使用](hadoop/hdinsight-use-pig.md)
 * [将 MapReduce 与 HDInsight 配合使用](hadoop/hdinsight-use-mapreduce.md)
 
 [powershell]: /powershell/azureps-cmdlets-docs

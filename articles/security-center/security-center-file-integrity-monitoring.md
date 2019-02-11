@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9cfb098fd8e6cb777b6cd968f92b20baabfab705
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b7e2a075df7d0d7f6bb68163414fab525aad25a8
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313974"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093438"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 安全中心内的文件完整性监视
 使用本演练了解如何在 Azure 安全中心配置文件完整性监视 (FIM)。
@@ -136,7 +136,7 @@ FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量
 
   ![设置][11]
 
-  此时会打开“工作区配置”，其中显示了三个选项卡：“Windows 注册表”、“Windows 文件”和“Linux 文件”。 每个选项卡列出可在该类别中编辑的实体。 对于列出的每个实体，安全中心会指出是已启用 (true) 还是未启用 (false) FIM。  编辑实体可以启用或禁用 FIM。
+  此时将打开“工作区配置”，其中显示三个选项卡：**Windows 注册表**、**Windows 文件**和 **Linux 文件**。 每个选项卡列出可在该类别中编辑的实体。 对于列出的每个实体，安全中心会指出是已启用 (true) 还是未启用 (false) FIM。  编辑实体可以启用或禁用 FIM。
 
   ![工作区配置][12]
 
@@ -205,7 +205,7 @@ FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量
 ## <a name="next-steps"></a>后续步骤
 本文已介绍如何在安全中心使用文件完整性监视 (FIM)。 若要了解有关安全中心的详细信息，请参阅以下文章：
 
-* [设置安全策略](security-center-azure-policy.md) -- 了解如何为 Azure 订阅和资源组配置安全策略。
+* [设置安全策略](tutorial-security-policy.md) -- 了解如何为 Azure 订阅和资源组配置安全策略。
 * [管理安全建议](security-center-recommendations.md) -- 了解建议如何帮助你保护 Azure 资源。
 * [安全运行状况监视](security-center-monitoring.md) -- 了解如何监视 Azure 资源的运行状况。
 * [管理和应对安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和应对安全警报。

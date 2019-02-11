@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: a995f99f7baa8d6f9476f852aa47ce239c921a50
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 4df96d0c3d1ec9cb64f2394fb97d46178906d916
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634458"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434811"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>使用企业安全性套餐管理 HDInsight 群集
 了解 HDInsight 企业安全性套餐 (ESP) 中的用户和角色，以及如何管理 ESP 群集。
@@ -22,7 +22,7 @@ ms.locfileid: "51634458"
 ## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>使用 VSCode 链接到已加入域的群集
 
 可以使用 Apache Ambari 管理的用户名链接标准群集，还可以使用域用户名（例如：user1@contoso.com）链接安全 Apache Hadoop 群集。
-1. 通过选择 **CTRL+SHIFT+P** 打开命令面板，然后输入“HDInsight: Link a cluster”。
+1. 按 CTRL+SHIFT+P 打开命令面板，然后输入“HDInsight: 链接群集”。
 
    ![链接群集命令](./media/apache-domain-joined-manage/link-cluster-command.png)
 
@@ -30,14 +30,14 @@ ms.locfileid: "51634458"
    
    ![“链接群集”对话框](./media/apache-domain-joined-manage/link-cluster-process.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > 如果群集已登录到 Azure 订阅中并且已链接群集，则使用链接用户名和密码。 
    
 3. 可以使用命令**列出群集**来查看链接群集。 现在可以将脚本提交到此链接群集。
 
    ![链接的群集](./media/apache-domain-joined-manage/linked-cluster.png)
 
-4. 还可以通过从命令面板输入“HDInsight: Unlink a cluster”取消链接群集。
+4. 还可以取消链接群集，方法是从命令面板输入“HDInsight:取消链接群集”。
 
 ## <a name="use-intellij-to-link-to-domain-joined-cluster"></a>使用 IntelliJ 链接到已加入域的群集
 
@@ -50,7 +50,7 @@ ms.locfileid: "51634458"
    
    ![“链接群集”对话框](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > 如果群集已登录到 Azure 订阅中并且已链接群集，则我们使用链接存储密钥、用户名和密码。
    > ![IntelliJ 中的存储资源管理器](./media/apache-domain-joined-manage/storage-explorer-in-IntelliJ.png)
 
@@ -74,7 +74,7 @@ ms.locfileid: "51634458"
    
    ![“链接群集”对话框](./media/apache-domain-joined-manage/link-cluster-dialog.png)
    
-   > [!NOTE]
+   > [!NOTE]  
    > 如果群集已登录到 Azure 订阅中并且已链接群集，则我们使用链接存储密钥、用户名和密码。
    > ![Eclipse 中的存储资源管理器](./media/apache-domain-joined-manage/storage-explorer-in-Eclipse.png)
 
@@ -94,13 +94,13 @@ ms.locfileid: "51634458"
 
 |工作负荷|场景|访问方法|
 |--------|--------|-------------|
-|Hadoop|Hive - 交互式作业/查询 |<ul><li>[Beeline](#beeline)</li><li>[Hive 视图](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC - Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
-|Spark|交互式作业/查询，PySpark 交互式环境|<ul><li>[Beeline](#beeline)</li><li>[带有 Livy 的 Zeppelin](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Hive 视图](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC - Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
-|Spark|批处理方案 - Spark 提交，PySpark|<ul><li>[Livy](../spark/apache-spark-livy-rest-interface.md)</li></ul>|
+|Apache Hadoop|Hive - 交互式作业/查询  |<ul><li>[Beeline](#beeline)</li><li>[Hive 视图](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC - Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Apache Spark|交互式作业/查询，PySpark 交互式环境|<ul><li>[Beeline](#beeline)</li><li>[带有 Livy 的 Zeppelin](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Hive 视图](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC - Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Apache Spark|批处理方案 - Spark 提交，PySpark|<ul><li>[Livy](../spark/apache-spark-livy-rest-interface.md)</li></ul>|
 |交互式查询 (LLAP)|交互|<ul><li>[Beeline](#beeline)</li><li>[Hive 视图](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC - Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |任意|安装自定义应用程序|<ul><li>[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
 
-   > [!NOTE]
+   > [!NOTE]  
    > 企业安全性套餐中未安装/支持 Jupyter。
 
 使用标准 API 从安全角度获得帮助。 此外，可获得以下优势：
@@ -223,4 +223,4 @@ HDInsight 企业安全性套餐具有以下角色：
 
 ## <a name="next-steps"></a>后续步骤
 * 有关使用企业安全性套餐配置 HDInsight 群集的信息，请参阅[使用 ESP 配置 HDInsight 群集](apache-domain-joined-configure.md)。
-* 有关配置 Hive 策略和运行 Hive 查询的信息，请参阅[使用 ESP 配置 HDInsight 群集的 Hive 策略](apache-domain-joined-run-hive.md)。
+* 有关如何配置 Hive 策略和运行 Hive 查询的信息，请参阅[使用 ESP 配置 HDInsight 群集的 Apache Hive 策略](apache-domain-joined-run-hive.md)。

@@ -1,5 +1,5 @@
 ---
-title: Azure 搜索多语言索引 | Microsoft Docs
+title: 用于非英语搜索查询的多语言索引 - Azure 搜索
 description: Azure 搜索支持 56 种语言，通过 Microsoft 中的 Lucene 和自然语言处理技术利用语言分析器。
 author: yahnoosh
 manager: jlembicz
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
-ms.openlocfilehash: 38f93f5415282d2f976d9f3acc2b0a7aeead6c3d
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.custom: seodec2018
+ms.openlocfilehash: a198fa7fe5e1ed81e30987990359f9ecedbe225b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093348"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631543"
 ---
 # <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>在 Azure 搜索中为多语言文档创建索引
 > [!div class="op_single_selector"]
@@ -52,7 +53,7 @@ ms.locfileid: "47093348"
 ![][2]
 *为每个字段选择一个支持的分析器*
 
-默认情况下，所有可搜索字段会使用[标准 Lucene 分析器](http://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html)（不限语言）。 若要查看支持的分析器的完整列表，请参阅 [Azure 搜索中的语言支持](https://msdn.microsoft.com/library/azure/dn879793.aspx)。
+默认情况下，所有可搜索字段会使用[标准 Lucene 分析器](https://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html)（不限语言）。 若要查看支持的分析器的完整列表，请参阅 [Azure 搜索中的语言支持](https://msdn.microsoft.com/library/azure/dn879793.aspx)。
 
 为字段选择语言分析器后，它用于该字段的每个索引和搜索请求。 当使用不同的分析器针对多个字段发出查询时，查询由每个字段相应的分析器独立处理。
 
@@ -80,7 +81,7 @@ ms.locfileid: "47093348"
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2017-11-11`
 
-如果是一名 .NET 开发人员，请注意，可以使用 [Azure 搜索 .NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Search) 来设置语言分析器。 最新版本还提供对 Microsoft 语言分析器的支持。
+如果是一名 .NET 开发人员，请注意，可以使用 [Azure 搜索 .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) 来设置语言分析器。 最新版本还提供对 Microsoft 语言分析器的支持。
 
 <!-- Image References -->
 [1]: ./media/search-language-support/AnalyzerTab.png

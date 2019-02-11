@@ -1,19 +1,19 @@
 ---
-" title": include file
-" description": include file
-" services": expressroute
-" author": cherylmc
-" ms.service": expressroute
-" ms.topic": include
-" ms.date": 11/09/2018
-" ms.author": cherylmc
-" ms.custom": include file
-ms.openlocfilehash: e9095f4d886fbf1bd7a91f5f4c7aecaef26c626d
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+title: include 文件
+description: include 文件
+services: expressroute
+author: cherylmc
+ms.service: expressroute
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 6af83e22308d696a3be40761a167a63c64e30d6c
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51626348"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53995646"
 ---
 |  | **每秒兆位** | **每秒的数据包数** | **每秒连接数** | **VPN 网关和 ExpressRoute 共存** |
 | --- | --- | --- | --- | --- |

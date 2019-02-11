@@ -3,17 +3,17 @@ title: Jenkins 和 Azure 概述
 description: 在 Azure 中托管 Jenkins 生成和部署自动化服务器，并使用 Azure 计算和存储资源来扩展持续集成及部署 (CI/CD) 管道。
 ms.service: jenkins
 keywords: jenkins, azure, devops, 概述
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: overview
 ms.date: 07/25/2018
-ms.openlocfilehash: cb4082046e57ac16abd6cdef3d5779525e7cfc82
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 69e9a49bf83be5b58faf3e71ab0ffbfb6c6f11a1
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105523"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329694"
 ---
 # <a name="azure-and-jenkins"></a>Azure 和 Jenkins
 
@@ -46,5 +46,5 @@ ms.locfileid: "43105523"
 
  插件可用于部署到以下服务和环境：
 
-- [Linux 上的 Azure Web 应用](/azure/app-service/containers/app-service-linux-intro)。 请参阅[教程](java-deploy-webapp-tutorial.md)以开始使用。
-- [Azure Web 应用](/azure/app-service/app-service-web-overview)。 请参阅[操作指南](deploy-Jenkins-app-service-plugin.md)以开始使用。
+- [Linux 上的 Azure 应用服务](/azure/app-service/containers/app-service-linux-intro)。 请参阅[教程](java-deploy-webapp-tutorial.md)以开始使用。
+- [Azure 应用服务](/azure/app-service/overview)。 请参阅[操作指南](deploy-Jenkins-app-service-plugin.md)以开始使用。

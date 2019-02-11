@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 61d9606ff14a48e6c224108596f0f01daa4813e1
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 58d8cfdbd2ad5d7e727decfa3e3cfdd7151b0048
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954277"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250190"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>使用 .NET SDK 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
 > [!div class="op_single_selector"]
@@ -93,7 +93,7 @@ ms.locfileid: "49954277"
         var adlCreds = GetCreds_SPI_SecretKey(TENANT, ADL_TOKEN_AUDIENCE, CLIENTID, secret_key);
     }
 
-上述代码片段将使用 helper 函数 `GetCreds_SPI_SecretKey`。 可在[此处（Github 上）](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_secretkey)获取此 helper 函数的代码。
+上述代码片段将使用 helper 函数 `GetCreds_SPI_SecretKey`。 可在[此处（GitHub 上）](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_secretkey)获取此 helper 函数的代码。
 
 ## <a name="service-to-service-authentication-with-certificate"></a>使用证书的服务到服务身份验证
 
@@ -113,7 +113,7 @@ ms.locfileid: "49954277"
         var adlCreds = GetCreds_SPI_Cert(TENANT, ADL_TOKEN_AUDIENCE, CLIENTID, cert);
     }
 
-上述代码片段将使用 helper 函数 `GetCreds_SPI_Cert`。 可在[此处（Github 上）](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert)获取此 helper 函数的代码。
+上述代码片段将使用 helper 函数 `GetCreds_SPI_Cert`。 可在[此处（GitHub 上）](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert)获取此 helper 函数的代码。
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何通过 .NET SDK 使用服务到服务身份验证进行 Data Lake Storage Gen1 身份验证。 接下来，可以查看以下介绍如何使用 .NET SDK 在 Data Lake Storage Gen1 中执行操作的文章。

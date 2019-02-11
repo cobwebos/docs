@@ -8,16 +8,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 892fa32f73cec86e5d10a0d67da3d80bedd539aa
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 068929bbde8e4c1411004b45fc77f0188de43ff8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619855"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814189"
 ---
 # <a name="azure-data-factory-service-identity"></a>Azure 数据工厂服务标识
 
@@ -45,7 +44,7 @@ ms.locfileid: "52619855"
 
 - [使用 PowerShell 生成服务标识](#generate-service-identity-using-powershell)
 - [使用 REST API 生成服务标识](#generate-service-identity-using-rest-api)
-- [使用 Azure 资源管理器模板生成服务标识](#generate-service-identity-using-resource-management-template)
+- 使用 Azure 资源管理器模板生成服务标识
 - [使用 SDK 生成服务标识](#generate-service-identity-using-sdk)
 
 >[!NOTE]
@@ -77,7 +76,7 @@ ProvisioningState : Succeeded
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2017-09-01-preview
 ```
 
-**请求正文**：添加 "identity": { "type": "SystemAssigned" }。
+**请求正文**：add "identity": { "type":"SystemAssigned" }。
 
 ```json
 {
@@ -115,7 +114,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 
 ### <a name="generate-service-identity-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板生成服务标识
 
-**模版**：添加 "identity": { "type": "SystemAssigned" }。
+**模板**：add "identity": { "type":"SystemAssigned" }。
 
 ```json
 {
@@ -193,4 +192,4 @@ Type                  : ServicePrincipal
 - [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)
 - [使用 Azure 资源的托管标识身份验证从/向 Azure Data Lake Store 复制数据](connector-azure-data-lake-store.md)
 
-有关数据工厂服务标识所基于的 Azure 资源的托管标识的更多背景信息，请参阅 [Azure 资源的托管标识概述](~/articles/active-directory/msi-overview.md)。 
+有关数据工厂服务标识所基于的 Azure 资源的托管标识的更多背景信息，请参阅 [Azure 资源的托管标识概述](/azure/active-directory/managed-identities-azure-resources/overview)。 

@@ -8,20 +8,19 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/31/2018
 ms.author: douglasl
-ms.openlocfilehash: abe2fabc505f94f19d4b15a406fc59bf6d6e7ac1
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a25505a976be9d9ae38f562591d86ca9b56b8859
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050329"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025600"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](v1/data-factory-spark.md)
+> * [版本 1](v1/data-factory-spark.md)
 > * [当前版本](transform-data-using-spark.md)
 
 数据工厂[管道](concepts-pipelines-activities.md)中的 Spark 活动在[自己的](compute-linked-services.md#azure-hdinsight-linked-service)或[按需](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 Spark 程序。 本文基于[数据转换活动](transform-data.md)一文，它概述了数据转换和受支持的转换活动。 使用按需的 Spark 链接服务时，数据工厂会自动为你实时创建用于处理数据的 Spark 群集，然后在处理完成后删除群集。 
@@ -74,22 +73,22 @@ ms.locfileid: "37050329"
 | arguments             | Spark 程序的命令行参数列表。 | 否       |
 | proxyUser             | 用于模拟执行 Spark 程序的用户帐户 | 否       |
 | sparkConfig           | 指定在以下主题中列出的 Spark 配置属性的值：[Spark 配置 - 应用程序属性](https://spark.apache.org/docs/latest/configuration.html#available-properties)。 | 否       |
-| getDebugInfo          | 指定何时将 Spark 日志文件复制到 HDInsight 群集使用的（或者）sparkJobLinkedService 指定的 Azure 存储。 允许的值：None、Always 或 Failure。 默认值：None。 | 否       |
+| getDebugInfo          | 指定何时将 Spark 日志文件复制到 HDInsight 群集使用的（或者）sparkJobLinkedService 指定的 Azure 存储。 允许的值：None、Always 或 Failure。 默认值：无。 | 否       |
 
 ## <a name="folder-structure"></a>文件夹结构
 与 Pig/Hive 作业相比，Spark 作业的可扩展性更高。 对于 Spark 作业，可以提供多个依赖项，例如 jar 包（放在 java CLASSPATH 中）、python 文件（放在 PYTHONPATH 中）和其他任何文件。
 
 在 HDInsight 链接服务引用的 Azure Blob 存储中创建以下文件夹结构。 然后，将依赖文件上传到 **entryFilePath** 表示的根文件夹中的相应子文件夹。 例如，将 python 文件上传到根文件夹的 pyFiles 子文件夹，将 jar 文件上传到根文件夹的 jars 子文件夹。 在运行时，数据工厂服务需要 Azure Blob 存储中的以下文件夹结构：     
 
-| 路径                  | 说明                              | 必选 | Type   |
+| 路径                  | Description                              | 必选 | 类型   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
-| `.`（根）            | Spark 作业在存储链接服务中的根路径 | 是      | 文件夹 |
+| `.`（根）            | Spark 作业在存储链接服务中的根路径 | 是      | Folder |
 | &lt;用户定义&gt; | 指向 Spark 作业入口文件的路径 | 是      | 文件   |
-| ./jars                | 此文件夹下的所有文件将上传并放置在群集的 java 类路径中 | 否       | 文件夹 |
-| ./pyFiles             | 此文件夹下的所有文件将上传并放置在群集的 PYTHONPATH 中 | 否       | 文件夹 |
+| ./jars                | 此文件夹下的所有文件将上传并放置在群集的 java 类路径中 | 否       | Folder |
+| ./pyFiles             | 此文件夹下的所有文件将上传并放置在群集的 PYTHONPATH 中 | 否       | Folder |
 | ./files               | 此文件夹下的所有文件将上传并放置在执行器工作目录中 | 否       | 文件夹 |
-| ./archives            | 此文件夹下的所有文件未经压缩 | 否       | 文件夹 |
-| ./logs                | 包含 Spark 群集的日志的文件夹。 | 否       | 文件夹 |
+| ./archives            | 此文件夹下的所有文件未经压缩 | 否       | Folder |
+| ./logs                | 包含 Spark 群集的日志的文件夹。 | 否       | Folder |
 
 以下示例显示了一个在 HDInsight 链接服务引用的 Azure Blob 存储中包含两个 Spark 作业文件的存储。
 

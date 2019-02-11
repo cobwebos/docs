@@ -1,19 +1,19 @@
 ---
 title: 将 DevKit 设备连接到 Azure IoT Central 应用程序 | Microsoft Docs
 description: 了解如何以设备开发人员的身份将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序。
-author: tbhagwat3
-ms.author: tanmayb
+author: dominicbetts
+ms.author: dobett
 ms.date: 04/16/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: peterpr
-ms.openlocfilehash: 1bfa52d07ddc4eaf86bce17c0ad7c63493a8b5fd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+manager: philmea
+ms.openlocfilehash: 6d2cb95efbff223aecf1f0525dbb93698639d41a
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255721"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198722"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序
 
@@ -49,12 +49,12 @@ ms.locfileid: "51255721"
     * 输入设备 ID<span style="color:Red">（须小写）</span>或使用所建议的设备 ID。
     * 输入设备名或使用建议名称
     
-    ![添加设备](media\concepts-connectivity\add-device.png)
+    ![添加设备](media/concepts-connectivity/add-device.png)
 
 
 1. 通过单击设备页上的“连接”，获取已添加设备的作用域 ID、设备 ID 和主键等连接详细信息。
  
-    ![连接详细信息](media\concepts-connectivity\device-connect.PNG)
+    ![连接详细信息](media/concepts-connectivity/device-connect.PNG)
 
 3. 确保保存这些详细信息，因为在准备 DevKit 设备时，将临时断开与 Internet 的连接。 
 

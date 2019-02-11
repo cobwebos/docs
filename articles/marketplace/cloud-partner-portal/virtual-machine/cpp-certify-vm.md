@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 69ebe7fde454d2f0e98371406de56f48c9ea97ae
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 24430b1b785a24da06a8ea51594147040e6d5bd6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638872"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190384"
 ---
 # <a name="certify-your-vm-image"></a>认证 VM 映像
 
@@ -82,4 +82,4 @@ ms.locfileid: "49638872"
 
 ## <a name="next-steps"></a>后续步骤
 
-接下来，必须针对要提交到市场的每个 VHD [生成统一资源标识符 (URI)](./cpp-get-sas-uri.md)。 
+接下来，将针对提交到市场的每个 VHD [生成统一资源标识符 (URI)](./cpp-get-sas-uri.md)。 

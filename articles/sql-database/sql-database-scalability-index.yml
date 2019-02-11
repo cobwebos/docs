@@ -1,0 +1,59 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 01ac3feb4f3479c77b73f8bb2fa694bd7cf22ce1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817642"
+documentType: LandingData
+title: Azure SQL 数据库 - 可伸缩性
+metadata:
+  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
+  title: Azure SQL 数据库 - 可伸缩性
+  meta.description: Learn how to scale your Azure SQL Database.
+  services: sql-database
+  author: jovanpop-msft
+  manager: craigg
+  requires-business-manager-approval: false
+  ms.service: sql-database
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: overview
+  ms.date: 01/25/2019
+  ms.author: jovanpop-msft
+sections:
+- items:
+  - type: paragraph
+    text: 使用 Azure SQL 数据库，可以通过添加更多计算能力（纵向扩展）或添加更多数据库单元（横向扩展）来轻松扩展数据库。
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - title: 纵向扩展
+      href: /azure/sql-database/sql-database-scale-resources
+      html: <p>在 SQL 数据库中轻松添加或删除资源以实现最佳的性价比或者减轻性能问题。</p>
+    - title: 读取横向扩展
+      href: /azure/sql-database/sql-database-read-scale-out
+      html: <p>业务关键层提供了数据库的免费副本，你可以在其中对数据副本运行报表、分析和其他只读查询。</p>
+    - title: 数据库分片
+      href: /azure/sql-database/sql-database-elastic-scale-introduction
+      html: <p>可以使用多个数据库分片对数据库进行横向扩展，使其超越单个数据库的最大计算和存储限制。</p>
+    - title: 弹性查询
+      href: /azure/sql-database/sql-database-elastic-query-overview
+      html: <p>使用弹性查询，可以对全局分布的一组数据库分片运行标准 Transact-SQL 查询。</p>
+    - title: 弹性事务
+      href: /azure/sql-database/sql-database-elastic-transactions-overview
+      html: <p>使用全局分布式事务确保对分布式数据实现事务一致的访问。</p>
+    - title: 跨数据库作业
+      href: /azure/sql-database/elastic-jobs-overview
+      html: <p>使用跨数据库弹性作业维护一组数据库。</p>
+- title: 更多资源
+  items:
+  - type: paragraph
+    text: 了解可帮助你缩放数据的其他功能。
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine">链接服务器</a>是核心的 SQL Server 数据库引擎功能，可以通过 Transact-SQL 代码执行对其他数据库引擎的分布式查询。
+    - html: <a href="sql-database-geo-replication-overview.md">异地复制</a>可以将任意数量的可读取副本放置在不同的区域中。

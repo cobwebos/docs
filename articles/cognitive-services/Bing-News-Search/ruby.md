@@ -1,89 +1,86 @@
 ---
-title: 快速入门：必应新闻搜索 API、Ruby
+title: 快速入门：使用 Ruby 执行新闻搜索 - 必应新闻搜索 REST API
 titlesuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以帮助你快速开始使用必应新闻搜索 API。
+description: 使用本快速入门，通过 Ruby 将请求发送到必应新闻搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 9/21/2017
+ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: 714f28166b8d24a5b8a69fe4f76ba1737de56e1d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: b55f6ac033d7c1cb57ec015a62368fc3e10706c9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315080"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203855"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-ruby"></a>将必应新闻搜索 API 与 Ruby 配合使用快速入门
+# <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>快速入门：使用 Ruby 和必应新闻搜索 REST API 执行新闻搜索
 
-本文展示了如何使用 Azure 上的 Microsoft 认知服务中包含的必应新闻搜索 API。 虽然本文采用的是 Ruby，但 API 是一种 RESTful Web 服务，与任何可以发出 HTTP 请求并分析 JSON 的编程语言兼容。 
+使用本快速入门对必应新闻搜索 API 进行你的第一次调用并接收 JSON 响应。 这个简单的 JavaScript 应用程序会向 API 发送一个搜索查询并处理结果。
 
-编写的示例代码在 Ruby 2.4 下运行。
-
-有关 API 的技术详细信息，请参阅 [API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference)。
+虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb) 上获得。
 
 ## <a name="prerequisites"></a>先决条件
 
-必须拥有包含必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你将需要使用在激活免费试用版时提供的访问密钥。 另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+* Ruby [2.4 或更高版本](https://www.ruby-lang.org/en/downloads/)
 
-## <a name="bing-news-search"></a>必应新闻搜索
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-[必应新闻搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) 从必应搜索引擎返回新闻结果。
+另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
-1. 在你喜欢使用的 IDE 或编辑器中新建一个 Ruby 项目。
-2. 添加下面提供的代码。
-3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
-4. 运行该程序。
+## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
+
+1. 将以下包导入代码文件。
+
+    ```ruby
+    require 'net/https'
+    require 'uri'
+    require 'json'
+    ```
+
+2. 为 API 终结点、新闻搜索 URL、订阅密钥和搜索词创建变量。
+
+    ```ruby
+    accessKey = "enter key here"
+    uri  = "https://api.cognitive.microsoft.com"
+    path = "/bing/v7.0/news/search"
+    term = "Microsoft"
+    ```
+
+## <a name="format-and-make-an-api-request"></a>设置 API 请求的格式并将其发出
+
+使用上一个步骤中的变量来设置 API 请求的搜索 URL 的格式。 然后发送请求。
 
 ```ruby
-require 'net/https'
-require 'uri'
-require 'json'
-
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
-
-# Replace the accessKey string value with your valid access key.
-accessKey = "enter key here"
-
-# Verify the endpoint URI.  At this writing, only one endpoint is used for Bing
-# search APIs.  In the future, regional endpoints may be available.  If you
-# encounter unexpected authorization errors, double-check this value against
-# the endpoint for your Bing Search instance in your Azure dashboard.
-
-uri  = "https://api.cognitive.microsoft.com"
-path = "/bing/v7.0/news/search"
-
-term = "Microsoft"
-
 uri = URI(uri + path + "?q=" + URI.escape(term))
-
-puts "Searching news for: " + term
-
 request = Net::HTTP::Get.new(uri)
 request['Ocp-Apim-Subscription-Key'] = accessKey
-
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
-    http.request(request)
+   http.request(request)
 end
+```
 
+## <a name="process-and-print-the-json-response"></a>处理并打印 JSON 响应
+
+收到响应后，你可以分析 JSON，并打印响应正文及其标头：
+
+```ruby
 puts "\nRelevant Headers:\n\n"
 response.each_header do |key, value|
-    # header names are coerced to lowercase
-    if key.start_with?("bingapis-") or key.start_with?("x-msedge-") then
-        puts key + ": " + value
-    end
+   # header names are coerced to lowercase
+   if key.start_with?("bingapis-") or key.start_with?("x-msedge-") then
+      puts key + ": " + value
+   end
 end
-
 puts "\nJSON Response:\n\n"
 puts JSON::pretty_generate(JSON(response.body))
 ```
 
-**响应**
+## <a name="json-response"></a>JSON 响应
 
 在 JSON 中返回成功的响应，如以下示例所示：
 
@@ -182,7 +179,4 @@ puts JSON::pretty_generate(JSON(response.body))
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [对新闻进行分页](paging-news.md)
-> [使用修饰标记来突出显示文本](hit-highlighting.md)
-> [在网上搜索新闻](search-the-web.md)  
-> [试试看](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/)
+> [创建单页面应用](tutorial-bing-news-search-single-page-app.md)

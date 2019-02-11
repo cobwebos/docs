@@ -11,12 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: f80c3ad28c3944bd365100d1d873231869da46f8
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: ee695798dc8a2a19d5cd3d94cbf43e0b58065f84
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629712"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556673"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>如何缩放时序见解环境
 

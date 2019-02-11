@@ -4,10 +4,10 @@ description: 如何使用租户限制来根据用户的 Azure AD 租户管理可
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 editor: yossib
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,18 +15,18 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: barbkess
 ms.reviewer: richagi
-ms.openlocfilehash: 4a5cb7d15627ac3e48b72567ec3740377b2a0264
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: d6030c2bf169d74959279b9c05298db90138a94f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365664"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163086"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制管理对 SaaS 云应用程序的访问
 
 重视安全的大型组织都希望迁移到 Office 365 等云服务中，但需要知道，其用户只能访问已批准的资源。 在传统上，公司在想要管理访问权限时，会限制域名或 IP 地址。 如果 SaaS 应用在公有云中托管并在类似于 outlook.office.com 和 login.microsoftonline.com 的共享域名中运行，则这种做法会失败。 阻止这些地址会导致用户完全无法访问 Web 上的 Outlook，而不只是将他们能够访问的内容局限于批准的标识和资源。
 
-为了解决这个难题，Azure Active Directory 推出了一项称作“租户限制”的功能。 租户限制可让组织根据应用程序用于单一登录的 Azure AD 租户来控制对 SaaS 云应用程序的访问。 例如，你可能希望允许用户访问你所在组织的 Office 365 应用程序，同时阻止他们访问其他组织中这些应用程序的实例。  
+为了解决这个难题，Azure Active Directory 推出了一项称作“租户限制”的功能。 租户限制可让组织根据应用程序用于单一登录的 Azure AD 租户来控制对 SaaS 云应用程序的访问。 例如，你可能希望允许用户访问你所在组织的 Office 365 应用程序，同时阻止他们访问其他组织中这些应用程序的实例。  
 
 借助租户限制，组织可以指定其用户有权访问的租户的列表。 然后，Azure AD 只会授予对这些允许的租户的访问权限。
 
@@ -34,13 +34,13 @@ ms.locfileid: "39365664"
 
 ## <a name="how-it-works"></a>工作原理
 
-总体解决方案由以下组件构成： 
+总体解决方案由以下组件构成： 
 
-1. **Azure AD** – 如果指定了 `Restrict-Access-To-Tenants: <permitted tenant list>`，Azure AD 只会针对允许的租户颁发安全令牌。 
+1. **Azure AD** – 如果指定了 `Restrict-Access-To-Tenants: <permitted tenant list>`，Azure AD 只会针对允许的租户颁发安全令牌。 
 
-2. **本地代理服务器基础结构** – 支持 SSL 检查的代理设备，配置为在发往 Azure AD 租户的流量中插入包含受允许租户列表的标头。 
+2. **本地代理服务器基础结构** – 支持 SSL 检查的代理设备，配置为在发往 Azure AD 租户的流量中插入包含受允许租户列表的标头。 
 
-3. **客户端软件** – 为了支持租户限制，客户端软件必须直接从 Azure AD 请求令牌，使代理基础结构能够截获流量。 目前，基于浏览器的 Office 365 应用程序以及使用 OAuth 2.0 等新式身份验证的 Office 客户端支持租户限制。 
+3. **客户端软件** – 为了支持租户限制，客户端软件必须直接从 Azure AD 请求令牌，使代理基础结构能够截获流量。 目前，基于浏览器的 Office 365 应用程序以及使用 OAuth 2.0 等新式身份验证的 Office 客户端支持租户限制。 
 
 4. **新式身份验证** – 云服务必须使用新式身份验证来使用租户限制，阻止对所有不允许的租户的访问。 必须将 Office 365 云服务配置为默认使用新式身份验证协议。 有关 Office 365 对新式身份验证的支持的最新信息，请阅读 [Updated Office 365 modern authentication](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/)（更新的 Office 365 新式身份验证）。
 
@@ -54,7 +54,7 @@ ms.locfileid: "39365664"
 
 ### <a name="urls-and-ip-addresses"></a>URL 和 IP 地址
 
-若要使用租户限制，客户端必须能够连接到以下 Azure AD URL 进行身份验证：login.microsoftonline.com、login.microsoft.com 和 login.windows.net。 此外，若要访问 Office 365，客户端还必须能够连接到 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中定义的 FQDN/URL 和 IP 地址。 
+若要使用租户限制，客户端必须能够连接到以下 Azure AD URL 进行身份验证：login.microsoftonline.com、login.microsoft.com 和 login.windows.net。 此外，若要访问 Office 365，客户端还必须能够连接到 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中定义的 FQDN/URL 和 IP 地址。 
 
 ### <a name="proxy-configuration-and-requirements"></a>代理配置和要求
 
@@ -62,7 +62,7 @@ ms.locfileid: "39365664"
 
 #### <a name="prerequisites"></a>先决条件
 
-- 代理必须能够使用 FQDN/URL 执行 SSL 截获，HTTP 标头插入和目标筛选。 
+- 代理必须能够使用 FQDN/URL 执行 SSL 截获，HTTP 标头插入和目标筛选。 
 
 - 客户端必须信任代理提供的用于 SSL 通信的证书链。 例如，如果使用了来自内部 PKI 的证书，则必须受信任内部颁发根证书颁发机构证书。
 
@@ -70,16 +70,16 @@ ms.locfileid: "39365664"
 
 #### <a name="configuration"></a>配置
 
-对于 login.microsoftonline.com、login.microsoft.com 和 login.windows.net 的每个传入请求，请插入两个 HTTP 标头：*Restrict-Access-To-Tenants* 和 *Restrict-Access-Context*。
+对于 login.microsoftonline.com、login.microsoft.com 和 login.windows.net 的每个传入请求，请插入两个 HTTP 标头：“Restrict-Access-To-Tenants”和“Restrict-Access-Context”。
 
-这些标头应包含以下元素： 
-- 对于 *Restrict-Access-To-Tenants*，应包含\<允许的租户列表\>值，这是希望允许用户访问的租户的逗号分隔列表。 已注册到某个租户的任何域都可用于在此列表中标识该租户。 例如，若要允许访问 Contoso 和 Fabrikam 租户，名称/值对如下所示：`Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` 
-- 对于 *Restrict-Access-Context*，应包含单个目录 ID 的值，用于声明哪个租户将要设置租户限制。 例如，要将 Contoso 声明为要设置租户限制策略的租户，名称/值对如下所示：`Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
+这些标头应包含以下元素： 
+- 对于 *Restrict-Access-To-Tenants*，应包含\<允许的租户列表\>值，这是希望允许用户访问的租户的逗号分隔列表。 已注册到某个租户的任何域都可用于在此列表中标识该租户。 例如，若要允许访问 Contoso 和 Fabrikam 租户，名称/值对如下所示：  `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` 
+- 对于 *Restrict-Access-Context*，应包含单个目录 ID 的值，用于声明哪个租户将要设置租户限制。 例如，要将 Contoso 声明为要设置租户限制策略的租户，名称/值对如下所示： `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
 > [!TIP]
 > 可在 [Azure 门户](https://portal.azure.com)中找到该目录 ID。 以管理员身份登录，选择“Azure Active Directory”，再选择“属性”即可。
 
-为了防止用户插入其自己的、包含未批准的租户的 HTTP 标头，代理需要替换 Restrict-Access-To-Tenants 标头（如果传入的请求中已提供此标头）。 
+为了防止用户插入其自己的、包含未批准的租户的 HTTP 标头，代理需要替换 Restrict-Access-To-Tenants 标头（如果传入的请求中已提供此标头）。 
 
 必须强制客户端针对发往 login.microsoftonline.com、login.microsoft.com 和 login.windows.net 的所有请求使用代理。 例如，如果使用 PAC 文件来指示客户端使用代理，则不应该允许最终用户编辑或禁用这些 PAC 文件。
 
@@ -89,7 +89,7 @@ ms.locfileid: "39365664"
 
 ### <a name="end-user-experience"></a>最终用户体验
 
-例如，某个用户身处 Contoso 网络，但该用户正在尝试访问 Fabrikam 的某个共享 SaaS 应用程序的实例（如 Outlook Online）。 如果 Contoso 不是该实例的受允许租户，该用户将看到以下页面：
+例如，某个用户身处 Contoso 网络，但该用户正在尝试访问 Fabrikam 的某个共享 SaaS 应用程序的实例（如 Outlook Online）。 如果 Fabricam 不是 Contoso 实例的受允许租户，该用户将看到以下页面：
 
 ![用户在不允许的租户中看到的拒绝访问页面](./media/tenant-restrictions/end-user-denied.png)
 
@@ -116,7 +116,7 @@ Office 365 基于浏览器的应用程序（Office 门户、Yammer、SharePoint 
 
 支持新式身份验证的 Outlook 和 Skype for Business 客户端仍可针对未启用新式身份验证的租户使用传统协议，从而有效绕过租户限制。 如果在身份验证期间访问 login.microsoftonline.com、login.microsoft.com 或 login.windows.net，使用传统协议的应用程序可能会被租户限制阻止。
 
-对于 Windows 上的 Outlook，客户可能选择实施限制来阻止最终用户将未经批准的邮件帐户添加到其配置文件。 有关示例，请参阅[阻止添加非默认 Exchange 帐户](http://gpsearch.azurewebsites.net/default.aspx?ref=1)组策略设置。
+对于 Windows 上的 Outlook，客户可能选择实施限制来阻止最终用户将未经批准的邮件帐户添加到其配置文件。 有关示例，请参阅[阻止添加非默认 Exchange 帐户](https://gpsearch.azurewebsites.net/default.aspx?ref=1)组策略设置。
 
 ## <a name="testing"></a>测试
 
@@ -126,21 +126,21 @@ Office 365 基于浏览器的应用程序（Office 门户、Yammer、SharePoint 
 
 Fiddler 是一个免费 Web 调试代理，可用于捕获和修改 HTTP/HTTPS 流量，包括插入 HTTP 标头。 若要配置 Fiddler 来测试租户限制，请执行以下步骤：
 
-1.  [下载并安装 Fiddler](http://www.telerik.com/fiddler)。
-2.  根据 [Fiddler 的帮助文档](http://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS)，配置 Fiddler 来解密 HTTPS 流量。
+1.  [下载并安装 Fiddler](https://www.telerik.com/fiddler)。
+2.  根据 [Fiddler 的帮助文档](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS)，配置 Fiddler 来解密 HTTPS 流量。
 3.  配置 Fiddler，使用自定义规则插入 *Restrict-Access-To-Tenants* 和 *Restrict-Access-Context* 标头：
-  1. 在 Fiddler Web 调试器工具中选择“规则”菜单，并选择“自定义规则...” 打开 CustomRules 文件。
-  2. 在 *OnBeforeRequest* 函数的开头添加以下行。 将 \<tenant domain\> 替换为已注册到租户的域，例如 contoso.onmicrosoft.com。 将 \<directory ID\> 替换为租户的 Azure AD GUID 标识符。
+    1. 在 Fiddler Web 调试器工具中选择“规则”菜单，并选择“自定义规则...” 打开 CustomRules 文件。
+    2. 在 *OnBeforeRequest* 函数的开头添加以下行。 将 \<tenant domain\> 替换为已注册到租户的域，例如 contoso.onmicrosoft.com。 将 \<directory ID\> 替换为租户的 Azure AD GUID 标识符。
 
-  ```
-  if (oSession.HostnameIs("login.microsoftonline.com") || oSession.HostnameIs("login.microsoft.com") || oSession.HostnameIs("login.windows.net")){      oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";      oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";}
-  ```
+    ```
+    if (oSession.HostnameIs("login.microsoftonline.com") || oSession.HostnameIs("login.microsoft.com") || oSession.HostnameIs("login.windows.net")){      oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";      oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";}
+    ```
 
-  如果需要允许多个租户，请使用逗号分隔租户名称。 例如：
+    如果需要允许多个租户，请使用逗号分隔租户名称。 例如：
 
-  ```
-  oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";
-  ```
+    ```
+    oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";
+    ```
 
 4. 保存并关闭 CustomRules 文件。
 

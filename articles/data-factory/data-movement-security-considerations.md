@@ -9,20 +9,19 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 3c2b44455b417d1bc764337d91a5535d7ffa34a5
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 0113fc3112fa0fa911d6609684357d01cd9adf30
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783366"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015706"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](v1/data-factory-data-movement-security-considerations.md)
+> * [版本 1](v1/data-factory-data-movement-security-considerations.md)
 > * [当前版本](data-movement-security-considerations.md)
 
 本文介绍 Azure 数据工厂中数据移动服务用于帮助保护数据的基本安全基础结构。 数据工厂管理资源建立在 Azure 安全基础结构上，并使用 Azure 提供的所有可能的安全措施。
@@ -126,7 +125,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 下表根据混合数据移动的源和目标位置的不同组合，汇总了有关网络和自承载集成运行时的配置建议。
 
-| Source      | 目标                              | 网络配置                    | 集成运行时安装                |
+| 源      | 目标                              | 网络配置                    | 集成运行时安装                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | 本地 | 虚拟网络中部署的虚拟机和云服务 | IPSec VPN（点到站点或站点到站点） | 可在本地或虚拟网络中的 Azure 虚拟机上安装自承载集成运行时。 |
 | 本地 | 虚拟网络中部署的虚拟机和云服务 | ExpressRoute（专用对等互连）           | 可在本地或虚拟网络中的 Azure 虚拟机上安装自承载集成运行时。 |
@@ -167,7 +166,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 | ------------- | ---------------------------------------- |
 | 8050 (TCP)    | PowerShell 加密 cmdlet（参阅[在 Azure 数据工厂中加密本地数据存储的凭据](encrypt-credentials-self-hosted-integration-runtime.md)）和凭据管理器应用程序需要使用此端口在自承载集成运行时中安全设置本地数据存储的凭据。 |
 
-![网关端口要求](media\data-movement-security-considerations/gateway-port-requirements.png) 
+![网关端口要求](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
 #### <a name="ip-configurations-and-whitelisting-in-data-stores"></a>数据存储中的 IP 配置和允许列表
 云中的某些数据存储还需要将访问存储的计算机的 IP 地址加入允许列表。 确保已在防火墙中相应地将自承载集成运行时计算机的 IP 地址加入允许列表或进行配置。

@@ -8,6 +8,7 @@ items:
   - name: 经典部署分配失败
     href: allocation-failure-classic.md
 - name: RDP
+  href: rdp.md
   items:
   - name: 重置 RDP
     href: reset-rdp.md
@@ -55,6 +56,12 @@ items:
   items:
   - name: SSH 故障排除
     href: troubleshoot-ssh-connection.md
+  - name: 排查文件系统错误
+    href: https://support.microsoft.com/help/3213321
+  - name: 排查与内核相关的启动问题
+    href: https://support.microsoft.com/help/4091524
+  - name: 排查 fstab 错误
+    href: https://support.microsoft.com/help/3206699
   - name: 详细的 SSH 故障排除
     href: detailed-troubleshoot-ssh-connection.md
 - name: 常见错误消息
@@ -100,10 +107,14 @@ items:
       href: serial-console-cmd-ps-commands.md
 - name: 删除存储资源时出错
   href: storage-resource-deletion-errors.md
+- name: 删除经典存储资源时出错
+  href: storage-classic-cannot-delete-storage-account-container-vhd.md
 - name: 附加 VHD 的 VM 意外重启
   href: unexpected-reboots-attached-vhds.md
 - name: Windows 激活问题
   href: troubleshoot-activation-problems.md
+- name: 强制隧道的激活问题
+  href: custom-routes-enable-kms-activation.md
 - name: 应用程序访问问题
   href: troubleshoot-app-connection.md
 - name: 新建 VM 部署
@@ -161,9 +172,9 @@ items:
   href: understand-vm-reboot.md
 - name: 远程故障排除工具
   href: remote-tools-troubleshoot-azure-vm-issues.md
-ms.openlocfilehash: 933976034950fbd454789dc620aa34ec9b1598c1
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 7ba013c372eefcbf83bb141ba44fcea9b68064de
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52306465"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382973"

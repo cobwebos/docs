@@ -1,9 +1,9 @@
 ---
-title: 使用适用于 .NET 的客户端库管理 Batch 帐户资源 - Azure | Microsoft Docs
+title: 使用适用于 .NET 的客户端库管理帐户资源 - Azure Batch | Microsoft Docs
 description: 使用 Batch Management .NET 库创建、删除和修改 Azure Batch 帐户资源。
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/24/2017
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 65f8eb0752a181eda312515e557bb733c091e2e5
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: c65a71d9e64a1ea3f60abbe2e420652c12ba030e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505373"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549473"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>通过用于 .NET 的 Batch Management 客户端库管理 Batch 帐户和配额
 
@@ -153,7 +153,7 @@ Batch 管理 .NET 库是 Azure 资源提供程序客户端，与 [Azure 资源�
 
 ## <a name="sample-project-on-github"></a>GitHub 上的示例项目
 
-查看 GitHub 上的 [AccountManagment][acct_mgmt_sample] 示例项目，了解 Batch Management .NET 的操作实践。 AccountManagment 示例应用程序演示了以下操作：
+查看 GitHub 上的 [AccountManagement][acct_mgmt_sample] 示例项目，了解 Batch Management .NET 的操作实践。 AccountManagement 示例应用程序演示了以下操作：
 
 1. 使用 [ADAL][aad_adal] 从 Azure AD 获取安全令牌。 如果用户尚未登录，系统会提示其输入 Azure 凭据。
 2. 使用从 Azure AD 获取的安全令牌创建 [SubscriptionClient][resman_subclient]，以便在 Azure 中查询与帐户关联的订阅列表。 如果列表包含多个订阅，则用户可从中选择一个订阅。
@@ -181,9 +181,9 @@ Batch 管理 .NET 库是 Azure 资源提供程序客户端，与 [Azure 资源�
 [aad_auth_scenarios]:../active-directory/develop/authentication-scenarios.md "Azure AD 的身份验证方案"
 [aad_integrate]:../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md "将应用程序与 Azure Active Directory 集成"
 [acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement
-[api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
+[api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_mgmt_net]: https://msdn.microsoft.com/library/azure/mt463120.aspx
-[azure_portal]: http://portal.azure.com
+[azure_portal]: https://portal.azure.com
 [azure_storage]: https://azure.microsoft.com/services/storage/
 [azure_tokencreds]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.tokencloudcredentials.aspx
 [batch_explorer_project]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer

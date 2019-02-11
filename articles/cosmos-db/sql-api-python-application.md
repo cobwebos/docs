@@ -1,23 +1,19 @@
 ---
-title: 适用于 Azure Cosmos DB 的 Python Flask Web 应用程序教程 | Microsoft Docs
+title: 适用于 Azure Cosmos DB 的 Python Flask Web 应用程序教程
 description: 查看一个数据库教程，其中介绍了使用 Azure Cosmos DB 从 Azure 上托管的 Python Flask Web 应用程序来存储和访问数据。 查找应用程序开发解决方案。
-keywords: 应用程序开发, Python Flask, Python Web 应用程序, Python Web 开发
-services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 02/23/2017
 ms.author: sngun
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d9470df09c2724bf89a371ec62e7fb8a7e2132c6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a59de5fad7f457fffcc36ed55fd5862bc9329a1d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953916"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037151"
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>构建使用 Azure Cosmos DB 的 Python Flask Web 应用程序
 
@@ -45,7 +41,7 @@ ms.locfileid: "46953916"
 ## <a name="database-tutorial-prerequisites"></a>数据库教程先决条件
 在按照本文中的说明操作之前，应确保已安装下列项：
 
-* [一个 Azure 订阅](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+* [Azure 订阅](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -63,7 +59,7 @@ ms.locfileid: "46953916"
 * [Microsoft Visual C++ Compiler for Python 2.7](https://www.microsoft.com/en-us/download/details.aspx?id=44266)。
 
 ## <a name="step-1-create-an-azure-cosmos-db-database-account"></a>步骤 1：创建 Azure Cosmos DB 数据库帐户
-让我们首先创建一个 Azure Cosmos DB 帐户。 如果已有一个帐户，或者要在本教程中使用 Azure Cosmos DB 模拟器，可以跳到[步骤 2：创建新的 Python Flask 应用程序](#step-2-create-a-new-python-flask-web-application)。
+让我们首先创建一个 Azure Cosmos DB 帐户。 如果已有一个帐户，或者要在本教程中使用 Azure Cosmos DB 模拟器，可以跳到[步骤 2：新建 Python Flask Web 应用程序](#step-2-create-a-new-python-flask-web-application)。
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -437,4 +433,4 @@ def vote():
 
 有关 Azure、Visual Studio 和 Python 的详细信息，请参阅 [Python 开发人员中心](https://azure.microsoft.com/develop/python/)。 
 
-有关其他 Python Flask 教程，请参阅 [The Flask Mega-Tutorial, Part I: Hello, World!（Flask 大型教程，第 I 部分：Hello, World!）](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)。 
+有关其他 Python Flask 教程，请参阅 [The Flask Mega-Tutorial, Part I: Hello, World!](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)（Flask 大型教程，第 I 部分：Hello, World!）。 

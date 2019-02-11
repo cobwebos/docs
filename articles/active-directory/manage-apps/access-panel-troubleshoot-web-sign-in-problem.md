@@ -4,10 +4,10 @@ description: 指导解决尝试登录以使用访问面板时可能会遇到的�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviwer: japere,asteen
-ms.openlocfilehash: ac07a0aa9c324c7e44d68ea2674d0fa2af5dbba5
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 2421cdbb192500e0544e5711ae988c3a89c49e80
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354655"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731047"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>登录到访问面板网站时出现问题
 
@@ -159,9 +159,9 @@ ms.locfileid: "44354655"
 
 若要启用自助服务密码重置，请执行以下部署步骤：
 
--   [使用户能够重置其 Azure Active Directory 密码](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started#enable-users-to-reset-their-azure-ad-passwords)
+-   [使用户能够重置其 Azure Active Directory 密码](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
--   [使用户能够重置或更改其 Active Directory 本地密码](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords)
+-   [使用户能够重置或更改其 Active Directory 本地密码](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
 ### <a name="check-a-users-multi-factor-authentication-status"></a>检查用户的多重身份验证状态
 

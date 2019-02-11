@@ -1,21 +1,21 @@
 ---
-title: 使用 Ansible（预览版）通过 Azure 应用程序网关管理 Web 流量
+title: 使用 Ansible 通过 Azure 应用程序网关管理 Web 流量
 description: 了解如何使用 Ansible 创建并配置 Azure 应用程序网关来管理 Web 流量
 ms.service: ansible
-keywords: ansible, azure, devops, bash, playbook, azure 应用程序网关, 负载均衡器, web 流量
-author: tomarcher
+keywords: ansible, azure, devops, bash, playbook, 应用程序网关, 负载均衡器, web 流量
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/20/2018
-ms.openlocfilehash: e3c165c87d6c179141f2ddd44f00f0f62a84b285
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 43e8681e5266f113d466a138abeeda77aff1c18b
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912860"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052251"
 ---
-# <a name="manage-web-traffic-with-azure-application-gateway-by-using-ansible-preview"></a>使用 Ansible（预览版）通过 Azure 应用程序网关管理 Web 流量
+# <a name="manage-web-traffic-with-azure-application-gateway-by-using-ansible"></a>使用 Ansible 通过 Azure 应用程序网关管理 Web 流量
 
 [Azure 应用程序网关](https://docs.microsoft.com/azure/application-gateway/)是一种 Web 流量负载均衡器，可用于管理 Web 应用程序的流量。
 
@@ -34,7 +34,7 @@ ms.locfileid: "50912860"
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> 在本教程中运行以下示例 playbook 需要 Ansible 2.7。 可以通过运行 `sudo pip install ansible[azure]==2.7.0rc2` 来安装 Ansible 2.7 RC。 在 Ansible 2.7 发布之后，不需指定版本。
+> 在本教程中运行以下示例 playbook 需要 Ansible 2.7。 
 
 ## <a name="create-a-resource-group"></a>创建资源组
 

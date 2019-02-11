@@ -4,22 +4,22 @@ description: 了解如何将用户分配给租户中的应用程序
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: d34671d4197735ea2c30aafc8fd01a5893427ff3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fd677a34caa5a1871808b31477e91746ec9fdccb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226834"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170396"
 ---
 # <a name="how-to-assign-users-to-applications"></a>如何将用户分配给应用程序
 
@@ -33,15 +33,15 @@ ms.locfileid: "51226834"
 
 2.  管理员[将用户是其成员的组分配](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)给应用程序，包括：
 
-  * 已从本地同步的组
+    * 已从本地同步的组
 
-  * 在云中创建的静态安全组
+    * 在云中创建的静态安全组
 
-  * 在云中创建的[动态安全组](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal)
+    * 在云中创建的[动态安全组](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal)
 
-  * 在云中创建的 Office 365 组
+    * 在云中创建的 Office 365 组
 
-  * [所有用户](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups)组
+    * [所有用户](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups)组
 
 3.  管理员启用[自助服务应用程序访问](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)以允许用户**无需业务批准**，即可使用[应用程序访问面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)的“添加应用”功能添加应用程序
 
@@ -55,9 +55,9 @@ ms.locfileid: "51226834"
 
 8.  对于第一方应用程序，如 [ Microsoft Office 365](https://products.office.com/)，管理员直接为用户是其成员的组分配许可证
 
-9.  [管理员同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)所有用户均可使用某个应用程序，然后用户登录该应用程序
+9.  [管理员同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)所有用户均可使用某个应用程序，然后用户登录该应用程序
 
-10. 通过登录应用程序，用户自己[同意使用应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)
+10. 通过登录应用程序，用户自己[同意使用应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Azure Active Directory 管理应用程序](what-is-application-management.md)

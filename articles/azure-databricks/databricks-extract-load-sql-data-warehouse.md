@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
 ms.date: 11/19/2018
-ms.openlocfilehash: 5a6d3265fde3b7633036ddc4cae0a5ea7d246957
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 4fab67a0ea93f287ddd3d5d0d5bc42a5dcfbe75c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265250"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104705"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>教程：使用 Azure Databricks 提取、转换和加载数据
 
@@ -44,9 +44,9 @@ ms.locfileid: "52265250"
 ## <a name="prerequisites"></a>先决条件
 
 在开始学习本教程之前，请确保满足以下要求：
-- 创建 Azure SQL 数据仓库、创建服务器级防火墙规则并以服务器管理员身份连接到服务器。按[快速入门：创建 Azure SQL 数据仓库](../sql-data-warehouse/create-data-warehouse-portal.md)中的说明操作
+- 创建 Azure SQL 数据仓库、创建服务器级防火墙规则并以服务器管理员身份连接到服务器。遵循[快速入门：创建 Azure SQL 数据仓库](../sql-data-warehouse/create-data-warehouse-portal.md)中的说明
 - 为 Azure SQL 数据仓库创建数据库主密钥。 按[创建数据库主密钥](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)中的说明操作。
-- 创建 Azure Blob 存储帐户并在其中创建容器。 另外，请检索用于访问该存储帐户的访问密钥。 按照[快速入门：创建 Azure Blob 存储帐户](../storage/blobs/storage-quickstart-blobs-portal.md)中的说明操作。
+- 创建 Azure Blob 存储帐户并在其中创建容器。 另外，请检索用于访问该存储帐户的访问密钥。 遵循[快速入门：创建 Azure Blob 存储帐户](../storage/blobs/storage-quickstart-blobs-portal.md)中的说明。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -54,7 +54,7 @@ ms.locfileid: "52265250"
 
 ## <a name="create-an-azure-databricks-workspace"></a>创建 Azure Databricks 工作区
 
-在本部分，使用 Azure 门户创建 Azure Databricks 工作区。 
+在本部分，使用 Azure 门户创建 Azure Databricks 工作区。
 
 1. 在 Azure 门户中，选择“创建资源” > “数据 + 分析” > “Azure Databricks”。
 
@@ -65,14 +65,14 @@ ms.locfileid: "52265250"
     ![创建 Azure Databricks 工作区](./media/databricks-extract-load-sql-data-warehouse/create-databricks-workspace.png "创建 Azure Databricks 工作区")
 
     提供以下值：
-     
+    
     |属性  |说明  |
     |---------|---------|
     |**工作区名称**     | 提供 Databricks 工作区的名称        |
     |**订阅**     | 从下拉列表中选择自己的 Azure 订阅。        |
     |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../azure-resource-manager/resource-group-overview.md)。 |
     |**位置**     | 选择“美国东部 2”。 有关其他可用区域，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。        |
-    |**定价层**     |  选择“标准”或“高级”。 有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
+    |**定价层**     |  选择“标准”或“高级”。 由于存在配额提高限制，因此不能使用免费试用版订阅来完成本教程。 有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
 
     选择“固定到仪表板”，然后选择“创建”。
 
@@ -95,7 +95,7 @@ ms.locfileid: "52265250"
     除以下值外，接受其他所有默认值：
 
     * 输入群集的名称。
-    * 在本文中，请创建运行时为 **4.0** 的群集。
+    * 对于本文，请创建运行时版本为 **4.1 或更高版本**的群集。
     * 请务必选中**在不活动超过 \_\_ 分钟后终止**复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
     
     选择“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
@@ -106,11 +106,11 @@ ms.locfileid: "52265250"
 
 1. 在 [Azure 门户](https://portal.azure.com)中选择“创建资源” > “存储” > “Data Lake Store”。
 3. 在“新建 Data Lake Store”边栏选项卡中，提供以下屏幕截图中所示的值：
-   
+
     ![创建新的 Azure Data Lake Store 帐户](./media/databricks-extract-load-sql-data-warehouse/create-new-datalake-store.png "创建新的 Azure Data Lake 帐户")
 
-    提供以下值： 
-     
+    提供以下值：
+    
     |属性  |说明  |
     |---------|---------|
     |**Name**     | 输入 Data Lake Store 帐户的唯一名称。        |
@@ -125,7 +125,7 @@ ms.locfileid: "52265250"
 现在创建 Azure Active Directory 服务主体并将其与所创建的 Data Lake Store 帐户相关联。
 
 ### <a name="create-an-azure-active-directory-service-principal"></a>创建 Azure Active Directory 服务主体
-   
+
 1. 在 [Azure 门户](https://portal.azure.com)中选择“所有服务”，然后搜索“Azure Active Directory”。
 
 2. 选择“应用注册”。
@@ -193,7 +193,7 @@ ms.locfileid: "52265250"
 
 ## <a name="upload-data-to-data-lake-store"></a>将数据上传到 Data Lake Store
 
-在此部分，请将示例数据文件上传到 Data Lake Store。 稍后需在 Azure Databricks 中使用此文件来运行一些转换操作。 本教程所使用的示例数据 (**small_radio_json.json**) 在此 [Github 存储库](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json)中提供。
+在此部分，请将示例数据文件上传到 Data Lake Store。 稍后需在 Azure Databricks 中使用此文件来运行一些转换操作。 本教程所使用的示例数据 (**small_radio_json.json**) 在此 [GitHub 存储库](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json)中提供。
 
 1. 在 [Azure 门户](https://portal.azure.com)中选择所创建的 Data Lake Store 帐户。
 
@@ -376,9 +376,9 @@ ms.locfileid: "52265250"
 
 在此部分，请将转换的数据上传到 Azure SQL 数据仓库中。 可以使用适用于 Azure Databricks 的 Azure SQL 数据仓库连接器直接上传数据帧，在 SQL 数据仓库中作为表来存储。
 
-如前所述，SQL 数据仓库连接器使用 Azure Blob 存储作为临时存储位置，以便将数据从 Azure Databricks 上传到 Azure SQL 数据仓库。 因此，一开始请提供连接到存储帐户所需的配置。 必须已经按照本文先决条件部分的要求创建帐户。
+如前所述，SQL 数据仓库连接器使用 Azure Blob 存储作为临时存储位置，以便在 Azure Databricks 和 Azure SQL 数据仓库之间上传数据。 因此，一开始请提供连接到存储帐户所需的配置。 必须已经按照本文先决条件部分的要求创建帐户。
 
-1. 提供从 Azure Databricks 访问 Azure 存储帐户所需的配置。 如果从门户复制 Blob 存储的 URL，请务必删除开头的 *https://*。 
+1. 提供从 Azure Databricks 访问 Azure 存储帐户所需的配置。 如果从门户复制 Blob 存储的 URL，请务必删除开头的 *https://*。
 
         val blobStorage = "<STORAGE ACCOUNT NAME>.blob.core.windows.net"
         val blobContainer = "<CONTAINER NAME>"
@@ -410,7 +410,7 @@ ms.locfileid: "52265250"
         spark.conf.set(
           "spark.sql.parquet.writeLegacyFormat",
           "true")
-        
+    
         renamedColumnsDf.write
             .format("com.databricks.spark.sqldw")
             .option("url", sqlDwUrlSmall)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: xpouyat;anilmur;juliako
-ms.openlocfilehash: 31bd3d54b085922de0ec822731eae79fe9a9943b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e2a856dbc3bdf72ad03601618a9d48bb54665f7b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262091"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812057"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>在高级编码器中使用多个输入文件和组件属性
 ## <a name="overview"></a>概述
@@ -274,7 +274,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 假设要在视频编码时覆盖输入视频中的徽标图像。 此示例中，输入视频命名为“Microsoft_HoloLens_Possibilities_816p24.mp4”，徽标命名为“logo.png”。 应该执行以下步骤：
 
 * 创建包含工作流文件的工作流资产（参阅以下示例）。
-* 创建包含以下两个文件的媒体资产：MyInputVideo.mp4（主文件）和 MyLogo.png。
+* 创建媒体资产，其中包含两个文件：作为主文件的 MyInputVideo.mp4 以及 MyLogo.png。
 * 使用上述输入资产将任务发送到媒体编码器高级工作流媒体处理器，并指定以下配置字符串。
 
 配置:
@@ -351,7 +351,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 覆盖层位置
 
 要将视频流编码成 H.264，请将 AVC 视频编码器和 AAC 编码器组件添加到设计器图面。 连接插针。
-设置 AAC 编码器，并选择“音频格式转换/预设：2.0 (L, R)”。
+设置 AAC 编码器，并选择“音频格式转换/预设:2.0 (L, R)”。
 
 ![音频和视频编码器](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture15_encoders.png)
 

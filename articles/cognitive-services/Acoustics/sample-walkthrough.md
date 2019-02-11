@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: sample
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: f5ea565e68579dfad601d1037daeb4113e3daa43
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 7d8ba2f25bd53b407ab6860bc57163a79b7d228a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901152"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174255"
 ---
 # <a name="unity-sample-walkthrough"></a>Unity 示例演练
 这是有关 Project Acoustics 示例的演练。 有关什么是 Project Acoustics 的详细信息，请参阅 [Project Acoustics 简介](what-is-acoustics.md)。 有关将 Project Acoustics 包添加到现有 Unity 项目的帮助，请使用[入门指南](getting-started.md)。
@@ -36,7 +36,7 @@ ms.locfileid: "48901152"
 
 已制作场景，并且该场景包含与“层次结构”中的 MicrosoftAcoustics 预制件相关联的 ACE 文件。 
 
-通过单击 Unity 编辑器中的播放按钮，侦听场景的声音效果。 在桌面上，使用 W、A、S、D 和鼠标进行移动。 若要比较有音响效果和没有音响效果的场景声音，请按下 **R** 按钮，直到覆盖文本变成红色，并显示“音响效果: 已禁用”。 若要查看更多控件的键盘快捷方式，请按 **F1**。 通过右键单击以选择要执行的操作，然后左键单击以执行操作，也可以使用所有控件。
+通过单击 Unity 编辑器中的播放按钮，侦听场景的声音效果。 在桌面上，使用 W、A、S、D 和鼠标进行移动。 若要比较有音响效果和没有音响效果的场景声音，请按下 **R** 按钮，直到覆盖文本变成红色，并显示“音响效果:已禁用”。 若要查看更多控件的键盘快捷方式，请按 **F1**。 通过右键单击以选择要执行的操作，然后左键单击以执行操作，也可以使用所有控件。
 
 ## <a name="targeting-other-platforms"></a>面向其他平台
 该示例包含在 Windows 桌面、UWP、Windows Mixed Reality、Android 和 Oculus Go 上运行的设置。 默认情况下，针对 Windows 桌面配置该项目。 若要面向 VR 平台，请转到播放机设置（“编辑”>“项目设置”>“播放机”），查找“XR 设置”，然后选中“受支持的虚拟现实”复选框。

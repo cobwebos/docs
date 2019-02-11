@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: bf6dbde725670030046aad4fccf41554b8d917fe
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: c130c6cd5fcb5191195712f570db66408734200a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901271"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150858"
 ---
 # <a name="query-expression-syntax"></a>查询表达式语法
 
@@ -28,36 +28,36 @@ ms.locfileid: "48901271"
 某些实体数据存储为复合属性，如属性名称中的点“.”所示。 例如，作者/关联信息表示为复合属性。 它包含 4 个组件：AuN、AuId、AfN、AfId。 这些组件是形成单个实体属性值的单独数据片段。
 
 
-字符串属性：单值（包括与同义词的匹配）  
+**字符串属性：单值**（包括与同义词的匹配）  
 Ti='通过潜在语义分析进行索引'  
 Composite(AA.AuN='sue dumais')
 
-字符串属性：精确单值（仅匹配规范值）  
+**字符串属性：精确单值**（仅匹配规范值）  
 Ti=='通过潜在语义分析进行索引'  
 Composite(AA.AuN=='susan t dumais')
      
-字符串属性：前缀值   
+**字符串属性：前缀值**   
 Ti='通过潜在 seman 进行索引'...  
 Composite(AA.AuN='sue du'...)
 
-数字属性：单值  
+**数值属性：单值**  
 Y=2010
  
-数字属性：范围值  
+**数值属性：范围值**  
 Y>2005  
 Y>=2005  
 Y<2010  
 Y<=2010  
-Y=\[2010, 2012\)（仅包括左边界值：2010 年、2011 年）  
-Y=\[2010, 2012\]（包括两个边界值：2010 年、2011 年、2012 年）
+Y=\[2010, 2012\)（仅包括左边界值：2010、2011）  
+Y=\[2010, 2012\]（包括两个边界值：2010、2011、2012）
  
-数字属性：前缀值  
+**数值属性：前缀值**  
 Y='19'... (以 19 开头的任何数字值) 
  
-日期属性：单值  
+**日期属性：单值**  
 D='2010-02-04'
 
-日期属性：范围值  
+**日期属性：范围值**  
 D>'2010-02-03'  
 D=['2010-02-03','2010-02-05']
 

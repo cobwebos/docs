@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: danlep
-ms.openlocfilehash: 63affd4ad22d5246274ddfa3160d5675f702003f
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: f2fc187518070bf199a3959889afd1ede4ef5b77
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855744"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660708"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-tasks"></a>使用 ACR 任务自动执行 OS 和框架修补
 
@@ -39,7 +39,7 @@ Azure CLI 中的 [az acr build][az-acr-build] 命令使用我们熟悉的 `docke
 
 下表显示了 ACR 任务支持的上下文位置的几个示例：
 
-| 上下文位置 | Description | 示例 |
+| 上下文位置 | 说明 | 示例 |
 | ---------------- | ----------- | ------- |
 | 本地文件系统 | 本地文件系统上某个目录中的文件。 | `/home/user/projects/myapp` |
 | GitHub 主分支 | GitHub 存储库主分支（或其他默认分支）中的文件。  | `https://github.com/gituser/myapp-repo.git` |
@@ -65,7 +65,7 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 
 真正增强容器生成工作流的 ACR 任务的强大之处在于，它能够检测基础映像的更新。 将更新的基础映像将推送到注册表时，ACR 任务可以基于该映像自动生成任何应用程序映像。
 
-在广义上，可将容器映像分类为基本映像和应用程序映像。 基本映像通常包括应用程序所基于的操作系统和应用程序框架，以及其他自定义项。 这些基本映像本身通常基于公共上游映像，例如 [Alpine Linux][base-alpine]、[Windows][base-windows]、[.NET][base-dotnet] 或 [Node.js][base-node]。 多个应用程序映像可以共享一个通用基本映像。
+在广义上，可将容器映像分类为基本映像和应用程序映像。 基本映像通常包括应用程序所基于的操作系统和应用程序框架，以及其他自定义项。 这些基础映像本身通常基于公共上游映像，例如：[Alpine Linux][base-alpine]、[Windows][base-windows]、[.NET][base-dotnet] 或 [Node.js][base-node]。 多个应用程序映像可以共享一个通用基本映像。
 
 当上游维护者更新 OS 或应用程序框架映像时（例如，使用关键 OS 安全修补），也必须更新基本映像以包含关键修复。 然后，还必须重新生成每个应用程序映像，以包含目前已包含在基础映像中的这些上游修复。
 
@@ -114,9 +114,9 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
 [az-acr-build]: /cli/azure/acr#az-acr-build
-[az-acr-task]: /cli/azure/acr#az-acr-task
+[az-acr-task]: /cli/azure/acr
 [az-login]: /cli/azure/reference-index#az-login
-[az-login-service-principal]: /cli/azure/authenticate-azure-cli#log-in-with-a-service-principal
+[az-login-service-principal]: /cli/azure/authenticate-azure-cli
 
 <!-- IMAGES -->
 [quick-build-01-fork]: ./media/container-registry-tutorial-quick-build/quick-build-01-fork.png

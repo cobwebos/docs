@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Zwayam 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Zwayam 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Zwayam 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 7754344c-34d6-4764-a368-e1dbfe876c0c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: jeedes
-ms.openlocfilehash: dd98886e2bdcaecdd685dd714b6d4bacd96e6e29
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e3b70c7c7ef50b536618517c6b8f2e670322a881
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438341"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180851"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zwayam"></a>教程：Azure Active Directory 与 Zwayam 的集成
+# <a name="tutorial-azure-active-directory-integration-with-zwayam"></a>教程：Azure Active Directory 与 Zwayam 集成
 
 本教程介绍了如何将 Zwayam 与 Azure Active Directory (Azure AD) 进行集成。
 
@@ -130,7 +130,7 @@ ms.locfileid: "39438341"
 1. 若要在 **Zwayam** 端配置单一登录，需要将下载的**元数据 XML** 发送给 [Zwayam 支持团队](mailto:opendoors@zwayam.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -167,7 +167,7 @@ ms.locfileid: "39438341"
  
 ### <a name="create-a-zwayam-test-user"></a>创建一个 Zwayam 测试用户
 
-在本部分中，将在 Zwayam 中创建一个名为 Britta Simon 的用户。 请与 [Zwayam 支持团队](mailto:opendoors@zwayam.com)协作来在 Zwayam 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Zwayam 中创建一个名为 Britta Simon 的用户。 与  [Zwayam 支持团队](mailto:opendoors@zwayam.com) 协作，将用户添加到 Zwayam 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -204,12 +204,12 @@ ms.locfileid: "39438341"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Zwayam 磁贴时，应当会自动登录到 Zwayam 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

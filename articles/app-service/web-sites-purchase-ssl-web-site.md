@@ -1,5 +1,5 @@
 ---
-title: 为 Azure 应用服务购买和配置 SSL 证书 | Microsoft Docs
+title: 从 Azure 购买和配置 SSL 证书 - 应用服务 | Microsoft Docs
 description: 了解如何购买应用服务证书并将其绑定到应用服务应用
 services: app-service
 documentationcenter: .net
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: c775798591a3063fdfe6d399c8337aac2e2f207e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.custom: seodec18
+ms.openlocfilehash: 784cb5248dab2b9554c67347e1b9b848e1a9e985
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351348"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820778"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>为 Azure 应用服务购买和配置 SSL 证书
 
@@ -34,7 +35,7 @@ ms.locfileid: "49351348"
 按照本操作方法指南操作：
 
 - [创建应用服务应用](/azure/app-service/)
-- [将域名映射到 Web 应用](app-service-web-tutorial-custom-domain.md)或[在 Azure 中购买和配置](custom-dns-web-site-buydomains-web-app.md)
+- [将域名映射到 Web 应用](app-service-web-tutorial-custom-domain.md)或[在 Azure 中购买和配置](manage-custom-dns-buy-domain.md)
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -46,10 +47,10 @@ ms.locfileid: "49351348"
 
 使用下表来帮助配置证书。 完成后，单击“创建”。
 
-| 设置 | Description |
+| 设置 | 说明 |
 |-|-|
 | 名称 | 应用服务证书证书的友好名称。 |
-| 裸域主机名 | 此步骤是购买过程中的最重要步骤之一。 使用已映射到应用的根域名。 切勿在域名前面附加 `www`。 |
+| 裸域主机名 | 如果在此处指定根域，则会获得一个证书，该证书*同时*对根域和 `www` 子域提供保护。 若要仅保护子域，请在此处指定子域的完全限定域名（例如，`mysubdomain.contoso.com`）。 |
 | 订阅 | 托管 Web 应用的数据中心。 |
 | 资源组 | 包含证书的资源组。 例如，可以使用新资源组，或选择与应用服务应用相同的资源组。 |
 | 证书 SKU | 确定要创建的证书类型是标准证书还是[通配符证书](https://wikipedia.org/wiki/Wildcard_certificate)。 |
@@ -67,7 +68,7 @@ ms.locfileid: "49351348"
 
 在“Key Vault 状态”页，单击“Key Vault 存储库”以创建新的保管库或选择现有保管库。 如果选择创建新的保管库，请使用下表以帮助配置保管库，然后单击“创建”。 查看如何在同一订阅和资源组中创建新的 Key Vault。
 
-| 设置 | Description |
+| 设置 | 说明 |
 |-|-|
 | 名称 | 由字母数字字符和短划线组成的唯一名称。 |
 | 资源组 | 建议选择与应用服务证书相同的资源组。 |
@@ -80,7 +81,7 @@ ms.locfileid: "49351348"
 
 ## <a name="verify-domain-ownership"></a>验证域所有权
 
-在上一步骤中所用的同一“证书配置”页面中，单击“步骤 2: 验证”。
+在上一步中所用的同一“证书配置”页中，单击“步骤 2: 验证”。
 
 ![](./media/app-service-web-purchase-ssl-web-site/verify-domain.png)
 
@@ -90,7 +91,7 @@ ms.locfileid: "49351348"
 > 支持四种类型的域验证方法： 
 > 
 > - **应用服务验证** - 当域已映射到同一订阅中的应用服务应用时，这是最方便的选项。 它可利用应用服务应用已验证域所有权这一事实。
-> - **域** - 验证[从 Azure 购买的应用服务域](custom-dns-web-site-buydomains-web-app.md)。 Azure 会自动为你添加验证 TXT 记录，并完成该过程。
+> - **域** - 验证[从 Azure 购买的应用服务域](manage-custom-dns-buy-domain.md)。 Azure 会自动为你添加验证 TXT 记录，并完成该过程。
 > - **邮件** - 通过向域管理员发送电子邮件来验证域。 选择此选项时会提供相应说明。
 > - **手动** - 使用 HTML 页（仅标准证书）或 DNS TXT 记录验证域。 选择此选项时会提供相应说明。
 
@@ -110,11 +111,11 @@ ms.locfileid: "49351348"
 
 使用下表帮助在“SSL 绑定”对话框中配置绑定，然后单击“添加绑定”。
 
-| 设置 | Description |
+| 设置 | 说明 |
 |-|-|
 | 主机名 | 要为其添加 SSL 绑定的域名。 |
 | 私有证书指纹 | 要绑定的证书。 |
-| SSL 类型 | <ul><li>**SNI SSL** - 可添加多个基于 SNI 的 SSL 绑定。 选择此选项可以使用多个 SSL 证书来保护同一 IP 地址上的多个域。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI（在[服务器名称指示](http://wikipedia.org/wiki/Server_Name_Indication)中了解更全面的浏览器支持信息）。</li><li>基于 IP 的 SSL - 只能添加一个基于 IP 的 SSL 绑定。 选择此选项只能使用一个 SSL 证书来保护专用公共 IP 地址。 配置绑定后，请按照[重新映射 IP SSL 的 A 记录](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl)中的步骤进行操作。 </li></ul> |
+| SSL 类型 | <ul><li>**SNI SSL** - 可添加多个基于 SNI 的 SSL 绑定。 选择此选项可以使用多个 SSL 证书来保护同一 IP 地址上的多个域。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI（在[服务器名称指示](https://wikipedia.org/wiki/Server_Name_Indication)中了解更全面的浏览器支持信息）。</li><li>基于 IP 的 SSL - 只能添加一个基于 IP 的 SSL 绑定。 选择此选项只能使用一个 SSL 证书来保护专用公共 IP 地址。 配置绑定后，请按照[重新映射 IP SSL 的 A 记录](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl)中的步骤进行操作。 </li></ul> |
 
 ## <a name="verify-https-access"></a>验证 HTTPS 访问
 
@@ -132,7 +133,7 @@ ms.locfileid: "49351348"
 
 ## <a name="renew-certificate"></a>续订证书
 
-若要在任何时候启用自动续订证书，请选择[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页中的证书，然后单击左侧导航窗格的“自动续订设置”。 
+若要在任何时候启用证书自动续订，请选择[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页面中的证书，然后单击左侧导航窗格的“自动续订设置”。 
 
 选择“开”，然后单击“保存”。 如果启用了自动续订，则证书会在到期前 60 天自动续订。
 
@@ -147,11 +148,11 @@ ms.locfileid: "49351348"
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>更多资源
 

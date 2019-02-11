@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,19 +16,19 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: e4ed0db3a08937c3c8b51e2c8af5e566b59df4c4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b507e6630e5b0b0e73edad1815825e70ed90ec4d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970951"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097293"
 ---
 # <a name="web-api"></a>Web API
 
 Web API 应用是需要通过 Web API 获取资源的 Web 应用。 在此方案中，Web 应用可以使用两种标识类型进行身份验证并调用 Web API：
 
 - **应用程序标识** - 此方案使用 OAuth 2.0 客户端凭据授予作为应用程序进行身份验证并访问 Web API。 当使用应用程序标识时，Web API 只能检测到 Web 应用程序在调用它，因为 Web API 不会收到关于用户的任何信息。 如果应用程序收到关于用户的信息，则该信息将通过应用程序协议发送，并且 Azure AD 不会对其进行签名。 Web API 相信 Web 应用程序已对用户进行了身份验证。 因此，此模式称为受信任的子系统。
-- **委托用户标识** - 此方案可以通过两种方式完成：OpenID Connect 和带有机密客户端的 OAuth 2.0 授权代码授予。 Web 应用程序为用户获取访问令牌，该令牌将向 Web API 证明用户已成功通过了 Web 应用程序的身份验证并且 Web 应用程序能够获取委托用户标识来调用 Web API。 然后会在请求中将此访问令牌发送到 Web API，后者对用户进行授权并返回所需的资源。
+- **委托用户标识** - 此方案可以通过两种方式完成：OpenID Connect 和 OAuth 2.0 授权代码使用机密客户端进行授权。 Web 应用程序为用户获取访问令牌，该令牌将向 Web API 证明用户已成功通过了 Web 应用程序的身份验证并且 Web 应用程序能够获取委托用户标识来调用 Web API。 然后会在请求中将此访问令牌发送到 Web API，后者对用户进行授权并返回所需的资源。
 
 下面的流对应用程序标识类型和委托用户标识类型都进行了讨论。 它们之间的主要区别是，委托用户标识必须先获取一个授权代码，用户才能登录并访问 Web API。
 

@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 40ec204f105b32c8b7d9e2dda6f6f3c3023b2d44
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 0f608dc89d3a9bc8914fc9be142c442246ce13b5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495452"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278536"
 ---
 # <a name="sfctl-application"></a>sfctl application
 创建、删除和管理应用程序及应用程序类型。
@@ -332,9 +332,9 @@ ms.locfileid: "39495452"
 | --application-id [必需] | 应用程序的标识。 <br><br> 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --health-property [必需] | 运行状况信息的属性。 <br><br> 一个实体可以有不同属性的运行状况报告。 该属性是一个字符串，不是固定的枚举，因此可使报告器灵活地对触发报告的状态条件进行分类。 例如，SourceId 为“LocalWatchdog”的报告器可以监视节点上的可用磁盘的状态，因此它可以报告该节点的“AvailableDisk”属性。 同一报告器可以监视节点连接，因此它可以报告同一节点的“Connectivity”属性。 在运行状况存储中，这些报告均被视为指定节点的单独运行状况事件。 与 SourceId 一起，该属性唯一地标识运行状况信息。 |
 | --health-state    [必需] | 可能的值包括\:“Invalid”、“Ok”、“Warning”、“Error”、“Unknown”。 |
-| --source-id       [必需] | 用于标识生成了运行状况信息的客户端/监视程序/系统组件的源名称。 |
+| --source-id       [必需] | 标识已生成运行状况信息的客户端/监视程序/系统组件的源名称。 |
 | --description | 运行状况信息的说明。 <br><br> 它表示用于添加有关该报告的用户可读信息的自定义文本。 该说明的最大字符串长度为 4096 个字符。 如果所提供字符串的长度大于该值，它将被自动截断。 截断时，该说明的末尾字符包含一个标记“[Truncated]”，并且总字符串大小为 4096 个字符。 该标记的存在向用户指示截断已发生。 请注意，当截断时，该说明包含来自原始字符串的 4096 个以内的字符。 |
-| --immediate | 用于指示是否应立即发送报告的标志。 <br><br> 运行状况报告将发送到 Service Fabric 网关应用程序，后者会将其转发到运行状况存储。 如果 Immediate 设置为 true，则报告将立即从 HTTP 网关发送至运行状况存储，而无论 HTTP 网关应用程序使用的 Fabric 客户端设置如何。 这对于应尽快发送的关键报告十分有用。 由于计时和其他情况，发送报告可能仍会失败，例如，在 HTTP 网关已关闭或消息无法到达网关的情况下。 如果 Immediate 设置为 false，则报告将基于来自 HTTP 网关的运行状况客户端设置发送。 因此，系统将根据 HealthReportSendInterval 配置对其进行批处理。 这是建议的设置，因为它可让运行状况客户端优化发往运行状况存储的运行状况报告消息以及运行状况报告处理。 默认情况下，报告不立即发送。 |
+| --immediate | 一个用于指示是否应立即发送报告的标志。 <br><br> 运行状况报告将发送到 Service Fabric 网关应用程序，后者会将其转发到运行状况存储。 如果 Immediate 设置为 true，则报告将立即从 HTTP 网关发送至运行状况存储，而无论 HTTP 网关应用程序使用的 Fabric 客户端设置如何。 这对于应尽快发送的关键报告十分有用。 由于计时和其他情况，发送报告可能仍会失败，例如，在 HTTP 网关已关闭或消息无法到达网关的情况下。 如果 Immediate 设置为 false，则报告将基于来自 HTTP 网关的运行状况客户端设置发送。 因此，系统将根据 HealthReportSendInterval 配置对其进行批处理。 这是建议的设置，因为它可让运行状况客户端优化发往运行状况存储的运行状况报告消息以及运行状况报告处理。 默认情况下，报告不立即发送。 |
 | --remove-when-expired | 该值指示是否在报告过期时从运行状况存储删除该报告。 <br><br> 如果设置为 true，报告在过期后将从运行状况存储中删除。 如果设置为 false，报告在过期时将被视为错误。 此属性的值在默认情况下为 false。 当客户端定期报告时，它们应将 RemoveWhenExpired 设置为 false（默认值）。 这样，如果报告器有问题（例如死锁）并且无法报告，那么在运行状况报告过期时该实体就会被评估为处于错误状态。 这会将该实体标记为处于“Error”运行状况状态。 |
 | --sequence-number | 此运行状况报告的序列号（采用数字字符串形式）。 <br><br> 报告序列号由运行状况存储用来检测过时的报告。 如果未指定，序列号将在报告被添加时由运行状况客户端自动生成。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
@@ -435,22 +435,22 @@ ms.locfileid: "39495452"
 |参数|Description|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 <br><br> 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
-| --application-version [必需] | 目标应用程序版本。 |
+| --application-version [必需] | 应用程序升级的目标应用程序类型版本（在应用程序清单中找到）。 |
 | --parameters [必需] | 升级应用程序时应用的应用程序参数替代的 JSON 编码列表。 |
 | --default-service-health-policy | 默认使用的健康策略的 JSON 编码规范，用于评估服务类型的运行状况。 |
 | --failure-action | 监视的升级违反监视策略或健康策略时要执行的操作。 |
 | --force-restart | 即使代码版本没有改变，也在升级过程中强制重新启动进程。 |
-| --health-check-retry-timeout | 执行失败操作前，当应用程序或群集不正常时，重试运行状况评估所需的时间。 以毫秒为单位。  默认值\: PT0H10M0S。 |
-| --health-check-stable-duration | 升级继续到下一升级域之前，应用程序或群集必须保持正常的时长。 以毫秒为单位。  默认值\: PT0H2M0S。 |
-| --health-check-wait-duration | 应用运行状况策略之前，完成升级域后等待的时间长度。 以毫秒为单位。  默认值\: 0。 |
+| --health-check-retry-timeout | 应用程序或群集不正常时尝试执行运行状况检查所间隔的时间长度。  默认值\: PT0H10M0S。 |
+| --health-check-stable-duration | 升级继续到下一升级域之前，应用程序或群集必须保持正常的时长。  默认值\: PT0H2M0S。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
+| --health-check-wait-duration | 启动运行状况检查进程之前，完成升级域后等待的时间长度。  默认值\: 0。 |
 | --max-unhealthy-apps | 允许的已部署的不正常应用程序的最大百分比。 由介于 0 到 100 间的数字表示。 |
 | --mode | 在滚动升级期间用于监视运行状况的模式。  默认值\: UnmonitoredAuto。 |
 | --replica-set-check-timeout | 出现意外问题时，阻止处理升级域并防止可用性丢失的最大时长。 以秒为度量单位。 |
 | --service-health-policy | 包含每个服务类型名称的服务类型健康策略的 JSON 编码映射。 映射默认为空。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
-| --upgrade-domain-timeout | 执行 FailureAction 前，每个升级域需等待的时长。 以毫秒为单位。  默认值\: P10675199DT02H48M05.4775807S。 |
-| --upgrade-timeout | 执行 FailureAction 前，完成整个升级需等待的时长。 以毫秒为单位。  默认值\: P10675199DT02H48M05.4775807S。 |
-| --warning-as-error | 将运行状况评估警告的严重级别视为与与错误相同。 |
+| --upgrade-domain-timeout | 执行 FailureAction 前，每个升级域需等待的时长。  默认值\: P10675199DT02H48M05.4775807S。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
+| --upgrade-timeout | 执行 FailureAction 前，完成整个升级需等待的时长。  默认值\: P10675199DT02H48M05.4775807S。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
+| --warning-as-error | 指示是否将警告的严重性视为与错误相同。 |
 
 ### <a name="global-arguments"></a>全局参数
 

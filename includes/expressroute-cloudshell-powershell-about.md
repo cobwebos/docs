@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/25/2018
+ms.date: 01/09/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 874643c5149cf6a222ab6d244dd561e5c4da5a84
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 4d9f05ad1913646e7ca09690af965042817ef7ec
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251390"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54193288"
 ---
 本文使用 PowerShell cmdlet。 若要运行 cmdlet，可以使用 Azure Cloud Shell（一个免费的交互式 shell）。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 请直接单击“复制”对代码进行复制，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。 可通过多种方式来启动 Cloud Shell：
 
@@ -26,4 +26,4 @@ ms.locfileid: "50251390"
 
 如果不想使用 Azure Cloud Shell，则可以改为在本地安装 PowerShell。 如果选择在本地安装和使用 PowerShell，请务必安装最新版本的 Azure 资源管理器 PowerShell cmdlet。 PowerShell cmdlet 经常会更新，因此，你通常需要更新 PowerShell cmdlet 才能获取最新的功能。 如果未更新 PowerShell cmdlet，指定的值可能无法使用。 
 
-若要查找你在本地运行的 PowerShell 版本，请使用“Get-Module -ListAvailable AzureRM”cmdlet。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+若要查找你在本地运行的 PowerShell 版本，请使用“Get-Module -ListAvailable AzureRM”cmdlet。 若要更新，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/azurerm/overview)。

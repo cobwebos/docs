@@ -3,19 +3,19 @@ title: 使用自定义策略动态自定义 Azure Active Directory B2C 用户界
 description: 支持多品牌体验（包含运行时动态更改的 HTML5/CSS 内容）。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 11a14bc8b593e5e7d81e9bdbd4ac4ee3b2bbecaa
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.subservice: B2C
+ms.openlocfilehash: 7e0064495cfb3d82c349a23d914195c5f211dc19
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582881"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187073"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略配置包含动态内容的 UI
 
@@ -39,7 +39,7 @@ ms.locfileid: "52582881"
 
 `ContentDefinitions` 节包含一系列 `ContentDefinition` XML 元素。 `ContentDefinition` 元素的 ID 属性指定与内容定义相关的页面类型。 也就是说，该元素定义了要在其中应用自定义 HTML5/CSS 模板的上下文。 下表描述了 IEF 引擎识别的内容定义 ID 集及其相关的页面类型。
 
-| 内容定义 ID | 默认 HTML5 模板| Description | 
+| 内容定义 ID | 默认 HTML5 模板| 说明 | 
 |-----------------------|--------|-------------|
 | *api.error* | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **错误页面**。 遇到异常或错误时显示此页面。 |
 | *api.idpselections* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **标识提供者选择页面**。 此页面列出可供用户在登录期间选择的标识提供者。 选项通常是企业标识提供者、社交标识提供者（例如 Facebook 和 Google+）或本地帐户。 |
@@ -193,7 +193,7 @@ HTML5 模板现在可供使用。 但是，无法在 `ContentDefinition` 代码�
 * 为 CORS 启用了内容服务器。
 
     >[!NOTE]
-    >若要验证托管内容的站点是否已启用 CORS 并可测试 CORS 请求，请转到 [test-cors.org](http://test-cors.org/) 网站。 
+    >若要验证托管内容的站点是否已启用 CORS 并可测试 CORS 请求，请转到 [test-cors.org](https://test-cors.org/) 网站。 
 
 * 提供的内容通过 **HTTPS** 安全传输。
 * 为所有链接、CSS 内容和图像使用绝对 URL，例如 *https://yourdomain/content*。
@@ -249,7 +249,7 @@ HTML5 模板现在可供使用。 但是，无法在 `ContentDefinition` 代码�
 
 2. 搜索 `<DefaultUserJourney>` 节点。 
 
-3. 在 `<DefaultUserJourney>` 节点中添加以下 XML 片段：  
+3. 在 `<DefaultUserJourney>` 节点中添加以下 XML 代码片段：  
 
     ```XML
     <UserJourneyBehaviors>
@@ -319,7 +319,7 @@ HTML5 模板现在可供使用。 但是，无法在 `ContentDefinition` 代码�
 如果在登录页面上选择“立即注册”链接，浏览器会显示默认背景，而不是定义的背景。 之所以出现此行为，是因为前面仅更改了注册或登录页面。 若要更改剩余的 Self-Assert 内容定义，请执行以下操作：
 1. 返回“步骤 2”，执行以下操作：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 下载 *selfasserted* 文件。
+    a. 下载 *selfasserted* 文件。
 
     b. 复制文件内容。
 
@@ -329,7 +329,7 @@ HTML5 模板现在可供使用。 但是，无法在 `ContentDefinition` 代码�
 
 2. 返回“步骤 4”，执行以下操作： 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在扩展策略中，找到包含 `Id="api.selfasserted"`、`Id="api.localaccountsignup"` 和 `Id="api.localaccountpasswordreset"` 的 `<ContentDefinition>` 节点。
+    a. 在扩展策略中，找到包含 `Id="api.selfasserted"`、`Id="api.localaccountsignup"` 和 `Id="api.localaccountpasswordreset"` 的 `<ContentDefinition>` 节点。
 
     b. 将 `LoadUri` 属性设置为 *selfasserted* URI。
 

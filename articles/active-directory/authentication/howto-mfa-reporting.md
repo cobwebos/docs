@@ -3,25 +3,25 @@ title: 用于 Azure MFA 的访问和使用情况报告 | Microsoft Docs
 description: 介绍如何使用 Azure 多重身份验证功能 - 报告。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: dc4cd28fe61c422f65f47c74c7cbc4686d73ab77
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 92c319460d9412436eb1a474431c07766fa87176
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628828"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078893"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的报告
 
 Azure 多重身份验证提供了几个可通过 Azure 门户访问的报告，供你和你的组织使用。 下表列出了可用的报告：
 
-| 报表 | 位置 | Description |
+| 报表 | 位置 | 说明 |
 |:--- |:--- |:--- |
 | 阻止的用户历史记录 | Azure AD > MFA 服务器 > 阻止/解除阻止用户 | 显示请求阻止或解除阻止用户的历史记录。 |
 | 使用情况和欺诈警报 | Azure AD > 登录 | 提供有关总体使用情况、用户摘要和用户详细信息的信息；以及指定日期范围内提交的欺诈警报的历史记录。 |

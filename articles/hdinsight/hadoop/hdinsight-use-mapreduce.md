@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: c9a4a0944c51cb8c6f6d91cd153580a17a9b7898
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: eeb548d6bd955aedf322a63c861fd23bb37c1167
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632641"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634620"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>在 Apache Hadoop on HDInsight 中使用 MapReduce
 
@@ -28,7 +28,7 @@ ms.locfileid: "51632641"
 
 > [!IMPORTANT]
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
->
+
 
 ## <a id="whatis"></a>什么是 MapReduce
 
@@ -57,7 +57,7 @@ Hadoop 流式处理通过 STDIN 和 STDOUT 与映射器和化简器通信。 映
 
     [key]/t[value]
 
-有关详细信息，请参阅 [Hadoop Streaming](http://hadoop.apache.org/docs/r1.2.1/streaming.html)（Hadoop 流式处理）。
+有关详细信息，请参阅 [Hadoop Streaming](https://hadoop.apache.org/docs/r1.2.1/streaming.html)（Hadoop 流式处理）。
 
 有关将 Hadoop 流式处理与 HDInsight 配合使用的示例，请参阅以下文档：
 
@@ -163,7 +163,7 @@ HDInsight 可以使用各种方法运行 HiveQL 作业。 使用下表来确定�
 | [Curl](apache-hadoop-use-mapreduce-curl.md) |使用 **REST** 远程提交作业 |Linux 或 Windows |Linux、Unix、Mac OS X 或 Windows |
 | [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |使用 **Windows PowerShell** 远程提交作业 |Linux 或 Windows |Windows |
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 ## <a id="nextsteps"></a>后续步骤
@@ -174,9 +174,9 @@ HDInsight 可以使用各种方法运行 HiveQL 作业。 使用下表来确定�
 
 * [为 HDInsight 开发 Python 流式处理 MapReduce 程序](apache-hadoop-streaming-python.md)
 
-* [将 Hive 与 HDInsight 配合使用][hdinsight-use-hive]
+* [将 Apache Hive 和 HDInsight 配合使用][hdinsight-use-hive]
 
-* [将 Pig 与 HDInsight 配合使用][hdinsight-use-pig]
+* [将 Apache Pig 和 HDInsight 配合使用][hdinsight-use-pig]
 
 
 [hdinsight-upload-data]: hdinsight-upload-data.md

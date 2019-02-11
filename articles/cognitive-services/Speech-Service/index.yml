@@ -1,29 +1,28 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 452032e21a649fe4d34616225bd168d441ac0267
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: eaa2511422195a7c8dc29557480007f3377134ef
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218622"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752783"
 documentType: LandingData
 title: 语音服务文档
 metadata:
-  title: 语音服务文档 - 教程、快速入门和 API 参考 - 认知服务 | Microsoft Docs
-  meta.description: >
-    The Speech service gives developers an easy way to add powerful speech-enabled features to their applications.
-
-    Examples include voice command control and dialogue, natural speech conversation, speech transcription and dictation, and speech translation.
+  title: 语音服务文档 - 教程、快速入门和 API 参考
+  titleSuffix: Azure Cognitive Services
+  description: 开发人员可利用语音服务轻松将强大的语音支持功能添加到其应用程序。 示例包括语音命令控制和对话、自然语音聊天、语音听录和听写以及语音翻译。
   services: cognitive-services
   author: nitinme
   manager: cgronlun
   layout: LandingPage
   ms.service: cognitive-services
-  ms.component: speech-service
+  ms.subservice: speech-service
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/24/2018
-  ms.author: nitinme
+  ms.date: 12/06/2018
+  ms.author: erhopf
+  ms.custom: seodec18
 abstract:
   description: 了解如何使用语音服务和语音 SDK 向应用添加支持语音的功能。 可以使用语音 SDK 向应用添加<i>语音转文本</i>（语音识别/SR）、<i>意向</i>、<i>翻译</i>和<i>文本转语音</i> (TTS) 功能。 语音服务还有一个 REST API，此 API 适用于任何能够发出 HTTP 请求的编程语言。
 sections:
@@ -39,7 +38,7 @@ sections:
         src: ../media/index/i_overview.svg
       title: 什么是语音服务？
     - href: /azure/cognitive-services/speech-service/get-started
-      html: <p>了解如何注册免费试用语音服务。</p>
+      html: <p>免费注册。</p>
       image:
         src: ../media/index/i_get-started.svg
       title: 注册语音服务
@@ -66,13 +65,15 @@ sections:
     - image:
         src: media/index/logo_java.jpg
     - image:
+        src: media/index/logo_python.svg
+    - image:
         src: media/index/logo_objc.jpg
+    - image:
+        src: media/index/logo_nodejs.svg
     - image:
         src: media/index/logo_js.svg
     - image:
-        src: media/index/logo_rest_sr.svg
-    - image:
-        src: media/index/logo_rest_tts.svg
+        src: media/index/logo_rest.svg
     rows:
     - title: Windows 10 (x64)
       values:
@@ -81,9 +82,9 @@ sections:
       - href: quickstart-cpp-windows
       - href: quickstart-csharp-dotnetcore-windows
       - href: quickstart-java-jre
+      - href: quickstart-python
       - href: 
-      - href: 
-      - href: 
+      - href: quickstart-js-node
       - href: 
     - title: Windows 10 (x86)
       values:
@@ -94,7 +95,7 @@ sections:
       - href: 
       - href: 
       - href: 
-      - href: 
+      - href: quickstart-js-node
       - href: 
     - title: Linux (x64)
       values:
@@ -103,9 +104,9 @@ sections:
       - href: quickstart-cpp-linux
       - href: quickstart-csharp-dotnetcore-windows
       - href: quickstart-java-jre
+      - href: quickstart-python
       - href: 
-      - href: 
-      - href: 
+      - href: quickstart-js-node
       - href: 
     - title: Linux (x86)
       values:
@@ -116,9 +117,9 @@ sections:
       - href: 
       - href: 
       - href: 
+      - href: quickstart-js-node
       - href: 
-      - href: 
-    - title: Android (ARM32/ARM64)
+    - title: Android (ARM32/64)
       values:
       - href: 
       - href: 
@@ -140,6 +141,28 @@ sections:
       - href: 
       - href: 
       - href: 
+    - title: iOS (ARM64)
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: quickstart-objectivec-ios
+      - href: 
+      - href: 
+    - title: macOS (x64)
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: quickstart-python
+      - href: 
+      - href: quickstart-js-node
+      - href: 
     - title: 设备 SDK (ARM64)
       values:
       - href: 
@@ -151,19 +174,10 @@ sections:
       - href: 
       - href: 
       - href: 
-    - title: iOS (ARM64)
+    - title: 浏览器
       values:
       - href: 
       - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: quickstart-objectivec-ios
-      - href: 
-      - href: 
-      - href: 
-    - title: Web
-      values:
       - href: 
       - href: 
       - href: 
@@ -171,7 +185,17 @@ sections:
       - href: 
       - href: 
       - href: quickstart-js-browser
-      - href: rest-apis
+    - title: REST
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
       - href: rest-apis
 - title: 分步教程
   items:
@@ -186,7 +210,7 @@ sections:
 - title: 示例
   items:
   - type: paragraph
-    text: 在 Github 上查找语音服务的示例：
+    text: 在 GitHub 上查找语音服务的示例：
   - type: list
     style: unordered
     items:
@@ -206,6 +230,8 @@ sections:
 
         <p><a href="https://aka.ms/csspeech/javaref">Java API</a></p>
 
+        <p><a href="https://aka.ms/csspeech/pythonref">Python API</a></p>
+
         <p><a href="https://aka.ms/csspeech/objectivecref">Objective-C API</a></p>
 
         <p><a href="https://aka.ms/csspeech/javascriptref">JavaScript API</a></p>
@@ -216,4 +242,4 @@ sections:
       html: >
         <p><a href=https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
     - title: CLI
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Azure CLI</a></p>
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>

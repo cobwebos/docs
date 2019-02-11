@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 8fe7f0ddd630cfca0242af6cc1d728bdef163352
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.lastreviewed: 08/16/2018
+ms.openlocfilehash: 10d7303c4323305e177cf006b9a259a817dc695e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139609"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247470"
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>使用 PowerShell 为 Azure Stack 启用备份
 
@@ -41,13 +42,13 @@ ms.locfileid: "42139609"
 
 在同一 PowerShell 会话中，通过添加环境变量编辑以下 PowerShell 脚本。 运行更新的脚本，以向基础结构备份服务提供备份共享、凭据和加密密钥。
 
-| 变量        | 说明   |
+| 变量        | 描述   |
 |---              |---                                        |
 | $username       | 使用共享驱动器位置具有足够访问权限的域和用户名输入**用户名**，以便读取和写入文件。 例如，`Contoso\backupshareuser`。 |
 | $password       | 键入用户的**密码**。 |
 | $sharepath      | 键入**备份存储位置**的路径。 必须使用通用命名约定 (UNC) 字符串表示单独的设备上托管的文件共享的路径。 UNC 字符串指定资源（如共享文件或设备）的位置。 若要确保备份数据的可用性，设备应放置在单独的位置。 |
-| $frequencyInHours | 以小时为单位的频率确定何种频率创建备份。 默认值为 12。 计划程序支持最大为 12，至少为 4。|
-| $retentionPeriodInDays | 以天为单位的保持期确定多少天的备份将保留在外部位置上。 默认值为 7。 计划程序支持最多 14 个和最小为 2。 从外部位置会自动删除早于保持期的备份。|
+| $frequencyInHours | “频率(小时)”决定了以何频率创建备份。 默认值为 12。 计划程序支持的最大值为 12，最小值为 4。|
+| $retentionPeriodInDays | “保留期(天)”决定了备份在外部位置保留多少天。 默认值为 7。 计划程序支持的最大值为 14，最小值为 2。 超过保留期的备份会自动从外部位置删除。|
 |     |     |
 
    ```powershell
@@ -74,7 +75,7 @@ ms.locfileid: "42139609"
     Get-AzsBackupLocation | Select-Object -Property Path, UserName
    ```
 
-结果应如以下示例输出所示：
+结果应类似于以下示例输出：
 
    ```powershell
     Path                        : \\serverIP\AzsBackupStore\contoso.com\seattle
@@ -82,7 +83,7 @@ ms.locfileid: "42139609"
    ```
 
 ## <a name="update-backup-settings"></a>更新备份设置
-在同一 PowerShell 会话中，可以为保持期和备份的频率更新默认值。 
+在同一 PowerShell 会话中，可以更新备份的保留期和频率的默认值。 
 
    ```powershell
     #Set the backup frequency and retention period values.
@@ -93,7 +94,7 @@ ms.locfileid: "42139609"
     Get-AzsBackupLocation | Select-Object -Property Path, UserName, AvailableCapacity, BackupFrequencyInHours, BackupRetentionPeriodInDays
    ```
 
-结果应如以下示例输出所示：
+结果应类似于以下示例输出：
 
    ```powershell
     Path                        : \\serverIP\AzsBackupStore\contoso.com\seattle

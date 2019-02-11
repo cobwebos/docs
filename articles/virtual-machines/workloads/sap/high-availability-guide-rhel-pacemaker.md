@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: f8e16af629eaa18b49b054be9fc478d633263ddb
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 6001681376011d03f7417d2099c0765e1a6cb5ae
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45636793"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750112"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>在 Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker
 
@@ -192,7 +192,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** 为隔离代理创建自定义角色
 
-默认情况下，服务主体无权访问 Azure 资源。 需要为服务主体授予启动和停止（解除分配）群集所有虚拟机的权限。 如果尚未创建自定义角色，可以使用 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell#create-a-custom-role) 或 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli#create-a-custom-role) 来创建它
+默认情况下，服务主体无权访问 Azure 资源。 需要为服务主体授予启动和停止（解除分配）群集所有虚拟机的权限。 如果尚未创建自定义角色，可以使用 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) 或 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 来创建它
 
 将以下内容用于输入文件。 你需要调整内容以适应你的订阅，也就是说，将 c276fc76-9cd4-44c9-99a7-4fd71546436e 和 e91d47c4-76f3-4271-a796-21b4ecfe3624 替换为你的订阅的 ID。 如果只有一个订阅，请删除 AssignableScopes 中的第二个条目。
 
@@ -224,10 +224,10 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 1. 打开“所有资源”边栏选项卡
 1. 选择第一个群集节点的虚拟机
 1. 选择“访问控制(IAM)”
-1. 单击“添加”
+1. 单击“添加角色分配”
 1. 选择角色“Linux 隔离代理角色”
 1. 输入前面创建的应用程序名称
-1. 单击“确定”
+1. 点击“保存”
 
 为第二个群集节点重复上述步骤。
 

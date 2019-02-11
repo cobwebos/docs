@@ -1,22 +1,22 @@
 ---
-title: 在 Azure VM 上使用 SQL Server 构建和部署机器学习模型 | Microsoft 文档
-description: 高级分析流程和技术实务
+title: 在 SQL Server VM 中构建和部署模型 - Team Data Science Process
+description: 使用 Azure VM 上的 SQL Server 和公开提供的数据集生成和部署机器学习模型。
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: cad56d2e8de071feb9a02e0cfc6bcc884eebe91a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 2e71cf90c6e894946a2f3a1c8bfce2179f214a29
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445457"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453643"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>团队数据科学过程实务：使用 SQL Server
 在本教程中，将逐步指导完成使用 SQL Server 和可公开取得的数据集 [NYC 出租车行程](http://www.andresmh.com/nyctaxitrips/)，构建和部署机器学习模型的过程。 该程序遵循标准数据科学工作流，包括：引入和浏览数据，设计功能以促进学习，并构建和部署模型。
@@ -46,8 +46,8 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 ## <a name="mltasks"></a>预测任务示例
 我们会根据 *tip\_amount* 编写三个预测问题的公式，即：
 
-1. 二元分类：预测是否已支付某个行程的小费，即大于 $0 的 *tip\_amount* 是正例，等于 $0 的 *tip\_amount* 是反例。
-2. 多元分类：预测为行程支付的小费金额范围。 我们将 *tip\_amount* 划分五个分类收纳组或类别：
+1. 二元分类：预测是否已支付某个行程的小费，即大于 $0 的 tip\_amount 是正例，等于 $0 的 tip\_amount 是反例。
+2. 多类分类：预测为行程支付的小费的范围。 我们将 *tip\_amount* 划分五个分类收纳组或类别：
    
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
@@ -87,7 +87,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 使用 AzCopy 复制数据：
 
 1. 登录到虚拟机 (VM)
-2. 在 VM 数据磁盘中创建一个新的目录（注意：不要使用虚拟机附带的临时磁盘作为数据磁盘）。
+2. 在 VM 的数据磁盘中创建一个新目录（注意：不要将 VM 附带的临时磁盘用作数据磁盘）。
 3. 在“命令提示符”窗口中，运行以下 Azcopy 命令行，将 < path_to_data_folder > 替换成在步骤 (2) 中创建的数据文件夹：
    
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
@@ -137,7 +137,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 12. NYC 出租车行程数据加载到两个独立的表中。 若要改进联接操作，强烈建议为表建立索引。 示例脚本 **create\_partitioned\_index.sql** 会在复合联接键 **medallion、hack\_license 和 pickup\_datetime** 上创建分区索引。
 
 ## <a name="dbexplore"></a>SQL Server 中的数据浏览和功能设计
-在此部分中，我们通过使用之前创建的 SQL Server 数据库，直接在 **SQL Server Management Studio** 中运行 SQL 查询来执行数据浏览和功能设计。 “**示例脚本**”文件夹中提供了名为 **sample\_queries.sql** 的示例脚本。 如果数据库名称不同于默认值：**TaxiNYC**，请修改此脚本以更改数据库名称。
+在此部分中，我们通过使用之前创建的 SQL Server 数据库，直接在 **SQL Server Management Studio** 中运行 SQL 查询来执行数据浏览和功能设计。 “**示例脚本**”文件夹中提供了名为 **sample\_queries.sql** 的示例脚本。 如果数据库名称不同于默认值：TaxiNYC，请修改此脚本以更改数据库名称。
 
 在本练习中，我们将：
 
@@ -179,7 +179,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
     GROUP BY medallion, hack_license
     HAVING COUNT(*) > 100
 
-#### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>数据质量评估：验证含有不正确经度和/或纬度的记录
+#### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>数据质量评估：验证含有不正确的经度和/或纬度的记录
 此示例将调查是否有任何一个经度和/或纬度字段包含无效的值（弧度应介于 -90 到 90 之间），或者具有（0，0）坐标。
 
     SELECT COUNT(*) FROM nyctaxi_trip
@@ -201,7 +201,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
     GROUP BY tipped
 
 #### <a name="exploration-tip-classrange-distribution"></a>浏览：小费分类/范围分布
-此示例将计算给定的时间段（或如果时间段为全年，则表示完整的数据集）内的小费范围分布。 这是标签类的分布，会在以后用于多类分类建模。
+此示例将计算给定的时间段（或如果时间段为全年，则表示完整的数据集）内的小费范围分布。 这是以后用于多类分类建模的标签类的分布。
 
     SELECT tip_class, COUNT(*) AS tip_freq FROM (
         SELECT CASE
@@ -335,7 +335,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 
 ![Plot #1][1]
 
-#### <a name="visualization-distribution-plot-example"></a>可视化效果：分布的盒须图示例
+#### <a name="visualization-distribution-plot-example"></a>可视化效果：分布图示例
     fig = plt.figure()
     ax1 = fig.add_subplot(1,2,1)
     ax2 = fig.add_subplot(1,2,2)
@@ -344,7 +344,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 
 ![Plot #2][2]
 
-#### <a name="visualization-bar-and-line-plots"></a>可视化效果：条形和折线图
+#### <a name="visualization-bar-and-line-plots"></a>可视化效果：条形图和折线图
 在此示例中，我们可以将行程距离量化为五个分类收纳组，并将分类收纳结果可视化。
 
     trip_dist_bins = [0, 1, 2, 4, 10, 1000]
@@ -456,7 +456,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
         cursor.execute(nyctaxi_one_percent_update_col)
         cursor.commit()
 
-#### <a name="feature-engineering-count-features-for-categorical-columns"></a>功能设计：适用于分类列的计数功能
+#### <a name="feature-engineering-count-features-for-categorical-columns"></a>特征工程：适用于分类列的计数功能
 此示例会将分类字段替换为数字字段，方法是使用它在数据中发生的计数来替换每个类别。
 
     nyctaxi_one_percent_insert_col = '''
@@ -486,7 +486,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
     cursor.execute(nyctaxi_one_percent_update_col)
     cursor.commit()
 
-#### <a name="feature-engineering-bin-features-for-numerical-columns"></a>功能设计：适用于数值列的收纳组功能
+#### <a name="feature-engineering-bin-features-for-numerical-columns"></a>特征工程：适用于数值列的收纳组功能
 此示例会将连续的数值字段转换为预设的类别范围，即将数值字段转换为分类字段。
 
     nyctaxi_one_percent_insert_col = '''
@@ -514,7 +514,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
     cursor.execute(nyctaxi_one_percent_update_col)
     cursor.commit()
 
-#### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>功能设计：从十进制纬度/经度提取位置功能
+#### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>特征工程：从十进制纬度/经度提取位置功能
 此示例以十进制表示的纬度和/或经度字段划分为多个不同粒度的区域字段，例如国家/地区、城市、城镇、街区等等。注意，新的地理位置字段不映射到实际位置。 有关规划地理编码位置的信息，请参 [Bing 地图 REST 服务](https://msdn.microsoft.com/library/ff701710.aspx)。
 
     nyctaxi_one_percent_insert_col = '''
@@ -546,7 +546,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 
 我们现已准备好在 [Azure 机器学习](https://studio.azureml.net) 中进行建模和模型部署。 数据已可用于之前识别的任意预测问题，即：
 
-1. 二元分类：预测某个行程是否会支付小费。
+1. 二元分类：预测某个行程是否支付小费。
 2. 多类分类：根据以前定义的类，预测小费支付范围。
 3. 回归任务：预测为行程支付的小费金额。  
 

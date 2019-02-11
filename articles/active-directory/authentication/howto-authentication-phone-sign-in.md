@@ -3,19 +3,19 @@ title: 使用 Microsoft Authenticator 应用（公共预览版）进行无密码
 description: 不使用密码通过 Microsoft Authenticator 应用（公共预览版）登录到 Azure AD
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: librown
-ms.openlocfilehash: 3a9fba644bd379f3f54cf07cf35c0a54029756da
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: e237d736a939c3136faa4f6df74ed4e9db9665d3
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287177"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077618"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>使用 Microsoft Authenticator 应用（公共预览版）进行无密码手机登录
 
@@ -37,16 +37,21 @@ ms.locfileid: "51287177"
 
 ### <a name="steps-to-enable"></a>启用步骤
 
-确保已安装 Azure Active Directory V2 PowerShell 模块的最新公共预览版。 你可能希望通过执行以下命令卸载并重新安装以确认这一点：
+1. 确保已安装 Azure Active Directory V2 PowerShell 模块的最新公共预览版。 你可能希望通过执行以下命令卸载并重新安装以确认这一点：
+    ```powershell
+    Uninstall-Module -Name AzureADPreview
+    Install-Module -Name AzureADPreview
+    ```
 
-1. `Uninstall-Module -Name AzureADPreview`
-2. `Install-Module -Name AzureADPreview`
+2. 向 Azure AD 租户进行身份验证以使用 Azure AD V2 PowerShell 模块。 所用帐户必须是安全管理员或全局管理员。
+    ```powershell
+    Connect-AzureAD
+    ```
 
-可以使用以下 PowerShell 命令启用无密码电话登录预览：
-
-1. `Connect-AzureAD`
-   1. 在身份验证对话框中，使用租户中的帐户登录。 该帐户必须是安全管理员或全局管理员。
-1. `New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn`
+3. 创建 Authenticator 登录策略：
+    ```powershell
+    New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn
+    ```
 
 ## <a name="how-do-my-end-users-enable-phone-sign-in"></a>我的最终用户如何启用手机登录？
 

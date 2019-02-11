@@ -6,20 +6,20 @@ services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: a26f7d6057f92fd3ab92405ecca6965dbd6e37ad
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: c61852763353189321b8f98711928e0e8b3a389d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129065"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208085"
 ---
 # <a name="example-how-to-identify-faces-in-images"></a>示例：如何标识图像中的人脸
 
-本指南演示如何使用事先根据已知人员创建的 PersonGroup 来标识未知人脸。 示例是使用人脸 API 客户端库以 C# 编写的。
+本指南演示如何使用事先根据已知人员创建的 PersonGroup 来标识未知人脸。 示例在 C# 中使用人脸 API 客户端库编写。
 
 ## <a name="concepts"></a>概念
 
@@ -43,13 +43,13 @@ ms.locfileid: "46129065"
 
 ## <a name="step-1-authorize-the-api-call"></a>步骤 1：授权 API 调用
 
-每次调用人脸 API 都需要订阅密钥。 此密钥可以通过查询字符串参数传递，或在请求头中指定。 若要通过查询字符串传递订阅密钥，请参阅充当示例的[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)的请求 URL：
+每次调用人脸 API 都需要订阅密钥。 此密钥可以通过查询字符串参数传递，或在请求头中指定。 若要通过查询字符串传递订阅密钥，请参阅[“人脸 - 检测”](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)的请求 URL 作为示例：
 ```
 https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes]
 &subscription-key=<Subscription key>
 ```
 
-也可在 HTTP 请求头中指定订阅密钥：**ocp-apim-subscription-key：&lt;订阅密钥&gt;**。使用客户端库时，订阅密钥通过 FaceServiceClient 类的构造函数传入。 例如：
+作为替代方法，也可以在 HTTP 请求头 **ocp-apim-subscription-key: 中指定订阅密钥：&lt;订阅密钥&gt;** 使用客户端库时，订阅密钥通过 FaceServiceClient 类的构造函数传入。 例如：
  
 ```CSharp 
 faceServiceClient = new FaceServiceClient("<Subscription Key>");

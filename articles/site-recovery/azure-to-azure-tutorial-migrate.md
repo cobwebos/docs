@@ -1,30 +1,30 @@
 ---
-title: 使用 Azure Site Recovery 服务将 Azure IaaS VM 迁移到其他 Azure 区域 | Microsoft Docs
-description: 使用 Azure Site Recovery 将 Azure IaaS VM 从一个 Azure 区域迁移到另一个 Azure 区域。
+title: 使用 Azure Site Recovery 服务将 Azure IaaS VM 移动到其他 Azure 区域 | Microsoft Docs
+description: 使用 Azure Site Recovery 将 Azure IaaS VM 从一个 Azure 区域移动到另一个 Azure 区域。
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/28/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 9ad994ad3dc1fc350a9a41c23574acfa2bae9629
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 2ce9c486dee3f26d23db5da67abfea4701f85796
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212278"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040468"
 ---
-# <a name="migrate-azure-vms-to-another-region"></a>将 Azure VM 迁移到另一区域
+# <a name="move-azure-vms-to-another-region"></a>将 Azure VM 移动到另一区域
 
-除了使用 [Azure Site Recovery](site-recovery-overview.md) 服务管理和协调本地计算机和 Azure VM 的灾难恢复以实现业务连续性和灾难恢复 (BCDR) 外，还可以使用 Site Recovery 来管理以另一个区域为目的地的 Azure VM 迁移。 若要迁移 Azure VM，请为其启用复制，并将其从主区域故障转移到所选的辅助区域。
+除了使用 [Azure Site Recovery](site-recovery-overview.md) 服务管理和协调本地计算机和 Azure VM 的灾难恢复以实现业务连续性和灾难恢复 (BCDR) 外，还可以使用 Site Recovery 来管理以另一个区域为目的地的 Azure VM 移动。 若要移动 Azure VM，请为其启用复制，并将其从主区域故障转移到所选的辅助区域。
 
-本教程展示了如何将 Azure VM 迁移到另一个区域。 本教程介绍如何执行下列操作：
+本教程展示了如何将 Azure VM 移动到另一个区域。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建恢复服务保管库
 > * 为虚拟机启用复制
-> * 运行故障转移来迁移 VM
+> * 运行故障转移来移动 VM
 
 本教程假定已具有 Azure 订阅。 如果尚无 Azure 订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -34,7 +34,7 @@ ms.locfileid: "50212278"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 请确保在迁移的源 Azure 区域中创建了 Azure VM。
+- 请确保要从中进行移动的源 Azure 区域中具有 Azure VM。
 - 请确保了解[方案体系结构和组件](azure-to-azure-architecture.md)。
 - 查看[支持限制和要求](azure-to-azure-support-matrix.md)。
 
@@ -66,12 +66,12 @@ ms.locfileid: "50212278"
 
 ### <a name="verify-vm-outbound-access"></a>验证 VM 的出站访问
 
-1. 确保未使用身份验证代理来控制要迁移的 VM 的网络连接。 
-2. 对于本教程，我们假定要迁移的 VM 可以访问 Internet 并且未使用防火墙代理来控制出站访问。 如果使用了防火墙代理，请检查[此处](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity)的要求。
+1. 确保未使用身份验证代理来控制要移动的 VM 的网络连接。 
+2. 对于本教程，我们假定要移动的 VM 可以访问 Internet 并且未使用防火墙代理来控制出站访问。 如果使用了防火墙代理，请检查[此处](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity)的要求。
 
 ### <a name="verify-vm-certificates"></a>验证 VM 证书
 
-检查要迁移的 Azure VM 上是否存在所有最新的根证书。 如果没有最新的根证书，则 VM 会由于安全约束而无法注册到 Site Recovery。
+检查要移动的 Azure VM 上是否存在所有最新的根证书。 如果没有最新的根证书，则 VM 会由于安全约束而无法注册到 Site Recovery。
 
 - 对于 Windows VM，请在 VM 上安装所有最新的 Windows 更新，使所有受信任的根证书位于该计算机上。 在未联网的环境中，请按照你的组织的标准 Windows 更新和证书更新过程执行操作。
 - 对于 Linux VM，请遵循 Linux 分销商提供的指导，在 VM 上获取最新的受信任根证书和证书吊销列表。
@@ -83,7 +83,7 @@ ms.locfileid: "50212278"
 在除了源区域之外的任意区域中创建保管库。
 
 1. 登录到 [Azure 门户](https://portal.azure.com) > **恢复服务**。
-2. 单击“创建资源” > “监视和管理” > “备份和站点恢复”。
+2. 单击“创建资源” > “管理工具” > “备份和 Site Recovery”。
 3. 在“名称”中，指定友好名称 **ContosoVMVault**。 如果有多个订阅，请选择合适的一个。
 4. 创建资源组 **ContosoRG**。
 5. 指定 Azure 区域。 若要查看受支持的区域，请参阅 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)中的“地域可用性”。
@@ -113,7 +113,7 @@ Site Recovery 会检索与订阅和资源组关联的 VM 列表。
 
 
 1. 在 Azure 门户中，单击“虚拟机”。
-2. 选择要迁移的 VM。 然后单击“确定”。
+2. 选择要移动的 VM。 然后单击“确定”。
 3. 在“设置”中，单击“灾难恢复”。
 4. 在“配置灾难恢复” > “目标区域”中，选择要复制到的目标区域。
 5. 对于本教程，接受其他默认设置。
@@ -136,7 +136,7 @@ Site Recovery 会检索与订阅和资源组关联的 VM 列表。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你将 Azure VM 迁移到了一个不同的 Azure 区域。 现在，可以为迁移的 VM 配置灾难恢复了。
+在本教程中，你将 Azure VM 移动到了一个不同的 Azure 区域。 现在，你可以为移动的 VM 配置灾难恢复。
 
 > [!div class="nextstepaction"]
 > [在迁移后设置灾难恢复](azure-to-azure-quickstart.md)

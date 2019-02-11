@@ -12,21 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/10/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
-ms.openlocfilehash: e982df514784c37de29c9931da063f37d6886655
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: 4bc4387dd56de96edd17fcd8e5672cfda96cf67b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377318"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816401"
 ---
 # <a name="connect-to-azure-stack"></a>连接到 Azure Stack
 
 若要管理资源，必须连接到 Azure Stack 开发工具包。 本文详细介绍连接到开发工具包的步骤。 可以使用以下任一连接选项：
 
-* [远程桌面](#connect-with-remote-desktop)：可让单个并发用户快速地从开发工具包进行连接。
-* [虚拟专用网络 (VPN)](#connect-with-vpn)：可让多个并发用户从 Azure Stack 基础结构外部的客户端进行连接（需要配置）。
+* 远程桌面： 可让单个并发用户从开发工具包快速连接。
+* 虚拟专用网络 (VPN): 允许从 （要求配置） 在 Azure Stack 基础结构之外的客户端连接的多个并发用户。
 
 ## <a name="connect-to-azure-stack-with-remote-desktop"></a>使用远程桌面连接到 Azure Stack
 单个并发用户可以使用门户通过远程桌面连接来管理资源。
@@ -45,7 +46,7 @@ ms.locfileid: "44377318"
 > [!NOTE] 
 > 此 VPN 连接不提供与 Azure Stack 基础结构 VM 的连接。 
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>系统必备
 
 * 在本地计算机上安装[与 Azure Stack 兼容的 Azure PowerShell](azure-stack-powershell-install.md)。  
 * 下载[使用 Azure Stack 所需的工具](azure-stack-powershell-download.md)。 

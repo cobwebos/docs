@@ -4,22 +4,22 @@ description: 了解如何删除用户对应用程序的访问权限
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: barbkess
-ms.openlocfilehash: 6acc9a8b9cd7b6ef1218b1e8cae2e6a9af92f9d8
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 00f0df4612fe523b8b585bc2c9458386422256e8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393688"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180494"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>如何删除用户对应用程序的访问权限
 
@@ -70,5 +70,6 @@ ms.locfileid: "49393688"
 6.  将“用户可以允许应用代表他们访问公司数据”切换为“否”并单击“保存”按钮。
 
 
-# <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
+
 [管理对应用的访问](what-is-access-management.md)

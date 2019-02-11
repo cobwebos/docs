@@ -1,5 +1,5 @@
 ---
-title: 为 Azure Stack 集成系统部署准备 Azure Stack 公钥基础结构证书 | Microsoft Docs
+title: 为 Azure Stack 集成系统部署或机密轮换准备 Azure Stack 公钥基础结构证书 | Microsoft Docs
 description: 介绍如何为 Azure Stack 集成系统准备 Azure Stack PKI 证书。
 services: azure-stack
 documentationcenter: ''
@@ -11,22 +11,24 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: c26dcbc2fab7cff3134846234cafaa481fd5ba1a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 01/30/2019
+ms.openlocfilehash: fab7ead59ce8d7e12d145095c64cedf4234e6233
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972019"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656713"
 ---
-# <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>为部署准备 Azure Stack PKI 证书
+# <a name="prepare-azure-stack-pki-certificates-for-use-in-deployment-or-rotation"></a>准备在部署或轮换时使用的 Azure Stack PKI 证书
+
 必须使用与 Azure Stack的证书要求匹配的属性导入和导出[从所选 CA 获取](azure-stack-get-pki-certs.md)的证书文件。
 
-
 ## <a name="prepare-certificates-for-deployment"></a>为部署准备证书
-使用以下步骤来准备和验证 Azure Stack PKI 证书： 
+
+使用以下步骤来准备和验证 Azure Stack PKI 证书，此类证书将用于部署新的 Azure Stack 环境，或者用于在现有的 Azure Stack 环境中轮换机密： 
 
 ### <a name="import-the-certificate"></a>导入证书
 
@@ -44,7 +46,7 @@ ms.locfileid: "52972019"
 
     ![配置证书存储](./media/prepare-pki-certs/3.png)
 
-    a. 如果要导入 PFX，则将显示其他对话框。 在“私钥保护”页上，输入证书文件的密码，然后启用“将此密钥标记为可导出。这可让你在稍后备份或传输密钥”选项。 选择“**下一步**”。
+    a. 如果要导入 PFX，将看到其他对话框。 在“私钥保护”页上，输入证书文件的密码，然后启用“将此密钥标记为可导出。这可让你在稍后备份或传输密钥”选项。 选择“**下一步**”。
 
     ![将密钥标记为可导出](./media/prepare-pki-certs/2.png)
 
@@ -73,13 +75,23 @@ ms.locfileid: "52972019"
 
 1. 选择“是，导出私钥”，并单击“下一步”。
 
-1. 在“导出文件格式”部分中，选择“导出所有扩展属性”，然后单击“下一步”。
+1. 在导出文件格式部分中：
+    
+    - 选择**尽可能包括证书中的所有证书**。  
+    - 选择**导出所有扩展属性**。  
+    - 选择**启用证书隐私**。  
+    - 单击“下一步”。  
+    
+    ![证书导出向导中的与选择的选项](./media/prepare-pki-certs\azure-stack-save-cert.png)
 
-1. 选择“密码”并为证书提供密码。 请记住此密码，因为它将用作部署参数。 选择“**下一步**”。
+1. 选择“密码”并为证书提供密码。 创建满足以下密码复杂性要求的密码。 八个字符的最小长度。 密码包含至少三个以下： 大写的字母，小写字母、 数字 0-9、 特殊字符，不是大写或小写的字母字符。 记下此密码。 您将使用它作为部署参数。
+
+1. 选择“**下一步**”。
 
 1. 选择要导出的 pfx 文件的文件名和位置。 选择“**下一步**”。
 
 1. 选择“完成”。
 
 ## <a name="next-steps"></a>后续步骤
+
 [验证 PKI 证书](azure-stack-validate-pki-certs.md)

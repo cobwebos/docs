@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2018
-ms.author: cwatson
-ms.openlocfilehash: f27b80a99dbe65d628453c5222ef4fcdf7e0f982
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: a9f299f8987b5a2023d668d41c98b473f1a626d4
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52580382"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902256"
 ---
 # <a name="view-all-your-billing-accounts-in-azure-portal"></a>在 Azure 门户中查看所有计费帐户  
 
@@ -43,4 +43,4 @@ ms.locfileid: "52580382"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

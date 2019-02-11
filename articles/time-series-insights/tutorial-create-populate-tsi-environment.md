@@ -1,19 +1,20 @@
 ---
-title: 创建 Azure 时序见解环境
+title: 教程：创建 Azure 时序见解环境 | Microsoft Docs
 description: 了解如何创建时序见解环境，并在其中填充模拟设备的数据。
 services: time-series-insights
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/04/2018
+ms.date: 12/05/2018
 ms.author: anshan
 manager: cshankar
-ms.openlocfilehash: 46fecf6f1b2826f0e23b7b6c4f4511ce9a662d1c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: seodec18
+ms.openlocfilehash: 58b19a039bb6aebcd2687ab80cdd29c5f378645e
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365683"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200201"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>教程：创建 Azure 时序见解环境
 
@@ -26,9 +27,9 @@ ms.locfileid: "46365683"
 > * 运行设备模拟以将数据流式传输到 TSI 环境
 > * 验证模拟的遥测数据
 
-## <a name="video"></a>视频： 
+## <a name="video"></a>视频
 
-### <a name="in-this-video-we-show-you-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-that-can-be-used-to-get-started-with-time-series-insightsbr"></a>本视频中，我们将演示如何使用 Azure IoT 解决方案加速器生成可用于开始使用时序见解的数据。</br>
+本视频中，我们将演示如何使用 Azure IoT 解决方案加速器生成可用于开始使用时序见解的数据。
 
 > [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
 
@@ -40,7 +41,7 @@ ms.locfileid: "46365683"
 
 ## <a name="overview"></a>概述
 
-设备数据将在 TSI 环境中收集和存储。 将设备数据存储到 TSI 环境后，可以使用 [TSI 资源管理器](time-series-quickstart.md)和 [TSI 查询 API](/rest/api/time-series-insights/time-series-insights-reference-queryapi) 来查询和分析数据。
+设备数据将在 TSI 环境中收集和存储。 将设备数据存储到 TSI 环境后，可以使用 [TSI 资源管理器](time-series-quickstart.md)和 [TSI 查询 API](/rest/api/time-series-insights/ga-query-api) 来查询和分析数据。
 
 与所有设备一样（不管是模拟设备还是物理设备），IoT 中心是设备用来安全连接 Azure 云以及向其传输数据的连接点。 如 [TSI 概述](time-series-insights-overview.md)中所述，IoT 中心还可充当事件源，用于将数据流式传输到 TSI 环境。 
 

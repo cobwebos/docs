@@ -1,21 +1,19 @@
 ---
-title: 如何通过 Java 使用 Azure 表存储或 Azure Cosmos DB 表 API | Microsoft Docs
+title: 如何通过 Java 使用 Azure 表存储或 Azure Cosmos DB 表 API
 description: 使用 Azure 表存储或 Azure Cosmos DB 表 API 将结构化数据存储在云中。
-services: cosmos-db
-author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: Java
 ms.topic: sample
 ms.date: 04/05/2018
-ms.author: sngun
-ms.openlocfilehash: f4ebcf51ab6682009190e467ca9dbf67caf1c182
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+author: wmengmsft
+ms.author: wmeng
+ms.openlocfilehash: 62e94d1551efed5acc8dbd93bc941a4f9aeceb25
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797890"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044682"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>如何通过 Java 使用 Azure 表存储或 Azure Cosmos DB 表 API
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -456,7 +454,7 @@ catch (Exception e)
 ```
 
 ## <a name="query-a-subset-of-entity-properties"></a>查询一部分实体属性
-对表的查询可以只检索实体中的少数几个属性。 此方法称为“投影”，可减少带宽并提高查询性能，尤其适用于大型实体。 以下代码中的查询使用 **select** 方法，仅返回表中实体的电子邮件地址。 返回结果在 **EntityResolver**（用于对从服务器返回的实体执行类型转换）的帮助下投影到 **String** 集合中。 可以在 [Azure 表：Upsert 和查询投影简介][Azure Tables: Introducing Upsert and Query Projection]中更加详细地了解投影。 请注意，本地存储模拟器不支持投影，因此，此代码仅在使用表服务中的帐户时才能运行。
+对表的查询可以只检索实体中的少数几个属性。 此方法称为“投影”，可减少带宽并提高查询性能，尤其适用于大型实体。 以下代码中的查询使用 **select** 方法，仅返回表中实体的电子邮件地址。 返回结果在 **EntityResolver**（用于对从服务器返回的实体执行类型转换）的帮助下投影到 **String** 集合中。 可以在以下文章中了解有关投影的详细信息：[Azure 表：介绍 Upsert 和查询投影][Azure 表：介绍 Upsert 和查询投影]。 请注意，本地存储模拟器不支持投影，因此，此代码仅在使用表服务中的帐户时才能运行。
 
 ```java
 try
@@ -498,7 +496,7 @@ catch (Exception e)
 ```
 
 ## <a name="insert-or-replace-an-entity"></a>插入或替换实体
-经常需要将某个实体添加到表中，但又不知道该实体是否已存在于表中。 利用插入或替换操作，可以提出一个以下形式的请求：如果实体不存在，则插入一个实体；如果实体存在，则将其替换为现有实体。 以下代码基于前面的示例针对“Walter Harp”插入或替换实体。 创建新实体后，此代码调用 **TableOperation.insertOrReplace** 方法。 此代码随后使用表和插入或将表操作替换为参数对 **CloudTable** 对象调用 **execute**。 若要只更新实体的一部分，可以改用 **TableOperation.insertOrMerge** 方法。 请注意，本地存储模拟器不支持插入或替换，因此，此代码仅在使用表服务中的帐户时才能运行。 可以在此 [Azure 表：Upsert 和查询投影简介][Azure Tables: Introducing Upsert and Query Projection]中更加详细地了解插入或替换和插入或合并。
+经常需要将某个实体添加到表中，但又不知道该实体是否已存在于表中。 利用插入或替换操作，可以提出一个以下形式的请求：如果实体不存在，则插入一个实体；如果实体存在，则将其替换为现有实体。 以下代码基于前面的示例针对“Walter Harp”插入或替换实体。 创建新实体后，此代码调用 **TableOperation.insertOrReplace** 方法。 此代码随后使用表和插入或将表操作替换为参数对 **CloudTable** 对象调用 **execute**。 若要只更新实体的一部分，可以改用 **TableOperation.insertOrMerge** 方法。 请注意，本地存储模拟器不支持插入或替换，因此，此代码仅在使用表服务中的帐户时才能运行。 可以在以下文章中了解有关插入或替换和插入或合并的更多信息：[Azure 表：介绍 Upsert 和查询投影][Azure 表：介绍 Upsert 和查询投影]。
 
 ```java
 try
@@ -603,10 +601,8 @@ catch (Exception e)
 
 有关详细信息，请访问[面向 Java 开发人员的 Azure](/java/azure)。
 
-[Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
+[Azure SDK for Java]: https://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[Azure 存储客户端 SDK 参考]: http://azure.github.io/azure-storage-java/
+[Azure 存储客户端 SDK 参考]: https://azure.github.io/azure-storage-java/
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
-[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-[Azure Tables: Introducing Upsert and Query Projection]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx

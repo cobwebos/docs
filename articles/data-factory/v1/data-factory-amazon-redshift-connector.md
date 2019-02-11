@@ -9,21 +9,20 @@ ms.assetid: 01d15078-58dc-455c-9d9d-98fbdf4ea51e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7ece34809734478ddb52c12d5dbd92291231f439
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 1fde06f483821b0e9958c25bf5ce37aae4c8f61d
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045681"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022013"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](data-factory-amazon-redshift-connector.md)
+> * [版本 1](data-factory-amazon-redshift-connector.md)
 > * [版本 2（当前版本）](../connector-amazon-redshift.md)
 
 > [!NOTE]
@@ -109,7 +108,7 @@ Amazon Redshift [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r_UNL
 
 对于该示例用例，复制活动首先将数据从 Amazon Redshift 卸载到 Amazon S3（如 **redshiftUnloadSettings** 选项中所配置）。 接下来，数据从 Amazon S3 复制到 Azure Blob 存储（如 **stagingSettings** 选项中所指定）。 最后，PolyBase 将数据加载到 SQL 数据仓库。 所有临时格式均由复制活动处理。
 
-![将工作流从 Amazon Redshift 复制到 SQL 数据仓库](media\data-factory-amazon-redshift-connector\redshift-to-sql-dw-copy-workflow.png)
+![将工作流从 Amazon Redshift 复制到 SQL 数据仓库](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 {
@@ -139,7 +138,7 @@ Amazon Redshift [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r_UNL
 }
 ```
 
-## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>JSON 示例：将数据从 Amazon Redshift 复制到 Azure Blob 存储
+## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>JSON 示例：将数据从 Amazon Redshift 复制到 Blob 存储
 此示例演示如何将数据从 Amazon Redshift 数据库复制到 Azure Blob 存储。 可以使用复制活动将数据直接复制到任何[受支持的接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。  
 
 此示例具有以下数据工厂实体：

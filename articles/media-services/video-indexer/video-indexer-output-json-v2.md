@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: juliako
-ms.openlocfilehash: 8acb1c70dc21efc87e13e0e5e94d9a61acfe01e9
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: e83b634c11d0349f4917c063cde54e03fa1cac40
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291748"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810697"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>探讨 v2 API 生成的视频索引器输出
 
@@ -35,7 +35,7 @@ ms.locfileid: "52291748"
 
 ## <a name="root-elements"></a>根元素
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |accountId|播放列表的 VI 帐户 ID。|
 |id|播放列表的 ID。|
@@ -75,10 +75,10 @@ ms.locfileid: "52291748"
 
 本部分介绍见解的摘要。
 
-|属性 | Description|
+|属性 | 说明|
 |---|---|
 |名称|视频的名称。 例如 Azure Monitor。|
-|shortId|视频的 ID。 例如 63c6d532ff。|
+|id|视频的 ID。 例如 63c6d532ff。|
 |privacyMode|可以细分为以下模式之一：“私用”、“公共”。 **公共** - 向你帐户中的任何人，以及具有视频链接的每个人显示该视频。 **私用** - 向你帐户中的每个人显示该视频。|
 |duration|包含一个持续时间，用于描述见解发生的时间。 持续时间以秒为单位。|
 |thumbnailVideoId|从其创建缩略图的视频的 ID。
@@ -95,7 +95,7 @@ ms.locfileid: "52291748"
 
 ## <a name="videos"></a>videos
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |accountId|视频的 VI 帐户 ID。|
 |id|视频的 ID。|
@@ -149,7 +149,7 @@ ms.locfileid: "52291748"
 
 见解是一组维度（例如，脚本行、人脸、品牌等），其中的每个维度是唯一元素（例如，face1、face2、face3）的列表，每个元素有自身的元数据及其实例（具有其他可选元数据的时间范围）的列表。
 
-人脸可能具有 ID、名称、缩略图、其他元数据及其时态实例的列表（例如：00:00:05 – 00:00:10、00:01:00 - 00:02:30 和 00:41:21 – 00:41:49。）每个时态实例可以包含其他元数据。 例如，人脸的矩形坐标 (20,230,60,60)。
+人脸可能具有 ID、名称、缩略图、其他元数据及其时态实例的列表（例如：00:00:05 - 00:00:10、00:01:00 - 00:02:30 和 00:41:21 - 00:41:49）。每个时态实例可以包含其他元数据。 例如，人脸的矩形坐标 (20,230,60,60)。
 
 |版本|代码版本|
 |---|---|
@@ -166,7 +166,7 @@ ms.locfileid: "52291748"
 |audioEffects|[audioEffects](#audioEffects) 维度。|
 |情绪|[sentiments](#sentiments) 维度。|
 |visualContentModeration|[visualContentModeration](#visualcontentmoderation) 维度。|
-|textualConentModeration|[textualConentModeration](#textualconentmoderation) 维度。|
+|textualContentModeration|[textualConentModeration](#textualcontentmoderation) 维度。|
 |情感| [emotions](#emotions) 维度。|
 |topics|[topics](#topics) 维度。|
 
@@ -187,20 +187,20 @@ ms.locfileid: "52291748"
   "audioEffects": ...,
   "sentiments": ...,
   "visualContentModeration": ...,
-  "textualConentModeration": ...
+  "textualContentModeration": ...
 }
 ```
 
 #### <a name="blocks"></a>blocks
 
-属性 | Description
+属性 | 说明
 ---|---
 id|块的 ID。|
 instances|此块的时间范围列表。|
 
 #### <a name="transcript"></a>脚本
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|行 ID。|
 |text|脚本本身。|
@@ -238,7 +238,7 @@ instances|此块的时间范围列表。|
 
 #### <a name="ocr"></a>ocr
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|OCR 行 ID。|
 |text|OCR 文本。|
@@ -281,7 +281,7 @@ instances|此块的时间范围列表。|
 
 #### <a name="keywords"></a>关键字
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|关键字 ID。|
 |text|关键字文本。|
@@ -328,13 +328,13 @@ instances|此块的时间范围列表。|
 
 #### <a name="faces"></a>人脸
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|人脸 ID。|
 |名称|人脸名称。 可以为“Unknown #0”、公认的名人或经过客户培训的人员。|
 |confidence|人脸识别置信度。|
 |description|名人的说明。 |
-|thumbnalId|该人脸的缩略图 ID。|
+|thumbnailId|该人脸的缩略图 ID。|
 |knownPersonId|如果是已知人员，则为此人的内部 ID。|
 |referenceId|如果是必应名人，则为此人的必应 ID。|
 |referenceType|当前仅限必应。|
@@ -373,7 +373,7 @@ instances|此块的时间范围列表。|
 
 #### <a name="labels"></a>标签
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|标签 ID。|
 |名称|标签名称（例如“计算机”、“电视”）。|
@@ -432,7 +432,7 @@ instances|此块的时间范围列表。|
 
 #### <a name="shots"></a>截图
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|截图 ID。|
 |keyFrames|截图内的关键帧列表（每个关键帧都有一个 ID 和实例时间范围列表）。 关键帧实例具有一个 thumbnailId 字段，该字段包含关键帧的缩略图 ID。|
@@ -491,7 +491,7 @@ instances|此块的时间范围列表。|
 
 在语音转文本脚本和/或视频 OCR 中检测到的企业和产品品牌名称。 这不包括品牌或徽标检测内容的视觉辨识形式。
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|品牌 ID。|
 |名称|品牌名称。|
@@ -550,17 +550,17 @@ instances|此块的时间范围列表。|
 
 #### <a name="statistics"></a>statistics
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |CorrespondenceCount|视频中对应关系的数目。|
-|WordCount|每个发言人的单词数。|
+|SpeakerWordCount|每个发言人的单词数。|
 |SpeakerNumberOfFragments|发言人在视频中的片段数量。|
 |SpeakerLongestMonolog|发言人的最长独白。 如果发言人在独白中有沉默，则会将沉默期包含在内。 删除独白开头和结尾的沉默期。| 
 |SpeakerTalkToListenRatio|计算方式为将发言人的独白时间（开头和结尾之间没有沉默期）除以视频总时间。 时间将四舍五入为三位小数。|
 
 #### <a name="audioeffects"></a>audioEffects
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|音频效果 ID。|
 |type|音频效果类型（例如鼓掌、语音、静音）。|
@@ -589,7 +589,7 @@ instances|此块的时间范围列表。|
 
 情绪依据其 sentimentType 字段得出（积极/中立/消极）。 例如：0-0.1、0.1-0.2。
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|情绪 ID。|
 |averageScore |该情绪类型的所有实例的所有分数的均值 - 积极/中立/消极|
@@ -628,7 +628,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 找到的包含成人或猥亵内容的视频可能仅供私人观看。 用户可以选择请求人工审查内容，在这种情况下，IsAdult 属性将包含人工审查的结果。
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|视觉内容审核 ID。|
 |adultScore|成人内容评分（由内容审核员提供）。|
@@ -662,9 +662,9 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 ] 
 ```
 
-#### <a name="textualconentmoderation"></a>textualConentModeration 
+#### <a name="textualcontentmoderation"></a>textualContentModeration 
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|文本内容审核 ID。|
 |bannedWordsCount |受禁单词的数目。|
@@ -674,7 +674,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 视频索引器基于语音和音频提示识别情感。识别的情感可能是：快乐、悲伤、愤怒或恐惧。
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|情感 ID。|
 |type|基于语音和音频提示识别的瞬间情感。情感可能是：快乐、悲伤、愤怒或恐惧。|
@@ -764,11 +764,11 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 视频索引器从脚本中推理主要主题。 在可能的情况下，会包括第一级 [IPTC](https://iptc.org/standards/media-topics/) 分类。 
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|主题 ID。|
-|名称|主题名称，例如：“Pharmaceuticals”。|
-|referenceId|反映主题层次结构的痕迹导航。 例如：“健康和福利 / 医疗和保健 / 药品”。|
+|名称|主题名称，例如：“药品”。|
+|referenceId|反映主题层次结构的痕迹导航。 例如：“健康和福利/医疗和保健/药品”。|
 |confidence|[0,1] 范围内的置信度评分。 评分越高，则置信度越高。|
 |语言|主题中使用的语言。|
 |iptcName|IPTC 媒体代码名称（如果已检测到）。|

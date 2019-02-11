@@ -1,23 +1,24 @@
 ---
-title: 使用 Node.js 从 LUIS 获取 Application Insights 数据
+title: Application Insights，Node.js
 titleSuffix: Azure Cognitive Services
 description: 使用 Node.js 生成与 LUIS 应用程序和 Application Insights 集成的机器人。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6199e4a681f7f58ea0cf57b575afb2a63d160eee
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 74ad3110faabb6618ffe91e5a896b9b7f4bc0d3a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321948"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221243"
 ---
-# <a name="add-luis-results-to-application-insights"></a>将 LUIS 结果添加到 Application Insights
+# <a name="add-luis-results-to-application-insights-and-azure-functions"></a>将 LUIS 结果添加到 Application Insights 和 Azure 函数
 本教程将 LUIS 请求和响应信息添加到 [Application Insights](https://azure.microsoft.com/services/application-insights/) 遥测数据存储。 添加该数据后，可使用 Kusto 语言进行查询，或使用 PowerBi 对陈述的意向和实体进行实时分析、聚合和报告。 此分析有助于确定是否应添加或编辑 LUIS 应用的意向和实体。
 
 该机器人是使用 Bot Framework 3.x 和 Azure Web 应用机器人生成的。
@@ -34,9 +35,9 @@ ms.locfileid: "49321948"
 * 使用[上一教程](luis-nodejs-tutorial-build-bot-framework-sample.md)中已启用 Application Insights 的 LUIS Web 应用机器人。 
 
 > [!Tip]
-> 如果没有订阅，可以注册一个[免费帐户](https://azure.microsoft.com/free/)。
+> 如果尚无订阅，可注册[免费帐户](https://azure.microsoft.com/free/)。
 
-本教程中的所有代码均位于 [LUIS 示例 github 存储库](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs)中，并且与本教程关联的每行均注释有 `//APPINSIGHT:`。 
+本教程中的所有代码均可在 [Azure 示例 GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs)中找到，并且与本教程关联的每行均注释有 `//APPINSIGHT:`。 
 
 ## <a name="web-app-bot-with-luis"></a>Web 应用机器人与 LUIS
 本教程假定你有如下代码或已完成[其他教程](luis-nodejs-tutorial-build-bot-framework-sample.md)： 
@@ -50,23 +51,23 @@ ms.locfileid: "49321948"
 
 1. 在 Azure 门户上的 Web 应用机器人服务中，选择“机器人管理”部分下的“生成”。 
 
-    ![搜索 Application Insights](./media/luis-tutorial-appinsights/build.png)
+    ![在 Azure 门户上的 Web 应用机器人服务中，选择“机器人管理”部分下的“生成”。 ](./media/luis-tutorial-appinsights/build.png)
 
 2. 此时会打开一个包含“应用服务编辑器”的新浏览器标签页。 在顶部栏中选择应用名称，然后选择“打开 Kudu 控制台”。 
 
-    ![搜索 Application Insights](./media/luis-tutorial-appinsights/kudu-console.png)
+    ![在顶部栏中选择应用名称，然后选择“打开 Kudu 控制台”。 ](./media/luis-tutorial-appinsights/kudu-console.png)
 
 3. 在控制台中输入以下命令，安装 Application Insights 和 Underscore 包：
 
-    ```
+    ```console
     cd site\wwwroot && npm install applicationinsights && npm install underscore
     ```
 
-    ![搜索 Application Insights](./media/luis-tutorial-appinsights/npm-install.png)
+    ![使用 npm 命令安装 Application Insights 和 Underscore 包](./media/luis-tutorial-appinsights/npm-install.png)
 
     等待这些包安装完成：
 
-    ```
+    ```console
     luisbot@1.0.0 D:\home\site\wwwroot
     `-- applicationinsights@1.0.1 
       +-- diagnostic-channel@0.2.0 
@@ -111,9 +112,7 @@ ms.locfileid: "49321948"
 
 1. 在门户中，选择“所有资源”，然后按 Web 应用机器人的名称进行筛选。 单击“Application Insights”类型的资源。 Application Insights 的图标是灯泡。 
 
-    ![搜索 Application Insights](./media/luis-tutorial-appinsights/search-for-app-insights.png)
-
-
+    ![[在 Azure 门户中搜索 app insights](./media/luis-tutorial-appinsights/search-for-app-insights.png)
 
 2. 资源打开后，单击最右侧面板中的“搜索”图标（放大镜）。 右侧将显示一个新面板。 该面板可能需要一秒钟才能显示出来，具体取决于找到的遥测数据量。 搜索 `LUIS-results` 并按 Enter 键。 该列表已缩减为仅限本教程添加的 LUIS 查询结果。
 
@@ -142,7 +141,7 @@ Application Insights 支持查询使用 [Kusto](https://docs.microsoft.com/azure
 
 3. 若要拉取首要意向、评分和陈述，请在查询窗口的最后一行上方添加以下内容：
 
-    ```SQL
+    ```kusto
     | extend topIntent = tostring(customDimensions.LUIS_intent_intent)
     | extend score = todouble(customDimensions.LUIS_intent_score)
     | extend utterance = tostring(customDimensions.LUIS_text)

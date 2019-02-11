@@ -1,26 +1,19 @@
 ---
-title: Azure CLI 脚本示例 - 创建 SignalR 服务 | Microsoft Docs
+title: Azure CLI 脚本示例 - 创建 SignalR 服务
 description: Azure CLI 脚本示例 - 创建 SignalR 服务
-services: signalr
-documentationcenter: signalr
 author: sffamily
-manager: cfowler
-editor: ''
-tags: azure-service-management
 ms.service: signalr
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: signalr
 ms.date: 04/20/2018
 ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: d64e43ad6dc021676fb9483574e0d710cd0a766f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8653d8da8b180fb657169523e83a651d822343e4
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998638"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605023"
 ---
 # <a name="create-a-signalr-service"></a>创建 SignalR 服务 
 
@@ -55,7 +48,7 @@ az extension add -n signalr
 | 命令 | 说明 |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az signalr create](/cli/azure/group#az-group-create) | 创建 Azure SignalR 服务资源。 |
+| [az signalr create](/cli/azure/ext/signalr/signalr#ext-signalr-az-signalr-create) | 创建 Azure SignalR 服务资源。 |
 | [az signalr key list](/cli/azure/ext/signalr/signalr/key#ext-signalr-az-signalr-key-list) | 列出密钥，使用 SignalR 推送实时内容更新时，应用程序将使用这些密钥。 |
 
 

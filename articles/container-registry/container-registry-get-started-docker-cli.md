@@ -1,20 +1,20 @@
 ---
-title: 将 Docker 映像推送到专用 Azure 注册表
+title: 将 Docker 映像推送到专用 Azure 容器注册表
 description: 使用 Docker CLI 在 Azure 的专用容器注册表中推送和拉取 Docker 映像
 services: container-registry
-author: stevelas
+author: dlepow
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 11/29/2017
-ms.author: stevelas
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24cccd4745d611196046168f0125e7ef2a184e15
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.date: 01/23/2019
+ms.author: danlep
+ms.custom: seodec18, H1Hack27Feb2017
+ms.openlocfilehash: e4963ebae73bdd81246433fe43206139caa1661c
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576485"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295774"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将第一个映像推送到专用 Docker 容器注册表
 
@@ -25,7 +25,7 @@ Azure 容器注册表存储和管理专用 [Docker](http://hub.docker.com) 容�
 ## <a name="prerequisites"></a>先决条件
 
 * **Azure 容器注册表** - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
-* **Docker CLI** - 要将本地计算机设置为 Docker 主机并访问 Docker CLI 命令，请安装 [Docker](https://docs.docker.com/engine/installation/)。
+* **Docker CLI** - 还必须在本地安装 Docker。 Docker 提供的包可在任何 [macOS][docker-mac]、[Windows][docker-windows] 或 [Linux][docker-linux] 系统上轻松配置 Docker。
 
 ## <a name="log-in-to-a-registry"></a>登录到注册表
 
@@ -35,13 +35,13 @@ Azure 容器注册表存储和管理专用 [Docker](http://hub.docker.com) 容�
 az acr login --name myregistry
 ```
 
-也可以使用 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 登录。 以下示例传递了 Azure Active Directory [服务主体](../active-directory/develop/app-objects-and-service-principals.md)的 ID 和密码。 例如，你可能在自动化方案中向注册表[分配了服务主体](container-registry-authentication.md#service-principal)。
+也可以使用 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 登录。 例如，你可能在自动化方案中向注册表[分配了服务主体](container-registry-authentication.md#service-principal)。 运行以下命令时，收到提示后，请以交互方式提供服务主体 appID（用户名）和密码。 有关管理登录凭据的最佳做法，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令参考：
 
-```Bash
-docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
+```Docker
+docker login myregistry.azurecr.io
 ```
 
-完成后，这两个命令将返回 `Login Succeeded`。 如果使用 `docker login`，可能会看见建议使用 `--password-stdin` 参数的安全警告。 虽然本文中未介绍它的用法，但我们建议按照此最佳做法进行操作。 有关详细信息，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令参考。
+完成后，这两个命令将返回 `Login Succeeded`。
 
 > [!TIP]
 > 使用 `docker login` 以及标记要推送到注册表的映像时，请始终指定完全限定的注册表名称（全部小写）。 在本文的示例中，完全限定的名称为 *myregistry.azurecr.io*。
@@ -50,7 +50,7 @@ docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my
 
 首次将公共 Nginx 映像提取到本地计算机。
 
-```Bash
+```Docker
 docker pull nginx
 ```
 
@@ -58,7 +58,7 @@ docker pull nginx
 
 执行以下 [docker run](https://docs.docker.com/engine/reference/run/) 命令，在端口 8080 上以交互方式启动 Nginx 容器的本地实例 (`-it`)。 `--rm` 参数指定在停止容器时应将其删除。
 
-```Bash
+```Docker
 docker run -it --rm -p 8080:80 nginx
 ```
 
@@ -74,7 +74,7 @@ docker run -it --rm -p 8080:80 nginx
 
 运行 [docker tag](https://docs.docker.com/engine/reference/commandline/tag/)，使用注册表的完全限定路径创建映像的别名。 此示例指定了 `samples` 命名空间，以免注册表根目录中出现混乱。
 
-```Bash
+```Docker
 docker tag nginx myregistry.azurecr.io/samples/nginx
 ```
 
@@ -84,7 +84,7 @@ docker tag nginx myregistry.azurecr.io/samples/nginx
 
 使用专用注册表的完全限定路径标记映像后，可以使用 [docker push](https://docs.docker.com/engine/reference/commandline/push/) 将其推送到注册表：
 
-```Bash
+```Docker
 docker push myregistry.azurecr.io/samples/nginx
 ```
 
@@ -92,7 +92,7 @@ docker push myregistry.azurecr.io/samples/nginx
 
 使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令从注册表提取映像：
 
-```Bash
+```Docker
 docker pull myregistry.azurecr.io/samples/nginx
 ```
 
@@ -100,7 +100,7 @@ docker pull myregistry.azurecr.io/samples/nginx
 
 使用 [docker run](https://docs.docker.com/engine/reference/run/) 命令运行已从注册表提取的映像：
 
-```Bash
+```Docker
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
@@ -112,7 +112,7 @@ docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 
 如果不再需要 Nginx 映像，可以使用 [docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/) 命令在本地将其删除。
 
-```Bash
+```Docker
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
@@ -124,7 +124,7 @@ az acr repository delete --name myregistry --repository samples/nginx --tag late
 
 ## <a name="next-steps"></a>后续步骤
 
-了解基础知识后，便可以开始使用注册表了！ 将容器映像从注册表部署到：
+了解基础知识后，便可以开始使用注册表了！ 例如，将容器映像从注册表部署到：
 
 * [Azure Kubernetes 服务 (AKS)](../aks/tutorial-kubernetes-prepare-app.md)
 * [Azure 容器实例](../container-instances/container-instances-tutorial-prepare-app.md)

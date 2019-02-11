@@ -1,21 +1,19 @@
 ---
-title: Azure Cosmos DB 表 API .NET SDK 和资源 | Microsoft Docs
+title: Azure Cosmos DB 表 API .NET SDK 和资源
 description: 了解有关 Azure Cosmos DB 表 API 的全部信息，包括发布日期、停用日期和各版本之间进行的更改。
-services: cosmos-db
-author: rnagpal
-manager: kfile
+author: wmengmsft
+ms.author: wmeng
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.author: rnagpal
-ms.openlocfilehash: 6d2ede88e9e218ddbdfed0add48e7df8bfae0b60
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 469faeee4706c33b09f89bfbed1bb229a6aea20e
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466454"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848360"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET API：下载和发行说明
 > [!div class="op_single_selector"]
@@ -29,7 +27,7 @@ ms.locfileid: "49466454"
 |---|---|
 |**SDK 下载**|[NuGet](https://aka.ms/acdbtablenuget)|
 |**API 文档**|[ 参考文档](https://aka.ms/acdbtableapiref)|
-|**快速入门**|[Azure Cosmos DB: Build an app with .NET and the Table API](create-table-dotnet.md)（Azure Cosmos DB：使用 .NET 和表 API 生成应用）|
+|**快速入门**|[Azure Cosmos DB：使用 .NET 和表 API 生成应用](create-table-dotnet.md)|
 |**教程**|[Azure Cosmos DB：在 .NET 中使用表 API 进行开发](tutorial-develop-table-dotnet.md)|
 |**当前受支持的框架**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
@@ -38,6 +36,9 @@ ms.locfileid: "49466454"
 >
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+* Bug 修复
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
 * 添加了多区域写入支持
@@ -74,6 +75,8 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.1.0](#2.1.0) |2019 年 1 月 22 日|--- |
+| [2.0.0](#2.0.0) |2018 年 9 月 26 日|--- |
 | [1.1.3](#1.1.3) |2018 年 7 月 17 日|--- |
 | [1.1.1](#1.1.1) |2018 年 3 月 26 日|--- |
 | [1.1.0](#1.1.0) |2018 年 2 月 21 日|--- |

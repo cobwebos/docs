@@ -3,17 +3,17 @@ title: 使用 Ansible 在 Azure 中创建 Linux 虚拟机
 description: 了解如何使用 Ansible 在 Azure 中创建 Linux 虚拟机
 ms.service: ansible
 keywords: ansible, azure, devops, 虚拟机
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 08/22/2018
-ms.openlocfilehash: 99822fc1d99d914327a64cfb9fe8e18189f30a4f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1f7f4809e064de15bb0a18c404f0df81307b1b9a
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251232"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073979"
 ---
 # <a name="use-ansible-to-create-a-linux-virtual-machine-in-azure"></a>使用 Ansible 在 Azure 中创建 Linux 虚拟机
 Ansible 使用声明性语言，适用于通过 Ansible *playbook* 来自动完成 Azure 资源的创建、配置和部署。 本文的各个部分介绍该部分中用于创建和配置 Linux 虚拟机不同部分的 Ansible playbook 的外观。 [完整的 Ansible playbook](#complete-sample-ansible-playbook) 列在本文末尾。

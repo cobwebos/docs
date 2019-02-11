@@ -1,65 +1,75 @@
 ---
-title: 快速入门：必应新闻搜索 SDK、Node
+title: 快速入门：执行新闻搜索 - 适用于 Node.js 的必应新闻搜索 SDK
 titleSuffix: Azure Cognitive Services
-description: 设置必应新闻搜索 SDK 控制台应用程序
+description: 使用本快速入门，可以使用适用于 Node.js 的必应新闻搜索 SDK 搜索新闻，并处理响应。
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 02/12/2018
+ms.date: 01/10/2019
 ms.author: v-gedod
-ms.openlocfilehash: 075ce771b6fa92663f172734aabf57b089b294a9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: adfdfd56c4ff678f3a0b87cd75dad50b5c5f0c01
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316933"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55204025"
 ---
-# <a name="quickstart-bing-news-search-sdk-with-node"></a>快速入门：通过 Node 使用必应新闻搜索 SDK
+# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>快速入门：使用适用于 Node.js 的必应新闻搜索 SDK 执行新闻搜索
 
-必应新闻搜索 SDK 包含用于新闻查询以及对结果进行分析的 REST API 功能。 
+使用本快速入门开始使用适用于 Node.js 的必应新闻搜索 SDK 搜索新闻。 虽然必应新闻搜索具有与大多数编程语言兼容的 REST API，但该 SDK 提供了一种简单方法来将服务集成到应用程序中。 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js) 上找到此示例的源代码。
 
-Git Hub 上提供了 [Node 必应新闻搜索 SDK 示例的源代码](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js)。
+## <a name="prerequisites"></a>先决条件
 
-## <a name="application-dependencies"></a>应用程序依赖项
-在“搜索”下获取[认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/)。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
+* [Node.js](https://nodejs.org/en/)
 
 若要使用必应新闻搜索 SDK 来设置控制台应用程序，请执行以下操作：
-* 在开发环境中运行 `npm install ms-rest-azure`。
-* 在开发环境中运行 `npm install azure-cognitiveservices-newssearch`。
+1. 在开发环境中运行 `npm install ms-rest-azure`。
+2. 在开发环境中运行 `npm install azure-cognitiveservices-newssearch`。
 
-## <a name="news-search-client"></a>新闻搜索客户端
-在“搜索”下获取[认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/)。 创建 `CognitiveServicesCredentials` 的实例：
-```
-const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
-```
-然后对该客户端进行实例化：
-```
-const NewsSearchAPIClient = require('azure-cognitiveservices-newssearch');
-let client = new NewsSearchAPIClient(credentials);
-```
-使用客户端通过查询文本进行搜索，在本例中查询文本为“Winter Olympics”：
-```
-client.newsOperations.search('Winter Olympics').then((result) => {
-    console.log(result.value);
-}).catch((err) => {
-    throw err;
-});
 
-```
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
+
+## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
+
+1. 创建 `CognitiveServicesCredentials` 的实例： 为订阅密钥和搜索词创建变量。
+
+    ```javascript
+    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
+    let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
+    let search_term = 'Winter Olympics'
+    ```
+
+2. 对客户端进行实例化：
+    
+    ```javascript
+    const NewsSearchAPIClient = require('azure-cognitiveservices-newssearch');
+    let client = new NewsSearchAPIClient(credentials);
+    ```
+
+## <a name="send-a-search-query"></a>发送搜索查询
+
+3. 使用客户端通过查询词进行搜索，在本例中查询词为“Winter Olympics”：
+    
+    ```javascript
+    client.newsOperations.search(search_term).then((result) => {
+        console.log(result.value);
+    }).catch((err) => {
+        throw err;
+    });
+    ```
+
 代码会将 `result.value` 项输出至控制台，并且不会分析任何文本。 结果（如果每个类别都有结果）将包括：
-- _type: 'NewsArticle'
-- _type: 'WebPage'
-- _type: 'VideoObject'
-- _type: 'ImageObject'
 
-<!-- Remove until we can replace with santized version
-![News results](media/node-sdk-quickstart-results.png)
--->
+- `_type: 'NewsArticle'`
+- `_type: 'WebPage'`
+- `_type: 'VideoObject'`
+- `_type: 'ImageObject'`
 
 ## <a name="next-steps"></a>后续步骤
 
-[认知服务 Node.js SDK 示例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+> [!div class="nextstepaction"]
+[创建单页 Web 应用](tutorial-bing-news-search-single-page-app.md)

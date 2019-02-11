@@ -6,16 +6,16 @@ services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 01/14/2019
 ms.author: heidist
-ms.openlocfilehash: fbea686ba0f67cdab79f1553344bd99dd105fc00
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 04846ab2f1ade6f22898f88ac82bb36b42c5a1e1
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605243"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207184"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>适用于文本分析认知服务的外部和社区内容
 
@@ -25,7 +25,7 @@ ms.locfileid: "45605243"
 
 + [文本分析 API 原始公告（Azure 博客）](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/)
 
-+ [从 PowerShell 使用文本分析关键短语认知服务 API（MSDN 博客）](https://blogs.msdn.microsoft.com/riteshmodi/2017/03/24/text-analytics-key-phrase-cognitive-services-powershell/)
++ [从 PowerShell 使用文本分析关键短语认知服务 API（AutomationNext 博客）](https://automationnext.wordpress.com/tag/text-analytics/)
 
 + [R 快速提示：Microsoft 认知服务的文本分析 API (R Bloggers)](https://www.r-bloggers.com/r-quick-tip-microsoft-cognitive-services-text-analytics-api/)
 

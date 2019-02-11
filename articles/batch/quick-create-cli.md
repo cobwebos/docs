@@ -2,20 +2,20 @@
 title: Azure 快速入门 - 运行 Batch 作业 - CLI
 description: 快速了解如何使用 Azure CLI 运行 Batch 作业。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 75703b4b10bbf3864076952990df2e6c2a9ab28d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: df56fd00d5a5ff2f9e9000b39939d0f33b3737d5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969642"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752341"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>快速入门：使用 Azure CLI 运行第一个 Batch 作业
 
@@ -139,7 +139,7 @@ az batch task show \
 
 ## <a name="view-task-output"></a>查看任务输出
 
-若要列出计算节点上的任务所创建的文件，请使用 [az batch task file list](/cli/azure/batch/task#az-batch-task-file-list) 命令。 以下命令列出 *mytask1* 创建的文件： 
+若要列出计算节点上的任务所创建的文件，请使用 [az batch task file list](/cli/azure/batch/task) 命令。 以下命令列出 *mytask1* 创建的文件： 
 
 ```azurecli-interactive 
 az batch task file list \
@@ -160,7 +160,7 @@ stderr.txt  https://mybatchaccount.eastus2.batch.azure.com/jobs/myjob/tasks/myta
 
 ```
 
-若要将某个输出文件下载到本地目录，请使用 [az batch task file download](/cli/azure/batch/task#az-batch-task-file-download) 命令。 在此示例中，任务输出位于 `stdout.txt`。 
+若要将某个输出文件下载到本地目录，请使用 [az batch task file download](/cli/azure/batch/task) 命令。 在此示例中，任务输出位于 `stdout.txt`。 
 
 ```azurecli-interactive
 az batch task file download \

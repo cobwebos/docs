@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 2aa8036149f4056f2d197f0712b86104f5cf2215
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 4bfe4f9f97587b6791e73c2f04055b2dcf5d0f0d
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095039"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766208"
 ---
 # <a name="work-with-azure-functions-proxies"></a>使用 Azure Functions 代理
 
@@ -81,7 +81,7 @@ ms.locfileid: "44095039"
 除了路由模板参数以外，还可以在配置值中使用以下值：
 
 * **{request.method}**：对原始请求使用的 HTTP 方法。
-* **{request.headers.\<HeaderName\>}**：可从原始请求中读取的标头。 请将 *\<HeaderName\>* 替换为要读取的标头的名称。 如果该标头未包含在请求中，则该值为空字符串。
+* **{request.headers.\<HeaderName\>}**：从原始请求中读取的标头。 请将 *\<HeaderName\>* 替换为要读取的标头的名称。 如果该标头未包含在请求中，则该值为空字符串。
 * **{request.querystring.\<ParameterName\>}**：可从原始请求中读取的查询字符串参数。 请将 *\<ParameterName\>* 替换为要读取的参数的名称。 如果该参数未包含在请求中，则该值为空字符串。
 
 ### <a name="response-parameters"></a>引用后端响应参数
@@ -90,7 +90,7 @@ ms.locfileid: "44095039"
 
 * **{backend.response.statusCode}**：在后端响应中返回的 HTTP 状态代码。
 * **{backend.response.statusReason}**：在后端响应中返回的 HTTP 原因短语。
-* **{backend.response.headers.\<HeaderName\>}**：可从后端响应中读取的标头。 请将 *\<HeaderName\>* 替换为要读取的标头的名称。 如果该标头未包含在响应中，则该值将为空字符串。
+* **{backend.response.headers.\<HeaderName\>}**：可以从后端响应中读取的标头。 请将 *\<HeaderName\>* 替换为要读取的标头的名称。 如果该标头未包含在响应中，则该值将为空字符串。
 
 ### <a name="use-appsettings"></a>引用应用程序设置
 
@@ -149,7 +149,7 @@ Proxies.json 是由一个代理对象定义的，包括已命名的代理及其�
 > [!NOTE] 
 > Azure Functions 代理中的 route 属性不接受 Function App 主机配置的 routePrefix 属性。 如果希望包括一个如 `/api` 等前缀，必须将其包括在 route 属性中。
 
-### <a name="disableProxies"></a>禁用单个代理
+### <a name="disableProxies"></a> 禁用单个代理
 
 可以通过将 `"disabled": true` 添加到 `proxies.json` 文件中的代理来禁用单个代理。 这将导致满足 matchCondidtion 的任何请求返回 404。
 ```json
@@ -161,11 +161,28 @@ Proxies.json 是由一个代理对象定义的，包括已命名的代理及其�
             "matchCondition": {
                 "route": "/example"
             },
-            "backendUri": "www.example.com"
+            "backendUri": "https://<AnotherApp>.azurewebsites.net/api/<FunctionName>"
         }
     }
 }
 ```
+
+### <a name="applicationSettings"></a> 应用程序设置
+
+代理行为可以通过多个应用程序设置进行控制。 [Functions App 设置参考](./functions-app-settings.md)中概述了所有这些设置
+
+* [AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL](./functions-app-settings.md#azurefunctionproxydisablelocalcall)
+* [AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES](./functions-app-settings.md#azurefunctionproxybackendurldecodeslashes)
+
+### <a name="reservedChars"></a> 保留字符（字符串格式设置）
+
+代理使用“\”作为转义符从 JSON 文件中读取所有字符串。 代理还会解释大括号。 请参阅下面的完整示例集。
+
+|Character|转义字符|示例|
+|-|-|-|
+|{ 或 }|{{ 或 }}|`{{ example }}` --> `{ example }`
+| \ | \\\\ | `example.com\\text.html` --> `example.com\text.html`
+|"|\\\"| `\"example\"` --> `"example"`
 
 ### <a name="requestOverrides"></a>定义 requestOverrides 对象
 
@@ -232,7 +249,7 @@ requestOverrides 对象定义对传回客户端的响应所做的更改。 该�
 > 在此示例中，响应正文是直接设置的，因此不需要 `backendUri` 属性。 此示例演示如何使用 Azure Functions 代理来模拟 API。
 
 [Azure 门户]: https://portal.azure.com
-[HTTP 触发器]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#http-trigger
+[HTTP 触发器]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response
 [定义 requestOverrides 对象]: #requestOverrides

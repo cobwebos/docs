@@ -1,21 +1,21 @@
 ---
-title: 用于数据科学团队项目的平台和工具 - Azure | Microsoft Docs
+title: 用于数据科学项目的平台和工具 - Team Data Science Process
 description: 列举并讨论基于 Team Data Science Process 实现标准化的企业可用的数据和分析资源。
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 5df2cbabeb704453d71a0ac1db14c618dae352d2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: f733b2c9bcd8dc8ad8c068c465e1beda00b45d28
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446443"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471005"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>用于数据科学项目的平台和工具
 
@@ -59,7 +59,7 @@ Apache Spark 是一种开源并行处理框架，支持使用内存中处理来�
 
 在 HDInsight 中创建 Spark 群集时，即会创建已安装并配置了 Spark 的 Azure 计算资源。 在 HDInsight 中创建 Spark 群集需要约 10 分钟。 将要处理的数据存储在 Azure Blob 存储中。 有关在群集中使用 Azure Blob 存储的信息，请参阅[将 HDFS 兼容的 Azure Blob 存储与 HDInsight 中的 Hadoop 配合使用](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)。
 
-Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何使用 Azure HDInsight Spark 群集生成数据科学解决方案，其中一个解决方案使用 Python，另一个使用 Scala。 有关 Azure HDInsight **Spark 群集**的详细信息，请参阅[概述：HDInsight Linux 上的 Apache Spark](../../hdinsight/spark/apache-spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Python** 生成数据科学解决方案，请参阅[有关在 Azure HDInsight 上使用 Spark 展开数据科学的概述](spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Scala** 生成数据科学解决方案，请参阅[在 Azure 上使用 Scala 和 Spark 展开数据科学](scala-walkthrough.md)。 
+Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何使用 Azure HDInsight Spark 群集生成数据科学解决方案，其中一个解决方案使用 Python，另一个使用 Scala。 有关 Azure HDInsight“Spark 群集”的详细信息，请参阅[概述：HDInsight Linux 上的 Apache Spark](../../hdinsight/spark/apache-spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Python** 生成数据科学解决方案，请参阅[有关在 Azure HDInsight 上使用 Spark 展开数据科学的概述](spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Scala** 生成数据科学解决方案，请参阅[在 Azure 上使用 Scala 和 Spark 展开数据科学](scala-walkthrough.md)。 
 
 
 ##  <a name="azure-sql-data-warehouse"></a>Azure SQL 数据仓库
@@ -73,7 +73,7 @@ Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何使用 Azu
 
 Azure Data Lake 是在施加任何正式要求或架构之前，在单个位置收集的每种数据的企业级存储库。 这种灵活性允许将每种数据保留在 Data Lake 中，而不管数据的大小或结构或引入速度如何。 然后，组织可以使用 Hadoop 或高级分析功能在这些 Data Lake 中查找模式。 在策划数据并其转移到数据仓库之前，Data Lake 还可以充当较低成本的数据准备工作的存储库。
 
-有关 Azure Data Lake 的详细信息，请参阅 [Azure Data Lake 简介](https://azure.microsoft.com/blog/introducing-azure-data-lake/)。 若要了解如何使用 Azure Data Lake 生成可缩放的端到端数据科学解决方案，请参阅[Azure Data Lake 中可缩放的数据科学：端到端演练](data-lake-walkthrough.md)
+有关 Azure Data Lake 的详细信息，请参阅 [Azure Data Lake 简介](https://azure.microsoft.com/blog/introducing-azure-data-lake/)。 要了解如何使用 Azure Data Lake 生成可缩放的端到端数据科学解决方案，请参阅 [Azure Data Lake 中可缩放的数据科学：端到端演练](data-lake-walkthrough.md)
 
 
 ## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Azure HDInsight Hive (Hadoop) 群集
@@ -129,17 +129,17 @@ Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何在 SQL Se
         ssh-keygen
         cat .ssh/id_rsa.pub
 
-![](./media/platforms-and-tools/resources-1-generate_ssh.png)
+![生成 SSH 密钥的命令](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
 - 复制整个 SSH 密钥，包括 *ssh-rsa*。 
 - 登录到 Azure DevOps Services。 
 - 单击页面右上角的“<你的姓名\>”，再单击“安全性”。 
     
-    ![](./media/platforms-and-tools/resources-2-user-setting.png)
+    ![单击你的姓名，再单击“安全性”](./media/platforms-and-tools/resources-2-user-setting.png)
 
 - 依次单击“SSH 公钥”、“+添加”。 
 
-    ![](./media/platforms-and-tools/resources-3-add-ssh.png)
+    ![单击 SSH 公钥，再单击“+ 添加”](./media/platforms-and-tools/resources-3-add-ssh.png)
 
 - 将刚刚复制的 SSH 密钥粘贴到文本框中并保存。
 

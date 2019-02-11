@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中创建静态 HTML Web 应用 | Microsoft Docs
+title: 创建静态 HTML Web 应用 - Azure 应用服务 | Microsoft Docs
 description: 了解如何通过部署静态 HTML 示例应用，在 Azure 应用服务中运行 Web 应用。
 services: app-service\web
 documentationcenter: ''
@@ -12,41 +12,25 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 11/20/2018
 ms.author: msangapu
-ms.custom: mvc
-ms.openlocfilehash: cee0bdffb99076903df988d30fcaa4f6cb2234c6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.custom: seodec18
+ms.openlocfilehash: 064466b73e03e9648b78c32b7e6ffcd83defd607
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123184"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079352"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>在 Azure 中创建静态 HTML Web 应用
 
-[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。 本快速入门教程演示如何将基本 HTML+CSS 站点部署到 Azure Web 应用。 你将在 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中完成本快速入门，但是也可以使用 [Azure CLI](/cli/azure/install-azure-cli) 在本地运行这些命令。
+[Azure 应用服务](overview.md)提供高度可缩放、自修补的 Web 托管服务。 本快速入门演示如何将基本 HTML+CSS 站点部署到 Azure 应用服务。 你将在 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中完成本快速入门，但是也可以使用 [Azure CLI](/cli/azure/install-azure-cli) 在本地运行这些命令。
 
 ![示例应用主页](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="install-web-app-extension-for-cloud-shell"></a>安装 Cloud Shell 的 Web 应用扩展
-
-若要完成本快速入门，需要添加 [az Web 应用扩展](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add)。 如果该扩展已安装，则应将其更新为最新版本。 若要更新该 Web 应用扩展，请键入 `az extension update -n webapp`。
-
-若要安装该 Web 应用扩展，请运行以下命令：
-
-```bash
-az extension add --name webapp
-```
-
-安装该扩展后，Cloud Shell 会显示类似于以下示例的信息：
-
-```bash
-The installed extension 'webapp' is in preview.
-```
 
 ## <a name="download-the-sample"></a>下载示例
 
@@ -55,10 +39,10 @@ The installed extension 'webapp' is in preview.
 ```bash
 mkdir quickstart
 
-cd quickstart
+cd $HOME/quickstart
 ```
 
-接下来，运行以下命令将示例应用存储库克隆到 quickstart 目录。
+接下来请运行以下命令，将示例应用存储库克隆到快速入门目录。
 
 ```bash
 git clone https://github.com/Azure-Samples/html-docs-hello-world.git
@@ -84,7 +68,7 @@ az webapp up --location westeurope --name <app_name>
 
 - 创建一个采用指定名称的应用。
 
-- [使用 Zip](https://docs.microsoft.com/azure/app-service/app-service-deploy-zip) 将文件从当前工作目录部署到 Web 应用。
+- [使用 Zip](https://docs.microsoft.com/azure/app-service/deploy-zip) 将文件从当前工作目录部署到 Web 应用。
 
 此命令可能需要花费几分钟时间运行。 运行时，该命令会显示类似于以下示例的信息：
 
@@ -106,13 +90,13 @@ az webapp up --location westeurope --name <app_name>
 
 ## <a name="browse-to-the-app"></a>浏览到应用
 
-在浏览器中转到 Azure Web 应用 URL：`http://<app_name>.azurewebsites.net`。
+在浏览器中转到应用 URL：`http://<app_name>.azurewebsites.net`。
 
 该页作为 Azure 应用服务 Web 应用运行。
 
 ![示例应用主页](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
-**祝贺你！** 现已将第一个 HTML 应用部署到应用服务。
+祝贺你！ 现已将第一个 HTML 应用部署到应用服务。
 
 ## <a name="update-and-redeploy-the-app"></a>更新并重新部署应用
 
@@ -132,23 +116,23 @@ az webapp up --location westeurope --name <app_name>
 
 ![已更新的示例应用主页](media/app-service-web-get-started-html/hello-azure-in-browser-az.png)
 
-## <a name="manage-your-new-azure-web-app"></a>管理新 Azure Web 应用
+## <a name="manage-your-new-azure-app"></a>管理新的 Azure 应用
 
 转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理创建的 Web 应用。
 
-在左侧菜单中单击“应用服务”，然后单击 Azure Web 应用的名称。
+在左侧菜单中单击“应用程序服务”，然后单击 Azure 应用的名称。
 
-![在门户中导航到 Azure Web 应用](./media/app-service-web-get-started-html/portal1.png)
+![在门户中导航到 Azure 应用](./media/app-service-web-get-started-html/portal1.png)
 
-将看到 Web 应用的概述页。 在此处可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。
+这里我们可以看到 Web 应用的概述页。 并可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。
 
 ![Azure 门户中的应用服务边栏选项卡](./media/app-service-web-get-started-html/portal2.png)
 
-左侧菜单提供用于配置应用的不同页面。
+左侧菜单提供了用于配置应用的不同页面。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-在前面的步骤中，在资源组中创建了 Azure 资源。 如果认为将来不需要这些资源，请在 Cloud Shell 中运行以下命令，以便删除资源组。 请记住，资源组名称已在[创建 Web 应用](#create-a-web-app)步骤中自动为你生成。
+在前面的步骤中，你在资源组中创建了 Azure 资源。 如果认为将来不需要这些资源，请在 Cloud Shell 中运行以下命令，以便删除资源组。 请记住，资源组名称已在[创建 Web 应用](#create-a-web-app)步骤中自动为你生成。
 
 ```bash
 az group delete --name appsvc_rg_Windows_westeurope

@@ -1,21 +1,22 @@
 ---
-title: Python 快速入门 - 更改模型并训练 LUIS 应用
-titleSuffix: Azure Cognitive Services
-description: 此 Python 快速入门会将示例话语添加到家庭自动化应用并训练该应用。 示例话语是映射到意向的对话式用户文本。 通过提供意向的示例话语，可以教 LUIS 用户提供的文本类型属于哪种意向。
+title: 更改、训练应用，Python
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: 此 Python 快速入门会将示例话语添加到家庭自动化应用并训练该应用。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: ff076954d51605935bb41488ec6a757c2f7806a1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9d8010cff82047db570caf447f5bf18e2bbf4ebd
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040170"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207473"
 ---
 # <a name="quickstart-change-model-using-python"></a>快速入门：使用 Python 更改模型
 
@@ -27,7 +28,7 @@ ms.locfileid: "47040170"
 * [Python 3.6](https://www.python.org/downloads/) 或更高版本。
 * [Visual Studio Code](https://code.visualstudio.com/)
 
-[!INCLUDE [Code is available in LUIS-Samples Github repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
 
 ## <a name="example-utterances-json-file"></a>示例话语 JSON 文件
 
@@ -46,7 +47,7 @@ ms.locfileid: "47040170"
 
 调用不带参数的 add-utterance 会将陈述添加到应用，但不训练应用。
 
-```CMD
+```console
 > python add-utterances-3-6.py
 ```
 
@@ -83,7 +84,7 @@ ms.locfileid: "47040170"
 }
 ```
 
-```JSON
+```json
 Requested training status.
 [
    {

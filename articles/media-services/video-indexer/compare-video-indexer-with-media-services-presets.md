@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: juliako
-ms.openlocfilehash: 758a3b30717e3bf516c1bceb5c255c397a6072cc
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 968614d183fe6857336ea92791ba4f1d279a5016
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291379"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198093"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>比较 Azure 媒体服务 v3 预设和视频索引器 
 
@@ -33,7 +33,7 @@ ms.locfileid: "52291379"
 |数据见解|[增强版](video-indexer-output-json-v2.md) |[基础知识](../latest/intelligence-concept.md)|
 |体验|查看支持的功能的完整列表： <br/> [概述](video-indexer-overview.md)|仅返回视频见解|
 |计费|[媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
-|合规性|TBD|媒体服务符合许多认证。 请查看 [Azure 合规性产品.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf)，并搜索“媒体服务”以查看是否符合相关证书的要求。|
+|合规性|[Azure 合规性](https://aka.ms/AzureCompliance)|媒体服务符合许多认证。 请查看 [Azure 合规性产品.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf)，并搜索“媒体服务”以查看是否符合相关证书的要求。|
 |免费试用版|美国东部|不可用|
 |可用性 |美国西部、东亚、北欧|请参阅 [Azure 状态](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)。|
 

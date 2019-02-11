@@ -4,22 +4,22 @@ description: 了解如何在 Azure Active Directory 与 Sprinklr 之间配置单
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: b33938a1-25a5-484c-8e75-7dc6de2d534d
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: b5f240091cf5ce9331ada818c218db04f508dbc8
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 884cee735f6bf9f383b525890acf295040cc0c63
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241797"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194621"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>教程：Azure Active Directory 与 Sprinklr 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "50241797"
 
     ![配置单一登录](./media/sprinklr-tutorial/tutorial_sprinklr_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.sprinklr.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.sprinklr.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.sprinklr.com`
 
@@ -147,7 +147,7 @@ ms.locfileid: "50241797"
    
     ![单一登录](./media/sprinklr-tutorial/ic782910.png "Single Sign-Ons")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入配置名称（例如：*WAADSSOTest*）。
+    a. 在“名称”文本框中，键入配置名称（例如：WAADSSOTest)。
 
     b. 选择“启用”。
 
@@ -170,7 +170,7 @@ ms.locfileid: "50241797"
     ![SAML](./media/sprinklr-tutorial/ic782911.png "SAML")
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
@@ -195,7 +195,7 @@ ms.locfileid: "50241797"
  
     ![创建 Azure AD 测试用户](./media/sprinklr-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -223,7 +223,7 @@ ms.locfileid: "50241797"
    
     ![编辑用户](./media/sprinklr-tutorial/ic782916.png "Edit user") 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件”、“名字”和“姓氏”文本框中，键入要预配的 Azure AD 用户帐户的信息。
+    a. 在“电子邮件”、“名字”和“姓氏”文本框中，键入要预配的 Azure AD 用户帐户的信息。
 
     b. 选择“禁用密码”。
 
@@ -240,7 +240,7 @@ ms.locfileid: "50241797"
    
     ![合作伙伴角色](./media/sprinklr-tutorial/ic782917.png "Partner Roles")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 从“全局”列表中，选择“ALL\_Permissions”。  
+    a. 从“全局”列表中，选择“ALL\_Permissions”。  
 
     b. 单击“更新”。
 

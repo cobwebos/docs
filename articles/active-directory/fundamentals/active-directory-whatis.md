@@ -1,19 +1,20 @@
 ---
-title: Azure Active Directory 概述 | Microsoft Docs
+title: 什么是 Azure Active Directory？ | Microsoft Docs
 description: 了解 Azure Active Directory，包括必要的术语、受众、许可基础知识和相关功能。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: overview
 ms.date: 11/13/2018
 ms.author: lizross
-ms.openlocfilehash: 1b1561ed8470c39b13def72774e253db28bf58d8
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 44533ea4430bb7cd3bc7e0b6451892cc68bacc19
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686579"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450211"
 ---
 # <a name="what-is-azure-active-directory"></a>什么是 Azure Active Directory？ 
 Azure Active Directory (Azure AD) 是 Microsoft 推出的基于云的标识和访问管理服务。 员工可以通过 Azure AD 登录并访问以下资源：
@@ -24,12 +25,12 @@ Azure Active Directory (Azure AD) 是 Microsoft 推出的基于云的标识和�
 
 可以通过各种[面向企业架构师的 Microsoft 云系列](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources#identity)海报更好地了解 Azure、Azure AD 和 Office 365 中的核心标识服务。
 
-## <a name="who-uses-azure-ad"></a>谁会用到 Azure AD？
+## <a name="who-uses-azure-ad"></a>谁在使用 Azure AD？
 Azure AD 适用于：
 
-- **IT 管理员。** 作为 IT 管理员，你可以使用 Azure AD 根据业务要求控制用户对你的应用和应用资源的访问。 例如，可以使用 Azure AD 要求用户在访问重要的组织资源时进行多重身份验证。 另外，还可以使用 Azure AD 在现有 Windows Server AD 和云应用（包括 Office 365）之间自动完成用户预配。 最终可以利用 Azure AD 提供的强大工具自动保护用户标识和凭据，实现访问管理要求。 若要开始，请注册 [30 天 Azure Active Directory Premium 免费试用版](https://azure.microsoft.com/trial/get-started-active-directory/)。
+- **IT 管理员。** 作为 IT 管理员，你可以使用 Azure AD 根据业务要求控制用户对你的应用和应用资源的访问。 例如，可以使用 Azure AD 要求用户在访问重要的组织资源时进行多重身份验证。 另外，还可以使用 Azure AD 在现有 Windows Server AD 和云应用（包括 Office 365）之间自动完成用户预配。 最终可以利用 Azure AD 提供的强大工具自动保护用户标识和凭据，实现访问管理要求。 若要开始尝试，请注册 [30 天 Azure Active Directory Premium 免费试用版](https://azure.microsoft.com/trial/get-started-active-directory/)。
 
-- **应用程序开发人员。** 作为应用开发人员，你可以通过 Azure AD 以基于标准的方式向应用添加单一登录 (SSO)，使之能够与用户的预先存在的凭据配合使用。 另外还可以通过 Azure AD 提供的 API 来构建个性化应用体验，充分利用现有的组织数据。 若要开始，请注册 [30 天 Azure Active Directory Premium 免费试用版](https://azure.microsoft.com/trial/get-started-active-directory/)。 有关详细信息，还可以参阅[针对开发人员的 Azure Active Directory](../develop/index.yml)。
+- **应用开发人员。** 作为应用开发人员，你可以通过 Azure AD 以基于标准的方式向应用添加单一登录 (SSO) 功能，使之能够与用户的预先存在的凭据配合使用。 另外还可以通过 Azure AD 提供的 API 来构建个性化应用体验，充分利用现有的组织数据。 若要开始，请注册 [30 天 Azure Active Directory Premium 免费试用版](https://azure.microsoft.com/trial/get-started-active-directory/)。 有关详细信息，还可以参阅[针对开发人员的 Azure Active Directory](../develop/index.yml)。
 
 - **Microsoft 365、Office 365、Azure 或 Dynamics CRM Online 订阅者。** 作为订阅者，你已在使用 Azure AD。 每个 Microsoft 365、Office 365、Azure 和 Dynamics CRM Online 租户都会自动成为 Azure AD 租户。 你可以立即开始管理用户对集成云应用的访问。
 
@@ -47,16 +48,16 @@ Microsoft Online 业务服务（例如 Office 365 或 Microsoft Azure）要求�
 
 - **Azure Active Directory Premium P1。** 除了 Free 和 Basic 版功能，P1 还允许混合用户访问本地资源和云资源。 它还支持高级管理，例如动态组、自助服务组管理、Microsoft Identity Manager（一个本地标识与访问管理套件），以及允许本地用户进行自助密码重置的云写回功能。
 
-- **Azure Active Directory Premium P2。** 除了 Free、Basic 和 P1 版功能，P2 还提供 [Azure Active Directory Identity Protection](../identity-protection/enable.md)，用于对应用和重要的公司数据进行基于风险的条件访问，以及提供 [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md)，用于发现、限制和监视管理员及其对资源的访问，并在需要时提供恰时访问。
+- **Azure Active Directory Premium P2。** 除了 Free、Basic 和 P1 版功能，P2 还提供 [Azure Active Directory Identity Protection](../identity-protection/enable.md)，用于对应用和重要的公司数据进行基于风险的条件访问，以及提供 [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md)，用于发现、限制和监视管理员及其对资源的访问，并在需要时提供实时访问。
 
 - **“即用即付”功能许可证。** 也可获取其他功能许可证，例如 Azure Active Directory 企业对客户 (B2C) 许可证。 可以通过 B2C 为面向客户的应用提供标识和访问管理解决方案。 有关详细信息，请参阅 [Azure Active Directory B2C 文档](../../active-directory-b2c/index.yml)。
 
-若要详细了解如何将 Azure 订阅关联到 Azure AD，请参阅[如何：将 Azure 订阅关联或添加到 Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)；若要详细了解如何为用户分配许可证，请参阅[如何：分配或删除 Azure Active Directory 许可证](license-users-groups.md)。
+有关将 Azure 订阅关联到 Azure AD 的详细信息，请参阅[如何：将 Azure 订阅关联或添加到 Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)以及有关将许可证分配给用户的详细信息，请参阅[如何：分配或删除 Azure Active Directory 许可证](license-users-groups.md)。
 
 ## <a name="terminology"></a>术语
 为了更好地理解 Azure AD 及其文档，应查看以下术语。
 
-|术语或概念|Description|
+|术语或概念|描述|
 |---------------|-----------|
 |Azure 订阅| 用于为 Azure 云服务付费。 可以有多个订阅，这些订阅与一张信用卡关联。|
 |Azure 租户| 组织在注册 Microsoft Azure、Microsoft Intune 或 Office 365 等 Microsoft 云服务订阅时自动创建的专用且受信任的 Azure AD 实例。 一个 Azure 租户表示一个组织。|
@@ -74,7 +75,7 @@ Microsoft Online 业务服务（例如 Office 365 或 Microsoft Azure）要求�
 ## <a name="what-features-work-in-azure-ad"></a>什么功能可以在 Azure AD 中使用？
 在选择 Azure AD 许可证以后，即可访问下面这些适用于组织的部分或所有功能：
 
-|类别|Description|
+|类别|描述|
 |-------|-----------|
 |应用程序管理|使用应用程序代理、单一登录、“我的应用”门户（也称“访问面板”）和软件即服务 (SaaS) 应用来管理云应用和本地应用。 有关详细信息，请参阅[如何提供对本地应用程序的安全远程访问](../manage-apps/application-proxy.md)和[应用程序管理文档](../manage-apps/index.yml)。|
 |身份验证|管理 Azure Active Directory 自助密码重置、多重身份验证、自定义禁止密码列表和智能锁定。 有关详细信息，请参阅 [Azure AD 身份验证文档](../authentication/index.yml)。|

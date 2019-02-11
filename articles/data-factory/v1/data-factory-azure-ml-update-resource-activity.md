@@ -8,17 +8,16 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 7a5c0866bc08c5a73888d9baca41980106a62ae2
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 0c0e0e3983344bba76f5f305ecaf73f91110f3bc
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954924"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020075"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>使用更新资源活动更新 Azure 机器学习模型
 
@@ -38,7 +37,7 @@ ms.locfileid: "49954924"
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[在数据工厂中更新机器学习模型](../update-machine-learning-models.md)。
 
-本文是 Azure 数据工厂和 Azure 机器学习集成主要文章[使用 Azure 机器学习和 Azure 数据工厂创建预测管道](data-factory-azure-ml-batch-execution-activity.md)的补充。 如果尚未执行此操作，请在阅读本文之前查阅此主要文章。 
+本文是对主要 Azure 数据工厂 - Azure 机器学习集成文章的补充：[使用 Azure 机器学习和 Azure 数据工厂创建预测管道](data-factory-azure-ml-batch-execution-activity.md)。 如果尚未执行此操作，请在阅读本文之前查阅此主要文章。 
 
 ## <a name="overview"></a>概述
 随着时间推移，需要使用新的输入数据集重新定型 Azure 机器学习评分实验中的预测模型。 完成重新定型后，需使用重新定型的机器学习模型更新评分 Web 服务。 通过 Web 服务重新定型和更新 Azure 机器学习模型的常规步骤如下：
@@ -262,7 +261,7 @@ Azure 机器学习更新资源活动不会生成任何输出。 但是，Azure �
 ```
 
 ### <a name="pipeline"></a>管道
-管道具有两个活动：**AzureMLBatchExecution** 和 **AzureMLUpdateResource**。 Azure 机器学习批处理执行活动采用定型数据作为输入，并生成 iLearner 文件作为输出。 活动会通过输入定型数据调用定型 Web 服务（作为 Web 服务公开的训练实验），并从 Web 服务接收 ilearner 文件。 placeholderBlob 只是 Azure 数据工厂服务运行管道所需的虚拟输出数据集。
+管道具有两个活动：AzureMLBatchExecution 和 AzureMLUpdateResource。 Azure 机器学习批处理执行活动采用定型数据作为输入，并生成 iLearner 文件作为输出。 活动会通过输入定型数据调用定型 Web 服务（作为 Web 服务公开的训练实验），并从 Web 服务接收 ilearner 文件。 placeholderBlob 只是 Azure 数据工厂服务运行管道所需的虚拟输出数据集。
 
 ![管道关系图](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 

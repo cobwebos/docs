@@ -5,24 +5,24 @@ services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 01/21/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: eeb12500a5ddfb95317b3d20b41acf12e3978bad
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 26721aa0eac69875f6a3704025e6ab71a54a1e31
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626516"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078091"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的位置条件是什么？ 
 
@@ -58,7 +58,7 @@ Azure AD 允许从公共 Internet 上的任何位置单一登录到设备、应�
 
 - **名称** - 命名位置的显示名称。
 
-- **IP 范围** - 采用 CIDR 格式的一个或多个 IP 地址范围。
+- **IP 范围** - 采用 CIDR 格式的一个或多个 IPv4 地址范围。 不支持指定 Ipv6 地址范围。
 
 - **标记为可信位置** - 可为命名位置设置标志，以指示它是可信的位置。 通常，可信位置是由 IT 部门控制的网络区域。 除条件访问以外，Azure Identity Protection 和 Azure AD 安全报告也使用可信命名位置来减少[误报](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1)。
 

@@ -4,23 +4,23 @@ description: 为 Azure AD 域服务管理域创建安全 LDAP 证书
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2017
 ms.author: ergreenl
-ms.openlocfilehash: a97b16451392ce0e84eb7b49a6fc71fb03adab12
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 18c91b0bfee3f423e2d60e3c9893e8e5208aa292
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157286"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164599"
 ---
 # <a name="create-a-pfx-file-with-the-secure-ldap-ldaps-certificate-for-a-managed-domain"></a>使用托管域的安全 LDAP (LDAPS) 证书创建 .PFX 文件
 

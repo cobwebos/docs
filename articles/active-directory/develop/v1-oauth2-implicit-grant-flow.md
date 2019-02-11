@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 90e42ff9-43b0-4b4f-a222-51df847b2a8d
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 90c636d57189518cb95291510f3e83ef8e7a8a75
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 88c7a5c8f0a5e17d3b96c6176135bc8167d87ba6
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422025"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092284"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>了解 Azure Active Directory (AD) 中的 OAuth2 隐式授权流
 
@@ -57,11 +57,11 @@ OAuth2 规范声明，设计隐式授权是为了实现用户代理应用程序�
 
 不过，JavaScript 应用程序提供另一种可任其处置的机制，可用于续订访问令牌，且不会重复提示用户输入凭据。 应用程序可以使用隐藏的 iframe 来针对 Azure AD 的授权终结点执行新的令牌请求：只要浏览器仍然针对 Azure AD 域提供活动会话（读取：有会话 Cookie），则身份验证请求就可以成功且不需要用户交互。
 
-此模型授予 JavaScript 应用程序相关功能，允许其独立续订访问令牌，甚至允许其为新的 API 获取新的访问令牌，前提是用户此前已表示同意。 这样可以避免因获取、维护和保护高价值项目（例如刷新令牌）而增加的负担。 实现无提示续订的项目（Azure AD 会话 Cookie）在应用程序外部进行管理。 此方法的另一优势是，用户可以通过登录到 Azure AD 的任意应用程序从 Azure AD（在任意浏览器标签页中运行）注销。 这样会删除 Azure AD 会话 Cookie，而 JavaScript 应用程序会自动失去为已注销用户续订令牌的功能。
+此模型授予 JavaScript 应用程序相关功能，以允许其独立续订访问令牌，甚至允许其为新的 API 获取新的访问令牌，前提是用户此前已表示同意。 这样可以避免因获取、维护和保护高价值项目（例如刷新令牌）而增加的负担。 实现无提示续订的项目（Azure AD 会话 Cookie）在应用程序外部进行管理。 此方法的另一优势是，用户可以通过登录到 Azure AD 的任意应用程序从 Azure AD（在任意浏览器标签页中运行）注销。 这样会删除 Azure AD 会话 Cookie，而 JavaScript 应用程序会自动失去为已注销用户续订令牌的功能。
 
 ## <a name="is-the-implicit-grant-suitable-for-my-app"></a>隐式授权适合我的应用吗？
 
-隐式授权带来的风险高于其他授权，有相应的文档介绍了需要注意的地方。 例如，[在隐式流中误用访问令牌来模拟资源所有者][OAuth2-Spec-Implicit-Misuse]和 [OAuth 2.0 威胁模型和安全注意事项][OAuth2-Threat-Model-And-Security-Implications]）。 但是，风险走势之所以较高，主要是因为它要启用执行活动代码的应用程序，并由远程资源提供给浏览器。 如果要规划一个 SPA 体系结构，则不要设置后端组件或尝试通过 JavaScript 调用 Web API，而应使用隐式流来获取令牌。
+与其他授权相比，隐式授权具有更多风险，需要注意的方面已有详细记录（例如，[在隐式流中误用访问令牌来模拟资源所有者][OAuth2-Spec-Implicit-Misuse]和 [OAuth 2.0 威胁模型和安全注意事项][OAuth2-Threat-Model-And-Security-Implications]）。 但是，风险走势之所以较高，主要是因为它要启用执行活动代码的应用程序，并由远程资源提供给浏览器。 如果要规划一个 SPA 体系结构，则不要设置后端组件或尝试通过 JavaScript 调用 Web API，而应使用隐式流来获取令牌。
 
 如果应用程序是本机客户端，则隐式流并不太适合。 在使用本机客户端的情况下，如果没有 Azure AD 会话 Cookie，应用程序将无法长时间维持一个会话。 这意味着，在为新资源获取访问令牌时，应用程序会反复提示用户。
 

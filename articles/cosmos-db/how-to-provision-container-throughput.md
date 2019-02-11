@@ -1,20 +1,19 @@
 ---
 title: 在 Azure Cosmos DB 中预配容器吞吐量
 description: 了解如何在 Azure Cosmos DB 中预配容器级别的吞吐量
-services: cosmos-db
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 3b766cfa339e6cbb568cf57383667d270153401f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 550201e692bb79197d50c2f44017c43ab9ea2016
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262414"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477315"
 ---
-# <a name="provision-throughput-for-an-azure-cosmos-db-container"></a>为 Azure Cosmos DB 容器预配吞吐量
+# <a name="provision-throughput-on-an-azure-cosmos-container"></a>在 Azure Cosmos 容器上预配吞吐量
 
 本文介绍如何在 Azure Cosmos DB 中为容器（集合、图形、表）预配吞吐量。 可以为单个容器预配吞吐量，也可以[为数据库预配](how-to-provision-database-throughput.md)吞吐量，并在数据库中的容器之间共享。 可以使用 Azure 门户、Azure CLI 或 CosmosDB SDK 为容器预配吞吐量。
 
@@ -24,10 +23,11 @@ ms.locfileid: "51262414"
 
 1. [新建 Cosmos DB 帐户](create-sql-api-dotnet.md#create-a-database-account)或选择现有的帐户。
 
-1. 打开“数据资源管理器”窗格，然后选择“新建集合”。 接下来，在表单中填写以下详细信息：
+1. 打开“数据资源管理器”窗格，然后选择“新建集合”。 接下来，在窗体中填写以下详细信息：
 
    * 创建新数据库或使用现有数据库。
    * 输入集合 ID（或表、图形）。
+   * 输入分区键值，例如 `/userid`。
    * 输入吞吐量，例如 1000 RU。
    * 选择“确定”。
 
@@ -46,7 +46,7 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-如果正在为 MongoDB API 帐户预配吞吐量，请使用“/myShardKey”作为分区键路径，在为 Cassandra API 帐户预配吞吐量时，请使用“/myPrimaryKey”作为分区键路径。
+如果正在为 Cosmos 帐户（使用 Azure Cosmos DB 的用于 MongoDB 的 API 配置）预配吞吐量，请使用“/myShardKey”作为分区键路径，在为针对 Cassandra API 配置的 Cosmos 帐户预配吞吐量时，请使用“/myPrimaryKey”作为分区键路径。
 
 ## <a name="provision-throughput-using-net-sdk"></a>使用 .NET SDK 预配吞吐量
 

@@ -4,22 +4,22 @@ description: 了解如何在 Azure Active Directory 和 Concur 之间配置单�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: df47f55f-a894-4e01-a82e-0dbf55fc8af1
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 5832444cd30d60f7b5fe7fe6108acd5604389474
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f3ee9b2ce11dea1e0490521cf72f509ef2e0db8d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210099"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55151526"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>教程：为 Concur 配置自动用户预配
 
@@ -27,7 +27,7 @@ ms.locfileid: "36210099"
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定您已具有以下各项：
+在本教程中概述的方案假定已有以下各项：
 
 *   Azure Active Directory 租户。
 *   已启用 Concur 单一登录的订阅。
@@ -123,6 +123,6 @@ Concur 顾问或客户管理员必须创建单独的 Web 服务管理员配置�
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 * [配置单一登录](concur-tutorial.md)
 

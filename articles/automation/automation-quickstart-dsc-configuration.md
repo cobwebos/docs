@@ -3,7 +3,7 @@ title: Azure 快速入门 - 使用 DSC 配置 VM | Microsoft Docs
 description: 使用 Desired State Configuration 在 Linux 虚拟机上配置 LAMP 堆栈
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 keywords: dsc, 配置, 自动化
 author: KrisBash
 ms.author: krbash
@@ -11,12 +11,12 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 7a9e394213ef40b995cb048c71f14a190e5e7970
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c0a7bb9dfe8553515816efd53785dbe661cee0fa
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243686"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431582"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>使用 Desired State Configuration 配置 Linux 虚拟机
 
@@ -145,3 +145,4 @@ configuration LAMPServer {
 * 若要详细了解 PowerShell Desired State Configuration，请参阅 [PowerShell Desired State Configuration 概述](https://docs.microsoft.com/powershell/dsc/overview)。
 * 若要详细了解如何通过 PowerShell 管理自动化 DSC，请参阅 [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-5.0.0)。
 * 若要了解如何将用于报告信息和提醒用户的 DSC 报告转发到 Log Analytics，请参阅[将 DSC 报告转发到 Log Analytics](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics)。 
+

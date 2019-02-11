@@ -3,19 +3,19 @@ title: Azure MFA 服务器升级
 description: 将 Azure 多重身份验证服务器升级到较新版本的相关步骤和指南。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: e0f3ec3ffa541e028835b0415201521c67eb7efa
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 2e7aa6dd71cfe191300c1739690f9e5a72543995
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613811"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076343"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>升级到最新的 Azure 多重身份验证服务器
 

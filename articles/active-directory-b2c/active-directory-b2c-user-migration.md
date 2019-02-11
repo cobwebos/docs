@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 中的用户迁移方法 | Microsoft Docs
 description: 介绍有关使用图形 API和选择性地使用 Azure AD B2C 自定义策略执行用户迁移的高级核心概念。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 4bb1542df9001463b245405c40293b6867d4b401
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.subservice: B2C
+ms.openlocfilehash: 5a168ca3aafc171e4ed9b9f7572ee60b2ac7c350
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365071"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55182262"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C：用户迁移
 将标识提供者迁移到 Azure Active Directory B2C (Azure AD B2C)C 时，可能还需要迁移用户帐户。 本文介绍如何将现有用户帐户从任何标识提供者迁移到 Azure AD B2C。 本文并未阐述约定俗成的内容，而只是介绍了几种方案。 开发人员负责判断每种方法是否适用。
@@ -64,7 +64,7 @@ ms.locfileid: "46365071"
    - 对于“名称”，请使用 **B2CUserMigration** 或所需的其他任何名称。
    - 对于“应用程序类型”，使用“Web 应用/API”。
    - 在“登录 URL”中填写 https://localhost（因为它与此应用程序无关）。
-   - 选择**创建**。
+   - 选择“创建”。
    
 1. 创建应用程序后，请在“应用程序”列表中选择新建的 **B2CUserMigration** 应用程序。
    
@@ -247,14 +247,14 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 
 若要跟踪密码更改，可以使用 Azure 表。 结合命令行参数 `2` 运行预迁移过程时，会在 Azure 表中创建一个用户实体。 服务执行以下操作：
 
-- 登录时，Azure AD B2C 策略会调用 RESTful 迁移服务，并以输入声明的形式发送电子邮件。 服务在 Azure 表中搜索电子邮件地址。 如果存在该地址，服务会引发错误消息：“必须更改密码”。
+- 登录时，Azure AD B2C 策略会调用 RESTful 迁移服务，并以输入声明的形式发送电子邮件。 服务在 Azure 表中搜索电子邮件地址。 如果存在该地址，服务会引发错误消息：*必须更改密码*。
 
 - 在用户成功更改密码后，服务会从 Azure 表中删除该实体。
 
 >[!NOTE]
 >让我们使用 Azure 表来简化该示例。 可在任何数据库中存储迁移状态，或将其作为自定义属性存储在 Azure AD B2C 帐户中。
 
-### <a name="41-update-your-application-setting"></a>步骤 4.1：更新应用程序设置
+### <a name="41-update-your-application-setting"></a>4.1：更新应用程序设置
 1. 若要测试 RESTful API 演示，请在 Visual Studio 中打开 `AADB2C.UserMigration.sln`。
 
 1. 在 `AADB2C.UserMigration.API` 项目中，打开 appsettings.json 文件。 将设置替换为[步骤 2.2](#step-22-configure-the-application-settings) 中配置的设置：

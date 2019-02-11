@@ -1,18 +1,19 @@
 ---
 title: 教程：使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙
-description: 本教程介绍如何使用 Azure 门户部署和配置 Azure 防火墙。
+description: 本教程介绍如何使用 Azure PowerShell 部署和配置 Azure 防火墙。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 10/27/2018
+ms.date: 1/30/2019
 ms.author: victorh
-ms.openlocfilehash: d69bd055c95592961216f5da1efaedc4a642fd63
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
+ms.openlocfilehash: 29af70988cf77b9fad47e5c2478e5c86529fe9cf
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316389"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458206"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>教程：使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙
 
@@ -24,7 +25,7 @@ ms.locfileid: "52316389"
 
 - **VNet-Hub** - 防火墙在此虚拟网络中。
 - **VNet-Spoke** - 分支虚拟网络代表 Azure 中的工作负荷。
-- **VNet-Onprem** - 本地虚拟网络代表本地网络。 在实际部署中，可以使用 VPN 或 Express Route 来连接它。 为简单起见，本教程将使用 VPN 网关连接，并使用 Azure 中的某个虚拟网络来代表本地网络。
+- **VNet-Onprem** - 本地虚拟网络代表本地网络。 在实际部署中，可以使用 VPN 或 Route 连接来连接它。 为简单起见，本教程将使用 VPN 网关连接，并使用 Azure 中的某个虚拟网络来代表本地网络。
 
 ![混合网络中的防火墙](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
@@ -44,16 +45,24 @@ ms.locfileid: "52316389"
 
 ## <a name="prerequisites"></a>先决条件
 
-本教程要求在本地运行 PowerShell。 必须安装 Azure PowerShell 模块 6.12.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。 验证 PowerShell 版本以后，请运行 `Login-AzureRmAccount`，以便创建与 Azure 的连接。
+本教程要求在本地运行 PowerShell。 必须安装 Azure PowerShell 模块 6.12.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)。 验证 PowerShell 版本以后，请运行 `Login-AzureRmAccount`，以便创建与 Azure 的连接。
 
 若要正常开展此方案，必须符合三项关键要求：
 
-- 分支子网中有一个指向 Azure 防火墙 IP 地址（用作默认网关）的用户定义的路由。 必须在此路由表中**禁用** BGP 路由传播。
-- 中心网关子网中的用户定义的路由必须指向用作分支网络下一跃点的防火墙 IP 地址。
-- 无需在 Azure 防火墙子网中创建用户定义的路由，因为它会从 BGP 探测路由。
+- 分支子网中有一个指向 Azure 防火墙 IP 地址（用作默认网关）的用户定义的路由 (UDR)。 必须在此路由表中**禁用** BGP 路由传播。
+- 中心网关子网中的 UDR 必须指向用作分支网络下一跃点的防火墙 IP 地址。
+- 无需在 Azure 防火墙子网中创建 UDR，因为它会从 BGP 探测路由。
 - 在 VNet-Hub 与 VNet-Spoke 之间建立对等互连时，请务必设置 **AllowGatewayTransit**；在 VNet-Spoke 与 VNet-Hub 之间建立对等互连时，请务必设置 **UseRemoteGateways**。
 
 请参阅本教程的[创建路由](#create-routes)部分了解如何创建这些路由。
+
+>[!NOTE]
+>Azure 防火墙必须具有直接的 Internet 连接。 如果已通过 ExpressRoute 或应用程序网关启用到本地的强制隧道，则需要配置 UDR 0.0.0.0/0，并将 **NextHopType** 值设置为 **Internet**，然后将其分配到 **AzureFirewallSubnet**。
+
+>[!NOTE]
+>即使 UDR 指向作为默认网关的 Azure 防火墙，也会直接路由直接对等互连 VNet 之间的流量。 若要在此方案中将子网到子网流量发送到防火墙，UDR 必须在这两个子网上显式地包含目标子网网络前缀。
+
+若要查看相关的 Azure PowerShell 参考文档，请访问 [Azure PowerShell 参考](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

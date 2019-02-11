@@ -1,24 +1,23 @@
 ---
 title: Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能和命令
 description: 了解 Azure Cosmos DB Cassandra API 中的 Apache Cassandra 功能支持
-services: cosmos-db
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
+ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 5a12a65e03e7ac104eb7b09b116f7c463bbb5b98
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 57127f3a87d8ec3077c0e2f5f6e16f536931e97f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240709"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756846"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能 
 
-Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 你可以通过 Cassandra 查询语言 (CQL) v4 [线路协议](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec)兼容的开放源代码 Cassandra 客户端[驱动程序](http://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)与 Azure Cosmos DB Cassandra API 进行通信。 
+Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 你可以通过 Cassandra 查询语言 (CQL) v4 [线路协议](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec)兼容的开放源代码 Cassandra 客户端[驱动程序](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)与 Azure Cosmos DB Cassandra API 进行通信。 
 
 通过使用 Azure Cosmos DB Cassandra API，你可以尽享 Apache Cassandra ApI 带来的诸多优势，以及 Azure Cosmos DB 提供的各项企业功能。 企业功能包括[全局分发](distribute-data-globally.md)、[自动横向扩展分区](partition-data.md)、可用性和延迟保证、空闲时加密、备份等。
 
@@ -114,14 +113,14 @@ CQLSH 命令行实用程序随 Apache Cassandra 3.1.1 一起提供，开箱即�
 set SSL_VERSION=TLSv1_2 
 SSL_CERTIFICATE=<path to Baltimore root ca cert>
 set CQLSH_PORT=10350 
-cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> –ssl 
+cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> --ssl 
 ```
 **Unix/Linux/Mac：**
 
 ```bash
 export SSL_VERSION=TLSv1_2 
 export SSL_CERTFILE=<path to Baltimore root ca cert>
-cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> –ssl 
+cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> --ssl 
 ```
 
 ## <a name="cql-commands"></a>CQL 命令
@@ -162,7 +161,6 @@ Azure Cosmos DB Cassandra API 为读取操作提供了一致性选择。 无论�
 Azure Cosmos DB 支持基于角色的访问控制 (RBAC) 以及读写和只读密码/密钥（可通过 [Azure 门户](https://portal.azure.com)获取）。 Azure Cosmos DB 在数据平面活动中尚不支持用户和角色。 
 
 ## <a name="planned-support"></a>计划的支持 
-* 将时间戳和 TTL 一起使用  
 * 目前忽略 create keypace 命令中的区域名称 - 数据分配在底层 Cosmos DB 平台中实现，并通过门户或 powershell 向帐户公开。 
 
 

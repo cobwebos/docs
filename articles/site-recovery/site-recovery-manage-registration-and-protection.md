@@ -5,14 +5,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: e5a77117b21c889a72b9dd65b072ce3aa5c34314
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 7a9c0ec081b676631f950270f9234284a102d7fa
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976264"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212182"
 ---
 # <a name="remove-servers-and-disable-protection"></a>删除服务器并禁用保护
 
@@ -88,6 +88,8 @@ ms.locfileid: "51976264"
             $registrationPath = $asrHivePath + '\Registration'
             $proxySettingsPath = $asrHivePath + '\ProxySettings'
             $draIdvalue = 'DraID'
+            $idMgmtCloudContainerId='IdMgmtCloudContainerId'
+
 
             if (Test-Path $asrHivePath)
             {
@@ -109,6 +111,11 @@ ms.locfileid: "51976264"
                     "Removing DraId"
                     Remove-ItemProperty -Path $asrHivePath -Name $draIdValue
                 }
+                if($regNode.IdMgmtCloudContainerId -ne $null)
+                {            
+                    "Removing IdMgmtCloudContainerId"
+                    Remove-ItemProperty -Path $asrHivePath -Name $idMgmtCloudContainerId
+                }
                 "Registry keys removed."
             }
 
@@ -126,7 +133,7 @@ ms.locfileid: "51976264"
         }catch
         {    
             [system.exception]
-            Write-Host "Error occured" -ForegroundColor "Red"
+            Write-Host "Error occurred" -ForegroundColor "Red"
             $error[0]
             Write-Host "FAILED" -ForegroundColor "Red"
         }
@@ -138,7 +145,7 @@ ms.locfileid: "51976264"
 
 1. 依次转到“受保护的项” > “复制的项”，右键单击计算机，再单击“禁用复制”。
 2. 在“禁用复制”页中，选择下列选项之一：
-    - **禁用复制并删除(推荐)** - 此选项从 Azure Site Recovery 中删除复制的项，并停止复制计算机。 此外，还将清理配置服务器上的复制配置，并停止对这个受保护的服务器收取 Site Recovery 费用。
+    - **禁用复制并删除(推荐)** - 此选项从 Azure Site Recovery 中删除复制的项，并停止复制计算机。 此外，还将清理配置服务器上的复制配置，并停止对这个受保护的服务器收取 Site Recovery 费用。 请注意，此选项仅在配置服务器处于连接状态时使用。
     - **删除** - 只有在源环境已删除或无法访问（未连接）时，才应使用此选项。 此选项会从 Azure Site Recovery 中删除复制的项（停止计费）。 不过，并不会清理配置服务器上的复制配置。 
 
 > [!NOTE]

@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
-ms.reviewer: ''
-ms.openlocfilehash: e4e1701a145a36fce93db3812b67c307b342da5c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.reviewer: unknown
+ms.lastreviewed: 09/17/2018
+ms.openlocfilehash: 20cddc74dd05e982cbd332a65f9a477559caece7
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127476"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244090"
 ---
 # <a name="overview-of-offering-services-in-azure-stack"></a>在 Azure Stack 中提供服务概述
 
@@ -28,9 +29,9 @@ ms.locfileid: "46127476"
 
 [Microsoft Azure Stack](azure-stack-poc.md)是一种混合云平台，让你从数据中心提供服务。 作为服务提供商，可以向租户提供服务。 在企业或政府机构中，你可以向员工提供本地服务。 
 
-你可以提供[基础结构即服务](https://azure.microsoft.com/overview/what-is-iaas/)(IaaS) 服务，可让用户构建按需计算基础结构，预配和管理从 Azure Stack 用户门户。
+你可以提供[基础结构即服务](https://azure.microsoft.com/overview/what-is-iaas/) (IaaS) 服务，使用户能够构建按需计算基础结构，并通过 Azure Stack 用户门户进行预配和管理。
 
-您还可以部署[平台即服务](https://azure.microsoft.com/overview/what-is-paas/)(PaaS) 服务从 Microsoft 和其他第三方提供商为 Azure Stack。 可以提供的服务包括但不限于：
+你还可以通过 Microsoft 和其他第三方提供商为 Azure Stack 部署[平台即服务](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 服务。 可以提供的服务包括但不限于：
 
 - [将应用服务资源提供程序添加到 Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-overview)
 
@@ -47,11 +48,11 @@ ms.locfileid: "46127476"
 
 计划套餐时，请记住以下几点：
 
-**试用版产品/服务**：可以使用试用版产品/服务吸引新用户，然后这些用户可以再升级到其他服务。 若要创建试用版套餐，请创建一个较小的[基本计划](azure-stack-plan-offer-quota-overview.md#base-plan)，其中包含一个可选的更大加载项计划。
+**试用产品/服务**:可以使用试用版产品/服务吸引新用户，这些用户可以再升级到其他服务。 若要创建试用版套餐，请创建一个较小的[基本计划](azure-stack-plan-offer-quota-overview.md#base-plan)，其中包含一个可选的更大加载项计划。
 
-**容量规划**：你可能会担心用户占用大量资源，阻塞所有用户使用的系统。 若要帮助提高性能，可以[配置带有配额的计划](azure-stack-plan-offer-quota-overview.md#plans)以限定使用量上限。
+**容量规划**:你可能会担心用户占用大量资源，阻塞所有用户的系统。 若要帮助提高性能，可以[配置带有配额的计划](azure-stack-plan-offer-quota-overview.md#plans)以限定使用量上限。
 
-**授权供应商**：可以授权其他人在你的环境中创建套餐。 例如，如果你是服务提供商，可以将此功能[委托](azure-stack-delegated-provider.md)给经销商。 或者，如果你是组织，则可以委托给其他部门/子公司。
+**委托的提供商**:您可以授予其他人创建的功能提供了您的环境中。 例如，如果你是服务提供商，可以将此功能[委托](azure-stack-delegated-provider.md)给经销商。 或者，如果你是组织，则可以委托给其他部门/子公司。
 
 ## <a name="next-steps"></a>后续步骤
 

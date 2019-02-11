@@ -8,15 +8,15 @@ ms.topic: article
 ms.devlang: dotnet
 ms.date: 05/15/2017
 ms.author: tamram
-ms.component: blobs
-ms.openlocfilehash: 6e33f700e9f453f419bf431d772d3db27e806ac0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: blobs
+ms.openlocfilehash: 9c5f32bb1b4f335fab11f0fd865421f2eec5eee9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240692"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244906"
 ---
-# <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>共享访问签名，第 2 部分：创建 SAS 并将 SAS 用于 Blob 存储
+# <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>共享访问签名，第 2 部分：创建 SAS 并将其用于 Blob 存储
 
 本教程的[第 1 部分](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)介绍了共享访问签名 (SAS) 并说明了使用共享访问签名的最佳做法。 第 2 部分将演示如何生成共享访问签名以及如何将共享访问签名用于 Blob 存储。 示例是用 C# 编写的，并使用了用于 .NET 的 Azure 存储客户端库。 本教程中的示例使用：
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: de69cdf69f30639d048dccd7d433c86f6cb9db7b
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 3ba7e8129d577faa87544f8feded51a14559eb51
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894172"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435526"
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>创建具有加速网络的 Windows 虚拟机
 
@@ -36,7 +36,7 @@ ms.locfileid: "33894172"
 ## <a name="benefits"></a>优点
 * **更低的延迟/更高的每秒数据包数 (pps)：** 从数据路径中去除虚拟交换机可以消除数据包在主机中进行策略处理所花费的时间，同时增大了 VM 中可处理的数据包数。
 * **减少抖动：** 虚拟交换机处理取决于需要应用的策略数量，以及正在执行处理的 CPU 工作负荷。 将策略实施卸载到硬件消除了这种可变性，因为可以将数据包直接传送到 VM，省去了主机与 VM 之间的通信，以及所有的软件中断和上下文切换。
-* **降低了 CPU 利用率：** 绕过主机中的虚拟交换机可以减少用于处理网络流量的 CPU 资源。
+* **降低了 CPU 利用率：** 绕过主机中的虚拟交换机可以减少用于处理流量的 CPU 资源。
 
 ## <a name="limitations-and-constraints"></a>限制和约束
 
@@ -46,9 +46,9 @@ ms.locfileid: "33894172"
 * **Windows Server 2012 R2 Datacenter** 
 
 ### <a name="supported-vm-instances"></a>支持的 VM 实例
-大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。  这些受支持的系列包括 D/DSv2 和 F/Fs
+大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。  这些受支持的系列包括：D/DSv2 和 F/Fs
 
-在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 受支持的系列包括 D/DSv3、E/ESv3、Fsv2 和 Ms/Mms
+在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 受支持的系列包括：D/DSv3、E/ESv3、Fsv2 和 Ms/Mms
 
 有关 VM 实例的详细信息，请参阅[Windows VM 大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
@@ -67,7 +67,7 @@ ms.locfileid: "33894172"
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-安装 [Azure PowerShell](/powershell/azure/install-azurerm-ps) 5.1.1 版或更高版本。 要查找当前安装的版本，请运行 `Get-Module -ListAvailable AzureRM`。 如果需要进行安装或升级，请从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureRM)安装最新版本的 AzureRM 模块。 在 PowerShell 会话中，使用 [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) 登录到 Azure 帐户。
+安装 [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) 5.1.1 版或更高版本。 要查找当前安装的版本，请运行 `Get-Module -ListAvailable AzureRM`。 如果需要进行安装或升级，请从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureRM)安装最新版本的 AzureRM 模块。 在 PowerShell 会话中，使用 [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) 登录到 Azure 帐户。
 
 在以下示例中，请将示例参数名称替换为自己的值。 参数名称示例包括 myResourceGroup、myNic 和 myVM。
 
@@ -220,7 +220,7 @@ New-AzureRmVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "cent
 * VM 必须是受支持的 Azure 库映像（以及适用于 Linux 的内核版本）
 * 在任何 NIC 上启用加速网络前，必须停止/解除分配可用性集或 VMSS 中的所有 VM
 
-### <a name="individual-vms--vms-in-an-availability-set"></a>可用性集中的单个 VM 和多个 VM
+### <a name="individual-vms--vms-in-an-availability-set"></a>单个 VM 与可用性集中的 VM
 首先停止/解除分配 VM，或集合中的所有 VM（如果是可用性集）：
 
 ```azurepowershell

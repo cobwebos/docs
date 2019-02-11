@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 7fd201dd7c766880b1ed892abe3900b523d75145
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a37e67f299262a7e0b353564c24c789859dcec7c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307468"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605001"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>通过 Azure 虚拟网络连接到 Apache Kafka on HDInsight
 
@@ -49,7 +49,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 
     有关详细信息，请参阅[使用 VPN 客户端连接到 Apache Kafka](#vpnclient) 部分。
 
-    > [!WARNING]
+    > [!WARNING]  
     > 由于存在以下限制，只建议将此配置用于开发目的：
     >
     > * 每个客户端必须使用 VPN 软件客户端建立连接。
@@ -61,7 +61,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 
 若要创建可与本地网络通信的 Kafka 群集，请遵循[将 HDInsight 连接到本地网络](./../connect-on-premises-network.md)文档中所述的步骤。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 创建 HDInsight 群集时，请选择“Kafka”群集类型。
 
 这些步骤创建以下配置：
@@ -186,7 +186,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
         -VpnClientRootCertificates $p2sRootCert
     ```
 
-    > [!WARNING]
+    > [!WARNING]  
     > 这个过程可能需要几分钟才能完成。
 
 5. 使用下列代码创建 Azure 存储帐户和 BLob 容器：
@@ -232,7 +232,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
         -SubnetName $defaultSubnet.Id
     ```
 
-  > [!WARNING]
+  > [!WARNING]  
   > 此过程完成时间大约为 15 分钟。
 
 ### <a name="configure-kafka-for-ip-advertising"></a>为 IP 播发配置 Kafka
@@ -287,7 +287,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 
 若要连接到 VPN 网关，请按[配置点到站点连接](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect)文档中__连接到 Azure__ 部分进行操作。
 
-## <a id="python-client"></a>示例：Python 客户端
+## <a id="python-client"></a> 示例：Python 客户端
 
 若要验证与 Kafka 的连接，请使用以下步骤来创建并运行 Python 生成者和使用者：
 
@@ -317,7 +317,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 
     保存返回的信息供后续步骤使用。
 
-2. 使用下列命令安装 [kafka-python](http://kafka-python.readthedocs.io/) 客户端：
+2. 使用下列命令安装 [kafka-python](https://kafka-python.readthedocs.io/) 客户端：
 
         pip install kafka-python
 

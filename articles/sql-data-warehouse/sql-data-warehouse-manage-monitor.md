@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fe989a1693d73dbbea7ed0e3e91ed7aaf6fc37c4
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: fdb51bf249990a10b8476a55be1103cb05c5821b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301076"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466976"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>使用 DMV 监视工作负荷
 本文介绍如何使用动态管理视图 (DMV) 监视工作负荷。 这包括调查 Azure SQL 数据仓库中的查询执行情况。
@@ -96,10 +96,10 @@ ORDER BY step_index;
 
 若要进一步调查单个步骤的详细信息，可检查长时间运行的查询步骤的 *operation_type* 列并记下**步骤索引**：
 
-* 针对以下 **SQL 操作**继续执行步骤 3a：OnOperation、RemoteOperation、ReturnOperation。
-* 针对以下**数据移动操作**继续执行步骤 3b：ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation。
+* 针对 SQL 操作继续执行步骤 3a：OnOperation、RemoteOperation、ReturnOperation。
+* 针对数据移动操作继续执行步骤 3b：ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation。
 
-### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>步骤 3a：查看分布式数据库上的 SQL
+### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>步骤 3a：调查分布式数据库上的 SQL
 使用请求 ID 和步骤索引从 [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests] 中检索详细信息，其中包含所有分布式数据库上的查询步骤的执行信息。
 
 ```sql
@@ -119,7 +119,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>步骤 3b：查看在分布式数据库上进行的数据移动
+### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>步骤 3b：调查在分布式数据库上进行的数据移动
 使用请求 ID 和步骤索引检索在 [sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers] 中的每个分布上运行的数据移动步骤的相关信息。
 
 ```sql

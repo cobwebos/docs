@@ -4,11 +4,11 @@ description: 了解如何为 Azure Active Directory 条件访问设置 SharePoin
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 62349fba-3cc0-4ab5-babe-372b3389eff6
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 08/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: a5f0a17682f3481ad9a2dff5f144aa3d97f29920
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 79d6efafba2411bea85ab8c959716ebc38817490
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063840"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080406"
 ---
 # <a name="how-to-set-up-sharepoint-online-and-exchange-online-for-azure-active-directory-conditional-access"></a>如何：为 Azure Active Directory 条件访问设置 SharePoint Online 和 Exchange Online 
 
@@ -88,7 +88,7 @@ ms.locfileid: "47063840"
 
 - 遵循以下步骤配置支持的条件访问策略：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 只选择“Office 365 Exchange Online”作为云应用。  
+    a. 只选择“Office 365 Exchange Online”作为云应用。  
 
     ![条件性访问](./media/conditional-access-for-exo-and-spo/04.png)
 

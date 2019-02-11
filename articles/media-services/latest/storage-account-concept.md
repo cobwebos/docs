@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: dbd8dea32bbd4cacefd64e91541ab20b1056731e
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 4668ff23710121e5495395d71902b9ffa4c01238
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379020"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220342"
 ---
 # <a name="storage-accounts"></a>存储帐户
 
@@ -28,6 +28,8 @@ ms.locfileid: "49379020"
 > 不允许将仅限 Blob 的帐户作为主帐户。 
 
 建议使用 GPv2，以便在热存储层和冷存储层之间进行选择。 若要了解存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../../storage/common/storage-account-overview.md)。 
+
+媒体服务帐户和所有关联的存储帐户必须位于同一 Azure 订阅中。 建议在媒体服务帐户所在的位置使用存储帐户。
 
 ## <a name="assets-in-a-storage-account"></a>存储帐户中的资产
 

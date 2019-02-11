@@ -1,11 +1,12 @@
 ---
-title: 快速入门：创建基本负载均衡器 - Azure PowerShell | Microsoft Docs
+title: 快速入门：创建基本负载均衡器 - Azure PowerShell
+titlesuffix: Azure Load Balancer
 description: 本快速入门介绍了如何使用 PowerShell 创建基本负载均衡器
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
@@ -13,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/20/2018
 ms.author: kumud
-ms:custom: mvc
-ms.openlocfilehash: c21d5618b3e3223297ddd97dc5c98e5eb8c18c0b
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms:custom: seodec18
+ms.openlocfilehash: c8c7d94e216f45551ed869b2ba921f3c79e6307a
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51974805"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452677"
 ---
-# <a name="get-started"></a>快速入门：使用 Azure PowerShell 创建公用负载均衡器
+# <a name="get-started"></a>快速入门：使用 Azure PowerShell 创建公共负载均衡器
 本快速入门介绍了如何使用 Azure PowerShell 创建基本负载均衡器。 为了测试负载均衡器，需要部署两台运行 Windows 服务器的虚拟机 (VM)，并在 VM 之间对一个 Web 应用进行负载均衡。
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。 
+如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 来创建与 Azure 的连接。 
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -276,7 +277,7 @@ for ($i=1; $i -le 2; $i++)
  
 在两台后端 VM 上安装具有自定义网页的 IIS：
 
-1. 获取负载均衡器的公用 IP 地址。 使用 `Get-AzureRmPublicIPAdress`，获取负载均衡器的公用 IP 地址。
+1. 获取负载均衡器的公用 IP 地址。 使用 `Get-AzureRmPublicIPAddress`，获取负载均衡器的公用 IP 地址。
 
   ```azurepowershell-interactive
     Get-AzureRmPublicIPAddress `

@@ -6,22 +6,22 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: bbfffe948080c87feaa8c9f0a46ef9afd90eae96
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e4e512a69fc783e6c4878298d848a9dccf8768c3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229673"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226913"
 ---
 # <a name="customize-your-text-translations"></a>自定义文本翻译
 
-Microsoft 自定义翻译预览版是 Microsoft Translator 服务的一项功能，它允许用户在使用文本翻译 API（仅限版本 3）翻译文本时自定义 Microsoft Translator 的高级神经机器翻译。
+Microsoft 自定义翻译是 Microsoft Translator 服务的一项功能，它允许用户在使用文本翻译 API（仅限版本 3）翻译文本时自定义 Microsoft Translator 的高级神经机器翻译。
 
-与[认知服务语音预览版](https://docs.microsoft.com/azure/cognitive-services/speech-service/)一起使用时，该功能还可用于自定义语音翻译。
+与[认知服务语音](https://docs.microsoft.com/azure/cognitive-services/speech-service/)一起使用时，该功能还可用于自定义语音翻译。
 
 ## <a name="custom-translator"></a>自定义翻译
 
@@ -48,7 +48,7 @@ Microsoft 自定义翻译预览版是 Microsoft Translator 服务的一项功能
 
 |   | **Hub** | **自定义翻译**|
 |:-----|:----:|:----:|
-|自定义功能状态   | 正式版  | 预览 |
+|自定义功能状态   | 正式版  | 正式版 |
 | 文本 API 版本  | 仅 V2   | 仅 V3 |
 | SMT 自定义 | 是   | 否 |
 | NMT 自定义 | 否    | 是 |

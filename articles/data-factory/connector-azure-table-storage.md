@@ -9,20 +9,19 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 0399836191050996ac3eaf0fbe59496e10e2b426
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: b1f4ad523f84616391d4121dbf7eaabb2dfde060
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142063"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018613"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 表存储复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](v1/data-factory-azure-table-connector.md)
+> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
+> * [版本 1](v1/data-factory-azure-table-connector.md)
 > * [当前版本](connector-azure-table-storage.md)
 
 本文概述如何使用 Azure 数据工厂中的复制活动向/从 Azure 表存储复制数据。 本文是根据总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文编写的。
@@ -49,7 +48,7 @@ ms.locfileid: "42142063"
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureTableStorage**。 |是 |
 | connectionString | 为 connectionString 属性指定连接到存储所需的信息。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 >[!NOTE]
 >如果使用的是“AzureStorage”类型链接服务，它仍然按原样受支持，但建议你今后使用此新的“AzureTableStorage”链接服务类型。
@@ -95,7 +94,7 @@ ms.locfileid: "42142063"
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureTableStorage**。 |是 |
 | sasUri | 指定存储资源（例如 Blob、容器或表）的共享访问签名 URI。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 >[!NOTE]
 >如果使用的是“AzureStorage”类型链接服务，它仍然按原样受支持，但建议你今后使用此新的“AzureTableStorage”链接服务类型。

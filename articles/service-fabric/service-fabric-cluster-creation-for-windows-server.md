@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: dekapur
-ms.openlocfilehash: f91a6b305a3d531aa1c733685f6d896ed07054ae
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 321a69768935a9cb220bf5c2ae96c30274dc590d
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257599"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159446"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>创建在 Windows Server 上运行的独立群集
 可以使用 Azure Service Fabric 在运行 Windows Server 的任何虚拟机或计算机上创建 Service Fabric 群集。 这意味着可以在包含一组相互连接的 Windows Server 计算机的任何环境（无论是本地环境还是任何云提供商所提供的环境）中部署和运行 Service Fabric 应用程序。 Service Fabric 提供了一个安装程序包，用于创建名为“Windows Server 独立包”的 Service Fabric 群集。
@@ -104,7 +104,7 @@ ms.locfileid: "51257599"
     Passed                     : True
     ```
 
-2. 创建群集：运行 CreateServiceFabricCluster.ps1 脚本，以便在配置中的每台计算机上部署 Service Fabric 群集。 
+2. 创建群集：运行“CreateServiceFabricCluster.ps1”脚本，以便在配置中的每台计算机上部署 Service Fabric 群集。 
     ```powershell
     .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -AcceptEULA
     ```
@@ -124,7 +124,7 @@ ms.locfileid: "51257599"
 
 *.\ClusterConfig.json* 和 *.\MicrosoftAzureServiceFabric.cab* 分别是群集配置和运行时 .cab 文件的路径。
 
-### <a name="step-2-connect-to-the-cluster"></a>步骤 2：连接到群集
+### <a name="step-2-connect-to-the-cluster"></a>步骤 2：连接至群集
 连接到群集以验证群集是否正在运行且可用。 ServiceFabric PowerShell 模块与运行时一起安装。  可以从其中一个群集节点或使用 Service Fabric 运行时从远程计算机连接到群集。  [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 可建立到群集的连接。
 
 若要连接到不安全的群集，请运行以下 PowerShell 命令：
@@ -150,7 +150,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
                      vm0      localhost       NodeType0 5.6.220.9494 0                     Up 00:02:43   00:00:00              OK
 ```
 
-### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>步骤 3：使用 Service Fabric Explorer 直观显示群集
+### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>步骤 3：使用 Service Fabric Explorer 可视化群集
 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 是一项很好的工具，适用于可视化群集和管理应用程序。  Service Fabric Explorer 是一项在群集中运行的服务，使用浏览器导航到 [http://localhost:19080/Explorer](http://localhost:19080/Explorer) 即可访问该服务。
 
 群集仪表板提供了群集的概览，包括应用程序和节点运行状况的摘要。 节点视图显示群集的物理布局。 对于给定的节点，可以检查已在该节点上部署代码的应用程序。

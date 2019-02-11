@@ -10,12 +10,12 @@ ms.custom: REST
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: routlaw
-ms.openlocfilehash: bbbaa4c44a7c0d6da189f0c49d73adfa6142cdee
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 6e4bd5977eb1761a065d5583675e6fd405b4610a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095785"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750352"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>使用 REST API 获取资源运行状况 
 
@@ -35,16 +35,16 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/microsoft
 
 以下标头是必需的： 
 
-|请求标头|Description|  
+|请求标头|说明|  
 |--------------------|-----------------|  
 |Content-Type：|必需。 设置为 `application/json`。|  
 |Authorization：|必需。 设置为有效的 `Bearer` [访问令牌](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
 
 ### <a name="uri-parameters"></a>URI 参数
 
-| 名称 | Description |
+| Name | 说明 |
 | :--- | :---------- |
-| subscriptionId | 用于标识 Azure 订阅的订阅 ID。 如果拥有多个订阅，请参阅[使用多个订阅](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions)。 |
+| subscriptionId | 用于标识 Azure 订阅的订阅 ID。 如果拥有多个订阅，请参阅[使用多个订阅](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
 | api-version | 要用于请求的 API 版本。<br /><br /> 本文档涵盖 API 版本 `2015-04-01`，包含于上述 URL 中。  |
 | $filter | 用于减少返回的结果集的筛选选项。 此参数的允许模式在[活动日志操作参考](/rest/api/monitor/activitylogs/list#uri-parameters)中可用。 所示的示例捕获 2018-05-16 和 2018-06-20 之间的时间范围内的所有事件 |
 | &nbsp; | &nbsp; |

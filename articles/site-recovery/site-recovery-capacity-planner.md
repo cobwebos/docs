@@ -3,16 +3,17 @@ title: 使用 Azure Site Recovery 为 Hyper-V 灾难恢复规划容量 | Microso
 description: 利用本文在使用 Azure Site Recovery 服务设置灾难恢复时估算容量。
 author: rayne-wiselman
 manager: carmonm
+services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: d53e8fe6588b7e1b068431a4cd530d0a80a603e6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: eeadfd6a57ff8a26f3f124e2a807fcd66e77b85f
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261870"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976709"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>为 Hyper-V VM 灾难恢复规划容量 
 
@@ -67,15 +68,15 @@ Azure Site Recovery Capacity Planner 工具可帮助用户确定通过 Azure Sit
 
    * **增量复制所需的带宽(MB/秒)**：根据每日数据更改率的平均值计算增量复制的网络带宽。
    * **初始复制所需的带宽(MB/秒)**：根据输入的初始复制值计算初始复制的网络带宽。
-   * **所需存储空间(GB)**：所需的总 Azure 存储空间。
-   * **标准存储帐户的总 IOPS**：根据所有标准存储帐户的 8K IOPS 单元大小计算的数字。 对于快速规划器，该数字根据所有源 VM 磁盘数以及每日数据更改率来计算。 对于详细规划器，该数字根据映射到标准 Azure VM 的 VM 总数以及这些 VM 的数据更改率来计算。
-   * **所需的标准存储帐户数**：提供对 VM 进行保护所需的标准存储帐户的总数。 标准存储帐户最高可以在标准存储的所有 VM 中保持 20000 IOPS。 每个磁盘支持的最大 IOPS 为 500
-   * **所需 Blob 磁盘数**：要在 Azure 存储中创建的磁盘数。
-   * **所需高级存储帐户数**：对 VM 进行保护所需的高级存储帐户的总数。 IOPS 较高（高于 20,000）的源 VM 需要高级存储帐户。 高级存储帐户最高可支持 80,000 IOPS。
-   * **高级存储的总 IOPS**：根据高级存储帐户总数按 256K 的 IOPS 单元大小计算的数字。 对于快速规划器，该数字根据所有源 VM 磁盘数以及每日数据更改率来计算。 对于详细规划器，该数字根据映射到高级 Azure VM（DS 和 GS 系列）的 VM 总数以及这些 VM 的数据更改率来计算。
+   * **所需存储(GB)**：所需的总 Azure 存储。
+   * **基于标准存储的总 IOPS**：根据所有标准存储帐户的 8K IOPS 单元大小计算的数字。 对于快速规划器，该数字根据所有源 VM 磁盘数以及每日数据更改率来计算。 对于详细规划器，该数字根据映射到标准 Azure VM 的 VM 总数以及这些 VM 的数据更改率来计算。
+   * **所需的标准存储帐户数**：保护 VM 所需的标准存储帐户总数。 标准存储帐户最高可以在标准存储的所有 VM 中保持 20000 IOPS。 每个磁盘支持的最大 IOPS 为 500
+   * **所需的 Blob 磁盘数**：在 Azure 存储中创建的磁盘数。
+   * **所需的高级帐户数**：保护 VM 所需的高级存储帐户总数。 IOPS 较高（高于 20,000）的源 VM 需要高级存储帐户。 高级存储帐户最高可支持 80,000 IOPS。
+   * **高级存储中的 IOPS 总数**：根据所有高级存储帐户的 256K IOPS 单元大小计算的数字。 对于快速规划器，该数字根据所有源 VM 磁盘数以及每日数据更改率来计算。 对于详细规划器，该数字根据映射到高级 Azure VM（DS 和 GS 系列）的 VM 总数以及这些 VM 的数据更改率来计算。
    * **所需配置服务器数**：显示需要多少个配置服务器才能完成该部署。
-   * **所需其他进程服务器数**：显示除了默认在配置服务器上运行的进程服务器外，是否还需要其他进程服务器。
-   * **100% 源的其他存储**：显示源位置是否需要其他存储。
+   * **所需的其他进程服务器数**：显示除了默认在配置服务器上运行的进程服务器外，是否还需要其他进程服务器。
+   * **源中的 100% 附加存储**：显示源位置是否需要其他存储。
 
       ![输出](./media/site-recovery-capacity-planner/output.png)
 

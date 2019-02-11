@@ -9,29 +9,34 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/28/2018
+ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 995bf4586b88671c65077d965b0588de8de74e5c
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e578b3a6b3905569567b568b0130c1ed1b90d915
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048928"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019379"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](v1/data-factory-web-table-connector.md)
+> * [版本 1](v1/data-factory-web-table-connector.md)
 > * [当前版本](connector-web-table.md)
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Web 表数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+
+此 Web 表连接器、[REST 连接器](connector-rest.md)和 [HTTP 连接器](connector-http.md)之间的区别如下：
+
+- **Web 表连接器**用于从 HTML 网页中提取表内容。
+- **REST 连接器**专门支持从 RESTful API 复制数据。
+- **HTTP 连接器**是通用的，可从任何 HTTP 终结点检索数据，以执行文件下载等操作。 
 
 ## <a name="supported-capabilities"></a>支持的功能
 
 可以将数据从 Web 表数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-具体而言，此 Web 表连接器支持**从 HTML 页提取表内容**。 若要从 HTTP/s 终结点中检索数据，请改用 [HTTP 连接器](connector-http.md)。
+具体而言，此 Web 表连接器支持**从 HTML 页提取表内容**。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -51,7 +56,7 @@ Web 表链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Web** |是 |
 | url | Web 源的 URL |是 |
-| authenticationType | 允许的值为：Anonymous。 |是 |
+| authenticationType | 允许的值为：**匿名**。 |是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
 
 **示例：**
@@ -75,7 +80,7 @@ Web 表链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各个部分和属性的完整列表，请参阅数据集一文。 本部分提供 Web 表数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 Web 表数据集支持的属性列表。
 
 要从 Web 表复制数据，请将数据集的 type 属性设置为“WebTable”。 支持以下属性：
 
@@ -151,11 +156,11 @@ Web 表链接的服务支持以下属性：
 2. 单击工具栏中的“新建查询”，指向“从其他源”，并单击“从 Web”。
 
     ![Power Query 菜单](./media/copy-data-from-web-table/PowerQuery-Menu.png)
-3. 在“从 Web”对话框中，输入要在链接服务 JSON 中使用的 URL（例如：https://en.wikipedia.org/wiki/)）以及要为数据集指定的路径（例如：AFI%27s_100_Years...100_Movies），并单击“确定”。
+3. 在“从 Web”对话框中，输入要在链接服务 JSON 中使用的 **URL**（例如： https://en.wikipedia.org/wiki/)）以及要为数据集指定的路径（例如：AFI%27s_100_Years...100_Movies），并单击“确定”。
 
     ![“从 Web”对话框](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 
-    此示例中使用的 URL：https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
+    此示例中使用的 URL： https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
 4. 如果出现“访问 Web 内容”对话框，请选择正确的 **URL** 和**身份验证**，并单击“连接”。
 
    ![“访问 Web 内容”对话框](./media/copy-data-from-web-table/AccessWebContentDialog.png)

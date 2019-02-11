@@ -3,19 +3,19 @@ title: 使用 Azure Active Directory B2C 中的自定义策略自定义应用程
 description: 了解如何使用 Azure Active Directory B2C 中的自定义策略自定义用户界面。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/18/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 237d22054ecb4eea58494c1b5066eb8e00ecd2fc
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.subservice: B2C
+ms.openlocfilehash: 3c3b7d73de9a0e7e72351687af16b98b11f9581b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583443"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188485"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面
 
@@ -31,7 +31,7 @@ ms.locfileid: "52583443"
 
 使用页面 UI 自定义功能可对任何自定义策略的外观进行自定义。 还可以在应用程序与 Azure AD B2C 之间保持品牌和视觉一致性。
 
-工作原理如下：Azure AD B2C 在客户的浏览器中运行代码，并使用称为[跨域资源共享 (CORS)](http://www.w3.org/TR/cors/) 的现代方法。 首先，请在包含自定义 HTML 内容的自定义策略中指定 URL。 Azure AD B2C 会将 UI 元素与从 URL 加载的 HTML 内容合并，然后向客户显示页面。
+工作原理如下：Azure AD B2C 在客户的浏览器中运行代码，并使用称为[跨域资源共享 (CORS)](https://www.w3.org/TR/cors/) 的新式方法。 首先，请在包含自定义 HTML 内容的自定义策略中指定 URL。 Azure AD B2C 会将 UI 元素与从 URL 加载的 HTML 内容合并，然后向客户显示页面。
 
 ## <a name="create-your-html5-content"></a>创建 HTML5 内容
 
@@ -50,9 +50,6 @@ ms.locfileid: "52583443"
    </body>
    </html>
    ```
-
-   >[!NOTE]
-   >出于安全原因，目前会阻止使用 JavaScript 进行自定义。
 
 2. 将复制的代码段粘贴到文本编辑器中，然后将文件保存为 *customize-ui.html*。
 
@@ -111,7 +108,7 @@ ms.locfileid: "52583443"
 
 通过执行以下操作验证你已准备就绪：
 
-1. 转到 [www.test-cors.org](http://www.test-cors.org/) 网站，然后将 URL 粘贴到“远程 URL”框中。
+1. 转到 [www.test-cors.org](https://www.test-cors.org/) 网站，然后将 URL 粘贴到“远程 URL”框中。
 2. 单击“发送请求”。  
     如果收到错误，请确保 [CORS 设置](#configure-cors)正确。 可能还需要清除浏览器缓存，或通过按 Ctrl+Shift+P 打开专用浏览会话。
 
@@ -124,7 +121,7 @@ ms.locfileid: "52583443"
 3. 打开扩展文件， 例如，TrustFrameworkExtensions.xml。 搜索 BuildingBlocks 元素。 如果该元素不存在，请添加该元素。
 4. 粘贴作为 BuildingBlocks 元素的子元素复制的 ContentDefinitions 元素的全部内容。 
 5. 在复制的 XML 中搜索包含 `Id="api.signuporsignin"` 的 ContentDefinition 元素。
-6. 将 LoadUri 的值更改为上传到存储的 HTML 文件的 URL。 例如， https://mystore1.azurewebsites.net/b2c/customize-ui.html。
+6. 将 LoadUri 的值更改为上传到存储的 HTML 文件的 URL。 例如，`https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`。
     
     自定义策略应如下所示：
 
@@ -170,7 +167,7 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 
 sample_templates/wingtip 文件夹包含以下 HTML 文件：
 
-| HTML5 模板 | Description |
+| HTML5 模板 | 说明 |
 |----------------|-------------|
 | *phonefactor.html* | 将此文件用作多重身份验证页面的模板。 |
 | *resetpassword.html* | 将此文件用作“忘记密码”页面的模板。 |
@@ -180,7 +177,7 @@ sample_templates/wingtip 文件夹包含以下 HTML 文件：
 
 在 [修改注册或登录自定义策略](#modify-your-sign-up-or-sign-in-custom-policy) 部分中，你已配置了 的内容定义`api.idpselections` 。 下表中列出了 Azure AD B2C 标识体验框架可以识别的整组内容定义 ID 及其说明：
 
-| 内容定义 ID | Description | 
+| 内容定义 ID | 说明 | 
 |-----------------------|-------------|
 | *api.error* | **错误页面**。 遇到异常或错误时显示此页面。 |
 | *api.idpselections* | **标识提供者选择页面**。 此页面包含有可供用户在登录期间选择的标识提供者列表。 这些选项是企业标识提供者、社交标识提供者（例如 Facebook 和 Google+）或本地帐户。 |

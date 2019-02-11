@@ -1,86 +1,80 @@
 ---
-title: 快速入门：使用 Node.js 调用终结点 - 必应自定义搜索
+title: 快速入门：使用 Node.js 调用必应自定义搜索终结点 | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: 本快速入门演示如何通过使用 Node.js 调用必应自定义搜索终结点来从自定义搜索实例中请求搜索结果。
+description: 参考本快速入门开始使用 Node.js 从必应自定义搜索实例请求搜索结果
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: aahi
-ms.openlocfilehash: c0c97dd52f8fc3ff590c86f32f794beeb00f4b05
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a4a0140e8dcb8fccf7ac6699132a7dc44eacb175
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310229"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163256"
 ---
-# <a name="quickstart-call-bing-custom-search-endpoint-nodejs"></a>快速入门：调用必应自定义搜索终结点 (Node.js)
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>快速入门：使用 Node.js 调用必应自定义搜索终结点
 
-本快速入门介绍了如何使用 Node.js 调用必应自定义搜索终结点，以请求从自定义搜索实例中获取搜索结果。 
+参考本快速入门开始从必应自定义搜索实例请求搜索结果。 虽然此应用程序是以 JavaScript 编写的，但必应自定义搜索 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingCustomSearchv7.js) 上获得。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本快速入门，你需要：
+- 必应自定义搜索实例。 请参阅[快速入门：创建第一个必应自定义搜索实例](quick-start.md)，了解详细信息。
 
-- 现成的自定义搜索实例。 请参阅[创建第一个必应自定义搜索实例](quick-start.md)。
-- 安装 [Node.js](https://www.nodejs.org/)。
-- 订阅密钥。 可以在激活[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)时获取订阅密钥，也可以使用 Azure 仪表板中的付费订阅密钥（请参阅[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)）。   另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+- [Node.js](https://www.nodejs.org/)
 
-## <a name="run-the-code"></a>运行代码
+- [JavaScript 请求库](https://github.com/request/request)
 
-若要运行该示例，请遵循以下步骤：
+[!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
-1. 为代码创建文件夹。  
-  
-2. 从命令提示符或终端导航至刚刚创建的文件夹。  
-  
-3. 安装 request 节点模块：
-    <pre>
-    npm install request
-    </pre>  
-    
-4. 在创建的文件夹中创建 BingCustomSearch.js 文件，并将以下代码复制到其中。 将“YOUR-SUBSCRIPTION-KEY”和“YOUR-CUSTOM-CONFIG-ID”分别替换为订阅密钥和配置 ID。  
-  
-    ``` javascript
+## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
+
+1. 在偏好的 IDE 或编辑器中创建新的 JavaScript 文件，然后为请求库添加 `require()` 语句。 为订阅密钥、自定义配置 ID 和搜索词创建变量。 
+
+    ```javascript
     var request = require("request");
     
     var subscriptionKey = 'YOUR-SUBSCRIPTION-KEY';
     var customConfigId = 'YOUR-CUSTOM-CONFIG-ID';
     var searchTerm = 'microsoft';
-    
-    var options = {
+    ```
+
+## <a name="send-and-receive-a-search-request"></a>发送和接收搜索请求 
+
+1. 创建一个变量用于存储在请求中发送的信息。 通过将搜索词追加​​到 `q=` 查询参数后面，并将搜索实例的自定义配置 ID 追加​​到 `customconfig=` 后面来构造请求 URL。 使用 `&` 字符分隔参数。 
+
+    ```javascript
+    var info = {
         url: 'https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?' + 
-          'q=' + searchTerm + 
-          '&customconfig=' + customConfigId,
+            'q=' + searchTerm + "&" +
+            'customconfig=' + customConfigId,
         headers: {
             'Ocp-Apim-Subscription-Key' : subscriptionKey
         }
     }
-    
-    request(options, function(error, response, body){
-        var searchResponse = JSON.parse(body);
-        for(var i = 0; i < searchResponse.webPages.value.length; ++i){
-            var webPage = searchResponse.webPages.value[i];
-            console.log('name: ' + webPage.name);
-            console.log('url: ' + webPage.url);
-            console.log('displayUrl: ' + webPage.displayUrl);
-            console.log('snippet: ' + webPage.snippet);
-            console.log('dateLastCrawled: ' + webPage.dateLastCrawled);
-            console.log();
-        }
-    })
-    ```  
-  
-6. 使用以下命令运行代码：  
-  
-    ```    
-    node BingCustomSearch.js
-    ``` 
+    ```
+
+1. 使用 JavaScript 请求库将搜索请求发送到必应自定义搜索实例，并列显有关结果的信息，包括请求的名称、URL，以及上次网页爬网的日期。
+
+    ```javascript
+    request(info, function(error, response, body){
+            var searchResponse = JSON.parse(body);
+            for(var i = 0; i < searchResponse.webPages.value.length; ++i){
+                var webPage = searchResponse.webPages.value[i];
+                console.log('name: ' + webPage.name);
+                console.log('url: ' + webPage.url);
+                console.log('displayUrl: ' + webPage.displayUrl);
+                console.log('snippet: ' + webPage.snippet);
+                console.log('dateLastCrawled: ' + webPage.dateLastCrawled);
+                console.log();
+            }
+    ```
 
 ## <a name="next-steps"></a>后续步骤
-- [配置托管 UI 体验](./hosted-ui.md)
-- [使用修饰标记来突出显示文本](./hit-highlighting.md)
-- [网页](./page-webpages.md)
+
+> [!div class="nextstepaction"]
+> [生成自定义搜索 Web 应用](./tutorials/custom-search-web-page.md)

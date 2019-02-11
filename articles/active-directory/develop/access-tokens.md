@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.date: 10/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 18de5ce2f47b6593d4c8556af045f14ade957fb9
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 7dd2b60a985291311328407b07ef290e962f147b
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979227"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080559"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory 访问令牌
 
@@ -38,7 +38,7 @@ ms.locfileid: "50979227"
 
 ## <a name="sample-tokens"></a>示例令牌
 
-v1.0 和 v2.0 令牌非常相似，都包含许多相同的声明。 此处提供了每种令牌的示例。
+v1.0 和 v2.0 令牌很相似，都包含许多相同的声明。 此处提供了每种令牌的示例。
 
 ### <a name="v10"></a>v1.0
 
@@ -73,17 +73,17 @@ JWT 拆分成三个部分：
 
 ### <a name="header-claims"></a>标头声明
 
-|声明 | 格式 | Description |
+|声明 | 格式 | 说明 |
 |--------|--------|-------------|
 | `typ` | 字符串 - 始终为“JWT” | 指示令牌是 JWT。|
 | `nonce` | String | 用于防范令牌重放攻击的唯一标识符。 资源可以记录此值以防范重放攻击。 |
 | `alg` | String | 指示用于对令牌进行签名的算法，例如“RS256” |
 | `kid` | String | 指定用于对此令牌进行签名的公钥的指纹。 在 v1.0 和 v2.0 访问令牌中已发出。 |
-| `x5t` | String | 功能与 `kid` 相同（在用法和值方面）。 这是在 v1.0 访问令牌中仅出于兼容目的而发出的旧式声明。 |
+| `x5t` | String | 功能与 `kid` 相同（在用法和值方面）。 `x5t` 是在 v1.0 访问令牌中仅出于兼容目的而发出的旧式声明。 |
 
 ### <a name="payload-claims"></a>有效负载声明
 
-| 声明 | 格式 | Description |
+| 声明 | 格式 | 说明 |
 |-----|--------|-------------|
 | `aud` | 字符串，应用 ID URI | 标识令牌的目标接收方。 在访问令牌中，受众是在 Azure 门户中分配给应用的应用程序 ID。 应用应该验证此值并拒绝其值不匹配的令牌。 |
 | `iss` | 字符串，STS URI | 标识构造并返回令牌的安全令牌服务 (STS)，以及对用户进行身份验证的 Azure AD 租户。 如果颁发的令牌是 v2.0 令牌（请参阅 `ver` 声明），则 URI 将以 `/v2.0` 结尾。 表示用户是来自 Microsoft 帐户的使用者用户的 GUID 为 `9188040d-6c67-4c5b-b112-36a304b66dad`。 应用应该使用声明的 GUID 部分限制可登录应用的租户集（如果适用）。 |
@@ -99,7 +99,7 @@ JWT 拆分成三个部分：
 | `azp` | 字符串，GUID | 仅在 v2.0 令牌中提供。 使用令牌的客户端的应用程序 ID。 该应用程序可以自身名义或者代表用户进行操作。 应用程序 ID 通常表示应用程序对象，但它还可以表示 Azure AD 中的服务主体对象。 |
 | `azpacr` | “0”、“1”或“2” | 仅在 v2.0 令牌中提供。 表示对客户端进行身份验证的方式。 对于公共客户端，值为“0”。 如果使用客户端 ID 和客户端机密，则值为“1”。 如果使用客户端证书进行身份验证，则值为“2”。 |
 | `groups` | GUID 的 JSON 数组 | 指定表示使用者的组成员身份的对象 ID。 这些值是唯一的（请参阅对象 ID），可安全地用于管理访问，例如强制要求授权才能访问资源。 组声明中包含的组通过[应用程序清单](reference-app-manifest.md)的 `groupMembershipClaims` 属性基于每个应用程序进行配置。 值为 null 将排除所有组；值为“SecurityGroup”将只包括“Active Directory 安全组”成员身份；值为“All”将包括安全组和 Office 365 通讯组列表。 <br><br>有关将 `groups` 声明与隐式授权一起使用的详细信息，请参阅下文中的 `hasgroups` 声明。 <br>对于其他流，如果用户所在的组数超出了某个限制（对于 SAML，为 150，对于 JWT，为 200），则会将超额声明添加到指向包含该用户的组列表的 Graph 终结点的声明源。 |
-| `hasgroups` | 布尔 | 如果存在，始终为 `true`，表示用户至少在一个组中。 如果完整组声明将导致 URI 片段超出 URL 长度限制（当前为 6 个或更多组），则在隐式授权流中用来替代 JWT 的 `groups` 声明。 指示客户端应当使用 Graph 来确定用户的组 (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`)。 |
+| `hasgroups` | Boolean | 如果存在，始终为 `true`，表示用户至少在一个组中。 如果完整组声明将导致 URI 片段超出 URL 长度限制（当前为 6 个或更多组），则在隐式授权流中用来替代 JWT 的 `groups` 声明。 指示客户端应当使用 Graph 来确定用户的组 (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`)。 |
 | `groups:src1` | JSON 对象 | 对于长度不受限制（参阅上文中的 `hasgroups`）但对于令牌而言仍然太大的令牌请求，将包括指向用户的完整组列表的链接。 对于 JWT，作为分布式声明；对于 SAML，作为新声明替代 `groups` 声明。 <br><br>**JWT 值示例**： <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }`|
 | `preferred_name` | String | 仅在 v2.0 令牌中提供。 表示用户的主用户名。 它可以是电子邮件地址、电话号码或未指定格式的一般用户名。 其值可变，并可能随时间而不断改变。 由于此值是可变的，因此它不能用于做出授权决定。 需要 `profile` 范围才能接收此声明。 |
 | `name` | String | 提供一个用户可读值，用于标识令牌使用者。 此值不一定唯一，它是可变的，旨在仅用于显示目的。 需要 `profile` 范围才能接收此声明。 |
@@ -118,10 +118,10 @@ JWT 拆分成三个部分：
 
 以下声明将包含在 v1.0 令牌中（如果适用），默认不会包含在 v2.0 令牌中。 如果使用 v2.0 并需要其中的某个声明，请使用[可选声明](active-directory-optional-claims.md)来请求它。
 
-| 声明 | 格式 | Description |
+| 声明 | 格式 | 说明 |
 |-----|--------|-------------|
 | `ipaddr`| String | 进行身份验证的用户的来源 IP 地址。 |
-| `onprem_sid`| 字符串，采用 [SID 格式](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | 如果用户使用了本地身份验证，则此声明会提供其 SID。 可在旧版应用程序中将此值用于授权。 |
+| `onprem_sid`| 字符串，采用 [SID 格式](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | 如果用户使用了本地身份验证，则此声明会提供其 SID。 可在旧版应用程序中将 `onprem_sid` 用于授权。 |
 | `pwd_exp`| int，UNIX 时间戳 | 指示用户的密码何时过期。 |
 | `pwd_url`| String | 可向用户发送的，以重置其密码的 URL。 |
 | `in_corp`|布尔值 | 表示客户端是否从企业网络登录。 如果不是，则不包含此声明。 |
@@ -133,7 +133,7 @@ JWT 拆分成三个部分：
 
 Microsoft 标识可以通过与应用程序相关的多种方式进行身份验证。 `amr` 声明是可以包含多个项（例如 `["mfa", "rsa", "pwd"]`）的数组，适用于使用密码和 Authenticator 应用的身份验证。 
 
-| 值 | Description |
+| 值 | 说明 |
 |-----|-------------|
 | `pwd` | 密码身份验证，用户的 Microsoft 密码或应用的客户端机密。 |
 | `rsa` | 身份验证基于 RSA 密钥的证明，例如，使用 [Microsoft Authenticator 应用](https://aka.ms/AA2kvvu)。 这包括，身份验证是否是使用服务拥有的 X509 证书通过自签名的 JWT 执行的。 |
@@ -200,7 +200,7 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 * 使用 `appidacr` 验证调用方客户端的身份验证状态 - 如果不允许公共客户端调用你的 API，则值不应该是 0。
 * 根据以往的 `nonce` 声明列表进行检查，以验证令牌是否未重放。
 * 检查 `tid` 是否与允许调用该 API 的租户相匹配。
-* 使用 `acr` 声明验证已执行 MFA 的用户。 请注意，应使用[条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)强制实施此步骤。
+* 使用 `acr` 声明验证已执行 MFA 的用户。 应使用[条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)强制实施此步骤。
 * 如果在访问令牌中请求了 `roles` 或 `groups` 声明，请验证用户是否在允许执行此操作的组中。
   * 对于使用隐式流检索的令牌，可能需要在 [Microsoft Graph](https://developer.microsoft.com/graph/) 中查询此数据，因为该数据通常很庞大，无法放到令牌中。 
 

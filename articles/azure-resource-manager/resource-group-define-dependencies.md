@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/05/2018
+ms.date: 12/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 308ab9d35e07c8376fb183c794fcad77a74a1df9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 39d0813eab49f526842eec171e3355326bd13c44
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295557"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727796"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>定义 Azure 资源管理器模板中部署资源的顺序
 对于给定的资源，可能有部署资源之前必须存在的其他资源。 例如，SQL Server 必须存在，才能尝试部署 SQL 数据库。 可通过将一个资源标记为依赖于其他资源来定义此关系。 使用 **dependsOn** 元素或 **reference** 函数定义依赖项。 
@@ -145,16 +145,7 @@ listKeys('resourceName', 'yyyy-mm-dd')
 
 若要了解详细信息，请参阅[引用函数](resource-group-template-functions-resource.md#reference)。
 
-## <a name="recommendations-for-setting-dependencies"></a>关于设置依赖项的建议
-
-在决定要设置的依赖项时，请遵循以下准则：
-
-* 尽可能少设置依赖项。
-* 将子资源设置为依赖于其父资源。
-* 使用 **reference** 函数并传入资源名称可在需要共享属性的资源之间设置隐式依赖关系。 在已经定义隐式依赖关系的情况下，请勿添加显式依赖关系 (**dependsOn**)。 此方法降低了设置不必要依赖项的风险。 
-* 如果没有其他资源提供的功能就无法**创建**某个资源，请设置依赖关系。 如果资源仅在部署后进行交互，请勿设置依赖关系。
-* 让依赖项级联，无需对其进行显式设置。 例如，虚拟机依赖于虚拟网络接口，虚拟网络接口依赖于虚拟网络和公共 IP 地址。 因此，虚拟机在所有这三个资源之后部署，但请勿将虚拟机显式设置为依赖于所有这三个资源。 此方法阐明了依赖顺序，在以后更改模板会更容易。
-* 如果某个值可以在部署之前确定，请尝试在没有依赖项的情况下部署资源。 例如，如果某个配置值需要另一资源的名称，则可能不需要依赖项。 本指南并非始终适用，因为某些资源会验证其他资源是否存在。 如果收到错误，请添加一个依赖项。 
+## <a name="circular-dependencies"></a>循环依赖项
 
 Resource Manager 可在模板验证过程中确定循环依赖项。 如果收到的错误指出存在循环依赖关系，请评估模板，了解是否存在不需要且可删除的任何依赖关系。 如果删除依赖关系不起作用，则可将一些部署操作移至在具有循环依赖关系的资源后部署的子资源中，来避免循环依赖关系。 例如，假设要部署两个虚拟机，但必须在每个虚拟机上设置引用另一虚拟机的属性。 可以按下述顺序部署这两个虚拟机：
 
@@ -168,6 +159,7 @@ Resource Manager 可在模板验证过程中确定循环依赖项。 如果收�
 ## <a name="next-steps"></a>后续步骤
 
 * 相关教程，请参阅[教程：使用从属资源创建 Azure 资源管理器模板](./resource-manager-tutorial-create-templates-with-dependent-resources.md)。
+* 有关设置依赖项的建议，请参阅 [Azure 资源管理器模板的最佳做法](template-best-practices.md)。
 * 若要了解如何在部署期间排查依赖项故障，请参阅[排查使用 Azure 资源管理器时的常见 Azure 部署错误](resource-manager-common-deployment-errors.md)。
 * 若要了解有关创建 Azure 资源管理器模板的信息，请参阅[创作模板](resource-group-authoring-templates.md)。 
 * 有关模板的可用函数列表，请参阅[模板函数](resource-group-template-functions.md)。

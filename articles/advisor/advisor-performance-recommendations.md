@@ -3,23 +3,22 @@ title: Azure 顾问性能建议 | Microsoft Docs
 description: 使用顾问优化 Azure 部署的性能。
 services: advisor
 documentationcenter: NA
-author: manbeenkohli
+author: kasparks
 manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: advisor
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
-ms.author: makohli
-ms.openlocfilehash: 9516534216c4a2c0f61e33ea3cbf1bbcb2ab58c7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: kasparks
+ms.openlocfilehash: 3caf838fec3a5c0ab847ded85b269df7a66859e0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301304"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266739"
 ---
 # <a name="advisor-performance-recommendations"></a>顾问性能建议
 
@@ -33,25 +32,30 @@ Azure 顾问将识别配置了较长 TTL 的流量管理器配置文件，并建
 
 ## <a name="improve-database-performance-with-sql-db-advisor"></a>通过 SQL DB 顾问提高数据库性能
 
-顾问针对所有 Azure 资源提供一个一致且统一的建议视图。 它与 SQL 数据库顾问集成，提供建议以改进 SQL Azure 数据库性能。 SQL 数据库顾问通过分析使用情况历史记录来评估 SQL Azure 数据库的性能。 提供的建议最适合运行数据库典型工作负荷。 
+顾问针对所有 Azure 资源提供一个一致且统一的建议视图。 它与 SQL 数据库顾问集成，提供建议以改进 SQL Azure 数据库性能。 SQL 数据库顾问通过分析使用情况历史记录来评估 SQL Azure 数据库的性能。 提供的建议最适合运行数据库典型工作负荷。
 
 > [!NOTE]
 > 若要获取建议，数据库必须具有一周左右的使用量，且该周内必须有一些一致的活动。 SQL 数据库顾问优化一致的查询模式比优化随机的突发活动更加轻松。
 
 有关 SQL 数据库顾问的详细信息，请参阅 [SQL 数据库顾问](https://azure.microsoft.com/documentation/articles/sql-database-advisor/)。
 
-## <a name="improve-redis-cache-performance-and-reliability"></a>提高 Redis 缓存性能和可靠性
-
-Redis 缓存实例的性能可能会受到高内存使用率、服务器负载、网络带宽或大量客户端连接的不利影响，顾问可识别这些实例。 顾问还可提供最佳做法建议，有助于避免潜在问题。 有关 Redis 缓存建议的详细信息，请参阅 [Redis 缓存顾问](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor)。
-
-
 ## <a name="improve-app-service-performance-and-reliability"></a>提高应用服务性能和可靠性
 
 Azure 顾问集成最佳做法建议，可改善应用服务体验，并发现相关平台的功能。 以下为应用服务建议示例：
 * 检测其中应用运行时已耗尽内存或 CPU 资源的实例，并提出缓解措施。
-* 检测在其中并置资源（如 Web 应用和数据库）的实例，以改善性能并降低成本。 
+* 检测在其中并置资源（如 Web 应用和数据库）的实例，以改善性能并降低成本。
 
 有关应用服务建议的详细信息，请参阅 [Best Practices for Azure App Service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/)（Azure 应用服务的最佳实践）。
+
+## <a name="use-managed-disks-to-prevent-disk-io-throttling"></a>使用托管磁盘防止磁盘 I/O 限制
+
+顾问将识别属于即将达到其可伸缩性目标的存储帐户的虚拟机。 这使得它容易遭受 I/O 限制。 顾问会建议这些虚拟机使用托管磁盘以防止性能降低。
+
+## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks-by-using-premium-storage"></a>可以通过使用高级磁盘来提高虚拟机磁盘的性能和可靠性
+
+顾问将识别其中的标准磁盘在存储帐户上具有大量事务的虚拟机，并建议升级到高级磁盘。 
+
+Azure 高级存储为运行 I/O 密集型工作负荷的虚拟机提供高性能、低延迟的磁盘支持。 在固态硬盘 (SSD) 上使用高级存储帐户存储数据的虚拟机磁盘。 为使应用程序实现最佳性能，建议将任何需要高 IOPS 的虚拟机磁盘迁移到高级存储。
 
 ## <a name="remove-data-skew-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>删除 SQL 数据仓库表的数据倾斜以提高查询性能
 
@@ -61,9 +65,20 @@ Azure 顾问集成最佳做法建议，可改善应用服务体验，并发现�
 
 顾问标识不包含最新[表统计信息](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)的表并建议创建或更新表统计信息。 SQL 数据仓库查询优化器使用最新统计信息来估计基数或查询结果中的行数，这样一来，查询优化器能够创建高质量的查询计划，以提高性能。
 
+## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>通过纵向扩展来优化 SQL 数据仓库上的缓存利用率，从而提升查询性能
+
+Azure 顾问会检测 SQL 数据仓库是否具有高缓存使用百分比和低命中百分比。 这表示存在高缓存逐出，可能会影响 SQL 数据仓库的性能。 顾问建议你对 SQL 数据仓库进行纵向扩展以确保为工作负荷分配足够的缓存容量。
+
+## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>将 SQL 数据仓库表转换为复制表以提高查询性能
+
+顾问会识别非复制但是会受益于转换的表，并建议转换这些表。 建议是基于 SQL 数据仓库表的复制表大小、列数、表分布类型以及分区数提出的。 还可能会根据上下文在建议中提供额外的启发。 若要详细了解此建议是如何确定的，请参阅 [SQL 数据仓库建议](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-concept-recommendations#replicate-tables)。 
+
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-all-of-the-latest-azure-features"></a>将存储帐户迁移到 Azure 资源管理器来获取所有最新 Azure 功能。
 
-将存储帐户部署模型迁移到 Azure 资源管理器 (ARM) 可利用模板部署和更多的安全选项，并可升级到 GPv2 帐户来利用 Azure 存储的最新功能。 顾问将识别使用经典部署模型的任何独立存储帐户，并建议迁移到 ARM 部署模型。 
+将存储帐户部署模型迁移到 Azure 资源管理器 (ARM) 可利用模板部署和更多的安全选项，并可升级到 GPv2 帐户来利用 Azure 存储的最新功能。 顾问将识别使用经典部署模型的任何独立存储帐户，并建议迁移到 ARM 部署模型。
+
+> [!NOTE]
+> Azure Monitor 中的经典警报宣布将在 2019 年 6 月停用，建议将经典存储帐户升级到 ARM 以通过新平台保留警报功能。 有关详细信息，请参阅[经典警报停用](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)。
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>如何访问顾问中的性能建议
 
@@ -80,4 +95,3 @@ Azure 顾问集成最佳做法建议，可改善应用服务体验，并发现�
 * [顾问成本建议](advisor-performance-recommendations.md)
 * [顾问高可用性建议](advisor-high-availability-recommendations.md)
 * [顾问安全性建议](advisor-security-recommendations.md)
-

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: damaerte
-ms.openlocfilehash: 65531b5507f9e3af3a9666074d9dcd9b7ee20271
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: df9dc7d25ff0304effadbf27751042e9961c75c0
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231179"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562022"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 PowerShell 快速入门
 
@@ -27,6 +27,8 @@ ms.locfileid: "50231179"
 
 > [!NOTE]
 > 此外，还提供了 [Azure Cloud Shell 中的 Bash](quickstart.md) 快速入门。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="start-cloud-shell"></a>启动 Cloud Shell
 
@@ -48,7 +50,7 @@ PS Azure:\> Get-Date
 # Expected Output
 Friday, July 27, 2018 7:08:48 AM
 
-PS Azure:\> Get-AzureRmVM -Status
+PS Azure:\> Get-AzVM -Status
 
 # Expected Output
 ResourceGroupName       Name       Location                VmSize   OsType     ProvisioningState  PowerState
@@ -238,7 +240,7 @@ mywebapp2       Running  MyResourceGroup2   {mywebapp2.azurewebsites.net...   We
 mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   South Central US
 
 # You can use Azure cmdlets to Start/Stop your web apps
-PS Azure:\MySubscriptionName\WebApps> Start-AzureRmWebApp -Name mywebapp1 -ResourceGroupName MyResourceGroup1
+PS Azure:\MySubscriptionName\WebApps> Start-AzWebApp -Name mywebapp1 -ResourceGroupName MyResourceGroup1
 
 Name           State    ResourceGroup        EnabledHostNames                   Location
 ----           -----    -------------        ----------------                   --------
@@ -266,7 +268,7 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 ### <a name="using-ssh"></a>使用 SSH
 
 按照[此处](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell)的说明使用 AzureRM cmdlet 创建新的 VM 配置。
-在调用 `New-AzureRmVM` 以启动部署之前，请将 SSH 公钥添加到 VM 配置。
+在调用 `New-AzVM` 以启动部署之前，请将 SSH 公钥添加到 VM 配置。
 新创建的 VM 将包含 `~\.ssh\authorized_keys` 位置中的公钥，从而允许通过无凭据的 SSH 会话连接到 VM。
 
 ```azurepowershell-interactive
@@ -277,10 +279,10 @@ ssh-keygen -t rsa -b 2048 -f $HOME\.ssh\id_rsa
 
 # Ensure VM config is updated with SSH keys
 $sshPublicKey = Get-Content "$HOME\.ssh\id_rsa.pub"
-Add-AzureRmVMSshPublicKey -VM $vmConfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
+Add-AzVMSshPublicKey -VM $vmConfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 
 # Create a virtual machine
-New-AzureRmVM -ResourceGroupName <yourResourceGroup> -Location <vmLocation> -VM $vmConfig
+New-AzVM -ResourceGroupName <yourResourceGroup> -Location <vmLocation> -VM $vmConfig
 
 # SSH to the VM
 ssh azureuser@MyVM.Domain.Com
@@ -288,7 +290,7 @@ ssh azureuser@MyVM.Domain.Com
 
 ## <a name="list-available-commands"></a>列出可用命令
 
-在 `Azure` 驱动器下，键入 `Get-AzureRmCommand` 可获取特定于上下文的 Azure 命令。
+在 `Azure` 驱动器下，键入 `Get-AzCommand` 可获取特定于上下文的 Azure 命令。
 
 或者，始终可以使用 `Get-Command *azurerm* -Module AzureRM.*` 找出可用的 Azure 命令。
 
@@ -307,7 +309,7 @@ Get-Help
 对于特定命令，仍可以执行 `Get-Help` 后接一个 cmdlet。
 
 ```azurepowershell-interactive
-Get-Help Get-AzureRmVM
+Get-Help Get-AzVM
 ```
 
 ## <a name="use-azure-files-to-store-your-data"></a>使用 Azure 文件存储数据

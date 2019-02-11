@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/04/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 1dbfd668c2d233d299ee673da92ca203e72942fe
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: unknown
+ms.lastreviewed: 12/04/2018
+ms.openlocfilehash: 861784a2d22d15253c61884bfab62667c0560bcd
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957412"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250633"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Start-AzsReadinessChecker cmdlet 参考
 
@@ -163,13 +164,13 @@ Start-AzsReadinessChecker
        [<CommonParameters>]
 ```
 
-## <a name="description"></a>说明
+## <a name="description"></a>描述
 
 **Start-AzsReadinessChecker** cmdlet 验证证书、Azure 帐户、Azure 订阅和 Azure Active Directory。 在部署 Azure Stack 之前或在运行 Azure Stack 服务操作（例如机密轮换）之前运行验证。 该 cmdlet 还可用于生成基础结构证书的证书签名请求，以及 PaaS 证书（可选）。  最后，该 cmdlet 可以重新打包 PFX 证书，以解决常见的打包问题。
 
 ## <a name="examples"></a>示例
 
-### <a name="example-generate-certificate-signing-request"></a>示例： 生成证书签名请求
+### <a name="example-generate-certificate-signing-request"></a>示例：生成证书签名请求
 
 ```PowerShell
 $regionName = 'east'
@@ -180,7 +181,7 @@ Start-AzsReadinessChecker -regionName $regionName -externalFQDN $externalFQDN -s
 
 在此示例中，Start-AzsReadinessChecker 针对区域名称为“east”、外部 FQDN 为“azurestack.contoso.com”的 ADFS Azure Stack 部署所适用的证书生成多个证书签名请求 (CSR)
 
-### <a name="example-validate-certificates"></a>示例： 验证证书
+### <a name="example-validate-certificates"></a>示例：验证证书
 
 ```PowerShell
 $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString
@@ -189,7 +190,7 @@ Start-AzsReadinessChecker -CertificatePath .\Certificates\ -PfxPassword $passwor
 
 在此示例中，系统以安全方式提示输入 PFX 密码，Start-AzsReadinessChecker 在相对文件夹“Certificates”中检查区域名称为“east”、外部 FQDN 为“azurestack.contoso.com”的 AAD 部署是否有适用的有效证书
 
-### <a name="example-validate-certificates-with-deployment-data-deployment-and-support"></a>示例： 使用验证证书部署数据 （的部署和支持）
+### <a name="example-validate-certificates-with-deployment-data-deployment-and-support"></a>示例：使用部署数据验证证书（部署和支持）
 
 ```PowerShell
 $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString
@@ -198,7 +199,7 @@ Start-AzsReadinessChecker -CertificatePath .\Certificates\ -PfxPassword $passwor
 
 在此部署和支持示例中，系统以安全方式提示输入 PFX 密码，Start-AzsReadinessChecker 在相对文件夹“Certificates”中检查标识、区域和外部 FQDN 都是从针对部署生成的部署数据 JSON 文件中读取的部署是否有适用的有效证书。 
 
-### <a name="example-validate-paas-certificates"></a>示例： 验证的 PaaS 证书
+### <a name="example-validate-paas-certificates"></a>示例：验证 PaaS 证书
 
 ```PowerShell
 $PaaSCertificates = @{
@@ -213,7 +214,7 @@ Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates – RegionName eas
 
 此示例使用每个 PaaS 证书的路径和密码构造了哈希表。 可以省略证书。 Start-AzsReadinessChecker 检查每个 PFX 路径是否存在，并使用区域“east”和外部 FQDN“azurestack.contoso.com”验证这些路径。
 
-### <a name="example-validate-paas-certificates-with-deployment-data"></a>示例： 验证部署数据的 PaaS 证书
+### <a name="example-validate-paas-certificates-with-deployment-data"></a>示例：使用部署数据验证 PaaS 证书
 
 ```PowerShell
 $PaaSCertificates = @{
@@ -228,7 +229,7 @@ Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates -DeploymentDataJSO
 
 此示例使用每个 PaaS 证书的路径和密码构造了哈希表。 可以省略证书。 Start-AzsReadinessChecker 检查每个 PFX 路径是否存在，并使用从针对部署生成的部署数据 JSON 文件中读取的区域和外部 FQDN 验证这些路径。 
 
-### <a name="example-validate-azure-identity"></a>示例： 验证 Azure 标识
+### <a name="example-validate-azure-identity"></a>示例：验证 Azure 标识
 
 ```PowerShell
 $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant e.g. serviceadmin@contoso.onmicrosoft.com"
@@ -238,7 +239,7 @@ Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -Azur
 
 在此示例中，系统以安全方式提示输入服务管理员帐户凭据，Start-AzsReadinessChecker 检查 Azure 帐户和 Azure Active Directory 是否适用于租户目录名称为“azurestack.contoso.com”的 AAD 部署
 
-### <a name="example-validate-azure-identity-with-deployment-data-deployment-support"></a>示例： 验证部署数据 （部署支持） 与 Azure 标识
+### <a name="example-validate-azure-identity-with-deployment-data-deployment-support"></a>示例：使用部署数据验证 Azure 标识（部署支持）
 
 ```PowerSHell
 $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant e.g. serviceadmin@contoso.onmicrosoft.com"
@@ -247,7 +248,7 @@ Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -Depl
 
 在此示例中，服务管理员帐户凭据会提示输入安全地和 Start-azsreadinesschecker 检查 Azure 帐户和 Azure Active Directory 有效的 AAD 部署 AzureCloud 和 TenantName 读取从部署数据为部署生成的 JSON 文件。
 
-### <a name="example-validate-azure-registration"></a>示例： 验证 Azure 注册
+### <a name="example-validate-azure-registration"></a>示例：验证 Azure 注册
 
 ```PowerShell
 $registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner e.g. subscriptionowner@contoso.onmicrosoft.com"
@@ -258,7 +259,7 @@ Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -Registra
 
 在此示例中，系统以安全方式提示输入订阅所有者凭据，然后，Start-AzsReadinessChecker 对给定的帐户和订阅执行验证，以确保它们可用于 Azure Stack 注册。 
 
-### <a name="example-validate-azure-registration-with-deployment-data-deployment-team"></a>示例： 验证部署数据 （部署团队） 向 Azure 注册
+### <a name="example-validate-azure-registration-with-deployment-data-deployment-team"></a>示例：使用部署数据验证 Azure 注册（部署团队）
 
 ```PowerShell
 $registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner e.g. subscriptionowner@contoso.onmicrosoft.com"
@@ -268,7 +269,7 @@ Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -Registra
 
 在此示例中，系统以安全方式提示输入订阅所有者凭据，然后，Start-AzsReadinessChecker 对给定的帐户和订阅执行验证，以确保它们可用于 Azure Stack 注册（该注册的其他详细信息从针对部署生成的部署数据 JSON 文件中读取）。
 
-### <a name="example-importexport-pfx-package"></a>示例： 导入/导出 PFX 包
+### <a name="example-importexport-pfx-package"></a>示例：导入/导出 PFX 包
 
 ```PowerShell
 $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString
@@ -277,7 +278,7 @@ Start-AzsReadinessChecker -PfxPassword $password -PfxPath .\certificates\ssl.pfx
 
 在此示例中，系统以安全方式提示输入 PFX 密码。 ssl.pfx 文件 将导入到本地计算机证书存储，然后以相同的密码重新导出，并保存为 ssl_new.pfx。  此过程适用于证书验证以标志指出私钥中未设置本地计算机属性、证书链中断、PFX 中存在不相关的证书，或证书链顺序错误等情况。
 
-### <a name="example-view-validation-report-deployment-support"></a>示例： 查看验证报告 （部署支持）
+### <a name="example-view-validation-report-deployment-support"></a>示例：查看验证报告（部署支持）
 
 ```PowerShell
 Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json
@@ -285,7 +286,7 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json
 
 在此示例中，部署或支持团队从客户 (Contoso) 接收就绪性报告，并使用 Start-AzsReadinessChecker 查看 Contoso 的验证执行状态。
 
-### <a name="example-view-validation-report-summary-for-certificate-validation-only-deployment-and-support"></a>示例： 查看验证报告摘要证书验证唯一 （部署和支持）
+### <a name="example-view-validation-report-summary-for-certificate-validation-only-deployment-and-support"></a>示例：仅查看证书验证的验证报告摘要（部署和支持）
 
 ```PowerShell
 Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSections Certificate -Summary

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure IoT Edge 配置下游设备 | Microsoft Docs
+title: 连接下游设备 - Azure IoT Edge | Microsoft Docs
 description: 如何将下游或叶设备配置为通过 Azure IoT Edge 网关设备进行连接。
 author: kgremban
 manager: philmea
@@ -8,12 +8,13 @@ ms.date: 11/01/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bd9d8c4a75df0d9070476fb72d2b60f5cb182a87
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: d41ec0bc959eb264564d49ae6ac31aa30b3be98a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566221"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492753"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>将下游设备连接到 Azure IoT Edge 网关
 
@@ -132,7 +133,7 @@ sudo update-ca-certificates
 
 若要了解所运行的示例，请参阅以下代码片段，其中演示了客户端 SDK 如何读取证书文件，并使用它来建立安全的 TLS 连接： 
 
-```nodejs
+```javascript
 // Provide the Azure IoT device client via setOptions with the X509
 // Edge root CA certificate that was used to setup the Edge runtime
 var options = {

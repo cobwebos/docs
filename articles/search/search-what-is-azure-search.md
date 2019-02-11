@@ -1,6 +1,6 @@
 ---
-title: 什么是 Azure 搜索 | Microsoft Docs
-description: Azure 搜索是完全托管的托管云搜索服务。 通过此功能概述，了解详细信息。
+title: 什么是 Azure 搜索服务 - Azure 搜索
+description: Azure 搜索是完全托管的托管云搜索服务。 查看功能说明、开发工作流、Azure 搜索与其他搜索产品相比如何，以及操作说明入门。
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: overview
 ms.date: 11/09/2018
 ms.author: heidist
-ms.openlocfilehash: 85a071017f4394f4ccde297fb229f7786d9249b3
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.custom: seodec2018
+ms.openlocfilehash: 884a726dbc7d7f2812f4de2228ca5adaf9b223ea
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285129"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630395"
 ---
 # <a name="what-is-azure-search"></a>什么是 Azure 搜索？
 Azure 搜索是一种搜索即服务云解决方案，它为开发人员提供 API 和工具，以便基于 Web、移动和企业应用程序中的专用异类内容添加丰富的搜索体验。 查询执行是通过用户定义的索引进行的。
@@ -74,7 +75,7 @@ Azure 搜索是一种搜索即服务云解决方案，它为开发人员提供 A
 |-------------|-----------------|
 |必应 | [必应 Web 搜索 API](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/) 在 Bing.com 上搜索索引以匹配提交的搜索词。 索引从 HTML、XML 和公共网站上的其他 Web 内容生成。 [必应自定义搜索](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/)构建于同一基础之上，针对 Web 内容类型提供相同的爬网技术，范围覆盖单个网站。<br/><br/>Azure 搜索可搜索定义的索引，填充拥有的数据和文档，常常来自多个不同的源。 Azure 搜索通过[索引器](search-indexer-overview.md)具有一些数据源的爬网功能，但可以将符合索引架构的任何 JSON 文档推送到单个统一的可搜索资源。 |
 |数据库搜索 | 许多数据库平台都包含内置的搜索体验。 SQL Server 具有[全文搜索](https://docs.microsoft.com/sql/relational-databases/search/full-text-search)。 Cosmos DB 及类似技术具有可查询的索引。 在评估结合使用搜索和存储的产品时，确定要采用哪种方式可能颇具挑战性。 许多解决方案同时使用两种：使用 DBMS 进行存储，使用 Azure 搜索获取专业搜索功能。<br/><br/>与 DBMS 搜索相比，Azure 搜索存储来自不同来源的内容，并提供专用文本处理功能，例如 [56 种语言](https://docs.microsoft.com/rest/api/searchservice/language-support)中的语言感知文本处理（词干化、词元化、词形式）。 它还支持拼写错误单词的自动更正、[同义词](https://docs.microsoft.com/rest/api/searchservice/synonym-map-operations)、[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions)、[评分控制](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)，[Facet](https://docs.microsoft.com/azure/search/search-filters-facets) 和[自定义词汇切分](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)。 Azure 搜索中的[全文搜索引擎](search-lucene-query-architecture.md)基于 Apache Lucene，它是信息检索方面的行业标准。 尽管 Azure 搜索以倒排索引的形式持久存储数据，但它很少能替代真正的数据存储。 有关详细信息，请参阅此[论坛帖子](https://stackoverflow.com/questions/40101159/can-azure-search-be-used-as-a-primary-database-for-some-data)。 <br/><br/>资源利用是这个类别的另一个转折点。 索引和一些查询操作通常是计算密集型的。 将搜索从 DBMS 卸载到云中的专用解决方案可以节省用于事务处理的系统资源。 此外，通过将搜索外部化，可以根据查询量轻松调整规模。|
-|专用搜索解决方案 | 假设已决定使用全频谱功能进行专用搜索，则需要在本地解决方案或云服务之间进行最终的分类比较。 许多搜索技术提供对索引和查询管道的控制、对更丰富查询和筛选语法的访问、对设置级别和相关性的控制以及自导智能搜索功能。 <br/><br/>如果想要获得一个[开销和维护工作量极少且规模可调的周全解决方案](#cloud-service-advantage)，则云服务是适当的选择。 <br/><br/>在云的范式中，许多提供程序提供相当的基线功能，以及全文搜索、地理搜索，并且能够处理搜索输入中一定程度的模糊性。 通常，它是一项[专用功能](#feature-drilldown)，或者是 API、工具以及用于确定最匹配项的管理功能的易化和总体简化。 |
+|专用搜索解决方案 | 假设已决定使用全频谱功能进行专用搜索，则需要在本地解决方案或云服务之间进行最终的分类比较。 许多搜索技术提供对索引和查询管道的控制、对更丰富查询和筛选语法的访问、对设置级别和相关性的控制以及自导智能搜索功能。 <br/><br/>如果想要获得一个开销和维护工作量极少且规模可调的统包解决方案，则云服务是适当的选择。 <br/><br/>在云的范式中，许多提供程序提供相当的基线功能，以及全文搜索、地理搜索，并且能够处理搜索输入中一定程度的模糊性。 通常，它是一项[专用功能](#feature-drilldown)，或者是 API、工具以及用于确定最匹配项的管理功能的易化和总体简化。 |
 
 在所有云提供程序中，对于主要依赖于信息检索搜索和内容导航的应用，Azure 搜索在处理 Azure 上的内容存储和数据库的全文搜索工作负荷方面最为强大。 
 
@@ -105,7 +106,7 @@ Azure 订户可以[在免费层中预配服务](search-create-service-portal.md)
 
 如果不是订户，可以[免费建立一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。 将获得试用付费版 Azure 服务的信用额度。 信用额度用完后，可以保留该帐户并继续使用[免费的 Azure 服务](https://azure.microsoft.com/free/)。 除非显式更改设置并要求付费，否则不会对信用卡收取任何费用。
 
-也可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)：MSDN 订阅每月提供可用于试用付费版 Azure 服务的信用额度。 
+还可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)：MSDN 订阅每月提供可用来试用付费版 Azure 服务的信用额度。 
 
 ## <a name="how-to-get-started"></a>如何入门
 
@@ -116,7 +117,7 @@ Azure 订户可以[在免费层中预配服务](search-create-service-portal.md)
 3. 使用 .NET 或 REST API 继续编写代码：
 
   + [如何使用 .NET SDK](search-howto-dotnet-sdk.md) 演示了托管代码中的主要工作流。  
-  + [REST API 入门](https://github.com/Azure-Samples/search-rest-api-getting-started)演示了使用 REST API 的相同步骤。 还可以使用此快速入门从 Postman 或 Fiddler 调用 REST API：[探索 Azure 搜索 REST API](search-fiddler.md)。
+  + [REST API 入门](https://github.com/Azure-Samples/search-rest-api-getting-started)演示了使用 REST API 的相同步骤。 还可以使用本快速入门从 Postman 或 Fiddler 调用 REST API：[浏览 Azure 搜索 REST API](search-fiddler.md)。
 
 ## <a name="watch-this-video"></a>观看此视频
 

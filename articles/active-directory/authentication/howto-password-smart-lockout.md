@@ -3,32 +3,34 @@ title: 通过 Azure AD 智能锁定功能防止暴力攻击
 description: Azure Active Directory 智能锁定功能可帮助保护组织免受试图猜出密码的暴力攻击
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 12/14/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: rogoya
-ms.openlocfilehash: 957aa05efab68f9531fb6576de775aa9901ab44d
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 101070dab80c69ea1d24dd11fe5e067947505d19
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685797"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077958"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory 智能锁定
 
-智能锁定功能使用云智能锁定试图猜测用户密码或使用暴力访问方式的不良参与者。 该智能可识别来自有效用户的登录，还能将其与攻击者和其他未知来源的登录区别对待。 智能锁定会锁定攻击者，同时让你的用户能够继续访问其帐户并提高效率。
+智能锁定功能可帮助锁定那些试图猜测用户密码或使用暴力方法进入的不良参与者。 它可识别来自有效用户的登录，还能将其与攻击者和其他未知来源的登录区别对待。 智能锁定会锁定攻击者，同时让你的用户能够继续访问其帐户并提高效率。
 
 默认情况下，智能锁定会在 10 次尝试失败后锁定帐户，使其在一分钟内无法进行登录尝试。 在每次后续登录尝试失败后，帐户会再次锁定，第一次锁定一分钟，后续尝试失败会锁定更长时间。
 
-* 智能锁定跟踪最后三个错误的密码哈希，以避免重新增大锁定计数器。 如果有人多次输入同一个错误密码，此行为不会导致帐户被锁定。
-   * 对于启用了直通身份验证的客户，此功能不可用。
+智能锁定跟踪最后三个错误的密码哈希，以避免重新增大锁定计数器。 如果有人多次输入同一个错误密码，此行为不会导致帐户被锁定。
+
+ > [!NOTE]
+ > 对于启用了直通身份验证的客户，哈希跟踪功能不可用，因为身份验证是在本地而不是在云中进行的。
 
 智能锁定始终对所有 Azure AD 客户启用，其这些默认设置提供了合适的安全性和可用性组合。 要使用组织特定的值自定义智能锁定设置，需要向用户提供 Azure AD Basic 或更高版本的许可证。
 
-使用智能锁定不保证真正的用户永远不会被锁定。当智能锁定锁定用户帐户时，我们会尽最大努力来确保不锁定真正的用户。 锁定服务会尽力确保不良参与者无法访问真正用户的帐户。  
+使用智能锁定不保证真正的用户永远不会被锁定。当智能锁定锁定用户帐户时，我们会尽最大努力来确保不锁定真正的用户。 锁定服务会尽力确保不良参与者无法访问真正的用户帐户。  
 
 * 每个 Azure Active Directory 数据中心都会独立地跟踪锁定。 如果用户访问每个数据中心，则用户将具有 (threshold_limit * datacenter_count) 次尝试。
 * 智能锁定使用熟悉的位置与不熟悉的位置来区分不良参与者与真正的用户。 不熟悉的位置和熟悉的位置都将具有独立的锁定计数器。
@@ -68,6 +70,14 @@ ms.locfileid: "51685797"
 > 如果锁定后的首次登录也失败了，则帐户再次锁定。 如果帐户重复锁定，则锁定持续时间增加。
 
 ![在 Azure 门户中自定义 Azure AD 智能锁定策略](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
+
+## <a name="how-to-determine-if-the-smartlockout-feature-is-working-or-not"></a>如何确定 Smartlockout 功能是否正常运行
+
+触发 smartlockout 阈值后，将在帐户锁定时收到以下消息：
+
+**帐户暂时锁定以防止未经授权的使用。请稍后再试！如果仍有问题，请与管理员联系。**
+
+
 ## <a name="next-steps"></a>后续步骤
 
 [了解如何使用 Azure AD 禁止组织中的错误密码。](howto-password-ban-bad.md)

@@ -11,14 +11,17 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 42697f7f4bb8c6b9ef785eef0fe2f5f33b2b38a7
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ROBOTS: NOINDEX
+ms.openlocfilehash: c1ebcae04b51fbf18da22872e3e4160a37a7e2fe
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615597"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201153"
 ---
 # <a name="store-batch-ai-job-input-and-output-with-azure-storage"></a>使用 Azure 存储来存储 Batch AI 作业输入和输出
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 本指南介绍如何在运行作业时使用 Azure 存储来存储输入和输出文件。 Azure 存储是受 Batch AI 支持的几种存储选项之一。 Batch AI 通过将 Azure 存储系统装载到 Batch AI 作业或群集文件系统来与 Azure 存储集成，从而允许无缝访问存储在云中的文件。 
 
@@ -76,7 +79,7 @@ Azure 存储是 Microsoft 提供的云存储解决方案。 Batch AI 支持将 A
 - <FILE_SHARE_NAME>：文件共享的名称
 - <BLOB_CONTAINER_NAME>：Blob 容器的名称
 
-若要使用 Azure Batch AI SDK 装载 Azure 存储卷，请在 `JobCreateParameters` 上设置 `mount_volumes` (Python) 或 `MountVolumes`（C#、Java）属性。 使用 Azure Batch AI SDK 装载卷时，必须提供存储帐户的凭据。 请查看在 [Python](https://docs.microsoft.com/python/api/azure-mgmt-batchai/azure.mgmt.batchai.models.MountVolumes?view=azure-python)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.batchai.models.mountvolumes?view=azure-dotnet) 和 [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.management.batchai._mount_volumes?view=azure-java-stable) 中装载卷的架构。
+若要使用 Azure Batch AI SDK 装载 Azure 存储卷，请在 `JobCreateParameters` 上设置 `mount_volumes` (Python) 或 `MountVolumes`（C#、Java）属性。 使用 Azure Batch AI SDK 装载卷时，必须提供存储帐户的凭据。 请查看在 [Python](https://docs.microsoft.com/python/api/azure-mgmt-batchai/azure.mgmt.batchai.models.MountVolumes?view=azure-python)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.batchai.models.mountvolumes?view=azure-dotnet) 和 [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.management.batchai.mountvolumes?view=azure-java-stable) 中装载卷的架构。
 
 ### <a name="mount-volumes-to-a-cluster"></a>将卷装载到群集
 

@@ -3,24 +3,24 @@ title: 使用 Linux VM 用户分配托管标识访问 Azure 资源管理器
 description: 本教程介绍使用 Linux VM 上用户分配托管标识访问 Azure 资源管理器的过程。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: daveba
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/22/2017
-ms.author: daveba
+ms.author: priyamo
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 638946f0ffa8b6540f55fb7a22ac17bd262269bf
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 857991ee171dca8e579b1e6dbfd97551ee857530
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621677"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749911"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>教程：使用 Linux VM 上的用户分配托管标识访问 Azure 资源管理器
 
@@ -84,10 +84,10 @@ az identity create -g <RESOURCE GROUP> -n <UAMI NAME>
 
 用户分配托管标识可以由多个 Azure 资源上的客户端使用。 使用以下命令将用户分配托管标识分配给单个 VM。 将上一步返回的 `Id` 属性用于 `-IdentityID` 参数。
 
-使用 [az vm assign-identity](/cli/azure/vm#az-vm-assign-identity) 将用户分配托管标识分配给 Linux VM。 请务必将 `<RESOURCE GROUP>` 和 `<VM NAME>` 参数值替换为自己的值。 将上一步返回的 `id` 属性用于 `--identities` 参数值。
+使用 [az vm identity assign](/cli/azure/vm) 将用户分配托管标识分配给 Linux VM。 请务必将 `<RESOURCE GROUP>` 和 `<VM NAME>` 参数值替换为自己的值。 将上一步返回的 `id` 属性用于 `--identities` 参数值。
 
 ```azurecli-interactive
-az vm assign-identity -g <RESOURCE GROUP> -n <VM NAME> --identities "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAMI NAME>"
+az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAMI NAME>"
 ```
 
 ## <a name="grant-your-user-assigned-managed-identity-access-to-a-resource-group-in-azure-resource-manager"></a>向用户分配托管标识授予对 Azure 资源管理器中资源组的访问权限 

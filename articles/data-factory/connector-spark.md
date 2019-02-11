@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: a9b4de73c04d7c7c753f007c02c775366b882e81
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 370da046e5a964d91b668ea80730b8d331065d29
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047303"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019956"
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>使用 Azure 数据工厂从 Spark 复制数据 
 
@@ -42,12 +41,12 @@ Spark 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：**Spark** | 是 |
+| type | Type 属性必须设置为：**Spark** | 是 |
 | host | Spark 服务器的 IP 地址或主机名  | 是 |
 | port | Spark 服务器用来侦听客户端连接的 TCP 端口。 如果连接到 Azure HDInsights，请指定端口 443。 | 是 |
-| serverType | Spark 服务器的类型。 <br/>允许的值为：**SharkServer**、**SharkServer2**、**SparkThriftServer** | 否 |
-| thriftTransportProtocol | Thrift 层中要使用的传输协议。 <br/>允许的值为：**Binary**、**SASL**、**HTTP** | 否 |
-| authenticationType | 用于访问 Spark 服务器的身份验证方法。 <br/>允许的值为：**Anonymous**、**Username**、**UsernameAndPassword**、**WindowsAzureHDInsightService** | 是 |
+| serverType | Spark 服务器的类型。 <br/>允许值包括：SharkServer、SharkServer2、SparkThriftServer | 否 |
+| thriftTransportProtocol | Thrift 层中要使用的传输协议。 <br/>允许值包括：二进制、SASL、HTTP | 否 |
+| authenticationType | 用于访问 Spark 服务器的身份验证方法。 <br/>允许值包括：Anonymous、Username、UsernameAndPassword、WindowsAzureHDInsightService | 是 |
 | username | 用于访问 Spark 服务器的用户名。  | 否 |
 | password | 用户所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | httpPath | 对应于 Spark 服务器的部分 URL。  | 否 |
@@ -56,7 +55,7 @@ Spark 链接服务支持以下属性：
 | useSystemTrustStore | 指定是使用系统信任存储中的 CA 证书还是使用指定 PEM 文件中的 CA 证书。 默认值为 false。  | 否 |
 | allowHostNameCNMismatch | 指定通过 SSL 进行连接时是否要求 CA 颁发的 SSL 证书的名称与服务器的主机名相匹配。 默认值为 false。  | 否 |
 | allowSelfSignedServerCert | 指定是否允许来自服务器的自签名证书。 默认值为 false。  | 否 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure Integration Runtime 时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：**
 
@@ -83,7 +82,12 @@ Spark 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Spark 数据集支持的属性列表。
 
-要从 Spark 复制数据，请将数据集的 type 属性设置为“SparkObject”。 此类型的数据集中没有任何其他特定于类型的属性。
+要从 Spark 复制数据，请将数据集的 type 属性设置为“SparkObject”。 支持以下属性：
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| type | 数据集的 type 属性必须设置为：SparkObject | 是 |
+| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -95,7 +99,8 @@ Spark 链接服务支持以下属性：
         "linkedServiceName": {
             "referenceName": "<Spark linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -104,14 +109,14 @@ Spark 链接服务支持以下属性：
 
 有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Spark 数据源支持的属性列表。
 
-### <a name="sparksource-as-source"></a>以 SparkSource 作为源
+### <a name="spark-as-source"></a>Spark 作为源
 
-要从 Spark 复制数据，请将复制活动中的源类型设置为“SparkSource”。 复制活动**源**部分支持以下属性：
+要从 Spark 复制数据，请将复制活动中的源类型设置为“SparkSource”。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：SparkSource | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 是 |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

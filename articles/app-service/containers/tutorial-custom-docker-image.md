@@ -1,5 +1,5 @@
 ---
-title: 为用于容器的 Web 应用使用自定义 Docker 映像 - Azure | Microsoft Docs
+title: 对用于容器的 Web 应用使用自定义 Docker 映像 - Azure 应用服务 | Microsoft Docs
 description: 如何对用于容器的 Web 应用使用自定义 Docker 映像。
 keywords: azure 应用服务、web 应用、linux、docker、容器
 services: app-service
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: 517926a3c78e9c95a9ecef9ae058c33e47566adb
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.custom: seodec18
+ms.openlocfilehash: 62cdc50b40fb1273fdc2eece050869fc2284cf6c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432600"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632970"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>对用于容器的 Web 应用使用自定义 Docker 映像
 
@@ -193,7 +193,7 @@ v1.0.0: digest: sha256:21f2798b20555f4143f2ca0591a43b4f6c8138406041f2d32ec908974
 
 ## <a name="deploy-app-to-azure"></a>将应用部署到 Azure
 
-可使用 Azure Web 应用在云中托管本机 Linux 应用程序。 要创建用于容器的 Web 应用，必须依次运行用来创建组的 Azure CLI 命令、服务计划和 Web 应用本身。 
+若要创建使用刚刚推送的映像的应用，请运行 Azure CLI 命令，以创建组，然后创建服务计划，最后创建 Web 应用本身。 
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
@@ -292,7 +292,7 @@ SSH 实现容器和客户端之间的安全通信。 要让自定义 Docker 映�
     > [!NOTE]
     > 此配置不允许从外部建立到容器的连接。 只能通过 Kudu/SCM 站点使用 SSH。 Kudu/SCM 站点使用发布凭据进行身份验证。
 
-* [COPY](https://docs.docker.com/engine/reference/builder/#copy) 指令指示 Docker 引擎将 [sshd_config](http://man.openbsd.org/sshd_config) 文件复制到 /etc/ssh/ 目录。 配置文件应基于[此 sshd_config 文件](https://github.com/Azure-App-Service/node/blob/master/6.11.1/sshd_config)。
+* [COPY](https://docs.docker.com/engine/reference/builder/#copy) 指令指示 Docker 引擎将 [sshd_config](https://man.openbsd.org/sshd_config) 文件复制到 /etc/ssh/ 目录。 配置文件应基于[此 sshd_config 文件](https://github.com/Azure-App-Service/node/blob/master/6.11.1/sshd_config)。
 
     ```docker
     COPY sshd_config /etc/ssh/

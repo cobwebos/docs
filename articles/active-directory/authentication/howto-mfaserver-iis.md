@@ -3,19 +3,19 @@ title: IIS 身份验证和 Azure MFA 服务器 | Microsoft Docs
 description: 部署 IIS 身份验证和 Azure 多重身份验证服务器。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 6fa0f7250b0714921c631b7f77b3bc9e826b9ba4
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 749c0de4a268c005fe73fe594ded9ad1d1700670
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161770"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079845"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>配置适用于 IIS Web 应用的 Azure 多重身份验证服务器
 
@@ -28,7 +28,7 @@ ms.locfileid: "39161770"
 
 1. 在 Azure 多重身份验证服务器中，单击左侧菜单中的 IIS 身份验证图标。
 2. 单击“基于表单”选项卡。
-3. 单击 **“添加”**。
+3. 单击“添加”。
 4. 若要自动检测用户名、密码和域变量，请在“自动配置基于窗体的网站”对话框内输入登录 URL（例如 https://localhost/contoso/auth/login.aspx)），并单击“确定”。
 5. 如果所有用户均已导入或将导入到该服务器并接受多重身份验证，请选中“需要多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器并且/或者将免除 Multi-Factor Authentication，请使该框处于未选中状态。
 6. 如果无法自动检测到页变量，请单击“自动配置基于窗体的网站”对话框中的“手动指定”。
@@ -51,7 +51,7 @@ ms.locfileid: "39161770"
 
 1. 在 Azure 多重身份验证服务器中，单击左侧菜单中的 IIS 身份验证图标。
 2. 单击“HTTP”选项卡。
-3. 单击 **“添加”**。
+3. 单击“添加”。
 4. 在“添加基 URL”对话框中，输入执行 HTTP 身份验证的网站的 URL（例如 http://localhost/owa)）并提供应用程序名称（可选）。 应用程序名称将出现在 Azure 多重身份验证报告中，并可能会显示在短信或移动应用身份验证消息中。
 5. 调整空闲超时和会话时间上限（如果默认值不够）。
 6. 如果所有用户均已导入或将导入到该服务器并接受多重身份验证，请选中“需要多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器并且/或者将免除 Multi-Factor Authentication，请使该框处于未选中状态。
@@ -69,6 +69,6 @@ ms.locfileid: "39161770"
 受信任的 IP 允许用户跳过对从特定 IP 地址或子网发起的网站请求的 Azure 多重身份验证。 例如，当用户从办公室登录时，你可能想让这些用户免除 Azure 多重身份验证。 为此，可将办公室子网指定为受信任的 IP 条目。 若要配置受信任的 IP，请使用以下过程：
 
 1. 在“IIS 身份验证”部分中，单击“受信任的 IP”选项卡。
-2. 单击 **“添加”**。
+2. 单击“添加”。
 3. 显示“添加受信任 IP”对话框时，选择“单个 IP”、“IP 范围”或“子网”单选按钮。
 4. 输入应加入允许列表的 IP 地址、IP 地址范围或子网。 如果输入子网，请选择适当的网络掩码，并单击“确定”。 现已添加允许列表。

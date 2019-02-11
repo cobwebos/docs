@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 71285ce3b1fb3cc592fc65b4ad96c6783de0c408
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 1e62495de35c8df4f446d371a0bbbcdc80c7118d
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499301"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650097"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>将 Apache HBase 群集迁移到新版本
 
@@ -26,16 +26,16 @@ ms.locfileid: "52499301"
 4. 导入暂时性数据。
 5. 启动作业并在新群集上继续处理。
 
-若要升级 [Apache HBase](http://hbase.apache.org/) 群集，需要执行本文所述的一些附加步骤。
+若要升级 [Apache HBase](https://hbase.apache.org/) 群集，需要执行本文所述的一些附加步骤。
 
-> [!NOTE]
+> [!NOTE]  
 > 升级造成的停机时间应该很短，以分钟计。 停机是执行刷新所有内存中数据的步骤，然后在新群集上配置和重启服务造成的。 根据节点数目、数据量和其他变数，结果会有所不同。
 
 ## <a name="review-apache-hbase-compatibility"></a>检查 Apache HBase 兼容性
 
-在升级 Apache HBase 之前，请确保源群集和目标群集上的 HBase 版本兼容。 有关详细信息，请参阅 [HDInsight 提供的 Hadoop 组件和版本](../hdinsight-component-versioning.md)。
+在升级 Apache HBase 之前，请确保源群集和目标群集上的 HBase 版本兼容。 有关详细信息，请参阅 [Apache HDInsight 提供的 Hadoop 组件和版本](../hdinsight-component-versioning.md)。
 
-> [!NOTE]
+> [!NOTE]  
 > 我们强烈建议查看 [HBase 书册](https://hbase.apache.org/book.html#upgrading)中的版本兼容性矩阵。
 
 下面是一个示例版本兼容性矩阵，其中的 Y 表示兼容，N 表示潜在的不兼容：
@@ -54,7 +54,7 @@ ms.locfileid: "52499301"
 | 依赖项兼容性 | N | Y | Y |
 | 操作兼容性 | N | N | Y |
 
-> [!NOTE]
+> [!NOTE]  
 > HBase 版本发行说明中应会阐述任何重大的不兼容性。
 
 ## <a name="upgrade-with-same-apache-hbase-major-version"></a>使用相同的 Apache HBase 主版本升级
@@ -203,7 +203,7 @@ ms.locfileid: "52499301"
 9. 根据 Ambari 中的指示重启全部所需的服务。
 10. 将应用程序指向新群集。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 升级时，应用程序的静态 DNS 会更改。 不要硬编码此 DNS，可以在域名的 DNS 设置中配置一个指向群集名称的 CNAME。 另一种做法是使用应用程序的、无需重新部署即可更新的配置文件。
 
 11. 启动引入，确定一切是否按预期正常运行。
@@ -211,7 +211,7 @@ ms.locfileid: "52499301"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 [Apache HBase](http://hbase.apache.org/) 以及如何升级 HDInsight 群集，请参阅以下文章：
+若要详细了解 [Apache HBase](https://hbase.apache.org/) 以及如何升级 HDInsight 群集，请参阅以下文章：
 
 * [将 HDInsight 群集升级到更新版本](../hdinsight-upgrade-cluster.md)
 * [使用 Apache Ambari Web UI 监视和管理 Azure HDInsight](../hdinsight-hadoop-manage-ambari.md)

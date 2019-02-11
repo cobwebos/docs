@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: a460a8f4c652182a7916cba5aef0520834432909
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4aa594769a3665908f0adce498a4a2bf3a4f4f83
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614804"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189062"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure 后端连接功能中的互操作性：测试配置详细信息
 
@@ -166,7 +166,7 @@ ExpressRoute 1 将中心 VNet 和本地位置 1 连接到不同 Azure 区域中�
 
 ###  <a name="site-to-site-vpn-over-expressroute"></a>基于 ExpressRoute 的站点到站点 VPN
 
-可以使用 ExpressRoute Microsoft 对等互连配置站点到站点 VPN，在本地网络与 Azure VNet 之间以私密方式交换数据。 使用此配置可以在确保保密性、真实性和完整性的基础上交换数据。 这种数据交换还可以防重播。 有关如何使用 ExpressRoute Microsoft 对等互连在隧道中配置站点到站点 IPsec VPN 的详细信息，请参阅[基于 ExpressRoute Microsoft 对等互连的站点到站点 VPN][S2S-Over-ExR]。 
+可以使用 ExpressRoute Microsoft 对等互连配置站点到站点 VPN，在本地网络与 Azure VNet 之间以私密方式交换数据。 使用此配置可以在确保保密性、真实性和完整性的基础上交换数据。 这种数据交换还可以防重播。 有关如何使用 ExpressRoute Microsoft 对等互连以隧道模式配置站点到站点 IPsec VPN 的详细信息，请参阅[基于 ExpressRoute Microsoft 对等互连的站点到站点 VPN][S2S-Over-ExR]。 
 
 配置使用 Microsoft 对等互连的站点到站点 VPN 的主要限制是吞吐量。 基于 IPsec 隧道的吞吐量受限于 VPN 网关容量。 VPN 网关吞吐量低于 ExpressRoute 吞吐量。 在这种情况下，对高安全性流量使用 IPsec 隧道，并对其他所有流量使用专用对等互连，将有助于优化 ExpressRoute 带宽利用率。
 
@@ -186,7 +186,7 @@ ExpressRoute 充当冗余的线路对，可确保高可用性。 可在不同的
 
 ### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>使用站点到站点 VPN 建立分支 VNet 连接
 
-你可能希望位于不同区域中的分支 VNet 和本地网络通过中心 VNet 相互通信。 此配置的原生 Azure 解决方案是使用 VPN 建立站点到站点 VPN 连接。 替代方案是对中心内部的路由使用网络虚拟设备 (NVA)。
+你可能想让位于不同区域中的分支 VNet 和本地网络通过中心 VNet 相互通信。 此配置的本机 Azure 解决方案是使用 VPN 建立站点到站点 VPN 连接。 替代方案是对中心内部的路由使用网络虚拟设备 (NVA)。
 
 有关详细信息，请参阅[什么是 VPN 网关？][VPN]和[部署高度可用的 NVA][Deploy-NVA]。
 
@@ -196,10 +196,10 @@ ExpressRoute 充当冗余的线路对，可确保高可用性。 可在不同的
 
 了解测试设置的[数据平面分析][Data-Analysis]，以及 Azure 网络监视功能视图。
 
-参阅 [ExpressRoute 常见问题解答][ExR-FAQ]，了解：
--   可将多少条 ExpressRoute 线路连接到一个 ExpressRoute 网关。
--   可将多少个 ExpressRoute 网关连接到一条 ExpressRoute 线路。
--   ExpressRoute 的其他缩放限制。
+请参阅 [ExpressRoute 常见问题解答][ExR-FAQ]：
+-   了解可将多少条 ExpressRoute 线路连接到一个 ExpressRoute 网关。
+-   了解可将多少个 ExpressRoute 网关连接到一条 ExpressRoute 线路。
+-   了解 ExpressRoute 的其他缩放限制。
 
 
 <!--Image References-->

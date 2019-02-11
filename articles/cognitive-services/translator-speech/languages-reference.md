@@ -6,28 +6,28 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-speech
+ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/18
 ms.author: v-jansko
-ms.openlocfilehash: b7005811898df9132be6bc199e26f6c6dc358618
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: f377e073f42e96264fe4c7edb31ea58c68c46494
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345197"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474966"
 ---
-# <a name="translator-speech-api-languages"></a>语音翻译 API：语言
+# <a name="translator-speech-api-languages"></a>语音翻译 API：Languages
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
 语音翻译不断扩展其服务支持的语言列表。 使用此 API 可以发现当前可用于语音翻译服务的语言集。
 
-可以从 [Microsoft Translator Github 站点](https://github.com/MicrosoftTranslator)获得演示如何使用 API 获取可用语言的代码示例。
+可以从 [Microsoft Translator GitHub 站点](https://github.com/MicrosoftTranslator)获得演示如何使用 API 获取可用语言的代码示例。
 
 ## <a name="implementation-notes"></a>实现说明
 
-GET /语言 
+### <a name="get-languages"></a>GET /语言 
 
 有多种语言可用于转录语音、翻译转录文本，以及生成翻译的合成语音。
 
@@ -131,13 +131,13 @@ Langagues { speech (object, optional), text (object, optional), tts (object, opt
 
 ### <a name="headers"></a>标头
 
-|标头|Description|Type|
+|标头|说明|Type|
 :--|:--|:--|
 X-RequestId|服务器生成的值，用于标识请求并用于故障排除目的。|字符串|
 
 ### <a name="parameters"></a>parameters
 
-|参数|Description|参数类型|数据类型|
+|参数|说明|参数类型|数据类型|
 |:--|:--|:--|:--|
 |api-version    |客户端所请求的 API 的版本。 允许值包括：`1.0`。|query|字符串|
 |作用域  |要返回给客户端的受支持语言或语音集。 此参数指定为以逗号分隔的关键字列表。 以下关键字可用：<ul><li>`speech`：提供支持转录语音的语言集。</li><li>`tts`：提供支持文本-语音转换的语音集。</li><li>`text`：提供支持翻译文本的语言集。</li></ul>如果未指定值，则 `scope` 的值默认为 `text`。|query|字符串|
@@ -150,5 +150,5 @@ X-RequestId|服务器生成的值，用于标识请求并用于故障排除目�
 |:--|:--|
 |400|请求错误。 请检查输入参数以确保它们有效。 响应对象包括错误的更详细描述。|
 |429|请求过多。|
-|500|出现错误。 如果错误仍然存在，请使用客户端跟踪标识符 (X-ClientTraceId) 或请求标识符 (X-RequestId) 进行报告。|
+|500|发生错误。 如果错误仍然存在，请使用客户端跟踪标识符 (X-ClientTraceId) 或请求标识符 (X-RequestId) 进行报告。|
 |503|服务器暂不可用。 请重试请求。 如果错误仍然存在，请使用客户端跟踪标识符 (X-ClientTraceId) 或请求标识符 (X-RequestId) 进行报告。|

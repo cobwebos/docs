@@ -1,23 +1,23 @@
 ---
-title: 快速入门：获取备用翻译，Python - 文本翻译 API
+title: 快速入门：使用双语字典、Python 查找字词 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何使用 Python 和文本翻译 REST API 查找指定文本的备用翻译和用法示例。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/21/2018
 ms.author: erhopf
-ms.openlocfilehash: 6e75ceb388b3111ea9ec31ba6bffded4077a019b
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 8dcde1231d5e2d73b868411cb22b8420843197be
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248654"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458235"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-python"></a>快速入门：使用 Python 通过文本翻译 API 获取备用翻译
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-python"></a>快速入门：通过 Python 使用双语字典查找字词
 
 本快速入门介绍如何使用 Python 和文本翻译 REST API 查找指定文本的备用翻译和用法示例。
 
@@ -167,7 +167,7 @@ python dictionary-lookup.py
 
 ## <a name="see-also"></a>另请参阅
 
-除了文本直译，还请了解如何使用文本翻译 API 执行以下操作：
+了解如何使用文本翻译 API 执行以下操作：
 
 * [翻译文本](quickstart-python-translate.md)
 * [直译文本](quickstart-python-transliterate.md)

@@ -1,33 +1,13 @@
 ---
-title: 定义 Azure 机器学习工作室的自定义 R 模块 | Microsoft Docs
-description: 本主题介绍如何在 Azure 机器学习中创建和部署自定义 R 模块， 解释什么是自定义 R 模块以及要使用什么文件来定义此类模块， 并举例说明如何构建定义模块的文件，以及如何在机器学习工作室工作区中进行模块部署注册。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
-editor: cgronlun
-ms.assetid: 6cbc628a-7e60-42ce-9f90-20aaea7ba630
-ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 11/29/2017
-ms.openlocfilehash: b8ab22f1567102ed79ccf6e0bf49dbdbc3f42ea9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308421"
+title:定义自定义 R 模块 titleSuffix:Azure 机器学习工作室 description:本主题介绍如何在 Azure 机器学习中创建和部署自定义 R 模块， 解释什么是自定义 R 模块以及要使用什么文件来定义此类模块， services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:11/29/2017
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>定义 Azure 机器学习工作室的自定义 R 模块
 
 本主题介绍如何在 Azure 机器学习工作室中创建和部署自定义 R 模块。 解释什么是自定义 R 模块以及要使用什么文件来定义此类模块， 并举例说明如何构建定义模块的文件以及如何在机器学习工作区中进行模块部署注册。 随后本主题会详细说明用于定义自定义模块的元素和属性。 本主题还会讨论如何使用辅助功能和文件以及多个输出。 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="what-is-a-custom-r-module"></a>什么是自定义 R 模块？
 **自定义模块**是一种用户定义的模块，可上传至工作区并在 Azure 机器学习实验中运行。 **自定义 R 模块**是一种可执行用户定义的 R 函数的自定义模块。 **R** 是一种用于统计计算和图形的编程语言，统计和科学工作者将其广泛用于运行算法。 目前，R 是自定义模块支持的唯一语言；但根据计划，未来发布的版本会支持其他语言。
@@ -96,7 +76,7 @@ ms.locfileid: "52308421"
     </Module>
 
 
-但要注意，XML 文件中 **Input** 和 **Arg** 元素的 **ID** 属性的值必须与 CustomAddRows.R 文件中 R 代码的函数参数名完全匹配：（示例中的 *dataset1*、*dataset2* 和 *swap*）。 同样，**Language** 元素的 **entryPoint** 属性值必须与 R 脚本中的函数名完全匹配：（示例中的 *CustomAddRows*）。 
+但要注意，XML 文件中 **Input** 和 **Arg** 元素的 **ID** 属性的值必须与 CustomAddRows.R 文件中 R 代码的函数参数名完全匹配：（示例中的 *dataset1*、*dataset2* 和 *swap*）。 同样，Language 元素的 entryPoint 属性值必须与 R 脚本中的函数名完全匹配：（示例中的 CustomAddRows）。 
 
 与此相反，**Output** 元素的 **ID** 属性与 R 脚本中的任何变量都不相符。 需要多个输出时，只需从 R 函数返回一个列表，列表中的结果需与 XML 文件中公开的 **Outputs** 元素顺序相同。
 
@@ -177,7 +157,7 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
 * **Input** 元素的 **isOptional** 属性值并非必须指定（且未指定时，默认为 false ）；但如果指定，则属性值必须为 true 或 false。
 
 ### <a name="output-elements"></a>输出元素
-**标准输出端口：** 输出端口被映射到 R 函数返回的值上，可用于后续模块。 DataTable 是当前支持的唯一标准输出端口类型。 （随后会支持 Learners 和 Transforms。）*DataTable* 输出的定义为：
+**标准输出端口：** 输出端口将映射到 R 函数返回的值上，可用于后续模块。 DataTable 是当前支持的唯一标准输出端口类型。 （随后会支持 Learners 和 Transforms。）*DataTable* 输出的定义为：
 
     <Output id="dataset" name="Dataset" type="DataTable">
         <Description>Combined dataset</Description>
@@ -215,7 +195,7 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
     return (list(dataset, dataset1, dataset2)) 
     } 
 
-**可视化输出：** 还可以指定 *Visualization* 类型的输出端口，该端口可显示 R 图形设备输出和控制台输出。 此端口不包含在 R 函数输出中且不会干扰其他输出端口类型的顺序。 若要添加可视化端口到自定义模块，添加一个 **type** 属性的值为 *Visualization* 的 **Output** 元素：
+**可视化输出：** 还可以指定 Visualization 类型的输出端口，该端口可显示 R 图形设备输出和控制台输出。 此端口不包含在 R 函数输出中且不会干扰其他输出端口类型的顺序。 若要添加可视化端口到自定义模块，添加一个 **type** 属性的值为 *Visualization* 的 **Output** 元素：
 
     <Output id="deviceOutput" name="View Port" type="Visualization">
       <Description>View the R console graphics device output.</Description>
@@ -372,6 +352,6 @@ R 脚本的执行环境使用与**执行 R 脚本**模块相同的 R 版本，�
 
 执行环境限制包括：
 
-* 非持久文件系统：自定义模块运行的文件编写无法在相同模块的多个运行上持续进行。
+* 非永久文件系统：运行自定义模块时写入的文件不会在同一模块的多个运行中保留。
 * 无网络访问
 

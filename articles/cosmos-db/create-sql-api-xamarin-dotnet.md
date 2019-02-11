@@ -1,27 +1,25 @@
 ---
-title: Azure Cosmos DB：使用 Xamarin 生成 ToDo 应用 | Microsoft Docs
+title: Azure Cosmos DB：使用 Xamarin 生成 todo 应用
 description: 演示了一个可以用来连接到 Azure Cosmos DB 并进行查询的 Xamarin 代码示例
-services: cosmos-db
 author: codemillmatt
-manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
-ms.custom: quick start connect, mvc
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: c48c5f116ef9c5716533ca28ccfd58b613facd26
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 127002dc59db6ab9940e4bc2a66678adecc33160
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993315"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354121"
 ---
-# <a name="azure-cosmos-db-build-a-todo-app-with-xamarin"></a>Azure Cosmos DB：使用 Xamarin 生成 ToDo 应用
+# <a name="azure-cosmos-db-build-a-todo-app-with-xamarin"></a>Azure Cosmos DB：使用 Xamarin 生成 todo 应用
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
+> * [.NET（预览版）](create-sql-api-dotnet-preview.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
@@ -64,7 +62,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-现在请从 GitHub 克隆 Xamarin SQL API 应用，查看代码，获取 API 密钥，然后运行该应用。 会看到以编程方式处理数据是多么容易。
+现在请从 GitHub 克隆 Xamarin SQL API 应用、查看代码、获取 API 密钥，然后运行该应用。 会看到以编程方式处理数据是多么容易。
 
 1. 打开命令提示符，新建一个名为“git-samples”的文件夹，然后关闭命令提示符。
 
@@ -90,7 +88,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 返回到 Azure 门户，获取 API 密钥信息并将其复制到应用中。
 
-1. 在 [Azure 门户](http://portal.azure.com/)的 Azure Cosmos DB SQL API 帐户的左侧导航栏中，单击“密钥”，然后单击“读写密钥”。 使用屏幕右侧的复制按钮将 URI 和主密钥复制到下一步的 APIKeys.cs 文件中。
+1. 在 [Azure 门户](https://portal.azure.com/)的 Azure Cosmos DB SQL API 帐户的左侧导航栏中，单击“密钥”，然后单击“读写密钥”。 使用屏幕右侧的复制按钮将 URI 和主密钥复制到下一步的 APIKeys.cs 文件中。
 
     ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-sql-api-xamarin-dotnet/keys.png)
 

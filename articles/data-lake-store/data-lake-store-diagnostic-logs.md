@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 91cbebecc227d24337b2d1b421dd1611bf0fac46
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 357257d38c444eae8077568993d49816e3c090a3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390790"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966069"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>访问 Azure Data Lake Storage Gen1 的诊断日志
 了解如何启用 Azure Data Lake Storage Gen1 帐户诊断日志记录以及如何查看为帐户收集的日志。
@@ -25,7 +25,7 @@ ms.locfileid: "44390790"
 组织可启用 Azure Data Lake Storage Gen1 帐户诊断记录来收集数据访问审核跟踪（会提供访问数据的用户列表、数据的访问频率和帐户中存储的数据量等信息）。启用后，会最大程度地记录诊断和/或请求。 仅在针对服务终结点发出请求时才会创建请求和诊断日志条目。
 
 ## <a name="prerequisites"></a>先决条件
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帐户**。 请按[通过 Azure 门户开始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明操作。
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-storage-gen1-account"></a>对 Data Lake Storage Gen1 帐户启用诊断日志记录
@@ -46,7 +46,7 @@ ms.locfileid: "44390790"
         
         * 选择选项“流式传输到事件中心”将日志数据流式传输到 Azure 事件中心。 具有下游处理管道来实时分析传入日志时最可能使用此选项。 若选择此选项，必须提供要使用的 Azure 事件中心的详细信息。
 
-        * 选择选项“发送到 Log Analytics”，以使用 Azure Log Analytics 服务分析生成的日志数据。 如果选择此选项，必须提供要用于执行日志分析的 Log Analytics 工作区的详细信息。 有关如何使用 Log Analytics 的详细信息，请参阅[查看或分析使用 Log Analytics 日志搜索收集的数据](../log-analytics/log-analytics-tutorial-viewdata.md)。
+        * 选择选项“发送到 Log Analytics”，以使用 Azure Log Analytics 服务分析生成的日志数据。 如果选择此选项，必须提供要用于执行日志分析的 Log Analytics 工作区的详细信息。 有关如何使用 Log Analytics 的详细信息，请参阅[查看或分析使用 Log Analytics 日志搜索收集的数据](../azure-monitor/learn/tutorial-viewdata.md)。
      
    * 指定是要获取审核日志还是请求日志，或者两者都获取。
    * 指定数据必须保留的天数。 保留期仅在使用 Azure 存储帐户存档日志数据时才适用。
@@ -113,7 +113,7 @@ ms.locfileid: "44390790"
     }
 
 #### <a name="request-log-schema"></a>请求日志架构
-| 名称 | Type | Description |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | time |String |日志时间戳（采用 UTC） |
 | resourceId |String |操作发生所在的资源的 ID |
@@ -126,7 +126,7 @@ ms.locfileid: "44390790"
 | 属性 |JSON |详细信息参见以下内容 |
 
 #### <a name="request-log-properties-schema"></a>请求日志属性架构
-| 名称 | Type | Description |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | HttpMethod |String |用于此操作的 HTTP 方法。 例如 GET。 |
 | 路径 |String |操作执行所在的路径 |
@@ -160,7 +160,7 @@ ms.locfileid: "44390790"
     }
 
 #### <a name="audit-log-schema"></a>审核日志架构
-| 名称 | Type | Description |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | time |String |日志时间戳（采用 UTC） |
 | resourceId |String |操作发生所在的资源的 ID |
@@ -173,12 +173,12 @@ ms.locfileid: "44390790"
 | 属性 |JSON |详细信息参见以下内容 |
 
 #### <a name="audit-log-properties-schema"></a>审核日志属性架构
-| 名称 | Type | Description |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | StreamName |String |操作执行所在的路径 |
 
 ## <a name="samples-to-process-the-log-data"></a>日志数据处理示例
-将日志从 Azure Data Lake Storage Gen1 发送到 Azure Log Analytics 时（有关如何使用 Log Analytics 的详细信息，请参阅[查看或分析使用 Log Analytics 日志搜索收集的数据](../log-analytics/log-analytics-tutorial-viewdata.md)），以下查询会返回一个表，其中列出了用户显示名称、事件时间和事件时间的事件计数并包含一个可视图表。 可轻松修改该查询，以显示用户 GUID 或其他属性：
+将日志从 Azure Data Lake Storage Gen1 发送到 Azure Log Analytics 时（有关如何使用 Log Analytics 的详细信息，请参阅[查看或分析使用 Log Analytics 日志搜索收集的数据](../azure-monitor/learn/tutorial-viewdata.md)），以下查询会返回一个表，其中列出了用户显示名称、事件时间和事件时间的事件计数并包含一个可视图表。 可轻松修改该查询，以显示用户 GUID 或其他属性：
 
 ```
 search *

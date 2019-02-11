@@ -1,0 +1,109 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: cb17c5cee68b707013e83e699e33a22059ee9c27
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697164"
+documentType: LandingData
+title: 内容审查器文档
+metadata:
+  title: 内容审查器文档 - 快速入门、教程和 API 参考 - Azure 认知服务 | Microsoft Docs
+  description: 了解如何使用内容审查器检查文本、图像和视频中是否存在可能有冒犯性、有危害或令人不适的内容。
+  services: cognitive-services
+  author: nitinme
+  manager: cgronlun
+  ms.service: cognitive-services
+  ms.subservice: content-moderator
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 12/20/2018
+  ms.author: nitinme
+abstract:
+  description: Azure 内容审查器 API 是一项认知服务，用于检查文本、图像和视频中是否存在可能的冒犯性内容、危险内容或其他令人不适的内容。 找到此类内容时，此服务会将相应的标签（标记）应用到该内容。 然后，应用会处理标记的内容，使之符合法规的要求，或者为用户维持一个理想的环境。
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: ../media/index/content-moderator-landing-page-video.png
+      width: 250
+    title: 使用内容审查器进行视频审查 (15:42)
+    href: https://channel9.msdn.com/Shows/AI-Show/Video-Moderation-with-Content-Moderator?term=content%20moderator&lang-en=true
+    width: 250
+sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/content-moderator/overview
+      html: <p>了解内容审查器 API。</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: 什么是内容审查器？
+    - href: /azure/cognitive-services/content-moderator/text-moderation-api
+      html: <p>了解文本审查。</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: 文本审查 API
+    - href: /azure/cognitive-services/content-moderator/image-moderation-api
+      html: <p>了解图像审查。</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: 图像审查 API
+- title: 5 分钟快速入门
+  items:
+  - type: paragraph
+    text: 通过选择箭头链接了解如何开始使用内容审查器 <img src="images/index/link.jpg" height="15" width="15"></img>.
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: images/index/i_portal.svg
+    - image:
+        src: images/index/logo_csharp.svg
+    - image:
+        src: images/index/logo_python.svg
+    rows:
+    - title: 分析文本内容
+      values:
+      - href: quick-start
+      - href: text-moderation-quickstart-dotnet
+      - href: text-moderation-quickstart-python
+    - title: 分析图像内容
+      values:
+      - href: 
+      - href: image-moderation-quickstart-dotnet
+      - href: 
+- title: 分步教程
+  items:
+  - type: paragraph
+    text: 了解如何使用内容审查器开发应用程序：
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="ecommerce-retail-catalog-moderation.md">审查电子商务产品图像</a>
+- title: 示例
+  items:
+  - type: paragraph
+    text: 查找内容审查器 API 示例：
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=content+moderator&sort=Relevance">代码示例</a>
+- title: 引用
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: API
+      html: <p><a href="https://docs.microsoft.com/azure/cognitive-services/content-moderator/api-reference">REST API</a></p>
+    - title: SDK
+      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-contentmoderator/?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator">Go</a></p>
+    - title: PowerShell
+      html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
+    - title: CLI
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>

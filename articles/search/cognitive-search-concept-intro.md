@@ -1,53 +1,56 @@
 ---
-title: Azure 搜索中用于数据提取和自然语言 AI 处理的认知搜索 | Microsoft Docs
-description: 使用认知技能和 AI 算法进行内容提取、自然语言处理 (NLP) 和图像处理，以便在 Azure 搜索索引中创建可搜索的内容
+title: 认知搜索、数据提取、自然语言 AI 进程 - Azure 搜索
+description: 使用认知技能和 AI 算法进行内容提取、自然语言处理 (NLP) 和图像处理，以便在 Azure 搜索索引中创建可搜索的内容。
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 01/18/2019
 ms.author: heidist
-ms.openlocfilehash: 68d546fc4c853f1a19230b8aee7e86519aaa7e4c
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec2018
+ms.openlocfilehash: eb344d6da15a8faf8f05720ae9b1fd49bd42db2f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729026"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808190"
 ---
-# <a name="what-is-cognitive-search"></a>什么是认知搜索？
+# <a name="what-is-cognitive-search-in-azure-search"></a>什么是 Azure 搜索中的“认知搜索”？
 
-认知搜索通过将 AI 算法附加到索引管道，从非可搜索内容中创建可搜索信息。 AI 集成通过认知技能实现。该技能在搜索索引的路由中扩充源文档。 
+认知搜索是 Azure 搜索中的 AI 功能，用于从图像、blob 和其他非结构化的数据源中提取文本 - 丰富内容以使其在 Azure 搜索索引中更易于搜索。 通过附加到索引管道的“认知技能”来实现提取和丰富。 以下方式支持 AI 丰富： 
 
-自然语言处理技能包括[实体识别](cognitive-search-skill-named-entity-recognition.md)、语言检测、[关键短语提取](cognitive-search-skill-keyphrases.md)、文本操作和情绪检测。 通过这些技能，非结构化的文本将变得结构化，映射到索引中的可搜索和可筛选字段。
++ “自然语言处理”技能包括[实体识别](cognitive-search-skill-entity-recognition.md)、[语言检测](cognitive-search-skill-language-detection.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)、文本操作和[情绪检测](cognitive-search-skill-sentiment.md)。 通过这些技能，非结构化文本可以假定新窗体，在索引中映射为可搜索和可筛选字段。
 
-图像处理包括 [OCR](cognitive-search-skill-ocr.md) 和[视觉特征](cognitive-search-skill-image-analysis.md)标识，例如面部检测、图像解释、图像识别（名人和地标）或属性（例如颜色或图像方向）。 可以创建图像内容的文本表示形式，并且可使用 Azure 搜索的所有查询功能来搜索。
++ “图像处理”技能包括 [光学字符识别 (OCR)](cognitive-search-skill-ocr.md) 和[视觉特征](cognitive-search-skill-image-analysis.md)标识，例如面部检测、图像解释、图像识别（名人和地标）或属性（例如颜色或图像方向）。 可以创建图像内容的文本表示形式，并且可使用 Azure 搜索的所有查询功能来搜索。
 
 ![认知搜索管道示意图](./media/cognitive-search-intro/cogsearch-architecture.png "认知搜索管道概述")
 
-Azure 搜索中的认知技能基于认知服务 API 中使用的相同 AI 算法：[命名实体识别](cognitive-search-skill-named-entity-recognition.md)、[关键短语提取 API](cognitive-search-skill-keyphrases.md) 和 [OCR API](cognitive-search-skill-ocr.md) 只是其中的几个。 
+Azure 搜索中的认知技能基于认知服务 API 中的机器学习模型：[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/)和[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)。 
 
 数据引入阶段应用了自然语言和图形处理，同时结果会成为 Azure 搜索中可搜索索引中文档撰写的一部分。 数据作为 Azure 数据集的来源，然后使用任意所需的[内置技能](cognitive-search-predefined-skills.md)通过索引管道进行推送。 体系结构可扩展，因此如果内置技能不足，可以创建并附加[自定义技能](cognitive-search-create-custom-skill-example.md)，以集成自定义处理。 示例包括面向特定领域（例如金融、科技出版或医疗）的自定义实体模块或文档分类器。
 
 > [!NOTE]
-> Azure 搜索目前提供公共预览版。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 
+> 从 2018 年 12 月 21 日开始，可以[将认知服务资源附加到 Azure 搜索技能集](cognitive-search-attach-cognitive-services.md)。 这会使我们能够开始对技能集执行收费。 在此日期，我们还会开始将图像提取视为文档破解阶段的一部分进行计费。 我们将继续提供文档文本提取服务而不收取额外费用。
+>
+> 执行内置技能是一项认知服务费用，按照现有的[按需付费价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取费用是 Azure 搜索费用，目前按照 [Azure 搜索定价页面](https://go.microsoft.com/fwlink/?linkid=2042400)中所述的预览定价计费。
 
 ## <a name="components-of-cognitive-search"></a>认知搜索的组件
 
-认知搜索是 [Azure 搜索](search-what-is-azure-search.md)的一项预览功能，已在美国中南部和西欧的所有层上推出。 
+认知搜索是 [Azure 搜索](search-what-is-azure-search.md)的预览功能，在[这些区域](#where-do-i-start)中受支持。 
 
 认知搜索管道基于 [Azure 搜索索引器](search-indexer-overview.md)，该索引器抓取数据源，并提供端到端索引处理。 技能现已附加到索引器，根据定义的技能集截获并扩充文档。 编制索引后，可以通过搜索请求和 [Azure 搜索支持的所有查询类型](search-query-overview.md)来访问内容。  本部分引导索引器的新手完成这些步骤。
 
-### <a name="source-data-and-document-cracking-phase"></a>源数据和文档破解阶段
+### <a name="step-1-connection-and-document-cracking-phase"></a>步骤 1：连接和文档破解阶段
 
 在管道的开头部分包含非结构化文本或非文本内容（例如图像和扫描的文档 JPEG 文件）。 数据必须存在于可由索引器访问的 Azure 数据存储服务中。 索引器可以“破解”源文档，以从源数据提取文本。
 
 ![文档破解阶段](./media/cognitive-search-intro/document-cracking-phase-blowup.png "文档破解")
 
- 支持的源包括 Azure Blob 存储、Azure 表存储、Azure SQL 数据库和 Azure Cosmos DB。 可从以下文件类型提取基于文本的内容：PDF、Word、PowerPoint、CSV 文件。 有关完整列表，请参阅[支持的格式](search-howto-indexing-azure-blob-storage.md#supported-document-formats)。
+ 支持的源包括 Azure Blob 存储、Azure 表存储、Azure SQL 数据库和 Azure Cosmos DB。 可从以下类型的文件提取基于文本的内容：PDF、Word、PowerPoint、CSV 文件。 有关完整列表，请参阅[支持的格式](search-howto-indexing-azure-blob-storage.md#supported-document-formats)。
 
-### <a name="cognitive-skills-and-enrichment-phase"></a>认知技能和扩充阶段
+### <a name="step-2-cognitive-skills-and-enrichment-phase"></a>步骤 2：认知技能和扩充阶段
 
 扩充通过认知技能实现。这些技能执行原子操作。 例如，从 PDF 提取文本内容后，可以应用实体识别语言检测或关键短语提取，以便在索引中生成原生未在源代码中提供的新字段。 管道中使用的技能的集合统称为技能集。  
 
@@ -57,7 +60,7 @@ Azure 搜索中的认知技能基于认知服务 API 中使用的相同 AI 算�
 
 在内部，管道生成扩充文档的集合。 可以确定要将扩充文档的哪些部分映射到搜索索引中可编制索引的字段。 例如，如果应用了关键短语提取和实体识别技能，则这些新字段将成为扩充文档的部分，并可以映射到索引中的字段。 请参阅[注释](cognitive-search-concept-annotations-syntax.md)详细了解输入/输出的形成。
 
-### <a name="search-index-and-query-based-access"></a>搜索索引和基于查询的访问
+### <a name="step-3-search-index-and-query-based-access"></a>步骤 3：搜索索引和基于查询的访问
 
 完成处理后，将会获得一个由扩充文档组成的搜索集。这些文档在 Azure 搜索中支持全文搜索。 开发者和用户可以通过[查询索引](search-query-overview.md)来访问管道生成的扩充内容。 
 
@@ -85,13 +88,27 @@ Azure 搜索中的认知技能基于认知服务 API 中使用的相同 AI 算�
 | 数据源  | 由索引器用来连接 Azure 中受支持类型的外部数据源的对象。 | 请参阅[索引器](search-indexer-overview.md) |
 | 索引 | Azure 搜索中保存的一个搜索集，它从定义字段结构和用法的索引架构生成。 | [Azure 搜索中的索引](search-what-is-an-index.md) | 
 
+<a name="where-do-i-start"></a>
 
 ## <a name="where-do-i-start"></a>从哪里开始？
 
-**步骤 1：在区域中创建提供 API 的搜索服务** 
+**步骤 1：在提供 API 的区域中[创建 Azure 搜索资源](search-create-service-portal.md)** 
 
++ 美国中西部
 + 美国中南部
++ 美国东部
++ 美国东部 2
++ 美国西部
++ 美国西部 2
++ 加拿大中部
 + 西欧
++ 英国南部
++ 北欧
++ 巴西南部
++ 东亚
++ 东南亚
++ 印度中部
++ 澳大利亚东部
 
 **步骤 2：掌握工作流的实践体验**
 

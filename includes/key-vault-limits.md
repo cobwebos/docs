@@ -4,16 +4,16 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: ed0c387f9785336fbf18b3fd3c0cd9a7b09df633
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 9a39abf77a7396302f93e5a423271402b7c3edb3
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279466"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54083998"
 ---
 密钥事务数（每个区域的每个保管库在 10 秒内允许的事务数上限<sup>1</sup>）：
 
-|密钥类型|HSM-Key<br>CREATE 密钥|HSM-key<br>所有其他事务|Software-key<br>CREATE 密钥|Software-key<br>所有其他事务|
+|密钥类型|HSM-key<br>CREATE 密钥|HSM-key<br>所有其他事务|Software-key<br>CREATE 密钥|Software-key<br>所有其他事务|
 |:---|---:|---:|---:|---:|
 |RSA 2048 位|5|1000|10|2000|
 |RSA 3072 位|5|250|10|500|
@@ -23,6 +23,23 @@ ms.locfileid: "52279466"
 |ECC P-521|5|1000|10|2000|
 |ECC SECP256K1|5|1000|10|2000|
 |
+
+> [!NOTE]
+> 对上面的阈值进行了加权，执行数量为各项的总和。 可以执行 125 个 RSA-HSM-4k 操作和 0 个RSA-HSM-2k 操作，或者执行 124 个 RSA-HSM-4k 操作和 16 个 RSA-HSM-2k 操作。 之后，在同样的 10 秒间隔内，任何其他操作都将导致 AKV 客户端异常。
+
+> [!NOTE]
+> 如果查看下表，你会看到：对于软件支持的密钥，我们允许每 10 秒完成 2000 个事务，而对于 HSM 支持的密钥，我们允许每 10 秒完成 1000 个事务。 3072 密钥与 2048 密钥的软件支持事务的比率为 500/2000 或0.4。 这意味着，如果客户在 10 秒内完成 500 个 3072 密钥事务，那么它们将达到最大限制，而不能执行任何其他密钥操作。 
+   
+|密钥类型  | 软件密钥 |HSM-key  |
+|---------|---------|---------|
+|RSA 2048 位     |    2000     |   1000    |
+|RSA 3072 位     |     500    |    250     |
+|RSA 4096 位     |    125     |    250     |
+|ECC P-256     |    2000     |  1000     |
+|ECC P-384     |    2000     |  1000     |
+|ECC P-521     |    2000     |  1000     |
+|ECC SECP256K1     |    2000     |  1000     |
+
 
 机密、托管存储帐户密钥，以及保管库事务：
 | 事务类型 | 每个区域的每个保管库在 10 秒内允许的事务数上限<sup>1</sup> |

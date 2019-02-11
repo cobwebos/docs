@@ -3,23 +3,23 @@ title: 使用 Windows VM 用户分配的托管标识访问 Azure 资源管理器
 description: 本教程介绍了使用 Windows VM 上用户分配的托管标识访问 Azure 资源管理器的过程。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: daveba
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
-ms.author: daveba
-ms.openlocfilehash: 4b84876db86f5930acd95a2e1a45055282fa37fa
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.author: priyamo
+ms.openlocfilehash: f2d8abcb69c565c6e1fcf609a4984722a8a0898f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622102"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156562"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>教程：使用 Windows VM 上用户分配的托管标识访问 Azure 资源管理器
 
@@ -36,6 +36,8 @@ ms.locfileid: "51622102"
 > * 使用用户分配的标识获取访问令牌，并使用它调用 Azure 资源管理器 
 > * 读取资源组属性
 
+[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
@@ -45,21 +47,20 @@ ms.locfileid: "51622102"
 - [创建 Windows 虚拟机](/azure/virtual-machines/windows/quick-create-portal)
 
 - 若要执行本教程中必需的资源创建和角色管理步骤，你的帐户需要在相应范围（订阅或资源组）具有“所有者”权限。 如果需要有关角色分配的帮助，请参阅[使用基于角色的访问控制管理对 Azure 订阅资源的访问权限](/azure/role-based-access-control/role-assignments-portal)。
-- 如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 5.7.0 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 
-- 如果在本地运行 PowerShell，则还需要： 
-    - 运行 `Login-AzureRmAccount`，创建与 Azure 的连接。
-    - 安装[最新版本的 PowerShellGet](/powershell/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget)。
-    - 运行 `Install-Module -Name PowerShellGet -AllowPrerelease` 以获得 `PowerShellGet` 模块的预发布版本（运行此命令安装 `AzureRM.ManagedServiceIdentity` 模块后，可能需要从当前 PowerShell 会话中退出`Exit`）。
-    - 运行 `Install-Module -Name AzureRM.ManagedServiceIdentity -AllowPrerelease` 来安装 `AzureRM.ManagedServiceIdentity` 模块的预发布版本，以执行本文中用户分配的标识操作。
+- [安装最新版本的 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 
+- 运行 `Connect-AzAccount`，创建与 Azure 的连接。
+- 安装[最新版本的 PowerShellGet](/powershell/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget)。
+- 运行 `Install-Module -Name PowerShellGet -AllowPrerelease` 以获得 `PowerShellGet` 模块的预发布版本（运行此命令安装 `Az.ManagedServiceIdentity` 模块后，可能需要从当前 PowerShell 会话中退出`Exit`）。
+- 运行 `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` 来安装 `Az.ManagedServiceIdentity` 模块的预发布版本，以执行本文中用户分配的标识操作。
 
 ## <a name="create-a-user-assigned-identity"></a>创建用户分配的标识
 
-用户分配的标识是作为独立的 Azure 资源创建的。 使用 [New-AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/get-azurermuserassignedidentity)，Azure 可在你的 Azure AD 租户中创建可分配给一个或多个 Azure 服务实例的标识。
+用户分配的标识是作为独立的 Azure 资源创建的。 使用 [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity)，Azure 可在你的 Azure AD 租户中创建可分配给一个或多个 Azure 服务实例的标识。
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 ```azurepowershell-interactive
-New-AzureRmUserAssignedIdentity -ResourceGroupName myResourceGroupVM -Name ID1
+New-AzUserAssignedIdentity -ResourceGroupName myResourceGroupVM -Name ID1
 ```
 
 该响应包含已创建的用户分配标识的详细信息，与以下示例类似。 请记录用户分配的标识的 `Id` 和 `ClientId` 值，因为在后续步骤中将使用它们：
@@ -83,8 +84,8 @@ Type: Microsoft.ManagedIdentity/userAssignedIdentities
 用户分配的标识可以由多个 Azure 资源上的客户端使用。 使用以下命令将用户分配的标识分配给单个 VM。 将上一步返回的 `Id` 属性用于 `-IdentityID` 参数。
 
 ```azurepowershell-interactive
-$vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
-Update-AzureRmVM -ResourceGroupName TestRG -VM $vm -IdentityType "UserAssigned" -IdentityID "/subscriptions/<SUBSCRIPTIONID>/resourcegroups/myResourceGroupVM/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"
+$vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
+Update-AzVM -ResourceGroupName TestRG -VM $vm -IdentityType "UserAssigned" -IdentityID "/subscriptions/<SUBSCRIPTIONID>/resourcegroups/myResourceGroupVM/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"
 ```
 
 ## <a name="grant-your-user-assigned-identity-access-to-a-resource-group-in-azure-resource-manager"></a>向用户分配的标识授予对 Azure 资源管理器中资源组的访问权限 
@@ -94,8 +95,8 @@ Azure 资源的托管标识提供了相关标识，你的代码可使用这些�
 需先向标识授予对 Azure 资源管理器中资源的访问权限，代码才能访问 API。 在此情况下，即为包含 VM 的资源组。 根据环境适当地更新 `<SUBSCRIPTION ID>` 的值。
 
 ```azurepowershell-interactive
-$spID = (Get-AzureRmUserAssignedIdentity -ResourceGroupName myResourceGroupVM -Name ID1).principalid
-New-AzureRmRoleAssignment -ObjectId $spID -RoleDefinitionName "Reader" -Scope "/subscriptions/<SUBSCRIPTIONID>/resourcegroups/myResourceGroupVM/"
+$spID = (Get-AzUserAssignedIdentity -ResourceGroupName myResourceGroupVM -Name ID1).principalid
+New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Reader" -Scope "/subscriptions/<SUBSCRIPTIONID>/resourcegroups/myResourceGroupVM/"
 ```
 
 响应包含所创建的角色分配的详细信息，与以下示例类似：

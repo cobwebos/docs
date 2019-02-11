@@ -1,21 +1,18 @@
 ---
-title: 排查 Azure Databases for PostgreSQL 的连接问题 | Microsoft Docs
+title: 排查 Azure Databases for PostgreSQL 的连接问题
 description: 了解如何排查 Azure Databases for PostgreSQL 的连接问题。
 keywords: postgresql 连接, 连接字符串, 连接问题, 暂时性错误, 连接错误
-services: postgresql
-author: janeng
+author: jan-eng
 ms.author: janeng
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: fea4c376f73afe2ef36948c59e95a2b679dbd7e8
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 1a7f58960111b3fba6283830b262a9b901b8e2fd
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285479"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546226"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql"></a>排查 Azure Databases for PostgreSQL 的连接问题
 
@@ -49,9 +46,9 @@ ms.locfileid: "51285479"
 
 如果应用程序一直无法连接到 Azure Database for PostgreSQL，通常表示下列其中一项出现了问题：
 
-* 防火墙配置：Azure Database for PostgreSQL 服务器或客户端防火墙正在阻止连接。
-* 在客户端重新配置了网络：例如，添加了新的 IP 地址或代理服务器。
-* 用户失误：例如，连接参数的键入错误（例如，在连接字符串中键入了服务器名称，或者在用户名中遗漏了 *@servername* 后缀）。
+* 服务器防火墙配置：请确保用于 PostgreSQL 服务器防火墙的 Azure 数据库配置为允许来自客户机（包括代理服务器和网关）的连接。
+* 客户端防火墙配置：客户端的防火墙必须允许连接到数据库服务器。 对于无法访问的服务器 IP 地址和端口，必需授予其访问权限，并且必须允许使用某些防火墙的应用程序名称（如 PostgreSQL）。
+* 用户错误：例如，你可能错误键入了连接参数（例如，在连接字符串中键入了服务器名称，或者在用户名中遗漏了 *@servername* 后缀）。
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>解决永久性连接问题的步骤
 

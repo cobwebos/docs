@@ -1,27 +1,27 @@
 ---
 title: 教程：在 .NET 中审查视频和脚本 - 内容审查器
 titlesuffix: Azure Cognitive Services
-description: 如何在 .NET 中使用内容审查器来审查视频和脚本。
+description: 本教程可帮助你了解如何使用机器辅助审查和人工介入评论创建，来生成完整的视频和脚本审查解决方案。
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 1/27/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: d156c481e3c16105ad85cbc793d93306a310d5ef
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 601c282e6b3339537c3ad419098f55116a40955f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567105"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208868"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>教程：视频和脚本审查
 
 可使用内容审查器的视频 API 审查视频并在人工评论工具中创建视频评论。 
 
-此详细教程可帮助了解如何使用机器辅助审查和人工介入评论创建，来生成完整的视频和脚本审查解决方案。
+本教程可帮助你了解如何使用机器辅助审查和人工介入评论创建，来生成完整的视频和脚本审查解决方案。
 
 为本教程下载 [C# 控制台应用程序](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp)。 此控制台应用程序使用 SDK 和相关包来执行以下任务：
 
@@ -51,7 +51,7 @@ ms.locfileid: "51567105"
 
 1. 编辑文件 `App.config` 并添加 Active Directory 租户名称、服务终结点和用 `#####` 表示的订阅密钥。 你需要以下信息：
 
-|密钥|Description|
+|密钥|说明|
 |-|-|
 |`AzureMediaServiceRestApiEndpoint`|Azure 媒体服务 (AMS) API 的终结点|
 |`ClientSecret`|Azure 媒体服务的订阅密钥|
@@ -67,7 +67,7 @@ ms.locfileid: "51567105"
 
 ### <a name="methods-of-class-program"></a>Program 类的方法
 
-|方法|Description|
+|方法|说明|
 |-|-|
 |`Main`|分析命令行、收集用户输入并开始进行处理。|
 |`ProcessVideo`|压缩、上传、审查和创建视频评论。|
@@ -132,7 +132,7 @@ ms.locfileid: "51567105"
 
 无论程序的选项来自命令行还是来自交互式用户输入，`Main()` 接下来都会调用 `Initialize()` 创建以下实例：
 
-|类|Description|
+|类|说明|
 |-|-|
 |`AMSComponent`|在提交视频文件进行审查之前先对其进行压缩。|
 |`AMSconfigurations`|与在 `App.config` 中找到的应用程序配置数据交互。|
@@ -241,7 +241,7 @@ ms.locfileid: "51567105"
 
 - 检查以确保 `App.config` 中的配置包含所有必要数据
 - 检查以确保存在 `ffmpeg` 二进制文件
-- 通过将 `_c.mp4` 附加到文件的基本名称（例如 `Example.mp4` -> `E>xample_c.mp4`）来生成输出文件名
+- 通过将 `_c.mp4` 附加到文件的基本名称（例如 `Example.mp4` -> `Example_c.mp4`）来生成输出文件名
 - 生成命令行字符串以执行转换
 - 使用命令行启动 `ffmpeg` 进程
 - 等待处理视频
@@ -530,7 +530,7 @@ ms.locfileid: "51567105"
         }
         catch
         {   //TODO:  Logging
-            Console.WriteLine("Exception occured while generating index for video.");
+            Console.WriteLine("Exception occurred while generating index for video.");
             throw;
         }
     }

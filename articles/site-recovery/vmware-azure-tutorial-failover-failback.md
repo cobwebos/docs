@@ -4,16 +4,17 @@ description: 了解如何使用 Azure Site Recovery 在灾难恢复到 Azure 期
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
+services: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 517355a32fc7a549370aed2c7a8408c3a0887e13
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e17ddb45143e03023c30b69ed314270ed97dc039
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838015"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973158"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>对复制到 Azure 的 VMware VM 和物理服务器进行故障转移和故障回复
 
@@ -43,9 +44,9 @@ ms.locfileid: "52838015"
 故障转移和故障回复有四个阶段：
 
 1. **故障转移到 Azure**：将计算机从本地站点故障转移到 Azure。
-2. 重新保护 Azure VM：重新保护 Azure VM，使之开始复制回本地 VMware VM。 重新保护期间，本地 VM 将关闭。 这有助于确保复制期间的数据一致性。
-3. 故障转移到本地：运行故障转移以从 Azure 进行故障回复。
-4. 重新保护本地 VM：对数据进行故障回复以后，对故障回复到的本地 VM 进行重新保护，使之开始复制到 Azure。
+2. **重新保护 Azure VM**：重新保护 Azure VM，使之开始复制回本地 VMware VM。 重新保护期间，本地 VM 将关闭。 这有助于确保复制期间的数据一致性。
+3. **故障转移到本地**：运行故障转移以从 Azure 进行故障回复。
+4. **重新保护本地 VM**：对数据进行故障回复以后，对故障回复到的本地 VM 进行重新保护，使之开始复制到 Azure。
 
 ## <a name="verify-vm-properties"></a>验证 VM 属性
 
@@ -69,14 +70,14 @@ ms.locfileid: "52838015"
    - **最新**：此选项会首先处理发送到 Site Recovery 的所有数据。 它提供最低的 RPO（恢复点对象），因为故障转移后创建的 Azure VM 具有触发故障转移时复制到 Site Recovery 的所有数据。
    - **最新处理**：此选项将 VM 故障转移到由 Site Recovery 处理的最新恢复点。 此选项提供低 RTO（恢复时间目标），因为无需费时处理未经处理的数据。
    - **最新的应用一致**：此选项将 VM 故障转移到由 Site Recovery 处理的最新应用一致恢复点。
-   - 自定义：指定恢复点。
+   - **自定义**：指定恢复点。
 
 3. 选择“在开始故障转移之前关闭计算机”，在触发故障转移之前尝试关闭源虚拟机。 即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。
 
 在某些情况下，故障转移需要大约八到十分钟的时间完成其他进程。 你可能会注意到，使用的移动服务版本低于 9.8 的 VMware 虚拟机、物理服务器、VMware Linux 虚拟机、作为物理服务器保护的 Hyper-V 虚拟机、未启用 DHCP 服务的 VMware VM 和未安装 storvsc、vmbus、storflt、intelide、atapi 启动驱动程序的 VMware VM **需要更长的测试性故障转移时间**。
 
 > [!WARNING]
-> **请勿取消正在进行的故障转移**：在故障转移开始前，停止 VM 复制。
+> **不会取消正在进行的故障转移**：在故障转移开始前，VM 复制已停止。
 > 如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。
 
 ## <a name="connect-to-failed-over-virtual-machine-in-azure"></a>连接到 Azure 中已故障转移的虚拟机

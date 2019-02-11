@@ -3,22 +3,22 @@ title: 重置密码 - Azure Active Directory | Microsoft Docs
 description: 使用自助式密码重置功能重新获取工作用户帐户或学校用户帐户的访问权限
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.assetid: 7ba69b18-317a-4a62-afa3-924c4ea8fb49
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
 ms.custom: end-user
-ms.openlocfilehash: 05a4961938f8a4f7d14c9dbf5041a2d02257b476
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: ccafd3c93130b137573a1b143d182c4861693577
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106344"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168900"
 ---
 # <a name="reset-your-work-or-school-password"></a>重置工作或学校密码
 

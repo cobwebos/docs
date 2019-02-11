@@ -2,18 +2,18 @@
 title: 使用 Azure 虚拟 WAN 与 Azure 建立点到站点连接 | Microsoft Docs
 description: 本教程介绍如何使用 Azure 虚拟 WAN 与 Azure 建立点到站点 VPN 连接。
 services: virtual-wan
-author: cherylmc
+author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/29/2018
-ms.author: cherylmc
+ms.date: 01/07/2019
+ms.author: alzam
 Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: e3d1a79dc7dd775cea71df2f36a5f34d85f3e240
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 87b8543d8cb658b46ab5e589a310a17a69508a47
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261802"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411384"
 ---
 # <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>教程：使用 Azure 虚拟 WAN（预览版）创建点到站点连接
 
@@ -42,7 +42,7 @@ ms.locfileid: "51261802"
 
 ## <a name="register"></a>注册此功能
 
-单击“试用”以使用 Azure Cloud Shell 轻松注册此功能。
+单击“试用”以使用 Azure Cloud Shell 轻松注册此功能。 如果希望在本地运行 PowerShell，请确保使用最新版本并使用 **Connect-AzureRmAccount** 和 **Select-AzureRmSubscription** 命令登录。
 
 >[!NOTE]
 >如果未注册此功能，则将无法使用它，也无法在门户中看到它。
@@ -150,7 +150,7 @@ P2S 配置定义连接远程客户端的参数。
 
 1.  从官方网站下载并安装 OpenVPN 客户端。
 2.  下载网关的 VPN 配置文件。 这可以通过 Azure 门户中的“点到站点配置”选项卡或 PowerShell 中的 New-AzureRmVpnClientConfiguration 来完成。
-3.  将该配置文件解压。 从记事本中的 OpenVPN 文件夹中打开 vpnconfig.ovpn 配置文件。
+3.  解压缩该配置文件。 从记事本中的 OpenVPN 文件夹中打开 vpnconfig.ovpn 配置文件。
 4.  使用 base64 中的 P2S 客户端证书公钥填写 P2S 客户端证书部分。 在 PEM 格式的证书中，可以直接打开 .cer 文件并在证书标头之间复制 base64 密钥。 请参阅此处，了解如何导出证书以获取已编码的公钥。
 5.  使用 base64 中的 P2S 客户端证书私钥填写私钥部分。 请参阅此处，了解如何提取私钥。
 6.  不要更改任何其他字段。 使用客户端输入中的已填充的配置连接到 VPN。
@@ -169,7 +169,7 @@ P2S 配置定义连接远程客户端的参数。
 
 1.  下载并安装 OpenVPN 客户端，例如从 https://tunnelblick.net/downloads.html 下载并安装 TunnelBlik 
 2.  下载网关的 VPN 配置文件。 这可以通过 Azure 门户中的“点到站点配置”选项卡或 PowerShell 中的 New-AzureRmVpnClientConfiguration 来完成。
-3.  将该配置文件解压。 从记事本中的 OpenVPN 文件夹中打开 vpnconfig.ovpn 配置文件。
+3.  解压缩该配置文件。 从记事本中的 OpenVPN 文件夹中打开 vpnconfig.ovpn 配置文件。
 4.  使用 base64 中的 P2S 客户端证书公钥填写 P2S 客户端证书部分。 在 PEM 格式的证书中，可以直接打开 .cer 文件并在证书标头之间复制 base64 密钥。 请参阅此处，了解如何导出证书以获取已编码的公钥。
 5.  使用 base64 中的 P2S 客户端证书私钥填写私钥部分。 请参阅此处，了解如何提取私钥。
 6.  不要更改任何其他字段。 使用客户端输入中的已填充的配置连接到 VPN。

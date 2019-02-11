@@ -1,5 +1,5 @@
 ---
-title: 将现有的自定义 SSL 证书绑定到 Azure Web 应用 | Microsoft Docs
+title: 绑定现有的自定义 SSL 证书 - Azure 应用服务 | Microsoft Docs
 description: 了解如何将自定义 SSL 证书绑定到 Azure 应用服务中的 Web 应用、移动应用后端或 API 应用。
 services: app-service\web
 documentationcenter: nodejs
@@ -14,17 +14,17 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: a543561658d593398ca74f8ae68dd6d0d27bcdaa
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.custom: seodec18
+ms.openlocfilehash: cdd73c46d87ec09439188024945bd60299bb1d57
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636436"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629741"
 ---
-# <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>教程：将现有的自定义 SSL 证书绑定到 Azure Web 应用
+# <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-app-service"></a>教程：将现有的自定义 SSL 证书绑定到 Azure 应用服务
 
-Azure Web 应用提供高度可缩放的自修补 Web 托管服务。 本教程介绍如何将从受信任证书颁发机构那里购买的自定义 SSL 证书绑定到 [Azure Web 应用](app-service-web-overview.md)。 完成本教程后，便可以访问自定义 DNS 域的 HTTPS 终结点上的 Web 应用。
+Azure 应用服务提供高度可缩放、自修补的 Web 托管服务。 本教程介绍如何将从受信任证书颁发机构那里购买的自定义 SSL 证书绑定到 [Azure 应用服务](overview.md)。 完成本教程后，便可以访问自定义 DNS 域的 HTTPS 终结点上的应用。
 
 ![包含自定义 SSL 证书的 Web 应用](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
 
@@ -39,14 +39,14 @@ Azure Web 应用提供高度可缩放的自修补 Web 托管服务。 本教程�
 > * 使用脚本自动完成 TLS 管理
 
 > [!NOTE]
-> 如果需要获取自定义 SSL 证书，可以直接在 Azure 门户中获取，然后将其绑定到 Web 应用。 请遵循[应用服务证书教程](web-sites-purchase-ssl-web-site.md)。
+> 如果需要获取自定义 SSL 证书，可以直接在 Azure 门户中获取，然后将其绑定到应用。 请遵循[应用服务证书教程](web-sites-purchase-ssl-web-site.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 完成本教程：
 
 - [创建应用服务应用](/azure/app-service/)
-- [将自定义 DNS 名称映射到 Web 应用](app-service-web-tutorial-custom-domain.md)
+- [将自定义 DNS 名称映射到应用服务应用](app-service-web-tutorial-custom-domain.md)
 - 从受信任的证书颁发机构获取 SSL 证书
 - 拥有用于对 SSL 证书请求进行签名的私钥
 
@@ -70,7 +70,7 @@ Azure Web 应用提供高度可缩放的自修补 Web 托管服务。 本教程�
 
 ## <a name="bind-your-ssl-certificate"></a>绑定 SSL 证书
 
-现已准备好将 SSL 证书上传到 Web 应用。
+现已准备好将 SSL 证书上传到应用。
 
 ### <a name="merge-intermediate-certificates"></a>合并中间证书
 
@@ -114,7 +114,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 ### <a name="upload-your-ssl-certificate"></a>上传 SSL 证书
 
-若要上传 SSL 证书，请在 Web 应用的左侧导航窗格中单击“SSL 设置”。
+若要上传 SSL 证书，请在应用的左侧导航窗格中单击“SSL 设置”。
 
 单击“上传证书”。 
 
@@ -139,9 +139,9 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 >
 >
 
-在“SSL 类型”中，选择是要使用**[服务器名称指示 (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** 还是使用基于 IP 的 SSL。
+在“SSL 类型”中，选择是要使用**[服务器名称指示 (SNI)](https://en.wikipedia.org/wiki/Server_Name_Indication)** 还是使用基于 IP 的 SSL。
 
-- 基于 SNI 的 SSL - 可添加多个基于 SNI 的 SSL 绑定。 选择此选项可以使用多个 SSL 证书来保护同一 IP 地址上的多个域。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI（在[服务器名称指示](http://wikipedia.org/wiki/Server_Name_Indication)中了解更全面的浏览器支持信息）。
+- 基于 SNI 的 SSL - 可添加多个基于 SNI 的 SSL 绑定。 选择此选项可以使用多个 SSL 证书来保护同一 IP 地址上的多个域。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI（在[服务器名称指示](https://wikipedia.org/wiki/Server_Name_Indication)中了解更全面的浏览器支持信息）。
 - 基于 IP 的 SSL - 只能添加一个基于 IP 的 SSL 绑定。 选择此选项只能使用一个 SSL 证书来保护专用公共 IP 地址。 若要保护多个域，必须使用同一个 SSL 证书来保护所有这些域。 这是 SSL 绑定的传统选项。
 
 单击“添加绑定”。
@@ -154,24 +154,24 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 ## <a name="remap-a-record-for-ip-ssl"></a>重新映射 IP SSL 的 A 记录
 
-如果不在 Web 应用中使用基于 IP 的 SSL，请跳到[针对自定义域测试 HTTPS](#test)。
+如果不在应用中使用基于 IP 的 SSL，请跳到[针对自定义域测试 HTTPS](#test)。
 
-默认情况下，Web 应用使用共享的公共 IP 地址。 将证书与基于 IP 的 SSL 绑定时，应用服务会为 Web 应用创建新的专用 IP 地址。
+默认情况下，应用使用共享的公共 IP 地址。 将证书与基于 IP 的 SSL 绑定时，应用服务会为应用创建新的专用 IP 地址。
 
-如果已将 A 记录映射到 Web 应用，请使用这个新的专用 IP 地址更新域注册表。
+如果已将 A 记录映射到应用，请使用这个新的专用 IP 地址更新域注册表。
 
-将使用新的专用 IP 地址更新 Web 应用的“自定义域”页。 [复制此 IP 地址](app-service-web-tutorial-custom-domain.md#info)，然后[将 A 记录重新映射](app-service-web-tutorial-custom-domain.md#map-an-a-record)到此新 IP 地址。
+将使用新的专用 IP 地址更新应用的“自定义域”页。 [复制此 IP 地址](app-service-web-tutorial-custom-domain.md#info)，然后[将 A 记录重新映射](app-service-web-tutorial-custom-domain.md#map-an-a-record)到此新 IP 地址。
 
 <a name="test"></a>
 
 ## <a name="test-https"></a>测试 HTTPS
 
-接下来只需确保 HTTPS 适用于自定义域。 在不同的浏览器中浏览到 `https://<your.custom.domain>`，查看是否能够打开 Web 应用。
+接下来只需确保 HTTPS 适用于自定义域。 在各种浏览器中，浏览到 `https://<your.custom.domain>` 以查看其是否适合应用。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
 
 > [!NOTE]
-> 如果 Web 应用显示证书验证错误，可能是因为使用了自签名证书。
+> 如果应用显示证书验证错误，可能是因为使用自签名证书。
 >
 > 如果不是这样，可能是在将证书导出为 PFX 文件时遗漏了中间证书。
 
@@ -187,9 +187,9 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 ## <a name="enforce-https"></a>实施 HTTPS
 
-默认情况下，任何人都仍可使用 HTTP 访问 Web 应用。 可以将所有 HTTP 请求都重定向到 HTTPS 端口。
+默认情况下，任何人都仍可使用 HTTP 访问应用。 可以将所有 HTTP 请求都重定向到 HTTPS 端口。
 
-在 Web 应用页的左侧导航窗格中，选择“SSL 设置”。 然后，在“仅 HTTPS”中，选择“启用”。
+在应用页的左侧导航窗格中，选择“SSL 设置”。 然后，在“仅 HTTPS”中，选择“启用”。
 
 ![实施 HTTPS](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
 
@@ -203,7 +203,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 应用默认情况下允许 [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.2，这是行业标准（例如 [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)）建议的 TLS 级别。 若要强制实施不同的 TLS 版本，请按照下列步骤操作：
 
-在 Web 应用页的左侧导航窗格中，选择“SSL 设置”。 然后，在“TLS 版本”中，选择所需的最低 TLS 版本。 此设置仅控制入站调用。 
+在应用页的左侧导航窗格中，选择“SSL 设置”。 然后，在“TLS 版本”中，选择所需的最低 TLS 版本。 此设置仅控制入站调用。 
 
 ![强制实施 TLS 1.1 或 1.2](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
 
@@ -211,7 +211,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 
-可以在 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/overview) 中使用脚本自动完成 Web 应用的 SSL 绑定。
+可以在 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/overview) 中使用脚本自动完成应用的 SSL 绑定。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -260,9 +260,9 @@ New-AzureRmWebAppSSLBinding `
     -SslState SniEnabled
 ```
 ## <a name="public-certificates-optional"></a>公用证书（可选）
-如果应用需要访问充当客户端的远程资源，而远程资源需要证书身份验证，则可将[公用证书](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/)上传到 Web 应用。 对应用进行 SSL 绑定不需公用证书。
+如果应用需要访问充当客户端的远程资源，而远程资源需要证书身份验证，则可将[公用证书](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/)上传到应用。 对应用进行 SSL 绑定不需公用证书。
 
-若要更详细地了解如何在应用中加载和使用公用证书，请参阅[在 Azure 应用服务的应用程序代码中使用 SSL 证书](https://docs.microsoft.com/azure/app-service/app-service-web-ssl-cert-load)。 还可以对应用服务环境中的应用使用公用证书。 若要将证书存储在 LocalMachine 证书存储中，需要在应用服务环境中使用 Web 应用。 有关详细信息，请参阅[如何将公用证书配置到 Web 应用](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer)。
+若要更详细地了解如何在应用中加载和使用公用证书，请参阅[在 Azure 应用服务的应用程序代码中使用 SSL 证书](app-service-web-ssl-cert-load.md)。 还可以对应用服务环境中的应用使用公用证书。 若要将证书存储在 LocalMachine 证书存储中，需要在应用服务环境中使用应用。 有关详细信息，请参阅[如何将公用证书配置到应用服务应用](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer)。
 
 ![上传公用证书](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 

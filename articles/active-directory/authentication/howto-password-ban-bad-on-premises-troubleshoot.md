@@ -3,25 +3,25 @@ title: Azure AD 密码保护预览版中的故障排除和日志记录
 description: 了解 Azure AD 密码保护预览版的日志记录和一般故障排除方法
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: 1e5782ce3421cc5f0d2e0e51484d4bbe6b9eb6ab
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 55139d7270d602d73605c484eeace7012ff3c1b8
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978632"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076071"
 ---
 # <a name="preview-azure-ad-password-protection-monitoring-reporting-and-troubleshooting"></a>预览版：Azure AD 密码保护监视、报告和故障排除
 
 |     |
 | --- |
-| Azure AD 密码保护是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
+| Azure AD 密码保护是 Azure Active Directory 的一项公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
 |     |
 
 部署 Azure AD 密码保护后，监视和报告是至关重要的任务。 本文提供详细信息来帮助你了解每项服务日志信息的位置，以及如何报告 Azure AD 密码保护的用法。
@@ -216,7 +216,7 @@ HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters
 
 DC 代理服务软件安装名为“Azure AD 密码保护”的性能计数器对象。 目前提供以下性能计数器：
 
-|性能计数器名称 | Description|
+|性能计数器名称 | 说明|
 | --- | --- |
 |处理的密码数 |此计数器显示自上次重启以来已处理的密码（接受或拒绝）总数。|
 |接受的密码数 |此计数器显示自上次重启以来已接受的密码总数。|
@@ -274,7 +274,7 @@ DC 代理服务软件安装名为“Azure AD 密码保护”的性能计数器�
 
    ```Powershell
    $passwordProtectonConfigContainer = "CN=Azure AD Password Protection,CN=Services," + (Get-ADRootDSE).configurationNamingContext
-   Remove-ADObject $passwordProtectonConfigContainer
+   Remove-ADObject -Recursive $passwordProtectonConfigContainer
    ```
 
 6. 通过手动删除以下文件夹及其所有内容，手动删除 sysvol 相关的所有状态：

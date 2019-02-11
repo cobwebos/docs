@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/17/2018
 ms.author: erhopf
-ms.openlocfilehash: 3ba8064a6d13cfe9d2a2ae2ac496cfa8302989cd
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: b5307db01cc7242ba73876409f18d511c2516091
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085966"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458153"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>快速入门：使用 Python 通过文本翻译 API 来翻译字符串
 
@@ -161,7 +161,7 @@ python translate-text.py
 
 ## <a name="see-also"></a>另请参阅
 
-除了文本翻译，还请了解如何使用文本翻译 API 执行以下操作：
+了解如何使用文本翻译 API 执行以下操作：
 
 * [直译文本](quickstart-python-transliterate.md)
 * [按输入确定语言](quickstart-python-detect.md)

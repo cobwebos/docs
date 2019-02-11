@@ -6,22 +6,22 @@ author: jrowlandjones
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
+ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 9880afb6c4fd2b7fe1e97b5390c4769c8cafb4ed
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 17a55e84dcbec00eced290ec76c3201784075201
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634612"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462573"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>SQL 数据仓库商业智能合作伙伴
 若要创建端到端数据仓库解决方案，请从行业领先的各种工具中进行选择。  本文重点介绍其商业智能 (BI) 解决方案支持 Azure SQL 数据仓库的 Microsoft 合作伙伴公司。
 
 ## <a name="our-business-intelligence-partners"></a>我们的商业智能合作伙伴
-| 合作伙伴 | Description | 链接 | 视频 |
+| 合作伙伴 | 说明 | 链接 | 视频 |
 | --- | --- | --- | --- |
 | ![Birst][1] |**Birst**<br>Birst 是云 BI 与分析领域的全球领导者。 企业可以在每个重要业务用户的范围内创建受信任的数据源。 然后，整个组织的业务用户可以使用世界级的 BI 工具来报告和分析信息。 |[市场][birst_marketplace]<br>[网站][birst_website]<br>[Twitter][birst_twitter]<br>[YouTube][birst_youtube] | |
 | ![ClearStory Data][2] |**ClearStory Data**<br>ClearStory Data 能够快速分析 SQL 数据仓库中存储的不同数据。 ClearStory 的基于 Spark 的集成式平台和分析应用程序可以加速数据访问并协调不同的数据集。 它们可让业务用户进行快速协作探索，以及独自获得见解。 |[网站][clearstory_website]<br>[数据表][clearstory_datasheet]<br>[Twitter][clearstory_twitter]<br>[YouTube][clearstory_youtube] | |
@@ -95,12 +95,17 @@ ms.locfileid: "52634612"
 
 [tableau_datasheet]:http://www.tableau.com/stories/workbook/azure-sql-data
 
-<!--[targit_datasheet]:--> [yellowfin_datasheet]:http://www.yellowfinbi.com/Document.i4?DocumentId=877299
+<!--[targit_datasheet]:-->
+
+[yellowfin_datasheet]:http://www.yellowfinbi.com/Document.i4?DocumentId=877299
 
 <!--Marketplace Links -->
+
 [birst_marketplace]:https://azure.microsoft.com/marketplace/partners/birst/birst/
 
-<!--[clearstory_marketplace]:--> [dell_statistica_marketplace]:https://azure.microsoft.com/marketplace/partners/dell-software/statistica-data-miner
+<!--[clearstory_marketplace]:-->
+
+[dell_statistica_marketplace]:https://azure.microsoft.com/marketplace/partners/dell-software/statistica-data-miner
 
 [dundas_bi_marketplace]:https://azure.microsoft.com/marketplace/partners/dundas/dundas-bi/ 
 
@@ -118,15 +123,24 @@ ms.locfileid: "52634612"
 
 <!--Press links-->
 
-<!--[birst_press]:--> [clearstory_press]:http://www.clearstorydata.com/press/clearstory-data-paired-with-new-microsoft-azure-sql-data-warehouse-release-provides-highly-scalable-data-analysis-at-apache-spark-speed/
+<!--[birst_press]:-->
 
-<!--[dell_statistica_press]:--> [dundas_bi_press]:https://www.dundas.com/about/news/24-06-2015-dundas-data-visualization-provides-seamless-integration-with-microsoft-azure-and-azure-sql-data-warehouse
+[clearstory_press]:http://www.clearstorydata.com/press/clearstory-data-paired-with-new-microsoft-azure-sql-data-warehouse-release-provides-highly-scalable-data-analysis-at-apache-spark-speed/
 
-<!--[jinfonet_press]:--> [logianalytics_press]:http://www.logianalytics.com/logi-news/announcing-logi-info-integration-with-azure-sql-data-warehouse/ [looker_press]:https://looker.com/news/press/looker-brings-self-serve-analytics-to-microsoft-azure
+<!--[dell_statistica_press]:-->
+
+[dundas_bi_press]:https://www.dundas.com/about/news/24-06-2015-dundas-data-visualization-provides-seamless-integration-with-microsoft-azure-and-azure-sql-data-warehouse
+
+<!--[jinfonet_press]:-->
+
+[logianalytics_press]:http://www.logianalytics.com/logi-news/announcing-logi-info-integration-with-azure-sql-data-warehouse/
+[looker_press]:https://looker.com/news/press/looker-brings-self-serve-analytics-to-microsoft-azure
 
 <!--[qlik_press]:-->
 
-<!--[sisense_press]:--> [tableau_press]:https://www.tableau.com/about/blog/2015/7/visualizing-data-cloud-microsoft-azure-tableau-online-40832 
+<!--[sisense_press]:-->
+
+[tableau_press]:https://www.tableau.com/about/blog/2015/7/visualizing-data-cloud-microsoft-azure-tableau-online-40832 
 
 <!--[targit_press]:-->
 <!--[yellowfin_press]:-->

@@ -3,19 +3,19 @@ title: Azure Active Directory 自助密码重置深入探讨
 description: 自助密码重置的工作原理
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 01/30/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 2713f48ce490aa42b6b1aa4e69a71f8f8053d1fb
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 4b636b78c3992c6647def47cf3005ceb41e0d5ba
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426198"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495286"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>工作原理：Azure AD 自助密码重置
 
@@ -84,7 +84,7 @@ ms.locfileid: "52426198"
 
 #### <a name="mobile-app-and-sspr-preview"></a>移动应用和 SSPR（预览版）
 
-使用移动应用（例如 Microsoft Authenticator 应用）作为密码重置方法时，应注意以下问题：
+使用移动应用（例如 Microsoft Authenticator 应用）作为密码重置方法时，应注意以下几个注意事项：
 
 * 当管理员要求使用一种方法来重置密码时，验证码是唯一可用的选项。
 * 当管理员要求使用两种方法来重置密码时，用户可以使用通知或验证码进行重置，此外还能使用其他任何已启用的方法。
@@ -119,7 +119,7 @@ ms.locfileid: "52426198"
 
 ### <a name="require-users-to-register-when-they-sign-in"></a>要求用户在登录时注册
 
-启用此选项需要用户在使用 Azure AD 登录到任何应用程序时完成密码重置注册。 这包括以下应用程序：
+启用此选项需要用户在使用 Azure AD 登录到任何应用程序时完成密码重置注册。 此工作流包括以下应用程序：
 
 * Office 365
 * Azure 门户
@@ -132,7 +132,7 @@ ms.locfileid: "52426198"
 > [!NOTE]
 > 用户可以通过选择“取消”或关闭窗口来隐藏密码重置注册门户。 但是，在完成注册之前，每当他们登录时，系统都会提示他们注册。
 >
-> 如果用户已登录，此行为不会中断用户的连接。
+> 如果用户已登录，此中断不会中断用户的连接。
 
 ### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>设置用户必须在几天后重新确认其身份验证信息
 
@@ -169,7 +169,7 @@ ms.locfileid: "52426198"
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>将密码写回到本地目录
 
-此控制机制确定是否为此目录启用了密码写回。 如果已启用写回，则指示本地写回服务的状态。 如果想要暂时禁用密码写回且无需重新配置 Azure AD Connect，此设置将很有用。
+此控制机制确定是否为此目录启用了密码写回。 如果已启用写回，则指示本地写回服务的状态。 如果想要暂时禁用密码写回且无需重新配置 Azure AD Connect，此控制机制将很有用。
 
 * 如果此开关设置为“是”，则会启用写回，因此联合用户、直通身份验证用户或已进行密码哈希同步的用户能够重置其密码。
 * 如果此开关设置为“否”，则会禁用写回，因此联合用户、直通身份验证用户或已进行密码哈希同步的用户无法重置其密码。
@@ -180,6 +180,10 @@ ms.locfileid: "52426198"
 
 * 如果设置为“是”，将为用户提供重置其密码和解锁帐户的选项，或者在无需重置密码的情况下解锁其帐户的选项。
 * 如果设置为“否”，用户只能同时执行密码重置和帐户解锁的操作。
+
+### <a name="on-premises-active-directory-password-filters"></a>本地 Active Directory 密码筛选器
+
+Azure AD 自助服务密码重置相当于在 Active Directory 中执行管理员发起的密码重置。 如果正在使用第三方密码筛选器来强制实施自定义密码规则，并且需要在 Azure AD 自助服务密码重置期间检查此密码筛选器，请确保将第三方密码筛选器解决方案配置为应用于管理密码重置场景。 默认情况下支持[针对 Windows Server Active Directory 的 Azure AD 密码保护](concept-password-ban-bad-on-premises.md)。
 
 ## <a name="password-reset-for-b2b-users"></a>B2B 用户的密码重置
 

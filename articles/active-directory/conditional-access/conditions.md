@@ -5,28 +5,28 @@ services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 9feb6ef5b708813c2f73a70a930cabfd69dff114
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 7ef352a944691de8afe22c69525c9e2d848b3106
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42140836"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078063"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的条件是什么？ 
 
-使用 [Azure Active Directory (Azure AD) 条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)，可以控制授权用户访问云应用的方式。 在条件访问策略中，定义触发策略的诱因（“出现这种情况时”）的响应（“执行此操作”）。 
+使用 [Azure Active Directory (Azure AD) 条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)，可以控制用户访问云应用的方式。 在条件访问策略中，定义触发策略的诱因（“出现这种情况时”）的响应（“执行此操作”）。 
 
 ![原因和响应](./media/conditions/10.png)
 
@@ -36,7 +36,7 @@ ms.locfileid: "42140836"
 ![条件访问策略](./media/conditions/61.png)
 
 
-不会应用未在条件访问策略中配置的条件。 某些条件对于将条件访问策略应用到环境是[必需的](best-practices.md)。 
+不会应用未在条件访问策略中配置的条件。 要将条件访问策略应用到环境，某些条件是[必需的](best-practices.md)。 
 
 本文概述条件，以及如何在条件访问策略中使用条件。 
 
@@ -50,7 +50,7 @@ ms.locfileid: "42140836"
 
 **选择用户和组**时，可以设置以下选项：
 
-* “所有来宾用户”使策略面向 B2B 来宾用户。 此条件与将 **userType** 属性设置为“来宾”的所有用户帐户匹配。 如果在 Azure AD 的邀请流中创建帐户后需要应用策略，则可以使用此设置。
+* “所有来宾用户”使策略面向 B2B 来宾用户。 此条件与将 **userType** 属性设置为“来宾”的所有用户帐户匹配。 如果在 Azure AD 的邀请流中创建帐户后需要应用策略，请使用此设置。
 
 * “目录角色”基于用户的角色分配定位策略。 此条件支持目录角色，如“全局管理员”或“密码管理员”。
 
@@ -74,7 +74,7 @@ ms.locfileid: "42140836"
 
 - “所有云应用”可对要应用到整个组织的策略设置基准。 对于要求执行多重身份验证（由于检测到任何云应用存在登录风险）的策略，请使用此选项。 应用到“所有云应用”的策略将应用于对所有网站和服务的访问权限。 此设置并非仅限用于“选择应用”列表上显示的云应用。 
 
-- 根据策略将特定服务指定为目标的单个云应用。 例如，可以要求用户使用[合规的设备](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)访问 SharePoint Online。 当其他服务访问 SharePoint 内容时，也会对这些服务应用此策略。 例如 Microsoft Teams。 
+- “选择应用”，以便根据策略将特定服务指定为目标。 例如，可以要求用户使用[合规的设备](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)访问 SharePoint Online。 当其他服务访问 SharePoint 内容时，也会对这些服务应用此策略。 例如 Microsoft Teams。 
 
 可以从策略中排除特定的应用。 但是，这些应用仍受到应用于它们访问的服务的策略的限制。 
 
@@ -82,7 +82,7 @@ ms.locfileid: "42140836"
 
 ## <a name="sign-in-risk"></a>登录风险
 
-登录风险指不是由用户帐户合法所有者执行的登录尝试的可能性（高、中或低）。 Azure AD 在用户登录期间会计算登录风险级别。 可以将计算得到的登录风险级别用作条件性访问策略中的条件。
+登录风险指不是由用户帐户合法所有者执行的登录的可能性（高、中或低）。 Azure AD 在用户登录期间会计算登录风险级别。 可以将计算得到的登录风险级别用作条件性访问策略中的条件。
 
 ![登录风险级别](./media/conditions/22.png)
 
@@ -93,7 +93,7 @@ ms.locfileid: "42140836"
 - 阻止存在高登录风险的用户。 此项保护可防止潜在的非法用户访问你的云应用。 
 - 要求中等登录风险的用户执行多重身份验证。 通过强制实施多重身份验证，可以更加肯定登录操作是由帐户的合法所有者执行的。
 
-有关详细信息，请参阅[风险登录](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-security-risky-sign-ins)。  
+有关详细信息，请参阅[检测到会话风险时阻止访问](app-sign-in-risk.md)。  
 
 ## <a name="device-platforms"></a>设备平台
 
@@ -111,13 +111,12 @@ ms.locfileid: "42140836"
 
 ## <a name="device-state"></a>设备状态
 
-设备状态条件从条件访问策略中排除已加入混合 Azure AD 的设备，以及标记为合规的设备。 当策略仅应用到非托管设备以使会话更安全时，此条件非常有用。 例如，当设备处于非托管状态时，仅强制执行 Microsoft Cloud App Security 会话控制。 
+设备状态条件从条件访问策略中排除已加入混合 Azure AD 的设备，以及标记为合规的设备。 
 
 
 ![配置设备状态](./media/conditions/112.png)
 
-若要阻止对非托管设备的访问，请实现[基于设备的条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)。
-
+当策略仅应用到非托管设备以使会话更安全时，此条件非常有用。 例如，当设备处于非托管状态时，仅强制执行 Microsoft Cloud App Security 会话控制。 
 
 ## <a name="locations"></a>位置
 
@@ -136,98 +135,67 @@ ms.locfileid: "42140836"
 
 ## <a name="client-apps"></a>客户端应用
 
-使用客户端应用条件可将策略应用到不同类型的应用程序。 示例包括网站、服务、移动应用和桌面应用程序。 
+默认情况下，条件访问策略适用于以下应用：
+
+- **[浏览器应用](technical-reference.md#supported-browsers)** -  浏览器应用包括使用 SAML、WS-Federation 或 OpenID Connect Web SSO 协议的网站。 这也适用于已注册为 OAuth 机密客户端的任何网站或 Web 服务。 例如，Office 365 SharePoint 网站。 
+
+- **[使用新式身份验证的移动和桌面应用](technical-reference.md#supported-mobile-applications-and-desktop-clients)** - 这些应用包括 Office 桌面应用和手机应用。 
 
 
+另外，可以让策略针对不使用新式身份验证的特定客户端应用，例如：
 
-应用程序分类为：
+- **[Exchange ActiveSync 客户端](conditions.md#exchange-activesync-clients)** - 当某项策略阻止使用 Exchange ActiveSync 时，受影响的用户会收到一封有关隔离的电子邮件，说明为何会阻止他们。 必要时，该电子邮件会说明如何将设备注册到 Intune。
 
-- 将 Web SSO 协议、SAML、WS-Fed 或 OpenID Connect 用作机密客户端的网站或服务。
+- **[其他客户端](block-legacy-authentication.md)** - 这些应用包括通过邮件协议（如 IMAP、MAPI、POP、SMTP）使用基本身份验证的客户端，以及不使用新式身份验证的旧版 Office 应用。 有关详细信息，请参阅[如何对 Office 2013 和 Office 2016 客户端应用使用新式身份验证](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016)。
 
-- 将移动应用 OpenID Connect 用作本机客户端的移动应用或桌面应用程序。
+![客户端应用](./media/conditions/41.png)
 
-有关可在条件访问策略中使用的客户端应用列表，请参阅“Azure Active Directory 条件访问技术参考”中的[客户端应用条件](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#client-apps-condition)。
+此条件的常见用例包括提供以下要求的策略：
 
-此条件的常见用例包括提供以下保护的策略： 
+- 对于将数据下载到设备的移动和桌面应用程序，**[要求使用托管设备](require-managed-devices.md)**。 同时，允许从任何设备上的浏览器进行访问。 此方案阻止将文档保存并同步到非托管设备。 使用此方法，在设备丢失或失窃的情况下就可以降低数据丢失的可能性。
 
-- 要求在移动和桌面应用程序中使用[合规设备](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)将大量数量下载到设备。 同时，允许从任何设备上的浏览器进行访问。
+- 对于使用 ActiveSync 来访问 Exchange Online 的应用，**[需要托管设备](require-managed-devices.md)**。
+
+- **[阻止向 Azure AD 进行的旧身份验证](block-legacy-authentication.md)**（其他客户端）
 
 - 阻止从 Web 应用程序访问，但允许从移动和桌面应用程序访问。
 
-可将此条件应用到 Web SSO 和新式身份验证协议。 还可将其应用到使用 Microsoft Exchange ActiveSync 的邮件应用程序。 示例包括大多数智能手机上的本机邮件应用。 
 
-仅当 Microsoft Office 365 Exchange Online 是所选的唯一云应用时，才能选择此客户端应用条件。
 
-![云应用](./media/conditions/32.png)
+### <a name="exchange-activesync-clients"></a>Exchange ActiveSync 客户端
 
-仅当未在策略中配置其他条件时，才支持选择“Exchange ActiveSync”作为客户端应用条件。 但是，可以缩小此条件的范围，使之仅应用到支持的平台。
+只有在以下情况下，才可以选在“Exchange ActiveSync 客户端”：
 
+
+- Microsoft Office 365 Exchange Online 是所选的唯一云应用。
+
+    ![云应用](./media/conditions/32.png)
+
+- 未在策略中配置其他条件。 但是，可以缩小此条件的范围，使之仅应用到[支持的平台](technical-reference.md#device-platform-condition)。
  
-![仅将策略应用到支持的平台](./media/conditions/33.png)
-
-仅向支持的平台应用此条件相当于将所有设备平台置于一个[设备平台条件](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)中。
-
-![配置设备平台](./media/conditions/34.png)
+    ![仅将策略应用到支持的平台](./media/conditions/33.png)
 
 
- 有关详细信息，请参阅以下文章：
+如果系统因为要求使用[托管设备](require-managed-devices.md)而阻止某些用户的访问，则受影响的用户会收到一封引导他们使用 Intune 的邮件。 
+
+如果系统要求使用经审核的应用，则受影响的用户会收到 Outlook 移动客户端的安装和使用指南。
+
+在其他情况下（例如，需要 MFA），则会阻止受影响用户，因为使用基本身份验证的客户端不支持 MFA。
+
+只能将此设置用于用户和组。 它不支持来宾或角色。 如果配置了来宾或角色条件，则会阻止所有用户，因为条件访问无法确定是否应将策略应用于用户。
+
+
+ 有关详细信息，请参阅：
 
 - [为 Azure Active Directory 条件访问设置 SharePoint Online 和 Exchange Online](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication)。
  
 - [基于 Azure Active Directory 应用的条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)。 
 
 
-### <a name="legacy-authentication"></a>旧式身份验证  
-
-条件访问现在适用于不支持新式身份验证的旧式 Microsoft Office 客户端。 此外，它还适用于使用 POP、IMAP、SMTP 等邮件协议的客户端。 使用旧式身份验证可以配置类似于“阻止来自其他客户端的访问”的策略。
-
-
-![配置客户端应用](./media/conditions/160.png)  
-
-
-#### <a name="known-issues"></a>已知问题
-
-- 为“其他客户端”配置策略导致整个组织无法与 SPConnect 之类的特定客户端通信。 之所以发生这种阻止，是因为旧式客户端使用非预期的方式进行身份验证。 此问题不存在于主要的 Office 应用程序（例如旧式 Office 客户端）中。 
-
-- 策略生效可能需要长达 24 小时的时间。 
-
-
-#### <a name="frequently-asked-questions"></a>常见问题
-
-**问：** 此身份验证是否会阻止 Microsoft Exchange Web 服务？
-
-这取决于 Exchange Web 服务使用的身份验证协议。 如果 Exchange Web 服务应用程序使用新式身份验证，则此身份验证受“移动应用和桌面客户端”客户端应用的控制。 基本身份验证受“其他客户端”客户端应用的控制。
-
-
-**问：** 可对“其他客户端”使用哪些控制？
-
-可对“其他客户端”配置任何控制。 但是，最终用户体验将会是所有情况下都无法访问。 “其他客户端”不支持 MFA、符合标准的设备、域加入等控制。 
- 
-**问：** 可对“其他客户端”使用哪些条件？
-
-可对“其他客户端”配置任何条件。
-
-**问：** Exchange ActiveSync 是否支持所有条件和控制？
-
-不是。 以下列表汇总了 Exchange ActiveSync 的支持情况： 
-
-- Exchange ActiveSync 仅支持用户和组目标。 它不支持来宾或角色。 如果配置了来宾或角色条件，则会阻止所有用户。 Exchange ActiveSync 之所以阻止所有用户，是因为它无法确定是否要将策略应用到用户。
-
-- Exchange ActiveSync 仅适用于充当云应用的 Microsoft Exchange Online。 
-
-- Exchange ActiveSync 不支持除客户端应用本身以外的任何条件。 
-
-- 可在 Exchange ActiveSync 中配置任何控制。 配置除设备符合性以外的任何控制会导致阻止。
-
-**问：** 默认情况下，这些策略是否会持续应用到所有客户端应用？
-
-不是。 默认的策略行为不会有任何变化。 默认情况下，这些策略将持续应用到浏览器、移动应用程序和桌面客户端。
-
-
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何配置条件访问策略，请参阅[快速入门：通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](app-based-mfa.md)。
+- 若要了解如何配置条件访问策略，请参阅[快速入门：要求使用 Azure Active Directory 条件访问对特定应用进行 MFA](app-based-mfa.md)。
 
 - 若要为环境配置条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](best-practices.md)。 
 

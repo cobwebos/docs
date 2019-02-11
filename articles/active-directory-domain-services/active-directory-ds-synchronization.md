@@ -1,26 +1,26 @@
 ---
-title: Azure Active Directory 域服务：托管域中的同步 | Microsoft 文档
+title: Azure Active Directory 域服务：托管域中的同步 | Microsoft Docs
 description: 了解 Azure Active Directory 域服务托管域中的同步
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: ergreenl
-ms.openlocfilehash: e0fc1b64514adb710ebcbdd417f65e9e3b3b3d66
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 23d30d3b881fbe5aab4e537073b2582eb01bfe7c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155552"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183418"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD 域服务托管域中的同步
 下图演示了 Azure AD 域服务托管域中的同步工作原理。
@@ -50,10 +50,10 @@ Azure AD Connect 同步用于将用户帐户、组成员身份和凭据哈希同
 ## <a name="exclusions---what-isnt-synchronized-to-your-managed-domain"></a>排除项 - 哪些内容不会同步到托管域
 以下对象或属性不会同步到 Azure AD 租户或托管域：
 
-* **排除的属性：** 可以选择排除使用 Azure AD Connect 将某些属性从本地域同步到 Azure AD 租户。 这些排除的属性将不会出现在托管域中。
+* **排除的属性：** 可选择排除使用 Azure AD Connect 将某些属性从本地域同步到 Azure AD 租户。 这些排除的属性将不会出现在托管域中。
 * **组策略：** 本地域中配置的组策略不会同步到托管域。
-* **Sysvol 共享：** 同样，本地域中 Sysvol 共享的内容不会同步到托管域。
-* **计算机对象：** 已加入本地域的计算机的计算机对象不会同步到托管域。 这些计算机未与托管域建立信任关系，它们仅属于本地域。 在托管域中，只能看到已显式加入该托管域的计算机的计算机对象。
+* **Sysvol 共享：** 同样，本地域中 Sysvol 共享的内容也不会同步到托管域。
+* **计算机对象：** 加入本地域的计算机的计算机对象不会同步到托管域。 这些计算机未与托管域建立信任关系，它们仅属于本地域。 在托管域中，只能看到已显式加入该托管域的计算机的计算机对象。
 * **用户和组的 SidHistory 属性：** 本地域中的主用户和主组 SID 将同步到托管域。 但是，用户和组的现有 SidHistory 属性不会从本地域同步到托管域。
 * **组织单位 (OU) 结构：** 在本地域中定义的组织单位不会同步到托管域。 托管域中有两个内置的 OU。 默认情况下，托管域采用扁平的 OU 结构。 但是，可以选择[在托管域中创建自定义 OU](active-directory-ds-admin-guide-create-ou.md)。
 

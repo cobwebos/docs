@@ -12,32 +12,32 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/14/2017
+ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: be737550aa1cff22bc413ee8ce243f8d8588f6a5
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 3c9fe597957057dc61da5c2b1cf6f9216711764a
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29972334"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247837"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>部署 StorSimple 虚拟阵列 - 在 VMware 中预配
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
 
 ## <a name="overview"></a>概述
-本教程介绍如何在运行 VMware ESXi 5.0、5.5 或 6.0 的主机系统上预配和连接 StorSimple 虚拟阵列。 本文适用于在 Azure 门户和 Microsoft Azure 政府云中部署 StorSimple 虚拟阵列的情况。
+本教程介绍如何在运行 VMware ESXi 5.0、5.5、6.0 或 6.5 的主机系统上预配和连接 StorSimple 虚拟阵列。 本文适用于在 Azure 门户和 Microsoft Azure 政府云中部署 StorSimple 虚拟阵列的情况。
 
 需要管理员权限才能预配和连接虚拟设备。 完成预配和初始设置可能需要大约 10 分钟。
 
 ## <a name="provisioning-prerequisites"></a>预配先决条件
-在运行 VMware ESXi 5.0、5.5 或 6.0 的主机系统上预配虚拟设备的先决条件如下所示。
+在运行 VMware ESXi 5.0、5.5、6.0 或 6.5 的主机系统上预配虚拟设备的先决条件如下所示。
 
 ### <a name="for-the-storsimple-device-manager-service"></a>对于 StorSimple Device Manager 服务
 在开始之前，请确保：
 
 * 已完成[为 StorSimple 虚拟阵列准备门户](storsimple-virtual-array-deploy1-portal-prep.md)中的所有步骤。
-* 已从 Azure 门户下载 VMware 的虚拟设备映像。 有关详细信息，请参阅[为 StorSimple 虚拟阵列准备门户指南](storsimple-virtual-array-deploy1-portal-prep.md)中的**步骤 3：下载虚拟设备映像**。
+* 已从 Azure 门户下载 VMware 的虚拟设备映像。 有关更多信息，请参阅**步骤 3：下载虚拟设备映像**（在 [为 StorSimple 虚拟阵列准备门户指南](storsimple-virtual-array-deploy1-portal-prep.md)中）。
 
 ### <a name="for-the-storsimple-virtual-device"></a>对于 StorSimple 虚拟设备
 在部署虚拟设备之前，请确保：
@@ -62,10 +62,10 @@ ms.locfileid: "29972334"
 2. 预配虚拟机监控程序中的虚拟设备。
 3. 启动虚拟设备并获取 IP 地址。
 
-## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>步骤 1：确保主机系统满足最小虚拟设备要求
+## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>步骤 1：确保主机设备满足最小虚拟设备要求
 若要创建虚拟设备，需满足以下条件：
 
-* 有权访问运行 VMware ESXi Server 5.0、5.5 或 6.0 的主机系统。
+* 有权访问运行 VMware ESXi Server 5.0、5.5、6.0 或 6.5 的主机系统。
 * 在系统上存在用于管理 ESXi 主机的 VMware vSphere 客户端。
 
   * 至少 4 个核心。
@@ -120,7 +120,7 @@ ms.locfileid: "29972334"
 14. 返回到 vSphere 客户端窗口。 选中 ESXi 服务器后，右键单击并选择“新建虚拟机”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image15.png)
-15. 此时会显示“创建新的虚拟机”窗口。 在“配置”页上选择“自定义”选项。 单击“资源组名称” 的 Azure 数据工厂。
+15. 此时会显示“创建新的虚拟机”窗口。 在“配置”页上选择“自定义”选项。 单击“下一步”。
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image16.png)
 16. 在“名称和位置”页上，指定虚拟机的名称。 该名称应与此前在步骤 8 中指定的文件夹名称配置（建议的最佳做法）。
 
@@ -134,10 +134,10 @@ ms.locfileid: "29972334"
 19. 在“来宾操作系统”页上，选择“Windows”作为“来宾操作系统”。 从下拉列表中选择“Microsoft Windows Server 2012 (64 位)”作为“版本”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image20.png)
-20. 在“CPU”页上调整“虚拟插槽数”和“每个虚拟插槽的核心数”，使“总核心数”为 4（或 4 以上）。 单击“资源组名称” 的 Azure 数据工厂。
+20. 在“CPU”页上调整“虚拟插槽数”和“每个虚拟插槽的核心数”，使“总核心数”为 4（或 4 以上）。 单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image21.png)
-21. 在“内存”页上，将 RAM 指定为 8 GB（或 8 GB 以上）。 单击“资源组名称” 的 Azure 数据工厂。
+21. 在“内存”页上，将 RAM 指定为 8 GB（或 8 GB 以上）。 单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image22.png)
 22. 在“网络”页上，指定网络接口的数目。 最低要求是一个网络接口。
@@ -146,10 +146,10 @@ ms.locfileid: "29972334"
 23. 在“SCSI 控制器”页上，接受默认的“LSI 逻辑 SAS 控制器”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image24.png)
-24. 在“选择磁盘”页上，选择“使用现有虚拟磁盘”。 单击“资源组名称” 的 Azure 数据工厂。
+24. 在“选择磁盘”页上，选择“使用现有虚拟磁盘”。 单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image25.png)
-25. 在“选择现有磁盘”页的“磁盘文件路径”下，单击“浏览”。 此时会打开“浏览数据存储”对话框。 导航到上传 VMDK 的位置。 此时在数据存储中只会看到一个文件，因为最初上传的两个文件已合并。 选择该文件，并单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+25. 在“选择现有磁盘”页的“磁盘文件路径”下，单击“浏览”。 此时会打开“浏览数据存储”对话框。 导航到上传 VMDK 的位置。 此时在数据存储中只会看到一个文件，因为最初上传的两个文件已合并。 选择该文件，并单击“确定”。 单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image26.png)
 26. 在“高级选项”页上，接受默认值，并单击“下一步”。
@@ -158,25 +158,25 @@ ms.locfileid: "29972334"
 27. 在“准备完成”页上，查看与新虚拟机关联的所有设置。 选中“在完成前编辑虚拟机设置”。 单击“继续”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image28.png)
-28. 在“虚拟机属性”页的“硬件”选项卡中，找到设备硬件。 选择“新建硬盘”。 单击 **“添加”**。
+28. 在“虚拟机属性”页的“硬件”选项卡中，找到设备硬件。 选择“新建硬盘”。 单击“添加”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image29.png)
 29. 此时会显示“添加硬件”窗口。 在“设备类型”页的“选择要添加的设备类型”下选择“硬盘”，并单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image30.png)
-30. 在“选择磁盘”页上，选择“创建新的虚拟磁盘”。 单击“资源组名称” 的 Azure 数据工厂。
+30. 在“选择磁盘”页上，选择“创建新的虚拟磁盘”。 单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image31.png)
-31. 在“创建磁盘”页上，将“磁盘大小”更改为 500 GB（或 500 GB 以上）。 500 GB 为最低要求，可以预配更大的磁盘。 请注意，不能扩展或压缩已预配的磁盘。 如需详细了解要预配的磁盘的大小，请查看[最佳实践文档](storsimple-ova-best-practices.md)的“调整大小”部分。 在“磁盘预配”下，选择“精简预配”。 单击“资源组名称” 的 Azure 数据工厂。
+31. 在“创建磁盘”页上，将“磁盘大小”更改为 500 GB（或 500 GB 以上）。 500 GB 为最低要求，可以预配更大的磁盘。 请注意，不能扩展或压缩已预配的磁盘。 如需详细了解要预配的磁盘的大小，请查看[最佳实践文档](storsimple-ova-best-practices.md)的“调整大小”部分。 在“磁盘预配”下，选择“精简预配”。 单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image32.png)
 32. 在“高级选项”页上，接受默认值。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image33.png)
-33. 在“准备完成”页上，查看磁盘选项。 单击“完成” 。
+33. 在“准备完成”页上，查看磁盘选项。 单击“完成”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image34.png)
-34. 返回到“虚拟机属性”页。 新硬盘已添加到虚拟机。 单击“完成” 。
+34. 返回到“虚拟机属性”页。 新硬盘已添加到虚拟机。 单击“完成”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image35.png)
 35. 在右窗格中选中虚拟机以后，导航到“摘要”选项卡。查看虚拟机的设置。
@@ -235,7 +235,7 @@ ms.locfileid: "29972334"
        >
        >
 
-如果设备不符合最低配置要求，则会在横幅文本中显示错误（如下所示）。 需修改设备配置，使之有足够的资源来满足最低要求。 然后即可重新启动设备并与之进行连接。 请参阅[步骤 1：确保主机系统满足最小虚拟设备要求](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements)中的最低配置要求。
+如果设备不符合最低配置要求，则会在横幅文本中显示错误（如下所示）。 需修改设备配置，使之有足够的资源来满足最低要求。 然后即可重新启动设备并与之进行连接。 请在[步骤 1：确保主机系统满足最小虚拟设备要求](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements)中参阅最低配置要求。
 
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image46.png)
 

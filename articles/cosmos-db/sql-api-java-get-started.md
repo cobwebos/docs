@@ -1,28 +1,27 @@
 ---
-title: NoSQL 教程：适用于 Azure Cosmos DB Java SDK 的 SQL API | Microsoft Docs
+title: NoSQL 教程：适用于 Azure Cosmos DB Java SDK 的 SQL API
 description: 使用适用于 Azure Cosmos DB 的 SQL API 创建联机数据库和 Java 控制台应用程序的 NoSQL 教程。 Azure SQL 是用于 JSON 的 NoSQL 数据库。
-keywords: nosql 教程, 联机数据库, java 控制台应用程序
-services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: sngun
-ms.openlocfilehash: d4f5a174efb6679bfa29b1a2dfbcf3b1adb91053
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 7b59ab5da89d7ab99560a777f5a685f8b33e31dc
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162450"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201170"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL 教程：构建 SQL API Java 控制台应用程序
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
+> * [.NET（预览版）](sql-api-dotnet-get-started-preview.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
+> * [.NET Core（预览版）](sql-api-dotnet-core-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
 > * [异步 Java](sql-api-async-java-get-started.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
@@ -55,7 +54,7 @@ ms.locfileid: "52162450"
 
 * [Git](https://git-scm.com/downloads)。
 * [Java 开发工具包 (JDK) 7+](https://aka.ms/azure-jdks)。
-* [Maven](http://maven.apache.org/download.cgi)。
+* [Maven](https://maven.apache.org/download.cgi)。
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>步骤 1：创建 Azure Cosmos DB 帐户
 让我们创建一个 Azure Cosmos DB 帐户。 如果已有一个可用的帐户，可以直接跳到[克隆 GitHub 项目](#GitClone)。 如果使用 Azure Cosmos DB 模拟器，请遵循 [Azure Cosmos DB 模拟器](local-emulator.md)中的步骤设置该模拟器，并直接跳到[克隆 GitHub 项目](#GitClone)。
@@ -90,8 +89,8 @@ ms.locfileid: "52162450"
 
 ![在 NoSQL 教程中用于创建 Java 控制台应用程序的 Azure 门户屏幕截图。 显示了一个 Azure Cosmos DB 帐户，在“Azure Cosmos DB 帐户”边栏选项卡上突出显示了“ACTIVE”中心、“密钥”按钮，在“密钥”边栏选项卡上突出显示了 URI、主密钥、辅助密钥的值][keys]
 
-## <a name="step-4-create-a-database"></a>第 4 步：创建数据库
-可以使用 **DocumentClient** 类的 [createDatabase](/java/api/com.microsoft.azure.documentdb._document_client.createdatabase) 方法创建 Azure Cosmos DB [数据库](databases-containers-items.md#azure-cosmos-databases)。 数据库是跨集合分区的 JSON 文档存储的逻辑容器。
+## <a name="step-4-create-a-database"></a>步骤 4：创建数据库
+可以使用 **DocumentClient** 类的 [createDatabase](/java/api/com.microsoft.azure.documentdb.documentclient.createdatabase) 方法创建 Azure Cosmos DB [数据库](databases-containers-items.md#azure-cosmos-databases)。 数据库是跨集合分区的 JSON 文档存储的逻辑容器。
 
     Database database = new Database();
     database.setId("familydb");
@@ -103,7 +102,7 @@ ms.locfileid: "52162450"
 > 
 > 
 
-可以使用 **DocumentClient** 类的 [createCollection](/java/api/com.microsoft.azure.documentdb._document_client.createcollection) 方法创建集合。 集合是 JSON 文档和相关联的 JavaScript 应用程序逻辑的容器。
+可以使用 **DocumentClient** 类的 [createCollection](/java/api/com.microsoft.azure.documentdb.documentclient.createcollection) 方法创建集合。 集合是 JSON 文档和相关联的 JavaScript 应用程序逻辑的容器。
 
 
     DocumentCollection collectionInfo = new DocumentCollection();
@@ -116,8 +115,8 @@ ms.locfileid: "52162450"
 
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
-## <a id="CreateDoc"></a>第 6 步：创建 JSON 文档
-可以使用 **DocumentClient** 类的 [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument) 方法创建文档。 文档是用户定义的（任意）JSON 内容。 现在，我们可以插入一个或多个文档。 如果已有要在数据库中存储的数据，则可以使用 Azure Cosmos DB 的[数据迁移工具](import-data.md)将数据导入数据库。
+## <a id="CreateDoc"></a>步骤 6：创建 JSON 文档
+可以使用 **DocumentClient** 类的 [createDocument](/java/api/com.microsoft.azure.documentdb.documentclient.createdocument) 方法创建文档。 文档是用户定义的（任意）JSON 内容。 现在，我们可以插入一个或多个文档。 如果已有要在数据库中存储的数据，则可以使用 Azure Cosmos DB 的[数据迁移工具](import-data.md)将数据导入数据库。
 
     // Insert your Java objects as documents 
     Family andersenFamily = new Family();
@@ -140,7 +139,7 @@ ms.locfileid: "52162450"
 ![演示在 NoSQL 教程中创建 Java 控制台应用程序所用的帐户、联机数据库、集合和文档的层次关系的示意图。](./media/sql-api-get-started/nosql-tutorial-account-database.png)
 
 ## <a id="Query"></a>步骤 7：查询 Azure Cosmos DB 资源
-Azure Cosmos DB 支持对存储在每个集合中的 JSON 文档进行[各种查询](how-to-sql-query.md)。  以下示例代码展示了如何将 SQL 语法与 [queryDocuments](/java/api/com.microsoft.azure.documentdb._document_client.querydocuments) 方法一起使用来查询 Azure Cosmos DB 中的文档。
+Azure Cosmos DB 支持对存储在每个集合中的 JSON 文档进行[各种查询](how-to-sql-query.md)。  以下示例代码展示了如何将 SQL 语法与 [queryDocuments](/java/api/com.microsoft.azure.documentdb.documentclient.querydocuments) 方法一起使用来查询 Azure Cosmos DB 中的文档。
 
     FeedResponse<Document> queryResults = this.client.queryDocuments(
         "/dbs/familydb/colls/familycoll",
@@ -153,7 +152,7 @@ Azure Cosmos DB 支持对存储在每个集合中的 JSON 文档进行[各种查
     }
 
 ## <a id="ReplaceDocument"></a>步骤 8：替换 JSON 文档
-Azure Cosmos DB 支持使用 [replaceDocument](/java/api/com.microsoft.azure.documentdb._document_client.replacedocument) 方法更新 JSON 文档。
+Azure Cosmos DB 支持使用 [replaceDocument](/java/api/com.microsoft.azure.documentdb.documentclient.replacedocument) 方法更新 JSON 文档。
 
     // Update a property
     andersenFamily.Children[0].Grade = 6;
@@ -164,7 +163,7 @@ Azure Cosmos DB 支持使用 [replaceDocument](/java/api/com.microsoft.azure.doc
         null);
 
 ## <a id="DeleteDocument"></a>步骤 9：删除 JSON 文档
-Azure Cosmos DB 支持使用 [replaceDocument](/java/api/com.microsoft.azure.documentdb._document_client.deletedocument) 方法更新 JSON 文档。  
+Azure Cosmos DB 支持使用 [replaceDocument](/java/api/com.microsoft.azure.documentdb.documentclient.deletedocument) 方法更新 JSON 文档。  
 
     this.client.delete("/dbs/familydb/colls/familycoll/docs/Andersen.1", null);
 

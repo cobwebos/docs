@@ -5,16 +5,16 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: e2cba8cb53e73bd1fc25f1fe43fa0365247e2bd2
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c2151be1644cde0e737be7f026bdf63cef0b3686
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210816"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221957"
 ---
-# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>为多层 Dynamics AX 应用程序设置灾难恢复 
+# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>为多层 Dynamics AX 应用程序设置灾难恢复   
 
 
 
@@ -118,15 +118,15 @@ ms.locfileid: "50210816"
 可通过添加以下步骤来自定义 Dynamics AX 应用程序的恢复计划。 以上快照显示添加所有步骤后的完整恢复计划。
 
 
-* SQL Server 故障转移步骤：有关 SQL Server 特定恢复步骤的信息，请参阅[使用 SQL Server 和 Azure Site Recovery 复制应用程序](site-recovery-sql.md)。
+* **SQL Server 故障转移步骤**：有关 SQL Server 特定恢复步骤的信息，请参阅[使用 SQL Server 和 Azure Site Recovery 复制应用程序](site-recovery-sql.md)。
 
-* 故障转移组 1：对应用程序对象服务器 VM 进行故障转移。
+* **故障转移组 1**：对应用程序对象服务器 VM 进行故障转移。
 确保选择的恢复点尽量靠近数据库 PIT，但不能在它的前面。
 
-* 脚本：添加负载均衡器（仅限 E-A）。
+* **脚本**：添加负载均衡器（仅限 E-A）。
 应用程序对象服务器 VM 组启动后，请添加一个脚本（通过 Azure 自动化），以便向其添加负载均衡器。 可以使用脚本完成此任务。 有关详细信息，请参阅[如何为多层应用程序灾难恢复添加负载均衡器](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/)。
 
-* 故障转移组 2：对 Dynamics AX 客户端 VM 进行故障转移。 在执行恢复计划的过程中故障转移 Web 层 VM。
+* **故障转移组 2**：对 Dynamics AX 客户端 VM 进行故障转移。 在执行恢复计划的过程中故障转移 Web 层 VM。
 
 
 ### <a name="perform-a-test-failover"></a>执行测试故障转移

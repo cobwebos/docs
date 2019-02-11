@@ -6,18 +6,19 @@ services: cognitive-services
 author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 12/18/2018
 ms.author: tulasim
-ms.openlocfilehash: fa5b5e1998d54c7b22d01e7cc70e84059d482cfb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.custom: seodec18
+ms.openlocfilehash: b2810a34c8b4b7329568ee8601d296c4eeb263ff
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623540"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226394"
 ---
-# <a name="edit-a-knowledge-base"></a>编辑知识库
+# <a name="edit-a-knowledge-base-in-qna-maker"></a>在 QnA Maker 中编辑知识库
 
 QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的内容。
 
@@ -44,7 +45,7 @@ QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的�
 
 1. 完成对知识库的更改后，选择页面右上角的“保存并训练”以保留更改。    
 
-    ![保存并训练](../media/qnamaker-how-to-edit-kb/save-and-train.png)
+    ![保存和训练](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 
     >[!CAUTION]
     >如果在选择“保存并训练”前离开页面，则所有更改都将丢失。
@@ -70,7 +71,7 @@ QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的�
 ## <a name="add-metadata"></a>添加元数据
 
 
-通过选择过滤器图标添加元数据对
+通过选择元数据图标添加元数据对
 
 ![添加元数据](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
@@ -79,11 +80,17 @@ QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的�
 
 ## <a name="manage-large-knowledge-bases"></a>管理大型知识库
 
-1. QnAs 按从中提取它们的数据源分组。 你可以展开或折叠数据源。
-2. 你可以通过在知识库表顶部的文本框中键入内容来搜索知识库。 单击 Enter 以搜索问题、答案或元数据内容。 单击 X 图标以删除搜索筛选器。
-3. “分页”允许你管理大型知识库
+* **数据源组**：QnAs 按从中提取它们的数据源进行分组。 你可以展开或折叠数据源。
 
-    ![搜索, 分页, 分组](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+    ![使用 QnA Maker 数据源栏来折叠和展开数据源问题和解答](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
+
+* **搜索知识库**：可以通过在知识库表顶部的文本框中键入内容来搜索知识库。 单击 Enter 以搜索问题、答案或元数据内容。 单击 X 图标以删除搜索筛选器。
+
+    ![使用问题和解答上方的 QnA Maker 搜索框可将视图缩小为仅筛选匹配项](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+
+* **分页**：快速浏览数据源以管理大型知识库
+
+    ![使用问题和解答上方的 QnA Maker 分页功能可浏览问题和解答页面](../media/qnamaker-how-to-edit-kb/pagination.png)
 
 ## <a name="delete-knowledge-bases"></a>删除知识库
 

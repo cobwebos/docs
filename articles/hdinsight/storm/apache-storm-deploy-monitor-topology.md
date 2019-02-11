@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.date: 03/01/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ce39e3ffce0b7721bde84254c7e5a35ec28465dc
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 322c7164c0ecda550bf1bfe6a55075759bf95735
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583153"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630510"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-windows-based-hdinsight"></a>在基于 Windows 的 HDInsight 上部署和管理 Apache Storm 拓扑
 
-[Apache Storm](http://storm.apache.org/) 仪表板可让你使用 Web 浏览器轻松在 HDInsight 群集中部署和运行 Apache Storm 拓扑。 还可以使用该仪表板监视和管理正在运行的拓扑。 如果使用 Visual Studio，则 HDInsight Tools for Visual Studio 会提供 Visual Studio 中的类似功能。
+[Apache Storm](https://storm.apache.org/) 仪表板可让你使用 Web 浏览器轻松在 HDInsight 群集中部署和运行 Apache Storm 拓扑。 还可以使用该仪表板监视和管理正在运行的拓扑。 如果使用 Visual Studio，则 HDInsight Tools for Visual Studio 会提供 Visual Studio 中的类似功能。
 
 HDInsight Tools 中的 Storm 仪表板和 Storm 功能依赖于 Storm REST API，此 API 可用于创建自己的监视和管理解决方案。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 本文档中的步骤需要使用以 Windows 作为操作系统的 Storm on HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 >
 > 有关通过使用 Linux 的 HDInsight 群集部署和管理 Storm 拓扑的信息，请参阅[在基于 Linux 的 HDInsight 上部署和管理 Apache Storm 拓扑](apache-storm-deploy-monitor-topology-linux.md)
@@ -59,7 +59,7 @@ Storm 仪表板是 Storm 群集上提供的网页。 URL 是 **https://&lt;clust
 
 ![Storm UI][storm-dashboard-ui]
 
-> [!NOTE]
+> [!NOTE]  
 > 在某些版本的 Internet Explorer 中，你可能会发现，在首次访问 Storm UI 后它并不会刷新。 例如，可能不显示已提交的新拓扑，或者以前停用的拓扑显示为活动状态。 Microsoft 已意识此问题，并在努力找出相应的解决方法。
 
 #### <a name="main-page"></a>主页面
@@ -68,9 +68,9 @@ Storm UI 的主页面提供以下信息：
 
 * **群集摘要**：有关 Storm 群集的基本信息。
 
-* **拓扑摘要**：正在运行的拓扑列表。 使用此部分中的链接可以查看有关特定拓扑的详细信息。
+* **拓扑摘要**：正在运行的拓扑的列表。 使用此部分中的链接可以查看有关特定拓扑的详细信息。
 
-* **监督员摘要**：有关 Storm 监督员的信息。
+* **监督器摘要**：有关 Storm 监督器的信息。
 
 * **Nimbus 配置**：群集的 Nimbus 配置。
 
@@ -88,7 +88,7 @@ Storm UI 的主页面提供以下信息：
 
   * **重新平衡**：调整拓扑的并行度。 更改群集中的节点数目之后，应该重新平衡正在运行的拓扑。 这可让拓扑调整并行度，以弥补群集中增加或减少的节点数目。
 
-      有关详细信息，请参阅[了解 Apache Storm 拓扑的并行度](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
+      有关详细信息，请参阅[了解 Apache Storm 拓扑的并行度](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
 
   * **终止**：在经过指定的超时之后终止 Storm 拓扑。
 
@@ -112,9 +112,9 @@ Storm UI 的主页面提供以下信息：
 
 * **输出统计信息**：有关此 Spout 或 Bolt 所发出的流的信息。
 
-* **执行器**：有关 Spout 或 Bolt 实例的信息。 选择特定执行器的“端口”项可以查看针对此实例生成的诊断信息的日志。
+* **执行程序**：有关 Spout 或 Bolt 实例的信息。 选择特定执行器的“端口”项可以查看针对此实例生成的诊断信息的日志。
 
-* **错误**：此 Spout 或 Bolt 的任何错误信息。
+* **Errors**:此 Spout 或 Bolt 的任何错误信息。
 
 ## <a name="hdinsight-tools-for-visual-studio"></a>用于 Visual Studio 的 HDInsight 工具
 
@@ -132,7 +132,7 @@ Storm UI 的主页面提供以下信息：
 
 4. 在“解决方案资源管理器”中，右键单击项目，并选择“提交到 Storm on HDInsight”。
 
-   > [!NOTE]
+   > [!NOTE]  
    > 如果出现提示，请输入 Azure 订阅的登录凭据。 如果有多个订阅，请登录包含 Storm on HDInsight 群集的订阅。
 
 5. 从“Storm 群集”下拉列表中选择 Storm on HDInsight 群集，并选择“提交”。 可以使用“输出”窗口监视提交是否成功。
@@ -141,17 +141,17 @@ Storm UI 的主页面提供以下信息：
 
     ![visual studio 监视器](./media/apache-storm-deploy-monitor-topology/vsmonitor.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > 也可以通过依次展开“Azure” > “HDInsight”，右键单击 Storm on HDInsight 群集，并选择“查看 Storm 拓扑”，以从“服务器资源管理器”查看“Storm 拓扑”。
 
     选择 Spout 或 Bolt 的形状可查看有关这些组件的信息。 每选择一项都会打开一个新窗口。
 
-   > [!NOTE]
+   > [!NOTE]  
    > 拓扑的名称是拓扑的类名（在此示例中为 `HelloWord`）并追加了时间戳。
 
 7. 从“拓扑摘要”视图中，选择“终止”以停止拓扑。
 
-   > [!NOTE]
+   > [!NOTE]  
    > Storm 拓扑会一直运行，直到它被停止，或者群集被删除。
 
 
@@ -169,7 +169,7 @@ HDInsight 群集上的 REST API 的基本 URI 是 **https://&lt;clustername>.azu
 
 对 REST API 的请求必须使用**基本身份验证**，因此应该使用 HDInsight 群集管理员名称和密码。
 
-> [!NOTE]
+> [!NOTE]  
 > 由于基本身份验证使用明文发送，因此**始终**应该使用 HTTPS 来保护与群集之间的通信。
 
 ### <a name="return-values"></a>返回值

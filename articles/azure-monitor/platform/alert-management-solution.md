@@ -8,32 +8,35 @@ manager: carmonm
 editor: tysonn
 ms.assetid: fe5d534e-0418-4e2f-9073-8025e13271a8
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 1ac4ec13ad404263e2821c2b89b5db299f36005e
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 06532369efb802606eb13a4b38a8579a3528f999
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637092"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382948"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics 中的警报管理解决方案
 
 ![警报管理图标](media/alert-management-solution/icon.png)
 
-警报管理解决方案有助于分析 Log Analytics 存储库中的所有警报。  这些警报可能来自各种源，包括 [Log Analytics 创建](../../monitoring-and-diagnostics/monitoring-overview-alerts.md)或是[从 Nagios 或 Zabbix 导入](../../log-analytics/log-analytics-quick-collect-linux-computer.md)的源。 解决方案还从任何[连接的 System Center Operations Manager 管理组](../../log-analytics/log-analytics-om-agents.md)导入警报。
+> [!NOTE]
+>  Azure Monitor 现在支持[大规模管理警报](https://aka.ms/azure-alerts-overview)的增强功能，包括由[监视工具（如 SCOM、Zabbix 或 Nagios）](https://aka.ms/managing-alerts-other-monitoring-services)生成的警报。
+>  
+
+
+警报管理解决方案有助于分析 Log Analytics 存储库中的所有警报。  这些警报可能来自各种源，包括 [Log Analytics 创建](../../azure-monitor/platform/alerts-overview.md)或是[从 Nagios 或 Zabbix 导入](../../azure-monitor/learn/quick-collect-linux-computer.md)的源。 解决方案还从任何[连接的 System Center Operations Manager 管理组](../../azure-monitor/platform/om-agents.md)导入警报。
 
 ## <a name="prerequisites"></a>先决条件
 解决方案处理 Log Analytics 存储库中具有 Alert 类型的任何记录，因此必须执行收集这些记录所需的任何配置。
 
-- 对于 Log Analytics 警报，[创建警报规则](../../monitoring-and-diagnostics/monitoring-overview-alerts.md)以直接在存储库中创建警报记录。
-- 对于 Nagios 和 Zabbix 警报，[配置这些服务器](../../log-analytics/log-analytics-quick-collect-linux-computer.md)以将警报发送到 Log Analytics。
-- 对于 System Center Operations Manager 警报，[将 Operations Manager 管理组连接到 Log Analytics 工作区](../../log-analytics/log-analytics-om-agents.md)。  System Center Operations Manager 中创建的任何警报均导入 Log Analytics。  
+- 对于 Log Analytics 警报，[创建警报规则](../../azure-monitor/platform/alerts-overview.md)以直接在存储库中创建警报记录。
+- 对于 Nagios 和 Zabbix 警报，[配置这些服务器](../../azure-monitor/learn/quick-collect-linux-computer.md)以将警报发送到 Log Analytics。
+- 对于 System Center Operations Manager 警报，[将 Operations Manager 管理组连接到 Log Analytics 工作区](../../azure-monitor/platform/om-agents.md)。  System Center Operations Manager 中创建的任何警报均导入 Log Analytics。  
 
 ## <a name="configuration"></a>配置
 使用[“添加解决方案”](../../azure-monitor/insights/solutions.md)中所述的流程，将警报管理解决方案添加到 Log Analytics 工作区。 无需进一步的配置。
@@ -43,17 +46,17 @@ ms.locfileid: "52637092"
 
 * Microsoft System Center Advisor 警报管理 (Microsoft.IntelligencePacks.AlertManagement)
 
-有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](../../log-analytics/log-analytics-om-agents.md)。
+有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](../../azure-monitor/platform/om-agents.md)。
 
 ## <a name="data-collection"></a>数据收集
 ### <a name="agents"></a>代理
 下表介绍了该解决方案支持的连接的源。
 
-| 连接的源 | 支持 | Description |
+| 连接的源 | 支持 | 说明 |
 |:--- |:--- |:--- |
 | [Windows 代理](agent-windows.md) | 否 |直接 Windows 代理不会生成警报。  可以通过从 Windows 代理收集的事件和性能数据来创建 Log Analytics 警报。 |
-| [Linux 代理](../../log-analytics/log-analytics-quick-collect-linux-computer.md) | 否 |直接 Linux 代理不会生成警报。  可以通过从 Linux 代理收集的事件和性能数据来创建 Log Analytics 警报。  从需要 Linux 代理的服务器中收集 Nagios 和 Zabbix 警报。 |
-| [System Center Operations Manager 管理组](../../log-analytics/log-analytics-om-agents.md) |是 |Operations Manager 代理上生成的警报传送到管理组，并转发给 Log Analytics。<br><br>不需要从 Operations Manager 代理直接连接到 Log Analytics。 警报数据从管理组转发到 Log Analytics 存储库。 |
+| [Linux 代理](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否 |直接 Linux 代理不会生成警报。  可以通过从 Linux 代理收集的事件和性能数据来创建 Log Analytics 警报。  从需要 Linux 代理的服务器中收集 Nagios 和 Zabbix 警报。 |
+| [System Center Operations Manager 管理组](../../azure-monitor/platform/om-agents.md) |是 |Operations Manager 代理上生成的警报传送到管理组，并转发给 Log Analytics。<br><br>不需要从 Operations Manager 代理直接连接到 Log Analytics。 警报数据从管理组转发到 Log Analytics 存储库。 |
 
 
 ### <a name="collection-frequency"></a>收集频率
@@ -67,14 +70,14 @@ ms.locfileid: "52637092"
 
 单击“警报管理”磁贴打开“警报管理”仪表板。  仪表板包含下表中的列。  每列按计数列出了指定范围和时间范围内符合该列条件的前十个警报。  可通过以下方式运行提供整个列表的日志搜索：单击该列底部的“查看全部”或单击列标题。
 
-| 列 | Description |
+| 列 | 说明 |
 |:--- |:--- |
 | 严重警报 |按警报名称分组并且严重级别为“严重”的所有警报。  单击某个警报名称，以运行会返回该警报所有记录的日志搜索。 |
 | 警告警报 |按警报名称分组并且严重级别为“警告”的所有警报。  单击某个警报名称，以运行会返回该警报所有记录的日志搜索。 |
 | 活动 SCOM 警报 |按生成警报的源分组并且状态为非“已关闭”的从 Operations Manager 收集的所有警报。 |
 | 所有活动警报 |按警报名称分组并且具有任意严重级别的所有警报。 仅包括状态为非“已关闭”的 Operations Manager 警报。 |
 
-向右滚动时，仪表板会列出几个常见查询，可以单击这些查询执行[日志搜索](../../log-analytics/log-analytics-queries.md)以获取警报数据。
+向右滚动时，仪表板会列出几个常见查询，可以单击这些查询执行[日志搜索](../../azure-monitor/log-query/log-query-overview.md)以获取警报数据。
 
 ![警报管理仪表板](media/alert-management-solution/dashboard.png)
 
@@ -110,7 +113,7 @@ ms.locfileid: "52637092"
 ## <a name="sample-log-searches"></a>示例日志搜索
 下表提供了此解决方案收集的警报记录的示例日志搜索： 
 
-| Query | Description |
+| Query | 说明 |
 |:---|:---|
 | Alert &#124; where SourceSystem == "OpsManager" and AlertSeverity == "error" and TimeRaised > ago(24h) |过去 24 小时引发的严重警报 |
 | Alert &#124; where AlertSeverity == "warning" and TimeRaised > ago(24h) |过去 24 小时引发的警告警报 |
@@ -123,4 +126,4 @@ ms.locfileid: "52637092"
 
 
 ## <a name="next-steps"></a>后续步骤
-* 有关从 Log Analytics 生成警报的详细信息，请参阅 [Log Analytics 中的警报](../../monitoring-and-diagnostics/monitoring-overview-alerts.md)。
+* 有关从 Log Analytics 生成警报的详细信息，请参阅 [Log Analytics 中的警报](../../azure-monitor/platform/alerts-overview.md)。

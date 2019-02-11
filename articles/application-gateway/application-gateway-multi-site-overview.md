@@ -1,38 +1,30 @@
 ---
-title: 在 Azure 应用程序网关上托管多个站点 | Microsoft Docs
-description: 此页概述了应用程序网关的多站点支持。
-documentationcenter: na
+title: 在 Azure 应用程序网关上托管多个站点
+description: 此页概述了 Azure 应用程序网关的多站点支持。
 services: application-gateway
-author: amsriva
-manager: rossort
-editor: ''
-ms.assetid: 49993fd2-87e5-4a66-b386-8d22056a616d
+author: vhorne
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/09/2017
+ms.date: 1/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 645f68d836babf11f32fc391e6dacc9430f0070c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04aca43e7220b0d5f644ca4f03db3a7442972728
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22704755"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358462"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>应用程序网关的多站点托管功能
 
-托管多个站点可以让你在同一应用程序网关实例上配置多个 Web 应用程序。 此功能可以将多达 20 个网站添加到一个应用程序网关中，为部署配置更有效的拓扑。 每个网站都可以定向到自己的后端池。 在以下示例中，应用程序网关通过两个名为 ContosoServerPool 和 FabrikamServerPool 的后端服务器池来为 contoso.com 和 fabrikam.com 提供流量。
+托管多个站点可以让你在同一应用程序网关实例上配置多个 Web 应用程序。 此功能可以将多达 100 个网站添加到一个应用程序网关中，从而为部署配置更有效的拓扑。 每个网站都可以定向到自己的后端池。 在以下示例中，应用程序网关通过两个名为 ContosoServerPool 和 FabrikamServerPool 的后端服务器池来为 contoso.com 和 fabrikam.com 提供流量。
 
 ![imageURLroute](./media/application-gateway-multi-site-overview/multisite.png)
 
 > [!IMPORTANT]
 > 规则将按照门户中的列出顺序进行处理。 我们强烈建议先配置多站点侦听器，然后再配置基本侦听器。  这可以确保将流量路由到适当的后端。 如果基本侦听器先列出并且与传入的请求匹配，则该侦听器将处理该请求。
 
-对 http://contoso.com 的请求将路由到 ContosoServerPool，而对 http://fabrikam.com 的请求将路由到 FabrikamServerPool。
+对 http://contoso.com 的请求路由到 ContosoServerPool，对 http://fabrikam.com 的请求路由到 FabrikamServerPool。
 
-同样可以将同一父域的两个子域托管到同一应用程序网关部署。 使用子域的示例可以包括在单个应用程序网关部署中托管的 http://blog.contoso.com 和 http://app.contoso.com。
+同样可以将同一父域的两个子域托管到同一应用程序网关部署。 例如，在单个应用程序网关部署中托管的 http://blog.contoso.com 和 http://app.contoso.com 都是使用子域。
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>主机标头和服务器名称指示 (SNI)
 
@@ -130,4 +122,3 @@ ms.locfileid: "22704755"
 ## <a name="next-steps"></a>后续步骤
 
 了解多站点托管以后，请转到[创建使用多站点托管的应用程序网关](application-gateway-create-multisite-azureresourcemanager-powershell.md)，以便创建能够支持多个 Web 应用程序的应用程序网关。
-

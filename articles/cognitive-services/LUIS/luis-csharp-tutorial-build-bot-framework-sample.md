@@ -1,23 +1,24 @@
 ---
-title: 使用 C# 的 LUIS 机器人 - Web 应用机器人 - Bot Framework SDK 3.0
-titleSuffix: Azure Cognitive Services
+title: 机器人 - C# - v3
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 使用 C# 构建集成了语言理解 (LUIS) 的聊天机器人。 此聊天机器人使用预生成的 HomeAutomation 域来快速实现机器人解决方案。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 0ad95d5683ea10803c2f3986be97617051f191cf
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: c39faa72c844a3bdbf6f1367351be382533179a6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032268"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210006"
 ---
-# <a name="luis-bot-in-c"></a>采用 C# 的 LUIS 机器人
+# <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>使用 Bot Framework 3.x 和 Azure Web 应用机器人的 C# 中的 LUIS 机器人
 
 使用 C# 构建集成了语言理解 (LUIS) 的聊天机器人。 此聊天机器人使用预生成的 HomeAutomation 域来快速实现机器人解决方案。 该机器人是使用 Bot Framework 3.x 和 Azure Web 应用机器人生成的。
 
@@ -36,11 +37,11 @@ ms.locfileid: "47032268"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择左上角菜单中的“新建资源”。
 
-    ![新建资源](./media/luis-tutorial-cscharp-web-bot/bot-service-creation.png)
+    ![在 Azure 门户中新建资源](./media/luis-tutorial-cscharp-web-bot/bot-service-creation.png)
 
 2. 在搜索框中，搜索“Web 应用机器人”。 
 
-    ![新建资源](./media/luis-tutorial-cscharp-web-bot/bot-service-selection.png)
+    ![选择 Web 应用机器人作为资源类型](./media/luis-tutorial-cscharp-web-bot/bot-service-selection.png)
 
 3. 在 Web 应用机器人窗口中单击“创建”。
 
@@ -152,7 +153,7 @@ ms.locfileid: "47032268"
 > 无需对机器人代码进行任何修改即可重新训练 LUIS 应用。 请参阅[添加示例陈述](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances)和[训练和测试 LUIS 应用](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-interactive-test)。 
 
 ## <a name="download-the-bot-to-debug"></a>下载机器人以进行调试
-如果机器人不能正常运行，请将此项目下载至本地计算机并继续[调试](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-a-c-bot)。 
+如果机器人不能正常运行，请将此项目下载至本地计算机并继续[调试](https://docs.microsoft.com/bot-framework/bot-service-debug-bot)。 
 
 ## <a name="learn-more-about-bot-framework"></a>深入了解 Bot Framework
 深入了解 [Bot Framework](https://dev.botframework.com/) 以及 [3.x](https://github.com/Microsoft/BotBuilder) 和 [4.x](https://github.com/Microsoft/botbuilder-dotnet) SDK。
@@ -161,19 +162,10 @@ ms.locfileid: "47032268"
 
 添加 LUIS 意向和机器人服务对话框，以处理“帮助”、“取消”和“问候”意向。 请记得训练、发布和[生成](#build-the-bot) Web 应用机器人。 LUIS 和机器人应具备相同的意向。
 
+查看更多使用聊天机器人的[示例](https://github.com/Microsoft/AI)。 
+
 > [!div class="nextstepaction"]
 > [添加意向](./luis-how-to-add-intents.md)
 > [语音启动](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)
-
-
-<!-- Links -->
-[Github-BotFramework-Emulator-Download]: https://aka.ms/bot-framework-emulator
-[Github-LUIS-Samples]: https://github.com/Microsoft/LUIS-Samples
-[Github-LUIS-Samples-cs-hotel-bot]: https://github.com/Microsoft/LUIS-Samples/tree/master/bot-integration-samples/hotel-finder/csharp
-[Github-LUIS-Samples-cs-hotel-bot-readme]: https://github.com/Microsoft/LUIS-Samples/blob/master/bot-integration-samples/hotel-finder/csharp/README.md
-[BFPortal]: https://dev.botframework.com/
-[RegisterInstructions]: https://docs.microsoft.com/bot-framework/portal-register-bot
-[BotFramework]: https://docs.microsoft.com/bot-framework/
-[VisualStudio]: https://www.visualstudio.com/
 
 <!-- tested on Win10 -->

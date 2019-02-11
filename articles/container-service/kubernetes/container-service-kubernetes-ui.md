@@ -1,5 +1,5 @@
 ---
-title: 使用 Web UI 管理 Azure Kubernetes 群集
+title: （已弃用）使用 Web UI 管理 Azure Kubernetes 群集
 description: 在 Azure 容器服务中使用 Kubernetes Web UI
 services: container-service
 author: bburns
@@ -9,16 +9,19 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: b5079ddb63f468f924577f61adda6a3056ec8c6c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c3a79b2e4fab807613a54d2792f5f5b97570293b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998519"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996138"
 ---
-# <a name="using-the-kubernetes-web-ui-with-azure-container-service"></a>在 Azure 容器服务中使用 Kubernetes Web UI
+# <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>（已弃用）在 Azure 容器服务中使用 Kubernetes Web UI
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> 有关本文中使用 Azure Kubernetes 服务的更新版本，请参阅[访问 Azure Kubernetes 服务 (AKS) 中的 Kubernetes Web 仪表板](../../aks/kubernetes-dashboard.md)。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 ## <a name="prerequisites"></a>先决条件
 本演练假定用户已[使用 Azure 容器服务创建 Kubernetes 群集](container-service-kubernetes-walkthrough.md)，

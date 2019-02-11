@@ -1,32 +1,13 @@
 ---
-title: 疑难解答：创建、连接到机器学习工作室工作区 - Azure | Microsoft Docs
-description: 本指南介绍了设置 Azure 机器学习工作室工作区时一些常见难题的解决方案。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
-editor: cgronlun
-ms.assetid: 1a8aec4b-35f9-44e8-9570-2575b8979ab1
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2017
-ms.openlocfilehash: 5e52abeeef7d40ac5594f4edfa2b80ef553081e4
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312041"
+title:“故障排除：创建、连接到机器学习工作室工作区” titleSuffix:Azure 机器学习工作室 description:本指南介绍了设置 Azure 机器学习工作室工作区时一些常见难题的解决方案。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:03/20/2017
 ---
-# <a name="troubleshooting-guide-create-and-connect-to-an-machine-learning-studio-workspace"></a>疑难解答指南：创建并连接到机器学习工作室工作区
+# <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-workspace"></a>故障排除指南：创建并连接到 Azure 机器学习工作室工作区
 本指南介绍了设置 Azure 机器学习工作室工作区时一些常见难题的解决方案。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="workspace-owner"></a>工作区所有者
 若要在机器学习工作室中打开工作区，则必须登录到用于创建工作区的 Microsoft 帐户，或者需要收到所有者发出的邀请以加入工作区。 在 Azure 门户中可以管理工作区，包括配置访问权限。

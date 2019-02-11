@@ -4,19 +4,19 @@ description: 本文概述了 Azure 自动化中自动化帐户的自动化安全
 keywords: 自动化安全性, 安全的自动化; 自动化身份验证
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
 ROBOTS: NOINDEX
-ms.openlocfilehash: 327bb15ab8536dca85b4cbb07216080b135c769a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 60175a5b9309c08d5fdab997469a9d0526afaefe
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194897"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437957"
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Azure 自动化中的身份验证简介  
 Azure 自动化让可以通过其他云提供程序（如 Amazon Web Services (AWS)）针对 Azure、本地中的资源来自动执行任务。  为了使 Runbook 执行所需操作，Runbook 必须有权使用订阅中所需的最小权限来安全地访问资源。
@@ -49,3 +49,4 @@ Azure 自动化让可以通过其他云提供程序（如 Amazon Web Services (A
 | Azure 经典运行方式帐户 |Azure 经典 |[Authenticate Runbooks with Azure Run As account（使用 Azure 运行方式帐户进行 Runbook 身份验证）](automation-sec-configure-azure-runas-account.md) |
 | Windows 身份验证 |本地数据中心 |[对混合 Runbook 辅助角色进行 Runbook 身份验证](automation-hybrid-runbook-worker.md) |
 | AWS 凭据 |Amazon Web Services |[Authenticate Runbooks with Amazon Web Services (AWS)（使用 Amazon Web Services (AWS) 进行 Runbook 身份验证）](automation-config-aws-account.md) |
+

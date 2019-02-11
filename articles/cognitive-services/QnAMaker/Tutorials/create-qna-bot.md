@@ -1,21 +1,22 @@
 ---
-title: 教程：使用 Azure 机器人服务创建 QnA 机器人 - QnA Maker
+title: QnA 机器人 - Azure 机器人服务 - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: 本教程介绍在 Azure 门户中使用 Azure 机器人服务 v3 生成 QnA 机器人的完整过程。
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: qna-maker`
+ms.subservice: qna-maker`
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: 19c56cf05e307deca52808b0eeba65b8949ffc0b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 1e1152f810bffb2ab4dfe230c2d3b3c2a8198492
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212726"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811913"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>教程：使用 Azure 机器人服务 v3 创建 QnA 机器人
 
@@ -60,11 +61,11 @@ ms.locfileid: "50212726"
 
 5. 对于机器人模板字段选择“问题和答案”模板，然后通过选择“选择”保存模板设置。
 
-    ![选择机器人服务](../media/qnamaker-tutorials-create-bot/bot-v3-template.png)
+    ![保存机器人服务模板选择](../media/qnamaker-tutorials-create-bot/bot-v3-template.png)
 
 6. 查看设置，然后选择“创建”。 这将创建机器人服务并将其部署到 Azure。
 
-    ![选择机器人服务](../media/qnamaker-tutorials-create-bot/bot-blade-settings-v3.png)
+    ![创建机器人](../media/qnamaker-tutorials-create-bot/bot-blade-settings-v3.png)
 
 7. 确认已部署机器人服务。
 
@@ -95,9 +96,6 @@ ms.locfileid: "50212726"
     - “发布”知识库（如果尚未执行该操作）
 
     ![QnA Maker 值](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
-
-> [!NOTE]
-> 如果要将预览版知识库与 QnA 机器人连接，请将“Ocp-Apim-Subscription-Key”的值设置为“QnAAuthKey”。 将“QnAEndpointHostName”留空。
 
 ## <a name="test-the-bot"></a>测试机器人
 

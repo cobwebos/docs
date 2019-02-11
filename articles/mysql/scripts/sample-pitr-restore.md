@@ -1,22 +1,19 @@
 ---
 title: Azure CLI 脚本 - 将 Azure Database for MySQL 服务器还原到前一个时间点。
 description: 此示例 CLI 脚本可将 Azure Database for MySQL 服务器还原到前一个时间点。
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: 5e59468897b04dd5f017480bcf7b5abc4656a5c2
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 38825f7815713678946e86252d4c8a1bee0abbc6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582157"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752681"
 ---
 # <a name="restore-an-azure-database-for-mysql-server-using-azure-cli"></a>使用 Azure CLI 还原 Azure Database for MySQL 服务器
 此示例 CLI 脚本可将单个 Azure Database for MySQL 服务器还原到前一个时间点。
@@ -38,11 +35,11 @@ ms.locfileid: "52582157"
 
 | **命令** | **说明** |
 |---|---|
-| [az group create](/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
-| [az mysql server create](/cli/azure/mysql/server#create) | 创建用于托管数据库的 MySQL 服务器。 |
-| [az mysql server restore](/cli/azure/mysql/server#restore) | 从备份还原服务器。 |
-| [az group delete](/cli/azure/group#delete) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](/cli/azure/group) | 创建用于存储所有资源的资源组。 |
+| [az mysql server create](/cli/azure/mysql/server) | 创建用于托管数据库的 MySQL 服务器。 |
+| [az mysql server restore](/cli/azure/mysql/server) | 从备份还原服务器。 |
+| [az group delete](/cli/azure/group) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
-- 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
-- 尝试其他脚本：[Azure Database for MySQL 的 Azure CLI 示例](../sample-scripts-azure-cli.md)
+- 阅读有关 Azure CLI 的更多信息：[Azure CLI 文档](/cli/azure)。
+- 请尝试其他脚本：[用于 MySQL 的 Azure 数据库的 Azure CLI 示例](../sample-scripts-azure-cli.md)

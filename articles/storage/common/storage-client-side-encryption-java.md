@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
-ms.component: common
-ms.openlocfilehash: 995b54d8eb53efc6001e29366e22e09b246f0bff
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 9a96f80c609f446dcc1fea2a87925dec3dadfedd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522010"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471889"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>针对 Microsoft Azure 存储使用 Java 的客户端加密和 Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -120,7 +120,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 3. 创建加密策略时，使用缓存解析程序作为输入。
    有关密钥保管库用法的详细信息，请查看加密代码示例。 <fix URL>  
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 仅在用于 Java 的存储空间客户端库中提供加密支持。
 
 > [!IMPORTANT]

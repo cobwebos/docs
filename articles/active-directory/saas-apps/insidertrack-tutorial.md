@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Insider Track 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Insider Track 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Insider Track 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 53b6a928-e8a4-4cf1-9952-50cd3f013b7c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2018
 ms.author: jeedes
-ms.openlocfilehash: 09f0e38dc8eab2042a28e6816155ad14b185a034
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e23949ac4957325c3949312dad61071a1f527789
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047257"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191102"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-insider-track"></a>教程：Azure Active Directory 与 Insider Track 的集成
+# <a name="tutorial-azure-active-directory-integration-with-insider-track"></a>教程：Azure Active Directory 与 Insider Track 集成
 
 在本教程中，了解如何将 Insider Track 与 Azure Active Directory (Azure AD) 集成。
 
@@ -130,7 +130,7 @@ ms.locfileid: "39047257"
 7. 若要在 Insider Track 端配置单一登录，需要将下载的元数据 XML、注销 URL、SAML 实体 ID 和 SAML 单一登录服务 URL 发送给 [Insider Track 支持团队](https://cytecsolutions.com/contact/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -157,7 +157,7 @@ ms.locfileid: "39047257"
 
     ![“用户”对话框](./media/insidertrack-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -167,7 +167,7 @@ ms.locfileid: "39047257"
  
 ### <a name="create-an-insider-track-test-user"></a>创建 Insider Track 测试用户
 
-在本部分中，在 Insider Track 中创建名为 Britta Simon 的用户。与 [Insider Track 支持团队](https://cytecsolutions.com/contact/)配合，在 Insider Track 平台中添加用户。 使用单一登录前，必须先创建并激活用户。 
+在本部分中，在 Insider Track 中创建名为 Britta Simon 的用户。与  [Insider Track 支持团队](https://cytecsolutions.com/contact/) 协作，将用户添加到 Insider Track 平台中。 使用单一登录前，必须先创建并激活用户。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -204,12 +204,12 @@ ms.locfileid: "39047257"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Insider Track”磁贴时，会自动登录到 Insider Track 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

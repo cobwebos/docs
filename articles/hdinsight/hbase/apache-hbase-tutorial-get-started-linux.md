@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0f9d786988cb547771b8fd999b911bd228cdc3e2
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: af604dbabe9df56322342230eaec70548f53c927
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311035"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794492"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>HDInsight 中的 Apache HBase 入门示例
 
-了解如何使用 [Apache Hive](https://hive.apache.org/) 在 HDInsight 中创建 [Apache HBase](http://hbase.apache.org/) 群集、创建 HBase 表和查询表。  有关 HBase 的一般信息，请参阅 [HDInsight HBase 概述][hdinsight-hbase-overview]。
+了解如何使用 [Apache Hive](https://hive.apache.org/) 在 HDInsight 中创建 [Apache HBase](https://hbase.apache.org/) 群集、创建 HBase 表和查询表。  有关 HBase 的一般信息，请参阅 [HDInsight HBase 概述][hdinsight-hbase-overview]。
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -28,7 +28,7 @@ ms.locfileid: "52311035"
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * [安全外壳 (SSH)](../hdinsight-hadoop-linux-use-ssh-unix.md)。 
-* [curl](http://curl.haxx.se/download.html)。
+* [curl](https://curl.haxx.se/download.html)。
 
 ## <a name="create-apache-hbase-cluster"></a>创建 Apache HBase 群集
 以下过程使用 Azure 资源管理器模板创建 HBase 群集以及相关的默认 Azure 存储帐户。 若要了解该过程与其他群集创建方法中使用的参数，请参阅 [在 HDInsight 中创建基于 Linux 的 Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)。 有关使用 Data Lake Storage Gen2 的详细信息，请参阅[快速入门：在 HDInsight 中设置群集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
@@ -42,21 +42,21 @@ ms.locfileid: "52311035"
    * **资源组**：创建 Azure 资源管理组，或使用现有的组。
    * **位置**：指定资源组的位置。 
    * **ClusterName**：输入 HBase 群集的名称。
-   * **群集登录名和密码**：默认登录名是 **admin**。
-   * **SSH 用户名和密码**：默认用户名是 **sshuser**。  可以重命名它。
+   * **群集登录名和密码**：默认登录名为“admin”。
+   * **SSH 用户名和密码**：默认用户名为“sshuser”。  可以重命名它。
      
      其他参数是可选的。  
      
      每个群集都有一个 Azure 存储帐户依赖项。 删除群集后，数据将保留在存储帐户中。 群集的默认存储帐户名为群集名称后接“store”。 该名称已在模板 variables 节中硬编码。
 3. 选择“我同意上述条款和条件”，并单击“购买”。 创建群集大约需要 20 分钟时间。
 
-> [!NOTE]
+> [!NOTE]  
 > 在删除 HBase 群集后，可以通过使用相同的默认 Blob 容器创建另一个 HBase 群集。 新群集将选取已在原始群集中创建的 HBase 表。 为了避免不一致，建议在删除群集之前先禁用 HBase 表。
 > 
 > 
 
 ## <a name="create-tables-and-insert-data"></a>创建表和插入数据
-可以使用 SSH 连接到 HBase 群集，并使用 [Apache HBase Shell](http://hbase.apache.org/0.94/book/shell.html) 来创建 HBase 表以及插入和查询数据。 有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
+可以使用 SSH 连接到 HBase 群集，并使用 [Apache HBase Shell](https://hbase.apache.org/0.94/book/shell.html) 来创建 HBase 表以及插入和查询数据。 有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
 对于大多数人而言，数据以表格形式显示：
 
@@ -109,7 +109,7 @@ ms.locfileid: "52311035"
 
 **在联系人 HBase 表中批量加载数据**
 
-HBase 提供了多种方法用于将数据载入表中。  有关详细信息，请参阅 [批量加载](http://hbase.apache.org/book.html#arch.bulk.load)。
+HBase 提供了多种方法用于将数据载入表中。  有关详细信息，请参阅 [批量加载](https://hbase.apache.org/book.html#arch.bulk.load)。
 
 可在公共 Azure Blob 容器 *wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt* 中找到示例数据文件。  该数据文件的内容为：
 
@@ -126,9 +126,8 @@ HBase 提供了多种方法用于将数据载入表中。  有关详细信息，
 
 可以选择创建一个文本文件并将该文件上传到自己的存储帐户。 有关说明，请参阅[在 HDInsight 中为 Apache Hadoop 作业上传数据][hdinsight-upload-data]。
 
-> [!NOTE]
+> [!NOTE]  
 > 此过程使用在上一个过程中创建的“联系人”HBase 表。
-> 
 
 1. 从 SSH 运行以下命令，将数据文件转换成 StoreFiles 并将其存储在 Dimporttsv.bulk.output 指定的相对路径。  如果在 HBase Shell 中操作，请使用退出命令退出。
 
@@ -174,7 +173,7 @@ HBase 提供了多种方法用于将数据载入表中。  有关详细信息，
 
 ## <a name="use-hbase-rest-apis-using-curl"></a>通过 Curl 使用 HBase REST API
 
-REST API 通过 [基本身份验证](http://en.wikipedia.org/wiki/Basic_access_authentication)进行保护。 始终应该使用安全 HTTP (HTTPS) 来发出请求，确保安全地将凭据发送到服务器。
+REST API 通过 [基本身份验证](https://en.wikipedia.org/wiki/Basic_access_authentication)进行保护。 始终应该使用安全 HTTP (HTTPS) 来发出请求，确保安全地将凭据发送到服务器。
 
 2. 使用以下命令列出现有的 HBase 表：
 
@@ -208,9 +207,9 @@ REST API 通过 [基本身份验证](http://en.wikipedia.org/wiki/Basic_access_a
    
     必须使用 base64 来为 -d 参数中指定的值编码。 在示例中：
    
-   * MTAwMA==: 1000
-   * UGVyc29uYWw6TmFtZQ==: Personal:Name
-   * Sm9obiBEb2xl: John Dole
+   * MTAwMA==：1000
+   * UGVyc29uYWw6TmFtZQ==：Personal:Name
+   * Sm9obiBEb2xl：John Dole
      
      [false-row-key](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) 允许插入多个（批处理）值。
 5. 使用以下命令获取行：
@@ -224,7 +223,7 @@ REST API 通过 [基本身份验证](http://en.wikipedia.org/wiki/Basic_access_a
 
 有关 HBase Rest 的详细信息，请参阅 [Apache HBase 参考指南](https://hbase.apache.org/book.html#_rest)。
 
-> [!NOTE]
+> [!NOTE]  
 > Thrift 不受 HDInsight 中的 HBase 支持。
 >
 > 使用 Curl 或者与 WebHCat 进行任何其他形式的 REST 通信时，必须提供 HDInsight 群集管理员用户名和密码对请求进行身份验证。 此外，还必须使用群集名称作为用来向服务器发送请求的统一资源标识符 (URI) 的一部分：
@@ -265,7 +264,7 @@ HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。 使用该 We
 
 ## <a name="troubleshoot"></a>故障排除
 
-如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](../hdinsight-administer-use-portal-linux.md#create-clusters)。
+如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](../hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 本文已介绍如何创建 Apache HBase 群集、如何创建表以及如何从 HBase shell 查看这些表中的数据。 此外，学习了如何对 HBase 表中的数据使用 Hive 查询，以及如何使用 HBase C# REST API 创建 HBase 表并从该表中检索数据。
@@ -277,9 +276,9 @@ HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。 使用该 We
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
 
 [hdinsight-upload-data]: ../hdinsight-upload-data.md
-[hbase-reference]: http://hbase.apache.org/book.html#importtsv
+[hbase-reference]: https://hbase.apache.org/book.html#importtsv
 [hbase-schema]: http://0b4af6cdc2f0c5998459-c0245c5c937c5dedcca3f1764ecc9b2f.r43.cf2.rackcdn.com/9353-login1210_khurana.pdf
-[hbase-quick-start]: http://hbase.apache.org/book.html#quickstart
+[hbase-quick-start]: https://hbase.apache.org/book.html#quickstart
 
 
 
@@ -288,11 +287,11 @@ HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。 使用该 We
 [hdinsight-hbase-overview]:apache-hbase-overview.md
 [hdinsight-hbase-provision-vnet]:apache-hbase-provision-vnet.md
 [hdinsight-versions]: hdinsight-component-versioning.md
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [azure-portal]: https://portal.azure.com/
-[azure-create-storageaccount]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/
+[azure-create-storageaccount]: https://azure.microsoft.com/documentation/articles/storage-create-storage-account/
 
 [img-hbase-shell]: ./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png
 [img-hbase-sample-data-tabular]: ./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png

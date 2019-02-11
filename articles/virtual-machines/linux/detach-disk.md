@@ -15,12 +15,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: cynthn
-ms.openlocfilehash: b087040e5d219941ec0b2ee0f58dfe0058a1ad04
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.subservice: disks
+ms.openlocfilehash: df50f1ad4fc12926016b3e22669be474f4aa995f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968335"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461370"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>如何从 Linux 虚拟机中分离数据磁盘
 

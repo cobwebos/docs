@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Azure 流量管理器路将流量路由到加权终结点 | Microsoft Docs
+title: 教程 - 将流量路由到加权终结点 - Azure 流量管理器
 description: 本教程文章介绍如何使用流量管理器将流量路由到加权终结点。
 services: traffic-manager
 author: KumudD
@@ -8,14 +8,14 @@ ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: kumud
-ms.openlocfilehash: 0f5b1f3525ab75f8c14f7921e23b30a1c58e8c73
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f4c29526f675cab461153b4749c4f6edc237dada
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158816"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467326"
 ---
-# <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>教程：使用流量管理器控制加权终结点的流量路由 
+# <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>教程：使用流量管理器控制加权终结点的流量路由
 
 本教程介绍如何通过 Azure 流量管理器使用加权路由方法控制用户流量在终结点之间的路由。 在此路由方法中，需要为流量管理器配置文件配置中的每个终结点分配权重。 然后，系统会根据分配给每个终结点的权重进行用户流量路由。 该权重是从 1 到 1,000 的整数。 分配给终结点的权重值越高，其优先级就越高。
 
@@ -33,10 +33,10 @@ ms.locfileid: "50158816"
 
 ## <a name="prerequisites"></a>先决条件
 为了查看流量管理器的运作方式，请为本教程部署以下各项：
-- 在不同 Azure 区域（“美国东部”和“西欧”）运行的基本网站的两个实例。
+- 在以下不同 Azure 区域运行的基本网站的两个实例：“美国东部”和“西欧”。
 - 用于测试流量管理器的两个测试 VM：一个位于“美国东部”，另一个 VM 位于“西欧”。 测试 VM 用于演示流量管理器如何将用户流量路由到分配给其终结点的权重更高的网站。
 
-### <a name="sign-in-to-azure"></a>登录 Azure 
+### <a name="sign-in-to-azure"></a>登录 Azure
 
 登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -89,24 +89,24 @@ ms.locfileid: "50158816"
 在此部分，请在 myIISVMEastUS 和 myIISVMWEurope 这两个 VM 上安装 IIS 服务器，然后更新默认网页。 自定义网页显示从 Web 浏览器访问网站时要连接到的 VM 的名称。
 
 1. 在左侧菜单中选择“所有资源”。 从资源列表选择“myResourceGroupTM1”资源组中的“myIISVMEastUS”。
-2. 在“概览”页上，选择“连接”。 在“连接到虚拟机”中选择“下载 RDP 文件”。 
-3. 打开下载的 .rdp 文件。 出现提示时，选择“连接”。 输入创建 VM 时指定的用户名和密码。 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据。 
+2. 在“概览”页上，选择“连接”。 在“连接到虚拟机”中选择“下载 RDP 文件”。
+3. 打开下载的 .rdp 文件。 出现提示时，选择“连接”。 输入创建 VM 时指定的用户名和密码。 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据。
 4. 选择“确定”。
 5. 你可能会在登录过程中收到证书警告。 如果收到警告，请选择“是”或“继续”以继续连接。
 6. 在服务器桌面上浏览到“Windows 管理工具” > “服务器管理器”。
 7. 在 VM1 上打开 Windows PowerShell。 使用以下命令安装 IIS 服务器并更新默认的 .htm 文件。
     ```powershell-interactive
     # Install IIS
-      Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
     
     # Remove default .htm file
-     remove-item  C:\inetpub\wwwroot\iisstart.htm
+    remove-item C:\inetpub\wwwroot\iisstart.htm
     
     #Add custom .htm file
-     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
+    Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
     ```
 
-     ![安装 IIS 并自定义网页](./media/tutorial-traffic-manager-improve-website-response/deployiis.png)
+    ![安装 IIS 并自定义网页](./media/tutorial-traffic-manager-improve-website-response/deployiis.png)
 
 8. 关闭与 **myIISVMEastUS** 之间的 RDP 连接。
 9. 重复步骤 1-8。 与 myResourceGroupTM2 资源组中的 VM myIISVMWEurope 建立 RDP 连接，以安装 IIS 并自定义其默认网页。
@@ -180,8 +180,8 @@ ms.locfileid: "50158816"
     |  重量      | 输入 **100**。        |
     |        |           |
 
-4. 重复步骤 2 和 3，为公共 IP 地址 **myIISVMWEurope-ip** 添加名为 **myWestEuropeEndpoint** 的另一个终结点。 此地址与名为 myIISVMWEurope 的 IIS 服务器 VM 相关联。 输入 **25** 作为“权重”。 
-5.  添加完这两个终结点后，它们会显示在流量管理器配置文件中，其监视状态为“联机”。
+4. 重复步骤 2 和 3，为公共 IP 地址 **myIISVMWEurope-ip** 添加名为 **myWestEuropeEndpoint** 的另一个终结点。 此地址与名为 myIISVMWEurope 的 IIS 服务器 VM 相关联。 输入 **25** 作为“权重”。
+5. 添加完这两个终结点后，它们会显示在流量管理器配置文件中，其监视状态为“联机”。
 
 ## <a name="test-the-traffic-manager-profile"></a>测试流量管理器配置文件
 若要查看流量管理器的运作方式，请完成以下步骤：
@@ -189,28 +189,28 @@ ms.locfileid: "50158816"
 2. 查看正在运行的流量管理器。
 
 ### <a name="determine-dns-name-of-traffic-manager-profile"></a>确定流量管理器配置文件的 DNS 名称
-在本教程中，为简单起见，我们将使用流量管理器配置文件的 DNS 名称来访问网站。 
+在本教程中，为简单起见，我们将使用流量管理器配置文件的 DNS 名称来访问网站。
 
 可按如下所述确定流量管理器配置文件的 DNS 名称：
 
-1.  在门户的搜索栏中，搜索在上一部分创建的流量管理器配置文件名称。 在显示的结果中，选择流量管理器配置文件。
+1. 在门户的搜索栏中，搜索在上一部分创建的流量管理器配置文件名称。 在显示的结果中，选择流量管理器配置文件。
 1. 选择“概述”。
 2. 流量管理器配置文件会显示其 DNS 名称 在生产部署中，请使用 DNS CNAME 记录配置一个指向流量管理器域名的虚构域名。
 
    ![流量管理器 DNS 名称](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-dns-name.png)
 
 ### <a name="view-traffic-manager-in-action"></a>查看正在运行的流量管理器
-在此部分，可以查看流量管理器的运作方式。 
+在此部分，可以查看流量管理器的运作方式。
 
 1. 在左侧菜单中选择“所有资源”。 从资源列表选择“myResourceGroupTM1”资源组中的“myVMEastUS”。
-2. 在“概览”页上，选择“连接”。 在“连接到虚拟机”中选择“下载 RDP 文件”。 
-3. 打开下载的 .rdp 文件。 出现提示时，选择“连接”。 输入在创建 VM 时指定的用户名和密码。 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据。 
+2. 在“概览”页上，选择“连接”。 在“连接到虚拟机”中选择“下载 RDP 文件”。
+3. 打开下载的 .rdp 文件。 出现提示时，选择“连接”。 输入在创建 VM 时指定的用户名和密码。 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据。
 4. 选择“确定”。
-5. 你可能会在登录过程中收到证书警告。 如果收到警告，请选择“是”或“继续”以继续连接。 
+5. 你可能会在登录过程中收到证书警告。 如果收到警告，请选择“是”或“继续”以继续连接。
 6. 在 VM myVMEastUS 上的 Web 浏览器中，输入流量管理器配置文件的 DNS 名称，以查看网站。 系统会将你路由到托管在 IIS 服务器 myIISVMEastUS 上的网站，因为为它分配的权重较高，为 **100**。 为 IIS 服务器 myIISVMWEurope 分配的终结点权重值较低，为 **25**。
 
    ![测试流量管理器配置文件](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
-   
+
 ## <a name="delete-the-traffic-manager-profile"></a>删除流量管理器配置文件
 不再需要本教程中创建的资源组时，可将其删除。 为此，请选择资源组（**ResourceGroupTM1** 或 **ResourceGroupTM2**），然后选择“删除”。
 
@@ -218,5 +218,3 @@ ms.locfileid: "50158816"
 
 > [!div class="nextstepaction"]
 > [根据用户的地理位置将流量路由到特定的终结点](traffic-manager-configure-geographic-routing-method.md)
-
-

@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/15/2019
 ms.author: abnarain
-ms.openlocfilehash: 0f48d65d1b3e6d1f608d85cff3a24ef379caa9cf
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: f8827f3013ee83d8f4846e7e15d34ea7c6553f24
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284823"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331803"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。
@@ -49,7 +48,7 @@ ms.locfileid: "52284823"
 
 下面是使用自承载 IR 复制的步骤摘要的高级数据流：
 
-![综合概述](media\create-self-hosted-integration-runtime\high-level-overview.png)
+![综合概述](media/create-self-hosted-integration-runtime/high-level-overview.png)
 
 1. 数据开发者使用 PowerShell cmdlet 在 Azure 数据工厂中创建了自承载集成运行时。 目前，Azure 门户不支持此功能。
 2. 数据开发者通过指定应用于连接数据存储的自承载集成运行时实例，为本地数据存储创建了链接服务。 作为设置链接服务的一部分，数据开发者使用凭据管理器应用程序（当前不受支持）来设置身份验证类型和凭据。 凭据管理器应用程序与数据存储进行通信，以测试连接和自承载集成运行时，从而保存凭据。
@@ -87,7 +86,7 @@ ms.locfileid: "52284823"
 ## <a name="install-and-register-self-hosted-ir-from-the-download-center"></a>从下载中心安装并注册自承载 IR
 
 1. 转到 [Microsoft 集成运行时下载页](https://www.microsoft.com/download/details.aspx?id=39717)。
-2. 选择“下载”，选择适当的版本（“32 位”或“64 位”），然后选择“下一步”。
+2. 选择“下载”，然后选择 64 位版本（不支持 32 位版本），再选择“下一步”。
 3. 直接运行 MSI 文件或将其保存到硬盘再运行。
 4. 在“欢迎”页上选择语言，然后选择“下一步”。
 5. 接受 Microsoft 软件许可条款，然后选择“下一步”。
@@ -101,7 +100,7 @@ ms.locfileid: "52284823"
     ```
 11. 在计算机上运行的 Microsoft Integration Runtime Configuration Manager 的“注册集成运行时(自承载)”页上，执行以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将身份验证密钥粘贴到文本区域。
+    a. 将身份验证密钥粘贴到文本区域。
 
     b. 或者选择“显示身份验证密钥”，以查看密钥文本。
 
@@ -131,7 +130,7 @@ ms.locfileid: "52284823"
 
 如果可用内存和 CPU 未充分利用，但并发作业执行即将达到限制，应通过增加节点上可运行的并发作业数进行纵向扩展。 此外，活动因自承载 IR 过载而超时时，可能也需要进行扩展。 如下图所示，可以增加节点的最大容量：  
 
-![增加可在节点上运行的并发作业数](media\create-self-hosted-integration-runtime\scale-up-self-hosted-IR.png)
+![增加可在节点上运行的并发作业数](media/create-self-hosted-integration-runtime/scale-up-self-hosted-IR.png)
 
 ### <a name="tlsssl-certificate-requirements"></a>TLS/SSL 证书要求
 
@@ -162,33 +161,33 @@ ms.locfileid: "52284823"
 
 1. 在要共享的自承载 IR 中，授予要在其中创建链接 IR 的数据工厂的权限。 
 
-   ![“共享”选项卡上的授予权限按钮](media\create-self-hosted-integration-runtime\grant-permissions-IR-sharing.png)
+   ![“共享”选项卡上的授予权限按钮](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
 
-   ![分配权限的选项](media\create-self-hosted-integration-runtime\3_rbac_permissions.png)
+   ![分配权限的选项](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)
 
 2. 记下要共享的自承载 IR 的资源 ID。
 
-   ![资源 ID 的位置](media\create-self-hosted-integration-runtime\4_ResourceID_self-hostedIR.png)
+   ![资源 ID 的位置](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
 
 3. 在已授予权限的数据工厂中，创建新的自承载 IR（链接），并输入资源 ID。
 
-   ![用于创建链接的自承载集成运行时的按钮](media\create-self-hosted-integration-runtime\6_create-linkedIR_2.png)
+   ![用于创建链接的自承载集成运行时的按钮](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
 
-   ![用于输入名称和资源 ID 的框](media\create-self-hosted-integration-runtime\6_create-linkedIR_3.png)
+   ![用于输入名称和资源 ID 的框](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
 
 ### <a name="monitoring"></a>监视 
 
 - **共享 IR**
 
-  ![用于查找共享集成运行时的选项](media\create-self-hosted-integration-runtime\Contoso-shared-IR.png)
+  ![用于查找共享集成运行时的选项](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
 
-  ![监视选项卡](media\create-self-hosted-integration-runtime\contoso-shared-ir-monitoring.png)
+  ![监视选项卡](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
 
 - **链接 IR**
 
-  ![用于查找链接集成运行时的选项](media\create-self-hosted-integration-runtime\Contoso-linked-ir.png)
+  ![用于查找链接集成运行时的选项](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
 
-  ![监视选项卡](media\create-self-hosted-integration-runtime\Contoso-linked-ir-monitoring.png)
+  ![监视选项卡](media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png)
 
 ### <a name="known-limitations-of-self-hosted-ir-sharing"></a>自承载 IR 共享的已知限制
 
@@ -211,12 +210,12 @@ ms.locfileid: "52284823"
 
 如果将光标移到通知区域中的图标或消息上，可以查看自承载集成运行时状态的详细信息。
 
-![通知区域中的通知](media\create-self-hosted-integration-runtime\system-tray-notifications.png)
+![通知区域中的通知](media/create-self-hosted-integration-runtime/system-tray-notifications.png)
 
 ## <a name="ports-and-firewall"></a>端口和防火墙
 需要考虑两个防火墙：在组织的中央路由器上运行的企业防火墙和在安装了自承载集成运行时的本地计算机上配置为守护程序的 Windows 防火墙。
 
-![防火墙](media\create-self-hosted-integration-runtime\firewall.png)
+![防火墙](media/create-self-hosted-integration-runtime/firewall.png)
 
 在企业防火墙级别，需配置以下域和出站端口：
 
@@ -249,11 +248,11 @@ download.microsoft.com | 443 | 用于下载更新
 ## <a name="proxy-server-considerations"></a>代理服务器注意事项
 如果企业网络环境使用代理服务器访问 Internet，请配置自承载集成运行时以使用合适的代理设置。 可以在初始注册阶段设置代理。
 
-![指定代理](media\create-self-hosted-integration-runtime\specify-proxy.png)
+![指定代理](media/create-self-hosted-integration-runtime/specify-proxy.png)
 
 自承载集成运行时使用代理服务器连接到云服务。 在初始设置期间单击“更改”链接。 此时会出现代理设置对话框。
 
-![设置代理](media\create-self-hosted-integration-runtime\set-http-proxy.png)
+![设置代理](media/create-self-hosted-integration-runtime/set-http-proxy.png)
 
 有三个配置选项：
 
@@ -272,7 +271,7 @@ download.microsoft.com | 443 | 用于下载更新
 
 可以使用 Configuration Manager 工具查看和更新 HTTP 代理。
 
-![查看代理](media\create-self-hosted-integration-runtime\view-proxy.png)
+![查看代理](media/create-self-hosted-integration-runtime/view-proxy.png)
 
 > [!NOTE]
 > 如果使用 NTLM 身份验证设置代理服务器，集成运行时主机服务会在域帐户下运行。 如果之后更改域帐户密码，请记得更新服务的配置设置，并相应地将其重启。 鉴于此要求，建议使用专用域帐户来访问代理服务器，可以无需经常更新密码。
@@ -318,7 +317,7 @@ download.microsoft.com | 443 | 用于下载更新
 ### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>防火墙和代理服务器相关问题的可能症状
 如果遇到类似于以下的错误，可能是由于防火墙或代理服务器配置错误，阻止了自承载集成运行时连接到数据工厂进行自身身份验证。 若要确保正确配置防火墙和代理服务器，请参阅上一部分。
 
-* 尝试注册自承载集成运行时的时候，会收到以下错误：“无法注册此集成运行时节点！ 请确认身份验证密钥有效，且集成服务主机服务在此计算机上运行。”
+* 尝试注册自承载集成运行时的时候，会收到以下错误：“无法注册此 Integration Runtime 节点！ 请确认身份验证密钥有效，且集成服务主机服务在此计算机上运行。”
 * 打开 Integration Runtime Configuration Manager 时，将看到状态为“已断开连接”或“正在连接”。 查看 Windows 事件日志时，在“事件查看器” > “应用程序和服务日志” > “Microsoft 集成运行时”下，会看到错误消息，例如以下错误：
 
     ```
@@ -345,4 +344,4 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下教程中的分步说明：[教程：将本地数据复制到云](tutorial-hybrid-copy-powershell.md)。
+有关分步说明，请参阅以下教程：[教程：将本地数据复制到云中](tutorial-hybrid-copy-powershell.md)。

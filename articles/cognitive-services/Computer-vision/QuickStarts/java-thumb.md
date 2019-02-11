@@ -1,21 +1,22 @@
 ---
-title: 快速入门：生成缩略图 - REST、Java - 计算机视觉
+title: 快速入门：生成缩略图 - REST、Java
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 Java 基于图像生成缩略图。
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 6a169844a0c2c082e0c16f54eab82b1d99f89967
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: b6fb93ee740d763e15240b0ebdff276b3162f657
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853058"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221261"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-java-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 Java 生成缩略图
 

@@ -7,16 +7,16 @@ author: tulasim88
 manager: cgronlun
 displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 02/04/2019
 ms.author: tulasim88
-ms.openlocfilehash: ea5d9a86f558187e77017a9d49f43e851192c65a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 6665efed53c7864467d7a6a72d109841c3a02b53
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635401"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747537"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>获取有关知识库的分析
 
@@ -36,7 +36,7 @@ ms.locfileid: "52635401"
         requests
         | where url endswith "generateAnswer"
         | project timestamp, id, name, resultCode, duration
-        | parse name with *"/knowledgebases/"KbId"/generateAnswer"
+        | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer"
         | join kind= inner (
         traces | extend id = operation_ParentId
         ) on id
@@ -57,11 +57,11 @@ ms.locfileid: "52635401"
     //Total Traffic
     requests
     | where url endswith "generateAnswer" and name startswith "POST"
-    | parse name with *"/knowledgebases/"KbId"/generateAnswer" 
+    | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer" 
     | summarize ChatCount=count() by bin(timestamp, 1d), KbId
-``` 
+```
 
-### Total question traffic in a given time period
+### <a name="total-question-traffic-in-a-given-time-period"></a>给定时间段内的问题流量总计
 
 ```query
     //Total Question Traffic in a given time period
@@ -70,7 +70,7 @@ ms.locfileid: "52635401"
     requests
     | where timestamp <= endDate and timestamp >=startDate
     | where url endswith "generateAnswer" and name startswith "POST" 
-    | parse name with *"/knowledgebases/"KbId"/generateAnswer" 
+    | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer" 
     | summarize ChatCount=count() by KbId
 ```
 
@@ -81,7 +81,7 @@ ms.locfileid: "52635401"
     requests
     | where url endswith "generateAnswer"
     | project timestamp, id, name, resultCode, duration
-    | parse name with *"/knowledgebases/"KbId"/generateAnswer"
+    | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer"
     | join kind= inner (
     traces | extend id = operation_ParentId 
     ) on id
@@ -95,7 +95,7 @@ ms.locfileid: "52635401"
     //Latency distribution of questions
     requests
     | where url endswith "generateAnswer" and name startswith "POST"
-    | parse name with *"/knowledgebases/"KbId"/generateAnswer" 
+    | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer"
     | project timestamp, id, name, resultCode, performanceBucket, KbId
     | summarize count() by performanceBucket, KbId
 ```

@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: cbedb17bb7563620d0d9db81333d9a79301b4ee0
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 4e478c2559ac534f595393fdc36b95ad8e9c989a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42817502"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725025"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>如何使用移动应用 Node.js SDK
 
@@ -152,15 +152,15 @@ Visual Studio 2015 需要使用一个扩展在 IDE 中开发 Node.js 应用程�
 
 以下过程使用 Git 存储库下载快速入门项目代码：
 
-1. 安装 Git（如果尚未安装）。 安装 Git 所需的步骤因操作系统的不同而异。 有关操作系统特定的分发和安装指南，请参阅[安装 Git](http://git-scm.com/book/en/Getting-Started-Installing-Git)。
-1. 若要启用后端站点的 GIT 存储库，请参阅[准备存储库](../app-service/app-service-deploy-local-git.md#prepare-your-repository)。 记下部署用户名和密码。
-1. 在移动应用后端的窗格中，记下“Git 克隆 URL”设置。
-1. 使用 Git 克隆 URL 执行 `git clone` 命令。 根据需要输入密码，如以下示例所示：
+1. 安装 Git（如果尚未安装）。 安装 Git 所需的步骤因操作系统的不同而异。 有关操作系统特定的分发和安装指南，请参阅[安装 Git](https://git-scm.com/book/en/Getting-Started-Installing-Git)。
+2. 若要启用后端站点的 GIT 存储库，请参阅[准备存储库](../app-service/deploy-local-git.md#prepare-your-repository)。 记下部署用户名和密码。
+3. 在移动应用后端的窗格中，记下“Git 克隆 URL”设置。
+4. 使用 Git 克隆 URL 执行 `git clone` 命令。 根据需要输入密码，如以下示例所示：
 
         $ git clone https://username@todolist.scm.azurewebsites.net:443/todolist.git
 
-1. 浏览到本地目录（在上述示例中为 `/todolist`），可以看到项目文件已下载。 在 `/tables` 目录中找到 todoitem.json 文件。 此文件定义表上的权限。 另外，在同一目录中找到 todoitem.js 文件。 该文件定义表的 CRUD 操作脚本。
-1. 更改项目文件之后，请运行以下命令添加、提交更改，然后将更改上传到站点：
+5. 浏览到本地目录（在上述示例中为 `/todolist`），可以看到项目文件已下载。 在 `/tables` 目录中找到 todoitem.json 文件。 此文件定义表上的权限。 另外，在同一目录中找到 todoitem.js 文件。 该文件定义表的 CRUD 操作脚本。
+6. 更改项目文件之后，请运行以下命令添加、提交更改，然后将更改上传到站点：
 
         $ git commit -m "updated the table script"
         $ git push origin master
@@ -284,7 +284,7 @@ module.exports = table;
 1. 下载并安装 [Microsoft SQL Server 2014 Express]。 请务必安装 SQL Server 2014 Express with Tools 版。 除非确实需要 64 位支持，否则请使用 32 位版本，因为它在运行时消耗的内存更少。
 1. 运行 SQL Server 2014 配置管理器：
 
-   a. 在树菜单中，展开“SQL Server 网络配置”节点。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在树菜单中，展开“SQL Server 网络配置”节点。
 
    b. 选择“SQLEXPRESS 的协议”。
 
@@ -404,7 +404,7 @@ azureMobile.js 文件中的大多数设置在 [Azure 门户]中都有对等的�
 1. 在“资源组”框中，输入与应用相同的名称。
 1. 系统将选择默认应用服务计划。 若要更改应用服务计划：
 
-   a. 选择“应用服务计划” > “+ 新建”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“应用服务计划” > “+ 新建”。
 
    b. 为新应用服务计划命名并选择适当的位置。
 
@@ -413,7 +413,7 @@ azureMobile.js 文件中的大多数设置在 [Azure 门户]中都有对等的�
    d. 单击“选择”按钮。
 
    e. 返回“应用服务计划”窗格，选择“确定”。
-1. 选择**创建**。
+1. 选择“创建”。
 
 预配移动应用后端可能需要几分钟时间。 预配移动应用后端后，门户将打开移动应用后端的“设置”窗格。
 
@@ -963,24 +963,24 @@ Node.js 应用程序可访问各种诊断日志工具。 在内部，移动应�
 [Xamarin.Forms 客户端快速入门]: app-service-mobile-xamarin-forms-get-started.md
 [Windows 应用商店客户端快速入门]: app-service-mobile-windows-store-dotnet-get-started.md
 [脱机数据同步]: app-service-mobile-offline-data-sync.md
-[配置 Azure Active Directory 身份验证]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
-[配置 Facebook 身份验证]: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md
-[配置 Google 身份验证]: ../app-service/app-service-mobile-how-to-configure-google-authentication.md
-[配置 Microsoft 身份验证]: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md
-[配置 Twitter 身份验证]: ../app-service/app-service-mobile-how-to-configure-twitter-authentication.md
-[Azure 应用服务部署指南]: ../app-service/app-service-deploy-local-git.md
+[配置 Azure Active Directory 身份验证]: ../app-service/configure-authentication-provider-aad.md
+[配置 Facebook 身份验证]: ../app-service/configure-authentication-provider-facebook.md
+[配置 Google 身份验证]: ../app-service/configure-authentication-provider-google.md
+[配置 Microsoft 身份验证]: ../app-service/configure-authentication-provider-microsoft.md
+[配置 Twitter 身份验证]: ../app-service/configure-authentication-provider-twitter.md
+[Azure 应用服务部署指南]: ../app-service/deploy-local-git.md
 [监视 Azure 应用服务]: ../app-service/web-sites-monitor.md
-[在 Azure 应用服务中启用诊断日志记录]: ../app-service/web-sites-enable-diagnostic-log.md
-[在 Visual Studio 中对 Azure 应用服务进行故障排除]: ../app-service/web-sites-dotnet-troubleshoot-visual-studio.md
+[在 Azure 应用服务中启用诊断日志记录]: ../app-service/troubleshoot-diagnostic-logs.md
+[在 Visual Studio 中对 Azure 应用服务进行故障排除]: ../app-service/troubleshoot-dotnet-visual-studio.md
 [指定 Node 版本]: ../nodejs-specify-node-version-azure-apps.md
 [使用 Node 模块]: ../nodejs-use-node-modules-azure-apps.md
 [Create a new Azure App Service]: ../app-service/
 [azure-mobile-apps]: https://www.npmjs.com/package/azure-mobile-apps
-[Express]: http://expressjs.com/
-[Swagger]: http://swagger.io/
+[Express]: https://expressjs.com/
+[Swagger]: https://swagger.io/
 
 [Azure 门户]: https://portal.azure.com/
-[OData]: http://www.odata.org
+[OData]: https://www.odata.org
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [GitHub 上的 basicapp 示例]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app
 [GitHub 上的 todo 示例]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/todo
@@ -989,6 +989,6 @@ Node.js 应用程序可访问各种诊断日志工具。 在内部，移动应�
 [QueryJS]: https://github.com/Azure/queryjs
 [用于 Visual Studio 的 Node.js 工具 1.1]: https://github.com/Microsoft/nodejstools/releases/tag/v1.1-RC.2.1
 [mssql Node.js 包]: https://www.npmjs.com/package/mssql
-[Microsoft SQL Server 2014 Express]: http://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
-[ExpressJS 中间件]: http://expressjs.com/guide/using-middleware.html
+[Microsoft SQL Server 2014 Express]: https://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
+[ExpressJS 中间件]: https://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston

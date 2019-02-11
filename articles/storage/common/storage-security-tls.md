@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: fryu
-ms.component: common
-ms.openlocfilehash: 86331f60e1be7d55c39e5d59f85b0f090a322587
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.subservice: common
+ms.openlocfilehash: 4af86b570dfb24f990f1d8b4ff501d1a222bd21d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45573852"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494283"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>为 Azure 存储客户端启用安全 TLS
 
@@ -48,23 +48,23 @@ Azure 存储自 2015 年以来已停止使用 SSL 3.0，并在公共 HTTPs 终�
 
 ## <a name="enable-tls-12-in-powershell-client"></a>在 PowerShell 客户端中启用 TLS 1.2
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)] 
+
 下面的示例演示如何在 PowerShell 客户端中启用 TLS 1.2。
 
 ```powershell
-
 # Enable TLS 1.2 before connecting to Azure Storage
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12;
 
-$resourceGroup = "{YourResourceGropuName}"
+$resourceGroup = "{YourResourceGroupName}"
 $storageAccountName = "{YourStorageAccountNme}"
 $prefix = "foo"
 
 # Connect to Azure Storage
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup -Name $storageAccountName
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroup -Name $storageAccountName
 $ctx = $storageAccount.Context
-$listOfContainers = Get-AzureStorageContainer -Context $ctx -Prefix $prefix
+$listOfContainers = Get-AzStorageContainer -Context $ctx -Prefix $prefix
 $listOfContainers
-
 ```
 
 ## <a name="verify-tls-12-connection"></a>验证 TLS 1.2 连接

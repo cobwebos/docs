@@ -1,19 +1,20 @@
 ---
-title: Azure 流分析 Blob 存储输出（预览版）的自定义 DateTime 路径模式
-description: ''
+title: Azure 流分析 Blob 输出的 DateTime 路径模式（预览）
+description: 本文介绍 Azure Stream Analytics 作业的 blob 存储输出的自定义 DateTime 路径模式功能。
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: da29c6bd8ddc1e2f62a78fb683df5e1784141722
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: ba386539c3f3c6740b843575bbccd4b028b8a5a7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452558"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090770"
 ---
 # <a name="custom-datetime-path-patterns-for-azure-stream-analytics-blob-storage-output-preview"></a>Azure 流分析 Blob 存储输出（预览版）的自定义 DateTime 路径模式
 
@@ -61,7 +62,7 @@ Blob 存储的自定义路径模式可以与 Hive 流式处理约定配合使用
 
 有了自定义输出，就不需更改表，也不需将分区添加到 Azure 流分析和 Hive 之间的端口数据。 许多文件夹可以使用以下方式自动添加：
 
-```
+```SQL
 MSCK REPAIR TABLE while hive.exec.dynamic.partition true
 ```
 
@@ -75,9 +76,9 @@ MSCK REPAIR TABLE while hive.exec.dynamic.partition true
 
 完整路径模式如下所示：
 
-```
-year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}
-```
+
+`year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}`
+
 
 启动作业时，会在 Blob 容器中创建基于路径模式的文件夹结构。 可以向下钻取到日级别。
 

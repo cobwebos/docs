@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: nberdy
-ms.openlocfilehash: 750c184dfc0adb92f26114d1911f27bc741ceb23
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: caccdcb0d90a817c82e8d7816f0770b09b4ea27a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265248"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101008"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解和调用 IoT 中心的直接方法
 
@@ -36,7 +36,7 @@ ms.locfileid: "52265248"
 > 调用设备上的直接方法时，属性名称和值只能包含 US-ASCII 可打印字母数字，但下列组中的任一项除外：``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
 > 
 
-直接方法是同步的，在超时期限（默认：30 秒，最长可设置为 3600 秒）过后，其结果不是成功就是失败。 直接方法适用于交互式场景，即当且仅当设备处于联机状态且可接收命令时，用户希望设备做出响应。 例如，打开手机的灯。 在此类方案中，用户需要立即看到结果是成功还是失败，以便云服务可以尽快根据结果进行操作。 设备可能返回某些消息正文作为方法的结果，但系统不会要求方法一定这样做。 无法保证基于方法调用的排序或者任何并发语义。
+直接方法是同步的，在超时期限（默认：30 秒，最长可设置为 300 秒）过后，其结果不是成功就是失败。 直接方法适用于交互式场景，即当且仅当设备处于联机状态且可接收命令时，用户希望设备做出响应。 例如，打开手机的灯。 在此类方案中，用户需要立即看到结果是成功还是失败，以便云服务可以尽快根据结果进行操作。 设备可能返回某些消息正文作为方法的结果，但系统不会要求方法一定这样做。 无法保证基于方法调用的排序或者任何并发语义。
 
 直接方法从云端只能通过 HTTPS 调用，从设备端可以通过 MQTT 或 AMQP 调用。
 
@@ -203,4 +203,4 @@ IoT 中心开发人员指南中的其他参考主题包括：
 若要尝试本文中介绍的一些概念，可以根据兴趣学习以下 IoT 中心教程：
 
 * [使用直接方法](quickstart-control-device-node.md)
-* [使用用于 VS Code 的 Azure IoT 工具包进行设备管理](iot-hub-device-management-iot-toolkit.md)
+* [使用适用于 VS Code 的 Azure IoT 工具进行设备管理](iot-hub-device-management-iot-toolkit.md)

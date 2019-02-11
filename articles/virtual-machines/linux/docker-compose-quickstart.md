@@ -3,7 +3,7 @@ title: 在 Azure 中的 Linux VM 上使用 Docker Compose | Microsoft Docs
 description: 如何通过 Azure CLI 在 Linux 虚拟机上使用 Docker 和 Compose
 services: virtual-machines-linux
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
-ms.author: zarhoads
-ms.openlocfilehash: c0dddb5ff96c0dea3c2c33cbd67fce247e3161a5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: cynthn
+ms.openlocfilehash: 257083e1ae0c3c1cb3c5421882ffd0e06e2d1f5c
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467119"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752137"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>使用 Docker 和 Compose 在 Azure 中定义和运行多容器应用程序入门
 借助 [Compose](http://github.com/docker/compose)，可以使用简单的文本文件定义由多个 Docker 容器组成的应用程序。 然后使用单个命令启动应用程序，该命令会执行部署定义的环境所需的所有操作。 作为示例，本文说明如何在 Ubuntu VM 上使用后端 MariaDB SQL 数据库快速设置 WordPress 博客。 也可以使用 Compose 设置更复杂的应用程序。
@@ -33,15 +33,15 @@ ms.locfileid: "49467119"
 
 
 ### <a name="create-docker-host-with-azure-cli"></a>使用 Azure CLI 创建 Docker 主机
-安装最新的 [Azure CLI](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure 帐户。
+安装最新的 [Azure CLI](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。
 
-首先，使用 [az group create](/cli/azure/group#az_group_create) 为 Docker 环境创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+首先，使用 [az group create](/cli/azure/group) 为 Docker 环境创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-接下来，使用 [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) 部署 VM，其中包含 [GitHub 中此 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)中的 Azure Docker VM 扩展。 出现提示时，为 newStorageAccountName、adminUsername、adminPassword 和 dnsNameForPublicIP 提供自己的唯一值：
+接下来，使用 [az group deployment create](/cli/azure/group/deployment) 部署 VM，其中包含 [GitHub 中此 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)中的 Azure Docker VM 扩展。 出现提示时，为 newStorageAccountName、adminUsername、adminPassword 和 dnsNameForPublicIP 提供自己的唯一值：
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -52,7 +52,7 @@ az group deployment create --resource-group myResourceGroup \
 
 
 ## <a name="verify-that-compose-is-installed"></a>确认已安装 Compose
-若要查看 VM 的详细信息（包括 DNS 名称），请使用 [az vm show](/cli/azure/vm#az_vm_show)：
+若要查看 VM 的详细信息（包括 DNS 名称），请使用 [az vm show](/cli/azure/vm)：
 
 ```azurecli
 az vm show \

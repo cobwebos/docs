@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: f9c7a70eae4c49173b3e11b7fbfa901f7e5b89d6
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: efcd2e279d1bf387bc11c238a0592ecee6545cc4
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291039"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053613"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>使用 Application Insights 进行事件分析和可视化
 
@@ -39,7 +39,7 @@ ms.locfileid: "52291039"
 
 ![Application Insights 概述](media/service-fabric-diagnostics-event-analysis-appinsights/ai-overview.png)
 
-在上图的右侧面板上，列表中有两种主要类型的条目：请求和事件。 在本例中，请求是通过 HTTP 请求对应用 API 发出的调用，事件是自定义事件，充当可以添加到代码中任意位置的遥测数据。 可以在[用于处理自定义事件和指标的 Application Insights API](../application-insights/app-insights-api-custom-events-metrics.md) 中进一步了解如何检测应用程序。 单击某个请求会显示下图所示的更多详细信息，包括 Application Insights Service Fabric Nuget 包中收集的、特定于 Service Fabric 的数据。 在排查和了解应用程序的状态时，此信息非常有用；所有这些信息都可以在 Application Insights 中搜索
+在上图的右侧面板上，列表中有两种主要类型的条目：请求和事件。 在本例中，请求是通过 HTTP 请求对应用 API 发出的调用，事件是自定义事件，充当可以添加到代码中任意位置的遥测数据。 可以在[用于处理自定义事件和指标的 Application Insights API](../azure-monitor/app/api-custom-events-metrics.md) 中进一步了解如何检测应用程序。 单击某个请求会显示下图所示的更多详细信息，包括 Application Insights Service Fabric Nuget 包中收集的、特定于 Service Fabric 的数据。 在排查和了解应用程序的状态时，此信息非常有用；所有这些信息都可以在 Application Insights 中搜索
 
 ![Application Insights 请求详细信息](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
 
@@ -47,14 +47,14 @@ Application Insights 提供指定的视图用于查询所有传入的数据。 �
 
 ![Application Insights 请求详细信息](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
 
-若要进一步了解 Application Insights 门户的功能，请转到 [Application Insights 门户文档](../application-insights/app-insights-dashboards.md)。
+若要进一步了解 Application Insights 门户的功能，请转到 [Application Insights 门户文档](../azure-monitor/app/app-insights-dashboards.md)。
 
 ### <a name="configuring-application-insights-with-wad"></a>使用 WAD 配置 Application Insights
 
 >[!NOTE]
 >目前仅适用于 Windows 群集。
 
-可通过两种方式将数据从 WAD 发送到 Azure Application Insights，这一过程是通过向 WAD 配置添加 Application Insights 接收器实现，如[此文](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)所述。
+可通过两种方式将数据从 WAD 发送到 Azure Application Insights，这一过程是通过向 WAD 配置添加 Application Insights 接收器实现，如[此文](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)所述。
 
 #### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>在 Azure 门户中创建群集时添加 Application Insights 检测密钥
 
@@ -88,7 +88,7 @@ Application Insights 提供指定的视图用于查询所有传入的数据。 �
 
 在上面的两个代码片段中，名称“applicationInsights”用于描述接收器。 这不是必需的，并且只要接收器名称包含在“接收器”中，就可将名称设定为任何字符串。
 
-目前，群集中的日志在 Application Insights 日志查看器中显示为**跟踪**。 由于来自平台的大部分跟踪信息都是“参考”级别，因此还可以考虑将接收器配置更改为仅发送类型为“关键”或“错误”的日志。 这可通过将“通道”添加到接收器完成，如[本文](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)所示。
+目前，群集中的日志在 Application Insights 日志查看器中显示为**跟踪**。 由于来自平台的大部分跟踪信息都是“参考”级别，因此还可以考虑将接收器配置更改为仅发送类型为“关键”或“错误”的日志。 这可通过将“通道”添加到接收器完成，如[本文](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)所示。
 
 >[!NOTE]
 >如果在门户或资源管理器模板中使用错误的 Application Insights 密钥，则必须手动更改密钥并更新/重新部署群集。
@@ -114,17 +114,17 @@ Application Insights 提供指定的视图用于查询所有传入的数据。 �
 
 [微服务和容器的 Application Insights 支持](https://azure.microsoft.com/blog/app-insights-microservices/)会显示一些开发中的新功能（当前仍为 beta 版本），通过它们可以使用更加丰富的现成 Application Insights 监视选项。 这包含依赖项跟踪（用于生成群集中所有服务和应用程序的 AppMap 以及它们之间的通信），以及来自服务更好的跟踪关联（有助于更好地查明应用程序或服务的工作流中的问题）。
 
-若在 .NET 中进行开发，将来可能会使用一些 Service Fabric 编程模型，且愿意使用 Application Insights 作为可视化和分析事件和日志数据的平台，那我们建议选取 Application Insights SDK 途径作为监视和诊断工作流。 请参阅[此文](../application-insights/app-insights-asp-net-more.md)和[此文](../application-insights/app-insights-asp-net-trace-logs.md)，开始使用 Application Insights 收集和显示日志。
+若在 .NET 中进行开发，将来可能会使用一些 Service Fabric 编程模型，且愿意使用 Application Insights 作为可视化和分析事件和日志数据的平台，那我们建议选取 Application Insights SDK 途径作为监视和诊断工作流。 请参阅[此文](../azure-monitor/app/asp-net-more.md)和[此文](../azure-monitor/app/asp-net-trace-logs.md)，开始使用 Application Insights 收集和显示日志。
 
 ## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>在 Azure 门户中导航到 Application Insights 资源。
 
 配置 Application Insights 作为事件和日志输出的数分钟后，Application Insights 资源中应开始显示信息。 导航到 Application Insights 资源，此时会转到 Application Insights 资源仪表板。 单击 Application Insights 任务栏中的“搜索”，查看其最近收到的跟踪，并能够筛选它们。
 
-指标资源管理器是非常有用的工具，能够基于应用程序、服务和群集报告的指标创建自定义仪表板。 请参阅[了解 Application Insights 中的指标](../application-insights/app-insights-metrics-explorer.md)，基于收集的数据为自身设置数个图表。
+指标资源管理器是非常有用的工具，能够基于应用程序、服务和群集报告的指标创建自定义仪表板。 请参阅[了解 Application Insights 中的指标](../azure-monitor/app/metrics-explorer.md)，基于收集的数据为自身设置数个图表。
 
-单击“分析”会转到 Application Insights 分析门户，可在此处基于更广的范围和可选性查询事件和跟踪。 若要阅读详细信息，请转到 [Application Insights 中的分析](../application-insights/app-insights-analytics.md)。
+单击“分析”会转到 Application Insights 分析门户，可在此处基于更广的范围和可选性查询事件和跟踪。 若要阅读详细信息，请转到 [Application Insights 中的分析](../azure-monitor/app/analytics.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 AI 中设置警报](../application-insights/app-insights-alerts.md)以获取有关性能或使用情况的通知
-* [Application Insights 中的智能检测](../application-insights/app-insights-proactive-diagnostics.md)针对发送给 Application Insights 的遥测进行主动分析，向你警告潜在的性能问题
+* [在 AI 中设置警报](../azure-monitor/app/alerts.md)以获取有关性能或使用情况的通知
+* [Application Insights 中的智能检测](../azure-monitor/app/proactive-diagnostics.md)针对发送给 Application Insights 的遥测进行主动分析，向你警告潜在的性能问题

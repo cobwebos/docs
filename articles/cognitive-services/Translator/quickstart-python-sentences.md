@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: erhopf
-ms.openlocfilehash: 64831f13811029263a2b76f8030589d9329dd318
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 22b12349ac93f0c9dd595e01ecb4661e019c346b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086125"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458208"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-python"></a>快速入门：使用 Python 通过文本翻译 API 来确定句子长度
 
@@ -153,7 +153,7 @@ python sentence-length.py
 
 ## <a name="see-also"></a>另请参阅
 
-除了文本直译，还请了解如何使用文本翻译 API 执行以下操作：
+了解如何使用文本翻译 API 执行以下操作：
 
 * [翻译文本](quickstart-python-translate.md)
 * [直译文本](quickstart-python-transliterate.md)

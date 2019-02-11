@@ -2,17 +2,17 @@
 title: Azure 事件网格事件筛选
 description: 介绍如何在创建 Azure 事件网格订阅时筛选事件。
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/05/2018
-ms.author: tomfitz
-ms.openlocfilehash: fd33ca723bd00b4a9c25009ef5b4f444487244f0
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.date: 01/21/2019
+ms.author: spelluru
+ms.openlocfilehash: 87599b05a3569bf6f28880352185a131f48a7f52
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281942"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470610"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解事件网格订阅的事件筛选
 
@@ -47,7 +47,7 @@ ms.locfileid: "51281942"
 
 ```json
 "filter": {
-  "subjectBeginsWith": "blobServices/default/containers/mycontainer/log",
+  "subjectBeginsWith": "/blobServices/default/containers/mycontainer/log",
   "subjectEndsWith": ".jpg"
 }
 
@@ -141,6 +141,7 @@ ms.locfileid: "51281942"
 * 每个字符串值有 512 个字符
 * “in”和“not in”运算符有 5 个值
 * 键只能有一个嵌套级别（如 data.key1）
+* 自定义事件架构只能基于顶级字段进行筛选
 
 可以在多个筛选器中使用相同的键。
 

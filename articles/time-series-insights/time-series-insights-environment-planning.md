@@ -11,12 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: fa178efadf001b70501b132ede67686ae5c06363
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.custom: seodec18
+ms.openlocfilehash: ce31b22dcbf3fbe79192647e9a21983911e77a9c
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47422552"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556027"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>计划 Azure 时序见解环境
 
@@ -28,7 +29,7 @@ ms.locfileid: "47422552"
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 若要开始使用时序见解，最好要知道没分钟想要推送的数据量以及需要存储数据的时间。  
 

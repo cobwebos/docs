@@ -2,7 +2,7 @@
 title: 将已完成作业和任务的结果或日志保存到数据存储 - Azure 批处理 | Microsoft Docs
 description: 了解用于保存批处理任务和作业的输出数据的不同选项。 可以将数据保存到 Azure 存储，或保存到其他数据存储。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/14/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 463c3605f96774b6f05235f3c9d7fe0e5a7139f2
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: ff7224b342aa421c576c170f3c23ac64cad9f161
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705702"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474337"
 ---
 # <a name="persist-job-and-task-output"></a>持久性作业和任务输出
 
@@ -83,7 +83,7 @@ Batch 服务支持在[向作业添加任务](https://docs.microsoft.com/rest/api
 
 - **输出检索**：可以直接从池中的计算节点检索任务输出；如果已保存任务输出，则可以从 Azure 存储或其他数据存储检索任务输出。 若要直接从计算节点检索任务输出，需要获取文件名及其在节点上的输出位置。 如果将任务输出保存到 Azure 存储，则需要文件在 Azure 存储中的完整路径才能使用 Azure 存储 SDK 下载输出文件。
 
-- **查看输出**：导航到 Azure 门户中的某个 Batch 任务并选择“节点上的文件”时，将看到与该任务关联的所有文件，而不仅仅是想要查看的输出文件。 同样，计算节点上的文件仅在该节点存在时才可用，并且仅在为任务设置的文件保留时间范围内才可用。 若要查看已保存到 Azure 存储的任务输出，可使用 Azure 门户或 Azure 存储客户端应用程序（例如 [Azure 存储资源管理器][storage_explorer]）。 若要使用门户或其他工具查看 Azure 存储中的输出数据，则必须知道文件的位置并直接导航到该文件。
+- **查看输出**：导航到 Azure 门户中的某个 Batch 任务并选择“节点上的文件”时，将看到与该任务关联的所有文件，而不仅仅是你想要查看的输出文件。 同样，计算节点上的文件仅在该节点存在时才可用，并且仅在为任务设置的文件保留时间范围内才可用。 若要查看已保存到 Azure 存储的任务输出，可使用 Azure 门户或 Azure 存储客户端应用程序（例如 [Azure 存储资源管理器][storage_explorer]）。 若要使用门户或其他工具查看 Azure 存储中的输出数据，则必须知道文件的位置并直接导航到该文件。
 
 ## <a name="next-steps"></a>后续步骤
 

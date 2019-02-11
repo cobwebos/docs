@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: 8b4ae066edc1c62c25762b5c6feebce1ecfff5a2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: tables
+ms.openlocfilehash: 97373f6f0138d3ed8028ed4327b7e6cf90ad76a7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521534"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470733"
 ---
 # <a name="design-for-querying"></a>针对查询的设计
 表服务解决方案可能需要进行大量读取操作和/或大量写入操作。 本文重点介绍在将表服务设计为支持高效读取操作时需要牢记的事项。 通常，支持高效读取操作的设计对于写入操作来说也是高效的。 但是，在进行支持写入操作的设计时，还需牢记一些额外注意事项，具体请参阅文章[针对数据修改的设计](table-storage-design-for-modification.md)。

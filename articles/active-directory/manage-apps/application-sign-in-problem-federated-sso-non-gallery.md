@@ -4,10 +4,10 @@ description: 关于使用 Azure AD 登录到配置为基于 SAML 的联合单一
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 17114818105935d8d6a7ac647f1d98c097e78efd
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 279f0290bb873e06146ec83d921caa50d482f924
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354498"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55182874"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>登录到配置为联合单一登录的非库应用程序时出现的问题
 
@@ -34,7 +34,7 @@ ms.locfileid: "44354498"
 
 ## <a name="application-not-found-in-directory"></a>在目录中未找到应用程序
 
-错误 AADSTS70001: 目录中未找到标识符为“https://contoso.com”的应用程序。
+*错误 AADSTS70001:在目录中找不到标识符为 ‘https://contoso.com’ 的应用程序*。
 
 **可能的原因**
 
@@ -66,7 +66,7 @@ SAML 请求中从应用程序发送给 Azure AD 的颁发者属性与应用程�
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>回复地址与为应用程序配置的回复地址不匹配。 
 
-错误 AADSTS50011：回复地址“https://contoso.com”与为应用程序配置的回复地址不匹配 
+*错误 AADSTS50011:回复地址 ‘https://contoso.com’ 与为应用程序配置的回复地址不匹配* 
 
 **可能的原因** 
 
@@ -100,7 +100,7 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 ## <a name="user-not-assigned-a-role"></a>未为用户分配角色
 
-*错误 AADSTS50105: 没有为已登录的用户“brian@contoso.com”分配应用程序角色*
+错误 AADSTS50105: 未为已登录的用户“brian@contoso.com”分配应用程序角色
 
 **可能的原因**
 
@@ -134,7 +134,7 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 11. 将鼠标悬停在列表中的“用户”上方以显示“复选框”。 单击用户个人资料头像或徽标旁边的复选框，将用户添加到“已选择”列表。
 
-12. **可选：** 如果想要**添加多个用户**，请在“按名称或电子邮件地址搜索”搜索框中，键入其他**全名**或**电子邮件地址**，然后单击复选框以将此用户添加到“已选择”列表。
+12. **可选：** 如果要“添加多个用户”，请在“按名称或电子邮件地址搜索”搜索框中键入其他“全名”或“电子邮件地址”，然后单击复选框以将此用户添加到“已选择”列表。
 
 13. 在完成用户的选择后，单击“选择”按钮将他们添加到要分配给应用程序的用户和组列表。
 
@@ -146,7 +146,7 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 ## <a name="not-a-valid-saml-request"></a>不是有效的 SAML 请求
 
-*错误 AADSTS75005: 请求不是有效的 Saml2 协议消息。*
+*错误 AADSTS75005:请求不是有效的 Saml2 协议消息。*
 
 **可能的原因**
 
@@ -170,7 +170,7 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 ## <a name="no-resource-in-requiredresourceaccess-list"></a>requiredResourceAccess 列表中没有资源
 
-*错误 AADSTS65005: 客户端应用程序已请求访问资源 "00000002-0000-0000-c000-000000000000"。该请求失败，因为客户端未在其 requiredResourceAccess 列表中指定此资源*。
+错误 AADSTS65005: *客户端应用程序已请求访问资源“00000002-0000-0000-c000-000000000000”。该请求失败，因为客户端未在其 requiredResourceAccess 列表中指定此资源*。
 
 **可能的原因**
 
@@ -202,7 +202,7 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 ## <a name="certificate-or-key-not-configured"></a>证书或密钥未配置
 
-错误 AADSTS50003：没有配置签名密钥。
+错误 AADSTS50003: 没有配置签名密钥。
 
 **可能的原因**
 

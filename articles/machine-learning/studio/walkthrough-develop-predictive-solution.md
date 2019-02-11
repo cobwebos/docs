@@ -4,31 +4,31 @@ description: 详细演练中介绍如何创建预测分析解决方案，用于�
 keywords: 信用风险, 预测分析解决方案, 风险评估
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 ms.assetid: 43300854-a14e-4cd2-9bb1-c55c779e0e93
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/23/2017
-ms.openlocfilehash: a5dd8432ca79cca8de37f5d64027e0b9c498f3b9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 2c21c08e71592e417d8ee3850af61ca2c1486a76
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311936"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464716"
 ---
-# <a name="walkthrough-develop-a-predictive-analytics-solution-for-credit-risk-assessment-in-azure-machine-learning-studio"></a>演练：在 Azure 机器学习工作室中为信用风险评估开发预测分析解决方案
+# <a name="walkthrough-develop-predictive-solution-for-credit-risk-assessment-in-azure-machine-learning-studio"></a>演练：在Azure 机器学习工作室中为信用风险评估开发预测解决方案
 
 在本演练中，我们将深入探讨在机器学习工作室中开发预测分析解决方案的过程。 我们会在机器学习工作室中开发一个简单模型，然后将其部署为 Azure 机器学习 Web 服务，以便模型在其中使用新数据进行预测。 
 
 本演练假设用户此前至少使用过机器学习工作室一次，且对机器学习概念有一些了解。 但不假设用户精通其中任一领域。
 
-如果以前从来没用过 **Azure 机器学习工作室**，则可能一开始需要学习[在 Azure 机器学习工作室中创建第一个数据科学试验](create-experiment.md)这一教程。 该教程指导用户首次完成机器学习工作室的使用。 教程中会介绍各种基础知识：如何将模块拖放到试验中、如何将模块连接到一起、如何运行试验，以及如何查看结果。 另一个可有助于入门的工具是一个示意图，该示意图概述了机器学习工作室的各种功能。 可在此处下载并打印该图：[Azure 机器学习工作室功能的概要示意图](studio-overview-diagram.md)。
+如果以前从来没用过 **Azure 机器学习工作室**，则可能一开始需要学习[在 Azure 机器学习工作室中创建第一个数据科学试验](create-experiment.md)这一教程。 该教程指导用户首次完成机器学习工作室的使用。 教程中会介绍各种基础知识：如何将模块拖放到试验中、如何将模块连接到一起、如何运行试验，以及如何查看结果。 另一个可有助于入门的工具是一个示意图，该示意图概述了机器学习工作室的各种功能。 可以从此处下载并进行打印：[Azure 机器学习工作室功能的概要示意图](studio-overview-diagram.md)。
  
 如果用户基本上是刚接触机器学习领域，我们有一个视频系列可能会有所帮助。 视频名为[适合初学者的数据科学](data-science-for-beginners-the-5-questions-data-science-answers.md)，视频中使用日常语言和概念对机器学习进行了精彩的介绍。
 
@@ -51,11 +51,11 @@ ms.locfileid: "52311936"
 1. [创建机器学习工作区](walkthrough-1-create-ml-workspace.md)
 2. [上传现有数据](walkthrough-2-upload-data.md)
 3. [创建试验](walkthrough-3-create-new-experiment.md)
-4. [定型和评估模型](walkthrough-4-train-and-evaluate-models.md)
+4. [培训和评估模型](walkthrough-4-train-and-evaluate-models.md)
 5. [部署 Web 服务](walkthrough-5-publish-web-service.md)
 6. [访问 Web 服务](walkthrough-6-access-web-service.md)
 
 > [!TIP] 
 > 可在 [Azure AI 库](https://gallery.cortanaintelligence.com)中找到本演练中开发的试验的工作副本。 请转到**[演练 - 信用风险预测](https://gallery.cortanaintelligence.com/Experiment/Walkthrough-Credit-risk-prediction-1)** 并单击“在工作室中打开”将试验副本下载到机器学习工作室的工作区。
 > 
-> 本演练基于简化版的[二进制分类：信用风险评估](https://go.microsoft.com/fwlink/?LinkID=525270)示例试验，也可在[库](http://gallery.cortanaintelligence.com/)中获取。
+> 本演练基于示例试验的简化版本，[二进制分类：信用风险预测](https://go.microsoft.com/fwlink/?LinkID=525270)，也可在[库](http://gallery.cortanaintelligence.com/)中获取。

@@ -2,23 +2,23 @@
 title: Azure 事件网格事件中心事件架构
 description: 介绍为 Azure 事件网格中的事件中心事件提供的属性
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/17/2018
-ms.author: tomfitz
-ms.openlocfilehash: e301f3895126ed52b8d4c1f046f69dfcedb3563c
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.date: 01/17/2019
+ms.author: spelluru
+ms.openlocfilehash: 9c0113687d27bf43375f298057129a5594ec0a06
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42141443"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475401"
 ---
 # <a name="azure-event-grid-event-schema-for-event-hubs"></a>事件中心的 Azure 事件网格事件架构
 
-本文提供事件中心事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
+本文提供事件中心事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
-有关示例脚本和教程的列表，请参阅[事件中心事件源](event-sources.md#event-hubs)。
+有关示例脚本和教程的列表信息，请参阅[事件中心事件源](event-sources.md#event-hubs)。
 
 ### <a name="available-event-types"></a>可用事件类型
 
@@ -57,7 +57,7 @@ ms.locfileid: "42141443"
 
 事件具有以下顶级数据：
 
-| 属性 | Type | Description |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
@@ -70,7 +70,7 @@ ms.locfileid: "42141443"
 
 数据对象具有以下属性：
 
-| 属性 | Type | Description |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | fileUrl | 字符串 | 捕获文件的路径。 |
 | fileType | 字符串 | 捕获文件的文件类型。 |

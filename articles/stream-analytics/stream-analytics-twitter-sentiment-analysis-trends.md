@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: de0ddbc041d6f177e5bfcd24d593b8d63a8e1e23
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 86fa7fab6897802fd4f18936f2d7bb0700829837
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248721"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231132"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure 流分析中的实时 Twitter 情绪分析
 
@@ -36,7 +36,7 @@ ms.locfileid: "50248721"
 * Azure 订阅
 * Twitter 帐户 
 * Twitter 应用程序，以及该应用程序的 [OAuth 访问令牌](https://dev.twitter.com/oauth/overview/application-owner-access-tokens)。 稍后将提供有关如何创建 Twitter 应用程序的高级说明。
-* TwitterWPFClient 应用程序，用于读取 Twitter 源。 若要获取此应用程序，请从 GitHub 下载 [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) 文件，然后将包解压缩到计算机上的文件夹中。 若要查看源代码，并在调试程序中运行该应用程序，请从 [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) 获取源代码。 
+* TwitterWPFClient 应用程序，用于读取 Twitter 源。 若要获取此应用程序，请从 GitHub 下载 [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) 文件，然后将包解压缩到计算机上的文件夹中。 若要查看源代码，并在调试程序中运行该应用程序，请从 [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TwitterClient) 获取源代码。 
 
 ## <a name="create-an-event-hub-for-streaming-analytics-input"></a>为流分析输入创建事件中心
 
@@ -214,13 +214,13 @@ ms.locfileid: "50248721"
 
 2. 在“输入”边栏选项卡中，单击“+&nbsp;添加”，然后在边栏选项卡中填写以下值：
 
-    * 输入别名：使用名称 `TwitterStream`。 如果使用其他名称，请将其记录下来，因为稍后需要该名称。
-    * 源类型：选择“数据流”。
-    * 源：选择“事件中心”。
-    * 导入选项：选择“从当前订阅使用事件中心”。 
-    * 服务总线命名空间：选择之前创建的事件中心命名空间 (`<yourname>-socialtwitter-eh-ns`)
-    * 事件中心：选择之前创建的事件中心 (`socialtwitter-eh`)。
-    * 事件中心策略名称：选择之前创建的访问策略 (`socialtwitter-access`)。
+    * **输入别名**：使用名称 `TwitterStream`。 如果使用其他名称，请将其记录下来，因为稍后需要该名称。
+    * **源类型**：选择“数据流”。
+    * **源**：选择“事件中心”。
+    * **导入选项**：选择“从当前订阅使用事件中心”。 
+    * **服务总线命名空间**：选择之前创建的事件中心命名空间 (`<yourname>-socialtwitter-eh-ns`)。
+    * **事件中心**：选择之前创建的事件中心 (`socialtwitter-eh`)。
+    * **事件中心策略名称**：选择之前创建的访问策略 (`socialtwitter-access`)。
 
     ![为流分析作业创建新输入](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
 
@@ -297,12 +297,12 @@ ms.locfileid: "50248721"
 
 2. 在“输出”边栏选项卡中，单击“+&nbsp;添加”，然后在边栏选项卡中填写以下值：
 
-    * “输出别名”：使用名称 `TwitterStream-Output`。 
+    * **输出别名**：使用名称 `TwitterStream-Output`。 
     * **接收器**：选择“Blob 存储”。
-    * “导入选项”：选择“从当前订阅使用 blob 存储”。
+    * **导入选项**：选择“从当前订阅使用 blob 存储”。
     * **存储帐户**： 选择“创建新存储帐户”。
     * “存储帐户”（第二个框）。 输入 `YOURNAMEsa`，其中 `YOURNAME` 是你的姓名或另一唯一字符串。 该名称只能使用小写字母和数字，并且在 Azure 中必须唯一。 
-    * “容器”。 输入 `socialtwitter`。
+    * “容器”。 输入 `socialtwitter` 。
     存储帐户名称和容器名称结合使用，以便为 Blob 存储提供 URI，如下所示： 
 
     `http://YOURNAMEsa.blob.core.windows.net/socialtwitter/...`

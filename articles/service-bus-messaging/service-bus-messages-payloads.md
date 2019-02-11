@@ -3,22 +3,22 @@ title: Azure 服务总线消息、有效负载和序列化 | Microsoft Docs
 description: 概述了服务总线消息有效负载
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
-ms.author: spelluru
-ms.openlocfilehash: 00c7605b09c32328a8324b13b8151a258a39dc22
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.author: aschhab
+ms.openlocfilehash: 3158f0255810c66605d28856133112181c2916db
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857595"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733920"
 ---
 # <a name="messages-payloads-and-serialization"></a>消息、有效负载和序列化
 
@@ -28,11 +28,11 @@ Microsoft Azure 服务总线负责处理消息。 消息传递键值对属性形
  
 服务总线消息包括服务总线从未在服务端以任何形式处理过的二进制有效负载部分，以及两组属性。 中转站属性由系统预定义。 这些预定义属性要么控制中转站内的消息级功能，要么映射到常见的标准化元数据项。 用户属性是一组可由应用程序定义和设置的键值对。
  
-下表列出了预定义的中转站属性。 这些属性名可与所有正式版客户端 API 配合使用，同时还位于 HTTP 协议映射的 [BrokerProperties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Properties_) JSON 对象中。
+下表列出了预定义的中转站属性。 这些属性名可与所有正式版客户端 API 配合使用，同时还位于 HTTP 协议映射的 [BrokerProperties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) JSON 对象中。
  
 括号内列出的是在 AMQP 协议一级使用的等效名称。 
 
-| 属性名称                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| 属性名称                         | 说明                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |  [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) (content-type)           | 视需要描述消息的有效负载，采用符合 RFC2045 第 5 部分格式的描述符；例如，`application/json`。                                                                                                                                                                                                                                                                                             |
 |  [CorrelationId](/dotnet/api/microsoft.azure.servicebus.message.correlationid#Microsoft_Azure_ServiceBus_Message_CorrelationId) (correlation-id)       | 使应用程序可出于关联目的指定消息的上下文。例如，反映正在答复的消息的 MessageId。                                                                                                                                                                                                                                                                  |
@@ -66,7 +66,7 @@ Microsoft Azure 服务总线负责处理消息。 消息传递键值对属性形
 
 - **简单请求/答复**：发布者向队列发送消息，并希望收到消息使用者的答复。 为了接收答复，发布者拥有答复预期传递到的队列。 此队列的地址通过出站消息的 ReplyTo 属性表示。 如果使用者响应，它会将已处理消息的 MessageId 复制到答复消息的 CorrelationId 属性，并将消息传递到 ReplyTo 属性指明的目标。 一个消息可以有多个答复，具体视应用程序上下文而定。
 - **多播请求/答复**：上一种模式的变体。在此模式中，发布者将消息发送到主题，多个订阅者都有资格使用消息。 每个订阅者都可能会以先前描述的方式响应。 此模式用于发现或滚动呼叫方案，回应者通常通过用户属性或在有效负载内进行自我识别。 如果 ReplyTo 指向主题，可以向受众分发这样的一组发现响应。
-- **多路复用**：借助此会话功能，可以通过一个队列或订阅对相关消息流进行多路复用，以便相关消息的所有会话/组（与 SessionId 值匹配）可以路由到特定接收程序，同时接收程序能够保持会话处于锁定状态。 若要详细了解会话，请单击[此处](message-sessions.md)。
+- **多路复用**：借助此会话功能，可以通过一个队列或订阅对相关消息流进行多路复用，以便相关消息的所有会话/组（与 **SessionId** 值匹配）可以路由到特定接收程序，同时接收程序能够使会话保持锁定状态。 若要详细了解会话，请单击[此处](message-sessions.md)。
 - **多路复用请求/答复**：借助此会话功能，可以启用多路复用答复，让多个发布者能够共享答复队列。 通过设置 ReplyToSessionId，发布者可以指示使用者将此值复制到答复消息的 SessionId 属性。 发布队列或主题并不需要是会话感知。 在消息发送的同时，发布者可以专门等待具有给定 SessionId 的会话，以便有条件地接受会话接收程序，在队列上实现具体化。 
 
 可以使用自动转发链和主题订阅规则，实现服务总线命名空间内路由。 跨命名空间路由可以[使用 Azure LogicApps](https://azure.microsoft.com/services/logic-apps/) 实现。 如上面的列表所示，To 属性已保留，以供将来使用，最后可能会被已启用特别功能的中转站解析。 要实现路由的应用程序在这样做时，应以用户属性（而不是 To 属性）为依据；不过，现在这样做也不会导致兼容性问题。

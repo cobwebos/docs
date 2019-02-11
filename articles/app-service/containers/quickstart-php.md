@@ -1,5 +1,5 @@
 ---
-title: 创建 PHP Web 应用并将其部署到 Linux 应用服务 | Microsoft Docs
+title: 在 Linux 上创建 PHP 应用 - Azure 应用服务 | Microsoft Docs
 description: 数分钟内在 Linux 应用服务中部署第一个 PHP Hello World。
 services: app-service\web
 documentationcenter: ''
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: 5fdf277eb8f99f2d52600140601b413b51bcdfd8
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.custom: seodec18
+ms.openlocfilehash: af413528c279c5fcab472347d247b17dd5061167
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885899"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628402"
 ---
-# <a name="create-a-php-web-app-in-app-service-on-linux"></a>在 Linux 应用服务中创建 PHP Web 应用
+# <a name="create-a-php-app-in-app-service-on-linux"></a>在 Linux 上的应用服务中创建 PHP 应用
 
 > [!NOTE]
-> 本文将应用部署到基于 Linux 的应用服务。 若要部署到基于 _Windows_ 的应用服务，请参阅[在 Azure 中创建 PHP Web 应用](../app-service-web-get-started-php.md)。
+> 本文将应用部署到基于 Linux 的应用服务。 若要部署到 _Windows_ 上的应用服务，请参阅[在 Azure 中创建 PHP 应用](../app-service-web-get-started-php.md)。
 >
 
-[Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门教程演示如何将 PHP 应用部署到 Linux 上的 Azure 应用服务。 在 Cloud Shell 中使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建包含内置映像的 Web 应用，并使用 Git 将 PHP 代码部署到 Web 应用。
+[Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门教程演示如何将 PHP 应用部署到 Linux 上的 Azure 应用服务。 在 Cloud Shell 中使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建包含内置映像的应用，并使用 Git 将 PHP 代码部署到应用服务应用。
 
 ![在 Azure 中运行应用的示例](media/quickstart-php/hello-world-in-browser.png)
 
@@ -38,7 +38,7 @@ ms.locfileid: "42885899"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本快速入门教程：
+完成本快速入门教程需要：
 
 * <a href="https://git-scm.com/" target="_blank">安装 Git</a>
 * <a href="https://php.net" target="_blank">安装 PHP</a>
@@ -80,15 +80,15 @@ php -S localhost:8080
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-linux-no-h.md)] 
 
-浏览到该站点查看使用内置映像新建的 Web 应用。 将 _&lt;应用名称>_ 替换为 Web 应用名称。
+浏览到该站点查看使用内置映像新建的应用。 将 _&lt;app name>_ 替换为你的应用名称。
 
 ```bash
 http://<app_name>.azurewebsites.net
 ```
 
-新 Web 应用应该如下所示：
+新应用应该如下所示：
 
-![空 Web 应用页面](media/quickstart-php/app-service-web-service-created.png)
+![空应用页](media/quickstart-php/app-service-web-service-created.png)
 
 [!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
@@ -125,11 +125,11 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 http://<app_name>.azurewebsites.net
 ```
 
-PHP 示例代码在包含内置映像的 Web 应用中运行。
+PHP 示例代码在包含内置映像的 Linux 上的应用服务中运行。
 
 ![在 Azure 中运行应用的示例](media/quickstart-php/hello-world-in-browser.png)
 
-**祝贺你！** 现已将第一个 PHP 应用部署到 Linux 应用服务。
+祝贺你！ 现已将第一个 PHP 应用部署到 Linux 应用服务。
 
 ## <a name="update-locally-and-redeploy-the-code"></a>在本地更新并重新部署代码
 
@@ -150,19 +150,19 @@ git push azure master
 
 ![已更新的在 Azure 中运行应用的示例](media/quickstart-php/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>管理新 Azure Web 应用
+## <a name="manage-your-new-azure-app"></a>管理新的 Azure 应用
 
-转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理创建的 Web 应用。
+转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理已创建的应用。
 
-在左侧菜单中单击“应用服务”，然后单击 Azure Web 应用的名称。
+在左侧菜单中单击“应用程序服务”，然后单击 Azure 应用的名称。
 
-![在门户中导航到 Azure Web 应用](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
+![在门户中导航到 Azure 应用](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
 
-将看到 Web 应用的概述页。 在此处可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。
+这里我们可以看到应用的“概述”页。 并可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。
 
 ![Azure 门户中的应用服务页](media/quickstart-php/php-docs-hello-world-app-service-detail.png)
 
-左侧菜单提供用于配置应用的不同页面。 
+左侧菜单提供了用于配置应用的不同页面。 
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 

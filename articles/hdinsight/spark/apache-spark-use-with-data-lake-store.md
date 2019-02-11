@@ -1,6 +1,6 @@
 ---
-title: 使用 Apache Spark 分析 Azure Data Lake Store 中的数据
-description: 运行 Spark 作业分析 Azure Data Lake Store 中存储的数据
+title: 使用 Apache Spark 分析 Azure Data Lake Storage 中的数据
+description: 运行 Spark 作业分析 Azure Data Lake Storage 中存储的数据
 services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,68 +9,63 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 876a564c3cf5ee4b19d7f2530ecff1ed12bebe63
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 29fef9177e40bd89dd0f179b028d2f044af8addb
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581811"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913081"
 ---
-# <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-store"></a>使用 HDInsight Spark 群集分析 Data Lake Store 中的数据
+# <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage"></a>使用 HDInsight Spark 群集分析 Data Lake Storage 中的数据
 
-本教程使用适用于 HDInsight Spark 群集的 [Jupyter Notebook](https://jupyter.org/) 运行作业，以便从 Data Lake Store 帐户中读取数据。
+本教程使用适用于 HDInsight Spark 群集的 [Jupyter Notebook](https://jupyter.org/) 运行作业，以便从 Data Lake Storage 帐户中读取数据。
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure Data Lake Store 帐户。 遵照[通过 Azure 门户使用 Azure Data Lake Store](../../data-lake-store/data-lake-store-get-started-portal.md) 中的说明。
+* Azure Data Lake Storage 帐户。 遵循[通过 Azure 门户开始使用 Azure Data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md) 中的说明。
 
-* 包含 Data Lake Store（作为存储）的 Azure HDInsight Spark 群集。 按照[快速入门：在 HDInsight 中设置群集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)中的说明进行操作。
+* 包含 Data Lake Storage（作为存储）的 Azure HDInsight Spark 群集。 遵循[快速入门：在 HDInsight 中设置群集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
 
     
 ## <a name="prepare-the-data"></a>准备数据
 
-> [!NOTE]
-> 如果已创建将 Data Lake Store 作为默认存储的 HDInsight 群集，则无需执行此步骤。 群集创建过程在创建群集时指定的 Data Lake Store 帐户中添加一些示例数据。 跳到[使用具有 Data Lake Store 的 HDInsight Spark 群集](#use-an-hdinsight-spark-cluster-with-data-lake-store)一节。
->
->
+> [!NOTE]  
+> 如果已创建将 Data Lake Storage 作为默认存储的 HDInsight 群集，则无需执行此步骤。 群集创建过程在创建群集时指定的 Data Lake Storage 帐户中添加一些示例数据。 跳到[使用具有 Data Lake Storage 的 HDInsight Spark 群集](#use-an-hdinsight-spark-cluster-with-data-lake-store)一节。
 
-如果创建了将 Data Lake Store 作为附加存储并将 Azure 存储 Blob 作为默认存储的 HDInsight 群集，则应先将一些示例数据复制到 Data Lake Store 帐户。 可以使用与 HDInsight 群集关联的 Azure 存储 Blob 中的示例数据。 为此，可使用 [ADLCopy 工具](https://aka.ms/downloadadlcopy)。 从此链接下载并安装该工具。
+如果创建了将 Data Lake Storage 作为附加存储并将 Azure 存储 Blob 作为默认存储的 HDInsight 群集，则应先将一些示例数据复制到 Data Lake Store 帐户。 可以使用与 HDInsight 群集关联的 Azure 存储 Blob 中的示例数据。 为此，可使用 [ADLCopy 工具](https://aka.ms/downloadadlcopy)。 从此链接下载并安装该工具。
 
 1. 打开命令提示符，并导航到 AdlCopy 的安装目录（通常是 `%HOMEPATH%\Documents\adlcopy`）。
 
-2. 运行以下命令从源容器复制特定 blob 到 Data Lake Store：
+2. 运行以下命令，将特定的 Blob 从源容器复制到 Data Lake Storage：
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
 
-    将 **/HdiSamples/HdiSamples/SensorSampleData/hvac/** 中的 **HVAC.csv** 示例数据文件复制到 Azure Data Lake Store 帐户。 代码段应如下所示：
+    将 /HdiSamples/HdiSamples/SensorSampleData/hvac/ 中的 HVAC.csv 示例数据文件复制到 Azure Data Lake Storage 帐户。 代码段应如下所示：
 
         AdlCopy /Source https://mydatastore.blob.core.windows.net/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv /dest swebhdfs://mydatalakestore.azuredatalakestore.net/hvac/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
-   > [!WARNING]
+   > [!WARNING]  
    > 请确保文件和路径名称采用合适的大小写。
-   >
-   >
-3. 系统会提示输入 Azure 订阅（其下提供 Data Lake Store 帐户）的凭据。 会显示类似于以下代码片段的输出：
+
+3. 系统会提示输入 Azure 订阅（其下提供 Data Lake Storage 帐户）的凭据。 会显示类似于以下代码片段的输出：
 
         Initializing Copy.
         Copy Started.
         100% data copied.
         Copy Completed. 1 file copied.
 
-    会将数据文件 (**HVAC.csv**) 复制到 Data Lake Store 帐户中的 **/hvac** 文件夹下。
+    会将数据文件 (HVAC.csv) 复制到 Data Lake Storage 帐户中的 /hvac 文件夹下。
 
-## <a name="use-an-hdinsight-spark-cluster-with-data-lake-store"></a>使用包含 Data Lake Store 的 HDInsight Spark 群集
+## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage"></a>使用包含 Data Lake Store 的 HDInsight Spark 群集
 
 1. 在 [Azure 门户](https://portal.azure.com/)上的启动板中，单击 Apache Spark 群集的磁贴（如果已将它固定到启动板）。 也可以单击“全部浏览” > “HDInsight 群集”导航到群集。
 
 2. 在 Spark 群集边栏选项卡中单击“快速链接”，并在“群集仪表板”边栏选项卡中单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
 
-   > [!NOTE]
+   > [!NOTE]  
    > 也可以在浏览器中打开以下 URL 来访问群集的 Jupyter 笔记本。 将 **CLUSTERNAME** 替换为群集的名称：
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-   >
-   >
 
 3. 创建新的笔记本。 单击“新建”，并单击“PySpark”。
 
@@ -84,9 +79,9 @@ ms.locfileid: "52581811"
 
      ![Jupyter 笔记本作业的状态](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Jupyter 笔记本作业的状态")
 
-5. 使用已复制到 Data Lake Store 帐户的 **HVAC.csv** 文件将示例数据上传到临时表。 可使用以下 URL 模式访问 Data Lake Store 帐户中的数据。
+5. 使用已复制到 Data Lake Storage 帐户的 HVAC.csv 文件将示例数据上传到临时表。 可使用以下 URL 模式访问 Data Lake Storage 帐户中的数据。
 
-    * 如果将 Data Lake Store 作为默认存储，则 HVAC.csv 位于类似于以下 URL 的路径中：
+    * 如果将 Data Lake Storage 作为默认存储，则 HVAC.csv 位于类似于以下 URL 的路径中：
 
             adl://<data_lake_store_name>.azuredatalakestore.net/<cluster_root>/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
 
@@ -94,13 +89,13 @@ ms.locfileid: "52581811"
 
             adl:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
 
-    * 如果将 Data Lake Store 作为附加存储，则 HVAC.csv 位于复制它的位置，如：
+    * 如果将 Data Lake Storage 作为附加存储，则 HVAC.csv 位于复制它的位置，如：
 
             adl://<data_lake_store_name>.azuredatalakestore.net/<path_to_file>
 
-     在空白单元格中，粘贴以下代码示例，将 **MYDATALAKESTORE** 替换为自己的 Data Lake Store 帐户名称，然后按 **Shift + Enter**。 此代码示例会将数据注册到名为 **hvac**的临时表中。
+     在空白单元格中，粘贴以下代码示例，将 MYDATALAKESTORE 替换为自己的 Data Lake Storage 帐户名称，然后按 Shift + Enter。 此代码示例会将数据注册到名为 **hvac**的临时表中。
 
-            # Load the data. The path below assumes Data Lake Store is default storage for the Spark cluster
+            # Load the data. The path below assumes Data Lake Storage is default storage for the Spark cluster
             hvacText = sc.textFile("adl://MYDATALAKESTORE.azuredatalakestore.net/cluster/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
             # Create the schema
@@ -136,3 +131,4 @@ ms.locfileid: "52581811"
 * [创建要在 Apache Spark 群集上运行的独立 Scala 应用程序](apache-spark-create-standalone-application.md)
 * [使用 Azure Toolkit for IntelliJ 中的 HDInsight 工具为 HDInsight Spark Linux 群集创建 Apache Spark 应用程序](apache-spark-intellij-tool-plugin.md)
 * [使用 Azure Toolkit for Eclipse 中的 HDInsight 工具为 HDInsight Spark Linux 群集创建 Apache Spark 应用程序](apache-spark-eclipse-tool-plugin.md)
+* [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

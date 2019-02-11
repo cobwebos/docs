@@ -3,29 +3,29 @@ title: 在 Azure Active Directory B2C 的自定义策略中定义声明转换技
 description: 在 Azure Active Directory B2C 的自定义策略中定义声明转换技术配置文件。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: fd1e2aa5162ce9263d521edf3ae11e0508353b46
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.subservice: B2C
+ms.openlocfilehash: a204e8cdc20a6897c40d4d5f68217a2922371737
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44382443"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55148602"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义声明转换技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
- 使用声明转换技术配置文件，可以通过调用输出声明转换针对一组输出声明来操作声明值、验证声明或设置默认值。
+使用声明转换技术配置文件，可以通过调用输出声明转换针对一组输出声明来操作声明值、验证声明或设置默认值。
 
 ## <a name="protocol"></a>协议
 
-**Protocol** 元素的 **Name** 属性必须设置为 `Proprietary`。 **handler** 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
+“Protocol”元素的“Name”属性必须设置为 `Proprietary`。 **handler** 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
 
 以下示例演示了一个声明转换技术配置文件：
 
@@ -33,7 +33,7 @@ ms.locfileid: "44382443"
 <TechnicalProfile Id="Facebook-OAUTH-UnLink">
     <DisplayName>Unlink Facebook</DisplayName>
     <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-  ...    
+  ...
 ```
 
 ## <a name="output-claims"></a>输出声明
@@ -53,16 +53,16 @@ ms.locfileid: "44382443"
 
 ```XML
 <ClaimsTransformations>
-  <ClaimsTransformation Id="RemoveAlternativeSecurityIdByIdentityProvider" 
+  <ClaimsTransformation Id="RemoveAlternativeSecurityIdByIdentityProvider"
 TransformationMethod="RemoveAlternativeSecurityIdByIdentityProvider">
     <InputClaims>
       <InputClaim ClaimTypeReferenceId="IdentityProvider2"
 TransformationClaimType="identityProvider" />
-      <InputClaim ClaimTypeReferenceId="AlternativeSecurityIds" 
+      <InputClaim ClaimTypeReferenceId="AlternativeSecurityIds"
 TransformationClaimType="collection" />
     </InputClaims>
     <OutputClaims>
-      <OutputClaim ClaimTypeReferenceId="AlternativeSecurityIds" 
+      <OutputClaim ClaimTypeReferenceId="AlternativeSecurityIds"
 TransformationClaimType="collection" />
     </OutputClaims>
   </ClaimsTransformation>
@@ -81,11 +81,11 @@ TransformationClaimType="collection" />
 </TechnicalProfile>
 ```
 
-使用声明转换技术配置文件，可以在任何用户旅程的业务流程步骤中执行声明转换。 在以下示例中，业务流程步骤调用取消链接技术配置文件中的一个，例如 **UnLink-Facebook-OAUTH**。 在从集合中删除 Facebook 标识时，此技术配置文件调用声明转换技术配置文件 **RemoveAlternativeSecurityIdByIdentityProvider**，后者生成一个新的 **AlternativeSecurityIds2** 声明，该声明包含用户社交标识的列表。
+使用声明转换技术配置文件，可以在任何用户旅程的业务流程步骤中执行声明转换。 在以下示例中，业务流程步骤调用取消链接技术配置文件中的一个，例如 **UnLink-Facebook-OAUTH**。 在从集合中删除 Facebook 标识时，此技术配置文件调用声明转换技术配置文件 RemoveAlternativeSecurityIdByIdentityProvider，后者生成一个新的 AlternativeSecurityIds2 声明，该声明包含用户社交标识的列表。
 
 ```XML
 <UserJourney Id="AccountUnLink">
-  <OrchestrationSteps>    
+  <OrchestrationSteps>
     ...
     <OrchestrationStep Order="8" Type="ClaimsExchange">
       <ClaimsExchanges>
@@ -98,7 +98,6 @@ TransformationClaimType="collection" />
   </OrchestrationSteps>
 </UserJourney>
 ```
-
 
 ## <a name="use-a-validation-technical-profile"></a>使用验证技术配置文件
 
@@ -122,19 +121,19 @@ TransformationClaimType="collection" />
 
 ```XML
 <TechnicalProfile Id="Validate-Email">
-    <DisplayName>Unlink Facebook</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <DisplayName>Unlink Facebook</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="emailRepeat" />
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="email" />
-  </OutputClaims>          
+  </OutputClaims>
   <OutputClaimsTransformations>
-        <OutputClaimsTransformation ReferenceId="AssertEmailAreEqual" />
-    </OutputClaimsTransformations>
-    <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
-</TechnicalProfile> 
+    <OutputClaimsTransformation ReferenceId="AssertEmailAreEqual" />
+  </OutputClaimsTransformations>
+  <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+</TechnicalProfile>
 ```
 
 自断言技术配置文件可以调用验证技术配置文件，并显示 **UserMessageIfClaimsTransformationStringsAreNotEqual** 元数据中指定的错误消息。
@@ -155,5 +154,5 @@ TransformationClaimType="collection" />
   <ValidationTechnicalProfiles>
     <ValidationTechnicalProfile ReferenceId="Validate-Email" />
   </ValidationTechnicalProfiles>
-</TechnicalProfile>  
+</TechnicalProfile>
 ```

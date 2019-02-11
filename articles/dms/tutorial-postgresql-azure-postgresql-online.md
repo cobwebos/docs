@@ -5,18 +5,18 @@ services: dms
 author: HJToland3
 ms.author: scphang
 manager: craigg
-ms.reviewer: ''
+ms.reviewer: douglasl
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 09/26/2018
-ms.openlocfilehash: 004db061e721f0169491e98bd8e7cdd86e08bb01
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.date: 12/19/2018
+ms.openlocfilehash: eb18fd521ca885b37c60c4f3a53e2bce1508fda2
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963580"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382813"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>教程：使用 DMS 以联机方式将 PostgreSQL 迁移到 Azure Database for PostgreSQL
 可以使用 Azure 数据库迁移服务在尽量缩短停机时间的情况下，将数据库从本地 PostgreSQL 实例迁移到 [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/)。 换句话说，可以在尽量减少应用程序故障时间的情况下进行迁移。 本教程介绍如何在 Azure 数据库迁移服务中使用联机迁移活动将 **DVD Rental** 示例数据库从 PostgreSQL 9.6 的本地实例迁移到 Azure Database for PostgreSQL。
@@ -29,13 +29,16 @@ ms.locfileid: "50963580"
 > * 运行迁移。
 > * 监视迁移。
 
+> [!NOTE]
+> 使用 Azure 数据库迁移服务执行联机迁移需要基于“高级”定价层创建实例。
+
 > [!IMPORTANT]
 > 为获得最佳迁移体验，Microsoft 建议在目标数据库所在的 Azure 区域中创建 Azure 数据库迁移服务的实例。 跨区域或地理位置移动数据可能会减慢迁移过程并引入错误。
 
 ## <a name="prerequisites"></a>先决条件
 要完成本教程，需要：
 
-- 下载并安装 [PostgreSQL 社区版](https://www.postgresql.org/download/) 9.5、9.6 或 10.3。 源 PostgreSQL 服务器版本必须是 9.5.11、9.6.7、10.3 或以上。 有关详细信息，请参阅[支持的 PostgreSQL 数据库版本](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)一文。
+- 下载并安装 [PostgreSQL 社区版](https://www.postgresql.org/download/) 9.5、9.6 或 10。 源 PostgreSQL 服务器版本必须是 9.5.11、9.6.7、10 或更高版本。 有关详细信息，请参阅[支持的 PostgreSQL 数据库版本](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)一文。
 
     另外，本地 PostgreSQL 版本必须与 Azure Database for PostgreSQL 版本相符。 例如，PostgreSQL 9.5.11.5 只能迁移到 Azure Database for PostgreSQL 9.5.11，不能迁移到 9.6.7 版本。
 
@@ -49,7 +52,7 @@ ms.locfileid: "50963580"
 - 可以通过两种方法来调用 CLI：
     - 在 Azure 门户右上角选择“Cloud Shell”按钮：
  
-       ![Azure 门户中的“Cloud Shell”按钮](media\tutorial-postgresql-to-azure-postgresql-online\cloud-shell-button.png)
+       ![Azure 门户中的“Cloud Shell”按钮](media/tutorial-postgresql-to-azure-postgresql-online/cloud-shell-button.png)
  
     - 在本地安装并运行 CLI。 CLI 2.0 是用于管理 Azure 资源的命令行工具。
      

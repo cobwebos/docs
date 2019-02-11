@@ -6,16 +6,17 @@ services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: e44eb52323a93bddd629f3591cdbfbf021768629
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 79ca49ddeb6f9b7f9f3f74c41d20f57d49b5ab86
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344077"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225785"
 ---
 # <a name="quickstart-summary"></a>快速入门：摘要
 

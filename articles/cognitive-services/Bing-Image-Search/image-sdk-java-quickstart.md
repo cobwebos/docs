@@ -1,23 +1,24 @@
 ---
-title: 快速入门：通过适用于 Java 的必应图像搜索 SDK 搜索图像
+title: 快速入门：搜索图像 - 适用于 Java 的必应图像搜索 SDK
 description: 在本快速入门中，你将使用必应图像搜索 SDK（它是 API 的包装程序并包含相同的功能）创建你的第一个图像搜索。 这个简单的 Java 应用程序会发送图像搜索查询、分析 JSON 响应，并显示所返回的第一个图像的 URL。
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
-ms.openlocfilehash: 81bd7356579b3e4f7b82497bb2163c85374fd0d9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: a7603895d623bba9d5023379643b5ea9752344a7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316321"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195576"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-java"></a>快速入门，使用必应图像搜索 SDK 和 Java 搜索图像
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-java"></a>快速入门：通过适用于 Java 的必应图像搜索 SDK 搜索图像
 
 在本快速入门中，你将使用必应图像搜索 SDK（它是 API 的包装程序并包含相同的功能）创建你的第一个图像搜索。 这个简单的 Java 应用程序会发送图像搜索查询、分析 JSON 响应，并显示所返回的第一个图像的 URL。
 

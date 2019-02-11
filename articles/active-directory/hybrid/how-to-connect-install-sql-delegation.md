@@ -3,7 +3,7 @@ title: 使用 SQL 委派的管理员权限安装 Azure AD Connect | Microsoft Do
 description: 本主题介绍如何通过 Azure AD Connect 更新使用只有 SQL dbo 权限的帐户进行安装。
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.reviewer: jparsons
 ms.assetid: ''
@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/07/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: b951f541487d70bccb8a709f79a3674ef22eba3a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 89d5c9c4e553ac82b604c1d3a20eb67b4055e6c4
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46309546"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492882"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>使用 SQL 委派的管理员权限安装 Azure AD Connect
 在最新的 Azure AD Connect 版本之前，不支持在部署需要 SQL 的配置时使用管理委派。  若要安装 Azure AD Connect，用户需具有 SQL Server 的服务器管理员 (SA) 权限。
@@ -30,7 +30,7 @@ ms.locfileid: "46309546"
 ## <a name="before-you-begin"></a>开始之前
 在使用此功能之前需认识到，存在多个移动部件，每一个可能涉及到组织中的不同管理员。  下表汇总了各个角色及其在使用此功能部署 Azure AD Connect 的过程中的相应任务。
 
-|角色|Description|
+|角色|说明|
 |-----|-----|
 |域或林 AD 管理员|创建域级服务帐户，供 Azure AD Connect 用于运行同步服务。  有关服务帐户的详细信息，请参阅[帐户和权限](reference-connect-accounts-permissions.md)。
 |SQL 管理员|创建 ADSync 数据库，授予登录 + dbo 访问权限给 Azure AD Connect 管理员以及域/林管理员创建的服务帐户。|

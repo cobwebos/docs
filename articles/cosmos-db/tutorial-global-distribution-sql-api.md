@@ -1,22 +1,18 @@
 ---
-title: SQL API 的 Azure Cosmos DB 全局分发教程 | Microsoft Docs
+title: 适用于 SQL API 的 Azure Cosmos DB 全局分发教程
 description: 了解如何使用 SQL API 设置 Azure Cosmos DB 全局分发。
-services: cosmos-db
-keywords: 全局分发
-author: rafats
-manager: kfile
+author: rimman
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/10/2017
-ms.author: rafats
-ms.custom: mvc
-ms.openlocfilehash: 624c5e78287fac57b06f6b5112d2523e31256ae0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.author: rimman
+ms.reviewer: sngun
+ms.openlocfilehash: 19e0dd8a60155272f2e338c760db409d20a9f755
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049762"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157235"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>使用 SQL API 设置 Azure Cosmos DB 全局分发
 
@@ -96,7 +92,7 @@ await docClient.OpenAsync().ConfigureAwait(false);
 
 下面是 NodeJS/Javascript 的代码示例。 Python 和 Java 将遵循相同的模式。
 
-```java
+```JavaScript
 // Creating a ConnectionPolicy object
 var connectionPolicy = new DocumentBase.ConnectionPolicy();
 

@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: bd766dfb712921a57dd23c4fdecc25dd623eb833
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 12/18/2018
+ms.openlocfilehash: f7c482a0308d3c2b2583d99cf4079040065b80c0
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393258"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561362"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>使用提取的数据运行跨租户分析 - 单租户应用
  

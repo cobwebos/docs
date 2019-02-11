@@ -1,21 +1,22 @@
 ---
-title: 在 LUIS 应用中添加模式模板而不是更多话语
-titleSuffix: Azure Cognitive Services
+title: 模式添加准确性
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 了解如何在语言理解 (LUIS) 应用程序中添加模式模板，提高预测准确性。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6c15fc256a330c7de154c551c1ef4c78913f470a
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 46b7e7757c2bf1b01bebeff059f0028b9e9d189c
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885880"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220750"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>如何添加模式以提高预测准确性
 在 LUIS 应用接收到终结点表述后，请使用模式的[概念](luis-concept-patterns.md)提高表述（按字词顺序和字词选择呈现模式）的预测准确性。 模式使用[实体](luis-concept-entity-types.md)及其角色并通过特定模式语法提取数据。 
@@ -95,7 +96,7 @@ ms.locfileid: "48885880"
 
 2. “删除模式”确认对话框随即显示。 选择“确定”完成删除。
 
-    ![删除多个模式的屏幕截图](./media/luis-how-to-model-intent-pattern/delete-many-patterns-confirmation.png)
+    ![删除多个模式确认框的屏幕截图](./media/luis-how-to-model-intent-pattern/delete-many-patterns-confirmation.png)
 
 ## <a name="filter-pattern-list-by-entity"></a>按实体筛选模式列表
 
@@ -116,7 +117,7 @@ ms.locfileid: "48885880"
 ## <a name="remove-entity-or-intent-filter"></a>删除实体或意向筛选器
 筛选模式列表后，实体或意向名称将在工具栏下方显示。 若要删除筛选器，请选择名称。
 
-![按实体筛选出的模式的屏幕截图](./media/luis-how-to-model-intent-pattern/filter-entities-2.png)
+![从筛选器中删除实体的屏幕截图](./media/luis-how-to-model-intent-pattern/filter-entities-2.png)
 
 筛选器将被删除，同时显示所有模式。 
 
@@ -125,7 +126,7 @@ ms.locfileid: "48885880"
 
 1. 在所选的话语行上，选择话语右侧的省略号 (...) 按钮，然后选择“添加为模式”。
 
-    [![](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "表述表的屏幕截图，其中突出显示了选项菜单中的“添加为模式”")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
+    [![选项菜单中突出显示添加模式的陈述表的屏幕截图](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "选项菜单中突出显示添加模式的陈述表的屏幕截图")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
 
 2. 根据[语法规则](luis-concept-patterns.md#pattern-syntax)修改模式。 如果所选表述已使用实体进行标记，则表示这些实体已在具有正确语法的模式中。
 

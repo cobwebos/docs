@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 01/08/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 38839379f584b40cdbefad3e4cbb3bc47881c9a7
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 8693c5e255020e30c2e8ed52a3199712089e4503
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094589"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119078"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
 对于以下情况，请将 Azure-SSIS 集成运行时 (IR) 加入 Azure 虚拟网络： 
@@ -73,6 +72,10 @@ ms.locfileid: "50094589"
 -   如果要使用 Azure Express Route 或配置用户定义路由 (UDR)，请参阅[使用 Azure ExpressRoute 或用户定义路由](#route)。 
 
 -   请确保虚拟网络的资源组可以创建和删除特定 Azure 网络资源。 请参阅[资源组需求](#resource-group)。 
+
+下面的图表显示了 Azure-SSIS IR 所需的连接：
+
+![Azure-SSIS IR](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir.png)
 
 ### <a name="perms"></a> 所需的权限
 
@@ -198,19 +201,21 @@ ms.locfileid: "50094589"
 
 1. 将 **MicrosoftAzureBatch** 加入虚拟网络的“经典虚拟机参与者”角色。 
 
-    a. 在左侧菜单中选择“访问控制(IAM)”，并在工具栏中选择“添加”。 
+    a. 在左侧菜单中选择“访问控制(IAM)”，并选择“角色分配”选项卡。 
 
     ![“访问控制”和“添加”按钮](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
 
-    b. 在“添加权限”页中，为“角色”选择“经典虚拟机参与者”。 在“选择”框中粘贴 **ddbf3205-c6bd-46ae-8127-60eb93363864**，然后从搜索结果列表中选择“Microsoft Azure Batch”。 
+    b. 选择“添加角色分配”。
 
-    ![“添加权限”页上的搜索结果](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
+    c. 在“添加角色分配”页中，为“角色”选择“经典虚拟机参与者”。 在“选择”框中粘贴 **ddbf3205-c6bd-46ae-8127-60eb93363864**，然后从搜索结果列表中选择“Microsoft Azure Batch”。 
 
-    c. 选择“保存”以保存设置并关闭页面。 
+    ![在“添加角色分配”页上搜索结果](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
+
+    d. 选择“保存”以保存设置并关闭页面。 
 
     ![保存访问设置](media/join-azure-ssis-integration-runtime-virtual-network/save-access-settings.png)
 
-    d. 确认参与者列表中出现了“Microsoft Azure Batch”。 
+    e. 确认参与者列表中出现了“Microsoft Azure Batch”。 
 
     ![确认 Azure Batch 访问权限](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-in-list.png)
 

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: e389f37448211afc35fb98572161be4fcaea7556
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 15d85d30f73a9880a6a68a62ab208bb0bdbf5402
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210714"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788032"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
 
@@ -33,8 +33,8 @@ ms.locfileid: "50210714"
 
 **服务器** | **要求** | **详细信息**
 --- | --- | ---
-Hyper-V（不使用 Virtual Machine Manager 运行） | Windows Server 2016 （包括服务器核心安装），最新更新的 Windows Server 2012 R2 | 在 Site Recovery 中配置 Hyper-V 站点时，不支持混合使用运行 Windows Server 2016 和 2012 R2 的主机。<br/><br/> 对于位于运行 Windows Server 2016 的主机上的 VM，不支持恢复到备用位置。
-Hyper-V（使用 Virtual Machine Manager 运行） | Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | 如果使用 Virtual Machine Manager，Windows Server 2016 主机应在 Virtual Machine Manager 2016 中托管。<br/><br/> 当前不支持混合使用 Hyper-V 主机（在 Windows Server 2016 和 2012 R2 上运行）的 Virtual Machine Manager 云。<br/><br/> 不支持包括现有 Virtual Machine Manager 2012 R2 服务器到 2016 的升级的环境。
+Hyper-V（不使用 Virtual Machine Manager 运行） | Windows Server 2016 （包括服务器核心安装），最新更新的 Windows Server 2012 R2 | 对于位于运行 Windows Server 2016 的主机上的 VM，不支持恢复到备用位置。<br/><br/> 如果已使用 Azure Site Recovery 配置 Windows Server 2012 R2 和/或 SCVMM 2012 R2 并计划升级 OS，请遵循指南[文档](upgrade-2012R2-to-2016.md)。 
+Hyper-V（使用 Virtual Machine Manager 运行） | Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | 如果使用 Virtual Machine Manager，Windows Server 2016 主机应在 Virtual Machine Manager 2016 中托管。<br/><br/>
 
 
 ## <a name="replicated-vms"></a>复制的 VM
@@ -171,6 +171,9 @@ VM 类型 | 第 1 代<br/><br/> 第 2 代 - Windows | OS 磁盘类型为“基�
 跨资源组移动保管库<br/><br/> 订阅内和跨订阅移动 | 否 | 否
 跨资源组移动存储、网络和 Azure VM<br/><br/> 订阅内和跨订阅移动 | 否 | 否
 
+> [!NOTE]
+> 将 Hyper-VM（使用/不使用 SCVMM 进行管理）从本地复制到 Azure 时，只能从一个特定环境（Hyper-V 站点或 SCVMM）复制到一个 AD 租户（如果适用）。
+
 
 ## <a name="provider-and-agent"></a>提供程序和代理
 
@@ -178,7 +181,7 @@ VM 类型 | 第 1 代<br/><br/> 第 2 代 - Windows | OS 磁盘类型为“基�
 
 **名称** | **说明** | **详细信息**
 --- | --- | --- | --- | ---
-Azure Site Recovery 提供程序 | 协调本地服务器与 Azure 之间的通信 <br/><br/> 使用 Virtual Machine Manager 的 Hyper-V：在 Virtual Machine Manager 服务器上安装<br/><br/> 不使用 Virtual Machine Manager 的 Hyper-V：在 Hyper-V 主机上安装| 最新版本：5.1.2700.1（可从 Azure 门户获取）<br/><br/> [最新功能和修复](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
+Azure Site Recovery 提供程序 | 协调本地服务器与 Azure 之间的通信 <br/><br/> 使用 Virtual Machine Manager 的 Hyper-V：安装在 Virtual Machine Manager 服务器上<br/><br/> 不使用 Virtual Machine Manager 的 Hyper-V：安装在 Hyper-V 主机上| 最新版本：5.1.2700.1（可从 Azure 门户获取）<br/><br/> [最新功能和修复](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 Microsoft Azure 恢复服务代理 | 协调 Hyper-V VM 与 Azure 之间的复制<br/><br/> 在本地 Hyper-V 服务器（使用或不使用 Virtual Machine Manager）上安装 | 可从门户获取最新代理
 
 

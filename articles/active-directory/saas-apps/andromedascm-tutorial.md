@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 7a142c86-ca0c-4915-b1d8-124c08c3e3d8
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 047e1ea6a474d95c57ffc2bdff5ad8a5c45e0d36
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 6d280a7e0e10b00e4d8d8f631d0d5987f2fbecb4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048559"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157867"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>教程：Azure Active Directory 与 Andromeda 集成
 
@@ -108,7 +108,7 @@ ms.locfileid: "39048559"
 
     ![Andromeda 域和 URL 单一登录信息](./media/andromedascm-tutorial/tutorial_andromedascm_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/SAMLConsumer.aspx`
 
@@ -139,7 +139,7 @@ ms.locfileid: "39048559"
     > [!NOTE]
     > 这些不是实际值。 这些值仅用于演示，请使用组织角色。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
+    a. 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录 Add](./media/andromedascm-tutorial/tutorial_attribute_04.png)
 
@@ -179,7 +179,7 @@ ms.locfileid: "39048559"
 
     ![Andromeda 配置](./media/andromedascm-tutorial/tutorial_andromedascm_config.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选中“使用 SAML 启用 SSO”。
+    a. 选中“使用 SAML 启用 SSO”。
 
     b. 在“Andromeda 信息”部分下，复制“SP 标识”值并将其粘贴到“Andromeda 域和 URL”部分的“标识符”文本框中。
 
@@ -200,7 +200,7 @@ ms.locfileid: "39048559"
     i. 单击“ **保存**”。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -226,7 +226,7 @@ ms.locfileid: "39048559"
 
     ![“用户”对话框](./media/andromedascm-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -281,7 +281,7 @@ ms.locfileid: "39048559"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

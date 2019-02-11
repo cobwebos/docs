@@ -8,14 +8,14 @@ ms.service: security
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: meladie
-ms.openlocfilehash: 32f37acd95494cbfceac5429442e0e655cf74e4d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 23ed7da53253eec39bebf34b4baf5efd2d7690e1
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405304"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994807"
 ---
-# <a name="azure-security-and-compliance-blueprint-analytics-for-pci-dss"></a>Azure 安全性和符合性蓝图：针对 PCI DSS 的分析
+# <a name="azure-security-and-compliance-blueprint-analytics-for-pci-dss"></a>Azure 安全性与合规性蓝图：适用于 PCI DSS 的分析
 
 ## <a name="overview"></a>概述
 
@@ -67,11 +67,11 @@ Azure SQL 数据库通常通过 SQL Server Management Studio (SSMS) 进行管理
 
 以下部分详细描述了部署和实施要素。
 
-**Azure 事件网格**：[Azure 事件网格](https://docs.microsoft.com/azure/event-grid/overview)让用户能够利用基于事件的体系结构轻松构建应用程序。 用户选择要订阅的 Azure 资源，并提供要向其发送事件的事件处理程序或 Webhook 终结点。 在创建事件订阅时，客户可以通过向 Webhook URL 中添加查询参数来保护 Webhook 终结点。 Azure 事件网格仅支持 HTTPS Webhook 终结点。 借助 Azure 事件网格，客户可以控制授予不同用户用来执行各种管理操作的访问级别，例如列出事件订阅、创建新的事件订阅及生成密钥。 事件网格会利用 Azure 基于角色的访问控制。
+**Azure 事件网格**：客户可以通过 [Azure 事件网格](https://docs.microsoft.com/azure/event-grid/overview)使用基于事件的体系结构轻松生成应用程序。 用户选择要订阅的 Azure 资源，并提供要向其发送事件的事件处理程序或 Webhook 终结点。 在创建事件订阅时，客户可以通过向 Webhook URL 中添加查询参数来保护 Webhook 终结点。 Azure 事件网格仅支持 HTTPS Webhook 终结点。 借助 Azure 事件网格，客户可以控制授予不同用户用来执行各种管理操作的访问级别，例如列出事件订阅、创建新的事件订阅及生成密钥。 事件网格会利用 Azure 基于角色的访问控制。
 
-**Azure Functions**：[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) 是一项无服务器的计算服务，用户可使用它按需运行代码，而无需显式预配或管理基础结构。 使用 Azure Functions 可以运行脚本或代码片段，以响应各种事件。
+**Azure Functions**：[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) 是一个无服务器计算服务，用户可以使用它按需运行代码，而无需显式预配或管理基础结构。 使用 Azure Functions 可以运行脚本或代码片段，以响应各种事件。
 
-**Azure 机器学习**：[Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/preview/)是一项数据科研技术，可让计算机根据现有的数据来预测将来的行为、结果和趋势。
+**Azure 机器学习服务**：[Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/service/)是一项数据科研技术，可以让计算机根据现有的数据来预测将来的行为、结果和趋势。
 
 **Azure 数据目录**：[数据目录](https://docs.microsoft.com/azure/data-catalog/data-catalog-what-is-data-catalog)可帮助管理数据的用户更轻松地发现和理解数据源。 常见的数据源可针对金融数据进行注册、标记和搜索。 数据将保留在现有位置，但其元数据的副本将连同数据源位置的引用一起添加到数据目录。 此元数据还会编制索引，方便通过搜索功能轻松发现每个数据源，并让发现数据源的用户理解该数据源。
 
@@ -79,7 +79,7 @@ Azure SQL 数据库通常通过 SQL Server Management Studio (SSMS) 进行管理
 
 体系结构定义了一个地址空间为 10.200.0.0/16 的专用虚拟网络。
 
-**网络安全组**：[网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)包含允许或拒绝虚拟网络中的流量的访问控制列表。 网络安全组可用于在子网或单个 VM 级别保护流量。 存在以下网络安全组：
+**网络安全组**：[网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)包含允许或拒绝虚拟网络中流量的访问控制列表。 网络安全组可用于在子网或单个 VM 级别保护流量。 存在以下网络安全组：
 
   - Active Directory 有 1 个网络安全组
   - 工作负荷有 1 个网络安全组
@@ -99,9 +99,9 @@ Azure SQL 数据库通常通过 SQL Server Management Studio (SSMS) 进行管理
 
 该体系结构通过加密、数据库审核和其他措施保护静态数据。
 
-**Azure 存储**：为了满足静态数据加密要求，所有 [Azure 存储](https://azure.microsoft.com/services/storage/)均使用[存储服务加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)。  这有助于保护持卡人数据，以支持 PCI DSS 3.2 定义的组织安全承诺和符合性要求。
+**Azure 存储**：为了满足静态数据加密要求，[Azure 存储](https://azure.microsoft.com/services/storage/)使用了[存储服务加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)。  这有助于保护持卡人数据，以支持 PCI DSS 3.2 定义的组织安全承诺和符合性要求。
 
-**Azure 磁盘加密**：[Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)利用 Windows 的 BitLocker 功能为数据磁盘提供卷加密。 此解决方案与 Azure Key Vault 集成，可帮助控制和管理磁盘加密密钥。
+**Azure 磁盘加密**：[Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)利用 Windows 的 BitLocker 功能，为数据磁盘提供卷加密。 此解决方案与 Azure Key Vault 集成，可帮助控制和管理磁盘加密密钥。
 
 **Azure SQL 数据库**：Azure SQL 数据库实例使用以下数据库安全措施：
 
@@ -127,7 +127,7 @@ Azure SQL 数据库通常通过 SQL Server Management Studio (SSMS) 进行管理
 
 ### <a name="security"></a>安全
 
-**机密管理**：解决方案使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 以下 Azure Key Vault 功能可帮助客户保护和访问此类数据：
+**机密管理**：此解决方案使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 以下 Azure Key Vault 功能可帮助客户保护和访问此类数据：
 
 - 根据需要配置高级访问权限策略。
 - 使用对密钥和机密所需的最低权限来定义 Key Vault 访问策略。
@@ -137,7 +137,7 @@ Azure SQL 数据库通常通过 SQL Server Management Studio (SSMS) 进行管理
 - 启用 Key Vault 的诊断日志时，保留期设置为至少 365 天。
 - 对密钥进行允许的加密操作时，仅限必需的操作。
 
-**Azure 安全中心**：借助 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)，客户可在工作负荷中集中应用和管理安全策略、限制威胁曝露，以及检测和应对攻击。 此外，Azure 安全中心会访问 Azure 服务的现有配置，以提供配置与服务建议来帮助改善安全状况和保护数据。
+**Azure 安全中心**：借助 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)，客户可在工作负载中集中应用和管理安全策略、限制威胁暴露，以及检测和应对攻击。 此外，Azure 安全中心会访问 Azure 服务的现有配置，以提供配置与服务建议来帮助改善安全状况和保护数据。
 
 Azure 安全中心使用各种检测功能，提醒客户针对其环境的潜在攻击。 这些警报包含有关触发警报的内容、目标资源以及攻击源的重要信息。 Azure 安全中心有一组[预定义的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)，这些警报在出现威胁或可疑活动时触发。 客户可以使用 Azure 安全中心的[自定义警报规则](https://docs.microsoft.com/azure/security-center/security-center-custom-alert)，根据从环境中收集到的数据定义新的安全警报。
 
@@ -146,7 +146,7 @@ Azure 安全中心提供区分优先级的安全警报和事件，让客户更�
 ### <a name="logging-and-auditing"></a>日志记录和审核
 
 Azure 服务广泛记录系统和用户活动以及系统运行状况：
-- **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
+- **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作见解。 活动日志可帮助确定操作的发起方、发生的时间和状态。
 - **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。 所有诊断日志都将写入集中式加密 Azure 存储帐户进行存档。 保留期是允许用户配置的，最长为 730 天，具体取决于组织的保留期要求。
 
 **Log Analytics**：这些日志将整合到 [Log Analytics](https://azure.microsoft.com/services/log-analytics/) 中进行处理、存储和在仪表板上报告。 收集后，数据在 Log Analytics 工作区内按数据类型整理到不同的表中，这样即可不考虑最初来源而集中分析所有数据。 此外，Azure 安全中心与 Log Analytics 集成，使客户能够使用 Log Analytics 查询来访问其安全事件数据，并将这些数据与其他服务中的数据合并。
@@ -155,7 +155,7 @@ Azure 服务广泛记录系统和用户活动以及系统运行状况：
 -   [Active Directory 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署服务器基础结构的优先建议列表。
 - [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并为客户提供特定于部署服务器基础结构的优先建议列表。
 - [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：代理运行状况解决方案报告已部署代理的数量及其地理分布，以及无响应的代理数量和提交操作数据的代理数量。
--   [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：Activity Log Analytics 解决方案可帮助分析客户所有 Azure 订阅的 Azure 活动日志。
+-   [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：Activity Log Analytics 解决方案可帮助分析客户的所有 Azure 订阅的 Azure 活动日志。
 
 **Azure 自动化**：[Azure 自动化](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)可以存储、运行和管理 Runbook。 在此解决方案中，Runbook 可帮助从 Azure SQL 数据库收集日志。 自动化[更改跟踪](https://docs.microsoft.com/azure/automation/automation-change-tracking)解决方案使得客户能够轻松识别环境中的更改。
 

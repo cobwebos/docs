@@ -4,22 +4,22 @@ description: 此常见问题回答了关于 Azure AD Connect Health 的问题。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: f1b851aa-54d7-4cb4-8f5c-60680e2ce866
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 83ff526eb0bd0c51822fc52c90b958d50022a834
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 744344c9427604f46c3f428d8dfcd279d8f2ffba
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497738"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486328"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
 本文提供有关 Azure Active Directory (Azure AD) Connect Health 的常见问题 (FAQ) 解答。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -62,7 +62,7 @@ ms.locfileid: "52497738"
 
 **问：Azure AD Connect Health 是否支持 Azure 德国云？**
 
-Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](how-to-connect-health-sync.md#object-level-synchronization-error-report)除外。 
+Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](how-to-connect-health-sync.md#object-level-synchronization-error-report)除外。
 
 | 角色 | 功能 | 德国云支持 |
 | ------ | --------------- | --- |
@@ -71,11 +71,11 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 | 适用于 ADFS 的 Connect Health | 监视/见解/警报/分析 | 否 |
 | 适用于 ADDS 的 Connect Health | 监视/见解/警报/分析 | 否 |
 
-若要确保适用于同步的 Connect Health 的代理连接，请相应地配置[安装要求](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints)。   
+若要确保适用于同步的 Connect Health 的代理连接，请相应地配置[安装要求](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints)。
 
 ## <a name="installation-questions"></a>安装问题
 
-**问：在个别服务器上安装 Azure AD Connect Health 代理有何影响？**
+**问：在单个服务器上安装 Azure AD Connect Health 代理有何影响？**
 
 安装 Microsoft Azure AD Connect Health 代理、AD FS、Web 应用程序代理服务器、Azure AD Connect（同步）服务器、域控制器对 CPU、内存消耗、网络带宽和存储的影响很小。
 
@@ -92,7 +92,7 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 * Azure AD Connect Health 代理的本地缓冲区存储：约 20 MB。
 * 对于 AD FS 服务器，建议预配一个 1,024 MB (1 GB) 大小的磁盘空间，方便 Azure AD Connect Health 代理的 AD FS 审核通道在所有审核数据被覆盖之前将其处理掉。
 
-**问：在 Azure AD Connect Health 代理安装期间，我必须重新启动我的服务器吗？**
+**问：在 Azure AD Connect Health 代理安装期间，是否必须重启我的服务器？**
 
 不是。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
 
@@ -148,13 +148,13 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 在成功的情况下，将解除 Azure AD Connect Health 警报。 Azure AD Connect Health 代理将定期检测并向服务报告成功的情况。 某些警报的解除取决于时间。 换句话说，如果在警报生成后的 72 小时内未观察到相同的错误条件，则警报会自动解除。
 
-问：我收到警报显示：“测试身份验证请求(合成事务)无法获取令牌。”**如何解决此问题？**
+**问：我收到警报显示：“测试身份验证请求(合成事务)无法获取令牌。”如何解决此问题？**
 
 当 AD FS 服务器上安装的 Health 代理无法获取由 Health 代理启动的作为综合事务一部分的令牌时，AD FS 的 Azure AD Connect Health 就会生成此警报。 Health 代理使用本地系统上下文，并尝试为自信赖方获取令牌。 这是一个全面测试，可确保 AD FS 处于发出令牌的状态。
 
 此测试通常会失败，因为 Health 代理无法解析 AD FS 场名称。 如果 AD FS 服务器位于网络负载均衡器之后，并且请求从位于负载均平衡器后面的节点（而不是位于负载均衡器前面的常规客户端）启动，则可能会发生这种情况。 这可以通过更新位于“C:\Windows\System32\drivers\etc”下的“hosts”文件来修复，以包括 AD FS 服务器的 IP 地址或 AD FS 场名称（如 sts.contoso.com）的环回 IP 地址 (127.0.0.1)。 添加主机文件会使网络调用短路，从而使 Health 代理获得令牌。
 
-问：我收到一封电子邮件，指示我的计算机没有应用最新的勒索攻击修补程序。我为什么会收到这个电子邮件？
+**问：我收到一封电子邮件，指示我的计算机没有应用最新的勒索攻击修补程序。** 我为什么会收到这个电子邮件？
 
 Azure AD Connect Health 服务会扫描其所监视的所有计算机，以确保已安装所需的修补程序。 如果至少有一台计算机未安装关键修补程序，则会向租户管理员发送此电子邮件。 以下逻辑用于做出此判断。
 1. 查找计算机上安装的所有修补程序。
@@ -163,7 +163,7 @@ Azure AD Connect Health 服务会扫描其所监视的所有计算机，以确�
 
 以下 PowerShell 脚本可用于手动执行此检查。 它可实现上述逻辑。
 
-```
+```powershell
 Function CheckForMS17-010 ()
 {
     $hotfixes = "KB3205409", "KB3210720", "KB3210721", "KB3212646", "KB3213986", "KB4012212", "KB4012213", "KB4012214", "KB4012215", "KB4012216", "KB4012217", "KB4012218", "KB4012220", "KB4012598", "KB4012606", "KB4013198", "KB4013389", "KB4013429", "KB4015217", "KB4015438", "KB4015546", "KB4015547", "KB4015548", "KB4015549", "KB4015550", "KB4015551", "KB4015552", "KB4015553", "KB4015554", "KB4016635", "KB4019213", "KB4019214", "KB4019215", "KB4019216", "KB4019263", "KB4019264", "KB4019472", "KB4015221", "KB4019474", "KB4015219", "KB4019473"
@@ -184,13 +184,13 @@ CheckForMS17-010
 
 ```
 
-问：PowerShell cmdlet <i>Get-MsolDirSyncProvisioningError</i> 显示的同步错误为什么比较少？
+**问：PowerShell cmdlet <i>Get-MsolDirSyncProvisioningError</i> 显示的同步错误为什么比较少？**
 
 <i>Get-MsolDirSyncProvisioningError</i> 只返回 DirSync 预配错误。 除了该类错误以外，Connect Health 门户还会显示其他类型的同步错误，例如导出错误。 这与 Azure AD Connect delta 结果一致。 了解有关 [Azure AD Connect 同步错误](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors)的详细信息。
 
 **问：为什么未生成 ADFS 审核？**
 
-请使用 PowerShell cmdlet <i>Get-AdfsProperties -AuditLevel</i> 确保审核日志未处于禁用状态。 阅读有关 [ADFS 审核日志](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)的更多信息。 请注意，如果有高级审核设置推送到 ADFS 服务器，则通过 auditpol.exe 进行的任何更改都将被覆盖 （即使未配置“已生成应用程序”）。 在这种情况下，请设置本地安全策略来记录“已生成应用程序”失败和成功。 
+请使用 PowerShell cmdlet <i>Get-AdfsProperties -AuditLevel</i> 确保审核日志未处于禁用状态。 阅读有关 [ADFS 审核日志](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)的更多信息。 请注意，如果有高级审核设置推送到 ADFS 服务器，则通过 auditpol.exe 进行的任何更改都将被覆盖 （即使未配置“已生成应用程序”）。 在这种情况下，请设置本地安全策略来记录“已生成应用程序”失败和成功。
 
 
 ## <a name="related-links"></a>相关链接

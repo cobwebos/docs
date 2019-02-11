@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 5f7d3bb51b2d1c05083645ccc5bca4f668d4a661
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: b4ed878b19b2eebe01c9888388949600e85c56e3
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52160494"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792964"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>设置源环境以便从 VMware 复制到 Azure
 
@@ -81,10 +81,8 @@ ms.locfileid: "52160494"
 4. C:\ProgramData\ASRSetupLogs
 5. C:\ProgramData\LogUploadServiceLogs
 6. C:\ProgramData\Microsoft Azure Site Recovery
-7. ASR 负载均衡流程服务器安装目录，例如：C:\Program Files (x86)\Microsoft Azure Site Recovery
+7. ASR 负载均衡进程服务器安装目录，示例：C:\Program Files (x86)\Microsoft Azure Site Recovery
 
-## <a name="common-issues"></a>常见问题
-[!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
 
 ## <a name="next-steps"></a>后续步骤
 [设置目标环境](./vmware-azure-set-up-target.md) 

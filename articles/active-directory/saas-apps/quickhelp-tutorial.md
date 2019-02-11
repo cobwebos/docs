@@ -1,27 +1,27 @@
 ---
-title: 教程：Azure Active Directory 与 QuickHelp 集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 QuickHelp 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 QuickHelp 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 655c9ad3-2076-4e2c-8e47-9ed3bf04be56
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: jeedes
-ms.openlocfilehash: c99be60301085dddfd5c658ee1eed81b88238e54
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a4b528e912fe267d5988080fb15b85db0c87fdfd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421580"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193729"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>教程：Azure Active Directory 与 QuickHelp 集成
+# <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>教程：Azure Active Directory 与 QuickHelp 的集成
 
 本教程介绍如何将 QuickHelp 与 Azure Active Directory (Azure AD) 集成。
 
@@ -235,7 +235,7 @@ QuickHelp 支持实时预配。 这意味着，如有必要，会在 QuickHelp �
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

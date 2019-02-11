@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 18041c95405614768845399f92efac229db53b20
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 84a2ef60c9f6aa4270c3fc4f83327070b298b8b2
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250724"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697181"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso 迁移：在 Azure VM 和 SQL Server AlwaysOn 可用性组上重新托管本地应用
 
@@ -29,12 +29,12 @@ ms.locfileid: "51250724"
 [文章 4：在 Azure VM 和 SQL 数据库托管实例上重新托管应用](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso 将其本地 SmartHotel360 应用直接迁移到 Azure。 Contoso 使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM。 Contoso 使用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)将应用数据库迁移到 Azure SQL 数据库托管实例。 | 可用   
 [文章 5：在 Azure VM 上重新托管应用](contoso-migration-rehost-vm.md) | Contoso 使用 Site Recovery 服务将其 SmartHotel360 应用 VM 迁移到 Azure VM。 | 可用
 文章 6：在 Azure VM 和 SQL Server AlwaysOn 可用性组中重新托管应用 | Contoso 迁移 SmartHotel360 应用。 Contoso 使用 Site Recovery 迁移应用 VM。 它使用数据库迁移服务将应用数据库迁移到受 AlwaysOn 可用性组保护的 SQL Server 群集。 | 本文
-[文章 7：将 Linux 应用重新托管到 Azure VM](contoso-migration-rehost-linux-vm.md) | Contoso 使用 Azure Site Recovery 将 Linux osTicket 应用直接迁移到 Azure VM | 可用
+[文章 7：在 Azure VM 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm.md) | Contoso 使用 Azure Site Recovery 将 Linux osTicket 应用直接迁移到 Azure VM | 可用
 [文章 8：在 Azure VM 和 Azure MySQL 服务器上重新托管 Linux 应用](contoso-migration-rehost-linux-vm-mysql.md) | Contoso 使用 Azure Site Recovery 将 Linux osTicket 应用迁移到 Azure VM，并使用 MySQL 工作台将应用数据库迁移到 Azure MySQL 服务器实例。 | 可用
 [文章 9：基于 Azure Web 应用和 Azure SQL 数据库重构应用](contoso-migration-refactor-web-app-sql.md) | Contoso 将 SmartHotel360 应用迁移到 Azure Web 应用，并使用数据库迁移助手将应用数据库迁移到 Azure SQL Server 实例 | 可用
 [文章 10：基于 Azure Web 应用和 Azure MySQL 重构 Linux 应用](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso 使用 Azure 流量管理器将其 Linux osTicket 应用迁移到多个 Azure 区域上的 Azure Web 应用，并与 GitHub 集成以实现持续交付。 Contoso 将应用数据库迁移到 Azure Database for MySQL 实例。 | 可用 
-[文章 11：重构 Azure DevOps Services 上的 TFS](contoso-migration-tfs-vsts.md) | Contoso 将其本地 Team Foundation Server 部署迁移到 Azure 中的 Azure DevOps Services。 | 可用
-[文章 12：基于 Azure 容器和 Azure SQL 数据库重构应用](contoso-migration-rearchitect-container-sql.md) | Contoso 将其 SmartHotel 应用迁移到 Azure。 然后，它将应用 Web 层重新架构为 Azure Service Fabric 中运行的 Windows 容器，以及具有 Azure SQL 数据库的数据库。 | 可用
+[文章 11：在 Azure DevOps Services 上重构 TFS](contoso-migration-tfs-vsts.md) | Contoso 将其本地 Team Foundation Server 部署迁移到 Azure 中的 Azure DevOps Services。 | 可用
+[文章 12：在 Azure 容器和 Azure SQL 数据库上重塑应用架构](contoso-migration-rearchitect-container-sql.md) | Contoso 将其 SmartHotel 应用迁移到 Azure。 然后，它将应用 Web 层重新架构为 Azure Service Fabric 中运行的 Windows 容器，以及具有 Azure SQL 数据库的数据库。 | 可用
 [文章 13：在 Azure 中重新生成应用](contoso-migration-rebuild.md) | Contoso 使用一系列 Azure 功能和服务（包括 Azure 应用服务、Azure Kubernetes 服务 (AKS)、Azure Functions、Azure 认知服务和 Azure Cosmos DB）重新生成其 SmartHotel 应用。 | 可用
 [文章 14：到 Azure 的大规模迁移](contoso-migration-scale.md) | 尝试过组合迁移后，Contoso 准备大规模整体迁移到 Azure。 | 可用
 
@@ -46,9 +46,9 @@ ms.locfileid: "51250724"
 IT 领导团队与其业务合作伙伴密切协作，以了解合作伙伴希望在本次迁移中实现的目标：
 
 - **满足业务增长**：Contoso 在不断壮大，这给本地系统和基础结构造成了压力。
-- **增加效率**：Contoso 需要摒弃不必要的流程，简化开发人员和用户流程。  业务要求 IT 反应迅速，不浪费时间金钱，从而更快满足客户需求。
+- **提高效率**：Contoso 需要删除不必要的过程，为开发者和用户简化流程。  业务要求 IT 反应迅速，不浪费时间金钱，从而更快满足客户需求。
 - **提高灵活性**：Contoso IT 需要对业务需求更加敏感。 它必须能够抢在市场变化之前作出反应，这样才能在全球经济中取得成功。  同时它不能阻碍发展，成为业务的绊脚石。
-- **扩展**：随着业务成功发展，Contoso IT 必须提供能够同步成长的系统。
+- **缩放**：随着业务成功发展，Contoso IT 必须提供能够同步成长的系统。
 
 ## <a name="migration-goals"></a>迁移目标
 
@@ -95,7 +95,7 @@ Contoso 云团队制定了本次迁移的目标。 这些目标用于确定最�
 
 ### <a name="database-considerations"></a>数据库注意事项
 
-在解决方案设计过程中，Contoso 对 Azure SQL 数据库和 SQL Server 做了功能比较。 以下考虑因素使得他们决定使用运行 SQL Server 的 Azure Iaas VM：
+在解决方案设计过程中，Contoso 对 Azure SQL 数据库和 SQL Server 做了功能比较。 以下考虑因素使得他们决定使用运行 SQL Server 的 Azure IaaS VM：
 
  - 如果 Contoso 需要自定义操作系统或数据库服务器，或者需要在同一个 VM 上共置和运行第三方应用，则使用运行 SQL Server 的 Azure VM 似乎是最佳解决方案。
  - Contoso 可以使用数据迁移助手轻松评估和迁移到 Azure SQL 数据库。
@@ -107,7 +107,7 @@ Contoso 通过将利弊清单放置在一起来评估其建议的设计。
 
 **注意事项** | **详细信息**
 --- | ---
-**优点** | 无需更改 WEBVM 即可将它移到 Azure，因此迁移过程非常简单。<br/><br/> SQL Server 层将在 SQL Server 2017 和 Windows Server 2016 上运行。 因此，他们淘汰了当前的 Windows Server 2008 R2 操作系统，而运行 SQL Server 2017 可以支持 Contoso 的技术要求和目标。 从 SQL Server 2008 R2 迁移时，IT 可提供 100% 的兼容性。<br/><br/> Contoso 可以通过 Azure 混合权益利用其在软件保障方面的投资。<br/><br/> Auzre 中的高可用性 SQL Server 部署提供容错能力，使应用数据层不再是单一故障转移点。
+**优点** | 无需更改 WEBVM 即可将它移到 Azure，因此迁移过程非常简单。<br/><br/> SQL Server 层将在 SQL Server 2017 和 Windows Server 2016 上运行。 因此，他们淘汰了当前的 Windows Server 2008 R2 操作系统，而运行 SQL Server 2017 可以支持 Contoso 的技术要求和目标。 从 SQL Server 2008 R2 迁移时，IT 可提供 100% 的兼容性。<br/><br/> Contoso 可以通过 Azure 混合权益利用其在软件保障方面的投资。<br/><br/> Azure 中的高可用性 SQL Server 部署提供容错能力，使应用数据层不再是单一故障转移点。
 **缺点** | WEBVM 正在运行 Windows Server 2008 R2。 Azure 支持特定角色的操作系统（2018 年 7 月）。 [了解详细信息](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)。<br/><br/> 应用的 Web 层保持为单一故障转移点。</br><br/> Contoso 需要继续支持用作 Azure VM 的 Web 层，而不是迁移到 Azure 应用服务等托管服务。<br/><br/> 使用所选的解决方案时，Contoso 需要继续管理两个 SQL Server VM，而不能迁移到 Azure SQL 数据库托管实例等托管平台。 此外，凭借软件保障，Contoso 可在 Azure SQL 数据库托管实例上以折扣价格交换现有的许可证。
 
 
@@ -152,16 +152,16 @@ Contoso 管理员将应用 VM 迁移到 Azure。
 Contoso 按如下方式运行迁移：
 
 > [!div class="checklist"]
-> * **步骤 1：准备群集**：创建一个群集用于在 Azure 中部署两个 SQL Server VM 节点。
-> * **步骤 2：部署并设置群集**：准备 Azure SQL Server 群集。  数据库将迁移到此预先创建的群集。
+> * **步骤 1：准备群集**：创建一个群集，用于在 Azure 中部署两个 SQL Server VM 节点。
+> * **步骤 2：部署并设置群集**：准备一个 Azure SQL Server 群集。  数据库将迁移到此预先创建的群集。
 > * **步骤 3：部署负载均衡器**：部署一个负载均衡器，用于均衡发往 SQL Server 节点的流量。
 > * **步骤 4：为 Site Recovery 准备 Azure**：创建恢复服务保管库以及用于保存复制数据的 Azure 存储帐户。 
 > * **步骤 5：为 Site Recovery 准备本地 VMware**：准备用于 VM 发现和代理安装的帐户。 准备本地 VM，使用户在迁移后可连接到 Azure VM。
-> * **步骤 6：复制 VM**：启用到 Azure 的 VM 复制。
+> * **步骤 6：复制 VM**：启用向 Azure 复制 VM。
 > * **步骤 7：安装 DMA**：下载并安装数据库迁移助手。
 > * **步骤 8：使用 DMA 迁移数据库**：将数据库迁移到 Azure。
 > * **步骤 9：保护数据库**：为群集创建 Always On 可用性组。
-> * **步骤 10：迁移 Web 应用 VM**：运行测试故障转移，确保一切按预期运行。 然后运行到 Azure 的完全故障转移。 
+> * **步骤 10：迁移 Web 应用 VM**：运行测试故障转移，确保一切如预期正常运行。 然后运行到 Azure 的完全故障转移。 
 
 
 ## <a name="step-1-prepare-a-sql-server-alwayson-availability-group-cluster"></a>步骤 1：准备 SQL Server AlwaysOn 可用性组群集
@@ -174,7 +174,7 @@ Contoso 管理员按如下所述设置群集：
 
 2. 在“创建虚拟机向导” > “基本信息”中，进行如下配置：
 
-    - VM 的名称：SQLAOG1 和 SQLAOG2。
+    - 虚拟机的名称：SQLAOG1 和 SQLAOG2。
     - 公司的计算机是业务关键型的，因此为 VM 磁盘类型启用 SSD。
     - 指定计算机凭据。
     - 将 VM 部署到美国东部 2 主区的 ContosoRG 资源组。
@@ -184,9 +184,9 @@ Contoso 管理员按如下所述设置群集：
 
     - 由于这些 VM 是应用的关键数据库，因此使用托管磁盘。
     - 将计算机置于数据库子网 (PROD-DB-EUS2) 中美国东部 2 主区 (VNET-PROD-EUS2) 的生产网络中。
-    - 新建一个可用性组 SQLAOGAVSET，该组具有 2 个默认域和 5 个更新域。
+    - 新建一个可用性组：SQLAOGAVSET，该组具有 2 个容错域和 5 个更新域。
 
-    ![SQL VM](media/contoso-migration-rehost-vm-sql-ag/sql-vm-settings.png)
+      ![SQL VM](media/contoso-migration-rehost-vm-sql-ag/sql-vm-settings.png)
 
 4. 在“SQL Server 设置”中，仅允许 SQL 连接到默认端口 1433 上虚拟网络（专用网）。 在身份验证方面，使用与现场相同的凭据 (contosoadmin)。
 
@@ -235,11 +235,11 @@ Contoso 管理员按如下所述创建存储帐户：
 
 ![快照](media/contoso-migration-rehost-vm-sql-ag/snapshot.png)
 
-2. 然后，运行其汇聚在一起的脚本以创建 Windows 故障转移群集。
+1. 然后，运行其汇聚在一起的脚本以创建 Windows 故障转移群集。
 
     ![创建群集](media/contoso-migration-rehost-vm-sql-ag/create-cluster1.png)
 
-3. 创建群集后，验证 VM 是否显示为群集节点。
+2. 创建群集后，验证 VM 是否显示为群集节点。
 
      ![创建群集](media/contoso-migration-rehost-vm-sql-ag/create-cluster2.png)
 
@@ -277,9 +277,9 @@ Contoso 管理员现希望在群集节点前面部署一个内部负载均衡器
 
 公司如下创建负载均衡器：
 
-1. 通过 Azure 门户 >“网络” > “负载均衡器”，设置新的内部负载均衡器 ILB-PROD-DB-EUS2-SQLAOG。
+1. 通过 Azure 门户 >“网络” > “负载均衡器”，设置新的内部负载均衡器：ILB-PROD-DB-EUS2-SQLAOG。
 2. 将负载均衡器置于数据库子网 PROD-DB-EUS2 的生产网络 VNET-PROD-EUS2 中。
-3. 向其分配一个静态 IP 地址 10.245.40.100。
+3. 向其分配一个静态 IP 地址：10.245.40.100。
 4. 在网络资源组 ContosoNetworkingRG 中分配负载均衡器作为网络元素。
 
     ![负载均衡](media/contoso-migration-rehost-vm-sql-ag/lb-create.png)
@@ -290,7 +290,7 @@ Contoso 管理员现希望在群集节点前面部署一个内部负载均衡器
 
 为了将流量分发到群集中的 VM，Contoso 管理员需设置一个包含 NIC IP 地址的后端地址池，其中 NIC 面向将从负载均衡器中接收网络流量的 VM。
 
-1. 在门户的负载均衡器设置中，Contoso 添加了一个后端池 ILB-PROD-DB-EUS-SQLAOG-BEPOOL。
+1. 在门户的负载均衡器设置中，Contoso 添加一个后端池：ILB-PROD-DB-EUS-SQLAOG-BEPOOL。
 2. 将池与可用性集 SQLAOGAVSET 进行关联。 在池中添加 SQLAOG1 和 SQLAOG2 集。
 
     ![后端池](media/contoso-migration-rehost-vm-sql-ag/backend-pool.png)
@@ -301,7 +301,7 @@ Contoso 管理员创建一个运行状况探测器，以便负载均衡器能够
 
 如下创建探测器： 
 
-1. 在门户的负载均衡器设置中，Contoso 创建一个运行状况探测器 SQLAlwaysOnEndPointProbe。
+1. 在门户的负载均衡器设置中，Contoso 创建一个健康状况探测器：SQLAlwaysOnEndPointProbe。
 2. 设置探测器以监视 TCP 端口 59999 上的 VM。
 3. 在探测之间设置 5 秒的时间间隔，并将阈值设为 2。 如果两次探测失败，VM 将被视为运行不正常。
 
@@ -317,7 +317,7 @@ Contoso 管理员现在设置负载均衡器规则以定义如何将流量分发
 
 如下创建规则：
 
-1. 在门户的负载均衡器设置中，添加新的负载均衡规则 SQLAlwaysOnEndPointListener。
+1. 在门户的负载均衡器设置中，添加新的负载均衡规则：SQLAlwaysOnEndPointListener。
 2. 设置一个前端侦听器来接收 TCP 1433 上传入的 SQL 客户端流量。
 3. 指定要将流量路由到的后端池，同时指定 VM 要在其上侦听流量的端口。
 4. 启用浮动 IP（直接服务器返回）。 SQL AlwaysOn 始终需要此设置。
@@ -351,7 +351,7 @@ Contoso 管理员按如下所述完成这项设置：
     - 公司使用具有标准存储空间的常规用途帐户，并使用 LRS 复制。
     - 帐户必须与保管库位于同一个区域中。
 
-    ![Site Recovery 存储](media/contoso-migration-rehost-vm-sql-ag/asr-storage.png)
+      ![Site Recovery 存储](media/contoso-migration-rehost-vm-sql-ag/asr-storage.png)
 
 3. 网络和存储帐户就绪后，公司现可创建一个恢复服务保管库 (ContosoMigrationVault)，并将其置于美国东部 2 主区的 ContosoFailoverRG 资源组中。
 
@@ -403,15 +403,15 @@ Contoso 管理员按如下所述设置帐户：
 
 1. 为了通过 Internet 进行访问：
 
- - 故障转移前在本地 VM 上启用 RDP
- - 确保为“公共”配置文件添加了 TCP 和 UDP 规则。
- - 检查“Windows 防火墙” > “允许的应用”中是否同意所有配置文件使用 RDP。
+   - 故障转移前在本地 VM 上启用 RDP
+   - 确保为“公共”配置文件添加了 TCP 和 UDP 规则。
+   - 检查“Windows 防火墙” > “允许的应用”中是否同意所有配置文件使用 RDP。
  
 2. 为了通过站点到站点 VPN 进行访问：
 
- - 在本地计算机上启用 RDP。
- - 在“Windows 防火墙” -> “允许的应用和功能”中同意域和专用网络使用 RDP。
- - 将本地 VM 上操作系统的 SAN 策略设置为“OnlineAll”。
+   - 在本地计算机上启用 RDP。
+   - 在“Windows 防火墙” -> “允许的应用和功能”中同意域和专用网络使用 RDP。
+   - 将本地 VM 上操作系统的 SAN 策略设置为“OnlineAll”。
 
 此外，在运行故障转移时，公司需要检查以下项目：
 
@@ -698,13 +698,13 @@ Contoso 安全团队会审查 Azure VMs WEBVM、SQLAOG1 和 SQLAOG2，确定是�
 - 团队考虑使用 Azure 磁盘加密服务和 KeyVault 保护磁盘上的数据。
 - 团队应该评估透明数据加密 (TDE)，然后在新的 SQL AOG 上运行的 SmartHotel360 数据库中启用它。 [了解详细信息](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017)。
 
-[详细了解](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control) VM 的安全做法。
+[详细了解](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms) VM 的安全做法。
 
 
 ## <a name="bcdr"></a>BCDR
 
  对于业务连续性和灾难恢复 (BCDR)，Contoso 采取了以下措施：
- - 保持数据安全：Contoso 使用 Azure 备份服务来备份 WEBVM、SQLAOG1 和 SQLAOG2 VM 上的数据。 [了解详情]。
+ - 确保数据安全：Contoso 使用 Azure 备份服务来备份 WEBVM、SQLAOG1 和 SQLAOG2 VM 上的数据。 [了解详情]。
 (https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 - Contoso 还将了解如何使用 Azure 存储将 SQL Server 直接备份到 Blob 存储。 [了解详细信息](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-use-storage-sql-server-backup-restore)。
 - 使应用保持正常运行：Contoso 使用 Site Recovery 将 Azure 中的应用 VM 复制到次要区域。 [了解详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)。

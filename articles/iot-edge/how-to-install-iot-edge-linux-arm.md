@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 12/10/2018
 ms.author: kgremban
-ms.openlocfilehash: ccd38dd7570dc451a1a5b87163bfdd7aea51dad5
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: dbe9f18f5a38284e2b263d636656c88b1743d7ea
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567428"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555636"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>在 Linux 上安装 Azure IoT Edge 运行时 (ARM32v7/armhf)
 
@@ -175,6 +175,39 @@ sudo iotedge list
 
 如果网络具有代理服务器，请按照[配置 IoT Edge 设备以通过代理服务器进行通信](how-to-configure-proxy-support.md)中的步骤进行操作。
 
+## <a name="uninstall-iot-edge"></a>卸载 IoT Edge
+
+如果要从 Linux 设备中删除 IoT Edge 安装，请从命令行使用以下命令。 
+
+删除 IoT Edge 运行时。 
+
+```bash
+sudo apt-get remove --purge iotedge
+```
+
+删除 IoT Edge 运行时以后，已创建的容器会被停止，但仍存在于设备上。 查看所有容器以了解哪些容器仍然存在。 
+
+```bash
+sudo docker ps -a
+```
+
+从设备中删除容器，包括两个运行时容器。 
+
+```bash
+sudo docker rm -f <container name>
+```
+
+最后，从设备中删除容器运行时。 
+
+```bash 
+sudo apt-get remove --purge moby-cli
+sudo apt-get remove --purge moby-engine
+```
+
 ## <a name="next-steps"></a>后续步骤
 
+预配了安装运行时的 IoT Edge 设备后，现在可以[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)。
+
 如果无法正确安装 Edge 运行时，请参阅[故障排除](troubleshoot.md#stability-issues-on-resource-constrained-devices)页面。
+
+若要将现有安装更新到最新版本的 IoT Edge，请参阅[更新 IoT Edge 安全守护程序和运行时](how-to-update-iot-edge.md)。

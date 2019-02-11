@@ -4,20 +4,20 @@ description: 如何管理 Avere 群集 - 添加或删除节点、重启、停止
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: 9eba9eef315f1ec6eb25ea21c1d4747ab002d078
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0eb5941bfecc023429556434a45460c8727056ec
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958910"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300177"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>管理 Avere vFXT 群集
 
 创建群集后，可能需要添加群集节点或是停止或重启群集。 项目完成后，需了解如何永久停止和删除群集。 
 
-群集管理任务不同，可能需使用 Avere 控制面板、vfxt.py 群集创建脚本或 Azure 门户来执行此操作。 
+根据群集管理任务，可能需使用 Avere 控制面板、vfxt.py 命令行群集创建脚本或 Azure 门户来执行此操作。 
 
 此表概述了可用于每项任务的工具。 
 
@@ -63,15 +63,19 @@ FXT 节点设置页面有用于管理单独的节点的控件。
 > [!NOTE] 
 > 活动节点的数量发生变化时，IP 地址可能会在群集节点之间移动。
 
-请参阅 Avere 群集设置指南中的[群集 > FXT节点](<http://library.averesystems.com/ops_guide/4_7/gui_fxt_nodes.html#gui-fxt-nodes>)，了解详细信息。
+请参阅 Avere 群集设置指南中的[群集 > FXT节点](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html#gui-fxt-nodes>)，了解详细信息。
 
 ### <a name="stop-or-reboot-the-cluster-with-avere-control-panel"></a>使用 Avere 控制面板停止或重启群集
 
-“系统维护”设置页面有重启群集服务、重启群集或安全地关闭群集的命令。 请参阅[管理 > 系统维护](<http://library.averesystems.com/ops_guide/4_7/gui_system_maintenance.html#gui-system-maintenance>)（位于 Avere 群集设置指南中），了解详细信息。
+“系统维护”设置页面有重启群集服务、重启群集或安全地关闭群集的命令。 请参阅[管理 > 系统维护](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>)（位于 Avere 群集设置指南中），了解详细信息。
 
 关闭群集时，它会先向“仪表板”选项卡发送状态消息。 片刻后，Avere 控制面板会话将停止响应，这意味着群集已关闭。
 
-## <a name="manage-the-cluster-with-vfxtpy"></a>使用 vfxt.py 管理群集 
+## <a name="manage-the-cluster-with-vfxtpy"></a>使用 vfxt.py 管理群集
+
+vfxt.py 是用于群集创建和管理的命令行工具。 
+
+vfxt.py 预安装在群集控制器 VM 上。 若要将其安装在其他系统上，请参阅 <https://github.com/Azure/AvereSDK> 处的文档。
 
 vfxt.py 脚本可用于执行以下群集管理任务：
 
@@ -80,8 +84,6 @@ vfxt.py 脚本可用于执行以下群集管理任务：
 * 销毁群集
 
 与 Avere 控制面板一样，vfxt.py 操作试图在关闭或销毁群集或节点前确保将已更改的数据永久存储在后端存储上。 这使得它比 Avere 门户更加安全。
-
-vfxt.py 预安装在群集控制器 VM 上。 <!-- (If you want to install it on another system, refer to http://github.com/Azure/AvereSDK) xxx change when this repo goes  public -->
 
 GitHub 上提供了完整 vfxt.py 使用指南：[使用 vfxt.py 管理云群集](https://github.com/azure/averesdk/blob/master/docs/README.md)
 

@@ -4,21 +4,21 @@ description: 在 Azure 门户中使用 Azure AD 应用程序代理为已发布�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 8cdb5b89bf43d3265f3f9c73d29708f11e17b21c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 775458b2924055fdf1a967cc2fa2f691758d7559
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624023"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55173116"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>使用应用程序代理通过密码存储进行单一登录
 
@@ -26,7 +26,7 @@ Azure Active Directory 应用程序代理还可以发布本地应用程序供远
 
 应用程序代理支持多种[单一登录模式](what-is-single-sign-on.md#choosing-a-single-sign-on-method)。 基于密码的登录适合使用用户名/密码组合进行身份验证的应用程序。 当你为应用程序配置基于密码的登录时，用户必须登录到本地应用程序一次。 之后，Azure Active Directory 会存储登录信息，并在用户远程访问应用程序时自动向应用程序提供该信息。 
 
-应该已经通过应用程序代理发布和测试了应用。 否则，请执行[使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)中的步骤，再返回到此处。 
+应该已经通过应用程序代理发布和测试了应用。 否则，请执行[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)中的步骤，再返回到此处。 
 
 ## <a name="set-up-password-vaulting-for-your-application"></a>为应用程序设置密码存储
 

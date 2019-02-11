@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 496a24f79cee1323077c357789628123d082ceac
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 4502799f3125ea5207dde70704e00105c763e8ce
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51716134"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54193291"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>使用 Microsoft 身份验证库 (MSAL) 登录用户
 
@@ -86,14 +86,12 @@ function acquireTokenRedirectAndCallMSGraph() {
     });
 }
 
-function acquireTokenRedirectCallBack(errorDesc, token, error, tokenType)
-{
- if(tokenType === "access_token")
- {
-     callMSGraph(applicationConfig.graphEndpoint, token, graphAPICallback);
- } else {
-     console.log("token type is:"+tokenType);
- }
+function acquireTokenRedirectCallBack(errorDesc, token, error, tokenType) {
+    if (tokenType === "access_token") {
+        callMSGraph(applicationConfig.graphEndpoint, token, graphAPICallback);
+    } else {
+        console.log("token type is:"+tokenType);
+    }
 }
 
 
@@ -106,14 +104,13 @@ var isIE = msie > 0 || msie11 > 0;
 var isEdge = msedge > 0;
 
 //If you support IE, our recommendation is that you sign-in using Redirect APIs
-//If you as a developer are testing using Edge InPrivate mode, please add "isEdge" to the if check
+//If you as a developer are testing using Microsoft Edge InPrivate mode, please add "isEdge" to the if check
 if (!isIE) {
     if (myMSALObj.getUser()) {// avoid duplicate code execution on page load in case of iframe and popup window.
         showWelcomeMessage();
         acquireTokenPopupAndCallMSGraph();
     }
-}
-else {
+} else {
     document.getElementById("SignIn").onclick = function () {
         myMSALObj.loginRedirect(applicationConfig.graphScopes);
     };
@@ -129,7 +126,7 @@ else {
 
 用户首次单击“登录”按钮后，`signIn` 方法将调用 `loginPopup` 以登录用户。 此方法导致使用 *Microsoft Azure Active Directory v2.0 终结点*打开一个弹出窗口，以提示用户输入凭据并验证该凭据。 登录成功后，用户被重定向回原始的 index.html 页面，并接收到一个由 `msal.js` 处理的令牌，令牌中包含的信息被缓存。 该令牌称为 ID令牌，并包含有关用户的基本信息，如用户显示名。 如果计划将此令牌提供的数据用于任何目的，则需确保此令牌已由后端服务器验证，以保证将令牌颁发给应用程序的有效用户。
 
-本指南生成的 SPA 调用 `acquireTokenSilent` 和/或 `acquireTokenPopup` 来获取用于查询 Microsoft Graph API 以获取用户配置文件信息的访问令牌。 如果需要验证 ID 令牌的示例，请查看 GitHub 中的[此](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "Github active-directory-javascript-singlepageapp-dotnet-webapi-v2 示例")示例应用程序 - 该示例使用 ASP.NET Web API 进行令牌验证。
+本指南生成的 SPA 调用 `acquireTokenSilent` 和/或 `acquireTokenPopup` 来获取用于查询 Microsoft Graph API 以获取用户配置文件信息的访问令牌。 如果需要验证 ID 令牌的示例，请查看 GitHub 中的[此](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 示例")示例应用程序 - 该示例使用 ASP.NET Web API 进行令牌验证。
 
 #### <a name="getting-a-user-token-interactively"></a>以交互方式获取用户令牌
 

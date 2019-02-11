@@ -1,21 +1,22 @@
 ---
-title: 教程：计算机视觉 API Java
+title: 教程：执行图像操作 - Java
 titlesuffix: Azure Cognitive Services
 description: 介绍一款使用 Azure 认知服务中的计算机视觉 API 的基本 Java Swing 应用。 执行 OCR、创建缩略图，并处理图像中的视觉特征。
 services: cognitive-services
 author: KellyDF
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: tutorial
 ms.author: kefre
+ms.custom: seodec18
 ms.date: 09/21/2017
-ms.openlocfilehash: 36a8a49ee49636d186ca217ae223b1eebf9bb54b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 2c306a5447f2e5d9c7072bd2bed8dd8f1d4078d0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340250"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225391"
 ---
 # <a name="tutorial-computer-vision-api-java"></a>教程：计算机视觉 API Java
 
@@ -455,7 +456,7 @@ CelebritiesImage 方法包装 REST API 调用以分析图像。 该方法返回�
 
 ### <a name="intelligently-generate-a-thumbnail"></a>智能生成缩略图
 
-计算机视觉的缩略图功能可通过图像生成缩略图。 通过使用“智能裁剪”功能，缩略图功能可识别图像中的兴趣区域并集中于此区域创建缩略图，以生成视觉上更美观的缩略图。
+计算机视觉的缩略图功能可通过图像生成缩略图。 通过使用“智能裁剪”功能，缩略图功能将识别图像中的兴趣区域并集中于此区域创建缩略图，进而生成视觉上更美观的缩略图。
 
 要完成教程应用程序的缩略图功能，请执行以下步骤：
 
@@ -777,7 +778,7 @@ HandwritingImage 方法包装分析图像时所需的两个 REST API 调用。 �
             
             // Check for success.
             if (textResponse.getStatusLine().getStatusCode() != 202) {
-                // An error occured. Return the JSON error message.
+                // An error occurred. Return the JSON error message.
                 HttpEntity entity = textResponse.getEntity();
                 String jsonString = EntityUtils.toString(entity);
                 return new JSONObject(jsonString);

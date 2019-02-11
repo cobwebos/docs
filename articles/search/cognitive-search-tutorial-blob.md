@@ -1,5 +1,5 @@
 ---
-title: 教程：在 Azure 搜索中调用认知搜索 API | Microsoft Docs
+title: 教程：调用认知搜索 API - Azure 搜索
 description: 在本教程中，在用于数据提取和转换的 Azure 搜索索引中分步完成数据提取、自然语言和图像 AI 处理的示例。
 manager: pablocas
 author: luiscabrer
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: luisca
-ms.openlocfilehash: 4694d7a580c9544e43cf0b56b192b55c02257531
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec2018
+ms.openlocfilehash: 8c63b97f9d4423bf57909da7716675915a5271ef
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730658"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994041"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>教程：了解如何调用认知搜索 API（预览版）
 
@@ -34,7 +35,9 @@ ms.locfileid: "45730658"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> Azure 搜索目前以公共预览版提供。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 
+> 自 2018 年 12 月 21 日起，你可将认知服务资源与 Azure 搜索技能集进行关联。 这会使我们能够开始收取技能集执行的费用。 在此日期，我们还会开始将图像提取视为文档破解阶段的一部分进行计费。 我们将继续提供文档文本提取服务而不收取额外费用。
+>
+> 内置技能的执行将按现有的[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)进行计费。 图像提取费用将按预览版定价进行计费，详见 [Azure 搜索定价页面](https://go.microsoft.com/fwlink/?linkid=2042400)。 了解[详细信息](cognitive-search-attach-cognitive-services.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -52,30 +55,31 @@ ms.locfileid: "45730658"
 
 1. 单击“创建资源”，搜索“Azure 搜索”，然后单击“创建”。 首次设置搜索服务时，请参阅[在门户中创建 Azure 搜索服务](search-create-service-portal.md)。
 
-  ![仪表板门户](./media/cognitive-search-tutorial-blob/create-service-full-portal.png "在门户中创建 Azure 搜索服务")
+  ![仪表板门户](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "在门户中创建 Azure 搜索服务")
 
 1. 对于“资源组”，请创建一个资源组用于包含本教程中创建的所有资源。 这样可以在完成本教程后更轻松地清理资源。
 
-1. 对于“位置”，请选择“美国中南部”或“西欧”。 预览版目前只能在这些区域使用。
+1. 对于“位置”，请为认知搜索选择[支持的区域](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob#supported-regions)之一。
 
-1. 对于“定价层”，可以创建“免费”服务来完成教程和快速入门。 若要使用自己的数据进行更深入的调查，请创建一个[付费服务](https://azure.microsoft.com/pricing/details/search/)，例如“基本”或“标准”层的服务。 
+1. 对于“定价层”，可以创建“免费”服务来完成教程和快速入门。 要使用自己的数据进行更深入的调查，请创建一个[付费服务](https://azure.microsoft.com/pricing/details/search/)，例如“基本”或“标准”层的服务。 
 
-  “免费”服务限制为 3 个索引、最大 16 MB 的 Blob 和 2 分钟的索引，这不足以演练认知搜索的完整功能。 若要查看不同层的限制，请参阅[服务限制](search-limits-quotas-capacity.md)。
+  “免费”服务限制为 3 个索引、最大 16 MB 的 Blob 和 2 分钟的索引，这不足以演练认知搜索的完整功能。 要查看不同层的限制，请参阅[服务限制](search-limits-quotas-capacity.md)。
 
-  > [!NOTE]
-  > 认知搜索目前为公共预览版。 技能集执行目前已在所有层中推出，包括免费层。 我们日后会公布此功能的定价。
+  ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service1.png "门户中的服务定义页")
+  ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service2.png "门户中的服务定义页")
 
+ 
 1. 将服务固定到仪表板，以快速访问服务信息。
 
-  ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service.png "门户中的服务定义页")
+  ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service3.png "门户中的服务定义页")
 
-1. 创建服务后，收集以下信息：“概述”页中的“URL”，以及“密钥”页中的 **api-key**（主密钥或辅助密钥）。
+1. 创建服务后，收集以下信息：“概述”页中的 **URL** 以及“密钥”页中的 **api-key**（主密钥或辅助密钥）。
 
   ![门户中的终结点和密钥信息](./media/cognitive-search-tutorial-blob/create-search-collect-info.png "门户中的终结点和密钥信息")
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>设置 Azure Blob 服务并加载示例数据
 
-扩充管道从 Azure 数据源提取数据。 源数据必须源自受支持的 [Azure 搜索索引器](search-indexer-overview.md)数据源类型。 本演练使用 Blob 存储来展示多种内容类型。
+扩充管道从 Azure 数据源提取数据。 源数据必须源自受支持的 [Azure 搜索索引器](search-indexer-overview.md)数据源类型。 请注意，认知搜索不支持 Azure 表存储。 本演练使用 Blob 存储来展示多种内容类型。
 
 1. [下载示例数据](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)。 示例数据包括不同类型的小型文件集。 
 
@@ -127,7 +131,7 @@ api-key: [admin key]
 如果收到 403 或 404 错误，请检查请求构造：`api-version=2017-11-11-Preview` 应位于终结点上，`api-key` 应位于标头中的 `Content-Type` 后面，并且其值必须对搜索服务有效。 可对本教程中的剩余步骤重复使用该标头。
 
 > [!TIP]
-> 在接下来要执行大量工作之前，现在非常适合验证该搜索服务是否在提供预览功能的某个受支持位置（美国中南部或西欧）运行。
+> 现在，在执行大量工作之前，应当验证该搜索服务是否在提供预览功能的某个受支持位置运行：美国中南部或西欧。
 
 ## <a name="create-a-skillset"></a>创建技能集
 
@@ -523,7 +527,7 @@ Content-Type: application/json
 2. 修改技能集和索引定义。
 3. 在服务中重新创建索引和索引器，以运行管道。 
 
-可以使用门户删除索引和索引器。 如果决定删除技能集，只能通过 HTTP 命令删除。
+可以使用门户删除索引、索引器和技能集。
 
 ```http
 DELETE https://[servicename].search.windows.net/skillsets/demoskillset?api-version=2017-11-11-Preview

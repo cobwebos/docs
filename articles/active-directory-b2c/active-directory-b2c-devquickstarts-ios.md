@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 中使用 iOS 应用程序的 AppAuth | Mi
 description: 本文说明如何创建一个使用 AppAuth 和 Azure Active Directory B2C 来管理用户标识以及对用户进行身份验证的 iOS 应用。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/07/2017
+ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 5f95b71497b59eafff09d4add2b4bb1c20656592
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.subservice: B2C
+ms.openlocfilehash: 3c7eace7c643286575e2625cb81f84d858bbaa8f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339352"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172742"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C：使用 iOS 应用程序登录
 
@@ -29,7 +29,7 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 对于 OAuth2 或 OpenID Connect 的新手，该示例配置中的大部分内容可能较难理解。 建议查看 [此处所述的简要协议概述](active-directory-b2c-reference-protocols.md)。
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>获取 Azure AD B2C 目录
-只有在创建目录或租户之后，才可使用 Azure AD B2C。 目录是所有用户、应用、组等对象的容器。 如果没有容器，请先 [创建 B2C 目录](active-directory-b2c-get-started.md) ，再继续。
+只有在创建目录或租户之后，才可使用 Azure AD B2C。 目录是所有用户、应用、组等对象的容器。 如果没有容器，请先 [创建 B2C 目录](tutorial-create-tenant.md) ，再继续。
 
 ## <a name="create-an-application"></a>创建应用程序
 接下来，需要在 B2C 目录中创建应用。 应用注册为 Azure AD 提供所需的 Azure AD 信息，使之能够与应用安全通信。 若要创建移动应用，请遵循[这些说明](active-directory-b2c-app-registration.md)。 请务必：
@@ -38,16 +38,14 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 * 复制分配给应用的 **应用程序 ID** 。 稍后需要用到此 GUID。
 * 使用自定义方案（例如 com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect）设置“重定向 URI”。 稍后需要用到此 URI。
 
-## <a name="create-your-policies"></a>创建策略
-在 Azure AD B2C 中，每个用户体验由 [策略](active-directory-b2c-reference-policies.md)定义。 此应用包含一个标识体验：合并的登录和注册。 根据[策略参考文章](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)中所述创建此策略。 创建策略时，请务必：
+## <a name="create-your-user-flows"></a>创建用户流
+在 Azure AD B2C 中，每个用户体验由[用户流](active-directory-b2c-reference-policies.md)定义。 此应用程序包含一个标识体验：合并的登录和注册。 创建用户流时，请务必：
 
 * 在“注册属性”下，选择“显示名称”属性。  还可选择其他属性。
 * 在“应用程序声明”下，选择“显示名称”和“用户的对象 ID”声明。 也可选择其他声明。
-* 创建每个策略后，请复制策略的 **名称** 。 保存策略时，策略名称带有前缀 `b2c_1_`。  稍后需要用到该策略名称。
+* 创建用户流后，请复制每个用户流的名称。 保存用户流时，用户流名称带有前缀 `b2c_1_`。  稍后需要用户流名称。
 
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
-
-创建策略后，可以开始构建应用。
+创建用户流后，可以开始构建应用。
 
 ## <a name="download-the-sample-code"></a>下载示例代码
 我们[在 GitHub 上](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c)提供了有关将 AppAuth 与 Azure AD B2C 配合使用的实践示例。 可以下载该代码并运行它。 若要使用自己的 Azure AD B2C 租户，请遵循 [README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) 中的说明。
@@ -64,7 +62,7 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 
 可以通过指定授权终结点和令牌终结点 URI，来配置与 Azure AD B2C 的通信。  若要生成这些 URI，需要提供以下信息：
 * 租户 ID（例如 contoso.onmicrosoft.com）
-* 策略名称（例如 B2C\_1\_SignUpIn）
+* 用户流名称（例如 B2C\_1\_SignUpIn）
 
 可以通过替换以下 URL 中的 Tenant\_ID 和 Policy\_Name 来生成令牌终结点 URI：
 

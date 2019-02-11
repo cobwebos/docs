@@ -1,18 +1,19 @@
 ---
-title: 部署 Azure 数字孪生 | Microsoft Docs
+title: 教程：部署 Azure 数字孪生 | Microsoft Docs
 description: 了解如何使用本教程中的步骤部署 Azure 数字孪生的实例并配置空间资源。
 services: digital-twins
 author: dsk-2015
+ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 10/15/2018
+ms.date: 12/17/2018
 ms.author: dkshir
-ms.openlocfilehash: 4491ec4661c93570893e5fafd5524715e0773d8c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 28433f8f3f181c507521cb12f064df045ae21d9d
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582299"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212186"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>教程：部署 Azure 数字孪生并配置空间图
 
@@ -32,9 +33,7 @@ ms.locfileid: "52582299"
 > * 修改数字孪生示例应用。
 > * 预配大楼。
 
-
 这些教程使用和修改[介绍如何查找可用房间的快速入门](quickstart-view-occupancy-dotnet.md)所使用的示例，目的是更详细且更深入地探讨相关概念。
-
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,7 +43,7 @@ ms.locfileid: "52582299"
 
 - [Visual Studio Code](https://code.visualstudio.com/)，用于探索示例代码。 
 
-<a id="deploy" />
+<a id="deploy"></a>
 
 ## <a name="deploy-digital-twins"></a>部署数字孪生
 
@@ -52,8 +51,7 @@ ms.locfileid: "52582299"
 
 [!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
 
-
-<a id="permissions" />
+<a id="permissions"></a>
 
 ## <a name="grant-permissions-to-your-app"></a>向应用授权
 
@@ -63,19 +61,20 @@ ms.locfileid: "52582299"
 
 [!INCLUDE [digital-twins-permissions](../../includes/digital-twins-permissions.md)]
 
-
 ## <a name="configure-the-digital-twins-sample"></a>配置数字孪生示例
 
 本部分详细介绍一个可以与[数字孪生 REST API](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index) 通信的 Azure 数字孪生应用程序。 
 
 ### <a name="download-the-sample"></a>下载示例
+
 如果已下载适用于[介绍如何查找可用房间的快速入门](quickstart-view-occupancy-dotnet.md)的示例，可以跳过这些步骤。
 
-1. 下载[数字孪生 .NET 示例](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip)。 
-2. 解压缩计算机上的 zip 文件夹的内容。 
+1. 下载[数字孪生 .NET 示例](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip)。
+2. 解压缩计算机上的 zip 文件夹的内容。
 
 ### <a name="explore-the-sample"></a>探索示例
-在解压缩后的示例文件夹中，通过 Visual Studio Code 打开 **digital-twins-samples-csharp\digital-twins-samples.code-workspace** 文件。 该文件包含两个项目： 
+
+在解压缩后的示例文件夹中，通过 Visual Studio Code 打开 **digital-twins-samples-csharp\digital-twins-samples.code-workspace** 文件。 该文件包含两个项目：
 
 * 可以通过预配示例 **occupancy-quickstart** 配置和预配[空间智能图](concepts-objectmodel-spatialgraph.md#graph)。 该图是你的物理空间以及其中的资源的数字化图像。 它使用[对象模型](concepts-objectmodel-spatialgraph.md#model)来定义智能大楼的对象。 如需数字孪生对象和 REST API 的完整列表，请访问[此 REST API 文档](https://docs.westcentralus.azuresmartspaces.net/management/swagger)或者为[你的实例](#deploy)创建的管理 API URL。
 
@@ -88,6 +87,7 @@ ms.locfileid: "52582299"
 * 模拟示例 **device-connectivity** 模拟传感器数据并将其发送到为数字孪生实例预配的 IoT 中心。 将在[预配空间图后的下一教程](tutorial-facilities-udf.md#simulate)中使用此示例。 用于配置此示例的传感器和设备标识符应该与用于预配图形的相同。
 
 ### <a name="configure-the-provisioning-sample"></a>配置预配示例
+
 1. 打开一个命令窗口，转到已下载的示例。 运行以下命令：
 
     ```cmd/sh
@@ -100,10 +100,10 @@ ms.locfileid: "52582299"
     dotnet restore
     ```
 
-1. 在 Visual Studio Code 中打开 **occupancy-quickstart** 项目中的 **appSettings.json** 文件。 更新以下值：
+1. 在 Visual Studio Code 中打开 **occupancy-quickstart** 项目中的 [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) 文件。 更新以下值：
    * **ClientId**：输入 Azure AD 应用注册的应用程序 ID。 已在[设置应用权限](#permissions)的部分记下此 ID。
    * **租户**：输入 [Azure AD 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)的目录 ID。 也已在[设置应用权限](#permissions)的部分记下此 ID。
-   * **BaseUrl**：输入数字孪生实例的 URL。 若要获取此 URL，请将其中的占位符替换为实例的值：_https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/_。 也可通过修改[部署部分](#deploy)的管理 API URL 来获取此 URL。 将 **swagger/** 替换为 **api/v1.0/**。
+   * **BaseUrl**：输入数字孪生实例的 URL。 若要获取此 URL，请将其中的占位符替换为适用于你的实例的值：`https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`。 也可通过修改[部署部分](#deploy)的管理 API URL 来获取此 URL。 将 **swagger/** 替换为 **api/v1.0/**。
 
 1. 查看数字孪生功能的列表，这些功能可以通过示例来探索。 运行以下命令：
 
@@ -111,10 +111,11 @@ ms.locfileid: "52582299"
     dotnet run
     ```
 
-<a id="provision-spaces" />
+<a id="provision-spaces"></a>
 
 ## <a name="understand-the-provisioning-process"></a>了解预配过程
-此部分介绍示例如何预配大楼的空间图。 
+
+此部分介绍示例如何预配大楼的空间图。
 
 在 Visual Studio Code 中浏览到 **occupancy-quickstart\src\actions** 文件夹，打开 **provisionSample.cs** 文件。 注意以下函数：
 
@@ -136,15 +137,16 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
 ```
 
-此函数使用同一文件夹中的 **provisionSample.yaml**。 打开此文件，注意办公大楼的层次结构：地点、楼层、区域和房间。 任何一个这样的物理空间都可能包含设备和传感器。 每个条目都有预定义的 `type`&mdash;例如楼层和房间。 
+此函数使用同一文件夹中的 [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml)。 打开此文件，注意办公大楼的层次结构：地点、楼层、区域和房间。 任何一个这样的物理空间都可能包含设备和传感器。 每个条目都有预定义的 `type`&mdash;例如楼层和房间。
 
 示例 **yaml** 文件显示一个使用 `Default` 数字孪生对象模型的空间图。 该模型提供适用于大多数类型的通用名称。 通用名称对于大楼来说已足够。 例如，使用“温度”作为 SensorDataType，使用“地图”作为 SpaceBlobType。 例如，子类型为 FocusRoom、ConferenceRoom 等的房间为空间类型。 
 
 如果必须为另一类型的地点（例如工厂）创建空间图，则可能需要另一对象模型。 若要找出可供使用的具体模型，可在适用于预配示例的命令行中运行 `dotnet run GetOntologies` 命令。 
 
-若要详细了解空间图和对象模型，请阅读[了解数字孪生对象模型和空间智能图](concepts-objectmodel-spatialgraph.md)。 
+若要详细了解空间图和对象模型，请阅读[了解数字孪生对象模型和空间智能图](concepts-objectmodel-spatialgraph.md)。
 
 ### <a name="modify-the-sample-spatial-graph"></a>修改示例空间图
+
 **provisionSample.yaml** 文件包含以下节点：
 
 - **resources**：`resources` 节点创建一个 Azure IoT 中心资源，用于与设置中的设备通信。 在图形根节点处的 IoT 中心可以与图形中的所有设备和传感器通信。  
@@ -164,22 +166,22 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
 保存并关闭 provisionSample.yaml 文件。 在下一教程中，将向此文件添加更多的信息，然后预配 Azure 数字孪生示例大楼。
 
+> [!TIP]
+> 可以使用 [Azure 数字孪生图形查看器](https://github.com/Azure/azure-digital-twins-graph-viewer)查看和修改空间图。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 如果不希望继续探索 Azure 数字孪生，可以删除本教程中创建的资源：
 
 1. 在 [Azure 门户](http://portal.azure.com)的左菜单中依次选择“所有资源”、数字孪生资源组、“删除”。
-   
+
     > [!TIP]
     > 如果在删除数字孪生实例时遇到麻烦，请使用已推出的包含修补程序的服务更新。 请重新尝试删除实例。
 
-1. 可以根据需要删除工作计算机上的示例应用程序。 
-
+1. 可以根据需要删除工作计算机上的示例应用程序。
 
 ## <a name="next-steps"></a>后续步骤
 
 若要了解如何实现一个用于监视示例大楼中条件的自定义逻辑，请继续学习此系列中的下一教程： 
 > [!div class="nextstepaction"]
 > [教程：预配大楼并监视工作条件](tutorial-facilities-udf.md)
-

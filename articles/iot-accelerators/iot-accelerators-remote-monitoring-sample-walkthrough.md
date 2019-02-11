@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: f0f43826c50679cb3de88aef466795cbb9e9e76f
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 6e21b1d8905dc0f0eda5b6282e345ef52006a75a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139486"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468023"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>远程监视解决方案加速器概述
 
@@ -24,6 +24,11 @@ ms.locfileid: "50139486"
 * 排查解决方案中的问题。
 * 规划如何根据具体要求自定义该解决方案。
 * 设计使用 Azure 服务的 IoT 解决方案。
+
+GitHub 上提供了远程监视解决方案加速器代码：
+
+* [.NET](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
+* [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
 
 ## <a name="logical-architecture"></a>逻辑体系结构
 
@@ -36,17 +41,17 @@ ms.locfileid: "50139486"
 自 Microsoft 发布第一款解决方案加速器以来，云体系结构已有所演变。 [微服务](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)应运而生，经证实能够在不降低开发速度的情况下实现可伸缩性和灵活性。 有多种 Microsoft 服务在内部使用此体系结构模式，且获得了出色的可靠性和可伸缩性。 更新的解决方案加速器将这些知识付诸实践，使我们也能从中受益。
 
 > [!TIP]
-> 若要详细了解微服务体系结构，请参阅 [.NET Application Architecture](https://www.microsoft.com/net/learn/architecture)（.NET 应用程序体系结构）和 [Microservices: An application revolution powered by the cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)（微服务：由云推动的应用程序革命）。
+> 若要详细了解微服务体系结构，请参阅 [.NET 应用程序体系结构](https://www.microsoft.com/net/learn/architecture)和[微服务：由云驱动的应用程序革命](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)。
 
 ## <a name="device-connectivity"></a>设备连接
 
 该解决方案在逻辑体系结构的设备连接部分中包含以下组件：
 
-### <a name="physical-devices"></a>物理设备
+### <a name="real-devices"></a>实际设备
 
-可将物理设备连接到解决方案。 可以使用 Azure IoT 设备 SDK 实现模拟设备的行为。
+可将实际设备连接到解决方案。 可以使用 Azure IoT 设备 SDK 实现模拟设备的行为。
 
-可以通过解决方案门户中的仪表板预配物理设备。
+可以通过解决方案门户中的仪表板预配实际设备。
 
 ### <a name="device-simulation-microservice"></a>设备模拟微服务
 
@@ -61,7 +66,7 @@ ms.locfileid: "50139486"
 
 ### <a name="iot-hub"></a>IoT 中心
 
-[IoT 中心](../iot-hub/index.yml)将从物理和模拟设备发送的遥测数据引入到云中。 IoT 中心使遥测数据可供 IoT 解决方案后端中的服务进行处理。
+[IoT 中心](../iot-hub/index.yml)将从实际和模拟设备发送的遥测数据引入到云中。 IoT 中心使遥测数据可供 IoT 解决方案后端中的服务进行处理。
 
 此外，解决方案中的 IoT 中心还可以：
 
@@ -130,7 +135,7 @@ ASA 作业将来自已连接设备的遥测数据提供给时序见解以便进�
 
 ### <a name="authentication-and-authorization-microservice"></a>身份验证和授权微服务
 
-[身份验证和授权微服务](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth)管理被授权访问解决方案加速器的用户。 可以使用任何支持 [OpenId Connect](http://openid.net/connect/) 的标识服务提供程序进行用户管理。
+[身份验证和授权微服务](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth)管理被授权访问解决方案加速器的用户。 可以使用任何支持 [OpenId Connect](https://openid.net/connect/) 的标识服务提供程序进行用户管理。
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 

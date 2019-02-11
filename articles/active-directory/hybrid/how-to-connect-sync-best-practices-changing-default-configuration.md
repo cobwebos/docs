@@ -1,28 +1,28 @@
 ---
-title: Azure AD Connect 同步：更改默认配置 | Microsoft 文档
+title: Azure AD Connect 同步：更改默认配置 | Microsoft Docs
 description: 提供有关更改 Azure AD Connect 同步默认配置的最佳实践。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 7638a031-1635-4942-94c3-fce8f09eed5e
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: ad19916dc49c2bee870eef77611d120cc66b44cd
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 1cebd5d049475a5962a87abede449bd6d53f3ee2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306236"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492447"
 ---
-# <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect 同步：有关更改默认配置的最佳实践
+# <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect 同步：更改默认配置的最佳做法
 本主题旨在说明支持和不支持的 Azure AD Connect 同步更改。
 
 通过 Azure AD Connect 创建的配置无需更改即可适用于同步本地 Active Directory 与 Azure AD 的大多数环境。 但是，在某些情况下，有必要将某些更改应用于配置，以满足特殊需求或要求。
@@ -73,5 +73,5 @@ Azure AD Connect 同步在安装向导创建的服务帐户下运行。 此服�
 ## <a name="next-steps"></a>后续步骤
 **概述主题**
 
-* [Azure AD Connect 同步：理解和自定义同步](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同步：了解和自定义同步](how-to-connect-sync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)

@@ -4,22 +4,22 @@ description: 了解如何在 Azure Active Directory 和 Sansan 之间配置单�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: f653a0f2-c44a-4670-b936-68c136b578ea
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: cc070f7c4cb201e68c93b0b1337982325df74663
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: df4f4e0ac1500e8bd9ca0dc73f78da21c9e28715
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051255"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159845"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sansan"></a>教程：Azure Active Directory 与 Sansan 集成
 
@@ -137,7 +137,7 @@ ms.locfileid: "39051255"
 
     ![配置单一登录对象](./media/sansan-tutorial/tutorial_sansan_objid.png)  
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 转到“Sansan”应用程序的“属性”页，使用“复制”按钮复制对象 ID 并将其粘贴到记事本中。
+    a. 转到“Sansan”应用程序的“属性”页，使用“复制”按钮复制对象 ID 并将其粘贴到记事本中。
 
     b. 从 Azure 门户复制的对象 ID 将在本教程后面用作 PowerShell 脚本中的 ServicePrincipalObjectId。 
 
@@ -150,7 +150,7 @@ ms.locfileid: "39051255"
 
     e. 使用以下脚本向应用程序更新多个 URL：
 
-    ```poweshell
+    ```powershell
      Param(
     [Parameter(Mandatory=$true)][guid]$ServicePrincipalObjectId,
     [Parameter(Mandatory=$false)][string[]]$ReplyUrls,
@@ -224,7 +224,7 @@ ms.locfileid: "39051255"
  
     ![创建 Azure AD 测试用户](./media/sansan-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -279,7 +279,7 @@ ms.locfileid: "39051255"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

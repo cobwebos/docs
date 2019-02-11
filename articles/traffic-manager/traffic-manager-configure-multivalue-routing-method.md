@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 流量管理器中配置多值流量路由方法 | Microsoft Docs
+title: 在 Azure 流量管理器中配置多值流量路由方法
 description: 本文介绍如何配置流量管理器以将流量路由到 A/AAAA 终结点。
 services: traffic-manager
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: kumud
-ms.openlocfilehash: d9a0342332c2483b859e916b50fd05c9cb1e3395
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 40b266c92a86006746ab5341ac5fa1d785ee6032
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986757"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197162"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>在流量管理器中配置多值路由方法
 
@@ -39,6 +39,7 @@ ms.locfileid: "49986757"
 
 1. 在屏幕左上方，选择“创建资源” > “网络” > “流量管理器配置文件” > “创建”。
 2. 在“创建流量管理器配置文件”中输入或选择以下信息，接受其余设置的默认值，然后选择“创建”：
+    
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 名称                   | 此名称必须在 trafficmanager.net 区域中唯一，并可生成用于访问流量管理器配置文件的 DNS 名称 (trafficmanager.net)。                                   |
@@ -46,9 +47,9 @@ ms.locfileid: "49986757"
     | 订阅            | 选择订阅。                          |
     | 资源组          | 选择“myResourceGroupTM1”。 |
     | 位置                | 此设置指的是资源组的位置，对将全局部署的流量管理器配置文件没有影响。                              |
-    |
+   |        |           | 
   
-    ![创建流量管理器配置文件](./media/traffic-manager-multivalue-routing-method/create-traffic-manager-profile.png)
+  ![创建流量管理器配置文件](./media/traffic-manager-multivalue-routing-method/create-traffic-manager-profile.png)
 
 ## <a name="add-traffic-manager-endpoints"></a>添加流量管理器终结点
 
@@ -68,7 +69,7 @@ ms.locfileid: "49986757"
 4. 重复步骤 2 和 3 以添加名为“myEndpoint2”的另一个终结点，在“完全限定的域名 (FQDN) 或 IP”处，输入第二个终结点的公共 IP 地址。
 5.  添加完这两个终结点后，这两个终结点会显示在“流量管理器配置文件”中，并且其监视状态为“联机”。
 
-    ![添加流量管理器终结点](./media/traffic-manager-multivalue-routing-method/add-endpoint.png)
+   ![添加流量管理器终结点](./media/traffic-manager-multivalue-routing-method/add-endpoint.png)
  
 ## <a name="next-steps"></a>后续步骤
 

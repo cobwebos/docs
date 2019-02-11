@@ -5,18 +5,19 @@ services: traffic-manager
 documentationcenter: ''
 author: kumudd
 ms.service: traffic-manager
+manager: twooley
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: kumud
-ms.openlocfilehash: 19f8f1f89031ba392b8d986fbcb0725c5c8f212f
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 01c295ac12886e9a3a93cfbf5f4f3e96545cd5ec
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138474"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229501"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>管理 Azure 流量管理器配置文件
 

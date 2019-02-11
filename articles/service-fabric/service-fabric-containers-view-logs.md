@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/15/2018
 ms.author: twhitney
-ms.openlocfilehash: 85623f5acfb33d73774e5898e3f8937b4e07a5a9
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: d66e27d860d18a37ffd9c6355b8d769116f26d73
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299072"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391249"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>查看 Service Fabric 容器服务的日志
 Azure Service Fabric 是一种容器业务流程协调程序，支持 [Linux 和 Windows 容器](service-fabric-containers-overview.md)。  本文介绍如何查看正在运行的容器服务或不活动容器的容器日志，以便诊断和排查问题。
@@ -44,6 +44,8 @@ Azure Service Fabric 是一种容器业务流程协调程序，支持 [Linux 和
 
 ContainersRetentionCount 设置指定在容器故障时需保留的容器数。 如果指定一个负值，则会保留所有故障容器。 如果不指定 ContainersRetentionCount 属性，则不会保留任何容器。 ContainersRetentionCount 属性还支持应用程序参数，因此用户可以为测试性群集和生产群集指定不同的值。 使用此功能时可使用放置约束，将容器服务的目标设置为特定的节点，防止将容器服务移至其他节点。 使用此功能保留的容器必须手动删除。
 
+设置 **RunInteractive** 与 Docker 的 `--interactive` 和 `tty` [标志](https://docs.docker.com/engine/reference/commandline/run/#options)相对应。 在清单文件中将此设置设为 true 时，这些标志用于启动容器。  
+
 ### <a name="rest"></a>REST
 使用[获取部署在节点上的容器日志](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode)操作，来获取故障容器的日志。 指定运行该容器的节点名称、应用程序名称、服务清单名称和代码包名称。  指定 `&Previous=true`。 该响应将包含该代码包实例中不活动容器的容器日志。
 
@@ -64,10 +66,10 @@ GET http://localhost:19080/Nodes/_Node_0/$/GetApplications/SimpleHttpServerApp/$
 ```
 
 ### <a name="service-fabric-sfctl"></a>Service Fabric (SFCTL)
-使用 [sfctl service get-container-logs](service-fabric-sfctl-service.md) 命令来提取故障容器的日志。  指定运行该容器的节点名称、应用程序名称、服务清单名称和代码包名称。 指定 `-previous` 标志。  该响应将包含该代码包实例中不活动容器的容器日志。
+使用 [sfctl service get-container-logs](service-fabric-sfctl-service.md) 命令来提取故障容器的日志。  指定运行该容器的节点名称、应用程序名称、服务清单名称和代码包名称。 指定 `--previous` 标志。  该响应将包含该代码包实例中不活动容器的容器日志。
 
 ```
-sfctl service get-container-logs --node-name _Node_0 --application-id SimpleHttpServerApp --service-manifest-name SimpleHttpServerSvcPkg --code-package-name Code –previous
+sfctl service get-container-logs --node-name _Node_0 --application-id SimpleHttpServerApp --service-manifest-name SimpleHttpServerSvcPkg --code-package-name Code –-previous
 ```
 响应：
 ```json

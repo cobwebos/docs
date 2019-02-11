@@ -6,21 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: d10ca5d704892ae0a1494d729b46abf0fc06aa64
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: b2f8a299dfc52bcc1f2eaa17e658b841d27bf62c
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092246"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54154923"
 ---
-# <a name="azure-data-box-disk-system-requirements-preview"></a>Azure Data Box 磁盘系统要求（预览版）
+# <a name="azure-data-box-disk-system-requirements"></a>Azure Data Box Disk 系统要求
 
 本文介绍了 Microsoft Azure Data Box 磁盘解决方案以及连接到 Data Box 磁盘的客户端的重要系统要求。 建议在部署 Data Box 磁盘之前仔细查看信息，然后在部署和后续操作期间根据需要重新参考。
-
-> [!IMPORTANT]
-> Data Box 磁盘以预览版提供。 在部署此解决方案之前，请查看[预览版的使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
 
 系统要求包括连接到磁盘的客户端支持的平台、支持的存储帐户和存储类型。
 
@@ -61,6 +58,9 @@ ms.locfileid: "49092246"
 | --- | --- |
 | 经典 | 标准 |
 | 常规用途  |标准；同时支持 V1 和 V2。 同时支持热层和冷层。 |
+
+>[!NOTE]
+> 不支持 Azure Data Lake Storage Gen 2 帐户。
 
 
 ## <a name="supported-storage-types"></a>支持的存储类型

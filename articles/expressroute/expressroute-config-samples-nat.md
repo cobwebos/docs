@@ -1,28 +1,23 @@
 ---
-title: ExpressRoute 客户路由器配置示例 | Microsoft Docs
+title: 路由器配置示例 – NAT – Azure ExpressRoute | Microsoft Docs
 description: 本页提供 Cisco 和 Juniper 路由器的路由器配置示例。
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: carmonm
-editor: ''
-ms.assetid: d6ea716f-d5ee-4a61-92b0-640d6e7d6974
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 12/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: 83a7da2db537a3c900e90432455d59e8ac56d917
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: 9764a03b0f3a3f70e59097359d5a714da821d3b1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23012972"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105982"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>用于设置和管理 NAT 的路由器配置示例
-本页提供 Cisco ASA 和 Juniper SRX 系列路由器的 NAT 配置示例。 这些示例仅供指导，不能按原样使用。 可以与供应商合作，以便为网络指定适当的配置。 
+
+本页提供处理 ExpressRoute 时适用于 Cisco ASA 和 Juniper SRX 系列路由器的 NAT 配置示例。 这些示例仅供指导，不能按原样使用。 可以与供应商合作，以便为网络指定适当的配置。
 
 > [!IMPORTANT]
 > 本页中的示例仅供指导。 必须与供应商的销售/技术团队和网络团队合作，以便指定符合需要的适当配置。 对于本页中所列配置的相关问题，Microsoft 将不提供支持。 有关支持问题，必须与设备供应商联系。

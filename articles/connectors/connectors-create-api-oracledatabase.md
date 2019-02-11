@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 78ac8f83bceef88e89edefa0eececb058e8efe2b
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 9d606dd4faf324d68e4365eae0802de2384471ab
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230227"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295350"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle 数据库连接器入门
 
@@ -101,21 +101,21 @@ ms.locfileid: "50230227"
 
 **缓解措施**：请确保网关正在安装了该网关的本地计算机上运行，并确保该网关可以连接到 Internet。  建议不要将网关安装在可能会关闭或进入睡眠状态的计算机上。 还可以重新启动本地数据网关服务 (PBIEgwService)。
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**错误**：要使用的提供程序已弃用：“System.Data.OracleClient 需要 Oracle 客户端软件 8.1.7 或更高版本”。 请参阅 [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) 安装正式的提供程序。
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**错误**：所使用的提供程序已弃用：“System.Data.OracleClient 需要 Oracle 客户端软件 8.1.7 版或更高版本”。 请参阅 [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) 安装正式的提供程序。
 
-**原因**：Oracle 客户端 SDK 未与正在运行的本地数据网关安装在同一计算机上。  
+**原因**：Oracle 客户端 SDK 未安装在运行本地数据网关的计算机上。  
 
-**解决方案**：下载 Oracle 客户端 SDK 并将其与本地数据网关安装在同一计算机上。
+**解决方法**：下载 Oracle 客户端 SDK 并将其与本地数据网关安装在同一计算机上。
 
-#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**错误**：表“[表名]”未定义任何键列。
+#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**错误**：表“[表名]”未定义任何键列
 
-**原因**：该表没有任何主键。  
+**原因**：该表没有主键。  
 
-**解决方案**：Oracle 数据库连接器要求使用包含主键列的表。
+**解决方法**：Oracle Database 连接器要求使用包含主键列的表。
 
 #### <a name="currently-not-supported"></a>目前不受支持。
 
-* 视图和存储过程 
+* 视图 
 * 包含复合键的任意表
 * 表中的嵌套对象类型
  
