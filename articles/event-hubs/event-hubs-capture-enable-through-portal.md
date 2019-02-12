@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.custom: seodec18
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/06/2018
+ms.date: 02/06/2019
 ms.author: shvija
-ms.openlocfilehash: 19b485add894dbe99a524d16f891d001991c1ec7
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 2cfd984129097b598c08e53b3698dc32ed616cca
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558373"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810654"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>启用捕获通过 Azure 事件中心流式处理的事件
 
@@ -37,6 +37,9 @@ Azure [事件中心捕获][capture-overview]用于自动将事件中心的流式
 默认时间段为 5 分钟。 最小值为 1，最大值为 15。 **大小**窗口的范围为 10-500 MB。
 
 ![捕获的时间范围][1]
+
+> [!NOTE]
+> 可以允许或禁止当捕获时间段内未发生任何事件时发出空文件。 
 
 ## <a name="capture-data-to-an-azure-data-lake-store-account"></a>将数据捕获到 Azure Data Lake Store 帐户
 

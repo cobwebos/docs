@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: f0e8bf922f142b795dd1a2ded4b3ec265c43481a
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: bd9cb76557c65832de5d249cdccdc36101edf646
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249913"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821280"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub-public-preview"></a>教程：为 IoT 中心执行手动故障转移（公共预览版）
 
@@ -50,9 +50,9 @@ ms.locfileid: "39249913"
     **区域**：选择离你近的属于预览版一部分的区域。 本教程使用 `westus2`。 只能在 Azure 异地配对区域之间执行故障转移。 与 westus2 异地配对的区域是 WestCentralUS。
     
    > [!NOTE]
-   > 手动故障转移目前为公共预览版，在以下 Azure 区域不可用：美国东部、美国西部、北欧、西欧、巴西南部、美国中南部。
+   > 手动故障转移目前为公共预览版，在以下 Azure 区域中不可用：美国东部、美国西部、北欧、西欧、巴西南部和美国中南部。
 
-   **Iot 中心名称**：指定 IoT 中心的名称。 该中心名称必须全局唯一。 
+   **Iot 中心名称**：指定 IoT 中心的名称。 该中心名称必须在全局中独一无二。 
 
    ![显示用于创建 IoT 中心的“基本信息”窗格的屏幕截图](./media/tutorial-manual-failover/create-hub-02-basics.png)
 
@@ -76,11 +76,11 @@ ms.locfileid: "39249913"
 
    ![显示“手动故障转移”窗格的屏幕截图](./media/tutorial-manual-failover/trigger-failover-02.png)
 
-3. 在“手动故障转移”窗格顶部单击“启动故障转移”。 此时会看到“确认手动故障转移”窗格。 填充 IoT 中心的名称，确认它是需要进行故障转移的。 然后，若要启动故障转移，请单击“确定”。
+3. 在“手动故障转移”窗格顶部单击“启动故障转移”。 此时会看到“确认手动故障转移”窗格。 填充 IoT 中心的名称，确认是它需要故障转移。 然后，若要启动故障转移，请单击“确定”。
 
    执行手动故障转移所需时间与中心的已注册设备数成正比。 例如，如果有 1 百万台设备，可能需要 15 分钟，但如果有 5 百万台设备，则可能需要 1 小时或更长的时间。
 
-4. 在“确认手动故障转移”窗格中填充 IoT 中心的名称，确认它是需要进行故障转移的。 然后，若要启动故障转移，请单击“确定”。 
+4. 在“确认手动故障转移”窗格中填充 IoT 中心的名称，确认是它需要故障转移。 然后，若要启动故障转移，请单击“确定”。 
 
    ![显示“手动故障转移”窗格的屏幕截图](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
 
@@ -108,15 +108,15 @@ ms.locfileid: "39249913"
 
 3. 在“手动故障转移”窗格顶部单击“启动故障转移”。 此时会看到“确认手动故障转移”窗格。 
 
-4. 在“确认手动故障转移”窗格中填充 IoT 中心的名称，确认它是需要进行故障回复的。 然后，若要启动故障回复，请单击“确定”。 
+4. 在“确认手动故障转移”窗格中填充 IoT 中心的名称，确认是它需要故障回复。 然后，若要启动故障回复，请单击“确定”。 
 
    ![手动故障回复请求的屏幕截图](./media/tutorial-manual-failover/trigger-failback-01-regions.png)
 
-   横幅会如[执行故障转移](#perform-a-failover)部分所述一样显示。 故障回复完成之后，它会将 `westus2` 显示为主位置，将 `WestCentralUS` 显示为辅助位置，就像初始设置的一样。
+   横幅会如“执行故障转移”部分所述一样显示。 故障回复完成之后，它会将 `westus2` 显示为主位置，将 `WestCentralUS` 显示为辅助位置，就像初始设置的一样。
 
 ## <a name="clean-up-resources"></a>清理资源 
 
-若要删除为本教程创建的资源，请删除资源组。 此操作会一并删除组中包含的所有资源。 在这种情况下，它会删除 IoT 中心和资源组本身。 
+若要删除为本教程创建的资源，请删除资源组。 此操作会一并删除组中包含的所有资源。 在本示例中，它会删除 IoT 中心和资源组本身。 
 
 1. 单击“资源组”。 
 

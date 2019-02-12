@@ -10,12 +10,12 @@ ms.subservice: custom-decision-service
 ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: 1589ef94946a6396ee51b8fecfe2ed3e80db08e5
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fce90c05fb2e79be23cfd7a58875f8cb6b3ddbf7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212216"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819767"
 ---
 # <a name="tutorial-article-personalization-for-contextual-decision-making"></a>教程：帮助作出上下文决策的文章个性化
 
@@ -44,7 +44,7 @@ ms.locfileid: "55212216"
 </channel></rss>
 ```
 
-顺序文章非常重要。 它指定默认排名，这是文章排序方式的最佳猜测。 然后，在[仪表板](#performance-dashboard)上使用默认排名进行性能比较。
+顺序文章非常重要。 它指定默认排名，这是文章排序方式的最佳猜测。 然后，在仪表板上使用默认排名进行性能比较。
 
 有关源格式的详细信息，请参阅 [API 参考](custom-decision-service-api-reference.md#action-set-api-customer-provided)。
 

@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: sngun
-ms.openlocfilehash: b9ea87b3a56c4759a0d96b7d01e33087c64ccd91
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 631642f487986e3315c1988f8b591f6e6b43d760
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037545"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561360"
 ---
 # <a name="azure-cosmos-db-build-a-sql-api-app-with-python-and-the-azure-portal"></a>Azure Cosmos DB：使用 Python 和 Azure 门户生成 SQL API 应用
 
@@ -75,7 +75,27 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-python-getting-started.git
     ```  
-    
+
+## <a name="update-your-connection-string"></a>更新连接字符串
+
+现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
+
+1. 在 [Azure 门户](https://portal.azure.com/)中，在你的 Azure Cosmos DB 帐户中，单击左侧导航栏中的“密钥”。 在下一步骤中你将使用屏幕右侧的复制按钮将 **URI** 和**主密钥**复制到 `CosmosGetStarted.py` 文件中。
+
+    ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-sql-api-dotnet/keys.png)
+
+2. 在 Visual Studio Code 中打开 C:\git-samples\azure-cosmos-db-python-getting-started 中的 `CosmosGetStarted.py` 文件。
+
+3. 从门户中复制 **URI** 值（使用复制按钮），并在 ``CosmosGetStarted.py`` 中将其设为**终结点**密钥的值。 
+
+    `'ENDPOINT': 'https://FILLME.documents.azure.com',`
+
+4. 然后从门户中复制“主密钥”值，并在 ``CosmosGetStarted.py`` 中将其设为 **config.PRIMARYKEY** 的值。 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
+
+    `'PRIMARYKEY': 'FILLME',`
+
+5. 保存 ``CosmosGetStarted.py`` 文件。
+
 ## <a name="review-the-code"></a>查看代码
 
 此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 
@@ -84,7 +104,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 以下代码片段全部摘自 `CosmosGetStarted.py` 文件。
 
-* 对 CosmosClient 进行初始化。
+* 对 CosmosClient 进行初始化。 请确保更新“Endpoint”和“masterkey”值，如[更新连接字符串](#update-your-connection-string)部分中所述。 
 
     ```python
     # Initialize the Cosmos client
@@ -146,27 +166,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     for item in iter(result_iterable):
         print(item['message'])
     ```
-
-## <a name="update-your-connection-string"></a>更新连接字符串
-
-现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
-
-1. 在 [Azure 门户](https://portal.azure.com/)中，在你的 Azure Cosmos DB 帐户中，单击左侧导航栏中的“密钥”。 在下一步骤中你将使用屏幕右侧的复制按钮将 **URI** 和**主密钥**复制到 `CosmosGetStarted.py` 文件中。
-
-    ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-sql-api-dotnet/keys.png)
-
-2. 在 Visual Studio Code 中打开 C:\git-samples\azure-cosmos-db-python-getting-started 中的 `CosmosGetStarted.py` 文件。
-
-3. 从门户中复制 **URI** 值（使用复制按钮），并在 ``CosmosGetStarted.py`` 中将其设为**终结点**密钥的值。 
-
-    `'ENDPOINT': 'https://FILLME.documents.azure.com',`
-
-4. 然后从门户中复制“主密钥”值，并在 ``CosmosGetStarted.py`` 中将其设为 **config.PRIMARYKEY** 的值。 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
-
-    `'PRIMARYKEY': 'FILLME',`
-
-5. 保存 ``CosmosGetStarted.py`` 文件。
-    
+   
 ## <a name="run-the-app"></a>运行应用
 
 1. 在 Visual Studio Code 中，选择“视图”>“命令面板”。 

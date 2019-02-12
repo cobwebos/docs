@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/30/2019
-ms.openlocfilehash: 1fe92f5632544f21506bd19a52a59ed75cabe3b3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2ea87b36d8b489abf59ac4550121369a2ddf540f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461196"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752511"
 ---
 # <a name="tutorial-secure-a-standalone-or-pooled-database"></a>教程：保护独立数据库或入池数据库
 
@@ -45,7 +45,7 @@ Azure SQL 数据库允许你通过以下方式确保独立数据库或入池数�
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 - Azure SQL 服务器和数据库
-  - 通过 [Azure 门户](sql-database-get-started-portal.md)、[CLI](sql-database-cli-samples.md) 或 [PowerShell](sql-database-powershell-samples.md) 创建它们
+  - 通过 [Azure 门户](sql-database-single-database-get-started.md)、[CLI](sql-database-cli-samples.md) 或 [PowerShell](sql-database-powershell-samples.md) 创建它们
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -64,7 +64,7 @@ SQL 数据库受 Azure 中的防火墙保护。 默认情况下，将拒绝与�
 
 ### <a name="set-up-sql-database-server-firewall-rules"></a>设置 SQL 数据库服务器防火墙规则
 
-服务器级防火墙规则适用于同一 SQL 数据库服务器中的所有数据库。
+服务器级 IP 防火墙规则适用于同一 SQL 数据库服务器中的所有数据库。
 
 若要设置服务器级防火墙规则，请执行以下操作：
 
@@ -231,7 +231,7 @@ Azure Active Directory 身份验证要求将数据库用户作为包含的用户
 
 ## <a name="enable-security-features"></a>启用安全功能
 
-Azure SQL 数据库提供可以通过 Azure 门户访问的安全功能。 这些功能适用于数据库和服务器，数据掩码功能除外，该功能只能在数据库上使用。 若要了解详细信息，请参阅[高级数据安全](sql-advanced-threat-protection.md)、[审核](sql-database-auditing.md)、[动态数据掩码](sql-database-dynamic-data-masking-get-started.md)和[透明数据加密](transparent-data-encryption-azure-sql.md)。
+Azure SQL 数据库提供可以通过 Azure 门户访问的安全功能。 这些功能适用于数据库和服务器，数据掩码功能除外，该功能只能在数据库上使用。 若要了解详细信息，请参阅[高级数据安全](sql-database-advanced-data-security.md)、[审核](sql-database-auditing.md)、[动态数据掩码](sql-database-dynamic-data-masking-get-started.md)和[透明数据加密](transparent-data-encryption-azure-sql.md)。
 
 ### <a name="advanced-data-security"></a>高级数据安全
 

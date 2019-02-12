@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 57388b4e2f74a1e9e8d9c322020077dfd67e89c1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1ee28d04bfce00a6fe47d6914b75cfd7b18e634d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198140"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816537"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>什么是计算机视觉 API 版本 1.0？
 
@@ -26,17 +26,17 @@ ms.locfileid: "55198140"
 >- [计算机视觉 API 版本 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
 
 使用基于云的计算机视觉 API，开发人员可以访问用于处理图像并返回信息的高级算法。 通过上传图像或指定图像 URL，Microsoft 计算机视觉算法可以基于输入和用户选择以不同方式分析可视内容。 使用计算机视觉 API，用户可以分析图像，以便：
-* [基于内容标记图像。](#Tagging)
-* [对图像进行分类。](#Categorizing)
-* [标识图像的类型和质量。](#Identifying)
+* 基于内容标记图像。
+* 对图像进行分类。
+* 标识图像的类型和质量。
 * [检测人脸并返回其坐标。](#Faces)
-* [识别特定于域的内容。](#Domain-Specific)
-* [生成内容说明。](#Descriptions)
-* [使用光学字符识别标识图像中找到的打印文本。](#OCR)
-* [识别手写的文本。](#RecognizeText)
-* [区分配色方案。](#Color)
-* [标志成人内容。](#Adult)
-* [裁剪要用作缩略图的照片。](#Thumbnails)
+* 识别特定于域的内容。
+* 生成内容说明。
+* 使用光学字符识别标识图像中找到的打印文本。
+* 识别手写的文本。
+* 区分配色方案。
+* 标志成人内容。
+* 裁剪要用作缩略图的照片。
 
 ## <a name="requirements"></a>要求
 * 支持的输入方法：原始图像二进制，采用应用程序/业务流程流或图像 URL 的形式。

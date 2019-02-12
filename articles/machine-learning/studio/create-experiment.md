@@ -1,10 +1,22 @@
 ---
-title:简单试验 titleSuffix:Azure 机器学习工作室 description:本机器学习教程逐步讲解如何轻松完成数据科研试验。 使用回归算法预测汽车价格。
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: tutorial
-
-author: garyericson ms.author: garye ms.custom: seodec18 ms.date:03/20/2017
+title: 简单试验
+titleSuffix: Azure Machine Learning Studio
+description: 本机器学习教程逐步讲解如何轻松完成数据科研试验。 使用回归算法预测汽车价格。
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: tutorial
+author: garyericson
+ms.author: garye
+ms.custom: seodec18
+ms.date: 03/20/2017
+ms.openlocfilehash: be52f5fbe6c7d282a50e53c4326478b937ea8081
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488369"
 ---
-
 # <a name="tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>教程：在 Azure 机器学习工作室中创建你的第一个数据科学试验
 
 本教程适合从未使用过 **Azure 机器学习工作室**的用户。
