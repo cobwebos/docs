@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 01/15/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 3ceb7585a26290985cd5a2c523ad8094b1d1a40a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5f0358bf58e61632fdeef8363d24b39c2cf2ebf0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194230"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811420"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>使用 PowerShell cmdlet 管理 Batch 资源
 
@@ -267,7 +267,7 @@ New-AzBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -CloudServi
 有关应用程序包的详细信息，可参阅[使用 Batch 应用程序包将应用程序部署到计算节点](batch-application-packages.md)。
 
 > [!IMPORTANT]
-> 要使用应用程序包，必须 [将 Azure 存储帐户链接到](#linked-storage-account-autostorage) Batch 帐户。
+> 必须将一个 Azure 存储帐户链接到你的 Batch 帐户才能使用应用程序包。
 
 ### <a name="update-a-pools-application-packages"></a>更新池的应用程序包
 

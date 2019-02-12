@@ -12,14 +12,14 @@ ms.workload: na
 ms.date: 06/21/2018
 ms.author: dobett
 ms.custom: mvc
-ms.openlocfilehash: bc1887ef3cdbc56732317aea15be7a618c35847e
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 20891b0d73783c9b68a42ecfed130e377b6f8eab
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003570"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729806"
 ---
-# <a name="tutorial-implement-a-device-firmware-update-process"></a>教程：实施设备固件更新过程
+# <a name="tutorial-implement-a-device-firmware-update-process"></a>教程：实现设备固件更新过程
 
 可能需要更新连接到 IoT 中心的设备上的固件。 例如，可能需要向固件添加新功能，或者需要应用安全修补程序。 在许多 IoT 方案中，以物理方式访问设备并以手动方式对设备应用固件更新是不现实的。 本教程介绍如何通过连接到中心的后端应用程序以远程方式启动并监视固件更新过程。
 
@@ -73,7 +73,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later
-az iot hub show-connection-string --hub-name $hub-name -o table
+az iot hub show-connection-string --hub-name $hubname -o table
 
 ```
 

@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 10/10/2018
-ms.openlocfilehash: e9baf8c838da2201fbb588d278cbf1ce5bbe6354
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 02/04/2019
+ms.openlocfilehash: 041d9b76c899c33e551b57bbbf42d0fa82b5e537
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713313"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692901"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-managed-instance-offline-using-dms"></a>教程：使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库托管实例
 可使用 Azure 数据库迁移服务将数据库从本地 SQL Server 实例迁移到 [Azure SQL 数据库托管实例](../sql-database/sql-database-managed-instance.md)。 有关需要一些手动工作量的其他方法，请参阅[将 SQL Server 实例迁移到 Azure SQL 数据库托管实例](../sql-database/sql-database-managed-instance-migrate.md)。
@@ -131,6 +131,9 @@ ms.locfileid: "53713313"
 4. 在“选择源数据库”屏幕上，选择用于迁移的“Adventureworks2012”数据库。
 
    ![选择源数据库](media/tutorial-sql-server-to-managed-instance/dms-source-database1.png)
+
+    > [!IMPORTANT]
+    > 如果使用了 SQL Server Integration Services (SSIS)，DMS 当前不支持将 SSIS 项目/包的目录数据库 (SSISDB) 从 SQL Server 迁移到 Azure SQL 数据库托管实例。 但是，你可以在 Azure 数据工厂 (ADF) 中预配 SSIS 并将 SSIS 项目/包重新部署到由 Azure SQL 数据库托管实例承载的目标 SSISDB。 有关迁移 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 包迁移到 Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)。
 
 5. 选择“保存”。
 

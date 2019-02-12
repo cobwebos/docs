@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c9759b8900f0579ccd56d001d50d65aedce2b445
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 1480032b7ff018081d9dc25038bf336740810079
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716032"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657553"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>教程：在用于容器的 Web 应用中创建多容器（预览版）应用
 
@@ -37,6 +37,11 @@ ms.locfileid: "53716032"
 > * 排查错误
 
 [!INCLUDE [Free trial note](../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="preview-feature-limitations"></a>预览版功能限制
+多容器目前为预览版，不支持以下应用服务平台功能。 我们预计在正式发布版 (GA) 推出之前为多容器 Web 应用启用这些功能：
+* 身份验证/授权
+* 托管标识
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -120,8 +125,8 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 * command
 * entrypoint
-* 环境
-* 图像
+* environment
+* image
 * ports
 * restart
 * services

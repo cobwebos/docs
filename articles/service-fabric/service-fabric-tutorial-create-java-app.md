@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: e4552157cab846356c57a135d4e273f5a545bce9
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 619f77b6b50a005b4b5cc688bdbf32d1ce3dce26
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667211"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810808"
 ---
 # <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>教程：在 Service Fabric 上创建包含 Java Web API 前端服务和有状态后端服务的应用程序
 
@@ -228,7 +228,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 
 HTTP 通信侦听器充当一个控制器，可设置 HTTP 服务器并公开用于定义投票操作的 API。 右键单击 *VotingWeb/src/statelessservice* 文件夹中的 *statelessservice* 包，然后选择“新建”>“文件”。  将文件命名为 *HttpCommunicationListener.java*，然后单击“完成”。
 
-将文件内容替换为以下内容，然后保存所做更改。  稍后在[更新 HttpCommunicationListener.java 文件](#updatelistener_anchor)时会修改此文件，以便呈现、读取和写入来自后端服务的投票数据。  目前，此侦听器会直接返回 Voting 应用的静态 HTML。
+将文件内容替换为以下内容，然后保存所做更改。  稍后在更新 HttpCommunicationListener.java 文件时会修改此文件，以便呈现、读取和写入来自后端服务的投票数据。  目前，此侦听器会直接返回 Voting 应用的静态 HTML。
 
 ```java
 // ------------------------------------------------------------
@@ -891,7 +891,7 @@ class VotingDataService extends StatefulService implements VotingRPC {
 
 2. 运行本地 Service Fabric 群集。 此步骤取决于开发环境（Mac 或 Linux）。
 
-    如果运行的是 Mac，则请通过以下命令运行本地群集：将传入到 **-v** 参数中的命令替换为你自己的工作区的路径。
+    如果使用的是 Mac，则使用以下命令运行本地群集：将传递到 **-v** 参数的命令替换为你自己的工作区的路径。
 
     ```bash
     docker run -itd -p 19080:19080 -p 8080:8080 -p --name sfonebox servicefabricoss/service-fabric-onebox

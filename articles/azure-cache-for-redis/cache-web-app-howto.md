@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: fd5a995bf03d530ccbcf9b839ccc840d202b47d6
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: d80a10bea58fdcd5b20e24f9f8ba633f2714d55c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556181"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822572"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>快速入门：创建 ASP.NET Web 应用 
 
@@ -46,7 +46,7 @@ ms.locfileid: "53556181"
 
     ![创建项目](./media/cache-web-app-howto/cache-create-project.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“模板”列表中展开“Visual C#”节点。
+    a. 在“模板”列表中展开“Visual C#”节点。
 
     b. 选择“云”。
 
@@ -98,9 +98,9 @@ ms.locfileid: "53556181"
 在本部分，请对应用程序进行更新，使之支持一个新视图，该视图显示针对 Azure Redis 缓存执行的一项简单测试。
 
 * [使用缓存的应用设置更新 web.config 文件](#Update-the-webconfig-file-with-an-app-setting-for-the-cache)
-* [将应用程序配置为使用 StackExchange.Redis 客户端](#configure-the-application-to-use-stackexchangeredis)
-* [更新 HomeController 和布局](#update-the-homecontroller-and-layout)
-* [添加新的 RedisCache 视图](#add-a-new-rediscache-view)
+* 将应用程序配置为使用 StackExchange.Redis 客户端
+* 更新 HomeController 和布局
+* 添加新的 RedisCache 视图
 
 ### <a name="update-the-webconfig-file-with-an-app-setting-for-the-cache"></a>使用缓存的应用设置更新 web.config 文件
 
@@ -274,7 +274,7 @@ ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中�
 
 3. 在“创建应用服务”对话框中进行以下更改：
 
-    | 设置 | 建议的值 | Description |
+    | 设置 | 建议的值 | 说明 |
     | ------- | :---------------: | ----------- |
     | **应用名称** | 使用默认值。 | 应用名称是应用部署到 Azure 时对应的主机名。 如果需要让该名称保持唯一，可在其后添加一个时间戳后缀。 |
     | **订阅** | 选择自己的 Azure 订阅。 | 将对此订阅收取任何相关的托管费用。 如果有多个 Azure 订阅，请验证是否选择了所需的订阅。|

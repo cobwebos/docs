@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: e7cb8b2d699418b4d70d60f19a3a60ce0c7b8d38
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 566523b1ca461d6a8a0ffaf8830481e5dc3ce26f
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888662"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770361"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-applications-preview"></a>快速入门：使用 C# 应用程序代理通过 IoT 中心设备流实现 SSH/RDP 方案（预览）
 
@@ -36,9 +36,9 @@ ms.locfileid: "54888662"
 
 2. 设备本地代理完成流发起握手，并通过 IoT 中心的流式处理终结点与服务端建立端到端的流式处理隧道。
 
-3. 设备本地代理连接到侦听设备端口 22（此端口可配置，[如下](#run-the-device-side-application)所述）的 SSH 守护程序 (SSHD)。
+3. 设备本地代理连接到侦听设备端口 22（此端口可配置，[如下](#run-the-device-local-proxy)所述）的 SSH 守护程序 (SSHD)。
 
-4. 服务本地代理通过侦听指定的端口（在本例中为端口 2222，此端口也可配置，[如下](#run-the-service-side-application)所述），等待用户建立新的 SSH 连接。 当用户通过 SSH 客户端连接时，该隧道使应用程序流量可在 SSH 客户端与服务器程序之间进行交换。
+4. 服务本地代理通过侦听指定的端口（在本例中为端口 2222，此端口也可配置，[如下](#run-the-service-local-proxy)所述），等待用户建立新的 SSH 连接。 当用户通过 SSH 客户端连接时，该隧道使应用程序流量可在 SSH 客户端与服务器程序之间进行交换。
 
 > [!NOTE]
 > 通过该流发送的 SSH 流量将通过 IoT 中心的流式处理终结点以隧道方式进行传输，而不是直接在服务与设备之间发送。 这就带来了[这些优势](./iot-hub-device-streams-overview.md#benefits)。
@@ -110,32 +110,6 @@ dotnet --version
 
 ## <a name="ssh-to-a-device-via-device-streams"></a>使用 SSH 通过设备流连接到设备
 
-### <a name="run-the-service-side-proxy"></a>运行服务端代理
-
-导航到解压缩的项目文件夹中的 `device-streams-proxy/service`。 需要准备好以下信息：
-
-| 参数名称 | 参数值 |
-|----------------|-----------------|
-| `iotHubConnectionString` | IoT 中心的服务连接字符串。 |
-| `deviceId` | 前面创建的设备标识符。 |
-| `localPortNumber` | SSH 客户端要连接到的本地端口。 本示例使用端口 2222，但可以修改为其他任意端口号。 |
-
-按如下所示编译并运行代码：
-
-```
-cd ./iot-hub/Quickstarts/device-streams-proxy/service/
-
-# Build the application
-dotnet build
-
-# Run the application
-# In Linux/MacOS
-dotnet run $serviceConnectionString MyDevice 2222
-
-# In Windows
-dotnet run %serviceConnectionString% MyDevice 2222
-```
-
 ### <a name="run-the-device-local-proxy"></a>运行设备本地代理
 
 导航到解压缩的项目文件夹中的 `device-streams-proxy/device`。 需要准备好以下信息：
@@ -162,31 +136,7 @@ dotnet run $deviceConnectionString localhost 22
 dotnet run %deviceConnectionString% localhost 22
 ```
 
-现在，请使用 SSH 客户端程序并连接到端口 2222 上的服务本地代理（而不要直接连接到 SSH 守护程序）。 
-
-```
-ssh <username>@localhost -p 2222
-```
-
-此时会看到 SSH 登录提示，其中要求输入凭据。
-
-服务端中的控制台输出（服务本地代理侦听端口 2222）：
-
-![替代文本](./media/quickstart-device-streams-proxy-csharp/service-console-output.png "服务本地代理输出")
-
-通过 `IP_address:22` 连接到 SSH 守护程序的设备本地代理中的控制台输出：
-
-]替代文本(./media/quickstart-device-streams-proxy-csharp/device-console-output.png "")设备本地代理输出")
-
-SSH 客户端程序的控制台输出（SSH 客户端通过连接到服务本地代理侦听的端口 22 来与 SSH 守护程序通信）：
-
-![替代文本](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png "SSH 客户端程序输出")
-
-## <a name="rdp-to-a-device-via-device-streams"></a>使用 RDP 通过设备流连接到设备
-
-RDP 的设置与 SSH 设置（如上所述）非常类似。 简单而言，我们只需改用 RDP 目标 IP 和端口 3389，并使用 RDP 客户端（而不是 SSH 客户端）。
-
-### <a name="run-the-service-side-application"></a>运行服务端应用程序
+### <a name="run-the-service-local-proxy"></a>运行服务本地代理
 
 导航到解压缩的项目文件夹中的 `device-streams-proxy/service`。 需要准备好以下信息：
 
@@ -212,7 +162,34 @@ dotnet run $serviceConnectionString MyDevice 2222
 dotnet run %serviceConnectionString% MyDevice 2222
 ```
 
-### <a name="run-the-device-side-application"></a>运行设备端应用程序
+### <a name="run-ssh-client"></a>运行 SSH 客户端
+
+现在，请使用 SSH 客户端程序并连接到端口 2222 上的服务本地代理（而不要直接连接到 SSH 守护程序）。 
+
+```
+ssh <username>@localhost -p 2222
+```
+
+此时会看到 SSH 登录提示，其中要求输入凭据。
+
+服务端中的控制台输出（服务本地代理侦听端口 2222）：
+
+![替代文本](./media/quickstart-device-streams-proxy-csharp/service-console-output.png "服务本地代理输出")
+
+通过 `IP_address:22` 连接到 SSH 守护程序的设备本地代理中的控制台输出：
+
+![替代文本](./media/quickstart-device-streams-proxy-csharp/device-console-output.png "设备本地代理输出")
+
+SSH 客户端程序的控制台输出（SSH 客户端通过连接到服务本地代理侦听的端口 22 来与 SSH 守护程序通信）：
+
+![替代文本](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png "SSH 客户端程序输出")
+
+
+## <a name="rdp-to-a-device-via-device-streams"></a>使用 RDP 通过设备流连接到设备
+
+RDP 的设置与 SSH 设置（如上所述）非常类似。 简单而言，我们只需改用 RDP 目标 IP 和端口 3389，并使用 RDP 客户端（而不是 SSH 客户端）。
+
+### <a name="run-the-device-local-proxy-rdp"></a>运行设备本地代理 (RDP)
 
 导航到解压缩的项目文件夹中的 `device-streams-proxy/device`。 需要准备好以下信息：
 
@@ -234,6 +211,34 @@ dotnet run $DeviceConnectionString localhost 3389
 # In Windows
 dotnet run %DeviceConnectionString% localhost 3389
 ```
+
+### <a name="run-the-service-local-proxy-rdp"></a>运行服务器本地代理 (RDP)
+
+导航到解压缩的项目文件夹中的 `device-streams-proxy/service`。 需要准备好以下信息：
+
+| 参数名称 | 参数值 |
+|----------------|-----------------|
+| `iotHubConnectionString` | IoT 中心的服务连接字符串。 |
+| `deviceId` | 前面创建的设备标识符。 |
+| `localPortNumber` | SSH 客户端要连接到的本地端口。 本示例使用端口 2222，但可以修改为其他任意端口号。 |
+
+按如下所示编译并运行代码：
+
+```
+cd ./iot-hub/Quickstarts/device-streams-proxy/service/
+
+# Build the application
+dotnet build
+
+# Run the application
+# In Linux/MacOS
+dotnet run $serviceConnectionString MyDevice 2222
+
+# In Windows
+dotnet run %serviceConnectionString% MyDevice 2222
+```
+
+### <a name="run-rdp-client"></a>运行 RDP 客户端
 
 现在，请使用 RDP 客户端程序并连接到端口 2222（这是前面选择的任意可用端口）上的服务本地代理。
 

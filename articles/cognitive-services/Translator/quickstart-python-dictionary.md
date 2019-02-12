@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/21/2018
+ms.date: 02/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 8dcde1231d5e2d73b868411cb22b8420843197be
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4ca07416c615984b4eb6c7799ff17d9fbe43fa3b
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458235"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691464"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-python"></a>快速入门：通过 Python 使用双语字典查找字词
 
@@ -64,7 +64,7 @@ else:
 #subscriptionKey = 'put_your_key_here'
 ```
 
-目前有一个终结点可用于文本翻译，并已设置为 `base_url`。 `path` 设置 `dictionary/lookup` 路由并确定我们需使用 API 的版本 3。
+文本翻译全局终结点设置为 `base_url`。 `path` 设置 `dictionary/lookup` 路由并确定我们需使用 API 的版本 3。
 
 `params` 用于设置源和输出语言。 在此示例中，我们将使用英语和西班牙语：`en` 和 `es`。
 

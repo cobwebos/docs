@@ -1,0 +1,86 @@
+---
+title: 快速入门：必应实体搜索 SDK，Python
+titlesuffix: Azure Cognitive Services
+description: 设置必应实体搜索 SDK 控制台应用程序。
+services: cognitive-services
+author: mikedodaro
+manager: cgronlun
+ms.service: cognitive-services
+ms.subservice: bing-entity-search
+ms.topic: quickstart
+ms.date: 02/01/2019
+ms.author: v-gedod
+ms.openlocfilehash: 50620eba35be136e38d5b1f8c3083f9ddf189d9e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55757739"
+---
+# <a name="quickstart-bing-entity-search-sdk-with-python"></a>快速入门：通过 Python 使用必应实体搜索 SDK
+
+使用本快速入门开始通过适用于 Python 的必应实体搜索 SDK 来搜索实体。 虽然必应实体搜索具有与大多数编程语言兼容的 REST API，但该 SDK 提供了一种简单方法来将服务集成到应用程序中。 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py) 上找到此示例的源代码。
+
+## <a name="prerequisites"></a>先决条件
+
+* Python [2.x 或 3.x](https://www.python.org/)
+
+* [适用于 Python 的必应实体搜索 SDK](https://pypi.org/project/azure-cognitiveservices-search-entitysearch/)
+
+建议使用 Python 虚拟环境。 可以使用 venv 模块安装并初始化虚拟环境。 可以通过以下命令为 Python 2.7 安装 virtualenv：
+
+```Console
+python -m venv mytestenv
+```
+
+通过以下命令安装必应实体搜索 SDK：
+
+```Console
+cd mytestenv
+python -m pip install azure-cognitiveservices-search-entitysearch
+```
+
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
+
+## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
+
+1. 在你喜欢使用的 IDE 或编辑器中创建新的 Python 文件，然后添加以下 import 语句。 
+
+    ```python
+    from azure.cognitiveservices.search.entitysearch import EntitySearchAPI
+    from azure.cognitiveservices.search.entitysearch.models import Place, ErrorResponseException
+    from msrest.authentication import CognitiveServicesCredentials
+    ```
+
+2. 为你的订阅密钥创建变量，并通过使用该变量创建新的 `CognitiveServicesCredentials` 对象来实例化客户端。
+    
+    ```python
+    subscription_key = "YOUR-SUBSCRIPTION-KEY"
+    client = EntitySearchAPI(CognitiveServicesCredentials(subscription_key))
+    ```
+
+## <a name="send-a-search-request-and-receive-a-response"></a>发送搜索请求并接收响应
+
+1. 使用 `client.entities.search()` 和一个搜索查询向必应实体搜索发送搜索请求。 
+    
+    ```python
+    entity_data = client.entities.search(query="Gibralter")
+    ```
+
+2. 如果返回了实体，则将 `entity_data.entities.value` 转换为一个列表，并输出第一个结果。
+    ```python
+    if entity_data.entities.value:
+    
+        main_entities = [entity for entity in entity_data.entities.value
+                         if entity.entity_presentation_info.entity_scenario == "DominantEntity"]
+    
+        if main_entities:
+            print(main_entities[0].description)
+    ```
+
+## <a name="next-steps"></a>后续步骤
+
+> [!div class="nextstepaction"]
+> [创建单页 Web 应用](../tutorial-bing-entities-search-single-page-app.md)
+
+* [什么是必应实体搜索 API？](../overview.md )

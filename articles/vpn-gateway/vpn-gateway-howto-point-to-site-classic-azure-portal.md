@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6aedfa3f0ef65fdb1b663db8637b648e685e31be
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: c133ba5a95e0476c6d992e53776b384fdc8c97ba
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321471"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809792"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>使用证书身份验证（经典）配置点到站点连接
 
@@ -249,7 +249,7 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 请
 
 ### <a name="to-add-a-trusted-root-certificate"></a>添加受信任的根证书
 
-最多可以将 20 个受信任的根证书 .cer 文件添加到 Azure。 如需说明，请参阅[上传根证书 .cer 文件](#upload-the-root-certificate-.cer-file)。
+最多可以将 20 个受信任的根证书 .cer 文件添加到 Azure。 有关说明，请参阅“上传根证书 .cer 文件”。
 
 ### <a name="to-remove-a-trusted-root-certificate"></a>删除受信任的根证书
 
@@ -290,7 +290,7 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 请
 
 ## <a name="next-steps"></a>后续步骤
 
-- 连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。 
+- 连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/)。 
 
 - 要详细了解网络和 Linux 虚拟机，请参阅 [Azure 和 Linux VM 网络概述](../virtual-machines/linux/network-overview.md)。
 

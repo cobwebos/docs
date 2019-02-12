@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 0e9537f09049d5fe056819e6f8b9718cfc52f489
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 6bfc12c17b38543f0c6979b5f5eeada562483bfa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352797"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819342"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>媒体服务功能的跨数据中心方案和可用性
 
@@ -26,7 +26,7 @@ ms.locfileid: "49352797"
 
 AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地理区域，让用户可灵活选择构建应用程序的位置。 可查看[区域及其位置的列表](https://azure.microsoft.com/regions/)。 
 
-本主题演示了[实时](#live_scenarios)交付内容或[点播](#vod_scenarios)交付内容的常见方案。 本主题还详细说明了媒体功能和服务的跨数据中心可用性。
+本主题展示了以[实时](#live_scenarios)方式或点播方式交付内容的常见方案。 本主题还详细说明了媒体功能和服务的跨数据中心可用性。
 
 ## <a name="overview"></a>概述
 
@@ -174,16 +174,16 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
 #### <a name="availability"></a>可用性
 
-|名称|状态|数据中心
+|Name|状态|数据中心
 |---|---|---|
-|标准|GA|全部|
-|高级|GA|全部|
+|标准|GA|All|
+|高级|GA|All|
 
 ### <a name="live-encoding"></a>实时编码
 
 #### <a name="availability"></a>可用性
 
-在以下区域之外的所有数据中心可用：德国、巴西南部、印度西部、印度南部和印度中部。 
+在所有数据中心内可用，但以下数据中心例外：德国、巴西南部、印度西部、印度南部和印度中部。 
 
 ### <a name="encoding-media-processors"></a>编码媒体处理器
 
@@ -193,7 +193,7 @@ AMS 提供两个按需编码器：Media Encoder Standard 和 Media Encoder Premi
 
 |媒体处理器名称|状态|数据中心
 |---|---|---|
-|媒体编码器标准版|GA|全部|
+|媒体编码器标准版|GA|All|
 |媒体编码器高级工作流|GA|除中国以外|
 
 ### <a name="analytics-media-processors"></a>分析媒体处理器
@@ -204,14 +204,14 @@ AMS 提供两个按需编码器：Media Encoder Standard 和 Media Encoder Premi
 
 |媒体处理器名称|状态|数据中心
 |---|---|---|
-|Azure 媒体面部检测器|预览|全部|
-|Azure Media Hyperlapse|预览|全部|
-|Azure 媒体索引器|GA|全部|
-|Azure Media Motion Detector|预览|全部|
-|Azure 媒体 OCR|预览|全部|
-|Azure 媒体修订|预览|全部|
-|Azure 媒体稳定器|预览|全部|
-|Azure 媒体视频缩略图|预览|全部|
+|Azure 媒体面部检测器|预览|All|
+|Azure Media Hyperlapse|预览|All|
+|Azure 媒体索引器|GA|All|
+|Azure Media Motion Detector|预览|All|
+|Azure 媒体 OCR|预览|All|
+|Azure 媒体修订|预览|All|
+|Azure 媒体稳定器|预览|All|
+|Azure 媒体视频缩略图|预览|All|
 |Azure Media Indexer 2|预览|除中国和联邦政府区域以外|
 
 ### <a name="protection"></a>保护
@@ -222,10 +222,10 @@ AMS 提供两个按需编码器：Media Encoder Standard 和 Media Encoder Premi
 
 |加密|状态|数据中心|
 |---|---|---| 
-|存储|GA|全部|
-|AES-128 密钥|GA|全部|
-|Fairplay|GA|全部|
-|PlayReady|GA|全部|
+|存储|GA|All|
+|AES-128 密钥|GA|All|
+|Fairplay|GA|All|
+|PlayReady|GA|All|
 |Widevine|GA|德国、美国联邦政府和中国除外。
 
 ### <a name="reserved-units-rus"></a>预留单位 (RU)
@@ -248,7 +248,7 @@ AMS 提供两个按需编码器：Media Encoder Standard 和 Media Encoder Premi
 
 |RU 类型名称|状态|数据中心
 |---|---|---|
-|S1|GA|全部|
+|S1|GA|All|
 |S2|GA|巴西南部和印度西部除外|
 |S3|GA|印度西部除外|
 

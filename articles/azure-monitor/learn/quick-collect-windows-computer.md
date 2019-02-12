@@ -11,15 +11,15 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 11/13/2018
+ms.date: 02/05/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 39261f18c4335f0f27b68a2df2246ec4180d11e7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0900f5e2cab24004c4e2a358a98cd750f0968b50
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193686"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752972"
 ---
 # <a name="configure-log-analytics-agent-for-windows-computers-in-a-hybrid-environment"></a>在混合环境中为 Windows 计算机配置 Log Analytics 代理
 [Azure Log Analytics](../../azure-monitor/platform/agent-windows.md) 可将物理或虚拟 Windows 计算机中的数据从数据中心或其他云环境直接收集到单个存储库中，以便进行详细的分析和关联。  本快速入门介绍如何通过几个简单步骤，从 Windows 计算机中配置或收集数据。  有关 Azure Windows VM 的信息，请参阅以下主题[收集 Azure 虚拟机的相关数据](../../azure-monitor/learn/quick-collect-azurevm.md)。  
@@ -83,7 +83,7 @@ Log Analytics 可从 Windows 事件日志以及指定用于长期分析的性能
 4. 可通过键入日志名称添加事件日志。  键入“System”，然后单击加号 +。  
 5. 在表中，选中严重性“错误”和“警告”。   
 6. 单击页面顶部的“保存”来保存配置。
-7. 选择“Windows 性能数据”，在 Windows 计算机上启用性能计数器收集。 
+7. 选择“Windows 性能计数器”，在 Windows 计算机上启用性能计数器收集。 
 8. 首次为新的 Log Analytics 工作区配置 Windows 性能计数器时，可以选择快速创建几个通用的计数器。 将这些计数器在一个复选框中依次列出。<br> ![默认选中的 Windows 性能计数器](media/quick-collect-windows-computer/windows-perfcounters-default.png)。<br> 单击“添加所选性能计数器”。  随即会添加它们，并且通过 10 秒收集示例间隔进行预设。  
 9. 单击页面顶部的“保存”来保存配置。
 

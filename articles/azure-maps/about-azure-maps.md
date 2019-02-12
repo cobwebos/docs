@@ -1,24 +1,24 @@
 ---
 title: Azure Maps 概述 | Microsoft Docs
 description: Azure Maps 简介
-author: dsk-2015
-ms.author: dkshir
-ms.date: 09/12/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 02/04/2019
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9bf168a0f06d662526d172687e54327b55d50bd8
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ce55185effc67709157ce6219c405bb8e32dd5db
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104261"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768573"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 
-Azure Maps 是以全新地图数据支撑的一系列地理空间服务，可让你在 Web 和移动应用程序中提供准确的地理上下文。 它包含呈现地图和搜索兴趣点的 REST API。 API 还可找到前往兴趣点的路线、交通状况、时区和 IP 地址的位置。 API 与熟悉的工具配合使用可快速开发和缩放将位置信息集成到 Azure 解决方案中的解决方案。 除 REST API 以外，Azure Maps 还提供一个基于 Web 的 [JavaScript 地图控件](https://docs.microsoft.com/javascript/api/azure-maps-control)，实现简单、灵活且可跨媒体移植的开发。
+Azure Maps 是通过可用的全新地图数据解锁的一系列地理空间服务，为 Web 和移动应用程序提供准确的地理上下文。 Azure Maps 包含多个 REST API，用于以多种样式和卫星成像来呈现**地图**；在全球**搜索**地址、地点和兴趣点；**路线**功能，其中包括点到点路线、多点路线、多点优化、等时路线、商用车路线、交通受影响的路线，以及矩阵路线；快速查看交通状况和交通事件；通过**地理位置**功能确定用户位置；将位置转换为**时区**；以及获取某个位置的时间。 另外，Azure Maps 还提供用于**地理围栏**的服务、地图**数据**存储 - 在 Azure 中托管位置信息；使用**空间操作**通过地理空间分析提供位置智能。 Azure Maps 服务以 REST API 形式直接提供，也可以通过功能强大的 **Web SDK** 或 **Android SDK** 来使用它。 在 Azure 云中，开发人员可以通过这些工具快速开发和缩放将位置信息集成到 Azure 解决方案中的解决方案。 立即注册获取免费的 [Azure Maps 帐户](https://azure.microsoft.com/services/azure-maps/)，开始开发！
 
 以下视频深入介绍了 Azure Maps：
 

@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/04/2018
-ms.openlocfilehash: 3ccba82e626882a99deaca2f12be3d2f96869b81
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 0ef206cf4407c6392ae5d9a70ba156f5635715e9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078943"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814786"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>使用 Azure Kubernetes 服务和 Terraform 创建 Kubernetes 群集
 [Azure Kubernetes 服务 (AKS)](/azure/aks/) 管理托管的 Kubernetes 环境，使用户无需具备容器业务流程专业知识即可快速、轻松地部署和管理容器化的应用程序。 它还通过按需预配、升级和缩放资源，消除了正在进行的操作和维护的负担，而无需使应用程序脱机。
@@ -352,7 +352,7 @@ Terraform 在本地通过 `terraform.tfstate` 文件跟踪状态。 在单用户
 
     ![“Terraform plan”结果示例](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-plan-complete.png)
 
-1. 运行 `terraform apply` 命令，以应用该计划来创建 Kubernetes 群集。 创建 Kubernetes 群集的过程可能需要花费几分钟时间，从而导致 Cloud Shell 会话超时。如果 Cloud Shell 会话超时，可以遵循[在 Cloud Shell 超时后进行恢复](#recover-from-a-dloud-shell-timeout)部分中的步骤，以完成本教程。
+1. 运行 `terraform apply` 命令，以应用该计划来创建 Kubernetes 群集。 创建 Kubernetes 群集的过程可能需要花费几分钟时间，从而导致 Cloud Shell 会话超时。如果 Cloud Shell 会话超时，可以遵循“在 Cloud Shell 超时后进行恢复”部分中的步骤来完成本教程。
 
     ```bash
     terraform apply out.plan
@@ -362,7 +362,7 @@ Terraform 在本地通过 `terraform.tfstate` 文件跟踪状态。 在单用户
 
     ![“Terraform apply”结果示例](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-apply-complete.png)
 
-1. 在 Azure 门户的左侧菜单中选择“所有服务”，查看为新 Kubernetese 群集创建的资源。
+1. 在 Azure 门户中，在左侧菜单中选择“所有服务”，查看为新 Kubernetes 群集创建的资源。
 
     ![Cloud Shell 提示符](./media/terraform-create-k8s-cluster-with-tf-and-aks/k8s-resources-created.png)
 

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.author: nitinme
 ms.date: 10/23/2018
 ms.topic: hub-page
-ms.openlocfilehash: 389dd4e8b6f2157c1c53528506435a97a07a493e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ceb5bb59f65e0f01d04d1aa9726b2494384b4a67
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872928"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998922"
 ---
 <h1>Azure 认知服务文档</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">了解如何将智能算法构建到应用、网站和机器人中，从而使它们通过自然的沟通方式观察、倾听、说出和理解用户需求。 教程、快速入门、API 参考和示例演示了操作方法。</p>
@@ -316,7 +316,6 @@ ms.locfileid: "55872928"
                         <p><a href="/azure/cognitive-services/speech-service">语音服务 API</a></p>
                         <p><a href="/azure/cognitive-services/speaker-recognition/home"><span>说话人识别&nbsp;<sup style="font-size:70%">预览</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/speech/home"><span>必应语音 API&nbsp;<sup style="font-size:70%">即将停用</sup></span></a></p>
-                        <p><a href="/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home"><span>自定义语音服务&nbsp;<sup style="font-size:70%">即将停用</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/translator-speech/"><span>语音翻译&nbsp;<sup style="font-size:70%">即将停用</sup></span></a></p>
                      </div>
                 </div>

@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 09/15/2018
 ms.author: aschhab
-ms.openlocfilehash: 41514ca5911544da8608e0c7ebad18b33c33b494
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 640c01b2c73509ac897218fdea3841d016767a49
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856904"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818254"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服务总线到事件网格的集成概述
 
@@ -43,7 +43,7 @@ Azure 服务总线已推出与 Azure 事件网格集成的新功能。 此功能
 目前，Azure 服务总线会针对两种情况发送事件：
 
 * [ActiveMessagesWithNoListenersAvailable](#active-messages-available-event)
-* [DeadletterMessagesAvailable](#dead-lettered-messages-available-event)
+* DeadletterMessagesAvailable
 
 此外，服务总线使用标准的事件网格安全性和[身份验证机制](https://docs.microsoft.com/azure/event-grid/security-authentication)。
 
@@ -115,7 +115,7 @@ Azure 服务总线已推出与 Azure 事件网格集成的新功能。 此功能
 
 可以使用三种不同的方法，为服务总线命名空间创建事件网格订阅：
 
-* 在 [Azure 门户](#portal-instructions)中
+* 在 Azure 门户中
 * 在 [Azure CLI](#azure-cli-instructions) 中
 * 在 [PowerShell](#powershell-instructions) 中
 
@@ -168,7 +168,7 @@ mespaceName "<YOUR NAMESPACE NAME>").Id
 New-AzureRmEVentGridSubscription -EventSubscriptionName “<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>” -ResourceId $NSID -Endpoint "<YOUR FUNCTION URL>” -SubjectEndsWith “<YOUR SERVICE BUS SUBSCRIPTION NAME>”
 ```
 
-可以在这里浏览其他设置选项，或者[测试事件是否正在流动](#test-that-events-are-flowing)。
+可以在这里浏览其他设置选项，或者测试事件是否正在流动。
 
 ## <a name="next-steps"></a>后续步骤
 

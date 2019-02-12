@@ -6,29 +6,16 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 559bdd479d02a8744f9b113c43c2c860d8218401
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cbdc57489eb7ebd50e3ce7e2b4e0e4081aef8e27
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038188"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770378"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>将 Azure Cosmos DB 模拟器用于本地开发和测试
 
-<table>
-<tr>
-  <td><strong>二进制文件</strong></td>
-  <td>[下载 MSI](https://aka.ms/cosmosdb-emulator)</td>
-</tr>
-<tr>
-  <td><strong>Docker</strong></td>
-  <td>[Docker 中心](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/)</td>
-</tr>
-<tr>
-  <td><strong>Docker 源</strong></td>
-  <td>[GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker)</td>
-</tr>
-</table>
+|**二进制文件**|[下载 MSI](https://aka.ms/cosmosdb-emulator)| |**Docker**|[Docker 中心](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/)| |**Docker 源** | [GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker)|
 
 为方便进行开发，Azure Cosmos DB 模拟器提供了一个模拟 Azure Cosmos DB 服务的本地环境。 使用 Azure Cosmos DB 模拟器可在本地开发和测试应用程序，无需创建 Azure 订阅且不会产生任何费用。 如果对应用程序在 Azure Cosmos DB 模拟器中的工作情况感到满意，可以转为在云中使用 Azure Cosmos DB 帐户。
 
@@ -162,133 +149,28 @@ Azure Cosmos DB 模拟器启动时，会在浏览器中自动打开 Azure Cosmos
 
 若要查看选项列表，请在命令提示符下键入 `CosmosDB.Emulator.exe /?`。
 
-<table>
-<tr>
-  <td><strong>选项</strong></td>
-  <td><strong>说明</strong></td>
-  <td><strong>命令</strong></td>
-  <td><strong>参数</strong></td>
-</tr>
-<tr>
-  <td>[无参数]</td>
-  <td>使用默认设置启动 Azure Cosmos DB 模拟器。</td>
-  <td>CosmosDB.Emulator.exe</td>
-  <td></td>
-</tr>
-<tr>
-  <td>[帮助]</td>
-  <td>显示支持的命令行参数列表。</td>
-  <td>CosmosDB.Emulator.exe /?</td>
-  <td></td>
-</tr>
-<tr>
-  <td>GetStatus</td>
-  <td>获取 Azure Cosmos DB 模拟器的状态。 状态由退出代码指示：1 = 正在启动，2 = 正在运行，3 = 已停止。 退出代码为负表示发生了错误。 不生成其他输出。</td>
-  <td>CosmosDB.Emulator.exe /GetStatus</td>
-  <td></td>
-<tr>
-  <td>关机</td>
-  <td>关闭 Azure Cosmos DB 模拟器。</td>
-  <td>CosmosDB.Emulator.exe /Shutdown</td>
-  <td></td>
-</tr>
-<tr>
-  <td>DataPath</td>
-  <td>指定要在其中存储数据文件的路径。 默认路径为 %LocalAppdata%\CosmosDBEmulator。</td>
-  <td>CosmosDB.Emulator.exe /DataPath=&lt;datapath&gt;</td>
-  <td>&lt;datapath&gt;：可访问路径</td>
-</tr>
-<tr>
-  <td>端口</td>
-  <td>指定用于模拟器的端口号。 默认值为 8081。</td>
-  <td>CosmosDB.Emulator.exe /Port=&lt;port&gt;</td>
-  <td>&lt;port&gt;：单个端口号</td>
-</tr>
-<tr>
-  <td>MongoPort</td>
-  <td>指定用于 MongoDB 兼容性 API 的端口号。 默认为 10255。</td>
-  <td>CosmosDB.Emulator.exe /MongoPort=&lt;mongoport&gt;</td>
-  <td>&lt;mongoport&gt;：单个端口号</td>
-</tr>
-<tr>
-  <td>DirectPorts</td>
-  <td>指定用于直接连接的端口。 默认值为 10251、10252、10253、10254。</td>
-  <td>CosmosDB.Emulator.exe /DirectPorts:&lt;directports&gt;</td>
-  <td>&lt;directports&gt;：以逗号分隔的 4 个端口的列表</td>
-</tr>
-<tr>
-  <td>密钥</td>
-  <td>模拟器的授权密钥。 密钥必须是 64 字节向量的 base 64 编码。</td>
-  <td>CosmosDB.Emulator.exe /Key:&lt;key&gt;</td>
-  <td>&lt;key&gt;：密钥必须是 64 字节向量的 base 64 编码</td>
-</tr>
-<tr>
-  <td>EnableRateLimiting</td>
-  <td>指定已启用请求速率限制行为。</td>
-  <td>CosmosDB.Emulator.exe /EnableRateLimiting</td>
-  <td></td>
-</tr>
-<tr>
-  <td>DisableRateLimiting</td>
-  <td>指定已禁用请求速率限制行为。</td>
-  <td>CosmosDB.Emulator.exe /DisableRateLimiting</td>
-  <td></td>
-</tr>
-<tr>
-  <td>NoUI</td>
-  <td>不显示模拟器用户界面。</td>
-  <td>CosmosDB.Emulator.exe /NoUI</td>
-  <td></td>
-</tr>
-<tr>
-  <td>NoExplorer</td>
-  <td>在启动时不显示数据资源管理器。</td>
-  <td>CosmosDB.Emulator.exe /NoExplorer</td>
-  <td></td>
-</tr>
-<tr>
-  <td>PartitionCount</td>
-  <td>指定已分区的集合的最大数。 有关详细信息，请参阅[更改集合数](#set-partitioncount)。</td>
-  <td>CosmosDB.Emulator.exe /PartitionCount=&lt;partitioncount&gt;</td>
-  <td>&lt;partitioncount&gt;：允许的单分区集合的最大数量。 默认值为 25。 允许的最大值为 250。</td>
-</tr>
-<tr>
-  <td>DefaultPartitionCount</td>
-  <td>指定分区集合的默认分区数。</td>
-  <td>CosmosDB.Emulator.exe /DefaultPartitionCount=&lt;defaultpartitioncount&gt;</td>
-  <td>&lt;defaultpartitioncount&gt; 默认值为 25。</td>
-</tr>
-<tr>
-  <td>AllowNetworkAccess</td>
-  <td>通过网络启用对仿真器的访问。 要启用网络访问，还必须传递 /Key=&lt;key_string&gt; 或 /KeyFile=&lt;file_name&gt;。</td>
-  <td>CosmosDB.Emulator.exe /AllowNetworkAccess /Key=&lt;key_string&gt;<br><br>或<br><br>CosmosDB.Emulator.exe /AllowNetworkAccess /KeyFile=&lt;file_name&gt;</td>
-  <td></td>
-</tr>
-<tr>
-  <td>NoFirewall</td>
-  <td>在使用 /AllowNetworkAccess 时，请勿调整防火墙规则。</td>
-  <td>CosmosDB.Emulator.exe /NoFirewall</td>
-  <td></td>
-</tr>
-<tr>
-  <td>GenKeyFile</td>
-  <td>生成新的授权密钥并保存至指定文件。 所生成的密钥可与 /Key 或 /KeyFile 选项配合使用。</td>
-  <td>CosmosDB.Emulator.exe /GenKeyFile=&lt;密钥文件路径&gt;</td>
-  <td></td>
-</tr>
-<tr>
-  <td>一致性</td>
-  <td>为帐户设置默认一致性级别。</td>
-  <td>CosmosDB.Emulator.exe /Consistency=&lt;consistency&gt;</td>
-  <td>&lt;consistency&gt;：值必须是以下[一致性级别](consistency-levels.md)之一：Session、Strong、Eventual 或 BoundedStaleness。 默认值为“Session”。</td>
-</tr>
-<tr>
-  <td>?</td>
-  <td>显示帮助消息。</td>
-  <td></td>
-  <td></td>
-</tr>
-</table>
+|**选项** | **说明** | **命令**| **参数**|
+|---|---|---|---|
+|[无参数] | 使用默认设置启动 Azure Cosmos DB 模拟器。 |CosmosDB.Emulator.exe| |
+|[帮助] |显示支持的命令行参数列表。|CosmosDB.Emulator.exe /? | |
+| GetStatus |获取 Azure Cosmos DB 模拟器的状态。 状态由退出代码指示：1 = 正在启动，2 = 正在运行，3 = 已停止。 退出代码为负表示发生了错误。 不生成其他输出。 | CosmosDB.Emulator.exe /GetStatus| |
+| 关机| 关闭 Azure Cosmos DB 模拟器。| CosmosDB.Emulator.exe /Shutdown | |
+|DataPath | 指定要在其中存储数据文件的路径。 默认路径为 %LocalAppdata%\CosmosDBEmulator。 | CosmosDB.Emulator.exe /DataPath=\<datapath\> | \<datapath\>：可访问路径 |
+|端口 | 指定用于模拟器的端口号。 默认值为 8081。 |CosmosDB.Emulator.exe /Port=\<port\> | \<port\>：单个端口号 |
+| MongoPort | 指定用于 MongoDB 兼容性 API 的端口号。 默认为 10255。 |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<mongoport\>：单个端口号|
+| DirectPorts |指定用于直接连接的端口。 默认值为 10251、10252、10253、10254。 | CosmosDB.Emulator.exe /DirectPorts:\<directports\> | \<directports\>：以逗号分隔的 4 个端口的列表 |
+| 密钥 |模拟器的授权密钥。 密钥必须是 64 字节向量的 base 64 编码。 | CosmosDB.Emulator.exe /Key:\<key\> | \<key\>：密钥必须是 64 字节向量的 base 64 编码|
+| EnableRateLimiting | 指定已启用请求速率限制行为。 |CosmosDB.Emulator.exe /EnableRateLimiting | |
+| DisableRateLimiting |指定已禁用请求速率限制行为。 |CosmosDB.Emulator.exe /DisableRateLimiting | |
+| NoUI | 不显示模拟器用户界面。 | CosmosDB.Emulator.exe /NoUI | |
+| NoExplorer | 在启动时不显示数据资源管理器。 |CosmosDB.Emulator.exe /NoExplorer | | 
+| PartitionCount | 指定已分区的集合的最大数。 有关详细信息，请参阅[更改集合数](#set-partitioncount)。 | CosmosDB.Emulator.exe /PartitionCount=\<partitioncount\> | \<partitioncount\>：允许的单分区集合的最大数量。 默认值为 25。 允许的最大值为 250。|
+| DefaultPartitionCount| 指定分区集合的默认分区数。 | CosmosDB.Emulator.exe /DefaultPartitionCount=\<defaultpartitioncount\> | \<defaultpartitioncount\> 默认值为 25。|
+| AllowNetworkAccess | 通过网络启用对仿真器的访问。 要启用网络访问，还必须传递 /Key=\<key_string\> 或 /KeyFile=\<file_name\>。 | CosmosDB.Emulator.exe /AllowNetworkAccess /Key=\<key_string\> 或 CosmosDB.Emulator.exe /AllowNetworkAccess /KeyFile=\<file_name\>| |
+| NoFirewall | 在使用 /AllowNetworkAccess 时，请勿调整防火墙规则。 |CosmosDB.Emulator.exe /NoFirewall | |
+| GenKeyFile | 生成新的授权密钥并保存至指定文件。 所生成的密钥可与 /Key 或 /KeyFile 选项配合使用。 | CosmosDB.Emulator.exe /GenKeyFile=\<密钥文件路径\> | |
+| 一致性 | 为帐户设置默认一致性级别。 | CosmosDB.Emulator.exe /Consistency=\<consistency\> | \<consistency\>：值必须是以下[一致性级别](consistency-levels.md)之一：Session、Strong、Eventual 或 BoundedStaleness。 默认值为“Session”。 |
+| ? | 显示帮助消息。| | |
 
 ## <a id="set-partitioncount"></a>更改集合数
 

@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 08/16/2018
+ms.date: 02/06/2019
 ms.author: shvija
-ms.openlocfilehash: 1ec0945996f0232553c9c1e0469289235f506611
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 3228783b3f827ddb0dce947c9c1894110bf41fb7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054820"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818764"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>使用模板通过事件中心创建一个命名空间并启用捕获
 
@@ -317,6 +317,7 @@ ms.locfileid: "54054820"
             "partitionCount": "[parameters('partitionCount')]",
             "captureDescription": {
               "enabled": "true",
+              "skipEmptyArchives": false,
               "encoding": "[parameters('captureEncodingFormat')]",
               "intervalInSeconds": "[parameters('captureTime')]",
               "sizeLimitInBytes": "[parameters('captureSize')]",
@@ -364,6 +365,7 @@ ms.locfileid: "54054820"
                         "path": "[parameters('eventHubName')]",
                         "captureDescription": {
                             "enabled": "true",
+                            "skipEmptyArchives": false,
                             "encoding": "[parameters('archiveEncodingFormat')]",
                             "intervalInSeconds": "[parameters('captureTime')]",
                             "sizeLimitInBytes": "[parameters('captureSize')]",
@@ -383,6 +385,9 @@ ms.locfileid: "54054820"
         }
     ]
 ```
+
+> [!NOTE]
+> 可以使用 **skipEmptyArchives** 属性允许或禁止当捕获时间段内未发生任何事件时发出空文件。 
 
 ## <a name="commands-to-run-deployment"></a>运行部署的命令
 

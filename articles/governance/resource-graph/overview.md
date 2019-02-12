@@ -4,16 +4,16 @@ description: Azure Resource Graph 是一项 Azure 服务，可实现对资源的
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/22/2018
+ms.date: 02/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: ed64f6317fefb9e82dbe14e806499965d926d434
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6b3bad4e4619f8909f5c6d71111b4fad9ddb3098
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316193"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813273"
 ---
 # <a name="what-is-azure-resource-graph"></a>什么是 Azure Resource Graph
 
@@ -45,6 +45,10 @@ Azure Resource Graph 是 Azure 中的一项服务，旨在通过提供高效和�
 ## <a name="permissions-in-azure-resource-graph"></a>Azure Resource Graph 中的权限
 
 若要使用 Resource Graph，必须在[基于角色的访问控制](../../role-based-access-control/overview.md) (RBAC) 中至少拥有对想要查询的资源的读取权限。 必须至少有 Azure 对象或对象组的 `read` 权限，否则不会返回结果。
+
+## <a name="throttling"></a>限制
+
+为了为所有客户提供最佳体验和响应时间，对 Resource Graph 的查询将受到限制。 如果你的组织希望使用 Resource Graph API 进行大规模的频繁查询，请使用 Resource Graph 页面中的门户“反馈”。 请务必提供你的业务案例并选中“Microsoft 可以针对你的反馈向你发送电子邮件”复选框，以便团队与你联系。
 
 ## <a name="running-your-first-query"></a>运行自己的第一个查询
 

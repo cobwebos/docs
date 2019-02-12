@@ -3,7 +3,7 @@ title: 适用于 SQL 数据库的 Azure CLI 脚本示例 | Microsoft Docs
 description: 创建和管理 Azure SQL 数据库服务器、弹性池、数据库和防火墙的 Azure CLI 脚本示例。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: overview-samples, mvc
 ms.devlang: azurecli
 ms.topic: sample
@@ -11,15 +11,25 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 3eb077cf705f08e1ad953211c00c6b1eaa50ee3b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/03/2019
+ms.openlocfilehash: 3b98214da259e9e429c938f8ca7963c9f525e862
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477890"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55560815"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 Azure CLI 示例
+
+可以使用 <a href="/cli/azure">Azure CLI</a> 配置 Azure SQL 数据库。
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
+
+## <a name="single-database--elastic-pools"></a>单一数据库和弹性池
 
 下表包括 Azure SQL 数据库的 Azure CLI 脚本示例的链接。
 
@@ -31,5 +41,19 @@ ms.locfileid: "55477890"
 |**缩放单一数据库和弹性池**||
 | [缩放单一数据库](scripts/sql-database-monitor-and-scale-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 此 CLI 脚本示例在查询数据库的大小信息后，将单个 Azure SQL 数据库缩放为不同的计算大小。 |
 | [缩放弹性池](scripts/sql-database-scale-pool-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 此 CLI 脚本示例将 SQL 弹性池缩放为不同的计算大小。  |
-| [创建和管理托管实例](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) | 这些 CLI 脚本显示必须使用 Azure CLI 创建和管理托管实例 |
 |||
+
+详细了解[单一数据库 Azure CLI API](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases)。
+
+## <a name="managed-instance"></a>托管实例
+
+下表包括适用于 Azure SQL 数据库 - 托管实例的 Azure CLI 脚本示例的链接。
+
+| |  |
+|---|---|
+| [创建托管实例](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/11/14/create-azure-sql-managed-instance-using-azure-cli/) | 此 CLI 脚本展示了如何创建托管实例。 |
+| [更新托管实例](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/11/14/modify-azure-sql-database-managed-instance-using-azure-cli/) | 此 CLI 脚本展示了如何更新托管实例。 |
+| [将数据库移动到另一个托管实例](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/) | 此 CLI 脚本展示了如何将数据库的备份从一个实例还原到另一个实例。 |
+|||
+
+详细了解[托管实例 Azure CLI API](sql-database-managed-instance-create-manage.md#azure-cli-create-and-manage-managed-instances) 并[在此处查找更多示例](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)。

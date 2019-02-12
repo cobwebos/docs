@@ -8,12 +8,12 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 01/24/2019
-ms.openlocfilehash: cbd17ef81f5bcdf1c5c2f14f11388fd4f23e5da6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e5a1a17e60d73a041bf7850875287c753aeda16f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239906"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694161"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>快速入门：使用 Azure Databricks 分析 Azure Data Lake Storage Gen2 中的数据
 
@@ -29,15 +29,11 @@ ms.locfileid: "55239906"
 
 <a id="config"/>
 
-## <a name="set-aside-storage-account-configuration"></a>保留存储帐户配置
-
-需要存储帐户的名称，以及文件系统终结点 URI。
+## <a name="get-the-name-of-your-storage-account"></a>获取你的存储帐户的名称
 
 若要在 Azure 门户中获取存储帐户的名称，请选择“所有服务”，然后使用“存储”一词进行筛选。 然后选择“存储帐户”，找到你的存储帐户。
 
-若要获取文件系统终结点 URI，请选择“属性”，然后在属性窗格中找到“主 ADLS 文件系统终结点”字段的值。
-
-将这两个值都粘贴到文本文件中。 很快你就会需要它们。
+将该名称粘贴到文本文件。 稍后将需要使用该名称。
 
 <a id="service-principal"/>
 
@@ -46,8 +42,6 @@ ms.locfileid: "55239906"
 遵循以下主题中的指导创建服务主体：[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
 
 在执行该文中的步骤时，需要完成一些特定的事项。
-
-:heavy_check_mark:在执行文章的[创建 Azure Active Directory 应用程序](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)部分的步骤时，请确保将“创建”对话框的“登录 URL”字段设置为刚收集的终结点 URI。
 
 :heavy_check_mark:在执行文章的[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分的步骤时，请确保将应用程序分配给“Blob 存储参与者”角色。
 
@@ -136,7 +130,7 @@ ms.locfileid: "55239906"
     > [!NOTE]
     > 此代码块通过 OAuth 直接访问 Data Lake Gen2 终结点，但是，也可以通过其他方式将 Databricks 工作区连接到 Data Lake Storage Gen2 帐户。 例如，可以通过 OAuth 来装载文件系统，还可以通过共享密钥进行直接访问。 <br>有关这些方法的示例，请参阅 Azure Databricks 网站上的文章：[Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)。
 
-5. 在此代码块中，请将 `storage-account-name`、`application-id`、`authentication-id`、`tenant-id` 占位符的值替换为你在完成此文的[保存存储帐户配置](#config)和[创建服务主体](#service-principal)部分的步骤时收集的值。  将 `file-system-name` 占位符的值设置为你想要为文件系统提供的任意名称。
+5. 在此代码块中，请将 `storage-account-name`、`application-id`、`authentication-id` 和 `tenant-id` 占位符的值替换为你在完成本文的[获取存储帐户的名称](#config)和[创建服务主体](#service-principal)部分的步骤时收集的值。  将 `file-system-name` 占位符的值设置为你想要为文件系统提供的任意名称。
 
 6. 按 **SHIFT + ENTER** 键，运行此块中的代码。
 

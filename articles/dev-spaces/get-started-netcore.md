@@ -10,12 +10,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: b51bf83d2e44239ebd6bc17e25efaa2fe94250f3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5cecb11494926444249c8061f1ec93622e4d6c78
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467129"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700685"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>通过 .NET Core 开始使用 Azure Dev Spaces
 
@@ -99,13 +99,7 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-versi
 在此部分中，将创建一个 ASP.NET Core Web 应用并让其在 Kubernetes 的容器中运行。
 
 ### <a name="create-an-aspnet-core-web-app"></a>创建一个 ASP.NET Core Web 应用
-如果已安装 [.NET Core](https://www.microsoft.com/net)，则可快速地在名为 `webfrontend` 的文件夹中创建 ASP.NET Core Web 应用。
-    
-```cmd
-dotnet new mvc --name webfrontend
-```
-
-或者**从 GitHub 下载示例代码**，方法是：导航到 https://github.com/Azure/dev-spaces，然后选择“克隆或下载”，将 GitHub 存储库下载到本地环境。 本指南的代码位于 `samples/dotnetcore/getting-started/webfrontend` 中。
+克隆或下载 [Azure Dev Spaces 示例应用程序](https://github.com/Azure/dev-spaces)。 本文使用 *samples/dotnetcore/getting-started/webfrontend* 目录中的代码。
 
 ## <a name="preparing-code-for-docker-and-kubernetes-development"></a>准备用于 Docker 和 Kubernetes 开发的代码
 到目前为止，已有一个可以在本地运行的基本 Web 应用。 现在，将通过创建定义应用的容器以及将应用部署到 Kubernetes 的方式的资产来将其容器化。 使用 Azure Dev Spaces，可以很容易完成此任务： 
@@ -245,4 +239,4 @@ Azure Dev Spaces 不会在每次进行代码编辑时都重新生成和重新部
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解团队开发](team-development-netcore.md)
+> [了解多服务开发](multi-service-netcore.md)

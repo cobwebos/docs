@@ -13,15 +13,15 @@ ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2017
+ms.date: 01/31/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 7d622b834cef31552cac60b359cdd8404592eda9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 135189c576c67212dac6afc1388a6ef9fb045346
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255551"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512349"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>教程：使用 Yeoman 将容器打包并部署为 Service Fabric 应用程序
 
@@ -227,28 +227,53 @@ r = redis.StrictRedis(host=redis_server, port=6379, db=0)
 
 ## <a name="create-a-service-fabric-cluster"></a>创建 Service Fabric 群集
 
-若要将应用程序部署到 Azure 中的群集，可创建自己的群集。
+若要将应用程序部署到 Azure，需要通过 Service Fabric 群集来运行该应用程序。 以下命令在 Azure 中创建一个五节点群集。  这些命令还会创建一个自签名证书，将其添加到密钥保管库，并将证书作为 PEM 文件下载到本地。 新证书用来在群集进行部署时保护群集，还用来对客户端进行身份验证。
 
-合作群集是 Azure 上托管的免费限时 Service Fabric 群集。 这些群集由 Service Fabric 团队运行，任何人均可在其中部署应用程序和了解平台。 若要使用合作群集，请[按照说明操作](https://aka.ms/tryservicefabric)。
+```azurecli
+#!/bin/bash
 
-若要在安全合作群集上执行管理操作，可以使用 Service Fabric Explorer、CLI 或 Powershell。 若要使用 Service Fabric Explorer，需从合作群集网站下载 PFX 文件并将证书导入到证书存储（Windows 或 Mac）中，或者导入到浏览器 (Ubuntu) 中。 合作群集提供的自签名证书没有密码。
+# Variables
+ResourceGroupName="containertestcluster" 
+ClusterName="containertestcluster" 
+Location="eastus" 
+Password="q6D7nN%6ck@6" 
+Subject="containertestcluster.eastus.cloudapp.azure.com" 
+VaultName="containertestvault" 
+VmPassword="Mypa$$word!321"
+VmUserName="sfadminuser"
 
-若要使用 Powershell 或 CLI 执行管理操作，需要 PFX (Powershell) 或 PEM (CLI)。 若要将 PFX 转换为 PEM 文件，请运行以下命令：
+# Login to Azure and set the subscription
+az login
 
-```bash
-openssl pkcs12 -in party-cluster-1277863181-client-cert.pfx -out party-cluster-1277863181-client-cert.pem -nodes -passin pass:
+az account set --subscription <mySubscriptionID>
+
+# Create resource group
+az group create --name $ResourceGroupName --location $Location 
+
+# Create secure five node Linux cluster. Creates a key vault in a resource group
+# and creates a certficate in the key vault. The certificate's subject name must match 
+# the domain that you use to access the Service Fabric cluster.  
+# The certificate is downloaded locally as a PEM file.
+az sf cluster create --resource-group $ResourceGroupName --location $Location \ 
+--certificate-output-folder . --certificate-password $Password --certificate-subject-name $Subject \ 
+--cluster-name $ClusterName --cluster-size 5 --os UbuntuServer1604 --vault-name $VaultName \ 
+--vault-resource-group $ResourceGroupName --vm-password $VmPassword --vm-user-name $VmUserName
 ```
 
-若要了解如何创建自己的群集，请参阅[在 Azure 上创建 Service Fabric 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)。
+> [!Note]
+> Web 前端服务配置为侦听端口 80 上是否有传入流量。 默认情况下，会在群集 VM 和 Azure 负载均衡器上打开端口 80。
+>
+
+若要详细了解如何创建自己的群集，请参阅[在 Azure 上创建 Service Fabric 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)。
 
 ## <a name="build-and-deploy-the-application-to-the-cluster"></a>生成应用程序并将其部署到群集
 
 可以使用 Service Fabric CLI 将应用程序部署到 Azure 群集。 如果计算机上未安装 Service Fabric CLI，请按照[此处](service-fabric-get-started-linux.md#set-up-the-service-fabric-cli)的说明进行安装。
 
-连接到 Azure 中的 Service Fabric 群集。 将示例终结点替换为自己的终结点。 终结点必须是类似于下面的完整 URL。
+连接到 Azure 中的 Service Fabric 群集。 将示例终结点替换为自己的终结点。 终结点必须是类似于下面的完整 URL。  PEM 文件是以前创建的自签名证书。
 
 ```bash
-sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19080 --pem party-cluster-1277863181-client-cert.pem --no-verify
+sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azure.com:19080 --pem containertestcluster22019013100.pem --no-verify
 ```
 
 使用“TestContainer”目录中提供的安装脚本可将应用程序包复制到群集的映像存储、注册应用程序类型并创建应用程序的实例。
@@ -257,11 +282,11 @@ sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19
 ./install.sh
 ```
 
-打开 Web 浏览器，并导航到 Service Fabric Explorer (http://lin4hjim3l4.westus.cloudapp.azure.com:19080/Explorer)。 展开应用程序节点，注意有一个条目是用于应用程序类型，另一个条目用于实例。
+打开 Web 浏览器，并导航到 Service Fabric Explorer (http://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer)。 展开应用程序节点，注意有一个条目是用于应用程序类型，另一个条目用于实例。
 
 ![Service Fabric Explorer][sfx]
 
-若要连接到正在运行的应用程序，请打开 Web 浏览器并转到群集 url，例如 http://lin0823ryf2he.cloudapp.azure.com:80 。 在 Web UI 中应会显示投票应用程序。
+若要连接到正在运行的应用程序，请打开 Web 浏览器并转到群集 url，例如 http://containertestcluster.eastus.cloudapp.azure.com:80 。 在 Web UI 中应会显示投票应用程序。
 
 ![votingapp][votingapp]
 

@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 437217bdd3cc2ae8724d6bf24134d8fe725daac7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 34d0c4054273babcc56516d290857c4ddb554bf7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093302"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819087"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>快速入门：在 Azure Active Directory 中更新应用程序
 
@@ -156,7 +156,7 @@ ms.locfileid: "55093302"
 请务必注意单租户应用程序与多租户之间的差别：  
 
 - 单租户应用程序预定在一家组织中使用。 它通常是企业开发人员编写的业务线 (LoB) 应用程序。 只有在与应用程序注册相同的租户中具有帐户的用户才能访问单租户应用程序。 因此，只需在一个目录中预配此类应用程序。
-- 多租户应用程序预定在多家组织中使用。 它称为软件即服务 (SaaS) Web 应用程序，通常由独立软件供应商 (ISV) 编写。 必须在用户需要访问权限的每个租户中预配多租户应用程序。 对于除注册了应用程序以外的其他租户，需要经过用户或管理员的许可才能注册此类应用程序。 请注意，默认情况下，本机客户端应用程序都是多租户的，因为它们安装在资源所有者的设备上。 有关许可框架的详细信息，请参阅前面的[许可框架概述](#overview-of-the-consent-framework)部分。
+- 多租户应用程序预定在多家组织中使用。 它称为软件即服务 (SaaS) Web 应用程序，通常由独立软件供应商 (ISV) 编写。 必须在用户需要访问权限的每个租户中预配多租户应用程序。 对于除注册了应用程序以外的其他租户，需要经过用户或管理员的许可才能注册此类应用程序。 请注意，默认情况下，本机客户端应用程序都是多租户的，因为它们安装在资源所有者的设备上。 有关许可框架的详细信息，请参阅前面的“许可框架概述”部分。
 
 使应用程序成为多租户应用程序需要对应用程序注册进行更改，同时还需要对 Web 应用程序本身进行更改。 以下部分介绍了这两项操作。
 
@@ -184,7 +184,7 @@ ms.locfileid: "55093302"
 Web 应用程序还可以：
 
 - 让管理员“注册我的公司”。 这种体验称为“管理员许可”，使管理员能够代表其组织中的所有用户授予许可。 只有使用属于全局管理员角色的帐户进行身份验证的用户才能提供管理员许可；其他人会收到错误。
-- 用户的注册体验。 预期会为用户提供一个“注册”按钮，单击该按钮可将浏览器重定向到 Azure AD OAuth2.0 `/authorize` 终结点或 OpenID Connect `/userinfo` 终结点。 这些终结点允许应用程序通过检查 id_token 来获取有关新用户的信息。 完成注册阶段后，用户会看到许可提示，与[许可框架概述](#overview-of-the-consent-framework)部分中所示的提示类似。
+- 用户的注册体验。 预期会为用户提供一个“注册”按钮，单击该按钮可将浏览器重定向到 Azure AD OAuth2.0 `/authorize` 终结点或 OpenID Connect `/userinfo` 终结点。 这些终结点允许应用程序通过检查 id_token 来获取有关新用户的信息。 完成注册阶段后，用户会看到许可提示，与“许可框架概述”部分中所示的提示类似。
 
 有关需要进行哪些应用程序更改才能支持多租户访问和登录/注册体验的详细信息，请参阅：
 

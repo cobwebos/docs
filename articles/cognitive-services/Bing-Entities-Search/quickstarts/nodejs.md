@@ -1,94 +1,114 @@
 ---
-title: 快速入门：必应实体搜索 API，Node.js
+title: 快速入门：使用 Node.js 向必应实体搜索 REST API 发送搜索请求
 titlesuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以帮助你快速开始使用必应实体搜索 API。
+description: 使用本快速入门，通过 C# 向必应实体搜索 REST API 发送请求，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 11/28/2017
+ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 18476b8fa272ea235526693a9e2bab577298244d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 37e00c6cdc5340607a4aabc446d87e1a8575c552
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174459"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755129"
 ---
-# <a name="quickstart-for-bing-entity-search-api-with-nodejs"></a>通过 Node.js 使用必应实体搜索 API 快速入门
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>快速入门：使用 Node.js 向必应实体搜索 REST API 发送搜索请求
 
-本文展示了如何将[必应实体搜索](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) API 与 Node.JS 配合使用。
+使用本快速入门对必应实体搜索 API 进行你的第一次调用并查看 JSON 响应。 这个简单的 JavaScript 应用程序会向该 API 发送一个新闻搜索查询并显示响应。 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingEntitySearchv7.js) 上获得。
+
+虽然此应用程序是以 JavaScript 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [Node.js 6](https://nodejs.org/en/download/) 来运行此代码。
+* 最新版本的 [Node.js](https://nodejs.org/en/download/)。
 
-必须创建一个具有**必应实体搜索 API** 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api)足以满足本快速入门的要求。 需要激活免费试用版时提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+* [JavaScript 请求库](https://github.com/request/request)
 
-## <a name="search-entities"></a>搜索实体
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
-若要运行此应用程序，请执行以下步骤。
+## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-1. 在你喜欢使用的 IDE 中新建一个 Node.JS 项目。
-2. 添加下面提供的代码。
-3. 使用对订阅有效的访问密钥替换 `key` 值。
-4. 运行该程序。
+1. 在最喜爱的 IDE 或编辑器中创建新的 JavaScript 文件，并设置严格性和 https 要求。
 
-```nodejs
-'use strict';
+    ```javaScript
+    'use strict';
+    let https = require ('https');
+    ```
 
-let https = require ('https');
+2. 为 API 终结点、订阅密钥和搜索查询创建变量。
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+    ```javascript
+    let subscriptionKey = 'ENTER YOUR KEY HERE';
+    let host = 'api.cognitive.microsoft.com';
+    let path = '/bing/v7.0/entities';
+    
+    let mkt = 'en-US';
+    let q = 'italian restaurant near me';
+    ```
 
-// Replace the subscriptionKey string value with your valid subscription key.
-let subscriptionKey = 'ENTER KEY HERE';
+3. 将市场和查询参数追加到名为 `query` 的字符串。 确保使用 `encodeURI()` 对查询进行 URL 编码。
+    ```javascript 
+    let query = '?mkt=' + mkt + '&q=' + encodeURI(q);
+    ```
 
-let host = 'api.cognitive.microsoft.com';
-let path = '/bing/v7.0/entities';
+## <a name="handle-and-parse-the-response"></a>处理和分析响应
 
-let mkt = 'en-US';
-let q = 'italian restaurant near me';
+1. 定义一个名为 `response_handler` 的函数，该函数使用 HTTP 调用 `response` 作为参数。 在此函数内，执行以下步骤：
 
-let params = '?mkt=' + mkt + '&q=' + encodeURI(q);
+    1. 定义一个包含 JSON 响应的正文的变量。  
+        ```javascript
+        let response_handler = function (response) {
+            let body = '';
+        };
+        ```
 
-let response_handler = function (response) {
-    let body = '';
-    response.on ('data', function (d) {
-        body += d;
-    });
-    response.on ('end', function () {
-        let body_ = JSON.parse (body);
-        let body__ = JSON.stringify (body_, null, '  ');
-        console.log (body__);
-    });
-    response.on ('error', function (e) {
-        console.log ('Error: ' + e.message);
-    });
-};
+    2. 在调用数据标志时存储响应的正文
+        ```javascript
+        response.on('data', function (d) {
+            body += d;
+        });
+        ```
 
-let Search = function () {
-    let request_params = {
-        method : 'GET',
-        hostname : host,
-        path : path + params,
-        headers : {
-            'Ocp-Apim-Subscription-Key' : subscriptionKey,
-        }
-    };
+    3. 指示了 **end** 标志后，请分析并输出 JSON。
 
-    let req = https.request (request_params, response_handler);
-    req.end ();
-}
+        ```javascript
+        response.on ('end', function () {
+        let json = JSON.stringify(JSON.parse(body), null, '  ');
+        console.log (json);
+        });
+        ```
 
-Search ();
-```
+## <a name="send-a-request"></a>发送请求
 
-**响应**
+1. 创建名为 `Search` 的函数，以便发送搜索请求。 在其中执行以下步骤。
+
+    1. 创建包含请求参数的 JSON 对象：使用 `Get` 作为方法，并添加主机和路径信息。 将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头。 
+    2. 使用 `https.request()` 来发送请求，请求中包含此前创建的响应处理程序和搜索参数。
+    
+    ```javascript
+    let Search = function () {
+        let request_params = {
+            method : 'GET',
+            hostname : host,
+            path : path + query,
+            headers : {
+                'Ocp-Apim-Subscription-Key' : subscriptionKey,
+            }
+        };
+    
+        let req = https.request (request_params, response_handler);
+        req.end ();
+    }
+    ```
+
+2. 调用 `Search()` 函数。
+
+## <a name="example-json-response"></a>示例 JSON 响应
 
 在 JSON 中返回成功的响应，如以下示例所示： 
 
@@ -153,11 +173,10 @@ Search ();
 }
 ```
 
-[返回页首](#HOLTop)
-
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应实体搜索教程](../tutorial-bing-entities-search-single-page-app.md)
-> [必应实体搜索概述](../search-the-web.md )
-> [API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+> [构建单页 Web 应用](../tutorial-bing-entities-search-single-page-app.md)
+
+* [什么是必应实体搜索 API？](../overview.md )
+* [必应实体搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)

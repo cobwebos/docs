@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
-ms.openlocfilehash: 93894f9c45ac8b2cfcec23cf6a9ccd4d8e6f6824
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 7efa2f19aedfbd00ccced8b755d3b02847b31444
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121713"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508600"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>教程：使用 Azure 逻辑应用自动处理电子邮件和附件
 
@@ -64,7 +64,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
    | **部署模型** | 资源管理器 | 用于管理资源部署的[部署模型](../azure-resource-manager/resource-manager-deployment-model.md) | 
    | **帐户种类** | 常规用途 | [存储帐户类型](../storage/common/storage-introduction.md#types-of-storage-accounts) | 
    | **位置** | 美国西部 | 用于存储存储帐户信息的区域 | 
-   | **复制** | 本地冗余存储 (LRS) | 此设置指定如何复制、存储、管理和同步数据。 请参阅[复制](../storage/common/storage-introduction.md#replication)。 | 
+   | **复制** | 本地冗余存储 (LRS) | 此设置指定如何复制、存储、管理和同步数据。 请参阅[本地冗余存储 (LRS)：适用于 Azure 存储的低成本数据冗余](../storage/common/storage-redundancy-lrs.md)。 | 
    | **性能** | 标准 | 此设置指定支持的数据类型以及用于存储数据的介质。 请参阅[存储帐户的类型](../storage/common/storage-introduction.md#types-of-storage-accounts)。 | 
    | **需要安全传输** | 已禁用 | 此设置指定从连接进行请求所需的安全性。 请参阅[需要安全传输](../storage/common/storage-require-secure-transfer.md)。 | 
    | **订阅** | <*your-Azure-subscription-name*> | Azure 订阅的名称 | 
@@ -137,7 +137,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 1. 请先使用以下设置[创建函数应用](../azure-functions/functions-create-function-app-portal.md)，然后即可创建函数：
 
-   | 设置 | 值 | Description | 
+   | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
    | **应用名称** | CleanTextFunctionApp | 函数应用的全局唯一的描述性名称 | 
    | **订阅** | <*your-Azure-subscription-name*> | 以前使用过的同一 Azure 订阅 | 
@@ -263,7 +263,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
       ![指定用于检查邮件的文件夹、时间间隔和频率](./media/tutorial-process-email-attachments-workflow/set-up-email-trigger.png)
 
-      | 设置 | 值 | Description | 
+      | 设置 | 值 | 说明 | 
       | ------- | ----- | ----------- | 
       | **文件夹** | Inbox | 要检查的电子邮件文件夹 | 
       | 间隔 | 1 | 在两次检查之间需等待的时间间隔数 | 
@@ -272,7 +272,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
   
    2. 选择“显示高级选项”并指定以下设置：
 
-      | 设置 | 值 | Description | 
+      | 设置 | 值 | 说明 | 
       | ------- | ----- | ----------- | 
       | **带有附件** | 是 | 仅获取带有附件的电子邮件。 <p>**注意：** 此触发器不删除帐户中的任何电子邮件，仅检查新邮件，并且仅处理与主题筛选器匹配的电子邮件。 | 
       | **包括附件** | 是 | 获取充当工作流输入的附件，而不是仅仅检查是否有附件。 | 
@@ -427,7 +427,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    ![创建到存储帐户的连接](./media/tutorial-process-email-attachments-workflow/create-storage-account-connection-first.png)
 
-   | 设置 | 值 | Description | 
+   | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
    | **连接名称** | AttachmentStorageConnection | 连接的描述性名称 | 
    | **存储帐户** | attachmentstorageacct | 以前创建的用于保存附件的存储帐户的名称 | 
@@ -439,7 +439,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    ![提供适用于电子邮件正文的 Blob 信息](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body.png)
 
-   | 设置 | 值 | Description | 
+   | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
    | **文件夹路径** | /attachments | 以前创建的容器的路径和名称。 对于此示例，请单击文件夹图标，然后选择“/attachments”容器。 | 
    | **Blob 名称** | “发件人”字段 | 对于此示例，请使用发件人的姓名作为 Blob 名称。 单击此框内部以显示动态内容列表，然后在“收到新电子邮件时”操作下面选择“发件人”字段。 | 
@@ -528,7 +528,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    ![提供 Blob 信息](./media/tutorial-process-email-attachments-workflow/create-blob-per-attachment.png)
 
-   | 设置 | 值 | Description | 
+   | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
    | **文件夹路径** | /attachments | 以前创建的容器的路径和名称。 对于此示例，请单击文件夹图标，然后选择“/attachments”容器。 | 
    | **Blob 名称** | “名称”字段 | 对于此示例，请使用附件的名称作为 Blob 名称。 单击此框内部以显示动态内容列表，然后在“收到新电子邮件时”操作下面选择“名称”字段。 | 

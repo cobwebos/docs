@@ -12,12 +12,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: e81073850ebb45e82f2f702bec976eed4725f62e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 08903bcb15c69e3bc9a2b5435785d4a1ee8edb5c
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462556"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659042"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>在 .NET Core 和 Visual Studio 中开始使用 Azure Dev Spaces
 
@@ -158,4 +158,4 @@ Azure Dev Spaces 不会在每次进行代码编辑时都重新生成和重新部
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解团队开发](team-development-netcore-visualstudio.md)
+> [了解多服务开发](multi-service-netcore-visualstudio.md)

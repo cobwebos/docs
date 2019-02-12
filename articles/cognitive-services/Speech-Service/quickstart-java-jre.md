@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: fmegen
-ms.openlocfilehash: 86a57704b20790628a89bce0f8cda4e0599fd103
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9185d8d236b2a3283cf5a542002adadd0ac74686
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220563"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820532"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>快速入门：使用适用于 Java 的语音 SDK 识别语音
 
@@ -35,12 +35,16 @@ ms.locfileid: "55220563"
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) 或 [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * 语音服务的 Azure 订阅密钥。 [免费获得一个](get-started.md)。
 
-如果是运行 Ubuntu 16.04/18.04，请确保在启动 Eclipse 之前安装了这些依赖项。
+如果运行 Ubuntu 16.04/18.04，请确保在启动 Eclipse 之前安装这些依赖项。
 
 ```console
 sudo apt-get update
 sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
 ```
+
+如果你运行的是 Windows（64 位），请确保已经安装了适用于你的平台的 Microsoft Visual C++ Redistributable。
+* [下载 Microsoft Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+
 
 ## <a name="create-and-configure-project"></a>创建并配置项目
 

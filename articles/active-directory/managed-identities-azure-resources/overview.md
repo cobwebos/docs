@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/23/2018
 ms.author: priyamo
-ms.openlocfilehash: 7cd599ff75827ca8b0c6f7683cae01210a8fc8ab
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 34f6a03fc091fb4d86739af9d56993943ce44956
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183401"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662102"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>什么是 Azure 资源的托管标识？
 
@@ -102,6 +102,9 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 ## <a name="how-can-i-use-managed-identities-for-azure-resources"></a>如何使用 Azure 资源的托管标识？
 
 若要了解如何使用托管标识来访问不同的 Azure 资源，请尝试以下教程。
+
+> [!NOTE]
+> 请查看[为 Microsoft Azure 资源实施托管标识](https://www.pluralsight.com/courses/microsoft-azure-resources-managed-identities-implementing)来了解有关托管标识的详细信息，包括多个受支持方案的详细视频演练。
 
 了解如何将托管标识与 Windows VM 配合使用：
 

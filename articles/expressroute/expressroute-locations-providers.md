@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: pareshmu
-ms.openlocfilehash: f01e68a33be767f49c9ec87919c190bebf0b12c6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 457eb6335c5a67d381250861a4009225cf04fc25
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152002"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488044"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -173,7 +173,7 @@ ms.locfileid: "55152002"
 ## <a name="c1partners"></a>通过其他服务提供商建立的连接
 | **位置** | **Exchange** | **连接提供商** |
 | --- | --- | --- |
-| **阿姆斯特丹** | Equinix、Telecity | BICS、CloudXpress、Eurofiber、Fastweb S.p.A、Gulf Bridge International、MainOne、Nianet、Post、Proximus、Telecom Italia Sparkle、Telia |
+| **阿姆斯特丹** | Equinix、Telecity | BICS、CloudXpress、Eurofiber、Fastweb S.p.A、Gulf Bridge International、MainOne、Nianet、Post、Proximus、TDC Erhverv、Telecom Italia Sparkle、Telia |
 | **开普敦** | Teraco | MTN |
 | **芝加哥** | Equinix | Lightower、Windstream |
 | **达拉斯** | Equinix、Megaport | Axtel、C3ntro Telecom、Cox Business、Data Foundry、Transtelco |

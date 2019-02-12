@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 11/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 132fca9c8904c4f64fffe167e3a3f2c6bb0d2cfe
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 2937d1f665dae03795892f9ff0e8a93a894e1992
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621015"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818033"
 ---
 # <a name="what-is-azure-relay"></a>什么是 Azure 中继？
 使用 Azure 中继服务可以安全地在公有云中公开企业网络中运行的服务。 无需打开防火墙上的端口或者对企业网络基础设施进行彻底的改造就能实现此目的。 
@@ -44,7 +44,7 @@ Azure 中继不同于 VPN 等网络级集成技术。 Azure 中继的范围可�
 Azure 中继具有两项功能：
 
 - [混合连接](#hybrid-connections) - 使用开放标准 Web 套接字，实现多平台方案。
-- [WCF 中继](#wcf-relays) - 使用 Windows Communication Foundation (WCF) 实现远程过程调用。 WCF 中继是传统的中继产品，很多客户已在其 WCF 编程模型中使用。
+- WCF 中继 - 使用 Windows Communication Foundation (WCF) 实现远程过程调用。 WCF 中继是传统的中继产品，很多客户已在其 WCF 编程模型中使用。
 
 ## <a name="hybrid-connections"></a>混合连接
 

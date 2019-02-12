@@ -8,12 +8,12 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 1/30/2019
-ms.openlocfilehash: 8b56203b700d42f3fdec1b066ed05caf92eb53f1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 343baedb77eb5c8a250e2ab967332dc0905f5112
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462029"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743678"
 ---
 # <a name="quickstart-ingest-azure-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>快速入门：通过订阅事件网格通知将 Azure Blob 引入 Azure 数据资源管理器
 
@@ -111,7 +111,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
      **设置** | **建议的值** | **字段说明**
     |---|---|---|
     | 表 | TestTable | 在“TestDatabase”中创建的表。 |
-    | 数据格式 | *JSON* | 支持 JSON 和 CSV 格式。 |
+    | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOH、SCSV、TSV 和 TXT。 |
     | 列映射 | TestMapping | 在 **TestDatabase** 中创建的映射将传入的 JSON 数据映射到 **TestTable** 的列名称和数据类型。|
     | | |
 

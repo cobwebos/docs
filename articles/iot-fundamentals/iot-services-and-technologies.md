@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: ba4f5fcb08d671937c677d8a14c27aaec16bcb1b
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: e7ffd8f6f4f3aee376a09071fad0f1a36c23f1c4
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288707"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694000"
 ---
 # <a name="internet-of-things-iot-technologies-and-solutions-paas-and-saas"></a>物联网 (IoT) 技术和解决方案：PaaS 和 SaaS
 
@@ -58,7 +58,7 @@ Azure IoT Central 是完全托管的 SaaS 解决方案，可以让你在没有�
 
 ### <a name="compare-azure-iot-solution-accelerators-and-azure-iot-central"></a>比较 Azure IoT 解决方案加速器和 Azure IoT Central
 
-若要实现典型的 [IoT 解决方案体系结构](/azure/iot-fundamentals/iot-introduction#iot-solution-architecture)，可使用 Azure IoT 提供的几个选项（[Azure IoT 解决方案加速器](/azure/iot-suite)和 [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions)），每个选项适用于不同组合的客户需求。
+若要实现典型的 [IoT 解决方案体系结构](/azure/iot-fundamentals/iot-introduction)，可使用 Azure IoT 提供的几个选项（[Azure IoT 解决方案加速器](/azure/iot-suite)和 [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions)），每个选项适用于不同组合的客户需求。
 
 [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)是核心的 Azure PaaS，可供 Azure IoT Central 和 Azure IoT 解决方案加速器使用。 可以通过 IoT 中心在数百万个 IoT 设备和一个云解决方案之间实现安全可靠的双向通信。 可以借助 IoT 中心克服 IoT 实现难题，例如：
 

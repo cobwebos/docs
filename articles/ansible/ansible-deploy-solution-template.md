@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 01/28/2019
-ms.openlocfilehash: 705d23a93b25c513d413f2115c47d52ff6ef2bac
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9fa711c86e3ef7f05e87504905ec642808d8f601
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55229208"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770276"
 ---
 # <a name="deploy-the-ansible-solution-template-for-azure-to-centos"></a>将适用于 Azure 的 Ansible 解决方案模板部署到 CentOS
 适用于 Azure 的 Ansible 解决方案模板用于在 CentOS 虚拟机上配置 Ansible 实例，以及 Ansible 和一套配置为在 Azure 中运行的工具。 这些工具包括：
@@ -53,7 +53,7 @@ ms.locfileid: "55229208"
 1. 在“其他设置”选项卡中输入所需的信息：
 
     - **大小** - Azure 门户默认使用标准大小。 若要指定适合特定方案的其他大小，选择箭头来显示不同大小的列表。
-    - **VM 磁盘大小** - 选择“SSD”（高级固态硬盘）或“HDD”（机械硬盘）。 本文选择了“SSD”进行演示，因为 SSD 具有性能优势。 有关上述每种磁盘存储的详细信息，请参阅以下文章：
+    - **VM 磁盘类型** - 选择“SSD”（高级固态硬盘）或“HDD”（机械硬盘）。 本文选择了“SSD”进行演示，因为 SSD 具有性能优势。 有关上述每种磁盘存储的详细信息，请参阅以下文章：
         - [VM 的高性能高级存储和托管磁盘](/azure/virtual-machines/windows/premium-storage)
         - [Azure 虚拟机工作负荷的标准 SSD 托管磁盘](/azure/virtual-machines/windows/disks-standard-ssd)
     - **公共 IP 地址** - 如果想要从虚拟机外部与虚拟机通信，请指定此设置。 默认值是名为 `ansible-pip` 的新公共 IP 地址。 若要指定其他 IP 地址，请选择箭头指定该 IP 地址的属性 - 例如名称、SKU 和分配。 

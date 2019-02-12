@@ -1,31 +1,33 @@
 ---
-title: 快速入门：必应实体搜索 API，PHP
+title: 快速入门：使用 PHP 向必应实体搜索 REST API 发送搜索请求
 titlesuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以帮助你快速开始使用必应实体搜索 API。
+description: 使用本快速入门，通过 PHP 向必应实体搜索 REST API 发送请求，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 11/28/2017
+ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 5915346deeea76da8b37ddfbb618fed8392fe725
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8d963c0de272b29ab592536802ad23387a9b8dad
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195477"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753429"
 ---
-# <a name="quickstart-for-bing-entity-search-api-with-php"></a>通过 PHP 使用必应实体搜索 API 快速入门
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>快速入门：使用 PHP 向必应实体搜索 REST API 发送搜索请求
 
-本文介绍如何结合使用[必应实体搜索](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) API 与 PHP。
+使用本快速入门对必应实体搜索 API 进行你的第一次调用并查看 JSON 响应。 这个简单的 PHP 应用程序会向该 API 发送一个新闻搜索查询并显示响应。 
+
+虽然此应用程序是使用 PHP 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [PHP 5.6.x](http://php.net/downloads.php) 来运行此代码。
+* [PHP 5.6.x](http://php.net/downloads.php) 或更高版本
 
-必须创建一个具有**必应实体搜索 API** 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api)足以满足本快速入门的要求。 需要激活免费试用版时提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。   另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="search-entities"></a>搜索实体
 
@@ -145,11 +147,10 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 }
 ```
 
-[返回页首](#HOLTop)
-
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应实体搜索教程](../tutorial-bing-entities-search-single-page-app.md)
-> [必应实体搜索概述](../search-the-web.md )
-> [API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+> [构建单页 Web 应用](../tutorial-bing-entities-search-single-page-app.md)
+
+* [什么是必应实体搜索 API？](../overview.md )
+* [必应实体搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)

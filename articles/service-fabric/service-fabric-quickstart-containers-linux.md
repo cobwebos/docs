@@ -12,35 +12,42 @@ ms.devlang: python
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/11/2018
+ms.date: 01/30/2019
 ms.author: twhitney,suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c569a100984b77b05eac9f8b345faa05fb6848d7
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: fdb0d8e8def8429ff4c7c377df254fdfc0300637
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299226"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508838"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>快速入门：将 Linux 容器部署到 Service Fabric
 
 Azure Service Fabric 是一款分布式系统平台，可用于部署和管理可缩放的可靠微服务和容器。
 
-本快速入门介绍如何将 Linux 容器部署到 Service Fabric 群集。 完成后，Service Fabric 群集中会运行一个由 Python Web 前端和 Redis 后端组成的 Voting 应用程序。 此外还介绍如何对群集中的应用程序进行故障转移和缩放。
+本快速入门介绍如何在 Azure 上将 Linux 容器部署到 Service Fabric 群集。 完成后，Service Fabric 群集中会运行一个由 Python Web 前端和 Redis 后端组成的 Voting 应用程序。 此外还介绍如何对群集中的应用程序进行故障转移和缩放。
 
 ![Voting 应用网页][quickstartpic]
 
-在本快速入门中，请在 Azure Cloud Shell 中使用 Bash 环境来运行 Service Fabric CLI 命令。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+完成本快速入门教程需要：
 
-如果你是第一次运行 Cloud Shell，系统会要求你设置 `clouddrive` 文件共享。 可以接受默认设置，也可以附加现有的文件共享。 若要了解详细信息，请参阅[设置 `clouddrive` 文件共享](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage#set-up-a-clouddrive-file-share)。
+1. 如果还没有订阅，请在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
+
+2. 安装 [Azure CLI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
+
+3. 安装 [Service Fabric SDK 和 CLI](service-fabric-get-started-linux.md#installation-methods)
+
+4. 安装 [Git](https://git-scm.com/)
+
 
 ## <a name="get-the-application-package"></a>获取应用程序包
 
 若要将容器部署到 Service Fabric，需要一组描述各个容器以及应用程序的清单文件（应用程序定义）。
 
-在 Cloud Shell 中，使用 git 克隆一份应用程序定义，然后将目录更改为克隆中的 `Voting` 目录。
+在控制台中，使用 git 克隆一份应用程序定义，然后将目录更改为克隆中的 `Voting` 目录。
 
 ```bash
 git clone https://github.com/Azure-Samples/service-fabric-containers.git
@@ -50,14 +57,37 @@ cd service-fabric-containers/Linux/container-tutorial/Voting
 
 ## <a name="create-a-service-fabric-cluster"></a>创建 Service Fabric 群集
 
-若要将应用程序部署到 Azure，需要通过 Service Fabric 群集来运行该应用程序。 可以通过合作群集来轻松快捷地创建 Service Fabric 群集。 合作群集是 Azure 上托管的免费限时 Service Fabric 群集，由 Service Fabric 团队运行。 可以通过合作群集来部署应用程序和了解平台。 该群集使用单个自签名证书来确保节点到节点和客户端到节点的安全。
+若要将应用程序部署到 Azure，需要通过 Service Fabric 群集来运行该应用程序。 以下命令在 Azure 中创建一个五节点群集。  这些命令还会创建一个自签名证书，将其添加到密钥保管库，并将证书下载到本地。 新证书用来在群集进行部署时保护群集，还用来对客户端进行身份验证。
 
-登录并加入 [Linux 群集](https://aka.ms/tryservicefabric)。 通过单击 **PFX** 链接，将 PFX 证书下载到计算机。 单击**自述文件**链接，找到证书密码和说明，了解如何配置使用此证书所需的各种环境。 让“欢迎”页和“自述文件”页保持打开状态，然后需按照以下步骤中的某些说明进行操作。
+```azurecli
+#!/bin/bash
+
+# Variables
+ResourceGroupName="containertestcluster" 
+ClusterName="containertestcluster" 
+Location="eastus" 
+Password="q6D7nN%6ck@6" 
+Subject="containertestcluster.eastus.cloudapp.azure.com" 
+VaultName="containertestvault" 
+VmPassword="Mypa$$word!321"
+VmUserName="sfadminuser"
+
+# Login to Azure and set the subscription
+az login
+
+az account set --subscription <mySubscriptionID>
+
+# Create resource group
+az group create --name $ResourceGroupName --location $Location 
+
+# Create secure five node Linux cluster. Creates a key vault in a resource group
+# and creates a certficate in the key vault. The certificate's subject name must match 
+# the domain that you use to access the Service Fabric cluster.  The certificate is downloaded locally.
+az sf cluster create --resource-group $ResourceGroupName --location $Location --certificate-output-folder . --certificate-password $Password --certificate-subject-name $Subject --cluster-name $ClusterName --cluster-size 5 --os UbuntuServer1604 --vault-name $VaultName --vault-resource-group $ResourceGroupName --vm-password $VmPassword --vm-user-name $VmUserName
+```
 
 > [!Note]
-> 每小时可用的合作群集数目有限。 如果在尝试注册合作群集时出错，可以等待一段时间再重试，或者遵循[在 Azure 上创建 Service Fabric 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)中的步骤，在订阅中创建一个群集。
->
->如果创建自己的群集，请注意，Web 前端服务配置为侦听端口 80 上是否有传入流量。 请确保此端口在群集中处于打开状态。 （如果使用的是合作群集，此端口已处于打开状态。）
+> Web 前端服务配置为侦听端口 80 上是否有传入流量。 默认情况下，会在群集 VM 和 Azure 负载均衡器上打开端口 80。
 >
 
 ## <a name="configure-your-environment"></a>配置环境
@@ -68,53 +98,33 @@ Service Fabric 提供多种可以用来管理群集及其应用程序的工具�
 - Service Fabric 命令行界面 (CLI)，在 Azure CLI 基础上运行。 
 - PowerShell 命令。
 
-在本快速入门中，请使用 Service Fabric CLI（在 Cloud Shell 中）和 Service Fabric Explorer。 以下部分介绍如何安装证书，该证书是使用上述工具连接到安全群集所需的。
+在本快速入门中，请使用 Service Fabric CLI 和 Service Fabric Explorer（基于 Web 的工具）。 若要使用 Service Fabric Explorer，需将证书 PFX 文件导入到浏览器中。 默认情况下，PFX 文件没有密码。
 
-### <a name="configure-certificate-for-the-service-fabric-cli"></a>为 Service Fabric CLI 配置证书
-
-若要在 Cloud Shell 中使用 CLI，需将证书 PFX 文件上传到 Cloud Shell，然后使用它来创建 PEM 文件。
-
-1. 若要将证书上传到 Cloud Shell 中的当前工作目录，请将证书 PFX 文件从其下载到计算机上时所在的文件夹拖放到 Cloud Shell 窗口中。
-
-2. 若要将 PFX 文件转换为 PEM 文件，请使用以下命令。 （对于合作群集，可以从“自述文件”页上的说明中复制特定于 PFX 文件的命令以及密码。）
-
-    ```bash
-    openssl pkcs12 -in party-cluster-1486790479-client-cert.pfx -out party-cluster-1486790479-client-cert.pem -nodes -passin pass:1486790479
-    ```
-
-### <a name="configure-certificate-for-service-fabric-explorer"></a>为 Service Fabric Explorer 配置证书
-
-若要使用 Service Fabric Explorer，需将从合作群集网站下载的证书 PFX 文件导入到证书存储（Windows 或 Mac）中，或者导入到浏览器 (Ubuntu) 中。 需要可以从“自述文件”页获取的 PFX 私钥密码。
-
-请使用最熟悉的方法将证书导入到系统中。 例如：
-
-- 在 Windows 上：双击 PFX 文件，按提示在个人存储 `Certificates - Current User\Personal\Certificates` 中安装证书。 也可以使用**自述文件**说明中的 PowerShell 命令。
-- 在 Mac 上：双击 PFX 文件，按提示在 Keychain 中安装证书。
-- 在 Ubuntu 上：Mozilla Firefox 是 Ubuntu 16.04 中的默认浏览器。 若要将证书导入 Firefox，请单击浏览器右上角的菜单按钮，然后单击“选项”。 在“首选项”页上，使用搜索框搜索“证书”。 单击“查看证书”，选择“你的证书”选项卡，单击“导入”，然后按提示导入证书。
+Mozilla Firefox 是 Ubuntu 16.04 中的默认浏览器。 若要将证书导入 Firefox，请单击浏览器右上角的菜单按钮，然后单击“选项”。 在“首选项”页上，使用搜索框搜索“证书”。 单击“查看证书”，选择“你的证书”选项卡，单击“导入”，然后按提示导入证书。
 
    ![在 Firefox 上安装证书](./media/service-fabric-quickstart-containers-linux/install-cert-firefox.png)
 
 ## <a name="deploy-the-service-fabric-application"></a>部署 Service Fabric 应用程序
 
-1. 在 Cloud Shell 中，使用 CLI 连接到 Azure 中的 Service Fabric 群集。 此终结点是群集的管理终结点。 已在上一部分创建 PEM 文件。 （对于合作群集，可以从“自述文件”页上的说明中复制特定于 PEM 文件的命令以及管理终结点。）
+1. 使用 CLI 连接到 Azure 中的 Service Fabric 群集。 此终结点是群集的管理终结点。 已在上一部分创建 PEM 文件。 
 
     ```bash
-    sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19080 --pem party-cluster-1277863181-client-cert.pem --no-verify
+    sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azure.com:19080 --pem containertestcluster22019013100.pem --no-verify
     ```
 
-2. 使用安装脚本将 Voting 应用程序定义复制到群集，注册应用程序类型，并创建应用程序的实例。
+2. 使用安装脚本将 Voting 应用程序定义复制到群集，注册应用程序类型，并创建应用程序的实例。  PEM 证书应该与 *install.sh* 文件位于同一目录中。
 
     ```bash
     ./install.sh
     ```
 
-3. 打开 Web 浏览器，导航到群集的 Service Fabric Explorer 终结点。 终结点的格式如下：**https://\<my-azure-service-fabric-cluster-url>:19080/Explorer**，例如 `https://linh1x87d1d.westus.cloudapp.azure.com:19080/Explorer`。 </br>（对于合作群集，可以在“欢迎”页上找到群集的 Service Fabric Explorer 终结点。）
+3. 打开 Web 浏览器，导航到群集的 Service Fabric Explorer 终结点。 终结点的格式如下：**https://\<my-azure-service-fabric-cluster-url>:19080/Explorer**，例如 `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`。 </br>
 
 4. 展开“应用程序”节点，可以看到 Voting 应用程序类型的条目以及创建的实例。
 
     ![Service Fabric Explorer][sfx]
 
-5. 若要连接到正在运行的容器，请打开 Web 浏览器，导航到群集的 URL，例如 `http://linh1x87d1d.westus.cloudapp.azure.com:80`。 浏览器中应会显示该投票应用程序。
+5. 若要连接到正在运行的容器，请打开 Web 浏览器，导航到群集的 URL，例如 `http://containertestcluster.eastus.cloudapp.azure.com:80`。 浏览器中应会显示该投票应用程序。
 
     ![Voting 应用网页][quickstartpic]
 
@@ -130,8 +140,8 @@ Service Fabric 可确保在发生故障时，将容器实例自动转移到群�
 
 若要故障转移前端容器，请执行以下步骤：
 
-1. 在群集中打开 Service Fabric Explorer，例如 `https://linh1x87d1d.westus.cloudapp.azure.com:19080/Explorer`。
-2. 在树视图中单击“fabric:/Voting/azurevotefront”节点，展开分区节点（以 GUID 表示）。 注意树视图中的节点名称，它显示了当前正在运行容器的节点，例如 `_nodetype_4`。
+1. 在群集中打开 Service Fabric Explorer，例如 `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`。
+2. 在树视图中单击“fabric:/Voting/azurevotefront”节点，展开分区节点（以 GUID 表示）。 注意树视图中的节点名称，它显示了当前正在运行容器的节点，例如 `_nodetype_1`。
 3. 在树视图中展开“节点”节点。 单击正在运行容器的节点旁边的省略号 (...)。
 4. 选择“重启”以重启该节点，并确认重启操作。 重启会导致容器故障转移到群集中的另一个节点。
 
@@ -143,7 +153,7 @@ Service Fabric 可确保在发生故障时，将容器实例自动转移到群�
 
 若要缩放 Web 前端服务，请按照以下步骤操作：
 
-1. 在群集中打开 Service Fabric Explorer，例如 `https://linh1x87d1d.westus.cloudapp.azure.com:19080`。
+1. 在群集中打开 Service Fabric Explorer，例如 `https://containertestcluster.eastus.cloudapp.azure.com:19080`。
 2. 在树视图中单击“fabric:/Voting/azurevotefront”节点旁边的省略号（三个点），选择“缩放服务”。
 
     ![Service Fabric Explorer 缩放服务开始][containersquickstartscale]
@@ -161,18 +171,27 @@ Service Fabric 可确保在发生故障时，将容器实例自动转移到群�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-1. 使用模板中提供的卸载脚本 (uninstall.sh) 从群集中删除应用程序实例并取消注册应用程序类型。 此脚本需要一定的时间来清理实例，因此不应在运行此脚本后立即运行 install script。 可以使用 Service Fabric Explorer 来确定实例何时已删除以及应用程序类型何时已取消注册。
+使用模板中提供的卸载脚本 (uninstall.sh) 从群集中删除应用程序实例并取消注册应用程序类型。 此脚本需要一定的时间来清理实例，因此不应在运行此脚本后立即运行 install script。 可以使用 Service Fabric Explorer 来确定实例何时已删除以及应用程序类型何时已取消注册。
 
-    ```bash
-    ./uninstall.sh
-    ```
+```bash
+./uninstall.sh
+```
 
-2. 如果群集已使用完毕，则可从证书存储中删除证书。 例如：
-   - 在 Windows 上：使用[“证书”MMC 管理单元](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)。 在添加管理单元时，确保选择“我的用户帐户”。 导航到 `Certificates - Current User\Personal\Certificates`，然后删除证书。
-   - 在 Mac 上：使用 Keychain 应用。
-   - 在 Ubuntu 上：按照查看证书时所使用的步骤删除此证书。
+若要删除群集及其占用的所有资源，最简单的方式是删除资源组。
 
-3. 如果不希望继续使用 Cloud Shell，则可删除与之相关联的存储帐户，避免被收取费用。 关闭 Cloud Shell 会话。 在 Azure 门户中，单击与 Cloud Shell 相关联的存储帐户，然后单击页面顶部的“删除”并响应提示。
+登录到 Azure，选择要删除的群集的订阅 ID。 可通过登录到 Azure 门户查找订阅 ID。 使用 [az group delete 命令](/cli/azure/group?view=azure-cli-latest)删除资源组和所有群集资源。
+
+```azurecli
+az login
+az account set --subscription <guid>
+ResourceGroupName="containertestcluster"
+az group delete --name $ResourceGroupName
+```
+
+如果群集已使用完毕，则可从证书存储中删除证书。 例如：
+- 在 Windows 上：使用[“证书”MMC 管理单元](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)。 在添加管理单元时，确保选择“我的用户帐户”。 导航到 `Certificates - Current User\Personal\Certificates`，然后删除证书。
+- 在 Mac 上：使用 Keychain 应用。
+- 在 Ubuntu 上：按照查看证书时所使用的步骤删除此证书。
 
 ## <a name="next-steps"></a>后续步骤
 

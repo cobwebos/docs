@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 12/19/2018
-ms.openlocfilehash: 63cc71ff784a25984672090bc6dbba662d9a52c1
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 02/06/2019
+ms.openlocfilehash: ac7b4dc563fa663dd016971ba6a27104860c8cce
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728136"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55767960"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-online-using-dms"></a>教程：使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库
 可以使用 Azure 数据库迁移服务在尽量缩短停机时间的情况下，将数据库从本地 SQL Server 实例迁移到 [Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/)。 在本教程中，将通过使用 Azure 数据库迁移服务，将还原到 SQL Server 2016（或更高版本）本地实例的 Adventureworks2012 数据库迁移到 Azure SQL 数据库。
@@ -32,7 +32,7 @@ ms.locfileid: "53728136"
 > * 下载迁移报告。
 
 > [!NOTE]
-> 使用 Azure 数据库迁移服务执行联机迁移需要基于“高级”定价层创建实例。
+> 使用 Azure 数据库迁移服务执行联机迁移需要基于“高级”定价层创建实例。 有关详细信息，请参阅 Azure 数据库迁移服务[定价](https://azure.microsoft.com/pricing/details/database-migration/)页。
 
 > [!IMPORTANT]
 > 为获得最佳迁移体验，Microsoft 建议在目标数据库所在的 Azure 区域中创建 Azure 数据库迁移服务的实例。 跨区域或地理位置移动数据可能会减慢迁移过程并引入错误。
@@ -46,7 +46,11 @@ ms.locfileid: "53728136"
 
 - 下载并安装 [SQL Server 2012 或更高版本](https://www.microsoft.com/sql-server/sql-server-downloads)（任意版本）。
 - 按照[启用或禁用服务器网络协议](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)一文中的说明启用 TCP/IP 协议（在安装 SQL Server Express 时，会默认禁用它）。
-- 按照[在 Azure 门户中创建 Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)一文中的详细信息创建 Azure SQL 数据库实例。
+- 按照[在 Azure 门户中创建 Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)一文中的详细信息创建 Azure SQL 数据库。
+
+    > [!NOTE]
+    > 如果你使用 SQL Server Integration Services (SSIS) 并且希望将 SSIS 项目/包的目录数据库 (SSISDB) 从 SQL Server 迁移到 Azure SQL 数据库，则当你在 Azure 数据工厂 (ADF) 中预配 SSIS 时，系统会代表你自动创建和管理目标 SSISDB。 有关如何迁移 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 包迁移到 Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)。 
+ 
 - 下载并安装[数据迁移助手](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) v3.3 或更高版本。
 - 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 VNET，它将使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。
 - 确保 Azure 虚拟网络 (VNET) 网络安全组规则未阻止通信端口 443、53、9354、445、12000。 有关 Azure VNET NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
@@ -118,6 +122,9 @@ ms.locfileid: "53728136"
 4.  在“选择源”屏幕上的“连接到服务器”对话框中，向 SQL Server 提供连接详细信息，然后选择“连接”。
 5.  在“添加源”对话框中，依次选择“AdventureWorks2012”、“添加”和“开始评估”。
 
+    > [!NOTE]
+    > 如果你使用 SSIS，则 DMA 目前不支持对源 SSISDB 进行评估。 但是，将 SSIS 项目/包重新部署到由 Azure SQL 数据库托管的目标 SSISDB 时，会对其进行评估/验证。 有关如何迁移 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 包迁移到 Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)。
+
     评估完成后，结果将如下图所示：
 
     ![评估数据迁移](media/tutorial-sql-server-to-azure-sql-online/dma-assessments.png)
@@ -134,6 +141,9 @@ ms.locfileid: "53728136"
 
 > [!NOTE]
 > 在 DMA 中创建迁移项目之前，请确保已按照先决条件中的说明预配了 Azure SQL 数据库。 出于本教程的目的，假设 Azure SQL 数据库的名称是“AdventureWorksAzure”，但是你可按照自己意愿使用任意名称命名。
+
+> [!IMPORTANT]
+> 如果你使用 SSIS，则 DMA 目前不支持迁移源 SSISDB，但你可以将 SSIS 项目/包重新部署到由 Azure SQL 数据库托管的目标 SSISDB。 有关如何迁移 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 包迁移到 Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)。
 
 若要将 AdventureWorks2012 架构迁移到 Azure SQL 数据库，请执行以下步骤：
 
@@ -249,6 +259,9 @@ ms.locfileid: "53728136"
     > 使用自签名证书加密的 SSL 连接不提供可靠的安全性。 它们易遭受中间人攻击。 不得在生产环境中或在连接到 Internet 的服务器上依赖使用自签名证书的 SSL。
 
    ![源详细信息](media/tutorial-sql-server-to-azure-sql-online/dms-source-details3.png)
+
+    > [!IMPORTANT]
+    > 如果你使用 SSIS，则 DMS 目前不支持迁移源 SSISDB，但你可以将 SSIS 项目/包重新部署到由 Azure SQL 数据库托管的目标 SSISDB。 有关如何迁移 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 包迁移到 Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)。
 
 ## <a name="specify-target-details"></a>指定目标详细信息
 1. 选择“保存”，然后在“迁移目标详细信息”屏幕中，指定目标 Azure SQL 数据库服务器的连接详细信息，这是使用 DMA 向其部署 AdventureWorks2012 架构的预配 Azure SQL 数据库。

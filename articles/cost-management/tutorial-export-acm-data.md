@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/04/2019
+ms.date: 02/05/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 4ad93dad2044526f5825823540325b73f2d0d7ae
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 5f979f562ee871e7ae5f48de5bc53405cb3d1116
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053528"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766396"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 
@@ -30,8 +30,7 @@ ms.locfileid: "54053528"
 > * 验证收集的数据
 
 ## <a name="prerequisites"></a>先决条件
-
-所有[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 客户均可使用数据导出。 每个订阅支持以下 Azure 权限，以便用户和组导出数据：
+针对各种 Azure 帐户类型提供了数据导出功能，包括[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 客户。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 每个订阅支持以下 Azure 权限，以便用户和组导出数据：
 
 - 所有者 - 可以为订阅创建、修改或删除计划导出。
 - 参与者 - 可以创建、修改或删除自己的计划导出。 可以修改其他人创建的计划导出的名称。

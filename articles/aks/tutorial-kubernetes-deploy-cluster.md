@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 7e5c78e1b30b311c6ce918453fe728ae86060dda
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 54872a1c5a40cdb3f51c17362daed93c3892001e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720656"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754551"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>教程：部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -67,10 +67,10 @@ az ad sp create-for-rbac --skip-assignment
 az acr show --resource-group myResourceGroup --name <acrName> --query "id" --output tsv
 ```
 
-若要授予 AKS 群集使用 ACR 中存储的映像的适当访问权限，请使用 [az role assignment create][] 命令创建角色分配。 将 `<appId`> 和 `<acrId>` 替换为在前两个步骤中收集的值。
+若要为 AKS 群集授予正确的访问权限来拉取 ACR 中存储的映像，请使用 [az role assignment create][] 命令分配 `AcrPull` 角色。 将 `<appId`> 和 `<acrId>` 替换为在前两个步骤中收集的值。
 
 ```azurecli
-az role assignment create --assignee <appId> --scope <acrId> --role Reader
+az role assignment create --assignee <appId> --scope <acrId> --role acrpull
 ```
 
 ## <a name="create-a-kubernetes-cluster"></a>创建 Kubernetes 群集

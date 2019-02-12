@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: hning86
 ms.author: haining
 ms.reviewer: sgilley
-ms.date: 09/24/2018
+ms.date: 01/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 887be89060a6d02eea74cd127cfbc93e48c0b3ff
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0f596f40cdea095ea152785e656c44eaa062e28c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240856"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564028"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>教程：在 Azure 容器实例中部署映像分类模型
 
@@ -33,23 +33,18 @@ ms.locfileid: "55240856"
 > * 将模型部署到容器实例。
 > * 测试已部署的模型。
 
-容器实例不适用于生产部署，但非常适用于测试和了解工作流。 对于可缩放的生产部署，请考虑使用 Azure Kubernetes 服务。 有关详细信息，请参阅[部署方式及位置](how-to-deploy-and-where.md)。
-
-## <a name="get-the-notebook"></a>获取 Notebook
-
-为方便起见，本教程以 [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part2-deploy.ipynb) 的形式提供。 在 [Azure Notebooks](https://notebooks.azure.com/) 或你自己的 Jupyter 笔记本服务器中运行 *tutorials/img-classification-part2-deploy.ipynb* 笔记本。
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
+容器实例是用于测试和了解工作流的理想解决方案。 对于可缩放的生产部署，请考虑使用 Azure Kubernetes 服务。 有关详细信息，请参阅[部署方式及位置](how-to-deploy-and-where.md)。
 
 >[!NOTE]
-> 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.2 进行测试
+> 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.8 进行测试。
 
 ## <a name="prerequisites"></a>先决条件
+跳到[设置开发环境](#start)来通读 Notebook 步骤。  
 
-在以下 Notebook 中执行模型训练：[教程（第 1 部分）：使用 Azure 机器学习服务训练图像分类模型](tutorial-train-models-with-aml.md)。  
+若要运行 Notebook，请首先完成以下教程中的模型训练：[教程（第 1 部分）：使用 Azure 机器学习服务训练图像分类模型](tutorial-train-models-with-aml.md)。   然后，使用同一 Notebook 服务器运行 **tutorials/img-classification-part2-deploy.ipynb** Notebook。
 
 
-## <a name="set-up-the-environment"></a>设置环境
+## <a name="start"></a>设置环境
 
 首先，设置测试环境。
 
@@ -78,13 +73,16 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 ```python
 from azureml.core import Workspace
 from azureml.core.model import Model
-
+import os 
 ws = Workspace.from_config()
 model=Model(ws, 'sklearn_mnist')
-model.download(target_dir = '.')
-import os 
+
+model.download(target_dir=os.getcwd(), exist_ok=True)
+
 # verify the downloaded model file
-os.stat('./sklearn_mnist_model.pkl')
+file_path = os.path.join(os.getcwd(), "sklearn_mnist_model.pkl")
+
+os.stat(file_path)
 ```
 
 ## <a name="test-the-model-locally"></a>在本地测试模型
@@ -100,12 +98,12 @@ os.stat('./sklearn_mnist_model.pkl')
 
 ```python
 from utils import load_data
+import os
 
+data_folder = os.path.join(os.getcwd(), 'data')
 # note we also shrink the intensity values (X) from 0-255 to 0-1. This helps the neural network converge faster
-
-X_test = load_data('./data/test-images.gz', False) / 255.0
-y_test = load_data('./data/test-labels.gz', True).reshape(-1)
-
+X_test = load_data(os.path.join(data_folder, 'test-images.gz'), False) / 255.0
+y_test = load_data(os.path.join(data_folder, 'test-labels.gz'), True).reshape(-1)
 ```
 
 ### <a name="predict-test-data"></a>预测测试数据
@@ -116,7 +114,7 @@ y_test = load_data('./data/test-labels.gz', True).reshape(-1)
 import pickle
 from sklearn.externals import joblib
 
-clf = joblib.load('./sklearn_mnist_model.pkl')
+clf = joblib.load( os.path.join(os.getcwd(), 'sklearn_mnist_model.pkl'))
 y_hat = clf.predict(X_test)
 ```
 
@@ -214,7 +212,8 @@ def run(raw_data):
     data = np.array(json.loads(raw_data)['data'])
     # make prediction
     y_hat = model.predict(data)
-    return json.dumps(y_hat.tolist())
+    # you can return any data type as long as it is JSON-serializable
+    return y_hat.tolist()
 ```
 
 <a name="make-myenv"></a>
@@ -314,10 +313,10 @@ n = 30
 sample_indices = np.random.permutation(X_test.shape[0])[0:n]
 
 test_samples = json.dumps({"data": X_test[sample_indices].tolist()})
-test_samples = bytes(test_samples, encoding = 'utf8')
+test_samples = bytes(test_samples, encoding='utf8')
 
 # predict using the deployed model
-result = json.loads(service.run(input_data=test_samples))
+result = service.run(input_data=test_samples)
 
 # compare actual value vs. the predicted values:
 i = 0
@@ -347,7 +346,6 @@ plt.show()
 
 ```python
 import requests
-import json
 
 # send a random row from the test set to score
 random_index = np.random.randint(0, len(X_test)-1)
@@ -380,6 +378,8 @@ service.delete()
 
 ## <a name="next-steps"></a>后续步骤
 
-+ 了解 [Azure 机器学习服务的所有部署选项](how-to-deploy-and-where.md)。 选项包括 Azure 容器实例、Azure Kubernetes 服务、FPGA 和 Azure IoT Edge。
-
-+ 了解 Azure 机器学习服务如何为模型自动选择和优化最佳算法。 它还能为你生成模型。 尝试学习[自动算法选择](tutorial-auto-train-models.md)教程。 
++ 了解 [Azure 机器学习服务的所有部署选项](how-to-deploy-and-where.md)。
++ 了解如何[创建 Web 服务的客户端](how-to-consume-web-service.md)。
++  以异步方式[对大量数据进行预测](how-to-run-batch-predictions.md)。
++ 使用 [Application Insights](how-to-enable-app-insights.md) 监视 Azure 机器学习模型。
++ 尝试学习[自动算法选择](tutorial-auto-train-models.md)教程。 

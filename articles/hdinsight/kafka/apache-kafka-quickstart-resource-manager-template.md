@@ -8,18 +8,18 @@ ms.author: hrasheed
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 04/16/2018
-ms.openlocfilehash: 66c6b6908a225301f0bce9f70b43e96047bcd6d1
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: ff34eef76e03bbf4ae0195960847b7748235483c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791139"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822453"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>快速入门：创建 Apache Kafka on HDInsight 群集
 
 [Apache Kafka](https://kafka.apache.org/) 是开源分布式流式处理平台。 通常用作消息代理，因为它可提供类似于发布-订阅消息队列的功能。 
 
-在此快速入门中，了解如何在 Azure HDInsight 上使用 Azure 资源管理器模板创建 [Apache Kafka](https://kafka.apache.org) 群集。 还介绍了如何使用已包含的实用工具发送并接收使用 Kafka 的信息。
+在此快速入门中，了解如何在 Azure HDInsight 上使用 Azure 资源管理器模板创建 [Apache Kafka](https://kafka.apache.org) 群集。 还介绍了如何使用已包含的实用工具发送并接收使用 Kafka 的信息。 可以在 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)中查看类似的模板。 可以在[此处](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/allversions)找到模板参考。
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 

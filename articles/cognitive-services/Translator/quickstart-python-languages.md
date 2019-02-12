@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/29/2018
+ms.date: 02/01/2019
 ms.author: erhopf
-ms.openlocfilehash: c99dbdb95c4dd7a6e078fd6e9ee15a590c8c40c9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6f52df9166da371b38069138bc4389a9be6b0121
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458289"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692216"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-python"></a>快速入门：使用 Python 通过文本翻译 API 获取所支持语言的列表
 
@@ -64,7 +64,7 @@ else:
 #subscriptionKey = 'put_your_key_here'
 ```
 
-目前有一个终结点可用于文本翻译，并已设置为 `base_url`。 `path` 设置 `languages` 路由并确定我们需使用 API 的版本 3。
+文本翻译全局终结点设置为 `base_url`。 `path` 设置 `languages` 路由并确定我们需使用 API 的版本 3。
 
 >[!NOTE]
 > 有关终结点、路由和请求参数的详细信息，请参阅[文本翻译 API 3.0：语言](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages)。

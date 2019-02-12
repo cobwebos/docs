@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/17/2018
+ms.date: 02/01/2019
 ms.author: erhopf
-ms.openlocfilehash: b5307db01cc7242ba73876409f18d511c2516091
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f995c727f46957d663cb6a6a32ac1d4313c71e8f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458153"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697133"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>快速入门：使用 Python 通过文本翻译 API 来翻译字符串
 
@@ -64,7 +64,7 @@ else:
 #subscriptionKey = 'put_your_key_here'
 ```
 
-目前有一个终结点可用于文本翻译，并已设置为 `base_url`。 `path` 设置 `translate` 路由并确定我们需使用 API 的版本 3。
+文本翻译全局终结点设置为 `base_url`。 `path` 设置 `translate` 路由并确定我们需使用 API 的版本 3。
 
 `params` 用于设置输出语言。 在此示例中，我们将从英文翻译为意大利文和德文：`it` 和 `de`。
 

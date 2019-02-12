@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/9/2017
 ms.author: rajraj
-ms.openlocfilehash: 5280936cdec25f7b5fc4b77c989b31c7a01f7bd6
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 2a1c78a4cec595b672604c90e103ae3b9e40273f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958629"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693677"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>使用大型虚拟机规模集
 用户现在可以创建容量高达 1,000 台 VM 的 Azure [虚拟机规模集](/azure/virtual-machine-scale-sets/)。 在本文档中，_大型虚拟机规模集_定义为能够扩展到 100 台 VM 以上的规模集。 此功能通过规模集属性 (_singlePlacementGroup=False_) 设置。 
@@ -61,7 +61,7 @@ _vmss create_ 命令会对某些配置值进行默认设置（如果用户未指
 az vmss create --help
 ```
 
-若要通过编写 Azure 资源管理器模板来创建大型规模集，请确保该模板基于 Azure 托管磁盘创建规模集。 可以在 _Microsoft.Compute/virtualMAchineScaleSets_ 资源的 _properties_ 节将 _singlePlacementGroup_ 属性设置为 _false_。 以下 JSON 片段显示了规模集模板的开头，包括 1,000 VM 容量和 _"singlePlacementGroup" : false_ 设置：
+若要通过编写 Azure 资源管理器模板来创建大型规模集，请确保该模板基于 Azure 托管磁盘创建规模集。 可以在 _Microsoft.Compute/virtualMachineScaleSets_ 资源的 _properties_ 节将 _singlePlacementGroup_ 属性设置为 _false_。 以下 JSON 片段显示了规模集模板的开头，包括 1,000 VM 容量和 _"singlePlacementGroup" : false_ 设置：
 ```json
 {
   "type": "Microsoft.Compute/virtualMachineScaleSets",

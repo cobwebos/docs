@@ -11,33 +11,28 @@ ms.topic: overview
 ms.date: 08/22/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f06269b937a645a5334c1a8015528ad00adb66e8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c68e50d02a27097c9fa8a699468ce679162240a1
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154484"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561291"
 ---
 # <a name="what-is-computer-vision"></a>什么是计算机视觉？
 
-使用基于云的计算机视觉服务，开发人员可以访问用于处理图像并返回信息的高级算法。 计算机视觉适用于常用图像格式，例如 JPEG 和 PNG。 若要分析图像，可以上传图像，也可以指定图像 URL。 计算机视觉算法可以通过不同方式分析图像的内容，具体取决于你感兴趣的视觉功能。 例如，计算机视觉可以确定图像是否包含成人内容或不雅内容，或者查找图像中的所有人脸。
+使用 Azure 的计算机视觉服务，开发人员可以访问用于处理图像并返回信息的高级算法。 若要分析图像，可以上传图像，也可以指定图像 URL。 图像处理算法可以通过多种不同的方式分析内容，具体取决于你感兴趣的视觉功能。 例如，计算机视觉可以确定图像是否包含成人内容或不雅内容，或者查找图像中的所有人脸。
 
-可以在应用程序中使用计算机视觉，方法是：通过[客户端库](quickstarts-sdk/csharp-analyze-sdk.md)来调用服务，或者直接调用 [REST API](vision-api-how-to-topics/howtocallvisionapi.md)，以便：
+可以在应用程序中使用计算机视觉，方法是：使用本机 SDK，或者直接调用 REST API。 此页广泛地介绍了计算机视觉的功能。
 
-- [通过分析图像来获取见解](#analyzing-images-for-insight)
-- [从图像中提取文本](#extracting-text-from-images)
-- [管理图像中的内容](#moderating-content-in-images)
+## <a name="analyze-images-for-insight"></a>通过分析图像来获取见解
 
-## <a name="analyzing-images-for-insight"></a>通过分析图像来获取见解
-
-可以使用计算机视觉来分析图像，以便检测并提供有关图像视觉特性和特征的见解。 可以通过上传图像内容来分析本地图像，也可以通过指定图像 URL 来分析远程图像。
-
-计算机视觉在分析图像时，可执行以下操作：
+可以分析图像，以便检测并提供有关视觉特性和特征的见解。 下表中的所有特性由[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 提供。
 
 | 操作 | 说明 |
 | ------ | ----------- |
 |**[标记视觉特性](concept-tagging-images.md)**|从数千个可识别对象、生物、风景和操作识别并标记图像中的视觉对象特性。 如果标记含混不清或者不常见，API 响应会提供“提示”，明确已知设置上下文中的标记的含义。 标记并不局限于主体（如前景中的人员），还包括设置（室内或室外）、家具、工具、工厂、动物、附件、小工具等。|
 |**[检测对象](concept-object-detection.md)**| 对象检测类似于添加标记，但 API 返回应用于每个标记的边框坐标。 例如，如果图像包含狗、猫和人，检测操作将列出这些对象及其在图像中的坐标。 可以使用此功能进一步处理图像中各对象之间的关系。 图像中有多个相同标记的实例时，还会通知于你。|
+|**[检测品牌](concept-brand-detection.md)**|根据一个包含数千全球徽标的数据库，确定图像或视频中的商业品牌。 可以使用此功能来执行特定的操作，例如，发现哪些品牌在社交媒体上最受欢迎，或者哪些品牌在社交产品排名上最靠前。|
 |**[对图像分类](concept-categorizing-images.md)**|使用具有父/子遗传层次结构的[类别分类](Category-Taxonomy.md)对整个图像进行标识和分类。 类别可单独使用或与我们的新标记模型结合使用。<br/>目前，英语是唯一可以对图像进行标记和分类的语言。|
 |**[描述图像](concept-describing-images.md)**|使用完整的句子，以人类可读语言生成整个图像的说明。 计算机视觉算法可根据图像中标识的对象生成各种说明。 分别对这些说明进行评估并生成置信度分数。 然后将返回置信度分数从高到低的列表。|
 |**[检测人脸](concept-detecting-faces.md)** |检测图像中的人脸，提供每个检测到的人脸的相关信息。 计算机视觉返回每个检测到的人脸的坐标、矩形、性别和年龄。<br/>计算机视觉提供可以在[人脸](/azure/cognitive-services/face/)中发现的部分功能。可以使用人脸服务进行更详细的分析，例如人脸识别和姿势检测。|
@@ -47,17 +42,18 @@ ms.locfileid: "55154484"
 |**[生成缩略图](concept-generating-thumbnails.md)**|分析图像的内容，生成该图像的相应缩略图。 计算机视觉首先生成高质量缩略图，然后通过分析图像中的对象来确定“感兴趣区域”。 然后，计算机视觉会裁剪图像以满足感兴趣区域的要求。 可以用户需求使用与原始图像的纵横比不同的纵横比显示生成的缩略图。|
 |**[获取感兴趣区域](concept-generating-thumbnails.md#area-of-interest)**|分析图像内容，以返回“感兴趣区域”的坐标。 这是用于生成缩略图的相同函数，但是计算机视觉并没有裁剪图像，而是返回该区域的边框坐标，因此调用的应用程序可以根据需要修改原始图像。|
 
-## <a name="extracting-text-from-images"></a>从图像中提取文本
+
+## <a name="extract-text-from-images"></a>从图像中提取文本
 
 可以使用计算机视觉[通过 OCR 来提取文本](concept-extracting-text-ocr.md)，将文本从图像提取到计算机可读的字符流中。 如果需要，OCR 会围绕图像水平轴更正所识别文本的方向（以度为单位），并提供每个词的帧坐标。 OCR 支持 25 种语言，并会自动检测已提取文本的语言。
 
 也可在图像中[识别印刷文本和手写文本](concept-recognizing-text.md)。 计算机视觉可以在图像中检测并提取印刷文本和手写文本，这些图像包含各种具有不同表面和背景的对象（例如收据、海报、名片、信函、白板）。 目前，识别印刷文本和手写文本功能为预览版，并且仅支持英语。  
 
-## <a name="moderating-content-in-images"></a>管理图像中的内容
+## <a name="moderate-content-in-images"></a>管理图像中的内容
 
 可以使用计算机视觉在图像中[检测成人内容和不雅内容](concept-detecting-adult-content.md)，对图像包含成人内容或不雅内容的可能性进行评分，并为二者生成一个置信度分数。 可以根据自己的偏好在滑尺上设置成人和不雅内容检测的筛选器。
 
-## <a name="using-containers"></a>使用容器
+## <a name="use-containers"></a>使用容器
 
 将标准化的 Docker 容器安装到靠近数据的位置以后，即可在本地[使用计算机视觉容器](computer-vision-how-to-install-containers.md)识别打印的和手写的文本。
 
@@ -67,8 +63,8 @@ ms.locfileid: "55154484"
 
 - 图像必须以 JPEG、PNG、GIF 或 BMP 格式显示
 - 图像的文件大小必须不到 4 兆字节 (MB)
-- 图像的尺寸必须大于 50 x 50 像素  
-  对于 OCR，图像的尺寸必须介于 50 x 50 和 4200 x 4200 像素之间
+- 图像的尺寸必须大于 50 x 50 像素
+  - 对于 OCR，图像的尺寸必须介于 50 x 50 和 4200 x 4200 像素之间
 
 ## <a name="data-privacy-and-security"></a>数据隐私和安全性
 
@@ -76,8 +72,8 @@ ms.locfileid: "55154484"
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读以下快速入门文章之一，完成计算机视觉入门：
+按某个快速入门指南操作，完成计算机视觉入门：
 
-- [分析图像](quickstarts-sdk/csharp-analyze-sdk.md)
-- [提取手写文本](quickstarts-sdk/csharp-hand-text-sdk.md)
-- [生成缩略图](quickstarts-sdk/csharp-thumb-sdk.md)
+- [快速入门：分析图像](quickstarts-sdk/csharp-analyze-sdk.md)
+- [快速入门：提取手写文本](quickstarts-sdk/csharp-hand-text-sdk.md)
+- [快速入门：生成缩略图](quickstarts-sdk/csharp-thumb-sdk.md)

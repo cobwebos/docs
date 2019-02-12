@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 01/31/2019
 ms.author: jeedes
-ms.openlocfilehash: 238999448f719ca8c95d8c170a9f2e6b6d7bc851
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 934acf44fe2c36e9f7c2f2d2fdb3b191806d0014
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54814108"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769426"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>教程：Azure Active Directory 与 Slack 集成
 
@@ -106,12 +106,12 @@ ms.locfileid: "54814108"
 
     ![Slack 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.slack.com`。
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.slack.com`
 
-    b. 在“标识符(实体 ID)”文本框中，将值更新为登录 URL。 这是你的工作区域。 例如：`https://contoso.slack.com`。
+    b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://slack.com`
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Slack 客户端支持团队](https://slack.com/help/contact)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > “登录 URL”值不是实际值。 请使用实际的登录 URL 更新此值。 请联系 [Slack 客户端支持团队](https://slack.com/help/contact)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 5. Slack 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
 

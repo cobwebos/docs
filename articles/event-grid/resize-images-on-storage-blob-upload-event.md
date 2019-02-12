@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: e19d8b1b6eb06f78908238969a4f6e90e42bb564
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: b3ddaf7667baf98d9d5daa93a3106e457d0aeacb
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301452"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756863"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>教程：使用事件网格自动调整上传图像的大小
 
@@ -105,7 +105,7 @@ Azure Functions 需要一个常规存储帐户。 使用 [az storage account cre
 
 ## <a name="configure-the-function-app"></a>配置函数应用
 
-该函数需要连接字符串来连接到 Blob 存储帐户。 在以下步骤中部署到 Azure 的函数代码在应用设置 myblobstorage_STORAGE 中查找连接字符串，在应用设置 myContainerName 中查找缩略图容器名称。 使用 [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) 命令获得连接字符串。 使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set) 命令设置应用程序设置。
+该函数需要连接字符串来连接到 Blob 存储帐户。 在以下步骤中部署到 Azure 的函数代码在应用设置 myblobstorage_STORAGE 中查找连接字符串，在应用设置 myContainerName 中查找缩略图容器名称。 使用 [az storage account show-connection-string](/cli/azure/storage/account) 命令获得连接字符串。 使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) 命令设置应用程序设置。
 
 在以下 CLI 命令中，`<blob_storage_account>` 是在上一教程中创建的 Blob 存储帐户的名称。
 
@@ -128,7 +128,7 @@ Azure Functions 需要一个常规存储帐户。 使用 [az storage account cre
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-[GitHub](https://github.com/Azure-Samples/function-image-upload-resize) 上提供可以重设大小的示例 C# 脚本 (.csx)。 使用 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config) 命令将此函数代码项目部署到函数应用。 
+[GitHub](https://github.com/Azure-Samples/function-image-upload-resize) 上提供可以重设大小的示例 C# 脚本 (.csx)。 使用 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) 命令将此函数代码项目部署到函数应用。 
 
 在以下命令中，`<function_app>` 是此前创建的函数应用的名称。
 
@@ -137,7 +137,7 @@ az functionapp deployment source config --name $functionapp --resource-group $re
 ```
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
-[GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node) 上提供示例 Node.js 重设大小函数。 使用 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config) 命令将此函数代码项目部署到函数应用。
+[GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node) 上提供示例 Node.js 重设大小函数。 使用 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) 命令将此函数代码项目部署到函数应用。
 
 在以下命令中，`<function_app>` 是此前创建的函数应用的名称。
 
@@ -184,8 +184,12 @@ az functionapp deployment source config --name <function_app> \
     | 事件类型 | 已创建 blob | 除“已创建 Blob”以外，取消选中所有其他类型。 只有 `Microsoft.Storage.BlobCreated` 的事件类型传递给函数。| 
     | **订阅者类型** |  自动生成 |  预定义为 Webhook。 |
     | 订阅者终结点 | 自动生成 | 使用为你生成的终结点 URL。 | 
-4. *可选：* 如果你将来需要在同一个 blob 存储中创建其他容器以用于其他目的，则可以使用“筛选器”标签页中的“主题筛选”功能来更精细地定位 blob 事件，以确保只有当 blob 特别添加到“图像”容器时才会调用你的函数应用。 
-5. 单击“创建”以添加事件订阅。 这将创建一个事件订阅。在将 Blob 添加到 *images* 容器时，该订阅会触发 `Thumbnail` 函数。 此函数重设图像大小，然后将图像添加到 *thumbnails* 容器。
+4. 切换到“Filter”选项卡，然后执行以下操作：     
+    1. 选择“启用主题筛选”选项。
+    2. 对于“主题开头为”，输入以下值：**/blobServices/default/containers/images/blobs/**。
+
+        ![指定事件订阅筛选器](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png) 
+2. 选择“创建”以添加事件订阅。 这将创建一个事件订阅，在将 Blob 添加到 `images` 容器时，该订阅会触发 `Thumbnail` 函数。 此函数重设图像大小，然后将图像添加到 `thumbnails` 容器。
 
 至此，已配置后端服务，可在示例 Web 应用中测试调整图像大小功能。 
 

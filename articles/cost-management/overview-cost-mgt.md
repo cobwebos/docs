@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 02/05/2018
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: a90ef531cedb5e4c32a8f0af8b6cca86a93fb39a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: e526d7fac3c66c5eaf9686db3c9f9f9506d6fc6b
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997122"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768649"
 ---
 # <a name="what-is-azure-cost-management"></a>Azure 成本管理是什么？
 
-成本管理是有效计划和控制业务所涉及成本的过程。 成本管理任务通常由财务、管理和应用等多个团队执行。 Azure 成本管理可以帮助具有 Microsoft 企业协议 (EA) 的组织在规划时就将成本考虑在内。 此外，它还有助于有效地分析成本并采取措施来优化云支出。 若要详细了解如何作为组织来处理成本管理，请参阅 [Azure 成本管理最佳做法](cost-mgt-best-practices.md)一文。
+成本管理是有效计划和控制业务所涉及成本的过程。 成本管理任务通常由财务、管理和应用等多个团队执行。 Azure 成本管理可以帮助组织在计划时考虑成本。 此外，它还有助于有效地分析成本并采取措施来优化云支出。 若要详细了解如何作为组织来处理成本管理，请参阅 [Azure 成本管理最佳做法](cost-mgt-best-practices.md)一文。
 
 虽然与计费相关，但计费不等同于成本管理。 计费是为客户开具商品或服务的发票及管理商业关系的过程。  采购团队和财务团队通常负责执行计费任务。
 

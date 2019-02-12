@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 3df96451838fe90b7d45d1aedd272fc10d798e57
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: b6e378263ac8bcd7cfee36209f70f26680988e6e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883969"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753792"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教程：在 Front Door 自定义域中配置 HTTPS
 
@@ -139,11 +139,11 @@ ms.locfileid: "48883969"
 
 CNAME 记录应采用以下格式，其中 *Name* 是自定义域名，*Value* 是 Front Door 的默认 .azurefd.net 主机名：
 
-| 名称            | 类型  | 值                 |
+| Name            | 类型  | 值                 |
 |-----------------|-------|-----------------------|
 | www.contoso.com | CNAME | contoso.azurefd.net |
 
-有关 CNAME 记录的详细信息，请参阅[创建 CNAME DNS 记录](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain#create-the-cname-dns-records)。
+有关 CNAME 记录的详细信息，请参阅[创建 CNAME DNS 记录](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain)。
 
 如果 CNAME 记录采用正确的格式，DigiCert 会自动验证自定义域名，并为域名创建专用的证书。 DigitCert 不会向你发送验证电子邮件，并且你无需批准请求。 该证书会在一年内有效，并会在过期前自动续订。 转至[等待传播](#wait-for-propagation)。 
 

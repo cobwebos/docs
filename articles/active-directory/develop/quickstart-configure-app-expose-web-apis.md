@@ -16,12 +16,12 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 3f38162fd4d95127ddf7797638bc9af21e6aaf20
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 5b72bd45299f636a208ab39be5b7eaade2730183
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095682"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814005"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>快速入门：将应用程序配置为公开 Web API（预览版）
 
@@ -116,7 +116,7 @@ ms.locfileid: "55095682"
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>验证 Web API 是否已公开给其他应用程序
 
 1. 返回到 Azure AD 租户，选择“应用注册”，找到并选择要配置的客户端应用程序。
-1. 重复[将客户端应用程序配置为访问 Web API](#configure-a-client-application-to-access-web-apis) 中概述的步骤。
+1. 重复“配置客户端应用程序以访问 Web API”中概述的步骤。
 1. 执行到“选择 API”这一步时，请选择资源。 此时会看到可供客户端权限请求使用的新范围。
 
 ## <a name="more-on-the-application-manifest"></a>有关应用程序清单的更多信息

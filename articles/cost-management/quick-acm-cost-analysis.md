@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/07/2019
+ms.date: 02/05/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: cb07ce71162a766add5ca251c97a11d353ee8084
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 931732c047a5ffe22ad456a115c36d7c882d01bc
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077651"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769845"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入门：通过成本分析了解和分析成本
 
@@ -32,7 +32,9 @@ ms.locfileid: "54077651"
 
 ## <a name="prerequisites"></a>先决条件
 
-所有[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 客户均可使用成本分析。 必须至少具有以下一个或多个范围的读取权限才能查看成本数据。 若要详细了解如何分配对成本管理数据的访问权限，请参阅[分配对数据的访问权限](assign-access-acm-data.md)。
+成本分析支持各种 Azure 帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 若要查看成本数据，你至少需要对 Azure 帐户具有读取访问权限。
+
+对于[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 客户，必须至少对以下一个或多个范围具有读取权限才能查看成本数据。
 
 - 计费帐户
 - 部门
@@ -41,13 +43,15 @@ ms.locfileid: "54077651"
 - 订阅
 - 资源组
 
+若要详细了解如何分配对成本管理数据的访问权限，请参阅[分配对数据的访问权限](assign-access-acm-data.md)。
+
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
 - 通过 https://portal.azure.com 登录到 Azure 门户。
 
 ## <a name="review-costs-in-cost-analysis"></a>通过成本分析查看成本
 
-若要通过成本分析查看成本，请在 Azure 门户中导航至“成本管理 + 计费”&gt;“成本管理”&gt;“更改范围”，选择范围，然后单击“选择”。
+若要通过成本分析查看成本，请在 Azure 门户中导航到“成本管理 + 计费”&gt;“成本分析”。 选择“范围:_ScopeName_”，选择一个范围，然后单击“选择”。
 
 所选的范围将用于整个成本管理，以提供数据整合和控制对成本信息的访问。 使用范围时，不要多选它们。 而应选择一个其他范围汇总到的较大范围，然后筛选到所需的范围。 理解这一点很重要，因为有些人不应该有权访问子范围汇总到的父范围。
 
@@ -94,7 +98,8 @@ ms.locfileid: "54077651"
 
 ![显示上个月示例 Azure 服务成本的分组的每日汇总视图](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-主图下的透视图显示了不同的分组，让你在更大范围内了解所选时段和筛选器对应的总体成本。 选择一个属性或标记即可按任意维度查看聚合的成本。 展开“数据”抽屉或选择屏幕顶部的“导出”**>**“下载 CSV”即可找到屏幕底部的总视图的完整数据集。 下面是资源组的数据抽屉的示例。
+主图下的透视图显示了不同的分组，让你在更大范围内了解所选时段和筛选器对应的总体成本。 选择一个属性或标记即可按任意维度查看聚合的成本。
+
 
 ![显示资源组名称的当前视图的完整数据](./media/quick-acm-cost-analysis/full-data-set.png)
 
@@ -103,6 +108,10 @@ ms.locfileid: "54077651"
 当按特定的属性对成本进行分组时，将按从最高到最低的顺序显示排名前十的成本贡献因素。 如果有 10 个以上的组，则会显示前九个成本贡献因素。 同时显示的是**其他**组，它将所有剩余的组一起涵盖。 按标记分组时，也可能会看到成本的“非标记”组，这是一个未应用标记键的组。 **非标记**总是位于最后，即使非标记成本的数目多于标记成本的数目。 如果有 10 个或更多的标记值，则非标记成本将会列在“其他”中。
 
 “经典”（Azure 服务管理，简称 ASM）虚拟机、网络和存储资源不共享详细的计费数据。 当对成本进行分组时，它们合并为**经典服务**。
+
+你可以查看任何视图的完整数据集。 你应用的选择或筛选器会影响所显示的数据。 若要查看完整的数据集，请单击“图表类型”列表，然后单击“表”视图。
+
+![表视图中的当前视图的数据](./media/quick-acm-cost-analysis/chart-type-table-view.png)
 
 
 ## <a name="download-cost-analysis-data"></a>下载成本分析数据

@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 G Suite 之间配置单�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 38a6ca75-7fd0-4cdc-9b9f-fae080c5a016
 ms.service: Azure-Active-Directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 01/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 4705bb8c93381a2487ba94f9dfe3a7e8820f2fd9
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: dd413f9a7eba60fd72e7cc29f44f49b72eaaf806
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902459"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769400"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>教程：Azure Active Directory 与 G Suite 集成
 
@@ -75,11 +75,11 @@ ms.locfileid: "54902459"
 
     答：对于此设置，需要电子邮件属性才能使用户进行登录。 无法手动设置此属性。
 
-    对于任何拥有有效的 Exchange 许可证的用户，电子邮件属性会自动填充。 如果用户未启用电子邮件，则会收到此错误，因为应用程序需要获取此属性才能提供访问权限。
+    对于任何拥有有效的 Exchange 许可证的用户，电子邮件属性会自动填充。 如果用户未启用电子邮件，则将收到此错误，因为应用程序需要获取此属性才能提供访问权限。
 
-    若要分配 Exchange 许可证，请使用管理员帐户访问 portal.office.com，接着单击“管理中心”、“帐单”、“订阅”，选择你的 Office 365 订阅，然后单击“分配给用户”，选择要检查其订阅的用户，然后在右侧窗格中单击“编辑许可证”。
+    你可以使用管理员帐户访问 portal.office.com，接着单击“管理中心”、“帐单”、“订阅”，选择你的 Office 365 订阅，然后单击“分配给用户”，选择要检查其订阅的用户，然后在右侧窗格中单击“编辑许可证”。
 
-    分配 Exchange 许可证后，它可能需要几分钟的时间才能应用。 之后，user.mail 属性将自动填充，此问题应会得到解决。
+    分配 O365 许可证后，可能需要几分钟的时间才能应用。 之后，user.mail 属性将自动填充，此问题应会得到解决。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -142,28 +142,45 @@ ms.locfileid: "54902459"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，如果想要为 **Gmail** 进行配置，请执行以下步骤：
 
     ![G Suite 域和 URL 单一登录信息](common/sp-identifier.png)
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
+    b. 在“标识符”文本框中，使用以下模式键入 URL：
     | |
     |--|
     | `google.com/a/<yourdomain.com>` |
     | `google.com` |
-    | `https://google.com` |
-    | `https://google.com/a/<yourdomain.com>` |
+    | `http://google.com` |
+    | `http://google.com/a/<yourdomain.com>` |
 
     > [!NOTE]
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [G Suite 客户端支持团队](https://www.google.com/contact/)获取这些值。
 
-5. G Suite 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示一个示例。 “唯一用户标识符”的默认值是“user.userprincipalname”，但 G Suite 要求通过用户的电子邮件地址映射此项。 为此，可以使用列表中的 **user.mail** 属性，或使用基于组织配置的相应属性值。
+5. 在“基本 SAML 配置”部分中，如果想要为 **Google Cloud Platform** 进行配置，请执行以下步骤：
+
+    ![G Suite 域和 URL 单一登录信息](common/sp-identifier.png)
+
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com `
+
+    b. 在“标识符”文本框中，使用以下模式键入 URL：
+    | |
+    |--|
+    | `google.com/a/<yourdomain.com>` |
+    | `google.com` |
+    | `http://google.com` |
+    | `http://google.com/a/<yourdomain.com>` |
+    
+    > [!NOTE] 
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [G Suite 客户端支持团队](https://www.google.com/contact/)获取这些值。
+
+6. G Suite 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示一个示例。 “唯一用户标识符”的默认值是“user.userprincipalname”，但 G Suite 要求通过用户的电子邮件地址映射此项。 为此，可以使用列表中的 **user.mail** 属性，或使用基于组织配置的相应属性值。
 
     ![图像](common/edit-attribute.png)
 
-6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤：
+7. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤：
 
     | Name | 源属性 |
     | ---------------| --------------- |
@@ -187,11 +204,11 @@ ms.locfileid: "54902459"
 
     g. 单击“ **保存**”。
 
-7. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+8. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
-8. 在“设置 G Suite”部分中，根据要求复制相应的 URL。
+9. 在“设置 G Suite”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -203,7 +220,7 @@ ms.locfileid: "54902459"
 
 ### <a name="configure-g-suite-single-sign-on"></a>配置 G Suite 单一登录
 
-1. 在浏览器中打开新选项卡并使用管理员帐户登录到 [G Suite 管理员控制台](https://admin.google.com/)。
+1. 在浏览器中打开新选项卡并使用管理员帐户登录到 [G Suite 管理员控制台](http://admin.google.com/)。
 
 2. 单击“安全”。 如果没有看到该链接，它可能被隐藏在屏幕底部的“其他控件”菜单下。
 

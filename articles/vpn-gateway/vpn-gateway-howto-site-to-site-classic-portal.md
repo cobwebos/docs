@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4e9736adfce83fc449b68a7448441ecee481ad2a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b0fa60d709c2fa6c286e44797d53e8a4a8d47d00
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38477890"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695598"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>使用 Azure 门户创建站点到站点连接（经典）
 
@@ -60,13 +60,13 @@ ms.locfileid: "38477890"
   * 10.12.0.0/16（可选，适用于本练习）
 * **子网：**
   * FrontEnd：10.11.0.0/24
-  * BackEnd：10.12.0.0/24（可选，适用于本练习）
+  * BackEnd：10.12.0.0/24（对于本练习来说是可选的）
 * **GatewaySubnet：** 10.11.255.0/27
 * **资源组：** TestRG1
 * **位置：** 美国东部
-* DNS 服务器：10.11.0.3（可选，适用于本练习）
+* **DNS 服务器：** 10.11.0.3（对于本练习来说是可选的）
 * **本地站点名称：** Site2
-* 客户端地址空间：位于本地站点的地址空间。
+* **客户端地址空间：** 位于本地站点的地址空间。
 
 ## <a name="CreatVNet"></a>1.创建虚拟网络
 
@@ -127,9 +127,9 @@ ms.locfileid: "38477890"
   ![单击此项配置网关设置](./media/vpn-gateway-howto-site-to-site-classic-portal/beforegw125.png "单击此项配置网关设置")
 3. 在“新建 VPN 连接”页上，选择“站点到站点”。
 4. 单击“本地站点 - 配置所需的设置”打开“本地站点”页。 配置设置，并单击“确定”保存设置。
-  - **名称：** 创建本地站点的名称，方便进行标识。
+  - **名称：** 为本地站点创建一个名称，方便进行识别。
   - **VPN 网关 IP 地址：** 这是本地网络的 VPN 设备的公共 IP 地址。 VPN 设备需要 IPv4 公共 IP 地址。 为要连接到的 VPN 设备指定一个有效的公共 IP 地址。 它不能位于 NAT 后面，并且必须可让 Azure 访问。 如果不知道 VPN 设备的 IP 地址，则始终可以先添加一个占位符值（只要其格式是有效的公共 IP 地址），等到以后再更改。
-  - **客户端地址空间:** 列出一个 IP 地址范围，需通过该网关将此范围路由到本地网络。 可以添加多个地址空间范围。 请确保在此处指定的范围与虚拟网络连接到的其他网络的范围不重叠，也与虚拟网络本身的地址范围不重叠。
+  - **客户端地址空间：** 列出要通过此网关路由到本地网络的 IP 地址范围。 可以添加多个地址空间范围。 请确保在此处指定的范围与虚拟网络连接到的其他网络的范围不重叠，也与虚拟网络本身的地址范围不重叠。
 
   ![本地站点](./media/vpn-gateway-howto-site-to-site-classic-portal/localnetworksite.png "配置本地站点")
 
@@ -208,7 +208,7 @@ ms.locfileid: "38477890"
   Set-AzureVNetGatewayKey -VNetName 'Group TestRG1 TestVNet1' `
   -LocalNetworkSiteName 'D1BFC9CB_Site2' -SharedKey abc123
   ```
-创建连接后，结果为“状态: 成功”。
+创建连接后，结果为：**状态:成功**。
 
 ## <a name="verify"></a>9.验证连接
 
@@ -226,5 +226,5 @@ ms.locfileid: "38477890"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。
+* 连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/)。
 * 有关强制隧道的信息，请参阅[关于强制隧道](vpn-gateway-about-forced-tunneling.md)。

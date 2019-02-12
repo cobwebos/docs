@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 505acdde07c23654ddd3875fa600046a67e04aea
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: bee9d2f823fe46d81550ea5090222f491562d636
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970808"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700105"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>准备本地 VMware 服务器用于灾难恢复到 Azure
 

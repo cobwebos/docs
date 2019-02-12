@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/30/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 29af70988cf77b9fad47e5c2478e5c86529fe9cf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cf3c691553f2bc7ae8f10345daee92a8380aba25
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458206"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815738"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>教程：使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙
 
@@ -54,7 +54,7 @@ ms.locfileid: "55458206"
 - 无需在 Azure 防火墙子网中创建 UDR，因为它会从 BGP 探测路由。
 - 在 VNet-Hub 与 VNet-Spoke 之间建立对等互连时，请务必设置 **AllowGatewayTransit**；在 VNet-Spoke 与 VNet-Hub 之间建立对等互连时，请务必设置 **UseRemoteGateways**。
 
-请参阅本教程的[创建路由](#create-routes)部分了解如何创建这些路由。
+请参阅本教程的“创建路由”部分来了解如何创建这些路由。
 
 >[!NOTE]
 >Azure 防火墙必须具有直接的 Internet 连接。 如果已通过 ExpressRoute 或应用程序网关启用到本地的强制隧道，则需要配置 UDR 0.0.0.0/0，并将 **NextHopType** 值设置为 **Internet**，然后将其分配到 **AzureFirewallSubnet**。

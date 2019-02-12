@@ -9,14 +9,14 @@ ms.custom: mvc
 ms.date: 05/29/2018
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 05f6b32fad4f0a449f0d801c1c7cc6a28be6f940
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: bb9bcfcc5f78ee82f187d331055e8f2fd2ed9e64
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685339"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745803"
 ---
-# <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>教程：使用模拟设备测试 IoT 中心的连接性
+# <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>教程：使用模拟设备测试与 IoT 中心的连接
 
 本教程使用 Azure IoT 中心门户工具和 Azure CLI 命令来测试设备连接性。 本教程还使用简单的可以在台式机上运行的设备模拟器。
 
@@ -75,7 +75,7 @@ node --version
 
 若要模拟 **MyTestDevice** 将遥测数据发送到 IoT 中心，请运行以前下载的 Node.js 模拟设备应用程序。
 
-在开发计算机的终端窗口中，导航到下载的示例 Node.js 项目的根文件夹。 然后导航到 **iot-hub\Tutorials\ConnectivityTests\simulated-device** 文件夹。
+在开发计算机的终端窗口中，导航到下载的示例 Node.js 项目的根文件夹。 然后导航到 **iot-hub\Tutorials\ConnectivityTests** 文件夹。
 
 在终端窗口中，运行以下命令以安装所需的库，并运行模拟设备应用程序。 使用在门户中添加设备时记下的设备连接字符串。
 

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 12/05/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: a36f9bf3ade623a6b623116c504c2b6a04fcdf2b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c84d876828ac96bfb44b84e99b13489d51ae3370
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474864"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694017"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>教程：登录屏幕中的“Azure AD 密码重置”
 
@@ -33,6 +33,7 @@ ms.locfileid: "55474864"
    * [已加入混合 Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md)，可以通过网络连接到域控制器。
 * 必须启用 Azure AD 自助密码重置。
 * 如果 Windows 10 设备位于代理服务器或防火墙后面，则必须向 HTTPS 流量（端口 443）的“允许的 URL”列表添加 URL、`passwordreset.microsoftonline.com` 和 `ajax.aspnetcdn.com`。
+* 请查看下面的限制，然后再在环境中尝试此功能。
 
 ## <a name="configure-reset-password-link-using-intune"></a>使用 Intune 配置“重置密码”链接
 
@@ -86,7 +87,7 @@ ms.locfileid: "55474864"
 
 ## <a name="configure-reset-password-link-using-the-registry"></a>使用注册表配置“重置密码”链接
 
-1. 使用管理凭据登录到 Windows PC
+1. 使用管理凭据登录到 Windows 电脑
 2. 以管理员身份运行 **regedit**
 3. 设置以下注册表项
    * `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
@@ -106,6 +107,8 @@ Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientTyp
 
 ![Azure AD 审核日志中的登录屏幕密码重置示例](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
 
+当用户在 Windows 10 设备的登录屏幕中重置其密码时，会创建名为“defaultuser1”且权限较低的临时帐户。 使用此帐户可以确保密码重置过程的安全。 帐户本身有一个随机生成的密码，该密码在进行设备登录时不显示，在用户重置其密码后会由系统自动删除。 可能存在多个“defaultuser”配置文件，不过可以放心地忽略它们。
+
 ## <a name="limitations"></a>限制
 
 使用 Hyper-V 测试此功能时，“重置密码”链接不显示。
@@ -116,7 +119,9 @@ Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientTyp
 
 * 目前不支持从远程桌面进行密码重置。
 
-如果策略要求使用 Ctrl+Alt+Del，或者锁屏通知已关闭，则“重置密码”将无效。
+在 1809 之前的 Windows 10 版本中，如果策略要求使用 Ctrl+Alt+Del，，则“重置密码”将无效。
+
+如果锁屏通知已关闭，则“重置密码”将无效。
 
 已知以下策略设置会干扰密码重置功能
 
@@ -128,7 +133,7 @@ Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientTyp
 
 此功能不适用于部署了 802.1x 网络身份验证的网络和“在用户登录前立即执行”选项。 对于部署了 802.1x 网络身份验证的网络，建议使用计算机身份验证来启用此功能。
 
-对于混合域加入方案，存在 SSPR 工作流将完成而不需要 Active Directory 域控制器的方案。 第一次使用新密码需要与域控制器连接。
+使用混合域加入方案时，不需 Active Directory 域控制器即可成功完成 SSPR 工作流。 如果用户完成了密码重置过程，而此时无法与 Active Directory 域控制器通信（例如，在进行远程操作的情况下），则用户必须等到设备能够与域控制器通信并更新缓存的凭据的时候才能登录到设备。 **第一次使用新密码需要与域控制器连接**。
 
 ## <a name="clean-up-resources"></a>清理资源
 

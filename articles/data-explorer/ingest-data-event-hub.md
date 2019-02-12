@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 11c6f421e2eb1c3e508868d4a87f838781bda8e2
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 5d9819d60e21c80b882db1d12b0318599fa54095
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478444"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729728"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>快速入门：将数据从事件中心引入到 Azure 数据资源管理器
 
@@ -129,7 +129,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
      **设置** | **建议的值** | **字段说明**
     |---|---|---|
     | 表 | TestTable | 在“TestDatabase”中创建的表。 |
-    | 数据格式 | *JSON* | 支持 JSON 和 CSV 格式。 |
+    | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOH、SCSV、TSV 和 TXT。 |
     | 列映射 | TestMapping | 在 **TestDatabase** 中创建的映射将传入的 JSON 数据映射到 **TestTable** 的列名称和数据类型。|
     | | |
 

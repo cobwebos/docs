@@ -9,16 +9,16 @@ ms.topic: get-started-article
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 7335a5c61b46fab2da4054fdc0b8c9bbe05a148a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 0236947e578d12ff24e5993d253ec5597c53272a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537471"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819818"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>批处理 API 和工具概述
 
-使用 Azure Batch 处理并行工作负荷通常是使用[批处理 API](#batch-development-apis) 之一以编程方式实现的。 客户端应用程序或服务使用批处理 API 与批处理服务通信。 使用批处理 API 可以创建和管理计算节点池（不管是虚拟机还是云服务）。 然后即可计划作业和任务，使之在这些节点上运行。 
+使用 Azure Batch 处理并行工作负荷通常是使用批处理 API 之一以编程方式实现的。 客户端应用程序或服务使用批处理 API 与批处理服务通信。 使用批处理 API 可以创建和管理计算节点池（不管是虚拟机还是云服务）。 然后即可计划作业和任务，使之在这些节点上运行。 
 
 可以为组织高效处理大量工作负荷，或提供服务前端给客户，让他们可以在一个、数百个甚至数千个节点上，按需要或按计划运行作业和任务。 还可以在 [Azure 数据工厂](../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json)等工具管理的大型工作流中使用 Azure Batch。
 

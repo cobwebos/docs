@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: 7a3a94e9759dfb3c525ffcf1e840d5bec18f4808
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 6e5748f5a76ade9cc1bb91902eb0fddcec2a6daa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051305"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812338"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>虚拟网络服务终结点策略（预览版）
 
@@ -154,7 +154,7 @@ __Azure 存储__：WestCentralUS、WestUS2。
 ### <a name="troubleshooting-scenarios"></a>故障排除方案
 - 允许终结点策略中未列出的存储帐户进行访问
   - 网络安全组可能允许访问 Internet 或其他区域中的 Azure 存储帐户。
-  - 网络安全组应配置为拒绝所有出站 Internet 流量，并只允许发往特定 Azure 存储区域的流量。 有关详细信息，请参阅[网络安全组](#network-security-groups)。
+  - 网络安全组应配置为拒绝所有出站 Internet 流量，并只允许发往特定 Azure 存储区域的流量。 有关详细信息，请参阅“网络安全组”。
 - 拒绝终结点策略中列出的帐户进行访问
   - 网络安全组或防火墙筛选可能会阻止访问
   - 如果删除/重新应用策略导致连接断开：

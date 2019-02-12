@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 02/05/2019
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 3e4cd8859f376fa4fbb9069b145d893483c3fc14
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 0ffde84a39ef2955f14af66a05195e35109d41bb
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101254"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692131"
 ---
 # <a name="quickstart-set-up-a-dev-environment"></a>快速入门：设置开发环境
 
@@ -64,8 +64,11 @@ Microsoft 标识平台可让开发人员生成面向各种自定义 Microsoft 36
 如果还没有 Azure AD 租户或想要为开发创建新租户，请遵循[目录创建体验](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)。 必须提供以下信息才能创建新租户：
 
 - 组织名称
-- **初始域** - 这将包括在 *.onmicrosoft.com 中。 稍后你可以更详细地自定义域。 
+- **初始域** - 这将包括在 *.onmicrosoft.com 中。 稍后你可以更详细地自定义域。
 - 国家或地区
+
+> [!NOTE]
+> 对租户进行命名时，请使用字母数字字符。 不允许使用特殊字符。 名称不得超过 256 个字符。
 
 ## <a name="social-and-local-accounts"></a>社交和本地帐户
 

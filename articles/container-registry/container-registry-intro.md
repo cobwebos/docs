@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/25/2018
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 0118c17045b86c88d8d92048787a20bd7d309c0b
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0ffad78afd6acdfbcea8df970358c639706f14b8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298341"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814242"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure 中的专用 Docker 容器注册表简介
 
@@ -32,7 +32,7 @@ Azure 容器注册表是基于开源 Docker 注册表 2.0 的托管 [Docker 注�
 
 开发人员还可以在执行容器开发工作流的过程中将内容推送到容器注册表。 例如，通过连续集成和部署工具（例如 [Azure DevOps Services](https://docs.microsoft.com/azure/devops/) 或 [Jenkins](https://jenkins.io/)）将目标设置为容器注册表。
 
-配置 [ACR 任务](#azure-container-registry-build)以在应用程序映像的基础映像发生更新时自动重新生成应用程序映像。 可以使用 ACR 任务在团队向 Git 存储库提交代码时自动执行映像生成。
+配置 ACR 任务以在应用程序映像的基础映像发生更新时自动重新生成应用程序映像。 可以使用 ACR 任务在团队向 Git 存储库提交代码时自动执行映像生成。
 
 ## <a name="key-concepts"></a>关键概念
 

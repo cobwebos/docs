@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/18/2018
 ms.author: zhshang
-ms.openlocfilehash: 0cd0dcaf200b1248204efc2d2c0011a94d3c41d3
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b66d4c9fb3bce03248f5696d5a7b2b7b62b7ffd3
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720962"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746364"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>教程：使用 Azure Functions 进行 Azure SignalR 服务身份验证
 
@@ -54,7 +54,7 @@ ms.locfileid: "53720962"
 
 1. 输入以下信息。
 
-    | 名称 | 值 |
+    | Name | 值 |
     |---|---|
     | 资源名称 | SignalR 服务实例的唯一名称 |
     | 资源组 | 创建新的资源组 |
@@ -134,11 +134,11 @@ ms.locfileid: "53720962"
 
 1. 出现提示时，请提供以下信息。
 
-    | 名称 | 值 |
+    | Name | 值 |
     |---|---|
     | 函数应用文件夹 | 选择主项目文件夹 |
     | 模板 | HTTP 触发器 |
-    | 名称 | SignalRInfo |
+    | Name | SignalRInfo |
     | 授权级别 | 匿名 |
 
     将创建包含新函数的名为 **SignalRInfo** 的文件夹。
@@ -194,11 +194,11 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 出现提示时，请提供以下信息。
 
-    | 名称 | 值 |
+    | Name | 值 |
     |---|---|
     | 函数应用文件夹 | 选择主项目文件夹 |
     | 模板 | HTTP 触发器 |
-    | 名称 | SendMessage |
+    | Name | SendMessage |
     | 授权级别 | 匿名 |
 
     将创建包含新函数的名为 **SendMessage** 的文件夹。
@@ -302,7 +302,7 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 发送消息时，应用可以确定是要发送到所有已连接的客户端，还是仅发送到已对给定用户进行身份验证的客户端。
 
-1. 在 VS Code 中打开 **SendMessage/function.json**。
+1. 在 VS Code 中，打开 **SignalRInfo/function.json**。
 
 1. 将一个[绑定表达式](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings#binding-expressions-and-patterns)插入到 *SignalRConnectionInfo* 绑定的 *userId* 属性中：`{headers.x-ms-client-principal-name}`。 这会将值设置为经过身份验证的用户的用户名。 特性现在应如下所示。
 
@@ -324,7 +324,7 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 出现提示时，请提供以下信息。
 
-    | 名称 | 值 |
+    | Name | 值 |
     |---|---|
     | 要部署的文件夹 | 选择主项目文件夹 |
     | 订阅 | 选择订阅 |
@@ -345,7 +345,7 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 出现提示时，请提供以下信息。
 
-    | 名称 | 值 |
+    | Name | 值 |
     |---|---|
     | 本地设置文件 | local.settings.json |
     | 订阅 | 选择订阅 |
@@ -403,9 +403,9 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 输入以下信息。
 
-    | 名称 | 值 |
+    | Name | 值 |
     |---|---|
-    | 名称 | Blob 存储帐户的唯一名称 |
+    | Name | Blob 存储帐户的唯一名称 |
     | 帐户类型 | StorageV2（常规用途 V2） |
     | 位置 | 选择其他资源所在的同一区域 |
     | 复制 | 本地冗余存储 (LRS) |

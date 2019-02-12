@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: tutorial
 author: nacharya1
 ms.author: nilesha
-ms.reviewer: sgilley
-ms.date: 12/04/2018
+ms.reviewer: trbye
+ms.date: 02/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1e2746ef55f5c50ce9452b7a9d1ab060c69830db
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a293389b8175406d9036cd95c14748e5a626fb91
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244260"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752528"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>教程：通过自动化机器学习来构建回归模型
 
@@ -34,7 +34,6 @@ ms.locfileid: "55244260"
 > * 自动训练回归模型。
 > * 使用自定义参数在本地运行模型。
 > * 浏览结果。
-> * 注册最佳模型。
 
 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
 
@@ -43,36 +42,74 @@ ms.locfileid: "55244260"
 
 ## <a name="prerequisites"></a>先决条件
 
-> * [运行数据准备教程](tutorial-data-prep.md)。
-> * 自动化机器学习配置的环境。 示例包括 [Azure Notebooks](https://notebooks.azure.com/)、本地 Python 环境或 Data Science Virtual Machine。 [设置自动化机器学习](samples-notebooks.md)。
+跳到[设置开发环境](#start)来了解整个 Notebook 设置步骤，或遵照以下说明获取 Notebook 并在 Azure Notebooks 或自己的 Notebook 服务器中运行。 若要运行 Notebook，需要：
 
-## <a name="get-the-notebook"></a>获取 Notebook
+* [运行数据准备教程](tutorial-data-prep.md)。
+* 一个装有以下组件的 Python 3.6 Notebook 服务器：
+    * 适用于 Python 的 Azure 机器学习 SDK 以及 `automl` 和 `notebooks` 附加程序
+    * `matplotlib`
+* 教程 Notebook
+* 机器学习工作区
+* Notebook 所在的同一目录中的工作区的配置文件
 
-为方便起见，本教程以 [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part2-automated-ml.ipynb) 的形式提供。 在 [Azure Notebooks](https://notebooks.azure.com/) 或你自己的 Jupyter Notebook 服务器中运行 `regression-part2-automated-ml.ipynb` 笔记本。
+从以下任一部分获取所有这些必备组件。
 
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
+* 使用 [Azure Notebooks](#azure)
+* 使用[自己的 Notebook 服务器](#server)
 
-## <a name="import-packages"></a>导入包
+### <a name="azure"></a>使用 Azure Notebooks：云中免费的 Jupyter Notebook
+
+Azure Notebooks 的入门很容易！ 已在 [Azure Notebooks](https://notebooks.azure.com/) 上安装和配置[用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk)。 安装和未来的更新通过 Azure 服务自动管理。
+
+完成以下步骤后，运行**入门**项目中的 **tutorials/regression-part2-automated-ml.ipynb** Notebook。
+
+[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+
+### <a name="server"></a>使用自己的 Jupyter Notebook 服务器
+
+执行这些步骤，在计算机上创建本地 Jupyter Notebook 服务器。  完成这些步骤后，运行 **tutorials/regression-part2-automated-ml.ipynb** Notebook。
+
+1. 完成 [Azure 机器学习 Python 快速入门](quickstart-create-workspace-with-python.md)来创建 Miniconda 环境并创建一个工作区。
+1. 使用 `pip install azureml-sdk[automl,notebooks]` 在你的环境中安装 `automl` 和 `notebooks` 附加程序。
+1. 使用 `pip install maplotlib` 安装 `maplotlib`。
+1. 克隆 [GitHub 存储库](https://aka.ms/aml-notebooks)。
+
+    ```
+    git clone https://github.com/Azure/MachineLearningNotebooks.git
+    ```
+
+1. 从克隆目录启动 notebook 服务器。
+
+    ```shell
+    jupyter notebook
+
+## <a name="start"></a>Set up your development environment
+
+All the setup for your development work can be accomplished in a Python notebook. Setup includes the following actions:
+
+* Install the SDK
+* Import Python packages
+* Configure your workspace
+
+### Install and import packages
+
+If you are following the tutorial in your own Python environment, use the following to install necessary packages.
+
+```shell
+pip install azureml-sdk[automl,notebooks] matplotlib
+```
+
 导入需要在本教程中使用的 Python 包：
-
 
 ```python
 import azureml.core
 import pandas as pd
 from azureml.core.workspace import Workspace
-from azureml.train.automl.run import AutoMLRun
-import time
 import logging
 import os
 ```
 
-若要按照教程在自己的 Python 环境中操作，请使用以下命令安装必需的包。
-
-```shell
-pip install azureml-sdk[automl,notebooks] azureml-dataprep pandas scikit-learn matplotlib
-```
-
-## <a name="configure-workspace"></a>配置工作区
+### <a name="configure-workspace"></a>配置工作区
 
 从现有工作区创建工作区对象。 `Workspace` 是可接受 Azure 订阅和资源信息的类。 它还可创建云资源来监视和跟踪模型运行。
 
@@ -743,7 +780,6 @@ for run in children:
     metrics = {k: v for k, v in run.get_metrics().items() if isinstance(v, float)}
     metricslist[int(properties['iteration'])] = metrics
 
-import pandas as pd
 rundata = pd.DataFrame(metricslist).sort_index(1)
 rundata
 ```
@@ -1177,6 +1213,5 @@ print(1 - mean_abs_percent_error)
 > * 配置了工作区并准备了试验数据。
 > * 结合自定义参数在本地使用自动化回归模型进行了训练。
 > * 浏览并查看了训练结果。
-> * 注册了最佳模型。
 
 使用 Azure 机器学习来[部署模型](tutorial-deploy-models-with-aml.md)。
