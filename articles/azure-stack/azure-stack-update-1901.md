@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/09/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: cf86fafc1fcb0ffd6513abc9d02da16d1f00f22b
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: MT
+ms.openlocfilehash: 45905b5180ac248394e52b1d03a034acc47e8dbc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978914"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993582"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 更新
 
@@ -68,6 +68,35 @@ Azure Stack 修补程序都只适用于 Azure Stack 集成系统;不要尝试在
 此更新包含以下适用于 Azure Stack 的新功能和改进：
 
 - 在 Azure Stack 启用的托管的映像你只能创建托管的通用 VM （非托管和托管） 上创建托管的映像对象的磁盘今后的 Vm。 有关详细信息，请参阅[Azure Stack 托管磁盘](user/azure-stack-managed-disk-considerations.md#managed-images)。
+
+- **AzureRm 2.4.0**
+   * **AzureRm.Profile**  
+         Bug 修复-`Import-AzureRmContext`以正确反序列化已保存的令牌。  
+   * **AzureRm.Resources**  
+         Bug 修复-`Get-AzureRmResource`为查询大小写，不区分大小按资源类型。  
+   * **Azure.Storage**  
+         AzureRm 汇总模块现在包括已发布的版本 4.5.0 支持**api 版本 2017年-07-29**。  
+   * **AzureRm.Storage**  
+         AzureRm 汇总模块现在包括 5.0.4 已发布的版支持**api 版本 2017年-10-01**。  
+   * **AzureRm.Compute**  
+         添加了简单的参数设置`New-AzureRMVM`并`NewAzureRMVMSS`，`-ImageName`参数支持指定的用户映像。  
+   * **AzureRm.Insights**  
+         AzureRm 汇总模块现在包括已发布的版本 5.1.5 支持**api-version 2018-01-01**指标，指标定义资源类型。
+
+- **AzureStack 1.7.0**这一项重大更改的释放。 有关的重大更改的详细信息，请参阅 https://aka.ms/azspshmigration170
+   * **Azs.Backup.Admin 模块**  
+         重大更改：备份更改为基于证书的加密模式。 对对称密钥的支持已弃用。  
+   * **Azs.Fabric.Admin Module**  
+         `Get-AzsInfrastructureVolume` 已弃用。 使用新 cmdlet `Get-AzsVolume`。  
+         `Get-AzsStorageSystem` 已弃用。  使用新的新 cmdlet `Get-AzsStorageSubSystem`。  
+         `Get-AzsStoragePool` 已弃用。 `StorageSubSystem`对象包含容量属性。  
+   * **Azs.Compute.Admin 模块**  
+         Bug 修复- `Add-AzsPlatformImage`， `Get-AzsPlatformImage`:调用`ConvertTo-PlatformImageObject`仅在成功的路径中。  
+         Bug 修复- `Add-AzsVmExtension`， `Get-AzsVmExtension`:仅在成功的路径中调用 ConvertTo VmExtensionObject。  
+   * **Azs.Storage.Admin 模块**  
+         新的存储配额的 bug 修复-如果没有提供，则使用默认值。
+
+若要查看已更新的模块的引用，请参阅[Azure Stack 模块参考](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.6.0&viewFallbackFrom=azurestackps-1.7.0)。
 
 ## <a name="fixed-issues"></a>修复的问题
 

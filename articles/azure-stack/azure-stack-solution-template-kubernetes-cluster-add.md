@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/09/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 707cd7e72245ce47289c0a744d7103c713acecb9
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: d0051f081f005d61a1eed43d177a11781b2b3fa8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765477"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997077"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>将 Kubernetes 添加到 Azure Stack 市场
 
@@ -65,15 +65,15 @@ ms.locfileid: "55765477"
 
 如果您使用 Active Directory 联合身份验证服务 (AD FS) 标识管理服务，需要创建服务主体的用户部署 Kubernetes 群集。
 
-1. 创建并导出证书以用于创建服务主体。 下面的以下代码段演示如何创建自签名的证书。 
+1. 创建和导出用来创建服务主体的自签名的证书。 
 
     - 需要具有以下几部分信息：
 
        | 值 | 描述 |
        | ---   | ---         |
-       | 密码 | 证书密码。 |
-       | 本地证书路径 | 证书的路径和文件名称。 例如： `path\certfilename.pfx` |
-       | 证书名称 | 证书的名称。 |
+       | 密码 | 为证书输入新密码。 |
+       | 本地证书路径 | 输入证书的路径和文件名的名称。 例如： `c:\certfilename.pfx` |
+       | 证书名称 | 输入证书的名称。 |
        | 证书存储位置 |  例如： `Cert:\LocalMachine\My` |
 
     - 使用提升的提示符打开 PowerShell。 使用更新为你的值的参数运行以下脚本：
@@ -82,8 +82,7 @@ ms.locfileid: "55765477"
         # Creates a new self signed certificate 
         $passwordString = "<password>"
         $certlocation = "<local certificate path>.pfx"
-        $certificateName = "<certificate name>"
-        #certificate store location. Eg. Cert:\LocalMachine\My
+        $certificateName = "CN=<certificate name>"
         $certStoreLocation="<certificate store location>"
         
         $params = @{
@@ -105,24 +104,33 @@ ms.locfileid: "55765477"
         Export-PfxCertificate -cert $cert -FilePath $certlocation -Password $pwd
         ```
 
-2. 创建服务主体使用的证书。
+2.  请记下显示在 PowerShell 会话中，新的证书 ID `1C2ED76081405F14747DC3B5F76BB1D83227D824`。 创建服务主体时，将使用 ID。
+
+    ```PowerShell  
+    VERBOSE: Generated new certificate 'CN=<certificate name>' (1C2ED76081405F14747DC3B5F76BB1D83227D824).
+    ```
+
+3. 创建服务主体使用的证书。
 
     - 需要具有以下几部分信息：
 
        | 值 | 描述                     |
        | ---   | ---                             |
        | ERCS IP | 在 ASDK 中，特权终结点通常是`AzS-ERCS01`。 |
-       | 应用程序名 | 应用程序服务主体简单名称。 |
-       | 证书存储位置 | 证书存储在计算机上的路径。 例如： `Cert:\LocalMachine\My\<someuid>` |
+       | 应用程序名称 | 输入应用程序服务主体的简单名称。 |
+       | 证书存储位置 | 证书存储在计算机上的路径。 这将由存储位置并在第一步中生成的证书 ID。 例如： `Cert:\LocalMachine\My\1C2ED76081405F14747DC3B5F76BB1D83227D824` |
 
-    - 使用提升的提示符打开 PowerShell。 使用更新为你的值的参数运行以下脚本：
+       出现提示时，使用以下凭据连接到特权终结点。 
+        - 用户名：格式指定 CloudAdmin 帐户， <Azure Stack domain>\cloudadmin。 （对于 ASDK，用户名是 azurestack\cloudadmin。）
+        - 密码：输入安装 AzureStackAdmin 域管理员帐户期间提供的相同密码。
+
+    - 使用更新为你的值的参数运行以下脚本：
 
         ```PowerShell  
         #Create service principal using the certificate
         $privilegedendpoint="<ERCS IP>"
         $applicationName="<application name>"
-        #certificate store location. Eg. Cert:\LocalMachine\My
-        $certStoreLocation="<certificate store location>"
+        $certStoreLocation="<certificate location>"
         
         # Get certificate information
         $cert = Get-Item $certStoreLocation
@@ -189,7 +197,7 @@ ms.locfileid: "55765477"
 
 1. 选择“+ 从 Azure 添加”。
 
-1. 输入 `UbuntuServer`。
+1. 输入 `Ubuntu Server` 。
 
 1. 选择最新版本的服务器。 检查完整版本并确保已安装最新版本：
     - **发布者**：Canonical
@@ -209,7 +217,7 @@ ms.locfileid: "55765477"
 
 1. 选择“+ 从 Azure 添加”。
 
-1. 输入 `Custom Script for Linux`。
+1. 输入 `Custom Script for Linux` 。
 
 1. 选择具有以下配置文件的服务器：
     - **产品/服务**：适用于 Linux 的自定义脚本 2.0
@@ -230,7 +238,7 @@ ms.locfileid: "55765477"
 
 1. 选择“+ 从 Azure 添加”。
 
-1. 输入 `Kubernetes`。
+1. 输入 `Kubernetes` 。
 
 1. 选择 `Kubernetes Cluster`。
 

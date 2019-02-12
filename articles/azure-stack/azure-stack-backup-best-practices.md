@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 11829256451990401b6de4bcf62f2b0b51010832
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/08/2019
+ms.openlocfilehash: d2568a4dfc4fefe9628fc63dcc0526b0876fde00
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241146"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993871"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>基础结构备份服务最佳做法
 
@@ -43,9 +43,18 @@ ms.locfileid: "55241146"
 
 ### <a name="encryption"></a>加密
 
+#### <a name="version-1901-and-newer"></a>1901 和更高版本
+
+加密证书用于加密备份获取导出到外部存储的数据。 证书可以是自签名的证书，因为证书仅用于传输密钥。 如何创建证书的详细信息，请参阅 New-selfsignedcertificate。  
+密钥必须存储在安全的位置 （例如，全局 Azure 密钥保管库证书）。 证书的 CER 格式用于对数据进行加密。 在 Azure Stack 的云恢复部署期间必须使用 PFX 格式，备份数据进行解密。
+
+![在安全的位置存储证书。](media/azure-stack-backup/azure-stack-backup-encryption-store-cert.png)
+
+#### <a name="1811-and-older"></a>1811 和更低版本
+
 加密密钥用来对导出到外部存储的备份数据进行加密。 密钥将在[使用 PowerShell 为 Azure Stack 启用备份](azure-stack-backup-enable-backup-powershell.md)的过程中生成。
 
-密钥必须存储在一个安全位置（例如，公共 Azure Key Vault 机密）。 在重新部署 Azure Stack 期间，必须使用此密钥。 
+密钥必须存储在安全的位置 （例如，全局 Azure 密钥保管库机密）。 在重新部署 Azure Stack 期间，必须使用此密钥。 
 
 ![将密钥存储在一个安全位置。](media/azure-stack-backup/azure-stack-backup-encryption2.png)
 
@@ -74,7 +83,7 @@ FQDN：contoso.com
 
 MASBackup 文件夹是 Azure Stack 存储其备份数据的地方。 不应使用此文件夹来存储你自己的数据。 OEM 也不应使用此文件夹来存储任何备份数据。 
 
-建议 OEM 将其组件的备份数据存储在区域文件夹下。 每台网络交换机、硬件生命周期主机 (HLH) 等等可以存储在其自己的子文件夹中。 例如：
+建议 OEM 将其组件的备份数据存储在区域文件夹下。 每个网络交换机、 硬件生命周期主机 (HLH) 等，可能存储在自己的子文件夹。 例如：
 
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\HLH
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\Switches
@@ -95,6 +104,6 @@ MASBackup 文件夹是 Azure Stack 存储其备份数据的地方。 不应使�
 
 ## <a name="next-steps"></a>后续步骤
 
-查看[基础结构备份服务](azure-stack-backup-reference.md)的参考资料。
+查看的参考资料[基础结构备份服务](azure-stack-backup-reference.md)
 
-启用[基础结构备份服务](azure-stack-backup-enable-backup-console.md)。
+启用[基础结构备份服务](azure-stack-backup-enable-backup-console.md)
