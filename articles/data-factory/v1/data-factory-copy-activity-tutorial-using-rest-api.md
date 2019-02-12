@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8b12df3e31b46fa29f5726946be1d7509018fcbf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 92bd80135d2ce0c72537240a12e6c0788443abe8
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025838"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700173"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>教程：使用 REST API 创建用于复制数据的 Azure 数据工厂管道 
 > [!div class="op_single_selector"]
@@ -118,7 +118,7 @@ ms.locfileid: "54025838"
 
 有关 JSON 属性的详细信息，请参阅 [Azure 存储链接服务](data-factory-azure-blob-connector.md#azure-storage-linked-service)。
 
-### <a name="azuersqllinkedservicejson"></a>azuersqllinkedservice.json
+### <a name="azuresqllinkedservicejson"></a>azuresqllinkedservice.json
 > [!IMPORTANT]
 > 将 **servername**、**databasename**、**username** 和 **password** 分别替换为 Azure SQL 服务器名称、SQL 数据库名称、用户帐户和帐户密码。  
 > 
@@ -176,7 +176,7 @@ ms.locfileid: "54025838"
 
 下表提供了代码片段中使用的 JSON 属性的描述：
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | type | type 属性设置为 **AzureBlob**，因为数据驻留在 Azure Blob 存储中。 |
 | linkedServiceName | 表示前面创建的 **AzureStorageLinkedService**。 |
@@ -219,7 +219,7 @@ ms.locfileid: "54025838"
 ```
 下表提供了代码片段中使用的 JSON 属性的描述：
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | type | type 属性设置为 **AzureSqlTable**，因为数据复制到 Azure SQL 数据库中的表。 |
 | linkedServiceName | 表示前面创建的 **AzureSqlLinkedService**。 |

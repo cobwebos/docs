@@ -8,16 +8,16 @@ ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: ac9af046675cf868f158ee3af71e6c968c6ba98a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 084a5c8113e73590e3e7b9603542a0d866606f96
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463134"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818951"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>在 Azure 文件中创建文件共享
 可以使用  [Azure 门户](https://portal.azure.com/)、Azure 存储 PowerShell cmdlet、Azure 存储客户端库或 Azure 存储 REST API 来创建 Azure 文件共享。 本教程介绍：
-* [如何使用 Azure 门户创建 Azure 文件共享](#create-file-share-through-the-azure-portal)
+* 如何使用 Azure 门户创建 Azure 文件共享
 * [如何使用 Powershell 创建 Azure 文件共享](#create-file-share-through-powershell)
 * [如何使用 CLI 创建 Azure 文件共享](#create-file-share-through-command-line-interface-cli)
 
