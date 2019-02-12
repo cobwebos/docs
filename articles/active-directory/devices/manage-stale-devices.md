@@ -1,6 +1,6 @@
 ---
-title: 如何在 Azure AD 中管理设备的生命周期 | Microsoft Docs
-description: 了解设备管理如何有助于控制访问环境中的资源的设备。
+title: 如何在 Azure AD 中管理陈旧的设备 | Microsoft Docs
+description: 由于遗失、失窃、设备损坏或 OS 重装等情况，环境中通常会出现陈旧的设备。 了解如何从 Azure Active Directory (Azure AD) 中已注册设备的数据库中删除过时的设备。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/03/2018
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 20bfa4cf02c86922836a70f8885f910814eafb22
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d6d0ee1c9a77006df2239f4e0e0457c0c0aa2c28
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092113"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493300"
 ---
-# <a name="how-to-manage-the-stale-devices-in-azure-ad"></a>如何：在 Azure AD 中管理陈旧的设备
+# <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：在 Azure AD 中管理陈旧的设备
 
 理想情况下，若要完成生命周期，应该注销不再需要的已注册设备。 但是，在发生遗失、失窃、设备损坏或 OS 重装等情况下，环境中通常就会出现陈旧的设备。 IT 管理员可能希望通过某种方法来删除陈旧的设备，以便将资源重点投放在真正需要管理的设备上。
 

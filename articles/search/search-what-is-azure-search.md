@@ -1,20 +1,20 @@
 ---
 title: 什么是 Azure 搜索服务 - Azure 搜索
-description: Azure 搜索是完全托管的托管云搜索服务。 查看功能说明、开发工作流、Azure 搜索与其他搜索产品相比如何，以及操作说明入门。
+description: Azure 搜索是 Microsoft 推出的完全托管的托管云搜索服务。 查看功能说明、开发工作流、Azure 搜索与其他 Microsoft 搜索产品相比如何，以及操作说明入门。
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 11/09/2018
+ms.date: 02/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 884a726dbc7d7f2812f4de2228ca5adaf9b223ea
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 36d65e1ffab79c8f0866d60f4a133798d25e9dea
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630395"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562787"
 ---
 # <a name="what-is-azure-search"></a>什么是 Azure 搜索？
 Azure 搜索是一种搜索即服务云解决方案，它为开发人员提供 API 和工具，以便基于 Web、移动和企业应用程序中的专用异类内容添加丰富的搜索体验。 查询执行是通过用户定义的索引进行的。

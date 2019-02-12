@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: f231fa7624a2babea2a3d91076ad0348b3c9e976
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 8ed3213a40370b1ab2beb15a989a22017b058d65
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540363"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812066"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>教程：探索 Azure 时序见解 JavaScript 客户端库
 
@@ -138,7 +138,7 @@ TSI 客户端库 API 重度使用聚合表达式。 使用聚合表达式可以�
 
    **aggregateExpression 参数**
 
-   | 参数 | Description | 示例 |
+   | 参数 | 说明 | 示例 |
    | --------- | ----------- | ------- |
    | `predicateObject` | 数据筛选表达式。 |`{predicateString: "Factory = 'Factory3'"}` |
    | `measureObject`   | 所用度量的属性名称。 | `{property: 'Temperature', type: "Double"}` |
@@ -147,7 +147,7 @@ TSI 客户端库 API 重度使用聚合表达式。 使用聚合表达式可以�
    | `splitByObject`   | 用作拆分依据的字符串属性（可选 – 可为 null）。 | `{property: 'Station', type: 'String'}` |
    | `color`         | 要呈现的对象的颜色。 | `'pink'` |
    | `alias`           | 聚合表达式的友好名称。 | `'Factory3Temperature'` |
-   | `contextMenuActions` | 要在可视化效果中绑定到时序对象的操作数组（可选）。 | 有关详细信息，请参阅[“高级功能”部分中的“弹出上下文菜单”](#popup-context-menus)。 |
+   | `contextMenuActions` | 要在可视化效果中绑定到时序对象的操作数组（可选）。 | 有关详细信息，请参阅“高级功能”部分中的“弹出上下文菜单”。 |
 
 3. 使用 `TsiClient.Server` API 调用 TSI 查询以请求聚合数据：
 
@@ -157,7 +157,7 @@ TSI 客户端库 API 重度使用聚合表达式。 使用聚合表达式可以�
 
    **getAggregates 参数**
 
-   | 参数 | Description | 示例 |
+   | 参数 | 说明 | 示例 |
    | --------- | ----------- | ------- |
    | `token`     | TSI API 的访问令牌。 |  `authContext.getTsiToken()` 有关详细信息，请参阅[身份验证部分](#authentication)。 |
    | `envFQDN`   | TSI 环境的完全限定域名 (FQDN)。 | 例如，Azure 门户中的 `10000000-0000-0000-0000-100000000108.env.timeseries.azure.com`。 |
@@ -260,7 +260,7 @@ TSI 客户端库还会公开一些可按需使用的可选高级功能。
 
 画笔用于限定定义操作（例如缩放和浏览）的时间范围。
 
-前一示例“包含用于创建饼图/条形图的上下文菜单的折线图”（描述[弹出上下文菜单](#popup-context-menus-section)）中显示了用于演示画笔的代码。
+前一示例“包含用于创建饼图/条形图的上下文菜单的折线图”（描述了“弹出上下文菜单”）中显示了用于演示画笔的代码。
 
 1. 画笔操作类似于上下文菜单，为画笔定义一系列自定义操作。 每个操作包含由一个或多个元素构成的数组。 每个元素定义单个上下文菜单项：
    - `name`：用于菜单项的文本：“将参数输出到控制台。”

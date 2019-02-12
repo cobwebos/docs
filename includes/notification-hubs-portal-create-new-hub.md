@@ -8,34 +8,31 @@ ms.topic: include
 ms.date: 01/17/2019
 ms.author: jowargo
 ms.custom: include file
-ms.openlocfilehash: b68fa345d4772134c30ce8b8b559f98113a0496f
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 00b7ffcba876b6abea59cff170331c7413a61d39
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453085"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55823130"
 ---
 1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在左侧菜单上选择“所有服务”，然后在“移动”部分中选择“通知中心”。 选择服务名称旁边的星星 (`*`) 以将其添加到左侧菜单上的“收藏夹”部分。 在将“通知中心”添加到“收藏夹”之后，在菜单上选择它。 
 
-2. 选择“创建资源” > “移动” > “通知中心”。
+      ![Azure 门户 - 选择“通知中心”](./media/notification-hubs-portal-create-new-hub/all-services-select-notification-hubs.png)
+3. 在“通知中心”页面上，在工具栏上选择“添加”。 
 
-      ![Azure 门户 - 创建通知中心](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-create.png)
+      ![通知中心 -“添加”工具栏按钮](./media/notification-hubs-portal-create-new-hub/add-toolbar-button.png)
+4. 在“通知中心”页面上，执行以下步骤： 
+    1. 为通知中心指定一个名称。  
+    2. 为命名空间指定一个名称。
+    3. 选择要在其中创建通知中心的位置。 
+    4. 选择一个现有资源组，或者为新资源组输入一个名称。
+    5. 选择“创建”。 
 
-3. 在“通知中心”框中，键入一个唯一名称。 选择“区域”、“订阅”和“资源组”（如果已经有一个）。
+        ![Azure 门户 - 设置通知中心属性](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
+4. 选择“通知”（铃铛图标），然后选择“转到资源”，或者刷新“通知中心”页面中的列表，然后选择你的通知中心。 
 
-      如果尚无服务总线命名空间，可以使用基于中心名称创建的默认名称（如果该命名空间名称可用）。
-
-      如果已有要在其中创建中心的服务总线命名空间，请执行以步骤
-
-    a. 在“命名空间”区域中，选择“选择现有”链接。
-
-    b. 选择“创建”。
-
-    ![Azure 门户 - 设置通知中心属性](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
-
-4. 选择“通知”（钟形图标），然后选择“转到资源”。
-
-      ![Azure 门户 - 通知 -> 转到资源](./media/notification-hubs-portal-create-new-hub/notification-go-to-resource.png)
+      ![Azure 门户 - 通知 -> 转到资源](./media/notification-hubs-portal-create-new-hub/go-to-notification-hub.png)
 5. 从列表中选择“访问策略”。 记下向你提供的两个连接字符串。 稍后在处理推送通知时需要它们。
 
       >[!IMPORTANT]

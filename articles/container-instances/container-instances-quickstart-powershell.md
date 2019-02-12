@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 87cf0f09cbeeee90492e070b25b713546c6631e5
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e8efcbe080cc33cb6153d97d4435bcb477587980
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438858"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565847"
 ---
 # <a name="quickstart-run-a-container-application-in-azure-container-instances-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 在 Azure 容器实例中运行容器应用程序
 
@@ -39,7 +39,9 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>创建容器
 
-创建资源组后，可在 Azure 中运行容器。 若要使用 Azure PowerShell 创建容器实例，请在 [New-AzureRmContainerGroup][New-AzureRmContainerGroup] cmdlet 中 提供资源组名称、容器实例名称和 Docker 容器映像。 可以通过指定要打开的一个或多个端口、一个 DNS 名称标签（或同时指定两者）来向 Internet 公开容器。 在本快速入门中，我们将部署一个带有 DNS 名称标签的、用于托管 Nano Server 中运行的 Internet Information Services (IIS) 的容器。
+创建资源组后，可在 Azure 中运行容器。 若要使用 Azure PowerShell 创建容器实例，请在 [New-AzureRmContainerGroup][New-AzureRmContainerGroup] cmdlet 中 提供资源组名称、容器实例名称和 Docker 容器映像。 在本快速入门中，你将使用来自公共 Docker 中心注册表的 `microsoft/iis:nanoserver` Windows 映像。 此映像打包了 Internet Information Services (IIS)，可以在 Nano Server 中运行。
+
+可以通过指定要打开的一个或多个端口、一个 DNS 名称标签（或同时指定两者）来向 Internet 公开容器。 在本快速入门中，你将部署一个具有 DNS 名称标签的容器，以便 IIS 可供公开访问。
 
 执行以下命令以启动容器实例。 在创建实例的 Azure 区域中，`-DnsNameLabel` 值必须是唯一的。 如果收到“DNS 名称标签不可用”错误消息，请尝试使用一个不同的 DNS 名称标签。
 

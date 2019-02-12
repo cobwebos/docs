@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 97dffa4952354864f90f75ffb909228eb4202e77
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: cb888367e3204d6750c533eb8952c80947f90c11
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382801"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486803"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure 资源管理器和经典部署：了解部署模型和资源状态
 
@@ -30,6 +30,8 @@ ms.locfileid: "54382801"
 若要简化资源部署和管理，Microsoft 建议为所有新资源使用 Resource Manager。 如果可能，Microsoft 建议通过 Resource Manager 重新部署现有资源。
 
 如果不熟悉资源管理器，请先查看 [Azure 资源管理器概述](resource-group-overview.md)中定义的术语。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="history-of-the-deployment-models"></a>部署模型的历史
 Azure 最初只提供经典部署模型。 在此模型中，每个资源彼此独立；无法将相关的资源组合在一起。 因此，必须手动跟踪构成解决方案或应用程序的资源 ，并记得以协调的方式管理。 部署解决方案有两种方式：通过门户单独创建每个资源；或创建一个脚本，以正确的顺序部署所有资源。 若要删除解决方案，必须逐个删除每个资源。 无法轻松应用和更新相关资源的访问控制策略。 最后，无法将标记应用到资源，因此无法使用有助于监视资源和管理计费的术语来标记资源。
@@ -57,7 +59,7 @@ Azure 在 2014 年引入了 Resource Manager，增加了资源组这一概念。
 在某些情况下，Resource Manager 命令可以检索通过经典部署创建的资源信息，或者执行管理任务，例如将经典资源移到另一个资源组。 但这些情况并不意味着该类型支持 Resource Manager 操作。 例如，假设某个资源组包含使用经典部署创建的虚拟机。 如果运行以下 Resource Manager PowerShell 命令：
 
 ```powershell
-Get-AzureRmResource -ResourceGroupName ExampleGroup -ResourceType Microsoft.ClassicCompute/virtualMachines
+Get-AzResource -ResourceGroupName ExampleGroup -ResourceType Microsoft.ClassicCompute/virtualMachines
 ```
 
 这会返回虚拟机：
@@ -72,10 +74,10 @@ Location          : westus
 SubscriptionId    : {guid}
 ```
 
-但是，Resource Manager cmdlet **Get-AzureRmVM** 仅返回通过 Resource Manager 部署的虚拟机。 以下命令不返回通过经典部署创建的虚拟机。
+但是，资源管理器 cmdlet **Get-AzVM** 仅返回通过资源管理器部署的虚拟机。 以下命令不返回通过经典部署创建的虚拟机。
 
 ```powershell
-Get-AzureRmVM -ResourceGroupName ExampleGroup
+Get-AzVM -ResourceGroupName ExampleGroup
 ```
 
 只有通过 Resource Manager 创建的资源才支持标记。 不能将标记应用到经典资源。
