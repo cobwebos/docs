@@ -21,7 +21,7 @@ ms.locfileid: "55477805"
 ---
 # <a name="automated-backups"></a>自动备份
 
-SQL 数据库自动创建数据库备份（保留 7 到 35 天），并使用 Azure 读取访问异地冗余存储 (RA-GRS)，确保即使数据中心不可用也会保留这些备份。 可以自动创建这些备份且不收取额外费用。 无需执行任何操作即可创建这些备份，还可[更改备份保持期](#how-to-change-the-pitr-backup-retention-period)。 数据库备份是任何业务连续性和灾难恢复策略的基本组成部分，因为数据库备份可以保护数据免遭意外损坏或删除。 如果安全规则要求备份在较长时间（最长 10 年）内可用，可以配置[长期保留](sql-database-long-term-retention.md).。
+SQL 数据库自动创建数据库备份（保留 7 到 35 天），并使用 Azure 读取访问异地冗余存储 (RA-GRS)，确保即使数据中心不可用也会保留这些备份。 可以自动创建这些备份且不收取额外费用。 无需执行任何操作即可创建这些备份，还可[更改备份保持期](#how-to-change-the-pitr-backup-retention-period)。 数据库备份是任何业务连续性和灾难恢复策略的基本组成部分，因为数据库备份可以保护数据免遭意外损坏或删除。 如果安全规则要求备份在较长时间（最长 10 年）内可用，可以配置[长期保留](sql-database-long-term-retention.md)。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
