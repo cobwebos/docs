@@ -9,12 +9,12 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 659d960881f143655e98c6f1d38696f44def3ae8
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 798cf405c222a443dbbd3a316d20c482daf4429f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055092"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563246"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>教程：开发 C IoT Edge 模块并将其部署到模拟设备
 
@@ -36,8 +36,8 @@ ms.locfileid: "54055092"
 
 Azure IoT Edge 设备：
 
-* 可以按照适用于 [Linux](quickstart-linux.md) 或 [Windows 设备](quickstart.md)的快速入门中的步骤，将开发计算机或虚拟机用作 Edge 设备。
-* 用于 Azure IoT edge 的 C 模块不支持 Windows 容器。 如果 IoT Edge 设备是 Windows 计算机，请将其配置为[使用 Linux 容器](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)
+* 可以按照适用于 [Linux](quickstart-linux.md) 或 [Windows 设备](quickstart.md)的快速入门中的步骤，将开发计算机或虚拟机用作 Edge 设备。 
+* 用于 Azure IoT edge 的 C 模块不支持 Windows 容器。 如果你的 IoT Edge 设备是 Windows 计算机，请确保将其配置为使用 Linux 容器。 有关 Windows 与 Linux 容器之间的安装差异的信息，请参阅[在 Windows 上安装 IoT Edge 运行时](how-to-install-iot-edge-windows.md)。
 
 云资源：
 
@@ -49,9 +49,6 @@ Azure IoT Edge 设备：
 * 用于 Visual Studio Code 的 [C/C++ 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)。
 * 适用于 Visual Studio Code 的 [Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)。
 * [Docker CE](https://docs.docker.com/install/)。
-
->[!Note]
->用于 Azure IoT edge 的 C 模块不支持 Windows 容器。
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
@@ -99,7 +96,7 @@ Azure IoT Edge 设备：
    | 提供解决方案名称 | 输入解决方案的描述性名称，或者接受默认的 **EdgeSolution**。 |
    | 选择模块模板 | 选择“C 模块”。 |
    | 提供模块名称 | 将模块命名为 **CModule**。 |
-   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是在上一步预先填充的。 将 **localhost:5000** 替换为 Azure 容器注册表中的登录服务器值。 可以在 Azure 门户的容器注册表的“概览”页中检索登录服务器。 最终的字符串看起来类似于 \<注册表名称\>.azurecr.io/cmodule。 |
+   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是基于你在上一步中提供的名称预先填充的。 将 **localhost:5000** 替换为 Azure 容器注册表中的登录服务器值。 可以在 Azure 门户的容器注册表的“概览”页中检索登录服务器。 <br><br> 最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/cmodule。 |
  
    ![提供 Docker 映像存储库](./media/tutorial-c-module/repository.png)
 
@@ -296,7 +293,7 @@ VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作�
 
 12. 在 VS Code 资源管理器的 IoT Edge 解决方案工作区中打开 **deployment.template.json** 文件。 此文件告知 IoT Edge 代理部署哪些模块（在本例中为 **tempSensor** 和 **CModule**），并告知 IoT Edge 中心如何在它们之间路由消息。 Visual Studio Code 扩展会自动填充部署模板中所需的大部分信息，但确保解决方案的所有内容都是准确的： 
 
-   1. 在 VS Code 状态栏中将 IoT Edge 的默认平台设置为 **amd64**，这意味着将 **CModule** 设置为映像的 Linux amd64 版本。 在状态栏中将默认平台从 **amd64** 更改为 **arm32v7** 或 **windows-amd64**（如果这就是 IoT Edge 设备的体系结构）。 
+   1. IoT Edge 的默认平台在 VS Code 状态栏中设置为 **amd64**，这意味着 **CModule** 设置为映像的 Linux amd64 版本。 在状态栏中将默认平台从 **amd64** 更改为 **arm32v7**（如果这就是 IoT Edge 设备的体系结构）。 
 
       ![更新模块映像平台](./media/tutorial-c-module/image-platform.png)
 
@@ -340,6 +337,12 @@ VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作�
 接下来，Visual Studio Code 在集成终端运行两个命令，即 `docker build` 和 `docker push`。 这两个命令会生成代码，将 `CModule.dll` 容器化，然后将其推送到在初始化解决方案时指定的容器注册表。
 
 可在 VS Code 集成终端中查看具有标记的完整容器映像地址。 映像地址根据 `module.json` 文件中的信息生成，其格式为 **\<存储库\>:\<版本\>-\<平台\>**。 在本教程中，它应该类似于 **myregistry.azurecr.io/cmodule:0.0.1-amd64**。
+
+>[!TIP]
+>如果你在尝试生成并推送模块时收到错误，请进行以下检查：
+>* 你在 Visual Studio Code 中登录到 Docker 时是否使用了来自容器注册表的凭据？ 这些凭据不同于用来登录到 Azure 门户的凭据。
+>* 你的容器存储库是否正确？ 打开“模块” > “cmodule” > “module.json”并查找 **repository** 字段。 映像存储库应当类似于 **\<registryname\>.azurecr.io/cmodule**。 
+>* 你在生成的容器是否为开发计算机运行的同一类型的容器？ Visual Studio Code 默认生成 Linux amd64 容器。 如果开发计算机运行的是 Linux arm32v7 容器，请在 VS Code 窗口底部的蓝色状态栏上更新平台，以匹配你的容器平台。 C 模块不能生成为 Windows 容器。 
 
 ## <a name="deploy-and-run-the-solution"></a>部署并运行解决方案
 

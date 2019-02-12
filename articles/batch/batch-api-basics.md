@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: f844b460e5fc6548a17b93038d1232fe61483018
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: b4d0ee26cb9f7283cac871c70737cd701fb74c91
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754061"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818577"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
 
@@ -62,7 +62,7 @@ ms.locfileid: "53754061"
   * [启动任务](#start-task)
   * [作业管理器任务](#job-manager-task)
   * [作业准备和释放任务](#job-preparation-and-release-tasks)
-  * [多实例任务 (MPI)](#multi-instance-tasks)
+  * 多实例任务 (MPI)
   * [任务依赖项](#task-dependencies)
 * [应用程序包](#application-packages)
 
@@ -153,7 +153,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
 #### <a name="container-support-in-virtual-machine-pools"></a>虚拟机池中的容器支持
 
-使用 Batch API 创建虚拟机配置池时，可以将池设置为在 Docker 容器中运行任务。 目前，必须使用支持 Docker 容器的映像创建池。 将 Windows Server 2016 Datacenter 与 Azure 市场中的容器映像配合使用，或者提供自定义 VM 映像（其中包含 Docker Community Edition 或 Enterprise Edition 以及任何必需的驱动程序）。 池设置必须包括[容器配置](/rest/api/batchservice/pool/add#definitions_containerconfiguration)，该配置在创建池时将容器映像复制到 VM。 然后，在池中运行的任务即可引用容器映像和容器运行选项。
+使用 Batch API 创建虚拟机配置池时，可以将池设置为在 Docker 容器中运行任务。 目前，必须使用支持 Docker 容器的映像创建池。 将 Windows Server 2016 Datacenter 与 Azure 市场中的容器映像配合使用，或者提供自定义 VM 映像（其中包含 Docker Community Edition 或 Enterprise Edition 以及任何必需的驱动程序）。 池设置必须包括[容器配置](/rest/api/batchservice/pool/add)，该配置在创建池时将容器映像复制到 VM。 然后，在池中运行的任务即可引用容器映像和容器运行选项。
 
 有关详细信息，请参阅[在 Azure Batch 上运行 Docker 容器应用程序](batch-docker-container-workloads.md)。
 
@@ -215,7 +215,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
 ### <a name="network-configuration"></a>网络配置
 
-可以指定应在其中创建池计算节点的 Azure [虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 的子网。 有关详细信息，请参阅[池网络配置](#pool-network-configuration)部分。
+可以指定应在其中创建池计算节点的 Azure [虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 的子网。 有关详细信息，请参阅“池网络配置”部分。
 
 
 ## <a name="job"></a>作业
@@ -271,7 +271,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 * [启动任务](#start-task)
 * [作业管理器任务](#job-manager-task)
 * [作业准备和释放任务](#job-preparation-and-release-tasks)
-* [多实例任务 (MPI)](#multi-instance-tasks)
+* 多实例任务 (MPI)
 * [任务依赖项](#task-dependencies)
 
 ### <a name="start-task"></a>启动任务

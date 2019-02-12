@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/11/2018
+ms.date: 01/31/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9695c3d40ee85cf1a46e078776c88ad2f61ed839
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 9d4aee884e91c52be48c8a44f185f188b0c93ab5
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465392"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511133"
 ---
 # <a name="build-a-net-core-and-sql-database-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中构建 .NET Core 和 SQL 数据库应用
 
@@ -359,6 +359,35 @@ git push azure master
 ![Code First 迁移后的 Azure 应用](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
 
 所有现有待办事项仍将显示。 重新发布 .NET Core 应用时，SQL 数据库中的现有数据不会丢失。 此外，实体框架核心迁移仅更改数据架构，而使现有数据保持不变。
+
+## <a name="stream-diagnostic-logs"></a>流式传输诊断日志
+
+示例项目已遵循了 [Azure 中的 ASP.NET Core 日志记录](https://docs.microsoft.com/aspnet/core/fundamentals/logging#logging-in-azure)中的指南，并且进行了两个配置更改：
+
+- 在 *DotNetCoreSqlDb.csproj* 中包括了对 `Microsoft.Extensions.Logging.AzureAppServices` 的引用。
+- 在 *Startup.cs* 中调用了 `loggerFactory.AddAzureWebAppDiagnostics()`。
+
+> [!NOTE]
+> 项目的日志级别在 *appsettings.json* 中设置为 `Information`。
+> 
+
+在 Linux 上的应用服务中，应用在默认 Docker 映像的容器中运行。 可以访问在容器中生成的控制台日志。 若要获取日志，请先在 Cloud Shell 中运行 [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) 命令，以启用容器日志记录。
+
+```azurecli-interactive
+az webapp log config --name <app_name> --resource-group myResourceGroup --docker-container-logging filesystem
+```
+
+启用容器日志记录后，通过在 Cloud Shell 中运行 [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) 命令来观察日志流。
+
+```azurecli-interactive
+az webapp log tail --name <app_name> --resource-group myResourceGroup
+```
+
+启动日志流式处理后，请在浏览器中刷新 Azure 应用，以获取一些 Web 流量。 现在可以看到传送到终端的控制台日志。 如果没有立即看到控制台日志，请在 30 秒后重新查看。
+
+若要随时停止日志流式处理，请键入 `Ctrl`+`C`。
+
+有关自定义 ASP.NET Core 日志的详细信息，请参阅 [ASP.NET Core 中的日志记录](https://docs.microsoft.com/aspnet/core/fundamentals/logging)。
 
 ## <a name="manage-your-azure-app"></a>管理 Azure 应用
 

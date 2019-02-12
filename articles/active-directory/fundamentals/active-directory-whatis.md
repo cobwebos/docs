@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/13/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 44533ea4430bb7cd3bc7e0b6451892cc68bacc19
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 251161fbb5213c765463835e4537f1b443699670
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450211"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491733"
 ---
 # <a name="what-is-azure-active-directory"></a>什么是 Azure Active Directory？ 
 Azure Active Directory (Azure AD) 是 Microsoft 推出的基于云的标识和访问管理服务。 员工可以通过 Azure AD 登录并访问以下资源：
@@ -72,7 +72,7 @@ Microsoft Online 业务服务（例如 Office 365 或 Microsoft Azure）要求�
 |Azure AD 全局管理员|此管理员角色自动分配给创建 Azure AD 租户的人员。 全局管理员可以执行 Azure AD 以及与 Azure AD 联合的任意服务（例如 Exchange Online、SharePoint Online 和 Skype for Business Online）的所有管理功能。 可以有多个全局管理员，但只有全局管理员才能向用户分配管理员角色（包括分配其他全局管理员）。<br><br>**注意**<br>此管理员角色在 Azure 门户中称为“全局管理员”，但在 Microsoft Graph API、Azure AD Graph API 和 Azure AD PowerShell 中称为“公司管理员”。<br><br>有关各种管理员角色的详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)。|
 |Microsoft 帐户（也称 MSA）|个人帐户，用于访问面向使用者的 Microsoft 产品和云服务，例如 Outlook、OneDrive、Xbox LIVE 或 Office 365。 Microsoft 帐户在由 Microsoft 运行的 Microsoft 使用者标识帐户系统中创建和存储。|
 
-## <a name="what-features-work-in-azure-ad"></a>什么功能可以在 Azure AD 中使用？
+## <a name="which-features-work-in-azure-ad"></a>哪些功能可以在 Azure AD 中使用？
 在选择 Azure AD 许可证以后，即可访问下面这些适用于组织的部分或所有功能：
 
 |类别|描述|

@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用节点 Web 应用在 Azure Key Vault 中设置和检索机密 - Azure Key Vault | Microsoft Docs
-description: 快速入门：使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密
+description: 在本快速入门中，请使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密
 services: key-vault
 author: prashanthyv
 manager: sumedhb
@@ -9,31 +9,32 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 20d47ecaea8ce393f60cba93c3dbcf7ca4a076c8
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 300ee1b01f346f7e1c118b76d64d0eda6e4d7934
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002597"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565541"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>快速入门：使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密
 
-本快速入门演练将 Azure Web 应用程序配置为使用 Azure 资源的托管标识，以从 Azure Key Vault 读取信息所要执行的步骤。 学习如何：
+本快速入门演练将 Azure Web 应用程序配置为使用 Azure 资源的托管标识，以从 Azure Key Vault 读取信息所要执行的步骤。 可以通过 Key Vault 来确保信息的安全。 学习如何：
 
-> [!div class="checklist"]
-> * 创建密钥保管库。
-> * 在密钥保管库中存储机密。
-> * 从密钥保管库检索机密。
-> * 创建 Azure Web 应用程序。
-> * 为 Web 应用启用[托管服务标识](../active-directory/managed-identities-azure-resources/overview.md)。
-> * 授予所需的权限，让 Web 应用程序从密钥保管库读取数据。
+* 创建密钥保管库。
+* 在密钥保管库中存储机密。
+* 从密钥保管库检索机密。
+* 创建 Azure Web 应用程序。
+* 为 Web 应用启用[托管服务标识](../active-directory/managed-identities-azure-resources/overview.md)。
+* 授予所需的权限，让 Web 应用程序从密钥保管库读取数据。
 
-在我们进一步讨论之前，请阅读[基本概念](key-vault-whatis.md#basic-concepts)。
+在我们进一步讨论之前，请阅读 [Key Vault 基本概念](key-vault-whatis.md#basic-concepts)。
 
 >[!NOTE]
 >Key Vault 是一个以编程方式存储机密的中央存储库。 但要这样做，应用程序和用户需要首先向 Key Vault 进行身份验证，即提供机密。 为了遵循安全最佳做法，第一个机密需要定期轮换。 
 >
 >使用 [Azure 资源的托管服务标识](../active-directory/managed-identities-azure-resources/overview.md)，在 Azure 中运行的应用程序将获得由 Azure 自动管理的标识。 这有助于解决*机密采用问题*，这样用户和应用程序就可以遵循最佳做法，而不必担心轮换第一个机密。
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -77,7 +78,7 @@ az group create --name "<YourResourceGroupName>" --location "East US"
 
 接下来，在上一步骤创建的资源组中创建密钥保管库。 提供以下信息：
 
-* Key Vault 名称：名称必须为 3-24 个字符的字符串，并且只能包含 0-9、a-z、A-Z 和 -。
+* Key Vault 名称：名称必须是 3-24 个字符的字符串，并且只能包含 0-9、a-z、A-Z 和连字符 (-)。
 * 资源组名称。
 * 位置：**美国东部**。
 
@@ -143,8 +144,7 @@ git clone https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart.git
 
 虽然 Azure Key Vault 可用于安全存储凭据以及其他密钥和机密，但代码需要通过 Key Vault 的身份验证才能检索它们。 [Azure 资源的托管标识概述](../active-directory/managed-identities-azure-resources/overview.md)为 Azure 服务提供了 Azure Active Directory (Azure AD) 中的自动托管标识，更巧妙地解决了这个问题。 此标识可用于通过支持 Azure AD 身份验证的任何服务（包括 Key Vault）的身份验证，这样就无需在代码中插入任何凭据了。
 
-1. 返回 Azure CLI。
-2. 运行 assign-identity 命令，为此应用程序创建标识：
+在 Azure CLI 中运行 assign-identity 命令，为此应用程序创建标识：
 
    ```azurecli
    az webapp identity assign --name "keyvaultdotnetcorequickstart" --resource-group "<YourResourceGroupName>"
@@ -171,10 +171,20 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 
 ```
 
-现在运行应用程序时，会看到检索到的机密值。 上面的命令中向应用服务的标识 (MSI) 提供了在 Key Vault 上执行“get”和“list”操作的权限
+现在运行应用程序时，会看到检索到的机密值。 上面的命令中向应用服务的标识提供了在密钥保管库上执行“get”和“list”操作的权限。
+
+## <a name="clean-up-resources"></a>清理资源
+不再需要资源组、虚拟机和所有相关的资源时，可将其删除。 为此，请选择适用于 VM 的资源组，然后选择“删除”。
+
+使用 [az keyvault delete](https://docs.microsoft.com/en-us/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-delete) 命令删除密钥保管库：
+
+```azurecli
+az keyvault delete --name
+                   [--resource-group]
+                   [--subscription]
+```
 
 ## <a name="next-steps"></a>后续步骤
 
-* [深入了解 Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)
-* [用于 .NET 的 Azure SDK](https://github.com/Azure/azure-sdk-for-net)
-* [Azure REST API 参考](https://docs.microsoft.com/rest/api/keyvault/)
+> [!div class="nextstepaction"]
+> [深入了解 Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)

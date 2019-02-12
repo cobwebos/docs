@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8f547977e544854e281e1c6be442607d55149e5e
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d6a1d442eca0cf5e433a82fb52ed54b09b56c779
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190282"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566078"
 ---
 # <a name="quickstart-run-a-container-application-in-azure-container-instances-in-the-azure-portal"></a>快速入门：在 Azure 门户中的 Azure 容器实例中运行容器应用程序
 
@@ -41,7 +41,7 @@ ms.locfileid: "53190282"
 
 ![在 Azure 门户中配置新的容器实例的基本设置][aci-portal-03]
 
-可以在 Azure 容器实例中创建 Windows 和 Linux 容器。 对于本快速入门，请保留默认设置 **Linux** 来部署基于 Linux 的 `microsoft/aci-helloworld` 映像。
+对于本快速入门，请保留默认设置“公共”以部署来自公共 Docker 中心注册表的 `microsoft/aci-helloworld` 映像。 此映像打包了一个用 Node.js 编写的小型 Web 应用程序，该应用程序提供静态 HTML 页面。
 
 在“配置”下，为容器指定一个 **DNS 名称标签**。 该名称在创建容器实例的 Azure 区域中必须是唯一的。 容器将可通过 `<dns-name-label>.<region>.azurecontainer.io` 公开访问。
 

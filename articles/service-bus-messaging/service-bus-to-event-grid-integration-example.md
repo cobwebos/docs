@@ -14,20 +14,20 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 55798af8d8e2b50614a3eee51b330c5b4fa0f918
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: a1c0078cf2359de7fa018af749c61880caa8fcdd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409570"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821800"
 ---
 # <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Azure 服务总线到 Azure 事件网格集成示例
 
 本文介绍如何设置 Azure 函数和逻辑应用，以便根据从 Azure 事件网格接收事件的情况来接收消息。 可以执行以下操作：
  
-* 创建一个[简单的测试性 Azure 函数](#test-function-setup)，以便调试并查看从事件网格发出的初始事件流。 执行此步骤，不管是否执行其他步骤。
-* 创建一个根据事件网格事件[接收和处理 Azure 服务总线消息的 Azure 函数](#receive-messages-using-azure-function)。
-* 利用 [Azure 应用服务的逻辑应用功能](#receive-messages-using-azure-logic-app)。
+* 创建一个简单的测试 Azure 函数，以便调试并查看从事件网格发出的初始事件流。 执行此步骤，不管是否执行其他步骤。
+* 创建一个根据事件网格事件接收和处理 Azure 服务总线消息的 Azure 函数。
+* 利用 Azure 应用服务的逻辑应用功能。
 
 创建的示例假定服务总线主题有两个订阅。 示例还假定，创建事件网格订阅的目的是只为一个服务总线订阅发送事件。 
 
@@ -140,7 +140,7 @@ ms.locfileid: "47409570"
 
 1. 完成如图所示的窗体，然后记住在“后缀筛选器”框中输入相关筛选器。
 
-1. 选择**创建**。
+1. 选择“创建”。
 
 1. 如“先决条件”部分所述，向服务总线主题发送一条消息，然后通过 Azure Functions 的“监视”功能验证事件是否正在流动。
 
@@ -197,7 +197,7 @@ ms.locfileid: "47409570"
 
 1. 若要添加信息，请执行以下操作：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“资源名称”框中，输入自己的命名空间名称。 
+    a. 在“资源名称”框中，输入自己的命名空间名称。 
 
     b. 在“高级选项”下的“后缀筛选器”框中，输入订阅的筛选器。
 

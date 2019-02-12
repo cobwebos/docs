@@ -11,15 +11,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/11/2018
+ms.date: 01/31/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0b4549323b64b0f6210a228ea6cb5ca301839ec8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d62e74c5d81cdf3331bde349a9ec5dfe3071e7f8
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721846"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510691"
 ---
 # <a name="tutorial-build-a-net-core-and-sql-database-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 .NET Core 和 SQL 数据库应用
 
@@ -367,11 +367,42 @@ git push azure master
 
 所有现有待办事项仍将显示。 重新发布 .NET Core 应用时，SQL 数据库中的现有数据不会丢失。 此外，实体框架核心迁移仅更改数据架构，而使现有数据保持不变。
 
+## <a name="stream-diagnostic-logs"></a>流式传输诊断日志
+
+当 ASP.NET Core 应用在 Azure 应用服务中运行时，可以将控制台日志传输到 Cloud Shell。 如此，可以获得相同的诊断消息，以便调试应用程序错误。
+
+示例项目已遵循了 [Azure 中的 ASP.NET Core 日志记录](https://docs.microsoft.com/aspnet/core/fundamentals/logging#logging-in-azure)中的指南，并且进行了两个配置更改：
+
+- 在 *DotNetCoreSqlDb.csproj* 中包括了对 `Microsoft.Extensions.Logging.AzureAppServices` 的引用。
+- 在 *Startup.cs* 中调用了 `loggerFactory.AddAzureWebAppDiagnostics()`。
+
+若要将应用服务中的 ASP.NET Core [日志级别](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level)从默认级别 `Warning` 设置为 `Information`，请在 Cloud Shell 中使用 [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) 命令。
+
+```azurecli-interactive
+az webapp log config --name <app_name> --resource-group myResourceGroup --application-logging true --level information
+```
+
+> [!NOTE]
+> 项目的日志级别在 *appsettings.json* 中已设置为 `Information`。
+> 
+
+若要启动日志流式处理，请在 Cloud Shell 中使用 [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) 命令。
+
+```azurecli-interactive
+az webapp log tail --name <app_name> --resource-group myResourceGroup
+```
+
+启动日志流式处理后，请在浏览器中刷新 Azure 应用，以获取一些 Web 流量。 现在可以看到传送到终端的控制台日志。 如果没有立即看到控制台日志，请在 30 秒后重新查看。
+
+若要随时停止日志流式处理，请键入 `Ctrl`+`C`。
+
+有关自定义 ASP.NET Core 日志的详细信息，请参阅 [ASP.NET Core 中的日志记录](https://docs.microsoft.com/aspnet/core/fundamentals/logging)。
+
 ## <a name="manage-your-azure-app"></a>管理 Azure 应用
 
-转到 [Azure 门户](https://portal.azure.com)查看已创建的应用。
+转到 [Azure 门户](https://portal.azure.com)查看创建的应用。
 
-从左侧菜单中单击“应用服务”，并单击 Azure 应用的名称。
+在左侧菜单中单击“应用服务”，然后单击 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-dotnetcore-sqldb/access-portal.png)
 
@@ -394,7 +425,7 @@ git push azure master
 > * 将日志从 Azure 流式传输到终端
 > * 在 Azure 门户中管理应用
 
-转到下一教程，了解如何将自定义 DNS 名称映射到应用。
+继续学习下一篇教程，了解如何将自定义 DNS 名称映射到应用。
 
 > [!div class="nextstepaction"]
 > [将现有的自定义 DNS 名称映射到 Azure 应用服务](app-service-web-tutorial-custom-domain.md)

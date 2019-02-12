@@ -4,17 +4,17 @@ description: Azure 蓝图是一项 Azure 服务，可用于在 Azure 环境中�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/05/2018
+ms.date: 02/01/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: bea01e8f017622f1407bbac993e50112140cc472
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 7803ed99a61a9b4ad819da882daf38cbfd6fffe9
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246239"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563365"
 ---
 # <a name="what-is-azure-blueprints"></a>什么是 Azure 蓝图？
 
@@ -54,19 +54,16 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 
 蓝图由项目组成。 蓝图目前支持以下资源作为项目：
 
-|资源  | 层次结构选项| 说明  |
+|资源  | 层次结构选项| Description  |
 |---------|---------|---------|
-|资源组     | 订阅 | 创建新资源组以供蓝图中的其他项目使用。  通过这些占位符资源组，可以按照所需方式组织资源，并为包含的策略和角色分配项目以及 Azure 资源管理器模板提供范围限制。         |
-|Azure 资源管理器模板      | 订阅、资源组 | 模板用于组合复杂的环境。 示例环境：SharePoint 场、Azure 自动化状态配置或 Log Analytics 工作区。 |
-|策略分配     | 订阅、资源组 | 将蓝图分配到订阅后，允许将策略或计划分配给该订阅。 该策略或计划必须在蓝图的范围内（在蓝图管理组或以下）。 若策略或计划具有参数，则在创建蓝图时或在蓝图分配期间分配这些参数。       |
-|角色分配   | 订阅、资源组 | 将现有用户或组添加到内置角色，以确保始终为正确的人员提供正确的资源访问权限。 可为整个订阅定义角色分配，也可将其嵌套到蓝图所包含的特定资源组。 |
+|资源组 | 订阅 | 创建新资源组以供蓝图中的其他项目使用。  通过这些占位符资源组，可以按照所需方式组织资源，并为包含的策略和角色分配项目以及 Azure 资源管理器模板提供范围限制。 |
+|Azure 资源管理器模板 | 订阅、资源组 | 模板用于组合复杂的环境。 示例环境：SharePoint 场、Azure 自动化状态配置或 Log Analytics 工作区。 |
+|策略分配 | 订阅、资源组 | 将蓝图分配到订阅后，允许将策略或计划分配给该订阅。 该策略或计划必须位于蓝图定义位置的范围内。 若策略或计划具有参数，则在创建蓝图时或在蓝图分配期间分配这些参数。 |
+|角色分配 | 订阅、资源组 | 将现有用户或组添加到内置角色，以确保始终为正确的人员提供正确的资源访问权限。 可为整个订阅定义角色分配，也可将其嵌套到蓝图所包含的特定资源组。 |
 
-### <a name="blueprints-and-management-groups"></a>蓝图和管理组
+### <a name="blueprint-definition-locations"></a>蓝图定义位置
 
-创建蓝图定义时，将定义蓝图的保存位置。 目前蓝图只能保存到你有“参与者”访问权限的[管理组](../management-groups/overview.md)。 该蓝图可以分配给该管理组的任何子订阅。
-
-> [!IMPORTANT]
-> 若无权访问或没有配置任何管理组，则加载蓝图定义列表时会显示无可用蓝图定义，且单击“范围”时，会打开包含有关检索管理组警告的窗口。 要解决此问题，请确保你有相应权限访问的订阅属于[管理组](../management-groups/overview.md)。
+创建蓝图定义时，将定义蓝图的保存位置。 蓝图可以保存到你有**参与者**访问权限的[管理组](../management-groups/overview.md)或订阅。 如果位置是一个管理组，则蓝图可以分配给该管理组的任何子级订阅。
 
 ### <a name="blueprint-parameters"></a>蓝图参数
 
@@ -101,7 +98,7 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 - `Microsoft.Blueprint/blueprints/versions/delete`
 
 > [!NOTE]
-> 由于在管理组中创建了蓝图定义，因此必须在管理组范围授予蓝图定义权限，或者将其继承到管理组范围。
+> 必须在保存蓝图定义的管理组或订阅范围上授予或继承蓝图定义权限。
 
 要分配或取消分配蓝图，帐户需要以下权限：
 

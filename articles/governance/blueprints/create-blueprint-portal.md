@@ -4,17 +4,17 @@ description: 使用 Azure 蓝图创建、定义和部署项目。
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 02/01/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0eebf1a2d1c173e2e37d24ff083e5d7ae011a900
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c6c498920d407dbbac2449d1da0d76237db0c63d
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315292"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566306"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>在门户中定义和分配 Azure 蓝图
 
@@ -42,10 +42,7 @@ ms.locfileid: "53315292"
 
    ![创建蓝图](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. 提供“蓝图名称”，例如“MyBlueprint”（字母和数字 - 最多 48 个字符，但不包含空格或特殊字符），但暂时将“蓝图说明”保留为空。  在“定义位置”框中，单击右侧的省略号，选择想要在其中保存蓝图的[管理组](../management-groups/overview.md)，然后单击“选择”。
-
-   > [!NOTE]
-   > 蓝图定义只能保存到管理组。 若要创建第一个管理组，请按照[以下步骤](../management-groups/create.md)进行操作。
+1. 提供“蓝图名称”，例如“MyBlueprint”（字母和数字 - 最多 48 个字符，但不包含空格或特殊字符），但暂时将“蓝图说明”保留为空。  在“定义位置”框中，单击右侧的省略号，选择要在其中保存蓝图的[管理组](../management-groups/overview.md)或订阅，然后单击“选择”。
 
 1. 验证信息是否正确（稍后无法更改“蓝图名称”和“定义位置”字段）并单击页面底部的“下一步:项目”或页面顶部的“项目”选项卡。
 
@@ -154,7 +151,7 @@ ms.locfileid: "53315292"
 
 ## <a name="assign-a-blueprint"></a>分配蓝图
 
-发布蓝图后，即可将其分配给订阅。 将你创建的蓝图分配给管理组层次结构中的一个订阅。
+发布蓝图后，即可将其分配给订阅。 将你创建的蓝图分配给管理组层次结构下的一个订阅。 如果蓝图保存到某个订阅，则只能将其分配给该订阅。
 
 1. 从左侧页面中选择“蓝图定义”。
 
