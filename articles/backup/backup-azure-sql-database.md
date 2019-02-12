@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: raynew
-ms.openlocfilehash: 334a476fee6e995c33a290d34df2f111baae34c3
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fa154b79625fffb8174c510156b3a67df8bff785
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224235"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770422"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>将 SQL Server 数据库备份到 Azure
 
@@ -202,6 +202,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
   * 尾随/前导空格
   * 尾随“!”
+  * 右方括号“]”
 
 对于 Azure 表不支持的字符，可以使用别名，但建议你也避免这样做。 有关详细信息，请参阅此[文章](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN)。
 
@@ -721,6 +722,8 @@ backup_size AS BackupSizeInBytes
 * 停止所有将来的备份作业，但保留恢复点。
 
 如果选择停止备份保留数据，将根据备份策略清除恢复点。 你将产生 SQL 保护实例的定价费用，加上存储使用费，直到清除所有恢复点。 有关 SQL 的 Azure 备份定价信息，请参阅 [Azure 备份定价页](https://azure.microsoft.com/pricing/details/backup/)。
+
+每当在保留数据的情况下停止备份时，恢复点都将根据保留策略过期，但 Azure 备份会始终保留最后一个恢复点，直至你显式删除备份数据。 类似地，如果你在不执行停止备份的情况下删除数据源，则新备份将会失败，并且旧的恢复点将根据保留策略过期，但最后一个恢复点将始终保留，直到你执行在删除数据的情况下停止备份。
 
 停止数据库的保护：
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 3096fa77913ef1dd4eb491b3c0e5d7fa236f6c65
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 835ba407fb72a8cb512425e59cf56ba1a1cc8a4b
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020876"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301265"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -241,7 +241,17 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 1. **建立基准**。 在开发阶段，通过对代表性数据示例使用复制活动来测试管道。 按照[复制活动监视](copy-activity-overview.md#monitoring)收集执行详细信息和性能特征。
 
-2. **诊断和优化性能**。 如果观察到的性能不符合预期，则需要识别性能瓶颈。 然后，优化性能以消除或减少瓶颈的影响。 本文不涵盖性能诊断的完整说明，但下面是一些常见的注意事项：
+2. **诊断和优化性能**。 如果观察到的性能不符合预期，则需要识别性能瓶颈。 然后，优化性能以消除或减少瓶颈的影响。 
+
+    在某些情况下，当你在 ADF 中执行复制活动时，将直接在[复制活动监视](copy-activity-overview.md#monitor-visually)页上看到“性能调优技巧”，如以下示例所示。 它不仅告知针对给定复制运行确定的瓶颈，而且还指导你更改哪些内容可以提高复制吞吐量。 目前的性能调优技巧提供如下建议：在将数据复制到 Azure SQL 数据仓库时使用 PolyBase；在数据存储端资源出现瓶颈时增加 Azure Cosmos DB RU 或 Azure SQL DB DTU；删除不必要的暂存副本等等。性能调优规则也将逐渐丰富。
+
+    **示例：使用性能调优技巧复制到 Azure SQL DB**
+
+    在此示例中，在复制运行期间，ADF 注意到接收器 Azure SQL DB 达到了很高的 DTU 利用率，这会减慢写入操作，因此，建议使用更多的 DTU 来增加 Azure SQL DB 层。 
+
+    ![使用性能调优技巧进行复制监视](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+
+    此外，以下是一些常见的注意事项。 本文不涵盖性能诊断的完整说明。
 
    * 性能功能：
      * [并行复制](#parallel-copy)

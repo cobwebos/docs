@@ -11,58 +11,42 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
-ms.date: 11/30/2018
-ms.openlocfilehash: fc5398b4ffb0b9310b6ab13561830d8d3db7a611
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.date: 01/31/2019
+ms.openlocfilehash: 84017e95d41f8934de248065a2b66792628b41d2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725737"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815534"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>快速入门：在 Azure SQL 数据库中使用机器学习服务（预览版，使用 R）
 
-本文介绍如何在 Azure SQL 数据库中使用机器学习服务（使用 R）的公共预览版， 并介绍在 SQL 数据库和 R 之间移动数据的基本知识，同时还介绍如何将正确格式的 R 代码包装在存储过程 [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) 中，以便在 SQL 数据库中生成、训练和使用机器学习模型。
+本文介绍如何[在 Azure SQL 数据库中使用机器学习服务（使用 R）](sql-database-machine-learning-services-overview.md)的公共预览版， 并介绍在 SQL 数据库和 R 之间移动数据的基本知识，同时还介绍如何将正确格式的 R 代码包装在存储过程 [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) 中，以便在 SQL 数据库中生成、训练和使用机器学习模型。
 
-SQL 数据库中的机器学习用于执行 R 代码和函数，而代码可以作为存储过程、包含 R 语句的 T-SQL 脚本或包含 T-SQL 的 R 代码供关系数据随意使用。 可以使用企业 R 包的功能来完成大规模高级分析，并使用在不需跨网络拉取数据的情况下对数据进行就地计算和处理的功能。
+使用 R 语言的强大功能在数据库中提供高级分析和机器学习。 这种能力将计算和处理功能带到了数据所在的位置，不需要通过网络拉取数据。 另外，可以利用企业 R 包的强大功能大规模地提供高级分析。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+机器学习服务包括了 R 的基本发行版，其中包含 Microsoft 提供的企业 R 包。 Microsoft 的 R 函数和算法是为规模和实用性而设计的，提供预测分析、统计建模、数据可视化以及先进的机器学习算法。
 
-## <a name="sign-up-for-the-preview"></a>注册预览版
+如果还没有 Azure 订阅，可以在开始前[创建一个帐户](https://azure.microsoft.com/free/)。
 
-SQL 数据库中的机器学习服务（使用 R）的公共预览版不默认启用。 若要注册获取公共预览版，请向 Microsoft 的 [sqldbml@microsoft.com](mailto:sqldbml@microsoft.com) 发送电子邮件。
-
-注册此程序以后，Microsoft 会将你加入公共预览版，然后迁移你的现有数据库或在支持 R 的服务上创建新的数据库。
-
-SQL 数据库中的机器学习服务（使用 R）目前仅在基于 vCore 的购买模型中提供，该模型位于单个数据库和入池数据库的“常规用途型”和“业务关键型”服务层中。 在这个初始的公共预览版中，**超大规模**服务层和**托管实例**均不受支持。 不应将公共预览版机器学习服务（使用 R）用于生产工作负荷。
-
-为 SQL 数据库启用机器学习服务（使用 R）以后，请返回到此页面，学习如何在存储过程的上下文中执行 R 脚本。
-
-目前，R 是唯一受支持的语言。 目前不支持 Python。
+> [!NOTE]
+> Azure SQL 数据库中的机器学习服务（使用 R）当前为公共预览版。 [注册预览版](sql-database-machine-learning-services-overview.md#signup)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要在这些练习中运行示例代码，必须先有一个启用机器学习服务（使用 R）的 SQL 数据库。 在发布公共预览版期间，Microsoft 会将你加入该版本并为你的现有数据库或新数据库启用机器学习，如上所述。
+若要在这些练习中运行示例代码，必须先有一个启用机器学习服务（使用 R）的 SQL 数据库。 在发布公共预览版期间，Microsoft 会将你加入该版本并为你的现有数据库或新数据库启用机器学习。 执行[注册预览版](sql-database-machine-learning-services-overview.md#signup)中的步骤。
 
 可以使用任何数据库管理或查询工具连接到 SQL 数据库并运行 R 脚本，前提是该工具能够连接到 SQL 数据库并运行 T-SQL 查询或存储过程。 本快速入门使用 [SQL Server Management Studio](sql-database-connect-query-ssms.md)。
 
 若要进行[添加包](#add-package)练习，则还需在本地计算机上安装 [R](https://www.r-project.org/) 和 [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/)。
 
-本快速入门还需要配置服务器级防火墙规则。 有关说明如何执行此操作的快速入门，请参阅[创建服务器级防火墙规则](sql-database-get-started-portal-firewall.md)。
-
-## <a name="different-from-sql-server"></a>不同于 SQL Server
-
-Azure SQL 数据库中机器学习服务（使用 R）的功能类似于 [SQL Server 机器学习服务](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)。 但是，两者存在一些差异：
-
-- 只能使用 R。 目前不支持 Python。
-- 不需通过 `sp_configure` 配置 `external scripts enabled`。
-- 包必须通过 **sqlmlutils** 进行安装。
-- 没有单独的外部资源调控。 R 资源是特定百分比的 SQL 资源，具体取决于层。
+本快速入门还需要配置服务器级防火墙规则。 有关说明如何执行此操作的快速入门，请参阅[创建服务器级防火墙规则](sql-database-server-level-firewall-rule.md)。
 
 ## <a name="verify-r-exists"></a>验证 R 是否存在
 
 可以确认是否为 SQL 数据库启用了机器学习服务（使用 R）。 请按照以下步骤进行操作。
 
-1. 打开 SQL Server Management Studio，连接到 SQL 数据库。
+1. 打开 SQL Server Management Studio，连接到 SQL 数据库。 有关如何进行连接的详细信息，请参阅[快速入门：使用 SQL Server Management Studio 连接和查询 Azure SQL 数据库](sql-database-connect-query-ssms.md)。
 
 1. 运行以下代码。 
 
@@ -263,7 +247,6 @@ Microsoft 提供许多预安装在 SQL 数据库的机器学习服务中的 R �
 
     ![R 中的已安装包](./media/sql-database-connect-query-r/r-installed-packages.png)
 
-
 ## <a name="create-a-predictive-model"></a>创建预测模型
 
 可以使用 R 来训练模型，然后将模型保存在 SQL 数据库的表中。 在此练习中，将训练一个简单的回归模型，用于根据速度预测汽车的制动距离。 将使用 R 随附的 `cars` 数据集，因为它小且易于理解。
@@ -293,7 +276,7 @@ Microsoft 提供许多预安装在 SQL 数据库的机器学习服务中的 R �
     - 提供用于训练模型的输入数据。
 
     > [!TIP]
-    > 如果需要补习线性模型方面的内容，建议使用[线性模型拟合](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)教程，它介绍了使用 rxLinMod 进行模型拟合的过程
+    > 如果需要补习线性模型方面的内容，建议使用以下教程，它介绍了使用 rxLinMod 进行模型拟合的过程：[拟合线性模型](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
 
     若要生成模型，请在 R 代码中定义公式，然后以输入参数的方式传递数据。
 
@@ -530,9 +513,10 @@ Microsoft 提供许多预安装在 SQL 数据库的机器学习服务中的 R �
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解机器学习服务，请参阅下述有关 SQL Server 机器学习服务的文章。 虽然这些文章是针对 SQL Server 的，但大多数信息也适用于 Azure SQL 数据库中的机器学习服务（使用 R）。
+若要详细了解机器学习服务，请参阅以下文章。 虽然这些文章中有一些是针对 SQL Server 的，但大多数信息也适用于 Azure SQL 数据库中的机器学习服务（使用 R）。
 
+- [Azure SQL 数据库机器学习服务（使用 R）](sql-database-machine-learning-services-overview.md)
 - [SQL Server 机器学习服务](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
-- [Tutorial: Learn in-database analytics using R in SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)（教程：了解如何在 SQL Server 中使用 R 进行数据库内分析）
+- [教程：了解在 SQL Server 中使用 R 进行数据库内分析](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
 - [End-to-end data science walkthrough for R and SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)（适用于 R 和 SQL Server 的端到端数据科学演练）
-- [Tutorial: Use RevoScaleR R functions with SQL Server data](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)（教程：将 RevoScaleR R 函数与 SQL Server 数据配合使用）
+- [教程：将 RevoScaleR R 函数与 SQL Server 数据配合使用](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)

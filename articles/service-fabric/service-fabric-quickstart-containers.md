@@ -4,7 +4,7 @@ description: 在本快速入门中，请在 Azure Service Fabric 上创建第一
 services: service-fabric
 documentationcenter: .net
 author: TylerMSFT
-manager: timlt
+manager: jpconnock
 editor: vturecek
 ms.assetid: ''
 ms.service: service-fabric
@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/30/2018
+ms.date: 01/31/2019
 ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: 2855d28a3d5414413ca1657a7bef9c060f6d4424
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 816f12ca5837fa99b4e945c965f9cbad406c63bb
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300330"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749791"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>快速入门：将 Windows 容器部署到 Service Fabric
 
@@ -63,11 +63,12 @@ Service Fabric SDK 和工具提供服务模板，用于将容器部署到 Servic
 ![新服务对话框][new-service]
 
 ## <a name="specify-the-os-build-for-your-container-image"></a>为容器映像指定 OS 版本
+
 使用特定 Windows Server 版本生成的容器可能无法在运行不同 Windows Server 版本的主机上运行。 例如，使用 Windows Server 版本 1709 生成的容器不会在运行 Windows Server 2016 的主机上运行。 若要了解更多信息，请参阅 [Windows Server 容器 OS 与主机 OS 的兼容性](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility)。 
 
 使用 Service Fabric 运行时版本 6.1 及更新版本，可以为每个容器指定多个 OS 映像，并使用它应该部署到的 OS 的内部版本来标记每个 OS 映像。 这有助于确保应用程序能够在运行不同版本 Windows 操作系统的主机上运行。 若要了解详细信息，请参阅[指定特定于 OS 内部版本的容器映像](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)。 
 
-Microsoft 为不同版本的 Windows Server 上生成的 IIS 版本发布不同的映像。 若要确保 Service Fabric 部署的容器与在部署应用程序的群集节点上运行的 Windows Server 版本兼容，请将以下行添加到 *ApplicationManifest.xml* 文件。 Windows Server 2016 的内部版本为 14393，Windows Server 版本 1709 的内部版本为 16299。 
+Microsoft 为不同版本的 Windows Server 上生成的 IIS 版本发布不同的映像。 若要确保 Service Fabric 部署的容器与在部署应用程序的群集节点上运行的 Windows Server 版本兼容，请将以下行添加到 *ApplicationManifest.xml* 文件。 Windows Server 2016 的内部版本为 14393，Windows Server 版本 1709 的内部版本为 16299。
 
 ```xml
     <ContainerHostPolicies CodePackageRef="Code"> 
@@ -80,34 +81,57 @@ Microsoft 为不同版本的 Windows Server 上生成的 IIS 版本发布不同�
     </ContainerHostPolicies> 
 ```
 
-服务清单继续为 nanoserver (`microsoft/iis:nanoserver`) 只指定一个映像。 
+服务清单继续为 nanoserver (`microsoft/iis:nanoserver`) 只指定一个映像。
+
+另外，请在 *ApplicationManifest.xml* 文件中，将 **PasswordEncrypted** 更改为 **false**。 对于位于 Docker 中心的公共容器映像，帐户和密码是空的，因此，我们禁用了加密，因为加密空密码会导致生成错误。
+
+```xml
+<RepositoryCredentials AccountName="" Password="" PasswordEncrypted="false" />
+```
 
 ## <a name="create-a-cluster"></a>创建群集
 
-若要将应用程序部署到 Azure 中的群集，可以加入合作群集。 合作群集是在 Azure 上托管的、由 Service Fabric 团队运行的免费限时 Service Fabric 群集，任何人都可以在其中部署应用程序及了解平台的情况。  该群集使用单个自签名证书来确保节点到节点和客户端到节点的安全。 合作群集支持容器。 如果决定设置并使用自己的群集，该群集必须在支持容器的 SKU（例如，包含容器的 Windows Server 2016 Datacenter）上运行。
+以下示例脚本创建一个由五个节点组成的 Service Fabric 群集（使用 X.509 证书保护的群集）。 该命令将创建一个自签名证书，并将其上传到新的 Key Vault。 该证书也会复制到本地目录。 可在[创建 Service Fabric 群集](scripts/service-fabric-powershell-create-secure-cluster-cert.md)中详细了解如何使用此脚本创建群集。
 
-登录并[加入 Windows 群集](https://aka.ms/tryservicefabric)。 通过单击 **PFX** 链接，将 PFX 证书下载到计算机。 单击“如何连接到安全合作群集?”链接并复制证书密码。 后续步骤中需要使用证书、证书密码和“连接终结点”值。
+必要时，请使用 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell。
 
-![PFX 和连接终结点](./media/service-fabric-quickstart-containers/party-cluster-cert.png)
+在运行以下脚本之前，请在 PowerShell 中运行 `Connect-AzureRmAccount` 来与 Azure 建立连接。
 
-> [!Note]
-> 每小时可用的合作群集数目有限。 如果在尝试注册合作群集时出错，可以等待一段时间再重试，或者遵循[部署 .NET 应用](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-deploy-app-to-party-cluster#deploy-the-sample-application)教程中的步骤，在 Azure 订阅中创建一个 Service Fabric 群集并在其中部署应用程序。 通过 Visual Studio 创建的群集支持容器。 在群集中部署并验证应用程序后，可以直接跳到本快速入门中的 [Service Fabric 应用程序和服务清单的完整示例](#complete-example-service-fabric-application-and-service-manifests)。
->
+将以下脚本复制到剪贴板，并打开 **Windows PowerShell ISE**。  将内容粘贴到空的 Untitled1.ps1 窗口。 然后，为脚本中的变量提供值：`subscriptionId`、`certpwd`、`certfolder`、`adminuser`、`adminpwd` 等等。运行该脚本之前，为 `certfolder` 指定的目录必须存在。
 
-在 Windows 计算机上，将 PFX 安装到 *CurrentUser\My* 证书存储中。
+[!code-powershell[main](../../powershell_scripts/service-fabric/create-secure-cluster/create-secure-cluster.ps1 "Create a Service Fabric cluster")]
+
+为变量提供值后，按 **F5** 运行该脚本。
+
+运行脚本并创建群集后，在输出中查找 `ClusterEndpoint`。 例如：
+
+```PowerShell
+...
+ClusterEndpoint : https://southcentralus.servicefabric.azure.com/runtime/clusters/b76e757d-0b97-4037-a184-9046a7c818c0
+```
+
+### <a name="install-the-certificate-for-the-cluster"></a>安装群集的证书
+
+现在，我们将在 *CurrentUser\My* 证书存储中安装 PFX。 PFX 文件位于在上述 PowerShell 脚本中使用 `certfolder` 环境变量指定的目录中。
+
+请切换到该目录并运行以下 PowerShell 命令（请替换为 `certfolder` 目录中 PFX 文件的名称，以及在 `certpwd` 变量中指定的密码）。 在此示例中，当前目录设置为 PowerShell 脚本中 `certfolder` 变量指定的目录。 从该位置运行 `Import-PfxCertificate` 命令：
 
 ```powershell
-PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString 873689604 -AsPlainText -Force)
+PS C:\mycertificates> Import-PfxCertificate -FilePath .\mysfclustergroup20190130193456.pfx -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString Password#1234 -AsPlainText -Force)
+```
 
+该命令返回指纹：
 
+```powershell
+  ...
   PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
 
 Thumbprint                                Subject
 ----------                                -------
-3B138D84C077C292579BA35E4410634E164075CD  CN=zwin7fh14scd.westus.cloudapp.azure.com
+0AC30A2FA770BEF566226CFCF75A6515D73FC686  CN=mysfcluster.SouthCentralUS.cloudapp.azure.com
 ```
 
-请记住以下步骤的指纹。
+请记下指纹，以便在后续步骤中使用。
 
 ## <a name="deploy-the-application-to-azure-using-visual-studio"></a>使用 Visual Studio 将应用程序部署到 Azure
 
@@ -115,15 +139,23 @@ Thumbprint                                Subject
 
 在解决方案资源管理器中右键单击“MyFirstContainer”，选择“发布”。 此时，“发布”对话框显示。
 
-将 Party 群集页面中的“连接终结点”复制到“连接终结点”字段。 例如，`zwin7fh14scd.westus.cloudapp.azure.com:19000`。 单击“高级连接参数”，验证连接参数信息。  *FindValue* 和 *ServerCertThumbprint* 值必须与前一步骤中安装的证书的指纹匹配。
+运行上述 `Import-PfxCertificate` 命令时，请复制 PowerShell 窗口中 **CN =** 后面的内容，并将端口 `19000` 添加到其中。 例如，`mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`。 复制到“连接终结点”字段。 请记下此值，因为在后面的步骤中需要用到。
+
+单击“高级连接参数”，验证连接参数信息。  *FindValue* 和 *ServerCertThumbprint* 值必须与在前一步骤中运行 `Import-PfxCertificate` 时安装的证书的指纹匹配。
 
 ![发布对话框](./media/service-fabric-quickstart-containers/publish-app.png)
 
 单击“发布” 。
 
-群集中的每个应用程序都必须具有唯一名称。  Party 群集是一个公共、共享的环境，但是可能与现有应用程序存在冲突。  如果存在名称冲突，请重命名 Visual Studio 项目并重新部署。
+群集中的每个应用程序都必须具有唯一名称。 如果存在名称冲突，请重命名 Visual Studio 项目并重新部署。
 
-打开浏览器并导航到“合作群集”页中指定的“连接终结点”。 可以选择性地在 URL 的前面添加方案标识符 `http://`，并在后面追加端口 `:80`。 例如， http://zwin7fh14scd.westus.cloudapp.azure.com:80。 此时会看到 IIS 默认网页：![IIS 默认网页][iis-default]
+打开浏览器，并导航到在前一步骤中输入“连接终结点”字段的地址。 可以选择性地在 URL 的前面添加方案标识符 `http://`，并在后面追加端口 `:80`。 例如， http://mysfcluster.SouthCentralUS.cloudapp.azure.com:80。
+
+ 此时会看到 IIS 默认网页：![IIS 默认网页][iis-default]
+
+## <a name="clean-up"></a>清理
+
+只要群集处于运行状态，就会产生费用。 请考虑[删除群集](service-fabric-cluster-delete.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

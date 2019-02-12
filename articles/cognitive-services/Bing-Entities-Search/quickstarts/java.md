@@ -1,123 +1,156 @@
 ---
-title: 快速入门：必应实体搜索 API，Java
+title: 快速入门：使用 Java 向必应实体搜索 REST API 发送搜索请求
 titlesuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以帮助你快速开始使用必应实体搜索 API。
+description: 参考本快速入门使用 Java 向必应实体搜索 REST API 发送请求，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 11/28/2017
+ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 000ae54d578ab7223293fc7c089d91a593931533
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5adf40648118f8eb6c33df80ba3e30208f1b2059
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169447"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813392"
 ---
-# <a name="quickstart-for-bing-entity-search-api-with-java"></a>通过 Java 使用必应实体搜索 API 快速入门 
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>快速入门：使用 Java 向必应实体搜索 REST API 发送搜索请求
 
-本文介绍如何结合使用[必应实体搜索](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) API 与 Java。
+参考本快速入门对必应实体搜索 API 进行第一次调用并查看 JSON 响应。 这个简单的 Java 应用程序会向该 API 发送一个新闻搜索查询并显示响应。
+
+虽然此应用程序是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [JDK 7 或 8](https://aka.ms/azure-jdks) 来编译和运行此代码。 如果你有喜欢的 Java IDE，可以使用它，但文本编辑器足以满足要求。
+* [Java 开发工具包 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
+* [Gson 库](https://github.com/google/gson)
 
-必须创建一个具有必应实体搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api)足以满足本快速入门的要求。 需要激活免费试用版时提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
-## <a name="search-entities"></a>搜索实体
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
-要运行此应用程序，请执行以下步骤。
+## <a name="create-and-initialize-a-project"></a>创建并初始化项目
 
-1. 在最喜爱的 IDE 中新建 Java 项目。
-2. 添加下方提供的代码。
-3. 使用对订阅有效的访问密钥替换 `key` 值。
-4. 运行该程序。
+1. 在你最喜欢的 IDE 或编辑器中新建一个 Java 项目，并导入以下库。
 
-```java
-import java.io.*;
-import java.net.*;
-import java.util.*;
-import javax.net.ssl.HttpsURLConnection;
+  ```java
+  import java.io.*;
+  import java.net.*;
+  import java.util.*;
+  import javax.net.ssl.HttpsURLConnection;
+  import com.google.gson.Gson;
+  import com.google.gson.GsonBuilder;
+  import com.google.gson.JsonObject;
+  import com.google.gson.JsonParser;
+  import com.google.gson.Gson;
+  import com.google.gson.GsonBuilder;
+  import com.google.gson.JsonObject;
+  import com.google.gson.JsonParser;
+  ```
 
-/*
- * Gson: https://github.com/google/gson
- * Maven info:
- *     groupId: com.google.code.gson
- *     artifactId: gson
- *     version: 2.8.1
- *
- * Once you have compiled or downloaded gson-2.8.1.jar, assuming you have placed it in the
- * same folder as this file (EntitySearch.java), you can compile and run this program at
- * the command line as follows.
- *
- * javac EntitySearch.java -cp .;gson-2.8.1.jar
- * java -cp .;gson-2.8.1.jar EntitySearch
- */
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+2. 在新类中，为 API 终结点、订阅密钥和搜索查询创建变量。
 
-public class EntitySearch {
+  ```java
+  public class EntitySearch {
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+      static String subscriptionKey = "ENTER KEY HERE";
+    
+        static String host = "https://api.cognitive.microsoft.com";
+        static String path = "/bing/v7.0/entities";
+    
+        static String mkt = "en-US";
+        static String query = "italian restaurant near me";
+  //...
+    
+  ```
 
-// Replace the subscriptionKey string value with your valid subscription key.
-    static String subscriptionKey = "ENTER KEY HERE";
+## <a name="construct-a-search-request-string"></a>构造搜索请求字符串
 
-    static String host = "https://api.cognitive.microsoft.com";
-    static String path = "/bing/v7.0/entities";
-
-    static String mkt = "en-US";
-    static String query = "italian restaurant near me";
-
+1. 创建返回 JSON `String` 的名为 `search()` 的函数。 对搜索查询进行 URL 编码，并将其添加到包含 `&q=` 的参数字符串。 将市场添加到包含 `?mkt=` 的字符串。
+ 
+2. 创建包含主机、路径和参数字符串的 URL 对象。
+    
+    ```java
+    //...
     public static String search () throws Exception {
         String encoded_query = URLEncoder.encode (query, "UTF-8");
         String params = "?mkt=" + mkt + "&q=" + encoded_query;
         URL url = new URL (host + path + params);
+    //...
+    ```
+      
+## <a name="send-a-search-request-and-receive-a-response"></a>发送搜索请求并接收响应
 
-        HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-        connection.setDoOutput(true);
+1. 在上面创建的 `search()` 函数中，创建包含 `url.openCOnnection()` 的 `HttpsURLConnection` 新对象。 将请求方法设置为 `GET`，并将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头。
 
-        StringBuilder response = new StringBuilder ();
-        BufferedReader in = new BufferedReader(
+    ```java
+    //...
+    HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
+    connection.setRequestMethod("GET");
+    connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
+    connection.setDoOutput(true);
+    //...
+    ```
+
+2. 创建新的 `StringBuilder`。 实例化 `BufferedReader` 时使用新的 `InputStreamReader` 作为参数来读取 API 响应。  
+    
+    ```java
+    //...
+    StringBuilder response = new StringBuilder ();
+    BufferedReader in = new BufferedReader(
         new InputStreamReader(connection.getInputStream()));
-        String line;
-        while ((line = in.readLine()) != null) {
-            response.append(line);
-        }
-        in.close();
+    //...
+    ```
 
-        return response.toString();
+3. 创建 `String` 对象用于存储 `BufferedReader` 的响应。 循环访问该对象，并将每行追加到字符串中。 然后关闭读取器并返回响应。 
+    
+    ```java
+    String line;
+    
+    while ((line = in.readLine()) != null) {
+      response.append(line);
     }
+    in.close();
+    
+    return response.toString();
+    ```
 
-    public static String prettify (String json_text) {
-        JsonParser parser = new JsonParser();
-        JsonObject json = parser.parse(json_text).getAsJsonObject();
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(json);
-    }
+## <a name="format-the-json-response"></a>设置 JSON 响应的格式
 
-    public static void main(String[] args) {
-        try {
-            String response = search ();
-            System.out.println (prettify (response));
+1. 创建名为 `prettify` 的新函数用于设置 JSON 响应的格式。 创建新的 `JsonParser`，针对 JSON 文本调用 `parse()`，然后将其存储为 JSON 对象。 
+
+2. 使用 Gson 库创建新的 `GsonBuilder()`，使用 `setPrettyPrinting().create()` 设置 JSON 的格式。 然后返回该 JSON 响应。    
+  
+  ```java
+  //...
+  public static String prettify (String json_text) {
+    JsonParser parser = new JsonParser();
+    JsonObject json = parser.parse(json_text).getAsJsonObject();
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    return gson.toJson(json);
+  }
+  //...
+  ```
+
+## <a name="call-the-search-function"></a>调用 search 函数
+
+1. 在项目的 main 方法中调用 `search()`，使用 `prettify()` 设置文本格式。
+    
+    ```java
+        public static void main(String[] args) {
+            try {
+                String response = search ();
+                System.out.println (prettify (response));
+            }
+            catch (Exception e) {
+                System.out.println (e);
+            }
         }
-        catch (Exception e) {
-            System.out.println (e);
-        }
-    }
-}
-```
+    ```
 
-**响应**
+## <a name="example-json-response"></a>示例 JSON 响应
 
 在 JSON 中返回成功的响应，如以下示例所示： 
 
@@ -182,11 +215,12 @@ public class EntitySearch {
 }
 ```
 
-[返回页首](#HOLTop)
+[返回页首](#main)
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应实体搜索教程](../tutorial-bing-entities-search-single-page-app.md)
-> [必应实体搜索概述](../search-the-web.md )
-> [API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+> [构建单页 Web 应用](../tutorial-bing-entities-search-single-page-app.md)
+
+* [什么是必应实体搜索 API？](../overview.md )
+* [必应实体搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)

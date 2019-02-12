@@ -6,14 +6,14 @@ author: dineshmurthy
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 01/14/2019
+ms.date: 01/29/2019
 ms.author: dineshm
-ms.openlocfilehash: 31d18d7ea4ee195f7ffcfa04fb247b5dfd525c6a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 533665ebfa3d35ed5f03326cf5614e37056b7713
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251465"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813596"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>教程：使用 Spark 通过 Azure Databricks 访问 Data Lake Storage Gen2 预览版数据
 
@@ -30,23 +30,31 @@ ms.locfileid: "55251465"
 
 ## <a name="prerequisites"></a>先决条件
 
-本教程演示如何使用和查询[美国交通部](https://transtats.bts.gov/DL_SelectFields.asp)提供的航班数据。 
+* 创建 Azure Data Lake Storage Gen2 帐户。
 
-1. 选中“预压缩的文件”复选框，选择所有数据字段。
-2. 选择“下载”并将结果保存到计算机。
-3. 记下下载内容的文件名和路径；在后面的步骤中需要此信息。
+  请参阅[创建 Azure Data Lake Storage Gen2 帐户](data-lake-storage-quickstart-create-account.md)。
 
-若要完成本教程，需要一个具有分析功能的存储帐户。 我们建议完成有关该主题的[快速入门](data-lake-storage-quickstart-create-account.md)，以一个存储帐户。 
+* 请确保你的用户帐户分配有[存储 Blob 数据参与者角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac)。
 
-## <a name="set-aside-storage-account-configuration"></a>保留存储帐户配置
+* 安装 AzCopy v10。 请参阅[使用 AzCopy v10 传输数据](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
-需要存储帐户的名称，以及文件系统终结点 URI。
+### <a name="download-the-flight-data"></a>下载航班数据
 
-若要在 Azure 门户中获取存储帐户的名称，请选择“所有服务”，然后使用“存储”一词进行筛选。 然后选择“存储帐户”，找到你的存储帐户。
+本教程使用美国运输统计局的航班数据，演示如何执行 ETL 操作。 必须下载该数据才能完成本教程。
 
-若要获取文件系统终结点 URI，请选择“属性”，然后在属性窗格中找到“主 ADLS 文件系统终结点”字段的值。
+1. 转到[美国运输统计局的研究与技术创新管理部门](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)。
 
-将这两个值都粘贴到文本文件中。 很快你就会需要它们。
+2. 选中“预压缩的文件”复选框以选择所有数据字段。
+
+3. 选择“下载”按钮并将结果保存到计算机。 
+
+4. 将压缩文件的内容解压缩，并记下文件名和文件路径。 在稍后的步骤中需要使用此信息。
+
+## <a name="get-your-storage-account-name"></a>获取存储帐户名
+
+需要存储帐户的名称。 若要获取此名称，请登录到 [Azure 门户](https://portal.azure.com/)，选择“所有服务”，然后使用“存储”一词进行筛选。 然后选择“存储帐户”，找到你的存储帐户。
+
+将该名称粘贴到某个文本文件中。 稍后需要使用该名称。
 
 <a id="service-principal"/>
 
@@ -54,35 +62,75 @@ ms.locfileid: "55251465"
 
 遵循以下主题中的指导创建服务主体：[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
 
-在执行该文中的步骤时，需要完成一些特定的事项。
-
-:heavy_check_mark:在执行文章的[创建 Azure Active Directory 应用程序](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)部分的步骤时，请确保将“创建”对话框的“登录 URL”字段设置为刚收集的终结点 URI。
+在执行该文中的步骤时，需要完成几项操作。
 
 :heavy_check_mark:在执行文章的[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分的步骤时，请确保将应用程序分配给“Blob 存储参与者”角色。
 
 :heavy_check_mark:在执行文章的[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分的步骤时，请将租户 ID、应用程序 ID 和身份验证密钥值粘贴到文本文件中。 很快就会需要这些值。
 
-## <a name="create-a-databricks-cluster"></a>创建 Databricks 群集
+## <a name="create-an-azure-databricks-service"></a>创建 Azure Databricks 服务
 
-下一步是创建 Databricks 群集，以创建数据工作区。
+在本部分，你将使用 Azure 门户创建 Azure Databricks 服务。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源”。
-2. 搜索字段中输入 **Azure Databricks**。
-3. 在 Azure Databricks 边栏选项卡上选择“创建”。
-4. 将 Databricks 服务命名为 **myFlightDataService**（创建该服务时请务必选中“固定到仪表板”复选框）。
-5. 选择“启动工作区”，在新浏览器窗口中打开工作区。
-6. 在左侧导航栏中选择“群集”。
-7. 选择“创建群集”。
-8. 在“群集名称”字段中输入 **myFlightDataCluster**。
-9. 在“辅助角色类型”字段中选择“Standard_D8s_v3”。
-10. 将“最小辅助角色数”值更改为 **4**。
-11. 在页面顶部选择“创建群集”。 （此过程最长需要 5 分钟才能完成。）
-12. 完成此过程后，在导航栏的左上角选择“Azure Databricks”。
-13. 在页面下半部的“新建”部分下选择“Notebook”。
-14. 在“名称”字段中输入选择的名称，然后选择“Python”作为语言。
-15. 所有其他字段可以保留默认值。
-16. 选择“创建”。
-17. 将以下代码块复制并粘贴到第一个单元格中，但目前请勿运行此代码。
+1. 在 Azure 门户中，选择“创建资源” > “分析” > “Azure Databricks”。
+
+    ![Azure 门户上的 Databricks](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Azure 门户上的 Databricks")
+
+2. 在“Azure Databricks 服务”下，提供以下值以创建 Databricks 服务：
+
+    |属性  |说明  |
+    |---------|---------|
+    |**工作区名称**     | 为 Databricks 工作区提供一个名称。  |
+    |**订阅**     | 从下拉列表中选择自己的 Azure 订阅。        |
+    |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../../azure-resource-manager/resource-group-overview.md)。 |
+    |**位置**     | 选择“美国西部 2”。 有关其他可用区域，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。       |
+    |**定价层**     |  选择“标准”。     |
+
+    ![创建 Azure Databricks 工作区](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "创建 Azure Databricks 服务")
+
+3. 选择“固定到仪表板”，然后选择“创建”。
+
+4. 创建帐户需要几分钟时间。 在创建帐户过程中，门户会在右侧显示“正在提交 Azure Databricks 的部署”磁贴。 若要监视操作状态，请查看顶部的进度栏。
+
+    ![Databricks 部署磁贴](./media/data-lake-storage-use-databricks-spark/databricks-deployment-tile.png "Databricks 部署磁贴")
+
+## <a name="create-a-spark-cluster-in-azure-databricks"></a>在 Azure Databricks 中创建 Spark 群集
+
+1. 在 Azure 门户中，转到所创建的 Databricks 服务，然后选择“启动工作区”。
+
+2. 系统随后会将你重定向到 Azure Databricks 门户。 在门户中选择“群集”。
+
+    ![Azure 上的 Databricks](./media/data-lake-storage-use-databricks-spark/databricks-on-azure.png "Azure 上的 Databricks")
+
+3. 在“新建群集”页中，提供用于创建群集的值。
+
+    ![在 Azure 上创建 Databricks Spark 群集](./media/data-lake-storage-use-databricks-spark/create-databricks-spark-cluster.png "在 Azure 上创建 Databricks Spark 群集")
+
+4. 填写以下字段的值，对于其他字段接受默认值：
+
+    * 输入群集的名称。
+
+    * 在本文中，请创建运行时为 **5.1** 的群集。
+
+    * 请务必选中“在不活动超过 \_\_ 分钟后终止”复选框。 如果未使用群集，则请提供一个持续时间（以分钟为单位），超过该时间后群集会被终止。
+
+    * 选择“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
+
+## <a name="create-a-file-system-and-mount-it"></a>创建并装载文件系统
+
+在本部分，你将在存储帐户中创建一个文件系统和文件夹。
+
+1. 在 [Azure 门户](https://portal.azure.com)中，转到所创建的 Azure Databricks 服务，然后选择“启动工作区”。
+
+2. 在左侧选择“工作区”。 在**工作区**下拉列表中，选择**创建** > **笔记本**。
+
+    ![在 Databricks 中创建笔记本](./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "在 Databricks 中创建笔记本")
+
+3. 在“创建 Notebook”对话框中，输入 Notebook 的名称。 选择“Python”作为语言，然后选择前面创建的 Spark 群集。
+
+4. 选择“创建”。
+
+5. 将以下代码块复制并粘贴到第一个单元格中，但目前请勿运行此代码。
 
     ```Python
     configs = {"fs.azure.account.auth.type": "OAuth",
@@ -99,63 +147,66 @@ ms.locfileid: "55251465"
     ```
 18. 在此代码块中，请将 `storage-account-name`、`application-id`、`authentication-id`、`tenant-id` 占位符的值替换为你在完成此文的[保存存储帐户配置](#config)和[创建服务主体](#service-principal)部分的步骤时收集的值。 将 `file-system-name` 占位符替换为你要为文件系统提供的任何名称。
 
-19. 按 **SHIFT + ENTER** 键，运行此块中的代码。
+19. 按 **SHIFT + ENTER** 键，运行此块中的代码。 
+
+    请将此笔记本保持打开状态，因为稍后要在其中添加命令。
 
 ## <a name="ingest-data"></a>引入数据
 
 ### <a name="copy-source-data-into-the-storage-account"></a>将源数据复制到存储帐户中
 
-下一任务是使用 AzCopy 将数据从 *.csv* 文件复制到 Azure 存储中。 打开命令提示符窗口，输入以下命令。 确保将占位符 `<DOWNLOAD_FILE_PATH>`、`<ACCOUNT_NAME>` 和 `<ACCOUNT_KEY>` 替换为在前面步骤中获取的相应值。
+使用 AzCopy 将 *.csv* 文件中的数据复制到 Data Lake Storage Gen2 帐户。
 
-```bash
-set ACCOUNT_NAME=<ACCOUNT_NAME>
-set ACCOUNT_KEY=<ACCOUNT_KEY>
-azcopy cp "<DOWNLOAD_FILE_PATH>" https://<ACCOUNT_NAME>.dfs.core.windows.net/dbricks/folder1/On_Time --recursive 
-```
+1. 打开命令提示符窗口，输入以下命令登录到存储帐户。
+
+   ```bash
+   azcopy login
+   ```
+
+   遵照命令提示符窗口中的说明对用户帐户进行身份验证。
+
+2. 若要复制 *.csv* 帐户中的数据，请输入以下命令。
+
+   ```bash
+   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time
+   ```
+   * 将 `<csv-folder-path>` 占位符值替换为 *.csv* 文件的目录路径（不包括文件名）。
+
+   * 将 `storage-account-name` 占位符值替换为存储帐户的名称。
+
+   * 将 `file-system-name` 占位符替换为你要为文件系统提供的任何名称。
 
 ### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>使用 Databricks Notebook 将 CSV 转换为 Parquet
 
-在浏览器中重新打开 Databricks，执行以下步骤：
+在前面创建的笔记本中添加一个新的单元，并将以下代码粘贴到该单元中。 将此代码片段中的 `storage-account-name` 占位符值替换为 csv 文件所保存到的文件夹的名称。
 
-1. 在导航栏的左上角选择“Azure Databricks”。
-2. 在页面下半部的“新建”部分下选择“Notebook”。
-3. 在“名称”字段中输入 **CSV2Parquet**。
-4. 所有其他字段可以保留默认值。
-5. 选择“创建”。
-6. 将以下代码粘贴到 **Cmd 1** 单元中。 （此代码将在编辑器中自动保存。）
+```python
+# Use the previously established DBFS mount point to read the data.
+# create a data frame to read data.
 
-    ```python
-    # Use the previously established DBFS mount point to read the data
-    # create a dataframe to read data
-    flightDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/On_Time_On_Time*.csv")
-    # read the all the airline csv files and write the output to parquet format for easy query
-    flightDF.write.mode("append").parquet("/mnt/flightdata/parquet/flights")
-    print("Done")
-    ```
+flightDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/On_Time/<your-folder-name>/*.csv")
+
+# read the airline csv file and write the output to parquet format for easy query.
+ flightDF.write.mode("append").parquet("/mnt/flightdata/parquet/flights")
+ print("Done")
+ ```
 
 ## <a name="explore-data"></a>浏览数据
 
-返回到 Databricks 工作区，在左侧导航栏中选择“最近”图标。
-
-1. 选择“航班数据分析”Notebook。
-2. 按 **Ctrl + Alt + N** 创建新的单元格。
-
-将下面的每个代码块输入到 **Cmd 1** 中，然后按 **Cmd + Enter** 运行 Python 脚本。
-
-若要通过 AzCopy 上传一系列 CSV 文件，请运行以下脚本：
+在新单元中粘贴以下代码，以获取通过 AzCopy 上传的 CSV 文件列表。 将 `<csv-folder-path>` 占位符值替换为前面使用的相同占位符值。
 
 ```python
 import os.path
 import IPython
 from pyspark.sql import SQLContext
-display(dbutils.fs.ls("/mnt/flightdata/temp/"))
+display(dbutils.fs.ls("/mnt/flightdata/On_Time/<your-folder-name>"))
 ```
 
 若要创建新文件并列出 *parquet/flights* 文件夹中的文件，请运行以下脚本：
 
 ```python
-dbutils.fs.put("/mnt/flightdata/temp/1.txt", "Hello, World!", True)
-dbutils.fs.ls("/mnt/flightdata/temp/parquet/flights")
+dbutils.fs.put("/mnt/flightdata/1.txt", "Hello, World!", True)
+dbutils.fs.ls("/mnt/flightdata/parquet/flights")
 ```
 
 通过这些代码示例，你已使用启用了 Data Lake Storage Gen2 的存储帐户中存储的数据探讨了 HDFS 的层次结构性质。
@@ -164,16 +215,15 @@ dbutils.fs.ls("/mnt/flightdata/temp/parquet/flights")
 
 接下来，可以开始查询上传到存储帐户中的数据。 将下面的每个代码块输入到 **Cmd 1** 中，然后按 **Cmd + Enter** 运行 Python 脚本。
 
-### <a name="run-simple-queries"></a>运行简单查询
+若要为数据源创建数据帧，请运行以下脚本：
 
-若要为数据源创建 dataframe，请运行以下脚本：
+* 将 `<csv-folder-path>` 占位符值替换为 *.csv* 文件的目录路径（不包括文件名）。
 
-> [!IMPORTANT]
-> 确保将 **<YOUR_CSV_FILE_NAME>** 占位符替换为在本教程开头下载的文件的名称。
+* 将 `<your-csv-file-name` 占位符值替换为 *csv* 文件的名称。
 
 ```python
 #Copy this into a Cmd cell in your notebook.
-acDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/<YOUR_CSV_FILE_NAME>.csv")
+acDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/On_Time/<your-folder-name>/<your-csv-file-name>.csv")
 acDF.write.parquet('/mnt/flightdata/parquet/airlinecodes')
 
 #read the existing parquet file for the flights database that was created earlier
@@ -196,7 +246,7 @@ flightDF.show(20, False)
 display(flightDF)
 ```
 
-若要针对数据运行分析查询，请运行以下脚本：
+输入此脚本，以针对数据运行一些基本分析查询。
 
 ```python
 #Run each of these queries, preferably in a separate cmd cell for separate analysis
@@ -222,51 +272,8 @@ out = spark.sql("SELECT distinct(OriginCityName) FROM FlightTable where OriginSt
 print('Airports in Texas: ', out.show(100))
 
 #find all airlines that fly from Texas
-out1 = spark.sql("SELECT distinct(Carrier) FROM FlightTable WHERE OriginStateName='Texas'")
+out1 = spark.sql("SELECT distinct(Reporting_Airline) FROM FlightTable WHERE OriginStateName='Texas'")
 print('Airlines that fly to/from Texas: ', out1.show(100, False))
-```
-
-### <a name="run-complex-queries"></a>运行复杂查询
-
-若要执行下述更复杂的查询，请在 Notebook 中一次运行一个段，然后检查结果。
-
-```python
-#find the airline with the most flights
-
-#create a temporary view to hold the flight delay information aggregated by airline, then select the airline name from the Airlinecodes dataframe
-spark.sql("DROP VIEW IF EXISTS v")
-spark.sql("CREATE TEMPORARY VIEW v AS SELECT Carrier, count(*) as NumFlights from FlightTable group by Carrier, UniqueCarrier order by NumFlights desc LIMIT 10")
-output = spark.sql("SELECT AirlineName FROM AirlineCodes WHERE AirlineCode in (select Carrier from v)")
-
-#show the top row without truncation
-output.show(1, False)
-
-#show the top 10 airlines
-output.show(10, False)
-
-#Determine which is the least on time airline
-
-#create a temporary view to hold the flight delay information aggregated by airline, then select the airline name from the Airlinecodes dataframe
-spark.sql("DROP VIEW IF EXISTS v")
-spark.sql("CREATE TEMPORARY VIEW v AS SELECT Carrier, count(*) as NumFlights from FlightTable WHERE DepDelay>60 or ArrDelay>60 group by Carrier, UniqueCarrier order by NumFlights desc LIMIT 10")
-output = spark.sql("select * from v")
-#output = spark.sql("SELECT AirlineName FROM AirlineCodes WHERE AirlineCode in (select Carrier from v)")
-#show the top row without truncation
-output.show(1, False)
-
-#which airline improved its performance
-#find the airline with the most improvement in delays
-#create a temporary view to hold the flight delay information aggregated by airline, then select the airline name from the Airlinecodes dataframe
-spark.sql("DROP VIEW IF EXISTS v1")
-spark.sql("DROP VIEW IF EXISTS v2")
-spark.sql("CREATE TEMPORARY VIEW v1 AS SELECT Carrier, count(*) as NumFlights from FlightTable WHERE (DepDelay>0 or ArrDelay>0) and Year=2016 group by Carrier order by NumFlights desc LIMIT 10")
-spark.sql("CREATE TEMPORARY VIEW v2 AS SELECT Carrier, count(*) as NumFlights from FlightTable WHERE (DepDelay>0 or ArrDelay>0) and Year=2017 group by Carrier order by NumFlights desc LIMIT 10")
-output = spark.sql("SELECT distinct ac.AirlineName, v1.Carrier, v1.NumFlights, v2.NumFlights from v1 INNER JOIN v2 ON v1.Carrier = v2.Carrier INNER JOIN AirlineCodes ac ON v2.Carrier = ac.AirlineCode WHERE v1.NumFlights > v2.NumFlights")
-#show the top row without truncation
-output.show(10, False)
-
-#display for visual analysis
-display(output)
 ```
 
 ## <a name="clean-up-resources"></a>清理资源
@@ -277,4 +284,3 @@ display(output)
 
 [!div class="nextstepaction"] 
 > [使用 Apache Hive on Azure HDInsight 提取、转换和加载数据](data-lake-storage-tutorial-extract-transform-load-hive.md)
-

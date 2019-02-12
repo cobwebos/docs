@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/11/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 6c498f51bffeadce7a7c0dba8491942f1d4d0248
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 09e1f99c7d0b56f5e2af893385dde19b8f358a19
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766089"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099133"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 更新
 
@@ -50,7 +50,7 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
 - **1809**：[KB 4481548 – Azure Stack 修补程序 1.1809.12.114](https://support.microsoft.com/help/4481548/)
 - **1811**：当前没有修补程序可用。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>必备组件
 
 > [!IMPORTANT]
 > 在安装 1811 更新期间，必须确保所有管理员门户实例都已关闭。 用户门户可以保持打开，但管理员门户必须关闭。
@@ -118,6 +118,18 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
 - 使用 Azure Stack 门户创建虚拟机时，现在默认会启用托管磁盘。 有关需要对托管磁盘执行哪些附加步骤才能避免 VM 创建失败，请参阅[已知问题](#known-issues-post-installation)部分。
 
 - 此版本为 Azure Stack 操作员引入了警报“修复”操作。 1811 中的某些警报在警报中提供一个“修复”按钮用于解决问题。 有关详细信息，请参阅[在 Azure Stack 中监视运行状况和警报](azure-stack-monitor-health.md)。
+
+- 对 Azure Stack 中的更新体验的更新。 更新增强功能包括： 
+    - 选项卡，拆分为更好地跟踪更新正在进行中的更新历史记录中的更新和已完成更新。
+    - 与新图标和当前和 OEM 版本，以及上一次的布局的 essentials 部分中的增强的状态可视化效果更新日期。
+    - **视图**链接的发行说明列以便用户可以直接文档特定更新，而不是泛型更新页面。
+    - **更新历史记录**选项卡用于确定为每个更新的运行的时间，以及增强的筛选功能。  
+    - 已连接的 azure Stack 缩放单位将仍会自动收到**可用更新**可用。
+    - 未连接的 azure Stack 缩放单位可以将更新导入就像之前。 
+    - 若要从门户下载的 JSON 日志过程中有任何更改。 Azure Stack 操作员会看到展开表示进度的步骤。
+
+    有关详细信息，请参阅[在 Azure Stack 中应用更新](azure-stack-apply-updates.md)。
+
 
 ## <a name="fixed-issues"></a>修复的问题
 

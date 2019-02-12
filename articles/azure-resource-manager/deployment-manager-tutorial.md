@@ -13,14 +13,14 @@ ms.devlang: na
 ms.date: 11/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8ec180b40e52c5702495a0124bf8ae33d2dc24a1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 66e913f6d461d2671bd217745a9d128e24c1a60c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727777"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820923"
 ---
-# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>教程：将 Azure 部署管理器与资源管理器模板配合使用（专用预览版）
+# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>教程：将 Azure 部署管理器与资源管理器模板配合使用（个人预览版）
 
 了解如何使用 [Azure 部署管理器](./deployment-manager-overview.md)跨多个区域部署应用程序。 若要使用部署管理器，需要创建两个模板：
 
@@ -216,7 +216,7 @@ variables 节定义资源的名称、“WUS 服务”和“EUS 服务”这两�
     - **azureResourceLocation**：如果你不熟悉 Azure 位置，请在本教程中使用 **centralus**。
     - **artifactSourceSASLocation**：输入用于存储要部署的服务单元模板和参数文件的根目录（Blob 容器）的 SAS URI。  请参阅[准备项目](#prepare-the-artifacts)。
     - **templateArtifactRoot**：除非你要更改项目的文件夹结构，否则请在本教程中使用 **templates/1.0.0.0**。
-    - **targetScriptionID**：输入自己的 Azure 订阅 ID。
+    - **targetScriptionID**：输入 Azure 订阅 ID。
 
 > [!IMPORTANT]
 > 拓扑模板和实施模板共享一些通用参数。 这些参数的值必须相同。 这些参数是：**namePrefix**、**azureResourceLocation** 和 **artifactSourceSASLocation**（在本教程中，这两个项目源共享同一个存储帐户）。
@@ -336,7 +336,7 @@ variables 节定义资源的名称。 请确保服务拓扑名称、服务名称
         -Name $rolloutName
     ```
 
-    在运行此 cmdlet 之前，必须先安装部署管理器 PowerShell cmdlet。 请参阅[先决条件](#prerequisite)。
+    在运行此 cmdlet 之前，必须先安装部署管理器 PowerShell cmdlet。 请参阅“先决条件”。
 
     以下示例显示正在运行状态：
     

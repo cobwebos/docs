@@ -11,22 +11,58 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2019
+ms.date: 02/11/2019
 ms.author: mabrigg
-ms.reviewer: wfayed
-ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 585fc4f1bbddb08d881414b581120b7bc14232ab
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.reviewer: justini
+ms.lastreviewed: 02/11/2019
+ms.openlocfilehash: 0c3f52c78bbfd3094324b74f3b66610fcebfa2f4
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729922"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099286"
 ---
 # <a name="apply-updates-in-azure-stack"></a>在 Azure Stack 中应用更新
 
 *适用于：Azure Stack 集成系统*
 
-可以使用管理门户中的“更新”磁贴为 Azure Stack 应用 Microsoft 或 OEM 更新包。 必须下载更新包，将包文件导入到 Azure Stack，然后安装更新包。
+可以使用管理门户中的“更新”磁贴为 Azure Stack 应用 Microsoft 或 OEM 更新包。
+
+如果您使用的是集成的系统版本 1807年或更早版本，必须下载更新包，包文件导入到 Azure Stack，然后安装更新包。 有关说明，请参阅[下载程序包更新 Azure Stack](#update-azure-stack-by-downloading-the-package)
+
+这些升级的说明适用于 Azure Stack 集成系统。 如果使用 Azure Stack 开发系统，必须下载最新版本的安装包。 有关说明，请参阅[安装 Azure Stack 开发工具包](.\asdk\asdk-install.md)
+
+## <a name="update-azure-stack"></a>更新 Azure Stack
+
+### <a name="select-and-apply-an-update-package"></a>选择并应用更新包
+
+1. 打开管理门户。
+
+2. 选择**仪表板**。 选择**更新**磁贴。
+
+    ![Azure Stack 更新可用](media/azure-stack-apply-updates/azure-stack-updates-1901-dashboard.png)
+
+3. 记下当前版本的 Azure Stack。 您可以更新到下一步的完整版本。 例如，如果您运行 Azure Stack 1811 下, 一个发布版本已 1901年。
+
+    ![Azure Stack 更新应用](media/azure-stack-apply-updates/azure-stack-updates-1901-updateavailable.png)
+
+4. 在更新列表中选择下一个可用版本。 可以选择**视图**发行版中的说明列来打开版本的发行说明主题，如果想要查看版本更改。
+
+5. 现在选择更新。 将启动更新。
+
+### <a name="review-update-history"></a>查看更新历史记录
+
+1. 打开管理门户。
+
+2. 选择**仪表板**。 选择**更新**磁贴。
+
+3. 选择**更新历史记录**。
+
+![Azure Stack 更新历史记录](media/azure-stack-apply-updates/azure-stack-update-history.PNG)
+
+## <a name="update-azure-stack-by-downloading-the-package"></a>下载程序包更新 Azure Stack
+
+如果您使用的是集成的系统版本 1807年或更早版本，必须下载更新包，包文件导入到 Azure Stack，然后安装更新包。
 
 ## <a name="download-the-update-package"></a>下载更新包
 

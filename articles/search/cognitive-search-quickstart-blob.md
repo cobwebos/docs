@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 50b2973f2b245cfb42ed7212e443fec1c66217cf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 191cff21cdaa6a4e94358ed0b9c63cd942f71a6e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015266"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564555"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>快速入门：使用技能和示例数据创建认知搜索管道
 
@@ -147,15 +147,19 @@ ms.locfileid: "54015266"
 
 在本快速入门中，向导能够很好地设置合理的默认值： 
 
-+ 默认名称是 azureblob-index。
++ 基于数据源类型，默认名称为 *azureblob-index*。 
+
++ 默认字段基于原始源数据字段 (`content`)，以及认知管道创建的输出字段（`people`、`organizations` 和 `locations`）。 默认数据类型从元数据和数据采样推断。
+
 + 默认密钥是 metadata_storage_path（此字段包含唯一值）。
-+ 默认数据类型和属性对全文搜索方案有效。
 
-考虑从 `content` 字段中清除 Retrievable。 在 Blob 中，此字段可运行至成千上万行。 可以想象，在搜索结果列表中以 JSON 形式查看内容量非常大的文件（如 Word 文档或 PowerPoint 幻灯片组）有多么困难。 
-
-由于已定义技能集，因此向导假设需要初始源数据字段，以及认知管道创建的输出字段。 为此，门户为 `content`、`people`、`organizations` 和 `locations` 添加了索引字段。 请注意，向导会自动对这些字段启用 Retrievable 和 Searchable。 Searchable 表示字段可搜索。 Retrievable 表示可以在结果中返回该字段。 
++ 这些字段的默认属性**可检索**且**可搜索**。 Searchable 表示字段可搜索。 Retrievable 表示可以在结果中返回该字段。 向导假设你希望这些字段可检索且可搜索，因为它们是通过技能集创建的。
 
   ![索引字段](media/cognitive-search-quickstart-blob/index-fields.png)
+
+请注意 `content` 字段旁边的 **Retrievable** 属性带有删除线和问号。 对于包含大量的文本的 Blob 文档，`content` 字段包含文件主体，因此可能包含数千行。 如果需要将文件内容传递到客户端代码，请确保 **Retrievable** 保持选定状态。 否则，如果提取的元素（`people`、`organizations` 和 `locations`）足以满足需要，请考虑在 `content` 中清除此属性。
+
+将某个字段标记为 **Retrievable** 并不意味着该字段一定会出现在搜索结果中。 可以使用 **$select** 查询参数指定要包含的字段，来精确控制搜索结果的构成。 对于包含大量文本的字段（例如 `content`），可以使用 **$select** 参数向应用程序的用户提供可管理的搜索结果，同时确保客户端代码可以通过 **Retrievable** 属性访问全部所需信息。
   
 继续转到下一页。
 

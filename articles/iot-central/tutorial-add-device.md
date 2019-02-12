@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: c3b8f4f8188a6a28cca8b77f169a00657b11dfc5
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 695050a46df4b208205ce394cc79db891803cfa4
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50154805"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731523"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>教程：将真实设备添加到 Azure IoT Central 应用程序
 
@@ -109,9 +109,11 @@ ms.locfileid: "50154805"
 
    在[此处](https://www.npmjs.com/package/dps-keygen)详细了解命令行工具。
 
-1. 下载并解压缩 (Windows) [GitHub](https://github.com/Azure/dps-keygen/tree/master/bin) 提供的 dps_cstr 工具
+1. 从 [GitHub] (https://github.com/Azure/dps-keygen/archive/master.zip) 下载并解压缩 (Windows) dps_cstr 工具
 
-    请确保选择与平台匹配的工具。 例如，在 Windows 上，dps_cstr.exe 和 dll 文件现在应该在文件夹中可用。 
+。
+
+    Make sure you choose the one that matches your platform. For example, on Windows the dps_cstr.exe and the dll files should be now available in your folder. 
 
 1. 应用程序中设备实例的连接字符串是根据 IoT Central 提供的设备信息生成的。
 

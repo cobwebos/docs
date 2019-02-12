@@ -1,33 +1,33 @@
 ---
-title: 教程：Azure Active Directory 与 CompetencyIQ 的集成 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 和 CompetencyIQ 之间配置单一登录。
+title: 教程：Azure Active Directory 与 Brandfolder 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 与 Brandfolder 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
-ms.assetid: e262bf7e-cc7d-4d0e-aea7-861f00d8837d
+ms.assetid: 47502cff-add3-442a-ae82-3eb266a12341
 ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/23/2019
+ms.date: 01/29/2019
 ms.author: jeedes
-ms.openlocfilehash: a9d260f05923985456a1f702ad5afc52d045211a
+ms.openlocfilehash: a6d768b9c5f0260d490c8fab95a4fb5913584f02
 ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562957"
+ms.locfileid: "55568830"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-competencyiq"></a>教程：Azure Active Directory 与 CompetencyIQ 的集成
+# <a name="tutorial-azure-active-directory-integration-with-brandfolder"></a>教程：Azure Active Directory 与 Brandfolder 的集成
 
-本教程介绍了如何将 CompetencyIQ 与 Azure Active Directory (Azure AD) 集成。
-将 CompetencyIQ 与 Azure AD 集成具有以下优势：
+本教程介绍如何将 Brandfolder 与 Azure Active Directory (Azure AD) 集成。
+将 Brandfolder 与 Azure AD 集成可提供以下优势：
 
-* 可在 Azure AD 中控制谁有权访问 CompetencyIQ。
-* 可让用户使用其 Azure AD 帐户自动登录到 CompetencyIQ（单一登录）。
+* 可以在 Azure AD 中控制谁有权访问 Brandfolder。
+* 可让用户使用其 Azure AD 帐户自动登录到 Brandfolder（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
@@ -35,22 +35,24 @@ ms.locfileid: "55562957"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 CompetencyIQ 的集成，需备齐以下项：
+若要配置 Azure AD 与 Brandfolder 的集成，需要准备好以下各项：
 
 * 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 已启用 CompetencyIQ 单一登录的订阅
+* 已启用 Brandfolder 单一登录的订阅
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* CompetencyIQ 支持 **SP** 发起的 SSO
+* Brandfolder 支持 **IDP** 发起的 SSO
 
-## <a name="adding-competencyiq-from-the-gallery"></a>从库中添加 CompetencyIQ
+* Brandfolder 支持**实时**用户预配
 
-若要配置 CompetencyIQ 与 Azure AD 的集成，需要从库中将 CompetencyIQ 添加到托管 SaaS 应用列表。
+## <a name="adding-brandfolder-from-the-gallery"></a>从库中添加 Brandfolder
 
-若要从库中添加 CompetencyIQ，请执行以下步骤：
+若要配置 Brandfolder 与 Azure AD 的集成，需要从库中将 Brandfolder 添加到托管 SaaS 应用列表。
+
+**若要从库中添加 Brandfolder，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -64,31 +66,31 @@ ms.locfileid: "55562957"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **CompetencyIQ**，在结果面板中选择“CompetencyIQ”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中键入 **Brandfolder**，在结果面板中选择“Brandfolder”，然后单击“添加”按钮添加该应用程序。
 
-     ![结果列表中的“CompetencyIQ”](common/search-new-app.png)
+     ![结果列表中的“Brandfolder”](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分，我们基于名为 **Britta Simon** 的测试用户来配置并测试 CompetencyIQ 的 Azure AD 单一登录。
-若要正常使用单一登录，需要在 Azure AD 用户与 CompetencyIQ 相关用户之间建立链接关系。
+在本部分，我们基于名为 **Britta Simon** 的测试用户来配置并测试 Brandfolder 的 Azure AD 单一登录。
+若要正常使用单一登录，需要在 Azure AD 用户与 Brandfolder 相关用户之间建立链接关系。
 
-若要配置和测试 CompetencyIQ 的 Azure AD 单一登录，需要完成以下构建基块：
+若要配置并测试 Brandfolder 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[配置 CompetencyIQ 单一登录](#configure-competencyiq-single-sign-on)** - 在应用程序端配置单一登录。
+2. **[配置 Brandfolder 单一登录](#configure-brandfolder-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 CompetencyIQ 测试用户](#create-competencyiq-test-user)** - 在 CompetencyIQ 中创建 Britta Simon 的对应用户，并将其关联到其在 Azure AD 中的表示形式。
+5. **[创建 Brandfolder 测试用户](#create-brandfolder-test-user)** - 在 Brandfolder 中创建 Britta Simon 的对应用户，并将其关联到其在 Azure AD 中的表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
-若要配置 CompetencyIQ 的 Azure AD 单一登录，请执行以下步骤：
+若要配置 Brandfolder 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“CompetencyIQ”应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Brandfolder”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -100,34 +102,24 @@ ms.locfileid: "55562957"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+4. 在“设置 SAML 单一登录”页上，执行以下步骤：
 
-    ![CompetencyIQ 域和 URL 单一登录信息](common/sp-identifier.png)
+    ![Brandfolder 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<customer>.competencyiq.com/`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://brandfolder.com/organizations/<ORG_SLUG>/saml/metadata`
 
-    b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://www.competencyiq.com/`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://brandfolder.com/organizations/<ORG_SLUG>/saml`
 
     > [!NOTE]
-    > “登录 URL”值不是实际值。 请使用实际的登录 URL 更新此值。 请联系 [CompetencyIQ 客户端支持团队](https://www.competencyiq.com/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Brandfolder 客户端支持团队](mailto:support@brandfolder.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
+5. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
-    ![证书下载链接](common/metadataxml.png)
+    ![证书下载链接](common/copy-metadataurl.png)
 
-6. 在“设置 CompetencyIQ”部分，根据要求复制相应的 URL。
+### <a name="configure-brandfolder-single-sign-on"></a>配置 Brandfolder 单一登录
 
-    ![复制配置 URL](common/copy-configuration-urls.png)
-
-    a. 登录 URL
-
-    b. Azure AD 标识符
-
-    c. 注销 URL
-
-### <a name="configure-competencyiq-single-sign-on"></a>配置 CompetencyIQ 单一登录
-
-若要在 **CompetencyIQ** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [CompetencyIQ 支持团队](https://www.competencyiq.com/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Brandfolder** 端配置单一登录，需要将“应用联合元数据 URL”发送给 [Brandfolder 支持团队](mailto:support@brandfolder.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -145,7 +137,7 @@ ms.locfileid: "55562957"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
@@ -156,15 +148,15 @@ ms.locfileid: "55562957"
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过授予 Britta Simon 访问 CompetencyIQ 的权限，允许其使用 Azure 单一登录。
+在本部分，我们通过授予 Britta Simon 访问 Brandfolder 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“CompetencyIQ”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Brandfolder”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“CompetencyIQ”。
+2. 在“应用程序”列表中，选择“Brandfolder”。
 
-    ![“应用程序”列表中的“CompetencyIQ”链接](common/all-applications.png)
+    ![“应用程序”列表中的“Brandfolder”链接](common/all-applications.png)
 
 3. 在左侧菜单中，选择“用户和组”。
 
@@ -180,15 +172,15 @@ ms.locfileid: "55562957"
 
 7. 在“添加分配”对话框中，单击“分配”按钮。
 
-### <a name="create-competencyiq-test-user"></a>创建 CompetencyIQ 测试用户
+### <a name="create-brandfolder-test-user"></a>创建 Brandfolder 测试用户
 
-在本部分，我们将在 CompetencyIQ 中创建名为 Britta Simon 的用户。 在  [CompetencyIQ 支持团队](https://www.competencyiq.com/)的配合下，将用户添加到 CompetencyIQ 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分，我们将在 Brandfolder 中创建名为 Britta Simon 的用户。 Brandfolder 支持默认已启用的**实时用户预配**。 此部分不存在任何操作项。 如果 Brandfolder 中尚不存在用户，身份验证后会创建一个新用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“CompetencyIQ”磁贴时，应会自动登录到设置了 SSO 的 CompetencyIQ。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Brandfolder”磁贴时，应会自动登录到设置了 SSO 的 Brandfolder。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

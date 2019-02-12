@@ -9,17 +9,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/18/2019
-ms.openlocfilehash: f96b2853b887836a94091dcba0ceaf6f8dd43d12
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/04/2019
+ms.openlocfilehash: 32d1be97405624fe929a9e9e1ff486f6a31200aa
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55229130"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732764"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-logins"></a>教程：使用 Azure AD 登录名实现 Azure SQL 数据库中托管实例的安全性
 
-Azure SQL 数据库托管实例几乎提供最新 SQL Server 本地（企业版）数据库引擎具备的所有安全功能：
+托管实例几乎提供最新 SQL Server 本地（企业版）数据库引擎具备的所有安全功能：
 
 - 在隔离的环境中限制访问
 - 使用需要标识的身份验证机制（Azure AD、SQL 身份验证）
@@ -38,7 +38,7 @@ Azure SQL 数据库托管实例几乎提供最新 SQL Server 本地（企业版�
 > - 了解安全功能，例如威胁防护、审核、数据掩码和加密
 
 > [!NOTE]
-> SQL 数据库托管实例的 Azure AD 登录名目前为**公共预览版**。
+> 托管实例的 Azure AD 登录名目前为**公共预览版**。
 
 有关详细信息，请参阅 [Azure SQL 数据库托管实例概述](sql-database-managed-instance-index.yml)和[功能](sql-database-managed-instance.md)文章。
 
@@ -48,15 +48,15 @@ Azure SQL 数据库托管实例几乎提供最新 SQL Server 本地（企业版�
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)
 - Azure SQL 数据库托管实例
-    - 遵循以下文章：[快速入门：创建 Azure SQL 数据库托管实例](sql-database-managed-instance-get-started.md)
-- 能够访问 Azure SQL 数据库托管实例，并且[为托管实例预配了 Azure AD 管理员](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)。 若要了解更多信息，请参阅以下文章：
-    - [将应用程序连接到 Azure SQL 数据库托管实例](sql-database-managed-instance-connect-app.md) 
-    - [Azure SQL 数据库托管实例连接体系结构](sql-database-managed-instance-connectivity-architecture.md)
+  - 遵循以下文章：[快速入门：创建 Azure SQL 数据库托管实例](sql-database-managed-instance-get-started.md)
+- 能够访问托管实例，并且[为托管实例预配了 Azure AD 管理员](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)。 若要了解更多信息，请参阅以下文章：
+    - [将应用程序连接到托管实例](sql-database-managed-instance-connect-app.md) 
+    - [托管实例连接体系结构](sql-database-managed-instance-connectivity-architecture.md)
     - [使用 SQL 配置和管理 Azure Active Directory 身份验证](sql-database-aad-authentication-configure.md)
 
 ## <a name="limiting-access-to-your-managed-instance"></a>限制对托管实例的访问
 
-只能通过专用 IP 地址访问托管实例。 在托管实例网络的外部，无法通过任何服务终结点连接到托管实例。 与在隔离的 SQL Server 本地环境中非常类似，应用程序或用户需要访问托管实例网络 (VNet) 才能建立连接。 有关详细信息，请参阅[将应用程序连接到 Azure SQL 数据库托管实例](sql-database-managed-instance-connect-app.md)。
+只能通过专用 IP 地址访问托管实例。 在托管实例网络的外部，无法通过任何服务终结点连接到托管实例。 与在隔离的 SQL Server 本地环境中非常类似，应用程序或用户需要访问托管实例网络 (VNet) 才能建立连接。 有关详细信息，请参阅[将应用程序连接到托管实例](sql-database-managed-instance-connect-app.md)。
 
 > [!NOTE] 
 > 由于只能在托管实例的 VNET 内部访问托管实例，因此 [SQL 数据库防火墙规则](sql-database-firewall-configure.md)不适用。 托管实例具有自身的[内置防火墙](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)。
@@ -65,8 +65,8 @@ Azure SQL 数据库托管实例几乎提供最新 SQL Server 本地（企业版�
 
 必须由充当 `sysadmin` 的标准 SQL Server 帐户（非 Azure AD）创建第一个 Azure AD 登录名。 有关如何连接到托管实例的示例，请参阅以下文章：
 
-- [快速入门：将 Azure VM 配置为连接到 Azure SQL 数据库托管实例](sql-database-managed-instance-configure-vm.md)
-- [快速入门：配置从本地到 Azure SQL 数据库托管实例的点到站点连接](sql-database-managed-instance-configure-p2s.md)
+- [快速入门：将 Azure VM 配置为连接到托管实例](sql-database-managed-instance-configure-vm.md)
+- [快速入门：配置从本地到托管实例的点到站点连接](sql-database-managed-instance-configure-p2s.md)
 
 > [!IMPORTANT]
 > 用于设置托管实例的 Azure AD 管理员不可用于在托管实例中创建 Azure AD 登录名。 必须使用充当 `sysadmin` 的 SQL Server 帐户创建第一个 Azure AD 登录名。 Azure AD 登录名的正式版推出后，即会去除这种暂时性限制。 如果尝试使用 Azure AD 管理员帐户创建登录名，将会看到以下错误：`Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
@@ -146,7 +146,7 @@ Azure SQL 数据库托管实例几乎提供最新 SQL Server 本地（企业版�
 
 创建 Azure AD 登录名并向其提供 `sysadmin` 特权后，该登录名可以结合 **CREATE LOGIN** 使用 **FROM EXTERNAL PROVIDER** 子句创建其他登录名。
 
-1. 在 SQL Server Management Studio 中使用 Azure AD 登录名连接到托管实例服务器。 输入托管实例服务器名称。 若要在 SSMS 中进行身份验证，可在使用 Azure AD 帐户登录时从三个选项中选择：
+1. 在 SQL Server Management Studio 中使用 Azure AD 登录名连接到托管实例。 输入托管实例主机名。 若要在 SSMS 中进行身份验证，可在使用 Azure AD 帐户登录时从三个选项中选择：
 
     - Active Directory - 支持 MFA 的通用方法
     - Active Directory - 密码
@@ -450,7 +450,7 @@ Azure SQL 数据库托管实例几乎提供最新 SQL Server 本地（企业版�
 
 ### <a name="managed-instance-capabilities"></a>托管实例功能
 
-有关 Azure SQL 数据库托管实例功能的完整概述，请参阅：
+有关托管实例功能的完整概述，请参阅：
 
 > [!div class="nextstepaction"]
 > [托管实例功能](sql-database-managed-instance.md)
