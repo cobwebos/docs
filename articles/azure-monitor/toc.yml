@@ -5,7 +5,7 @@ items:
   items:
   - name: 说明是 Azure Monitor？
     href: overview.md
-  - name: 品牌更改
+  - name: 术语更改
     href: azure-monitor-rebrand.md
 - name: 快速入门
   items:
@@ -64,6 +64,12 @@ items:
     href: azure-management.md
   - name: 持续监视
     href: continuous-monitoring.md
+  - name: 分析日志数据
+    items:
+    - name: 日志查询
+      href: log-query/log-query-overview.md
+    - name: 日志查询门户
+      href: log-query/portals.md
   - name: 监视数据
     items:
     - name: 指标和日志
@@ -106,18 +112,6 @@ items:
       href: insights/vminsights-overview.md
     - name: 监视解决方案
       href: insights/solutions-inventory.md
-  - name: 分析数据
-    items:
-    - name: Log Analytics
-      href: log-query/log-query-overview.md
-    - name: 日志查询门户
-      href: log-query/portals.md
-    - name: OMS 门户转换
-      items:
-      - name: 概述
-        href: platform/oms-portal-transition.md
-      - name: 常见问题
-        href: platform/oms-portal-faq.md
   - name: 响应事件
     items:
     - name: 警报
@@ -138,6 +132,12 @@ items:
     href: visualizations.md
   - name: 合作伙伴集成
     href: platform/partners.md
+  - name: OMS 门户转换
+    items:
+    - name: 概述
+      href: platform/oms-portal-transition.md
+    - name: 常见问题
+      href: platform/oms-portal-faq.md
   - name: 常见问题解答
     items:
     - name: Log Analytics
@@ -1023,9 +1023,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: 代码示例
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 96f79397b16212fe0897e0d03f57ffb7248118c8
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: b1d837248f84eb3050788924f4bb0e0077845abe
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767115"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993565"

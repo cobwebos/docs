@@ -55,22 +55,55 @@
 ### [“审核历史记录”页](./cloud-partner-portal/portal-tour/cpp-history-page.md)
 ### [“见解”页](./cloud-partner-portal/portal-tour/cpp-insights-page.md)
 
+
 ## 门户管理
 ### [开发人员中心帐户注册](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
-### [专用 SKU](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)
-### [SEO 指南](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
 ### [管理发布者个人资料](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
 ### [管理用户](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
+
+
+## 业务管理
+### [SEO 指南](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
 ### [GDPR 符合性](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
+### [专用 SKU](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)
+<!--  Under development: 
+### Pricing considerations
+#### Simplified currency pricing
+#### Information on taxes and price
+#### Export-import pricing
+-->
+
+### 管理潜在客户
+#### [配置潜在客户](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)
+#### [Azure 表](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table.md)
+#### [Dynamics](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics.md)
+#### [HTTPS 终结点](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https.md)
+#### [Marketo](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo.md)
+#### [Salesforce](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md)
+
+### Seller Insights
+#### [入门](./cloud-partner-portal-orig/si-getting-started.md)
+#### [新增功能](./cloud-partner-portal-orig/si-changes.md)
+#### [Web Analytics](./cloud-partner-portal-orig/web-analytics.md)
+#### [定义](./cloud-partner-portal-orig/si-insights-definitions-v4.md)
+#### [见解常见问题解答](./cloud-partner-portal-orig/si-faqs.md)
+
 
 ## [市场产品/服务](./cloud-partner-portal/cpp-marketplace-offers.md)
-
 ### [管理产品/服务](./cloud-partner-portal/manage-offers/cpp-manage-offers.md)
 #### [创建产品/服务](./cloud-partner-portal/manage-offers/cpp-create-offer.md)
 #### [发布产品/服务](./cloud-partner-portal/manage-offers/cpp-publish-offer.md) 
 #### [查看产品/服务状态](./cloud-partner-portal/manage-offers/cpp-view-status-offer.md)
 #### [更新产品/服务](./cloud-partner-portal/manage-offers/cpp-update-offer.md)
 #### [删除产品/服务](./cloud-partner-portal/manage-offers/cpp-delete-offer.md) 
+
+### 体验版
+#### [什么是体验版？](./cloud-partner-portal-orig/what-is-test-drive.md)
+#### [Azure 资源管理器体验版](./cloud-partner-portal-orig/azure-resource-manager-test-drive.md)
+#### [托管的体验版](./cloud-partner-portal-orig/hosted-test-drive.md)
+#### [逻辑应用体验版](./cloud-partner-portal-orig/logic-app-test-drive.md)
+#### [体验版转换示例](./cloud-partner-portal-orig/transforming-examples-for-test-drive.md)
+#### [市场营销和最佳做法](./cloud-partner-portal-orig/marketing-and-best-practices.md)
 
 ### [Azure 应用程序产品/服务](./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md)
 #### [先决条件](./cloud-partner-portal/azure-applications/cpp-prerequisites.md)
@@ -82,6 +115,7 @@
 ##### [“支持”选项卡](./cloud-partner-portal/azure-applications/cpp-support-tab.md)
 #### [创建技术资产](./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md)
 #### [发布 Azure 应用程序套餐](./cloud-partner-portal/azure-applications/cpp-publish-offer.md)
+#### [处理评审反馈](./cloud-partner-portal/azure-applications/cpp-handling-review-feedback.md)
 #### [更新现有产品/服务](./cloud-partner-portal/azure-applications/cpp-update-existing-offer.md)
 
 ### [咨询服务](./cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md)
@@ -195,29 +229,6 @@
 #### [发布 VM 产品/服务](./cloud-partner-portal/virtual-machine/cpp-publish-offer.md)
 #### [更新现有产品/服务](./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md)
 
-
-## 体验版
-### [什么是体验版？](./cloud-partner-portal-orig/what-is-test-drive.md)
-### [Azure 资源管理器体验版](./cloud-partner-portal-orig/azure-resource-manager-test-drive.md)
-### [托管的体验版](./cloud-partner-portal-orig/hosted-test-drive.md)
-### [逻辑应用体验版](./cloud-partner-portal-orig/logic-app-test-drive.md)
-### [体验版转换示例](./cloud-partner-portal-orig/transforming-examples-for-test-drive.md)
-### [市场营销和最佳做法](./cloud-partner-portal-orig/marketing-and-best-practices.md)
-
-## 管理潜在客户
-### [配置潜在客户](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)
-### [Azure 表](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table.md)
-### [Dynamics](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics.md)
-### [HTTPS 终结点](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https.md)
-### [Marketo](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo.md)
-### [Salesforce](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md)
-
-## Seller Insights
-### [入门](./cloud-partner-portal-orig/si-getting-started.md)
-### [新增功能](./cloud-partner-portal-orig/si-changes.md)
-### [Web Analytics](./cloud-partner-portal-orig/web-analytics.md)
-### [定义](./cloud-partner-portal-orig/si-insights-definitions-v4.md)
-### [见解常见问题解答](./cloud-partner-portal-orig/si-faqs.md)
 
 ## API 参考
 ### [概述](./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md)
