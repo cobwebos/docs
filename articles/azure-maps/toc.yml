@@ -31,6 +31,8 @@ items:
     href: azure-maps-event-grid-integration.md
   - name: 选择适当的定价层
     href: choose-pricing-tier.md
+  - name: 使用 Azure Maps 进行身份验证
+    href: azure-maps-authentication.md
   - name: 覆盖率
     items:
     - name: 地理编码覆盖区域
@@ -49,8 +51,10 @@ items:
   items:
   - name: 管理 Maps 帐户
     items:
-    - name: 管理帐户和密钥
+    - name: 管理帐户
       href: how-to-manage-account-keys.md
+    - name: 管理身份验证
+      href: how-to-manage-authentication.md
     - name: 管理定价层
       href: how-to-manage-pricing-tier.md
     - name: 查看使用情况指标
@@ -59,6 +63,8 @@ items:
     items:
     - name: 搜索地址
       href: how-to-search-for-address.md
+    - name: 在静态地图上呈现自定义数据
+      href: how-to-render-custom-data.md
   - name: 创建 JavaScript 地图
     items:
     - name: 使用地图控件
@@ -99,7 +105,11 @@ items:
       href: map-events.md
     - name: 可访问的地图应用程序
       href: map-accessibility.md
-- name: 引用
+  - name: 创建 Android 地图
+    items:
+    - name: 如何使用 Android 地图控件
+      href: how-to-use-android-map-control-library.md
+- name: 参考
   items:
   - name: API 和参数扩展
     items:
@@ -183,9 +193,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: 视频
     href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
-ms.openlocfilehash: 0fb1d864dd18a781d0eeba4c8dea610e3ccb07f2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6a657596cb266db20404d7f2ec1074834d181772
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999447"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111041"

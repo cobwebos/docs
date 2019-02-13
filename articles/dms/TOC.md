@@ -15,6 +15,7 @@
 ## [以联机方式将 MySQL 迁移到用于 MySQL 的 Azure DB](tutorial-mysql-azure-mysql-online.md)
 ## [以联机方式将 PostgreSQL 迁移到用于 PostgreSQL 的 Azure DB](tutorial-postgresql-azure-postgresql-online.md)
 ## [将 MongoDB 脱机迁移到 Azure Cosmos DB Mongo API](tutorial-mongodb-cosmos-db.md)
+## [将 MongoDB 联机迁移到 Azure Cosmos DB Mongo API](tutorial-mongodb-cosmos-db-online.md)
 
 # 操作指南
 ## [使用 PowerShell 将 SQL Server 迁移到 Azure SQL DB](howto-sql-server-to-azure-sql-powershell.md)

@@ -274,7 +274,7 @@ items:
           href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
         - name: 使用 Spring Data MongoDB API
           href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
-    - name: 引用
+    - name: 参考
       items:
       - name: .NET
         href: sql-api-sdk-dotnet.md
@@ -442,7 +442,7 @@ items:
         href: table-storage-how-to-use-ruby.md
       - name: F#
         href: https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
-    - name: 引用
+    - name: 参考
       items:
       - name: .NET
         href: table-sdk-dotnet.md
@@ -463,8 +463,12 @@ items:
     href: how-to-manage-database-account.md
   - name: 全球分布
     items:
+    - name: 配置多主数据库
+      href: how-to-multi-master.md
     - name: 管理一致性级别
       href: how-to-manage-consistency.md
+    - name: 实现自定义同步
+      href: how-to-custom-synchronization.md
     - name: 配置冲突解决策略
       href: how-to-manage-conflicts.md
   - name: 预配的吞吐量
@@ -595,10 +599,10 @@ items:
     items:
     - name: 关于批量执行程序库
       href: bulk-executor-overview.md
-- name: 疑难解答指南
-  items:
-  - name: 排查 Java Async SDK 问题
-    href: troubleshoot-java-async-sdk.md
+  - name: 故障排除
+    items:
+    - name: 排查 Java Async SDK 问题
+      href: troubleshoot-java-async-sdk.md
 - name: 资源
   items:
   - name: 利用 Microsoft Learn 掌握技能
@@ -627,9 +631,9 @@ items:
       href: use-cases.md
     - name: 社交媒体应用
       href: social-media-apps.md
-ms.openlocfilehash: da87cea310f5bda952cfa014d7b45e23e555efcf
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 72a6dced29f09379453d0e33131f78e875b2c9f2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746177"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163490"

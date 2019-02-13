@@ -168,6 +168,8 @@ items:
       href: kubernetes-service-principal.md
     - name: 限制对群集配置文件的访问
       href: control-kubeconfig-access.md
+    - name: 使用网络策略保护 Pod 流量（预览版）
+      href: use-network-policies.md
     - name: 更新群集服务主体凭据
       href: update-credentials.md
     - name: 使用 ACR 进行身份验证
@@ -280,7 +282,7 @@ items:
       href: kube-advisor-tool.md
     - name: SSH 节点访问权限
       href: ssh.md
-- name: 引用
+- name: 参考
   items:
   - name: Azure CLI
     href: /cli/azure/aks
@@ -316,9 +318,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: 常见问题解答
     href: faq.md
-ms.openlocfilehash: c657d805188d5c5760e65290437414ab98f83a05
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 6f5b944ba1ce02d05478fa97b0376c0f42fa98e2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768743"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206525"
