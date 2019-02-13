@@ -12,23 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: knithinc
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 44f12c72716e98e2f28796359467685e0af579dd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 42b67ae9b715670f1a0c6e0fed004487a52817d3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238240"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206458"
 ---
 # <a name="connect-to-the-asdk"></a>连接到 ASDK
 
 若要管理资源，必须先连接到 Azure Stack 开发工具包 (ASDK)。 本文介绍使用以下连接选项连接到 ASDK 所要执行的步骤：
 
 * [远程桌面连接 (RDP)](#connect-with-rdp)。 使用远程桌面连接进行连接时，单个用户可以快速连接到开发工具包。
-* [虚拟专用网络 (VPN)](#connect-with-vpn)。 使用 VPN 进行连接时，多个用户可以同时从 Azure Stack 基础结构外部的客户端进行连接。 VPN 连接需要一些设置。
+* [虚拟专用网络 (VPN)](#connect-with-vpn)。 通过使用 VPN 连接时，多个用户可以同时连接到 Azure Stack 门户从 Azure Stack 基础结构外部的客户端。 VPN 连接需要一些设置。
 
 <a name="connect-with-rdp"></a>
 ## <a name="connect-to-azure-stack-using-rdp"></a>使用 RDP 连接到 Azure Stack

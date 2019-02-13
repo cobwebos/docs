@@ -12,22 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 9dc023eedf0ddca4e760d9d066b019b75597fb69
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3fd91ef17415e2c6ebb735fdedb098f8aa319d8c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246477"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207409"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>在发生灾难性数据丢失后进行恢复
 
 *适用于：Azure Stack 集成系统。*
 
-Azure Stack 在数据中心内运行 Azure 服务。 运行 Azure Stack 的环境可以小至包含安装在单个机架中的四个节点。 同时，Azure 也可以在 40 多个地区中的多个数据中心内运行，并且每个地区中可以有多个区域。 用户资源可以跨多个服务器、机架、数据中心和地区。 使用 Azure Stack，当前只能将整个云部署到单个机架。 这会导致你的云有在数据中心内发生灾难性事件的风险，以及由于重大产品 bug 而发生故障的风险。 当灾难发生时，Azure Stack 实例会进入脱机状态。 可能无法恢复所有数据。
+在你的数据中心中运行 Azure 服务并可在环境最小可为安装在单个机架中的四个节点上运行的 azure Stack。 同时，Azure 也可以在 40 多个地区中的多个数据中心内运行，并且每个地区中可以有多个区域。 用户资源可以跨多个服务器、机架、数据中心和地区。 使用 Azure Stack，当前只能将整个云部署到单个机架。 这会导致你的云有在数据中心内发生灾难性事件的风险，以及由于重大产品 bug 而发生故障的风险。 当灾难发生时，Azure Stack 实例会进入脱机状态。 可能无法恢复所有数据。
 
 根据数据丢失的根本原因，你可能需要修复单个基础结构服务或还原整个 Azure Stack 实例。 你甚至可能需要还原到同一位置或其他位置中的其他硬件。
 

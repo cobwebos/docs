@@ -12,23 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: d35d3bb32f9afabb0e2b02f0d93fc60e0121e9ce
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4c9c4bce0b63bd6d45522e2e069d1ae884916e09
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247640"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172393"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>在 Azure Stack 中添加更多的缩放单元节点
 
-Azure Stack 操作员可以通过添加更多的物理计算机来提高现有缩放单元的总容量。 物理计算机也称为缩放单元节点。 添加的每个新缩放单元节点在 CPU 类型、内存以及磁盘数目和大小方面必须与缩放单元中现有的节点同源。
-
-> [!NOTE]  
-必须运行 Azure Stack 1807 或更高版本才能添加更多的缩放单元节点。
+Azure Stack 操作员可以通过添加更多的物理计算机来提高现有缩放单元的总容量。 物理计算机也称为缩放单元节点。 您将添加每个新的缩放单位节点必须是同类中 CPU 类型、 内存和磁盘数量和大小的节点的缩放单位中已存在。
 
 若要添加某个缩放单元节点，请在 Azure Stack 中操作并运行硬件设备制造商 (OEM) 提供的工具。 OEM 工具在硬件生命周期主机 (HLH) 上运行，目的是确保新的物理计算机与现有节点的固件级别匹配。
 

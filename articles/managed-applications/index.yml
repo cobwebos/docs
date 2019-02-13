@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 353616141e37e8024695fad81a16c9c2f3b82625
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107338"
 documentType: LandingData
 title: Azure 托管应用程序文档
 metadata:
@@ -13,12 +19,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/25/2017
   ms.author: tomfitz
-  ms.openlocfilehash: 85f4d5d37dabfa5a8781a4f9ed0fb52d7c6e0297
-  ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
-  ms.translationtype: HT
-  ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/12/2018
-  ms.locfileid: "27779561"
 abstract:
   description: 使用 Azure 托管应用程序可为内部和外部客户提供云解决方案。 你需要为解决方案定义基础结构，并为正在进行的解决方案管理定义条款。 解决方案的计费通过 Azure 计费来处理。
 sections:
@@ -36,7 +36,7 @@ sections:
 - title: 分步教程
   items:
   - type: paragraph
-    text: 了解如何开发托管应用程序并通过 Azure Marketplace 提供这些应用程序。
+    text: 了解如何开发托管应用程序并通过 Azure 市场提供这些应用程序。
   - type: list
     style: ordered
     items:
@@ -49,7 +49,7 @@ sections:
     className: cardsD
     items:
     - title: 命令行
-      html: <p><a href="/cli/azure/managedapp">Azure CLI</a></p><p><a href="/powershell/module/azurerm.resources">PowerShell</a></p>
+      html: <p><a href="/cli/azure/managedapp">Azure CLI</a></p><p><a href="/powershell/module/az.resources">PowerShell</a></p>
     - title: REST API
       html: <p><a href="/rest/api/resources/">REST</a></p>
     - title: 用户界面

@@ -10,12 +10,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 9a209aaf730b356c8c102eab7a8832ce670204cc
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: fee5db2cde4e4056a8cb1fca80e09511d0ca0b53
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977741"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117267"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack 数据中心集成 - 发布终结点
 
@@ -66,7 +66,7 @@ Azure Stack 为其基础结构角色设置虚拟 IP 地址 (VIP)。 这些 VIP �
 Azure Stack 仅支持透明代理服务器。 如果部署中的透明代理上行链接到传统的代理服务器，则必须允许以下端口和 URL，以便能够进行出站通信：
 
 > [!Note]  
-> Azure Stack 不支持使用 Express Route 访问下表中列出的 Azure 服务。
+> Azure Stack 不支持使用 ExpressRoute 访问下表中列出的 Azure 服务。
 
 |目的|目标网址|协议|端口|源网络|
 |---------|---------|---------|---------|---------|
@@ -75,7 +75,7 @@ Azure Stack 仅支持透明代理服务器。 如果部署中的透明代理上�
 |修补程序和更新|https://&#42;.azureedge.net|HTTPS|443|公共 VIP 的/27|
 |注册|https://management.azure.com|HTTPS|443|公共 VIP 的/27|
 |使用情况|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.net |HTTPS|443|公共 VIP 的/27|
-|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*.updates.microsoft.com<br>*.download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>https://www.microsoft.com/pkiops/crl<br>https://www.microsoft.com/pkiops/certs<br>https://crl.microsoft.com/pki/crl/products<br>https://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|公共 VIP 的/27<br>公共基础结构网络|
+|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*.updates.microsoft.com<br>*.download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>`https://www.microsoft.com/pkiops/crl`<br>`https://www.microsoft.com/pkiops/certs`<br>`https://crl.microsoft.com/pki/crl/products`<br>`https://www.microsoft.com/pki/certs`<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|公共 VIP 的/27<br>公共基础结构网络|
 |NTP|（为部署提供的 NTP 服务器的 IP）|UDP|123|公共 VIP 的/27|
 |DNS|（为部署提供的 DNS 服务器的 IP）|TCP<br>UDP|53|公共 VIP 的/27|
 |CRL|（证书上的 CRL 分发点下的 URL）|HTTP|80|公共 VIP 的/27|
