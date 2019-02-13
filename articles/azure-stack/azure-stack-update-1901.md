@@ -16,12 +16,12 @@ ms.date: 02/11/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 0865227a05d5cb25a44114fc053f61b8f70ffb94
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 616854e89a95eb83508e30099a663f0017e63784
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100085"
+ms.locfileid: "56115702"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 更新
 
@@ -89,7 +89,7 @@ Azure Stack 修补程序都只适用于 Azure Stack 集成系统;不要尝试在
          重大更改：备份更改为基于证书的加密模式。 对对称密钥的支持已弃用。  
    * **Azs.Fabric.Admin Module**  
          `Get-AzsInfrastructureVolume` 已弃用。 使用新 cmdlet `Get-AzsVolume`。  
-         `Get-AzsStorageSystem` 已弃用。  使用新的新 cmdlet `Get-AzsStorageSubSystem`。  
+         `Get-AzsStorageSystem` 已弃用。  使用新 cmdlet `Get-AzsStorageSubSystem`。  
          `Get-AzsStoragePool` 已弃用。 `StorageSubSystem`对象包含容量属性。  
    * **Azs.Compute.Admin 模块**  
          Bug 修复- `Add-AzsPlatformImage`， `Get-AzsPlatformImage`:调用`ConvertTo-PlatformImageObject`仅在成功的路径中。  
@@ -134,7 +134,7 @@ Azure Stack 修补程序都只适用于 Azure Stack 集成系统;不要尝试在
 - 修复了问题，设置下的托管磁盘配额值时[计算配额类型](azure-stack-quota-types.md#compute-quota-types)为 0，它相当于 GiB 的默认值。 零个配额值现在是需要遵守。
 
 <!-- 2724873 - IS --> 
-- 修复了问题时使用的 PowerShell cmdlet**开始 AzsScaleUnitNode**或**停止 AzsScaleunitNode**来管理缩放单位，首次尝试启动或停止的缩放单位可能会失败。
+- 修复了问题时使用的 PowerShell cmdlet**开始 AzsScaleUnitNode**或**停止 AzsScaleUnitNode**来管理缩放单位，首次尝试启动或停止的缩放单位可能会失败。
 
 <!-- 2724961- IS ASDK --> 
 - 修复了在其中你注册的问题**Microsoft.Insight**订阅设置中的资源提供程序和创建 Windows VM 与来宾 OS 诊断已启用，但不是显示 VM 概述页中的 CPU 百分比图表度量值数据。 数据现在显示正确。

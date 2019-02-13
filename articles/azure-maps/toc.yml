@@ -21,10 +21,14 @@ items:
     href: tutorial-prioritized-routes.md
   - name: 4 - 创建商店定位器
     href: tutorial-create-store-locator.md
+  - name: 5 - 设置地理围栏
+    href: tutorial-geofence.md
 - name: 概念
   items:
   - name: 缩放级别和磁贴网格
     href: zoom-levels-and-tile-grid.md
+  - name: Azure Maps 事件网格集成
+    href: azure-maps-event-grid-integration.md
   - name: 选择适当的定价层
     href: choose-pricing-tier.md
   - name: 覆盖率
@@ -103,6 +107,8 @@ items:
       href: consumption-model.md
     - name: 扩展 GeoJSON 格式
       href: extend-geojson.md
+    - name: 地理围栏 GEOJSON 格式
+      href: geofence-geojson.md
     - name: 支持的搜索类别
       href: supported-search-categories.md
   - name: REST
@@ -177,9 +183,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: 视频
     href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
-ms.openlocfilehash: ae2a50b68465bae422b27f1eaa6b5bf0fed10971
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 0fb1d864dd18a781d0eeba4c8dea610e3ccb07f2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199879"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999447"

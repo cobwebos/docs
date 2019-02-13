@@ -1,5 +1,5 @@
 items:
-- name: SQL DB 文档
+- name: SQL 数据库文档
   href: index.yml
 - name: SQL 数据库服务
   items:
@@ -67,23 +67,23 @@ items:
   expanded: true
 - name: 教程
   items:
-  - name: 设计 Azure SQL 数据库
+  - name: 在 SQL 数据库中设计数据库
     items:
     - name: 使用 SSMS 设计数据库
       href: sql-database-design-first-database.md
     - name: 使用 .NET 设计数据库
       href: sql-database-design-first-database-csharp.md
-  - name: 迁移到 Azure SQL 数据库
+  - name: 迁移到 SQL 数据库
     items:
     - name: 使用 DMS 迁移到单一/共用数据库
       href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
     - name: 使用 DMS 迁移到托管实例
       href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
-  - name: Azure SQL 数据库中的安全性
+  - name: SQL 数据库中的安全性
     items:
-    - name: 单一数据库安全性
+    - name: 单一数据库和共用数据库安全性
       href: sql-database-security-tutorial.md
-    - name: 使用 Azure AD 登录名实现托管实例安全性
+    - name: 托管实例安全性
       href: sql-database-managed-instance-aad-security-tutorial.md
   - name: 实现地理分散的数据库
     href: sql-database-implement-geo-distributed-database.md
@@ -104,10 +104,10 @@ items:
   - name: 购买模型
     items:
     - name: 概述
-      href: sql-database-service-tiers.md
+      href: sql-database-purchase-models.md
     - name: 基于 vCore 的模型
       href: sql-database-service-tiers-vcore.md
-    - name: DTU 模型
+    - name: DTU 服务层
       href: sql-database-service-tiers-dtu.md
     - name: 为预留容量预付费
       href: sql-database-reserved-capacity.md
@@ -351,8 +351,8 @@ items:
     items:
     - name: 概述
       href: sql-database-howto-single-database.md
-    - name: 迁移到 SQL 数据库
-      href: sql-database-cloud-migrate.md
+    - name: 迁移到单一/共用数据库
+      href: sql-database-single-database-migrate.md
     - name: 在迁移后管理 SQL 数据库
       href: sql-database-manage-after-migration.md
     - name: 配置复制
@@ -405,7 +405,7 @@ items:
         href: sql-database-elastic-scale-add-a-shard.md
       - name: 解决分片映射问题
         href: sql-database-elastic-database-recovery-manager.md
-      - name: 迁移分片 DB
+      - name: 迁移分片数据库
         href: sql-database-elastic-convert-to-use-elastic-tools.md
       - name: 创建计数器
         href: sql-database-elastic-database-perf-counters.md
@@ -421,7 +421,7 @@ items:
         href: sql-database-elastic-query-horizontal-partitioning.md
       - name: 在具有不同架构的表中进行查询
         href: sql-database-elastic-query-vertical-partitioning.md
-    - name: 弹性数据库作业
+    - name: 弹性作业
       items:
       - name: 创建和管理 (PowerShell)
         href: elastic-jobs-powershell.md
@@ -459,11 +459,11 @@ items:
       href: sql-database-managed-instance-connect-app.md
   - name: 加载和移动数据
     items:
-    - name: 在 Azure 内复制 DB
+    - name: 在 Azure 中复制数据库
       href: sql-database-copy.md
-    - name: 从 BACPAC 导入 DB
+    - name: 从 BACPAC 文件导入数据库
       href: sql-database-import.md
-    - name: 将 DB 导出到 BACPAC
+    - name: 将数据库导出到 BACPAC 文件
       href: sql-database-export.md
     - name: 数据同步
       items:
@@ -605,9 +605,9 @@ items:
             href: saas-tenancy-cross-tenant-reporting.md
           - name: 租户分析
             items:
-            - name: 使用 SQL DB
+            - name: 使用 SQL 数据库
               href: saas-tenancy-tenant-analytics.md
-            - name: 使用 SQL DW
+            - name: 使用 SQL 数据仓库
               href: saas-tenancy-tenant-analytics-adf.md
         - name: 使用异地还原进行灾难恢复
           href: saas-dbpertenant-dr-geo-restore.md
@@ -714,9 +714,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: 卸载弹性作业（已弃用）
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 9b11a1bd8cc68aabc8881636d5fcdfe5cbaec034
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: bf8a32ede6ce782bc0ff5ac58cd12ba70283289e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960541"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100034"

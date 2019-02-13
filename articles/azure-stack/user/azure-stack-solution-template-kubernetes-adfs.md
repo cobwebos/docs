@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 02/11/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: a197a366d70958859eed47a9d66606adf80344e4
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.lastreviewed: 02/11/2019
+ms.openlocfilehash: c2ef0d34897171e04d0982405909183634ebb696
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891266"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115396"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>将 Kubernetes 部署到 Azure Stack 使用 Active Directory 联合身份验证服务
 
@@ -43,13 +43,19 @@ ms.locfileid: "55891266"
 
     此群集不能部署到 Azure Stack **管理员**订阅。 必须使用**用户**订阅。 
 
-1. 如果您没有在 marketplace 中的 Kubernetes 群集，请与 Azure Stack 管理员联系。
+1. 在 Azure Stack 订阅中需要密钥保管库服务。
+
+1. 在 marketplace 中会用到 Kubernetes 群集。 
+
+如果缺少该密钥保管库服务和 Kubernetes 群集 marketplace 项，请与 Azure Stack 管理员联系。
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
 您需要使用 Azure Stack 管理员可以使用 AD FS 作为标识解决方案时设置服务主体。 服务主体允许应用程序访问的 Azure Stack 资源。
 
-1. Azure Stack 管理员向你提供一个证书和服务主体的信息。 此信息应如下所示：
+1. Azure Stack 管理员向你提供一个证书和服务主体的信息。
+
+    - 服务主体信息应如下所示：
 
     ```Text  
         ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
@@ -60,9 +66,11 @@ ms.locfileid: "55891266"
         RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
     ```
 
+    - 你的证书将具有扩展名的文件`.pfx`。 你将以机密形式存储在密钥保管库中的证书。
+
 2. 将新的服务主体作为参与者角色分配给你的订阅。 有关说明，请参阅[将角色分配](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals)。
 
-3. 创建密钥保管库用于存储部署的证书。
+3. 创建密钥保管库用于存储部署的证书。 使用以下 PowerShell 脚本而不是在门户。
 
     - 需要具有以下几部分信息：
 
@@ -70,12 +78,12 @@ ms.locfileid: "55891266"
         | ---   | ---         |
         | Azure 资源管理器终结点 | Microsoft Azure 资源管理器是一种管理框架，允许管理员部署、 管理和监视 Azure 资源。 Azure 资源管理器可以通过单个操作以组任务而不是单个任务的形式处理这些任务。<br>在 Azure Stack 开发工具包 (ASDK) 的终结点是： `https://management.local.azurestack.external/`<br>集成系统中的终结点是： `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
         | 你的订阅 ID | [订阅 ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) 用于访问 Azure Stack 中的套餐。 |
-        | 您的用户名称 | 您的用户名称。 |
+        | 您的用户名称 | 使用只是您的用户名称而不是你的域名和用户名，如`username`而不是`azurestack\username`。 |
         | 资源组名称  | 新的资源组或选择现有资源组的名称。 资源名称必须为字母数字，且必须小写。 |
         | 密钥保管库名称 | 在保管库的名称。<br> 正则表达式模式： `^[a-zA-Z0-9-]{3,24}$` |
         | 资源组位置 | 资源组的位置。 这是为 Azure Stack 安装选择的区域。 |
 
-    - 使用提升的提示符打开 PowerShell。 使用更新为你的值的参数运行以下脚本：
+    - 使用提升的提示符下打开 PowerShell 并[连接到 Azure Stack](azure-stack-powershell-configure-user.md#connect-with-ad-fs)。 使用更新为你的值的参数运行以下脚本：
 
     ```PowerShell  
         $armEndpoint="<Azure Resource Manager Endpoint>"
@@ -111,12 +119,12 @@ ms.locfileid: "55891266"
         | ---   | ---         |
         | 证书路径 | 证书的 FQDN 或文件路径。 |
         | 证书密码 | 证书密码。 |
-        | 机密名称 | 在上一步中生成密钥。 |
-        | 密钥保管库名称 | 上一步中创建密钥保管库的名称。 |
+        | 机密名称 | 用来引用保管库中存储的证书的机密名称。 |
+        | 密钥保管库名称 | 上一步中创建的密钥保管库的名称。 |
         | Azure 资源管理器终结点 | 在 Azure Stack 开发工具包 (ASDK) 的终结点是： `https://management.local.azurestack.external/`<br>集成系统中的终结点是： `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
         | 你的订阅 ID | [订阅 ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) 用于访问 Azure Stack 中的套餐。 |
 
-    - 使用提升的提示符打开 PowerShell。 使用更新为你的值的参数运行以下脚本：
+    - 使用提升的提示符下打开 PowerShell 并[连接到 Azure Stack](azure-stack-powershell-configure-user.md#connect-with-ad-fs)。 使用更新为你的值的参数运行以下脚本：
 
     ```PowerShell  
         
@@ -124,7 +132,7 @@ ms.locfileid: "55891266"
     $tempPFXFilePath = "<certificate path>"
     $password = "<certificate password>"
     $keyVaultSecretName = "<secret name>"
-    $keyVaultName = "<keyvault name>"
+    $keyVaultName = "<key vault name>"
     $armEndpoint="<Azure Resource Manager Endpoint>"
     $subscriptionId="<Your Subscription ID>"
     # Login Azure Stack Environment
@@ -194,11 +202,11 @@ ms.locfileid: "55891266"
 
 1. 输入**服务主体 ClientId**，供 Kubernetes Azure 云提供程序使用。 Azure Stack 管理员创建服务主体时标识应用程序 ID 为客户端 ID。
 
-1. 输入**密钥保管库资源组**。 
+1. 输入**密钥保管库资源组**源包含证书的密钥保管库。
 
-1. 输入**密钥保管库名称**。
+1. 输入**密钥保管库名称**包含你的证书作为机密的密钥保管库的名称。 
 
-1. 输入**密钥保管库机密**。
+1. 输入**密钥保管库机密**。 机密名称引用你的证书。
 
 1. 输入 **Kubernetes Azure 云提供程序版本**。 这是 Kubernetes Azure 提供程序的版本。 Azure Stack 为每个 Azure Stack 版本发布了自定义的 Kubernetes 内部版本。
 
