@@ -149,7 +149,7 @@ items:
   - name: 导出和删除数据
     displayName: gdpr
     href: how-to-export-delete-data.md
-  - name: 使用资源管理器模板
+  - name: 使用 Resource Manager 模板
     href: how-to-create-workspace-template.md
   - name: 启用日志记录
     displayName: logging
@@ -182,9 +182,9 @@ items:
     href: support-for-aml-services.md
   - name: 比较我们的 ML 产品
     href: overview-more-machine-learning.md
-ms.openlocfilehash: 57519d52ec7c04e75dc83f93219ee0ea7451d4c5
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 1d26c23ee6f3e74fce03b59d70e24049d6a10ecc
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098946"
+ms.locfileid: "56107560"

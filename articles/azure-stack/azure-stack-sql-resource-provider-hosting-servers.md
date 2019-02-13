@@ -11,23 +11,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: f1b39601f0f6d254daadfafdd812549c6c95ed35
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 1cef0010464671982109b8dc4bc94e6925eaf825
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239462"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210520"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>为 SQL 资源提供程序添加托管服务器
 
-可以在 [Azure Stack](azure-stack-poc.md) 中的虚拟机 (VM) 上或者在 Azure Stack 环境外部的 VM 上托管 SQL 实例，前提是 SQL 资源提供程序能够连接到该实例。
+可以在创建宿主服务器的虚拟机 (VM) 上的 SQL Server 数据库[Azure Stack](azure-stack-poc.md)，或外部 Azure Stack 环境，只要 SQL 资源提供程序可以连接到的实例的 VM 上。
 
 > [!NOTE]
-> 应在 SQL 资源提供程序服务器上创建 SQL 数据库。 SQL 资源提供程序应在默认提供程序订阅中创建，而 SQL 托管服务器则应在可计费用户订阅中创建。 资源提供程序服务器不应用于托管用户数据库。
+> SQL 资源提供程序应在默认提供程序订阅中创建，而 SQL 托管服务器则应在可计费用户订阅中创建。 资源提供程序服务器不应用于托管用户数据库。
 
 ## <a name="overview"></a>概述
 

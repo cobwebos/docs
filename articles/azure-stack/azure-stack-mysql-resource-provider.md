@@ -11,20 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 6922571e4e816d04f6e116db582922cecc85542c
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: e610f946868940f9fde66932bedec1dc998f390b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765460"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203873"
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>使用 Microsoft Azure Stack 上的 MySQL 数据库
 
-MySQL 数据库常用于网站上并且支持许多网站平台。 例如，可以使用 Web 应用平台即服务 (PaaS) 附加产品创建 WordPress 网站。
+MySQL 数据库通常用于网站，并且支持许多网站平台。 例如，可以创建使用应用服务资源提供程序 (PaaS) 加载项的 WordPress 网站。
 
 部署资源提供程序后，可以：
 

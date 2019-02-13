@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2018
-ms.openlocfilehash: afb4e634b7e255ef8f2cfc84319029af7412372e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5ececb2d3c52a1da8c1a537e6223f17a9b83921f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251871"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207528"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>有关 Azure Stack 集成系统的数据中心集成注意事项
-如果你对 Azure Stack 集成系统感兴趣，应了解一些有关部署的重要规划注意事项，及系统如何融入数据中心。 本文提供这些注意事项的综合概述，帮助你在 Azure Stack 多节点系统方面做出重要的基础结构决策。 配合 OEM 硬件供应商将 Azure Stack 部署到数据中心时，了解这些注意事项会有所帮助。  
+如果您感兴趣的 Azure Stack 集成系统，您应该了解有关部署和系统如何融入数据中心的重要规划注意事项。 本文提供这些注意事项的综合概述，帮助你在 Azure Stack 多节点系统方面做出重要的基础结构决策。 配合 OEM 硬件供应商将 Azure Stack 部署到数据中心时，了解这些注意事项会有所帮助。  
 
 > [!NOTE]
 > 只能从经过授权的硬件供应商购买 Azure Stack 多节点系统。 
@@ -53,8 +53,6 @@ Azure Stack 是一个密封的系统，从权限和网络角度来看，其基�
 
 ### <a name="choose-identity-provider"></a>选择标识提供者
 需要考虑用于 Azure Stack 部署的标识提供者：Azure AD 或 AD FS。 部署之后无法切换标识提供者，除非重新部署整个系统。 如果你未拥有 Azure AD 帐户且使用的是云服务提供商提供给你的帐户，并且你决定切换提供商并使用其他 Azure AD 帐户，则此时你必须联系解决方案提供商让其根据你的成本为你重新部署解决方案。
-
-
 
 标识提供者选项与租户虚拟机、标识系统及其使用的帐户、它们能否加入 Active Directory 域等因素无关。两者是彼此独立的。
 
@@ -110,9 +108,9 @@ Azure Stack 是一个密封的系统，从权限和网络角度来看，其基�
 
 
 ## <a name="time-synchronization"></a>时间同步
-必须选择用于同步 Azure Stack 的特定时间服务器。  时间符号化对于 Azure Stack 及其基础结构角色而言很重要，因为它用于生成 Kerberos 票证，而这些票证用于内部服务的相互身份验证。
+必须选择用于同步 Azure Stack 的特定时间服务器。  时间同步到 Azure Stack 和其基础结构角色，至关重要，因为它用于生成 Kerberos 票证用于内部服务相互进行身份验证。
 
-必须指定时间同步服务器的 IP，不过，基础结构中的大多数组件都可以解析 URL，而有些组件只支持 IP 地址。 如果使用“断开连接”部署选项，必须在企业网络中指定时间服务器，并确保可从 Azure Stack 中的基础结构网络访问该服务器。
+必须指定时间同步服务器的 IP，不过，基础结构中的大多数组件都可以解析 URL，而有些组件只支持 IP 地址。 如果使用断开连接的部署选项，则必须指定确保可从 Azure Stack 中的基础结构网络访问你在公司网络上的时间服务器。
 
 ## <a name="connect-azure-stack-to-azure"></a>将 Azure Stack 连接到 Azure
 

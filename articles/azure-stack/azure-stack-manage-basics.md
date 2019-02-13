@@ -12,24 +12,24 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: a9bf2240e6e60a3d2d80bf4829d74f1043024d7e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2c4a95bddea85d298ff9343bfd813d0b79b24b51
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239666"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164016"
 ---
 # <a name="azure-stack-administration-basics"></a>Azure Stack 管理基础知识
-如果不熟悉 Azure Stack 管理，则需要了解几项事情。 本指南概述了 Azure Stack 操作员角色，以及需要告知用户哪些东西才能让他们快速提高工作效率。
+如果不熟悉 Azure Stack 管理，则需要了解几项事情。 本文提供 Azure Stack 操作员，你所担任的概述以及需要告知你用户，让他们快速提高工作效率。
 
 ## <a name="understand-the-builds"></a>了解版本
 
 ### <a name="integrated-systems"></a>集成系统
 
-如果使用 Azure Stack 集成系统，则会通过更新包分发更新版的 Azure Stack。 可以通过管理员门户中的“更新”磁贴导入并应用这些包。
+如果使用 Azure Stack 集成系统，则会通过更新包分发更新版的 Azure Stack。 可以通过管理员门户中的“更新”磁贴导入并应用这些包。 它不支持 ASDK 安装更新。 
  
 ### <a name="development-kit"></a>开发工具包
 

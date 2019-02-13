@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: unknown
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: 20cddc74dd05e982cbd332a65f9a477559caece7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4deb72eae7dffac6eabb34b18a9e879ac1fd8113
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244090"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179954"
 ---
 # <a name="overview-of-offering-services-in-azure-stack"></a>在 Azure Stack 中提供服务概述
 
@@ -42,7 +42,7 @@ ms.locfileid: "55244090"
 
 你甚至可以合并服务为不同用户集成和构建复杂解决方案。
 
-若要向用户提供这些服务，必须创建[计划、套餐和配额](azure-stack-plan-offer-quota-overview.md)。 然后用户可以订阅套餐以使用这些服务。
+若要向用户提供这些服务，必须首先创建[计划、 产品/服务和配额](azure-stack-plan-offer-quota-overview.md)。 然后用户可以订阅套餐以使用这些服务。
 
 ## <a name="plan-your-service-offers"></a>计划服务套餐
 

@@ -12,30 +12,30 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: eff526118f6fd127ba720d28296baf86abd01393
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 023201d221ee5d7ec884c6a760407e8da8340d3f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246427"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207107"
 ---
 # <a name="azure-stack-firewall-integration"></a>Azure Stack 防火墙集成
-建议使用防火墙设备来帮助保护 Azure Stack。 虽然防火墙可以发挥很多作用，例如抵御分布式拒绝服务 (DDOS) 工具、执行入侵检测和内容检查，但是它们也可能会成为 Azure 存储服务（例如 blob、表和队列）的吞吐量瓶颈。
+建议使用防火墙设备来帮助保护 Azure Stack。 防火墙可帮助抵御分布式的拒绝服务 (DDOS) 攻击、 入侵检测和内容检查等内容。 但是，它们可以成为 Azure 存储服务，如 blob、 表和队列的吞吐量瓶颈。
 
-根据身份模型 Azure Active Directory (Azure AD) 或 Windows Server Active Directory 联合身份验证服务 (AD FS)，你可能需要发布 AD FS 终结点。 如果使用断开连接部署模式，则必须发布 AD FS 终结点。 有关详细信息，请参阅[数据中心集成标识一文](azure-stack-integrate-identity.md)。
+ 如果使用断开连接部署模式，则必须发布 AD FS 终结点。 有关详细信息，请参阅[数据中心集成标识一文](azure-stack-integrate-identity.md)。
 
-Azure 资源管理器（管理员）、管理员门户和 Key Vault（管理员）终结点不一定需要外部发布。 例如，作为服务提供商，你可能希望限制攻击面并且只允许从网络内管理 Azure Stack，不允许从 Internet 进行管理。
+Azure 资源管理器（管理员）、管理员门户和 Key Vault（管理员）终结点不一定需要外部发布。 例如，为服务提供程序，可以限制攻击面，通过仅在您的网络，而不是从 internet 管理从 Azure Stack。
 
-对于企业组织，外部网络可能是现有的公司网络。 在这种情况下，必须发布那些终结点来从公司网络操作 Azure Stack。
+对于企业组织，外部网络可能是现有的公司网络。 在此方案中，则必须发布终结点，以从公司网络操作 Azure Stack。
 
 ### <a name="network-address-translation"></a>网络地址转换
-网络地址转换 (NAT) 是建议采用的方法，它允许部署虚拟机 (DVM) 在部署期间访问外部资源和 Internet，以及在注册和故障排除期间访问 Emergency Recovery Console (ERCS) VM 或 Privileged End Point (PEP)。
+网络地址转换 (NAT) 是推荐的方法，以允许部署虚拟机 (DVM) 来访问外部资源和在部署期间 internet 以及紧急恢复控制台 (ERCS) Vm 或特权终结点 (PEP) 期间注册和故障排除。
 
-还可以使用 NAT 作为外部网络上的公共 IP 地址或公共 VIP 的替代方法。 但是，不建议这样做，因为它限制了租户用户体验并增加了复杂性。 两个选项将仍需要每个用户 IP 池的一个公共 IP 或许多 1 对 1 NAT:用户可能使用 1 NAT 要求每个用户包含到的所有端口关联的 VIP 的 NAT 规则。
+还可以使用 NAT 作为外部网络上的公共 IP 地址或公共 VIP 的替代方法。 但是，不建议这样做，因为它限制了租户用户体验并增加了复杂性。 一个选项是一对一 NAT，仍需要每个用户 IP 池的一个公共 IP。 另一个选项是多对一对用户可能使用的所有端口需要使用一个 NAT 规则，按用户 VIP 的 NAT。
 
 下面是对公共 VIP 使用 NAT 的一些缺点：
 - NAT 增加了管理防火墙规则时的开销，因为用户在软件定义的网络 (SDN) 堆栈中控制其自己的终结点和其自己的发布规则。 用户必须联系 Azure Stack 操作员才能发布其 VIP 以及更新端口列表。
@@ -48,7 +48,7 @@ Azure 资源管理器（管理员）、管理员门户和 Key Vault（管理员�
 ## <a name="edge-firewall-scenario"></a>边缘防火墙方案
 在边缘部署中，Azure Stack 直接部署在边缘路由器或防火墙后面。 在这些方案中，支持将防火墙放置在边界上方（例如方案 1，在这种情况下它支持主动-主动和主动-被动防火墙配置）或让防火墙充当边界设备（例如方案 2，在这种情况下它仅支持依赖于等成本多路径 (ECMP) 的主动-主动防火墙配置，并使用 BGP 或静态路由进行故障转移）。
 
-通常情况下，在部署时会为外部网络中的公共 VIP 池指定公共的可路由 IP 地址。 在边缘方案中，出于安全考虑，建议不要在任何其他网络上使用公共的可路由 IP。 与在 Azure 之类的公有云中一样，此方案使得用户能够获得完全的自控云体验。  
+在部署时，从外部网络的公共 VIP 池指定公共路由的 IP 地址。 在边缘方案中，出于安全考虑，建议不要在任何其他网络上使用公共的可路由 IP。 与在 Azure 之类的公有云中一样，此方案使得用户能够获得完全的自控云体验。  
 
 ![Azure Stack 边缘防火墙示例](./media/azure-stack-firewall/firewallScenarios.png)
 

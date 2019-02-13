@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: prchint
 ms.lastreviewed: 09/18/2018
-ms.openlocfilehash: 5d9d01a482483d030569a4dcad03c9ecef7cffc0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 29244c20bb4bbad8077788abbc29e6267f701d2e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245144"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176335"
 ---
 # <a name="azure-stack-storage-capacity-planning"></a>Azure Stack 存储容量规划
 以下部分提供 Azure Stack 存储容量规划信息，帮助你针对解决方案的存储需求进行规划。
@@ -48,9 +48,6 @@ Azure Stack 的超聚合配置允许共享物理存储设备。 可用存储的�
 - 每个 ReFS 文件系统都会启用 BitLocker 进行静态数据加密。 
 
 虚拟磁盘自动创建，其容量如下所示：
-
-
-
 
 |名称|容量计算|描述|
 |-----|-----|-----|

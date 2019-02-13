@@ -12,21 +12,21 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 05bf01e2b7c380f7bb79230885e247bd8c834d14
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4481bcf7a794423f98f45e4a21a139dbe4c32b4f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691161"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210775"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Azure Stack 集成系统的 Azure 断开连接部署计划决策
-在决定[如何将 Azure Stack 集成到混合云环境](azure-stack-connection-models.md)后，可以完成 Azure Stack 部署决策。
+您已决定后[如何将将 Azure Stack 集成到混合云环境](azure-stack-connection-models.md)，可以完成 Azure Stack 部署决策。
 
-无需连接到 Internet 即可部署和使用 Azure Stack。 但是，使用断开连接部署，你将受限于一个 AD FS 标识存储和基于容量的计费模型。 由于多租户需要使用 Azure AD，因此断开连接的部署不支持多租户。 
+无需连接到 Internet 即可部署和使用 Azure Stack。 但是，使用断开连接部署，你将受限于一个 AD FS 标识存储和基于容量的计费模型。 多租户模式需要 Azure Active Directory (Azure AD) 的使用，因为断开连接部署不支持多租户模式。 
 
 适合选择此选项的情况如下所述：
 - 如果存在要求你在未连接到 Internet 的环境中部署 Azure Stack 的安全性或其他限制。
@@ -34,9 +34,9 @@ ms.locfileid: "55691161"
 - 如果希望单纯将 Azure Stack 用作部署到公司 Intranet 的私有云解决方案，并且不考虑在混合方案中使用。
 
 > [!TIP]
-> 有时候，这种类型的环境也称为“潜艇方案”。
+> 有时，此类型的环境也称为*潜艇方案*。
 
-离线部署并非绝对意味着你以后不能将 Azure Stack 实例连接到 Azure 来实现混合租户 VM 方案。 它只意味着在部署期间不连接到 Azure，或者不希望使用 Azure Active Directory 作为标识存储。
+断开连接的部署不会限制你稍后将 Azure Stack 实例连接到 Azure 的混合租户 VM 方案。 这意味着您在部署期间未连接到 Azure 或不想使用 Azure AD 作为标识存储。
 
 ## <a name="features-that-are-impaired-or-unavailable-in-disconnected-deployments"></a>在断开连接部署中被削弱或不可用的功能 
 Azure Stack 设计为在连接到 Azure 的情况下功能最佳，因此请务必注意，在断开连接模式下，有些功能被削弱或完全不可用。 

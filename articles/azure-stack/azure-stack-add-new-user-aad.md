@@ -3,7 +3,7 @@ title: 在 Azure Active Directory 中添加新的 Azure Stack 租户帐户 | Mic
 description: 部署 Microsoft Azure Stack 开发工具包之后, 将需要创建至少一个租户用户帐户，以便浏览租户门户。
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: patricka
 manager: femila
 editor: ''
 ms.assetid: a75d5c88-5b9e-4e9a-a6e3-48bbfa7069a7
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
-ms.author: jeffgilb
+ms.date: 02/12/2019
+ms.author: patricka
 ms.reviewer: unknown
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: c0f457955bd8df7fe07e2a96469fde0a751417bc
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5c07288bbfbf70be62723f835192cf09d92166ab
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240313"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163217"
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>在 Azure Active Directory 中添加新的 Azure Stack 租户帐户
 
@@ -56,14 +56,12 @@ ms.locfileid: "55240313"
 7. 登录到 Microsoft Azure 门户中使用新的帐户。 出现提示时更改密码。
 8. 使用新帐户登录到 `https://portal.local.azurestack.external`，以查看租户门户。
 
-## <a name="create-an-azure-stack-tenant-account-using-powershell"></a>使用 PowerShell 创建 Azure Stack 租户帐户
+## <a name="create-an-azure-stack-user-account-using-powershell"></a>创建使用 PowerShell 的 Azure Stack 用户帐户
 
 如果没有 Azure 订阅，则无法使用 Azure 门户添加租户用户帐户。 在这种情况下，可以改用适用于 Windows PowerShell 的 Azure Active Directory 模块。
 
 > [!NOTE]
 > 如果使用 Microsoft 帐户 (Live ID) 部署 Azure Stack 开发工具包，则无法使用 AAD PowerShell 创建租户帐户。 
-> 
-> 
 
 1. 安装[适用于 IT 专业人员 RTW 的 Microsoft Online Services 登录助手](https://www.microsoft.com/en-us/download/details.aspx?id=41950)。
 2. 安装[适用于 Windows PowerShell 的 Azure Active Directory 模块（64 位版本）](https://go.microsoft.com/fwlink/p/?linkid=236297)并将其打开。
@@ -85,3 +83,6 @@ ms.locfileid: "55240313"
 1. 使用新的帐户登录到 Microsoft Azure。 出现提示时更改密码。
 2. 使用新帐户登录到 `https://portal.local.azurestack.external`，以查看租户门户。
 
+## <a name="next-steps"></a>后续步骤
+
+[在 AD FS 中添加 Azure Stack 用户](azure-stack-add-users-adfs.md)

@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 491bdf121729d690784324051ff701f3ed2d2b7a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a39ab2eb6d08f478ed68aed2bc753e5225185fe3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243175"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175381"
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Azure Stack 集成系统的 Azure 连接型部署计划决策
-在决定[如何将 Azure Stack 集成到混合云环境](azure-stack-connection-models.md)后，可以完成 Azure Stack 部署决策。
+您已决定后[如何将将 Azure Stack 集成到混合云环境](azure-stack-connection-models.md)，可以完成 Azure Stack 部署决策。
 
 部署连接到 Azure 的 Azure Stack 意味着可以将 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 用于标识存储。 也可从以下计费模式进行选择：即用即付或按容量付费。 联网部署是默认选项，因为这样可以让客户充分利用 Azure Stack，尤其是在使用涉及到 Azure 和 Azure Stack 的混合云方案的情况下。 
 

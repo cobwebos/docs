@@ -6,17 +6,17 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 10/15/2018
 keywords: ''
-ms.openlocfilehash: dce59cf012a8c3bc5b6b3baf705b5619bdf43104
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 13525fffb7e6720fe81759876ffd0fe71559279c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252299"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182844"
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Azure Stack 数据中心集成 - DNS
 若要能够从 Azure Stack 外部访问 Azure Stack 终结点（**门户**、**adminportal**、**管理**、**adminmanagement** 等），需将 Azure Stack DNS 服务与托管 DNS 区域（要在 Azure Stack 中使用）的 DNS 服务器集成。
@@ -114,9 +114,9 @@ Azure Stack DNS 服务器的 FQDN 具有以下格式：
 `azs-ns02.east.cloud.fabrikam.com`
 
 
-在名为 `AzureStackStampDeploymentInfo.json` 的文件中，此信息也会在所有 Azure Stack 部署的末尾创建。 该文件位于部署虚拟机的 `C:\CloudDeployment\logs` 文件夹中。 如果不确定对 Azure Stack 部署使用了什么值，可以从该文件中获取这些值。
+在名为 `AzureStackStampInformation.json` 的文件中，此信息也会在所有 Azure Stack 部署的末尾创建。 该文件位于部署虚拟机的 `C:\CloudDeployment\logs` 文件夹中。 如果不确定对 Azure Stack 部署使用了什么值，可以从该文件中获取这些值。
 
-如果部署虚拟机不再可用或无法访问，则可连接到特权终结点并运行 `Get-AzureStackInfo` PowerShell cmdlet，以便获取这些值。 有关详细信息，请参阅[特权终结点](azure-stack-privileged-endpoint.md)。
+如果部署虚拟机不再可用或无法访问，则可连接到特权终结点并运行 `Get-AzureStackStampInformation` PowerShell cmdlet，以便获取这些值。 有关详细信息，请参阅[特权终结点](azure-stack-privileged-endpoint.md)。
 
 ## <a name="setting-up-conditional-forwarding-to-azure-stack"></a>设置到 Azure Stack 的条件性转发
 
