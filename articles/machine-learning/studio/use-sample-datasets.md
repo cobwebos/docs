@@ -10,17 +10,17 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: de809ef1455e4c8c4c2284c2139e962f1829770b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 55cf124baf7614813620602212856cc586b721df
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510164"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244328"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中使用示例数据集
 [top]: #machine-learning-sample-datasets
 
-在 Azure 机器学习中创建新工作区时，默认包含大量的示例数据集和实验。 其中许多示例数据集由 [Azure AI 库](http://gallery.cortanaintelligence.com/)中的示例模型使用。 其他示例数据集作为通常在机器学习中使用的各种类型数据的示例包含在内。
+在 Azure 机器学习中创建新工作区时，默认包含大量的示例数据集和实验。 其中许多示例数据集由 [Azure AI 库](http://gallery.azure.ai/)中的示例模型使用。 其他示例数据集作为通常在机器学习中使用的各种类型数据的示例包含在内。
 
 一些数据集可在 Azure Blob 存储中使用。 对于这些数据集，下表提供了直接链接。 可以在实验中通过使用[导入数据][import-data]模块使用这些数据集。
 

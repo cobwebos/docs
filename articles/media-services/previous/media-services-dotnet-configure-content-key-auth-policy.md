@@ -4,7 +4,7 @@ description: 了解如何使用媒体服务 .NET SDK 配置内容密钥的授权
 services: media-services
 documentationcenter: ''
 author: mingfeiy
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 1a0aedda-5b87-4436-8193-09fc2f14310c
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 02/10/2019
 ms.author: juliako;mingfeiy
-ms.openlocfilehash: 4fdfbb17670cd30438a8906a6b00bb4db354aedb
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6e31f1ed13e2ecc98b09c7e020e2a7eafef7887a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820245"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993683"
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>动态加密：配置内容密钥授权策略
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]

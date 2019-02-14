@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/05/2018
-ms.openlocfilehash: 69d3e02ca8d3f020a50b81785c58a3f5a42ce4b0
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 194f92b84b17fc2f2c9bc8f3aca6f6ad05f65d30
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492991"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56241438"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>复制其他人的工作以执行数据科研
 ## <a name="video-5-data-science-for-beginners-series"></a>视频 5：适合初学者的数据科学系列
@@ -52,7 +52,7 @@ ms.locfileid: "55492991"
 
 Microsoft 拥有一项基于云的服务，名为 [Azure 机器学习工作室](https://azure.microsoft.com/services/machine-learning-studio/)，欢迎免费进行试用。 它提供了一个工作区，可在其中使用不同的机器学习算法进行试验，并且在已制定出解决方案时，可以 Web 服务启动它。
 
-此服务的一部分被称为 **[Azure AI 库](https://gallery.cortanaintelligence.com/)**。 它包含资源，包括 Azure 机器学习试验或模型（由用户生成并贡献给他人使用）的集合。 这些试验是利用他人的想法和工作成果，开始自己的解决方案的绝佳方式。 欢迎每个人前往浏览。
+此服务的一部分被称为 **[Azure AI 库](https://gallery.azure.ai/)**。 它包含资源，包括 Azure 机器学习试验或模型（由用户生成并贡献给他人使用）的集合。 这些试验是利用他人的想法和工作成果，开始自己的解决方案的绝佳方式。 欢迎每个人前往浏览。
 
 ![Azure AI 库](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 
@@ -82,11 +82,11 @@ Microsoft 拥有一项基于云的服务，名为 [Azure 机器学习工作室](
 现在我已有起始点。 我可以将他们的数据置换为我自己的数据，并自行调整模型。 这给了我一个良好的开端，让我可以根据他人的工作来生成我自己的内容，这些人真正了解他们的工作内容。
 
 ## <a name="find-experiments-that-demonstrate-machine-learning-techniques"></a>查找演示机器学习技术的试验
-[Azure AI 库](https://gallery.cortanaintelligence.com)中有一些其他试验，专门为数据科学新手提供操作方法示例。 例如，库中有一个试验演示了如何处理缺失值（[Methods for handling missing values](https://gallery.cortanaintelligence.com/Experiment/Methods-for-handling-missing-values-1)（处理缺失值的方法））。 它指导通过 15 种不同的方法来替代空值，并讨论了每种方法的优势以及使用时间。
+[Azure AI 库](https://gallery.azure.ai)中有一些其他试验，专门为数据科学新手提供操作方法示例。 例如，库中有一个试验演示了如何处理缺失值（[Methods for handling missing values](https://gallery.azure.ai/Experiment/Methods-for-handling-missing-values-1)（处理缺失值的方法））。 它指导通过 15 种不同的方法来替代空值，并讨论了每种方法的优势以及使用时间。
 
 ![在机器学习工作室中打开库试验 - 处理缺失值的方法](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
 
-可在 [Azure AI 库](https://gallery.cortanaintelligence.com)中查找工作试验，并将这些工作试验用作自己解决方案的起始点。
+可在 [Azure AI 库](https://gallery.azure.ai)中查找工作试验，并将这些工作试验用作自己解决方案的起始点。
 
 务必观看 Microsoft Azure 机器学习的“适合初学者的数据科学”中的其他视频。
 

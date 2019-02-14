@@ -13,12 +13,13 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 198fb3376d44123d39a0b3ca2fb1edbd070f1f09
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 797ac714d3205a271fe6590a3a320e1b9e2a073e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510980"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194727"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自定义域名
 
@@ -66,7 +67,7 @@ ms.locfileid: "55510980"
 
 ### <a name="forcedelete-option"></a>ForceDelete 选项
 
-可以在 [Azure AD 管理中心](https://aad.portal.azure.com)使用 **ForceDelete** 来强制删除域名，或使用 [Microsoft 图形 API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/domain_forcedelete) 执行此操作。 这些选项使用异步操作，并将自定义域名（例如“user@contoso.com”）中的所有引用更新为类似于“user@contoso.onmicrosoft.com”的初始默认域名称。 
+可以在 [Azure AD 管理中心](https://aad.portal.azure.com)使用 **ForceDelete** 来强制删除域名，或使用 [Microsoft 图形 API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta) 执行此操作。 这些选项使用异步操作，并将自定义域名（例如“user@contoso.com”）中的所有引用更新为类似于“user@contoso.onmicrosoft.com”的初始默认域名称。 
 
 若要在 Azure 门户中调用 **ForceDelete**，必须确保对该域名的引用少于 1000 个，并且必须在 [Exchange 管理中心](https://outlook.office365.com/ecp/)更新或删除预配服务是 Exchange 的所有引用。 这包括支持 Exchange 邮件的安全组和分发列表；有关详细信息，请参阅[删除支持邮件的安全组](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)。 此外，如果存在以下任一情况，则 **ForceDelete** 操作不会成功：
 
@@ -112,4 +113,4 @@ ms.locfileid: "55510980"
 
 * [添加自定义域名](/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [在 Exchange 管理中心删除 Azure AD 的自定义域名中支持 Exchange 邮件的安全组](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)
-* [使用 Microsoft 图形 API 强制删除自定义域名](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/domain_forcedelete)
+* [使用 Microsoft 图形 API 强制删除自定义域名](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)

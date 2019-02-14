@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: d43adf7009fcd668299f018b6308765bb115b237
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: b538e1b2d37c92e1712da517ab5f3c46f5e2c3a3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565898"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992173"
 ---
-# <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>跨多个存储帐户管理媒体服务资产
+# <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>跨多个存储帐户管理媒体服务资产  
 
 可以将多个存储帐户附加到一个媒体服务帐户。 将多个存储帐户附加到一个媒体服务帐户这一功能具有以下优势：
 

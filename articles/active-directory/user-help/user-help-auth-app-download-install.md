@@ -12,12 +12,13 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 657d48208fa4be28f808ff5118e267c8895d253d
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8e11092057af3a7a16c60e55837f31ac3004e42a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55771776"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184833"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>下载并安装 Microsoft Authenticator 应用
 Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登录到帐户。 双重验证可帮助你更安全地访问帐户，尤其是在查看敏感信息时。 由于密码可能会遗忘、失窃或者泄露，双重验证作为一种附加的安全保障步骤，可帮助保护帐户的安全，因为其他人更难破解它。
@@ -29,7 +30,7 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 - **手机登录。** 双重验证的一个版本，允许使用用户名和移动设备并结合指纹、人脸或 PIN 来进行登录，而无需输入密码。
 
 >[!NOTE]
->如果在登录帐户时遇到问题，请参阅[无法登录 Microsoft 帐户](https://support.microsoft.com/help/12429)获取帮助。  详细了解如何解决在尝试登录 Microsoft 帐户时收到“[该 Microsoft 帐户不存在](https://support.microsoft.com/help/13811)”消息的问题。
+>如果在登录帐户时遇到问题，请参阅[无法登录 Microsoft 帐户](https://support.microsoft.com/help/12429)以获取帮助。  详细了解如何解决在尝试登录 Microsoft 帐户时收到“[该 Microsoft 帐户不存在](https://support.microsoft.com/help/13811)”消息的问题。
 
 ## <a name="download-and-install-the-app"></a>下载并安装应用
 根据你的操作系统安装 Microsoft Authenticator 应用的最新版本：

@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 11d41f9839456020ab65f11661c21f1e679cd76f
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 77e4500b20be844dfad31db284a9c77ad7ec6bb7
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770646"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118116"
 ---
 # <a name="migrate-your-data"></a>迁移数据
 数据可以使用各种工具从不同源移动到 SQL 数据仓库中。  ADF 复制、SSIS 和 bcp 都可用来实现此目标。 但是，随着数据量的增加，应该考虑将数据迁移过程划分成多个步骤。 这样，便有机会优化每个步骤以提高性能和弹性，确保顺利迁移数据。
@@ -29,7 +29,7 @@ ms.locfileid: "55770646"
 
 PolyBase 还提供高性能的选项来加载数据。 但是，这意味着要使用两种工具，而不只是一种工具。 若要获得最佳性能，请使用 PolyBase。 如果只想要使用单个工具（且数据量不大），则 ADF 就是答案。
 
-请按照[本教程]( /articles/data-factory/load-azure-sql-data-warehouse.md)进行操作，了解如何使用 ADF 将数据加载到数据仓库。
+请按照[本教程](../data-factory/load-azure-sql-data-warehouse.md)进行操作，了解如何使用 ADF 将数据加载到数据仓库。
 
 ## <a name="integration-services"></a>Integration Services
 集成服务 (SSIS) 是一个功能强大且灵活的提取、转换和加载 (ETL) 工具，支持复杂的工作流、数据转换，以及多个数据加载选项。 使用 SSIS 可以单纯将数据传输到 Azure，或作为更广泛迁移的一部分。

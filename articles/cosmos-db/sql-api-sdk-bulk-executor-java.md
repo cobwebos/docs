@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/21/2018
 ms.author: ramkris
-ms.openlocfilehash: 790aba3f523cadce97caa4c5c044276c349e6045
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: f4e537bb6aa3b9bc4555f7eefb3cac6acd579b64
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769298"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233959"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java 批量执行程序库：下载信息
 
@@ -37,6 +37,6 @@ ms.locfileid: "55769298"
 |**SDK 下载**|[Maven](https://search.maven.org/#search%7Cga%7C1%7Cdocumentdb-bulkexecutor)|
 |**GitHub 中的 BulkExecutor 库**|[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
 | **API 文档**| [.Net API 参考文档](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
-|**入门**|批量执行程序库 Java SDK 入门](bulk-executor-java.md)|
+|**入门**|[批量执行程序库 Java SDK 入门](bulk-executor-java.md)|
 |受支持的最小运行时|[Java 开发工具包 (JDK) 7+](https://aka.ms/azure-jdks)|
 

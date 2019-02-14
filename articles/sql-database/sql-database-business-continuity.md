@@ -12,13 +12,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 998d4f45a2d4956e0e230bcf00636a965c35dd97
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: bdb89a89713c093768de3e40eda2bcbb6a311b2b
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755163"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960870"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>使用 Azure SQL 数据库确保业务连续性的相关概述
 
@@ -101,6 +101,7 @@ Azure 数据中心会罕见地发生中断。 发生中断时，业务可能仅�
 
 执行操作时，恢复所需的时间以及数据丢失量会有所不同，这具体取决于用户要在应用程序中使用哪些业务连续性功能。 事实上，可以根据应用程序需求，选择结合使用数据库备份与活动异地复制。 若要探讨使用这些业务连续性功能为独立数据库和弹性池设计应用程序时的注意事项，请参阅[设计用于云灾难恢复的应用程序](sql-database-designing-cloud-solutions-for-disaster-recovery.md)和[弹性池灾难恢复策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。
 
+
 以下各节概述使用数据库备份或活动异地复制进行恢复的步骤。 若要了解包括计划需求在内的详细步骤、恢复后步骤，以及如何模拟中断以执行灾难恢复演练，请参阅[在中断时恢复 SQL 数据库](sql-database-disaster-recovery.md)。
 
 ### <a name="prepare-for-an-outage"></a>为中断做好准备
@@ -132,7 +133,7 @@ Azure 数据中心会罕见地发生中断。 发生中断时，业务可能仅�
 从任一恢复机制恢复后，都必须执行以下附加任务，用户和应用程序才能重新运行：
 
 - 将客户端和客户端应用程序重定向到新服务器和还原的数据库
-- 确保设置适当的服务器级 IP 防火墙规则，以便用户能够连接或使用[数据库级防火墙](sql-database-firewall-configure.md#manage-ip-firewall-rules-using-the-azure-portal)，启用合适的规则。
+- 确保设置适当的服务器级 IP 防火墙规则，以便用户能够连接或使用[数据库级防火墙](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-the-azure-portal)，启用合适的规则。
 - 确保设置适当的登录名和 master 数据库级权限（或使用[包含用户](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)）
 - 视情况配置审核
 - 视情况配置警报

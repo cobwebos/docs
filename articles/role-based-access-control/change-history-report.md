@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e47bb293d53df658641a50a1399ead85667e3225
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 6ff09647dc3271c947b3037afcfacc33951ddb07
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692726"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117642"
 ---
 # <a name="view-activity-logs-for-rbac-changes"></a>查看 RBAC 更改的活动日志
 
@@ -55,7 +55,7 @@ ms.locfileid: "55692726"
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-若要使用 Azure PowerShell 查看活动日志，请使用 [Get-AzLog](/powershell/module/az.insights/get-azlog) 命令。
+若要使用 Azure PowerShell 查看活动日志，请使用 [Get-AzLog](/powershell/module/Az.Monitor/Get-AzLog) 命令。
 
 此命令列出过去 7 天内订阅中所有角色分配的更改：
 

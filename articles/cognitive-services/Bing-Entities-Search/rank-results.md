@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 了解如何使用排名显示必应实体搜索 API 返回的答案。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 56215bfa17343576b6bebec3a5dc5076ac56073c
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 9e2a4075436145a0cc185b7ab1b406fa8d27b8e3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754126"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867828"
 ---
 # <a name="using-ranking-to-display-entity-search-results"></a>使用排名显示实体搜索结果  
 

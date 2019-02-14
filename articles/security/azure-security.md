@@ -4,7 +4,7 @@ description: 了解 Azure 安全性以及其服务和工作原理。
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 982dbe20bafbcd713eb64761f8ce7c7c9b3f46cb
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 28630a1d1b2ce212fe1054496814a9084f8cfc98
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55693966"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116297"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
@@ -368,7 +368,7 @@ Microsoft 在其产品和服务中使用多种安全实践和技术来管理标�
 
 | 免费/常用功能     | 基本功能    |高级 P1 功能 |高级 P2 功能 | Azure Active Directory Join – 仅适用于 Windows 10 的相关功能|
 | :------------- | :------------- |:------------- |:------------- |:------------- |
-|   [Directory 对象](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[用户/组管理（添加/更新/删除）/基于用户的预配，设备注册](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[单一登录 (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[云用户的自助密码更改](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[Connect（将本地目录扩展到 Azure Active Directory 的同步引擎）](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[安全/使用情况报告](https://docs.microsoft.com/azure/active-directory/active-directory-editions)       |     [基于组的访问管理/预配](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[云用户的自助密码重置](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[公司品牌（登录页/访问面板自定义）](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[应用程序代理](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[SLA 99.9%](https://docs.microsoft.com/azure/active-directory/active-directory-editions) |  [自助组和应用管理/自助应用程序添加件/动态组](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[通过本地回写实现自助密码重置/更改/解锁](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[多重身份验证（云和本地（MFA 服务器））](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[MIM CAL + MIM 服务器](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[Cloud App Discovery](https://docs.microsoft.com/azure/active-directory/active-directory-editions#cloud-app-discovery)，[Connect Health](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[组帐户的自动密码变换](https://docs.microsoft.com/azure/active-directory/active-directory-editions)|  [标识保护](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)，[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)|  [让设备加入 Azure AD、Desktop SSO、Microsoft Passport for Azure AD 和 Administrator BitLocker 恢复](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[MDM 自动注册，自助 BitLocker 恢复，通过 Azure AD Join 将其他本地管理员加入 Windows 10 设备](https://docs.microsoft.com/azure/active-directory/active-directory-editions)|
+|   [Directory 对象](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[用户/组管理（添加/更新/删除）/基于用户的预配，设备注册](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[单一登录 (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[云用户的自助密码更改](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[Connect（将本地目录扩展到 Azure Active Directory 的同步引擎）](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[安全/使用情况报告](https://docs.microsoft.com/azure/active-directory/active-directory-editions)       |     [基于组的访问管理/预配](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[云用户的自助密码重置](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[公司品牌（登录页/访问面板自定义）](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[应用程序代理](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[SLA 99.9%](https://docs.microsoft.com/azure/active-directory/active-directory-editions) |  [自助组和应用管理/自助应用程序添加件/动态组](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[通过本地回写实现自助密码重置/更改/解锁](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[多重身份验证（云和本地（MFA 服务器））](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[MIM CAL + MIM 服务器](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[Cloud App Discovery](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[Connect Health](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[组帐户的自动密码变换](https://docs.microsoft.com/azure/active-directory/active-directory-editions)|  [标识保护](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)，[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)|  [让设备加入 Azure AD、Desktop SSO、Microsoft Passport for Azure AD 和 Administrator BitLocker 恢复](https://docs.microsoft.com/azure/active-directory/active-directory-editions)，[MDM 自动注册，自助 BitLocker 恢复，通过 Azure AD Join 将其他本地管理员加入 Windows 10 设备](https://docs.microsoft.com/azure/active-directory/active-directory-editions)|
 
 
 - [Cloud App Discovery](https://docs.microsoft.com/azure/active-directory/active-directory-cloudappdiscovery-whatis) 是 Azure Active Directory 的一项高级功能，能够识别组织中的人员所使用的云应用程序。

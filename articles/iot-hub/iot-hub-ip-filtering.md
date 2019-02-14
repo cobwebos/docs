@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: rezas
-ms.openlocfilehash: cd382c0daff79b487f4ecae01ad852f6e57f3a25
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d549127b5cbdb3a94e435e753592f3227cb95f3a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734243"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232208"
 ---
 # <a name="use-ip-filters"></a>使用 IP 筛选器
 
@@ -72,7 +72,7 @@ IP 筛选器规则在 IoT 中心服务级别进行应用。 因此，IP 筛选�
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>使用 Azure CLI 检索和更新 IP 筛选器
 
-可以通过 [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) 检索和更新 IoT 中心的 IP 筛选器。 
+可以通过 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 检索和更新 IoT 中心的 IP 筛选器。 
 
 若要检索 IoT 中心的当前 IP 筛选器，请运行：
 
@@ -121,7 +121,7 @@ az resource update -n <iothubName> -g <resourceGroupName> --resource-type Micros
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-powershell"></a>使用 Azure PowerShell 检索和更新 IP 筛选器
 
-可以通过 [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azps-1.2.0) 检索和设置 IoT 中心的 IP 筛选器。 
+可以通过 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) 检索和设置 IoT 中心的 IP 筛选器。 
 
 ```powershell
 # Get your IoT Hub resource using its name and its resource group name
@@ -145,7 +145,7 @@ $iothubResource | Set-AzureRmResource -Force
 
 ## <a name="update-ip-filter-rules-using-rest"></a>使用 REST 更新 IP 筛选器
 
-还可以使用 Azure 资源提供程序的 REST 终结点检索和修改 IoT 中心的 IP 筛选器。 请参阅 [createorupdate 方法](https://docs.microsoft.com/en-us/rest/api/iothub/iothubresource/createorupdate) `properties.ipFilterRules`。
+还可以使用 Azure 资源提供程序的 REST 终结点检索和修改 IoT 中心的 IP 筛选器。 请参阅 [createorupdate 方法](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate) `properties.ipFilterRules`。
 
 
 ## <a name="ip-filter-rule-evaluation"></a>IP 筛选器规则评估

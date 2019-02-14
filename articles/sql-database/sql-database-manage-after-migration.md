@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 2c0d32c5e95504ac99c739af89795ac22a768c63
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 419ee13f88e63af9bebb6dda2d96530c54baa0d0
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751933"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099728"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>云中的新 DBA - 在 Azure SQL 数据库中管理数据库
 
@@ -310,7 +310,7 @@ SQL 数据库使用的某些智能技术可以实现自动处理某些类别的�
 可使用多种方法实现此目的：
 
 - **[数据同步](sql-database-sync-data.md)** - 此功能可帮助你在多个本地 SQL Server 数据库和 SQL 数据库之间双向同步数据。 要与本地 SQL Server 数据库同步，则需在本地计算机上安装和配置同步代理，并打开出站 TCP 端口 1433。
-- **[事务复制](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** - 使用事务复制功能，可将数据从本地同步到 Azure SQL DB，本地服务器作为发布服务器，而 Azure SQL DB 作为订阅服务器。 目前仅支持此安装程序。 有关如何以最少停机时间将数据从本地迁移到 Azure SQL 的详细信息，请参阅：[使用事务复制](sql-database-cloud-migrate.md#method-2-use-transactional-replication)
+- **[事务复制](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** - 使用事务复制功能，可将数据从本地同步到 Azure SQL DB，本地服务器作为发布服务器，而 Azure SQL DB 作为订阅服务器。 目前仅支持此安装程序。 有关如何以最少停机时间将数据从本地迁移到 Azure SQL 的详细信息，请参阅：[使用事务复制](sql-database-single-database-migrate.md#method-2-use-transactional-replication)
 
 ## <a name="next-steps"></a>后续步骤
 

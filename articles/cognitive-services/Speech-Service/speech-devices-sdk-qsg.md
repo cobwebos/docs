@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 语音设备 SDK 入门的先决条件和说明。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: a9a1446db66e528cfac98222d4bd258efc660c84
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 4c01cf93fe3bb66f9bce73acb3c2f100764d1f46
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750369"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55872537"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>语音设备 SDK 入门
 

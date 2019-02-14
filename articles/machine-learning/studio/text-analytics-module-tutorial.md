@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2018
-ms.openlocfilehash: 431aa2d379639b8daea2519ed643c9949102e117
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 79882fc895262f0fb607ec048e7912ae5f2efdd7
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511354"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242662"
 ---
 # <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中创建情绪分析模型
 
@@ -33,9 +33,9 @@ ms.locfileid: "55511354"
 
 可以在 Azure AI 库中找到本教程中涵盖的实验：
 
-[预测书评](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-1)
+[预测书评](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-1)
 
-[预测书评 - 预测实验](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
+[预测书评 - 预测实验](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
 
 ## <a name="step-1-clean-and-preprocess-text-dataset"></a>步骤 1：清除并预处理的文本数据集
 首先，我们将评论分数划分为低和高两类，这样可将问题公式化为双类别分类。 我们使用[编辑元数据](https://msdn.microsoft.com/library/azure/dn905986.aspx)和[分组分类值](https://msdn.microsoft.com/library/azure/dn906014.aspx)模块。

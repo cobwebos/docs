@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 了解如何使用必应视频搜索 API 获取有关视频的详细信息，例如相关视频。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 5abc5ee96c503bed9509e3d35b442ea5e0330ac7
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: b024d61c3542293202f0b409b8b3e520a75168c0
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568203"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870718"
 ---
 # <a name="get-insights-about-a-video"></a>获取有关视频的见解
 

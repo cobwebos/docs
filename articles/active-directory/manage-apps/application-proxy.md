@@ -2,21 +2,22 @@
 title: 远程访问本地应用 - Azure Active Directory 应用程序代理 | Microsoft Docs
 description: Azure Active Directory 应用程序代理提供对本地 Web 应用程序的安全远程访问。 单一登录到 Azure AD 后，用户可以通过外部 URL 或内部应用程序门户访问云端和本地的应用程序。 例如，应用程序代理可以为远程桌面、SharePoint、Teams、Tableau、Qlik 和业务线 (LOB) 应用程序提供远程访问和单一登录功能。
 services: active-directory
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: 643ef7f9960b2a91c88b4e13fe318748d175e036
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ac94574ac297da7b3555be8d92ba3c5b62a990c5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692695"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174752"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>通过 Azure Active Directory 应用程序代理远程访问本地应用程序 
 

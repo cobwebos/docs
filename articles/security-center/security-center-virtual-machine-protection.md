@@ -4,7 +4,7 @@ description: 本文档介绍 Azure 安全中心内提供的，可帮助保护虚
 services: security-center
 documentationcenter: na
 author: monhaber
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 47fa1f76-683d-4230-b4ed-d123fef9a3e8
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2019
 ms.author: monhaber
-ms.openlocfilehash: 411fc025f5a25e961f69f5e6f66a9f6d115689a7
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 8dcaa9b98292e66d81daf3d115159b0c0c1124af
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487737"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106711"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>在 Azure 安全中心保护计算机和应用程序
 Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别潜在的安全漏洞时，它会创建一些建议，这些建议会指导完成配置所需控件的过程。 建议适用于以下 Azure 资源类型：虚拟机 (VM) 和计算机、应用程序、网络、SQL，以及“标识和访问”。
@@ -67,7 +67,7 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 “应用系统更新”以图形格式汇总了关键更新，分别适用于 Windows 和 Linux。 第二部分有一个表，其中包含以下信息：
 
 - **名称**：所缺更新的名称。
-- VM 和和计算机的数量**：缺少此更新的 VM 和计算机的总数。
+- **VM 和和计算机的数量**：缺少此更新的 VM 和计算机的总数。
 - **更新严重性**：描述该特定建议的严重性：
 
     - **严重**：重要资源（应用程序、虚拟机或网络安全组）存在漏洞，需要引起注意。

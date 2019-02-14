@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 4fec32ac2d613486ee65416ccdfac70575ea9543
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: f7558876391d25d2f6f3dd1fede4cb0d13d72bf0
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509569"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236254"
 ---
 # <a name="retrain-an-azure-machine-learning-studio-model"></a>重新训练 Azure 机器学习工作室模型
 作为 Azure 机器学习中机器学习模型操作过程的一部分，模型被训练并保存。 然后使用它来创建预测 Web 服务。 然后可以在网站、仪表板和移动应用中使用 Web 服务。 
@@ -53,8 +53,6 @@ ms.locfileid: "55509569"
 * 部署重新训练 Web 服务
 * 使用 Batch 执行服务代码重新训练模型
 
-有关上述步骤的演练，请参阅[以编程方式重新训练机器学习模型](retrain-models-programmatically.md)。
-
 > [!NOTE] 
 > 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。 
 
@@ -63,8 +61,6 @@ ms.locfileid: "55509569"
 * 在预测 Web 服务上创建新终结点
 * 获取 PATCH URL 和代码
 * 使用 PATCH URL 将新终结点指向重新训练模型 
-
-有关上述步骤的演练，请参阅[重新训练经典 Web 服务](retrain-a-classic-web-service.md)。
 
 如果在重新训练经典 Web 服务时遇到困难，请参阅 [Azure 机器学习经典 Web 服务重新训练的故障排除](troubleshooting-retraining-models.md)。
 
@@ -76,8 +72,6 @@ ms.locfileid: "55509569"
 * 在 JSON 中更新对 `ilearner` blob 的引用
 * 将 JSON 导入到 Web 服务定义中
 * 使用新的 Web 服务定义更新 Web 服务
-
-有关上述步骤的演练，请参阅[使用机器学习管理 PowerShell cmdlet 重新训练新 Web 服务](retrain-new-web-service-using-powershell.md)。
 
 为经典 Web 服务设置重新训练的过程包括以下步骤：
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: fb9725e18c53e9d42ae51418a1eb614aaa10fd12
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 01294ec8aa65a8405bc99be215008dad66a73d8d
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816775"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960738"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>如何使用 Azure 移动应用的托管客户端
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -609,7 +609,7 @@ SDK 在拉取记录之前会执行隐式 `PushAsync()`。
 
 通过在客户端上调用某一个 [InvokeApiAsync] 方法来调用自定义 API。 例如，以下代码行向后端上的 **completeAll** API 发送 POST 请求：
 
-```
+```javascript
 var result = await client.InvokeApiAsync<MarkAllResult>("completeAll", System.Net.Http.HttpMethod.Post, null);
 ```
 

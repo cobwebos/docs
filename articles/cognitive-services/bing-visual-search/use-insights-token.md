@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 展示了如何将图像的见解标记与必应视觉搜索 API 配合使用来获取有关图像的见解。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: b3e948c2eafb43f804b330287b114ef9307b0aac
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a1a2128e4e13494a76dfad9f051be56e02dbd995
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813358"
+ms.locfileid: "55878793"
 ---
 # <a name="using-an-insights-token-to-get-insights-about-an-image"></a>使用见解标记获取有关图像的见解
 

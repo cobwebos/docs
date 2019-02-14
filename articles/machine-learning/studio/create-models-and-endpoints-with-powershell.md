@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 43d16c291391a3ffd94f404755e644dac0daf3a9
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 280538c16f5a464f759eca74cce8ff6a97bfa4b2
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492821"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244292"
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>使用 PowerShell 从一个试验创建多个工作室模型和 Web 服务终结点
 
@@ -35,7 +35,7 @@ ms.locfileid: "55492821"
 > 
 
 ## <a name="set-up-the-training-experiment"></a>设置训练实验
-请使用 [Cortana Intelligence 库](http://gallery.cortanaintelligence.com)中的示例[训练实验](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Training-Experiment-1)。 在 [Azure 机器学习工作室工作区](https://studio.azureml.net)中打开此实验。
+请使用 [Cortana Intelligence 库](http://gallery.azure.ai)中的示例[训练实验](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1)。 在 [Azure 机器学习工作室工作区](https://studio.azureml.net)中打开此实验。
 
 > [!NOTE]
 > 为了遵循此示例，可能需要使用标准工作区而不是免费工作区。 请为每个客户创建一个终结点（总共 10 个终结点），这需要一个标准工作区，因为免费工作区中最多只能有 3 个终结点。 如果只有一个免费工作区，只需将脚本更改为仅允许三个位置即可。
@@ -63,7 +63,7 @@ ms.locfileid: "55492821"
 若要执行此操作，可单击画布下的“设置 Web 服务”，然后选择“预测 Web 服务”。 这会创建评分实验。
 需要进行一些细微调整，使之可以作为 Web 服务使用。 请从输入数据中删除标签列“cnt”，使输出只能是实例 ID 和相应的预测值。
 
-若要保存该工作，可以打开已准备好的库中的[预测实验](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Predicative-Experiment-1)。
+若要保存该工作，可以打开已准备好的库中的[预测实验](https://gallery.azure.ai/Experiment/Bike-Rental-Predicative-Experiment-1)。
 
 要部署 Web 服务，请运行预测实验，并单击画布下的“部署 Web 服务”按钮。 将评分 Web 服务命名为“自行车租赁评分”。
 

@@ -13,12 +13,13 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
-ms.openlocfilehash: 9fd7a3c03c72a63f4163f85ac41248e200397206
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0749e1acba9f13f9e0e95dfc66f9cf818c752cff
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770714"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165614"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>为帐户设置双重验证
 双重验证是额外的安全保障步骤，通过加大他人攻破的难度，帮助保护帐户安全。 如果正在阅读本文，可能已收到公司或学校管理员发送的有关多重身份验证的电子邮件。 或者，可能已尝试登录，但收到要求设置其他安全验证的消息。 如果是这种情况，**除非完成自动注册过程，否则无法登录**。

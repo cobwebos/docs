@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: 70f6f8a7837b9e87b2720a866f14983356d23691
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 0bc53edb00ea13fdfcab3cfc398e122e6ecd7632
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487670"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106318"
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>查看活动日志以审核对资源的操作
 
@@ -73,6 +73,8 @@ ms.locfileid: "55487670"
     ![在仪表板上显示筛选器](./media/resource-group-audit/show-dashboard.png)
 
 ## <a name="powershell"></a>PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * 若要检索日志条目，请运行 **Get-AzLog** 命令。 可以提供附加参数来筛选条目列表。 如果未指定开始和结束时间，将返回最后七天的条目。
 

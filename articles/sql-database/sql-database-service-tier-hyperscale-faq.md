@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/06/2019
-ms.openlocfilehash: 3ee952f10cebe374767e0db4a592695eeb1b4417
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 16d536ff5bd1f7d9a3427877a93036d9f711564e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810059"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099764"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>关于 Azure SQL 超大规模数据库的 FAQ
 
@@ -243,7 +243,7 @@ SQL 超大规模数据库支持所有 SQL Server 工作负荷，但它主要针�
 
 ### <a name="what-is-the-oldest-sql-server-version-will-sql-database-hyperscale-support-migration-from"></a>对于从 SQL Server 迁移，SQL 超大规模数据库支持的 SQL Server 最早版本是什么
 
-SQL Server 2005。 有关详细信息，请参阅[迁移到单一数据库或共用数据库](sql-database-cloud-migrate.md#migrate-to-a-single-database-or-a-pooled-database)。 对于兼容性问题，请参阅[解决数据库迁移的兼容性问题](sql-database-cloud-migrate.md#resolving-database-migration-compatibility-issues)。
+SQL Server 2005。 有关详细信息，请参阅[迁移到单一数据库或共用数据库](sql-database-single-database-migrate.md#migrate-to-a-single-database-or-a-pooled-database)。 对于兼容性问题，请参阅[解决数据库迁移的兼容性问题](sql-database-single-database-migrate.md#resolving-database-migration-compatibility-issues)。
 
 ### <a name="does-sql-database-hyperscale-support-migration-from-other-data-sources-such-as-aurora-mysql-oracle-db2-and-other-database-platforms"></a>SQL 超大规模数据库是否支持从其他数据源（如 Aurora、MySQL、Oracle、DB2）和其他数据库平台进行迁移
 

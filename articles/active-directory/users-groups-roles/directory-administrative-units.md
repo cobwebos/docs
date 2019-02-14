@@ -14,12 +14,13 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 52b71e557ade54cdefd349b8981100210833185a
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 77f1a6e5b1e8191c1497e437cc26e1caf1255ba7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508447"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210350"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-public-preview"></a>Azure Active Directory 中的管理单元管理（公共预览版）
 

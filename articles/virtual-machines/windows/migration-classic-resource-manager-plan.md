@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 1960cac28b74980d17f37b4e06e79604e156381e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 540abeed3587959af5ca229f59343774b824547b
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566231"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982890"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 尽管 Azure 资源管理器提供了许多精彩功能，但请务必计划迁移，以确保一切顺利进行。 花时间进行规划可确保执行迁移活动时不会遇到问题。
@@ -131,23 +131,25 @@ ms.locfileid: "55566231"
     - 路由表
 
     可通过最新版 Azure PowerShell 使用以下命令查看当前的 Azure 资源管理器配额。
+    
+    [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
     **计算**（核心数、可用性集数）
 
     ```powershell
-    Get-AzureRmVMUsage -Location <azure-region>
+    Get-AzVMUsage -Location <azure-region>
     ```
 
     **网络** *（虚拟网络、静态公共 IP、公共 IP、网络安全组、网络接口、负载均衡器和路由表）*
 
     ```powershell
-    Get-AzureRmUsage /subscriptions/<subscription-id>/providers/Microsoft.Network/locations/<azure-region> -ApiVersion 2016-03-30 | Format-Table
+    Get-AzUsage /subscriptions/<subscription-id>/providers/Microsoft.Network/locations/<azure-region> -ApiVersion 2016-03-30 | Format-Table
     ```
 
     **存储** *（存储帐户）*
 
     ```powershell
-    Get-AzureRmStorageUsage
+    Get-AzStorageUsage
     ```
 
 - **Azure 资源管理器 API 限制** - 如果有足够大的环境（如 在 VNET 中有 > 400 VM），则可能达到 Azure 资源管理器中的写入的默认 API 限制（当前为 `1200 writes/hour`）。 开始迁移前，应开具支持票证为订阅提高此限制。

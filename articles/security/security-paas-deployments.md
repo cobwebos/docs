@@ -4,7 +4,7 @@ description: " 了解 PaaS 相比其他云服务模型的安全优势，了解�
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: techlake
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: terrylan
-ms.openlocfilehash: 6bc1df7acf7ce711e106983f8084f168152fc51e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e845adc3aad21e62009ee9b99dbd65bcff794bd9
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488401"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117793"
 ---
 # <a name="securing-paas-deployments"></a>保护 PaaS 部署
 
@@ -111,7 +111,7 @@ Microsoft [安全开发生命周期](https://www.microsoft.com/en-us/sdl)指定�
 
 | 威胁 | 安全属性 | 潜在的 Azure 平台迁移 |
 | --- | --- | --- |
-| 欺骗 | 身份验证 | 需要 HTTPS 连接。 |
+| 欺骗 | Authentication | 需要 HTTPS 连接。 |
 | 篡改 | 完整性 | 验证 SSL 证书。 |
 | 否认性 | 不可否认性 | 启用 Azure [监视和诊断](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)。 |
 | 信息泄露 | 机密性 | 使用[服务证书](https://docs.microsoft.com/rest/api/appservice/certificates)加密静态敏感数据。 |

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 了解必应实体搜索 API 终结点并向其发送请求。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-gedod
-ms.openlocfilehash: cae65c8fb7deb9f68a297de2058a86249b60136b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 3c2aa4b22c8e679f73692978d9e1f8009f11a46b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753974"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55875223"
 ---
 # <a name="bing-entity-search-api-endpoint"></a>必应实体搜索 API 终结点
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing-ms
-ms.openlocfilehash: 7bd228a01cd3841772750882d13c33459385cc21
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4de6e4429543ea4f691cc3a38c15b896b866075b
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817710"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980714"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 的 Azure 混合权益
 对于有软件保障的客户，Windows Server 的 Azure 混合权益可让你使用本地 Windows Server 许可证，并以较低成本在 Azure 中运行 Windows 虚拟机。 可以使用 Windows Server 的 Azure 混合权益部署 Windows OS 的新虚拟机。 本文介绍如何使用 Windows Server 的 Azure 混合权益部署新的 VM 的步骤，以及如何更新现有正在运行的 VM 的步骤。 有关 Windows Server 的 Azure 混合权益许可和成本节约方面的更多信息，请参阅[“Windows Server 的 Azure 混合权益许可”页](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
@@ -36,6 +36,7 @@ ms.locfileid: "55817710"
 > 对于经典 VM，仅支持从本地自定义映像部署新的 VM。 若要使用本文支持的功能，必须首先将经典 VM 迁移到资源管理器模型。
 >
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>使用 Windows Server 的 Azure 混合权益的方式
 可以通过以下几种方式将 Windows 虚拟机与 Azure 混合权限配合使用：
@@ -53,8 +54,10 @@ Windows Server 的 Azure 混合权益支持所有基于 Windows Server OS 的映
 若要使用 Windows Server 的 Azure 混合权益创建 VM，请使用“节省资金”部分下的切换。
 
 ### <a name="powershell"></a>Powershell
+
+
 ```powershell
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Name "myVM" `
     -Location "East US" `
@@ -95,17 +98,17 @@ az vm create \
 - 将现有 Windows Server VM 转换为 Windows Server 的 Azure 混合权益
 
     ```powershell
-    $vm = Get-AzureRmVM -ResourceGroup "rg-name" -Name "vm-name"
+    $vm = Get-AzVM -ResourceGroup "rg-name" -Name "vm-name"
     $vm.LicenseType = "Windows_Server"
-    Update-AzureRmVM -ResourceGroupName rg-name -VM $vm
+    Update-AzVM -ResourceGroupName rg-name -VM $vm
     ```
     
 - 将具有权益的 Windows Server VM 转换回即用即付
 
     ```powershell
-    $vm = Get-AzureRmVM -ResourceGroup "rg-name" -Name "vm-name"
+    $vm = Get-AzVM -ResourceGroup "rg-name" -Name "vm-name"
     $vm.LicenseType = "None"
-    Update-AzureRmVM -ResourceGroupName rg-name -VM $vm
+    Update-AzVM -ResourceGroupName rg-name -VM $vm
     ```
     
 ### <a name="cli"></a>CLI
@@ -124,7 +127,7 @@ az vm create \
 ### <a name="powershell"></a>Powershell
 以下示例显示单个 VM 的许可证类型
 ```powershell
-Get-AzureRmVM -ResourceGroup "myResourceGroup" -Name "myVM"
+Get-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
 ```
 
 输出：
@@ -158,7 +161,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVM --query "[?licenseType=='Wind
 
 ### <a name="powershell"></a>Powershell
 ```powershell
-$vms = Get-AzureRMVM 
+$vms = Get-AzVM 
 $vms | ?{$_.LicenseType -like "Windows_Server"} | select ResourceGroupName, Name, LicenseType
 ```
 
