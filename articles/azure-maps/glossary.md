@@ -8,12 +8,12 @@ ms.topic: resource
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: d220fea64f860ebe5b660f7ebe5ad7db7aec4534
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 3b8af6f3f91c54c78cc3b277068272c27055e4aa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46369813"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816877"
 ---
 # <a name="glossary"></a>术语表
 
@@ -25,7 +25,7 @@ ms.locfileid: "46369813"
 
 <a name="advanced-routing"></a> **高级路由**：使用道路路由数据执行高级操作的服务集合，例如计算可到达范围（等时线）、距离矩阵和批量路径请求。
 
-<a name="aerial-imagery"></a>**航拍图像**：请参阅[卫星图像](#satellite-imagery)。 
+<a name="aerial-imagery"></a> **航拍图像**：请参阅[卫星图像](#satellite-imagery)。 
 
 <a name="along-a-route-search"></a> **沿路由搜索**：一种空间查询，用于查找在路由路径的指定绕行时间或距离内的数据。
 
@@ -35,11 +35,11 @@ ms.locfileid: "46369813"
 
 <a name="annotation"></a> **注释**：地图上显示的可向用户提供信息的文本或图形。 注释可以标识或描述特定的地图实体，提供关于地图上的区域的一般信息，或者提供关于地图本身的信息。
 
-<a name="antimeridian"></a>**下子午圈**：也称为第 180<sup></sup> 个子午线，它是 -180 度和 180 度经度相交的点。 这与地球上的本初子午线相反。
+<a name="antimeridian"></a> **下子午圈**：也称为第 180 个子午线，它是 -180 度和 180 度经度相交的点。<sup></sup> 这与地球上的本初子午线相反。
 
-<a name="application-programming-interface-api"></a> **应用程序编程接口 (API)**：允许开发人员创建应用程序的规范。
+<a name="application-programming-interface-api"></a> **应用程序编程接口 (API)**：让开发人员创建应用程序的规范。
 
-<a name="api-key"></a> **API 密钥**：请参阅 Azure Maps 密钥。
+<a name="api-key"></a> **API 密钥**：请参阅“Azure Maps 密钥”。
 
 <a name="area-of-interest-aoi"></a> **兴趣区域 (AOI)**：用于定义地图或数据库生产焦点区域的范围。
 
@@ -73,9 +73,9 @@ ms.locfileid: "46369813"
 
 <a name="cadastre"></a> **Cadastre**：登记的土地和财产记录。 另请参阅 [Parcel](#parcel)。
 
-<a name="camera"></a> **照相机**：在交互式地图控件的上下文中，照相机定义了地图视图。 基于几个地图参数确定照相机的视区；中心、缩放级别、间距和方位。 
+<a name="camera"></a> **照相机**：在交互式地图控件的上下文中，照相机定义地图视图。 基于几个地图参数确定照相机的视区；中心、缩放级别、间距和方位。 
 
-<a name="centroid"></a> **质心**：功能的几何中心。 线的质心为其中点，而多边形的质心则为其中心区域。
+<a name="centroid"></a> **质心**：特征的几何中心。 线的质心为其中点，而多边形的质心则为其中心区域。
 
 <a name="choropleth-map"></a> **地区分布图**：一个专题地图，其中区域与地图上显示的统计变量的测量值成比例。 例如，根据美国每个州相对于其他所有州的人口，将美国每个州的边界着色。
 
@@ -131,21 +131,21 @@ ms.locfileid: "46369813"
 
 <a name="extended-postal-code"></a> **扩展邮政编码**：可能包含其他信息的邮政编码。 例如，在美国，邮政编码有五位数字，但扩展邮政编码（称为 zip+4）将包含四个附加数字。 这些附加数字用于识别五位数交付区域内的地理区段，例如城市街区、一组公寓或邮局信箱，这有助于有效的邮件分拣和交付。
 
-<a name="extent"></a> **程度**：请参阅[边界框](#bounding-box)。
+<a name="extent"></a> **范围**：请参阅[边界框](#bounding-box)。
 
 ## <a name="f"></a>F
 
 <a name="federated-authentication"></a> **联合身份验证**：一种身份验证方法，允许在多个 Web 和移动应用中使用单一登录/身份验证机制。 
 
-<a name="feature"></a> **功能**：将几何与其他元数据信息组合在一起的对象。 
+<a name="feature"></a> **特征**：将几何与其他元数据信息组合在一起的对象。 
 
-<a name="feature-collection"></a> **功能集合**：功能对象的集合。
+<a name="feature-collection"></a> **特征集合**：特征对象的集合。
 
-<a name="find-along-route"></a> **沿路由查找**：一种空间查询，用于查找在路由路径的指定绕行时间或距离内的数据。
+<a name="find-along-route"></a> **沿路线查找：** 一种空间查询，用于查找在路由路径的指定绕行时间或距离内的数据。
 
-<a name="find-nearby"></a> **在附近查找**：从一个点搜索固定直线距离（如乌鸦飞行）的空间查询。
+<a name="find-nearby"></a> **附近查找**：从一个点搜索固定直线距离（如乌鸦飞行）的空间查询。
 
-<a name="fleet-management"></a> **车队管理**：商用车辆的管理，如汽车、卡车、轮船和飞机。 车队管理可以包括一系列功能，例如车辆融资、维护、远程信息处理（跟踪和诊断）以及驾驶员、速度、燃油以及运行状况和安全管理。 车队管理是公司采用的一个流程，公司依靠运输业务来最大限度地降低风险，降低整体运输和员工成本，同时确保遵守政府法规。
+<a name="fleet-management"></a> **群队管理**：商用车辆的管理，如汽车、卡车、轮船和飞机。 车队管理可以包括一系列功能，例如车辆融资、维护、远程信息处理（跟踪和诊断）以及驾驶员、速度、燃油以及运行状况和安全管理。 车队管理是公司采用的一个流程，公司依靠运输业务来最大限度地降低风险，降低整体运输和员工成本，同时确保遵守政府法规。
 
 <a name="free-flow-speed"></a> **自由流动速度**：在理想条件下预期的自由流动速度。 通常是速度限制。
 
@@ -195,9 +195,9 @@ ms.locfileid: "46369813"
 
 <a name="hd-maps"></a> **HD 地图**：也称为高清晰度地图，由高保真道路网络信息组成，例如车道标记、标牌和自动驾驶所需的方向灯。
 
-<a name="heading"></a> **标题**：指向或面对的方向。 另请参阅[方位](#heading)。
+<a name="heading"></a> **方向**：指向或面对的方向。 另请参阅[方位](#heading)。
 
-<a name="heatmap"></a> **热度地图**：一种数据可视化，其中一系列颜色表示特定区域中的点密度。 另请参阅[主题地图](#thermatic-map)。
+<a name="heatmap"></a> **热度地图**：一种数据可视化，其中一系列颜色表示特定区域中的点密度。 另请参阅“主题地图”。
 
 <a name="hybrid-imagery"></a> **混合图像**：卫星或航拍图像，将道路数据和标签叠加在其上。
 
@@ -207,7 +207,7 @@ ms.locfileid: "46369813"
 
 <a name="isochrone"></a> **等时线**：等时线定义某人可在指定时间内采用某种交通方式，从给定位置沿任何方向行进的区域。 另请参阅[可访问范围](#reachable-range)。
 
-<a name="isodistance"></a> **Isodistance**：给定位置，等时线定义某人在指定距离内，采用某种交通方式，沿任何方向可行进的区域。 另请参阅[可访问范围](#reachable-range)。
+<a name="isodistance"></a> **等距**:给定位置，等时线定义某人在指定距离内，采用某种交通方式，沿任何方向可行进的区域。 另请参阅[可访问范围](#reachable-range)。
 
 ## <a name="k"></a>K
 
@@ -219,13 +219,13 @@ ms.locfileid: "46369813"
 
 <a name="latitude"></a> **纬度**：以度为单位从赤道向北或向南方向测量的角距离。
 
-<a name="level-of-detail"></a> **详细信息级别**：请参阅[缩放级别](#zoom-level)。
+<a name="level-of-detail"></a> **详细程度**：请参阅“缩放级别”。
 
 <a name="lidar"></a> **Lidar**：光探测和测距的缩写。 一种遥感技术，使用激光测量到反射表面的距离。
 
 <a name="linear-interpolation"></a> **线性内插**：使用已知值之间的线性距离估计未知值。
 
-<a name="linestring"></a> **LineString**：用于表示直线的几何图形。 也称为折线。 
+<a name="linestring"></a> **LineString**：用于表示线条的几何体。 也称为折线。 
 
 <a name="localization"></a> **本地化**：对不同语言和区域性的支持。
 
@@ -237,7 +237,7 @@ ms.locfileid: "46369813"
 
 <a name="map-tile"></a> **地图图块**：矩形图像，表示地图画布的分区。 有关详细信息，请参阅[缩放级别和磁贴网格文档](zoom-levels-and-tile-grid.md)。
 
-<a name="marker"></a> **标记**：也称为销或图钉，是一个表示在地图上的点位置的图标。
+<a name="marker"></a> **标记**：也称为“图钉”，是一个表示在地图上的点位置的图标。
 
 <a name="mercator-projection"></a> **墨卡托投影**：圆柱形地图投影，由于能够表示恒定航线（称为垂直线），作为与经线保持角度的直段，因此成为航海用途的标准地图投影。 与地球表面的真实布局相比，所有平面地图投影都会扭曲地图的形状或大小。 墨卡托投影会放大远离赤道的区域，因此接近两极时，较小的区域在地图上显得更大。 
 
@@ -255,13 +255,13 @@ ms.locfileid: "46369813"
 
 <a name="navigation-bar"></a> **导航栏**：地图上的一组控件，用于调整缩放级别、间距、旋转和切换基本地图图层。
 
-<a name="nearby-search"></a> **邻近搜索**：从一个点搜索固定直线距离（如乌鸦飞行）的空间查询。
+<a name="nearby-search"></a> **附近搜索**：从一个点搜索固定直线距离（如乌鸦飞行）的空间查询。
 
 <a name="neutral-ground-truth"></a> **中性标定真实数据**：一种地图，使用其所代表区域的官方语言和本地脚本（如果可用）呈现标签。
 
 ## <a name="o"></a>O
 
-<a name="origin"></a> **源**：用户所在的起点或位置。
+<a name="origin"></a> **源点**：用户所在的起点或位置。
 
 ## <a name="p"></a>P
 
@@ -273,15 +273,15 @@ ms.locfileid: "46369813"
 
 <a name="point"></a> **点**：表示地图上单个位置的几何图形。 
 
-<a name="points-of-interest-poi"></a> **兴趣点 (POI)** 企业、地标或共同兴趣位置。
+<a name="points-of-interest-poi"></a> **兴趣点 (POI)**：企业、地标或共同兴趣位置。
 
 <a name="polygon"></a> **多边形**：表示地图上某个区域的实体几何图形。 
 
-<a name="polyline"></a> **折线**：用于表示行的几何图形。 也称为 LineString。 
+<a name="polyline"></a> **聚合线**：用于表示线条的几何体。 也称为 LineString。 
 
 <a name="position"></a> **位置**：点的经度、纬度和高度（x、y、z 坐标）。
 
-<a name="post-code"></a> **发布代码**：请参阅[邮政编码](#postal-code)。
+<a name="post-code"></a> **邮寄编码**：请参阅[邮政编码](#postal-code)。
 
 <a name="postal-code"></a> **邮政编码**：采用特定格式的一系列字母和/或数字，由国家的邮政服务用于将地理区域划分为区域，以简化邮件的传递。
 
@@ -295,7 +295,7 @@ ms.locfileid: "46369813"
 
 <a name="quadkey"></a> **Quadkey**：四叉树图块系统中平铺的 base-4 地址索引。 有关详细信息，请参阅[缩放级别和磁贴网格](zoom-levels-and-tile-grid.md)文档。
 
-<a name="quadtree"></a> **四叉树**：一种数据结构，其中每个节点只有四个子节点。 Azure Maps 中使用的图块系统使用四叉树结构，使用户放大一个级别时，每个地图图块分解为四个子图块。  有关详细信息，请参阅[缩放级别和磁贴网格](zoom-levels-and-tile-grid.md)文档。
+<a name="quadtree"></a> **Quadtree**：一种数据结构，其中每个节点只有四个子节点。 Azure Maps 中使用的图块系统使用四叉树结构，使用户放大一个级别时，每个地图图块分解为四个子图块。  有关详细信息，请参阅[缩放级别和磁贴网格](zoom-levels-and-tile-grid.md)文档。
 
 <a name="queries-per-second-qps"></a> **每秒查询次数 (QPS)**：一秒钟内可以对服务或平台进行的查询或请求的数量。 
 
@@ -319,9 +319,9 @@ ms.locfileid: "46369813"
 
 <a name="rest-service"></a> **REST 服务**：代表表述性状态转移的首字母缩略词。 在分散的分布式环境中用于在对等机之间交换信息的体系结构。 REST 允许不同计算机上的程序通过向统一资源定位符 (URL) 发送超文本传输协议 (HTTP) 请求来独立于操作系统或平台进行通信并获得数据。
 
-<a name="route"></a> **路由**：两个或多个位置之间的路径，它还可能包括附加信息，例如沿着路线的路标的指令。
+<a name="route"></a> **路线**：两个或多个位置之间的路径，它还可能包括附加信息，例如沿着路线的路标的指令。
 
-<a name="requests-per-second-rps"></a> **每秒的请求数 (RPS)**：请参阅[每秒查询次数 (QPS)](#queries-per-second-qps)。 
+<a name="requests-per-second-rps"></a> **每秒请求数 (RPS)**：请参阅[每秒查询次数 (QPS)](#queries-per-second-qps)。 
 
 <a name="rss"></a> **RSS**：Really Simple Syndication、Resource Description Framework (RDF) Site Summary 或 Rich Site Summary 的缩写，具体取决于源。 一种简单的结构化 XML 格式，用于在不同网站之间共享内容。 RSS 文档包括关键元数据元素，例如作者、日期、标题、简要描述和超文本链接。 此信息有助于用户（或 RSS 发布者服务）决定哪些材料值得进一步调查。
 
@@ -357,7 +357,7 @@ ms.locfileid: "46369813"
 
 <a name="time-zone"></a> **时区**：地球上的一个区域，因为法律、商业和社会目的而遵守统一标准时间。 时区往往遵循国家/地区及其细分的界限。
 
-<a name="transaction"></a> **事务**Azure Maps 使用事务许可模型，其中；
+<a name="transaction"></a> **事务**：Azure Maps 使用事务许可模型，其中：
 
 - 为每 15 个请求的地图或流量图块创建一个事务。
 - 为 Azure Maps 中的某个服务（例如搜索或路由）的每个 API 调用创建一个事务。
@@ -366,7 +366,7 @@ ms.locfileid: "46369813"
 
 <a name="traveling-salesmen-problem-tsp"></a> **旅行商问题 (TSP)**：哈密尔顿线路问题，销售人员必须找到访问一系列拜访地点，然后返回起始地点的最有效方法。  
 
-<a name="trilateration"></a> ：通过测量所有三个点之间的距离来确定地球表面上的点相对于另外两个点的位置的过程。
+<a name="trilateration"></a> **三边测量法**：通过测量所有三个点之间的距离来确定地球表面上的点相对于另外两个点的位置的过程。
 
 <a name="turn-by-turn-navigation"></a> **逐向道路导航**：一种应用程序，用于在用户即将进行下一个操纵时，提供路线每个步骤的路线说明。
 
@@ -396,7 +396,7 @@ ms.locfileid: "46369813"
 
 <a name="z-coordinate"></a> **Z 坐标**：请参阅[海拔高度](#altitude)。 
 
-<a name="zip-code"></a> **邮政编码**：请参阅[邮政编码](#postal-code)。
+<a name="zip-code"></a> **邮编**：请参阅[邮政编码](#postal-code)。
 
 <a name="Zoom level"></a> **缩放级别**：指定详细程度以及可见的地图数量。 当完全缩放到 0 级时，通常会显示完整的世界地图，但显示的详细信息有限，例如国家/地区名称和边界以及海洋名称。 当放大到接近等级 17 时，地图将显示具有详细道路信息的几个城市街区的区域。 有关详细信息，请参阅[缩放级别和磁贴网格](zoom-levels-and-tile-grid.md)文档。
 

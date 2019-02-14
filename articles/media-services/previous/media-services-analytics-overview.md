@@ -4,7 +4,7 @@ description: 媒体分析公共预览版概述，其中集合了企业级的语�
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: c56e3781-8510-4f7f-b5ff-a218c1bb6f4c
 ms.service: media-services
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 02/08/2019
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: 0ac8b9fad35267ceaec5b5acec4722b6005f68a9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c60fd90adda4c362b15fe2e324aa55a581c9e59a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783586"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003758"
 ---
-# <a name="media-analytics-on-the-media-services-platform"></a>媒体服务平台上的媒体分析
+# <a name="media-analytics-on-the-media-services-platform"></a>媒体服务平台上的媒体分析 
+
 ## <a name="overview"></a>概述
 越来越多的组织将视频用作首选媒体来培训员工、与客户沟通以及规定业务职能。 云计算提供了一种方法来存储、流式传输和访问这些大型媒体文件。 但随着公司视频内容库的扩大，它需要在从内容中提取见解时具有同样有效的方式。 
 

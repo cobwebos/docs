@@ -4,7 +4,7 @@ description: 本文档演示如何实现 Azure 安全中心建议**对 SQL Serve
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 042fca4d-7dab-4172-8614-e8c21ccb4960
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 21d261fc82e7aec6d3d4a8ae0c98d71a686be201
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 5b41af83122d74fc766e6c5179d98803979269f7
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53335944"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108902"
 ---
 # <a name="enable-auditing-and-threat-detection-on-sql-servers-in-azure-security-center"></a>在 Azure 安全中心中对 SQL Server 启用审核和威胁检测
 Azure 安全中心将建议对 Azure SQL 服务器上的所有数据库启用审核和威胁检测（如果尚未启用）。 审核和威胁检测可帮助你一直保持遵从法规、了解数据库活动，以及深入了解可能指示业务利害关系或疑似安全违规的偏差和异常。

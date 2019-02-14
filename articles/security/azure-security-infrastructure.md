@@ -4,7 +4,7 @@ description: 本文介绍 Microsoft 如何保护我们的 Azure 数据中心。
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
-ms.openlocfilehash: 9385c6ea8d2a04e9a8595a22e6e2ff7638394b41
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: dc9b4db37e811d8bac6df2d532fd3629d98c9650
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172966"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104752"
 ---
 # <a name="azure-infrastructure-security"></a>Azure 基础结构安全性
 Microsoft Azure 在由 Microsoft 管理和运营的数据中心运行。 这些地理位置分散的数据中心符合有关安全性和可靠性的关键行业标准，例如 ISO/IEC 27001:2013 和 NIST SP 800-53。 它们由 Microsoft 运营人员进行管理和监控。 这些运营人员在提供全球最大的全天候持续运行的联机服务方面拥有多年经验。
@@ -38,7 +38,7 @@ Microsoft Azure 在由 Microsoft 管理和运营的数据中心运行。 这些�
 - [数据保护](azure-protection-of-customer-data.md)
 
 ## <a name="shared-responsibility-model"></a>共担责任模型
-请务必了解你与 Microsoft 之间的责任分工。 在本地，你拥有整个堆栈，但迁移到云后，某些责任将转移到 Microsoft。 下图说明了根据堆栈部署类型（软件即服务 [SaaS]、平台即服务 [PaaS]、基础架构即服务 [IaaS] 和本地）划分的职责范围。
+请务必了解你与 Microsoft 之间的责任分工。 在本地，你拥有整个堆栈，但迁移到云后，某些责任将转移到 Microsoft。 下图说明了根据堆栈部署类型（软件即服务 [SaaS]、平台即服务 [PaaS]、基础结构即服务 [IaaS] 和本地）划分的职责范围。
 
 ![显示职责的图形][1]
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 了解如何将必应视觉搜索 API 集成到单页 Web 应用程序中。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: aahi
-ms.openlocfilehash: ca210130a1319ffc1f9dfd867d6c320ea0bd68b1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cf8525d4cc829805532210bf09e9ea9da240405d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192641"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857743"
 ---
 # <a name="create-a-visual-search-single-page-web-app"></a>创建视觉搜索单页 Web 应用 
 

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 本快速入门指南将演示如何在 Unity 项目中集成插件、制作场景，以及将音效应用于声源。
 services: cognitive-services
 author: kegodin
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 0aad231b4a57c2d9927a553a43394681282b5494
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a9cc8c7b4cdcc05d38bc0d68561fc9d86305b0cb
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155946"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55879908"
 ---
 # <a name="getting-started-with-project-acoustics"></a>Project Acoustics 入门
 本快速入门指南将演示如何在 Unity 项目中集成插件、制作场景，以及将音效应用于声源。 对于本快速入门教程，首先需要创建 [Azure Batch 帐户](create-azure-account.md)。 本指南假设用户比较熟悉 Unity。

@@ -1,25 +1,20 @@
 ---
 title: 服务运行状况概述 | Microsoft Docs
 description: 有关当前和将来的 Azure 服务问题及维护对 Azure 应用造成的影响的个性化信息。
-services: Resource health
-documentationcenter: ''
-author: rboucher
-manager: ''
-editor: ''
-ms.assetid: ''
+services: service-health
+author: stephbaron
+ms.author: stbaron
+documentationcenter: service-health
 ms.service: service-health
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 03/27/2018
-ms.author: robb
-ms.openlocfilehash: aa7a925255b0c30b84c3b32bb53ba3f31c11fa6b
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: b771e36344ff26c9a817a0314e0f223b6e809a17
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162284"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55871689"
 ---
 # <a name="service-health"></a>服务运行状况
 服务运行状况提供可定制的仪表板，用于跟踪 Azure 服务在使用区域中的运行状况。 在此仪表板中，可跟踪活动事件，例如正在处理的服务问题、即将开始的计划内维护或相关运行状况公告。 当事件转变为非活动状态时，将在运行状况历史记录中保留最多 90 天。 最后，可使用服务运行状况仪表板创建和管理服务运行状况警报，受服务问题影响时会主动发出通知。

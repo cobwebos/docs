@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: a81c1d20e0f7b58c132a5ece04f05d6740c2308f
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 40f7f15c85d5676fefe8daff0aa6a6fb5d95cf53
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498244"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117062"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>使用 Resource Manager 身份验证 API 访问订阅
 
@@ -75,6 +75,8 @@ Web 应用：
 由于应用访问其他订阅，必须将它配置为多租户应用程序。 若要通过验证，请提供与 Azure Active Directory 关联的域。 若要查看与 Azure Active Directory 关联的域，请登录门户。
 
 以下示例演示如何使用 Azure PowerShell 注册应用。 必须拥有最新版本（2016 年 8 月）Azure PowerShell 才能正常运行此命令。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ```azurepowershell-interactive
 $app = New-AzADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true

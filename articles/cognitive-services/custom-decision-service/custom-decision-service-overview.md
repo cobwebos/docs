@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 本文简要介绍了自定义 AI 决策服务。
 services: cognitive-services
 author: alekh
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-decision-service
 ms.topic: overview
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: 1792e279283608c81c0d4a08b77f9822816ed76d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f4a0f519fe83162e7e161c3fda2b78a94b1d4bd1
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221345"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55863119"
 ---
 # <a name="what-is-custom-decision-service"></a>什么是自定义 AI 决策服务？
 

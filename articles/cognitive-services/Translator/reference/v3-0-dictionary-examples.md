@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 使用文本翻译 API 字典示例方法。
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: b12b9d56f42911da606e3bdcfedbe3f789d2c4e8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: a72aca47b33c911d4812274cfa624eaacbdec0d0
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466926"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884777"
 ---
 # <a name="translator-text-api-30-dictionary-examples"></a>文本翻译 API 3.0：字典示例
 

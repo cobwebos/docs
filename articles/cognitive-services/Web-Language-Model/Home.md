@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Microsoft 认知服务中的 Web 语言模型 API 提供了用于自然语言处理的最先进工具。
 services: cognitive-services
 author: piyushbehre
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: web-language-model
 ms.topic: overview
 ms.date: 08/12/2016
 ms.author: pibehre
 ROBOTS: NOINDEX
-ms.openlocfilehash: a4dfe5bb9651e3c5ff9706de829389a1b9df1305
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4228692d707f0cff8be0d76bc70794f48d944143
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464919"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878759"
 ---
 # <a name="what-is-the-web-language-model-api-preview"></a>什么是 Web 语言模型 API？ （预览版）
 
