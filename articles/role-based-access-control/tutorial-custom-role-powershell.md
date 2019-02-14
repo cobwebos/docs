@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 7ea9ce47b82dd4ad31caf935fd10e04daa07faba
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 9dddef43e1ac5f3bcedcc08b313eea300436ea61
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699969"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106421"
 ---
 # <a name="tutorial-create-a-custom-role-using-azure-powershell"></a>教程：使用 Azure PowerShell 创建自定义角色
 
@@ -95,7 +95,7 @@ ms.locfileid: "55699969"
     
 1. 编辑 JSON 文件来向 `Actions` 属性添加 `"Microsoft.Support/*"` 操作。 请确保在读取操作后包括一个逗号。 此操作将允许用户创建支持票证。
 
-1. 使用 [Get-AzSubscription](/powershell/module/az.profile/get-azsubscription) 命令获取订阅的 ID。
+1. 使用 [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) 命令获取订阅的 ID。
 
     ```azurepowershell
     Get-AzSubscription

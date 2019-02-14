@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 使用语音服务软件开发工具包 (SDK)，应用程序可以本机访问语音服务的功能，这使得软件开发工作更为容易。 本文提供了有关适用于 Windows、Linux 和 Android 的 SDK 的其他详细信息。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 1b58ef5f8254ef81eceefa277e5f146531fa2947
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5d98ae7fe4062ce88ee2a3df5f9bb4d992d4023c
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221787"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984675"
 ---
 # <a name="about-the-speech-service-sdk"></a>关于语音服务 SDK
 
@@ -76,13 +76,13 @@ sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
 
 * 在项目级 build.gradle 文件中，向 `repository` 部分添加以下内容：
 
-  ```text
+  ```gradle
   maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
   ```
 
 * 在模块级 build.gradle 文件中，向 `dependencies` 部分添加以下内容：
 
-  ```text
+  ```gradle
   implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.2.0'
   ```
 

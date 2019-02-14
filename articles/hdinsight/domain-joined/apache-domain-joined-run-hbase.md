@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: tutorial
 ms.date: 02/01/2019
-ms.openlocfilehash: d87248f778c6c39cc64b1cc4725cd61d029ce040
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: e1a0dda4c13baf7fc2e5ba65d599db8c74591adb
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664737"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893232"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教程：使用企业安全性套餐在 HDInsight 中配置 Apache HBase 策略（预览）
 
@@ -45,7 +45,7 @@ ms.locfileid: "55664737"
 
 ## <a name="create-domain-users"></a>创建域用户
 
-访问[使用企业安全性套餐创建 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds#create-a-domain-joined-hdinsight-cluster)，以了解如何创建 **sales_user1** 和 **marketing_user1** 域用户。 在生产方案中，域用户来自你的 Active Directory·租户。
+访问[使用企业安全性套餐创建 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds)，以了解如何创建 **sales_user1** 和 **marketing_user1** 域用户。 在生产方案中，域用户来自你的 Active Directory·租户。
 
 ## <a name="create-hbase-tables-and-import-sample-data"></a>创建 HBase 表并导入示例数据
 

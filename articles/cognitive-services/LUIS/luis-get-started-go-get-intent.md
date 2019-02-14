@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: 此 Go 快速入门使用可用的公共 LUIS 应用从会话文本中确定用户的意向。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: e106a9363b4fca768d0705f65a43397805a8b011
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 055cbb8df3d91e1a3ada3fdbb471e74d146b86b2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222858"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874883"
 ---
 # <a name="quickstart-get-intent-using-go"></a>快速入门：使用 Go 获取意向
 

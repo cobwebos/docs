@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 通过 REST API 调用在应用程序中使用内容审查器。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: sample
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: ad26f4e4c7b4adf2228d620e98625250ea1f461a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9448cb2279b78143007f460c17427d91dfa397c7
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217350"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878368"
 ---
 # <a name="content-moderator-rest-samples-in-c"></a>采用 C# 的内容审查器 REST 示例
 

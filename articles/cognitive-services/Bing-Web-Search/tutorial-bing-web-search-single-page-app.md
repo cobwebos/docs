@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 此单页应用展示了如何使用必应 Web 搜索 API 检索、分析和显示单页应用中的相关搜索结果。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 09/12/2018
 ms.author: aahi
-ms.openlocfilehash: 13040cf7f75b8bf2c0bf898dc4f3b16c99a80560
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6c28b02d68239bac658954caf447b6ff738c1b65
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172470"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55881229"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>教程：使用必应 Web 搜索 API 创建单页应用
 

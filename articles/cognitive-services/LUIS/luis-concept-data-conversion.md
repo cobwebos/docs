@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: 了解如何在语言理解 (LUIS) 得出预测之前更改话语
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/16/2019
 ms.author: diberry
-ms.openlocfilehash: c7495ba3f2dc453463038fd37147b4574536ca92
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: bdf2d87e558726937fa4221a0d95179216c66051
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215327"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859194"
 ---
 # <a name="convert-data-format-of-utterances"></a>转换话语的数据格式
 LUIS 在预测之前使用认知服务语音服务将话语从口头话语转换为文本话语。 

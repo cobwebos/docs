@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 本文包含在 C++ 环境中使用语音 SDK 翻译语音的示例代码。
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: a433269130af595354da49fd5ae400110727f969
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: dd73314f5151be848567db3131ef016404f94829
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222076"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864309"
 ---
 # <a name="translate-speech-with-the-cognitive-services-speech-sdk-for-c"></a>使用适用于 C++ 的认知服务语音 SDK 翻译语音
 

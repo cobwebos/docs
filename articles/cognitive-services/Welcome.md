@@ -3,18 +3,18 @@ title: 什么是 Azure 认知服务？
 description: Azure 认知服务是可以与 Microsoft Azure 一起用于生成智能应用程序的 API、SDK 和服务。
 services: cognitive-services
 author: nitinme
-manager: cgronlund
+manager: nitinmed
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: nitinme
-ms.openlocfilehash: f3dfd5907312ddd9c01be000c03ca6d0cadc0a52
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d9271b32f6254b032fab9e93aaf82ab39e7f1932
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459853"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876277"
 ---
 # <a name="what-are-azure-cognitive-services"></a>什么是 Azure 认知服务？
 

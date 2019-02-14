@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 40dd963a4aad7ffdd092d6835e8444cf0789e129
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: 24feef28edac73f625de1c1b7dfd9a4aaf9883af
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462794"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734617"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录
 
-Azure SQL 数据库、弹性池、托管实例和托管实例中的数据库可以流式传输指标和诊断日志，以便更轻松地进行性能监视。 可以配置数据库，以将资源使用情况、辅助角色和会话以及连接性传输到以下 Azure 资源之一：
+单一数据库、弹性池中的入池数据库和托管实例中的实例数据库可以流式传输指标和诊断日志，以便更轻松地进行性能监视。 可以配置数据库，以将资源使用情况、辅助角色和会话以及连接性传输到以下 Azure 资源之一：
 
 - **Azure SQL Analytics**：使用报表、警报和缓解建议对 Azure SQL 数据库进行智能监视。
 - **Azure 事件中心**：将 SQL 数据库遥测与自定义监视解决方案或热管道相集成。
@@ -34,7 +34,7 @@ Azure SQL 数据库、弹性池、托管实例和托管实例中的数据库可�
 - [Microsoft Azure 中的指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
 - [Azure 诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md)
 
-本文提供的指导可帮助你为数据库、弹性池和托管实例启用诊断遥测。 它还可以帮助你了解如何将 Azure SQL Analytics 配置为监视工具用于查看数据库诊断遥测数据。
+本文提供的指导可帮助你为 Azure SQL 数据库、弹性池和托管实例启用诊断遥测。 它还可以帮助你了解如何将 Azure SQL Analytics 配置为监视工具用于查看数据库诊断遥测数据。
 
 ## <a name="enable-logging-of-diagnostics-telemetry"></a>启用诊断遥测的日志记录
 
@@ -55,15 +55,15 @@ Azure SQL 数据库、弹性池、托管实例和托管实例中的数据库可�
 可预配新的 Azure 资源或选择现有资源。 使用“诊断设置”选项选择资源之后，指定要收集的数据。
 
 > [!NOTE]
-> 如果此外还在使用弹性池或托管实例，则我们建议也为这些资源启用诊断遥测。 弹性池和托管实例中的数据库容器具有自身的独立诊断遥测。
+> 如果此外还在使用弹性池或托管实例，我们建议也为这些资源启用诊断遥测。 弹性池和托管实例中的数据库容器具有自身的独立诊断遥测。
 
-## <a name="enable-logging-for-azure-sql-database-or-databases-in-managed-instance"></a>为 Azure SQL 数据库或托管实例中的数据库启用日志记录
+## <a name="enable-logging-for-azure-sql-databases"></a>为 Azure SQL 数据库启用日志记录
 
-对 SQL 数据库以及托管实例中的数据库启用指标与诊断日志记录；默认未启用此功能。
+对 SQL 数据库启用指标与诊断日志记录 - 默认未启用此功能。
 
-可将 Azure SQL 数据库以及托管实例中的数据库设置为收集以下诊断遥测数据：
+可将 Azure SQL 数据库设置为收集以下诊断遥测数据：
 
-| 数据库的监视遥测 | Azure SQL 数据库支持 | 托管实例中的数据库支持 |
+| 数据库的监视遥测 | 单一数据库和入池数据库支持 | 托管实例支持 |
 | :------------------- | ------------------- | ------------------- |
 | [所有指标](sql-database-metrics-diag-logging.md#all-metrics)：包含 DTU/CPU 百分比、DTU/CPU 限制、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比和 XTP 存储百分比。 | 是 | 否 |
 | [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics)：包含有关查询运行时统计信息的信息，例如 CPU 使用率、查询持续时间统计信息。 | 是 | 是 |
@@ -76,13 +76,13 @@ Azure SQL 数据库、弹性池、托管实例和托管实例中的数据库可�
 
 ### <a name="azure-portal"></a>Azure 门户
 
-在 Azure 门户中使用每个数据库的“诊断设置”菜单，为 Azure SQL 数据库以及托管实例中的数据库配置诊断遥测数据的流式传输。 可设置以下目标：Azure 存储、Azure 事件中心和 Azure Log Analytics。
+在 Azure 门户中使用每个单一数据库、入池数据库或实例数据库的“诊断设置”菜单，为 Azure SQL 数据库配置诊断遥测数据的流式传输。 可设置以下目标：Azure 存储、Azure 事件中心和 Azure Log Analytics。
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-azure-sql-database"></a>为 Azure SQL 数据库配置诊断遥测流
+### <a name="configure-streaming-of-diagnostics-telemetry-for-single-pooled-or-instance-databases"></a>为单一数据库、入池数据库或实例数据库配置诊断遥测数据的流式传输
 
    ![SQL 数据库图标](./media/sql-database-metrics-diag-logging/icon-sql-database-text.png)
 
-若要为 Azure SQL 数据库启用诊断遥测流，请执行以下步骤：
+若要为单一数据库、入池数据库或实例数据库启用诊断遥测数据的流式传输，请执行以下步骤：
 
 1. 转到 Azure SQL 数据库资源。
 1. 选择“诊断设置”。
@@ -90,45 +90,45 @@ Azure SQL 数据库、弹性池、托管实例和托管实例中的数据库可�
    - 最多可以创建三个并行连接用于流式传输诊断遥测数据。
    - 选择“+添加诊断设置”，配置为将诊断数据并行流式传输到多个资源。
 
-   ![为 SQL 数据库启用诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-enable.png)
+   ![为单一数据库、入池数据库或实例数据库启用诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-enable.png)
 1. 输入设置名称供自己参考。
 1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
 1. 对于标准的基于事件的监视体验，请选中数据库诊断日志遥测对应的以下复选框：“SQLInsights”、“AutomaticTuning”、“QueryStoreRuntimeStatistics”、“QueryStoreWaitStatistics”、“Errors”、“DatabaseWaitStatistics”、“Timeouts”、“Blocks”和“Deadlocks”。
 1. 对于高级的一分钟间隔监视体验，请选中“AllMetrics”对应的复选框。
 1. 选择“保存”。
 
-   ![为 SQL 数据库配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
+   ![为单一数据库、入池数据库或实例数据库配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 
 > [!NOTE]
-> 无法从数据库诊断设置启用安全审核日志。 若要启用审核日志流式传输，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)和 [Azure Log Analytics 和 Azure 事件中心内的 SQL 审核日志](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/)。
+> 无法从数据库诊断设置启用安全审核日志。 若要启用审核日志流式传输，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)和 [Azure Log Analytics 和 Azure 事件中心内的审核日志](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/)。
 > [!TIP]
 > 针对要监视的每个 Azure SQL 数据库重复上述步骤。
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-databases-in-managed-instance"></a>为托管实例中的数据库配置诊断遥测流
+### <a name="configure-streaming-of-diagnostics-telemetry-for-instance-databases-in-managed-instance"></a>为托管实例中的实例数据库配置诊断遥测数据的流式传输
 
-   ![托管实例中的数据库图标](./media/sql-database-metrics-diag-logging/icon-mi-database-text.png)
+   ![托管实例中的实例数据库图标](./media/sql-database-metrics-diag-logging/icon-mi-database-text.png)
 
-若要为托管实例中的数据库启用诊断遥测流，请执行以下步骤：
+若要为托管实例中的实例数据库启用诊断遥测数据的流式传输，请执行以下步骤：
 
-1. 转到托管实例中的数据库。
+1. 转到托管实例中的实例数据库。
 2. 选择“诊断设置”。
 3. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置
    - 最多可以创建三 (3) 个并行连接用于流式传输诊断遥测数据。
    - 选择“+添加诊断设置”，配置为将诊断数据并行流式传输到多个资源。
 
-   ![为托管实例数据库启用诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
+   ![为实例数据库启用诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
 
 4. 输入设置名称供自己参考。
 5. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
 6. 选中数据库诊断遥测对应的复选框：“SQLInsights”、“QueryStoreRuntimeStatistics”、“QueryStoreWaitStatistics”和“Errors”。
 7. 选择“保存”。
 
-   ![为托管实例数据库配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
+   ![为实例数据库配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
 
 > [!TIP]
-> 针对要监视的每个托管实例中数据库重复上述步骤。
+> 针对要监视的每个实例重复上述步骤。
 
-## <a name="enable-logging-for-elastic-pools-or-managed-instance"></a>为弹性池或托管实例启用日志记录
+## <a name="enable-logging-for-elastic-pools-or-managed-instances"></a>为弹性池或托管实例启用日志记录
 
 为用作数据库容器的弹性池和托管实例启用诊断遥测。 它们具有自身的诊断遥测，默认未启用此功能。
 
@@ -161,7 +161,7 @@ Azure SQL 数据库、弹性池、托管实例和托管实例中的数据库可�
 > [!TIP]
 > 针对要监视的每个弹性池重复上述步骤。
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-managed-instance"></a>为托管实例配置诊断遥测流
+### <a name="configure-streaming-of-diagnostics-telemetry-for-managed-instances"></a>为托管实例配置诊断遥测数据的流式传输
 
    ![托管实例图标](./media/sql-database-metrics-diag-logging/icon-managed-instance-text.png)
 
@@ -171,7 +171,7 @@ Azure SQL 数据库、弹性池、托管实例和托管实例中的数据库可�
 | :------------------- | ------------------- |
 | **托管实例** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#logs-for-managed-instance) 包含 vCore 计数、平均 CPU 百分比、IO 请求数、读取/写入的字节数、保留的存储空间和已使用的存储空间。 |
 
-若要为托管实例资源启用诊断遥测流，请执行以下步骤：
+若要为托管实例资源启用诊断遥测数据的流式传输，请执行以下步骤：
 
 1. 在 Azure 门户中转到托管实例资源。
 1. 选择“诊断设置”。
@@ -403,7 +403,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |---|---|
 |Azure SQL 数据库|DTU 百分比、已用 DTU、DTU 限制、CPU 百分比、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比、XTP 存储百分比和死锁 |
 
-## <a name="logs-for-managed-instance"></a>托管实例的日志
+## <a name="logs-for-managed-instances"></a>托管实例的日志
 
 请参阅下表来详细了解托管实例的日志。
 
@@ -427,14 +427,14 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |virtual_core_count_s|可用 vCore 的数目 |
 |avg_cpu_percent_s|CPU 平均百分比 |
 |reserved_storage_mb_s|托管实例上的保留存储容量 |
-|storage_space_used_mb_s|托管实例上的已使用存储 |
+|storage_space_used_mb_s|托管实例上的已用存储 |
 |io_requests_s|IOPS 计数 |
 |io_bytes_read_s|已读取的 IOPS 字节数 |
 |io_bytes_written_s|已写入的 IOPS 字节数 |
 
-## <a name="logs-for-azure-sql-databases-and-managed-instance-databases"></a>Azure SQL 数据库和托管实例数据库的日志
+## <a name="logs-for-single-pooled-and-instance-databases"></a>单一数据库、入池数据库和实例数据库的日志
 
-请参阅下表来详细了解 Azure SQL 数据库和托管实例数据库的日志。
+请参阅下面这些表来详细了解 Azure SQL 单一数据库、入池数据库和实例数据库的日志。
 
 ### <a name="query-store-runtime-statistics"></a>查询数据存储运行时统计信息
 

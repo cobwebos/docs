@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 将用于说话人验证和说话人识别的先进算法与认知服务中的说话人辨识 API 结合使用。
 services: cognitive-services
 author: dwlin
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speaker-recognition
 ms.topic: overview
 ms.date: 10/01/2018
 ms.author: dwlin
-ms.openlocfilehash: 7267663bae71b793923bc10a3b52ab54c12168af
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 86162b4d4e752bc11c0d739f6e343c7a357ea0af
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216755"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873710"
 ---
 # <a name="speaker-recognition-api"></a>说话人识别 API
 

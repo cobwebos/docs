@@ -11,16 +11,17 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: a4e41408a3af2e6bb68c14f2e34bf1141bf349c1
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 6ff264c079ef5ee18258c3cd136cf441dc33e299
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017801"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992749"
 ---
-# <a name="use-the-copy-data-tool-to-copy-data"></a>使用“复制数据”工具复制数据 
-> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
-> * [第 1 版](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+# <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>快速入门：使用“复制数据”工具复制数据
+
+> [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
+> * [版本 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [当前版本](quickstart-create-data-factory-copy-data-tool.md)
 
 在本快速入门中，我们将使用 Azure 门户创建一个数据工厂。 然后，使用“复制数据”工具创建一个管道，用于将数据从 Azure Blob 存储中的某个文件夹复制到另一个文件夹。 
@@ -54,7 +55,7 @@ ms.locfileid: "48017801"
 
    该列表仅显示数据工厂支持的位置，以及 Azure 数据工厂元数据要存储到的位置。 请注意，数据工厂使用的关联数据存储（如 Azure 存储和 Azure SQL 数据库）和计算（如 Azure HDInsight）可以在其他区域中运行。
 
-1. 选择**创建**。
+1. 选择“创建”。
 1. 创建完成后，会显示“数据工厂”页。 选择“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI) 应用程序。
    
    ![数据工厂的主页，其中包含“创作和监视”磁贴](./media/quickstart-create-data-factory-copy-data-tool/data-factory-home-page.png)
@@ -70,7 +71,7 @@ ms.locfileid: "48017801"
    ![“属性”页](./media/quickstart-create-data-factory-copy-data-tool/copy-data-tool-properties-page.png)
 1. 在“源数据存储”页上，完成以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“+ 创建新连接”，添加一个连接。
+    a. 单击“+ 创建新连接”，添加一个连接。
 
     ![“源数据存储”页](./media/quickstart-create-data-factory-copy-data-tool/new-source-linked-service.png)
 
@@ -89,7 +90,7 @@ ms.locfileid: "48017801"
 
 1. 在“选择输入文件或文件夹”页中完成以下步骤：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“浏览”导航到 **adftutorial/input** 文件夹，选择 **emp.txt** 文件，然后单击“选择”。 
+   a. 单击“浏览”导航到 **adftutorial/input** 文件夹，选择 **emp.txt** 文件，然后单击“选择”。 
 
    ![“选择输入文件或文件夹”页](./media/quickstart-create-data-factory-copy-data-tool/configure-source-path.png)
 

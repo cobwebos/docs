@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: eda5f21a535c6256d534bfdaa6cf30ae710ba075
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 47b9d25f8db2241bb578528780e28f43d56371e5
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413177"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963074"
 ---
 # <a name="create-a-netapp-account"></a>创建 NetApp 帐户
 创建 NetApp 帐户将能够设置容量池并随后创建卷。 使用“Azure NetApp 文件”边栏选项卡来创建新的 NetApp 帐户。
@@ -31,8 +31,8 @@ ms.locfileid: "53413177"
 
 ## <a name="steps"></a>Steps 
 
-1. 从预览版邀请中找到预览版 Azure 门户 URL，然后登录到该门户。 
-2.  使用以下方法之一访问“Azure NetApp 文件”边栏选项卡：  
+1. 登录到 Azure 门户。 
+2. 使用以下方法之一访问“Azure NetApp 文件”边栏选项卡：  
   * 在 Azure 门户的搜索框中搜索“Azure NetApp 文件”。  
   * 在导航栏中单击“所有服务”，然后筛选找到“Azure NetApp 文件”。  
 
@@ -50,7 +50,6 @@ ms.locfileid: "53413177"
     使用现有资源组，或创建一个新的资源组。
   * **位置**  
     选择要将帐户及其子资源放置到的区域。  
-    目前，Azure NetApp 文件服务仅在美国东部区域中受支持。  
 
     ![新建 NetApp 帐户](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
 

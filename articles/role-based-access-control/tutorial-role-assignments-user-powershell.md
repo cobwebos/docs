@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 27b48e1d6aabf9cde7152bfb0dbf3e58bc619107
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 7f5e67edd2a5300ae1898e2620ee8ace80ac6d92
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696772"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109021"
 ---
 # <a name="tutorial-grant-access-for-a-user-using-rbac-and-azure-powershell"></a>教程：使用 RBAC 和 Azure PowerShell 为用户授予访问权限
 
@@ -111,7 +111,7 @@ ms.locfileid: "55696772"
 
 若要为用户授予访问权限，请使用 [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) 命令分配一个角色。 必须指定安全主体、角色定义和范围。
 
-1. 使用 [Get-AzSubscription](/powershell/module/az.profile/get-azsubscription) 命令获取订阅的 ID。
+1. 使用 [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) 命令获取订阅的 ID。
 
     ```azurepowershell
     Get-AzSubscription

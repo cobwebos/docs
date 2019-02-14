@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 文本翻译 API 支持的自然语言列表。
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jansko
-ms.openlocfilehash: 96f73d7d1324de9e5531aefcc4ee3b9a054cf941
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d0ab683ac59c17cbae1e0947cd2acd785b0365d3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228038"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884965"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>文本翻译 API 的语言和区域支持
 

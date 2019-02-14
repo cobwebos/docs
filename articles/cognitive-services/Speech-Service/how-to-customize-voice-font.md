@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 本文概述了文本转语音这一语音自定义功能，说明如何通过该功能创建可识别的特色语音。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: panosper
-ms.openlocfilehash: 783679d3d989fe40c6a5ef0c8592ed10aae26643
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 24b98ce8cd2c587f0d39390954eb8a64747ca2ab
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239887"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868321"
 ---
 # <a name="creating-custom-voice-fonts"></a>创建自定义语音字体
 

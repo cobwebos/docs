@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: 请参阅 Azure 语音服务的功能发布、改进、bug 修复和已知问题的运行日志。
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 80cf0d9970eb7052eeb19fb297176453864202cf
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a5b8cd7da465bc2dc58c2b89852903669c18bf4b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55205689"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55871789"
 ---
 # <a name="release-notes"></a>发行说明
 
