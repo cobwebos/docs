@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5b17cf1bfae884e1fbdf47dabd78a1c6c3e1c7a0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 57f7d72be86a05b9785f7714380363d9c6ddb5c6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151594"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205692"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>使用 Azure AD Connect 排查连接问题
 本文说明 Azure AD Connect 与 Azure AD 之间的连接的工作方式，以及如何排查连接问题。 这些问题很有可能出现在包含代理服务器的环境中。

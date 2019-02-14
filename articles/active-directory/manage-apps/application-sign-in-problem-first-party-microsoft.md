@@ -3,8 +3,8 @@ title: 登录 Microsoft 应用程序时出现的问题 | Microsoft Docs
 description: 对使用 Azure AD 登录到第一方 Microsoft 应用程序（如 Office 365）时面临的常见问题进行故障排除
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/10/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: f67633ec62b28f54a97cccd0f27b43bdb626ee58
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3bc5143803c7d031071cccbb9c6c3842bbdacd9c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822759"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177183"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>登录 Microsoft 应用程序时出现的问题
 
@@ -204,7 +205,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 9.  从用户列表中选择用户，并根据需要**启用**、**禁用**或**强制实施**多重身份验证。
 
-  * **注意**：如果用户处于**已强制实施**状态，可暂时将其设置为**已禁用**以允许用户重新登录到其帐户。 一旦他们重新登录到其帐户，便可以再次将其状态更改为**已启用**来要求他们在下次登录期间重新注册其联系信息。 此外，也可以按照[检查用户的身份验证联系信息](#check-a-users-authentication-contact-info)中的步骤为其验证或设置此数据。
+  * **注意**：如果用户处于已强制实施状态，可暂时将其设置为**已禁用**以允许用户重新登录到其帐户。 一旦他们重新登录到其帐户，便可以再次将其状态更改为**已启用**来要求他们在下次登录期间重新注册其联系信息。 此外，也可以按照[检查用户的身份验证联系信息](#check-a-users-authentication-contact-info)中的步骤为其验证或设置此数据。
 
 ### <a name="check-a-users-authentication-contact-info"></a>检查用户的身份验证联系信息
 

@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: c54431009105c1d213e6cefeba06c39c781e2c1a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 7700f1c92aecab76dbc347814b7b161bc3d822a0
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164806"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889102"
 ---
-<!--author=SharS last changed: 06/22/2016-->
-
 ### <a name="to-configure-and-register-the-device"></a>配置和注册设备
 1. 访问 StorSimple 设备串行控制台上的 Windows PowerShell 接口。 有关说明，请参阅 [使用 PuTTY 连接到设备串行控制台](../articles/storsimple/storsimple-8000-deployment-walkthrough-gov-u2.md#use-putty-to-connect-to-the-device-serial-console) 。 **请务必严格遵照该步骤，否则将无法访问控制台。**
 2. 在打开的会话中，按一次 **Enter** 以启动命令提示符。
@@ -25,7 +23,7 @@ ms.locfileid: "50164806"
 5. 执行以下步骤，为设备配置最低要求的网络设置。
    
    > [!IMPORTANT]
-   > 需要在该设备的活动控制器上执行这些配置步骤。 串行控制台菜单指示标题消息中的控制器状态。 如果未连接到活动控制器，请断开连接，并连接到活动控制器。
+   > 需要在该设备的活动控制器上执行这些配置步骤。  串行控制台菜单指示标题消息中的控制器状态。 如果未连接到活动控制器，请断开连接，并连接到活动控制器。
    
    1. 在命令提示符处，键入密码。 默认设备密码为 **Password1**。
    2. 输入以下命令：
@@ -63,7 +61,7 @@ ms.locfileid: "50164806"
 11. 出于安全原因，设备管理员密码会在第一个会话后过期，因此需要现在更改密码。 出现提示时，提供设备管理员密码。 有效的设备管理员密码必须介于 8 到 15 个字符之间。 密码必须包含以下各项的其中三个组合：小写字母、大写字母、数字和特殊字符。
     
     <br/>![StorSimple 注册设备 5](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice5_gov-include.png)
-12. 安装向导中的最后一步向 StorSimple Device Manager 服务注册设备。 为此，将需要使用在[步骤 2：获取服务注册密钥](../articles/storsimple/storsimple-8000-deployment-walkthrough-gov-u2.md#step-2-get-the-service-registration-key)中所获取的服务注册密钥。 提供注册密钥后，可能需要等待 2-3 分钟，然后设备才会被注册。
+12. 安装向导中的最后一步向 StorSimple Device Manager 服务注册设备。 为此，将需要在以下步骤中获取的服务注册密钥，即[步骤 2：获取服务注册密钥](../articles/storsimple/storsimple-8000-deployment-walkthrough-gov-u2.md#step-2-get-the-service-registration-key)。 提供注册密钥后，可能需要等待 2-3 分钟，然后设备才会被注册。
     
     > [!NOTE]
     > 可以随时按 Ctrl+C 退出安装向导。 如果已输入所有网络设置（DATA 0 的 IP 地址、子网掩码和网关），将保留这些条目。

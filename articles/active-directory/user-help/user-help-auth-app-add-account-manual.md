@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: ff068be02d5cf37edbb9b3573e1d980529f2e566
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e0d46fc8a152c4426832669ce22d4aa78ac640e6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55771750"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173936"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>手动将帐户添加到应用
 如果摄像头无法捕获 QR 码，可以手动将帐户信息添加到 Microsoft Authenticator 应用中，以进行双重验证。 这适用于工作或学校帐户和非 Microsoft 帐户。
@@ -91,7 +92,7 @@ ms.locfileid: "55771750"
 
 5. 在电脑的“添加备份验证方法”页上，键入备份验证方法为 Amazon 帐户提供的六位数验证码，再选择“验证验证码并继续”。
 
-6. 在“即将完成”页上，决定是否让电脑成为受信任的设备，再选择“知道了。启用双因素验证”。
+6. 在“即将完成”页上，决定是否让电脑成为受信任的设备，再选择“知道了。启用双因素验证”**。
 
     此时，“高级安全设置”页显示，其中包含更新后的双因素验证详细信息。
 
