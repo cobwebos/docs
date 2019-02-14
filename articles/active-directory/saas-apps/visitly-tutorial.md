@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 242706a11304be50636d3186ab128e6de0b233d6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a2daa4f287123a81b1727d173557c0221ffaba6f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812023"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181960"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-visitly"></a>教程：Azure Active Directory 与 Visitly 集成
 
@@ -110,7 +111,7 @@ ms.locfileid: "54812023"
 
 6. 在“用户属性”对话框的“用户声明”部分，通过使用“编辑图标”编辑“名称标识符值”声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
-    | 名称 | 源属性 | 
+    | Name | 源属性 | 
     | ---------------| --------------- |
     | 名称标识符值  | user.mail |
 

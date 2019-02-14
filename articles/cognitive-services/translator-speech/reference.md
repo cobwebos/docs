@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 语音翻译 API 参考文档。
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: e1796b2cb3efee6ff610f9dade7a10b2c2637bba
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c68d9c3d40ffa3d4a5a5ae635fbc0ea0a010239c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466177"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874730"
 ---
 # <a name="translator-speech-api"></a>语音翻译 API
 
@@ -30,7 +30,7 @@ ms.locfileid: "55466177"
 ## <a name="1-getting-started"></a>1.入门
 若要访问文本翻译 API，需[注册 Microsoft Azure](translator-speech-how-to-signup.md)。
 
-## <a name="2-authentication"></a>2.身份验证
+## <a name="2-authentication"></a>2.Authentication
 
 使用订阅密钥进行身份验证。 语音翻译 API 支持两种身份验证模式：
 

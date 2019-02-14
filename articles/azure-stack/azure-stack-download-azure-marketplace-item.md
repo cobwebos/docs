@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/30/2019
+ms.date: 02/14/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 8c699f8b3241694f36b73ae75b25754e551c91f6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f80f0870400fa7fb46b7787c6c257255a780cf3b
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470699"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244107"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>将市场项从 Azure 下载到 Azure Stack
 
@@ -166,7 +166,7 @@ Azure Stack 部署必须已建立 Internet 连接，并且[已注册到 Azure](a
 
    ```PowerShell
    $credential = Get-Credential -Message "Enter the azure stack operator credential:"
-   Import-AzSOfflineMarketplaceItem -origin "marketplace content folder" -armendpoint "Environment Arm Endpoint" -AzsCredential $credential
+   Import-AzSOfflineMarketplaceItem -origin "marketplace content folder" -AzsCredential $credential
    ```
 
    `-origin`参数指定的最上层文件夹包含所有已下载的产品; 例如， `"D:\downloadfolder"`。

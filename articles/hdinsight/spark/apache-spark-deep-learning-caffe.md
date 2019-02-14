@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: 451ccff9747988ee019f2be9e0cccec12c9c1ef9
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: c79f840becce43c47287ef38bd39ed3ac9168b73
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118228"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891073"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>使用 Caffe on Azure HDInsight Spark 进行分布式深度学习
 
@@ -64,7 +64,7 @@ HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，�
 
 第二步是在运行时下载、编译和安装适用于 Caffe 的 protobuf 2.5.0。 Protobuf 2.5.0 [是必需的](https://github.com/yahoo/CaffeOnSpark/issues/87)，但 Ubuntu 16 不提供包形式的该版本，因此需从源代码对其进行编译。 Internet 上也有一些介绍其编译方法的资源。 有关详细信息，请参阅[此文](https://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html)。
 
-若要开始，可直接针对群集的所有工作节点和头节点运行此脚本操作（适用于 HDInsight 3.5）。 可在现有群集上运行脚本操作，或在群集创建过程中使用脚本操作。 有关脚本操作的详细信息，请参阅[此处](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#view-history-promote-and-demote-script-actions)的文档。
+若要开始，可直接针对群集的所有工作节点和头节点运行此脚本操作（适用于 HDInsight 3.5）。 可在现有群集上运行脚本操作，或在群集创建过程中使用脚本操作。 有关脚本操作的详细信息，请参阅[此处](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)的文档。
 
 ![用于安装依赖项的脚本操作](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/09/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 18bfdaaf75230cf91ea8f786188b9de9f7a6a5be
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 331bf57c415922a6686ba733b5fbcee24699a152
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696722"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118252"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>使用虚拟硬盘创建 VM
 
@@ -62,7 +62,7 @@ az group delete -n az-cli-vhd
 | [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob) | 通过上传 VHD，在容器中创建一个 Blob。 |
 | [az vm list](https://docs.microsoft.com/cli/azure/vm) | 与 `--query` 一起使用，用于检查 VM 名称是否已使用。 | 
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | 创建虚拟机。 |
-| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm-ip-addresses) | 获取已创建虚拟机的 IP 地址。 |
+| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az-vm-list-ip-addresses) | 获取已创建虚拟机的 IP 地址。 |
 
 ## <a name="next-steps"></a>后续步骤
 

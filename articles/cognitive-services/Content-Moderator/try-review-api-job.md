@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 使用审阅 API 的 Job 操作，可以在 Azure 内容审查器中对图像或文本内容启动端到端内容审查作业。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 8ad504051980356737dbc9af9263bc8370421cdb
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9fac80ff152b0f7b9c36c182759d41245364fff9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228213"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55862422"
 ---
 # <a name="start-a-moderation-job-from-the-api-console"></a>启动 API 控制台中的审查作业
 

@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/03/2018
+ms.date: 02/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 2f58bb8a1a3a0f0593513570355b8d3ba46816b9
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 66a40597178a8267febfd6ad18277d6b865c084d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825827"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180158"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>教程：Azure Active Directory 与 Zendesk 的集成
 
@@ -108,7 +109,12 @@ ms.locfileid: "54825827"
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.zendesk.com`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`<subdomain>.zendesk.com`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
+    | |
+    |-|-|
+    | `<subdomain>.zendesk.com` |
+    | `https://<subdomain>.zendesk.com` |
+    | |
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Zendesk 客户端支持团队](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -162,7 +168,7 @@ ms.locfileid: "54825827"
 
 11. 将扩展添加到浏览器后，单击“安装 Zendesk”会将你定向到 Zendesk 应用程序。 在此处，请提供管理员凭据以登录到 Zendesk。 浏览器扩展将自动配置应用程序，并自动执行“配置 Zendesk 单一登录”部分。
 
-     ![图像](./media/zendesk-tutorial/d2_saml.png)
+    ![图像](./media/zendesk-tutorial/d2_saml.png)
 
 ### <a name="configure-zendesk-single-sign-on"></a>配置 Zendesk 单一登录
 
@@ -190,7 +196,7 @@ ms.locfileid: "54825827"
 
     f. 单击“ **保存**”。
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
@@ -278,5 +284,4 @@ ms.locfileid: "54825827"
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [配置用户预配](zendesk-provisioning-tutorial.md) 
-
+- [配置用户预配](zendesk-provisioning-tutorial.md)

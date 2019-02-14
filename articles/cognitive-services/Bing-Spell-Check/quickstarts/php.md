@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 获取信息和代码示例，以帮助你快速开始使用必应拼写检查 API。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: aahi
-ms.openlocfilehash: 156c4414bbf7bda13e61c065e7b7100f6ae773b1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: abce882edb9b6c97ea3b8a91219f8e2887cfb78d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166180"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55862303"
 ---
 # <a name="quickstart-for-bing-spell-check-api-with-php"></a>通过 PHP 使用必应拼写检查 API 快速入门 
 

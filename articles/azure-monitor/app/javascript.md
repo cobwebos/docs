@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 55cbca97d369bea80ea9caece14754e81b5738a1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: fee172eccd79fd28e281b2beece9702630ac39b5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661507"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001181"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
-了解网页或应用的性能和使用情况。 如果将 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 添加到页面脚本，可以获取页面加载和 AJAX 调用的时间、浏览器异常和 AJAX 失败的计数和详细信息，以及用户和会话计数。 所有这些信息可按页面、客户端 OS 和浏览器版本、地理位置和其他维度细分。 可以针对失败计数或页面加载缓慢情况设置警报。 并且通过在 JavaScript 代码中插入跟踪调用，可以跟踪网页应用程序的不同功能的使用情况。
+了解网页或应用的性能和使用情况。 如果将 [Application Insights](app-insights-overview.md) 添加到页面脚本，可以获取页面加载和 AJAX 调用的时间、浏览器异常和 AJAX 失败的计数和详细信息，以及用户和会话计数。 所有这些信息可按页面、客户端 OS 和浏览器版本、地理位置和其他维度细分。 可以针对失败计数或页面加载缓慢情况设置警报。 并且通过在 JavaScript 代码中插入跟踪调用，可以跟踪网页应用程序的不同功能的使用情况。
 
-可以在任何网页中使用 Application Insights - 刚刚添加了 JavaScript 的简短片段。 如果 Web 服务是 [Java](java-get-started.md) 或 [ASP.NET](../../azure-monitor/app/asp-net.md)，可以集成来自服务器和客户端的遥测。
+可以在任何网页中使用 Application Insights - 刚刚添加了 JavaScript 的简短片段。 如果 Web 服务是 [Java](java-get-started.md) 或 [ASP.NET](asp-net.md)，可以集成来自服务器和客户端的遥测。
 
-![在 portal.azure.com 中，打开应用的资源，并单击“浏览器”](./media/javascript/03.png)
+![在 portal.azure.com 中，打开应用的资源，并单击“浏览器”](media/javascript/03.png)
 
 首先需要订阅 [Microsoft Azure](https://azure.com)。 如果团队拥有组织订阅，请咨询所有者将 Microsoft 帐户添加到其中。
 
@@ -38,13 +38,13 @@ Application Insights 资源是显示有关页面性能和使用情况的数据�
 
 如果已经为应用的服务器端设置监视，则已创建了一个资源：
 
-![选择“浏览”、“开发人员服务”、“Application Insights”。](./media/javascript/01-find.png)
+![选择“浏览”、“开发人员服务”、“Application Insights”。](media/javascript/01-find.png)
 
 否则，请创建资源：
 
-![选择“新建”、“开发人员服务”、“Application Insights”。](./media/javascript/01-create.png)
+![选择“新建”、“开发人员服务”、“Application Insights”。](media/javascript/01-create.png)
 
-*有问题吗？* [有关创建资源的详细信息](../../azure-monitor/app/create-new-resource.md )。
+*有问题吗？* [有关创建资源的详细信息](create-new-resource.md )。
 
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>将 SDK 脚本添加到应用或网页
 
@@ -70,7 +70,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 紧靠在要跟踪的每个页面的 `</head>` 标记前面插入脚本。如果网站有母版页，可以在那里插入脚本。 例如：
 
 * 在 ASP.NET MVC 项目中，请将脚本放在 `View\Shared\_Layout.cshtml`
-* 在 SharePoint 站点的控制面板中，打开 [站点设置/母版页](../../azure-monitor/app/sharepoint.md)。
+* 在 SharePoint 站点的控制面板中，打开 [站点设置/母版页](sharepoint.md)。
 
 脚本包含检测密钥，可将数据定向到 Application Insights 资源。 
 
@@ -118,9 +118,9 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 
 ![在 portal.azure.com 中，打开应用的资源，并单击“设置”、“浏览器”](./media/javascript/03.png)
 
-还没有数据？ 单击页面顶部的**刷新**。 仍然没有数据？ 请参阅 [疑难解答](../../azure-monitor/app/troubleshoot-faq.md)。
+还没有数据？ 单击页面顶部的**刷新**。 仍然没有数据？ 请参阅 [疑难解答](troubleshoot-faq.md)。
 
-“浏览器”边栏选项卡是一个[指标资源管理器边栏选项卡](../../azure-monitor/app/metrics-explorer.md)，其中包含预设筛选器和图表选项。 如果需要，可以编辑时间范围、筛选器和图表配置，将结果另存为收藏项目。 单击“还原默认值”可恢复原始边栏选项卡配置。
+“浏览器”边栏选项卡是一个[指标资源管理器边栏选项卡](metrics-explorer.md)，其中包含预设筛选器和图表选项。 如果需要，可以编辑时间范围、筛选器和图表配置，将结果另存为收藏项目。 单击“还原默认值”可恢复原始边栏选项卡配置。
 
 ## <a name="page-load-performance"></a>页面加载性能
 顶部是页面加载时间的分段图表。 图表总高度表示从应用加载页面并在用户浏览器中显示页面所花费的平均时间。 该时间从浏览器发送初始 HTTP 请求开始计量，直到处理所有同步加载事件，包括布局和运行脚本。 不包含从 AJAX 调用加载 Web 组件等异步任务。
@@ -178,7 +178,6 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 
 ![](./media/javascript/37.png)
 
-
 单击 `...` 获取 Ajax 调用的完整遥测数据。
 
 ### <a name="no-ajax-calls-reported"></a>未报告任何 Ajax 调用？
@@ -202,7 +201,7 @@ Ajax 调用包含从网页脚本发出的任何 HTTP/HTTPS 调用。 如果没�
 选择任一事件查看更多详细信息。 在详细信息页中，单击“...”查看更多详细信息。
 
 > [!NOTE]
-> 如果使用[搜索](../../azure-monitor/app/diagnostic-search.md)，请注意，必须全字匹配：“Abou”和“bout”与“About”并不匹配。
+> 如果使用[搜索](diagnostic-search.md)，请注意，必须全字匹配：“Abou”和“bout”与“About”并不匹配。
 > 
 > 
 
@@ -227,8 +226,8 @@ Ajax 调用包含从网页脚本发出的任何 HTTP/HTTPS 调用。 如果没�
 ## <a name="usage-tracking"></a>使用情况跟踪
 想要了解用户如何使用应用？
 
-* [了解用户行为分析工具](../../azure-monitor/app/usage-overview.md)
-* [了解自定义事件和指标 API。](../../azure-monitor/app/api-custom-events-metrics.md)
+* [了解用户行为分析工具](usage-overview.md)
+* [了解自定义事件和指标 API。](api-custom-events-metrics.md)
 
 ## <a name="video"></a> 视频
 
@@ -238,7 +237,7 @@ Ajax 调用包含从网页脚本发出的任何 HTTP/HTTPS 调用。 如果没�
 
 
 ## <a name="next"></a>后续步骤
-* [跟踪使用情况](../../azure-monitor/app/usage-overview.md)
-* [自定义事件和指标](../../azure-monitor/app/api-custom-events-metrics.md)
-* [Build-measure-learn](../../azure-monitor/app/usage-overview.md)
+* [跟踪使用情况](usage-overview.md)
+* [自定义事件和指标](api-custom-events-metrics.md)
+* [Build-measure-learn](usage-overview.md)
 

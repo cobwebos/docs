@@ -10,14 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 02/11/2019
 ms.author: spelluru
-ms.openlocfilehash: 5b4a52327227ecd650ee38d60f6bdfcc6bf20056
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.reviewer: christianreddington,anthdela,juselph
+ms.openlocfilehash: f16bdb8b89c2ce72c2a31a320d2dedbc4df09c81
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250732"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242781"
 ---
 # <a name="set-up-azure-devtest-labs-infrastructure-in-your-enterprise"></a>在企业中设置 Azure 开发测试实验室基础结构
 由于从敏捷性、灵活性和经济学的角度来看，云具有很多优势，因此企业正在迅速采用它。 通常进入云的第一步是迁移开发和测试工作负载。 迁移这些工作负载时存在一组常见问题，例如以下问题： 

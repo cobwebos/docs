@@ -1,25 +1,17 @@
 ---
 title: 使用 PagerDuty 配置 Azure 服务运行状况警报 | Microsoft Docs
 description: 获取有关发送到 PagerDuty 实例的服务运行状况事件的个性化通知。
-author: shawntabrizi
-manager: scotthit
-editor: ''
-services: service-health
-documentationcenter: service-health
-ms.assetid: ''
-ms.service: service-health
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: stephbaron
+ms.author: stbaron
 ms.topic: article
+ms.service: service-health
 ms.date: 11/14/2017
-ms.author: shtabriz
-ms.openlocfilehash: eba81e0d0a5b178aec6f712abaae2b566bc54316
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: b78c155fb2f3a13c27f4ff71c4dd37df2dbd2f36
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583436"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883043"
 ---
 # <a name="configure-service-health-alerts-with-pagerduty"></a>使用 PagerDuty 配置服务运行状况警报
 
@@ -36,7 +28,7 @@ ms.locfileid: "53583436"
 
 1.  在“集成设置”中，选择以下项：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **集成类型**：Microsoft Azure
+    a. **集成类型**：Microsoft Azure
 
     b. **集成名称**：\<名称\>
 
@@ -54,7 +46,7 @@ ms.locfileid: "53583436"
 
 1. 在“操作”列表中定义：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **操作类型：***Webhook*
+    a. **操作类型：***Webhook*
 
     b. **详细信息：** 前面保存的 PagerDuty **集成 URL**。
 
@@ -71,7 +63,7 @@ ms.locfileid: "53583436"
 
 1. 添加到“操作”列表：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **操作类型：***Webhook*
+    a. **操作类型：***Webhook*
 
     b. **详细信息：** 前面保存的 PagerDuty **集成 URL**。
 

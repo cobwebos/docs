@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 1a3cfb51cc75c89c5a4580b1b7721eb763078980
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f9a1076ddfb840ba845718c5ca0deea8c5788e7d
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096698"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100323"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>加入 Azure Automation State Configuration 管理的计算机
 
@@ -24,7 +24,8 @@ ms.locfileid: "55096698"
 
 Azure Automation State Configuration 可用于管理各种不同的计算机：
 
-- Azure 虚拟机（在经典和 Azure 资源管理器部署模型中部署）
+- Azure 虚拟机
+- Azure 虚拟机（经典）
 - Amazon Web Services (AWS) EC2 实例
 - 位于本地或 Azure 以外的云中的物理/虚拟 Windows 计算机/AWS
 - 位于本地、Azure 或 Azure 以外的云中的物理/虚拟 Linux 计算机
@@ -35,6 +36,31 @@ Azure Automation State Configuration 可用于管理各种不同的计算机：
 > 如果安装了高于 2.70 版的虚拟机 DSC 扩展，则包含使用 State Configuration 管理 Azure VM 的功能而无需额外付费。 有关更多详细信息，请参阅[**自动化定价页**](https://azure.microsoft.com/pricing/details/automation/)。
 
 以下部分概述了如何将每种类型的计算机加入 Azure Automation State Configuration。
+
+## <a name="azure-virtual-machines"></a>Azure 虚拟机
+
+Azure Automation State Configuration 可让你使用 Azure 门户、Azure 资源管理器模板或 PowerShell 轻松加入 Azure 虚拟机以进行配置管理。 在幕后，在不需要管理员远程连接到 VM 的情况下，Azure VM Desired State Configuration 扩展会在 Azure Automation State Configuration 中注册 VM。
+因为 Azure VM 所需状态配置扩展以异步方式运行，可在以下[**排查 Azure 虚拟机登记问题**](#troubleshooting-azure-virtual-machine-onboarding)部分了解跟踪注册进度或故障排除的步骤。
+
+### <a name="azure-portal"></a>Azure 门户
+
+在 [Azure 门户](https://portal.azure.com/)中，导航到要在其中登记虚拟机的 Azure 自动化帐户。 在 State Configuration 页上的“节点”选项卡中，单击“+ 添加”。
+
+选择要登记的 Azure 虚拟机。
+
+如果虚拟机未安装 PowerShell 所需状态扩展且电源状态为“正在运行”，请单击“连接”。
+
+在“注册”下，输入用例所需的[“PowerShell DSC 本地配置管理器”值](/powershell/dsc/metaconfig4)，并选择性地输入要分配给 VM 的节点配置。
+
+![加入](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
+
+### <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
+
+可以通过 Azure 资源管理器模板部署 Azure 虚拟机和加入到 Azure Automation State Configuration。 有关将现有 VM 加入 Azure Automation State Configuration 的示例模板，请参阅[通过 DSC 扩展和 Azure Automation DSC 配置 VM](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/)。 若要查找作为此模板的输入的注册密钥和注册 URL，请参阅以下[**安全注册**](#secure-registration)部分。
+
+### <a name="powershell"></a>PowerShell
+
+可通过 PowerShell 使用 [Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) cmdlet 在 Azure 门户中登记虚拟机。
 
 ## <a name="azure-virtual-machines-classic"></a>Azure 虚拟机（经典）
 
@@ -116,31 +142,6 @@ $VM | Update-AzureVM
 
 > [!NOTE]
 > State Configuration 节点配置名称在门户中区分大小写。 如果大小写不匹配，节点将不会显示在“节点”选项卡下。
-
-## <a name="azure-virtual-machines"></a>Azure 虚拟机
-
-Azure Automation State Configuration 可让你使用 Azure 门户、Azure 资源管理器模板或 PowerShell 轻松加入 Azure 虚拟机以进行配置管理。 在幕后，在不需要管理员远程连接到 VM 的情况下，Azure VM Desired State Configuration 扩展会在 Azure Automation State Configuration 中注册 VM。
-因为 Azure VM 所需状态配置扩展以异步方式运行，可在以下[**排查 Azure 虚拟机登记问题**](#troubleshooting-azure-virtual-machine-onboarding)部分了解跟踪注册进度或故障排除的步骤。
-
-### <a name="azure-portal"></a>Azure 门户
-
-在 [Azure 门户](https://portal.azure.com/)中，导航到要在其中登记虚拟机的 Azure 自动化帐户。 在 State Configuration 页上的“节点”选项卡中，单击“+ 添加”。
-
-选择要登记的 Azure 虚拟机。
-
-如果虚拟机未安装 PowerShell 所需状态扩展且电源状态为“正在运行”，请单击“连接”。
-
-在“注册”下，输入用例所需的[“PowerShell DSC 本地配置管理器”值](/powershell/dsc/metaconfig4)，并选择性地输入要分配给 VM 的节点配置。
-
-![加入](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
-
-### <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
-
-可以通过 Azure 资源管理器模板部署 Azure 虚拟机和加入到 Azure Automation State Configuration。 有关将现有 VM 加入 Azure Automation State Configuration 的示例模板，请参阅[通过 DSC 扩展和 Azure Automation DSC 配置 VM](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/)。 若要查找作为此模板的输入的注册密钥和注册 URL，请参阅以下[**安全注册**](#secure-registration)部分。
-
-### <a name="powershell"></a>PowerShell
-
-可通过 PowerShell 使用 [Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) cmdlet 在 Azure 门户中登记虚拟机。
 
 ## <a name="amazon-web-services-aws-virtual-machines"></a>Amazon Web Services (AWS) 虚拟机
 

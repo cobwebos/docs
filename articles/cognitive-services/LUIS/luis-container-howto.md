@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: LUIS 容器可将已训练或已发布的应用加载到 docker 容器中并提供对容器的 API 终结点中的查询预测的访问权限。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 97f11523c0418caaee66930c87a7de64570097d6
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: a8251881b114d7b102481476d3e77923b34d34c7
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296889"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982380"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安装并运行 LUIS docker 容器
  
@@ -60,7 +60,7 @@ ms.locfileid: "55296889"
 
 使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令从 `mcr.microsoft.com/azure-cognitive-services/luis` 存储库下载容器映像：
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 ```
 
@@ -252,7 +252,7 @@ ApiKey={ENDPOINT_KEY}
 
 容器提供了基于 REST 的查询预测终结点 API。 已发布（过渡或生产）应用的终结点包含的路由与已训练应用的终结点不同。 
 
-使用主机 https://localhost:5000，以获得容器 API。 
+使用主机 `https://localhost:5000`，以获得容器 API。 
 
 |包类型|方法|路由|查询参数|
 |--|--|--|--|
@@ -324,18 +324,7 @@ curl -X GET \
 
 LUIS 容器使用 Azure 帐户中的语言理解资源向 Azure 发送账单信息。 
 
-如果未连接到 Azure 进行计量，则无法授权并运行认知服务容器。 客户需要始终让容器向计量服务传送账单信息。 认知服务容器不会将客户数据（话语）发送给 Microsoft。 
-
-`docker run` 使用以下参数以便计费：
-
-| 选项 | 说明 |
-|--------|-------------|
-| `ApiKey` | 用于跟踪账单信息的语言理解资源的 API 密钥。<br/>必须将此选项的值设置为 `Billing` 中指定的已预配 LUIS Azure 资源的 API 密钥。 |
-| `Billing` | 用于跟踪账单信息的语言理解资源的终结点。<br/>必须将此选项的值设置为已预配的 LUIS Azure 资源的终结点 URI。|
-| `Eula` | 表示已接受容器的许可条款。<br/>此选项的值必须设置为 `accept`。 |
-
-> [!IMPORTANT]
-> 必须使用有效值指定所有三个选项，否则容器将无法启动。
+[!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 有关这些选项的详细信息，请参阅[配置容器](luis-container-configuration.md)。
 

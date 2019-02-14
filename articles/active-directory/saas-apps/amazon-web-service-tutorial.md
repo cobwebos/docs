@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: def9d44c31ed50a859bf42aa148fb7e6a36764fd
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e377cf749119c23d37bb4db8ab78abb1ce8c82ae
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751083"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199742"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>教程：Azure Active Directory 与 Amazon Web Services (AWS) 集成
 
@@ -447,7 +448,7 @@ c. 可单独为应用分配应用所有者，应用所有者可以直接在 Azur
 
  * 在“预配”部分，“映射”子部分会显示“正在加载...”消息，但从不显示属性映射。 目前支持的唯一预配工作流是将角色从 AWS 导入到 Azure AD 中，以便在用户/组分配过程中对其进行选择。 上述属性映射是预先确定的，不可配置。
  
- * “预配”部分只支持一次为一个 AWS 租户输入一组凭据。 所有导入的角色都写入到 AWS 租户的 Azure AD [servicePrincipal 对象](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/serviceprincipal)的 appRoles 属性。 可以将多个 AWS 租户（通过 servicePrincipal 表示）从库添加到 Azure AD 进行预配，但存在一个已知的问题：无法自动将所有导入的角色从用于预配的多个 AWS servicePrincipal 写入到用于单一登录的单个 servicePrincipal 中。 若要解决此问题，可以使用 [Microsoft Graph API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/serviceprincipal) 来提取所有已导入每个 AWS servicePrincipal（已在其中配置预配）中的 appRole。 这些角色字符串可以随后添加到 AWS servicePrincipal（在其中配置单一登录）。
+ * “预配”部分只支持一次为一个 AWS 租户输入一组凭据。 所有导入的角色都写入到 AWS 租户的 Azure AD [servicePrincipal 对象](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)的 appRoles 属性。 可以将多个 AWS 租户（通过 servicePrincipal 表示）从库添加到 Azure AD 进行预配，但存在一个已知的问题：无法自动将所有导入的角色从用于预配的多个 AWS servicePrincipal 写入到用于单一登录的单个 servicePrincipal 中。 若要解决此问题，可以使用 [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) 来提取所有已导入每个 AWS servicePrincipal（已在其中配置预配）中的 appRole。 这些角色字符串可以随后添加到 AWS servicePrincipal（在其中配置单一登录）。
 
 ## <a name="additional-resources"></a>其他资源
 

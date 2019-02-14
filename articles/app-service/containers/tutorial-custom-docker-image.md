@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: 62cdc50b40fb1273fdc2eece050869fc2284cf6c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 6b57c3a172f39c596250b05024ad954a5d065440
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632970"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984811"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>对用于容器的 Web 应用使用自定义 Docker 映像
 
@@ -59,7 +59,7 @@ cd docker-django-webapp-linux
 
 在 Git 存储库中查看 _Dockerfile_。 此文件描述了运行应用程序所需的 Python 环境。 此外，映像会设置一个 [SSH](https://www.ssh.com/ssh/protocol/) 服务器来实现容器和主机之间的安全通信。
 
-```docker
+```Dockerfile
 FROM python:3.4
 
 RUN mkdir /code
@@ -254,7 +254,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 
 ### <a name="test-the-web-app"></a>测试 Web 应用
 
-浏览到 Web 应用 (`http://<app_name>azurewebsites.net`)，验证其能否正常运行。 
+浏览到 Web 应用 (`http://<app_name>.azurewebsites.net`)，验证其能否正常运行。 
 
 ![测试 Web 应用端口配置](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-azure.png)
 
@@ -280,7 +280,7 @@ SSH 实现容器和客户端之间的安全通信。 要让自定义 Docker 映�
 
 * [RUN](https://docs.docker.com/engine/reference/builder/#run) 指令调用 `apt-get`，然后将根帐户的密码设置为 `"Docker!"`。
 
-    ```docker
+    ```Dockerfile
     ENV SSH_PASSWD "root:Docker!"
     RUN apt-get update \
             && apt-get install -y --no-install-recommends dialog \
@@ -294,7 +294,7 @@ SSH 实现容器和客户端之间的安全通信。 要让自定义 Docker 映�
 
 * [COPY](https://docs.docker.com/engine/reference/builder/#copy) 指令指示 Docker 引擎将 [sshd_config](https://man.openbsd.org/sshd_config) 文件复制到 /etc/ssh/ 目录。 配置文件应基于[此 sshd_config 文件](https://github.com/Azure-App-Service/node/blob/master/6.11.1/sshd_config)。
 
-    ```docker
+    ```Dockerfile
     COPY sshd_config /etc/ssh/
     ```
 
@@ -305,7 +305,7 @@ SSH 实现容器和客户端之间的安全通信。 要让自定义 Docker 映�
 
 * [EXPOSE](https://docs.docker.com/engine/reference/builder/#expose) 指令公开容器中的端口 2222。 虽然根密码已知，但无法从 Internet 访问端口 2222。 它是一个仅供内部使用的端口，仅可供专用虚拟网络的桥网络中的容器访问。 此后，命令会复制 SSH 配置详细信息，并启动 `ssh` 服务。
 
-    ```docker
+    ```Dockerfile
     EXPOSE 8000 2222
     ```
 

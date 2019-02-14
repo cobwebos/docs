@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/15/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 7a136f34a7dd9fada23a4225b60223220c92c665
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a1a6b31c1500c51dbbc32683d9e0e911b60dcae4
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54440517"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246728"
 ---
 组织具有大规模计算需求。 这些大型计算工作负荷包括工程设计和分析、财务风险计算、图像渲染、复杂建模、Monte Carlo 仿真等。 
 
@@ -25,12 +25,12 @@ ms.locfileid: "54440517"
     * 在 Azure 虚拟机或[虚拟机规模集](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)中设置自己的群集环境。 
     * 直接迁移本地群集，或者在 Azure 中部署新群集以增加容量。 
     * 使用 Azure 资源管理器模板部署先进的[工作负荷管理器](#workload-managers)、基础结构和[应用程序](#hpc-applications)。 
-    * 选择包括 MPI 或 GPU 工作负荷专用硬件与网络连接的 [HPC 和 GPU VM 大小](#hpc-and-gpu-sizes)。 
+    * 选择包括 MPI 或 GPU 工作负荷专用硬件与网络连接的 [HPC 和 GPU VM 大小](#hpc-and-gpu-vm-sizes)。 
     * 为 I/O 密集型工作负载添加[高性能存储](#hpc-storage)。
 * **混合解决方案**
     * 扩展本地解决方案，以便将高峰工作负荷卸载（“迸发”）到 Azure 基础结构
-    * 结合现有的[工作负荷管理器](#workload-manager)使用按需云计算。
-    * 利用 MPI 或 GPU 工作负载的 [HPC 和 GPU VM 大小](#hpc-and-gpu-sizes)。
+    * 结合现有的[工作负荷管理器](#workload-managers)使用按需云计算。
+    * 利用 MPI 或 GPU 工作负载的 [HPC 和 GPU VM 大小](#hpc-and-gpu-vm-sizes)。
 * **大型计算解决方案即服务**
     * 使用 [Azure CycleCloud](#azure-cyclecloud)、[Azure Batch](#azure-batch) 及相关的 [Azure 服务](#related-azure-services)开发自定义的大计算解决方案和工作流。
     * 运行 [Altair](http://www.altair.com/)、[Rescale](https://www.rescale.com/azure/) 和 [Cycle Computing](https://cyclecomputing.com/)（现已[与 Microsoft 合并](https://blogs.microsoft.com/blog/2017/08/15/microsoft-acquires-cycle-computing-accelerate-big-computing-cloud/)）等供应商提供的支持 Azure 的工程与仿真解决方案。

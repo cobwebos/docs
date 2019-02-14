@@ -11,19 +11,19 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
-ms.date: 01/31/2019
-ms.openlocfilehash: 84017e95d41f8934de248065a2b66792628b41d2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/12/2019
+ms.openlocfilehash: 61c4edc5ec9c690944047ce67f619f0f69f62f6c
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815534"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236730"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>快速入门：在 Azure SQL 数据库中使用机器学习服务（预览版，使用 R）
 
 本文介绍如何[在 Azure SQL 数据库中使用机器学习服务（使用 R）](sql-database-machine-learning-services-overview.md)的公共预览版， 并介绍在 SQL 数据库和 R 之间移动数据的基本知识，同时还介绍如何将正确格式的 R 代码包装在存储过程 [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) 中，以便在 SQL 数据库中生成、训练和使用机器学习模型。
 
-使用 R 语言的强大功能在数据库中提供高级分析和机器学习。 这种能力将计算和处理功能带到了数据所在的位置，不需要通过网络拉取数据。 另外，可以利用企业 R 包的强大功能大规模地提供高级分析。
+使用 R 语言的强大功能在数据库中提供高级分析和机器学习。 该功能将计算和处理功能带到了数据所在的位置，不需要通过网络拉取数据。 另外，可以利用企业 R 包的强大功能大规模地提供高级分析。
 
 机器学习服务包括了 R 的基本发行版，其中包含 Microsoft 提供的企业 R 包。 Microsoft 的 R 函数和算法是为规模和实用性而设计的，提供预测分析、统计建模、数据可视化以及先进的机器学习算法。
 

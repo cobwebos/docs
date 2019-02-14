@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/08/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6c6553ace250aa9cbc06dfdfea77fc5e1637cd41
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 6810818e48329d883961c840fa83857d84b98fd4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384813"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112863"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-edge-preview"></a>教程：使用 Azure Data Box Edge（预览版）传输数据
 
@@ -55,7 +55,7 @@ ms.locfileid: "53384813"
 
 1. 在“添加共享”窗格中，执行以下过程：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”框中，提供共享的唯一名称。  
+    a. 在“名称”框中，提供共享的唯一名称。  
     共享名称只能包含小写字母、数字和连字符。 它必须包含 3 到 63 个字符，并以字母或数字开头。 紧邻连字符的字符必须为字母或数字。
     
     b. 选择共享的**类型**。  
@@ -135,14 +135,14 @@ ms.locfileid: "53384813"
 
 1. 安装 NFS 客户端后，使用以下命令将创建的 NFS 共享装载到 Data Box Edge 设备上：
 
-   `sudo mount <device IP>:/<NFS share on device> /home/username/<Folder on local Linux computer>`
+   `sudo mount -t nfs -o sec=sys,resvport <device IP>:/<NFS shares on device> /home/username/<Folder on local Linux computer>`
 
     > [!IMPORTANT]
     > 装载共享之前，请确保已创建要在本地计算机上充当装入点的目录。 这些目录不应包含任何文件或子文件夹。
 
     以下示例演示如何通过 NFS 连接到 Data Box Edge 设备上的共享。 设备 IP 为 `10.10.10.60`。 共享 `mylinuxshare2` 装载在 ubuntuVM 上。 共享装入点为 `/home/databoxubuntuhost/edge`。
 
-    `sudo mount -t nfs 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/Edge`
+    `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/Edge`
 
 > [!NOTE] 
 > 以下注意事项适用于预览版：

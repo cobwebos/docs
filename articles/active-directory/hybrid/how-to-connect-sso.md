@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 46035da09bc2d02e89659e3c18fa313e947e1280
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 94b027900a3be4a43d6524fa595a5b4dc2909fa7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55489745"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186210"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory 无缝单一登录
 

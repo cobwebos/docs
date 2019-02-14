@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/19/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: ef670c2dc701f888be3c7bb9a546c8a8a46f993a
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 4cc115d068736f61f9edb4ec609ac592607e7fa0
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458825"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246736"
 ---
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
@@ -35,7 +35,7 @@ ms.locfileid: "49458825"
 
 <sup>2</sup>这包括标准和高级存储帐户。 如果需要的存储帐户超过 100 个，请通过 [Azure 支持](https://azure.microsoft.com/support/faq/)提出请求。 Azure 存储团队将评审业务案例，最多可以批准 250 个存储帐户。
 
-<sup>3</sup>每个订阅可以应用无限数量的标记。 每个资源或资源组的标记数仅限 15。 当标记数少于或等于 10,000 时，Resource Manager 仅返回订阅中[唯一标记名和值的列表](/rest/api/resources/tags#Tags_List)。 不过，即使数目超过 10,000，也仍可通过标记查找资源。  
+<sup>3</sup>每个订阅可以应用无限数量的标记。 每个资源或资源组的标记数仅限 15。 当标记数少于或等于 10,000 时，Resource Manager 仅返回订阅中[唯一标记名和值的列表](/rest/api/resources/tags)。 不过，即使数目超过 10,000，也仍可通过标记查找资源。  
 
 <sup>4</sup>使用 Azure 资源组和 Azure 资源管理器时不再需要这些功能。
 

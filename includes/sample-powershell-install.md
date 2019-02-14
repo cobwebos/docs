@@ -1,14 +1,14 @@
 ---
 author: sptramer
-ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/25/2018
+ms.date: 01/30/2019
+ms.service: azure-powershell
 ms.author: sttramer
-ms.openlocfilehash: 82fb5e2c55f2f95d18a97f88462065ca19729a45
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 3c88d94eb763edc2562ad9cd640c63c4a7b9622d
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54899315"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246743"
 ---
-必要时，请使用 [Azure PowerShell 指南](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)中的说明安装 Azure PowerShell 模块，然后运行 `Connect-AzureRmAccount` 创建与 Azure 的连接。 此外，用户配置文件的 .ssh 目录中需具备名为 `id_rsa.pub` 的 SSH 公钥。
+必要时，请使用 [Azure PowerShell 指南](/powershell/azure/azurerm/)中的说明安装 Azure PowerShell 模块，然后运行 `Connect-AzureRmAccount` 创建与 Azure 的连接。 此外，用户配置文件的 .ssh 目录中需具备名为 `id_rsa.pub` 的 SSH 公钥。

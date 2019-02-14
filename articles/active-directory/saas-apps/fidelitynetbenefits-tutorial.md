@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 00b90dae4acfae3f8250b94be1f8752aa72bcfe1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bf7de6d0416c60f33f57fd83768fd23b0a09e0f1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174884"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184867"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>教程：Azure Active Directory 与 Fidelity NetBenefits 集成
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: d3478e647114749647c18b75d624e0d73482b82a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6ea68e9e1320dd76566e1d8d8e5eab3693372979
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460125"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171564"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asc-contracts"></a>教程：Azure Active Directory 与 ASC Contracts 的集成
 

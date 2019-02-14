@@ -3,7 +3,7 @@ title: 常见问题 - Azure 专用 HSM | Microsoft Docs
 description: 涵盖了有关 Azure 专用 HSM 的各种主题的常见问题
 services: dedicated-hsm
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.custom: mvc
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: concepts
 ms.date: 12/11/2018
 ms.author: barclayn
-ms.openlocfilehash: ec814bf641dea6f47b907e9f9e2646dfcf84ade1
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 5ea98f96fe10337e905270cf5da4847d825d6eb4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451742"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107797"
 ---
 # <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 

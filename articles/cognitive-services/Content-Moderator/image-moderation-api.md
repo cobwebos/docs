@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 使用内容审查器的机器辅助图像审查和人工循环评审工具来调整具有成人和猥亵内容的图像。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 1141e5c5f55b0b0bb012e1ce66ad824f02758825
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 1dba848be0c24ef26dcefd23d4fc3f7201420449
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220138"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873506"
 ---
 # <a name="learn-image-moderation-concepts"></a>了解图像审查概念
 

@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 08/30/2018
-ms.openlocfilehash: 56884f2299df35c1565804a92fc404b6ed9e2f9a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 97fcfa20e474edb8108474ef02c6542688d627ff
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185003"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243479"
 ---
 # <a name="network-connectivity"></a>网络连接
 本文提供 Azure Stack 网络基础架构信息，可帮助你确定如何以最佳方式将 Azure Stack 集成到现有的网络环境。 
@@ -67,9 +67,6 @@ HLH 也托管部署 VM (DVM)。 此 DVM 在 Azure Stack 部署期间使用，在
 
 ### <a name="azure-stack-infrastructure-network"></a>Azure Stack 基础结构网络
 此 /24 网络专用于内部 Azure Stack 组件，使这些组件能够相互通信和交换数据。 此子网需要可路由的 IP 地址，但使用访问控制列表 (ACL) 可将它保留给解决方案专用。 此网络在路由时，不应超出边界交换机，但大小等同于 /27 网络的小范围除外，其中一些服务在需要访问外部资源和/或 Internet 时使用 /27 网络。 
-
-### <a name="public-infrastructure-network"></a>公共基础结构网络
-此 /27 网络属于前面所述 Azure Stack 基础结构子网的较小范围，它无需公共 IP 地址，但确实需要通过 NAT 或透明代理进行 Internet 访问。 此网络将分配给紧急恢复控制台系统 (ERCS)。ERCS VM 在注册到 Azure 期间以及进行基础结构备份期间需要访问 Internet，。 ERCS VM 应可路由到管理网络，以便进行故障排除。
 
 ### <a name="public-vip-network"></a>公共 VIP 网络
 公共 VIP 网络分配给 Azure Stack 中的网络控制器。 它不是交换机上的逻辑网络。 SLB 针对租户工作负荷使用地址池并分配 /32 网络。 在交换机路由表中，这些 /32 IP 通过 BGP 播发为可用路由。 此网络包含外部可访问的 IP 地址或公共 IP 地址。 Azure Stack 基础结构会保留此公共 VIP 网络中的前 31 个地址，剩余的地址由租户 VM 使用。 此子网中的网络大小范围为最小 /26（64 台主机）到最大 /22（1022 台主机），我们建议规划 /24 网络。
