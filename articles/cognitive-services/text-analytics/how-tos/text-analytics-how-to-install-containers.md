@@ -4,19 +4,19 @@ titleSuffix: Text Analytics -  Azure Cognitive Services
 description: 通过本演练教程了解如何下载、安装和运行文本分析容器。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 07fbf51f584d691b08d94f68fefa8c3f9348227f
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: f2b8b97878fc0970c8cfc95e5bd4420306e34cc0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55294822"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977094"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
@@ -77,19 +77,19 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 
 ### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>适用于关键短语提取容器的 Docker 拉取
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/keyphrase:latest
 ```
 
 ### <a name="docker-pull-for-the-language-detection-container"></a>适用于语言检测容器的 Docker 拉取
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
 ```
 
 ### <a name="docker-pull-for-the-sentiment-container"></a>适用于情绪容器的 Docker 拉取
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
 ```
 
@@ -156,18 +156,7 @@ ApiKey={BILLING_KEY}
 
 文本分析容器使用 Azure 帐户中的_文本分析_资源向 Azure 发送账单信息。 
 
-如果未连接到 Azure 进行计量，则无法授权并运行认知服务容器。 客户需要始终让容器向计量服务传送账单信息。 认知服务容器不会将客户数据发送给 Microsoft。 
-
-`docker run` 命令使用以下参数进行计费：
-
-| 选项 | 说明 |
-|--------|-------------|
-| `ApiKey` | 用于跟踪账单信息的_文本分析_资源的 API 密钥。 |
-| `Billing` | 用于跟踪账单信息的_文本分析_资源的终结点。|
-| `Eula` | 表示已接受容器的许可条款。<br/>此选项的值必须设置为 `accept`。 |
-
-> [!IMPORTANT]
-> 必须使用有效值指定所有三个选项，否则容器将无法启动。
+[!INCLUDE [Container's Billing Settings](../../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 有关这些选项的详细信息，请参阅[配置容器](../text-analytics-resource-container-config.md)。
 

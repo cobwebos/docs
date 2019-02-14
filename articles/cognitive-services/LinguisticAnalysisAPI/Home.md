@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: 了解语言分析 API 如何提供对识别文本结构的自然语言处理 (NLP) 工具的访问。
 services: cognitive-services
 author: RichardSunMS
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: linguistic-analysis
 ms.topic: overview
 ms.date: 10/10/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3051f8d25c3591d40d012f2c9041dd0e65c03d12
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: c9a645a16a618ae075b9a0947f394e6833a14fb6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226955"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883162"
 ---
 # <a name="what-is-the-linguistic-analysis-api-preview"></a>什么是语言分析 API？ （预览版）
 

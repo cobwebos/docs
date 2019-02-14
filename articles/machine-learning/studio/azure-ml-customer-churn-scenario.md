@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 47d267a2c4c122d8acbb2d3bf40e6858b4d6b77c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: dd65988146d3738d8540ddf4e54ed57813e10c16
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244175"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243529"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室分析客户流失
 ## <a name="overview"></a>概述
@@ -25,7 +25,7 @@ ms.locfileid: "55244175"
 Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azure 机器学习前产品经理）对此实验进行了开发和测试。 Azure 文档团队有幸确认了他们的专业知识，感谢他们分享了这份白皮书。
 
 > [!NOTE]
-> 用于此实验的数据不会公开提供。 有关如何生成用于流失分析的机器学习模型示例，请参阅：[Azure AI 库](http://gallery.cortanaintelligence.com/)中的[零售流失模型模板](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1)
+> 用于此实验的数据不会公开提供。 有关如何生成用于流失分析的机器学习模型示例，请参阅：[Azure AI 库](http://gallery.azure.ai/)中的[零售流失模型模板](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1)
 > 
 > 
 
@@ -106,7 +106,7 @@ Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azu
  
 
 > 请注意，此数据是私有的，因此不能共享模型和数据。
-> 但是，有关使用公开可用数据的类似模型，请参阅 [Azure AI 库](http://gallery.cortanaintelligence.com/)中的以下示例实验：[Telco Customer Churn](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383)（电信客户流失）。
+> 但是，有关使用公开可用数据的类似模型，请参阅 [Azure AI 库](http://gallery.azure.ai/)中的以下示例实验：[Telco Customer Churn](http://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383)（电信客户流失）。
 > 
 > 若要了解如何能使用 Cortana Intelligence 套件实现流失分析，还推荐由高级经理 Wee Hyong Tok 制作的[此视频](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html)。 
 > 
@@ -219,7 +219,7 @@ Azure 机器学习中即将推出的另一项令人兴奋的功能是，可将�
 
 [4] [Big Data Marketing:Engage Your Customers More Effectively and Drive Value](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)（大数据市场营销：更有效地吸引客户并创造价值）
 
-[5] [Azure AI 库](http://gallery.cortanaintelligence.com/) 中的 [电信流失模型模板](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) 
+[5] [Azure AI 库](http://gallery.azure.ai/) 中的 [电信流失模型模板](http://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) 
  
 
 ## <a name="appendix"></a>附录

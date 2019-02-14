@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: 1c519c658db29152f7ecafa8ac244c922cf4cd9f
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: dfc5e2923215b1669b0a3300653ad0cae7379655
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118986"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960728"
 ---
 # <a name="article-top"></a>将现有的 Azure 移动服务迁移到 Azure 应用服务
 借助 [Azure 应用服务正式版]，可轻松就地迁移 Azure 移动服务站点，使用 Azure 应用服务的所有功能。  本文档说明将站点从 Azure 移动服务迁移到 Azure 应用服务时的情形。
@@ -234,7 +234,7 @@ PublishSettings 文件将下载到计算机。  此文件通常名为 sitename.P
 ### <a name="notification-hubs"></a>通知中心
 移动服务使用通知中心来处理推送通知。  迁移后，可使用以下应用设置将通知中心链接到移动服务：
 
-| 应用程序设置 | Description |
+| 应用程序设置 | 说明 |
 |:--- |:--- |
 | **MS\_PushEntityNamespace** |通知中心命名空间 |
 | **MS\_NotificationHubName** |通知中心名称 |
@@ -267,7 +267,7 @@ PublishSettings 文件将下载到计算机。  此文件通常名为 sitename.P
 ### <a name="app-settings"></a>其他应用设置
 下面是从移动服务迁移的其他应用设置，可在“设置” > “应用设置”下使用：
 
-| 应用程序设置 | Description |
+| 应用程序设置 | 说明 |
 |:--- |:--- |
 | **MS\_MobileServiceName** |应用的名称 |
 | **MS\_MobileServiceDomainSuffix** |域前缀。 例如  azure-mobile.net |
@@ -332,7 +332,7 @@ Azure 应用服务中通常会禁用诊断日志记录。  若要启用诊断日
 ### <a name="changing-webconfig-does-not-work"></a>更改 Web.config 无效
 如果有 ASP.NET 站点，则无法应用对 `Web.config` 文件的更改。  Azure 应用服务在启动期间构建适当的 `Web.config` 文件来支持移动服务运行时。  可以使用 XML 转换文件来覆盖特定的设置（例如自定义标头）。  创建名为 `applicationHost.xdt` 的文件 - 此文件必须在 Azure 服务上的 `D:\home\site` 目录中结束。  通过自定义部署脚本或直接使用 Kudu 上传 `applicationHost.xdt` 文件。  下面展示了一个示例文档：
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
   <system.webServer>

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 981f4d78a351b6d2b61253407e5021dbeb285204
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 80118cc1d111ddc11f35f57a96b61a5b940460cc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54819537"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190562"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp"></a>教程：Azure Active Directory 与 ADP 集成
 
@@ -126,7 +127,7 @@ ms.locfileid: "54819537"
 
 7. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
-    | 名称 | 源属性 | 
+    | Name | 源属性 | 
     | ---------------| --------------- |
     | PersonImmutableID  | user.employeeid |
 

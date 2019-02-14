@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 描述如何共享自定义搜索实例。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: aahi
-ms.openlocfilehash: 8c984e7c4b85940d457955b1e3cba93d7eb964e5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 806a29c4395b491332fb7d77f5c7992d17c357f2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183571"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55875546"
 ---
 # <a name="share-your-custom-search-instance"></a>共享自定义搜索实例
 

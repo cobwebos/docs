@@ -4,25 +4,25 @@ titlesuffix: Azure Cognitive Services
 description: 有关如何向 Azure 自定义 AI 决策服务注册新应用的分步指南。
 services: cognitive-services
 author: slivkins
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: slivkins
 ms.reviewer: marcozo
-ms.openlocfilehash: f642e0d4e21c180a92b4b76d05fb2c9bac9f2976
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: c56aef180f5e16d2ec1931caabe04295ef288ca9
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219730"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980680"
 ---
 # <a name="register-your-application"></a>注册应用程序
 
 若要将自定义决策服务用于应用程序，请在门户中注册该应用程序。 本文介绍了如何执行此操作。
 
-1. 转到自定义决策服务的[前端页](https://ds.microsoft.com/)。 在功能区上，单击“我的门户”，如图像中所突出显示：
+1. 转到自定义决策服务的[前端页](https://portal.ds.microsoft.com/)。 在功能区上，单击“我的门户”，如图像中所突出显示：
 
     ![我的门户](./media/portal.png)
 

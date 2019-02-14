@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7f90fccd062826493b7add1a90406fa9244e00b2
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5e9104f59173c3d39ef2f2232ed2a9c6864cf84f
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002052"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892552"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>安全框架：敏感数据 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -349,7 +349,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 通用、Xamarin  |
 | **属性**              | 不适用  |
-| **参考**              | [使用 Microsoft Intune 策略管理设备上的设置和功能](https://docs.microsoft.com/intune/deploy-use/manage-settings-and-features-on-your-devices-with-microsoft-intune-policies#create-a-configuration-policy)、[Keychain Valet](https://components.xamarin.com/view/square.valet) |
+| **参考**              | [使用 Microsoft Intune 策略管理设备上的设置和功能](https://docs.microsoft.com/intune/deploy-use/manage-settings-and-features-on-your-devices-with-microsoft-intune-policies)、[Keychain Valet](https://components.xamarin.com/view/square.valet) |
 | **步骤** | <p>如果应用程序在手机文件系统中写入用户 PII 等敏感信息（电子邮件、电话号码、名字、姓氏、首选项等），则在写入本地文件系统之前应将这些信息加密。 如果应用程序是企业应用程序，请使用 Windows Intune 来探索发布应用程序的可能性。</p>|
 
 ### <a name="example"></a>示例

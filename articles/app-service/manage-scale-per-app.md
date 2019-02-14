@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 49b5978fd647a4667503676528120a36495021c6
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 08d6d0c31e1cff799e952c50bae3446e41477aba
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729907"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104563"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>在 Azure 应用服务上使用按应用缩放进行高密度托管
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 默认情况下，通过缩放应用服务应用在其中运行的[应用服务计划](overview-hosting-plans.md)来缩放这些应用。 当多个应用在同一个应用服务计划中运行时，每个横向扩展实例会在计划中运行所有应用。
 
 可以在应用服务计划级别启用按应用缩放。 按应用缩放在缩放应用时独立于所属的应用服务计划。 这样，可以将一个应用服务计划扩展到 10 个实例，而将一个应用设置为仅用 5 个。
@@ -33,20 +36,20 @@ ms.locfileid: "53729907"
 
 ## <a name="per-app-scaling-using-powershell"></a>使用 PowerShell 的按应用缩放
 
-通过将 ```-PerSiteScaling $true``` 参数传入 ```New-AzureRmAppServicePlan``` cmdlet，创建按应用缩放的计划。
+通过将 ```-PerSiteScaling $true``` 参数传入 ```New-AzAppServicePlan``` cmdlet，创建按应用缩放的计划。
 
 ```powershell
-New-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
+New-AzAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
                             -Location $Location `
                             -Tier Premium -WorkerSize Small `
                             -NumberofWorkers 5 -PerSiteScaling $true
 ```
 
-通过将 `-PerSiteScaling $true` 参数传入 ```Set-AzureRmAppServicePlan``` cmdlet，使用现有应用服务计划启用按应用缩放。
+通过将 `-PerSiteScaling $true` 参数传入 ```Set-AzAppServicePlan``` cmdlet，使用现有应用服务计划启用按应用缩放。
 
 ```powershell
 # Enable per-app scaling for the App Service Plan using the "PerSiteScaling" parameter.
-Set-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup `
+Set-AzAppServicePlan -ResourceGroupName $ResourceGroup `
    -Name $AppServicePlan -PerSiteScaling $true
 ```
 
@@ -56,13 +59,13 @@ Set-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup `
 
 ```powershell
 # Get the app we want to configure to use "PerSiteScaling"
-$newapp = Get-AzureRmWebApp -ResourceGroupName $ResourceGroup -Name $webapp
+$newapp = Get-AzWebApp -ResourceGroupName $ResourceGroup -Name $webapp
     
 # Modify the NumberOfWorkers setting to the desired value.
 $newapp.SiteConfig.NumberOfWorkers = 2
     
 # Post updated app back to azure
-Set-AzureRmWebApp $newapp
+Set-AzWebApp $newapp
 ```
 
 > [!IMPORTANT]

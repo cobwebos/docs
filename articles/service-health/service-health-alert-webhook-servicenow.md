@@ -1,23 +1,17 @@
 ---
 title: 使用 ServiceNow 配置 Azure 服务运行状况警报 | Microsoft Docs
 description: 获取有关发送到 ServiceNow 实例的服务运行状况事件的个性化通知。
-author: shawntabrizi
-services: service-health
-documentationcenter: service-health
-ms.assetid: ''
-ms.service: service-health
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: stephbaron
+ms.author: stbaron
 ms.topic: article
+ms.service: service-health
 ms.date: 11/14/2017
-ms.author: shtabriz
-ms.openlocfilehash: c1de3a914e3505e46ab0a4eeae4f3b2c8fe84790
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: f17215a5695128bf2ea507efa0c12fdbba9467d2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158357"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858852"
 ---
 # <a name="configure-service-health-alerts-with-servicenow"></a>使用 ServiceNow 配置服务运行状况警报
 
@@ -158,7 +152,7 @@ ms.locfileid: "54158357"
 
 1. 在“操作”列表中定义：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **操作类型：***Webhook*
+    a. **操作类型：***Webhook*
 
     b. **详细信息：** 前面保存的 ServiceNow 集成 URL。
 
@@ -175,7 +169,7 @@ ms.locfileid: "54158357"
 
 1. 添加到“操作”列表：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **操作类型：***Webhook*
+    a. **操作类型：***Webhook*
 
     b. **详细信息：** 前面保存的 ServiceNow 集成 URL。
 

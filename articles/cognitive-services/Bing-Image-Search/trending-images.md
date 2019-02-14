@@ -4,7 +4,7 @@ titleSuffix: Azure Cognitive Services
 description: 使用必应图像搜索 API 从 Web 搜索目前的热门图像。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.assetid: EAB92D35-5C0B-4A0A-8F49-02DF7FAD44B4
 ms.service: cognitive-services
 ms.subservice: bing-image-search
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 177a9cbf9235bb3d2deb0d5f8e4e31a0e1472b48
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: ea65fc9a6719b034a5f9d904ab2e970d61a2a7a2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756465"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55880828"
 ---
 # <a name="get-trending-images-from-the-web"></a>从 Web 获取热门图像
 

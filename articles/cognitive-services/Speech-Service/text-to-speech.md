@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 文本转语音 API 提供超过 45 种语言和区域设置中的 75 种以上语音。 若要使用标准语音字体，只需在调用语音服务时使用几个其他参数指定语音名称。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: b413bd65582dceadd9aab912694c3b560070c4f3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0836ae4a9041db27cfed35dd0f1fc0df6e541aff
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251548"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859328"
 ---
 # <a name="about-the-text-to-speech-api"></a>关于文本转语音 API
 

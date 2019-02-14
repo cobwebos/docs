@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 介绍了如何获取适用于必应自动推荐 API 的分析。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 1950c9ea415c191c89527d288165c068bb533bdd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1139993be6e408e0a2d19c13a6ced3823aaa0003
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162746"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858308"
 ---
 # <a name="how-to-get-analytics-for-bing-autosuggest-api"></a>如何获取适用于必应自动推荐 API 的分析
 

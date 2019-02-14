@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 524e10b93905372377fe388a38c5dc55fdcee877
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 49c41b436e0d935d1f9fce5ba2de10e0f2d0c99d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509982"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991213"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>支持高达 100 TB 的超大规模服务层（预览版）
 
@@ -32,7 +32,7 @@ Azure SQL 数据库中的超大规模服务层是基于 vCore 的采购模型中
 > [!IMPORTANT]
 > 超大规模服务层目前提供公共预览版，仅可在有限的 Azure 区域中使用。 要获取完整的区域列表，请参阅[超大规模服务层可用区域](#available-regions)。 我们尚不建议在超大规模数据库中运行任何生产工作负荷。 无法将超大规模数据库更新为其他服务层。 出于测试目的，我们建议创建当前数据库的副本，并将副本更新为超大规模服务层。
 > [!NOTE]
-> 有关基于 vCore 的购买模型中的常规用途服务层和业务关键服务层的详细信息，请参阅[常规用途](sql-database-service-tier-general-purpose.md)服务层和[业务关键](sql-database-service-tier-business-critical.md)服务层。 有关基于 vCore 购买模型与基于 DTU 购买模型的比较，请参阅 [Azure SQL 数据库购买模型和资源](sql-database-service-tiers.md)。
+> 有关基于 vCore 的购买模型中的常规用途服务层和业务关键服务层的详细信息，请参阅[常规用途](sql-database-service-tier-general-purpose.md)服务层和[业务关键](sql-database-service-tier-business-critical.md)服务层。 有关基于 vCore 购买模型与基于 DTU 购买模型的比较，请参阅 [Azure SQL 数据库购买模型和资源](sql-database-purchase-models.md)。
 > [!IMPORTANT]
 > 超大规模服务层目前提供公共预览版。 我们尚不建议在超大规模数据库中运行任何生产工作负荷。 无法将超大规模数据库更新为其他服务层。 出于测试目的，我们建议创建当前数据库的副本，并将副本更新为超大规模服务层。
 
@@ -162,7 +162,7 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 ## <a name="next-steps"></a>后续步骤
 
 - 有关超大规模层的常见问题，请参阅[超大规模层常见问题解答](sql-database-service-tier-hyperscale-faq.md)。
-- 有关服务层的信息，请参阅[服务层](sql-database-service-tiers.md)
+- 有关服务层的信息，请参阅[服务层](sql-database-purchase-models.md)
 - 有关服务器和订阅级别限制的信息，请参阅 [SQL 数据库服务器资源限制概述](sql-database-resource-limits-database-server.md)。
 - 有关单一数据库的购买模型限制的信息，请参阅 [适用于单一数据库的 Azure SQL 数据库基于 vCore 的购买模型限制](sql-database-vcore-resource-limits-single-databases.md)。
 - 有关功能和比较列表，请参阅 [SQL 常用功能](sql-database-features.md)。

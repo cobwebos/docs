@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: b3ce3731f19565bfe950d03a2bbc980dda55a7f4
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 386662a4e98b881228a82de3777632ed002bb5b0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238652"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989139"
 ---
-# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure Webhook 通过 .NET 监视媒体服务作业通知
+# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure Webhook 通过 .NET 监视媒体服务作业通知 
+
 运行作业时，通常需要采用某种方式来跟踪作业进度。 可以使用 Azure Webhook 或 [Azure 队列存储](media-services-dotnet-check-job-progress-with-queues.md)监视媒体服务作业通知。 本文介绍如何使用 Webhook。
 
 本文介绍如何
@@ -57,7 +58,7 @@ ms.locfileid: "50238652"
 
 [应用程序设置](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings)部分定义了本文中所定义的 Webhook 中使用的参数。 还向应用设置添加以下参数。 
 
-|名称|定义|示例| 
+|Name|定义|示例| 
 |---|---|---|
 |SigningKey |签名密钥。| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
 |WebHookEndpoint | webhook 终结点地址。 Webhook 函数创建后即可从“获取函数 URL”链接中复制 URL。 | https://juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==。|

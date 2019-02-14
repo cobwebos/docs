@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 文本翻译 API v3.0 参考文档。
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 4d1c33480e408f892517cde6d42e103b34218f26
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 767021772fc86013cd8192216eb03840f1160807
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459055"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878691"
 ---
 # <a name="translator-text-api-v30"></a>文本翻译 API v3.0
 
@@ -49,7 +49,7 @@ Microsoft Translator 位于多个数据中心位置之外。 目前位于 6 个 
 |Azure|亚太区|    api-apc.cognitive.microsofttranslator.com|
 
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 在 Microsoft 认知服务中订阅文本翻译 API 或[认知服务一体化](https://azure.microsoft.com/pricing/details/cognitive-services/)并使用订阅密钥（Azure 门户中提供）进行身份验证。 
 

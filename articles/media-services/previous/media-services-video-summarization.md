@@ -4,7 +4,7 @@ description: 视频摘要可通过自动选择来自源视频的有趣片段帮�
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: a245529f-3150-4afc-93ec-e40d8a6b761d
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 02/08/2019
 ms.author: milanga;juliako;
-ms.openlocfilehash: aba01314b26f11df41aef25215697389bc7f46b2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c0a6feb1eba1e409c29a650741eadc31f1017342
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786006"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004795"
 ---
-# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>使用 Azure 媒体视频缩略图创建视频摘要
+# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>使用 Azure 媒体视频缩略图创建视频摘要  
 ## <a name="overview"></a>概述
 通过 **Azure Media Video Thumbnails** 媒体处理器 (MP)，可创建视频摘要，这对于要预览长视频摘要的客户来说很有用。 例如，当客户将鼠标悬停在缩略图上时，他们可能希望看到一小段“摘要视频”。 通过配置预设值稍稍调整 **Azure Media Video Thumbnails** 的参数，即可使用 MP 的强大快照检测和串联技术，以算法形式生成描述性子剪辑。  
 
@@ -55,8 +55,8 @@ ms.locfileid: "33786006"
 
 | Param | 说明 |
 | --- | --- |
-| outputAudio |指定生成的视频是否包含音频。 <br/>允许的值为：True 或 False。 默认值为 True。 |
-| fadeInFadeOut |指定单独动态缩略图之间是否使用淡入淡出转换。  <br/>允许的值为：True 或 False。  默认值为 True。 |
+| outputAudio |指定生成的视频是否包含音频。 <br/>允许值包括：True 或 False。 默认值为 True。 |
+| fadeInFadeOut |指定单独动态缩略图之间是否使用淡入淡出转换。  <br/>允许值包括：True 或 False。  默认值为 True。 |
 | maxMotionThumbnailDurationInSecs |指定生成的整个视频的时长的整数。  默认值取决于原始视频的持续时间。 |
 
 下表描述了未使用 **maxMotionThumbnailInSecs** 时的默认持续时间。

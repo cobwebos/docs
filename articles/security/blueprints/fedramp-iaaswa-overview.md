@@ -4,7 +4,7 @@ description: Azure 安全性和符合性蓝图 - 适用于 FedRAMP 的 IaaS Web 
 services: security
 documentationcenter: na
 author: jomolesk
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: 8fe47cff-9c24-49e0-aa11-06ff9892a468
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 59a3a92640c7f0bc434881921e520d1b9cb352c3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 6dd413a6b6550e18551db1105d306f8a0bdaf9c2
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265480"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106743"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Azure 安全性与合规性蓝图：适用于 FedRAMP 的 laaS Web 应用
 

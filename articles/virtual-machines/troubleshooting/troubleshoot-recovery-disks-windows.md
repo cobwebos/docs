@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 1dd529b142de9815ed41f68bc9b60cdda5d47612
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 27409de144274cde4201937c47df0fd2bbfd788a
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820046"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984437"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>通过使用 Azure PowerShell 将 OS 磁盘附加到恢复 VM 来对 Windows VM 进行故障排除
 如果 Windows 虚拟机 (VM) 在 Azure 中遇到启动或磁盘错误，可能需要对磁盘本身执行故障排除步骤。 一个常见示例是应用程序更新失败，使 VM 无法成功启动。 本文详细介绍如何使用 Azure PowerShell 将磁盘连接到另一个 Windows VM 来修复所有错误，然后修复原始 VM。 
@@ -26,6 +26,7 @@ ms.locfileid: "51820046"
 > [!Important]
 > 本文中的脚本仅适用于使用[托管磁盘](../windows/managed-disks-overview.md)的 VM。 
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="recovery-process-overview"></a>恢复过程概述
 现在，可以使用 Azure PowerShell 来更改 VM 的 OS 磁盘， 而不再需要删除并重新创建 VM。
@@ -45,7 +46,7 @@ ms.locfileid: "51820046"
 确保已安装[最新 Azure PowerShell](/powershell/azure/overview) 并登录到订阅：
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 在以下示例中，请将参数名称替换为自己的值。 
@@ -54,7 +55,7 @@ Connect-AzureRmAccount
 用户可以通过查看 Azure 中 VM 的屏幕快照来排查启动问题。 此屏幕快照有助于确定为何 VM 无法启动。 以下示例从名为 `myResourceGroup` 的资源组中名为 `myVM` 的 Windows VM 获取屏幕快照：
 
 ```powershell
-Get-AzureRmVMBootDiagnosticsData -ResourceGroupName myResourceGroup `
+Get-AzVMBootDiagnosticsData -ResourceGroupName myResourceGroup `
     -Name myVM -Windows -LocalPath C:\Users\ops\
 ```
 
@@ -65,7 +66,7 @@ Get-AzureRmVMBootDiagnosticsData -ResourceGroupName myResourceGroup `
 以下示例在名为 `myResourceGroup` 的资源组中停止名为 `myVM` 的 VM：
 
 ```powershell
-Stop-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
+Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ```
 
 等到 VM 删除完成，然后继续下一步。
@@ -82,18 +83,18 @@ $vmName = 'myVM'
 $snapshotName = 'mySnapshot'  
 
 #Get the VM
-$vm = get-azurermvm `
+$vm = get-azvm `
 -ResourceGroupName $resourceGroupName `
 -Name $vmName
 
 #Create the snapshot configuration for the OS disk
-$snapshot =  New-AzureRmSnapshotConfig `
+$snapshot =  New-AzSnapshotConfig `
 -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id `
 -Location $location `
 -CreateOption copy
 
 #Take the snapshot
-New-AzureRmSnapshot `
+New-AzSnapshot `
    -Snapshot $snapshot `
    -SnapshotName $snapshotName `
    -ResourceGroupName $resourceGroupName 
@@ -111,7 +112,7 @@ New-AzureRmSnapshot `
 
 $subscriptionId = 'yourSubscriptionId'
 
-Select-AzureRmSubscription -SubscriptionId $SubscriptionId
+Select-AzSubscription -SubscriptionId $SubscriptionId
 
 #Provide the name of your resource group
 $resourceGroupName ='myResourceGroup'
@@ -131,14 +132,14 @@ $storageType = 'StandardLRS'
 #Provide the Azure region (e.g. westus) where Managed Disks will be located.
 #This location should be same as the snapshot location
 #Get all the Azure location using command below:
-#Get-AzureRmLocation
+#Get-AzLocation
 $location = 'eastus'
 
-$snapshot = Get-AzureRmSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $snapshotName 
+$snapshot = Get-AzSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $snapshotName 
  
-$diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location $location -CreateOption Copy -SourceResourceId $snapshot.Id
+$diskConfig = New-AzDiskConfig -AccountType $storageType -Location $location -CreateOption Copy -SourceResourceId $snapshot.Id
  
-New-AzureRmDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $diskName
+New-AzDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $diskName
 ```
 现在，可以创建原始 OS 磁盘的副本。 可将此磁盘装载到另一个 Windows VM，以进行故障排除。
 
@@ -154,13 +155,13 @@ $rgName = "myResourceGroup"
 $vmName = "RecoveryVM"
 $location = "eastus" 
 $dataDiskName = "newOSDisk"
-$disk = Get-AzureRmDisk -ResourceGroupName $rgName -DiskName $dataDiskName 
+$disk = Get-AzDisk -ResourceGroupName $rgName -DiskName $dataDiskName 
 
-$vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $rgName 
+$vm = Get-AzVM -Name $vmName -ResourceGroupName $rgName 
 
-$vm = Add-AzureRmVMDataDisk -CreateOption Attach -Lun 0 -VM $vm -ManagedDiskId $disk.Id
+$vm = Add-AzVMDataDisk -CreateOption Attach -Lun 0 -VM $vm -ManagedDiskId $disk.Id
 
-Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
+Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 
 ## <a name="connect-to-the-recovery-vm-and-fix-issues-on-the-attached-disk"></a>连接到恢复 VM，并修复所附加的磁盘上的问题
@@ -168,7 +169,7 @@ Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 1. 使用相应的凭据通过 RDP 连接到恢复 VM。 以下示例为名为 `myResourceGroup` 的资源组中名为 `RecoveryVM` 的 VM 下载 RDP 连接文件，并将其下载到 `C:\Users\ops\Documents`。
 
     ```powershell
-    Get-AzureRMRemoteDesktopFile -ResourceGroupName "myResourceGroup" -Name "RecoveryVM" `
+    Get-AzRemoteDesktopFile -ResourceGroupName "myResourceGroup" -Name "RecoveryVM" `
         -LocalPath "C:\Users\ops\Documents\myVMRecovery.rdp"
     ```
 
@@ -214,9 +215,9 @@ Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 2. 退出 RDP 会话。 在 Azure PowerShell 会话中，从名为“RecoveryVM”的 VM 中删除名为 `newOSDisk` 的磁盘。
 
     ```powershell
-    $myVM = Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "RecoveryVM"
-    Remove-AzureRmVMDataDisk -VM $myVM -Name "newOSDisk"
-    Update-AzureRmVM -ResourceGroup "myResourceGroup" -VM $myVM
+    $myVM = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "RecoveryVM"
+    Remove-AzVMDataDisk -VM $myVM -Name "newOSDisk"
+    Update-AzVM -ResourceGroup "myResourceGroup" -VM $myVM
     ```
 
 ## <a name="change-the-os-disk-for-the-affected-vm"></a>更改受影响 VM 的 OS 磁盘
@@ -227,22 +228,22 @@ Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 
 ```powershell
 # Get the VM 
-$vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM 
+$vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM 
 
 # Make sure the VM is stopped\deallocated
-Stop-AzureRmVM -ResourceGroupName myResourceGroup -Name $vm.Name -Force
+Stop-AzVM -ResourceGroupName myResourceGroup -Name $vm.Name -Force
 
 # Get the new disk that you want to swap in
-$disk = Get-AzureRmDisk -ResourceGroupName myResourceGroup -Name newDisk
+$disk = Get-AzDisk -ResourceGroupName myResourceGroup -Name newDisk
 
 # Set the VM configuration to point to the new disk  
-Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $disk.Id -Name $disk.Name  -sto
+Set-AzVMOSDisk -VM $vm -ManagedDiskId $disk.Id -Name $disk.Name  -sto
 
 # Update the VM with the new OS disk. Possible values of StorageAccountType include: 'Standard_LRS' and 'Premium_LRS'
-Update-AzureRmVM -ResourceGroupName myResourceGroup -VM $vm -StorageAccountType <Type of the storage account >
+Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -StorageAccountType <Type of the storage account >
 
 # Start the VM
-Start-AzureRmVM -Name $vm.Name -ResourceGroupName myResourceGroup
+Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
 ```
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>验证和启用启动诊断
@@ -250,9 +251,9 @@ Start-AzureRmVM -Name $vm.Name -ResourceGroupName myResourceGroup
 以下示例在名为 `myResourceGroup` 的资源组中名为 `myVMDeployed` 的 VM 上启用诊断扩展：
 
 ```powershell
-$myVM = Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVMDeployed"
-Set-AzureRmVMBootDiagnostics -ResourceGroupName myResourceGroup -VM $myVM -enable
-Update-AzureRmVM -ResourceGroup "myResourceGroup" -VM $myVM
+$myVM = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVMDeployed"
+Set-AzVMBootDiagnostics -ResourceGroupName myResourceGroup -VM $myVM -enable
+Update-AzVM -ResourceGroup "myResourceGroup" -VM $myVM
 ```
 
 ## <a name="next-steps"></a>后续步骤

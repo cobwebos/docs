@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 8a2a1b70290f48b3189bfae2f67dd19c5ef4c9f2
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: b97f2d3a015ebfd5f9c8771d3fc3edc1c074c839
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093251"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203703"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric Explorer 可视化群集
 
@@ -62,17 +62,6 @@ Service Fabric Explorer 同时在 Service Fabric 群集的 HTTP 管理终结点�
 可以使用证书或 Azure Active Directory (AAD) 控制客户端对 Service Fabric 群集的访问。
 
 如果尝试连接到安全群集，则将需提供客户端证书或使用 AAD 登录，具体取决于群集的配置。
-
-## <a name="video-tutorial"></a>视频教程
-
-若要了解如何使用 Service Fabric Explorer，请观看下面的 Microsoft 虚拟大学视频：
-
-> [!NOTE]
-> 此视频展示是 Service Fabric 群集中托管的 Service Fabric Explorer，而非桌面版。
->
->
-
-[<center><img src="./media/service-fabric-visualizing-your-cluster/SfxVideo.png" WIDTH="360" HEIGHT="244"></center>](https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=bBTFg46yC_9806218965)
 
 ## <a name="understand-the-service-fabric-explorer-layout"></a>了解 SService Fabric Explorer 的布局
 可以使用左侧的树来导航 Service Fabric Explorer。 在树根中，群集仪表板提供了群集的概述，包括应用程序和节点运行状况的摘要。

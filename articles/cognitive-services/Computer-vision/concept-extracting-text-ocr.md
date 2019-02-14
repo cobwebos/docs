@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 与使用计算机视觉 API 通过光学字符识别 (OCR) 提取文本相关的概念。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b1fc2e18dd5fc8e995c2d997683a4c5e5c501087
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 0f43724218994818908e87834ed1b70f4bca330b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188960"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873796"
 ---
 # <a name="extracting-text-with-optical-character-recognition"></a>使用光学字符识别提取文本
 

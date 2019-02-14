@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 使用知识探索服务 (KES) 向应用添加交互式搜索和优化功能。
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: knowledge-exploration
 ms.topic: overview
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 976cf0b98f9808ec269043c1dff2883bd2c148dd
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: afd71999660d02c3c6d5ea174e786efcf43e54f6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224677"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860671"
 ---
 # <a name="knowledge-exploration-service"></a>知识探索服务
 

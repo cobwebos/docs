@@ -4,24 +4,24 @@ titlesuffix: Azure Cognitive Services
 description: 使用必应实体搜索 API 从搜索查询中提取和搜索实体和场所。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.component: bing-entity-search
 ms.topic: overview
 ms.date: 02/01/2019
 ms.author: scottwhi
-ms.openlocfilehash: 9190c87b7afff66162e25fb3cd08bfeac76aff74
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 957a104b8fea7274763f16320cc094ede1f94567
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757745"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55871825"
 ---
 # <a name="what-is-bing-entity-search-api"></a>什么是必应实体搜索 API？
 
 必应实体搜索 API 向必应发送搜索查询，然后获得包含实体和场所的结果。 场所结果包括餐馆、酒店或其他本地商业场所。 如果查询指定了本地商业场所的名称或询问某类商业场所（例如，“我附近的餐馆”），则必应会返回场所。 如果查询指定知名的人物、场所（旅游景点、州、县等）或事物，则必应会返回实体。
 
-|功能  |说明  |
+|Feature  |说明  |
 |---------|---------|
 |[实时搜索建议](concepts/search-for-entities.md#suggest-search-terms-with-the-bing-autosuggest-api)     | 当用户键入搜索词时，以下拉列表的形式提供搜索建议。       | 
 | [实体歧义消除](concepts/search-for-entities.md#the-bing-entity-search-api-response)  | 为具有多个可能含义的查询获取多个实体。 |

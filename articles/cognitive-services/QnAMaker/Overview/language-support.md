@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 区域性列表（QnA Maker 支持的知识库的自然语言）。 请勿将多种语言混合在同一个知识库中。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 02/04/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 5a4938ec37cf006e5cd6342687e2c50cadd5272e
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 3bdc3a91e87f1bbd06ef0181d0042ee618f519c9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731064"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861436"
 ---
 # <a name="language-and-region-support-for-qna-maker"></a>QnA Maker 的语言和区域支持
 

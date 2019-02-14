@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 8bfa4178baae0d92f7efb5ea156cfd35a8b32b1b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 08189522f4f73e996ed98f3996f87da8d93b5d2a
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157459"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895629"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>使用 Azure CLI 通过路由表路由网络流量
 
@@ -44,7 +44,7 @@ ms.locfileid: "55157459"
 
 ## <a name="create-a-route-table"></a>创建路由表
 
-在创建路由表之前，请使用 [az group create](/cli/azure/group#az_group_create) 针对本文中创建的所有资源创建一个资源组。 
+在创建路由表之前，请使用 [az group create](/cli/azure/group) 针对本文中创建的所有资源创建一个资源组。 
 
 ```azurecli-interactive
 # Create a resource group.
@@ -78,7 +78,7 @@ az network route-table route create \
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>将路由表关联到子网
 
-将路由表关联到子网之前，必须先创建虚拟网络和子网。 使用 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 创建包含一个子网的虚拟网络。
+将路由表关联到子网之前，必须先创建虚拟网络和子网。 使用 [az network vnet create](/cli/azure/network/vnet) 创建包含一个子网的虚拟网络。
 
 ```azurecli-interactive
 az network vnet create \
@@ -107,7 +107,7 @@ az network vnet subnet create \
   --address-prefix 10.0.2.0/24
 ```
 
-使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) 将 *myRouteTablePublic* 路由表关联到公共子网。
+使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet) 将 *myRouteTablePublic* 路由表关联到公共子网。
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -136,7 +136,7 @@ az vm create \
 
 创建 VM 需要几分钟时间。 在 Azure 完成创建 VM 并返回有关 VM 的输出之前，请不要继续下一步。 
 
-要使网络接口能够转发发送给它的、而不是发往其自身 IP 地址的网络流量，必须为该网络接口启用 IP 转发。 使用 [az network nic update](/cli/azure/network/nic#az_network_nic_update) 为网络接口启用 IP 转发。
+要使网络接口能够转发发送给它的、而不是发往其自身 IP 地址的网络流量，必须为该网络接口启用 IP 转发。 使用 [az network nic update](/cli/azure/network/nic) 为网络接口启用 IP 转发。
 
 ```azurecli-interactive
 az network nic update \
@@ -145,7 +145,7 @@ az network nic update \
   --ip-forwarding true
 ```
 
-在 VM 中，VM 中运行的操作系统或应用程序也必须能够转发网络流量。 使用 [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) 在 VM 的操作系统中启用 IP 转发：
+在 VM 中，VM 中运行的操作系统或应用程序也必须能够转发网络流量。 使用 [az vm extension set](/cli/azure/vm/extension) 在 VM 的操作系统中启用 IP 转发：
 
 ```azurecli-interactive
 az vm extension set \
@@ -268,7 +268,7 @@ traceroute to myVmPrivate (10.0.1.4), 30 hops max, 60 byte packets
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组及其包含的所有资源，可以使用 [az group delete](/cli/azure/group#az_group_delete) 将其删除。
+如果不再需要资源组及其包含的所有资源，可以使用 [az group delete](/cli/azure/group) 将其删除。
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes

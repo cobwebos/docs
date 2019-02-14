@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 37fe2e2adb947e2e9ddc86a34baf6994b5771be6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a21c9682cfeaa7421d089bf75eb9d8b45e1d3d46
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091197"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982754"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>使用 Azure 门户配置 ExpressRoute 的虚拟网络网关
 > [!div class="op_single_selector"]
@@ -42,9 +42,8 @@ ms.locfileid: "53091197"
 * 网关子网名称：“GatewaySubnet”必须始终将网关子网命名为“GatewaySubnet”。
     * 网关子网地址空间 = “192.168.200.0/26”
 * 网关名称 =“ERGW”
-* 网关 IP 名称 =“MyERGWVIP”
-* 网关类型 =“ExpressRoute” ExpressRoute 配置需要此类型。
 * 网关公共 IP 名称 =“MyERGWVIP”
+* 网关类型 =“ExpressRoute” ExpressRoute 配置需要此类型。
 
 可以先观看这些步骤的[视频](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)，再开始配置。
 

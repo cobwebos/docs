@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何使用 Node.js 和文本翻译 REST API 来确定句子长度（以字符数为单位）。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: b27bad7b3e34353ec7e2d33cab3614affc31322b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 29ffdaaa8e51bed3057480ee5210951c80844633
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215548"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858207"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-with-nodejs"></a>快速入门：使用 Node.js 通过文本翻译 API 来确定句子长度
 
@@ -90,7 +90,7 @@ let options = {
 };
 ```
 
-### <a name="authentication"></a>身份验证
+### <a name="authentication"></a>Authentication
 
 若要对请求进行身份验证，最容易的方法是将订阅密钥作为 `Ocp-Apim-Subscription-Key` 标头传入，这是我们在此示例中使用的方法。 替代方法是交换订阅密钥来获取访问令牌，将访问令牌作为 `Authorization` 标头传入，以便对请求进行验证。 有关详细信息，请参阅[身份验证](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
 

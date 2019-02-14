@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 1/30/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5cacd2d0e4308e15b562169f72efb0f98ce45289
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0473bccbd249f70139d815b8353f1ac271df754f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476390"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658380"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure 自动化中的在空闲时间启动/停止 VM 解决方案
 
@@ -136,7 +136,7 @@ ms.locfileid: "55476390"
 
 #### <a name="target-the-start-and-stop-action-by-vm-list"></a>根据 VM 列表确定启动和停止操作的目标
 
-1. 向计划添加到 VMList 变量的 VM 添加具有正整数值的 sequencestart 和 sequencestop 标记。 
+1. 向计划添加到 **VMList** 参数的 VM 添加具有正整数值的 **sequencestart** 和 **sequencestop** 标记。
 1. 在 ACTION 参数设置为 **start** 的情况下运行 **SequencedStartStop_Parent** runbook，在 *VMList* 参数中添加以逗号分隔的 VM 列表，然后将 WHATIF 参数设置为 **True**。 预览更改。
 1. 通过逗号分隔 VM 列表 (VM1, VM2, VM3) 配置 External_ExcludeVMNames 参数。
 1. 此方案使用 **External_Start_ResourceGroupNames** 和 **External_Stop_ResourceGroupnames** 变量。 对于此方案，需要创建自己的自动化计划。 有关详细信息，请参阅[在 Azure 自动化中计划 Runbook](../automation/automation-schedules.md)。
@@ -319,13 +319,29 @@ ms.locfileid: "55476390"
 
 ![自动化更新管理解决方案页面](media/automation-solution-vm-management/email.png)
 
+## <a name="add-exclude-vms"></a>添加/排除 VM
+
+借助该解决方案，可添加要作为该解决方案的目标的 VM，或者专门从该解决方案中排除计算机。
+
+### <a name="add-a-vm"></a>添加 VM
+
+可以使用以下几个选项来确保 VM 在启动/停止解决方案运行时包含在该解决方案中。
+
+* 该解决方案的每个父 [runbook](#runbooks) 都具有 **VMList** 参数。 根据自身情况计划适当的父 runbook 时，可以向此参数传递一个逗号分隔的 VM 名称列表，当该解决方案运行时，将包含这些 VM。
+
+* 若要选择多个 VM，请将 **External_Start_ResourceGroupNames** 和 **External_Stop_ResourceGroupNames** 设置为包含要启动或停止的 VM 的资源组名称。 也可以将此值设置为 `*`，使该解决方案针对订阅中的所有资源组运行。
+
+### <a name="exclude-a-vm"></a>排除 VM
+
+若要将某个 VM 从该解决方案中排除，可以将其添加到 **External_ExcludeVMNames** 变量中。 此变量是要从启动/停止解决方案中排除的特定 VM 的逗号分隔列表。
+
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>修改启动和关闭计划
 
-按照[在 Azure 自动化中计划 runbook](automation-schedules.md) 中所述的相同步骤来管理此解决方案中的启动和关闭计划。
+按照[在 Azure 自动化中计划 runbook](automation-schedules.md) 中所述的相同步骤来管理此解决方案中的启动和关闭计划。 需要有一个单独的计划来启动和停止 VM。
 
-支持将解决方案配置为在特定的时间仅停止 VM。 若要实现此目的，需要：
+支持将解决方案配置为在特定的时间仅停止 VM。 在此方案中，只需创建一个**停止**计划，而不必计划相应的**启动**。 若要实现此目的，需要：
 
-1. 确保已在 **External_Start_ResourceGroupNames** 变量中添加了要关闭的 VM 的资源组。
+1. 确保已在 **External_Stop_ResourceGroupNames** 变量中添加了要关闭的 VM 的资源组。
 2. 针对要关闭 VM 的时间创建你自己的计划。
 3. 导航到 **ScheduledStartStop_Parent** runbook，然后单击“计划”。 这允许你选择在上一步中创建的计划。
 4. 选择“参数和运行设置”并将 ACTION 参数设置为“Stop”。

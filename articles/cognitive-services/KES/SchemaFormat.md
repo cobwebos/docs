@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 了解知识探索服务 (KES) API 中的架构格式。
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 4fa8f072d420a0245b9de65482ab4c97fa775bdf
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 23120e45a1070f46ae4e1927a29bdab4c990d96f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227295"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860705"
 ---
 # <a name="schema-format"></a>架构格式
 

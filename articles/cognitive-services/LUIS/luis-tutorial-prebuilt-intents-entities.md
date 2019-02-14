@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 在本教程中，我们将预生成的意向和实体添加到某个应用，以便快速了解意向预测和数据提取。 不需要使用预生成的实体标记任何话语。 自动检测实体。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: d8569bbc2d1befdd2b6fb9c8783dab206e19c7c9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 346e7ac9a76f4ce4a87565ffc77032b095b2975c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211961"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877994"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>教程：确定常见意向和实体
 

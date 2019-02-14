@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: QnA Maker 从半结构化内容（例如常见问题解答、产品手册、指南、支持文档，以及以网页、PDF 文件或 MS Word 文档文件形式存储的策略）中自动提取问答对。 也可以将内容从结构化 QnA 内容文件添加到知识库中。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: tulasim
-ms.openlocfilehash: b30f910b7eebabe02443e5b3ce328a89a25c7a6f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 09e01f7705c61bdf110c0bc84cefa396f430f7f8
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213695"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884505"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>QnA Maker 内容的数据源
 

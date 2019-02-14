@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 了解可与学术知识 API 中的隶属关系实体结合使用的属性。
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 344b26b16f74cd44982e3c93fa69295792daa9a0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 82e6a5b66342e58e62da029d617cbd1d74c28149
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190614"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864360"
 ---
 # <a name="affiliation-entity"></a>隶属关系实体
 

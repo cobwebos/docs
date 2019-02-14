@@ -4,7 +4,7 @@ description: 使用 Azure Media Indexer，可以使媒体文件内容可供搜�
 services: media-services
 documentationcenter: ''
 author: Asolanki
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 827a56b2-58a5-4044-8d5c-3e5356488271
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 02/10/2019
 ms.author: adsolank;juliako;johndeu
-ms.openlocfilehash: b6e0b2027dd4edbf1688a6c71efe2dde37fbbf96
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 4bc11e4f622943cdb72253ecd758c27a026495fa
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473361"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991152"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>使用 Azure Media Indexer 为媒体文件编制索引
 使用 Azure Media Indexer，可以使媒体文件内容可供搜索，并为隐藏的字幕和关键字生成全文本脚本。 可以只处理一个媒体文件，也可以一次处理多个媒体文件。  
@@ -247,7 +247,7 @@ ms.locfileid: "54473361"
 ### <a id="preset"></a>Azure Media Indexer 的任务预设
 可以通过连同任务一起提供可选任务预设，来自定义 Azure Media Indexer 的处理操作。  下面描述了此配置 xml 文件的格式。
 
-| 名称 | 必需 | 说明 |
+| Name | 必需 | 说明 |
 | --- | --- | --- |
 | **input** |false |要编制索引的资产文件。</p><p>Azure Media Indexer 支持以下格式的媒体文件：MP4、WMV、MP3、M4A、WMA、AAC、WAV。</p><p>可以在 **input** 元素的“名称”或“列表”属性中指定文件名（如下所示）。如果不指定要编制索引的文件，则选择主文件。 如果未设置主资产文件，则为输入资产中的第一个文件编制索引。</p><p>若要显式指定资产文件名，请执行：<br/>`<input name="TestFile.wmv">`<br/><br/>还可以一次为多个资产文件编制索引（最多 10 个文件）。 为此，请按以下步骤操作：<br/><br/><ol class="ordered"><li><p>创建一个文本文件（清单文件），并为其指定扩展名 .lst。 </p></li><li><p>将输入资产中所有资产文件名的列表添加到此清单文件。 </p></li><li><p>将该清单文件添加（上传）到资产。  </p></li><li><p>在输入的列表属性中指定清单文件的名称。<br/>`<input list="input.lst">`</li></ol><br/><br/>注意：如果在清单文件中添加了 10 个以上的文件，则索引作业会失败并显示 2006 错误代码。 |
 | **metadata** |false |用于词汇自适应的指定资产文件的元数据。  在准备索引器以使其能够识别非标准词汇（例如专有名词）时，该元素非常有用。<br/>`<metadata key="..." value="..."/>` <br/><br/>可以提供预定义**键**的**值**。 当前支持以下键：<br/><br/>“title”和“description”- 用于词汇适应，以微调作业的语言模型及改进语音辨识准确度。  值将植入 Internet 搜索以查找上下文相关的文本文档，并在执行索引任务期间使用内容来扩大内部字典。<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
@@ -256,7 +256,7 @@ ms.locfileid: "54473361"
 ### <a id="error_codes"></a>错误代码
 如果发生错误，Azure Media Indexer 应返回以下错误代码之一：
 
-| 代码 | 名称 | 可能的原因 |
+| 代码 | Name | 可能的原因 |
 | --- | --- | --- |
 | 2000 |配置无效 |配置无效 |
 | 2001 |输入资产无效 |输入资产缺失或资产为空。 |

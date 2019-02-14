@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 了解可与学术知识 API 中的论文实体结合使用的属性。
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: d36a39f10f9e0129af3b730a65387d7108209004
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 240541dd76221ee19c96b162da02ced90fb0ad90
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168373"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873081"
 ---
 # <a name="paper-entity"></a>论文实体
 

@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: 获取 Azure 认知服务中计算机视觉 API 的 86 个类别分类。
 services: cognitive-services
 author: KellyDF
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: reference
 ms.date: 12/19/2016
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 06556372b89a3a3bf8969ed838934e25197fd216
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: efdcf68799dcd0d3fd83365c36ca00500c3fbbc6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196678"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55865178"
 ---
 # <a name="86-categories-taxonomy"></a>86 个类别分类
 

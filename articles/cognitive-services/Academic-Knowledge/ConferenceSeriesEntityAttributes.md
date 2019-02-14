@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 了解可用于会议系列实体的属性。
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: ff71b489cce01d8d6ea29e09905d7d3ac8429e34
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 38b4aa4c899668a68041f042ce6981ddd8c58219
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155590"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884913"
 ---
 # <a name="conference-series-entity"></a>会议录实体
 

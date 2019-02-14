@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: ccfe62e0002e3420303130840f1a0d393efb3420
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: bcf5176728b520cae5d31750384f316efe244b7e
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078757"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663615"
 ---
 # <a name="preview--azure-ad-password-protection-agent-version-history"></a>预览版：Azure AD 密码保护代理版本历史记录
 
@@ -23,6 +23,44 @@ ms.locfileid: "55078757"
 | --- |
 | Azure AD 密码保护是 Azure Active Directory 的一项公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
 |     |
+
+## <a name="12650"></a>1.2.65.0
+
+发行日期：2019 年 2 月 1 日
+
+更改：
+
+* Server Core 现在支持 DC 代理和代理服务。 最低 OS 要求与之前保持不变：Windows Server 2012（对于 DC 代理），Windows Server 2012 R2（对于代理服务）。
+* Register-AzureADPasswordProtectionProxy 和 Register-AzureADPasswordProtectionForest cmdlet 现在支持基于设备代码的 Azure 身份验证模式。
+* Get-AzureADPasswordProtectionDCAgent cmdlet 会忽略损坏和/或无效的服务连接点。 这修复了域控制器有时会在输出中多次显示的 bug。
+* Get-AzureADPasswordProtectionSummaryReport cmdlet 会忽略损坏和/或无效的服务连接点。 这修复了域控制器有时会在输出中多次显示的 bug。
+* 代理 powershell 模块现在是通过 %ProgramFiles%\WindowsPowerShell\Modules 注册。 计算机的 PSModulePath 环境变量不再遭修改。
+* 新增了 Get-AzureADPasswordProtectionProxy cmdlet，有助于发现林或域中的已注册代理。
+* DC 代理使用 sysvol 共享中的新文件夹来复制密码策略和其他文件。
+
+   旧文件夹位置：
+
+   `\\<domain>\sysvol\<domain fqdn>\Policies\{4A9AB66B-4365-4C2A-996C-58ED9927332D}`
+
+   新文件夹位置：
+
+   `\\<domain>\sysvol\<domain fqdn>\AzureADPasswordProtection`
+
+   （此更改是为了避免误报的“孤立 GPO”警告。）
+
+   > [!NOTE]
+   > 旧文件夹和新文件夹之间不会迁移或共享任何数据。 旧版 DC 代理将继续使用旧位置，除非升级到此版本或更高版本。 当所有 DC 代理运行版本 1.2.65.0 或更高版本后，可以手动删除旧 sysvol 文件夹。
+
+* DC 代理和代理服务现在会检测并删除各自服务连接点的受损副本。
+* 每个 DC 代理会定期删除自己域中的受损和过时服务连接点，即 DC 代理和代理服务连接点。 如果检测信号时间戳已过去 7 天，DC 代理和代理服务连接点被视为过时。
+* DC 代理现在会根据需要续订林证书。
+* 代理服务现在会根据需要续订代理证书。
+* 更新密码验证算法：在验证密码前，结合使用全局禁止密码列表和客户专用禁止密码列表（若已配置的话）。 如果给定密码包含全局禁止密码列表和客户专用禁止密码列表中的令牌，现在可能会遭拒（失败或仅审核）。 事件日志文档已更新，其中反映了这一点；请参阅[监视 Azure AD 密码保护](howto-password-ban-bad-on-premises-monitor.md)。
+* 性能和可靠性修复
+* 改进了日志记录
+
+> [!WARNING]
+> 限时功能：此版本 (1.2.65.0) 中的 DC 代理服务将自 2019 年 9 月 1 日起停止处理密码验证请求。  旧版本（见以下列表）中的 DC 代理服务将自 2019 年 7 月 1 日起停止处理。 所有版本中的 DC 代理服务将在截止日期前提前两个月将 10021 个事件记录到管理事件日志中。 即将推出的 GA 版本中将删除所有时间限制。 代理服务在所有版本中都不限时，但仍应升级到最新版本，以便充分利用所有后续 bug 修复和其他改进。
 
 ## <a name="12250"></a>1.2.25.0
 
@@ -39,6 +77,7 @@ ms.locfileid: "55078757"
 更改：
 
 * 代理服务所需的最低 OS 级别现在是 Windows Server 2012 R2。 DC 代理服务所需的最低 OS 级别仍然是 Windows Server 2012。
+* 代理服务现在需要 .NET 版本 4.6.2。
 * 密码验证算法使用扩展的字符规范化表。 这可能导致在以前版本中接受的密码被拒绝。
 
 ## <a name="12100"></a>1.2.10.0

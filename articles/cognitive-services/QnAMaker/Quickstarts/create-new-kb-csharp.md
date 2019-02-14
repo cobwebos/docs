@@ -4,19 +4,19 @@ titlesuffix: QnA Maker- Azure Cognitive Services
 description: 此 C# 基于 REST 的快速入门详细介绍如何以编程方式创建一个示例 QnA Maker 知识库，该知识库会显示在认知服务 API 帐户的 Azure 仪表板中。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/04/2019
 ms.author: diberry
-ms.openlocfilehash: 54a33a135557fdf310e860a083dd953c9ec3d495
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 86acf4586fc7d6ae630a5a84a8c9d0e8e00c7e99
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733614"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861816"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>快速入门：通过 C# 在 QnA Maker 中创建知识库
 

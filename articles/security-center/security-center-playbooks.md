@@ -4,7 +4,7 @@ description: 本文档介绍如何使用 Azure 安全中心安全攻略来自动
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: a8c45ddf-5c4c-4393-b6e9-46ed1f91bf5f
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: c0001f12dd71436bacb1735828ad56b628e02360
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: ec16e6daec099adbede625c5ec6fe6909059143b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619905"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116739"
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Azure 安全中心安全攻略（预览版）
 本文档介绍如何使用 Azure 安全中心安全攻略来响应安全相关问题。
@@ -93,7 +93,7 @@ ms.locfileid: "52619905"
 可以更改安全中心的现有攻略，添加操作或条件。 为此，只需在“攻略”选项卡中单击要更改的攻略的名称，然后逻辑应用设计器就会打开。
 
 > [!NOTE]
-> 若要详细了解如何使用 Azure 逻辑应用创建自己的攻略，请阅读[创建第一个逻辑应用工作流以自动化云应用与云服务之间的流程](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app#add-an-action-that-responds-to-your-trigger)。
+> 若要详细了解如何使用 Azure 逻辑应用创建自己的攻略，请阅读[创建第一个逻辑应用工作流以自动化云应用与云服务之间的流程](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app)。
 
 
 ## <a name="see-also"></a>另请参阅

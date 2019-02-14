@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: 自定义语音服务现在是语音服务的一部分。 切换到语音服务可受益于最新的质量和功能更新。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 594233b9e345f9578c218b042a64ea167d50addb
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 698962aa0e3d72b204c4e990aa1384b44bf3896f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211026"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856881"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>从自定义语音服务迁移到语音服务
 
@@ -40,12 +40,6 @@ ms.locfileid: "55211026"
 3. 遵照快速入门指南和 SDK 示例使用正确的 API。 如果使用 REST API，则还需要使用正确的终结点和资源密钥。
 
 4. 将客户端应用程序更新为使用语音服务和 API。
-
-> [!NOTE]
-> * 如果在语言理解 (LUIS) 中启用了语音，则同一区域中的单个 LUIS 资源将适用于 LUIS 以及所有语音服务。 有关更多信息，请参阅[识别语音中的意向](how-to-recognize-intents-from-speech-csharp.md)。
-> * 文本到文本翻译不是语音服务的功能。 此功能需要其本身的 Azure 资源订阅。
- 
-
 
 ## <a name="migration-for-existing-customers"></a>现有客户的迁移
 

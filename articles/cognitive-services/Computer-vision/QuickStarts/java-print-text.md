@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 Java 从图像中提取印刷体文本。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 101f72d9e0116c989bcde1e96830706b5e570296
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 57beb5e5dd3a77e4d8de9b631c4dc5556b2f18f5
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212369"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878980"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-java-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 Java 提取印刷体文本 (OCR)
 

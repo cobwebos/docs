@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 513b1d7468700076ae4d3fd46284ef88d5f28c51
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c923023cec03e36b1795619bc9da09aee8def629
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296151"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700377"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
 **问：我最近注册了设备。但为什么在 Azure 门户中我的用户信息下看不到该设备？或对于加入混合Azure Active Directory (Azure AD) 的设备，为什么设备所有者标记为 N/A？**
 
 **答：** 已加入混合 Azure AD 的 Windows 10 设备不显示在“USER 设备”下。
-使用 Azure 门户中的“所有设备”视图。 还可以使用 PowerShell [Get-MsolDevice](https://docs.microsoft.com/en-us/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet。
+使用 Azure 门户中的“所有设备”视图。 还可以使用 PowerShell [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet。
 
 “USER 设备”下面只会列出以下设备：
 
@@ -176,7 +176,7 @@ ms.locfileid: "55296151"
 
 **问：尝试在电脑上加入 Azure AD 时，为何会出现“哎呀...发生了错误!”对话框？**
 
-**答：** 使用 Intune 设置 Azure Active Directory 注册时会发生此错误。 确保尝试进行 Azure AD 加入的用户已获得正确的 Intune 许可证。 有关详细信息，请参阅[设置 Windows 设备的注册](https://docs.microsoft.com/intune/windows-enroll#azure-active-directory-enrollment)。  
+**答：** 使用 Intune 设置 Azure Active Directory 注册时会发生此错误。 确保尝试进行 Azure AD 加入的用户已获得正确的 Intune 许可证。 有关详细信息，请参阅[设置 Windows 设备的注册](https://docs.microsoft.com/intune/windows-enroll)。  
 
 ---
 
@@ -221,6 +221,12 @@ ms.locfileid: "55296151"
 **问：为什么我的用户在更改其 UPN 后，在 Windows 10 已联接混合 Azure AD 的设备上遇到了问题？**
 
 **答：** 当前，已联接混合 Azure AD 的设备不完全支持 UPN 更改。 虽然用户可以登录到设备并访问其本地应用程序，但在 UPN 更改后，他们的 Azure AD 身份验证仍会失败。 这样一来，用户的设备上会存在 SSO 和条件访问问题。 此时，需要从 Azure AD 中分离设备（使用提升的权限运行“dsregcmd /leave”），然后重新联接（自动执行）来解决问题。 我们目前正致力于解决此问题。 但是，使用 Windows Hello 企业版登录的用户不会遇到这个问题。 
+
+---
+
+**问：Windows 10 混合 Azure AD 联接设备是否需要连接到域控制器以获取云资源的访问权限？**
+
+**答：** 不是。 在 Windows 10 混合 Azure AD 联接已完成，并且用户至少登录了一次之后，设备无需连接到域控制器即可访问云资源。 Windows 10 可以通过 Internet 连接从任何位置单一登录到 Azure AD 应用程序（除非更改了密码时）。 如果在公司网络外部更改了密码（例如使用 Azure AD SSPR），则用户需要先连接到域控制器，然后才能使用其新密码登录到设备。 否则，他们只能使用其旧密码登录，这会由 Azure AD 宣告无效，阻止进行单一登录。 但是在使用 Windows Hello 企业版时，不会出现此问题。 使用 Windows Hello 企业版登录的用户可在密码更改之后继续单一登录到 Azure AD 应用程序，即使他们未连接到其域控制器。 
 
 ---
 

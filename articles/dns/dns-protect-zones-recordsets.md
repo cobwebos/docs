@@ -7,14 +7,16 @@ ms.service: dns
 ms.topic: article
 ms.date: 12/4/2018
 ms.author: victorh
-ms.openlocfilehash: 137d8e1c1477d5b9c88cecc39316d62a79a4cab8
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 9340a43eb88b4be03c0f0ccc0d07a32f22a9001c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873906"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997373"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>如何保护 DNS 区域和记录
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 DNS 区域和记录是关键资源。 删除 DNS 区域或单个 DNS 记录都可能导致总服务中断。  因此，重要的是保护关键的 DNS 区域和记录，防止未经授权或意外的更改。
 
@@ -38,7 +40,7 @@ Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 用户、组和资�
 
 ```azurepowershell
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
-New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>"
+New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>"
 ```
 
 也可[通过 Azure CLI](../role-based-access-control/role-assignments-cli.md) 提供等效命令：
@@ -62,7 +64,7 @@ Azure RBAC 规则可应用于订阅，资源组或单个资源。 在 Azure DNS 
 
 ```azurepowershell
 # Grant 'DNS Zone Contributor' permissions to a specific zone
-New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>" -ResourceName "<zone name>" -ResourceType Microsoft.Network/DNSZones
+New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>" -ResourceName "<zone name>" -ResourceType Microsoft.Network/DNSZones
 ```
 
 等效命令也可[通过 Azure CLI](../role-based-access-control/role-assignments-cli.md) 提供：
@@ -84,7 +86,7 @@ azure role assignment create --signInName <user email address> --roleName "DNS Z
 
 ```azurepowershell
 # Grant permissions to a specific record set
-New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
+New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
 ```
 
 也可[通过 Azure CLI](../role-based-access-control/role-assignments-cli.md) 提供等效命令：
@@ -140,7 +142,7 @@ azure role assignment create --signInName "<user email address>" --roleName "DNS
 
 ```azurepowershell
 # Create new role definition based on input file
-New-AzureRmRoleDefinition -InputFile <file path>
+New-AzRoleDefinition -InputFile <file path>
 ```
 
 也可以通过 Azure CLI 创建：
@@ -172,7 +174,7 @@ azure role create -inputfile <file path>
 
 ```azurepowershell
 # Lock a DNS zone
-New-AzureRmResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceName <zone name> -ResourceType Microsoft.Network/DNSZones -ResourceGroupName <resource group name>
+New-AzResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceName <zone name> -ResourceType Microsoft.Network/DNSZones -ResourceGroupName <resource group name>
 ```
 
 目前暂不支持通过 Azure CLI 配置 Azure 资源锁。
@@ -188,7 +190,7 @@ New-AzureRmResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceN
 
 ```azurepowershell
 # Lock a DNS record set
-New-AzureRmResourceLock -LockLevel <lock level> -LockName "<lock name>" -ResourceName "<zone name>/<record set name>" -ResourceType "Microsoft.Network/DNSZones/<record type>" -ResourceGroupName "<resource group name>"
+New-AzResourceLock -LockLevel <lock level> -LockName "<lock name>" -ResourceName "<zone name>/<record set name>" -ResourceType "Microsoft.Network/DNSZones/<record type>" -ResourceGroupName "<resource group name>"
 ```
 
 ### <a name="protecting-against-zone-deletion"></a>防止区域删除
@@ -203,7 +205,7 @@ New-AzureRmResourceLock -LockLevel <lock level> -LockName "<lock name>" -Resourc
 
 ```azurepowershell
 # Protect against zone delete with CanNotDelete lock on the record set
-New-AzureRmResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType" Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
+New-AzResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType" Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
 ```
 
 防止意外删除区域的另一种方法是使用自定义角色，确保用于管理区域的操作员和服务帐户不具有区域删除权限。 需要删除区域时，可以强制执行两步删除，首先授予区域删除权限（在区域作用域内，防止删除错误的区域），并删除区域。

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 自定义决策服务中的机器学习特征化和特征规范教程。
 services: cognitive-services
 author: slivkins
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-decision-service
 ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: 1c701cbe1a71ed48c71a9441c05a7fb4b63e3814
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9e091d3899132509d16854ebdbe14bcbc491deec
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226054"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870225"
 ---
 # <a name="tutorial-featurization-and-feature-specification"></a>教程：特征化和特征规范
 

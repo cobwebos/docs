@@ -11,12 +11,13 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5219241de9b18008032a3eb78c6aab25a2713370
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9c68dba4a188e5acf88cc39b02e535d89a1c9e46
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660402"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178815"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>教程：在 Azure AD Connect 中将 PHS 设置为 AD FS 的后备
 

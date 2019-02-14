@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: QnA Maker 服务处理两种密钥：订阅密钥和终结点密钥。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 0d245215a61a526b448dd0aaafd6429b90b12b74
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 3b75c2f0ec24fd58527643c8ccfec35f8cdd5914
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216124"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55871891"
 ---
 # <a name="how-to-manage-keys-in-qna-maker"></a>如何管理 QnA Maker 中的密钥
 

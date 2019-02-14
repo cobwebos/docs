@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/25/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 983ea87a7387c4ce6bb0c1c67bf46d81c717e69a
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 5048a4ab4db6d4cb168d2a643a412f89273658b4
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993060"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984250"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>在 HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
@@ -123,26 +123,23 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。 
 
 RunHiveScript 有几个变量。 在使用 Azure PowerShell 从工作站提交 Oozie 作业时，会传递值。
 
-<table border = "1">
-<tr><th>工作流变量</th><th>Description</th></tr>
-<tr><td>${jobTracker}</td><td>指定 Hadoop 作业跟踪器的 URL。 在 HDInsight 版本 3.0 和 2.1 中使用 <strong>jobtrackerhost:9010</strong>。</td></tr>
-<tr><td>${nameNode}</td><td>指定 Hadoop 名称节点的 URL。 请使用默认的文件系统地址，例如 wasb://&lt;containerName&gt;@&lt;storageAccountName&gt;.blob.core.windows.net<i></i>。</td></tr>
-<tr><td>${queueName}</td><td>指定要将作业提交到的队列名称。 使用<strong>默认值</strong>。</td></tr>
-</table>
+|工作流变量|说明|
+|---|---|
+|${jobTracker}|指定 Hadoop 作业跟踪器的 URL。 在 HDInsight 版本 3.0 和 2.1 中使用 **jobtrackerhost:9010**。|
+|${nameNode}|指定 Hadoop 名称节点的 URL。 请使用默认的文件系统地址，例如 wasb://&lt;containerName&gt;@&lt;storageAccountName&gt;.blob.core.windows.net。|
+|${queueName}|指定要将作业提交到的队列名称。 使用**默认值**。|
 
-<table border = "1">
-<tr><th>Hive 操作变量</th><th>Description</th></tr>
-<tr><td>${hiveDataFolder}</td><td>指定 Hive Create Table 命令的源目录。</td></tr>
-<tr><td>${hiveOutputFolder}</td><td>指定 INSERT OVERWRITE 语句的输出文件夹。</td></tr>
-<tr><td>${hiveTableName}</td><td>指定引用 log4j 数据文件的 Hive 表的名称。</td></tr>
-</table>
+|Hive 操作变量|说明|
+|---|---|
+|${hiveDataFolder}|指定 Hive Create Table 命令的源目录。|
+|${hiveOutputFolder}|指定 INSERT OVERWRITE 语句的输出文件夹。|
+|${hiveTableName}|指定引用 log4j 数据文件的 Hive 表的名称。|
 
-<table border = "1">
-<tr><th>Sqoop 操作变量</th><th>Description</th></tr>
-<tr><td>${sqlDatabaseConnectionString}</td><td>指定 Azure SQL 数据库连接字符串。</td></tr>
-<tr><td>${sqlDatabaseTableName}</td><td>指定要将数据导出到的 Azure SQL 数据库表。</td></tr>
-<tr><td>${hiveOutputFolder}</td><td>指定 Hive INSERT OVERWRITE 语句的输出文件夹。 这是用于 Sqoop 导出 (export-dir) 的同一个文件夹。</td></tr>
-</table>
+|Sqoop 操作变量|说明|
+|---|---|
+|${sqlDatabaseConnectionString}|指定 Azure SQL 数据库连接字符串。|
+|${sqlDatabaseTableName}|指定要将数据导出到的 Azure SQL 数据库表。|
+|${hiveOutputFolder}|指定 Hive INSERT OVERWRITE 语句的输出文件夹。 这是用于 Sqoop 导出 (export-dir) 的同一个文件夹。|
 
 有关 Oozie 工作流和使用工作流操作的详细信息，请参阅 [Apache Oozie 4.0 文档][apache-oozie-400]（适用于 HDInsight 3.0 版）或 [Apache Oozie 3.3.2 文档][apache-oozie-332]（适用于 HDInsight 2.1 版）。
 

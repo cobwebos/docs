@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 在创建与语音服务集成的应用程序时，如何针对所遇到的问题获取帮助和支持
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: 9ed4f14ee5c3f6023e5529aca7fbd824f5ca460a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 88efa6b16e33fe928ad9354b7283f7c651e6710c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207031"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55881294"
 ---
 # <a name="support-and-help-options"></a>支持和帮助选项
 

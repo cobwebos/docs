@@ -4,7 +4,7 @@ description: 了解 Key Vault 中的客户数据
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.service: key-vault
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: bcfa2c9202d99dba83db57bfe286271da0e64e43
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 12492fad419fdc703ddabcf2288be282f2fd47be
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077821"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111775"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault 客户数据功能
 

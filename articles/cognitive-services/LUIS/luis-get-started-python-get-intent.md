@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: 在本快速入门中，你将向 LUIS 终结点传递话语并返回意向和实体。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 93ae7e0cc6898648e8b49677070512b919890d29
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 043b31aaaad30e9f2663b0a53273874e8c84ff6d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218217"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884012"
 ---
 # <a name="quickstart-get-intent-using-python"></a>快速入门：使用 Python 获取意向
 在本快速入门中，你将向 LUIS 终结点传递话语并返回意向和实体。

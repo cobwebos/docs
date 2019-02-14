@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 本教程介绍在 Azure 门户中使用 Azure 机器人服务 v3 生成 QnA 机器人的完整过程。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker`
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: 1e1152f810bffb2ab4dfe230c2d3b3c2a8198492
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 930d2d7279f23974e937fd0d858891d0bcaa1291
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811913"
+ms.locfileid: "55869154"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>教程：使用 Azure 机器人服务 v3 创建 QnA 机器人
 

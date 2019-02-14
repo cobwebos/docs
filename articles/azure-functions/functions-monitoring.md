@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: ba82aeff1ce699efaa850e50d6840fa0d5483f20
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: cbc4507a7dd29afb429949a017319a63ef4cd9a2
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321086"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100187"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -665,10 +665,10 @@ az webapp log tail --resource-group <resource group name> --name <function app n
 对于 Azure PowerShell，使用以下命令添加 Azure 帐户，选择订阅并流式传输日志文件：
 
 ```powershell
-PS C:\> Add-AzureAccount
-PS C:\> Get-AzureSubscription
-PS C:\> Get-AzureSubscription -SubscriptionName "<subscription name>" | Select-AzureSubscription
-PS C:\> Get-AzureWebSiteLog -Name <function app name> -Tail
+Add-AzAccount
+Get-AzSubscription
+Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscription
+Get-AzWebSiteLog -Name <function app name> -Tail
 ```
 
 有关详细信息，请参阅[如何流式传输日志](../app-service/troubleshoot-diagnostic-logs.md#streamlogs)。

@@ -9,16 +9,16 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 93222129b80592ef5b4e1ed2e1420d975fe9f108
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: b4d760d8520f43b223665f17c85d3932761ebe17
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190710"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003102"
 ---
-# <a name="generate-a-thumbnail-sprite"></a>生成缩略图子画面 
+# <a name="generate-a-thumbnail-sprite"></a>生成缩略图子画面  
 
 可以使用 Media Encoder Standard 生成缩略图子画面，该子画面是一个 JPEG 文件，其中包含可拼结为单个大图像的多个小分辨率缩略图，以及一个 VTT 文件。 此 VTT 文件指定每个缩略图在输入视频中代表的时间范围，以及该缩略图在 JPEG 大文件中的大小和坐标。 视频播放器使用 VTT 文件和子画面图像来显示一个“视觉对象”拖动条，提供一个查看器，用于在沿视频时间线前后推移时提供可视反馈。
 

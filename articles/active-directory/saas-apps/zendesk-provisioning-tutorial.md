@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: 919c4d3dc08d81fa5fe95a7e63df8d02258aab80
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3e56cc5a893c5a88a5b64466d6feceb20ccd8cdc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194315"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167841"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>教程：为 Zendesk 配置自动用户预配
 

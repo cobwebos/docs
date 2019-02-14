@@ -16,12 +16,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 34d0c4054273babcc56516d290857c4ddb554bf7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e705bbbd08882f56020192a3b42c311e05bfa399
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819087"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191718"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>快速入门：在 Azure Active Directory 中更新应用程序
 
@@ -144,7 +145,7 @@ ms.locfileid: "55819087"
 
 如前所述，除了在自己的应用程序上公开/访问 API 以外，还可以注册客户端应用程序以访问 Microsoft 资源公开的 API。 Microsoft 图形 API（在门户的资源/API 列表中称为“Microsoft Graph”）可供注册到 Azure AD 的所有应用程序使用。 如果要将客户端应用程序注册到包含已注册 Office 365 订阅的租户中，也可以访问各种 Office 365 资源公开的范围。
 
-有关 Microsoft Graph API 公开的范围的完整讨论，请参阅 [Microsoft Graph 权限参考](https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference)一文。
+有关 Microsoft Graph API 公开的范围的完整讨论，请参阅 [Microsoft Graph 权限参考](https://docs.microsoft.com/graph/permissions-reference)一文。
 
 > [!NOTE]
 > 由于当前存在的限制，如果本机客户端应用程序使用“访问组织的目录”权限，则它们只能调用 Azure AD 图形 API。 此限制不适用于 Web 应用程序。

@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: 介绍一款使用 Azure 认知服务中的计算机视觉 API 的基本 Java Swing 应用。 执行 OCR、创建缩略图，并处理图像中的视觉特征。
 services: cognitive-services
 author: KellyDF
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
 ms.author: kefre
 ms.custom: seodec18
 ms.date: 09/21/2017
-ms.openlocfilehash: 2c306a5447f2e5d9c7072bd2bed8dd8f1d4078d0
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 4f6af31ba6b04ddbecb7cb42cebe345b6af720ac
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225391"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868083"
 ---
 # <a name="tutorial-computer-vision-api-java"></a>教程：计算机视觉 API Java
 

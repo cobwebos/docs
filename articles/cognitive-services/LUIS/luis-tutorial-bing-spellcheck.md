@@ -4,19 +4,19 @@ titleSuffix: Azure
 description: 通过将必应拼写检查 API V7 添加到 LUIS 终结点查询来更正表述中拼写错误的字词。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: d1c18c89cb8c7996aadeb4581af4d562195f135f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 3c1ea107d42e25080a2c8bd96dd4b6bb474e4404
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215124"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55871679"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>使用必应拼写检查更正拼写错误的字词
 

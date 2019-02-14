@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 085f95e1df67a12afac5c327b4368efd275600b3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: be66f24ec6532b93c4554568b0a58d467a09c600
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100166"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746415"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入实现
 
@@ -111,7 +111,7 @@ Windows 下层设备的混合 Azure AD 加入：
 
 混合 Azure AD 加入是自动将已加入域的本地设备注册到 Azure AD 的过程。 在某些情况下，你并不希望自动注册所有设备。 如果遇到这种情况，请参阅[如何控制设备的混合 Azure AD 加入](hybrid-azuread-join-control.md)。
 
-如果加入 Windows 10 域的设备在你的租户中[已注册 Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/devices/overview#azure-ad-registered-devices)，则在启用混合 Azure AD 加入之前应当考虑删除该状态。 不支持设备具有双重状态，即同时具有混合 Azure AD 加入与已注册 Azure AD 状态。 从 Windows 10 1809 版本开始，进行了以下更改来避免此双重状态： 
+如果加入 Windows 10 域的设备在你的租户中[已注册 Azure AD](https://docs.microsoft.com/azure/active-directory/devices/overview#azure-ad-registered-devices)，强烈建议在启用混合 Azure AD 加入之前删除该状态。 从 Windows 10 1809 版本开始，进行了以下更改来避免此双重状态： 
  - 在设备加入混合 Azure AD 后，会自动删除任何现有的已注册 Azure AD 状态。 
  - 可以通过添加以下注册表项阻止将已加入域的设备注册到 Azure AD - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001
 
@@ -145,20 +145,20 @@ Windows 下层设备的混合 Azure AD 加入：
 - [为托管域配置混合 Azure Active Directory 加入](hybrid-azuread-join-managed-domains.md)
 
 
- 如果无法安装所需版本的 Azure AD Connect，请参阅[如何手动配置设备注册](../device-management-hybrid-azuread-joined-devices-setup.md)。 
+ 如果无法安装所需版本的 Azure AD Connect，请参阅[如何手动配置设备注册](https://docs.microsoft.com/en-us/azure/active-directory/devices/hybrid-azuread-join-manual)。 
 
 
-## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>混合 Azure AD 加入中的备用登录 ID 支持
+## <a name="on-premises-ad-upn-support-in-hybrid-azure-ad-join"></a>混合 Azure AD 加入中的本地 AD UPN 支持
 
-Windows 10 混合 Azure AD 加入根据备用登录 ID 的类型、[身份验证方法](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)、域类型和 Windows 10 版本对[备用登录 ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) 提供有限支持。 你的环境中可以存在两种类型的备用登录 ID：
+有时，本地 AD UPN 可能不同于 Azure AD UPN。 在此类情况下，Windows 10 混合 Azure AD 加入根据[身份验证方法](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)、域类型和 Windows 10 版本对本地 AD UPN 提供有限支持。 环境中可以存在两种类型的本地 AD UPN：
 
- - 可路由的备用登录 ID：可路由的备用登录 ID 具有向域注册机构注册的有效已验证域。 例如，如果 contoso.com 是主域，则 contoso.org 和 contoso.co.uk 是 Contoso拥有的且[已在 Azure AD 中验证的](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)有效域。
+ - 可路由的 UPN：可路由的 UPN 具有已向域注册机构注册的有效的已验证域。 例如，如果 contoso.com 是 Azure AD 中的主域，则 contoso.org 是 Contoso 拥有的且[已在 Azure AD 中验证](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)的本地 AD 中的主域
  
- - 非可路由的备用登录 ID：非可路由的备用登录 ID 没有已验证域。 它仅在组织的专用网络内适用。 例如，如果 contoso.com 是主域，则 contoso.local 在 Internet 中不是可验证的域，但可在 Contoso 的网络内使用。
+ - 非可路由的 UPN：非可路由的 UPN 没有已验证域。 它仅在组织的专用网络内适用。 例如，如果 contoso.com 是 Azure AD 中的主域，则 contoso.local 是本地 AD 中的主域，但在 Internet 中不是可验证的域，且仅可在 Contoso 的网络内使用。
  
-下表提供了 Windows 10 混合 Azure AD 加入中对这两种备用登录 ID 的支持的详细信息
+下表提供了 Windows 10 混合 Azure AD 加入中对这些本地 AD UPN 的支持情况的详细信息
 
-|备用登录 ID 的类型|域类型|Windows 10 版本|说明|
+|本地 AD UPN 类型|域类型|Windows 10 版本|说明|
 |-----|-----|-----|-----|
 |可路由的|联合 |从 1703 版本开始|正式发布|
 |可路由的|托管|从 1709 版本开始|当前为个人预览版。 不支持 Azure AD SSPR |

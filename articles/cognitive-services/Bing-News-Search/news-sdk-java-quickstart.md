@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 使用本快速入门，可以使用适用于 Java 的必应新闻搜索 SDK 搜索新闻，并处理响应。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: 5bfd07eb11fd4504fa8c674ecb144c5fe328cc06
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 0922010ad6993c8bb1571c24595370895e49c498
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149571"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55866159"
 ---
 # <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>快速入门：使用适用于 Java 的必应新闻搜索 SDK 搜索新闻
 

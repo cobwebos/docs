@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7e9db85fb91dd0c9a33cc8205bdb30a648dfd38a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: dc86943924cd0c47c465e9d3bac4ca91b73a3ff5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438728"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112771"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>创建并发布托管应用程序定义
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 可以创建和发布适用于组织中成员的 Azure [托管应用程序](overview.md)。 例如，IT 部门可发布符合组织标准的托管应用程序。 这些托管应用程序通过服务目录（而不是 Azure 市场）提供。
 
@@ -30,7 +32,7 @@ ms.locfileid: "54438728"
 
 对于本文，托管应用程序只具有存储帐户。 它用于说明发布托管应用程序的步骤。 有关完整示例，请参阅 [Azure 托管应用程序的示例项目](sample-projects.md)。
 
-本文中的 PowerShell 示例需要 Azure PowerShell 6.2 或更高版本。 如果需要，请[更新版本](/powershell/azure/azurerm/install-azurerm-ps)。
+本文中的 PowerShell 示例需要 Azure PowerShell 6.2 或更高版本。 如果需要，请[更新版本](/powershell/azure/install-Az-ps)。
 
 ## <a name="create-the-resource-template"></a>创建资源模板
 
@@ -149,8 +151,8 @@ Azure 门户使用 **createUiDefinition.json** 文件为创建托管应用程序
 将包上传到可从中使用程序包的一个可访问位置。 
 
 ```powershell
-New-AzureRmResourceGroup -Name storageGroup -Location eastus
-$storageAccount = New-AzureRmStorageAccount -ResourceGroupName storageGroup `
+New-AzResourceGroup -Name storageGroup -Location eastus
+$storageAccount = New-AzStorageAccount -ResourceGroupName storageGroup `
   -Name "mystorageaccount" `
   -Location eastus `
   -SkuName Standard_LRS `
@@ -158,9 +160,9 @@ $storageAccount = New-AzureRmStorageAccount -ResourceGroupName storageGroup `
 
 $ctx = $storageAccount.Context
 
-New-AzureStorageContainer -Name appcontainer -Context $ctx -Permission blob
+New-AzStorageContainer -Name appcontainer -Context $ctx -Permission blob
 
-Set-AzureStorageBlobContent -File "D:\myapplications\app.zip" `
+Set-AzStorageBlobContent -File "D:\myapplications\app.zip" `
   -Container appcontainer `
   -Blob "app.zip" `
   -Context $ctx 
@@ -175,7 +177,7 @@ Set-AzureStorageBlobContent -File "D:\myapplications\app.zip" `
 需要提供用户组的对象 ID 以用于管理资源。 
 
 ```powershell
-$groupID=(Get-AzureRmADGroup -DisplayName mygroup).Id
+$groupID=(Get-AzADGroup -DisplayName mygroup).Id
 ```
 
 ### <a name="get-the-role-definition-id"></a>获取角色定义 ID
@@ -183,7 +185,7 @@ $groupID=(Get-AzureRmADGroup -DisplayName mygroup).Id
 接下来，需要获取希望将其访问权限授予用户、用户组或应用程序的 RBAC 内置角色的角色定义 ID。 通常，你会使用“Owner”、“Contributor”或“Reader”角色。 以下命令展示了如何获取“Owner”角色的角色定义 ID：
 
 ```powershell
-$ownerID=(Get-AzureRmRoleDefinition -Name Owner).Id
+$ownerID=(Get-AzRoleDefinition -Name Owner).Id
 ```
 
 ### <a name="create-the-managed-application-definition"></a>创建托管应用程序定义
@@ -191,15 +193,15 @@ $ownerID=(Get-AzureRmRoleDefinition -Name Owner).Id
 如果还没有用于存储托管应用程序定义的资源组，请立即创建一个：
 
 ```powershell
-New-AzureRmResourceGroup -Name appDefinitionGroup -Location westcentralus
+New-AzResourceGroup -Name appDefinitionGroup -Location westcentralus
 ```
 
 现在，创建托管应用程序定义资源。
 
 ```powershell
-$blob = Get-AzureStorageBlob -Container appcontainer -Blob app.zip -Context $ctx
+$blob = Get-AzStorageBlob -Container appcontainer -Blob app.zip -Context $ctx
 
-New-AzureRmManagedApplicationDefinition `
+New-AzManagedApplicationDefinition `
   -Name "ManagedStorage" `
   -Location "westcentralus" `
   -ResourceGroupName appDefinitionGroup `

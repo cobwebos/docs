@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: danlep
-ms.openlocfilehash: 46965842831673d25d636e0cfbfa3d0097b82f99
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: fdba8969ad326565834625fe1ca7ece5e089a904
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54857360"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984199"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>使用 Azure 托管标识向 Azure 容器注册表验证身份 
 
@@ -178,7 +178,7 @@ az acr login --name myContainerRegistry
 
 你应该会看到 `Login succeeded` 消息。 之后，便可以在不提供凭据的情况下运行 `docker` 命令。 例如，运行 [docker pull][docker-pull] 以拉取 `aci-helloworld:v1` 映像，并指定注册表的登录服务器名称。 登录服务器名称由容器注册表名称（全部小写）后跟 `.azurecr.io` 组成 - 例如，`mycontainerregistry.azurecr.io`。
 
-```docker
+```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
 
@@ -230,7 +230,7 @@ az acr login --name myContainerRegistry
 
 你应该会看到 `Login succeeded` 消息。 之后，便可以在不提供凭据的情况下运行 `docker` 命令。 例如，运行 [docker pull][docker-pull] 以拉取 `aci-helloworld:v1` 映像，并指定注册表的登录服务器名称。 登录服务器名称由容器注册表名称（全部小写）后跟 `.azurecr.io` 组成 - 例如，`mycontainerregistry.azurecr.io`。
 
-```docker
+```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
 

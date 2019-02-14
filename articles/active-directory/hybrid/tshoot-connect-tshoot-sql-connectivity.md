@@ -13,12 +13,13 @@ ms.topic: article
 ms.date: 05/14/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: edc15f573017fe57db0540da63eff7f2ed723dd7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dea88951682c24d2a470d5bd7646722481e4db2f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187466"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162945"
 ---
 # <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>排除使用 Azure AD Connect 时的 SQL 连接问题
 本文说明如何排查 Azure AD Connect 与 SQL Server 之间的连接问题。 

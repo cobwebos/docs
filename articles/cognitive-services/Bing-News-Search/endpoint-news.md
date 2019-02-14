@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 新闻搜索 API 终结点摘要。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: v-gedod
-ms.openlocfilehash: a41886927fcc34d7549cbf160dd2e7aa2e9a21c4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a3badf7772c6be6509608fbdb305dc3bc225acc0
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203668"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55879982"
 ---
 # <a name="bing-news-search-api-endpoints"></a>必应新闻搜索 API 终结点
 

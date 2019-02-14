@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: fdcbd0ac718efac98121f4d77ac62e618a1cc6a7
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 090a066afb24c4776f9844b8850264ffad842c59
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496238"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187043"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 操作
 本主题介绍可通过使用 Azure Active Directory (Azure AD) Connect Health 执行的各种操作。

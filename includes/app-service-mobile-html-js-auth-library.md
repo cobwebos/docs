@@ -4,12 +4,12 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
-ms.openlocfilehash: 488fbb2acbf43ac092a7834fc25f433ef09d2b00
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5fe9fe8ced675f68161f0df9f2665b47f9d47ac5
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52973232"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55905034"
 ---
 ### <a name="server-auth"></a>如何：使用提供程序（服务器流）进行身份验证
 要让移动应用管理应用中的身份验证过程，必须将应用注册到标识提供者。 然后，需要在 Azure App Service 中配置提供者提供的应用程序 ID 和机密。
@@ -17,7 +17,7 @@ ms.locfileid: "52973232"
 
 注册标识提供者后，请结合提供者的名称调用 `.login()` 方法。 例如，若要使用 Facebook 登录，请使用以下代码：
 
-```
+```javascript
 client.login("facebook").done(function (results) {
      alert("You are now signed in as: " + results.userId);
 }, function (err) {
@@ -40,7 +40,7 @@ client.login("facebook").done(function (results) {
 
 此示例使用 Facebook 客户端 SDK 进行身份验证：
 
-```
+```javascript
 client.login(
      "facebook",
      {"access_token": token})
@@ -57,7 +57,7 @@ client.login(
 
 可以结合任何 AJAX 库使用 HTTP 调用，从 `/.auth/me` 终结点检索身份验证信息。  确保将 `X-ZUMO-AUTH` 标头设置为身份验证令牌。  身份验证令牌存储在 `client.currentUser.mobileServiceAuthenticationToken` 中。  例如，若要使用提取 API：
 
-```
+```javascript
 var url = client.applicationUrl + '/.auth/me';
 var headers = new Headers();
 headers.append('X-ZUMO-AUTH', client.currentUser.mobileServiceAuthenticationToken);

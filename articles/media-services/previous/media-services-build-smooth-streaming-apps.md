@@ -4,7 +4,7 @@ description: 了解如何使用 Azure 媒体服务来创建一个 C# Windows 应
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 0fa5d8c5-3d5f-4886-ae55-fb6de4f5256d
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 9558a924ee151f47033178b0762a39e2d1e1f538
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 65625fcc12143a8ea53ff2ab7d1dfcb43a0def8d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828309"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992137"
 ---
-# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>如何生成平滑流式处理 Windows 应用商店应用程序
+# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>如何生成平滑流式处理 Windows 应用商店应用程序  
 
 借助适用于 Windows 8 的平滑流式处理客户端 SDK，开发人员可以生成支持按需付费、直播平滑流式处理内容的 Windows 应用商店应用程序。 除了播放平滑流式处理内容这一基本功能以外，该 SDK 还提供其他丰富功能，例如 Microsoft PlayReady 保护、质量级别限制、实时 DVR、音频流切换、收听状态更新（如质量级别更改）和错误事件，等等。 有关支持的功能的详细信息，请参阅[发行说明](http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes)。 有关详细信息，请参阅[适用于 Windows 8 的播放器框架](http://playerframework.codeplex.com/)。 
 
@@ -66,11 +66,11 @@ ms.locfileid: "54828309"
 2. 在“文件”菜单中，单击“新建”，并单击“项目”。
 3. 在“新建项目”对话框中，键入或选择以下值：
 
-| 名称 | 值 |
+| Name | 值 |
 | --- | --- |
 | 模板组 |已安装/模板/Visual C#/Windows 应用商店 |
 | 模板 |空白应用程序(XAML) |
-| 名称 |SSPlayer |
+| Name |SSPlayer |
 | 位置 |C:\SSTutorials |
 | 解决方案名称 |SSPlayer |
 | 创建解决方案的目录 |(选定) |
@@ -82,7 +82,7 @@ ms.locfileid: "54828309"
 1. 在解决方案资源管理器中，右键单击“SSPlayer”，并单击“添加引用”。
 2. 键入或选择以下值：
 
-| 名称 | 值 |
+| Name | 值 |
 | --- | --- |
 | 引用组 |Windows/扩展 |
 | 引用 |选择适用于 Windows 8 和 Microsoft Visual C++ 运行时程序包的 Microsoft 平滑流式处理客户端 SDK |

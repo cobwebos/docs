@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: 了解如何使用语音服务自定义发音。 借助自定义发音，可以定义语音形式和字词或术语显示。 它适用于处理自定义术语，如产品名称或首字母缩略词。 只需使用发音文件（简单的 .txt 文件）即可。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 11680176ea8f9d89adfd0981c13712e73f110352
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0a3dfce10fc8ea76bc8f99e2459295bc637017dc
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55209904"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878402"
 ---
 # <a name="enable-custom-pronunciation"></a>启用自定义发音
 

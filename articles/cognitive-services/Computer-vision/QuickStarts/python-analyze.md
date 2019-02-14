@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 Python 来分析远程图像。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7d46e0dbc295dec01a9b2eb26407120e0e297316
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 94a20c679f68d06a5953c5b446a6111124d8a61a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219033"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55875104"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-python-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 Python 分析远程图像
 

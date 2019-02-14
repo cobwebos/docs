@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 获取信息和代码示例，以帮助你快速开始使用必应拼写检查 API。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: aahi
-ms.openlocfilehash: 3371ed7689ad089559a5874fb89f14962194194d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d3c273c7e5774e4f6d5b6984b77ff76bfb041343
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203211"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873166"
 ---
 # <a name="quickstart-for-bing-spell-check-api-with-ruby"></a>通过 Ruby 使用必应拼写检查 API 快速入门 
 

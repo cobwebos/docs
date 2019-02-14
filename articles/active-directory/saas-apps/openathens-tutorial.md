@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
-ms.openlocfilehash: 9fe00ad1b567fff28301c981413d281869d2aec1
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b1cda27ac27dc7ce76ffe525d002ec9443cb39aa
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808369"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176146"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-openathens"></a>教程：Azure Active Directory 与 OpenAthens 的集成
 

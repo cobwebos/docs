@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/30/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: ce44d4c066183ff796c8efa1dceb20dff73868ee
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ea865fe246bcb414dd1ab3f83b7135989bc0adf3
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192381"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894898"
 ---
 # <a name="secure-access-to-an-applications-data-in-the-cloud"></a>安全访问云中的应用程序数据
 
@@ -50,7 +50,7 @@ az storage container set-permission \ --account-name $blobStorageAccount \ --acc
 
 在本系列教程的第一部分中，Web 应用程序显示公共容器中的图像。 在此系列教程的这个部分中，请使用[共享访问签名 (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md#what-is-a-shared-access-signature) 令牌检索缩略图图像。 通过 SAS 令牌，可以实现基于 IP、协议、时间间隔或允许的权限提供对容器或 blob 的受限访问权限。
 
-此示例中，源代码存储库使用 `sasTokens` 分支，该分支有更新的代码示例。 使用 [az webapp deployment source delete](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_delete) 删除现有的 GitHub 部署。 然后，使用 [az webapp deployment source config](/cli/azure/webapp/deployment/source) 命令配置 Web 应用的 GitHub 部署。  
+此示例中，源代码存储库使用 `sasTokens` 分支，该分支有更新的代码示例。 使用 [az webapp deployment source delete](/cli/azure/webapp/deployment/source) 删除现有的 GitHub 部署。 然后，使用 [az webapp deployment source config](/cli/azure/webapp/deployment/source) 命令配置 Web 应用的 GitHub 部署。  
 
 在下面的命令中，`<web-app>` 是 Web 应用的名称。  
 
@@ -146,7 +146,7 @@ SSE 自动加密所有性能层（标准和高级）、所有部署模型（Azur
 
 ## <a name="enable-https-only"></a>仅启用 HTTPS
 
-为了确保对存储帐户数据的请求安全，可以将请求限制为仅 HTTPS。 使用 [az storage account update](/cli/azure/storage/account#az_storage_account_update) 命令，更新协议所需的存储帐户。
+为了确保对存储帐户数据的请求安全，可以将请求限制为仅 HTTPS。 使用 [az storage account update](/cli/azure/storage/account) 命令，更新协议所需的存储帐户。
 
 ```azurecli-interactive
 az storage account update --resource-group myresourcegroup --name <storage-account-name> --https-only true

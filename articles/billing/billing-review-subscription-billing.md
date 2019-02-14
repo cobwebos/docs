@@ -4,7 +4,7 @@ description: 了解如何使用 Azure REST API 查看订阅计费详细信息。
 services: billing
 documentationcenter: na
 author: lleonard-msft
-manager: MBaldwin
+manager: ''
 editor: ''
 ms.assetid: 82D50B98-40F2-44B1-A445-4391EA9EBBAA
 ms.service: billing
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: erikre
-ms.openlocfilehash: d0199711370dae6a23626337946e45e84fd33047
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: a4e5307a151439dde5ac41cb5b1bbb80f43ad71c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394708"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112744"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>使用 REST API 查看订阅计费
 
@@ -45,7 +45,7 @@ Authorization: Bearer
 
 以下标头是必需的： 
 
-|请求标头|Description|  
+|请求标头|说明|  
 |--------------------|-----------------|  
 |Content-Type：|必需。 设置为 `application/json`。|  
 |Authorization：|必需。 设置为有效的 `Bearer` [访问令牌](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
@@ -81,7 +81,7 @@ Authorization: Bearer
 
 **值**中的每一项均表示有关服务使用的详细信息：
 
-|响应属性|Description|
+|响应属性|说明|
 |----------------|----------|
 |**subscriptionGuid** | 订阅的的全局唯一 ID。 | 
 |**startDate** | 使用开始日期。 |

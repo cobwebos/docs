@@ -4,19 +4,19 @@ description: 在本快速入门中，你将使用必应图像搜索 SDK（它是
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ab9b7939ed0a02be0469811b8ee25c06fe9ca120
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: db3401ffd0f13b9c735d38bf027cc3c8adebe4aa
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166146"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882347"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-nodejs"></a>快速入门：使用适用于 Node.js 的必应图像搜索 SDK 搜索图像
 

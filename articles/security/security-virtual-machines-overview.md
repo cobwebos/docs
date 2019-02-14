@@ -4,7 +4,7 @@ description: 本文概述了能够与 Azure 虚拟机配合使用的核心 Azure
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 467b2c83-0352-4e9d-9788-c77fb400fe54
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: terrylan
-ms.openlocfilehash: 5e024161b55db9662aa288a4d3ff6a7c2b7e6266
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 15ac70891f23d95709d1998bca1ce29ad735cb87
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969679"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109072"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虚拟机安全概述
 
@@ -90,8 +90,7 @@ Azure 虚拟机可用于灵活地进行虚拟化，而无需购买和维护运�
 
 了解更多：
 
-* [什么是 Azure 密钥保管库？](../key-vault/key-vault-whatis.md)
-* [Azure 密钥保管库入门](../key-vault/key-vault-get-started.md)
+* [什么是 Azure 密钥保管库？](../key-vault/key-vault-overview.md)
 * [Azure 密钥保管库博客](https://blogs.technet.microsoft.com/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>虚拟机磁盘加密

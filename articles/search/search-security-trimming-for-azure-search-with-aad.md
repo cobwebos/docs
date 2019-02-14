@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 1cd862c59154f9da766b5df1ab8fb8d61e15d054
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 3f55b3b099cc22fda2bebf0dcb8d3e9c1a580f02
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628283"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099684"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>用于使用 Active Directory 标识修剪 Azure 搜索结果的安全筛选器
 
@@ -64,7 +64,7 @@ Azure 搜索中的索引必须有一个[安全字段](search-security-trimming-f
 
 用户和组的成员身份可能很不稳定，尤其是在大型组织中。 生成用户和组标识的代码应该以足够高的频率运行，以拾取组织成员身份的更改。 同样，Azure 搜索索引需有类似的更新计划，以反映受允许用户和资源的当前状态。
 
-### <a name="step-1-create-aad-grouphttpsdevelopermicrosoftcomen-usgraphdocsapi-referencev10apigrouppostgroups"></a>步骤 1：创建 [AAD 组](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/group_post_groups) 
+### <a name="step-1-create-aad-grouphttpsdocsmicrosoftcomgraphapigroup-post-groupsviewgraph-rest-10"></a>步骤 1：创建 [AAD 组](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0) 
 ```csharp
 // Instantiate graph client 
 GraphServiceClient graph = new GraphServiceClient(new DelegateAuthenticationProvider(...));
@@ -78,7 +78,7 @@ Group group = new Group()
 Group newGroup = await graph.Groups.Request().AddAsync(group);
 ```
    
-### <a name="step-2-create-aad-userhttpsdevelopermicrosoftcomen-usgraphdocsapi-referencev10apiuserpostusers"></a>步骤 2：创建 [AAD 用户](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_post_users) 
+### <a name="step-2-create-aad-userhttpsdocsmicrosoftcomgraphapiuser-post-usersviewgraph-rest-10"></a>步骤 2：创建 [AAD 用户](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
 ```csharp
 User user = new User()
 {
@@ -139,7 +139,7 @@ _indexClient.Documents.Index(batch);
 
 ### <a name="step-1-retrieve-users-group-identifiers"></a>步骤 1：检索用户的组标识符
 
-如果用户的组尚未缓存或缓存已过期，请发出[组](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/directoryobject_getmembergroups)请求
+如果用户的组尚未缓存或缓存已过期，请发出[组](https://docs.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0)请求
 ```csharp
 private static void RefreshCacheIfRequired(string user)
 {

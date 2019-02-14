@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将通过计算机视觉 API 和 PHP 使用域模型识别图像中的地标。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 86b2d7ae385fb7ad9342cf2067283ff8dc69762f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 6e0705841b9dca08bab1526e0df34c819406b91d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210959"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858138"
 ---
 # <a name="quickstart-recognize-domain-specific-content-using-the-rest-api-and-php-with-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 PHP 识别特定于域的内容
 

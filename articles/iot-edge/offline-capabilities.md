@@ -4,17 +4,17 @@ description: 了解 IoT Edge 设备和模块如何能够长时间在无 Internet
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/20/2018
+ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4c4713bade487ba46f1abdc6d0a76db3e81e38b1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7bf672715b45233807ab848c78aeb1bed2d352e9
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096938"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699340"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>了解有关 IoT Edge 设备、模块和子设备的扩展脱机功能（预览版）
 
@@ -25,7 +25,7 @@ Azure IoT Edge 支持 IoT Edge 设备上的扩展脱机操作，同时在非 Edg
 
 ## <a name="how-it-works"></a>工作原理
 
-当 IoT Edge 设备进入脱机模式，Edge 中心将扮演三个角色。 首先，它将存储任何向上游发送的消息并保存它们，直到设备重新连接。 其次，它代表 IoT 中心对模块和子设备进行身份验证，以便它们可以继续运行。 第三，它会在子设备之间启用通常通过 IoT 中心的通信。 
+当 IoT Edge 设备进入脱机模式，IoT Edge 中心将扮演三个角色。 首先，它将存储任何向上游发送的消息并保存它们，直到设备重新连接。 其次，它代表 IoT 中心对模块和子设备进行身份验证，以便它们可以继续运行。 第三，它会在子设备之间启用通常通过 IoT 中心的通信。 
 
 下面的示例展示了 IoT Edge 方案如何在脱机模式下运行：
 
@@ -39,7 +39,7 @@ Azure IoT Edge 支持 IoT Edge 设备上的扩展脱机操作，同时在非 Edg
 
 3. **脱机**。
 
-   从 IoT 中心断开连接时，IoT Edge 设备及其部署模块和任何 IoT 子设备都可以无限期运行。 模块和子设备可以在脱机状态下通过在 Edge 中心进行身份验证来启动和重新启动。 上游绑定到 IoT 中心的遥测存储在本地。 模块之间或 loT 子设备之间的通信通过直接方法或消息来维护。 
+   从 IoT 中心断开连接时，IoT Edge 设备及其部署模块和任何 IoT 子设备都可以无限期运行。 模块和子设备可以在脱机状态下通过在 IoT Edge 中心进行身份验证来启动和重新启动。 上游绑定到 IoT 中心的遥测存储在本地。 模块之间或 loT 子设备之间的通信通过直接方法或消息来维护。 
 
 4. **与 IoT 中心重新连接和重新同步**。
 
@@ -55,7 +55,7 @@ Azure IoT Edge 支持 IoT Edge 设备上的扩展脱机操作，同时在非 Edg
 
 IoT Edge 设备及其分配的子设备可以在初始一次性同步之后无限期脱机运行。但是，消息存储取决于生存时间 (TTL) 设置和存储消息的可用磁盘空间。 
 
-## <a name="set-up-an-edge-device"></a>设置 Edge 设备
+## <a name="set-up-an-iot-edge-device"></a>设置 IoT Edge 设备
 
 对于将其扩展脱机功能扩展到 loT 子设备的 IoT Edge 设备，需要在 Azure 门户中声明父子关系。
 
@@ -71,7 +71,7 @@ IoT Edge 设备及其分配的子设备可以在初始一次性同步之后无�
 
 为了提高可靠性，建议指定在环境中使用的 DNS 服务器地址。 例如，在 Linux 上，更新 /etc/docker/daemon.json（可能需要创建该文件）以包括：
 
-```
+```json
 {
     "dns": [“1.1.1.1”]
 }
@@ -82,13 +82,13 @@ IoT Edge 设备及其分配的子设备可以在初始一次性同步之后无�
 
 ## <a name="optional-offline-settings"></a>可选脱机设置
 
-如果希望设备经历长时间的脱机期，在此之后你想要收集生成的所有消息，请配置 Edge 中心，这样它就可以存储所有消息。 可以对 Edge 中心进行两次更改，以启用长期消息存储。 首先增加生存时间设置，然后为消息存储添加额外的磁盘空间。 
+如果希望收集设备在长时间脱机期中生成的所有消息，请配置 IoT Edge 中心，这样它就可以存储所有消息。 可以对 IoT Edge 中心进行两次更改，以启用长期消息存储。 首先，增加生存时间设置。 然后，为消息存储添加更多磁盘空间。 
 
 ### <a name="time-to-live"></a>生存时间
 
 生存时间设置是指在过期之前消息可以等待传递的时间量（以秒为单位）。 默认为 7200 秒（两个小时）。 
 
-此设置是 Edge 中心的所需属性，它存储在模块孪生中。 可以在 Azure 门户的“配置高级 Edge 运行时设置”部分进行配置，也可以直接在部署清单中配置。 
+此设置是 IoT Edge 中心的所需属性，它存储在模块孪生中。 可以在 Azure 门户的“配置高级 Edge 运行时设置”部分进行配置，也可以直接在部署清单中配置。 
 
 ```json
 "$edgeHub": {
@@ -104,16 +104,25 @@ IoT Edge 设备及其分配的子设备可以在初始一次性同步之后无�
 
 ### <a name="additional-offline-storage"></a>其他脱机存储
 
-默认情况下，消息存储在 Edge 中心的容器文件系统中。 如果存储空间不足以满足你的脱机需求，可以在 IoT Edge 设备上使用本地存储。 需要为 Edge 中心创建一个环境变量，以便指向容器中的存储文件夹。 然后，使用创建选项将存储文件夹绑定到主机上的文件夹。 
+默认情况下，消息存储在 IoT Edge 中心的容器文件系统中。 如果存储空间不足以满足你的脱机需求，可以在 IoT Edge 设备上使用本地存储。 为 IoT Edge 中心创建一个环境变量，以便指向容器中的存储文件夹。 然后，使用创建选项将存储文件夹绑定到主机上的文件夹。 
 
-可以在 Azure 门户的“配置高级 Edge 运行时设置”部分配置环境变量和 Edge 中心模块的创建选项。 或者，可以直接在部署清单中进行配置。 
+可以在 Azure 门户的“配置高级 Edge 运行时设置”部分配置环境变量和 IoT Edge 中心模块的创建选项。 或者，可以直接在部署清单中进行配置。 
 
 ```json
 "edgeHub": {
     "type": "docker",
     "settings": {
         "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-        "createOptions": "{\"HostConfig\":{\"Binds\":[\"<HostStoragePath>:<ModuleStoragePath>\"],\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}]}}}"
+        "createOptions": {
+            "HostConfig": {
+                "Binds": ["<HostStoragePath>:<ModuleStoragePath>"],
+                "PortBindings": {
+                    "8883/tcp": [{"HostPort":"8883"}],
+                    "443/tcp": [{"HostPort":"443"}],
+                    "5671/tcp": [{"HostPort":"5671"}]
+                }
+            }
+        }
     },
     "env": {
         "storageFolder": {
@@ -125,7 +134,11 @@ IoT Edge 设备及其分配的子设备可以在初始一次性同步之后无�
 }
 ```
 
-将 `<HostStoragePath>` 和 `<ModuleStoragePath>` 替换为你的主机和模块存储路径；主机和模块存储路径都必须是绝对路径。  例如，`\"Binds\":[\"/etc/iotedge/storage/:/iotedge/storage/"` 表示主机路径 `/etc/iotedge/storage` 映射到容器路径 `/iotedge/storage/`。  你还可以从 [docker 文档](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)中找到有关 createOptions 的更多详细信息。
+将 `<HostStoragePath>` 和 `<ModuleStoragePath>` 替换为你的主机和模块存储路径；主机和模块存储路径都必须是绝对路径。 在创建选项中，将主机和模块存储路径绑定在一起。 然后，创建指向模块存储路径的环境变量。  
+
+例如，`"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` 表示主机系统上的目录 /etc/iotedge/storage 映射到容器上的目录 /iotedge/storage/。 或是对于 Windows 系统的另一个示例，`"Binds":["C:\\temp:C:\\contemp]"` 表示主机系统上的目录 C:\\temp 映射到容器上的目录 C:\\contemp。 
+
+你还可以从 [docker 文档](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)中找到有关创建选项的更多详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

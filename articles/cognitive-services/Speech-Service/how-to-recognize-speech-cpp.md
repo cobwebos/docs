@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 了解如何使用适用于 C++ 的语音 SDK 识别语音（从文件、从麦克风、使用自定义模型、连续或单次）。
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: bab79fcb9033d179973e10c6356664ee295961b0
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 05c94689ef2ca1ecc0051a4b502e03f980c68c87
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226344"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884267"
 ---
 # <a name="recognize-speech-by-using-the-speech-sdk-for-c"></a>使用适用于 C++ 的语音 SDK 识别语音
 

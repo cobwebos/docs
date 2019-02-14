@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 在本教程中，请使用简单实体从话语中提取雇佣工作名称的机器学习数据。 若要提高提取的准确性，请添加一个短语列表，其中包含特定于简单实体的术语。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 53e975719b911a27667afc8565bd86261f927068
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9da2f8fa345ad3447d7c3344772458c451cf427e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820974"
+ms.locfileid: "55867233"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>教程：通过简单实体和短语列表提取名称
 

@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 添加复合实体来将提取的各种类型的数据捆绑到单个内含实体中。 通过捆绑数据，客户端应用程序可以轻松提取各种数据类型的相关数据。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 43d72b88c96b45939cb394a26881b1272e250819
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0d78c365b171ea80d208c447f4746fe80b965ef2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217248"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883298"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>教程：对相关的数据进行分组和提取
 在本教程中，添加复合实体来将提取的各种类型的数据捆绑到单个内含实体中。 通过捆绑数据，客户端应用程序可以轻松提取各种数据类型的相关数据。

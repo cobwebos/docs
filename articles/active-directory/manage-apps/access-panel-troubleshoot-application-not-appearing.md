@@ -3,8 +3,8 @@ title: 访问面板中未显示已分配的应用程序 | Microsoft Docs
 description: 关于访问面板中未显示应用程序的疑难解答
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/09/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviwer: japere
-ms.openlocfilehash: 3a63f506b2b2072c385759044cd3a0c581a54185
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 21ed169003caded8ef80689ceec61f6d2fc4305c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177706"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178985"
 ---
 # <a name="an-assigned-application-is-not-appearing-on-the-access-panel"></a>访问面板中未显示已分配的应用程序
 
@@ -203,13 +204,13 @@ ms.locfileid: "55177706"
 
 若要配置非库应用程序，需要拥有 Azure AD Premium 和支持 SAML 2.0 的应用程序。 有关 Azure AD 版本的详细信息，请访问 [Azure AD 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
 
--   [在 Azure AD 中配置应用程序的元数据值（登录 URL、标识符、答复 URL）](#configuring-single-sign-on)
+-   [在 Azure AD 中配置应用程序的元数据值（登录 URL、标识符、答复 URL）](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
 
 -   [选择用户标识符，并添加要发送给应用程序的用户属性](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
 
 -   [检索 Azure AD 元数据和证书](#download-the-azure-ad-metadata-or-certificate)
 
--   [在应用程序中配置 Azure AD 元数据值（登录 URL、颁发者、注销 URL 和证书）](#configuring-single-sign-on)
+-   [在应用程序中配置 Azure AD 元数据值（登录 URL、颁发者、注销 URL 和证书）](#configure-the-application-for-password-single-sign-on-1)
 
 #### <a name="configure-the-applications-metadata-values-in-azure-ad-sign-on-url-identifier-reply-url"></a>在 Azure AD 中配置应用程序的元数据值（登录 URL、标识符、答复 URL）
 

@@ -4,7 +4,7 @@ description: 本文讨论可以在 Azure 安全中心使用的不同类型的安
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: b3e7b4bc-5ee0-4280-ad78-f49998675af1
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 360614a2c4f7c8c397ef9d5039f6ef31f7e90da6
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 1f9ea2fd1e9a346046c55db451bc333373896db5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344068"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118082"
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>了解 Azure 安全中心中的安全警报
 本文可帮助了解 Azure 安全中心提供的各类安全警报和相关的见解。 有关如何管理警报和事件的详细信息，请参阅[管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)。

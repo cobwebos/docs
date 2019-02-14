@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 29eafa3a536a71923eaaa9eae2ce9f75f430d158
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4997dc906344054ccb45b8eb152a49329bb26e55
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186427"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197685"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rolepoint"></a>教程：Azure Active Directory 与 RolePoint 的集成
 

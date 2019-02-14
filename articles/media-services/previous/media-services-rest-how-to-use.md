@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/10/2019
 ms.author: juliako;johndeu
-ms.openlocfilehash: 7ea2a84daaa22e0fc7ff4dc90ca41dd906b808c8
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: e0011d36ccff7b9d621679f15776bbdb15d0cbe4
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159734"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005448"
 ---
-# <a name="media-services-operations-rest-api-overview"></a>媒体服务操作 REST API 概述
+# <a name="media-services-operations-rest-api-overview"></a>媒体服务操作 REST API 概述 
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
 
 媒体服务操作 REST API 用于在媒体服务帐户中创建作业、资产、实时频道和其他资源。 有关详细信息，请参阅 [Media Services Operations REST API reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)（媒体服务操作 REST API 参考）。
@@ -55,12 +55,12 @@ ms.locfileid: "54159734"
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>媒体服务支持的标准 HTTP 请求标头
 每次调用媒体服务时，必须在请求中包括一组必需标头，还可以根据需要包括一组可选标头。 下表列出了必需的标头：
 
-| 标头 | 类型 | 值 |
+| 标头 | Type | 值 |
 | --- | --- | --- |
 | 授权 |持有者 |持有者是唯一接受的授权机制。 该值还必须包括由 Azure Active Directory 提供的访问令牌。 |
-| x-ms-version |小数 |2.17（或最新版本）|
-| DataServiceVersion |小数 |3.0 |
-| MaxDataServiceVersion |小数 |3.0 |
+| x-ms-version |Decimal |2.17（或最新版本）|
+| DataServiceVersion |Decimal |3.0 |
+| MaxDataServiceVersion |Decimal |3.0 |
 
 > [!NOTE]
 > 由于媒体服务使用 OData 公开其 REST API，因此所有请求中均应包括 DataServiceVersion 和 MaxDataServiceVersion 标头，但如果未包括这些标头，则当前媒体服务会假定使用的 DataServiceVersion 值为 3.0。
@@ -69,7 +69,7 @@ ms.locfileid: "54159734"
 
 以下是一组可选标头：
 
-| 标头 | 类型 | 值 |
+| 标头 | Type | 值 |
 | --- | --- | --- |
 | 日期 |RFC 1123 日期 |请求的时间戳 |
 | Accept |内容类型 |响应的请求内容类型，例如：<p> -application/json;odata=verbose<p> - application/atom+xml<p> 响应可能具有不同的内容类型，如 BLOB 提取，在该类型中成功的响应包含 BLOB 流作为负载。 |
@@ -83,7 +83,7 @@ ms.locfileid: "54159734"
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>媒体服务支持的标准 HTTP 响应标头
 下面是可以根据你请求的资源以及要执行的操作返回给一组标头。
 
-| 标头 | 类型 | 值 |
+| 标头 | Type | 值 |
 | --- | --- | --- |
 | request-id |String |当前操作的唯一标识符，由服务生成。 |
 | client-request-id |String |调用方在原始请求（如果存在）中指定的标识符。 |
@@ -94,7 +94,7 @@ ms.locfileid: "54159734"
 ## <a name="standard-http-verbs-supported-by-media-services"></a>媒体服务支持的标准 HTTP 谓词
 下面是在提出 HTTP 请求时可以使用的 HTTP 谓词的完整列表：
 
-| Verb | Description |
+| Verb | 说明 |
 | --- | --- |
 | GET |返回对象的当前值。 |
 | POST |根据提供的数据创建对象，或提交命令。 |

@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 使用计算机视觉 API 生成图像的缩略图的相关概念。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 638a54a4cf902693dcdccecf4236e75569a677a9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8881a0c5e809dc75d1b9f4b6f6bd3af7142333cb
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157595"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884624"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>使用计算机视觉生成智能裁剪的缩略图
 

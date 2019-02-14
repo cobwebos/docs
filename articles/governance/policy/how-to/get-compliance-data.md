@@ -4,17 +4,17 @@ description: Azure Policy 的评估和效果确定了符合性。 了解如何�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: cc5d59d523f87cac6ec8533d6af1342c58ba45f7
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 9fc22e35b2e435b6452f0f36c34687a15bee39c2
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853623"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766397"
 ---
 # <a name="getting-compliance-data"></a>获取符合性数据
 
@@ -45,6 +45,8 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 - 资源将通过资源管理器、REST、Azure CLI 或 Azure PowerShell 部署到包含分配的范围。 在此场景中，个体资源的效果事件（追加、审核、拒绝、部署）和符合性状态将在大约 15 分钟后出现在门户与 SDK 中。 此事件不会导致对其他资源进行评估。
 
 - 标准符合性评估周期。 分配每隔 24 小时自动重新评估一次。 涉及大量资源的大型策略或计划可能需要花费一段时间，因此，在评估周期何时完成方面，无法预先定义预期目标。 完成评估后，更新的符合性结果会在门户和 SDK 中提供。
+
+- [来宾配置](../concepts/guest-configuration.md)资源提供程序更新受管理资源的符合性详细信息。
 
 - 按需扫描
 
@@ -139,6 +141,26 @@ Azure 门户展示了一个图形体验用于可视化和了解环境中的符�
 右键单击要收集其更多详细信息的事件所在的行，然后选择“显示活动日志”。 活动日志页将会打开，其中的搜索结果经过预先筛选，显示分配和事件的详细信息。 活动日志提供有关这些事件的其他上下文和信息。
 
 ![策略符合性活动日志](../media/getting-compliance-data/compliance-activitylog.png)
+
+### <a name="change-history-preview"></a>更改历史记录（预览版）
+
+作为新的**公共预览版**的一部分，提供不符合资源过去 14 天的更改历史记录。 更改历史记录提供有关何时检测到更改的详细信息，以及每个更改的_视觉差异_。 添加、删除或修改不符合资源的资源管理器属性时，就会触发更改检测。
+
+1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。
+
+1. 在“概览”或“符合性”页，选择“不符合”的策略。
+
+1. 在“策略符合性”页的“资源符合性”选项卡下，选择“不符合”的资源。
+
+1. 选择“资源符合性”页上的“更改历史记录(预览版)”选项卡。 此时会显示检测到的更改的列表（如果存在）。
+
+   ![策略更改历史记录 - 选项卡](../media/getting-compliance-data/change-history-tab.png)
+
+1. 选择其中一个检测到的更改。 不符合资源的_视觉差异_在“更改历史记录”页上显示。
+
+   ![策略更改历史记录 - 视觉差异](../media/getting-compliance-data/change-history-visual-diff.png)
+
+_视觉差异_可帮助识别资源的更改。 检测到的更改可能与导致资源不符合所选策略的因素无关。
 
 ## <a name="command-line"></a>命令行
 

@@ -4,7 +4,7 @@ description: 本文提供有关 Azure 操作安全性的一套最佳做法。
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: terrylan
-ms.openlocfilehash: 7c6d373fd294645605815d8a8d380259982d90e7
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: e2678eb7d75921f43a1e51b6a8cefc9925a9adc1
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118177"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104595"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 操作安全性最佳做法
 Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用程序和其他资产的服务、控件和功能。 Azure 操作安全性建立在一个框架上，该框架融合了通过 Microsoft 独有的功能获得的知识，包括 [安全开发生命周期 (SDL)](https://www.microsoft.com/sdl)、[Microsoft 安全响应中心](https://www.microsoft.com/msrc?rtc=1)计划以及对网络安全威胁形态的深刻认识。

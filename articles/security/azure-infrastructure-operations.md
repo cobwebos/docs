@@ -4,7 +4,7 @@ description: 本文提供有关 Microsoft Azure 生产网络管理和操作的�
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 21ae81f1d8423a9d05208ec6d8c4f31d909d2f9f
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 0099eb61d97f813f7adca320b47c195fa1aabbdc
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173153"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104545"
 ---
 # <a name="azure-production-operations-and-management"></a>Azure 生产操作和管理    
 Azure 生产网络的管理和操作需要在 Azure 运营团队与 Azure SQL 数据库之间做出协调。 团队在环境中使用了多个系统和应用程序性能监视工具。 他们使用适当的工具来监视网络设备、服务器、服务和应用程序进程。

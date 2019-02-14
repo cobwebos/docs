@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: e57142631668ba0b74573b2953e84f581023b24f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: c5858aaf09cd832a5d60d32bb33aeeb51795b406
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660640"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870429"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>在 Linux 应用服务中创建 Ruby on Rails 应用
 
@@ -53,7 +53,7 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 第一步是安装必需的 gem。 示例中包含 `Gemfile`，因此无需指定要安装的 gem。 为此，我们将使用捆绑程序：
 
-```
+```bash
 bundle install
 ```
 

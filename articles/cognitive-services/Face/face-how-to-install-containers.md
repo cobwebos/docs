@@ -4,19 +4,19 @@ titlesuffix: Face - Azure Cognitive Services
 description: 通过本演练教程了解如何下载、安装和运行“人脸”容器。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 02/06/2019
+ms.date: 02/11/2019
 ms.author: diberry
-ms.openlocfilehash: d738f089ff7af59c340a2ea9f67918c1298f9e47
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 7a41bfaada64528e90f43064b34c394f9a9b8f8f
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769787"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099082"
 ---
 # <a name="install-and-run-containers"></a>安装和运行容器
 
@@ -68,8 +68,8 @@ ms.locfileid: "55769787"
 
 ### <a name="docker-pull-for-the-face-container"></a>适用于人脸容器的 Docker 拉取
 
-```Docker
-docker pull mcr.microsoft.com/azure-cognitive-services/face:latest
+```
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 ```
 
 ## <a name="how-to-use-the-container"></a>如何使用容器
@@ -132,18 +132,7 @@ ApiKey={BILLING_KEY}
 
 人脸 API 容器使用 Azure 帐户中的_人脸 API_ 资源向 Azure 发送账单信息。 
 
-如果未连接到 Azure 进行计量，则无法授权并运行认知服务容器。 客户需要始终让容器向计量服务传送账单信息。 认知服务容器不会将客户数据发送给 Microsoft。 
-
-`docker run` 命令使用以下参数进行计费：
-
-| 选项 | 说明 |
-|--------|-------------|
-| `ApiKey` | 用于跟踪账单信息的_人脸 API_ 资源的 API 密钥。 |
-| `Billing` | 用于跟踪账单信息的_人脸 API_ 资源的终结点。|
-| `Eula` | 表示已接受容器的许可条款。<br/>此选项的值必须设置为 `accept`。 |
-
-> [!IMPORTANT]
-> 必须使用有效值指定所有三个选项，否则容器将无法启动。
+[!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 有关这些选项的详细信息，请参阅[配置容器](./face-resource-container-config.md)。
 

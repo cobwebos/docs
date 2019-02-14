@@ -9,102 +9,34 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 02/03/2019
 ms.author: juliako
-ms.openlocfilehash: 658843fd5acbe0d4e29947e99c00edf4909fe9f4
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: be66dcf8115258b6f593ec913e75785a3f8dbe1f
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742739"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743474"
 ---
 # <a name="streaming-locators"></a>流式处理定位符
 
-若要为客户提供可用于播放编码的视频或音频文件的 URL，需要创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) 并构建流式处理 URL。 有关详细信息，请参阅[对文件进行流式处理](stream-files-dotnet-quickstart.md)。
+若要使输出资产中的视频可供客户端进行播放，必须创建[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)，然后生成流式处理 URL。 对于 .NET 示例，请参阅[获取流式处理定位符](stream-files-tutorial-with-api.md#get-a-streaming-locator)。
 
-## <a name="streaminglocator-definition"></a>StreamingLocator 定义
+创建**流定位符**的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，**流定位符**立即生效，并持续到被删除为止。 
 
-下表显示了 StreamingLocator 的属性并给出了它们的定义。
+创建流式处理定位符时，需要指定[资产](https://docs.microsoft.com/rest/api/media/assets)名称和[流式处理策略](https://docs.microsoft.com/rest/api/media/streamingpolicies)名称。 可以使用一个预定义流式处理策略或创建的自定义策略。 目前可用的预定义策略包括：“Predefined_DownloadOnly”、“Predefined_ClearStreamingOnly”、“Predefined_DownloadAndClearStreaming”、“Predefined_ClearKey”、“Predefined_MultiDrmCencStreaming”和“Predefined_MultiDrmStreaming”。 使用自定义的流式处理策略时，应为媒体服务帐户设计有限的一组此类策略，并在需要同样的选项和协议时重新将这些策略用于流式处理定位符。 
 
-|名称|Description|
-|---|---|
-|id |资源的完全限定的资源 ID。|
-|名称|资源的名称。|
-|properties.alternativeMediaId|此流式处理定位符的备选媒体 ID。|
-|properties.assetName|资产名称|
-|properties.contentKeys|此流式处理定位符使用的 Contentkey。|
-|properties.created|流式处理定位符的创建时间。|
-|properties.defaultContentKeyPolicyName|此流式处理定位符使用的默认 ContentKeyPolicy 的名称。|
-|properties.endTime|流式处理定位符的结束时间。|
-|properties.startTime|流式处理定位符的开始时间。|
-|properties.streamingLocatorId|流式处理定位符的 StreamingLocatorId。|
-|properties.streamingPolicyName |此流式处理定位符使用的流式处理策略的名称。 指定创建的流式处理策略的名称，或使用一个预定义的流式处理策略。 可用的预定义流式处理策略包括：“Predefined_DownloadOnly”、“Predefined_ClearStreamingOnly”、“Predefined_DownloadAndClearStreaming”、“Predefined_ClearKey”、“Predefined_MultiDrmCencStreaming”和“Predefined_MultiDrmStreaming”|
-|type|资源的类型。|
+如果要对流指定加密选项，则创建[内容密钥策略](https://docs.microsoft.com/rest/api/media/contentkeypolicies)配置内容密钥如何通过媒体服务密钥传送组件传送到最终客户端。 将流式处理定位符与内容密钥策略和内容密钥相关联。 你可以让媒体服务自动生成密钥。 下面的 .NET 示例演示如何在媒体服务 v3 中使用令牌限制配置 AES 加密：[EncodeHTTPAndPublishAESEncrypted](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted)。 内容密钥策略可更新，如果需要进行密钥轮换，则可能需要更新该策略。 密钥传递缓存可能需要长达 15 分钟来进行更新并获取更新后的策略。 建议不要为每个流式处理定位符都创建新内容密钥策略。 应尝试在每次需要相同选项时重用现有策略。
 
-若要查看完整定义，请参阅[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)。
+> [!IMPORTANT]
+> * 属于日期/时间类型的流式处理定位符的属性始终采用 UTC 格式。
+> * 应为媒体服务帐户设计一组有限的策略，并在需要相同的选项时重新将这些策略用于流式处理定位符。 
 
 ## <a name="filtering-ordering-paging"></a>筛选、排序、分页
 
-媒体服务支持对流式处理定位符使用以下 OData 查询选项： 
-
-* $filter 
-* $orderby 
-* $top 
-* $skiptoken 
-
-运算符说明：
-
-* Eq = 等于
-* Ne = 不等于
-* Ge = 大于或等于
-* Le = 小于或等于
-* Gt = 大于
-* Lt = 小于
-
-### <a name="filteringordering"></a>筛选/排序
-
-下表显示这些选项如何应用于 StreamingLocator 属性： 
-
-|名称|筛选器|顺序|
-|---|---|---|
-|id |||
-|名称|Eq、ne、ge、le、gt、lt|升序和降序|
-|properties.alternativeMediaId  |||
-|properties.assetName   |||
-|properties.contentKeys |||
-|properties.created |Eq、ne、ge、le、gt、lt|升序和降序|
-|properties.defaultContentKeyPolicyName |||
-|properties.endTime |Eq、ne、ge、le、gt、lt|升序和降序|
-|properties.startTime   |||
-|properties.streamingLocatorId  |||
-|properties.streamingPolicyName |||
-|type   |||
-
-### <a name="pagination"></a>分页
-
-已启用的四个排序顺序均支持分页。 当前，页面大小为 10。
-
-> [!TIP]
-> 应始终使用下一个链接来枚举集合，而不依赖特定的页面大小。
-
-如果查询响应包含许多项，则服务将返回一个“\@odata.nextLink”属性来获取下一页结果。 这可用于逐页浏览整个结果集。 无法配置页面大小。 
-
-如果在逐页浏览集合时创建或删除了 StreamingLocator，则会在返回的结果中反映此更改（如果这些更改位于集合中尚未下载的部分）。 
-
-以下 C# 示例显示如何枚举帐户中的所有 StreamingLocator。
-
-```csharp
-var firstPage = await MediaServicesArmClient.StreamingLocators.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.StreamingLocators.ListNextAsync(currentPage.NextPageLink);
-}
-```
-
-若要查看 REST 示例，请参阅[流式处理定位符 - 列表](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+请参阅[媒体服务实体的筛选、排序、分页](entities-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-[流式传输文件](stream-files-dotnet-quickstart.md)
+* [教程：使用 .NET 上传、编码和流式传输视频](stream-files-tutorial-with-api.md)
+* [使用 DRM 动态加密和许可证传送服务](protect-with-drm.md)

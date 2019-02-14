@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/09/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: c65fb1f0f635e79d594a7f080124827e3218f612
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: f8122f35ac6d604908fc31dcece7dfb53dd50286
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54193290"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985375"
 ---
 共享映像库是可以帮助你围绕自定义托管 VM 映像生成结构和组织的服务。 使用共享映像库，可以将映像共享给组织内的不同用户、服务主体或 AD 组。 共享映像可以复制到多个区域，以便更快地扩展部署。
 
@@ -23,7 +23,7 @@ ms.locfileid: "54193290"
 
 共享映像库功能具有多种资源类型：
 
-| 资源 | Description|
+| 资源 | 说明|
 |----------|------------|
 | **托管映像** | 这是基本映像，可以单独使用，也可用于在映像库中创建“映像版本”。 托管映像是从通用 VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
 | **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
@@ -120,8 +120,8 @@ az provider register --name Microsoft.Compute
 PowerShell： 
 
 ```powershell
-Register-AzureRmProviderFeature -FeatureName GalleryPreview -ProviderNamespace Microsoft.Compute
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
+Register-AzProviderFeature -FeatureName GalleryPreview -ProviderNamespace Microsoft.Compute
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
 **问：** 如何列出不同订阅中的所有共享映像库资源？ 
@@ -175,12 +175,12 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
  A. 下面提到了可在每个资源中更新的详细信息：
  
 共享映像库：
-- Description
+- 说明
 
 映像定义：
 - 建议的 vCPU 数
 - 内存
-- Description
+- 说明
 - 生命周期终结日期
 
 映像版本：

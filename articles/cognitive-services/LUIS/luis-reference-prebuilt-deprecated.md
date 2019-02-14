@@ -5,18 +5,18 @@ description: 本文包含了语言理解 (LUIS) 中已弃用的预构建实体�
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: f7071d34f6167786012bd50be7b778fa08b46371
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 576acb0c03d6701018cefa26118a334d3b9c83b8
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216993"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869596"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>LUIS 应用中已弃用的预生成实体
 以下预构建实体已被弃用，不能添加到新的 LUIS 应用中。
@@ -65,7 +65,7 @@ Encyclopedia 内置实体包括下表中的 100 多个子类型：此外，encyc
  ```
 
 
-预构建实体   |   预构建实体（子类型）   |   陈述示例
+预构建实体   |   预构建实体（子类型）   |   示例陈述
 ------|------|------|
 ```builtin.encyclopedia.people.person```| ```builtin.encyclopedia.people.person ```|```bryan adams``` |
 ```builtin.encyclopedia.people.person```| ```builtin.encyclopedia.film.producer ```| ```walt disney``` |

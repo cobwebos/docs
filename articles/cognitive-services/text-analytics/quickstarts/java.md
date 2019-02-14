@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 获取信息和代码示例，帮助快速开始使用 Azure 上 Microsoft 认知服务中的文本分析 API。
 services: cognitive-services
 author: noellelacharite
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: nolachar
-ms.openlocfilehash: fdca883e2637998222bfcc4cdc799fe4dec4ab13
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0bf4e1f24d88b5fb1dbe92834dd7d78bc9b791d6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223300"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55862099"
 ---
 # <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Java 调用文本分析认知服务
 <a name="HOLTop"></a>

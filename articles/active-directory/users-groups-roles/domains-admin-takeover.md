@@ -14,12 +14,13 @@ ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
-ms.openlocfilehash: 9cef490d22a013b952d6692d0ac0e932a35c9ba3
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0af2628e1da24bd790e94306703aab797a0d56a1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297627"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164764"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>在 Azure Active Directory 中以管理员身份接管非托管目录
 本文介绍了在 Azure Active Directory (Azure AD) 的非托管目录中接管 DNS 域名的两种方式。 当自助服务用户注册一个使用 Azure AD 的云服务时，系统会根据其电子邮件域将其添加到非托管 Azure AD 目录。 有关自助服务或“迅速传播的”服务注册的详细信息，请参阅[什么是 Azure Active Directory 的自助服务注册？](directory-self-service-signup.md)

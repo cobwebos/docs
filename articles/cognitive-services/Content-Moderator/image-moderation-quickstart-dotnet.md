@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 如何使用适用于 .NET 的内容审查器 SDK 分析图像内容中是否存在各种令人反感的材料
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: db85e8bf071e9d91ab6c8e30e0e96d409166fed6
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: bd281191deb1a82d4b1b5247a011d9867f0c9bc4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207949"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55879286"
 ---
 # <a name="quickstart-analyze-image-content-for-objectionable-material-in-c"></a>快速入门：使用 C# 分析令人反感的材料的图像内容
 

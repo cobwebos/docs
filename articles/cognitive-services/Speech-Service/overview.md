@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 语音服务是 Azure 认知服务的一部分，它将以前单独提供的几种语音服务结合在一起：必应语音（其中包括语音识别和文本转语音）、自定义语音和语音翻译。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
 ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: beb1382d2e076052583dd5bbc546259c8aae2f96
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d60e5f881e44f397090a3ba5e467c08f20137d72
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217962"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858818"
 ---
 # <a name="what-is-speech-services"></a>什么是语音服务？
 

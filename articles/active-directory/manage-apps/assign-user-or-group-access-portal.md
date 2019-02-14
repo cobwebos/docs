@@ -2,21 +2,22 @@
 title: 在 Azure Active Directory 中向企业应用分配用户或组 | Microsoft Docs
 description: 如何选择企业应用，在 Azure Active Directory 中向其分配用户或组
 services: active-directory
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: luleon
-ms.openlocfilehash: 6596a814841619d7b42599d381d79c98f672ec85
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0dd3bd1f3f9f175ba7bf841b1fce45bb7938c02b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196474"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209500"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中向企业应用分配用户或组
 若要将用户或组分配到企业应用，必须具有适当的权限才能管理企业应用，并且必须是目录的全局管理员。

@@ -1,6 +1,6 @@
 ---
 title: Azure SQL 数据库托管实例的 T-SQL 差异 | Microsoft Docs
-description: 本文讨论 Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异
+description: 本文介绍了 Azure SQL 数据库托管实例与 SQL Server 的 T-SQL 差异
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,29 +11,33 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 3186261b935d48343eab2fd818cd8ed936f41f3f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: f1adcca48882ca3a149046cbc0729612666363cc
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472774"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734600"
 ---
-# <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异
+# <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 的 T-SQL 差异
 
-Azure SQL 数据库托管实例与本地 SQL Server 数据库引擎高度兼容。 托管实例支持大多数 SQL Server 数据库引擎功能。 由于两者的语法和行为仍有一些差异，本文汇总并解释了这些差异。
+托管实例部署选项与本地 SQL Server 数据库引擎高度兼容。 托管实例支持大多数 SQL Server 数据库引擎功能。
 
-- [T-SQL 差异和不支持的功能](#Differences)
-- [在托管实例中具有不同行为的功能](#Changes)
+![迁移](./media/sql-database-managed-instance/migration.png)
+
+由于两者的语法和行为仍有一些差异，本文汇总并解释了这些差异。 <a name="Differences"></a>
+- [可用性](#availability)包括 [Always-On](#always-on-availability) 和[备份](#backup)方面的差异
+- [安全性](#security)包括[审核](#auditing)、[证书](#certificates)、[凭据](#credentials)、[加密提供程序](#cryptographic-providers)、[登录名/用户名](#logins--users)、[服务密钥和服务主密钥](#service-key-and-service-master-key)方面的差异
+- [配置](#configuration)包括[缓冲池扩展](#buffer-pool-extension)、[排序规则](#collation)、[兼容性级别](#compatibility-levels)、[数据库镜像](#database-mirroring)、[数据库选项](#database-options)、[SQL Server 代理](#sql-server-agent)、[表选项](#tables)方面的差异
+- [功能](#functionalities)包括 [BULK INSERT/OPENROWSET](#bulk-insert--openrowset)、[CLR](#clr)、[DBCC](#dbcc)、[分布式事务](#distributed-transactions)、[已扩展事件](#extended-events)、[外部库](#external-libraries)、[文件流和文件表](#filestream-and-filetable)、[全文语义搜索](#full-text-semantic-search)、[链接服务器](#linked-servers)、[Polybase](#polybase)、[复制](#replication)、[还原](#restore-statement)、[Service Broker](#service-broker)、[存储过程、函数和触发器](#stored-procedures-functions-triggers)方面的差异
+- [在托管实例中行为不同的功能](#Changes)
 - [暂时的限制和已知问题](#Issues)
 
-## <a name="Differences"></a>与SQL Server 之间的 T-SQL 差异
+## <a name="availability"></a>可用性
 
-本部分汇总了托管实例与本地 SQL Server 数据库引擎之间的主要 T-SQL 语法和行为差异，以及不支持的功能。
+### <a name="always-on-availability"></a>Always-On
 
-### <a name="always-on-availability"></a>Always-On 可用性
-
-[高可用性](sql-database-high-availability.md)内置在托管实例中，不能由用户控制。 不支持以下语句：
+[高可用性](sql-database-high-availability.md)内置在托管实例中，用户无法控制。 不支持以下语句：
 
 - [CREATE ENDPOINT … FOR DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql)
 - [CREATE AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/create-availability-group-transact-sql)
@@ -41,13 +45,38 @@ Azure SQL 数据库托管实例与本地 SQL Server 数据库引擎高度兼容�
 - [DROP AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/drop-availability-group-transact-sql)
 - [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql) 语句的 [SET HADR](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-hadr) 子句
 
+### <a name="backup"></a>备份
+
+托管实例包含自动备份，可便于用户创建完整数据库 `COPY_ONLY` 备份。 不支持差异、日志和文件快照备份。
+
+- 使用托管实例，可以只将实例数据库备份到 Azure Blob 存储帐户：
+  - 仅支持 `BACKUP TO URL`
+  - 不支持 `FILE`、`TAPE` 和备份设备  
+- 支持大多数常规 `WITH` 选项
+  - `COPY_ONLY` 是必需的
+  - 不支持 `FILE_SNAPSHOT`
+  - 不支持磁带选项 `REWIND`、`NOREWIND`、`UNLOAD` 和 `NOUNLOAD`
+  - 不支持日志特定的选项 `NORECOVERY`、`STANDBY` 和 `NO_TRUNCATE`
+
+限制：  
+
+- 使用托管实例，可以将实例数据库备份到最多包含 32 个带区的备份（如果使用备份压缩，这种方法对不超过 4TB 的数据库够用）。
+- 最大备份条带大小为 195 GB（最大 Blob 大小）。 在 backup 命令中增加条带数目可以减小单个条带的大小，并保持在此限制范围内。
+
+> [!TIP]
+> 若要在本地解决此限制，请备份到 `DISK` 而不是 `URL`，将备份文件上传到 Blob，然后还原。 由于使用了不同的 Blob 类型，因此还原操作支持较大的文件。  
+
+有关使用 T-SQL 进行备份的信息，请参阅 [BACKUP](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql)。
+
+## <a name="security"></a>安全
+
 ### <a name="auditing"></a>审核
 
-托管实例、Azure SQL 数据库与本地 SQL Server 之间的主要 SQL 审核差异为：
+在审核 Azure SQL 数据库和 SQL Server 中的数据库方面，主要差异是：
 
-- 在托管实例中，SQL 审核在服务器级别工作，在 Azure Blob 存储帐户中存储 `.xel` 文件。  
-- 在 Azure SQL 数据库中，SQL 审核在数据库级别工作。
-- 在本地 SQL Server/虚拟机中，SQL 审核在服务器级别工作，但在文件系统/Windows 事件日志中存储事件。  
+- 使用 Azure SQL 数据库中的托管实例部署选项，审核是在服务器一级执行，并在 Azure Blob 存储帐户中存储 `.xel` 日志文件。
+- 使用 Azure SQL 数据库中的单一数据库和弹性池部署选项，审核是在数据库一级执行。
+- 在本地 SQL Server/虚拟机上的 SQL Server 中，审核是在服务器一级执行，但却在文件系统/Windows 事件日志中存储事件。
   
 托管实例中的 XEvent 审核支持 Azure Blob 存储目标。 不支持文件和 Windows 日志。
 
@@ -62,44 +91,9 @@ Azure Blob 存储审核的主要 `CREATE AUDIT` 语法差异为：
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 - [审核](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
 
-### <a name="backup"></a>备份
-
-托管实例提供自动备份，允许用户创建完整的数据库 `COPY_ONLY` 备份。 不支持差异、日志和文件快照备份。
-
-- 托管实例只能将某个数据库备份到 Azure Blob 存储帐户：
-  - 仅支持 `BACKUP TO URL`
-  - 不支持 `FILE`、`TAPE` 和备份设备  
-- 支持大多数常规 `WITH` 选项
-  - `COPY_ONLY` 是必需的
-  - 不支持 `FILE_SNAPSHOT`
-  - 不支持磁带选项 `REWIND`、`NOREWIND`、`UNLOAD` 和 `NOUNLOAD`
-  - 不支持日志特定的选项 `NORECOVERY`、`STANDBY` 和 `NO_TRUNCATE`
-
-限制：  
-
-- 托管实例可将数据库备份到最多包含 32 个条带的备份，如果使用备份压缩，则这种方法对于不超过 4 TB 的数据库而言已足够。
-- 最大备份条带大小为 195 GB（最大 Blob 大小）。 在 backup 命令中增加条带数目可以减小单个条带的大小，并保持在此限制范围内。
-
-> [!TIP]
-> 若要在本地解决此限制，请备份到 `DISK` 而不是 `URL`，将备份文件上传到 Blob，然后还原。 由于使用了不同的 Blob 类型，因此还原操作支持较大的文件。  
-
-有关使用 T-SQL 进行备份的信息，请参阅 [BACKUP](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql)。
-
-### <a name="buffer-pool-extension"></a>缓冲池扩展
-
-- 不支持[缓冲池扩展](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension)。
-- 不支持 `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION`。 请参阅 [ALTER SERVER CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-server-configuration-transact-sql)。
-
-### <a name="bulk-insert--openrowset"></a>批量插入/openrowset
-
-托管实例无法访问文件共享和 Windows 文件夹，因此必须从 Azure Blob 存储导入文件：
-
-- 从 Azure Blob 存储导入文件时，必须在 `BULK INSERT` 命令中指定 `DATASOURCE`。 请参阅 [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql)。
-- 从 Azure Blob 存储中读取文件内容时，必须在 `OPENROWSET` 函数中指定 `DATASOURCE`。 请参阅 [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql)。
-
 ### <a name="certificates"></a>证书
 
-托管实例无法访问文件共享和 Windows 文件夹，因此存在以下约束：
+由于托管实例无法访问文件共享和 Windows 文件夹，因此存在以下约束：
 
 - 不支持将 `CREATE FROM`/`BACKUP TO` 文件用于证书
 - 不支持 `FILE`/`ASSEMBLY` 中的 `CREATE`/`BACKUP` 证书。 无法使用私钥文件。  
@@ -114,13 +108,44 @@ CREATE CERTIFICATE
 WITH PRIVATE KEY (<private_key_options>)
 ```
 
-### <a name="clr"></a>CLR
+### <a name="credential"></a>凭据
 
-托管实例无法访问文件共享和 Windows 文件夹，因此存在以下约束：
+仅支持 Azure Key Vault 和 `SHARED ACCESS SIGNATURE` 标识。 不支持 Windows 用户。
 
-- 仅支持 `CREATE ASSEMBLY FROM BINARY`。 请参阅 [CREATE ASSEMBLY FROM BINARY](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql)。  
-- 不支持 `CREATE ASSEMBLY FROM FILE`。 请参阅 [CREATE ASSEMBLY FROM FILE](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql)。
-- `ALTER ASSEMBLY` 不能引用文件。 请参阅 [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql)。
+请参阅 [CREATE CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql) 和 [ALTER CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/alter-credential-transact-sql)。
+
+### <a name="cryptographic-providers"></a>加密提供程序
+
+由于托管实例无法访问文件，因此无法创建加密提供程序：
+
+- 不支持 `CREATE CRYPTOGRAPHIC PROVIDER`。 请参阅 [CREATE CRYPTOGRAPHIC PROVIDER](https://docs.microsoft.com/sql/t-sql/statements/create-cryptographic-provider-transact-sql)。
+- 不支持 `ALTER CRYPTOGRAPHIC PROVIDER`。 请参阅 [ALTER CRYPTOGRAPHIC PROVIDER](https://docs.microsoft.com/sql/t-sql/statements/alter-cryptographic-provider-transact-sql)。
+
+### <a name="logins--users"></a>登录名/用户
+
+- 支持使用 `FROM CERTIFICATE`、`FROM ASYMMETRIC KEY` 和 `FROM SID` 创建的 SQL 登录名。 请参阅 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql)。
+- 支持使用 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) 语法或 [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) 语法创建的 Azure Active Directory (AAD) 登录（公共预览版）。
+- 不支持使用 `CREATE LOGIN ... FROM WINDOWS` 语法创建的 Windows 登录名。 使用 Azure Active Directory 登录名和用户。
+- 创建实例的 Azure Active Directory (Azure AD) 用户具有[不受限制的管理特权](sql-database-manage-logins.md#unrestricted-administrative-accounts)。
+- 可以使用 `CREATE USER ... FROM EXTERNAL PROVIDER` 语法创建非管理员 Azure Active Directory (Azure AD) 数据库级用户。 请参阅 [CREATE USER ...FROM EXTERNAL PROVIDER](sql-database-manage-logins.md#non-administrator-users)
+
+### <a name="service-key-and-service-master-key"></a>服务密钥和服务主密钥
+
+- 不支持[主密钥备份](https://docs.microsoft.com/sql/t-sql/statements/backup-master-key-transact-sql)（由 SQL 数据库服务管理）
+- 不支持[主密钥还原](https://docs.microsoft.com/sql/t-sql/statements/restore-master-key-transact-sql)（由 SQL 数据库服务管理）
+- 不支持[服务主密钥备份](https://docs.microsoft.com/sql/t-sql/statements/backup-service-master-key-transact-sql)（由 SQL 数据库服务管理）
+- 不支持[服务主密钥还原](https://docs.microsoft.com/sql/t-sql/statements/restore-service-master-key-transact-sql)（由 SQL 数据库服务管理）
+
+## <a name="configuration"></a>配置
+
+### <a name="buffer-pool-extension"></a>缓冲池扩展
+
+- 不支持[缓冲池扩展](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension)。
+- 不支持 `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION`。 请参阅 [ALTER SERVER CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-server-configuration-transact-sql)。
+
+### <a name="collation"></a>Collation
+
+默认实例排序规则为 `SQL_Latin1_General_CP1_CI_AS` 并可以被指定为创建参数。 请参阅[排序规则](https://docs.microsoft.com/sql/t-sql/statements/collations)。
 
 ### <a name="compatibility-levels"></a>兼容级别
 
@@ -130,22 +155,14 @@ WITH PRIVATE KEY (<private_key_options>)
 
 请参阅 [ALTER DATABASE 兼容级别](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level)。
 
-### <a name="credential"></a>凭据
+### <a name="database-mirroring"></a>数据库镜像
 
-仅支持 Azure Key Vault 和 `SHARED ACCESS SIGNATURE` 标识。 不支持 Windows 用户。
+不支持数据库镜像。
 
-请参阅 [CREATE CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql) 和 [ALTER CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/alter-credential-transact-sql)。
+- 不支持 `ALTER DATABASE SET PARTNER` 和 `SET WITNESS` 选项。
+- 不支持 `CREATE ENDPOINT … FOR DATABASE_MIRRORING`。
 
-### <a name="cryptographic-providers"></a>加密提供程序
-
-托管实例无法访问文件，因此无法创建加密提供程序：
-
-- 不支持 `CREATE CRYPTOGRAPHIC PROVIDER`。 请参阅 [CREATE CRYPTOGRAPHIC PROVIDER](https://docs.microsoft.com/sql/t-sql/statements/create-cryptographic-provider-transact-sql)。
-- 不支持 `ALTER CRYPTOGRAPHIC PROVIDER`。 请参阅 [ALTER CRYPTOGRAPHIC PROVIDER](https://docs.microsoft.com/sql/t-sql/statements/alter-cryptographic-provider-transact-sql)。
-
-### <a name="collation"></a>Collation
-
-默认实例排序规则为 `SQL_Latin1_General_CP1_CI_AS` 并可以被指定为创建参数。 请参阅[排序规则](https://docs.microsoft.com/sql/t-sql/statements/collations)。
+有关详细信息，请参阅 [ALTER DATABASE SET PARTNER 和 SET WITNESS](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-database-mirroring) 以及 [CREATE ENDPOINT … FOR DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql)。
 
 ### <a name="database-options"></a>数据库选项
 
@@ -174,7 +191,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 无法设置或更改某些文件属性：
 
-- 无法在 `ALTER DATABASE ADD FILE (FILENAME='path')` T-SQL 语句中指定文件路径。 由于托管实例会自动放置文件，因此需从脚本中删除 `FILENAME`。  
+- 无法在 `ALTER DATABASE ADD FILE (FILENAME='path')` T-SQL 语句中指定文件路径。 请从脚本中删除 `FILENAME`，因为托管实例自动放置文件。  
 - 无法使用 `ALTER DATABASE` 语句更改文件名。
 
 默认会设置以下选项，无法更改这些选项：
@@ -209,18 +226,72 @@ WITH PRIVATE KEY (<private_key_options>)
 
 有关详细信息，请参阅 [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options)。
 
-### <a name="database-mirroring"></a>数据库镜像
+### <a name="sql-server-agent"></a>SQL Server 代理
 
-不支持数据库镜像。
+- SQL 代理设置为只读。 托管实例不支持过程 `sp_set_agent_properties`。  
+- 作业
+  - 支持 T-SQL 作业步骤。
+  - 支持以下复制作业：
+    - 事务日志读取器。  
+    - 快照。
+    - 分发服务器
+  - 支持 SSIS 作业步骤
+  - 目前不支持其他类型的工作步骤，包括：
+    - 不支持合并复制作业步骤。  
+    - 不支持队列读取器。  
+    - 尚不支持命令外壳
+  - 托管实例无法访问外部资源（例如，通过 robocopy 访问网络共享）。  
+  - 尚不支持 PowerShell。
+  - 不支持 Analysis Services
+- 部分支持通知
+- 支持电子邮件通知，但需要配置数据库邮件配置文件。 公共预览版中只能有一个数据库邮件配置文件，并且该配置文件必须命名为 `AzureManagedInstance_dbmail_profile`（暂时性的限制）。  
+  - 不支持寻呼机。  
+  - 不支持 NetSend。
+  - 尚不支持警报。
+  - 不支持代理。  
+- 不支持事件日志。
 
-- 不支持 `ALTER DATABASE SET PARTNER` 和 `SET WITNESS` 选项。
-- 不支持 `CREATE ENDPOINT … FOR DATABASE_MIRRORING`。
+目前不支持以下功能，但以后会支持：
 
-有关详细信息，请参阅 [ALTER DATABASE SET PARTNER 和 SET WITNESS](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-database-mirroring) 以及 [CREATE ENDPOINT … FOR DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql)。
+- 代理
+- 针对空闲 CPU 计划作业
+- 启用/禁用代理
+- 警报
+
+有关 SQL Server 代理的信息，请参阅 [SQL Server 代理](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)。
+
+### <a name="tables"></a>表
+
+不支持以下各项：
+
+- `FILESTREAM`
+- `FILETABLE`
+- `EXTERNAL TABLE`
+- `MEMORY_OPTIMIZED`  
+
+有关创建和更改表的信息，请参阅 [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) 和 [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)。
+
+## <a name="functionalities"></a>功能
+
+### <a name="bulk-insert--openrowset"></a>批量插入/openrowset
+
+由于托管实例无法访问文件共享和 Windows 文件夹，因此必须从 Azure Blob 存储导入文件：
+
+- 从 Azure Blob 存储导入文件时，必须在 `BULK INSERT` 命令中指定 `DATASOURCE`。 请参阅 [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql)。
+- 从 Azure Blob 存储中读取文件内容时，必须在 `OPENROWSET` 函数中指定 `DATASOURCE`。 请参阅 [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql)。
+
+### <a name="clr"></a>CLR
+
+由于托管实例无法访问文件共享和 Windows 文件夹，因此存在以下约束：
+
+- 仅支持 `CREATE ASSEMBLY FROM BINARY`。 请参阅 [CREATE ASSEMBLY FROM BINARY](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql)。  
+- 不支持 `CREATE ASSEMBLY FROM FILE`。 请参阅 [CREATE ASSEMBLY FROM FILE](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql)。
+- `ALTER ASSEMBLY` 不能引用文件。 请参阅 [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql)。
+
 
 ### <a name="dbcc"></a>DBCC
 
-托管实例不支持 SQL Server 中启用的、未阐述的 DBCC 语句。
+托管实例不支持 SQL Server 中启用的未记录 DBCC 语句。
 
 - 不支持 `Trace Flags`。 请参阅[跟踪标志](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql)。
 - 不支持 `DBCC TRACEOFF`。 请参阅 [DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql)。
@@ -228,7 +299,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="distributed-transactions"></a>分布式事务
 
-托管实例目前不支持 MSDTC 也不支持[弹性事务](sql-database-elastic-transactions-overview.md)。
+托管实例暂不支持 MSDTC 和[弹性事务](sql-database-elastic-transactions-overview.md)。
 
 ### <a name="extended-events"></a>扩展事件
 
@@ -262,7 +333,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="linked-servers"></a>链接的服务器
 
-托管实例中的链接服务器支持有限数量的目标：
+托管实例中的链接服务器支持的目标数有限：
 
 - 支持的目标：SQL Server 和 SQL 数据库
 - 不支持的目标：文件、Analysis Services 和其他 RDBMS。
@@ -274,21 +345,13 @@ WITH PRIVATE KEY (<private_key_options>)
 - 使用 `OPENROWSET` 函数可以仅针对 SQL Server 实例（托管实例、本地实例或虚拟机中的实例）执行查询。 请参阅 [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql)。
 - 使用 `OPENDATASOURCE` 函数可以仅针对 SQL Server 实例（托管实例、本地实例或虚拟机中的实例）执行查询。 仅支持将 `SQLNCLI`、`SQLNCLI11` 和 `SQLOLEDB` 值用作提供程序。 例如：`SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`。 请参阅 [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql)。
 
-### <a name="logins--users"></a>登录名/用户
-
-- 支持使用 `FROM CERTIFICATE`、`FROM ASYMMETRIC KEY` 和 `FROM SID` 创建的 SQL 登录名。 请参阅 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql)。
-- 支持使用 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) 语法或 [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) 语法创建的 Azure Active Directory (AAD) 登录（公共预览版）。
-- 不支持使用 `CREATE LOGIN ... FROM WINDOWS` 语法创建的 Windows 登录名。 使用 Azure Active Directory 登录名和用户。
-- 创建实例的 Azure Active Directory (Azure AD) 用户具有[不受限制的管理特权](sql-database-manage-logins.md#unrestricted-administrative-accounts)。
-- 可以使用 `CREATE USER ... FROM EXTERNAL PROVIDER` 语法创建非管理员 Azure Active Directory (Azure AD) 数据库级用户。 请参阅 [CREATE USER ...FROM EXTERNAL PROVIDER](sql-database-manage-logins.md#non-administrator-users)
-
 ### <a name="polybase"></a>Polybase
 
 不支持外部表引用 HDFS 或 Azure Blob 存储中的文件。 有关 Polybase 的信息，请参阅 [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)。
 
 ### <a name="replication"></a>复制
 
-复制功能在托管实例上当前为公共预览版。 有关复制的信息，请参阅 [SQL Server 复制](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance)。
+复制功能适用于托管实例公共预览版。 有关复制的信息，请参阅 [SQL Server 复制](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance)。
 
 ### <a name="restore-statement"></a>RESTORE 语句
 
@@ -337,13 +400,6 @@ WITH PRIVATE KEY (<private_key_options>)
 - `CREATE ROUTE` - 不能使用除 `LOCAL` 以外的 `ADDRESS` 执行 `CREATE ROUTE`。 请参阅 [CREATE ROUTE](https://docs.microsoft.com/sql/t-sql/statements/create-route-transact-sql)。
 - `ALTER ROUTE` - 不能使用除 `LOCAL` 以外的 `ADDRESS` 执行 `ALTER ROUTE`。 请参阅 [ALTER ROUTE](https://docs.microsoft.com/sql/t-sql/statements/alter-route-transact-sql)。  
 
-### <a name="service-key-and-service-master-key"></a>服务密钥和服务主密钥
-
-- 不支持[主密钥备份](https://docs.microsoft.com/sql/t-sql/statements/backup-master-key-transact-sql)（由 SQL 数据库服务管理）
-- 不支持[主密钥还原](https://docs.microsoft.com/sql/t-sql/statements/restore-master-key-transact-sql)（由 SQL 数据库服务管理）
-- 不支持[服务主密钥备份](https://docs.microsoft.com/sql/t-sql/statements/backup-service-master-key-transact-sql)（由 SQL 数据库服务管理）
-- 不支持[服务主密钥还原](https://docs.microsoft.com/sql/t-sql/statements/restore-service-master-key-transact-sql)（由 SQL 数据库服务管理）
-
 ### <a name="stored-procedures-functions-triggers"></a>存储过程、函数和触发器
 
 - 目前不支持 `NATIVE_COMPILATION`。
@@ -359,51 +415,6 @@ WITH PRIVATE KEY (<private_key_options>)
 - 不支持 `Extended stored procedures`，包括 `sp_addextendedproc`  和 `sp_dropextendedproc`。 请参阅[扩展存储过程](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)
 - 不支持 `sp_attach_db`、`sp_attach_single_file_db` 和 `sp_detach_db`。 请参阅 [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql)、[sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql) 和 [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql)。
 - 不支持 `sp_renamedb`。 请参阅 [sp_renamedb](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-renamedb-transact-sql)。
-
-### <a name="sql-server-agent"></a>SQL Server 代理
-
-- SQL 代理设置为只读。 托管实例不支持过程 `sp_set_agent_properties`。  
-- 作业
-  - 支持 T-SQL 作业步骤。
-  - 支持以下复制作业：
-    - 事务日志读取器。  
-    - 快照。
-    - 分发服务器
-  - 支持 SSIS 作业步骤
-  - 目前不支持其他类型的工作步骤，包括：
-    - 不支持合并复制作业步骤。  
-    - 不支持队列读取器。  
-    - 尚不支持命令外壳
-  - 托管实例无法访问外部资源（例如，通过 robocopy 访问网络共享）。  
-  - 尚不支持 PowerShell。
-  - 不支持 Analysis Services
-- 部分支持通知
-- 支持电子邮件通知，但需要配置数据库邮件配置文件。 公共预览版中只能有一个数据库邮件配置文件，并且该配置文件必须命名为 `AzureManagedInstance_dbmail_profile`（暂时性的限制）。  
-  - 不支持寻呼机。  
-  - 不支持 NetSend。
-  - 尚不支持警报。
-  - 不支持代理。  
-- 不支持事件日志。
-
-目前不支持以下功能，但以后会支持：
-
-- 代理
-- 针对空闲 CPU 计划作业
-- 启用/禁用代理
-- 警报
-
-有关 SQL Server 代理的信息，请参阅 [SQL Server 代理](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)。
-
-### <a name="tables"></a>表
-
-不支持以下各项：
-
-- `FILESTREAM`
-- `FILETABLE`
-- `EXTERNAL TABLE`
-- `MEMORY_OPTIMIZED`  
-
-有关创建和更改表的信息，请参阅 [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) 和 [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)。
 
 ## <a name="Changes"></a>行为更改
 
@@ -426,14 +437,14 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>小型数据库文件超出存储空间
 
-每个托管实例都为 Azure 高级磁盘空间保留了高达 35 TB 的存储空间，并且每个数据库文件都放置在单独的物理磁盘上。 磁盘大小可以为 128 GB、256 GB、512 GB、1 TB 或 4 TB。 磁盘上未使用的空间不收费，但 Azure 高级磁盘大小总计不能超过 35 TB。 在某些情况下，由于内部碎片，总共不需要 8 TB 的托管实例可能会超过 35 TB 的 Azure 存储大小限制。
+每个托管实例都为 Azure 高级磁盘空间保留了最高 35TB 存储空间，并且每个数据库文件都放置在单独的物理磁盘上。 磁盘大小可以为 128 GB、256 GB、512 GB、1 TB 或 4 TB。 磁盘上未使用的空间不收费，但 Azure 高级磁盘大小总计不能超过 35 TB。 在某些情况下，由于内部碎片，总共不需要 8TB 的托管实例可能会超过 35TB 的 Azure 存储大小限制。
 
-例如，托管实例可以将一个大小为 1.2 TB 的文件放在 4 TB 磁盘上，将 248 个文件（每个大小为 1 GB）放在单独的 128 GB 磁盘上。 在本示例中：
+例如，托管实例可以将一个大小为 1.2TB 的文件放置在 4TB 磁盘上，并将 248 个文件（每个大小为 1GB）放置在单独的 128GB 磁盘上。 在本示例中：
 
 - 分配的磁盘存储总大小为 1 x 4 TB + 248 x 128 GB = 35 TB。
 - 实例上的数据库的总预留空间为 1 x 1.2 TB + 248 x 1 GB = 1.4 TB。
 
-这说明在某些情况下，由于文件分布很具体，托管实例可能会出乎意料地达到为附加的 Azure 高级磁盘预留的 35 TB。
+这说明在某些情况下，由于文件的具体分布，托管实例可能会出乎意料地达到为附加的 Azure 高级磁盘预留的 35TB 存储空间大小。
 
 在此示例中，只要未添加新文件，现有数据库就会继续工作并且可以毫无问题地增长。 但是，由于没有足够的空间用于新磁盘驱动器，因此无法创建或还原新数据库，即使所有数据库的总大小未达到实例大小限制也是如此。 这种情况下返回的错误并不明确。
 
@@ -463,9 +474,9 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="error-logs-are-verbose"></a>错误日志是详细的
 
-托管实例在错误日志中放置了详细信息，并且其中的许多是不相关的。 将来，错误日志中的信息量将减少。
+托管实例在错误日志中记录详细信息，其中许多信息都不相关。 将来，错误日志中的信息量将减少。
 
-**解决方法**：使用自定义过程来读取错误日志，以便过滤掉某些不相关的条目。 有关详细信息，请参阅 [Azure SQL DB 托管实例 – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/)。
+**解决方法**：使用自定义过程来读取错误日志，以便过滤掉某些不相关的条目。 有关详细信息，请参阅[托管实例 - sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/)。
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-is-not-supported"></a>跨同一实例中的两个数据库的事务范围不受支持
 
@@ -500,7 +511,7 @@ using (var scope = new TransactionScope())
 
 ### <a name="clr-modules-and-linked-servers-sometime-cannot-reference-local-ip-address"></a>CLR 模块和链接的服务器有时无法引用本地 IP 地址
 
-放置在托管实例中的 CLR 模块和链接的服务器/分布式查询如果引用了当前实例，则它们有时候无法解析本地实例的 IP。 此错误是暂时性问题。
+放置在托管实例中的 CLR 模块，以及引用当前实例的链接服务器/分布式查询，有时可能无法解析本地实例的 IP。 此错误是暂时性问题。
 
 **解决方法**：如果可能，请在 CLR 模块中使用上下文连接。
 
@@ -512,6 +523,6 @@ using (var scope = new TransactionScope())
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关托管实例的详细信息，请参阅[什么是托管实例？](sql-database-managed-instance.md)
+- 若要详细了解托管实例，请参阅[什么是托管实例？](sql-database-managed-instance.md)
 - 有关功能和比较列表，请参阅 [SQL 常用功能](sql-database-features.md)。
-- 有关演示了如何新建托管实例的快速入门，请参阅[创建托管实例](sql-database-managed-instance-get-started.md)。
+- 有关介绍了如何新建托管实例的快速入门，请参阅[创建托管实例](sql-database-managed-instance-get-started.md)。

@@ -7,17 +7,17 @@ ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: douglaslMS
-ms.author: douglasl
+author: CarlRabeler
+ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: f51b31903953f9a1d4959f78d570d3de92478f50
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8d0d81d9c140c15f2e60d3f6e3033a8b0b629228
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455297"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100888"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>将数据从 CSV 载入 Azure SQL 数据库（平面文件）
 
@@ -116,7 +116,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 ## <a name="next-steps"></a>后续步骤
 
-若要迁移 SQL Server 数据库，请参阅 [SQL Server 数据库迁移](sql-database-cloud-migrate.md)。
+若要迁移 SQL Server 数据库，请参阅 [SQL Server 数据库迁移](sql-database-single-database-migrate.md)。
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx

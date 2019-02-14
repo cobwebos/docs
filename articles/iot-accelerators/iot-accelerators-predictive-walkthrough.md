@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 02/08/2019
 ms.author: dobett
-ms.openlocfilehash: e9ad55c62ae4b53241d366a85f54851fc193f10b
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: bdb9b48549d24565fdafb9ac1c3215029445793c
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631033"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100478"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>预测性维护解决方案加速器概述
 
@@ -53,7 +53,7 @@ ms.locfileid: "53631033"
 
 模拟设备可以处理在解决方案中通过 IoT 中心发送的以下命令：
 
-| 命令 | Description |
+| 命令 | 说明 |
 | --- | --- |
 | StartTelemetry |控制模拟的状态。<br/>使设备开始发送遥测 |
 | StopTelemetry |控制模拟的状态。<br/>使设备停止发送遥测 |

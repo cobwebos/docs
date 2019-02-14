@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: manayar
-ms.openlocfilehash: 6cd42675fa70f338fd4e1223d6a48bf8c6773915
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 1a8bfbe12156156944d4527ebb11fa6f1a1de544
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579305"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977229"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>使用虚拟机规模集垂直自动缩放
+
 本文介绍如何使用或不使用重新设置对 Azure [虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)进行垂直缩放。 有关不在规模集中的 VM 的垂直缩放，请参阅[使用 Azure 自动化垂直缩放 Azure 虚拟机](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 垂直缩放，也称为*纵向扩展*和*纵向缩减*，即增大或减小虚拟机 (VM) 大小，以响应工作负荷。 将此行为与[水平缩放](virtual-machine-scale-sets-autoscale-overview.md)（也称为扩大和缩小，其中 VM 数目的更改取决于工作负荷）进行比较。
@@ -87,8 +88,8 @@ ms.locfileid: "53579305"
 下面是 PowerShell 脚本，演示如何将警报添加到虚拟机规模集。 请参阅以下文章以获取可触发警报的指标名称：[Azure Monitor 自动缩放常用指标](../azure-monitor/platform/autoscale-common-metrics.md)。
 
 ```
-$actionEmail = New-AzureRmAlertRuleEmail -CustomEmail user@contoso.com
-$actionWebhook = New-AzureRmAlertRuleWebhook -ServiceUri <uri-of-the-webhook>
+$actionEmail = New-AzAlertRuleEmail -CustomEmail user@contoso.com
+$actionWebhook = New-AzAlertRuleWebhook -ServiceUri <uri-of-the-webhook>
 $threshold = <value-of-the-threshold>
 $rg = <resource-group-name>
 $id = <resource-id-to-add-the-alert-to>
@@ -99,7 +100,7 @@ $timeWindow = <time-window-in-hh:mm:ss-format>
 $condition = <condition-for-the-threshold> # Other valid values are LessThanOrEqual, GreaterThan, GreaterThanOrEqual
 $description = <description-for-the-alert>
 
-Add-AzureRmMetricAlertRule  -Name  $alertName `
+Add-AzMetricAlertRule  -Name  $alertName `
                             -Location  $location `
                             -ResourceGroup $rg `
                             -TargetResourceId $id `

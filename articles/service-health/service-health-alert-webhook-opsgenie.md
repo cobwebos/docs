@@ -1,25 +1,18 @@
 ---
 title: 使用 OpsGenie 配置 Azure 服务运行状况警报 | Microsoft Docs
 description: 获取有关发送到 OpsGenie 实例的服务运行状况事件的个性化通知。
-author: shawntabrizi
-manager: scotthit
-editor: ''
-services: service-health
-documentationcenter: service-health
-ms.assetid: ''
-ms.service: service-health
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: stephbaron
+ms.author: stbaron
 ms.topic: article
+ms.service: service-health
+ms.workload: Supportability
 ms.date: 11/14/2017
-ms.author: shtabriz
-ms.openlocfilehash: e406c80e408ddcf4d1d53f4e49925bded43b650f
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 79a77fff206831c0f9b3bb73ad33f951d99e2c81
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579475"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858817"
 ---
 # <a name="configure-service-health-alerts-with-opsgenie"></a>使用 OpsGenie 配置服务运行状况警报
 
@@ -52,7 +45,7 @@ ms.locfileid: "53579475"
 
 1. 在“操作”列表中定义：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **操作类型：***Webhook*
+    a. **操作类型：***Webhook*
 
     b. **详细信息：** 前面保存的 OpsGenie 集成 URL。
 
@@ -69,7 +62,7 @@ ms.locfileid: "53579475"
 
 1. 添加到“操作”列表：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **操作类型：***Webhook*
+    a. **操作类型：***Webhook*
 
     b. **详细信息：** 前面保存的 OpsGenie 集成 URL。
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 本教程介绍如何将 Azure 计算机视觉服务集成到 Web 应用中，以便生成图像的元数据。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 67fa7a012923ba100c8d118f7e002b20c187f661
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 650696d1eb3979447bffa7312e91b4fe1a57652c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223997"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55865006"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>教程：使用计算机视觉在 Azure 存储中生成图像元数据
 

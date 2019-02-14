@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 39a3164c27fa30250fe08e864db889eac844f646
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c27be7da2aceea8581fd4a5baef96103faa0c1d4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172997"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107304"
 ---
 # <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Azure Active Directory B2C：使用 OpenID Connect 进行 Web 登录
 OpenID Connect 是构建在 OAuth 2.0 基础之上的身份验证协议，可用于将用户安全登录到 Web 应用程序。 通过使用 OpenID Connect 的 Azure Active Directory B2C (Azure AD B2C) 实现，可以将 Web 应用程序中的注册、登录和其他标识管理体验转移到 Azure Active Directory (Azure AD) 中。 本指南演示如何使用与语言无关的方式执行此操作。 介绍在不使用我们的任何开放源代码库的情况下，如何发送和接收 HTTP 消息。
@@ -27,7 +27,7 @@ OpenID Connect 是构建在 OAuth 2.0 基础之上的身份验证协议，可用
 Azure AD B2C 扩展了标准 OpenID Connect 协议，使其功能远远超出了简单的身份验证和授权。 它引入了[用户流参数](active-directory-b2c-reference-policies.md)，通过此参数可以使用 OpenID Connect 向应用添加用户体验，例如注册、登录和配置文件管理。 在这里，我们将演示如何使用 OpenID Connect 和用户流在 Web 应用中实现每个体验。 我们还将展示如何获取用于访问 Web API 的访问令牌。
 
 下一节中的示例 HTTP 请求将使用示例 B2C 目录、fabrikamb2c.onmicrosoft.com 以及示例应用程序、 https://aadb2cplayground.azurewebsites.net 和用户流。 可以随意使用这些值亲自尝试这些请求，或者可以用自己的值替换它们。
-了解如何[获取自己的 B2C 租户、应用程序和用户流](#use-your-own-b2c-directory)。
+了解如何[获取自己的 B2C 租户、应用程序和用户流](#use-your-own-b2c-tenant)。
 
 ## <a name="send-authentication-requests"></a>发送身份验证请求
 当 Web 应用需要对用户进行身份验证并执行用户流时，它可以将用户定向到 `/authorize` 终结点。 这是流程的交互部分，在此部分中，用户会根据用户流执行一些操作。

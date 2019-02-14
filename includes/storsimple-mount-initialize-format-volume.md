@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 9a3cb06e662699b214d9cdf0aa9699b8953e4aa9
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 592131bf6cca4c4c3c827de23742e8d52bcb4d1c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165729"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55888590"
 ---
-<!--author=SharS last changed: 9/17/15-->
-
 #### <a name="to-mount-initialize-and-format-a-volume"></a>装载、初始化和格式化卷
 1. 启动 Microsoft iSCSI 发起程序。
 2. 在“iSCSI 发起程序属性”窗口中的“发现”选项卡上，单击“发现门户”。

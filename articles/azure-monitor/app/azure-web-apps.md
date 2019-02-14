@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 01/29/2019
 ms.author: mbullwin
-ms.openlocfilehash: 17d8eff39eabb2f7b4968bf74d2482b980fe8060
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: bde73e9ee87ab9165c1d2dd720377d2f9c8771cb
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116613"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565949"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 在 [Azure 门户](https://portal.azure.com)中，可以为 [Azure 应用服务](../../app-service/overview.md)中的 Web 应用、移动后端和 API 应用设置应用程序性能监视。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 将检测应用，将其活动的相关遥测数据发送到 Application Insights 服务，以便在其中存储和分析。 此处的指标图表和搜索工具可用于帮助诊断问题、改善性能以及评估使用情况。
@@ -42,14 +42,27 @@ ms.locfileid: "54116613"
 
     ![检测 Web 应用](./media/azure-web-apps/create-resource.png)
 
-2. 指定要使用哪些资源后，可以选择 Application Insights 根据平台为应用程序收集数据的方式。
+2. 指定要使用哪些资源后，可以选择 Application Insights 根据平台为应用程序收集数据的方式。（ASP.NET 应用监视在默认情况会打开，具有两个不同级别的集合。）
 
-    ![根据平台选择选项](./media/azure-web-apps/choose-options.png)
+    ![根据平台选择选项](./media/azure-web-apps/choose-options-new.png)
+
+    * .NET 基本集合级别提供基本的单实例 APM 功能。
+    
+    * .NET 建议集合级别：
+        * 添加 CPU、内存和 I/O 使用情况趋势。
+        * 跨请求/依赖关系边界关联微服务。
+        * 收集使用情况趋势，并启用从可用性结果到事务的关联。
+        * 收集未经主机进程处理的异常。
+        * 提高使用采样时，负载下的 APM 指标准确性。
+    
+    .NET Core 提供建议集合或“已禁用”（对于 .NET Core 2.0 和 2.1）。
 
 3. 安装 Application Insights 后，可以**检测应用服务**。
 
-   为页面视图和用户遥测**启用客户端监视**。
+   为页面视图和用户遥测启用客户端监视。
 
+    （对于使用建议集合的 .NET Core 应用，这在默认情况下会启用，无论是否存在应用设置“APPINSIGHTS_JAVASCRIPT_ENABLED”。 用于禁用客户端监视的基于精细 UI 的支持当前不可用于 .NET Core。）
+    
    * 选择“设置”>“应用程序设置”
    * 在“应用设置”下添加新的键/值对：
 
@@ -57,6 +70,7 @@ ms.locfileid: "54116613"
 
     值： `true`
    * **保存**设置并**重新启动**应用。
+
 4. 通过选择“设置” > “Application Insights” > “在 Application Insights 中查看更多”来浏览你的应用的监视数据。
 
 以后，可以根据需要使用 Application Insights 生成应用。
@@ -92,20 +106,25 @@ Application Insights 可以通过将 SDK 安装到应用中来提供更详细的
 * [网页加载数据](../../azure-monitor/app/javascript.md)
 * [自定义遥测](../../azure-monitor/app/api-custom-events-metrics.md)
 
-## <a name="video"></a>视频
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
-
 ## <a name="troubleshooting"></a>故障排除
 
 ### <a name="appinsightsjavascriptenabled-causes-incomplete-html-response-in-net-core-web-applications"></a>APPINSIGHTS_JAVASCRIPT_ENABLED 导致 NET CORE Web 应用程序中出现不完整的 HTML 响应。
 
 通过应用服务启用 Javascript 可能会导致 html 响应被截断。
 
-- 解决方法 1：将 APPINSIGHTS_JAVASCRIPT_ENABLED 应用程序设置设为 false 或者完全将其删除并重启
-- 解决方法 2：通过代码添加 sdk 并删除扩展（探查器和快照调试器将不具有此配置）
+* 解决方法 1：将 APPINSIGHTS_JAVASCRIPT_ENABLED 应用程序设置设为 false 或者完全将其删除并重启
+* 解决方法 2：通过代码添加 sdk 并删除扩展（探查器和快照调试器将不具有此配置）
 
 我们在[此处](https://github.com/Microsoft/ApplicationInsights-Home/issues/277)跟踪此问题
+
+对于 .NET Core，当前不支持以下内容：
+
+* 独立部署。
+* 面向 .NET Framework 的应用。
+* .NET Core 2.2 应用程序。
+
+> [!NOTE]
+> 支持 .NET Core 2.0 和 .NET Core 2.1。 添加 .NET Core 2.2 支持时，会更新本文。
 
 ## <a name="next-steps"></a>后续步骤
 * [在实时应用上运行探查器](../../azure-monitor/app/profiler.md)。

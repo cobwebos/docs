@@ -4,7 +4,7 @@ description: 了解 Azure 日志集成及其主要功能和工作原理。
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: TerryLanfear
 ms.assetid: 9c1346e1-baf8-4975-b2f2-42ae05b2dc0a
 ms.service: security
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: 93ed7620636535d45791a657d012a9c7056be09d
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 7b06d7bb85e7445f50956a003e46542062b09165
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303184"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118269"
 ---
 # <a name="introduction-to-azure-log-integration"></a>Azure 日志集成简介
 

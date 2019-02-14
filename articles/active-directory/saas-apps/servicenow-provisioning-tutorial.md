@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: c55cc00481b2a74f02c4a7a03ce10ecac5d3a5c9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 19b3e4cc5ba4bc0173721947bd1e1a680ca7b3a3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187413"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217694"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>教程：使用 Azure Active Directory 为 ServiceNow 配置自动用户预配
 

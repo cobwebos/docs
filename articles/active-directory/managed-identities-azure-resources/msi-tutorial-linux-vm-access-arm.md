@@ -15,12 +15,13 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: priyamo
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 857991ee171dca8e579b1e6dbfd97551ee857530
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 11ea866e0ebf78b85f6802324478978654d97ebf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749911"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167892"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>教程：使用 Linux VM 上的用户分配托管标识访问 Azure 资源管理器
 

@@ -11,17 +11,20 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: b3ee256072e5c0b5b92daac07eae5b41b194ae8a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/07/2019
+ms.openlocfilehash: 7afdcc402840aede1fe9678bf5f4012213edf9fa
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475952"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961340"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>在 Azure SQL 数据库中缩放单一数据库资源
 
 本文介绍如何在 Azure SQL 数据库中缩放适用于单一数据库的计算和存储资源。
+
+> [!IMPORTANT]
+> 将根据使用最高服务层的数据库存在的每个小时 + 在该小时适用的计算大小进行计费，无论使用方式或数据库处于活动状态是否少于一小时。 例如，如果创建了单一数据库，五分钟后删除了它，则将按该数据库存在一小时收费。
 
 ## <a name="vcore-based-purchasing-model-change-storage-size"></a>基于 vCore 的购买模型：更改存储大小
 

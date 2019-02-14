@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 必应拼写检查 API 支持的自然语言列表。
 services: cognitive-services
 author: noellelacharite
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: nolachar
-ms.openlocfilehash: 8eccfda4481fea4c305aeb59282fb5d24b845f9e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 00636c991a3872c4a310d74a74a5ca8be9ec8964
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181395"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869205"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>必应拼写检查 API 的语言和区域支持
 

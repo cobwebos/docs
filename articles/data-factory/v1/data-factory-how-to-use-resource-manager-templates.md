@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e9a99fcbe161e0b6cdabf1363ab3121a77869df7
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9fb63ae141665dbeb64ee7046427098d4482aa55
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024852"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111316"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>使用模板来创建 Azure 数据工厂实体
 > [!NOTE]
@@ -236,7 +236,7 @@ dataFactoryName 在“变量”中定义为：
 * 设置因环境（如：开发、测试和生产）而异
 * 机密（如密码）
 
-使用模板部署 Azure 数据工厂实体时，如需从 [Azure 密钥保管库](../../key-vault/key-vault-get-started.md)拉取密钥，请指定**密钥保管库**和**密钥名称**，如下例所示：
+使用模板部署 Azure 数据工厂实体时，如需从 [Azure 密钥保管库](../../key-vault/key-vault-overview.md)拉取密钥，请指定**密钥保管库**和**密钥名称**，如下例所示：
 
 ```JSON
 "parameters": {

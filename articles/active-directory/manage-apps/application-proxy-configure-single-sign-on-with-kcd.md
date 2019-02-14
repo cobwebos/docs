@@ -3,8 +3,8 @@ title: 使用应用程序代理进行单一登录 | Microsoft 文档
 description: 介绍如何使用 Azure AD 应用程序代理提供单一登录。
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/24/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: 5a19b5778a0504eff2e90683b79e7e83e352b33c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 19ea76f28995dfa7f7dd5a6f280f8319f5b4ca26
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158955"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180754"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>使用应用程序代理通过 Kerberos 约束委派单一登录到应用程序
 

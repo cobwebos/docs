@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: QnA Maker 支持多种语言版本的知识库内容。 但是，每个 QnA Maker 服务应保留一种语言。 面向特定的 QnA Maker 服务创建的第一个知识库会设置该服务的语言。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: tulasim
-ms.openlocfilehash: 44870e0f6a8c9ce69c3e3dfb99e0307f5855e773
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f6c317cc1281a5a9bc18a2057fa12b7b61bb7689
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206147"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55875257"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>QnA Maker 的知识库内容的语言支持
 QnA Maker 支持多种语言版本的知识库内容。 但是，每个 QnA Maker 服务应保留一种语言。 面向特定的 QnA Maker 服务创建的第一个知识库会设置该服务的语言。 有关支持的语言的完整列表，请参阅[此处](../Overview/languages-supported.md)。

@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 1/10/2019
-ms.openlocfilehash: 2235c281b5b25390838a8f201481cfbdc9e5c223
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6add7323fdbcf07681e8566437632aa6679828e4
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478856"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891975"
 ---
 # <a name="create-a-kubernetes-cluster-with-application-gateway-ingress-controller-using-azure-kubernetes-service-and-terraform"></a>使用 Azure Kubernetes 服务和 Terraform 创建包含应用程序网关入口控制器的 Kubernetes 群集
 [Azure Kubernetes 服务 (AKS)](/azure/aks/) 管理托管的 Kubernetes 环境。 使用 AKS 可以快速轻松地部署和管理容器化应用程序，而无需具备容器业务流程方面的专业知识。 它还通过按需预配、升级和缩放资源，消除了正在进行的操作和维护的负担，而无需使应用程序脱机。
@@ -35,7 +35,7 @@ ms.locfileid: "55478856"
 
 - **配置 Terraform**：遵循[安装 Terraform 并配置对 Azure 的访问权限](/azure/virtual-machines/linux/terraform-install-configure)一文中的指导
 
-- **Azure 服务主体**：遵循[使用 Azure CLI 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal)一文的“创建服务主体”部分中的指导。 记下 appId、displayName 和 password 的值。
+- **Azure 服务主体**：遵循[使用 Azure CLI 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)一文的“创建服务主体”部分中的指导。 记下 appId、displayName 和 password 的值。
     - 运行以下命令并记下服务主体的对象 ID
 
     ```bash
@@ -617,7 +617,7 @@ Terraform 在本地通过 `terraform.tfstate` 文件跟踪状态。 在单用户
 
     ![“Terraform plan”结果示例](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-plan-complete.png)
 
-1. 运行 `terraform apply` 命令，以应用该计划来创建 Kubernetes 群集。 创建 Kubernetes 群集的过程可能需要花费几分钟时间，从而导致 Cloud Shell 会话超时。如果 Cloud Shell 会话超时，可以遵循[在 Cloud Shell 超时后进行恢复](#recover-from-a-dloud-shell-timeout)部分中的步骤，以完成本教程。
+1. 运行 `terraform apply` 命令，以应用该计划来创建 Kubernetes 群集。 创建 Kubernetes 群集的过程可能需要花费几分钟时间，从而导致 Cloud Shell 会话超时。如果 Cloud Shell 会话超时，可以遵循“在 Cloud Shell 超时后进行恢复”部分中的步骤来完成本教程。
 
     ```bash
     terraform apply out.plan

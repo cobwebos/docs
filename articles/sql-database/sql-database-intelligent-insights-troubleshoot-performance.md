@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 156d06b3c3fab5df1cd4360fb9e6ec2648d8d0b6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1935c670b5c7622f45f8c96b8c2faf03da6282f3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455059"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993625"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>使用 Intelligent Insights 排查 Azure SQL 数据库性能问题
 
@@ -237,7 +237,7 @@ Latch（闩锁）是一种轻量同步机制，允许 SQL 数据库启用多线�
 
 此可检测的性能模式表示当前数据库工作负荷的性能与过去七天的基线相比有所降级。 这是由于在订阅的弹性池中缺少可用的 DTU。 
 
-SQL 数据库中的资源通常称为 [DTU 资源](sql-database-service-tiers.md#dtu-based-purchasing-model)，由 CPU 和 IO（数据和事务日志 IO）资源的混合度量值构成。 [Azure 弹性池资源](sql-database-elastic-pool.md)用作出于缩放目的而在多个数据库之间共享的可用 eDTU 资源的池。 如果弹性池中的可用 eDTU 资源不够大，无法支持池中的所有数据库，则系统就会检测到“弹性池 DTU 不足”性能问题。
+SQL 数据库中的资源通常称为 [DTU 资源](sql-database-purchase-models.md#dtu-based-purchasing-model)，由 CPU 和 IO（数据和事务日志 IO）资源的混合度量值构成。 [Azure 弹性池资源](sql-database-elastic-pool.md)用作出于缩放目的而在多个数据库之间共享的可用 eDTU 资源的池。 如果弹性池中的可用 eDTU 资源不够大，无法支持池中的所有数据库，则系统就会检测到“弹性池 DTU 不足”性能问题。
 
 ### <a name="troubleshooting"></a>故障排除
 

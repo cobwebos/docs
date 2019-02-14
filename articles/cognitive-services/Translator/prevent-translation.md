@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 使用文本翻译 API 阻止翻译内容。
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: v-jansko
-ms.openlocfilehash: 0b227803379ed0a64d17c7a7d19b187250b9f845
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ca95f6a2bca10d9b8fcf263cfef6805ee936181a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226899"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884692"
 ---
 # <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>如何使用文本翻译 API 阻止翻译内容
 

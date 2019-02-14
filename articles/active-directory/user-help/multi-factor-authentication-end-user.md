@@ -12,12 +12,13 @@ ms.topic: overview
 ms.date: 06/15/2017
 ms.author: lizross
 ms.reviewer: richagi
-ms.openlocfilehash: 853ca60ac10272062a1eb61c5f8763e4d9e120f7
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 77e3e07be7abaa6e91d8f3909f5271dfc263be17
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55748210"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162299"
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Azure 多重身份验证对我而言有什么用途？
 假设 IT 部门的某位同事或者你的老板向你发送了一封电子邮件，指出他们已对你的帐户添加了附加的安全验证。  那么，这是什么意思呢？

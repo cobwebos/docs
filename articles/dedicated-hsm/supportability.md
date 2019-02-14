@@ -3,7 +3,7 @@ title: 支持 - Azure 专用 HSM | Microsoft Docs
 description: 在不同方案中支持 Azure 专用 HSM 的选项和责任范围
 services: dedicated-hsm
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 2ed6a79b8736a1d3b472e31ce643c0d1ee085bbb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 23c509f6f219b708fc259ee123d73948ebe50773
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085903"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114478"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Azure 专用 HSM 的支持
 

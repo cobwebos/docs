@@ -3,18 +3,18 @@ title: 文本审查 - 内容审查器
 description: 对可能不需要的文本、PII 和自定义字词列表使用文本审查。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 0b5cfdd69539caa7f9dcceb3e1d435d3a7e97fed
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 8ca6c73d6ccdab3acb4ebb18af9b4aa82683e026
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225459"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864292"
 ---
 # <a name="learn-text-moderation-concepts"></a>了解文本审查概念
 

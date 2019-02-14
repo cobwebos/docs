@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 9f8ffe71743f4832d8ce633f050206d21f411276
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: f65b9904b15815c997c1608940109ad296ee6007
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082191"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822861"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>数据工厂 - JSON 脚本参考
 > [!NOTE]
@@ -247,7 +247,7 @@ ms.locfileid: "55082191"
 | -------- | ----------- | -------- |
 | 名称 | 链接服务的名称。 | 是 |
 | properties - type | 链接服务的类型。 例如：Azure 存储、Azure SQL 数据库。 |
-| typeProperties | typeProperties 节中的元素根据每个数据存储或计算环境的不同而不同。 有关所有数据存储链接服务，请参阅[数据存储](#datastores)部分；有关所有计算链接服务，请参阅[计算环境](#compute-environments) |
+| typeProperties | typeProperties 节中的元素根据每个数据存储或计算环境的不同而不同。 有关所有数据存储链接服务，请参阅数据存储部分；有关所有计算链接服务，请参阅[计算环境](#compute-environments) |
 
 ## <a name="dataset"></a>数据集
 在 Azure 数据工厂中定义数据集如下所示：
@@ -290,7 +290,7 @@ ms.locfileid: "55082191"
 | typeProperties | 对应于所选类型的属性。 有关支持的类型及其属性，请参阅[数据存储](#data-stores)部分。 |是 |NA |
 | external | 布尔标志，用于指定数据集是否由数据工厂管道显式生成。 |否 |false |
 | availability | 定义数据集生产的处理窗口或切片模型。 有关数据集切片模型的详细信息，请参阅[计划和执行](data-factory-scheduling-and-execution.md)一文。 |是 |NA |
-| policy |定义数据集切片必须满足的标准或条件。 <br/><br/>有关详细信息，请参阅[数据集策略](#Policy)部分。 |否 |NA |
+| policy |定义数据集切片必须满足的标准或条件。 <br/><br/>有关详细信息，请参阅“数据集策略”部分。 |否 |NA |
 
 **structure** 节中的每个列包含以下属性：
 
@@ -374,7 +374,7 @@ structure:
 | 类别 | 数据存储
 |:--- |:--- |
 | **Azure** |[Azure Blob 存储](#azure-blob-storage) |
-| &nbsp; |[Azure Data Lake Store](#azure-datalake-store) |
+| &nbsp; |Azure Data Lake Store |
 | &nbsp; |[Azure Cosmos DB](#azure-cosmos-db) |
 | &nbsp; |[Azure SQL 数据库](#azure-sql-database) |
 | &nbsp; |[Azure SQL 数据仓库](#azure-sql-data-warehouse) |
@@ -401,7 +401,7 @@ structure:
 | &nbsp; |[OData](#odata) |
 | &nbsp; |[ODBC](#odbc) |
 | &nbsp; |[Salesforce](#salesforce) |
-| &nbsp; |[Web 表](#web-table) |
+| &nbsp; |Web Table |
 
 ## <a name="azure-blob-storage"></a>Azure Blob 存储
 
@@ -1616,7 +1616,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 }
 ```
 
-有关详细信息，请参阅 [Amazon Redshift 连接器](#data-factory-amazon-redshift-connector.md#linked-service-properties)一文。
+有关详细信息，请参阅“Amazon Redshift 连接器”一文。
 
 ### <a name="dataset"></a>数据集
 要定义 Amazon Redshift 数据集，请将数据集的**类型**设置为 **RelationalTable**，并在 **typeProperties** 节中指定以下属性：
@@ -1645,7 +1645,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
     }
 }
 ```
-有关详细信息，请参阅 [Amazon Redshift 连接器](#data-factory-amazon-redshift-connector.md#dataset-properties)一文。
+有关详细信息，请参阅“Amazon Redshift 连接器”一文。
 
 ### <a name="relational-source-in-copy-activity"></a>复制活动中的关系源
 如果要从 Amazon Redshift 复制数据，请将复制活动的**源类型**设置为 **RelationalSource**，并在 **source** 节中指定以下属性：
@@ -1695,7 +1695,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
     }
 }
 ```
-有关详细信息，请参阅 [Amazon Redshift 连接器](#data-factory-amazon-redshift-connector.md#copy-activity-properties)一文。
+有关详细信息，请参阅“Amazon Redshift 连接器”一文。
 
 ## <a name="ibm-db2"></a>IBM DB2
 
@@ -1730,7 +1730,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
     }
 }
 ```
-有关详细信息，请参阅 [IBM DB2 连接器](#data-factory-onprem-db2-connector.md#linked-service-properties)一文。
+有关详细信息，请参阅“IBM DB2 连接器”一文。
 
 ### <a name="dataset"></a>数据集
 要定义 DB2 数据集，请将数据集的**类型**设置为 **RelationalTable**，并在 **typeProperties** 节中指定以下属性：
@@ -1763,7 +1763,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 }
 ```
 
-有关详细信息，请参阅 [IBM DB2 连接器](#data-factory-onprem-db2-connector.md#dataset-properties)一文。
+有关详细信息，请参阅“IBM DB2 连接器”一文。
 
 ### <a name="relational-source-in-copy-activity"></a>复制活动中的关系源
 如果要从 IBM DB2 复制数据，请将复制活动的**源类型**设置为 **RelationalSource**，并在 **source** 节中指定以下属性：
@@ -1811,7 +1811,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
     }
 }
 ```
-有关详细信息，请参阅 [IBM DB2 连接器](#data-factory-onprem-db2-connector.md#copy-activity-properties)一文。
+有关详细信息，请参阅“IBM DB2 连接器”一文。
 
 ## <a name="mysql"></a>MySQL
 
@@ -1942,7 +1942,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| driverType | 指定在 Oracle 数据库复制/粘贴数据所使用的驱动程序。 允许的值为 **Microsoft** 或 **ODP**（默认值）。 请参阅驱动程序详细信息上的[支持版本和安装](#supported-versions-and-installation)部分。 | 否 |
+| driverType | 指定在 Oracle 数据库复制/粘贴数据所使用的驱动程序。 允许的值为 **Microsoft** 或 **ODP**（默认值）。 请参阅驱动程序详细信息上的“支持版本和安装”部分。 | 否 |
 | connectionString | 为 connectionString 属性指定连接到 Oracle 数据库实例所需的信息。 | 是 |
 | gatewayName | 用于连接到本地 Oracle 服务器的网关的名称 |是 |
 
@@ -2610,8 +2610,8 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 | --- | --- | --- | --- |
 | writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。 |timespan<br/><br/> 示例：“00:30:00”（30 分钟）。 |否 |
 | writeBatchSize |缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。 |整数（行数） |否（默认值：10000） |
-| sqlWriterCleanupScript |指定复制活动要执行的查询，以便清除特定切片的数据。 有关详细信息，请参阅[重复性](#repeatability-during-copy)部分。 |查询语句。 |否 |
-| sliceIdentifierColumnName |指定复制活动要使用自动生成的切片标识符进行填充的列名，该标识符用于重新运行时清除特定切片的数据。 有关详细信息，请参阅[重复性](#repeatability-during-copy)部分。 |数据类型为 binary(32) 的列的列名。 |否 |
+| sqlWriterCleanupScript |指定复制活动要执行的查询，以便清除特定切片的数据。 有关详细信息，请参阅“重复性”部分。 |查询语句。 |否 |
+| sliceIdentifierColumnName |指定复制活动要使用自动生成的切片标识符进行填充的列名，该标识符用于重新运行时清除特定切片的数据。 有关详细信息，请参阅“重复性”部分。 |数据类型为 binary(32) 的列的列名。 |否 |
 | sqlWriterStoredProcedureName |在目标表中更新/插入数据的存储过程的名称。 |存储过程的名称。 |否 |
 | storedProcedureParameters |存储过程的参数。 |名称/值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |否 |
 | sqlWriterTableType |指定要在存储过程中使用的表类型名称。 通过复制活动，使移动数据在具备此表类型的临时表中可用。 然后，存储过程代码可合并复制数据和现有数据。 |表类型名称。 |否 |
@@ -3316,7 +3316,7 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | type |确保类型属性设置为 **OnPremisesFileServer**。 |是 |
-| host |指定要复制的文件夹的根路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅 [Sample linked service and dataset definitions](#sample-linked-service-and-dataset-definitions)（链接服务和数据集定义示例）。 |是 |
+| host |指定要复制的文件夹的根路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅“链接服务和数据集定义示例”。 |是 |
 | userid |指定有权访问服务器的用户的 ID。 |否（如果选择 encryptedCredential） |
 | password |设置用户的密码 (userid)。 |否（如果选择 encryptedCredential） |
 | encryptedCredential |指定可通过运行 New-AzureRmDataFactoryEncryptValue cmdlet 获取的加密凭据。 |否（如果选择在纯文本中指定 userid 和密码） |
@@ -3369,7 +3369,7 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| folderPath |指定文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅 [Sample linked service and dataset definitions](#sample-linked-service-and-dataset-definitions)（链接服务和数据集定义示例）。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
+| folderPath |指定文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅“链接服务和数据集定义示例”。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
 | fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
 | fileFilter |指定在 folderPath 中选择一部分文件而不是所有文件时要使用的筛选器。 <br/><br/>允许的值为：`*`（多个字符）和 `?`（单个字符）。<br/><br/>示例 1："fileFilter": "*.log"<br/>示例 2："fileFilter":2016-1-?.txt"<br/><br/>注意：fileFilter 适用于 FileShare 输入数据集。 |否 |
 | partitionedBy |可使用 partitionedBy 指定时序数据的动态 folderPath/fileName。 例如，针对每小时数据参数化的 folderPath。 |否 |
@@ -3634,7 +3634,7 @@ auto-
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| folderPath |文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅 [Sample linked service and dataset definitions](#sample-linked-service-and-dataset-definitions)（链接服务和数据集定义示例）。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是
+| folderPath |文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅“链接服务和数据集定义示例”。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是
 | fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
 | fileFilter |指定在 folderPath 中选择一部分文件而不是所有文件时要使用的筛选器。<br/><br/>允许的值为：`*`（多个字符）和 `?`（单个字符）。<br/><br/>示例 1：`"fileFilter": "*.log"`<br/>示例 2：`"fileFilter": 2016-1-?.txt"`<br/><br/> fileFilter 适用于 FileShare 输入数据集。 HDFS 不支持此属性。 |否 |
 | partitionedBy |partitionedBy 可用于指定时序数据的动态 folderPath 和 filename。 例如，folderPath 可针对每小时的数据参数化。 |否 |
@@ -3728,7 +3728,7 @@ auto-
 | --- | --- | --- |
 | type |type 属性必须设置为：**Hdfs** |是 |
 | URL |HDFS 的 URL |是 |
-| authenticationType |匿名或 Windows。 <br><br> 若要对 HDFS 连接器使用 **Kerberos 身份验证**，请参阅[此部分](#use-kerberos-authentication-for-hdfs-connector)相应地设置本地环境。 |是 |
+| authenticationType |匿名或 Windows。 <br><br> 若要对 HDFS 连接器使用 Kerberos 身份验证，请参阅此部分相应地设置本地环境。 |是 |
 | userName |Windows 身份验证的用户名。 |是（对于 Windows 身份验证） |
 | password |Windows 身份验证的密码。 |是（对于 Windows 身份验证） |
 | gatewayName |数据工厂服务用于连接到 HDFS 的网关的名称。 |是 |
@@ -3769,7 +3769,7 @@ auto-
 }
 ```
 
-有关详细信息，请参阅 [HDFS 连接器](#data-factory-hdfs-connector.md#linked-service-properties)一文。
+有关详细信息，请参阅“HDFS 连接器”一文。
 
 ### <a name="dataset"></a>数据集
 要定义 HDFS 数据集，请将数据集的**类型**设置为 **FileShare**，并在 **typeProperties** 节中指定以下属性：
@@ -3805,7 +3805,7 @@ auto-
 }
 ```
 
-有关详细信息，请参阅 [HDFS 连接器](#data-factory-hdfs-connector.md#dataset-properties)一文。
+有关详细信息，请参阅“HDFS 连接器”一文。
 
 ### <a name="file-system-source-in-copy-activity"></a>复制活动中的文件系统源
 如果要从 HDFS 复制数据，请将复制活动的**源类型**设置为 **FileSystemSource**，并在 **source** 节中指定以下属性：
@@ -3852,7 +3852,7 @@ auto-
 }
 ```
 
-有关详细信息，请参阅 [HDFS 连接器](#data-factory-hdfs-connector.md#copy-activity-properties)一文。
+有关详细信息，请参阅“HDFS 连接器”一文。
 
 ## <a name="sftp"></a>SFTP
 
@@ -3864,7 +3864,7 @@ auto-
 | --- | --- | --- | --- |
 | host | SFTP 服务器的名称或 IP 地址。 |是 |
 | port |SFTP 服务器侦听的端口。 默认值为：21 |否 |
-| authenticationType |指定身份验证类型。 允许的值：**Basic**、**SshPublicKey**。 <br><br> 有关其他属性和 JSON 示例，请分别参阅[使用基本身份验证](#using-basic-authentication)和[使用 SSH 公钥身份验证](#using-ssh-public-key-authentication)部分。 |是 |
+| authenticationType |指定身份验证类型。 允许的值：**Basic**、**SshPublicKey**。 <br><br> 有关其他属性和 JSON 示例，请分别参阅“使用基本身份验证”和[使用 SSH 公钥身份验证](#using-ssh-public-key-authentication)部分。 |是 |
 | skipHostKeyValidation | 指定是否要跳过主机密钥验证。 | 不是。 默认值：false |
 | hostKeyFingerprint | 指定主机密钥的指纹。 | `skipHostKeyValidation` 设置为 false 时表示 Yes。  |
 | gatewayName |用于连接本地 SFTP 服务器的数据管理网关的名称。 | 如果从本地 SFTP 服务器复制数据，则值为 Yes。 |
@@ -3976,7 +3976,7 @@ auto-
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| folderPath |文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅 [Sample linked service and dataset definitions](#sample-linked-service-and-dataset-definitions)（链接服务和数据集定义示例）。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
+| folderPath |文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅“链接服务和数据集定义示例”。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
 | fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
 | fileFilter |指定在 folderPath 中选择一部分文件而不是所有文件时要使用的筛选器。<br/><br/>允许的值为：`*`（多个字符）和 `?`（单个字符）。<br/><br/>示例 1：`"fileFilter": "*.log"`<br/>示例 2：`"fileFilter": 2016-1-?.txt"`<br/><br/> fileFilter 适用于 FileShare 输入数据集。 HDFS 不支持此属性。 |否 |
 | partitionedBy |partitionedBy 可用于指定时序数据的动态 folderPath 和 filename。 例如，folderPath 可针对每小时的数据参数化。 |否 |
@@ -4743,7 +4743,7 @@ auto-
 |:--- |:--- |:--- |
 | type |数据集类型。 必须设置为 **WebTable** |是 |
 | 路径 |包含表的资源的相对 URL。 |不是。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
-| index |资源中表的索引。 请参阅[获取 HTML 页中表的索引](#get-index-of-a-table-in-an-html-page)，了解获取 HTML 页中表的索引的步骤。 |是 |
+| index |资源中表的索引。 请参阅“获取 HTML 页中表的索引”，了解获取 HTML 页中表的索引的步骤。 |是 |
 
 #### <a name="example"></a>示例
 
@@ -4820,14 +4820,14 @@ auto-
 
 | 计算环境 | 活动 |
 | --- | --- |
-| [按需 HDInsight 群集](#on-demand-azure-hdinsight-cluster)或[自己的 HDInsight 群集](#existing-azure-hdinsight-cluster) |[.NET 自定义活动](#net-custom-activity)、[Hive 活动](#hdinsight-hive-activity)、[Pig 活动](#hdinsight-pig-activity)、[MapReduce 活动](#hdinsight-mapreduce-activity)、[Hadoop 流式处理活动](#hdinsight-streaming-activityd)、[Spark 活动](#hdinsight-spark-activity) |
+| [按需 HDInsight 群集](#on-demand-azure-hdinsight-cluster)或[自己的 HDInsight 群集](#existing-azure-hdinsight-cluster) |[.NET 自定义活动](#net-custom-activity)、[Hive 活动](#hdinsight-hive-activity)、[Pig 活动](#hdinsight-pig-activity)、[MapReduce 活动](#hdinsight-mapreduce-activity)、Hadoop 流式处理活动、[Spark 活动](#hdinsight-spark-activity) |
 | [Azure Batch](#azure-batch) |[.NET 自定义活动](#net-custom-activity) |
 | [Azure 机器学习](#azure-machine-learning) | [机器学习批处理执行活动](#machine-learning-batch-execution-activity)、[机器学习更新资源活动](#machine-learning-update-resource-activity) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics) |[Data Lake Analytics U-SQL](#data-lake-analytics-u-sql-activity) |
 | [Azure SQL 数据库](#azure-sql-database-1)、[Azure SQL 数据仓库](#azure-sql-data-warehouse-1)、[SQL Server](#sql-server-1) |[存储过程](#stored-procedure-activity) |
 
 ## <a name="on-demand-azure-hdinsight-cluster"></a>按需 Azure HDInsight 群集
-Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 群集，以处理数据。 群集创建在与该群集相关联的存储帐户（JSON 中的 linkedServiceName 属性）所在的同一区域中。 可在此链接服务中运行以下转换活动：[.NET 自定义活动](#net-custom-activity)、[Hive 活动](#hdinsight-hive-activity)、[Pig 活动](#hdinsight-pig-activity)、[MapReduce 活动](#hdinsight-mapreduce-activity)、[Hadoop 流式处理活动](#hdinsight-streaming-activityd)、[Spark 活动](#hdinsight-spark-activity)。
+Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 群集，以处理数据。 群集创建在与该群集相关联的存储帐户（JSON 中的 linkedServiceName 属性）所在的同一区域中。 可在此链接服务中运行以下转换活动：[.NET 自定义活动](#net-custom-activity)、[Hive 活动](#hdinsight-hive-activity)、[Pig 活动](#hdinsight-pig-activity)、[MapReduce 活动](#hdinsight-mapreduce-activity)、Hadoop 流式处理活动、[Spark 活动](#hdinsight-spark-activity)。
 
 ### <a name="linked-service"></a>链接服务
 下表提供了按需 HDInsight 链接服务的 Azure JSON 定义中使用的属性的说明。
@@ -4865,7 +4865,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 有关详细信息，请参阅[计算链接服务](data-factory-compute-linked-services.md)一文。
 
 ## <a name="existing-azure-hdinsight-cluster"></a>现有的 Azure HDInsight 群集
-可以创建 Azure HDInsight 链接服务，以向数据工厂注册自己的 HDInsight 群集。 可在此链接服务中运行以下数据转换活动：[.NET 自定义活动](#net-custom-activity)、[Hive 活动](#hdinsight-hive-activity)、[Pig 活动](#hdinsight-pig-activity)、[MapReduce 活动](#hdinsight-mapreduce-activity)、[Hadoop 流式处理活动](#hdinsight-streaming-activityd)、[Spark 活动](#hdinsight-spark-activity)。
+可以创建 Azure HDInsight 链接服务，以向数据工厂注册自己的 HDInsight 群集。 可在此链接服务中运行以下数据转换活动：[.NET 自定义活动](#net-custom-activity)、[Hive 活动](#hdinsight-hive-activity)、[Pig 活动](#hdinsight-pig-activity)、[MapReduce 活动](#hdinsight-mapreduce-activity)、Hadoop 流式处理活动、[Spark 活动](#hdinsight-spark-activity)。
 
 ### <a name="linked-service"></a>链接服务
 下表提供了 Azure HDInsight 链接服务的 Azure JSON 定义中使用的属性的说明。
@@ -5216,7 +5216,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 }
 ```
 
-有关详细信息，请参阅 [Pig 活动](#data-factory-pig-activity.md)一文。
+有关详细信息，请参阅“Pig 活动”一文。
 
 ## <a name="hdinsight-mapreduce-activity"></a>HDInsight MapReduce 活动
 可以在 MapReduce 活动 JSON 定义中指定以下属性。 活动的类型属性必须是：**HDInsightMapReduce**。 必须先创建 HDInsight 链接服务，然后指定该服务的名称作为 **linkedServiceName** 属性的值。 将活动类型设置为 HDInsightMapReduce 时，**typeProperties** 节支持以下属性：
@@ -5385,7 +5385,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 请注意以下几点：
 
 - **type** 属性设置为 **HDInsightSpark**。
-- **rootPath** 设置为 **adfspark\\pyFiles**，其中，adfspark 是 Azure Blob 容器，pyFiles 是该容器中的文件夹。 在此示例中，Azure Blob 存储是与 Spark 群集关联的存储。 可将文件上传到不同的 Azure 存储。 如果这样做，请创建 Azure 存储链接服务，将该存储帐户链接到数据工厂。 然后，将该链接的服务的名称指定为 **sparkJobLinkedService** 属性的值。 请参阅 [Spark 活动属性](#spark-activity-properties)，了解有关 Spark 活动支持的此属性及其他属性的详细信息。
+- **rootPath** 设置为 **adfspark\\pyFiles**，其中，adfspark 是 Azure Blob 容器，pyFiles 是该容器中的文件夹。 在此示例中，Azure Blob 存储是与 Spark 群集关联的存储。 可将文件上传到不同的 Azure 存储。 如果这样做，请创建 Azure 存储链接服务，将该存储帐户链接到数据工厂。 然后，将该链接的服务的名称指定为 **sparkJobLinkedService** 属性的值。 请参阅“Spark 活动属性”，了解有关 Spark 活动支持的此属性及其他属性的详细信息。
 - **entryFilePath** 设置为 **test.py**，这是 python 文件。
 - **getDebugInfo** 属性设置为 **Always**，表示始终生成日志文件（成功或失败）。
 

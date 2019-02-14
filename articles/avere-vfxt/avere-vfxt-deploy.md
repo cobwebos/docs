@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: da329b5c50fe7c39d9773743b40c2f990e298963
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 972ba937ad15fa9a6d2eb74e3e4c9e6e8f3923a4
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296369"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745429"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>部署 vFXT 群集
 
@@ -39,11 +39,11 @@ ms.locfileid: "55296369"
 
 ## <a name="create-the-avere-vfxt-for-azure"></a>创建 Avere vFXT for Azure
 
-在 Azure 门户中访问创建模板，方法是：先搜索 Avere，然后选择“Avere vFXT for Azure 部署”。 <!-- xxx update if that name changes xxx --> 
+在 Azure 门户中访问创建模板，方法是：先搜索 Avere，然后选择“Avere vFXT ARM 部署”。 
 
-<!-- **[XXX need production image of template deploy in search and/or entry page of template deploy XXX]** -->
+![显示 Azure 门户的浏览器窗口（带有面包屑导航“新建>市场>所有内容”）。 在“所有内容”页面上，搜索字段中有术语“avere”，并且第二个结果“Avere vFXT ARM 部署”以红色突出显示。](media/avere-vfxt-template-choose.png)
 
-单击“创建”即可开始创建。 
+参阅“Avere vFXT ARM 部署”页面上的详细信息后，请单击“创建”开始操作。 
 
 ![Azure 市场，显示部署模板的第一页](media/avere-vfxt-deploy-first.png)
 
@@ -123,9 +123,11 @@ ms.locfileid: "55296369"
 
 * **子网** - 从现有虚拟网络中选择一个子网，或者创建一个新的子网。 
 
-* **使用 Blob 存储** - 选择是否创建新的 Azure Blob 容器并将其配置为新 Avere vFXT 群集的后端存储。 如果选择创建新容器，则必须为该容器提供存储帐户。 如果选择不创建新的 Blob 容器，则必须在创建群集后附加存储（有关说明，请阅读[配置存储](avere-vfxt-add-storage.md)）。 如果不希望创建新容器，请将此字段设置为 **false**。
+* **使用 Blob 存储** - 选择“true”，创建新的 Azure Blob 容器并将其配置为新 Avere vFXT 群集的后端存储。 此选项还会群集所属的同一资源组中创建新的存储帐户。 
 
-* **存储帐户** - 如果创建新的 Azure Blob 容器，请输入存储帐户名称。 存储帐户必须是标准的常规用途 V2 帐户，并且配置了本地冗余的存储和热访问层。 [配置存储](avere-vfxt-add-storage.md#azure-storage-cloud-core-filer)一文更详细地介绍了存储帐户要求。
+  如果不希望创建新容器，请将此字段设置为 **false**。 在这种情况下，必须在创建群集后附加和配置存储。 有关说明，请参阅[配置存储](avere-vfxt-add-storage.md)。 
+
+* **存储帐户** - 如果创建新的 Azure Blob 容器，请为新的存储帐户输入名称。 
 
 ## <a name="validation-and-purchase"></a>验证和购买
 
@@ -161,7 +163,7 @@ Avere vFXT 模板在创建完群集以后，会输出有关新群集的某些重
 
 ## <a name="create-a-storage-endpoint-if-using-azure-blob"></a>创建存储终结点（如果使用的是 Azure Blob）
 
-如果要将 Azure Blob 存储用于后端数据存储，应在虚拟网络中创建一个存储服务终结点。 此[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)使 Azure Blob 流量保留在本地，而不是通过 Internet 路由。
+如果要将 Azure Blob 存储用于后端数据存储，应在虚拟网络中创建一个存储服务终结点。 此[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)使 Azure Blob 流量保留在本地，而不是将其路由到虚拟网络之外。
 
 1. 在门户中，单击左侧的“虚拟网络”。
 1. 为控制器选择 VNET。 

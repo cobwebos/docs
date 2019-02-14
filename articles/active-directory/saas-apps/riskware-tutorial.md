@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 3b4c979bf03b23280c9389a043375f088624efe6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cab9750620d6d7c34de1d6e3404b4ea721f330ed
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163239"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203907"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>教程：Azure Active Directory 与 Riskware 集成
 

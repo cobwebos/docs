@@ -12,12 +12,13 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: fe128e37103fc913b97f8ac8b9f0395ad74c4198
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1285a9262221dbd8e46d07e384697ddea853f9fc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496956"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163047"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect 和 Azure AD Connect Health 安装路线图
 

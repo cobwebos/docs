@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/29/2019
+ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 15f362386197c76de578e2ffffae4c165ba59c67
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 939a6443fb0993592d9640c83b985ce761f0fa61
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568828"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168658"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alertops"></a>教程：Azure Active Directory 与 AlertOps 的集成
 
@@ -251,4 +252,3 @@ ms.locfileid: "55568828"
 - [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

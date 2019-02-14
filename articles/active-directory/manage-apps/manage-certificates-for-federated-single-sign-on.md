@@ -3,9 +3,8 @@ title: 在 Azure AD 中管理联合身份验证证书 | Microsoft Docs
 description: 了解如何自定义联合证书的过期日期，以及如何续订即将过期的证书。
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
-editor: ''
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: jeedes
-ms.openlocfilehash: efdcdb8dd2f7917bd1270b9da1d87be655ea675f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a9c6f197f98eda5a71cefd3f4a0c71709a4f51b2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170991"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203125"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>在 Azure Active Directory 中管理用于联合单一登录的证书
 本文包含 Azure Active Directory (Azure AD) 为了与 SaaS 应用程序建立联合单一登录 (SSO) 而创建的证书的相关常见问题和信息。 从 Azure AD 应用库或使用非库应用程序模板添加应用程序。 使用联合 SSO 选项配置应用程序。

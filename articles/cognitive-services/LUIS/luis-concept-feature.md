@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 02/04/2019
 ms.author: diberry
-ms.openlocfilehash: 35f05df39a37b64c9619ef31455944207de13246
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 89d18ebd2f52467a19a76940044fea3ae254970a
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216075"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770157"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>LUIS 应用中的短语列表特征
 
@@ -25,26 +25,57 @@ ms.locfileid: "55216075"
 将特征添加到语言模型，提供有关如何识别需要标记或分类的输入的提示。 特征帮助 LUIS 识别意向和实体，但特征本身不是意向或实体。 相反，特征可能提供相关术语的示例。  
 
 ## <a name="what-is-a-phrase-list-feature"></a>短语列表特征是什么？
-短语列表包括一组值（词或短语），它们属于同一个类，并且必须同样对待（例如城市或产品名称）。 LUIS 对其中一个值的了解也自动应用到其他值。 此列表不是匹配字词的封闭[列表实体](luis-concept-entity-types.md#types-of-entities)（完全文本匹配）。
+短语列表是比言语中其他字词对应用更重要的字词或短语的列表。 短语列表作为这些字词的附加 LUIS 信号，添加到应用域的词汇中。 LUIS 对其中一个值的了解也自动应用到其他值。 此列表不是完全文本匹配的封闭式[列表实体](luis-concept-entity-types.md#types-of-entities)。
 
-短语列表添加到应用域的词汇中，作为这些字词的第二个 LUIS 信号。
+短语列表没有词干分解作用，因此需要添加对任何重要词汇字词和短语使用各种词干分解的言语示例。
 
 ## <a name="phrase-lists-help-all-models"></a>短语列表可以帮助所有模型
 
-短语列表未链接到特定意向或实体，但作为增强项添加到所有模型。 其目的是改进意向检测和实体分类。
+短语列表虽未与特定意向或实体关联，但却作为重要增强项添加到所有意向和实体。 其目的是改进意向检测和实体分类。
 
 ## <a name="how-to-use-phrase-lists"></a>如何使用短语列表
-在人力资源应用的[简单实体教程](luis-quickstart-primary-and-secondary-data.md)中，应用使用作业类型的“工作”短语列表，例如程序员、屋顶工和秘书。 如果将其中一个值标记为机器学习实体，则 LUIS 会学习识别其他值。 
 
-短语列表可能是可互换的也可能是不可互换的。 可互换短语列表适用于同义的值，而不可互换短语列表用作应用的特定词汇列表。 随着你不断扩展应用词汇短语列表，你可能会发现一些术语有许多种形式（同义词）。 将它们分入另一个可互换的短语列表。 
+创建短语列表的情况为，应用有对应用重要的字词或短语，如：
+
+* 行业术语
+* 俚语
+* 缩写
+* 公司专用语言
+* 虽来自另一种语言，但在应用中经常使用的语言
+* 示例言语中的关键字和短语
+
+输入几个字词或短语后，立即使用“建议”功能来查找相关值。 先检查相关值，再添加到短语列表值。
 
 |列表类型|目的|
 |--|--|
 |可互换|将其更换为列表中的其他字词后具有相同意向和实体提取的同义词或字词。|
 |不可互换|相对于该语言中的其他通用字词，更特定于应用的应用词汇。|
 
-短语列表不仅有助于实体检测，还有助于意向分类，其中不可互换短语列表有添加英语中未知的集外词等作用。
+### <a name="interchangeable-lists"></a>可交换列表
 
+可交换短语列表适用于作为同义词的值。 例如，如果希望找到所有水体，且有示例言语，如： 
+
+* 什么城市靠近五大湖？ 
+* 什么道路沿着哈瓦苏湖城走？
+* 尼罗河的起点和终点在哪里？ 
+
+应确定每个言语的意向和实体，而不考虑水体： 
+
+* 什么城市靠近 [bodyOfWater]？
+* 什么道路沿着 [bodyOfWater] 走？
+* [bodyOfWater] 的起点和终点在哪里？ 
+
+由于水体的字词或短语是同义词，并能在言语中交换使用，因此对短语列表使用“可交换”设置。 
+
+### <a name="non-interchangeable-lists"></a>不可交换列表
+
+不可交换短语列表是增强 LUIS 检测的信号。 短语列表代表比其他字词更重要的字词或短语。 这有助于确定意向和实体检测。 例如，假设有全局主题域（即跨区域性，但仍为一种语言），如旅行。 虽有对应用重要的字词和短语，但它们不是同义词。 
+
+再比如，对罕见词、专有词和外来词使用不可交换短语列表。 LUIS 可能无法识别罕见词、专有词以及外来词（在应用区域性以外）。 不可互换设置指示罕见字词集组成 LUIS 应学会识别的类，但它们不是同义词，也不能彼此互换。
+
+不要将每个可能的字词或短语都添加到短语列表，一次添加几个字词或短语，再重新训练和发布。 
+
+随着短语列表随时间越来越长，可能会发现一些术语有许多种形式（同义词）。 将它们分入另一个可互换的短语列表。 
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
@@ -55,14 +86,6 @@ ms.locfileid: "55216075"
 短语列表并非指示 LUIS 执行严格匹配或始终将短语列表中的所有术语标记为完全相同的指令。 它只是一个提示。 例如，短语列表可以将“Patti”和“Selma”指示为姓名，但 LUIS 仍然可以使用上下文信息识别它们在“Make a reservation for 2 at Patti's Diner for dinner”和“Find me driving directions to Selma, Georgia”中意义不同。 
 
 添加短语列表是将更多示例表述添加到意向的替代方法。 
-
-## <a name="an-interchangeable-phrase-list"></a>可互换短语列表
-字词或短语列表创建类或组时，使用可互换短语列表。 例如“January”、“February”、“March”等月份列表；或者像“John”、“Mary”、“Frank”这样的名字列表。  这些列表是可互换的，如果使用短语列表中的不同字词，话语将被标记为具有相同的意向或实体。 例如，如果“show the calendar for January”和“show the calendar for February”具有相同的意向，那么字词应位于可互换列表中。 
-
-## <a name="a-non-interchangeable-phrase-list"></a>不可互换短语列表
-对于可在域中分组的非同义字词或短语，请使用不可互换短语列表。 
-
-例如，对于罕见词、专有词和外来词使用不可互换短语列表。 LUIS 可能无法识别罕见词、专有词以及外来词（在应用区域性以外）。 不可互换设置指示罕见字词集组成 LUIS 应学会识别的类，但它们不是同义词，也不能彼此互换。
 
 ## <a name="when-to-use-phrase-lists-versus-list-entities"></a>何时使用短语列表与列表实体
 尽管短语列表和列表实体都可以影响所有意向中的表述，但各自实现的方式不同。 短语列表用于影响意向预测评分。 列表实体用于影响完全文本匹配的实体提取。 

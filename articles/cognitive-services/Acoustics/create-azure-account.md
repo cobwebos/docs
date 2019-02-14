@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 有关如何设置使用音响效果所需的 Azure Batch 和存储帐户，请遵循以下指南。
 services: cognitive-services
 author: ashtat
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 638ea3e707352a95cb1fb407add365a83d11faa7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b8735c0c5d05f2ee4bd17dc41fc90d1f5aa5128a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55148636"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876685"
 ---
 # <a name="create-an-azure-batch-account"></a>创建 Azure Batch 帐户
 有关如何设置使用音响效果所需的 Azure Batch 和存储帐户，请遵循以下指南。 有关作为 Project Acoustics 的一部分开发的 Unity 插件的信息，请参阅[什么是音响效果](what-is-acoustics.md)。 有关如何将音响效果合并到 Unity 项目中的信息，请参阅[入门](getting-started.md)。  

@@ -14,12 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 358e8cd92fe250741adbbb9208b5e149a5f60216
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: cddb3769cfc5a2ba002e19036d986f4165670dc1
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959727"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962445"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 Apache Cordova 客户端库
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -55,7 +55,7 @@ ionic plugin add cordova-plugin-ms-azure-mobile-apps
 
 将以下行添加到 `app.component.ts` 以创建客户端对象：
 
-```
+```typescript
 declare var WindowsAzure: any;
 var client = new WindowsAzure.MobileServiceClient("https://yoursite.azurewebsites.net");
 ```
@@ -126,7 +126,7 @@ Azure 应用服务支持使用各种外部标识提供者对应用用户进行�
 ## <a name="register-for-push"></a>如何：注册推送通知
 安装 [phonegap-plugin-push] 即可处理推送通知。  在命令行中使用 `cordova plugin add` 命令，或者在 Visual Studio 内通过 Git 插件安装程序，即可轻松添加此插件。  Apache Cordova 应用中的以下代码将为设备注册推送通知：
 
-```
+```javascript
 var pushOptions = {
     android: {
         senderId: '<from-gcm-console>'

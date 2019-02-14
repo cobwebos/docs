@@ -5,27 +5,31 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/04/2019
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 50f048dc36b0248cdbbd85d91c00b7947f9ddc1f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 267919900fe68271365a73c3cbea7b1f0befc8a7
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052132"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766805"
 ---
 # <a name="assign-access-to-cost-management-data"></a>分配对成本管理数据的访问权限
 
-大多数用户都在 Azure 门户和企业 (EA) 门户中被授予了一些权限的组合，这些权限定义了用户对 Azure 成本管理数据的访问级别。 本文介绍如何分配对成本管理数据的访问权限。 用户分配到权限组合后，会基于他们有权访问的范围和他们在 Azure 门户中所选的范围查看成本管理中的数据。
+具有 Azure Enterprise 协议的用户在 Azure 门户和企业 (EA) 门户中被授予了一些权限的组合，这些权限定义了用户对 Azure 成本管理数据的访问级别。 对于其他 Azure 帐户类型的用户，用户的访问级别是访问成本管理数据更简单。 本文介绍如何分配对成本管理数据的访问权限。 用户分配到权限组合后，会基于他们有权访问的范围和他们在 Azure 门户中所选的范围查看成本管理中的数据。
 
 用户所选的范围将用于整个成本管理，以提供数据整合并控制对成本信息的访问。 使用范围时，用户不要多选它们。 而应选择一个子范围要汇总到的较大范围，然后筛选到要查看的范围。 理解数据整合很重要，因为有些人不应该访问子范围汇总到的父范围。
 
 ## <a name="cost-management-scopes"></a>成本管理范围
 
-若要查看成本数据，用户必须至少具有以下一个或多个范围的读取权限。
+成本管理支持各种 Azure 帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 帐户的类型确定可用范围。
+
+### <a name="azure-ea-subscription-scopes"></a>Azure EA 订阅范围
+
+若要查看 Azure EA 订阅的成本数据，用户必须至少具有以下一个或多个范围的读取权限。
 
 | **范围** | **定义位置** | **查看数据所需的访问权限** | **先决条件 EA 设置** | **将数据合并到** |
 | --- | --- | --- | --- | --- |
@@ -43,6 +47,18 @@ ms.locfileid: "54052132"
 下图说明了成本管理范围与角色和 EA 门户设置之间的关系。
 
 ![此图说明了成本管理范围与角色和 EA 门户设置之间的关系](./media/assign-access-acm-data/scope-access-relationship-diagram.png)
+
+如果在 EA 门户中禁用了“DA 视图费用”，则在尝试查看部门和帐户的成本时会显示一条消息，表明“为组织禁用了成本”。
+
+同样，如果在 EA 门户中禁用了“AO 视图费用”，则在尝试查看注册帐户、管理组、订阅和资源组的成本时会显示一条消息，表明“为组织禁用了成本”。
+
+## <a name="other-azure-account-scopes"></a>其他 Azure 帐户范围
+
+若要查看其他 Azure 订阅的成本数据，用户必须至少具有以下一个或多个范围的读取权限：
+
+- Azure 帐户
+- 管理组
+- 资源组
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>启动对 EA 门户中的成本的访问
 
@@ -109,7 +125,7 @@ ms.locfileid: "54052132"
 
 ## <a name="assign-management-group-scope-access"></a>分配管理组范围的访问权限
 
-若要访问管理组范围，至少需要成本管理读取者（或读取者）权限。 可以在 Azure 门户中配置对管理组的访问权限。 你必须至少对管理组具有“用户访问权限管理员”（或“所有者”）权限才能为其他人启用访问权限。 此外，还必须在 EA 门户中启用“AO 视图费用”设置。
+若要访问管理组范围，至少需要成本管理读取者（或读取者）权限。 可以在 Azure 门户中配置对管理组的访问权限。 你必须至少对管理组具有“用户访问权限管理员”（或“所有者”）权限才能为其他人启用访问权限。 此外对于 Azure EA 帐户，还必须在 EA 门户中启用“AO 视图费用”设置。
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 2. 在侧栏中选择“所有服务”，搜索“管理组”，然后选择“管理组”。
@@ -125,7 +141,7 @@ ms.locfileid: "54052132"
 
 ## <a name="assign-subscription-scope-access"></a>分配订阅范围的访问权限
 
-若要访问订阅，至少需要成本管理读取者（或读取者）权限。 可以在 Azure 门户中配置对订阅的访问权限。 你必须至少对订阅具有“用户访问权限管理员”（或“所有者”）权限才能为其他人启用访问权限。 此外，还必须在 EA 门户中启用“AO 视图费用”设置。
+若要访问订阅，至少需要成本管理读取者（或读取者）权限。 可以在 Azure 门户中配置对订阅的访问权限。 你必须至少对订阅具有“用户访问权限管理员”（或“所有者”）权限才能为其他人启用访问权限。 此外对于 Azure EA 帐户，还必须在 EA 门户中启用“AO 视图费用”设置。
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 2. 在侧栏中选择“所有服务”，搜索“订阅”，然后选择“订阅”。
@@ -139,7 +155,7 @@ ms.locfileid: "54052132"
 
 ## <a name="assign-resource-group-scope-access"></a>分配资源组范围的访问权限
 
-若要访问资源组，至少需要成本管理读取者（或读取者）权限。 可以在 Azure 门户中配置对资源组的访问权限。 你必须至少对资源组具有“用户访问权限管理员”（或“所有者”）权限才能为其他人启用访问权限。 此外，还必须在 EA 门户中启用“AO 视图费用”设置。
+若要访问资源组，至少需要成本管理读取者（或读取者）权限。 可以在 Azure 门户中配置对资源组的访问权限。 你必须至少对资源组具有“用户访问权限管理员”（或“所有者”）权限才能为其他人启用访问权限。 此外对于 Azure EA 帐户，还必须在 EA 门户中启用“AO 视图费用”设置。
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 2. 在侧栏中选择“所有服务”，搜索“资源组”，然后选择“资源组”。

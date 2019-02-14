@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
 ms.author: victorh
-ms.openlocfilehash: 1a9cbb14bc6d6df25dbc627bba5a3e72db5350a6
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: bf3061509e08648aa63b843a4b1d7b8968f3e88e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727324"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114626"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>使用 Azure CLI 创建支持外部重定向的应用程序网关
 
@@ -93,7 +93,7 @@ az network application-gateway create \
 
 ### <a name="add-the-redirection-configuration"></a>添加重定向配置
 
-添加将流量发送应用程序网关到重定向配置 *bing.com*使用 [az 网络应用程序网关重定向-config 创建](/cli/azure/network/application-gateway/redirect-configwork_application_gateway_redirect_config_create)。
+添加将流量发送应用程序网关到重定向配置 *bing.com*使用 [az 网络应用程序网关重定向-config 创建](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create)。
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -106,7 +106,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-a-listener-and-routing-rule"></a>添加侦听器和路由规则
 
-应用程序网关需要侦听器才能适当地将流量路由到后端池。 使用创建侦听器[az 网络应用程序网关 http 侦听器创建](/cli/azure/network/application-gateway)使用创建的前端端口与[az 网络应用程序网关前端端口创建](/cli/azure/network/application-gateway)。 侦听器需要使用规则来了解哪个后端池使用传入流量。 创建一个名为的基本规则*redirectRule*使用[az 网络应用程序网关规则创建](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create)使用重定向配置。
+应用程序网关需要侦听器才能适当地将流量路由到后端池。 使用创建侦听器[az 网络应用程序网关 http 侦听器创建](/cli/azure/network/application-gateway)使用创建的前端端口与[az 网络应用程序网关前端端口创建](/cli/azure/network/application-gateway)。 侦听器需要使用规则来了解哪个后端池使用传入流量。 创建一个名为的基本规则*redirectRule*使用[az 网络应用程序网关规则创建](/cli/azure/network/application-gateway)使用重定向配置。
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \

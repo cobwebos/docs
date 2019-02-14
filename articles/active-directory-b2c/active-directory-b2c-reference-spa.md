@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7342849af63ef2f153a89418fbf87f60bd4c4833
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 82483d8d84349a929ef4892d5e9571ea65b9a88a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183282"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104832"
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C：使用 OAuth 2.0 隐式流的单页应用登录
 
@@ -30,7 +30,7 @@ ms.locfileid: "55183282"
 Azure AD B2C 扩展了标准 OAuth 2.0 隐式流，使其功能远远超出了简单的身份验证和授权。 Azure AD B2C 引入了[策略参数](active-directory-b2c-reference-policies.md)。 通过该策略参数，可以使用 OAuth 2.0 向应用添加策略，例如注册、登录和配置文件管理用户流。 在本文中，我们将介绍如何使用隐式流和 Azure AD 在单页应用程序中实现上述每种体验。 为了帮助你开始操作，请查看我们的 [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi) 和 [Microsoft .NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi) 示例。
 
 在本文的示例 HTTP 请求中，我们使用示例 Azure AD B2C 目录 fabrikamb2c.onmicrosoft.com。 我们还使用我们自己的示例应用程序和用户流。 你可以使用这些值亲自尝试这些请求，或者可以用自己的值替换它们。
-了解如何[获取自己的 Azure AD B2C 目录、应用程序和用户流](#use-your-own-b2c-tenant)。
+了解如何[获取自己的 Azure AD B2C 目录、应用程序和用户流](#use-your-own-azure-ad-b2c-tenant)。
 
 
 ## <a name="protocol-diagram"></a>协议图

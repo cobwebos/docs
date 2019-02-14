@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0af7a7fd43bba46de6faa770bf3042fbf58a90f6
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7f73e71677a700ba8047246addb2d27799c5a616
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195353"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890886"
 ---
 # <a name="azure-application-skus-tab"></a>Azure 应用程序 SKU 选项卡
 
@@ -90,7 +90,7 @@ ms.locfileid: "53195353"
   >[!NOTE]
   >保存定价更改，实现定价数据的导出/导入。
 
-- **简化的货币定价** - 输入 SKU 的价格，单位为“美元/月”。 这与旧定价相同。 有关详细信息，请参阅[简化的货币定价](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer#simplified-currency-pricing)。
+- **简化的货币定价** - 输入 SKU 的价格，单位为“美元/月”。 这与旧定价相同。 有关详细信息，请参阅[简化的货币定价](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer)。
 
 ### <a name="package-details-for-solution-template"></a>解决方案模板的包详细信息
 

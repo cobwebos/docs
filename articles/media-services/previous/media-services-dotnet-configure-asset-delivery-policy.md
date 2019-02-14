@@ -4,7 +4,7 @@ description: 本主题说明如何通过 Azure 媒体服务 .NET SDK 配置不�
 services: media-services
 documentationcenter: ''
 author: Mingfeiy
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 3ec46f58-6cbb-4d49-bac6-1fd01a5a456b
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: d96ed28be2fcb3941591854662f9aa20faf04e5d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ac8596fd20802ccf487899de2c7d4c62ad6c552a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810153"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003561"
 ---
 # <a name="configure-asset-delivery-policies-with-net-sdk"></a>使用 .NET SDK 配置资产传送策略
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../../includes/media-services-selector-asset-delivery-policy.md)]

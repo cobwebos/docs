@@ -4,7 +4,7 @@ description: 本文详细介绍了在管理 Microsoft Azure 环境（包括云�
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 2431feba-3364-4a63-8e66-858926061dd3
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: c2b7935cc110b2ad05f4af2773158c2e1b658d4d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2d6d1d121e41b0446e7f63b9aa530df89697ef67
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242001"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117916"
 ---
 # <a name="security-management-in-azure"></a>Azure 中的安全管理
 Azure 订阅者可从多种设备管理其云环境，这些设备包括管理工作站、开发人员电脑，甚至是具有任务特定权限的特权最终用户设备。 在某些情况下，可通过基于 Web 的控制台（例如 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)）来执行管理功能。 有其他情况下，可以从本地系统通过虚拟专用网络 (VPN)、终端服务、客户端应用程序协议或 Azure 服务管理 API (SMAPI)（以编程方式）直接连接到 Azure。 此外，客户端终结点（例如平板电脑或智能手机）可以加入域或者受到隔离且不受管理。
@@ -117,7 +117,7 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 ## <a name="security-guidelines"></a>安全指导原则
 一般情况下，帮助保护用于云的管理员工作站的做法，与用于任何本地工作站的做法类似 — 例如，最小化生成和限制权限。 云管理的某些独特之处更类似于远程或带外企业管理。 这些特点包括使用和审核凭据、增强安全的远程访问以及威胁检测和响应。
 
-### <a name="authentication"></a>身份验证
+### <a name="authentication"></a>Authentication
 可以使用 Azure 登录限制来限制用于访问管理工具的源 IP 地址和审核访问请求。 若要帮助 Azure 识别管理客户端（工作站和/或应用程序），可以同时配置 SMAPI（通过客户开发的工具，例如 Windows PowerShell cmdlet）和 Azure 门户，来要求除了 SSL 证书外，还必须安装客户端管理证书。 我们还建议管理员访问需要经过多重身份验证。
 
 部署到 Azure 的某些应用程序或服务可能将针对用户和管理员访问拥有自己的身份验证机制，而其他应用程序或服务则将充分利用 Azure AD。 根据是通过 Active Directory 联合身份验证服务 (AD FS)、使用目录同步还是仅在云中维护用户帐户来联合凭据，使用 [Microsoft 标识管理器](https://technet.microsoft.com/library/mt218776.aspx) （Azure AD 高级版中已随附）可帮助管理资源之间的标识生命周期。

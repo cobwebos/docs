@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 cURL 分析远程图像。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8577361455b1b7a0a70d6613469a022076ba5341
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: dc85477d6f1b86552c26170e7d437220d8269abb
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222195"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864870"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-curl-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 cURL 分析远程图像
 

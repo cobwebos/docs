@@ -4,18 +4,18 @@ description: 了解如何添加有助于 LUIS 标记字词或短语变体的列�
 services: cognitive-services
 author: diberry
 titleSuffix: Azure
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: fe9276cb0af96baa8d818b1f2e965c83cb6b26c2
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fc6d68e862f6a2f3c95f5ca6d130e42c96649eb1
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211485"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874600"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>使用列表实体提升实体检测 
 本教程展示了如何使用[列表实体](luis-concept-entity-types.md)提升实体检测。 无需标记列表实体，因为它们与术语完全匹配。  

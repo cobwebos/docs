@@ -15,18 +15,20 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 34278e02c62bda18a4b4d2f404417e8844dd5fc4
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 35e0dc5dabaf1602b87ec6a8be86ed609f3ea12f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156674"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107372"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>如何使用 Azure 资源管理器模板创建 ILB ASE
 
 > [!NOTE] 
 > 本文介绍应用服务环境 v1。 应用服务环境有一个较新版本，此版本更易于使用并在更强大的基础结构上运行。 若要深入了解新版本，请先参阅[应用服务环境简介](intro.md)。
 >
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>概述
 使用虚拟网络内部地址（而不是公用 VIP）可以创建应用服务环境。  此内部地址由称为内部负载均衡器 (ILB) 的 Azure 组件提供。  使用 Azure 门户可以创建 ILB ASE。  也可以通过 Azure 资源管理器模板使用自动化功能创建。  本文介绍了使用 Azure 资源管理器模板创建 ILB ASE 所需的步骤和语法。
@@ -51,7 +53,7 @@ GitHub（[此处][quickstartilbasecreate]）上提供了 Azure 资源管理器�
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
 
-    New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+    New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 
 提交 Azure 资源管理器模板后，需要数小时才能创建 ILB ASE。  创建完成后，ILB ASE 显示在触发部署的订阅的应用服务环境列表的门户 UX 中。
 
@@ -124,7 +126,7 @@ GitHub（[此处][quickstartilbasecreate]）上提供了 Azure 资源管理器�
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
 
-    New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+    New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 
 提交 Azure 资源管理器模板后，每个 ASE 前端需要大约 40 分钟来应用更改。  例如，有一个默认大小的 ASE 使用两个前端，则模板需要大约 1 小时 20 分钟才能完成。  运行模板时无法缩放 ASE。  
 

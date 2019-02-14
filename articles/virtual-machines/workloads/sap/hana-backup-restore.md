@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2a72fade57b070ac2ac1aea28cbec92700c3797f
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: e71e4ea56bfe467e03be59d6a855272baafc4235
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452541"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822725"
 ---
 # <a name="backup-and-restore"></a>备份和还原
 
@@ -82,7 +82,7 @@ Azure 上的 SAP HANA（大型实例）的存储快照的特定机制包括：
 - 因此，存储快照的大小会不断增长。 快照保留的时间越长，存储快照就会变得越大。
 - 在存储快照的生存期内对 SAP HANA 数据库卷所做的更改越多，存储快照消耗的空间也就越大。
 
-Azure 上的 SAP HANA（大型实例）为 SAP HANA 数据卷和日志卷使用固定的卷大小。 执行这些卷的快照会消耗卷空间。 需要确定何时计划存储快照。 此外，还需要监视存储卷的空间消耗，并管理存储的快照数。 将大量数据导入 HANA 数据库或对其执行其他重大更改时，可以禁用存储快照。 
+Azure 上的 SAP HANA（大型实例）为 SAP HANA 数据卷和日志卷使用固定的卷大小。 执行这些卷的快照会消耗卷空间。  需要确定何时计划存储快照。 此外，还需要监视存储卷的空间消耗，并管理存储的快照数。 将大量数据导入 HANA 数据库或对其执行其他重大更改时，可以禁用存储快照。 
 
 
 以下部分提供了有关执行这些快照的信息，提供了一般性的建议：
@@ -258,10 +258,10 @@ HANABackupCustomerDetails.txt
       - 与该快照关联的 HANA 备份 ID（如果相关）
 - **azure\_hana\_snapshot\_delete.pl**：此脚本删除一个存储快照或一组快照。 可以使用 HANA Studio 中的 SAP HANA 备份 ID，或使用存储快照名称。 目前，该备份 ID 仅绑定到为 HANA data/log/shared 卷创建的快照。 否则，如果输入快照 ID，会查找所有与输入的快照 ID 匹配的快照。  
 - **testHANAConnection.pl**：此脚本测试与 SAP HANA 实例的连接，设置存储快照时需要使用此脚本。
-- **testStorageSnapshotConnection.pl**：此脚本有两个用途。 首先，它确保运行脚本的 HANA 大型实例单元有权访问已分配的存储虚拟机，并有权访问 HANA 大型实例的存储快照接口。 第二个用途是为要测试的 HANA 实例创建临时快照。 应为服务器上的每个 HANA 实例运行此脚本，从而确保备份脚本按预期正常运行。
-- **removeTestStorageSnapshot.pl**：此脚本删除通过 **testStorageSnapshotConnection.pl** 脚本创建的测试快照。
+- ：**testStorageSnapshotConnection.pl**：此脚本有两个用途。 首先，它确保运行脚本的 HANA 大型实例单元有权访问已分配的存储虚拟机，并有权访问 HANA 大型实例的存储快照接口。 第二个用途是为要测试的 HANA 实例创建临时快照。 应为服务器上的每个 HANA 实例运行此脚本，从而确保备份脚本按预期正常运行。
+- **removeTestStorageSnapshot.pl**：此脚本删除通过 testStorageSnapshotConnection.pl 脚本创建的测试快照。
 - **azure\_hana\_dr\_failover.pl**：此脚本将 DR 故障转移加入到另一个区域。 该脚本需要在 DR 区域中的 HANA 大型实例单元中执行，或者在希望故障转移到的单元上执行。 此脚本可停止从主端到辅助端的存储复制，还原 DR 卷上最新的快照，并为 DR 卷提供装载点
-- **azure\_hana\_测试\_dr\_failover.pl**：此脚本将测试故障转移执行到 DR 站点。 与 azure_hana_dr_failover.pl 脚本不同，此执行不会中断从主端到辅助端的存储复制。 而会在 DR 端创建复制的存储卷的克隆，并提供克隆卷的装载点。 
+- **azure\_hana\_test\_dr\_failover.pl**：此脚本将测试故障转移执行到 DR 站点。 与 azure_hana_dr_failover.pl 脚本不同，此执行不会中断从主端到辅助端的存储复制。 而会在 DR 端创建复制的存储卷的克隆，并提供克隆卷的装载点。 
 - **HANABackupCustomerDetails.txt**：此文件是可修改的配置文件，需要将其进行修改以适应 SAP HANA 配置。 *HANABackupCustomerDetails.txt* 文件是脚本的控制与配置文件，用于运行存储快照。 根据用途和设置调整该文件。 在部署实例后，应会收到 Azure 上的 SAP HANA 服务管理部门提供的**存储备份名称**和**存储 IP 地址**。 不能修改此文件中任何变量的顺序、排序或空格。 否则脚本无法正常运行。 此外，还会收到 Azure 上的 SAP HANA 服务管理部门提供的纵向扩展节点或主节点（如果是横向扩展）的 IP 地址。 还会知道在安装 SAP HANA 期间获取的 HANA 实例编号。 现在，需要将备份名称添加到配置文件。
 
 对于纵向扩展或横向扩展部署，在填写 HANA 大型实例单元的服务器名称和服务器的 IP 地址后，配置文件如以下示例所示。 填写想要备份或恢复的每个 SAP HANA SID 的所有必填字段。
@@ -387,7 +387,7 @@ Snapshot created successfully.
 
 可以创建实现三种类型的快照备份：
 - **HANA**：组合快照备份，其中包含 /hana/data 和 /hana/shared（包含 /usr/sap）的卷的快照通过协调式快照实现。 可从此快照还原单个文件。
-- **Logs**：/hana/logbackups 卷的快照备份。 执行此存储快照时不触发任何 HANA 快照。 此存储卷是要包含 SAP HANA 事务日志备份。 这些备份的执行频率更高，以限制日志增长并防止潜在的数据丢失。 可从此快照还原单个文件。 频率不应小于 3 分钟。
+- **日志**：/hana/logbackups 卷的快照备份。 执行此存储快照时不触发任何 HANA 快照。 此存储卷是要包含 SAP HANA 事务日志备份。 这些备份的执行频率更高，以限制日志增长并防止潜在的数据丢失。 可从此快照还原单个文件。 频率不应小于 3 分钟。
 - **Boot**：包含 HANA 大型实例启动逻辑单元号 (LUN) 的卷的快照。 此快照备份仅适用于 HANA 大型实例 I 类型 SKU。 无法从包含启动 LUN 的卷的快照执行单个文件还原。
 
 
@@ -532,7 +532,7 @@ Command completed successfully.
 在特定的存储卷上，可以监视快照的数量以及这些快照的存储消耗量。 `ls` 命令不会显示快照目录或文件。 但是，Linux OS 命令 `du` 显示有关这些存储快照的详细信息（因为这些快照存储在相同的卷上）。 此命令适用以下选项：
 
 - `du –sh .snapshot`：此选项提供快照目录中所有快照的总数。
-- `du –sh --max-depth=1`：此选项列出 **.snapshot** 文件夹中保存的所有快照，以及每个快照的大小。
+- `du –sh --max-depth=1`：此选项列出 .snapshot 文件夹中保存的所有快照，以及每个快照的大小。
 - `du –hc`：此选项提供所有快照占用的总大小。
 
 使用以下命令可确保创建和存储的快照不会耗尽卷上的所有存储。
@@ -687,7 +687,7 @@ HANA Backup ID:
 >[!IMPORTANT]
 >在继续下一步之前，请确保具备完整且连续的事务日志备份链。 如果没有这些备份，则无法还原数据库的当前状态。
 
-1. 完成[恢复到最近的 HANA 快照](#recovering-to-the-most-recent-hana-snapshot)中的步骤 1-6。
+1. 完成“恢复到最近的 HANA 快照”中的步骤 1-6。
 
 1. 选择“将数据库恢复到其最近状态”。
 
@@ -713,7 +713,7 @@ HANA Backup ID:
 若要恢复到 HANA 快照（包含在存储快照中）与晚于 HANA 快照时间点恢复之间的时间点，请执行以下步骤：
 
 1. 确保提供从创建 HANA 快照开始，到要恢复到的时间为止的所有事务日志备份。
-1. 开始执行[恢复到最新状态](#recovering-to-the-most-recent-state)下的过程。
+1. 开始执行“恢复到最新状态”下的过程。
 1. 执行步骤 2 时，请在“指定恢复类型”窗口中选择“将数据库恢复到以下时间点”，指定时间点。 
 1. 完成步骤 3-6。
 

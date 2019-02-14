@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4ba25da1f356f6164137dead467bd8bc948ce3d7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6c97289cd1ad406769613621afdc16c8096f4aeb
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037831"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116161"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>将本地计算机迁移到 Azure
 
@@ -135,7 +135,7 @@ ms.locfileid: "54037831"
 - 执行任何迁移后的应用调整，例如更新数据库连接字符串和 Web 服务器配置。 
 - 对 Azure 中当前运行的迁移应用程序执行最终的应用程序和迁移验收测试。
 - [Azure VM 代理](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)可管理 VM 与 Azure 结构控制器之间的交互。 某些 Azure 服务（例如 Azure 备份、Site Recovery 和 Azure 安全）需要 Azure VM 代理。
-    - 如果要迁移 VMware 机和物理服务器，移动服务安装程序会在 Windows 计算机上安装可用的 Azure VM 代理。 在 Linux VM 上，我们建议在故障转移后安装代理。 a
+    - 如果要迁移 VMware 机和物理服务器，移动服务安装程序会在 Windows 计算机上安装可用的 Azure VM 代理。 在 Linux VM 上，我们建议在故障转移后安装代理。
     - 如果要将 Azure VM 迁移到次要区域，则在迁移之前必须在 VM 上预配 Azure VM 代理。
     - 如果要将 Hyper-V VM 迁移到 Azure，请在迁移后在 Azure VM 上安装 Azure VM 代理。
 - 从 VM 中手动删除任何 Site Recovery 提供程序/代理。 如果要迁移 VMware VM 或物理服务器，请从 Azure VM 中[卸载移动服务][vmware-azure-install-mobility-service.md#uninstall-mobility-service-on-a-windows-server-computer]。

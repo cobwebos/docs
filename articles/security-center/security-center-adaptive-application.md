@@ -4,7 +4,7 @@ description: 本文档介绍如何在 Azure 安全中心使用自适应应用程
 services: security-center
 documentationcenter: na
 author: monhaber
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/21/2019
 ms.author: monhaber
-ms.openlocfilehash: b7a27dea9f521f14bfb4278eada636cb7e30c581
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: d92d9c444985989cdec3e94840ff21f4a79fe3ad
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427128"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104918"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Azure 安全中心的自适应应用程序控制
 了解如何通过本演练在 Azure 安全中心配置应用程序控制。

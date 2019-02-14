@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用必应图像搜索 SDK（它是 API 的包装程序并包含相同的功能）创建你的第一个图像搜索。 此简单的 Python 应用程序发送图像搜索查询，分析 JSON 响应，并显示返回的第一个图像的 URL。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 144a2cb6d5540335276894848b0f4ca2ddb0fe75
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a785cb461b12c20bd5e322a55a91c8b49cb40d54
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157136"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858155"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-python"></a>快速入门：使用适用于 Python 的必应图像搜索 SDK 搜索图像
 

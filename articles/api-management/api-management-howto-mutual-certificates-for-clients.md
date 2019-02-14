@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2017
 ms.author: apimpm
-ms.openlocfilehash: 3307ea391734828cb83c927e8df8aca79685279a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: b2d8a194abb5a5fe7d9c06cb9ef10bb0af58124a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441530"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870158"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>如何使用 API 管理中的客户端证书身份验证确保 API 安全
 
@@ -32,7 +32,7 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API（即
 
 可以将以下策略配置为检查证书是否过期：
 
-```
+```xml
 <choose>
     <when condition="@(context.Request.Certificate == null || context.Request.Certificate.NotAfter < DateTime.Now)" >
         <return-response>
@@ -46,9 +46,9 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API（即
 
 可以将以下策略配置为检查客户端证书的颁发者和使用者：
 
-```
+```xml
 <choose>
-    <when condition="@(context.Request.Certificate == null || context.Request.Certificate.Issuer != "trusted-issuer" || context.Request.Certificate.SubjectName != "expected-subject-name")" >
+    <when condition="@(context.Request.Certificate == null || context.Request.Certificate.Issuer != 'trusted-issuer' || context.Request.Certificate.SubjectName != 'expected-subject-name')" >
         <return-response>
             <set-status code="403" reason="Invalid client certificate" />
         </return-response>
@@ -60,9 +60,9 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API（即
 
 可以将以下策略配置为检查客户端证书的指纹：
 
-```
+```xml
 <choose>
-    <when condition="@(context.Request.Certificate == null || context.Request.Certificate.Thumbprint != "desired-thumbprint")" >
+    <when condition="@(context.Request.Certificate == null || context.Request.Certificate.Thumbprint != 'desired-thumbprint')" >
         <return-response>
             <set-status code="403" reason="Invalid client certificate" />
         </return-response>
@@ -74,7 +74,7 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API（即
 
 以下示例演示如何针对已上传到 API 管理的证书，检查客户端证书的指纹： 
 
-```
+```xml
 <choose>
     <when condition="@(context.Request.Certificate == null || !context.Deployment.Certificates.Any(c => c.Value.Thumbprint == context.Request.Certificate.Thumbprint))" >
         <return-response>

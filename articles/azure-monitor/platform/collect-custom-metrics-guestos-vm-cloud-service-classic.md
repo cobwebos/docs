@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: e971414cfcd069a4aa8a212f64927407be83ad39
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1e322c9bd6f78c4801c14e9982cc170b3af1971a
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470930"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893572"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>将来宾 OS 指标发送到 Azure Monitor 指标存储经典云服务 
 
@@ -29,7 +29,7 @@ ms.locfileid: "54470930"
 
 - 你必须是 Azure 订阅的[服务管理员或共同管理员](~/articles/billing/billing-add-change-azure-subscription-administrator.md)。 
 
-- 你的订阅必须已注册到 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#portal)。 
+- 你的订阅必须已注册到 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。 
 
 - 需要安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) 或 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
 
