@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/06/2018
+ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 587303e8be4155b1b01228ad4606829ad8921560
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f336f6fdb5cde638fe62d1410a9f993492be21ed
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436580"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747554"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
 
@@ -184,7 +184,6 @@ ms.locfileid: "54436580"
 [planning-guide-11]:planning-guide.md#7cf991a1-badd-40a9-944e-7baae842a058
 [planning-guide-11.4.1]:planning-guide.md#5d9d36f9-9058-435d-8367-5ad05f00de77
 [planning-guide-11.5]:planning-guide.md#4e165b58-74ca-474f-a7f4-5e695a93204f
-[planning-guide-2.1]:planning-guide.md#1625df66-4cc6-4d60-9202-de8a0b77f803
 [planning-guide-2.2]:planning-guide.md#f5b3b18c-302c-4bd8-9ab2-c388f1ab3d10
 [planning-guide-3.1]:planning-guide.md#be80d1b9-a463-4845-bd35-f4cebdb5424a
 [planning-guide-3.2.1]:planning-guide.md#df49dc09-141b-4f34-a4a2-990913b30358
@@ -339,35 +338,31 @@ Microsoft Azure 是 Microsoft 提供的一个云服务平台，它提供了各�
 * IaaS：基础结构即服务
 * PaaS：平台即服务
 * SaaS：软件即服务
-* SAP 组件：单个 SAP 应用程序，例如 ECC、BW、Solution Manager 或 EP。  SAP 组件可以基于传统的 ABAP 或 Java 技术，也可以是不基于 NetWeaver 的应用程序，例如业务对象。
+* SAP 组件：单个 SAP 应用程序，例如 ECC、BW、Solution Manager 或 S/4HANA。  SAP 组件可以基于传统的 ABAP 或 Java 技术，也可以是不基于 NetWeaver 的应用程序，例如业务对象。
 * SAP 环境：以逻辑方式组合在一起，用于执行开发、QAS、培训、DR 或生产等业务功能的一个或多个 SAP 组件。
 * SAP 布局：表示客户 IT 布局中所有 SAP 资产的整个格局。 SAP 布局包括所有生产和非生产环境。
 * SAP 系统：诸如 SAP ERP 开发系统、SAP BW 测试系统、SAP CRM 生产系统等的 DBMS 层与应用程序层的组合。在 Azure 部署中，不支持在本地和 Azure 之间分割这两个层。 这意味着，某个 SAP 系统要么部署在本地，要么部署在 Azure 中。 但是，可以将 SAP 布局中的不同系统部署到 Azure 或本地。 例如，可以将 SAP CRM 开发系统和测试系统部署在 Azure 中，同时将 SAP CRM 生产系统部署在本地。
-* 仅限云的部署：不通过站点到站点或 ExpressRoute 连接将 Azure 订阅连接到本地网络基础结构的一种部署。 在一般的 Azure 文档中，此类部署也称为“仅限云”部署。 使用此方法部署的虚拟机可通过 Internet 和公共 IP 地址和/或分配给 Azure VM 的公共 DNS 名称来访问。 在这些类型的部署中，Microsoft Windows 的本地 Active Directory (AD) 和 DNS 不会扩展到 Azure。 因此，VM 不是本地 Active Directory 的一部分。 这一点同样适用于使用 OpenLDAP + Kerberos 等协议的 Linux 实施方案。
+* 跨界或混合：描述这样一种方案：将 VM 部署到在本地数据中心与 Azure 之间建立了站点到站点、多站点或 ExpressRoute 连接的 Azure 订阅。 在一般的 Azure 文档中，此类部署也称为跨界或混合方案。 连接的原因是为了将本地域、本地 Active Directory/OpenLDAP 和本地 DNS 扩展到 Azure。 本地布局会扩展到订阅的 Azure 资产。 经过这种扩展后，VM 可以成为本地域的一部分。 本地域的域用户可以访问服务器，并可在这些 VM 上运行服务（例如 DBMS 服务）。 但无法在本地的 VM 和 Azure 部署的 VM 之间进行通信和名称解析。 这是最常见的方案，几乎是将 SAP 资产部署到 Azure 的专用方案。 有关详细信息，请参阅[此文][vpn-gateway-cross-premises-options]和[此文][vpn-gateway-site-to-site-create]。
 
 > [!NOTE]
-> 本文档中的仅限云部署定义为在 Azure 中以独占方式运行的完整 SAP 布局，而不是将 Active Directory/OpenLDAP 或名称解析从本地扩展到公有云。 SAP 生产系统或配置不支持仅限云的配置，在此配置中，托管于 Azure 的 SAP 系统与位于本地的资源之间需要使用 SAP STMS 或其他本地资源。
+> SAP 生产系统支持对 SAP 系统进行这种跨界或混合部署：运行 SAP 系统的 Azure 虚拟机是本地域的成员。 跨界或混合配置可将部分或完整 SAP 布局部署到 Azure。 即使在 Azure 中执行完整 SAP 布局，也需要这些 VM 成为本地域和 ADS/OpenLDAP 的一部分。 
 >
 >
 
-* 跨界：描述这样一种方案：将 VM 部署到在本地数据中心与 Azure 之间建立了站点到站点、多站点或 ExpressRoute 连接的 Azure 订阅。 在一般的 Azure 文档中，此类部署也称为跨界方案。 连接的原因是为了将本地域、本地 Active Directory/OpenLDAP 和本地 DNS 扩展到 Azure。 本地布局会扩展到订阅的 Azure 资产。 经过这种扩展后，VM 可以成为本地域的一部分。 本地域的域用户可以访问服务器，并可在这些 VM 上运行服务（例如 DBMS 服务）。 但无法在本地的 VM 和 Azure 部署的 VM 之间进行通信和名称解析。 这是最常见的方案，几乎是将 SAP 资产部署到 Azure 的专用方案。 有关详细信息，请参阅[此文][vpn-gateway-cross-premises-options]和[此文][vpn-gateway-site-to-site-create]。
 
-> [!NOTE]
-> SAP 生产系统支持对 SAP 系统进行这种跨界部署：运行 SAP 系统的 Azure 虚拟机是本地域的成员。 跨界配置可将部分或完整 SAP 布局部署到 Azure。 即使在 Azure 中执行完整 SAP 布局，也需要这些 VM 成为本地域和 ADS/OpenLDAP 的一部分。 在本文档的旧版本中，我们曾谈到混合 IT 方案，其中“混合”一词基本上是指本地与 Azure 之间有跨界连接。 此外，Azure 中的 VM 是本地 Active Directory/OpenLDAP 的一部分。
->
->
-
-有些 Microsoft 文档在描述跨界方案时稍有不同，特别是针对 DBMS HA 配置。 在 SAP 相关的文档中，跨界方案单纯是指具有站点到站点或专用 (ExpressRoute) 连接，以及将 SAP 布局分布到本地与 Azure 之间的情况。  
 
 ### <a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>资源
-我们针对有关 Azure 上的 SAP 部署的主题提供了以下附加指南：
+Azure 文档中 SAP 工作负荷的入口点位于[此处](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)。 从此入口点开始，会找到许多涵盖以下内容主题的文章：
 
-* [SAP NetWeaver 的 Azure 虚拟机规划和实施指南（本文档）][planning-guide]
-* [SAP NetWeaver 的 Azure 虚拟机部署][deployment-guide]
-* [SAP NetWeaver 的 Azure 虚拟机 DBMS 部署][dbms-guide]
+- Azure 的 SAP NetWeaver 和 Business One
+- Azure 中各种 DBMS 系统的 SAP DBMS 指南
+- Azure 上的 SAP 工作负荷的高可用性和灾难恢复
+- 有关在 Azure 上运行 SAP HANA 的特定指南
+- 特定于 SAP HANA DBMS 的 Azure HANA 大型实例的指南 
+
 
 > [!IMPORTANT]
-> 在可能的情况下，请访问指向《SAP 安装指南》的链接（InstGuide-01 参考文档，请参阅 <http://service.sap.com/instguides>）。 在满足先决条件和安装过程中，始终应该仔细阅读《SAP NetWeaver 安装指南》，因为本文档只包括了有关 Microsoft Azure 虚拟机中安装的 SAP NetWeaver 系统的具体任务。
+> 在可能的情况下，请访问指向《SAP 安装指南》或其他 SAP 文档的链接（InstGuide-01 参考文档，请参阅 <http://service.sap.com/instguides>）。 涉及到特定 SAP 功能的先决条件、安装过程或详细信息，始终应仔细阅读 SAP 文档和指南，因为 Microsoft 文档仅涵盖在 Microsoft Azure 虚拟机中安装和操作的 SAP 软件的特定任务。
 >
 >
 
@@ -431,22 +426,7 @@ SAP 通常被视为企业中最关键的应用程序之一。 通常，这些应
 
 要成功将 SAP 系统部署到 Azure，本地 SAP 系统的操作系统、数据库和 SAP 应用程序必须出现在 SAP Azure 支持矩阵中、符合 Azure 基础结构可提供的资源限制，并且可配合 Microsoft Azure 提供的可用性 SLA 使用。 在确定这些系统后，需要决定采用下列两种部署方案中的哪一种。
 
-### <a name="1625df66-4cc6-4d60-9202-de8a0b77f803"></a>仅限云 - 在不将依赖项部署到本地客户网络的情况下将虚拟机部署到 Azure 中
-![Azure 中用于 SAP 演示或培训的单一 VM 部署方案][planning-guide-figure-100]
 
-这是一种典型的培训或演示系统部署方案，其中，SAP 和非 SAP 软件的所有组件安装在单个 VM 中。 此部署方案不支持 SAP 生产系统。 一般而言，这种部署能够满足以下要求：
-
-* 可通过公共网络访问 VM 本身。 不需要在 VM 中运行的应用程序，与拥有演示或培训内容的公司或者客户的本地网络之间建立直接网络连接。
-* 如果该培训或演示方案由多个 VM 构成，则这些 VM 之间需要存在有效的网络通信和名称解析。 但是，VM 之间的通信需要是隔离的，因此，可以并列部署多组不互相干扰的 VM。  
-* 最终用户需要通过 Internet 连接来利用终端服务，以便连接到 Azure 中托管的 VM。 根据来宾 OS，可以使用终端服务/RDS 或 VNC/ssh 来访问 VM，以履行培训任务或执行演示。 如果还可公开 3200、3300 和 3600 等 SAP 端口，则可以从任何连接到 Internet 的桌面访问 SAP 应用程序实例。
-* SAP 系统（和 VM）代表 Azure 中的独立方案，这种方案只要求建立公共 Internet 连接，使最终用户能够访问 VM，而不要求与 Azure 中的其他 VM 建立连接。
-* 直接在 VM 中安装并运行 SAPGUI 和浏览器。
-* 要求快速将 VM 重置到原始状态，并在该原始状态下重新部署。
-* 如果演示和培训方案是在多个 VM 中实现的，则每组 VM 都需要有一个 Active Directory/OpenLDAP 和/或 DNS 服务。
-
-![代表 Azure 云服务中的一个演示或培训方案的 VM 组][planning-guide-figure-200]
-
-必须注意，每个组中的 VM 需要并列部署，并且每个组中的 VM 名称需要相同。
 
 ### <a name="f5b3b18c-302c-4bd8-9ab2-c388f1ab3d10"></a>跨界 - 将单个或多个 SAP VM 部署到 Azure 中并要求完全集成到本地网络
 ![使用站点到站点连接的 VPN（跨界）][planning-guide-figure-300]
@@ -648,9 +628,9 @@ Microsoft Azure 提供一种网络基础结构，允许映射想要使用 SAP �
 
 可在此处 <https://azure.microsoft.com/documentation/services/virtual-network/> 找到更多信息
 
-可以通过许多不同的方式配置 Azure 中的名称解析和 IP 解析。 在本文档中，仅限云的方案依赖于使用 Azure DNS 的默认方式（与定义自己的 DNS 服务不同）。 此外，还可使用新的 Azure DNS 服务，而不是设置自己的 DNS 服务器。 有关详细信息，请参阅[此文][virtual-networks-manage-dns-in-vnet]的[此页](https://azure.microsoft.com/services/dns/)。
+可以通过许多不同的方式配置 Azure 中的名称解析和 IP 解析。 此外，还可使用 Azure DNS 服务，而不是设置自己的 DNS 服务器。 有关详细信息，请参阅[此文][virtual-networks-manage-dns-in-vnet]的[此页](https://azure.microsoft.com/services/dns/)。
 
-对于跨界方案，我们将依赖于本地 AD/OpenLDAP/DNS 已通过 VPN 或专用连接扩展到 Azure 这一事实。 对于此处所述的某些方案，可能需要在 Azure 中安装 AD/OpenLDAP 副本。
+对于跨界或混合方案，我们将依赖于本地 AD/OpenLDAP/DNS 已通过 VPN 或专用连接扩展到 Azure 这一事实。 对于此处所述的某些方案，可能需要在 Azure 中安装 AD/OpenLDAP 副本。
 
 由于网络和名称解析是 SAP 系统的数据库部署的关键部分，[DBMS Deployment Guide][dbms-guide]（DBMS 部署指南）中详细介绍了与此相关的概念。
 
@@ -892,8 +872,6 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 * 它需要采用固定的 VHD 格式。 Azure 尚不支持动态 VHD 或采用 VHDx 格式的 VHD。 当你使用 PowerShell cmdlet 或 CLI 上传 VHD 时，动态 VHD 将转换为静态 VHD
 * 已装载到 VM、并且应该在 Azure 中再次装载到 VM 的 VHD 也需要采用固定的 VHD 格式。 有关数据磁盘的大小限制，请参阅[此文 (Linux)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-linux) 和[此文 (Windows)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-windows)。 当你使用 PowerShell cmdlet 或 CLI 上传 VHD 时，动态 VHD 将转换为静态 VHD
 * 使用管理员特权添加另一个本地帐户，该帐户可供 Microsoft 支持人员使用，或者在部署 VM 之前分配为上下文以供服务和应用程序短暂访问，并可供其他适当的用户使用。
-* 如果将仅限云的部署方案（请参阅本文档的[仅限云 - 在不将依赖项部署到本地客户网络的情况下将虚拟机部署到 Azure 中][planning-guide-2.1]一章）与本部署方法结合使用，则在 Azure 中部署 Azure 磁盘后，域帐户可能会失效。 对于用于运行 DBMS 等服务或 SAP 应用程序的帐户，尤其如此。 因此，需要将这种域帐户替换为 VM 本地帐户，并删除 VM 中的内部域帐户。 如果按照本文档的[跨界 - 将单个或多个 SAP VM 部署到 Azure 中并要求完全集成到本地网络][planning-guide-2.2]一章中所述将 VM 部署在跨界方案中，则在 VM 映像中保留本地域用户不会出现问题。
-* 如果在本地运行系统时域帐户已用作 DBMS 登录名或用户，并且应该将这些 VM 部署在仅限云方案中，那么，就需要删除这些域用户。 需确保以登录名/用户的形式将本地管理员以及另一个 VM 本地用户添加为 DBMS 中的管理员。
 * 添加其他本地帐户，因为特定的部署方案可能需要这些帐户。
 
 - - -
@@ -920,9 +898,6 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 * 包含操作系统的 VHD 的最大大小最初只能是 127GB。 此限制已在 2015 年 3 月底消除。 现在，包含操作系统的 VHD 可以有高达 1TB 的大小，Azure 存储托管任何其他 VHD 也是一样。
 * 它需要采用固定的 VHD 格式。 Azure 尚不支持动态 VHD 或采用 VHDx 格式的 VHD。 当你使用 PowerShell cmdlet 或 CLI 上传 VHD 时，动态 VHD 将转换为静态 VHD
 * 已装载到 VM、并且应该在 Azure 中再次装载到 VM 的 VHD 也需要采用固定的 VHD 格式。 有关数据磁盘的大小限制，请参阅[此文 (Linux)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-linux) 和[此文 (Windows)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-windows)。 当你使用 PowerShell cmdlet 或 CLI 上传 VHD 时，动态 VHD 将转换为静态 VHD
-* 由于已注册为 VM 中的用户的所有域用户将不会存在于仅限云方案中（请参阅本文档的[仅限云 - 在不将依赖项部署到本地客户网络的情况下将虚拟机部署到 Azure 中][planning-guide-2.1]一章），因此，在 Azure 中部署该映像后，使用这种域帐户的服务可能无法工作。 对于用于运行 DBMS 等服务或 SAP 应用程序的帐户，尤其如此。 因此，需要将这种域帐户替换为 VM 本地帐户，并删除 VM 中的内部域帐户。 如果按照本文档的[跨界 - 将单个或多个 SAP VM 部署到 Azure 中并要求完全集成到本地网络][planning-guide-2.2]一章中所述将 VM 部署在跨界方案中，则在 VM 映像中保留本地域用户可能不会出现问题。
-* 使用管理员特权添加另一个本地帐户，该帐户可供 Microsoft 支持人员在调查问题时使用，或者在部署 VM 之前分配为上下文以供服务和应用程序短暂访问，并可供其他适当的用户使用。
-* 如果采用仅限云部署，并且在本地运行系统时域帐户已用作 DBMS 登录名或用户，那么，就应该删除这些域用户。 需确保以登录名/用户的形式将本地管理员以及另一个 VM 本地用户添加为 DBMS 的管理员。
 * 添加其他本地帐户，因为特定的部署方案可能需要这些帐户。
 * 如果映像包含 SAP NetWeaver 的安装，并且可能在部署 Azure 时重命名主机名的原始名称，则建议将最新版 SAP Software Provisioning Manager DVD 复制到模板。 这样，便可以轻松地使用 SAP 提供的重命名功能来修改已更改的主机名，和/或在启动新副本之后，更改已部署 VM 映像中 SAP 系统的 SID。
 
@@ -1336,7 +1311,7 @@ Azure 异地复制在 VM 中的每个 VHD 上本地执行，并且不会跨 VM �
 
 ## <a name="accessing-sap-systems-running-within-azure-vms"></a>访问 Azure VM 中运行的 SAP 系统
 
-对于仅限云的方案，可能需要使用 SAP GUI 通过公共 Internet 连接到这些 SAP 系统。 在这种情况下，需要应用以下过程。
+对于要使用 SAP GUI 跨公共 Internet 连接到这些 SAP 系统的方案，需要应用以下过程。
 
 本文稍后介绍其他主要方案，这些方案将连接到在本地系统与 Azure 系统之间建立了站点到站点连接（VPN 隧道）或 ExpressRoute 连接的跨界部署中的 SAP 系统。
 
@@ -1349,7 +1324,7 @@ Azure 异地复制在 VM 中的每个 VHD 上本地执行，并且不会跨 VM �
 
 请参阅[此文][virtual-machines-azure-resource-manager-architecture]中所述的经典模型与 ARM 之间的体系结构差异。
 
-#### <a name="configuration-of-the-sap-system-and-sap-gui-connectivity-for-cloud-only-scenario"></a>仅限云方案的 SAP 系统配置和 SAP GUI 连接
+#### <a name="configuration-of-the-sap-system-and-sap-gui-connectivity-over-the-internet"></a>Internet 上的 SAP 系统和 SAP GUI 连接的配置
 
 请参阅此文章了解关于本主题的详细信息：<http://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
 
@@ -1392,13 +1367,12 @@ SAP GUI 不会立即连接到运行中的任何 SAP 实例（端口 32xx），�
 
 如 [Security Settings for the SAP Message Server](https://help.sap.com/saphelp_nwpi71/helpdata/en/47/c56a6938fb2d65e10000000a42189c/content.htm)（SAP Message Server 安全设置）中所述
 
-## <a name="96a77628-a05e-475d-9df3-fb82217e8f14"></a>SAP 实例的仅限云部署的概念
 
 ### <a name="3e9c3690-da67-421a-bc3f-12c520d99a30"></a>用于 SAP NetWeaver 演示/培训方案的单一虚拟机
 
 ![运行具有相同 VM 名称且在 Azure 云服务中隔离的单一 VM SAP 演示系统][planning-guide-figure-1700]
 
-在此方案中（请参阅本文档的[仅限云][planning-guide-2.1]一章），我们将要实施一个典型的培训/演示系统方案，其中的整个培训/演示方案包含在单个 VM 中。 我们假设部署是通过 VM 映像模板完成的。 另外，我们假设其中的多个演示/培训 VM 需要与同名的 VM 部署在一起。
+在此方案中，我们将要实施一个典型的培训/演示系统方案，其中的整个培训/演示方案包含在单个 VM 中。 我们假设部署是通过 VM 映像模板完成的。 另外，我们假设其中的多个演示/培训 VM 需要与同名的 VM 部署在一起。 整个培训系统未连接到本地资产，与混合部署相反。
 
 假设已根据本文档的[为 Azure 准备包含 SAP 的 VM][planning-guide-5.2] 一章的某些部分中所述创建了一个 VM 映像。
 
@@ -1445,7 +1419,7 @@ $pip = New-AzureRmPublicIpAddress -Name SAPERPDemoPIP -ResourceGroupName $rgName
 $nic = New-AzureRmNetworkInterface -Name SAPERPDemoNIC -ResourceGroupName $rgName -Location "North Europe" -Subnet $vnet.Subnets[0] -PublicIpAddress $pip
 ```
 
-* 创建虚拟机。 对于仅限云的方案，每个 VM 的名称都是相同的。 这些 VM 中的 SAP NetWeaver 实例的 SAP SID 也是相同的。 在 Azure 资源组中，VM 的名称需要唯一，但是，在不同的 Azure 资源组中，可以运行同名的 VM。 Windows 的默认“Administrator”帐户和 Linux 的“root”帐户无效。 因此，新的管理员用户名需要与密码一起定义。 此外，还需要定义 VM 的大小。
+* 创建虚拟机。 对于此方案，每个 VM 都具有相同的名称。 这些 VM 中的 SAP NetWeaver 实例的 SAP SID 也是相同的。 在 Azure 资源组中，VM 的名称需要唯一，但是，在不同的 Azure 资源组中，可以运行同名的 VM。 Windows 的默认“Administrator”帐户和 Linux 的“root”帐户无效。 因此，新的管理员用户名需要与密码一起定义。 此外，还需要定义 VM 的大小。
 
 ```powershell
 #####
@@ -1560,7 +1534,7 @@ az network public-ip create --resource-group $rgName --name SAPERPDemoPIP --loca
 az network nic create --resource-group $rgName --location "North Europe" --name SAPERPDemoNIC --public-ip-address SAPERPDemoPIP --subnet Subnet1 --vnet-name SAPERPDemoVNet
 ```
 
-* 创建虚拟机。 对于仅限云的方案，每个 VM 的名称都是相同的。 这些 VM 中的 SAP NetWeaver 实例的 SAP SID 也是相同的。 在 Azure 资源组中，VM 的名称需要唯一，但是，在不同的 Azure 资源组中，可以运行同名的 VM。 Windows 的默认“Administrator”帐户和 Linux 的“root”帐户无效。 因此，新的管理员用户名需要与密码一起定义。 此外，还需要定义 VM 的大小。
+* 创建虚拟机。 对于此方案，每个 VM 都具有相同的名称。 这些 VM 中的 SAP NetWeaver 实例的 SAP SID 也是相同的。 在 Azure 资源组中，VM 的名称需要唯一，但是，在不同的 Azure 资源组中，可以运行同名的 VM。 Windows 的默认“Administrator”帐户和 Linux 的“root”帐户无效。 因此，新的管理员用户名需要与密码一起定义。 此外，还需要定义 VM 的大小。
 
 ```
 #####
@@ -1614,7 +1588,7 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 
 ### <a name="implement-a-set-of-vms-that-communicate-within-azure"></a>实施一组需要在 Azure 中通信的 VM
 
-这种仅限云的方案是用于实现培训和演示目的的典型方案，其中，表示演示/培训方案的软件分散在多个 VM 中。 不同 VM 中安装的不同组件需要相互通信。 同样，在此方案中，无需本地网络通信或跨界方案。
+这种非混合方案是用于实现培训和演示目的的典型方案，其中，表示演示/培训方案的软件分散在多个 VM 中。 不同 VM 中安装的不同组件需要相互通信。 同样，在此方案中，无需本地网络通信或跨界方案。
 
 此方案是本文档的[用于 SAP NetWeaver 演示/培训的单一 VM 方案][planning-guide-7.1]一章中所述的安装的扩展。 在此情况下，要将更多的虚拟机添加到现有的资源组。 在以下示例中，训练布局包括一个 SAP ASCS/SCS VM、一个运行 DBMS 的 VM 和一个 SAP 应用程序服务器实例 VM。
 
@@ -1643,11 +1617,11 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 
 假设运行某个 SAP 布局，并想要在高端 DBMS 服务器的裸机、应用程序层的本地虚拟化环境与采用小型双层配置的 SAP 系统和 Azure IaaS 之间分割部署。 基本假设条件是一个 SAP 环境内的 SAP 系统需要彼此通信，并在公司内部部署其他许多软件组件，而不管其部署形式为何。 另外，对于使用 SAP GUI 或其他界面进行连接的最终用户而言，部署形式的差异不应造成任何体验差异。 仅当我们已通过站点到站点/多站点连接或类似于 Azure ExpressRoute 的专用连接将本地 Active Directory/OpenLDAP 和 DNS 服务扩展到了 Azure 系统时，才能满足这些条件。
 
-为了获取更多背景知识以理解有关 Azure 上的 SAP 的实施详细信息，建议阅读本文档的 [SAP 实例的仅限云部署的概念][planning-guide-7]一章，其中介绍了 Azure 的某些基本构造，并说明了应如何配合 Azure 中的 SAP 应用程序使用这些构造。
+
 
 ### <a name="scenario-of-an-sap-landscape"></a>SAP 布局的方案
 
-下图大致描述了跨界方案：
+下图大致描述了跨界或混合方案：
 
 ![本地与 Azure 资产之间的站点到站点连接][planning-guide-figure-2100]
 
@@ -1851,7 +1825,7 @@ Microsoft 已添加更多 VM 类型，这些类型在 vCPU 数量、内存，更
 
 ![公开的 SAP 门户][planning-guide-figure-2700]
 
-某些客户采用的一种特殊部署方案是向 Internet 直接公开 SAP 企业门户，同时通过站点到站点 VPN 隧道或 ExpressRoute 将虚拟机主机连接到公司网络。 对于这种方案，必须确保特定的端口已打开，而未被防火墙或网络安全组封锁。 如果想要在仅限云方案中从本地连接到 SAP Java 实例，需要应用相同的机制。
+某些客户采用的一种特殊部署方案是向 Internet 直接公开 SAP 企业门户，同时通过站点到站点 VPN 隧道或 ExpressRoute 将虚拟机主机连接到公司网络。 对于这种方案，必须确保特定的端口已打开，而未被防火墙或网络安全组封锁。 
 
 初始门户 URI 为 http(s):`<Portalserver`>:5XX00/irj，其中的端口值计算公式为 50000 + (系统编号 ?? 100)。 SAP 系统 00 的默认门户 URI 为 `<dns name`>.`<azure region`>.Cloudapp.azure.com:PublicPort/irj。 有关更多详细信息，请查看 <http://help.sap.com/saphelp_nw70ehp1/helpdata/de/a2/f9d7fed2adc340ab462ae159d19509/frameset.htm>。
 

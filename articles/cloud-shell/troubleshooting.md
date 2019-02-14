@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 72f85761db08652f0dff7f36fbcb2ef90654e078
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 73f2e7a37e1e51bf215cbac782b454d909f275dc
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334391"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568526"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的故障排除和限制
 
@@ -35,7 +35,7 @@ ms.locfileid: "52334391"
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>在锁定的网络环境中禁用 Cloud Shell
 
 - **详细信息**：管理员可能希望禁止其用户访问 Cloud Shell。 Cloud Shell 利用对 `ux.console.azure.com` 域的访问（可被拒绝），停止对 Cloud Shell 入口点的任何访问，包括 portal.azure.com、shell.azure.com、Visual Studio Code Azure 帐户扩展和 docs.microsoft.com。
-- **解决方案**：通过环境的网络设置限制对 `ux.console.azure.com` 的访问权限。 Cloud Shell 图标仍将存在于 portal.azure.com 中，但无法成功连接到该服务。
+- **解决方法**：通过环境的网络设置限制对 `ux.console.azure.com` 的访问权限。 Cloud Shell 图标仍将存在于 portal.azure.com 中，但无法成功连接到该服务。
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>存储对话框 - 错误：403 RequestDisallowedByPolicy
 
@@ -74,7 +74,7 @@ ms.locfileid: "52334391"
 > Azure VM 必须具有面向公众的 IP 地址。
 
 - **详细信息**：由于 WinRM 的默认 Windows 防火墙设置，用户可能会看到以下错误：`Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- 解决方法：运行 `Enable-AzureRmVMPSRemoting` 以启用目标计算机上 PowerShell 远程处理的所有方面。
+- **解决方法**：运行 `Enable-AzureRmVMPSRemoting` 以启用目标计算机上 PowerShell 远程处理的所有方面。
 
 ### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` 不会更新 Azure 驱动器中的结果
 
@@ -143,7 +143,7 @@ Cloud Shell 中包含的 `SqlServer` 模块仅具有对 PowerShell Core 的预�
 
 ### <a name="commands-that-create-gui-pop-ups-are-not-supported"></a>不支持创建 GUI 弹出窗口的命令
 
-如果用户运行一条会创建 Windows 对话框的命令（例如 `Connect-AzureAD` 或 `Connect-AzureRmAccount`），将看到如下所示的错误消息：`Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`。
+如果用户运行一条会创建 Windows 对话框的命令（例如 `Connect-AzureAD`、`Connect-AzureRmAccount` 或 `Connect-AzAccount`），将看到如下所示的错误消息：`Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`。
 
 ### <a name="tab-completion-can-throw-psreadline-exception"></a>Tab 自动补全可能引发 PSReadline 异常
 

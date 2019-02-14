@@ -13,25 +13,25 @@ ms.workload: identity
 ms.date: 01/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fa17b2bb440f574f63349c5bb51573725aa45876
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 71ede3d6eb35935e3fec32e8fd4bb71d6c698486
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191527"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697031"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure 资源管理器资源提供程序操作
 
 本文档列出了可对每个 Azure 资源管理器资源提供程序使用的操作。 可以在[自定义角色](custom-roles.md)中使用这些操作，针对 Azure 中的资源提供精细的[基于角色的访问控制 (RBAC)](overview.md)。 操作字符串具有以下格式：`{Company}.{ProviderName}/{resourceType}/{action}`
 
-资源提供程序操作一直在不断发展。 若要获取最新操作，请使用 [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) 或 [az provider operation list](/cli/azure/provider/operation#az-provider-operation-list)。
+资源提供程序操作一直在不断发展。 若要获取最新操作，请使用 [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) 或 [az provider operation list](/cli/azure/provider/operation#az-provider-operation-list)。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.AAD/domainServices/delete | 删除域服务 |
 > | 操作 | Microsoft.AAD/domainServices/oucontainer/delete | 删除 Ou 容器 |
@@ -47,7 +47,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | microsoft.aadiam/diagnosticsettings/delete | 删除诊断设置 |
 > | 操作 | microsoft.aadiam/diagnosticsettings/read | 读取诊断设置 |
@@ -57,7 +57,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftaddons"></a>Microsoft.Addons
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Addons/operations/read | 获取受支持的 RP 操作。 |
 > | 操作 | Microsoft.Addons/register/action | 向 Microsoft.Addons 注册指定的订阅 |
@@ -69,7 +69,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftadhybridhealthservice"></a>Microsoft.ADHybridHealthService
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ADHybridHealthService/addsservices/action | 为租户创建一个新林。 |
 > | 操作 | Microsoft.ADHybridHealthService/addsservices/addomainservicemembers/read | 获取指定的服务名称的所有服务器。 |
@@ -142,7 +142,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftadvisor"></a>Microsoft.Advisor
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Advisor/configurations/read | 获取配置 |
 > | 操作 | Microsoft.Advisor/configurations/write | 创建/更新配置 |
@@ -163,7 +163,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.AlertsManagement/actionRules/delete | 删除给定订阅中的操作规则。 |
 > | 操作 | Microsoft.AlertsManagement/actionRules/read | 获取输入筛选器的所有操作规则。 |
@@ -184,7 +184,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.AnalysisServices/locations/checkNameAvailability/action | 检查给定的 Analysis Server 名称是否有效且未被使用。 |
 > | 操作 | Microsoft.AnalysisServices/locations/operationresults/read | 检索指定操作结果的信息。 |
@@ -203,7 +203,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ApiManagement/checkNameAvailability/read | 检查提供的服务名称是否可用 |
 > | 操作 | Microsoft.ApiManagement/operations/read | 读取适用于 Microsoft.ApiManagement 资源的所有 API 操作 |
@@ -396,7 +396,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Authorization/checkAccess/action | 查看调用方是否有权执行特定操作 |
 > | 操作 | Microsoft.Authorization/classicAdministrators/delete | 从订阅中删除管理员。 |
@@ -432,7 +432,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Automation/automationAccounts/agentRegistrationInformation/read | 读取 Azure Automation DSC 的注册信息 |
 > | 操作 | Microsoft.Automation/automationAccounts/agentRegistrationInformation/regenerateKey/action | 写入重新生成 Azure Automation DSC 密钥的请求 |
@@ -549,7 +549,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.AzureActiveDirectory/b2cDirectories/delete | 删除 B2C 目录资源 |
 > | 操作 | Microsoft.AzureActiveDirectory/b2cDirectories/read | 查看 B2C 目录资源 |
@@ -560,7 +560,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.AzureStack/Operations/read | 获取资源提供程序操作的属性 |
 > | 操作 | Microsoft.AzureStack/register/action | 使用 Microsoft.AzureStack 资源提供程序注册订阅 |
@@ -577,7 +577,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Batch/batchAccounts/applications/delete | 删除应用程序 |
 > | 操作 | Microsoft.Batch/batchAccounts/applications/read | 列出应用程序，或获取应用程序的属性 |
@@ -614,7 +614,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Billing/billingAccounts/departments/read | 列出计费帐户范围内的所有部门 |
 > | 操作 | Microsoft.Billing/billingAccounts/enrollmentAccounts/read | 列出计费帐户范围内的所有注册帐户 |
@@ -627,7 +627,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.BingMaps/mapApis/Delete | 删除操作 |
 > | 操作 | Microsoft.BingMaps/mapApis/listSecrets/action | 列出机密 |
@@ -640,7 +640,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Blueprint/blueprintAssignments/assignmentOperations/read | 读取任何蓝图项目 |
 > | 操作 | Microsoft.Blueprint/blueprintAssignments/delete | 删除任何蓝图项目 |
@@ -661,7 +661,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.BotService/botServices/channels/delete | 删除机器人服务 |
 > | 操作 | Microsoft.BotService/botServices/channels/read | 读取机器人服务 |
@@ -678,7 +678,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Cache/checknameavailability/action | 检查某个名称是否可用于新的用于 Redis 的 Azure 缓存 |
 > | 操作 | Microsoft.Cache/locations/operationresults/read | 获取之前将“Location”标头返回给客户端的长时间运行的操作结果 |
@@ -710,7 +710,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Capacity/appliedreservations/read | 读取所有预订 |
 > | 操作 | Microsoft.Capacity/calculateprice/action | 计算任何预留价格 |
@@ -741,7 +741,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Cdn/CheckNameAvailability/action |  |
 > | 操作 | Microsoft.Cdn/CheckResourceUsage/action |  |
@@ -804,7 +804,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.CertificateRegistration/certificateOrders/certificates/Delete | 删除现有证书 |
 > | 操作 | Microsoft.CertificateRegistration/certificateOrders/certificates/Read | 获取证书列表 |
@@ -828,7 +828,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ClassicCompute/capabilities/read | 显示功能 |
 > | 操作 | Microsoft.ClassicCompute/checkDomainNameAvailability/action | 检查给定域名的可用性。 |
@@ -943,7 +943,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ClassicNetwork/expressroutecrossconnections/operationstatuses/read | 获取快速路由交叉连接操作状态。 |
 > | 操作 | Microsoft.ClassicNetwork/expressroutecrossconnections/peerings/delete | 删除快速路由交叉连接对等互连。 |
@@ -1020,7 +1020,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ClassicStorage/capabilities/read | 显示功能 |
 > | 操作 | Microsoft.ClassicStorage/checkStorageAccountAvailability/action | 检查存储帐户的可用性。 |
@@ -1068,7 +1068,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.CognitiveServices/accounts/delete | 删除 API 帐户 |
 > | 操作 | Microsoft.CognitiveServices/accounts/listKeys/action | 列出密钥 |
@@ -1084,7 +1084,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Commerce/RateCard/read | 返回给定订阅的套餐数据、资源/计量元数据和费率。 |
 > | 操作 | Microsoft.Commerce/UsageAggregates/read | 检索订阅的 Microsoft Azure 消耗量。 结果包含特定时间范围内的聚合用量数据、订阅和资源相关信息。 |
@@ -1092,7 +1092,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Compute/availabilitySets/delete | 删除可用性集 |
 > | 操作 | Microsoft.Compute/availabilitySets/read | 获取可用性集的属性 |
@@ -1218,7 +1218,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftconsumption"></a>Microsoft.Consumption
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Consumption/balances/read | 列出管理组的计费周期的使用情况摘要。 |
 > | 操作 | Microsoft.Consumption/budgets/delete | 按订阅或管理组删除预算。 |
@@ -1247,7 +1247,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ContainerInstance/containerGroups/containers/exec/action | 执行到特定容器中。 |
 > | 操作 | Microsoft.ContainerInstance/containerGroups/containers/logs/read | 获取特定容器的日志。 |
@@ -1269,7 +1269,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ContainerRegistry/checkNameAvailability/read | 检查容器注册表名称是否可用。 |
 > | 操作 | Microsoft.ContainerRegistry/locations/deleteVirtualNetworkOrSubnets/action | 向 Microsoft.ContainerRegistry 通知正在删除虚拟网络或子网 |
@@ -1333,7 +1333,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ContainerService/containerServices/delete | 删除容器服务 |
 > | 操作 | Microsoft.ContainerService/containerServices/read | 获取容器服务 |
@@ -1364,7 +1364,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ContentModerator/applications/delete | 删除操作 |
 > | 操作 | Microsoft.ContentModerator/applications/listSecrets/action | 列出机密 |
@@ -1379,7 +1379,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.CostManagement/dimensions/read | 按范围列出所有受支持的维度。 |
 > | 操作 | Microsoft.CostManagement/exports/action | 运行指定的导出。 |
@@ -1394,7 +1394,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.CustomerInsights/hubs/adobemetadata/action | 创建或更新任何 Azure Customer Insights Adobe 元数据 |
 > | 操作 | Microsoft.CustomerInsights/hubs/adobemetadata/read | 读取任何 Azure Customer Insights Adobe 元数据 |
@@ -1499,7 +1499,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DataBox/jobs/bookShipmentPickUp/action | 允许为退件预订提货。 |
 > | 操作 | Microsoft.DataBox/jobs/cancel/action | 取消正在进行的订单。 |
@@ -1515,7 +1515,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DataBoxEdge/dataBoxEdgeDevices/alerts/read | 列出或获取警报 |
 > | 操作 | Microsoft.DataBoxEdge/dataBoxEdgeDevices/alerts/read | 列出或获取警报 |
@@ -1560,7 +1560,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Databricks/register/action | 注册到 Databricks。 |
 > | 操作 | Microsoft.Databricks/workspaces/delete | 删除 Databricks 工作区。 |
@@ -1573,7 +1573,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DataCatalog/catalogs/delete | 删除目录。 |
 > | 操作 | Microsoft.DataCatalog/catalogs/read | 获取订阅或资源组下一个或多个目录的属性。 |
@@ -1586,7 +1586,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DataFactory/checkazuredatafactorynameavailability/read | 检查数据工厂名称是否可用。 |
 > | 操作 | Microsoft.DataFactory/datafactories/activitywindows/read | 使用指定的参数读取数据工厂中的活动时段。 |
@@ -1687,7 +1687,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DataLakeAnalytics/accounts/computePolicies/delete | 删除计算策略。 |
 > | 操作 | Microsoft.DataLakeAnalytics/accounts/computePolicies/read | 获取有关计算策略的信息。 |
@@ -1719,7 +1719,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DataLakeStore/accounts/delete | 删除 DataLakeStore 帐户。 |
 > | 操作 | Microsoft.DataLakeStore/accounts/enableKeyVault/action | 为 DataLakeStore 帐户启用 KeyVault。 |
@@ -1746,7 +1746,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DataMigration/locations/operationResults/read | 获取与“202 已接受”响应相关的长时间运行操作的状态 |
 > | 操作 | Microsoft.DataMigration/locations/operationStatuses/read | 获取与“202 已接受”响应相关的长时间运行操作的状态 |
@@ -1778,7 +1778,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DBforMariaDB/locations/performanceTiers/read | 返回可用的性能层列表。 |
 > | 操作 | Microsoft.DBforMariaDB/performanceTiers/read | 返回可用的性能层列表。 |
@@ -1805,7 +1805,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DBforMySQL/locations/performanceTiers/read | 返回可用的性能层列表。 |
 > | 操作 | Microsoft.DBforMySQL/performanceTiers/read | 返回可用的性能层列表。 |
@@ -1832,7 +1832,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DBforPostgreSQL/locations/performanceTiers/read | 返回可用的性能层列表。 |
 > | 操作 | Microsoft.DBforPostgreSQL/performanceTiers/read | 返回可用的性能层列表。 |
@@ -1865,7 +1865,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Devices/checkNameAvailability/Action | 检查 IotHub 名称是否可用 |
 > | 操作 | Microsoft.Devices/checkProvisioningServiceNameAvailability/Action | 检查预配服务名称是否可用 |
@@ -1953,7 +1953,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DevSpaces/controllers/delete | 删除 Azure Dev Spaces 控制器和数据平面服务 |
 > | 操作 | Microsoft.DevSpaces/controllers/listConnectionDetails/action | 列出 Azure Dev Spaces 控制器基础结构的连接详细信息 |
@@ -1964,7 +1964,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DevTestLab/labCenters/delete | 删除实验室中心。 |
 > | 操作 | Microsoft.DevTestLab/labCenters/read | 读取实验室中心。 |
@@ -2071,7 +2071,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DocumentDB/databaseAccountNames/read | 检查名称可用性。 |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/backup/action | 提交配置备份的请求 |
@@ -2120,7 +2120,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DomainRegistration/checkDomainAvailability/Action | 检查是否可购买某个域 |
 > | 操作 | Microsoft.DomainRegistration/domains/Delete | 删除现有域。 |
@@ -2145,7 +2145,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftdynamicslcs"></a>Microsoft.DynamicsLcs
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DynamicsLcs/lcsprojects/clouddeployments/read | 显示属于用户的 Microsoft Dynamics Lifecycle Services 项目中的 Microsoft Dynamics AX 2012 R3 评估部署 |
 > | 操作 | Microsoft.DynamicsLcs/lcsprojects/clouddeployments/write | 在属于用户的 Microsoft Dynamics Lifecycle Services 项目中创建 Microsoft Dynamics AX 2012 R3 评估部署。 可从 Azure 管理门户管理部署 |
@@ -2158,7 +2158,7 @@ ms.locfileid: "55191527"
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.EventGrid/eventSubscriptions/delete | 删除 eventSubscription |
 > | 操作 | Microsoft.EventGrid/eventSubscriptions/getFullUrl/action | 获取事件订阅的完整 URL |
@@ -2195,7 +2195,7 @@ ms.locfileid: "55191527"
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.EventHub/checkNameAvailability/action | 检查给定订阅下的命名空间可用性。 |
 > | 操作 | Microsoft.EventHub/checkNamespaceAvailability/action | 检查给定订阅下的命名空间可用性。 已弃用此 API，请改用 CheckNameAvailability。 |
@@ -2255,7 +2255,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftfeatures"></a>Microsoft.Features
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Features/features/read | 获取订阅的功能。 |
 > | 操作 | Microsoft.Features/operations/read | 获取操作列表。 |
@@ -2267,7 +2267,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.GuestConfiguration/guestConfigurationAssignments/read | 获取来宾配置分配。 |
 > | 操作 | Microsoft.GuestConfiguration/guestConfigurationAssignments/reports/read | 获取来宾配置分配报告。 |
@@ -2276,7 +2276,7 @@ ms.locfileid: "55191527"
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.HDInsight/clusters/applications/delete | 删除 HDInsight 群集的应用程序 |
 > | 操作 | Microsoft.HDInsight/clusters/applications/read | 获取 HDInsight 群集的应用程序 |
@@ -2297,7 +2297,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ImportExport/jobs/delete | 删除现有的作业。 |
 > | 操作 | Microsoft.ImportExport/jobs/listBitLockerKeys/action | 获取指定作业的 BitLocker 密钥。 |
@@ -2309,7 +2309,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftinsights"></a>Microsoft.Insights
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Insights/ActionGroups/Delete | 删除操作组 |
 > | 操作 | Microsoft.Insights/ActionGroups/Read | 读取操作组 |
@@ -2581,7 +2581,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftintune"></a>Microsoft.Intune
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Intune/diagnosticsettings/delete | 删除诊断设置 |
 > | 操作 | Microsoft.Intune/diagnosticsettings/read | 读取诊断设置 |
@@ -2591,7 +2591,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.IoTCentral/checkNameAvailability/action | 检查 IoT Central 应用程序名称是否可用 |
 > | 操作 | Microsoft.IoTCentral/checkSubdomainAvailability/action | 检查 IoT Central 应用程序子域是否可用 |
@@ -2604,7 +2604,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.IoTSpaces/Graph/delete | 删除 Microsoft.IoTSpaces Graph 资源 |
 > | 操作 | Microsoft.IoTSpaces/Graph/read | 获取 Microsoft.IoTSpaces Graph 资源 |
@@ -2614,7 +2614,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.KeyVault/checkNameAvailability/read | 检查 Key Vault 名称是否有效且未被使用 |
 > | 操作 | Microsoft.KeyVault/deletedVaults/read | 查看软删除的 Key Vault 的属性 |
@@ -2640,7 +2640,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Kusto/Clusters/Databases/DataConnections/delete | 删除数据连接资源。 |
 > | 操作 | Microsoft.Kusto/Clusters/Databases/DataConnections/delete | 删除数据连接资源。 |
@@ -2661,7 +2661,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.LabServices/labAccounts/CreateLab/action | 在实验室帐户中创建实验室。 |
 > | 操作 | Microsoft.LabServices/labAccounts/delete | 删除实验室帐户。 |
@@ -2720,7 +2720,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.LocationBasedServices/accounts/delete | （已弃用：请使用 /providers/Microsoft.Maps）删除 Location Based Services 帐户。 |
 > | 操作 | Microsoft.LocationBasedServices/accounts/listKeys/action | （已弃用：请使用 /providers/Microsoft.Maps）列出 Location Based Services 帐户密钥 |
@@ -2732,7 +2732,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.LocationServices/accounts/delete | （已弃用：请使用 /providers/Microsoft.Maps）删除位置服务帐户。 |
 > | 操作 | Microsoft.LocationServices/accounts/listKeys/action | （已弃用：请使用 /providers/Microsoft.Maps）列出 Location Based Services 帐户密钥 |
@@ -2744,7 +2744,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | DataAction | Microsoft.LogAnalytics/logs/ADAssessmentRecommendation/read | 从 ADAssessmentRecommendation 表读取数据 |
 > | DataAction | Microsoft.LogAnalytics/logs/ADReplicationResult/read | 从 ADReplicationResult 表读取数据 |
@@ -3003,7 +3003,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.MachineLearning/commitmentPlans/commitmentAssociations/move/action | 移动任何机器学习承诺计划关联 |
 > | 操作 | Microsoft.MachineLearning/commitmentPlans/commitmentAssociations/read | 读取任何机器学习承诺计划关联 |
@@ -3030,7 +3030,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.MachineLearningCompute/operationalizationClusters/checkUpdate/action | 检查操作群集的系统服务是否有可用更新 |
 > | 操作 | Microsoft.MachineLearningCompute/operationalizationClusters/delete | 删除任何托管帐户 |
@@ -3043,7 +3043,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.MachineLearningModelManagement/accounts/delete | 删除任何托管帐户 |
 > | 操作 | Microsoft.MachineLearningModelManagement/accounts/read | 读取任何托管帐户 |
@@ -3053,7 +3053,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.MachineLearningServices/locations/computeoperationstatus/read | 获取特定计算操作的状态 |
 > | 操作 | Microsoft.MachineLearningServices/locations/usages/read | 某个订阅中 aml 计算资源的使用情况报告 |
@@ -3073,7 +3073,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ManagedIdentity/register/action | 注册托管标识资源提供程序的订阅 |
 > | 操作 | Microsoft.ManagedIdentity/userAssignedIdentities/assign/action | RBAC 操作用于将现有用户分配标识分配给资源 |
@@ -3084,7 +3084,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftmanagedlab"></a>Microsoft.ManagedLab
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ManagedLab/labAccounts/CreateLab/action | 在实验室帐户中创建实验室。 |
 > | 操作 | Microsoft.ManagedLab/labAccounts/delete | 删除实验室帐户。 |
@@ -3108,7 +3108,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftmanagement"></a>Microsoft.Management
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Management/checkNameAvailability/action | 检查指定的管理组名称是否有效且唯一。 |
 > | 操作 | Microsoft.Management/getEntities/action | 列出已通过身份验证的用户的所有实体（管理组、订阅等）。 |
@@ -3122,7 +3122,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftmaps"></a>Microsoft.Maps
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | DataAction | Microsoft.Maps/accounts/data/read | 授予对映射帐户的数据读权限。 |
 > | 操作 | Microsoft.Maps/accounts/delete | 删除 Maps 帐户。 |
@@ -3138,7 +3138,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Marketplace/offerTypes/publishers/offers/plans/agreements/read | 返回一个协议。 |
 > | 操作 | Microsoft.Marketplace/offerTypes/publishers/offers/plans/agreements/write | 接受已签名的协议。 |
@@ -3150,7 +3150,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.MarketplaceApps/ClassicDevServices/delete | 对经典开发人员服务资源执行 DELETE 操作。 |
 > | 操作 | Microsoft.MarketplaceApps/ClassicDevServices/listSecrets/action | 获取经典开发人员服务资源管理密钥。 |
@@ -3162,7 +3162,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftmarketplaceordering"></a>Microsoft.MarketplaceOrdering
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.MarketplaceOrdering/agreements/offers/plans/cancel/action | 取消给定市场项的协议 |
 > | 操作 | Microsoft.MarketplaceOrdering/agreements/offers/plans/read | 返回给定市场项的协议 |
@@ -3174,7 +3174,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftmedia"></a>Microsoft.Media
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Media/checknameavailability/action | 检查媒体服务帐户名称是否可用 |
 > | 操作 | Microsoft.Media/locations/checkNameAvailability/action | 检查媒体服务帐户名称是否可用 |
@@ -3241,7 +3241,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Migrate/locations/assessmentOptions/read | 获取给定位置中提供的评估选项 |
 > | 操作 | Microsoft.Migrate/locations/checknameavailability/action | 在给定位置检查给定订阅的资源名称的可用性 |
@@ -3268,7 +3268,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.NetApp/activeDirectories/delete |  |
 > | 操作 | Microsoft.NetApp/activeDirectories/read |  |
@@ -3293,7 +3293,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Network/applicationGatewayAvailableRequestHeaders/read | 获取应用程序网关的可用请求标头 |
 > | 操作 | Microsoft.Network/applicationGatewayAvailableResponseHeaders/read | 获取应用程序网关的可用响应标头 |
@@ -3673,7 +3673,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.NotificationHubs/CheckNamespaceAvailability/action | 检查给定的命名空间资源名称是否在 NotificationHub 服务中可用。 |
 > | 操作 | Microsoft.NotificationHubs/Namespaces/authorizationRules/action | 获取命名空间授权规则说明列表。 |
@@ -3706,7 +3706,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftoffazure"></a>Microsoft.OffAzure
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.OffAzure/HyperVSites/clusters/read | 获取 Hyper-V 群集的属性 |
 > | 操作 | Microsoft.OffAzure/HyperVSites/clusters/read | 获取 Hyper-V 群集的属性 |
@@ -3771,7 +3771,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.OperationalInsights/linkTargets/read | 列出不与 Azure 订阅关联的现有帐户。 要将此 Azure 订阅链接到工作区，请使用此操作在“创建工作区”操作的客户 ID 属性中返回的客户 ID。 |
 > | 操作 | microsoft.operationalinsights/operations/read | 列出所有可用的 OperationalInsights Rest API 操作。 |
@@ -3990,7 +3990,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.OperationsManagement/managementAssociations/delete | 删除现有管理关联 |
 > | 操作 | Microsoft.OperationsManagement/managementAssociations/read | 获取现有管理关联 |
@@ -4006,7 +4006,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.PolicyInsights/asyncOperationResults/read | 获取异步操作结果。 |
 > | 操作 | Microsoft.PolicyInsights/policyEvents/queryResults/action | 查询有关策略事件的信息。 |
@@ -4027,7 +4027,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftportal"></a>Microsoft.Portal
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Portal/consoles/delete | 删除 Cloud Shell 实例。 |
 > | 操作 | Microsoft.Portal/consoles/write | 创建或更新 Cloud Shell 实例。 |
@@ -4042,7 +4042,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.PowerBIDedicated/capacities/checkNameAvailability/action | 检查给定的 Power BI 专用容量名称是否有效且未被使用。 |
 > | 操作 | Microsoft.PowerBIDedicated/capacities/delete | 删除 Power BI 专用容量。 |
@@ -4060,7 +4060,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp 是服务使用的内部操作 |
 > | 操作 | Microsoft.RecoveryServices/locations/allocateStamp/action | AllocateStamp 是服务使用的内部操作 |
@@ -4230,7 +4230,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Relay/checkNameAvailability/action | 检查给定订阅下的命名空间可用性。 |
 > | 操作 | Microsoft.Relay/checkNamespaceAvailability/action | 检查给定订阅下的命名空间可用性。 已弃用此 API，请改用 CheckNameAvailability。 |
@@ -4281,7 +4281,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ResourceHealth/AvailabilityStatuses/current/read | 获取指定资源的可用性状态 |
 > | 操作 | Microsoft.ResourceHealth/AvailabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
@@ -4300,7 +4300,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftresources"></a>Microsoft.Resources
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Resources/checkPolicyCompliance/action | 参照资源策略检查给定资源的符合性状态。 |
 > | 操作 | Microsoft.Resources/checkResourceName/action | 检查资源名称的有效性。 |
@@ -4342,7 +4342,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Scheduler/jobcollections/delete | 删除作业集合。 |
 > | 操作 | Microsoft.Scheduler/jobcollections/disable/action | 禁用作业集合。 |
@@ -4359,7 +4359,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Search/checkNameAvailability/action | 检查服务名称的可用性。 |
 > | 操作 | Microsoft.Search/operations/read | 列出 Microsoft.Search 提供程序的所有可用操作。 |
@@ -4378,7 +4378,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Security/advancedThreatProtectionSettings/read | 获取资源的高级威胁防护设置 |
 > | 操作 | Microsoft.Security/advancedThreatProtectionSettings/write | 更新资源的高级威胁防护设置 |
@@ -4431,7 +4431,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftsecuritygraph"></a>Microsoft.SecurityGraph
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.SecurityGraph/diagnosticsettings/delete | 删除诊断设置 |
 > | 操作 | Microsoft.SecurityGraph/diagnosticsettings/read | 读取诊断设置 |
@@ -4441,7 +4441,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ServiceBus/checkNameAvailability/action | 检查给定订阅下的命名空间可用性。 |
 > | 操作 | Microsoft.ServiceBus/checkNamespaceAvailability/action | 检查给定订阅下的命名空间可用性。 已弃用此 API，请改用 CheckNameAvailability。 |
@@ -4520,7 +4520,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ServiceFabric/clusters/applications/delete | 删除任何应用程序 |
 > | 操作 | Microsoft.ServiceFabric/clusters/applications/read | 读取任何应用程序 |
@@ -4552,7 +4552,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.SignalRService/locations/checknameavailability/action | 检查某个名称是否可用于新的 SignalR 服务 |
 > | 操作 | Microsoft.SignalRService/locations/operationresults/signalr/read | 查询异步操作的状态 |
@@ -4572,7 +4572,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Solutions/applicationDefinitions/delete | 删除应用程序定义。 |
 > | 操作 | Microsoft.Solutions/applicationDefinitions/read | 检索应用程序定义列表。 |
@@ -4589,7 +4589,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Sql/checkNameAvailability/action | 验证给定的服务器名称是否可用于在全球范围内对给定的订阅进行预配。 |
 > | 操作 | Microsoft.Sql/instancePools/delete | 删除实例池 |
@@ -4912,7 +4912,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Storage/checknameavailability/read | 检查帐户名称是否有效且未被使用。 |
 > | 操作 | Microsoft.Storage/locations/deleteVirtualNetworkOrSubnets/action | 向 Microsoft.Storage 通知正在删除虚拟网络或子网 |
@@ -4970,7 +4970,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | microsoft.storagesync/locations/checkNameAvailability/action | 检查该存储同步服务名称是否有效且未被使用。 |
 > | 操作 | microsoft.storagesync/locations/workflows/operations/read | 获取异步操作的状态 |
@@ -5007,7 +5007,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.StorSimple/managers/accessControlRecords/delete | 删除访问控制记录 |
 > | 操作 | Microsoft.StorSimple/managers/accessControlRecords/operationResults/read | 列出或获取操作结果 |
@@ -5182,7 +5182,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.StreamAnalytics/locations/quotas/Read | 读取流分析订阅配额 |
 > | 操作 | Microsoft.StreamAnalytics/operations/Read | 读取流分析操作 |
@@ -5222,7 +5222,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftsubscription"></a>Microsoft.Subscription
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Subscription/CreateSubscription/action | 创建 Azure 订阅 |
 > | 操作 | Microsoft.Subscription/register/action | 使用 Microsoft.Subscription 资源提供程序注册订阅 |
@@ -5232,7 +5232,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftsupport"></a>Microsoft.Support
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Support/register/action | 注册到支持资源提供程序 |
 > | 操作 | Microsoft.Support/supportTickets/read | 获取支持票证详细信息（包括状态、严重性、联系详细信息和通信），或获取各个订阅中的支持票证列表。 |
@@ -5241,7 +5241,7 @@ ms.locfileid: "55191527"
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.TimeSeriesInsights/environments/accesspolicies/delete | 删除访问策略。 |
 > | 操作 | Microsoft.TimeSeriesInsights/environments/accesspolicies/read | 获取访问策略的属性。 |
@@ -5261,7 +5261,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftvisualstudio"></a>Microsoft.VisualStudio
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.VisualStudio/Account/Delete | 删除帐户 |
 > | 操作 | Microsoft.VisualStudio/Account/Extension/Read | 读取帐户/扩展 |
@@ -5280,7 +5280,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftweb"></a>microsoft.web
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | microsoft.web/apimanagementaccounts/apiacls/read | 获取 API 管理帐户 Apiacls。 |
 > | 操作 | microsoft.web/apimanagementaccounts/apis/apiacls/delete | 删除 API 管理帐户 API Apiacls。 |
@@ -5675,7 +5675,7 @@ ms.locfileid: "55191527"
 ## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | Operation | 说明 |
+> | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.WorkloadMonitor/components/read | 获取资源的组件 |
 > | 操作 | Microsoft.WorkloadMonitor/componentsSummary/read | 获取组件的摘要 |

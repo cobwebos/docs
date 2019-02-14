@@ -9,15 +9,15 @@ ms.reviewer: jasonwhowell
 ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: conceptual
 ms.date: 08/02/2017
-ms.openlocfilehash: 474478c8049dd97558b49b1df4b00655268fc0b3
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 905100f8a1444f6f6ee18d3bf9e9eab2ede8c805
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044092"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815194"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>对 Azure Data Lake Analytics 使用作业浏览器和作业视图
-Azure Data Lake Analytics 服务将已提交作业存档在[查询存储](#query-store)中。 本文介绍如何在用于 Visual Studio 的 Azure Data Lake 工具中使用作业浏览器和作业视图查找历史作业消息。 
+Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 本文介绍如何在用于 Visual Studio 的 Azure Data Lake 工具中使用作业浏览器和作业视图查找历史作业消息。 
 
 默认情况下，Data Lake Analytics 服务将作业存档 30 天。 通过配置自定义过期策略，可在 Azure 门户中配置有效期。 过期后，无法访问作业信息。 
 
@@ -63,7 +63,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在[查询存储](#query
     * 编译/已排队/正在运行：正在准备/已排队/正在运行阶段所用的时钟时间。
     * 帐户：用于运行作业的 Data Lake Analytics 帐户。
     * 作者：提交作业的用户，可以是真正的用户帐户，也可以是系统帐户。
-    * 优先级：作业优先级。 编号越低，优先级越高。 仅影响作业在队列中的顺序。 设置更高优先级不能优先于正在运行的作业。
+    * 优先级：作业的优先级。 编号越低，优先级越高。 仅影响作业在队列中的顺序。 设置更高优先级不能优先于正在运行的作业。
     * 并行度：请求的 Azure Data Lake Analytics 单元 (ADLAUs) 最大并发数，又称顶点。 目前，一个顶点等同于一台配有两个虚拟核心和 6 GB RAM 的 VM，但将来可在 Data Lake Analytics 更新中对此进行升级。
     * 剩余字节数：作业完成前需处理的字节数。
     * 读取/写入字节数：自作业开始运行起，已读取/写入的字节数。
@@ -88,7 +88,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在[查询存储](#query
     * SV1 提取：由数字和操作方法命名的阶段名称。
     * 84 个顶点：此阶段的顶点总数。 上图说明此阶段分成了多少项工作。
     * 12.90 秒/顶点：此阶段的顶点平均执行时间。 此图按 SUM（每个顶点的执行时间）/（顶点总数）计算。 这意味着，如果可以并行执行所有顶点，整个阶段的完成时间约为 12.90 秒。 另外，如果按序列完成此阶段中的所有工作，所需时间为：顶点数 * 平均时间。
-    * 写入 850,895 行：此阶段写入的总行数。
+    * 写入了 850,895 行：此阶段写入的总行数。
     * R/W：此阶段读取/写入的数据量（以字节为单位）。
     * 颜色：本阶段使用颜色来指示不同的顶点状态。
       
@@ -126,10 +126,10 @@ Azure Data Lake Analytics 服务将已提交作业存档在[查询存储](#query
     
       ![Azure Data Lake Analytics 作业图热度地图示例](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-heat-map-example.png)
     
-    * 进度：作业执行进度，请参阅[阶段信息](#stage-information)中的相关信息。
+    * 进度：作业执行进度，请参阅阶段信息中的相关信息。
     * 数据读取/写入：每个阶段读取/写入的总数据量热度地图。
     * 计算时间：SUM（每个顶点执行时间）热度地图，可将其视作仅在 1 个顶点内执行阶段内所有工作所用的时间。
-    * 平均执行时间/节点：SUM（每个顶点执行时间）/（顶点数）热度地图。 这意味着，如果可以并行执行所有顶点，整个阶段会在此时间范围内完成。
+    * 每个节点的平均执行时间：SUM（每个顶点执行时间）/（顶点数）热度地图。 这意味着，如果可以并行执行所有顶点，整个阶段会在此时间范围内完成。
     * 输入/输出吞吐量：每个阶段的输入/输出吞吐量热度地图，通过此热度地图，可确认作业是否为 I/O 边界作业。
 * 元数据操作
   
@@ -138,7 +138,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在[查询存储](#query
     ![Azure Data Lake Analytics 作业视图元数据操作](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-metadata-operations.png)
 * 状态历史记录
   
-    也可在作业摘要中查看状态历史记录，还可在此处获得更多详细信息。 可找到作业准备/排队/开始运行/结束时间等详细信息。 此外，还可找到作业已编译次数 (CcsAttempts: 1)、作业分派到群集的实际时间（详细信息：将作业分派到集群）等。
+    也可在作业摘要中查看状态历史记录，还可在此处获得更多详细信息。 可找到作业准备/排队/开始运行/结束时间等详细信息。 此外，还可以找到作业已编译的次数（CcsAttempts：1）、作业实际分派到群集的时间（详细信息：将作业分派到群集），等等。
   
     ![Azure Data Lake Analytics 作业视图元数据状态历史记录](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-state-history.png)
 * 诊断
@@ -147,7 +147,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在[查询存储](#query
   
     ![Azure Data Lake Analytics 作业视图诊断](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-diagnostics.png)
   
-  * 警告：出现编译器警告时，此处显示警报。 警报显示后，可单击“x 问题”链接了解详细信息。
+  * 警告：出现编译器警告时，此处会显示警报。 警报显示后，可单击“x 问题”链接了解详细信息。
   * 顶点运行时间过长：如果任何顶点运行超时（如 5 小时），此处会显示问题。
   * 资源使用情况：如果所分配并行度多于或少于所需并行度，此处将出现问题。 此外，还可单击“资源使用情况”查看更多详细信息，并执行假设方案以找到更好的资源分配（有关详细信息，请参阅本指南）。
   * 内存检查：如果任何顶点占用超过 5 GB 内存，此处将出现问题。 如果作业执行占用内存超出系统限制，系统将终止作业执行。

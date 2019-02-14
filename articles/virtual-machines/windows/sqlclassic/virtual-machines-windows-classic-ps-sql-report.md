@@ -15,16 +15,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: 32be473ab93231805cdae097e3e984a2e74da973
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8c12190e3c34c3294d2735fdd228aafbf6073f12
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233076"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820107"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>使用 PowerShell 创建运行本机模式报表服务器的 Azure VM
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
 本主题说明并指导完成 SQL Server Reporting Services 本机模式报表服务器在 Azure 虚拟机中的部署和配置。 本文档中的步骤使用一系列手动步骤来创建虚拟机以及用于在 VM 上配置 Reporting Services 的 Windows PowerShell 脚本。 配置脚本包括为 HTTP 或 HTTPs 打开防火墙端口。
 
@@ -77,8 +77,8 @@ ms.locfileid: "51233076"
    * **可用性集**：无。
    * **终结点**：保留**远程桌面**和 **PowerShell** 终结点，然后添加一个 HTTP 或 HTTPS 终结点，具体取决于环境。
      
-     * **HTTP**：默认公共和专用端口均为 **80**。 请注意，如果使用 80 之外的专用端口，请修改 http 脚本中的 **$HTTPport = 80**。
-     * **HTTPS**：默认公共和专用端口均为 **443**。 最佳安全方案是更改私有端口并配置防火墙和报表服务器以使用私有端口。 有关终结点的详细信息，请参阅[如何设置与虚拟机的通信](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 请注意，如果使用 443 之外的端口，请更改 HTTPS 脚本中的参数 **$HTTPsport = 443**。
+     * **HTTP**：默认公共和专用端口均为 80。 请注意，如果使用 80 之外的专用端口，请修改 http 脚本中的 **$HTTPport = 80**。
+     * **HTTPS**：默认公共和专用端口均为 443。 最佳安全方案是更改私有端口并配置防火墙和报表服务器以使用私有端口。 有关终结点的详细信息，请参阅[如何设置与虚拟机的通信](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 请注意，如果使用 443 之外的端口，请更改 HTTPS 脚本中的参数 **$HTTPsport = 443**。
    * 单击“下一步”。 ![下一步](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 8. 在向导的最后一页上，保持选中默认的“安装 VM 代理”。 本主题中的步骤不使用 VM 代理，但如果计划保留此 VM，VM 代理和扩展将允许增强 CM。  有关 VM 代理的详细信息，请参阅 [VM 代理和扩展 – 第 1 部分](https://azure.microsoft.com/blog/2014/04/11/vm-agent-and-extensions-part-1/)。 安装并运行的一个默认扩展是“BGINFO”扩展，它在 VM 桌面上显示系统信息，如内部 IP 和驱动器可用空间。
 9. 单击“完成”。 ![确定](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
@@ -125,7 +125,7 @@ ms.locfileid: "51233076"
        例如，在下图中，VM 名称是 **ssrsnativecloud**，用户名是 **testuser**。
       
        ![登录名包含 VM 名称](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
-   2. 运行 mmc.exe。 有关详细信息，请参阅[如何：使用 MMC 管理单元查看证书](https://msdn.microsoft.com/library/ms788967.aspx)。
+   2. 运行 mmc.exe。 有关更多信息，请参阅[如何：使用 MMC 管理单元查看证书](https://msdn.microsoft.com/library/ms788967.aspx)。
    3. 在控制台应用程序“文件”菜单中，添加“证书”管理单元，在系统提示时选择“计算机帐户”，并单击“下一步”。
    4. 选择要管理的“本地计算机”，并单击“完成”。
    5. 单击“确定”，并展开“证书 – 个人”节点，最后单击“证书”。 证书以 VM 的 DNS 名称命名，并以 **cloudapp.net**.结尾。 右键单击证书名称，并单击“复制”。
@@ -141,7 +141,7 @@ ms.locfileid: "51233076"
 
 如果使用自签名的 SSL 证书，证书上的名称已经与 VM 的主机名匹配。 因此，计算机的 DNS 已全局注册并且可以从任何客户端访问。
 
-## <a name="step-3-configure-the-report-server"></a>步骤 3： 配置报表服务器
+## <a name="step-3-configure-the-report-server"></a>步骤 3：配置报表服务器
 本部分指导完成将 VM 配置为 Reporting Services 本机模式报表服务器。 可以使用以下方法之一来配置报表服务器：
 
 * 使用脚本来配置报表服务器
@@ -483,7 +483,7 @@ ms.locfileid: "51233076"
 9. 该脚本当前针对 Reporting Services 进行配置。 如果要为 Reporting Services 运行该脚本，则在 Get-WmiObject 语句上将命名空间路径的版本部分修改为“v11”。
 10. 运行该脚本。
 
-**验证**：若要验证基本报表服务器功能是否工作，请参阅本主题后面的[验证配置](#verify-the-connection)部分。 要验证证书绑定，请使用具有管理权限的身份打开命令提示符，并运行以下命令：
+**验证**：若要验证基本报表服务器功能是否工作，请参阅本主题后面的“验证配置”部分。 要验证证书绑定，请使用具有管理权限的身份打开命令提示符，并运行以下命令：
 
     netsh http show sslcert
 
@@ -505,7 +505,7 @@ ms.locfileid: "51233076"
 5. 在左窗格中，单击“Web 服务 URL”。
 6. 默认情况下，为 HTTP 端口 80 配置 RS 且 IP 为“全部分配”。 若要添加 HTTPS：
    
-   1. 在“SSL 证书”中：选择要使用的证书，例如，[VM 名称].cloudapp.net。 如果未列出证书，请参阅“第 2 步：创建服务器证书”部分，了解如何在 VM 上安装和信任证书的信息。
+   1. 在“SSL 证书”中：选择要使用的证书，例如，[VM 名称].cloudapp.net。 如果未列出证书，请参阅“步骤 2：创建服务器证书”部分，了解如何在 VM 上安装和信任证书的信息。
    2. 在“SSL 端口”下：选择 443。 如果使用不同的专用端口配置了 VM 中的 HTTPS 私有终结点，此处使用该值。
    3. 单击“应用”并等待操作完成。
 7. 在左窗格中，单击“数据库”。
@@ -573,7 +573,7 @@ ms.locfileid: "51233076"
 ## <a name="to-create-and-publish-reports-to-the-azure-virtual-machine"></a>创建报表并将其发布到 Azure 虚拟机
 下表汇总一些选项，可用于将现有报表从本地计算机发布到 Microsoft Azure 虚拟机上托管的报表服务器：
 
-* **RS.exe 脚本**：使用 RS.exe 脚本将报表项从现有报表服务器复制到 Microsoft Azure 虚拟机。 有关详细信息，请参阅[使用示例 Reporting Services rs.exe 脚本在报表服务器之间迁移内容](https://msdn.microsoft.com/library/dn531017.aspx)中的“本机模式到本机模式 – Microsoft Azure 虚拟机”部分。
+* **RS.exe script**：使用 RS.exe 脚本将报表项从现有报表服务器复制到 Microsoft Azure 虚拟机。 有关详细信息，请参阅[使用示例 Reporting Services rs.exe 脚本在报表服务器之间迁移内容](https://msdn.microsoft.com/library/dn531017.aspx)中的“本机模式到本机模式 – Microsoft Azure 虚拟机”部分。
 * **报表生成器**：虚拟机包括 Microsoft SQL Server 报表生成器的单击一次版本。 若要首次在虚拟机上启动报表生成器：
   
   1. 使用管理权限启动浏览器。

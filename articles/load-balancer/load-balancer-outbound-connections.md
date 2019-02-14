@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/01/2018
+ms.date: 02/05/2019
 ms.author: kumud
-ms.openlocfilehash: d8ca70efd3b1ba77b1b1bb0e11a9234e5fd440c4
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: f0ebb5cc913dda99d7e927ccf45c0f1478fa86c5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201374"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814820"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure 中的出站连接
 
@@ -34,17 +34,17 @@ Azure 使用源网络地址转换 (SNAT) 来执行此功能。 当多个专用 I
 有多种[出站方案](#scenarios)。 可根据需要结合这些方案。 请认真分析这些方案，以了解在部署模型和应用方案中应用这些方案时的功能、约束和模式。 查看有关[管理这些方案](#snatexhaust)的指导。
 
 >[!IMPORTANT] 
->标准负载均衡器为出站连接引入了新功能和不同的行为。   例如，如果存在内部标准负载均衡器并需要执行不同的步骤，则[场景 3](#defaultsnat) 不存在。   请仔细阅读整篇文档，了解整体概念和 SKU 之间的差异。
+>标准负载均衡器和标准公共 IP 为出站连接引入了新功能和不同的行为。  它们不同于基本 SKU。  如果在使用标准 SKU 时需要出站连接，则必须使用标准公共 IP 地址或标准公共负载均衡器显式定义它。  这包括在使用时创建出站连接和内部标准负载均衡器。  建议始终使用标准公共负载均衡器上的出站规则。  [方案 3](#defaultsnat)不适用于标准 SKU。  这意味着使用内部标准负载均衡器时，如果需要出站连接，则需要采取步骤为后端池中的 VM 创建出站连接。  在出站连接的上下文中，单独的 VM、可用性集中的所有 VM、VMSS 中的所有实例都是一个组。 这意味着，如果可用性集中的单个 VM 与标准 SKU 关联，则该可用性集中的所有 VM 实例现在都遵循相同的规则，就好像这些 VM 实例与标准 SKU 相关联一样，即使单个实例与标准 SKU 没有直接关联。  请仔细查看整个文档以了解整体概念，查看[标准负载均衡器](load-balancer-standard-overview.md)了解 SKU 之间的差异，并查看[出站规则](load-balancer-outbound-rules-overview.md)。  使用出站规则可以对出站连接的所有方面进行细化管理控制。
 
 ## <a name="scenarios"></a>方案概述
 
 Azure 负载均衡器和相关资源是使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)时显式定义的。  Azure 目前提供三种不同的方法实现 Azure 资源管理器资源的出站连接。 
 
-| 场景 | 方法 | IP 协议 | Description |
-| --- | --- | --- | --- |
-| [1.具有实例级公共 IP 地址的 VM（有或没有负载均衡器）](#ilpip) | SNAT，不使用端口伪装 | TCP、UDP、ICMP、ESP | Azure 使用分配实例 NIC 的 IP 配置的公共 IP。 此实例具有所有可用的临时端口。 |
-| [2.与 VM 关联的公共负载均衡器（实例上没有实例级公共 IP 地址）](#lb) | 使用负载均衡器前端进行端口伪装 (PAT) 的 SNAT | TCP、UDP |Azure 与多个专用 IP 地址共享公共负载均衡器前端的公共 IP 地址。 Azure 使用前端的临时端口进行 PAT。 |
-| [3.独立 VM（无负载均衡器，无实例级公共 IP 地址）](#defaultsnat) | 使用端口伪装 (PAT) 的 SNAT | TCP、UDP | Azure 自动指定用于 SNAT 的公共 IP 地址，与可用性集的多个专用 IP 地址共享此公共 IP 地址，并使用此公共 IP 地址的临时端口。 此方案是前述方案的回退方案。 如果需要可见性和控制，则我们不建议采用。 |
+| SKU | 场景 | 方法 | IP 协议 | 说明 |
+| --- | --- | --- | --- | --- |
+| 标准、基本 | [1.具有实例级公共 IP 地址的 VM（有或没有负载均衡器）](#ilpip) | SNAT，不使用端口伪装 | TCP、UDP、ICMP、ESP | Azure 使用分配实例 NIC 的 IP 配置的公共 IP。 此实例具有所有可用的临时端口。 在使用标准负载均衡器时，应使用[出站规则](load-balancer-outbound-rules-overview.md)显式定义出站连接 |
+| 标准、基本 | [2.与 VM 关联的公共负载均衡器（实例上没有实例级公共 IP 地址）](#lb) | 使用负载均衡器前端进行端口伪装 (PAT) 的 SNAT | TCP、UDP |Azure 与多个专用 IP 地址共享公共负载均衡器前端的公共 IP 地址。 Azure 使用前端的临时端口进行 PAT。 |
+| 无或基本 | [3.独立 VM（无负载均衡器，无实例级公共 IP 地址）](#defaultsnat) | 使用端口伪装 (PAT) 的 SNAT | TCP、UDP | Azure 自动指定用于 SNAT 的公共 IP 地址，与可用性集的多个专用 IP 地址共享此公共 IP 地址，并使用此公共 IP 地址的临时端口。 此方案是前述方案的回退方案。 如果需要可见性和控制，则我们不建议采用。 |
 
 如果不希望 VM 与 Azure 外部的公共 IP 地址空间中的终结点通信，则可以根据需要使用网络安全组 (NSG) 来阻止访问。 [阻止出站连接](#preventoutbound)部分详细介绍了 NSG。 本文不会介绍有关在无任何出站访问权限的情况下，如何设计和管理虚拟网络的设计和实施指导。
 
@@ -68,7 +68,7 @@ Azure 负载均衡器和相关资源是使用 [Azure 资源管理器](https://do
 
 SNAT 端口是按照[了解 SNAT 和 PAT](#snat) 部分中所述预先分配的。 它们是可能会耗尽的有限资源。 因此了解它们的[使用](#pat)方式很重要。 请查看[管理 SNAT 耗尽](#snatexhaust)，了解如何根据需要进行设计和缓解。
 
-如果[多个公共 IP 地址与一个负载均衡器基本版相关联](load-balancer-multivip-overview.md)，则所有这些公共 IP 地址都是[出站流的候选项](#multivipsnat)，并且会随机选择其中一个。  
+如果[多个公共 IP 地址与负载均衡器基本版相关联](load-balancer-multivip-overview.md)，则所有这些公共 IP 地址都是出站流的候选项，并且会随机选择其中一个。  
 
 若要监视负载均衡器基本版的出站连接运行状况，可以使用[用于负载均衡器的 Log Analytics](load-balancer-monitor-log.md) 和用于监视 SNAT 端口耗尽消息的[警报事件日志](load-balancer-monitor-log.md#alert-event-log)。
 
@@ -164,7 +164,7 @@ Azure 向每个 VM 的 NIC IP 配置预先分配 SNAT 端口。 将 IP 配置添
 | 801-1,000 | 32 |
 
 >[!NOTE]
-> 结合[多个前端](load-balancer-multivip-overview.md)使用标准负载均衡器时，上表中[每个前端 IP 地址的可用 SNAT 端口数目将会倍增](#multivipsnat)。 例如，如果某个后端池包含 50 个 VM 和 2 个负载均衡规则，并且每个 VM 使用独立的前端 IP 地址，则该后端池将为每个 IP 配置使用 2048 个 (2 x 1024) SNAT 端口。 参阅有关[多个前端](#multife)的详细信息。
+> 结合[多个前端](load-balancer-multivip-overview.md)使用标准负载均衡器时，上表中每个前端 IP 地址的可用 SNAT 端口数目将会倍增。 例如，如果某个后端池包含 50 个 VM 和 2 个负载均衡规则，并且每个 VM 使用独立的前端 IP 地址，则该后端池将为每个 IP 配置使用 2048 个 (2 x 1024) SNAT 端口。 参阅有关[多个前端](#multife)的详细信息。
 
 请记住，可用的 SNAT 端口数不会直接转换为流数。 可以针对多个唯一目标重用单个 SNAT 端口。 仅当需要使流保持唯一时，才使用端口。 有关设计和缓解指导，请参阅[如何管理这项可耗尽的资源](#snatexhaust)；另请参阅介绍 [PAT](#pat) 的部分。
 
@@ -257,7 +257,8 @@ SNAT 端口分配特定于 IP 传输协议（TCP 和 UDP 是分别维护的）�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[负载均衡器](load-balancer-overview.md)。
 - 详细了解[标准负载均衡器](load-balancer-standard-overview.md)。
+- 详细了解标准公共负载均衡器的[出站规则](load-balancer-outbound-rules-overview.md)。
+- 详细了解[负载均衡器](load-balancer-overview.md)。
 - 详细了解[网络安全组](../virtual-network/security-overview.md)。
 - 了解 Azure 的部分其他关键[网络功能](../networking/networking-overview.md)。

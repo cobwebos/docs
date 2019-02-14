@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 07/17/2018
+ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0d622f6f03f9d132f3c57910d8a60c5731ad7c94
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f1700e124d1f572d0bf0ca76ea7c465f1ecf96c1
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425773"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657410"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色上运行 runbook
 
@@ -106,7 +106,7 @@ Get-AzureRmVm | Select Name
 
 在 Azure 中部署资源时，可能需要在自动生成过程中访问本地系统以支持部署过程中的某个任务或某组步骤。 需安装运行方式帐户证书，才能使用运行方式帐户针对 Azure 进行身份验证。
 
-下面的 PowerShell Runbook（即 Export-RunAsCertificateToHybridWorker）将运行方式证书从 Azure 自动化帐户导出，并将其下载和导入到混合辅助角色（已连接到同一帐户）上的本地计算机证书存储。 完成该步骤后，就会验证辅助角色能否成功地使用运行方式帐户向 Azure 进行身份验证。
+下面的 PowerShell runbook（即 **Export-RunAsCertificateToHybridWorker**）将运行方式证书从 Azure 自动化帐户导出，并将其下载和导入到混合辅助角色（已连接到同一帐户）上的本地计算机证书存储。 完成该步骤后，就会验证辅助角色能否成功地使用运行方式帐户向 Azure 进行身份验证。
 
 ```azurepowershell-interactive
 <#PSScriptInfo
@@ -185,16 +185,18 @@ Get-AzureRmAutomationAccount | Select-Object AutomationAccountName
 
 ## <a name="job-behavior"></a>作业行为
 
-在混合 Runbook 辅助角色中，对作业的处理方式与作业在 Azure 沙盒中运行时略有不同。 一个主要区别是，混合 Runbook 辅助角色中对作业持续时间没有限制。 Azure 沙盒中运行的 runbook 因[公平份额](automation-runbook-execution.md#fair-share)原则限制为 3 小时。 对于长时间运行的 runbook，需要确保它能在重启后迅速恢复。 例如，在承载混合辅助角色的计算机重启后。 如果混合辅助角色宿主计算机重新启动，则任何正在运行的 runbook 将从头重启，或者从 PowerShell 工作流 runbook 的最后一个检查点重启。 如果某个 runbook 作业重启了 3 次以上，则它会暂停。
+在混合 Runbook 辅助角色中，对作业的处理方式与作业在 Azure 沙盒中运行时略有不同。 一个主要区别是，混合 Runbook 辅助角色中对作业持续时间没有限制。 Azure 沙盒中运行的 runbook 因[公平份额](automation-runbook-execution.md#fair-share)原则限制为 3 小时。 对于长时间运行的 runbook，需要确保它能在重启后复原。 例如，在承载混合辅助角色的计算机重启后。 如果混合辅助角色宿主计算机重新启动，则任何正在运行的 runbook 将从头重启，或者从 PowerShell 工作流 runbook 的最后一个检查点重启。 如果某个 runbook 作业重启了 3 次以上，则它会暂停。
 
 ## <a name="run-only-signed-runbooks"></a>仅运行已签名 Runbook
 
-可以将混合 Runbook 辅助角色配置为仅运行具有某些配置的已签名 Runbook。 以下部分介绍如何设置混合 Runbook 辅助角色以运行已签名 runbook，以及如何对 runbook 签名。
+可以将混合 Runbook 辅助角色配置为仅运行具有某些配置的已签名 Runbook。 以下部分介绍如何设置混合 Runbook 辅助角色以运行已签名的 [Windows 混合 Runbook 辅助角色](#windows-hybrid-runbook-worker)和 [Linux 混合 Runbook 辅助角色](#linux-hybrid-runbook-worker)
 
 > [!NOTE]
 > 将混合 Runbook 辅助角色配置为仅运行已签名 Runbook 后，**未**签名的 Runbook 将无法在该辅助角色上执行。
 
-### <a name="create-signing-certificate"></a>创建签名证书
+### <a name="windows-hybrid-runbook-worker"></a>Windows 混合 Runbook 辅助角色
+
+#### <a name="create-signing-certificate"></a>创建签名证书
 
 以下示例创建可用于对 Runbook 签名的自签名证书。 该示例创建证书并将其导出。 该证书稍后将导入到混合 Runbook 辅助角色中。 该示例还返回指纹，此值稍后将用于引用证书。
 
@@ -220,7 +222,7 @@ Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLoca
 $SigningCert.Thumbprint
 ```
 
-### <a name="configure-the-hybrid-runbook-workers"></a>配置混合 Runbook 辅助角色
+#### <a name="configure-the-hybrid-runbook-workers"></a>配置混合 Runbook 辅助角色
 
 将创建的证书复制到组中的每个混合 Runbook 辅助角色。 运行以下脚本，以导入证书并将混合辅助角色配置为在 Runbook 上使用签名验证。
 
@@ -236,7 +238,7 @@ Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLoca
 Set-HybridRunbookWorkerSignatureValidation -Enable $true -TrustedCertStoreLocation "Cert:\LocalMachine\AutomationHybridStore"
 ```
 
-### <a name="sign-your-runbooks-using-the-certificate"></a>使用证书对 Runbook 签名
+#### <a name="sign-your-runbooks-using-the-certificate"></a>使用证书对 Runbook 签名
 
 将混合 Runbook 辅助角色配置为仅使用已签名 Runbook 后，必须对要在混合 Runbook 辅助角色上使用的 Runbook 签名。 使用以下示例 PowerShell 对 Runbook 签名。
 
@@ -246,6 +248,64 @@ Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 ```
 
 对 Runbook 签名后，必须将其导入自动化帐户并与签名块一起发布。 若要了解如何导入 Runbook，请参阅[将 Runbook 从文件导入 Azure 自动化](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation)。
+
+### <a name="linux-hybrid-runbook-worker"></a>Linux 混合 Runbook 辅助角色
+
+若要在 Linux 混合 Runbook 辅助角色上对 runbook 签名，混合 Runbook 辅助角色需要具有计算机上提供的 [GPG](https://gnupg.org/index.html) 可执行文件。
+
+#### <a name="create-a-gpg-keyring-and-keypair"></a>创建 GPG keyring 和密钥对
+
+若要创建 keyring 和密钥对，需要使用混合 Runbook 辅助角色帐户 `nxautomation`。
+
+使用 `sudo` 作为 `nxautomation` 帐户登录。
+
+```bash
+sudo su – nxautomation
+```
+
+使用 `nxautomation` 帐户，生成 gpg 密钥对。
+
+```bash
+sudo gpg --generate-key
+```
+
+GPG 将指导你完成创建密钥对的步骤。 需要提供名称、电子邮件地址、过期时间、通行短语，并等待计算机拥有足够的熵用于生成密钥。
+
+由于 GPG 目录使用 sudo 生成，需要将其所有者更改为 nxautomation。 
+
+运行以下命令，更改所有者。
+
+```bash
+sudo chown -R nxautomation ~/.gnupg
+```
+
+#### <a name="make-the-keyring-available-the-hybrid-runbook-worker"></a>使 keyring 可供混合 Runbook 辅助角色使用
+
+创建 keyring 后，需要使其可供混合 Runbook 辅助角色使用。 修改设置文件 `/var/opt/microsoft/omsagent/state/automationworker/diy/worker.conf`，以在 `[worker-optional]` 部分包括以下示例
+
+```bash
+gpg_public_keyring_path = /var/opt/microsoft/omsagent/run/.gnupg/pubring.kbx
+```
+
+#### <a name="verify-signature-validation-is-on"></a>验证签名验证是否已打开
+
+如果已在计算机上禁用签名验证，则需要将其打开。 运行以下命令，启用签名验证。 使用工作区 ID 替换 `<LogAnalyticsworkspaceId>`。
+
+```bash
+sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --true <LogAnalyticsworkspaceId>
+```
+
+#### <a name="sign-a-runbook"></a>对 runbook 签名
+
+配置签名验证后，即可使用以下命令对 runbook 签名：
+
+```bash
+gpg –clear-sign <runbook name>
+```
+
+已签名 runbook 的名称将为 `<runbook name>.asc`。
+
+已签名 runbook 现在可上传到 Azure 自动化中，并且可以像常规 runbook 一样执行。
 
 ## <a name="troubleshoot"></a>故障排除
 

@@ -13,17 +13,17 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/15/2019
-ms.openlocfilehash: 3a445fbc135e0d7dc19907339506fd0c32bffb45
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: f82c96b972baa161658f4a864572bfcb791939ed
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456028"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728991"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>开始使用 Azure SQL 数据库托管实例审核
 
-[Azure SQL 数据库托管实例](sql-database-managed-instance.md)审核功能可跟踪数据库事件，并将事件写入到 Azure 存储帐户中的审核日志。 审核还可：
+[托管实例](sql-database-managed-instance.md)审核会跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 审核还可：
 
 - 帮助保持合规性、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
 - 实现并促进遵从合规标准，但不能保证合规性。 有关可帮助遵从标准 Azure 计划的详细信息，请参阅 [Azure 信任中心](https://azure.microsoft.com/support/trust-center/compliance/)。
@@ -38,7 +38,7 @@ ms.locfileid: "55456028"
    1. 导航到要在其中存储审核日志的 Azure 存储。
 
       > [!IMPORTANT]
-      > 请使用与托管实例服务器位于同一区域中的存储帐户以避免跨区域读取/写入。
+      > 请使用与托管实例位于同一区域中的存储帐户，以避免跨区域读取/写入。
 
    1. 在存储帐户中，转到“概述”，然后单击“Blob”。
 
@@ -64,7 +64,7 @@ ms.locfileid: "55456028"
 
         ![Blob 容器复制 URL](./media/sql-managed-instance-auditing/5_container_copy_name.png)
 
-     1. 生成一个 Azure 存储 **SAS 令牌**，用于向存储帐户授予“托管实例审核”访问权限。
+     1. 生成一个 Azure 存储 **SAS 令牌**，用于向存储帐户授予托管实例审核访问权限：
 
         - 导航到在前面的步骤中你在其中创建了容器的 Azure 存储帐户。
 
@@ -94,7 +94,7 @@ ms.locfileid: "55456028"
           > [!IMPORTANT]
           > 从令牌的开头删除问号 (“?”) 字符。
 
-     1. 通过 SQL Server Management Studio (SSMS) 或支持的其他任何工具连接到托管实例。
+     1. 通过 SQL Server Management Studio (SSMS) 或任何其他支持的工具连接到托管实例。
 
      1. 执行以下 T-SQL 语句来使用你在前面的步骤中创建的容器 URL 和 SAS 令牌**创建新凭据**：
 
@@ -154,15 +154,15 @@ ms.locfileid: "55456028"
 
 了解更多信息：
 
-- [托管实例、Azure SQL DB 和 SQL Server 之间的审核差异](#auditing-differences-between-managed-instance-azure-sql-database-and-sql-server)
+- [Azure SQL 数据库中的单一数据库、弹性池和托管实例以及 SQL Server 中的数据库之间的审核差异](#auditing-differences-between-managed-instance-azure-sql-database-and-sql-server)
 - [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
 ## <a name="set-up-auditing-for-your-server-to-event-hub-or-log-analytics"></a>将服务器的审核设置为事件中心或 Log Analytics
 
-使用 Azure Monitor 将托管实例的审核日志发送到事件中心或 Log Analytics。 本部分介绍如何进行以下配置：
+可使用 Azure Monitor 将托管实例的审核日志发送到事件中心或 Log Analytics。 本部分介绍如何进行以下配置：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中导航到 SQL 数据库托管实例。
+1. 在 [Azure 门户](https://portal.azure.com/)中导航到托管实例。
 
 2. 单击“诊断设置”。
 
@@ -176,7 +176,7 @@ ms.locfileid: "55456028"
 
     ![配置诊断设置](./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png)
 
-7. 使用“SQL Server Management Studio (SSMS)”或任何其他支持的客户端连接到托管实例。
+7. 使用 **SQL Server Management Studio (SSMS)** 或任何其他支持的客户端连接到托管实例。
 
 8. 执行下面的 T-SQL 语句，创建服务器审核：
 
@@ -209,9 +209,6 @@ ms.locfileid: "55456028"
 
 - 有关审核日志使用方法的完整列表，请参阅 [SQL 数据库审核入门](sql-database-auditing.md)。
 
-  > [!IMPORTANT]
-  > 对于托管实例，当前不可以从 Azure 门户查看审核记录（“审核记录”窗格）。
-
 ### <a name="consume-logs-stored-in-event-hub"></a>使用存储在事件中心中的日志
 
 若要使用事件中心的审核日志数据，需设置一个流来使用事件并将其写入到目标。 有关详细信息，请参阅 Azure 事件中心文档。
@@ -222,13 +219,13 @@ ms.locfileid: "55456028"
 
 有了 Log Analytics，就可以使用集成的搜索和自定义仪表板来轻松分析所有工作负荷和服务器上的数百万记录，获得实时操作见解。 有关 Log Analytics 搜索语言和命令的其他有用信息，请参阅 [Log Analytics 搜索参考](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)。
 
-## <a name="auditing-differences-between-managed-instance-azure-sql-database-and-sql-server"></a>托管实例、Azure SQL 数据库和 SQL Server 之间的审核差异
+## <a name="auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server"></a>Azure SQL 数据库中的数据库与 SQL Server 中的数据库之间的审核差异
 
-托管实例、Azure SQL 数据库与本地 SQL Server 之间的主要 SQL 审核差异为：
+在 Azure SQL 数据库中的数据库中审核与在 SQL Server 中的数据库中审核的主要差异为：
 
-- 在托管实例中，SQL 审核在服务器级别工作，在 Azure Blob 存储帐户中存储 `.xel` 日志文件。
-- 在 Azure SQL 数据库中，SQL 审核在数据库级别工作。
-- 在本地 SQL Server/虚拟机中，SQL 审核在服务器级别工作，但在文件系统/Windows 事件日志中存储事件。
+- 借助 Azure SQL 数据库中的托管实例部署选项，审核可在服务器级别工作并在 Azure Blob 存储帐户中存储 `.xel` 日志文件。
+- 借助 Azure SQL 数据库中的单一数据库和弹性池部署选项，审核可在数据库级别工作。
+- 在 SQL Server 本地/虚拟机中，审核在服务器级别工作，但在文件系统/Windows 事件日志中存储事件。
 
 托管实例中的 XEvent 审核支持 Azure Blob 存储目标。 **不支持**文件和 Windows 日志。
 
@@ -236,7 +233,7 @@ Azure Blob 存储审核的主要 `CREATE AUDIT` 语法差异为：
 
 - 提供了新语法 `TO URL`，该语法允许指定用于放置 `.xel` 文件的 Azure Blob 存储容器的 URL。
 - 提供了新语法 `TO EXTERNAL MONITOR` 以启用事件中心和 Log Analytics 目标。
-- **不支持**语法 `TO FILE`，因为托管实例无法访问 Windows 文件共享。
+- **不支持** `TO FILE` 语法，因为 SQL 数据库无法访问 Windows 文件共享。
 - **不支持**关闭选项。
 - **不支持** `queue_delay` 为 0。
 

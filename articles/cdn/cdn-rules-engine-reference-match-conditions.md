@@ -1,6 +1,6 @@
 ---
 title: Azure CDN 规则引擎匹配条件 | Microsoft Docs
-description: 有关 Azure 内容交付网络规则引擎匹配条件的参考文档。
+description: 有关 Azure 内容分发网络规则引擎匹配条件的参考文档。
 services: cdn
 documentationcenter: ''
 author: Lichard
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: f8dac5469e7160fae93e8251ab7f4195a383f8b4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 44182d686548fa5b6363a87be0ce7851829e20ab
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30173315"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820550"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Azure CDN 规则引擎匹配条件 
-本文列出了 Azure 内容交付网络 (CDN) [规则引擎](cdn-rules-engine.md)的可用匹配条件的详细说明。
+本文列出了 Azure 内容分发网络 (CDN) [规则引擎](cdn-rules-engine.md)的可用匹配条件的详细说明。
 
 规则的第二部分是匹配条件。 可以使用匹配条件来确定特定类型的请求，以便执行一组相应的功能。
 
@@ -35,7 +35,7 @@ ms.locfileid: "30173315"
 
 “始终”匹配条件向所有请求应用默认的一组功能。
 
-名称 | 目的
+Name | 目的
 -----|--------
 [始终](#always) | 向所有请求应用默认的一组功能。
 
@@ -43,7 +43,7 @@ ms.locfileid: "30173315"
 
 “设备”匹配条件用于根据属性标识来自移动设备的请求。  
 
-名称 | 目的
+Name | 目的
 -----|--------
 [设备](#device) | 根据设备属性标识来自移动设备的请求。
 
@@ -51,25 +51,25 @@ ms.locfileid: "30173315"
 
 “位置”匹配条件根据请求者的位置标识请求。
 
-名称 | 目的
+Name | 目的
 -----|--------
 [AS 编号](#as-number) | 标识源自特定网络的请求。
 [国家/地区](#country) | 标识源自指定国家/地区的请求。
 
 ## <a name="origin-match-conditions"></a>“源”匹配条件
 
-“源”匹配条件标识指向内容交付网络存储或客户源服务器的请求。
+“源”匹配条件标识指向内容分发网络存储或客户源服务器的请求。
 
-名称 | 目的
+Name | 目的
 -----|--------
-[CDN 源](#cdn-origin) | 标识对存储在内容交付网络存储中的内容的请求。
+[CDN 源](#cdn-origin) | 标识对存储在内容分发网络存储中的内容的请求。
 [客户源](#customer-origin) | 标识存储在特定客户源服务器上的内容的请求。
 
 ## <a name="request-match-conditions"></a>“请求”匹配条件
 
 “请求”匹配条件根据属性标识请求。
 
-名称 | 目的
+Name | 目的
 -----|--------
 [客户端 IP 地址](#client-ip-address) | 标识源自特定 IP 地址的请求。
 [Cookie 参数](#cookie-parameter) | 查看与每个针对指定值的请求关联的 Cookie。
@@ -86,7 +86,7 @@ ms.locfileid: "30173315"
 
 “URL”匹配条件根据 URL 标识请求。
 
-名称 | 目的
+Name | 目的
 -----|--------
 [URL 路径目录](#url-path-directory) | 按相对路径标识请求。
 [URL 路径扩展名](#url-path-extension) | 按文件扩展名标识请求。
@@ -107,7 +107,7 @@ ms.locfileid: "30173315"
 
 “始终”匹配条件向所有请求应用默认的一组功能。
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
@@ -130,7 +130,7 @@ AS 编号网络由其自治系统编号 (ASN) 定义。
   - 忽略源服务器 No-Cache
   - 内部最大过时期限
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
@@ -146,7 +146,7 @@ AS 编号网络由其自治系统编号 (ASN) 定义。
  - 内容访问点标识应处理请求内容的服务。
  - 请勿使用 AND IF 语句组合某些匹配条件。 例如，将“CDN 源”匹配条件与“客户源”匹配条件组合会创建一个永远无法匹配的匹配模式。 为此，不能通过 AND IF 语句组合两个“CDN 源”匹配条件。
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
@@ -154,7 +154,7 @@ AS 编号网络由其自治系统编号 (ASN) 定义。
 ### <a name="client-ip-address"></a>客户端 IP 地址
 “匹配”/“不匹配”选项用于确定在哪种条件下满足客户端 IP 地址匹配条件：
 - **匹配**：要求客户端的 IP 地址与指定的 IP 地址之一匹配。 
-- **匹配**：要求客户端的 IP 地址不与任何指定的 IP 地址匹配。 
+- **不匹配**：要求客户端的 IP 地址不与任何指定的 IP 地址匹配。 
 
 重要信息：
 - 使用 CIDR 表示法。
@@ -171,14 +171,14 @@ AS 编号网络由其自治系统编号 (ASN) 定义。
   - 忽略源服务器 No-Cache
   - 内部最大过时期限
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
 ---
 ### <a name="cookie-parameter"></a>Cookie 参数
 “匹配”/“不匹配”选项用于确定在哪种条件下满足 Cookie 参数匹配条件。
-- **匹配**：需要请求包含指定的 Cookie，其值与此匹配条件中定义的至少一个值匹配。
+- **匹配**：要求请求包含指定的 Cookie，其值与此匹配条件中定义的至少一个值匹配。
 - **不匹配**：要求请求满足以下条件之一：
   - 它不包含指定的 Cookie。
   - 它包含指定的 Cookie，但其值与此匹配条件中定义的任何值都不匹配。
@@ -200,7 +200,7 @@ AS 编号网络由其自治系统编号 (ASN) 定义。
   - 忽略源服务器 No-Cache
   - 内部最大过时期限
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
@@ -209,7 +209,7 @@ AS 编号网络由其自治系统编号 (ASN) 定义。
 “Cookie 参数正则表达式”匹配条件定义 Cookie 名称和值。 可以使用[正则表达式](cdn-rules-engine-reference.md#regular-expressions)定义所需的 Cookie 值。 
 
 “匹配”/“不匹配”选项用于确定在哪种条件下满足 Cookie 参数正则表达式匹配条件。
-- **匹配**：需要请求包含指定的 Cookie，其值与指定的正则表达式匹配。
+- **匹配**：要求请求包含指定的 Cookie，其值与指定的正则表达式匹配。
 - **不匹配**：要求请求满足以下条件之一：
   - 它不包含指定的 Cookie。
   - 它包含指定的 Cookie，但其值与指定的正则表达式不匹配。
@@ -229,7 +229,7 @@ AS 编号网络由其自治系统编号 (ASN) 定义。
   - 忽略源服务器 No-Cache
   - 内部最大过时期限
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
@@ -261,12 +261,12 @@ AS 编号网络由其自治系统编号 (ASN) 定义。
     在相对路径的末尾追加一个星号可确保对其所有子级的访问受此规则的限制。
 
 - 国家/地区匹配：将国家/地区匹配条件设置为所需的国家/地区集。
-   - 允许：将国家/地区匹配条件设置为“不匹配”，以只允许指定的国家/地区访问 URL 路径通配符匹配条件定义的位置中存储的内容。
-   - 阻止：将国家/地区匹配条件设置为“匹配”，以阻止指定的国家/地区访问 URL 路径通配符匹配条件定义的位置中存储的内容。
+   - 允许：将国家/地区匹配条件设置为“不匹配”，只允许指定的国家/地区访问 URL 路径通配符匹配条件定义的位置中存储的内容。
+   - 阻止：将国家/地区匹配条件设置为“匹配”，阻止指定的国家/地区访问 URL 路径通配符匹配条件定义的位置中存储的内容。
 
 - 拒绝访问 (403) 功能：启用[拒绝访问 (403) 功能](cdn-rules-engine-reference-features.md#deny-access-403)，以复制国家/地区筛选功能的允许或阻止部分。
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
@@ -280,7 +280,7 @@ AS 编号网络由其自治系统编号 (ASN) 定义。
   - 边缘 CNAME 配置
 - 请勿使用 AND IF 语句组合某些匹配条件。 例如，将“客户源”匹配条件与“CDN 源”匹配条件组合会创建一个永远无法匹配的匹配模式。 为此，不能通过 AND IF 语句组合两个“客户源”匹配条件。
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
@@ -325,25 +325,25 @@ WURFL 功能引用描述移动设备的类别。 选定的功能确定用于识�
 品牌名称 | %{wurfl_cap_brand_name} | 一个字符串，表示设备的品牌名称。 | Samsung
 设备 OS | %{wurfl_cap_device_os} | 一个字符串，表示设备上安装的操作系统。 | IOS
 设备 OS 版本 | %{wurfl_cap_device_os_version} | 一个字符串，表示设备上安装的操作系统的版本号。 | 1.0.1
-双方向 | %{wurfl_cap_dual_orientation} | 一个布尔值，表示设备是否支持双方向。 | 是
+双方向 | %{wurfl_cap_dual_orientation} | 一个布尔值，表示设备是否支持双方向。 | true
 HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移动设备针对 HTML 内容的首选文档类型定义 (DTD)。 | 无<br/>xhtml_basic<br/>html5
 图像内联 | %{wurfl_cap_image_inlining} | 一个布尔值，表示设备是否支持 Base64 编码图像。 | false
-是 Android | %{wurfl_vcap_is_android} | 一个布尔值，表示设备是否使用 Android OS。 | 是
+是 Android | %{wurfl_vcap_is_android} | 一个布尔值，表示设备是否使用 Android OS。 | true
 是 IOS | %{wurfl_vcap_is_ios} | 一个布尔值，表示设备是否使用 iOS。 | false
 是智能电视 | %{wurfl_cap_is_smarttv} | 一个布尔值，表示设备是否为智能电视。 | false
-是智能手机 | %{wurfl_vcap_is_smartphone} | 一个布尔值，表示设备是否为智能手机。 | 是
-是平板电脑 | %{wurfl_cap_is_tablet} | 一个布尔值，表示设备是否为平板电脑。 此说明独立于 OS。 | 是
-是无线设备 | %{wurfl_cap_is_wireless_device} | 一个布尔值，表示是否可将设备视为无线设备。 | 是
+是智能手机 | %{wurfl_vcap_is_smartphone} | 一个布尔值，表示设备是否为智能手机。 | true
+是平板电脑 | %{wurfl_cap_is_tablet} | 一个布尔值，表示设备是否为平板电脑。 此说明独立于 OS。 | true
+是无线设备 | %{wurfl_cap_is_wireless_device} | 一个布尔值，表示是否可将设备视为无线设备。 | true
 市场营销名称 | %{wurfl_cap_marketing_name} | 一个字符串，表示设备的市场营销名称。 | BlackBerry 8100 Pearl
 移动浏览器 | %{wurfl_cap_mobile_browser} | 一个字符串，表示用于从设备请求内容的浏览器。 | Chrome
 移动浏览器版本 | %{wurfl_cap_mobile_browser_version} | 一个字符串，表示用于从设备请求内容的浏览器的版本。 | 31
 模型名称 | %{wurfl_cap_model_name} | 一个字符串，表示设备的模型名称。 | s3
-渐进式下载 | %{wurfl_cap_progressive_download} | 一个布尔值，表示设备是否允许音频和视频边下载边播放。 | 是
+渐进式下载 | %{wurfl_cap_progressive_download} | 一个布尔值，表示设备是否允许音频和视频边下载边播放。 | true
 发布日期 | %{wurfl_cap_release_date} | 一个字符串，表示设备在何年何月添加到 WURFL 数据库。<br/><br/>格式：`yyyy_mm` | 2013_december
 垂直分辨率 | %{wurfl_cap_resolution_height} | 一个整数，表示设备以像素为单位的高度。 | 768
 水平分辨率 | %{wurfl_cap_resolution_width} | 一个整数，表示设备以像素为单位的宽度。 | 1024
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
@@ -360,7 +360,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
   - 忽略源服务器 No-Cache
   - 内部最大过时期限
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
@@ -384,14 +384,14 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
   - 忽略源服务器 No-Cache
   - 内部最大过时期限
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
 ---  
 ### <a name="request-header-literal"></a>请求标头文本
 “匹配”/“不匹配”选项用于确定在哪种条件下满足请求标头文本匹配条件。
-- **匹配**：需要请求包含指定的标头。 其值必须与此匹配条件中定义的值匹配。
+- **匹配**：要求请求包含指定的标头。 其值必须与此匹配条件中定义的值匹配。
 - **不匹配**：要求请求满足以下条件之一：
   - 它不包含指定的标头。
   - 它包含指定的标头，但其值与此匹配条件中定义的值不匹配。
@@ -405,14 +405,14 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
   - 忽略源服务器 No-Cache
   - 内部最大过时期限
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
 ---  
 ### <a name="request-header-regex"></a>请求标头正则表达式
 “匹配”/“不匹配”选项用于确定在哪种条件下满足请求标头正则表达式匹配条件。
-- **匹配**：需要请求包含指定的标头。 其值必须与指定的[正则表达式](cdn-rules-engine-reference.md#regular-expressions)中定义的模式匹配。
+- **匹配**：要求请求包含指定的标头。 其值必须与指定的[正则表达式](cdn-rules-engine-reference.md#regular-expressions)中定义的模式匹配。
 - **不匹配**：要求请求满足以下条件之一：
   - 它不包含指定的标头。
   - 它包含指定的标头，但其值与指定的正则表达式不匹配。
@@ -432,14 +432,14 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
   - 忽略源服务器 No-Cache
   - 内部最大过时期限 
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
 ---
 ### <a name="request-header-wildcard"></a>请求标头通配符
 “匹配”/“不匹配”选项用于确定在哪种条件下满足请求标头通配符匹配条件。
-- **匹配**：需要请求包含指定的标头。 其值必须与此匹配条件中定义的至少一个值匹配。
+- **匹配**：要求请求包含指定的标头。 其值必须与此匹配条件中定义的至少一个值匹配。
 - **不匹配**：要求请求满足以下条件之一：
   - 它不包含指定的标头。
   - 它包含指定的标头，但其值与任何指定值都不匹配。
@@ -460,7 +460,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
   - 忽略源服务器 No-Cache
   - 内部最大过时期限
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
@@ -485,7 +485,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
   - 忽略源服务器 No-Cache
   - 内部最大过时期限
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
@@ -503,7 +503,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
   - 忽略源服务器 No-Cache
   - 内部最大过时期限
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
@@ -557,7 +557,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 - 使用“忽略大小写”选项可以控制是否执行区分大小写的比较。
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
@@ -570,7 +570,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
    例如，如果指定“htm”，则匹配“htm”资产，但不匹配“html”资产。  
 
-- **不匹配**：要求请求的 URL 包含与指定的模式不匹配的文件扩展名。
+- **不匹配**：要求 URL 请求包含与指定的模式不匹配的文件扩展名。
 
 重要信息：
 - 在“值”框中指定要匹配的文件扩展名。 不要包含前导句点；例如，可以使用 htm，但不能使用 .htm。
@@ -596,7 +596,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 - .php
 - .html
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
@@ -623,7 +623,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
     例如，指定“presentation.ppt”可匹配名为“presentation.ppt”的资产，但不匹配名为“presentation.pptx”的资产。
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
@@ -667,7 +667,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 - 若要匹配针对特定目录发出的所有请求，请使用 [URL 路径目录](#url-path-directory)或 [URL 路径通配符](#url-path-wildcard)匹配条件。
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
@@ -698,7 +698,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
     
 - URL 路径中的空格应替换为“%20”。
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
@@ -711,7 +711,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 - **不匹配**：要求请求包含与指定的通配符模式不匹配的 URL 路径。
 
 重要信息：
-- “相对于”选项：此选项确定 URL 比较点是在内容访问点的前面还是后面。
+- “相对于”选项：此选项决定 URL 比较点是在内容访问点的前面还是后面。
 
    此选项可以采用以下值：
      - **根**：表示 URL 比较点紧接在 CDN 主机名后面开始。
@@ -727,7 +727,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 - 在 URL 比较之前，边缘 CNAME URL 将重写入 CDN URL。
 
     例如，以下两个 URL 指向同一个资产，因此具有相同的 URL 路径：
-     - CDN URL：http://wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
+     - CDN URL： http://wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
      - 边缘 CNAME URL：http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
     
     其他信息：
@@ -760,7 +760,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 *.jpg *.gif *.png       | 根或源 | 以 .jpg、.gif 或 .png 结尾的所有 CDN 或边缘 CNAME URL 都匹配此模式。 指定此模式的一种替代方式是使用 [URL 路径扩展名匹配条件](#url-path-extension)。
 /images/\* /media/\*      | 源         | 相对路径以“images”或“media”文件夹开头的 CDN 或边缘 CNAME URL 匹配此模式。 <br />- CDN URL：http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/images/sales/event1.png<br />- 示例边缘 CNAME URL：http:\//cdn.mydomain.com/images/sales/event1.png
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
@@ -794,7 +794,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
    - 忽略源服务器 No-Cache
    - 内部最大过时期限
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
@@ -868,13 +868,13 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 #### <a name="sample-scenarios"></a>示例方案
 以下示例演示此选项在特定场合下的工作方式：
 
-名称  | 值 |  结果
+Name  | 值 |  结果
 ------|-------|--------
 用户  | Joe   | 当所请求 URL 的查询字符串为“?user=joe”时匹配此模式。
 用户  | *     | 当所请求 URL 的查询字符串包含 User 参数时匹配此模式。
-Email | Joe\* | 当所请求 URL 的查询字符串包含以“Joe”开头的 Email 参数时匹配此模式。
+电子邮件 | Joe\* | 当所请求 URL 的查询字符串包含以“Joe”开头的 Email 参数时匹配此模式。
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
@@ -919,7 +919,7 @@ Email | Joe\* | 当所请求 URL 的查询字符串包含以“Joe”开头的 E
    - 内部最大过时期限
 
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
@@ -960,17 +960,17 @@ Email | Joe\* | 当所请求 URL 的查询字符串包含以“Joe”开头的 E
 #### <a name="sample-scenarios"></a>示例方案
 以下示例演示此选项在特定场合下的工作方式：
 
- 名称                 | 说明
+ Name                 | 说明
  ---------------------|------------
 user=joe              | 当所请求 URL 的查询字符串为“?user=joe”时匹配此模式。
 \*user=\* \*optout=\* | 当 CDN URL 查询包含 user 或 optout 参数时匹配此模式。
 
-[返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
+[返回页首](#main)
 
 </br>
 
 ## <a name="next-steps"></a>后续步骤
-* [Azure 内容交付网络概述](cdn-overview.md)
+* [Azure 内容分发网络概述](cdn-overview.md)
 * [规则引擎参考](cdn-rules-engine-reference.md)
 * [规则引擎条件表达式](cdn-rules-engine-reference-conditional-expressions.md)
 * [规则引擎功能](cdn-rules-engine-reference-features.md)

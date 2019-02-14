@@ -9,13 +9,13 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
-ms.date: 01/08/2019
-ms.openlocfilehash: a7d34b76eb6184e546c8217aa6b3723819be70be
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.date: 02/05/2019
+ms.openlocfilehash: c3057934d960efd0a846ef31c5fac5abd63a21f6
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189524"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768462"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>保护 Azure 逻辑应用中的访问
 
@@ -120,7 +120,7 @@ POST
 
 #### <a name="set-ip-ranges---logic-app-deployment-template"></a>设置 IP 范围 - 逻辑应用的部署模板
 
-如果使用 [Azure 资源管理器部署模板](logic-apps-create-deploy-template.md)自动执行逻辑应用部署，则可以在该模板中设置 IP 范围，例如：
+如果使用 [Azure 资源管理器部署模板](../logic-apps/logic-apps-create-deploy-template.md)自动执行逻辑应用部署，则可以在该模板中设置 IP 范围，例如：
 
 ``` json
 {
@@ -131,7 +131,7 @@ POST
          "triggers": {
             "allowedCallerIpAddresses": [
                {
-               "addressRange": "192.168.12.0/23"
+                  "addressRange": "192.168.12.0/23"
                },
                {
                   "addressRange": "2001:0db8::/64"
@@ -175,14 +175,15 @@ POST
 
 1. 在逻辑应用的菜单中，在“设置”下，选择“工作流设置”。
 
-1. 在“访问控制配置” > 
-“允许的入站 IP 地址”下，请选择“特定 IP 范围”。
+1. 在“访问控制配置”> 
+   “允许的入站 IP 地址”下，选择“特定 IP 范围”************。
 
-1. 在“内容的 IP 范围”下，指定可以访问输入和输出中内容的 IP 地址范围。 有效的 IP 范围使用这些格式：x.x.x.x/x 或 x.x.x.x-x.x.x.x 
+1. 在“内容的 IP 范围”下，指定可以访问输入和输出中内容的 IP 地址范围。 
+   有效的 IP 范围使用这些格式：x.x.x.x/x 或 x.x.x.x-x.x.x.x 
 
 ### <a name="set-ip-ranges---logic-app-deployment-template"></a>设置 IP 范围 - 逻辑应用的部署模板
 
-如果使用 [Azure 资源管理器部署模板](logic-apps-create-deploy-template.md)自动执行逻辑应用部署，则可以在该模板中设置 IP 范围，例如：
+如果使用 [Azure 资源管理器部署模板](../logic-apps/logic-apps-create-deploy-template.md)自动执行逻辑应用部署，则可以在该模板中设置 IP 范围，例如：
 
 ``` json
 {
@@ -193,7 +194,7 @@ POST
          "contents": {
             "allowedCallerIpAddresses": [
                {
-               "addressRange": "192.168.12.0/23"
+                  "addressRange": "192.168.12.0/23"
                },
                {
                   "addressRange": "2001:0db8::/64"
@@ -210,44 +211,99 @@ POST
 
 ## <a name="secure-action-parameters-and-inputs"></a>保护操作参数和输入
 
-在各种环境中进行部署时，建议对逻辑应用工作流定义中的特定方面进行参数化处理。 例如，可以在 [Azure 资源管理器部署模板](../azure-resource-manager/resource-group-authoring-templates.md#parameters)中指定参数。 要在运行时访问资源的参数值，可以使用[工作流定义语言](https://aka.ms/logicappsdocs)提供的 `@parameters('parameterName')` 表达式。 
+在各种环境中进行部署时，建议对逻辑应用工作流定义中的特定元素进行参数化处理。 这样，你可以根据所使用的环境来提供输入并保护敏感信息。 例如，如果使用 [Azure Active Directory](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication) 对 HTTP 操作进行身份验证，请定义并保护接受用于身份验证的客户端 ID 和客户端机密的参数。 对于这些参数，你的逻辑应用定义有其自己的 `parameters` 部分。
+要在运行时访问参数值，可以使用[工作流定义语言](https://aka.ms/logicappsdocs)提供的 `@parameters('parameterName')` 表达式。 
 
-在使用 `securestring` 参数类型编辑逻辑应用的工作流时，也可以保护不希望显示的特定参数。 例如，可以保护用于向 [Azure Active Directory](../connectors/connectors-native-http.md#authentication) 验证 HTTP 操作的客户端 ID 和客户端密码等参数。
-将参数的类型指定为 `securestring` 时，该参数不会随资源定义一起返回，并且在部署后无法通过查看资源来访问该参数。 
+若要保护在编辑逻辑应用或查看运行历史记录时不希望显示的参数和值，可以定义 `securestring` 类型的参数并根据需要使用编码。 具有此类型的参数不会随资源定义一起返回，并且在部署后无法通过查看资源来访问这些参数。
 
 > [!NOTE]
-> 如果在请求的标头或正文中使用参数，当访问逻辑应用的运行历史记录和传出的 HTTP 请求时，该参数可能是可见的。 请务必相应地设置内容访问策略。
-> 始终不能通过输入或输出看见授权标头。 因此，如果在此处使用机密，则无法检索机密。
+> 如果在请求的标头或正文中使用参数，当访问逻辑应用的运行历史记录和传出的 HTTP 请求时，该参数可能是可见的。 请务必同时相应地设置内容访问策略。
+> 始终不能通过输入或输出看见授权标头。 因此，如果在此处使用机密，则无法检索该机密。
 
-此示例显示 Azure 资源管理器部署模板，该模板使用多个具有 `securestring` 类型的运行时参数： 
+有关在逻辑应用定义中保护参数的详细说明，请参阅本页下文中的[在逻辑应用定义中保护参数](#secure-parameters-workflow)。
+
+如果使用 [Azure 资源管理器部署模板](../azure-resource-manager/resource-group-authoring-templates.md#parameters)自动执行部署，则还可以在这些模板中使用受保护的参数。 例如，在创建逻辑应用时，可以使用用于获取密钥保管库机密的参数。 部署模板定义具有其自己的 `parameters` 部分，这不同于逻辑应用的 `parameters` 部分。 有关在部署模板中保护参数的详细信息，请参阅本页下文中的[在部署模板中保护参数](#secure-parameters-deployment-template)。
+
+<a name="secure-parameters-workflow"></a>
+
+### <a name="secure-parameters-in-logic-app-definitions"></a>在逻辑应用定义中保护参数
+
+若要在逻辑应用工作流定义中保护敏感信息，请使用受保护的参数，以使该信息在保存逻辑应用后不可见。 例如，假设你在 HTTP 操作定义中使用 `Basic` 身份验证。 此示例包括一个 `parameters` 部分（它定义了操作定义的参数）和一个 `authentication` 部分（它接受 `username` 和 `password` 参数值）。 若要为这些参数提供值，可以使用一个单独的参数文件，例如：
+
+```json
+"definition": {
+   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+   "actions": {
+      "HTTP": {
+         "type": "Http",
+         "inputs": {
+            "method": "GET",
+            "uri": "http://www.microsoft.com",
+            "authentication": {
+               "type": "Basic",
+               "username": "@parameters('usernameParam')",
+               "password": "@parameters('passwordParam')"
+            }
+         },
+         "runAfter": {}
+      }
+   },
+   "parameters": {
+      "passwordParam": {
+         "type": "securestring"
+      },
+      "userNameParam": {
+         "type": "securestring"
+      }
+   },
+   "triggers": {
+      "manual": {
+         "type": "Request",
+         "kind": "Http",
+         "inputs": {
+            "schema": {}
+         }
+      }
+   },
+   "contentVersion": "1.0.0.0",
+   "outputs": {}
+}
+```
+
+如果使用机密，则可以使用 [Azure 资源管理器密钥保管库](../azure-resource-manager/resource-manager-keyvault-parameter.md)在部署时获取这些机密。
+
+<a name="secure-parameters-deployment-template"></a>
+
+### <a name="secure-parameters-in-azure-resource-manager-deployment-templates"></a>在 Azure 资源管理器部署模板中保护参数
+
+此示例显示了一个 Azure 资源管理器部署模板，该模板使用多个具有 `securestring` 类型的运行时参数：
 
 * `armTemplatePasswordParam`，这是逻辑应用定义的 `logicAppWfParam` 参数的输入
 
 * `logicAppWfParam`，这是使用基本身份验证的 HTTP 操作的输入
 
-在单独的参数文件中，可以指定 `armTemplatePasswordParam` 参数的环境值，也可以使用 [Azure 资源管理器 KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md) 在部署时检索机密。
-内部 `parameters` 部分属于逻辑应用的工作流定义，而外部 `parameters` 部分属于部署模板。
+此示例包括一个内层 `parameters` 部分（该部分属于逻辑应用的工作流定义）和一个外层 `parameters` 部分（该部分属于部署模板）。 若要为参数指定环境值，可以使用一个单独的参数文件。 
 
 ```json
 {
    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
    "contentVersion": "1.0.0.0",
    "parameters": {
-      "logicAppName": {       
+      "logicAppName": {
          "type": "string",
          "minLength": 1,
          "maxLength": 80,
-         "metadata": {         
-            "description": "Name of the Logic App."       
-         }     
+         "metadata": {
+            "description": "Name of the Logic App."
+         }
       },
       "armTemplatePasswordParam": {
-         "type": "securestring"     
-      },     
-      "logicAppLocation": {       
+         "type": "securestring"
+      },
+      "logicAppLocation": {
          "type": "string",
          "defaultValue": "[resourceGroup().location]",
-         "allowedValues": [         
+         "allowedValues": [
             "[resourceGroup().location]",
             "eastasia",
             "southeastasia",
@@ -281,7 +337,7 @@ POST
    },
    "variables": {},
    "resources": [
-      {       
+      {
          "name": "[parameters('logicAppName')]",
          "type": "Microsoft.Logic/workflows",
          "location": "[parameters('logicAppLocation')]",
@@ -300,15 +356,18 @@ POST
                         "uri": "http://www.microsoft.com",
                         "authentication": {
                            "type": "Basic",
-                           "username": "username",
-                              "password": "@parameters('logicAppWfParam')"
+                           "username": "@parameters('usernameParam')",
+                           "password": "@parameters('logicAppWfParam')"
                         }
                      },
                   "runAfter": {}
                   }
                },
-               "parameters": { 
+               "parameters": {
                   "logicAppWfParam": {
+                     "type": "securestring"
+                  },
+                  "userNameParam": {
                      "type": "securestring"
                   }
                },
@@ -332,9 +391,11 @@ POST
          }
       }
    ],
-   "outputs": {} 
-}   
+   "outputs": {}
+}
 ```
+
+如果使用机密，则可以使用 [Azure 资源管理器密钥保管库](../azure-resource-manager/resource-manager-keyvault-parameter.md)在部署时获取这些机密。
 
 <a name="secure-requests"></a>
 
@@ -344,7 +405,7 @@ POST
 
 ### <a name="add-authentication-on-outbound-requests"></a>针对出站请求添加身份验证
 
-使用 HTTP、HTTP + Swagger（开放 API）或 Webhook 操作时，可以为逻辑应用发送的请求添加身份验证。 例如，可以使用基本身份验证、证书身份验证或 Azure Active Directory 身份验证。 有关详细信息，请参阅[对触发器或操作进行身份验证](logic-apps-workflow-actions-triggers.md#connector-authentication)以及[对 HTTP 操作进行身份验证](../connectors/connectors-native-http.md#authentication)。
+使用 HTTP、HTTP + Swagger（开放 API）或 Webhook 操作时，可以为逻辑应用发送的请求添加身份验证。 例如，可以使用基本身份验证、证书身份验证或 Azure Active Directory 身份验证。 有关详细信息，请参阅[对触发器或操作进行身份验证](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)。
 
 ### <a name="restrict-access-to-logic-app-ip-addresses"></a>限制对逻辑应用 IP 地址的访问
 
