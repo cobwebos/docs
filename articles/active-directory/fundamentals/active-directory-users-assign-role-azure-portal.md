@@ -12,12 +12,13 @@ ms.date: 09/06/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 067362796ec64e7060a055144729e2b0f7e53c99
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bd26fa53c91c53893c7f326afda5158fa430be1e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097843"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188131"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>为具有 Azure Active Directory 的用户分配管理员和非管理员角色
 如果组织中的用户需要管理 Azure Active Directory (Azure AD) 资源的权限，则必须根据用户需要权限才能执行的操作为 Azure AD 中的用户分配适当的角色。

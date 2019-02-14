@@ -5,18 +5,18 @@ description: 使用模式来改进意向和实体预测，同时提供更少的�
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: 2b41054420f381ed4d39d35af82a464cf555cb13
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 3fe549a63f0fb4662ba5beb2e28f1ca72fcc1ee4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490883"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55855877"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats"></a>教程：添加常见的模式模板话语格式
 

@@ -4,7 +4,7 @@ description: 本文档介绍了 Azure 安全中心有关如何帮助保护容器
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 2e76c7f7-a3dd-4d9f-add9-7e0e10e9324d
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: b5cb1fe623062816955278da7b0a9e63cbc19254
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 782c769bc7825dc9b6bd3ba3b8e36885bf150eaa
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54258469"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112574"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>了解 Azure 安全中心容器建议
 
@@ -43,7 +43,7 @@ Azure 安全中心提供以下功能来帮助保护容器：
 ## <a name="recommendations"></a>建议
 使用下表作为参考，帮助了解 IaaS Linux 计算机上托管的可用容器以及 Docker 配置的安全性评估。
 
-| 建议 | Description | 补救 |
+| 建议 | 说明 | 补救 |
 | --- | --- | --- |
 |修复容器安全配置中的漏洞 |根据配置的最佳做法修复容器安全配置中的漏洞。| 修复容器安全配置中的漏洞：<br>1.查看失败规则列表。<br>2.根据指定的说明修复每个规则。|
 

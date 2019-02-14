@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 如何使用适用于 .NET 的 Azure 内容审查器 SDK 启动审查作业。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 1038b116ea9c12e5252bea3fe67781061750cabb
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0664e75a299246d9dd2cc14dbab31d22a1bd9c4b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215531"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878054"
 ---
 # <a name="quickstart-start-moderation-jobs-using-net"></a>快速入门：使用 .NET 启动审核工作
 

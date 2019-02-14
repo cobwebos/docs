@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 通过验证或更正 LUIS 不确定的、通过 LUIS HTTP 终结点收到的陈述，改进应用预测。 某些陈述可能需要针对意向进行验证，而另一些陈述可能需要针对实体进行验证。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 30927f4a8213f3ca8b94a2c799e6204be003e2a7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 88ac9f07fb8791ca3d64123663b0380a56220cdd
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213194"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55865942"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>教程：通过查看终结点话语来修复不确定的预测
 在本教程中，你将通过验证或更正 LUIS 不确定的、通过 LUIS HTTPS 终结点收到的陈述，改进应用预测。 某些陈述可能需要针对意向进行验证，而另一些陈述可能需要针对实体进行验证。 你应当在计划的 LUIS 维护中定期评审终结点陈述。 

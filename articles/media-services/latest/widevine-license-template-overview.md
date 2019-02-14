@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: bd09205d4bdc60891044728cf0dcafa092ae9846
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 3615bd88cfadf2f59942fab7678d36d4d20d8c9f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377426"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992732"
 ---
 # <a name="widevine-license-template-overview"></a>Widevine 许可证模板概述 
 
@@ -60,7 +60,7 @@ Widevine 许可证请求将格式化为 JSON 消息。
 
 ## <a name="json-message"></a>JSON 消息
 
-| 名称 | 值 | Description |
+| Name | 值 | 说明 |
 | --- | --- | --- |
 | payload |Base64 编码的字符串 |客户端发送的许可证请求。 |
 | content_id |Base64 编码的字符串 |用于为每个 content_key_specs.track_type 派生密钥 ID 与内容密钥的标识符。 |
@@ -78,7 +78,7 @@ Widevine 许可证请求将格式化为 JSON 消息。
 
 无论 use_policy_overrides_exclusively 选项的值是什么，都必须为所有跟踪指定每个 content_key_specs 值。 
 
-| 名称 | 值 | Description |
+| Name | 值 | 说明 |
 | --- | --- | --- |
 | content_key_specs。 track_type |字符串 |跟踪类型名称。 如果许可证请求中指定了 content_key_specs，请确保显式指定所有跟踪类型。 否则会导致无法播放过去 10 秒的内容。 |
 | content_key_specs  <br/> security_level |uint32 |定义客户端对播放稳定性的要求。 <br/> - 需要基于软件的白盒加密。 <br/> - 需要软件加密和模糊处理解码器。 <br/> - 密钥材料和加密操作必须在由硬件支持的可信执行环境中执行。 <br/> - 内容加密和解码必须在由硬件支持的可信执行环境中执行。  <br/> - 加密、解码与媒体（压缩和未压缩）的所有处理必须在由硬件支持的可信执行环境中处理。 |
@@ -87,7 +87,7 @@ Widevine 许可证请求将格式化为 JSON 消息。
 | content_key_specs.key_id |Base64 编码的二进制字符串，16 字节 |密钥的唯一标识符。 |
 
 ## <a name="policy-overrides"></a>策略重写
-| 名称 | 值 | Description |
+| Name | 值 | 说明 |
 | --- | --- | --- |
 | policy_overrides&#46;can_play |布尔值 true 或 false |指示允许播放内容。 默认值为 false。 |
 | policy_overrides&#46;can_persist |布尔值 true 或 false |指示可以将许可证保存到非易失性存储器供脱机使用。 默认值为 false。 |
@@ -102,7 +102,7 @@ Widevine 许可证请求将格式化为 JSON 消息。
 | policy_overrides&#46;renew_with_usage |布尔值 true 或 false |指示开始使用时发送许可证以进行续订。 仅当 can_renew 为 true 时才使用此字段。 |
 
 ## <a name="session-initialization"></a>会话初始化
-| 名称 | 值 | Description |
+| Name | 值 | 说明 |
 | --- | --- | --- |
 | provider_session_token |Base64 编码的字符串 |此会话令牌将传回到许可证，并存在于后续的续订中。 会话令牌不能在会话之外持久保存。 |
 | provider_client_token |Base64 编码的字符串 |要在许可证响应中返回的客户端令牌。 如果许可证请求包含客户端令牌，则忽略此值。 客户端令牌可以在许可证会话之外持久保存。 |

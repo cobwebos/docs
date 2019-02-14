@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: 使用情感 API 对从实时视频流中获取的帧执行近实时分析。
 services: cognitive-services
 author: anrothMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: emotion-api
 ms.topic: sample
 ms.date: 01/25/2017
-ms.author: anroth
+ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: ec36193e341cac899e696c642a1d600f3f80a5f2
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f8039fef2456722a12f895b48ec86b63d355dd4b
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224858"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234826"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>示例：如何实时分析视频
 

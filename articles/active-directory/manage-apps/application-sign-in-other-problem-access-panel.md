@@ -3,8 +3,8 @@ title: 从访问面板登录应用程序时出现的问题 | Microsoft Docs
 description: 如何对从位于 myapps.microsoft.com 的 Microsoft Azure AD 访问面板中访问应用程序时出现的问题进行故障排除
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: 6dfc0f80285dfd7da6e78d7cbf9c993fed388a2b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a05efbe3feb81b11d547cd50d8ba3f87c2ff0e5b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813528"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164713"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>从访问面板登录应用程序时出现的问题
 

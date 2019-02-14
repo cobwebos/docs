@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何使用 Python 和文本翻译 REST API 查找指定文本的备用翻译和用法示例。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 4ca07416c615984b4eb6c7799ff17d9fbe43fa3b
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a97b958e241b216440a470e5eca86ebdf02adbe2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691464"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857305"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-python"></a>快速入门：通过 Python 使用双语字典查找字词
 

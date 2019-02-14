@@ -4,7 +4,7 @@ description: 本文提供有关 Azure 操作安全性的一组清单。
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: aa68bb0cb2e404072ef359591ce9309f8c27b631
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7895093eeb97857764530b52486c99b451dfc303
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403979"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105903"
 ---
 # <a name="azure-operational-security-checklist"></a>Azure 操作安全性清单
 在 Azure 上部署应用程序的过程快速、轻松且经济高效。 在生产环境中部署云应用程序之前，准备好一个清单会很有用，这样可以根据一份必要和建议的操作安全措施列表来评估应用程序。
@@ -36,7 +36,7 @@ Azure 提供一套可用于部署应用程序的基础结构服务。 Azure 操�
 
 此清单的目的是帮助企业在 Azure 上部署复杂的企业应用程序时全盘考虑各种操作安全因素。 此外，它还有助于为组织构建安全的云迁移和操作策略。
 
-|清单类别| Description|
+|清单类别| 说明|
 | ------------ | -------- |
 | [<br>安全角色和访问控制](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)|<ul><li>使用[基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 向特定范围的用户、组和应用程序分配权限。</li></ul> |
 | [<br>数据收集和存储](https://docs.microsoft.com/azure/storage/storage-security-guide)|<ul><li>使用[基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 通过管理平面安全性来保护存储帐户。</li><li>使用[共享访问签名 (SAS)](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) 和存储访问策略通过数据平面安全性来保护对数据的访问。</li><li>使用传输级加密 – 使用 [SMB（服务器消息块协议）3.0](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) 对 [Azure 文件共享](https://docs.microsoft.com/azure/storage/storage-dotnet-how-to-use-files)所用的 HTTPS 和加密。</li><li>需要专门控制加密密钥时，使用[客户端加密](https://docs.microsoft.com/azure/storage/storage-client-side-encryption)来保护发送到存储帐户的数据。 </li><li>使用[存储服务加密 (SSE)](https://docs.microsoft.com/azure/storage/storage-service-encryption) 来自动加密 Azure 存储中的数据，使用 [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) 来加密 OS 和数据磁盘的虚拟机磁盘文件。</li><li>使用 Azure [存储分析](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)监视授权类型；像使用 Blob 存储时一样，可以查看用户使用的是共享访问签名还是存储帐户密钥。</li><li>使用[跨域资源共享 (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) 访问不同域中的存储资源。</li></ul> |

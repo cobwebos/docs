@@ -12,12 +12,13 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: eee58708d6aec717d0f79f5c79a0c879b52d56a5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9682611467311f06d60f6f393ebd7788f95f7f12
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176363"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177863"
 ---
 # <a name="what-is-the-myapps-portal"></a>什么是 MyApps 门户？
 
@@ -49,7 +50,7 @@ MyApps 门户与 Azure 门户不同。 它不需要你拥有 Azure 订阅。
 
 将此 URL 分发给要登录到与 Azure AD 集成的应用程序的所有用户。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 要访问 MyApps 门户，必须通过 Azure AD 中的工作或学校帐户进行身份验证。 可以直接在 Azure AD 中进行身份验证。 或者，如果组织已使用 Active Directory 联合身份验证服务 (AD FS) 或其他技术配置联合，则可以通过 Windows Server Active Directory 进行身份验证。
 

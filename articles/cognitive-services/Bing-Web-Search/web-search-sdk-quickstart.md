@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 可以使用必应 Web 搜索 SDK 轻松地将必应 Web 搜索集成到 C# 应用程序中。 本快速入门介绍如何实例化客户端、发送请求和输出响应。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
 ms.author: aahi
-ms.openlocfilehash: 510cecdd4b646a9d0dd391632716c39759992a7d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 848f319836e492e486bfdcb3c9080860144a7e68
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180953"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869392"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>快速入门：使用用于 C# 的必应 Web 搜索 SDK
 

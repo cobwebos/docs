@@ -1,5 +1,5 @@
 ---
-title: 如何使用 Azure Monitor（预览版）将 Azure Active Directory 日志与 SumoLogic 集成 | Microsoft Docs
+title: 使用 Azure Monitor（预览版）将 Azure Active Directory 日志流式传输到 SumoLogic | Microsoft Docs
 description: 了解如何使用 Azure Monitor（预览版）将 Azure Active Directory 日志与 SumoLogic 集成
 services: active-directory
 documentationcenter: ''
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 164026cc1abea43760d06024ded5c083a92160f4
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 085b23fe43db4936a0fd459872ec841f2b45e221
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810595"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194268"
 ---
 # <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor-preview"></a>使用 Azure Monitor（预览版）将 Azure Active Directory 日志与 SumoLogic 集成
 

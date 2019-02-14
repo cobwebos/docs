@@ -4,7 +4,7 @@ description: 本文概述了渗透测试 (pentest) 过程，以及如何针对 A
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 695d918c-a9ac-4eba-8692-af4526734ccc
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2018
 ms.author: barclayn
-ms.openlocfilehash: 3f7d44a2a34f6b52c2229cf6491e99c65d5bb525
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: bfe289e29a6a2bb048d9fd42323f32ce8c12792c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052983"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110602"
 ---
 # <a name="pen-testing"></a>渗透测试
 使用 Azure 进行应用程序测试和部署的一个优点是可快速创建环境。  不必为请求、获取以及“搭架和堆叠”本地硬件担心。

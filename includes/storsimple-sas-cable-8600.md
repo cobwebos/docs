@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 792589f4aa2a80c05378224ffe4e4d1dad2f935c
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166506"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889147"
 ---
-<!--author=alkohli last changed:02/22/16-->
-
 #### <a name="to-attach-the-sas-cables"></a>连接 SAS 电缆
 1. 识别主机箱与 EBOD 机箱。 可以通过查看相应的背板来识别这两个机箱。 请参考下图。 
    
@@ -20,7 +18,7 @@ ms.locfileid: "50166506"
    
     **主机箱与 EBOD 机箱的后视图**
    
-   | 标签 | Description |
+   | Label | 说明 |
    |:--- |:--- |
    | 1 |主机箱 |
    | 2 |EBOD 机箱 |
@@ -30,7 +28,7 @@ ms.locfileid: "50166506"
    
     **序号标签位置**
    
-   | 标签 | Description |
+   | Label | 说明 |
    |:--- |:--- |
    | 1 |机箱的吊耳 |
 3. 接下来，使用提供的 SAS 电缆连接主机箱与 EBOD 机箱，如下所示：
@@ -43,7 +41,7 @@ ms.locfileid: "50166506"
       
       **SAS 布线**
       
-      | 标签 | Description |
+      | Label | 说明 |
       |:--- |:--- |
       | A |主机箱 |
       | B |EBOD 机箱 |

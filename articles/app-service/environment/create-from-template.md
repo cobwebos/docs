@@ -14,16 +14,19 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9056abdd57640026d04779a3c5c3a201095ea045
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: bdf722ffa7a7c499ff256392886e0f229f27c7a5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277465"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109888"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 ASE
 
 ## <a name="overview"></a>概述
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 可通过能访问 Internet 的终结点或 Azure 虚拟网络 (VNet) 内部地址上的终结点创建 Azure 应用服务环境 (ASE)。 使用内部终结点创建时，该终结点由被称为内部负载均衡器 (ILB) 的 Azure 组件提供。 内部 IP 地址上的 ASE 被称为 ILB ASE。 具有公共终结点的 ASE 被称为外部 ASE。 
 
 可使用 Azure 门户或 Azure 资源管理器模板创建 ASE。 本文介绍使用资源管理器模板创建外部 ESE 或 ILB ASE 所需的步骤和语法。 要了解如何在 Azure 门户中创建 ASE，请参阅[创建外部 ASE][MakeExternalASE] 或[创建 ILB ASE][MakeILBASE]。
@@ -60,7 +63,7 @@ ms.locfileid: "53277465"
 $templatePath="PATH\azuredeploy.json"
 $parameterPath="PATH\azuredeploy.parameters.json"
 
-New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 ```
 
 创建 ASE 可能需要约一小时。 然后，对于触发部署的订阅，ASE 将显示在门户的 ASE 列表中。
@@ -105,7 +108,7 @@ $fileContentEncoded | set-content ($fileName + ".b64")
 azuredeploy.parameters.json 文件中的参数如下所列：
 
 * appServiceEnvironmentName：要配置的 ILB ASE 的名称。
-* existingAseLocation：包含 ILB ASE 部署所在的 Azure 区域的文本字符串。  例如：“美国中南部”。
+* existingAseLocation：包含 ILB ASE 部署所在的 Azure 区域的文本字符串。  例如：“South Central US”。
 * pfxBlobString：.pfx 文件的 based64 编码字符串表示形式。 使用先前所示的代码片段并复制“exportedcert.pfx.b64”中包含的字符串。 将其作为 pfxBlobString 属性的值进行粘贴。
 * password：用于保护 .pfx 文件的密码。
 * certificateThumbprint：证书的指纹。 如果从 Powershell 中检索到此值（例如先前代码片段中的 $certificate.Thumbprint），可按原样使用此值。 如果从 Windows 证书对话框复制此值，请记得去除多余的空格。 certificateThumbprint 应如下所示：AF3143EB61D43F6727842115BB7F17BBCECAECAE。
@@ -146,7 +149,7 @@ azuredeploy.parameters.json 的缩写示例如下所示：
 $templatePath="PATH\azuredeploy.json"
 $parameterPath="PATH\azuredeploy.parameters.json"
 
-New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 ```
 
 每个 ASE 前端约耗时 40 分钟才能应用此更改。 例如，有一个默认大小的 ASE 使用两个前端，则模板需要大约 1 小时 20 分钟才能完成。 运行模板时无法缩放 ASE。  

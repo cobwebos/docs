@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 了解如何使用必应视觉搜索 SDK 上传图像并获取其相关见解。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 05/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: fe6ec751ed18af24e8a38d6993d8047b62eeed44
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 3c6a103d3d4c1890a58b833d29c88eb040ac9810
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769753"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860688"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>快速入门：使用适用于 C# 的必应视觉搜索 SDK 获取图像见解
 

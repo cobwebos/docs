@@ -4,16 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 8e6db54853efcba4d648c1d3bc793a9d1ce57441
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 9b9922602218280d58331a755ed0dfed7df96f40
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164538"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889811"
 ---
-<!--author=alkohli last changed: 9/16/15-->
-
-
 #### <a name="to-cable-your-device-for-power"></a>为设备进行电源布线
 > [!NOTE]
 > StorSimple 设备上的两个机箱都包括多余的 PCM。 对于每个机箱，PCM 必须安装并连接到不同电源，以确保高可用性。
@@ -40,7 +37,7 @@ ms.locfileid: "50164538"
     
     **电源布线**
     
-    | 标签 | Description |
+    | Label | 说明 |
     |:--- |:--- |
     | 1 |主机箱 |
     | 2 |PCM 0 |

@@ -4,7 +4,7 @@ description: 本文演示安全中心如何能够帮助保护 Azure SQL 数据�
 services: sql-database
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: f109adfd-daed-4257-9692-2042a1399480
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: rkarlin
-ms.openlocfilehash: 839c8bfe6748c1aeaf7c8804ef4388cf8a623bdb
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0a889de79b6a5921007614dac8d610c1be0222d2
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337829"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114080"
 ---
 # <a name="azure-security-center-and-azure-sql-database-service"></a>Azure 安全中心与 Azure SQL 数据库服务
 [Azure 安全中心](https://azure.microsoft.com/documentation/services/security-center/)可帮助防范、检测和应对威胁。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
@@ -67,7 +67,7 @@ ms.locfileid: "53337829"
 
 设置安全策略之后，安全中心将分析资源的安全状态，以识别潜在的漏洞。 建议以表格形式显示，其中每一行都表示一个特定的建议。 请参考下表，有助于理解适用于 Azure SQL 数据库的建议，以及应用每项建议后有什么不同。 选择一个建议会你将转到介绍如何在安全中心实现建议的文章。
 
-| 建议 | Description |
+| 建议 | 说明 |
 | --- | --- |
 | [在 SQL 服务器上启用审核与威胁检测](security-center-enable-auditing-on-sql-servers.md) |建议开启 SQL 数据库服务器的审核与威胁检测。 （仅限 SQL 数据库服务。 不包括在虚拟机上运行的 Microsoft SQL 服务器。） |
 | [在 SQL 数据库上启用审核与威胁检测](security-center-enable-auditing-on-sql-databases.md) |建议在 SQL 数据库数据库上开启审核与威胁检测。 （仅限 SQL 数据库服务。 不包括在虚拟机上运行的 Microsoft SQL 服务器。） |

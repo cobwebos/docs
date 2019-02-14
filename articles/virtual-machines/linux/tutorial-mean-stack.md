@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 84860b5098e141bdfbd924d86836bc7b48b0ce8f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 97734ad6119e89c00634035b1646bc29ac6549bd
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754211"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237846"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>教程：在 Azure 中的 Linux 虚拟机上创建 MongoDB、Express、AngularJS 和 Node.js (MEAN) 堆栈
 
@@ -134,7 +134,7 @@ sudo apt-get install -y nodejs
 
 6. 创建名为 *Books* 的文件夹，并将包含 Web 服务器配置的、名为 *server.js* 的文件添加到该文件夹。
 
-    ```node.js
+    ```javascript
     var express = require('express');
     var bodyParser = require('body-parser');
     var app = express();
@@ -159,7 +159,7 @@ sudo apt-get install -y nodejs
 
 2. 在 *Books* 文件夹中，创建名为 *apps* 的文件夹，并添加包含所定义的 Express 路由的、名为 *routes.js* 的文件。
 
-    ```node.js
+    ```javascript
     var Book = require('./models/book');
     module.exports = function(app) {
       app.get('/book', function(req, res) {
@@ -201,7 +201,7 @@ sudo apt-get install -y nodejs
 
 3. 在 *apps* 文件夹中，创建名为 *models* 的文件夹，并添加包含所定义的书籍模型配置的、名为 *book.js* 的文件。  
 
-    ```node.js
+    ```javascript
     var mongoose = require('mongoose');
     var dbHost = 'mongodb://localhost:27017/test';
     mongoose.connect(dbHost);
@@ -223,7 +223,7 @@ sudo apt-get install -y nodejs
 
 1. 将目录切换回到 *Books* (`cd ../..`)，然后创建名为 *public* 的文件夹，并添加包含所定义的控制器配置的、名为 *script.js* 的文件。
 
-    ```node.js
+    ```javascript
     var app = angular.module('myApp', []);
     app.controller('myCtrl', function($scope, $http) {
       $http( {

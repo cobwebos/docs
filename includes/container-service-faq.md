@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: b0bb45233aa34dce6794638e5d49fc2b47bef71d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: f903828285b0d4fdc8fbd932fa7c85056e937481
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53615203"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56212941"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>（已弃用）容器服务常见问题解答
 
@@ -85,7 +85,7 @@ DNSnamePrefix.AzureRegion.cloudapp.azure.net
 
 ### <a name="how-do-i-upgrade-the-orchestrator-after-deployment"></a>如何在部署后升级 Orchestrator？
 
-目前，Azure 容器服务不提供可将部署到群集的 Orchestrator 版本升级的工具。 如果容器服务支持更高的版本，可以部署新群集。 另一选项是使用特定于 Orchestrator 的工具（如果该工具可以用来对群集就地升级）。 有关示例，请参阅 [DC/OS 升级](https://dcos.io/docs/1.8/administration/upgrading/)。
+目前，Azure 容器服务不提供可将部署到群集的 Orchestrator 版本升级的工具。 如果容器服务支持更高的版本，可以部署新群集。 另一选项是使用特定于 Orchestrator 的工具（如果该工具可以用来对群集就地升级）。 有关示例，请参阅 [DC/OS 升级](http://docs.mesosphere.com/1.12/installing/production/upgrading)。
  
 ### <a name="where-do-i-find-the-ssh-connection-string-to-my-cluster"></a>在哪里查找用于连接到我的群集的 SSH 连接字符串？
 

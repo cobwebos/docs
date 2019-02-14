@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 使用本快速入门使用适用于 C# 的必应视频搜索 SDK 来发送视频搜索请求。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: rosh
-ms.openlocfilehash: 820c6a57a4a8266b68c5a245c2c2cf316aa071a9
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f94db7a29827a80307f4a081d93744c5edc59edb
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55569031"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867777"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-c"></a>快速入门：使用适用于 C# 的必应视频搜索 SDK 执行视频搜索
 

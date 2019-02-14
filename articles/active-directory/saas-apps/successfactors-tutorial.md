@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 465bdf3aaa8ab6fecddef6784bf1adead7f0c585
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 37130d71c3d8dfc9ad4cba68ce24fddf82c05959
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54822206"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162759"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>教程：Azure Active Directory 与 SuccessFactors 集成
 

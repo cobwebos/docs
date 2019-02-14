@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 从 ASP.NET Core Web 应用程序连接到必应新闻搜索。
 services: cognitive-services
 author: ghogen
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: e90b630b46f9c54175e30cf28e631ba40146f9ce
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 188e58261cec90e9afcc885f3da21fa3fab3b746
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189164"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55875427"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>教程：使用 Visual Studio 和 C# 中的连接服务连接到必应新闻搜索 API
 

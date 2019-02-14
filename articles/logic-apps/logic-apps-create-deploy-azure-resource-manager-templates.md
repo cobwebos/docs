@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.date: 10/15/2017
-ms.openlocfilehash: 52aea4e47473d4dd27519ae53322b0e72d93f20e
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 3abe7bae5506b721d4baf1e18da390b3e67977d8
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062887"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242927"
 ---
 # <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建和部署逻辑应用
 
@@ -79,7 +79,7 @@ ms.locfileid: "54062887"
 
 下面介绍了模板中的参数：
 
-| 参数 | Description | JSON 定义示例 | 
+| 参数 | 说明 | JSON 定义示例 | 
 | --------- | ----------- | ----------------------- | 
 | `logicAppName` | 定义模板创建的逻辑应用名称。 | "logicAppName": { "type": "string", "metadata": { "description": "myExampleLogicAppName" } } |
 | `testUri` | 定义要对其执行 ping 命令以供测试的位置。 | "testUri": { "type": "string", "defaultValue": "http://azure.microsoft.com/status/feed/"} | 
@@ -108,8 +108,10 @@ ms.locfileid: "54062887"
 
 ### <a name="powershell"></a>PowerShell
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ```
-New-AzureRmResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -ResourceGroupName ExampleDeployGroup
+New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -ResourceGroupName ExampleDeployGroup
 ``` 
 
 ### <a name="azure-cli"></a>Azure CLI

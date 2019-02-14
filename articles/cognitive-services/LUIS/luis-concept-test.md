@@ -3,19 +3,19 @@ title: 测试 LUIS 应用
 titleSuffix: Language Understanding - Azure Cognitive Services
 description: 进行测试过程中，会向 LUIS 提供示例话语并获取 LUIS 识别出的意向和实体响应。
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 6f18b0ec5d56fa8834bb0d1d6bc5c58831c832ff
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: bfb6d2461caf7b5c2c03ea99ad3b4c6ffa06fa0a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225323"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870837"
 ---
 # <a name="testing-example-utterances-in-luis"></a>在 LUIS 中测试示例话语
 

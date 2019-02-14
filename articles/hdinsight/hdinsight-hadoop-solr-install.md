@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 749a599936825f5f69ae18affad0fa89a4f1118f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 95b5bbb6c227b5001865a751abddddc4924e7b2d
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259625"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981071"
 ---
 # <a name="install-and-use-apache-solr-on-windows-based-hdinsight-clusters"></a>在基于 Windows 的 HDInsight 群集上安装并使用 Apache Solr
 
@@ -46,17 +46,12 @@ ms.locfileid: "54259625"
 
     ![使用脚本操作自定义群集](./media/hdinsight-hadoop-solr-install/hdi-script-action-solr.png "Use Script Action to customize a cluster")
 
-    <table border='1'>
-        <tr><th>属性</th><th>值</th></tr>
-        <tr><td>名称</td>
-            <td>指定脚本操作的名称。 例如 <b>Install Solr</b>。</td></tr>
-        <tr><td>脚本 URI</td>
-            <td>指定调用以自定义群集的脚本的统一资源标识符 (URI)。 例如 <i>https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1</i></td></tr>
-        <tr><td>节点类型</td>
-            <td>指定在其上运行自定义脚本的节点。 可以选择“所有节点”<b></b>、“仅限头节点”<b></b>或“仅限辅助角色节点”<b></b>。
-        <tr><td>parameters</td>
-            <td>根据脚本的需要，指定参数。 用于安装 Solr 的脚本不需要任何参数，因此，可以将此项保留为空。</td></tr>
-    </table>
+    |属性|值|
+    |---|---|
+    |Name|指定脚本操作的名称。 例如 **Install Solr**。|
+    |脚本 URI|指定调用以自定义群集的脚本的统一资源标识符 (URI)。 例如 *https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1*|
+    |节点类型|指定在其上运行自定义脚本的节点。 可以选择“所有节点”、“仅限头节点”或“仅限辅助角色节点”。
+    |parameters|根据脚本的需要，指定参数。 用于安装 Solr 的脚本不需要任何参数，因此，可以将此项保留为空。|
 
     可以添加多个脚本操作，以在群集上安装多个组件。 在添加了脚本后，单击复选标记以开始创建群集。
 

@@ -1,26 +1,26 @@
 ---
 title: 创建使用 Azure Redis 缓存的 Python 应用快速入门 | Microsoft Docs
 description: 本快速入门介绍如何创建使用 Azure Redis 缓存的 Python 应用
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: v-lincan
 ms.assetid: f186202c-fdad-4398-af8c-aee91ec96ba3
 ms.service: cache
 ms.devlang: python
 ms.topic: quickstart
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/11/2018
-ms.author: wesmc
+ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: e9faf30d591cab513695ece1d68704e5bef4ce9c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: f34021ee657626b3cf81e39ba01cafb3af5d1f50
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53018610"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237988"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-python"></a>快速入门：将 Azure Redis 缓存与 Python 配合使用
 

@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b63a4ed26688b73b9a8b1568433c7ae7606e6c6a
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 00e1823ab87048857267456f8e7d295d725a194d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698947"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890495"
 ---
 # <a name="install-applications-into-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 将应用程序安装到虚拟机规模集中
 此脚本创建运行 Ubuntu 的虚拟机规模集，并使用自定义脚本扩展安装一个基本 Web 应用程序。 运行脚本后，可以通过 Web 浏览器访问该 Web 应用。
@@ -46,7 +46,7 @@ az group delete --name myResourceGroup
 | 命令 | 说明 |
 |---|---|
 | [az group create](/cli/azure/ad/group) | 创建用于存储所有资源的资源组。 |
-| [az vmss create](/cli/azure/vmss#az_vmss_create) | 创建虚拟机规模集并将其连接到虚拟网络、子网和网络安全组。 负载均衡器也会被创建，以将流量分配到多个 VM 实例。 此命令还指定要使用的 VM 映像和管理凭据。  |
+| [az vmss create](/cli/azure/vmss) | 创建虚拟机规模集并将其连接到虚拟网络、子网和网络安全组。 负载均衡器也会被创建，以将流量分配到多个 VM 实例。 此命令还指定要使用的 VM 映像和管理凭据。  |
 | [az vmss extension set](/cli/azure/vmss/extension) | 安装 Azure 自定义脚本扩展以运行脚本，从而在每个 VM 实例上准备数据磁盘。 |
 | [az network lb rule create](/cli/azure/network/lb/rule) | 创建负载均衡器规则，以将 TCP 端口 80 上的流量分摊到规模集中的各个 VM 实例上。 |
 | [az network public-ip show](/cli/azure/network/public-ip) | 获取有关负载均衡器使用的分配公共 IP 地址的信息。 |

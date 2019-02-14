@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 1ea4639d547616f2cfdf1d5e2b78c1388ef09dc4
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 80c9f1c7e2bec3e3f3fa696134a23f0760598a29
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826116"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001130"
 ---
-# <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>使用 Azure 媒体包装器完成静态打包任务
+# <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>使用 Azure 媒体包装器完成静态打包任务  
 > [!NOTE]
 > Microsoft Azure 媒体包装器和 Microsoft Azure 媒体加密器的使用期限已延长到 2017 年 3 月 1 日。 在此日期之前，这些处理器的功能将添加到 Media Encoder Standard (MES) 中。 客户将收到有关如何迁移工作流以将作业发送到 MES 的指示。 格式转换和加密功能也可通过动态打包和动态加密提供。
 > 

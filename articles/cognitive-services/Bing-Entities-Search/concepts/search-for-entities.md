@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 使用必应实体搜索 API 从搜索查询中提取和搜索实体和场所。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: b1d46d125d390f8612c5708e1964e0626acde343
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e78cc86a91e229b5d4d4aead5709da2f694ecac1
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757737"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895357"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>使用必应实体 API 搜索实体
 
@@ -174,7 +174,7 @@ API 响应包含一个 [SearchResponse](https://docs.microsoft.com/rest/api/cogn
 
 ## <a name="find-places"></a>查找场所
 
-`places` 字段是一个 [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#localentityanswer) 对象，该对象包含 [Place](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#place) 对象的列表（有关详细信息，请参阅[实体类型](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types)）。 此列表包含一个或多个符合请求的本地实体。
+`places` 字段是一个 [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference) 对象，该对象包含 [Place](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#place) 对象的列表（有关详细信息，请参阅[实体类型](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types)）。 此列表包含一个或多个符合请求的本地实体。
 
 场所包括餐馆、酒店或本地商业场所。 [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entitypresentationinfo) 字段包含的提示用于标识本地实体的类型。 此列表包含一系列提示，例如场所、本地商业场所、餐馆。 数组中的每个后续提示都会缩窄实体的类型范围。 如需可能的类型的列表，请参阅[实体类型](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types)
 

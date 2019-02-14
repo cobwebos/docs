@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/23/2019
 ms.author: jeedes
-ms.openlocfilehash: b548c1abb9601a418e2e79fbc25afa8c6f9de0d6
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 72449833da1ebb5353bd49ba950950e7b22255c9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55105397"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179631"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oracle-fusion-erp"></a>教程：Azure Active Directory 与 Oracle Fusion ERP 的集成
 

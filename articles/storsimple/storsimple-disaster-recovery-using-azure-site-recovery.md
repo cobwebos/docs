@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
-ms.openlocfilehash: c88df7ba1a9a60ffcda9a5235197037088abca4e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f5b128306389a87c432b869b4756a6d232dc903c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249262"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566034"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>使用 Azure Site Recovery 针对 StorSimple 上托管的文件共享创建自动灾难恢复解决方案
 ## <a name="overview"></a>概述
@@ -168,16 +168,16 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 1. 在自动化帐户中，依次单击“变量”&gt;“添加变量”，再添加以下变量。 可以选择将这些资产加密。 这些变量为恢复计划专属。 如果恢复计划（将在下一步中创建）名为 TestPlan，变量应为 TestPlan-StorSimRegKey、TestPlan-AzureSubscriptionName 等。
 
    - **BaseUrl**：Azure 云的资源管理器 URL。 使用 Get-AzureRmEnvironment | Select-Object Name, ResourceManagerUrl cmdlet 获取。
-   - *RecoveryPlanName*-ResourceGroupName：包含 StorSimple 资源的资源管理器组。
-   - *RecoveryPlanName*-ManagerName：包含 StorSimple 设备的 StorSimple 资源。
-   - *RecoveryPlanName*-DeviceName：必须进行故障转移的 StorSimple 设备。
-   - *RecoveryPlanName*-DeviceIpAddress：设备的 IP 地址（可在“StorSimple 设备管理器”部分下的“设备”选项卡&gt;“设置”&gt;“网络”&gt;“DNS 设置”组中找到）。
-   - *RecoveryPlanName*-VolumeContainers：需要进行故障转移的设备上卷容器的逗号分隔字符串；例如，volcon1, volcon2, volcon3。
-   - *RecoveryPlanName*-TargetDeviceName：容器故障转移之后所在的 StorSimple 云设备。
-   - *RecoveryPlanName*-TargetDeviceIpAddress：目标设备的 IP 地址（可在“虚拟机”部分&gt;“设置”组&gt;“网络”选项卡中找到）。
-   - *RecoveryPlanName*-StorageAccountName：存储脚本（必须在已故障转移的 VM 上运行）的存储帐户名称。 可以是具有一些空间暂时存储脚本的任何存储帐户。
-   - *RecoveryPlanName*-StorageAccountKey：上述存储帐户的访问密钥。
-   - *RecoveryPlanName*-VMGUIDS：保护 VM 时，Azure Site Recovery 将为每台 VM 分配唯一 ID，此 ID 可提供已故障转移的 VM 的详细信息。 若要获取 VMGUID，请选择“恢复服务”选项卡，然后依次单击“受保护的项”&gt;“保护组”&gt;“计算机”&gt;“属性”。 如果有多个 VM，请以逗号分隔字符串的形式添加 GUID。
+   - *RecoveryPlanName***-ResourceGroupName**：包含 StorSimple 资源的资源管理器组。
+   - *RecoveryPlanName***-ManagerName**：包含 StorSimple 设备的 StorSimple 资源。
+   - *RecoveryPlanName***-DeviceName**：必须进行故障转移的 StorSimple 设备。
+   - *RecoveryPlanName***-DeviceIpAddress**：设备的 IP 地址（可在“StorSimple 设备管理器”部分下的“设备”选项卡 &gt;“设置”&gt;“网络”&gt;“DNS 设置”组中找到）。
+   - *RecoveryPlanName***-VolumeContainers**：需要进行故障转移的设备上卷容器的逗号分隔字符串；例如，volcon1, volcon2, volcon3。
+   - *RecoveryPlanName***-TargetDeviceName**：容器故障转移之后所在的 StorSimple 云设备。
+   - *RecoveryPlanName***-TargetDeviceIpAddress**：目标设备的 IP 地址（可在“虚拟机”部分 &gt;“设置”组 &gt;“网络”选项卡中找到）。
+   - *RecoveryPlanName***-StorageAccountName**：存储脚本（必须在已故障转移的 VM 上运行）的存储帐户名称。 可以是具有一些空间暂时存储脚本的任何存储帐户。
+   - *RecoveryPlanName***-StorageAccountKey**：上述存储帐户的访问密钥。
+   - *RecoveryPlanName***-VMGUIDS**：保护 VM 时，Azure Site Recovery 将为每台 VM 分配唯一 ID，此 ID 可提供已故障转移的 VM 的详细信息。 若要获取 VMGUID，请选择“恢复服务”选项卡，然后依次单击“受保护的项”&gt;“保护组”&gt;“计算机”&gt;“属性”。 如果有多个 VM，请以逗号分隔字符串的形式添加 GUID。
 
     例如，如果恢复计划名为 fileServerpredayRP，“变量”、“连接”和“证书”选项卡在添加完所有资产后应如下所示。
 
@@ -208,7 +208,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
       
    1. 创建用于管理 StorSimple 8000 系列设备的 Azure 自动化 Runbook 模块。 运行以下命令，创建自动化模块 zip 文件。
          
-      ```
+      ```powershell
             # set path variables
             $downloadDir = "C:\scripts\StorSimpleSDKTools"
             $moduleDir = "$downloadDir\AutomationModule\Microsoft.Azure.Management.StorSimple8000Series"
@@ -250,16 +250,16 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    
    - 打开“插入操作”边栏选项卡，输入名称，在“运行位置”选项中选择“主端”选项，选择自动化帐户（在其中添加了 runbook），并选择“Failover-StorSimple-Volume-Containers”runbook。
    
-   - 右键单击“组 1: 启动”并单击“添加保护项”选项，并选择要在恢复计划中进行保护的 VM 并单击“确定”按钮。 （可选）如果已选择 VM。
+   - 右键单击“组 1:启动”并单击“添加受保护的项”选项，然后选择要在恢复计划中进行保护的 VM 并单击“确定”按钮。 （可选）如果已选择 VM。
    
-   - 右键单击“组 1: 启动”并单击“后操作”选项，并添加以下所有脚本：  
+   - 右键单击“组 1:启动”并单击“之后的操作”选项，然后添加以下所有脚本：  
       
       - Start-StorSimple-Virtual-Appliance Runbook  
       - Fail over-StorSimple-volume-containers Runbook  
       - Mount-volumes-after-failover Runbook  
       - Uninstall-custom-script-extension Runbook  
         
-   - 在同一个“组 1: 后续步骤”部分中，在上面 4 个脚本后面添加一个手动操作。 通过此操作可以确认所有配置是否正常运行。 只需为测试故障转移添加此操作（因此选中“测试故障转移”复选框即可）。
+   - 在同一个“组 1:之后的步骤”部分中，在上面 4 个脚本后面添加一个手动操作。 通过此操作可以确认所有配置是否正常运行。 只需为测试故障转移添加此操作（因此选中“测试故障转移”复选框即可）。
     
    - 执行手动操作后，使用针对其他 runbook 执行的相同过程添加 **Cleanup** 脚本。 **保存**恢复计划。
     

@@ -3,8 +3,8 @@ title: 使用范围筛选器预配应用 | Microsoft Docs
 description: 了解如何使用范围筛选器阻止应用中支持自动用户预配的对象进行预配（如果对象不满足业务要求）。
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: barbkess
+ms.author: celested
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3ed3fef4f4f74939d503d5e6c8434d66f1d2a576
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6ebc6c1e8a264c5570f3100885c4fca7d0d0d90d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176941"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208363"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>使用范围筛选器进行基于属性的应用程序预配
 本文的目的是说明如何使用范围筛选器定义基于属性的规则，用于确定哪些用户将预配到应用程序。

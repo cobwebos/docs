@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7e2e092af0fc0340a0db7b958b02d3d16942ca77
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: aafec48f86ee032b112e9bb1100f82fbb3b363ed
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755180"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118388"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>教程：通过 Azure CLI 创建和使用虚拟机规模集的自定义映像
 创建规模集时，需指定部署 VM 实例时要使用的映像。 若要在部署 VM 实例之后减少任务数目，可以使用自定义 VM 映像。 在此自定义 VM 映像中可以完成全部所需的应用程序安装或配置步骤。 在规模集中创建的任何 VM 实例使用自定义 VM 映像，并随时可为应用程序流量提供服务。 本教程介绍如何执行下列操作：
@@ -88,6 +88,7 @@ exit
 现已自定义源 VM，其上已安装 Nginx Web 服务器。 让我们创建与规模集配合使用的自定义 VM 映像。
 
 若要创建映像，需要解除分配 VM。 使用 [az vm deallocate](/cli//azure/vm) 解除分配 VM。 然后，使用 [az vm generalize](/cli//azure/vm) 将 VM 的状态设置为已通用化，以便 Azure 平台知道该 VM 可使用自定义映像。 只能从通用化 VM 创建映像：
+
 
 ```azurecli-interactive
 az vm deallocate --resource-group myResourceGroup --name myVM

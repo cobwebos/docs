@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 本文介绍了 Azure 自定义 AI 决策服务的推荐工作流程。
 services: cognitive-services
 author: noellelacharite
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: nolachar
-ms.openlocfilehash: 7bacf2147dfbe4b6b33ae94d6bf66dcf8d072012
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 086858f88a1b058e0e94fb356fbd06cf299b14f3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220903"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858172"
 ---
 # <a name="custom-decision-service-workflow"></a>自定义 AI 决策服务工作流
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: e4963ebae73bdd81246433fe43206139caa1661c
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c27af57ce4fa80a4ae167ce1e27018d049923a3f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295774"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982839"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将第一个映像推送到专用 Docker 容器注册表
 
@@ -37,7 +37,7 @@ az acr login --name myregistry
 
 也可以使用 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 登录。 例如，你可能在自动化方案中向注册表[分配了服务主体](container-registry-authentication.md#service-principal)。 运行以下命令时，收到提示后，请以交互方式提供服务主体 appID（用户名）和密码。 有关管理登录凭据的最佳做法，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令参考：
 
-```Docker
+```
 docker login myregistry.azurecr.io
 ```
 
@@ -50,7 +50,7 @@ docker login myregistry.azurecr.io
 
 首次将公共 Nginx 映像提取到本地计算机。
 
-```Docker
+```
 docker pull nginx
 ```
 
@@ -58,7 +58,7 @@ docker pull nginx
 
 执行以下 [docker run](https://docs.docker.com/engine/reference/run/) 命令，在端口 8080 上以交互方式启动 Nginx 容器的本地实例 (`-it`)。 `--rm` 参数指定在停止容器时应将其删除。
 
-```Docker
+```
 docker run -it --rm -p 8080:80 nginx
 ```
 
@@ -74,7 +74,7 @@ docker run -it --rm -p 8080:80 nginx
 
 运行 [docker tag](https://docs.docker.com/engine/reference/commandline/tag/)，使用注册表的完全限定路径创建映像的别名。 此示例指定了 `samples` 命名空间，以免注册表根目录中出现混乱。
 
-```Docker
+```
 docker tag nginx myregistry.azurecr.io/samples/nginx
 ```
 
@@ -84,7 +84,7 @@ docker tag nginx myregistry.azurecr.io/samples/nginx
 
 使用专用注册表的完全限定路径标记映像后，可以使用 [docker push](https://docs.docker.com/engine/reference/commandline/push/) 将其推送到注册表：
 
-```Docker
+```
 docker push myregistry.azurecr.io/samples/nginx
 ```
 
@@ -92,7 +92,7 @@ docker push myregistry.azurecr.io/samples/nginx
 
 使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令从注册表提取映像：
 
-```Docker
+```
 docker pull myregistry.azurecr.io/samples/nginx
 ```
 
@@ -100,7 +100,7 @@ docker pull myregistry.azurecr.io/samples/nginx
 
 使用 [docker run](https://docs.docker.com/engine/reference/run/) 命令运行已从注册表提取的映像：
 
-```Docker
+```
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
@@ -112,7 +112,7 @@ docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 
 如果不再需要 Nginx 映像，可以使用 [docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/) 命令在本地将其删除。
 
-```Docker
+```
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 

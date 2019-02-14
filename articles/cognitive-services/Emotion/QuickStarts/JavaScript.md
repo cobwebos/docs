@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: 获取信息和代码示例，以帮助你通过 JavaScript 快速开始使用情感 API。
 services: cognitive-services
 author: anrothMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: emotion-api
 ms.topic: quickstart
 ms.date: 05/23/2017
-ms.author: anroth
+ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3c6e5b0d759aeb8aa0b06e359f1f48eaf6c44520
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 96388bb3cf2b73000fe871bc9e08720038c5c5a3
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208937"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234690"
 ---
 # <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>快速入门：构建应用以识别图像中人脸的情感。
 

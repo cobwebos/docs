@@ -2,21 +2,22 @@
 title: 用于将应用迁移到 Azure Active Directory 的资源 | Microsoft Docs
 description: 帮助你将应用程序访问和身份验证迁移到 Azure Active Directory (Azure AD) 的资源。
 services: active-directory
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/19/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: baselden
-ms.openlocfilehash: 40e9a6a7a8693f710fdb41e1c6738ecc70e5a0b7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 92ce62d745bfb0299dc8f3eb401f5a66e38580f2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189538"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182113"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>用于将应用程序迁移到 Azure Active Directory 的资源
 

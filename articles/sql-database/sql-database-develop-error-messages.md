@@ -12,13 +12,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6bbb2bfa0fe3c157114d53b070d6c98e68099643
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: 4da18fffc98367f24ec95bd27617e7638e3d5705
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464717"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003663"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL 数据库客户端应用程序的 SQL 错误代码：数据库连接错误和其他问题
 
@@ -99,8 +99,8 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 
 | 错误代码 | 严重性 | 说明 |
 | ---:| ---:|:--- |
-| 10928 |20 |资源 ID：%d。 数据库的 %s 限制是 %d 且已达到该限制。 有关详细信息，请参阅[独立数据库和入池数据库的 SQL 数据库资源限制](sql-database-resource-limits-database-server.md)。<br/><br/>资源 ID 指示已达到限制的资源。 对于工作线程，资源 ID = 1。 对于会话，资源 ID = 2。<br/><br/>有关此错误以及如何解决此错误的详细信息，请参阅：<br/>• [Azure SQL 数据库资源限制](sql-database-service-tiers-dtu.md)。 |
-| 10929 |20 |资源 ID：%d。 %s 最小保证为 %d，最大限制为 %d，数据库的当前使用率为 %d。 但是，服务器当前太忙，无法支持针对该数据库的数目大于 %d 的请求。 有关详细信息，请参阅[独立数据库和入池数据库的 SQL 数据库资源限制](sql-database-resource-limits-database-server.md)。 否则，请稍后重试。<br/><br/>资源 ID 指示已达到限制的资源。 对于工作线程，资源 ID = 1。 对于会话，资源 ID = 2。<br/><br/>有关此错误以及如何解决此错误的详细信息，请参阅：<br/>• [Azure SQL 数据库资源限制](sql-database-service-tiers-dtu.md)。 |
+| 10928 |20 |资源 ID：%d。 数据库的 %s 限制是 %d 且已达到该限制。 有关详细信息，请参阅[单一数据库和入池数据库的 SQL 数据库资源限制](sql-database-resource-limits-database-server.md)。<br/><br/>资源 ID 指示已达到限制的资源。 对于工作线程，资源 ID = 1。 对于会话，资源 ID = 2。<br/><br/>有关此错误以及如何解决此错误的详细信息，请参阅：<br/>• [Azure SQL 数据库资源限制](sql-database-service-tiers-dtu.md)。 |
+| 10929 |20 |资源 ID：%d。 %s 最小保证为 %d，最大限制为 %d，数据库的当前使用率为 %d。 但是，服务器当前太忙，无法支持针对该数据库的数目大于 %d 的请求。 有关详细信息，请参阅[单一数据库和入池数据库的 SQL 数据库资源限制](sql-database-resource-limits-database-server.md)。 否则，请稍后重试。<br/><br/>资源 ID 指示已达到限制的资源。 对于工作线程，资源 ID = 1。 对于会话，资源 ID = 2。<br/><br/>有关此错误以及如何解决此错误的详细信息，请参阅：<br/>• [Azure SQL 数据库资源限制](sql-database-service-tiers-dtu.md)。 |
 | 40544 |20 |数据库已达到大小配额。 请将数据分区或删除、删除索引或查阅文档以找到可能的解决方案。 |
 | 40549 |16 |由于有长时间运行的事务，已终止会话。 请尝试缩短事务运行时间。 |
 | 40550 |16 |由于会话获取的锁过多，已终止该会话。 请尝试在单个事务中读取或修改更少的行。 |

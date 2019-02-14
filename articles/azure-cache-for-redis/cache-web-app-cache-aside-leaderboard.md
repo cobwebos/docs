@@ -1,26 +1,26 @@
 ---
 title: 有关通过用于 Redis 的 Azure 缓存创建使用缓存端模式的 Web 应用的教程 | Microsoft Docs
 description: 了解如何通过用于 Redis 的 Azure 缓存创建使用缓存端模式的 Web 应用
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.assetid: ''
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.author: wesmc
-ms.openlocfilehash: da99d446da1451c2b05f6ecab8ba19eaa1e2bfa3
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.author: yegu
+ms.openlocfilehash: 138bc0350e4eecac4639125dc3ae508ddbbd7d72
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104941"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234860"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>教程：在 ASP.NET 中创建缓存端排行榜
 
@@ -709,7 +709,7 @@ ms.locfileid: "54104941"
 
     下表描述了示例应用程序中的每个操作链接：
 
-    | 操作 | Description |
+    | 操作 | 说明 |
     | --- | --- |
     | 新建 |创建新的团队。 |
     | 举行赛季的比赛 |举行一赛季的比赛、更新团队统计信息，以及从缓存中清除任何过时的团队数据。 |

@@ -3,8 +3,8 @@ title: 安装应用程序访问面板浏览器扩展 - Azure | Microsoft Docs
 description: 修复安装访问面板浏览器扩展时遇到的常见错误。
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 5/4/18
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere,asteen
-ms.openlocfilehash: 69a05b8fad222baa5ab367215751857e0d0385fb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 42b9668a68ed57273c6198dc2ecd34b9001811d3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153210"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209296"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>安装访问面板浏览器扩展
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: fd97321c638dd95f811ff772a4163ce3c2fd682c
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5ad65cbbe16b66e71b67a3c61d3265f0e3a6729e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813400"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205437"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trello"></a>教程：Azure Active Directory 与 Trello 集成
 

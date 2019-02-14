@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: tutorial
-ms.date: 01/28/2019
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 1e3ba1e12a8b058429f75b1d2aab3942cd843778
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: e3bba18e9b391807a154ff959e1ce59dabe04ece
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55090501"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998153"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>快速入门：如何注册并上传第一个视频
 

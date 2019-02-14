@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: 86a00eddb9951af26120d260fa0e755aaa72295d
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 90f24d787c09de99f076d1edffabb3dbbbe19a57
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731829"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174140"
 ---
 # <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>如何区分委派权限和应用程序权限之间的差异
 

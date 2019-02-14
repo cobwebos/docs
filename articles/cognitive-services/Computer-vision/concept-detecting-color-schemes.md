@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 使用计算机视觉 API 检测图像中的配色方案的相关概念。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: d882ad89e68936d07ae4d76218c6e3ac450185a8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 0793f572e043248af409e65cca4fd854f1371900
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151322"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55880864"
 ---
 # <a name="detect-color-schemes-in-images"></a>检测图像中的配色方案
 

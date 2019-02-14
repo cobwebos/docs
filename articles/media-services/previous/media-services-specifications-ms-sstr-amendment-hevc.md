@@ -4,7 +4,7 @@ description: 本规范描述 Azure 媒体服务中基于 HEVC 分片 MP4 的实�
 services: media-services
 documentationcenter: ''
 author: cenkdin
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: f27d85de-2cb8-4269-8eed-2efb566ca2c6
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 02/08/2019
 ms.author: johndeu;
-ms.openlocfilehash: c87795c1203a8639ba224a646f8f0c5f5515b840
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: e13995ccdc609951f908b4a1779eaefcfdc596bb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812754"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005210"
 ---
-# <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC 的平滑流式处理协议 (MS-SSTR) 修正
+# <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC 的平滑流式处理协议 (MS-SSTR) 修正 
 
 ## <a name="1-introduction"></a>1 简介 
 

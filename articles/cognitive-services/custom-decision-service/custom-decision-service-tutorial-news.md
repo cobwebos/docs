@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 有关帮助作出上下文决策的文章个性化的教程。
 services: cognitive-services
 author: slivkins
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-decision-service
 ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: fce90c05fb2e79be23cfd7a58875f8cb6b3ddbf7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d8ddafe20ff93e7ae4d51e2180bbd40447729234
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819767"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983026"
 ---
 # <a name="tutorial-article-personalization-for-contextual-decision-making"></a>教程：帮助作出上下文决策的文章个性化
 
@@ -50,7 +50,7 @@ ms.locfileid: "55819767"
 
 ## <a name="register-a-new-app"></a>注册新应用
 
-1. 注册 [Microsoft 帐户](https://account.microsoft.com/account)。 在功能区上，单击“我的门户”。
+1. 注册 [Microsoft 帐户](https://portal.ds.microsoft.com/)。 在功能区上，单击“我的门户”。
 
 2. 要注册一个应用程序，请单击“新建应用”按钮。
 

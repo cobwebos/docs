@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 了解如何使用内容审查器跟踪、标记、评估和筛选用户生成的内容中不适合的材料。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 4e0b5070a9ee5b8c8554505dcf81c8226a9fddc0
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 6fe69cc56ec874b73083aefab9df8994942368c6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227210"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55872164"
 ---
 # <a name="what-is-azure-content-moderator"></a>什么是 Azure 内容审查器？
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/05/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: bc920493b32d500602a5b683c098d23aff855150
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: fb27386881e89cd9056d0efccb7d3c301867bd83
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55823087"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965981"
 ---
 1. 在 **Android Studio** 中，在菜单上选择“工具”，然后选择“SDK 管理器”。 
 2. 选择你的项目中使用的 Android SDK 的目标版本，然后选择“显示包详细信息”。 
@@ -29,7 +29,7 @@ ms.locfileid: "55823087"
 4. 选择“确定”以关闭“新项目的设置”对话框。  
 5. 打开 **app** 目录中的 `build.gradle` 文件，并在 `dependencies` 下添加此行。 
 
-    ```text
+    ```gradle
     implementation 'com.google.android.gms:play-services-gcm:16.0.0'
     ```
 5. 选择工具栏中的“立即同步”图标。

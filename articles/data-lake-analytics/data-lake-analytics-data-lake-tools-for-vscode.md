@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 02/09/2018
-ms.openlocfilehash: e470d27ccfea68f628b793f9afd695bb363e295a
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 5ebd543000c8927f714e5345dfd8eb6033c6301a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630829"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820362"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>使用针对 Visual Studio Code 的 Azure Data Lake 工具
 
@@ -24,7 +24,7 @@ ms.locfileid: "45630829"
 
 ## <a name="prerequisites"></a>先决条件
 
-适用于 VS Code 的 Azure Data Lake 工具支持 Windows、Linux 和 macOS。 U-SQL 本地运行和本地调试仅适用于 Windows。
+适用于 VS Code 的 Azure Data Lake 工具支持 Windows、Linux 和 macOS。 U-SQL 本地运行和本地调试仅适用于 Windows。
 
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)
 
@@ -59,7 +59,7 @@ ms.locfileid: "45630829"
 
 **打开示例脚本的步骤**
 
-打开命令面板 (Ctrl+Shift+P)，并输入 **ADL: Open Sample Script**。 这会打开此示例的另一个实例。 还可以对此实例编辑、配置和提交脚本。
+打开命令面板 (Ctrl+Shift+P)，然后输入 **ADL:Open Sample Script**。 这会打开此示例的另一个实例。 还可以对此实例编辑、配置和提交脚本。
 
 **打开 U-SQL 项目文件夹的方法**
 
@@ -68,18 +68,18 @@ ms.locfileid: "45630829"
 3. 选择“文件”菜单，并选择“新建”。 一个 Untilted-1 文件会添加到项目。
 4. 在 Untitled-1 文件中输入以下代码：
 
-        @departments  = 
-            SELECT * FROM 
-                (VALUES
-                    (31,    "Sales"),
-                    (33,    "Engineering"), 
-                    (34,    "Clerical"),
-                    (35,    "Marketing")
-                ) AS 
-                      D( DepID, DepName );
-         
+        @departments  = 
+            SELECT * FROM 
+                (VALUES
+                    (31,    "Sales"),
+                    (33,    "Engineering"), 
+                    (34,    "Clerical"),
+                    (35,    "Marketing")
+                ) AS 
+                      D( DepID, DepName );
+         
         OUTPUT @departments
-            TO "/Output/departments.csv"
+            TO "/Output/departments.csv"
         USING Outputters.Csv();
 
     脚本创建具有 /output 文件夹中某些数据的 departments.csv 文件。
@@ -89,12 +89,12 @@ ms.locfileid: "45630829"
 **编译 U-SQL 脚本的方法**
 
 1. 按 Ctrl+Shift+P 打开命令面板。 
-2. 输入“ADL: Compile Script”。 编译结果显示在“输出”窗口中。 也可以右键单击脚本文件，并选择“ADL: Compile Script”编译 U-SQL 作业。 编译结果显示在“输出”窗格中。
+2. 输入 **ADL:Compile Script**。 编译结果显示在“输出”窗口中。 还可以右键单击脚本文件，然后选择 **ADL:Compile Script** 以编译 U-SQL 作业。 编译结果显示在“输出”窗格中。
  
 **提交 U-SQL 脚本的方法**
 
 1. 按 Ctrl+Shift+P 打开命令面板。 
-2. 输入“ADL: Submit Job”。 也可以右键单击脚本文件，并选择“ADL: Submit Job”。 
+2. 输入 **ADL:Submit Job**。 还可以右键单击脚本文件，然后选择 **ADL:Submit Job**。 
 
 提交 U-SQL 作业后，提交日志会显示在 VS Code 的“输出”窗口中。 作业视图显示在右侧窗格中。 如果提交成功，还会显示作业 URL。 可在 Web 浏览器中打开该作业 URL，跟踪作业实时状态。 
 
@@ -109,7 +109,7 @@ ms.locfileid: "45630829"
 如果没有为文件分别设置参数，可将要应用此设置的默认上下文设置为所有脚本文件。
 
 1. 按 Ctrl+Shift+P 打开命令面板。 
-2. 输入“ADL: Set Default Context”。 或者，右键单击脚本编辑器，然后选择“ADL: 设置默认上下文”。
+2. 输入 **ADL:Set Default Context**。 或者右键单击脚本编辑器，然后选择 **ADL:Set Default Context**。
 3. 选择帐户、数据库和所需架构。 设置保存到 xxx_settings.json 配置文件。
 
    ![帐户、数据库和架构设置为默认上下文](./media/data-lake-analytics-data-lake-tools-for-vscode/default-context-sequence.png)
@@ -117,15 +117,15 @@ ms.locfileid: "45630829"
 **设置脚本参数**
 
 1. 按 Ctrl+Shift+P 打开命令面板。 
-2. 输入“ADL: Set Script Parameters”。
+2. 输入 **ADL:Set Script Parameters**。
 3. 将打开 xxx_settings.json，其中显示了以下属性：
 
    - **account**：Azure 订阅下需要编译和运行 U-SQL 作业的 Azure Data Lake Analytics 帐户。 需要先配置此计算机帐户，然后才能编译和运行 U-SQL 作业。
    - **database**：帐户下的数据库。 默认为 **master**。
    - **schema**：数据库下的架构。 默认为 **dbo**。
    - **optionalSettings**：
-        - **priority**：优先级范围是 1 到 1000，1 是最高优先级。 默认值为 **1000**。
-        - **degreeOfParallelism**：并行度范围是 1 到 150。 默认值是 Azure Data Lake Analytics 帐户中允许的最大并行度。 
+        - **priority**：优先级范围为 1 到 1000，其中 1 是最高优先级。 默认值为 **1000**。
+        - **degreeOfParallelism**：并行度范围为 1 到 150。 默认值是 Azure Data Lake Analytics 帐户中允许的最大并行度。 
 
    ![JSON 文件的内容](./media/data-lake-analytics-data-lake-tools-for-vscode/default-context-setting.png)
       
@@ -135,7 +135,7 @@ ms.locfileid: "45630829"
 **将 Git 设为忽略**
 
 1. 按 Ctrl+Shift+P 打开命令面板。 
-2. 输入 ADL: Set Git Ignore。
+2. 输入 **ADL:Set Git Ignore**。
 
    - 如果 VS Code 工作文件夹中没有 .gitIgnore 文件，则会在该文件夹中创建一个名为 .gitIgnore 的文件。 默认情况下会将四个项（usqlCodeBehindReference、usqlCodeBehindGenerated、.cache 和 obj）添加到该文件。 可以按需进行更多更新。
    - 如果 VS Code 工作文件夹中已有一个 .gitIgnore 文件，则该工具会向 .gitIgnore 文件中添加四个项（usqlCodeBehindReference、usqlCodeBehindGenerated、.cache、obj）（如果该文件中尚未包括这四个项）。
@@ -143,7 +143,7 @@ ms.locfileid: "45630829"
    ![.gitIgnore 文件中的项](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-gitignore.png)
 
 
-## <a name="work-with-code-behind-files-c-sharp-python-and-r"></a>处理代码隐藏文件：C Sharp、Python 和 R
+## <a name="work-with-code-behind-files-c-sharp-python-and-r"></a>使用代码隐藏文件：C Sharp、Python 和 R
 
 Azure Data Lake 工具支持多种自定义代码。 有关说明，请参阅[在 Visual Studio Code 中使用 Python、R 和 C# 开发用于 Azure Data Lake Analytics 的 U-SQL](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)。
 
@@ -155,22 +155,22 @@ Azure Data Lake 工具支持多种自定义代码。 有关说明，请参阅[�
 
 **注册程序集的方法**
 
-可以通过 ADL: Register Assembly 或 ADL: Register Assembly (Advanced) 命令注册程序集。
+可通过 **ADL:Register Assembly** 或 **ADL:Register Assembly (Advanced)** 命令注册程序集。
 
-**通过 ADL: Register Assembly 命令注册**
+**通过“ADL:Register Assembly”命令注册**
 1.  按 Ctrl+Shift+P 打开命令面板。
-2.  输入 **ADL: Register Assembly**。 
+2.  输入 **ADL:Register Assembly**。 
 3.  指定本地程序集路径。 
 4.  选择 Data Lake Analytics 帐户。
 5.  选择数据库。
 
 门户在浏览器中打开并显示程序集注册过程。  
 
-触发 ADL: Register Assembly 命令的另一种便利方法是在文件资源管理器中右键单击 .dll 文件。 
+触发 **ADL:Register Assembly** 命令的更方便的方法是在文件资源管理器中右键单击 .dll 文件。 
 
-**通过 ADL: Register Assembly (Advanced) 命令注册**
+**通过“ADL:Register Assembly (Advanced)”命令注册**
 1.  按 Ctrl+Shift+P 打开命令面板。
-2.  输入“ADL: Register Assembly (Advanced)”。 
+2.  输入 **ADL:Register Assembly (Advanced)**。 
 3.  指定本地程序集路径。 
 4.  会显示 JSON 文件。 检查并根据需要编辑程序集依赖项和资源参数。 指令会显示在“输出”窗口中。 若要继续进行程序集注册，请保存 (Ctrl+S) JSON 文件。
 
@@ -180,7 +180,7 @@ Azure Data Lake 工具支持多种自定义代码。 有关说明，请参阅[�
 >- Azure Data Lake 工具会自动检测 DLL 是否具有任何程序集依赖项。 依赖项在检测到之后会显示在 JSON 文件中。 
 >- 可以在程序集注册过程中上传 DLL 资源（例如，.txt、.png 和 .csv）。 
 
-触发 ADL: Register Assembly (Advanced) 命令的另一种方法是在文件资源管理器中右键单击 .dll 文件。 
+触发 **ADL:Register Assembly (Advanced)** 命令的另一种方法是在文件资源管理器中右键单击 .dll 文件。 
 
 以下 U-SQL 代码演示如何调用程序集。 在示例中，程序集名称是 test。
 
@@ -233,7 +233,7 @@ Azure Data Lake 工具支持多种自定义代码。 有关说明，请参阅[�
 <b id="sign-in-by-command">使用命令连接到 Azure</b>
 
 1.  按 Ctrl+Shift+P 打开命令面板。 
-2.  输入 **ADL: Login**。 登录信息将显示在右下角。
+2.  输入 **ADL:** Login”。 登录信息将显示在右下角。
 
     ![输入登录命令](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login.png)
 
@@ -243,14 +243,14 @@ Azure Data Lake 工具支持多种自定义代码。 有关说明，请参阅[�
 
     ![登录网页](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login-paste-code.png)  
      
-4.  按照说明从网页登录。 连接后，“VS Code”窗口左下角的状态栏上会显示 Azure 帐户名称。 
+4.  按照说明从网页登录。 连接后，“VS Code”窗口左下角的状态栏上会显示 Azure 帐户名称。 
 
 > [!NOTE] 
 >- 如果没有注销，则 Data Lake 工具下次自动登录。
 >- 如果帐户已启用双重身份验证，我们建议使用手机身份验证，而不要使用 PIN 码。
 
 
-若要注销，请输入命令 **ADL: Logout**
+若要注销，请输入 **ADL:Logout** 命令。
 
 **从浏览器连接到 Azure**
 
@@ -262,11 +262,11 @@ Azure Data Lake 工具支持多种自定义代码。 有关说明，请参阅[�
 
 
 ## <a name="create-an-extraction-script"></a>创建提取脚本 
-可以使用 ADL: Create EXTRACT Script 命令或从 Azure Data Lake 资源管理器创建 .csv、.tsv 和 .txt 文件提取脚本。
+可以使用 **ADL:Create EXTRACT Script** 命令或通过 Azure Data Lake 资源管理器创建适用于 .csv、.tsv 和 .txt 文件的提取脚本。
 
 **使用命令创建提取脚本**
 
-1. 按 Ctrl+Shift+P 打开命令面板，然后输入 ADL: Create EXTRACT Script。
+1. 选择 Ctrl+Shift+P，打开命令面板，然后输入 **ADL:Create EXTRACT Script**。
 2. 指定 Azure 存储文件完整路径并按 Enter 键。
 3. 选择一个帐户。
 4. 对于 .txt 文件，请选择一个用于提取文件的分隔符。 
@@ -290,17 +290,17 @@ Azure Data Lake 工具支持多种自定义代码。 有关说明，请参阅[�
 **列出 Azure 订阅下 Azure Data Lake Analytics 帐户的步骤**
 
 1. 按 Ctrl+Shift+P 打开命令面板。
-2. 输入 **ADL: List Accounts**。 帐户随即显示在“输出”窗格中。
+2. 输入 **ADL:List Accounts**。 帐户随即显示在“输出”窗格中。
 
 **访问 Azure Data Lake Analytics 元数据**
 
-1.  按 Ctrl+Shift+P，并输入 **ADL: List Tables**。
+1.  选择 Ctrl+Shift+P，然后输入 **ADL:List Tables**。
 2.  选择其中一个 Data Lake Analytics 帐户。
 3.  选择其中一个 Data Lake Analytics 数据库。
 4.  选择其中一个架构。 可以看到表的列表。
 
 **查看 Azure Data Lake Analytics 作业的步骤**
-1.  打开命令面板 (Ctrl+Shift+P)，并选择“ADL: Show Jobs”。 
+1.  打开命令面板 (Ctrl+Shift+P)，然后选择 **ADL:Show Jobs**。 
 2.  选择 Data Lake Analytics 或本地帐户。 
 3.  等待显示帐户的作业列表.
 4.  从作业列表中选择作业。 Data Lake 工具将在右侧窗格中打开作业视图，并在 VS Code 输出中显示一些信息。
@@ -312,14 +312,14 @@ Azure Data Lake 工具支持多种自定义代码。 有关说明，请参阅[�
 可以使用 Azure Data Lake Store 相关的命令来执行以下操作：
  - [浏览 Azure Data Lake Store 资源](#list-the-storage-path) 
  - [预览 Azure Data Lake Store 文件](#preview-the-storage-file) 
- - [在 VS Code 中将文件上传到 Azure Data Lake Store](#upload-file-or-folder)
- - [在 VS Code 中从 Azure Data Lake Store 直接下载文件](#download-file)
+ - 在 VS Code 中将文件直接上传到 Azure Data Lake Store
+ - 在 VS Code 中从 Azure Data Lake Store 直接下载文件
 
 ### <a name="list-the-storage-path"></a>列出存储路径 
 
 **通过命令面板列出存储路径**
 
-1. 右键单击脚本编辑器，然后选择“ADL: 列出路径”。
+1. 右键单击脚本编辑器，然后选择 **ADL:List Path**。
 2. 在列表中选择文件夹，或者选择“输入路径”或“从根路径浏览”。 （我们将使用“输入路径”作为示例。） 
 3. 选择 Data Lake Analytics 帐户。
 4. 浏览到或输入存储文件夹路径（例如，/output/）。  
@@ -339,7 +339,7 @@ Azure Data Lake 工具支持多种自定义代码。 有关说明，请参阅[�
 
 ### <a name="preview-the-storage-file"></a>预览存储文件
 
-1. 右键单击脚本编辑器，然后选择“ADL: 预览文件”。
+1. 右键单击脚本编辑器，然后选择 **ADL:Preview File**。
 2. 选择 Data Lake Analytics 帐户。 
 3. 输入 Azure 存储文件路径（例如，/output/SearchLog.txt）。 
 
@@ -366,9 +366,9 @@ Azure Data Lake 工具支持多种自定义代码。 有关说明，请参阅[�
 
 
 ### <a name="download-a-file"></a>下载文件 
-可以通过 ADL: Download File 或 ADL: Download File (Advanced) 命令来下载文件。
+可使用 **ADL:Download File** 或 **ADL:Download File (Advanced)** 命令下载文件。
 
-**通过 ADL: Download File (Advanced) 命令下载文件**
+**通过“ADL:Download File (Advanced)”命令下载文件**
 1. 右键单击脚本编辑器，然后选择“下载文件(高级)”。
 2. VS Code 显示 JSON 文件。 可以输入文件路径，以便同时下载多个文件。 指令会显示在“输出”窗口中。 若要继续下载文件，请保存（按 Ctrl+S）JSON 文件。
 
@@ -380,7 +380,7 @@ Azure Data Lake 工具支持多种自定义代码。 有关说明，请参阅[�
 
 可以[监视下载状态](#check-storage-tasks-status)。
 
-**通过 ADL: Download File 命令下载文件**
+**通过“ADL:Download File”命令下载文件**
 
 1. 右键单击脚本编辑器，选择“下载文件”，然后从“选择文件夹”对话框选择目标文件夹。
 2. 在列表中选择文件夹，或者选择“输入路径”或“从根路径浏览”。 （我们将使用“输入路径”作为示例。） 
@@ -411,7 +411,7 @@ Azure Data Lake 工具支持多种自定义代码。 有关说明，请参阅[�
 
 ### <a name="data-lake-analytics-metadata-entity-management"></a>Data Lake Analytics 元数据实体管理
 
-展开“U-SQL 数据库”。 可通过右键单击相应节点，然后选择快捷菜单上的“用于创建的脚本”，创建数据库、架构、表、表类型、索引或统计。 在打开的脚本页上，按需编辑脚本。 然后，右键单击并选择“ADL: 提交作业”来提交作业。 
+展开“U-SQL 数据库”。 可通过右键单击相应节点，然后选择快捷菜单上的“用于创建的脚本”，创建数据库、架构、表、表类型、索引或统计。 在打开的脚本页上，按需编辑脚本。 然后，右键单击作业并选择 **ADL:Submit Job** 来提交作业。 
 
 完成创建项后，右键单击节点，然后选择“刷新”以显示该项。 还可以通过右键单击并选择“删除”来删除项。
 
@@ -477,7 +477,7 @@ Data Lake 工具会在 Azure 门户中打开 Azure 存储路径。 可以从 Web
  
     ![IntelliSense 对象类型](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-auto-complete-objects.png)
  
--   **IntelliSense 自动完成 Data Lake Analytics 元数据**：Data Lake 工具在本地下载 Data Lake Analytics 元数据信息。 IntelliSense 功能自动填充 Data Lake Analytics 元数据的对象。 这些对象包括数据库、架构、表、视图、表值函数、过程和 C# 程序集。
+-   **Data Lake Analytics 元数据中的 IntelliSense 自动完成**：Data Lake 工具在本地下载 Data Lake Analytics 元数据信息。 IntelliSense 功能自动填充 Data Lake Analytics 元数据的对象。 这些对象包括数据库、架构、表、视图、表值函数、过程和 C# 程序集。
  
     ![IntelliSense 元数据](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-auto-complete-metastore.png)
 
@@ -493,4 +493,4 @@ Data Lake 工具会在 Azure 门户中打开 Azure 存储路径。 可以从 Web
 - [在 VS Code 中使用 Python、R 和 C Sharp 开发用于 Azure Data Lake Analytics 的 U-SQL](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 - [使用 Visual Studio Code 进行 U-SQL 本地运行和本地调试](data-lake-tools-for-vscode-local-run-and-debug.md)
 - [教程：Azure Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)
-- [教程：使用针对 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
+- [教程：使用适用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)

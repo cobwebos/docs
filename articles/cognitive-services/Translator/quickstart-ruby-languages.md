@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 在该快速入门中，你将使用文本翻译 API 和 Ruby 获取翻译、音译和字典查找支持的语言列表以及示例。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/22/2018
+ms.date: 02/08/2019
 ms.author: erhopf
-ms.openlocfilehash: 67f1a7b4a064aa46ef7d258dd72b1d686a797349
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1b92adcf528a1ccd00983e6c0dd952fefab5dd7d
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458102"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55975460"
 ---
 # <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-ruby"></a>快速入门：通过文本翻译 REST API (Ruby) 获取受支持的语言
 
@@ -25,16 +25,13 @@ ms.locfileid: "55458102"
 
 需要使用 [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) 或更高版本来运行此代码。
 
-若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
-
 ## <a name="languages-request"></a>语言请求
 
 以下代码使用 [Languages](./reference/v3-0-languages.md) 方法获取翻译、音译、查询字典支持的语言列表和示例。
 
 1. 在你喜欢使用的代码编辑器中新建一个 Ruby 项目。
 2. 添加以下提供的代码。
-3. 使用对订阅有效的访问密钥替换 `key` 值。
-4. 运行该程序。
+3. 运行该程序。
 
 ```ruby
 require 'net/https'
@@ -42,20 +39,12 @@ require 'uri'
 require 'cgi'
 require 'json'
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
-
-# Replace the key string value with your valid subscription key.
-key = 'ENTER KEY HERE'
-
 host = 'https://api.cognitive.microsofttranslator.com'
 path = '/languages?api-version=3.0'
 
 uri = URI (host + path)
 
 request = Net::HTTP::Get.new(uri)
-request['Ocp-Apim-Subscription-Key'] = key
 
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
     http.request (request)
@@ -67,6 +56,7 @@ json = JSON.pretty_generate(JSON.parse(result))
 
 output_path = 'output.txt'
 
+# Write response to file
 File.open(output_path, 'w' ) do |output|
     output.print json
 end

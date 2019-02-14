@@ -15,12 +15,13 @@ ms.subservice: hybrid
 author: billmath
 ms.custom: seohack1
 ms.author: billmath
-ms.openlocfilehash: 74f90a84bbf58edb719ccbdc9603aa3f1574681d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c83fe4655b3b3d4de04be74c0f3ced1ddac5ec2b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493298"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185547"
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>更新 Active Directory 联合身份验证服务 (AD FS) 场的 SSL 证书
 
@@ -108,3 +109,4 @@ Azure AD Connect 会尝试通过以下方式自动获取有关 AD FS 场的信�
 
 - [Azure AD Connect 和联合身份验证](how-to-connect-fed-whatis.md)
 - [使用 Azure AD Connect 进行 Active Directory 联合身份验证服务的管理和自定义](how-to-connect-fed-management.md)
+

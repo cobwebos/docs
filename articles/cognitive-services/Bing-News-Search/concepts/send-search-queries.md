@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 了解向必应新闻搜索 API 发送搜索请求。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: aahi
-ms.openlocfilehash: 338f31417669f8e5ba2f36b450cd4f76c38f0db4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1521799eacb0ec240a17e8c11dfff617fc59b772
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203396"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860484"
 ---
 # <a name="sending-queries-to-the-bing-news-search-api"></a>向必应新闻搜索 API 发送查询
 

@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 92c319460d9412436eb1a474431c07766fa87176
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 04ee892c85d2795f4ec11d47d861af3007c46e96
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078893"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169320"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的报告
 

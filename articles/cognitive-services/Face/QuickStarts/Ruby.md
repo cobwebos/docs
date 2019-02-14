@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用人脸 API 和 Ruby 检测图像中的人脸。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: pafarley
-ms.openlocfilehash: 6320e05172673abf809ac7fdbfea544ed74b0019
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b7dbbc328f61b47cb89af2974ad3c428d868d465
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221073"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857118"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>快速入门：使用 REST API 和 Ruby 检测图像中的人脸
 

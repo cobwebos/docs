@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: e3cf87ca49ae39966cffbb768dc1c191991d4036
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f3f8cf88268498d20651eab40eb655313180cadc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096902"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203193"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Service Fabric 群集 Resource Manager 简介
 在传统上，管理 IT 系统或联机服务意味着将特定物理机或虚拟机专用于这些特定的服务或系统。 服务构建为层级形式。 这些层级分为“ Web”层和“数据”（或“存储”）层。 应用程序会有消息传送层（请求在其中流入和流出）以及一组专用于缓存的计算机。 每个层级或每种类型的工作负荷都有特定的专用计算机：数据库需要一些专用计算机，Web 服务器也需要一些。 如果特定类型的工作负荷导致运行它的计算机运行温度过高，则可以向该层添加更多具有该相同配置的计算机。 但是，并非所有工作负荷都可以如此轻松地进行横向扩展 - 尤其是在数据层中，通常需要将计算机替换为更大的计算机。 这很容易理解。 如果某台计算机发生故障，则在还原该计算机之前，整个应用程序中的该部件以较低容量来运行。 这仍然很容易理解（但不一定有趣）。
@@ -43,10 +43,6 @@ ms.locfileid: "55096902"
 1. 强制实施规则
 2. 优化环境
 3. 帮助运行其他进程
-
-若要了解群集 Resource Manager 的工作原理，请观看以下 Microsoft Virtual Academy 视频：<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=d4tka66yC_5706218965">
-<img src="./media/service-fabric-cluster-resource-manager-introduction/ConceptsAndDemoVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
 
 ### <a name="what-it-isnt"></a>它不是什么
 在传统 N 层应用程序中，始终存在[负载均衡器](https://en.wikipedia.org/wiki/Load_balancing_(computing))。 通常这是网络负载均衡器 (NLB) 或应用程序负载均衡器 (ALB)，具体取决于它在网络堆栈中的位置。 有些负载均衡器基于硬件（例如 F5 的 BigIP 产品），有些则基于软件（例如 Microsoft 的 NLB）。 在其他环境中，可能会在此角色中看到类似于 HAProxy、nginx、Istio 或 Envoy 的组件。 在这些体系结构中，负载均衡作业的目标是确保无状态工作负荷（大致） 接收相同的工作量。 均衡负载策略各不相同。 某些均衡器会向不同服务器发送每个不同调用。 其他均衡器则提供固定/粘性会话。 更高级的均衡器使用实际负载估计或报告来根据其预期的成本和当前计算机负载路由调用。

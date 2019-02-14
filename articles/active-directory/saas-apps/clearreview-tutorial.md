@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ba4d6af15145bb043629a81e4bf21f53658875a3
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 334981da69b0810653030aae82a7dd3a8b7a7147
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692182"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180679"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>教程：Azure Active Directory 与 Clear Review 集成
 

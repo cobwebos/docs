@@ -4,7 +4,7 @@ description: 本文档可帮助理解 Azure 安全中心如何能够保护 Azure
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 5fe5a12c-5d25-430c-9d47-df9438b1d7c5
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: yurid
-ms.openlocfilehash: 5ec77d7bcc3715946c4574bca17f280a9f483b45
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9ff111bb70716e4ca218dce81dd1754181cdd93b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340941"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113322"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines-with-linux"></a>Azure 安全中心与 Azure Linux 虚拟机
 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)可帮助防范、检测和应对威胁。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
@@ -65,7 +65,7 @@ ms.locfileid: "53340941"
 
 设置安全策略之后，安全中心将分析资源的安全状态，以识别潜在的漏洞。 建议以表格形式显示，其中每一行都表示一个特定的建议。 下表提供了运行 Linux 操作系统的 Azure VM 的一些建议示例，以及每个示例在应用时会执行的操作。 选择建议时，系统将提供信息，演示如何在安全中心内实现该建议。
 
-| 建议 | Description |
+| 建议 | 说明 |
 | --- | --- |
 | [为订阅启用数据收集](security-center-enable-data-collection.md) |建议为每个订阅和订阅中的所有虚拟机 (VM) 开启安全策略中的数据收集。 |
 | [修正 OS 漏洞](security-center-remediate-os-vulnerabilities.md) |建议 OS 配置匹配推荐的配置规则，例如不允许保存密码。 |

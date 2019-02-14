@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 6b4acf2a8effaef6d9572a4ca36b29af19f2970d
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: b40a2bbfa7bbab7ffbdd4c47684eda7c954e7b77
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359981"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996917"
 ---
-# <a name="streaming-endpoints-overview"></a>流式处理终结点概述 
+# <a name="streaming-endpoints-overview"></a>流式处理终结点概述  
 
 ## <a name="overview"></a>概述
 
@@ -48,7 +48,7 @@ Azure 媒体服务将以下属性添加到流式处理终结点实体：**CdnPro
 
 从 2017 年 1 月发布的媒体服务开始，可使用两种流式处理类型：标准和高级。 这些类型属于流式处理终结点版本“2.0”。
 
-类型|Description
+Type|说明
 ---|---
 **标准**|这是适用于大多数方案的默认选项。<br/>使用此选项，可以获得固定/有限的 SLA，在启动流式处理终结点后的前 15 天是免费的。<br/>如果创建多个流式处理终结点，只有第一个流式处理终结点在前 15 天是免费的，其他流式处理终结点在启动后立即就会计费。 <br/>请注意，免费试用仅适用于新创建的媒体服务帐户和默认的流式处理终结点。 现有的流式处理终结点和另外创建的流式处理终结点不包括免费试用期，即使将它们升级到版本 2.0 或创建为版本 2.0，也是如此。
 **高级**|此选项适用于需要更高级缩放或控制的专业方案。<br/>选择此选项则会使用基于已购买高级流单元 (SU) 容量的可变 SLA，专用流式处理终结点存在于隔离环境中，并不争用资源。
@@ -71,7 +71,7 @@ Azure 媒体服务将以下属性添加到流式处理终结点实体：**CdnPro
 
 ### <a name="versions"></a>版本
 
-|类型|StreamingEndpointVersion|ScaleUnits|CDN|计费|SLA| 
+|Type|StreamingEndpointVersion|ScaleUnits|CDN|计费|SLA| 
 |--------------|----------|-----------------|-----------------|-----------------|-----------------|    
 |经典|1.0|0|NA|免费|NA|
 |标准流式处理终结点|2.0|0|是|付费|是|

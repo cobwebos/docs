@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 09/17/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f1d072d40967ac6d106de7489e0a2148fe7948ed
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: af5f1a5b8775e1e7346d4280dab77b98760b3209
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598095"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895221"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>在 Azure 中运行自定义 Windows 容器（预览版）
 
@@ -33,7 +33,7 @@ ms.locfileid: "53598095"
 
 - <a href="https://hub.docker.com/" target="_blank">注册 Docker 中心帐户</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">安装用于 Windows 的 Docker</a>。
-- <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10#2-switch-to-windows-containers" target="_blank">将 Docker 切换为运行 Windows 容器</a>。
+- <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">将 Docker 切换为运行 Windows 容器</a>。
 - <a href="https://www.visualstudio.com/downloads/" target="_blank">安装 Visual Studio 2017</a>，其中包含 ASP.NET 和 web 开发以及 Azure 开发工作负载。 如果已安装 Visual Studio 2017：
     - 通过单击“帮助” > “检查更新”，在 Visual Studio 中安装最新的更新。
     - 在 Visual Studio 中，通过单击“工具” > “获取工具和功能”，添加工作负载。

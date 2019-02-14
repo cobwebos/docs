@@ -4,7 +4,7 @@ description: " Azure 物联网 (IoT) 服务提供范围广泛的功能。 本文
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 1473c8dd-8669-48fb-86db-b3c50e2eaf59
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 345a7994f5a117b7aff320edf7b7c79d9b30a2f9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: db1c2b9c852479b9af3674f6c5e1f1135ee289f1
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695247"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114070"
 ---
 # <a name="internet-of-things-security-overview"></a>物联网安全概述
 Azure 物联网 (IoT) 服务提供范围广泛的功能。 这些企业级服务让你能够：

@@ -4,25 +4,25 @@ description: 使用 Azure Media Indexer，可以使媒体文件内容可供搜�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 02/10/2019
 ms.author: adsolank;juliako;
-ms.openlocfilehash: ae06f397fd0ed3f1a1b5ebbdc418abc02789fe91
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: dd09e8949c2d71e550d02cd79611a7424d8113fc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785676"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000909"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>使用 Azure Media Indexer 2 预览版为媒体文件编制索引
 ## <a name="overview"></a>概述
-Azure Media Indexer 2 预览版媒体处理器 (MP) 让你能够使媒体文件和内容可供搜索，以及生成隐藏式字幕跟踪。 与 [Azure Media Indexer](media-services-index-content.md) 以前的版本相比，**Azure Media Indexer 2 预览版**执行编制索引的速度更快，并提供更广泛的语言支持。 支持的语言包括英语、西班牙语、法语、德语、意大利语、中文（普通话，简体）、葡萄牙语、阿拉伯语、俄语和日语。
+Azure Media Indexer 2 预览版媒体处理器 (MP) 让你能够使媒体文件和内容可供搜索，以及生成隐藏式字幕跟踪。 与 [Azure Media Indexer](media-services-index-content.md)以前的版本相比， **Azure Media Indexer 2 预览版** 执行索引的速度更快，并提供更广泛的语言支持。 支持的语言包括英语、西班牙语、法语、德语、意大利语、中文（普通话，简体）、葡萄牙语、阿拉伯语、俄语和日语。
 
 **Azure Media Indexer 2 预览版** MP 目前为预览版。
 
@@ -87,7 +87,7 @@ Azure Media Indexer 2 预览版支持以下语言的语音转换为文本功能�
 * 日语 [JaJp]
 * 俄语 [RuRu]
 * 英式英语 [EnGb]
-* 墨西哥西班牙语 [EsMx] 
+* 墨西哥西班牙语 [EsMx] 
 
 ## <a name="supported-file-types"></a>支持的文件类型
 

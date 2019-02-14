@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 01/29/2019
-ms.openlocfilehash: 7eb3b115c1d16c2a5c380178d316a60b854e80df
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: a3f47726b1776b260ff8cc5eac766c23053d4fd0
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462012"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728396"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL 数据库安全功能概述
 
@@ -40,7 +40,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访�
 [虚拟网络规则](sql-database-vnet-service-endpoint-rule-overview.md)使 Azure SQL 数据库仅接受从虚拟网络中的所选子网发送的通信。
 
 > [!NOTE]
-> 使用防火墙规则控制访问权限不适用于 **Azure SQL 数据库托管实例**。 有关所需网络配置的详细信息，请参阅[连接到托管实例](sql-database-managed-instance-connect-app.md)
+> 使用防火墙规则控制访问权限不适用于托管实例。 有关所需网络配置的详细信息，请参阅[连接到托管实例](sql-database-managed-instance-connect-app.md)
 
 ## <a name="access-management"></a>访问管理
 
@@ -64,7 +64,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访�
     其他可用的 Azure AD 身份验证选项包括[适用于 SQL Server Management Studio 的 Active Directory 通用身份验证](sql-database-ssms-mfa-authentication.md)连接，其中包括[多重身份验证](../active-directory/authentication/concept-mfa-howitworks.md)和[条件访问](sql-database-conditional-access.md)。
 
 > [!IMPORTANT]
-> 管理 Azure 中的数据库和服务器由门户用户帐户的角色分配控制。 有关本文的详细信息，请参阅 [Azure 门户中基于角色的访问控制](../role-based-access-control/overview.md)。 使用防火墙规则控制访问权限不适用于 **Azure SQL 数据库托管实例**。 有关所需网络配置的详细信息，请参阅以下有关[连接到托管实例](sql-database-managed-instance-connect-app.md)的文章。
+> 管理 Azure 中的数据库和服务器由门户用户帐户的角色分配控制。 有关本文的详细信息，请参阅 [Azure 门户中基于角色的访问控制](../role-based-access-control/overview.md)。 使用防火墙规则控制访问权限不适用于托管实例。 有关所需网络配置的详细信息，请参阅以下有关[连接到托管实例](sql-database-managed-instance-connect-app.md)的文章。
 
 授权是指在 Azure SQL 数据库中分配给用户的权限，并决定允许用户执行的操作。 权限控制通过将用户帐户添加到定义数据库级权限的[数据库角色](/sql/relational-databases/security/authentication-access/database-level-roles)或授予用户特定的[对象级权限](/sql/relational-databases/security/permissions-database-engine)来实现。 有关详细信息，请参阅[登录和用户](sql-database-manage-logins.md)
 
@@ -88,7 +88,7 @@ SQL 数据库通过提供审核和威胁检测功能来保护客户数据。
 
 SQL 数据库审核可跟踪数据库活动，通过将数据库事件记录到客户所有的 Azure 存储帐户中的审核日志，帮助用户保持符合安全标准。 用户可以通过审核监视正在进行的数据库活动，以及分析和调查历史活动，以标识潜在威胁或可疑的滥用行为和安全违规。 有关详细信息，请参阅 [SQL 数据库审核入门](sql-database-auditing.md)。  
 
-### <a name="sql-threat-detection"></a>SQL 威胁检测
+### <a name="threat-detection"></a>威胁检测
 
 通过分析有关异常行为和潜在恶意访问或利用数据库的审核日志，威胁检测可强化审核。 警报是针对可疑活动或异常访问模式（如 SQL 注入攻击、潜在数据渗透和暴力破解密码攻击）创建的。 可从 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)查看威胁检测警报，其中提供了可疑活动的详细信息，并给出了进一步调查建议以及缓解威胁的措施。 威胁检测费用为每服务器每月 15 美元。 前 60 天免费。 有关详细信息，请参阅 [SQL 数据库威胁检测入门](sql-database-threat-detection.md)。
 
@@ -137,9 +137,9 @@ SQL 数据库动态数据掩码通过对非特权用户模糊化敏感数据来�
 
 ## <a name="security-management"></a>安全管理
 
-### <a name="sql-vulnerability-assessment"></a>SQL 漏洞评估
+### <a name="vulnerability-assessment"></a>漏洞评估
 
-[SQL 漏洞评估](sql-vulnerability-assessment.md)是一项易于配置的服务，可以发现、跟踪和帮助修正潜在的数据库漏洞，旨在主动提高整体数据库安全性。 漏洞评估 (VA) 是 SQL 高级数据安全 (ADS) 产品/服务（它是高级 SQL 安全功能的一个统一包）的一部分。 可通过中心 SQL ADS 门户访问和管理漏洞评估。
+[漏洞评估](sql-vulnerability-assessment.md)是一项易于配置的服务，可以发现、跟踪和帮助修正潜在的数据库漏洞，旨在主动提高整体数据库安全性。 漏洞评估 (VA) 是高级数据安全 (ADS) 产品/服务（它是高级 SQL 安全功能的一个统一包）的一部分。 可通过中心 SQL ADS 门户访问和管理漏洞评估。
 
 ### <a name="data-discovery--classification"></a>数据发现和分类
 
@@ -149,7 +149,7 @@ SQL 数据库动态数据掩码通过对非特权用户模糊化敏感数据来�
 - 控制对包含高度敏感数据的数据库的访问并增强其安全性。
 - 帮助满足数据隐私标准和法规符合性要求。
 
-有关详细信息，请参阅 [SQL DB 数据发现和分类入门](sql-database-data-discovery-and-classification.md)。
+有关详细信息，请参阅[数据发现和分类入门](sql-database-data-discovery-and-classification.md)。
 
 ### <a name="compliance"></a>合规性
 

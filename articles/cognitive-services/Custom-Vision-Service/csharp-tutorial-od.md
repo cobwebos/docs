@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 使用 .NET SDK 和 C# 创建项目、添加标记、上传图像、训练项目以及检测对象。
 services: cognitive-services
 author: areddish
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 10/31/2018
 ms.author: areddish
-ms.openlocfilehash: 48f5bef06fddfc0df796e68be9de8b75a76cd337
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9d8340d505308753855fa0fcd286949e80d3ecaa
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211049"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55879269"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-net-sdk"></a>快速入门：使用自定义视觉 .NET SDK 创建对象检测项目
 

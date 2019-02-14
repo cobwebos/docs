@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
-ms.openlocfilehash: 7efa2f19aedfbd00ccced8b755d3b02847b31444
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: f0d368097c72efccf5dc15fe15ec0b7d920279e5
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508600"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245876"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>教程：使用 Azure 逻辑应用自动处理电子邮件和附件
 
@@ -82,7 +82,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
       ![复制并保存存储帐户名称和密钥](./media/tutorial-process-email-attachments-workflow/copy-save-storage-name-key.png)
 
-   若要获取存储帐户的访问密钥，也可以使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccountkey) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list)。 
+   若要获取存储帐户的访问密钥，也可以使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list)。 
 
 3. 为电子邮件附件创建 Blob 存储容器。
    
@@ -100,7 +100,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
       ![完成的存储容器](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
 
-   若要创建存储容器，也可以使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create)。 
+   若要创建存储容器，也可以使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontainer) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create)。 
 
 接下来，将存储资源管理器连接到存储帐户。
 

@@ -4,15 +4,15 @@ description: 介绍 Azure Migrate 中的收集器设备。
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/14/2019
+ms.date: 02/04/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: b9387814b8bdab56117dec27de1e3d5b44ce39b4
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 0568df92db2114c57a0aa027ade369e4b256af84
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262602"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813324"
 ---
 # <a name="about-the-collector-appliance"></a>关于收集器设备
 
@@ -32,7 +32,7 @@ Azure Migrate 收集器是一种轻量级设备，可用于在迁移到 Azure �
 - 此模型不依赖于 vCenter Server 的统计信息设置来收集性能数据。
 - 你可以随时从收集器中停止连续分析。
 
-**即时满足条件：** 使用持续发现设备，一旦发现完成（花费几个小时，具体取决于 VM 数量），就可以立即创建评估。 由于性能数据收集在你启动发现时开始，如果你希望即时满足条件，则应当将评估中的大小调整条件选择为“按本地”。 对于基于性能的评估，建议在启动发现后等待至少一天，以便获得可靠的大小建议。
+**快速评估：** 使用持续发现设备，一旦发现完成（花费几个小时，具体取决于 VM 数量），就可以立即创建评估。 由于性能数据收集在启动发现时开始，如果希望进行快速评估，则应当将评估中的大小调整条件选择为“按本地”。 对于基于性能的评估，建议在启动发现后等待至少一天，以便获得可靠的大小建议。
 
 设备仅连续收集性能数据，它不会检测本地环境中的任何配置更改（即 VM 添加、删除、磁盘添加等）。 如果本地环境中存在配置更改，可以执行以下操作以在门户中反映更改：
 
@@ -65,7 +65,7 @@ Azure Migrate 收集器是一种轻量级设备，可用于在迁移到 Azure �
 - **检查 Internet 连接**：收集器可直接或通过代理连接到 Internet。
     - 先决条件检查验证是否能连接到[必需和可选 URL](#urls-for-connectivity)。
     - 如果可以直接连接到 Internet，则无需特定操作，否则要确保收集器可以访问所需的 URL。
-    - 如果要通过代理进行连接，请注意[下面的要求](#connect-via-a-proxy)。
+    - 如果要通过代理进行连接，请注意下面的要求。
 - **验证时间同步**：收集器应与 Internet 时间服务器同步，以确保向服务发出的请求经过身份验证。
     - portal.azure.com URL 应该能够从收集器访问，以便验证时间。
     - 如果计算机不同步，则需更改收集器 VM 上的时钟时间，使之与当前时间匹配。 为此，打开 VM 上的管理员提示符，运行 w32tm /tz 检查时区。 运行 w32tm /resync 来同步时间。
@@ -75,7 +75,7 @@ Azure Migrate 收集器是一种轻量级设备，可用于在迁移到 Azure �
     - 收集器服务连接到 vCenter Server，收集 VM 元数据和性能数据，并将其发送到 Azure Migrate 服务。
 - **检查 VMware PowerCLI 6.5 是否已安装**：VMware PowerCLI 6.5 PowerShell 模块必须安装在收集器 VM 上，以便它可以与 vCenter Server 进行通信。
     - 如果收集器可访问模块安装所需的 URL，则会在收集器部署过程中自动安装模块。
-    - 如果收集器不能在部署过程中安装模块，则必须[手动安装](#install-vwware-powercli-module-manually)。
+    - 如果收集器不能在部署过程中安装模块，则必须手动安装。
 - **检查 vCenter Server 连接**：收集器必须能够连接到 vCenter Server 和查询 VM、其元数据和性能计数器。 [验证先决条件](#connect-to-vcenter-server)以进行连接。
 
 
@@ -101,8 +101,6 @@ Azure Migrate 收集器是一种轻量级设备，可用于在迁移到 Azure �
     ![证书存储](./media/concepts-intercepting-proxy/certificate-store.png)
 
     7. 检查证书是否按预期导入，并检查 Internet 连接性先决条件检查是否按预期工作。
-
-
 
 
 ### <a name="urls-for-connectivity"></a>用于连接的 URL
@@ -150,6 +148,79 @@ Azure Migrate 收集器是一种轻量级设备，可用于在迁移到 Azure �
 Azure Migrate 服务 | TCP 443 | 收集器通过 SSL 443 与 Azure Migrate 服务进行通信。
 vCenter Server | TCP 443 | 收集器必须能够与 vCenter Server 进行通信。<br/><br/> 默认情况下，它通过 443 连接到 vCenter。<br/><br/> 如果 vCenter Server 在另一端口上侦听，则该端口应作为收集器上的传出端口提供。
 RDP | TCP 3389 |
+
+## <a name="collected-metadata"></a>收集的元数据
+
+收集器设备发现每个 VM 的以下配置元数据。 VM 的配置数据在发现启动后一小时即可使用。
+
+- VM 显示名称（在 vCenter Server 上）
+- VM 的清单路径（vCenter Server 上的主机/文件夹）
+- IP 地址
+- MAC 地址
+- 操作系统
+- 核心数、磁盘数、NIC 数
+- 内存大小、磁盘大小
+- VM、磁盘和网络的性能计数器。
+
+### <a name="performance-counters"></a>性能计数器
+
+ 收集器设备每隔 20 秒从 ESXi 主机为每个 VM 收集以下性能计数器。 这些计数器是 vCenter 计数器，虽然术语表示其为平均值，但 20 秒示例是实时计数器。 启动发现两个小时后，门户开始提供 VM 的性能数据。 在创建基于性能的评估之前，强烈建议等待至少一天，以获得精确的大小调整建议。 如果需要“即时满足条件”，可选择以“作为本地”为大小调整条件创建评估，如此则不会将性能数据纳入调整范围。
+
+**计数器** |  **对评估的影响**
+--- | ---
+cpu.usage.average | 建议的 VM 大小和成本  
+mem.usage.average | 建议的 VM 大小和成本  
+virtualDisk.read.average | 计算磁盘大小、存储成本和 VM 大小
+virtualDisk.write.average | 计算磁盘大小、存储成本和 VM 大小
+virtualDisk.numberReadAveraged.average | 计算磁盘大小、存储成本和 VM 大小
+virtualDisk.numberWriteAveraged.average | 计算磁盘大小、存储成本和 VM 大小
+net.received.average | 计算 VM 大小                          
+net.transmitted.average | 计算 VM 大小     
+
+下文提供 Azure Migrate 收集的 VMware 计数器的完整列表：
+
+**类别** |  **元数据** | **vCenter 数据点**
+--- | --- | ---
+虚拟机详细信息 | VM ID | vm.Config.InstanceUuid
+虚拟机详细信息 | VM 名称 | vm.Config.Name
+虚拟机详细信息 | vCenter Server ID | VMwareClient.InstanceUuid
+虚拟机详细信息 |  VM 说明 |  vm.Summary.Config.Annotation
+虚拟机详细信息 | 许可证产品名称 | vm.Client.ServiceContent.About.LicenseProductName
+虚拟机详细信息 | 操作系统类型 | vm.Summary.Config.GuestFullName
+虚拟机详细信息 | 操作系统版本 | vm.Summary.Config.GuestFullName
+虚拟机详细信息 | 启动类型 | vm.Config.Firmware
+虚拟机详细信息 | 内核数 | vm.Config.Hardware.NumCPU
+虚拟机详细信息 | 内存 (MB) | vm.Config.Hardware.MemoryMB
+虚拟机详细信息 | 磁盘数目 | vm.Config.Hardware.Device.ToList().FindAll(x => x is VirtualDisk).count
+虚拟机详细信息 | 磁盘大小列表 | vm.Config.Hardware.Device.ToList().FindAll(x => x is VirtualDisk)
+虚拟机详细信息 | 网络适配器列表 | vm.Config.Hardware.Device.ToList().FindAll(x => x is VirtualEthernetCard)
+虚拟机详细信息 | CPU 使用率 | cpu.usage.average
+虚拟机详细信息 | 内存利用率 | mem.usage.average
+磁盘详细信息（每个磁盘） | 磁盘密钥值 | disk.Key
+磁盘详细信息（每个磁盘） | 磁盘单元数 | disk.UnitNumber
+磁盘详细信息（每个磁盘） | 磁盘控制器密钥值 | disk.ControllerKey.Value
+磁盘详细信息（每个磁盘） | 预配量 (GB) | virtualDisk.DeviceInfo.Summary
+磁盘详细信息（每个磁盘） | 磁盘名称 | 使用 disk.UnitNumber, disk.Key 和 disk.ControllerKey.Value 生成此值
+磁盘详细信息（每个磁盘） | 每秒读取操作数 | virtualDisk.numberReadAveraged.average
+磁盘详细信息（每个磁盘） | 每秒写入操作数 | virtualDisk.numberWriteAveraged.average
+磁盘详细信息（每个磁盘） | 读取吞吐量（兆字节/秒） | virtualDisk.read.average
+磁盘详细信息（每个磁盘） | 写入吞吐量（兆字节/秒） | virtualDisk.write.average
+网络适配器详细信息（每个 NIC） | 网络适配器名称 | nic.Key
+网络适配器详细信息（每个 NIC） | MAC 地址 | ((VirtualEthernetCard)nic).MacAddress
+网络适配器详细信息（每个 NIC） | IPv4 地址 | vm.Guest.Net
+网络适配器详细信息（每个 NIC） | IPv6 地址 | vm.Guest.Net
+网络适配器详细信息（每个 NIC） | 读取吞吐量（兆字节/秒） | net.received.average
+网络适配器详细信息（每个 NIC） | 写入吞吐量（兆字节/秒） | net.transmitted.average
+库存路径详细信息 | Name | container.GetType().Name
+库存路径详细信息 | 子对象类型 | container.ChildType
+库存路径详细信息 | 引用详细信息 | container.MoRef
+库存路径详细信息 | 完整库存路径 | container.Name + 完整路径
+库存路径详细信息 | 父级详细信息 | Container.Parent
+库存路径详细信息 | 每个 VM 的文件夹详细信息 | ((Folder)container).ChildEntity.Type
+库存路径详细信息 | 每个 VM 文件夹的数据中心详细信息 | ((Datacenter)container).VmFolder
+库存路径详细信息 | 每个主机文件夹的数据中心详细信息 | ((Datacenter)container).HostFolder
+库存路径详细信息 | 每个主机的群集详细信息 | ((ClusterComputeResource)container).Host)
+库存路径详细信息 | 每个 VM 的主机详细信息 | ((HostSystem)container).Vm
 
 
 ## <a name="securing-the-collector-appliance"></a>保护收集器设备
@@ -200,34 +271,6 @@ RDP | TCP 3389 |
 - 发现 VM，并且其元数据和性能数据发送到 Azure。 这些操作是集合作业的一部分。
     - 收集器设备被赋予一个特定的收集器 ID，该 ID 对于发现中的给定计算机是持续存在的。
     - 正在运行的集合作业会被指定一个特定的会话 ID。 每个集合作业的会话 ID 都不同，并可用于故障排除。
-
-### <a name="collected-metadata"></a>收集的元数据
-
-收集器设备发现每个 VM 的以下配置元数据。 VM 的配置数据在发现启动后一小时即可使用。
-
-- VM 显示名称（在 vCenter Server 上）
-- VM 的清单路径（vCenter Server 上的主机/文件夹）
-- IP 地址
-- MAC 地址
-- 操作系统
-- 核心数、磁盘数、NIC 数
-- 内存大小、磁盘大小
-- VM、磁盘和网络的性能计数器。
-
-#### <a name="performance-counters"></a>性能计数器
-
- 收集器设备每隔 20 秒从 ESXi 主机为每个 VM 收集以下性能计数器。 这些计数器是 vCenter 计数器，虽然术语表示其为平均值，但 20 秒示例是实时计数器。 启动发现两个小时后，门户开始提供 VM 的性能数据。 在创建基于性能的评估之前，强烈建议等待至少一天，以获得精确的大小调整建议。 如果需要“即时满足条件”，可选择以“作为本地”为大小调整条件创建评估，如此则不会将性能数据纳入调整范围。
-
-**计数器** |  **对评估的影响**
---- | ---
-cpu.usage.average | 建议的 VM 大小和成本  
-mem.usage.average | 建议的 VM 大小和成本  
-virtualDisk.read.average | 计算磁盘大小、存储成本和 VM 大小
-virtualDisk.write.average | 计算磁盘大小、存储成本和 VM 大小
-virtualDisk.numberReadAveraged.average | 计算磁盘大小、存储成本和 VM 大小
-virtualDisk.numberWriteAveraged.average | 计算磁盘大小、存储成本和 VM 大小
-net.received.average | 计算 VM 大小                          
-net.transmitted.average | 计算 VM 大小     
 
 ## <a name="next-steps"></a>后续步骤
 

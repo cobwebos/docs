@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: 使用本快速入门，通过 C# 将请求发送到必应新闻搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 44958a806d7476bfc347236421758d6f8c4bc5ad
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 74ac8602e61404214f300682f5696100b8fa0c60
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150704"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868848"
 ---
 # <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>快速入门：使用 C# 和必应新闻搜索 REST API 搜索新闻
 

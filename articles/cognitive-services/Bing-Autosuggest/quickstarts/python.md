@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 获取信息和代码示例，以帮助你快速开始使用必应自动建议 API。
 services: cognitive-services
 author: v-jaswel
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 1b3bb50ac45c748ba54fa4cab21836fd8e7a299b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 94903d00d47eee70f974fb8bf79703f49cdc08fd
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156780"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868151"
 ---
 # <a name="quickstart-for-bing-autosuggest-api-with-python"></a>将必应自动推荐 API 与 Python 配合使用快速入门
 

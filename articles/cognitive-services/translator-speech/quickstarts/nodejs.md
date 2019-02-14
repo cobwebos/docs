@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 获取信息和代码示例，有助于快速开始使用语音翻译 API。
 services: cognitive-services
 author: v-jaswel
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 8f2adf743760c85b8c2a75c0f398bc5b61fd1061
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: a76d3c3ed54b3b4d9d79cd778c75719dd12507d5
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754229"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874016"
 ---
 # <a name="quickstart-translator-speech-api-with-nodejs"></a>快速入门：将语音翻译 API 与 Node.js 配合使用 
 <a name="HOLTop"></a>

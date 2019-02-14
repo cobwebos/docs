@@ -10,12 +10,13 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: e13abc6753c1fe9febcabfd8c19d59c97ca8a12f
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8916711ab7d5278f34a3d4ad101a0aabb883f84c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079539"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182691"
 ---
 # <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>快速入门：在 Azure 门户中将来宾用户添加到目录
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 499ecc37150bd9b5335c54f2e99812121fe4b1bc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 574394000c45ca2c12c309c4536a6649bd3fcb76
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729670"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104043"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>使用 Azure CLI 创建支持内部重定向的应用程序网关
 
@@ -50,7 +50,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>创建网络资源 
 
-使用 [az network vnet create](/cli/azure/network/vnet) 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 然后，可以使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 添加后端服务器池所需的名为 *myBackendSubnet* 的子网。 使用 [az network public-ip create](/cli/azure/network/public-ipwork_public_ip_create) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。
+使用 [az network vnet create](/cli/azure/network/vnet) 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 然后，可以使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 添加后端服务器池所需的名为 *myBackendSubnet* 的子网。 使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。
 
 ```azurecli-interactive
 az network vnet create \
@@ -103,7 +103,7 @@ az network application-gateway create \
 
 应用程序网关需要侦听器才能适当地将流量路由到后端池。 在本教程中，将为两个域创建两个侦听器。 在此示例中，将为域 *www.contoso.com* 和 *www.contoso.org* 创建侦听器。
 
-使用 [az network application-gateway http-listener create](/cli/azure/network/application-gatewaywork_application_gateway_http_listener_create) 添加路由流量所需的后端侦听器。
+使用 [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) 添加路由流量所需的后端侦听器。
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -124,7 +124,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>添加重定向配置
 
-使用 [az network application-gateway redirect-config create](/cli/azure/network/application-gateway/redirect-configwork_application_gateway_redirect_config_create) 在应用程序网关中添加从 *www.consoto.org* 将流量发送到 *www.contoso.com* 的侦听器的重定向配置。
+使用 [az network application-gateway redirect-config create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create) 在应用程序网关中添加从 *www.consoto.org* 将流量发送到 *www.contoso.com* 的侦听器的重定向配置。
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -141,7 +141,7 @@ az network application-gateway redirect-config create \
 
 规则按照其创建顺序进行处理，并且使用与发送到应用程序网关的 URL 匹配的第一个规则定向流量。 例如，如果在同一端口上同时有使用基本侦听器的规则和使用多站点侦听器的规则，则使用多站点侦听器的规则必须在使用基本侦听器的规则之前列出，多站点规则才能正常运行。 
 
-在此示例中，将创建两个新规则并删除创建的默认规则。  可以使用 [az network application-gateway rule create](/cli/azure/network/application-gatewaywork_application_gateway_rule_create) 添加规则。
+在此示例中，将创建两个新规则并删除创建的默认规则。  可以使用 [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) 添加规则。
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -201,7 +201,7 @@ az vmss extension set \
 
 ## <a name="create-cname-record-in-your-domain"></a>在域中创建 CNAME 记录
 
-使用其公共 IP 地址创建应用程序网关后，可以获取 DNS 地址并使用它在域中创建 CNAME 记录。 可以使用 [az network public-ip show](/cli/azure/network/public-ipwork_public_ip_show) 获取应用程序网关的 DNS 地址。 复制 DNSSettings 的 *fqdn* 值并使用它作为所创建的 CNAME 记录的值。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
+使用其公共 IP 地址创建应用程序网关后，可以获取 DNS 地址并使用它在域中创建 CNAME 记录。 可以使用 [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) 获取应用程序网关的 DNS 地址。 复制 DNSSettings 的 *fqdn* 值并使用它作为所创建的 CNAME 记录的值。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
 
 ```azurecli-interactive
 az network public-ip show \

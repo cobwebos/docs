@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 使用必应图像搜索 API 在 Web 中搜索并获取相关图像。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.assetid: AB1B9898-C94A-4B59-91A1-8623C94BA3D4
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 8/8/2018
 ms.author: aahi
-ms.openlocfilehash: e91270280633e25c71758d73b94fea4db19db17f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e7be29d2a3c41e421c2e98b9d9b19eed375180e2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152308"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876651"
 ---
 # <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>使用必应图像搜索 API 从 Web 获取图像
 

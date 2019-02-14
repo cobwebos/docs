@@ -10,12 +10,13 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: a56edba483b1ba045d801681b85d755a510606cd
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6c813685a89f3d18b01ab75d710df54f8d1e1338
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493705"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187734"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>教程：使用直通身份验证 (PTA) 集成单个 AD 林
 

@@ -5,19 +5,19 @@ description: 使用本快速入门，通过 Ruby 将图像搜索请求发送到�
 services: cognitive-services
 documentationcenter: ''
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: d8a3daa377d58522cea36adedc53b9145bfa99bf
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6832047ebbe95938bc2902967714fb8d40301d36
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194009"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233500"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-ruby"></a>快速入门：使用必应图像搜索 REST API 和 Ruby 来搜索图像
 
@@ -88,7 +88,7 @@ puts "total number of returned matches: #{total_returned_images}"
 puts "Url to the thumbnail of the first returned search result: #{first_result}"
 ```
 
-## <a name="sample-json-response"></a>示例 JSON 响应
+## <a name="example-json-response"></a>示例 JSON 响应
 
 来自必应图像搜索 API 的响应以 JSON 形式返回。 此示例响应已截断，仅显示了单个结果。
 
@@ -132,7 +132,7 @@ puts "Url to the thumbnail of the first returned search result: #{first_result}"
         },
         "imageId":"8607ACDACB243BDEA7E1EF78127DA931E680E3A5",
         "accentColor":"0050B2"
-    }
+    }]
 }
 ```
 

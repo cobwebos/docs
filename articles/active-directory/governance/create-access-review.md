@@ -14,12 +14,13 @@ ms.subservice: compliance
 ms.date: 11/15/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 1c71333a49643647bae3730e4f14f26939388c4f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1616230e3cad765246bcf03d59fb517c99d9b044
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153737"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176911"
 ---
 # <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>使用 Azure AD 针对组成员或应用程序访问权限创建访问评审
 
@@ -115,7 +116,7 @@ ms.locfileid: "55153737"
 
 ## <a name="create-reviews-via-apis"></a>通过 API 创建评审
 
-也可以使用 API 创建访问评审。 在 Azure 门户中管理组和应用程序用户的访问评审的方法也可以使用 Microsoft Graph API 来实现。 有关详细信息，请参阅 [Azure AD 访问评审 API 参考](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/accessreviews_root)。 有关代码示例，请参阅[通过 Microsoft Graph 检索 Azure AD 访问评审的示例](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096)。
+也可以使用 API 创建访问评审。 在 Azure 门户中管理组和应用程序用户的访问评审的方法也可以使用 Microsoft Graph API 来实现。 有关详细信息，请参阅 [Azure AD 访问评审 API 参考](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta)。 有关代码示例，请参阅[通过 Microsoft Graph 检索 Azure AD 访问评审的示例](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096)。
 
 ## <a name="next-steps"></a>后续步骤
 

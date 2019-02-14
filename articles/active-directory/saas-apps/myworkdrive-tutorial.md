@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
-ms.openlocfilehash: f0e2c499619df938bd6f4b05757ba607a9edf244
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 14cd7bea6707e6f724829a28b57604553e7405c0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183350"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199759"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-myworkdrive"></a>教程：Azure Active Directory 与 MyWorkDrive 集成
 

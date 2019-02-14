@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 2f6ceeebd18a91472ee12f04c0ac8e602b05f269
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4a65e88e3f94f64a56bde882b535030968ae354d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197545"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991270"
 ---
 # <a name="create-highlights-from-existing-videos"></a>根据现有视频创建突出显示内容
 
@@ -27,17 +27,14 @@ ms.locfileid: "55197545"
     页面会显示视频的汇总见解。 
 
     ![洞察力](./media/video-indexer-create-new/video-indexer-summarized-insights.png)
-
 3. 按“编辑”按钮。
 
     此页面会显示视频的所有明细。 明细会分成块。 有了块，就可以更轻松地浏览数据。 例如，可以在发言人换人或中断时间长时将块细分。 可以创建你自己的播放列表，其中只包含所需的行。 若要只显示源视频的特定部分，可以按主题/关键字、情绪、人物、发言人进行筛选。 可以选择只查看视频的脚本或 OCR。    
 
     ![洞察力](./media/video-indexer-create-new/video-indexer-create-new-playlist.png)
-
 4. 创建播放列表。
 
     若要在播放列表中添加或删除行，请按 **+**/**-**。
-
 5. 预览播放列表。
 
     创建完播放列表后，请按“预览”。

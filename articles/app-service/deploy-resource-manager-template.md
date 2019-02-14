@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 1431ba658a6eb898553804f0c81b3babb23f4fe2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 780d2134aa00f828a614af6938978e24df3534cd
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015196"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105105"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板部署 Web 应用的指南
 
@@ -113,12 +113,14 @@ Web 应用的名称必须全局唯一。 可以使用某个可能唯一的命名
 
 ## <a name="deploy-web-app-certificate-from-key-vault"></a>部署来自 Key Vault 的 Web 应用证书
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 如果模板包括用于 SSL 绑定的 [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates) 资源，且证书存储在 Key Vault 中，则须确保应用服务标识可以访问该证书。
 
 在全球版 Azure 中，应用服务服务主体所拥有的 ID 为 abfa0a7c-a6b6-4736-8310-5855508787cd。 若要为应用服务服务主体授予对 Key Vault 的访问权限，请使用：
 
 ```azurepowershell-interactive
-Set-AzureRmKeyVaultAccessPolicy `
+Set-AzKeyVaultAccessPolicy `
   -VaultName KEY_VAULT_NAME `
   -ServicePrincipalName abfa0a7c-a6b6-4736-8310-5855508787cd `
   -PermissionsToSecrets get `

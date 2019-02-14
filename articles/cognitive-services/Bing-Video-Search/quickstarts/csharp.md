@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 使用本快速入门使用 C# 向必应视频搜索 REST API 发送视频搜索请求。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 90576fd730946363f69e0f1a8f2a190fba0074b8
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: c2dfd67a2ac3efd24da9c7ba2b1b5541fafafd2d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55569062"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55866111"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>快速入门：使用必应视频搜索 REST API 和 C# 来搜索视频
 

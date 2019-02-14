@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 执行上下文语法和拼写检查的应用程序必应拼写检查 SDK 示例。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: sample
 ms.date: 1/24/2018
 ms.author: v-gedod
-ms.openlocfilehash: c6afe8de6ef8c20527e4557fcd9458f0eb699b59
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a50dd9f0fce47c7633444a467710df0c60df8a5d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180052"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55863357"
 ---
 # <a name="bing-spell-check-sdk-samples"></a>必应拼写检查 SDK 示例
 必应拼写检查示例包括以下方案：

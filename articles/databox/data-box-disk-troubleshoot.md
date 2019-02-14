@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 02/06/2019
 ms.author: alkohli
-ms.openlocfilehash: f7b3cc638e28e4f28694f668660a28ffe6e9fa51
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 24af2150438d3db13323aaecdfd89302b8152fa9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817990"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55879116"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk"></a>排查 Azure Data Box Disk 中的问题
 
@@ -98,7 +98,7 @@ ms.locfileid: "54817990"
 
 将驱动器重新装载为读写不适用于 Data Box Disk。 dislocker 解密的驱动器不支持此方案。 你可能已使用以下命令成功重新装载设备： 
 
-    `# mount -o remount, rw / mnt / DataBoxDisk / mountVol1 ß`
+    `# mount -o remount, rw /mnt/DataBoxDisk/mountVol1`
 
 虽然重新装载成功，但不会保留数据。
 

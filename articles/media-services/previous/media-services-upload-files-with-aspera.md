@@ -4,7 +4,7 @@ description: 本教程逐步讲解如何使用 Azure 上的 **Aspera Server On D
 services: media-services
 documentationcenter: ''
 author: johndeu
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 8812623a-b425-4a0f-9e05-0ee6c839b6f9
 ms.service: media-services
@@ -12,22 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/17/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: d2a1fc23f4ff725a08a1be433c7a5373c01a12a2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: aeeacdd5a83ff41eeb900b142e09030b5642f4f8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33780579"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993820"
 ---
-# <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>使用 Azure 上的 Aspera Server On-Demand 服务将文件上传到媒体服务帐户
+# <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>使用 Azure 上的 Aspera Server On-Demand 服务将文件上传到媒体服务帐户 
 
 ## <a name="overview"></a>概述
 
 **Aspera** 是一个高速文件传输软件。 使用 **Aspera Server On Demand** for Azure 可快速将大型文件直接上传和下载到 Azure Blob 对象存储。 有关 **Aspera On Demand** 的信息，请参阅 [Aspera 云](http://cloud.asperasoft.com/)站点。 
   
-可从 [Azure 应用商店](https://azure.microsoft.com/marketplace/)购买 **Aspera Server On Demand** for Azure。 若要完成 **Aspera Server On Demand** for Azure 的购买，请使用 Windows Live ID 登录到 Azure Marketplace。
+可从 [Azure 市场](https://azure.microsoft.com/marketplace/)购买 **Aspera Server On Demand** for Azure。 若要完成 **Aspera Server On Demand** for Azure 的购买，请使用 Windows Live ID 登录到 Azure市场。
 
 本教程逐步讲解如何使用 Azure 上的 **Aspera Server On-Demand** 服务将文件上传到与媒体服务帐户关联的存储帐户。 
 
@@ -47,7 +47,7 @@ ms.locfileid: "33780579"
 
 ## <a name="purchase-aspera-on-demand-for-azure"></a>购买 Aspera On Demand for Azure
 
-登录到 Azure Marketplace 后，请遵循以下基本步骤完成 Aspera On Demand for Azure 的购买。
+登录到 Azure 市场后，请遵循以下基本步骤完成 Aspera On Demand for Azure 的购买。
 
 1. 搜索“Aspera”，并选择“Server On Demand”。
 

@@ -15,12 +15,13 @@ ms.workload: identity
 ms.date: 05/30/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 61ca57f2fd5bb6d5e56902dddecfade406267b91
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 81a1ab0ee411f05b353317b0d781e0cb292c7d6a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486259"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166617"
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的内容管理要求
 了解业务的内容管理要求可能会直接影响你决定使用哪一个混合标识解决方案。 随着设备数量的激增以及用户会自带设备 ([BYOD](https://aka.ms/byodcg))，公司必须确保自身数据的安全，同时也要使用户的隐私完好无损。 通常，当用户拥有自己的设备时，他们还可能具有多个凭据，会根据他们使用的应用程序交替使用这些凭据。 请务必区分使用个人凭据创建的内容与使用公司凭据创建的内容。 标识解决方案应能与云服务进行交互，从而向最终用户提供无缝体验的同时，确保用户的隐私以及增强针对数据泄漏的防护。 

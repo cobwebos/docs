@@ -10,20 +10,17 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: b291c8e15b771163d7986f78695bc74ef3084162
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f21f835ea50563497b73fb6e4505f60411029406
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150795"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882992"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略将访问令牌传递给应用程序
 
 > [!NOTE]
 > 此功能目前处于公开预览状态。
-
-> [!Important]
-> 此公开预览功能暂时不可用。
 
 Azure Active Directory (Azure AD) B2C 中的[自定义策略](active-directory-b2c-get-started-custom.md)允许应用程序的用户通过标识提供者进行注册或登录。 当发生此行为时，Azure AD B2C 会从标识提供者收到一个[访问令牌](active-directory-b2c-reference-tokens.md)。 Azure AD B2C 使用该令牌来检索有关用户的信息。 你在自定义策略中添加声明类型和输出声明来将该令牌传递给你在 Azure AD B2C 中注册的应用程序。 
 

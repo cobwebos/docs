@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 698cae13b9e78de6318c28bde998e195540c513c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 87c55634b6502a8a0c00fe52c7740a60f3afd80d
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256793"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098276"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>在 Azure 云服务角色上安装 .NET
 本文介绍如何安装不随 Azure 来宾 OS 一起提供的 .NET Framework 版本。 可使用来宾 OS 上的 .NET 配置云服务 web 角色和辅助角色。
@@ -183,10 +183,11 @@ ms.locfileid: "51256793"
        if %ERRORLEVEL%== 3010 goto restart
        if %ERRORLEVEL%== 1641 goto restart
        echo .NET (%netfx%) install failed with Error Code %ERRORLEVEL%. Further logs can be found in %netfxinstallerlog% >> %startuptasklog%
-   
+       goto exit
+       
    :restart
    echo Restarting to complete .NET (%netfx%) installation >> %startuptasklog%
-   EXIT /B %ERRORLEVEL%
+   shutdown.exe /r /t 5 /c "Installed .NET framework" /f /d p:2:4
    
    :installed
    echo .NET (%netfx%) is installed >> %startuptasklog%

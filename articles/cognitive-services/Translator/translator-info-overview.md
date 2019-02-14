@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: 将文本翻译 API 集成到应用程序、网站、工具和其他解决方案中，提供多语言用户体验。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: overview
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 1fb608f6715d3f48446451d437535b3ddfb0677a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: df0f1570b4f876cbfb542a5571c8bec7e80e6895
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455246"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857710"
 ---
 # <a name="what-is-translator-text-api"></a>什么是文本翻译 API？
 

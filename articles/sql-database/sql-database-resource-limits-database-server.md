@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan,moslake
 manager: craigg
-ms.date: 11/13/2018
-ms.openlocfilehash: 5f2e71736d25003e6b4e9640a5f82dd1d92b0d95
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/07/2019
+ms.openlocfilehash: 670ca1b8ba16122d4e969a41f8679e1a6d1b27c6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508294"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990098"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Azure SQL 数据库服务器的 SQL 数据库资源限制
 
@@ -76,7 +76,6 @@ ms.locfileid: "55508294"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关常见问题的解答，请参阅 [SQL 数据库常见问题解答](sql-database-faq.md)。
 - 有关常规 Azure 限制的相关信息，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md)。
-- 有关 DTU 和 eDTU 的信息，请参阅 [DTU 和 eDTU](sql-database-service-tiers.md#dtu-based-purchasing-model)。
+- 有关 DTU 和 eDTU 的信息，请参阅 [DTU 和 eDTU](sql-database-purchase-models.md#dtu-based-purchasing-model)。
 - 有关 tempdb 大小限制的信息，请参阅 [Azure SQL 数据库中的 TempDB](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)。

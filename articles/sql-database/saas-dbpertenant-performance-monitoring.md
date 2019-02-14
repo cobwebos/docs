@@ -12,18 +12,18 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: d02e552ede4480ee0c4977dc32bbe347ca7db393
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5b9d5d6252f22901d2b8ac5a61d924ce12cc7065
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459479"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004619"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理 Azure SQL 数据库和池的性能
 
 本教程将探讨 SaaS 应用程序中使用的几个关键性能管理方案。 使用负载生成器来模拟所有租户数据库中的活动，演示 SQL 数据库和弹性池内置的监视和警报功能。
 
-Wingtip Tickets SaaS Database Per Tenant 应用使用单租户数据模型，在该模型中，每个地点（租户）都有其自己的数据库。 与许多 SaaS 应用程序一样，预期的租户工作负荷模式为不可预测的偶发型。 换言之，票证销售可能会发生在任意时刻。 为了充分利用此典型的数据库使用模式，可将租户数据库部署到弹性池中。 弹性池可以在多个数据库之间共享资源，从而优化解决方案的成本。 使用此类模式时，必须监视数据库和池的资源使用情况，确保实现合理的跨池负载均衡。 此外还需确保各个数据库有足够的资源，且池没有达到其 [eDTU](sql-database-service-tiers.md#dtu-based-purchasing-model) 限制。 本教程探讨如何通过多种方式来监视和管理数据库和池，以及如何采取纠正措施来响应工作负荷的变化。
+Wingtip Tickets SaaS Database Per Tenant 应用使用单租户数据模型，在该模型中，每个地点（租户）都有其自己的数据库。 与许多 SaaS 应用程序一样，预期的租户工作负荷模式为不可预测的偶发型。 换言之，票证销售可能会发生在任意时刻。 为了充分利用此典型的数据库使用模式，可将租户数据库部署到弹性池中。 弹性池可以在多个数据库之间共享资源，从而优化解决方案的成本。 使用此类模式时，必须监视数据库和池的资源使用情况，确保实现合理的跨池负载均衡。 此外还需确保各个数据库有足够的资源，且池没有达到其 [eDTU](sql-database-purchase-models.md#dtu-based-purchasing-model) 限制。 本教程探讨如何通过多种方式来监视和管理数据库和池，以及如何采取纠正措施来响应工作负荷的变化。
 
 本教程介绍如何执行下列操作：
 

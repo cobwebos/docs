@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 参考本快速入门使用适用于 Java 的必应视频搜索 SDK 来发送视频搜索请求。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: rosh
-ms.openlocfilehash: 95112a4161c6a0c21b7e4a834658e5e7f130a8c3
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: ff214a545023364b09a0e757462a1b3f3d963d44
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55569055"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55885015"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>快速入门：使用适用于 Java 的必应视频搜索 SDK 执行视频搜索
 

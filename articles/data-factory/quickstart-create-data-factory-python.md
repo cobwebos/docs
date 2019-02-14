@@ -13,14 +13,15 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 49a2e16d198130d1c72d36377be1d914cbe3351b
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: fcef143f48bc9e7864fe69900e3c9002fd597fb5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745242"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001862"
 ---
-# <a name="create-a-data-factory-and-pipeline-using-python"></a>使用 Python 创建数据工厂和管道
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>快速入门：使用 Python 创建数据工厂和管道
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [第 1 版](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [当前版本](quickstart-create-data-factory-python.md)
@@ -47,6 +48,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 2.  使用 [Azure 存储资源管理器](http://storageexplorer.com/)等工具创建 **adfv2tutorial** 容器，并在该容器中创建 **input** 文件夹。 然后，将 **input.txt** 文件上传到 **input** 文件夹。
 
 ## <a name="install-the-python-package"></a>安装 Python 包
+
 1. 使用管理员特权打开一个终端或命令提示符。 
 2. 首先，安装 Azure 管理资源的 Python 包：
 
@@ -104,7 +106,6 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
             print("\tCopy duration: {}".format(activity_run.output['copyDuration']))
         else:
             print("\tErrors: {}".format(activity_run.error['message']))
-
     ```
 3. 向 **Main** 方法中添加用于创建 DataFactoryManagementClient 类的实例的以下代码。 将使用此对象来创建数据工厂、链接服务、数据集和管道。 还将使用此对象来监视管道运行详细信息。 将 **subscription_id** 变量设置为 Azure 订阅的 ID。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
@@ -165,9 +166,11 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
     print_item(ls)
 ```
 ## <a name="create-datasets"></a>创建数据集
+
 在本部分中创建两个数据集：一个用于源，另一个用于接收器。
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>为源 Azure Blob 创建数据集
+
 向 Main 方法中添加用于创建 Azure blob 数据集的以下代码。 有关 Azure Blob 数据集的属性的信息，请参阅 [Azure Blob 连接器](connector-azure-blob-storage.md#dataset-properties)一文。
 
 你将在 Azure Blob 中定义表示源数据的数据集。 此 Blob 数据集引用在上一步中创建的 Azure 存储链接服务。
@@ -184,6 +187,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 ```
 
 ### <a name="create-a-dataset-for-sink-azure-blob"></a>为接收器 Azure Blob 创建数据集
+
 向 Main 方法中添加用于创建 Azure blob 数据集的以下代码。 有关 Azure Blob 数据集的属性的信息，请参阅 [Azure Blob 连接器](connector-azure-blob-storage.md#dataset-properties)一文。
 
 你将在 Azure Blob 中定义表示源数据的数据集。 此 Blob 数据集引用在上一步中创建的 Azure 存储链接服务。
@@ -218,7 +222,6 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
     print_item(p)
 ```
 
-
 ## <a name="create-a-pipeline-run"></a>创建管道运行
 
 在 **Main** 方法中添加用于**触发管道运行**的以下代码。
@@ -232,6 +235,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 ```
 
 ## <a name="monitor-a-pipeline-run"></a>监视管道运行
+
 若要监视管道运行，请在 **Main** 方法中添加以下代码：
 
 ```python
@@ -251,6 +255,7 @@ main()
 ```
 
 ## <a name="full-script"></a>完整脚本
+
 下面是完整的 Python 代码：
 
 ```python
@@ -381,6 +386,7 @@ main()
 ```
 
 ## <a name="run-the-code"></a>运行代码
+
 生成并启动应用程序，然后验证管道执行。
 
 控制台会输出数据工厂、链接服务、数据集、管道和管道运行的创建进度。 请等到出现包含数据读取/写入大小的复制活动运行详细信息。 然后，使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)等工具检查 blob 是否已根据变量中的指定从“inputBlobPath”复制到“outputBlobPath”。
@@ -417,8 +423,8 @@ Number of bytes written: 18
 Copy duration: 4
 ```
 
-
 ## <a name="clean-up-resources"></a>清理资源
+
 若要删除数据工厂，请向程序中添加以下代码：
 
 ```python
@@ -426,4 +432,5 @@ adf_client.factories.delete(rg_name,df_name)
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 此示例中的管道将数据从 Azure Blob 存储中的一个位置复制到另一个位置。 完成相关[教程](tutorial-copy-data-dot-net.md)来了解如何在更多方案中使用数据工厂。

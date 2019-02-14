@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 037bdc233090e79695c17df197bb4c7adb517b20
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 99ed30809e49e36012263255c8cd0884cf6bbce8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229786"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992052"
 ---
-# <a name="import-the-postman-environment"></a>导入 Postman 环境 
+# <a name="import-the-postman-environment"></a>导入 Postman 环境  
 
 本文包含 [Postman 集合](postman-collection.md)使用的 **Postman** 环境变量的定义，该集合包含调用媒体服务 REST API 的分组 HTTP 请求。 [配置 Postman 以便进行媒体服务 REST API 调用](media-rest-apis-with-postman.md)教程将使用这些环境和集合文件。
 

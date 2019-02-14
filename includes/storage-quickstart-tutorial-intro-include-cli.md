@@ -4,16 +4,16 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: c5cb1c5a005265950f8dcd02c8e7675918751dab
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 82b3349afd10b585a10619229a2bc6d849d71524
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165805"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246725"
 ---
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group#az_group_create) 命令创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+使用 [az group create](/cli/azure/group) 命令创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 ```azurecli-interactive
 az group create \
@@ -23,7 +23,7 @@ az group create \
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-使用 [az storage account create](/cli/azure/storage/account#create) 命令创建常规用途存储帐户。 常规用途的存储帐户可用于以下四种服务：Blob、文件、表和队列。 
+使用 [az storage account create](/cli/azure/storage/account) 命令创建常规用途存储帐户。 常规用途的存储帐户可用于以下四种服务：Blob、文件、表和队列。 
 
 ```azurecli-interactive
 az storage account create \
@@ -38,7 +38,7 @@ az storage account create \
 
 Azure CLI 需要存储帐户凭据才能执行本教程的大部分命令。 提供凭据的选项有多种，其中最简单方法之一是设置 `AZURE_STORAGE_ACCOUNT` 和 `AZURE_STORAGE_ACCESS_KEY` 环境变量。
 
-首先，使用 [az storage account keys list](/cli/azure/storage/account/keys#list) 命令显示存储帐户密钥：
+首先，使用 [az storage account keys list](/cli/azure/storage/account/keys) 命令显示存储帐户密钥：
 
 ```azurecli-interactive
 az storage account keys list \

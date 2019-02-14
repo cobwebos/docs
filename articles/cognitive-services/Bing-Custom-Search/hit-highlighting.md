@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 演示如何启用搜索响应中的文本修饰。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
-ms.date: 09/28/2017
+ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: a535a31678dcdb611acb1606e6091a1a40a6d42e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: bf87db232484a8ba4fa1e3b8e4de921f152e2345
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55184064"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237495"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>使用修饰标记来突出显示文本
 

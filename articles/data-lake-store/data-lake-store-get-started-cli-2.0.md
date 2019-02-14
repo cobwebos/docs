@@ -10,14 +10,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: d8232b1e29a3d2585e79cf56d0f180a5084fd13e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c3e3c456da122e33a67b2ee3377bc15cb684b896
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979060"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864853"
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-cli"></a>Azure Data Lake Store 入门（使用 Azure CLI）
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 > [!div class="op_single_selector"]
 > * [门户](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -33,11 +36,11 @@ Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 它可以�
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本文前，必须具有：
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **Azure CLI**：请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 以获取说明。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 本文对 Data Lake Storage Gen1 使用一种较为简单的身份验证方法，你可以在其中以最终用户的身份登录。 系统会根据登录用户的访问级别约束对 Data Lake Storage Gen1 帐户和文件系统的访问权限。 不过，也可以使用其他方法在 Data Lake Storage Gen1 中进行身份验证，即“最终用户身份验证”或“服务到服务身份验证”。 有关如何进行身份验证的说明和详细信息，请参阅[最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)或[服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
 
@@ -233,4 +236,4 @@ az dls account delete --account mydatalakestoragegen1
 * [使用 Azure Data Lake Storage Gen1 满足大数据要求](data-lake-store-data-scenarios.md) 
 * [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
 * [配合使用 Azure Data Lake Analytics 和 Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [配合使用 Azure HDInsight 和 Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [将 Azure HDInsight 与 Data Lake Storage Gen1 配合使用](data-lake-store-hdinsight-hadoop-use-portal.md)

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 83412b180c71b3c4deb67db4d76c277be312b7ab
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a89ef8f6cba049f606f78c1d41a4005a708ae62a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175190"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166719"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-inkling"></a>教程：Azure Active Directory 与 Inkling 集成
 

@@ -12,17 +12,17 @@ ms.author: jovanpop
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: ca907e145067043b41dd6000248d44ecc1e3434f
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 2f18b51a07bb58f13673427f0acadb6b80d7a1c8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510436"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005312"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>业务关键层 - Azure SQL 数据库
 
 > [!NOTE]
-> 业务关键层在 DTU 购买模型中称为“高级”。 有关基于 vCore 购买模型与基于 DTU 购买模型的比较，请参阅 [Azure SQL 数据库购买模型和资源](sql-database-service-tiers.md)。
+> 业务关键层在 DTU 购买模型中称为“高级”。 有关基于 vCore 购买模型与基于 DTU 购买模型的比较，请参阅 [Azure SQL 数据库购买模型和资源](sql-database-purchase-models.md)。
 
 Azure SQL 数据库基于 SQL Server 数据库引擎体系结构，该体系结构已根据云环境做出调整，以确保即使在发生基础结构故障时，也仍能提供 99.99% 的可用性。 Azure SQL 数据库中使用了三种体系结构模型：
 - 常规用途/标准 

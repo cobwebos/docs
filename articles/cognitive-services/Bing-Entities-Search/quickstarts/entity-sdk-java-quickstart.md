@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 使用本快速入门通过适用于 Java 的必应实体搜索 SDK 来搜索实体
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
-ms.openlocfilehash: 5911719e0277d0ac842b285aebc03369aa82621f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 1534b2a85067867800c147c86ee7d82374de8794
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757747"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55866189"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>快速入门：通过适用于 Java 的必应实体搜索 SDK 来发送搜索请求
 
@@ -106,7 +106,7 @@ ms.locfileid: "55757747"
         ///...
         ```
 
-    3. 在 `intercept` 函数中，为你的请求创建变量。 使用 `Request.Builder()` 构建你的请求。 将你的订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头，并返回请求对象上的 `chain.proceed()`。
+    3. 在 `intercept` 函数中，为请求创建变量。 使用 `Request.Builder()` 生成请求。 将你的订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头，并返回请求对象上的 `chain.proceed()`。
             
         ```java
         //...

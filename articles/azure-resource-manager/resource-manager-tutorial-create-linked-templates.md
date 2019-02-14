@@ -13,14 +13,16 @@ ms.devlang: na
 ms.date: 01/16/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5c193ce7966cdc303004c4b75871877074bf4711
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: c674c11f26d236e27852eb52bfc304aab12adcb5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494025"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112125"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>教程：创建链接的 Azure 资源管理器模板
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 了解如何创建链接的 Azure 资源管理器模板。 使用链接的模板，可以通过一个模板调用另一个模板。 这适用于模块化模板。 在本教程中使用的模板与在[教程：使用依赖资源创建 Azure 资源管理器模板](./resource-manager-tutorial-create-templates-with-dependent-resources.md)中使用的模板相同，该模板用于创建虚拟机、虚拟网络以及其他依赖资源（包括存储帐户）。 请将存储帐户资源创建功能分隔到链接的模板。
 
@@ -192,17 +194,17 @@ $storageAccount = New-AzStorageAccount `
 $context = $storageAccount.Context
 
 # Create a container
-New-AzureStorageContainer -Name $containerName -Context $context
+New-AzStorageContainer -Name $containerName -Context $context
 
 # Upload the linked template
-Set-AzureStorageBlobContent `
+Set-AzStorageBlobContent `
     -Container $containerName `
     -File "$home/$fileName" `
     -Blob $fileName `
     -Context $context
 
 # Generate a SAS token
-$templateURI = New-AzureStorageBlobSASToken `
+$templateURI = New-AzStorageBlobSASToken `
     -Context $context `
     -Container $containerName `
     -Blob $fileName `

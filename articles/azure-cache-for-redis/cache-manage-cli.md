@@ -1,25 +1,25 @@
 ---
 title: 使用 Azure 经典 CLI 管理 Azure Redis 缓存 | Microsoft Docs
 description: 了解如何在任何平台上安装 Azure 经典 CLI、如何使用它连接到 Azure 帐户，以及如何从经典 CLI 创建和管理 Azure Redis 缓存。
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.assetid: 964ff245-859d-4bc1-bccf-62e4b3c1169f
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: wesmc
-ms.openlocfilehash: 9b9ad2f4fd3b0ccf928dcec58b7c55778bcbdc95
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.author: yegu
+ms.openlocfilehash: 99148332a8310428cb73287d861ef71c35d59a26
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558696"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233194"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>如何使用 Azure 经典 CLI 创建和管理 Azure Redis 缓存
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ Azure 经典 CLI 是从任何平台管理 Azure 基础结构的好办法。 本�
 ## <a name="azure-cache-for-redis-properties"></a>Azure Redis 缓存属性
 在创建和更新 Azure Redis 缓存实例时使用以下属性。
 
-| 属性 | Switch | Description |
+| 属性 | Switch | 说明 |
 | --- | --- | --- |
 | 名称 |-n, --name |Azure Redis 缓存的名称。 |
 | 资源组 |-g, --resource-group |资源的名称。 |

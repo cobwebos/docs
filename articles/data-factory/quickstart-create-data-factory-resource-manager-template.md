@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 11/28/2018
 ms.author: douglasl
-ms.openlocfilehash: 279588e63000883d60b159f56e8c0b4686dee5b4
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: bb6c3281ffc434bd31f901b2b7f6e540f893ca76
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888764"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001896"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板创建 Azure 数据工厂
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [版本 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [当前版本](quickstart-create-data-factory-resource-manager-template.md)
@@ -32,9 +33,11 @@ ms.locfileid: "54888764"
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)]
 
 ### <a name="azure-powershell"></a>Azure PowerShell
+
 按[如何安装和配置 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) 中的说明安装最新的 Azure PowerShell 模块。
 
 ## <a name="resource-manager-templates"></a>资源管理器模板
+
 若要了解 Azure 资源管理器模板的一般信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 
 以下部分提供了用于定义数据工厂实体的完整 Resource Manager 模板，以便可以快速完成整个教程并测试模板。 若要了解每个数据工厂实体的定义方式，请参阅[模板中的数据工厂实体](#data-factory-entities-in-the-template)部分。
@@ -42,6 +45,7 @@ ms.locfileid: "54888764"
 若要了解模板中数据工厂资源的 JSON 语法和属性，请参阅 [Microsoft.DataFactory 资源类型](/azure/templates/microsoft.datafactory/allversions)。
 
 ## <a name="data-factory-json"></a>数据工厂 JSON
+
 在 **C:\ADFTutorial** 文件夹中，创建包含以下内容的名为 **ADFTutorialARM.json** 的 JSON 文件：
 
 ```json
@@ -265,6 +269,7 @@ ms.locfileid: "54888764"
 ```
 
 ## <a name="parameters-json"></a>参数 JSON
+
 创建名为 **ADFTutorialARM-Parameters.json**、包含 Azure 资源管理器模板参数的 JSON 文件。
 
 > [!IMPORTANT]
@@ -319,6 +324,7 @@ ms.locfileid: "54888764"
 > 在同一个数据工厂 JSON 模板中，可为开发、测试和生产环境使用不同的参数 JSON 文件。 使用 Power Shell 脚本可在这些环境中自动部署数据工厂实体。
 
 ## <a name="deploy-data-factory-entities"></a>部署数据工厂实体
+
 在 PowerShell 中运行以下命令，使用在本快速入门前面创建的资源管理器模板来部署数据工厂实体。
 
 ```PowerShell
@@ -327,7 +333,7 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFT
 
 将显示类似于以下示例的输出：
 
-```
+```console
 DeploymentName          : MyARMDeployment
 ResourceGroupName       : ADFTutorialResourceGroup
 ProvisioningState       : Succeeded
@@ -369,7 +375,7 @@ DeploymentDebugLogLevel :
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup"
     ```
-1. 创建一个变量，用于保存数据工厂的名称。 指定一个已在 ADFTutorialARM-Parameters.json 文件中指定的名称。
+2. 创建一个变量，用于保存数据工厂的名称。 指定一个已在 ADFTutorialARM-Parameters.json 文件中指定的名称。
 
     ```powershell
     $dataFactoryName = "<yourdatafactoryname>"
@@ -404,7 +410,7 @@ DeploymentDebugLogLevel :
     
     下面是示例输出：
     
-    ```
+    ```console
     Confirm
     Are you sure you want to start trigger 'ArmTemplateTestTrigger' in data factory 'ARMFactory1128'?
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
@@ -418,7 +424,7 @@ DeploymentDebugLogLevel :
     
     下面是示例输出：
     
-    ```
+    ```console
     TriggerName       : ArmTemplateTestTrigger
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : ARMFactory1128
@@ -427,31 +433,37 @@ DeploymentDebugLogLevel :
     ```
 
 ## <a name="monitor-the-pipeline"></a>监视管道
+
 1. 登录到 [Azure 门户](https://portal.azure.com/)以后，单击“所有服务”，使用 **data fa** 之类的关键字进行搜索，然后选择“数据工厂”。
 
     ![浏览数据工厂菜单](media/quickstart-create-data-factory-resource-manager-template/browse-data-factories-menu.png)
+
 2. 在“数据工厂”页中单击已创建的数据工厂。 根据需要使用数据工厂的名称对列表进行筛选。
 
     ![选择数据工厂](media/quickstart-create-data-factory-resource-manager-template/select-data-factory.png)
+
 3. 在“数据工厂”页中，单击“监视和管理”磁贴。
 
     ![“监视和管理”磁贴](media/quickstart-create-data-factory-resource-manager-template/monitor-manage-tile.png)
+
 4. “数据集成应用程序”会在 Web 浏览器的单独选项卡中打开。 如果监视器选项卡未处于活动状态，请切换到**监视器选项卡**。请注意，管道运行已由**计划程序触发器**触发。
 
     ![监视管道运行](media/quickstart-create-data-factory-resource-manager-template/monitor-pipeline-run.png)
 
     > [!IMPORTANT]
     > 仅在整点（例如，早晨 4 点、早晨 5 点、早晨 6 点，等等）查看管道运行。 当时间到达下一小时时，单击工具栏上的“刷新”以刷新列表。
+
 5. 单击“操作”列中的链接。
 
     ![管道操作链接](media/quickstart-create-data-factory-resource-manager-template/pipeline-actions-link.png)
+
 6. 此时会看到与管道运行相关联的活动运行。 在本快速入门中，管道只有一个活动，其类型为：“复制”。 因此会看到该活动的一个运行。
 
     ![活动运行](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
-1. 单击“输出”列下的链接。 此时会在“输出”窗口中看到复制操作的输出。 单击最大化按钮可查看完整输出。 可以关闭最大化输出窗口，也可以直接关闭它。
+7. 单击“输出”列下的链接。 此时会在“输出”窗口中看到复制操作的输出。 单击最大化按钮可查看完整输出。 可以关闭最大化输出窗口，也可以直接关闭它。
 
     ![输出窗口](media/quickstart-create-data-factory-resource-manager-template/output-window.png)
-7. 看到运行成功/失败以后，即可停止触发器。 触发器一小时运行管道一次。 每次运行时，管道会将同一文件从 input 文件夹复制到 output 文件夹。 若要停止触发器，请在 PowerShell 窗口中运行以下命令。
+8. 看到运行成功/失败以后，即可停止触发器。 触发器一小时运行管道一次。 每次运行时，管道会将同一文件从 input 文件夹复制到 output 文件夹。 若要停止触发器，请在 PowerShell 窗口中运行以下命令。
     
     ```powershell
     Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
@@ -460,6 +472,7 @@ DeploymentDebugLogLevel :
 [!INCLUDE [data-factory-quickstart-verify-output-cleanup.md](../../includes/data-factory-quickstart-verify-output-cleanup.md)]
 
 ## <a name="data-factory-entities-in-the-template"></a> 实体的 JSON 定义
+
 JSON 模板中定义了以下数据工厂实体：
 
 - [Azure 存储链接服务](#azure-storage-linked-service)
@@ -469,6 +482,7 @@ JSON 模板中定义了以下数据工厂实体：
 - [触发器](#trigger)
 
 #### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
+
 AzureStorageLinkedService 链接将 Azure 存储帐户链接到数据工厂。 已根据先决条件创建了一个容器并将数据上传到该存储帐户。 在本部分中指定 Azure 存储帐户的名称和密钥。 有关用于定义 Azure 存储链接服务的 JSON 属性的详细信息。请参阅 [Azure Storage linked service](connector-azure-blob-storage.md#linked-service-properties)（Azure 存储链接服务）。
 
 ```json
@@ -495,6 +509,7 @@ AzureStorageLinkedService 链接将 Azure 存储帐户链接到数据工厂。 �
 connectionString 使用 storageAccountName 和 storageAccountKey 参数。 可以使用配置文件传递这些参数的值。 该定义还使用了模板中定义的变量 azureStorageLinkedService 和 dataFactoryName。
 
 #### <a name="azure-blob-input-dataset"></a>Azure Blob 输入数据集
+
 Azure 存储链接服务指定一个连接字符串，数据工厂服务在运行时使用该字符串连接到 Azure 存储帐户。 在 Azure Blob 数据集定义中，请指定包含输入数据的 Blob 容器、文件夹和文件的名称。 有关用于定义 Azure Blob 数据集的 JSON 属性的详细信息，请参阅 [Azure Blob dataset properties](connector-azure-blob-storage.md#dataset-properties)（Azure Blob 数据集属性）。
 
 ```json
@@ -518,10 +533,10 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
         }
     }
 },
-
 ```
 
 #### <a name="azure-blob-output-dataset"></a>Azure Blob 输出数据集
+
 请在 Azure Blob 存储中指定一个文件夹的名称，用于保存从 input 文件夹复制的数据。 有关用于定义 Azure Blob 数据集的 JSON 属性的详细信息，请参阅 [Azure Blob dataset properties](connector-azure-blob-storage.md#dataset-properties)（Azure Blob 数据集属性）。
 
 ```json
@@ -548,6 +563,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 ```
 
 #### <a name="data-pipeline"></a>数据管道
+
 定义将数据从一个 Azure Blob 数据集复制到另一个 Azure Blob 数据集的管道。 有关用于定义本示例中所述管道的 JSON 元素的说明，请参阅 [Pipeline JSON](concepts-pipelines-activities.md#pipeline-json)（管道 JSON）。
 
 ```json
@@ -587,6 +603,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 ```
 
 #### <a name="trigger"></a>触发器
+
 定义一个每小时运行一次管道的触发器。 部署的触发器处于已停止状态。 使用 **Start-AzureRmDataFactoryV2Trigger** cmdlet 启动触发器。 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md#triggers)一文。
 
 ```json
@@ -624,6 +641,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 ```
 
 ## <a name="reuse-the-template"></a>重复使用模板
+
 本教程创建了一个用于定义数据工厂实体的模板，以及一个用于传递参数值的模板。 要使用同一个模板将数据工厂实体部署到不同的环境，可为每个环境创建一个参数文件，并在部署到该环境时使用该文件。
 
 示例：
@@ -635,9 +653,11 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFT
 
 New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Production.json
 ```
+
 请注意，三条命令分别使用开发环境、测试环境和生产环境的参数文件。
 
 可以重复使用该模板来执行重复的任务。 例如，创建多个数据工厂，其中包含用于实现相同逻辑的一个或多个管道，但每个数据工厂使用不同的 Azure 存储帐户。 在这种情况下，可以在同一个环境（开发、测试或生产）中使用包含不同参数文件的同一个模板来创建数据工厂。
 
 ## <a name="next-steps"></a>后续步骤
+
 此示例中的管道将数据从 Azure Blob 存储中的一个位置复制到另一个位置。 完成相关[教程](tutorial-copy-data-dot-net.md)来了解如何在更多方案中使用数据工厂。

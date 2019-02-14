@@ -1,5 +1,5 @@
 ---
-title: 收集和分析 Log Analytics 中的 Syslog 消息 | Microsoft Docs
+title: 在 Azure Monitor 中收集和分析 Syslog 消息 | Microsoft Docs
 description: Syslog 是普遍适用于 Linux 的事件日志记录协议。 本文介绍了如何在 Log Analytics 中配置 Syslog 消息集合以及它们创建的记录的详细信息。
 services: log-analytics
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 6af1dcd6ffac1722ed39f8fe69f3d78aa4ed8313
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: fb59740289caffaf8325aa75aaf8ae649611b347
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104414"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991627"
 ---
-# <a name="syslog-data-sources-in-log-analytics"></a>Log Analytics 中的 Syslog 数据源
-Syslog 是普遍适用于 Linux 的事件日志记录协议。  应用程序将发送可能存储在本地计算机或传递到 Syslog 收集器的消息。  安装适用于 Linux 的 Log Analytics 代理后，它将配置本地 Syslog 后台程序，以将消息转发到此代理。  然后，此代理将消息发送到 Log Analytics，将在后者中创建相应的记录。  
+# <a name="syslog-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Syslog 数据源
+Syslog 是普遍适用于 Linux 的事件日志记录协议。  应用程序将发送可能存储在本地计算机或传递到 Syslog 收集器的消息。  安装适用于 Linux 的 Log Analytics 代理后，它将配置本地 Syslog 后台程序，以将消息转发到此代理。  然后，此代理将消息发送到 Azure Monitor，将在后者中创建相应的记录。  
 
 > [!NOTE]
-> 当 rsyslog 为默认守护程序时，Log Analytics 支持 rsyslog 或 syslog-ng 发送的消息集合。 不支持将 Red Hat Enterprise Linux 版本 5、CentOS 和 Oracle Linux 版本 (sysklog) 上的默认 syslog 守护程序用于 syslog 事件收集。 要从这些发行版的此版本中收集 syslog 数据，应安装并配置 [rsyslog 守护程序](http://rsyslog.com)以替换 sysklog。
+> 当 rsyslog 为默认守护程序时，Azure Monitor 支持 rsyslog 或 syslog-ng 发送的消息集合。 不支持将 Red Hat Enterprise Linux 版本 5、CentOS 和 Oracle Linux 版本 (sysklog) 上的默认 syslog 守护程序用于 syslog 事件收集。 要从这些发行版的此版本中收集 syslog 数据，应安装并配置 [rsyslog 守护程序](http://rsyslog.com)以替换 sysklog。
 >
 >
 
@@ -183,7 +183,7 @@ Log Analytics 代理在端口 25224 侦听本地客户端上的 Syslog 消息。
 ## <a name="syslog-record-properties"></a>Syslog 记录属性
 record 记录的类型为 **Syslog**，并且具有下表中的属性。
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | Computer |从中收集事件的计算机。 |
 | 设施 |定义生成消息的系统部分。 |
@@ -197,7 +197,7 @@ record 记录的类型为 **Syslog**，并且具有下表中的属性。
 ## <a name="log-queries-with-syslog-records"></a>具有 Syslog 记录的日志查询
 下表提供了检索 Syslog 记录的不同日志查询示例。
 
-| Query | Description |
+| Query | 说明 |
 |:--- |:--- |
 | Syslog |所有 Syslog。 |
 | Syslog &#124; where SeverityLevel == "error" |具有错误严重级别的所有 Syslog 记录。 |

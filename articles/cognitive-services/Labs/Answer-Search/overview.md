@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 项目答案搜索简介。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: answer-search
 ms.topic: overview
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: cb02c9067e4d672b0aace4caf13e4c8f0d718afb
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 1898a4576b86d7abb302e325aef827bab6b9d7dd
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220189"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877409"
 ---
 # <a name="what-is-project-answer-search"></a>什么是项目答案搜索？
 项目答案搜索 API 使用 Bing v7 终结点获取疑问式询问的答案。 “地球的周长是多少？”此类问题 返回带有事实信息的答案。  对人员、地点或事物的查询则返回与查询识别的实体相关的信息。 这些方案在对话机器人、消息应用、读取器等应用程序中十分有用。  

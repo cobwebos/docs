@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/15/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 6bfc12c17b38543f0c6979b5f5eeada562483bfa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 731e8453c9735ef1e7819f1b851d0a13ceaec43a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819342"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996196"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>媒体服务功能的跨数据中心方案和可用性
 

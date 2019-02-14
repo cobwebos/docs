@@ -4,7 +4,7 @@ description: 本文档介绍了如何在采用 Azure 安全中心之前进行规
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: f984e4a2-ac97-40bf-b281-2f7f473494c4
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: b3d6f30aa2a7858d673199e55090e96fb9aba915
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 1532c863a7906e7f3c1e0bc98d2080513263b9f8
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337623"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105088"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure 安全中心规划和操作指南
 本指南适用于其组织正计划使用 Azure 安全中心的信息技术 (IT) 专业人员、IT 架构师、信息安全分析师和云管理员。

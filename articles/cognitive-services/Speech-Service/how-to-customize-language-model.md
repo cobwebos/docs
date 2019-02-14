@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: 了解如何使用语音服务创建语言模型。 将此自定义语言模型与 Microsoft 提供的现成的最新语音模型配合使用，以便向应用程序添加语音交互功能。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: bd7b957a42f28b7ded2f30ec22a7450e0106b09a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 57d112cfce00839f1381dc41d24bfb697179b5a4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206182"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878674"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>教程：创建自定义语言模型
 

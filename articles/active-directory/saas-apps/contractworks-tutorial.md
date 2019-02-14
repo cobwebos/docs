@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: db8186595524de193b881b59636cac6a0d414fb3
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: eea60c8bb4281221fdcd7455e9d5fa5612dc95b3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564079"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186873"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-contractworks"></a>教程：Azure Active Directory 与 ContractWorks 集成
 
@@ -118,7 +119,7 @@ ms.locfileid: "55564079"
 
 7. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤： 
 
-    | 名称 | 源属性|
+    | Name | 源属性|
     | ---------------| --------------- |
     | mail | user.mail |
     | displayName | user.displayname |

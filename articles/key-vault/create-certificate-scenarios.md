@@ -4,7 +4,7 @@ description: 通过方案演示如何使用一系列选项在 Key Vault 中创�
 services: key-vault
 documentationcenter: ''
 author: bryanla
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: 0d0995aa-b60d-4811-be12-ba0a45390197
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: b6c77a2e7ae9cb4c463900ec34989ebaff22e5e1
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 60095520fac55fb695f7c987d27e07a7a2af422a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55726882"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114886"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>监视和管理证书创建
 适用于：Azure

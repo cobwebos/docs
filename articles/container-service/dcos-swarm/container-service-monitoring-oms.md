@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: b5c1596066b02d5ad4f59ed553408d263acc825c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 1278c788c0d36b2cadf860e379791ecd823a510b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993566"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113834"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>（已弃用）使用 Log Analytics 监视 Azure 容器服务 DC/OS 群集
 
@@ -34,7 +34,7 @@ Log Analytics 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你
 ### <a name="pre-requisite"></a>先决条件
 - [Microsoft Azure 订阅](https://azure.microsoft.com/free/) - 可免费获取订阅。  
 - Log Analytics 工作区设置 - 请参阅下面的“步骤 3”
-- 安装 [DC/OS CLI](https://dcos.io/docs/1.8/usage/cli/install/)。
+- 安装 [DC/OS CLI](http://docs.mesosphere.com/1.12/cli)。
 
 1. 在 DC/OS 仪表板中单击“通用”，并搜索“OMS”，如下所示。
 

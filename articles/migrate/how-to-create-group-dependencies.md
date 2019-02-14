@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 007f7fe95be77a2b1661cd6c82118eb875401f24
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5c4d16ff85972bc4b608e6ce2006912fb27d49d2
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472569"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895425"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>使用组依赖项映射优化组
 
@@ -104,7 +104,7 @@ Azure Migrate 使用 Log Analytics 中的服务映射解决方案来实现计算
 3. 若要查看更精细的依赖项，请单击时间范围并进行修改。 时间范围默认为 1 小时。 你可以修改时间范围，或指定开始和结束日期以及持续时间。
 
     > [!NOTE]
-      目前，依赖性可视化效果 UI 不支持选择超过一小时的时间范围。 使用 Log Analytics [查询较长持续时间的依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-a-group#query-dependency-data-from-log-analytics)。
+      目前，依赖性可视化效果 UI 不支持选择超过一小时的时间范围。 使用 Log Analytics [查询较长持续时间的依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-a-group)。
 
 4. 验证依赖计算机，以及每台计算机内运行的进程，标识应在组中添加或删除的计算机。
 5. 按住 Ctrl 键单击，在映射上选择想要在组中添加或删除的计算机。
@@ -121,10 +121,10 @@ Azure Migrate 使用 Log Analytics 中的服务映射解决方案来实现计算
 
 服务映射捕获的依赖项数据可用于在与 Azure Migrate 项目关联的 Log Analytics 工作区中进行查询。 [详细了解](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)可在 Log Analytics 中查询的服务映射数据表。 
 
-运行 Log Analytics 查询：
+要运行 Log Analytics 查询：
 
 1. 安装代理后，请转到门户并单击“概述”。
-2. 在“概述”中，转到项目的“概要”部分，然后单击“OMS 工作区”旁边提供的工作区名称。
+2. 在“概述”中，转到项目的“Essentials”部分，然后单击“OMS 工作区”旁边提供的工作区名称。
 3. 在“Log Analytics 工作区”页上，单击“常规” > “日志”。
 4. 编写查询以使用 Log Analytics 收集依赖项数据。 [此处](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)提供用于收集依赖项数据的示例查询。
 5. 通过单击“运行”，运行查询。 

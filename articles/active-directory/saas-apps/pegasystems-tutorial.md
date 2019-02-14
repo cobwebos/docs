@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: jeedes
-ms.openlocfilehash: abeffacedd8b3cae9802e5a8c264748df313abf0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b7a6fd51ad14395b3c195ae1ceb5a188dd2c708c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196729"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162503"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>教程：zure Active Directory 与 Pega Systems 集成
 

@@ -14,12 +14,13 @@ ms.subservice: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 564517052796ee5dbc022ff92afcaa0216bdf8ea
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 538661df85ca0960992cb40a53b0e149c3b566b6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196831"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189525"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-pim"></a>在 PIM 中为 Azure 资源角色配置安全警报
 如果环境中有可疑活动或不安全活动，Azure 资源的 Privileged Identity Management (PIM) 会生成警报。 当警报触发时，它将显示在“警报”页上。 

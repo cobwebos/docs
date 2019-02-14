@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 使用人脸 API 检测图像中的人脸。
 services: cognitive-services
 author: SteveMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 8c89a43910a5e98286a82de8626870d3aec55b94
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 30d5294defe02ca6c8cfd588648429859bdf19ad
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214205"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856388"
 ---
 # <a name="example-how-to-detect-faces-in-image"></a>示例：如何检测图像中的人脸
 

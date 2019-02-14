@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 介绍如何在单页 Web 应用程序中使用必应视频搜索 API。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: rosh
-ms.openlocfilehash: f3a13bf15ed1ef1629cd17af43a0f71df80b1349
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 034ea49322f213971f549673a1d179a301585c96
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567530"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55875199"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>教程：单页视频搜索应用
 使用必应视频搜索 API 可以搜索 Web，并获取与搜索查询相关的视频结果。 本教程将生成一个单页 Web 应用程序，该应用程序使用必应搜索 API 在页面中显示搜索结果。 该应用程序包含 HTML、CSS 和 JavaScript 组件。

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 此基于 Python REST 的快速入门详细介绍如何以编程方式从知识库获取答案。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: 0647d850491f31d0f66de18a593ac7ff471e8906
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 403886f543b21d2f9ed8ef457838fe2c93b7ca73
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206402"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55875461"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-python"></a>使用 Python 从知识库获取问题的答案
 

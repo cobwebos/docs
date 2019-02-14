@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 使用 Interpret 方法根据学术关系图数据和 Microsoft 认知服务中的学术语法返回用户查询字符串的格式化解释。
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: d79e14fa48631ec6ce3cde42a7dbe300034782cb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6db9a5b65fc2723af2eae006ad81716e23e52133
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171646"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860518"
 ---
 # <a name="interpret-method"></a>interpret 方法
 

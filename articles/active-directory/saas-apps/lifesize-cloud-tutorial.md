@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
-ms.openlocfilehash: 09c162a905a64c59080486bf6d83127df4f066c2
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c086ecf512fff1d6e9678278e81c1897f69eb151
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808232"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191565"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>教程：Azure Active Directory 与 Lifesize Cloud 的集成
 

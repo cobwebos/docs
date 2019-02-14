@@ -9,12 +9,13 @@ ms.topic: overview
 ms.date: 11/13/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 251161fbb5213c765463835e4537f1b443699670
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: be8b443dc2d25558343fb8cad3fd5e9734a672e1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491733"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187383"
 ---
 # <a name="what-is-azure-active-directory"></a>什么是 Azure Active Directory？ 
 Azure Active Directory (Azure AD) 是 Microsoft 推出的基于云的标识和访问管理服务。 员工可以通过 Azure AD 登录并访问以下资源：
@@ -78,7 +79,7 @@ Microsoft Online 业务服务（例如 Office 365 或 Microsoft Azure）要求�
 |类别|描述|
 |-------|-----------|
 |应用程序管理|使用应用程序代理、单一登录、“我的应用”门户（也称“访问面板”）和软件即服务 (SaaS) 应用来管理云应用和本地应用。 有关详细信息，请参阅[如何提供对本地应用程序的安全远程访问](../manage-apps/application-proxy.md)和[应用程序管理文档](../manage-apps/index.yml)。|
-|身份验证|管理 Azure Active Directory 自助密码重置、多重身份验证、自定义禁止密码列表和智能锁定。 有关详细信息，请参阅 [Azure AD 身份验证文档](../authentication/index.yml)。|
+|Authentication|管理 Azure Active Directory 自助密码重置、多重身份验证、自定义禁止密码列表和智能锁定。 有关详细信息，请参阅 [Azure AD 身份验证文档](../authentication/index.yml)。|
 |企业对企业 (B2B)|管理来宾用户和外部合作伙伴，同时保持对自己公司数据的控制。 有关详细信息，请参阅 [Azure Active Directory B2B 文档](../b2b/index.yml)。|
 |企业对客户 (B2C)|自定义并控制用户在使用应用时如何注册、登录并管理其配置文件。 有关详细信息，请参阅 [Azure Active Directory B2C 文档](../../active-directory-b2c/index.yml)。|
 |条件性访问|管理对云应用进行的访问。 有关详细信息，请参阅 [Azure AD 条件访问文档](../conditional-access/index.yml)。|

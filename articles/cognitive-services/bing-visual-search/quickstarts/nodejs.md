@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 了解如何将图像上传到必应视觉搜索 API 并获取其相关见解。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 23c3e167f2fd1544a42c98946f4ae95d3451dafe
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7a0103e21b4c287526e53b9f886e98027f49c392
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180613"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55863986"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>快速入门：使用必应视觉搜索 REST API 和 Node.js 获取图像见解
 

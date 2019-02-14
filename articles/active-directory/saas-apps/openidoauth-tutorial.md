@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/07/2019
 ms.author: jeedes
-ms.openlocfilehash: f2ed840065b4efd4b0e519333307388dca61827d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0742a08e0169d47307f28ff08491b0f7c7c4a914
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54807008"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201508"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>从 Azure AD 应用库配置 OpenID/OAuth 应用程序
 
@@ -105,7 +106,7 @@ ms.locfileid: "54807008"
 
 3. 如果用户尚未经过身份验证，Azure AD 的 /authorize 终结点会提示登录。
 
-    ![身份验证](./media/openidoauth-tutorial/authentication.png)
+    ![Authentication](./media/openidoauth-tutorial/authentication.png)
 
 4. 用户登录后，Azure AD 将决定是否要向该用户显示许可页。 此决定基于该用户（或其组织的管理员）是否已授予应用程序许可。
 

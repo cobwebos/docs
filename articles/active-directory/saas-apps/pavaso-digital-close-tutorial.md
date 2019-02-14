@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 2c83d5de683e7712f84903b2880789901fcd74a3
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e98d3630c3e62c0147cceb4d5398ac8255548769
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811666"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192789"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pavaso-digital-close"></a>教程：Azure Active Directory 与 Pavaso Digital Close 的集成
 

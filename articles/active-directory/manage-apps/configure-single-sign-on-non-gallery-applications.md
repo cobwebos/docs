@@ -2,21 +2,22 @@
 title: 单一登录到非库应用程序 - Azure Active Directory | Microsoft Docs
 description: 在 Azure Active Directory (Azure AD) 中配置单一登录 (SSO) 到非库应用程序
 services: active-directory
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: article
 ms.workload: identity
 ms.date: 01/08/2019
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asmalser,luleon
-ms.openlocfilehash: 1c364b3be0c2203c64e64df1bd0e4ab5ec2078a0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2804ebdbeb72bd35c7e63553184157066f9cfd32
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153873"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177287"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>在 Azure Active Directory 中配置单一登录到非库应用程序
 

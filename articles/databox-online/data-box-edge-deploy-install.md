@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6776eeb3cfdef98084c36a9441acafb8de1ab5b2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 243697c20f10a019a73326c3bd79e23fc3342640
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720316"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113594"
 ---
 # <a name="tutorial-install-azure-data-box-edge-preview"></a>教程：安装 Azure Data Box Edge（预览版）
 
@@ -61,7 +61,7 @@ ms.locfileid: "53720316"
 
 开始之前：
 
-- 查看部署 Data Box Edge 的网络要求，并根据要求配置数据中心网络。 有关详细信息，请参阅 [Data Box Edge 网络要求](data-box-gateway-system-requirements.md#networking-requirements)。
+- 查看部署 Data Box Edge 的网络要求，并根据要求配置数据中心网络。 有关详细信息，请参阅 [Data Box Edge 网络要求](data-box-edge-system-requirements.md#networking-port-requirements)。
 
 - 请确保最小 Internet 带宽为 20 Mbps，以便实现设备的理想运行。
 

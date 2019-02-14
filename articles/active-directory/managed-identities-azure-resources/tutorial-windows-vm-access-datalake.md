@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/13/2018
 ms.author: priyamo
-ms.openlocfilehash: c1d1152c1f0b5345d91590efbd8826a9f2038f63
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f20031b41d56e049670491a9aa9a41b21e0bfca4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150999"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197804"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure Data Lake Store
 

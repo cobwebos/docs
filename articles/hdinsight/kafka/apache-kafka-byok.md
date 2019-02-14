@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 8525b1450ae8b7badfe1c569c2040ecf1ab78070
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a3b719f4b2a19f4ea399d6a0858719a1709adc93
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314365"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109482"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight-preview"></a>为 Azure HDInsight 上的 Apache Kafka 创建自己的密钥（预览版）
 
@@ -39,7 +39,7 @@ BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。
 
    HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，则可以将密钥导入 Azure Key Vault。 请记住，密钥必须启用“软删除”和“不清除”。 “软删除”和“不清除”功能通过 REST、.NET/C#、PowerShell 和 Azure CLI 接口提供。
 
-   若要创建新的密钥保管库，请按照 [Azure Key Vault](../../key-vault/key-vault-get-started.md) 快速入门进行操作。 有关导入现有密钥的详细信息，请访问[关于密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md)。
+   若要创建新的密钥保管库，请按照 [Azure Key Vault](../../key-vault/key-vault-overview.md) 快速入门进行操作。 有关导入现有密钥的详细信息，请访问[关于密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md)。
 
    若要创建新密钥，请从“设置”下的“密钥”菜单中选择“生成/导入”。
 
@@ -120,4 +120,4 @@ BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 Azure Key Vault 的详细信息，请参阅[什么是 Azure Key Vault？](../../key-vault/key-vault-whatis.md)
-* 若要开始使用 Azure Key Vault，请参阅 [Azure Key Vault 入门](../../key-vault/key-vault-get-started.md)。
+* 若要开始使用 Azure Key Vault，请参阅 [Azure Key Vault 入门](../../key-vault/key-vault-overview.md)。

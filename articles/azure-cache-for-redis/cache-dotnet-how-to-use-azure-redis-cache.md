@@ -1,26 +1,26 @@
 ---
 title: 快速入门：了解如何将 Azure Redis 缓存与 .NET 应用配合使用 | Microsoft Docs
 description: 本快速入门介绍如何从 .NET 应用访问 Azure Redis 缓存
-services: azure-cache-for-redis,app-service
+services: cache,app-service
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.assetid: c502f74c-44de-4087-8303-1b1f43da12d5
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/18/2018
-ms.author: wesmc
+ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 6b2ab1ba89fbc2b271ede177a906a1919c14023d
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 487a51b6f644cca88011383b8035515d437857e6
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557659"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237886"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-application"></a>快速入门：将 Azure Redis 缓存与 .NET 应用程序配合使用
 

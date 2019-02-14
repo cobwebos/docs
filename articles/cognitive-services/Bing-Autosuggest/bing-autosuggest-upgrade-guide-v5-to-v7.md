@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 发现需要更新为使用版本 7 的应用部分。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: scottwhi
-ms.openlocfilehash: 13e1a2d574abd080b1e947896ed5c2de568fc853
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e164e02f3e7458e0c8d4fdf8d2a88cf4ab8a17b3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178471"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874492"
 ---
 # <a name="autosuggest-api-upgrade-guide"></a>自动推荐 API 升级指南
 

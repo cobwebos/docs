@@ -7,14 +7,14 @@ author: anikaz
 manager: johndeu
 ms.service: media-services
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: 95334ac326b346da23f17d3a9d494120235abace
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 5f77857c82846fe9c3d2ad4f5f82572d18401691
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53283723"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003595"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-apis"></a>使用视频索引器 API 自定义语言模型
 

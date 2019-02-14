@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 11/09/2018
+ms.date: 02/07/2019
 ms.author: alkohli
-ms.openlocfilehash: 8f9172418f15b129a71242038efd4cdb7683bbf7
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 0ad94799320e25d88f616117f1bfcf9f0513aadf
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516405"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873013"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway-preview"></a>管理 Azure Data Box Gateway（预览版）的访问、电源和连接模式
 
@@ -35,7 +35,7 @@ ms.locfileid: "51516405"
 
 ### <a name="change-device-administrator-password"></a>更改设备管理员密码
 
-如果忘记了密码，可以更改密码。 在本地 UI 中遵循以下步骤更改设备管理员密码。
+在本地 UI 中遵循以下步骤更改设备管理员密码。
 
 1. 在本地 Web UI 中，转到“维护”>“密码更改”。
 2. 依次输入当前密码和新密码。 提供的密码必须是 8 到 16 个字符。 该密码必须包含以下字符中的 3 项：大写字母、小写字母、数字和特殊字符。 确认新密码。

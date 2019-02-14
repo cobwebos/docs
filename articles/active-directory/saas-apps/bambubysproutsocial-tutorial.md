@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: aa995693f1b6b970c29c3c807667c7f730210fda
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3d7bbedef98e82ab87a081e010093d9f2e6b59be
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173643"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200636"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>教程：Azure Active Directory 与 Bambu by Sprout Social 集成
 

@@ -7,12 +7,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: 563de3d062b2c49d6b7ba23ae405e75283270815
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 95bec451c556ff9f3c5bcccee68f900543639733
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631885"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978079"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>自定义和重新部署微服务
 
@@ -123,13 +123,13 @@ ms.locfileid: "53631885"
 2. 在任何文本编辑器或偏好的 IDE 中打开 docker-compose.yml。
 3. 找到以下代码：
 
-    ```docker
+    ```yml
     image: azureiotpcs/iothub-manager-dotnet:testing
     ```
 
     将其更改为下图所示的内容，并保存。
 
-    ```cmd/sh
+    ```yml
     image: [docker ID]/iothub-manager-dotnet:testing
     ```
 

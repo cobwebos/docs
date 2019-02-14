@@ -15,11 +15,11 @@ ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: ea46b5e57e4e508a3311de8633ae61d346b574eb
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273810"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114189"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>将 ILB 应用服务环境与 Azure 应用程序网关集成 #
 
@@ -67,7 +67,7 @@ Azure 应用程序网关是一个虚拟设备，可提供第 7 层负载均衡�
 
 2. 在“基本信息”区域中：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“名称”，输入应用程序网关的名称。
+   a. 对于“名称”，输入应用程序网关的名称。
 
    b. 对于“层级”，选择“WAF”。
 
@@ -81,7 +81,7 @@ Azure 应用程序网关是一个虚拟设备，可提供第 7 层负载均衡�
 
 3. 在“设置”区域中：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“虚拟网络”，选择应用服务环境虚拟网络。
+   a. 对于“虚拟网络”，选择应用服务环境虚拟网络。
 
    b. 对于“子网”，选择需要将应用程序网关部署到的子网。 请勿使用 GatewaySubnet，因为它会阻止创建 VPN 网关。
 

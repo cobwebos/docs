@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 7fa0ec222a8e08c5dda74dba0fe437062bb3f433
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2e0f14ed72ae1609d4d6605e4a53e88b8fe33f28
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156303"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217677"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lyndacom"></a>教程：Azure Active Directory 与 Lynda.com 的集成
 

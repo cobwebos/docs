@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: ellacroi
-ms.openlocfilehash: 56a324aba3c5d8f550e5b51ff49b5ee0e74a3415
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: c420b1b5fc15f89bd14b8ae42919f24de97da4fc
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658328"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894150"
 ---
 # <a name="marketplace-faqs"></a>市场常见问题解答
 
@@ -350,7 +350,7 @@ Microsoft 通过 AAD 对所有市场用户进行身份验证。  可以直接预
 
 **为何需要开发人员中心帐户？**
 
-Microsoft 需要使用开发人员中心帐户代表发布者向客户计收“事务处理”商品类型的费用。 Microsoft 通过开发人员中心帐户注册来验证法律、税务和银行信息。 有关详细信息，请参阅[在开发人员中心注册](https://docs.microsoft.com/azure/marketplace/become-publisher#register-in-dev-center)。
+Microsoft 需要使用开发人员中心帐户代表发布者向客户计收“事务处理”商品类型的费用。 Microsoft 通过开发人员中心帐户注册来验证法律、税务和银行信息。 有关详细信息，请参阅[在开发人员中心注册](https://docs.microsoft.com/azure/marketplace/become-publisher)。
 
 **哪些发布者需要使用开发人员中心帐户注册？**
 

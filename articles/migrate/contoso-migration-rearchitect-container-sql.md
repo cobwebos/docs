@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 149a15353a7fd1d698af306971ecb0949db4c165
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 243b19d19fbce11d77f60bc2eccc4d1c58c85b80
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817225"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892178"
 ---
 # <a name="contoso-migration-rearchitect-an-on-premises-app-to-an-azure-container-and-azure-sql-database"></a>Contoso 迁移：将本地应用重新架构到 Azure 容器和 Azure SQL 数据库
 
@@ -317,7 +317,7 @@ Contoso 需要提供群集证书，使 Azure DevOps Services 能够访问群集�
 
 需要更多帮助？
 
-[了解](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#creating-and-managing-firewall-rules)如何为 Azure SQL 数据库创建和管理防火墙规则。
+[了解](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)如何为 Azure SQL 数据库创建和管理防火墙规则。
 
 ### <a name="migrate"></a>迁移
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: masnider
-ms.openlocfilehash: 37f956606075cb21075d6f50bb53e04075936997
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: bc4e4c9137003dad9cfd96772b7ebe231cd6eace
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999027"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171717"
 ---
 # <a name="reliable-services-overview"></a>Reliable Services 概述
 Azure Service Fabric 可简化无状态和有状态 Reliable Services 的编写与管理。 本主题的内容：
@@ -45,12 +45,6 @@ Reliable Services 提供简单且功能强大的顶级编程模型，以帮助�
 * 类似于习惯使用的编程模型的简单模型，用于运行自己的代码。 代码具有定义完善的入口点和易于管理的生命周期。
 * 可插式通信模型。 使用选择的传输方式，如包含 [Web API](service-fabric-reliable-services-communication-webapi.md) 的 HTTP、WebSockets、自定义 TCP 协议，等等。 Reliable Services 提供一些极佳的自带选项供你使用，也可以提供自己的选项。
 * 对于有状态服务，Reliable Services 编程模型允许使用 [Reliable Collections](service-fabric-reliable-services-reliable-collections.md) 直接在服务内以一致、可靠的方式存储状态。 Reliable Collections 是一组简单的高度可用、可靠集合类，用过 C# 集合的用户都对它很熟悉。 一直以来，服务需借助外部系统来进行可靠的状态管理。 利用 Reliable Collections，可将状态存储在计算旁边，获得高可用性外部存储一样的高可用性和可靠性。 此模型还能改善延迟问题，因为可将运行此模型所需的计算资源与状态放置在一起。
-
-请观看这段 Microsoft 虚拟大学视频，大致了解 Reliable Services：<center>
-<a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=HhD9566yC_4106218965">
-<img src="./media/service-fabric-reliable-services-introduction/ReliableServicesVid.png" WIDTH="360" HEIGHT="244" />
-</a>
-</center>
 
 ## <a name="what-makes-reliable-services-different"></a>Reliable Services 有何不同之处？
 Service Fabric 中的 Reliable Services 与以前编写的服务不同。 Service Fabric 提供可靠性、可用性、一致性和可伸缩性。
