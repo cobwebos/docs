@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 556ec0b55ea2e62975661eb5f668b4d3acda7c30
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7194565e760ca06c734e4e7e45191c3c321706a6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466347"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819631"
 documentType: LandingData
 title: Azure SQL 数据库托管实例
 metadata:
@@ -14,6 +14,7 @@ metadata:
   services: sql-database
   author: jovanpop-msft
   manager: craigg
+  requires-business-manager-approval: false
   ms.service: sql-database
   ms.tgt_pltfrm: na
   ms.devlang: 
@@ -45,7 +46,7 @@ sections:
       href: /azure/sql-database/sql-database-managed-instance#sql-features-supported
       html: <p>SQL 功能与最新版 SQL Server 数据库引擎的兼容度接近 100%。</p>
     - title: VNet 集成
-      href: /azure/sql-database/sql-database-managed-instance-vnet-configuration
+      href: /azure/sql-database/sql-database-managed-instance-connectivity-architecture
       html: <p>使用专用 IP 地址将安全服务放置在专用 Azure VNet 中。</p>
     - title: 轻松迁移
       href: /azure/sql-database/sql-database-managed-instance-get-started-restore
@@ -60,7 +61,7 @@ sections:
       href: /azure/sql-database/sql-database-paas
       html: <p>Azure PaaS 使实例的可用性高达 99.99% 且管理量最少。</p>
     - title: 服务层
-      href: /azure/sql-database/sql-database-high-availability
+      href: /azure/sql-database/sql-database-service-tiers-general-purpose-business-critical
       html: <p>根据业务需求，在常规用途和业务关键服务层之间作出选择。</p>
     - title: 高级安全
       href: /azure/sql-database/sql-database-security-index
@@ -79,6 +80,7 @@ sections:
     - html: （预览版）使用<a href="https://aka.ms/managed-instance-failover-groups">地理分布式故障转移组</a>将实例的副本保留在另一个区域中并确保你的数据在发生区域性灾难的情况下仍然可用。
     - html: （预览版）在迁移已启用了透明数据加密 (TDE) 的本地数据库时<a href="https://aka.ms/managed-instance-tde-byok">自带加密密钥</a>。
     - html: 托管实例由<a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">内置防火墙</a>提供保护。
+    - html: （预览版）<a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/2019/01/21/recreate-dropped-database-on-azure-sql-managed-instance/">重新创建已删除的数据库</a>。
 - title: 5 分钟快速入门
   items:
   - type: paragraph
@@ -123,6 +125,12 @@ sections:
       - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/
       - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/28/point-in-time-restore-of-a-database-on-azure-sql-managed-instance-using-azurerm-sql-powershell-library
       - href: 
+    - title: 还原已删除的数据库
+      values:
+      - href: 
+      - href: 
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2019/01/21/recreate-dropped-database-on-azure-sql-managed-instance/
+      - href: 
 - title: 分步教程和学习材料
   items:
   - type: paragraph
@@ -130,14 +138,15 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: 了解<a href="/azure/sql-database/sql-database-managed-instance-resource-limits">硬件特性和限制</a>以及 <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">Transact-SQL 语言差异</a>。
+    - html: 借助我们的快速入门指南，了解如何快速<a href="sql-database-managed-instance-quickstart-guide.md">开始使用托管实例</a>。
+    - html: 了解<a href="/azure/sql-database/sql-database-managed-instance-resource-limits">硬件特征和限制</a>、<a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">Transact-SQL 语言差异</a>和<a href="/azure/sql-database/sql-database-managed-instance-create-manage">用于配置托管实例的 Transact-SQL、PowerShell、Azure CLI API<a/>。
     - html: 在部署托管实例的位置<a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">配置</a> Azure VNet。
     - html: <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#validate-and-modify-an-existing-virtual-network">验证</a>现有的 Azure VNet 可以用于部署托管实例。
     - html: 使用 <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/21/the-easiest-way-to-create-azure-vm-that-can-access-your-azure-sql-managed-instance/">Azure 虚拟机</a>、<a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">点到站点连接</a>或<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">应用程序</a>连接到实例。
     - html: 验证可以使用<a href="https://www.microsoft.com/download/details.aspx?id=53595">数据迁移助手</a>或<a href="https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/">数据库实验助手</a>迁移数据库。
     - html: 使用<a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">本机还原</a>或<a href="/azure/dms/tutorial-sql-server-managed-instance-online">数据迁移服务</a>将数据库移动到托管实例。
     - html: 将 SSIS 包迁移到 <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure 数据工厂</a>，将 SSAS 表格模型迁移到 <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">Azure 分析服务</a>，并将 SSRS 报表迁移到<a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">Power BI Premium</a>。
-    - html: 应用<a href="https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose">针对常规用途服务层的存储性能最佳做法和注意事项</a>。
+    - html: 了解<a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">常规用途层</a>中的存储层以及应用<a href="https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose">针对常规用途服务层的存储性能最佳做法和注意事项</a>。
     - html: 找到<a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">保护实例</a>的最佳做法和建议。
     - html: 查找可以帮助你配置托管实例的更多<a href="sql-database-howto-managed-instance.md">操作指南</a>。
 - title: 引用
@@ -147,7 +156,7 @@ sections:
     className: cardsD
     items:
     - title: 博客
-      html: <p><a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/tag/managed-instance/">MSDN</a></p><p><a href="https://medium.com/azure-sqldb-managed-instance ">中型</a></p>
+      html: <p><a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/tag/managed-instance/">MSDN</a></p><p><a href="https://medium.com/azure-sqldb-managed-instance">中型</a></p>
     - title: 常见问题
       html: <p><a href="https://stackoverflow.com/questions/tagged/azure-sql-managed-instance">Stack Overflow</a></p>
     - title: 培训材料

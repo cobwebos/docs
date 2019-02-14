@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 66712b97807135b1e9e8321e441ac21368f86fc5
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 7df785d1493ad2df698ff197d72824ceb15d39ad
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633021"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752886"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>使用 Azure 搜索索引器连接 Azure SQL 数据库并为其内容编制索引
 
@@ -209,6 +209,9 @@ Azure 搜索使用“增量索引编制”来避免索引器每次运行时都�
     }
 
 当使用 SQL 集成的更改跟踪策略时，不指定单独的数据删除检测策略 - 此策略具有对标识删除的行的内置支持。 但是，对于要“自动”检测的删除项，搜索索引中的文档键必须与 SQL 表中的主键相同。 
+
+> [!NOTE]  
+> 使用 [TRUNCATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/truncate-table-transact-sql) 从 SQL 表中删除大量行时，需要[重置](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)索引器才能重置更改跟踪状态，从而选取行删除项。
 
 <a name="HighWaterMarkPolicy"></a>
 

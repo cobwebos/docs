@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: c4fab22513e42013a9dacf0b24b2d4b322ae09b6
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 8947d235894ffc021243a64244b4904c5ca7f128
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883392"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990422"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Log Analytics 用户从 OMS 门户转到 Azure 门户的常见问题
 Log Analytics 一开始使用其自己的门户（称为 OMS 门户）来管理其配置并分析收集的数据。  此门户的所有功能已移至 Azure 门户，在其中继续进行开发。
@@ -105,7 +105,7 @@ OMS 门户的“设置”部分的许多设置在 Azure 门户的工作区的“
 管理工作区的“解决方案”菜单中的解决方案。 
 
 ## <a name="how-do-i-install-and-remove-management-solutions"></a>如何安装和删除管理解决方案？
-在 OMS 门户中，请通过“解决方案”库安装管理解决方案，通过“设置”将其删除。 在 Azure 门户中，请从 Azure 市场[安装管理解决方案](../insights/solutions.md#install-a-management-solution)。 请从已安装解决方案的列表中[删除解决方案](../insights/solutions.md#remove-a-management-solution)。
+在 OMS 门户中，请通过“解决方案”库安装管理解决方案，通过“设置”将其删除。 在 Azure 门户中，请从 Azure 市场[安装管理解决方案](../insights/solutions.md#install-a-monitoring-solution)。 请从已安装解决方案的列表中[删除解决方案](../insights/solutions.md#remove-a-monitoring-solution)。
 
 ## <a name="how-do-i-create-and-manage-alerts"></a>如何创建和管理警报？
 基于 Log Analytics 查询的警报规则现在在[统一警报体验](../../azure-monitor/platform/alerts-metric.md)中管理。 请参阅[如何将警报从 Log Analytics 扩展到 Azure 警报中](../../azure-monitor/platform/alerts-extend-tool.md)，详细了解如何在 Azure 门户中配置和使用警报。

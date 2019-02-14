@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: anzaman
-ms.openlocfilehash: 7df709adbd8e45712c112b52fc76920f8b67fe91
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 59a865cf6e822ecd1918d0c04b98f0edc0355223
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53282953"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815466"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>在视频索引器中自定义品牌模型
 
@@ -30,7 +30,7 @@ ms.locfileid: "53282953"
 
 高级机器学习算法知道如何根据上下文消除歧义，在建筑上下文中谈论 windows（窗户）时，不会将单词“Windows”检测为品牌，对于 Box、Apple 和 Fox 等也是如此。 品牌检测可以针对我们支持的所有语言进行工作。 若要了解[完整的 Microsoft Build 2017 Day 2 主题视频和索引](http://www.videoindexer.ai/media/ed6ede78ad/)，请单击此处。
 
-若要使用自己的品牌，请查看[后续步骤](#next-stpes)。
+若要使用自己的品牌，请查看“后续步骤”。
 
 ## <a name="next-steps"></a>后续步骤
 

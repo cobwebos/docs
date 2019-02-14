@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: 15393f8e10fcda99820d0279d46edf88c7781ff8
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f0290a5f04a396c1d66e2dd1873eb313dcb3f66d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811956"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818390"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>高级媒体编码器高级工作流教程
 ## <a name="overview"></a>概述
@@ -44,12 +44,12 @@ ms.locfileid: "54811956"
   * [添加单独的音轨](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_audio_tracks)
   * [添加“ISM”SMIL 文件](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_ism_file)
 * [将 MXF 编码为多比特率 MP4 - 增强的蓝图](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4)
-  * [要增强的工作流概述](#workflow-overview-to-enhance)
+  * 要增强的工作流概述
   * [文件命名约定](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_file_naming)
   * [将组件属性发布到工作流根目录](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_publishing)
   * [使生成的输出文件名依赖于发布的属性值](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_output_files)
 * [将缩略图添加到多比特率 MP4 输出](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)
-  * [要将缩略图添加到的工作流概述](#workflow-overview-to-add-thumbnails-to)
+  * 要将缩略图添加到的工作流概述
   * [添加 JPG 编码](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4__with_jpg)
   * [处理颜色空间转换](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_color_space)
   * [写入缩略图](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_writing_thumbnails)

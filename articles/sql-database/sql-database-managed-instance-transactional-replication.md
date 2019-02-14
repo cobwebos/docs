@@ -12,16 +12,16 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 548bc9afb37f8c4a1c6c208a8741d1e3da0a784c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1c542c1e906b078b76b78ed30af8bdf67110199c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469390"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814106"
 ---
 # <a name="transactional-replication-with-standalone-pooled-and-instance-databases-in-azure-sql-database"></a>对 Azure SQL 数据库中的独立、入池和实例数据库进行事务复制
 
-事务复制是 Azure SQL 数据库、托管实例和 SQL Server 的一项功能，用于将 Azure SQL 数据库或 SQL Server 中表的数据复制到远程数据库中的表。 使用此功能可以同步不同数据库中的多个表。
+事务复制是 Azure SQL 数据库和 SQL Server 的一项功能，用于将 Azure SQL 数据库或 SQL Server 中表的数据复制到远程数据库中的表。 使用此功能可以同步不同数据库中的多个表。
 
 ## <a name="when-to-use-transactional-replication"></a>何时使用事务复制
 
@@ -38,15 +38,15 @@ ms.locfileid: "55469390"
 ![SQL 数据库的复制](media/replication-to-sql-database/replication-to-sql-database.png)
 
 
-**发布服务器**是通过将更新发送到分发服务器，来发布某些表（项目）所发生的更改的实例或服务器。 以下版本的 SQL Server 支持从本地 SQL Server 发布到 Azure SQL 数据库
+**发布服务器**是通过将更新发送到分发服务器，来发布某些表（项目）所发生的更改的实例或服务器。 以下版本的 SQL Server 支持从本地 SQL Server 发布到任何 Azure SQL 数据库：
 
-    - SQL Server 2019（预览版）
-    - SQL Server 2016 到 SQL 2017
-    - SQL Server 2014 SP1 CU3 或更高版本 (12.00.4427)
-    - SQL Server 2014 RTM CU10 (12.00.2556)
-    - SQL Server 2012 SP3 或更高版本 (11.0.6020)
-    - SQL Server 2012 SP2 CU8 (11.0.5634.0)
-    - 对于不支持发布到 Azure 中的对象的其他 SQL Server 版本，可以利用[重新发布数据](https://docs.microsoft.com/sql/relational-databases/replication/republish-data)方法将数据转移到较新版本的 SQL Server。 
+   - SQL Server 2019（预览版）
+   - SQL Server 2016 到 SQL 2017
+   - SQL Server 2014 SP1 CU3 或更高版本 (12.00.4427)
+   - SQL Server 2014 RTM CU10 (12.00.2556)
+   - SQL Server 2012 SP3 或更高版本 (11.0.6020)
+   - SQL Server 2012 SP2 CU8 (11.0.5634.0)
+   - 对于不支持发布到 Azure 中的对象的其他 SQL Server 版本，可以利用[重新发布数据](https://docs.microsoft.com/sql/relational-databases/replication/republish-data)方法将数据转移到较新版本的 SQL Server。 
 
 **分发服务器**是从发布服务器收集项目中的更改，并将其分发到订阅服务器的实例或服务器。 分发服务器可以是 Azure SQL 数据库托管实例或 SQL Server（可以采用等于或高于发布服务器版本的任何版本）。 
 

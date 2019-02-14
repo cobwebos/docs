@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 892a029c3a51aa3574d92b838a51359438a6bdb6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8dd51547f574e2c47dc3582ded79231b9b573062
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464987"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699540"
 ---
 # <a name="translator-text-api-30-detect"></a>文本翻译 API 3.0：Detect
 
@@ -85,7 +85,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 成功的响应是一个 JSON 数组，其中的每个结果对应于输入数组中的一个字符串。 结果对象包括以下属性：
 
-  * `language`：检测到的语言的代码。
+  * `language`：已检测语言的代码。
 
   * `score`：一个浮点值，表示结果的置信度。 分数介于 0 和 1 之间，较低的分数表示较低的置信度。
 
@@ -169,6 +169,8 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
     <td>服务器暂不可用。 重试请求。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
   </tr>
 </table> 
+
+如果发生错误，请求也将返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 可在 [v3 文本翻译 API 参考页面](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到常见错误代码。 
 
 ## <a name="examples"></a>示例
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: b8abf7a0dc85d20e9075b51b8d42a068cf56846f
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 4110b8f1b336a604c89180ac44ad470132765830
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620517"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820668"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>通过 Reliable Services 使用 C# 进行服务远程处理
 
@@ -202,7 +202,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 1. 使用以下属性将 V1 服务升级到 V2 服务。
 此项更改可确保服务在 V1 和 V2 侦听器上侦听。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在服务清单中添加名为“ServiceEndpointV2”的终结点资源。
+    a. 在服务清单中添加名为“ServiceEndpointV2”的终结点资源。
       ```xml
       <Resources>
         <Endpoints>
@@ -239,7 +239,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ## <a name="use-the-remoting-v2-interface-compatible-stack"></a>使用远程处理 V2（接口兼容）堆栈
 
- 远程处理 V2（接口兼容，称为 V2_1）堆栈具有 V2 远程处理堆栈的所有功能。 其接口堆栈与远程处理 V1 堆栈兼容，但不与 V2 和 V1 向后兼容。 若要从 V1 升级到 V2_1 且不影响服务可用性，请遵循[从 V1 升级到 V2（接口兼容）](#upgrade-from-remoting-v1-to-remoting-v2interfacecompatible)一文中的步骤。
+ 远程处理 V2（接口兼容，称为 V2_1）堆栈具有 V2 远程处理堆栈的所有功能。 其接口堆栈与远程处理 V1 堆栈兼容，但不与 V2 和 V1 向后兼容。 若要从 V1 升级到 V2_1 且不影响服务可用性，请遵循“从 V1 升级到 V2（接口兼容）”一文中的步骤。
 
 
 ### <a name="use-an-assembly-attribute-to-use-the-remoting-v2-interface-compatible-stack"></a>通过程序集属性使用远程处理 V2（接口兼容）堆栈
@@ -324,7 +324,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 1. 使用以下属性将 V1 服务升级到 V2_1 服务。
 此项更改可确保服务在 V1 和 V2_1 侦听器上侦听。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在服务清单中添加名为“ServiceEndpointV2_1”的终结点资源。
+    a. 在服务清单中添加名为“ServiceEndpointV2_1”的终结点资源。
       ```xml
       <Resources>
         <Endpoints>

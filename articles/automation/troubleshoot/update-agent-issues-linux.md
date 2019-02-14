@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: e1dca8655c6bf609bee255f183bcd2fe9b56bc55
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: aafed492e83066be20b4728a2617527351291a5b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437483"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813103"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>了解更新管理中的 Azure 代理检查结果
 
@@ -28,7 +28,7 @@ ms.locfileid: "54437483"
 
 ## <a name="start-the-troubleshooter"></a>启动“故障排除”
 
-对于 Azure 计算机，通过单击门户中“更新代理准备”列下的“故障排除”链接，可以启动“更新代理故障排除”页。 对于非 Azure 计算机，该链接会转到本文。 请参阅[离线说明](#offline)来排查非 Azure 计算机问题。
+对于 Azure 计算机，通过单击门户中“更新代理准备”列下的“故障排除”链接，可以启动“更新代理故障排除”页。 对于非 Azure 计算机，该链接会转到本文。 请参阅对非 Azure 计算机进行故障排除的脱机说明。
 
 ![VM 列表页](../media/update-agent-issues-linux/vm-list.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "54437483"
 
 ![故障排除页](../media/update-agent-issues-linux/troubleshoot-page.png)
 
-完成后，窗口中将返回结果。 [检查部分](#pre-requisistes-checks)提供有关每个检查正在寻找的信息。
+完成后，窗口中将返回结果。 检查部分提供了每项检查所要查找的内容相关信息。
 
 ![更新代理检查页](../media/update-agent-issues-linux/update-agent-checks.png)
 

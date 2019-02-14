@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 381c9a2af0f1743509db4495603c0e26da5c1736
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: deca97b0749ceab9f2dfaf3c3940ac6b02b9c104
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474513"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822181"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>创建、更改或删除网络接口
 
@@ -46,13 +46,13 @@ ms.locfileid: "54474513"
 
     |设置|必需？|详细信息|
     |---|---|---|
-    |名称|是|该名称在所选的资源组中必须唯一。 随着时间推移，Azure 订阅中可能会有多个网络接口。 请参阅[命名约定](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-rules-and-restrictions)，获取有关创建命名约定来简化多个网络接口的管理的建议。 创建网络接口后，无法更改其名称。|
+    |Name|是|该名称在所选的资源组中必须唯一。 随着时间推移，Azure 订阅中可能会有多个网络接口。 请参阅[命名约定](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-rules-and-restrictions)，获取有关创建命名约定来简化多个网络接口的管理的建议。 创建网络接口后，无法更改其名称。|
     |虚拟网络|是|为网络接口选择虚拟网络。 只能将网络接口分配到与该接口位于相同订阅和位置的虚拟网络。 创建网络接口后，无法更改其分配到的虚拟网络。 将网络接口添加到的虚拟机也必须位于该接口所在的同一位置和订阅中。|
     |子网|是|在所选的虚拟网络中选择一个子网。 创建网络接口后，可更改它分配到的子网。|
     |专用 IP 地址分配|是| 在此设置中，将为 IPv4 地址选择分配方法。 从以下分配方法中选择：**动态：** 选择此选项时，Azure 将从所选子网的地址空间中自动分配下一个可用地址。 **静态：** 选择此选项时，必须手动从所选子网的地址空间中手动分配一个可用的 IP 地址。 静态地址和动态地址保持不变，除非手动更改或删除网络接口。 创建网络接口后，可更改分配方法。 Azure DHCP 服务器将此地址分配到虚拟机操作系统中的网络接口。|
     |网络安全组|否| 保留设置为“无”，选择现有的[网络安全组](security-overview.md)，或[创建网络安全组](tutorial-filter-network-traffic.md)。 网络安全组可用于筛选进出网络接口的网络流量。 可向网络接口应用零个或一个网络安全组。 也可向网络接口分配到的子网应用零个或一个网络安全组。 将网络安全组应用到网络接口以及该接口分配到的子网时，有时会产生意外结果。 若要对应用到网络接口和子网的网络安全组进行故障排除，请参阅[网络安全组故障排除](diagnose-network-traffic-filter-problem.md)。|
     |订阅|是|选择一个 Azure [订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)。 网络接口附加到的虚拟机及其连接到的虚拟网络必须位于同一订阅中。|
-    |专用 IP 地址 (IPv6)|否| 如果选中此复选框，除了分配到网络接口的 IPv4 地址外，还会分配一个 IPv6 地址到网络接口。 请参阅本文的 [IPv6](#IPv6) 部分，了解有关 IPv6 和网络接口搭配使用的重要信息。 无法为 IPv6 地址选择分配方法。 如果选择分配 IPv6 地址，则会使用动态方法分配它。
+    |专用 IP 地址 (IPv6)|否| 如果选中此复选框，除了分配到网络接口的 IPv4 地址外，还会分配一个 IPv6 地址到网络接口。 请参阅本文的 IPv6 部分，了解有关 IPv6 和网络接口搭配使用的重要信息。 无法为 IPv6 地址选择分配方法。 如果选择分配 IPv6 地址，则会使用动态方法分配它。
     |IPv6 名称（仅在选中“专用 IP 地址 (IPv6)”复选框时出现） |是，如果选中“专用 IP 地址 (IPv6)”复选框。| 此名称将分配给网络接口的辅助 IP 配置。 若要了解有关 IP 配置的详细信息，请参阅[查看网络接口设置](#view-network-interface-settings)。|
     |资源组|是|选择现有的[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)或创建一个资源组。 网络接口可与它附加到的虚拟机或者连接到的虚拟网络位于相同或不同的资源组中。|
     |位置|是|网络接口附加到的虚拟机及其连接到的虚拟网络必须位于同一[位置](https://azure.microsoft.com/regions)（也称为区域）中。|
@@ -68,7 +68,7 @@ ms.locfileid: "54474513"
 
 |工具|命令|
 |---|---|
-|CLI|[az network nic create](/cli/azure/network/nic#az_network_nic_create)|
+|CLI|[az network nic create](/cli/azure/network/nic)|
 |PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface)|
 
 ## <a name="view-network-interface-settings"></a>查看网络接口设置
@@ -85,7 +85,7 @@ ms.locfileid: "54474513"
     - **属性：** 显示有关网络接口的关键设置，包括其 MAC 地址（若网络接口未附加到虚拟机，则为空）及其所在的订阅。
     - **有效的安全规则：** 如果网络接口已附加到正在运行的虚拟机，且某 NSG 已关联到该接口和/或其分配到的子网，则会列出安全规则。 若要了解有关显示内容的详细信息，请参阅[查看有效的安全规则](#view-effective-security-rules)。 若要了解有关 NSG 的详细信息，请参阅[网络安全组](security-overview.md)。
     - **有效的路由：** 如果网络接口已附加到正在运行的虚拟机，则会列出路由。 路由是 Azure 默认路由、用户定义的任何路由以及网络接口分配到的子网可能存在的任何 BGP 路由的组合。 若要了解有关显示内容的详细信息，请参阅[查看有效的路由](#view-effective-routes)。 若要了解有关 Azure 默认路由和用户定义的路由的详细信息，请参阅[路由概述](virtual-networks-udr-overview.md)。
-    - **常见的 Azure 资源管理器设置：** 若要详细了解常见的 Azure 资源管理器设置，请参阅[活动日志](../azure-monitor/platform/activity-logs-overview.md)、[访问控制 (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)、[标记](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[锁定](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[自动化脚本](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)。
+    - **常见的 Azure 资源管理器设置：** 若要详细了解常见的 Azure 资源管理器设置，请参阅[活动日志](../azure-monitor/platform/activity-logs-overview.md)、[访问控制 (IAM)](../role-based-access-control/overview.md)、[标记](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[锁定](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[自动化脚本](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)。
 
 <a name="view-settings-commands"></a>**命令**
 
@@ -93,7 +93,7 @@ ms.locfileid: "54474513"
 
 |工具|命令|
 |---|---|
-|CLI|使用 [az network nic list](/cli/azure/network/nic#az_network_nic_list) 查看订阅中的网络接口；使用 [az network nic show](/cli/azure/network/nic#az_network_nic_show) 查看网络接口的设置|
+|CLI|使用 [az network nic list](/cli/azure/network/nic) 查看订阅中的网络接口；使用 [az network nic show](/cli/azure/network/nic) 查看网络接口的设置|
 |PowerShell|使用 [Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) 查看订阅中的网络接口或查看网络接口的设置|
 
 ## <a name="change-dns-servers"></a>更改 DNS 服务器
@@ -153,7 +153,7 @@ IP 转发使网络接口附加到的虚拟机能够：
 
 |工具|命令|
 |---|---|
-|CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update)|
+|CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig)|
 
 ## <a name="add-to-or-remove-from-application-security-groups"></a>添加到应用程序安全组或从中删除
@@ -244,7 +244,7 @@ Azure 网络观察程序的下一个跃点功能还有助于确定路由是否�
 
 若要在网络接口上执行任务，必须将你的帐户分配到[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有下表中所列适当权限的[自定义](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)角色：
 
-| 操作                                                                     | 名称                                                      |
+| 操作                                                                     | Name                                                      |
 | ---------                                                                  | -------------                                             |
 | Microsoft.Network/networkInterfaces/read                                   | 获取网络接口                                     |
 | Microsoft.Network/networkInterfaces/write                                  | 创建或更新网络接口                        |

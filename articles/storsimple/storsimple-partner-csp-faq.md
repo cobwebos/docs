@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 76b89c15a12810f98e6324ca93cf581f9b852c88
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f2c726fd4159bcb47088e814fd60e054e50a1315
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259932"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814276"
 ---
-# <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>适用于云解决方案提供商计划的 StorSimple：常见问题解答
+# <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>适用于云解决方案提供商计划的 StorSimple：常见问题
 
 
 ## <a name="overview"></a>概述
@@ -31,7 +31,7 @@ ms.locfileid: "51259932"
 
  - [StorSimple 和云解决方案提供商计划 (CSP) 模型](#storsimple-and-csp-model)
  - [作为合作伙伴部署和管理 virtual array](#deploy-and-manage-storsimple-as-a-partner)
- - [对于 CSP，支持 StorSimple 合作伙伴](#support-for-storsimple-partners)
+ - 对于 CSP，支持 StorSimple 合作伙伴
 
 ## <a name="storsimple-and-csp-model"></a>StorSimple 和 CSP 模型
 

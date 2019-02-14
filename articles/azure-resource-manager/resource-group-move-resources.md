@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1ab3abb2542b3fec461f1d9ff569ea8ab74458d3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 84f8d8ecbeacc5acb6b19462096e6fbd1aa45816
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251973"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810280"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -32,6 +32,8 @@ ms.locfileid: "55251973"
 > * 若要升级免费试用版，请参阅[将免费试用版或 Microsoft Imagine Azure 订阅升级到即用即付](..//billing/billing-upgrade-azure-subscription.md)。
 > * 若要更改即用即付帐户，请参阅[将 Azure 即用即付订阅更改为其他套餐](../billing/billing-how-to-switch-azure-offer.md)。
 > * 如果无法转换订阅，请[创建 Azure 支持请求](../azure-supportability/how-to-create-azure-support-request.md)。 选择“订阅管理”作为问题类型。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="when-to-call-azure-support"></a>何时致电 Azure 支持人员
 
@@ -237,7 +239,7 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 * 一次只能移动一个存储帐户（经典）。
 * 存储帐户（经典）与虚拟机或云服务不能在同一操作中移动。
 
-要将经典资源移到同一订阅内的新资源组，请通过[门户](#use-portal)、[Azure PowerShell](#use-powershell)、[Azure CLI](#use-azure-cli) 或 [REST API](#use-rest-api) 使用标准移动操作。 使用的操作应与移动 Resource Manager 资源时所用的操作相同。
+要将经典资源移到同一订阅内的新资源组，请通过[门户](#use-portal)、Azure PowerShell、Azure CLI 或 REST API 使用标准移动操作。 使用的操作应与移动 Resource Manager 资源时所用的操作相同。
 
 #### <a name="new-subscription"></a>新订阅
 

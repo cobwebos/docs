@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: fb0448e5ad5bd91c63c2fcde9887ec23544bed3f
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: f04903cc1ffd16edd951969c86659c8f1f33105f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331344"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814123"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -92,7 +92,7 @@ ms.locfileid: "54331344"
 }
 ```
 
-| 标记 | Description | 必选 |
+| 标记 | 说明 | 必选 |
 | --- | --- | --- |
 | 名称 |管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
 | description | 指定描述管道用途的文本。 |是 |
@@ -130,7 +130,7 @@ ms.locfileid: "54331344"
 
 下表描述了活动 JSON 定义中的属性：
 
-| 标记 | Description | 必选 |
+| 标记 | 说明 | 必选 |
 | --- | --- | --- |
 | 名称 | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
 | description | 描述活动用途的文本 |是 |
@@ -145,7 +145,7 @@ ms.locfileid: "54331344"
 ### <a name="policies"></a>策略
 策略会影响活动的运行时行为，尤其在处理表的切片时。 下表提供详细信息。
 
-| 属性 | 允许的值 | 默认值 | Description |
+| 属性 | 允许的值 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | concurrency |Integer <br/><br/>最大值：10 |1 |活动的并发执行次数。<br/><br/>它决定可在不同切片上发生的并行活动执行次数。 例如，如果活动需要完成大量可用数据，更大的并发值能加快数据处理速度。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |确定正在处理的数据切片的顺序。<br/><br/>例如，有两个切片（分别发生在下午 4 点和下午 5 点），且均在等待执行。 如果将 executionPriorityOrder 设置为 NewestFirst，则首先处理下午 5 点的切片。 同理，如果将 executionPriorityORder 设置为 OldestFIrst，则先处理下午 4 点的切片。 |
@@ -307,7 +307,7 @@ ms.locfileid: "54331344"
 - [使用“监视与管理”应用监视和管理管道](data-factory-monitor-manage-app.md)
 
 ## <a name="onetime-pipeline"></a>一次性管道
-在管道定义中指定的开始和结束时间内，可创建一个管道并计划为定期运行（例如：每小时或每天）。 请参阅[计划活动](#scheduling-and-execution)了解详细信息。 还可以创建只运行一次的管道。 要执行此操作，请将管道定义中的 **pipelineMode** 属性设置为 **onetime**，如以下 JSON 示例所示。 此属性的默认值是 **scheduled**。
+在管道定义中指定的开始和结束时间内，可创建一个管道并计划为定期运行（例如：每小时或每天）。 请参阅“计划活动”了解详细信息。 还可以创建只运行一次的管道。 要执行此操作，请将管道定义中的 **pipelineMode** 属性设置为 **onetime**，如以下 JSON 示例所示。 此属性的默认值是 **scheduled**。
 
 ```json
 {

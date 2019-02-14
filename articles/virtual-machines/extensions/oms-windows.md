@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: roiyz
-ms.openlocfilehash: 12f7c52f916f385ddf95cf16aa89c4848ab7c118
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6a128f8fbfd39c364d63ff03a156788e44f37119
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406596"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981282"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Log Analytics 虚拟机扩展
 
@@ -140,13 +140,13 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
 
 ## <a name="powershell-deployment"></a>PowerShell 部署
 
-可以使用 `Set-AzureRmVMExtension` 命令将 Log Analytics 代理虚拟机扩展部署到现有的虚拟机。 运行命令之前，需将公共和专用配置存储在 PowerShell 哈希表中。 
+可以使用 `Set-AzVMExtension` 命令将 Log Analytics 代理虚拟机扩展部署到现有的虚拟机。 运行命令之前，需将公共和专用配置存储在 PowerShell 哈希表中。 
 
 ```powershell
 $PublicSettings = @{"workspaceId" = "myWorkspaceId"}
 $ProtectedSettings = @{"workspaceKey" = "myWorkspaceKey"}
 
-Set-AzureRmVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
+Set-AzVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
     -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" `
     -Publisher "Microsoft.EnterpriseCloud.Monitoring" `
@@ -164,7 +164,7 @@ Set-AzureRmVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure PowerShell 模块进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure PowerShell 模块运行以下命令。
 
 ```powershell
-Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
+Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
 扩展执行输出将记录到在以下目录中发现的文件：

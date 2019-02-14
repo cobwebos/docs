@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 25e47ecc9d9915ab618bc45f2e95f12bae68c7f0
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: af90a946f12e11602d45300a2796787f839dcf02
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332602"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811080"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure 数据工厂中的数据集
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -54,7 +54,7 @@ ms.locfileid: "54332602"
     "name": "<name of dataset>",
     "properties": {
         "type": "<type of dataset: AzureBlob, AzureSql etc...>",
-        "external": <boolean flag to indicate external data. only for input datasets>,
+        "external": "<boolean flag to indicate external data. only for input datasets>",
         "linkedServiceName": "<Name of the linked service that refers to a data store.>",
         "structure": [
             {
@@ -86,7 +86,7 @@ ms.locfileid: "54332602"
 | structure |数据集的架构。<br/><br/>有关详细信息，请参阅[数据集结构](#Structure)。 |否 |NA |
 | typeProperties | 每种类型的类型属性各不相同（例如：Azure Blob、Azure SQL 表）。 若要详细了解受支持的类型及其属性，请参阅[数据集类型](#Type)。 |是 |NA |
 | external | 布尔标志，用于指定数据集是否由数据工厂管道显式生成。 如果活动的输入数据集不由当前管道生成，请将此标志设置为 true。 针对管道中第一个活动的输入数据集，将此标志设置为 true。  |否 |false |
-| availability | 定义数据集生产的处理时段（如每小时或每天）或切片模型。 活动运行使用和生成的每个数据单元称为数据切片。 如果输出数据集的可用性设置为每天（频率 - 天，间隔 - 1），则将每天生成一个切片。 <br/><br/>有关详细信息，请参阅[数据集可用性](#Availability)。 <br/><br/>有关数据集切片模型的详细信息，请参阅[计划和执行](data-factory-scheduling-and-execution.md)一文。 |是 |NA |
+| availability | 定义数据集生产的处理时段（如每小时或每天）或切片模型。 活动运行使用和生成的每个数据单元称为数据切片。 如果输出数据集的可用性设置为每天（频率 - 天，间隔 - 1），则将每天生成一个切片。 <br/><br/>有关详细信息，请参阅“数据集可用性”。 <br/><br/>有关数据集切片模型的详细信息，请参阅[计划和执行](data-factory-scheduling-and-execution.md)一文。 |是 |NA |
 | policy |定义数据集切片必须满足的标准或条件。 <br/><br/>有关详细信息，请参阅[数据集策略](#Policy)部分。 |否 |NA |
 
 ## <a name="dataset-example"></a>数据集示例
@@ -280,7 +280,7 @@ structure:
 数据集定义中的“策略”部分定义了数据集切片必须满足的标准或条件。
 
 ### <a name="validation-policies"></a>验证策略
-| 策略名称 | Description | 适用对象 | 必选 | 默认 |
+| 策略名称 | 说明 | 适用对象 | 必选 | 默认 |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |验证 Azure Blob 存储中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob 存储 |否 |NA |
 | minimumRows |验证 **Azure SQL 数据库**中的数据或 **Azure 表**是否包含最小行数。 |<ul><li>Azure SQL 数据库</li><li>Azure 表</li></ul> |否 |NA |
@@ -316,7 +316,7 @@ minimumRows：
 
 除非由数据工厂生成数据集，否则应将其标记为“external”。 此设置通常适用于管道中第一个活动的输入，除非正在使用活动或管道链接。
 
-| 名称 | Description | 必选 | 默认值 |
+| Name | 说明 | 必选 | 默认值 |
 | --- | --- | --- | --- |
 | dataDelay |延迟检查给定切片外部数据的可用性的时间。 例如，可使用此设置延迟每小时检查。<br/><br/>该设置仅适用于当前时间。 例如，如果现在是下午 1:00 且此值为 10 分钟，则从下午 1:10 开始验证。<br/><br/>请注意，此设置不影响过去的切片。 处理包含 Slice End Time + dataDelay < Now 的切片不会有任何延迟。<br/><br/>大于 23:59 小时的时间应使用 `day.hours:minutes:seconds` 格式进行指定。 例如，若要指定 24 小时，请不要使用 24:00:00。 请改用 1.00:00:00。 如果使用 24:00:00，则将它视为 24 天 (24.00:00:00)。 对于 1 天又 4 小时，请指定 1:04:00:00。 |否 |0 |
 | retryInterval |失败与下一次尝试之间的等待时间。 此设置适用于当前时间。 如果上一次尝试失败，则在 retryInterval 时间段后进行下一次尝试。 <br/><br/>如果现在是下午 1:00，我们将开始第一次尝试。 如果完成第一次验证检查的持续时间为 1 分钟，并且操作失败，则下一次重试为 1:00 + 1 分钟（持续时间）+ 1 分钟（重试间隔）= 下午 1:02。 <br/><br/>对于过去的切片，没有任何延迟。 重试会立即发生。 |否 |00:01:00（1 分钟） |

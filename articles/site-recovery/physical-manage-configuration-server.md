@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 824c7c70cf3e79df3aa04bbe86674ed9486b79f2
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: d5ce80e44ee1a3a48443b190ea9259fe2dea0dcb
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300432"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983213"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>为物理服务器灾难恢复管理配置服务器
 
@@ -130,7 +130,7 @@ Site Recovery 门户中提供了配置服务器安装文件的最新版本。 �
 MySQLCredsFilePath 参数使用某个文件作为输入。 创建使用以下格式的文件并将其作为输入 MySQLCredsFilePath 参数进行传递。
 ```ini
 [MySQLCredentials]
-MySQLRootPassword = "Password>"
+MySQLRootPassword = "Password"
 MySQLUserPassword = "Password"
 ```
 ### <a name="create-file-input-for-proxysettingsfilepath"></a>创建 ProxySettingsFilePath 的文件输入
@@ -157,9 +157,10 @@ ProxyPassword="Password"
 5. 提供新代理服务器的详细信息，并单击“注册”按钮。
 6. 打开管理员 PowerShell 命令窗口。
 7. 运行以下命令：
-  ```powershell
-  $pwd = ConvertTo-SecureString -String MyProxyUserPassword
-  Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
+
+  ```PowerShell
+  $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
+  Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
   net stop obengine
   net start obengine
   ```
@@ -177,9 +178,9 @@ ProxyPassword="Password"
   6. 打开管理员 PowerShell 命令窗口。
   7. 运行以下命令
 
-      ```powershell
-      $pwd = ConvertTo-SecureString -String MyProxyUserPassword
-      Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
+      ```PowerShell
+      $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
+      Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
       net stop obengine
       net start obengine
       ```
@@ -207,7 +208,7 @@ ProxyPassword="Password"
 8. 运行以下命令
     ```powershell
     $pwd = ConvertTo-SecureString -String MyProxyUserPassword
-    Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
+    Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $pwd
     net stop obengine
     net start obengine
     ```
@@ -273,16 +274,16 @@ ProxyPassword="Password"
      `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
 3.  现在设置保管库上下文
     
-    ```powershell
-    $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
-    Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
+    ```PowerShell
+    $Vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
+    Set-AzureRmSiteRecoveryVaultSettings -ARSVault $Vault
     ```
 4. 选择配置服务器
 
-    `$fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
+    `$Fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
 6. 删除配置服务器
 
-    `Remove-AzureRmSiteRecoveryFabric -Fabric $fabric [-Force] `
+    `Remove-AzureRmSiteRecoveryFabric -Fabric $Fabric [-Force] `
 
 > [!NOTE]
 > Remove-AzureRmSiteRecoveryFabric 中的 -Force 选项可用于强制执行删除配置服务器。

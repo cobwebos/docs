@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 22d83eb617c544a374f1f6b502803d4ead214492
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1a55a4e3f25bc5afef30e325ccdd38615ba7cc2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182228"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820736"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>必应当地企业搜索 API v7 参考
 
@@ -53,7 +53,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 |标头|说明|  
 |------------|-----------------|  
 |Accept|可选请求标头。<br /><br /> 默认的媒体类型为“application/json”。 若要指定响应使用 [JSON-LD](http://json-ld.org/)，请将 Accept 标头设置为“application/ld+json”。|  
-|<a name="acceptlanguage" />Accept-Language|可选请求标头。<br /><br /> 以逗号分隔的语言列表，用于用户界面字符串。 此列表以降序方式显示首选项。 有关详细信息，包括预期格式，请参阅 [RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)。<br /><br /> 此标头和 [setLang](#setlang) 查询参数相互排斥&mdash;不可同时指定两者。<br /><br /> 如果设置此标头，则还必须指定 [cc](#cc) 查询参数。 为了确定针对哪个市场返回结果，必应使用从列表中找到的第一个受支持语言并将其与 `cc` 参数值相结合。 如果列表不包括支持的语言，必应会查找最接近的语言和支持请求的市场，或将聚合或默认市场用于结果。 若要确定必应使用的市场，请查看 BingAPIs-Market 标头。<br /><br /> 仅当指定多个语言时，才可使用此标头和 `cc` 查询参数。 否则，请使用 [mkt](#mkt) 和 [setLang](#setlang) 查询参数。<br /><br /> 用户界面字符串是用作用户界面中标签的字符串。 JSON 响应对象中有几个用户界面字符串。 响应对象中 Bing.com 属性的任何链接均将应用指定的语言。|  
+|<a name="acceptlanguage" />Accept-Language|可选请求标头。<br /><br /> 以逗号分隔的语言列表，用于用户界面字符串。 此列表以降序方式显示首选项。 有关详细信息，包括预期格式，请参阅 [RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)。<br /><br /> 此标头和 [setLang](#setlang) 查询参数相互排斥&mdash;不可同时指定两者。<br /><br /> 如果设置此标头，则还必须指定 cc 查询参数。 为了确定针对哪个市场返回结果，必应使用从列表中找到的第一个受支持语言并将其与 `cc` 参数值相结合。 如果列表不包括支持的语言，必应会查找最接近的语言和支持请求的市场，或将聚合或默认市场用于结果。 若要确定必应使用的市场，请查看 BingAPIs-Market 标头。<br /><br /> 仅当指定多个语言时，才可使用此标头和 `cc` 查询参数。 否则，请使用 [mkt](#mkt) 和 [setLang](#setlang) 查询参数。<br /><br /> 用户界面字符串是用作用户界面中标签的字符串。 JSON 响应对象中有几个用户界面字符串。 响应对象中 Bing.com 属性的任何链接均将应用指定的语言。|  
 |<a name="market" />BingAPIs-Market|响应标头。<br /><br /> 请求使用的市场。 形式为 \<languageCode\>-\<countryCode\>。 例如，en-US。|  
 |<a name="traceid" />BingAPIs-TraceId|响应标头。<br /><br /> 包含请求详细信息的日志条目 ID。 发生错误时，捕获此 ID。 如果无法确定并解决问题，请纳入此 ID 以及提供给支持团队的其他信息。|  
 |<a name="subscriptionkey" />Ocp-Apim-Subscription-Key|必需请求标头。<br /><br /> 在[认知服务](https://www.microsoft.com/cognitive-services/)中注册此服务时收到的订阅密钥。|  
@@ -75,7 +75,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 |----------|-----------|----------|--------------|
 |<a name="count" />count|要返回的结果数，从 `offset` 参数指定的索引处开始。|String|否|   
 |<a name="localCategories" />localCategories|按企业类别定义搜索的选项列表。  请参阅[当地企业类别搜索](local-categories.md)|String|否|  
-|<a name="mkt" />mkt|产生结果的市场。 <br /><br />如需可能的市场值的列表，请参阅[市场代码](#market-codes)。<br /><br /> **注意：** 当地企业搜索 API 目前仅支持 en-us（美国英语）市场和语言。<br /><br />|String|是|
+|<a name="mkt" />mkt|产生结果的市场。 <br /><br />如需可能的市场值的列表，请参阅“市场代码”。<br /><br /> **注意：** 当地企业搜索 API 目前仅支持 en-us（美国英语）市场和语言。<br /><br />|String|是|
 |<a name="offset"/>offset|开始返回结果的索引位置，由 `count` 参数指定。|Integer|否|  
 |<a name="query" />q|用户的搜索词。|String|否|  
 |<a name="responseformat" />responseFormat|可用于响应的媒体类型。 下面是可能的不区分大小写的值。<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> 默认值为 JSON。 若要了解响应应包含的 JSON 对象，请参阅[响应对象](#response-objects)。<br /><br />  如果指定 JsonLd，则响应正文会包含 JSON-LD 对象，后者包含搜索结果。 有关 JSON-LD 的信息，请参阅 [JSON-LD](http://json-ld.org/)。|String|否|  
@@ -154,8 +154,8 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 |Name|值|Type|  
 |----------|-----------|----------|  
 |_type|类型提示，可设置为以下值之一：<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>餐厅</ul><li>|String|  
-|地址|实体所在位置的邮政地址。|[PostalAddress](#postaladdress)|  
-|entityPresentationInfo|有关实体的其他信息，例如，可用于确定实体类型的提示。 例如，该实体是餐厅还是酒店。 `entityScenario` 字段设置为 ListItem。|[EntityPresentationInfo](#entitypresentationinfo)|  
+|地址|实体所在位置的邮政地址。|PostalAddress|  
+|entityPresentationInfo|有关实体的其他信息，例如，可用于确定实体类型的提示。 例如，该实体是餐厅还是酒店。 `entityScenario` 字段设置为 ListItem。|EntityPresentationInfo|  
 |名称|实体的名称。|String|  
 |telephone|实体的电话号码。|String|  
 |url|实体网站的 URL。<br /><br /> 将此 URL 与实体名称结合使用可以创建一个超链接，单击该链接会将用户转到实体网站。|String|  

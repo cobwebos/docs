@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 5d45e4cc8781f4c235c641c4c99f1720871d57fb
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 82418c03039219adedf45828d769d278a14499ff
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358994"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816163"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Cosmos DB 的用于 MongoDB 的 API 复制数据
 
@@ -34,7 +34,7 @@ ms.locfileid: "54358994"
 
 - 将数据复制到 [ Azure Cosmos DB 的用于 MongoDB 的 API](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)。
 - 以 **insert** 或 **upsert** 的形式写入 Azure Cosmos DB。
-- 按原样导入和导出 JSON 文档，或在表格数据集中复制或粘贴数据。 示例包括 SQL 数据库和 CSV 文件。 若要在 JSON 文件或另一个 Azure Cosmos DB 集合中按原样复制或粘贴文档，请参阅[导入或导出 JSON 文档](#importexport-json-documents)。
+- 按原样导入和导出 JSON 文档，或在表格数据集中复制或粘贴数据。 示例包括 SQL 数据库和 CSV 文件。 若要在 JSON 文件或另一个 Azure Cosmos DB 集合中按原样复制或粘贴文档，请参阅“导入或导出 JSON 文档”。
 
 ## <a name="get-started"></a>入门
 

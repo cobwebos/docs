@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3d0a3014fa224d6b5c85142e492afb0679f9f0b1
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c188c23f87715b6ba5b90f6015b59f2a347ec0cf
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014675"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821314"
 ---
 # <a name="move-data-by-using-copy-activity"></a>使用复制活动移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -138,7 +138,7 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 数据工厂复制向导有助于创建包含复制活动的管道。 使用此管道，无需对链接服务、数据集和管道编写 JSON 定义，即可将数据从支持的源复制到目标源。 有关此向导的详细信息，请参阅[数据工厂复制向导](data-factory-copy-wizard.md)。  
 
 ### <a name="by-using-json-scripts"></a>使用 JSON 脚本
-可在 Azure 门户、Visual Studio 或 Azure PowerShell 中使用数据工厂编辑器（通过使用复制活动）为管道创建 JSON 定义。 然后，可对其进行部署以在数据工厂中创建管道。 有关包含分步说明的教程，请参阅[教程：在 Azure 数据工厂管道中使用复制活动](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。    
+可在 Azure 门户、Visual Studio 或 Azure PowerShell 中使用数据工厂编辑器（通过使用复制活动）为管道创建 JSON 定义。 然后，可对其进行部署以在数据工厂中创建管道。 有关分步说明，请参阅[教程：在 Azure 数据工厂管道中使用复制活动](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。    
 
 JSON 属性（例如名称、说明、输入和输出表，以及策略）可用于所有类型的活动。 可用于此活动的 `typeProperties` 节的属性因每个活动类型而异。
 
@@ -209,7 +209,7 @@ JSON 属性（例如名称、说明、输入和输出表，以及策略）可用
 1. 从本机源类型转换为 .NET 类型。
 2. 从 .NET 类型转换为本机接收器类型。
 
-各数据存储文章中介绍了从本机类型系统到 .NET 类型的数据存储映射。 （单击[支持的数据存储](#supported-data-stores)表中的特定链接）。 可在创建表时使用这些映射确定适当的类型，以便复制活动执行正确转换。
+各数据存储文章中介绍了从本机类型系统到 .NET 类型的数据存储映射。 （单击“支持的数据存储”表中的特定链接）。 可在创建表时使用这些映射确定适当的类型，以便复制活动执行正确转换。
 
 ## <a name="next-steps"></a>后续步骤
 * 要详细了解复制活动，请参阅[将数据从 Azure Blob 存储复制到 Azure SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。

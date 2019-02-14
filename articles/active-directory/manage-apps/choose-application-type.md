@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
-ms.openlocfilehash: e10784957365df62e64c306c97ea17fb6a5e7c49
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ef752d2f9d57ee8674d91fd14b56b804ccf50d22
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55202920"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814175"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中添加应用程序时选择应用程序类型
 了解可以添加到 Azure Active Directory (Azure AD) 的四种类型的应用程序。 在 Azure Active Directory 中添加应用程序时，系统将提示你选择四种应用程序类型之一。 
@@ -42,7 +42,7 @@ Azure AD 中的上述四种应用程序类型都支持以下功能：
 
 -   **快速入门** - 通过遵循[简单的部署步骤](https://docs.microsoft.com/azure/active-directory/active-directory-integrating-applications-getting-started)快速开始使用应用程序
 
--   **常规属性管理** - 获取对应用程序的[直接的深层链接](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users)、[自定义应用程序的外观方案](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal)，或对所有用户[禁用应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal)。
+-   **常规属性管理** - 获取对应用程序的[直接的深层链接](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)、[自定义应用程序的外观方案](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal)，或对所有用户[禁用应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal)。
 
 -   **用户和组管理** - 向应用程序[分配](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)用户和组，或[删除](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal)应用程序的用户和组，并根据需要分配这些用户和组有权访问的特定应用程序角色
 
@@ -95,7 +95,7 @@ Azure AD 中的上述四种应用程序类型都支持以下功能：
 
 ## <a name="single-sign-on-modes-for-custom-developed-applications"></a>适用于以自定义方式开发的应用程序的单一登录模式
 
-通过[以自定义方式开发的应用程序](#_Custom-Developed_Applications)中的过程以自定义方式开发的应用程序还支持前面未列出的其他单一登录模式，这包括：
+通过“以自定义方式开发的应用程序”中的过程以自定义方式开发的应用程序还支持前面未列出的其他单一登录模式，这包括：
 
 -   基于 [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) 的登录
 
@@ -134,7 +134,7 @@ Azure AD 中的上述四种应用程序类型都支持以下功能：
 -   **自动预配** - 如果想要对此应用程序的用户帐户启用自动的基于 API 的预配和/或取消预配，请选择[自动](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning)**预配模式** 
 
    >[!NOTE]
-   >此选项仅对 [Azure AD 应用程序库](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal#the-new-and-improved-application-gallery)中**特色**类别中的应用程序可用。
+   >此选项仅对 [Azure AD 应用程序库](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal)中**特色**类别中的应用程序可用。
    >
    >
 

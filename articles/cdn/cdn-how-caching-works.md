@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: magattus
-ms.openlocfilehash: 563c073e781e2a2bee88b4ecdcdc82541c21ec4f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: f82675f1e93a5471f98c1778e9394f9eaec1a07b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092377"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813035"
 ---
 # <a name="how-caching-works"></a>缓存工作原理
 
@@ -116,7 +116,7 @@ Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时�
 |-------------------|-----------------------------------|------------------------|------------------------------|
 | HTTP 状态代码 | 200、203、206、300、301、410、416 | 200                    | 200、203、300、301、302、401 |
 | HTTP 方法      | GET、HEAD                         | GET                    | GET                          |
-| 文件大小限制  | 300 GB                            | 300 GB                 | - 常规 Web 传递优化：1.8 GB<br />- 媒体流式处理优化：1.8 GB<br />- 大型文件优化：150 GB |
+| 文件大小限制  | 300 GB                            | 300 GB                 | - 常规 Web 传送优化：1.8 GB<br />- 媒体流式传输优化：1.8 GB<br />- 大型文件优化：150 GB |
 
 若要在资源上使用 **Microsoft 推出的 Azure CDN 标准版**缓存，源服务器必须支持任何 HEAD 和 GET HTTP 请求，且资产的任何 HEAD 和 GET HTTP 响应的 content-length 值必须相同。 对于 HEAD 请求，源服务器必须支持 HEAD 请求，且必须使用接收 GET 请求时所使用的标头进行响应。
 
@@ -124,12 +124,12 @@ Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时�
 
 下表介绍了 Azure CDN 产品的默认缓存行为及其优化。
 
-|    | Microsoft：常规 Web 分发 | Verizon：常规 Web 分发 | Verizon：DSA | Akamai：常规 Web 分发 | Akamai：DSA | Akamai：大型文件下载 | Akamai：常规或 VOD 媒体流式处理 |
+|    | Microsoft：常规 Web 传送 | Verizon：常规 Web 传送 | Verizon：DSA | Akamai：常规 Web 传送 | Akamai：DSA | Akamai：大文件下载 | Akamai：常规或 VOD 媒体流式处理 |
 |------------------------|--------|-------|------|--------|------|-------|--------|
 | **优先处理源**       | 是    | 是   | 否   | 是    | 否   | 是   | 是    |
 | **CDN 缓存持续时间** | 2 天 |7 天 | 无 | 7 天 | 无 | 1 天 | 1 年 |
 
-**优先处理源**：指定是否优先处理[支持的缓存指令标头](#http-cache-directive-headers)（如果它们存在于源服务器的 HTTP 响应中）。
+**优先处理源**：指定是否优先处理支持的缓存指令标头（如果它们存在于源服务器的 HTTP 响应中）。
 
 **CDN 缓存持续时间**：指定在 Azure CDN 上可缓存资源的时间。 然而，如果“优先处理源”为“是”，并且源服务器的 HTTP 响应包括缓存指令标头 `Expires` 或 `Cache-Control: max-age`，则 Azure CDN 将改用由标头指定的持续时间值。 
 

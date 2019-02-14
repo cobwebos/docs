@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 091a165dacbf0e98532f343745e56c4acf765b84
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 9369e076517e295a7d17011e024353614ec8ad46
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320789"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751967"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>如何在扩充管道中创建技能集
 
@@ -142,11 +142,11 @@ Content-Type: application/json
 
 ## <a name="add-predefined-skills"></a>添加预定义技能
 
-让我们看看第一个技能，它是预定义的[命名实体识别技能](cognitive-search-skill-named-entity-recognition.md)：
+让我们看看第一个技能，它是预定义的[实体识别技能](cognitive-search-skill-entity-recognition.md)：
 
 ```json
     {
-      "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
       "context": "/document",
       "categories": [ "Organization" ],
       "defaultLanguageCode": "en",
@@ -155,7 +155,8 @@ Content-Type: application/json
           "name": "text",
           "source": "/document/content"
         }
-      ],      "outputs": [
+      ],
+      "outputs": [
         {
           "name": "organizations",
           "targetName": "organizations"
@@ -228,7 +229,7 @@ Content-Type: application/json
     }
 ```
 
-此定义是在扩充过程中调用某个 Web API 的自定义技能。 对于命名实体识别技能所识别到的每个组织，此技能调用 Web API 来查找该组织的说明。 扩充引擎会在内部协调处理何时调用 Web API，以及如何流式传输收到的信息。 但是，必须在 JSON 中提供调用此自定义 API 所需的初始化（例如所需的 uri、httpHeaders 和 inputs）。 有关为扩充管道创建自定义 Web API 的指导，请参阅[如何定义自定义接口](cognitive-search-custom-skill-interface.md)。
+此定义是在扩充过程中调用某个 Web API 的[自定义技能](cognitive-search-custom-skill-web-api.md)。 对于命名实体识别技能所识别到的每个组织，此技能调用 Web API 来查找该组织的说明。 扩充引擎会在内部协调处理何时调用 Web API，以及如何流式传输收到的信息。 但是，必须在 JSON 中提供调用此自定义 API 所需的初始化（例如所需的 uri、httpHeaders 和 inputs）。 有关为扩充管道创建自定义 Web API 的指导，请参阅[如何定义自定义接口](cognitive-search-custom-skill-interface.md)。
 
 请注意，“上下文”字段设置为包含星号的 ```"/document/organizations/*"```，这意味着，将对 ```"/document/organizations"``` 下的每个组织调用扩充步骤。 
 

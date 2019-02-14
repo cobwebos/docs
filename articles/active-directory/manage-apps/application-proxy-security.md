@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 0937ad12ad74209e84ee1316a090af8a6469a044
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 3e8d9cc44e4e83dac963b3d85f7dd4d058323bf6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151611"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813817"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理远程访问应用时的安全注意事项
 
@@ -48,7 +48,7 @@ Azure AD 应用程序代理依赖于使用 Azure AD 安全令牌服务 (STS) 执
 
 使用[条件性访问](../conditional-access/overview.md)可以针对允许哪些流量访问后端应用程序来定义限制。 可以基于位置、身份验证强度和用户风险配置文件，创建限制登录的策略。
 
-还可以使用条件性访问配置多重身份验证策略，为用户身份验证再添一层安全保障。 此外，还可以通过 Azure AD 条件性访问将应用程序路由到 Microsoft Cloud App Security，以便通过[访问](https://docs.microsoft.com/en-us/cloud-app-security/access-policy-aad)和[会话](https://docs.microsoft.com/en-us/cloud-app-security/session-policy-aad)策略提供实时监视和控制
+还可以使用条件性访问配置多重身份验证策略，为用户身份验证再添一层安全保障。 此外，还可以通过 Azure AD 条件性访问将应用程序路由到 Microsoft Cloud App Security，以便通过[访问](https://docs.microsoft.com/cloud-app-security/access-policy-aad)和[会话](https://docs.microsoft.com/cloud-app-security/session-policy-aad)策略提供实时监视和控制
 
 ### <a name="traffic-termination"></a>流量终止
 
@@ -128,11 +128,11 @@ Azure AD 应用程序代理由两个部分组成：
 
 当用户访问发布的应用程序时，应用程序代理服务与应用程序代理连接器之间发生以下事件：
 
-1. [服务对应用用户进行身份验证](#the-service-checks-the-configuration-settings-for-the-app)
-2. [服务在连接器队列中放入请求](#The-service-places-a-request-in-the-connector-queue)
-3. [连接器处理来自队列的请求](#the-connector-receives-the-request-from-the-queue)
-4. [连接器等待响应](#the-connector-waits-for-a-response)
-5. [服务将数据流式传输给用户](#the-service-streams-data-to-the-user)
+1. 服务对应用用户进行身份验证
+2. 服务在连接器队列中放入请求
+3. 连接器处理来自队列的请求
+4. 连接器等待响应
+5. 服务将数据流式传输给用户
 
 若要深入了解其中每个步骤的具体内容，请继续阅读下文。
 

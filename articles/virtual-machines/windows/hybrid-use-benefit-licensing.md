@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing-ms
-ms.openlocfilehash: 757891a6968313c1a31ce67b399d6aa052abfa21
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 7bd228a01cd3841772750882d13c33459385cc21
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999945"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817710"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 的 Azure 混合权益
 对于有软件保障的客户，Windows Server 的 Azure 混合权益可让你使用本地 Windows Server 许可证，并以较低成本在 Azure 中运行 Windows 虚拟机。 可以使用 Windows Server 的 Azure 混合权益部署 Windows OS 的新虚拟机。 本文介绍如何使用 Windows Server 的 Azure 混合权益部署新的 VM 的步骤，以及如何更新现有正在运行的 VM 的步骤。 有关 Windows Server 的 Azure 混合权益许可和成本节约方面的更多信息，请参阅[“Windows Server 的 Azure 混合权益许可”页](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
@@ -40,7 +40,7 @@ ms.locfileid: "53999945"
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>使用 Windows Server 的 Azure 混合权益的方式
 可以通过以下几种方式将 Windows 虚拟机与 Azure 混合权限配合使用：
 
-1. 可以从其中一个提供的 [Azure 市场上的 Windows Server 映像](# https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.WindowsServer?tab=Overview)部署 VM
+1. 可以从其中一个提供的 Azure 市场上的 Windows Server 映像部署 VM
 2. 用户可以上传自定义 VM，并使用资源管理器模板或 Azure PowerShell 进行部署
 3. 你可以在运行 Azure 混合权益或按需支付 Windows Server 成本之间切换和转换现有 VM
 4. 还可以在虚拟机规模集上应用 Windows Server 的 Azure 混合权益

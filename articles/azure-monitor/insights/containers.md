@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 6fd614a632945dbcc89c530df54b8416809029d1
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7d538695fe7c920bbd22fcfb0e097220aa249f07
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194022"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811811"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Log Analytics 中的容器监视解决方案
 
@@ -100,16 +100,16 @@ ms.locfileid: "53194022"
 2. 安装和使用包含 Log Analytics 代理的 Docker。 根据所用操作系统和 Docker Ochestrator，可使用下列方法来配置代理。
   - 对于独立主机：
     - 在支持的 Linux 操作系统上，安装并运行 Docker，然后安装并配置[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/learn/quick-collect-linux-computer.md)。  
-    - 在 CoreOS 上，无法运行适用于 Linux 的 Log Analytics 代理。 请改为运行适用于 Linux 的 Log Analytics 代理的容器化版本。 如果使用 Azure 政府云中的容器，请查看[包括 CoreOS 在内的 Linux 容器主机](#for-all-linux-container-hosts-including-coreos)或[包括 CoreOS 在内的 Azure 政府 Linux 容器主机](#for-all-azure-government-linux-container-hosts-including-coreos)。
+    - 在 CoreOS 上，无法运行适用于 Linux 的 Log Analytics 代理。 请改为运行适用于 Linux 的 Log Analytics 代理的容器化版本。 如果使用 Azure 政府云中的容器，请查看包括 CoreOS 在内的 Linux 容器主机或包括 CoreOS 在内的 Azure 政府 Linux 容器主机。
     - 在 Windows Server 2016 和 Windows 10 上安装 Docker 引擎和客户端，然后连接到代理以收集信息并将其发送到 Log Analytics。 在 Windows 环境下，请参阅[安装并配置 Windows 容器主机](#install-and-configure-windows-container-hosts)。
   - 对于 Docker 多主机业务流程：
-    - 如果有 Red Hat OpenShift 环境，请查看[为 Red Hat OpenShift 配置 Log Analytics 代理](#configure-an-oms-agent-for-red-hat-openshift)。
+    - 如果有 Red Hat OpenShift 环境，请查看“为 Red Hat OpenShift 配置 Log Analytics 代理”。
     - 如果具有使用 Azure 容器服务的 Kubernetes 群集：
-       - 查看[配置适用于 Kubernetes 的 Log Analytics Linux 代理](#configure-an-oms-linux-agent-for-kubernetes)。
-       - 查看[配置适用于 Kubernetes 的 Log Analytics Windows 代理](#configure-an-oms-windows-agent-for-kubernetes)。
-       - 查看[使用 Helm 在 Linux Kubernetes 上部署 Log Analytics 代理](#use-helm-to-deploy-oms-agent-on-linux-kubernetes)。
+       - 查看[配置适用于 Kubernetes 的 Log Analytics Linux 代理](#configure-a-log-analytics-linux-agent-for-kubernetes)。
+       - 查看[配置适用于 Kubernetes 的 Log Analytics Windows 代理](#configure-a-log-analytics-windows-agent-for-kubernetes)。
+       - 查看“使用 Helm 在 Linux Kubernetes 上部署 Log Analytics 代理”。
     - 如果拥有 Azure 容器服务 DC/OS 群集，请前往[通过 Log Analytics 监视 Azure 容器服务 DC/OS 群集](../../container-service/dcos-swarm/container-service-monitoring-oms.md)了解详细信息。
-    - 如果拥有 Docker Swarm 模式环境，请访问[配置适用于 Docker Swarm 的 Log Analytics 代理](#configure-an-oms-agent-for-docker-swarm)了解更多信息。
+    - 如果拥有 Docker Swarm 模式环境，请访问“配置适用于 Docker Swarm 的 Log Analytics 代理”了解更多信息。
     - 如果有 Service Fabric 群集，请访问[使用 Log Analytics 监视容器](../../service-fabric/service-fabric-diagnostics-oms-containers.md)了解更多信息。
 
 请参阅 [Windows 上的 Docker 引擎](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)一文，详细了解如何在运行 Windows 的计算机上安装和配置 Docker 引擎。

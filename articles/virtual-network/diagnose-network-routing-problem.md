@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: jdial
-ms.openlocfilehash: 56dd13f5c2c0db4af65d8bc5d4ee5c072a161964
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ee807387b5fc7c8a9d42564cdb6cee7d59db2508
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429628"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819784"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>诊断虚拟机路由问题
 
@@ -116,7 +116,7 @@ az vm show \
 - 确保包含定义的任何自定义路由的路由表已关联到网络接口所在的子网。 了解如何[将路由表关联到子网](manage-route-table.md#associate-a-route-table-to-a-subnet)。
 - 确保部署的设备（例如 Azure VPN 网关或网络虚拟设备）正常运行。 使用网络观察程序的 [VPN 诊断](../network-watcher/diagnose-communication-problem-between-networks.md?toc=%2fazure%2fvirtual-network%2ftoc.json)功能来确定 Azure VPN 网关的任何问题。
 
-如果仍然遇到通信问题，请参阅[注意事项](#considerations)和[其他诊断](#additional-dignosis)。
+如果仍然遇到通信问题，请参阅[注意事项](#considerations)和其他诊断。
 
 ## <a name="considerations"></a>注意事项
 

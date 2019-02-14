@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: jdial
-ms.openlocfilehash: cf540caebd5f993cdba0d85f4109a6e78e201658
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: ef293b39d0e82cdd26e0c41af5d63d0459064017
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378748"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820787"
 ---
 # <a name="plan-virtual-networks"></a>计划虚拟网络
 
@@ -53,7 +53,7 @@ ms.locfileid: "49378748"
 - 是否存在将虚拟网络隔离到单独的[订阅](#subscriptions)或[区域](#regions)的组织需求？
 - [网络接口](virtual-network-network-interface.md)使 VM 能够与其他资源进行通信。 可为每个网络接口分配一个或多个专用 IP 地址。 虚拟网络中需要多少个网络接口和[专用 IP 地址](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)？ 在虚拟网络中可以拥有的网络接口和专用 IP 地址数有[上限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)。
 - 是否要将虚拟网络连接到其他虚拟网络或本地网络？ 可选择将某些虚拟网络互相连接或连接到本地网络，而不是其他网络。 有关详细信息，请参阅[连接性](#connectivity)。 连接到另一个虚拟网络或本地网络的每个虚拟网络必须具有唯一的地址空间。 每个虚拟网络都向其地址空间分配了一个或多个公共和专用地址范围。 地址范围以无类别的 Internet 域路由 (CIDR) 格式指定，例如 10.0.0.0/16。 详细了解虚拟网络的[地址范围](manage-virtual-network.md#add-or-remove-an-address-range)。
-- 是否对不同虚拟网络中的资源有任何组织管理需求？ 如果有，可将资源分隔到单独的虚拟网络中，以简化组织中个人的[权限分配](#permissions)，或将不同的[策略](#policies)分配给不同的虚拟网络。
+- 是否对不同虚拟网络中的资源有任何组织管理需求？ 如果有，可将资源分隔到单独的虚拟网络中，以简化组织中个体的[权限分配](#permissions)，或将不同的策略分配给不同的虚拟网络。
 - 将某些 Azure 服务资源部署到虚拟网络时，他们将创建自己的虚拟网络。 若要确定 Azure 服务是否创建自己的虚拟网络，请参阅每个[可部署到虚拟网络中的 Azure 服务](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)的信息。
 
 ### <a name="subnets"></a>子网
@@ -107,7 +107,7 @@ Azure 为子网中的出站流量创建多个默认路由。 可通过创建路�
 
 ## <a name="permissions"></a>权限
 
-Azure 对资源使用[基于角色的访问控制](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC)。 将权限分配到以下层次结构中的[范围](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope)：订阅、管理组、资源组和单独资源。 若要了解层次结构的详细信息，请参阅[组织资源](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 若要使用 Azure 虚拟网络及其所有相关功能（例如对等、网络安全组、服务终结点和路由表），可将组织的成员分配到内置[所有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner)、[参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)或[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，然后将该角色分配到相应的范围。 如果要为虚拟网络功能的子集分配特定权限，请创建[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)并为该角色分配[虚拟网络](manage-virtual-network.md#permissions)、[子网和服务终结点](virtual-network-manage-subnet.md#permissions)、[网络接口](virtual-network-network-interface.md#permissions)[对等](virtual-network-manage-peering.md#permissions)、[网络和应用程序安全组](manage-network-security-group.md#permissions)或[路由表](manage-route-table.md#permissions)所需的特定权限。
+Azure 对资源使用[基于角色的访问控制](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC)。 权限按以下层次结构分配给某个[范围](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope)：订阅、管理组、资源组和单个资源。 若要了解层次结构的详细信息，请参阅[组织资源](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 若要使用 Azure 虚拟网络及其所有相关功能（例如对等、网络安全组、服务终结点和路由表），可将组织的成员分配到内置[所有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner)、[参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)或[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，然后将该角色分配到相应的范围。 如果要为虚拟网络功能的子集分配特定权限，请创建[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)并为该角色分配[虚拟网络](manage-virtual-network.md#permissions)、[子网和服务终结点](virtual-network-manage-subnet.md#permissions)、[网络接口](virtual-network-network-interface.md#permissions)[对等](virtual-network-manage-peering.md#permissions)、[网络和应用程序安全组](manage-network-security-group.md#permissions)或[路由表](manage-route-table.md#permissions)所需的特定权限。
 
 ## <a name="policy"></a>策略
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: lastcoolnameleft
-ms.openlocfilehash: 36e87550c90c1a5d4b05aa62f2fbe79b04b25445
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 9958f5f0f1435af231c1426a249c745f4a2352c5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382437"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816605"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中实现业务连续性和灾难恢复的最佳做法
 
@@ -21,11 +21,11 @@ ms.locfileid: "54382437"
 本篇最佳做法文章重点介绍帮助你计划在 AKS 中实现业务连续性和灾难恢复的注意事项。 学习如何：
 
 > [!div class="checklist"]
-* [在多个区域规划 AKS 群集](#region-planning)
-* [使用 Azure 流量管理器跨多个群集路由流量](#ingress-traffic)
-* [为容器映像注册表使用异地复制](#container-registry)
-* [跨多个群集计划应用程序状态](#managing-application-state)
-* [跨多个区域复制存储](#storage)
+* 在多个区域规划 AKS 群集
+* 使用 Azure 流量管理器跨多个群集路由流量
+* 为容器映像注册表使用异地复制
+* 跨多个群集计划应用程序状态
+* 跨多个区域复制存储
 
 ## <a name="plan-for-multi-region-deployment"></a>多区域部署计划
 

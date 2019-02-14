@@ -3,7 +3,7 @@ title: 预付 Azure SQL 数据库 vCore 费用以节省资金 | Microsoft Docs
 description: 了解如何购买 Azure SQL 数据库预留容量以节省计算成本。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 4c8e93948532da02c64eb9eb1277abb425abc250
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8f8884f903108deae673d030f8fd2ee1d0d9f982
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455739"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745446"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>通过 Azure SQL 数据库预留容量预付 SQL 数据库计算资源费用
 
@@ -26,9 +26,10 @@ ms.locfileid: "55455739"
 不需要将预留容量分配到 SQL 数据库实例。 已在运行或者新部署的匹配 SQL 数据库实例将自动获得此权益。 购买预留容量即可预付为期一年或三年的 SQL 数据库实例计算资源费用。 购买预留容量后，与预留属性匹配的 SQL 数据库计算资源费用不再按照即用即付的费率计收。 预留容量不包括与 SQL 数据库实例关联的软件、网络或存储费用。 预留期限结束时，计费权益随即过期，SQL 数据库将按即用即付价格计费。 虚拟机预留实例不自动续订。 有关定价信息，请参阅 [SQL 数据库预留容量套餐](https://azure.microsoft.com/pricing/details/sql-database/managed/)。
 
 可在 [Azure 门户](https://portal.azure.com)中购买 Azure SQL 数据库预留容量。 购买 SQL 数据库预留容量：
+
 - 必须至少是一个企业或即用即付订阅的“所有者”角色。
-- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com)中启用 Azure 预留容量购买。
--  对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理可以购买 SQL 数据库预留容量。
+- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com)中启用“添加预留实例”。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
+- 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理可以购买 SQL 数据库预留容量。
 
 有关预留购买如何针对企业客户和即用即付客户进行计费的详细信息，请参阅[了解适用于企业合约的 Azure 预留使用情况](../billing/billing-understand-reserved-instance-usage-ea.md)和[了解即用即付订阅的 Azure 预留使用情况](../billing/billing-understand-reserved-instance-usage.md)。
 
@@ -50,8 +51,8 @@ ms.locfileid: "55455739"
     | 字段      | 说明|
     |:------------|:--------------|
     |Name        |此预订的名称。| 
-    |订阅|用于支付 SQL 数据库预留容量预订费用的订阅。 订阅付款方式是收取 SQL 数据库预留容量的预付费用。 订阅类型必须为“企业协议”（产品/服务编号：MS-AZR-0017P）或“即用即付”（产品/服务编号：MS-AZR-0003P）。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于即用即付订阅，将向订阅的信用卡或发票付款方式收取费用。|    
-    |范围       |vCore 预留范围可以包括一个订阅或多个订阅（共享范围）。 如果选择： <ul><li>单个订阅 - vCore 预留折扣将应用到此订阅中的 SQL 数据库实例。 </li><li>共享 - vCore 预留折扣将应用到计费上下文中任何订阅中运行的 SQL 数据库实例。 对于企业客户，共享范围是许可登记表，包括许可登记表中的所有订阅（开发/测试订阅除外）。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</li></ul>|
+    |订阅|用于支付 SQL 数据库预留容量预订费用的订阅。 订阅付款方式是收取 SQL 数据库预留容量的预付费用。 订阅类型必须是企业协议（产品/服务编号：MS-AZR-0017P 或 MS-AZR-0148P），或即用即付（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于即用即付订阅，将向订阅的信用卡或发票付款方式收取费用。|    
+    |范围       |vCore 预留范围可以包括一个订阅或多个订阅（共享范围）。 如果选择： <ul><li>单个订阅 - vCore 预留折扣将应用到此订阅中的 SQL 数据库实例。 </li><li>共享 - vCore 预留折扣将应用到计费上下文中任何订阅中运行的 SQL 数据库实例。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</li></ul>|
     |区域      |预订的 SQL 数据库预留容量涵盖的 Azure 区域。|    
     |部署类型|要为其购买预留容量的 SQL 资源类型。|
     |性能层|SQL 数据库实例的服务层。

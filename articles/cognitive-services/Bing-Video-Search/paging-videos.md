@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 了解如何翻页浏览必应视频搜索 API 返回的视频。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 5fd11088c84327325040a05de9616f19c3455b01
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d75a71fe5ba5a275aa8703bc59398cc8a7a5a622
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564895"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867131"
 ---
 # <a name="paging-through-video-search-results"></a>翻页浏览视频搜索结果
 

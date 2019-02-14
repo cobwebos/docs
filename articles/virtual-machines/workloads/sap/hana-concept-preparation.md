@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff214460d919eff5c3c1a2e608958673867ddc55
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 73643cd6954932f933e200baad09e4301300aac2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44492803"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822538"
 ---
 # <a name="disaster-recovery-principles"></a>灾难恢复原则
 
@@ -48,7 +48,7 @@ HANA 大型实例提供不同 Azure 区域中 HANA 大型实例戳之间的灾�
 
 
 >[!NOTE]
->HANA 大型实例存储复制功能是镜像和复制存储快照。 如果不按照本文的[备份和还原](#backup-and-restore)部分中介绍的方式执行存储快照，则无法复制到灾难恢复站点。 执行存储快照是将存储复制到灾难恢复站点的先决条件。
+>HANA 大型实例存储复制功能是镜像和复制存储快照。 如果不按照本文的“备份和还原”部分中介绍的方式执行存储快照，则无法复制到灾难恢复站点。 执行存储快照是将存储复制到灾难恢复站点的先决条件。
 
 
 
@@ -81,7 +81,7 @@ HANA 大型实例提供不同 Azure 区域中 HANA 大型实例戳之间的灾�
 - 事务日志备份卷（类型快照为 **logs**）每隔 3 分钟复制到灾难恢复站点中的等效存储卷目标。
 
 若要将恢复点目标最小化，请使用以下设置：
-- 每隔 30 分钟至 1 小时执行一次 **hana** 类型存储快照（请参阅“步骤 7：执行快照”）。
+- 执行 **hana** 类型存储快照（请参阅“步骤 7：执行快照”），频率为每 30 分钟到 1 小时。
 - 每隔 5 分钟执行一次 SAP HANA 事务日志备份。
 - 每隔 5-15 分钟执行一次 **logs** 类型存储快照。 使用此间隔周期，RPO 应能达到大约 15-25 分钟。
 

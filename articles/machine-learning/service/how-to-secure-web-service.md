@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 10/02/2018
+ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2c82c39de9b403e2e35f40c0290c8642c702790f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2f21c54100a46d2f6ba28d2063bea91b84ea06d4
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55248055"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769315"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>通过 Azure 机器学习服务使用 SSL 保护 Web 服务
 
@@ -103,5 +103,6 @@ SSL 会对在客户端和 Web 服务之间发送的数据进行加密。 客户�
 目前不支持在部署到 FPGA 的服务中使用 SSL。
 
 ## <a name="next-steps"></a>后续步骤
-
-了解如何[使用部署为 Web 服务的 ML 模型](how-to-consume-web-service.md)。
+了解如何：
++ [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
++ [在 Azure 虚拟网络中安全运行试验和推断](how-to-enable-virtual-network.md)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4210528003cdb1f584bec3dea80c1aa1db2f86df
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: dd94330835c52b27c61c484d44991152d092fbe7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632008"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811692"
 ---
 # <a name="manage-windows-based-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户在 HDInsight 中管理基于 Windows 的 Apache Hadoop 群集
 
@@ -203,7 +203,7 @@ HDInsight 使用各种 Apache Hadoop 组件。 有关已获得验证和支持的
 有关定价信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。 若要从门户中删除群集，请参阅[删除群集](#delete-clusters)
 
 ## <a name="change-cluster-username"></a>更改群集用户名
-HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户是在创建过程中创建的。 还可以创建通过 RDP 访问群集的 RDP 用户帐户。 请参阅[启用远程桌面](#connect-to-hdinsight-clusters-by-using-rdp)。
+HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户是在创建过程中创建的。 还可以创建通过 RDP 访问群集的 RDP 用户帐户。 请参阅启用远程桌面。
 
 **更改 HDInsight 群集用户名和密码**
 

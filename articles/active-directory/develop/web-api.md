@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: b507e6630e5b0b0e73edad1815825e70ed90ec4d
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 58cff9be154e693a378f55941e8662563c366b27
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097293"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820209"
 ---
 # <a name="web-api"></a>Web API
 
@@ -47,7 +47,7 @@ Web API 应用是需要通过 Web API 获取资源的 Web 应用。 在此方案
 
 ### <a name="delegated-user-identity-with-openid-connect"></a>采用 OpenID Connect 的委托用户标识
 
-1. 用户使用 Azure AD 登录到 Web 应用程序（请参阅前面的 [Web 浏览器到 Web 应用程序](#web-browser-to-web-application)）。 如果 Web 应用程序的用户尚未许可允许 Web 应用程序代表自己调用 Web API，则需要用户表示许可。 应用程序会显示它要求的权限，并且如果这些权限中有任何一个是管理员级权限，则目录中的普通用户将无法表示许可。 此许可过程仅适用于多租户应用程序，不适用于单租户应用程序，因为单租户应用程序那时已经具有了必需的权限。 当用户登录后，Web 应用程序将收到一个 ID 令牌，其中包含关于用户的信息以及授权代码。
+1. 用户使用 Azure AD 登录到 Web 应用程序（请参阅前面的“Web 浏览器到 Web 应用程序”部分）。 如果 Web 应用程序的用户尚未许可允许 Web 应用程序代表自己调用 Web API，则需要用户表示许可。 应用程序会显示它要求的权限，并且如果这些权限中有任何一个是管理员级权限，则目录中的普通用户将无法表示许可。 此许可过程仅适用于多租户应用程序，不适用于单租户应用程序，因为单租户应用程序那时已经具有了必需的权限。 当用户登录后，Web 应用程序将收到一个 ID 令牌，其中包含关于用户的信息以及授权代码。
 1. 使用由 Azure AD 颁发的授权代码，Web 应用程序向 Azure AD 的令牌终结点发送请求，请求中包括授权代码、关于客户端应用程序的详细信息（应用程序 ID 和重定向 URI）以及所需的资源（Web API 的应用程序 ID URI）。
 1. Azure AD 对授权代码和关于 Web 应用程序和 Web API 的信息进行验证。 当验证成功时，Azure AD 返回两个令牌：一个 JWT 访问令牌和一个 JWT 刷新令牌。
 1. 通过 HTTPS，Web 应用程序使用返回的 JWT 访问令牌在发往 Web API 的请求的 Authorization 标头中添加一个具有“Bearer”限定符的 JWT 字符串。 然后，Web API 对 JWT 令牌进行验证，并且如果验证成功，则返回所需的资源。

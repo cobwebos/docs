@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 35b728793b81c41f0a81c5c7621b9e17edf1f22a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: ec4b03629b56c09973c1ecc5c55930c33c24990b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994681"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997569"
 ---
 # <a name="output-metadata"></a>输出元数据
 ## <a name="overview"></a>概述
@@ -37,7 +37,7 @@ ms.locfileid: "52994681"
 编码作业的 AssetFile 条目集合。  
 
 ### <a name="child-elements"></a>子元素
-| 名称 | Description |
+| Name | 说明 |
 | --- | --- |
 | **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |[AssetFile 元素](media-services-output-metadata-schema.md)是 AssetFiles 集合的一部分。 |
 
@@ -45,14 +45,14 @@ ms.locfileid: "52994681"
 可以找到 XML 示例 [XML 示例](media-services-output-metadata-schema.md#xml)。  
 
 ### <a name="attributes"></a>属性
-| 名称 | 类型 | Description |
+| Name | 类型 | 说明 |
 | --- | --- | --- |
 | **名称**<br/><br/> 必选 |**xs:string** |媒体资产文件名。 |
 | **大小**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:long** |资产文件的大小（以字节为单位）。 |
 | **持续时间**<br/><br/> 必选 |**xs:duration** |内容播放持续时间。 |
 
 ### <a name="child-elements"></a>子元素
-| 名称 | Description |
+| Name | 说明 |
 | --- | --- |
 | **源** |为生成此 AssetFile 而处理的输入/源媒体文件集合。 有关详细信息，请参阅[源元素](media-services-output-metadata-schema.md)。 |
 | **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |每个物理 AssetFile 都可包含交错成适当容器格式的零个或多个视频轨道。 有关详细信息，请参阅 [VideoTracks 元素](media-services-output-metadata-schema.md)。 |
@@ -64,7 +64,7 @@ ms.locfileid: "52994681"
 可以找到 XML 示例 [XML 示例](media-services-output-metadata-schema.md#xml)。  
 
 ### <a name="child-elements"></a>子元素
-| 名称 | Description |
+| Name | 说明 |
 | --- | --- |
 | **源**<br/><br/> minOccurs="1" maxOccurs="unbounded" |生成此资产时所使用的输入/源文件。 有关详细信息，请参阅[源元素](media-services-output-metadata-schema.md)。 |
 
@@ -74,7 +74,7 @@ ms.locfileid: "52994681"
 可以找到 XML 示例 [XML 示例](media-services-output-metadata-schema.md#xml)。  
 
 ### <a name="attributes"></a>属性
-| 名称 | 类型 | Description |
+| Name | 类型 | 说明 |
 | --- | --- | --- |
 | **名称**<br/><br/> 必选 |**xs:string** |输入源文件名称。 |
 
@@ -84,7 +84,7 @@ ms.locfileid: "52994681"
 可以找到 XML 示例 [XML 示例](media-services-output-metadata-schema.md#xml)。  
 
 ### <a name="child-elements"></a>子元素
-| 名称 | Description |
+| Name | 说明 |
 | --- | --- |
 | **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |父级 AssetFile 中某个特定视频轨道。 有关详细信息，请参阅 [VideoTrack 元素](media-services-output-metadata-schema.md#VideoTrack)。 |
 
@@ -94,7 +94,7 @@ ms.locfileid: "52994681"
 可以找到 XML 示例 [XML 示例](media-services-output-metadata-schema.md#xml)。  
 
 ### <a name="attributes"></a>属性
-| 名称 | 类型 | Description |
+| Name | 类型 | 说明 |
 | --- | --- | --- |
 | **Id**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |此视频轨道的从零开始的索引。**注意：** 此“Id”不一定是 MP4 文件中使用的 TrackID。 |
 | **FourCC**<br/><br/> 必选 |**xs:string** |视频编解码器 FourCC 代码。 |
@@ -116,7 +116,7 @@ ms.locfileid: "52994681"
 可以找到 XML 示例 [XML 示例](media-services-output-metadata-schema.md#xml)。  
 
 ### <a name="child-elements"></a>子元素
-| 名称 | Description |
+| Name | 说明 |
 | --- | --- |
 | **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |父级 AssetFile 中某个特定音频轨道。 有关详细信息，请参阅 [AudioTrack 元素](media-services-output-metadata-schema.md)。 |
 
@@ -126,7 +126,7 @@ ms.locfileid: "52994681"
 可以找到 XML 示例 [XML 示例](media-services-output-metadata-schema.md#xml)。  
 
 ### <a name="attributes"></a>属性
-| 名称 | 类型 | Description |
+| Name | 类型 | 说明 |
 | --- | --- | --- |
 | **Id**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |此音频轨道从零开始的索引。**注意：** 也不一定是 MP4 文件中使用的 TrackID。 |
 | **编解码器** |**xs:string** |音频轨道编解码器字符串。 |
@@ -137,7 +137,7 @@ ms.locfileid: "52994681"
 | **BitsPerSample**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |wFormatTag 格式类型的每个样本的位数。 |
 
 ### <a name="child-elements"></a>子元素
-| 名称 | Description |
+| Name | 说明 |
 | --- | --- |
 | **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |Loudness metering result parameters. 有关详细信息，请参阅 [LoudnessMeteringResultParameters 元素](media-services-output-metadata-schema.md)。 |
 
@@ -147,7 +147,7 @@ Loudness metering result parameters.
 可以找到 XML 示例 [XML 示例](media-services-output-metadata-schema.md#xml)。  
 
 ### <a name="attributes"></a>属性
-| 名称 | 类型 | Description |
+| Name | 类型 | 说明 |
 | --- | --- | --- |
 | **DPLMVersionInformation** |**xs:string** |**Dolby** 专业响度测量开发工具包版本。 |
 | **DialogNormalization**<br/><br/> minInclusive="-31" maxInclusive="-1"<br/><br/> 必选 |**xs:int** |通过 DPLM 生成的 DialogNormalization，设置 LoudnessMetering 时需要使用 |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 8d150a91a00652d5af74253dfdf60eb728db97b5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8be5e94886237129824204ea166a2663e2f3110e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192820"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814446"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>教程：Azure Active Directory 与 Zscaler Private Access (ZPA) 集成
 
@@ -95,7 +95,7 @@ ms.locfileid: "55192820"
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-1. **[创建 Zscaler Private Access (ZPA) 测试用户](#creating-a-zscaler-private-access-(zpa)-test-user)** - 在 Zscaler Private Access (ZPA) 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
+1. **创建 Zscaler Private Access (ZPA) 测试用户** - 在 Zscaler Private Access (ZPA) 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
 1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 

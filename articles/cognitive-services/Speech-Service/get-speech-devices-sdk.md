@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 875240b779f05c1b13f71bf2133b9abfaa209239
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f8861b581c0e02bb78d80817cb2242a38e8aac40
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223351"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733461"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>获取认知服务语音设备 SDK
 
@@ -46,7 +46,7 @@ Subject: You're invited to the Microsoft organization
 
 完成以下步骤，使用注册期间提供的电子邮件地址加入 Azure AD。 此过程可授予访问语音设备 SDK [下载站点](https://shares.datatransfer.microsoft.com/)的权限。
 
-1. 在收到的电子邮件中选择“开始”。 如果你所在组织已是 Office 365 客户，系统会提示登录，可直接跳到步骤 8。
+1. 在收到的电子邮件中选择“开始”。 如果你所在组织已是 Office 365 客户，系统会提示登录，可直接跳到步骤 7。
 
 2. 在打开的浏览器窗口中，选择“下一步”。
 

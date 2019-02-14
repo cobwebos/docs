@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: bb8ab22db18bbe170a20d253e601eb78855aafa7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 88a1405a55432b6f5932f2675260540a8aea46aa
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102730"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697605"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>如何：计划 Azure AD 加入实现
 
@@ -126,6 +126,8 @@ Azure AD 联接：
 - 仅适用于 Windows 10 设备。 
 
 - 不适用于以前版本的 Windows 或其他操作系统。 如果有 Windows 7/8.1 设备，则必须升级到 Windows 10 以部署 Azure AD 联接。
+
+- 在 TPM 处于 FIPS 模式下的设备上不受支持。
  
 **建议：** 始终使用最新的 Windows 10 发布版本以充分利用更新的功能。
 

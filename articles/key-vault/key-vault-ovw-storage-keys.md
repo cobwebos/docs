@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: pryerram
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: 0392d84efa3a82a6323d6d09db792df7d6c42256
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 152e1e5892e3a72286205c2f5bf4e18b2a2bcbf7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210669"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814837"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Azure Key Vault 托管存储帐户 - CLI
 
@@ -52,35 +52,48 @@ ms.locfileid: "55210669"
 1. 创建存储帐户后，运行以下命令来获取要管理的存储帐户的资源 ID
 
     ```
-    az storage account show -n storageaccountname (Copy ID field out of the result of this command)
+    az storage account show -n storageaccountname 
     ```
+    从上述命令的结果中复制 ID 字段
     
-2. 获取 Azure Key Vault 的服务主体的应用程序 ID 
+2. 通过运行以下命令获取 Azure 密钥保管库服务主体的对象 ID
 
     ```
     az ad sp show --id cfa8b339-82a2-471a-a3c9-0fc0be7a4093
     ```
     
+    成功完成此命令后，在结果中查找对象 ID
+    ```console
+        {
+            ...
+            "objectId": "93c27d83-f79b-4cb2-8dd4-4aa716542e74"
+            ...
+        }
+    ```
+    
 3. 将存储密钥操作员角色分配给 Azure Key Vault 标识
 
     ```
-    az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id <ApplicationIdOfKeyVault> --scope <IdOfStorageAccount>
+    az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id <ObjectIdOfKeyVault> --scope <IdOfStorageAccount>
     ```
     
 4. 创建 Key Vault 托管存储帐户。     <br /><br />
-   下面，我们将重新生成周期设置为 90 天。 90 天后，Key Vault 将重新生成“key1”，并将活动密钥从“key2”交换为“key1”。
+   下面，我们将重新生成周期设置为 90 天。 90 天后，Key Vault 将重新生成“key1”，并将活动密钥从“key2”交换为“key1”。 它会立即将 Key1 标记为活动密钥。 
    
     ```
-    az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key2 --auto-regenerate-key --regeneration-period P90D --resource-id <Resource-id-of-storage-account>
+    az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key1 --auto-regenerate-key --regeneration-period P90D --resource-id <Id-of-storage-account>
     ```
     如果用户未创建存储帐户并且对存储帐户没有权限，以下步骤会为你的帐户设置权限，确保你可以管理 Key Vault 中的所有存储权限。
+    
  > [!NOTE] 
-    如果用户对存储帐户没有权限，我们会先获取用户的对象 ID
+ > 如果用户对存储帐户没有权限，我们会先获取用户的对象 ID
+
 
     ```
     az ad user show --upn-or-object-id "developer@contoso.com"
 
     az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
+    
     ```
     
 ## <a name="how-to-access-your-storage-account-with-sas-tokens"></a>如何使用 SAS 令牌访问存储帐户
@@ -91,9 +104,9 @@ ms.locfileid: "55210669"
 
 > [!NOTE] 
   有 3 种方式可用于向密钥保管库进行身份验证，如[基本概念](key-vault-whatis.md#basic-concepts)中所述
-- 使用托管服务标识（强烈推荐）
-- 使用服务主体和证书 
-- 使用服务主体和密码（不推荐）
+> - 使用托管服务标识（强烈推荐）
+> - 使用服务主体和证书 
+> - 使用服务主体和密码（不推荐）
 
 ```cs
 // Once you have a security token from one of the above methods, then create KeyVaultClient with vault credentials

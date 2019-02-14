@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 52c89804c87348843bb7a4006ab38e4d417740ba
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 20f1d8ca67a38a9dc262845d87b77e2bc3fc9fb7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025430"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810571"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 FTP 服务器移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -33,7 +33,7 @@ ms.locfileid: "54025430"
 可以将数据从 FTP 服务器复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 FTP 服务器移至其他数据存储，但不支持将数据从其他数据存储移至 FTP 服务器。 它支持本地和云 FTP 服务器。
 
 > [!NOTE]
-> 复制活动在源文件成功复制到目标位置后不会删除该文件。 如果需要在成功复制后删除源文件，请创建自定义活动以删除该文件，并在管道中使用该活动。 
+> 复制活动在源文件成功复制到目标位置后不会删除该文件。 如果需要在成功复制后删除源文件，请创建自定义活动以删除该文件，并在管道中使用该活动。
 
 ## <a name="enable-connectivity"></a>启用连接
 如果要将数据从**本地** FTP 服务器移至云数据存储（例如移至 Azure Blob 存储），请安装并使用数据管理网关。 数据管理网关是安装在本地计算机上的客户端代理，支持将云服务连接到本地资源。 有关详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)。 有关设置和使用该网关的分步说明，请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)。 即使 FTP 服务器位于 Azure 基础结构即服务 (IaaS) 的虚拟机 (VM) 上，也可使用网关连接到该服务器。
@@ -43,7 +43,7 @@ ms.locfileid: "54025430"
 ## <a name="get-started"></a>入门
 可以使用不同的工具或 API 创建包含复制活动的管道（用于从 FTP 源移动数据）。
 
-创建管道的最简单方法是使用**数据工厂复制向导**。 有关快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
+创建管道的最简单方法是使用**数据工厂复制向导**。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
 
 还可以使用以下工具来创建管道：Azure 门户、Visual Studio、PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
@@ -86,7 +86,7 @@ ms.locfileid: "54025430"
     "name": "FTPLinkedService",
     "properties": {
         "type": "FtpServer",
-        "typeProperties": {        
+        "typeProperties": {
             "authenticationType": "Anonymous",
               "host": "myftpserver.com"
         }
@@ -99,7 +99,7 @@ ms.locfileid: "54025430"
 ```JSON
 {
     "name": "FTPLinkedService",
-      "properties": {
+    "properties": {
     "type": "FtpServer",
         "typeProperties": {
             "host": "myftpserver.com",
@@ -107,7 +107,7 @@ ms.locfileid: "54025430"
             "username": "Admin",
             "password": "123456"
         }
-      }
+    }
 }
 ```
 
@@ -120,7 +120,7 @@ ms.locfileid: "54025430"
         "type": "FtpServer",
         "typeProperties": {
             "host": "myftpserver.com",
-            "authenticationType": "Basic",    
+            "authenticationType": "Basic",
             "username": "Admin",
             "password": "123456",
             "port": "21",
@@ -144,7 +144,7 @@ ms.locfileid: "54025430"
             "encryptedCredential": "xxxxxxxxxxxxxxxxx",
             "gatewayName": "mygateway"
         }
-      }
+    }
 }
 ```
 
@@ -155,7 +155,7 @@ ms.locfileid: "54025430"
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| folderPath |文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅 [Sample linked service and dataset definitions](#sample-linked-service-and-dataset-definitions)（链接服务和数据集定义示例）。<br/><br/>可将此属性与 **partitionBy** 组合在一起，基于切片开始和结束的日期时间构成文件夹路径。 |是 |
+| folderPath |文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅“链接服务和数据集定义示例”。<br/><br/>可将此属性与 **partitionBy** 组合在一起，基于切片开始和结束的日期时间构成文件夹路径。 |是 |
 | fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 **fileName**，生成文件的名称会采用以下格式： <br/><br/>Data.<Guid>.txt（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
 | fileFilter |指定在 **folderPath** 中选择一部分文件而不是所有文件时要使用的筛选器。<br/><br/>允许的值为：`*`（多个字符）和 `?`（单个字符）。<br/><br/>示例 1：`"fileFilter": "*.log"`<br/>示例 2：`"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** 适用于 FileShare 输入数据集。 Hadoop 分布式文件系统 (HDFS) 不支持此属性。 |否 |
 | partitionedBy |用于指定时序数据的动态 **folderPath** 和 **fileName**。 例如，可以指定每小时参数化以形成数据的 **folderPath**。 |否 |
@@ -188,7 +188,7 @@ ms.locfileid: "54025430"
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
 "fileName": "{Hour}.csv",
 "partitionedBy":
- [
+[
     { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
     { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
     { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
@@ -209,7 +209,7 @@ ms.locfileid: "54025430"
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True、False（默认值） |否 |
 
 ## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>JSON 示例：将数据从 FTP 服务器复制到 Azure Blob
-此示例演示如何将数据从 FTP 服务器复制到 Azure Blob 存储。 但是，使用数据工厂中的复制活动，可以直接将数据复制到[支持的数据存储和格式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中所述的任何接收器。  
+此示例演示如何将数据从 FTP 服务器复制到 Azure Blob 存储。 但是，使用数据工厂中的复制活动，可以直接将数据复制到[支持的数据存储和格式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中所述的任何接收器。
 
 以下示例提供示例 JSON 定义，可用于通过使用 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道：
 
@@ -235,14 +235,14 @@ ms.locfileid: "54025430"
 {
     "name": "FTPLinkedService",
     "properties": {
-    "type": "FtpServer",
-    "typeProperties": {
-        "host": "myftpserver.com",           
-        "authenticationType": "Basic",
-        "username": "Admin",
-        "password": "123456"
+        "type": "FtpServer",
+        "typeProperties": {
+            "host": "myftpserver.com",
+            "authenticationType": "Basic",
+            "username": "Admin",
+            "password": "123456"
+        }
     }
-  }
 }
 ```
 ### <a name="azure-storage-linked-service"></a>Azure 存储链接服务

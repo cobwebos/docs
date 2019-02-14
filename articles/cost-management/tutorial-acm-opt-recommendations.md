@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 2b9702dbae0414ba597b6e1f6080d9de86f624fc
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2255f14d026d406dc41802c321d0a673ee2f2f23
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077064"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766854"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>教程：根据建议优化成本
 
@@ -29,7 +29,7 @@ Azure 成本管理与 Azure 顾问相结合，可以提供成本优化建议。 
 > * 验证操作，确保成功调整虚拟机的大小
 
 ## <a name="prerequisites"></a>先决条件
-建议适用于所有[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 客户。 必须至少具有以下一个或多个范围的读取权限才能查看成本数据。
+针对各种 Azure 帐户类型提供了建议，包括[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 客户。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 必须至少具有以下一个或多个范围的读取权限才能查看成本数据。
 
 - 订阅
 - 资源组
@@ -53,7 +53,7 @@ Azure 成本管理与 Azure 顾问相结合，可以提供成本优化建议。 
 
 Azure 顾问会监视虚拟机 14 天的使用情况，并识别利用不足的虚拟机。 如果在 4 天或 4 天以上，虚拟机的 CPU 利用率都小于或等于 5% 且网络使用率小于或等于 7 MB，则会被视为利用率较低的虚拟机。
 
-5% 或更低的 CPU 利用率设置是默认值，可以调整设置。 有关调整设置的详细信息，请参阅[配置平均 CPU 利用率规则](../advisor/advisor-get-started.md#configure-the-average-cpu-utilization-rule-for-the-low-usage-virtual-machine-recommendation)一文中的[低使用率虚拟机建议](../advisor/advisor-get-started.md#configure-the-average-cpu-utilization-rule-for-the-low-usage-virtual-machine-recommendation)。
+5% 或更低的 CPU 利用率设置是默认值，可以调整设置。 有关调整设置的详细信息，请参阅[配置平均 CPU 利用率规则或低使用率虚拟机建议](../advisor/advisor-get-started.md#configure-low-usage-vm-recommendation)。
 
 虽然某些方案有意使虚拟机利用率较低，但将虚拟机大小更改为费用更低的大小通常可以降低成本。 如果选择调整大小操作，实际节省的金额可能有所不同。 让我们演练一个调整虚拟机大小的示例。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
-ms.openlocfilehash: fc625192464dce174b4c2a6d8a2a98343519699f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7ae87763d280e129bab96c604f9118ecf088ea2f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186117"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819852"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>使用 System Center Operations Manager 运行状况检查（预览版）解决方案优化环境
 
@@ -55,7 +55,7 @@ ms.locfileid: "53186117"
 
  若要通过 Operations Manager Operations 控制台配置评估，请按以下顺序执行以下步骤：
 1. [设置 System Center Operations Manager 运行状况检查的运行方式帐户](#operations-manager-run-as-accounts-for-log-analytics)  
-2. [配置 System Center Operations Manager 运行状况检查规则](#configure-the-assessment-rule)
+2. 配置 System Center Operations Manager 运行状况检查规则
 
 ## <a name="system-center-operations-manager-assessment-data-collection-details"></a>System Center Operations Manager 评估数据收集详细信息
 

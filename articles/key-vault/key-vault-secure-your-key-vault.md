@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 9877698c8c6af68c5ffd88dab37150274ce87b37
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 8a0300eeda49d85ffc08db8f285550e217613dcf
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077328"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821606"
 ---
 # <a name="secure-your-key-vault"></a>保护密钥保管库
 
@@ -26,21 +26,21 @@ Azure Key Vault 是一种云服务，用于保护加密密钥和机密（例如�
 
 ## <a name="overview"></a>概述
 
-通过两个单独的接口控制对密钥保管库的访问：管理平面和数据平面。 
+可通过以下两个独立接口来控制对密钥保管库的访问：管理平面和数据平面。 
 **管理平面**处理管理保管库，例如，创建保管库、更新保管库和删除保管库。 
-**数据平面**处理保管库内的机密，即创建、更新、删除和读取保管库内的机密。 对于这两个平面，调用方（用户或应用程序）需要先经过适当的身份验证并获得授权，才可访问密钥保管库。 身份验证用于确定调用方的身份，而授权则决定了调用方能够执行的操作。
+**数据平面**处理保管库内的机密，即创建、更新、删除和读取保管库内的机密。 对于这两个平面，在调用方（用户或应用程序）可以访问 Key Vault 前，需要进行适当的身份验证和授权。 身份验证可确认调用方的身份，授权确定允许调用方执行的操作。
 
-对于身份验证，管理平面和数据平面都使用 Azure Active Directory。 对于授权，管理平面使用基于角色的访问控制 (RBAC)，而数据平面使用密钥保管库访问策略。
+管理平面和数据平面都使用 Azure Active Directory 进行身份验证。 对于授权，管理平面使用基于角色的访问控制 (RBAC)，而数据平面使用密钥保管库访问策略。
 
-以下是所涵盖的主题的简要概述：
+下面是相关主题的简要概述：
 
-[使用 Azure Active Directory 进行身份验证](#authentication-using-azure-active-directory) - 本部分介绍调用方如何使用 Azure Active Directory 进行身份验证，以通过管理平面和数据平面访问密钥保管库。 
+使用 Azure Active Directory 进行身份验证 - 此部分介绍调用方如何通过管理平面和数据平面使用 Azure Active Directory 进行身份验证，以便访问密钥保管库。 
 
 对于身份验证，这两个平面都使用 Azure Active Directory (Azure AD)。 对于授权，管理平面使用基于角色的访问控制 (RBAC)，而数据平面使用 Key Vault 访问策略。
 
 ## <a name="authenticate-by-using-azure-active-directory"></a>使用 Azure Active Directory 进行身份验证
 
-在 Azure 订阅中创建 Key Vault 时，该 Key Vault 自动与订阅的 Azure AD 租户关联。 所有调用方都必须在此租户中注册并通过身份验证，才能访问该 Key Vault。 此要求对管理平面和数据平面访问均适用。 在这两种情况下，应用程序可以以两种方式访问 Key Vault：
+在 Azure 订阅中创建 Key Vault 时，该 Key Vault 自动与订阅的 Azure AD 租户关联。 所有调用方都必须在此租户中注册并通过身份验证，才能访问该 Key Vault。 此项要求适用于管理平面访问和数据平面访问。 在这两种情况下，应用程序可以以两种方式访问 Key Vault：
 
 * **用户+应用访问**：适用于代表已登录用户访问 Key Vault 的应用程序。 此类访问的示例有 Azure PowerShell 和 Azure 门户。 可通过两种方法向用户授予访问权限：
 
@@ -61,23 +61,23 @@ Azure Key Vault 是一种云服务，用于保护加密密钥和机密（例如�
 
 ## <a name="the-management-plane-and-the-data-plane"></a>管理平面和数据平面
 
-使用管理平面来管理 Key Vault 本身。 其中包括管理属性和设置数据平面访问策略等操作。 使用数据平面添加、删除、修改和使用存储在 Key Vault 中的密钥、机密和证书。
+使用管理平面来管理 Key Vault 本身。 这包括管理属性以及设置数据平面访问策略等操作。 使用数据平面添加、删除、修改和使用存储在 Key Vault 中的密钥、机密和证书。
 
-通过下表中列出的不同终结点来访问管理平面和数据平面接口。 表中的第二列描述了不同 Azure 环境中这些终结点的 DNS 名称。 第三列描述了可在每个访问平面中执行的操作。 每个访问平面也具有其自己的访问控制机制。 管理平面访问控制是使用 Azure 资源管理器基于角色的访问控制 (RBAC) 设置的。 数据平面访问控制是使用 Key Vault 访问策略设置的。
+通过下表中列出的不同终结点来访问管理平面和数据平面接口。 表中的第二列描述了不同 Azure 环境中这些终结点的 DNS 名称。 第三列描述可在每个访问平面中执行的操作。 每个访问平面还有自身的访问控制机制。 管理平面访问控制是使用 Azure 资源管理器基于角色的访问控制 (RBAC) 设置的。 数据平面访问控制是使用 Key Vault 访问策略设置的。
 
 | 访问平面 | 访问终结点 | 操作 | 访问控制机制 |
 | --- | --- | --- | --- |
-| 管理平面 |**全局：**<br> management.azure.com:443<br><br> **Azure 中国世纪互联：**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government：**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany：**<br> management.microsoftazure.de:443 |创建/读取/更新/删除 Key Vault <br> 设置 Key Vault 的访问策略<br>设置 Key Vault 的标记 |Azure 资源管理器 RBAC |
-| 数据平面 |**全局：**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure 中国世纪互联：**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Government：**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany：**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 |对于密钥：解密、加密、UnwrapKey、WrapKey、验证、签名、获取、列出、更新、创建、导入、删除、备份、还原<br><br> 对于机密：获取、列出、设置、删除 |Key Vault 访问策略 |
+| 管理平面 |**全球：**<br> management.azure.com:443<br><br> **Azure 中国世纪互联：**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government：**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany：**<br> management.microsoftazure.de:443 |创建/读取/更新/删除 Key Vault <br> 设置 Key Vault 的访问策略<br>设置 Key Vault 的标记 |Azure 资源管理器 RBAC |
+| 数据平面 |**全球：**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure 中国世纪互联：**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Government：**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany：**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 |对于密钥：解密、加密、UnwrapKey、WrapKey、验证、签名、获取、列出、更新、创建、导入、删除、备份、还原<br><br> 对于机密：获取、列出、设置、删除 |Key Vault 访问策略 |
 
-管理平面和数据平面访问控制独立工作。 例如，如果想要授予应用程序使用密钥保管库中的密钥的访问权限，只需授予数据平面访问权限。 通过 Key Vault 访问策略授予访问权限。 相反，若用户需要读取 Key Vault 属性和标记而不需要访问数据（密钥、机密或证书），则只需管理平面访问权限。 通过使用 RBAC 向用户授予读取权限来授予权限。
+管理平面访问控制与数据平面访问控制相互独立。 例如，若要授权应用程序使用 Key Vault 中的密钥，只需授予数据平面访问权限。 通过 Key Vault 访问策略授予访问权限。 相反，若用户需要读取 Key Vault 属性和标记而不需要访问数据（密钥、机密或证书），则只需管理平面访问权限。 通过使用 RBAC 向用户授予读取权限来授予权限。
 
 ## <a name="management-plane-access-control"></a>管理平面访问控制
 
-管理平面包含影响密钥保管库本身的操作，例如：
+管理平面由影响 Key Vault 本身的操作构成，例如：
 
-- 创建或删除密钥保管库。
-- 在订阅中获取保管库列表。
+- 创建或删除 Key Vault 保管库。
+- 获取订阅中保管库的列表。
 - 检索 Key Vault 属性（例如 SKU 和标记）。
 - 设置 Key Vault 访问策略，控制用户和应用程序对密钥和机密的访问权限。
 
@@ -85,11 +85,11 @@ Azure Key Vault 是一种云服务，用于保护加密密钥和机密（例如�
 
 ### <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
 
-每个 Azure 订阅都具有 Azure AD 实例。 向来自该目录的用户、组和应用程序授予访问权限，以便在使用 Azure 资源管理器部署模型的 Azure 订阅中管理资源。 此类型的访问控制称为 RBAC。 若要管理此访问权限，可以使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI 工具](../cli-install-nodejs.md)、[PowerShell](/powershell/azureps-cmdlets-docs) 或 [Azure 资源管理器 REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx)。
+每个 Azure 订阅都具有 Azure AD 实例。 向来自该目录的用户、组和应用程序授予访问权限，以便在使用 Azure 资源管理器部署模型的 Azure 订阅中管理资源。 此类型的访问控制称为 RBAC。 若要管理此访问权限，可以使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI 工具](../cli-install-nodejs.md)、[PowerShell](/powershell/azureps-cmdlets-docs) 或 [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx)。
 
-在资源组中创建 Key Vault，并使用 Azure AD 控制对管理平面的访问权限。 例如，可以向用户或组授予管理资源组中的密钥保管库的能力。
+在资源组中创建 Key Vault，并使用 Azure AD 控制对管理平面的访问权限。 例如，可以授予用户或组管理资源组中 Key Vault 的权限。
 
-可以通过分配相应的 RBAC 角色，向特定范围内的用户、组和应用程序授予访问权限。 例如，要向用户授予管理 Key Vault 的访问权限，可将预定义的“Key Vault 参与者”角色分配给位于特定范围内的此用户。 在此情况下，该范围可以是订阅、资源组，或特定密钥保管库。 在订阅级别分配的角色适用于该订阅中的所有资源组和资源。 在资源组级别分配的角色适用于该资源组中的所有资源。 为特定资源分配的角色适用于该资源。 有多种预定义角色（参阅 [RBAC：内置角色](../role-based-access-control/built-in-roles.md)）。 如果预定义角色不符合需求，可以定义自己的角色。
+可以通过分配相应的 RBAC 角色，向用户、组和应用程序授予适用于特定范围的访问权限。 例如，要向用户授予管理 Key Vault 的访问权限，可将预定义的“Key Vault 参与者”角色分配给位于特定范围内的此用户。 在此情况下，该范围可以是订阅、资源组，或特定的 Key Vault。 在订阅级别分配的角色适用于该订阅中的所有资源组和资源。 在资源组级别分配的角色适用于该资源组中的所有资源。 为特定资源分配的角色适用于该资源。 有多种预定义角色（参阅 [RBAC：内置角色](../role-based-access-control/built-in-roles.md)）。 如果预定义角色不符合需求，可以定义自己的角色。
 
 > [!IMPORTANT]
 > 请注意，如果用户具有 Key Vault 管理平面的参与者权限，则该用户可以通过设置 Key Vault 访问策略来授予自己对数据平面的访问权限。 因此，应严格控制对 Key Vault 具有参与者访问权限的用户。 请确保仅授权的人员才能访问和管理 Key Vault、密钥、机密和证书。
@@ -97,16 +97,16 @@ Azure Key Vault 是一种云服务，用于保护加密密钥和机密（例如�
 
 ## <a name="data-plane-access-control"></a>数据平面访问控制
 
-Key Vault 数据平面操作应用于存储的对象，例如密钥、机密和证书。 密钥操作包括创建、导入、更新、列出、备份和还原密钥。 加密操作包括签名、验证、加密、解密、包装、解包、设置标记和设置密钥的其他属性。 同样，可对机密执行的操作包括获取、设置、列出和删除。
+Key Vault 数据平面操作应用于存储的对象，例如密钥、机密和证书。 密钥操作包括创建、导入、更新、列出、备份和还原密钥。 加密操作包括签名、验证、加密、解密、包装、解包、设置标记和设置密钥的其他属性。 同样，针对机密的操作包括获取、设置、列出和删除。
 
 通过设置 Key Vault 的访问策略授予数据平面访问权限。 用户、组或应用程序必须具有 Key Vault 的管理平面的参与者权限，才能设置该 Key Vault 的访问策略。 可以向用户、组或应用程序授予对 Key Vault 中的密钥或机密执行特定操作的访问权限。 Key Vault 最多支持 1024 个 Key Vault 访问策略条目。 若要向多个用户授予对数据平面的访问权限，创建一个 Azure AD 安全组，并将用户添加到该组。
 
 ### <a name="key-vault-access-policies"></a>Key Vault 访问策略
 
-Key Vault 访问策略单独授予对密钥、机密和证书的权限。 例如，可以向用户提供仅针对密钥的访问权限，而不提供针对机密的权限。 访问密钥、机密或证书的权限是保管库级别的。 Key Vault 访问策略不支持粒度、对象级别权限，例如特定的密钥、机密或证书。 可以使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI 工具](../cli-install-nodejs.md)、[PowerShell](/powershell/azureps-cmdlets-docs) 或 [Key Vault 管理 REST API](https://msdn.microsoft.com/library/azure/mt620024.aspx) 设置 Key Vault 的访问策略。
+Key Vault 访问策略单独授予对密钥、机密和证书的权限。 例如，可以向用户授予仅限密钥的访问权限，而不授予对机密的权限。 访问密钥、机密或证书的权限是保管库级别的。 Key Vault 访问策略不支持粒度、对象级别权限，例如特定的密钥、机密或证书。 可以使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI 工具](../cli-install-nodejs.md)、[PowerShell](/powershell/azureps-cmdlets-docs) 或 [Key Vault 管理 REST API](https://msdn.microsoft.com/library/azure/mt620024.aspx) 设置 Key Vault 的访问策略。
 
 > [!IMPORTANT]
-> Key Vault 访问策略适用于保管库级别。 例如，如果向用户授予创建和删除密钥的权限，则该用户可以对该密钥保管库中的所有密钥执行这些操作。
+> Key Vault 访问策略适用于保管库级别。 例如，授予某个用户创建和删除密钥的权限时，该用户可以针对该密钥保管库中的所有密钥执行这些操作。
 
 除了使用访问策略以外，还可以通过使用[适用于 Azure Key Vault 的虚拟网络服务终结点](key-vault-overview-vnet-service-endpoints.md)来限制数据平面访问权限。 配置[防火墙和虚拟网络规则](key-vault-network-security.md)以提供额外的安全层。
 
@@ -121,36 +121,36 @@ Key Vault 访问策略单独授予对密钥、机密和证书的权限。 例如
 * **RSA 2048 位密钥**：用于签名操作。
 * **启动证书**：用于使用 Azure AD 进行身份验证。 授予访问权限后，可以提取存储密钥并使用 RSA 密钥进行签名。
 
-现在，让我们看看管理、部署和审核此应用程序的人员。 我们会在本示例中使用三个角色。
+现在，让我们来了解管理、部署和审核此应用程序的人员。 本示例使用了三个角色。
 
-* **安全团队**：通常是 CSO（首席安全官）办公室中的 IT 人员或同等职务的人员。 此团队负责妥善保护机密。 示例包括 SSL 证书、用于签名的 RSA 密钥、连接字符串和存储帐户密钥。
-* **开发人员/操作员**：开发应用程序然后将其部署到 Azure 的人员。 通常情况下，他们不属于安全团队，因此不应具有访问敏感数据（如 SSL 证书和 RSA 密钥）的权限。 只有他们部署的应用程序应有权访问这些对象。
-* **审核员**：通常是独立于开发人员和常规 IT 人员的一组不同的人员。 他们负责检查证书、密钥和机密的使用和维护，并确保其符合数据安全标准。 
+* **安全团队**：通常是 CSO（首席安全官）办公室中的 IT 人员或同等职务的人员。 此团队负责机密的适当保管。 示例包括 SSL 证书、用于签名的 RSA 密钥、连接字符串和存储帐户密钥。
+* **开发人员/操作员**：开发应用程序然后将其部署到 Azure 的人员。 通常，他们不是安全团队的成员，因此不应有权访问 SSL 证书和 RSA 密钥等敏感数据。 他们部署的应用程序才应有权访问这些数据。
+* **审核员**：通常是独立于开发人员和常规 IT 人员的一组不同的人员。 他们的职责是评审证书、密钥和机密的使用和维护，确保遵从安全标准。 
 
-在此应用程序的范围之外还有一个角色，它与这里所提到的内容有关。 该角色就是订阅（或资源组）管理员。 订阅管理员设置安全团队的初始访问权限。 订阅管理员使用包含此应用所需资源的资源组来向安全团队授予访问权限。
+在此应用程序的范围之外还有一个角色，它与本文所述的内容相关。 该角色是订阅（或资源组）管理员。 订阅管理员设置安全团队的初始访问权限。 订阅管理员使用包含此应用所需资源的资源组来向安全团队授予访问权限。
 
-现在，我们来看看在此应用程序的上下文中，每个角色所执行的操作。
+现在，我们看看在此应用程序的上下文中，每个角色可执行哪些操作。
 
-* 安全团队
+* **安全团队**
   * 创建 Key Vault。
   * 打开 Key Vault 日志记录。
   * 添加密钥/机密。
   * 创建密钥备份以进行灾难恢复。
   * 设置 Key Vault 访问策略，以向用户和应用程序授予执行特定操作的权限。
   * 定期滚动密钥/机密。
-* **开发人员/操作员**
+* **开发人员/操作人员**
   * 从安全团队获取启动证书和 SSL 证书引用（指纹）、存储密钥（机密 URI）以及签名密钥（密钥 URI）。
   * 开发和部署以编程方式访问密钥和机密的应用程序。
-* **审核员**
+* **审核人员**
   * 检查使用情况日志，以确认正确使用了密钥/机密且符合数据安全标准。
 
-现在，让我们看看每个角色和应用程序执行向其分配的任务所需的访问权限。 
+现在，让我们看看每个角色和应用程序需要哪些访问权限才能执行其分配的任务。 
 
 | 用户角色 | 管理平面权限 | 数据平面权限 |
 | --- | --- | --- |
-| 安全团队 |密钥保管库参与者 |密钥：备份、创建、删除、获取、导入、列出、还原 <br> 机密：全部 |
+| 安全团队 |密钥保管库参与者 |密钥：备份、创建、删除、获取、导入、列出、还原 <br> 机密：所有 |
 | 开发人员/操作员 |Key Vault 部署权限，以便他们部署的虚拟机可以从 Key Vault 中提取机密。 |无 |
-| 审核员 |无 |密钥：列出<br>机密：列出 |
+| 审核人员 |无 |密钥：列出<br>机密：列出 |
 | 应用程序 |无 |密钥：签名<br>机密：获取 |
 
 > [!NOTE]
@@ -167,10 +167,10 @@ Key Vault 访问策略单独授予对密钥、机密和证书的权限。 例如
 
 可以通过使用 Azure 门户授予大部分访问权限。 若要授予粒度权限，则可能需要使用 Azure PowerShell 或 CLI 来实现期望的结果。 
 
-以下 PowerShell 代码段假设：
+以下 PowerShell 代码片段假设：
 
 * Azure AD 管理员已创建代表这三个角色的安全组，即 Contoso 安全团队、Contoso 应用开发人员和 Contoso 应用审核员。 管理员也已经向他们所属的组添加了用户。
-* **ContosoAppRG** 是包含所有资源的资源组。 **contosologstorage** 是日志的存储位置。 
+* **ContosoAppRG** 是所有资源所在的资源组。 **contosologstorage** 是日志的存储位置。 
 * Key Vault ContosoKeyVault 和用于 Key Vault 日志的存储帐户 contosologstorage 必须位于相同的 Azure 位置。
 
 首先，订阅管理员向安全团队分配 `key vault Contributor` 和 `User Access Administrator` 角色。 这些角色使安全团队可管理对其他资源的访问权限以及资源组 ContosoAppRG 中的 Key Vault。
@@ -180,7 +180,7 @@ New-AzureRmRoleAssignment -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso S
 New-AzureRmRoleAssignment -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "User Access Administrator" -ResourceGroupName ContosoAppRG
 ```
 
-以下脚本演示了安全团队可以如何创建密钥保管库、设置日志记录和访问权限。 有关 Key Vault 访问策略权限的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](about-keys-secrets-and-certificates.md)。
+以下脚本演示安全团队如何创建 Key Vault 并设置日志记录和访问权限。 有关 Key Vault 访问策略权限的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](about-keys-secrets-and-certificates.md)。
 
 ```PowerShell
 # Create key vault and enable logging
@@ -243,9 +243,9 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzureR
   此文档是 REST API 以编程方式管理 Key Vault 的参考，包括设置 Key Vault 访问策略。
 * [Key Vault REST API](https://msdn.microsoft.com/library/azure/dn903609.aspx)
   
-* [Key access control](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_KeyAccessControl)（密钥访问控制）
+* [Key access control（密钥访问控制）](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_KeyAccessControl)
   
-* [Secret access control](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_SecretAccessControl)（机密访问控制）
+* [Secret access control（机密访问控制）](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_SecretAccessControl)
   
 * 使用 PowerShell [设置](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Set-AzureRmKeyVaultAccessPolicy)和[删除](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Remove-AzureRmKeyVaultAccessPolicy) Key Vault 访问策略
   

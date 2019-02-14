@@ -10,12 +10,12 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 4f96302f1035500a10cebaa24efd4b8db329fdff
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b5e6853653bab96cd11196ba03fbeadbdc6b337f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219764"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816199"
 ---
 # <a name="basic-concepts"></a>基本概念
 
@@ -92,7 +92,7 @@ Microsoft 语音识别服务为开发者提供了两种向其应用添加语音�
 有三种识别模式：`interactive`、`conversation` 和 `dictation`。 识别模式基于用户可能说话的方式来调整语音识别。 为应用程序选择适当的识别模式。
 
 > [!NOTE]
-> 识别模式在 [REST 协议](#rest-speech-recognition-api)中的行为可能与在 [WebSocket 协议](#webSocket-speech-recognition-api)中不同。 例如，REST API 不支持连续识别，即使在会话或听写模式下也是如此。
+> 识别模式在 REST 协议中的行为可能与在 WebSocket 协议中不同。 例如，REST API 不支持连续识别，即使在会话或听写模式下也是如此。
 > [!NOTE]
 > 直接使用 REST 或 WebSocket 协议时，这些模式适用。 [客户端库](GetStarted/GetStartedClientLibraries.md)使用不同的参数来指定识别模式。 有关详细信息，请参见你选择的客户端库。
 

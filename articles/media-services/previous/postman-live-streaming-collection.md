@@ -4,23 +4,23 @@ description: 本文提供了用于 Azure 媒体服务 REST 调用的 Postman 集
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: ea88d6a85fb0b22d12c9d30baf23c33074666568
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 98c687b620aea484a4ced1385d7a2301db55ce79
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786376"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998444"
 ---
-# <a name="import-a-postman-collection-with-live-streaming-operations"></a>使用实时传送视频流操作导入一个 Postman 集合
+# <a name="import-a-postman-collection-with-live-streaming-operations"></a>使用实时传送视频流操作导入一个 Postman 集合 
 
 本文包含 Postman 集合的定义，该集合包含调用实时传送视频流 Azure 媒体服务 REST API 的分组 HTTP 请求。 有关如何配置 Postman 以用于调用媒体服务 REST API 的信息，请参阅[配置 Postman 以便进行媒体服务 REST API 调用](media-rest-apis-with-postman.md)教程。
 

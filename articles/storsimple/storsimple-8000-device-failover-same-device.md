@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
-ms.openlocfilehash: acc8929dc3476e9590e8e4d9526b38b7c0719570
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd207eaad1a3e821724d51a890d0882bfffda131
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108195"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809055"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>将 StorSimple 物理设备故障转移到同一设备
 
@@ -50,7 +50,7 @@ ms.locfileid: "23108195"
 4. 配置设备，再次将它注册到 StorSimple 设备管理器服务。 新注册的设备应显示为“准备好设置”。 新设备的设备名称与旧设备相同，但后面追加了一个数字，表示该设备已重置为出厂默认设置并重新注册。
 
     ![新注册的设备已做好设置准备](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev3.png)
-5. 对于新设备，请完成设备设置。 有关详细信息，请参阅[步骤 4：完成最低要求的设备设置](storsimple-8000-deployment-walkthrough-u2.md#step-4-complete-minimum-device-setup)。 在“设备”边栏选项卡中，设备状态更改为“联机”。
+5. 对于新设备，请完成设备设置。 有关详细信息，请转到[步骤 4：完成最低要求的设备设置](storsimple-8000-deployment-walkthrough-u2.md#step-4-complete-minimum-device-setup)。 在“设备”边栏选项卡中，设备状态更改为“联机”。
 
    > [!IMPORTANT]
    > **首先完成最低的配置，否则灾难恢复可能失败。**
@@ -61,7 +61,7 @@ ms.locfileid: "23108195"
 
     ![故障转移摘要](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev11.png)
 
-    有关详细说明，请参阅[故障转移到另一个物理设备](#fail-over-to-another-physical-device)。
+    有关详细说明，请参阅“故障转移到另一个物理设备”。
 
 7. 会创建一个可以通过“作业”边栏选项卡监视的设备还原作业。
 

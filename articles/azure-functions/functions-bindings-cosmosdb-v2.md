@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 6748998e87de7f0d5ea41a10ba16600aa7b31505
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 269ea0162f85c7bd632e0528680fc8b0e2885aa9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972033"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818118"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 绑定
 
@@ -57,7 +57,7 @@ Azure Cosmos DB 触发器使用 [Azure Cosmos DB 更改源](../cosmos-db/change-
 * [JavaScript](#trigger---javascript-example)
 * [Python](#trigger---python-example)
 
-[跳过触发器示例](#trigger---attributes)
+跳过触发器示例
 
 ### <a name="trigger---c-example"></a>触发器 - C# 示例
 
@@ -93,7 +93,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[跳过触发器示例](#trigger---attributes)
+跳过触发器示例
 
 ### <a name="trigger---c-script-example"></a>触发器 - C# 脚本示例
 
@@ -131,7 +131,7 @@ C# 脚本代码如下所示：
     }
 ```
 
-[跳过触发器示例](#trigger---attributes)
+跳过触发器示例
 
 ### <a name="trigger---javascript-example"></a>触发器 - JavaScript 示例
 
@@ -199,7 +199,7 @@ JavaScript 代码如下所示：
 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 Cosmos DB 的参数使用 `@CosmosDBTrigger` 注释。  可以将此注释与本机 Java 类型、POJO 或使用了 Optional<T> 的可为 null 的值一起使用。
 
 
-[跳过触发器示例](#trigger---attributes)
+跳过触发器示例
 
 ### <a name="trigger---python-example"></a>触发器 - Python 示例
 
@@ -1727,7 +1727,7 @@ public class DocsFromRouteSqlQuery {
 
 在 C# 函数和 F# 函数中，函数成功退出后，通过命名输入参数对输入文档所做的任何更改都会自动保存。
 
-在 JavaScript 函数中，函数退出时不会自动进行更新。 请改用 `context.bindings.<documentName>In` 和 `context.bindings.<documentName>Out` 进行更新。 请参阅 [JavaScript 示例](#input---javascript-example)。
+在 JavaScript 函数中，函数退出时不会自动进行更新。 请改用 `context.bindings.<documentName>In` 和 `context.bindings.<documentName>Out` 进行更新。 请参阅 JavaScript 示例。
 
 ## <a name="output"></a>输出
 
@@ -2342,7 +2342,7 @@ public String cosmosDbQueryById(
 }
 ```  
 
-|属性  |默认 | Description |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
 |GatewayMode|网关|连接到 Azure Cosmos DB 服务时该函数使用的连接模式。 选项为 `Direct` 和 `Gateway`|
 |协议|Https|连接到 Azure Cosmos DB 服务时该函数使用的连接协议。  参阅[此处，了解两种模式的说明](../cosmos-db/performance-tips.md#networking)| 

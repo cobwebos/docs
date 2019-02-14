@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: ba5e3fae04c47420d90aa1bc800a3dbd0e5ba984
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: ff198bc5e921f1c78e2d7cb7c80bfe0615fc91bc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364425"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003255"
 ---
-# <a name="encrypting-your-content-with-storage-encryption"></a>通过存储加密来加密内容
+# <a name="encrypting-your-content-with-storage-encryption"></a>通过存储加密来加密内容 
 
 强烈建议通过 AES-256 位加密在本地加密内容，然后将其上传到 Azure 存储中以加密形式静态存储相关内容。
 
@@ -42,7 +42,7 @@ ms.locfileid: "46364425"
 
 ### <a name="storage-side-encryption"></a>存储端加密
 
-|加密选项|Description|媒体服务 v2|媒体服务 v3|
+|加密选项|说明|媒体服务 v2|媒体服务 v3|
 |---|---|---|---|
 |媒体服务存储加密|AES-256 加密，媒体服务管理的密钥|支持<sup>(1)</sup>|不支持<sup>(2)</sup>|
 |[静态数据的存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|由 Azure 存储提供的服务器端加密，由 Azure 或客户管理的密钥|支持|支持|
@@ -109,7 +109,7 @@ AMS 存储加密将 **AES-CTR** 模式加密应用于整个文件。  AES-CTR �
 
     对于存储空间加密，应在请求正文中包括以下属性。
 
-    请求正文属性    | Description
+    请求正文属性    | 说明
     ---|---
     ID | 使用以下格式生成 ContentKey ID：“nb:kid:UUID:<NEW GUID>”。
     ContentKeyType | 内容密钥类型是一个整数，用于定义密钥。 存储加密格式的值为 1。

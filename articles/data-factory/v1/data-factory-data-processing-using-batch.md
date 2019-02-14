@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e053fa52b7b7cea1c35b68a0f2079eb5a590a76a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: adb9fb649d934d08ea546759bcf4733a1c6d9080
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021571"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822742"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用数据工厂和 Batch 来处理大规模数据集
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "54021571"
 
 本文介绍示例解决方案的体系结构，该解决方案通过计划的自动方式移动并处理大规模数据集。 它还提供使用数据工厂和 Azure Batch 来实现此解决方案的端到端演练。
 
-本文比一般文章更长，因为其中包含了整个示例解决方案的演练。 如果不熟悉 Batch 和数据工厂，可以了解这些服务以及如何将其结合使用。 如果你了解有关这些服务的一些信息，并且在设计/构建解决方案，则可以重点了解本文的[体系结构部分](#architecture-of-sample-solution)。 如果要开发原型或解决方案，则可能要尝试[演练](#implementation-of-sample-solution)中的分步说明。 欢迎你对此内容进行评论以及说明使用情况。
+本文比一般文章更长，因为其中包含了整个示例解决方案的演练。 如果不熟悉 Batch 和数据工厂，可以了解这些服务以及如何将其结合使用。 如果你了解有关这些服务的一些信息，并且在设计/构建解决方案，则可以重点了解本文的体系结构部分。 如果要开发原型或解决方案，则可能要尝试演练中的分步说明。 欢迎你对此内容进行评论以及说明使用情况。
 
 首先来了解一下数据工厂和 Batch 服务如何帮助处理云中的大型数据集。     
 
@@ -108,7 +108,7 @@ ms.locfileid: "54021571"
 
 1. 在“池”边栏选项卡中，选择工具栏上的“添加”按钮以添加池。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 输入池的 ID（“池 ID”）。 记下池的 ID。 创建数据工厂解决方案时需要它。
+   a. 输入池的 ID（“池 ID”）。 记下池的 ID。 创建数据工厂解决方案时需要它。
 
    b. 为“操作系统系列”设置指定“Windows Server 2012 R2”。
 
@@ -177,7 +177,7 @@ public IDictionary<string, string> Execute(
 #### <a name="procedure-create-the-custom-activity"></a>过程：创建自定义活动
 1. 在 Visual Studio 中创建 .NET 类库项目。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 启动 Visual Studio 2012/2013/2015。
+   a. 启动 Visual Studio 2012/2013/2015。
 
    b. 选择“文件” > “新建” > “项目”。
 
@@ -525,7 +525,7 @@ test custom activity Microsoft test custom activity Microsoft
 #### <a name="step-1-create-the-data-factory"></a>步骤 1：创建数据工厂
 1. 登录到 [Azure 门户](https://portal.azure.com/)之后，请执行以下步骤：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择左侧菜单上的“新建”。
+   a. 选择左侧菜单上的“新建”。
 
    b. 选择“新建”边栏选项卡中的“数据 + 分析”。
 
@@ -568,7 +568,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. 在 JSON 脚本中：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将**帐户名称**替换为 Batch 帐户的名称。
+   a. 将**帐户名称**替换为 Batch 帐户的名称。
 
    b. 将**访问密钥**替换为 Batch 帐户的访问密钥。
 

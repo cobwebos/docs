@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 214f32c4dc35661480b96477caf0cdf6243c75a8
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 703b8a7a094d0ea6f5b5dedaf02a218b407269d3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094234"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813794"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -28,7 +28,7 @@ ms.locfileid: "55094234"
 
 Azure Functions Core Tools 有两个版本。 使用的版本取决于本地开发环境、[所选的语言](supported-languages.md)以及所需的支持级别：
 
-+ [1.x 版](#v1)：支持 1.x 版运行时。 此 Tools 版本仅在 Windows 计算机上受支持，需从 [npm 包](https://docs.npmjs.com/getting-started/what-is-npm)安装。 借助此版本，可以使用不受官方支持的试验性语言创建函数。 有关详细信息，请参阅 [Azure Functions 中支持的语言](supported-languages.md)。
++ 1.x 版：支持 1.x 版运行时。 此 Tools 版本仅在 Windows 计算机上受支持，需从 [npm 包](https://docs.npmjs.com/getting-started/what-is-npm)安装。 借助此版本，可以使用不受官方支持的试验性语言创建函数。 有关详细信息，请参阅 [Azure Functions 中支持的语言](supported-languages.md)。
 
 + [2.x 版](#v2)：支持 [2.x 版运行时](functions-versions.md)。 此版本支持 [Windows](#windows-npm)、[macOS](#brew) 和 [Linux](#linux)。 使用特定于平台的包管理器或 npm 进行安装。
 

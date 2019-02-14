@@ -9,16 +9,16 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: d5425cf7c2ea39770bbc3e9368f34d57d7279842
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: e3d2b377df6a3ed8312ca8b2563fe466236c2741
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53534870"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818288"
 ---
 # <a name="monitor-b2b-messages-with-azure-log-analytics-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的 Azure Log Analytics 监视 B2B 消息
 
-在集成帐户中的贸易合作伙伴之间建立 B2B 通信后，这些合作伙伴可以交换消息。 若要检查此通信是否按预期方式工作，可使用 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) 监视集成帐户的 AS2、X12 和 EDIFACT 消息，并为其设置诊断日志记录。 此服务可监视云和本地环境，有助于保持其可用性和性能以及收集运行时详细信息和事件以进行更丰富的调试。 此外可以[将此数据与其他服务一起使用](#extend-diagnostic-data)，例如 Azure 存储和 Azure 事件中心。
+在集成帐户中的贸易合作伙伴之间建立 B2B 通信后，这些合作伙伴可以交换消息。 若要检查此通信是否按预期方式工作，可使用 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) 监视集成帐户的 AS2、X12 和 EDIFACT 消息，并为其设置诊断日志记录。 此服务可监视云和本地环境，有助于保持其可用性和性能以及收集运行时详细信息和事件以进行更丰富的调试。 此外可以将此数据与其他服务一起使用，例如 Azure 存储和 Azure 事件中心。
 
 > [!NOTE]
 > 此页面可能仍然引用了 Microsoft Operations Management Suite (OMS)，它将[于 2019 年 1 月停用](../azure-monitor/platform/oms-portal-transition.md)，但尽可能使用 Azure Log Analytics 替换这些步骤。 
@@ -44,7 +44,7 @@ ms.locfileid: "53534870"
 1. 现可找到集成帐户并进行选择。 在筛选器列表中，选择应用到集成帐户的值。
 完成后，选择“添加诊断设置”。
 
-   | 属性 | 值 | Description | 
+   | 属性 | 值 | 说明 | 
    |----------|-------|-------------|
    | **订阅** | <*Azure-subscription-name*> | 与集成帐户关联的 Azure 订阅 | 
    | **资源组** | <*Azure-resource-group-name*> | 集成帐户的 Azure 资源组 | 
@@ -86,7 +86,7 @@ ms.locfileid: "53534870"
 1. 现可找到集成帐户并进行选择。 在筛选器列表中，选择应用到集成帐户的值。
 完成后，选择“添加诊断设置”。
 
-   | 属性 | 值 | Description | 
+   | 属性 | 值 | 说明 | 
    |----------|-------|-------------|
    | **订阅** | <*Azure-subscription-name*> | 与集成帐户关联的 Azure 订阅 | 
    | **资源组** | <*Azure-resource-group-name*> | 集成帐户的 Azure 资源组 | 

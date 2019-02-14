@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: e96c637e3c01ccfc27afa967d830c7d0254d11e7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 5eecd750642610737d346c5c270349e285106e95
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104229"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820430"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 
@@ -64,7 +64,7 @@ ms.locfileid: "55104229"
 **错误代码**：UserErrorKeyvaultPermissionsNotConfigured <br>
 **错误消息**：备份服务对 Key Vault 没有足够的权限，无法备份已加密的 VM。 <br>
 
-要使备份操作在加密的 VM 上成功，该服务必须具有访问密钥保管库的权限。 这可以使用 [Azure 门户](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption#provide-permissions-to-backup)或通过 [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection) 来完成
+要使备份操作在加密的 VM 上成功，该服务必须具有访问密钥保管库的权限。 这可以使用 [Azure 门户](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)或通过 [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection) 来完成
 
 ## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - 由于虚拟机上无网络连接，快照操作失败
 
@@ -97,7 +97,7 @@ ms.locfileid: "55104229"
 **原因 2：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **原因 3：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **原因 4：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)**  
-**原因 5：[备份服务因资源组锁定而无权删除旧的还原点](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)** <br>
+**原因 5：备份服务因资源组锁定而无权删除旧的还原点** <br>
 **原因 6：[VM 无法访问 Internet](#the-vm-has-no-internet-access)**
 
 ## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-1023gb"></a>UserErrorUnsupportedDiskSize - 当前，Azure 备份不支持大于 1023GB 的磁盘大小

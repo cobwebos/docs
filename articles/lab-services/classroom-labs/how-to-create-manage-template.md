@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 2f34b6c71c448f7273ba7477f18f5abb8f89cdec
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: d0942d3465811687937ce113e664fbf3f91277d0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391189"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815236"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>在 Azure 实验室服务中创建和管理课堂模板
 实验室中的模板是基础虚拟机映像，用户的所有虚拟机均依据其创建。 设置模板虚拟机，为其准确配置需要提供给实验室用户的内容。 你可以提供实验室用户看到的模板的名称和描述。 然后发布此模板，让模板 VM 的实例可供实验室用户使用。 发布模板时，Azure 实验室服务会使用该模板在实验室中创建 VM。 在此过程中创建的 VM 数等于允许进入实验室的最大用户数，这可以在实验室的使用策略中设置。 所有虚拟机的配置都与模板相同。
@@ -72,7 +72,7 @@ ms.locfileid: "54391189"
 
         > [!WARNING]
         > 发布后无法取消发布。 
-    2. 若要在以后发布，请选择“保存供以后发布”。 可以在完成向导后发布模板 VM。 有关如何在完成向导后进行配置和发布的详细信息，请参阅[如何管理课堂实验室](how-to-manage-classroom-labs.md)一文中的[发布模板](#publish-the-template)部分。
+    2. 若要在以后发布，请选择“保存供以后发布”。 可以在完成向导后发布模板 VM。 有关如何在完成向导后进行配置和发布的详细信息，请参阅[如何管理课堂实验室](how-to-manage-classroom-labs.md)一文中的“发布模板”部分。
 
         ![发布模板](../media/tutorial-setup-classroom-lab/publish-template.png)
 11. 可以查看**发布模板的进度**。 此过程最长可能需要花费一小时。 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: fe647f96d8b992d8d5c1682d588bbdbba0ddf43b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 921788d1cd3ff24140bdff0c9b6a181e4ab7f0a8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055126"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816198"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>使用 PowerShell 管理流量管理器
 
@@ -55,9 +55,9 @@ $profile = New-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName M
 
 下表描述了参数：
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
-| 名称 |流量管理器配置文件资源的资源名称。 同一资源组中的配置文件必须具有唯一的名称。 此名称不同于用于 DNS 查询的 DNS 名称。 |
+| Name |流量管理器配置文件资源的资源名称。 同一资源组中的配置文件必须具有唯一的名称。 此名称不同于用于 DNS 查询的 DNS 名称。 |
 | ResourceGroupName |包含配置资源的资源组的名称。 |
 | TrafficRoutingMethod |指定用于确定在响应 DNS 查询时返回的终结点的流量路由方法。 可能的值为“Performance”、“Weighted”或“Priority”。 |
 | RelativeDnsName |指定此流量管理器配置文件提供的 DNS 名称中的主机名部分。 将此值与 Azure 流量管理器使用的 DNS 域名相结合，可以构成配置文件的完全限定域名 (FQDN)。 例如，设置“contoso”值将成为“contoso.trafficmanager.net”。 |
@@ -66,7 +66,7 @@ $profile = New-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName M
 | MonitorPort |指定用于监视终结点运行状况的 TCP 端口。 |
 | MonitorPath |指定用于探测终结点运行状况的终结点域名的相对路径。 |
 
-该 cmdlet 会在 Azure 中创建流量管理器配置文件，并将相应的配置文件对象返回至 PowerShell。 此时，配置文件不包含终结点。 有关将终结点添加到流量管理器配置文件的详细信息，请参阅[添加流量管理器终结点](#adding-traffic-manager-endpoints)。
+该 cmdlet 会在 Azure 中创建流量管理器配置文件，并将相应的配置文件对象返回至 PowerShell。 此时，配置文件不包含终结点。 有关将终结点添加到流量管理器配置文件的详细信息，请参阅“添加流量管理器终结点”。
 
 ## <a name="get-a-traffic-manager-profile"></a>获取流量管理器配置文件
 

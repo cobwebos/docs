@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 以简单、经济的方式开始使用语音服务。 可利用 30 天免费试用了解此服务的功能并确定它能否满足应用程序需求。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 02/08/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 2317341d508f6e4f681c396f649179691f5485f3
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 203cb07c9450a590b45caa66092fe0199d985058
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208885"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978147"
 ---
 # <a name="try-the-speech-service-for-free"></a>免费试用语音服务
 

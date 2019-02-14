@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: yushwang
-ms.openlocfilehash: 4a8db246f02d68a7924b9a09a1b2fc1f5bcf2edc
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e575fac61a1c5d9351391d39d200b87e34ff26cd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467219"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817234"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>示例配置：Cisco ASA 设备（IKEv2/无 BGP）
 本文提供将 Cisco 自适应安全 (ASA) 设备连接到 Azure VPN 网关的示例配置。 该示例适用于运行 IKEv2 而不使用边界网关协议 (BGP) 的 Cisco ASA 设备。 
@@ -44,7 +44,7 @@ Azure VPN 网关使用标准 IPsec/IKE 协议套件建立站点到站点 (S2S) V
 > （可选）可以根据[关于加密要求](vpn-gateway-about-compliance-crypto.md)中所述，为特定的连接准确指定加密算法与密钥长度的组合。 如果准确指定了算法与密钥强度的组合，请确保在 VPN 设备上使用相应的规范。
 
 ## <a name="single-vpn-tunnel"></a>单一 VPN 隧道
-此配置由 Azure VPN 网关与本地 VPN 设备之间的单个 S2S VPN 隧道构成。 （可选）可以配置 [跨 VPN 隧道的 BGP](#bgp)。
+此配置由 Azure VPN 网关与本地 VPN 设备之间的单个 S2S VPN 隧道构成。 （可选）可以跨 VPN 隧道配置 BGP。
 
 ![单一 S2S VPN 隧道](./media/vpn-gateway-3rdparty-device-config-cisco-asa/singletunnel.png)
 
@@ -114,8 +114,8 @@ Azure VPN 网关使用标准 IPsec/IKE 协议套件建立站点到站点 (S2S) V
   - 外部接口名称："outside"
   - Azure_Gateway_Public_IP
   - OnPrem_Device_Public_IP
-  - IKE：IKE Pre_Shared_Key
-  - 虚拟网络和本地网络网关名称："VNetName" 和 "LNGName"
+  - IKE：**Pre_Shared_Key**
+  - 虚拟网络和本地网关名称：**VNetName** 和 **LNGName**
   - 虚拟网络和本地网络地址前缀
   - 正确的网络掩码
 
@@ -248,7 +248,7 @@ crypto ipsec ikev2 ipsec-proposal AES-256
  protocol esp integrity  sha-1
 exit
 !
-!     > Set access list & traffic selectors, PFS, IPsec protposal, SA lifetime
+!     > Set access list & traffic selectors, PFS, IPsec proposal, SA lifetime
 !       - This sample uses "Azure-<VNetName>-map" as the crypto map name
 !       - ASA supports only one crypto map per interface, if you already have
 !         an existing crypto map assigned to your outside interface, you must use

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: fada29145334a45872aa64b3cc0fe2e859b52568
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 311e2ee65b2c24eb1c288a2161bf371732aea452
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632885"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817652"
 ---
 # <a name="analyze-flight-delay-data-by-using-apache-hive-in-hdinsight"></a>使用 HDInsight 中的 Apache Hive 分析航班延误数据
 [Apache Hive](https://hive.apache.org/) 提供了通过类似于 SQL 的脚本语言（称为 *[HiveQL][hadoop-hiveql]*）运行 [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) 作业的方法，此方法可用于对大量数据进行汇总、查询和分析。
@@ -67,7 +67,7 @@ PowerShell 脚本的一部分将数据从公共 blob 容器复制到群集的默
 下表列出了本教程中使用的文件：
 
 <table border="1">
-<tr><th>文件</th><th>Description</th></tr>
+<tr><th>文件</th><th>说明</th></tr>
 <tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql</td><td>Hive 作业所用的 HiveQL 脚本文件。 此脚本已上传到具有公共访问权限的 Azure Blob 存储帐户。 <a href="#appendix-b">附录 B</a> 提供了有关准备此文件以及将其上传到自己的 Azure Blob 存储帐户的说明。</td></tr>
 <tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data</td><td>Hive 作业的输入的数据。 这些数据已上传到具有公共访问权限的 Azure Blob 存储帐户。 <a href="#appendix-a">附录 A</a> 提供了有关获取数据以及将数据上传到自己的 Azure Blob 存储帐户的说明。</td></tr>
 <tr><td>\tutorials\flightdelays\output</td><td>Hive 作业的输出路径。 默认容器用于存储输出数据。</td></tr>
@@ -240,7 +240,7 @@ Hadoop MapReduce 属于批处理。 运行 Hive 作业时，最具成本效益�
 上传数据文件和 [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) 脚本文件（请参阅[附录 B](#appendix-b)）需要进行规划。 思路是在创建 HDInsight 群集和运行 Hive 作业之前存储数据文件和 HiveQL 文件。 可以使用两个选项：
 
 * **使用由 HDInsight 群集用作默认文件系统的同一 Azure 存储帐户。** 由于 HDInsight 群集将具有存储帐户访问密钥，因此，无需进行任何其他更改。
-* **使用与 HDInsight 群集默认文件系统不同的 Azure 存储帐户。** 如果选择了此项，则必须修改[创建 HDInsight 群集和运行 Apache Hive/Sqoop 作业](#runjob)中的 Windows PowerShell 脚本的创建部分，以链接该存储帐户作为额外的存储帐户。 有关说明，请参阅[在 HDInsight 中创建 Apache Hadoop 群集][hdinsight-provision]。 这样，HDInsight 群集就会知道存储帐户的访问密钥。
+* **使用与 HDInsight 群集默认文件系统不同的 Azure 存储帐户。** 如果选择了此项，则必须修改创建 HDInsight 群集和运行 Apache Hive/Sqoop 作业中的 Windows PowerShell 脚本的创建部分，以链接该存储帐户作为额外的存储帐户。 有关说明，请参阅[在 HDInsight 中创建 Apache Hadoop 群集][hdinsight-provision]。 这样，HDInsight 群集就会知道存储帐户的访问密钥。
 
 > [!NOTE]  
 > 数据文件的 WASB 路径会在 HiveQL 脚本文件中进行硬编码。 必须相应地更新该路径。

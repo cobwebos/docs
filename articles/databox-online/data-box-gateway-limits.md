@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: alkohli
-ms.openlocfilehash: f01fb88bf0ea726b421111a262bdfdd68cd3d38c
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: acf455bff739666712917008dc8090c6a95c6dc4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388419"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815637"
 ---
 # <a name="azure-data-box-gateway-limits-preview"></a>Azure Data Box Gateway 限制（预览版）
 
@@ -26,7 +26,7 @@ ms.locfileid: "54388419"
 
 ## <a name="data-box-gateway-service-limits"></a>Data Box Gateway 服务限制
 
-- 在此版本中，该服务仅在美国、欧洲和亚太地区的某些区域中可用。 有关详细信息，请转到[适用区域](#data-box-gateway-overview#region-availability)。 存储帐户的物理位置应当最靠近其中部署了设备的区域（可能不同于服务地区）。
+- 在此版本中，该服务仅在美国、欧洲和亚太地区的某些区域中可用。 有关详细信息，请转到“区域可用性”。 存储帐户的物理位置应当最靠近其中部署了设备的区域（可能不同于服务地区）。
 - 不支持将 Data Box Gateway 资源移动到不同的订阅或资源组。 有关更多详细信息，请转到[将资源移动到新的资源组或订阅](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)。
 
 ## <a name="data-box-gateway-device-limits"></a>Data Box Gateway 设备限制

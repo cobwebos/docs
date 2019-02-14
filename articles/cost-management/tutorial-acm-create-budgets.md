@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/04/2019
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 7ffceaf761d459667e4118e3e10b733898ea2710
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: b41d086c092f3b18715d8fb70cd1a487a97c6869
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053970"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814038"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建和管理 Azure 预算
 
@@ -35,7 +35,9 @@ ms.locfileid: "54053970"
 
 ## <a name="prerequisites"></a>先决条件
 
-预算适用于所有 Azure EA 客户。 必须有 Azure EA 订阅的读取访问权限才能查看预算。 若要创建和管理预算，必须具有参与者权限。 可以为 EA 订阅和资源组创建单独的预算。 但是，不能为 EA 计费帐户创建预算。
+各种 Azure 帐户类型都支持预算。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 若要查看预算，你至少需要对 Azure 帐户具有读取访问权限。
+
+ 对于 Azure EA 订阅，必须拥有读取访问权限才能查看预算。 若要创建和管理预算，必须具有参与者权限。 可以为 EA 订阅和资源组创建单独的预算。 但是，不能为 EA 计费帐户创建预算。
 
 每个订阅支持以下 Azure 权限，以便按用户和组进行预算：
 
@@ -59,7 +61,7 @@ ms.locfileid: "54053970"
 
 ![Azure 门户中显示的成本管理预算](./media/tutorial-acm-create-budgets/budgets01.png)
 
-在“创建预算”窗口中，输入预算名称和预算金额。 然后，选择月、季或年作为预算期限。 接下来，选择结束日期。 预算需要至少一个成本阈值（预算百分比）和相应的电子邮件地址。 可以选择在单个预算中包括多达五个阈值和五个电子邮件地址。 当满足预算阈值时，通常将在八小时内接收到电子邮件通知。
+在“创建预算”窗口中，输入预算名称和预算金额。 然后，选择月、季或年作为预算期限。 接下来，选择结束日期。 预算需要至少一个成本阈值（预算百分比）和相应的电子邮件地址。 可以选择在单个预算中包括多达五个阈值和五个电子邮件地址。 当满足预算阈值时，通常将在八小时内接收到电子邮件通知。 有关通知的详细信息，请参阅[使用成本警报](cost-mgt-alerts-monitor-usage-spending.md)。
 
 下面是一个示例，说明了如何创建金额为 4,500 美元的每月预算。 达到预算的 90% 时，会生成电子邮件警报。
 

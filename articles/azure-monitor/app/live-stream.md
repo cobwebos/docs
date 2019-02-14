@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/28/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: f369eb6241a8eb3d44a0a38e243c533da47103e1
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: b741528b2770314be7e851f38817611d6908352b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104594"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814939"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>实时指标流：以 1 秒的延迟进行监视和诊断
 
@@ -64,7 +64,7 @@ ms.locfileid: "55104594"
 |按需|打开实时指标时会流式处理数据|每当安装并启用 SDK 时会发送数据|
 |免费|实时流数据不收取费用|遵从[定价](../../azure-monitor/app/pricing.md)中的标准
 |采样|传输所有选择的指标和计数器。 对失败和堆栈跟踪进行采样。 不应用 TelemetryProcessors。|可能会对事件进行[采样](../../azure-monitor/app/api-filtering-sampling.md)|
-|控制通道|筛选器的控制信号会发送到 SDK。 建议[确保此通道的安全](#secure-channel)。|通信为单向通信，即通向门户|
+|控制通道|筛选器的控制信号会发送到 SDK。 建议确保此通道的安全。|通信为单向通信，即通向门户|
 
 
 ## <a name="select-and-filter-your-metrics"></a>选择和筛选指标

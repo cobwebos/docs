@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: aafc960c0c26a94a8be672d0d72a46dfcb559013
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 13b82aa4f256bf0ec2d0805e85241d72e115d737
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157000"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810195"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>使用 Azure 多重身份验证时的登录体验
 > [!NOTE]
@@ -31,8 +31,8 @@ ms.locfileid: "55157000"
 | --- |
 | [通过拨打我的手机或办公电话](#signing-in-with-a-phone-call) |
 | [通过向我的手机发送短信](#signing-in-with-a-text-message)
-| [使用来自 Microsoft 验证器应用的通知](#signing-in-with-the-microsoft-authenticator-app-using-notification) |
-| [使用来自 Microsoft 验证器应用的验证代码](#signing-in-with-the-microsoft-authenticator-app-using-verification-code) |
+| 使用来自 Microsoft Authenticator 应用的通知 |
+| 使用来自 Microsoft Authenticator 应用的验证码 |
 | [使用备用方法，因为我现在无法使用首选方法](#signing-in-with-an-alternate-method) |
 
 ## <a name="signing-in-with-a-phone-call"></a>电话登录
@@ -87,4 +87,4 @@ ms.locfileid: "55157000"
 
 了解如何[管理双重验证设置](multi-factor-authentication-end-user-manage-settings.md)。
 
-了解如何[开始使用 Microsoft 验证器应用](microsoft-authenticator-app-how-to.md)，以便使用通知（而不是短信和电话呼叫）登录。
+了解如何[开始使用 Microsoft 验证器应用](user-help-auth-app-download-install.md)，以便使用通知（而不是短信和电话呼叫）登录。

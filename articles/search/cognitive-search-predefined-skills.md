@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 8f87cb68aeea8b953b9883e92fd5080569c6cdd0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: eddbb41f346661e86c64b1dd703321f434c5bbb6
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203685"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770412"
 ---
 # <a name="predefined-skills-for-content-enrichment-azure-search"></a>内容扩充的预定义技能（Azure 搜索）
 
@@ -28,19 +28,23 @@ ms.locfileid: "55203685"
 
 ## <a name="predefined-skills"></a>预定义技能
 
-多种技能可在其使用或生成的对象中灵活应用。 一般来说，大多数技能都基于预先定型的模型，这意味着你无法使用自己的定型数据来定型模型。 有关创建自定义技能的指导，请参阅[如何定义自定义界面](cognitive-search-custom-skill-interface.md)和[示例：创建自定义技能](cognitive-search-create-custom-skill-example.md)。 下表枚举并介绍了 Microsoft 提供的技能。 
+多种技能可在其使用或生成的对象中灵活应用。 一般来说，大多数技能都基于预先定型的模型，这意味着你无法使用自己的定型数据来定型模型。 下表枚举并介绍了 Microsoft 提供的技能。 
 
 | 技能 | 说明 |
 |-------|-------------|
 | [Microsoft.Skills.Text.KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | 此技能使用预定型模型来检测基于术语放置、语言规则、与其他术语的接近度以及该术语在源数据内的异常程度的重要短语。 |
 | [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | 该技能使用预定型模型来检测使用语言的语言类型（每个文档一个语言 ID）。 在同一文本段中使用多种语言时，输出是主要使用的语言的 LCID。|
-| [Microsoft.Skills.Text.MergerSkill](cognitive-search-skill-textmerger.md) | 将字段集合中的文本合并到单个字段中。  |
+| [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md) | 将字段集合中的文本合并到单个字段中。  |
 | [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) | 此技能使用预训练模型为固定的一组类别建立实体：人员、位置、组织、电子邮件、URL、日期时间字段。 |
 | [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)  | 此技能使用预定型模型根据记录对记录中的正面或负面情绪进行评分。 得分介于 0 和 1 之间。 当无法检测到情绪以及文本被认为是中性时，这两个 null 事例都会出现中性分数。  |
 | [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md) | 将文本拆分为多页，以便以增量方式扩充或增加内容。 |
 | [Microsoft.Skills.Vision.ImageAnalysisSkill](cognitive-search-skill-image-analysis.md) | 此技能使用图像检测算法来识别图像的内容并生成文本说明。 |
 | [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md) | 光学字符识别。 |
 | [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md) | 将输出映射到复杂类型（多部分数据类型，可用于全名、多行地址或姓氏和个人标识符的组合）。 |
+| [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md) | 通过向自定义 Web API 执行 HTTP 调用，实现认知搜索管道的可扩展性 |
+
+
+有关创建[自定义技能](cognitive-search-custom-skill-web-api.md)的指导，请参阅[如何定义自定义界面](cognitive-search-custom-skill-interface.md)和[示例：创建自定义技能](cognitive-search-create-custom-skill-example.md)。
 
 ## <a name="see-also"></a>另请参阅
 

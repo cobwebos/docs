@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: ade53ba29d165b3b33ef25dabda25c4e60022608
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 4346b347994f49774584caf31a96ff2f81fdc0e1
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "40133817"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55701210"
 ---
 配置/进程服务器要求
 
@@ -36,13 +36,24 @@ IIS | - 无预先存在的默认网站 <br> - 端口 443 上没有预先存在�
 | 
 网络设置 | 
 IP 地址类型 | 静态 
-Internet 访问权限 | 服务器需要访问这些 URL（直接或通过代理）： <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com  <br> - https:\//management.azure.com <br> - *.services.visualstudio.com <br> - time.nist.gov <br> - time.windows.com <br> OVF 还需要访问以下 URL： <br> - https:\//login.microsoftonline.com <br> - https:\//secure.aadcdn.microsoftonline-p.com <br> - https:\//login.live.com  <br> - https:\//auth.gfx.ms <br> - https:\//graph.windows.net <br> - https:\//login.windows.net <br> - https:\//www.live.com <br> - https:\//www.microsoft.com <br> - https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi 
 端口 | 443（控制通道协调）<br>9443（数据传输） 
 NIC 类型 | VMXNET3（如果配置服务器是 VMware VM）
- | 
+ |
+**Internet 访问**  服务器需要访问以下 URL（直接或通过代理）：|
+\*.backup.windowsazure.com | 用于复制的数据传输和协调
+\*.store.core.windows.net | 用于复制的数据传输和协调
+\*.blob.core.windows.net | 用于访问存储所复制数据的存储帐户
+\*.hypervrecoverymanager.windowsazure.com | 用于复制管理操作和协调
+https:\//management.azure.com | 用于复制管理操作和协调 
+*.services.visualstudio.com | 用于遥测数据（可选）
+time.nist.gov | 用于检查系统时间与全球时间之间的时间同步。
+time.windows.com | 用于检查系统时间与全球时间之间的时间同步。
+- https:\//login.microsoftonline.com <br> - https:\//secure.aadcdn.microsoftonline-p.com <br> - https:\//login.live.com  <br> - https:\//graph.windows.net <br> - https:\//login.windows.net <br> - https:\//www.live.com <br> - https:\//www.microsoft.com | OVF 设置需要访问以下这些 URL： 它们由 Azure Active Directory 用于访问控制和标识管理
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 完成 MySQL 下载
+|
 要安装的软件 | 
 VMware vSphere PowerCLI | 如果配置服务器在 VMware VM 上运行，则应安装 [PowerCLI 版本 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1)。
-MYSQL | 应安装 MySQL。 可以手动安装，或者让 Site Recovery 进行安装。
+MYSQL | 应安装 MySQL。 可以手动安装，或者让 Site Recovery 进行安装。 （有关详细信息，请参阅[配置设置](../articles/site-recovery/vmware-azure-deploy-configuration-server.md#configure-settings)）
 
 配置/进程服务器大小要求
 

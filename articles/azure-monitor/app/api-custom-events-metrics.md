@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: bbe29f112d752be432c0f922b1cd07b8afe2d45e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: d67085d2e90e318a8f134103f0798554b8967d6d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232462"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814411"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -774,7 +774,7 @@ appInsights.setAuthenticatedUserContext(validatedId, accountId);
 
 *属性*是可以在使用情况报告中用来筛选遥测数据的字符串值。 例如，如果应用提供多种游戏，可以将游戏的名称附加到每个事件，了解哪些游戏更受欢迎。
 
-字符串长度限制为 8192。 （如果想要发送大型数据区块，请使用消息参数 [TrackTrace](#track-trace)。）
+字符串长度限制为 8192。 （如果想要发送大型数据区块，请使用消息参数 TrackTrace。）
 
 *指标*是能够以图形方式呈现的数字值。 例如，可以查看玩家的分数是否逐渐增加。 可以根据连同事件一起发送的属性对图表进行分段，以便获取不同游戏的独立图形或堆积图。
 
@@ -992,7 +992,7 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 单个遥测调用可以重写其属性字典中的默认值。
 
-*对于 JavaScript Web 客户端*，请[使用 JavaScript 遥测初始值设定项](#js-initializer)。
+*对于 JavaScript Web 客户端*，请使用 JavaScript 遥测初始化表达式。
 
 若要向所有遥测数据（包括来自标准收集模块的数据）添加属性，请[实现 `ITelemetryInitializer`](../../azure-monitor/app/api-filtering-sampling.md#add-properties)。
 
@@ -1002,7 +1002,7 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 通过实现 `ITelemetryInitializer` [将属性添加到](../../azure-monitor/app/api-filtering-sampling.md#add-properties)遥测。 例如，可添加版本号或从其他属性计算得出的值。
 
-[筛选](../../azure-monitor/app/api-filtering-sampling.md#filtering)可以先修改或丢弃遥测数据，然后通过实现 `ITelemetryProcesor` 从 SDK 发送遥测数据。 可以控制要发送或丢弃的项，但必须考虑到这会给指标造成怎样的影响。 根据丢弃项的方式，有时你可能无法在相关项之间导航。
+[筛选](../../azure-monitor/app/api-filtering-sampling.md#filtering)可以先修改或丢弃遥测数据，然后通过实现 `ITelemetryProcessor` 从 SDK 发送遥测数据。 可以控制要发送或丢弃的项，但必须考虑到这会给指标造成怎样的影响。 根据丢弃项的方式，有时你可能无法在相关项之间导航。
 
 [采样](../../azure-monitor/app/api-filtering-sampling.md)是减少从应用发送到门户的数据量的打包解决方案。 它不会影响显示的指标。 且不影响通过在相关项（如异常、请求和页面视图）之间导航来诊断问题。
 

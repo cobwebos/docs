@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bad431c8958f7d381bb9c0410caa3a57c6e75c19
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5104d630e2b4e97b80a6fedfb6d863061c2722fb
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111075"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810535"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>部署 StorSimple 虚拟阵列 - 在 Hyper-V 中预配
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
@@ -37,7 +37,7 @@ ms.locfileid: "23111075"
 在开始之前，请确保：
 
 * 已完成[为 StorSimple 虚拟阵列准备门户](storsimple-virtual-array-deploy1-portal-prep.md)中的所有步骤。
-* 已从 Azure 门户下载 Hyper-V 的虚拟阵列映像。 有关详细信息，请参阅[为 StorSimple 虚拟阵列准备门户指南](storsimple-virtual-array-deploy1-portal-prep.md)中的**步骤 3：下载虚拟阵列映像**。
+* 已从 Azure 门户下载 Hyper-V 的虚拟阵列映像。 有关更多信息，请参阅**步骤 3：下载虚拟阵列映像**（在 [为 StorSimple 虚拟阵列准备门户指南](storsimple-virtual-array-deploy1-portal-prep.md)中）。
 
   > [!IMPORTANT]
   > 在 StorSimple 虚拟阵列上运行的软件只能结合 StorSimple Device Manager 服务使用。
@@ -118,7 +118,7 @@ ms.locfileid: "23111075"
 11. 满足最低要求需 4 个核心。 若要添加 4 个虚拟处理器，请在“Hyper-V 管理器”窗口中选择主机系统。 在“虚拟机”列表下的右窗格中，找到刚创建的虚拟机。 选择计算机名称，右键单击该名称后选择“设置”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image10.png)
-12. 在“设置”页的左窗格中，单击“处理器”。 在右窗格中，将“虚拟处理器数目”设置为 4（或 4 以上）。 单击“应用” 。
+12. 在“设置”页的左窗格中，单击“处理器”。 在右窗格中，将“虚拟处理器数目”设置为 4（或 4 以上）。 单击“应用”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image11.png)
 13. 若要满足最低要求，还需添加 500 GB 的虚拟数据磁盘。 在“设置”页中：
@@ -205,7 +205,7 @@ ms.locfileid: "23111075"
        >
        >
 
-如果设备不符合最低配置要求，则会在横幅文本中显示以下错误（如下所示）。 修改设备配置，使虚拟机有足够的资源来满足最低要求。 然后即可重新启动设备并与之进行连接。 请参阅[步骤 1：确保主机系统满足最低虚拟阵列要求](#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements)中的最低配置要求。
+如果设备不符合最低配置要求，则会在横幅文本中显示以下错误（如下所示）。 修改设备配置，使虚拟机有足够的资源来满足最低要求。 然后即可重新启动设备并与之进行连接。 请在“步骤 1：确保主机系统满足最低虚拟阵列要求”中参阅最低配置要求。
 
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image32.png)
 
