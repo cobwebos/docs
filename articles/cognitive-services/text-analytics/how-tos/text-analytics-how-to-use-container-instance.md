@@ -4,18 +4,18 @@ titleSuffix: Text Analytics -  Azure Cognitive Services
 description: 使用正在运行的示例将语言检测容器部署到 Azure Kubernetes 服务，并在 Web 浏览器中对其进行测试。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 8af5d60ff3e9deabb82f91c04f668703ed489440
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 00e2c143116550aa77d38b4bc93bbe2e0b41c331
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222025"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868338"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>将语言检测容器部署到 Azure Kubernetes 服务
 

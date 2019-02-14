@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: 494acc55001bd3180d345801ef8d62800dd5e837
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 492b15bddad598d65c15c48f04d3148c41cd3c7e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174020"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817523"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD 域服务 - 排查警报问题
 本文提供有关排查托管域中可能出现的任何警报问题的指南。
@@ -42,7 +42,7 @@ ms.locfileid: "55174020"
 | AADDS108 | Azure AD 域服务使用的订阅已移到另一个目录。Azure AD 域服务需在同一目录中具有活动的订阅才能正常运行。 | [在目录中移动了订阅](#aadds108-subscription-moved-directories) |
 | AADDS109 | 用于托管域的资源已删除。需要此资源才能让 Azure AD 域服务正常运行。 | [资源已删除](#aadds109-resources-for-your-managed-domain-cannot-be-found) |
 | AADDS110 | 选择用于部署 Azure AD 域服务的子网已满，没有空间用于保留需要创建的其他域控制器。 | [子网已满](#aadds110-the-subnet-associated-with-your-managed-domain-is-full) |
-| AADDS111 | *Azure AD 域服务用来为域提供服务的服务主体无权管理 Azure 订阅中的资源。 该服务主体需要获取权限才能为托管域提供服务。 * | [服务主体未经授权](#aadds111-service-principal-unauthorized) |
+| AADDS111 | *Azure AD 域服务用来为域提供服务的服务主体无权管理 Azure 订阅中的资源。 该服务主体需要获取权限才能为托管域提供服务。 * | 服务主体未经授权 |
 | AADDS112 | *我们发现，此域中虚拟网络的子网可能没有足够的 IP 地址。Azure AD 域服务在启用它的子网中至少需要两个可用的 IP 地址。我们建议在该子网中至少提供 3-5 个备用 IP 地址。如果在该子网中部署了其他虚拟机，从而耗尽了可用的 IP 地址，或者子网中可用 IP 地址数量有限制，则可能会发生这种情况。* | [IP 地址不足](#aadds112-not-enough-ip-address-in-the-managed-domain) |
 | AADDS113 | 检测到 Azure AD 域服务使用的资源处于意外状态，且无法恢复。 | [资源不可恢复](#aadds113-resources-are-unrecoverable) |
 | AADDS114 | *为 Azure AD 域服务部署选择的子网无效，且不可用。 * | [子网无效](#aadds114-subnet-invalid) |
@@ -201,7 +201,7 @@ Azure AD 域服务用来为域提供服务的服务主体无权管理 Azure 订�
 
 **解决方法：**
 
-1. 从租户中[删除托管域](#active-directory-ds-disable-aadds.md)。
+1. 从租户中删除托管域。
 2. 修复子网的 IP 地址范围
   1. 导航到 [Azure 门户中的虚拟网络页](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks)。
   2. 选择要用于 Azure AD 域服务的虚拟网络。

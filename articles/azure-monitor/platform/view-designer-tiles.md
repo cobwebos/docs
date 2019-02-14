@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
-ms.openlocfilehash: 034c82c2f52f0a4dbc19b49308d1ba4308716d45
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 5b01b55c8b2367861459069cc255840e883b9fc5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186797"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817374"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Log Analytics 中视图设计器磁贴的参考指南
 使用 Azure Log Analytics 中的视图设计器，可在 Azure 门户中创建自定义视图，用于显示 Log Analytics 工作区中的各种数据可视化效果。 本文针对自定义视图中可用的磁贴，提供设置方面的参考指南。
@@ -31,12 +31,12 @@ ms.locfileid: "53186797"
 
 下表描述了可用的视图设计器磁贴：  
 
-| 磁贴 | Description |
+| 磁贴 | 说明 |
 |:--- |:--- |
 | [数字](#number-tile) |查询中的记录数。 |
 | [两个数字](#two-numbers-tile) |两个不同查询中的记录数。 |
 | [圆环图](#donut-tile) | 基于一个查询的图表，中心显示汇总值。 |
-| [折线图和标注](#line-chart-amp-callout-tile) | 基于一个查询的折线图，并使用汇总值进行标注。 |
+| 折线图和标注 | 基于一个查询的折线图，并使用汇总值进行标注。 |
 | [折线图](#line-chart-tile) |基于一个查询的折线图。 |
 | [两条时间线](#two-timelines-tile) | 具有两个序列的柱状图，每个序列基于一个单独的查询。 |
 
@@ -47,10 +47,10 @@ ms.locfileid: "53186797"
 
 ![数字磁贴](media/view-designer-tiles/tile-number.png)
 
-| 设置 | Description |
+| 设置 | 说明 |
 |:--- |:--- |
-| 名称 |在磁贴顶部显示的文本。 |
-| Description |在磁贴名称下面显示的文本。 |
+| Name |在磁贴顶部显示的文本。 |
+| 说明 |在磁贴名称下面显示的文本。 |
 | **磁贴** | |
 | 图例 |在值下面显示的文本。 |
 | Query |运行的查询。 显示由查询返回的记录数。 |
@@ -65,10 +65,10 @@ ms.locfileid: "53186797"
 
 ![两个数字磁贴](media/view-designer-tiles/tile-two-numbers.png)
 
-| 设置 | Description |
+| 设置 | 说明 |
 |:--- |:--- |
-| 名称 |在磁贴顶部显示的文本。 |
-| Description |在磁贴名称下面显示的文本。 |
+| Name |在磁贴顶部显示的文本。 |
+| 说明 |在磁贴名称下面显示的文本。 |
 | **第一个磁贴** | |
 | 图例 |在值下面显示的文本。 |
 | Query |运行的查询。 显示由查询返回的记录数。 |
@@ -86,10 +86,10 @@ ms.locfileid: "53186797"
 
 ![圆环图磁贴](media/view-designer-tiles/tile-donut.png)
 
-| 设置 | Description |
+| 设置 | 说明 |
 |:--- |:--- |
-| 名称 |在磁贴顶部显示的文本。 |
-| Description |在磁贴名称下面显示的文本。 |
+| Name |在磁贴顶部显示的文本。 |
+| 说明 |在磁贴名称下面显示的文本。 |
 | **圆环图** | |
 | Query |要为该圆环图运行的查询。 第一个属性应为文本值，第二个属性应为数值。 此查询通常使用 *measure* 关键字来汇总结果。 |
 | **圆环图** |**> 中心** |
@@ -110,10 +110,10 @@ ms.locfileid: "53186797"
 
 ![折线图和标注磁贴](media/view-designer-tiles/tile-line-chart.png)
 
-| 设置 | Description |
+| 设置 | 说明 |
 |:--- |:--- |
-| 名称 |在磁贴顶部显示的文本。 |
-| Description |在磁贴名称下面显示的文本。 |
+| Name |在磁贴顶部显示的文本。 |
+| 说明 |在磁贴名称下面显示的文本。 |
 | **折线图** | |
 | Query |要为该折线图运行的查询。 第一个属性应为文本值，第二个属性应为数值。 此查询通常使用 *measure* 关键字来汇总结果。 如果查询使用 *interval* 关键字，则 X 轴将使用此时间间隔。 如果查询不使用 *interval* 关键字，则 X 轴使用每小时间隔。 |
 | **折线图** |**> Y 轴** |
@@ -131,10 +131,10 @@ ms.locfileid: "53186797"
 
 ![折线图和标注磁贴](media/view-designer-tiles/tile-line-chart-callout.png)
 
-| 设置 | Description |
+| 设置 | 说明 |
 |:--- |:--- |
-| 名称 |在磁贴顶部显示的文本。 |
-| Description |在磁贴名称下面显示的文本。 |
+| Name |在磁贴顶部显示的文本。 |
+| 说明 |在磁贴名称下面显示的文本。 |
 | **折线图** | |
 | Query |要为该折线图运行的查询。 第一个属性应为文本值，第二个属性应为数值。 此查询通常使用 *measure* 关键字来汇总结果。 如果查询使用 *interval* 关键字，则 X 轴将使用此时间间隔。 如果查询不使用 *interval* 关键字，则 X 轴使用每小时间隔。 |
 | **折线图** |**> 标注** |
@@ -156,10 +156,10 @@ ms.locfileid: "53186797"
 
 ![两个时间线磁贴](media/view-designer-tiles/tile-two-timelines.png)
 
-| 设置 | Description |
+| 设置 | 说明 |
 |:--- |:--- |
-| 名称 |在磁贴顶部显示的文本。 |
-| Description |在磁贴名称下面显示的文本。 |
+| Name |在磁贴顶部显示的文本。 |
+| 说明 |在磁贴名称下面显示的文本。 |
 | 第一个图表 | |
 | 图例 |在第一个序列的标注下显示的文本。 |
 | 颜色 |用于第一个序列中的列的颜色。 |

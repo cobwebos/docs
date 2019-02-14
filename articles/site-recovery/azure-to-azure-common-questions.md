@@ -7,19 +7,30 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: a277e392acb8587e05bb78d1d8dacce40bf91f56
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: bfce998fbabb89d5e9e964bd504571756941afb4
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449548"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770480"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>常见问题：Azure 到 Azure 的复制
 
 本文提供使用 Azure Site Recovery 将 Azure VM 的灾难恢复 (DR) 部署到另一个 Azure 区域时可能遇到的常见问题的解答。 如果在阅读本文后有任何问题，请在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)上发布问题。
 
 
+## <a name="in-this-article"></a>本文内容 
+1.  **[Azure 到 Azure 的一般问题](#general)** 
+1.  **[复制](#replication)** 
+1.  **[复制策略](#replication-policy)** 
+1.  **[多 VM 一致性](#multi-vm-consistency)** 
+1.  **[恢复计划](#recovery-plan)** 
+1.  **[重新保护和故障回复](#reprotection-and-failback)** 
+1.  **[安全性](#security)** 
+
+
 ## <a name="general"></a>常规
+
 ### <a name="how-is-site-recovery-priced"></a>Site Recovery 如何计费？
 请查看 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/)。
 
@@ -198,7 +209,7 @@ Site Recovery 中的恢复计划可以协调 VM 的故障转移恢复。 它有�
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>故障回复需要多长时间？
 完成重新保护后，故障回复所需的时间通常类似于从主要区域故障转移到次要区域所需的时间。 
 
-## <a name="security"></a>安全
+## <a name="a-namesecuritysecurity"></a><a name="security">安全性
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>复制数据是否会发送到 Site Recovery 服务？
 否。Site Recovery 不会拦截复制的数据，也不包含虚拟机上运行的组件的任何相关信息。 只有协调复制与故障转移所需的元数据将发送到站点恢复服务。  
 站点恢复已通过 ISO 27001:2013、27018、HIPAA、DPA 认证，目前正在接受 SOC2 和 FedRAMP JAB 评估。

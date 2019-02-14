@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: c7d8ab8beced055d10cebcecf36d957b155c63b7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: aafa1acdf6cca58ea0cfbc968f73ce13eb65bf91
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256215"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700496"
 ---
 # <a name="azure-operational-security"></a>Azure 操作安全性
 ## <a name="introduction"></a>介绍
@@ -65,7 +65,7 @@ Microsoft Azure Log Analytics 是适用于混合云的 IT 管理解决方案。 
 
 Log Analytics 的核心功能由在 Azure 中运行的一组服务提供。 每个服务提供特定的管理功能，可以组合这些服务来实现不同的管理方案。
 
-| 服务  | Description|
+| 服务  | 说明|
 | :------------- | :-------------|
 | Log Analytics | 监视和分析不同资源（包括物理机和虚拟机）的可用性与性能。 |
 |自动化 | 将手动过程自动化，实施物理机和虚拟机的配置。 |
@@ -139,25 +139,25 @@ Azure 安全中心可帮助保护 Azure 资源。 它为 Azure 订阅提供集�
 
 - 网络流量：使用从 Microsoft 基础结构中采样的网络流量元数据，例如源/目标 IP/端口、数据包大小以及网络协议。
 
--   合作伙伴解决方案：使用来自集成合作伙伴解决方案（例如防火墙和防恶意软件解决方案）的安全警报。
+-   合作伙伴解决方案：使用来自集成合作伙伴解决方案（例如防火墙和反恶意软件解决方案）的安全警报。
 
--   用户的虚拟机：使用用户虚拟机中的配置信息，以及有关安全事件的信息，例如 Windows 事件和审核日志、IIS 日志、系统日志消息和故障转储文件。
+-   虚拟机：使用虚拟机中的配置信息，以及有关安全事件的信息，例如 Windows 事件和审核日志、IIS 日志、系统日志消息和故障转储文件。
 
 ### <a name="data-protection"></a>数据保护
 
 为了帮助客户防止、检测和应对威胁，Azure 安全中心将收集和处理安全相关的数据，包括配置信息、元数据、事件日志、故障转储文件，等等。 从编程到服务运营，Microsoft 都严格遵守相关法规与安全准则。
 
--   **数据隔离**：服务的每个组件的数据都保持逻辑隔离。 所有数据均按组织进行标记。 此标记方式贯穿数据的整个生命周期，在服务的每个层强制实施。
+-   **数据隔离**：服务中每个组件的数据都保持逻辑隔离。 所有数据均按组织进行标记。 此标记方式贯穿数据的整个生命周期，在服务的每个层强制实施。
 
--   数据访问：为提供安全建议和调查潜在的安全威胁，Microsoft 人员可能访问 Azure 服务收集或分析的信息，包括故障转储文件、进程创建事件、VM 磁盘快照和项目，因此可能意外地包括了虚拟机中的客户数据或个人数据。 我们遵守 [Microsoft Online Services 条款和隐私声明](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)，其中指出，Microsoft 不会出于广告或类似的商业目的利用客户数据，或者从客户数据衍生信息。
+-   **数据访问**：为了提供安全建议及调查潜在安全威胁，Microsoft 人员可能会访问 Azure 服务收集或分析的信息，包括故障转储文件、进程创建事件、VM 磁盘快照和项目，其中可能会意外地包括虚拟机中的客户数据或个人数据。 我们遵守 [Microsoft Online Services 条款和隐私声明](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)，其中指出，Microsoft 不会出于广告或类似的商业目的利用客户数据，或者从客户数据衍生信息。
 
--   **数据使用**：Microsoft 使用多个租户所使用的模式和威胁情报增强用户预防和检测威胁的能力；执行过程中遵循[隐私声明](https://www.microsoft.com/en-us/privacystatement/OnlineServices/)中所述的隐私承诺。
+-   **数据使用**：Microsoft 使用多个租户所使用的模式和威胁情报增强预防和检测威胁的能力；执行过程中遵循[隐私声明](https://www.microsoft.com/en-us/privacystatement/OnlineServices/)中所述的隐私承诺。
 
 ### <a name="data-location"></a>数据位置
 
 Azure 安全中心收集故障转储文件的临时副本并对其进行分析，目的是找出攻击者尝试利用漏洞并成功进行了破坏的证据。 Azure 安全中心在工作区所在的同一地理位置执行此分析，分析完成后，将删除临时副本。 计算机项目集中存储在 VM 所在的同一区域。
 
--   用户的存储帐户：为运行虚拟机的每个区域指定一个存储帐户。 这样即可将数据存储在一个区域，而从虚拟机收集数据时，虚拟机也位于该区域。
+-   **存储帐户**：为运行虚拟机的每个区域指定一个存储帐户。 这样即可将数据存储在一个区域，而从虚拟机收集数据时，虚拟机也位于该区域。
 
 -   **Azure 安全中心存储**：有关安全警报（包括合作伙伴警报）、建议和安全运行状况的信息将集中存储，存储位置目前位于美国。 该信息可能包括根据需要从用户虚拟机收集的相关配置信息和安全事件，目的是为用户提供安全警报、建议或安全运行状况。
 
@@ -218,7 +218,7 @@ Azure Monitor 提供有关特定类型资源的信息的导航。 它对来自 A
 
 审核网络安全性对于检测网络漏洞以及确保符合 IT 安全和监管治理模型至关重要。 使用安全组视图，用户可以检索配置的网络安全组和安全规则，以及有效的安全规则。 应用规则列表后，可以确定打开的端口并评估网络漏洞。
 
-[网络观察程序](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher)是一个区域性服务，可用于在网络级别监视和诊断 Azure 内部以及传入和传出 Azure 的流量的状态。 借助网络观察程序随附的网络诊断和可视化工具，可以了解、诊断和洞察 Azure 中的网络。 此服务包括数据包捕获、下一跃点、IP 流验证、安全组视图和 NSG 流日志。 与单独网络资源的监视不同，方案级监视提供网络资源的端到端视图。
+[网络观察程序](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)是一个区域性服务，可用于在网络级别监视和诊断 Azure 内部以及传入和传出 Azure 的流量的状态。 借助网络观察程序随附的网络诊断和可视化工具，可以了解、诊断和洞察 Azure 中的网络。 此服务包括数据包捕获、下一跃点、IP 流验证、安全组视图和 NSG 流日志。 与单独网络资源的监视不同，方案级监视提供网络资源的端到端视图。
 
 ![Azure 网络观察程序](./media/azure-operational-security/azure-operational-security-fig8.png)
 

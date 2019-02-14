@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/22/2018
 ms.topic: article
-ms.openlocfilehash: 5265b6f6ebf779c83792ab2569c1b613d11070da
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 149f37d0231ecc0547e8dc7937d22a9cc38b7df3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051520"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810212"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Ansible 模块和版本矩阵
 
@@ -21,7 +21,7 @@ ms.locfileid: "54051520"
 Ansible 配备了多个模块，这些模块可远程主机上直接执行或通过 Playbook 执行。
 本文列出了适用于 Azure 的可以预配 Azure 云资源（如虚拟机、网络和容器服务）的 Ansible 模块。 可以从 Ansible 正式版或 Microsoft 发布的以下 playbook 角色获取这些模块。
 
-| 适用于 Azure 的 Ansible 模块                   |  Ansible 2.4 |  Ansible 2.5 |  Ansible 2.6 | Ansible 2.7 | [Ansible 角色](#introduction-to-azurepreviewmodule) | 
+| 适用于 Azure 的 Ansible 模块                   |  Ansible 2.4 |  Ansible 2.5 |  Ansible 2.6 | Ansible 2.7 | Ansible 角色 | 
 |---------------------------------------------|--------------|--------------|-----------------------------|-------------------------------------|-------------------------------------| 
 | **计算**                    |           |                          |                          |                            |                                | 
 | azure_rm_availabilityset                    | 是          | 是                         | 是          | 是          | 是                                 | 

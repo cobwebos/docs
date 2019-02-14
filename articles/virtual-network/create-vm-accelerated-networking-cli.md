@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 53945559be01b6e9f5778f5df096f7fcbb24a03f
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 8c913d618313a72f6fb05ea45847a220f6070d42
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214481"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765732"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>创建具有加速网络的 Linux 虚拟机
 
@@ -42,7 +42,7 @@ ms.locfileid: "54214481"
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 从 Azure 库即可支持以下分发： 
-* **Ubuntu 16.04** 
+* **Ubuntu 16.04+** 
 * **SLES 12 SP3** 
 * **RHEL 7.4**
 * **CentOS 7.4**
@@ -76,9 +76,9 @@ removed per issue https://github.com/MicrosoftDocs/azure-docs/issues/9772 -->
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
-安装最新的 [Azure CLI](/cli/azure/install-azure-cli) 并使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure 帐户。 在以下示例中，请将示例参数名称替换为自己的值。 参数名称示例包括 myResourceGroup、myNic 和 myVm。
+安装最新的 [Azure CLI](/cli/azure/install-azure-cli) 并使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。 在以下示例中，请将示例参数名称替换为自己的值。 参数名称示例包括 myResourceGroup、myNic 和 myVm。
 
-使用 [az group create](/cli/azure/group#az_group_create) 创建资源组。 以下示例在 centralus 位置创建名为 myResourceGroup 的资源组：
+使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 centralus 位置创建名为 myResourceGroup 的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location centralus
@@ -86,7 +86,7 @@ az group create --name myResourceGroup --location centralus
 
 选择 [Linux 加速网络](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)中列出的受支持 Linux 区域。
 
-使用 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 创建虚拟网络。 以下示例创建名为 myVnet 且具有一个子网的虚拟网络：
+使用 [az network vnet create](/cli/azure/network/vnet) 创建虚拟网络。 以下示例创建名为 myVnet 且具有一个子网的虚拟网络：
 
 ```azurecli
 az network vnet create \
@@ -98,7 +98,7 @@ az network vnet create \
 ```
 
 ### <a name="create-a-network-security-group"></a>创建网络安全组
-使用 [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) 创建网络安全组。 以下示例创建名为“myNetworkSecurityGroup”的网络安全组：
+使用 [az network nsg create](/cli/azure/network/nsg) 创建网络安全组。 以下示例创建名为“myNetworkSecurityGroup”的网络安全组：
 
 ```azurecli
 az network nsg create \
@@ -106,7 +106,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-网络安全组包含多个默认规则，其中一个规则禁用了来自 Internet 的所有入站访问。 打开端口，以允许使用 [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) 对虚拟机进行 SSH 访问：
+网络安全组包含多个默认规则，其中一个规则禁用了来自 Internet 的所有入站访问。 打开端口，以允许使用 [az network nsg rule create](/cli/azure/network/nsg/rule) 对虚拟机进行 SSH 访问：
 
 ```azurecli
 az network nsg rule create \
@@ -125,7 +125,7 @@ az network nsg rule create \
 
 ### <a name="create-a-network-interface-with-accelerated-networking"></a>创建具有加速网络的网络接口
 
-使用 [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) 创建公共 IP 地址。 如果不打算从 Internet 访问虚拟机，则不需要公共 IP 地址，但必须完成本文中的步骤。
+使用 [az network public-ip create](/cli/azure/network/public-ip) 创建公共 IP 地址。 如果不打算从 Internet 访问虚拟机，则不需要公共 IP 地址，但必须完成本文中的步骤。
 
 ```azurecli
 az network public-ip create \
@@ -133,7 +133,7 @@ az network public-ip create \
     --resource-group myResourceGroup
 ```
 
-使用 [az network nic create](/cli/azure/network/nic#az_network_nic_create) 创建启用加速网络的网络接口。 以下示例在 myVnet 虚拟网络的 mySubnet 子网中创建名为 myNic 的网络接口，并将 myNetworkSecurityGroup 网络安全组关联到该网络接口：
+使用 [az network nic create](/cli/azure/network/nic) 创建启用加速网络的网络接口。 以下示例在 myVnet 虚拟网络的 mySubnet 子网中创建名为 myNic 的网络接口，并将 myNetworkSecurityGroup 网络安全组关联到该网络接口：
 
 ```azurecli
 az network nic create \
@@ -149,7 +149,7 @@ az network nic create \
 ### <a name="create-a-vm-and-attach-the-nic"></a>创建 VM 并附加 NIC
 创建 VM 时，指定使用 `--nics` 创建的 NIC。 选择 [Linux 加速网络](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)中列出的大小和分发版本。 
 
-使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM。 以下示例创建名为 myVM 的 VM，其具有 UbuntuLTS 映像，并且大小支持加速网络 (*Standard_DS4_v2*) ：
+使用 [az vm create](/cli/azure/vm) 创建 VM。 以下示例创建名为 myVM 的 VM，其具有 UbuntuLTS 映像，并且大小支持加速网络 (*Standard_DS4_v2*) ：
 
 ```azurecli
 az vm create \

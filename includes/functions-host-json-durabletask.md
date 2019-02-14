@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/19/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 92eb13165326f44432f09322ea97f3cee5ccec2b
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: a3af711503445000d9613feb2eec7967442fe538
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251237"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55736048"
 ---
 [Durable Functions](../articles/azure-functions/durable-functions-overview.md) 的配置设置。
 
@@ -41,7 +41,7 @@ ms.locfileid: "50251237"
 
 任务中心名称必须以字母开头且只能包含字母和数字。 如果未指定，则函数应用的默认任务中心名称是 **DurableFunctionsHub**。 有关详细信息，请参阅[任务中心](../articles/azure-functions/durable-functions-task-hubs.md)。
 
-|属性  |默认 | Description |
+|属性  |默认 | 说明 |
 |---------|---------|---------|
 |HubName|DurableFunctionsHub|可以使用备用[任务中心](../articles/azure-functions/durable-functions-task-hubs.md)名称将多个 Durable Functions 应用程序彼此隔离，即使这些应用程序使用同一存储后端。|
 |ControlQueueBatchSize|32|要从控制队列中一次性拉取的消息数。|

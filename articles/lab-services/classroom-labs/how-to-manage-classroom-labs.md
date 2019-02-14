@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: spelluru
-ms.openlocfilehash: 9576854fbad88724f3d229d239b9d3e263fb7492
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 7d311a3fa1b00a6324c9bb81a14c1a575319472f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912395"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819988"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>管理 Azure 实验室服务中的教室实验室 
 本文介绍如何创建和删除教室实验室。 它还说明如何查看实验室帐户中的所有教室实验室。 
@@ -72,7 +72,7 @@ ms.locfileid: "54912395"
 
         > [!WARNING]
         > 发布后无法取消发布。 
-    2. 若要在以后发布，请选择“保存供以后发布”。 可以在完成向导后发布模板 VM。 有关如何在完成向导后进行配置和发布的详细信息，请参阅[如何管理课堂实验室](how-to-manage-classroom-labs.md)一文中的[发布模板](#publish-the-template)部分。
+    2. 若要在以后发布，请选择“保存供以后发布”。 可以在完成向导后发布模板 VM。 有关如何在完成向导后进行配置和发布的详细信息，请参阅[如何管理课堂实验室](how-to-manage-classroom-labs.md)一文中的“发布模板”部分。
 
         ![发布模板](../media/tutorial-setup-classroom-lab/publish-template.png)
 11. 可以查看**发布模板的进度**。 此过程最长可能需要花费一小时。 

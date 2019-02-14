@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9414d9c93fe463910ffa6fce72aada6a0d720464
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 05bec60f4c56c98e9b910b50e858656a2e5554b2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
-ms.locfileid: "28103949"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816486"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>远程连接到 StorSimple 8000 系列设备
 
@@ -46,7 +46,7 @@ ms.locfileid: "28103949"
 
 可以使用 Azure 门户或串行控制台来配置远程管理。 在下列过程中选择：
 
-* [使用 Azure 门户通过 HTTP 启用远程管理](#use-the-azure-classic-portal-to-enable-remote-management-over-http)
+* 使用 Azure 门户通过 HTTP 启用远程管理
 * [使用串行控制台通过 HTTP 启用远程管理](#use-the-serial-console-to-enable-remote-management-over-http)
 
 启用远程管理后，使用以下过程为远程连接准备客户端。
@@ -124,7 +124,7 @@ ms.locfileid: "28103949"
 
 可以使用 Azure 门户或串行控制台来配置远程管理。 在下列过程中选择：
 
-* [使用 Azure 门户通过 HTTPS 启用远程管理](#use-the-azure-classic-portal-to-enable-remote-management-over-https)
+* 使用 Azure 门户通过 HTTPS 启用远程管理
 * [使用串行控制台通过 HTTPS 启用远程管理](#use-the-serial-console-to-enable-remote-management-over-https)
 
 启用远程管理后，使用以下过程为远程管理准备主机，以及从远程主机连接到设备。
@@ -197,13 +197,13 @@ ms.locfileid: "28103949"
 3. 选择“将所有证书放入下列存储”，并单击“浏览”。 导航到远程主机的根存储，并单击“下一步”。
    
     ![证书导入向导 2](./media/storsimple-remote-connect/HCS_CertificateImportWizard2.png)
-4. 单击“完成” 。 将显示一条提示已成功导入的消息。
+4. 单击“完成”。 将显示一条提示已成功导入的消息。
    
     ![证书导入向导 3](./media/storsimple-remote-connect/HCS_CertificateImportWizard3.png)
 
 #### <a name="to-add-device-serial-numbers-to-the-remote-host"></a>将设备序列号添加到远程主机
 1. 以管理员身份启动记事本，并打开位于 \Windows\System32\Drivers\etc 的主机文件。
-2. 将以下三项添加到主机文件中：**DATA 0 IP 地址**、**控制器 0 固定 IP 地址**和**控制器 1 固定 IP 地址**。
+2. 将以下条目添加到主机文件中：DATA 0 IP 地址、控制器 0 固定 IP 地址和控制器 1 固定 IP 地址。
 3. 输入之前保存的设备序列号。 将此设备序列号映射到 IP 地址，如下图所示。 对于控制器 0 和控制器 1，请在序列号末尾追加 **Controller0** 和 **Controller1**（CN 名）。
    
     ![将 CN 名添加到主机文件中](./media/storsimple-remote-connect/HCS_AddingCNNameToHostsFile.png)

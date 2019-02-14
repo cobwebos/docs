@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: b0420d53d49d65561395a1fd6b576783a3dfbe64
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: cd46e99b89b4081dcf0d67509edaabf168da4ba0
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104499"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661167"
 ---
 # <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>使用 Azure 数据工厂从 Azure Database for MariaDB 复制数据 
 
@@ -42,7 +42,7 @@ Azure Database for MariaDB 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**MariaDB** | 是 |
-| connectionString | 连接到 Azure Database for MariaDB 的连接字符串。 可以从“Azure 门户”->“Azure Database for MariaDB”->“连接字符串”->“ADO.NET”中找到它。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| connectionString | 连接到 Azure Database for MariaDB 的连接字符串。 可以从“Azure 门户”->“Azure Database for MariaDB”->“连接字符串”->“ADO.NET”中找到它。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `pwd` 配置。 有关更多详细信息，请参阅以下示例和[将凭据存储在 Azure 密钥保管库中](store-credentials-in-key-vault.md)一文。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure Integration Runtime 时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：**
@@ -54,8 +54,37 @@ Azure Database for MariaDB 链接服务支持以下属性：
         "type": "MariaDB",
         "typeProperties": {
             "connectionString": {
+                "type": "SecureString",
+                "value": "Server={your_server}.mariadb.database.azure.com; Port=3306; Database={your_database}; Uid={your_user}@{your_server}; Pwd={your_password}; SslMode=Preferred;"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**示例：在 Azure 密钥保管库中存储密码**
+
+```json
+{
+    "name": "AzureDatabaseForMariaDBLinkedService",
+    "properties": {
+        "type": "MariaDB",
+        "typeProperties": {
+            "connectionString": {
                  "type": "SecureString",
-                 "value": "Server={your_server}.mariadb.database.azure.com; Port=3306; Database={your_database}; Uid={your_user}@{your_server}; Pwd={your_password}; SslMode=Preferred;"
+                 "value": "Server={your_server}.mariadb.database.azure.com; Port=3306; Database={your_database}; Uid={your_user}@{your_server}; SslMode=Preferred;"
+            },
+            "pwd": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {

@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 87b39c400d189c7be6ead9770fb833f7c5e3036b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 40e519495b8a245f72e51167f5807f9c585cb344
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191245"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817540"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>将连接器与 Azure AD Connect Sync Service Manager 配合使用
 
@@ -42,7 +42,7 @@ ms.locfileid: "55191245"
 | 导入连接器 |请勿使用。 |
 | 更新连接器 |请勿使用。 |
 | 刷新架构 |刷新缓存架构。 最好改在安装向导中使用此选项，因为它也会更新同步规则。 |
-| [搜索连接器空间](#search-connector-space) |用于查找对象，以及[在整个系统中跟踪对象及其数据](#follow-an-object-and-its-data-through-the-system)。 |
+| [搜索连接器空间](#search-connector-space) |用于查找对象，以及在整个系统中跟踪对象及其数据。 |
 
 ### <a name="delete"></a>删除
 删除操作适用于两种不同的用途。  

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 2a7e7f13b68f06bb6c0e9be4730c7346e43e8e5b
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 3cac893fcaafd4fe8d35aab2a10da92019d3ed42
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346569"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698948"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms-and-azure-mysql"></a>Contoso 迁移：将本地 Linux 应用重新托管到 Azure VM 和 Azure MySQL
 
@@ -28,12 +28,12 @@ ms.locfileid: "51346569"
 [文章 4：在 Azure VM 和 SQL 数据库托管实例上重新托管应用](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso 将其本地 SmartHotel360 应用直接迁移到 Azure。 Contoso 使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM。 Contoso 使用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)将应用数据库迁移到 Azure SQL 数据库托管实例。 | 可用   
 [文章 5：在 Azure VM 上重新托管应用](contoso-migration-rehost-vm.md) | Contoso 使用 Site Recovery 服务将其 SmartHotel360 应用 VM 迁移到 Azure VM。 | 可用
 [文章 6：在 Azure VM 和 SQL Server AlwaysOn 可用性组中重新托管应用](contoso-migration-rehost-vm-sql-ag.md) | Contoso 迁移 SmartHotel360 应用。 Contoso 使用 Site Recovery 迁移应用 VM。 它使用数据库迁移服务将应用数据库迁移到受 AlwaysOn 可用性组保护的 SQL Server 群集。 | 可用 
-[文章 7：将 Linux 应用重新托管到 Azure VM](contoso-migration-rehost-linux-vm.md) | Contoso 使用 Azure Site Recovery 将 Linux osTicket 应用直接迁移到 Azure VM | 可用
+[文章 7：在 Azure VM 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm.md) | Contoso 使用 Azure Site Recovery 将 Linux osTicket 应用直接迁移到 Azure VM | 可用
 文章 8：在 Azure VM 和 Azure MySQL 上重新托管 Linux 应用 | Contoso 使用 Azure Site Recovery 将 Linux osTicket 应用迁移到 Azure VM，并使用 MySQL 工作台将应用数据库迁移到 Azure MySQL 服务器实例。 | 本文
 [文章 9：基于 Azure Web 应用和 Azure SQL 数据库重构应用](contoso-migration-refactor-web-app-sql.md) | Contoso 将 SmartHotel360 应用迁移到 Azure Web 应用，并使用数据库迁移助手将应用数据库迁移到 Azure SQL Server 实例 | 可用
 [文章 10：基于 Azure Web 应用和 Azure MySQL 重构 Linux 应用](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso 使用 Azure 流量管理器将其 Linux osTicket 应用迁移到多个 Azure 区域上的 Azure Web 应用，并与 GitHub 集成以实现持续交付。 Contoso 将应用数据库迁移到 Azure Database for MySQL 实例。 | 可用 
-[文章 11：重构 Azure DevOps Services 上的 TFS](contoso-migration-tfs-vsts.md) | Contoso 将其本地 Team Foundation Server 部署迁移到 Azure 中的 Azure DevOps Services。 | 可用
-[文章 12：基于 Azure 容器和 Azure SQL 数据库重构应用](contoso-migration-rearchitect-container-sql.md) | Contoso 将其 SmartHotel 应用迁移到 Azure。 然后，它将应用 Web 层重新架构为 Azure Service Fabric 中运行的 Windows 容器，以及具有 Azure SQL 数据库的数据库。 | 可用
+[文章 11：在 Azure DevOps Services 上重构 TFS](contoso-migration-tfs-vsts.md) | Contoso 将其本地 Team Foundation Server 部署迁移到 Azure 中的 Azure DevOps Services。 | 可用
+[文章 12：在 Azure 容器和 Azure SQL 数据库上重塑应用架构](contoso-migration-rearchitect-container-sql.md) | Contoso 将其 SmartHotel 应用迁移到 Azure。 然后，它将应用 Web 层重新架构为 Azure Service Fabric 中运行的 Windows 容器，以及具有 Azure SQL 数据库的数据库。 | 可用
 [文章 13：在 Azure 中重新生成应用](contoso-migration-rebuild.md) | Contoso 使用一系列 Azure 功能和服务（包括 Azure 应用服务、Azure Kubernetes 服务 (AKS)、Azure Functions、Azure 认知服务和 Azure Cosmos DB）重新生成其 SmartHotel 应用。 | 可用
 [文章 14：到 Azure 的大规模迁移](contoso-migration-scale.md) | 尝试过组合迁移后，Contoso 准备大规模整体迁移到 Azure。 | 可用
 
@@ -125,12 +125,12 @@ Contoso 将按如下方式完成迁移进程：
 下面是 Contoso 管理员完成迁移的步骤：
 
 > [!div class="checklist"]
-> * **步骤 1：为 Site Recovery 准备 Azure**：创建用于保存复制数据的 Azure 存储帐户，并创建恢复服务保管库。
-> * **步骤 2：为 Site Recovery 准备本地 VMware**：准备用于发现 VM 和安装代理的帐户，并准备好在故障转移后连接到 Azure VM。
+> * **步骤 1：为 Site Recovery 准备 Azure**：创建恢复服务保管库以及用于保存复制数据的 Azure 存储帐户。
+> * **步骤 2：为 Site Recovery 准备本地 VMware**：准备用于发现 VM 和安装代理的帐户，并准备在故障转移后连接到 Azure VM。
  * **步骤 3：预配数据库**：在 Azure 中，预配 Azure MySQL 数据库的实例。
 > * **步骤 4：复制 VM**：配置 Site Recovery 源和目标环境、设置复制策略，然后开始将 VM 复制到 Azure 存储。
-> * **步骤 5：迁移数据库**：通过 MySQL 工具设置迁移。
-> * **步骤 6：使用 Site Recovery 迁移 VM**：最后，运行测试故障转移，确保一切正常工作，然后运行完整故障转移将 VM 迁移到 Azure。
+> * **步骤 5：迁移数据库**：使用 MySQL 工具设置迁移。
+> * **步骤 6：使用 Site Recovery 迁移 VM**：最后，运行测试故障转移以确保一切正常工作，然后运行完整故障转移以将 VM 迁移到 Azure。
 
 
 
@@ -197,7 +197,7 @@ Contoso 管理员按如下所述设置帐户：
 
 故障转移到 Azure 后，Contoso 想要能够连接到 Azure VM。 为此，Contoso 管理员需要执行以下操作：
 
-- 为了通过 Internet 进行访问，迁移前在本地 Linux VM 上启用 SSH。  对于 Ubuntu，可使用以下命令：Sudo apt-get ssh install -y 完成此操作。
+- 为了通过 Internet 进行访问，迁移前在本地 Linux VM 上启用 SSH。  对于 Ubuntu，可使用以下命令完成此操作：**Sudo apt-get ssh install -y**。
 - 故障转移后，应选中“启动诊断”查看 VM 的屏幕截图。
 - 如果这不起作用，则需要验证 VM 是否正在运行，并查看这些[故障排除提示](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
 
@@ -482,13 +482,13 @@ Contoso 安全团队审查 VM 和数据库，以确定任何安全问题。
 - 考虑使用磁盘加密和 Azure KeyVault 保护 VM 磁盘上的数据。
 - SSL 未配置 VM 和数据库实例之间的通信。 他们将需要进行此操作，以确保数据库流量不被攻击。
 
-[详细了解](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control) VM 的安全做法。
+[详细了解](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms) VM 的安全做法。
 
 ### <a name="bcdr"></a>BCDR
 
 对于业务连续性和灾难恢复，Contoso 采取了以下措施：
 
-- **保持数据安全**：Contoso 使用 Azure 备份服务来备份应用 VM 上的数据。 [了解详细信息](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 他们无需为数据库配置备份。 Azure Database for MySQL 会自动创建并存储服务器备份。 他们选择为数据库使用异地冗余，因此，该数据库富有弹性且生产就绪。
+- **确保数据安全**：Contoso 使用 Azure 备份服务备份应用 VM 上的数据。 [了解详细信息](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 他们无需为数据库配置备份。 Azure Database for MySQL 会自动创建并存储服务器备份。 他们选择为数据库使用异地冗余，因此，该数据库富有弹性且生产就绪。
 - **使应用保持正常运行**：Contoso 使用 Site Recovery 将 Azure 中的应用 VM 复制到次要区域。 [了解详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)。
 
 

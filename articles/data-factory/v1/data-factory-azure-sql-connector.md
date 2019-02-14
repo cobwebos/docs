@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 13e00acaf287a9e153aaa8e5ce7d630f8d198f02
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: a7789f9a3f3da46305a9d8cd7cda24019658f2ad
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330409"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811472"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>使用 Azure 数据工厂向 Azure SQL 数据库以及从 Azure SQL 数据库复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -199,7 +199,7 @@ GO
   }
 }
 ```
-有关此链接服务支持的属性列表，请参阅 [Azure SQL 链接服务](#linked-service)部分。
+有关此链接服务支持的属性的列表，请参阅“Azure SQL 链接服务”部分。
 
 **Azure Blob 存储链接服务：**
 
@@ -248,7 +248,7 @@ GO
 }
 ```
 
-有关此数据集类型支持的属性列表，请参阅 [Azure SQL 数据集类型属性](#dataset)部分。
+有关此数据集类型支持的属性的列表，请参阅“Azure SQL 数据集类型属性”部分。
 
 **Azure Blob 输出数据集：**
 
@@ -391,7 +391,7 @@ GO
   }
 }
 ```
-有关此链接服务支持的属性列表，请参阅 [Azure SQL 链接服务](#linked-service)部分。
+有关此链接服务支持的属性的列表，请参阅“Azure SQL 链接服务”部分。
 
 **Azure Blob 存储链接服务：**
 
@@ -499,7 +499,7 @@ GO
   }
 }
 ```
-有关此数据集类型支持的属性列表，请参阅 [Azure SQL 数据集类型属性](#dataset)部分。
+有关此数据集类型支持的属性的列表，请参阅“Azure SQL 数据集类型属性”部分。
 
 **管道中使用 Blob 源和 SQL 接收器的复制活动：**
 

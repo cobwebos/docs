@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 7505715641462f4a07d999ea419632bd91e925fb
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 21a3efb67f837a05f3c070d0805aa033f86efbd5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438909"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822436"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>创建、更改或删除网络安全组
 
@@ -66,7 +66,7 @@ ms.locfileid: "54438909"
 2. 在列表中选择要查看其详细信息的网络安全组。 在“设置”下，可查看“入站安全规则”和“出站安全规则”以及与网络安全组相关联的“网络接口”和“子网”。 也可启用或禁用“诊断日志”和查看“有效的安全规则”。 要了解详细信息，请参阅[诊断日志](virtual-network-nsg-manage-log.md)和[查看有效的安全规则](diagnose-network-traffic-filter-problem.md)。
 3. 要了解有关列出的常见 Azure 设置的详细信息，请参阅以下文章：
     *   [活动日志](../azure-monitor/platform/activity-logs-overview.md)
-    *   [访问控制 (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
+    *   [访问控制 (IAM)](../role-based-access-control/overview.md)
     *   [标记](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [锁](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [自动化脚本](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
@@ -92,7 +92,7 @@ ms.locfileid: "54438909"
 
 ### <a name="delete-a-network-security-group"></a>删除网络安全组
 
-如果网络安全组与任何子网或网络接口相关联，则无法删除。 从所有子网和网络接口[取消关联](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource)网络安全组，然后再尝试将其删除。
+如果网络安全组与任何子网或网络接口相关联，则无法删除。 从所有子网和网络接口取消关联网络安全组，然后再尝试将其删除。
 
 1. 在门户顶部的搜索框中，输入“网络安全组”。 “网络安全组”出现在搜索结果中时，将其选中。
 2. 从列表中选择要删除的网络安全组。
@@ -125,7 +125,7 @@ ms.locfileid: "54438909"
     |协议     | 选择“任何”、“TCP”或“UDP”。        |         |
     |操作     | 选择“允许”或“拒绝”。        |         |
     |优先度     | 输入一个介于 100-4096 之间的值，该值对于网络安全组内的所有安全规则都是唯一的。 |规则按优先顺序处理。 编号越低，优先级越高。 建议创建规则时在优先级数字之间留出空隙，例如 100, 200, 300。 留出空隙后，未来在需要使规则高于或低于现有规则时，可更轻松添加规则。         |
-    |名称     | 网络安全组内规则的唯一名称。        |  名称最多可包含 80 个字符。 它必须以字母或数字开头，以字母、数字或下划线结尾，且仅可包含字母、数字、下划线、句点或连字符。       |
+    |Name     | 网络安全组内规则的唯一名称。        |  名称最多可包含 80 个字符。 它必须以字母或数字开头，以字母、数字或下划线结尾，且仅可包含字母、数字、下划线、句点或连字符。       |
     |说明     | 可选说明。        |         |
 
 **命令**
@@ -192,7 +192,7 @@ ms.locfileid: "54438909"
 
     | 设置        | 值                                                   |
     | ---            | ---                                                     |
-    | 名称           | 名称在资源组中必须唯一。        |
+    | Name           | 名称在资源组中必须唯一。        |
     | 订阅   | 选择订阅。                               |
     | 资源组 | 选择现有的资源组，或创建一个新的组。 |
     | 位置       | 选择一个位置                                       |
@@ -252,7 +252,7 @@ ms.locfileid: "54438909"
 
 ### <a name="network-security-group"></a>网络安全组
 
-| 操作                                                        |   名称                                                                |
+| 操作                                                        |   Name                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft.Network/networkSecurityGroups/read                  |   获取网络安全组                                          |
 | Microsoft.Network/networkSecurityGroups/write                 |   创建或更新网络安全组                             |
@@ -262,7 +262,7 @@ ms.locfileid: "54438909"
 
 ### <a name="network-security-group-rule"></a>网络安全组规则
 
-| 操作                                                        |   名称                                                                |
+| 操作                                                        |   Name                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft.Network/networkSecurityGroups/rules/read            |   获取规则                                                            |
 | Microsoft.Network/networkSecurityGroups/rules/write           |   创建或更新规则                                               |
@@ -270,7 +270,7 @@ ms.locfileid: "54438909"
 
 ### <a name="application-security-group"></a>应用程序安全组
 
-| 操作                                                                     | 名称                                                     |
+| 操作                                                                     | Name                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |
 | Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action     | 将 IP 配置加入到应用程序安全组中|
 | Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | 将安全规则加入到应用程序安全组中    |

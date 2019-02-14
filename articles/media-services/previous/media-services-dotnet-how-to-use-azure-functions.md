@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 31a12d43ba71f1a0eacbb12887b047f2fafe3b53
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6079b68dc0f9a00ccb71683fc1d80cdbd8da6564
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33784596"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730810"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>开发使用媒体服务的 Azure Functions
 
@@ -34,7 +34,7 @@ ms.locfileid: "33784596"
     
 ## <a name="create-a-function-app"></a>创建函数应用
 
-1. 转到 [Azure 门户](http://portal.azure.com)，并使用 Azure 帐户登录。
+1. 转到 [Azure 门户](http://portal.azure.com)，然后使用 Azure 帐户登录。
 2. 根据[此文](../../azure-functions/functions-create-function-app-portal.md)中所述创建 Function App。
 
 >[!NOTE]
@@ -135,7 +135,7 @@ project.json 文件包含依赖项。 下面是一个 **project.json** 文件示
 
 在实际方案中，很可能需要跟踪作业进度，并发布编码的资产。 有关详细信息，请参阅[使用 Azure WebHook 监视媒体服务作业通知](media-services-dotnet-check-job-progress-with-webhooks.md)。 有关更多示例，请参阅[媒体服务 Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)。  
 
-使用以下代码替换现有 run.csx 文件的内容：函数定义完成后，单击“保存并运行”。
+将现有 run.csx 文件的内容替换为以下代码：定义后，请单击“保存并运行”。
 
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"
@@ -338,7 +338,7 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 4. 按“上传”并浏览到要上传的 .mp4 文件。
 
 >[!NOTE]
-> 在消耗计划中使用 Blob 触发器时，函数应用处于空闲状态后，处理新 Blob 的过程中可能会出现长达 10 分钟的延迟。 函数应用运行后，就会立即处理 Blob。 有关详细信息，请参阅 [Blob 存储触发器和绑定](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob#blob-storage-triggers-and-bindings)。
+> 在消耗计划中使用 Blob 触发器时，函数应用处于空闲状态后，处理新 Blob 的过程中可能会出现长达 10 分钟的延迟。 函数应用运行后，就会立即处理 Blob。 有关详细信息，请参阅 [Blob 存储触发器和绑定](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob)。
 
 ## <a name="next-steps"></a>后续步骤
 

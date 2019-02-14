@@ -10,14 +10,14 @@ ms.service: multiple
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 6dd7707c489bbbad7a97a0ec0a76e7c631bd1465
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: eca5e4cc96996c35e7c2181746cdb3de2e5a602c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359249"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820056"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Cosmos DB (SQL API) 中复制或粘贴数据
 
@@ -28,7 +28,7 @@ ms.locfileid: "54359249"
 本文概述如何使用 Azure 数据工厂中的复制活动在 Azure Cosmos DB (SQL API) 中复制和粘贴数据。 本文是根据总体概述复制活动的 [Azure 数据工厂中的复制活动](copy-activity-overview.md)编写的。
 
 >[!NOTE]
->此连接器仅支持向/从 Cosmos DB SQL API 复制数据。 有关 MongoDB，请参阅[适用于 MangoDB 的 Auzre Cosmos DB API 的连接器](connector-azure-cosmos-db-mongodb-api.md)。 目前不支持其他 API 类型。
+>此连接器仅支持向/从 Cosmos DB SQL API 复制数据。 有关 MongoDB API，请参阅[适用于 MongoDB 的 Auzre Cosmos DB API 的连接器](connector-azure-cosmos-db-mongodb-api.md)。 目前不支持其他 API 类型。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -38,7 +38,7 @@ ms.locfileid: "54359249"
 
 - 在 Azure Cosmos DB [SQL API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction) 中复制和粘贴数据。
 - 以 **insert** 或 **upsert** 的形式写入 Azure Cosmos DB。
-- 按原样导入和导出 JSON 文档，或在表格数据集中复制或粘贴数据。 示例包括 SQL 数据库和 CSV 文件。 若要在 JSON 文件或另一个 Azure Cosmos DB 集合中按原样复制或粘贴文档，请参阅[导入或导出 JSON 文档](#importexport-json-documents)。
+- 按原样导入和导出 JSON 文档，或在表格数据集中复制或粘贴数据。 示例包括 SQL 数据库和 CSV 文件。 若要在 JSON 文件或另一个 Azure Cosmos DB 集合中按原样复制或粘贴文档，请参阅“导入或导出 JSON 文档”。
 
 数据工厂与 [Azure Cosmos DB 批量执行程序库](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)集成，以便在写入 Azure Cosmos DB 时提供最佳性能。
 
@@ -58,7 +58,7 @@ Azure Cosmos DB (SQL API) 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | **type** 属性必须设置为 **CosmosDb**。 | 是 |
-| connectionString |指定连接 Azure Cosmos DB 数据库所需的信息。<br /><br />**注意**：必须如以下示例所示，在连接字符串中指定数据库信息。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 |是 |
+| connectionString |指定连接 Azure Cosmos DB 数据库所需的信息。<br />**注意**：必须如以下示例所示，在连接字符串中指定数据库信息。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将帐户密钥放在 Azure 密钥保管库中，并从连接字符串中拉取 `accountKey` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 |是 |
 | connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定此属性，则使用默认的 Azure Integration Runtime。 |否 |
 
 **示例**
@@ -72,6 +72,35 @@ Azure Cosmos DB (SQL API) 链接服务支持以下属性：
             "connectionString": {
                 "type": "SecureString",
                 "value": "AccountEndpoint=<EndpointUrl>;AccountKey=<AccessKey>;Database=<Database>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**示例：在 Azure 密钥保管库中存储帐户密钥**
+
+```json
+{
+    "name": "CosmosDbSQLAPILinkedService",
+    "properties": {
+        "type": "CosmosDb",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "AccountEndpoint=<EndpointUrl>;Database=<Database>"
+            },
+            "accountKey": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {

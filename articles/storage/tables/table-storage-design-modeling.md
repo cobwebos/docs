@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 7f629ceb9fe5bd19c0558d1fde45d0bddcee744e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5d83e61282d2f21a3016997e324d0f58eff15e78
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458867"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813001"
 ---
 # <a name="modeling-relationships"></a>为关系建模
 本文讨论可帮助设计 Azure 表存储解决方案的建模流程。
@@ -101,7 +101,7 @@ ms.locfileid: "55458867"
 还有可能引导在表服务中实现一对一关系的实现注意事项：  
 
 * 处理大型实体，详细信息请参阅[大实体模式](table-storage-design-patterns.md#large-entities-pattern)。  
-* 实施访问控制，详细信息请参阅[使用共享访问签名控制访问权限](#controlling-access-with-shared-access-signatures)。  
+* 实施访问控制（有关详细信息），请参阅“使用共享访问签名控制访问权限”。  
 
 ## <a name="join-in-the-client"></a>在客户端中联接
 尽管可通过多种方式在表服务中为关系建模，但不能忘记使用表服务的两个主要原因是伸缩性和性能。 如果发现要建模的多个关系损害解决方案的性能和可伸缩性，则应问自己是否有必要在表设计中构建所有数据关系。 如果让客户端应用程序执行任何必要的联接，可能能够简化设计并改进解决方案的伸缩性和性能。  
@@ -117,7 +117,7 @@ ms.locfileid: "55458867"
 
 ![Person 表](media/storage-table-design-guide/storage-table-design-IMAGE04.png)
 
-若要深入了解如何在客户端代码中处理同张表中的多个实体类型，请参阅本指南后面的[处理异类实体类型](#working-with-heterogeneous-entity-types)部分。 此部分提供了如何在客户端代码中识别实体类型的示例。  
+要深入了解如何在客户端代码中处理同张表中的多个实体类型，请参阅本指南后面的“处理异类实体类型”部分。 此部分提供了如何在客户端代码中识别实体类型的示例。  
 
 
 ## <a name="next-steps"></a>后续步骤

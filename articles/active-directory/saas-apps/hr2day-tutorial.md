@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: bb03506bac22c8c82e856f403710a4908af6f9de
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7d77d72264580e4cde83f6cbb9f83bf7030d941e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149248"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820039"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>教程：Azure Active Directory 与 HR2day by Merces 的集成
 
@@ -88,11 +88,11 @@ ms.locfileid: "55149248"
 
 若要使用 HR2day by Merces 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
 
-1. [配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)：使用户能够使用此功能。
-1. [创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)：使用 Britta Simon 测试 Azure AD 单一登录。
-1. [创建 HR2day by Merces 测试用户](#creating-an-hr2day-by-merces-test-user)：在 HR2day by Merces 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-1. [分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)：使 Britta Simon 能够使用 Azure AD 单一登录。
-1. [测试单一登录](#testing-single-sign-on)：验证配置是否正常工作。
+1. 配置 Azure AD 单一登录：使用户能够使用此功能。
+1. 创建 Azure AD 测试用户：使用 Britta Simon 测试 Azure AD 单一登录。
+1. 创建 HR2day by Merces 测试用户：在 HR2day by Merces 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+1. 分配 Azure AD 测试用户：使 Britta Simon 能够使用 Azure AD 单一登录。
+1. 测试单一登录：验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 

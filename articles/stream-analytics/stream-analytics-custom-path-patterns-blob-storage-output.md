@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: fc28ddd006e8a117dddd67a6d6668b9639dddec5
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 9cdf99884845a9cb83ac26723c3ea0e7a779ebff
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765189"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982669"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure 流分析自定义 blob 输出分区
 
@@ -67,8 +67,6 @@ Azure 流分析支持包含自定义字段或属性和自定义 DateTime 路径�
 ## <a name="custom-datetime-path-patterns"></a>自定义 DateTime 路径模式
 
 可以使用自定义 DateTime 路径模式来指定与 Hive 流式处理约定相符的输出格式，这样 Azure 流分析就可以将数据发送到 Azure HDInsight 和 Azure Databricks 进行下游处理。 自定义 DateTime 路径模式可以轻松地实现，只需在 Blob 输出的“路径前缀”字段中使用 `datetime` 关键字并使用格式说明符即可。 例如，`{datetime:yyyy}`。
-
-使用 [Azure 门户](https://portal.azure.com/?Microsoft_Azure_StreamAnalytics_bloboutputcustomdatetimeformats=true)的此链接来切换功能标志，该标志可以为 Blob 存储输出预览版启用自定义 DateTime 路径模式。 此功能很快会在主门户中启用。
 
 ### <a name="supported-tokens"></a>支持的令牌
 

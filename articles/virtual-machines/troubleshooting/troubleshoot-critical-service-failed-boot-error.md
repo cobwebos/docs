@@ -13,25 +13,25 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: d8140966f3ba8674938a4e21b0990371390d3516
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 8a711596140340b5e6e69d04959abfef36332869
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49070874"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813783"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>启动 Azure VM 时 Windows 在蓝屏上显示“关键服务失败”
 本文介绍了在 Microsoft Azure 中启动 Windows 虚拟机 (VM) 时可能会遇到的“关键服务失败”错误。 它提供了故障排除步骤来帮助解决问题。 
 
 > [!NOTE] 
-> Azure 具有用于创建和处理资源的两个不同的部署模型： [Resource Manager 和经典](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用 Resource Manager 部署模型。建议对新部署使用该模型，而不是经典部署模型。
+> Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用 Resource Manager 部署模型。建议对新部署使用该模型，而不是经典部署模型。
 
 ## <a name="symptom"></a>症状 
 
 Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动屏幕截图时，在蓝色屏幕中看到以下错误消息之一：
 
-- “你的电脑遇到问题，需要重启。 你可以重启。 有关此问题和可能的修复项的详细信息，请访问 http://windows.com/stopcode。 如果你呼叫支持人员，请向其提供以下信息: 停止代码: 关键服务失败” 
-- “你的电脑遇到问题，需要重启。 我们将收集一些错误信息，然后我们将为你重启。 如果想了解更多信息，稍后可以联机搜索以下错误: CRITICAL_SERVICE_FAILED”
+- “你的电脑遇到问题，需要重启。 你可以重启。 有关此问题和可能的修复项的详细信息，请访问 http://windows.com/stopcode。 如果调用支持人员，请为他们提供这些信息：终止代码：关键服务失败” 
+- “你的电脑遇到问题，需要重启。 我们将收集一些错误信息，然后我们将为你重启。 如果想了解更多信息，稍后可以联机搜索此错误：CRITICAL_SERVICE_FAILED”
 
 ## <a name="cause"></a>原因
 
@@ -93,7 +93,7 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
 
         bcdedit /store F: boot\bcd /set {default} safeboot minimal
 
-2. [分离 OS 磁盘，然后将 OS 磁盘重新附加到受影响的 VM](troubleshoot-recovery-disks-portal-windows.md)。 VM 将以安全模式启动。 如果仍然遇到错误，请转到[可选步骤](#optional-analysis-the-dump-logs-in-boot-debug-mode)。
+2. [分离 OS 磁盘，然后将 OS 磁盘重新附加到受影响的 VM](troubleshoot-recovery-disks-portal-windows.md)。 VM 将以安全模式启动。 如果仍然遇到错误，请转到可选步骤。
 3. 打开“运行”框，运行 **verifier** 来启动驱动程序验证程序管理器工具。
 4. 选择“自动选择未经签名的驱动程序”，然后单击“下一步”。
 5. 此时将显示未经签名的驱动程序文件的列表。 请记住这些文件名。
@@ -138,7 +138,7 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
 9. [分离 OS 磁盘，然后将 OS 磁盘重新附加到受影响的 VM](troubleshoot-recovery-disks-portal-windows.md)。
 10. 启动 VM 以查看它是否显示了转储分析。 找到无法加载的文件。 需要使用正常工作的 VM 中的文件替换此文件。 
 
-    下面是转储分析的示例。 可以看到 **FAILURE** 在 filecrypt.sys 中：“FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys”。
+    下面是转储分析的示例。 可看到 filecrypt.sys 出错：“FAILURE_BUCKET_ID:0x5A_c0000428_IMAGE_filecrypt.sys”。
 
     ```
     kd> !analyze -v 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b39fb3ed6dbcf8fde2dadf0de59d154285eb8587
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: dcbf011d6e5f035a1934b69f94cf95b2318491f0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022532"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813834"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>解决数据管理网关的使用问题
 本文提供有关解决数据管理网关使用问题的信息。
@@ -138,7 +138,7 @@ ms.locfileid: "54022532"
 网关所在环境需要 HTTP 代理来访问 Internet 资源，或代理的身份验证密码已更改但网关中并未相应进行更新时，会发生此错误。
 
 #### <a name="resolution"></a>解决方法
-按照本文[代理服务器注意事项](#proxy-server-considerations)部分的说明，通过数据管理网关配置管理器配置代理设置。
+按照本文“代理服务器注意事项”部分的说明，通过数据管理网关配置管理器配置代理设置。
 
 ## <a name="gateway-is-online-with-limited-functionality"></a>网关联机但功能受限
 ### <a name="1-problem"></a>1.问题
@@ -169,8 +169,8 @@ ms.locfileid: "54022532"
 请按照这些步骤使网关重新处于联机状态：
 
 1. 允许网关计算机和企业防火墙上的 IP 地址出站规则。 可以从 Windows 事件日志中找到 IP 地址 (ID == 401)：尝试以其访问权限 XX.XX.XX.XX:9350 禁止的方式访问套接字。
-* 在网关上配置代理设置。 有关详细信息，请参阅[代理服务器注意事项](#proxy-server-considerations)部分。
-* 对网关计算机和企业防火墙上的 Windows 防火墙启用出站端口 5671 和 9350-9354。 有关详细信息，请参阅[端口和防火墙](#ports-and-firewall)部分。 此步骤虽为可选步骤，但出于性能方面的考虑，建议执行该步骤。
+* 在网关上配置代理设置。 有关详细信息，请参阅“代理服务器注意事项”部分。
+* 对网关计算机和企业防火墙上的 Windows 防火墙启用出站端口 5671 和 9350-9354。 有关详细信息，请参阅“端口和防火墙”部分。 此步骤虽为可选步骤，但出于性能方面的考虑，建议执行该步骤。
 
 ### <a name="3-problem"></a>3.问题
 出现以下错误。

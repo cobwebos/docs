@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 3e460df8c4841a23c76ef8d7b254938ce46a2b45
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: f464b6411e1375fa005980454a9b61d2d6c05b0b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380463"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819104"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序缩放选项
 
@@ -23,7 +23,7 @@ ms.locfileid: "49380463"
 - [手动缩放](#manually-scale-pods-or-nodes)
 - [水平 Pod 自动缩放程序 (HPA)](#horizontal-pod-autoscaler)
 - [群集自动缩放程序](#cluster-autoscaler)
-- [Azure 容器实例 (ACI) 与 AKS 集成](#burst-to-azure-container-instance)
+- Azure 容器实例 (ACI) 与 AKS 集成
 
 ## <a name="manually-scale-pods-or-nodes"></a>手动缩放 Pod 或节点
 
@@ -65,7 +65,7 @@ Kubernetes 使用水平 Pod 自动缩放程序 (HPA) 来监视资源需求并自
 
 当群集自动缩放程序通知由于节点池资源限制而无法将 Pod 列入计划时，节点池中的节点数量会增加，提供额外的计算资源。 当这些额外的节点成功部署并可在节点池中使用时，可将 Pod 计划为运行。
 
-如果应用程序需要快速缩放，则某些 Pod 可能会保持等待计划的状态，直到群集自动缩放程序部署的其他节点可以接受列入计划的 Pod。 对于具有高突发需求的应用程序，可以[使用虚拟节点和 Azure 容器实例进行缩放](#burst-to-azure-container-instance)。
+如果应用程序需要快速缩放，则某些 Pod 可能会保持等待计划的状态，直到群集自动缩放程序部署的其他节点可以接受列入计划的 Pod。 对于具有高突发需求的应用程序，可以使用虚拟节点和 Azure 容器实例进行缩放。
 
 ### <a name="scale-down-events"></a>纵向缩减事件
 

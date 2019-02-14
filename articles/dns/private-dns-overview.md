@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 1/23/2019
 ms.author: victorh
-ms.openlocfilehash: 4b5b98b5695901ca6d136682e454f059f157b743
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f88cc44890277604411f482779a83ee266820ac8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826473"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816316"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>将 Azure DNS 用于专用域
 
@@ -32,7 +32,7 @@ Azure DNS 提供以下优势：
 
 * **无需使用自定义 DNS 解决方案**。 以前，许多客户创建了自定义 DNS 解决方案来管理其虚拟网络。 现在可以使用 Azure 的本机基础结构执行 DNS 区域管理，这解除了创建和管理自定义 DNS 解决方案的负担。
 
-* **使用所有常见的 DNS 记录类型**。 Azure DNS 支持 A、AAAA、CNAME、MX、NS、PTR、SOA、SRV 和 TXT 记录。
+* **使用所有常见的 DNS 记录类型**。 Azure DNS 支持 A、AAAA、CNAME、MX、PTR、SOA、SRV 和 TXT 记录。
 
 * **自动化主机名记录管理**。 除了承载自定义 DNS 记录之外，Azure 还会自动维护指定虚拟网络中的 VM 的主机名记录。 在此场景中，可以优化所使用的域名，不需要创建自定义 DNS 解决方案或修改应用程序。
 

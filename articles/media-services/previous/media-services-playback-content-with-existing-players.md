@@ -4,7 +4,7 @@ description: 本主题列出了可以用来播放内容的现有播放器。
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 7e9fcf89-0fb6-4fa4-96cb-666320684d69
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 3fe82b98163182c73a144b72da371e8aa195e8cf
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: ae057feb70d9ddb2c2dae10bae20eca1b613f76f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435851"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996918"
 ---
 # <a name="playing-your-content-with-existing-players"></a>使用现有播放器播放内容
 Azure 媒体服务支持多种常用的流式处理格式，如平滑流、HTTP 实时流和 MPEG-Dash。 本主题指出了可用来测试流的现有播放器。

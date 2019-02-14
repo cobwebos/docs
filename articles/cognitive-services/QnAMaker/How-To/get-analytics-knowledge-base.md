@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 如果你在创建 QnA Maker 服务期间已启用了 App Insights，则 QnA Maker 会存储所有聊天日志和其他遥测数据。 运行示例查询来从 App Insights 获取聊天日志。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 02/04/2019
 ms.author: tulasim88
-ms.openlocfilehash: 6665efed53c7864467d7a6a72d109841c3a02b53
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 288db572f6b50d370f1dab710d3b0e7ab5e50bd5
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747537"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878232"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>获取有关知识库的分析
 

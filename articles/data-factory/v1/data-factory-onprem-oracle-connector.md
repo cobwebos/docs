@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aa6f891cc68d19e638bb2b7281f4b332de26bd26
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 6b97968540914bf1edf5624d04e8f47956de7f0d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332636"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822249"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Oracle 本地复制或粘贴数据
 
@@ -92,7 +92,7 @@ Oracle 连接器支持两个版本的驱动程序：
 3. 创建数据集以表示复制操作的输入和输出数据。 在上一步的示例中，创建了一个数据集来指定 Oracle 数据库中包含输入数据的表。 创建了另一个数据集来指定 blob 容器和用于保存从 Oracle 数据库复制的数据的文件夹。 有关特定于 Oracle 的数据集属性，请参阅[数据集属性](#dataset-properties)。
 4. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 在上一个示例中，对复制活动使用 **OracleSource** 作为源，**BlobSink** 作为接收器。 同样，如果要从 Azure Blob 存储复制到 Oracle 数据库，则在复制活动中使用 **BlobSource** 和 **OracleSink**。 有关特定于 Oracle 数据库的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)。 有关如何将数据存储用作源或接收器的详细信息，请选择上一部分中的相应数据存储链接。
 
-使用向导时，会自动创建这些数据工厂实体的 JSON 定义：链接服务、数据集和管道。 使用工具或 API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关提供用于在本地 Oracle 数据库中复制或粘贴数据的数据工厂实体 JSON 定义的示例，请参阅 [JSON 示例](#json-examples-for-copying-data-to-and-from-oracle-database)。
+使用向导时，会自动创建这些数据工厂实体的 JSON 定义：链接服务、数据集和管道。 使用工具或 API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关提供用于在本地 Oracle 数据库中复制或粘贴数据的数据工厂实体 JSON 定义的示例，请参阅 JSON 示例。
 
 以下部分提供了有关用于定义数据工厂实体的 JSON 属性的详细信息。
 

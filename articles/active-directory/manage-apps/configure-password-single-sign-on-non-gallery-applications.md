@@ -10,20 +10,20 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: barbkess
-ms.openlocfilehash: 9fc6bd6e7196d442f46e364a9d5816c5056f34f0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 934996f1573520a6fba92ce09f8a14fc4795de6c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55184370"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812447"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>如何配置非库应用程序的密码单一登录
 
-除了 Azure AD 应用程序库中存在的选项外，还可以在所需应用程序未在此处列出时选择添加**非库应用程序**。 使用此功能，可以添加已存在于组织中的任何应用程序或任何你可能使用的来自供应商（该供应商尚不在 [Azure AD 应用程序库](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#get-started-with-the-azure-ad-application-gallery)中）的第三方应用程序。
+除了 Azure AD 应用程序库中存在的选项外，还可以在所需应用程序未在此处列出时选择添加**非库应用程序**。 使用此功能，可以添加已存在于组织中的任何应用程序或任何你可能使用的来自供应商（该供应商尚不在 [Azure AD 应用程序库](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)中）的第三方应用程序。
 
 添加非库应用程序后，可以通过在 [Azure 门户](https://portal.azure.com/)中的“企业应用程序”上选择“单一登录”导航项，来配置此应用程序使用的单一登录方法。
 
-可用的单一登录方法之一是[基于密码的单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work)选项。 通过**添加非库应用程序**体验，可以集成任何呈现基于 HTML 的用户名和密码输入字段的应用程序，即使该应用程序不在我们的预集成应用程序集中。
+可用的单一登录方法之一是[基于密码的单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)选项。 通过**添加非库应用程序**体验，可以集成任何呈现基于 HTML 的用户名和密码输入字段的应用程序，即使该应用程序不在我们的预集成应用程序集中。
 
 此处的原理是页面抓取技术，该技术是“访问面板”扩展的一部分，允许自动检测用户名和密码输入字段，并为特定应用程序实例安全地存储这些字段。 然后在用户通过应用程序访问面板导航到该应用程序时，安全地向这些字段重播用户名和密码。
 
@@ -43,11 +43,11 @@ ms.locfileid: "55184370"
 
 -   允许**业务组的成员**使用[自助应用程序访问](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)功能指定分配给用户的用户名和密码
 
--   允许**管理员**在[将用户分配到应用程序](#_How_to_configure_1)时，使用更新凭据功能指定分配给用户的用户名和密码
+-   允许管理员在将用户分配到应用程序时，使用更新凭据功能指定分配给用户的用户名和密码
 
 -   允许**管理员**在[将组分配到应用程序](#assign-an-application-to-a-group-directly)时，使用更新凭据功能指定组中人员使用的共享用户名和密码
 
-以下部分介绍了如何对使用**添加非库应用程序**体验添加的任何应用程序启用[基于密码的单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work)。
+以下部分介绍了如何对使用**添加非库应用程序**体验添加的任何应用程序启用[基于密码的单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
 ## <a name="overview-of-steps-required"></a>所需步骤概述
 
@@ -57,7 +57,7 @@ ms.locfileid: "55184370"
 
 -   [将应用程序配置为密码单一登录](#configure-the-application-for-password-single-sign-on)
 
--   [将应用程序分配给用户或组](#assign-the-application-to-a-user-or-a-group)
+-   将应用程序分配给用户或组
 
     -   [直接将用户分配到应用程序](#assign-a-user-to-an-application-directly)
 

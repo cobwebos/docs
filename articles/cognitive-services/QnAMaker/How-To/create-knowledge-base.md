@@ -4,19 +4,19 @@ titleSuffix: QnA Maker - Azure Cognitive Services
 description: 使用 QnA Maker 门户，添加使用聊天创建知识库。 这使得应用程序具有吸引力。 将预先填充的顶部聊天集添加到知识库中作为你的机器人的聊天内容的起点，并节省从头开始编写它们的时间和成本。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: cb62be34f7f294bda83920f95c9f7c7bd63cfbda
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 4ba744c3d8cc3a785c04bbbb1b476a857859e244
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219679"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876841"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-portal"></a>快速入门：使用 QnA Maker 门户创建知识库
 

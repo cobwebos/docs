@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1fde06f483821b0e9958c25bf5ce37aae4c8f61d
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: b7a785cc506f12360edc14555b7241a557dc400c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022013"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817327"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,7 +28,7 @@ ms.locfileid: "54022013"
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅 [V2 中的 Amazon Redshift 连接器](../connector-amazon-redshift.md)。
 
-本文介绍如何使用 Azure 数据工厂中的复制活动从 Amazon Redshift 移动数据。 本文基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。 
+本文介绍如何使用 Azure 数据工厂中的复制活动从 Amazon Redshift 移动数据。 本文基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
 
 数据工厂目前仅支持将 Amazon Redshift 中的数据移至[支持的接收器数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 不支持将其他数据存储中的数据移至 Amazon Redshift。
 
@@ -44,15 +44,15 @@ ms.locfileid: "54022013"
 
 创建管道的最简单方法是使用 Azure 数据工厂复制向导。 有关使用复制数据向导创建管道的快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
 
-也可以使用 Azure 门户、Visual Studio、Azure PowerShell 或其他工具创建管道。 也可以使用 Azure 资源管理器模板、.NET API 或 REST API 创建管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+也可以使用 Azure 门户、Visual Studio、Azure PowerShell 或其他工具创建管道。 也可以使用 Azure 资源管理器模板、.NET API 或 REST API 创建管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
-无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储： 
+无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
 1. 创建链接服务可将输入和输出数据存储链接到数据工厂。
-2. 创建数据集用于表示复制操作的输入和输出数据。 
-3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 
+2. 创建数据集用于表示复制操作的输入和输出数据。
+3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。
 
-使用复制向导时，会自动创建这些数据工厂实体的 JSON 定义。 使用工具或 API（.NET API 除外）时，可使用 JSON 格式定义数据工厂实体。 [JSON 示例：将数据从 Amazon Redshift 复制到 Azure Blob 存储](#json-example-copy-data-from-amazon-redshift-to-azure-blob)中演示了用于从 Amazon Redshift 数据存储复制数据的数据工厂实体的 JSON 定义。
+使用复制向导时，会自动创建这些数据工厂实体的 JSON 定义。 使用工具或 API（.NET API 除外）时，可使用 JSON 格式定义数据工厂实体。 “JSON 示例：将数据从 Amazon Redshift 复制到 Azure Blob 存储”中演示了用于从 Amazon Redshift 数据存储复制数据的数据工厂实体的 JSON 定义。
 
 以下部分介绍了用于定义 Amazon Redshift 的数据工厂实体的的 JSON 属性。
 
@@ -139,7 +139,7 @@ Amazon Redshift [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r_UNL
 ```
 
 ## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>JSON 示例：将数据从 Amazon Redshift 复制到 Blob 存储
-此示例演示如何将数据从 Amazon Redshift 数据库复制到 Azure Blob 存储。 可以使用复制活动将数据直接复制到任何[受支持的接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。  
+此示例演示如何将数据从 Amazon Redshift 数据库复制到 Azure Blob 存储。 可以使用复制活动将数据直接复制到任何[受支持的接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。
 
 此示例具有以下数据工厂实体：
 
@@ -162,7 +162,7 @@ Amazon Redshift [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r_UNL
         "typeProperties":
         {
             "server": "< The IP address or host name of the Amazon Redshift server >",
-            "port": <The number of the TCP port that the Amazon Redshift server uses to listen for client connections.>,
+            "port": "<The number of the TCP port that the Amazon Redshift server uses to listen for client connections.>",
             "database": "<The database name of the Amazon Redshift database>",
             "username": "<username>",
             "password": "<password>"
@@ -333,7 +333,7 @@ Amazon Redshift [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r_UNL
 | SMALLINT |Int16 |
 | INTEGER |Int32 |
 | BIGINT |Int64 |
-| DECIMAL |小数 |
+| DECIMAL |Decimal |
 | REAL |Single |
 | 双精度 |Double |
 | BOOLEAN |String |
@@ -350,7 +350,7 @@ Amazon Redshift [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r_UNL
 从关系型数据存储复制数据时，请注意可重复性，以免出现意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试**策略**，以便在出现故障时重新运行切片。 无论要重新运行切片几次，都需要确保读取相同的数据。 此外，还需确保无论以哪种方式重新运行切片，都会读取相同的数据。 有关详细信息，请参阅[从关系型数据源进行可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
 
 ## <a name="performance-and-tuning"></a>性能和优化
-在[复制活动性能和优化指南](data-factory-copy-activity-performance.md)中了解影响复制活动性能的关键因素以及各种性能优化方法。 
+在[复制活动性能和优化指南](data-factory-copy-activity-performance.md)中了解影响复制活动性能的关键因素以及各种性能优化方法。
 
 ## <a name="next-steps"></a>后续步骤
 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。

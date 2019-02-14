@@ -9,12 +9,12 @@ ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: fc732065f328f653082286508db74cc29107854e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e1e4628a1c777ecc54fdf9a26b334a10b7ab8cb3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232002"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810570"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>通过 .NET 应用管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -130,7 +130,7 @@ graphClient.TenantID = domain;
 var resourceGroup = new ResourceGroup { Location = location };
 resourceManagementClient.ResourceGroups.CreateOrUpdate(groupName, rg);
 ```
-有关详细信息，请参阅 [Azure 资源组和 Data Lake Analytics](#Azure-Resource-Groups-and-Data-Lake-Analytics)。
+有关详细信息，请参阅 Azure 资源组和 Data Lake Analytics。
 
 ### <a name="create-a-data-lake-store-account"></a>创建 Data Lake Store 帐户
 

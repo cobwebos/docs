@@ -13,12 +13,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: c0e6aa34b80389689e49ac6ad3566a3a109a96e1
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 803c9af7b6c40f7deee2b81fb7ff0ae82ef6778a
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158156"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965148"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>如何使用用于 Android 的 Azure 移动应用 SDK
 
@@ -55,7 +55,7 @@ ms.locfileid: "54158156"
 
 1. 将以下代码添加到 *buildscript* 标记内*项目*级别的 **build.gradle** 文件：
 
-    ```text
+    ```gradle
     buildscript {
         repositories {
             jcenter()
@@ -65,7 +65,7 @@ ms.locfileid: "54158156"
 
 2. 将以下代码添加到*依赖关系*标记内*模块应用*级别的 **build.gradle** 文件：
 
-    ```text
+    ```gradle
     compile 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
     ```
 
@@ -496,7 +496,7 @@ List<ToDoItem> results = mToDoTable
 
 在前面的代码中，*listitem* 属性指定列表中单个行的布局 ID。 此代码指定复选框及其关联文本，并针对列表中的每项实例化一次。 此布局不显示 **ID** 字段，如果使用更复杂的布局，则会在屏幕中指定更多字段。 以下代码摘自 **row_list_to_do.xml** 文件。
 
-```java
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -520,7 +520,7 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 
 替代适配器的 **getView** 方法。 例如：
 
-```
+```java
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
@@ -959,7 +959,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 将 **redirectUriScheme** 添加到应用程序的 `build.gradle` 文件：
 
-```text
+```gradle
 android {
     buildTypes {
         release {
@@ -976,7 +976,7 @@ android {
 
 最后，将 `com.android.support:customtabs:23.0.1` 添加到 `build.gradle` 文件中的依赖项列表：
 
-```text
+```gradle
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.google.code.gson:gson:2.3'
@@ -1076,7 +1076,7 @@ MobileServiceUser user = mClient
 1. 根据[如何为 Active Directory 登录配置应用服务][22]教程的说明，为 AAD 登录配置移动应用。 请务必完成注册本机客户端应用程序的可选步骤。
 2. 可通过修改 build.gradle 文件并包含以下定义来安装 ADAL：
 
-    ```
+    ```gradle
     repositories {
         mavenCentral()
         flatDir {

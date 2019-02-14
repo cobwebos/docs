@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.openlocfilehash: 4eca6a588d2c95189f0ba995b8db195907e9dc39
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 1db16f203755f9afc265495daba056313138a5dc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34356029"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819437"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>排查应用程序网关中的网关无效错误
 
@@ -28,11 +28,11 @@ ms.locfileid: "34356029"
 
 ## <a name="overview"></a>概述
 
-配置应用程序网关之后，用户可能遇到的一个错误是“服务器错误: 502 - Web 服务器在充当网关或代理服务器时收到无效响应”。 此错误可能是以下主要原因造成的：
+配置应用程序网关后，用户可能遇到的其中一个错误是“服务器错误：502 - Web 服务器在作为网关或代理服务器时收到了无效响应”。 此错误可能是以下主要原因造成的：
 
 * NSG、UDR 或自定义 DNS 阻止了对后端池成员的访问。
-* 虚拟机规模集的后端 VM 或实例[未响应默认的运行状况探测](#problems-with-default-health-probe.md)。
-* [自定义运行状况探测的配置](#problems-with-custom-health-probe.md)无效或不正确。
+* 虚拟机规模集的后端 VM 或实例未响应默认的运行状况探测。
+* 自定义运行状况探测的配置无效或不正确。
 * Azure 应用程序网关的[后端池未配置或为空](#empty-backendaddresspool)。
 * [虚拟机规模集](#unhealthy-instances-in-backendaddresspool)中没有正常运行的 VM 或实例。
 * 用户请求出现[请求超时或连接问题](#request-time-out)。
@@ -103,7 +103,7 @@ DhcpOptions            : {
 
 | 探测属性 | 说明 |
 | --- | --- |
-| 名称 |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
+| Name |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
 | 协议 |用于发送探测的协议。 探测使用后端 HTTP 设置中定义的协议 |
 | 主机 |用于发送探测的主机名。 仅当应用程序网关上配置了多站点时才适用。 这与 VM 主机名不同。 |
 | 路径 |探测的相对路径。 有效路径以“/”开头。 将探测发送到 \<protocol\>://\<host\>:\<port\>\<path\> |

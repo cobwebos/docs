@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: f0f3396852720bbbb31e46f7a9913d9d1bdc4a6c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8798ecd15c673c26c5b1be0920887ff493cc6a85
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157234"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818679"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>使用必应图像搜索 API 获取图像见解
 
@@ -221,7 +221,7 @@ Host: api.cognitive.microsoft.com
 -   右：290/300 = 0.9667...  
 -   下：150/200 = 0.75  
 
-可以在后续的见解调用中使用必应返回的此区域。 例如，可以使用此区域来获取在视觉上与识别的实体类似的图像。 有关详细信息，请参阅[裁剪图像以便将其用于“视觉类似”模块和“实体识别”模块](#croppingimages)。 下面说明了如何在区域字段和将要用于裁剪图像的查询字符串之间进行映射。  
+可以在后续的见解调用中使用必应返回的此区域。 例如，可以使用此区域来获取在视觉上与识别的实体类似的图像。 有关详细信息，请参阅“裁剪图像”以便将其用于“视觉类似”模块和“实体识别”模块。 下面说明了如何在区域字段和将要用于裁剪图像的查询字符串之间进行映射。  
 
 -   “左”映射到 [cal](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cal)  
 -   “上”映射到 [cat](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cat)  

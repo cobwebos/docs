@@ -16,12 +16,12 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 5dd5920eae97399bae03c6917bb610103bd556c2
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: ecdeca5e6dae5fa60afdce499dc4eea022c4564c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912708"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817625"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory 中可配置的令牌生存期（预览版）
 
@@ -48,7 +48,8 @@ ms.locfileid: "54912708"
 客户端使用访问令牌来访问受保护的资源。 访问令牌仅可用于用户、客户端和资源的特定组合。 访问令牌不能吊销，在过期日期之前保持有效。 获取了访问令牌的恶意行动者在访问令牌的生存期内一直可以使用它。 调整访问令牌生存期的利弊是可以提高系统性能，但也会增加客户端在用户帐户禁用后保留访问权限的时间。 通过减少客户端获取刷新访问令牌的次数可以实现系统性能的提升。  默认值为 1 小时 - 在 1 小时后，客户端必须使用刷新令牌（通常以无提示方式）获取新的刷新令牌和访问令牌。 
 
 ### <a name="refresh-tokens"></a>刷新令牌
-当客户端获取访问令牌来访问受保护资源时，它同时还会收到一个刷新令牌。 当前访问令牌过期时，可以使用刷新令牌获取新的访问/刷新令牌对。 刷新令牌绑定到用户和客户端的组合。 刷新令牌可以[随时吊销](access-tokens.md#token-revocation)，每次使用该令牌时，系统都会检查其有效性。  
+
+当客户端获取访问令牌来访问受保护资源时，它同时还会收到一个刷新令牌。 当前访问令牌过期时，可以使用刷新令牌获取新的访问/刷新令牌对。 刷新令牌绑定到用户和客户端的组合。 刷新令牌可以[随时吊销](access-tokens.md#token-revocation)，每次使用该令牌时，系统都会检查其有效性。  使用刷新令牌获取新访问令牌时，不会撤销刷新令牌 - 但最佳做法是获取新令牌后安全删除旧令牌。 
 
 必须在机密客户端与公共客户端之间做出区分，因为这会影响刷新令牌可以使用的时长。 有关不同类型的客户端的详细信息，请参阅 [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1)。
 

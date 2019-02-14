@@ -4,16 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 2f847cfe4e0097cdb6f70e8831e15e602b5e9ac6
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: d6bad1ec584b28fee77bc654eba8a2d0c7b5df30
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165517"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889257"
 ---
-<!--author=alkohli last changed: 01/20/17-->
-
-
 #### <a name="to-add-a-storage-account-credential-in-the-same-azure-subscription-as-the-storsimple-device-manager-service"></a>在 StorSimple Device Manager 服务所在的同一 Azure 订阅中添加存储帐户凭据
 
 1. 转到 StorSimple Device Manager 服务。 在“配置”部分中，单击“存储帐户凭据”。

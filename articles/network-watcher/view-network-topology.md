@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: 501659a93306342c7a212d135b4fdd89be096451
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 842c0d5e3dff0c21545405624f0f536c80359b19
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428153"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809889"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>查看 Azure 虚拟网络的拓扑
 
@@ -56,7 +56,7 @@ ms.locfileid: "54428153"
 
 所用帐户必须拥有所需的[权限](required-rbac-permissions.md)。
 
-1. 如果你已在要为其创建拓扑的虚拟网络所在的区域中有一个网络观察程序，请跳至步骤 3。 使用 [az group create](/cli/azure/group#az_group_create) 创建一个包含网络观察程序的资源组。 以下示例在“eastus”区域创建此资源组：
+1. 如果你已在要为其创建拓扑的虚拟网络所在的区域中有一个网络观察程序，请跳至步骤 3。 使用 [az group create](/cli/azure/group) 创建一个包含网络观察程序的资源组。 以下示例在“eastus”区域创建此资源组：
 
     ```azurecli-interactive
     az group create --name NetworkWatcherRG --location eastus
@@ -79,7 +79,7 @@ ms.locfileid: "54428153"
 
     仅为与 *MyResourceGroup* 资源组具有相同的资源组且与网络观察程序具有相同的区域的资源返回拓扑信息。 例如，不会显示 *MyResourceGroup* 之外的资源组中存在的网络安全组，即使该网络安全组与 *MyVnet* 虚拟网络中的子网相关联。
 
-  详细了解返回的输出中的[关系](#relationhips)和[属性](#properties)。 如果没有现有的可以查看其拓扑的虚拟网络，则可使用[通过网络虚拟设备路由流量](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)脚本示例创建一个。 若要查看拓扑图并以可编辑文件的形式来下载它，请使用[门户](#azure-portal)。
+  详细了解返回的输出中的关系和[属性](#properties)。 如果没有现有的可以查看其拓扑的虚拟网络，则可使用[通过网络虚拟设备路由流量](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)脚本示例创建一个。 若要查看拓扑图并以可编辑文件的形式来下载它，请使用[门户](#azure-portal)。
 
 ## <a name = "powershell"></a>查看拓扑 - PowerShell
 
@@ -123,7 +123,7 @@ ms.locfileid: "54428153"
 
    仅为与 *MyResourceGroup* 资源组具有相同的资源组且与网络观察程序具有相同的区域的资源返回拓扑信息。 例如，不会显示 *MyResourceGroup* 之外的资源组中存在的网络安全组，即使该网络安全组与 *MyVnet* 虚拟网络中的子网相关联。
 
-  详细了解返回的输出中的[关系](#relationhips)和[属性](#properties)。 如果没有现有的可以查看其拓扑的虚拟网络，则可使用[通过网络虚拟设备路由流量](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)脚本示例创建一个。 若要查看拓扑图并以可编辑文件的形式来下载它，请使用[门户](#azure-portal)。
+  详细了解返回的输出中的关系和[属性](#properties)。 如果没有现有的可以查看其拓扑的虚拟网络，则可使用[通过网络虚拟设备路由流量](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)脚本示例创建一个。 若要查看拓扑图并以可编辑文件的形式来下载它，请使用[门户](#azure-portal)。
 
 ## <a name="relationships"></a>关系
 
