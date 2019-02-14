@@ -15,12 +15,13 @@ ms.workload: identity
 ms.subservice: pim
 ms.date: 01/24/2019
 ms.author: rolyon
-ms.openlocfilehash: 3308c0d53d849e5f5c27a54ec08ecb811a36a1be
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9afbbad9b956d41252ff9121c99a91669c71aaab
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174731"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211727"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>在 PIM 中查看 Azure 资源角色的活动和审核历史记录
 

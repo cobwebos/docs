@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dd90834a2e112effbfd6876b84dfe8b3ca87fcf3
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 38d5d469c920cafa33e0cc5b37846df2dc6d6ab9
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015638"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236403"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>使用 Azure 数据工厂从本地 Cassandra 数据库移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -30,7 +30,7 @@ ms.locfileid: "54015638"
 
 本文介绍如何使用 Azure 数据工厂中的复制活动从本地 Cassandra 数据库移动数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
 
-可以将数据从本地 Cassandra 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 Cassandra 数据存储移至其他数据存储，而不支持将数据从其他数据存储移至 Cassandra 数据存储。 
+可以将数据从本地 Cassandra 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 Cassandra 数据存储移至其他数据存储，而不支持将数据从其他数据存储移至 Cassandra 数据存储。
 
 ## <a name="supported-versions"></a>支持的版本
 Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承载集成运行时上运行的活动，从 IR 版本 3.7 以及更高版本开始，Cassandra 3.x 受支持。
@@ -38,26 +38,26 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
 ## <a name="prerequisites"></a>先决条件
 要使 Azure 数据工厂服务能够连接到本地 Cassandra 数据库，必须在托管数据库的同一计算机上或在单独的计算机上安装数据管理网关，以避免与数据库争用资源。 数据管理网关是一个以安全和托管的方式将本地数据源连接到云服务的组件。 有关数据管理网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。 有关设置网关以便数据管道移动数据的分步说明，请参阅[将数据从本地移到云](data-factory-move-data-between-onprem-and-cloud.md)一文。
 
-必须使用网关连接到 Cassandra 数据库，即使数据库在云中托管（例如，在 Azure IaaS VM 上），也是如此。 只要网关能连接数据库，就可在托管数据库的同一 VM 上或单独的 VM 上安装网关。  
+必须使用网关连接到 Cassandra 数据库，即使数据库在云中托管（例如，在 Azure IaaS VM 上），也是如此。 只要网关能连接数据库，就可在托管数据库的同一 VM 上或单独的 VM 上安装网关。
 
-安装网关时，会自动安装用于连接到 Cassandra 数据库的 Microsoft Cassandra ODBC 驱动程序。 因此，从 Cassandra 数据库复制数据时，不需要手动在网关计算机上安装任何驱动程序。 
+安装网关时，会自动安装用于连接到 Cassandra 数据库的 Microsoft Cassandra ODBC 驱动程序。 因此，从 Cassandra 数据库复制数据时，不需要手动在网关计算机上安装任何驱动程序。
 
 > [!NOTE]
 > 请参阅[网关问题故障排除](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)，了解连接/网关相关问题的故障排除提示。
 
 ## <a name="getting-started"></a>入门
-可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
+可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。
 
-- 创建管道的最简单方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
-- 还可以使用以下工具来创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+- 创建管道的最简单方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+- 还可以使用以下工具来创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
 1. 创建链接服务可将输入和输出数据存储链接到数据工厂。
-2. 创建数据集以表示复制操作的输入和输出数据。 
-3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 
+2. 创建数据集以表示复制操作的输入和输出数据。
+3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。
 
-使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从本地 Cassandra 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 Cassandra 复制到 Azure Blob](#json-example-copy-data-from-cassandra-to-azure-blob) 部分。 
+使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关用于从本地 Cassandra 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 Cassandra 复制到 Azure Blob](#json-example-copy-data-from-cassandra-to-azure-blob) 部分。
 
 对于特定于 Cassandra 数据存储的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息：
 
@@ -116,7 +116,7 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
 
 **Cassandra 链接服务：**
 
-此示例使用 **Cassandra** 链接服务。 有关此链接服务支持的属性，请参阅 [Cassandra 链接服务](#linked-service-properties)部分。  
+此示例使用 **Cassandra** 链接服务。 有关此链接服务支持的属性，请参阅 [Cassandra 链接服务](#linked-service-properties)部分。
 
 ```json
 {
@@ -143,7 +143,7 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
 {
     "name": "AzureStorageLinkedService",
     "properties": {
-    "type": "AzureStorage",
+        "type": "AzureStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         }
@@ -183,7 +183,7 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
 
 **Azure Blob 输出数据集：**
 
-数据每小时向新的 blob 写入一次（frequency：hour，interval：1）。
+数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。
 
 ```json
 {
@@ -212,13 +212,13 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
 有关 RelationalSource 支持的属性的列表，请参阅 [RelationalSource 类型属性](#copy-activity-properties)。
 
 ```json
-{  
+{
     "name":"SamplePipeline",
-    "properties":{  
+    "properties":{
         "start":"2016-06-01T18:00:00",
         "end":"2016-06-01T19:00:00",
         "description":"pipeline with copy activity",
-        "activities":[  
+        "activities":[
         {
             "name": "CassandraToAzureBlob",
             "description": "Copy from Cassandra to an Azure blob",
@@ -254,7 +254,7 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
                 "timeout": "01:00:00"
             }
         }
-        ]    
+        ]
     }
 }
 ```

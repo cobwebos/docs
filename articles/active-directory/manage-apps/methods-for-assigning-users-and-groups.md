@@ -3,8 +3,8 @@ title: 如何将用户和组分配到应用程序 | Microsoft Docs
 description: 将用户分配到应用程序以授予访问权限
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2018
-ms.author: barbkess
-ms.openlocfilehash: 4d7a27713e6ea49ebe3b2f3f2f9c63090a6ca25c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: celested
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4f62a87343ea0dc8d5d3818ee8516f0d8e8f607c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165874"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206712"
 ---
 # <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>向 Azure Active Directory 中的应用程序分配用户和组
 本文介绍如何将用户或组分配到 Azure Active Directory (Azure AD) 中的应用程序。 首先必须将用户分配给应用程序，然后管理员才能授予这些用户访问权限以执行以下操作：

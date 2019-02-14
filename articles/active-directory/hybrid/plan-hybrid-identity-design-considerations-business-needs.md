@@ -16,12 +16,13 @@ ms.date: 06/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: ac32e332b0e805c2261a47a3d8656160f977507e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 47273bf687d88e82afba5de878f08bd53422479c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488589"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204759"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的标识要求
 设计混合标识解决方案的第一个步骤是确定要利用此解决方案的企业组织有何要求。  混合标识最初是一个支持角色（通过提供身份验证来支持其他所有云解决方案），并提供一些新奇的功能，为用户解锁新的工作负荷。  要为用户采用的这些工作负荷或服务指明了混合标识设计的要求。  这些服务和工作负荷在本地和云中都需要利用混合标识。  

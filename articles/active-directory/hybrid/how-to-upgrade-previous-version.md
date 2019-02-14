@@ -15,12 +15,13 @@ ms.workload: Identity
 ms.date: 07/18/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8c998426b95b108e9b619ca48b88a4dd85236893
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 437577ec68ee825bd0815735fef08e8297dad756
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490152"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180533"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect：从以前版本升级到最新版本
 本主题介绍可将 Azure Active Directory (Azure AD) Connect 安装升级到最新版本的不同方法。 建议使用最新版本的 Azure AD Connect。 进行重大配置更改时，也可以使用[交叉迁移](#swing-migration)部分所述的步骤。

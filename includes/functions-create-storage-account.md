@@ -4,16 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: cf8c6f07eb38487dd29624b15be3637536be92fc
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 889b9c0cf944085f5f42ece892d5cac747a27240
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133730"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246723"
 ---
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
-Functions 使用通用帐户在 Azure 存储中保留状态以及有关函数的其他信息。 使用 [az storage account create](/cli/azure/storage/account#create) 命令在创建的资源组中创建通用存储帐户。
+Functions 使用通用帐户在 Azure 存储中保留状态以及有关函数的其他信息。 使用 [az storage account create](/cli/azure/storage/account) 命令在创建的资源组中创建通用存储帐户。
 
 在以下命令中，请将 `<storage_name>` 占位符替换成全局唯一存储帐户名。 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。
 

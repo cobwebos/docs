@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 1fe0db2f0c7fea4b24cc23aaa52deb16376012b2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a556b38ca4947b71555ba7b023607b392900bdaf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092003"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210384"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-the-cloud-security-fabric"></a>教程：Azure Active Directory 与 Cloud Security Fabric 集成
 
@@ -107,7 +108,7 @@ ms.locfileid: "53092003"
 
     ![Cloud Security Fabric 域和 URL 单一登录信息](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，键入 URL：
+    a. 在“登录 URL”文本框中，键入 URL：
 
     | |
     |--|
@@ -158,7 +159,7 @@ ms.locfileid: "53092003"
 
     ![“用户”对话框](./media/ciscocloudlock-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 

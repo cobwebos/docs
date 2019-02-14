@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 38be6d0212f4676add76abacf9f18f0a73eb44be
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 78834f1f12d2c748cb885e437496f2acf11b69ee
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170413"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232748"
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>在 Power BI 工作区集合中基于数据集创建新报表
 
@@ -40,13 +40,13 @@ Power BI 工作区集合使用一个嵌入令牌，这是一个 HMAC 已签名 J
 
 **安装 NuGet 包**
 
-```
+```powershell
 Install-Package Microsoft.PowerBI.Core
 ```
 
 **C# 代码**
 
-```
+```csharp
 using Microsoft.PowerBI.Security;
 
 // rlsUsername and roles are optional
@@ -65,15 +65,16 @@ var token = embedToken.Generate("{access key}");
 
 **安装 NuGet 包**
 
-```
+```powershell
 Install-Package Microsoft.PowerBI.JavaScript
 ```
 
 **JavaScript 代码**
 
-```
+```html
 <div id="reportContainer"></div>
-  
+
+<script>
 var embedCreateConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MI',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -85,6 +86,7 @@ var embedCreateConfiguration = {
 
     // Create report
     var report = powerbi.createReport(reportContainer, embedCreateConfiguration);
+</script>
 ```
 
 调用 *powerbi.createReport()* 会在 *div* 元素中创建一个以编辑模式显示的空白画布。
@@ -95,7 +97,7 @@ var embedCreateConfiguration = {
 
 在调用“另存为”操作之前，不会创建报表。 可以通过文件菜单或 JavaScript 完成此操作。
 
-```
+```javascript
  // Get a reference to the embedded report.
     report = powerbi.get(reportContainer);
     
@@ -116,9 +118,9 @@ var embedCreateConfiguration = {
 
 要与新报表交互，需要像应用程序嵌入常规报表一样来嵌入新报表，这意味着，必须专门针对新报表颁发新令牌，并调用 embed 方法。
 
-```
+```html
 <div id="reportContainer"></div>
-  
+<script>
 var embedConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MJ',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -130,13 +132,14 @@ var embedConfiguration = {
 
     // Embed report
     var report = powerbi.embed(reportContainer, embedConfiguration);
+</script>
 ```
 
 ## <a name="automate-save-and-load-of-a-new-report-using-the-saved-event"></a>使用“saved”事件自动保存和加载新报表
 
 要自动执行“另存为”过程，并加载新报表，可以使用“saved”事件。 当保存操作已完成并返回包含新 reportId、报表名称、旧 reportId（如果有）的 Json 对象，并且操作是 saveAs 或 save 时，将激发此事件。
 
-```
+```json
 {
   "reportObjectId": "5dac7a4a-4452-46b3-99f6-a25915e0fe54",
   "reportName": "newReport",
@@ -147,9 +150,9 @@ var embedConfiguration = {
 
 要自动执行该过程，可以侦听“saved”事件，提取新的 reportId，创建新令牌，并使用新令牌嵌入新报表。
 
-```
+```html
 <div id="reportContainer"></div>
-  
+<script>
 var embedCreateConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MI',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -192,6 +195,7 @@ var embedCreateConfiguration = {
    // report.off removes a given event handler if it exists.
    report.off("saved");
     });
+</script>
 ```
 
 ## <a name="see-also"></a>另请参阅

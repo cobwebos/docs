@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 37c2374738cbebceb11dbaeb973c6713c87ff4b0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 25b69f13cbf742c2bb98367a3181e45162715d67
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150642"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192619"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>教程：Azure Active Directory 与 Zscaler Two 的集成
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 12/07/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c83865835dfff4013072757c8f40a8d8fc83deaa
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 8be7a3d862e7b496a4e3b3077e4c53018bf97bb8
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493230"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233313"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>教程：保护 Azure 资源管理器模板部署中的项目
 
@@ -195,10 +195,11 @@ ms.locfileid: "55493230"
 
 ## <a name="deploy-the-template"></a>部署模板
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 有关部署过程，请参阅[部署模板](./resource-manager-tutorial-create-multiple-instances.md#deploy-the-template)部分。 改用以下 PowerShell 部署脚本：
 
 ```azurepowershell
-$deploymentName = Read-Host -Prompt "Enter the name for this deployment"
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
 $adminUsername = Read-Host -Prompt "Enter the virtual machine admin username"
@@ -208,7 +209,7 @@ $artifactsLocationSasToken = Read-Host -Prompt "Enter the artifacts location SAS
 $bacpacFileName = Read-Host -Prompt "Enter the BACPAC file name"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment -Name $deploymentName `
+New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -adminUser $adminUsername `
     -adminPassword $adminPassword `

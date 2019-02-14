@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 125c3a925bf6eff04035bb755a07f19367d1abd2
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 1dd6be61aab91bb15cc42939689e3c7399bee3db
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661082"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236526"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>通过 Power BI 工作区集合进行身份验证和授权
 
@@ -106,7 +106,7 @@ SDK 中提供了可以更轻松地创建应用令牌的方法。 例如，对于
 
 可以通过在作用域之间使用空格来提供多个作用域，如下所示。
 
-```
+```csharp
 string scopes = "Dataset.Read Workspace.Report.Create";
 ```
 

@@ -11,12 +11,13 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
-ms.openlocfilehash: 67265636b26a0eec3c40ee1f95872cc870099de7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3e1724454ff67f6cfe3646b59e8302a3dd099081
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809671"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217439"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>什么是 Microsoft Authenticator 应用？
 Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登录到帐户。 双重验证可帮助你更安全地访问帐户，尤其是在查看敏感信息时。 由于密码可能会遗忘、失窃或者泄露，双重验证作为一种附加的安全保障步骤，可帮助保护帐户的安全，因为其他人更难破解它。

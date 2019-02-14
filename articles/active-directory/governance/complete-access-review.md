@@ -15,12 +15,13 @@ ms.subservice: compliance
 ms.date: 05/02/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: ce791e2b230360a04a3051a8964e39c6d5a457ab
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d2da3b7f8b7ed60344978fb255696980ec620fd2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191357"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192262"
 ---
 # <a name="complete-an-access-review-of-members-of-a-group-or-users-access-to-an-application-in-azure-ad"></a>在 Azure AD 中完成组成员或用户对应用程序进行访问的访问评审
 

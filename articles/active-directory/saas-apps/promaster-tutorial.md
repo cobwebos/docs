@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 871abffc07ee29df388205395110e89a85dd7344
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 218f0c8a49d99c611219a43cc4b51214e4087012
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017648"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205233"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>教程：Azure Active Directory 与 ProMaster (by Inlogik) 集成
 
@@ -110,7 +111,7 @@ ms.locfileid: "53017648"
 
     ![ProMaster (by Inlogik) 域和 URL 单一登录信息](./media/promaster-tutorial/tutorial_promaster_url1.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下任一 URL 模式：
+    a. 在“标识符”文本框中，使用以下任一 URL 模式：
 
     | |
     | - |-|
@@ -175,7 +176,7 @@ ms.locfileid: "53017648"
 
     ![“用户”对话框](./media/promaster-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 

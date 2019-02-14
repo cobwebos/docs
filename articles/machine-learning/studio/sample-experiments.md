@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: 653b9aa0d6083436a394cf886f8c7d8d1ed2e2ab
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e62e5a1df2b5ad3099d2ef7e5dc33b0d11683988
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465514"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245926"
 ---
 # <a name="create-azure-machine-learning-studio-experiments-from-working-examples-in-azure-ai-gallery"></a>根据 Azure AI 库中的工作示例创建 Azure 机器学习工作室试验
 
-了解如何从 [Azure AI 库](https://gallery.cortanaintelligence.com/)中的示例试验开始，而不是从头开始创建机器学习试验。 可以使用这些示例构建自己的机器学习解决方案。
+了解如何从 [Azure AI 库](https://gallery.azure.ai/)中的示例试验开始，而不是从头开始创建机器学习试验。 可以使用这些示例构建自己的机器学习解决方案。
 
 此库存有 Microsoft Azure 机器学习团队提供的示例试验，以及由机器学习社区共享的示例。 此外，还可以提出问题或发布有关试验的评论。
 
@@ -28,7 +28,7 @@ ms.locfileid: "55465514"
 
 
 ## <a name="find-an-experiment-to-copy-in-azure-ai-gallery"></a>找到一个在 Azure AI 库中进行复制的试验
-要查看哪些试验可用，请转到“ [库](https://gallery.cortanaintelligence.com/) ”，并单击页面顶部的“ **试验** ”。
+要查看哪些试验可用，请转到“ [库](https://gallery.azure.ai/) ”，并单击页面顶部的“ **试验** ”。
 
 ### <a name="find-the-newest-or-most-popular-experiments"></a>查找最新或最受欢迎的试验
 在此页上，可以查看**最近添加**的试验，或向下滚动查看**热门**或最新的**热门 Microsoft 试验**。
