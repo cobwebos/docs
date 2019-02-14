@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 021876306c435d3d15996c69ab3613c1d82e6993
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f9ffbebee06ab7b9e010c7e6c84fee533611fb38
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468880"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567649"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>如何：在 Azure Active Directory Identity Protection（已刷新）中配置风险策略
 
@@ -129,7 +129,7 @@ Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录�
 
 ## <a name="user-risk-policy-settings"></a>用户风险策略设置
 
-配置登录风险策略时，需要设置：
+配置用户风险策略时，需要设置以下各项：
 
 - 该策略应用到的用户和组：
 

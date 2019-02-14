@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: a174ae5eb31620646167f36a6f3e13605db5eac6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 5ba12e48092c02f9628e15166c84e871310d7556
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052762"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816367"
 ---
 # <a name="use-data-lake-storage-with-azure-hdinsight-clusters"></a>将 Data Lake Storage 与 Azure HDInsight 群集配合使用
 
@@ -69,7 +69,7 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Storage：
 - 所有群集文件夹的文件夹。  例如：adl://mydatalakestore/clusters。
 - 群集文件夹。  例如：adl://mydatalakestore/clusters/cluster1storage。
 
-有关如何创建服务主体和授予访问权限的详细信息，请参阅[配置 Data Lake Storage 访问权限](#configure-data-lake-store-access)。
+有关如何创建服务主体和授予访问权限的详细信息，请参阅配置 Data Lake Storage 访问权限。
 
 ### <a name="extracting-a-certificate-from-azure-keyvault-for-use-in-cluster-creation"></a>从 Azure Keyvault 提取证书以在创建群集时使用
 
@@ -117,12 +117,12 @@ New-AzureRmResourceGroupDeployment `
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
-有关如何创建服务主体和授予访问权限的详细信息，请参阅[配置 Data Lake Storage 访问权限](#configure-data-lake-store-access)。
+有关如何创建服务主体和授予访问权限的详细信息，请参阅配置 Data Lake Storage 访问权限。
 
 
 ## <a name="use-more-than-one-data-lake-storage-accounts"></a>使用多个 Data Lake Storage 帐户
 
-通过向 HDInsight 群集授予对一个或多个 Data Lake Storage 帐户中数据的访问权限，可以添加 Data Lake Storage 帐户作为附加帐户，以及添加多个 Data Lake Storage 帐户。 请参阅[配置 Data Lake Storage 访问权限](#configure-data-lake-store-access)。
+通过向 HDInsight 群集授予对一个或多个 Data Lake Storage 帐户中数据的访问权限，可以添加 Data Lake Storage 帐户作为附加帐户，以及添加多个 Data Lake Storage 帐户。 请参阅配置 Data Lake Storage 访问权限。
 
 ## <a name="configure-data-lake-storage-access"></a>配置 Data Lake Storage 访问权限
 

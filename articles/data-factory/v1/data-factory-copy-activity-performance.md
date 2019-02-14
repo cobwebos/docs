@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 572f4535044e077ed245b0a231ccc9fa973a8a9b
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ec8c58e4ced0d8df958e242b9c1671aeed8c2ee6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331634"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812083"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 
@@ -176,7 +176,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 >
 >
 
-若要更好地使用这两个属性，并提高数据移动吞吐量，请参阅[示例用例](#case-study-use-parallel-copy)。 无需配置 **parallelCopies** 即可利用默认行为。 如果已配置且 **parallelCopies** 太小，则可能不能充分利用多个云 DMU。
+要更好地使用这两个属性，并提高数据移动吞吐量，请参阅示例用例。 无需配置 **parallelCopies** 即可利用默认行为。 如果已配置且 **parallelCopies** 太小，则可能不能充分利用多个云 DMU。
 
 ### <a name="billing-impact"></a>计费影响
 请**务必**记住，会根据复制操作的总时间向你收费。 如果复制作业过去使用 1 个云单元花费 1 小时，现在使用 4 个单元花费 15 分钟，则总费用几乎相同。 例如，使用 4 个云单元。 第一个云单元花费 10 分钟，第二个花费 10 分钟，第三个花费 5 分钟，第四个花费 5 分钟，这些都属于一个复制活动运行。 将对总复制（数据移动）时间进行收费，即 10 + 10 + 5 + 5 = 30 分钟。 使用 **parallelCopies** 不会影响计费。
@@ -297,7 +297,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 * **数据模式**：表架构会影响复制吞吐量。 复制相同数据量时，较大行大小可比较小行大小提供更佳的性能。 原因是数据库可以更有效地检索包含较少行的较少批量数据。
 * **查询或存储过程**：优化在复制活动源中指定的查询或存储过程的逻辑，以更有效地提取数据。
-* 对于需要使用**数据管理网关**的**本地关系数据库**（如 SQL Server 和 Oracle），请参阅[数据管理网关注意事项](#considerations-on-data-management-gateway)部分。
+* 对于需要使用数据管理网关的本地关系数据库（如 SQL Server 和 Oracle），请参阅“数据管理网关注意事项”部分。
 
 ## <a name="considerations-for-the-sink"></a>有关接收器的注意事项
 ### <a name="general"></a>常规

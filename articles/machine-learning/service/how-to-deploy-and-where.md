@@ -11,16 +11,16 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: e8b318626947c1d1147e43ca6c183ae724080a59
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: caafd5ac43ca94f8b01298b4e18e48065b7001b9
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251599"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766616"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
 
-Azure 机器学习服务允许使用 SDK 以多种方式部署已训练的模型。 本文档介绍了如何将模型作为 Web 服务部署在 Azure 云或 IoT 边缘设备中。
+Azure 机器学习服务允许使用 SDK 以多种方式部署已训练的模型。 本文档介绍了如何将模型作为 Web 服务部署在 Azure 云或 IoT Edge 设备中。
 
 > [!IMPORTANT]
 > 将模型部署为 Web 服务时，目前不支持跨域资源共享 (CORS)。
@@ -149,7 +149,7 @@ def run(raw_data):
 
 #### <a name="working-with-binary-data"></a>处理二进制数据
 
-如果模型接受__二进制数据__，请使用 `AMLRequest`、`AMLResponse` 和 `rawhttp`。 以下示例脚本接受二进制数据，并返回 POST 请求的反向字节。 对于 GET 请求，它在响应正文中返回完整 URL：
+如果模型接受__二进制数据__，请使用 `AMLRequest`、`AMLResponse` 和 `rawhttp`。 以下脚本示例接受二进制数据，并返回 POST 请求的反向字节。 对于 GET 请求，它在响应正文中返回完整 URL：
 
 ```python
 from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
@@ -244,9 +244,6 @@ image = ContainerImage.create(name = "myimage",
 
     **时间估计**：大约 3 分钟。
 
-    > [!TIP]
-    > 如果在部署期间出现错误，请使用 `service.get_logs()` 查看服务日志。 记录的信息可能指示错误的原因。
-
 有关详细信息，请参阅 [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) 和 [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) 类的参考文档。
 
 ### <a id="aks"></a>部署到 Azure Kubernetes 服务
@@ -334,9 +331,6 @@ print(service.state)
 
 **时间估计**：大约 3 分钟。
 
-> [!TIP]
-> 如果在部署期间出现错误，请使用 `service.get_logs()` 查看服务日志。 记录的信息可能指示错误的原因。
-
 有关详细信息，请参阅 [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) 和 [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) 类的参考文档。
 
 ### <a id="fpga"></a>部署到现场可编程门阵列 (FPGA)
@@ -382,7 +376,7 @@ sudo ./installIoTEdge
 
 IoT Edge 节点已准备好接收 IoT 中心的连接字符串。 查找 ```device_connection_string:``` 行，并粘贴上面复制内容的引号之间的连接字符串。
 
-此外，可以遵循[快速入门：将第一个 IoT Edge 模块部署到 Linux x64 设备](../../iot-edge/quickstart-linux.md)文档，来逐步了解如何注册设备和安装 IoT 运行时。
+此外，可以遵循[快速入门：将第一个 IoT Edge 模块部署到 Linux x64 设备](../../iot-edge/quickstart-linux.md)文档，来了解如何注册设备和安装 IoT 运行时。
 
 
 #### <a name="get-the-container-registry-credentials"></a>获取容器注册表凭据
@@ -469,7 +463,7 @@ Web 服务是一个 REST API，因此，可以在各种编程语言中创建客�
 
 ## <a id="update"></a> 更新 Web 服务
 
-若要更新 Web 服务，请使用 `update` 方法。 以下代码演示如何将 Web 服务更新为使用新映像：
+创建新映像时，必须手动更新要使用新映像的每个服务。 若要更新 Web 服务，请使用 `update` 方法。 以下代码演示如何将 Web 服务更新为使用新映像：
 
 ```python
 from azureml.core.webservice import Webservice
@@ -487,9 +481,6 @@ service.update(image = new_image)
 print(service.state)
 ```
 
-> [!NOTE]
-> 更新映像时，Web 服务不会自动更新。 必须手动更新要使用新映像的每个服务。
-
 有关详细信息，请参阅 [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) 类的参考文档。
 
 ## <a name="clean-up"></a>清理
@@ -502,6 +493,19 @@ print(service.state)
 
 有关详细信息，请参阅 [WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--)、[Image.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#delete--) 和 [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--) 的参考文档。
 
+## <a name="troubleshooting"></a>故障排除
+
+* __如果在部署期间出现错误__，请使用 `service.get_logs()` 查看服务日志。 记录的信息可能指示错误的原因。
+
+* 日志可能包含一个错误，指示__将日志记录级别设置为“调试”__。 若要设置日志记录级别，请将以下行添加到评分脚本，创建映像，然后创建使用该映像的服务：
+
+    ```python
+    import logging
+    logging.basicConfig(level=logging.DEBUG)
+    ```
+
+    通过此更改，可记录更多日志，并可能返回有关出错原因的详细信息。
+
 ## <a name="next-steps"></a>后续步骤
 
 * [使用 SSL 保护 Azure 机器学习 Web 服务](how-to-secure-web-service.md)
@@ -511,3 +515,5 @@ print(service.state)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)
 * [Azure 机器学习服务 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 * [通过 Azure 虚拟网络使用 Azure 机器学习服务](how-to-enable-virtual-network.md)
+* [有关构建建议系统的最佳实践](https://github.com/Microsoft/Recommenders)
+* [在 Azure 上生成实时建议 API](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

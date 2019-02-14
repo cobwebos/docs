@@ -14,12 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: b89b7885989a5e93d3d292e5cdcff733fed657af
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c60dded96df091b1a715fb7b972e9d7a23608d44
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990172"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818815"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure DNS 中的 DNS 记录和记录集
 
@@ -50,7 +50,7 @@ ms.locfileid: "46990172"
 
 可以使用 `New-AzureRmDnsRecordSet` cmdlet 创建记录集。 创建记录集时，需指定记录集名称、区域、生存时间 (TTL)、记录类型，以及要创建的记录。
 
-添加记录到记录集的参数会因记录集的类型而有所变化。 例如，在使用类型“A”记录集时，需使用参数 `-IPv4Address` 指定 IP 地址。 其他参数用于其他记录类型。 有关详细信息，请参阅[其他记录类型示例](#additional-record-type-examples)。
+添加记录到记录集的参数会因记录集的类型而有所变化。 例如，在使用类型“A”记录集时，需使用参数 `-IPv4Address` 指定 IP 地址。 其他参数用于其他记录类型。 有关详细信息，请参阅其他记录类型示例。
 
 下面的示例在 DNS 区域“contoso.com”中创建具有相对名称“www”的记录集。 记录集的完全限定名称为“www.contoso.com”。 记录类型为“A”，TTL 为 3600 秒。 记录集包含单个记录，IP 地址为“1.2.3.4”。
 
@@ -236,7 +236,7 @@ $recordsets = Get-AzureRmDnsRecordSet -Zone $zone
 Get-AzureRmDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzureRmDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzureRmDnsRecordSet
 ```
 
-上述示例说明了如何将“A”记录添加到现有的类型“A”记录集。 可以使用类似操作顺序向其他类型的记录集添加记录，将 `Add-AzureRmDnsRecordConfig` 的 `-Ipv4Address` 参数替换为特定于每个记录类型的其他参数。 每个记录类型的参数与 `New-AzureRmDnsRecordConfig` cmdlet 的参数相同，如上面的[其他记录类型示例](#additional-record-type-examples)所示。
+上述示例说明了如何将“A”记录添加到现有的类型“A”记录集。 可以使用类似操作顺序向其他类型的记录集添加记录，将 `Add-AzureRmDnsRecordConfig` 的 `-Ipv4Address` 参数替换为特定于每个记录类型的其他参数。 每个记录类型的参数与 `New-AzureRmDnsRecordConfig` cmdlet 的参数相同，如上面的其他记录类型示例所示。
 
 类型为“CNAME”或“SOA”的记录集不能包含多个记录。 此约束源自 DNS 标准， 不是 Azure DNS 的限制。
 
@@ -270,7 +270,7 @@ Get-AzureRmDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName
 Get-AzureRmDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Remove-AzureRmDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzureRmDnsRecordSet
 ```
 
-将适当的特定于类型的参数传递给 `Remove-AzureRmDnsRecordSet` 即可支持不同的记录类型。 每个记录类型的参数与 `New-AzureRmDnsRecordConfig` cmdlet 的参数相同，如上面的[其他记录类型示例](#additional-record-type-examples)所示。
+将适当的特定于类型的参数传递给 `Remove-AzureRmDnsRecordSet` 即可支持不同的记录类型。 每个记录类型的参数与 `New-AzureRmDnsRecordConfig` cmdlet 的参数相同，如上面的其他记录类型示例所示。
 
 
 ## <a name="modify-an-existing-record-set"></a>修改现有记录集

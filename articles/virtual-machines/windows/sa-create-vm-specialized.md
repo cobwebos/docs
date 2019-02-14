@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: da1fa2b182888e623f8df734c9119e208433e2bd
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 0de7979edd741a7e4a1dc3354a8dc895929a9532
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012703"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811675"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>从存储帐户中的专用 VHD 创建 VM
 
@@ -47,7 +47,7 @@ Install-Module AzureRM.Compute
 ### <a name="prepare-the-vm"></a>准备 VM
 可上传用本地 VM 创建的专用 VHD或从另一个云导出的 VHD。 用 VHD 保留原始 VM 中的用户帐户、应用程序和其他状态数据。 如果打算按原样使用 VHD 来创建新 VM，请确保完成以下步骤。 
   
-  * [准备好要上传到 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 **不要**使用 Sysprep 通用化 VM。
+  * [准备好要上传到 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 不要使用 Sysprep 通用化 VM。
   * 删除 VM 上安装的所有来宾虚拟化工具和代理（例如 VMware 工具）。
   * 确保 VM 配置为通过 DHCP 提取 IP 地址和 DNS 设置。 这可以确保服务器在启动时获得 VNet 中的 IP 地址。 
 
@@ -61,7 +61,7 @@ Install-Module AzureRM.Compute
 Get-AzureRmStorageAccount
 ```
 
-如果要使用现有存储帐户，请转到[上传 VM 映像](#upload-the-vm-vhd-to-your-storage-account)部分。
+如果要使用现有存储帐户，请转到“上传 VM 映像”部分。
 
 如果需要创建存储帐户，请执行以下步骤：
 
@@ -109,7 +109,7 @@ LocalFilePath           DestinationUri
 C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
 ```
 
-根据网络连接速度和 VHD 文件的大小，此命令可能需要一段时间才能完成。
+根据网络连接速度和 VHD 文件的大小，可能需要一段时间才能完成此命令。
 
 
 ## <a name="option-2-copy-the-vhd-from-an-existing-azure-vm"></a>选项 2：从现有 Azure VM 复制 VHD
@@ -126,7 +126,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 解除分配 VM，释放要复制的 VHD。 
 
 * **门户**：单击“虚拟机” > “myVM”>“停止”
-* Powershell：使用 [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) 可停止（解除分配）资源组“myResourceGroup”中名为“myVM”的 VM。
+* **Powershell**：使用 [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) 可停止（解除分配）资源组“myResourceGroup”中名为“myVM”的 VM。
 
 ```powershell
 Stop-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
@@ -140,7 +140,7 @@ Azure 门户中该 VM 的“状态”将从“已停止”更改为“已停止(
 可以使用 Azure 门户或 Azure PowerShell 获取 URL：
 
 * **门户**：单击 **>** 以选择“所有服务” > “存储帐户” > “存储帐户” > “Blob”，源 VHD 文件可能在“vhds”容器中。 单击容器的“属性”并复制标记为 **URL** 的文本。 需要用到源和目标容器的 URL。 
-* Powershell：使用 [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) 可获取资源组“myResourceGroup”中名为“myVM”的 VM 的信息。 在结果中，查看 **Vhd Uri** 的 **Storage profile** 部分。 URI 的第一部分是容器的 URL，最后一部分是 VM 的 OS VHD 名称。
+* **Powershell**：使用 [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) 可获取资源组“myResourceGroup”中名为“myVM”的 VM 的信息。 在结果中，查看 **Vhd Uri** 的 **Storage profile** 部分。 URI 的第一部分是容器的 URL，最后一部分是 VM 的 OS VHD 名称。
 
 ```powershell
 Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -150,7 +150,7 @@ Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 查找源和目标存储帐户的访问密钥。 有关访问密钥的详细信息，请参阅[关于 Azure 存储帐户](../../storage/common/storage-create-storage-account.md)。
 
 * **门户**：单击“所有服务” > “存储帐户” > “存储帐户” > “访问密钥”。 复制标记为 **key1** 的密钥。
-* Powershell：使用 [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) 获取资源组“myResourceGroup”中存储帐户“mystorageaccount”的存储密钥。 复制标记为“key1”的密钥。
+* **Powershell**：使用 [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) 可获取资源组“myResourceGroup”中存储帐户“mystorageaccount”的存储密钥。 复制标记为“key1”的密钥。
 
 ```powershell
 Get-AzureRmStorageAccountKey -Name mystorageaccount -ResourceGroupName myResourceGroup

@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: d6f49eb0359db6184b5ecd146d7328a64611a9f9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e6da35eeb98d4017baae6aa2c8e19fa3f9d5ac1b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245559"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752562"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Azure Machine Learning for Visual Studio Code 入门
 
@@ -23,7 +23,7 @@ ms.locfileid: "55245559"
 
 使用 Visual Studio Code 中的 Azure 机器学习扩展，通过 Azure 机器学习服务在本地和远程计算目标上准备数据、培训和测试机器学习模型，部署这些模型并跟踪自定义指标和试验。
 
-## <a name="prerequisite"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 
 
 + 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
@@ -60,19 +60,17 @@ ms.locfileid: "55245559"
 > [!Tip] 
 > 请查看[适用于 VS Code 的 IntelliCode 扩展（预览）](https://go.microsoft.com/fwlink/?linkid=2006060)。 IntelliCode 采用 Python 语言为 IntelliSense 提供一组 AI 辅助功能，例如根据当前代码上下文推断最相关的自动完成。
 
-## <a name="install-the-sdk"></a>安装 SDK
+## <a name="azure-ml-sdk-installation"></a>Azure ML SDK 安装
 
 1. 确保安装 VS Code 可识别的 Python 3.5 或更高版本。 如果立即安装它，则重新启动 VS Code，并按照 https://code.visualstudio.com/docs/python/python-tutorial 的说明选择 Python 解释器。
-
-1. 在 VS Code 中，按 **Ctrl+Shift+P** 打开命令面板。
-
-1. 键入“Install Azure ML SDK”以查找 SDK 的 pip install 命令。 此时将创建一个专用的本地 Python 环境，它具备使用 Azure 机器学习的 Visual Studio Code 先决条件。
-
-   ![安装适用于 Python 的 Azure 机器学习 SDK](./media/vscode-tools-for-ai/install-sdk.png)
 
 1. 在集成终端窗口中，指定要使用的 Python 解释器，也可以点击 **Enter** 以使用默认 Python 解释器。
 
    ![选择解释器](./media/vscode-tools-for-ai/python.png)
+
+1. 在窗口右下角，一个通知会出现，指示要自动安装 Azure ML SDK。    此时将创建一个专用的本地 Python 环境，它具备使用 Azure 机器学习的 Visual Studio Code 先决条件。
+
+   ![安装适用于 Python 的 Azure 机器学习 SDK](./media/vscode-tools-for-ai/runtimedependencies.png)
 
 ## <a name="get-started-with-azure-machine-learning"></a>开始使用 Azure 机器学习
 

@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 12/03/2018
 ms.author: anzaman
-ms.openlocfilehash: f970f535f83bc3b3c2a850ec126a7afff2af739f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: b6c6f2890cf9bd3c8cb412b3fa2f28d8ea3b6f72
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827578"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734311"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>使用视频索引器 API 自定义品牌模型
 
@@ -26,17 +26,17 @@ ms.locfileid: "54827578"
 
 ## <a name="create-a-brand"></a>创建品牌
 
-即创建新的自定义品牌，将其添加到指定帐户的自定义品牌模型中。 
+即创建新的自定义品牌，将其添加到指定帐户的自定义品牌模型中。
 
 ### <a name="request-url"></a>请求 URL
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [请使用视频索引器开发人员门户查看必需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand)。
 
-### <a name="request-parameters"></a>请求参数 
+### <a name="request-parameters"></a>请求参数
 
 |**名称**|类型|**必需**|**说明**|
 |---|---|---|---|
@@ -95,7 +95,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
 ```
- 
+
 [请使用视频索引器开发人员门户查看必需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?)。
 
 ### <a name="request-parameters"></a>请求参数
@@ -117,17 +117,17 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ## <a name="get-a-specific-brand"></a>获取特定的品牌
 
-可以使用品牌 ID 在指定帐户的自定义品牌模型中搜索品牌的详细信息。 
+可以使用品牌 ID 在指定帐户的自定义品牌模型中搜索品牌的详细信息。
 
 ### <a name="request-url"></a>请求 URL
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [请使用视频索引器开发人员门户查看必需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?)。
 
-### <a name="request-parameters"></a>请求参数 
+### <a name="request-parameters"></a>请求参数
 
 |**名称**|类型|**必需**|**说明**|
 |---|---|---|---|
@@ -167,14 +167,14 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ## <a name="update-a-specific-brand"></a>更新特定品牌
 
-可以使用品牌 ID 在指定帐户的自定义品牌模型中搜索品牌的详细信息。 
+可以使用品牌 ID 在指定帐户的自定义品牌模型中搜索品牌的详细信息。
 
 ### <a name="request-url"></a>请求 URL
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
 ```
- 
+
 [请使用视频索引器开发人员门户查看必需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?)。
 
 ### <a name="request-parameters"></a>请求参数
@@ -237,7 +237,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [请使用视频索引器开发人员门户查看必需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?)。
 
 ### <a name="request-parameters"></a>请求参数
@@ -270,7 +270,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
         "description": "This is an example",
         "tags": ["Tag1", "Tag2"]
     },
-        {
+    {
         "ReferenceUrl": null,
         "id": 97975,
         "name": "Example2",
@@ -297,7 +297,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [请使用视频索引器开发人员门户查看必需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands)。
 
 ### <a name="request-parameters"></a>请求参数
@@ -330,14 +330,14 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 更新指定帐户中的品牌模型设置。 品牌模型设置表示是否启用从必应品牌数据库进行检测的功能。 如果未启用必应品牌，则视频索引器仅从指定帐户的自定义品牌模型检测品牌。
 
-### <a name="request-url"></a>请求 URL： 
+### <a name="request-url"></a>请求 URL：
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/BrandsModelSettings?accessToken={accessToken}
 ```
- 
+
 [请使用视频索引器开发人员门户查看必需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?)。
 
-### <a name="request-parameters"></a>请求参数 
+### <a name="request-parameters"></a>请求参数
 
 |**名称**|类型|**必需**|**说明**|
 |---|---|---|---|

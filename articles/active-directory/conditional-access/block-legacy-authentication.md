@@ -1,6 +1,6 @@
 ---
 title: 如何使用条件访问阻止对 Azure Active Directory (Azure AD) 的旧身份验证 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 中针对来自不受信任网络的访问尝试配置条件访问策略。
+description: 了解如何通过使用 Azure AD 条件访问阻止旧式身份验证来改善安全状况。
 services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
 documentationcenter: ''
@@ -14,19 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2019
+ms.date: 02/01/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 164ff12eeec057855476d3808d3d1d44ef3179fe
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 5ff4861c288b82d6ce90d85c38ef3f92eb299ea4
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076837"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562974"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用条件访问策略来阻止旧身份验证   
 
 为了让用户轻松访问云应用程序，Azure Active Directory (Azure AD) 支持各种身份验证协议，包括旧身份验证。 但是，旧协议不支持多重身份验证 (MFA)。 许多环境通常都会要求使用 MFA，以解决身份盗用的情况。 
+
 
 如果环境已准备好阻止旧身份验证以提高对租户的保护，则可以使用条件访问来实现此目标。 本文介绍如何配置条件访问策略来阻止对租户的旧身份验证。
 
@@ -119,8 +120,7 @@ Azure 具有一项安全功能，可阻止你创建此类策略，因为此配�
 
 可为其他客户端条件选择所有可用的授权控件；但是，最终用户体验始终是相同的 - 阻止访问。
 
-可在其他客户端条件旁边配置所有其他条件。
-例如，如果只想阻止移动设备的旧式身份验证，请通过选择以下项来设置**设备平台**条件：
+如果使用其他客户端条件来阻止旧式身份验证，还可以设置设备平台和位置条件。 例如，如果只想阻止移动设备的旧式身份验证，请通过选择以下项来设置**设备平台**条件：
 
 - Android
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 0d6879c6b9be06af4bb289761cc8f26b7e56d18e
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: ca4979188830fcb53732750a3eaadfc2009c4f9a
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355032"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658702"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Azure 和 AppSource 市场套餐
 
@@ -38,7 +38,7 @@ ms.locfileid: "54355032"
 
 下表列出了[云合作伙伴门户](https://cloudpartner.azure.com)当前支持的套餐类型。  对于每个套餐类型，其中指出了套餐在市场中的列出位置，以及套餐解决方案技术的一般说明。
 
-|                产品/服务类型                |  市场  |   Description                                                           |
+|                产品/服务类型                |  市场  |   说明                                                           |
 |                ----------                |  -----------  |   -----------                                                           |
 | [Azure 应用程序](./azure-applications/cpp-azure-app-offer.md) | Azure | 解决方案包括通过 Azure 资源管理器模板部署的一个或多个虚拟机 (VM) 以及可选的自定义 Azure 代码。  部署可以由客户通过解决方案模板来完成，或者由发布者管理。 这种类型提供的灵活性比所提供的虚拟机套餐类型更高。  |
 | [咨询服务](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md) | Azure 和 AppSource | Microsoft 认可的顾问可以在 Azure 市场或 AppSource 中列出其域特定的服务。  他们的专业知识可帮助客户评估问题，以及根据业务目标创建和部署适当的解决方案。  |
@@ -47,6 +47,7 @@ ms.locfileid: "54355032"
 | [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | 一个可以通过其销售、服务、项目服务和现场服务模块扩展此客户资源管理 (CRM) 系统的包。  |
 | [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | 一个可以扩展此企业资源规划 (ERP) 服务并支持高级财务、运营、制造和供应链管理的包。 |
 | [IoT Edge 模块](./iot-edge-module/cpp-offer-process-parts.md) | Azure | 一个可在 IoT Edge 设备上运行的 Docker 兼容容器。  其中包含小型计算模块，这些模块使用自定义代码、其他 Azure 服务和第三方服务的组合。 |
+| [Power BI 应用](./power-bi/cpp-power-bi-offer.md) | AppSource | 一个使用数据流将报表和仪表板连接到常用数据存储中的数据的包。 |
 | [SaaS 应用](./saas-app/cpp-saas-offer.md) | Azure | 解决方案是发布者管理的软件即服务订阅，用户可以通过利用 Azure Active Directory 的自定义界面登录其中。 |
 | [虚拟机](./virtual-machine/cpp-virtual-machine-offer.md)  | Azure  | 解决方案包含在部署到客户订阅的单个虚拟机中。  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |   |   |

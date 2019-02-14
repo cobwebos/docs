@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 语音设备 SDK 入门。 语音服务适用于多种设备和音频源。 现在，可以通过匹配的硬件和软件进一步利用语音应用程序。 语音设备 SDK 是与特制的麦克风阵列开发工具包配对的一个预优化库。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 17c1d3044374ae0ba5a90c256cfc44eeacfd4aac
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d7ef018b376b96f967a065857839761fc5822239
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214987"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876288"
 ---
 # <a name="about-the-speech-devices-sdk-preview"></a>关于语音设备 SDK（预览）
 

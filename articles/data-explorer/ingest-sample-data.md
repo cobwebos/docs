@@ -8,19 +8,19 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 7fdd32f9263b4d1694a0516a98b681ba8744ab6b
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: ebe362b89eb6ffcde006ff824fbee40b1a9175d3
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394569"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733393"
 ---
 # <a name="ingest-sample-data-into-azure-data-explorer"></a>将示例数据引入 Azure 数据资源管理器
 
 本文介绍如何将示例数据引入（加载）到 Azure 数据资源管理器数据库。 有[多种方法可以引入数据](ingest-data-overview.md)；本文重点介绍适用于测试目的的基本方法。
 
 > [!NOTE]
-> 如果你已完成[快速入门：使用 Azure 数据资源管理器 Python库引入数据](python-ingest-data.md)，则已拥有此数据。
+> 如果你完成了[快速入门：使用 Azure 数据资源管理器 Python 库引入数据](python-ingest-data.md)，则已拥有此数据。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -57,6 +57,11 @@ StormEvents 示例数据集包含[美国国家环境信息中心](https://www.nc
 
 ## <a name="next-steps"></a>后续步骤
 
-[编写查询](write-queries.md)
+> [!div class="nextstepaction"]
+> [快速入门：在 Azure 数据资源管理器中查询数据](web-query-data.md)
 
-[Azure 数据资源管理器数据引入](ingest-data-overview.md)
+> [!div class="nextstepaction"]
+> [编写查询](write-queries.md)
+
+> [!div class="nextstepaction"]
+> [Azure 数据资源管理器数据引入](ingest-data-overview.md)

@@ -4,7 +4,7 @@ description: 了解如何使用 Azure 安全中心的标识和访问功能监视
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 01c8f864d25a35d42abcd624e31728f4fee0d80c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 845227ea5e32d10eaed555cee80c8fc520a1771a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012065"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105546"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>在 Azure 安全中心监视标识和访问（预览版）
 本文介绍如何使用 Azure 安全中心监视用户的标识和访问活动。
@@ -106,7 +106,7 @@ ms.locfileid: "51012065"
 ## <a name="recommendations"></a>建议
 参考下表来帮助了解可用的标识和访问建议，以及应用每条建议时的效果。
 
-|资源类型|安全功能分数|建议|Description|
+|资源类型|安全功能分数|建议|说明|
 |----|----|----|----|
 |订阅|50|为具有订阅所有者权限的 Azure 管理应用帐户启用 MFA|为具有管理员权限的所有订阅帐户启用多重身份验证 (MFA)，以防止破坏帐户或资源。|
 |订阅|50|在订阅中启用安全中心 |在所有订阅中启用安全中心，以获得高级威胁检测、JIT、应用程序允许列表和高级建议 |

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: jeedes
-ms.openlocfilehash: a68ffb867a738e11c9895416bbdf2009b268c0c6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 69ae32f63005d3d5ea83dce5aa349bb6c0c92e0c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155805"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818424"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>教程：Azure Active Directory 与 Tableau Server 集成
 
@@ -215,7 +215,7 @@ ms.locfileid: "55155805"
 
 本部分的目的是在 Tableau Server 中创建名为“Britta Simon”的用户。 需要在 Tableau Server 中预配所有用户。 
 
-用户的用户名应与在 **username** 的 Azure AD 自定义属性中配置的值匹配。 使用正确的映射，此集成应可实现[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)。
+用户的用户名应与在 **username** 的 Azure AD 自定义属性中配置的值匹配。 使用正确的映射，此集成应可实现配置 Azure AD 单一登录。
 
 >[!NOTE]
 >如果需要手动创建用户，需要联系组织中的 Tableau Server 管理员。

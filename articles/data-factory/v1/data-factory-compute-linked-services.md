@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 59631ee0115c817da1b0588c1ad37d2f8b34db67
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: fea90d273d156eec3bf29f376e4cf6668c68170f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053637"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697511"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
 > [!NOTE]
@@ -51,7 +51,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 2017 年 12 月 15日后：
 
 - 客户不再能够使用数据工厂版本 1 中的按需 HDInsight 链接服务创建基于 Linux 的 HDInsight 版本 3.3（或更低版本）的群集。 
-- 如果未在现有数据工厂版本 1 按需 HDInsight 链接服务的 JSON 定义中显式指定 [osType 和 Version 属性](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)，则默认值将 从“Version=3.1, osType=Windows”更改为“Version=\<最新 HDI 默认版本\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hadoop-components-available-with-different-hdinsight-versions), osType=Linux”。
+- 如果未在现有数据工厂版本 1 按需 HDInsight 链接服务的 JSON 定义中显式指定 [osType 和 Version 属性](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)，则默认值将 从“Version=3.1, osType=Windows”更改为“Version=\<最新 HDI 默认版本\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning), osType=Linux”。
 
 2018 年 7 月 31 日后：
 
@@ -126,7 +126,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 | type                         | 将 type 属性设置为 **HDInsightOnDemand**。 | 是      |
 | clusterSize                  | 群集中的工作节点/数据节点数。 HDInsight 群集创建时具有 2 个头节点以及一定数量的工作节点（为此属性指定的数量）。 节点大小为 Standard_D3，采用 4 个核心。 包含 4 个工作节点的群集采用 24 个核心（工作节点采用 4\*4 = 16 个核心，头节点采用 2\*4 = 8 个核心）。 有关 Standard_D3 层的详细信息，请参阅[在 HDInsight 中创建基于 Linux 的 Hadoop 群集](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。 | 是      |
 | timeToLive                   | 按需 HDInsight 群集允许的空闲时间。 指定当活动运行完成后，如果群集中没有其他的活动作业，按需 HDInsight 群集保持活动状态的时间。<br /><br />例如，如果一个活动运行需要 6 分钟，而 **timeToLive** 的设置是 5 分钟，则当 6 分钟的活动运行处理结束后，群集将保持 5 分钟的活动状态。 如果在这 6 分钟的时间内执行其他的活动运行，则由同一群集进行处理。<br /><br />创建按需 HDInsight 群集是一项开销很大的操作（可能需要花费一段时间）。 请根据需要使用此设置，以通过重复使用一个按需 HDInsight 群集来提高数据工厂的性能。<br /><br />如果将 **timeToLive** 值设置为 **0**，则会在活动运行处理完后立即删除群集。 但是，如果设置较高的值，群集可能会保持不必要的空闲状态，从而造成较高成本。 根据具体需要设置适当的值非常重要。<br /><br />如果 **timeToLive** 值设置得当，则多个管道可以共享按需 HDInsight 群集的实例。 | 是      |
-| 版本                      | HDInsight 群集的版本。 有关允许的 HDInsight 版本，请参阅[支持的 HDInsight 版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions)。 如果未指定此值，将使用[最新的 HDI 默认版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hadoop-components-available-with-different-hdinsight-versions)。 | 否       |
+| 版本                      | HDInsight 群集的版本。 有关允许的 HDInsight 版本，请参阅[支持的 HDInsight 版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions)。 如果未指定此值，将使用[最新的 HDI 默认版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)。 | 否       |
 | linkedServiceName            | 由按需群集用于存储和处理数据的 Azure 存储链接服务。 HDInsight 群集在创建时与此存储帐户位于同一区域。<p>目前，无法创建使用 Azure Data Lake Store 作为存储的按需 HDInsight 群集。 若要将 HDInsight 处理后的结果数据存储在 Data Lake Store 中，请使用“复制活动”将数据从 Blob 存储复制到 Data Lake Store。 </p> | 是      |
 | additionalLinkedServiceNames | 为 HDInsight 链接服务指定更多的存储帐户。 数据工厂会代你注册存储帐户。 这些存储帐户必须与 HDInsight 群集位于同一区域。 HDInsight 群集是在 **linkedServiceName** 属性指定的存储帐户所在的同一区域中创建的。 | 否       |
 | osType                       | 操作系统的类型。 允许的值为 **Linux** 和 **Windows**。 如果未指定此值，将使用 **Linux**。  <br /><br />我们强烈建议使用基于 Linux 的 HDInsight 群集。 Windows 上的 HDInsight 的停用日期是 2018 年 7 月 31 日。 | 否       |
@@ -215,7 +215,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 
 如果为这些属性设置了错误的值，可能会看到以下消息：
 
-  未能创建群集。 异常: 无法完成群集创建操作。 操作失败，代码为 '400'。 群集保持为 'Error' 状态。 消息: “PreClusterCreationValidationFailure”。 
+  未能创建群集。 异常：无法完成群集创建操作。 操作失败，代码为 '400'。 群集保持为 'Error' 状态。 消息：'PreClusterCreationValidationFailure'。 
   
 如果看到此消息，请确保使用[虚拟机大小](../../virtual-machines/linux/sizes.md)的表格中的 cmdlet 和 API 名称。  
 
@@ -395,7 +395,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 | authorization | 在数据工厂编辑器中，选择“授权”按钮。 在此属性中输入用于分配自动生成的授权 URL 的凭据。 | 是      |
 | sessionId     | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时，会自动生成此设置。 | 是      |
 
-**示例：用户凭据身份验证**
+示例：**用户凭据身份验证**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
@@ -418,7 +418,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 
 身份验证令牌过期时，可能会显示以下错误消息： 
 
-  凭据操作错误: invalid_grant - AADSTS70002: 验证凭据时出错。 AADSTS70008：提供的访问权限已过期或已被吊销。 跟踪 ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 相关 ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 时间戳: 2015-12-15 21:09:31Z
+  凭据操作错误：invalid_grant - AADSTS70002：验证凭据时出错。 AADSTS70008：提供的访问权限已过期或已被吊销。 跟踪 ID：d18629e8-af88-43c5-88e3-d8419eb1fca1 相关 ID：fac30a0c-6be6-4e02-8d69-a776d2ffefd7 时间戳：2015-12-15 21:09:31Z
 
 下表按用户帐户类型显示了过期时间： 
 

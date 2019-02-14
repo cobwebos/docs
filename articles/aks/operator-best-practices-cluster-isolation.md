@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 3a4b62fb16745a3b226bda6c0574812278a34456
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 94aaa72497a8a5f171d6b42f59a3c5b507c71492
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52430222"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494997"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集隔离的最佳做法
 
@@ -43,6 +43,8 @@ Kubernetes 提供所需的功能让你在同一个群集中逻辑隔离团队和
 ![AKS 中 Kubernetes 群集的逻辑隔离](media/operator-best-practices-cluster-isolation/logical-isolation.png)
 
 群集逻辑分隔提供的 pod 密度通常比物理隔离的群集更高。 群集中闲置的超额计算容量更少。 与 Kubernetes 群集自动缩放程序相结合，可根据需求增加或减少节点数目。 采用这种自动缩放最佳做法，可以只运行所需数目的节点并尽量降低成本。
+
+AKS 或其他位置中的 Kubernetes 环境并不完全安全，因为可能存在恶意的多租户使用情况。 增加面向节点的安全功能（如 *Pod 安全策略*或更细粒度的基于角色的访问控制 (RBAC)）可增加攻击的难度。 但是，如果想真正实现可抵御恶意多租户工作负荷的安全性，虚拟机监控程序是唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。
 
 ## <a name="physically-isolate-clusters"></a>物理隔离群集
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6ab3e918feda3dcf898928f159ebf8e317a95527
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 7156249e720416161cd56af7589ed85827c6034b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331837"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812542"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出 Azure 表
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -137,7 +137,7 @@ DivisionID 被指定为分区键。
 1. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务（用于表和 blob）。
 2. 类型 [AzureTable](#dataset-properties) 的输入[数据集](data-factory-create-datasets.md)。
 3. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
-4. [管道](data-factory-create-pipelines.md)，具有使用 [AzureTableSource](#activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 的复制活动。
+4. [管道](data-factory-create-pipelines.md)，具有使用 AzureTableSource 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 的复制活动。
 
 此示例按小时将属于 Azure 表中默认分区的数据复制到 blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
@@ -533,7 +533,7 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 
 **Azure 表架构：**
 
-| 列名称 | 类型 |
+| 列名称 | Type |
 | --- | --- |
 | userid |Edm.Int64 |
 | 名称 |Edm.String |

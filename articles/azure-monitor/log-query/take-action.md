@@ -11,18 +11,18 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/04/2017
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 8730070e1b235324a53ad81957339f4ef17db6dc
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 61d0f74f59b4d6f59b3fbc87556b260751d33baa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193683"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809622"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>从 Log Analytics 日志搜索结果中通过自动化 Runbook 采取操作
 
-从 Azure Log Analytics 中的日志搜索结果中，现在可以选择“采取操作”来运行自动化 runbook。  可以使用 runbook 来更正问题或采取其他操作，例如，收集故障排除信息、发送电子邮件，或创建服务请求。 
+从 Azure Log Analytics 中的日志搜索结果中，现在可以选择“采取操作”来运行自动化 runbook。 可以使用 runbook 来更正问题或采取其他操作，例如，收集故障排除信息、发送电子邮件，或创建服务请求。 
 
 ## <a name="components-and-features-used"></a>所使用的组件和功能
 * [Azure 自动化帐户](../../automation/automation-quickstart-create-account.md)
@@ -30,11 +30,11 @@ ms.locfileid: "53193683"
 
 ## <a name="to-initiate-runbook-from-log-search"></a>从日志搜索中启动 runbook
 
-要从日志搜索结果中对事件采取操作或启动 runbook，首先需要创建日志搜索，从结果中，可以按需调用 runbook。  这可以通过 [Azure 门户](../../azure-monitor/log-query/log-query-overview.md)中的日志搜索功能来实现。  在此示例中，我们从 Azure 门户中执行日志搜索，对此功能进行了基本演示。
+要从日志搜索结果中对事件采取操作或启动 runbook，首先需要创建日志搜索，从结果中，可以按需调用 runbook。 这可以通过 [Azure 门户](../../azure-monitor/log-query/log-query-overview.md)中的经典日志搜索功能来实现。 在此示例中，我们从 Azure 门户中执行日志搜索，对此功能进行了基本演示。
 
 1. 在 Azure 门户中，单击“所有服务”，并选择“Log Analytics”。  
 2. 选择 Log Analytics 工作区。
-3. 在工作区中，选择“日志搜索”。  
+3. 在工作区中，选择“日志(经典)”。  
 4. 在“日志搜索”页中，执行日志搜索。  
 5. 从日志搜索结果中，单击某个字段左侧的省略号，从弹出窗口中选择“对其采取操作”。<br><br> ![从搜索结果中选择“采取操作”](./media/take-action/log-search-takeaction-menuoption.png) 
 6. 选择“运行 runbook”并选择要运行的 runbook。  可以在链接到 Log Analytics 工作区的自动化帐户中选择任何 runbook。  注意以下事项：

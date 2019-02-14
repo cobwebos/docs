@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 17a2d1ac747b46ed9a55ceffeea3ba9f4b2f0bc7
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 8d2e3dc989a44de0c7c091dfbe1254a0e204faae
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412042"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697123"
 ---
 # <a name="custom-roles-in-azure"></a>Azure 中的自定义角色
 
@@ -32,36 +32,30 @@ ms.locfileid: "54412042"
 
 ```json
 {
-  "Name":  "Virtual Machine Operator",
-  "Id":  "88888888-8888-8888-8888-888888888888",
-  "IsCustom":  true,
-  "Description":  "Can monitor and restart virtual machines.",
-  "Actions":  [
-                  "Microsoft.Storage/*/read",
-                  "Microsoft.Network/*/read",
-                  "Microsoft.Compute/*/read",
-                  "Microsoft.Compute/virtualMachines/start/action",
-                  "Microsoft.Compute/virtualMachines/restart/action",
-                  "Microsoft.Authorization/*/read",
-                  "Microsoft.Resources/subscriptions/resourceGroups/read",
-                  "Microsoft.Insights/alertRules/*",
-                  "Microsoft.Insights/diagnosticSettings/*",
-                  "Microsoft.Support/*"
+  "Name": "Virtual Machine Operator",
+  "Id": "88888888-8888-8888-8888-888888888888",
+  "IsCustom": true,
+  "Description": "Can monitor and restart virtual machines.",
+  "Actions": [
+    "Microsoft.Storage/*/read",
+    "Microsoft.Network/*/read",
+    "Microsoft.Compute/*/read",
+    "Microsoft.Compute/virtualMachines/start/action",
+    "Microsoft.Compute/virtualMachines/restart/action",
+    "Microsoft.Authorization/*/read",
+    "Microsoft.Resources/subscriptions/resourceGroups/read",
+    "Microsoft.Insights/alertRules/*",
+    "Microsoft.Insights/diagnosticSettings/*",
+    "Microsoft.Support/*"
   ],
-  "NotActions":  [
-
-                 ],
-  "DataActions":  [
-
-                  ],
-  "NotDataActions":  [
-
-                     ],
-  "AssignableScopes":  [
-                           "/subscriptions/{subscriptionId1}",
-                           "/subscriptions/{subscriptionId2}",
-                           "/subscriptions/{subscriptionId3}"
-                       ]
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": [
+    "/subscriptions/{subscriptionId1}",
+    "/subscriptions/{subscriptionId2}",
+    "/subscriptions/{subscriptionId3}"
+  ]
 }
 ```
 
@@ -73,12 +67,12 @@ ms.locfileid: "54412042"
 
 1. 确定所需的权限
 
-    创建自定义角色时，需要知道可用于定义权限的资源提供程序操作。 若要查看操作列表，可以使用 [Get-AzureRMProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) 或 [az provider operation list](/cli/azure/provider/operation#az-provider-operation-list) 命令。
+    创建自定义角色时，需要知道可用于定义权限的资源提供程序操作。 若要查看操作列表，可以使用 [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) 或 [az provider operation list](/cli/azure/provider/operation#az-provider-operation-list) 命令。
     若要指定自定义角色的权限，请将操作添加到[角色定义](role-definitions.md)的 `Actions` 或 `NotActions` 属性。 如果有数据操作，请将这些操作添加到 `DataActions` 或 `NotDataActions` 属性。
 
 2. 创建自定义角色
 
-    可以使用 Azure PowerShell 或 Azure CLI 创建自定义角色。 通常，我们会从一个现有的内置角色着手，并根据需要对其进行修改。 然后，使用 [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) 或 [az role definition create](/cli/azure/role/definition#az-role-definition-create) 命令创建自定义角色。 若要创建自定义角色，必须拥有所有 `AssignableScopes` 的 `Microsoft.Authorization/roleDefinitions/write` 权限，例如[所有者](built-in-roles.md#owner)或[用户访问权限管理员](built-in-roles.md#user-access-administrator)。
+    可以使用 Azure PowerShell 或 Azure CLI 创建自定义角色。 通常，我们会从一个现有的内置角色着手，并根据需要对其进行修改。 然后，使用 [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) 或 [az role definition create](/cli/azure/role/definition#az-role-definition-create) 命令创建自定义角色。 若要创建自定义角色，必须拥有所有 `AssignableScopes` 的 `Microsoft.Authorization/roleDefinitions/write` 权限，例如[所有者](built-in-roles.md#owner)或[用户访问权限管理员](built-in-roles.md#user-access-administrator)。
 
 3. 测试自定义角色
 
@@ -90,7 +84,7 @@ ms.locfileid: "54412042"
 
 自定义角色具有以下属性。
 
-| 属性 | 必选 | 类型 | 说明 |
+| 属性 | 必选 | Type | 说明 |
 | --- | --- | --- | --- |
 | `Name` | 是 | String | 自定义角色的显示名称。 虽然角色定义是订阅级资源，但角色定义可以在共享同一 Azure AD 目录的多个订阅中使用。 此显示名称在 Azure AD 目录范围内必须是唯一的。 可以包含字母、数字、空格和特殊字符。 最多包含 128 个字符。 |
 | `Id` | 是 | String | 自定义角色的唯一 ID。 如果使用 Azure PowerShell 和 Azure CLI，在创建新角色时会自动生成此 ID。 |

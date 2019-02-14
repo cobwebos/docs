@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 1efe5a12da665901cdf1d09d45c36a1e3272c367
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 40e0c8c91c44e67c2c409d2efb1e917fdbe0bf33
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948666"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562090"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 尽管 Azure Resource Manager 提供了大量令人惊叹的功能，但规划好迁移过程以确保一切顺利仍至关重要。 花时间进行规划可确保执行迁移活动时不会遇到问题。 
@@ -95,7 +95,7 @@ ms.locfileid: "46948666"
 - **Express Route 线路和 VPN**。 当前含授权链接的快速路由网关不能在不停机的情况下集成。 有关解决方法，请参阅[将 ExpressRoute 线路和关联的虚拟网络从经典部署模型迁移到 Resource Manager 部署模型](../../expressroute/expressroute-migration-classic-resource-manager.md)。
 
 - **VM 扩展** - 虚拟机扩展可能是迁移正在运行的 VM 的最大障碍之一。 VM 扩展修正可能需要 1-2 天，因此请相应进行规划。  一个有效的 Azure 代理是报告正在运行的 VM 的 VM 扩展状态所需的。 如果正在运行的 VM 返回的状态为不佳，这会暂停迁移。 代理本身无需处于正常运行状态即可启用迁移，但如果 VM 上存在扩展，则同时需要正常运行的代理和出站 Internet 连接（含 DNS）才能使迁移继续。
-  - 如果在迁移期间与 DNS 服务器的连接断开，那么在准备迁移之前，需要先从每个 VM 中删除所有 VM 扩展（BGInfo v1.\* 除外），随后再在 Azure 资源管理器迁移后将这些扩展重新添加回 VM。  **这仅适用于正在运行的 VM。**  如果已停止解除分配 VM，则无需删除 VM 扩展。 **注意：** Azure 诊断和安全中心监视等诸多扩展在迁移后将重新安装，因此删除它们没有问题。
+  - 如果在迁移期间与 DNS 服务器的连接断开，那么在准备迁移之前，需要先从每个 VM 中删除所有 VM 扩展（BGInfo v1.\* 除外），随后再在 Azure 资源管理器迁移后将这些扩展重新添加回 VM。  **这仅适用于正在运行的 VM。**  如果已停止解除分配 VM，则无需删除 VM 扩展。 **注意：** Azure 诊断和安全中心监视等诸多扩展都会在迁移后重新安装，因此删除它们并不是问题。
   - 此外，确保网络安全组不限制出站 Internet 访问权限。 这可能针对某些网络安全组配置。 若要使 VM 扩展迁移到 Azure 资源管理器，出站 Internet 访问权限（和 DNS）是必需的。 
   - BGInfo 扩展有两个版本：v1 和 v2。  如果 VM 是使用 Azure 门户或 PowerShell 创建的，则该 VM 上可能具有 v1 扩展。 此扩展无需删除且会被迁移 API 跳过（即不迁移）。 但是，如果经典 VM 通过使用新的 Azure 门户创建，它很可能具有基于 JSON 的 v2 版本的 BGInfo，该版本可迁移到 Azure 资源管理器部署模型，只要代理正常运行且具有出站 Internet 访问权限（和 DNS）。 
   - **补救选项 1**。 如果你知道 VM 不会有出站 Internet 访问权限、正常运行的 DNS 服务和 VM 上正常运行的 Azure 代理，则在准备前在迁移期间卸载所有 VM 扩展，并在迁移后重新安装这些 VM 扩展。 
@@ -136,7 +136,7 @@ ms.locfileid: "46948666"
     az network list-usages -l <azure-region> -o jsonc
     ```
 
-    **存储***（存储帐户）*
+    **存储** *（存储帐户）*
     
     ```bash
     az storage account show-usage
@@ -192,7 +192,7 @@ ms.locfileid: "46948666"
 
 对现在想要在 Azure 资源管理器中启用哪些服务具有目的性。  许多客户找到以下关于其 Azure 环境令人关注的事实：
 
-- [基于角色的访问控制](../../azure-resource-manager/resource-group-overview.md#access-control)。
+- [基于角色的访问控制](../../role-based-access-control/overview.md)。
 - [使用 Azure 资源管理器模板以更轻松、更可控的方式完成部署](../../azure-resource-manager/resource-group-overview.md#template-deployment)。
 - [标记](../../azure-resource-manager/resource-group-using-tags.md)。
 - [活动控制](../../azure-resource-manager/resource-group-audit.md)

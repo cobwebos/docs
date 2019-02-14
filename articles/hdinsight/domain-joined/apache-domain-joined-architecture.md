@@ -9,12 +9,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 3e58c22048c9b71b00cffb0657fc924277304662
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: acae8076350c26e7a7157fd2063f64220b167771
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462422"
+ms.locfileid: "55486055"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>在 HDInsight 中使用企业安全性套餐
 
@@ -73,23 +73,23 @@ HDInsight 当前仅支持将 Azure AD DS 用作群集用于与 Kerberos 进行�
 
  3. 检查是否已创建“Microsoft Azure Powershell”服务主体
 
-```
- $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
-```
+ ```
+  $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
+ ```
 
- 4. 如果它不存在（即 if ($powershellSPN -q $null)），则创建该服务主体
+ 4. 如果它不存在（即 if ($powershellSPN -eq $null)），则创建该服务主体
 
-```
- $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
-```
+ ```
+  $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
+ ```
 
  5. 创建策略并附加到此服务主体： 
 
-```
+ ```
  $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
 
  Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
-```
+ ```
 
 ## <a name="next-steps"></a>后续步骤
 

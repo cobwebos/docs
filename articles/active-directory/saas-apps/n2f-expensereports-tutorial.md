@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 27fb299bc3bbbbf75bdf40ae02eac627763ce6d4
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: d8d3d9c14ee1eaa5e5d6dc3245c0d4071306f12a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40007046"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811624"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>教程：Azure Active Directory 与 N2F - Expense reports 的集成
 
@@ -87,7 +87,7 @@ ms.locfileid: "40007046"
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 N2F - Expense reports 测试用户](#create-a-n2f---expense-reports-test-use)** - 在 N2F - Expense reports 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 身份。
+3. **创建 N2F - Expense reports 测试用户** - 在 N2F - Expense reports 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 身份。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
@@ -259,12 +259,12 @@ ms.locfileid: "40007046"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 N2F - Expense reports 磁贴时，应会自动登录到 N2F - Expense reports 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

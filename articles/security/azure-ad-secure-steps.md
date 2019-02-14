@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 3e2fa822698f3888e1168ab7773d87e41db9eb5c
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: f0b76e54da60396e01b5893b143bcee9048e2184
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165639"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750318"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>保护标识基础结构的五个步骤
 
@@ -99,7 +99,7 @@ Microsoft 建议根据 [NIST 指导](https://pages.nist.gov/800-63-3/sp800-63b.h
 
 1. [如果使用 AD FS，则阻止传统身份验证](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)。
 2. [将 SharePoint Online 和 Exchange Online 设置为使用新式身份验证](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication)。
-3. [使用条件访问策略来阻止传统身份验证](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)。
+3. [使用条件访问策略来阻止传统身份验证](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions)。
 
 ### <a name="block-invalid-authentication-entry-points"></a>阻止无效的身份验证入口点
 

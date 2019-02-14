@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/09/2018
+ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 038c6afe94ccfea707eea3b4032a2e45f69e5102
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 677fec21b7491398da5e4958441e5405e0c10e0e
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187068"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745667"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>用于 VM 的 Azure Monitor（预览版）的已知问题
 
@@ -27,6 +27,7 @@ ms.locfileid: "54187068"
 ## <a name="health"></a>运行状况 
 下面是“运行状况”功能的当前版本的已知问题：
 
+- VM 属性面板将 Windows Server 2019 操作系统显示为 Windows Server 2016。 即将发布的版本中会修复此缺陷。
 - 如果删除了某个 Azure VM，该 VM 会在 VM 列表视图中显示一段时间。 此外，单击已删除 VM 的状态会打开“运行状况诊断”视图，然后启动加载循环。 选择已删除 VM 的名称会打开一个窗格，其中显示一条指出该 VM 已被删除的消息。
 - 即使门户或工作负荷监视器 API 可以立即更新，但配置更改（例如更新阈值）最长需要 30 分钟才会生效。 
 - 运行状况诊断体验的更新速度比其他视图更快。 在它们之间切换时，信息可能会延迟。 

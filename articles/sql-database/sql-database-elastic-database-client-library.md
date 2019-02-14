@@ -11,22 +11,25 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 15a16201f83cc9e7244eb0be9d4e185d5e1e3922
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 09/25/2018
+ms.openlocfilehash: 065b2511da568ee2cdc0a989b34905b4010ea32e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165153"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562481"
 ---
 # <a name="building-scalable-cloud-databases"></a>构建可缩放的云数据库
+
 使用 Azure SQL 数据库的可缩放工具和功能，可以轻松扩大数据库。 特别是，可以使用**弹性数据库客户端库**来创建和管理扩大的数据库。 此功能允许你使用数百甚至数千的 Azure SQL 数据库轻松开发分片应用程序。 然后，[弹性作业](sql-database-elastic-jobs-powershell.md)可用于帮助简化这些数据库的管理。
 
 若要下载：
+
 * Java 版本的库，请参阅 [Maven 中央存储库](https://search.maven.org/#search%7Cga%7C1%7Celastic-db-tools)。
 * .NET 版本的库，请参阅 [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)。
 
 ## <a name="documentation"></a>文档
+
 1. [弹性数据库工具入门](sql-database-elastic-scale-get-started.md)
 2. [弹性数据库功能](sql-database-elastic-scale-introduction.md)
 3. [分片映射管理](sql-database-elastic-scale-shard-map-management.md)
@@ -45,11 +48,12 @@ ms.locfileid: "47165153"
 16. [弹性数据库工具常见问题](sql-database-elastic-scale-faq.md)
 
 ## <a name="client-capabilities"></a>客户端功能
+
 无论对于开发人员还是管理员，使用*分片*扩大应用程序都存在挑战。 客户端库通过提供工具让开发人员和管理员管理扩大的数据库，简化了管理任务。 在典型的示例中，有许多称为“分片”的数据库要管理。 客户归置于同一数据库，并且每个客户（单租户方案）一个数据库。 客户端库包含下列功能：
 
 - **分片映射管理**：创建一个称为“分片映射管理器”的特殊数据库。 分片映射管理是一种使应用程序能够管理其分片相关元数据的功能。 开发人员可使用此功能将数据库注册为分片（描述各个分片键或键范围到这些数据库的映射），并随着数据库的数量和组成发展来维护此元数据，以反映容量更改。 如果没有弹性数据库客户端库，则在执行分片时将需要花费大量的时间来编写管理代码。 有关详细信息，请参阅[分片映射管理](sql-database-elastic-scale-shard-map-management.md)。
 
-- **数据依赖型路由**：假设将一个请求传入应用程序。 基于请求的分片键值，应用程序必须根据该键值判断正确的数据库。 接着，它会与数据库建立连接来处理请求。 借助数据依赖型路由，能够通过对应用程序的分片映射的单个简单调用打开连接。 数据依赖型路由是基础结构代码的另一个区域，现在它由弹性数据库客户端库中的功能所取代。 有关详细信息，请参阅[数据依赖型路由](sql-database-elastic-scale-data-dependent-routing.md)。
+- **依赖于数据的路由**：假设将一个请求传入应用程序。 基于请求的分片键值，应用程序必须根据该键值判断正确的数据库。 接着，它会与数据库建立连接来处理请求。 借助数据依赖型路由，能够通过对应用程序的分片映射的单个简单调用打开连接。 数据依赖型路由是基础结构代码的另一个区域，现在它由弹性数据库客户端库中的功能所取代。 有关详细信息，请参阅[数据依赖型路由](sql-database-elastic-scale-data-dependent-routing.md)。
 - **多分片查询 (MSQ)**：当一个请求涉及多个（或所有）分片时，多分片查询将生效。 多分片查询在所有分片或一组分片上执行相同的 T-SQL 代码。 使用 UNION ALL 语义，将参与分片中的结果合并到一个总结果集中。 通过客户端库公开的功能处理多个任务，其中包括：连接管理、线程管理、故障处理和中间结果处理。 MSQ 最多可以查询数百个分片。 有关详细信息，请参阅[多分片查询](sql-database-elastic-scale-multishard-querying.md)。
 
 一般而言，当使用弹性数据库工具的客户提交具有其自己的语义的局部分片操作（与跨分片操作相对）时，预期可获取完整的 T-SQL 功能。

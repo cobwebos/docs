@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 11/15/2018
+ms.date: 01/29/2019
 ms.author: stbaron
-ms.openlocfilehash: 3abf0268a7a6f84e5c26efc5643d048216fc2215
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: d88eb0ee5e8ec4c14efeb47a144ec7080ac6eee3
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163032"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508787"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 资源运行状况中的资源类型和运行状况检查
 下面是通过资源运行状况执行的所有检查（按资源类型）的完整列表。
@@ -115,6 +115,11 @@ ms.locfileid: "53163032"
 |执行的检查|
 |---|
 |<ul><li>是否可在群集上执行诊断操作？</li></ul>|
+
+## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
+|执行的检查|
+|---|
+|<ul><li>客户是否遇到用户生成的服务总线错误？</li><li>用户是否遇到由于服务总线命名空间升级导致的暂时性错误增加？</li></ul>|
 
 ## <a name="microsoftsqlserverdatabase"></a>Microsoft.SQL/Server/database
 |执行的检查|

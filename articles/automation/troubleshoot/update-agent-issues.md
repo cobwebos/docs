@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 5637d409233abc68983bd7cf1e55f406f15e3b59
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ff3492a0f523e32be8f6ffdabf9d15e4faa70cb4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432982"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812627"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>了解更新管理中的 Windows 代理检查结果
 
@@ -39,7 +39,7 @@ ms.locfileid: "54432982"
 
 ![“更新代理故障排除”页面](../media/update-agent-issues/troubleshoot-page.png)
 
-结果准备就绪后会显示在该页上。 [检查部分](#prerequisiste-checks)显示每个检查中包含的内容。
+结果准备就绪后会显示在该页上。 检查部分显示每个检查中包含的内容。
 
 ![“更新代理故障排除”检查](../media/update-agent-issues/update-agent-checks.png)
 

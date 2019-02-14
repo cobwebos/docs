@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: glenga
-ms.openlocfilehash: a0f66f5a1ba64c955fe0669d3ed215ee7c2895c0
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 6e8142e391dd02e78be42e1f16ae2626b74c41c3
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498397"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734464"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>如何面向 Azure Functions 运行时版本
 
@@ -49,7 +49,7 @@ Functions 允许通过使用函数应用中的 `FUNCTIONS_EXTENSION_VERSION` 应
 >[!NOTE]
 >因为运行时版本可能会影响其他设置，因此，应当在门户中更改版本。 当你更改运行时版本时，门户会自动进行其他必需的更新，例如 Node.js 版本和运行时堆栈。  
 
-使用 Azure CLI 时，可以使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set) 命令查看当前的运行时版本。
+使用 Azure CLI 时，可以使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) 命令查看当前的运行时版本。
 
 ```azurecli-interactive
 az functionapp config appsettings list --name <function_app> \
@@ -83,7 +83,7 @@ az functionapp config appsettings list --name <function_app> \
 ]
 ```
 
-可以使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set) 命令更新函数应用中的 `FUNCTIONS_EXTENSION_VERSION` 设置。
+可以使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) 命令更新函数应用中的 `FUNCTIONS_EXTENSION_VERSION` 设置。
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <function_app> \

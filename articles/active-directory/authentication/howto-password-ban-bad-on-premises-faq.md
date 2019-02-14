@@ -5,30 +5,30 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: f690625fda07bdbff671567f0292cc8e1cabeda1
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 62bda3a1c9cb9d53578c2d471b9e63d1f0873234
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078689"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663292"
 ---
 # <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>预览版：本地 Azure AD 密码保护 - 常见问题解答
 
 |     |
 | --- |
-| Azure AD 密码保护是 Azure Active Directory 的一项公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
+| Azure AD 密码保护是 Azure Active Directory 的一项公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
 |     |
 
 ## <a name="general-questions"></a>一般问题
 
 **问：Azure AD 密码保护何时推出正式版 (GA)？**
 
-我们尚未宣布正式版的推出日期。
+GA 计划在 CY2019 第一季度推出（2019 年 3 月末之前）。 感谢目前为止提供该功能相关反馈的所有人 - 我们非常感激！
 
 **问：非公有云是否支持本地 Azure AD 密码保护？**
 
@@ -62,6 +62,6 @@ FRS（DFSR 以前的技术）存在很多已知问题，在较新版本的 Windo
 
 ## <a name="next-steps"></a>后续步骤
 
-如果本文未解答你遇到的本地 Azure AD 密码保护问题，请在下面提交反馈 - 谢谢！
+如果本文未解答你遇到的本地 Azure AD 密码保护问题，请在下方提交反馈 - 谢谢！
 
 [部署 Azure AD 密码保护](howto-password-ban-bad-on-premises-deploy.md)

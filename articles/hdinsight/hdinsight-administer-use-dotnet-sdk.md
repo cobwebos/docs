@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8d7b18dfd88a1a136e8b6e11f9f712e9212d6dd5
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 7c07a1b19bd651eadf7c7b27d5216dd446cd7abb
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788797"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810895"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>使用 .NET SDK 管理 HDInsight 中的 Apache Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -224,7 +224,7 @@ _hdiManagementClient.Clusters.ConfigureHttpSettings("<Resource Group Name>, <Clu
 也可以使用门户完成此操作。 请参阅[使用 Azure 门户管理 HDInsight][hdinsight-admin-portal]。
 
 ## <a name="update-http-user-credentials"></a>更新 HTTP 用户凭据
-此过程与[授予/撤销 HTTP 访问权限](#grant/revoke-access)相同。  如果已授予群集 HTTP 访问权限，必须先撤销该权限。  然后再使用新的 HTTP 用户凭据授予访问权限。
+此过程与授予/撤销 HTTP 访问权限相同。  如果已授予群集 HTTP 访问权限，必须先撤销该权限。  然后再使用新的 HTTP 用户凭据授予访问权限。
 
 ## <a name="find-the-default-storage-account"></a>查找默认存储帐户
 以下代码段演示如何获取群集的默认存储帐户名称和默认存储帐户密钥。

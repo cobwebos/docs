@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 02/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5a2b38e5d627341b3684ee55d13ee06881fbae55
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 01aacf8815ce4150eb1c243d4337f52c4e0b03e9
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728357"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697026"
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Azure 资源管理器模板的资源部分
 
@@ -81,7 +81,7 @@ ms.locfileid: "53728357"
 ]
 ```
 
-| 元素名称 | 必选 | Description |
+| 元素名称 | 必选 | 说明 |
 |:--- |:--- |:--- |
 | 条件 | 否 | 布尔值，该值指示在此部署期间是否将预配资源。 为 `true` 时，在部署期间创建资源。 为 `false` 时，此部署将跳过资源。 |
 | apiVersion |是 |用于创建资源的 REST API 版本。 |
@@ -89,7 +89,7 @@ ms.locfileid: "53728357"
 | 名称 |是 |资源的名称。 该名称必须遵循 RFC3986 中定义的 URI 构成部分限制。 此外，向第三方公开资源名称的 Azure 服务会验证名称，以确保它不会尝试窃取另一身份。 |
 | 位置 |多种多样 |提供的资源支持的地理位置。 可以选择任何可用位置，但通常最好选取一个接近用户的位置。 通常，在同一区域放置彼此交互的资源也很有用。 大多数资源类型需要一个位置，但某些类型（如角色分配）不需要位置。 |
 | 标记 |否 |与资源关联的标记。 应用标签以跨订阅按逻辑对资源进行组织。 |
-| 注释 |否 |用于描述模板中资源的注释 |
+| 注释 |否 |用于描述模板中资源的注释。 有关详细信息，请参阅[模板中的注释](resource-group-authoring-templates.md#comments)。 |
 | 复制 |否 |需要多个实例时应创建的资源数。 默认模式为并行。 若不想同时部署所有资源，请指定为串行模式。 有关详细信息，请参阅[在 Azure 资源管理器中创建多个资源实例](resource-group-create-multiple.md)。 |
 | dependsOn |否 |必须在部署此资源前部署的资源。 Resource Manager 评估资源之间的依赖关系，并根据正确顺序进行部署。 如果资源互不依赖，则会并行部署资源。 该值可以是资源名称或资源唯一标识符的逗号分隔列表。 仅列出在此模板中部署的资源。 未在此模板中定义的资源必须是已存在的资源。 避免添加不必要的依赖项，因为这些依赖项可能会降低部署速度并创建循环依赖项。 有关设置依赖项的指导，请参阅[在 Azure 资源管理器模板中定义依赖项](resource-group-define-dependencies.md)。 |
 | 属性 |否 |特定于资源的配置设置。 properties 的值与创建资源时，在 REST API 操作（PUT 方法）的请求正文中提供的值相同。 还可以指定副本数组，为一个属性创建多个实例。 |
@@ -184,48 +184,60 @@ ms.locfileid: "53728357"
 ```
 
 ## <a name="location"></a>位置
-部署模板时，必须提供每个资源的位置。 不同的位置中支持不同的资源类型。 对于特定的资源类型，若要查看可用于订阅的位置列表，请使用 Azure PowerShell 或 Azure CLI。 
+部署模板时，必须提供每个资源的位置。 不同的位置中支持不同的资源类型。 若要获取资源类型支持的位置，请参阅 [Azure 资源提供程序和类型](resource-manager-supported-services.md)。
 
-以下示例使用 PowerShell 获取 `Microsoft.Web\sites` 资源类型的位置：
+使用参数指定资源的位置，并将默认值设置为 `resourceGroup().location`。
 
-```powershell
-((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
-```
-
-以下示例使用 Azure CLI 获取 `Microsoft.Web\sites` 资源类型的位置：
-
-```azurecli
-az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
-```
-
-确定资源的支持位置后，请在模板中设置该位置。 设置此值的最简单方法是在支持资源类型的位置中创建资源组，并将每个位置设置为 `[resourceGroup().location]`。 可以将模板重新部署到不同位置中的资源组，而不更改模板或参数中的任何值。 
-
-以下示例显示了部署到与资源组相同位置的存储帐户：
+以下示例显示了部署到作为参数指定的位置的存储帐户：
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "variables": {
-      "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccountType": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_ZRS",
+        "Premium_LRS"
+      ],
+      "metadata": {
+        "description": "Storage Account type"
+      }
     },
-    "resources": [
-    {
-      "apiVersion": "2016-01-01",
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('storageName')]",
-      "location": "[resourceGroup().location]",
-      "tags": {
-        "Dept": "Finance",
-        "Environment": "Production"
-      },
-      "sku": {
-        "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "properties": { }
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Location for all resources."
+      }
     }
-    ]
+  },
+  "variables": {
+    "storageAccountName": "[concat('store', uniquestring(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageAccountName')]",
+      "location": "[parameters('location')]",
+      "apiVersion": "2018-07-01",
+      "sku": {
+        "name": "[parameters('storageAccountType')]"
+      },
+      "kind": "StorageV2",
+      "properties": {}
+    }
+  ],
+  "outputs": {
+    "storageAccountName": {
+      "type": "string",
+      "value": "[variables('storageAccountName')]"
+    }
+  }
 }
 ```
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1491068248d20a917e28db5a75dee3d4b3753f5c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 1c58574a96c07dcb4008682efdf96fba111d7b61
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729867"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810331"
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中备份应用
 利用 [Azure App Service](overview.md) 中的备份和还原功能，可以轻松地手动或按计划创建应用备份。 通过覆盖现有应用或还原为另一应用可将应用还原为先前状态的快照。 
@@ -52,7 +52,7 @@ ms.locfileid: "53729867"
 ## <a name="requirements-and-restrictions"></a>要求和限制
 * 备份和还原功能要求应用服务计划处于标准层或高级层。 有关缩放应用服务计划以使用更高层的详细信息，请参阅[增加 Azure 中的应用](web-sites-scale.md)。  
   与标准层相比，高级层每日允许更多备份量。
-* 在与要备份的应用相同的订阅中，需要有一个 Azure 存储帐户和容器。 有关 Azure 存储帐户的详细信息，请参阅本文结尾处的[链接](#moreaboutstorage)。
+* 在与要备份的应用相同的订阅中，需要有一个 Azure 存储帐户和容器。 有关 Azure 存储帐户的详细信息，请参阅本文结尾处的链接。
 * 最多可备份 10 GB 的应用和数据库内容。 如果备份大小超过此限制，会出错。
 * 不支持备份启用了 SSL 的 Azure Database for MySQL。 如果配置备份，备份将失败。
 * 不支持备份启用了 SSL 的 Azure Database for PostgreSQL。 如果配置备份，备份将失败。

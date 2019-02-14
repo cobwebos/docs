@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 73f2e7a37e1e51bf215cbac782b454d909f275dc
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: ad389cfaa92ad487fad8b7ecb6feac40324572f0
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568526"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100561"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的故障排除和限制
 
@@ -109,10 +109,6 @@ Cloud Shell 支持以下最新版本的浏览器：
 
 [!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
-### <a name="for-a-given-user-only-one-shell-can-be-active"></a>对于一个给定的用户，只有一个 shell 可处于活动状态
-
-不管是在 **Bash** 还是 **PowerShell** 中，用户每次只能启动一种类型的 shell。 但是，每次可以运行 Bash 或 PowerShell 的多个实例。 在 Bash 和 PowerShell 之间切换会导致 Cloud Shell 重启，从而终止现有会话。
-
 ### <a name="usage-limits"></a>使用限制
 
 Cloud Shell 适用于交互式用例。 因此，任何长时间运行的非交互式会话都会在没有预警的情况下终止。
@@ -140,10 +136,6 @@ Cloud Shell 中包含的 `SqlServer` 模块仅具有对 PowerShell Core 的预�
 ### <a name="default-file-location-when-created-from-azure-drive"></a>从 Azure 驱动器创建时的默认文件位置
 
 使用 PowerShell cmdlet，用户无法在 Azure 驱动器下创建文件。 当用户使用其他工具（如 vim 或 nano）创建新文件时，文件将默认保存到 `$HOME`。
-
-### <a name="commands-that-create-gui-pop-ups-are-not-supported"></a>不支持创建 GUI 弹出窗口的命令
-
-如果用户运行一条会创建 Windows 对话框的命令（例如 `Connect-AzureAD`、`Connect-AzureRmAccount` 或 `Connect-AzAccount`），将看到如下所示的错误消息：`Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`。
 
 ### <a name="tab-completion-can-throw-psreadline-exception"></a>Tab 自动补全可能引发 PSReadline 异常
 

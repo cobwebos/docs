@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: 4df96d0c3d1ec9cb64f2394fb97d46178906d916
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b1fc52ac46a6cdb73b9210833e437765398781ef
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434811"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819121"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>使用企业安全性套餐管理 HDInsight 群集
 了解 HDInsight 企业安全性套餐 (ESP) 中的用户和角色，以及如何管理 ESP 群集。
@@ -215,7 +215,7 @@ HDInsight 企业安全性套餐具有以下角色：
 6. 单击“添加用户”或“添加组”，并指定可以使用 Hive 视图的用户或组。
 
 ## <a name="configure-users-for-the-roles"></a>为角色配置用户
- 若要查看角色及其权限的列表，请参阅[使用 ESP 的 HDInsight 群集的角色](#roles-of-domain---joined-hdinsight-clusters)。
+ 若要查看角色及其权限的列表，请参阅“使用 ESP 的 HDInsight 群集的角色”。
 
 1. 打开 Ambari 管理 UI。  请参阅[打开 Ambari 管理 UI](#open-the-ambari-management-ui)。
 2. 在左侧菜单中，单击“角色”。

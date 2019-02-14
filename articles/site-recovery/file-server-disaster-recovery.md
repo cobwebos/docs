@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: c6db0b9dda9f383ddc062c41bae0be0b56f7e69d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 2f52b3d1a5aa5b934954da09d114dce1efb8ef32
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794084"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508362"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 保护文件服务器 
 
@@ -94,7 +94,7 @@ DFSR 使用称为远程差分压缩 (RDC) 的压缩算法，该算法可用于�
 
 以下步骤简要说明了如何使用文件同步：
 
-1. [在 Azure 中创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 如果为存储帐户选择了读取访问异地冗余存储，则发生灾难时，可以从次要区域对数据进行读取访问。 有关详细信息，请参阅 [Azure 文件共享灾难恢复策略](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+1. [在 Azure 中创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 如果为存储帐户选择了读取访问异地冗余存储，则发生灾难时，可以从次要区域对数据进行读取访问。 有关详细信息，请参阅 [Azure 存储中的灾难恢复和强制故障转移（预览版）](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)。
 2. [创建文件共享](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)。
 3. 在 Azure 文件服务器上[启动文件同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide)。
 4. 创建一个同步组。 同步组中的终结点保持彼此同步。 同步组中必须至少包含一个表示 Azure 文件共享的云终结点。 此外，同步组必须包含一个表示 Windows Server 上的路径的服务器终结点。
@@ -143,7 +143,7 @@ DFSR 使用称为远程差分压缩 (RDC) 的压缩算法，该算法可用于�
 
 遵循以下步骤来使用文件同步：
 
-1. [在 Azure 中创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 如果为存储帐户选择了读取访问异地冗余存储（建议），则发生灾难时，可以从次要区域对数据进行读取访问。 有关详细信息，请参阅 [Azure 文件共享灾难恢复策略](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+1. [在 Azure 中创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 如果为存储帐户选择了读取访问异地冗余存储（建议），则发生灾难时，可以从次要区域对数据进行读取访问。 有关详细信息，请参阅 [Azure 存储中的灾难恢复和强制故障转移（预览版）](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)。
 2. [创建文件共享](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)。
 3. 在本地文件服务器中[部署文件同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide)。
 4. 创建一个同步组。 同步组中的终结点保持彼此同步。 同步组中必须至少包含一个表示 Azure 文件共享的云终结点。 此外，同步组必须包含一个表示本地 Windows Server 上的路径的服务器终结点。

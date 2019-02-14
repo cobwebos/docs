@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9308602b77903e553e26d6f0586d963a4c58230d
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: d18feba4ded3dfccb8f774112a7dc8d42b12f1d5
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34057819"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488316"
 ---
 # <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>适用于 StorSimple 8000 系列设备的 Update 3 发行说明
 
@@ -48,7 +48,7 @@ Update 3 中以下重大改进和 Bug 修复。
 ## <a name="issues-fixed-in-update-3"></a>在 Update 3 中修复的问题
 下表提供在 Update 3 中已修复问题的摘要。    
 
-| 否 | 功能 | 问题 | 适用于物理设备 | 适用于虚拟设备 |
+| 否 | Feature | 问题 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- |
 | 1 |主机端数据迁移 |在早期版本中，在主机端数据迁移期间，StorSimple 云工具会进入脱机状态。 在此版本中已修复了此问题。 |否 |是 |
 | 2 |本地固定卷 |在以前的版本中，本地固定卷存在与 I/O 失败、卷转换失败和数据路径失败相关的问题。 在此版本中已找到这些问题的根本原因并进行了修复。 |是 |否 |
@@ -60,7 +60,7 @@ Update 3 中以下重大改进和 Bug 修复。
 ## <a name="known-issues-in-update-3"></a>Update 3 中的已知问题
 下表提供了此版本中已知问题的摘要。
 
-| 不会。 | 功能 | 问题 | 注释/解决方法 | 适用于物理设备 | 适用于虚拟设备 |
+| 不是。 | Feature | 问题 | 注释/解决方法 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- | --- |
 | 1 |磁盘仲裁 |在极少数情况下，如果 8600 设备的 EBOD 机箱中的大部分磁盘断开连接，导致没有磁盘仲裁，则会使存储池脱机。 即使磁盘重新连接，存储池也将保持脱机状态。 |需要重新启动设备。 如果问题仍然存在，请联系 Microsoft 支持部门以了解后续步骤。 |是 |否 |
 | 2 |控制器 ID 错误 |更换控制器后，控制器 0 可能显示为控制器 1。 在更换控制器的过程中，从对等节点加载映像时，控制器 ID 刚开始可能显示为对等控制器的 ID。 在极少数情况下，此行为也可能在系统重新启动后出现。 |不需要用户操作。 控制器更换过程完成后，这种情况会自动解决。 |是 |否 |
@@ -70,7 +70,7 @@ Update 3 中以下重大改进和 Bug 修复。
 | 6 |Web 代理 |如果 Web 代理配置将 HTTPS 作为指定的协议，则设备到服务通信将受到影响，并且设备将进入脱机状态。 在此过程中会生成支持包，从而耗用设备上的大量资源。 |请确保 Web 代理 URL 将 HTTP 作为指定的协议。 有关详细信息，请转至[配置设备的 Web 代理](storsimple-8000-configure-web-proxy.md)。 |是 |否 |
 | 7 |Web 代理 |如果在注册的设备上配置并启用 Web 代理，将需要重新启动设备上的主动控制器。 | |是 |否 |
 | 8 |云高延迟和高 I/O 工作负载 |当 StorSimple 设备同时遇到非常高的云延迟（秒级）和高 I/O 工作负载情况时，设备卷将进入降级状态，并且 I/O 可能会出现故障，发生“设备未就绪”错误。 |需要手动重新启动设备控制器或执行设备故障转移，才可以从这种情况中恢复。 |是 |否 |
-| 9 |Azure PowerShell |使用 StorSimple cmdlet **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** 选择第一个对象以便创建新的 **VolumeContainer** 对象时，该 cmdlet 将返回所有对象。 |将该 cmdlet 放在括号中，如下所示：**(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |是 |是 |
+| 9 |Azure PowerShell |使用 StorSimple cmdlet **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** 选择第一个对象以便创建新的 **VolumeContainer** 对象时，该 cmdlet 将返回所有对象。 |使用括号包装该 cmdlet，如下所示：**(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |是 |是 |
 | 10 |迁移 |当传递多个卷容器进行迁移时，只有第一个卷容器的最新备份的 ETA 准确。 此外，在迁移第一个卷容器中的前 4 个备份后，将开始并行迁移。 |建议一次迁移一个卷容器。 |是 |否 |
 | 11 |迁移 |还原后，不会将卷添加到备份策略或虚拟磁盘组。 |需要将这些卷添加到备份策略以创建备份。 |是 |是 |
 | 12 |迁移 |迁移完成后，5000/7000 系列设备不得访问已迁移的数据容器。 |建议在迁移完成并提交之后删除迁移的数据容器。 |是 |否 |

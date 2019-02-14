@@ -11,14 +11,14 @@ ms.service: monitoring
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/07/2018
+ms.date: 02/01/2019
 ms.author: bwren
-ms.openlocfilehash: 808fe41928a99ffc797c96a02305d81765318780
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 60c43475fc044b0847e5d9bd495c0d53b562114e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381652"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822692"
 ---
 # <a name="configure-service-map-in-azure"></a>在 Azure 中配置服务映射
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 借助它，你可以按照自己的想法，将服务器作为提供重要服务的互连系统。 服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
@@ -72,6 +72,7 @@ ms.locfileid: "54381652"
 | 7.3 | 3.10.0-514 |
 | 7.4 | 3.10.0-693 |
 | 7.5 | 3.10.0-862 |
+| 7.6 | 3.10.0-957 |
 
 ### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
@@ -87,6 +88,7 @@ ms.locfileid: "54381652"
 | 6.7 | 2.6.32-573 |
 | 6.8 | 2.6.32-642 |
 | 6.9 | 2.6.32-696 |
+| 6.10 | 2.6.32-754 |
 
 ### <a name="ubuntu-server"></a>Ubuntu Server
 
@@ -132,8 +134,8 @@ ms.locfileid: "54381652"
 
 | 连接的源 | 支持 | 说明 |
 |:--|:--|:--|
-| Windows 代理 | 是 | 服务映射从 Windows 计算机分析和收集数据。 <br><br>除[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)外，Windows 代理还需要 Microsoft Dependency Agent。 有关完整的操作系统版本列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
-| Linux 代理 | 是 | 服务映射从 Linux 代理计算机分析和收集数据。 <br><br>除[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)外，Linux 代理还需要 Microsoft Dependency Agent。 有关完整的操作系统版本列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
+| Windows 代理 | 是 | 服务映射从 Windows 计算机分析和收集数据。 <br><br>除[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)外，Windows 代理还需要 Microsoft Dependency Agent。 查看支持的操作系统和完整的操作系统版本列表。 |
+| Linux 代理 | 是 | 服务映射从 Linux 代理计算机分析和收集数据。 <br><br>除[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)外，Linux 代理还需要 Microsoft Dependency Agent。 查看支持的操作系统和完整的操作系统版本列表。 |
 | System Center Operations Manager 管理组 | 是 | 服务映射在连接的 [System Center Operations Manager 管理组](../../azure-monitor/platform/om-agents.md)中从 Windows 和 Linux 代理分析和收集数据。 <br><br>需要从 System Center Operations Manager 代理计算机直接连接到 Log Analytics。 |
 | Azure 存储帐户 | 否 | 服务映射从代理计算机中收集数据，因此其中任何数据都不会从 Azure 存储中收集。 |
 
@@ -383,11 +385,11 @@ Microsoft Dependency Agent 基于 Microsoft Visual Studio 运行时库。 如果
 Windows：查找名为“Microsoft Dependency Agent”的服务。<br>
 Linux：查找正在运行的进程“microsoft-dependency-agent”。
 
-* 是否属于 [Operations Management Suite/Log Analytics 的免费定价层](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)？ 免费计划允许最多 5 个仅有的服务映射服务器。 服务映射中不再有任何其他的服务器，即使前 5 个服务器不再发送数据。
+* 是否属于 [Operations Management Suite/Log Analytics 的免费定价层](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)？ 免费计划允许最多 5 个仅有的服务映射服务器。 服务映射中不再有任何其他的服务器，即使前 5 个服务器不再发送数据。
 
 * 服务器是否正在向 Log Analytics 发送日志和性能数据？ 转到日志搜索，并为计算机运行以下查询： 
 
-    Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
+    Usage | where Computer == "computer-name" | summarize sum(Quantity), any(QuantityUnit) by DataType
 
 结果中是否有多种不同的事件？ 是否为最新数据？ 如果是，则表示 Log Analytics 代理正常运行并正在与 Log Analytics 通信。 如果不是，请检查服务器上的代理：[适用于 Windows 的 Log Analytics 代理故障排除](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues)或[适用于 Linux 的 Log Analytics 代理故障排除](../../azure-monitor/platform/agent-linux-troubleshoot.md)。
 

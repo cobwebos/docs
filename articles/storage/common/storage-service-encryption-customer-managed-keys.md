@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/11/2018
 ms.author: lakasa
 ms.subservice: common
-ms.openlocfilehash: c749a9dedef3970002c4f0672ffcc67aeaea422a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2990ce7a555fae54b8628f11cd90124860a5b983
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457422"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656730"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault 中使用客户托管密钥的存储服务加密
 
@@ -47,7 +47,7 @@ Azure Blob 存储和 Azure 文件存储的 SSE 与 Azure Key Vault 集成，因�
 若要将客户托管密钥用于 SSE，必须向存储帐户分配存储帐户标识。 可以通过执行以下 PowerShell 或 Azure CLI 命令设置标识：
 
 ```powershell
-Set-AzStorageAccount -ResourceGroupName \$resourceGroup -Name \$accountName -AssignIdentity
+Set-AzStorageAccount -ResourceGroupName $resourceGroup -Name $accountName -AssignIdentity
 ```
 
 ```azurecli-interactive
@@ -60,16 +60,14 @@ az storage account \
 可以通过执行以下 PowerShell 或 Azure CLI 命令启用软删除和不清除：
 
 ```powershell
-($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName
-$vaultName).ResourceId).Properties | Add-Member -MemberType NoteProperty -Name
-enableSoftDelete -Value 'True'
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName $vaultName).ResourceId).Properties `
+    | Add-Member -MemberType NoteProperty -Name enableSoftDelete -Value 'True'
 
 Set-AzResource -resourceid $resource.ResourceId -Properties
 $resource.Properties
 
-($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName
-$vaultName).ResourceId).Properties | Add-Member -MemberType NoteProperty -Name
-enablePurgeProtection -Value 'True'
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName $vaultName).ResourceId).Properties `
+    | Add-Member -MemberType NoteProperty -Name enablePurgeProtection -Value 'True'
 
 Set-AzResource -resourceid $resource.ResourceId -Properties
 $resource.Properties
@@ -126,8 +124,16 @@ az resource update \
 $storageAccount = Get-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
 $keyVault = Get-AzKeyVault -VaultName "mykeyvault"
 $key = Get-AzureKeyVaultKey -VaultName $keyVault.VaultName -Name "keytoencrypt"
-Set-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName -ObjectId $storageAccount.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
-Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -AccountName $storageAccount.StorageAccountName -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
+Set-AzKeyVaultAccessPolicy `
+    -VaultName $keyVault.VaultName `
+    -ObjectId $storageAccount.Identity.PrincipalId `
+    -PermissionsToKeys wrapkey,unwrapkey,get
+Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
+    -AccountName $storageAccount.StorageAccountName `
+    -KeyvaultEncryption `
+    -KeyName $key.Name `
+    -KeyVersion $key.Version `
+    -KeyVaultUri $keyVault.VaultUri
 ```
 
 ### <a name="step-5-copy-data-to-storage-account"></a>步骤 5：将数据复制到存储帐户

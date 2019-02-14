@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 140391b02dab8ce6b47d5350d6d40a9673b29e11
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e16598a10cbbe4cfa65e6b5394e749bfee99dbdc
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161760"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732577"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>使用跨域标识管理系统 (SCIM) 将用户和组从 Azure Active Directory 自动预配到应用程序
 
@@ -120,7 +120,7 @@ Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标�
 ### <a name="getting-started"></a>入门
 实现可以接受来自 Azure AD 的预配请求的 SCIM 终结点的最简单方法是构建和部署将预配的用户输出逗号分隔值 (CSV) 文件的代码示例。
 
-**创建示例 SCIM 终结点：**
+#### <a name="to-create-a-sample-scim-endpoint"></a>创建示例 SCIM 终结点
 
 1. 从 [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) 下载代码示例包
 2. 将包解压缩，并将其放在 Windows 计算机上的某个位置，例如 C:\AzureAD-BYOA-Provisioning-Samples\。
@@ -142,7 +142,7 @@ Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标�
 8. 在 Windows 中，于“Windows 设置”>“网络和 Internet 设置”下，选择“Windows 防火墙”>“高级设置”，并创建允许对端口 9000 进行入站访问的“入站规则”。
 9. 如果 Windows 计算机位于路由器后面，则需要将路由器配置为在面向 Internet 的端口 9000 与 Windows 计算机上的端口 9000 之间执行网络访问转换。 Azure AD 要在云中访问此终结点，需要此配置。
 
-**在 Azure AD 中注册示例 SCIM 终结点：**
+#### <a name="to-register-the-sample-scim-endpoint-in-azure-ad"></a>在 Azure AD 中注册示例 SCIM 终结点
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 
 2. 浏览到“Azure Active Directory”>“企业应用程序”，然后选择“新建应用程序”>“所有”>“非库应用程序”。

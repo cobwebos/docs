@@ -10,14 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 02/11/2019
 ms.author: spelluru
-ms.openlocfilehash: 61ec9d0639f4bee950be69ee951492974ac95c64
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.reviewer: christianreddington,anthdela,juselph
+ms.openlocfilehash: e0ac09a68bda539fe7abd05fce1739d1a58a3c99
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867462"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242985"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>协调 Azure 开发测试实验室的实施
 本文提供快速部署和实施 Azure 开发测试实验室的建议方法。 下图突出显示了整个过程（规范性指导），同时反映了支持各种行业要求和方案的灵活性。

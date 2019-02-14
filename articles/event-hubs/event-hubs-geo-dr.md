@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 59eebc8389238af7180b94cb094f9528a21d26d1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3a7cc7703a6b33eef4c7a10f927b4747bc1d417c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091340"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562175"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure 事件中心 - 异地灾难恢复 
 
@@ -102,12 +102,12 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 
 4. 同步实体可能需要一些时间，每分钟大约 50-100 个实体。
 
-## <a name="availability-zones-preview"></a>可用性区域（预览版）
+## <a name="availability-zones"></a>可用性区域 
 
-事件中心标准 SKU 还支持[可用性区域](../availability-zones/az-overview.md)，在 Azure 区域内提供故障隔离位置。 
+事件中心标准 SKU 支持[可用性区域](../availability-zones/az-overview.md)，在 Azure 区域内提供故障隔离位置。 
 
 > [!NOTE]
-> 仅在美国中部、美国东部 2 和法国中部区域支持可用性区域预览版。
+> Azure 事件中心标准版的可用性区域支持仅适用于存在可用性区域的 [Azure 区域](../availability-zones/az-overview.md#regions-that-support-availability-zones)。
 
 可以使用 Azure 门户仅在新的命名空间上启用可用性区域。 事件中心不支持现有命名空间的迁移。 在命名空间上启用区域冗余之后，不能将其禁用。
 

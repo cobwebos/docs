@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pbutlerm
-ms.openlocfilehash: e45cf028740a05fa35bcf933f727053ab82bdcfa
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 04cac492fd044471a646444afc21bc70f92537d2
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195064"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656845"
 ---
 # <a name="new-offer-menu"></a>“新产品/服务”菜单
 
@@ -34,6 +34,7 @@ ms.locfileid: "55195064"
 | ![Dynamics 365 for Customer Engagement 菜单项](./media/new-offer-menu5.png) | [Dynamics 365 for Customer Engagement 产品/服务](./../../cloud-partner-portal-orig/cpp-customer-engagement-offer.md) |
 | ![Dynamics 365 for Operations 菜单项](./media/new-offer-menu6.png) | [Dynamics 365 for Operations 产品/服务](./../../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) |
 | ![IoT Edge 模块菜单项](./media/new-offer-menu7.png) | [IoT Edge 模块产品/服务](./../iot-edge-module/cpp-offer-process-parts.md) |
+| ![Power BI 应用菜单项](./media/new-offer-pbi.png)   |  [Power BI 应用产品/服务](../power-bi/cpp-power-bi-offer.md)  |
 | ![ SasS 应用程序菜单项](./media/new-offer-menu8.png) | [SasS 应用程序产品/服务](../saas-app/cpp-saas-offer.md) |
 | ![ 虚拟机菜单项](./media/new-offer-menu9.png) | [虚拟机产品/服务](./../virtual-machine/cpp-virtual-machine-offer.md) |
 |  |  |

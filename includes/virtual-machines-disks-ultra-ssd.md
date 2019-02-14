@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 050308e1c8de160f1671ded991e550087299ae2f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 212506667a56befb4e3926dec7a9e3eb9772ebed
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285704"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55736252"
 ---
 # <a name="ultra-ssd-preview-managed-disks-for-azure-virtual-machine-workloads"></a>Azure 虚拟机工作负荷的超级 SSD（预览版）托管磁盘
 
@@ -23,7 +23,7 @@ Azure 超级 SSD（预览版）为 Azure IaaS VM 提供高吞吐量、高 IOPS �
 
 **托管磁盘**：超级 SSD 只可用作托管磁盘。 超级 SSD 无法部署为非托管磁盘或页 Blob。 创建托管磁盘时，请指定 UltraSSD_LRS 作为磁盘 SKU，并指明所需的磁盘大小、IOPS 和吞吐量，然后，Azure 将自动创建并管理该磁盘。  
 
-**虚拟机**：超级 SSD 设计用于与启用了高级 SSD 的所有 Azure 虚拟机 SKU 配合使用，但是，因为它当前为预览版，所以 VM 大小设定为 ES/DS v3。
+**虚拟机**：超级 SSD 旨在与启用了高级 SSD 的所有 Azure 虚拟机 SKU 配合使用；但是，因为它当前为预览版，所以 VM 大小设定为 ES/DS v3。
 
 **动态性能配置**：超级 SSD 允许动态改变磁盘的性能（IOPS 和吞吐量）以及工作负荷的需求，而无需重启虚拟机。
 
@@ -34,7 +34,7 @@ Azure 超级 SSD（预览版）为 Azure IaaS VM 提供高吞吐量、高 IOPS �
 超级 SSD 的一些重要功能包括：
 
 - 磁盘容量：超级 SSD 提供从 4 GiB 到 64 TiB 的不同磁盘大小。
-- 磁盘 IOPS：超级 SSD 支持 300 IOPS/GiB 的 IOPS 限制，每个磁盘最高可达 160K IOPS。 若要实现预配的 IOPS，请确保选择的磁盘 IOPS 小于 VM IOPS。 最小磁盘 IOPS 为 100 IOPS。
+- 磁盘 IOPS：超级 SSD 支持 300 IOPS/GiB 的 IOPS 限制，每个磁盘最高可达 160 K IOPS。 若要实现预配的 IOPS，请确保选择的磁盘 IOPS 小于 VM IOPS。 最小磁盘 IOPS 为 100 IOPS。
 - 磁盘吞吐量：使用超级 SSD 时，单个磁盘对应于每个预配 IOPS 的吞吐量限制为 256 KiB/秒，每个磁盘的最大吞吐量为 2000 MBps（其中，MBps = 每秒 10^6 字节）。 最小磁盘吞吐量为 1 MiB。
 
 下表汇总了不同磁盘大小支持的不同配置：  
@@ -74,7 +74,7 @@ IOPS 是指应用程序每秒发送到磁盘的请求数。 输入/输出操作�
 
 吞吐量是指应用程序在指定时间间隔内发送到磁盘的数据量，计量单位为字节/秒。 如果应用程序正在执行大规模的输入/输出操作，则需要高吞吐量。  
 
-吞吐量与 IOPS 之间存在一种关系，如以下公式所示： IOPS x IO 大小 = 吞吐量
+吞吐量和 IOPS 之间存在一个关系，如以下公式所示：IOPS x IO 大小 = 吞吐量
 
 因此，必须确定应用程序所需的最佳吞吐量和 IOPS 值。 尝试优化其中一个值时，另一个值也会受影响。 我们建议从对应于 16 KiB IO 大小的吞吐量着手，并在需要更高吞吐量时进行调整。
 

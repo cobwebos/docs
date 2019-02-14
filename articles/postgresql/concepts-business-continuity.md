@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: c8c62f6a80cf06e3444c4c3efd9979e723dcf488
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 02/01/2019
+ms.openlocfilehash: b1d566ac571ddd2b2be3aff160f669e277887209
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53559036"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698206"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql"></a>有关使用 Azure Database for PostgreSQL 确保业务连续性的概述
 
@@ -49,6 +49,6 @@ Azure 数据中心会罕见地发生中断。 发生中断时，可能仅导致�
 > 只有当为服务器预配了异地冗余备份存储时，异地还原才是可行的。 如果要从现有服务器的本地冗余切换到异地冗余备份，必须使用现有服务器的 pg_dump 进行转储，然后将其还原到配置了异地冗余备份的新建服务器中。
 
 ## <a name="next-steps"></a>后续步骤
-- 若要详细了解自动备份，请参阅 [Azure Database for PostgreSQL 中的备份](concepts-backup.md)。 
-- 若要使用 Azure 门户还原到某个时间点，请参阅 [使用 Azure 门户将数据库还原到某个时间点](howto-restore-server-portal.md)。
-- 若要使用 Azure CLI 还原到某个时间点，请参阅 [使用 CLI 将数据库还原到某个时间点](howto-restore-server-cli.md)。
+- 详细了解 [Azure Database for PostgreSQL 中的自动备份](concepts-backup.md)。 
+- 了解如何使用 [Azure 门户](howto-restore-server-portal.md)或 [Azure CLI](howto-restore-server-cli.md) 进行还原。
+- 了解 [Azure Database for PostgreSQL 中的只读副本](concepts-read-replicas.md)。

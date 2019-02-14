@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 9c574d5e5cecaa4618bbd44fae8a2200930ab2e3
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 09f0416e5a03527613e7c353961d81de39c4fe0e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019446"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566833"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>使用 Azure 数据工厂从 HBase 复制数据 
 
@@ -42,7 +42,7 @@ HBase 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | Type 属性必须设置为：**HBase** | 是 |
-| host | HBase 服务器的 IP 地址或主机名。 （即 `[clustername].azurehdinsight.net` `192.168.222.160）  | 是 |
+| host | HBase 服务器的 IP 地址或主机名。 （即 `[clustername].azurehdinsight.net`，192.168.222.160）| 是 |
 | port | HBase 实例用来侦听客户端连接的 TCP 端口。 默认值为 9090。 如果连接到 Azure HDInsights，请指定端口 443。 | 否 |
 | httpPath | 与 HBase 服务器对应的部分 URL，例如使用 HDInsights 群集时的 `/hbaserest0`。 | 否 |
 | authenticationType | 用于连接到 HBase 服务器的身份验证机制。 <br/>允许值包括：匿名，基本 | 是 |
@@ -71,8 +71,8 @@ HBase 链接服务支持以下属性：
             "authenticationType" : "Basic",
             "username" : "<username>",
             "password": {
-                 "type": "SecureString",
-                 "value": "<password>"
+                "type": "SecureString",
+                "value": "<password>"
             },
             "enableSsl" : true
         },
@@ -98,8 +98,8 @@ HBase 链接服务支持以下属性：
             "authenticationType" : "Basic",
             "username" : "<username>",
             "password": {
-                 "type": "SecureString",
-                 "value": "<password>"
+                "type": "SecureString",
+                "value": "<password>"
             },
             "enableSsl" : true,
             "trustedCertPath" : "<trustedCertPath>",

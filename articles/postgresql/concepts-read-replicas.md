@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/23/2019
-ms.openlocfilehash: 9270c3290bd7be0bbb79d30aff8becc04dcfc603
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.date: 02/01/2019
+ms.openlocfilehash: 270231b2ad7d94789595cfa4e681cf6c2b0f0541
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903989"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657869"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的只读副本
 
@@ -21,6 +21,8 @@ ms.locfileid: "54903989"
 使用只读副本功能，可将数据从 Azure Database for PostgreSQL 服务器（主服务器）复制到同一 Azure 区域中最多五个只读服务器（只读副本）。 只读副本是使用 PostgreSQL 引擎的本机复制技术以异步方式更新的。
 
 副本是一些新的服务器，可以像管理普通的独立 Azure Database for PostgreSQL 服务器一样对其进行管理。 每个只读副本按照预配计算资源的 vCore 数量以及预配的每月 GB 存储量计费。
+
+请访问[操作方法页面，了解如何创建和管理副本](howto-read-replicas-portal.md)。
 
 ## <a name="when-to-use-read-replicas"></a>何时使用只读副本
 只读副本功能旨在帮助改善读取密集型工作负荷的性能与规模。 例如，读取工作负荷可与副本相隔离，而写入工作负荷可以定向到主服务器。
@@ -56,7 +58,7 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 在提示符下，输入用户帐户的密码。
 
 ## <a name="monitoring-replication"></a>监视复制
-Azure Monitor 中提供了“副本的最大滞后时间”指标。 此指标仅适用于主服务器。 该指标显示主服务器与滞后时间最长的副本之间的滞后时间。 
+Azure Monitor 中提供了“副本的最大滞后时间”指标。 此指标仅适用于主服务器。 该指标显示主服务器与滞后时间最长的副本之间的滞后时间（以字节为单位）。 
 
 Azure Monitor 中还提供了“副本滞后时间”指标。 此指标仅适用于副本。 
 
@@ -101,7 +103,7 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 在创建副本之前，必须将主服务器上的 **azure.replication_support** 设置为 REPLICA。 更改此参数后，需要重启服务器才能使更改生效。 此参数仅适用于“常规用途”和“内存优化”层。
 
 ### <a name="stopped-replicas"></a>停止的副本
-当你选择停止主服务器与副本之间的复制时，副本将会重启以应用这些更改。 以后，此服务器不能再次成为副本。
+如果选择停止主服务器与副本之间的复制，副本会重启以应用此更改。 随后副本会变为读写服务器。 以后，此服务器不能再次成为副本。
 
 ### <a name="replicas-are-new-servers"></a>副本服务器是新服务器
 副本创建为新的 Azure Database for PostgreSQL 服务器。 现有服务器不能成为副本服务器。

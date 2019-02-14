@@ -12,12 +12,13 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: 668d69921fd2001cd52bc864e5ee272d179a7bbc
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a7cd67a9a7027e8567e470acab006fd09748de54
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770463"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181705"
 ---
 # <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>“无法从此处访问”错误消息的潜在原因
 访问组织的内部 Web 应用或服务时，可能会收到以下错误消息：无法从此处访问。 此消息表示组织已使阻止设备访问组织的资源的策略就位。 虽然你可能不必联系支持人员来解决此问题，但可以先尝试执行以下操作。

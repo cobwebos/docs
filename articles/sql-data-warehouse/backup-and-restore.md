@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 3ce5c79d3565a0b9396b15f54d9ab854e8b8d0d8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c9435ba10d69130a634e56992179f11399604fae
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462335"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747486"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的备份和还原
 了解 Azure SQL 数据仓库中备份和还原的工作方式。 使用数据仓库快照可将数据仓库恢复或复制到主要区域中以前的某个还原点。 使用数据仓库异地冗余备份可还原到不同的地理区域。 
@@ -62,7 +62,7 @@ order by run_id desc
 > 如果删除某个逻辑 SQL Server 实例，则属于该实例的所有数据库也会删除，且无法恢复。 无法还原已删除的服务器。
 >
 
-## <a name="geo-backups"></a>异地备份
+## <a name="geo-backups-and-disaster-recovery"></a>异地备份和灾难恢复
 SQL 数据仓库对[已配对数据中心](../best-practices-availability-paired-regions.md)每天执行一次异地备份。 异地还原的 RPO 为 24 小时。 你可以将异地备份恢复到支持 SQL 数据仓库的任何其他地区的服务器。 使用异地备份可在无法访问主要区域中的还原点时还原数据仓库。
 
 默认情况下，异地备份处于启用状态。 如果数据仓库为 Gen1，则可按需[选择退出](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy)。 不能为 Gen2 禁用异地备份，因为数据保护是固有的保证。

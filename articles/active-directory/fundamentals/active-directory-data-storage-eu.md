@@ -11,12 +11,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 4e231d1e5af2107367a6fa2b72342bf1667e9ce1
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e3a2f243b1a8b891419de7e3ca949e7591f55879
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102776"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211353"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory 中的欧洲客户标识数据存储
 Azure Active Directory (Azure AD) 可帮助管理用户标识，并创建智能化的访问策略用于帮助保护组织的资源。 标识数据的存储位置基于订阅服务时（例如，订阅 Office 365 或 Azure 时） 组织提供的地址。 有关标识数据存储位置的具体信息，请参阅 Microsoft 信任中心的[数据存储在何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)部分。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 4207698c57b907cf60fd860bc409c8f8d5a4c565
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f4da0f992914037f5c95050324af5762e90a2ca4
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015264"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696815"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>创建、更改或删除公共 IP 地址前缀
 
@@ -50,7 +50,7 @@ ms.locfileid: "54015264"
    |---|---|---|
    |订阅|是|必须与要将公共 IP 地址关联到的资源位于同一[订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)中。|
    |资源组|是|可与要将公共 IP 地址关联到的资源位于相同或不同的[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)中。|
-   |名称|是|该名称在所选的资源组中必须唯一。|
+   |Name|是|该名称在所选的资源组中必须唯一。|
    |区域|是|必须位于与公共 IP 地址相同的[区域](https://azure.microsoft.com/regions)，你将从该范围分配地址。 前缀目前在以下地区为预览版：美国中西部、美国西部、美国西部 2、美国中部、北欧、西欧和东南亚。|
    |前缀大小|是| 所需的前缀大小。 /28 或 16 个 IP 地址为默认值。 
 
@@ -66,13 +66,13 @@ ms.locfileid: "54015264"
 在创建前缀后，必须从前缀创建静态 IP 地址。 为此，请执行以下步骤。
 
 1. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“公共 IP 地址前缀”。 当“公共 IP 地址前缀”出现在搜索结果中时，请选择它。
-2. 选择想要从中创建公共 IP 的前缀。
+2. 选择想要通过其创建公共 IP 的前缀。
 3. 当出现在搜索结果中，选择它，然后单击“概述”部分中的“+添加 IP 地址”。 如果未出现，请确保使用正确的预览链接： https://aka.ms/publicipprefixportal
 4. 在“创建公共 IP 地址”下为以下设置输入或选择值。 由于前缀适用于标准 SKU、IPv4 和静态，因此只需提供以下信息：
 
    |设置|必需？|详细信息|
     |---|---|---|
-    |名称|是|公共 IP 地址的名称在所选的资源组中必须唯一。|
+    |Name|是|公共 IP 地址的名称在所选的资源组中必须唯一。|
    |空闲超时（分钟）|否|不依赖于客户端发送 keep-alive 消息，将 TCP 或 HTTP 连接保持打开的分钟数。 |
    |DNS 名称标签|否|必须在创建该名称的 Azure 区域（跨所有订阅和所有客户）中保持唯一。 Azure 会在其 DNS 中自动注册该名称和 IP 地址，使你能够连接到使用该名称的资源。 Azure 会将“location.cloudapp.azure.com”（其中 location 是所选的位置）此类默认子网追加到提供的名称后面，以创建完全限定的 DNS 名称。有关详细信息，请参阅[将 Azure DNS 与 Azure 公共 IP 地址配合使用](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address)。|
 
@@ -95,7 +95,7 @@ ms.locfileid: "54015264"
 
 若要在公共 IP 地址前缀上执行任务，必须将你的帐户分配给[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有下表中所列适当操作的[自定义](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)角色：
 
-| 操作                                                                   | 名称                                                           |
+| 操作                                                                   | Name                                                           |
 | ---------                                                                | -------------                                                  |
 | Microsoft.Network/publicIPPrefixes/read                           | 读取公共 IP 地址前缀                                |
 | Microsoft.Network/publicIPPrefixes/write                          | 创建或更新公共 IP 地址前缀                    |

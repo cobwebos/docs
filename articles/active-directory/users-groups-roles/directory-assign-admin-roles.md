@@ -1,25 +1,24 @@
 ---
-title: Azure Active Directory 中的管理员角色权限 | Microsoft Docs
+title: 管理员角色说明和权限 - Azure Active Directory | Microsoft Docs
 description: 管理员角色可以添加用户、分配管理角色、重置用户密码、管理用户许可证，或者管理域。
 services: active-directory
-documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
+search.appverid: MET150
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 16f238114b56bd4e13358de34dfb33d93dbb1890
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 6fc85bd96294650eb2bbf9495642851ade7c7868
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301282"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731506"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -40,6 +39,20 @@ ms.locfileid: "55301282"
   <b>重要说明</b>：此角色授予管理应用程序凭据这一功能。 分配有此角色的用户可以将凭据添加到应用程序，并使用这些凭据模拟应用程序的标识。 如果已向应用程序的标识授予 Azure Active Directory 访问权限，如创建或更新用户或其他对象，那么分配到此角色的用户在模拟应用程序时可以执行这些操作。 这种模拟应用程序标识的能力可能是用户在 Azure AD 中角色分配的基础上的权限提升。 请务必了解，向用户分配应用程序管理员角色，会赋予其模拟应用程序标识的能力。
 
 * **[应用程序开发人员](#application-developer)**：在将设置“用户可以注册应用程序”设置为“否”时，充当此角色的用户可以创建应用程序注册。 在设置“用户可以同意应用代表他们访问公司数据”设置为“否”时，此角色还使成员能够代表自己授予同意。 在创建新应用程序注册或企业应用程序时，会将此角色的成员添加为所有者。
+
+* **[身份验证管理员](#authentication-administrator)**：具有此角色的用户可以查看当前身份验证方法信息以及设置或重置非密码凭据。 身份验证管理员可以强制用户重新注册现有非密码凭据（例如 MFA、FIDO），以及撤销在作为非管理员或仅是以下角色成员的其他用户下次登录时针对 MFA 的提示“在设备上记住 MFA”：
+  * 身份验证管理员
+  * 目录读者
+  * 来宾邀请者
+  * 消息中心读取者
+  * 报告读者
+  
+  <b>重要说明</b>：具有此角色的用户可以更改可能有权访问 Azure Active Directory 内外敏感或私有信息或关键配置的用户的凭据。 更改用户的凭据可能意味着假定用户标识和权限的能力。 例如：
+  * 应用程序注册和企业应用程序所有者，可以管理他们拥有的应用的凭据。 这些应用程序可能在 Azure AD 或其他位置拥有未授予身份验证管理员的特权。 通过此路径，身份验证管理员可能能够假定应用程序所有者的身份，然后通过更新应用程序的凭据来进一步假定特权应用程序的标识。
+  * Azure 订阅所有者，可能对 Azure 中的敏感或私有信息或关键配置拥有访问权限。
+  * 安全组和 Office 365 组所有者，可以管理组成员身份。 这些组可能会授予对 Azure AD 或其他位置敏感或私有信息或关键配置的访问权限。
+  * Azure AD 之外的其他服务中的管理员，如 Exchange Online、Office 安全与合规中心以及人力资源系统。
+  * 高级管理人员、法律顾问和人力资源员工之类的非管理员，可能有权访问敏感或私有信息。
 
 * **[计费管理员](#billing-administrator)**：进行采购、管理订阅、管理支持票证，以及监视服务运行状况。
 
@@ -275,6 +288,19 @@ ms.locfileid: "55301282"
 | microsoft.aad.directory/appRoleAssignments/createAsOwner | 在 Azure Active Directory 中创建 appRoleAssignments。 添加创建者作为第一个所有者，创建的对象根据创建者的 250 个创建对象配额计数。 |
 | microsoft.aad.directory/oAuth2PermissionGrants/createAsOwner | 在 Azure Active Directory 中创建 oAuth2PermissionGrants。 添加创建者作为第一个所有者，创建的对象根据创建者的 250 个创建对象配额计数。 |
 | microsoft.aad.directory/servicePrincipals/createAsOwner | 在 Azure Active Directory 中创建 servicePrincipals。 添加创建者作为第一个所有者，创建的对象根据创建者的 250 个创建对象配额计数。 |
+
+### <a name="authentication-administrator"></a>身份验证管理员
+允许查看、设置和重置任何非管理员用户的身份验证方法信息。
+
+| **操作** | **说明** |
+| --- | --- |
+| microsoft.aad.directory/users/invalidateAllRefreshTokens | 使 Azure Active Directory 中的所有用户刷新令牌无效。 |
+| microsoft.aad.directory/users/strongAuthentication/update | 更新强身份验证属性，如 MFA 凭据信息。 |
+| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
+| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
+| microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 
 ### <a name="billing-administrator"></a>计费管理员
 可以执行与常见计费相关的任务，例如更新付款信息。

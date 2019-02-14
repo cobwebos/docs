@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: d79e423dd617a498aee09cff6b774bbe90eeaa83
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 79f0e58ea11d8bdb8c30ca1e50fae2635f719681
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701531"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118014"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>对 Azure 流分析作业使用 SQL 数据库中的参考数据（预览）
 
@@ -154,7 +154,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 **在 Azure 流分析中使用 SQL 参考数据输入是否会产生额外的费用？**
 
-流分析作业中不会产生额外的[流单元费用](https://azure.microsoft.com/pricing/details/stream-analytics/)。 但是，流分析作业必须有一个关联的 Azure 存储帐户。 流分析作业查询 SQL DB（在作业启动和刷新间隔期间）来检索参考数据集，并将该快照存储在存储帐户中。 存储这些快照会产生额外的费用，详情请参阅 Azure 存储帐户的[定价页](https://azure.microsoft.compricing/details/storage/)。
+流分析作业中不会产生额外的[流单元费用](https://azure.microsoft.com/pricing/details/stream-analytics/)。 但是，流分析作业必须有一个关联的 Azure 存储帐户。 流分析作业查询 SQL DB（在作业启动和刷新间隔期间）来检索参考数据集，并将该快照存储在存储帐户中。 存储这些快照会产生额外的费用，详情请参阅 Azure 存储帐户的[定价页](https://azure.microsoft.com/pricing/details/storage/)。
 
 **如何知道参考数据快照是从 SQL DB 查询的并在 Azure 流分析作业中使用？**
 

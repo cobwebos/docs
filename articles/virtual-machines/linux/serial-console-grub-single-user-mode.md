@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 150147a0fe0fdfcf2e6c9f2b780587749af1ded0
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: e1013047bb66581e7f9d26854f2cd91655c8bd93
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857901"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810076"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用串行控制台访问 GRUB 和单用户模式
 GRUB 指的是 GRand Unified Bootloader。 从 GRUB 可以修改启动配置以实现启动进入单用户模式等功能。
@@ -39,7 +39,7 @@ GRUB 指的是 GRand Unified Bootloader。 从 GRUB 可以修改启动配置以�
 如果启用了 [SysRq](./serial-console-nmi-sysrq.md)，可以使用 SysRq `'b'` 命令在打开串行控制台边栏选项卡的情况下重新启动 VM，或者单击“概述”边栏选项卡中的“重启”按钮（在新浏览器标签页中打开要重启的 VM，无需关闭串行控制台边栏选项卡）。 按照下面的特定于发行版的说明，了解在重新启动时应该从 GRUB 中得到什么。
 
 ## <a name="general-single-user-mode-access"></a>常规单用户模式访问
-在未配置具有密码身份验证的帐户的情况下，可能需要手动访问单用户模式。 需要修改 GRUB 配置以手动进入单用户模式。 完成此操作后，请参阅[使用单用户模式重置或添加密码](#-Use-Single-User-Mode-to-reset-or-add-a-password)以获取进一步说明。
+在未配置具有密码身份验证的帐户的情况下，可能需要手动访问单用户模式。 需要修改 GRUB 配置以手动进入单用户模式。 完成此操作后，请参阅“使用单用户模式重置或添加密码”以获取进一步说明。
 
 如果 VM 无法启动，某些发行版通常会自动将你置于单用户模式或紧急模式。 但是，其他发行版需要进行额外设置才能自动将你置于单用户模式或紧急模式（例如设置根密码）。
 

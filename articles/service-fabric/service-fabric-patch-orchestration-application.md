@@ -3,7 +3,7 @@ title: Azure Service Fabric 修补业务流程应用程序 | Microsoft Docs
 description: 用于在 Service Fabric 群集中自动修补操作系统的应用程序。
 services: service-fabric
 documentationcenter: .net
-author: novino
+author: khandelwalbrijeshiitr
 manager: timlt
 editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/22/2018
-ms.author: nachandr
-ms.openlocfilehash: 43133a1666dc3551e0f935ceb2af4cf1297d44a7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 2/01/2019
+ms.author: brkhande
+ms.openlocfilehash: 88618e5b9de9cb8ac46b9b167e6fa6dbccd73687
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155300"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732305"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
 
@@ -131,7 +131,7 @@ POA 是一个 Azure Service Fabric 应用程序，可在 Service Fabric 群集�
     ],
     ```
 
-3. 通过这些更改更新群集清单后，使用已更新的群集清单[创建新群集](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server)或[升级群集配置](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server#Upgrade-the-cluster-configuration)。 群集使用已更新的群集清单运行后，就可以看到修复管理器系统服务在群集中运行，该服务在 Service Fabric Explorer 中的系统服务部分下被称为 `fabric:/System/RepairManagerService`。
+3. 通过这些更改更新群集清单后，使用已更新的群集清单[创建新群集](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server)或[升级群集配置](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server)。 群集使用已更新的群集清单运行后，就可以看到修复管理器系统服务在群集中运行，该服务在 Service Fabric Explorer 中的系统服务部分下被称为 `fabric:/System/RepairManagerService`。
 
 ### <a name="disable-automatic-windows-update-on-all-nodes"></a>在所有节点上禁用自动 Windows 更新
 
@@ -154,9 +154,9 @@ POA 是一个 Azure Service Fabric 应用程序，可在 Service Fabric 群集�
 |LogsDiskQuotaInMB   |Long  <br> （默认值：1024）               |可在节点本地持久保存的修补业务流程应用日志的最大大小，以 MB 为单位。
 | WUQuery               | 字符串<br>（默认值："IsInstalled=0"）                | 用于获取 Windows 更新的查询。 有关详细信息，请参阅 [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)。
 | InstallWindowsOSOnlyUpdates | Boolean <br> （默认值：false）                 | 使用此标志来控制应当下载并安装哪些更新。 允许以下值 <br>true - 仅安装 Windows 操作系统更新。<br>false - 在计算机上安装所有可用的更新。          |
-| WUOperationTimeOutInMinutes | int <br>（默认值：90%）                   | 指示任何 Windows 更新操作（搜索、下载或安装）的超时。 在指定的超时内未完成的操作会被中止。       |
-| WURescheduleCount     | int <br> （默认值：5）                  | 在操作持续失败的情况下，服务重新计划 Windows 更新的最大次数。          |
-| WURescheduleTimeInMinutes | int <br>（默认值：30） | 在持续失败的情况下，服务重新计划 Windows 更新的间隔。 |
+| WUOperationTimeOutInMinutes | Int <br>（默认值：90%）                   | 指示任何 Windows 更新操作（搜索、下载或安装）的超时。 在指定的超时内未完成的操作会被中止。       |
+| WURescheduleCount     | Int <br> （默认值：5）                  | 在操作持续失败的情况下，服务重新计划 Windows 更新的最大次数。          |
+| WURescheduleTimeInMinutes | Int <br>（默认值：30） | 在持续失败的情况下，服务重新计划 Windows 更新的间隔。 |
 | WUFrequency           | 逗号分隔的字符串（默认值："Weekly, Wednesday, 7:00:00"）     | 安装 Windows 更新的频率。 其格式和可能的值包括： <br>-   Monthly, DD, HH:MM:SS，例如：Monthly, 5,12:22:32。<br>字段 DD（天）允许的值为范围 1-28 中的数字和“last”。 <br> -   Weekly, DAY, HH:MM:SS，例如：Weekly, Tuesday, 12:22:32。  <br> -   Daily, HH:MM:SS，例如：Daily, 12:22:32。  <br> - None 表示不应执行 Windows 更新。  <br><br> 请注意，时间采用 UTC。|
 | AcceptWindowsUpdateEula | Boolean <br>（默认值：True） | 通过设置此标志，该应用程序将代表计算机所有者接受 Windows 更新的最终用户许可协议。              |
 
@@ -413,3 +413,6 @@ A. 否，修补业务流程应用不能用来修补单节点群集。 此限制�
 - 修复了由于禁用自动更新失败而导致 POA 1.3.0 无法在 Windows Server 2012 R2 或更低版本上运行的回归。 
 - 修复了 InstallWindowsOSOnlyUpdates 配置总是被选为 True 的 bug。
 - 将 InstallWindowsOSOnlyUpdates 的默认值更改为 False。
+
+### <a name="version-132"></a>版本 1.3.2
+- 修复了一个问题，当存在其名称属于当前节点名称子集的节点时，此问题会影响节点上的修补生命周期。 对于此类节点，可能会出现修补缺失或重启操作挂起的情况。 

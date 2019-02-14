@@ -8,25 +8,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.openlocfilehash: 402a4d59b57803b8a9c0094799ceee6a92df43f9
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: ef57608d092c05b30be63a54bb41ba87558eabc3
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911347"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694612"
 ---
 # <a name="os-patching-for-hdinsight"></a>针对 HDInsight 的 OS 修补 
 
 > [!IMPORTANT]
-> Ubuntu 映像可在发布后的 3 个月内用于创建新的 HDInsight 群集。 自 2019 年 1 月起，系统**不**会自动修补正在运行的群集。 客户必须使用脚本操作或其他机制来修补正在运行的群集。
+> Ubuntu 映像可在发布后的 3 个月内用于创建新的 HDInsight 群集。 自 2019 年 1 月起，系统**不**会自动修补正在运行的群集。 客户必须使用脚本操作或其他机制来修补正在运行的群集。 新创建的群集将始终包含最新的可用更新，其中包括最新的安全修补程序。
 
 ## <a name="how-to-configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>如何为基于 Linux 的 HDInsight 群集配置 OS 修补计划
-需不定期重启 HDInsight 群集中的虚拟机，以便安装重要的安全修补程序。 自 2016 年 8 月 1 日起，已使用以下计划重启新的基于 Linux 的 HDInsight 群集（版本 3.4 或更高版本）：
-
-1. 群集中的虚拟机最多只能在 30 天内重启一次以进行修补。
-2. 重启从晚上 12 点 (UTC) 开始。
-3. 重启过程在群集中的虚拟机之间交错进行，因此群集在重启过程中仍然可用。
-4. 新创建的群集不会在创建日期后的 30 天内发生第一次重启。
+需不定期重启 HDInsight 群集中的虚拟机，以便安装重要的安全修补程序。 
 
 使用本文中描述的脚本操作，可以按如下所示修改 OS 修补计划：
 1. 启用或禁用自动重启

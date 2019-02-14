@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 12/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9f83a0cf97acfd0bed990cc832ac08eb23c29ef1
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 0ec099e0f210fc267a0a34f76136a517e0ae6ccc
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434452"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744511"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>对混合 Runbook 辅助角色进行故障排除
 
@@ -46,7 +46,7 @@ Runbook 在尝试执行三次后立刻暂停。 在某些情况下，Runbook 可
 
 * runbook 无法使用本地资源进行身份验证
 
-* 配置为运行混合 Runbook 辅助角色功能的计算机满足最低硬件要求。
+* 配置为运行混合 Runbook 辅助角色功能的计算机不满足最低硬件要求。
 
 #### <a name="resolution"></a>解决方法
 
@@ -87,8 +87,17 @@ Linux 混合 Runbook 辅助角色依靠适用于 Linux 的 OMS 代理与自动�
 
 ### <a name="oms-agent-not-running"></a>场景：适用于 Linux 的 OMS 代理未运行
 
+#### <a name="issue"></a>问题
 
-如果适用于 Linux 的 OMS 代理未运行，这会导致 Linux 混合 Runbook 辅助角色无法与 Azure 自动化通信。 输入以下命令，验证代理是否正在运行：`ps -ef | grep python`。 你应该看到类似如下的输出，即使用 **nxautomation** 用户帐户的 python 进程。 如果未启用更新管理或 Azure 自动化解决方案，则以下任何进程都不会运行。
+适用于 Linux 的 OMS 代理未运行
+
+#### <a name="cause"></a>原因
+
+如果适用于 Linux 的 OMS 代理未运行，这会导致 Linux 混合 Runbook 辅助角色无法与 Azure 自动化通信。 代理可能会因各种原因而未在运行。
+
+#### <a name="resolution"></a>解决方法
+
+ 输入以下命令，验证代理是否正在运行：`ps -ef | grep python`。 你应该看到类似如下的输出，即使用 **nxautomation** 用户帐户的 python 进程。 如果未启用更新管理或 Azure 自动化解决方案，则以下任何进程都不会运行。
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>

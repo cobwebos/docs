@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/27/2019
+ms.date: 02/01/2019
 ms.author: juliako
-ms.openlocfilehash: a3e4821d9deb7ceee815d804f58d0b1ba14925b4
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: e90dd052f6a4af83d2dd794dd405a4700da75bde
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103558"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656327"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
@@ -47,8 +47,8 @@ ms.locfileid: "55103558"
 
 下面是实时传送视频流工作流的步骤：
 
-1. 导航到你的媒体服务帐户，并确保**流式处理终结点**正在运行。 
-2. 创建**实时事件**。 <br/>创建事件时，可以将其启动方式指定为自动启动。 或者，可以在准备好开始流式传输后，启动事件。<br/> 如果将 autostart 设置为 true，则实时事件会在创建后立即启动。 这意味着，只要实时事件开始运行，就会开始计费。 必须显式对实时事件资源调用停止操作才能停止进一步计费。 有关详细信息，请参阅[实时事件状态和计费](live-event-states-billing.md)。
+1. 在媒体服务帐户中，确保“流式处理终结点”正在运行。 
+2. 创建[实时事件](live-events-outputs-concept.md)。 <br/>创建事件时，可以将其启动方式指定为自动启动。 或者，可以在准备好开始流式传输后，启动事件。<br/> 如果将 autostart 设置为 true，则实时事件会在创建后立即启动。 只要实时事件开始运行，就会开始计费。 必须显式对实时事件资源调用停止操作才能停止进一步计费。 有关详细信息，请参阅[实时事件状态和计费](live-event-states-billing.md)。
 3. 获取引入 URL 并配置本地编码器以使用 URL 发送贡献源。<br/>请参阅[推荐的实时编码器](recommended-on-premises-live-encoders.md)。
 4. 获取预览 URL 并使用它验证来自编码器的输入是否实际接收。
 5. 创建新的**资产**对象。

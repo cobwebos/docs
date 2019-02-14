@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0e71fea6046a9a7f7101566bda3eb927943ef103
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d364421794452f8ccf95a60ec86a161934c87528
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55489115"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167977"
 ---
 # <a name="what-is-azure-ad-connect"></a>什么是 Azure AD Connect？
 

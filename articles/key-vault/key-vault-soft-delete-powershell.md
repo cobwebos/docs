@@ -1,21 +1,18 @@
 ---
-ms.assetid: ''
 title: Azure Key Vault - 如何将软删除与 PowerShell 配合使用
 description: 使用 PowerShell 代码段进行软删除的用例示例
-services: key-vault
 author: bryanla
 manager: mbaldwin
 ms.service: key-vault
 ms.topic: conceptual
-ms.workload: identity
-ms.date: 10/16/2018
+ms.date: 02/01/2018
 ms.author: bryanla
-ms.openlocfilehash: 99f81e14ca631eccee154a5658bf717cbe07b3da
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: c979d6eccd5c185d89252302b40fdd674e3c5916
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364364"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657495"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>如何将 Key Vault 软删除与 PowerShell 配合使用
 
@@ -39,7 +36,7 @@ Azure Key Vault 的软删除功能可以恢复已删除的保管库和保管库�
 
 Key Vault 操作通过基于角色的访问控制 (RBAC) 权限单独管理，如下所示：
 
-| Operation | Description | 用户权限 |
+| Operation | 说明 | 用户权限 |
 |:--|:--|:--|
 |列出|列出已删除的密钥保管库。|Microsoft.KeyVault/deletedVaults/read|
 |恢复|还原已删除的密钥保管库。|Microsoft.KeyVault/vaults/write|
@@ -80,7 +77,7 @@ New-AzureRmKeyVault -Name "ContosoVault" -ResourceGroupName "ContosoRG" -Locatio
 Get-AzureRmKeyVault -VaultName "ContosoVault"
 ```
 
-## <a name="deleting-a-key-vault-protected-by-soft-delete"></a>删除由软删除保护的密钥保管库
+## <a name="deleting-a-soft-delete-protected-key-vault"></a>删除由软删除保护的密钥保管库
 
 删除密钥保管库的命令会改变行为，具体取决于是否启用了软删除。
 
@@ -97,7 +94,7 @@ Remove-AzureRmKeyVault -VaultName 'ContosoVault'
 
 - 将已删除的密钥保管库从其资源组中删除，并放置在与其创建位置关联的保留命名空间中。 
 - 只要已删除对象中包含的密钥保管库处于已删除状态，就无法访问这些已删除的对象（如密钥、机密和证书）。 
-- 保留已删除密钥保管库的 DNS 名称，这会阻止创建具有相同名称的新密钥保管库。  
+- 保留已删除密钥保管库的 DNS 名称，这会阻止创建具有相同名称的新密钥保管库。  
 
 使用以下命令，可查看与订阅关联且处于已删除状态的密钥保管库：
 
@@ -119,7 +116,7 @@ Undo-AzureRmKeyVaultRemoval -VaultName ContosoVault -ResourceGroupName ContosoRG
 
 恢复密钥保管库后，将使用密钥保管库的原始资源 ID 创建新资源。 如果删除了原始资源组，则在尝试恢复之前必须创建一个具有相同名称的资源组。
 
-## <a name="key-vault-objects-and-soft-delete"></a>密钥保管库对象和软删除
+## <a name="deleting-and-purging-key-vault-objects"></a>删除和清除密钥保管库对象
 
 以下命令将删除已启用软删除的名为“ContosoVault”的密钥保管库中的“ContosoFirstKey”密钥：
 
@@ -201,17 +198,22 @@ Undo-AzureKeyVaultSecretRemoval -VaultName ContosoVault -Name SQLPAssword
   Remove-AzureKeyVaultSecret -VaultName ContosoVault -InRemovedState -name SQLPassword
   ```
 
-## <a name="purging-and-key-vaults"></a>清除和密钥保管库
+## <a name="purging-a-soft-delete-protected-key-vault"></a>清除由软删除保护的密钥保管库
 
-### <a name="key-vault-objects"></a>密钥保管库对象
+> [!IMPORTANT]
+> 清除密钥保管库或其包含的对象之一将永久删除它，这意味着无法恢复！
 
-清除密钥、机密或证书会导致永久删除，且无法恢复。 然而，包含已删除对象的密钥保管库将保持不变，密钥保管库中的所有其他对象也将保持不变。 
+清除功能用于永久删除以前已软删除的密钥保管库对象或整个密钥保管库。 如前一部分中所示，启用了软删除功能的密钥保管库中存储的对象可能会经历多个状态：
 
-### <a name="key-vaults-as-containers"></a>密钥保管库作为容器
-清除密钥保管库时，将永久删除其全部内容，包括密钥、机密和证书。 若要清除密钥保管库，请使用具有 `-InRemovedState` 选项的命令 `Remove-AzureRmKeyVault`，并通过使用 `-Location location` 参数指定已删除的密钥保管库的位置。 可以使用命令 `Get-AzureRmKeyVault -InRemovedState` 查找已删除的保管库的位置。
+- **活动**：删除之前。
+- **已软删除**：删除之后，能够列出和恢复为活动状态。
+- **已永久删除**：清除之后，不能恢复。
 
->[!IMPORTANT]
->清除密钥保管库将永久删除，这意味着无法恢复！
+对于密钥保管库同样如此。 若要永久删除已软删除的密钥保管库及其内容，必须清除密钥保管库本身。
+
+### <a name="purging-a-key-vault"></a>清除密钥保管库
+
+清除密钥保管库时，将永久删除其全部内容，包括密钥、机密和证书。 若要清除已软删除的密钥保管库，请使用具有 `-InRemovedState` 选项的命令 `Remove-AzureRmKeyVault`，并通过使用 `-Location location` 参数指定已删除的密钥保管库的位置。 可以使用命令 `Get-AzureRmKeyVault -InRemovedState` 查找已删除的保管库的位置。
 
 ```powershell
 Remove-AzureRmKeyVault -VaultName ContosoVault -InRemovedState -Location westus

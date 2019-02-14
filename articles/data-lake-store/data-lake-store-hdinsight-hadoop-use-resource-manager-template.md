@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 5b98513625a6179585601320d45996396fca7207
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: e08e7ae0a97b206a692dd47e91c4c94847cb9833
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035897"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235166"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建包含 Azure Data Lake Storage Gen1 的 HDInsight 群集
 > [!div class="op_single_selector"]
@@ -43,6 +43,9 @@ ms.locfileid: "54035897"
 本文中，我们使用 Data Lake Storage Gen1 作为额外存储来预配 Hadoop 集群。 有关如何创建包含 Data Lake Store Gen1（用作默认存储）的 Hadoop 群集的说明，请参阅[使用 Azure 门户创建包含 Data Lake Store Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。
 
 ## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 在开始阅读本教程前，必须具有：
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
@@ -58,13 +61,13 @@ ms.locfileid: "54035897"
 
 ```
 # Log in to your Azure account
-Connect-AzureRmAccount
+Connect-AzAccount
 
 # List all the subscriptions associated to your account
-Get-AzureRmSubscription
+Get-AzSubscription
 
 # Select a subscription
-Set-AzureRmContext -SubscriptionId <subscription ID>
+Set-AzContext -SubscriptionId <subscription ID>
 ```
 
 模板将部署以下资源类型：

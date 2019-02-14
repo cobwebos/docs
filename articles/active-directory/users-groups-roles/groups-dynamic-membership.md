@@ -1,25 +1,24 @@
 ---
-title: Azure Active Directory 中的动态自动组成员资格规则引用 | Microsoft Docs
+title: 动态自动组成员资格规则 - Azure Active Directory | Microsoft Docs
 description: 如何创建成员资格规则以自动填充组和规则引用。
 services: active-directory
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/07/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 98638c2fbd3f60ec0db009b52507eadcadd87ab4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 309e686d563798c34d2ab40af0ac1a6e6368b4e7
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172317"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509110"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 

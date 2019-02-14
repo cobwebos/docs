@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 1/8/2018
+ms.date: 02/01/2019
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: mmercuri
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 34731bb96a83a901b3fc1a59ce1846083d69bfd7
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 48e7de2798d9c34942df281febcc1d4ec443010d
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103377"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662221"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench 消息集成
 
@@ -116,6 +116,7 @@ Blockchain Workbench 返回的 **create user** 成功响应示例：
 | requestId            | 客户端提供的 GUID |
 | userChainIdentifier  | 在区块链网络上创建的用户的地址。 在 Ethereum 中，此地址是用户的**链上**地址。 |
 | applicationName      | 应用程序的名称 |
+| 版本              | 应用程序的版本。 在启用了应用程序的多个版本时是必需的。 否则，版本是可选的。 有关应用程序版本控制的详细信息，请参阅 [Azure Blockchain Workbench 应用程序版本控制](version-app.md)。 |
 | workflowName         | 工作流的名称 |
 | parameters           | 合同创建请求的参数输入 |
 | connectionId         | 区块链连接的唯一标识符 |
@@ -128,7 +129,8 @@ Blockchain Workbench 返回的 **create user** 成功响应示例：
 { 
     "requestId": "ce3c429b-a091-4baa-b29b-5b576162b211", 
     "userChainIdentifier": "0x9a8DDaCa9B7488683A4d62d0817E965E8f248398", 
-    "applicationName": "AssetTransfer", 
+    "applicationName": "AssetTransfer",
+    "version": "1.0",
     "workflowName": "AssetTransfer", 
     "parameters": [ 
         { 
@@ -218,6 +220,7 @@ Blockchain Workbench 返回的事务提交 **create contract** 响应示例：
 | requestId                | 客户端提供的 GUID |
 | userChainIdentifier      | 在区块链网络上创建的用户的地址。 在 Ethereum 中，此地址是用户的**链上**地址。 |
 | contractLedgerIdentifier | 账本中合同的地址 |
+| 版本                  | 应用程序的版本。 在启用了应用程序的多个版本时是必需的。 否则，版本是可选的。 有关应用程序版本控制的详细信息，请参阅 [Azure Blockchain Workbench 应用程序版本控制](version-app.md)。 |
 | workflowFunctionName     | 工作流函数的名称 |
 | parameters               | 合同创建请求的参数输入 |
 | connectionId             | 区块链连接的唯一标识符 |
@@ -231,6 +234,7 @@ Blockchain Workbench 返回的事务提交 **create contract** 响应示例：
     "requestId": "a5530932-9d6b-4eed-8623-441a647741d3",
     "userChainIdentifier": "0x9a8DDaCa9B7488683A4d62d0817E965E8f248398",
     "contractLedgerIdentifier": "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe",
+    "version": "1.0",
     "workflowFunctionName": "modify",
     "parameters": [
         {
@@ -377,7 +381,7 @@ Blockchain Workbench 返回的事务提交 **create contract action** 响应示�
 
 包含有关单个块的信息。 *BlockMessage* 中的某个节包含块级信息，另一个节包含事务信息。
 
-| 名称 | Description |
+| Name | 说明 |
 |------|-------------|
 | block | 包含[块信息](#block-information) |
 | transactions | 包含块的[事务信息](#transaction-information)集合 |
@@ -388,7 +392,7 @@ Blockchain Workbench 返回的事务提交 **create contract action** 响应示�
 
 #### <a name="block-information"></a>块信息
 
-| 名称              | Description |
+| Name              | 说明 |
 |-------------------|-------------|
 | blockId           | Azure Blockchain Workbench 中的块的唯一标识符 |
 | blockNumber       | 账本中块的唯一标识符 |
@@ -398,7 +402,7 @@ Blockchain Workbench 返回的事务提交 **create contract action** 响应示�
 
 #### <a name="transaction-information"></a>事务信息
 
-| 名称               | Description |
+| Name               | 说明 |
 |--------------------|-------------|
 | transactionId      | Azure Blockchain Workbench 中的事务的唯一标识符 |
 | transactionHash    | 账本中事务的哈希 |
@@ -444,7 +448,7 @@ Blockchain Workbench 中的 *BlockMessage* 示例：
 
 包含有关合同的信息。 该消息中的某个节包含合同属性，另一个节包含事务信息。 修改了特定块的合同的所有事务包含在 transaction 节中。
 
-| 名称 | Description |
+| Name | 说明 |
 |------|-------------|
 | blockId | Azure Blockchain Workbench 中的块的唯一标识符 |
 | blockHash | 块的哈希 |
@@ -460,7 +464,7 @@ Blockchain Workbench 中的 *BlockMessage* 示例：
 
 #### <a name="modifying-transaction-information"></a>修改事务信息
 
-| 名称               | Description |
+| Name               | 说明 |
 |--------------------|-------------|
 | transactionId | Azure Blockchain Workbench 中的事务的唯一标识符 |
 | transactionHash | 账本中事务的哈希 |
@@ -469,7 +473,7 @@ Blockchain Workbench 中的 *BlockMessage* 示例：
 
 #### <a name="contract-properties"></a>合同属性
 
-| 名称               | Description |
+| Name               | 说明 |
 |--------------------|-------------|
 | workflowPropertyId | Azure Blockchain Workbench 中工作流属性的唯一标识符 |
 | 名称 | 工作流属性的名称 |
@@ -556,7 +560,7 @@ Blockchain Workbench 中的 *ContractMessage* 示例：
 
 包含调用合同函数时的信息，例如函数名称、参数输入和函数调用方。
 
-| 名称 | Description |
+| Name | 说明 |
 |------|-------------|
 | eventName                   | **ContractFunctionInvocation** |
 | caller                      | [调用方信息](#caller-information) |
@@ -573,7 +577,7 @@ Blockchain Workbench 中的 *ContractMessage* 示例：
 
 #### <a name="caller-information"></a>调用方信息
 
-| 名称 | Description |
+| Name | 说明 |
 |------|-------------|
 | type | 调用方类型，例如用户或合同 |
 | id | Azure Blockchain Workbench 中调用方的唯一标识符 |
@@ -581,14 +585,14 @@ Blockchain Workbench 中的 *ContractMessage* 示例：
 
 #### <a name="parameter-information"></a>参数信息
 
-| 名称 | Description |
+| Name | 说明 |
 |------|-------------|
 | 名称 | 参数名称 |
 | 值 | 参数值 |
 
 #### <a name="event-message-transaction-information"></a>事件消息事务信息
 
-| 名称               | Description |
+| Name               | 说明 |
 |--------------------|-------------|
 | transactionId      | Azure Blockchain Workbench 中的事务的唯一标识符 |
 | transactionHash    | 账本中事务的哈希 |
@@ -636,7 +640,7 @@ Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 示例：
 
 包含将应用程序上传到 Workbench 时的信息，例如所上传应用程序的名称和版本。
 
-| 名称 | Description |
+| Name | 说明 |
 |------|-------------|
 | eventName | **ApplicationIngestion** |
 | applicationId | Azure Blockchain Workbench 中应用程序的唯一标识符 |
@@ -654,7 +658,7 @@ Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 示例：
 
 #### <a name="contract-code-information"></a>合同代码信息
 
-| 名称 | Description |
+| Name | 说明 |
 |------|-------------|
 | id | Azure Blockchain Workbench 中合同代码文件的唯一标识符 |
 | ledgerId | Azure Blockchain Workbench 中账本的唯一标识符 |
@@ -662,14 +666,14 @@ Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 示例：
 
 #### <a name="application-role-information"></a>应用程序角色信息
 
-| 名称 | Description |
+| Name | 说明 |
 |------|-------------|
 | id | Azure Blockchain Workbench 中应用程序角色的唯一标识符 |
 | 名称 | 应用程序角色的名称 |
 
 #### <a name="application-workflow-information"></a>应用程序工作流信息
 
-| 名称 | Description |
+| Name | 说明 |
 |------|-------------|
 | id | Azure Blockchain Workbench 中应用程序工作流的唯一标识符 |
 | 名称 | 应用程序工作流名称 |
@@ -680,7 +684,7 @@ Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 示例：
 
 ##### <a name="workflow-function-information"></a>工作流函数信息
 
-| 名称 | Description |
+| Name | 说明 |
 |------|-------------|
 | id | Azure Blockchain Workbench 中应用程序工作流函数的唯一标识符 |
 | 名称 | 函数名称 |
@@ -688,7 +692,7 @@ Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 示例：
 
 ##### <a name="workflow-state-information"></a>工作流状态信息
 
-| 名称 | Description |
+| Name | 说明 |
 |------|-------------|
 | 名称 | 状态名称 |
 | displayName | 状态显示名称 |
@@ -696,7 +700,7 @@ Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 示例：
 
 ##### <a name="workflow-property-information"></a>工作流属性信息
 
-| 名称 | Description |
+| Name | 说明 |
 |------|-------------|
 | id | Azure Blockchain Workbench 中应用程序工作流属性的唯一标识符 |
 | 名称 | 属性名称 |
@@ -830,7 +834,7 @@ Blockchain Workbench 中的 *EventMessage ApplicationIngestion* 示例：
 
 包含在 Workbench 中为用户分配角色时的信息，例如，谁执行了角色分配，以及角色名称和相应的应用程序。
 
-| 名称 | Description |
+| Name | 说明 |
 |------|-------------|
 | eventName | **RoleAssignment** |
 | applicationId | Azure Blockchain Workbench 中应用程序的唯一标识符 |
@@ -847,14 +851,14 @@ Blockchain Workbench 中的 *EventMessage ApplicationIngestion* 示例：
 
 #### <a name="roleassignment-application-role"></a>RoleAssignment 应用程序角色
 
-| 名称 | Description |
+| Name | 说明 |
 |------|-------------|
 | id | Azure Blockchain Workbench 中应用程序角色的唯一标识符 |
 | 名称 | 应用程序角色的名称 |
 
 #### <a name="roleassignment-assigner"></a>RoleAssignment 分配者
 
-| 名称 | Description |
+| Name | 说明 |
 |------|-------------|
 | id | Azure Blockchain Workbench 中用户的唯一标识符 |
 | type | 分配者的类型 |
@@ -862,7 +866,7 @@ Blockchain Workbench 中的 *EventMessage ApplicationIngestion* 示例：
 
 #### <a name="roleassignment-assignee"></a>RoleAssignment 被分配者
 
-| 名称 | Description |
+| Name | 说明 |
 |------|-------------|
 | id | Azure Blockchain Workbench 中用户的唯一标识符 |
 | type | 被分配者的类型 |

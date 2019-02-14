@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 88cb9f18002f15ea926fe5ded3a5ac9af7a99cbe
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 80bf9247bbb07fa61b7153e321b1991b82a9d616
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51716137"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246733"
 ---
 <!-- N.B. no header, language-agnostic -->
 
@@ -28,4 +28,4 @@ Microsoft 认知服务[语音 SDK](~/articles/cognitive-services/speech-service/
 有关使用语音 SDK 的意向识别方案，请参阅以下代码片段。 使用自己的 LUIS 订阅密钥（终结点密钥）、订阅的[区域](~/articles/cognitive-services/speech-service/regions.md#intent-recognition)以及意向模型的 **AppId** 替换示例中的值。
 
 > [!NOTE]
-> 与语音 SDK 支持的其他服务不同，意向识别需要特定的订阅密钥（LUIS 终结点密钥）。 有关意向识别技术的信息，请参阅 [LUIS 网站](https://www.luis.ai)。 有关如何获取**终结点密钥**的信息，请参阅[创建 LUIS 终结点密钥](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-how-to-azure-subscription#create-luis-endpoint-key)。
+> 与语音 SDK 支持的其他服务不同，意向识别需要特定的订阅密钥（LUIS 终结点密钥）。 有关意向识别技术的信息，请参阅 [LUIS 网站](https://www.luis.ai)。 有关如何获取**终结点密钥**的信息，请参阅[创建 LUIS 终结点密钥](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-how-to-azure-subscription)。

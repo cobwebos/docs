@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: 将特征添加到语言模型，提供有关如何识别需要标记或分类的输入的提示。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 02/04/2019
 ms.author: diberry
-ms.openlocfilehash: 89d18ebd2f52467a19a76940044fea3ae254970a
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: fa0a8c4baa9458a3784babe1e342d768748f8a4d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770157"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882448"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>LUIS 应用中的短语列表特征
 

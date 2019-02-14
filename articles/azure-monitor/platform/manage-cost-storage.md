@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 3372d399c339133fc0ee3dbfd031ec3c4c03cc3b
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 95dc004e1a4b34f1f3a3c547da4ea7cd35e8c753
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901150"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821467"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>管理 Log Analytics 的使用情况和成本
 
@@ -112,7 +112,7 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 3. 在“定价层”下选择一个定价层，并单击“选择”。  
     ![选择定价计划](media/manage-cost-storage/workspace-pricing-tier-info.png)
 
-如果要将工作区移到当前定价层，则需要[在 Azure Monitor 中更改订阅的监视定价模型](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/usage-estimated-costs#moving-to-the-new-pricing-model)，这将更改该订阅中所有工作区的定价层。
+如果要将工作区移到当前定价层，则需要[在 Azure Monitor 中更改订阅的监视定价模型](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs#moving-to-the-new-pricing-model)，这将更改该订阅中所有工作区的定价层。
 
 > [!NOTE]
 > 如果工作区关联到自动化帐户，则在选择“单独(按 GB)”定价层之前，必须删除任何“自动化和控制”解决方案，并取消自动化帐户的关联。 在工作区边栏选项卡的“常规”下，单击“解决方案”查看和删除解决方案。 若要取消自动化帐户的关联，请在“定价层”边栏选项卡上单击自动化帐户的名称。
@@ -128,7 +128,7 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 |停止收集的原因| 解决方案| 
 |-----------------------|---------|
 |达到旧版免费定价层的每日限制 |等到下一天收集自动重启，或者更改为付费定价层。|
-|达到了工作区的每日上限|等到收集自动重启，或者根据[管理每日最大数据量](#manage-the-maximum-daily-volume)中所述增大每日数据量限制。 每日上限重置时间显示在“数据量管理”页面上。 |
+|达到了工作区的每日上限|等到收集自动重启，或者根据“管理每日最大数据量”中所述提高每日数据量限制。 每日上限重置时间显示在“数据量管理”页面上。 |
 |Azure 订阅由于以下原因处于挂起状态：<br> 免费试用已结束<br> Azure 许可已过期<br> 已达到每月支出限制（例如，在 MSDN 或 Visual Studio 订阅上）|转换为付费订阅<br> 删除限制，或者等到限制重置|
 
 若要在数据收集停止时收到通知，请执行“创建每日数据上限”中所述的步骤，在数据收集停止时接收警报通知；遵循“将操作添加到警报规则”中所述的步骤，为警报规则配置电子邮件、Webhook 或 Runbook 操作。 
@@ -231,7 +231,7 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 
 | 高数据量来源 | 如何减少数据量 |
 | -------------------------- | ------------------------- |
-| 安全性事件            | 选择[通用或最低安全性事件](https://docs.microsoft.com/en-us/azure/security-center/security-center-enable-data-collection#data-collection-tier) <br> 更改安全审核策略，只收集所需事件。 具体而言，请查看是否需要收集以下对象的事件： <br> - [审核筛选平台](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [审核注册表](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [审核文件系统](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [审核内核对象](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [审核句柄操作](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - 审核可移动存储 |
+| 安全性事件            | 选择[通用或最低安全性事件](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier) <br> 更改安全审核策略，只收集所需事件。 具体而言，请查看是否需要收集以下对象的事件： <br> - [审核筛选平台](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [审核注册表](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [审核文件系统](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [审核内核对象](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [审核句柄操作](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - 审核可移动存储 |
 | 性能计数器       | 更改[性能计数器配置](data-sources-performance-counters.md)如下： <br> - 降低收集频率 <br> - 减少性能计数器数 |
 | 事件日志                 | 更改[事件日志配置](data-sources-windows-events.md)如下： <br> - 减少收集的事件日志数 <br> - 仅收集必需的事件级别。 例如，不收集“信息”级别事件 |
 | Syslog                     | 更改 [syslog 配置](data-sources-syslog.md)如下： <br> - 减少收集的设施数 <br> - 仅收集必需的事件级别。 例如，不收集“信息”和“调试”级别事件 |

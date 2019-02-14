@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c327d973170a4556471663c3bea9dcae9b5794fb
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b10e434aece0ac214a0fd397ea94cbeccca4e44a
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238605"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746484"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Azure 机器学习服务的已知问题和故障排除
 
@@ -27,6 +27,7 @@ ms.locfileid: "55238605"
 **错误消息：无法卸载 'PyYAML'**
 
 适用于 Python 的 Azure 机器学习 SDK：PyYAML 是 distutils 安装的项目。 因此，在部分卸载的情况下，我们无法准确确定哪些文件属于它。 若要在忽略此错误的同时继续安装 SDK，请使用：
+
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ```
@@ -41,7 +42,7 @@ pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 
 ## <a name="deployment-failure"></a>部署失败
 
-如果你观察到 'DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL:9> - 请将部署中使用的 VM 的 SKU 更改为具有更高内存的 SKU。
+如果观察到 `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`，请将部署中使用的 VM 的 SKU 更改为具有更多内存的 SKU。
 
 ## <a name="fpgas"></a>FPGA
 你将无法在 FPGA 上部署模型，直到已请求并获得 FPGA 配额批准为止。 若要请求访问权限，请填写配额请求表单： https://aka.ms/aml-real-time-ai
@@ -50,7 +51,7 @@ pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 
 Databricks 和 Azure 机器学习问题。
 
-1. 安装更多程序包时，AML SDK 会在 Databricks 上安装失败。
+1. 安装更多包时，在 Databricks 上安装 Azure 机器学习 SDK 失败。
 
    某些包（如 `psutil`）可能会导致冲突。 为了避免安装错误，请通过冻结 lib 版本来安装包。 此问题与 Databricks 有关，与 Azure 机器学习服务 SDK 无关 - 你可能还会遇到其他库。 示例：
    ```python
@@ -58,9 +59,9 @@ Databricks 和 Azure 机器学习问题。
    ```
    或者，如果一直面临 Python 库的安装问题，可以使用 init 脚本。 这种方法不是官方支持的方法。 可参考[此文档](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts)。
 
-2. 在 Databricks 上使用自动机器学习时，如果要取消运行并启动新的实验运行，请重启 Azure Databricks 群集。
+2. 在 Databricks 上使用“自动机器学习”时，如果要取消运行并开始新的试验运行，请重新启动 Azure Databricks 群集。
 
-3. 在自动 ml 设置中，如果迭代超过 10 个，请在提交运行时将 show_output 设置为 False。
+3. 在“自动机器学习”设置中，如果有超过 10 个迭代，提交运行时请将 `show_output` 设置为 `False`。
 
 
 ## <a name="azure-portal"></a>Azure 门户
@@ -73,6 +74,20 @@ Databricks 和 Azure 机器学习问题。
 ## <a name="resource-quotas"></a>资源配额
 
 了解使用 Azure 机器学习时可能遇到的[资源配额](how-to-manage-quotas.md)。
+
+## <a name="authentication-errors"></a>身份验证错误
+
+如果通过远程作业对某个计算目标执行管理操作，会收到以下错误之一：
+
+```json
+{"code":"Unauthorized","statusCode":401,"message":"Unauthorized","details":[{"code":"InvalidOrExpiredToken","message":"The request token was either invalid or expired. Please try again with a valid token."}]}
+```
+
+```json
+{"error":{"code":"AuthenticationFailed","message":"Authentication failed."}}
+```
+
+例如，如果尝试通过一个为实施远程执行操作而提交的机器学习管道创建或附加计算目标，会收到错误。
 
 ## <a name="get-more-support"></a>获取更多支持
 

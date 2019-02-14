@@ -1,5 +1,5 @@
 ---
-title: 将用户许可证用户迁移到 Azure Active Directory 中的基于组的许可 | Microsoft Docs
+title: 将用户迁移到基于组的许可 - Azure Active Directory | Microsoft Docs
 description: 如何使用 Azure Active Directory 从单个用户许可证切换到基于组的许可
 services: active-directory
 keywords: Azure AD 许可
@@ -11,15 +11,16 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 10/29/2018
+ms.date: 01/31/2019
 ms.author: curtand
-ms.custom: seohack1
-ms.openlocfilehash: b735d994b0a1937bd7bb3571aa1c642bca77817d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.reviewer: sumitp
+ms.custom: seohack1;it-pro
+ms.openlocfilehash: ecbb0dba42787cd320ef3f6dc4d4a0b44f9eea1e
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182976"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55505982"
 ---
 # <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>如何在 Azure Active Directory 中将经许可的用户添加到组以进行许可
 

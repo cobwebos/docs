@@ -9,11 +9,11 @@ ms.workload: infrastructure-services
 ms.date: 10/17/2018
 ms.author: cherylmc
 ms.openlocfilehash: 4d2edeaf7423d3a46becf386294d2dd8c46e9ab7
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404998"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508328"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>通过门户从不同部署模型中连接虚拟网络
 
@@ -113,7 +113,7 @@ SKU = VpnGw1 <br>
 2. 单击“可选网关配置”打开“网关配置”页。
 
   ![打开网关配置页面](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "打开网关配置页面")
-3. 单击“子网 - 配置所需设置”，打开“添加子网”页面。 “名称”已配置有所需值 **GatewaySubnet**。
+3. 单击“子网 - 配置所需设置”，打开“添加子网”页面。 “名称”已配置有所需值：**GatewaySubnet**。
 4. “地址范围”指网关子网的范围。 虽然可以创建具有地址范围 /29（3 个地址）的网关子网，但建议创建包含更多 IP 地址的网关子网。 这可以适应将来可能需要更多可用 IP 地址的配置。 如果可能，请使用 /27 或 /28。 如果使用这些步骤进行练习，可以参考[示例](#values)值。 本示例使用“10.0.0.32/28”。 单击“确定”创建网关子网。
 5. “网关配置”页面上的“大小”指的是网关 SKU。 为 VPN 网关选择网关 SKU。
 6. 验证“路由类型”是否为“动态”，并单击“确定”，返回“新建 VPN 连接”页面。
@@ -147,7 +147,7 @@ SKU = VpnGw1 <br>
 
 ### <a name="2-create-a-gateway-subnet"></a>2.创建网关子网
 
-**示例值：** GatewaySubnet = 192.168.0.0/26
+**示例值：** 网关子网 = 192.168.0.0/26
 
 创建虚拟网络网关前，先要创建网关子网。 创建 CIDR 计数为 /28 或更大（/27、/26 等）的网关子网。 如果正在练习创建此配置，可以使用示例值。
 
@@ -261,7 +261,7 @@ Select-AzureSubscription -SubscriptionName "Name of subscription"
 
 ### <a name="2-view-the-network-configuration-file-values"></a>2.查看网络配置文件值
 
-在 Azure 门户中创建 VNet 时，Azure 使用的全名在 Azure 门户中不可见。 例如，在 Azure 门户中命名为“ClassicVNet”的 VNet 在网络配置文件中可能具有更长的名称。 该名称可能如下所示：“Group ClassicRG ClassicVNet”。 在这些步骤中，将下载网络配置文件并查看值。
+在 Azure 门户中创建 VNet 时，Azure 使用的全名在 Azure 门户中不可见。 例如，在 Azure 门户中命名为“ClassicVNet”的 VNet 在网络配置文件中可能具有更长的名称。 名称可能如下所示：“Group ClassicRG ClassicVNet”。 在这些步骤中，将下载网络配置文件并查看值。
 
 在计算机上创建一个目录，然后将网络配置文件导出到该目录。 在此示例中，网络配置文件导出到 C:\AzureNet。
 

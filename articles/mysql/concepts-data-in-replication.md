@@ -5,17 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/31/2018
-ms.openlocfilehash: ca748dff67be2a37ca61f34602f207265cc77aaa
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 02/01/2019
+ms.openlocfilehash: f91a6da9a305c6620e4e01ab7aa3c554374cb5d7
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544220"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691516"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>将数据复制到 Azure Database for MySQL
 
-借助数据复制，可以将本地运行的 MySQL 服务器、虚拟机或其他云提供程序托管的数据库服务中的数据同步到 Azure Database for MySQL 服务。 复制中数据以基于二进制日志 (binlog) 文件位置的从本机到 MySQL 的复制为基础。 若要了解有关 binlog 复制的详细信息，请参阅 [MySQL binlog 复制概述](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)。 
+通过数据传入复制可以将数据从外部 MySQL 服务器同步到 Azure Database for MySQL 服务中。 外部服务器可以处于本地、虚拟机中或是其他云提供商托管的数据库服务。 复制中数据以基于二进制日志 (binlog) 文件位置的从本机到 MySQL 的复制为基础。 若要了解有关 binlog 复制的详细信息，请参阅 [MySQL binlog 复制概述](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)。 
 
 ## <a name="when-to-use-data-in-replication"></a>何时使用配置复制中数据
 可以考虑使用复制中数据的主要场景有：
@@ -36,8 +36,9 @@ ms.locfileid: "53544220"
 - 用户必须具有权限才能在主服务器上配置二进制日志记录和创建新用户。
 
 ### <a name="other"></a>其他
-- “数据传入复制”仅在常规用途和优化内存定价层中受支持。
+- 仅可在常规用途和优化内存定价层中使用数据传入复制功能。
 - 不支持全局事务标识符 (GTID)。
 
 ## <a name="next-steps"></a>后续步骤
 - 了解如何[设置复制中数据](howto-data-in-replication.md)
+- 了解[使用只读副本在 Azure 中进行复制](concepts-read-replicas.md)

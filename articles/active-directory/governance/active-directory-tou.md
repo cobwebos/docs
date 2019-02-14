@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 01/10/2019
 ms.author: rolyon
-ms.openlocfilehash: be8a6ba83de81c5a82797ecf3d30c7a7fcaa65fa
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2b8836525e085b41cc8d011087c4fc71afe453cb
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162763"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822504"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory 使用条款功能
 组织可以通过 Azure AD 使用条款这种简单的方法向最终用户显示信息。 可以通过这样的呈现方式确保用户看到法律要求或符合性要求的相关免责声明。 本文介绍如何快速了解使用条款。
@@ -337,7 +337,7 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 ## <a name="frequently-asked-questions"></a>常见问题
 
 **问：如何查看用户何时/是否接受了使用条款？**<br />
-答：在“使用条款”边栏选项卡中单击“已接受”下的数字。 也可在 Azure AD 审核日志中查看或搜索接受活动。 有关详细信息，请参阅[查看接受用户和拒绝用户的报告](#view-who-has-accepted-and-declined)以及[查看 Azure AD 审核日志](#view-azure-ad-audit-logs)。
+答：在“使用条款”边栏选项卡中单击“已接受”下的数字。 也可在 Azure AD 审核日志中查看或搜索接受活动。 有关详细信息，请参阅“查看接受用户和拒绝用户的报告”以及[查看 Azure AD 审核日志](#view-azure-ad-audit-logs)。
 
 **问：信息的存储时间为多长？**<br />
 答：使用条款报告中的用户计数以及接受用户/拒绝用户的存储时间为使用条款有效期。 Azure AD 审核日志的存储时间为 30 天。

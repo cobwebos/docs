@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: howto
 ms.date: 01/10/2019
 ms.author: hrasheed
-ms.openlocfilehash: a44e53d7a32ab151fa951d1bc89b741390a70dfb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fae92f8e09cc2ad6b63cb15599e0b1ab72588ed8
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464783"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728837"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集
 
@@ -40,7 +40,7 @@ Azure Data Lake Storage Gen2 可用作几乎所有 Azure HDInsight 群集类型�
 
     ![显示 Azure 门户中存储帐户创建情况的屏幕截图](./media/hdinsight-hadoop-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
  
-1. 将托管标识分配到存储帐户上的“存储 Blob 数据参与者(预览版)”角色。 请参阅[使用 RBAC 管理对 Azure Blob 和队列数据的访问权限（预览版）](../storage/common/storage-auth-aad-rbac.md#assign-a-role-scoped-to-the-storage-account-in-the-azure-portal)
+1. 将托管标识分配到存储帐户上的“存储 Blob 数据所有者(预览版)”角色。 请参阅[使用 RBAC 管理对 Azure Blob 和队列数据的访问权限（预览版）](../storage/common/storage-auth-aad-rbac.md#assign-a-role-scoped-to-the-storage-account-in-the-azure-portal)
 
     1. 在 [Azure 门户](https://portal.azure.com)中导航到存储帐户。
     1. 选择存储帐户，然后选择“访问控制(IAM)”以显示该帐户的访问控制设置。 选择“角色分配”选项卡以查看角色分配列表。
@@ -48,9 +48,9 @@ Azure Data Lake Storage Gen2 可用作几乎所有 Azure HDInsight 群集类型�
         ![显示存储访问控制设置的屏幕截图](./media/hdinsight-hadoop-data-lake-storage-gen2/portal-access-control.png)
     
     1. 单击“添加角色分配”按钮以添加一个新角色。
-    1. 在“添加角色分配”窗口中，选择“存储 Blob 数据参与者(预览版)”角色。 然后，选择具有托管标识和存储帐户的订阅。 接下来，搜索并找到之前创建的用户分配托管标识。 最后，选择托管标识，它将在“选定成员”下列出。
+    1. 在“添加角色分配”窗口中，选择“存储 Blob 数据所有者(预览版)”角色。 然后，选择具有托管标识和存储帐户的订阅。 接下来，搜索并找到之前创建的用户分配托管标识。 最后，选择托管标识，它将在“选定成员”下列出。
     
-        ![显示如何分配 RBAC 角色的屏幕截图](./media/hdinsight-hadoop-data-lake-storage-gen2/add-rbac-role2.png)
+        ![显示如何分配 RBAC 角色的屏幕截图](./media/hdinsight-hadoop-data-lake-storage-gen2/add-rbac-role3.png)
     
     1. 单击“ **保存**”。 所选用户分配标识现在在“参与者”角色下列出。
 

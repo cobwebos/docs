@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2018
+ms.date: 01/18/2019
 ms.author: yashar
-ms.openlocfilehash: 44d23cf38eb1dca9ade94c5a8fd0ae495300be44
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 4f70a34febcf0b39d051053a6ddd9abe5c9a6726
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582184"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745973"
 ---
 # <a name="prepay-for-suse-software-plans-from-azure-reservations"></a>通过 Azure 预留为 SUSE 软件计划预付费
 
@@ -27,7 +27,7 @@ ms.locfileid: "52582184"
 可以在 Azure 门户中购买 SUSE 软件计划。 若要购买计划：
 
 - 你必须至少具有一个企业或即用即付订阅的所有者角色。
-- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com)中启用预订购买。
+- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com)中启用“添加预留实例”。 或者，如果禁用了该设置，则你必须是订阅的 EA 管理员。
 - 对于云解决方案提供商 (CSP) 计划，管理代理或销售代理可以购买 SUSE 计划。
 
 ## <a name="buy-a-suse-software-plan"></a>购买 SUSE 软件计划
@@ -36,11 +36,11 @@ ms.locfileid: "52582184"
 1. 选择“添加”并选择 SUSE Linux。
 1. 填写必填字段。 与所购买计划的属性匹配的任何 SUSE Linux VM 都可以获得折扣。 实际获得折扣的部署数取决于所选范围和数量。
 
-    | 字段      | Description|
+    | 字段      | 说明|
     |:------------|:--------------|
-    |名称        |此购买的名称。|
-    |订阅|用于支付此计划的订阅。 将向订阅的付款方式收取预订的预付费用。 订阅类型必须是“企业协议”（套餐编号：MS-AZR-0017P）或“即用即付”（套餐编号：MS-AZR-0003P）。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于即用即付订阅，将向订阅的信用卡或发票付款方式收取费用。|
-    |范围       |范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： <ul><li>单个订阅 - 计划折扣将应用到此订阅中的 SUSE Linux 使用情况。 </li><li>共享 - 计划折扣将应用到计费上下文中任何订阅中的 SUSE Linux 使用情况。 对于企业客户，共享范围是许可登记表，包括许可登记表中的所有订阅（开发/测试订阅除外）。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</li></ul>|
+    |Name        |此购买的名称。|
+    |订阅|用于支付此计划的订阅。 将向订阅的付款方式收取预订的预付费用。 订阅类型必须为企业协议（套餐编号：MS-AZR-0017P 或 MS-AZR-0148P）或即用即付（套餐编号：MS-AZR-0003P 或 MS-AZR-0023P）。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于即用即付订阅，将向订阅的信用卡或发票付款方式收取费用。|
+    |范围       |范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： <ul><li>单个订阅 - 计划折扣将应用到此订阅中的 SUSE Linux 使用情况。 </li><li>共享 - 计划折扣将应用到计费上下文中任何订阅中的 SUSE Linux 使用情况。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</li></ul>|
     |软件计划     |选择 SUSE Linux 计划。 有关确定要购买计划的帮助，请参阅[了解如何应用 SUSE Linux Enterprise 软件预留折扣](../../billing/billing-understand-suse-reservation-charges.md)。|
     |VM 大小     |SUSE Linux 定价取决于 VM 上的 vCPU 数量。 选择可表示 SUSE Linux VM 上的 vCPU 数量的选项。|
     |术语        |一年或三年。|
@@ -72,4 +72,4 @@ ms.locfileid: "52582184"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

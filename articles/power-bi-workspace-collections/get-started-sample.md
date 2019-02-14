@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: 630413d15df04d27599389f647c57876fff9d295
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: fdbbfaf4a4c3df90302b0b69e4964b7a073f2fa4
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094421"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237954"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Power BI 工作区集合入门示例
 
@@ -73,7 +73,7 @@ Web 应用示例是一个示例应用程序，用于呈现**工作区**中导入
 1. 在 **PowerBI Embedded** Visual Studio 解决方案中，右键单击“EmbedSample”Web 应用程序，并选择“设为启动项目”。
 2. 在 **EmbedSample** Web 应用程序的 **web.config** 中，编辑 **appSettings**：**AccessKey**、**WorkspaceCollection** 名称和 **WorkspaceId**。
 
-    ```
+    ```xml
     <appSettings>
         <add key="powerbi:AccessKey" value="" />
         <add key="powerbi:ApiUrl" value="https://api.powerbi.com" />
@@ -106,19 +106,23 @@ Web 应用示例是一个示例应用程序，用于呈现**工作区**中导入
 
 **ReportsViewModel.cs**：表示多个 Power BI 报表。
 
-    public class ReportsViewModel
-    {
-        public List<Report> Reports { get; set; }
-    }
+```csharp
+public class ReportsViewModel
+{
+    public List<Report> Reports { get; set; }
+}
+```
 
 **ReportViewModel.cs**：表示单个 Power BI 报表。
 
-    public classReportViewModel
-    {
-        public IReport Report { get; set; }
+```csharp
+public class ReportViewModel
+{
+    public IReport Report { get; set; }
 
-        public string AccessToken { get; set; }
-    }
+    public string AccessToken { get; set; }
+}
+```
 
 ### <a name="connection-string"></a>连接字符串
 
@@ -140,92 +144,100 @@ Data Source=tcp:MyServer.database.windows.net,1433;Initial Catalog=MyDatabase
 | --- | --- |
 | 标题 |报表的名称。 |
 | QueryString |指向报表 ID 的链接。 |
-
-    <div id="reports-nav" class="panel-collapse collapse">
-        <div class="panel-body">
-            <ul class="nav navbar-nav">
-                @foreach (var report in Model.Reports)
-                {
-                    var reportClass = Request.QueryString["reportId"] == report.Id ? "active" : "";
-                    <li class="@reportClass">
-                        @Html.ActionLink(report.Name, "Report", new { reportId = report.Id })
-                    </li>
-                }
-            </ul>
-        </div>
+```cshtml
+<div id="reports-nav" class="panel-collapse collapse">
+    <div class="panel-body">
+        <ul class="nav navbar-nav">
+            @foreach (var report in Model.Reports)
+            {
+                var reportClass = Request.QueryString["reportId"] == report.Id ? "active" : "";
+                <li class="@reportClass">
+                    @Html.ActionLink(report.Name, "Report", new { reportId = report.Id })
+                </li>
+            }
+        </ul>
     </div>
-
+</div>
+```
 Report.cshtml：为 **PowerBIReportFor** 设置 **Model.AccessToken** 和 Lambda 表达式。
 
-    @model ReportViewModel
+```cshtml
+@model ReportViewModel
 
-    ...
+...
 
-    <div class="side-body padding-top">
-        @Html.PowerBIAccessToken(Model.AccessToken)
-        @Html.PowerBIReportFor(m => m.Report, new { style = "height:85vh" })
-    </div>
+<div class="side-body padding-top">
+    @Html.PowerBIAccessToken(Model.AccessToken)
+    @Html.PowerBIReportFor(m => m.Report, new { style = "height:85vh" })
+</div>
+```
 
 ### <a name="controller"></a>控制器
 
 **DashboardController.cs**：创建用于传递**应用令牌** 的 PowerBIClient。 JSON Web 令牌 (JWT) 是基于**签名密钥**生成的，用于获取**凭据**。 **凭据**用于创建 **PowerBIClient** 实例。 创建 **PowerBIClient** 实例后，可以调用 GetReports() 和 GetReportsAsync()。
 
+
 CreatePowerBIClient()
 
-    private IPowerBIClient CreatePowerBIClient()
+```csharp
+private IPowerBIClient CreatePowerBIClient()
+{
+    var credentials = new TokenCredentials(accessKey, "AppKey");
+    var client = new PowerBIClient(credentials)
     {
-        var credentials = new TokenCredentials(accessKey, "AppKey");
-        var client = new PowerBIClient(credentials)
-        {
-            BaseUri = new Uri(apiUrl)
-        };
+        BaseUri = new Uri(apiUrl)
+    };
 
-        return client;
-    }
+    return client;
+}
+```
 
 ActionResult Reports()
 
-    public ActionResult Reports()
+```csharp
+public ActionResult Reports()
+{
+    using (var client = this.CreatePowerBIClient())
     {
-        using (var client = this.CreatePowerBIClient())
+        var reportsResponse = client.Reports.GetReports(this.workspaceCollection, this.workspaceId);
+
+        var viewModel = new ReportsViewModel
         {
-            var reportsResponse = client.Reports.GetReports(this.workspaceCollection, this.workspaceId);
+            Reports = reportsResponse.Value.ToList()
+        };
 
-            var viewModel = new ReportsViewModel
-            {
-                Reports = reportsResponse.Value.ToList()
-            };
-
-            return PartialView(viewModel);
-        }
+        return PartialView(viewModel);
     }
-
+}
+```
 
 任务<ActionResult>报表 (string reportId)
 
-    public async Task<ActionResult> Report(string reportId)
+```csharp
+public async Task<ActionResult> Report(string reportId)
+{
+    using (var client = this.CreatePowerBIClient())
     {
-        using (var client = this.CreatePowerBIClient())
+        var reportsResponse = await client.Reports.GetReportsAsync(this.workspaceCollection, this.workspaceId);
+        var report = reportsResponse.Value.FirstOrDefault(r => r.Id == reportId);
+        var embedToken = PowerBIToken.CreateReportEmbedToken(this.workspaceCollection, this.workspaceId, report.Id);
+
+        var viewModel = new ReportViewModel
         {
-            var reportsResponse = await client.Reports.GetReportsAsync(this.workspaceCollection, this.workspaceId);
-            var report = reportsResponse.Value.FirstOrDefault(r => r.Id == reportId);
-            var embedToken = PowerBIToken.CreateReportEmbedToken(this.workspaceCollection, this.workspaceId, report.Id);
+            Report = report,
+            AccessToken = embedToken.Generate(this.accessKey)
+        };
 
-            var viewModel = new ReportViewModel
-            {
-                Report = report,
-                AccessToken = embedToken.Generate(this.accessKey)
-            };
-
-            return View(viewModel);
-        }
+        return View(viewModel);
     }
+}
+```
 
 ### <a name="integrate-a-report-into-your-app"></a>将报表集成到应用中
 
 创建**报表**后，可以使用 **IFrame** 嵌入 Power BI **报表**。 以下是来自 **Microsoft Power BI 工作区集合**示例中的 powerbi.js 代码片段。
 
-```
+```javascript
 init: function() {
     var embedUrl = this.getEmbedUrl();
     var iframeHtml = '<iframe style="width:100%;height:100%;" src="' + embedUrl + 

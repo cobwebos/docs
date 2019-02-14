@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: juliako
-ms.openlocfilehash: 8eb49010d89c3039f46e5c84cd305b7d0b5ca025
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: d176152429ecac1ed4e570533f1bc0426cc7655f
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306960"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55767446"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>存在 Azure 媒体服务 v3 的云和区域
 
@@ -33,9 +33,16 @@ Azure 媒体服务 v3 可通过 Azure资源管理器清单在全球 Azure、Azur
 | [LiveEvents](live-streaming-overview.md) | 可用 | 可用 | 可用 | 可用 |
 | [StreamingEndpoints](streaming-endpoint-concept.md) | 可用 | 可用 | 可用 | 可用 |
 
-## <a name="regions"></a>区域 
+## <a name="regionsgeographieslocations"></a>区域/地域/位置
 
-如果需要提供**位置**参数，则需要提供区域代码名称作为**位置**值。 若要获取你的帐户所在的并且应当将你的调用路由到的区域的代码名称，可以在 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 中运行以下命令行：
+* [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)
+* [产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)
+* [Azure 地域](https://azure.microsoft.com/global-infrastructure/geographies/)
+* [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)
+
+## <a name="region-code-name"></a>区域代码名 
+
+如果需要提供**位置**参数，则需要提供区域代码名称作为**位置**值。 若要获取你的帐户所在的并且应当将你的调用路由到的区域的代码名称，可以在 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 中运行以下命令行
 
 ```bash
 az account list-locations

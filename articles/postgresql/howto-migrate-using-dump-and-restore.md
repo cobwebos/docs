@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 41a5f2eab78d68bdb1f51b423955cfefa5a541b8
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d406132c4e359c78567ae47a3acba5b73aa39820
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538577"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564198"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>使用转储和还原迁移 PostgreSQL 数据库
 可以使用 [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) 将 PostgreSQL 数据库提取到转储文件，并使用 [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) 从 pg_dump 创建的存档文件中还原 PostgreSQL 数据库。
@@ -69,7 +69,9 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 
 ### <a name="for-the-restore"></a>对于还原
 - 我们建议将备份文件移动到你要迁移到的 Azure Database for PostgreSQL 服务器所在区域中的 Azure VM，并从该 VM 执行 pg_restore 以减少网络延迟。 此外，我们还建议通过启用[加速网络](../virtual-network/create-vm-accelerated-networking-powershell.md)来创建 VM。
+
 - 默认情况下应该已经完成，但需打开转储文件来验证 create index 语句是否在插入数据之后。 如果不是这种情况，请将 create index 语句移动到插入的数据之后。
+
 - 使用 -Fc 和 -j *#* 交换机进行并行还原。 *#* 是目标服务器上的内核数。 你还可以尝试将 *#* 设置为目标服务器内核数的两倍，以查看产生的影响。 例如：
 
     ```
@@ -77,6 +79,13 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
     ```
 
 - 此外，还可以通过在开头添加 *set synchronous_commit = off;* 命令并在末尾添加 *set synchronous_commit = on;* 命令来编辑转储文件。 如果在应用更改数据之前未在末尾打开该功能，可能会导致随后的数据丢失。
+
+- 在目标 Azure Database for PostgreSQL 服务器上，请考虑在还原之前执行以下操作：
+    - 关闭查询性能跟踪，因为迁移期间不需要这些统计信息。 可以通过将 pg_stat_statements.track、pg_qs.query_capture_mode 和 pgms_wait_sampling.query_capture_mode 设置为 NONE 来完成此操作。
+
+    - 使用高计算和高内存 sku（如 32 vCore 内存优化）来加速迁移。 完成还原操作后，可以轻松缩回到所需的 sku。 sku 越高，通过增加 pg_restore 命令中相应的 `-j` 参数就可以实现越多的并行性。 
+
+    - 通过增加目标服务器上的 IOPS 可以提高还原性能。 你可以通过增加服务器的存储大小来预配更多 IOPS。 此设置不可逆，但要考虑的一点是，更高的 IOPS 是否在将来有益于你的实际工作负荷。
 
 请记住先在测试环境中测试和验证这些命令，然后再将其用于生产。
 

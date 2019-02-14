@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: af605f4ad7c4167936a07f2ae8ffd3d2850cda75
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 643ef7f9960b2a91c88b4e13fe318748d175e036
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185190"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692695"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>通过 Azure Active Directory 应用程序代理远程访问本地应用程序 
 
@@ -28,7 +28,7 @@ Azure AD 应用程序代理的特性：
 
 - **安全**。 本地应用程序可以使用 Azure 的授权控制和安全分析功能。 例如，本地应用程序可以使用条件访问和双重验证。 应用程序代理不要求通过防火墙打开入站连接。
  
-- **经济高效**。 本地解决方案通常需要你设置和维护隔离区 (DMV)、边缘服务器或其他复杂的基础结构。 应用程序代理在云中运行，易于使用。 若要使用应用程序代理，无需更改网络基础结构或在本地环境中安装其他设备。
+- **经济高效**。 本地解决方案通常需要设置和维护隔离区 (DMZ)、边缘服务器或其他复杂的基础结构。 应用程序代理在云中运行，易于使用。 若要使用应用程序代理，无需更改网络基础结构或在本地环境中安装其他设备。
 
 ## <a name="what-is-application-proxy"></a>什么是应用程序代理？
 应用程序代理是 Azure AD 的一项功能，它使用户能够从远程客户端访问本地 Web 应用程序。 应用程序代理包括在云中运行的应用程序代理服务和在本地服务器上运行的应用程序代理连接器。 Azure AD、应用程序代理服务和应用程序代理连接器协同工作，将用户登录令牌从 Azure AD 安全地传递到 Web 应用程序。

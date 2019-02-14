@@ -17,12 +17,13 @@ ms.date: 07/19/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: dd9bdc4638d1c055706026798acba08d6add08c7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a46bc954d137ad610310d83d3ad7f54370b9177b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098742"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184034"
 ---
 # <a name="single-sign-on-saml-protocol"></a>单一登录 SAML 协议
 

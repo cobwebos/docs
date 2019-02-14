@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3468f9341e0a8406733877a05798e427dd454fff
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 93ce86a438fca47100a34da2524515b46bcad574
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167557"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567156"
 ---
 # <a name="object-detection"></a>对象检测
 
@@ -87,6 +87,15 @@ ms.locfileid: "55167557"
 }
 ```
 
-## <a name="next-steps"></a>后续步骤
+## <a name="limitations"></a>限制
 
-了解[对图像进行分类](concept-categorizing-images.md)和[描述图像](concept-describing-images.md)的概念。
+请务必注意对象检测功能的限制，以便可以避免或缓解误报（缺少对象）和有限详细信息的影响。
+* 如果对象非常小（小于图像的 5%），则通常不删除对象。
+* 如果对象非常紧密地排列在一起（例如一摞盘子），则通常不会检测到对象。
+* 对象不区分品牌或产品名称（例如，商店货架上不同类型的苏打饮料）。 但是可以使用[品牌检测](concept-brand-detection.md)功能从图像中获取品牌信息。
+
+## <a name="use-the-api"></a>使用 API
+对象检测功能属于[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API。 可以通过本机 SDK 或 REST 调用来调用此 API。 获取完整 JSON 响应时，只需分析 `"objects"` 部分内容的字符串。
+
+* [快速入门：分析图像 (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
+* [快速入门：分析图像 (REST API)](./quickstarts/csharp-analyze.md)

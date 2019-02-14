@@ -13,12 +13,13 @@ ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bc726f63ea5c8473601623024e18c1402cbebb51
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0ff5b998222f9a7320384edea1ed69e7a65e9139
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820311"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171292"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>在 Azure 门户中查找活动报告
 

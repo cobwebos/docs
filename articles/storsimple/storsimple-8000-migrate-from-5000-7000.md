@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: a638487fb0a622f899095989ca5341013299e181
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 967c03f3c4201bdcf1529fdda93717b6eb74e771
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234402"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495847"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>将数据从 StorSimple 5000-7000 系列迁移到 8000 系列设备
 
@@ -26,7 +26,7 @@ ms.locfileid: "51234402"
 > - 在 2019 年 7 月 31 日，StorSimple 5000/7000 系列将达到支持终止 (EOS) 状态。 我们建议 StorSimple 5000/7000 系列客户迁移到本文档中所述的替代方案之一。
 > - 迁移当前是一项辅助的操作。 如果想要将数据从 StorSimple 5000-7000 系列设备迁移到 8000 系列设备，需要与 Microsoft 支持部门一起制定迁移计划。 然后，Microsoft 支持部门将启用你的迁移订阅。 有关详细信息，请参阅如何[开具支持票证](storsimple-8000-contact-microsoft-support.md)。
 > - 提交服务请求文件后，可能需要几周的时间来执行迁移计划和实际启动迁移。
-> - 在联系 Microsoft 支持部门前，请确保审阅并完成本文中所示的[迁移先决条件](#migration-prerequisites)。
+> - 在联系 Microsoft 支持部门前，请确保审阅并实现本文中所述的[迁移先决条件](#migration-prerequisites)。
 
 ## <a name="overview"></a>概述
 
@@ -125,7 +125,7 @@ StorSimple 迁移工具是一个基于 UI 的工具，可用于将数据从 Stor
 
     打开文件夹中的工具配置文件 StorSimple8000SeriesMigrationTool.exe.config。 以下是文件的代码段。
     
-    ```
+    ```xml
         <add key="UserName" value="username@xyz.com" />
         <add key="SubscriptionName" value="YourSubscriptionName" />
         <add key="SubscriptionId" value="YourSubscriptionId" />

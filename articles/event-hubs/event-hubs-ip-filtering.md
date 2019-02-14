@@ -11,12 +11,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 707290d7bf453ca71dd3c5cf8b39c917b3a1c479
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ccb2fa7b0805b332957513c52c0c1051d068d2cc
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268268"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507529"
 ---
 # <a name="use-firewall-rules"></a>使用防火墙规则
 
@@ -24,7 +24,7 @@ ms.locfileid: "53268268"
 
 ## <a name="when-to-use"></a>使用时机
 
-如果想要设置事件中心命名空间，使其只接收来自特定 IP 地址范围的流量并拒绝其他流量，那么可以利用防火墙规则来阻止来自其他 IP 地址的事件中心终结点。例如，结合使用事件中心和 [Azure 快速路由][express-route]来创建到本地基础结构的专用链接。
+如果要设置事件中心命名空间，使其仅接收来自指定 IP 地址范围的流量并拒绝其他所有流量，则可以利用“防火墙规则”来阻止来自其他 IP 地址的事件中心终结点。 例如，如果将事件中心与 [Azure 快速路由][express-route]结合使用，则可以创建防火墙规则来限制来自本地基础结构 IP地址的流量。
 
 ## <a name="how-filter-rules-are-applied"></a>筛选器规则的应用方式
 

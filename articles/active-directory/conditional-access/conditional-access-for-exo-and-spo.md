@@ -16,12 +16,13 @@ ms.workload: identity
 ms.date: 08/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 79d6efafba2411bea85ab8c959716ebc38817490
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8dad650ac1cc7ab8822925a4a9759b68ee0d0088
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080406"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185981"
 ---
 # <a name="how-to-set-up-sharepoint-online-and-exchange-online-for-azure-active-directory-conditional-access"></a>如何：为 Azure Active Directory 条件访问设置 SharePoint Online 和 Exchange Online 
 

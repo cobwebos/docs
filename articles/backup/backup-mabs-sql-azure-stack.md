@@ -2,18 +2,18 @@
 title: 在 Azure Stack 上备份 SQL Server 工作负荷
 description: 使用 Azure 备份服务器在 Azure Stack 上保护 SQL Server 工作负荷。
 services: backup
-author: pvrk
-manager: Shivamg
+author: adigan
+manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
-ms.author: pullabhk
-ms.openlocfilehash: ca7da7ab048b6f7bfdba81aac9bc7702b20ff967
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.author: adigan
+ms.openlocfilehash: fb064c39fa014515fb2a3f4ccc96ce216f2f7b2e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751791"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493501"
 ---
 # <a name="back-up-sql-server-on-stack"></a>在 Stack 上备份 SQL Server
 使用本文配置 Microsoft Azure 备份服务器 (MABS) 以在 Azure Stack 上保护 SQL Server 数据库。
@@ -68,7 +68,7 @@ ms.locfileid: "36751791"
 
     ![初始复制方法](./media/backup-azure-backup-sql/pg-manual.png)
 
-    初始备份复制要求将整个数据源（SQL Server 数据库）从生产服务器（SQL Server 计算机）传输到 Azure 备份服务器。 此类数据可能会非常大，通过网络传输此类数据可能会超过带宽限制。 出于这个原因，可以选择通过以下方式传输初始备份：“**手动**”（使用可移动媒体），以免网络出现带宽拥塞现象；或“**自动通过网络**”（于指定时间）。
+    初始备份复制要求将整个数据源（SQL Server 数据库）从生产服务器（SQL Server 计算机）传输到 Azure 备份服务器。 此类数据可能会非常大，通过网络传输此类数据可能会超过带宽限制。 因此，可以选择通过以下方式传输初始备份：“手动”（使用可移动媒体），以免网络出现带宽拥塞现象；或“自动通过网络”（于指定时间）。
 
     初始备份完成后，其余的备份都是初始备份副本的增量备份。 增量备份往往比较小，能轻松地通过网络传输。
 

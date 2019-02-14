@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 你可以选择在初始创建后升级 QnA Maker 堆栈的各个组件。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: 5cef98fedc0e2e29582c8cde8c75837880f1cf58
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e37a903112f30917ff5051305bb2144981de1c9d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216058"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883264"
 ---
 # <a name="upgrade-your-qna-maker-service"></a>升级 QnA Maker 服务
 你可以选择在初始创建后升级 QnA Maker 堆栈的各个组件。 有关从属组件和 SKU 选择的详细信息，请参阅[此处](https://aka.ms/qnamaker-docs-capacity)。

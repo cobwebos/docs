@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7e0064495cfb3d82c349a23d914195c5f211dc19
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 54d98c02ee9e5202c09e333843f8c16955f4e2d4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187073"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819241"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略配置包含动态内容的 UI
 
@@ -155,7 +155,7 @@ ms.locfileid: "55187073"
     此时会打开“创建应用服务”窗口。 在此窗口中，可以开始创建在 Azure 中运行 ASP.NET Web 应用所需的全部 Azure 资源。
 
     > [!NOTE]
-    > 有关发布方法的详细信息，请参阅[在 Azure 中创建 ASP.NET Web 应用](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure)。
+    > 有关发布方法的详细信息，请参阅[在 Azure 中创建 ASP.NET Web 应用](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet)。
 
 3. 在“Web 应用名称”框中，键入唯一的应用名称（有效字符为 a-z、A-Z、0-9 和连字符 (-)）。 Web 应用的 URL 为 `http://<app_name>.azurewebsites.NET`，其中 `<app_name>` 是 Web 应用名称。 可以接受自动生成的名称，它是唯一的。
 
@@ -247,16 +247,18 @@ HTML5 模板现在可供使用。 但是，无法在 `ContentDefinition` 代码�
 执行以下操作来添加 `ContentDefinitionParameters` 元素：
 1. 打开策略的 *SignUpOrSignin* 文件（例如 *SignUpOrSignin.xml*）。
 
-2. 搜索 `<DefaultUserJourney>` 节点。 
-
-3. 在 `<DefaultUserJourney>` 节点中添加以下 XML 代码片段：  
+2. 在 `<DefaultUserJourney>` 节点下，添加 `UserJourneyBehaviors` 节点：  
 
     ```XML
-    <UserJourneyBehaviors>
+    <RelyingParty>
+      <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+      <UserJourneyBehaviors>
         <ContentDefinitionParameters>
-            <Parameter Name="campaignId">{OAUTH-KV:campaignId}</Parameter>
+          <Parameter Name="campaignId">{OAUTH-KV:campaignId}</Parameter>
         </ContentDefinitionParameters>
-    </UserJourneyBehaviors>
+      </UserJourneyBehaviors>
+      ...
+    </RelyingParty>
     ```
 
 ### <a name="step-82-change-your-code-to-accept-a-query-string-parameter-and-replace-the-background-image"></a>步骤 8.2：更改代码以接受查询字符串参数并替换背景图像

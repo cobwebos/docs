@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 12a11e444372ad7004e566851532a98be63af8e8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 15d5b824525bc19d83abfbf2c08e068bd3837350
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195352"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821195"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect：从 DirSync 升级
 Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 DirSync 升级的方式。 这些步骤不适用于从另一个版本的 Azure AD Connect 或从 Azure AD Sync 升级。
@@ -34,7 +34,7 @@ Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 D
 > [!NOTE]
 > 启用新的 Azure AD Connect 服务器并开始将更改同步到 Azure AD 以后，不得通过回退来使用 DirSync 或 Azure AD Sync。不支持从 Azure AD Connect 降级到旧客户端（包括 DirSync 和 Azure AD Sync），那样可能会导致各种问题，例如数据在 Azure AD 中丢失。
 
-如果不是从 DirSync 升级，请参阅 [相关文档](#related-documentation) 了解其他应用场景。
+如果不是从 DirSync 升级，请参阅相关文档了解其他方案。
 
 ## <a name="upgrade-from-dirsync"></a>从 DirSync 升级
 根据当前的 DirSync 部署，可以使用不同的升级选项。 如果预期的升级时间少于 3 小时，建议执行就地升级。 如果预期的升级时间超过 3 小时，建议在另一台服务器上进行并行部署。 如果对象数目超过 50,000 个，预计需要 3 个多小时才能完成升级。
@@ -127,7 +127,7 @@ Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 D
 
 * 单击“导出设置”按钮。 在单独的服务器上安装 Azure AD Connect 时，会将当前 DirSync 中的这些设置迁移到新的 Azure AD Connect 安装位置。
 
-成功导出设置后，可以退出 DirSync 服务器上的 Azure AD Connect 向导。 继续执行下一步，以 [在不同的服务器上安装 Azure AD Connect](#installation-of-azure-ad-connect-on-separate-server)
+成功导出设置后，可以退出 DirSync 服务器上的 Azure AD Connect 向导。 继续执行下一步，在不同的服务器上安装 Azure AD Connect
 
 **对象数少于 50,000 时执行并行部署**
 
@@ -141,7 +141,7 @@ Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 D
 
 ![分析已完成](./media/how-to-dirsync-upgrade-get-started/forceexport.png)
 
-成功导出设置后，可以退出 DirSync 服务器上的 Azure AD Connect 向导。 继续执行下一步，[在不同的服务器上安装 Azure AD Connect](#installation-of-azure-ad-connect-on-separate-server)。
+成功导出设置后，可以退出 DirSync 服务器上的 Azure AD Connect 向导。 继续执行下一步，在不同的服务器上安装 Azure AD Connect。
 
 ### <a name="install-azure-ad-connect-on-separate-server"></a>在不同的服务器上安装 Azure AD Connect
 在新的服务器上安装 Azure AD Connect 时，假设要执行 Azure AD Connect 的全新安装。 由于想要使用 DirSync 配置，因此还要执行一些额外的步骤：

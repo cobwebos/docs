@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 917a551b8a187db6645e523d0189533e333d5371
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a1b60bdf27e1a5f5cb6b9cfba72d78f8afa068eb
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075160"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768590"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中心的功能和术语
 
@@ -169,7 +169,7 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 可以联系 Azure 支持部门来购买更多吞吐量单位（以块的形式购买，每个块 20 个单位，最多可购买 100 个单位）。 你可以超出该限制购买包含 100 个吞吐量单位的块级元素。
 
-建议权衡吞吐量单位和分区数目，实现最佳缩放。 一个分区最多只能缩放一个吞吐量单位。 吞吐量单位数应小于或等于事件中心内的分区数。
+建议权衡吞吐量单位和分区数目，实现最佳缩放。 一个分区最多具有一个吞吐量单位。 吞吐量单位数应小于或等于事件中心内的分区数。
 
 如需事件中心的详细定价信息，请参阅[事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。
 

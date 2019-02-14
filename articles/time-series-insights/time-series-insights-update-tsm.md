@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 55d35237adc384ca8344e6ff69abc4a93d540ec6
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 6126a9d56059435be32299bcd1f03050f031f81b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099894"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507806"
 ---
 # <a name="time-series-model"></a>时序模型
 
@@ -152,9 +152,11 @@ ms.locfileid: "55099894"
 
 实例是时序本身。 在大多数情况下，*deviceId* 或 *assetId* 是环境中资产的唯一标识符。 实例具有关联的描述性信息，称为实例属性。 实例属性最起码包括层次结构信息。 实例属性还可以包括有用的描述性数据，例如制造商、操作员或上次检修日期。
 
-实例按 *timeSeriesId*、*typeId*、*hierarchyId* 和 *instanceFields* 定义。 每个实例只映射到一个类型以及一个或多个层次结构。 实例从层次结构继承所有属性，可以添加其他 *instanceFields* 以进一步定义实例属性。
+实例按 *typeId*、*timeSeriesId*、*name*、*description*、*hierarchyIds* 和 *instanceFields* 定义。 每个实例只映射到一个类型以及一个或多个层次结构。 实例从层次结构继承所有属性，可以添加其他 *instanceFields* 以进一步定义实例属性。
 
 *instanceFields* 是实例的属性，并且是定义实例的任何静态数据。 它们定义层次结构或非层次结构属性的值，同时还支持索引，以便能够执行搜索操作。
+
+*name* 属性可选，并且区分大小写。 如果 *name* 不可用，则默认为时序 ID。 如果提供了 *name*，仍将在 Well（资源管理器中图表下方的网格）中提供时序 ID。 
 
 ## <a name="time-series-model-instance-json-example"></a>时序模型实例 JSON 示例
 
@@ -164,6 +166,7 @@ ms.locfileid: "55099894"
 {
     "typeId": "1be09af9-f089-4d6b-9f0b-48018b5f7393",
     "timeSeriesId": ["sampleTimeSeriesId"],
+    "name": "sampleName",
     "description": "Sample Instance",
     "hierarchyIds": [
         "1643004c-0a84-48a5-80e5-7688c5ae9295"

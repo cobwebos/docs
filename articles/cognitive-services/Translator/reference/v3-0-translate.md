@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 77edf892c3c2ca1434331fb5560f0db8ca16e306
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 800c6d3441e75f428f58fe76ea653f04353064bb
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470869"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699714"
 ---
 # <a name="translator-text-api-30-translate"></a>文本翻译 API 3.0：Translate
 
@@ -54,7 +54,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>category</td>
-    <td>可选参数。<br/>一个字符串，指定翻译的类别（领域）。 此参数用于从一个使用[自定义翻译工具](../customization.md)构建的自定义系统获取翻译。 默认值为 `general`。</td>
+    <td>可选参数。<br/>一个字符串，指定翻译的类别（领域）。 此参数用于从一个使用[自定义翻译工具](../customization.md)构建的自定义系统获取翻译。 将自定义翻译器项目的类别 ID 添加到此参数，以便使用已部署的自定义系统。 默认值为 `general`。</td>
   </tr>
   <tr>
     <td>profanityAction</td>
@@ -126,7 +126,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 以下限制适用：
 
-* 数组最多可以有 25 个元素。
+* 数组最多可具有 100 个元素。
 * 包括空格在内，请求中包含的整个文本不能超过 5,000 个字符。
 
 ## <a name="response-body"></a>响应正文
@@ -224,6 +224,8 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
     <td>服务器暂不可用。 重试请求。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
   </tr>
 </table> 
+
+如果发生错误，请求也将返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 常见错误代码可在 [v3 文本翻译 API 参考页面](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到。 
 
 ## <a name="examples"></a>示例
 

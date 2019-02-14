@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/15/2019
-ms.openlocfilehash: 145273d48060955005f1d93f30e79014244cf4ba
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.date: 02/01/2019
+ms.openlocfilehash: ff5890dcaf642d51c53b054e986689290be773ca
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321375"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699238"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL 定价层
 
@@ -126,5 +126,5 @@ ms.locfileid: "54321375"
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[在门户中创建 MySQL 服务器](howto-create-manage-server-portal.md)。
-- 了解如何[使用 Azure CLI 监视和缩放 Azure Database for MySQL 服务器](scripts/sample-scale-server.md)。
 - 了解[服务限制](concepts-limits.md)。
+- 了解如何[使用只读副本进行横向扩展](howto-read-replicas-portal.md)。

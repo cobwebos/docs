@@ -3,7 +3,7 @@ title: 迁移后管理 - Azure SQL 数据库 | Microsoft Docs
 description: 了解如何在迁移到 Azure SQL 数据库后管理数据库。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 78879947ae0e702604b56f1cb9c914acc4d4d592
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: 2c0d32c5e95504ac99c739af89795ac22a768c63
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478468"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751933"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>云中的新 DBA - 在 Azure SQL 数据库中管理数据库
 
@@ -108,7 +108,7 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 
 防火墙仅允许特定实体访问 SQL 数据库服务器，以此来防止外部实体访问服务器。 默认拒绝 SQL 数据库服务器内的所有连接和数据库，来自其他 Azure 服务的连接除外。 利用防火墙规则，可以仅向实体（例如，开发人员计算机）开放服务器的访问权限。为此，你只需通过防火墙允许该计算机的 IP 地址。 利用它还可以指定你想要允许访问 SQL 数据库服务器的 IP 范围。 例如，通过在防火墙设置页中指定一个范围，可以一次性添加组织中开发人员计算机 IP 地址。
 
-可以创建服务器级或数据库级的防火墙规则。 可使用 Azure 门户或通过 SSMS 创建服务器级防火墙规则。 有关如何设置服务器和数据库级防火墙规则的详细信息，请参阅：[在 SQL 数据库中创建防火墙规则](sql-database-security-tutorial.md#create-firewall-rules)。
+可以创建服务器级或数据库级的防火墙规则。 可使用 Azure 门户或通过 SSMS 创建服务器级 IP 防火墙规则。 有关如何设置服务器级和数据库级防火墙规则的详细信息，请参阅：[在 SQL 数据库中创建 IP 防火墙规则](sql-database-security-tutorial.md#create-firewall-rules)。
 
 #### <a name="service-endpoints"></a>服务终结点
 
@@ -134,7 +134,7 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 
 #### <a name="threat-detection"></a>威胁检测
 
-通过[威胁检测](sql-database-threat-detection.md)，可轻松应对“审核”发现的违反安全规定和政策的行为。 即使不是安全专家，也能解决系统中潜在的威胁或违规问题。 威胁检测还具有一些内置功能，如 SQL 注入检测。 SQL 注入会企图改变或破坏数据，是攻击数据库应用程序的一种相当常见的方法。 SQL 数据库威胁检测运行多组算法，这些算法可以检测潜在漏洞和 SQL 注入攻击，以及异常的数据库访问模式（如来自异常位置或不熟悉主体的访问）。 如果在数据库中检测到威胁，安全管理人员或其他指定管理员将收到电子邮件通知。 每个通知都会提供可疑活动的详细信息，以及如何进一步调查和缓解威胁的建议。 若要了解如何启用威胁检测，请参阅：[启用 SQL 数据库威胁检测](sql-database-security-tutorial.md#enable-security-features)。
+通过[威胁检测](sql-database-threat-detection.md)，可轻松应对“审核”发现的违反安全规定和政策的行为。 即使不是安全专家，也能解决系统中潜在的威胁或违规问题。 威胁检测还具有一些内置功能，如 SQL 注入检测。 SQL 注入会企图改变或破坏数据，是攻击数据库应用程序的一种相当常见的方法。 威胁检测运行多组算法，这些算法可以检测潜在漏洞和 SQL 注入攻击，以及异常的数据库访问模式（如来自异常位置或不熟悉主体的访问）。 如果在数据库中检测到威胁，安全管理人员或其他指定管理员将收到电子邮件通知。 每个通知都会提供可疑活动的详细信息，以及如何进一步调查和缓解威胁的建议。 若要了解如何启用威胁检测，请参阅：[启用威胁检测](sql-database-security-tutorial.md#enable-security-features)。
 
 ### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>一般情况下如何保护 SQL 数据库中的数据
 
@@ -220,7 +220,7 @@ SQL 数据库符合一系列规章遵从性。 要查看符合的最新一组符
 
 ### <a name="security-optimization"></a>安全优化
 
-SQL 数据库提供可行的安全建议，帮助保护数据，威胁检测可用于识别和调查可能对数据库构成威胁的可疑数据库活动。 [SQL 漏洞评估](sql-vulnerability-assessment.md)是一项数据库扫描和报告服务，允许你大规模监视数据库的安全状态、识别安全风险以及偏离你定义的安全基线的行为。 每次扫描之后，都会提供可行步骤和修正脚本的自定义列表，还会提供可用于帮助满足符合性要求的评估报告。
+SQL 数据库提供可行的安全建议，帮助保护数据，威胁检测可用于识别和调查可能对数据库构成威胁的可疑数据库活动。 [漏洞评估](sql-vulnerability-assessment.md)是一项数据库扫描和报告服务，允许你大规模监视数据库的安全状态、识别安全风险以及偏离你定义的安全基线的行为。 每次扫描之后，都会提供可行步骤和修正脚本的自定义列表，还会提供可用于帮助满足符合性要求的评估报告。
 
 借助 Azure 安全中心，可以查看全面的安全建议，单击即可应用这些建议。
 

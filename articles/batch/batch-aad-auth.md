@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: lahugh
-ms.openlocfilehash: 574a9ae1e283a3918e316d2daa84df727d729471
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5f6e0d2dece791ac4ece73acdf2e15e3c9be412f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477585"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812833"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 服务解决方案进行身份验证
 
@@ -91,7 +91,7 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 
 若要使用集成身份验证进行验证，需要授予应用程序连接到 Batch 服务 API 的权限。 此步骤使应用程序可使用 Azure AD 对 Batch 服务 API 的调用进行验证。
 
-[注册应用程序](#register-your-application-with-an-azure-ad-tenant)后，请按照 Azure 门户中的下列步骤授予它对 Batch 服务的访问权限：
+注册了应用程序后，请按照 Azure 门户中的以下步骤来向其授予对 Batch 服务的访问权限：
 
 1. 在 Azure 门户的左侧导航窗格中，选择“所有服务”。 单击“应用注册”。
 2. 在应用注册列表中搜索应用程序名称：

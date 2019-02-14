@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: wesmc
-ms.openlocfilehash: e476ca498e4dc1b36d18927beddc812d6d803120
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 0258a37b0614ca7505a90f88afaaaee1a6d5c04e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818504"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496953"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>控制对 Azure IoT 中心设备预配服务的访问
 
@@ -34,7 +34,7 @@ ms.locfileid: "42818504"
 
 * 共享访问授权策略。 共享访问策略可以授予任意[权限](#device-provisioning-service-permissions)组合。 可在 [Azure 门户][lnk-management-portal]中定义策略，也可使用[设备预配服务 REST API][lnk-resource-provider-apis] 以编程方式进行定义。 新建的预配服务有以下默认策略：
 
-* provisioningserviceowner：包含所有权限的策略。
+* **provisioningserviceowner**：包含所有权限的策略。
 
 > [!NOTE]
 > 有关详细信息，请参阅[权限](#device-provisioning-service-permissions)。
@@ -75,18 +75,18 @@ SharedAccessSignature sr =
 
 以下是预期值：
 
-| 值 | Description |
+| 值 | 说明 |
 | --- | --- |
 | {signature} |HMAC-SHA256 签名字符串的格式为：`{URL-encoded-resourceURI} + "\n" + expiry`。 **重要说明**：密钥是从 base64 解码得出的，用作执行 HMAC-SHA256 计算的密钥。|
 | {expiry} |从纪元 1970 年 1 月 1日 00:00:00 UTC 时间至今秒数的 UTF8 字符串。 |
 | {URL-encoded-resourceURI} | 小写资源 URI 的小写 URL 编码。 此令牌可访问的终结点的 URI 前缀（按分段），以 IoT 设备预配服务的主机名开头（无协议）。 例如，`mydps.azure-devices-provisioning.net`。 |
 | {policyName} |此令牌所引用的共享访问策略名称。 |
 
-**有关前缀的说明**：URI 前缀是根据分段而不是字符计算的。 例如，`/a/b` 是 `/a/b/c` 的前缀，而不是 `/a/bc` 的前缀。
+**有关前缀的说明**：URI 前缀是按分段而不是按字符计算的。 例如，`/a/b` 是 `/a/b/c` 的前缀，而不是 `/a/bc` 的前缀。
 
 以下 Node.js 代码片段显示名为 **generateSasToken** 的函数，该函数通过输入 `resourceUri, signingKey, policyName, expiresInMins` 计算令牌。 以下各节将详细讲解如何初始化不同令牌用例的不同输入。
 
-```nodejs
+```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
     resourceUri = encodeURIComponent(resourceUri);
 
@@ -157,7 +157,7 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 
 ![在门户中为设备预配服务实例创建共享访问策略][img-add-shared-access-policy]
 
-```nodejs
+```javascript
 var endpoint ="mydps.azure-devices-provisioning.net";
 var policyName = 'enrollmentread'; 
 var policyKey = '...';

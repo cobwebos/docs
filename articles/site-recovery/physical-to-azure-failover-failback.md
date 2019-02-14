@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: d105968d13960409a60e2fde9c811a042f444d8f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4e787ab134caee1a7f9a26e46f698f2fe9807d83
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848623"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813666"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>对复制到 Azure 的物理服务器进行故障转移和故障回复
 
@@ -36,7 +36,7 @@ ms.locfileid: "52848623"
 1. 在“受保护的项”中，单击“复制的项”，并选择计算机。
 
 2. “复制的项”窗格中具有计算机信息、运行状况状态和最新可用恢复点的摘要。 单击“属性”可查看更多详细信息。
-3. 在“计算和网络”中，可修改 Azure 名称、资源组、目标大小、[可用性集](../virtual-machines/windows/tutorial-availability-sets.md)和[托管的磁盘设置](#managed-disk-considerations)
+3. 在“计算和网络”中，可以修改 Azure 名称、资源组、目标大小、[可用性集](../virtual-machines/windows/tutorial-availability-sets.md)和托管磁盘设置
 4. 可查看和修改网络设置，包括在运行故障转移后 Azure VM 所在的网络/子网，以及将分配给它的 IP 地址。
 5. 在“磁盘”中，可以看到有关计算机操作系统和数据磁盘的信息。
 

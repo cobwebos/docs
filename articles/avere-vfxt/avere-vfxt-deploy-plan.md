@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: e60c92c22382112558307062afdeb87e08075765
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: a097110bac7dad630f9a85dd8b20678db0c739cf
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298919"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744650"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>规划 Avere vFXT 系统
 
@@ -37,6 +37,9 @@ ms.locfileid: "55298919"
 * 将客户端计算系统定位在靠近 vFXT 群集的位置。 后端存储可以位于较远的位置。  
 
 * 为方便起见，请将 vFXT 群集和群集控制器 VM 定位在同一虚拟网络 (VNet) 和同一资源组中。 它们还应该使用相同的存储帐户。 （群集控制器创建群集，并且还可用于群集命令行管理。）  
+
+  > [!NOTE] 
+  > 群集创建模板可以为群集创建新的资源组和新的存储帐户。 可以指定现有资源组，但该资源组必须为空。
 
 * 群集必须位于其自身的子网中，以避免与客户端或计算资源发生 IP 地址冲突。 
 
@@ -117,7 +120,7 @@ Avere vFXT for Azure 群集位于专用子网中，并且该群集没有公用 I
 
 如果你在群集控制器上设置了公用 IP 地址，则可以使用它作为跳转主机来从专用子网外部联系 Avere vFXT 群集。 但是，因为控制器有权修改群集节点，这会带来小小的安全风险。  
 
-为了提高具有公用 IP 地址时的安全性，请使用一个网络安全组来仅允许通过端口 22 进行的入站访问。
+为了提高具有公用 IP 地址时的安全性，请使用一个网络安全组来仅允许通过端口 22 进行的入站访问。 （可选）可以通过锁定对 IP 源地址范围的访问来进一步保护系统，换句话说，只允许从你打算将其用于群集访问的计算机进行连接。
 
 创建群集时，可以选择是否在群集控制器上创建公用 IP 地址。 
 

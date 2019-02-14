@@ -4,7 +4,7 @@ description: 本文档介绍了如何在 Azure 安全中心创建自定义警报
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: f335d8c4-0234-4304-b386-6f1ecda07833
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 48fcaca94e2a71ace66e5ea2d3e905962a9ced42
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5af778ff23c9b3f9188ac2e7b38767e4693f64a1
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956272"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107610"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Azure 安全中心的自定义警报规则（预览版）
 本文档介绍了如何在 Azure 安全中心创建自定义警报规则。

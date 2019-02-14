@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: d83a27d87ffadd15a27196a11ae3f69d84232efa
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 555083235aff08476e82f0daa81203b66591f3cc
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719587"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245943"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>通过 Azure 逻辑应用保护对自定义 API 的调用
 
@@ -94,13 +94,15 @@ ms.locfileid: "53719587"
 
 **在 PowerShell 中为逻辑应用创建应用程序标识**
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 可使用 PowerShell 通过 Azure 资源管理器执行此任务。 在 PowerShell 中运行以下命令：
 
-1. `Add-AzureRmAccount`
+1. `Add-AzAccount`
 
 2. `$SecurePassword = Read-Host -AsSecureString`（输入密码，然后按 Enter）
 
-3. `New-AzureRmADApplication -DisplayName "MyLogicAppID" -HomePage "http://mydomain.tld" -IdentifierUris "http://mydomain.tld" -Password $SecurePassword`
+3. `New-AzADApplication -DisplayName "MyLogicAppID" -HomePage "http://mydomain.tld" -IdentifierUris "http://mydomain.tld" -Password $SecurePassword`
 
 4. 请务必复制所使用的“租户 ID”（Azure AD 租户的 GUID）、“应用程序 ID”和密码。
 
@@ -186,7 +188,7 @@ ms.locfileid: "53719587"
 
 `{"tenant": "{tenant-ID}", "audience": "{client-ID-from-Part-2-web-app-or-API app}", "clientId": "{client-ID-from-Part-1-logic-app}", "secret": "{key-from-Part-1-logic-app}", "type": "ActiveDirectoryOAuth" }`
 
-| 元素 | 必选 | Description | 
+| 元素 | 必选 | 说明 | 
 | ------- | -------- | ----------- | 
 | tenant | 是 | Azure AD 租户的 GUID | 
 | audience | 是 | 想要访问的目标资源的 GUID - Web 应用或 API 应用的应用程序标识中的客户端 ID | 
@@ -232,7 +234,7 @@ ms.locfileid: "53719587"
 
 `{"type": "clientcertificate", "password": "password", "pfx": "long-pfx-key"}`
 
-| 元素 | 必选 | Description | 
+| 元素 | 必选 | 说明 | 
 | ------- | -------- | ----------- | 
 | type | 是 | 身份验证类型。 对于 SSL 客户端证书，该值必须为 `ClientCertificate`。 | 
 | password | 是 | 用于访问客户端证书（PFX 文件）的密码 | 
@@ -249,7 +251,7 @@ ms.locfileid: "53719587"
 
 `{"type": "basic", "username": "username", "password": "password"}`。
 
-| 元素 | 必选 | Description | 
+| 元素 | 必选 | 说明 | 
 | ------- | -------- | ----------- | 
 | type | 是 | 要使用的身份验证类型。 对于基本身份验证，该值必须是 `Basic`。 | 
 | username | 是 | 要用于身份验证的用户名 | 

@@ -1,8 +1,21 @@
 ---
-title:对机器学习工作室经典 Web 服务重新训练进行故障排除 titleSuffix:Azure 机器学习工作室 description:确定并更正重新训练 Azure 机器学习工作室 Web 服务的模型时遇到的常见问题。
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date:2017/11/01
+title: 对机器学习工作室经典 Web 服务重新训练进行故障排除
+titleSuffix: Azure Machine Learning Studio
+description: 确定并更正重新训练 Azure 机器学习工作室 Web 服务的模型时遇到的常见问题。
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.date: 11/01/2017
+ms.openlocfilehash: 6cde9d929c52984c95669554aa1153c2bdf21131
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512136"
 ---
 # <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-studio-classic-web-service"></a>对 Azure 机器学习工作室经典 Web 服务重新训练进行故障排除
 ## <a name="retraining-overview"></a>重新训练概述

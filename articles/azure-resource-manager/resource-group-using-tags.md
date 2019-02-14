@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: aa3cd0305c1ac2db269dcc46243ec3da1232e6f6
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: ad8a01ecccd7af15686c449b17cd5f014450b015
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079522"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734430"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>使用标记整理 Azure 资源
 
@@ -29,9 +29,15 @@ ms.locfileid: "55079522"
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
+## <a name="policies"></a>策略
+
+可以使用 [Azure 策略](../governance/policy/overview.md)来强制实施标记规则和约定。 通过创建策略，可以避免将与预期的组织标记不相符的资源部署到订阅。 无需手动应用标记或搜索不符合的资源，可以创建一个策略，在部署期间自动应用所需标记。 以下部分展示标记策略示例。
+
+[!INCLUDE [Tag policies](../../includes/azure-policy-samples-general-tags.md)]
+
 ## <a name="powershell"></a>PowerShell
 
-本文中的示例需要版本 6.0 或更高版本的 Azure PowerShell。 如果没有版本 6.0 或更高版本，请[更新版本](/powershell/azure/install-az-ps)。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 若要查看*资源组*的现有标记，请使用：
 
@@ -273,5 +279,4 @@ Azure 门户和 PowerShell 均在后台使用[资源管理器 REST API](https://
 ## <a name="next-steps"></a>后续步骤
 
 * 并非所有资源类型都支持标记。 若要确定是否可以将标记应用到资源类型，请参阅 [Azure 资源的标记支持](tag-support.md)。
-* 可使用自定义策略对订阅应用限制和约定。 定义的策略可能要求所有资源具有特定标记的值。 有关详细信息，请参阅[什么是 Azure Policy？](../azure-policy/azure-policy-introduction.md)
 * 有关使用门户的说明，请参阅[使用 Azure 门户管理 Azure 资源](resource-group-portal.md)。  

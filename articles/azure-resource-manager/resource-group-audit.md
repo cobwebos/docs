@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: b702b6de5c9f33058e9b486547530d071969bd97
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 70f6f8a7837b9e87b2720a866f14983356d23691
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855375"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487670"
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>查看活动日志以审核对资源的操作
 
@@ -35,7 +35,10 @@ ms.locfileid: "54855375"
 
 可以通过门户、PowerShell、Azure CLI、Insights REST API 或 [Insights .NET 库](https://www.nuget.org/packages/Microsoft.Azure.Insights/)检索活动日志中的信息。
 
-## <a name="portal"></a>门户
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+## <a name="the-azure-portal"></a>Azure 门户
 
 1. 若要通过门户查看活动日志，请选择“监视”。
 
@@ -71,52 +74,52 @@ ms.locfileid: "54855375"
 
 ## <a name="powershell"></a>PowerShell
 
-* 若要检索日志条目，请运行 **Get-AzureRmLog** 命令。 可以提供附加参数来筛选条目列表。 如果未指定开始和结束时间，将返回最后七天的条目。
+* 若要检索日志条目，请运行 **Get-AzLog** 命令。 可以提供附加参数来筛选条目列表。 如果未指定开始和结束时间，将返回最后七天的条目。
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup ExampleGroup
+  Get-AzLog -ResourceGroup ExampleGroup
   ```
 
     以下示例演示了如何使用活动日志来调查在指定时间内执行的操作。 开始日期和结束日期以日期格式指定。
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2019-01-09T06:00 -EndTime 2019-01-15T06:00
+  Get-AzLog -ResourceGroup ExampleGroup -StartTime 2019-01-09T06:00 -EndTime 2019-01-15T06:00
   ```
 
     或者，可以使用 date 函数来指定日期范围，例如过去 14 天。
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
+  Get-AzLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
   ```
 
 * 可以查看特定用户针对某个资源组执行的操作，即使该资源组不再存在。
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup deletedgroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
+  Get-AzLog -ResourceGroup deletedgroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
   ```
 
 * 可以筛选失败的操作。
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup ExampleGroup -Status Failed
+  Get-AzLog -ResourceGroup ExampleGroup -Status Failed
   ```
 
 * 可以专注于一个错误，只需查看该条目的状态消息即可。
 
   ```azurepowershell-interactive
-  ((Get-AzureRmLog -ResourceGroup ExampleGroup -Status Failed).Properties[0].Content.statusMessage | ConvertFrom-Json).error
+  ((Get-AzLog -ResourceGroup ExampleGroup -Status Failed).Properties[0].Content.statusMessage | ConvertFrom-Json).error
   ```
 
 * 可以选择特定值来限制返回的数据。
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroupName ExampleGroup | Format-table EventTimeStamp, Caller, @{n='Operation'; e={$_.OperationName.value}}, @{n='Status'; e={$_.Status.value}}, @{n='SubStatus'; e={$_.SubStatus.LocalizedValue}}
+  Get-AzLog -ResourceGroupName ExampleGroup | Format-table EventTimeStamp, Caller, @{n='Operation'; e={$_.OperationName.value}}, @{n='Status'; e={$_.Status.value}}, @{n='SubStatus'; e={$_.SubStatus.LocalizedValue}}
   ```
 
 * 根据指定的开始时间，前面的命令可能会返回对该资源组执行的一长串操作。 可以提供搜索条件，以筛选所要查找的结果。 例如，可以按操作类型进行筛选。
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup ExampleGroup | Where-Object {$_.OperationName.value -eq "Microsoft.Resources/deployments/write"}
+  Get-AzLog -ResourceGroup ExampleGroup | Where-Object {$_.OperationName.value -eq "Microsoft.Resources/deployments/write"}
   ```
 
 ## <a name="azure-cli"></a>Azure CLI

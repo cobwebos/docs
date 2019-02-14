@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: bbbcc1b3b505aae4bcc6869359ca27a8cd3fd1be
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: edebd2efda7d8217c9b554f2d1f54135203502cb
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638098"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821552"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>使用 Azure CLI 从自定义磁盘创建 Linux VM
 
@@ -31,8 +31,8 @@ ms.locfileid: "49638098"
 若要从自定义磁盘创建多个 VM，请先从 VM 或 VHD 创建映像。 有关详细信息，请参阅[使用 CLI 创建 Azure VM 的自定义映像](tutorial-custom-images.md)。
 
 可使用两个选项创建自定义磁盘：
-* [上传 VHD](#option-1-upload-a-specialized-vhd)
-* [复制现有的 Azure VM](#option-2-copy-an-existing-azure-vm)
+* 上传 VHD
+* 复制现有的 Azure VM
 
 ## <a name="quick-commands"></a>快速命令
 
@@ -73,7 +73,7 @@ Azure 支持各种 Linux 分发（请参阅 [Endorsed Distributions](endorsed-di
 * [Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [SLES 和 openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [其他：非认可分发版](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [其他：非认可的分发版](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 另请参阅 [Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)，获取更多有关如何为 Azure 准备 Linux 映像的一般提示。
 
@@ -100,7 +100,7 @@ az group create \
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
-可以使用 [az storage account create](/cli/azure/storage/account#az-storageaccount-create) 为自定义磁盘和 VM 创建存储帐户。 以下示例在前面创建的资源组中创建名为 *mystorageaccount* 的存储帐户：
+可以使用 [az storage account create](/cli/azure/storage/account) 为自定义磁盘和 VM 创建存储帐户。 以下示例在前面创建的资源组中创建名为 *mystorageaccount* 的存储帐户：
 
 ```azurecli
 az storage account create \
@@ -172,7 +172,7 @@ az disk create \
     --name myManagedDisk \
   --source https://mystorageaccount.blob.core.windows.net/mydisks/myDisk.vhd
 ```
-## <a name="option-2-copy-an-existing-vm"></a>选项 2：复制现有 VM
+## <a name="option-2-copy-an-existing-vm"></a>选项 2：复制现有的 VM
 
 也可以在 Azure 中创建自定义的 VM，然后复制 OS 磁盘并将其附加到新 VM 以创建另一个副本。 这种做法在测试中不会有任何问题，但若要将现有 Azure VM 作为多个新 VM 的模型，请改为创建映像。 有关从现有 Azure VM 创建映像的详细信息，请参阅[使用 CLI 创建 Azure VM 的自定义映像](tutorial-custom-images.md)。
 

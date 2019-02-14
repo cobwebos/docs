@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/15/2018
 ms.author: mihauss
 ms.subservice: blobs
-ms.openlocfilehash: e78b1f94338f177601b1e93fcc7974a228be062b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 08d51b1b6a09bb4df3986bd8c4c44d3834882def
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239978"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506118"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure 存储 Blob 的软删除
 Azure 存储现提供 Blob 对象软删除，目的是为了在应用程序或其他存储帐户用户错误地修改或删除数据后可以更轻松地恢复数据。
@@ -41,7 +41,7 @@ Azure 存储现提供 Blob 对象软删除，目的是为了在应用程序或�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-overwrite.png)
 
-软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。使用 B1 覆盖 B0 时会生成 B0 的软删除快照。使用 B2 覆盖 B1 时会生成 B1 的软删除快照*。
+软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。使用 B1 覆盖 B0 时会生成 B0 的软删除快照。使用 B2 覆盖 B1 时会生成 B1 的软删除快照。
 
 > [!NOTE]  
 > 对目标 blob 的帐户启用软删除时，软删除仅对复制操作提供覆盖保护。
@@ -59,7 +59,7 @@ Azure 存储现提供 Blob 对象软删除，目的是为了在应用程序或�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-include.png)
 
-软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。此处调用了“删除 Blob”来删除 B2 和所有相关快照 。活动 blob B2 和所有相关快照均被标记为软删除*。
+软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。此处调用了“删除 Blob”来删除 B2 和所有相关快照 。活动 blob B2 和所有相关快照均被标记为软删除。
 
 > [!NOTE]  
 > 覆盖软删除 blob 时，将自动生成写入操作前 blob 状态的软删除快照。 新 blob 将继承被覆盖 blob 的层级。
@@ -322,4 +322,4 @@ blockBlob.StartCopy(copySource);
 * [Blob 服务 REST API](/rest/api/storageservices/blob-service-rest-api)
 * [Azure 存储复制](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [使用 RA-GRS 设计高度可用的应用程序](../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [在 Azure 存储中断时该怎么办](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Azure 存储中的灾难恢复和存储帐户故障转移（预览版）](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

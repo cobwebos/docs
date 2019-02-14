@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: jeedes
-ms.openlocfilehash: ed5107d581c880d130901bfb31d34afb9e986635
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ec8085d2d3ac4cc338ab9c0c36eec481a5d4fbc9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190082"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200337"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>教程：Azure Active Directory 与 TextMagic 的集成
 

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0eb5941bfecc023429556434a45460c8727056ec
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: bc91b052d3d69924af9afeb012c0ebb5be01dfbf
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300177"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745548"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>管理 Avere vFXT 群集
 
@@ -202,7 +202,7 @@ Azure 门户可用于执行以下群集管理任务：
 
 ### <a name="delete-a-clusters-resource-group-from-the-azure-portal"></a>通过 Azure 门户删除群集资源组
 
-如果创建了专用于群集的资源组，则可通过销毁资源组来销毁群集的所有相关资源。 
+如果创建了专用于容纳群集的资源组，则可通过销毁资源组来销毁群集的所有相关资源。 
 
 > [!Caution] 
 > 只有在确定组中没有任何有价值的内容时方可销毁资源组。 例如，确保已从资源组的所有存储容器中移出了所需数据。  

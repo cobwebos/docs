@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 6466dc1ec0dcaae6045fadfae7f3a552345be2e8
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c0a86b76622862b477d539c25dd98c925f09192c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267278"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812032"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>部署 StorSimple 虚拟阵列 - 通过 Azure 门户设置为 iSCSI 服务器
 
@@ -44,7 +44,7 @@ ms.locfileid: "54267278"
 使用以下分步说明设置和配置 StorSimple 虚拟阵列：
 
 * [步骤 1：完成本地 Web UI 设置并注册设备](#step-1-complete-the-local-web-ui-setup-and-register-your-device)
-* [步骤 2：完成所需的设备设置](#step-2-complete-the-required-device-setup)
+* 步骤 2：完成所需的设备设置
 * [步骤 3：添加卷](#step-3-add-a-volume)
 * [步骤 4：装载、初始化和格式化卷](#step-4-mount-initialize-and-format-a-volume)
 

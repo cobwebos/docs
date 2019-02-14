@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: bd9df4553a50f162a4fb2142b7085f813311754f
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 77eaa6a642e02206eac319b76666bed8ae1fd165
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015825"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822419"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>使用数据管理网关在本地源与云之间移动数据
 > [!NOTE]
@@ -172,7 +172,7 @@ ms.locfileid: "54015825"
       4. 在“设置凭据”对话框中，指定身份验证类型、用户名和密码，并单击“确定”。 如果连接成功，则加密的凭据将存储在 JSON 中，并且对话框将关闭。
       5. 如果启动对话框的空浏览器选项卡未自动关闭，则关闭该选项卡，并通过 Azure 门户返回到该选项卡。
 
-         在网关计算机上，这些凭据使用数据工厂服务拥有的证书进行“加密”。 如果想要改用与数据管理网关相关联的证书，请参阅[安全地设置凭据](#set-credentials-and-security)。    
+         在网关计算机上，这些凭据使用数据工厂服务拥有的证书进行“加密”。 如果想要改用与数据管理网关相关联的证书，请参阅安全地设置凭据。    
    3. 单击命令栏上的“部署”，部署 SQL Server 链接服务。 可在树视图中看到链接服务。
 
       ![树视图中的 SQL Server 链接服务](./media/data-factory-move-data-between-onprem-and-cloud/sql-linked-service-in-tree-view.png)    

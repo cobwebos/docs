@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 02/10/2019
 ms.author: adsolank
-ms.openlocfilehash: 3b361202d2d80f879ae6d23ec29782bc6f837f96
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: c3ef977e7e8742f4d6de0f85d2d1684aa7eaa887
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632868"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993752"
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Hyperlapse 媒体文件与 Azure Media Hyperlapse
 
@@ -41,7 +41,7 @@ Azure Media Hyperlapse 作业接受输入 MP4、MOV 或 WMV 资产文件以及�
 ### <a id="configuration"></a>Hyperlapse 的配置预设
 将内容上传到媒体服务帐户后，需要构造配置预设。  下表说明了用户指定的字段：
 
-| 字段 | Description |
+| 字段 | 说明 |
 | --- | --- |
 | StartFrame |开始 Microsoft Hyperlapse 处理时所在的帧。 |
 | NumFrames |要处理的帧数 |

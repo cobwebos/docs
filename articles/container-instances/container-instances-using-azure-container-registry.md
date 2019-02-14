@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 33cf6650de757f538dcefc858c94fa71b434ec80
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: f577a7dd9f517be6ab7b632a82227e4807862ba5
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064638"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727902"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>从 Azure 容器注册表部署到 Azure 容器实例
 
@@ -29,7 +29,7 @@ ms.locfileid: "54064638"
 
 在任意生产方案中，应使用[服务主体](../container-registry/container-registry-auth-service-principal.md)提供对 Azure 容器注册表的访问权限。 使用服务主体可以提供对容器映像的[基于角色的访问控制](../container-registry/container-registry-roles.md)。 例如，可将服务主体配置为拥有注册表的仅限提取的访问权限。
 
-在本部分，我们将创建一个 Azure Key Vault 和一个服务主体，并将服务主体的凭据存储在保管库中。
+在以下部分中，将创建一个 Azure 密钥保管库和一个服务主体，并将服务主体的凭据存储在保管库中。 
 
 ### <a name="create-key-vault"></a>创建 Key Vault
 
@@ -134,9 +134,11 @@ $ az container create --name aci-demo --resource-group $RES_GROUP --image $ACR_L
 
 ## <a name="deploy-with-azure-portal"></a>使用 Azure 门户仅部署
 
-如果在 Azure 容器注册表中维护容器映像，可通过 Azure 门户在 Azure 容器实例中轻松创建容器。
+如果在 Azure 容器注册表中维护容器映像，可通过 Azure 门户在 Azure 容器实例中轻松创建容器。 使用门户从容器注册表部署容器实例时，必须启用注册表的[管理员帐户](../container-registry/container-registry-authentication.md#admin-account)。 管理员帐户专门用于单个用户访问注册表，主要用于测试目的。 
 
 1. 在 Azure 门户中，导航到容器注册表。
+
+1. 若要确保启用管理员帐户，请选择“访问密钥”，然后在“管理员用户”下选择“启用”。
 
 1. 选择“存储库”，然后选择想要从中进行部署的存储库，右键单击想要部署的容器映像的标记，然后选择“运行实例”。
 

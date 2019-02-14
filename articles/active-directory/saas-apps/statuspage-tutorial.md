@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: c3532ff5422ae35aa6bb079fcedf3a2a90d45349
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 77de3e554e20b5380656e33bd15c9174a1f36681
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181565"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734277"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>教程：Azure Active Directory 与 StatusPage 集成
 
@@ -222,7 +222,7 @@ StatusPage 支持实时预配。 已在[配置 Azure AD 单一登录](#configuri
    
     ![创建 Azure AD 测试用户](./media/statuspage-tutorial/tutorial_statuspage_11.png) 
 
-1. 在相关文本框中，键入要预配的有效用户的“电子邮件地址”、“名字”和“姓氏”。 
+1. 在相关文本框中键入要预配的有效用户的“电子邮件地址”、“名字”和“姓氏”。 
    
     ![创建 Azure AD 测试用户](./media/statuspage-tutorial/tutorial_statuspage_12.png) 
 

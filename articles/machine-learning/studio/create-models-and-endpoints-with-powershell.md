@@ -1,8 +1,21 @@
 ---
-title:从一个工作室实验中创建多个模型 titleSuffix:Azure 机器学习工作室 description:使用 PowerShell 创建多个具有相同算法和不同训练数据集的机器学习模型和 Web 服务终结点。
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:2017/04/04
+title: 从一个工作室实验中创建多个模型
+titleSuffix: Azure Machine Learning Studio
+description: 使用 PowerShell 创建多个具有相同算法和不同训练数据集的机器学习模型和 Web 服务终结点。
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 04/04/2017
+ms.openlocfilehash: 43d16c291391a3ffd94f404755e644dac0daf3a9
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492821"
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>使用 PowerShell 从一个试验创建多个工作室模型和 Web 服务终结点
 

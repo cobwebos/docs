@@ -8,19 +8,20 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: f1bc0112-315c-4e6f-8c69-7c6873007bcf
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: faa89ffd572733c580235b1c6dec58893de20503
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c6ae478a80c72834900b0e421ce02905e5657ef6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449615"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188794"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-formcom"></a>教程：Azure Active Directory 与 Form.com 集成
 
@@ -123,11 +124,11 @@ ms.locfileid: "39449615"
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、回复 URL 和标识符更新这些值。 请联系 [Form.com 客户端支持团队](https://form.com/about/company/contact-us/)获取这些值。
 
-1. 在“SAML 签名证书”部分中执行以下步骤：
+1. 在“SAML 签名证书” 部分中执行以下步骤 ****：
     
     ![配置单一登录](./media/formcom-tutorial/tutorial_metadataurl.png)
 
-    a. 单击“复制”按钮，复制**应用联合元数据 URL** 并将其粘贴到记事本。
+    a. 单击“复制”按钮，复制 **应用联合元数据 URL**  并将其粘贴到记事本。
 
     b. 单击“证书(Base64)”，并在计算机上保存证书文件。
      
@@ -212,12 +213,12 @@ ms.locfileid: "39449615"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Form.com 磁贴时，应自动登录到 Form.com 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

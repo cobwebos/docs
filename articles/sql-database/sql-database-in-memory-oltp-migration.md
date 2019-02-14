@@ -11,15 +11,16 @@ author: jodebrui
 ms.author: jodebrui
 ms.reviewer: MightyPen
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 4455e0c0f31c9026526820b50214efb83720da0d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/07/2018
+ms.openlocfilehash: fbe05186b317d3c24dca55197c2989155b5543bd
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228039"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565915"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>使用内存中 OLTP 改善 SQL 数据库中的应用程序性能
+
 [内存中 OLTP](sql-database-in-memory.md) 可以用来改善[高级和业务关键层](sql-database-service-tiers-vcore.md)数据库中事务处理、数据引入和暂时性数据方案的性能，而不需要提高定价层。 
 
 > [!NOTE] 
@@ -29,6 +30,7 @@ ms.locfileid: "51228039"
 请按照以下步骤在现有数据库中采用内存中 OLTP。
 
 ## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>步骤 1：确保使用的是高级和业务关键层数据库
+
 只有高级和业务关键层数据库才支持内存中 OLTP。 如果返回的结果为 1（不是 0），则支持 In-Memory：
 
 ```

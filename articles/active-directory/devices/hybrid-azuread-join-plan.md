@@ -16,12 +16,13 @@ ms.topic: article
 ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: be66f24ec6532b93c4554568b0a58d467a09c600
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 17b7f7fa4889742989a61f8cc076224d46f8eac2
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746415"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234096"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入实现
 
@@ -145,7 +146,7 @@ Windows 下层设备的混合 Azure AD 加入：
 - [为托管域配置混合 Azure Active Directory 加入](hybrid-azuread-join-managed-domains.md)
 
 
- 如果无法安装所需版本的 Azure AD Connect，请参阅[如何手动配置设备注册](https://docs.microsoft.com/en-us/azure/active-directory/devices/hybrid-azuread-join-manual)。 
+ 如果无法安装所需版本的 Azure AD Connect，请参阅[如何手动配置设备注册](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual)。 
 
 
 ## <a name="on-premises-ad-upn-support-in-hybrid-azure-ad-join"></a>混合 Azure AD 加入中的本地 AD UPN 支持

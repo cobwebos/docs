@@ -4,21 +4,21 @@ description: Azure 媒体动作检测器媒体处理器 (MP) 可让你在冗长�
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 02/10/2019
 ms.author: milanga;juliako;
-ms.openlocfilehash: 12af87ab0a8b15528acbd9ce8a1bc92f478aba28
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 26090067923c468b7102ac5b7bb78b9d7b7960bb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820965"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995606"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>使用 Azure 媒体分析检测动作
 ## <a name="overview"></a>概述
@@ -39,7 +39,7 @@ ms.locfileid: "54820965"
 ### <a name="parameters"></a>parameters
 可以使用以下参数：
 
-| 名称 | 选项 | 说明 | 默认 |
+| Name | 选项 | 说明 | 默认 |
 | --- | --- | --- | --- |
 | sensitivityLevel |字符串：'low'、'medium'、'high' |设置报告动作情况的敏感度级别。 调整此项是为了调整误报数量。 |'medium' |
 | frameSamplingValue |正整数 |设置算法的运行频率。 1 等于每个帧，2 是指每 2 个帧，如此类推。 |1 |
@@ -103,7 +103,7 @@ ms.locfileid: "54820965"
 | Duration |事件的长度（以“刻度”为单位）。 |
 | 时间间隔 |事件中每个条目的间隔（以“刻度”为单位）。 |
 | 活动 |每个事件片段包含在该持续时间内检测到的动作。 |
-| 类型 |在当前版本中，对于一般动作，该属性始终为“2”。 此标签可让视频 API 在将来的版本中灵活地为动作分类。 |
+| Type |在当前版本中，对于一般动作，该属性始终为“2”。 此标签可让视频 API 在将来的版本中灵活地为动作分类。 |
 | RegionID |如上所述，在此版本中此属性始终为 0。 此标签可让视频 API 在将来的版本中灵活地查找各区域中的动作。 |
 | 区域 |表示你关注的动作在视频中的区域。 <br/><br/>-“id”表示区域面积 - 且在此版本中只有一个，ID 0。 <br/>#NAME? 目前支持“rectangle”和“polygon”。<br/> 如果指定了 "rectangle"，则区域具有以 X、Y、宽度及高度表示的维。 X 和 Y 坐标表示规范化 0.0 到 1.0 比例中的区域的左上角 XY 坐标。 宽度和高度表示规范化 0.0 到 1.0 比例中的区域的大小。 在当前版本中，X、Y、宽度和高度始终固定为 0、0、1、1。 <br/>如果指定了“polygon”，则区域的维度以点来表示。 <br/> |
 | Fragments |元数据划分成称为“片段”的不同段。 每个片段包含开始时间、持续时间、间隔数字和事件。 没有事件的片段表示在该开始时间和持续时间内没有检测到任何动作。 |

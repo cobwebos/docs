@@ -1,8 +1,21 @@
 ---
-title:调试模型 titleSuffix:Azure 机器学习工作室 description:如何在 Azure 机器学习工作室中调试“训练模型”和“评分模型”模块生成的错误。
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:2017/03/14
+title: 调试模型
+titleSuffix: Azure Machine Learning Studio
+description: 如何在 Azure 机器学习工作室中调试“训练模型”和“评分模型”模块生成的错误。
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 03/14/2017
+ms.openlocfilehash: a6708a1c414277cd4ee9b90851e19a94ea86c55b
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491665"
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中调试模型
 

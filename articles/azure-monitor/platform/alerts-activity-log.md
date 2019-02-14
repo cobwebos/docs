@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: 6d0c8f62d109d07a9f08e5190a5a2caa0d66a0c1
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 2b90457ed939999b5163078750650c92a3516cca
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579322"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816571"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理活动日志警报  
 
@@ -93,7 +93,7 @@ ms.locfileid: "53579322"
 
     随即为活动日志创建了新的警报规则，同时，窗口的右上角会显示一条确认消息。
 
-    可以启用、禁用、编辑或删除规则。 [详细了解](#view-and-manage-activity-log-alert-rules-in-azure-portal)如何管理活动日志规则。
+    可以启用、禁用、编辑或删除规则。 详细了解如何管理活动日志规则。
 
 
 另外，可以通过简单的类比来理解在活动日志上创建警报规则时可以基于的条件，那就是通过 [Azure 门户中的活动日志](../../azure-monitor/platform/activity-logs-overview.md#query-the-activity-log-in-the-azure-portal)浏览或筛选事件。 在 Azure Monitor - 活动日志中，可以筛选或查找所需的事件，然后使用“添加活动日志警报”按钮创建警报，然后按照教程中上文所述的步骤 4 继续前进。
@@ -203,14 +203,14 @@ ms.locfileid: "53579322"
 [Azure Monitor - 活动日志警报 API](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) 是一个 REST API 并且与 Azure 资源管理器 REST API 完全兼容。 因此，可以使用资源管理器 cmdlet 和 Azure CLI 通过 Powershell 使用它。
 
 ## <a name="powershell"></a>PowerShell
-下面展示了之前在[资源模板部分](#manage-alert-rules-for-activity-log-using-azure-resource-template)中显示的示例资源模板 (sampleActivityLogAlert.json) 通过 Azure 资源管理器 PowerShell cmdlet 进行使用的情况：
+下面展示了之前在资源模板部分中显示的示例资源模板 (sampleActivityLogAlert.json) 通过 Azure 资源管理器 PowerShell cmdlet 进行使用的情况：
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActivityLogAlert.json -TemplateParameterFile sampleActivityLogAlert.parameters.json
 ```
 其中，sampleActivityLogAlert.parameters.json 包含为创建警报规则时所需的参数提供的值。
 
 ## <a name="cli"></a>CLI
-下面展示了之前在[资源模板部分](#manage-alert-rules-for-activity-log-using-azure-resource-template)中显示的示例资源模板 (sampleActivityLogAlert.json) 通过 Azure CLI 中的 Azure 资源管理器命令进行使用的情况：
+下面展示了之前在资源模板部分中显示的示例资源模板 (sampleActivityLogAlert.json) 通过 Azure CLI 中的 Azure 资源管理器命令进行使用的情况：
 
 ```azurecli
 az group deployment create --resource-group myRG --template-file sampleActivityLogAlert.json --parameters @sampleActivityLogAlert.parameters.json

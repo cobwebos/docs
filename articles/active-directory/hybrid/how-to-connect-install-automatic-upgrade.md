@@ -15,12 +15,13 @@ ms.workload: identity
 ms.date: 09/26/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4ebc0357c2a0af29aa6c91bae69d45f808d6fe7d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6083237426e86220f8a3cb7fbe0cdfc30f44f8cc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488641"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208820"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自动升级
 此功能是随内部版本 [1.1.105.0（于 2016 年 2 月发布）](reference-connect-version-history.md#111050)一起推出的。  此功能已在[内部版本 1.1.561](reference-connect-version-history.md#115610) 中更新，现在支持以前不支持的其他方案。

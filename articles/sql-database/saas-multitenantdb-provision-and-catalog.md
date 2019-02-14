@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: e37bc5f46a1a56357e3dff9d1f67de7dcc2537b0
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 09/24/2018
+ms.openlocfilehash: fd420e29387aedd3f04fdf7437a3ef27c5589fc8
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055299"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562889"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>在使用分片多租户 Azure SQL 数据库的 SaaS 应用程序中预配和编录新租户
 
@@ -28,7 +28,7 @@ ms.locfileid: "47055299"
 - 有关新租户预配和编录的[概念介绍](#goto_2_conceptual)。
 
 - 重点介绍如何使用 PowerShell 脚本代码实现预配和编录的[教程](#goto_1_tutorial)。
-    - 该教程使用能够适应多租户分片数据库模式的 Wingtip Tickets SaaS 应用程序。
+  - 该教程使用能够适应多租户分片数据库模式的 Wingtip Tickets SaaS 应用程序。
 
 <a name="goto_2_conceptual"/>
 
@@ -145,10 +145,10 @@ ms.locfileid: "47055299"
 
 - **计算新租户密钥**：哈希函数用于从租户名称创建租户密钥。
 - **检查租户密钥是否已存在**：检查目录，确保尚未注册密钥。
-- **初始化默认租户数据库中的租户**：更新租户数据库，以添加新租户信息。  
+- **初始化默认租户数据库中的租户**：更新租户数据库，添加新租户信息。  
 - **在目录中注册租户**：新租户密钥和现有 tenants1 数据库之间的映射将添加到目录中。 
-- **将租户的名称添加到目录扩展表**：将地点名称添加到目录中的“租户”表。  此项添加内容说明如何扩展目录数据库来支持其他特定于应用程序的数据。
-- **打开新租户的“事件”页**：在浏览器中打开 *Bushwillow Blues* 事件页。
+- **向目录扩展表添加租户名称**：向目录中的租户表添加地点名称。  此项添加内容说明如何扩展目录数据库来支持其他特定于应用程序的数据。
+- **打开新租户的“事件”页**：在浏览器中打开 Bushwillow Blues 事件页。
 
    ![活动](media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
 
@@ -161,7 +161,7 @@ ms.locfileid: "47055299"
    - **$VenueType** = **blues**（预定义的地点类型之一）：blues、classicalmusic、dance、jazz、judo、motorracing、multipurpose、opera、rockmusic、soccer（小写，不含空格）。
    - **$DemoScenario** = **1**，可在拥有其他租户的共享数据库中预配租户。
 
-2. 通过将游标置于 38 行（该行显示：*New-Tenant `*）的任意位置来添加断点，并按 **F9**。
+2. 通过将游标置于 38 行的任意位置来添加断点，该行显示：New-Tenant `，并按 F9。
 
    ![断点](media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
 
@@ -183,12 +183,12 @@ ms.locfileid: "47055299"
 
 - **计算新租户密钥**：哈希函数用于从租户名称创建租户密钥。
 - **检查租户密钥是否已存在**：检查目录，确保尚未注册密钥。
-- **创建新租户数据库**：通过使用资源管理器模板复制 *basetenantdb* 数据库来创建此数据库。  新数据库名称取决于租户名称。
-- **将数据库添加到目录**：新租户数据库在目录中注册为分片。
-- **初始化默认租户数据库中的租户**：更新租户数据库，以添加新租户信息。  
-- **在目录中注册租户**：新的租户密钥和 *sequoiasoccer* 数据库之间的映射添加到目录中。
-- **将租户名称添加到目录**：将地点名称添加到目录的“租户”扩展表中。
-- **打开新租户的“事件”页**：在浏览器中打开 *Sequoia Soccer* 事件页。
+- **创建新租户数据库**：通过使用资源管理器模板复制 basetenantdb 数据库来创建此数据库。  新数据库名称取决于租户名称。
+- **向目录添加数据库**：新租户数据库在目录中注册为分片。
+- **初始化默认租户数据库中的租户**：更新租户数据库，添加新租户信息。  
+- **在目录中注册租户**：新租户密钥和 sequoiasoccer 数据库之间的映射将添加到目录中。
+- **将租户名称添加到目录**：将地点名称添加到目录的租户扩展表中。
+- **打开新租户的“事件”页**：在浏览器中打开 Sequoia Soccer 事件页。
 
    ![活动](media/saas-multitenantdb-provision-and-catalog/sequoiasoccer.png)
 

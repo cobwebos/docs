@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 3c3b7d73de9a0e7e72351687af16b98b11f9581b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4cf7c0cdd066879edccf7869ae3c8de0191f1d2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188485"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818866"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面
 
@@ -86,7 +86,7 @@ ms.locfileid: "55188485"
 5. 单击“$root”以打开新容器。
 6. 单击“上传”。
 7. 单击“选择文件”旁边的文件夹图标。
-8. 转到 **customize-ui.html** ，这是你之前在 [页面 UI 自定义](#the-page-ui-customization-feature) 部分中创建的。
+8. 转到 customize-ui.html，这是你之前在“页面 UI 自定义”部分中创建的。
 9. 单击“上传” 。
 10. 选择你已上传的 customize-ui.html blob。
 11. 单击“URL”旁边的“复制”。
@@ -175,7 +175,7 @@ sample_templates/wingtip 文件夹包含以下 HTML 文件：
 | *unified.html* | 将此文件用作统一注册或登录页面的模板。 |
 | *updateprofile.html* | 将此文件用作个人资料更新页面的模板。 |
 
-在 [修改注册或登录自定义策略](#modify-your-sign-up-or-sign-in-custom-policy) 部分中，你已配置了 的内容定义`api.idpselections` 。 下表中列出了 Azure AD B2C 标识体验框架可以识别的整组内容定义 ID 及其说明：
+在“修改注册或登录自定义策略”部分中，你已配置了 `api.idpselections` 的内容定义。 下表中列出了 Azure AD B2C 标识体验框架可以识别的整组内容定义 ID 及其说明：
 
 | 内容定义 ID | 说明 | 
 |-----------------------|-------------|

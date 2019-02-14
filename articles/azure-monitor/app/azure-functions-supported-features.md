@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 10/05/2018
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: 06feece050835b2b9188eb702210770b44a6b49c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: dd28bc3925b0f07a441c46a26498ef1a14c3e650
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185799"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510317"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>适用于 Azure Functions 的 Application Insights 支持功能
 
@@ -32,6 +32,7 @@ Azure Functions 提供与 Application Insights 的[内置集成](https://docs.mi
 | **自动集合**        |                 |                   |               
 | &bull; 请求                     | 是             | 是               | 
 | &bull; 异常                   | 是             | 是               | 
+| &bull; 性能计数器         | 是             |                   |
 | &bull; 依赖项                   |                   |                   |               
 | &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | 是               | 
 | &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | 是               | 
@@ -50,6 +51,11 @@ Azure Functions 提供与 Application Insights 的[内置集成](https://docs.mi
 | | | | 
 | **可配置性**                      |                   |                   |           
 | &bull; 完全可配置。<br/>请参阅 [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) 了解相应说明。<br/>请参阅 [Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) 了解所有选项。               |                   | 是                   | 
+
+
+## <a name="performance-counters"></a>性能计数器
+
+性能计数器的自动收集仅适用于 Windows 计算器。
 
 
 ## <a name="live-metrics--secure-control-channel"></a>实时指标和安全控制通道

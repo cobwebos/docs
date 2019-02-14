@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 51e9d12d9f8801102997266cfd6699a367b11126
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 8effa84c9d7adc14060fb00fae9915a04c1d04cc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435509"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821212"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight 中配置 Apache Hive 策略
 了解如何为 Apache Hive 配置 Apache Ranger 策略。 本文将创建两个 Ranger 策略来限制对 hivesampletable 的访问。 HDInsight 群集附带 hivesampletable。 配置这些策略后，可以使用 Excel 和 ODBC 驱动程序连接到 HDInsight 中的 Hive 表。
@@ -45,7 +45,7 @@ ms.locfileid: "53435509"
 
 **创建 Ranger 策略**
 
-1. 打开 Ranger 管理 UI。 请参阅[连接到 Apache Ranger 管理 UI](#connect-to-apache-ranager-admin-ui)。
+1. 打开 Ranger 管理 UI。 请参阅“连接到 Apache Ranger 管理 UI”。
 2. 单击“Hive”下的“&lt;群集名称>_hive”。 应会看到两个预配置策略。
 3. 单击“添加新策略”，并输入以下值：
 
@@ -75,7 +75,7 @@ ms.locfileid: "53435509"
 ## <a name="create-hive-odbc-data-source"></a>创建 Hive ODBC 数据源
 可以在 [Create Hive ODBC data source](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)（创建 Hive ODBC 数据源）中找到说明。  
 
- | 属性  |Description |
+ | 属性  |说明 |
  | --- | --- |
  | 数据源名称 | 为数据源提供名称 |
  | 主机 | 输入 &lt;HDInsightClusterName>.azurehdinsight.net。 例如，myHDICluster.azurehdinsight.net |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 0b216d8a8a2c6e1ab7c7b71eedfca9cbd6dbd5cf
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 23d745e084bf3439d8400b0cd6ac43bac75c7751
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197341"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815687"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>教程：Azure Active Directory 与 RFPIO 集成
 
@@ -88,11 +88,11 @@ ms.locfileid: "55197341"
 
 若要配置和测试 RFPIO 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. [配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on) - 使用户能够使用此功能。
-1. [创建 Azure AD 测试用户](#creating-an-azure-ad-test-user) - 通过 Britta Simon 测试 Azure AD 单一登录。
-1. [创建 RFPIO 测试用户](#creating-a-rfpio-test-user) - 在 RFPIO 中创建对应的 Britta Simon 用户，该用户链接到其 Azure AD 用户。
-1. [分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user) - 使 Britta Simon 能够使用 Azure AD 单一登录。
-1. [测试单一登录](#testing-single-sign-on) - 验证配置是否正常工作。
+1. **配置 Azure AD 单一登录** - 使用户能够使用此功能。
+1. **创建 Azure AD 测试用户** - 通过 Britta Simon 测试 Azure AD 单一登录。
+1. **创建 RFPIO 测试用户** - 在 RFPIO 中创建对应的 Britta Simon 用户，该用户链接到其 Azure AD 用户。
+1. **分配 Azure AD 测试用户** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **测试单一登录** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 

@@ -16,20 +16,19 @@ ms.date: 06/13/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: aa38fe3da118515b20d9b743a9a22b54e338051a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8457df9ba809e183122fd53de75a40108e4a4ed1
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463698"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754296"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>将磁盘添加到 Linux VM
-本文介绍了如何将持久性磁盘附加到 VM 以便持久保存数据 - 即使 VM 由于维护或调整大小而重新预配。 
-
+本文介绍了如何将持久性磁盘附加到 VM 以便持久保存数据 - 即使 VM 由于维护或调整大小而重新预配。
 
 ## <a name="attach-a-new-disk-to-a-vm"></a>将新磁盘附加到 VM
 
-如果只需要在 VM 上添加新的空数据磁盘，请使用 [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) 命令以及 `--new` 参数。 如果 VM 位于某个可用性区域中，则会自动在与 VM 相同的区域中创建磁盘。 有关详细信息，请参阅[可用性区域概述](../../availability-zones/az-overview.md)。 以下示例创建一个名为“myDataDisk”且大小为 50 GB 的磁盘：
+如果只需要在 VM 上添加新的空数据磁盘，请使用 [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest) 命令以及 `--new` 参数。 如果 VM 位于某个可用性区域中，则会自动在与 VM 相同的区域中创建磁盘。 有关详细信息，请参阅[可用性区域概述](../../availability-zones/az-overview.md)。 以下示例创建一个名为“myDataDisk”且大小为 50 GB 的磁盘：
 
 ```azurecli
 az vm disk attach \
@@ -40,9 +39,9 @@ az vm disk attach \
    --size-gb 50
 ```
 
-## <a name="attach-an-existing-disk"></a>附加现有磁盘 
+## <a name="attach-an-existing-disk"></a>附加现有磁盘
 
-若要附加现有磁盘，请查找磁盘 ID 并将该 ID 传递到 [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) 命令。 以下示例查询 *myResourceGroup* 中名为 *myDataDisk* 的磁盘，然后将其附加到名为 *myVM* 的 VM：
+若要附加现有磁盘，请查找磁盘 ID 并将该 ID 传递到 [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest) 命令。 以下示例查询 *myResourceGroup* 中名为 *myDataDisk* 的磁盘，然后将其附加到名为 *myVM* 的 VM：
 
 ```azurecli
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
@@ -50,9 +49,9 @@ diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
 az vm disk attach -g myResourceGroup --vm-name myVM --disk $diskId
 ```
 
-
 ## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>连接到 Linux VM 以装入新磁盘
-若要对新磁盘进行分区、格式化和装载，以便 Linux VM 可以使用它，请通过 SSH 登录到 VM。 有关详细信息，请参阅[如何在 Azure 中将 SSH 用于 Linux](mac-create-ssh-keys.md)。 以下示例使用公共 DNS 条目 *mypublicdns.westus.cloudapp.azure.com* 和用户名 *azureuser* 连接到一个 VM： 
+
+若要对新磁盘进行分区、格式化和装载，以便 Linux VM 可以使用它，请通过 SSH 登录到 VM。 有关详细信息，请参阅[如何在 Azure 中将 SSH 用于 Linux](mac-create-ssh-keys.md)。 以下示例使用公共 DNS 条目 *mypublicdns.westus.cloudapp.azure.com* 和用户名 *azureuser* 连接到一个 VM：
 
 ```bash
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
@@ -74,10 +73,10 @@ dmesg | grep SCSI
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-此处，*sdc* 是我们需要的磁盘。 使用 `fdisk` 对磁盘进行分区，将其设置为分区 1 中的主磁盘，并接受其他默认值。 以下示例在 */dev/sdc* 上启动 `fdisk` 进程：
+此处，*sdc* 是我们需要的磁盘。 使用 `parted` 对磁盘进行分区，如果磁盘大小为 2TiB 或更大，则必须使用 GPT 进行分区，如果小于 2TiB，则可以使用 MBR 或 GPT 进行分区。 将其设置为分区 1 中的主磁盘，并接受其他默认值。 以下示例在 */dev/sdc* 上启动 `parted` 进程：
 
 ```bash
-sudo fdisk /dev/sdc
+sudo parted /dev/sdc
 ```
 
 使用 `n` 命令添加新分区。 在此示例中，我们还选择主分区的 `p` 并接受其余默认值。 输出将类似于以下示例：
@@ -228,9 +227,10 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail 
     ```
 
 ## <a name="troubleshooting"></a>故障排除
+
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
 ## <a name="next-steps"></a>后续步骤
+
 * 为确保正确配置 Linux VM，请查看有关[优化 Linux 计算机性能](optimization.md)的建议。
 * 可以添加更多的磁盘来扩展存储容量，[配置 RAID](configure-raid.md) 来提高性能。
-

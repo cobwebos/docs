@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 246b7ae21ceca80c2d1af74330691e527c73cf51
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5bff36f17b407c95858924a2a88b133500c350b6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452730"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751406"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -252,6 +252,9 @@ Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件�
 
 ### <a name="azure-disaster-recovery"></a>Azure 灾难恢复
 为了防止 Azure 区域丢失，Azure 文件同步集成了[异地冗余存储冗余](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) 选项。 GRS 存储的工作原理是在主要区域中的存储（你通常与之交互）和配对次要区域中的存储之间使用异步块复制。 发生导致 Azure 区域暂时或永久脱机的灾难时，Microsoft 会将存储故障转移到配对区域。 
+
+> [!Warning]  
+> 如果在 GRS 存储帐户中使用 Azure 文件共享作为云终结点，则不应启动存储帐户故障转移。 执行此操作将导致同步停止工作，并且还可能导致新分层的文件出现意外数据丢失。 对于 Azure 区域丢失，Microsoft 会以与 Azure 文件同步兼容的方式触发存储帐户故障转移。
 
 为了支持异地冗余存储和 Azure 文件同步之间的故障转移集成，所有 Azure 文件同步区域都与一个与存储使用的次要区域匹配的次要区域配对。 这些配对如下所示：
 

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 9f5d5abc2a5e7291e8b699f151bd84b10b7eb4ad
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 912d5ec399ac59d81a7d9da9b494d8ee50e720e1
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226784"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55735975"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>从经典部署模型迁移到 Azure 资源管理器部署模型的过程中出现的常见错误
 本文编录了从 Azure 经典部署模型将 IaaS 资源迁移到 Azure 资源管理器堆栈的过程中出现的最常见错误和缓解措施。
@@ -27,11 +27,11 @@ ms.locfileid: "50226784"
 | 托管服务 {hosted-service-name} 中的部署 {deployment-name} 不支持迁移，因为它具有多个可用性集。 |目前，只有具有 1 个或更少可用性集的托管服务可以进行迁移。 要解决此问题，请将额外的可用性集及这些可用性集中的虚拟机移到其他托管服务。 |
 | 托管服务 {hosted-service-name} 中的部署 {deployment-name} 不支持迁移，因为它的 VM 不属于可用性集，即使托管服务包含一个可用性集。 |这种情况的解决方法是将所有虚拟机都移到单个可用性集中，或者从托管服务的可用性集中删除所有虚拟机。 |
 | 存储帐户/托管服务/虚拟网络 {virtual-network-name} 正处于迁移过程中，因此不能更改 |对资源的“准备”迁移操作已完成并触发了对资源的更改操作时，会发生此错误。 由于在“准备”操作完成后锁定了管理平面，因此将阻止对资源的任何更改。 若要解锁管理平面，可以运行“提交”迁移操作以完成迁移，或者“中止”迁移操作以回退“准备”操作。 |
-| 托管服务 {hosted-service-name} 不允许迁移，因为它的 VM {vm-name} 处于状态: RoleStateUnknown。 仅当 VM 处于以下状态之一时允许迁移 -“正在运行”、“已停止”、“已停止解除分配”。 |该 VM 可能正在进行状态转换，这通常在对托管服务进行更新操作（例如，重新启动、安装扩展等）期间发生。建议等到对托管服务的更新操作完成后，再尝试迁移。 |
+| 托管服务 {hosted-service-name} 不允许迁移，因为它的 VM {vm-name} 处于状态:RoleStateUnknown。 仅当 VM 处于以下状态之一时允许迁移 -“正在运行”、“已停止”、“已停止解除分配”。 |该 VM 可能正在进行状态转换，这通常在对托管服务进行更新操作（例如，重新启动、安装扩展等）期间发生。建议等到对托管服务的更新操作完成后，再尝试迁移。 |
 | HostedService {hosted-service-name} 中的部署 {deployment-name} 包含具有数据磁盘 {data-disk-name} 的 VM {vm-name}，该数据磁盘的物理 Blob 大小 {size-of-the-vhd-blob-backing-the-data-disk} 字节数不匹配 VM 数据磁盘逻辑大小 {size-of-the-data-disk-specified-in-the-vm-api} 字节数。 迁移将继续进行而不会指定 Azure 资源管理器 VM 的数据磁盘的大小。 | 如果已调整 VHD Blob 的大小，而没有更新 VM API 模型中的大小，将发生此错误。 缓解措施的步骤详见[下文](#vm-with-data-disk-whose-physical-blob-size-bytes-does-not-match-the-vm-data-disk-logical-size-bytes)。|
 | 在云服务 {云服务名称} 中使用媒体链接 {数据磁盘 URI} 为 VM {VM 名称} 验证数据磁盘 {数据磁盘名称} 时发生存储异常。 请确保该虚拟机可以访问 VHD 媒体链接 | 如果 VM 的磁盘已被删除或不再可访问，则可能发生此错误。 请确保 VM 磁盘存在。|
 | HostedService {cloud-service-name} 中的 VM {vm-name} 包含具有 blob 名称为 {vhd-blob-name} 的 MediaLink {vhd-uri} 的磁盘，这在 Azure 资源管理器中不受支持。 | 当 Blob 的名称包含“/”（这当前在计算资源提供程序中不支持）时，将出现此错误。 |
-| HostedService {cloud-service-name} 中的部署 {deployment-name} 不允许迁移，因为不在区域范围内。 请参阅 http://aka.ms/regionalscope，了解如何将该部署移至区域范围。 | 在 2014 年，Azure 宣布：网络资源将从群集级别范围移至区域范围。 有关详细信息，请参阅 [http://aka.ms/regionalscope] (http://aka.ms/regionalscope)。 当要迁移的部署尚未进行更新操作（自动将其移至区域范围）时，会发生此错误。 最好的解决办法是向 VM 添加终结点，或者向 VM 添加数据磁盘，并重试迁移。 <br> 请参阅[如何在 Azure 中的经典 Windows 虚拟机上设置终结点](../articles/virtual-machines/windows/classic/setup-endpoints.md#create-an-endpoint)或[将数据磁盘附加到使用经典部署模型创建的 Windows 虚拟机](../articles/virtual-machines/windows/classic/attach-disk.md)|
+| HostedService {cloud-service-name} 中的部署 {deployment-name} 不允许迁移，因为不在区域范围内。 请参阅 http://aka.ms/regionalscope，了解如何将该部署移至区域范围。 | 在 2014 年，Azure 宣布：网络资源将从群集级别范围移至区域范围。 有关详细信息，请参阅 [http://aka.ms/regionalscope] (http://aka.ms/regionalscope)。 当要迁移的部署尚未进行更新操作（自动将其移至区域范围）时，会发生此错误。 最好的解决办法是向 VM 添加终结点，或者向 VM 添加数据磁盘，并重试迁移。 <br> 请参阅[如何在 Azure 中的经典 Windows 虚拟机上设置终结点](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#create-an-endpoint)或[将数据磁盘附加到使用经典部署模型创建的 Windows 虚拟机](../articles/virtual-machines/windows/classic/attach-disk.md)|
 | 虚拟网络 {vnet-name} 不支持迁移，因为它具有非网关 PaaS 部署。 | 当具有非网关 PaaS 部署（例如连接到虚拟网络的应用程序网关或 API 管理服务）时，将发生此错误。|
 
 

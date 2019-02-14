@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: article
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: f7b71b2bae540f4ef6b1e9c637c601d6f7b303ae
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 14a6bdfff486f13f18d42b1bd20880347d3ebbc8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250701"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756523"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>设置模型训练的计算目标
 
@@ -38,18 +38,14 @@ ms.locfileid: "55250701"
 Azure 机器学习服务为不同的计算目标提供不同的支持。 典型的模型开发生命周期从开发/试验少量的数据开始。 在此阶段，我们建议使用本地环境。 例如，本地计算机或基于云的 VM。 针对更大的数据集扩展训练或执行分布式训练时，我们建议使用 Azure 机器学习计算来创建可在每次提交运行时自动缩放的单节点或多节点群集。 你也可以附加自己的计算资源，不过，为各种方案提供的支持可能有所不同，详情如下：
 
 
-|训练的计算目标| GPU 加速 | 自动<br/> 超参数优化 | 自动</br> 机器学习 | 管道友好|
+|训练的计算目标| GPU 加速 | 自动<br/> 超参数优化 | 自动</br> 机器学习 | Azure 机器学习管道 |
 |----|:----:|:----:|:----:|:----:|
 |[本地计算机](#local)| 可能 | &nbsp; | ✓ | &nbsp; |
 |[Azure 机器学习计算](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
 |[远程 VM](#vm) | ✓ | ✓ | ✓ | ✓ |
-|[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓[*](#pipeline-only) |
-|[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓[*](#pipeline-only) |
+|[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
+|[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 |[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
-
-<a id="pipeline-only"></a>__*__ Azure Databricks 和 Azure Data Lake Analytics __只能__在管道中使用。 
-
->可根据本文中所述为机器学习管道创建计算目标，但是，请不要根据此处所述的方法在管道步骤中使用这些计算。  此外，只有一部分管道步骤使用本文中所述的运行配置。  有关在管道中使用计算目标的详细信息，请参阅[创建和运行机器学习管道](how-to-create-your-first-pipeline.md)。
 
 ## <a name="whats-a-run-configuration"></a>什么是运行配置？
 
@@ -159,7 +155,7 @@ Azure 机器学习还支持将自己的计算资源附加到工作区。 任意�
 
 请对此方案使用 Data Science Virtual Machine (DSVM) 作为 Azure VM。 此 VM 在 Azure 中预配置了数据科学和 AI 开发环境。 此 VM 提供精选的工具和框架用于满足整个机器学习开发生命周期的需求。 有关如何将 DSVM 与 Azure 机器学习配合使用的详细信息，请参阅[配置开发环境](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-environment#dsvm)。
 
-1. **创建**：创建 DSVM，然后使用它来训练模型。 若要创建此资源，请参阅[预配适用于 Linux (Ubuntu) 的 Data Science Virtual Machine](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)。
+1. **创建**：创建 DSVM，然后使用它来训练模型。 若要创建此资源，请参阅[预配适用于 Linux (Ubuntu) 的 Data Science Virtual Machine](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)。
 
     > [!WARNING]
     > Azure 机器学习仅支持运行 Ubuntu 的虚拟机。 创建 VM 或选择现有 VM 时，必须选择使用 Ubuntu 的 VM。
@@ -384,5 +380,5 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 * [教程：训练模型](tutorial-train-models-with-aml.md)使用一个托管计算目标来训练模型。
 * 训练模型后，了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。
-* 查看 [RunConfiguration 类](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) SDK 参考。
+* 查看 [RunConfiguration 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) SDK 参考。
 * [通过 Azure 虚拟网络使用 Azure 机器学习服务](how-to-enable-virtual-network.md)

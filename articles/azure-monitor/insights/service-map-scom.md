@@ -13,18 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren
-ms.openlocfilehash: bf0e672ea6f1d62442233993bd778c82a8a16037
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 73e27044fc8cc79b2c95471e30bca558bd14d473
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187205"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818747"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>服务映射与 System Center Operations Manager 的集成
-  > [!NOTE]
-  > 此功能目前以公共预览版提供。
-  > 
-  
+
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 服务映射允许如所想一般作为提供重要服务的互连系统查看服务器。 服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。 有关详细信息，请参阅[服务映射文档]( service-map.md)。
 
 通过服务映射与 System Center Operations Manager 的此集成，可以根据服务映射中的动态依赖关系映射，在 Operations Manager 中自动创建分布式应用程序关系图。
@@ -43,7 +40,7 @@ ms.locfileid: "53187205"
 * Microsoft System Center Service Map
 
 ## <a name="configure-the-service-map-integration"></a>配置服务映射集成
-安装服务映射管理包后，“管理”窗格中“Operations Management Suite”的下面会显示新节点“服务映射”。 
+安装服务映射管理包后，“管理”窗格中“Operations Management Suite”的下面会显示新节点“服务映射”。
 
 >[!NOTE]
 >[Operations Management Suite 是一组服务](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand)，其中包括 Log Analytics，后者现在是 [Azure Monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md) 的一部分。
@@ -54,7 +51,7 @@ ms.locfileid: "53187205"
 
     ![“服务映射概述”窗格](media/service-map-scom/scom-configuration.png)
 
-2. 在“连接配置”窗口中，输入服务主体的租户名称或 ID、应用程序 ID（也称为用户名或 clientID）和密码，并单击“下一步”。 有关详细信息，请参阅[创建服务主体](#creating-a-service-principal)。
+2. 在“连接配置”窗口中，输入服务主体的租户名称或 ID、应用程序 ID（也称为用户名或 clientID）和密码，并单击“下一步”。 有关详细信息，请参阅“创建服务主体”。
 
     ![“连接配置”窗口](media/service-map-scom/scom-config-spn.png)
 
@@ -63,11 +60,11 @@ ms.locfileid: "53187205"
     ![Operations Manager 配置工作区](media/service-map-scom/scom-config-workspace.png)
 
 4. 在“计算机组选择”窗口中，你可以选择要同步到 Operations Manager 的服务映射计算机组。 单击“添加/删除计算机组”，从“可用计算机组”列表中选择组，然后单击“添加”。  选择组后，单击“确定”完成。
-    
+
     ![Operations Manager 配置计算机组](media/service-map-scom/scom-config-machine-groups.png)
-    
+
 5. 在“服务器选择”窗口中，配置包含要在 Operations Manager 与服务映射之间同步的服务器的服务映射服务器组。 单击“添加/删除服务器”。   
-    
+
     若要在集成中为某个服务器构建分布式应用程序关系图，该服务器必须：
 
     * 由 Operations Manager 管理
@@ -91,7 +88,7 @@ ms.locfileid: "53187205"
 ![Operations Manager 的“监视”窗格](media/service-map-scom/scom-monitoring.png)
 
 “服务映射”文件夹包含四个节点：
-* **活动警报**：列出有关 Operations Manager 与服务映射之间通信相关的所有活动警报。  注意，这些警报不是要同步到 Operations Manager 的 Log Analytics 警报。 
+* **活动警报**：列出有关 Operations Manager 与服务映射之间通信相关的所有活动警报。  注意，这些警报不是要同步到 Operations Manager 的 Log Analytics 警报。
 
 * **服务器**：列出配置为从服务映射同步的受监视服务器。
 
@@ -120,9 +117,9 @@ ms.locfileid: "53187205"
 
 ![Operations Manager 的“重写属性”窗口](media/service-map-scom/scom-overrides.png)
 
-* **启用**：启用或禁用自动更新。 
+* **启用**：启用或禁用自动更新。
 * **IntervalMinutes**：重置更新间隔时间。 默认间隔为 1 小时。 如果想要更频繁地同步服务器映射，可以更改此值。
-* **TimeoutSeconds**：重置请求超时前的时长。 
+* **TimeoutSeconds**：重置请求超时前的时长。
 * **TimeWindowMinutes**：重置查询数据的时间范围。 默认值为 60 分钟时限。 服务映射允许的最大值为 60 分钟。
 
 ## <a name="known-issues-and-limitations"></a>已知问题和限制

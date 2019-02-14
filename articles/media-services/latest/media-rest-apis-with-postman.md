@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: 06ecdf31c2627eda5bf651667703ddcf39c9d307
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 24ee0083ec79265f0ac4dfc0a2e235bc72522831
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604093"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813885"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>配置 Postman 以便进行媒体服务 REST API 调用
 
@@ -57,7 +57,7 @@ ms.locfileid: "53604093"
     > [!Note]
     > 使用从上面的“访问媒体服务 API”部分获得的值更新访问权限变量。
 
-7. 双击所选的文件，并输入通过执行[访问 API](#access-the-media-services-api) 步骤获得的值。
+7. 双击所选的文件，并输入通过执行访问 API 步骤获得的值。
 8. 关闭对话框。
 9. 从下拉列表中选择“Azure Media Service v3 Environment”环境。
 

@@ -1,8 +1,21 @@
 ---
-title:执行 Python 机器学习脚本 titleSuffix:Azure 机器学习工作室 description:概述了设计原则对 Azure 机器学习工作室中的 Python 脚本的底层支持，以及基本的使用方案、功能和限制。
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:2017/11/29
+title: 执行 Python 机器学习脚本
+titleSuffix: Azure Machine Learning Studio
+description: 概述了设计原则对 Azure 机器学习工作室中的 Python 脚本的底层支持，以及基本的使用方案、功能和限制。
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 11/29/2017
+ms.openlocfilehash: a040991ca4b3a08dec90f4fc6944b006ebea2135
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487840"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中执行 Python 机器学习脚本
 

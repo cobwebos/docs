@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: dc93d0b44d6d99e8418d4333ca8698bc9ebf3a96
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a23a2f536f765c62919960f3c582d04543b1f49a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629673"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820821"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>使用针对 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Apache Hive 查询
 
@@ -250,11 +250,11 @@ ms.locfileid: "53629673"
 ![Data Lake Visual Studio 工具“任务执行视图”窗口的屏幕截图](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.task.execution.view.png "任务执行视图")
 
 ## <a name="run-hive-batch-jobs"></a>运行 Hive 批处理作业
-针对 HDInsight 群集测试 Hive 脚本可能很费时，交互式查询群集例外。 此过程可能至少需要数分钟的时间。 用于 Visual Studio 的 Data Lake 工具可以在本地验证 Hive 脚本，无需连接到活动群集。 有关运行交互式查询的详细信息，请参阅[运行交互式 Hive 查询](#run-interactive-hive-queries)。
+针对 HDInsight 群集测试 Hive 脚本可能很费时，交互式查询群集例外。 此过程可能至少需要数分钟的时间。 用于 Visual Studio 的 Data Lake 工具可以在本地验证 Hive 脚本，无需连接到活动群集。 有关运行交互式查询的详细信息，请参阅“运行交互式 Hive 查询”。
 
 可以通过用于 Visual Studio 的 Data Lake 工具收集和显示特定 Hive 作业的 Yarn 日志，以便查看 Hive 作业中的内容。
 
-若要详细了解如何运行 Hive 批处理作业，请参阅[运行交互式 Hive 查询](#run-interactive-hive-queries)。 该部分的信息适用于运行那些运行时间较长的 Hive 批处理作业。
+若要详细了解如何运行 Hive 批处理作业，请参阅“运行交互式 Hive 查询”。 该部分的信息适用于运行那些运行时间较长的 Hive 批处理作业。
 
 ## <a name="run-apache-pig-scripts"></a>运行 Apache Pig 脚本
 可以使用用于 Visual Studio 的 Data Lake 工具创建 Pig 脚本并将其提交到 HDInsight 群集。 首先，通过模板创建 Pig 项目。 然后，将脚本提交到 HDInsight 群集。

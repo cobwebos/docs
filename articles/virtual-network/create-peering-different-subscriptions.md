@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: f06f0b5392ebb60cd852d3c2eb201478b31ae167
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3b929c3f85bab4319fe2fef1b5c0575f0d1d972a
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014958"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511670"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>创建虚拟网络对等互连 - Resource Manager，不同订阅
 
@@ -72,7 +72,7 @@ ms.locfileid: "54014958"
     - **位置**：*美国东部*
 
 13. 在门户顶部的“搜索资源”框中键入 myVnetB。 选择出现在搜索结果中的“myVnetB”。
-14. 在“myVnetB”下，选择左侧垂直选项列表中的“属性”。 复制“资源 ID”，在稍后的步骤中使用。 资源 ID 类似于以下示例：/subscriptions/<Susbscription ID>/resourceGroups/myResoureGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB。
+14. 在“myVnetB”下，选择左侧垂直选项列表中的“属性”。 复制“资源 ID”，在稍后的步骤中使用。 资源 ID 类似于以下示例：/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB。
 15. 在“myVnetB”下选择“访问控制(IAM)”，然后为 myVnetB 完成步骤 5-10，在步骤 8 中输入 **UserA**。
 16. 以用户 B 的身份注销门户，然后以用户 A 的身份登录。
 17. 在门户顶部的“搜索资源”框中键入 myVnetA。 选择出现在搜索结果中的“myVnetA”。

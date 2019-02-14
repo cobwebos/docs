@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 141caeb180fd0f5663c0fd51aadb0a397665c6d3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 236ba7e2a76e95f3a78457fbdb0b49fd82e20b36
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168611"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815398"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>如何配置 Azure AD 库应用程序的密码单一登录
 
-从 [Azure AD 应用程序库](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#get-started-with-the-azure-ad-application-gallery)添加应用程序时，可以选择用户登录到该应用程序的方式。 可随时通过在 [Azure 门户](https://portal.azure.com/)中选择企业应用程序上的**单一登录**导航项进行配置。
+从 [Azure AD 应用程序库](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)添加应用程序时，可以选择用户登录到该应用程序的方式。 可随时通过在 [Azure 门户](https://portal.azure.com/)中选择企业应用程序上的**单一登录**导航项进行配置。
 
-可用的单一登录方法之一是[基于密码的单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work)选项。 这是将应用程序快速集成到 Azure AD 中的绝佳方式，并且可以：
+可用的单一登录方法之一是[基于密码的单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)选项。 这是将应用程序快速集成到 Azure AD 中的绝佳方式，并且可以：
 
 -   通过安全地存储和重播已集成到 Azure AD 的应用程序用户名和密码，启用“用户单一登录”
 
@@ -41,7 +41,7 @@ ms.locfileid: "55168611"
 
 -   允许**管理员**在[将组分配到应用程序](#assign-an-application-to-a-group-directly)时，使用更新凭据功能指定组中人员使用的共享用户名和密码
 
-以下部分介绍了如何对 [Azure AD 应用程序库](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#get-started-with-the-azure-ad-application-gallery)中已有的应用程序启用[基于密码的单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work)。
+以下部分介绍了如何对 [Azure AD 应用程序库](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)中已有的应用程序启用[基于密码的单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
 ## <a name="overview-of-steps-required"></a>所需步骤概述
 若要从 Azure AD 库配置应用程序，需要：
@@ -50,7 +50,7 @@ ms.locfileid: "55168611"
 
 -   [将应用程序配置为密码单一登录](#configure-the-application-for-password-single-sign-on)
 
--   [将应用程序分配给用户或组](#assign-the-application-to-a-user-or-a-group)
+-   将应用程序分配给用户或组
 
     -   [直接将用户分配到应用程序](#assign-a-user-to-an-application-directly)
 

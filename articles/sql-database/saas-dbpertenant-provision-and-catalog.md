@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 1f2539ed7ea407e2a1931ab2eb5951e61e4c7b03
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 09/24/2018
+ms.openlocfilehash: aa884f2df76c20d3119022069179b08ba2f2a6b7
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056261"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565198"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>了解如何预配新租户并将其注册到目录中
 
@@ -155,7 +155,7 @@ Wingtip Tickets 的“每租户一个数据库”应用通过复制在目录服�
 
 此教程中未包含的其他预配模式：
 
-**预先预配数据库**：预配模式利用了“弹性池中的数据库不会添加额外费用”这一事实。 计费针对弹性池而不是数据库。 空闲数据库不使用任何资源。 通过在池中预先预配数据库，然后在需要时分配它们，可以显著降低租户加入时间。 可以根据需要调整预先预配数据库的数目，以保留适合预期预配率的缓冲区。
+**预先预配数据库**：预先预配模式利用了“弹性池中的数据库不会添加额外费用”这一事实。 计费针对弹性池而不是数据库。 空闲数据库不使用任何资源。 通过在池中预先预配数据库，然后在需要时分配它们，可以显著降低租户加入时间。 可以根据需要调整预先预配数据库的数目，以保留适合预期预配率的缓冲区。
 
 **自动预配**：在自动预配模式下，某个预配服务会自动根据需要预配服务器、池和数据库。 如果需要，可以包括弹性池中的预先预配数据库。 如果数据库已停用并已删除，则可以通过预配服务来填充弹性池中的间隙。 此类服务可简单，也可复杂（例如，处理跨多个地理区域的预配），并且可以设置异地复制以用于灾难恢复。 
 

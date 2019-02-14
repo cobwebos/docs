@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: 6bc1255c5bbb9cf74c97b88600f34e7fcd90ae4f
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: e955d21132dda6caa137ad3b5de9d00ccf7ed1b4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343140"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811046"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
@@ -55,13 +55,13 @@ ms.locfileid: "39343140"
 
 6. 随后会显示类似于“函数应用: 函数应用名称: xxx”的内容。 记下函数应用名称，因为在后续步骤中需要用到。
 
-7. 等待 Azure 资源管理器模板部署完成。显示“资源管理器模板部署: 完成”消息即表示部署完成。
+7. 等待 Azure 资源管理器模板部署完成，显示“资源管理器模板部署: 完成”消息即表示部署完成。
 
 ## <a name="deploy-function-app"></a>部署函数应用
 
 1. 在 Visual Studio Code 中单击“任务”下拉菜单，并选择“运行任务...” - “cloud-deploy”。
 
-2. 等待函数应用代码上传过程完成；此时会显示“函数应用部署: 完成”消息。
+2. 等待函数应用代码上传过程完成，显示“资源管理器模板部署: 完成”消息即表示部署完成。
 
 ## <a name="configure-iot-hub-device-connection-string-in-devkit"></a>在 DevKit 中配置 IoT 中心设备连接字符串
 
@@ -83,7 +83,7 @@ ms.locfileid: "39343140"
 
 ## <a name="monitor-devkit-state-in-browser"></a>在浏览器中监视 DevKit 状态
 
-1. 在 Web 浏览器中，打开在执行[所需条件](#whatyouneed)步骤时创建的 `DevKitState\web\index.html` 文件。
+1. 在 Web 浏览器中，打开在执行所需条件步骤时创建的 `DevKitState\web\index.html` 文件。
 
 2. 将显示以下网页：![指定函数应用名称。](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state-function-app-name.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "39343140"
 ![示例测试过程](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> 可以在 Azure 门户中查看设备孪生的原始数据：“IoT 中心”-\>“IoT 设备” -\>*\<你的设备\>* -\>“设备孪生”。
+> 可以看见 Azure 门户中的设备孪生的原始数据：IoT 中心 -\> IoT 设备 -\> \<设备\> -\> 设备孪生。
 
 ## <a name="next-steps"></a>后续步骤
 

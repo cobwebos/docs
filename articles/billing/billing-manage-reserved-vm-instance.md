@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: 257e9f72f21d523dfa2390814b786d1963dd671c
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 36800071d5e0080ef5d1d791eed12587b114df78
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903998"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743627"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
 
@@ -36,11 +36,11 @@ ms.locfileid: "54903998"
 2. 选择“所有服务” > “预订”。
 3. 选择该预订。
 4. 选择“设置” > “配置”。
-5. 更改范围。 
+5. 更改范围。
 
 如果要从“共享”更改为单个范围，只能选择自己是其所有者的订阅。 只能选择与该预订相同的计费上下文中的订阅。
 
-范围仅适用于即用即付套餐 MS-AZR-0003P 和 Enterprise 套餐 MS-AZR-0017P 或 CSP 订阅类型。 对于企业协议，开发/测试订阅不符合获取预订折扣的条件。
+范围仅适用于即用即付套餐 MS-AZR-0003P 或 MS-AZR-0023P，Enterprise 套餐 MS-AZR-0017P 或 MS-AZR-0148P，或 CSP 订阅类型。
 
 ## <a name="add-or-change-users-who-can-manage-a-reservation"></a>添加或更改可以管理预订的用户
 

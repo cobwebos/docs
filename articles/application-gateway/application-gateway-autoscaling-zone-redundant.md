@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 1/31/2019
+ms.date: 2/5/2019
 ms.author: victorh
-ms.openlocfilehash: 0c8a600342e0240d435999b1b5ddabc0234c142f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 880a6fc9d5636ff0ac67d24d0ef66c8f48ae22fb
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461434"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743644"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>自动缩放和区域冗余应用程序网关（公共预览版）
 
@@ -34,7 +34,7 @@ ms.locfileid: "55461434"
 
 ## <a name="supported-regions"></a>支持的区域
 
-可在以下区域获取自动缩放 SKU：美国东部 2、美国西部 2、欧洲西部、亚洲东南部、美国中部、法国中部、美国东部、日本西部、欧洲北部、美国中南部、英国西部、美国中北部、美国西部、美国东部 (BL)、美国中部 (DM)、日本西部 (OS)。
+已在以下区域推出自动缩放 SKU：美国中北部、美国中南部、美国西部、美国西部 2、美国东部、美国东部 2、美国中部、欧洲北部、欧洲西部、亚洲东南部、法国中部、英国西部、日本东部、日本西部。
 
 ## <a name="pricing"></a>定价
 

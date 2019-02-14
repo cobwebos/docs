@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 52c7734c2af80d29433c20191d8b5b7c0ee0fe48
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 8fc2c487a374a34cd9a7642a45fd59c04061b398
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "51251996"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817812"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>创建并安装适用于 P2S RADIUS 身份验证的 VPN 客户端配置文件
 
@@ -98,10 +98,10 @@ Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 
 2. 在 Mac 中查找 mobileconfig 文件。
 
-   ![Mobilconfig 文件的位置](./media/point-to-site-vpn-client-configuration-radius/admobileconfigfile.png)
+   ![Mobileconfig 文件的位置](./media/point-to-site-vpn-client-configuration-radius/admobileconfigfile.png)
 
 3. 可选步骤 - 若要指定自定义 DNS，请将以下行添加到 **mobileconfig** 文件中：
-```
+```xml
     <key>DNS</key>
     <dict>
       <key>ServerAddresses</key>
@@ -260,17 +260,17 @@ Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | 
 
 若要使用其他身份验证类型（例如 OTP），或者要使用其他身份验证协议（例如，使用 PEAP-MSCHAPv2 而不是 EAP-MSCHAPv2），则必须创建自己的 VPN 客户端配置文件。 创建配置文件需要虚拟网关 IP 地址、隧道类型、拆分隧道路由等信息。 可通过以下步骤获取该信息：
 
-1. 使用 `Get-AzureRmVpnClientConfiguration` cmdlet 生成适用于 EapMSChapv2 的 VPN 客户端配置。 有关说明，请参阅相关文章的[此部分](#ccradius)。
+1. 使用 `Get-AzureRmVpnClientConfiguration` cmdlet 生成适用于 EapMSChapv2 的 VPN 客户端配置。 有关说明，请参阅相关文章的此部分。
 
-2. 解压缩 VpnClientConfiguration.zip 文件，查找 **GenenericDevice** 文件夹。 忽略包含适用于 64 位和 32 位体系结构的 Windows 安装程序的文件夹。
+2. 解压缩 VpnClientConfiguration.zip 文件，查找 GenericDevice 文件夹。 忽略包含适用于 64 位和 32 位体系结构的 Windows 安装程序的文件夹。
  
-3. **GenenericDevice** 文件夹包含名为 **VpnSettings** 的 XML 文件。 此文件包含所有必需的信息：
+3. GenericDevice 文件夹包含名为 VpnSettings 的 XML 文件。 此文件包含所有必需的信息：
 
    * **VpnServer**：Azure VPN 网关的 FQDN。 这是客户端连接到的地址。
    * **VpnType**：用于进行连接的隧道类型。
    * **Routes**：为了仅通过 P2S 隧道发送为 Azure 虚拟网络绑定的流量而需要在配置文件中配置的路由。
    
-   **GenenericDevice** 文件夹还包含一个名为 **VpnServerRoot** 的 .cer 文件。 该文件包含在设置 P2S 连接期间验证 Azure VPN 网关所需的根证书。 在要连接到 Azure 虚拟网络的所有设备上安装该证书。
+   GenericDevice 文件夹还包含一个名为 VpnServerRoot 的 .cer 文件。 该文件包含在设置 P2S 连接期间验证 Azure VPN 网关所需的根证书。 在要连接到 Azure 虚拟网络的所有设备上安装该证书。
 
 ## <a name="next-steps"></a>后续步骤
 

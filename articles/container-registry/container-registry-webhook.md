@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/20/2017
 ms.author: danlep
-ms.openlocfilehash: 350ae16aa66276e7e64c5c35718dca74a70f499e
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: cbfbe5bf0df1b4f40752b5b233dff6416bcdd309
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854078"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770595"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>使用 Azure 容器注册表 webhook
 
@@ -33,9 +33,9 @@ Azure 容器注册表可存储和管理专用 Docker 容器映像，其方式类
 1. 在 Webhook 工具栏中选择“添加”。
 1. 使用以下信息完成“创建 webhook”窗体：
 
-| 值 | Description |
+| 值 | 说明 |
 |---|---|
-| 名称 | 想要赋予 webhook 的名称。 它只能包含小写字母和数字，且长度必须为 5-50 个字符。 |
+| Name | 想要赋予 webhook 的名称。 它只能包含小写字母和数字，且长度必须为 5-50 个字符。 |
 | 服务 URI | Webhook 应向其发送 POST 通知的 URI。 |
 | 自定义标头 | 想要随 POST 请求一起传递的标头。 它们的格式应该为：“键: 值”。 |
 | 触发操作 | 触发 webhook 的操作。 当前可通过映像推送和/或删除操作触发 Webhook。 |
@@ -74,7 +74,7 @@ az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --act
 az acr webhook ping --registry mycontainerregistry --name myacrwebhook01
 ```
 
-若要查看结果，请使用 [az acr webhook list-events](/cli/azure/acr/webhook#list-events) 命令。
+若要查看结果，请使用 [az acr webhook list-events](/cli/azure/acr/webhook) 命令。
 
 ```azurecli-interactive
 az acr webhook list-events --registry mycontainerregistry08 --name myacrwebhook01

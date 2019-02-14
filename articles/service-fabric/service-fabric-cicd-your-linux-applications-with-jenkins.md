@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/31/2018
 ms.author: saysa
-ms.openlocfilehash: f381285d29d70d6f5da6a6cd319c682cd0c6a235
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7abc15264a44c969f57071e84ffcedca30d326fb
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444532"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766310"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>使用 Jenkins 生成和部署 Linux 应用程序
 Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使用 Jenkins 生成和部署 Azure Service Fabric 应用程序。
@@ -298,10 +298,10 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
 
 1. 若要创建 Azure Active Directory 服务主体并在 Azure 订阅中分配其权限，请按照[使用门户创建 Azure Active Directory 应用程序和服务主体](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)中的步骤操作。 请注意以下几点：
 
-   * 按照本主题中的步骤操作时，请务必复制并保存以下值：应用程序 ID、应用程序密钥、目录 ID（租户 ID）和订阅 ID。 在 Jenkins 中配置 Azure 凭据时，需要这些值。
+   * 按照本主题中的步骤执行时，请务必复制并保存以下值：“应用程序 ID”、“应用程序密钥”、“目录 ID（租户 ID）”和“订阅 ID”。 在 Jenkins 中配置 Azure 凭据时，需要这些值。
    * 如果目录上没有[所需权限](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)，则需要请求管理员授予权限或为你创建服务主体，否则，需要在 Jenkins 作业的“生成后操作”中配置群集的管理终结点。
    * 在[创建 Azure Active Directory 应用程序](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-azure-active-directory-application)部分中，“登录 URL”可以输入任何格式标准的 URL。
-   * 在[为应用程序分配角色](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role)部分中，可以在群集的资源组上为应用程序分配“读者”角色。
+   * 在[为应用程序分配角色](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)部分中，可以在群集的资源组上为应用程序分配“读者”角色。
 
 1. 在 Jenkins 作业中，单击“生成后操作”选项卡。
 1. 在“生成后操作”下拉列表中，选择“部署 Service Fabric 项目”。 
@@ -309,10 +309,10 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
 1. 在 Jenkins 凭据提供程序中，从“种类”下拉列表中选择“Microsoft Azure 服务主体”。
 1. 使用在步骤 1 中设置服务主体时保存的值设置以下字段：
 
-   * **客户端 ID**：（应用程序 ID）
+   * **客户端 ID**：应用程序 ID
    * **客户端密码**：应用程序密钥
    * **租户 ID**：目录 ID
-   * **订阅 ID**：订阅 ID
+   * **订阅 ID**：*订阅 ID*
 1. 输入用来在 Jenkins 中选择凭据的描述性 ID 和一段简短说明。 然后，单击“验证服务主体”。 如果验证成功，单击“添加”。
 
    ![Service Fabric Jenkins 输入 Azure 凭据](./media/service-fabric-cicd-your-linux-application-with-jenkins/enter-azure-credentials.png)
@@ -329,7 +329,7 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
 如果 Jenkins 插件出现任何 bug，请在 [Jenkins JIRA](https://issues.jenkins-ci.org/) 中提出特定组件的问题。
 
 ## <a name="next-steps"></a>后续步骤
-现已配置 GitHub 和 Jenkins。 考虑在存储库分支的 `reliable-services-actor-sample/Actors/ActorCounter` 项目中做出一些示例更改，https://github.com/Azure-Samples/service-fabric-java-getting-started。 将更改推送到远程 `master` 分支（或配置使用的任何分支）。 这会触发配置的 Jenkins 作业 `MyJob`。 它会从 GitHub 提取更改、生成这些更改并将应用程序部署到在生成后操作中指定的群集。  
+现已配置 GitHub 和 Jenkins。 考虑在存储库分支的 `reliable-services-actor-sample/Actors/ActorCounter` 项目中做出一些示例更改， https://github.com/Azure-Samples/service-fabric-java-getting-started。 将更改推送到远程 `master` 分支（或配置使用的任何分支）。 这会触发配置的 Jenkins 作业 `MyJob`。 它会从 GitHub 提取更改、生成这些更改并将应用程序部署到在生成后操作中指定的群集。  
 
   <!-- Images -->
   [build-step]: ./media/service-fabric-cicd-your-linux-application-with-jenkins/build-step.png

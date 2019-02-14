@@ -1,8 +1,21 @@
 ---
-title:使用回归模型预测答案 titleSuffix:Azure 机器学习工作室 description:“适合初学者的数据科学”视频 4 中的“如何创建简单的回归模型来预测价格”。 包括具有目标数据的线性回归。
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-author: garyericson ms.author: garye ms.custom: seodec18 ms.date:2018/01/03
+title: 使用回归模型预测答案
+titleSuffix: Azure Machine Learning Studio
+description: “适合初学者的数据科学”视频 4 中的“如何创建简单的回归模型来预测价格”。 包括具有目标数据的线性回归。
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: garyericson
+ms.author: garye
+ms.custom: seodec18
+ms.date: 01/03/2018
+ms.openlocfilehash: 0d00d57cbeed9024ad2593171abc95c5157829d2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495915"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>使用简单的模型预测答案
 ## <a name="video-4-data-science-for-beginners-series"></a>视频 4：适合初学者的数据科学系列

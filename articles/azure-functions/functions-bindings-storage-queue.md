@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 565b4c66c98d62fdcbd23f6446f522b810db1430
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 61752ad9feda7ad6b8d91f1b996b68f27f24b2c6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999470"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821977"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 队列存储绑定
 
@@ -38,6 +38,9 @@ ms.locfileid: "52999470"
 [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet 包 3.x 版中提供了队列存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
+
+## <a name="encoding"></a>编码
+函数需要 base64 编码字符串。 对编码类型进行的任何调整（若要将数据作为 base64 编码字符串进行准备）需要在调用服务中实现。
 
 ## <a name="trigger"></a>触发器
 
@@ -273,7 +276,7 @@ module.exports = async function (context, message) {
 
 [队列触发器提供了数个元数据属性。](functions-triggers-bindings.md#binding-expressions---trigger-metadata) 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 以下是 [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) 类的属性。
 
-|属性|类型|Description|
+|属性|Type|说明|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|队列有效负载（如果是有效的字符串）。 如果队列消息有效负载是字符串，则 `QueueTrigger` 包含的值与 *function.json* 中 `name` 属性命名的变量的值相同。|
 |`DequeueCount`|`int`|此消息取消排队的次数。|
@@ -496,7 +499,7 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 
 有关完整示例，请参阅[输出 - C# 示例](#output---c-example)。
 
-可以使用 `StorageAccount` 特性在类、方法或参数级别指定存储帐户。 有关详细信息，请参阅[触发器 - 特性](#trigger---attribute)。
+可以使用 `StorageAccount` 特性在类、方法或参数级别指定存储帐户。 有关详细信息，请参阅“触发器 - 特性”。
 
 ## <a name="output---configuration"></a>输出 - 配置
 
@@ -564,7 +567,7 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 ```  
 
 
-|属性  |默认 | Description |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
 |maxPollingInterval|00:00:02|队列轮询的最大间隔时间。 最小值为 00:00:00.100（100 毫秒）。 | 
 |visibilityTimeout|00:00:00|消息处理失败时的重试间隔时间。 | 

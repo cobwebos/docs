@@ -15,15 +15,18 @@ ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: aa9eb0b624df29f6fb86402c06436ed7349fa662
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 2a2fafb5da50dbd26786284592cd330df7f5557a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273861"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113684"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>应用服务环境的异地分布式缩放
 ## <a name="overview"></a>概述
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 需要极高缩放性的应用程序方案可能超过单个应用部署可用的计算资源容量。  例如，投票应用程序、体育活动及电视娱乐活动都属于需要极高缩放性的方案。 只要对单个区域内和跨区域的多个应用部署进行应用的水平扩展，即可达到高缩放性要求以处理极高的负载要求。
 
 应用服务环境是水平扩展的理想平台。在选择可支持已知请求率的应用服务环境配置后，开发人员即可通过以千篇一律的方式部署其他应用服务环境，以获得所需的峰值负载容量。
@@ -68,13 +71,13 @@ ms.locfileid: "53273861"
 
 在创建配置文件后，每个应用实例都添加到配置文件作为本机 Azure 终结点。  下面的代码获取对每个前端 Web 应用的引用，然后通过 *TargetResourceId* 参数将每个应用添加为流量管理器终结点。
 
-    $webapp1 = Get-AzureRMWebApp -Name webfrontend1
+    $webapp1 = Get-AzWebApp -Name webfrontend1
     Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend1 –TrafficManagerProfile $profile –Type AzureEndpoints -TargetResourceId $webapp1.Id –EndpointStatus Enabled –Weight 10
 
-    $webapp2 = Get-AzureRMWebApp -Name webfrontend2
+    $webapp2 = Get-AzWebApp -Name webfrontend2
     Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend2 –TrafficManagerProfile $profile –Type AzureEndpoints -TargetResourceId $webapp2.Id –EndpointStatus Enabled –Weight 10
 
-    $webapp3 = Get-AzureRMWebApp -Name webfrontend3
+    $webapp3 = Get-AzWebApp -Name webfrontend3
     Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend3 –TrafficManagerProfile $profile –Type AzureEndpoints -TargetResourceId $webapp3.Id –EndpointStatus Enabled –Weight 10
 
     Set-AzureTrafficManagerProfile –TrafficManagerProfile $profile

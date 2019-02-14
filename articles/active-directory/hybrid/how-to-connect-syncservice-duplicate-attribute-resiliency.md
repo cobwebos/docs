@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: acc2790f935eae9bcb68c9fa3c443d7449922e71
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f4a9b4aba54f3968584187e108e87177c44bbc8e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192462"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815790"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>标识同步和重复属性复原
 重复属性复原是 Azure Active Directory 的一项功能，可在运行 Microsoft 的同步工具之一时消除 **UserPrincipalName** 和 **ProxyAddress** 冲突所造成的不便。
@@ -81,7 +81,7 @@ Azure Active Directory 并不是完全无法预配或更新具有重复属性的
 2. [按属性类型](#by-property-type)
 3. [按冲突值](#by-conflicting-value)
 4. [使用字符串搜索](#using-a-string-search)
-5. [已排序](#sorted)
+5. 排序
 6. [以有限的数量或全部](#in-a-limited-quantity-or-all)
 
 #### <a name="see-all"></a>查看全部

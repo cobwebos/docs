@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/23/2019
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 9cd2eaefb845b6ce9ca2f1cfcaf1234f8f96615c
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 9b54c35a5dcd495e7ed460f1fdbbe96ba3dee4fe
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300319"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663547"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库托管实例复制数据
 
@@ -54,7 +54,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **SqlServer**。 | 是的。 |
-| connectionString |此属性指定使用 SQL 身份验证或 Windows 身份验证连接到托管实例时所需的 connectionString 信息。 有关详细信息，请参阅以下示例。 选择 **SecureString** 以安全地将 connectionString 信息存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是的。 |
+| connectionString |此属性指定使用 SQL 身份验证或 Windows 身份验证连接到托管实例时所需的 connectionString 信息。 有关详细信息，请参阅以下示例。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以在 Azure 密钥保管库中输入密码，如果是 SQL 身份验证，则从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅下表的 JSON 示例和[在密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 |是的。 |
 | userName |如果你使用 Windows 身份验证，则此属性指定用户名。 例如，**domainname\\username**。 |不是。 |
 | password |此属性指定为用户名指定的用户帐户的密码。 选择 **SecureString** 以安全地将 connectionString 信息存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |不是。 |
 | connectVia | 此[集成运行时](concepts-integration-runtime.md)用于连接到数据存储。 在托管实例所在的虚拟网络中预配自承载集成运行时。 |是的。 |
@@ -66,7 +66,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 
 ```json
 {
-    "name": "SqlServerLinkedService",
+    "name": "AzureSqlMILinkedService",
     "properties": {
         "type": "SqlServer",
         "typeProperties": {
@@ -83,11 +83,40 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 }
 ```
 
-**示例 2：使用 Windows 身份验证**
+**示例 2：将 SQL 身份验证与 Azure 密钥保管库中的密码结合使用**
 
 ```json
 {
-    "name": "SqlServerLinkedService",
+    "name": "AzureSqlMILinkedService",
+    "properties": {
+        "type": "SqlServer",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;"
+            },
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**示例 3：使用 Windows 身份验证**
+
+```json
+{
+    "name": "AzureSqlMILinkedService",
     "properties": {
         "type": "SqlServer",
         "typeProperties": {
@@ -124,7 +153,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 
 ```json
 {
-    "name": "SQLServerDataset",
+    "name": "AzureSqlMIDataset",
     "properties":
     {
         "type": "SqlServerTable",
@@ -164,7 +193,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 ```json
 "activities":[
     {
-        "name": "CopyFromSQLServer",
+        "name": "CopyFromAzureSqlMI",
         "type": "Copy",
         "inputs": [
             {
@@ -196,7 +225,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 ```json
 "activities":[
     {
-        "name": "CopyFromSQLServer",
+        "name": "CopyFromAzureSqlMI",
         "type": "Copy",
         "inputs": [
             {
@@ -268,7 +297,7 @@ GO
 ```json
 "activities":[
     {
-        "name": "CopyToSQLServer",
+        "name": "CopyToAzureSqlMI",
         "type": "Copy",
         "inputs": [
             {
@@ -302,7 +331,7 @@ GO
 ```json
 "activities":[
     {
-        "name": "CopyToSQLServer",
+        "name": "CopyToAzureSqlMI",
         "type": "Copy",
         "inputs": [
             {
@@ -415,7 +444,7 @@ create table dbo.TargetTbl
 
 ```json
 {
-    "name": "SQLServerDataset",
+    "name": "AzureSqlMIDataset",
     "properties":
     {
         "type": "SqlServerTable",

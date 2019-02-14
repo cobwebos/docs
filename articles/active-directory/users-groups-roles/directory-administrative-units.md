@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 中的管理单元管理（预览）
+title: 管理单元管理（预览版）- Azure Active Directory | Microsoft Docs
 description: 在 Azure Active Directory 中使用管理单元获得更精细的委派权限
 services: active-directory
 documentationcenter: ''
@@ -10,19 +10,20 @@ ms.service: active-directory
 ms.topic: article
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 08/17/2017
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: fe3f41e95cc3aa4f22ff2cdea24388f7e9974755
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 52b71e557ade54cdefd349b8981100210833185a
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181191"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508447"
 ---
-# <a name="administrative-units-management-in-azure-ad---public-preview"></a>Azure AD 中的管理单元管理 - 公共预览
-本文介绍管理单元，这是一个新的 Azure Active Directory 资源容器，可用于向部分用户委托管理权限，以及向部分用户应用策略。 在 Azure Active Directory 中，利用管理单元，中心管理员能够将权限委派给区域管理员或以粒度级别设置策略。
+# <a name="administrative-units-management-in-azure-active-directory-public-preview"></a>Azure Active Directory 中的管理单元管理（公共预览版）
+
+本文介绍管理单元，这是一个新的 Azure Active Directory (Azure AD) 资源容器，可用于向部分用户委托管理权限，以及向部分用户应用策略。 在 Azure Active Directory 中，利用管理单元，中心管理员能够将权限委派给区域管理员或以粒度级别设置策略。
 
 这在具有独立部门的组织中非常有用，例如：由互相独立的许多自治学校（商学院和工程学校等）组成的大型大学。 此类部门具有其自己的 IT 管理员，这些管理员会控制访问、管理用户并专门针对其部门设置策略。 中心管理员希望能够通过其特定部门中的用户授予这些部门管理员权限。 更具体地说，通过使用此示例，例如，中心管理员可以创建特定学校（商学院）的管理单元并仅使用商学院用户填充该单元。 然后，中心管理员可以将商学院的 IT 员工添加到限定范围的角色中，换而言之，只通过商学院管理单元为 IT 员工授予商学院管理权限。
 

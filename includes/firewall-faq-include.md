@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 12/14/2018
+ms.date: 2/4/2019
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 3d76f25fc4382c8f03fac682fa7286a4a329a1db
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 8fd8cd93015fdb5cdcf657ecbcbb9a7cc870525a
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54300660"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747741"
 ---
 ### <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
 
@@ -34,6 +34,8 @@ Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚�
 ### <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Azure 防火墙的典型部署模型是什么？
 
 可在任何虚拟网络中部署 Azure 防火墙，但客户往往在中心虚拟网络中部署它，并在中心辐射模型中将其对等互连到其他虚拟网络。 然后，可将对等互连的虚拟网络中的默认路由设置为指向此中心防火墙虚拟网络。
+
+该模型的优点是能够跨不同订阅集中控制多个辐射 VNET。 由于不需要在每个 VNet 中单独部署防火墙，因此还能节约成本。 应根据客户流量模式衡量成本节约与相关对等互连成本。
 
 ### <a name="how-can-i-install-the-azure-firewall"></a>如何安装 Azure 防火墙？
 
@@ -120,7 +122,7 @@ Set-AzureRmFirewall -AzureFirewall $azfw
 
 ### <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Azure 防火墙能否转发和筛选同一虚拟网络或对等互连虚拟网络中子网之间的网络流量？
 
-即使 UDR 指向作为默认网关的 Azure 防火墙，也会直接路由同一虚拟网络或直接对等互连虚拟网络中的子网之间的流量。 建议的内部网络分段方法是使用网络安全组。 若要在此方案中将子网到子网流量发送到防火墙，UDR 必须在这两个子网上显式地包含目标子网网络前缀。
+是的。 但是，将 UDR 配置为在同一 VNET 中的子网之间重定向流量时需要额外注意。 虽然使用 VNET 地址范围作为 UDR 的目标前缀就足够了，但这也会通过 Azure 防火墙实例将所有流量从一台计算机路由到同一子网中的另一台计算机。 为避免这种情况，请在 UDR 中包含下一跃点类型为 **VNET** 的子网路由。 管理这些路由可能很麻烦并且容易出错。 建议的内部网络分段方法是使用不需要 UDR 的网络安全组。
 
 ### <a name="are-there-any-firewall-resource-group-restrictions"></a>是否有任何防火墙资源组限制？
 

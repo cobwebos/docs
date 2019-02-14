@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 48e20df61844d83deb8ac992f783cf227e658aaf
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: d86df171de807c23aad6dd2cb8e2128098dede81
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119979"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812442"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>设置 Application Insights：依赖项跟踪
 *依赖项*是应用调用的外部组件。 它通常是使用 HTTP、数据库或文件系统调用的服务。 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 可以度量应用程序等待依赖项的时长以及依赖项调用失败的频率。 可以调查特定的调用，并将其与请求和异常相关联。
@@ -52,7 +52,7 @@ ms.locfileid: "54119979"
 * [应用程序地图](#application-map)直观显示应用与相邻组件之间的依赖关系。
 * [性能、浏览器和失败边栏选项卡](#performance-and-blades)显示服务器依赖性数据。
 * [浏览器边栏选项卡](#ajax-calls)显示从用户浏览器发出的 AJAX 调用。
-* [单击缓慢或失败的请求](#diagnose-slow-requests)可以检查其依赖性调用。
+* 单击缓慢或失败的请求可以检查其依赖性调用。
 * [Analytics](#analytics) 可用于查询依赖性数据。
 
 ## <a name="application-map"></a>应用程序地图

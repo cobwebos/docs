@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 310963d5593dde0540c95920214a14a4195c346a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6bd61923dafb605e09c6ca6ab86dcd85fe60b37c
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242325"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734651"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>配置自动化机器学习试验
 
@@ -174,7 +174,7 @@ y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelec
 
 有关包含本地和远程计算目标的示例 Notebook，请参阅 [GitHub 站点](https://github.com/Azure/MachineLearningNotebooks/tree/master/automl)。
 
-<a name='configure-experiment'/>
+<a name='configure-experiment'></a>
 
 ## <a name="configure-your-experiment-settings"></a>配置试验设置
 
@@ -207,36 +207,48 @@ y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelec
         n_cross_validations=5)
     ```
 
-下表列出了可用于试验的参数设置及其默认值。
+有三个不同的 `task` 参数值，可确定要应用的算法的列表。  使用 `whitelist` 或 `blacklist` 参数可进一步修改迭代，从而包含或排除可用算法。
+* 分类
+    * LogisticRegression
+    * SGD
+    * MultinomialNaiveBayes
+    * BernoulliNaiveBayes
+    * SVM
+    * LinearSVM
+    * KNN
+    * DecisionTree
+    * RandomForest
+    * ExtremeRandomTrees
+    * LightGBM
+    * GradientBoosting
+    * TensorFlowDNN
+    * TensorFlowLinearClassifier
+* 回归
+    * ElasticNet
+    * GradientBoosting
+    * DecisionTree
+    * KNN
+    * LassoLars
+    * SGD 
+    * RandomForest
+    * ExtremeRandomTree
+    * LightGBM
+    * TensorFlowLinearRegressor
+    * TensorFlowDNN
+* 预测
+    * ElasticNet
+    * GradientBoosting
+    * DecisionTree
+    * KNN
+    * LassoLars
+    * SGD 
+    * RandomForest
+    * ExtremeRandomTree
+    * LightGBM
+    * TensorFlowLinearRegressor
+    * TensorFlowDNN
 
-属性 |  说明 | 默认值
---|--|--
-`task`  |指定机器学习问题的类型。 允许的值为 <li>分类</li><li>回归</li><li>预测</li>    | 无 |
-`primary_metric` |在生成模型时要优化的指标。 例如，如果将准确度指定为 primary_metric，则自动化机器学习将查找准确度最高的模型。 对于每个试验，只能指定一个 primary_metric。 允许的值为 <br/>**分类**：<br/><li> accuracy  </li><li> AUC_weighted</li><li> precision_score_weighted </li><li> balanced_accuracy </li><li> average_precision_score_weighted </li><br/>**回归**： <br/><li> normalized_mean_absolute_error </li><li> spearman_correlation </li><li> normalized_root_mean_squared_error </li><li> normalized_root_mean_squared_log_error</li><li> R2_score  </li> | 分类：accuracy <br/>回归：spearman_correlation <br/> |
-`experiment_exit_score` |   可为 primary_metric 设置目标值。 找到符合 primary_metric 目标的模型后，自动化机器学习将停止迭代，试验将会终止。 如果未设置此值（默认值），自动化机器学习试验将按照迭代中指定的迭代次数继续运行。 取双精度值。 如果永远达不到目标，自动化机器学习将会继续，直到达到了迭代中指定的迭代次数为止。| 无
-`iterations` |最大迭代数。 每个迭代相当于生成管道的训练作业。 管道是数据预处理机制和模型。 若要获得优质模型，请使用 250 或更大的值    | 100
-`max_concurrent_iterations`|    要并行运行的最大迭代数。 此设置仅适用于远程计算。|   1
-`max_cores_per_iteration`   | 指示要使用计算目标上的多少个核心来训练单个管道。 如果算法可以利用多个核心，则可以提高多核计算机的性能。 可将其设置为 -1，以使用计算机上的所有可用核心。|  1
-`iteration_timeout_minutes` |   限制特定迭代占用的时间（分钟）。 如果某个迭代超过指定的时间，将取消该迭代。 如果未设置，则迭代会继续运行，直到完成。 |   无
-`n_cross_validations`   |交叉验证拆分数| 无
-`validation_size`   |验证集的大小（占所有训练样本的百分比）。|  无
-`preprocess` | True/False <br/>如果为 True，则试验可以基于输入执行预处理。 下面是预处理子集<li>缺少数据：插补缺失数据 - 带平均值的数字，出现次数最多的文本 </li><li>分类值：如果数据类型为数字，并且唯一值的数量小于 5%，则转换为独热编码 </li><li>等等。有关完整列表，请查看 [GitHub 存储库](https://aka.ms/aml-notebooks)</li><br/>注意：如果数据比较稀疏，则不能使用 preprocess = true |  False |
-`enable_cache`  | True/False <br/>设置为 True 可完成一次预处理，并将相同的预处理数据用于所有迭代。 | True |
-`blacklist_models`  | 自动化机器学习试验会尝试许多不同的算法。 配置为从试验中排除某些算法。 如果你知道某些算法不适合你的数据集，则这种做法很有用。 排除算法可以节省计算资源和训练时间。<br/>分类允许的值<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>回归允许的值<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>预测允许的值<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|   无
-`whitelist_models`  | 自动化机器学习试验会尝试许多不同的算法。 配置为在试验中包含某些算法。 如果你知道某些算法适合你的数据集，则这种做法很有用。 <br/>分类允许的值<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>回归允许的值<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>预测允许的值<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|  无
-`verbosity` |使用 INFO（最详细）和 CRITICAL（最精简）控制日志记录级别。 详细级别采用 Python 日志记录包中定义的相同值。 允许值包括：<br/><li>logging.INFO</li><li>logging.WARNING</li><li>logging.ERROR</li><li>logging.CRITICAL</li>  | logging.INFO</li>
-`X` | 用于训练的所有特征 |  无
-`y` |   用于训练的标签数据。 对于分类，应是一个整数数组。|  无
-`X_valid`|（可选）用于验证的所有特征。 如果未指定，则在 train 与 validate 之间拆分 X |   无
-`y_valid`   |（可选）用于验证的标签数据。 如果未指定，则在 train 与 validate 之间拆分 y    | 无
-`sample_weight` |   （可选）每个样本的权重值。 需要为数据点分配不同的权重时使用 |   无
-`sample_weight_valid`   |   （可选）每个验证样本的权重值。 如果未指定，则在 train 与 validate 之间拆分 sample_weight   | 无
-`run_configuration` |   RunConfiguration 对象。  用于远程运行。 |无
-`data_script`  |    包含 get_data 方法的文件的路径。  远程运行需要此参数。   |无
-`model_explainability` | _可选_ True/False <br/>  如果为 True，则让试验针对每个迭代执行特征重要性评估。 也可以针对特定的迭代使用 explain_model() 方法，以便在完成试验后，为该迭代启用按需特征重要性评估。 | False
-`enable_ensembling`|用于在完成其他所有迭代后启用系综迭代的标志。| True
-`ensemble_iterations`|迭代数，在执行这些迭代期间，我们选择了一个拟合管道作为最终系综的一部分。| 15
-`experiment_timeout_minutes`| 限制运行整个试验可以花费的时间（分钟） | 无
+有关参数的完整列表，请参阅 [AutoMLConfig 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)。  
 
 ## <a name="data-pre-processing-and-featurization"></a>数据预处理和特征化
 

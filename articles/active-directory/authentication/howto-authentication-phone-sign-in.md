@@ -1,21 +1,22 @@
 ---
-title: 使用 Microsoft Authenticator 应用（公共预览版）进行无密码 Azure AD 登录
+title: 使用 Microsoft Authenticator 应用（预览版）进行无密码 Azure AD 登录
 description: 不使用密码通过 Microsoft Authenticator 应用（公共预览版）登录到 Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/20/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
-ms.openlocfilehash: e237d736a939c3136faa4f6df74ed4e9db9665d3
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.custom: seo-update-azuread-jan
+ms.openlocfilehash: b0527d839ac5b80adbceef7682da9fb3ddd2fc2b
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077618"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694144"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>使用 Microsoft Authenticator 应用（公共预览版）进行无密码手机登录
 

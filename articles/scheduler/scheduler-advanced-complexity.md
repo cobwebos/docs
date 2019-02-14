@@ -10,12 +10,12 @@ ms.suite: infrastructure-services
 ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: be3f8ddaf9788eb9023ffc2caf2e0d6aeb49bdba
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: a13ce85124dc84362ec1ee2aa39a16c2c3f09f88
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712052"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55701006"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>在 Azure 计划程序中为作业生成高级计划和重复周期
 
@@ -53,9 +53,9 @@ ms.locfileid: "51712052"
 
 若要使用 [Azure 计划程序 REST API](/rest/api/scheduler) 创建基本计划，请执行以下步骤：
 
-1. 使用[注册操作 - 资源管理器 REST API](https://docs.microsoft.com/rest/api/resources/providers#Providers_Register) 向资源提供程序注册 Azure 订阅。 Azure 计划程序服务的提供程序名称为 **Microsoft.Scheduler**。 
+1. 使用[注册操作 - 资源管理器 REST API](https://docs.microsoft.com/rest/api/resources/providers) 向资源提供程序注册 Azure 订阅。 Azure 计划程序服务的提供程序名称为 **Microsoft.Scheduler**。 
 
-1. 使用计划程序 REST API 中的[为作业集合创建或更新操作](https://docs.microsoft.com/rest/api/scheduler/jobcollections#JobCollections_CreateOrUpdate)创建作业集合。 
+1. 使用计划程序 REST API 中的[为作业集合创建或更新操作](https://docs.microsoft.com/rest/api/scheduler/jobcollections)创建作业集合。 
 
 1. 使用[为作业创建或更新操作](https://docs.microsoft.com/rest/api/scheduler/jobs/createorupdate)创建作业。 
 
@@ -63,7 +63,7 @@ ms.locfileid: "51712052"
 
 此表简要概述了在设置作业的重复周期和计划时可以使用的主要 JSON 元素。 
 
-| 元素 | 必选 | Description | 
+| 元素 | 必选 | 说明 | 
 |---------|----------|-------------|
 | **startTime** | 否 | [ISO 8601 格式](http://en.wikipedia.org/wiki/ISO_8601)的 DateTime 字符串值，用于指定作业在基本计划中首次启动的时间。 <p>对于复杂的计划，作业的启动时间不早于 **startTime**。 | 
 | **recurrence** | 否 | 作业运行时的重复规则。 **recurrence** 对象支持这些元素：**frequency**、**interval**、**schedule**、**count** 和 **endTime**。 <p>如果使用 **recurrence** 元素，则还必须使用 **frequency** 元素，而其他 **recurrence** 元素是可选的。 |
@@ -159,7 +159,7 @@ ms.locfileid: "51712052"
 
 下表详细描述了 schedule 元素：
 
-| JSON 名称 | Description | 有效值 |
+| JSON 名称 | 说明 | 有效值 |
 |:--- |:--- |:--- |
 | **分钟数** |运行作业的小时中的分钟。 |整数数组。 |
 | **小时数** |运行作业的日期中的小时。 |整数数组。 |
@@ -173,7 +173,7 @@ ms.locfileid: "51712052"
 
 这些计划假设 **interval** 设置为 1\. 此外，这些示例假设正确的**频率**值符合 **schedule**。 例如，不能在使用 "day" 作为**频率**的同时，在**计划**中使用 **monthDays** 修改项。 本文前面已描述这些限制。
 
-| 示例 | Description |
+| 示例 | 说明 |
 |:--- |:--- |
 | `{"hours":[5]}` |在每天的 5:00 AM 运行。<br /><br />计划程序会将 "hours" 中的每个值与 "minutes" 中的每个值一一匹配，以创建运行作业的所有时间的列表。 |
 | `{"minutes":[15], "hours":[5]}` |在每天早晨 5:15 运行。 |

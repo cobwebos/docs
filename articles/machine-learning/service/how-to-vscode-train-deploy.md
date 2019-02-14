@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 409d1bb30dc956bb19e9a37212d93990d1401e7b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6d190e4c5d283b9f803cf7287445d7591b5465db
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240108"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753106"
 ---
 # <a name="use-visual-studio-code-to-train-and-deploy-machine-learning-models"></a>使用 Visual Studio Code 训练和部署机器学习模型
 
@@ -108,9 +108,9 @@ VS Code 扩展会自动在本地计算机上为本地和 docker 环境创建本�
 
 #### <a name="the-conda-dependencies-file"></a>conda 依赖项文件
 
-默认情况下，系统会为你新建 conda 环境，并管理安装依赖项。 不过，必须在 `aml_config/conda_dependencies.yml` 文件中指定依赖项。
+默认情况下，系统会为你新建 conda 环境，并管理安装依赖项。 不过，必须在 `aml_config/conda_dependencies.yml` 文件中指定依赖项及其版本。 
 
-下面是默认“aml_config/conda_dependencies.yml”中的代码片段。
+下面是默认“aml_config/conda_dependencies.yml”中的代码片段。 例如，可以指定“tensorflow=1.12.0”，如下所示。 如果未指定依赖项版本，则会使用最新版本。  
 可以在配置文件中添加其他依赖项。
 
 ```yaml
@@ -123,7 +123,7 @@ dependencies:
   # Currently Azure Machine Learning service only supports 3.5.2 and later.
 
 - python=3.6.2
-- tensorflow
+- tensorflow=1.12.0
 
 - pip:
     # Required packages for Azure Machine Learning service execution, history, and data preparation.

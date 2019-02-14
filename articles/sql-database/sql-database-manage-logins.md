@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 7cb2e4214e868bdf9f585d6b0f4468a6c8375191
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 81ec99c5de94736d68392cc7cf0bc3e305e0ce7d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459224"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754007"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>控制和授予对 SQL 数据库和 SQL 数据仓库的数据库访问权限
 
@@ -49,13 +49,13 @@ ms.locfileid: "55459224"
 - 这些帐户以 `dbo` 用户的身份进入用户数据库，在用户数据库中拥有所有权限。 （用户数据库的所有者也以 `dbo` 用户的身份进入数据库。） 
 - 不会以 `dbo` 用户的身份进入 `master` 数据库，在 master 数据库中拥有受限的权限。 
 - **不是**标准 SQL Server `sysadmin` 固定服务器角色的成员，SQL 数据库中未提供此角色。  
-- 可以在 master 数据库和服务器级防火墙规则中创建、更改及删除数据库、登录名与用户。
+- 可以在 master 数据库和服务器级 IP 防火墙规则中创建、更改及删除数据库、登录名与用户。
 - 可以在 `dbmanager` 和 `loginmanager` 角色中添加和删除成员。
 - 可以查看 `sys.sql_logins` 系统表。
 
 ### <a name="configuring-the-firewall"></a>配置防火墙
 
-为单个 IP 地址或地址范围配置服务器级防火墙后，**SQL 服务器管理员**和 **Azure Active Directory 管理员**可以连接到 master 数据库以及所有用户数据库。 初始服务器级防火墙可通过 [Azure 门户](sql-database-get-started-portal.md)、[PowerShell](sql-database-powershell-samples.md) 或 [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx) 进行配置。 建立连接以后，还可以使用 [Transact-SQL](sql-database-configure-firewall-settings.md) 配置其他服务器级防火墙规则。
+为单个 IP 地址或地址范围配置服务器级防火墙后，**SQL 服务器管理员**和 **Azure Active Directory 管理员**可以连接到 master 数据库以及所有用户数据库。 初始服务器级防火墙可通过 [Azure 门户](sql-database-single-database-get-started.md)、[PowerShell](sql-database-powershell-samples.md) 或 [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx) 进行配置。 建立连接以后，还可以使用 [Transact-SQL](sql-database-configure-firewall-settings.md) 配置其他服务器级 IP 防火墙规则。
 
 ### <a name="administrator-access-path"></a>管理员访问路径
 
@@ -67,7 +67,7 @@ ms.locfileid: "55459224"
 
 ### <a name="connecting-to-a-database-by-using-sql-server-management-studio"></a>通过使用 SQL Server Management Studio 连接到数据库
 
-有关创建服务器、数据库和服务器级防火墙规则，以及使用 SQL Server Management Studio 查询数据库的演练，请参阅[通过 Azure 门户和 SQL Server Management Studio 开始使用 Azure SQL 数据库服务器、数据库和防火墙规则](sql-database-get-started-portal.md)。
+有关创建服务器、数据库和服务器级 IP 防火墙规则，以及使用 SQL Server Management Studio 查询数据库的演练，请参阅[通过 Azure 门户和 SQL Server Management Studio 开始使用 Azure SQL 数据库服务器、数据库和防火墙规则](sql-database-single-database-get-started.md)。
 
 > [!IMPORTANT]
 > 建议始终使用最新版本的 Management Studio 以保持与 Microsoft Azure 和 SQL 数据库的更新同步。 [更新 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)。

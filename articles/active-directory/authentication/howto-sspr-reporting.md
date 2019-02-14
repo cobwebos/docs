@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 891ab7ce0218e3532b8e503bc9b06da04a13d2c4
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: d3d88c29025c1a7a40a6248d3be841a33d1b6761
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55074541"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694357"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
@@ -85,7 +85,7 @@ ms.locfileid: "55074541"
 * [重置密码(由管理员)](#activity-type-reset-password-by-admin)：表示管理员通过 Azure 门户代表用户执行了密码重置。
 * [重置密码(自助服务)](#activity-type-reset-password-self-service)：表示用户已成功通过 [Azure AD 密码重置门户](https://passwordreset.microsoftonline.com)重置其密码。
 * [自助式密码重置流活动进度](#activity-type-self-serve-password-reset-flow-activity-progress)：表示密码重置过程中用户执行的每个特定步骤（例如，传递特定的密码重置身份验证门限）。
-* [解锁用户帐户(自助服务)](#activity-type-unlock-user-account-self-service)：表示用户在未通过 [Azure AD 密码重置门户](https://passwordreset.microsoftonline.com)重置其密码的情况下，使用无需重置的 Active Directory 帐户解锁功能成功解锁了其 Active Directory 帐户。
+* [解锁用户帐户(自助服务)](#activity-type-unlock-a-user-account-self-service))：表示用户在未通过 [Azure AD 密码重置门户](https://passwordreset.microsoftonline.com)重置其密码的情况下，使用无需重置的 Active Directory 帐户解锁功能成功解锁了其 Active Directory 帐户。
 * [用户已注册自助式密码重置](#activity-type-user-registered-for-self-service-password-reset)：表示用户已注册全部所需的信息，可以根据当前指定的租户密码重置策略重置其密码。
 
 ### <a name="activity-type-blocked-from-self-service-password-reset"></a>活动类型：被阻止进行自助密码重置
@@ -109,7 +109,7 @@ ms.locfileid: "55074541"
 * **活动状态**：
   * _成功_：表示用户已成功更改其密码。
   * _失败_：表示用户未能更改其密码。 选择相应的行可查看“活动状态原因”类别，详细了解发生失败的原因。
-* **活动状态失败原因**： 
+* **活动状态失败原因**：
   * _FuzzyPolicyViolationInvalidPassword_：由于 Microsoft 的“受禁密码检测”功能发现用户选择的某个密码过于常见或者太弱，因此已自动阻止该密码。
 
 ### <a name="activity-type-reset-password-by-admin"></a>活动类型：重置密码(由管理员)
@@ -133,7 +133,7 @@ ms.locfileid: "55074541"
 * **活动状态**：
   * _成功_：表示用户已成功重置其自己的密码。
   * _失败_：表示用户未能重置其自己的密码。 选择相应的行可查看“活动状态原因”类别，详细了解发生失败的原因。
-* **活动状态失败原因**： 
+* **活动状态失败原因**：
   * _FuzzyPolicyViolationInvalidPassword_：由于 Microsoft 的“受禁密码检测”功能发现管理员选择的某个密码过于常见或者太弱，因此已自动阻止该密码。
 
 ### <a name="activity-type-self-serve-password-reset-flow-activity-progress"></a>活动类型：自助式密码重置流活动进度
@@ -146,7 +146,7 @@ ms.locfileid: "55074541"
 * **活动状态**：
   * _成功_：表示用户已成功完成密码重置流的特定步骤。
   * _失败_：表示未能执行密码重置流的特定步骤。 选择相应的行可查看“活动状态原因”类别，详细了解发生失败的原因。
-* **活动状态原因**： 请查看下表，了解[所有允许的重置活动状态原因](#allowed-values-for-details-column)。
+* **活动状态原因**： 请查看下表，了解[所有允许的重置活动状态原因](#description-of-the-report-columns-in-the-azure-portal)。
 
 ### <a name="activity-type-unlock-a-user-account-self-service"></a>活动类型：解锁用户帐户(自助服务)
 
@@ -168,10 +168,10 @@ ms.locfileid: "55074541"
 * **活动目标**：注册了密码重置的用户。 此用户可能是最终用户，也可能是管理员。
 * **允许的活动状态**：
   * _成功_：表示用户已根据当前策略成功注册了密码重置。 
-  * _失败_：表示用户未能注册密码重置。 选择相应的行可查看“活动状态原因”类别，详细了解发生失败的原因。 
+  * _失败_：表示用户未能注册密码重置。 选择相应的行可查看“活动状态原因”类别，详细了解发生失败的原因。
 
      >[!NOTE]
-     >“失败”并不意味着用户无法重置其自己的密码。 而是意味着他们未完成注册过程。 如果用户的帐户中未验证的数据是正确的（例如，未验证的电话号码），则即使他们未验证此电话号码，也仍可以使用该电话号码来重置其密码。 有关详细信息，请参阅[用户注册时会发生什么情况？](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#what-happens-when-a-user-registers)。
+     >“失败”并不意味着用户无法重置其自己的密码。 而是意味着他们未完成注册过程。 如果用户的帐户中未验证的数据是正确的（例如，未验证的电话号码），则即使他们未验证此电话号码，也仍可以使用该电话号码来重置其密码。
      >
 
 ## <a name="next-steps"></a>后续步骤

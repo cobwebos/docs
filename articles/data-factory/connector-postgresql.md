@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/23/2018
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: fc222d2524a709ee8b0f3fc8283d7ffb27575772
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 1142400cee040f40f88bf1f7509fc5dcba3429c6
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321970"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658532"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 PostgreSQL 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -51,12 +51,12 @@ PostgreSQL 链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**PostgreSql** | 是 |
-| connectionString | 用于连接到 Azure Database for PostgreSQL 的 ODBC 连接字符串。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| connectionString | 用于连接到 Azure Database for PostgreSQL 的 ODBC 连接字符串。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[将凭据存储在 Azure 密钥保管库中](store-credentials-in-key-vault.md)一文。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure Integration Runtime 时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 典型的连接字符串为 `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`。 你可以根据自己的情况设置更多属性：
 
-| 属性 | Description | 选项 | 必选 |
+| 属性 | 说明 | 选项 | 必选 |
 |:--- |:--- |:--- |:--- |:--- |
 | EncryptionMethod (EM)| 驱动程序用于加密在驱动程序和数据库服务器之间发送的数据的方法。 例如 `ValidateServerCertificate=<0/1/6>;`| 0 (No Encryption) **(Default)** / 1 (SSL) / 6 (RequestSSL) | 否 |
 | ValidateServerCertificate (VSC) | 启用 SSL 加密后，确定驱动程序是否验证数据库服务器发送的证书（加密方法=1）。 例如 `ValidateServerCertificate=<0/1>;`| 0 (Disabled) **(Default)** / 1 (Enabled) | 否 |
@@ -72,6 +72,35 @@ PostgreSQL 链接的服务支持以下属性：
             "connectionString": {
                 "type": "SecureString",
                 "value": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**示例：在 Azure 密钥保管库中存储密码**
+
+```json
+{
+    "name": "PostgreSqlLinkedService",
+    "properties": {
+        "type": "PostgreSql",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;"
+            },
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -183,58 +212,6 @@ PostgreSQL 链接的服务支持以下属性：
     }
 ]
 ```
-
-## <a name="data-type-mapping-for-postgresql"></a>PostgreSQL 的数据类型映射
-
-从 PostgreSQL 复制数据时，以下映射用于从 PostgreSQL 数据类型映射到 Azure 数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
-
-| PostgreSQL 数据类型 | PostgresSQL 别名 | 数据工厂临时数据类型 |
-|:--- |:--- |:--- |
-| `abstime` |&nbsp; |`String` |
-| `bigint` | `int8` | `Int64` |
-| `bigserial` | `serial8` | `Int64` |
-| `bit [1]` |&nbsp; | `Boolean` |
-| `bit [(n)], n>1` |&nbsp; | `Byte[]` |
-| `bit varying [(n)]` | `varbit` |`Byte[]` |
-| `boolean` | `bool` | `Boolean` |
-| `box` |&nbsp; | `String` |
-| `bytea` |&nbsp; | `Byte[], String` |
-| `character [(n)]` | `char [(n)]` | `String` |
-| `character varying [(n)]` | `varchar [(n)]` | `String` |
-| `cid` |&nbsp; | `Int32` |
-| `cidr` |&nbsp; | `String` |
-| `circle` |&nbsp; |` String` |
-| `date` |&nbsp; |`Datetime` |
-| `daterange` |&nbsp; |`String` |
-| `double precision` |`float8` |`Double` |
-| `inet` |&nbsp; |`String` |
-| `intarray` |&nbsp; |`String` |
-| `int4range` |&nbsp; |`String` |
-| `int8range` |&nbsp; |`String` |
-| `integer` | `int, int4` |`Int32` |
-| `interval [fields] [(p)]` | | `String` |
-| `json` |&nbsp; | `String` |
-| `jsonb` |&nbsp; | `Byte[]` |
-| `line` |&nbsp; | `Byte[], String` |
-| `lseg` |&nbsp; | `String` |
-| `macaddr` |&nbsp; | `String` |
-| `money` |&nbsp; | `String` |
-| `numeric [(p, s)]`|`decimal [(p, s)]` |`String` |
-| `numrange` |&nbsp; |`String` |
-| `oid` |&nbsp; |`Int32` |
-| `path` |&nbsp; |`String` |
-| `pg_lsn` |&nbsp; |`Int64` |
-| `point` |&nbsp; |`String` |
-| `polygon` |&nbsp; |`String` |
-| `real` |`float4` |`Single` |
-| `smallint` |`int2` |`Int16` |
-| `smallserial` |`serial2` |`Int16` |
-| `serial` |`serial4` |`Int32` |
-| `text` |&nbsp; |`String` |
-| `timewithtimezone` |&nbsp; |`String` |
-| `timewithouttimezone` |&nbsp; |`String` |
-| `timestampwithtimezone` |&nbsp; |`String` |
-| `xid` |&nbsp; |`Int32` |
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

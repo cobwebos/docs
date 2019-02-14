@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 5029365e665ce3ee9ba65886a3d6d5bbced0ed9a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 135741a8bf385388fa1b3ac75a45e4c4678bf196
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103303"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814458"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用串行控制台访问 GRUB 和单用户模式
 GRUB 是指 GRand 统一引导加载程序，它可能是你在启动 VM 时看到的第一个事物。 因为它是在操作系统启动之前显示的，因此无法通过 SSH 进行访问。 从 GRUB 可以修改启动配置以实现启动进入单用户模式等功能。
@@ -28,7 +28,7 @@ GRUB 是指 GRand 统一引导加载程序，它可能是你在启动 VM 时看�
 
 在仅将 VM 配置为接受 SSH 密钥登录的情况下，单用户模式也很有用。 在这种情况下，可以使用单用户模式创建具有密码身份验证的帐户。 请注意，串行控制台服务将仅允许具有参与者级别或更高级别访问权限的用户访问 VM 的串行控制台。
 
-若要进入单用户模式，需要在 VM 启动时进入 GRUB，并在 GRUB 中修改启动配置。 下面介绍了进入 GRUB 的详细说明。 通常，如果你的 VM 已配置为显示 GRUB，则可以使用 VM 串行控制台中的重启按钮来重启 VM 并显示 GRUB。
+若要进入单用户模式，需要在 VM 启动时输入 GRUB，并在 GRUB 中修改启动配置。 下面介绍了进入 GRUB 的详细说明。 通常，如果你的 VM 已配置为显示 GRUB，则可以使用 VM 串行控制台中的重启按钮来重启 VM 并显示 GRUB。
 
 ![Linux 串行控制台重启按钮](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-bar.png)
 
@@ -44,7 +44,7 @@ GRUB 是指 GRand 统一引导加载程序，它可能是你在启动 VM 时看�
 ![Linux 串行控制台重启](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-ubuntu.gif)
 
 ## <a name="general-single-user-mode-access"></a>常规单用户模式访问
-在未配置具有密码身份验证的帐户的情况下，可能需要手动访问单用户模式。 需要修改 GRUB 配置以手动进入单用户模式。 完成此操作后，请参阅[使用单用户模式重置或添加密码](#-Use-Single-User-Mode-to-reset-or-add-a-password)以获取进一步说明。
+在未配置具有密码身份验证的帐户的情况下，可能需要手动访问单用户模式。 需要修改 GRUB 配置以手动进入单用户模式。 完成此操作后，请参阅“使用单用户模式重置或添加密码”以获取进一步说明。
 
 如果 VM 无法启动，某些发行版通常会自动将你置于单用户模式或紧急模式。 但是，其他发行版需要进行额外设置才能自动将你置于单用户模式或紧急模式（例如设置根密码）。
 

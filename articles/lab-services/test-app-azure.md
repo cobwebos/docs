@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: spelluru
-ms.openlocfilehash: 655159185a6011d79b927fd16d2957e2a59c8376
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a58ebe14749add30deb229f1b7e30fbb6e9921d7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437786"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814876"
 ---
 # <a name="test-your-app-in-azure"></a>在 Azure 中测试应用 
 本文提供有关使用开发测试实验室在 Azure 中测试应用程序的步骤。 首先，在实验室中设置一个文件共享，并将其作为驱动器装载到实验室中的本地开发计算机和 VM 上。 然后，使用 Visual Studio 2017 将应用部署到文件共享，以便可以在实验室中的 VM 上运行该应用。  
@@ -57,7 +57,7 @@ ms.locfileid: "54437786"
     ![选择实验室 VM](media/test-app-in-azure/select-lab-vm.png)
 2. 在工具栏上选择“连接”以连接到 VM。 
 3. 在“命令行工具”部分使用“Windows 安装”链接来[安装 Azure PowerShell](https://azure.microsoft.com/downloads/)。 有关安装 Azure PowerShell 的其他方法，请参阅[此文](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.8.1)。
-4. 遵照[装载文件共享](#mount-the-file-share)部分的说明操作。 
+4. 请遵照“装载文件共享”部分的说明操作。 
 
 ## <a name="publish-your-app-from-visual-studio"></a>从 Visual Studio 发布应用
 本部分介绍如何将应用从 Visual Studio 发布到云中的测试 VM。

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: dacc2ca995bebd0ae65d9c8221fc1954687949ee
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 479278400aa056a7cebcefaa2eedee3d98bc9a15
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179831"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815228"
 ---
 # <a name="register-in-dev-center"></a>在开发人员中心内注册  
 若要帮助确认你登录的不是个人浏览器帐户，请打开一个新的 Internet Explorer InPrivate 或 Chrome Incognito 浏览会话。  
@@ -78,7 +78,7 @@ ms.locfileid: "55179831"
     | 计费模式 | 后续步骤 |  
     |:--- |:--- |  
     | 免费 | 转到云合作伙伴门户。<ul> <li>若要在 Azure 市场中进行发布，请使用位于 [cloudpartner.azure.com](https://cloudpartner.azure.com) 的云合作伙伴门户页面。</li> </ul> |  
-    | 商用(交易) | 更新你的帐户信息。<ul> <li>有关添加帐户信息的详细信息，请访问[如何添加银行和税务信息](#how-to-add-bank-and-tax-information)部分。</li> </ul> |  
+    | 商用(交易) | 更新你的帐户信息。<ul> <li>有关添加帐户信息的详细信息，请访问[如何添加银行和税务信息](#add-bank-information)部分。</li> </ul> |  
 
     *   商用产品/服务的一个示例是采用按小时计费模型的 VM 产品/服务。  
 
@@ -98,7 +98,7 @@ ms.locfileid: "55179831"
     
     单击“启动电子邮件”按钮。  
 1.  在登录页上，使用任何 Microsoft ID 进行登录。 如果没有 Microsoft ID，请创建一个。  
-    *   有关创建 Microsoft ID 的详细信息，请访问[关于创建 Microsoft ID 以管理 Azure 市场帐户的指南](#guidelines-for-creating-a-microsoft-id-to-manage-an-azure-marketplace-account)部分。  
+    *   有关创建 Microsoft ID 的详细信息，请访问关于创建 Microsoft ID 以管理 Azure 市场帐户的指南部分。  
 2.  填写问题的详细信息。  
 3.  若要提交票证，单击“提交”按钮。 
 
@@ -146,7 +146,7 @@ ms.locfileid: "55179831"
 > 在 Transact 列表类型中进行发布的发布者：VM、Azure 应用：解决方案模板和托管应用。  
 
 *   **为何需要开发人员中心帐户？**
-> Microsoft 需要使用开发人员中心帐户代表发布者向客户计收“事务处理”商品类型的费用。 Microsoft 通过开发人员中心帐户注册来验证公司的法律、税务和银行信息。 有关详细信息，请单击[此处](https://docs.microsoft.com/azure/marketplace/become-publisher#register-in-dev-center)。
+> Microsoft 需要使用开发人员中心帐户代表发布者向客户计收“事务处理”商品类型的费用。 Microsoft 通过开发人员中心帐户注册来验证公司的法律、税务和银行信息。 有关详细信息，请单击[此处](https://docs.microsoft.com/azure/marketplace/become-publisher)。
 
 *   **如何开始使用开发人员中心注册？**
 > 为避免重复，请确认你的公司尚未注册任何开发人员中心帐户。 必须使用要与开发人员帐户关联的 Microsoft 帐户登录。 如果没有 Microsoft 帐户，可在[此处](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1)创建一个新帐户。 （示例：contoso_marketplace@live.com）若要登录并注册，请转到 https://dev.windows.com/en-us/registration?accountProgram=Azure
@@ -184,7 +184,7 @@ ms.locfileid: "55179831"
 > 请分配临时公司名，在 [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) 上联系支持人员，并向其提供你的企业注册文档。
 
 *   **如何添加税务和付款信息？**
-> 如果未在开发人员中心帐户中填写税务和银行信息，则无法发布事务处理产品/服务。  有关添加帐户信息的详细信息，请访问[如何添加银行和税务信息](https://docs.microsoft.com/azure/marketplace/register-dev-center#how-to-add-bank-and-tax-information)。
+> 如果未在开发人员中心帐户中填写税务和银行信息，则无法发布事务处理产品/服务。  有关添加帐户信息的详细信息，请访问[如何添加银行和税务信息](https://docs.microsoft.com/azure/marketplace/register-dev-center)。
 
 *   **是否可以更改开发人员中心 Microsoft 登录帐户？**
 > 不是。 创建开发人员中心后，无法更改所有者帐户。 必须使用所需的 Microsoft 帐户重新开始创建新的开发人员中心帐户。

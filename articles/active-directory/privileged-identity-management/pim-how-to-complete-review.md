@@ -13,12 +13,13 @@ ms.subservice: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: fc4dcc22cf22f70fcf441c3c8a54aeda2ffd7588
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bea4f649b40298de15b8352fc8eb522da87dead5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189650"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190341"
 ---
 # <a name="complete-an-access-review-for-azure-ad-directory-roles-in-pim"></a>在 PIM 中完成 Azure AD 目录角色的访问评审
 [访问评审开始](pim-how-to-start-security-review.md)后，特权角色管理员可以评审特权访问。 Azure AD Privileged Identity Management (PIM) 会自动发送一封提示用户审阅其访问的电子邮件。 如果用户未收到电子邮件，可以向他们发送[如何执行访问评审](pim-how-to-perform-security-review.md)的相关说明。

@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 28f35fd1098e055b22dada703cd7e68de591eea7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6198d16b25330fb02cf5642addba0093ec437cab
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192615"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811476"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同步：配置筛选
 使用筛选功能可以控制本地目录中的哪些对象应该出现在 Azure Active Directory (Azure AD) 中。 默认配置会采用配置的林中所有域内的所有对象。 我们一般建议使用这种配置。 使用 Exchange Online 和 Skype for Business 等 Office 365 工作负荷的用户将受益于完整的全局地址列表，因为这样可以发送电子邮件和呼叫每个联系人。 使用默认配置时，用户获得的体验与使用 Exchange 或 Lync 的本地实现获得的相同。
@@ -93,8 +93,8 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。 如果 Azure A
 
 基于域的筛选配置包括以下步骤：
 
-1. [选择想要包含在同步操作中的域](#select-domains-to-be-synchronized)。
-2. 针对添加和删除的每个域，请调整[运行配置文件](#update-run-profiles)。
+1. 选择想要包含在同步操作中的域。
+2. 针对添加和删除的每个域，请调整运行配置文件。
 3. [应用并验证更改](#apply-and-verify-changes)。
 
 ### <a name="select-the-domains-to-be-synchronized"></a>选择要同步的域
@@ -110,7 +110,7 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。 如果 Azure A
    如果更改了本地 Active Directory 基础结构并在林中添加或删除了域，请单击“刷新”按钮以获取更新的列表。 刷新时，系统将要求提供凭据。 请提供具有 Windows Server Active Directory 读取权限的任何凭据。 不一定要使用对话框中预先填充的用户。  
    ![需要刷新](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
 6. 完成后，请单击“确定”关闭“属性”对话框。 如果在林中删除了域，屏幕上会弹出消息，指出已删除域且将清除配置。
-7. 继续调整[运行配置文件](#update-run-profiles)。
+7. 继续调整运行配置文件。
 
 ### <a name="update-the-run-profiles"></a>更新运行配置文件
 如果已修改域筛选器，则还需要更新运行配置文件。

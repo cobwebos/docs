@@ -9,12 +9,13 @@ ms.date: 10/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
-ms.openlocfilehash: 7d4533f928470c0e468ea833d1ccfb6f7d78bb15
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b90c0572de6c6e664913cd01fdf9ca959694d5dd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498312"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191939"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect：ADConnectivityTools PowerShell 参考
 以下文档提供了 Azure AD Connect 随附的 ADConnectivityTools.psm1 PowerShell 模块的参考信息。

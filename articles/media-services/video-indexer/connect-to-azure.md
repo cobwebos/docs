@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: juliako
-ms.openlocfilehash: 55828ea2235e42920a5179846d81711b1ada5dc2
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 1574d6732eb1cbc199bfdb330f7b493703a89721
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261547"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998682"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>创建连接到 Azure 的视频索引器帐户
 
@@ -138,7 +139,7 @@ Azure AD 域中的用户和成员。 将视频索引器帐户连接到 Azure 时
 
 在对话框中提供以下信息：
 
-|设置|Description|
+|设置|说明|
 |---|---|
 |视频索引器帐户区域|视频索引器帐户区域的名称。 为了提高性能和降低成本，强烈建议指定 Azure 媒体服务资源和 Azure 存储帐户所在区域的名称。 |
 |Azure Active Directory (AAD) 租户|Azure AD 租户的名称，例如“contoso.onmicrosoft.com”。 可以在 Azure 门户中检索租户信息。 将光标悬停在右上角的登录用户名上。 找到“域”右侧的名称。|

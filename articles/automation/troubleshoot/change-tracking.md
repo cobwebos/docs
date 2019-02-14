@@ -6,25 +6,25 @@ ms.service: automation
 ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/24/2018
+ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 63dc7148904089a31ff95764898a8dac72c37049
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 2a6610b5cb3f01fc70b1737fc4492e09d9a7637b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421329"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507328"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory"></a>对更改跟踪和清单进行故障排除
 
 ## <a name="windows"></a>Windows
 
-### <a name="records-not-showing-windows"></a>场景：更改跟踪记录不显示在 Azure 门户中
+### <a name="records-not-showing-windows"></a>场景：更改跟踪记录不在 Windows 计算机中显示
 
 #### <a name="issue"></a>问题
 
-你没有看到已加入更改跟踪的虚拟机的任何清单或更改跟踪结果。
+不会看到已加入更改跟踪的 Windows 计算机的任何清单或更改跟踪结果。
 
 #### <a name="cause"></a>原因
 
@@ -38,12 +38,13 @@ ms.locfileid: "54421329"
 #### <a name="resolution"></a>解决方法
 
 1. 验证 **Microsoft Monitoring Agent** (HealthService.exe) 是否正在计算机上运行。
-2. 访问[网络规划](../automation-hybrid-runbook-worker.md#network-planning)，了解需要允许哪些地址和端口才能使更改跟踪正常工作。
-3. 验证本地是否存在以下更改跟踪和清单管理包：
+1. 检查计算机上的**事件查看器**并查看包含 `changetracking` 一词的任何事件。
+1. 访问[网络规划](../automation-hybrid-runbook-worker.md#network-planning)，了解需要允许哪些地址和端口才能使更改跟踪正常工作。
+1. 验证本地是否存在以下更改跟踪和清单管理包：
     * Microsoft.IntelligencePacks.ChangeTrackingDirectAgent.*
     * Microsoft.IntelligencePacks.InventoryChangeTracking.*
     * Microsoft.IntelligencePacks.SingletonInventoryCollection.*
-4. 如果使用的是克隆的映像，请首先对映像进行系统准备，然后在事后安装 Microsoft Monitoring Agent 代理。
+1. 如果使用的是克隆的映像，请首先对映像进行系统准备，然后在事后安装 Microsoft Monitoring Agent 代理。
 
 如果这些解决方案未解决你的问题并且你联系了客户支持，则可以运行以下命令在代理上收集诊断信息
 

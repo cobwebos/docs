@@ -1,20 +1,20 @@
 ---
-title: 身份验证
+title: Authentication
 titleSuffix: Cognitive Services - Azure
 description: 有三种方法可以对 Azure 认知服务资源的请求进行身份验证：订阅密钥、持有者令牌或多服务订阅。 本文介绍每种方法以及如何发出请求。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 81a902c6cf6b9b3491933e4bc14dc1e774185869
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: f724bba5acdda20d31d067b850634178a0650cf7
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54305445"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859738"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>对 Azure 认知服务的请求进行身份验证
 
@@ -32,7 +32,7 @@ ms.locfileid: "54305445"
 
 让我们快速查看可用于 Azure 认知服务的身份验证标头。
 
-| 标头 | Description |
+| 标头 | 说明 |
 |--------|-------------|
 | Ocp-Apim-Subscription-Key | 使用此标头通过特定服务订阅密钥或多服务订阅密钥进行身份验证。 |
 | Ocp-Apim-Subscription-Region | 只有在使用具有[文本翻译 API](./Translator/reference/v3-0-reference.md) 的多服务订阅密钥时才需要此标头。 使用此标头指定订阅区域。 |

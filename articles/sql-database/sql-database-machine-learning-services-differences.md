@@ -12,12 +12,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 01/31/2019
-ms.openlocfilehash: adc303e9b375aaa6f37e9e79ea5434675c75523d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4350fb0e75f140e120ba6cd2f074ffa1816a8fce
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824792"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237478"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-and-sql-server"></a>Azure SQL 数据库中的机器学习服务和 SQL Server 中的机器学习服务之间的主要差异
 
@@ -25,7 +25,7 @@ Azure SQL 数据库中机器学习服务（使用 R）的功能类似于 [SQL Se
 
 ## <a name="language-support"></a>语言支持
 
-SQL Server 通过[扩展性框架](https://docs.microsoft.com/en-us/sql/advanced-analytics/concepts/extensibility-framework)支持 R 和 Python。 SQL 数据库不支持这两种语言。 主要差异为：
+SQL Server 通过[扩展性框架](https://docs.microsoft.com/sql/advanced-analytics/concepts/extensibility-framework)支持 R 和 Python。 SQL 数据库不支持这两种语言。 主要差异为：
 
 - R 是 SQL 数据库中唯一受支持的语言。 目前不支持 Python。
 - R 版本为 3.4.4。

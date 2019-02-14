@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2108de8988e973644e0622a4b76a04408949298e
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f6e9641d106c40c061752b57744eda09aac157a5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635134"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821960"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Spark 进行故障排除
 
@@ -23,7 +23,7 @@ ms.locfileid: "53635134"
 
 ### <a name="resolution-steps"></a>解决步骤
 
-事先在 HDInsight 中设置此过程的配置值。 若要确定需要设置哪些 Spark 配置以及配置值是什么，请参阅[导致 Apache Spark 应用程序出现 OutofMemoryError 异常的原因](#what-causes-a-spark-application-outofmemoryerror-exception)。 
+事先在 HDInsight 中设置此过程的配置值。 若要确定需要设置哪些 Spark 配置以及配置值是什么，请参阅导致 Apache Spark 应用程序出现 OutofMemoryError 异常的原因。 
 
 1. 在群集列表中选择“Spark2”。
 
@@ -92,7 +92,7 @@ ms.locfileid: "53635134"
 
 ### <a name="resolution-steps"></a>解决步骤
 
-1. 若要确定需要设置哪些 Spark 配置以及配置值是什么，请参阅[导致 Apache Spark 应用程序出现 OutofMemoryError 异常的原因](#what-causes-a-spark-application-outofmemoryerror-exception)。
+1. 若要确定需要设置哪些 Spark 配置以及配置值是什么，请参阅导致 Apache Spark 应用程序出现 OutofMemoryError 异常的原因。
 
 2. 在 Jupyter Notebook 的第一个单元格中的 **%%configure** 指令后面，使用有效的 JSON 格式指定 Spark 配置。 根据需要更改实际值：
 
@@ -107,7 +107,7 @@ ms.locfileid: "53635134"
 
 ### <a name="resolution-steps"></a>解决步骤
 
-1. 若要确定需要设置哪些 Spark 配置以及配置值是什么，请参阅[导致 Apache Spark 应用程序出现 OutofMemoryError 异常的原因](#what-causes-a-spark-application-outofmemoryerror-exception)。 
+1. 若要确定需要设置哪些 Spark 配置以及配置值是什么，请参阅导致 Apache Spark 应用程序出现 OutofMemoryError 异常的原因。 
 
 2. 使用 cURL 等 REST 客户端将 Spark 应用程序提交到 Livy。 使用如下所示的命令。 根据需要更改实际值：
 
@@ -124,7 +124,7 @@ ms.locfileid: "53635134"
 
 ### <a name="resolution-steps"></a>解决步骤
 
-1. 若要确定需要设置哪些 Spark 配置以及配置值是什么，请参阅[导致 Apache Spark 应用程序出现 OutofMemoryError 异常的原因](#what-causes-a-spark-application-outofmemoryerror-exception)。
+1. 若要确定需要设置哪些 Spark 配置以及配置值是什么，请参阅导致 Apache Spark 应用程序出现 OutofMemoryError 异常的原因。
 
 2. 使用如下所示的命令启动 spark-shell。 根据需要更改实际配置值： 
 

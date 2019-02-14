@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 7574ac1a5937fbe963ef764d42f04d00f6c02d69
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: fc3d6ab1d7fdf05963d9ecd350deccd940a95b87
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241763"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732509"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>排查 Azure VM 间的连接问题
 
@@ -95,7 +95,7 @@ Azure 虚拟机 (VM) 间可能出现连接问题。 本文提供解决此问题�
 
 ### <a name="step-6-check-whether-traffic-is-blocked-by-acls-for-the-classic-vm"></a>步骤 6：检查 ACL 是否阻止了经典 VM 的流量
 
-利用访问控制列表 (ACL)，可以选择允许还是拒绝虚拟机终结点的流量。 有关详细信息，请参阅[管理终结点上的 ACL](../virtual-machines/windows/classic/setup-endpoints.md#manage-the-acl-on-an-endpoint)。
+利用访问控制列表 (ACL)，可以选择允许还是拒绝虚拟机终结点的流量。 有关详细信息，请参阅[管理终结点上的 ACL](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)。
 
 ### <a name="step-7-check-whether-the-endpoint-is-created-for-the-classic-vm"></a>步骤 7：检查是否为经典 VM 创建了终结点
 

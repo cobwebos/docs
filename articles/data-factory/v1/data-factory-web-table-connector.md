@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1ba8db3ebe2caf4c37d147f744326b6e631cb556
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 81b7bf7c230c66087bf286ebd9369d992e93be90
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022047"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814344"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表源移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -236,7 +236,7 @@ ms.locfileid: "54022047"
 
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **WebSource**，将 **sink** 类型设置为 **BlobSink**。
 
-有关 WebSource 支持的属性列表，请参阅 [WebSource 类型属性](#copy-activity-type-properties)。
+有关 WebSource 支持的属性列表，请参阅“WebSource 类型属性”。
 
 ```json
 {  

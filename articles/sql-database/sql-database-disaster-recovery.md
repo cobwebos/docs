@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 61957b89bd5ec9a42d6fd03c7009187d71e448f4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5fcd7f05aeb294441b16bab0aeb18ef5d0bf5c28
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474779"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749022"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>还原 Azure SQL 数据库或故障转移到辅助数据库
 
@@ -38,7 +38,7 @@ Azure SQL 数据库提供以下功能，以便在服务中断后进行恢复：
 为了使用故障转移组或异地冗余备份成功恢复到其他数据区域，需要为下一次数据中心中断准备服务器，以便在需要时使其成为新的主服务器，还需要记录、测试各项明确定义的步骤，确保顺利恢复数据。 准备步骤包括：
 
 - 标识其他区域中要成为新的主服务器的 SQL 数据库服务器。 对于异地还原，这个服务器通常位于数据库所在区域的[配对区域](../best-practices-availability-paired-regions.md)中。 这会在异地还原操作期间消除额外的流量成本。
-- 标识（并选择性定义）用户访问新的主数据库时所需的服务器级防火墙规则。
+- 标识（并选择性定义）用户访问新的主数据库时所需的服务器级 IP 防火墙规则。
 - 确定要如何将用户重定向到新的主服务器，例如通过更改连接字符串或更改 DNS 条目。
 - 标识（并选择性创建）新主服务器的 master 数据库中必须存在的登录信息，并确保这些登录信息在 master 数据库中具有相应权限（若有）。 相关详细信息，请参阅[灾难恢复后的 SQL 数据库安全性](sql-database-geo-replication-security-config.md)
 - 需要更新标识才可映射到新的主数据库的警报规则。

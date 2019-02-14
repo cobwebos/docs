@@ -1,23 +1,26 @@
 ---
-title: 如何使用 Java 存储 SDK v7 在 Azure 存储中创建 Blob | Microsoft Docs
+title: 如何使用适用于 Java v7 的客户端库在 Azure 存储中创建 Blob | Microsoft Docs
 description: 在对象 (Blob) 存储中创建存储帐户和容器。 随后，使用适用于 Java v7 的 Azure 存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
 services: storage
 author: roygara
 ms.custom: mvc
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 02/04/2019
 ms.author: rogarana
-ms.openlocfilehash: be994c9b3c9ee4f3c6ccd5c01e762c05f740be09
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 3bf82f37752009a488512d720093bc9c595dff8e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469638"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753208"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-java-sdk-v7"></a>如何使用 Java SDK v7 上传、下载和列出 Blob
+# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>如何使用适用于 Java v7 的客户端库上传、下载和列出 Blob
 
-本操作说明指南介绍如何使用 Java 上传、下载和列出 Azure Blob 存储的容器中的块 Blob。
+本操作指南介绍如何使用适用于 Java v7 的客户端库上传、下载和列出 Azure Blob 存储容器中的块 Blob。
+
+> [!TIP]
+> 适用于 Java 的 Azure 存储客户端库的最新版本是 v10。 Microsoft 建议尽可能使用最新版本的客户端库。 若要开始使用 v10，请参阅[快速入门：使用 Java 存储 SDK V10 上传、下载和列出 Blob](storage-quickstart-blobs-java-v10.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -130,7 +133,7 @@ container.createIfNotExists(BlobContainerPublicAccessType.CONTAINER, new BlobReq
 
 ### <a name="upload-blobs-to-the-container"></a>将 blob 上传到容器
 
-若要将文件上传到块 Blob，请获取对目标容器中的 Blob 的引用。 有了 blob 引用后，可以通过使用 [CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload#com_microsoft_azure_storage_blob__cloud_block_blob_upload_final_InputStream_final_long) 将数据上传到其中。 此操作会创建 Blob（如果尚未存在），或者覆盖 Blob（若已存在）。
+若要将文件上传到块 Blob，请获取对目标容器中的 Blob 的引用。 有了 blob 引用后，可以通过使用 [CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload) 将数据上传到其中。 此操作会创建 Blob（如果尚未存在），或者覆盖 Blob（若已存在）。
 
 示例代码创建一个用于上传和下载的本地文件，存储作为“源”上传的文件和 blob 中的 blob 名称。 以下示例将文件上传到名为“quickstartcontainer”的容器。
 
@@ -156,7 +159,7 @@ blob.uploadFromFile(sourceFile.getAbsolutePath());
 
 ### <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
 
-可以使用 [CloudBlobContainer.ListBlobs](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobs#com_microsoft_azure_storage_blob__cloud_blob_container_listBlobs) 获取容器中的文件列表。 下面的代码检索 blob 列表，然后循环访问它们，显示找到的 blob 的 URI。 可以从命令窗口中复制 URI，然后将其粘贴到浏览器以查看文件。
+可以使用 [CloudBlobContainer.ListBlobs](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobs) 获取容器中的文件列表。 下面的代码检索 blob 列表，然后循环访问它们，显示找到的 blob 的 URI。 可以从命令窗口中复制 URI，然后将其粘贴到浏览器以查看文件。
 
 ```java
 //Listing contents of container
@@ -182,7 +185,7 @@ blob.downloadToFile(downloadedFile.getAbsolutePath());
 
 ### <a name="clean-up-resources"></a>清理资源
 
-如果不再需要上传的 Blob，可使用 [CloudBlobContainer.DeleteIfExists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.deleteifexists#com_microsoft_azure_storage_blob__cloud_blob_container_deleteIfExists) 删除整个容器。 此方法也会删除容器中的文件。
+如果不再需要上传的 Blob，可使用 [CloudBlobContainer.DeleteIfExists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.deleteifexists) 删除整个容器。 此方法也会删除容器中的文件。
 
 ```java
 try {
@@ -206,8 +209,6 @@ sourceFile.deleteOnExit();
 本文介绍如何使用 Java 在本地磁盘和 Azure Blob 存储之间传输文件。 若要详细了解 Java 的用法，请转到 GitHub 源代码存储库。
 
 > [!div class="nextstepaction"]
-> [用于 Java 的 Azure 存储 SDK](https://github.com/azure/azure-storage-java) 
-> [API 参考](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
-> [用于 Java 的代码示例](../common/storage-samples-java.md)
-
-* 若要详细了解存储资源管理器和 Blob，请参阅[使用存储资源管理器管理 Azure Blob 存储资源](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+> [适用于 Java 的 Microsoft Azure 存储 SDK v10](https://github.com/azure/azure-storage-java) 
+> [Java API 参考](https://docs.microsoft.com/java/azure/)
+> [适用于 Java 的代码示例](../common/storage-samples-java.md)

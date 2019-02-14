@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2018
 ms.author: shvija
-ms.openlocfilehash: 4a0e2cd7e0c768512e1aafc042fe55338fdc206e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 88fdaec9e19c082a6fe981dc4d9a0e015335f1e2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084968"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818612"
 ---
 # <a name="how-to-use-azure-event-hubs-from-a-python-application"></a>如何通过 Python 应用程序使用 Azure 事件中心
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关详细信息，请参阅[事件中心简介](event-hubs-what-is-event-hubs.md)。 
@@ -29,7 +29,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 - [将事件发送到事件中心](#send-events-to-event-hubs)
 - [从事件中心接收事件](#receive-events-from-event-hubs)
-- [从 Azure 存储读取捕获的事件数据](#capture-event-hubs-data)。 
+- 从 Azure 存储读取捕获的事件数据。 
 
 ## <a name="prerequisites"></a>先决条件
 - 按照以下快速入门之一创建活动中心：[Azure 门户](event-hubs-create.md)、[Azure CLI](event-hubs-quickstart-cli.md)、[Azure PowerShell](event-hubs-quickstart-powershell.md)、[Azure 资源管理器模板](event-hubs-resource-manager-namespace-event-hub.md)。 

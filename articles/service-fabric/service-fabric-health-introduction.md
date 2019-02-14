@@ -14,21 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 060ff6b94c171d27dae74ea76603222253f33bab
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 87081398e844f1e2b085a7e12c2b7aafce330ec9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194281"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193758"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric 运行状况监视简介
 Azure Service Fabric 引入了一个运行状况模型，该模型提供丰富、灵活且可扩展的运行状况评估和报告。 使用该模型可对群集及其中运行的服务的状态进行近乎实时的监视。 可以轻松获取运行状况信息，并在潜在问题级联和造成大规模停机之前予以更正。 在典型的模型中，服务基于其本地视图发送报告，并聚合信息，以提供整体的群集级别视图。
 
 Service Fabric 组件使用这种提供丰富信息的运行状况模型报告其当前状态。 可以使用相同的机制报告应用程序中的运行状况。 只要投入时间规划高质量的运行状况报告来捕获自定义条件，就能更轻松地检测并修复运行中应用程序的问题。
-
-以下 Microsoft Virtual Academy 视频还介绍 Service Fabric 运行状况模型及其用法：<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
-<img src="./media/service-fabric-health-introduction/HealthIntroVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
 
 > [!NOTE]
 > 我们根据需要为监视的升级启动运行状况子系统。 Service Fabric 提供受监视的应用程序和群集升级，可以确保完全可用性、永不停机，且几乎或完全不需要用户介入。 若要实现这些目标，升级将根据配置的升级策略检查运行状况。 仅当运行状况遵从所需阈值时，才可继续升级。 否则，升级会自动回滚或暂停，以便让管理员有机会修复问题。 若要了解有关应用程序升级的详细信息，请参阅[此文](service-fabric-application-upgrade.md)。

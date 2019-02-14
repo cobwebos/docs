@@ -1,29 +1,29 @@
 ---
-title: Azure 存储中的数据复制 | Microsoft Docs
-description: 复制 Microsoft Azure 存储帐户中的数据以实现持久性和高可用性。 复制选项包括本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。
+title: Azure 存储中的数据冗余 | Microsoft Docs
+description: 复制 Microsoft Azure 存储帐户中的数据以实现持久性和高可用性。 冗余选项包括本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 01/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3fb3860cbda2e1d46505711d7a175e5d42ec7018
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0ba36042d02d0b4101f1e80c63af232717bcf4ca
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455501"
+ms.locfileid: "55506781"
 ---
-# <a name="azure-storage-replication"></a>Azure 存储复制
+# <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
-始终复制 Microsoft Azure 存储帐户中的数据以确保持久性和高可用性。 Azure 存储复制功能可以复制数据，以防范各种计划内和计划外的事件，例如暂时性的硬件故障、网络中断或断电、大范围自然灾害等。 可以选择在同一数据中心中、跨同一区域中的局域数据中心甚至跨区域复制数据。
+始终复制 Microsoft Azure 存储帐户中的数据以确保持久性和高可用性。 Azure 存储功能会复制数据，以防范各种计划内和计划外的事件，包括暂时性的硬件故障、网络中断或断电、大范围自然灾害等。 可以选择在同一数据中心中、跨同一区域中的局域数据中心或跨地理上隔离的区域复制数据。
 
 即使面临故障时，复制也可确保存储帐户满足[存储的服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/storage/)的要求。 请参阅 SLA，了解有关 Azure 存储确保持续性和可用性的信息。
 
-## <a name="choosing-a-replication-option"></a>选择复制选项
+## <a name="choosing-a-redundancy-option"></a>选择冗余选项
 
-创建存储帐户时，可以选择以下复制选项之一：
+创建存储帐户时，可以选择以下冗余选项之一：
 
 * [本地冗余存储 (LRS)](storage-redundancy-lrs.md)
 * [区域冗余存储 (ZRS)](storage-redundancy-zrs.md)

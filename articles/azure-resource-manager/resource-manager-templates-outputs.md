@@ -11,16 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 02/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9a46d813f2e50831240303ba47380da39e2cb6af
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: aadc92c232d32d827644caa52b3c362d9c8d4c9b
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725797"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691025"
 ---
 # <a name="outputs-section-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的 Outputs 节
+
 在 Outputs 节中，可以指定从部署返回的值。 例如，可能会返回用于访问已部署资源的 URI。
 
 ## <a name="define-and-use-output-values"></a>定义和使用输出值
@@ -39,7 +40,7 @@ ms.locfileid: "53725797"
 部署后，可以使用脚本检索值。 对于 PowerShell，请使用：
 
 ```powershell
-(Get-AzureRmResourceGroupDeployment -ResourceGroupName <resource-group-name> -Name <deployment-name>).Outputs.resourceID.value
+(Get-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -Name <deployment-name>).Outputs.resourceID.value
 ```
 
 对于 Azure CLI，请使用：
@@ -75,16 +76,17 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
 }
 ```
 
-| 元素名称 | 必选 | Description |
+| 元素名称 | 必选 | 说明 |
 |:--- |:--- |:--- |
 | outputName |是 |输出值的名称。 必须是有效的 JavaScript 标识符。 |
 | type |是 |输出值的类型。 输出值支持的类型与模板输入参数相同。 |
 | 值 |是 |评估并作为输出值返回的模板语言表达式。 |
 
+有关添加注释的信息，请参阅[模板中的注释](resource-group-authoring-templates.md#comments)。
 
 ## <a name="example-templates"></a>示例模板
 
-|模板  |Description  |
+|模板  |说明  |
 |---------|---------|
 |[复制变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | 创建复杂变量，并输出这些值。 不部署任何资源。 |
 |[公共 IP 地址](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | 创建公共 IP 地址并输出资源 ID。 |

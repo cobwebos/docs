@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: 7f519729f3ad94324b847ca6b15b254ea7c6abbb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 639b665926f54387dfdc6e837c15c8d6d28df925
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463729"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755758"
 ---
 # <a name="use-active-learning-to-improve-knowledge-base"></a>使用主动学习改进知识库
 
@@ -58,7 +58,7 @@ QnA Maker 通过隐式和显式反馈学习新的问题变体。
 
 默认情况下，主动学习处于关闭状态。 启用它可以查看建议的问题。 
 
-1. 若要启用主动学习，请转到 QnA Maker 门户右上角的“服务设置”。  
+1. 若要打开主动学习，请单击“名称”，转到 QnA Maker 门户右上角的“[服务设置](https://www.qnamaker.ai/UserSettings)”。  
 
     ![在“服务设置”页上，启用“主动学习”](../media/improve-knowledge-base/Endpoint-Keys.png)
 

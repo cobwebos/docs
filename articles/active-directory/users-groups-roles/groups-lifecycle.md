@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 中的 Office 365 组过期 | Microsoft Docs
+title: 为 Office 365 组设置过期 - Azure Active Directory | Microsoft Docs
 description: 如何在 Azure Active Directory 中为 Office 365 组设置过期
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 070e86f2d5d37823f1596cf04735b199289f3d75
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 12b23b8a062859da111a067b2655425a611b6c20
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166163"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658243"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>为 Office 365 组配置过期策略
 
@@ -53,15 +53,16 @@ ms.locfileid: "55166163"
   
   ![过期边栏选项卡](./media/groups-lifecycle/expiration-settings.png)
 
-4. 在“过期”边栏选项卡中，可以：
+3. 在“过期”边栏选项卡中，可以：
 
   * 设置组的生存期（天）。 可以从预设值中任选其一，或自定义一个值（应为 31 天或以上）。 
   * 指定当组没有所有者时续订和过期通知应发送到的电子邮件地址。 
   * 选择会过期的 Office 365 组。 可以为所有  Office 365 组启用到期，可以选择仅为所选 Office 365 组启用，也可以选择“无” 为所有组禁用到期 **** ****。
   * 设置完成后，选择“保存”来保存设置。
 
+## <a name="email-notifications"></a>电子邮件通知
 
-如下电子邮件通知将在组过期前的 30 天、15 天和 1 天发送到 Office 365 组所有者。
+如下电子邮件通知将在组过期前的 30 天、15 天和 1 天发送到 Office 365 组所有者。 电子邮件的语言由组所有者的首选语言或租户语言确定。 如果组所有者定义了首选语言，或多个所有者具有相同首选语言，则使用该语言。 对于所有其他情况，使用租户语言。
 
 ![过期电子邮件通知](./media/groups-lifecycle/expiration-notification.png)
 

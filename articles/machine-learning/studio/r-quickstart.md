@@ -1,8 +1,21 @@
 ---
-title:R 语言的快速入门教程 titleSuffix:Azure 机器学习工作室 description:通过此 R 编程教程，快速在 Azure 机器学习工作室中使用 R 语言创建预测解决方案。
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:01/06/2017
+title: R 语言的快速入门教程
+titleSuffix: Azure Machine Learning Studio
+description: 通过此 R 编程教程，快速在 Azure 机器学习工作室中使用 R 语言创建预测解决方案。
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 01/06/2017
+ms.openlocfilehash: 9fcdcc5f4e3e7a6aadb3749459562eb575deca2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822368"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>适用于 Azure 机器学习工作室的 R 编程语言快速入门教程
 
@@ -732,7 +745,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 
 `ts.detrend()` 函数中有很多代码。 此代码的大部分在检查参数的潜在问题，或者处理在计算中可能还会出现的异常。 只有几行代码实际执行了计算。
 
-我们在[值转换](#valuetransformations)中已经讨论过防御性编程示例。 这两个计算代码块包装在 `tryCatch()` 中。 对于某些错误，返回原始的输入向量是有意义的，而在其他情况，则返回零向量。  
+我们在值转换中已经讨论过防御性编程示例。 这两个计算代码块包装在 `tryCatch()` 中。 对于某些错误，返回原始的输入向量是有意义的，而在其他情况，则返回零向量。  
 
 请注意，用于去趋势的线性回归是一个时序回归。 预测器变量是一个时序对象。  
 

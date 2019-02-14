@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 331a8d07004a8915d27b28ca0fba940b1aa3ab72
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: bcbb3d5d25fdc3de71045cedfd4634e47b3947bf
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164803"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811948"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>教程：Azure Active Directory 与 Attendance Management Services 的集成
 
@@ -86,7 +86,7 @@ ms.locfileid: "55164803"
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-1. **[创建 Attendance Management Services 测试用户](#create-an-attendance-management-service-test-user)**：在 Attendance Management Services 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **创建 Attendance Management Services 测试用户** - 在 Attendance Management Services 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 

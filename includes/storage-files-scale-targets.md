@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 038c273806188d04223f1e455c158249a3e17718
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 72b7bd722bc7634a707e10cbcd45768140ed527a
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165111"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55757625"
 ---
 | 资源 | 标准文件共享 | 高级文件共享（预览版） |
 |----------|---------------|------------------------------------------|
@@ -22,3 +22,5 @@ ms.locfileid: "50165111"
 | 单个文件共享的目标吞吐量 | 最多 60 MiB/秒 | 最多 612 MiB/秒（已预配） |
 | 每个文件打开图柄的最大数目 | 2,000 个打开句柄 | 2,000 个打开句柄 |
 | 共享快照的最大数目 | 200 个共享快照 | 200 个共享快照 |
+| 最大对象（目录和文件）名称长度 | 2048 个字符 | 2048 个字符 |
+| 最大路径名组成部分（在路径 \A\B\C\D 中，每个字母是一个组成部分） | 255 个字符 | 255 个字符 |

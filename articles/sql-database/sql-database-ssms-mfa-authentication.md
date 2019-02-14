@@ -11,17 +11,17 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 9837316cab503e6ade623e91a41176e6f4bfc84a
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 10/08/2018
+ms.openlocfilehash: 1f26fb101c9940a51ffb4fb7e1b48a51b943599a
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867626"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663734"
 ---
 # <a name="universal-authentication-with-sql-database-and-sql-data-warehouse-ssms-support-for-mfa"></a>使用 SQL 数据库和 SQL 数据仓库进行通用身份验证（MFA 的 SSMS 支持）
 Azure SQL 数据库和 Azure SQL 数据仓库支持使用 Active Directory 通用身份验证，从 SQL Server Management Studio (SSMS) 进行连接。 
-**下载最新 SSMS** - 在客户端计算机上，从[下载 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) 下载最新版本的 SSMS。 对于本文中的所有功能，请至少使用 2017 年 7 月的版本 17.2。  最新连接对话框如下所示：![1mfa-universal-connect](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png "完成“用户名”框。")  
+**下载最新 SSMS** - 在客户端计算机上，从[下载 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) 下载最新版本的 SSMS。 对于本文中的所有功能，请至少使用 2017 年 7 月的版本 17.2。  最新的连接对话框如下所示：![1mfa-universal-connect](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png "填写用户名框。")  
 
 ## <a name="the-five-authentication-options"></a>五个身份验证选项  
 - Active Directory 通用身份验证支持两种非交互式身份验证方法（`Active Directory - Password` 身份验证和 `Active Directory - Integrated` 身份验证）。 非交互式 `Active Directory - Password` 和 `Active Directory - Integrated` 身份验证方法可在许多不同的应用程序（ADO.NET、JDBC、ODBC 等）中使用。 这两种方法绝对不会产生弹出式对话框。
@@ -52,8 +52,8 @@ Azure SQL 数据库和 Azure SQL 数据仓库支持使用 Active Directory 通�
 ## <a name="next-steps"></a>后续步骤
 
 - 有关配置步骤，请参阅[配置 SQL Server Management Studio 的 Azure SQL 数据库多重身份验证](sql-database-ssms-mfa-authentication-configure.md)。
-- 向其他人员授予数据库访问权限：[SQL 数据库身份验证和授权：授予访问权限](sql-database-manage-logins.md)  
-- 确保其他人员可以通过防火墙进行连接：[使用 Azure 门户配置 Azure SQL 数据库服务器级防火墙规则](sql-database-configure-firewall-settings.md)  
+- 向其他人授予对你数据库的访问权限：[SQL 数据库身份验证和授权：授予访问权限](sql-database-manage-logins.md)  
+- 确保其他人可以通过防火墙进行连接：[使用 Azure 门户配置 Azure SQL 数据库服务器级防火墙规则](sql-database-configure-firewall-settings.md)  
 - [使用 SQL 数据库或 SQL 数据仓库配置和管理 Azure Active Directory 身份验证](sql-database-aad-authentication-configure.md)  
 - [Microsoft SQL Server Data-Tier Application Framework (17.0.0 GA)](https://www.microsoft.com/download/details.aspx?id=55088)  
 - [SQLPackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage)  

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.subservice: common
-ms.openlocfilehash: 6b40741545ff286bc1b8e696d28c61b197605247
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 25ec52b44f8d5a36868cc609c42b6db5ab939fa4
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473997"
+ms.locfileid: "55490239"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>监视、诊断和排查 Microsoft Azure 存储问题
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -637,7 +637,7 @@ client.SetServiceProperties(sp);
 客户端应用程序在创建新容器时应使用唯一的容器名称（如果“删除/重新创建”模式很常见）。
 
 ### <a name="metrics-show-low-percent-success"></a>指标显示低 PercentSuccess，或者分析日志项包含事务状态为 ClientOtherErrors 的操作
-**PercentSuccess** 度量值根据操作的 HTTP 状态代码捕获已成功操作的百分比。 状态代码为 2XX 的操作将计为成功，而状态代码在 3XX、4XX 和 5XX 范围内的操作将计为失败并降低 **PercentSucess** 度量值。 在服务器端存储日志文件中，这些操作将使用事务状态 **ClientOtherErrors** 进行记录。
+**PercentSuccess** 度量值根据操作的 HTTP 状态代码捕获已成功操作的百分比。 状态代码为 2XX 的操作将计为成功，而状态代码在 3XX、4XX 和 5XX 范围内的操作将计为失败并降低 **PercentSuccess** 指标值。 在服务器端存储日志文件中，这些操作将使用事务状态 **ClientOtherErrors** 进行记录。
 
 请务必注意，这些操作已成功完成，因此不会影响其他度量值，如可用性。 成功执行但可能会导致失败的 HTTP 状态代码的一些操作示例包括：
 

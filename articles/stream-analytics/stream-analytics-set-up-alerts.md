@@ -7,14 +7,14 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/19/2019
+ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4c0d32a201da5befbc8b68148f0b051e283ec289
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 52db8217cc1e1f84d25ab896be9b42db3bf6bd81
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412381"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769467"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>为 Azure 流分析作业设置警报
 
@@ -46,17 +46,17 @@ ms.locfileid: "54412381"
 
    ![为 Azure 流分析作业设置警报](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
 
-7. “资源”、“条件”和“操作组”都应该有对应的条目。
+7. “资源”、“条件”和“操作组”都应该有对应的条目。 请注意，为了触发警报，需要满足所定义的条件。 例如，可以每 5 分钟检测一次某个指标在过去 15 分钟的平均值。
 
    ![创建流分析警报规则](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
 
    在“警报详细信息”中添加**警报规则名称**、**说明**和**资源组**，然后单击“创建警报规则”创建流分析作业的规则。
 
    ![创建流分析警报规则](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
-
+   
 ## <a name="scenarios-to-monitor"></a>要监视的方案
 
-建议监视以下警报，以了解流分析作业的性能。 在过去 5 分钟时段内，应每隔一分钟评估这些指标。 如果作业遇到性能问题，可以使用查询并行化来优化它，并尝试增加流单元数。
+建议监视以下警报，以了解流分析作业的性能。 在过去 5 分钟时段内，应每隔一分钟评估这些指标。
 
 |指标|条件|时间聚合|阈值|纠正措施|
 |-|-|-|-|-|

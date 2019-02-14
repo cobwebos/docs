@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 38852e80948f9937ce2711ee3d29d6a37e1da5c3
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 6e62e923b6e983dfff8eb72c9526708a3b360930
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428573"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494742"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>使用 Azure 自动化来触发作业
 
@@ -106,7 +106,7 @@ ms.locfileid: "54428573"
 
     ![添加 Runbook 4](./media/storsimple-data-manager-job-using-automation/add-runbook-4.png)
 
-6. 提供参数，如 StorSimple 数据管理器服务的名称、已关联的资源组和作业定义的名称。 **开始**测试。 完成运行后，会生成报告。 有关详细信息，请转到如何[测试 Runbook](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook)。
+6. 提供参数，例如 StorSimple 数据管理器服务的名称、已关联的资源组和作业定义的名称。 **开始**测试。 完成运行后，会生成报告。 有关详细信息，请转到如何[测试 Runbook](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook)。
 
     ![添加 Runbook 8](./media/storsimple-data-manager-job-using-automation/add-runbook-8.png)    
 

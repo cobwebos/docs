@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: c242d8dd64dc58b0c20b6fb15747f201f85cc482
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: f640ea2e8af8c8ae2bc8a6a1224adca17e897b81
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320921"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811318"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Linux 虚拟机
 
@@ -105,7 +105,7 @@ Azure 基于角色的访问控制 (RBAC) 策略决定了谁能登录到 VM。 �
 > [!NOTE]
 > 若要允许用户通过 SSH 登录到 VM，必须分配“虚拟机管理员登录名”或“虚拟机用户登录名”角色。 分配了 VM“所有者”或“参与者”角色的 Azure 用户不会自动获得通过 SSH 登录到 VM 的权限。
 
-以下示例使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 为当前的 Azure 用户分配登录到 VM 所需的“虚拟机管理员登录名”角色。 活动 Azure 帐户的用户名是使用 [az account show](/cli/azure/account#az-account-show) 获得的，而 *scope* 则设置为在前面的步骤中使用 [az vm show](/cli/azure/vm#az-vm-show) 创建的 VM。 也可在资源组或订阅级别设置 scope，这种情况下会应用正常的 RBAC 继承权限。 有关详细信息，请参阅[基于角色的访问控制](../../azure-resource-manager/resource-group-overview.md#access-control)
+以下示例使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 为当前的 Azure 用户分配登录到 VM 所需的“虚拟机管理员登录名”角色。 活动 Azure 帐户的用户名是使用 [az account show](/cli/azure/account#az-account-show) 获得的，而 *scope* 则设置为在前面的步骤中使用 [az vm show](/cli/azure/vm#az-vm-show) 创建的 VM。 也可在资源组或订阅级别设置 scope，这种情况下会应用正常的 RBAC 继承权限。 有关详细信息，请参阅[基于角色的访问控制](../../role-based-access-control/overview.md)
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)
@@ -171,7 +171,7 @@ To sign in, use a web browser to open the page https://microsoft.com/devicelogin
 
 ### <a name="access-denied-rbac-role-not-assigned"></a>访问被拒绝：未分配 RBAC 角色
 
-如果在 SSH 提示符窗口中看到以下错误，请验证是否已为授予用户“虚拟机管理员登录名”或“虚拟机用户登录名”角色的 VM [配置 RBAC 策略](#configure-rbac-policy-for-the-virtual-machine)：
+如果在 SSH 提示符窗口中看到以下错误，请验证是否已为授予用户*虚拟机管理员登录名*或*虚拟机用户登录名*角色的 VM 配置 RBAC 策略：
 
 ```bash
 login as: azureuser@contoso.onmicrosoft.com

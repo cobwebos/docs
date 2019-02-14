@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 1f7a02f66a8d87f33d7bac9068628dbd29e5bd7c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e3d6464f3e69868b4903d999e52a37b0520018c6
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635689"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659450"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>概念性理解 IoT 行业中的 X.509 CA 证书
 
@@ -108,7 +108,7 @@ X.509 CA 证书身份验证通过使用证书链为前面列出的问题提供�
 
 ![img-cert-mfr-chain](./media/cert-mfr-chain.png)
 
-这一点很好地体现了 X.509 CA 方法的重要性。  X 公司只需对 Y 工厂签名一次即可，而不用分别为每个智能 X 小组件预生成证书并将其移入供应链。  X 公司无需在整个设备生命周期中跟踪每台设备，他们不会通过供应链过程中自然生成的组来跟踪和管理设备，例如，某年七月后由 Z 技术人员安装的设备。
+这一点很好地体现了 X.509 CA 方法的重要性。  X 公司只需对 Y 工厂签名一次，而无需为每个智能 X 小组件预先生成证书并移交到供应链中。  X 公司无需在整个设备生命周期中跟踪每台设备，他们现在可以通过供应链过程中自然生成的组来跟踪和管理设备，例如，某年七月后由 Z 技术人员安装的设备。
 
 最后一项要点是，CA 身份验证方法将安全责任引入了设备制造供应链。 由于证书链流程，链中每位成员的操作均已加密记录且可验证。
 

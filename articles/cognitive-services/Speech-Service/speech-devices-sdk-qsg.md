@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 85e250f3dee3dbfc9e09524d5f3977a143ee8bac
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a9a1446db66e528cfac98222d4bd258efc660c84
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213253"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750369"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>语音设备 SDK 入门
 
@@ -46,12 +46,14 @@ ms.locfileid: "55213253"
     可[创建一个简单的 LUIS 模型](https://docs.microsoft.com/azure/cognitive-services/luis/)，或使用示例 LUIS 模型 LUIS-example.json。 可从[语音设备 SDK 下载站点](https://shares.datatransfer.microsoft.com/)获取示例 LUIS 模型。 选择“导入新应用”并选择 JSON 文件，将模型的 JSON 文件上传到 [LUIS 门户](https://www.luis.ai/home)。
 
 ## <a name="set-up-the-development-kit"></a>设置开发工具包
-
-1. 使用迷你 USB 数据线将开发工具包连接到电脑或电源适配器。 连接工具包后，顶板下面的绿色电源指示灯会亮起。
-
-1. 使用另一条迷你 USB 数据线将开发工具包连接到计算机。
+    
+1. 开发工具包拥有两个 micro USB 连接器。 左侧的连接器用于为开发工具包接通电源，在下图中突出显示为 Power。 右侧的连接器用于控制开发工具包，在图中标记为 Debug。
 
     ![连接开发工具包](media/speech-devices-sdk/qsg-1.png)
+       
+1. 使用 micro USB 数据线为开发工具包接通电源，将电源端口连接到 PC 或电源适配器。 顶部板下的绿色电源指示灯将亮起。
+
+1. 若要控制开发工具包，可使用另一根 micro USB 数据线将 debug 端口连接到计算机。 务必使用高品质的数据线，以确保可靠的通信。
 
 1. 摆放好开发工具包以进行环形或线性配置。
 
@@ -75,6 +77,8 @@ ms.locfileid: "55213253"
 
     > [!NOTE]
     > 这些命令使用 Android Debug Bridge `adb.exe`，它是 Android Studio 安装的一部分。 此工具位于 C:\Users\[用户名]\AppData\Local\Android\Sdk\platform-tools 中。 可将该目录添加到你的路径，以便更轻松地调用 `adb`。 否则，必须在调用 `adb` 的每个命令中指定安装 adb.exe 的完整路径。
+    >
+    > 如果看到 `no devices/emulators found` 错误，请检查 USB 数据线是否已连接以及是否为高品质的数据线。 可使用 `adb devices` 检查并确保计算机可与开发工具包通信，因为它将返回设备列表。
 
     > [!TIP]
     > 将电脑的麦克风和扬声器调为静音，以确保使用开发工具包的麦克风。 这可以避免电脑中的音频意外触发设备。

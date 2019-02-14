@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 228927630540ed0277ca73a978382439f57b77d2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 376ebcbc17cc9f5c797c2985fe3c0784f5036600
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471396"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752086"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -251,8 +251,8 @@ PerItemErrorCount: 1006.
 | 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | 文件或目录名称无效。 | 重命名有问题的文件或目录。 有关详细信息，请参阅[处理不支持的字符](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)。 |
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | 文件已被使用，因此无法将其同步。 不再使用该文件时，会将其同步。 | 无需采取措施。 Azure 文件同步每天在服务器上创建临时 VSS 快照一次，以同步包含开放句柄的文件。 |
 | 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | 文件已更改，但同步尚未检测到此项更改。检测到此项更改后，同步将会恢复。 | 无需采取措施。 |
-| 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | 无法同步该文件，因为已达到 Azure 文件共享限制。 | 要解决此问题，请参阅疑难解答指南中的[达到 Azure 文件共享存储限制](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810)部分。 |
-| 0x80070005 | -2147024891 | E_ACCESSDENIED | 如果文件由不受支持的解决方案（如 NTFS EFS）加密或文件具有删除待定状态，则会发生此错误。 | 如果文件由不受支持的解决方案加密，请解密该文件并使用支持的加密解决方案。 有关支持解决方案的列表，请参阅计划指南中的[加密解决方案](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-planning#encryption-solutions)部分。 如果文件处于删除待定状态，一旦关闭所有打开的文件句柄，将删除该文件。 |
+| 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | 无法同步该文件，因为已达到 Azure 文件共享限制。 | 要解决此问题，请参阅疑难解答指南中的[达到 Azure 文件共享存储限制](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810)部分。 |
+| 0x80070005 | -2147024891 | E_ACCESSDENIED | 如果文件由不受支持的解决方案（如 NTFS EFS）加密或文件具有删除待定状态，则会发生此错误。 | 如果文件由不受支持的解决方案加密，请解密该文件并使用支持的加密解决方案。 有关支持解决方案的列表，请参阅计划指南中的[加密解决方案](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions)部分。 如果文件处于删除待定状态，一旦关闭所有打开的文件句柄，将删除该文件。 |
 | 0x20 | 32 | ERROR_SHARING_VIOLATION | 文件已被使用，因此无法将其同步。 不再使用该文件时，会将其同步。 | 无需采取措施。 |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 同步期间更改了文件，因此需要重新同步。 | 无需采取措施。 |
 
@@ -538,7 +538,7 @@ PerItemErrorCount: 1006.
 | **错误字符串** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
 | **所需的补救措施** | 是 |
 
-如果发生许多的文件同步错误，同步会话可能无法开始。 若要排查此状态，请参阅[根据文件/目录同步错误进行故障排除](#troubleshooting-per-file-directory-sync-errors)。
+如果发生许多的文件同步错误，同步会话可能无法开始。 若要排查此状态，请参阅[根据文件/目录同步错误进行故障排除]()。
 
 > [!NOTE]
 > Azure 文件同步每天在服务器上创建临时 VSS 快照一次，以同步包含开放句柄的文件。

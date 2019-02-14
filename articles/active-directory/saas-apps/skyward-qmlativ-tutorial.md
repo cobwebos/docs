@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: baf0a11f97d4a281578b4eb9a7dadbc9400684ae
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 813c3b536eba594fdb04031d2bff7207f5aeac25
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55105391"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56183915"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skyward-qmlativ"></a>教程：Azure Active Directory 与 Skyward Qmlativ 的集成
 

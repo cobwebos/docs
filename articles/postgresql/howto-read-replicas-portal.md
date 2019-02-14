@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/23/2019
-ms.openlocfilehash: bf6e9947c21e5b07b2adc99de585c77444447c04
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.date: 02/01/2019
+ms.openlocfilehash: 37150f67e29dae0357c978cfaea9abeebeef428c
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902646"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691399"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-the-azure-portal"></a>如何在 Azure 门户中创建和管理只读副本
 
@@ -141,7 +141,7 @@ ms.locfileid: "54902646"
 
 ## <a name="monitor-a-replica"></a>监视副本
 ### <a name="max-lag-across-replicas"></a>副本的最大滞后时间
-“副本的最大滞后时间”指标显示主服务器与滞后时间最长的副本之间的滞后时间。 
+“副本的最大滞后时间”指标显示主服务器与滞后时间最长的副本之间的滞后时间（以字节为单位）。 
 
 1.  在 Azure 门户中，选择 Azure Database for PostgreSQL **主服务器**。
 

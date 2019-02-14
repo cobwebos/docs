@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 1f2e136810194ad044255f9d129b5c03549221b9
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: d50f56fe0f4428186d18195f798633baefd6d125
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128654"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732917"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>为 Azure 逻辑应用中的逻辑应用定义创建、编辑或扩展 JSON
 
@@ -24,7 +24,8 @@ ms.locfileid: "43128654"
 若要在 JSON 中处理逻辑应用定义，请在 Azure 门户中打开“代码视图”编辑器，或者在 Visual Studio 中将定义复制到任何所需的编辑器。 如果你不熟悉逻辑应用，请查看[如何创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 > [!NOTE]
-> 某些 Azure 逻辑应用功能（例如，在逻辑应用定义中定义参数和多个触发器）只能在 JSON 中使用，而不能在逻辑应用设计器中使用。 因此，对于这些任务，必须在“代码视图”或其他编辑器中处理。
+> 某些 Azure 逻辑应用功能（例如，在逻辑应用定义中定义参数和多个触发器）只能在 JSON 中使用，而不能在逻辑应用设计器中使用。
+> 因此，对于这些任务，必须在“代码视图”或其他编辑器中处理。
 
 ## <a name="edit-json---azure-portal"></a>编辑 JSON - Azure 门户
 
@@ -58,7 +59,7 @@ ms.locfileid: "43128654"
 
 ## <a name="parameters"></a>parameters
 
-使用参数可以在整个逻辑应用中重复使用值，适合替换可能经常更改的值。 例如，如果要在多个位置使用某个电子邮件地址，应将该电子邮件地址定义为参数。 
+使用参数可以在整个逻辑应用中重复使用值，适合替换可能经常更改的值。 例如，如果要在多个位置使用某个电子邮件地址，应将该电子邮件地址定义为参数。
 
 另外，当需要在不同的环境中重写参数时，参数也很有用。有关详细信息，请参阅[用于部署的参数](#deployment-parameters)和 [Azure 逻辑应用适用的 REST API 文档](https://docs.microsoft.com/rest/api/logic)。
 
@@ -70,13 +71,13 @@ ms.locfileid: "43128654"
 1. 在代码视图中找到 `parameters : {}` 对象，然后添加 `currentFeedUrl` 对象：
 
    ``` json
-     "currentFeedUrl" : {
+   "currentFeedUrl" : {
       "type" : "string",
-            "defaultValue" : "http://rss.cnn.com/rss/cnn_topstories.rss"
+      "defaultValue" : "http://rss.cnn.com/rss/cnn_topstories.rss"
    }
    ```
 
-2. 在 `When_a_feed-item_is_published` 操作中，找到 `queries` 部分，然后将该查询值替换为 `"feedUrl": "#@{parameters('currentFeedUrl')}"`。 
+2. 在 `When_a_feed-item_is_published` 操作中，找到 `queries` 部分，然后将该查询值替换为 `"feedUrl": "#@{parameters('currentFeedUrl')}"`。
 
    **之前**
    ``` json
@@ -84,7 +85,7 @@ ms.locfileid: "43128654"
       "queries": {
           "feedUrl": "https://s.ch9.ms/Feeds/RSS"
        }
-   },   
+   },
    ```
 
    **之后**
@@ -93,13 +94,13 @@ ms.locfileid: "43128654"
       "queries": {
           "feedUrl": "#@{parameters('currentFeedUrl')}"
        }
-   },   
+   },
    ```
 
    若要联接两个或更多符串，还可以使用 `concat` 函数。 
    例如，`"@concat('#',parameters('currentFeedUrl'))"` 的工作方式与前面的示例相同。
 
-3.  完成后，选择“保存”。 
+3.  完成后，选择“保存”。
 
 现在，可通过将其他 URL 传递到 `currentFeedURL` 对象来更改网站的 RSS 源。
 
@@ -107,9 +108,9 @@ ms.locfileid: "43128654"
 
 ## <a name="deployment-parameters-for-different-environments"></a>适用于不同环境的部署参数
 
-通常，部署生命周期具有用于开发、过渡和生产环境。 例如，用户可能会将同一逻辑应用定义用于所有这些环境，但使用不同的数据库。 同样，可能会需要在不同区域中使用同一定义以实现高可用性，但需要每个逻辑应用实例使用该区域的数据库。 
+通常，部署生命周期具有用于开发、过渡和生产环境。 例如，用户可能会将同一逻辑应用定义用于所有这些环境，但使用不同的数据库。 同样，可能会需要在不同区域中使用同一定义以实现高可用性，但需要每个逻辑应用实例使用该区域的数据库。
 
-> [!NOTE] 
+> [!NOTE]
 > 这种情况不同于在*运行时*使用参数，后一情况应改用 `trigger()` 函数。
 
 下面是基本定义：
@@ -157,13 +158,13 @@ ms.locfileid: "43128654"
     },
     "location": "westus"
 }
-``` 
+```
 
 若要了解详细信息，请参阅 [Azure 逻辑应用适用的 REST API 文档](https://docs.microsoft.com/rest/api/logic/)。
 
 ## <a name="process-strings-with-functions"></a>使用函数处理字符串
 
-逻辑应用具有各种用于处理字符串的函数。 例如，假设你想要将订单中的公司名称传递到另一个系统。 但是，你不确定是否能正确处理字符编码。 你可以对此字符串执行 base64 编码，但为了避免在 URL 中进行转义，可以改为替换几个字符。 另外，你只需公司名称的子字符串，因为不使用前五个字符。 
+逻辑应用具有各种用于处理字符串的函数。 例如，假设你想要将订单中的公司名称传递到另一个系统。 但是，你不确定是否能正确处理字符编码。 你可以对此字符串执行 base64 编码，但为了避免在 URL 中进行转义，可以改为替换几个字符。 另外，你只需公司名称的子字符串，因为不使用前五个字符。
 
 ``` json
 {
@@ -200,7 +201,7 @@ ms.locfileid: "43128654"
 
 以下步骤介绍此示例如何处理该字符串，从内到外进行操作：
 
-``` 
+```
 "uri": "http://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
 ```
 
@@ -218,7 +219,7 @@ ms.locfileid: "43128654"
 
 ## <a name="map-list-items-to-property-values-then-use-maps-as-parameters"></a>将列表项映射到属性值，然后使用映射作为参数
 
-若要基于属性的值获得不同的结果，可以创建映射将每个属性值与结果匹配，然后使用映射作为参数。 
+若要基于属性的值获得不同的结果，可以创建映射将每个属性值与结果匹配，然后使用映射作为参数。
 
 例如，此工作流定义一些类别作为参数，并定义一个将这些类别与特定 URL 进行匹配的映射。 首先，此工作流获取文章列表。 然后，此工作流使用映射找到与每篇文章的类别匹配的 URL。
 
@@ -302,13 +303,13 @@ ms.locfileid: "43128654"
 "expression": "@less(actions('order').startTime,addseconds(utcNow(),-1))",
 ```
 
-1. 从 `order` 操作提取 `startTime`。 
+1. 从 `order` 操作提取 `startTime`。
 2. 使用 `utcNow()` 获取当前时间。
 3. 减去 1 秒：
 
    [`addseconds(..., -1)`](../logic-apps/logic-apps-workflow-definition-language.md) 
 
-   可以使用其他时间单位，例如`minutes`或`hours`。 
+   可以使用其他时间单位，例如`minutes`或`hours`。
 
 3. 现在，可以比较这两个值。 
 
@@ -365,7 +366,6 @@ ms.locfileid: "43128654"
   "outputs": {}
 }
 ```
-
 
 ## <a name="next-steps"></a>后续步骤
 

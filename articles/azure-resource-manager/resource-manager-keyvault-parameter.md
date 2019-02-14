@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6e9ad6f74970b6c72b96ae142f02bee6b07fb558
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cd45384bfd548cb73c10306dfee942cbcf7c8ca1
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455467"
+ms.locfileid: "55491903"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>在部署过程中使用 Azure Key Vault 传递安全参数值
 
 在部署过程中，可以从 [Azure Key Vault](../key-vault/key-vault-whatis.md) 中检索一个安全值，而不是直接在参数文件中放置安全值（如密码）。 通过引用参数文件中的密钥保管库和密钥来检索值。 值永远不会公开，因为仅引用其密钥保管库 ID。 密钥保管库与部署到的资源组不需要位于同一订阅中。
 
-若要完成教程，请参阅[教程：在资源管理器模板部署中集成 Azure Key Vault](./resource-manager-tutorial-use-key-vault.md#prepare-a-key-vault)。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="deploy-key-vaults-and-secrets"></a>部署 Key Vault 和机密
+## <a name="deploy-key-vaults-and-secrets"></a>部署密钥保管库和机密
 
 若要创建 Key Vault 并添加机密，请参阅：
 

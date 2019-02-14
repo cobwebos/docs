@@ -8,13 +8,13 @@ ms.topic: include
 ms.date: 02/04/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 184030f4db68f10028f5178b5eff370202b1e487
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 6a12ef422211a77299ece00c5333a6c9f10c9427
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757566"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246729"
 ---
 若要访问 Azure 存储，需要一个 Azure 订阅。 如果还没有订阅，则请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-对 Azure 存储进行的所有访问都要通过存储帐户完成。 对于本快速入门，请使用 [Azure 门户](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM)、Azure PowerShell 或 Azure CLI 创建存储帐户。 有关如何创建帐户的帮助，请参阅[创建存储帐户](../articles/storage/common/storage-quickstart-create-account.md)。
+对 Azure 存储进行的所有访问都要通过存储帐户完成。 对于本快速入门，请使用 [Azure 门户](https://portal.azure.com/)、Azure PowerShell 或 Azure CLI 创建存储帐户。 有关如何创建帐户的帮助，请参阅[创建存储帐户](../articles/storage/common/storage-quickstart-create-account.md)。

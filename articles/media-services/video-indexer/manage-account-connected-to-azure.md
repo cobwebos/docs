@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 43e08298618f059ff706d11ce6bbb3d486642872
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 1515a026ae297a960f220a97449d2258c0b75e58
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291734"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004531"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>管理已连接到 Azure 的视频索引器帐户
 
@@ -75,6 +75,6 @@ ms.locfileid: "52291734"
 
 ## <a name="next-steps"></a>后续步骤
 
-可以遵照[使用 API](video-indexer-use-apis.md) 中的说明，以编程方式来与试用帐户和/或连接到 Azure 的视频索引器帐户进行交互。
+可以遵照如下说明，以编程方式来与试用帐户和/或连接到 Azure 的视频索引器帐户进行交互：[使用 API](video-indexer-use-apis.md)。
 
 应使用连接到 Azure 时所用的同一 Azure AD 用户。

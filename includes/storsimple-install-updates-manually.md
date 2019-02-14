@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: b12b8b30cf063092ca1a0394d5a46e03622586e4
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: eb6438271547348abef78dd8b35b577f2ac0ab8c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164831"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889723"
 ---
-<!--author=SharS last changed: 9/17/15-->
-
 #### <a name="to-install-regular-updates-via-the-azure-classic-portal"></a>通过 Azure 经典门户安装常规更新
 1. 在“设备”页上，选择要安装更新的设备。
 2. 导航到“设备” > “维护”，并向下滚动到“软件更新”。

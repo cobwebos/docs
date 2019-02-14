@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1b145b1162dcba5653c962f0af1969c1aa017f57
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: d40d3b32f3af8e50079de0a5988584427ea6777c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054633"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819801"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>使用资源管理器模板在 HDInsight 中创建 Apache Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -38,11 +38,12 @@ ms.locfileid: "54054633"
 
 可在 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?term=hdinsight)中找到 HDInsight 模板示例。 将跨平台 [Visual Studio 代码](https://code.visualstudio.com/#alt-downloads)与 [Resource Manager 扩展](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)或文本编辑器配合使用，将模板保存到工作站上的文件中。 
 
-有关 Resource Manager 模板的详细信息，请参阅以下文章：
+有关资源管理器模板的详细信息，请参阅以下文章和示例：
 
 * [创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)
 * [使用 Azure 资源管理器模板部署应用程序](../azure-resource-manager/resource-group-template-deploy.md)
-* [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/clusters) 模板引用
+* [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/allversions) 模板引用
+* [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
 
 ## <a name="generate-templates"></a>生成模板
 
@@ -51,7 +52,6 @@ ms.locfileid: "54054633"
 - Azure 门户：请参阅[从现有资源导出 Azure 资源管理器模板](../azure-resource-manager/resource-manager-export-template.md)。
 - Azure PowerShell：请参阅[使用 PowerShell 导出 Azure 资源管理器模板](../azure-resource-manager/resource-manager-export-template-powershell.md)。
 - Azure 经典 CLI：请参阅[使用 Azure 经典 CLI 导出 Azure 资源管理器模板](../azure-resource-manager/resource-manager-export-template-cli.md)。
-
 
 ## <a name="deploy-using-the-portal"></a>使用门户进行部署
 

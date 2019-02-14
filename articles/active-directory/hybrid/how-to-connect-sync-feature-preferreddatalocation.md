@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/30/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 50210ebeed30bdb58698d0e878667b92dcc73609
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 38bb0840269d4b7bacbb0101590b389c8542a9b1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167081"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814225"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect 同步：为 Office 365 资源配置首选数据位置
 本主题的目的是介绍如何在 Azure Active Directory (Azure AD) Connect 同步中配置首选数据位置的属性。当某人使用了 Office 365 中的多地域功能时，你使用此属性来指定用户的 Office 365 数据的地理位置。 （术语*区域*和*地域*可以互换使用。）
@@ -238,7 +238,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 ## <a name="step-8-verify-the-result"></a>步骤 8：验证结果
 现在，可以验证配置并为用户启用该配置。
 
-1. 将区域添加到用户的选定属性。 可以在[此表](#enable-synchronization-of-preferreddatalocation)中找到可用地域的列表。  
+1. 将区域添加到用户的选定属性。 可以在此表中找到可用地域的列表。  
 ![添加到用户的 AD 属性的屏幕截图](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-adattribute.png)
 2. 等待该属性同步到 Azure AD。
 3. 使用 Exchange Online PowerShell 验证是否正确设置了邮箱区域。  

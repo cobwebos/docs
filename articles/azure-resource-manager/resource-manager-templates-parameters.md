@@ -4,21 +4,19 @@ description: 介绍了使用声明性 JSON 语法的 Azure 资源管理器模板
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 02/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: fd6fcff6ac556abe3b2d34c7e8b1b0290208f5b0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: dc817302ab39d12ccd1d1a20d4dd72f94352c796
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722136"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695618"
 ---
 # <a name="parameters-section-of-azure-resource-manager-templates"></a>Azure 资源管理器模板的 Parameters 节
 在模板的 parameters 节中，可以指定在部署资源时能够输入的值。 提供针对特定环境（例如开发、测试和生产环境）定制的参数值可以自定义部署。 无需在模板中提供参数，但如果没有参数，模板始终部署具有相同名称、位置和属性的相同资源。
@@ -83,7 +81,7 @@ ms.locfileid: "53722136"
 }
 ```
 
-| 元素名称 | 必选 | Description |
+| 元素名称 | 必选 | 说明 |
 |:--- |:--- |:--- |
 | parameterName |是 |参数的名称。 必须是有效的 JavaScript 标识符。 |
 | type |是 |参数值的类型。 允许的类型和值为 **string**、**securestring**、**int**、**bool**、**object**、**secureObject** 和 **array**。 |
@@ -93,7 +91,7 @@ ms.locfileid: "53722136"
 | maxValue |否 |int 类型参数的最大值，此值是包容性的。 |
 | minLength |否 |string、secure string 和 array 类型参数的最小长度，此值是包容性的。 |
 | maxLength |否 |string、secure string 和 array 类型参数的最大长度，此值是包容性的。 |
-| description |否 |通过门户向用户显示的参数的说明。 |
+| description |否 |通过门户向用户显示的参数的说明。 有关详细信息，请参阅[模板中的注释](resource-group-authoring-templates.md#comments)。 |
 
 ## <a name="template-functions-with-parameters"></a>包含参数的模板函数
 
@@ -192,7 +190,7 @@ ms.locfileid: "53722136"
 
 这些示例模板演示了使用参数的一些方案。 请部署这些模板来测试在不同方案中参数是如何处理的。
 
-|模板  |Description  |
+|模板  |说明  |
 |---------|---------|
 |[包含用于默认值的函数的参数](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | 演示了为参数定义默认值时如何使用模板函数。 该模板不部署任何资源。 它构造参数值并返回这些值。 |
 |[参数对象](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | 演示了将对象用于参数。 该模板不部署任何资源。 它构造参数值并返回这些值。 |

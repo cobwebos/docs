@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 5c6e699edd05d8ac21a36d3da52f37564c54baf1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d246d964fff443e270fbd337fc2f8800bf552730
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53553369"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55513959"
 ---
 | 区域 | 终结点 |
 |--------|----------|
@@ -24,4 +24,4 @@ ms.locfileid: "53553369"
 
 
 > [!NOTE]
-> 必须将语言参数附加到 URL 以避免收到 HTTP 401 错误。 例如，使用“美国西部”终结点设置为美国英语的语言为： https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US。
+> 必须将语言参数追加到 URL 以避免收到 4xx HTTP 错误。 例如，使用“美国西部”终结点设置为美国英语的语言为： https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US。

@@ -1,24 +1,24 @@
 ---
-title: 在 Azure AD 中确保管理访问权限安全性的最佳做法 | Microsoft Docs
+title: 安全管理访问的最佳做法 - Azure Active Directory | Microsoft Docs
 description: 确保组织的管理访问权限和管理帐户是安全的。 适用于配置 Azure AD、Azure 和 Microsoft Online Services 的系统架构师和 IT 专业人员。
 services: active-directory
 keywords: ''
 author: curtand
 manager: mtillman
 ms.author: curtand
-ms.date: 06/25/2018
+ms.date: 01/31/2019
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.custom: it-pro
-ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: ba7baf41a1753625ee3e97acde1d954e914545bb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.reviewer: martincoetzer; MarkMorow
+ms.openlocfilehash: 327ea929b5825abb448cb13b1bd0cbfa5681521c
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190762"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512493"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 

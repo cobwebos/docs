@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: df3f4dc163f94ddab08ecdad7f8d4cc625b8917d
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: cbb15ff084c3639be801458d071f3966873c2509
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300262"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815641"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>将 Azure 高级存储用于虚拟机上的 SQL Server
 ## <a name="overview"></a>概述
@@ -1191,7 +1191,7 @@ Get-AzureVM –ServiceName $destcloudsvc –Name $vmNameToMigrate  | Add-AzureEn
 
 启动已迁移的辅助节点并在故障转移现有的主节点之前将其添加到新云服务的新 IP 地址资源中后，应在群集故障转移管理器执行以下步骤：
 
-若要添加 IP 地址，请参阅[附录](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)步骤 14。
+若要添加 IP 地址，请参阅“附录”步骤 14。
 
 1. 对于当前 IP 地址资源，将可能具有的所有者更改为“Existing Primary SQL Server”（在本例中为“dansqlams4”）：
 

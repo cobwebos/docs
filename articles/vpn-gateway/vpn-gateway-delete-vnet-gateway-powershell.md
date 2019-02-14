@@ -1,5 +1,5 @@
 ---
-title: 删除虚拟网络网关：PowerShell：Azure 资源管理器 | Microsoft Docs
+title: 删除虚拟网关：PowerShell：Azure 资源管理器 | Microsoft Docs
 description: 在 Resource Manager 部署模型中使用 PowerShell 删除虚拟网络网关。
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: cherylmc
-ms.openlocfilehash: a23a969f1381e3a10c81a903793bad2870b436f6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: a0fc21c469658da637f15c820c105ec3ff31a04e
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31603634"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507920"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>使用 PowerShell 删除虚拟网络网关
 > [!div class="op_single_selector"]

@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 24feef28edac73f625de1c1b7dfd9a4aaf9883af
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/07/2019
+ms.openlocfilehash: f6874b1d97c36d22e60606ad8c8a356baec53b85
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734617"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893590"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录
 
@@ -65,14 +65,14 @@ ms.locfileid: "55734617"
 
 | 数据库的监视遥测 | 单一数据库和入池数据库支持 | 托管实例支持 |
 | :------------------- | ------------------- | ------------------- |
-| [所有指标](sql-database-metrics-diag-logging.md#all-metrics)：包含 DTU/CPU 百分比、DTU/CPU 限制、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比和 XTP 存储百分比。 | 是 | 否 |
-| [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics)：包含有关查询运行时统计信息的信息，例如 CPU 使用率、查询持续时间统计信息。 | 是 | 是 |
-| [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics)：包含有关查询等待统计信息的信息（查询正在等待什么），例如 CPU、日志和锁定。 | 是 | 是 |
-| [Errors](sql-database-metrics-diag-logging.md#errors-dataset):包含有关数据库发生的 SQL 错误的信息。 | 是 | 是 |
-| [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset)：包含有关数据库针对不同等待类型花费多少时间等待的信息。 | 是 | 否 |
-| [Timeouts](sql-database-metrics-diag-logging.md#time-outs-dataset)：包含有关数据库发生的超时的信息。 | 是 | 否 |
-| [Blocks](sql-database-metrics-diag-logging.md#blockings-dataset)：包含有关数据库发生的阻塞事件的信息。 | 是 | 否 |
-| [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset)：包含性能的智能见解。 有关详细信息，请参阅[智能见解](sql-database-intelligent-insights.md)。 | 是 | 是 |
+| [所有指标](#all-metrics)：包含 DTU/CPU 百分比、DTU/CPU 限制、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比和 XTP 存储百分比。 | 是 | 否 |
+| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics)：包含有关查询运行时统计信息的信息，例如 CPU 使用率、查询持续时间统计信息。 | 是 | 是 |
+| [QueryStoreWaitStatistics](#query-store-wait-statistics)：包含有关查询等待统计信息的信息（查询正在等待什么），例如 CPU、日志和锁定。 | 是 | 是 |
+| [Errors](#errors-dataset):包含有关数据库发生的 SQL 错误的信息。 | 是 | 是 |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset)：包含有关数据库针对不同等待类型花费多少时间等待的信息。 | 是 | 否 |
+| [Timeouts](#time-outs-dataset)：包含有关数据库发生的超时的信息。 | 是 | 否 |
+| [Blocks](#blockings-dataset)：包含有关数据库发生的阻塞事件的信息。 | 是 | 否 |
+| [SQLInsights](#intelligent-insights-dataset)：包含性能的智能见解。 有关详细信息，请参阅[智能见解](sql-database-intelligent-insights.md)。 | 是 | 是 |
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -169,7 +169,7 @@ ms.locfileid: "55734617"
 
 | 资源 | 监视遥测数据 |
 | :------------------- | ------------------- |
-| **托管实例** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#logs-for-managed-instance) 包含 vCore 计数、平均 CPU 百分比、IO 请求数、读取/写入的字节数、保留的存储空间和已使用的存储空间。 |
+| **托管实例** | [ResourceUsageStats](#logs-for-managed-instances) 包含 vCore 计数、平均 CPU 百分比、IO 请求数、读取/写入的字节数、保留的存储空间和已使用的存储空间。 |
 
 若要为托管实例资源启用诊断遥测数据的流式传输，请执行以下步骤：
 

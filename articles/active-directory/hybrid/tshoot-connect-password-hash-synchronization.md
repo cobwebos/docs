@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c87b6791ea2d90ed302d796f17727a0338104beb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5339b0c77a69a915e58118888f8b82d095a43e38
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174986"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817778"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步解决密码哈希同步问题
 本主题提供解决密码哈希同步问题的步骤。 如果密码未按预期同步，请区分该密码是一部分用户的密码还是所有用户的密码。
@@ -237,7 +237,7 @@ ms.locfileid: "55174986"
 
 5. 如果没有看到检测信号，或者其他方面均为异常，则运行[触发所有密码的完全同步](#trigger-a-full-sync-of-all-passwords)。 仅运行该脚本一次。
 
-6. 请参阅[排查一个对象未同步密码的问题](#one-object-is-not-synchronizing-passwords)部分。
+6. 请参阅“排查一个对象未同步密码的问题”部分。
 
 ### <a name="connectivity-problems"></a>连接问题
 
@@ -303,7 +303,7 @@ ms.locfileid: "55174986"
 
     ![对象日志详细信息](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 
-    如果对象日志为空，则 Azure AD Connect 无法从 Active Directory 读取密码哈希。 继续进行针对[连接错误](#connectivity-errors)的故障排除。 如果看到除“成功”外的任何其他值，请参阅[密码同步日志](#password-sync-log)中的表。
+    如果对象日志为空，则 Azure AD Connect 无法从 Active Directory 读取密码哈希。 继续进行针对连接错误的故障排除。 如果看到除“成功”外的任何其他值，请参阅[密码同步日志](#password-sync-log)中的表。
 
     h. 选择“沿袭”选项卡，确保至少有一个同步规则的“密码同步”列设置为“True”。 在默认配置中，同步规则的名称为“In from AD - User AccountEnabled”。  
 

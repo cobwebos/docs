@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 根据本文的说明为必应自定义搜索配置和集成托管 UI。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
-ms.date: 09/28/2017
+ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 0336cc922e8f86792814196719e659d33a943bb8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fbe865a5d9ef6c44b80c811a023c86f6446c3bb8
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193601"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233874"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>配置托管 UI 体验
 

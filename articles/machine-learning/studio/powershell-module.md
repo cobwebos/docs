@@ -1,7 +1,21 @@
 ---
-title:机器学习工作室 PowerShell 模块 titleSuffix：Azure 机器学习工作室 description:使用 PowerShell 创建和管理 Azure 机器学习工作室工作区、实验和 Web 服务等。 services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=haining, previous-author=hning86 ms.date:2019 年 1 月 25 日
+title: 适用于机器学习工作室的 PowerShell 模块
+titleSuffix: Azure Machine Learning Studio
+description: 使用 PowerShell 创建和管理 Azure 机器学习工作室工作区、实验和 Web 服务等。
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=haining, previous-author=hning86
+ms.date: 01/25/2019
+ms.openlocfilehash: b6080e6e81b6cedce4d08cf20e082c87e5cecade
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55489812"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio"></a>Azure 机器学习工作室 PowerShell 模块
 

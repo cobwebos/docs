@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8745519f1a0fdda7a5feb6ffb3f61e5250bb260a
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 109bd1c987c86721c6064fc0294913c85fa3a901
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164781"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745565"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的逻辑函数
 
@@ -31,21 +31,24 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 * [not](#not)
 * [or](#or)
 
-## <a name="and"></a>and
-`and(arg1, arg2)`
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-检查两个参数值是否均为 true。
+## <a name="and"></a>and
+`and(arg1, arg2, ...)`
+
+检查所有参数值是否均为 true。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | Description |
+| 参数 | 必选 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |布尔值 |第一个值，需检查其是否为 true。 |
 | arg2 |是 |布尔值 |第二个值，需检查其是否为 true。 |
+| 其他参数 |否 |布尔值 |用于检查是否为 true 的其他参数。 |
 
 ### <a name="return-value"></a>返回值
 
-如果两个值均为 true，则返回 True；否则返回 False。
+如果所有值均为 true，则返回 True；否则返回 False。
 
 ### <a name="examples"></a>示例
 
@@ -75,7 +78,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -90,7 +93,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 要使用 PowerShell 部署此示例模板，请使用：
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
 ## <a name="bool"></a>bool
@@ -100,7 +103,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | Description |
+| 参数 | 必选 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串或整数 |要转换为布尔值的值。 |
 
@@ -139,7 +142,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
 | falseString | Bool | False |
@@ -155,7 +158,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 要使用 PowerShell 部署此示例模板，请使用：
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/bool.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/bool.json
 ```
 
 ## <a name="if"></a>if
@@ -165,7 +168,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | Description |
+| 参数 | 必选 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | 条件 |是 |布尔值 |要检查是否为 true 的值。 |
 | trueValue |是 | 字符串、int、对象或数组 |条件为 true 时返回的值。 |
@@ -250,7 +253,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | yesOutput | String | 是 |
 | noOutput | String | 否 |
@@ -265,7 +268,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 要使用 PowerShell 部署此示例模板，请使用：
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/if.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/if.json
 ```
 
 ## <a name="not"></a>not
@@ -275,7 +278,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | Description |
+| 参数 | 必选 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |布尔值 |要转换的值。 |
 
@@ -311,7 +314,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -326,7 +329,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 要使用 PowerShell 部署此示例模板，请使用：
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json)结合使用 **not** 和 [equals](resource-group-template-functions-comparison.md#equals)。
@@ -347,7 +350,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
@@ -360,24 +363,25 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 要使用 PowerShell 部署此示例模板，请使用：
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
 ```
 
 ## <a name="or"></a>或
-`or(arg1, arg2)`
+`or(arg1, arg2, ...)`
 
-检查其中任一参数值是否为 true。
+检查任何参数值是否为 true。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | Description |
+| 参数 | 必选 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |布尔值 |第一个值，需检查其是否为 true。 |
 | arg2 |是 |布尔值 |第二个值，需检查其是否为 true。 |
+| 其他参数 |否 |布尔值 |用于检查是否为 true 的其他参数。 |
 
 ### <a name="return-value"></a>返回值
 
-如果任一值为 true，则返回 True；否则返回 False。
+如果任何值为 true，则返回 True；否则返回 False。
 
 ### <a name="examples"></a>示例
 
@@ -407,7 +411,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -422,7 +426,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 要使用 PowerShell 部署此示例模板，请使用：
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
 ## <a name="next-steps"></a>后续步骤

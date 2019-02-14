@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2019
+ms.date: 02/01/2019
 ms.author: magoedte
-ms.openlocfilehash: 1f6be45e7f53aff7f9b8957ca88efe7605e4a984
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 37e2da00ecbecdddcc8757e64c57b03774092e14
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54889036"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814983"
 ---
 # <a name="deploy-azure-monitor-for-vms-preview"></a>部署用于 VM 的 Azure Monitor（预览版）
 本文介绍如何设置用于 VM 的 Azure Monitor。 该服务监视 Azure 虚拟机 (VM)、虚拟机规模集和环境中的虚拟机的操作系统运行状况。 此监视包括发现和映射可能在其上托管的应用程序依赖关系。 
@@ -62,7 +62,7 @@ ms.locfileid: "54889036"
 * 安装 ServiceMap 和 InfrastructureInsights 解决方案。 仅可使用本文中提供的 Azure 资源管理器模板完成此安装。
 * 配置 Log Analytics 工作区以收集性能计数器。
 
-若要为大规模方案配置工作区，请参阅[为大规模部署设置 Log Analytics 工作区](#setup-log-analytics-workspace)。
+若要为大规模方案配置工作区，请参阅“为大规模部署设置 Log Analytics 工作区”。
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -70,6 +70,7 @@ ms.locfileid: "54889036"
 
 |OS 版本 |性能 |地图 |运行状况 |
 |-----------|------------|-----|-------|
+|Windows Server 2019 | X | X |  |
 |Windows Server 2016 1803 | X | X | X |
 |Windows Server 2016 | X | X | X |
 |Windows Server 2012 R2 | X | X | |
@@ -102,6 +103,7 @@ ms.locfileid: "54889036"
 | 7.3 | 3.10.0-514 |
 | 7.4 | 3.10.0-693 |
 | 7.5 | 3.10.0-862 |
+| 7.6 | 3.10.0-957 |
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
@@ -117,6 +119,7 @@ ms.locfileid: "54889036"
 | 6.7 | 2.6.32-573 |
 | 6.8 | 2.6.32-642 |
 | 6.9 | 2.6.32-696 |
+| 6.10 | 2.6.32-754 |
 
 #### <a name="ubuntu-server"></a>Ubuntu Server
 

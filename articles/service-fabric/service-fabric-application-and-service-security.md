@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: ryanwi
-ms.openlocfilehash: f83f7afa4173316f127c76f20967054bf13c9a6b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 91e7fdd215d246156f601d3b5e6e05b7f8f71f59
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097881"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116450"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric 应用程序和服务安全性
 微服务体系结构可以带来[诸多好处](service-fabric-overview-microservices.md)。 但是，管理微服务的安全性有一定的难度，比管理传统单体式应用程序的安全性更复杂。 
@@ -31,7 +31,7 @@ ms.locfileid: "55097881"
 ## <a name="authentication-and-authorization"></a>身份验证和授权
 通常，有必要将服务公开的资源和 API 限制给特定的受信任用户或客户端使用。 身份验证是可靠认定用户身份的过程。  授权是将 API 或服务提供给某些已经过身份验证的用户，而不提供给其他用户使用的过程。
 
-### <a name="authentication"></a>身份验证
+### <a name="authentication"></a>Authentication
 做出 API 级信任决策的第一个步骤就是身份验证。 身份验证是可靠认定用户身份的过程。  在微服务场景中，身份验证通常以集中方式处理。 如果使用 API 网关，可[将身份验证任务卸载](/azure/architecture/patterns/gateway-offloading)到网关。 如果使用此方法，请确保除非部署了额外的安全措施来对消息（不管是否来自网关）进行身份验证，否则不能直接访问单个服务（在不使用 API 网关的情况下）。
 
 如果可以直接访问服务，则可以使用某个身份验证服务（例如 Azure Active Directory，或充当安全令牌服务 (STS) 的专用身份验证微服务）对用户进行身份验证。 信任决策在包含安全令牌或 Cookie 的服务之间共享。 
@@ -110,7 +110,7 @@ TO DO: Encrypt disks on Linux clusters?-->
 * [了解群集安全性](service-fabric-cluster-security.md)
 
 <!-- Links -->
-[key-vault-get-started]:../key-vault/key-vault-get-started.md
+[key-vault-get-started]:../key-vault/key-vault-overview.md
 [config-package]: service-fabric-application-and-service-manifests.md
 [service-fabric-cluster-creation-via-arm]: service-fabric-cluster-creation-via-arm.md
 

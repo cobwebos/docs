@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 61bc9da45ac420e5683be1ea3ad253eae9c0ba5a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: fc18262326a8474cac417b67a37df35d91d75439
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158935"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657733"
 ---
 # <a name="set-up-a-device-template"></a>设置设备模板
 
@@ -39,6 +39,8 @@ ms.locfileid: "50158935"
 
 > [!NOTE]
 > 只有构建人员和管理员可以创建、编辑和删除设备模板。 任何用户都可以在“Device Explorer”页中基于现有的设备模板创建设备。
+
+[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
 ## <a name="create-a-device-template"></a>创建设备模板
 
@@ -134,9 +136,9 @@ ms.locfileid: "50158935"
 
 设置可以处于三种状态之一。 设备会报告这些状态。
 
-- **已同步**：设备已更改以反映设置值。
+- **已同步**：设备已更改为反映设置值。
 
-- **挂起**：设备当前正在更改为设置值。
+- **Pending**：设备目前正在更改为设置值。
 
 - **错误**：设备返回了错误。
 
@@ -234,9 +236,9 @@ ms.locfileid: "50158935"
 
 命令与设置有何不同？ 
 
-* **设置**：设置是你要应用于设备的配置，并且希望在更改配置之前设备保留该配置。 例如，你希望设置冰箱的温度，即使冰箱重新启动也需要保持该设置。 
+* **设置**：设置指你要应用于设备的配置，且你希望设备在你更改配置之前保留该配置。 例如，你希望设置冰箱的温度，即使冰箱重新启动也需要保持该设置。 
 
-* **命令**：你可以使用命令在来自远程 IoT Central 的设备上立即运行命令。 如果未连接设备，则命令超时并失败。 例如，想要重新启动设备的情况。  
+* **命令**：可以使用命令从 IoT Central 在设备上即时远程运行命令。 如果未连接设备，则命令超时并失败。 例如，想要重新启动设备的情况。  
 
 
 例如，可以通过选择“编辑模板”，然后单击“+ 新建命令”，并输入新命令来添加一个新的 Echo 命令：

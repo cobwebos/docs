@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: c80b3bfb51785c3bc0b606d579a7367c6013b73e
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: b8ec902050469d3a8b6045ae950bcb7e89de1605
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078230"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507050"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>将 RADIUS 身份验证与 Azure 多重身份验证服务器集成
 
@@ -29,6 +29,7 @@ RADIUS 是一种标准协议，用于接受身份验证请求并处理这些请�
 ![Radius 身份验证](./media/howto-mfaserver-dir-radius/radius.png)
 
 ## <a name="add-a-radius-client"></a>添加 RADIUS 客户端
+
 若要配置 RADIUS 身份验证，请在 Windows Server 上安装 Azure 多重身份验证服务器。 如果有 Active Directory 环境，应将服务器加入到网络内部的域中。 使用以下过程可配置 Azure 多重身份验证服务器：
 
 1. 在 Azure 多重身份验证服务器内，单击左侧菜单中的“RADIUS 身份验证”图标。
@@ -50,19 +51,17 @@ RADIUS 是一种标准协议，用于接受身份验证请求并处理这些请�
 ## <a name="configure-your-radius-client"></a>配置 RADIUS 客户端
 
 1. 单击“目标”选项卡。
-2. 如果 Azure MFA 服务器已安装在 Active Directory 环境中已加入域的服务器上，请选择 Windows 域。
-3. 如果应针对 LDAP 目录对用户进行身份验证，请选择“LDAP 绑定”。
+   * 如果 Azure MFA 服务器已安装在 Active Directory 环境中已加入域的服务器上，请选择 Windows 域。
+   * 如果应针对 LDAP 目录对用户进行身份验证，请选择“LDAP 绑定”。
+      请在“设置”选项卡上选择“目录集成”图标并编辑 LDAP 配置，以便将服务器绑定到目录。 可在 [LDAP 代理配置指南](howto-mfaserver-dir-ldap.md)中找到配置 LDAP 的说明。
+   * 如果用户应向其他 RADIUS 服务器进行身份验证，请选择“RADIUS 服务器”。
+1. 单击“添加”，配置 Azure MFA 服务器将为其代理 RADIUS 请求的服务器。
+1. 在“添加 RADIUS 服务器”对话框中，输入 RADIUS 服务器的 IP 地址和共享机密。
 
-  请在“设置”选项卡上选择“目录集成”图标并编辑 LDAP 配置，以便将服务器绑定到目录。 可在 [LDAP 代理配置指南](howto-mfaserver-dir-ldap.md)中找到配置 LDAP 的说明。
+   Azure多重身份验证服务器和 RADIUS 服务器上的共享机密必须相同。 如果 RADIUS 服务器使用不同端口，请更改身份验证端口和记帐端口。
 
-4. 如果用户应向其他 RADIUS 服务器进行身份验证，请选择“RADIUS 服务器”。
-5. 单击“添加”，配置 Azure MFA 服务器将为其代理 RADIUS 请求的服务器。
-6. 在“添加 RADIUS 服务器”对话框中，输入 RADIUS 服务器的 IP 地址和共享机密。
-
-  Azure多重身份验证服务器和 RADIUS 服务器上的共享机密必须相同。 如果 RADIUS 服务器使用不同端口，请更改身份验证端口和记帐端口。
-
-7. 单击“确定”。
-8. 在其他 RADIUS 服务器中将 Azure MFA 服务器添加为 RADIUS 客户端，以便该 RADIUS 服务器处理 Azure MFA 服务器发送给它的访问请求。 使用 Azure 多重身份验证服务器中配置的共享机密。
+1. 单击“确定”。
+1. 在其他 RADIUS 服务器中将 Azure MFA 服务器添加为 RADIUS 客户端，以便该 RADIUS 服务器处理 Azure MFA 服务器发送给它的访问请求。 使用 Azure 多重身份验证服务器中配置的共享机密。
 
 重复上述步骤，添加更多 RADIUS 服务器。 使用“上移”和“下移”按钮配置 Azure MFA 服务器调用这些 RADIUS 服务器时应使用的顺序。
 

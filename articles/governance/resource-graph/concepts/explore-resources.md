@@ -4,17 +4,17 @@ description: 了解如何使用 Resource Graph 查询语言浏览资源并发现
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 090ea6fa38f07dda2f3769398c082e302edebe94
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d6ce615e23ce71f22eff3c2c70b387267792fef9
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095462"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768395"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>使用 Resource Graph 浏览 Azure 资源
 
@@ -40,8 +40,11 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1"
+Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1" | ConvertTo-Json -Depth 100
 ```
+
+> [!NOTE]
+> Azure PowerShell `Search-AzGraph` cmdlet 默认情况下会返回 PSCustomObject。 若要让输出与 Azure CLI 返回的内容相同，请使用 `ConvertTo-Json` cmdlet。 “深度”的默认值是“2”。 将它设置为“100”应转换所有返回的级别。
 
 JSON 结果的结构类似于下面的示例：
 

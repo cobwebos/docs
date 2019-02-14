@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: priyamo
-ms.openlocfilehash: 45bf76696269e1224250b834b67acb2a68c10d7c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cbe6d04dfcf9174b15cde71f7becbb371eaee4b2
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189453"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662456"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 资源托管标识的 FAQ 和已知问题
 
@@ -154,8 +154,8 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 
 ## <a name="known-issues-with-user-assigned-managed-identities"></a>用户分配的托管标识的已知问题
 
-- 不支持创建名称中有特殊字符（即下划线）的用户分配托管标识。
-- 用户分配的标识名称限制为 24 个字符。 如果名称超过 24 个字符，则无法将该标识分配给资源（即虚拟机）。
+- 用户分配的标识名称限制为最少 3 个字符及最多 128 个字符。 如果名称超过 128 个字符，则无法将该标识分配给资源（即虚拟机）。
+- 用户分配的标识名称可以包含以下字符：a-z、A-Z、-、\_、0-9。 不支持创建名称中包含超出此字符集的字符（即星号）的用户分配托管标识。
 - 如果使用的是托管标识虚拟机扩展（计划在 2019 年 1 月弃用），则支持的限制为 32 个用户分配托管标识。 如果不使用托管标识虚拟机扩展，支持的限制为 512 个。  
 - 将用户分配的托管标识移动到另一个资源组将导致标识被破坏。 因此，你将无法请求该标识的令牌。 
 - 将订阅转移到另一个目录将破坏任何现存的用户分配的托管标识。 

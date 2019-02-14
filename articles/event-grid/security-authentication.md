@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: 23e1de98fff891d199d1f33fcb714b2b284e8edb
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: ec34b9c5f78b4d0ea59382f616fab88e0e1dedc9
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382918"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730928"
 ---
 # <a name="event-grid-security-and-authentication"></a>事件网格安全和身份验证 
 
@@ -29,7 +29,7 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 
 与众多支持 Webhook 的其他服务一样，事件网格需要你证明对 Webhook 的所有权，然后才能开始向该终结点传送事件。 此要求可防止恶意用户用大量事件淹没你的终结点。 如果使用下面列出的三项 Azure 服务中的任何一项，Azure 基础结构将自动进行此验证：
 
-* 使用[事件网格连接器](https://docs.microsoft.com/en-us/connectors/azureeventgrid/)的 Azure 逻辑应用
+* 使用[事件网格连接器](https://docs.microsoft.com/connectors/azureeventgrid/)的 Azure 逻辑应用
 * 通过 [Webhook](../event-grid/ensure-tags-exists-on-new-virtual-machines.md) 实现 Azure 自动化
 * 使用[事件网格触发器](../azure-functions/functions-bindings-event-grid.md)的 Azure Functions
 
@@ -50,7 +50,7 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 * 事件正文具有与其他事件网格事件相同的架构。
 * 该事件的 eventType 属性是 `Microsoft.EventGrid.SubscriptionValidationEvent`。
 * 该事件的 data 属性包括一个 `validationCode` 属性，其中含有随机生成的字符串。 例如，“validationCode: acb13…”。
-* 如果使用 API 版本 2018-05-01-preview，则事件数据还将包括 `validationUrl` 属性，其中包含用于手动验证订阅的 URL。
+* 事件数据还包括 `validationUrl` 属性，其中包含用于手动验证订阅的 URL。
 * 该数组仅包含验证事件。 你回显验证代码后，事件网格会以单独的请求发送其他事件。
 * EventGrid DataPlane SDK 包含对应订阅验证事件数据和订阅验证响应的类。
 

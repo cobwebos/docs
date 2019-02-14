@@ -10,19 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 6017fc957d511aa21f8e28cf011378e8012123cc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b3e948c2eafb43f804b330287b114ef9307b0aac
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151713"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813358"
 ---
 # <a name="using-an-insights-token-to-get-insights-about-an-image"></a>使用见解标记获取有关图像的见解
 
 必应视觉搜索 API 将返回有关所提供的图像的信息。 可以通过使用图像的 URL、见解标记或通过上传图像来提供图像。 有关这些选项的信息，请参阅[什么是必应视觉搜索 API？](overview.md)。 本文演示了如何使用见解标记。 有关演示了通过上传图像来获取见解的示例，请参阅快速入门 ([C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md))。
 
 
-如果向视觉搜索发送图像标记或 URL，下面显示了必须在 POST 的正文中包含的窗体数据。 窗体数据必须包含 Content-Disposition 标头，且必须将其 `name` 参数设置为“knowledgeRequest”。 有关 `imageInfo` 对象的详细信息，请参阅[请求](#the-request)。
+如果向视觉搜索发送图像标记或 URL，下面显示了必须在 POST 的正文中包含的窗体数据。 窗体数据必须包含 Content-Disposition 标头，且必须将其 `name` 参数设置为“knowledgeRequest”。 有关 `imageInfo` 对象的详细信息，请参阅“请求”。
 
 ```json
 {

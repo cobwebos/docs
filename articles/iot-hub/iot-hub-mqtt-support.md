@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: 2fbc155afc3fd5280f2baf4eccabb895c158b89f
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 534d1785336c68a771722f0f464eae278551ffc0
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913560"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660232"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -60,17 +60,17 @@ IoT 中心不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准
 * AMQP 针对许多条件返回错误，而 MQTT 会终止连接。 因此异常处理逻辑可能需要进行一些更改。
 * MQTT 在接收[“云到设备”消息][lnk-messaging]时不支持*拒绝*操作。 如果后端应用需要接收来自设备应用的响应，请考虑使用[直接方法][lnk-methods]。
 
-## <a name="using-the-mqtt-protocol-directly"></a>直接使用 MQTT 协议
+## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>直接使用 MQTT 协议（作为设备）
 
 如果设备无法使用设备 SDK，仍可在 8883 端口使用 MQTT 协议连接到公共设备终结点。 在 **CONNECT** 数据包中，设备应使用以下值：
 
 * **ClientId** 字段使用 **deviceId**。
 
-* “用户名”字段使用 `{iothubhostname}/{device_id}/api-version=2018-06-30`，其中 `{iothubhostname}` 是 IoT 中心的完整 CName。
+* “用户名”字段使用 `{iothubhostname}/{device_id}/?api-version=2018-06-30`，其中 `{iothubhostname}` 是 IoT 中心的完整 CName。
 
     例如，如果 IoT 中心的名称为 **contoso.azure-devices.net**，设备的名称为 **MyDevice01**，则完整“用户名”字段应包含：
 
-    `contoso.azure-devices.net/MyDevice01/api-version=2018-06-30`
+    `contoso.azure-devices.net/MyDevice01/?api-version=2018-06-30`
 
 * “**密码**”字段使用 SAS 令牌。 对于 HTTPS 和 AMQP 协议，SAS 令牌的格式是相同的：
 
@@ -108,6 +108,16 @@ IoT 中心不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准
 对于 MQTT 连接和断开连接数据包，IoT 中心会在**操作监视**通道上发出事件。 此事件包含的其他信息有助于排查连接问题。
 
 设备应用可以在 CONNECT 数据包中指定 Will 消息。 设备应用应该使用 `devices/{device_id}/messages/events/` 或 `devices/{device_id}/messages/events/{property_bag}` 作为 Will 主题名称，用于定义要作为遥测消息转发的 Will 消息。 在此情况下，如果关闭网络连接，但之前未从设备中接收到 DISCONNECT 数据包，则 IoT 中心将 CONNECT 数据包中提供的 Will 消息发送到遥测通道。 遥测通道可以是默认事件终结点或由 IoT 中心路由定义的自定义终结点。 消息具有 iothub-MessageType 属性，其中包含分配给它的 Will 的值。
+
+## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>直接使用 MQTT 协议（作为模块）
+
+通过 MQTT 并使用模块标识连接到 IoT 中心的操作与设备类似（如[上面](#using-the-mqtt-protocol-directly-as-a-device)所述），但需要：
+* 将客户端 ID 设置为 `{device_id}/{module_id}`。
+* 如果使用用户名和密码进行身份验证，请将用户名设置为 `<hubname>.azure-devices.net/{device_id}/{module_id}/?api-version=2018-06-30`，并使用与模块标识关联的 SAS 令牌作为密码。
+* 使用 `devices/{device_id}/modules/{module_id}/messages/events/` 作为主题，用于发布遥测。
+* 使用 `devices/{device_id}/modules/{module_id}/messages/events/` 作为 WILL 主题。
+* 模块和设备的孪生 GET 和 PATCH 主题是相同的。
+* 模块和设备的孪生状态主题是相同的。
 
 ### <a name="tlsssl-configuration"></a>TLS/SSL 配置
 

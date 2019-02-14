@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: ffd10504d496d0a46b373451a0d0400fc16c2e8d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 988e72a20fdd80e41ce8fc1ef568d90d4283a848
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186192"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813494"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect 的拓扑
 本文介绍使用 Azure AD Connect 同步作为关键集成解决方案的各种本地拓扑和 Azure Active Directory (Azure AD) 拓扑。 此外，介绍支持和不支持的配置。
@@ -63,7 +63,7 @@ ms.locfileid: "55186192"
 
 Azure AD Connect 安装向导提供多个选项用于合并多个林中显示的用户。 目标是一个用户只在 Azure AD 中显示一次。 可以在安装向导的自定义安装路径中配置某些常见拓扑。 在“唯一标识用户”页上选择表示拓扑的相应选项。 只对用户配置合并。 复制的组不会与默认配置合并。
 
-有关[独立的拓扑](#multiple-forests-separate-topologies)、[完整网格](#multiple-forests-full-mesh-with-optional-galsync)和[帐户资源拓扑](#multiple-forests-account-resource-forest)的部分讨论了常见拓扑。
+有关独立的拓扑、[完整网格](#multiple-forests-full-mesh-with-optional-galsync)和[帐户资源拓扑](#multiple-forests-account-resource-forest)的部分讨论了常见拓扑。
 
 Azure AD Connect 同步中的默认配置假设：
 

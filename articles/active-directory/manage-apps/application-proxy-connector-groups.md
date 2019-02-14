@@ -2,8 +2,8 @@
 title: 在 Azure AD 应用代理中使用连接器组在单独的网络和位置上发布应用程序 | Microsoft Docs
 description: 介绍如何在 Azure AD 应用程序代理中创建和管理连接器组。
 services: active-directory
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,14 +11,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: 8905ea028668f00d92f18bf7d8412e29ffc8283f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e57a953f99a5e0259c346836c156a0e4fe3e4c03
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153577"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170884"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>使用连接器组在单独的网络和位置上发布应用程序。
 

@@ -4,7 +4,7 @@ description: 如何解决将支持 SCIM 2.0 的非库应用程序添加到 Azure
 services: active-directory
 documentationcenter: ''
 author: asmalser
-manager: daveba
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asmalser
-ms.openlocfilehash: 48328a3ee379fc76fa6e70ea082395b37751d235
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0a1e5643c9d5f6fc2492dd52ccd07606a47d21b2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181106"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190511"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 用户预配服务 SCIM 2.0 协议合规性的已知问题和解决方法
 
@@ -59,7 +60,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 1. 登录 Azure 门户： https://portal.azure.com。
 2. 在 Azure 门户的“Azure Active Directory”>“企业应用程序”部分，找到并选择现有 SCIM 应用程序。
 3.  在现有 SCIM 应用的“属性”部分，复制“对象 ID”。
-4.  在新的 Web 浏览器窗口中，转到 https://developer.microsoft.com/en-us/graph/graph-explorer 并以要向其中添加应用的 Azure AD 租户的管理员身份登录。
+4.  在新的 Web 浏览器窗口中，转到 https://developer.microsoft.com/graph/graph-explorer 并以要向其中添加应用的 Azure AD 租户的管理员身份登录。
 5. 在 Graph 资源管理器中，运行以下命令以找到预配作业的 ID。 将“[object-id]”替换为从第三步复制的服务主体 ID（对象 ID）。
  
  `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
@@ -99,7 +100,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 1.  登录 Azure 门户： https://portal.azure.com。
 2. 在 Azure 门户的“Azure Active Directory”>“企业应用程序”>“创建应用程序”部分，创建新的“非库”应用程序。
 3.  在新的自定义应用的“属性”部分，复制“对象 ID”。
-4.  在新的 Web 浏览器窗口中，转到 https://developer.microsoft.com/en-us/graph/graph-explorer 并以要向其中添加应用的 Azure AD 租户的管理员身份登录。
+4.  在新的 Web 浏览器窗口中，转到 https://developer.microsoft.com/graph/graph-explorer 并以要向其中添加应用的 Azure AD 租户的管理员身份登录。
 5. 在 Graph 资源管理器中，运行以下命令，初始化应用的预配配置。
 将“[object-id]”替换为从第三步复制的服务主体 ID（对象 ID）。
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/07/2018
 ms.author: bwren
-ms.openlocfilehash: 29daa447be051af3df86ba9211bc2e4871d8c71e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e0ad6b212e328612d2934562e1292b5c36546478
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965099"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990246"
 ---
 # <a name="azure-management---monitoring"></a>Azure 管理 - 监视
 
@@ -52,13 +52,3 @@ Azure 中的监视是 Azure 管理的一个方面。  本文简要介绍了在 A
 ## <a name="migrate"></a>迁移 
 迁移指的是将当前在本地运行的工作负荷转换到 Azure 云中。  [Azure Migrate](../migrate/migrate-overview.md) 是一项服务，可帮助评估本地虚拟机到 Azure 的迁移适用性，包括基于性能的大小调整和成本估计。  Azure Site Recovery 可帮助执行[从本地](../site-recovery/migrate-tutorial-on-premises-azure.md)或[从 Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md) 实际迁移虚拟机。  [Azure 数据库迁移](../dms/dms-overview.md)会帮助你将多个数据库源迁移到 Azure 数据平台。
 
-
-## <a name="operations-management-suite"></a>Operations Management Suite
-以前的与 Azure 管理相关的技术文档包括 Operations Management Suite (OMS)，后者捆绑了以下 Azure 管理服务：
-
-- Azure 自动化
-- Azure 备份
-- Log Analytics
-- Site Recovery
-
-我们将不再在技术文档中介绍此捆绑内容，因为 Azure 中的完整管理内容已经进行了扩展，包含其他服务。 属于 OMS 的服务均未更改，每一项服务仍在管理 Azure 应用程序和资源的过程中发挥重要作用。 应重点注意需执行的管理任务，以及为了完成每项任务而需一起运行的不同 Azure 服务。

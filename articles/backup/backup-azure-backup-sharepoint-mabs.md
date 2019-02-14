@@ -2,18 +2,18 @@
 title: 使用 Azure 备份服务器将 SharePoint 场备份到 Azure
 description: 使用 Azure 备份服务器备份和还原 SharePoint 数据。 本文介绍如何配置 SharePoint 场，以便在 Azure 中存储所需的数据。 可以从磁盘或 Azure 还原受保护的 SharePoint 数据。
 services: backup
-author: pvrk
-manager: shivamg
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
-ms.author: pullabhk
-ms.openlocfilehash: e7407341d7b85c101531c5a005cfd8db0eac2021
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.author: kasinh
+ms.openlocfilehash: 7669d713f9a96ef893f7ec2ac895c28f654385c8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423018"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810961"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>将 SharePoint 场备份到 Azure
 使用 Microsoft Azure 备份服务器 (MABS) 将 SharePoint 场备份到 Microsoft Azure，其方法与备份其他数据源极为类似。 Azure 备份提供灵活的备份计划来创建每日、每周、每月或每年备份点，并提供适用于各种备份点的保留策略选项。 利用该技术，不仅可以存储本地磁盘副本以实现快速的恢复时间目标 (RTO)，还可以将副本存储到 Azure 以进行经济高效的长期保留。
@@ -222,14 +222,14 @@ Azure 备份服务器以 LocalSystem 帐户的身份运行。 若要备份 SQL S
 4. 单击 MABS“恢复”选项卡中显示的 SharePoint 对象，以获取内容数据库结构。 右键单击相应的项，并单击“恢复”。
 
     ![MABS SharePoint 保护 13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
-5. 此时，请按照[本文前面介绍的恢复步骤](#restore-a-sharepoint-item-from-disk-using-dpm)，从磁盘恢复 Sharepoint 内容数据库。
+5. 此时，请按照本文前面介绍的恢复步骤，从磁盘恢复 Sharepoint 内容数据库。
 
 ## <a name="faqs"></a>常见问题解答
-问：如果使用 SQL AlwaysOn（使用磁盘上保护）配置了 SharePoint，我是否能将 SharePoint 项恢复到原始位置？<br>
+问：如果使用 SQL AlwaysOn（使用磁盘上保护）配置了 SharePoint，我能否将 SharePoint 项恢复到原始位置？<br>
 答：可以，该项可以恢复到原始 SharePoint 站点。
 
-问：如果使用 SQL AlwaysOn 配置了 SharePoint，我是否能将 SharePoint 数据库恢复到原始位置？<br>
-答：由于 SharePoint 数据库是在 SQL AlwaysOn 中配置的，因此除非删除可用性组，否则无法修改它们。 因此，MABS 无法将数据库还原到原始位置。 可以将 SQL Server 数据库恢复到另一个 SQL Server 实例。
+问：如果使用 SQL AlwaysOn 配置了 SharePoint，我能否将 SharePoint 数据库恢复到原始位置？<br>
+答：由于 SharePoint 数据库是在 SQL AlwaysOn 中配置的，因此，除非删除可用性组，否则无法修改它们。 因此，MABS 无法将数据库还原到原始位置。 可以将 SQL Server 数据库恢复到另一个 SQL Server 实例。
 
 ## <a name="next-steps"></a>后续步骤
 

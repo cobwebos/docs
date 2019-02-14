@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 03/27/2018
+ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 6fa468308bb7187111a6f7f65366d83eaadd9494
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7f5dfd9488e6017acfdf66cdb7d4cee3aedd1ab3
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227771"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699918"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>将文本翻译 API V2 迁移到 V3
 
@@ -109,7 +109,7 @@ Microsoft Translator V3 的定价方式与 V2 相同：按字符（包括空格�
 
 Microsoft Translator V3 默认使用神经机器翻译。 因此，它不能与 Microsoft Translator Hub 一起使用。 Translator Hub 仅支持传统的统计机器翻译。 现在，可以使用 Custom Translator 对神经翻译进行自定义。 [详细了解如何自定义神经机器翻译](custom-translator/overview.md)
 
-使用 V3 文本 API 的神经翻译不支持使用标准类别（SMT、语音、文本、generalnn）。
+使用 V3 文本 API 的神经翻译不支持使用标准类别（SMT、语音、技术、generalnn）。
 
 | |终结点|    GDPR 处理器符合性|  使用 Translator Hub| 使用自定义翻译器（预览版）|
 |:-----|:-----|:-----|:-----|:-----|

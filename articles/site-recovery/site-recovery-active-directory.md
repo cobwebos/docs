@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 84cc99bac9ae5fa1743ed151e5bf8c3043cf5869
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f4da0a4672bc50688d0a25bbd2db1f3be984ee8b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851004"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821382"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>为 Active Directory 和 DNS 设置灾难恢复
 
@@ -31,10 +31,10 @@ ms.locfileid: "52851004"
 
 ## <a name="replicate-the-domain-controller"></a>复制域控制器
 
-- 至少需要在一台托管域控制器或 DNS 的 VM 上设置 [Site Recovery 复制](#enable-protection-using-site-recovery)。
-- 如果环境中有[多个域控制器](#environment-with-multiple-domain-controllers)，还必须在目标站点上设置[附加的域控制器](#protect-active-directory-with-active-directory-replication)。 附加的域控制器可以在 Azure 中，也可位于辅助本地数据中心。
+- 至少需要在一台托管域控制器或 DNS 的 VM 上设置 Site Recovery 复制。
+- 如果环境中有多个域控制器，还必须在目标站点上设置附加的域控制器。 附加的域控制器可以在 Azure 中，也可位于辅助本地数据中心。
 - 如果应用程序数目较少并且只有一个域控制器，则可能希望对整个站点进行故障转移。 在这种情况下，我们建议使用 Site Recovery 将域控制器复制到目标站点（无论域控制器位于 Azure 还是辅助本地数据中心）。 也可以将复制的同一个域控制器或 DNS 虚拟机用于[测试故障转移](#test-failover-considerations)。
-- - 如果应用程序数量较多，而环境中不止一个域控制器，或者计划一次性故障转移多个应用程序，除了使用 Site Recovery 复制域控制器虚拟机以外，我们建议在目标站点（Azure 或辅助本地数据中心）上设置[附加的域控制器](#protect-active-directory-with-active-directory-replication)。 对于[测试故障转移](#test-failover-considerations)，可使用由 Site Recovery 复制的域控制器。 对于故障转移，可以在目标站点上使用附加的域控制器。
+- - 如果应用程序数量较多，而环境中不止一个域控制器，或者计划一次性故障转移多个应用程序，除了使用 Site Recovery 复制域控制器虚拟机以外，我们建议在目标站点（Azure 或辅助本地数据中心）上设置附加的域控制器。 对于[测试故障转移](#test-failover-considerations)，可使用由 Site Recovery 复制的域控制器。 对于故障转移，可以在目标站点上使用附加的域控制器。
 
 ## <a name="enable-protection-with-site-recovery"></a>使用 Site Recovery 启用保护
 

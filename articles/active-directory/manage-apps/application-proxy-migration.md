@@ -15,12 +15,12 @@ ms.date: 07/27/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: d0a28dc1eee1536a0cabe454cd899d9111edff88
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 0d38fa458ae87ce29110b2423e832ff5c6262a01
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197732"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817574"
 ---
 # <a name="compare-remote-access-solutions"></a>比较远程访问解决方案
 
@@ -56,7 +56,7 @@ Azure Active Directory 应用程序代理是 Microsoft 提供的两个远程访�
 - 将 Azure AD 扩展到本地资源
    - 云级安全性和保护
    - 可轻松启用条件性访问和多重身份验证等功能
-- 外围安全区域中没有任何组件
+- 外围安全区域中无组件
 - 不需要任何入站连接
 - 一个访问面板，用户可通过它访问自己的所有应用程序，包括 O365、集成了 Azure AD 的 SaaS 应用以及本地 Web 应用。 
 

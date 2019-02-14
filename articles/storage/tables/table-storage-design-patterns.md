@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 3ba2009ef1ea8fdf5916baab296c7ff5eee953db
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 40062cfb2e646fd6befef1e746f9493f3e4b20f9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469186"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821349"
 ---
 # <a name="table-design-patterns"></a>表设计模式
 本文介绍适用于表服务解决方案的一些模式。 此外，还将了解如何实际解决其他表存储设计文章中提出的一些问题和权衡。 下图总结了不同模式之间的关系：  
@@ -73,7 +73,7 @@ ms.locfileid: "55469186"
 
 * [分区间辅助索引模式](#inter-partition-secondary-index-pattern)
 * [复合键模式](#compound-key-pattern)
-* [实体组事务](#entity-group-transactions)
+* 实体组事务
 * [处理异类实体类型](#working-with-heterogeneous-entity-types)
 
 ## <a name="inter-partition-secondary-index-pattern"></a>分区间辅助索引模式
@@ -128,7 +128,7 @@ ms.locfileid: "55469186"
 * [最终一致的事务模式](#eventually-consistent-transactions-pattern)  
 * [分区内辅助索引模式](#intra-partition-secondary-index-pattern)  
 * [复合键模式](#compound-key-pattern)  
-* [实体组事务](#entity-group-transactions)  
+* 实体组事务  
 * [处理异类实体类型](#working-with-heterogeneous-entity-types)  
 
 ## <a name="eventually-consistent-transactions-pattern"></a>最终一致的事务模式
@@ -172,7 +172,7 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 ### <a name="related-patterns-and-guidance"></a>相关模式和指南
 实现此模式时，以下模式和指南也可能相关：  
 
-* [实体组事务](#entity-group-transactions)  
+* 实体组事务  
 * [合并或替换](#merge-or-replace)  
 
 > [!NOTE]
@@ -212,7 +212,7 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 以下步骤概述了在添加新员工时，如果使用第二个选项应遵循的过程。 在此示例中，我们要在 Sales 部门中添加 ID 为 000152、姓氏为 Jones 的员工：  
 
 1. 使用 **PartitionKey** 值“Sales”和 **RowKey** 值“Jones”检索索引实体。 保存此实体的 ETag 以便在步骤 2 中使用。  
-2. 创建实体组事务（即批量操作），该项通过将新员工 ID 添加到 EmployeeIDs 字段的列表中，插入新的员工实体（**PartitionKey** 值“Sales”和 **RowKey** 值“000152”），并更新索引实体（**PartitionKey** 值“Sales”和 **RowKey** 值“Jones”）。 有关实体组事务的详细信息，请参阅[实体组事务](#entity-group-transactions)。  
+2. 创建实体组事务（即批量操作），该项通过将新员工 ID 添加到 EmployeeIDs 字段的列表中，插入新的员工实体（**PartitionKey** 值“Sales”和 **RowKey** 值“000152”），并更新索引实体（**PartitionKey** 值“Sales”和 **RowKey** 值“Jones”）。 有关实体组事务的详细信息，请参阅“实体组事务”。  
 3. 如果实体组事务由于开放式并发错误（其他人刚修改了索引实体）而失败，则需要从步骤 1 重新开始。  
 
 如果使用的是第二个选项，则可以使用类似的方法删除员工。 更改员工的姓氏会稍微复杂一些，你需要执行更新三个实体的实体组事务：员工实体、旧姓氏的索引实体和新姓氏的索引实体。 必须在进行任何更改之前检索每个实体以便检索 ETag 值，并可以使用该值利用开放式并发执行更新。  
@@ -251,7 +251,7 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 
 * [复合键模式](#compound-key-pattern)  
 * [最终一致的事务模式](#eventually-consistent-transactions-pattern)  
-* [实体组事务](#entity-group-transactions)  
+* 实体组事务  
 * [处理异类实体类型](#working-with-heterogeneous-entity-types)  
 
 ## <a name="denormalization-pattern"></a>非规范化模式
@@ -282,7 +282,7 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 实现此模式时，以下模式和指南也可能相关：  
 
 * [复合键模式](#compound-key-pattern)  
-* [实体组事务](#entity-group-transactions)  
+* 实体组事务  
 * [处理异类实体类型](#working-with-heterogeneous-entity-types)
 
 ## <a name="compound-key-pattern"></a>复合键模式
@@ -325,7 +325,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 ### <a name="related-patterns-and-guidance"></a>相关模式和指南
 实现此模式时，以下模式和指南也可能相关：  
 
-* [实体组事务](#entity-group-transactions)  
+* 实体组事务  
 * [处理异类实体类型](#working-with-heterogeneous-entity-types)  
 * [最终一致的事务模式](#eventually-consistent-transactions-pattern)  
 
@@ -394,7 +394,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 ### <a name="related-patterns-and-guidance"></a>相关模式和指南
 实现此模式时，以下模式和指南也可能相关：  
 
-* [实体组事务](#entity-group-transactions)
+* 实体组事务
 * [修改实体](#modifying-entities)  
 
 ## <a name="data-series-pattern"></a>数据系列模式
@@ -454,7 +454,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 ### <a name="related-patterns-and-guidance"></a>相关模式和指南
 实现此模式时，以下模式和指南也可能相关：  
 
-* [实体组事务](#entity-group-transactions)
+* 实体组事务
 * [合并或替换](#merge-or-replace)
 
 ## <a name="large-entities-pattern"></a>大实体模式
@@ -556,7 +556,7 @@ Storage Analytics 以带分隔符格式将日志消息存储在多个 blob 中�
 本部分讨论在实现前面的部分中所述的模式时，需要牢记的一些注意事项。 本部分的大部分内容使用以 C# 编写的示例，其中使用了存储客户端库（在撰写本文时为版本 4.3.0）。  
 
 ## <a name="retrieving-entities"></a>检索实体
-如[针对查询的设计](#design-for-querying)部分所述，最高效的查询是点查询。 但是，在某些情况下，可能需要检索多个实体。 本部分介绍使用存储客户端库检索实体的一些常用方法。  
+如“针对查询的设计”部分所述，最高效的查询是点查询。 但是，在某些情况下，可能需要检索多个实体。 本部分介绍使用存储客户端库检索实体的一些常用方法。  
 
 ### <a name="executing-a-point-query-using-the-storage-client-library"></a>使用存储客户端库执行点查询
 执行点查询的最简单方法是使用 **Retrieve** 表操作，如以下 C# 代码段中所示，该代码片段检索 **PartitionKey** 值为“Sales”并且 **RowKey** 值为“212”的实体：  

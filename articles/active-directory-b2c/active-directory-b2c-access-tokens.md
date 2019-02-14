@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/09/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 86c62c021c6668783b3f843a908f4b17845f8c72
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 0ea781188e40d6389da8188379d792c922d3bdca
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172980"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768324"
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C：请求访问令牌
 
@@ -78,8 +78,15 @@ ms.locfileid: "55172980"
 > [!NOTE]
 > 目前，不支持将自定义域与访问令牌一起使用。 必须使用请求 URL 中的 tenantName.onmicrosoft.com 域。
 
+在以下示例中，会替换这些值：
+
+- `<tenant-name>` - Azure AD B2C 租户的名称。
+- `<policy-name>` - 自定义策略或用户流的名称。
+- `<application-ID>` - 注册的客户端应用程序的应用程序标识符。
+- `<redirect-uri>` - 注册客户端应用程序时输入的重定向 URI。
+
 ```
-https://<tenantName>.b2clogin.com/tfp/<tenantName>.onmicrosoft.com/<yourPolicyId>/oauth2/v2.0/authorize?client_id=<appID_of_your_client_application>&nonce=anyRandomValue&redirect_uri=<redirect_uri_of_your_client_application>&scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
+https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?client_id=<application-ID>&nonce=anyRandomValue&redirect_uri=<redirect_uri>&scope=https%3A%2F%2F<tenant-name>.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
 ```
 
 若要在同一请求中获取多个权限，可在单个 **scope** 参数中添加多个条目并用空格分隔。 例如：

@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: fde98dac45eeda9ec2c842b9d8e0f93134ab8092
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: c7bbe8c6b2ad51ed7272cd215552807c7cea3aee
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291709"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991501"
 ---
 # <a name="video-indexer-concepts"></a>视频索引器概念
  

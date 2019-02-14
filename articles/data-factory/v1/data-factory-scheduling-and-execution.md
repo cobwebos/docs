@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a70c3ddb624639411dbee961b1c4d59ac1277147
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 2d7fc45faf1fb77c7d9181e5a2419096dd1ad0f1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016080"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817410"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>数据工厂计划和执行
 > [!NOTE]
@@ -184,7 +184,7 @@ ms.locfileid: "54016080"
 ### <a name="dataset-availability"></a>数据集可用性 
 下表描述了可在 **availability** 节中使用的属性：
 
-| 属性 | 说明 | 必需 | 默认值 |
+| 属性 | 说明 | 必选 | 默认 |
 | --- | --- | --- | --- |
 | 频率 |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |NA |
 | interval |指定频率的乘数<br/><br/>“频率 x 间隔”确定生成切片的频率。<br/><br/>若需要数据集每小时生成切片，则将“频率”<b></b>设置为“小时”<b></b>，“间隔”<b></b>设置为“1”<b></b>。<br/><br/><b>注意</b>：如果将 Frequency 指定为 Minute，建议将 interval 设置为小于 15 的值 |是 |NA |
@@ -232,7 +232,7 @@ ms.locfileid: "54016080"
 
 数据集定义中的**策略**部分定义了数据集切片必须满足的标准或条件。 下表描述了可在 **policy** 节中使用的属性：
 
-| 策略名称 | 说明 | 适用对象 | 必需 | 默认 |
+| 策略名称 | 说明 | 适用对象 | 必选 | 默认 |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB | 验证 **Azure Blob** 中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob |否 |NA |
 | minimumRows | 验证 **Azure SQL 数据库**中的数据或 **Azure 表**是否包含最小行数。 |<ul><li>Azure SQL 数据库</li><li>Azure 表</li></ul> |否 |NA |
@@ -320,7 +320,7 @@ ms.locfileid: "54016080"
 
 ![链接两个管道中的活动](./media/data-factory-scheduling-and-execution/chaining-two-pipelines.png)
 
-有关示例，请参阅[按顺序复制](#copy-sequentially)部分中的附录。
+有关示例，请参阅附录中的“按顺序复制”部分。
 
 ## <a name="model-datasets-with-different-frequencies"></a>具有不同频率的模型数据集
 在这些示例中，输入和输出数据集的频率与活动计划时段相同。 某些方案需要以某一频率生成输出的功能，其中此频率不同于一个或多个输入的频率。 数据工厂支持对这些方案进行建模。

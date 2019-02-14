@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: e63db9dd5dcd48e19c75608c39c4c0b62db24527
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 89984335d40d7f58d39e77736c06a9ff137d7a51
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221192"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811251"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虚拟网络中资源的名称解析
 
@@ -40,7 +40,7 @@ ms.locfileid: "55221192"
 | 位于不同虚拟网络的 VM 或位于不同云服务的角色实例之间的名称解析。 |[Azure DNS 专用区域](../dns/private-dns-overview.md)或客户托管的 DNS 服务器，该服务器在虚拟网络之间转发查询，并由 Azure 进行解析（DNS 代理）。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server)。 |仅 FQDN |
 | 通过 Azure 应用服务（Web 应用、函数或自动程序）实现的名称解析：对同一虚拟网络中的角色实例或 VM 使用虚拟网络集成。 |客户托管的 DNS 服务器，该服务器在虚拟网络之间转发查询，并由 Azure 进行解析（DNS 代理）。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server)。 |仅 FQDN |
 | 从应用服务 Web 应用到同一虚拟网络中 VM 之间的名称解析。 |客户托管的 DNS 服务器，该服务器在虚拟网络之间转发查询，并由 Azure 进行解析（DNS 代理）。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server)。 |仅 FQDN |
-| 从应用服务 Web 应用到不同虚拟网络中 VM 之间的名称解析。 |客户托管的 DNS 服务器，该服务器在虚拟网络之间转发查询，并由 Azure 进行解析（DNS 代理）。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server-for-web-apps)。 |仅 FQDN |
+| 从应用服务 Web 应用到不同虚拟网络中 VM 之间的名称解析。 |客户托管的 DNS 服务器，该服务器在虚拟网络之间转发查询，并由 Azure 进行解析（DNS 代理）。 请参阅“使用自己的 DNS 服务器进行名称解析”。 |仅 FQDN |
 | 解析来自 Azure 中 VM 或角色实例的本地计算机和服务名称。 |客户托管的 DNS 服务器（例如本地域控制器、本地只读域控制器或使用区域传送同步的 DNS 辅助服务器）。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server)。 |仅 FQDN |
 | 解析本地计算机中的 Azure 主机名。 |将查询转发到相应虚拟网络中客户托管的 DNS 代理服务器，该代理服务器将查询转发到 Azure 进行解析。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server)。 |仅 FQDN |
 | 针对内部 IP 的反向 DNS。 |[使用自己的 DNS 服务器的名称解析](#name-resolution-that-uses-your-own-dns-server)。 |不适用 |

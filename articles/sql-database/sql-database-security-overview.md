@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: a3f47726b1776b260ff8cc5eac766c23053d4fd0
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 1a21ab5af8c0dc5fbbe2c1dbab8931bd903df4ff
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728396"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235982"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL 数据库安全功能概述
 
@@ -47,7 +47,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访�
 > [!IMPORTANT]
 > 管理 Azure 中的数据库和数据库服务器由门户用户帐户的角色分配控制。 有关本文的详细信息，请参阅 [Azure 门户中基于角色的访问控制](../role-based-access-control/overview.md)。
 
-### <a name="authentication"></a>身份验证
+### <a name="authentication"></a>Authentication
 
 身份验证是证明用户所声明身份的过程。 Azure SQL 数据库支持两种类型的身份验证：
 
@@ -98,7 +98,7 @@ SQL 数据库审核可跟踪数据库活动，通过将数据库事件记录到�
 
 ### <a name="transport-layer-security-tls-encryption-in-transit"></a>传输层安全性 TLS（传输中加密）
 
-SQL 数据库通过使用[传输层安全](https://support.microsoft.com/en-us/help/3135244/tls-1-2-support-for-microsoft-sql-server)加密动态数据来保护客户数据。
+SQL 数据库通过使用[传输层安全](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)加密动态数据来保护客户数据。
 
 > [!IMPORTANT]
 > Azure SQL 数据库始终为所有连接强制执行加密 (SSL/TLS)，这确保了在数据库与客户端之间所有数据“在传输中”都是加密的。 无论连接字符串中的 **Encrypt** 或 **TrustServerCertificate** 的设置如何，都会进行加密。

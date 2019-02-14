@@ -1,8 +1,21 @@
 ---
-title:缩放机器学习工作室 Web 服务 titleSuffix:Azure 机器学习工作室 description:了解如何通过添加更多终结点来增加 Azure 机器学习工作室 Web 服务的并发。
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date:2017/01/23
+title: 缩放机器学习工作室 Web 服务
+titleSuffix: Azure Machine Learning Studio
+description: 了解如何通过添加更多终结点来增加 Azure 机器学习工作室 Web 服务的并发。
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.date: 01/23/2017
+ms.openlocfilehash: c5874029e17b0ad7c9787beb0177b8211cbf6e6b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512068"
 ---
 # <a name="scaling-an-azure-machine-learning-studio-web-service-by-adding-additional-endpoints"></a>通过添加更多终结点来扩展 Azure 机器学习工作室 Web 服务
 > [!NOTE]

@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: danlep
-ms.openlocfilehash: e91b4e881c0f39304e3042d556f111db2089f7de
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: c9b4a27ff1b5467eb752e8cfc09f697ca1a966ba
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334476"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820379"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR 任务参考：YAML
 
@@ -83,17 +83,17 @@ az configure --defaults acr=myregistry
 
 任务属性通常显示在 `acr-task.yaml` 文件的顶部，是在整个任务执行中应用的全局属性。 其中的某些全局属性可在单个步骤中重写。
 
-| 属性 | 类型 | 可选 | Description | 支持的重写 | 默认值 |
+| 属性 | Type | 可选 | 说明 | 支持的重写 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | 字符串 | 否 | ACR 任务服务分析的 `acr-task.yaml` 文件的版本。 ACR 任务致力于保持向后兼容性，而此值能使 ACR 任务与某个定义的版本保持兼容。 | 否 | 无 |
-| `stepTimeout` | 整数（秒） | 是 | 步骤可以运行的最大秒数。 可以通过设置某个步骤的 [timeout](#timeout) 属性，在该步骤中重写此属性。 | 是 | 600（10 分钟） |
+| `stepTimeout` | 整数（秒） | 是 | 步骤可以运行的最大秒数。 可以通过设置某个步骤的 timeout 属性，在该步骤中重写此属性。 | 是 | 600（10 分钟） |
 | `totalTimeout` | 整数（秒） | 是 | 任务可以运行的最大秒数。 “运行”包括执行并完成任务中的所有步骤，不管结果是成功还是失败。 此外，还包括列显任务的输出，例如，检测到的映像依赖项和任务执行状态。 | 否 | 3600（1 小时） |
 
 ## <a name="task-step-types"></a>步骤任务类型
 
 ACR 任务支持三种步骤类型。 每种步骤类型支持多个属性，每个步骤类型的相关部分中会予以详述。
 
-| 步骤类型 | Description |
+| 步骤类型 | 说明 |
 | --------- | ----------- |
 | [`build`](#build) | 使用熟悉的 `docker build` 语法生成容器映像。 |
 | [`push`](#push) | 执行 `docker push`，将新生成或重新标记的映像推送到容器注册表。 支持 Azure 容器注册表、其他专用注册表和公共 Docker 中心。
@@ -114,7 +114,7 @@ steps:
 
 `build` 步骤类型支持下表中的参数。 `build` 步骤类型还支持 [docker build](https://docs.docker.com/engine/reference/commandline/build/) 命令的所有生成选项，例如 `--build-arg` 以设置生成时变量。
 
-| 参数 | Description | 可选 |
+| 参数 | 说明 | 可选 |
 | --------- | ----------- | :-------: |
 | `-t` &#124; `--image` | 定义所生成的映像的完全限定 `image:tag`。<br /><br />由于映像可用于内部任务验证（例如功能测试），并非所有映像都需要通过 `push` 推送到注册表。 但是，若要实例化任务执行中的某个映像，该映像确实需要引用某个名称。<br /><br />与 `az acr build` 不同，正在运行的 ACR 任务不提供默认的推送行为。 使用 ACR 任务时，默认方案假设能够生成、验证再推送映像。 请参阅 [push](#push)，了解如何选择性地推送所生成的映像。 | 是 |
 | `-f` &#124; `--file` | 指定要传递给 `docker build` 的 Dockerfile。 如果未指定，则假设使用上下文根目录中的默认 Dockerfile。 若要指定备用的 Dockerfile，请传递相对于上下文根目录的文件名。 | 是 |
@@ -315,7 +315,7 @@ steps:
 
 每个步骤类型支持适用于其类型的多个属性。 下表定义了所有可用的步骤属性。 并非所有步骤类型都支持所有属性。 若要查看其中的哪些属性可用于每个步骤类型，请参阅 [cmd](#cmd)、[build](#build) 和 [push](#push) 步骤类型参考部分。
 
-| 属性 | 类型 | 可选 | Description |
+| 属性 | Type | 可选 | 说明 |
 | -------- | ---- | -------- | ----------- |
 | `detach` | bool | 是 | 在运行时是否应分离容器。 |
 | `entryPoint` | 字符串 | 是 | 重写步骤容器的 `[ENTRYPOINT]`。 |

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 21eebb6c27a83b939f321d38026da7d4c39b7071
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 82dd448bb408e7c4bb3576feee17aef66ee6d01d
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085845"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730707"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>在 Azure 中部署 OpenShift 容器平台
 
@@ -260,7 +260,7 @@ az group deployment create -g openshiftrg --name myOpenShiftCluster \
  
 ## <a name="deploy-using-the-openshift-container-platform-azure-marketplace-offer"></a>使用 OpenShift 容器平台 Azure 市场套餐进行部署
 
-使用 [Azure 市场套餐](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview)是将 OpenShift 容器平台部署到 Azure 中的最简单方式。
+使用 [Azure 市场产品/服务](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview)是将 OpenShift Container Platform 部署到 Azure 中的最简单方式。
 
 此方法虽然最为简单，但自定义功能有限。 市场套餐包括以下配置选项：
 
@@ -272,7 +272,7 @@ az group deployment create -g openshiftrg --name myOpenShiftCluster \
 - **CNS**：可以启用 CNS。
 - **指标**：可以启用指标。
 - **日志记录**：可以启用日志记录。
-- **Azure 云提供程序**：可以启用。
+- **Azure 云提供商**：可以启用。
 
 ## <a name="connect-to-the-openshift-cluster"></a>连接到 OpenShift 群集
 
@@ -284,7 +284,7 @@ $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组、OpenShift 群集和所有相关的资源，可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令将其删除。
+如果不再需要资源组、OpenShift 群集和所有相关的资源，可以使用 [az group delete](/cli/azure/group) 命令将其删除。
 
 ```azurecli 
 az group delete --name openshiftrg

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 515b21c6854620a6bd1af53af8b1778d70613622
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1dd1cf143d66fec2ab8c12ee28a61bb3b8a83ade
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203940"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821813"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教程：为 G Suite 配置自动用户预配
 
@@ -127,7 +127,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
     e. 对所有要添加到 Google Apps 的其他域重复上述步骤。
      
      > [!WARNING]
-     > 如果更改了 G Suite 租户的主域并且已配置 Azure AD 单一登录，则必须重复[步骤 2：启用单一登录](#step-two-enable-single-sign-on)下的步骤 3。
+     > 如果更改了 G Suite 租户的主域并且已使用 Azure AD 配置单一登录，则必须在步骤 2 下重复步骤 #3：启用单一登录。
        
 1. 在 [Google Apps 管理员控制台](https://admin.google.com/)中，选择“管理员角色”。
    

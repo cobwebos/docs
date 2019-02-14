@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 0f834c88a22aca52a861309681ea0da204b2a552
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 0a9c5b5f0fd47f2fcf0c9df02789abae5f07f023
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412059"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564980"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>为本机 Azure 证书身份验证 P2S 配置创建并安装 VPN 客户端配置文件
 
@@ -79,7 +79,7 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 
 使用以下步骤在 Mac 中配置用于证书身份验证的本机 VPN 客户端。 必须在将连接到 Azure 的每个 Mac 上完成以下步骤：
 
-1. 将 **VpnServerRoot** 根证书导入 Mac。 为此，可将该文件复制到 Mac，并双击它。  
+1. 将 **VpnServerRoot** 根证书导入 Mac。 为此，可将该文件复制到 Mac，并双击它。
 单击“添加”进行导入。
 
   ![添加证书](./media/point-to-site-vpn-client-configuration-azure-cert/addcert.png)
@@ -113,10 +113,13 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 
 ## <a name="linuxgui"></a>Linux (strongSwan GUI)
 
-### <a name="extract-the-key-and-certificate"></a>提取密钥和证书
+### <a name="1-generate-the-key-and-certificate"></a>1:生成密钥和证书
 
 对于 strongSwan，需要从客户端证书（.pfx 文件）提取密钥和证书，并将其保存为单独的 .pem 文件。
-请遵循以下步骤进行配置：
+
+[!INCLUDE [strongSwan certificates](../../includes/vpn-gateway-strongswan-certificates-include.md)]
+
+### <a name="2-extract-the-key"></a>2:提取密钥
 
 1. 从 [OpenSSL](https://www.openssl.org/source/) 下载并安装 OpenSSL。
 2. 打开命令行窗口并切换到 OpenSSL 的安装目录，例如 'c:\OpenSLL-Win64\bin\'。
@@ -125,13 +128,13 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
   ```
   C:\ OpenSLL-Win64\bin> openssl pkcs12 -in clientcert.pfx -nocerts -out privatekey.pem -nodes
   ```
-4.  现在，运行以下命令提取公共证书，并将其保存到新文件：
-
+4.  运行以下命令提取公共证书，并将其保存到新文件：
+ 
   ```
   C:\ OpenSLL-Win64\bin> openssl pkcs12 -in clientcert.pfx -nokeys -out publiccert.pem -nodes
   ```
 
-### <a name="install"></a>安装和配置
+### <a name="install"></a>3：安装和配置
 
 以下说明是通过 Ubuntu 17.0.4 上的 strongSwan 5.5.1 创建的。 Ubuntu 16.0.10 不支持 strongSwan GUI。 如果想要使用 Ubuntu 16.0.10，则必须使用[命令行](#linuxinstallcli)。 以下示例可能与你看到的屏幕不同，具体取决于所用的 Linux 和 strongSwan 版本。
 
@@ -160,14 +163,13 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 
 ## <a name="linuxinstallcli"></a>Linux (strongSwan CLI)
 
-### <a name="install-strongswan"></a>安装 strongSwan
+### <a name="1-generate-the-key-and-certificate"></a>1:生成密钥和证书
 
 可以使用以下 CLI 命令或使用 [GUI](#install) 中的 strongSwan 步骤来安装 strongSwan。
 
-1. `apt-get install strongswan-ikev2 strongswan-plugin-eap-tls`
-2. `apt-get install libstrongswan-standard-plugins`
+[!INCLUDE [strongSwan certificates](../../includes/vpn-gateway-strongswan-certificates-include.md)]
 
-### <a name="install-and-configure"></a>安装和配置
+### <a name="2-install-and-configure"></a>2:安装和配置
 
 1. 从 Azure 门户下载 VPNClient 程序包。
 2. 解压缩该文件。

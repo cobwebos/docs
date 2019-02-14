@@ -6,18 +6,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/6/2018
+ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: d7617ce96181a0708dfa4731c07d581e332bdff4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: d514074e56ff37cc7af6a97ea86aa9e02e3763e0
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873095"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492277"
 ---
 # <a name="delete-a-recovery-services-vault"></a>删除恢复服务保管库
 
-本文介绍了如何删除恢复服务保管库中的所有项，然后删除此保管库。 无法删除已注册到服务器且保留备份数据的恢复服务保管库。 如果尝试删除保管库但未成功，此保管库仍配置为接收备份数据。
+本文介绍如何删除恢复服务保管库中的所有项，然后删除此保管库。 无法删除已注册到服务器且保留备份数据的恢复服务保管库。 如果尝试删除保管库但未成功，此保管库仍配置为接收备份数据。
 
 若要了解如何删除保管库，请参阅[在 Azure 门户中删除保管库](backup-azure-delete-vault.md#delete-a-vault-from-azure-portal)部分。 如果不想保留恢复服务保管库中的任何数据，并要删除此保管库，请参阅[强制删除保管库](backup-azure-delete-vault.md#delete-the-recovery-services-vault-by-force)部分。 如果不确定保管库中的内容，并需要确保可以删除保管库，请参阅[删除保管库依赖项并删除保管库](backup-azure-delete-vault.md#remove-vault-dependencies-and-delete-vault)部分。
 

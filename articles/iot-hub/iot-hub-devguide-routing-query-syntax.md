@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 3967a1e2317bac76785d534ba04a93de552c1a40
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 94d3599fe919cf648be7115be68002d2aa458ee3
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018530"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744835"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT 中心消息路由查询语法
 
@@ -25,7 +25,7 @@ ms.locfileid: "48018530"
 
 ## <a name="message-routing-query-based-on-message-properties"></a>基于消息属性的消息路由查询 
 
-IoT 中心为所有设备到云消息传递定义[通用格式](iot-hub-devguide-messages-construct.md)，以实现跨协议的互操作性。 IoT 中心消息假设以下 JSON 表示形式的消息。 为所有用户添加系统属性并标识消息的内容。 用户可以有选择地向消息添加应用程序属性。 我们建议使用唯一的属性名称，因为 IoT 中心设备到云消息传递不区分大小写。 例如，如果有多个具有相同名称的属性，IoT 中心将仅发送其中一个属性。  
+IoT 中心为所有设备到云的消息传送定义了[格式](iot-hub-devguide-messages-construct.md)，以便实现跨协议互操作性。 IoT 中心消息假设以下 JSON 表示形式的消息。 为所有用户添加系统属性并标识消息的内容。 用户可以有选择地向消息添加应用程序属性。 我们建议使用唯一的属性名称，因为 IoT 中心设备到云消息传递不区分大小写。 例如，如果有多个具有相同名称的属性，IoT 中心将仅发送其中一个属性。  
 
 ```json
 { 
@@ -51,11 +51,11 @@ IoT 中心为所有设备到云消息传递定义[通用格式](iot-hub-devguide
 
 系统属性有助于标识消息的内容和源。 
 
-| 属性 | 类型 | Description |
+| 属性 | Type | 说明 |
 | -------- | ---- | ----------- |
 | contentType | 字符串 | 用户指定消息的内容类型。 若要允许查询消息正文，此值应设置应用程序/JSON。 |
 | contentEncoding | 字符串 | 用户指定消息的编码类型。 如果 contentType 设置为应用程序/JSON，则允许的值为 UTF-8、UTF-16 和 UTF-32。 |
-| connectionDeviceId | 字符串 | 此值由 IoT 中心设置，标识消息的源。 这可以是设备遥测消息、设备孪生更改通知或设备生命周期事件。 这无法进行查询。 |
+| iothub-connection-device-id | 字符串 | 此值由 IoT 中心设置，标识设备的 ID。 若要查询，请使用 `$connectionDeviceId`。 |
 | iothub-enqueuedtime | 字符串 | 此值由 IoT 中心设置，表示 UTC 中消息排入队列的实际时间。 若要查询，请使用 `enqueuedTime`。 |
 
 如 [IoT 中心消息](iot-hub-devguide-messages-construct.md)中所述，一条消息中还有其他系统属性。 除了 contentType，还可以查询 contentEncoding 和 enqueuedTime、connectionDeviceId 和 connectionModuleId。

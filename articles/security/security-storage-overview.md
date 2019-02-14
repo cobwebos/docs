@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/29/2018
+ms.date: 02/01/2019
 ms.author: terrylan
-ms.openlocfilehash: 55686972979c5ac3015802c340cef7dffebdb9bd
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 8330b63f218108930c5eb66eaa6c8ff6dca67316
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973122"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694262"
 ---
 # <a name="azure-storage-security-overview"></a>Azure 存储安全概述
 
@@ -47,7 +47,7 @@ Azure 存储是依赖于持续性、可用性和伸缩性来满足客户需求�
 
 ## <a name="delegated-access-to-storage-objects"></a>存储对象的委托访问权限
 
-共享访问签名对存储帐户中的资源提供委托访问。 使用 SAS，意味着可以授权客户端在指定时间段内，以一组指定权限有限访问存储帐户中的对象。 可以授予这些有限的权限，而不必共享帐户访问密钥。 
+共享访问签名对存储帐户中的资源提供委托访问。 使用 SAS，意味着可以授权客户端在指定时间段内，以一组指定权限有限访问存储帐户中的对象。 可以授予这些有限的权限，而不必共享帐户访问密钥。
 
 SAS 是一个 URI，在其查询参数中包含对存储资源已验证访问所需的所有信息。 要使用 SAS 访问存储资源，客户端只需将 SAS 提供给相应的构造函数或方法。
 
@@ -73,7 +73,7 @@ SAS 是一个 URI，在其查询参数中包含对存储资源已验证访问所
 
 对许多组织而言，[静态数据加密](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)是实现数据隐私性、符合性和数据所有权的必要措施。 可通过三种 Azure 功能进行静态数据加密：
 
-* [存储服务加密](../storage/common/storage-security-guide.md#encryption-at-rest)可请求存储服务在将数据写入 Azure 存储时自动加密数据。
+* [存储服务加密](../storage/common/storage-security-guide.md#encryption-at-rest)始终处于启用状态，并在数据写入 Azure 存储时自动加密数据。
 * [客户端加密](../storage/common/storage-security-guide.md#client-side-encryption)也提供静态加密功能。
 * [Azure 磁盘加密](../storage/common/storage-security-guide.md#using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines)允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。
 
@@ -114,9 +114,9 @@ Data Box Edge 和 Data Box Gateway 是联机数据传输产品，它们用作网
 
 ## <a name="advanced-threat-protection"></a>高级威胁防护
 
-Azure 存储提供了高级威胁防护来实现额外的一层安全智能，用于检测试图访问或利用你的存储帐户的异常或可能有害的企图。 高级威胁防护监视 Azure 存储诊断日志来获取针对 Blob 存储的可疑读取、写入或删除请求。 
+Azure 存储提供了高级威胁防护来实现额外的一层安全智能，用于检测试图访问或利用你的存储帐户的异常或可能有害的企图。 高级威胁防护监视 Azure 存储诊断日志来获取针对 Blob 存储的可疑读取、写入或删除请求。
 
-可以从 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)查看高级威胁防护警报。 Azure 安全中心会提供有关检测到的任何可疑活动的详细信息，并提供用于针对潜在威胁进行调查和补救的建议操作。 
+可以从 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)查看高级威胁防护警报。 Azure 安全中心会提供有关检测到的任何可疑活动的详细信息，并提供用于针对潜在威胁进行调查和补救的建议操作。
 
 了解更多：
 

@@ -1,5 +1,5 @@
 ---
-title: 在 Azure VPN 网关上配置 BGP：Resource Manager：PowerShell | Microsoft Docs
+title: 在 Azure VPN 网关上配置 BGP：资源管理器：PowerShell | Microsoft Docs
 description: 本文指导完成使用 Azure 资源管理器和 PowerShell 通过 Azure VPN 网关配置 BGP。
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: 97b33ed76776ae00c109e891b3d91638080ed778
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b48382c8f429576a3d15c624c9c9028cffec3872
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632579"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813018"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>如何使用 PowerShell 在 Azure VPN 网关上配置 BGP
 本文指导完成使用 Resource Manager 部署模型和 PowerShell 在跨界站点到站点 (S2S) VPN 连接和 VNet 到 VNet 连接上启用 BGP 的步骤。
@@ -35,7 +35,7 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
 本文指导完成执行以下任务的步骤：
 
 * [第 1 部分 - 在 Azure VPN 网关上启用 BGP](#enablebgp)
-* [第 2 部分 - 使用 BGP 建立跨界连接](#crossprembgp)
+* 第 2 部分 - 使用 BGP 建立跨界连接
 * [第 3 部分 - 使用 BGP 建立 VNet 到 VNet 连接](#v2vbgp)
 
 说明的每一部分构成用于在网络连接中启用 BGP 的基本构建基块。 如果完成这所有三个部分，将生成拓扑，如下面的图中所示：

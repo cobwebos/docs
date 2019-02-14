@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7a49e69b2e27a38b1a89fedbd6bbd70066b37dc2
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: f0f6bbf5f235d6ae3e86114e583d55c502296470
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451215"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895391"
 ---
 # <a name="saas-application-technical-info-tab"></a>SaaS 应用程序“技术信息”选项卡
 
@@ -42,7 +42,7 @@ ms.locfileid: "54451215"
 若要构建此体验，需要配置以下部分：
 
 - 使用 Microsoft 的 SaaS API 连接你的 SaaS 服务网站。 [通过 Azure 销售 SaaS – API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis) 一文介绍了如何创建此连接。
-- 在云合作伙伴门户上的“技术配置”窗体中启用“通过 Azure 进行销售”，并提供必需的信息。 有关此计费模型及其实现方式的详细信息，请参阅 [SaaS – 通过 Azure 进行销售](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions#overview)。
+- 在云合作伙伴门户上的“技术配置”窗体中启用“通过 Azure 进行销售”，并提供必需的信息。 有关此计费模型及其实现方式的详细信息，请参阅 [SaaS – 通过 Azure 进行销售](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions)。
 
  ![“通过 Microsoft 进行销售”窗体](./media/saas-techinfo-sellthrough-ms.png)
 

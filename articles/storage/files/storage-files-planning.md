@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: a9c37258d7c9631c6e5fe13007b78c4205a1c249
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 69ca9474c613752b98efa6bb236919508a2fe430
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473878"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753684"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 [Azure 文件](storage-files-introduction.md)在云中提供完全托管的文件共享，这些共享项可通过行业标准 SMB 协议进行访问。 由于 Azure 文件是完全托管的，因此在生产方案中对其进行部署比部署和管理文件服务器或 NAS 设备简单得多。 本文介绍在组织内部署 Azure 文件共享以供生产使用时应考虑的主题。
@@ -34,7 +34,7 @@ ms.locfileid: "55473878"
 * **URL 格式**：对于使用文件 REST 协议向 Azure 文件共享提出的请求，可采用以下 URL 格式对文件进行寻址：
 
     ```
-    https://<storage account>.file.core.windows.net/<share>/<directory>/directories>/<file>
+    https://<storage account>.file.core.windows.net/<share>/<directory>/<file>
     ```
 
 ## <a name="data-access-method"></a>数据访问方法
@@ -95,6 +95,9 @@ Azure 文件支持三个数据冗余选项：本地冗余存储 (LRS)、区域�
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
 
 ### <a name="geo-redundant-storage"></a>异地冗余存储
+> [!Warning]  
+> 如果在 GRS 存储帐户中使用 Azure 文件共享作为云终结点，则不应启动存储帐户故障转移。 执行此操作将导致同步停止工作，并且还可能导致新分层的文件出现意外数据丢失。 对于 Azure 区域丢失，Microsoft 会以与 Azure 文件同步兼容的方式触发存储帐户故障转移。
+
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-GRS.md)]
 
 ## <a name="data-growth-pattern"></a>数据增长模式

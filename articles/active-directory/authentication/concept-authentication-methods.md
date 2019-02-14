@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 7951044f850d93659ca458d3bcc46376e7e6b34a
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 2720d239c31a0cbfab215c7e297627c9f0d8c781
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077346"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510232"
 ---
 # <a name="what-are-authentication-methods"></a>有哪些身份验证方法？
 
@@ -171,6 +171,8 @@ Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKe
 根据 CSV 文件的大小，这可能需要花费几分钟来处理。 单击“刷新”按钮可获取当前状态。 如果文件中有任何错误，可以选择下载 CSV 文件，其中列出了需要解决的所有错误。
 
 解决所有错误后，管理员可以对要激活的令牌单击“激活”，然后输入令牌上显示的 OTP，以此来激活每个密钥。
+
+用户可以具有最多 5 个 OATH 硬件令牌或验证器应用程序（如配置为可随时使用的 Microsoft Authenticator 应用）的组合。
 
 ## <a name="mobile-phone"></a>移动电话
 

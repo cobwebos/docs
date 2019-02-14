@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.workload: infrastructure-services
-ms.date: 11/6/2018
+ms.date: 1/29/2019
 ms.author: victorh
-ms.openlocfilehash: 6ea72c2caebeeb46b0973ba700d40670340204d7
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 24cb5d7ddb1bfbb64796d871aa79109dfdfa94be
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353186"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492923"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web 应用程序防火墙请求大小限制和排除列表
 
@@ -45,7 +45,7 @@ WAF 排除列表允许你忽略 WAF 评估中的某些请求属性。 常见示�
    * XML
    * JSON
 
-可以指定请求标头、正文、cookie 或查询字符串属性的完全匹配项，也可以选择指定部分匹配项。
+可以指定请求标头、正文、cookie 或查询字符串属性的完全匹配项。  也可以选择指定部分匹配项。 排除始终应用于标头字段，而不应用于其值。 排除规则的范围具有全局性，将应用于所有页面和所有规则。
 
 下面是受支持的匹配条件运算符：
 

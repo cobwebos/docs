@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 12/18/2018
 ms.author: aahi
-ms.openlocfilehash: c569c44d358049605aa8bbe1cbc96d0028f7aea1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 07f471debad87a2fa2f6583db624e9ee204d02bc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189659"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821161"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>向必应视觉搜索 API 发送搜索查询
 
@@ -112,7 +112,7 @@ ms.locfileid: "55189659"
 每个请求必须包含 Content-Type 标头。 标头必须设置为：multipart/form-data；boundary=\<边界字符串\>，其中\<边界字符串\>是唯一的不透明字符串，用于标识表单数据的边界。 例如，boundary=boundary_1234-abcd。
 
 
-如果向视觉搜索发送图像令牌或 URL，以下内容将显示必须在 POST 正文中包含的表单数据。 表单数据必须包含 Content-Disposition 标头，且必须将其 `name` 参数设置为“knowledgeRequest”。 有关 `imageInfo` 对象的详细信息，请参阅[请求](#the-request)。
+如果向视觉搜索发送图像令牌或 URL，以下内容将显示必须在 POST 正文中包含的表单数据。 表单数据必须包含 Content-Disposition 标头，且必须将其 `name` 参数设置为“knowledgeRequest”。 有关 `imageInfo` 对象的详细信息，请参阅“请求”。
 
 
 ```
@@ -128,7 +128,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-如果上传本地图像，以下内容将显示必须在 POST 正文中包含的表单数据。 窗体数据必须包含 Content-Disposition 标头。 其 `name` 参数必须设置为“image”，`filename` 参数可以设置为任何字符串。 Content-Type 标头可以设置为任何常用的图像 MIME 类型。 表单内容是图像的二进制文件。 可以上传的最大图像大小为 1 MB。 宽度或高度不得超过 1,500 像素。
+如果上传本地图像，则下面显示了必须在 POST 的正文中包含的窗体数据。 窗体数据必须包含 Content-Disposition 标头。 其 `name` 参数必须设置为“image”，`filename` 参数可以设置为任何字符串。 Content-Type 标头可以设置为任何常用的图像 MIME 类型。 表单内容是图像的二进制文件。 可以上传的最大图像大小为 1 MB。 宽度或高度不得超过 1,500 像素。
 
 
 ```

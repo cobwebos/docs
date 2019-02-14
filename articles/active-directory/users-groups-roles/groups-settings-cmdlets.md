@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Active Directory 中使用 PowerShell 配置组设置 | Microsoft Docs
+title: 使用 PowerShell 配置组设置 - Azure Active Directory | Microsoft Docs
 description: 如何使用 Azure Active Directory cmdlet 管理组的设置
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 10/12/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 29c46c3987a6adff4ef2492a60b4e6a4b022e3e8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e838af0ac8e9cfd1d42b768fa68ec7d9f46386c6
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168833"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512221"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>用于配置组设置的 Azure Active Directory cmdlet
 本文包含有关使用 Azure Active Directory (Azure AD) PowerShell cmdlet 创建和更新组的说明。 此内容仅适用于 Office 365 组（有时称为统一组）。 

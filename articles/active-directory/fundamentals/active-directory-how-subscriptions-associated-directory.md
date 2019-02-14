@@ -12,12 +12,13 @@ ms.date: 09/13/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 86ba8f77121e6d4f6358887e13b8f86a5e020f1b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0a116355c8140d30f8297cde067a82f37f72e02a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103694"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165852"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>将 Azure 订阅关联或添加到 Azure Active Directory 租户
 Azure 订阅与 Azure Active Directory (Azure AD) 建立了信任关系，即该订阅信任 Azure AD 对用户、服务和设备进行身份验证。 多个订阅可以信任同一个 Azure AD 目录，但每个订阅只能信任一个目录。

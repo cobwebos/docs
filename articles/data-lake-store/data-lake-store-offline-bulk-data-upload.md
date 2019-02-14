@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 43b482324f0244baf52edbb8989a56dd12833331
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 98cad0873c4ba687948dc404abc19655319bdc36
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104322"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232261"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-azure-data-lake-storage-gen1"></a>使用 Azure 导入/导出服务将数据脱机复制到 Azure Data Lake Storage Gen1
 本文介绍如何使用脱机复制方法（例如 [Azure 导入/导出服务](../storage/common/storage-import-export-service.md)）将大型数据集 (>200 GB) 复制到 Azure Data Lake Storage Gen1。 具体而言，本文中用作示例的文件大小为 339,420,860,416 字节，即约 319GB 磁盘空间。 命名此文件为 319GB.tsv。
@@ -190,21 +190,24 @@ ms.locfileid: "55104322"
 有关详细信息，请参阅[使用 Azure 数据工厂将数据从从 Azure 存储 Blob 移动到 Azure Data Lake Storage Gen1](../data-factory/connector-azure-data-lake-store.md)。
 
 ## <a name="reconstruct-the-data-files-in-azure-data-lake-storage-gen1"></a>重新构造 Azure Data Lake Storage Gen1 中的数据文件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 以 319GB 大小的文件开始，将其拆分为多个更小的文件，以便可使用 Azure 导入/导出服务进行传输。 此数据已在 Azure Data Lake Storage Gen1 中，因此现在可将文件重构为其原始大小。 为此，可使用以下 Azure PowerShell cmdlet。
 
 ```
 # Login to our account
-Connect-AzureRmAccount
+Connect-AzAccount
 
 # List your subscriptions
-Get-AzureRmSubscription
+Get-AzSubscription
 
 # Switch to the subscription you want to work with
-Set-AzureRmContext -SubscriptionId
-Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
+Set-AzContext -SubscriptionId
+Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
 # Join  the files
-Join-AzureRmDataLakeStoreItem -AccountName "<adlsg1_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
+Join-AzDataLakeStoreItem -AccountName "<adlsg1_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
-ms.openlocfilehash: 0f9f300f589a4818afb0c0de5ede94e5c4fab15e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8cde3402ef52747e61333c56903309259e07599a
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248722"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747588"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>用作备份目标的 StorSimple 与 Backup Exec 的集成
 
@@ -376,7 +376,7 @@ StorSimple 提供以下优势：
 \* 总容量包括 17 TiB 的 StorSimple 磁盘和 1 TiB 的本地 RAID 卷。
 
 
-### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GSF 示例计划：每周、每月和每年 GFS 轮转计划
+### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS 示例计划：每周、每月和每年 GFS 轮转计划
 
 | 周次 | 完整 | 第 1 天增量备份 | 第 2 天增量备份 | 第 3 天增量备份 | 第 4 天增量备份 | 第 5 天增量备份 |
 |---|---|---|---|---|---|---|
@@ -430,7 +430,7 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 ### <a name="start-and-delete-cloud-snapshots-by-using-a-script"></a>使用脚本启动和删除云快照
 
 > [!NOTE]
-> 在删除 StorSimple 快照之前，请仔细评估造成的合规性与数据保留后果。 有关如何运行备份后脚本的详细信息，请参阅 [Backup Exec 文档](https://www.veritas.com/support/en_US/15047.html)。
+> 在删除 StorSimple 快照之前，请仔细评估造成的合规性与数据保留后果。 有关如何运行备份后脚本的详细信息，请参阅 [Backup Exec 文档](https://www.veritas.com/support/en_US/article.100032497.html)。
 
 ### <a name="backup-lifecycle"></a>备份生命周期
 
@@ -480,7 +480,7 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 本文参考了以下文档：
 
 - [StorSimple multipath I/O setup](storsimple-configure-mpio-windows-server.md)（StorSimple 多路径 I/O 设置）
-- [Storage scenarios: Thin provisioning](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)（存储方案：精简预配）
+- [存储方案：精简预配](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
 - [Using GPT drives](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)（使用 GPT 驱动器）
 - [Set up shadow copies for shared folders](https://technet.microsoft.com/library/cc771893.aspx)（设置共享文件夹的卷影副本）
 

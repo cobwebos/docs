@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 32cd3b9eb60a6d12c71be047740fa96ffdd56310
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 5022d765b5dfa4f1f973b7fb4370d5314bb887b8
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094150"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731931"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>如何创建虚拟机或 VHD 的映像
 
@@ -43,7 +43,7 @@ ms.locfileid: "49094150"
 有关本文的用于测试、评估或了解 Azure 中的 VM 的简化版本，请参阅[使用 CLI 创建 Azure VM 的自定义映像](tutorial-custom-images.md)。
 
 
-## <a name="step-1-deprovision-the-vm"></a>步骤 1：取消预配 VM
+## <a name="step-1-deprovision-the-vm"></a>步骤 1：取消设置 VM
 首先，使用 Azure VM 代理取消预配 VM 以删除计算机特定文件和数据。 在源 Linux VM 上，使用带 `-deprovision+user` 参数的 `waagent` 命令。 有关详细信息，请参阅 [Azure Linux 代理用户指南](../extensions/agent-linux.md)。
 
 1. 使用 SSH 客户端连接到 Linux VM。
@@ -61,7 +61,7 @@ ms.locfileid: "49094150"
 ## <a name="step-2-create-vm-image"></a>步骤 2：创建 VM 映像
 使用 Azure CLI 将 VM 标记为通用化并捕获映像。 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 *myResourceGroup*、*myVnet* 和 *myVM*。
 
-1. 对使用 [az vm deallocate](/cli/azure/vm#deallocate) 取消设置的 VM 解除分配。 以下示例在名为 myResourceGroup 的资源组中释放名为 myVM 的 VM。
+1. 对使用 [az vm deallocate](/cli/azure/vm) 取消设置的 VM 解除分配。 以下示例在名为 myResourceGroup 的资源组中释放名为 myVM 的 VM。
    
     ```azurecli
     az vm deallocate \
@@ -69,7 +69,7 @@ ms.locfileid: "49094150"
       --name myVM
     ```
 
-2. 使用 [az vm generalize](/cli/azure/vm#generalize) 将 VM 标记为通用化。 以下示例将名为 myResourceGroup 的资源组中名为 myVM 的 VM 标记为通用化。
+2. 使用 [az vm generalize](/cli/azure/vm) 将 VM 标记为通用化。 以下示例将名为 myResourceGroup 的资源组中名为 myVM 的 VM 标记为通用化。
    
     ```azurecli
     az vm generalize \
@@ -91,7 +91,7 @@ ms.locfileid: "49094150"
    > 如果希望将映像存储在具有区域复原能力的存储中，需要在支持[可用性区域](../../availability-zones/az-overview.md)的区域中创建该快照并包括 `--zone-resilient true` 参数。
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>步骤 3：从捕获的映像创建 VM
-使用通过 [az vm create](/cli/azure/vm#az_vm_create) 创建的映像来创建 VM。 以下示例从名为 myImage 的映像创建名为 myVMDeployed 的 VM。
+使用通过 [az vm create](/cli/azure/vm) 创建的映像来创建 VM。 以下示例从名为 myImage 的映像创建名为 myVMDeployed 的 VM。
 
 ```azurecli
 az vm create \

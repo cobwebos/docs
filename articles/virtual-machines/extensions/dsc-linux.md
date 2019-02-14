@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: ade066c08829181bc7d1ad5623934b98909e0310
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 34b70b1a6a77a20a034a7822d9c4961c36cdd51c
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888985"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663955"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>适用于 Linux 的 DSC 扩展 (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -40,17 +40,12 @@ DSCForLinux 扩展由 Microsoft 发布和提供支持。 该扩展在 Azure 虚�
 
 ### <a name="operating-system"></a>操作系统
 
-DSC Linux 扩展支持[扩展支持的 OS](https://azurewiki.cloudapp.netVMAgentExtension/extensionSupportedOSs) 中所述的所有 OS，但以下项除外：
+DSC Linux 扩展支持所有[在 Azure 上认可的 Linux 分发版](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/endorsed-distros)，除了以下这些：
 
 | 分发 | 版本 |
 |---|---|
-| CentOS Linux | 6.5 和更高版本 |
-| Ubuntu| 12.04 LTS、14.04 LTS 和 16.04 LTS  |
-| RHEL| 6.5 和更高版本  |
-| openSUSE| 13.1 和更高版本  |
-| SUSE Linux Enterprise Server| 11 SP3 和更高版本  |
-
-  
+| Debian | 所有版本 |
+| Ubuntu| 18.04 |
  
 ### <a name="internet-connectivity"></a>Internet 连接
 

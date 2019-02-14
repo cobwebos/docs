@@ -11,18 +11,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: f68e2d9c303b6df0d4a2a355dd9d41ac1616be9f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 5af403b2d75a552719088daa17259f0771b77a94
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185964"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765666"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>使用 Azure Log Analytics 代理收集日志数据
 
-Azure Log Analytics (OMS) 代理，前称为 Microsoft Monitoring Agent (MMA) 或 OMS Linux 代理，是为了对本地计算机、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) 监视的计算机和任何云中的虚拟机进行全面管理而开发的。 Windows 和 Linux 代理附加到 Log Analytics 工作区，以从不同的源收集数据，并收集监视解决方案中定义的任何独特日志或指标。 
+Azure Log Analytics 代理，前称为 Microsoft Monitoring Agent (MMA) 或 OMS Linux 代理，是为了对本地计算机、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) 监视的计算机和任何云中的虚拟机进行全面管理而开发的。 Windows 和 Linux 代理附加到 Log Analytics 工作区，以从不同的源收集数据，并收集监视解决方案中定义的任何独特日志或指标。 
 
 本文提供该代理的详细概述、系统和网络要求以及不同的部署方法。   
 
@@ -41,7 +41,7 @@ Azure Log Analytics (OMS) 代理，前称为 Microsoft Monitoring Agent (MMA) �
 ## <a name="supported-windows-operating-systems"></a>支持的 Windows 操作系统
 Windows 代理官方支持以下版本的 Windows 操作系统：
 
-* Windows Server 2008 Service Pack 1 (SP1) 或更高版本
+* Windows Server 2008 R2 或更高版本
 * Windows 7 SP1 及更高版本。
 
 ## <a name="supported-linux-operating-systems"></a>受支持的 Linux 操作系统
@@ -95,7 +95,7 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 > [!NOTE]
 > 如果代理服务器无需进行身份验证，Linux 代理仍要求提供伪用户名/密码。 这可以是任何用户名或密码。
 
-|属性| Description |
+|属性| 说明 |
 |--------|-------------|
 |协议 | https |
 |user | 用于代理身份验证的可选用户名 |
@@ -111,7 +111,7 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 ## <a name="install-and-configure-agent"></a>安装并配置代理 
 可以根据要求使用不同的方法，将 Azure 订阅或混合环境中的计算机直接连接到 Azure Log Analytics。 下表详细介绍了每种方法，以便用户确定组织中最适用的方法。
 
-|源 | 方法 | Description|
+|源 | 方法 | 说明|
 |-------|-------------|-------------|
 |Azure VM| - 使用 Azure CLI 或 Azure 资源管理器模板通过适用于 [Windows](../../virtual-machines/extensions/oms-windows.md) 或 [Linux](../../virtual-machines/extensions/oms-linux.md) 的 Log Analytics VM 扩展进行安装<br>- [通过 Azure 门户手动安装](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json)。 | 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Azure Monitor 工作区中。|
 | 混合 Windows 计算机|- [手动安装](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [具有 Azure Stack 的资源管理器模板](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |可从命令行或使用自动化方法（如 Azure Automation DSC、[System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications)）安装 Microsoft Monitoring Agent，或者，如果已在数据中心部署 Microsoft Azure Stack，则可使用 Azure 资源管理器进行安装。| 

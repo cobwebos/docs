@@ -1,30 +1,29 @@
 ---
-title: 在 Azure Active Directory 中管理组的 PowerShell 示例 | Microsoft Docs
+title: 管理组的 PowerShell 示例 - Azure Active Directory | Microsoft Docs
 description: 本页提供的 PowerShell 示例适用于在 Azure Active Directory 中管理组
 keywords: Azure AD, Azure Active Directory, PowerShell, 组, 组管理
 services: active-directory
-documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 9cb496ad1ad679fd3a4e6f55f15f658f084e308a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 99facedec04eeb2f1626d502b89f3e8c60d07424
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176329"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512034"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>用于组管理的 Azure Active Directory 版本 2 cmdlet
+
 > [!div class="op_single_selector"]
-> * [Azure 门户](../fundamentals/active-directory-groups-create-azure-portal.md)
+> * [Azure 门户](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 > * [PowerShell](groups-settings-v2-cmdlets.md)
 >
 >
@@ -267,5 +266,5 @@ ObjectId 参数是要将所有者添加到的组的 ObjectID，-RefObjectId 是�
 ## <a name="next-steps"></a>后续步骤
 如需更多 Azure Active Directory PowerShell 文档，可参阅 [Azure Active Directory Cmdlet](/powershell/azure/install-adv2?view=azureadps-2.0)。
 
-* [使用 Azure Active Directory 组管理对资源的访问](../fundamentals/active-directory-manage-groups.md)
-* [将本地标识与 Azure Active Directory 集成](../hybrid/whatis-hybrid-identity.md)
+* [使用 Azure Active Directory 组管理对资源的访问](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
+* [将本地标识与 Azure Active Directory 集成](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

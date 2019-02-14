@@ -1,43 +1,40 @@
 ---
-title: 必应实体搜索终结点
+title: 必应实体搜索 API 终结点
 titlesuffix: Azure Cognitive Services
-description: 实体搜索 API 终结点摘要。
+description: 了解必应实体搜索 API 终结点并向其发送请求。
 services: cognitive-services
-author: aahill
+author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: conceptual
-ms.date: 12/04/2017
-ms.author: aahi
-ms.openlocfilehash: 561c64db2b97ed8792acab6cc87de861ecc30fe9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 02/01/2019
+ms.author: v-gedod
+ms.openlocfilehash: cae65c8fb7deb9f68a297de2058a86249b60136b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183979"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753974"
 ---
-# <a name="entity-search-endpoints"></a>实体搜索终结点
-实体搜索 API 包括一个终结点。
+# <a name="bing-entity-search-api-endpoint"></a>必应实体搜索 API 终结点
 
-## <a name="endpoint"></a>终结点
-要请求实体搜索结果，请将请求发送到以下终结点。 使用标头和 URL 参数来定义更多规范。
 
-终结点 `GET`： 
-``` 
-https://api.cognitive.microsoft.com/bing/v7.0/entities
+必应实体搜索 API 具有一个终结点，该终结点根据查询从 Web 返回实体。 这些搜索结果以 JSON 格式返回。
+
+## <a name="get-entity-results-from-the-endpoint"></a>从终结点获取实体结果
+
+若要使用必应 API 获取实体结果，请向以下终结点发送 `GET` 请求。 使用[标头](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#headers)和[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#query-parameters)来自定义搜索请求。 可以使用 `?q=` 参数发送搜索请求。
+
+```cURL
+ GET https://api.cognitive.microsoft.com/bing/v7.0/entities
 ```
-
-需要以下 URL 参数：
-- mkt。 产生结果的市场。 
-- q。 实体搜索查询。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应实体搜索快速入门](quickstarts/csharp.md)
+> [什么是必应实体搜索 API？](overview.md)
 
 ## <a name="see-also"></a>另请参阅 
 
-[必应实体搜索概述](search-the-web.md )
-[API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+有关标头、参数、市场代码、响应对象、错误等的详细信息，请参阅[必应实体搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference) 参考文章。

@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/10/2019
-ms.openlocfilehash: c84b814ddc06c583fc2f07288c7aa5cd65cc70a0
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.date: 02/05/2019
+ms.openlocfilehash: 09f1bdfa4c9a7a179bddf9473b553924bfb58fb7
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232118"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768556"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure 流分析预览功能
 
@@ -23,13 +23,13 @@ ms.locfileid: "54232118"
 
 以下功能以公共预览版提供。 现在可以使用这些功能，但请勿在生产环境中使用它们。
 
+### <a name="sql-database-reference-data"></a>SQL 数据库引用数据
+
+Azure 流分析支持将 Azure SQL 数据库用作参考数据的输入源。 可以在 Azure 门户和 Visual Studio 中配合流分析工具将 SQL 数据库用作 Stream Analytics 作业的参考数据。 有关详细信息，请访问[将 SQL 数据库中的参考数据用于 Azure 流分析作业](sql-reference-data.md)。
+
 ### <a name="integration-with-azure-machine-learning"></a>与 Azure 机器学习集成
 
 可使用机器学习 (ML) 函数缩放流分析作业。 若要详细了解如何在流分析作业中使用 ML 函数，请访问[使用 Azure 机器学习函数缩放流分析作业](stream-analytics-scale-with-machine-learning-functions.md)。 查看[使用 Azure 流分析和 Azure 机器学习执行情绪分析](stream-analytics-machine-learning-integration-tutorial.md)的实际方案。
-
-### <a name="blob-output-partitioning-by-custom-time"></a>按自定义时间划分的 Blob 输出分区
-
-Azure 流分析可根据自定义时间属性输出到 Blob 存储。 有关详细信息，请访问 [Azure 流分析 Blob 存储输出的自定义 DateTime 路径模式](stream-analytics-custom-path-patterns-blob-storage-output.md)。
 
 ### <a name="javascript-user-defined-aggregate"></a>JavaScript 用户定义的聚合
 
@@ -45,7 +45,7 @@ Azure 流分析支持以 JavaScript 编写的用户定义的聚合 (UDA)，可�
 
 ## <a name="private-previews"></a>个人预览版
 
-以下功能以个人预览版提供。 若要访问这些预览功能，请访问 Azure 流分析个人预览版[注册](https://aka.ms/ASApreview1)页。
+以下功能以个人预览版提供。
 
 ### <a name="anomaly-detection"></a>异常检测
 
@@ -55,16 +55,16 @@ Azure 流分析引入了新的机器学习模型，除了支持双向、慢正�
 
 开发人员现在可以在 C# 中实现自定义反序列化程序，对 Azure 流分析接收的事件进行反序列化。 可以进行反序列化的格式示例包括 Parquet、Protobuf、XML 或任何二进制格式。
 
-### <a name="blob-output-partitioning-by-custom-attribute"></a>按自定义属性划分的 Blob 输出分区
-
-现在，可以根据查询中的任何列将 Azure 流分析输出分区为 Blob 存储。
-
-### <a name="managed-identities-for-azure-resources-authentication-to-azure-data-lake-storage"></a>向 Azure Data Lake Storage 的 Azure 资源托管标识身份验证
+### <a name="managed-identities-for-azure-resource-authentication-to-azure-data-lake-storage"></a>向 Azure Data Lake Storage 的 Azure 资源托管标识身份验证
 
 现在，可以在写入 Azure Data Lake Storage Gen1 时，使用基于 Azure 资源的托管标识身份验证来实施实时管道，从而允许你以编程方式创建作业。 有关详细信息，请访问[使用 Azure 资源的托管标识向 Azure Data Lake Storage Gen1 输出对 Azure 流分析作业进行身份验证](stream-analytics-managed-identities-adls.md)。
+
+### <a name="visual-studio-code-for-azure-stream-analytics"></a>适用于 Azure 流分析的 Visual Studio Code
+
+可以在 Visual Studio Code 中创建 Azure 流分析作业。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Eight new features in Azure Stream Analytics](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/)（Azure 流分析中的八项性功能）
 
-* [4 new features now available in Azure Stream Analytics](https://azure.microsoft.com/blog/4-new-features-now-available-in-azure-stream-analytics/)（Azure 流分析中现已提供的 4 项新功能）
+* [4 new features now available in Azure Stream Analytics](https://azure.microsoft.com/blog/4-new-features-now-available-in-azure-stream-analytics/)（Azure 流分析中现已提供的四项新功能）

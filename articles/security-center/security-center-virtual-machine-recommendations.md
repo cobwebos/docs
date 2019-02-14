@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2018
 ms.author: rkarlin
-ms.openlocfilehash: b77e814f9f339dff4539a04ab8b492e9777abe0d
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 32ca3fc87c91deba26e63a5938536d488e7dc5a8
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537641"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488728"
 ---
 # <a name="understand-azure-security-center-resource-recommendations"></a>了解 Azure 安全中心资源建议
 
@@ -28,7 +28,7 @@ ms.locfileid: "53537641"
 使用下表作为参考，以帮助你了解可用的计算和应用服务建议以及每个建议在应用时的作用。
 
 ### <a name="computers"></a>计算机
-| 建议 | Description |
+| 建议 | 说明 |
 | --- | --- |
 | [为订阅启用数据收集](security-center-enable-data-collection.md) |建议为每个订阅和订阅中的所有虚拟机 (VM) 开启安全策略中的数据收集。 |
 | [为 Azure 存储帐户启用加密](security-center-enable-encryption-for-storage-account.md) | 建议为静态数据启用 Azure 存储服务加密。 存储服务加密 (SSE) 的工作原理是，在将数据写入 Azure 存储时对数据进行加密，以及在检索前对数据进行解密。 SSE 当前仅适用于 Azure Blob 服务，并可用于块 blob、页 blob 和追加 blob。 若要了解详细信息，请参阅[静态数据的存储服务加密](../storage/common/storage-service-encryption.md)。</br>只有 Resource Manager 存储帐户支持 SSE。 目前不支持经典存储帐户。 若要了解经典部署模型和 Resource Manager 部署模型，请参阅 [Azure 部署模型](../azure-classic-rm.md)。 |
@@ -43,8 +43,8 @@ ms.locfileid: "53537641"
 | [未安装漏洞评估](security-center-vulnerability-assessment-recommendations.md) |建议在 VM 上安装漏洞评估解决方案。 |
 | [修正漏洞](security-center-vulnerability-assessment-recommendations.md#review-the-recommendation) |使你可以查看由安装在 VM 上的漏洞评估解决方案检测到的系统和应用程序漏洞。 |
 
-### <a name="app-services"></a>应用程序服务
-| 建议 | Description |
+### 应用服务 <a name="app-services"></a>
+| 建议 | 说明 |
 | --- | --- |
 | 应该只能通过 HTTPS 访问应用服务 | 建议你限制为仅通过 HTTPS 访问应用服务。 |
 | 应为 Web 应用程序禁用 Web 套接字| 建议你仔细检查 Web 应用程序中 Web 套接字的使用。  Web 套接字协议容易受到不同类型的安全威胁的攻击。 |

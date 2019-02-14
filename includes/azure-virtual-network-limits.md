@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 3a7c91f4a83cd69bdb87ffaccce555b04eca67cc
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 0394d1cc44dae270682691e2091543e5aab321f6
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51597580"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55513996"
 ---
 <a name="virtual-networking-limits-classic"></a>以下限制仅适用于每个订阅通过经典部署模型托管的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
@@ -48,6 +48,7 @@ ms.locfileid: "51597580"
 | 每个虚拟网络的 DNS 服务器数 |20 |
 | 每个虚拟网络的专用 IP 地址数 |65536 |
 | 每个网络接口的专用 IP 地址数 |256 |
+| 每个虚拟机的专用 IP 地址数 |256 |
 | 虚拟机或角色实例的单 NIC 并发 TCP 或 UDP 流数 |500K |
 | 网络接口 (NIC) |65536 |
 | 网络安全组 (NSG) |5000 |
@@ -69,6 +70,7 @@ ms.locfileid: "51597580"
 | 公共 IP 地址数 - 动态 |（基本）1000 |联系支持人员 |
 | 公共 IP 地址数 - 静态 |（基本）200 |联系支持人员 |
 | 公共 IP 地址数 - 静态 |（标准）200 |联系支持人员 |
+| 公共 IP 前缀大小（预览版） | /28 | /28 |
 
 #### <a name="load-balancer"></a>负载均衡器限制
 以下限制仅适用于每个订阅按区域通过 Azure 资源管理器管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)

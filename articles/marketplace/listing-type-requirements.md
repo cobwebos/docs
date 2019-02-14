@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: c02bc75a978325f8cb0dc8733fb8d296e8710975
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 8232a197b7916c069ef17393e44a4f9a512a7598
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264676"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818526"
 ---
 # <a name="requirements-by-listing-type"></a>按商品信息类型列出的要求  
 技术和营销内容要求因店面、产品/服务类型和商品信息类型而异。 请查看以下规范，以确认是否合规。  
@@ -64,10 +64,10 @@ ms.locfileid: "54264676"
 
 | 产品/服务类型 | 店面 | 详细信息 |  
 |:---        |:---        |:---     |  
-| 咨询服务 | AppSource | [要求：AppSource：列表：咨询服务](#requirements-appsource-list-consulting-services) |  
-| 咨询服务 | Azure 市场 | [要求：Azure 市场：列表：咨询服务](#requirements-azure-marketplace-list-consulting-services) |  
+| 咨询服务 | AppSource | 要求：AppSource：列表：咨询服务 |  
+| 咨询服务 | Azure 市场 | 要求：Azure 市场：列表：咨询服务 |  
 | 与我联系 | AppSource | [](#) |  
-| 与我联系 | Azure 市场 | [要求：AppSource：列表：与我联系](#requirements-azure-marketplace-list-contact-me) |  
+| 与我联系 | Azure 市场 | 要求：AppSource：列表：与我联系 |  
 
 #### <a name="requirements-appsource-list-consulting-service"></a>要求：AppSource：列表：咨询服务  
 
@@ -91,11 +91,11 @@ ms.locfileid: "54264676"
 
 | 产品/服务类型 | 店面 | 详细信息 |  
 |:---        |:---        |:---     |  
-| 免费/SaaS 试用 | AppSource | [列出的类型要求：试用](#listing-type-requirements-trial) |  
-| 免费/SaaS 试用 | Azure 市场 | [要求：Azure 市场：试用：免费试用/SaaS 试用](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
-| 互动演示 | AppSource | [列出的类型要求：试用](#listing-type-requirements-trial) |  
+| 免费/SaaS 试用 | AppSource | 商品类型要求：试用 |  
+| 免费/SaaS 试用 | Azure 市场 | 要求：Azure 市场：试用：免费试用/SaaS 试用 |  
+| 互动演示 | AppSource | 商品类型要求：试用 |  
 | 互动演示 | Azure 市场 | [要求：Azure 市场：试用：互动演示](#requirements-azure-marketplace-trial-interactive-demo) |  
-| 体验版 | AppSource | [列出的类型要求：试用](#listing-type-requirements-trial) |  
+| 体验版 | AppSource | 商品类型要求：试用 |  
 | 体验版 | Azure 市场 | [要求：Azure 市场：试用：体验版](#requirements-azure-marketplace-trial-test-drive) |  
 
 #### <a name="requirements-azure-marketplace-trial"></a>要求：Azure 市场：试用  
@@ -133,8 +133,8 @@ ms.locfileid: "54264676"
 
 | 产品/服务类型 | 店面 | 详细信息 |   
 |:---        |:---        | :--- |  
-| Azure 应用：托管应用 | Azure 市场 | [要求：Azure 市场：事务处理：Azure 应用：托管应用](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
-| Azure 应用：解决方案模板 | Azure 市场 | [要求：Azure 市场：事务处理：Azure 应用：解决方案模板](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
+| Azure 应用：托管应用 | Azure 市场 | 要求：Azure 市场：事务处理：Azure 应用：托管应用 |  
+| Azure 应用：解决方案模板 | Azure 市场 | 要求：Azure 市场：事务处理：Azure 应用：解决方案模板 |  
 | 容器 | Azure 市场 | [要求：Azure 市场：事务处理：容器](#requirements-azure-marketplace-transact-container) |  
 | SaaS 应用  | Azure 市场 | [要求：Azure 市场：事务处理：SaaS 应用](#requirements-azure-marketplace-transact-saas-app) |  
 | 虚拟机 | Azure 市场 | [要求：Azure 市场：事务处理：虚拟机](#requirements-azure-marketplace-transact-virtual-machine) |  

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/24/2018
 ms.author: cherylmc
-ms.openlocfilehash: 3254f0c26e21bc7ba71fc23362f263cb126ea3b0
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 4e8a28634e554ee75eea79e69c0b73e8adec3447
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026358"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700530"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>使用本机 Azure 证书身份验证配置与 VNet 的点到站点连接：Azure 门户
 
@@ -35,21 +35,21 @@ ms.locfileid: "50026358"
 
 可使用以下值创建测试环境，或参考这些值以更好地理解本文中的示例：
 
-* VNet 名称：VNet1
-* 地址空间：192.168.0.0/16<br>对于此示例，我们只使用一个地址空间。 VNet 可以有多个地址空间。
-* 子网名称：FrontEnd
-* 子网地址范围：192.168.1.0/24
+* **VNet 名称：** VNet1
+* **地址空间：** 192.168.0.0/16<br>对于此示例，我们只使用一个地址空间。 VNet 可以有多个地址空间。
+* **子网名称：** FrontEnd
+* 子**网地址范围：** 192.168.1.0/24
 * **订阅：** 如果有多个订阅，请验证是否正在使用正确的订阅。
-* 资源组：TestRG
+* **资源组：** TestRG
 * **位置：** 美国东部
-* GatewaySubnet：192.168.200.0/24<br>
+* **GatewaySubnet：** 192.168.200.0/24<br>
 * DNS 服务器：（可选）要用于名称解析的 DNS 服务器的 IP 地址。
-* 虚拟网关名称：VNet1GW
-* 网关类型：VPN
-* VPN 类型：基于路由
-* 公共 IP 地址名称：VNet1GWpip
-* 连接类型：点到站点
-* 客户端地址池：172.16.201.0/24<br>使用此点到站点连接连接到 VNet 的 VPN 客户端接收来自客户端地址池的 IP 地址。
+* **虚拟网络网关名称：** VNet1GW
+* **网关类型：** VPN
+* **VPN 类型：** 基于路由
+* **公共 IP 地址名称：** VNet1GWpip
+* **连接类型：** 点到站点
+* **客户端地址池：** 172.16.201.0/24<br>使用此点到站点连接连接到 VNet 的 VPN 客户端接收来自客户端地址池的 IP 地址。
 
 ## <a name="createvnet"></a>1.创建虚拟网络
 
@@ -239,6 +239,6 @@ VPN 客户端配置文件包含的设置用来对设备进行配置以通过 P2S
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
-连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。 若要详细了解网络和虚拟机，请参阅 [Azure 和 Linux VM 网络概述](../virtual-machines/linux/azure-vm-network-overview.md)。
+连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/)。 若要详细了解网络和虚拟机，请参阅 [Azure 和 Linux VM 网络概述](../virtual-machines/linux/azure-vm-network-overview.md)。
 
 有关 P2S 故障排除信息，请参阅[排查 Azure 点到站点连接问题](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)。

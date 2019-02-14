@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.service: key-vault
 author: bryanla
 ms.author: bryanla
-manager: mbaldwin
+manager: barbkess
 ms.date: 11/28/2018
-ms.openlocfilehash: 1c0502458a5c20991ada6f5a33d067a38596752b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3566f7514f10bc8fb1de417583c6db17bb4e091e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817557"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104969"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Azure Key Vault 托管存储帐户 - PowerShell
 
@@ -21,6 +21,8 @@ ms.locfileid: "55817557"
 > - 使用应用程序标识或用户标识（而不是存储帐户凭据）对客户端应用程序进行身份验证。 
 > - 在 Azure 上运行时使用 [Azure AD 托管标识](/azure/active-directory/managed-identities-azure-resources/)。 托管标识完全消除了客户端身份验证的需要，并可以在应用程序中存储凭据，或者将凭据与应用程序一同存储。
 > - 使用同样受 Key Vault 支持的基于角色的访问控制 (RBAC) 来管理授权。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [Azure 存储帐户](/azure/storage/storage-create-storage-account)使用由帐户名和密钥构成的凭据。 密钥会自动生成，并主要充当“密码”而不是加密密钥。 Key Vault 可以通过将这些存储帐户密钥存储为 [Key Vault 机密](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets)来对其进行管理。 
 
@@ -61,13 +63,13 @@ $keyVaultName = "kvContoso"
 $keyVaultSpAppId = "cfa8b339-82a2-471a-a3c9-0fc0be7a4093" # See "IMPORTANT" block above for information on Key Vault Application IDs
 
 # Authenticate your PowerShell session with Azure AD, for use with Azure Resource Manager cmdlets
-$azureProfile = Connect-AzureRmAccount
+$azureProfile = Connect-AzAccount
 
 # Get a reference to your Azure storage account
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
 
 # Assign RBAC role "Storage Account Key Operator Service Role" to Key Vault, limiting the access scope to your storage account. For a classic storage account, use "Classic Storage Account Key Operator Service Role." 
-New-AzureRmRoleAssignment -ApplicationId $keyVaultSpAppId -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storageAccount.Id
+New-AzRoleAssignment -ApplicationId $keyVaultSpAppId -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storageAccount.Id
 ```
 
 成功完成角色分配后，应会看到类似于以下示例的输出：
@@ -95,7 +97,8 @@ CanDelegate        : False
 
 ```azurepowershell-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
-Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $azureProfile.Context.Account.Id -PermissionsToStorage get, list, listsas, delete, set, update, regeneratekey, recover, backup, restore, purge
+
+Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $azureProfile.Context.Account.Id -PermissionsToStorage get, list, listsas, delete, set, update, regeneratekey, recover, backup, restore, purge
 ```
 
 请注意，Azure 门户中存储帐户的“访问策略”页不会显示存储帐户的权限。
@@ -106,7 +109,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $azu
 
 ```azurepowershell-interactive
 # Add your storage account to your Key Vault's managed storage accounts
-Add-AzureKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -DisableAutoRegenerateKey
+Add-AzKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -DisableAutoRegenerateKey
 ```
 
 成功添加不重新生成密钥的存储帐户后，应会看到类似于以下示例的输出：
@@ -131,7 +134,7 @@ Tags                :
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)
-Add-AzureKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -RegenerationPeriod $regenPeriod
+Add-AzKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -RegenerationPeriod $regenPeriod
 ```
 
 成功添加重新生成密钥的存储帐户后，应会看到类似于以下示例的输出：
@@ -154,4 +157,4 @@ Tags                :
 
 - [托管存储帐户密钥示例](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)
 - [关于键、密钥和证书](about-keys-secrets-and-certificates.md)
-- [Key Vault PowerShell 参考](/powershell/module/azurerm.keyvault/)
+- [Key Vault PowerShell 参考](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)

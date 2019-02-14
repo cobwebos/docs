@@ -16,12 +16,12 @@ ms.date: 10/20/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6174dd210cf85bfa6a3daf38965d1da65801321c
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: d137f2217575bfddec5a2bc2ead4e210b8cf1865
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076326"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815331"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Azure Active Directory 中的签名密钥滚动更新
 本文介绍需要了解的有关 Azure Active Directory (Azure AD) 中用来为安全令牌签名的公钥的信息。 请务必注意，这些密钥会定期滚动更新，紧急情况下可立即滚动更新。 所有使用 Azure AD 的应用程序应该都能以编程方式处理密钥滚动更新过程，或建立定期手动滚动更新过程。 继续阅读，了解密钥工作方式、如何评估应用程序的滚动更新的影响以及如何更新应用程序，或者在必要时建立定期手动滚动更新过程来处理密钥滚动更新。
@@ -44,7 +44,7 @@ OpenID Connect 发现文档和联合元数据文档中始终有多个有效密�
 * [使用 Node.js passport-azure-ad 模块保护资源的 Web 应用程序/API](#passport)
 * [保护资源的和使用 Visual Studio 2015 或 Visual Studio 2017 创建的 Web 应用程序/API](#vs2015)
 * [保护资源的和使用 Visual Studio 2013 创建的 Web 应用程序](#vs2013)
-* [保护资源的和使用 Visual Studio 2013 创建的 Web API](#vs2013_webapi)
+* 保护资源的和使用 Visual Studio 2013 创建的 Web API
 * [保护资源的和使用 Visual Studio 2012 创建的 Web 应用程序](#vs2012)
 * [保护资源的和使用 Visual Studio 2010、2008 或 Windows Identity Foundation 创建的 Web 应用程序](#vs2010)
 * [使用任何其他库保护资源或手动实现任何受支持协议的 Web 应用程序/API](#other)

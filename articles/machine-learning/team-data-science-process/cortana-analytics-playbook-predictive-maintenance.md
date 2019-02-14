@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 860d24bf9de02d1b2ca46f05f1e09843a826aaf9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ebf376f0bdba8c41f88d6f97cef2c17ecd259022
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466823"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816639"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>针对预测性维护解决方案的 Azure AI 指南
 
@@ -325,7 +325,7 @@ PdM 的建议方法是以时间相关的方式将示例拆分为训练、验证�
 ### <a name="time-dependent-split"></a>依赖于时间的拆分
 本部分介绍实现时间相关拆分的最佳做法。 下面介绍如何在训练集与测试集之间执行时间相关的双向拆分。
 
-假设各种传感器发送了带有时间戳的事件流（例如测量值）。 定义特定时间范围内包含多个事件的训练和测试示例的特征与标签。 例如，对于二元分类，请基于过去的事件创建特征，并基于“X”个时间单位内的未来事件创建标签（请参阅有关[特征工程](#Feature-engineering)和[建模技术](#Modeling-techniques-applied-to-PdM-use-cases)的部分）。 因此，示例的标签时间范围比其特征的时间范围要晚。
+假设各种传感器发送了带有时间戳的事件流（例如测量值）。 定义特定时间范围内包含多个事件的训练和测试示例的特征与标签。 例如，对于二元分类，请基于过去的事件创建特征，并基于“X”个时间单位内的未来事件创建标签（请参阅有关[特征工程](#Feature-engineering)和建模技术的部分）。 因此，示例的标签时间范围比其特征的时间范围要晚。
 
 对于时间相关的拆分，请选择训练截止时间 T<sub>c</sub>，到该时间点时，将使用通过截至 T<sub>c</sub> 的历史数据进行优化的超参数来训练模型。 为了防止超过 T<sub>c</sub> 的未来标签泄漏到训练数据，请选择最新的时间将训练示例标记为 T<sub>c</sub> 之前的 X 个单位。 在图 7 所示的示例中，每个方块表示数据集中的一条记录，该数据集中的特征和标签已按前文所述进行计算。 图中显示，当 X = 2 且 W = 3 时应进入训练和测试集的记录：
 

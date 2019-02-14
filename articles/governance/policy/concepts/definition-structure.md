@@ -4,17 +4,17 @@ description: 介绍 Azure Policy 如何使用资源策略定义，通过描述�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/29/2019
+ms.date: 02/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: d54fd12125902aa5019643df24d78ae81f7fc31f
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: fc0d5c4abc3b8584212798d5ea5b6ab65404e93d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296650"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698266"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -46,7 +46,8 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
                     "description": "The list of locations that can be specified when deploying resources",
                     "strongType": "location",
                     "displayName": "Allowed locations"
-                }
+                },
+                "defaultValue": "westus2"
             }
         },
         "displayName": "Allowed locations",
@@ -87,8 +88,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 构建策略时，参数同样适用。 如果在策略定义中包括参数，就可以通过使用不同的值重新使用策略以执行不同方案。
 
 > [!NOTE]
-> 策略或计划定义的参数定义只能在策略或计划的初始创建期间配置。 以后无法更改参数定义。
-> 这可以防止策略或计划的现有分配间接被设为无效。
+> 参数可以添加到现有和已分配的定义。 新参数必须包含 defaultValue 属性。 这可以防止策略或计划的现有分配间接被设为无效。
 
 例如，可以定义策略来限制资源的部署位置。
 创建策略时需声明以下参数：
@@ -101,7 +101,8 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
             "description": "The list of allowed locations for resources.",
             "displayName": "Allowed locations",
             "strongType": "location"
-        }
+        },
+        "defaultValue": "westus2"
     }
 }
 ```
@@ -221,7 +222,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 - `location`
   - 对于不限位置的资源，请使用 **global**。 如需示例，请参阅[示例 - 允许的位置](../samples/allowed-locations.md)。
 - `identity.type`
-  - 返回在资源上启用的类型：[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)。
+  - 返回在资源上启用的[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)类型。
 - `tags`
 - `tags.<tagName>`
   - 其中 **\<tagName\>** 是要验证其条件的标记的名称。

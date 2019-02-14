@@ -1,8 +1,21 @@
 ---
-title:复制其他数据科学示例 titleSuffix:Azure 机器学习工作室 description:“数据科学的商业机密：让他人为你完成工作。 从 Azure AI 库获取机器学习示例。”
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-author: garyericson ms.author: garye ms.custom: seodec18 ms.date:2018/01/05
+title: 复制其他人的数据科学示例
+titleSuffix: Azure Machine Learning Studio
+description: 数据科学的商业机密：让他人为你完成工作。 从 Azure AI 库获取机器学习示例。
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: garyericson
+ms.author: garye
+ms.custom: seodec18
+ms.date: 01/05/2018
+ms.openlocfilehash: 69d3e02ca8d3f020a50b81785c58a3f5a42ce4b0
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492991"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>复制其他人的工作以执行数据科研
 ## <a name="video-5-data-science-for-beginners-series"></a>视频 5：适合初学者的数据科学系列

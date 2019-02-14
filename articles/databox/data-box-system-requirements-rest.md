@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: e7c2cc0c0ffaae11bd7bf5113c942cdb98397201
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: b36926365b85c576cbe2927c690a30cc64df23d8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550704"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752766"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Azure Data Box Blob 存储要求
 
@@ -30,7 +30,7 @@ ms.locfileid: "53550704"
 |    静态数据的服务加密                  |    256 位 AES 加密                             |    256 位 AES 加密 |
 |    存储帐户类型                                 |    常规用途和 Azure blob 存储帐户    |    仅常规用途 v1|
 |    Blob 名称                                            |    1024 个字符（2048 个字节）                     |    880 个字符（1760 个字节）|
-|    块 blob 最大大小                              |    4.75 TB（100 MB X 50,000 块）                   |    4.75 TB（100 MB x 50,000 块），用于 Azure Data Box v 1.7 及更高版本。|
+|    块 blob 最大大小                              |    4.75 TB（100 MB X 50,000 块）                   |    4.75 TB（100 MB x 50,000 块），用于 Azure Data Box v 1.8 及更高版本。|
 |    页 blob 最大大小                               |    8 TB                                               |    1 TB                   |
 |    页 blob 页面大小                                  |    512 字节                                          |    4 KB                   |
 
@@ -38,8 +38,10 @@ ms.locfileid: "53550704"
 
 Data Box Blob 存储支持以下版本的 Azure 存储服务 API：
 
-公共预览版本（Azure Data Box 1.7 及更高版本）
+公共预览版本（Azure Data Box 1.8 及更高版本）
 
+- [2017-11-09](/rest/api/storageservices/version-2017-11-09)
+- [2017-07-29](/rest/api/storageservices/version-2017-07-29)
 - [2017-04-17](/rest/api/storageservices/version-2017-04-17)
 - [2016-05-31](/rest/api/storageservices/version-2016-05-31)
 - [2015-12-11](/rest/api/storageservices/version-2015-12-11)
@@ -60,11 +62,9 @@ Data Box Blob 存储支持以下版本的 Azure 存储服务 API：
 
 ## <a name="supported-azure-client-libraries"></a>支持的 Azure 客户端库
 
-对于 Data Box Blob 存储，需要提供特定的客户端库和特定的终结点后缀。
+对于 Data Box Blob 存储，需要提供特定的客户端库和特定的终结点后缀。 Data Box Blob 存储终结点与最新版本的 Azure Blob 存储 REST API 不完全相同，请参阅 [Azure Data Box 1.8 及更高版本支持的版本](#supported-api-versions)。 对于存储客户端库，需要了解与 REST API 兼容的版本。
 
-Data Box Blob 存储支持的 REST API 版本为 2017-04-17、2016-05-31、2015-12-11、2015-07-08 和 2015-04-05，适用于 Azure Data Box 1.7 及更高版本。 Data Box Blob 存储终结点与最新版本的 Azure Blob 存储 REST API 不完全相同。 对于存储客户端库，需要了解与 REST API 兼容的版本。
-
-### <a name="azure-data-box-17-onwards"></a>Azure Data Box 1.7 及更高版本
+### <a name="azure-data-box-18-onwards"></a>Azure Data Box 1.8 及更高版本
 
 | 客户端库     |Data Box Blob 存储支持的版本     | 链接   |     终结点规范      |
 |--------------------|--------------------------------------------|--------|---------------------------------|

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: URL 预览终结点的摘要。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 985e08a9622e08d2a4b52dae996952cd6a7e7ad4
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7cc52493ec0e2b9c81d52da4bb22102c2c7e5e5c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207440"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861981"
 ---
 # <a name="project-url-preview-endpoint"></a>项目 URL 预览终结点
 

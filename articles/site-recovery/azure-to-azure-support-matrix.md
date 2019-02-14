@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: 138c5ee54d175c4bd5f727acc3375405850f86a0
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 752be8270f3eb0bcc018cfcb7f87f30f5afbc60a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301588"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753089"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>用于在 Azure 区域之间进行复制的支持矩阵
 
@@ -58,9 +58,9 @@ Azure Government     | US Gov 弗吉尼亚州、US Gov 爱荷华州、US Gov 亚
 >[!NOTE]
 >
 > - 对于“巴西南部”区域，可以复制并故障转移到下列区域之一：美国中南部、美国中西部、美国东部、美国东部 2、美国西部、美国西部 2 和美国中北部区域。 应当注意，Site Recovery 仅将“巴西南部”启用为可以在其中保护 VM 的源区域。 它不能用作任何 Azure 区域（例如“美国中南部”）的目标 DR 区域。 看到的延迟是由地理距离导致的，建议选择除了“巴西南部”之外的任何其他美洲区域。
-> 
+>
 > - 如果你无法查看要在其中创建保管库的区域，请确保你的订阅有权在该区域中创建资源。 例如：如果无法在法国南部创建保管库，那么你的订阅将无法访问法国南部区域。 请在发布类型“订阅管理”和问题类型“其他一般问题”下提交支持票证，主题为“将 XXX Azure 区域的订阅加入允许列表”
-> 
+>
 > - 如果在启用复制期间无法在地理群集中看到某个区域，请确保你的订阅有权在该区域中创建虚拟机。 例如：如果你想要保护从法国中部到法国南部的虚拟机，但在“区域”下拉列表中看不到“法国南部”，那么你的订阅将无权在该区域中部署 VM。 请在发布类型“订阅管理”和问题类型“其他一般问题”下提交支持票证，主题为“将 XXX Azure 区域的订阅加入允许列表”
 > - 你不能跨上述地理群集选择区域。
 
@@ -123,7 +123,7 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 
 
 **版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
-Debian 7 | 9.18,9.19,9.20,9.21 | 3.2.0-4-amd64 到 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.19,9.20,9.21,9.22 | 3.2.0-4-amd64 到 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
 |||
 Debian 8 | 9.20, 9.21 | 3.16.0-4-amd64 到 3.16.0-7-amd64、4.9.0-0.bpo.4-amd64 到 4.9.0-0.bpo.8-amd64 |
 Debian 8 | 9.19 | 3.16.0-4-amd64 到 3.16.0-6-amd64、4.9.0-0.bpo.4-amd64 到 4.9.0-0.bpo.7-amd64 |
@@ -133,10 +133,10 @@ Debian 8 | 9.18 | 3.16.0-4-amd64 到 3.16.0-6-amd64、4.9.0-0.bpo.4-amd64 到 4.
 
 **版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.22 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default 到 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.21 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default 到 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.20 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default 到 4.4.162-94.69-default |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.19 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.93-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default 到 4.4.140-94.42-default |
-SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.18 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.93-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default 到 4.4.138-94.39-default |
 
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>复制的计算机 - Linux 文件系统/来宾存储
@@ -186,7 +186,7 @@ OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/windows
 数据磁盘 - 高级存储帐户 | 支持 | 如果 VM 将磁盘分散在高级和标准存储帐户上，则可以为每个磁盘选择不同的目标存储帐户，以确保在目标区域中具有相同的存储配置。
 托管磁盘 - 标准 | 在支持 Azure Site Recovery 的 Azure 区域中受支持。 |
 托管磁盘 - 高级 | 在支持 Azure Site Recovery 的 Azure 区域中受支持。 |
-标准 SSD | 不支持 |
+标准 SSD | 支持 |
 冗余 | LRS 和 GRS 受支持。<br/><br/> ZRS 不受支持。
 冷存储和热存储 | 不支持 | 冷存储和热存储不支持 VM 磁盘
 存储空间 | 支持 |
@@ -195,8 +195,8 @@ OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/windows
 适用于 Linux OS 的 Azure 磁盘加密 (ADE) | 不支持 |
 热添加/移除磁盘 | 不支持 | 如果在 VM 上添加或删除数据磁盘，则需为 VM 禁用复制后重新启用复制。
 排除磁盘 | 不支持|   默认排除临时磁盘。
-存储空间直通  | 不支持|
-横向扩展文件服务器  | 不支持|
+存储空间直通  | 崩溃一致恢复点支持。 不支持应用程序一致恢复点。 |
+横向扩展文件服务器  | 崩溃一致恢复点支持。 不支持应用程序一致恢复点。 |
 LRS | 支持 |
 GRS | 支持 |
 RA-GRS | 支持 |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: cd27a4d43333674ec1928fbd873e873afe84d26d
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: f0d3641800d8ec2f9fd403b006e81af04444c143
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262874"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813120"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
@@ -44,7 +44,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 执行以下步骤即可开始使用 ITSM 连接器：
 
 1.  [添加 ITSM 连接器解决方案](#adding-the-it-service-management-connector-solution)
-2.  [创建 ITSM 连接](#creating-an-itsm-connection)
+2.  创建 ITSM 连接
 3.  [使用连接](#using-the-solution)
 
 
@@ -194,7 +194,7 @@ ServiceDeskWorkItemType_s="Incident"
 - 分配给
 - 类别
 - 标题
-- Description
+- 说明
 - 创建日期
 - 关闭日期
 - 解决日期
@@ -214,7 +214,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 源
 - 分配给
 - 标题
-- 类型
+- Type
 - 类别
 - 状态
 - 升级
@@ -232,7 +232,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 计划结束日期
 - 工作开始日期
 - 工作结束日期
-- Description
+- 说明
 - Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow 事件的输出数据
@@ -266,7 +266,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s | 关闭者 |
 | AssignedTo_s | 已分配到  |
 | Title_s|  简短说明 |
-| Type_s|  类型 |
+| Type_s|  Type |
 | Category_s|  类别 |
 | CRState_s|  状态|
 | Urgency_s|  紧急性 |
@@ -279,7 +279,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | PlannedEndDate_t  |   计划结束日期 |
 | WorkStartDate_t  | 实际开始日期 |
 | WorkEndDate_t | 实际结束日期|
-| Description_s | Description |
+| Description_s | 说明 |
 | Computer  | 配置项 |
 
 

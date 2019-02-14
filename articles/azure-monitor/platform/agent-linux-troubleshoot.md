@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: b95a9b2243dda83be7de67802a8b6678419e335f
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 84c6a88449844d3a2f59b3b93dd95b102b653679
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102578"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817608"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何排查 Log Analytics Linux 代理的问题 
 
@@ -60,7 +60,7 @@ ms.locfileid: "54102578"
 | NOT_DEFINED | 由于未安装必需的依赖项，将不会安装 auoms auditd 插件 | Auoms 安装失败，请安装程序包 auditd。 |
 | 2 | 提供给 shell 捆绑包的选项无效。 运行 `sudo sh ./omsagent-*.universal*.sh --help` 获取使用情况 |
 | 3 | 未向 shell 捆绑包提供任何选项。 运行 `sudo sh ./omsagent-*.universal*.sh --help` 获取使用情况。 |
-| 4 | 无效的程序包类型或者无效的代理服务器设置；omsagent-*rpm*.sh 程序包只能安装在基于 RPM 的系统上，而 msagent-*deb*.sh 程序包只能安装在基于 Debian 的系统上。 建议使用[最新版本](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux)中的通用安装程序。 另外还应该进行[查看](#issue:-unable-to-connect-through-proxy-to-log-analytics)以验证你的代理服务器设置。 |
+| 4 | 无效的程序包类型或者无效的代理服务器设置；omsagent-*rpm*.sh 程序包只能安装在基于 RPM 的系统上，而 msagent-*deb*.sh 程序包只能安装在基于 Debian 的系统上。 建议使用[最新版本](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux)中的通用安装程序。 另外还应该进行查看以验证你的代理服务器设置。 |
 | 5 | 必须以 root 身份执行 shell 捆绑包或在载入期间返回 403 错误。 使用 `sudo` 运行你的命令。 |
 | 6 | 无效的程序包体系结构或者载入期间返回 200 错误；omsagent-*x64.sh 程序包只能安装在 64 位系统上，而 omsagent-* x86.sh 程序包只能安装在 32 位系统上。 从[最新版本](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)为你的体系结构下载正确的程序包。 |
 | 17 | OMS 程序包安装失败。 仔细查看命令输出查找根源故障。 |

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 1/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: fc085a94e2412ff21b09755102f79636a0b0d3b5
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: d9892b158eae1a83ab1f8eed6c14224e1d4bca15
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884939"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509902"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](resource-group-using-tags.md)。
@@ -666,6 +666,7 @@ ms.locfileid: "54884939"
 | logDefinitions | 否 | 
 | logprofiles | 否 | 
 | 日志 | 否 | 
+| metricAlerts | 是 |
 | migrateToNewPricingModel | 否 | 
 | myWorkbooks | 否 | 
 | 查询 | 否 | 
@@ -1108,7 +1109,7 @@ ms.locfileid: "54884939"
 | 资源类型 | 支持标记 |
 | ------------- | ----------- |
 | managedInstances | 是 |
-| managedInstances/databases | 是 |
+| managedInstances/databases | 是（见下方备注） |
 | managedInstances/databases/backupShortTermRetentionPolicies | 否 |
 | managedInstances/databases/schemas/tables/columns/sensitivityLabels | 否 |
 | managedInstances/databases/vulnerabilityAssessments | 否 |
@@ -1120,12 +1121,16 @@ ms.locfileid: "54884939"
 | servers | 是 | 
 | servers/administrators | 否 | 
 | servers/communicationLinks | 否 | 
-| servers/databases | 是 | 
+| servers/databases | 是（见下方备注） | 
 | servers/encryptionProtector | 否 | 
 | servers/keys | 否 | 
 | servers/restorableDroppedDatabases | 否 | 
 | servers/serviceobjectives | 否 | 
 | servers/tdeCertificates | 否 | 
+
+> [!NOTE]
+> Master 数据库不支持标记，但其他数据库支持标记。
+
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 | 资源类型 | 支持标记 |
@@ -1163,8 +1168,11 @@ ms.locfileid: "54884939"
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 | 资源类型 | 支持标记 |
 | ------------- | ----------- |
-| streamingjobs | 是 | 
+| streamingjobs | 是（见下方备注） | 
 | streamingjobs/diagnosticSettings | 否 | 
+
+> [!NOTE]
+> Streamingjobs 运行时无法添加标记。 停止要添加标记的资源。
 
 ## <a name="microsoftsubscription"></a>Microsoft.Subscription
 | 资源类型 | 支持标记 |

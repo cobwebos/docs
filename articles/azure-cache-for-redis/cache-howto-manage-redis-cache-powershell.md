@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 746e1c082d370cdcf1fca6597923b0e38b9a6d62
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ffbd785126bbc204191554e5d62d642a582a3c8d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105230"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822555"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Redis 缓存
 > [!div class="op_single_selector"]
@@ -123,9 +123,9 @@ ms.locfileid: "54105230"
 ### <a name="properties-used-for-azure-cache-for-redis-powershell"></a>Azure Redis 缓存 PowerShell 使用的属性
 下表包含使用 Azure PowerShell 创建和管理 Azure Redis 缓存实例时常用的参数的属性和说明。
 
-| 参数 | Description | 默认 |
+| 参数 | 说明 | 默认 |
 | --- | --- | --- |
-| 名称 |缓存的名称 | |
+| Name |缓存的名称 | |
 | 位置 |缓存的位置 | |
 | ResourceGroupName |将在其中创建缓存的资源组名称 | |
 | 大小 |缓存的大小。 有效值是：P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
@@ -140,7 +140,7 @@ ms.locfileid: "54105230"
 | KeyType |指定续订访问密钥时要重新生成哪个访问密钥。 有效值是：Primary、Secondary | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration 属性
-| 属性 | Description | 定价层 |
+| 属性 | 说明 | 定价层 |
 | --- | --- | --- |
 | rdb-backup-enabled |是否已启用 [Redis 数据暂留](cache-how-to-premium-persistence.md) |仅限高级版 |
 | rdb-storage-connection-string |[Redis 数据暂留](cache-how-to-premium-persistence.md)存储帐户的连接字符串 |仅限高级版 |
@@ -260,7 +260,7 @@ ms.locfileid: "54105230"
 
     New-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P3 -RedisConfiguration @{"databases" = "48"}
 
-有关 `databases` 属性的详细信息，请参阅[默认 Azure Redis 缓存服务器配置](cache-configure.md#default-redis-server-configuration)。 有关使用 [New-AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/new-azurermrediscache?view=azurermps-6.6.0) cmdlet 创建缓存的详细信息，请参阅前面的[创建 Azure Redis 缓存](#to-create-a-redis-cache)部分。
+有关 `databases` 属性的详细信息，请参阅[默认 Azure Redis 缓存服务器配置](cache-configure.md#default-redis-server-configuration)。 有关使用 [New-AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/new-azurermrediscache?view=azurermps-6.6.0) cmdlet 创建缓存的详细信息，请参阅前面的创建 Azure Redis 缓存部分。
 
 ## <a name="to-update-an-azure-cache-for-redis"></a>更新 Azure Redis 缓存
 使用 [Set-AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/Set-AzureRmRedisCache?view=azurermps-6.6.0) cmdlet 更新 Azure Redis 缓存实例。

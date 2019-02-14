@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: roiyz
-ms.openlocfilehash: b73cdc7e55a60fbefc294a54f70daa9b2a11ced1
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 2613584e336243128067a76ce424e640ebdf94e0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452441"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817319"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>对 Azure 虚拟机的远程桌面连接进行故障排除
 与基于 Windows 的 Azure 虚拟机 (VM) 的远程桌面协议 (RDP) 连接可能会因各种原因而失败，使用户无法访问 VM。 问题可能出在 VM 上的远程桌面服务、网络连接或主计算机上的远程桌面客户端。 本文介绍解决 RDP 连接问题的一些最常见方法。 
@@ -50,8 +50,8 @@ ms.locfileid: "47452441"
 ## <a name="ways-to-troubleshoot-rdp-issues"></a>解决 RDP 问题的方法
 可通过以下方法之一，对使用资源管理器部署模型创建的 VM 进行故障排除：
 
-* [Azure 门户](#using-the-azure-portal) - 如果需要快速重置 RDP 配置或用户凭据，并且没有安装 Azure 工具，则很适合使用此方法。
-* [Azure PowerShell](#using-azure-powershell) - 如果熟悉 PowerShell 提示符，可使用 Azure PowerShell cmdlet 快速重置 RDP 配置或用户凭据。
+* Azure 门户 - 如果需要快速重置 RDP 配置或用户凭据，并且没有安装 Azure 工具，则很适合使用此方法。
+* Azure PowerShell - 如果熟悉 PowerShell 提示符，可使用 Azure PowerShell cmdlet 快速重置 RDP 配置或用户凭据。
 
 还可以找到有关对使用[经典部署模型](#troubleshoot-vms-created-using-the-classic-deployment-model)创建的 VM 进行故障排除的步骤。
 
@@ -236,7 +236,7 @@ ms.locfileid: "47452441"
 * [由于没有可用于提供许可证的远程桌面授权服务器，远程会话已断开连接](troubleshoot-specific-rdp-errors.md#rdplicense)。
 * [远程桌面找不到计算机“名称”](troubleshoot-specific-rdp-errors.md#rdpname)。
 * [身份验证出错。无法联系本地安全机构](troubleshoot-specific-rdp-errors.md#rdpauth)。
-* [Windows 安全性错误：凭据无效](troubleshoot-specific-rdp-errors.md#wincred)。
+* [Windows 安全性错误：凭据不起作用](troubleshoot-specific-rdp-errors.md#wincred)。
 * [此计算机无法连接到远程计算机](troubleshoot-specific-rdp-errors.md#rdpconnect)。
 
 ## <a name="additional-resources"></a>其他资源

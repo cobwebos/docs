@@ -4,7 +4,7 @@ description: 在 Azure Service Fabric 上创建第一个 Windows 容器应用程
 services: service-fabric
 documentationcenter: .net
 author: TylerMSFT
-manager: timlt
+manager: jpconnock
 editor: vturecek
 ms.assetid: ''
 ms.service: service-fabric
@@ -12,26 +12,28 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/18/2018
+ms.date: 01/25/2019
 ms.author: twhitney
-ms.openlocfilehash: 38979d80e25e0430082b7819d506b653c35697e6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e1024fadf6a68307e42b57ee3c383977b7b4fb9b
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172947"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562498"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>在 Windows 上创建第一个 Service Fabric 容器应用程序
+
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-在 Service Fabric 群集上运行 Windows 容器中的现有应用程序不需要对应用程序进行任何更改。 本文逐步讲解如何创建包含 Python [Flask](http://flask.pocoo.org/) Web 应用程序的 Docker 映像并将其部署到 Service Fabric 群集。 此外，将通过 [Azure 容器注册表](/azure/container-registry/)共享容器化的应用程序。 本文假定读者对 Docker 有一个基本的了解。 阅读 [Docker Overview](https://docs.docker.com/engine/understanding-docker/)（Docker 概述）即可了解 Docker。
+在 Service Fabric 群集上运行 Windows 容器中的现有应用程序不需要对应用程序进行任何更改。 本文逐步讲解如何创建包含 Python [Flask](http://flask.pocoo.org/) Web 应用程序的 Docker 映像并将其部署到在本地计算机上运行的 Service Fabric 群集。 此外，将通过 [Azure 容器注册表](/azure/container-registry/)共享容器化的应用程序。 本文假定读者对 Docker 有一个基本的了解。 阅读 [Docker Overview](https://docs.docker.com/engine/understanding-docker/)（Docker 概述）即可了解 Docker。
 
 > [!NOTE]
 > 本文适用于 Windows 开发环境。  Service Fabric 群集运行时和 Docker 运行时必须在同一 OS 上运行。  不能在 Linux 群集上运行 Windows 容器。
 
 ## <a name="prerequisites"></a>先决条件
+
 * 一台运行以下软件的开发计算机：
   * Visual Studio 2015 或 Visual Studio 2017。
   * [Service Fabric SDK 和工具](service-fabric-get-started.md)。
@@ -41,10 +43,10 @@ ms.locfileid: "55172947"
 
   在本文中，群集结点上运行的使用容器的 Windows Server 版本必须与开发计算机上的版本相匹配。 这是因为要在开发计算机上构建 Docker 映像，而容器 OS 和用来部署的主机 OS 的版本之间有兼容性限制。 有关详细信息，请参阅 [Windows Server 容器 OS 与主机 OS 的兼容性](#windows-server-container-os-and-host-os-compatibility)。 
   
-  若要确定使用容器的 Windows Server 版本，请在开发计算机上从 Windows 命令提示符运行 `ver` 命令：
+若要确定使用容器的 Windows Server 版本，请在开发计算机上从 Windows 命令提示符运行 `ver` 命令：
 
-  * 如果版本包含 x.x.14323.x，[创建群集](service-fabric-cluster-creation-via-portal.md)时请选择 WindowsServer 2016-Datacenter-with-Containers 作为操作系统。 还可以通过 Party 群集[免费试用 Service Fabric](https://aka.ms/tryservicefabric)。
-  * 如果版本包含 x.x.16299.x，[创建群集](service-fabric-cluster-creation-via-portal.md)时请选择 WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers 作为操作系统。 但是，不能使用 Party 群集。
+* 如果版本包含 x.x.14323.x，[创建群集](service-fabric-cluster-creation-via-portal.md)时请选择 WindowsServer 2016-Datacenter-with-Containers 作为操作系统。
+  * 如果版本包含 x.x.16299.x，[创建群集](service-fabric-cluster-creation-via-portal.md)时请选择 WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers 作为操作系统。
 
 * 一个位于 Azure 容器注册表中的注册表 - 在 Azure 订阅中[创建容器注册表](../container-registry/container-registry-get-started-portal.md)。
 
@@ -57,6 +59,7 @@ ms.locfileid: "55172947"
 > 
 
 ## <a name="define-the-docker-container"></a>定义 Docker 容器
+
 基于 Docker 中心内的 [Python 映像](https://hub.docker.com/_/python/)生成一个映像。
 
 在 Dockerfile 中指定 Docker 容器。 Dockerfile 包含有关在容器中设置环境、加载要运行的应用程序以及映射端口的说明。 Dockerfile 是 `docker build` 命令的输入，该命令用于创建映像。
@@ -166,6 +169,7 @@ docker rm my-web-site
 
 <a id="Push-Containers"></a>
 ## <a name="push-the-image-to-the-container-registry"></a>将映像推送到容器注册表
+
 验证容器是否在开发计算机上运行以后，即可将映像推送到 Azure 容器注册表的注册表中。
 
 运行 ``docker login``，使用[注册表凭据](../container-registry/container-registry-authentication.md)登录到容器注册表。
@@ -257,6 +261,7 @@ Service Fabric SDK 和工具提供服务模板，用于创建容器化应用程�
 > 可以通过使用适用的属性值声明其他 PortBinding 元素来添加服务的其他端口绑定。
 
 ## <a name="configure-container-registry-authentication"></a>配置容器注册表身份验证
+
 将 `RepositoryCredentials` 添加到 ApplicationManifest.xml 文件的 `ContainerHostPolicies`，配置容器注册表身份验证。 为 myregistry.azurecr.io 容器注册表添加帐户和密码，以便服务从存储库下载容器映像。
 
 ```xml
@@ -448,7 +453,8 @@ Windows 支持容器的两种隔离模式：进程和 Hyper-V。 使用进程隔
 打开浏览器并导航到 http://containercluster.westus2.cloudapp.azure.com:8081 。 此时会看到标题“Hello World!” 显示在浏览器中。
 
 ## <a name="clean-up"></a>清理
-只要群集处于运行状态，就会产生费用。若要避免不必要的费用，可考虑[删除群集](service-fabric-cluster-delete.md)。 [Party 群集](https://try.servicefabric.azure.com/)会在数小时后自动删除。
+
+只要群集处于运行状态，就会产生费用。若要避免不必要的费用，可考虑[删除群集](service-fabric-cluster-delete.md)。
 
 将映像推送到容器注册表以后，可从开发计算机中删除本地映像：
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: 9e06e53f83dd05d53b76a2a07e465133f052dba8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8216eb9c076111bfa70633b24f36ac97b0ee319a
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157697"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55664023"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>单一登录到 Azure Active Directory 中的应用程序
 当用户在 Azure Active Directory (Azure AD) 中登录到应用程序时，单一登录 (SSO) 可以增加安全性和便利性。 本文介绍单一登录方法，并帮助你选择在配置应用程序时最适合的 SSO 方法。
@@ -49,9 +49,7 @@ ms.locfileid: "55157697"
 | [基于标头](#header-based-sso) | 仅限本地 | 当应用程序使用标头进行身份验证时，请使用基于标头的单一登录。 基于标头的单一登录需要适用于 Azure AD 的 PingAccess。 应用程序代理使用 Azure AD 对用户进行身份验证，然后通过连接器服务传递流量。  | 
 
 ## <a name="openid-connect-and-oauth"></a>OpenID Connect 和 OAuth
-可以通过 OpenID Connect 和 OAuth 启用单一登录体验，简化将企业应用程序添加到 Azure AD 的过程。 应用程序管理员不需配置单一登录。 在管理员[授予用户许可](configure-user-consent.md)的情况下，可以改由 Azure AD 添加应用程序。 
-
-OpenID Connect 和 OAuth 的 [SDK](../develop/reference-v2-libraries.md) 易于采用，且应用程序可以使用 MS Graph。 
+开发新应用程序时，使用 OpenID Connect 和 OAuth 等新式协议，使应用在多个设备平台间实现最佳的单一登录体验。 OAuth 允许用户或管理员为受保护的资源[授予许可证](configure-user-consent.md)（例如，[MS Graph](/graph/overview)）。 我们为应用提供易于采用的 [SDK](../develop/reference-v2-libraries.md)，此外，应用将可使用 [MS Graph](/graph/overview)。
 
 有关详细信息，请参阅：
 

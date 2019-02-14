@@ -3,7 +3,7 @@ title: 在 Azure 安全中心保护计算机和应用程序 | Microsoft Docs
 description: 本文档介绍 Azure 安全中心内提供的，可帮助保护虚拟机和计算机以及 Web 应用和应用服务环境的建议。
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: MBaldwin
 editor: ''
 ms.assetid: 47fa1f76-683d-4230-b4ed-d123fef9a3e8
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 2c8f91c6915b23193129ed9e82688ad5967eb6ea
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 1/27/2019
+ms.author: monhaber
+ms.openlocfilehash: 411fc025f5a25e961f69f5e6f66a9f6d115689a7
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181463"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487737"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>在 Azure 安全中心保护计算机和应用程序
 Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别潜在的安全漏洞时，它会创建一些建议，这些建议会指导完成配置所需控件的过程。 建议适用于以下 Azure 资源类型：虚拟机 (VM) 和计算机、应用程序、网络、SQL，以及“标识和访问”。
@@ -42,7 +42,7 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 - **概述**：安全中心识别的监视问题和建议。
 - **VM 和计算机**：列出 VM 和计算机及其当前安全状态。
 - **云服务**：列出安全中心监视的 Web 角色和辅助角色。
-- **应用服务(预览版)**：列出应用服务环境及其当前安全状态。
+- **应用服务**：列出应用服务环境及其当前安全状态。
 - **容器(预览)**：列出在 IaaS Linux 计算机上托管的容器，并对其 Docker 配置进行安全评估。
 - **计算资源(预览)**：列出针对计算资源（例如 Service Fabric 群集和事件中心）的建议。
 
@@ -124,12 +124,11 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 
 ![更新 OS 版本](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig8-new4.png)
 
-### <a name="app-services-preview"></a>应用服务(预览)
+### <a name="app-services"></a>应用程序服务
+需要在订阅中启用应用服务，才能查看应用服务信息。 有关如何启用此功能的说明，请参阅[使用 Azure 安全中心保护应用服务](security-center-app-services.md)。
+[!NOTE]
+> 监视应用服务的功能以预览版提供，仅适用于安全中心的标准层。
 
-> [!NOTE]
-> 监视应用服务的功能以预览版提供，仅适用于安全中心的标准层。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。
->
->
 
 在“应用服务”下，可以看到应用服务环境的列表，以及安全中心执行评估后提供的运行状况摘要。
 
@@ -171,19 +170,9 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 |应用服务|10|应禁用 Web 应用程序的远程调试|如果不再需要使用 Web 应用程序的调试，请将其禁用。 远程调试需要在函数应用上打开入站端口。|
 |应用服务|10|应禁用函数应用程序的远程调试|如果不再需要使用函数应用的调试，请将其禁用。 远程调试需要在函数应用上打开入站端口。|
 |应用服务|10|为 Web 应用程序配置 IP 限制|定义允许访问应用程序的 IP 地址列表。 使用 IP 限制保护 Web 应用程序免受常见攻击的威胁。|
-|应用服务|10|对函数应用配置 IP 限制| 定义允许访问应用程序的 IP 地址列表。 使用 IP 限制保护函数应用免受常见攻击的威胁。|
 |应用服务|10|不允许所有 ('*') 资源访问你的应用程序| 不允许将 WEBSITE_LOAD_CERTIFICATES 参数设置为 ""。 将参数设置为 ‘’ 表示所有证书都将加载到 Web 应用程序个人证书存储。 这可能导致滥用最小特权原则，因为站点在运行时不太可能需要访问所有证书。|
-|应用服务|5|应为 Web 应用程序禁用 Web 套接字|查看 Web 应用程序中 Web 套接字的用法。 Web 套接字协议容易受到不同类型的安全威胁的攻击。|
-|应用服务|5|应对函数应用禁用 Web 套接字|查看函数应用中 Web 套接字的用法。 Web 套接字协议容易受到不同类型的安全威胁的攻击。|
-|应用服务|5|对 Web 应用程序使用自定义域|使用自定义域保护 Web 应用程序免受常见攻击（钓鱼和其他 DNS 相关攻击）的威胁。|
-|应用服务|5|对函数应用使用自定义域|使用自定义域保护函数应用免受常见攻击（钓鱼和其他 DNS 相关攻击）的威胁。|
 |应用服务|20|CORS 不应允许所有资源都能访问你的 Web 应用程序|仅允许所需的域与 Web 应用程序交互。 跨源资源共享 (CORS) 不应允许所有域都能访问你的 Web 应用程序。|
 |应用服务|20|CORS 不应允许所有资源都能访问函数应用| 仅允许所需的域与函数应用程序交互。 跨源资源共享 (CORS) 不应允许所有域都能访问你的函数应用程序。|
-|应用服务|10|对 Web 应用程序使用受支持的最新版 .NET Framework|使用最新的 .NET Framework 版本以使用最新安全类。 使用较旧的类和类型可能会使应用程序易受攻击。|
-|应用服务|10|对 Web 应用程序使用受支持的最新版 Java|使用最新的 Java 版本以使用最新安全类。 使用较旧的类和类型可能会使应用程序易受攻击。|
-|应用服务|10|对 Web 应用程序使用受支持的最新版 PHP|使用最新的 PHP 版本以使用最新安全类。 使用较旧的类和类型可能会使应用程序易受攻击。|
-|应用服务|10|对 Web 应用程序使用受支持的最新版 Node.js|使用最新的 Node.js 版本以使用最新安全类。 使用较旧的类和类型可能会使应用程序易受攻击。|
-|应用服务|10|为 Web 应用程序使用受支持的最新版 Python|使用最新的 Python 版本以使用最新安全类。 使用较旧的类和类型可能会使应用程序易受攻击。|
 |计算资源 (Batch)|1|在 Batch 帐户中配置指标警报规则|在 Batch 帐户中配置指标警报规则并启用指标池删除完成事件和池删除启动事件|
 |计算资源 (Service Fabric)|10|在 Service Fabric 中使用 Azure Active Directory 进行客户端身份验证|在 Service Fabric 中仅通过 Azure Active Directory 执行客户端身份验证。|
 |计算资源（自动化帐户）|5| 启用自动化帐户加密|存储敏感数据时，请启用自动化帐户变量资产加密。|

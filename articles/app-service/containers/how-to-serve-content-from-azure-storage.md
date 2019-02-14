@@ -6,15 +6,15 @@ manager: jeconnoc
 ms.service: app-service
 ms.workload: web
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 2/04/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 855df2820db6bba2b47d543ab671bee2193d7d9b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 29f2b725972f5ce92e756cb21621a19850ba9386
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250905"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732934"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>从 Linux 上的应用服务中的 Azure 存储提供内容
 
@@ -49,7 +49,7 @@ az storage container create --name <storage_container_name> --account-name <stor
 az storage blob upload-batch -d <full_path_to_local_directory> --account-name <storage_account_name> --account-key "<access_key>" -s <source_location_name>
 ```
 
-## <a name="link-storage-to-your-web-app"></a>将存储链接到你的 Web 应用
+## <a name="link-storage-to-your-web-app-preview"></a>将存储链接到 Web 应用（预览版）
 
 > [!CAUTION]
 > 将 Web 应用中的现有目录链接到存储帐户将删除目录内容。 如果要迁移现有应用的文件，在开始之前，请备份你的应用及其内容。

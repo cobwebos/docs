@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 371751f2eb643c3699e5462fe44380d7792243ef
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 946a2a05cee0cf8f3b91eef58442fbb2e26935c4
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388305"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490441"
 ---
 # <a name="configure-usage-settings-and-policies"></a>配置使用设置和策略
 本文介绍了如何向实验室添加用户，将用户注册到实验室，控制用户可以使用 VM 的小时数，以及其他内容。 
@@ -71,6 +71,9 @@ ms.locfileid: "54388305"
 5. 现在可以在工具栏上看到小时数：**每个用户的配额: &lt;小时数&gt;**。 
 
     ![每个用户的配额](../media/how-to-configure-student-usage/quota-per-user.png)
+
+> [!IMPORTANT]
+> [VM 的计划运行时间](how-to-create-schedules.md)不计入分配给用户的配额。 配额是指学生在 VM 上花费的计划时间之外的时间。 
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>通过上传 CSV 文件添加用户
 还可通过上传包含用户电子邮件地址的 CSV 文件来添加用户。

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 62711ac094a10a9e4a0350319a316c5a293fd522
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: fb9725e18c53e9d42ae51418a1eb614aaa10fd12
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157322"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816775"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>如何使用 Azure 移动应用的托管客户端
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -103,7 +103,7 @@ var client = new MobileServiceClient("MOBILE_APP_URL");
 * [按 ID 查找记录](#lookingup)
 * [处理非类型化查询](#untypedqueries)
 * [插入数据](#inserting)
-* [更新数据](#updating)
+* 更新数据
 * [删除数据](#deleting)
 * [冲突解决和乐观并发](#optimisticconcurrency)
 * [绑定到 Windows 用户界面](#binding)
@@ -902,7 +902,7 @@ private async void InitNotificationsAsync()
 如果要推送到 WNS，必须[获取 Microsoft Store 包 SID](#package-sid)。  有关 Windows 应用的详细信息，包括如何注册模板，请参阅[向应用添加推送通知]。
 
 不支持从客户端请求标记。  注册时会静默删除标记请求。
-如果想要使用标记注册设备，请创建自定义 API，使用通知中心 API 自动执行注册。  [调用自定义 API](#customapi) 而不是 `RegisterNativeAsync()` 方法。
+如果想要使用标记注册设备，请创建自定义 API，使用通知中心 API 自动执行注册。  调用自定义 API 而不是 `RegisterNativeAsync()` 方法。
 
 ### <a name="package-sid"></a>如何：获取 Microsoft Store 包 SID
 在 Microsoft Store 应用中启用推送通知需有包 SID。  需要向 Microsoft Store 注册应用程序才能收到包 SID。

@@ -4,7 +4,7 @@ description: 本文讨论如何监视 Azure 生产网络。
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 59f54487d89aee199e35e741ac4683d4784818a0
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 88bc76116392140c533f67402642c68d714227c0
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172477"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108206"
 ---
 # <a name="azure-infrastructure-monitoring"></a>Azure 基础结构监视   
 

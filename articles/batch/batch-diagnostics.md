@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 02129fbddae2e3a82299eb3b03d6e73030b44c4d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6fb8166893f0dada019ca633933833d17b95fee9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477873"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811454"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>用于诊断评估和监视的 Batch 指标、警报和日志
 
@@ -37,7 +37,7 @@ ms.locfileid: "55477873"
 
 * 无需经过额外的配置，便已在每个 Batch 帐户中默认启用
 * 每分钟生成一次
-* 不会自动保留，但有 30 天的历史记录滚动更新周期。 可将活动指标保留为[诊断日志记录](#work-with-diagnostic-logs)的一部分。
+* 不会自动保留，但有 30 天的历史记录滚动更新周期。 可将活动指标保留为诊断日志记录的一部分。
 
 ### <a name="view-metrics"></a>查看指标
 

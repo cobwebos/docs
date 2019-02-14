@@ -10,12 +10,12 @@ ms.subservice: answer-search
 ms.topic: reference
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 6ec09627fb80925fef72c491936a1dd83106874b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5e9ae8fcd756619c83ebde12df9f8405f1a39bf6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211689"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812566"
 ---
 # <a name="project-answer-search-v7-reference"></a>项目答案搜索 v7 参考
 
@@ -65,7 +65,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 |标头|说明|  
 |------------|-----------------|  
 |Accept|可选请求标头。<br /><br /> 默认的媒体类型为“application/json”。 若要指定响应使用 [JSON-LD](http://json-ld.org/)，请将 Accept 标头设置为“application/ld+json”。|  
-|<a name="acceptlanguage" />Accept-Language|可选请求标头。<br /><br /> 以逗号分隔的语言列表，用于用户界面字符串。 此列表以降序方式显示首选项。 有关详细信息，包括预期格式，请参阅 [RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)。<br /><br /> 此标头和 [setLang](#setlang) 查询参数相互排斥&mdash;不可同时指定两者。<br /><br /> 如果设置此标头，则还必须指定 [cc](#cc) 查询参数。 为了确定针对哪个市场返回结果，必应使用从列表中找到的第一个受支持语言并将其与 `cc` 参数值相结合。 如果列表不包括支持的语言，必应会查找最接近的语言和支持请求的市场，或将聚合或默认市场用于结果。 若要确定必应使用的市场，请查看 BingAPIs-Market 标头。<br /><br /> 仅当指定多个语言时，才可使用此标头和 `cc` 查询参数。 否则，请使用 [mkt](#mkt) 和 [setLang](#setlang) 查询参数。<br /><br /> 用户界面字符串是用作用户界面中标签的字符串。 JSON 响应对象中有几个用户界面字符串。 响应对象中 Bing.com 属性的任何链接均将应用指定的语言。|  
+|<a name="acceptlanguage" />Accept-Language|可选请求标头。<br /><br /> 以逗号分隔的语言列表，用于用户界面字符串。 此列表以降序方式显示首选项。 有关详细信息，包括预期格式，请参阅 [RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)。<br /><br /> 此标头和 [setLang](#setlang) 查询参数相互排斥&mdash;不可同时指定两者。<br /><br /> 如果设置此标头，则还必须指定 cc 查询参数。 为了确定针对哪个市场返回结果，必应使用从列表中找到的第一个受支持语言并将其与 `cc` 参数值相结合。 如果列表不包括支持的语言，必应会查找最接近的语言和支持请求的市场，或将聚合或默认市场用于结果。 若要确定必应使用的市场，请查看 BingAPIs-Market 标头。<br /><br /> 仅当指定多个语言时，才可使用此标头和 `cc` 查询参数。 否则，请使用 [mkt](#mkt) 和 [setLang](#setlang) 查询参数。<br /><br /> 用户界面字符串是用作用户界面中标签的字符串。 JSON 响应对象中有几个用户界面字符串。 响应对象中 Bing.com 属性的任何链接均将应用指定的语言。|  
 |<a name="market" />BingAPIs-Market|响应标头。<br /><br /> 请求使用的市场。 形式为 \<languageCode\>-\<countryCode\>。 例如，en-US。|  
 |<a name="traceid" />BingAPIs-TraceId|响应标头。<br /><br /> 包含请求详细信息的日志条目 ID。 发生错误时，捕获此 ID。 如果无法确定并解决问题，请纳入此 ID 以及提供给支持团队的其他信息。|  
 |<a name="subscriptionkey" />Ocp-Apim-Subscription-Key|必需请求标头。<br /><br /> 在[认知服务](https://www.microsoft.com/cognitive-services/)中注册此服务时收到的订阅密钥。|  
@@ -85,7 +85,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
   
 |Name|值|Type|必选|  
 |----------|-----------|----------|--------------|  
-|<a name="mkt" />mkt|产生结果的市场。 <br /><br />如需可能的市场值的列表，请参阅[市场代码](#market-codes)。<br /><br /> **注意：** URL 预览 API 目前仅支持 en-us（美国英语）市场和语言。<br /><br />|String|是|  
+|<a name="mkt" />mkt|产生结果的市场。 <br /><br />如需获取可能的市场值列表，请参阅“市场代码”。<br /><br /> **注意：** URL 预览 API 目前仅支持 en-us（美国英语）市场和语言。<br /><br />|String|是|  
 |<a name="query" />q|要预览的 URL|String|是|  
 |<a name="responseformat" />responseFormat|可用于响应的媒体类型。 下面是可能的不区分大小写的值。<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> 默认值为 JSON。 若要了解响应应包含的 JSON 对象，请参阅[响应对象](#response-objects)。<br /><br />  如果指定 JsonLd，则响应正文会包含 JSON-LD 对象，后者包含搜索结果。 有关 JSON-LD 的信息，请参阅 [JSON-LD](http://json-ld.org/)。|String|否|  
 |<a name="safesearch" />safeSearch|用于筛选成人内容的筛选器。 下面是可能的不区分大小写的筛选值。<br /><ul><li>关闭&mdash;返回包含成人文本、图像或视频的网页。<br /><br/></li><li>中等&mdash;返回包含成人文本但不包含成人图像或视频的网页。<br /><br/></li><li>严格&mdash;不返回包含成人文本、图像或视频的网页。</li></ul><br /> 默认级别为“中等”。<br /><br /> **注意：** 如果请求来自必应成人策略要求将 `safeSearch` 设置为“严格”的某一市场，必应会忽略 `safeSearch` 值并使用“严格”。<br/><br/>**注意：** 如果使用 `site:` 查询运算符，则不管 `safeSearch` 查询参数设置如何，仍有可能出现响应中包含成人内容的情况。 只有在知道网站内容且方案允许使用成人内容的情况下，才应使用 `site:`。 |String|否|  

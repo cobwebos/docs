@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 8a349916d0c0efc0f7895368a614897e3c6a15dc
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: db05ce33a9fb602d6d48d1a1606f48a7fbde246e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50964531"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55888543"
 ---
-<!--author=alkohli last changed: 12/15/15-->
-
 | 限制标识符 | 限制 | 注释 |
 | --- | --- | --- |
 | 存储帐户凭据的最大数目 |64 | |

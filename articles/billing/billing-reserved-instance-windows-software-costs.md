@@ -1,6 +1,6 @@
 ---
-title: Azure 预留 Windows 软件成本 | Microsoft Docs
-description: 了解 Azure 虚拟机预留实例成本中不包含哪些 Windows 软件计量。
+title: Azure 的预留软件成本 | Microsoft Docs
+description: 了解 Azure 虚拟机预留实例成本中不包含哪些软件计量。
 services: billing
 documentationcenter: ''
 author: manish-shukla01
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2018
+ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: de2aee36f20bd5142f398de7edb301e53ab42cae
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 63b1e850cbcea089a6a115f53ea1ef579a16886f
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902649"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744974"
 ---
-# <a name="windows-software-costs-not-included-with-azure-reserved-vm-instances"></a>Azure 虚拟机预留实例未包含的 Windows 软件成本
+# <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Azure 虚拟机预留实例未包含的软件成本
 
-如果你对虚拟机预留实例没有 Azure 混合使用权益，则会针对以下部分中列出的 Windows 软件计量向你收取费用。
+如果你对虚拟机预留实例没有 Azure 混合使用权益，则会针对以下部分中列出的软件计量向你收取费用。
 
 ## <a name="windows-software-meters-not-included-in-reservation-cost"></a>预留成本中未包括的 Windows 软件计量
 
@@ -50,6 +50,22 @@ ms.locfileid: "54902649"
 | 904c5c71-1eb7-43a6-961c-d305a9681624 | 预留-Windows Server（256 核心） | B 系列以外的所有系列 |
 | 6fdab81b-4284-4df9-8939-c237cc7462fe | 预留-Windows Server（96 核心） | B 系列以外的所有系列 |
 
+## <a name="cloud-services-software-meters-not-included-in-reservation-cost"></a>预留成本中未包括的云服务软件计量
+
+| 计量 ID | 使用情况文件中的计量名称 |
+| ------- | ------------------------|
+|ac9d47ff-ff68-4afc-a145-0c321cf8d0d5|云服务 1 vCPU 许可证|
+|e0434559-19ee-4132-9c46-05ad4044f3f7|云服务 2 vCPU 许可证|
+|6ecc834e-39b3-48b3-8d10-cc5626bacb66|云服务 4 vCPU 许可证|
+|13103090-ca72-4825-ab12-7f16c4931d95|云服务 8 vCPU 许可证|
+|ecd2bb6e-45a5-49aa-a58b-3947ba21c364|云服务 16 vCPU 许可证|
+|de2c7f1d-06dc-4b16-bc8b-c2ec5f4c8aee|云服务 20 vCPU 许可证|
+|ca1af837-4b35-47f5-8d14-b1988149c4ca|云服务 32 vCPU 许可证|
+|dc72ee45-2ab7-4698-b435-e2cf10d1f9f6|云服务 64 vCPU 许可证|
+|7a803026-244c-4659-834c-11e6b2d6b76f|云服务 80 vCPU 许可证|
+
+## <a name="rates-for-azure-meters"></a>Azure 计量的费率
+
 可以通过 Azure RateCard API 来获取上述每个计量的成本。 有关如何获取 azure 计量的费率的信息，请参阅[获取 Azure 订阅中使用的资源的价格和元数据信息](https://msdn.microsoft.com/library/azure/mt219004)。
 
 ## <a name="next-steps"></a>后续步骤
@@ -65,6 +81,3 @@ ms.locfileid: "54902649"
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
-
-
-

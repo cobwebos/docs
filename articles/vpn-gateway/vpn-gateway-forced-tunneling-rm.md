@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2018
 ms.author: cherylmc
 ms.openlocfilehash: 21004c29f1baf0346cd83d8483ff1862a98fc845
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52160471"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506458"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>使用 Azure 资源管理器部署模型配置强制隧道
 
@@ -52,8 +52,8 @@ ms.locfileid: "52160471"
 
 * 每个虚拟网络子网具有内置的系统路由表。 系统路由表具有以下三组路由：
   
-  * 本地 VNet 路由：直接路由到同一个虚拟网络中的目标 VM。
-  * 本地路由：路由到 Azure VPN 网关。
+  * **本地 VNet 路由：** 直接路由到同一个虚拟网络中的目标 VM。
+  * **本地路由：** 路由到 Azure VPN 网关。
   * **默认路由：** 直接路由到 Internet。 如果要将数据包发送到不包含在前面两个路由中的专用 IP 地址，数据包会被删除。
 * 此过程使用用户定义路由 (UDR) 来创建路由表以添加默认路由，并将路由表关联到 VNet 子网，在这些子网中启用强制隧道。
 * 强制隧道必须关联到具有基于路由的 VPN 网关的 VNet。 需要在连接到虚拟网络的跨界本地站点中，设置一个“默认站点”。 此外，必须使用 0.0.0.0/0 作为流量选择器配置本地 VPN 设备。 
@@ -61,7 +61,7 @@ ms.locfileid: "52160471"
 
 ## <a name="configuration-overview"></a>配置概述
 
-以下过程可帮助创建资源组和 VNet。 然后，将创建 VPN 网关，并配置强制隧道。 在本过程中，虚拟网络“MultiTier-VNet”具有三个子网：“Frontend”、“Midtier”和“Backend”，并且具有四个跨界连接：一个“DefaultSiteHQ”和三个“Branches”。
+以下过程可帮助创建资源组和 VNet。 然后，将创建 VPN 网关，并配置强制隧道。 在此过程中，虚拟网络“MultiTier-VNet”具有三个子网：“Frontend”、“Midtier”和“Backend”子网，并具有四个跨界连接：“DefaultSiteHQ”和三个分支。
 
 以下过程步骤将“DefaultSiteHQ”设置为使用强制隧道的默认站点连接，并将“Midtier”和“Backend”子网配置为使用强制隧道。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: afaa4c090508ee5a2306c2be1515076e6bd4f100
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 53aa442b86f5c82ded2f212a64f43852e6b3d2c5
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225719"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486820"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>使用 StorSimple 设备管理器服务管理存储帐户凭据
 
@@ -54,7 +54,7 @@ StorSimple 设备管理器服务边栏选项卡中的“配置”部分提供了
 
 可在 StorSimple 设备上使用三种类型的存储帐户。
 
-* **自动生成的存储帐户** – 顾名思义，这种存储帐户是首次创建服务时自动生成的。 若要详细了解如何创建此存储帐户，请参阅[部署本地 StorSimple 设备](storsimple-8000-deployment-walkthrough-u2.md)中的[步骤 1：创建新服务](storsimple-8000-deployment-walkthrough-u2.md#step-1-create-a-new-service)。 
+* **自动生成的存储帐户** – 顾名思义，这种存储帐户是首次创建服务时自动生成的。 若要了解有关如何创建此存储帐户的详细信息，请参阅[步骤 1：创建新服务](storsimple-8000-deployment-walkthrough-u2.md#step-1-create-a-new-service)（在[部署本地 StorSimple 设备](storsimple-8000-deployment-walkthrough-u2.md)中）。 
 * **服务订阅中的存储帐户** – 这是与服务的相同订阅关联的 Azure 存储帐户。 若要了解有关如何创建这些存储帐户的详细信息，请参阅[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。 
 * **服务订阅外部的存储帐户** – 这是不与服务关联的、可能在创建服务之前即已存在的 Azure 存储帐户。
 
@@ -88,7 +88,7 @@ StorSimple 设备管理器服务边栏选项卡中的“配置”部分提供了
    
     4. 若要启用 SSL，请单击“启用”按钮以创建用于在 StorSimple Device Manager 服务和云之间传输网络通信的安全通道。 仅当要在私有云中操作时，才单击“禁用”按钮。
    
-    5. 单击 **“添加”**。 成功创建存储帐户凭据后，将收到通知。
+    5. 单击“添加”。 成功创建存储帐户凭据后，将收到通知。
 
 5. 新创建的存储帐户凭据会显示在 StorSimple 配置 Device Manager 服务边栏选项卡上的“存储帐户凭据”下。
    

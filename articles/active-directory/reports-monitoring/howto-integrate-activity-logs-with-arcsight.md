@@ -16,12 +16,13 @@ ms.subservice: report-monitor
 ms.date: 12/03/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 1e9f9fe5c04e5293c91765795dcbfb9b0800b809
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 88979d58c78f3bc44c7fa96c65fb60c0fb69726b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168594"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175250"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor-preview"></a>使用 Azure Monitor（预览版）将 Azure Active Directory 日志与 ArcSight 集成
 

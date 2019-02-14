@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: d05adabc9bbabdb9f6d1af9831dbb33afe63cf87
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8b494e3f289d7b3a850a77f7f388cee542c088ed
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424636"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821858"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>诊断虚拟机网络流量筛选器问题
 
@@ -175,13 +175,13 @@ az vm show \
 | 协议                | TCP                                                                                |
 | 操作                  | 允许                                                                              |
 | 优先度                | 100                                                                                |
-| 名称                    | Allow-HTTP-All                                                                     |
+| Name                    | Allow-HTTP-All                                                                     |
 
 创建规则后，允许通过端口 80 从 Internet 进行入站通信，因为该规则的优先级高于名为 *DenyAllInBound* 的默认安全规则（拒绝流量）。 了解如何[创建安全规则](manage-network-security-group.md#create-a-security-rule)。 如果不同的 NSG 已关联到网络接口和子网，则必须在两个 NSG 中创建相同的规则。
 
 当 Azure 处理入站流量时，会先处理关联到子网的 NSG 中的规则（如果有关联的 NSG），然后处理关联到网络接口的 NSG 中的规则。 如果有某个 NSG 关联到网络接口和子网，则必须在两个 NSG 中打开端口，使流量能够抵达 VM。 为便于解决管理和通信问题，我们建议将 NSG 关联到子网，而不要关联到单个网络接口。 如果子网中的 VM 需要不同的安全规则，可使网络接口成为应用程序安全组 (ASG) 的成员，并将某个 ASG 指定为安全规则的源和目标。 详细了解[应用程序安全组](security-overview.md#application-security-groups)。
 
-如果仍然遇到通信问题，请参阅[注意事项](#considerations)和[其他诊断](#additional-dignosis)。
+如果仍然遇到通信问题，请参阅“[注意事项](#considerations)”和“其他诊断”。
 
 ## <a name="considerations"></a>注意事项
 

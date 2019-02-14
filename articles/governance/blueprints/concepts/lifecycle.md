@@ -4,17 +4,17 @@ description: 了解蓝图的整个生命周期及每个阶段的详细信息。
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 84dc86f993b0c1b4c4803525a07bdd34dddd229d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2dbf63e745af102de05ec6dc3e3bcb3e98cd3a32
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309800"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563705"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>了解 Azure 蓝图的生命周期
 
@@ -33,8 +33,7 @@ ms.locfileid: "53309800"
 
 ## <a name="creating-and-editing-a-blueprint"></a>创建和编辑蓝图
 
-创建蓝图时，请向其添加项目、将其保存到管理组，并提供唯一名称和唯一版本。 目前，蓝图处于“草稿”模式，尚不可分配。
-但在“草稿”模式下，仍可继续更新和更改此蓝图。
+创建蓝图时，请向其添加项目、将其保存到管理组或订阅，并提供唯一名称和唯一版本。 目前，蓝图处于“草稿”模式，尚不可分配。 但在“草稿”模式下，仍可继续更新和更改此蓝图。
 
 如果“草稿”模式下的某个蓝图从未发布过，则它在“蓝图定义”页面上显示的图标将与已发布的蓝图所显示的不同。 对于从未发布过的蓝图，最新版本也显示为“草稿”。
 

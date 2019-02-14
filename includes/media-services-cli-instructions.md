@@ -5,19 +5,19 @@ services: media-services
 author: Juliako
 ms.service: media-services
 ms.topic: include
-ms.date: 01/25/2019
+ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: b335cf996de41f4eea15af1899a0c6654c2f679f
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 06651b06ae84934c16e9f1ac9f604abda8b65615
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104977"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55648637"
 ---
 ## <a name="open-cli-shell"></a>打开 CLI Shell
 
-建议使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) 来执行 CLI 命令。 **Cloud Shell** 是免费的交互式 shell，可以使用它运行本文中的操作步骤。 Cloud Shell 中预安装并配置了常用的 Azure 工具以供你的帐户使用。 只需要选择“复制”按钮来复制代码，将其粘贴到 Cloud Shell 中，然后按 Enter 键来运行它。 可通过多种方式打开 Cloud Shell：
+建议使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) 来执行 CLI 命令。 **Cloud Shell** 是免费的交互式 shell，可以使用它运行本文中的操作步骤。 Cloud Shell 中预安装并配置了常用的 Azure 工具以供你的帐户使用。 它使用户能够灵活选择最适合自己工作方式的 shell 体验。 Linux 用户可以选择 Bash 体验，Windows 用户可以选择 PowerShell。
 
 如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 
 
@@ -29,13 +29,21 @@ ms.locfileid: "55104977"
 
 ### <a name="specify-location-of-files"></a>指定文件位置
 
-许多媒体服务 CLI 命令允许你通过文件名来传递参数。 
-
-如果使用的是 **Azure Cloud Shell**，请将文件上传到 **Azure Cloud Shell**。 可以在 shell 窗口的顶部找到上传/下载文件按钮。 然后，如下所示来引用文件：`@{FileName}.` 
+许多媒体服务 CLI 命令允许你通过文件名来传递参数。 如果使用 Cloud Shell，可以将文件上传到 clouddrive（方法是使用 Bash 或 PowerShell）。 
 
 ![上传文件]
 
-如果在本地使用 Azure CLI，请指定整个文件路径。 例如，`@c:\tracks.json`。
+无论使用本地 CLI 还是 Cloud Shell，都需要根据所用的 OS 或 Cloud Shell（Bash 或 PowerShell）指定文件路径。 下面是一些示例：
+
+文件（所有 OS）的相对路径
+
+* `@"mytestfile.json"`
+* `@"../mytestfile.json"`
+
+Linux/Mac 和 Windows OS 上的绝对文件路径
+
+* `@ "/usr/home/mytestfile.json"`
+*   `@"c:\tmp\user\mytestfile.json"`
 
 
 [上传文件]: ./media/media-services-cli/upload-download-files.png

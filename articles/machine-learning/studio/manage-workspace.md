@@ -1,7 +1,21 @@
 ---
-title:管理机器学习工作室工作区 titleSuffix:Azure 机器学习工作室 description:管理对 Azure 机器学习工作区的访问权限，以及部署和管理 ML API Web 服务：machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:02/27/2017
+title: 管理机器学习工作室工作区
+titleSuffix: Azure Machine Learning Studio
+description: 管理对 Azure 机器学习工作区的访问，部署并管理 ML API Web 服务
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 02/27/2017
+ms.openlocfilehash: f1904552b6c43cadd611659ed544b9f4bafcb465
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487263"
 ---
 # <a name="manage-an-azure-machine-learning-studio-workspace"></a>管理 Azure 机器学习工作室工作区
 

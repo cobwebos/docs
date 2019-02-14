@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: e3b118306b5a139ba31029bc6191368690b36666
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: f9138ec06900f4a7f856cc90362d16496b7b4fed
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265203"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766006"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>统一多个 Azure Monitor Application Insights 资源 
-本文介绍如何在一个位置查询和查看所有 Application Insights 应用程序日志数据（即使这些数据位于不同 Azure 订阅），可作为弃用 Application Insights 连接器的替换方式。  
+本文介绍如何在一个位置查询和查看所有 Application Insights 应用程序日志数据（即使这些数据位于不同 Azure 订阅），可作为弃用 Application Insights 连接器的替换方式。 可以在单个查询中包含的资源（Application Insights 资源）数量限制为 100。  
 
 ## <a name="recommended-approach-to-query-multiple-application-insights-resources"></a>用于查询多个 Application Insights 资源的建议做法 
 在查询中列出多个 Application Insights 资源可能很繁琐且难以维护。 可以改为利用函数将查询逻辑从应用程序范围中分离出来。  
@@ -51,7 +51,20 @@ app('Contoso-app5').requests
 >
 >本示例中的 parse 运算符为可选项，可从 SourceApp 属性中提取应用程序名称。 
 
-现在便可以在跨资源查询中使用 applicationsScoping。 函数别名返回来自所有已定义应用程序的请求的并集。 然后，查询筛选失败的请求，并按应用程序显示趋势。 ![跨查询结果示例](media/unify-app-resource-data/app-insights-query-results.png)
+现在便可以在跨资源查询中使用 applicationsScoping 函数：  
+
+```
+applicationsScoping 
+| where timestamp > ago(12h)
+| where success == 'False'
+| parse SourceApp with * '(' applicationName ')' * 
+| summarize count() by applicationName, bin(timestamp, 1h) 
+| render timechart
+```
+
+函数别名返回来自所有已定义应用程序的请求的并集。 然后，查询筛选失败的请求，并按应用程序显示趋势。
+
+![跨查询结果示例](media/unify-app-resource-data/app-insights-query-results.png)
 
 ## <a name="query-across-application-insights-resources-and-workspace-data"></a>跨 Application Insights 资源和工作区数据的查询 
 停止连接器时，如果需要在 Application Insights 数据保留（90 天）调整的时间范围内执行查询，则需于中期在工作区和 Application Insights 资源上执行[跨资源查询](../../azure-monitor/log-query/cross-workspace-query.md)。 应用程序数据按照上述新的 Application Insights 数据保留累积之前均是如此。 由于 Application Insights 和工作区中的架构不同，因此查询需要一些操作。 请参阅本节后面的表格，其中突出显示了架构差异。 

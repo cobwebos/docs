@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d437c6e2327fc9771f9567a37bfbf8ad82713b2b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 79440cf69f921e5933ed410e276cdf304e94fa4f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452637"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817268"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>监视 Azure 门户中的存储帐户
 
@@ -46,7 +46,7 @@ ms.locfileid: "55452637"
 
 1. 完成监视配置后，选择“保存”。
 
-随后，一组默认的指标会显示在存储帐户边栏选项卡上的图表中，以及各个服务边栏选项卡（Blob、队列、表和文件）中。 启用服务的指标后，最长可能需要一小时，数据才会显示在其图表中。 可以在任一指标图表中选择“编辑”，[配置](#how-to-customize-metrics-charts)要在图表中显示哪些指标。
+随后，一组默认的指标会显示在存储帐户边栏选项卡上的图表中，以及各个服务边栏选项卡（Blob、队列、表和文件）中。 启用服务的指标后，最长可能需要一小时，数据才会显示在其图表中。 可以在任何指标图表中选择“编辑”，配置要在图表中显示的指标。
 
 将“状态”设置为“关闭”可以禁用指标收集和日志记录。
 
@@ -116,7 +116,7 @@ ms.locfileid: "55452637"
    ![Azure 门户中的磁贴库](./media/storage-monitor-storage-account/storage-customize-dashboard.png)
 1. 添加完图表后，请选择仪表板顶部附近的“完成自定义”。
 
-将图表添加到仪表板后，可以根据[自定义指标图表](#how-to-customize-metrics-charts)中所述进一步自定义这些图表。
+将图表添加到仪表板后，可以根据“自定义指标图表”所述进一步自定义这些图表。
 
 ## <a name="configure-logging"></a>配置日志记录
 

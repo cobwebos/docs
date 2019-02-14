@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7e53b50df88c592386d3f2fb140373a0c5aaab13
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 16b4031c0242d79b6d866d612a4d4f594dc608fa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228281"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821943"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>将 Azure ExpressRoute 与 Azure VM 的灾难恢复相集成
 
@@ -190,7 +190,7 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
 ### <a name="example-steps"></a>示例步骤
 若要在本示例中自动执行恢复，需要执行以下操作：
 
-1. 按照[设置复制](#azure-vm-replication-steps)的步骤执行操作。
+1. 按照设置复制的步骤执行操作。
 2. 在故障转移期间或之后按照这些附加步骤[对 Azure VM 进行故障转移](azure-to-azure-tutorial-failover-failback.md)。
 
     a. 在目标区域中心 VNet 内创建 Azure ExpressRoute 网关。 这需要将目标中心 vNet 连接到 ExpressRoute 线路。

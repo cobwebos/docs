@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/05/2018
 ms.author: adpick
-ms.openlocfilehash: 86e457cf553c84386937c35bab1ab0fd20518bed
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 3577edff19788ed9f0925876e3de737eb749b90e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39368505"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490917"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>授予创建 Azure Enterprise 订阅（预览版）所需的访问权限
 
 作为[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 的 Azure 客户，你可以授予其他用户或服务主体创建计费到你的帐户的订阅所需的权限。 本文介绍如何使用[基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-configure.md) 共享创建订阅的功能，以及如何审核订阅创建。 必须在想要共享的帐户上具备所有者角色。
 
-要创建订阅，请参阅[以编程方式创建 Azure Enterprise 订阅（预览版）](programmatically-create-subscription.md)。
+若要创建订阅，请参阅[以编程方式创建 Azure Enterprise 订阅（预览版）](programmatically-create-subscription.md)。
 
 ## <a name="delegate-access-to-an-enrollment-account-using-rbac"></a>委托访问使用 RBAC 的注册帐户的权限
 
@@ -42,6 +42,7 @@ PUT  https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
   }
 }
 ```
+
 所有者角色在注册帐户范围成功分配时，Azure 使用角色分配信息做出响应：
 
 ```json
@@ -63,10 +64,10 @@ PUT  https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 [New-AzureRmRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md) 为其他用户所有者提供访问注册帐户的权限。
+使用 [New-AzRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md) 为其他用户所有者提供访问注册帐户的权限。
 
 ```azurepowershell-interactive
-New-AzureRmRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+New-AzRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -101,4 +102,4 @@ GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015
 * 有关使用 .NET 创建订阅的示例，请参阅 [GitHub 上的示例代码](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core)。
 * 若要了解有关 Azure 资源管理器及其 API 的详细信息，请参阅 [Azure 资源管理器概述](resource-group-overview.md)。
 * 要详细了解如何使用管理组管理大量订阅，请参阅[使用 Azure 管理组整理资源](management-groups-overview.md)
-* 要查看有关大型组织订阅管理的综合最佳做法指南，请参阅 [Azure 企业基架 - 规范性订阅管理](/azure/architecture/cloud-adoption-guide/subscription-governance)
+* 若要查看有关大型组织订阅管理的综合最佳做法指南，请参阅 [Azure 企业基架 - 规范性订阅管理](/azure/architecture/cloud-adoption-guide/subscription-governance)

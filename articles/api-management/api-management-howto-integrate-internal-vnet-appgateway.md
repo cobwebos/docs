@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: 6356d930b5bf909f1b209272e7367f5e2dcd5a13
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: da195f414da032b5274a9dc1a184b66094f245f2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444609"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493417"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>在包含应用程序网关的内部 VNET 中集成 API 管理
 
@@ -60,12 +60,12 @@ ms.locfileid: "52444609"
 ## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>在 API 管理与应用程序网关之间创建集成需要做好哪些准备？
 
 * **后端服务器池：** API 管理服务的内部虚拟 IP 地址。
-* **后端服务器池设置：** 每个池都有一些设置，例如端口、协议和基于 Cookie 的关联性。 这些设置将应用到池中的所有服务器。
-* **前端端口：** 此端口是应用程序网关上打开的公共端口。 抵达此端口的流量将重定向到后端服务器之一。
+* **后端服务器池设置：** 每个池具有端口、协议和基于 Cookie 的相关性等设置。 这些设置将应用到池中的所有服务器。
+* **前端端口：** 这是应用程序网关上打开的公共端口。 抵达此端口的流量将重定向到后端服务器之一。
 * **侦听器：** 侦听器具有前端端口、协议（Http 或 Https，这些值区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。
 * **规则：** 规则将侦听器绑定到后端服务器池。
 * **自定义运行状况探测：** 默认情况下，应用程序网关使用基于 IP 地址的探测来判断 BackendAddressPool 中的哪些服务器处于活动状态。 API 管理服务只响应包含正确主机标头的请求，因此默认的探测会失败。 需要定义一个自定义运行状况探测，帮助应用程序网关确定服务处于活动状态，应该转发该请求。
-* **自定义域证书**：要从 Internet 访问 API 管理，需要创建从服务主机名到应用程序网关前端 DNS 名称的 CNAME 映射。 这可以确保发送到应用程序网关，并转发到 API 管理的主机名标头和证书是 APIM 可以识别为有效的对象。 在此示例中，我们将使用两个证书 - 用于后端和开发人员门户。  
+* **自定义域证书：** 若要从 Internet 访问 API 管理，需要创建从服务主机名到应用程序网关前端 DNS 名称的 CNAME 映射。 这可以确保发送到应用程序网关，并转发到 API 管理的主机名标头和证书是 APIM 可以识别为有效的对象。 在此示例中，我们将使用两个证书 - 用于后端和开发人员门户。  
 
 ## <a name="overview-steps"></a> 集成 API 管理和应用程序网关所要执行的步骤
 
@@ -82,7 +82,7 @@ ms.locfileid: "52444609"
 在本指南中，我们还将通过应用程序网关向外部用户公开开发人员门户。 创建开发人员门户的侦听器、探测、设置和规则需要其他步骤。 相应步骤中提供了所有详细信息。
 
 > [!WARNING]
-> 在通过应用程序网关访问的开发人员门户中的所述设置中，可能会遇到与 AAD 和第三方身份验证相关的问题。
+> 如果使用 Azure AD 或第三方身份验证，请在应用程序网关中启用[基于 cookie 的会话相关性](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity)功能。
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>创建资源管理器的资源组
 

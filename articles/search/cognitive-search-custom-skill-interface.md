@@ -7,19 +7,19 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 08/14/2018
+ms.date: 01/29/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: deb72bcc41e20057b6e7b214c6a8c93655894a12
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: e4fe511228f6e80a17af8325ee74ae0927a760bd
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628266"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754721"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>如何将自定义技能添加到认知搜索管道
 
-Azure 搜索中的[认知搜索索引管道](cognitive-search-concept-intro.md)可以从[预定义技能](cognitive-search-predefined-skills.md)和自己创建并添加到管道中的自定义技能进行装配。 本文介绍如何创建一个暴露接口的自定义技能，从而允许其包含在认知搜索管道中。 
+Azure 搜索中的[认知搜索索引管道](cognitive-search-concept-intro.md)可以从[预定义技能](cognitive-search-predefined-skills.md)和自己创建并添加到管道中的[自定义技能](cognitive-search-custom-skill-web-api.md)进行装配。 本文介绍如何创建一个暴露接口的自定义技能，从而允许其包含在认知搜索管道中。 
 
 通过生成自定义技能，可插入对内容唯一的转换。 自定义技能独立执行，可应用所需的任何扩充步骤。 例如，可定义特定于域的自定义实体，生成自定义分类模型来区分商业和金融合同或文档，或者添加语音识别技能来深入了解相关内容的音频文件。 有关分步示例，请参阅[示例：创建自定义技能](cognitive-search-create-custom-skill-example.md)。
 
@@ -27,7 +27,14 @@ Azure 搜索中的[认知搜索索引管道](cognitive-search-concept-intro.md)�
 
 ## <a name="web-api-custom-skill-interface"></a>Web API 自定义技能接口
 
-自定义 WebAPI 技能终结点必须在 5 分钟内返回响应。 索引管道是同步的，如果未在该时间段内接收到响应，则索引会产生超时错误。
+如果未在 30 秒的期限内返回响应，自定义 WebAPI 技能终结点将默认超时。 索引管道是同步的，如果未在该期限内收到响应，索引会生成超时错误。  最多可将超时时间配置为 90 秒，方法是设置超时参数：
+
+```json
+        "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+        "description": "This skill has a 90 second timeout",
+        "uri": "https://[your custom skill uri goes here]",
+        "timeout": "PT90S",
+```
 
 目前，与自定义技能交互的唯一机制是通过 Web API 接口。 Web API 需求必须满足本节中所述的要求。
 

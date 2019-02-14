@@ -4,7 +4,7 @@ description: 如何使用 Azure AD，通过 HTTP 消息来授权访问租户中�
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
-manager: mbaldwin
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2018
 ms.author: priyamo
-ms.openlocfilehash: 44db736d5312b6850bb4fd8f47af5cd6b22535a7
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 4794241ccfd7adcc0795245ae0983d9069ab431e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49960279"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56211540"
 ---
 ## <a name="register-your-application-with-your-ad-tenant"></a>将应用程序注册到 AD 租户
 首先，需要将应用程序注册到 Azure Active Directory (Azure AD) 租户。 这会为应用程序分配一个应用程序 ID，并且使该应用程序可以接收令牌。

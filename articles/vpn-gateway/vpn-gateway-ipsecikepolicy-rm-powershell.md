@@ -1,5 +1,5 @@
 ---
-title: '为 S2S VPN 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略: Azure 资源管理器: PowerShell | Microsoft Docs'
+title: 为 S2S VPN 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略：Azure 资源管理器：PowerShell | Microsoft Docs
 description: 使用 Azure 资源管理器和 PowerShell 通过 Azure VPN 网关为 S2S 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略。
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: fa1aed76f63e500a6c2849fb9b62a918e85c9fb0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c07634e7c75e166b77ecb1defab02b2601af6bb0
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "31601145"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510096"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>为 S2S VPN 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略
 

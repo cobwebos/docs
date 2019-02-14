@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: bf73c3226af5b2480d52d5010058f24d912bdab5
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 0e324ae82a0223cf48f00b186f46e26840d4d655
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355027"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747520"
 ---
 # <a name="your-marketplace-benefits"></a>市场权益
 
@@ -61,7 +61,7 @@ GTM 支持包括模板、Web 内容、培训以及用于推广业务的工具。
 若要享受这些权益，需要：
 
 1. 在 Azure 市场或 AppSource 中发布套餐。
-2. 确保已在套餐的“联系信息”部分输入了营销联系人。 这应该是专用的营销资源，而不是统括式的别名。 （例如，请避免使用“support@”、“info@”、“marketing@”，等等。）
+2. 确保已在套餐的“联系信息”部分输入了营销联系人。 这应该是专用的营销资源，而不是统括式的别名。 （即，请避免使用“support\@”、“info\@”、“marketing\@”等。）
 
 根据解决方案的状态，你将收到一封包含自助资源的电子邮件，或者一封邀请你咨询专设顾问经理的信件。 你不需要做任何事就能发起呼叫 — 市场登记团队会根据你在[云合作伙伴门户](https://cloudpartner.azure.com/)中提供的信息与你取得联系。
 

@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/08/2017
 ms.author: cshoe
-ms.openlocfilehash: 1df948d2b3127ede7129d26401cd5f0c80e964fb
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 2c402898af713901fc4d6f9bd04a5935334c9b61
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331735"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822334"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Functions 的 Azure 事件中心绑定
 
@@ -431,7 +431,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 事件中心触发器提供了几个[元数据属性](functions-triggers-bindings.md#binding-expressions---trigger-metadata)。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 以下是 [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) 类的属性。
 
-|属性|类型|Description|
+|属性|Type|说明|
 |--------|----|-----------|
 |`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` 实例。|
 |`EnqueuedTimeUtc`|`DateTime`|排队时间 (UTC)。|
@@ -453,7 +453,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 使用事件中心输出绑定将事件写入到事件流。 必须具有事件中心的发送权限才可将事件写入到其中。
 
-请确保所需的包引用已准备好：[Functions 1.x](#packages---functions-1.x) 或 [Functions 2.x](#packages---functions-2.x)
+请确保所需的包引用已准备好：Functions 1.x 或 Functions 2.x
 
 ## <a name="output---example"></a>输出 - 示例
 
@@ -730,7 +730,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }  
 ```  
 
-|属性  |默认 | Description |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
 |maxBatchSize|64|每个接收循环收到的最大事件计数。|
 |prefetchCount|不适用|基础 EventProcessorHost 将要使用的默认 PrefetchCount。| 

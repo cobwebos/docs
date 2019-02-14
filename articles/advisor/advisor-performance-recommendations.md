@@ -1,26 +1,21 @@
 ---
-title: Azure 顾问性能建议 | Microsoft Docs
+title: 使用 Azure 顾问提高 Azure 应用程序的性能 | Microsoft Docs
 description: 使用顾问优化 Azure 部署的性能。
 services: advisor
 documentationcenter: NA
 author: kasparks
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 11/16/2016
+ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 3caf838fec3a5c0ab847ded85b269df7a66859e0
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: f3c6e39203fb0d864ecf952e0468959d66931e1f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266739"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491571"
 ---
-# <a name="advisor-performance-recommendations"></a>顾问性能建议
+# <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
 
 Azure 顾问性能建议有助于提高关键业务应用程序的速度和响应能力。 可通过顾问从顾问仪表板的“性能”选项卡获取性能建议。
 
@@ -49,7 +44,7 @@ Azure 顾问集成最佳做法建议，可改善应用服务体验，并发现�
 
 ## <a name="use-managed-disks-to-prevent-disk-io-throttling"></a>使用托管磁盘防止磁盘 I/O 限制
 
-顾问将识别属于即将达到其可伸缩性目标的存储帐户的虚拟机。 这使得它容易遭受 I/O 限制。 顾问会建议这些虚拟机使用托管磁盘以防止性能降低。
+顾问将识别属于即将达到其可伸缩性目标的存储帐户的虚拟机。 这种情况使得这些 VM 容易遭受 I/O 限制。 顾问会建议它们使用托管磁盘以防止性能降低。
 
 ## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks-by-using-premium-storage"></a>可以通过使用高级磁盘来提高虚拟机磁盘的性能和可靠性
 
@@ -67,7 +62,7 @@ Azure 高级存储为运行 I/O 密集型工作负荷的虚拟机提供高性能
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>通过纵向扩展来优化 SQL 数据仓库上的缓存利用率，从而提升查询性能
 
-Azure 顾问会检测 SQL 数据仓库是否具有高缓存使用百分比和低命中百分比。 这表示存在高缓存逐出，可能会影响 SQL 数据仓库的性能。 顾问建议你对 SQL 数据仓库进行纵向扩展以确保为工作负荷分配足够的缓存容量。
+Azure 顾问会检测 SQL 数据仓库是否具有高缓存使用百分比和低命中百分比。 这种情况表示存在高缓存逐出，可能会影响 SQL 数据仓库的性能。 顾问建议你对 SQL 数据仓库进行纵向扩展以确保为工作负荷分配足够的缓存容量。
 
 ## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>将 SQL 数据仓库表转换为复制表以提高查询性能
 
@@ -75,10 +70,10 @@ Azure 顾问会检测 SQL 数据仓库是否具有高缓存使用百分比和低
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-all-of-the-latest-azure-features"></a>将存储帐户迁移到 Azure 资源管理器来获取所有最新 Azure 功能。
 
-将存储帐户部署模型迁移到 Azure 资源管理器 (ARM) 可利用模板部署和更多的安全选项，并可升级到 GPv2 帐户来利用 Azure 存储的最新功能。 顾问将识别使用经典部署模型的任何独立存储帐户，并建议迁移到 ARM 部署模型。
+将存储帐户部署模型迁移到 Azure 资源管理器（资源管理器）可利用模板部署和更多的安全选项，并可升级到 GPv2 帐户来利用 Azure 存储的最新功能。 顾问将识别使用经典部署模型的任何独立存储帐户，并建议迁移到资源管理器部署模型。
 
 > [!NOTE]
-> Azure Monitor 中的经典警报宣布将在 2019 年 6 月停用，建议将经典存储帐户升级到 ARM 以通过新平台保留警报功能。 有关详细信息，请参阅[经典警报停用](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)。
+> Azure Monitor 的经典警报计划于 2019 年 6 月停用。 建议升级经典存储帐户以使用资源管理器在新平台中保留警报功能。 有关详细信息，请参阅[经典警报停用](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)。
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>如何访问顾问中的性能建议
 

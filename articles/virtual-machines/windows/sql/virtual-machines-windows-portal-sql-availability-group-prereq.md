@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: 11e255c8cc32f17efa9fc9e8f39e869fba032d75
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: ff2031bd4c4fdc3d3ed8447a08ef29f0f89ea1d8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359827"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818016"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>完成用于在 Azure 虚拟机中创建 Alwayson 可用性组的必备组件配置
 
@@ -413,7 +413,7 @@ Azure 将创建虚拟机。
 
 ### <a name="setServiceAccount"></a>设置 SQL Server 服务帐户
 
-在每个 SQL Server VM 上设置 SQL Server 服务帐户。 使用[配置域帐户](#DomainAccounts)时创建的帐户。
+在每个 SQL Server VM 上设置 SQL Server 服务帐户。 使用配置域帐户时创建的帐户。
 
 1. 打开“SQL Server 配置管理器”。
 2. 右键单击 SQL Server 服务，并单击“属性”。

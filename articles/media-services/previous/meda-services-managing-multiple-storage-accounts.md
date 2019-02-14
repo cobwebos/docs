@@ -4,24 +4,25 @@ description: 本文提供有关如何跨多个存储帐户管理媒体服务资�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2017
+ms.date: 01/31/2018
 ms.author: juliako
-ms.openlocfilehash: 8c67ce4fd9597c66e795269972d2048ddd5a60c1
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: d43adf7009fcd668299f018b6308765bb115b237
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886333"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565898"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>跨多个存储帐户管理媒体服务资产
-从 Microsoft Azure 媒体服务 2.2 开始，可以将多个存储帐户附加到一个媒体服务帐户。 将多个存储帐户附加到一个媒体服务帐户这一功能具有以下优势：
+
+可以将多个存储帐户附加到一个媒体服务帐户。 将多个存储帐户附加到一个媒体服务帐户这一功能具有以下优势：
 
 * 使多个存储帐户之间的资产实现负载均衡。
 * 缩放媒体服务以处理大量内容（目前，单个存储帐户的上限为 500 TB）。 
@@ -29,12 +30,13 @@ ms.locfileid: "54886333"
 本文演示如何使用 [Azure 资源管理器 API](/rest/api/media/operations/azure-media-services-rest-api-reference) 和 [Powershell](/powershell/module/azurerm.media) 将多个存储帐户附加到媒体服务帐户。 此外还说明如何在使用媒体服务 SDK 创建资产时指定不同的存储帐户。 
 
 ## <a name="considerations"></a>注意事项
+
 将多个存储帐户附加到媒体服务帐户时，请注意以下事项：
 
-* 附加到媒体服务帐户的所有存储帐户必须与媒体服务帐户位于同一数据中心。
-* 目前，存储帐户一旦附加到指定的媒体服务帐户便无法断开。
+* 媒体服务帐户和所有关联的存储帐户必须位于同一 Azure 订阅中。 建议在媒体服务帐户所在的位置使用存储帐户。
+* 存储帐户一旦附加到指定的媒体服务帐户便无法断开。
 * 主存储帐户是在创建媒体服务帐户创建时指定的帐户。 目前，无法更改默认存储帐户。 
-* 目前，如果需要将冷存储帐户添加到 AMS 帐户，该存储帐户必须为 Blob 类型，且必须设置为非主帐户。
+* 如果需要将冷存储帐户添加到 AMS 帐户，该存储帐户必须为 Blob 类型，且必须设置为非主帐户。
 
 其他注意事项：
 

@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6153fbdb6e085d1c817fac5db5eddb5e2c6ae7fa
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: 8cb044397cf439e97f3630b5c1c3f53fbf3f356d
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465432"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729909"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Azure SQL 数据库和 SQL 数据仓库访问控制
 
@@ -69,5 +69,5 @@ SQL 数据库支持两种类型的身份验证：
 - 有关 SQL 数据库安全功能的概述，请参阅 [SQL 安全概述](sql-database-security-overview.md)。
 - 有关防火墙规则的详细信息，请参阅[防火墙规则](sql-database-firewall-configure.md)。
 - 若要了解用户和登录名，请参阅[管理登录名](sql-database-manage-logins.md)。 
-- 有关主动监视的介绍，请参阅 [数据库审核](sql-database-auditing.md)和 [SQL 数据库威胁检测](sql-database-threat-detection.md)。
+- 有关主动监视的介绍，请参阅[数据库审核](sql-database-auditing.md)和 [SQL 数据库威胁检测](sql-database-threat-detection.md)。
 - 相关教程，请参阅[保护 Azure SQL 数据库](sql-database-security-tutorial.md)。

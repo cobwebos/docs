@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: a0d697438c1265b8c4e6802dc2dad62a33f51855
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 8d99a52b500377e02af339588fe7155e26cf588c
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548589"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233381"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions 的连续部署
 使用 Azure Functions，可轻松使用应用服务持续集成部署 Function App。 Functions 可与 BitBucket、Dropbox、GitHub 和 Azure DevOps 集成。 这样，通过使用其中一项集成服务实现的函数代码更新所在的工作流将触发到 Azure 的部署。 如果不熟悉 Azure Functions，请从[Azure Functions 概述](functions-overview.md)开始。
@@ -29,7 +29,7 @@ ms.locfileid: "53548589"
 * [Git 本地存储库](../app-service/deploy-local-git.md)
 * [GitHub](https://github.com)
 * [OneDrive](https://onedrive.live.com/)
-* [Azure DevOps Services](https://www.visualstudio.com/team-services/)
+* [Azure DevOps](https://azure.microsoft.com/services/devops/)
 
 在每个 Function App 基础上配置部署。 启用连续部署后，将门户中的函数代码访问设置为*只读*。
 

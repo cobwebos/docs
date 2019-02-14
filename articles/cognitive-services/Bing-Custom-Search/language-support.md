@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 必应自定义搜索 API 支持的语言和区域列表。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: v-gedod
-ms.openlocfilehash: 24b14c4f0ca185a7916aeb19671a22ff46a23ee2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 942e61b0ee69402d516982c66a852d5e26304809
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194842"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859431"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>必应自定义搜索 API 的语言和区域支持
 

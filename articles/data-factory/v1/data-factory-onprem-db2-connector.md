@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c7a3893c35031d05ea8aade0ad5d30b5a56176fd
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 0e190faca778f4a65a3bd4a29d05c01a89ee7e11
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015128"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816724"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>使用 Azure 数据工厂复制活动从 DB2 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -72,7 +72,7 @@ ms.locfileid: "54015128"
 2. 创建数据集用于表示复制操作的输入和输出数据。 
 3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 
 
-使用复制向导时，会自动创建数据工厂链接服务、数据集和管道实体的 JSON 定义。 使用工具或 API（.NET API 除外）时，可使用 JSON 格式定义数据工厂实体。 [JSON 示例：将数据从 DB2 复制到 Azure Blob 存储](#json-example-copy-data-from-db2-to-azure-blob)中演示了用于从本地 DB2 数据存储复制数据的数据工厂实体的 JSON 定义。
+使用复制向导时，会自动创建数据工厂链接服务、数据集和管道实体的 JSON 定义。 使用工具或 API（.NET API 除外）时，可使用 JSON 格式定义数据工厂实体。 “JSON 示例：将数据从 DB2 复制到 Azure Blob 存储”介绍了用于从本地 DB2 数据存储复制数据的数据工厂实体的 JSON 定义。
 
 对于特定于 DB2 数据存储的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息。
 
@@ -314,9 +314,9 @@ ms.locfileid: "54015128"
 | Real |Single |
 | Double |Double |
 | Float |Double |
-| 小数 |小数 |
-| DecimalFloat |小数 |
-| 数字 |小数 |
+| Decimal |Decimal |
+| DecimalFloat |Decimal |
+| 数字 |Decimal |
 | 日期 |DateTime |
 | 时间 |TimeSpan |
 | Timestamp |DateTime |
@@ -340,9 +340,9 @@ ms.locfileid: "54015128"
 | Real |Single |
 | Double |Double |
 | Float |Double |
-| 小数 |小数 |
-| DecimalFloat |小数 |
-| 数字 |小数 |
+| Decimal |Decimal |
+| DecimalFloat |Decimal |
+| 数字 |Decimal |
 | 日期 |DateTime |
 | 时间 |TimeSpan |
 | Timestamp |DateTime |

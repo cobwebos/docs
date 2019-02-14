@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 350dbc286c060ad10c21ebe1e8715b910871f837
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: b4c3fcb86fb098263840accc561785a40b767952
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164643"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55888876"
 ---
-<!--author=alkohli last changed: 11/02/17 -->
-
 #### <a name="to-install-updates-via-the-azure-portal"></a>通过 Azure 门户安装更新
 
 1. 转到 StorSimple 设备管理器并选择“设备”。 从连接到服务的设备列表中，选择并单击要更新的设备。

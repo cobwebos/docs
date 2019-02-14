@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 199343fce4774ea643bc22c879efc6717aa0a510
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 658cee95d695a310291d5b7180815c89bc2f0401
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244723"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818101"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>将通用化 VHD 上传到 Azure，创建新 VM
 
@@ -97,7 +97,7 @@ ms.locfileid: "51244723"
 Get-AzureRmStorageAccount
 ```
 
-如果要使用现有存储帐户，请转到[上传 VM 映像](#upload-the-vm-vhd-to-your-storage-account)部分。
+如果要使用现有存储帐户，请转到“上传 VM 映像”部分。
 
 如果需要创建存储帐户，请执行以下步骤：
 

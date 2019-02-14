@@ -11,12 +11,12 @@ ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
-ms.openlocfilehash: e96e271fbb50a2485a22fab061ea160dc00cf3d6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: bb89c76fb19bff74d39d919c8d2e65d430cb0566
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123166"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817744"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTP + Swagger 连接器调用 REST 终结点
 
@@ -40,7 +40,7 @@ HTTP + Swagger 触发器和操作与 [HTTP 操作](connectors-native-http.md)功
 4. 键入 Swagger 文档的 URL：
    
    * 若要从逻辑应用设计器工作，URL 必须是 HTTPS 终结点并已启用 CORS。
-   * 如果 Swagger 文档不满足此要求，可以使用[启用 CORS 的 Azure 存储](#hosting-swagger-from-storage)存储该文档。
+   * 如果 Swagger 文档不满足此要求，可以使用启用 CORS 的 Azure 存储来存储该文档。
 5. 单击“下一步”从 Swagger 文档读取并呈现。
 6. 添加 HTTP 调用所需的任何参数。
    
@@ -52,7 +52,7 @@ HTTP + Swagger 触发器和操作与 [HTTP 操作](connectors-native-http.md)功
 
 下面是在 Azure 存储中创建、配置和存储 Swagger 文档的步骤：
 
-1. [使用 Azure Blob 存储中创建 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。 要执行此步骤，请将权限设置为**公共访问**。
+1. [创建具有 Azure Blob 存储的 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。 要执行此步骤，请将权限设置为**公共访问**。
 
 2. 在 blob 上启用 CORS。 
 
@@ -74,14 +74,14 @@ HTTP + Swagger 触发器和操作与 [HTTP 操作](connectors-native-http.md)功
 ## <a name="http--swagger-triggers"></a>HTTP + Swagger 触发器
 触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](connectors-overview.md)。 HTTP + Swagger 连接器具有一个触发器。
 
-| 触发器 | Description |
+| 触发器 | 说明 |
 | --- | --- |
 | HTTP + Swagger |进行 HTTP 调用并返回响应内容 |
 
 ## <a name="http--swagger-actions"></a>HTTP + Swagger 操作
 操作是由在逻辑应用中定义的工作流执行的操作。 [了解有关操作的详细信息。](connectors-overview.md) HTTP + Swagger 连接器具有一个可能的操作。
 
-| 操作 | Description |
+| 操作 | 说明 |
 | --- | --- |
 | HTTP + Swagger |进行 HTTP 调用并返回响应内容 |
 
@@ -92,7 +92,7 @@ HTTP + Swagger 连接器附带一个可能的操作。 下面是每个操作的�
 在 Swagger 元数据的协助下发出 HTTP 出站请求。
 星号 (*) 表示必填字段。
 
-| 显示名称 | 属性名称 | Description |
+| 显示名称 | 属性名称 | 说明 |
 | --- | --- | --- |
 | 方法* |方法 |要使用的 HTTP 谓词。 |
 | URI* |uri |HTTP 请求的 URI。 |
@@ -104,7 +104,7 @@ HTTP + Swagger 连接器附带一个可能的操作。 下面是每个操作的�
 
 HTTP 响应
 
-| 属性名称 | 数据类型 | Description |
+| 属性名称 | 数据类型 | 说明 |
 | --- | --- | --- |
 | 标头 |对象 |响应标头 |
 | Body |对象 |响应对象 |
@@ -113,7 +113,7 @@ HTTP 响应
 ### <a name="http-responses"></a>HTTP 响应
 对各种操作进行调用时，可能得到特定响应。 下表概述对应的响应和说明。
 
-| 名称 | Description |
+| Name | 说明 |
 | --- | --- |
 | 200 |OK |
 | 202 |已接受 |

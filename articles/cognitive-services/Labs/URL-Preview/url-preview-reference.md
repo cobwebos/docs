@@ -10,12 +10,12 @@ ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: f7925c3eb14915c2b811ccfcd3a3803b9bd7c806
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: cd99f8bce8eca622412b834b5a7b75fda3ceb1f7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222909"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812049"
 ---
 # <a name="project-url-preview-v7-reference"></a>项目 URL 预览 v7 参考
 
@@ -75,7 +75,7 @@ q - 标识要预览的 URL 的查询
 
 |Name|值|Type|必选|
 |----------|-----------|----------|--------------|
-|<a name="mkt" />mkt|产生结果的市场。 <br /><br />如需可能的市场值的列表，请参阅[市场代码](#market-codes)。<br /><br /> **注意：** URL 预览 API 目前仅支持美国地理和英语。<br /><br />|String|是|
+|<a name="mkt" />mkt|产生结果的市场。 <br /><br />如需可能的市场值的列表，请参阅“市场代码”。<br /><br /> **注意：** URL 预览 API 目前仅支持美国地理和英语。<br /><br />|String|是|
 |<a name="query" />q|要预览的 URL|String|是|
 |<a name="responseformat" />responseFormat|可用于响应的媒体类型。 下面是可能的不区分大小写的值。<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> 默认值为 JSON。 若要了解响应应包含的 JSON 对象，请参阅[响应对象](#response-objects)。<br /><br />如果指定 JsonLd，则响应正文会包含 JSON-LD 对象，后者包含搜索结果。 有关 JSON-LD 的信息，请参阅 [JSON-LD](http://json-ld.org/)。|String|否|
 |<a name="safesearch"/>safeSearch|非法的成人内容或盗版内容将被阻止且系统会显示错误代码 400，并且不会返回 *isFamilyFriendly* 标志。 <p>对于合法的成人内容，行为如下。 状态代码返回 200，并且 *isFamilyFriendly* 标志设置为 false。<ul><li>safeSearch=strict：将不会返回标题、说明、URL 和图像。</li><li>safeSearch=moderate：将获取标题、URL 和说明，但不获取说明性图像。</li><li>safeSearch=off：获取所有响应对象/元素 – 标题、URL、说明和图像。</li></ul> |String|非必需。 </br> 默认为 safeSearch=strict。|

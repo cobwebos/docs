@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 02/01/2019
 ms.author: juliako
-ms.openlocfilehash: b5bd08219c6e48f07e93d7704216e813d75dcd72
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: db7d47005b2855ffe3e28c43086a2bfa6b22c8f3
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099911"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659501"
 ---
 # <a name="live-events-and-live-outputs"></a>实时事件和实时输出
 
@@ -68,7 +68,7 @@ ms.locfileid: "55099911"
 
 * 实时事件的流式处理协议（目前支持 RTMP 和平滑流式处理协议）。<br/>运行实时事件或其关联的实时输出时，无法更改协议选项。 如果需要其他协议，应当为每个流式处理协议创建单独的实时事件。  
 * 对引入和预览的 IP 限制。 可定义允许向该实时事件引入视频的 IP 地址。 允许的 IP 地址可以指定为单个 IP 地址（例如“10.0.0.1”）、使用一个 IP 地址和 CIDR 子网掩码的 IP 范围（例如“10.0.0.1/22”）或使用一个 IP 地址和点分十进制子网掩码的 IP 范围（例如“10.0.0.1(255.255.252.0)”）。<br/>如果未指定 IP 地址并且没有规则定义，则不会允许任何 IP 地址。 若要允许任何 IP 地址，请创建一个规则并设置 0.0.0.0/0。<br/>IP 地址必须采用以下格式之一：具有 4 个数字、CIDR 地址范围的 IpV4 地址。
-* 创建事件时，可以将其启动方式指定为自动启动。 <br/>如果将 autostart 设置为 true，则实时事件会在创建后启动。 这意味着，只要实时事件开始运行，就会开始计费。 必须以显式方式对实时事件资源调用 Stop 才能停止进一步计费。 或者，可以在准备好开始流式传输后，启动事件。 
+* 创建事件时，可以将其启动方式指定为自动启动。 <br/>如果将 autostart 设置为 true，则实时事件会在创建后启动。 只要实时事件开始运行，就会开始计费。 必须显式对实时事件资源调用停止操作才能停止进一步计费。 或者，可以在准备好开始流式传输后，启动事件。 
 
     有关详细信息，请参阅[实时事件状态和计费](live-event-states-billing.md)。
 

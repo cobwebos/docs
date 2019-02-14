@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Active Directory 中启用领英集成 | Microsoft Docs
+title: 在 Microsoft 应用中启用领英集成 - Azure Active Directory | Microsoft Docs
 description: 介绍如何为 Azure Active Directory 中的 Microsoft 应用启用或禁用 LinkedIn 集成
 services: active-directory
 author: curtand
@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: cccbeefd49f5374aeffcae07ac8c888f7a28690f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6b62fde7f9b01fbeb133c92b1306f70f56d71d7a
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159992"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509620"
 ---
 # <a name="linkedin-integration"></a>领英集成
 

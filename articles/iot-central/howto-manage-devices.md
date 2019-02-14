@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: dc241612149de5c4ea5c1d2e698741e77d429fc7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: b882c31f40f177b81fc84eb7071f396bddeaa0dd
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51004877"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658108"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中管理设备
 
@@ -23,6 +23,8 @@ ms.locfileid: "51004877"
 - 维护最新的设备清单。
 - 通过更改设备属性中存储的值，使设备元数据保持最新状态。
 - 通过在“设置”页中更新特定设备的设置，来控制设备的行为。
+
+[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
 ## <a name="view-your-devices"></a>查看设备
 
@@ -116,7 +118,7 @@ Azure IoT Central 通过 CSV 文件提供批量导入设备功能，以便将大
 
     [![导出成功](./media/howto-manage-devices/Export2.png)](./media/howto-manage-devices/Export2.png#lightbox)
 
-1. 导出的 CSV 文件将包含以下列信息：设备 ID、设备名称、设备主/辅助键和主要/辅助证书指纹
+1. 导出的 CSV 文件将具有以下列信息：设备 ID、设备名称、设备主/辅助密钥以及主/次要证书指纹
     *   IOTC_DEVICEID
     *   IOTC_DEVICENAME
     *   IOTC_SASKEY_PRIMARY

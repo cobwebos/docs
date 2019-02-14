@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 78290f6d1b31788c3f2de99996739cc8e7b20419
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: d865028a2ddc7315192030b704a77a332dab14aa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810928"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822693"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
@@ -103,7 +103,7 @@ namespace Company.Function
 }
 ```
 
-有关详细信息，请参阅[包](#packages)、[特性](#attributes)、[配置](#configuration)和[用法](#usage)。
+有关详细信息，请参阅包、[特性](#attributes)、[配置](#configuration)和[用法](#usage)。
 
 ### <a name="c-script-example"></a>C# 脚本示例
 
@@ -155,7 +155,7 @@ public static void Run(EventGridEvent eventGridEvent, ILogger log)
 }
 ```
 
-有关详细信息，请参阅[包](#packages)、[特性](#attributes)、[配置](#configuration)和[用法](#usage)。
+有关详细信息，请参阅包、[特性](#attributes)、[配置](#configuration)和[用法](#usage)。
 
 ### <a name="javascript-example"></a>JavaScript 示例
 
@@ -320,7 +320,7 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 下表解释了在 function.json 文件中设置的绑定配置属性。 无法在 `EventGridTrigger` 特性中设置任何构造函数参数或属性。
 
-|function.json 属性 |Description|
+|function.json 属性 |说明|
 |---------|---------|----------------------|
 | type | 必需 - 必须设置为 `eventGridTrigger`。 |
 | direction | 必需 - 必须设置为 `in`。 |

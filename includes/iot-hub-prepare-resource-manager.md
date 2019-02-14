@@ -4,12 +4,12 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 44eea4ec4fd335cd0061807521f96f2887751f7a
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: e6ba2a9c27567ccbd3b744a9bfdc0603758c7068
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54457061"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56212946"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>准备对 Azure 资源管理器请求进行身份验证
 必须使用 [Azure 资源管理器][lnk-authenticate-arm] 配合 Azure Active Directory (AD) 来验证所有针对资源执行的操作。 最简单的配置方式是使用 PowerShell 或 Azure CLI。

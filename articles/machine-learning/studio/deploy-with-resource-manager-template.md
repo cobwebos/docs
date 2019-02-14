@@ -1,9 +1,22 @@
 ---
-title:使用 Azure 资源管理器部署工作室工作区 titleSuffix:Azure 机器学习工作室 description:如何使用 Azure 资源管理器模板为 Azure 机器学习部署工作区 services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:02/05/2018
+title: 使用 Azure 资源管理器部署工作室工作区
+titleSuffix: Azure Machine Learning Studio
+description: 如何使用 Azure 资源管理器模板部署 Azure 机器学习工作区
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 02/05/2018
+ms.openlocfilehash: c7f75b2553ada469f4963531fc33f6e5105084b1
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487790"
 ---
-
 # <a name="deploy-azure-machine-learning-studio-workspace-using-azure-resource-manager"></a>使用 Azure 资源管理器部署 Azure 机器学习工作室工作区
 
 通过提供部署带有验证和重试机制的互连组件的可扩展方法，使用 Azure 资源管理器部署模板可节约时间。 例如，为了设置 Azure 机器学习工作区，需要先配置 Azure 存储帐户，然后部署工作区。 想象为数百个工作区手动执行此操作的样子。 更轻松的替代方法是使用 Azure 资源管理器模板部署 Azure 机器学习工作区及其所有依赖项。 本文将引导逐步完成此过程。 有关 Azure 资源管理器的整体概述，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。

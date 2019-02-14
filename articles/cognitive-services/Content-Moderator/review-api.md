@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 为了获得最佳业务结果，请使用 Azure 内容审查器的审阅 API，将计算机辅助审查与人机回环功能相结合。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: dd7a78f1033a00935346216ae1f80e5400deea07
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 21d71110853c5f18b0b5f0b51d30110eb45ff54a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206351"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55862694"
 ---
 # <a name="content-moderation-jobs-and-reviews"></a>内容审查作业和审阅
 

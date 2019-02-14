@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: a540e6c585210f7b1dc36a89eaae7a4b4bf8fc70
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 77763765e75500d994235bba0a5c0c3bb3e3be70
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422722"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756812"
 ---
 # <a name="get-started-with-storage-explorer"></a>存储资源管理器入门
 
@@ -87,8 +87,8 @@ Azure 存储资源管理器[发行说明](https://go.microsoft.com/fwlink/?LinkI
 * [连接到 Azure 订阅](#connect-to-an-azure-subscription)：管理属于 Azure 订阅的存储资源。
 * [使用本地开发存储](#work-with-local-development-storage)：使用 Azure 存储模拟器管理本地存储。
 * [连接外部存储](#attach-or-detach-an-external-storage-account)：使用存储帐户的名称、密钥和终结点管理属于另一 Azure 订阅或区域 Azure 云的存储资源。
-* [使用 SAS 附加存储帐户](#attach-storage-account-using-sas)：通过共享访问签名 (SAS) 管理属于另一 Azure 订阅的存储资源。
-* [使用 SAS 附加服务](#attach-service-using-sas)：通过 SAS 管理属于另一 Azure 订阅的特定存储服务（Blob 容器、队列或表）。
+* [使用 SAS 附加存储帐户](#attach-a-storage-account-by-using-a-shared-access-signature-sas)：通过共享访问签名 (SAS) 管理属于另一 Azure 订阅的存储资源。
+* [使用 SAS 附加服务](#attach-a-service-by-using-a-shared-access-signature-sas)：通过 SAS 管理属于另一 Azure 订阅的特定存储服务（Blob 容器、队列或表）。
 * [使用连接字符串连接到 Azure Cosmos DB 帐户](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string)：使用连接字符串管理 Cosmos DB 帐户。
 
 ## <a name="connect-to-an-azure-subscription"></a>连接到 Azure 订阅
@@ -295,7 +295,7 @@ Azure 订阅的管理员可以通过共享访问签名 ([SAS](storage/common/sto
 
     ![通过连接字符串连接到 Azure Cosmos DB][21]
 
-2. 选择 Azure Cosmos DB API，粘贴“连接字符串”，然后单击“确定”连接 Azure Cosmos DB 帐户。 有关检索连接字符串的信息，请参阅[获取连接字符串](https://docs.microsoft.com/azure/cosmos-db/manage-account#get-the--connection-string)。
+2. 选择 Azure Cosmos DB API，粘贴“连接字符串”，然后单击“确定”连接 Azure Cosmos DB 帐户。 有关检索连接字符串的信息，请参阅[获取连接字符串](https://docs.microsoft.com/azure/cosmos-db/manage-account)。
 
     ![connection-string][22]
 

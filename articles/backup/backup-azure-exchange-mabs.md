@@ -2,20 +2,20 @@
 title: 使用 Azure 备份服务器将 Exchange Server 备份到 Azure 备份
 description: 了解如何使用 Azure 备份服务器将 Exchange Server 备份到 Azure 备份
 services: backup
-author: pvrk
-manager: shivamg
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.author: pullabhk
-ms.openlocfilehash: d64c273a189b1fe2337c4430b156874e0adf54b2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: kasinh
+ms.openlocfilehash: 40541596b4da9e0590d497785afd7d6d7f4cbcb4
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605954"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495388"
 ---
-# <a name="back-up-an-exchange-server-to-azure-backup-with-azure-backup-server"></a>使用 Azure 备份服务器将 Exchange Server 备份到 Azure 备份
+# <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>使用 Azure 备份服务器将 Exchange Server 备份到 Azure
 本文说明如何配置 Microsoft Azure 备份服务器 (MABS)，将 Microsoft Exchange Server 备份到 Azure。  
 
 ## <a name="prerequisites"></a>先决条件
@@ -47,7 +47,7 @@ ms.locfileid: "34605954"
 
    * 我想要使用磁盘提供短期保护。
    * 我想要使用在线保护。
-6. 单击“资源组名称” 的 Azure 数据工厂。
+6. 单击“下一步”。
 7. 如果想要检查 Exchange Server 数据库的完整性，请选择“**运行 Eseutil 以检查数据完整性**”选项。
 
     选择此选项后，会在 MABS 服务器上运行备份一致性检查，以避免由于在 Exchange Server 上运行 **eseutil** 命令而产生的 I/O 流量。
@@ -57,7 +57,7 @@ ms.locfileid: "34605954"
    > ![eseutil 错误](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. 单击“资源组名称” 的 Azure 数据工厂。
+8. 单击“下一步”。
 9. 选择“**复制备份**”的数据库，并单击“**下一步**”。
 
    > [!NOTE]
@@ -96,8 +96,8 @@ ms.locfileid: "34605954"
 
 在线恢复点有五种恢复类型：
 
-* **恢复到原始 Exchange Server 位置：** 数据将恢复到原始 Exchange Server。
-* **恢复到 Exchange Server 上的其他数据库：** 数据将恢复到其他 Exchange Server 上的其他数据库。
+* **恢复到原始 Exchange 服务器位置：** 数据将恢复到原始 Exchange 服务器。
+* **恢复到 Exchange 服务器上的另一个数据库：** 数据将恢复到另一台 Exchange 服务器上的另一个数据库。
 * **恢复到恢复数据库：** 数据将恢复到 Exchange 恢复数据库 (RDB)。
 * **复制到网络文件夹：** 数据将恢复到网络文件夹。
 * **复制到磁带：** 如果 MABS 上附加并配置了磁带库或独立的磁带驱动器，则恢复点将复制到可用的磁带。

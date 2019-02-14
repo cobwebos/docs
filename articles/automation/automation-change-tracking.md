@@ -10,12 +10,12 @@ ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 11b7928512dd1f1d6b284b088af304c6752711f5
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: e40cc3ac0fe17cd030717253f6093bbf8d63a5a2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301435"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487228"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的更改
 
@@ -111,7 +111,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 借助递归可指定通配符以简化目录上的跟踪，借助环境变量可在具有多个或动态驱动器名称的环境中跟踪文件。 以下列表显示配置递归时应了解的常用信息：
 
 * 跟踪多个文件时需要使用通配符
-* 如果使用通配符，则只能在路径的最后一段中使用。 （例如 C:\folder\\file 或 /etc/*.conf）
+* 如果使用通配符，则只能在路径的最后一段中使用。 （例如，`c:\folder\*file*` 或 `/etc/*.conf`）
 * 如果环境变量具有无效路径，验证将成功，但库存运行时，该路径将失败。
 * 设置路径时，请避免使用 `c:\*.*` 等常规路径，因为这会导致遍历过多的文件夹。
 
@@ -132,9 +132,9 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 |属性  |说明  |
 |---------|---------|
 |已启用     | 确定是否应用了设置。        |
-|项名称     | 要跟踪的文件的友好名称。        |
-|组     | 用于对文件进行逻辑分组的组名。        |
-|Windows 注册表项   | 要检查的文件路径。 例如：“HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup”      |
+|项名称     | 要跟踪的注册表项的友好名称。        |
+|组     | 用于对注册表项进行逻辑分组的组名。        |
+|Windows 注册表项   | 要检查的注册表项的路径。 例如：“HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup”      |
 
 ## <a name="limitations"></a>限制
 
@@ -278,13 +278,13 @@ Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请�
 
 ![一个图表，显示 hosts 文件的更改情况](./media/automation-change-tracking/changes.png)
 
-若要进一步分析此更改，请单击“Log Analytics”，转到“日志搜索”。 进入“日志搜索”以后，使用查询 `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` 搜索对 Hosts 文件所做的内容更改。 此查询查找的更改包括对特定文件的文件内容的更改，该文件的完全限定路径包含“hosts”一词。 也可将路径部分更改为完全限定的形式（例如 `FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"`），以便请求特定的文件。
+若要进一步分析此更改，请单击“Log Analytics”，转到“日志搜索”。 进入“日志搜索”以后，使用查询 `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` 搜索对 Hosts 文件所做的内容更改。 此查询查找的更改包括对特定文件的文件内容的更改，该文件的完全限定路径包含“hosts”一词。 也可将路径部分更改为完全限定的形式（例如 `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`），以便请求特定的文件。
 
 在查询返回所需结果后，单击日志搜索体验中的“新建警报规则”按钮，打开警报创建页。 也可在 Azure 门户中通过 **Azure Monitor** 导航到该体验。 在警报创建体验中，再次检查我们的查询，然后修改警报逻辑。 在本示例中，你希望在检测到更改的情况下触发警报，即使只在环境中的所有计算机上检测到一个更改。
 
 ![一个显示更改查询（用于跟踪对 hosts 文件的更改）的图像](./media/automation-change-tracking/change-query.png)
 
-在设置条件逻辑以后，请分配操作组，以便执行操作来响应触发的警报。 在此示例中，我设置了要发送的电子邮件以及要创建的 ITSM 票证。  也可执行许多其他的有用操作，例如触发 Azure Function、自动化 runbook、Webhook 或逻辑应用。
+在设置条件逻辑以后，请分配操作组，以便执行操作来响应触发的警报。 在此示例中，我设置了要发送的电子邮件以及要创建的 ITSM 票证。  也可执行许多其他的有用操作，例如触发 Azure Function、自动化 runbook、wbhook 或逻辑应用。
 
 ![一个图像，显示如何配置一个可以针对更改发出警报的操作组](./media/automation-change-tracking/action-groups.png)
 

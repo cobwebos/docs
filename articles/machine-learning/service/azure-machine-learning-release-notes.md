@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1cf2f25ab96fde342244c99029db6a96c72a5681
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cea5f2a3eaa7bddb523d95936fbe0a50e0fd16ed
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473096"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564334"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
@@ -52,6 +52,7 @@ ms.locfileid: "55473096"
     - 盒须图
     - 散点图
     - 气泡图
++ 门户现在为试验动态生成报表。 当用户提交试验运行时，报表将自动生成，其中包含记录的指标和图形，以便跨不同运行进行比较。 
 
 ## <a name="2019-01-14"></a>2019-01-14
 

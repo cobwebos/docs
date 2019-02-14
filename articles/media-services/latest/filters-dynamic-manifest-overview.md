@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: juliako
-ms.openlocfilehash: 5b666551ed47852fe8653fff174589acc4bff348
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 9c463740acf6ef464880a43e0e68de683b97f64f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912027"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813411"
 ---
 # <a name="filters-and-dynamic-manifests"></a>筛选器和动态清单
 
@@ -34,13 +34,13 @@ ms.locfileid: "54912027"
 - 只传送内容播放设备所支持的指定再现内容和/或指定的语言轨道（“再现内容筛选”）。 
 - 调整演播窗口，以便在播放器中提供长度有限的 DVR 窗口（“调整演播窗口”）。
 
-本主题介绍[概念](#concepts)和[筛选器定义](#definitions)。 然后，提供有关[常见方案](#common-scenarios)的详细信息。 本文的末尾提供了有关如何以编程方式创建筛选器的链接。  
+本主题介绍[概念](#concepts)和筛选器定义。 然后，提供有关常见方案的详细信息。 本文的末尾提供了有关如何以编程方式创建筛选器的链接。  
 
 ## <a name="concepts"></a>概念
 
 ### <a name="dynamic-manifests"></a>动态清单
 
-媒体服务根据预定义的[筛选器](#filters)提供**动态清单**。 在定义筛选器后，客户端可以使用筛选器来流式传输视频的特定再现内容或子剪辑。 客户端会在流 URL 中指定筛选器。 筛选器可以应用于自适应比特率流式处理协议：Apple HTTP Live Streaming (HLS)、MPEG-DASH 和平滑流式处理。 
+媒体服务根据预定义的筛选器提供动态清单。 在定义筛选器后，客户端可以使用筛选器来流式传输视频的特定再现内容或子剪辑。 客户端会在流 URL 中指定筛选器。 筛选器可以应用于自适应比特率流式处理协议：Apple HTTP Live Streaming (HLS)、MPEG-DASH 和平滑流式处理。 
 
 下表显示了一些包含筛选器的 URL 示例：
 

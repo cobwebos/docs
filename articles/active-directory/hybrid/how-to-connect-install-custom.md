@@ -11,23 +11,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 10/04/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 49f1b953784aca0776357cc4071efbbff6064660
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fb451ab3a28ecca42fc05edad14cd513c4fe1f68
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155326"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820481"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect 的自定义安装
 如果希望有更多的安装选项，可以使用 Azure AD Connect“自定义设置”。 如果拥有多个林或希望配置未覆盖在快速安装中的可选功能，可以使用它。 它适用于[**快速安装**](how-to-connect-install-express.md)不能满足部署或拓扑的所有情况。
 
 开始安装 Azure AD Connect 之前，确保[下载 Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771)，完成 [Azure AD Connect：硬件和先决条件](how-to-connect-install-prerequisites.md)中的预备步骤。 此外请确保拥有 [Azure AD Connect 帐户和权限](reference-connect-accounts-permissions.md)所述的可用的必需帐户。
 
-如果自定义的设置不匹配拓扑，例如，若要升级 DirSync，有关其他情况，请参阅 [相关文档](#related-documentation) 。
+如果自定义的设置不匹配拓扑（例如，要升级 DirSync），请参阅相关文档了解其他情况。
 
 ## <a name="custom-settings-installation-of-azure-ad-connect"></a>Azure AD Connect 的自定义设置安装
 ### <a name="express-settings"></a>快速设置

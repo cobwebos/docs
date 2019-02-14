@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 87e5b6098ff9ee74ef8a4314362c30c436d5ad20
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b195271edeea6cd5ea527454ad1615ac85a32138
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967923"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746721"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>如何在 Azure API 管理中使用 OAuth 2.0 为开发人员帐户授权
 
@@ -51,9 +51,9 @@ ms.locfileid: "52967923"
 
     ![OAuth 2.0 新服务器](./media/api-management-howto-oauth2/oauth-02.png)
 
-4. 此窗体的下一部分包含“授权代码授予类型”、“授权终结点 URL”和“授权请求方法”设置。
+4. 此窗体的下一部分包含“授权的授权类型”、“授权终结点 URL”和“授权请求方法”设置。
 
-    选中所需类型即可指定“授权代码授予类型”。 “授权代码”是默认指定的。
+    选中所需类型即可指定“授权的授权类型”。 “授权代码”是默认指定的。
 
     输入“授权终结点 URL”。 对于 Azure Active Directory，此 URL 将类似于以下 URL，其中 `<client_id>` 将替换为客户端 ID，用于向 OAuth 2.0 服务器标识应用程序。
 
@@ -75,7 +75,7 @@ ms.locfileid: "52967923"
 
     ![OAuth 2.0 新服务器](./media/api-management-howto-oauth2/oauth-04.png)
 
-    如果“授权代码授予类型”设置为“资源所有者密码”，则可使用“资源所有者密码凭据”部分指定这些凭据；否则可将其留空。
+    如果“授权的授权类型”设置为“资源所有者密码”，则可使用“资源所有者密码凭据”部分指定这些凭据；否则可将其留空。
 
     完成窗体的操作后，单击“创建”保存 API 管理 OAuth 2.0 授权服务器配置。 保存服务器配置后，可将 API 配置为使用此配置，如下一部分所示。
 

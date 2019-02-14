@@ -4,17 +4,17 @@ description: Azure Policy 定义具有各种效果，可确定管理和报告符
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/24/2019
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 68abb5fd95823941bdb5d87d7ebc6675b0760850
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: cf30d5dd8648a2b1da3f4a40399376182bf342c4
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912503"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562294"
 ---
 # <a name="understand-policy-effects"></a>了解 Policy 效果
 
@@ -50,7 +50,7 @@ Policy 首先评估通过 Azure 资源管理器创建或更新资源的请求。
 
 ### <a name="append-evaluation"></a>“附加”评估
 
-在创建或更新资源期间，会在资源提供程序处理请求之前进行“附加”评估。 当满足策略规则的 **if** 条件时，“附加”会向资源添加字段。 如果“附加”效果使用其他值替代原始请求中的值，则它会充当拒绝效果并拒绝该请求。
+在创建或更新资源期间，会在资源提供程序处理请求之前进行“附加”评估。 当满足策略规则的 **if** 条件时，“附加”会向资源添加字段。 如果“附加”效果使用其他值替代原始请求中的值，则它会充当拒绝效果并拒绝该请求。 若要将新值附加到现有数组，请使用别名的 **[\*]** 版本。
 
 当使用附加效果的策略定义作为评估周期的一部分运行时，它不会更改已存在的资源。 相反，它会将符合 if 条件的任意资源标记为不符合。
 
@@ -89,7 +89,8 @@ Policy 首先评估通过 Azure 资源管理器创建或更新资源的请求。
 }
 ```
 
-示例 3：使用[别名](definition-structure.md#aliases)具有数组**值**的单个**字段/值**对，可在存储帐户上设置 IP 规则。
+示例 3：使用具有数组**值**的非 **[\*]**
+[别名](definition-structure.md#aliases)的单个**字段/值**对，可在存储帐户上设置 IP 规则。 如果非 **[\*]** 别名是数组，该效果将以整个数组的形式附加**值**。 如果数组已存在，该冲突会导致拒绝事件发生。
 
 ```json
 "then": {
@@ -100,6 +101,21 @@ Policy 首先评估通过 Azure 资源管理器创建或更新资源的请求。
             "action": "Allow",
             "value": "134.5.0.0/21"
         }]
+    }]
+}
+```
+
+示例 4：使用具有数组**值**的 **[\*]** [别名](definition-structure.md#aliases)的单个**字段/值**对，可在存储帐户上设置 IP 规则。 通过使用 **[\*]** 别名，该效果会将**值**附加到可能预先存在的数组。 如果数组尚不存在，则会创建数组。
+
+```json
+"then": {
+    "effect": "append",
+    "details": [{
+        "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]",
+        "value": {
+            "value": "40.40.40.40",
+            "action": "Allow"
+        }
     }]
 }
 ```
@@ -259,7 +275,7 @@ DeployIfNotExists 效果的“details”属性具有可定义要匹配的相关�
   - 此属性必须包含与可通过订阅访问的基于角色的访问控制角色 ID 匹配的字符串数组。 有关详细信息，请参阅[修正 - 配置策略定义](../how-to/remediate-resources.md#configure-policy-definition)。
 - **DeploymentScope**（可选）
   - 允许的值为 Subscription 和 ResourceGroup。
-  - 设置应执行的部署类型。 _Subscription_ 指示[在订阅级别部署](../../../azure-resource-manager/deploy-to-subscription.md)，_ResourceGroup_ 指示部署到资源组。
+  - 设置要触发的部署类型。 _Subscription_ 指示[在订阅级别部署](../../../azure-resource-manager/deploy-to-subscription.md)，_ResourceGroup_ 指示部署到资源组。
   - 使用订阅级别部署时，必须在 _Deployment_ 中指定 _location_ 属性。
   - 默认值是 ResourceGroup。
 - **Deployment** [必选]

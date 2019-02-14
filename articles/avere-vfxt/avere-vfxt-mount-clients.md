@@ -6,19 +6,19 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 5d55879a5a8487636e2252abd359accf07e60ce6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 41065b4ac6bc486e204c2bfd72b78ba8722270c4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669474"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809154"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>装载 Avere vFXT 群集  
 
 按照以下步骤将客户端计算机连接到 vFXT 群集。
 
 1. 确定如何在群集节点之间对客户端流量进行负载均衡。 有关详细信息，请阅读下面的[均衡客户端负载](#balance-client-load)。 
-1. 确定要装载的 [IP 地址和交接点路径](#identify-ip-addresses-and-paths-to-mount)。
+1. 确定要装载的 IP 地址和交接点路径。
 1. 使用适当的参数发出[装载命令](#mount-command-arguments)。
 
 ## <a name="balance-client-load"></a>均衡客户端负载
@@ -28,7 +28,7 @@ ms.locfileid: "50669474"
 > [!TIP] 
 > 其他负载均衡方法可能适用于大型或复杂系统；请[开具支持票证](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)寻求帮助。）
 > 
-> 如果偏向于使用 DNS 服务器进行自动服务器端负载均衡，则必须在 Azure 中设置和管理自己的 DNS 服务器。 在这种情况下，可以根据[群集 DNS 配置](avere-vfxt-configure-dns.md)文档中的操作为 vFXT 群集配置轮询 DNS。
+> 如果偏向于使用 DNS 服务器进行自动服务器端负载均衡，则必须在 Azure 中设置和管理自己的 DNS 服务器。 在这种情况下，可以根据以下文档中的操作为 vFXT 群集配置轮询 DNS：[Avere 群集 DNS 配置](avere-vfxt-configure-dns.md)。
 
 ### <a name="sample-balanced-client-mounting-script"></a>示例均衡客户端装载脚本
 
@@ -68,7 +68,7 @@ function mount_round_robin() {
 
 装载命令有三个元素： 
 
-* vFXT 路径 - （[下面](#junction-and-ip-address) 所述的 IP 地址和命名空间交接点路径的组合）
+* vFXT 路径 -（下面所述的 IP 地址和命名空间交接点路径的组合）
 * 本地路径 - 客户端上的路径 
 * 装载命令选项 - （在[装载命令参数](#mount-command-arguments)中列出）
 

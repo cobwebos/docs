@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 9f6e5dab5059086efc1e00c78b85296ff2b7a48c
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 490ac613adac968cc323c2d8351b59aece181b68
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139136"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734379"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>在 Azure VM 上创建 Oracle 数据库
 
@@ -34,7 +34,7 @@ ms.locfileid: "50139136"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
+使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
@@ -43,7 +43,7 @@ az group create --name myResourceGroup --location eastus
 ```
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
-若要创建虚拟机 (VM)，请使用 [az vm create](/cli/azure/vm#az_vm_create) 命令。 
+若要创建虚拟机 (VM)，请使用 [az vm create](/cli/azure/vm) 命令。 
 
 以下示例创建一个名为 `myVM` 的 VM。 此外，它还在默认密钥位置中不存在 SSH 密钥时创建这些密钥。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。  
 
@@ -145,7 +145,7 @@ ssh azureuser@<publicIpAddress>
 
 3. 设置 Oracle 变量
 
-在连接之前，需要设置两个环境变量：*ORACLE_HOME* 和 *ORACLE_SID*。
+在连接之前，需要设置两个环境变量：ORACLE_HOME 和 ORACLE_SID。
 
 ```bash
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
@@ -271,7 +271,7 @@ export ORACLE_SID=cdb1
 
 最后一个任务是配置一些外部终结点。 若要设置用于保护 VM 的 Azure 网络安全组，请首先在 VM 中退出 SSH 会话（在前面的步骤中重新引导时，应当已退出了 SSH）。 
 
-1.  若要打开用来远程访问 Oracle 数据库的终结点，请使用 [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) 创建一个网络安全组，如下所示： 
+1.  若要打开用来远程访问 Oracle 数据库的终结点，请使用 [az network nsg rule create](/cli/azure/network/nsg/rule) 创建一个网络安全组，如下所示： 
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -283,7 +283,7 @@ export ORACLE_SID=cdb1
         --destination-port-range 1521
     ```
 
-2.  若要打开用来远程访问 Oracle EM Express 的终结点，请使用 [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) 创建一个网络安全组，如下所示：
+2.  若要打开用来远程访问 Oracle EM Express 的终结点，请使用 [az network nsg rule create](/cli/azure/network/nsg/rule) 创建一个网络安全组，如下所示：
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -295,7 +295,7 @@ export ORACLE_SID=cdb1
         --destination-port-range 5502
     ```
 
-3. 如果需要，使用 [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) 获取 VM 的公共 IP 地址，如下所示：
+3. 如果需要，使用 [az network public-ip show](/cli/azure/network/public-ip) 获取 VM 的公共 IP 地址，如下所示：
 
     ```azurecli-interactive
     az network public-ip show \
@@ -317,7 +317,7 @@ export ORACLE_SID=cdb1
 
 ## <a name="clean-up-resources"></a>清理资源
 
-当在 Azure 中了解完首个 Oracle 数据库，且不再需要 VM 时，可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令来删除资源组、VM 和一切相关资源。
+当在 Azure 中了解完首个 Oracle 数据库，且不再需要 VM 时，可以使用 [az group delete](/cli/azure/group) 命令来删除资源组、VM 和一切相关资源。
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

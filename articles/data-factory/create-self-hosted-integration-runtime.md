@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: abnarain
-ms.openlocfilehash: f8827f3013ee83d8f4846e7e15d34ea7c6553f24
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 68878a68b5f0051c1ee9beda96293dd7cd00eaf1
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331803"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493579"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。
@@ -142,6 +142,9 @@ ms.locfileid: "54331803"
 - 该证书支持 Windows Server 2012 R2 所支持的任何 SSL 证书密钥大小。
 - 不支持使用 CNG 密钥的证书。  
 
+> [!NOTE]
+> 此证书用于加密自承载 IR 节点上的端口，以实现**节点到节点通信**（状态同步），同时从本地网络内部**将 PowerShell cmdlet 用于链接的服务凭据设置**。 如果拥有的专用网络环境不安全或同时想要确保专用网络内部节点之间通信的安全性，建议使用此证书。 自承载 IR 至其他数据存储的数据移动始终会使用加密通道，无论是否设置此证书均是如此。 
+
 ## <a name="sharing-the-self-hosted-integration-runtime-with-multiple-data-factories"></a>与多个数据工厂共享自承载集成运行时
 
 可以重复使用已在数据工厂中设置的现有自承载集成运行时基础结构。 这样，便可以通过引用现有的自承载 IR（共享），在不同的数据工厂中创建*链接的自承载集成运行时*。
@@ -219,7 +222,7 @@ ms.locfileid: "54331803"
 
 在企业防火墙级别，需配置以下域和出站端口：
 
-域名 | 端口 | Description
+域名 | 端口 | 说明
 ------------ | ----- | ------------
 * .servicebus.windows.net | 443 | 用来与后端数据移动服务通信
 *.core.windows.net | 443 | 用于通过 Azure Blob 存储（如果已配置）进行临时复制

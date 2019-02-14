@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: a0f89a272fa300f6acced2de02ba5465ab282079
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 29e9bee5f7712252d95b9416ad5523b4dfdd4b94
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33765630"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814310"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>在 Azure CDN 中管理 Azure Blob 存储的到期时间
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "33765630"
 
 在多个与 Azure 内容分发网络 (CDN) 集成的基于 Azure 的源中，Azure 存储中的 [Blob 存储服务](../storage/common/storage-introduction.md#blob-storage)是其中一个。 任何可公开访问的 blob 内容均可在 Azure CDN 中进行缓存，直到其生存时间 (TTL) 结束。 TTL 由来自源服务器的 HTTP 响应中的 `Cache-Control` 标头决定。 本文介绍了几种可以在 Azure 存储中的 Blob 上设置 `Cache-Control` 标头的方式。
 
-此外，还可以通过设置 [CDN 缓存规则](#setting-cache-control-headers-by-using-caching-rules)从 Azure 门户控制缓存设置。 如果创建了一个缓存规则并将其缓存行为设置为“替代”或“绕过缓存”，则将忽略本文中讨论的源提供的缓存设置。 有关一般缓存概念的信息，请参阅[缓存工作原理](cdn-how-caching-works.md)。
+此外，还可以通过设置 CDN 缓存规则，从 Azure 门户控制缓存设置。 如果创建了一个缓存规则并将其缓存行为设置为“替代”或“绕过缓存”，则将忽略本文中讨论的源提供的缓存设置。 有关一般缓存概念的信息，请参阅[缓存工作原理](cdn-how-caching-works.md)。
 
 > [!TIP]
 > 可以选择不对 blob 设置 TTL。 在这种情况下，Azure CDN 将自动应用默认 TTL（七天），除非已在 Azure 门户中设置了缓存规则。 此默认 TTL 仅适用于常规 Web 交付优化。 对于大型文件优化，默认 TTL 为一天；对于媒体流优化，默认 TTL 为一年。

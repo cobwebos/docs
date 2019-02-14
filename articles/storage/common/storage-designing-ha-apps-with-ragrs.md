@@ -1,20 +1,20 @@
 ---
-title: 使用 Azure 读取访问异地冗余存储 (RA-GRS) 设计高度可用的应用程序 | Microsoft Docs
+title: 使用读取访问异地冗余存储 (RA-GRS) 设计高度可用的应用程序 | Microsoft Docs
 description: 如何使用 Azure RA-GRS 存储构建足以灵活处理中断的高度可用的应用程序。
 services: storage
 author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 01/17/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3e2083b03b8463907c6d80fb5a9e1f25cca9beb5
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 47ca2febeffe395ba2482165f04ee29aa0193c63
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454937"
+ms.locfileid: "55512238"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>使用 RA-GRS 设计高度可用的应用程序
 
@@ -43,9 +43,7 @@ ms.locfileid: "55454937"
 
 * 可以使用存储客户端库与主要或次要区域中的数据进行交互。 如果到主要区域的读取请求超时，还可将读取请求自动重定向到次要区域。
 
-* 如果存在影响主要区域中的数据可访问性的主要问题，Azure 团队可能会触发异地故障转移，此时指向主要区域的 DNS 条目将更改为指向次要区域。
-
-* 如果发生异地故障转移，Azure 将选择新的次要位置并将数据复制到该位置，并将次要 DNS 条目指向该位置。 存储帐户复制完成之前，辅助终结点都不可用。 有关详细信息，请参阅 [What to do if an Azure Storage outage occurs](https://docs.microsoft.com/azure/storage/storage-disaster-recovery-guidance)（Azure 存储中断时应采取什么操作）。
+* 如果主要区域变得不可用，则可发起帐户故障转移。 故障转移到次要区域时，指向主要区域的 DNS 条目更改为指向次要区域。 故障转移完成后，GRS 和 RA-GRS 帐户的写入访问会恢复。 有关详细信息，请参阅 [Azure 存储中的灾难恢复和存储帐户故障转移（预览版）](storage-disaster-recovery-guidance.md)。
 
 ## <a name="application-design-considerations-when-using-ra-grs"></a>使用 RA-GRS 时的应用程序设计注意事项
 

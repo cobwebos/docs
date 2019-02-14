@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 1/16/2019
 ms.author: victorh
-ms.openlocfilehash: 1d4182f491dae9597add4b688b89faa9dd291429
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: a83ded660b56028ea311992ba6161e8a8e43f65d
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352914"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511966"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS 常见问题解答
 
@@ -34,7 +34,7 @@ Azure DNS 计费模型基于 Azure DNS 中托管的 DNS 区域数。 此外，�
 
 ### <a name="what-is-the-sla-for-azure-dns"></a>什么是 SLA for Azure DNS？
 
-Azure 保证在至少 99.99% 的时间内，有效的 DNS 请求将从至少一个 Azure DNS 名称服务器中收到响应。
+Azure 保证在任何情况下，有效的 DNS 请求将从至少一个 Azure DNS 名称服务器中收到响应。
 
 有关详细详细，请参阅 [Azure DNS SLA 页](https://azure.microsoft.com/support/legal/sla/dns)。
 

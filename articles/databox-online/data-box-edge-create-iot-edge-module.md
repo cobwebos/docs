@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 01/31/2019
 ms.author: alkohli
-ms.openlocfilehash: 86eec87d0c466b9172834fa9dbe7dfcb3702ea55
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d0b171f05bb2243da83509348b099bebcb44ebc7
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094098"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508702"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>开发 C# IoT Edge 模块以在 Data Box Edge（预览版）上移动文件
 
@@ -266,6 +266,13 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
     ![生成并推送 IoT Edge 解决方案](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
  
     告知 Visual Studio Code 生成解决方案时，它将在集成终端中运行两个命令：docker build 和 docker push。 这两个命令会生成代码，将 CSharpModule.dll 容器化，然后将代码推送到在初始化解决方案时指定的容器注册表。
+
+    系统将提示你选择模块平台。 选择和 Linux 对应的 amd64。
+
+    ![选择平台](./media/data-box-edge-create-iot-edge-module/select-platform.png)
+
+    > [!IMPORTANT] 
+    > 仅支持 Linux 模块。
 
     可能会看到可以忽略的以下警告：
 

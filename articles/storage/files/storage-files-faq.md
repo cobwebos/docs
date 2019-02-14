@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 01/02/2019
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: b3329f591d8478499b8270eb8a211d311465b020
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2a3c26c6a815cf934724fba4e8e0f9637803a4ce
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457014"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562379"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件](storage-files-introduction.md)在云端提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -104,7 +104,7 @@ ms.locfileid: "55457014"
 
 * <a id="afs-storage-redundancy"></a>
 **Azure 文件同步是否支持异地冗余存储？**  
-    是的，Azure 文件支持本地冗余存储 (LRS) 和异地冗余存储 (GRS)。 如果配对区域之间出现 GRS 故障转移，建议仅将新区域视为数据的备份。 Azure 文件同步不会自动开始与新的主区域进行同步。 
+    是的，Azure 文件支持本地冗余存储 (LRS) 和异地冗余存储 (GRS)。 如果通过为 GRS 配置的帐户发起配对区域之间的存储帐户故障转移，Microsoft 建议仅将新区域视为数据的备份。 Azure 文件同步不会自动开始与新的主区域进行同步。 
 
 * <a id="sizeondisk-versus-size"></a>
 **使用 Azure 文件共享后，为什么文件的占用空间属性与大小属性不一致？**  
@@ -116,7 +116,6 @@ ms.locfileid: "55457014"
 
 * <a id="afs-recall-file"></a>**我想要使用的一个文件已被分层。如何将文件召回到磁盘以在本地使用？**  
  请参阅[了解云分层](storage-sync-cloud-tiering.md#afs-recall-file)。
-
 
 * <a id="afs-force-tiering"></a>
 **如何强制将文件或目录分层？**  
@@ -149,7 +148,7 @@ ms.locfileid: "55457014"
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
 **为什么分层文件存在于服务器终结点命名空间之外？**  
-    在 Azure 文件同步代理版本 3 之前，Azure 文件同步阻止将分层文件移到服务器终结点之外但位于服务器终结点所在卷上的其他位置。 复制操作、非分层文件的移动操作以及将分层文件移到其他卷的操作不受影响。 这种行为的原因是由于这样的隐含假设：文件资源管理器和其他 Windows API 在同一卷上的移动操作是（几乎）即时重命名操作。 这意味着，移动会使文件资源管理器或其他移动方法（如命令行或 PowerShell）看起来没有响应，而 Azure 文件同步会从云中召回数据。 从 [Azure 文件同步代理版本 3.0.12.0](storage-files-release-notes.md#supported-versions) 开始，Azure 文件同步将允许将分层文件移到服务器终结点之外。 我们通过允许分层文件作为服务器终结点之外的分层文件存在，然后在后台召回该文件以避免前面提到的负面影响。 这意味着在同一卷上的移动是即时的，在移动完成后，我们要做将文件召回到磁盘的所有工作。 
+    在 Azure 文件同步代理版本 3 之前，Azure 文件同步阻止将分层文件移到服务器终结点之外但位于服务器终结点所在卷上的其他位置。 复制操作、非分层文件的移动操作以及将分层文件移到其他卷的操作不受影响。 这种行为的原因在于以下隐含假设：文件资源管理器和其他 Windows API 在同一卷上的移动操作是（近乎）即时重命名操作。 这意味着，移动会使文件资源管理器或其他移动方法（如命令行或 PowerShell）看起来没有响应，而 Azure 文件同步会从云中召回数据。 从 [Azure 文件同步代理版本 3.0.12.0](storage-files-release-notes.md#supported-versions) 开始，Azure 文件同步将允许将分层文件移到服务器终结点之外。 我们通过允许分层文件作为服务器终结点之外的分层文件存在，然后在后台召回该文件以避免前面提到的负面影响。 这意味着在同一卷上的移动是即时的，在移动完成后，我们要完成将文件召回到磁盘的所有工作。 
 
 * <a id="afs-do-not-delete-server-endpoint"></a>
 **我在服务器上遇到 Azure 文件同步问题（同步、云分层等）。是否应删除并重新创建服务器终结点？**  
@@ -202,7 +201,7 @@ ms.locfileid: "55457014"
 * <a id="ad-vm-subscription"></a>
 **我是否可以从不同订阅下的 VM 使用 Azure AD 凭据访问 Azure 文件？**
 
-    如果部署了文件共享的订阅与 VM 所加入到的 Azure AD 域服务部署相同的 Azure AD 租户相关联，则可以使用相同的 Azure AD 凭据访问 Azure 文件。 限制不是针对订阅，而是针对关联的 Azure AD 租户的。    
+    如果部署了文件共享的订阅与 VM 所加入到的 Azure AD 域服务部署相同的 Azure AD 租户相关联，则可以使用相同的 Azure AD 凭据访问 Azure 文件存储。 限制不是针对订阅，而是针对关联的 Azure AD 租户的。    
     
 * <a id="ad-support-subscription"></a>
 **我是否可以使用与文件共享关联的主租户之外的 Azure AD 租户为 Azure 文件启用通过 SMB 进行 Azure AD 身份验证？**
@@ -242,7 +241,7 @@ ms.locfileid: "55457014"
 * <a id="data-compliance-policies"></a>
 **Azure 文件支持哪些数据符合性策略？**  
 
-   Azure 文件所依据的存储体系结构与 Azure 存储中的其他存储服务使用的相同。 Azure 文件实施的数据符合性策略也与其他 Azure 存储服务使用的相同。 有关 Azure 存储数据符合性的详细信息，可参阅 [Azure 存储符合性产品/服务](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)和转到 [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/default.aspx)。
+   Azure 文件所依据的存储体系结构与 Azure 存储中的其他存储服务使用的相同。 Azure 文件实施的数据符合性策略也与其他 Azure 存储服务使用的相同。 有关 Azure 存储数据符合性的详细信息，可参阅 [Azure 存储符合性产品/服务](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)和转到 [Microsoft 信任中心](https://microsoft.com/trustcenter/default.aspx)。
 
 ## <a name="on-premises-access"></a>本地访问
 * <a id="expressroute-not-required"></a>

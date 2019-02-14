@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5cfda4ddbf51f51d76b4ede2e44f768bd3261780
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 2dc9d72afd14547a091acf64cea2c8f0bad75914
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491750"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234401"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>教程：创建包含依赖的资源的 Azure 资源管理器模板
 
@@ -114,6 +114,8 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 
 ## <a name="deploy-the-template"></a>部署模板
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 可通过多种方法来部署模板。  本教程从 Azure 门户使用 Cloud Shell。
 
 1. 登录到 [Cloud Shell](https://shell.azure.com)。 
@@ -140,7 +142,6 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 7. 在 Cloud Shell 中运行以下 PowerShell 命令。 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 请参阅[先决条件](#prerequisites)。
 
     ```azurepowershell
-    $deploymentName = Read-Host -Prompt "Enter the name for this deployment"
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
     $adminUsername = Read-Host -Prompt "Enter the virtual machine admin username"
@@ -148,13 +149,14 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
     $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS label prefix"
 
     New-AzResourceGroup -Name $resourceGroupName -Location $location
-    New-AzResourceGroupDeployment -Name $deploymentName `
+    New-AzResourceGroupDeployment `
         -ResourceGroupName $resourceGroupName `
         -adminUsername $adminUsername `
         -adminPassword $adminPassword `
         -dnsLabelPrefix $dnsLabelPrefix `
         -TemplateFile azuredeploy.json
     ```
+
 8. 运行以下 PowerShell 命令，列出新建的虚拟机：
 
     ```azurepowershell

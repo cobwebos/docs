@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 6b2302e69c9412170b55df4bfd8c1df5a9f75ef3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bfdea1d5380750ec23964cd8564db9b3a9539f15
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55479111"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754635"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自动缩放群集以满足 Azure Kubernetes 服务 (AKS) 中的应用程序需求
 
@@ -63,6 +63,9 @@ az extension add --name aks-preview
 ## <a name="create-an-aks-cluster-and-enable-the-cluster-autoscaler"></a>创建 AKS 群集并启用群集自动缩放程序
 
 如果需要创建 AKS 群集，请使用 [az aks create][az-aks-create] 命令。 指定的 --kubernetes-version 应满足或超过在前面[开始之前](#before-you-begin)部分中概述最低版本号。 若要启用和配置群集自动缩放程序，请使用 --enable-cluster-autoscaler参数，并指定节点 --min-count 和 --max-count。
+
+> [!IMPORTANT]
+> 群集自动缩放程序是 Kubernetes 组件。 虽然 AKS 群集对节点使用虚拟机规模集，但请勿在 Azure 门户中或使用 Azure CLI 手动启用或编辑规模集自动缩放设置。 让 Kubernetes 群集自动缩放程序管理所需的规模设置。 有关详细信息，请参阅[我可以修改 MC_ 资源组中的 AKS 资源吗？](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group)
 
 以下示例创建启用了虚拟机规模集和群集自动缩放程序的 AKS 群集，并使用最少 1 个且最多 3 个节点：
 

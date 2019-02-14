@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: ef70b9e58a669695f3bdec7ad8ea4bab93e7e4b9
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 084784af256fdf31cf1661109c0535cb91ef1db5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082038"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817403"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>向 Azure AD 中的 B2B 用户授予对本地应用程序的访问权限
 
@@ -43,7 +43,7 @@ ms.locfileid: "55082038"
 
    对于 B2B 用户方案，可以使用两种方法在本地目录中创建授权所需的来宾用户对象：
 
-   - Microsoft Identity Manager (MIM) 和 [Microsoft Graph 的 MIM 管理代理](#create-b2b-guest-user-objects-through-mim-preview)。 
+   - Microsoft Identity Manager (MIM) 和 Microsoft Graph 的 MIM 管理代理。 
    - [PowerShell 脚本](#create-b2b-guest-user-objects-through-a-script-preview)。 使用脚本是一种更轻便的解决方案，因为不需要 MIM。 
 
 下图从较高层面描绘了 Azure AD 应用程序代理如何结合本地目录中生成的 B2B 用户对象，向 B2B 用户授予对本地 IWA 和 KCD 应用的访问权限。 下图详细描述了带编号的步骤。

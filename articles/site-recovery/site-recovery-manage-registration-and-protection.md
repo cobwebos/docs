@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 7a9c0ec081b676631f950270f9234284a102d7fa
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9aaa5dd2c636f9b5d92e949e1af71eda809cdac7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212182"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810314"
 ---
 # <a name="remove-servers-and-disable-protection"></a>删除服务器并禁用保护
 
@@ -154,7 +154,7 @@ ms.locfileid: "55212182"
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure"></a>禁用对 Hyper-V 虚拟机（Hyper-V 到 Azure）的保护
 
 > [!NOTE]
-> 要在没有 VMM 服务器的情况下将 Hyper-V VM 复制到 Azure，请执行此过程。 若要使用 System Center VMM 到 Azure 方案复制虚拟机，请按照[禁用对使用 System Center VMM 到 Azure 方案复制的 Hyper-V 虚拟机的保护](#disable-protection-for-a-hyper-v-virtual-machine-replicating-using-the-system-centet-vmm-to-azure-scenario)中的说明操作
+> 要在没有 VMM 服务器的情况下将 Hyper-V VM 复制到 Azure，请执行此过程。 若要使用 **System Center VMM 到 Azure** 方案复制虚拟机，请按照“禁用对使用 System Center VMM 到 Azure 方案复制的 Hyper-V 虚拟机的保护”中的说明操作
 
 1. 依次转到“受保护的项” > “复制的项”，右键单击计算机，再单击“禁用复制”。
 2. 在“禁用复制”中，可以选择下列选项：

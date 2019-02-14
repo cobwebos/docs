@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 3671f6a3e3832a384e968fbf38128aff6bfb2252
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: ae57fc5366e1ed99febcd9a9d08e7f95f3bbf196
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247667"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487347"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central 中的设备连接
 
@@ -56,7 +56,7 @@ Azure IoT Central 使用 [Azure IoT 中心设备预配服务 (DPS)](https://docs
 
     *   **C 语言：** 如果使用的是 C，请按照[此 C 示例设备客户端](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)来连接示例设备。 在示例中使用以下设置。   
 
-         ```
+         ```c
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
 
          ## Enter the Device Id and Symmetric keys 
@@ -118,7 +118,7 @@ CSV 文件要求：该 CSV 文件应包含以下列（和标头）
 下面是你可能想要使用的其他语言的参考。
 
    *   **C 语言：** 如果使用的是 C，请按照[此 C 示例设备客户端](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)来连接示例设备。 在示例中使用以下设置。   
-         ```
+         ```c
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
 
          ## Enter the Device Id and Symmetric keys 
@@ -163,7 +163,7 @@ CSV 文件要求：该 CSV 文件应包含以下列（和标头）
 
     使用预配服务信息对设备进行编程，使其能够在设备开启时获取连接详细信息和 IoT Central 应用分配。    
 
-    **更多参考** 
+    **更多参考信息** 
     *   [RaspberryPi](https://aka.ms/iotcentral-docs-Raspi-releases) 的示例实现。  
 
     *   [C 编写的示例设备客户端](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)
@@ -211,7 +211,7 @@ IoT Central 支持的重要场景之一是使 OEM 批量生产设备，并在工
 
 1. **将设备连接到 IoT 中心：** 一旦打开，设备将连接到 DPS/IoT Central 进行注册。
 
-1. **将设备关联到模板：** 连接的设备将在“Device Explorer”中的“未关联设备”下显示。 设备预配状态为“已注册”。 将设备与相应的设备模板相关联，并批准设备连接到 IoT Central 应用。 设备将获取 IoT Central 应用的连接详细信息，它将连接并开始发送数据。 设备预配现已完成，而“预配状态”变为“已预配”。
+1. **将设备关联到模板：** 连接的设备将在“Device Explorer”中的“未关联设备”下显示。 设备预配状态为“已注册”。 将设备与相应的设备模板相关联，并批准设备连接到 IoT Central 应用。 设备将获取 IoT Central 应用的连接详细信息，然后连接并开始发送数据。 设备预配现已完成，而“预配状态”变为“已预配”。
 
 ## <a name="device-provisioning-status"></a>设备预配状态
 将真实设备连接到 Azure IoT Central 时，包含一系列步骤 

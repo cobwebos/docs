@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: b2b5d62c54fbfdef8a5e448a089800eedcb66d07
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: eaef1c904b5404339c476d86c5b8c2a1740e5a3e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827493"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700071"
 ---
 # <a name="best-practices-for-securing-and-managing-workloads-migrated-to-azure"></a>有关保护和管理已迁移到 Azure 的工作负荷的最佳做法
 
@@ -400,8 +400,7 @@ Azure VM 作为页 Blob 存储在 Azure 存储中。
 - [了解](https://docs.microsoft.com/azure/storage/blobs/storage-blob-snapshots)如何创建 Blob 快照。
 - [查看](https://azure.microsoft.com/blog/microsoft-azure-block-blob-storage-backup) Blob 存储备份的示例方案。
 - [了解](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)软删除。
-- [了解](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)在 Azure 存储中断时该怎么办。
-
+- [Azure 存储中的灾难恢复和强制故障转移（预览版）](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 #### <a name="third-party-backup"></a>第三方备份
 
@@ -517,7 +516,7 @@ Azure Site Recovery 是确保在发生服务中断时 Azure VM 可以联机并�
 - [阅读](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)用于灾难恢复的 Azure SQL 数据库 101。
 - [获取](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)活动异地复制和故障转移组的概述。
 - [了解](https://docs.microsoft.com/azure/sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery)灾难恢复设计。
-- [获取](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview#best-practices-of-using-failover-groups-for-business-continuity)有关故障转移组的最佳做法。
+- [获取](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)有关故障转移组的最佳做法。
 - [获取](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-security-config)有关异地还原或故障转移后的安全最佳做法。
 - [了解](https://docs.microsoft.com/azure/sql-database/sql-database-high-availability#zone-redundant-configuration)区域冗余
 - [了解](https://docs.microsoft.com/azure/sql-database/sql-database-disaster-recovery-drills)如何针对 SQL 数据库执行灾难恢复演练。

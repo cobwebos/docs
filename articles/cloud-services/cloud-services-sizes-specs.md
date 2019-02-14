@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 78a073ec7ee8432ba7804daef150afcbbca23ef6
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: a2af7ffde336016ae89a1ab03d753ed11b901e05
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095563"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818696"
 ---
 # <a name="sizes-for-cloud-services"></a>云服务的大小
 本主题介绍云服务角色实例（Web 角色和辅助角色）的可用大小和选项。 此外，还提供了在计划使用这些资源时要考虑的部署注意事项。 每个大小都具有会放入[服务定义文件](cloud-services-model-and-package.md#csdef)中的 ID。 [云服务定价](https://azure.microsoft.com/pricing/details/cloud-services/)页提供每种大小的价格。
@@ -44,7 +44,7 @@ Azure 上有多个标准大小可供选择。 其中某些大小的注意事项�
 
 * A8-A11 和 H 系列大小也称为“计算密集型实例”。 运行这些大小的硬件专为计算密集型和网络密集型应用程序而设计和优化，包括高性能计算 (HPC) 群集应用程序、建模和模拟。 A8-A11 系列使用 Intel Xeon E5-2670 @ 2.6 GHZ，H 系列使用 Intel Xeon E5-2667 v3 @ 3.2 GHz。 有关如何使用这些大小的详细信息和注意事项，请参阅[高性能计算 VM 大小](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * Dv3 系列、Dv2 系列、D 系列和 G 系列是要求有更快速的 CPU、更好的本地磁盘性能，或更高内存的应用程序的理想选择。 它们为许多企业级应用程序提供强大的组合。
-* Azure 数据中心内的一些物理主机可能不支持更大的虚拟机大小，例如 A5 – A11。 因此，在以下情况下，可能会显示错误消息“未能配置虚拟机 {虚拟机名称}”或“未能创建虚拟机 {虚拟机名称}”：将现有虚拟机的大小调整为新的大小时；在 2013 年 4 月 16 日之前创建的虚拟网络中创建新的虚拟机时；或者向现有的云服务中添加新的虚拟机时。 有关每个部署方案的解决方法，请参阅支持论坛上的[错误：“无法配置虚拟机”](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows)。
+* Azure 数据中心内的一些物理主机可能不支持更大的虚拟机大小，例如 A5 – A11。 因此，在以下情况下，可能会显示错误消息“未能配置虚拟机 {虚拟机名称}”或“未能创建虚拟机 {虚拟机名称}”：将现有虚拟机的大小调整为新的大小时；在 2013 年 4 月 16 日之前创建的虚拟网络中创建新的虚拟机时；或者向现有的云服务中添加新的虚拟机时。 请参阅支持论坛上的[错误：“无法配置虚拟机”](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows)，了解每种部署方案的解决方法。
 * 订阅也可能会限制某些大小系列中可部署的核心数。 若要增加配额，请联系 Azure 支持。
 
 ## <a name="performance-considerations"></a>性能注意事项
@@ -82,7 +82,7 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 * 最大网络带宽是每个 VM 类型分配并分配的最大聚合带宽。 最大带宽提供选择正确 VM 类型的指导原则，以确保有适当的网络容量可用。 在低、中、高和极高之间切换时，吞吐量将随之增加。 实际的网络性能将取决于许多因素，包括网络和应用程序负载，以及应用程序的网络设置。
 
 ## <a name="a-series"></a>A 系列
-| 大小            | CPU 核心数 | 内存：GiB  | 临时存储：GiB       | 最大网卡数/网络带宽等级 |
+| 大小            | CPU 核心数 | 内存: GiB  | 临时存储：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | 特小型      | 1         | 0.768        | 20                   | 1/低 |
 | 小型           | 1         | 1.75         | 225                  | 1/中 |
@@ -96,7 +96,7 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 ## <a name="a-series---compute-intensive-instances"></a>A 系列 - 计算密集型实例
 有关如何使用这些大小的信息和注意事项，请参阅[高性能计算 VM 大小](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-| 大小            | CPU 核心数 | 内存：GiB  | 临时存储：GiB       | 最大网卡数/网络带宽等级 |
+| 大小            | CPU 核心数 | 内存: GiB  | 临时存储：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | A8*             |8          | 56           | 1817                 | 2/高 |
 | A9*             |16         | 112          | 1817                 | 4/非常高 |
@@ -107,7 +107,7 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 
 ## <a name="av2-series"></a>Av2 系列
 
-| 大小            | CPU 核心数 | 内存：GiB  | 临时存储 (SSD)：GiB       | 最大网卡数/网络带宽等级 |
+| 大小            | CPU 核心数 | 内存: GiB  | 临时存储 (SSD)：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_A1_v2  | 1         | 2            | 10                   | 1/中                 |
 | Standard_A2_v2  | 2         | 4            | 20                   | 2/中                 |
@@ -119,7 +119,7 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 
 
 ## <a name="d-series"></a>D 系列
-| 大小            | CPU 核心数 | 内存：GiB  | 临时存储 (SSD)：GiB       | 最大网卡数/网络带宽等级 |
+| 大小            | CPU 核心数 | 内存: GiB  | 临时存储 (SSD)：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1     | 1         | 3.5          | 50                   | 1/中 |
 | Standard_D2     | 2         | 7            | 100                  | 2/高 |
@@ -131,7 +131,7 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 | Standard_D14    | 16        | 112          | 800                  | 8/非常高 |
 
 ## <a name="dv2-series"></a>Dv2 系列
-| 大小            | CPU 核心数 | 内存：GiB  | 临时存储 (SSD)：GiB       | 最大网卡数/网络带宽等级 |
+| 大小            | CPU 核心数 | 内存: GiB  | 临时存储 (SSD)：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1_v2  | 1         | 3.5          | 50                   | 1/中 |
 | Standard_D2_v2  | 2         | 7            | 100                  | 2/高 |
@@ -146,7 +146,7 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 
 ## <a name="dv3-series"></a>Dv3 系列
 
-| 大小            | CPU 核心数 | 内存：GiB   | 临时存储 (SSD)：GiB       | 最大网卡数/网络带宽等级 |
+| 大小            | CPU 核心数 | 内存: GiB   | 临时存储 (SSD)：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
 | Standard_D2_v3  | 2         | 8             | 50                   | 2/中 |
 | Standard_D4_v3  | 4         | 16            | 100                  | 2/高 |
@@ -157,7 +157,7 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 
 ## <a name="ev3-series"></a>Ev3 系列
 
-| 大小            | CPU 核心数 | 内存：GiB   | 临时存储 (SSD)：GiB       | 最大网卡数/网络带宽等级 |
+| 大小            | CPU 核心数 | 内存: GiB   | 临时存储 (SSD)：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
 | Standard_E2_v3  | 2         | 16            | 50                   | 2/中 |
 | Standard_E4_v3  | 4         | 32            | 100                  | 2/高 |
@@ -168,7 +168,7 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 
 
 ## <a name="g-series"></a>G 系列
-| 大小            | CPU 核心数 | 内存：GiB  | 临时存储 (SSD)：GiB       | 最大网卡数/网络带宽等级 |
+| 大小            | CPU 核心数 | 内存: GiB  | 临时存储 (SSD)：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_G1     | 2         | 28           | 384                  |1/高 |
 | Standard_G2     | 4         | 56           | 768                  |2/高 |
@@ -181,7 +181,7 @@ Azure H 系列虚拟机是下一代高性能计算 VM，旨在满足高端计算
 
 除强大的 CPU 功能外，H 系列还提供支持使用 InfiniBand 的低延迟 RDMA 网络的各种选项，以及支持内存密集型计算要求的多项内存配置。
 
-| 大小            | CPU 核心数 | 内存：GiB  | 临时存储 (SSD)：GiB       | 最大网卡数/网络带宽等级 |
+| 大小            | CPU 核心数 | 内存: GiB  | 临时存储 (SSD)：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_H8     | 8         | 56           | 1000                 | 8/高 |
 | Standard_H16    | 16        | 112          | 2000                 | 8/非常高 |
@@ -195,7 +195,7 @@ Azure H 系列虚拟机是下一代高性能计算 VM，旨在满足高端计算
 ## <a name="configure-sizes-for-cloud-services"></a>配置云服务的大小
 可以指定角色实例的虚拟机大小作为[服务定义文件](cloud-services-model-and-package.md#csdef)描述的服务模型的一部分。 角色大小确定了 CPU 核心数目、内存容量，以及分配给正在运行的实例的本地文件系统大小。 根据应用程序的资源要求选择角色大小。
 
-下面是一个将 Web 角色实例的角色大小设置为 [Standard_D2](#general-purpose-d) 的示例：
+下面是将 Web 角色实例的角色大小设置为 Standard_D2 的示例：
 
 ```xml
 <WorkerRole name="Worker1" vmsize="Standard_D2">

@@ -12,12 +12,12 @@ manager: cgronlun
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 02d0afd18ad966baf8954ae5add180c970fe302e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b322ca0c3a19f0a832fe50b6cfbaaad287205d5e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247402"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812899"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 
@@ -27,7 +27,7 @@ ms.locfileid: "55247402"
 
 本文重点介绍以下环境和工具：
 
-* [Azure Notebooks](#aznotebooks)：Azure 云中托管的 Jupyter Notebook 服务。 这是最简单的入门方法，因为已安装 Azure 机器学习 SDK。
+* Azure Notebooks：Azure 云中托管的 Jupyter Notebook 服务。 这是最简单的入门方法，因为已安装 Azure 机器学习 SDK。
 
 * [Data Science Virtual Machine (DSVM)](#dsvm)：Azure 云中的预配置开发或试验环境，用于开展数据科学工作，可以部署到仅限 CPU 的 VM 实例或基于 GPU 的实例。 已安装 Python 3、Conda、Jupyter Notebook 和 Azure 机器学习 SDK。 VM 配备了用于开发机器学习解决方案的常用机器学习和深度学习框架、工具与编辑器。 对于 Azure 平台上的机器学习，它可能是最完整的开发环境。
 

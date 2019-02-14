@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 303d794e558a5e85b4dd2bca3d9bbb4c2a1ff5dc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 694999048d2f1df92e6b8631953f124c4009d46c
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151798"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733954"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>教程：Azure Active Directory 与 Infinite Campus 的集成
 
@@ -111,7 +111,7 @@ ms.locfileid: "55151798"
 
     ![配置单一登录](common/editconfigure.png)
 
-5. 在“基本 SAML 配置”部分，如果有**服务提供程序元数据文件**（跳到步骤 **11.c**），请执行以下步骤：
+4. 在“基本 SAML 配置”部分，如果有服务提供程序元数据文件，请完成步骤 4.a 到 4.d，然后跳到步骤 11.c。 如果没有服务提供程序元数据文件，请跳到步骤 5。
 
     a. 单击“上传元数据文件”。
 
@@ -127,10 +127,7 @@ ms.locfileid: "55151798"
 
     d. 在“登录 URL”文本框中，使用以下模式键入 URL（域将因托管模型而异）：`https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
-    > [!NOTE]
-    > 本教程稍后介绍的“Infinite Campus SSO 服务提供程序配置”页上会提供**服务提供程序元数据文件**。 如果开始在 Infinite Campus 中使用新的 SAML 服务提供程序配置，请跳到**步骤 11**，完成服务提供程序元数据文件的导出。
-
-6. 如果没有**服务提供程序元数据文件**，请执行以下步骤（请注意，域因托管模型而异）：
+5. 如果没有服务提供程序元数据文件，请执行以下步骤（请注意，域因托管模型而异）：
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 

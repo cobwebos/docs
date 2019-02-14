@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.openlocfilehash: c8cc6ccae59b8ee530ad679c492419a348423553
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 8d597a3491f80bc09c3e0676d17971f2509ba47a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184112"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818730"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>使用 Log Analytics 监视 Active Directory 复制状态
 
@@ -127,7 +127,7 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 答：不需要，只需要添加一个域控制器。 如果 Log Analytics 工作区中有多个域控制器，则所有域控制器的数据发送到 Log Analytics。
 
 **问：我不想将任何域控制器添加到我的 Log Analytics 工作区。是否仍可以使用 AD 复制状态解决方案？**
-答：是的。 可以设置注册表项的值来实现此目的。 请参阅[启用非域控制器，将 AD 数据发送到 Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms)。
+答：是的。 可以设置注册表项的值来实现此目的。 请参阅“启用非域控制器，将 AD 数据发送到 Log Analytics”。
 
 **问：执行数据收集的进程的名称是什么？**
 答：AdvisorAssessment.exe
@@ -149,7 +149,7 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 
 如果在连接某个域控制器时需要帮助，可以查看[将 Windows 计算机连接到 Log Analytics](../../azure-monitor/platform/om-agents.md) 文档。 或者，如果域控制器已连接到现有 System Center Operations Manager 环境，则可以查看[将 System Center Operations Manager 连接到 Log Analytics](../../azure-monitor/platform/om-agents.md) 文档。
 
-如果不希望将任何域控制器直接连接到 Log Analytics 或 System Center Service Manager，请参阅[允许非域控制器将 AD 数据发送到 Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms)。
+如果不希望将任何域控制器直接连接到 Log Analytics 或 System Center Operations Manager，请参阅“启用非域控制器，将 AD 数据发送到 Log Analytics”。
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 [Log Analytics 中的日志搜索](../../azure-monitor/log-query/log-query-overview.md)查看详细的 Active Directory 复制状态数据。

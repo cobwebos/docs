@@ -11,15 +11,16 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 594d181a5452317267157415bdaf68f572f0f0af
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/07/2018
+ms.openlocfilehash: b6fbb71a827c90abd1fac58d7975ab2f7b2a5674
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260017"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55560883"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>用于 ADO.NET 4.5 的非 1433 端口
+
 本主题介绍使用 ADO.NET 4.5 或更高版本的客户端的 Azure SQL 数据库连接行为。 
 
 > [!IMPORTANT]
@@ -27,12 +28,15 @@ ms.locfileid: "51260017"
 >
 
 ## <a name="outside-vs-inside"></a>内部的外部
+
 对于 Azure SQL 数据库的连接，首先必须询问客户端程序是在 Azure 云边界*外部*还是*内部*运行。 以下小节讨论了两种常见方案。
 
-#### <a name="outside-client-runs-on-your-desktop-computer"></a>外部：客户端在台式机上运行
+#### <a name="outside-client-runs-on-your-desktop-computer"></a>*外部：* 客户端在台式机上运行
+
 端口 1433 是托管 SQL 数据库客户端应用程序的台式机上唯一必须打开的端口。
 
-#### <a name="inside-client-runs-on-azure"></a>内部：客户端在 Azure 上运行
+#### <a name="inside-client-runs-on-azure"></a>*内部：* 客户端在 Azure 上运行
+
 如果客户端在 Azure 云边界内部运行，则它使用我们所谓的直接路由来与 SQL 数据库服务器交互。 建立连接后，客户端与数据库之间的进一步交互不涉及到任何 Azure SQL 数据库网关。
 
 顺序如下：

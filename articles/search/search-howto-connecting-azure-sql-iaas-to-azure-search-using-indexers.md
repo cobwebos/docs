@@ -6,28 +6,32 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/23/2017
+ms.date: 02/04/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5f04c98e1337c2b65c9e0bc8401dd6045a84021e
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 90e5a133bac519cbc5ab2d7b112d51a019e8f698
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312013"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751372"
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>配置从 Azure 搜索索引器到 Azure VM 上 SQL Server 的连接
 如[使用索引器将 Azure SQL 数据库连接到 Azure 搜索](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)中所述，针对 **Azure VM 上的 SQL Server**（或简称 **SQL Azure VM**）创建索引器受 Azure 搜索支持，但首先需要满足一些与安全性相关的先决条件。 
 
-**任务持续时间：** 大约 30 分钟，假设已在 VM 上安装了证书。
+从 Azure 搜索到 VM 上的 SQL Server 的连接是公共 Internet 连接。 对于这些连接通常会遵循的所有安全措施在此处也适用：
+
++ 对于 Azure VM 上 SQL Server 实例的完全限定的域名，从[证书颁发机构提供程序](https://en.wikipedia.org/wiki/Certificate_authority#Providers)获取证书。
++ 将该证书安装在 VM 上，然后使用本文中的说明在 VM 上启用并配置加密连接。
 
 ## <a name="enable-encrypted-connections"></a>启用加密连接
 对于所有通过公共 Internet 连接的索引器请求，Azure 搜索都需要使用加密通道。 本部分列出了实现此目的的步骤。
 
 1. 查看证书的属性，验证使用者名称是否是 Azure VM 的完全限定的域名 (FQDN)。 可以使用 CertUtils 等工具或证书管理单元查看属性。 可从 [Azure 门户](https://portal.azure.com/)中 VM 服务边栏选项卡的“基本要素”部分中获取 FQDN（位于“公共 IP 地址/DNS 名称标签”字段中）。
    
-   * 对于使用较新的 **Resource Manager** 模板创建的 VM，FQDN 的格式设置为 `<your-VM-name>.<region>.cloudapp.azure.com`。 
-   * 对于创建为**经典** VM 的较旧 VM，FQDN 的格式设置为 `<your-cloud-service-name.cloudapp.net>`。 
+   * 对于使用较新的资源管理器模板创建的 VM，FQDN 的格式设置为 `<your-VM-name>.<region>.cloudapp.azure.com`
+   * 对于创建为**经典** VM 的较旧 VM，FQDN 的格式设置为 `<your-cloud-service-name.cloudapp.net>`。
+
 2. 使用注册表编辑器 (regedit) 将 SQL Server 配置为使用证书。 
    
     尽管 SQL Server 配置管理器通常用于此任务，但不能在此方案中使用它。 它不会查找导入的证书，因为 Azure 上 VM 的 FQDN 与该 VM（它将域标识为本地计算机或已加入到的网络域）确定的 FQDN 不匹配。 名称不匹配时，使用 regedit 指定证书。
@@ -38,9 +42,11 @@ ms.locfileid: "53312013"
    * 将**证书**密钥的值设置为已导入到 VM 的 SSL 证书的**指纹**。
      
      可通过多种方式获取指纹，有些方式十分有效。 如果从 MMC 的**证书**管理单元中复制指纹，可能会[如此支持文章中所述](https://support.microsoft.com/kb/2023869/)选取不可见的前导字符，这会导致在尝试连接时出错。 提供了几种更正此问题的解决方法。 最简单的方法是按 Backspace 键退格，并重新键入指纹的第一个字符，以在 regedit 中删除密钥值字段中的前导字符。 此外，也可以使用其他工具复制指纹。
+
 3. 向服务帐户授予权限。 
    
     请确保向 SQL Server 服务帐户授予 SSL 证书私钥的相应权限。 如果忽略此步骤，SQL Server 将不会启动。 可使用**证书**管理单元或 **CertUtils** 执行此任务。
+    
 4. 重新启动 SQL Server 服务。
 
 ## <a name="configure-sql-server-connectivity-in-the-vm"></a>在 VM 中配置 SQL Server 连接

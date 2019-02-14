@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: d890aabd6b0acad324ef4b632daaed1db6452ac5
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 6624c28d686a584017d703889e57ef1a7126b16d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686953"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695497"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 配置 VNet 到 VNet VPN 网关连接
 
@@ -68,11 +68,11 @@ ms.locfileid: "51686953"
 
 就本练习来说，可以将配置组合起来，也可以只是选择要使用的配置。 所有配置使用 VNet 到 VNet 连接类型。 网络流量在彼此直接连接的 VNet 之间流动。 在此练习中，流量不从 TestVNet4 路由到 TestVNet5。
 
-* [驻留在同一订阅中的 VNet](#samesub)：此配置的步骤使用 TestVNet1 和 TestVNet4。
+* [位于同一订阅中的 VNet](#samesub)：此配置的步骤使用 TestVNet1 和 TestVNet4。
 
   ![v2v 示意图](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
-* [驻留在不同订阅中的 VNet](#difsub)：此配置的步骤使用 TestVNet1 和 TestVNet5。
+* [位于不同订阅中的 VNet](#difsub)：此配置的步骤使用 TestVNet1 和 TestVNet5。
 
   ![v2v 示意图](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
@@ -116,7 +116,7 @@ ms.locfileid: "51686953"
 * GatewayName：VNet4GW
 * 公共 IP：VNet4GWIP
 * VPNType：RouteBased
-* 连接：VNet4toVNet1
+* 连接: VNet4toVNet1
 * ConnectionType：VNet2VNet
 
 
@@ -313,7 +313,7 @@ ms.locfileid: "51686953"
 * GatewayName：VNet5GW
 * 公共 IP：VNet5GWIP
 * VPNType：RouteBased
-* 连接：VNet5toVNet1
+* 连接: VNet5toVNet1
 * ConnectionType：VNet2VNet
 
 ### <a name="step-7---create-and-configure-testvnet5"></a>步骤 7 - 创建并配置 TestVNet5
@@ -476,5 +476,5 @@ ms.locfileid: "51686953"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机文档](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。
+* 连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机文档](https://docs.microsoft.com/azure/)。
 * 有关 BGP 的信息，请参阅 [BGP 概述](vpn-gateway-bgp-overview.md)和[如何配置 BGP](vpn-gateway-bgp-resource-manager-ps.md)。

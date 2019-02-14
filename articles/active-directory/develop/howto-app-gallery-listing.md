@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2018
+ms.date: 01/30/2019
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
-ms.openlocfilehash: fd02c2d10d072f33fdc265feaadf9776e9c1d679
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f4caf0cde7225e2c93723f412c53259a5f5646a4
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102028"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663275"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>如何：在 Azure Active Directory 应用程序库中列出你的应用程序
 
@@ -45,7 +45,7 @@ ms.locfileid: "55102028"
 
 - 对于密码 SSO，请确保你的应用程序支持窗体身份验证，以便可以进行密码保管，从而让单一登录按预期工作。
 
-- 对于自动用户预配请求，应在库中列出应用程序，并使用上面所述的任何联合身份验证协议启用单一登录功能。 如果尚未列出，可以在门户上一起请求 SSO 和用户预配。
+- 对于自动用户预配请求，应在库中列出应用程序，并使用 SAML 2.0/WS-Fed 启用单一登录功能。 如果尚未列出，可以在门户上一起请求 SSO 和用户预配。
 
 ## <a name="submit-the-request-in-the-portal"></a>在门户中提交请求
 

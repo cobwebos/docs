@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 904cd593022006bc16908664fb7d7d0e3f6f24b0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 708e5d2bdb3dd3ca259b6d7927b6ec24fc27dfea
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455212"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820702"
 documentType: LandingData
 title: Azure SQL 数据库 - 高级安全
 metadata:
@@ -14,6 +14,7 @@ metadata:
   services: sql-database
   author: jovanpop-msft
   manager: craigg
+  requires-business-manager-approval: false
   ms.service: sql-database
   ms.tgt_pltfrm: na
   ms.devlang: 
@@ -76,9 +77,9 @@ sections:
       - href: 
     - title: 在单一数据库上设置数据库服务器防火墙规则
       values:
-      - href: /azure/sql-database/sql-database-firewall-configure#manage-firewall-rules-using-the-azure-portal
-      - href: /azure/sql-database/sql-database-firewall-configure#manage-firewall-rules-using-azure-cli
-      - href: /azure/sql-database/sql-database-firewall-configure#manage-firewall-rules-using-azure-powershell
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-ip-firewall-rules-using-the-azure-portal
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-ip-firewall-rules-using-azure-cli
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-ip-firewall-rules-using-azure-powershell
     - title: 管理漏洞评估规则
       values:
       - href: 

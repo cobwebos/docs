@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: b59bb835c9858c6e47b8bb3a3518086e887d0d84
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: ba64ecc334d93c8ff973345cfd10ed12436d3fb6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542826"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813902"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>在批处理中的用户帐户下运行任务
 
@@ -66,7 +66,7 @@ Azure Batch 提供两种类型的用户帐户来运行任务：
 
 默认情况下，任务在批处理中的自动用户帐户下，以没有提升访问权限但具有任务范围的标准用户身份运行。 如果为任务范围配置了自动用户规范，批处理服务只为该任务创建自动用户帐户。
 
-任务范围的替代设置为池范围。 如果为池范围配置了某个任务的自动用户规范，该任务会在可供池中任何任务使用的自动用户帐户下运行。 有关池范围的详细信息，请参阅[以具有池范围的自动用户身份运行任务](#run-a-task-as-the-autouser-with-pool-scope)。   
+任务范围的替代设置为池范围。 如果为池范围配置了某个任务的自动用户规范，该任务会在可供池中任何任务使用的自动用户帐户下运行。 有关池范围的详细信息，请参阅标题为“以具有池范围的自动用户身份运行任务”部分。   
 
 在 Windows 和 Linux 节点上，默认范围不同：
 

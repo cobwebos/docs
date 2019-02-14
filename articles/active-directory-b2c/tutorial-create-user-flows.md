@@ -1,5 +1,5 @@
 ---
-title: 教程 - 在 Azure Active Directory B2C 中创建用户流 | Microsoft Docs
+title: 教程 - 创建用户流 - Azure Active Directory B2C | Microsoft Docs
 description: 了解如何使用 Azure 门户在 Azure Active Directory B2C 中创建应用程序的用户流。
 services: active-directory-b2c
 author: davidmu1
@@ -7,14 +7,14 @@ manager: daveba
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 02/01/2019
 ms.author: davidmu
-ms.openlocfilehash: 6e651d23e3b5cced78088d59979507eb09723165
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 7f017583a6eeb61b11df86a908d573dba9bd5929
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54845584"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750284"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中创建用户流
 
@@ -39,29 +39,30 @@ ms.locfileid: "54845584"
 
 注册和登录用户流通过单一配置处理注册和登录体验。 根据上下文将应用程序用户引导至正确的路径。
 
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
 
     ![切换到订阅目录](./media/tutorial-create-user-flows/switch-directories.png)
 
-2. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
-3. 在左侧菜单中，依次选择“用户流”、“新建用户流”。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
+4. 在左侧菜单中，依次选择“用户流”、“新建用户流”。
 
     ![选择“新建用户流”](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
-4. 在“建议”选项卡上选择“注册和登录”用户流。
+5. 在“建议”选项卡上选择“注册和登录”用户流。
 
     ![选择注册和登录用户流](./media/tutorial-create-user-flows/signup-signin-type.png)
 
-5. 输入该用户流的**名称**。 例如 *signupsignin1*。
-6. 对于“标识提供者”，请选择“电子邮件注册”。
+6. 输入该用户流的**名称**。 例如 *signupsignin1*。
+7. 对于“标识提供者”，请选择“电子邮件注册”。
 
     ![设置流属性](./media/tutorial-create-user-flows/signup-signin-properties.png)
 
-7. 对于“用户属性和声明”，请选择在注册期间要从用户收集并发送的声明和属性。 例如，选择“显示更多”，然后选择“国家/地区”、“显示名称”和“邮政编码”。 单击“确定”。
+8. 对于“用户属性和声明”，请选择在注册期间要从用户收集并发送的声明和属性。 例如，选择“显示更多”，然后选择“国家/地区”、“显示名称”和“邮政编码”。 单击“确定”。
 
     ![选择用户属性和声明](./media/tutorial-create-user-flows/signup-signin-attributes.png)
 
-8. 单击“创建”以添加用户流。 名称中会自动追加前缀 *B2C_1*。
+9. 单击“创建”以添加用户流。 名称中会自动追加前缀 *B2C_1*。
 
 ### <a name="test-the-user-flow"></a>测试用户流
 
@@ -123,4 +124,4 @@ ms.locfileid: "54845584"
 > * 创建密码重置用户流
 
 > [!div class="nextstepaction"]
-> [在 Azure Active Directory B2C 中自定义应用程序的用户界面](tutorial-customize-ui.md)
+> [将标识提供者添加到 Azure Active Directory B2C 中的应用程序](tutorial-add-identity-providers.md)

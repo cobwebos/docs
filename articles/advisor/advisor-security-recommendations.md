@@ -1,5 +1,5 @@
 ---
-title: Azure 顾问安全性建议 | Microsoft Docs
+title: 使用 Azure 顾问提高资源的安全性 | Microsoft Docs
 description: 使用 Azure 顾问提高 Azure 部署的安全性。
 services: advisor
 documentationcenter: NA
@@ -10,16 +10,16 @@ ms.service: advisor
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/16/2016
+ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: d366ee02e3a5ef3c6f983c9cea23943343ab4a51
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 290af605525d552e73c5f3a7a961593689326946
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849779"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494317"
 ---
-# <a name="advisor-security-recommendations"></a>顾问安全性建议
+# <a name="make-resources-more-secure-with-azure-advisor"></a>使用 Azure 顾问提高资源的安全性
 
 Azure 顾问针对所有 Azure 资源提供一个一致且统一的建议视图。 它与 Azure 安全中心集成，提供安全性建议。 可在顾问仪表板的“安全”选项卡获取安全性建议。
 

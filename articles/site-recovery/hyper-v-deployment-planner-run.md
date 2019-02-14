@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: b5f0a2a418c53a5049ebff9bba9188219a9aeb13
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 16c37f5ccaed7c161ecaae65a07c5da7400aad3c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321171"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815060"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>运行用于从 Hyper-V 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器
 
 可使用以下四种模式之一运行 Site Recovery 部署规划器命令行工具 (ASRDeploymentPlanner.exe)： 
--   [获取虚拟机 (VM) 列表](#get-vm-list-for-profiling-hyper-v-vms)
+-   获取虚拟机 (VM) 列表
 -   [配置文件](#profile-hyper-v-vms)
--   [生成报表](#generate-report)
+-   生成报告
 -   [获取吞吐量](#get-throughput)
 
 首先，运行该工具，从单个或多个 Hyper-V 主机中获取 VM 的列表。 然后，以分析模式运行该工具，收集 VM 数据变动量和 IOPS。 接下来，运行该工具生成报告，确定网络带宽和存储要求。
@@ -34,7 +34,7 @@ ms.locfileid: "54321171"
 ```
 ASRDeploymentPlanner.exe -Operation GetVMList /?
 ```
-| 参数名称 | Description |
+| 参数名称 | 说明 |
 |---|---|
 | -Operation | GetVMList |
 | -User | 连接到 Hyper-V 主机或 Hyper-V 群集所需的用户名。 用户需要有管理访问权限。|
@@ -74,7 +74,7 @@ ASRDeploymentPlanner.exe -Operation GetVMList -Directory "E:\Hyper-V_ProfiledDat
 此工具无缝处理从群集中的一个节点到另一个节点的 VM 迁移，以及主机中的存储迁移。
 
 ### <a name="getting-the-vm-list-to-profile"></a>获取要分析的 VM 列表
-若要创建要分析的 VM 的列表，请参阅 [GetVMList](#get-vm-list-for-profiling-hyper-v-vms) 操作。
+若要创建要分析的 VM 的列表，请参阅“GetVMList 操作”。
 
 创建要分析的 VM 的列表后，可在分析模式下运行该工具。 
 
@@ -83,7 +83,7 @@ ASRDeploymentPlanner.exe -Operation GetVMList -Directory "E:\Hyper-V_ProfiledDat
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
-| 参数名称 | Description |
+| 参数名称 | 说明 |
 |---|---|
 | -Operation | StartProfiling |
 | -User | 连接到 Hyper-V 主机或 Hyper-V 群集所需的用户名。 用户需要有管理访问权限。|
@@ -164,7 +164,7 @@ Azure Site Recovery 不支持使用 iSCSI 和传递磁盘的 VM。 该工具无�
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport /?
 ```
-| 参数名称 | Description |
+| 参数名称 | 说明 |
 |---|---|
 | -Operation | GenerateReport |
 |-VMListFile | 一个文件，其中包含一系列需为其生成报表的已分析 VM。 文件路径可以是绝对或相对路径。 对于 Hyper-V，此文件是 GetVMList 操作的输出文件。 如果手动进行准备，此文件应包含一个服务器名称或 IP 地址，后跟 VM 名称（每一行都由 \ 分隔）。 该文件中指定的 VM 名称应与 Hyper-V 主机上的 VM 名称相同。<br><br>**示例：** VMList.txt 包含以下 VM：<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
@@ -271,7 +271,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Dire
 ```
 ASRDeploymentPlanner.exe -Operation GetThroughput /?
 ```
- 参数名称 | Description |
+ 参数名称 | 说明 |
 |---|---|
 | -Operation | GetThroughput |
 |-Virtualization|虚拟化类型（VMware 或 Hyper-V）。|

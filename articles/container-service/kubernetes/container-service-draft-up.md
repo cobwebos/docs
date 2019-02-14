@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: bd1e4da67ef3f2ffce94c62e1dbc151aa4680e54
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 36e765d439d616ec165a2b53d2044586e73cde76
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854563"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809208"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>（已弃用）结合使用 Draft 与 Azure 容器服务和 Azure 容器注册表，生成应用程序并将其部署到 Kubernetes
 
@@ -191,7 +191,7 @@ stable/traefik  1.3.0   A Traefik based Kubernetes ingress controller w...
 
 $ helm install stable/traefik --name ingress
 ```
-现对 `ingress` 控制器设置监视，在部署时捕获外部 IP 值。 此 IP 地址将是下一节中[映射到部署域](#wire-up-deployment-domain)的地址。
+现对 `ingress` 控制器设置监视，在部署时捕获外部 IP 值。 此 IP 地址将是下一节中映射到部署域的地址。
 
 ```bash
 $ kubectl get svc -w

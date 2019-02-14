@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 0e1a0919975253e24318bb8029249958cbc50d62
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 36b9e6c97a10f7608a4faaef005ca4eeb1fc09c6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473157"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811522"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Azure 诊断 1.0 配置架构
 > [!NOTE]
@@ -101,7 +101,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 属性：
 
-|属性  |类型   |必选| 默认 | 说明|  
+|属性  |Type   |必选| 默认 | 说明|  
 |-----------|-------|--------|---------|------------|  
 |**configurationChangePollInterval**|duration|可选 | PT1M| 指定诊断监视器轮询诊断配置更改的时间间隔。|  
 |**overallQuotaInMB**|unsignedInt|可选| 4000 MB。 提供的值不得超过此值 |为所有日志记录缓冲区分配的文件系统存储的总量。|  
@@ -109,11 +109,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="diagnosticinfrastructurelogs-element"></a>DiagnosticInfrastructureLogs 元素  
 定义由基础诊断基础结构生成的日志的缓冲区配置。
 
-父元素：[DiagnosticMonitorConfiguration 元素](#DiagnosticMonitorConfiguration)。  
+父元素：DiagnosticMonitorConfiguration 元素。  
 
 属性：
 
-|属性|类型|说明|  
+|属性|Type|说明|  
 |---------|----|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|可选。 指定可用于存储指定数据的文件系统存储最大容量。<br /><br /> 默认值为 0。|  
 |**scheduledTransferLogLevelFilter**|字符串|可选。 指定传输的日志条目的最低严重级别。 默认值为“未定义”。 其他可能的值为“详细”、“信息”、“警告”、“错误”和“严重”。|  
@@ -122,11 +122,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="logs-element"></a>Logs 元素  
  定义基本 Azure 日志的缓冲区配置。
 
- 父元素：[DiagnosticMonitorConfiguration 元素](#DiagnosticMonitorConfiguration)。  
+ 父元素：DiagnosticMonitorConfiguration 元素。  
 
 属性：  
 
-|属性|类型|说明|  
+|属性|Type|说明|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|可选。 指定可用于存储指定数据的文件系统存储最大容量。<br /><br /> 默认值为 0。|  
 |**scheduledTransferLogLevelFilter**|字符串|可选。 指定传输的日志条目的最低严重级别。 默认值为“未定义”。 其他可能的值为“详细”、“信息”、“警告”、“错误”和“严重”。|  
@@ -135,12 +135,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="directories-element"></a>Directories 元素  
 为可以定义的基于文件的日志定义缓冲区配置。
 
-父元素：[DiagnosticMonitorConfiguration 元素](#DiagnosticMonitorConfiguration)。  
+父元素：DiagnosticMonitorConfiguration 元素。  
 
 
 属性：  
 
-|属性|类型|说明|  
+|属性|Type|说明|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|可选。 指定可用于存储指定数据的文件系统存储最大容量。<br /><br /> 默认值为 0。|  
 |**scheduledTransferPeriod**|duration|可选。 指定计划的数据传输之间的时间间隔，向上舍入为最接近的分钟数。<br /><br /> 默认是 PT0S。|  
@@ -148,11 +148,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="crashdumps-element"></a>CrashDumps 元素  
  定义故障转储目录。
 
- 父元素：[Directories 元素](#Directories)。  
+ 父元素：Directories 元素。  
 
 属性：  
 
-|属性|类型|说明|  
+|属性|Type|说明|  
 |---------------|----------|-----------------|  
 |**容器**|字符串|容器的名称，将要传输容器中的目录内容。|  
 |**directoryQuotaInMB**|unsignedInt|可选。 指定目录的大小上限（以兆字节为单位）。<br /><br /> 默认值为 0。|  
@@ -160,11 +160,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="failedrequestlogs-element"></a>FailedRequestLogs 元素  
  定义失败的请求日志目录。
 
- 父元素：[Directories 元素](#Directories)。  
+ 父元素：Directories 元素。  
 
 属性：  
 
-|属性|类型|说明|  
+|属性|Type|说明|  
 |---------------|----------|-----------------|  
 |**容器**|字符串|容器的名称，将要传输容器中的目录内容。|  
 |**directoryQuotaInMB**|unsignedInt|可选。 指定目录的大小上限（以兆字节为单位）。<br /><br /> 默认值为 0。|  
@@ -172,11 +172,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ##  <a name="iislogs-element"></a>IISLogs 元素  
  定义 IIS 日志目录。
 
- 父元素：[Directories 元素](#Directories)。  
+ 父元素：Directories 元素。  
 
 属性：  
 
-|属性|类型|说明|  
+|属性|Type|说明|  
 |---------------|----------|-----------------|  
 |**容器**|字符串|容器的名称，将要传输容器中的目录内容。|  
 |**directoryQuotaInMB**|unsignedInt|可选。 指定目录的大小上限（以兆字节为单位）。<br /><br /> 默认值为 0。|  
@@ -184,16 +184,16 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="datasources-element"></a>DataSources 元素  
  定义零个或多个其他日志目录。
 
- 父元素：[Directories 元素](#Directories)。
+ 父元素：Directories 元素。
 
 ## <a name="directoryconfiguration-element"></a>DirectoryConfiguration 元素  
  定义要监视的日志文件的目录。
 
- 父元素：[DataSources 元素](#DataSources)。
+ 父元素：DataSources 元素。
 
 属性：
 
-|属性|类型|说明|  
+|属性|Type|说明|  
 |---------------|----------|-----------------|  
 |**容器**|字符串|容器的名称，将要传输容器中的目录内容。|  
 |**directoryQuotaInMB**|unsignedInt|可选。 指定目录的大小上限（以兆字节为单位）。<br /><br /> 默认值为 0。|  
@@ -201,11 +201,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="absolute-element"></a>Absolute 元素  
  定义要使用可选环境扩展监视的目录的绝对路径。
 
- 父元素：[DirectoryConfiguration 元素](#DirectoryConfiguration)。  
+ 父元素：DirectoryConfiguration 元素。  
 
 属性：  
 
-|属性|类型|说明|  
+|属性|Type|说明|  
 |---------------|----------|-----------------|  
 |**路径**|字符串|必需。 要监视的目录的绝对路径。|  
 |**expandEnvironment**|布尔值|必需。 如果设置为 **true**，则扩展路径中的环境变量。|  
@@ -213,11 +213,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="localresource-element"></a>LocalResource 元素  
  定义服务定义中定义的本地资源的相对路径。
 
- 父元素：[DirectoryConfiguration 元素](#DirectoryConfiguration)。  
+ 父元素：DirectoryConfiguration 元素。  
 
 属性：  
 
-|属性|类型|说明|  
+|属性|Type|说明|  
 |---------------|----------|-----------------|  
 |name|字符串|必需。 包含要监视的目录的本地资源的名称。|  
 |**relativePath**|字符串|必需。 相对于要监视的本地资源的路径。|  
@@ -225,12 +225,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="performancecounters-element"></a>PerformanceCounters 元素  
  定义要收集的性能计数器的路径。
 
- 父元素：[DiagnosticMonitorConfiguration 元素](#DiagnosticMonitorConfiguration)。
+ 父元素：DiagnosticMonitorConfiguration 元素。
 
 
  属性：  
 
-|属性|类型|说明|  
+|属性|Type|说明|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|可选。 指定可用于存储指定数据的文件系统存储最大容量。<br /><br /> 默认值为 0。|  
 |**scheduledTransferPeriod**|duration|可选。 指定计划的数据传输之间的时间间隔，向上舍入为最接近的分钟数。<br /><br /> 默认是 PT0S。|  
@@ -238,11 +238,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration 元素  
  定义要收集的性能计数器。
 
- 父元素：[PerformanceCounters 元素](#PerformanceCounters)。  
+ 父元素：PerformanceCounters 元素。  
 
  属性：  
 
-|属性|类型|说明|  
+|属性|Type|说明|  
 |---------------|----------|-----------------|  
 |**counterSpecifier**|字符串|必需。 要收集的性能计数器的路径。|  
 |**sampleRate**|duration|必需。 应收集性能计数器的速率。|  
@@ -250,11 +250,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="windowseventlog-element"></a>WindowsEventLog 元素  
  定义要监视的事件日志。
 
- 父元素：[DiagnosticMonitorConfiguration 元素](#DiagnosticMonitorConfiguration)。
+ 父元素：DiagnosticMonitorConfiguration 元素。
 
   属性：
 
-|属性|类型|说明|  
+|属性|Type|说明|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|可选。 指定可用于存储指定数据的文件系统存储最大容量。<br /><br /> 默认值为 0。|  
 |**scheduledTransferLogLevelFilter**|字符串|可选。 指定传输的日志条目的最低严重级别。 默认值为“未定义”。 其他可能的值为“详细”、“信息”、“警告”、“错误”和“严重”。|  
@@ -263,11 +263,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="datasource-element"></a>DataSource 元素  
  定义要监视的事件日志。
 
- 父元素：[WindowsEventLog 元素](#windowsEventLog)。  
+ 父元素：WindowsEventLog 元素。  
 
  属性：
 
-|属性|类型|说明|  
+|属性|Type|说明|  
 |---------------|----------|-----------------|  
 |name|字符串|必需。 指定要收集的日志的 XPath 表达式。|  
 

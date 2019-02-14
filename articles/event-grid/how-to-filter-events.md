@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: spelluru
-ms.openlocfilehash: fa7deb8a1ef536ef0c2b7fbb0a184a950821aebf
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 95a0d1b8afba71f6c8226dfe1ad5268d9e6f24e1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477330"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816911"
 ---
 # <a name="filter-events-for-event-grid"></a>筛选事件网格的事件
 
@@ -20,7 +20,7 @@ ms.locfileid: "54477330"
 
 ## <a name="filter-by-event-type"></a>按事件类型筛选
 
-创建事件网格订阅时，可以指定要发送到终结点的[事件类型](event-schema.md)。 本部分中的示例创建资源组的事件订阅，但会限制发送到 `Microsoft.Resources.ResourceWriteFailure` 和 `Microsoft.Resources.ResourceWriteSuccess` 的事件。 如果在按事件类型筛选事件时需要更多灵活性，请参阅[按高级运算符和数据字段筛选](#filter-by-advanced-operators-and-data-fields)。
+创建事件网格订阅时，可以指定要发送到终结点的[事件类型](event-schema.md)。 本部分中的示例创建资源组的事件订阅，但会限制发送到 `Microsoft.Resources.ResourceWriteFailure` 和 `Microsoft.Resources.ResourceWriteSuccess` 的事件。 如果在按事件类型筛选事件时需要更多灵活性，请参阅按高级运算符和数据字段筛选。
 
 对于 PowerShell，请在创建订阅时使用 `-IncludedEventType` 参数。
 
@@ -77,7 +77,7 @@ az eventgrid event-subscription create \
 
 ## <a name="filter-by-subject"></a>按主题筛选
 
-可以按事件数据中的主题筛选事件。 可以指定一个值来匹配主题的开头或结尾。 如果在按主题筛选事件时需要更多灵活性，请参阅[按高级运算符和数据字段筛选 ](#filter-by-advanced-operators-and-data-fields)。
+可以按事件数据中的主题筛选事件。 可以指定一个值来匹配主题的开头或结尾。 如果在按主题筛选事件时需要更多灵活性，请参阅按高级运算符和数据字段筛选。
 
 在以下 PowerShell 示例中，会创建一个按主题开头筛选的事件订阅。 使用 `-SubjectBeginsWith` 参数将事件限制为特定资源的事件。 然后传递网络安全组的资源 ID。
 

@@ -2,18 +2,18 @@
 title: 管理资源管理器部署型虚拟机备份
 description: 了解如何管理和监视 Resource Manager 部署型虚拟机备份
 services: backup
-author: trinadhk
-manager: shreeshd
+author: sogup
+manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/28/2016
-ms.author: trinadhk
-ms.openlocfilehash: 0e599c95f40e62a4bb01a7ab698fe0ce1f738e49
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.author: sogup
+ms.openlocfilehash: 0ed7260f35c483d17eb97e625ef72c310a3fcfdb
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635759"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564130"
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>管理 Azure 虚拟机备份
 
@@ -141,6 +141,8 @@ ms.locfileid: "53635759"
 * 停止所有将来的备份作业，但保留恢复点
 
 将恢复点保留在存储空间中需支付相关费用。 不过，保留恢复点的好处是，可以根据需要在以后还原虚拟机。 如需了解保留恢复点的成本，请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/backup/)。 如果选择删除所有恢复点，则无法还原虚拟机。
+
+每当在保留数据的情况下停止备份时，恢复点都将根据保留策略过期，但 Azure 备份会始终保留最后一个恢复点，直至你显式删除备份数据。 类似地，如果你在不执行停止备份的情况下删除数据源，则新备份将会失败，并且旧的恢复点将根据保留策略过期，但最后一个恢复点将始终保留，直到你在删除数据的情况下执行停止备份。
 
 若要停止保护虚拟机，请执行以下操作：
 

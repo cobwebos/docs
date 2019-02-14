@@ -7,20 +7,16 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/06/2019
 ms.author: spelluru
-ms.openlocfilehash: 8660f09c41cf6226f2ffb173508d37c260522b80
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: a15797e9b181aa877b6dfa3350e69b210af5885e
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474235"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731761"
 ---
 # <a name="dead-letter-and-retry-policies"></a>死信与重试策略
 
 创建事件订阅时，可以自定义每个事件传递的设置。 本文介绍如何设置死信位置和自定义重试设置。 有关这些功能的信息，请参阅[事件网格消息传送和重试](delivery-and-retry.md)。
-
-## <a name="install-preview-feature"></a>安装预览功能
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="set-dead-letter-location"></a>设置死信位置
 
@@ -29,10 +25,6 @@ ms.locfileid: "54474235"
 ### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
-# If you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 containername=testcontainer
 
 topicid=$(az eventgrid topic show --name demoTopic -g gridResourceGroup --query id --output tsv)
@@ -47,13 +39,12 @@ az eventgrid event-subscription create \
 
 若要禁用死信，请重新运行命令以创建事件订阅，但不要为 `deadletter-endpoint` 提供值。 不需要删除事件订阅。
 
+> [!NOTE]
+> 如果是在本地计算机上使用 Azure CLI，请使用 Azure CLI 2.0.56 或更高版本。 有关安装 Azure CLI 的最新版本的说明，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+
 ### <a name="powershell"></a>PowerShell
 
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
 $containername = "testcontainer"
 
 $topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name demoTopic).Id
@@ -68,6 +59,9 @@ New-AzureRmEventGridSubscription `
 
 若要禁用死信，请重新运行命令以创建事件订阅，但不要为 `DeadLetterEndpoint` 提供值。 不需要删除事件订阅。
 
+> [!NOTE]
+> 如果是在本地计算机上使用 Azure Poweshell，请使用 Azure PowerShell 1.1.0 或更高版本。 从 [Azure 下载](https://azure.microsoft.com/downloads/)来下载并安装最新的 Azure PowerShell。
+
 ## <a name="set-retry-policy"></a>设置重试策略
 
 创建事件网格订阅时，可以设置事件网格尝试使用多长时间来传递事件。 默认情况下，事件网格会尝试使用 24 小时（1440 分钟）或 30 次。 可以为你的事件网格订阅设置这些值之一。 事件生存时间的值必须是 1 到 1440 之间的整数。 最大重试次数的值必须是 1 到 30 之间的整数。
@@ -79,10 +73,6 @@ New-AzureRmEventGridSubscription `
 若要将事件生存期设置为 1440 分钟之外的值，请使用以下命令：
 
 ```azurecli-interactive
-# if you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid event-subscription create \
   -g gridResourceGroup \
   --topic-name <topic_name> \
@@ -109,10 +99,6 @@ az eventgrid event-subscription create \
 若要将事件生存期设置为 1440 分钟之外的值，请使用以下命令：
 
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
 $topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name demoTopic).Id
 
 New-AzureRmEventGridSubscription `

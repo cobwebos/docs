@@ -2,18 +2,18 @@
 title: 将备份保管库升级到 Azure 备份的恢复服务保管库
 description: 将备份保管库升级到恢复服务保管库可获取新的功能，例如，资源管理器 VM 备份、增强的安全性、VMware VM 备份，以及 Windows Server 的系统状态备份
 services: backup
-author: trinadhk
-manager: vijayts
+author: raynew
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/10/2017
-ms.author: trinadhk
-ms.openlocfilehash: 01aacaecba8c5a4adf1dab5483a2f921df9314c0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/31/2019
+ms.author: raynew
+ms.openlocfilehash: b7671271e569802311884861265a7825404c9c75
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252524"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490339"
 ---
 # <a name="backup-vault-upgraded-to-recovery-services-vault"></a>已升级到恢复服务保管库的备份保管库
 本文提供恢复服务保管库的功能概述、有关将现有备份保管库升级到恢复服务保管库的常见问题，以及升级后的步骤。 恢复服务保管库是与用于容装备份数据的备份保管库相当的 Azure 资源管理器。 不管在本地还是在 Azure 中，数据通常都是虚拟机 (VM)、工作负荷、服务器或工作站的数据或配置信息的副本。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 135496e17ae884db580922aa31f6824b2e7fd934
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 1f2c218ed9ba2f5f9285c60b8d4c11704825c0f5
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37855978"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563875"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的限制
 
@@ -77,7 +77,7 @@ Cloud Shell 中包含的 `SqlServer` 模块仅具有对 PowerShell Core 的预�
 
 ### <a name="gui-applications-are-not-supported"></a>不支持 GUI 应用程序
 
-如果用户运行一条会创建 Windows 对话框的命令（例如 `Connect-AzureAD` 或 `Connect-AzureRmAccount`），将看到如下所示的错误消息：`Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`。
+如果用户运行一条会创建 Windows 对话框的命令（例如 `Connect-AzureAD`、`Connect-AzureRmAccount` 或 `Connect-AzAccount`），将看到如下所示的错误消息：`Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`。
 
 ### <a name="tab-completion-crashes-psreadline"></a>Tab 自动补全导致 PSReadline 崩溃
 

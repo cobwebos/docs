@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 8424fa721d87467de70b4365578d196b3145b4b0
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: cabfe4381f7f941f2a5e049eed73be546902f6ae
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024256"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55485341"
 ---
 # <a name="use-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>使用消息路由将设备到云的消息发送到不同的终结点
 
@@ -27,7 +27,7 @@ ms.locfileid: "50024256"
 
 IoT 中心需要这些服务终结点的写入权限，以便使用消息路由。 如果通过 Azure 门户配置终结点，则将添加必要权限。 请确保将服务配置为支持预期吞吐量。 在首次配置 IoT 解决方案时，可能需要监视附加终结点，并针对实际负载进行任意的必要调整。
 
-IoT 中心为所有设备到云消息传递定义[通用格式](iot-hub-devguide-messages-construct.md)，以实现跨协议的互操作性。 如果某条消息与多个路由匹配，而这些路由指向同一终结点，则 IoT 中心仅向该终结点传递一次消息。 因此无需在服务总线队列或主题中配置重复数据删除。 在分区队列中，分区相关性可保障消息排序。 使用本教程了解如何[配置消息路由](tutorial-routing.md)。
+IoT 中心为所有“设备到云”消息传递定义[通用格式](iot-hub-devguide-messages-construct.md)，以实现跨协议的互操作性。 如果某条消息与多个路由匹配，而这些路由指向同一终结点，则 IoT 中心仅向该终结点传递一次消息。 因此无需在服务总线队列或主题中配置重复数据删除。 在分区队列中，分区相关性可保障消息排序。 使用本教程了解如何[配置消息路由](tutorial-routing.md)。
 
 ## <a name="routing-endpoints"></a>路由终结点
 
@@ -85,7 +85,7 @@ IoT 中心默认为以下文件命名约定：
 
 除了设备遥测外，消息路由也能够发送设备孪生更改事件和设备生命周期事件。 例如，如果使用数据源创建一个设置为到**设备孪生更改事件**的路由，IoT 中心会将消息发送到包含设备孪生更改的终结点。 同样，如果使用数据源创建一个设置为到**设备生命周期事件**的路由，IoT 中心将一条消息，此消息指示是否已删除或创建了设备。 
 
-[IoT中心还集成了 Azure 事件网格](iot-hub-event-grid.md)来发布事件以支持基于这些事件的工作流的实时集成和自动化。 请参阅[消息路由和事件网格之间的主要区别](iot-hub-event-grid-routing-comparison.md)来了解哪种更适合你的方案。
+[IoT 中心还集成了 Azure 事件网格](iot-hub-event-grid.md)来发布事件以支持基于这些事件的工作流的实时集成和自动化。 请参阅[消息路由和事件网格之间的主要区别](iot-hub-event-grid-routing-comparison.md)来了解哪种更适合你的方案。
 
 ## <a name="testing-routes"></a>测试路由
 

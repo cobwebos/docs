@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: de31ab4e617b872239c1b83324e5b8d52b0b4094
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/06/2019
+ms.openlocfilehash: 5ce8464de552fb228b961af199e4b03e645478a2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469102"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809974"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL 连接体系结构
 
@@ -25,8 +25,7 @@ ms.locfileid: "55469102"
 
 > [!IMPORTANT]
 > **[即将发生的更改] 对于到 Azure SQL Server 的服务终结点连接，`Default` 连接行为会更改为`Redirect`。**
->
-> 更改将于 2019 年 1 月 2 日或之前对所有区域有效。
+> 建议客户创建新的服务器，并将现有服务器的连接类型显式设置为“重定向”（首选）或“代理”，具体取决于服务器的连接体系结构。
 >
 > 为了防止在进行此更改时在现有环境中通过服务终结点进行的连接中断，我们使用遥测执行以下操作：
 > - 对于在更改前检测到的通过服务终结点进行过访问的服务器，我们将连接类型切换为 `Proxy`。
@@ -38,7 +37,7 @@ ms.locfileid: "55469102"
 >
 > 如果不能建立到 Azure SQL Server 的服务终结点连接，而你怀疑自己受此更改的影响，请验证是否已将连接类型显式设置为 `Redirect`。 如果是这种情况，则必须对区域中属于端口 11000-12000 的 Sql [服务标记](../virtual-network/security-overview.md#service-tags)的所有 Azure IP 地址启用 VM 防火墙规则和网络安全组 (NSG)。 如果这不是适合自己的选项，请将服务器显式切换为 `Proxy`。
 > [!NOTE]
-> 本主题适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。
+> 本主题适用于托管单一数据库和弹性池的 Azure SQL 数据库服务器以及 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。
 
 ## <a name="connectivity-architecture"></a>连接体系结构
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 1/7/2019
 ms.author: borisb
-ms.openlocfilehash: 7ab8b66d516368bf866aa9d2a202ccd261394b93
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4505dcf5d9407a609bcf97c56835ff186607127d
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243141"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563723"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>用于 Azure 中按需 Red Hat Enterprise Linux VM 的 Red Hat 更新基础结构
  [Red Hat 更新基础结构](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) 允许云提供程序（如 Azure）镜像 Red Hat 托管的存储库内容，创建包含 Azure 特定内容的自定义存储库，并将其提供给最终用户 VM 使用。
@@ -109,7 +109,7 @@ ms.locfileid: "55243141"
 sudo yum update -y --disablerepo='*' --enablerepo='*-microsoft-*'
 ```
 
-另外，运行 `sudo yum update` 也会更新客户端证书包，尽管你将看到其他存储库的“SSL 证书已过期”错误。 更新后，应当还原与其他 RHUI 存储库的正常连接，以便能够成功运行 `sudo yum update`。
+另外，运行 `sudo yum update` 也可能会更新客户端证书包（具体取决于 RHEL 版本），尽管你将看到其他存储库的“SSL 证书已过期”错误。 如果此更新成功，则应当还原与其他 RHUI 存储库的正常连接，以便能够成功运行 `sudo yum update`。
 
 
 ### <a name="troubleshoot-connection-problems-to-azure-rhui"></a>排查 Azure RHUI 连接问题

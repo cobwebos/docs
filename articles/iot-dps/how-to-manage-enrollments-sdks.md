@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: arjmands
-ms.openlocfilehash: 9a68d928c70e1e233f6de7df13441a1f688f456a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1c7fa798c2e767aa6a21b3c56da6f69b4d3a1406
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629841"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732340"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>如何使用 Azure 设备预配服务 SDK 管理设备注册
 “设备注册”将创建单台设备或一组设备在某一时刻向设备预配服务进行注册的记录。 注册记录包含注册过程中设备所需的初始配置及所需的 IoT 中心。 这篇文章演示如何使用 Azure IoT 预配服务 SDK 以编程方式管理预配服务的设备注册。  SDK 可从 GitHub 上与 Azure IoT SDK 相同的存储库中获取。
@@ -25,7 +25,7 @@ ms.locfileid: "34629841"
         * 单个注册：来自物理设备或 TPM 模拟器的注册 ID 和 TPM 认可密钥。
         * 注册组不适用于 TPM 证明。
     * [**X.509**](/azure/iot-dps/concepts-security)：
-        * 个人注册：来自物理设备或 SDK [DICE](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) 仿真器的[叶证书](/azure/iot-dps/concepts-security#leaf-certificate)。
+        * 单个注册：来自物理设备或 SDK [DICE](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) 仿真器的[叶证书](/azure/iot-dps/concepts-security)。
         * 注册组：[CA/根证书](/azure/iot-dps/concepts-security#root-certificate)或[中间证书](/azure/iot-dps/concepts-security#intermediate-certificate)，用于在物理设备上生成设备证书。  它还可以通过 SDK DICE 仿真器生成。
 * 具体的 API 调用可能会因语言的不同而有所不同。 有关详细信息，请查看 GitHub 上提供的示例：
    * [Java 预配服务客户端示例](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)

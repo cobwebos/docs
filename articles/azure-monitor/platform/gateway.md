@@ -11,16 +11,21 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 551e7c0ca3b4b5e0e94aca39e19d9a35d08e4e05
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: e1c225eb77a76015520690916db0399487ffe9e7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353033"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822606"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>使用 Log Analytics 网关连接无法访问 Internet 的计算机
+
+>[!NOTE]
+>作为正在从 Microsoft Operations Management Suite (OMS) 过渡到 Azure Monitor 的一部分，OMS 网关将称为 Log Analytics 网关。 
+>
+
 本文档介绍直接连接或 Operations Manager 监视的计算机无法访问 Internet 时，如何使用 Log Analytics 网关，配置与 Azure 自动化和 Log Analytics 的通信。  Log Analytics 网关是使用 HTTP CONNECT 命令，支持 HTTP 隧道的 HTTP 转发代理，它可以收集数据，然后代表这些设备将数据发送到 Azure 自动化和 Log Analytics。  
 
 Log Analytics 网关支持：
@@ -29,7 +34,7 @@ Log Analytics 网关支持：
 * Azure 自动化混合 Runbook 辅助角色  
 * 装有 Microsoft Monitoring Agent，可直接连接到 Log Analytics 工作区的 Windows 计算机
 * 装有 Log Analytics Linux 代理可直接连接到 Log Analytics 工作区的 Linux 计算机  
-* 与 Log Analytics 集成的 System Center Operations Manager 2012 SP1 with UR7、Operations Manager 2012 R2 with UR3、Operations Manager 2016 和 Operations Manager 版本 1801 管理组。  
+* 与 Log Analytics 集成的 System Center Operations Manager 2012 SP1 UR7、Operations Manager 2012 R2 UR3 或 Operations Manager 2016 或更高版本的管理组。  
 
 如果 IT 安全策略不允许网络中的计算机（例如销售点 (POS) 设备或支持 IT 服务的服务器）连接到 Internet，但需要将其连接到 Azure 自动化或 Log Analytics 以便管理和监视这些计算机，则可以将它们配置为直接与 Log Analytics 网关通信，让网关代表这些计算机接收配置和转发数据。  如果这些计算机上配置了可直接连接到 Log Analytics 工作区的 Log Analytics 代理，则所有计算机将改为与 Log Analytics 网关通信。  网关会直接将数据从代理传输到服务，但不会分析传输中的任何数据。
 
@@ -146,7 +151,7 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
 
 在网关服务器上安装代理后，可将其配置为向与网关通信的工作区或工作区代理报告。 如果未在网关上安装 Log Analytics Windows 代理，则会将事件 300 写入 **OMS 网关日志**事件日志，指示需要安装代理。 如果代理已安装，但未配置为在代理通过它通信时向同一工作区报告，则会将事件 105 写入相同的事件日志，指出需要将网关上的代理配置为在代理与网关通信时，向同一工作区报告。
 
-完成后配置，需要重启 **OMS 网关**服务才能使更改生效。 否则，网关将拒绝代理尝试与 Log Analytics 通信，并在 **OMS 网关日志**事件日志中报告事件 ID 105。 在网关服务器上的代理配置中添加或删除工作区时，这一点同样适用。   
+完成后配置，需要重启 **OMS 网关**服务才能使更改生效。 否则，网关将拒绝代理尝试与 Log Analytics 通信，并在 OMS 网关日志事件日志中报告事件 ID 105。 在网关服务器上的代理配置中添加或删除工作区时，这一点同样适用。   
 
 有关自动化混合 Runbook 辅助角色的信息，请参阅[部署混合 Runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)。
 

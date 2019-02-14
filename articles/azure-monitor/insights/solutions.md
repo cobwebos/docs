@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: 0103225803ca98cb9d8e27eb57f150e0660cd7ab
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 8a6a679aaf43e4a92eb380368f3d68704853d3a3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299115"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816809"
 ---
 # <a name="management-solutions-in-azure-monitor"></a>Azure Monitor 中的管理解决方案
 管理解决方案利用 Azure 中的服务来提供特定应用程序或服务的更多操作见解。 本文简要概述 Azure 中的管理解决方案，并详细介绍如何使用和安装这些解决方案。
@@ -101,7 +101,7 @@ ms.locfileid: "55299115"
 1. 如果“工作区”设置已启用，则此帐户将链接到 Log Analytics 工作区。 可单击“工作区”查看工作区的详细信息。
 
 ## <a name="remove-a-management-solution"></a>删除管理解决方案
-若要删除已安装的解决方案，请在[已安装的解决方案列表](#list-installed-monitoring-solutions)中找到它。 单击解决方案的名称打开其摘要页，然后单击“删除”。
+若要删除已安装的解决方案，请在已安装的解决方案列表中找到它。 单击解决方案的名称打开其摘要页，然后单击“删除”。
 
 
 

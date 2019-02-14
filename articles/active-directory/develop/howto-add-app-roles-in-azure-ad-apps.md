@@ -16,12 +16,13 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: b44aa35765cba33a85519fcd53f0df365c26be6b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 427e293c28f634df9f66a7210d79e0df0d4d063c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093405"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164033"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
 

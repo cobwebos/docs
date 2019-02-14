@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: juliako
-ms.openlocfilehash: 20aef7f971b4c4bf8dcff98c633aa0b0aa69811a
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 9a96edbc70eeda8acee792a71d84b4a2c6c4fef8
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828173"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745378"
 ---
 # <a name="analyzing-video-and-audio-files"></a>分析视频和音频文件
 
@@ -33,7 +33,7 @@ ms.locfileid: "54828173"
 
 |**预设名称**|**方案**|**详细信息**|
 |---|---|---|
-|**AudioAnalyzerPreset**|分析音频|该预设应用一组基于 AI 的预定义分析操作，包括语音听录。 目前，该预设支持处理单个音轨的内容。可以使用 BCP-47 格式“language tag-region”为输入中的音频有效负载指定语言。 支持的语言包括英语（en-US 和 en-GB）、西班牙语（es-ES 和 es-MX）、法语 (fr-FR)、意大利语 (it-IT)、日语 (ja-JP)、葡萄牙语 (pt-BR)、中文 (zh-CN)、德语 (de-DE)、阿拉伯语 (ar-EG)、俄语 (ru-RU)、印地语 (hi-IN) 和韩语 (ko-KR)。<br/><br/> 如果未指定语言或将其设置为 Null，则将使用自动语言检测。 自动语言检测功能目前支持英语、中文、法语、德语、意大利语、日语、西班牙语、俄语和葡萄牙语。 自动语言检测功能最适用于包含清晰可辨的语音的录音。 如果自动语言检测未能找到语言，脚本将回退到英语。|
+|**AudioAnalyzerPreset**|分析音频|该预设应用一组基于 AI 的预定义分析操作，其中包括语音听录。 目前，该预设支持处理包含单个音轨的内容且音轨应仅包含一种语言的语音。 可以使用 BCP-47 格式“language tag-region”为输入中的音频有效负载指定语言。 支持的语言包括英语（en-US 和 en-GB）、西班牙语（es-ES 和 es-MX）、法语 (fr-FR)、意大利语 (it-IT)、日语 (ja-JP)、葡萄牙语 (pt-BR)、中文 (zh-CN)、德语 (de-DE)、阿拉伯语 (ar-EG)、俄语 (ru-RU)、印地语 (hi-IN) 和韩语 (ko-KR)。<br/><br/> 如果未指定语言或将语言设置为 null，自动语言检测将选择检测到的第一种语言并使用所选语言处理整个文件。 自动语言检测功能目前支持英语、中文、法语、德语、意大利语、日语、西班牙语、俄语和葡萄牙语。 它目前不支持在检测到第一种语言后在各语言之间进行动态切换。 自动语言检测功能最适用于包含清晰可辨的语音的录音。 如果自动语言检测未能找到语言，脚本将回退到英语。|
 |**VideoAnalyzerPreset**|分析音频和视频|从音频和视频中提取见解（丰富的元数据），并输出 JSON 格式的文件。 可以指定在处理视频文件时是否只想提取音频见解。 有关详细信息，请参阅[分析视频](analyze-videos-tutorial-with-api.md)。|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
@@ -61,7 +61,7 @@ ms.locfileid: "54828173"
 
 ### <a name="transcript"></a>脚本
 
-|名称|说明|
+|Name|说明|
 |---|---|
 |id|行 ID。|
 |text|脚本本身。|
@@ -99,7 +99,7 @@ ms.locfileid: "54828173"
 
 ### <a name="ocr"></a>ocr
 
-|名称|说明|
+|Name|说明|
 |---|---|
 |id|OCR 行 ID。|
 |text|OCR 文本。|
@@ -142,7 +142,7 @@ ms.locfileid: "54828173"
 
 ### <a name="faces"></a>人脸
 
-|名称|说明|
+|Name|说明|
 |---|---|
 |id|人脸 ID。|
 |名称|人脸姓名。 可以为“Unknown #0”、公认的名人或客户训练的人。|
@@ -187,7 +187,7 @@ ms.locfileid: "54828173"
 
 ### <a name="shots"></a>截图
 
-|名称|说明|
+|Name|说明|
 |---|---|
 |id|截图 ID。|
 |keyFrames|截图内的关键帧列表（每个关键帧都有一个 ID 和实例时间范围列表）。 关键帧实例具有一个 thumbnailId 字段，该字段包含关键帧的缩略图 ID。|
@@ -244,7 +244,7 @@ ms.locfileid: "54828173"
 
 ### <a name="statistics"></a>statistics
 
-|名称|说明|
+|Name|说明|
 |---|---|
 |CorrespondenceCount|视频中对应关系的数目。|
 |WordCount|每个发言人的单词数。|
@@ -257,7 +257,7 @@ ms.locfileid: "54828173"
 
 情绪依据其 sentimentType 字段得出（积极/中立/消极）。 例如：0-0.1、0.1-0.2。
 
-|名称|说明|
+|Name|说明|
 |---|---|
 |id|情绪 ID。|
 |averageScore |该情绪类型的所有实例的所有分数的均值 - 积极/中立/消极|
@@ -292,7 +292,7 @@ ms.locfileid: "54828173"
 
 ### <a name="labels"></a>标签
 
-|名称|说明|
+|Name|说明|
 |---|---|
 |id|标签 ID。|
 |名称|标签名称（例如“计算机”、“电视”）。|
@@ -351,7 +351,7 @@ ms.locfileid: "54828173"
 
 ### <a name="keywords"></a>关键字
 
-|名称|说明|
+|Name|说明|
 |---|---|
 |id|关键字 ID。|
 |text|关键字文本。|
@@ -402,7 +402,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 找到的包含成人或猥亵内容的视频可能仅供私人观看。 用户可以选择请求人工审查内容，在这种情况下，IsAdult 属性将包含人工审查的结果。
 
-|名称|说明|
+|Name|说明|
 |---|---|
 |id|视觉内容审核 ID。|
 |adultScore|成人内容评分（由内容审核员提供）。|

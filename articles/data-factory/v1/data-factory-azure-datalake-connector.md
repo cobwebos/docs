@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3b5425bd9f86bce289cc1f60c088febfd8f05ee3
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 8731857d133e60cad4ecdca21874916949e05ff3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332619"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813511"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>使用数据工厂向/从 Data Lake Storage Gen1 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -240,8 +240,8 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | **folderPath** |Data Lake Store 中容器和文件夹的路径。 |是 |
-| **fileName** |Azure Data Lake Store 中文件的名称。 **fileName** 属性可选，并且区分大小写。 <br/><br/>如果指定 **fileName**，则活动（包括复制）将对特定文件起作用。<br/><br/>如果未指定 **fileName**，则复制将包括输入数据集的 **folderPath** 中的所有文件。<br/><br/>如果没有为输出数据集指定 **fileName**，并且没有在活动接收器中指定 **preserveHierarchy**，所生成文件的名称会采用格式 Data._Guid_.txt`。 例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |否 |
-| **partitionedBy** |**partitionedBy** 属性可选。 它可用于指定时序数据的动态路径和文件名。 例如，**folderPath** 可针对每小时的数据参数化。 有关详细信息和示例，请参阅 [partitionedBy 属性](#using-partitionedby-property)。 |否 |
+| **fileName** |Azure Data Lake Store 中文件的名称。 **fileName** 属性可选，并且区分大小写。 <br/><br/>如果指定 **fileName**，则活动（包括复制）将对特定文件起作用。<br/><br/>如果未指定 **fileName**，则复制将包括输入数据集的 **folderPath** 中的所有文件。<br/><br/>如果没有为输出数据集指定 **fileName**，并且没有在活动接收器中指定 **preserveHierarchy**，所生成文件的名称会采用格式 Data._Guid_.txt`。 例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. 否 |
+| **partitionedBy** |**partitionedBy** 属性可选。 它可用于指定时序数据的动态路径和文件名。 例如，**folderPath** 可针对每小时的数据参数化。 有关详细信息和示例，请参阅“partitionedBy 属性”。 |否 |
 | **format** | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat。 请将 **format** 中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅 [Azure 数据工厂支持的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)一文中的[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、 [Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[ORC 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)等部分。 <br><br> 如果想要在基于文件的存储之间“按原样”复制文件（二进制副本），可以在输入和输出数据集定义中跳过 `format` 节。 |否 |
 | **compression** | 指定数据的压缩类型和级别。 支持的类型为 **GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为“最佳”和“最快”。 有关详细信息，请参阅 [Azure 数据工厂支持的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 

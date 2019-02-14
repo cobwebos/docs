@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 769dcd3be33ec5dfecf0607ab3e45a11486c48d4
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 7d8047e569d3506f9ebb798b4f8c31ff94204fa4
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412863"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694051"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
 
@@ -230,7 +230,7 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间相�
 使用 VNet 对等互连（或虚拟网络对等互连）可连接虚拟网络。 使用虚拟网络之间的 VNet 对等互连连接，可通过 IPv4 地址在这些虚拟网络之间私下路由流量。 对等互连的 VNet 中的虚拟机可相互通信，如同它们处于同一网络中一样。 这些虚拟网络可以位于相同区域或不同区域中（也称为全球 VNet 对等互连）。 此外，还可跨 Azure 订阅创建 VNet 对等互连连接。
 
 ### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>是否可以在另一区域创建到 VNet 的对等互连连接？
-是的。 全球 VNet 对等互连可以将不同区域中的 VNet 对等互连。 全球 VNet 对等互连适用于所有 Azure 公共区域。 不能通过全球对等互连的方式从 Azure 公共区域连接到国家/地区云。 全球对等互连目前不适用于国家/地区云。
+是的。 全球 VNet 对等互连可以将不同区域中的 VNet 对等互连。 全球 VNet 对等互连适用于所有 Azure 公共区域和中国云区域。 不能通过全球对等互连的方式从 Azure 公共区域连接到国家/地区云区域。 全球对等互连目前不适用于政府云。
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>如果虚拟网络所属的订阅位于不同的 Azure Active Directory 租户中，能否启用 VNet 对等互连？
 是的。 如果订阅属于不同的 Azure Active Directory 租户，则可以建立 VNet 对等互连（无论是本地还是全球）。 可以通过 PowerShell 或 CLI 来执行此操作。 尚不支持门户。
@@ -329,7 +329,7 @@ VNet 服务终结点有助于保护 Azure 服务资源。 VNet 资源通过网�
 要在一个虚拟网络中的多个子网内或者跨多个虚拟网络保护 Azure 服务，可以针对每个子网单独启用服务终结点，然后通过在 Azure 服务端设置适当的 VNet ACL 来保护所有子网的 Azure 服务资源。
  
 ### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>如何筛选从虚拟网络到 Azure 服务的出站流量，并且仍然使用服务终结点？
-如果想要检查或筛选从虚拟网络发往 Azure 服务的流量，可在该虚拟网络中部署网络虚拟设备。 然后，可将服务终结点应用到部署了网络虚拟设备的子网，并通过 VNet ACL 在该子网中保护 Azure 服务资源。 如果希望使用网络虚拟设备筛选将从虚拟网络发起的 Azure 服务访问限制为特定的 Azure 资源，此方案可能也很有帮助。 有关详细信息，请阅读[网络虚拟设备出口](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。
+如果想要检查或筛选从虚拟网络发往 Azure 服务的流量，可在该虚拟网络中部署网络虚拟设备。 然后，可将服务终结点应用到部署了网络虚拟设备的子网，并通过 VNet ACL 在该子网中保护 Azure 服务资源。 如果希望使用网络虚拟设备筛选将从虚拟网络发起的 Azure 服务访问限制为特定的 Azure 资源，此方案可能也很有帮助。 有关详细信息，请阅读[网络虚拟设备出口](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha)一文。
 
 ### <a name="what-happens-when-you-access-an-azure-service-account-that-has-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>从 VNet 外部访问已启用虚拟网络访问控制列表 (ACL) 的 Azure 服务帐户时会发生什么情况？
 将返回 HTTP 403 或 HTTP 404 错误。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
-ms.openlocfilehash: b13e92369168a43f529ed0b83c10bc65893da83d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 79539e05e1623b153a8fad817918cfb56a521db1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193308"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814157"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>将配置管理器连接到 Log Analytics
 可将 System Center Configuration Manager 环境连接到 Azure Log Analytics 以同步设备集合数据，并在 Log Analytics 和 Azure 自动化中引用这些集合。  
@@ -32,8 +32,8 @@ Log Analytics 支持 System Center Configuration Manager 当前分支，版本 1
 
 1. 在 Azure 门户中，将配置管理器注册为 Web 应用程序和/或 Web API 应用，并确保有在 Azure Active Directory 中进行注册时收到的客户端 ID 和客户端密钥。 如需了解如何完成此步骤的详细信息，请参阅[使用门户创建可访问资源的 Active Directory 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
 2. 在 Azure 门户中，[授予 Configuration Manager（已注册的 Web 应用）访问 Log Analytics 的权限](#grant-configuration-manager-with-permissions-to-log-analytics)。
-3. 在配置管理器中，[使用添加 OMS 连接向导来添加连接](#add-an-oms-connection-to-configuration-manager)。
-4. 在配置管理器中，如果密码或客户端密钥曾过期或丢失，可以[更新连接属性](#update-oms-connection-properties)。
+3. 在配置管理器中，使用“添加 OMS 连接”向导来添加连接。
+4. 在配置管理器中，如果密码或客户端密钥曾过期或丢失，可以更新连接属性。
 5. 在运行 Configuration Manager 服务连接点站点系统角色的计算机上[下载并安装 Microsoft Monitoring Agent](#download-and-install-the-agent)。 该代理将 Configuration Manager 数据发送到 Log Analytics 工作区。
 6. 在 Log Analytics 中，以计算机组的形式[从配置管理器导入收集的数据](#import-collections)。
 7. 在 Log Analytics 中，以[计算机组](../../azure-monitor/platform/computer-groups.md)的形式查看配置管理器中的数据。

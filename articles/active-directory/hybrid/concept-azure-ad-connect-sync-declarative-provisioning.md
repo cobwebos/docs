@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: a59a7610a067a292d9b5dd7bb1a611b4bade05e9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5e8d45a9bf9fdffc824994238add2b8541a878a5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193805"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812713"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect 同步：了解声明性预配
 本主题介绍 Azure AD Connect 中的配置模型。 该模型称为声明性预配，让用户能够轻松地更改配置。 本主题介绍的许多内容都是高级内容，在大部分客户方案中并非必要。
@@ -37,7 +37,7 @@ ms.locfileid: "55193805"
 * 源：源对象
 * [范围](#scope)：查找范围内的所有同步规则
 * [联接](#join)：确定连接器空间与 metaverse 之间的关系
-* [转换](#transform)：计算属性应如何转换和流动
+* 转换：计算属性应如何转换和流动
 * [优先级](#precedence)：解决冲突的属性提供问题
 * 目标：目标对象
 

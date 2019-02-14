@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: stewu
-ms.openlocfilehash: 0d27ae79ab2c14cc5fd5ca81b8b7f089e7fa294e
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 0bf0843314f38c0de28820c82e95b7921297bf40
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126218"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233042"
 ---
 # <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>跨区域迁移 Azure Data Lake Storage Gen1
 
@@ -46,7 +46,7 @@ Azure Data Lake Storage Gen1 在新区域中推出后，用户可以选择执行
 
 * **带宽费用**。 由于要将数据传出 Azure 区域，因此会产生[带宽费用](https://azure.microsoft.com/pricing/details/bandwidth/)。
 
-* **数据 ACL**。 可以通过向文件和文件夹应用 ACL 来保护新区域中的数据。 有关详细信息，请参阅[保护 Azure Data Lake Storage Gen1 中存储的数据](data-lake-store-secure-data.md)。 我们建议通过迁移来更新和调整 ACL。 可以使用类似于当前设置的设置。 可以使用 Azure 门户、[PowerShell cmdlet](/powershell/module/azurerm.datalakestore/get-azurermdatalakestoreitempermission) 或 SDK 查看已应用到任何文件的 ACL。  
+* **数据 ACL**。 可以通过向文件和文件夹应用 ACL 来保护新区域中的数据。 有关详细信息，请参阅[保护 Azure Data Lake Storage Gen1 中存储的数据](data-lake-store-secure-data.md)。 我们建议通过迁移来更新和调整 ACL。 可以使用类似于当前设置的设置。 可以使用 Azure 门户、[PowerShell cmdlet](/powershell/module/az.datalakestore/get-azdatalakestoreitempermission) 或 SDK 查看已应用到任何文件的 ACL。  
 
 * **分析服务的位置**。 为了获得最佳性能，应该将 Azure Data Lake Analytics 或 Azure HDInsight 等分析服务放置在数据所在的同一区域。  
 

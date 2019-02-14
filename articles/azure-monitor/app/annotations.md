@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1ce937f5c9a378494e66867b6f919ee10eef2bf8
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 652591fc4539e6f19c0606c1502609a823327f2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259472"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811012"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>为 Application Insights 中的指标图表添加批注
 
-[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)图表上的批注显示将新版本部署到了何处，或者显示其他重要事件。 使用批注可让轻松查看更改是否对应用程序的性能产生了任何影响。 [Azure DevOps Services 生成系统](https://docs.microsoft.com/azure/devops/pipelines/tasks/)可自动创建批注。 也可以[通过 PowerShell 创建批注](#create-annotations-from-powershell)用于标记所要处理的任何事件。
+[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)图表上的批注显示将新版本部署到了何处，或者显示其他重要事件。 使用批注可让轻松查看更改是否对应用程序的性能产生了任何影响。 [Azure DevOps Services 生成系统](https://docs.microsoft.com/azure/devops/pipelines/tasks/)可自动创建批注。 也可以通过 PowerShell 创建批注，用于标记所要处理的任何事件。
 
 > [!NOTE]
 > 本文反映了已弃用的**经典指标体验**。 批注目前仅在经典体验和**[工作簿](../../azure-monitor/app/usage-workbooks.md)** 中可用。 若要详细了解当前指标体验，可查阅[此文](../../azure-monitor/platform/metrics-charts.md)。

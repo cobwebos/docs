@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2018
 ms.author: kumud
-ms.openlocfilehash: 7edd6acc090e4a41939811497a21886d91631fdf
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 26d61c1b263a8fa7ff4f0ff5b2888f1d900e772e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229245"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567836"
 ---
 # <a name="how-traffic-manager-works"></a>流量管理器的工作原理
 
@@ -47,7 +47,7 @@ Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 为 htt
 ![流量管理器 DNS 配置][1]
 
 > [!NOTE]
-> 通过 Azure 流量管理器来使用虚构域时，必须使用 CNAME 将虚构域名指向流量管理器域名。 DNS 标准不允许在域的“顶点”（或根）位置创建 CNAME。 因此，无法为“contoso.com”（有时称为“裸”域）创建 CNAME。 只能为“contoso.com”下的域（例如“www.contoso.com”）创建 CNAME。 为了克服此限制，我们建议通过简单的 HTTP 重定向将针对“contoso.com”的请求定向到某个备用名称（例如“www.contoso.com”）。
+> 通过 Azure 流量管理器来使用虚构域时，必须使用 CNAME 将虚构域名指向流量管理器域名。 DNS 标准不允许在域的“顶点”（或根）位置创建 CNAME。 因此，无法为“contoso.com”（有时称为“裸”域）创建 CNAME。 只能为“contoso.com”下的域（例如“www.contoso.com”）创建 CNAME。 为了克服此限制，建议在 [Azure DNS](../dns/dns-overview.md) 上托管 DNS 域并使用[别名记录](../dns/tutorial-alias-tm.md)以指向流量管理器配置文件。 或者可以使用简单的 HTTP 重定向将针对“contoso.com”的请求定向到某个备用名称（例如“www.contoso.com”）。
 
 ### <a name="how-clients-connect-using-traffic-manager"></a>客户端如何使用流量管理器进行连接
 

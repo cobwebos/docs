@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 18b024efdc4300daca2c5cee933b136dbc99d433
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 01/30/2019
+ms.openlocfilehash: 18e786ba45e476df2ab223a47f1b77ef6b778d7f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468897"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657767"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>在 Azure 门户中为 Azure SQL 数据库配置活动异地复制，并启动故障转移
 
@@ -32,7 +32,7 @@ ms.locfileid: "55468897"
 * Azure SQL 数据库：要复制到其他地理区域的主数据库。
 
 > [!Note]
-活动异地复制必须在同一订阅内的数据库之间进行。
+如果使用 Azure 门户，仅可在与主要数据库相同的订阅内创建辅助数据库。 如果辅助数据库需要位于其他订阅中，请使用 [Create Database REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) 或 [ALTER DATABASE Transact-SQL API](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql)。
 
 ## <a name="add-a-secondary-database"></a>添加辅助数据库
 

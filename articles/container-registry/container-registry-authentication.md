@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a6ae388107e527b399dc758abccbefcec955a60d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 9682b9b832a8fd7374cb84e8cc6faad69df15945
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661626"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979057"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>使用私有 Docker 容器注册表进行身份验证
 
@@ -60,7 +60,7 @@ az acr login --name <acrName>
 
 还可以直接使用服务主体登录。 运行以下命令时，收到提示后，请以交互方式提供服务主体 appID（用户名）和密码。 有关管理登录凭据的最佳做法，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令参考：
 
-```Docker
+```
 docker login myregistry.azurecr.io
 ```
 
@@ -80,7 +80,7 @@ docker login myregistry.azurecr.io
 
 管理员帐户有两个密码，这两个密码都可以再生成。 使用这两个密码，可以在再生成一个密码时使用另一个密码保持与注册表的连接。 如果管理员帐户已启用，可以在系统提示时将用户名和/或密码传递到 `docker login` 命令，以对注册表进行基本身份验证。 例如：
 
-```Docker
+```
 docker login myregistry.azurecr.io 
 ```
 

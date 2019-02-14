@@ -15,17 +15,17 @@ ms.date: 01/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 8626dcb5b5c8eb7e83123eaeadb601e65d52f2c8
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: c49e521e9bf7e04eeda47c6b27c0b63cca653006
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081222"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699255"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure 资源的内置角色
 [基于角色的访问控制 (RBAC)](overview.md) 拥有多个内置角色定义，可将其分配给用户、组和服务主体。 角色分配是控制对 Azure 资源的访问的方式。 如果内置角色不能满足组织的特定需求，则你可以创建自己的[自定义角色](custom-roles.md)。
 
-内置角色始终在不断演变。 若要获取最新的角色定义，请使用 [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) 或 [az role definition list](/cli/azure/role/definition#az-role-definition-list)。
+内置角色始终在不断演变。 若要获取最新角色定义，请使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) 或 [az role definition list](/cli/azure/role/definition#az-role-definition-list)。
 
 ## <a name="built-in-role-descriptions"></a>内置角色说明
 下表提供内置角色的简短说明。 单击角色名称，查看每个角色的 `Actions`、`NotActions`、`DataActions` 和 `NotDataActions` 列表。
@@ -149,8 +149,8 @@ ms.locfileid: "55081222"
 > | **操作** |  |
 > | * | 创建和管理所有类型的资源 |
 > | **不操作** |  |
-> | Microsoft.Authorization/*/Delete | 无法删除角色和角色分配 |
-> | Microsoft.Authorization/*/Write | 无法创建角色和角色分配 |
+> | Microsoft.Authorization/*/Delete | 删除角色和角色分配 |
+> | Microsoft.Authorization/*/Write | 创建角色和角色分配 |
 > | Microsoft.Authorization/elevateAccess/Action | 向调用方授予租户范围的“用户访问管理员”访问权限 |
 > | Microsoft.Blueprint/blueprintAssignments/write | 创建或更新任何蓝图项目 |
 > | Microsoft.Blueprint/blueprintAssignments/delete | 删除任何蓝图项目 |
@@ -1600,15 +1600,15 @@ ms.locfileid: "55081222"
 > | **不操作** |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
-> | Microsoft.Sql/servers/databases/auditingPolicies/* | 无法编辑审核策略 |
-> | Microsoft.Sql/servers/databases/auditingSettings/* | 无法编辑审核设置 |
+> | Microsoft.Sql/servers/databases/auditingPolicies/* | 编辑审核策略 |
+> | Microsoft.Sql/servers/databases/auditingSettings/* | 编辑审核设置 |
 > | Microsoft.Sql/servers/databases/auditRecords/read | 检索数据库 Blob 审核记录 |
-> | Microsoft.Sql/servers/databases/connectionPolicies/* | 无法编辑连接策略 |
-> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | 无法编辑数据屏蔽策略 |
+> | Microsoft.Sql/servers/databases/connectionPolicies/* | 编辑连接策略 |
+> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | 编辑数据屏蔽策略 |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/* |  |
 > | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/* |  |
-> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | 无法编辑安全警报策略 |
-> | Microsoft.Sql/servers/databases/securityMetrics/* | 无法编辑安全度量值 |
+> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | 编辑安全警报策略 |
+> | Microsoft.Sql/servers/databases/securityMetrics/* | 编辑安全度量值 |
 > | Microsoft.Sql/servers/databases/sensitivityLabels/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
@@ -1676,23 +1676,23 @@ ms.locfileid: "55081222"
 > | **不操作** |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
-> | Microsoft.Sql/servers/auditingPolicies/* | 无法编辑 SQL 服务器审核策略 |
-> | Microsoft.Sql/servers/auditingSettings/* | 无法编辑 SQL 服务器审核设置 |
-> | Microsoft.Sql/servers/databases/auditingPolicies/* | 无法编辑 SQL 服务器数据库审核策略 |
-> | Microsoft.Sql/servers/databases/auditingSettings/* | 无法编辑 SQL 服务器数据库审核设置 |
-> | Microsoft.Sql/servers/databases/auditRecords/read | 无法读取审核记录 |
-> | Microsoft.Sql/servers/databases/connectionPolicies/* | 无法编辑 SQL 服务器数据库连接策略 |
-> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | 无法编辑 SQL 服务器数据库数据屏蔽策略 |
+> | Microsoft.Sql/servers/auditingPolicies/* | 编辑 SQL 服务器审核策略 |
+> | Microsoft.Sql/servers/auditingSettings/* | 编辑 SQL 服务器审核设置 |
+> | Microsoft.Sql/servers/databases/auditingPolicies/* | 编辑 SQL 服务器数据库审核策略 |
+> | Microsoft.Sql/servers/databases/auditingSettings/* | 编辑 SQL 服务器数据库审核设置 |
+> | Microsoft.Sql/servers/databases/auditRecords/read | 读取审核记录 |
+> | Microsoft.Sql/servers/databases/connectionPolicies/* | 编辑 SQL 服务器数据库连接策略 |
+> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | 编辑 SQL 服务器数据库数据屏蔽策略 |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/* |  |
 > | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/* |  |
-> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | 无法编辑 SQL 服务器数据库安全警报策略 |
-> | Microsoft.Sql/servers/databases/securityMetrics/* | 无法编辑 SQL 服务器数据库安全度量值 |
+> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | 编辑 SQL 服务器数据库安全警报策略 |
+> | Microsoft.Sql/servers/databases/securityMetrics/* | 编辑 SQL 服务器数据库安全度量值 |
 > | Microsoft.Sql/servers/databases/sensitivityLabels/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
 > | Microsoft.Sql/servers/extendedAuditingSettings/* |  |
-> | Microsoft.Sql/servers/securityAlertPolicies/* | 无法编辑 SQL 服务器安全警报策略 |
+> | Microsoft.Sql/servers/securityAlertPolicies/* | 编辑 SQL 服务器安全警报策略 |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
 
 ## <a name="storage-account-contributor"></a>存储帐户参与者

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: 768c9a1c906999f4690c9c8f7d075743ab1678ff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: feffbb634af62d70a840febcf2a04afb7bdeeddd
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23110105"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496782"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>从 StorSimple 虚拟阵列的备份克隆
 
@@ -33,7 +33,7 @@ ms.locfileid: "23110105"
 
 #### <a name="to-clone-a-share"></a>克隆共享
 
-1. 浏览到“设备”边栏选项卡。 选择并单击设备，然后单击“共享”。 选择要克隆的共享，右键单击该共享以调用上下文菜单。 选择“克隆”。
+1. 浏览到“设备”边栏选项卡。 选择并单击你的设备，并单击“共享”。 选择要克隆的共享，右键单击该共享以调用上下文菜单。 选择“克隆”。
    
    ![克隆备份](./media/storsimple-virtual-array-clone/cloneshare1.png)
 2. 在“克隆”边栏选项卡中，单击“备份”>“选择”，并执行以下操作： 
@@ -42,7 +42,7 @@ ms.locfileid: "23110105"
    
    b.    在显示的已筛选备份列表中，选择要从中克隆的备份。
    
-   c.    单击 **“确定”**。
+   c.    单击“确定”。
    
    ![克隆备份](./media/storsimple-virtual-array-clone/cloneshare3.png)
 3. 在“克隆”边栏选项卡中，单击“目标设置”，并执行以下操作：
@@ -53,9 +53,9 @@ ms.locfileid: "23110105"
    
    c.    不能更改要还原到的共享的类型。 分层共享克隆为分层共享，本地固定共享克隆为本地固定共享。
    
-   d.单击“下一步”。    容量设置为等于要从中克隆的共享的大小。
+   d.    容量设置为等于要从中克隆的共享的大小。
    
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。    为此共享分配管理员。 克隆完成后，能够通过文件资源管理器修改共享属性。
+   e.    为此共享分配管理员。 克隆完成后，能够通过文件资源管理器修改共享属性。
    
    f.    单击“确定”。
    
@@ -82,7 +82,7 @@ ms.locfileid: "23110105"
    
    b.    在显示的已筛选备份列表中，选择要从中克隆的备份。
    
-   c.    单击 **“确定”**。
+   c.    单击“确定”。
    
    ![克隆备份](./media/storsimple-virtual-array-clone/clonevolume3.png)
 3. 在“克隆”边栏选项卡中，单击“目标卷设置”，并执行以下操作：
@@ -93,7 +93,7 @@ ms.locfileid: "23110105"
    
    c. 卷类型自动设置为原始卷。 分层卷克隆为分层卷，本地固定卷克隆为本地固定卷。
    
-   d.单击“下一步”。 对于“连接的主机”，单击“选择”。
+   d. 对于“连接的主机”，单击“选择”。
    
    ![克隆备份](./media/storsimple-virtual-array-clone/clonevolume4.png)
 4. 在“连接的主机”边栏选项卡中，从现有 ACR 中选择，或添加一个新 ACR。 若要添加新 ACR，需要提供 ACR 名称和主机 IQN。 单击“选择”。

@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/01/2018
+ms.date: 02/03/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 8507d51f0d4d49d89fc24b38ed73df7488261daa
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 72229a723247d6f0d68341771b073d0626ab2edb
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969569"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745990"
 ---
 # <a name="assets"></a>资产
 
@@ -27,25 +27,8 @@ ms.locfileid: "53969569"
 
 建议仅将**存档**存储用于已编码的，并且其编码作业输出已放入输出 Blob 容器中的极大型源文件。 要与资产关联的、用于流式传输或分析内容的输出容器中的 Blob 必须位于**热**或**冷**存储层中。
 
-## <a name="asset-definition"></a>资产定义
-
-下表显示了资产的属性并给出了它们的定义。
-
-|名称|Description|
-|---|---|
-|id|资源的完全限定的资源 ID。|
-|名称|资源的名称。|
-|properties.alternateId |资产的备用 ID。|
-|properties.assetId |资产 ID。|
-|properties.container |资产 blob 容器的名称。|
-|properties.created |资产的创建日期。<br/> 日期时间始终采用 UTC 格式。|
-|properties.description|资产说明。|
-|properties.lastModified |上次修改资产的日期。 <br/> 日期时间始终采用 UTC 格式。|
-|properties.storageAccountName |存储帐户的名称。|
-|properties.storageEncryptionFormat |资产加密格式。 无格式或 MediaStorageEncryption。|
-|type|资源的类型。|
-
-有关完整定义，请参阅[资产](https://docs.microsoft.com/rest/api/media/assets)。
+> [!NOTE]
+> 属于日期/时间类型的资产的属性始终采用 UTC 格式。
 
 ## <a name="upload-digital-files-into-assets"></a>将数字文件上传到资产
 
@@ -104,119 +87,13 @@ curl -X PUT \
 
 ## <a name="filtering-ordering-paging"></a>筛选、排序、分页
 
-媒体服务支持对资产使用以下 OData 查询选项： 
-
-* $filter 
-* $orderby 
-* $top 
-* $skiptoken 
-
-运算符说明：
-
-* Eq = 等于
-* Ne = 不等于
-* Ge = 大于或等于
-* Le = 小于或等于
-* Gt = 大于
-* Lt = 小于
-
-### <a name="filteringordering"></a>筛选/排序
-
-下表显示了这些选项如何应用于资产属性： 
-
-|名称|筛选器|顺序|
-|---|---|---|
-|id|||
-|名称|支持：Eq、Gt、Lt|支持：升序和降序|
-|properties.alternateId |支持：Eq||
-|properties.assetId |支持：Eq||
-|properties.container |||
-|properties.created|支持：Eq、Gt、Lt| 支持：升序和降序|
-|properties.description |||
-|properties.lastModified |||
-|properties.storageAccountName |||
-|properties.storageEncryptionFormat | ||
-|type|||
-
-以下 C# 示例按创建日期筛选：
-
-```csharp
-var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:08.387Z");
-var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName, odataQuery);
-```
-
-### <a name="pagination"></a>分页
-
-已启用的四个排序顺序均支持分页。 页面大小当前为 1000。
-
-> [!TIP]
-> 应始终使用下一个链接来枚举集合，而不依赖特定的页面大小。
-
-如果查询响应包含许多项，则服务将返回一个“\@odata.nextLink”属性来获取下一页结果。 这可用于逐页浏览整个结果集。 无法配置页面大小。 
-
-如果在逐页浏览集合时创建或删除资产，则会在返回的结果中反映此更改（如果这些更改位于集合中尚未下载的部分）。 
-
-#### <a name="c-example"></a>C# 示例
-
-以下 C# 示例显示如何枚举帐户中的所有资产。
-
-```csharp
-var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.Assets.ListNextAsync(currentPage.NextPageLink);
-}
-```
-
-#### <a name="rest-example"></a>REST 示例
-
-考虑以下使用 $skiptoken 的示例。 请务必将 *amstestaccount* 替换为你的帐户名，并将 *api-version* 值设置为最新版本。
-
-如果按如下所示请求列出资产：
-
-```
-GET  https://management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01 HTTP/1.1
-x-ms-client-request-id: dd57fe5d-f3be-4724-8553-4ceb1dbe5aab
-Content-Type: application/json; charset=utf-8
-```
-
-将获得如下所示的响应：
-
-```
-HTTP/1.1 200 OK
- 
-{
-"value":[
-{
-"name":"Asset 0","id":"/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 0","type":"Microsoft.Media/mediaservices/assets","properties":{
-"assetId":"00000000-5a4f-470a-9d81-6037d7c23eff","created":"2018-12-11T22:12:44.98Z","lastModified":"2018-12-11T22:15:48.003Z","container":"asset-98d07299-5a4f-470a-9d81-6037d7c23eff","storageAccountName":"amsdevc1stoaccount11","storageEncryptionFormat":"None"
-}
-},
-// lots more assets
-{
-"name":"Asset 517","id":"/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 517","type":"Microsoft.Media/mediaservices/assets","properties":{
-"assetId":"00000000-912e-447b-a1ed-0f723913b20d","created":"2018-12-11T22:14:08.473Z","lastModified":"2018-12-11T22:19:29.657Z","container":"asset-fd05a503-912e-447b-a1ed-0f723913b20d","storageAccountName":"amsdevc1stoaccount11","storageEncryptionFormat":"None"
-}
-}
-],"@odata.nextLink":"https:// management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517"
-}
-```
-
-然后通过发送 Get 请求来请求显示下一页：
-
-```
-https://management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517
-```
-
-有关更多 REST 示例，请参阅[资产 - 列出](https://docs.microsoft.com/rest/api/media/assets/list)
+请参阅[媒体服务实体的筛选、排序、分页](entities-overview.md)。
 
 ## <a name="storage-side-encryption"></a>存储端加密
 
 若要保护静态资产，应通过存储端加密对资产进行加密。 下表显示了存储端加密在媒体服务中的工作方式：
 
-|加密选项|Description|媒体服务 v2|媒体服务 v3|
+|加密选项|说明|媒体服务 v2|媒体服务 v3|
 |---|---|---|---|
 |媒体服务存储加密|AES-256 加密，媒体服务管理的密钥|支持<sup>(1)</sup>|不支持<sup>(2)</sup>|
 |[静态数据的存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|由 Azure 存储提供的服务器端加密，由 Azure 或客户管理的密钥|支持|支持|
@@ -228,6 +105,6 @@ https://management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/
 
 ## <a name="next-steps"></a>后续步骤
 
-[流式传输文件](stream-files-dotnet-quickstart.md)
-
-[媒体服务 v2 与 v3 之间的差别](migrate-from-v2-to-v3.md)
+* [流式传输文件](stream-files-dotnet-quickstart.md)
+* [使用云 DVR](live-event-cloud-dvr.md)
+* [媒体服务 v2 与 v3 之间的差别](migrate-from-v2-to-v3.md)

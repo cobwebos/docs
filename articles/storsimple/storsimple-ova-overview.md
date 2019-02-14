@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/02/2018
 ms.author: alkohli
-ms.openlocfilehash: 78ed53e5e2f5d04943e6c32ddfedf037cb9e1f73
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: a7aace89ad4323d6fad6942fe03c4240fb53c8fd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480948"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811187"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple 虚拟阵列简介
 
@@ -37,7 +37,7 @@ Microsoft Azure StorSimple 虚拟阵列是一个集成式存储解决方案，�
 
 下表总结了 StorSimple 虚拟阵列的重要功能。
 
-| 功能 | StorSimple 虚拟阵列 |
+| Feature | StorSimple 虚拟阵列 |
 | --- | --- |
 | 安装要求 |使用虚拟化基础结构（HYPER-V 或 VMware） |
 | 可用性 |单节点 |
@@ -62,7 +62,7 @@ StorSimple 在几分钟内将用户和服务器连接到 Azure 存储，无需�
 
 下表介绍了 StorSimple 虚拟阵列解决方案提供的某些主要优势。
 
-| 功能 | 优势 |
+| Feature | 优势 |
 | --- | --- |
 | 透明集成 |虚拟阵列支持 iSCSI 或 SMB 协议。 本地层和云层之间的数据移动是无缝的，并且对用户透明。 |
 | 降低存储成本 |借助 StorSimple，预配足够的本地存储来满足对最常使用的热门数据的当前需求。 随着存储需求的增长，StorSimple 将冷数据分层到经济高效的云存储中。 在发送到云之前对数据进行重复数据删除和压缩，以进一步降低存储要求和开支。 |
@@ -74,7 +74,7 @@ StorSimple 在几分钟内将用户和服务器连接到 Azure 存储，无需�
 
 下面以表格形式列出了受支持的 StorSimple 工作负荷的摘要。
 
-|场景     |工作负载     |支持      |限制               |
+|场景     |工作负荷     |支持      |限制               |
 |-------------|-------------|---------------|---------------------------|
 |远程办公室/分支机构 (ROBO)  |文件共享     |是      |请参阅[文件服务器的最大限制](storsimple-ova-limits.md)。<br></br>请参阅[受支持的 SMB 版本的系统要求](storsimple-ova-system-requirements.md)。| 所有版本     |
 |云存档  |存档文件共享     |是      |请参阅[文件服务器的最大限制](storsimple-ova-limits.md)。<br></br>请参阅[受支持的 SMB 版本的系统要求](storsimple-ova-system-requirements.md)。| 所有版本     |
@@ -169,7 +169,7 @@ Microsoft Azure StorSimple 提供一个基于 Web 的用户界面（StorSimple D
 
 * [自动存储分层](#automatic-storage-tiering) 
 * [本地固定的共享和卷](#locally-pinned-shares-and-volumes)
-* [分层或备份到云的数据的重复数据删除和压缩](#deduplication-and-compression-for-data-tiered/backed-up-to-the-cloud) 
+* 分层或备份到云的数据的重复数据删除和压缩 
 * [计划和按需备份](#scheduled-and-on-demand-backups)
 
 ### <a name="automatic-storage-tiering"></a>自动存储分层

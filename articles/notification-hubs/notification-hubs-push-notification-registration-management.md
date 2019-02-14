@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
 ms.date: 01/23/2019
-ms.openlocfilehash: 1ace7ecd42ac36be1c38e52dcef6663439b7db4c
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d87cd174e3fca7ce2088ad270a74b08de4ac7cb5
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817811"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566142"
 ---
 # <a name="registration-management"></a>注册管理
 
@@ -33,7 +33,7 @@ ms.locfileid: "54817811"
 
 ### <a name="registrations"></a>注册
 
-注册将设备的平台通知服务 (PNS) 句柄与标记（有时还包括模板）相关联。 PNS 句柄可能是 ChannelURI、设备令牌或 GCM 注册 ID。标记用于将通知路由到一组正确的设备句柄。 有关详细信息，请参阅[路由和标记表达式](notification-hubs-tags-segment-push-message.md)。 模板用于实现按注册转换。 有关详细信息，请参阅[模板](notification-hubs-templates-cross-platform-push-messages.md)。
+注册将设备的平台通知服务 (PNS) 句柄与标记（有时还包括模板）相关联。 PNS 句柄可以是 ChannelURI、设备令牌或 FCM 注册 ID。标记用于将通知路由到一组正确的设备句柄。 有关详细信息，请参阅[路由和标记表达式](notification-hubs-tags-segment-push-message.md)。 模板用于实现按注册转换。 有关详细信息，请参阅[模板](notification-hubs-templates-cross-platform-push-messages.md)。
 
 > [!NOTE]
 > Azure 通知中心支持每次注册最多 60 个标记。
@@ -295,8 +295,8 @@ public async Task<HttpResponseMessage> Put(DeviceInstallation deviceUpdate)
         case "apns":
             installation.Platform = NotificationPlatform.Apns;
             break;
-        case "gcm":
-            installation.Platform = NotificationPlatform.Gcm;
+        case "fcm":
+            installation.Platform = NotificationPlatform.Fcm;
             break;
         default:
             throw new HttpResponseException(HttpStatusCode.BadRequest);

@@ -10,19 +10,19 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 01/31/2019
 ms.author: lagayhar
-ms.openlocfilehash: e16432022c8c8525c95fab46bc61197f67fb8f37
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 7ad8b96efeef2a5bb5543ee08150376862abb27f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260051"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699309"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
 
 
-[Application Insights](https://azure.microsoft.com/services/application-insights/) 是为 Web 开发人员提供的可扩展分析服务，可帮助你了解实时应用程序的性能和使用情况。 使用它可以[检测和诊断性能问题与异常](../../azure-monitor/app/detect-triage-diagnose.md)，以及[编写代码][api]来跟踪用户对应用执行的操作。
+[Application Insights](https://azure.microsoft.com/services/application-insights/) 是为 Web 开发人员提供的可扩展分析服务，可帮助你了解实时应用程序的性能和使用情况。 它可用于[自动检测请求、跟踪依赖项和收集性能计数器](auto-collect-dependencies.md#java)、[诊断性能问题和异常](../../azure-monitor/app/detect-triage-diagnose.md)，以及[编写代码][api]来跟踪用户对你的应用的使用情况。 
 
 ![概述示例数据的屏幕截图](./media/java-get-started/overview-graphs.png)
 

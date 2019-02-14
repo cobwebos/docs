@@ -3,7 +3,7 @@ title: 在 Azure 安全中心保护应用服务 | Microsoft Docs
 description: 本文帮助你开始在 Azure 安全中心保护应用服务。
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: mbaldwin
 editor: ''
 ms.assetid: e8518710-fcf9-44a8-ae4b-8200dfcded1a
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/9/2018
-ms.author: rkarlin
-ms.openlocfilehash: b38ba140a1e2b853c07e1ffe53405b58663653b5
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.date: 1/27/2019
+ms.author: monhaber
+ms.openlocfilehash: bf3ceb0d5f12783957e127b3596ab07b7531ad5a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343864"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491937"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>使用 Azure 安全中心保护应用服务
 本文帮助你使用 Azure 安全中心来监视和保护在应用服务上运行的应用程序。
@@ -65,6 +65,7 @@ Azure 安全中心保护运行应用服务的 VM 实例以及管理接口。 此
 
 * [在 Azure 安全中心设置安全策略](tutorial-security-policy.md)：了解如何在 Azure 安全中心配置安全设置。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)：了解如何管理和响应安全警报。
+* [应用服务](security-center-virtual-machine-protection.md#app-services)：查看包含运行状况摘要的应用服务环境列表。
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md)：了解如何监视合作伙伴解决方案的运行状况。
 * [Azure 安全中心常见问题解答](security-center-faq.md)：查找有关如何使用服务的常见问题。
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/)：查找关于 Azure 安全性及合规性的博客文章。

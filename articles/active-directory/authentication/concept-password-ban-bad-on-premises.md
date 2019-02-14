@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: b99c1b99fe87c755d6092876ccd598d926289192
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 816c459ca6edd7204ccdcdf9d402f2d4499d9116
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077824"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662517"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>预览版：为 Windows Server Active Directory 强制执行 Azure AD 密码保护
 
@@ -29,7 +29,7 @@ Azure AD 密码保护是由 Azure Active Directory (Azure AD) 提供支持的一
 有三个软件组件构成了 Azure AD 密码保护：
 
 * Azure AD 密码保护代理服务在当前 Active Directory 林中任何已加入域的计算机上运行。 它将来自域控制器的请求转发到 Azure AD 并将响应从 Azure AD 返回到域控制器。
-* Azure AD 密码保护 DC 代理服务接收来自 DC 代理密码筛选器 dll 的密码验证请求，使用当前在本地可用的密码策略处理它们，并返回结果（通过\失败）。 此服务负责定期（每小时一次）调用 Azure AD 密码保护代理服务来检索密码策略的新版本。 用于调用的以及来自 Azure AD 密码保护代理服务的通信是基于 TCP 通过 RPC（远程过程调用）处理的。 在检索时，新策略存储在 sysvol 文件夹中，它们可以从该文件夹复制到其他域控制器。 DC 代理服务还监视 sysvol 文件夹中的更改以防其他域控制器在那里写入了新的密码策略，如果已有相当新的策略可用，则会跳过对 Azure AD 密码保护代理服务的检查。
+* Azure AD 密码保护 DC 代理服务接收来自 DC 代理密码筛选器 dll 的密码验证请求，使用当前在本地可用的密码策略处理它们，并返回结果（通过\失败）。 此服务负责定期（每小时一次）调用 Azure AD 密码保护代理服务来检索密码策略的新版本。 Azure AD 密码保护 DC 代理服务与 Azure AD 密码保护代理服务之间的通信是通过 TCP 使用 RPC（远程过程调用）来进行处理的。 在检索时，新策略存储在 sysvol 文件夹中，它们可以从该文件夹复制到其他域控制器。 DC 代理服务还监视 sysvol 文件夹中的更改以防其他域控制器在那里写入了新的密码策略，如果已有相当新的策略可用，则会跳过新策略下载请求。
 * DC 代理密码筛选器 dll 接收来自操作系统的密码验证请求，并将其转发到在域控制器本地运行的 Azure AD 密码保护 DC 代理服务。
 
 ![Azure AD 密码保护组件如何配合工作](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
@@ -57,7 +57,7 @@ Windows Server Active Directory 的 Azure AD 密码保护需要 Azure AD Premium
 * 没有最小 Active Directory 域或林功能级别 (DFL\FFL) 要求。
 * 该软件不在它保护的 Active Directory 域中创建任何帐户，也不需要其中的任何帐户。
 * 支持增量部署，采取的权衡方法是仅在安装了域控制器代理的地方实施密码策略。
-* 建议在所有 DC 上安装 DC 代理以确保强制执行密码保护。 
+* 建议在所有 DC 上安装 DC 代理以确保强制执行密码保护。
 * Azure AD 密码保护不是实时的策略应用程序引擎。 在密码策略配置发生更改的时间与它到达并在所有域控制器上实施的时间之间可能存在延迟。
 
 ## <a name="next-steps"></a>后续步骤

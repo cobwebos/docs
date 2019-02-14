@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2243f2c7a351d941950686bea492aa1d6e565cd5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0fceefb40ab43b659711b7862d7147d6199afbcd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101358"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812406"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 安全中心故障排除指南
 本指南适用于信息技术 (IT) 专业人员、信息安全分析人员，以及那些组织中正在使用 Azure 安全中心并需要进行排除安全中心相关问题的云管理员。
@@ -67,7 +67,7 @@ ms.locfileid: "53101358"
 ## 监视代理运行状况问题 <a name="mon-agent"></a>
 “监视状态”定义安全中心无法成功监视那些已针对自动预配初始化的 VM 和计算机的原因。 下表显示了“监视状态”的值、说明和解决步骤。
 
-| 监视状态 | Description | 解决步骤 |
+| 监视状态 | 说明 | 解决步骤 |
 |---|---|---|
 | 代理待安装 | Microsoft Monitoring Agent 安装仍在运行。  安装可能需要长达数小时的时间。 | 等待自动安装完成。 |
 | 电源状态为关闭 | VM 已停止。  Microsoft Monitoring Agent 只能安装在正在运行的 VM 上。 | 重启 VM。 |
@@ -75,8 +75,8 @@ ms.locfileid: "53101358"
 | VM 状态表明尚未做好安装准备  | Microsoft Monitoring Agent 尚未安装，因为 VM 尚未做好安装准备。 VM 尚未做好安装准备是因为 VM 代理或 VM 预配出现问题。 | 检查 VM 的状态。 返回到门户中的“虚拟机”，选择要获取状态信息的 VM。 |
 |安装失败 - 常规错误 | Microsoft Monitoring Agent 已安装，但因错误而失败。 | [手动安装扩展](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)，或者卸载扩展，让安全中心尝试再次安装。 |
 | 安装失败 - 已安装本地代理 | Microsoft Monitoring Agent 安装失败。 安全中心标识了一个已在 VM 上安装的本地代理（Log Analytics 或 SCOM）。 为了避免多宿主配置，在 VM 向两个不同的工作区报告的情况下，会停止 Microsoft Monitoring Agent 安装。 | 有两种解决方法：[手动安装扩展](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)并将其连接到所需工作区。 或者，将所需工作区设置为默认工作区，并启用自动预配代理的功能。  请参阅[启用自动预配](security-center-enable-data-collection.md)。 |
-| 代理无法连接到工作区 | Microsoft Monitoring Agent 已安装，但因网络连接原因而失败。  检查是否可以进行 Internet 访问，或者是否已为代理配置有效的 HTTP 代理。 | 请参阅[监视代理网络要求](#troubleshooting-monitoring-agent-network-requirements)。 |
-| 代理连接到缺失或未知的工作区 | 安全中心确定，安装在 VM 上的 Microsoft Monitoring Agent 连接到的是其没有访问权限的工作区。 | 两种情况可能会发生这样的错误。 第一种情况是工作区已删除，不再存在。 请使用正确的工作区重新安装代理，或者卸载代理，让安全中心完成其自动预配安装。 第二种情况是工作区属于某个订阅的一部分，而安全中心没有该订阅的访问权限。 安全中心要求提供允许 Microsoft 安全资源提供程序访问的订阅。 若要启用此功能，请将订阅注册到 Microsoft 安全资源提供程序。 为此，可以使用 API、PowerShell、门户，或者直接在安全中心的“概览”仪表板中对订阅进行筛选。 有关详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/resource-manager-supported-services.md#portal)。 |
+| 代理无法连接到工作区 | Microsoft Monitoring Agent 已安装，但因网络连接原因而失败。  检查是否可以进行 Internet 访问，或者是否已为代理配置有效的 HTTP 代理。 | 请参阅“监视代理网络要求”。 |
+| 代理连接到缺失或未知的工作区 | 安全中心确定，安装在 VM 上的 Microsoft Monitoring Agent 连接到的是其没有访问权限的工作区。 | 两种情况可能会发生这样的错误。 第一种情况是工作区已删除，不再存在。 请使用正确的工作区重新安装代理，或者卸载代理，让安全中心完成其自动预配安装。 第二种情况是工作区属于某个订阅的一部分，而安全中心没有该订阅的访问权限。 安全中心要求提供允许 Microsoft 安全资源提供程序访问的订阅。 若要启用此功能，请将订阅注册到 Microsoft 安全资源提供程序。 为此，可以使用 API、PowerShell、门户，或者直接在安全中心的“概览”仪表板中对订阅进行筛选。 有关详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/resource-manager-supported-services.md#azure-portal)。 |
 | 代理无响应或缺少 ID | 安全中心无法从 VM 检索扫描的安全数据，即使代理已安装。 | 代理未报告包括检测信号在内的任何数据。 代理可能已损坏，或者有不明因素在阻止流量。 或者，代理是在报告数据但却缺少 Azure 资源 ID，因此不可能将数据与 Azure VM 匹配。 若要对 Linux 进行故障排除，请参阅[适用于 Linux 的 Log Analytics 代理的故障排除指南](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)。 若要对 Windows 进行故障排除，请参阅 [Windows 虚拟机故障排除](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines)。 |
 | 未安装代理 | 数据收集已禁用。 | 在安全策略中启用数据收集，或者手动安装 Microsoft Monitoring Agent。 |
 
@@ -84,7 +84,7 @@ ms.locfileid: "53101358"
 ## 监视代理网络要求故障排除 <a name="mon-network-req"></a>
 若要让代理连接和注册到安全中心，必须允许其访问包括端口号和域 URL 在内的网络资源。
 
-- 对于代理服务器，需确保在代理设置中配置适当的代理服务器资源。 阅读本文，详细了解[如何更改代理设置](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents#configure-proxy-settings)。
+- 对于代理服务器，需确保在代理设置中配置适当的代理服务器资源。 阅读本文，详细了解[如何更改代理设置](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents)。
 - 对于限制 Internet 访问的防火墙，需要将其配置为允许访问 Log Analytics。 代理设置中不需要任何操作。
 
 下表显示通信所需的资源。

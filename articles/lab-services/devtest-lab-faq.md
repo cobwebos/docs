@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: b5ad6321a41c84928cbc6f8c51c4f5fe3567410f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 23066339ffcb0b8b3c7885ad24c6c3d136629ab2
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262023"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699998"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure 开发测试实验室常见问题
 获取关于 Azure 开发测试实验室的某些最常见问题的解答。
@@ -60,7 +60,7 @@ Azure 开发测试实验室可为团队节省时间和金钱。 开发人员可�
 
 * **权限**：权限是针对特定操作定义的访问权限。 例如，权限可以是对所有 VM 的读取访问权限。
 * **角色**：角色是可进行分组和分配给用户的一组权限。 例如，具有“订阅所有者”角色的用户对订阅中所有资源都具有访问权限。
-* **作用域**：作用域是 Azure 资源的层次结构中的一个级别。 例如，作用域可以是资源组、单个实验室或整个订阅。
+* **范围**：作用域是 Azure 资源的层次结构中的一个级别。 例如，作用域可以是资源组、单个实验室或整个订阅。
 
 开发测试实验室的作用域中有两种定义用户权限的角色：
 
@@ -227,7 +227,7 @@ Microsoft 帐户可用于通过 Microsoft 设备和服务执行的几乎所有�
 ## <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>从 PowerShell 预配 VM 时，为什么会收到“找不到父资源”错误？
 若一个资源是另一个资源的父资源，则该父资源必须存在才可创建子资源。 如果父资源不存在，则会看到 ParentResourceNotFound 消息。 如果未指定与父资源的依赖关系，子资源可能会在父资源之前部署。
 
-VM 是资源组中实验室下的子资源。 使用资源管理器模板通过 PowerShell 部署 VM 时，PowerShell 脚本中提供的资源组名称应为实验室的资源组名称。 有关详细信息，请参阅[排查常见的 Azure 部署错误](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound)。
+VM 是资源组中实验室下的子资源。 使用资源管理器模板通过 PowerShell 部署 VM 时，PowerShell 脚本中提供的资源组名称应为实验室的资源组名称。 有关详细信息，请参阅[排查常见的 Azure 部署错误](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors)。
 
 ## <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>VM 部署失败时，可在何处查找错误详细信息？
 活动日志中会捕获 VM 部署错误。 在实验室的 VM 边栏选项卡（在“我的虚拟机”列表中选择 VM 后，会显示该选项卡）中的资源菜单上，可在“审核日志”或“虚拟机诊断”下方找到实验室 VM 活动日志。

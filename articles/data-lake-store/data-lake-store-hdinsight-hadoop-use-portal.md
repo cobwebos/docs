@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: b81916de0940aa56eda97df94527fa6adc208285
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 23a1b2853423dd9f2a62c32792e27e3174495aff
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955824"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817030"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>使用 Azure 门户创建包含 Azure Data Lake Storage Gen1 的 HDInsight 群集
 > [!div class="op_single_selector"]
@@ -55,10 +55,10 @@ ms.locfileid: "49955824"
 
     ![将服务主体添加到 HDInsight 群集](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "将服务主体添加到 HDInsight 群集")
 
-    - 选择 Data Lake Store 帐户：选择一个现有的 Data Lake Storage Gen1 帐户。 必须具有现有的 Data Lake Storage Gen1 帐户。  请参阅[先决条件](#prerequisites)。
+    - **选择 Data Lake Store 帐户**：选择现有的 Data Lake Storage Gen1 帐户。 必须具有现有的 Data Lake Storage Gen1 帐户。  请参阅[先决条件](#prerequisites)。
     - **根路径**：输入群集特定文件的存储路径。 在屏幕截图中，它是 __/clusters/myhdiadlcluster/__，其中，__/clusters__ 文件夹是必须存在的，*myhdicluster* 文件夹则由门户创建。  *myhdicluster* 是群集名称。
-    - Data Lake Store 访问：配置 Data Lake Storage Gen1 帐户和 HDInsight 群集之间的访问。 有关说明，请参阅[配置 Data Lake Storage Gen1 访问](#configure-data-lake-store-access)。
-    - 附加存储帐户：添加 Azure 存储帐户作为群集的附加存储帐户。 添加额外的 Data Lake Storage Gen1 帐户后，为群集提供对更多 Data Lake Storage Gen1 帐户中数据的权限，并将某个 Data Lake Storage Gen1 帐户配置为主存储类型。 请参阅[配置 Data Lake Storage Gen1 访问](#configure-data-lake-store-access)。
+    - **Data Lake Store 访问**：配置 Data Lake Storage Gen1 帐户和 HDInsight 群集之间的访问。 有关说明，请参阅“配置 Data Lake Storage Gen1 访问”。
+    - **附加存储帐户**：添加 Azure 存储帐户作为群集的附加存储帐户。 添加额外的 Data Lake Storage Gen1 帐户后，为群集提供对更多 Data Lake Storage Gen1 帐户中数据的权限，并将某个 Data Lake Storage Gen1 帐户配置为主存储类型。 请参阅“配置 Data Lake Storage Gen1 访问”。
 
 4. 在“Data Lake Store 访问”中单击“选择”，并根据[在 HDInsight 中创建 Hadoop 群集](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md)中所述继续创建群集。
 

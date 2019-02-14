@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 074184d1465236fadebb5afa229a5b7f8689bbc9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3d1e0f591e5ce9f56e79ffecf72599ed1d894dc9
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251650"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746194"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>使用 Azure 机器学习 SDK 创建和运行机器学习管道
 
@@ -104,6 +104,9 @@ output_data1 = PipelineData(
 
 在 Azure 机器学习中，术语“计算”（或“计算目标”）是指在机器学习管道中执行计算步骤的计算机或群集。   有关计算目标的完整列表以及如何创建计算目标并将其附加到工作区的详细信息，请参阅[模型训练的计算目标](how-to-set-up-training-targets.md)。  无论是在训练模型还是运行管道步骤，创建和/或附加计算目标的过程都是相同的。 创建并附加计算目标后，请使用[管道步骤](#steps)中的 `ComputeTarget` 对象。
 
+> [!IMPORTANT]
+> 内部远程作业不支持对计算目标执行管理操作。 由于机器学习管道作为远程作业提交，因此请勿对管道内的计算目标使用管理操作。
+
 下面是创建和附加计算目标的示例：
 
 * Azure 机器学习计算
@@ -114,27 +117,27 @@ output_data1 = PipelineData(
 
 可以创建 Azure 机器学习计算用于运行步骤。
 
-    ```python
-    compute_name = "aml-compute"
-     if compute_name in ws.compute_targets:
-        compute_target = ws.compute_targets[compute_name]
-        if compute_target and type(compute_target) is AmlCompute:
-            print('Found compute target: ' + compute_name)
-    else:
-        print('Creating a new compute target...')
-        provisioning_config = AmlCompute.provisioning_configuration(vm_size = vm_size, # NC6 is GPU-enabled
-                                                                    min_nodes = 1, 
-                                                                    max_nodes = 4)
-         # create the compute target
-        compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
-        
-        # Can poll for a minimum number of nodes and for a specific timeout. 
-        # If no min node count is provided it will use the scale settings for the cluster
-        compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
-        
-         # For a more detailed view of current cluster status, use the 'status' property    
-        print(compute_target.status.serialize())
-    ```
+```python
+compute_name = "aml-compute"
+ if compute_name in ws.compute_targets:
+    compute_target = ws.compute_targets[compute_name]
+    if compute_target and type(compute_target) is AmlCompute:
+        print('Found compute target: ' + compute_name)
+else:
+    print('Creating a new compute target...')
+    provisioning_config = AmlCompute.provisioning_configuration(vm_size = vm_size, # NC6 is GPU-enabled
+                                                                min_nodes = 1, 
+                                                                max_nodes = 4)
+     # create the compute target
+    compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
+    
+    # Can poll for a minimum number of nodes and for a specific timeout. 
+    # If no min node count is provided it will use the scale settings for the cluster
+    compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
+    
+     # For a more detailed view of current cluster status, use the 'status' property    
+    print(compute_target.status.serialize())
+```
 
 ### <a id="databricks"></a>Azure Databricks
 

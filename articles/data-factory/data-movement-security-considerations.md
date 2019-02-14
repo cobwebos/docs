@@ -12,15 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 0113fc3112fa0fa911d6609684357d01cd9adf30
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d684ec56c7dfcc28d1057d0b20905db49bce9723
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015706"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498057"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+>
 > * [版本 1](v1/data-factory-data-movement-security-considerations.md)
 > * [当前版本](data-movement-security-considerations.md)
 
@@ -32,13 +33,19 @@ ms.locfileid: "54015706"
 
 除使用证书加密的云数据存储的链接服务凭据外，Azure 数据工厂不存储任何其他数据。 使用数据工厂可以创建数据驱动的工作流，协调[受支持数据存储](copy-activity-overview.md#supported-data-stores-and-formats)之间的数据移动，以及使用[计算服务](compute-linked-services.md)在其他区域或本地环境中处理数据。 还可以使用 SDK 与 Azure Monitor 来监视和管理工作流。
 
-使用数据工厂的数据移动已获得以下认证：
--   [HIPAA/HITECH](https://www.microsoft.com/en-us/trustcenter/Compliance/HIPAA) 
--   [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
--   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018)
--   [CSA STAR](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
+数据工厂已获得以下认证：
+| **[CSA STAR 认证](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
+| :----------------------------------------------------------- |
+| **[ISO 20000-1:2011](https://www.microsoft.com/trustcenter/Compliance/ISO-20000-1)** |
+| **[ISO 22301:2012](https://www.microsoft.com/trustcenter/compliance/iso-22301)** |
+| **[ISO 27001:2013](https://www.microsoft.com/trustcenter/compliance/iso-iec-27001)** |
+| **[ISO 27017:2015](https://www.microsoft.com/trustcenter/compliance/iso-iec-27017)** |
+| **[ISO 27018:2014](https://www.microsoft.com/trustcenter/compliance/iso-iec-27018)** |
+| **[ISO 9001:2015](https://www.microsoft.com/trustcenter/compliance/iso-9001)** |
+| **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
+| **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-如果对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/default.aspx)。
+如果对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/default.aspx)。 有关所有 Azure 合规性产品检查的最新列表 - http://aka.ms/AzureCompliance。
 
 在本文中，我们将查看以下两个数据移动方案中的安全注意事项： 
 
@@ -148,7 +155,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 下表提供了企业防火墙的出站端口和域要求：
 
-| 域名                  | 出站端口 | Description                              |
+| 域名                  | 出站端口 | 说明                              |
 | ----------------------------- | -------------- | ---------------------------------------- |
 | `*.servicebus.windows.net`    | 443            | 自承载集成运行时连接到数据工厂中的数据移动服务时需要此端口。 |
 | `*.frontend.clouddatahub.net` | 443            | 自承载集成运行时连接到数据工厂服务时需要此端口。 |
@@ -162,7 +169,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 下表提供了 Windows 防火墙的入站端口要求：
 
-| 入站端口 | Description                              |
+| 入站端口 | 说明                              |
 | ------------- | ---------------------------------------- |
 | 8050 (TCP)    | PowerShell 加密 cmdlet（参阅[在 Azure 数据工厂中加密本地数据存储的凭据](encrypt-credentials-self-hosted-integration-runtime.md)）和凭据管理器应用程序需要使用此端口在自承载集成运行时中安全设置本地数据存储的凭据。 |
 

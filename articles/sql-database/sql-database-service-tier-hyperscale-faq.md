@@ -3,7 +3,7 @@ title: Azure SQL 超大规模数据库 FAQ | Microsoft Docs
 description: 对客户关于超大规模服务层中的 Azure SQL 数据库（通常称为超大规模数据库）提出的常见问题的回答。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 470a00e62aba4baf5dd13a9c80a0c72df04a81c8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/06/2019
+ms.openlocfilehash: 3ee952f10cebe374767e0db4a592695eeb1b4417
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478332"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810059"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>关于 Azure SQL 超大规模数据库的 FAQ
 
@@ -222,7 +222,7 @@ SQL 超大规模数据库支持所有 SQL Server 工作负荷，但它主要针�
 
 是的。 可以利用现有的所有迁移技术（包括 BACPAC、事务复制和逻辑数据加载）迁移到超大规模服务层。 另请参阅 [Azure 数据库迁移服务](../dms/dms-overview.md)。
 
-### <a name="what-is-my-downtown-during-migration-from-an-on-premises-or-virtual-machine-environment-to-hyperscale-and-how-can-i-minimize-it"></a>从本地或虚拟机环境迁移到超大规模服务层期间，我的故障时间有多长，如何尽量减少故障时间
+### <a name="what-is-my-downtime-during-migration-from-an-on-premises-or-virtual-machine-environment-to-hyperscale-and-how-can-i-minimize-it"></a>从本地或虚拟机环境迁移到超大规模服务层期间，我的停机时间有多长，如何尽量减少停机时间
 
 故障时间与将数据库迁移到 Azure SQL 数据库中的单一数据库相同。 可以使用[事务复制](replication-to-sql-database.md#data-migration-scenario
 )尽量减少大小最多几 TB 的数据库的故障时间迁移。 对于非常大的数据库（10 TB 以上），可以考虑使用 ADF、Spark 或其他数据移动技术迁移数据。

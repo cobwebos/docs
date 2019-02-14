@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 2af3e75e3810284d9740a3d87d681d9ee31f14d3
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: b399e18aa3cdd83d0c6907999f6446fd566259a1
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052830"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998580"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -56,7 +56,7 @@ ms.locfileid: "54052830"
 - 索引状态更改： 
     - 属性：    
     
-        |名称|Description|
+        |Name|说明|
         |---|---|
         |id|视频 ID|
         |state|视频状态|  
@@ -64,7 +64,7 @@ ms.locfileid: "54052830"
 - 在视频中标识的人：
     - 属性
     
-        |名称|Description|
+        |Name|说明|
         |---|---|
         |id| 视频 ID|
         |faceId|出现在视频索引中的人脸 ID|
@@ -280,7 +280,7 @@ public class AccountContractSlim
 
 上传操作可能会返回下表中列出的状态代码。
 
-|状态代码|ErrorType（在响应正文中）|Description|
+|状态代码|ErrorType（在响应正文中）|说明|
 |---|---|---|
 |400|VIDEO_ALREADY_IN_PROGRESS|相同的视频已在给定帐户的处理进度中。|
 |400|VIDEO_ALREADY_FAILED|不到 2 小时前，相同的视频已在给定帐户中处理失败。 API 客户端应至少等待 2 小时才能重新上传视频。|
