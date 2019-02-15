@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f45fad91c94b35de512c0c995ef4e3a6311a25ad
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 684e6a798c690c65f70c2f6224ac8f11256ce6eb
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767412"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270124"
 documentType: LandingData
 title: Azure Maps 文档
 metadata:
@@ -16,7 +16,7 @@ metadata:
   ms.service: azure-maps
   services: azure-maps
   ms.topic: landing-page
-  ms.date: 02/04/2019
+  ms.date: 02/14/2019
   ms.author: philmea
 abstract:
   description: Azure Maps 为各行各业的开发人员提供强大的地理空间功能，并搭配了可用于为 Web 和移动应用程序提供地理环境的最新地图数据。 Azure Maps 是 Azure 的一个 API，它与一组 REST API 兼容，提供地图、搜索、路由、流量、时区、地理位置、地理围栏、地图数据和空间操作功能，随之提供的 Web 和 Android SDK 使得开发简单、灵活且可跨多个平台移植。
@@ -35,14 +35,16 @@ sections:
 - title: 分步教程
   items:
   - type: paragraph
-    text: 开发地理空间 Web 应用程序，以使用 Azure Maps 搜索兴趣点并规划通往相应位置的路线。
+    text: 开发地理空间 Web 应用程序，以便使用 Azure Maps 搜索兴趣点、规划通往相应位置的路线并跟踪设备。
   - type: list
     style: ordered
     items:
     - html: <a href="/azure/azure-maps/tutorial-search-location">搜索兴趣点</a>
     - html: <a href="/azure/azure-maps/tutorial-route-location">规划通往兴趣点的路线</a>
     - html: <a href="/azure/azure-maps/tutorial-prioritized-routes">按旅行模式规划路线</a>
-- title: 引用
+    - html: <a href="/azure/azure-maps/tutorial-create-store-locator">创建商店定位器</a>
+    - html: <a href="/azure/azure-maps/tutorial-geofence">设置地理围栏</a>
+- title: 参考
   items:
   - type: list
     style: cards
@@ -51,4 +53,4 @@ sections:
     - title: JavaScript
       html: <p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">地图控件</a></p>
     - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/maps/render">呈现服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">路线服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">搜索服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">时区服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">交通服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps-management/">地图帐户管理</a></p>
+      html: <p><a href="https://docs.microsoft.com/rest/api/maps/data">数据服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">地理位置服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">呈现服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">路线服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">搜索服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">空间服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">时区服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">交通服务</a></p>

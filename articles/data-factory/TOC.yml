@@ -25,6 +25,8 @@ items:
     href: quickstart-create-data-factory-rest-api.md
   - name: 创建数据工厂 - 资源管理器模板
     href: quickstart-create-data-factory-resource-manager-template.md
+  - name: 创建数据流
+    href: data-flow-create.md
   expanded: true
 - name: 教程
   items:
@@ -408,6 +410,42 @@ items:
       href: control-flow-wait-activity.md
     - name: Web 活动
       href: control-flow-web-activity.md
+  - name: 数据流转换
+    items:
+    - name: 聚合
+      href: data-flow-aggregate.md
+    - name: 有条件拆分
+      href: data-flow-conditional-split.md
+    - name: 派生列
+      href: data-flow-derived-column.md
+    - name: 存在
+      href: data-flow-exists.md
+    - name: 筛选器
+      href: data-flow-filter.md
+    - name: 联接
+      href: data-flow-join.md
+    - name: 查找
+      href: data-flow-lookup.md
+    - name: 新建分支
+      href: data-flow-new-branch.md
+    - name: 透视
+      href: data-flow-pivot.md
+    - name: Select
+      href: data-flow-select.md
+    - name: 接收器
+      href: data-flow-sink.md
+    - name: 排序
+      href: data-flow-sort.md
+    - name: 源
+      href: data-flow-source.md
+    - name: 代理键
+      href: data-flow-surrogate-key.md
+    - name: 联合
+      href: data-flow-union.md
+    - name: 逆透视
+      href: data-flow-unpivot.md
+    - name: 窗口
+      href: data-flow-window.md
   - name: 参数化
     items:
     - name: 将链接的服务参数化
@@ -528,9 +566,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: 支持选项
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 535abc50cd27693da90aaaddcfdf8950d6abc59d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7ee5cd120a8f1ecb8a1f685c1fa2332a9d9c5dd1
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174412"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270413"

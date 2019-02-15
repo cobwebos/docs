@@ -36,7 +36,7 @@ items:
     items:
     - name: 流式数据输入
       href: stream-analytics-define-inputs.md
-    - name: 引用数据输入
+    - name: 参考数据输入
       href: stream-analytics-use-reference-data.md
   - name: 作业的输出类型
     href: stream-analytics-define-outputs.md
@@ -135,7 +135,7 @@ items:
       href: stream-analytics-dotnet-management-sdk.md
     - name: 使用 Azure PowerShell
       href: https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick
-    - name: 使用 API
+    - name: 对 Edge 作业使用 API
       href: stream-analytics-cicd-api.md
   - name: Visual Studio 工具
     items:
@@ -216,14 +216,16 @@ items:
       items:
       - name: 分析函数概述
         href: /stream-analytics-query/analytic-functions-azure-stream-analytics
+      - name: AnomalyDetection_SpikeAndDip
+        href: /stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+      - name: AnomalyDetection_ChangePoint
+        href: /stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics
       - name: ISFIRST
         href: /stream-analytics-query/isfirst-azure-stream-analytics
       - name: LAG
         href: /stream-analytics-query/lag-azure-stream-analytics
       - name: LAST
         href: /stream-analytics-query/last-azure-stream-analytics
-      - name: AnomalyDetection
-        href: /stream-analytics-query/anomaly-detection-azure-stream-analytics
     - name: 数组函数
       items:
       - name: 数组函数概述
@@ -397,7 +399,7 @@ items:
   - name: 事件传递保证
     href: /stream-analytics-query/event-delivery-guarantees-azure-stream-analytics
   maintainContext: true
-- name: 引用
+- name: 参考
   items:
   - name: Azure PowerShell
     href: /powershell/module/azurerm.streamanalytics
@@ -433,9 +435,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: 白皮书 - 实时事件处理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: 00a80228f20c172c5584ca18a9789ed458c864aa
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: ee7eb6f1a92e5e3af603dab2e38eff5debaf3e9f
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997968"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300714"

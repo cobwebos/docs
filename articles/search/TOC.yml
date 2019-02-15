@@ -44,7 +44,7 @@ items:
     href: search-semi-structured-data.md
   - name: 编制 Azure SQL 数据库索引
     href: search-indexer-tutorial.md
-  - name: 使用 .NET 添加同义词
+  - name: 在 .NET 中添加同义词
     href: search-synonyms-tutorial-sdk.md
   - name: 使用 .NET 添加自动完成
     href: search-autocomplete-tutorial.md
@@ -118,7 +118,7 @@ items:
       href: search-create-index-portal.md
     - name: 分析器
       items:
-      - name: 添加文本分析器
+      - name: 添加分析器
         href: search-analyzers.md
       - name: 添加语言分析器
         href: index-add-language-analyzers.md
@@ -196,17 +196,17 @@ items:
       href: search-query-overview.md
     - name: 搜索浏览器（门户）
       href: search-explorer.md
-    - name: 简单语法示例
+    - name: 简化的查询语法
+      href: query-simple-syntax.md
+    - name: 完整 Lucene 查询语法
+      href: query-lucene-syntax.md
+    - name: 查询示例（简单语法）
       href: search-query-simple-examples.md
-    - name: Lucene 语法示例
+    - name: 查询示例（完整 Lucene）
       href: search-query-lucene-examples.md
-    - name: 查询语法
-      items:
-      - name: 简化的查询语法
-        href: query-simple-syntax.md
-      - name: Lucene 查询语法
-        href: query-lucene-syntax.md
-    - name: 分页结果
+  - name: 处理结果
+    items:
+    - name: 与页相关的功能
       href: search-pagination-page-layout.md
   - name: 对数据进行筛选和排序
     items:
@@ -234,7 +234,7 @@ items:
       href: search-monitor-usage.md
     - name: 搜索流量分析
       href: search-traffic-analytics.md
-- name: 引用
+- name: 参考
   items:
   - name: Azure CLI
     href: https://docs.microsoft.com/cli/azure/search?view=azure-cli-latest
@@ -307,9 +307,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: 视频
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: eeac3c7bf976bf1a3ccc44c30127420e00c7a776
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: a38dd0b739b5f34826798370b4ffa4ad84cc525d
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099048"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56299473"

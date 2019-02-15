@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9c337f147eaebc376c7953e7f585b5b9f6a10f94
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f4b66f79e415be8f9598a0e6f5c875d8a2597514
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471678"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300017"
 documentType: LandingData
 title: Azure 机器学习服务文档
 metadata:
@@ -22,12 +22,17 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
 abstract:
-  description: Azure 机器学习服务提供了一个基于云的环境，你可以使用这一环境来开发、培训、测试、部署、管理和跟踪机器学习模型。 此服务完全支持开放源代码技术，如 Scikit-learn、Tensorflow、Pytorch 或任何其他基于 Python 的框架。 使用我们的快速入门和教程了解如何将此服务用于机器学习工作流。
+  description: Azure 机器学习服务提供了一个基于云的环境，以用于快速构建、训练和部署机器学习模型。 使用自动化机器学习功能可更加快速地识别算法并优化超参数。 通过自动缩放计算和适用于机器学习的 Azure DevOps，提高生产力并降低成本。 使用开放源代码框架（如 PyTorch、TensorFlow 和 scikit-learn 以及服务 SDK），在 Python 环境中使用上述所有功能。 使用快速入门和教程了解如何操作。
 sections:
 - title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: 首先，<a href="quickstart-get-started">在 Azure 门户中</a>或<a href="quickstart-create-workspace-with-python">使用 Python</a> 创建服务工作区和资源。
+    text: 若要使用此服务，需要一个工作区和关联的资源。  入门：
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="quickstart-get-started">使用 Azure 门户快速入门</a>可获取工作区并运行试验，而无需进行任何安装。
+    - html: <a href="quickstart-create-workspace-with-python">使用 Python 快速入门</a>可在本地 notebook 服务器中安装主 SDK、创建工作区并运行试验。
 - title: 分步教程
   items:
   - type: paragraph
@@ -35,7 +40,7 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="tutorial-train-models-with-aml">训练</a>和<a href="tutorial-deploy-models-with-aml">部署</a>图像分类模型（<b>由两个部分构成的系列</b>）。<br>&nbsp;
+    - html: <a href="tutorial-train-models-with-aml">训练</a>和<a href="tutorial-deploy-models-with-aml">部署</a>图像分类模型（<b>由两个部分构成的系列</b>）。
     - html: <a href="tutorial-data-prep">准备数据</a>并<a href="tutorial-auto-train-models">使用自动化机器学习</a>训练和优化回归模型（<b>由两个部分构成的系列</b>）。
 - title: 示例
   items:
