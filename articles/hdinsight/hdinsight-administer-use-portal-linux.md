@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/26/2018
 ms.author: hrasheed
-ms.openlocfilehash: ce30b752ecf1d5413ae534fa03907cbf11b1c694
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: a0da4339586982f5210834bcec5acfe463bc1a9a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794475"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816435"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集
 
@@ -80,7 +80,7 @@ ms.locfileid: "53794475"
   - **新的支持请求**：允许对 Microsoft 支持创建支持票证。
     
 ## <a name="properties"></a> 群集属性
-在“群集主页”的“设置”下，选择“属性”。[](#homePage)
+在[群集主页](#homePage)的“设置”下，选择“属性”。
 * **主机名**：群集名称。
 * **群集 URL**：Ambari Web 界面的 URL。
 * **安全外壳 (SSH)**：用于通过 SSH 访问群集的用户名和主机名。
@@ -124,7 +124,7 @@ ms.locfileid: "53794475"
 使用群集缩放功能可更改 Azure HDInsight 群集使用的辅助角色节点数，而无需重新创建群集。
 
 > [!NOTE]  
-> 只支持使用 HDInsight 3.1.3 或更高版本的群集。 如果不确定群集的版本，可以查看“属性”页。  请参阅[列出和显示群集](#list-and-show-clusters)。
+> 只支持使用 HDInsight 3.1.3 或更高版本的群集。 如果不确定群集的版本，可以查看“属性”页。  请参阅“列出和显示群集”。
 
 在[群集主页](#homePage)中执行以下操作：
 
@@ -243,14 +243,14 @@ HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户（�
     ```
 
 2. 将该文件上传到可以使用 HTTP 或 HTTPS 地址从 HDInsight 访问的存储位置。 例如，某个公共文件存储（如 OneDrive 或 Azure Blob 存储）。 将 URI（HTTP 或 HTTPS 地址）保存到文件中，因为下一步需要用到此 URI。
-3. 在“群集主页”的“设置”下，选择“脚本操作”。[](#homePage)
+3. 在[群集主页”的](#homePage)设置”下，选择“脚本操作”。
 4. 在“脚本操作”边栏选项卡中，选择“提交新项”。 
 5. 在“提交脚本操作”边栏选项卡中输入以下信息：
 
    | 字段 | 值 |
    | --- | --- |
    | 脚本类型 | 从下拉列表中选择“- 自定义”。|
-   | 名称 |“更改 ssh 密码” |
+   | Name |“更改 ssh 密码” |
    | Bash 脚本 URI |changepassword.sh 文件的 URI |
    | 节点类型：（头节点、辅助角色节点、Nimbus、监督程序、Zookeeper，等等。） |✓ 适用于所有列出的节点类型 |
    | parameters |输入 SSH 用户名和新密码。 用户名与密码之间应有一个空格。 |
@@ -283,7 +283,7 @@ HDInsight 群集使用 Azure 存储帐户或 Azure Data Lake Storage 来存储�
 
 
 ## <a name="monitor-cluster-usage"></a>监视群集使用情况
-HDInsight 群集边栏选项卡的“使用情况”部分会显示相关信息，方便了解订阅中可以用于 HDInsight 的核心数、分配给此群集的核心数，以及这些核心是如何分配给此群集中的节点的。 请参阅[列出和显示群集](#list-and-show-clusters)。
+HDInsight 群集边栏选项卡的“使用情况”部分会显示相关信息，方便了解订阅中可以用于 HDInsight 的核心数、分配给此群集的核心数，以及这些核心是如何分配给此群集中的节点的。 请参阅“列出和显示群集”。
 
 > [!IMPORTANT]  
 > 若要监视 HDInsight 群集提供的服务，必须使用 Ambari Web 或 Ambari REST API。 有关如何使用 Ambari 的详细信息，请参阅[使用 Apache Ambari 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)

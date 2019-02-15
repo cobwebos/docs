@@ -8,17 +8,12 @@ items:
     href: what-is-ml-studio.md
   - name: 比较我们的 ML 产品
     href: ../service/overview-more-machine-learning.md
-  - name: 常见问题
-    displayName: FAQ
-    href: faq.md
   expanded: true
-- name: 快速入门
+- name: 教程
   items:
   - name: 创建第一个试验
     displayName: quickstart
     href: create-experiment.md
-- name: 教程
-  items:
   - name: 创建预测解决方案
     items:
     - name: 1 - 创建试验
@@ -199,9 +194,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: 自定义神经网络 (Net#)
     href: azure-ml-netsharp-reference-guide.md
-ms.openlocfilehash: 982f2794d22f830c967607108b31fbfe0d0de359
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: c9bbcd35f74e113c33ef0a8b449d806734501324
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238430"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266861"

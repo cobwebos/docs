@@ -16,12 +16,12 @@ ms.date: 02/11/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 616854e89a95eb83508e30099a663f0017e63784
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 94c7b5c81785c3d6fba31396f5812a1308817e33
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115702"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301105"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 更新
 
@@ -199,7 +199,9 @@ Azure Stack 修补程序都只适用于 Azure Stack 集成系统;不要尝试在
            "autoUpgradeMinorVersion": "true"
    ```
 
-- 没有准确地规划 Azure Stack 容量的新的考虑因素。 我们已设置为部署在 Azure Stack 中，以确保所有内部服务能够实现的规模的客户运行的 Vm 总数限制。 限制为每个主机，最多可为整个 stamp （如果达到每个主机限制 60） 700 60 台虚拟机。 有关详细信息，请参阅[容量规划器的新版本](http://aka.ms/azstackcapacityplanner)。
+- 没有准确地规划 Azure Stack 容量的新的考虑因素。 1901 更新是现在可以创建虚拟机的总数限制。  此限制旨在作为临时以免解决方案不稳定。 进行寻址的更多的 Vm 上的稳定性问题的源，但尚未确定具体的时间表以提高补救。 1901年更新后，现在有了每个服务器限制 60 台虚拟机的总体解决方案限制为 700。  例如，8 服务器的 Azure Stack VM 限制将 480 (8 * 60)。  对于 Azure Stack 解决方案的 12 到 16 服务器限制为 700。 已创建此限制，请记住所有计算资源容量注意事项例如保留的复原能力和 CPU 虚拟与物理运算符想要在标记上维护的比率。 有关详细信息，请参阅的容量规划器的新版本。  
+情况已达到虚拟机扩展限制，将作为结果返回以下错误代码：VMsPerScaleUnitLimitExceeded，VMsPerScaleUnitNodeLimitExceeded。 
+ 
 
 - 计算 API 版本为 2017年-12-01 增加。
 

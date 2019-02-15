@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: 从文本翻译 API 接收词对齐信息。
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: v-jansko
 ms.custom: seodec18
-ms.openlocfilehash: 0a373a61a26411c204cedccec8fbf0beac73e02e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ddb5e0f47a929e5b9bc47ab9e14e973f148dbe56
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461825"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856285"
 ---
 # <a name="how-to-receive-word-alignment-information"></a>如何接收词对齐信息
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 术语表解释了使用人脸 API 时可能遇到的术语。
 services: cognitive-services
 author: SteveMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 17167271df81914c76882fc4d06717043e1befc1
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ad3ea9b0cde16d5c9645e7eacee9ba7f9a08ed2d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214290"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859159"
 ---
 # <a name="glossary"></a>术语表
 
@@ -23,14 +23,14 @@ ms.locfileid: "55214290"
 
 #### <a name="attributes"></a>属性
 
-[检测](#Detection-Face-Detection)结果中的属性是可选的，例如[年龄](#Age-Attribute)、[性别](#Gender-Attribute)[头部姿势](#Head-Pose-Attribute)[面部毛发](#Facial-Hair-Attribute)、[微笑](#Smile-Attribute)。
-可指定查询参数 returnFaceAttributes，从[检测](#Detection-Face-Detection) API 获取这些属性。 属性可提供除[人脸 ID](#Face-ID) 和[矩形](#Face-Rectangle)外的关于所选[人脸](#Face)的其他信息。
+检测结果中的属性是可选的，例如[年龄](#Age-Attribute)、[性别](#Gender-Attribute)、[头部姿势](#Head-Pose-Attribute)、[面部毛发](#Facial-Hair-Attribute)和[微笑](#Smile-Attribute)。
+可指定查询参数 returnFaceAttributes，从检测 API 获取这些属性。 属性可提供除[人脸 ID](#Face-ID) 和[矩形](#Face-Rectangle)外的关于所选[人脸](#Face)的其他信息。
 
 如需更多详细信息，请参阅[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)指南。
 
 #### <a name="age-attribute"></a>年龄（属性）
 
-年龄是一个描述特定人脸年龄的[属性](#Attributes)。 [检测](#Detection-Face-Detection)结果中的年龄属性为可选，且可指定 returnFaceAttributes 参数通过[检测](#Detection-Face-Detection)请求来控制该属性。
+年龄是一个描述特定人脸年龄的[属性](#Attributes)。 检测结果中的年龄属性为可选，且可指定 returnFaceAttributes 参数通过检测请求来控制该属性。
 
 如需更多详细信息，请参阅[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)指南。
 
@@ -64,13 +64,13 @@ ms.locfileid: "55214290"
 
 #### <a name="face"></a>人脸
 
-人脸是用于人脸 API 派生的结果的统一术语，该 API 与检测到的人脸相关。 总的来说，人脸由统一标识（[人脸 ID](#Face-ID)）、图像中的指定区域（[人脸矩形](#Face-Rectangle)）和与人脸相关的其他[属性](#Face-Attributes-Facial-Attributes)表示，例如[年龄](#Age-Attribute)[性别](#Gender-Attribute)、[特征点](#Face-Landmarks-Facial-Landmarks)和[头部姿势](#Head-Pose-Attribute)。 此外，[检测](#Detection-Face-Detection)操作也可返回人脸。
+人脸是用于人脸 API 派生的结果的统一术语，该 API 与检测到的人脸相关。 总的来说，人脸由统一标识（[人脸 ID](#Face-ID)）、图像中的指定区域（[人脸矩形](#Face-Rectangle)）和与人脸相关的其他属性表示，例如[年龄](#Age-Attribute)、[性别](#Gender-Attribute)、特征点和[头部姿势](#Head-Pose-Attribute)。 此外，检测操作也可返回人脸。
 
 如需更多详细信息，请参阅[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)指南。
 
 #### <a name="face-api"></a>人脸 API
 
-人脸 API 是基于云的 API，可提供用于人脸检测和识别的最先进的算法。 人脸 API 的主要功能可分为两类：通过[属性](#Face-Attributes-Facial-Attributes)实现的人脸[检测](#Detection-Face-Detection)和人脸[识别](#Recognition)。
+人脸 API 是基于云的 API，可提供用于人脸检测和识别的最先进的算法。 人脸 API 的主要功能可分为两类：通过属性实现的人脸检测和人脸[识别](#Recognition)。
 
 有关更多详细信息，请参阅以下指南：[人脸 API 概述](./Overview.md)、[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)、[人脸 - 查找相似](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)、[人脸 - 分组](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238)、[人脸 - 识别](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)、[人脸 - 验证](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)。
 
@@ -80,13 +80,13 @@ ms.locfileid: "55214290"
 
 #### <a name="face-id"></a>人脸 ID
 
-人脸 ID 派生自[检测](#Detection-Face-Detection)结果，其中的字符串表示[人脸 API](#Face-API) 中的[人脸](#Face)。
+人脸 ID 派生自检测结果，其中的字符串表示[人脸 API](#Face-API) 中的[人脸](#Face)。
 
 如需更多详细信息，请参阅[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)指南。
 
 #### <a name="face-landmarksfacial-landmarks"></a>人脸特征点/面部特征点
 
-[检测](#Detection-Face-Detection)结果中的特征点为可选；它们是语义化的面部点，例如眼睛、鼻子和嘴巴（如下图所示）。 可使用布尔值 returnFaceLandmarks 通过[检测](#Detection-Face-Detection)请求来控制特征点。 如果 returnFaceLandmarks 设置为 true，则返回的人脸具有特征点属性。
+检测结果中的特征点为可选；它们是语义化的面部点，例如眼睛、鼻子和嘴巴（如下图所示）。 可使用布尔值 returnFaceLandmarks 通过检测请求来控制特征点。 如果 returnFaceLandmarks 设置为 true，则返回的人脸具有特征点属性。
 
 如需更多详细信息，请参阅[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)指南。
 
@@ -94,19 +94,19 @@ ms.locfileid: "55214290"
 
 #### <a name="face-rectangle"></a>人脸矩形
 
-人脸矩形派生自[检测](#Detection-Face-Detection)结果，它是图像中以像素为单位的竖向矩形（左侧，顶部，宽度，高度）。 除宽度和高度之外，[人脸](#Face)的左上角（左侧、顶部）分别表示 x 和 y 轴的人脸大小。
+人脸矩形派生自检测结果，它是图像中以像素为单位的竖向矩形（左侧，顶部，宽度，高度）。 除宽度和高度之外，[人脸](#Face)的左上角（左侧、顶部）分别表示 x 和 y 轴的人脸大小。
 
 如需更多详细信息，请参阅[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)指南。
 
 #### <a name="facial-hair-attribute"></a>面部毛发（属性）
 
-面部毛发是一个用于描述识别到的人脸的面部毛发长度的[属性](#Attributes)。 [检测](#Detection-Face-Detection)结果中的面部毛发属性为可选，且可使用 returnFaceAttributes 通过[检测](#Detection-Face-Detection)请求来控制该属性。 如果 returnFaceAttributes 中包含“facialHair”，则返回的人脸具有面部毛发属性。
+面部毛发是一个用于描述识别到的人脸的面部毛发长度的[属性](#Attributes)。 检测结果中的面部毛发属性为可选，且可使用 returnFaceAttributes 通过检测请求来控制该属性。 如果 returnFaceAttributes 中包含“facialHair”，则返回的人脸具有面部毛发属性。
 
 如需更多详细信息，请参阅[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)指南。
 
 #### <a name="facelist"></a>FaceList
 
-FaceList 是 [PersistedFace](#PersistedFace) 的集合，是[查找相似](#Find-Similar)的单位。 FaceList 包含 [FaceList ID](#FaceList-ID) 和其他属性，例如[姓名](#Name)和[用户数据](#UserData-User-Data)。
+FaceList 是 [PersistedFace](#PersistedFace) 的集合，是[查找相似](#Find-Similar)的单位。 FaceList 包含 [FaceList ID](#FaceList-ID) 和其他属性（例如，姓名和用户数据）。
 
 有关更多详细信息，请参阅以下指南：[FaceList - 创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b)、[FaceList - 获取](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c)。
 
@@ -118,7 +118,7 @@ FaceList ID 是用户提供的字符串，用作 [FaceList](#FaceList) 的标识
 
 #### <a name="find-similar"></a>查找相似
 
-此 API 可根据人脸集合搜索/查询相似人脸。 在请求中查询人脸和人脸集合表示为 [人脸 ID](#Face-ID) 或 [FceList ID](#FaceList-ID)/[LargeFaceList ID](#LargeFaceList-ID)。 返回的结果是搜索到的相似人脸，由[人脸 ID](#Face-ID) 或 [PersistedFace ID](#PersistedFace-ID) 表示。
+此 API 可根据人脸集合搜索/查询相似人脸。 在请求中查询人脸和人脸集合表示为 [人脸 ID](#Face-ID) 或 [FceList ID](#FaceList-ID)/[LargeFaceList ID](#LargeFaceList-ID)。 返回的结果是搜索到的相似人脸，由[人脸 ID](#Face-ID) 或 PersistedFace ID 表示。
 
 有关更多详细信息，请参阅以下指南：[人脸 - 查找相似](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)、[LargeFaceList - 创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)、[FaceList - 创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b)。
 
@@ -126,7 +126,7 @@ FaceList ID 是用户提供的字符串，用作 [FaceList](#FaceList) 的标识
 
 #### <a name="gender-attribute"></a>性别（属性）
 
-性别是一个用于描述识别到的人脸的性别的[属性](#Attributes)。 [检测](#Detection-Face-Detection)结果中的性别属性为可选，且可使用 returnFaceAttributes 通过[检测](#Detection-Face-Detection)请求来控制该属性。 如果 returnFaceAttributes 中包含“gender”，则返回的人脸具有性别属性。
+性别是一个用于描述识别到的人脸的性别的[属性](#Attributes)。 检测结果中的性别属性为可选，且可使用 returnFaceAttributes 通过检测请求来控制该属性。 如果 returnFaceAttributes 中包含“gender”，则返回的人脸具有性别属性。
 
 如需更多详细信息，请参阅[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)指南。
 
@@ -146,7 +146,7 @@ FaceList ID 是用户提供的字符串，用作 [FaceList](#FaceList) 的标识
 
 #### <a name="head-pose-attribute"></a>头部姿势（属性）
 
-头部姿势是一个[属性](#Attributes)，可根据头部的转动、俯仰和偏转角度以三维空间表示人脸方向，如下图所示。 转动和偏转值的范围是 [-180、180] 和 [-90、90] 度。 在当前版本中，检测返回的俯仰值始终为 0。 [检测](#Detection-Face-Detection)结果中的头部姿势属性为可选，且可使用 returnFaceAttributes 参数通过[检测](#Detection-Face-Detection)请求来控制该属性。 如果 returnFaceAttributes 参数包含“headPose”，则返回的人脸具有头部姿势属性。
+头部姿势是一个[属性](#Attributes)，可根据头部的转动、俯仰和偏转角度以三维空间表示人脸方向，如下图所示。 转动和偏转值的范围是 [-180、180] 和 [-90、90] 度。 在当前版本中，检测返回的俯仰值始终为 0。 检测结果中的头部姿势属性为可选，且可使用 returnFaceAttributes 参数通过检测请求来控制该属性。 如果 returnFaceAttributes 参数包含“headPose”，则返回的人脸具有头部姿势属性。
 
 如需更多详细信息，请参阅[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)指南。
 
@@ -182,11 +182,11 @@ IsIdentical 是[验证](#Verification)结果的布尔字段，表示两个人脸
 
 #### <a name="landmarks"></a>特征点
 
-请参阅[人脸特征点](#Face-Landmarks-Facial-Landmarks)。
+请参阅人脸特征点。
 
 #### <a name="largefacelist"></a>LargeFaceList
 
-LargeFaceList 是 [PersistedFace](#PersistedFace) 的集合，是[查找相似](#Find-Similar)的单位。 LargeFaceList 包含 [LargeFaceList ID](#LargeFaceList-ID) 和其他属性，例如[姓名](#Name)和[用户数据](#UserData-User-Data)。
+LargeFaceList 是 [PersistedFace](#PersistedFace) 的集合，是[查找相似](#Find-Similar)的单位。 LargeFaceList 包含 [LargeFaceList ID](#LargeFaceList-ID) 和其他属性（例如，姓名和用户数据）。
 
 有关更多详细信息，请参阅以下指南：[LargeFaceList - 创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)、[LargeFaceList - 获取](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a15827cd2de3616c086f2ce)、[LargeFaceList - 列出人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158db4d2de3616c086f2d6)。
 
@@ -198,7 +198,7 @@ LargeFaceList ID 是用户提供的字符串，用作 [LargeFaceList](#LargeFace
 
 #### <a name="largepersongroup"></a>LargePersonGroup
 
-LargePersonGroup 是[人员](#Person)的集合，是[识别](#Identification)的单位。 LargePersonGroup 包含 [LargePersonGroup ID](#LargePersonGroup-ID) 和其他属性，例如[姓名](#Name)和[用户数据](#UserData-User-Data)。
+LargePersonGroup 是[人员](#Person)的集合，是[识别](#Identification)的单位。 LargePersonGroup 包含 [LargePersonGroup ID](#LargePersonGroup-ID) 和其他属性（例如，姓名和用户数据）。
 
 有关更多详细信息，请参阅以下指南：[LargePersonGroup - 创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)、[LargePersonGroup - 获取](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acebb6ac60f11b48b5a9e)、[LargePersonGroup 人员 - 列出](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adda06ac60f11b48b5aa1)。
 
@@ -236,7 +236,7 @@ LargePersonGroup ID 是用户提供的字符串，用作 [LargePersonGroup](#Lar
 
 #### <a name="persistedface"></a>PersistedFace
 
-PersistedFace 是 Face API 中的数据结构。 PersistedFace 包含 [PersistedFace ID](#PersistedFace-ID) 和其他属性，例如[姓名](#Name)和[用户数据](#UserData-User-Data)。
+PersistedFace 是 Face API 中的数据结构。 PersistedFace 包含 PersistedFace ID 和其他属性（例如，姓名和用户数据）。
 
 有关更多详细信息，请参阅以下指南：[LargeFaceList - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)、[FaceList - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)、[LargePersonGroup 人员 - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42)、[PersonGroup 人人员 - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)。
 
@@ -248,7 +248,7 @@ PersistedFace 是 Face API 中的数据结构。 PersistedFace 包含 [Persisted
 
 #### <a name="person"></a>人员
 
-人员是人脸 API 中托管的数据结构。 人员包含[人员 ID](#Person-ID) 和其他属性，例如[姓名](#Name)、[PersistedFace](#PersistedFace)集合以及[用户数据](#UserData-User-Data)。
+人员是人脸 API 中托管的数据结构。 人员包含[人员 ID](#Person-ID) 和其他属性（例如，姓名、[PersistedFace](#PersistedFace)集合以及用户数据）。
 
 有关更多详细信息，请参阅以下指南：[LargePersonGroup Person - 创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40)、[LargePersonGroup 人员 - 获取](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599add376ac60f11b48b5aa0)、[PersonGroup 人员 - 创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)、[PersonGroup 人员 - 获取](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523f)。
 
@@ -260,7 +260,7 @@ PersistedFace 是 Face API 中的数据结构。 PersistedFace 包含 [Persisted
 
 #### <a name="persongroup"></a>PersonGroup
 
-PersonGroup 是[人员](#Person)的集合，是[识别](#Identification)的单位。 PersonGroup 包含 [PersonGroup ID](#PersonGroup-ID) 和其他属性，例如[姓名](#Name)和[用户数据](#UserData-User-Data)。
+PersonGroup 是[人员](#Person)的集合，是[识别](#Identification)的单位。 PersonGroup 包含 [PersonGroup ID](#PersonGroup-ID) 和其他属性（例如，姓名和用户数据）。
 
 有关更多详细信息，请参阅以下指南：[PersonGroup - 创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)、[PersonGroup - 获取](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395246)、[PersonGroup 人员 - 列出](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241)。
 
@@ -290,19 +290,25 @@ PersonGroup ID 是用户提供的字符串，用作 [PersonGroup](#PersonGroup) 
 
 ## <a name="s"></a>S
 
-#### <a name="smile-attribute"></a>笑容（属性）
-
-笑容是一个用于描述识别到的人脸的微笑情况的[属性](#Attributes)。 [检测](#Detection-Face-Detection)结果中的笑容属性为可选，且可使用 returnFaceAttributes 通过[检测](#Detection-Face-Detection)请求来控制该属性。 如果 returnFaceAttributes 中包含“smile”，则返回的人脸具有笑容属性。
-
-如需更多详细信息，请参阅[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)指南。
-
 #### <a name="similar-face-searching"></a>相似人脸搜索
 
 请参阅[查找相似](#Find-Similar)。
 
+#### <a name="smile-attribute"></a>笑容（属性）
+
+笑容是一个用于描述识别到的人脸的微笑情况的[属性](#Attributes)。 检测结果中的笑容属性为可选，且可使用 returnFaceAttributes 通过检测请求来控制该属性。 如果 returnFaceAttributes 中包含“smile”，则返回的人脸具有笑容属性。
+
+如需更多详细信息，请参阅[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)指南。
+
+#### <a name="snapshot"></a>快照
+
+快照是特定人脸数据类型的临时远程存储。 它可用作一种剪贴板，用于将数据从一个订阅复制到另一个订阅。 用户先“拍摄”来源订阅中数据的快照，再将快照“应用”到目标订阅中的新数据对象。 
+
+有关更多详细信息，请参阅[人脸迁移指南](./face-api-how-to-topics/how-to-migrate-face-data.md)和[快照 - 拍摄](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot/take)以及[快照 - 应用](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot/apply)参考文档 (REST)。
+
 #### <a name="status-train"></a>状态（训练）
 
-状态是一个字符串，用于描述[训练 LargeFaceList/LargePersonGroups/PersonGroups ](#Train) 的过程，包括“未开始”、“正在运行”、“成功”、“失败”。
+状态是一个字符串，用于描述训练 LargeFaceList/LargePersonGroups/PersonGroups 的过程，包括“未开始”、“正在运行”、“成功”、“失败”。
 
 如需更多详细信息，请参阅以下指南：[LargeFaceList - 训练](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158422d2de3616c086f2d1)、[LargePersonGroup - 训练](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4)、[PersonGroup - 训练](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249)。
 
@@ -330,7 +336,7 @@ PersonGroup ID 是用户提供的字符串，用作 [PersonGroup](#PersonGroup) 
 
 #### <a name="verification"></a>验证
 
-此 API 用于验证两个人脸是否相同。 两个人脸在请求中均由人脸 ID 表示。 验证结果包含一个布尔字段 ([isIdentical](#Is-Identical))（如果为 true，则表示相同相）和一个表示置信度的数值（[置信度](#Confidence)）。
+此 API 用于验证两个人脸是否相同。 两个人脸在请求中均由人脸 ID 表示。 验证结果包含一个布尔字段 (isIdentical)（如果为 true，则表示相同相同）和一个表示置信度的数值（[置信度](#Confidence)）。
 
 如需更多详细信息，请参阅[人脸 - 验证](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)指南。
 

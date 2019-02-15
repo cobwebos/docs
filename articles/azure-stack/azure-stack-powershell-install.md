@@ -15,12 +15,12 @@ ms.date: 02/08/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 72c4bfc4151e8120f8641c743c0da3896bd71fe1
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 89e75afd3b9001f7a0b8a027744ef71c8bb69690
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995024"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56299558"
 ---
 # <a name="install-powershell-for-azure-stack"></a>安装适用于 Azure Stack 的 PowerShell
 
@@ -97,7 +97,7 @@ Azure Stack 需要**2018年-03-01-混合**1808年或更高版本的 Azure Stack 
 
 运行以下 PowerShell 脚本，在开发工作站上安装这些模块：
 
-- Azure Stack 1901 或更高版本。
+- Azure Stack 1901 或更高版本：
 
     ```PowerShell
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
@@ -108,7 +108,7 @@ Azure Stack 需要**2018年-03-01-混合**1808年或更高版本的 Azure Stack 
     > [!Note]  
     > Azure Stack 模块版本 1.7.0 是一项重大更改。 若要从 Azure Stack 迁移 1.6.0 请参阅[迁移指南](https://aka.ms/azspshmigration170)。
 
-- Azure Stack 1811 或更早版本。
+- Azure Stack 1811:
 
     ```PowerShell
     # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet
@@ -120,7 +120,7 @@ Azure Stack 需要**2018年-03-01-混合**1808年或更高版本的 Azure Stack 
     Install-Module -Name AzureStack -RequiredVersion 1.6.0
     ```
 
-- Azure Stack 1809 或更早版本。
+- Azure Stack 1810 或更早版本：
 
     ```PowerShell
     # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet

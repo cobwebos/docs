@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5b64472c6388a642c817fb67c97e963ecfa14c2c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 55668b8ef8019e1ee808bc0cba9d98c0db53c584
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478648"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198734"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>针对对象无法同步到 Azure AD 进行故障排除
 
@@ -28,6 +29,34 @@ ms.locfileid: "54478648"
 
 >[!IMPORTANT]
 >对于 1.1.749.0 或更高版本的 Azure Active Directory (AAD) Connect 部署，请使用向导中的[故障排除任务](tshoot-connect-objectsync.md)来排查对象同步问题。 
+
+## <a name="synchronization-process"></a>同步过程
+
+在调查同步问题之前，先了解一下 Azure AD Connect 同步过程：
+
+  ![Azure AD Connect 同步过程](./media/tshoot-connect-object-not-syncing/syncingprocess.png)
+
+### <a name="terminology"></a>**术语**
+
+* **CS：** 连接器空间，数据库中的一个表。
+* **MV：** Metaverse，数据库中的一个表。
+* **AD：** Active Directory
+* **AAD：** Azure Active Directory
+
+### <a name="synchronization-steps"></a>**同步步骤**
+同步过程包括以下步骤：
+
+1. **从 AD 导入：** 将 Active Directory 对象引入 AD CS。
+
+2. **从 AAD 导入：** 将 Azure Active Directory 对象引入 AAD CS。
+
+3. **同步：** 入站同步规则和出站同步规则按优先数字从低到高的顺序运行。 要查看同步规则，可以从桌面应用程序转到“同步规则编辑器”。 入站同步规则 将数据从 CS 引入 MV。 出站同步规则 将数据从 MV 移动到 CS。
+
+4. **导出到 AD：** 运行同步后，会将对象从 AD CS 导出到 Active Directory。
+
+5. **导出到 AAD：** 运行同步后，会将对象从 AAD CS 导出到 Azure Active Directory。
+
+## <a name="troubleshooting"></a>故障排除
 
 若要查找错误，需要按以下顺序查看几个不同位置的内容：
 
@@ -115,7 +144,7 @@ ms.locfileid: "54478648"
 “日志”页用于查看密码同步状态和历史记录。 有关详细信息，请参阅[排查密码哈希同步问题](tshoot-connect-password-hash-synchronization.md)。
 
 ## <a name="metaverse-object-properties"></a>Metaverse 对象属性
-通常，最好从源 Active Directory [连接器空间](#connector-space)开始搜索。 但也可以从 metaverse 开始搜索。
+通常，最好从源 Active Directory 连接器空间开始搜索。 但也可以从 metaverse 开始搜索。
 
 ### <a name="search-for-an-object-in-the-mv"></a>搜索 MV 中的对象
 在“Synchronization Service Manager”中，单击“Metaverse 搜索”。 创建一个查找用户的查询。 可以搜索公共属性，例如 accountName (sAMAccountName) 和 userPrincipalName。 有关详细信息，请参阅 [Metaverse 搜索](how-to-connect-sync-service-manager-ui-mvsearch.md)。
@@ -123,7 +152,28 @@ ms.locfileid: "54478648"
 
 在“搜索结果”窗口中，单击对象。
 
-如果未找到对象，则它尚未到达 metaverse。 继续搜索 Active Directory [连接器空间](#connector-space-object-properties)中的对象。 可能同步中出现了错误（该错误阻止对象到达 metaverse），也可能应用了筛选器。
+如果未找到对象，则它尚未到达 metaverse。 继续搜索 Active Directory [连接器空间](#connector-space-object-properties)中的对象。 如果在 Active Directory 连接器空间中找到对象，则可能存在阻止对象进入 metaverse 的同步错误，或者可能应用了同步规则作用域筛选器。
+
+### <a name="object-not-found-in-the-mv"></a>在 MV 中找不到对象
+如果 Active Directory CS 中存在对象，但 MV 中不存在该对象，则应用作用域筛选器。 
+
+* 要查看作用域筛选器，请转到桌面应用程序菜单，然后单击“同步规则编辑器”。 通过调整下面的筛选器来筛选适用于该对象的规则。
+
+  ![入站同步规则搜索](./media/tshoot-connect-object-not-syncing/syncrulessearch.png)
+
+* 查看上面列表中的每个规则，然后选中“作用域筛选器”。 在下面的作用域筛选器中，如果“isCriticalSystemObject” 值为 null 或 FALSE 或为空，则表示处于作用域内。
+
+  ![入站同步规则搜索](./media/tshoot-connect-object-not-syncing/scopingfilter.png)
+
+* 转到[CS 导入](#cs-import)属性列表，查看阻止对象移动到 MV 的筛选器。 此外，“连接器空间”属性列表仅显示非 null 和非空属性。 例如，如果“isCriticalSystemObject”未显示在列表中，则表示此属性的值为 null 或为空。
+
+### <a name="object-not-found-in-the-aad-cs"></a>在 AAD CS 中找不到对象
+如果 Azure Active Directory的“连接器空间”中不存在对象。 但是，它存在于 MV 中，则可以查看相应“连接器空间”“出站”规则的作用域筛选器，并检查是否由于 [MV 属性](#mv-attributes)不符合条件而筛选掉该对象。
+
+* 要查看出站作用域筛选器，请通过调整下面的筛选器为对象选择适用的规则。 查看每个规则并查看相应的 [MV 属性](#mv-attributes)值。
+
+  ![出站同步规则搜索](./media/tshoot-connect-object-not-syncing/outboundfilter.png)
+
 
 ### <a name="mv-attributes"></a>MV 属性
 在“属性”选项卡中，可以看到值，以及是由哪一个连接器提供它。  
@@ -146,6 +196,5 @@ ms.locfileid: "54478648"
 使用此选项卡也可导航到[连接器空间对象](#connector-space-object-properties)。 选择一行，并单击“属性”。
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 [Azure AD Connect 同步](how-to-connect-sync-whatis.md)配置的详细信息。
-
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+- [Azure AD Connect 同步](how-to-connect-sync-whatis.md)。
+- [什么是混合标识？](whatis-hybrid-identity.md)。
