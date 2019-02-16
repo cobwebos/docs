@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 02/05/2019
-ms.openlocfilehash: 799f47b291b3943dcb4d6b31bc8df732c28990cd
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/07/2019
+ms.openlocfilehash: a9e5be3c1dcbf4461bd00b2b1ce530aa16e441ef
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816588"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962122"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>概述 Azure SQL 数据库托管实例资源限制
 
@@ -34,7 +34,7 @@ ms.locfileid: "55816588"
 
 Azure SQL 数据库托管实例可部署在两代硬件 (Gen4 和 Gen5) 上。 各硬件代系具有不同的特性，如下表所述：
 
-|   | **第 4 代** | **第 5 代** |
+|   | **Gen4** | **Gen5** |
 | --- | --- | --- |
 | 硬件 | Intel E5-2673 v3 (Haswell) 2.4-GHz 处理器、附加的 SSD vCore = 1 PP（物理核心） | Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器、快速 NVMe SSD、vCore=1 LP（超线程） |
 | 计算 | 8、16、24 个 vCore | 8、16、24、32、40、64、80 个 vCore |
@@ -51,7 +51,7 @@ Azure SQL 数据库托管实例可部署在两代硬件 (Gen4 和 Gen5) 上。 �
 | --- | --- | --- |
 | vCore 数目\* | 第 4 代：8、16、24<br/>第 5 代：8、16、24、32、40、64、80 | 第 4 代：8、16、24、32 <br/> 第 5 代：8、16、24、32、40、64、80 |
 | 内存 | Gen4：56 GB - 168 GB<br/>Gen5：40.8 GB - 408 GB<br/>\*与 vCore 数目成正比 | Gen4：56 GB - 168 GB <br/> Gen5：40.8 GB - 408 GB<br/>\*与 vCore 数目成正比 |
-| 最大存储大小 | 8 TB | 第 4 代：1 TB <br/> 第 5 代： <br/>- 8、16 个 vCore 1 TB<br/>- 24 个 vCore 2 TB<br/>- 32、40、64、80 个 vCore 4 TB |
+| 最大存储大小 | 8 TB | Gen4：1 TB <br/> Gen5： <br/>- 8、16 个 vCore 1 TB<br/>- 24 个 vCore 2 TB<br/>- 32、40、64、80 个 vCore 4 TB |
 | 每个数据库的最大存储 | 由每个实例的最大存储大小决定 | 由每个实例的最大存储大小决定 |
 | 每个实例的数据库数目上限 | 100 | 100 |
 | 每个实例的数据库文件数目上限 | 最多 280 个 | 每个数据库 32,767 个文件 |
