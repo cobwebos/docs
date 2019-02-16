@@ -7,16 +7,16 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 02/15/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 09/05/2018
-ms.openlocfilehash: 02ecb3cdec9ddb07bf48dfe77d1ed5fbf07975e0
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.lastreviewed: 02/15/2019
+ms.openlocfilehash: 6fdec992b19a5615a35955a46fd90102890cde16
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965318"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329347"
 ---
 # <a name="use-the-asdk-to-validate-an-azure-stack-backup"></a>使用 ASDK 验证 Azure Stack 备份
 在部署 Azure Stack 并预配用户资源（例如套餐、计划、配额、订阅）以后，应[启用 Azure Stack 基础结构备份](../azure-stack-backup-enable-backup-console.md)。 计划并运行定期基础结构备份可确保在硬件或服务出现灾难性故障时基础结构管理数据不会丢失。
@@ -52,11 +52,11 @@ Azure Stack 基础结构备份包含有关云的重要数据，这些数据可�
 
 |先决条件|描述|
 |-----|-----|
-|备份共享路径。|最新 Azure Stack 备份的 UNC 文件共享路径，该备份将用于恢复 Azure Stack 基础结构信息。 此本地共享将在云恢复部署过程中创建。|
-|备份加密密钥。|此加密密钥用于通过 Azure Stack 管理门户计划要运行的基础结构备份。|
-|要还原的备份 ID。|备份 ID，采用的字母数字形式为“xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx”，用于确定需要在云恢复过程中还原的备份。|
-|时间服务器 IP。|有效的时间服务器 IP（例如 132.163.97.2）是 Azure Stack 部署所需的。|
-|外部证书密码。|Azure Stack 使用的外部证书的密码。 CA 备份包含外部证书，这些证书需使用此密码来还原。|
+|备份共享路径|最新 Azure Stack 备份的 UNC 文件共享路径，该备份将用于恢复 Azure Stack 基础结构信息。 此本地共享将在云恢复部署过程中创建。|
+|备份加密密钥|可选。 仅在需要如果你已升级到 1901年或更高版本的 Azure Stack 版本从以前版本的 Azure Stack 启用备份。|
+|要还原的备份 ID|备份 ID，采用的字母数字形式为“xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx”，用于确定需要在云恢复过程中还原的备份。|
+|时间服务器 IP|有效的时间服务器 IP（例如 132.163.97.2）是 Azure Stack 部署所需的。|
+|外部证书密码|自签名的证书的私钥 (.pfx)，用于保护备份的密码。|
 |     |     | 
 
 ## <a name="prepare-the-host-computer"></a>准备主机 
@@ -133,11 +133,12 @@ $certPass = Read-Host -AsSecureString
 ## <a name="restore-infrastructure-data-from-backup"></a>从备份还原基础结构数据
 成功地进行云恢复部署以后，需使用 **Restore-AzureStack** cmdlet 完成还原操作。 
 
-以 Azure Stack 操作员身份登录以后，请[安装 Azure Stack PowerShell](asdk-post-deploy.md#install-azure-stack-powershell)，然后使用你的备份 ID 来替换 `Name` 参数，以便运行以下命令：
+Azure Stack 操作员在登录后[安装 Azure Stack PowerShell](asdk-post-deploy.md#install-azure-stack-powershell)并运行以下命令，以指定的证书和从备份还原时使用的密码：
 
 ```powershell
 Restore-AzsBackup -Name "<BackupID>"
 ```
+
 调用此 cmdlet 后，先等待 60 分钟，然后开始在进行云恢复的 ASDK 上验证备份数据。
 
 ## <a name="next-steps"></a>后续步骤

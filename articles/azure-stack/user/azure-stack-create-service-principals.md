@@ -14,12 +14,12 @@ ms.date: 12/12/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: da75d829ccb74f7be675501b601ad3e6375bfb70
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 00468ca62e55823b4706fc52d9793f676aebd368
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813154"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312848"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>通过创建服务主体向应用程序授予对 Azure Stack 资源的访问权限
 
@@ -37,7 +37,7 @@ ms.locfileid: "55813154"
 
 你有一个需要使用 Azure 资源管理器来清点 Azure 资源的配置管理应用。 可以创建一个服务主体并将其分配到“读者”角色。 此角色向该应用授予对 Azure 资源的只读访问权限。
 
-## <a name="getting-started"></a>开始使用
+## <a name="getting-started"></a>入门
 
 使用本文中的步骤作为指南来完成以下任务：
 
@@ -50,7 +50,7 @@ ms.locfileid: "55813154"
 * 创建适用于 [Azure Active Directory (Azure AD)](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad) 的服务主体。
 * 创建适用于 [Active Directory 联合身份验证服务 (AD FS)](azure-stack-create-service-principals.md#create-service-principal-for-ad-fs) 的服务主体。
 
-将服务主体分配到角色的步骤对于 Azure AD 和 AD FS 是相同的。 创建服务主体后，可以通过将其分配到某个角色来[委派权限](azure-stack-create-service-principals.md#assign-role-to-service-principal)。
+将服务主体分配到角色的步骤对于 Azure AD 和 AD FS 是相同的。 创建服务主体后，可以通过将其分配到某个角色来[委派权限](azure-stack-create-service-principals.md)。
 
 ## <a name="create-service-principal-for-azure-ad"></a>为 Azure AD 创建服务主体
 
@@ -76,16 +76,16 @@ ms.locfileid: "55813154"
 2. 复制“应用程序 ID”并将其存储在应用程序代码中。 在示例应用程序中的应用程序使用**客户端 id**指**应用程序 ID**。
 
      ![应用程序的应用程序 ID](./media/azure-stack-create-service-principal/image12.png)
-3. 若要生成身份验证密钥，请选择“密钥” 。
+3. 若要生成身份验证密钥，请选择“密钥”。
 
-4. 提供密钥说明和密钥持续时间。 完成后，选择“保存” 。
+4. 提供密钥说明和密钥持续时间。 完成后，选择“保存”。
 
 >[!IMPORTANT]
 保存密钥后，将显示密钥**值**。 请记下此值，因为以后无法检索密钥。 将密钥值存储在应用程序可检索的位置。
 
 ![有关已保存的密钥的密钥值警告。](./media/azure-stack-create-service-principal/image15.png)
 
-最后一步是[将应用程序分配到某个角色](azure-stack-create-service-principals.md#assign-role-to-service-principal)。
+最后一步是[将应用程序分配到某个角色](azure-stack-create-service-principals.md)。
 
 ## <a name="create-service-principal-for-ad-fs"></a>为 AD FS 创建服务主体
 
@@ -102,11 +102,11 @@ ms.locfileid: "55813154"
 要访问订阅中的资源，必须将应用程序分配到角色。 决定哪个角色表示应用程序的相应权限。 若要了解有关可用角色的信息，请参阅 [RBAC：内置角色](../../role-based-access-control/built-in-roles.md)。
 
 >[!NOTE]
-可以在订阅、资源组或资源级别设置角色的作用域。 较低级别的作用域会继承权限。 例如，如果应用具有某个资源组的“读者”角色，则意味着该应用可以读取该资源组中的任何资源。
+可以在订阅、资源组或资源级别设置角色的作用域。 较低级别的作用域将继承权限。 例如，如果应用具有某个资源组的“读者”角色，则意味着该应用可以读取该资源组中的任何资源。
 
 请使用以下步骤作为指南来为服务主体分配角色。
 
-1. 在 Azure Stack 门户中，导航到要将应用程序分配到的作用域级别。 例如，若要在订阅范围内分配角色，选择“订阅” 。
+1. 在 Azure Stack 门户中，导航到要将应用程序分配到的作用域级别。 例如，若要在订阅范围内分配角色，选择“订阅”。
 
 2. 选择要将应用程序分配到的订阅。 在此示例中，该订阅是 Visual Studio Enterprise。
 
@@ -118,9 +118,9 @@ ms.locfileid: "55813154"
 
 5. 选择要分配到应用程序的角色。
 
-6. 搜索用户的应用程序，并选择它。
+6. 搜索你的应用程序，并选择它。
 
-7. 选择“确定”  完成角色分配。 该应用程序将显示在分配到该作用域的某个角色的用户列表中。
+7. 选择“确定”完成角色分配。 该应用程序将显示在分配到该作用域的某个角色的用户列表中。
 
 现在，你已创建了服务主体并分配了角色，你的应用程序可以访问 Azure Stack 资源了。
 

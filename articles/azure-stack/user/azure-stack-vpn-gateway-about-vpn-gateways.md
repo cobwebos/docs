@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/04/2019
+ms.date: 02/15/2019
 ms.author: sethm
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 62a0e763913ea1ca27edf88d7560c9400043bf27
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7bf7034d30a8aac187fb2eeae6569f2f495e4439
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251361"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327234"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>关于 Azure Stack 的 VPN 网关
 
@@ -74,7 +74,7 @@ VPN 网关连接需依赖于多个具有特定设置的资源。 大多数资源
 
 ### <a name="site-to-site"></a>站点到站点
 
-一个*站点到站点*(S2S) VPN 网关连接是通过 IPsec/IKE （IKEv1 或 IKEv2） VPN 隧道连接。 此类型的连接要求的 VPN 设备，是位于的本地，并且分配的公共 IP 地址。 此设备不能位于 nat 之后。 S2S 连接可以用于跨界和混合配置。
+一个*站点到站点*(S2S) VPN 网关连接是通过 IPsec/IKE (IKEv2) VPN 隧道连接。 此类型的连接要求的 VPN 设备，是位于的本地，并且分配的公共 IP 地址。 此设备不能位于 nat 之后。 S2S 连接可以用于跨界和混合配置。
 
 ![站点到站点 VPN 连接配置示例](media/azure-stack-vpn-gateway-about-vpn-gateways/vpngateway-site-to-site-connection-diagram.png)
 

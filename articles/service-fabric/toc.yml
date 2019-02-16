@@ -65,11 +65,7 @@ items:
   - name: 创建和管理群集
     items:
     - name: 1- 在 Azure 上创建群集
-      items:
-      - name: 1a- 创建 Windows 群集
-        href: service-fabric-tutorial-create-vnet-and-windows-cluster.md
-      - name: 1b- 创建 Linux 群集
-        href: service-fabric-tutorial-create-vnet-and-linux-cluster.md
+      href: service-fabric-tutorial-create-vnet-and-windows-cluster.md
     - name: 2- 缩放群集
       href: service-fabric-tutorial-scale-cluster.md
     - name: 3- 升级群集运行时
@@ -608,6 +604,8 @@ items:
           href: service-fabric-cluster-creation-via-arm.md
         - name: 使用证书公用名称创建
           href: service-fabric-create-cluster-using-cert-cn.md
+        - name: 创建 Linux 群集
+          href: service-fabric-tutorial-create-vnet-and-linux-cluster.md
       - name: 缩放
         items:
         - name: 手动横向扩展
@@ -720,7 +718,7 @@ items:
       href: service-fabric-reverse-proxy-diagnostics.md
     - name: 对本地群集进行故障排除
       href: service-fabric-troubleshoot-local-cluster-setup.md
-- name: 参考
+- name: 引用
   items:
   - name: Azure PowerShell
     href: /powershell/module/azurerm.servicefabric/
@@ -843,9 +841,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: ab29f0f543afe1c5d5bfc5c159f3bee7a8ac8c11
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: e46baa05ceda2bac38057c59411d8813de7607dd
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301649"
+ms.locfileid: "56309873"

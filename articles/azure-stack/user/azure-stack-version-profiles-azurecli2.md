@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/15/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: b27dd1b9aec89f259649b313d3ba7f944ea647f1
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 6d82410e07e725b13385f6ff2b57218c1146a80a
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765708"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329279"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Azure CLI 配合使用
 
@@ -114,7 +114,12 @@ Write-Host "Python Cert store was updated to allow the Azure Stack CA root certi
 
 使用以下步骤连接到 Azure Stack：
 
-1. 运行 `az cloud register` 命令注册 Azure Stack 环境。
+1. 运行 `az cloud register` 命令注册 Azure Stack 环境。 在某些情况下，通过代理或防火墙，这会强制执行 SSL 截获路由直接出站 internet 连接。 在这些情况下，`az cloud register`命令可能会失败并出现错误，如"无法从云中获取终结点"。 若要解决此错误，可以设置以下环境变量：
+
+   ```shell
+   set AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1 
+   set ADAL_PYTHON_SSL_NO_VERIFY=1
+   ```
    
     a. 若要注册云管理环境，请使用：
 
