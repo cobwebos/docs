@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: be4549b8b9cca3f4aa48a21fb9377dbd203dde69
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 82e80b9dd4d20709fc8598e0fed3323046c21cfa
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751117"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189406"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>教程：使用 Jenkins、GitHub 和 Docker 在 Azure 中的 Linux VM 上创建开发基础结构
 
@@ -59,7 +59,7 @@ write_files:
         "hosts": ["fd://","tcp://127.0.0.1:2375"]
       }
 runcmd:
-  - apt install default-jre -y
+  - apt install openjdk-8-jre-headless -y
   - wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
   - sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
   - apt-get update && apt-get install jenkins -y
@@ -109,6 +109,21 @@ az vm show --resource-group myResourceGroupJenkins --name myVM -d --query [publi
 ssh azureuser@<publicIps>
 ```
 
+使用 `service` 命令验证 Jenkins 是否正在运行。
+
+```bash
+$ service jenkins status
+● jenkins.service - LSB: Start Jenkins at boot time
+   Loaded: loaded (/etc/init.d/jenkins; generated)
+   Active: active (exited) since Tue 2019-02-12 16:16:11 UTC; 55s ago
+     Docs: man:systemd-sysv-generator(8)
+    Tasks: 0 (limit: 4103)
+   CGroup: /system.slice/jenkins.service
+
+Feb 12 16:16:10 myVM systemd[1]: Starting LSB: Start Jenkins at boot time...
+...
+```
+
 查看并复制 Jenkins 安装程序的 `initialAdminPassword`：
 
 ```bash
@@ -125,7 +140,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 - 选择“保存并完成”
 - 准备好 Jenkins 后，选择“开始使用 Jenkins”
   - 如果开始使用 Jenkins 时 Web 浏览器显示空白页，请重启 Jenkins 服务。 在 SSH 会话中键入 `sudo service jenkins restart`，然后刷新 Web 浏览器。
-- 使用创建的用户名和密码登录到 Jenkins。
+- 根据需要使用创建的用户名和密码登录到 Jenkins。
 
 
 ## <a name="create-github-webhook"></a>创建 GitHub Webhook
@@ -133,11 +148,13 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 在创建的分叉中创建 Webhook：
 
-- 选择“设置”，然后在左侧选择“集成和服务”。
-- 选择“添加服务”，并在筛选框中输入 Jenkins。
-- 选择“Jenkins (GitHub 插件)”
-- 对于“Jenkins 挂钩 URL”，请输入 `http://<publicIps>:8080/github-webhook/`。 请确保包含尾部的 /
-- 选择“添加服务”
+- 选择“设置”，然后在左侧选择“Webhook”。
+- 选择“添加 Webhook”，并在筛选框中输入 Jenkins。
+- 对于“有效负载 URL”，输入 `http://<publicIps>:8080/github-webhook/`。 请确保包含尾部的 /
+- 选择 *application/x-www-form-urlencoded* 作为“内容类型”。
+- 对于“希望通过哪些事件来触发此 webhook?”选项，请选择“仅推送事件”。
+- 将“活动”设置为已勾选。
+- 单击“添加 Webhook”。
 
 ![将 GitHub Webhook 添加到分叉的存储库](media/tutorial-jenkins-github-docker-cicd/github_webhook.png)
 
@@ -166,7 +183,7 @@ response.end("Hello World!");
 
 若要提交更改，请选择底部的“提交更改”按钮。
 
-在 Jenkins 中，作业页左下角的“生成历史记录”部分下面启动了一个新的生成。 选择生成号链接，并选择左侧的“控制台输出”。 从 GitHub 提取代码以及生成操作将消息 `Testing` 输出到控制台时，可以查看 Jenkins 执行的步骤。 每次在 GitHub 中提交内容时，Webhook 都以此方式访问 Jenkins 并触发新的生成。
+在 Jenkins 中，作业页左下角的“生成历史记录”部分下面启动了一个新的生成。 选择生成号链接，并选择左侧的“控制台输出”。 从 GitHub 提取代码以及生成操作将消息 `Test` 输出到控制台时，可以查看 Jenkins 执行的步骤。 每次在 GitHub 中提交内容时，Webhook 都以此方式访问 Jenkins 并触发新的生成。
 
 
 ## <a name="define-docker-build-image"></a>定义 Docker 生成映像

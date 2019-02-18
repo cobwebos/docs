@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 AirWatch 之间配置单
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 96a3bb1c-96c6-40dc-8ea0-060b0c2a62e5
 ms.service: Azure-Active-Directory
@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 02/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 366ffa560cb16f6445eca93e79068fba6cc31e6d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7d91f395f2fd7e65f66f1a885dbd09e725029858
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813111"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56183949"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>教程：Azure Active Directory 与 AirWatch 集成
 
@@ -78,8 +79,8 @@ ms.locfileid: "54813111"
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[配置 AirWatch 单一登录](#configure-airwatch-single-sign-on)** - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 AirWatch 测试用户](#create-airwatch-test-user) - 在 AirWatch 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+4. [创建 AirWatch 测试用户](#create-airwatch-test-user) - 在 AirWatch 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+5. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -111,11 +112,40 @@ ms.locfileid: "54813111"
     > [!NOTE]
     > 此值不是真实值。 使用实际登录 URL 更新此值。 若要获取此值，请与 [AirWatch 客户端支持团队](https://www.air-watch.com/company/contact-us/)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
+5. AirWatch 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
+
+    ![图像](common/edit-attribute.png)
+
+6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤：
+
+    | Name |  源属性|
+    |---------------|----------------|
+    | UID | user.userprincipalname |
+    | | |
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”以打开“管理用户声明”对话框。
+
+    ![图像](common/new-save-attribute.png)
+
+    ![图像](common/new-attribute-details.png)
+
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
+
+    c. 将“命名空间”留空。
+
+    d. 选择“源”作为“属性”。
+
+    e. 在“源属性”列表中，键入为该行显示的属性值。
+
+    f. 单击“确定”
+
+    g. 单击“ **保存**”。
+
+7. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 AirWatch”部分，根据要求复制相应的 URL。
+8. 在“设置 AirWatch”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 

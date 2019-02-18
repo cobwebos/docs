@@ -5,19 +5,19 @@ description: 使用本快速入门，通过 PHP 将图像搜索请求发送到�
 services: cognitive-services
 documentationcenter: ''
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 9/07/2018
+ms.date: 2/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 7015d22222113c1b38c9fd43f218f243d9be7bbd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cca6fba401d8673cf97897c24a9d6de2329f19a4
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181531"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232483"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>快速入门：使用必应图像搜索 REST API 和 PHP 来搜索图像
 
@@ -49,7 +49,7 @@ ms.locfileid: "55181531"
     $accessKey = 'enter key here';
     $term = 'tropical ocean';
     ```
-## <a name="construct-and-perform-a-http-request"></a>构造并执行 HTTP 请求
+## <a name="construct-and-perform-an-http-request"></a>构造并执行 HTTP 请求
 
 1. 使用上一步中的变量来为图像搜索 API 准备 HTTP 请求。
 
@@ -59,7 +59,7 @@ ms.locfileid: "55181531"
                             'header' => $headers,
                             'method' => 'GET' ));
     ```
-2. 执行 Web 请求并获取 JSON 响应。
+2. 发送 Web 请求并获取 JSON 响应。
 
     ```php
     $context = stream_context_create($options);
@@ -81,7 +81,7 @@ ms.locfileid: "55181531"
         return array($headers, $result);
     ```
 
-## <a name="sample-json-response"></a>示例 JSON 响应
+## <a name="example-json-response"></a>示例 JSON 响应
 
 来自必应图像搜索 API 的响应以 JSON 形式返回。 此示例响应已截断，仅显示了单个结果。
 
@@ -125,7 +125,7 @@ ms.locfileid: "55181531"
         },
         "imageId":"8607ACDACB243BDEA7E1EF78127DA931E680E3A5",
         "accentColor":"0050B2"
-    }
+    }]
 }
 ```
 
@@ -137,7 +137,8 @@ ms.locfileid: "55181531"
 ## <a name="see-also"></a>另请参阅
 
 * [什么是必应图像搜索？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [尝试在线互动演示](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [尝试在线互动演示](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
+* 必应搜索 API 的[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
 * [获取免费的认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Azure 认知服务文档](https://docs.microsoft.com/azure/cognitive-services)
 * [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

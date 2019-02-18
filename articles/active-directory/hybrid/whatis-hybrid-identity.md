@@ -12,12 +12,13 @@ ms.topic: overview
 ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: fc18353ff89f8613847c977066e51620fb3e834f
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: df5d42135c538ca3d0a63252805efb44cef7e8b0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494658"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190460"
 ---
 # <a name="what-is-hybrid-identity"></a>什么是混合标识？ 
 
@@ -42,14 +43,14 @@ Microsoft 的标识解决方案涵盖了本地功能和基于云的功能。  �
 |我需要：|PHS 和 SSO<sup>1</sup>| PTA 和 SSO<sup>2</sup> | AD FS<sup>3</sup>| 
 |-----|-----|-----|-----| 
 |将本地 Active Directory 中创建的新用户、联系人和组帐户自动同步到云。|![建议](./media/whatis-hybrid-identity/ic195031.png)| ![建议](./media/whatis-hybrid-identity/ic195031.png) |![建议](./media/whatis-hybrid-identity/ic195031.png)| 
-|为 Office 365 混合方案设置我的租户|![建议](./media/whatis-hybrid-identity/ic195031.png)| ![建议](./media/whatis-hybrid-identity/ic195031.png) |![建议](./media/whatis-hybrid-identity/ic195031.png)| 
-|使用户能够使用其本地密码登录并访问云服务|![建议](./media/whatis-hybrid-identity/ic195031.png)| ![建议](./media/whatis-hybrid-identity/ic195031.png) |![建议](./media/whatis-hybrid-identity/ic195031.png)| 
-|使用公司凭据实现单一登录|![建议](./media/whatis-hybrid-identity/ic195031.png)| ![建议](./media/whatis-hybrid-identity/ic195031.png) |![建议](./media/whatis-hybrid-identity/ic195031.png)|  
-|确保未在云中存储密码哈希| |![建议](./media/whatis-hybrid-identity/ic195031.png)|![建议](./media/whatis-hybrid-identity/ic195031.png)| 
-|启用云多重身份验证解决方案| |![建议](./media/whatis-hybrid-identity/ic195031.png)|![建议](./media/whatis-hybrid-identity/ic195031.png)| 
-|启用本地多重身份验证解决方案| | |![建议](./media/whatis-hybrid-identity/ic195031.png)| 
-|支持用户使用智能卡身份验证<sup>4</sup>| | |![建议](./media/whatis-hybrid-identity/ic195031.png)| 
-|在 Office 门户和 Windows 10 桌面上显示密码到期通知| | |![建议](./media/whatis-hybrid-identity/ic195031.png)| 
+|为 Office 365 混合方案设置我的租户。|![建议](./media/whatis-hybrid-identity/ic195031.png)| ![建议](./media/whatis-hybrid-identity/ic195031.png) |![建议](./media/whatis-hybrid-identity/ic195031.png)| 
+|使用户能够使用其本地密码登录并访问云服务。|![建议](./media/whatis-hybrid-identity/ic195031.png)| ![建议](./media/whatis-hybrid-identity/ic195031.png) |![建议](./media/whatis-hybrid-identity/ic195031.png)| 
+|使用公司凭据实现单一登录。|![建议](./media/whatis-hybrid-identity/ic195031.png)| ![建议](./media/whatis-hybrid-identity/ic195031.png) |![建议](./media/whatis-hybrid-identity/ic195031.png)|  
+|确保未在云中存储密码哈希。| |![建议](./media/whatis-hybrid-identity/ic195031.png)|![建议](./media/whatis-hybrid-identity/ic195031.png)| 
+|启用云多重身份验证解决方案。| |![建议](./media/whatis-hybrid-identity/ic195031.png)|![建议](./media/whatis-hybrid-identity/ic195031.png)| 
+|启用本地多重身份验证解决方案。| | |![建议](./media/whatis-hybrid-identity/ic195031.png)| 
+|支持用户使用智能卡身份验证。<sup>4</sup>| | |![建议](./media/whatis-hybrid-identity/ic195031.png)| 
+|在 Office 门户和 Windows 10 桌面上显示密码到期通知。| | |![建议](./media/whatis-hybrid-identity/ic195031.png)| 
 
 > <sup>1</sup> 使用单一登录的密码哈希同步。 
 > 

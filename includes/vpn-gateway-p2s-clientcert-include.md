@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: 7ae3886db6391836cd8d281e44c95c5253cc8dd5
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 8c55b9b9ce6e98e91e7c6a712e0a9dbca0964512
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323637"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985378"
 ---
 在使用点到站点连接连接到 VNet 的每台客户端计算机上，必须安装客户端证书。 请从根证书生成它，然后将它安装在每个客户端计算机上。 如果未安装有效的客户端证书，则当客户端尝试连接到 VNet 时，身份验证会失败。
 
@@ -31,4 +31,8 @@ ms.locfileid: "53323637"
   * [MakeCert 说明](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md)：如果无权访问 Windows 10 计算机来生成证书，请使用 MakeCert。 虽然 MakeCert 已弃用，但仍可使用它来生成证书。 可以将生成的证书安装在任何受支持的 P2S 客户端上。
   * [Linux 说明](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-linux.md)
 
-  从自签名根证书生成客户端证书时，该证书会自动安装在用于生成该证书的计算机上。 如果想要在另一台客户端计算机上安装客户端证书，请以 .pfx 文件格式导出该证书以及整个证书链。 这样做会创建一个 .pfx 文件，其中包含的根证书信息是客户端进行身份验证所必需的。 如需导出证书的步骤，请参阅[使用 PowerShell 为点到站点连接生成和导出证书](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport)。
+  从自签名根证书生成客户端证书时，该证书会自动安装在用于生成该证书的计算机上。 如果想要在另一台客户端计算机上安装客户端证书，请以 .pfx 文件格式导出该证书以及整个证书链。 这样做会创建一个 .pfx 文件，其中包含的根证书信息是客户端进行身份验证所必需的。 
+
+**导出证书**
+
+如需导出证书的步骤，请参阅[使用 PowerShell 为点到站点连接生成和导出证书](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport)。

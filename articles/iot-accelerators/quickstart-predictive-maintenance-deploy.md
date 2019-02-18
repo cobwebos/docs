@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 22f0eae805ad112c5a6a7746897dac7e37d90028
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: fdb481961680d5f84170a25c7a76bffa8423e0cc
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604331"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097161"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>快速入门：尝试基于云的解决方案，以便在连接的设备上运行预测性维护分析
 
@@ -42,7 +42,7 @@ Fabrikam 飞机的引擎由各种传感器进行检测，这些传感器监视�
 
 选择要用于部署解决方案加速器的**订阅**和**区域**。 通常，我们会选择离自己最近的区域。 本快速入门使用“Visual Studio Enterprise”和“美国东部”。 只有订阅中的[全局管理员或用户](iot-accelerators-permissions.md)才能完成部署。
 
-单击“创建解决方案”开始部署。 此过程至少需要五分钟才能完成运行：
+单击“创建”开始部署。 此过程至少需要五分钟才能完成运行：
 
 ![预测性维护解决方案详细信息](./media/quickstart-predictive-maintenance-deploy/createform.png)
 
@@ -50,9 +50,13 @@ Fabrikam 飞机的引擎由各种传感器进行检测，这些传感器监视�
 
 完成部署到 Azure 订阅后，解决方案磁贴上会出现一个绿色的对号和“就绪”。 现在，你可以登录到你的预测性维护解决方案加速器仪表板。
 
-在“预配的解决方案”页上，单击新的预测性维护解决方案加速器。 可以在显示的面板中查看有关解决方案加速器的信息。 选择“解决方案仪表板”，查看预测性维护解决方案加速器：
+在“预配的解决方案”页上，单击新的预测性维护解决方案加速器。
 
-![解决方案面板](./media/quickstart-predictive-maintenance-deploy/solutionpanel.png)
+![解决方案面板](./media/quickstart-predictive-maintenance-deploy/solution.png)
+
+ 可以在显示的页面中查看有关解决方案加速器的信息。 选择“转到解决方案加速器”，查看预测性维护解决方案加速器：
+
+![解决方案面板](./media/quickstart-predictive-maintenance-deploy/solutionpaneldetails.png)
 
 单击“接受”以接受权限请求，预测性维护解决方案仪表板会在浏览器中显示：
 

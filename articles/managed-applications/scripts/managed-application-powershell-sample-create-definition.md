@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: ee721b7c68924f5e05fbdc4bc4b919837d4cc05b
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 35f1b805323da03f1622e5c355d6ffa6d960b275
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2017
-ms.locfileid: "23636987"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106913"
 ---
 # <a name="create-a-managed-application-definition-with-powershell"></a>使用 PowerShell 创建托管应用程序定义
 
@@ -27,16 +27,18 @@ ms.locfileid: "23636987"
 
 ## <a name="sample-script"></a>示例脚本
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 [!code-powershell[main](../../../powershell_scripts/managed-applications/create-definition/create-definition.ps1 "Create definition")]
 
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令创建托管应用程序定义。 表中的每条命令链接到特定于命令的文档。
+此脚本使用以下命令创建托管应用程序定义。 表中的每条命令均链接到特定于命令的文档。
 
 | 命令 | 说明 |
 |---|---|
-| [New-AzureRmManagedApplicationDefinition](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermmanagedapplicationdefinition) | 创建托管应用程序定义。 提供包含所需文件的包。 |
+| [New-AzManagedApplicationDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplicationdefinition) | 创建托管应用程序定义。 提供包含所需文件的包。 |
 
 
 ## <a name="next-steps"></a>后续步骤

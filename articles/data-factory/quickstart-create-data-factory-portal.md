@@ -11,16 +11,17 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: fc4b1dce1b01d9294cf422c910f39d68cbd49c87
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 6f5a4e04c0d135e85624b04dbcdcda6b7d15a427
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018241"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989383"
 ---
-# <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>使用 Azure 数据工厂 UI 创建数据工厂
-> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
-> * [第 1 版](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+# <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>快速入门：使用 Azure 数据工厂 UI 创建数据工厂
+
+> [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
+> * [版本 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [当前版本](quickstart-create-data-factory-portal.md)
 
 本快速入门介绍如何使用 Azure 数据工厂 UI 创建和监视数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹复制到另一个文件夹。 有关如何使用 Azure 数据工厂转换数据的教程，请参阅[教程：使用 Spark 转换数据](tutorial-transform-data-spark-portal.md)。
@@ -60,7 +61,7 @@ ms.locfileid: "48018241"
 
    该列表仅显示数据工厂支持的位置，以及 Azure 数据工厂元数据要存储到的位置。 请注意，数据工厂使用的关联数据存储（如 Azure 存储和 Azure SQL 数据库）和计算（如 Azure HDInsight）可以在其他区域中运行。
 
-1. 选择**创建**。
+1. 选择“创建”。
 
 1. 创建完成后，会显示“数据工厂”页。 选择“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI) 应用程序。
    
@@ -80,7 +81,7 @@ ms.locfileid: "48018241"
    ![选择“Azure Blob 存储”磁贴](./media/quickstart-create-data-factory-portal/select-azure-blob-linked-service.png)
 1. 完成以下步骤： 
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 至于“名称”，请输入 **AzureStorageLinkedService**。
+   a. 至于“名称”，请输入 **AzureStorageLinkedService**。
 
    b. 至于“存储帐户名称”，请选择 Azure 存储帐户的名称。
 
@@ -91,7 +92,7 @@ ms.locfileid: "48018241"
    ![Azure 存储链接服务设置](./media/quickstart-create-data-factory-portal/azure-storage-linked-service.png) 
 
 ## <a name="create-datasets"></a>创建数据集
-此过程创建两个数据集：**InputDataset** 和 **OutputDataset**。 这两个数据集的类型为 **AzureBlob**。 它们引用在上一部分创建的 Azure 存储链接服务。 
+此过程创建两个数据集：InputDataset 和 OutputDataset。 这两个数据集的类型为 **AzureBlob**。 它们引用在上一部分创建的 Azure 存储链接服务。 
 
 输入数据集表示输入文件夹中的源数据。 在输入数据集定义中，请指定包含源数据的 Blob 容器 (**adftutorial**)、文件夹 (**input**) 和文件 (**emp.txt**)。 
 
@@ -109,7 +110,7 @@ ms.locfileid: "48018241"
 
 1. 切换到“连接”选项卡，然后完成以下步骤： 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 至于“链接服务”，请选择“AzureStorageLinkedService”。
+    a. 至于“链接服务”，请选择“AzureStorageLinkedService”。
 
     b. 对于“文件路径”，请选择“浏览”按钮。
 
@@ -117,10 +118,11 @@ ms.locfileid: "48018241"
 
     ![以浏览方式查找输入文件](./media/quickstart-create-data-factory-portal/choose-file-folder.png)
     
-   d. （可选）选择“预览数据”，预览 emp.txt 文件中的数据。     
+    d. （可选）选择“预览数据”，预览 emp.txt 文件中的数据。     
+
 1. 重复创建输出数据集的步骤：  
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“+ (加)”按钮，然后选择“数据集”。
+   a. 选择“+ (加)”按钮，然后选择“数据集”。
 
    b. 在“新建数据集”页中，选择“Azure Blob 存储”，然后选择“完成”。
 

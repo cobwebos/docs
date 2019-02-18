@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 5d844692b6199d93fa835da1021c9753311e17de
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0d0009c833c313b5416998502601285e5b710a8d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824469"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112540"
 ---
 # <a name="move-azure-vms-to-another-region"></a>将 Azure VM 移动到另一区域
 
@@ -33,7 +33,7 @@ Azure 随着客户群的扩大而不断扩建，由于需求的增大，我们�
 客户移动 VM 的原因如下：-
 
 - 如果你在一个区域中部署了 VM，而 Azure 添加了新的支持区域，并且该区域更靠近应用程序或服务的最终用户，则你可以**将 VM 按原样移到新区域**以降低延迟。 若要整合订阅或者监管/组织规则要求移动 VM，可以采用相同的方法。 
-- 如果 VM 部署为单一实例 VM 或部署为可用性集的一部分，并且你希望提高可用性 SLA，则可以**将 VM 作为可用性集进行移动**。 
+- 如果 VM 部署为单一实例 VM 或部署为可用性集的一部分，并且你希望提高可用性 SLA，则可**将 VM 移动到可用性区域中**。 
 
 ## <a name="how-to-move-azure-vms"></a>如何移动 Azure VM
 移动 VM 的过程包括以下步骤：
@@ -97,7 +97,7 @@ Azure 随着客户群的扩大而不断扩建，由于需求的增大，我们�
 
 2. **每个层中跨可用性集部署的 VM** - 使用 Azure Site Recovery 为 VM 启用复制时，可以选择配置为将可用性集中的 VM 放入单独的可用性区域。 完成移动操作后，可用性 SLA 将达到 99.9%。
 
-      ![aset-Azone.PNG](media/move-vm-overview/aset-Azone.PNG)
+     ![aset-Azone.PNG](media/move-vm-overview/aset-Azone.PNG)
 
 
 ## <a name="next-steps"></a>后续步骤

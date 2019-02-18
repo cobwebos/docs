@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/28/2018
 ms.author: troyhop
-ms.openlocfilehash: 12f993f606fc1ef44280142d5acfa2687cd4e043
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 84b232b175d45a12bb6e0f8b462849282144c19b
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601587"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097570"
 ---
 # <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>快速入门：在 Azure 中部署并运行 IoT 设备模拟
 
@@ -44,7 +44,7 @@ ms.locfileid: "53601587"
 
 勾选用于部署 IoT 中心的框，该中心可以与设备模拟解决方案配合使用。 之后可以随时更改模拟使用的 IoT 中心。
 
-单击“创建解决方案”，开始预配解决方案。 此过程至少需要五分钟才能完成运行：
+单击“创建”，开始预配解决方案。 此过程至少需要五分钟才能完成运行：
 
 ![设备模拟解决方案详细信息](./media/quickstart-device-simulation-deploy/createform.png)
 

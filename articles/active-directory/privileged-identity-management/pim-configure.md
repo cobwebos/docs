@@ -13,12 +13,13 @@ ms.topic: overview
 ms.date: 01/16/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: b5f1e5838fcf6eeac3b58fb0eef8fe08eb9202d4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 022fd8e1ab8445954b205f471cd1aa4d18e11545
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167132"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178152"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什么是 Azure AD Privileged Identity Management？
 
@@ -60,11 +61,13 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 是用于
 | 活动 | Type | 不要求用户在使用角色之前执行任何操作的角色分配。 分配为“活动”的用户拥有分配给该角色的特权。 |
 | 激活 |  | 执行一项或多项操作，使用户能够使用符合条件的角色的过程。 操作可能包括执行多重身份验证 (MFA) 检查、提供业务理由或请求获得指定审批者的批准。 |
 | 已分配 | 状态 | 具有活动角色分配的用户。 |
-| 已激活 | 状态 | 具有符合条件的角色分配、已执行激活角色的操作且现在处于活动状态的用户。 |
+| 已激活 | 状态 | 具有符合条件的角色分配、已执行激活角色的操作且现在处于活动状态的用户。  激活后，用户即可使用该角色，使用期限是预先配置的，过期之后需重新激活。 |
 | 永久符合条件 | Duration | 使用户始终有资格激活该角色的角色分配。 |
 | 永久活动 | Duration | 使用户无需执行任何操作，始终可以使用该角色的角色分配。 |
 | 在过期之前符合条件 | Duration | 使用户在指定的开始和结束日期范围内有资格激活该角色的角色分配。 |
 | 在过期之前处于活动状态 | Duration | 使用户无需执行任何操作，可在指定的开始和结束日期范围内使用该角色的角色分配。 |
+| 恰时 (JIT) 访问 |  | 一种访问模式。在此模式下，用户会收到执行特权任务的临时权限，防止恶意用户或未授权用户在权限过期后获得访问权限。 只有在用户需要的情况下，才会授予访问权限。 |
+| 最低访问权限原则 |  | 一种建议的安全做法，仅为每个用户提供所需的最低权限，以便完成有权执行的任务。 此做法尽量减少全局管理员的数目，改为使用适合特定方案的特定管理员角色。 |
 
 ## <a name="what-does-pim-look-like"></a>PIM 的布局是怎样的？
 
@@ -104,6 +107,6 @@ PIM 支持以下方案：
 
 ## <a name="next-steps"></a>后续步骤
 
-- [开始使用 PIM](pim-getting-started.md)
 - [使用 PIM 所要满足的许可证要求](subscription-requirements.md)
 - [确保 Azure AD 中混合部署和云部署的特权访问安全性](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+- [部署 PIM](pim-deployment-plan.md)

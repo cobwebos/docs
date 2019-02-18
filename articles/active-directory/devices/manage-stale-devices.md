@@ -16,12 +16,13 @@ ms.topic: overview
 ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: d6d0ee1c9a77006df2239f4e0e0457c0c0aa2c28
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c47b68cb173769eb677a5b1028d48c62f6edb4e9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493300"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201629"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：在 Azure AD 中管理陈旧的设备
 
@@ -122,7 +123,7 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
 - **Windows 10 设备** - 在本地 AD 中禁用或删除 Windows 10 设备，并让 Azure AD Connect 将更改的设备状态同步到 Azure AD。
 
-- **Windows 7/8** - 在 Azure AD 中禁用或删除 Windows 10 设备。 无法使用 Azure AD Connect 在 Azure AD 中禁用或删除 Windows 7/8 设备。
+- **Windows 7/8** - 在 Azure AD 中禁用或删除 Windows 7/8 设备。 无法使用 Azure AD Connect 在 Azure AD 中禁用或删除 Windows 7/8 设备。
 
 
 

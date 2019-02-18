@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/15/2018
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 4b8b5502090e1b115829b65834532dd6ce15a934
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 28710ebfaef4c82212e0208c36f50a96f0dda083
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835907"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892042"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>教程：使用 Azure 实验室服务设置实验室帐户
 在 Azure 实验室服务中，实验室帐户充当管理组织实验室的中心帐户。 在你的实验室帐户中，授予他人创建实验室的权限，并设置适用于实验室帐户下所有实验室的策略。 在本教程中，了解如何以实验室管理员身份创建实验室帐户。 
@@ -37,11 +37,13 @@ ms.locfileid: "52835907"
 以下步骤演示了如何使用 Azure 门户通过 Azure 实验室服务创建实验室。 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧的主菜单中，选择“创建资源”。
-3. 在 Azure 市场中搜索“实验室服务”，然后从下拉列表中选择“实验室服务”。 
-4. 在筛选出的服务列表中，选择“实验室服务(预览版)”。 
-1. 在“创建实验室帐户”窗口，选择“创建”。
-2. 在“实验室帐户”窗口，执行以下操作： 
+2. 在左侧菜单中，选择“所有服务”。 在“DEVOPS”部分，选择“实验室帐户”。 如果选择“实验室帐户”旁边的星号 (`*`)，则会将其添加到左侧菜单上的“收藏夹”部分。 从下次开始，请在“收藏夹”下选择“实验室帐户”。
+
+    ![“所有服务”->“实验室帐户”](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
+3. 在“实验室帐户”页上的工具栏中选择“添加”。 
+
+    ![在“实验室帐户”页上选择“添加”](../media/tutorial-setup-lab-account/add-lab-account-button.png)
+4. 在“实验室帐户”页上，执行以下操作： 
     1. 在“实验室帐户名称”中输入名称。 
     2. 选择要在其中创建实验室帐户的“Azure 订阅”。
     3. 在“资源组”中选择“新建”，然后输入资源组的名称。
@@ -49,9 +51,11 @@ ms.locfileid: "52835907"
     5. 选择“创建”。 
 
         ![创建实验室帐户窗口](../media/tutorial-setup-lab-account/lab-account-settings.png)
-5. 如果没有看到实验室帐户页面，请选择“通知”按钮，然后单击通知中的“转到资源”按钮。 
+5. 选择工具栏上的**钟形图标**（**通知**），确认部署已成功，然后选择“转到资源”。 
 
-    ![创建实验室帐户窗口](../media/tutorial-setup-lab-account/notification-go-to-resource.png)    
+    也可在“实验室帐户”页上选择“刷新”，然后选择已创建的实验室帐户。 
+
+    ![创建实验室帐户窗口](../media/tutorial-setup-lab-account/go-to-lab-account.png)    
 6. 会看到以下“实验室帐户”页面：
 
     ![“实验室帐户”页面](../media/tutorial-setup-lab-account/lab-account-page.png)
@@ -62,9 +66,13 @@ ms.locfileid: "52835907"
 为教师提供为课程创建实验室的权限，并将他们添加为**实验室创建者**角色：
 
 1. 在“实验室帐户”页上，选择“访问控制(IAM)”，然后单击工具栏中的“+ 添加角色分配”。 
-2. 在“添加权限”页，为“角色”选择“实验室创建者”，选择想要添加为实验室创建者角色的用户，然后选择“保存”。 
 
-## <a name="specify-marketplace-images-available-to-lab-owners"></a>指定可供实验室所有者使用的市场映像
+    ![“访问控制”->“添加角色分配”按钮](../media/tutorial-setup-lab-account/add-role-assignment-button.png)
+1. 在“添加角色分配”页上，选择“实验室创建者”作为“角色”，选择想要添加为“实验室创建者”角色的用户，然后选择“保存”。 
+
+    ![添加实验室创建者](../media/tutorial-setup-lab-account/add-lab-creator.png)
+
+## <a name="specify-marketplace-images-available-to-lab-creators"></a>指定可供实验室创建者使用的市场映像
 作为实验室帐户所有者，你可以指定可供实验室创建者用来在实验室帐户中创建实验室的市场映像。 
 
 1. 在左侧的菜单上选择“市场映像”。 默认情况下，可以看到映像的完整列表（包括启用的和禁用的）。 可以通过从顶部的下拉列表中选择“仅启用的/仅禁用的”选项对列表进行筛选来仅查看启用的/禁用的映像。 

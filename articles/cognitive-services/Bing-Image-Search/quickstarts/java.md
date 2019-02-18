@@ -5,32 +5,29 @@ description: 使用本快速入门，通过 Java 将图像搜索请求发送到�
 services: cognitive-services
 documentationcenter: ''
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 8/20/2018
+ms.date: 02/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 13edea67a93ecf2d2b53dcc04a2c1d49b864952e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 3e00179f0fe3bf079cde672c9c8e3579f8c957b7
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203277"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238294"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-java"></a>快速入门：使用必应图像搜索 REST API 和 Java 来搜索图像
 
-使用本快速入门进行你的第一次必应图像搜索 API 调用并接收 JSON 响应。 这个简单的 Java 应用程序会向 API 发送一个搜索查询并显示原始结果。
+使用本快速入门开始向必应图像搜索 API 发送搜索请求。 此 Java 应用程序会向 API 发送搜索查询，并在结果中显示第一个图像的 URL。 虽然此应用程序是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
-虽然此应用程序是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
-
-[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) 上提供了此示例的源代码以及附加的错误处理和代码注释。
+[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) 上提供了此示例的源代码以及附加的错误处理和注释。
 
 ## <a name="prerequisites"></a>先决条件
-* 在“搜索”下获取[认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/)。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
-* [Java 开发工具包 (JDK) 7 或 8](https://aka.ms/azure-jdks)
+* [Java 开发工具包 (JDK)](https://aka.ms/azure-jdks)
 
 * [Gson 库](https://github.com/google/gson)
 
@@ -62,7 +59,7 @@ ms.locfileid: "55203277"
 
 ## <a name="construct-the-search-request-and-query"></a>构造搜索请求和查询
 
-1. 使用上一个步骤中的变量来设置 API 请求的搜索 URL 的格式。 注意，将搜索词附加到请求之前，必须进行 URL 编码。
+1. 使用上一个步骤中的变量来设置 API 请求的搜索 URL 的格式。 将搜索词附加到请求之前，必须进行 URL 编码。
 
     ```java
     // construct the search request URL (in the form of endpoint + query string)
@@ -108,7 +105,7 @@ ms.locfileid: "55203277"
     String resultURL = first_result.get("thumbnailUrl").getAsString();
     ```
 
-## <a name="json-response"></a>JSON 响应
+## <a name="example-json-response"></a>示例 JSON 响应
 
 来自必应图像搜索 API 的响应以 JSON 形式返回。 此示例响应已截断，仅显示了单个结果。
 
@@ -152,7 +149,7 @@ ms.locfileid: "55203277"
         },
         "imageId":"8607ACDACB243BDEA7E1EF78127DA931E680E3A5",
         "accentColor":"0050B2"
-    }
+    }]
 }
 ```
 
@@ -164,7 +161,8 @@ ms.locfileid: "55203277"
 ## <a name="see-also"></a>另请参阅
 
 * [什么是必应图像搜索？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [尝试在线互动演示](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [尝试在线互动演示](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
+* 必应搜索 API 的[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
 * [获取免费的认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Azure 认知服务文档](https://docs.microsoft.com/azure/cognitive-services)
 * [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

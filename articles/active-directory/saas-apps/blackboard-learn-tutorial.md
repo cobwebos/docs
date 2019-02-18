@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 3b57bea85b76b69b1826a81aa582f5326db588cb
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 30c13b511fdc4c348cb7356ccc2fb64c40239fc4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811564"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169847"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn"></a>教程：Azure Active Directory 与 Blackboard Learn 的集成
 
@@ -118,7 +119,7 @@ ms.locfileid: "54811564"
 
 6. 在“用户属性”对话框的“用户声明”部分中，按图中所示配置 SAML 令牌属性，并执行以下步骤。 我们已将 Userprincipalname 映射为唯一用户属性，但你可以将其映射到唯一区分组织中的用户和映射到 Blackboard Learn 用户名字段的相应值。
 
-    | 名称 | 源属性|
+    | Name | 源属性|
     | ---------------| --------------- |
     | urn:oid:1.3.6.1.4.1.5923.1.1.1.6 | user.userprincipalname |
 
@@ -211,7 +212,7 @@ ms.locfileid: "54811564"
 
 ### <a name="create-blackboard-learn-test-user"></a>创建 Blackboard Learn 测试用户
 
-在本部分中，在 Blackboard Learn 中创建名为 Britta Simon 的用户。 Blackboard Learn 应用程序支持准时用户预配。 请确保已按照**[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** 部分中所述配置声明
+在本部分中，在 Blackboard Learn 中创建名为 Britta Simon 的用户。 Blackboard Learn 应用程序支持准时用户预配。 请确保已按照**配置 Azure AD 单一登录**部分中所述配置声明
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

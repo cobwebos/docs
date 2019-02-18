@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/18/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: f75b14ce2ca860ee894fe0a2ef501066b91f8e8a
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: c9fb24cd6bcfae273c5430eee8d1fa8df58c6202
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755639"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236305"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>教程：在 Azure CDN 自定义域中配置 HTTPS
 
@@ -45,6 +45,8 @@ ms.locfileid: "55755639"
 > - 在自定义域上禁用 HTTPS 协议。
 
 ## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)] 
 
 在完成本教程中的步骤之前，必须先创建一个 CDN 配置文件，一个至少一个 CDN 终结点。 有关详细信息，请参阅[快速入门：创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)。
 
@@ -103,11 +105,11 @@ ms.locfileid: "55755639"
 
 通过 PowerShell 将 Azure CDN 注册为 Azure Active Directory 中的应用。
 
-1. 根据需要在本地计算机上的 PowerShell 中安装 [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM/6.0.0)。
+1. 根据需要在本地计算机上安装 [Azure PowerShell](/powershell/azure/install-az-ps)。
 
 2. 在 PowerShell 中运行以下命令：
 
-     `New-AzureRmADServicePrincipal -ApplicationId "205478c0-bd83-4e1b-a9d6-db63a3e1e1c8"`
+     `New-AzADServicePrincipal -ApplicationId "205478c0-bd83-4e1b-a9d6-db63a3e1e1c8"`
 
     ![在 PowerShell 中注册 Azure CDN](./media/cdn-custom-ssl/cdn-register-powershell.png)
               

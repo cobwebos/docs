@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/20/2018
+ms.date: 02/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 55c1aa4a478031ebc49ec5ab7ea5744d9d980470
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3356d7425e692f248a3850e8bef7b80d4daba276
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825749"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179937"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atlassian-cloud"></a>教程：Azure Active Directory 与 Atlassian Cloud 的集成
 
@@ -39,6 +40,7 @@ ms.locfileid: "54825749"
 
 * 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 * 已启用 Atlassian Cloud 单一登录的订阅
+* 若要对 Atlassian Cloud 产品启用安全断言标记语言 (SAML) 单一登录，需要设置 Atlassian Access。 详细了解 [Atlassian Access]( https://www.atlassian.com/enterprise/cloud/identity-manager)。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -124,29 +126,15 @@ ms.locfileid: "54825749"
     > [!NOTE]
     > 上面的“登录 URL”值不是实际值。 请使用实际的登录 URL 更新此值。 若要获取此值，请与 [Atlassian Cloud 客户端支持团队](https://support.atlassian.com/)联系。
 
-6. Atlassian Cloud 应用程序需要查找特定格式的 SAML 断言，这需要向“SAML 令牌属性”配置添加自定义属性映射。
-
-    默认情况下，“用户标识符”值映射到 user.userprincipalname。 请将此值更改为映射到 user.mail。 也可以根据组织的设置选择其他任何适当值，不过，在大多数情况下，使用电子邮件就能满足需要。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
+6. Atlassian Cloud 应用程序需要特定格式的 SAML 断言，这需要向“SAML 令牌属性”配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 Atlassian Cloud 应用程序要求通过 **user.mail** 对 **nameidentifier** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。
 
     ![图像](common/edit-attribute.png)
 
-7. 在“用户属性”对话框中的“用户声明”部分，执行以下步骤：
-
-    a. 单击“编辑图标”，打开“管理用户声明”对话框。
-
-    ![图像](./media/atlassian-cloud-tutorial/tutorial_usermail.png)
-
-    ![图像](./media/atlassian-cloud-tutorial/tutorial_usermailedit.png)
-
-    b. 在“源属性”列表中，选择 **user.mail**。
-
-    c. 单击“ **保存**”。
-
-8. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+7. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
-9. 在“设置 Atlassian Cloud”部分中，根据要求复制相应的 URL。
+8. 在“设置 Atlassian Cloud”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 

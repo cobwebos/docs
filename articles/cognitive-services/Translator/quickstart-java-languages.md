@@ -4,30 +4,27 @@ titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，请使用文本翻译 API 获取翻译、音译和字典查找支持的语言列表。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/03/2018
+ms.date: 02/07/2019
 ms.author: erhopf
-ms.openlocfilehash: 937fd58b28a3e64f7f4f9fc4bf52e8280af81136
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 88347076888b68459747757d655759d3f83d19a7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226961"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964553"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-java"></a>快速入门：使用 Java 通过文本翻译 API 获取受支持语言的列表
 
 在本快速入门中，请使用文本翻译 API 获取翻译、音译和字典查找支持的语言列表。
 
-此快速入门需要包含文本翻译资源的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/)获取订阅密钥。
-
 ## <a name="prerequisites"></a>先决条件
 
 * [JDK 7 或更高版本](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Gradle](https://gradle.org/install/)
-* 适用于文本翻译的 Azure 订阅密钥
 
 ## <a name="initialize-a-project-with-gradle"></a>使用 Gradle 初始化项目
 
@@ -50,7 +47,7 @@ gradle init --type basic
 
 找到 `build.gradle.kts` 并使用你喜欢使用的 IDE 或文本编辑器将其打开。 然后将以下生成配置复制到其中：
 
-```
+```java
 plugins {
     java
     application
@@ -104,7 +101,6 @@ public class GetLanguages {
 将以下行添加到 `GetLanguages` 类：
 
 ```java
-String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
 String url = "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0";
 ```
 
@@ -117,14 +113,13 @@ String url = "https://api.cognitive.microsofttranslator.com/languages?api-versio
 OkHttpClient client = new OkHttpClient();
 ```
 
-接下来，我们将生成 GET 请求。
+接下来，我们将生成 `GET` 请求。
 
 ```java
 // This function performs a GET request.
 public String Get() throws IOException {
     Request request = new Request.Builder()
             .url(url).get()
-            .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
             .addHeader("Content-type", "application/json").build();
     Response response = client.newCall(request).execute();
     return response.body().string();
@@ -167,6 +162,12 @@ public static void main(String[] args) {
 
 ```console
 gradle build
+```
+
+当生成完成后，请运行：
+
+```console
+gradle run
 ```
 
 ## <a name="sample-response"></a>示例响应

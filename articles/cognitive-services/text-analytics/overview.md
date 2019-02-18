@@ -3,25 +3,25 @@ title: 什么是文本分析？
 titleSuffix: Azure Cognitive Services
 description: Azure 认知服务中用于情绪分析、关键短语提取、语言检测和实体链接的文本分析。
 services: cognitive-services
-author: ashmaka
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 10/01/2018
-ms.author: ashmaka
-ms.openlocfilehash: 73505064bf5cde4e97cd210698e21883cc9f5e38
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: 0de4e0d750d8ae3061ed0b80d706dec545338a90
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227873"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242918"
 ---
 # <a name="what-is-text-analytics"></a>什么是文本分析？
 
 文本分析 API 是一种基于云的服务，它对原始文本提供高级自然语言处理，并且包含四项主要功能：情绪分析、关键短语提取、语言检测和实体链接。
 
-该 API 以 [Microsoft 认知服务](https://docs.microsoft.com/azure/cognitive-services/)中的资源、云中机器学习和 AI 算法的集合为后盾，随时可在开发项目中使用。
+该 API 是 [Azure 认知服务](https://docs.microsoft.com/azure/cognitive-services/)的一部分，是云中机器学习和 AI 算法的集合，适用于开发项目。
 
 ## <a name="capabilities-in-text-analytics"></a>文本分析的功能
 

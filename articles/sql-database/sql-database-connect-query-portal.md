@@ -12,13 +12,13 @@ author: AyoOlubeko
 ms.author: ayolubek
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/19/2018
-ms.openlocfilehash: d00909eed037e4d2d414ef3121ce11f5ca489736
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 02/12/2019
+ms.openlocfilehash: e16d68f8c30b54c24e091d1b0c7317bf74aadeba
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564759"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234571"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>快速入门：使用 Azure 门户的 SQL 查询编辑器进行连接并查询数据
 
@@ -28,7 +28,15 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
 
 要完成本教程，需要：
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+- Azure SQL 数据库。 可以根据下述快速入门中的一个的说明在 Azure SQL 数据库中创建数据库，然后对其进行配置：
+
+  || 单一数据库 |
+  |:--- |:--- |
+  | 创建| [门户](sql-database-single-database-get-started.md) | 
+  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | 
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | 
+  | 配置 | [服务器级别 IP 防火墙规则](sql-database-server-level-firewall-rule.md)| 
+  |||
 
 > [!NOTE]
 > 确保在 SQL Server 防火墙设置中将“允许访问 Azure 服务”选项设置为“打开”。 此选项允许 SQL 查询编辑器访问数据库和数据仓库。
@@ -117,7 +125,7 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
    ```
 
 
-2. 选择“运行”在 `Product` 表中插入新行。 “消息”窗格显示“查询已成功：受影响的行：1”**。
+2. 选择“运行”在 `Product` 表中插入新行。 “消息”窗格显示“查询已成功：受影响的行：1”。
 
 
 ## <a name="update-data"></a>更新数据
@@ -132,7 +140,7 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
    WHERE Name = 'myNewProduct';
    ```
 
-2. 选择“运行”更新 `Product` 表中的指定行。 “消息”窗格显示“查询已成功：受影响的行：1”**。
+2. 选择“运行”更新 `Product` 表中的指定行。 “消息”窗格显示“查询已成功：受影响的行：1”。
 
 ## <a name="delete-data"></a>删除数据
 
@@ -145,7 +153,7 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
    WHERE Name = 'myNewProduct';
    ```
 
-2. 选择“运行”删除 `Product` 表中的指定行。 “消息”窗格显示“查询已成功：受影响的行：1”**。
+2. 选择“运行”删除 `Product` 表中的指定行。 “消息”窗格显示“查询已成功：受影响的行：1”。
 
 
 ## <a name="query-editor-considerations"></a>查询编辑器注意事项

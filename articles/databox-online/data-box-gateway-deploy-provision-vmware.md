@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 00415cab4d5c36c74cf78a10cb71682d97236517
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 604f135cc3dffdb9ac6533826eff6926ad5467df
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099152"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117742"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>教程：在 VMware（预览版）中预配 Azure Data Box Gateway
 
@@ -66,7 +66,7 @@ ms.locfileid: "55099152"
 
 开始之前：
 
-- 查看部署 Data Box Gateway 的网络要求，并根据要求配置数据中心网络。 有关详细信息，请参阅 [Data Box Gateway 网络要求](data-box-gateway-system-requirements.md#networking-requirements)。
+- 查看部署 Data Box Gateway 的网络要求，并根据要求配置数据中心网络。 有关详细信息，请参阅 [Data Box Gateway 网络要求](data-box-gateway-system-requirements.md#networking-port-requirements)。
 - 请确保最小 Internet 带宽为 20 Mbps，以便实现设备的理想运行。
 
 ## <a name="check-the-host-system"></a>检查主机系统
@@ -77,7 +77,7 @@ ms.locfileid: "55099152"
  
   * 至少 4 个核心。
   * 至少 8 GB 的 RAM。 
-  * 一个连接到网络的网络接口，可以将流量路由到 Internet。 
+  * 一个连接到网络的网络接口，可以将流量路由到 Internet。
   * 一个 250 GB 的 OS 磁盘。
   * 一个 2 TB 的用于数据的虚拟磁盘。
 * 在系统上存在用于管理 ESXi 主机的 VMware vSphere 客户端。
@@ -89,7 +89,7 @@ ms.locfileid: "55099152"
 
 1. 复制系统中的虚拟设备映像。 已通过 Azure 门户下载该虚拟映像（两个文件）。 记下复制映像的位置，因为在以后的过程中将使用此映像。
 
-2. 使用 vSphere Web 客户端登录到 ESXi 服务器。 需要有管理员权限才能创建虚拟机。
+2. 在浏览器中通过以下 URL 登录到 ESXi 服务器：`https://<IP address of the ESXi server>`。 需要有管理员权限才能创建虚拟机。
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
@@ -149,20 +149,24 @@ ms.locfileid: "55099152"
 
      ![](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
-    向下滚动，直到看到“新建硬盘”，然后将其展开以查看设置。 将“虚拟设备节点”设置为“IDE 控制器 0”。 单击“下一步”。
+    向下滚动，直到看到“新建硬盘”，然后将其展开以查看设置。 将“虚拟设备节点”设置为“IDE 控制器 0”。
 
      ![](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
-27. 在“准备完成”页上，查看与新虚拟机关联的所有设置。 验证 CPU 是否为 4，内存是否为 8192 MB，网络接口是否为 1，以及硬盘 2 是否有 IDE 控制器 0。 单击“完成”。 
+17. （可选）只有在运行 VMware ESXi Server 6.7 的情况下，才执行此步骤。 在“自定义设置”页中，单击“VM 选项”。 转到“启动选项”>“固件”，将其更改为“BIOS”。 默认情况下，该值设置为 EFI。 单击“下一步”。
+
+    ![](./media/data-box-gateway-deploy-provision-vmware/image15a.png)
+
+18. 在“准备完成”页上，查看与新虚拟机关联的所有设置。 验证 CPU 是否为 4，内存是否为 8192 MB，网络接口是否为 1，以及硬盘 2 是否有 IDE 控制器 0。 单击“完成”。
    
     ![](./media/data-box-gateway-deploy-provision-vmware/image16.png)
     ![](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
-虚拟机现已预配好。 此时会看到指示此内容的通知，而新虚拟机则会添加到 VM 列表中。 
+虚拟机现已预配好。 此时会看到指示此内容的通知，而新虚拟机则会添加到 VM 列表中。
 
 ![](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
-下一步是启动该虚拟机并获取 IP 地址。
+下一步是启用该 VM 并获取 IP 地址。
 
 > [!NOTE]
 > 建议不要在虚拟设备上安装 VMware 工具（如上述设置）。 安装 VMware 工具将产生不支持的配置。

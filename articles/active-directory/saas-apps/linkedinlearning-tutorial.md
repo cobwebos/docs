@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 LinkedIn Learning 之间
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: d5857070-bf79-4bd3-9a2a-4c1919a74946
 ms.service: Azure-Active-Directory
@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/18/2018
+ms.date: 02/11/2018
 ms.author: jeedes
-ms.openlocfilehash: be5dd0a0fd1eb45c505a2f0ddf1489d21bfd38e6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9328564b082ba3eb0cff94652271fcd64cf2630c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821172"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168759"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>教程：Azure Active Directory 与 LinkedIn Learning 集成
 
@@ -118,13 +119,13 @@ ms.locfileid: "54821172"
     > [!NOTE]
     > 这些不是实际值。 本教程稍后将在“配置 LinkedIn Learning 单一登录”部分中介绍如何使用实际标识符和回复 URL 来更新这些值。
 
-5. LinkedIn Learning 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示一个示例。 “唯一用户标识符”的默认值是“user.userprincipalname”，但 LinkedIn Learning 要求通过用户的电子邮件地址映射此项。 为此，可以使用列表中的 **user.mail** 属性，或使用基于组织配置的相应属性值。 
+5. LinkedIn Learning 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 LinkedIn Learning 应用程序要求通过 **user.mail** 对 **nameidentifier** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。
 
     ![图像](common/edit-attribute.png)
 
-6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤：
+6. 除了上述属性，LinkedIn Learning 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
     
-    | 名称 | 源属性 |
+    | Name | 源属性 |
     | ---------------| --------------- |
     | 电子邮件  | user.mail  |
     | department  | user.department  |
@@ -133,9 +134,9 @@ ms.locfileid: "54821172"
 
     a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
-    ![图像](./media/linkedinlearning-tutorial/tutorial_usermail.png)
+    ![图像](common/new-save-attribute.png)
 
-    ![图像](./media/linkedinlearning-tutorial/tutorial_usermailedit.png)
+    ![图像](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。
 

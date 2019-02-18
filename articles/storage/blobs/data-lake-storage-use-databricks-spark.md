@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 Spark 通过 Azure Databricks 访问 Azure Data Lake Storage Gen2 预览版数据 | Microsoft Docs
+title: 教程：使用 Spark 通过 Azure Databricks 访问 Azure Data Lake Storage Gen2 数据 | Microsoft Docs
 description: 本教程介绍如何在 Azure Databricks 群集上运行 Spark 查询，以便访问 Azure Data Lake Storage Gen2 存储帐户中的数据。
 services: storage
 author: dineshmurthy
@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: dineshm
-ms.openlocfilehash: 533665ebfa3d35ed5f03326cf5614e37056b7713
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e448ef0de9ef5560c1b4ea0df5c02e8efd8c0ea9
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813596"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891651"
 ---
-# <a name="tutorial-access-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>教程：使用 Spark 通过 Azure Databricks 访问 Data Lake Storage Gen2 预览版数据
+# <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>教程：使用 Spark 通过 Azure Databricks 访问 Data Lake Storage Gen2 数据
 
-本教程介绍如何将 Azure Databricks 群集连接到启用了 Azure Data Lake Storage Gen2（预览版）的 Azure 存储帐户中存储的数据。 建立此连接后，即可在群集本机上针对数据运行查询和分析。
+本教程介绍如何将 Azure Databricks 群集连接到启用了 Azure Data Lake Storage Gen2 的 Azure 存储帐户中存储的数据。 建立此连接后，即可在群集本机上针对数据运行查询和分析。
 
 在本教程中，将：
 
@@ -70,13 +70,13 @@ ms.locfileid: "55813596"
 
 ## <a name="create-an-azure-databricks-service"></a>创建 Azure Databricks 服务
 
-在本部分，你将使用 Azure 门户创建 Azure Databricks 服务。
+在本部分中，你将使用 Azure 门户创建 Azure Databricks 服务。
 
 1. 在 Azure 门户中，选择“创建资源” > “分析” > “Azure Databricks”。
 
     ![Azure 门户上的 Databricks](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Azure 门户上的 Databricks")
 
-2. 在“Azure Databricks 服务”下，提供以下值以创建 Databricks 服务：
+2. 在“Azure Databricks 服务”下，提供以下值来创建 Databricks 服务：
 
     |属性  |说明  |
     |---------|---------|
@@ -145,7 +145,7 @@ ms.locfileid: "55813596"
     mount_point = "/mnt/flightdata",
     extra_configs = configs)
     ```
-18. 在此代码块中，请将 `storage-account-name`、`application-id`、`authentication-id`、`tenant-id` 占位符的值替换为你在完成此文的[保存存储帐户配置](#config)和[创建服务主体](#service-principal)部分的步骤时收集的值。 将 `file-system-name` 占位符替换为你要为文件系统提供的任何名称。
+18. 在此代码块中，请将 `storage-account-name`、`application-id`、`authentication-id`、`tenant-id` 占位符的值替换为你在完成此文的保存存储帐户配置和[创建服务主体](#service-principal)部分的步骤时收集的值。 将 `file-system-name` 占位符替换为你要为文件系统提供的任何名称。
 
 19. 按 **SHIFT + ENTER** 键，运行此块中的代码。 
 

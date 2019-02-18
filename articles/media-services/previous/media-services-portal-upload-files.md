@@ -4,7 +4,7 @@ description: 本教程详细介绍了在 Azure 门户中将文件上传到媒体
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 3ad3dcea-95be-4711-9aae-a455a32434f6
 ms.service: media-services
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/07/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 36e1f797263e367a73fde140d979243f96e83948
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7730d15b0d3be9c0ffc7c7fbafe40fece713afbd
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33780545"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55976786"
 ---
-# <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>在 Azure 门户中将文件上传到媒体服务帐户
+# <a name="upload-files-to-a-media-services-account-in-the-azure-portal-legacy"></a>在 Azure 门户中将文件上传到媒体服务帐户（旧版）
+
 > [!div class="op_single_selector"]
 > * [门户](media-services-portal-upload-files.md)
 > * [.NET](media-services-dotnet-upload-files.md)
@@ -63,6 +64,6 @@ ms.locfileid: "33780545"
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[对上传的资产进行编码](media-services-portal-encode.md)。
 
-* 还可以使用 Azure Functions，在文件到达所配置的容器时触发编码作业。 有关详细信息，请参阅 [Media Services: Integrating Azure Media Services with Azure Functions and Logic Apps](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/)（媒体服务： 将 Azure 媒体服务与 Azure Functions 和逻辑应用集成）中的示例。
+* 还可以使用 Azure Functions，在文件到达所配置的容器时触发编码作业。 有关详细信息，请参阅 [Media Services:Integrating Azure Media Services with Azure Functions and Logic Apps](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/)（媒体服务：将 Azure 媒体服务与 Azure Functions 和逻辑应用集成）中的示例。
 
 

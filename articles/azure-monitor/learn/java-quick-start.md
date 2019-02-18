@@ -11,12 +11,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: c79f25eff553c359d969cd80a10eabbaaf50067d
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 25335081e594c64b8d8cee02eebec6119e609618
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54080379"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891492"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>开始监视 Java Web 应用程序
 
@@ -82,6 +82,8 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 4. 选中“使用 Application Insights 启用遥测”> 选择要链接到 Java 应用的 App Insights 资源和关联的**检测密钥**。
 
    ![Eclipse Azure 配置菜单](./media/java-quick-start/0007-j.png)
+
+5. 在配置 Application Insights 插件以后，需再次[发布/重新发布](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-java#publish-the-web-app-to-azure)应用程序，然后它才能够开始发送遥测数据。
 
 > [!NOTE]
 > 用于 Java 的 Application Insights SDK 能够捕获并直观显示实时指标，但首次启用遥测数据收集时，可能需要几分钟，然后数据才开始显示在门户中。 如果此应用是一个低流量测试应用，请记住，仅当存在活动请求或操作时，才会捕获大多数指标。

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 9d3b1c14ce872cd02fc8d4a8c2596d7d1e270895
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 901c844ecbfbbe68163c70b12cc061eae0f75d5a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754367"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860467"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>教程：使用 Azure 容器注册表任务在云中生成并部署容器映像
 
@@ -21,7 +21,7 @@ ms.locfileid: "53754367"
 
 “内部循环”开发周期是指编写代码、生成和测试应用程序，然后提交到源代码管理的迭代过程。 快速任务可将内部循环扩展到云中，同时提供成功生成验证并自动将成功生成的映像推送到容器注册表。 映像将在云中本机生成，其位置靠近注册表，可加快部署。
 
-所有 Dockerfile 专业知识都可以直接转移到 ACR 任务。 要通过 ACR 任务在云中生成，无需更改 Dockerfile，只需运行命令。
+所有 Dockerfile 专业知识都可以直接转移到 ACR 任务。 要通过 ACR 任务在云中生成，无需更改 Dockerfile，只需运行命令。 
 
 本教程是系列教程的第一部分，将介绍：
 
@@ -30,7 +30,7 @@ ms.locfileid: "53754367"
 > * 在 Azure 中生成容器映像
 > * 将容器部署到 Azure 容器实例
 
-后续教程将会介绍如何使用 ACR 任务在代码提交和基础映像更新时自动生成容器映像。
+后续教程将会介绍如何使用 ACR 任务在代码提交和基础映像更新时自动生成容器映像。 ACR 任务也可运行[多步骤任务](container-registry-tasks-multi-step.md)（目前为预览版），使用 YAML 文件来定义相关步骤，以便生成并推送多个容器，并可选择对其进行测试。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

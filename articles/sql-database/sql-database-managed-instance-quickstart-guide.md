@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: a70e83737c6b56aee3279375ec653f12810b13b4
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: 3940c2f239a4354cfb44a499f7375f4ba34f8aa8
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749808"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892021"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Azure SQL 数据库托管实例入门
 
@@ -27,7 +27,7 @@ ms.locfileid: "55749808"
 
 参考以下快速入门可以快速创建托管实例、为客户端应用程序配置虚拟机或点到站点 VPN 连接，并使用 `.bak` 文件将数据库还原到新的托管实例：
 
-- [使用 Azure 门户创建托管实例](sql-database-managed-instance-get-started.md)。 在 Azure 门户中配置所需的参数（用户名/密码、核心数、最大存储），并自动创建 Azure 网络环境，而无需了解网络详细信息和基础结构要求。 只需确保有一个允许创建托管实例的[订阅类型](sql-database-managed-instance-resource-limits.md#supported-subscription-types)即可。 如果你想要使用自己的网络，或者要自定义网络，请参阅如何为托管实例[配置网络环境](#configure-network-environment)。
+- [使用 Azure 门户创建托管实例](sql-database-managed-instance-get-started.md)。 在 Azure 门户中配置所需的参数（用户名/密码、核心数、最大存储），并自动创建 Azure 网络环境，而无需了解网络详细信息和基础结构要求。 只需确保有一个允许创建托管实例的[订阅类型](sql-database-managed-instance-resource-limits.md#supported-subscription-types)即可。 如果你想要使用自己的网络，或者要自定义网络，请参阅“如何为托管实例配置网络环境”。
 - 托管实例在其自身的不带公共终结点的 VNet 中创建。 若要进行客户端应用程序访问，可在同一 VNet（不同子网）中创建 VM，或参考以下快速入门之一从客户端计算机与 VNet 建立点到站点 VPN 连接。
   - [在托管实例 VNet 中创建 Azure 虚拟机](sql-database-managed-instance-configure-vm.md)以建立客户端应用程序（包括 SQL Server Management Studio）连接。
   - 从装有 SQL Server Management Studio 和其他客户端连接应用程序的客户端计算机[与托管实例建立点到站点 VPN 连接](sql-database-managed-instance-configure-p2s.md)。 这是与托管实例及其 VNet 建立连接的两种方法之一。
@@ -44,7 +44,7 @@ ms.locfileid: "55749808"
 
 参考这些快速入门可以快速创建、配置数据库备份并将其还原到托管实例。 在某些情况下，需要自定义或自动化托管实例和所需网络环境的部署。 下面将会介绍这些方案。
 
-## <a name="customizing-network-environment"></a>自定义网络环境
+## <a name="customize-network-environment"></a>自定义网络环境
 
 尽管在使用 Azure 门户创建实例时可以自动配置 VNet/子网，但你可能希望在开始创建托管实例之前创建 VNet/子网，因为这样可以配置 VNet 和子网的参数。 创建和配置网络环境的最简单方法是使用 [Azure 资源部署](sql-database-managed-instance-create-vnet-subnet.md)模板来创建并配置托管实例的网络和子网。 只需按下 Azure 资源管理器部署按钮，然后在表单中填充参数即可。 
 

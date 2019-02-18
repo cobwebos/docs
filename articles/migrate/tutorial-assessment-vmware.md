@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: dee649c388ee1e9207d1fc0ecb454d03cda304b0
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 7ad5f22b0604cb9de38f7990c88d760df97098d9
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730758"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235829"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>发现和评估要迁移到 Azure 的本地 VMware VM
 
@@ -30,7 +30,7 @@ ms.locfileid: "55730758"
 
 ## <a name="prerequisites"></a>先决条件
 
-- **VMware**：计划迁移的 VM 必须由运行版本 5.5、6.0 或 6.5 的 vCenter Server 托管。 此外，需要一个运行 5.5 或更高版本的 ESXi 主机来部署收集器 VM。
+- **VMware**：计划迁移的 VM 必须由运行版本 5.5、6.0、6.5 或 6.7 的 vCenter Server 托管。 此外，需要一个运行 5.5 或更高版本的 ESXi 主机来部署收集器 VM。
 - **vCenter Server 帐户**：需要只读帐户来访问 vCenter Server。 Azure Migrate 使用此帐户发现本地 VM。
 - **权限**：在 vCenter Server 上，需要有通过导入 .OVA 格式的文件来创建 VM 的权限。
 
@@ -182,7 +182,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
     - 选择打算迁移到的 Azure 云（Azure 全局或 Azure 政府）。
     - 接受许可条款，并阅读第三方信息。
     - 收集器将会检查 VM 是否可访问 Internet。
-    - 如果 VM 通过代理访问 Internet，请单击“代理设置”，并指定代理地址和侦听端口。 如果代理需要身份验证，请指定凭据。 [详细了解](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) Internet 连接要求和收集器访问的 [URL 列表](https://docs.microsoft.com/azure/migrate/concepts-collector#connect-to-urls)。
+    - 如果 VM 通过代理访问 Internet，请单击“代理设置”，并指定代理地址和侦听端口。 如果代理需要身份验证，请指定凭据。 [详细了解](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) Internet 连接要求和收集器访问的 [URL 列表](https://docs.microsoft.com/azure/migrate/concepts-collector)。
 
       > [!NOTE]
       > 需以 http://ProxyIPAddress 或 http://ProxyFQDN 的形式输入代理地址。 仅支持 HTTP 代理。 如果有拦截代理，则如果没有导入代理证书，Internet 连接一开始可能会失败；[详细了解](https://docs.microsoft.com/azure/migrate/concepts-collector)如何在收集器 VM 上将代理证书作为受信任的证书导入，以便修复此问题。

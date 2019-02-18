@@ -5,27 +5,25 @@ description: 使用本快速入门，通过 JavaScript 将图像搜索请求发�
 services: cognitive-services
 documentationcenter: ''
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 8/20/2018
+ms.date: 02/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 31a0d092340ed161b8d8c7e7e23740c1fbf9318b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e7ff8fc10e8f714acac2dd77f8d8628f3a3ebf9e
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155266"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238178"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>快速入门：使用必应图像搜索 REST API 和 Node.js 来搜索图像
 
-使用本快速入门进行你的第一次必应图像搜索 API 调用并接收 JSON 响应。 这个简单的 JavaScript 应用程序会向 API 发送一个搜索查询并显示原始结果。
+使用本快速入门开始向必应图像搜索 API 发送搜索请求。 此 JavaScript 应用程序会向 API 发送搜索查询，并在结果中显示第一个图像的 URL。 虽然此应用程序是以 JavaScript 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
-虽然此应用程序采用 JavaScript 编写且在 Node.js 中运行，但 API 是一种 RESTful Web 服务，可与大多数编程语言兼容。
-
-[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingImageSearchv7Quickstart.js) 上提供了此示例的源代码以及附加的错误处理和代码注释。
+[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingImageSearchv7Quickstart.js) 上提供了此示例的源代码以及附加的错误处理和注释。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -55,7 +53,7 @@ ms.locfileid: "55155266"
 
 ## <a name="construct-the-search-request-and-query"></a>构造搜索请求和查询。
 
-1. 使用上一个步骤中的变量来设置 API 请求的搜索 URL 的格式。 注意，将搜索词发送到 API 之前，必须进行 URL 编码。
+1. 使用上一个步骤中的变量来设置 API 请求的搜索 URL 的格式。 将搜索词发送到 API 之前，必须进行 URL 编码。
 
     ```javascript
     let request_params = {
@@ -92,7 +90,7 @@ ms.locfileid: "55155266"
         });
         ```
 
-    3. 当触发结束标志信号时，便可处理 JSON 并且可以打印图像的 URL，以及所返回图像的总数。
+    3. 指示了 **end** 标志后，从 JSON 响应获取第一个结果。 输出第一个图像的 URL 以及返回的图像的总数。
 
         ```javascript
         response.on('end', function () {
@@ -103,7 +101,7 @@ ms.locfileid: "55155266"
          });
         ```
 
-## <a name="json-response"></a>JSON 响应
+## <a name="example-json-response"></a>示例 JSON 响应
 
 来自必应图像搜索 API 的响应以 JSON 形式返回。 此示例响应已截断，仅显示了单个结果。
 
@@ -147,19 +145,20 @@ ms.locfileid: "55155266"
         },
         "imageId":"8607ACDACB243BDEA7E1EF78127DA931E680E3A5",
         "accentColor":"0050B2"
-    }
+    }]
 }
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应图像搜索单页应用教程](../tutorial-bing-image-search-single-page-app.md)
+> [创建单页应用](../tutorial-bing-image-search-single-page-app.md)
 
 ## <a name="see-also"></a>另请参阅
 
 * [什么是必应图像搜索？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [尝试在线互动演示](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [尝试在线互动演示](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
+* 必应搜索 API 的[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
 * [获取免费的认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Azure 认知服务文档](https://docs.microsoft.com/azure/cognitive-services)
 * [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

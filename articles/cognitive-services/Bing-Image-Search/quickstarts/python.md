@@ -4,103 +4,97 @@ titleSuffix: Azure Cognitive Services
 description: 使用本快速入门，通过 Python 将图像搜索请求发送到必应图像搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 8/20/2018
+ms.date: 02/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 018f2b4b3f75ed9cef3fbc63ac4e93b56a756e14
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 0fa60f8dc7a1bb0f72080e91adb1149c1c4c082d
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174018"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234440"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>快速入门：使用必应图像搜索 REST API 和 Python 搜索图像
 
-使用本快速入门进行你的第一次必应图像搜索 API 调用并接收 JSON 响应。 这个简单的 Python 应用程序会向 API 发送一个搜索查询并显示原始结果。
-
-虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
+使用本快速入门开始向必应图像搜索 API 发送搜索请求。 此 Python 应用程序会向 API 发送搜索查询，并在结果中显示第一个图像的 URL。 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 可以通过单击启动活页夹锁屏提醒，在 [MyBinder](https://mybinder.org) 上将此示例作为 Jupyter Notebook 运行：
 
 [![活页夹](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingImageSearchAPI.ipynb)
 
 
-此外，该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingImageSearchv7.py) 上获得。
+[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingImageSearchv7.py) 上提供了此示例的源代码以及附加的错误处理和注释。
+
 
 ## <a name="prerequisites"></a>先决条件
 
+* [Python 2.x 或 3.x](https://www.python.org/)
+* [Python 映像库 (PIL)](https://pillow.readthedocs.io/en/stable/index.html)
+* [matplotlib](https://matplotlib.org/) 
+
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-## <a name="running-the-quickstart"></a>运行快速入门
+1. 在你最喜欢使用的 IDE 或编辑器中新建一个 Python 文件，并导入以下模块。 为你的订阅密钥、搜索终结点和搜索词创建变量。
 
-若要开始，请将 `subscription_key` 设置为必应 API 服务的有效订阅密钥。
+    ```python
+    import requests
+    import matplotlib.pyplot as plt
+    from PIL import Image
+    from io import BytesIO
+    
+    subscription_key = "your-subscription-key"
+    search_url = "https://api.cognitive.microsoft.com/bing/v7.0/images/search"
+    search_term = "puppies"
+    ```
 
-```python
-subscription_key = None
-assert subscription_key
-```
+2. 将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头，方法是：创建一个字典，将密钥作为值添加。 
 
-接下来，验证 `search_url` 终结点是否正确。 在撰写本文时，必应搜索 API 仅使用一个终结点。 如果遇到授权错误，请在 Azure 仪表板中针对必应搜索终结点仔细检查此值。
+    ```python
+    headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
+    ```
 
+## <a name="create-and-send-a-search-request"></a>创建并发送搜索请求
 
-```python
-search_url = "https://api.cognitive.microsoft.com/bing/v7.0/images/search"
-```
+1. 为搜索请求的参数创建字典。 向 `q` 参数添加搜索词。 将 "public" 用于 `license` 参数，以便在公共域中搜索图像。 将 "photo" 用于 `imageType`，仅搜索照片。
 
-设置 `search_term`，搜索有关“小狗”的图像。
+    ```python
+    params  = {"q": search_term, "license": "public", "imageType": "photo"}
+    ```
 
+2. 使用 `requests` 库调用必应图像搜索 API。 向请求添加标头和参数，并以 JSON 对象形式返回响应。 
 
-```python
-search_term = "puppies"
-```
+    ```python
+    response = requests.get(search_url, headers=headers, params=params)
+    response.raise_for_status()
+    search_results = response.json()
+    ```
 
-以下程序块使用 Python 中的 `requests` 库调用必应搜索 API 并将结果作为 JSON 对象返回。 注意，我们通过 `headers` 字典传入 API 密钥，通过 `params` 字典传入搜索词。 若要查看可用于筛选搜索结果的完整选项列表，请参阅 [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) 文档。
+## <a name="view-the-response"></a>查看响应
 
+1. 使用 matplotlib 库创建包含四个列和四个行的新图。 
 
-```python
-import requests
+2. 循环访问该图的行和列，并使用 PIL 库的 `Image.open()` 方法将图像的缩略图添加到每个空间。 
 
-headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
-params  = {"q": search_term, "license": "public", "imageType": "photo"}
-response = requests.get(search_url, headers=headers, params=params)
-response.raise_for_status()
-search_results = response.json()
-```
+    ```python
+    f, axes = plt.subplots(4, 4)
+    for i in range(4):
+        for j in range(4):
+            image_data = requests.get(thumbnail_urls[i+4*j])
+            image_data.raise_for_status()
+            image = Image.open(BytesIO(image_data.content))        
+            axes[i][j].imshow(image)
+            axes[i][j].axis("off")
+    ```
 
-`search_results` 对象包含实际图像以及丰富的元数据，例如相关项目。 例如，以下代码行可以提取前 16 个结果的缩略图 URL。
+3. 使用 `plt.show()` 来绘制该图并显示图像。
 
-
-```python
-thumbnail_urls = [img["thumbnailUrl"] for img in search_results["value"][:16]]
-```
-
-然后，使用 `PIL` 库下载缩略图图像和 `matplotlib` 库，将其呈现在 $4 乘 4$ 网格上。
-
-
-```python
-%matplotlib inline
-import matplotlib.pyplot as plt
-from PIL import Image
-from io import BytesIO
-
-f, axes = plt.subplots(4, 4)
-for i in range(4):
-    for j in range(4):
-        image_data = requests.get(thumbnail_urls[i+4*j])
-        image_data.raise_for_status()
-        image = Image.open(BytesIO(image_data.content))        
-        axes[i][j].imshow(image)
-        axes[i][j].axis("off")
-plt.show()
-```
-
-## <a name="sample-json-response"></a>示例 JSON 响应
+## <a name="example-json-response"></a>示例 JSON 响应
 
 来自必应图像搜索 API 的响应以 JSON 形式返回。 此示例响应已截断，仅显示了单个结果。
 
@@ -144,7 +138,7 @@ plt.show()
         },
         "imageId":"8607ACDACB243BDEA7E1EF78127DA931E680E3A5",
         "accentColor":"0050B2"
-    }
+    }]
 }
 ```
 
@@ -153,10 +147,8 @@ plt.show()
 > [!div class="nextstepaction"]
 > [必应图像搜索单页应用教程](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>另请参阅
-
-* [什么是必应图像搜索？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [尝试在线互动演示](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [什么是必应图像搜索 API？](../overview.md)  
+* 必应搜索 API 的[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
 * [获取免费的认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Azure 认知服务文档](https://docs.microsoft.com/azure/cognitive-services)
 * [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

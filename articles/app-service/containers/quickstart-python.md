@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/23/2019
+ms.date: 02/08/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: be78c91a4fb5c1e79e7b58620f65c9f17bfb4bae
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 14678ed789b611c0226d98fe11b3c9bacb993208
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226479"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991474"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>在 Linux 上的 Azure 应用服务（预览）中创建 Python 应用
 
@@ -39,7 +39,7 @@ ms.locfileid: "55226479"
 * <a href="https://www.python.org/downloads/" target="_blank">安装 Python 3.7</a>
 * <a href="https://git-scm.com/" target="_blank">安装 Git</a>
 
-## <a name="download-the-sample"></a>下载示例
+## <a name="download-the-sample-locally"></a>将示例下载到本地
 
 在终端窗口中运行以下命令，将示例应用程序克隆到本地计算机，并导航到包含示例代码的目录。
 
@@ -79,49 +79,80 @@ flask run
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)]
+## <a name="download-the-sample"></a>下载示例
 
-[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux.md)]
+在 Cloud Shell 中，创建一个 quickstart 目录，然后切换到该目录。
 
-[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
+```bash
+mkdir quickstart
+
+cd quickstart
+```
+
+接下来请运行以下命令，将示例应用存储库克隆到快速入门目录。
+
+```bash
+git clone https://github.com/Azure-Samples/python-docs-hello-world
+```
+
+运行时，该命令会显示类似于以下示例的信息：
+
+```bash
+Cloning into 'python-docs-hello-world'...
+remote: Enumerating objects: 43, done.
+remote: Total 43 (delta 0), reused 0 (delta 0), pack-reused 43
+Unpacking objects: 100% (43/43), done.
+Checking connectivity... done.
+```
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
-[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
+切换到包含示例代码的目录并运行 `az webapp up` 命令。
 
-浏览到该站点查看使用内置映像新建的应用。 将 _&lt;app name>_ 替换为你的应用名称。
+在以下示例中，请将 <app_name> 替换为一个唯一的应用名称。
 
 ```bash
-http://<app_name>.azurewebsites.net
+cd python-docs-hello-world
+
+az webapp up -n <app_name>
 ```
 
-新应用应该如下所示：
+此命令可能需要花费几分钟时间运行。 运行时，该命令会显示类似于以下示例的信息：
 
-![空应用页](media/quickstart-php/app-service-web-service-created.png)
+```json
+The behavior of this command has been altered by the following extension: webapp
+Creating Resource group 'appsvc_rg_Linux_CentralUS' ...
+Resource group creation complete
+Creating App service plan 'appsvc_asp_Linux_CentralUS' ...
+App service plan creation complete
+Creating app '<app_name>' ....
+Webapp creation complete
+Creating zip with contents of dir /home/username/quickstart/python-docs-hello-world ...
+Preparing to deploy contents to app.
+All done.
+{
+  "app_url": "https:/<app_name>.azurewebsites.net",
+  "location": "Central US",
+  "name": "<app_name>",
+  "os": "Linux",
+  "resourcegroup": "appsvc_rg_Linux_CentralUS ",
+  "serverfarm": "appsvc_asp_Linux_CentralUS",
+  "sku": "BASIC",
+  "src_path": "/home/username/quickstart/python-docs-hello-world ",
+  "version_detected": "-",
+  "version_to_create": "python|3.7"
+}
+```
 
-[!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
+`az webapp up` 命令执行以下操作：
 
-```bash
-Counting objects: 42, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (39/39), done.
-Writing objects: 100% (42/42), 9.43 KiB | 0 bytes/s, done.
-Total 42 (delta 15), reused 0 (delta 0)
-remote: Updating branch 'master'.
-remote: Updating submodules.
-remote: Preparing deployment for commit id 'c40efbb40e'.
-remote: Generating deployment script.
-remote: Generating deployment script for python Web Site
-.
-.
-.
-remote: Finished successfully.
-remote: Running post deployment command(s)...
-remote: Deployment successful.
-remote: App container will begin restart within 10 seconds.
-To https://user2234@cephalin-python.scm.azurewebsites.net/cephalin-python.git
- * [new branch]      master -> master
- ```
+- 创建一个默认的资源组。
+
+- 创建一个默认的应用服务计划。
+
+- 创建一个采用指定名称的应用。
+
+- [使用 Zip](https://docs.microsoft.com/azure/app-service/deploy-zip) 将文件从当前工作目录部署到应用。
 
 ## <a name="browse-to-the-app"></a>浏览到应用
 
@@ -139,17 +170,22 @@ Python 示例代码在包含内置映像的 Linux 上的应用服务中运行。
 
 ## <a name="update-locally-and-redeploy-the-code"></a>在本地更新并重新部署代码
 
-在本地存储库中，打开 `application.py` 文件，并对最后一行中的文本略加更改：
+在 Cloud Shell 中，键入 `code application.py` 以打开 Cloud Shell 编辑器。
+
+![对 application.py 进行编码](media/quickstart-python/code-applicationpy.png)
+
+ 对 `return` 调用中的文本稍作更改：
 
 ```python
 return "Hello Azure!"
 ```
 
-提交在 Git 中所做的更改，然后将代码更改推送到 Azure。
+保存更改并退出编辑器。 使用命令 `^S` 来保存，使用 `^Q` 来退出。
+
+现在，你将重新部署应用。 将 `<app_name>` 替换为你的应用。
 
 ```bash
-git commit -am "updated output"
-git push azure master
+az webapp up -n <app_name>
 ```
 
 完成部署后，切换回**浏览到应用**步骤中打开的浏览器窗口，然后刷新页面。

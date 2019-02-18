@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 5c7e6a4da9880677fbc4aad76b820ba596058bb6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1aca53c876b6cc982c141d74cdf727f9c966adfe
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025243"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233857"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂，将数据从 Azure Blob 存储复制到 SQL 数据库
 在本教程中，请使用 Azure 数据工厂用户界面 (UI) 创建数据工厂。 此数据工厂中的管道将数据从 Azure Blob 存储复制到 SQL 数据库。 本教程中的配置模式适用于从基于文件的数据存储复制到关系数据存储。 如需可以用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
@@ -36,7 +36,7 @@ ms.locfileid: "54025243"
 > * 监视管道和活动运行。
 
 ## <a name="prerequisites"></a>先决条件
-* **Azure 订阅**。 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+* **Azure 订阅**。 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * **Azure 存储帐户**。 可将 Blob 存储用作源数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../storage/common/storage-quickstart-create-account.md)以获取创建步骤。
 * **Azure SQL 数据库**。 将数据库用作接收器数据存储。 如果没有 SQL 数据库，请参阅[创建 SQL 数据库](../sql-database/sql-database-get-started-portal.md)，了解创建该数据库的步骤。
 
@@ -73,7 +73,7 @@ ms.locfileid: "54025243"
 
 1. 允许 Azure 服务访问 SQL Server。 确保 SQL Server 的“允许访问 Azure 服务”处于“打开”状态，以便数据工厂可以将数据写入 SQL Server。 若要验证并启用此设置，请执行以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在左侧选择“更多服务” > “SQL Server”。
+    a. 在左侧选择“更多服务” > “SQL Server”。
 
     b. 选择服务器，然后选择“设置”下的“防火墙”。
 
@@ -82,30 +82,30 @@ ms.locfileid: "54025243"
 ## <a name="create-a-data-factory"></a>创建数据工厂
 在此步骤中，请先创建数据工厂，然后启动数据工厂 UI，在该数据工厂中创建一个管道。 
 
-1. 打开 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
-1. 在左侧菜单中，选择“新建” > “数据 + 分析” > “数据工厂”。 
+1. 打开 **Microsoft Edge** 或 **Google Chrome**。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
+2. 在左侧菜单中，选择“创建资源” > “Analytics” > “数据工厂”。 
   
    ![新建数据工厂](./media/tutorial-copy-data-portal/new-azure-data-factory-menu.png)
-1. 在“新建数据工厂”页的“名称”下输入 **ADFTutorialDataFactory**。 
+3. 在“新建数据工厂”页的“名称”下输入 **ADFTutorialDataFactory**。 
       
      ![新建数据工厂](./media/tutorial-copy-data-portal/new-azure-data-factory.png)
  
    Azure 数据工厂的名称必须 *全局唯一*。 如果看到名称字段的以下错误消息，请更改数据工厂的名称（例如，改为 yournameADFTutorialDataFactory）。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
   
    ![错误消息](./media/tutorial-copy-data-portal/name-not-available-error.png)
-1. 选择要在其中创建数据工厂的 Azure **订阅**。 
-1. 对于“资源组”，请执行以下步骤之一：
+4. 选择要在其中创建数据工厂的 Azure **订阅**。 
+5. 对于“资源组”，请执行以下步骤之一：
      
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
+    a. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
 
     b. 选择“新建”，并输入资源组的名称。 
          
     若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。 
-1. 在“版本”下选择“V2”。
-1. 在“位置”下选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他区域。
-1. 选择“固定到仪表板”。 
-1. 选择“创建”。 
-1. 仪表板上会显示状态为“正在部署数据工厂”的以下磁贴： 
+6. 在“版本”下选择“V2”。
+7. 在“位置”下选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他区域。
+8. 选择“固定到仪表板”。 
+9. 选择“创建”。 
+10. 仪表板上会显示状态为“正在部署数据工厂”的以下磁贴： 
 
     ![“部署数据工厂”磁贴](media/tutorial-copy-data-portal/deploying-data-factory.png)
 1. 创建完以后，会看到图中所示的“数据工厂”页：
@@ -127,7 +127,7 @@ ms.locfileid: "54025243"
    ![创建管道](./media/tutorial-copy-data-portal/create-pipeline-tile.png)
 1. 在管道的“常规”选项卡中，输入 **CopyPipeline** 作为管道的**名称**。
 
-1. 在“活动”工具箱中，展开“数据流”类别，然后将“复制”活动从工具箱拖放到管道设计器图面。 指定 **CopyFromBlobToSql** 作为**名称**。
+1. 在“活动”工具箱中，展开“移动和转换”类别，然后将“复制数据”活动从工具箱拖放到管道设计器图面。 指定 **CopyFromBlobToSql** 作为**名称**。
 
     ![复制活动](./media/tutorial-copy-data-portal/drag-drop-copy-activity.png)
 
@@ -187,7 +187,7 @@ ms.locfileid: "54025243"
     ![链接服务](./media/tutorial-copy-data-portal/new-azure-sql-database-linked-service-button.png)       
 1. 在“新建链接服务”窗口中执行以下步骤： 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”下输入 **AzureSqlDatabaseLinkedService**。
+    a. 在“名称”下输入 **AzureSqlDatabaseLinkedService**。
 
     b. 在“服务器名称”下选择 SQL Server 实例。
 
@@ -263,7 +263,7 @@ ms.locfileid: "54025243"
     ![新建按钮](./media/tutorial-copy-data-portal/add-trigger-new-button.png)
 1. 在“新建触发器”窗口中，执行以下步骤： 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”下输入 **RunEveryMinute**。
+    a. 在“名称”下输入 **RunEveryMinute**。
 
     b. 在“结束”下选择“在特定日期”。
 

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/16/2019
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 3b425af972b0983db076ab103a33c57f7a127210
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 96d5e94cb60888f7e098e31d7f06481a766cabd5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095747"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998512"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教程：设置教室实验室 
 在本教程中，请设置带虚拟机的课堂实验室，供学生在课堂上使用。  
@@ -28,7 +28,7 @@ ms.locfileid: "55095747"
 
 > [!div class="checklist"]
 > * 创建课堂实验室
-> * 配置课堂实验室
+> * 将用户添加到实验室
 > * 将注册链接发送给学生
 
 ## <a name="prerequisites"></a>先决条件
@@ -43,13 +43,12 @@ ms.locfileid: "55095747"
 2. 选择“登录”并输入凭据。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。 
 3. 在“新建实验室”窗口中，执行以下操作：： 
     1. 指定实验室的**名称**。 
-    2. 指定允许加入实验室的最大**用户数**。 
+    2. 在实验室中指定最大**虚拟机数**。 可以在创建实验室后增加或减少 VM 数，也可以在现有实验室中进行。 有关详细信息，请参阅[更新实验室中的 VM 数](how-to-configure-student-usage.md#update-number-of-virtual-machines-in-lab)
     6. 选择“保存”。
 
         ![创建课堂实验室](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. 在“选择虚拟机规范”页上执行以下步骤：
     1. 选择在实验室中创建的虚拟机 (VM) 的**大小**。 
-    2. 选择要在其中创建 VM 的**区域**。 
     3. 选择用于在实验室中创建 VM 的 **VM 映像**。 
     4. 选择“**下一步**”。
 
@@ -69,17 +68,15 @@ ms.locfileid: "55095747"
 7. 配置完模板后，会看到以下页： 
 
     ![完成配置后的“配置模板”页](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
-8. 在本教程中，以下步骤是可选步骤： 
+8. 在“配置模板”页上执行以下步骤：对于此教程来说，这些步骤是**可选**的。
     1. 选择“启动”来启动模板 VM。
     2. 选择“连接”以连接到模板 VM。 
     3. 在模板 VM 上安装并配置软件。 
     4. **停止** VM。  
     5. 输入模板的**说明**
-
-        ![“配置模板”页上的“下一步”](../media/tutorial-setup-classroom-lab/configure-template-next.png)
 9. 在模板页上选择“下一步”。 
 10. 在“发布模板”页上执行以下操作。 
-    1. 若要立即发布模板，请选中“我了解发布后无法修改模板。此过程只能执行一次，最长可能需要一小时”对应的复选框，然后选择“发布”。  
+    1. 若要立即发布模板，请选择“发布”。  
 
         > [!WARNING]
         > 发布后无法取消发布。 
@@ -103,7 +100,9 @@ ms.locfileid: "55095747"
 
 1. 选择左侧菜单上的“用户”。 默认情况下，“限制访问”选项处于启用状态。 当此设置处于启用状态时，用户即使有注册链接也不能注册到实验室，除非该用户在用户列表中。 只有列表中的用户可以使用你发送的注册链接注册到实验室。 在此过程中，请将用户添加到列表。 也可关闭“限制访问”，这样一来，用户只要有注册链接就可以注册到实验室。 
 2. 在工具栏上选择“添加用户”。 
-3. 在“添加用户”页上，在多个不同的行中输入电子邮件地址，或者在一行中输入以分号分隔的电子邮件地址。 
+
+    ![“添加用户”按钮](../media/how-to-configure-student-usage/add-users-button.png)
+1. 在“添加用户”页上，在多个不同的行中输入电子邮件地址，或者在一行中输入以分号分隔的电子邮件地址。 
 
     ![添加用户电子邮件地址](../media/how-to-configure-student-usage/add-users-email-addresses.png)
 4. 选择“保存”。 可以在列表中看到用户的电子邮件地址及其状态（已注册或未注册）。 

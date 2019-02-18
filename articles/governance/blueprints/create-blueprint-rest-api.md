@@ -4,17 +4,17 @@ description: 使用 Azure 蓝图创建、定义和部署项目。
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 02/04/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 78ce7c1063623e0c002bb6084d8c18139b3f889f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d7b2e6848c88d9c3ac61f2eaf059e0836dc19903
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566939"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989960"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>使用 REST API 定义和分配 Azure 蓝图
 
@@ -329,6 +329,12 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 使用 REST API 发布蓝图后，即可将其分配给订阅。 将你创建的蓝图分配给管理组层次结构下的一个订阅。 如果蓝图保存到某个订阅，则只能将其分配给该订阅。 请求正文可指定要分配的蓝图、向蓝图定义中的任何资源组提供名称和位置，并且提供在蓝图上定义的所有参数并供一个或多个附加项目使用。
 
+在每个 REST API URI 中，包含替换为自己的值所使用的变量：
+
+- `{tenantId}` - 替换为租户 ID
+- `{YourMG}` - 替换为管理组的 ID
+- `{subscriptionId}` - 替换为订阅 ID
+
 1. 在目标订阅上，向 Azure 蓝图服务主体提供“所有者”角色。 AppId 是静态的 (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`)，但服务主体 ID 根据租户各有不同。 可以使用以下 REST API 请求租户的详细信息。 它可使用具有不同授权的 [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md)。
 
    - REST API URI
@@ -387,6 +393,25 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
          "location": "westus"
      }
      ```
+
+   - 用户分配的托管标识
+
+     蓝图分配也可使用[用户分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 在此示例中，请求正文的 **identity** 部分更改如下：  将 `{yourRG}` 和 `{userIdentity}` 分别替换为资源组名称和用户分配托管标识的名称。
+
+     ```json
+     "identity": {
+         "type": "userAssigned",
+         "tenantId": "{tenantId}",
+         "userAssignedIdentities": {
+             "/subscriptions/{subscriptionId}/resourceGroups/{yourRG}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{userIdentity}": {}
+         }
+     },
+     ```
+
+     **用户分配的托管标识**可以位于任何订阅和资源组中，只要分配蓝图的用户有权访问它即可。
+
+     > [!IMPORTANT]
+     > 蓝图不管理用户分配的托管标识。 用户负责分配足够的角色和权限，否则蓝图分配会失败。
 
 ## <a name="unassign-a-blueprint"></a>取消分配蓝图
 

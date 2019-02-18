@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 6bb075857d67885d968b495cc8d545af9994eaf0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c91292bff22a76e4c15f031094809e20fdc43031
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169308"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175721"
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 
@@ -78,7 +78,7 @@ ms.locfileid: "55169308"
 ## <a name="requirements-and-constraints"></a>要求和约束
 
 当虚拟网络全局对等互连时，以下约束适用：
-- 虚拟网络可以存在于任何 Azure 公有云区域中，但不能存在于 Azure 国有云中。
+- 虚拟网络可以存在于任何 Azure 公有云区域和 Azure 中国云区域中，但不能存在于 Azure 政府云中。
 - 一个虚拟网络中的资源无法与全局对等互连虚拟网络中 Azure 内部负载均衡器的前端 IP 地址通信。 负载均衡器和与之通信的资源必须位于同一区域中。
 - 不能使用远程网关，也不能允许网关传输。 若要使用远程网关或允许网关传输，对等互连的虚拟网络必须位于同一区域中。
 

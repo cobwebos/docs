@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 15ddb29f090ca8dc14befc93e3377c181038b554
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 627275855f231f5a4336075df3864448325127f2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54816154"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211863"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>教程：Azure Active Directory 与 Palo Alto Networks Captive Portal 的集成
 
@@ -81,7 +82,7 @@ Palo Alto Networks Captive Portal 支持以下方案：
 2. **[配置 Palo Alto Networks Captive Portal 单一登录](#configure-palo-alto-networks-captive-portal-single-sign-on)**：在应用程序中配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)**：使用用户 *Britta Simon* 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)**：将 Britta Simon 设置为使用 Azure AD 单一登录。
-5. **[创建 Palo Alto Networks Captive Portal 测试用户](#create-palo-alto-networks-captive-portal-test-user)**：在 Palo Alto Networks Captive Portal 中创建一个链接到 Azure AD 用户的对应用户 *Britta Simon*。
+5. **创建 Palo Alto Networks Captive Portal 测试用户**：在 Palo Alto Networks Captive Portal 中创建一个链接到 Azure AD 用户的对应用户 *Britta Simon*。
 6. **[测试单一登录](#test-single-sign-on)**：验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.openlocfilehash: b1aa60b028efb4bf4820f1f084a7cf0eea6e9639
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bf4d2d18971948e15cca2e1b91d9d55a73cefe4b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808113"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187910"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>教程：Azure Active Directory 与 Symantec Web Security Service (WSS) 集成
 
@@ -79,7 +80,7 @@ ms.locfileid: "54808113"
 若要配置和测试 Symantec Web Security Service (WSS) 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[配置 Symantec Web Security Service (WSS) 单一登录](#configure-symantec-web-security-service-(wss)-single-sign-on)** - 在应用程序端配置单一登录设置。
+2. **配置 Symantec Web Security Service (WSS) 单一登录** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[创建 Symantec Web Security Service (WSS) 测试用户](#create-symantec-web-security-service-wss-test-user)** - 在 Symantec Web Security Service (WSS) 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。

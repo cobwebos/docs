@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 32d1be97405624fe929a9e9e1ff486f6a31200aa
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 402e10d9b99dbf0eeba8aac27071e4d78fdf0f01
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732764"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984505"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-logins"></a>教程：使用 Azure AD 登录名实现 Azure SQL 数据库中托管实例的安全性
 
@@ -32,7 +32,7 @@ ms.locfileid: "55732764"
 > - 为托管实例创建 Azure Active Directory (AD) 登录名
 > - 授予对托管实例中 Azure AD 登录名的权限
 > - 基于 Azure AD 登录名创建 Azure AD 用户
-> - 向 Azure AD 用户和托管数据库安全性分配权限
+> - 向 Azure AD 用户分配权限并管理数据库安全性
 > - 以 Azure AD 用户身份使用模拟
 > - 以 Azure AD 用户身份使用跨数据库查询
 > - 了解安全功能，例如威胁防护、审核、数据掩码和加密

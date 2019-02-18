@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources so that customers can store key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: 7ef34ad17dbfbbadde7442fdcba2d02d25a6e4ad
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: fc1505526ddff33c68b6d7a4030338dd7d712598
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037492"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994466"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>教程：使用 Java 应用程序在 Azure Cosmos DB 中创建 Cassandra API 帐户，以便存储键/值数据
 
@@ -45,9 +45,9 @@ ms.locfileid: "54037492"
 
 2. 单击  **“创建资源”**   >  **“数据库”**   >  **“Azure Cosmos DB”** 。 
 
-3. 在“新建帐户”窗格上，输入新 Azure Cosmos 帐户的设置。 ****  
+3. 在“新建帐户”窗格上，输入新 Azure Cosmos 帐户的设置。 
 
-   |设置   |建议的值  |Description  |
+   |设置   |建议的值  |说明  |
    |---------|---------|---------|
    |ID   |   输入唯一的名称    | 输入标识此 Azure Cosmos 帐户的唯一名称。 <br/><br/>由于 cassandra.cosmosdb.azure.com 将追加到所提供的用于创建接触点的 ID 后面，因此，请使用唯一但可识别的 ID。         |
    |API    |  Cassandra   |  API 确定要创建的帐户的类型。 <br/> 选择“Cassandra”，因为在本文中，你将创建可使用 Cassandra 查询语言 (CQL) 语法查询的宽列数据库。  |

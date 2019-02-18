@@ -1,6 +1,6 @@
 ---
-title: 在 Azure SQL 数据库中确保独立数据库或入池数据库的安全 | Microsoft Docs
-description: 了解在 Azure SQL 数据库中保护独立数据库或入池数据库的技术和功能。
+title: 在 Azure SQL 数据库中确保单一数据库或入池数据库的安全 | Microsoft Docs
+description: 了解在 Azure SQL 数据库中保护单一数据库或入池数据库的技术和功能。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -9,17 +9,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/30/2019
-ms.openlocfilehash: 2ea87b36d8b489abf59ac4550121369a2ddf540f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/08/2019
+ms.openlocfilehash: b9141fcef8bda181cd7b679f58d22d4ba2895b14
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752511"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004570"
 ---
-# <a name="tutorial-secure-a-standalone-or-pooled-database"></a>教程：保护独立数据库或入池数据库
+# <a name="tutorial-secure-a-single-or-pooled-database"></a>教程：保护单一数据库或入池数据库
 
-Azure SQL 数据库允许你通过以下方式确保独立数据库或入池数据库中数据的安全：
+Azure SQL 数据库允许你通过以下方式确保单一数据库或入池数据库中数据的安全：
 
 - 使用防火墙规则限制访问
 - 使用需要标识的身份验证机制

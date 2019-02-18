@@ -4,33 +4,30 @@ titleSuffix: Azure Cognitive Services
 description: 必应图像搜索 API 允许你在应用程序中使用必应的认知图像搜索功能。 使用此 API 发送用户搜索查询时，可以获取并显示与必应图像类似的相关高质量图像。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.assetid: 1446AD8B-A685-4F5F-B4AA-74C8E9A40BE9
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: overview
-ms.date: 10/11/2017
+ms.date: 02/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4ae9c0c1fb6cd341e812f9e8b35eaff789637561
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: fa1e2e6ac6e85c431a759d8eb1c22923e86e40d4
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765640"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237308"
 ---
 # <a name="what-is-the-bing-image-search-api"></a>什么是必应图像搜索 API？
 
-必应图像搜索 API 允许你在应用程序中使用必应的认知图像搜索功能。 使用此 API 发送用户搜索查询时，可以获取并显示与[必应图像](https://www.bing.com/images)类似的相关高质量图像。
+必应图像搜索 API 允许你在应用程序中使用必应的图像搜索功能。 通过向 API 发送搜索查询，可以获取与 [bing.com/images](https://www.bing.com/images) 类似的高质量图像。
 
-请注意，必应图像搜索 API 提供仅限图像的搜索结果。 对于其他类型的 Web 内容，请使用[必应 Web 搜索 API](../bing-web-search/search-the-web.md)、[视频搜索 API](https://docs.microsoft.com/azure/cognitive-services/Bing-Video-Search) 和[新闻搜索 API](https://review.docs.microsoft.com/azure/cognitive-services/bing-news-search)。
+虽然必应图像搜索 API 提供仅限图像的搜索结果，但是你可以组合或使用其他可用的[必应搜索 API](../bing-web-search/bing-api-comparison.md) 在 Web 上查找多种类型的内容。
 
 ## <a name="bing-image-search-features"></a>必应图像搜索功能
 
-虽然必应图像搜索主要通过搜索查询来查找并返回相关图像，但此服务也提供多项其他功能，可以在 Web 上进行智能且集中化的图像检索。
-
-
-| 功能                                                                                                                                                                                 | 说明                                                                                                                                                            |
+| Feature                                                                                                                                                                                 | 说明                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [实时建议搜索词](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries) | 在用户键入时通过[必应自动建议 API](../bing-autosuggest/get-suggested-search-terms.md) 显示建议的搜索词改善应用体验。 |
 | [筛选和限制图像结果](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images)                       | 通过编辑查询参数筛选必应返回的图像。                                                                                                       |
@@ -60,10 +57,12 @@ ms.locfileid: "55765640"
 
 ## <a name="see-also"></a>另请参阅
 
-* [必应图像搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) 参考部分包含有关终结点、标头、API 响应和查询参数的定义和信息，这些都可以用来请求基于图像的搜索结果。
+* 必应搜索 API 的[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
+
+* [必应图像搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) 参考部分包含有关 API 的终结点、标头、API 响应和查询参数的信息。
 
 * [必应使用和显示要求](./useanddisplayrequirements.md)指定了允许用户如何使用通过必应搜索 API 获得的内容和信息。
 
-* [使用必应图像搜索 API 从 Web 获取图像](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images)主题介绍了如何在 Web 中搜索和获取图像。
+* [使用必应图像搜索 API 从 Web 获取图像](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images)一文介绍了如何在 Web 中搜索和获取图像。
 
-* [发送和使用搜索查询](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)主题介绍了如何完成搜索查询的发出、自定义和分段。
+* [发送和使用搜索查询](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)一文介绍了如何完成搜索查询的发出、自定义和分段。

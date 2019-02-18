@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: overview
-ms.date: 12/17/2018
+ms.date: 02/08/2019
 ms.author: danlep
-ms.openlocfilehash: 647890517e6f08a4602ebed8ee1057cb45f10cbe
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 35e846aa5954e3714d301c9c75cf42b31961fdfe
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075492"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56160571"
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Azure 容器实例的配额和区域可用性
 
@@ -28,13 +28,13 @@ Azure 容器实例在具有指定 CPU 和内存限制的以下区域中可用。
 
 | 位置 | 操作系统 | CPU | 内存 (GB) |
 | -------- | -- | :---: | :-----------: |
-| 加拿大中部 | Linux | 4 | 16 |
+| 加拿大中部、美国中部、美国东部 2 | Linux | 4 | 16 |
 | 美国东部、北欧、西欧、美国西部、美国西部 2 | Linux | 4 | 14 |
 | 日本东部 | Linux | 2 | 8 |
-| 澳大利亚东部、美国东部 2、东南亚 | Linux | 2 | 7 |
+| 澳大利亚东部、东南亚 | Linux | 2 | 7 |
 | 印度中部、东亚、美国中北部、美国中南部、印度南部 | Linux | 2 | 3.5 |
 | 美国东部、西欧、美国西部 | Windows | 4 | 14 |
-| 澳大利亚东部、加拿大中部、印度中部、东亚、美国东部 2、日本东部、美国中北部、北欧、美国中南部、印度南部、东南亚、美国西部 2 | Windows | 2 | 3.5 |
+| 澳大利亚东部、加拿大中部、印度中部、美国中部、东亚、美国东部 2、日本东部、美国中北部、北欧、美国中南部、印度南部、东南亚、美国西部 2 | Windows | 2 | 3.5 |
 
 在这些资源限制内创建的容器实例受部署区域内可用性的限制。 某个区域负载较重时，部署实例时可能会失败。 若要减少此类部署失败，请尝试部署具有较低 CPU 和内存设置的实例，或稍后尝试部署。
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: c8d86cbcf4f5c5029f215cd6c327e05fb93f7144
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b31d22990b79cb37ea5b3b89c699b9511f8d87cf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453887"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211115"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expensify"></a>教程：Azure Active Directory 与 Expensify 集成
 
@@ -104,9 +105,12 @@ ms.locfileid: "55453887"
 
     ![Expensify 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，键入 URL：`https://www.expensify.com/authentication/saml/login`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.expensify.com/authentication/saml/loginCallback?domain=[yourdomain]`
 
     b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://www.expensify.com`
+
+    > [!NOTE]
+    > “登录 URL”值不是实际值。 请使用实际登录 URL 更新此值。 请联系 [Expensify 客户端支持团队](mailto:help@expensify.com)获取此值。
 
 5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
 
@@ -125,18 +129,18 @@ ms.locfileid: "55453887"
 ### <a name="configure-expensify-single-sign-on"></a>配置 Expensify 单一登录
 
 若要在 Expensify 中启用 SSO，首先需要在应用程序中启用“域控制”。 可以通过[此处](https://help.expensify.com/domain-control)列出的步骤在应用程序中启用“域控制”。 有关其他支持，请与 [Expensify 客户端支持团队](mailto:help@expensify.com)协作。 在启用“域控制”后，执行以下步骤：
-   
+
 ![配置单一登录](./media/expensify-tutorial/tutorial_expensify_51.png)
-    
+
 1. 登录到 Expensify 应用程序。
-    
+
 2. 在左侧面板中，单击“设置”，然后导航至 **SAML**。
-    
+
 3. 将“SAML 登录”选项切换为“已启用”。
-    
+
 4. 在记事本中打开来自 Azure AD 的已下载联合元数据，然后复制其内容并粘贴到“标识提供者元数据”文本框。
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
@@ -191,7 +195,7 @@ ms.locfileid: "55453887"
 
 在本部分中，会在 Expensify 中创建一个名为 Britta Simon 的用户。 若要在 Expensify 平台中添加用户，请与 [Expensify 客户端支持团队](mailto:help@expensify.com)协作。
 
-### <a name="test-single-sign-on"></a>测试单一登录 
+### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
@@ -204,4 +208,3 @@ ms.locfileid: "55453887"
 - [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

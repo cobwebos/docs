@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 11/02/2018
+ms.date: 11/28/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b725713777eb6ca25c829d327f91921b28cd4203
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a2e056baa2dd27ca0bf054d0dacf15d35e0ef384
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035962"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977911"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和管理 Windows VM
 
@@ -42,12 +42,12 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 ## <a name="create-resource-group"></a>创建资源组
 
-使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) 命令创建资源组。
+使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 命令创建资源组。
 
 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在以下示例中，在“EastUS”区域中创建了名为“myResourceGroupVM”的资源组：
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup `
+New-AzResourceGroup `
    -ResourceGroupName "myResourceGroupVM" `
    -Location "EastUS"
 ```
@@ -64,10 +64,10 @@ New-AzureRmResourceGroup `
 $cred = Get-Credential
 ```
 
-使用 [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) 创建 VM。
+使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建 VM。
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroupVM" `
     -Name "myVM" `
     -Location "EastUS" `
@@ -85,7 +85,7 @@ New-AzureRmVm `
 运行以下命令，以返回 VM 的公共 IP 地址。 需记下此 IP 地址，以便在后续步骤中使用浏览器连接到它测试 Web 连接。
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
    -ResourceGroupName "myResourceGroupVM"  | Select IpAddress
 ```
 
@@ -101,16 +101,18 @@ mstsc /v:<publicIpAddress>
 
 Azure 市场包括许多可用于新建 VM 的映像。 在之前的步骤中，使用 Windows Server 2016 Datacenter 映像创建了 VM。 在此步骤中，我们将使用 PowerShell 模块在市场中搜索其他 Windows 映像，这些映像也可用作新 VM 的基础。 此过程包括查找发布者、产品/服务、SKU，以及用于[标识](cli-ps-findimage.md#terminology)映像的版本号（可选）。
 
-使用 [Get AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher) 命令返回映像发布者的列表：
+使用 [Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) 命令返回映像发布者的列表：
 
 ```azurepowershell-interactive
-Get-AzureRmVMImagePublisher -Location "EastUS"
+Get-AzVMImagePublisher -Location "EastUS"
 ```
 
-使用 [Get AzureRmVMImageOffer](/powershell/module/azurerm.compute/get-azurermvmimageoffer) 返回映像产品/服务的列表。 使用此命令，返回筛选了指定发布者（名为 `MicrosoftWindowsServer`）的列表：
+使用 [Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) 返回映像套餐的列表。 使用此命令，返回筛选了指定发布者（名为 `MicrosoftWindowsServer`）的列表：
 
 ```azurepowershell-interactive
-Get-AzureRmVMImageOffer -Location "EastUS" -PublisherName "MicrosoftWindowsServer"
+Get-AzVMImageOffer `
+   -Location "EastUS" `
+   -PublisherName "MicrosoftWindowsServer"
 ```
 
 结果将如以下示例所示： 
@@ -123,10 +125,13 @@ WindowsServer     MicrosoftWindowsServer EastUS
 WindowsServer-HUB MicrosoftWindowsServer EastUS
 ```
 
-然后，使用 [Get AzureRmVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) 命令对发布者和产品/服务名称进行筛选，以返回映像名称的列表。
+然后，使用 [Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) 命令对发布者和套餐名称进行筛选，以返回映像名称的列表。
 
 ```azurepowershell-interactive
-Get-AzureRmVMImageSku -Location "EastUS" -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer"
+Get-AzVMImageSku `
+   -Location "EastUS" `
+   -PublisherName "MicrosoftWindowsServer" `
+   -Offer "WindowsServer"
 ```
 
 结果将如以下示例所示： 
@@ -153,7 +158,7 @@ Skus                                      Offer         PublisherName          L
 此信息可用于部署具有特定映像的 VM。 此示例通过将最新版本的 Windows Server 2016 与容器映像配合使用来部署 VM。
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroupVM" `
     -Name "myVM2" `
     -Location "EastUS" `
@@ -175,7 +180,7 @@ VM 大小决定 VM 可用计算资源（如 CPU、GPU 和内存）的数量。 �
 ### <a name="vm-sizes"></a>VM 大小
 
 下表将大小分类成了多个用例。  
-| 类型                     | 常见大小           |    说明       |
+| Type                     | 常见大小           |    说明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [常规用途](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
 | [计算优化](sizes-compute.md)   | Fsv2、Fs、F             | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
@@ -186,69 +191,71 @@ VM 大小决定 VM 可用计算资源（如 CPU、GPU 和内存）的数量。 �
 
 ### <a name="find-available-vm-sizes"></a>查找可用的 VM 大小
 
-若要查看在特定区域可用的 VM 大小的列表，请使用 [Get-AzureRmVMSize](/powershell/module/azurerm.compute/get-azurermvmsize) 命令。
+若要查看在特定区域可用的 VM 大小的列表，请使用 [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) 命令。
 
 ```azurepowershell-interactive
-Get-AzureRmVMSize -Location "EastUS"
+Get-AzVMSize -Location "EastUS"
 ```
 
 ## <a name="resize-a-vm"></a>调整 VM 的大小
 
 部署 VM 后，可调整其大小以增加或减少资源分配。
 
-调整 VM 大小之前，请检查所需的大小在当前 VM 群集上是否可用。 使用 [Get AzureRmVMSize](/powershell/module/azurerm.compute/get-azurermvmsize) 命令返回大小的列表。
+调整 VM 大小之前，请检查所需的大小在当前 VM 群集上是否可用。 使用 [Get AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) 命令返回大小的列表。
 
 ```azurepowershell-interactive
-Get-AzureRmVMSize -ResourceGroupName "myResourceGroupVM" -VMName "myVM"
+Get-AzVMSize -ResourceGroupName "myResourceGroupVM" -VMName "myVM"
 ```
 
-如果所需大小可用，则可从开机状态调整 VM 大小，但需在此操作期间重启 VM。
+如果大小可用，则可从开机状态调整 VM 大小，但需在此操作期间重启 VM。
 
 ```azurepowershell-interactive
-$vm = Get-AzureRmVM -ResourceGroupName "myResourceGroupVM"  -VMName "myVM"
+$vm = Get-AzVM `
+   -ResourceGroupName "myResourceGroupVM"  `
+   -VMName "myVM"
 $vm.HardwareProfile.VmSize = "Standard_DS3_v2"
-Update-AzureRmVM -VM $vm -ResourceGroupName "myResourceGroupVM"
+Update-AzVM `
+   -VM $vm `
+   -ResourceGroupName "myResourceGroupVM"
 ```
 
 如果所需大小在当前群集上不可用，则需解除分配 VM，才能执行重设大小操作。 解除分配 VM 时会删除临时磁盘上的任何数据，并且如果不使用静态 IP 地址，则公共 IP 地址会发生更改。
 
 ```azurepowershell-interactive
-Stop-AzureRmVM `
+Stop-AzVM `
    -ResourceGroupName "myResourceGroupVM" `
    -Name "myVM" -Force
-$vm = Get-AzureRmVM `
+$vm = Get-AzVM `
    -ResourceGroupName "myResourceGroupVM"  `
    -VMName "myVM"
 $vm.HardwareProfile.VmSize = "Standard_E2s_v3"
-Update-AzureRmVM -VM $vm `
+Update-AzVM -VM $vm `
    -ResourceGroupName "myResourceGroupVM"
-Start-AzureRmVM `
+Start-AzVM `
    -ResourceGroupName "myResourceGroupVM"  `
    -Name $vm.name
 ```
 
 ## <a name="vm-power-states"></a>VM 电源状态
 
-Azure VM 可能会处于多种电源状态之一。 从虚拟机监控程序的角度来看，此状态表示 VM 的当前状态。
+Azure VM 可能会处于多种电源状态之一。 
 
-### <a name="power-states"></a>电源状态
 
-| 电源状态 | Description
+| 电源状态 | 说明
 |----|----|
-| 正在启动 | 指示正在启动虚拟机。 |
-| 正在运行 | 指示虚拟机正在运行。 |
-| 正在停止 | 指示正在停止虚拟机。 |
-| 已停止 | 指示 VM 已停止。 虚拟机处于停止状态时仍会产生计算费用。  |
-| 正在解除分配 | 指示 VM 正解除分配。 |
+| 正在启动 | 正在启动虚拟机。 |
+| 正在运行 | 虚拟机正在运行。 |
+| 正在停止 | 正在停止虚拟机。 |
+| 已停止 | VM 已停止。 虚拟机处于停止状态时仍会产生计算费用。  |
+| 正在解除分配 | VM 正解除分配。 |
 | 已解除分配 | 指示 VM 已从监控程序中删除，但仍可在控制面板中使用。 处于 `Deallocated` 状态的虚拟机不会产生计算费用。 |
-| - | 指示 VM 的电源状态未知。 |
+| - | VM 的电源状态未知。 |
 
-### <a name="find-power-state"></a>查找电源状态
 
-若要检索特定 VM 的状态，请使用 [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) 命令。 请确保为 VM 和资源组指定有效的名称。
+若要获取特定 VM 的状态，请使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 命令。 请确保为 VM 和资源组指定有效的名称。
 
 ```azurepowershell-interactive
-Get-AzureRmVM `
+Get-AzVM `
     -ResourceGroupName "myResourceGroupVM" `
     -Name "myVM" `
     -Status | Select @{n="Status"; e={$_.Statuses[1].Code}}
@@ -268,10 +275,10 @@ PowerState/running
 
 ### <a name="stop-a-vm"></a>停止 VM
 
-使用 [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) 停止并解除分配 VM：
+使用 [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) 停止并解除分配 VM：
 
 ```azurepowershell-interactive
-Stop-AzureRmVM `
+Stop-AzVM `
    -ResourceGroupName "myResourceGroupVM" `
    -Name "myVM" -Force
 ```
@@ -281,17 +288,17 @@ Stop-AzureRmVM `
 ### <a name="start-a-vm"></a>启动 VM
 
 ```azurepowershell-interactive
-Start-AzureRmVM `
+Start-AzVM `
    -ResourceGroupName "myResourceGroupVM" `
    -Name "myVM"
 ```
 
 ### <a name="delete-resource-group"></a>删除资源组
 
-删除资源组会删除其包含的所有资源。
+删除资源组时，会删除其中的一切。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup `
+Remove-AzResourceGroup `
    -Name "myResourceGroupVM" `
    -Force
 ```

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/17/2019
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 8ea1afbfb90a55ec1c34f5c59cf38ea5417118ff
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 387e59eccc7dd9b20142bd692a1fe361435d3d57
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390902"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965012"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>如何访问 Azure 实验室服务中的课堂实验室
 本文介绍如何访问课堂实验室、连接到实验室中的 VM 以及停止 VM。 
@@ -44,10 +44,8 @@ ms.locfileid: "54390902"
 
 ## <a name="connect-to-the-virtual-machine-in-a-classroom-lab"></a>连接到课堂实验室中的虚拟机
 
-1. 启动 VM（如果尚未启动），方法是选择“启动”。
+1. 启动 VM（如果尚未启动），方法是在磁贴上选择“启动”。 
 2. 在表示想要访问的实验室虚拟机的磁贴上，选择“连接”。 
-
-    ![查看所有实验室](../media/how-to-use-classroom-lab/connect-button.png)
 3. 将 RDP 文件（适用于 Windows VM）保存到硬盘，然后将其打开。 
 4. 使用从教师/教授处获取的用户名和密码登录到计算机。 
 

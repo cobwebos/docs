@@ -4,58 +4,48 @@ description: 了解如何在 Azure Active Directory 和 Dome9 Arc 之间配置�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 4c12875f-de71-40cb-b9ac-216a805334e5
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/22/2018
+ms.topic: tutorial
+ms.date: 01/31/2019
 ms.author: jeedes
-ms.openlocfilehash: a313acecf0660e527508f28e1ea86485996cc4f9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 91ef20398bc3e15b1ee47c6e7c28795f4d9bc08c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191391"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190936"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dome9-arc"></a>教程：Azure Active Directory 与 Dome9 Arc 集成
 
 本教程介绍如何将 Dome9 Arc 与 Azure Active Directory (Azure AD) 集成。
-
 将 Dome9 Arc 与 Azure AD 集成具有以下优势：
 
-- 可在 Azure AD 中控制谁有权访问 Dome9 Arc。
-- 可以让用户使用其 Azure AD 帐户自动登录到 Dome9 Arc（单一登录）。
-- 可在中心位置（即 Azure 门户）管理帐户。
+* 可在 Azure AD 中控制谁有权访问 Dome9 Arc。
+* 可让用户使用其 Azure AD 帐户自动登录到 Dome9 Arc（单一登录）。
+* 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Dome9 Arc 的集成，需要准备好以下各项：
 
-- Azure AD 订阅
-- 已启用 Dome9 Arc 单一登录的订阅
-
-> [!NOTE]
-> 为了测试本教程中的步骤，我们不建议使用生产环境。
-
-测试本教程中的步骤应遵循以下建议：
-
-- 除非必要，请勿使用生产环境。
-- 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+* 已启用 Dome9 Arc 单一登录的订阅
 
 ## <a name="scenario-description"></a>方案描述
 
-在本教程中，将在测试环境中测试 Azure AD 单一登录。
-本教程中概述的方案包括两个主要构建基块：
+本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-1. 从库添加 Dome9 Arc
-2. 配置和测试 Azure AD 单一登录
+* Dome9 Arc 支持 **SP** 和 **IDP** 发起的 SSO
 
 ## <a name="adding-dome9-arc-from-the-gallery"></a>从库添加 Dome9 Arc
 
@@ -65,162 +55,192 @@ ms.locfileid: "55191391"
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
-    ![“Azure Active Directory”按钮][1]
+    ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+2. 转到“企业应用”，并选择“所有应用”选项。
 
-    ![“企业应用程序”边栏选项卡][2]
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新增应用程序”按钮][3]
+    ![“新增应用程序”按钮](common/add-new-app.png)
 
 4. 在搜索框中，键入“Dome9 Arc”，在结果面板中选择“Dome9 Arc”，然后单击“添加”按钮添加应用程序。
 
-    ![结果列表中的 Dome9 Arc](./media/dome9arc-tutorial/tutorial_dome9arc_addfromgallery.png)
+     ![结果列表中的 Dome9 Arc](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
 在本部分中，基于一个名为“Britta Simon”的测试用户使用 Dome9 Arc 配置和测试 Azure AD 单一登录。
-
-若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Dome9 Arc 用户。 换句话说，需要建立 Azure AD 用户与 Dome9 Arc 中相关用户之间的关联关系。
+若要使单一登录有效，需要在 Azure AD 用户与 Dome9 Arc 相关用户之间建立链接关系。
 
 若要配置并测试 Dome9 Arc 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Dome9 Arc 测试用户](#create-a-dome9-arc-test-user)** - 在 Dome9 Arc 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+2. **[配置 Dome9 Arc 单一登录](#configure-dome9-arc-single-sign-on)** - 在应用程序端配置单一登录设置。
+3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+5. **[创建 Dome9 Arc 测试用户](#create-dome9-arc-test-user)** - 在 Dome9 Arc 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 Dome9 Arc 应用程序中配置单一登录。
+在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
-**若要配置 Dome9 Arc 的 Azure AD 单一登录，请执行以下步骤：**
+若要配置 Dome9 Arc 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 Azure 门户的 **Dome9 Arc** 应用程序集成页上，单击“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)的 **Dome9 Arc** 应用程序集成页上，选择“单一登录”。
 
-    ![配置单一登录链接][4]
+    ![配置单一登录链接](common/select-sso.png)
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
-    ![“单一登录”对话框](./media/dome9arc-tutorial/tutorial_dome9arc_samlbase.png)
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
-3. 在“Dome9 Arc 域和 URL”部分，如果要在 IDP 发起的模式下配置应用程序，请执行以下步骤：
+    ![单一登录选择模式](common/select-saml-option.png)
 
-    ![Dome9 Arc 域和 URL 单一登录信息](./media/dome9arc-tutorial/tutorial_dome9arc_url.png)
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
 
-    a. 在“标识符”文本框中，键入 URL：`https://secure.dome9.com/`
+    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://secure.dome9.com/sso/saml/yourcompanyname`
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
+
+    ![Dome9 Arc 域和 URL 单一登录信息](common/idp-intiated.png)
+
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://secure.dome9.com/`
+
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://secure.dome9.com/sso/saml/yourcompanyname`
 
     > [!NOTE]
     > 需在 dome9 管理门户中选择公司名称值，这一点稍后在教程中讲述。
 
-4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![Dome9 Arc 域和 URL 单一登录信息](./media/dome9arc-tutorial/tutorial_dome9arc_url1.png)
+    ![Dome9 Arc 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL： `https://secure.dome9.com/sso/saml/<yourcompanyname>`
- 
-    > [!NOTE] 
-    > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 请联系 [Dome9 Arc 客户端支持团队](https://dome9.com/about/contact-us/)以获取这些值。 
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://secure.dome9.com/sso/saml/<yourcompanyname>`
 
-5. Dome9 Arc 软件应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。
+    > [!NOTE]
+    > 这些不是实际值。 使用实际的回复 URL 和登录 URL 更新这些值。 请联系 [Dome9 Arc 客户端支持团队](mailto:support@dome9.com)以获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-    ![配置单一登录 attb](./media/dome9arc-tutorial/tutorial_dome9arc_attribute.png)
+6. Dome9 Arc 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
 
-6. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
-    
-    | 属性名称  | 属性值 | 
-    | --------------- | --------------- | 
+    ![图像](common/edit-attribute.png)
+
+7. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤： 
+
+    | Name |  源属性|
+    | ---------------| --------------- |
     | memberof | user.assignedroles |
-    
-    a. 单击“添加属性”，打开“添加属性”对话框。
 
-    ![配置单一登录 add 属性](./media/dome9arc-tutorial/tutorial_dome9_04.png)
+    a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
-    ![配置单一登录 edit 属性](./media/dome9arc-tutorial/tutorial_attribute_05.png)
+    ![图像](common/new-save-attribute.png)
+
+    ![图像](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。
 
-    c. 在“值”列表中，选择为该行显示的属性值。
+    c. 将“命名空间”留空。
 
-    d. 单击“确定” 。
-    
-    > [!NOTE]
-    > 有关如何配置和设置应用程序的角色，请参阅此[链接](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)。
+    d. 选择“源”作为“属性”。
 
-7. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+    e. 在“源属性”列表中，键入为该行显示的属性值。
 
-    ![证书下载链接](./media/dome9arc-tutorial/tutorial_dome9arc_certificate.png) 
+    f. 单击“确定”
 
-8. 单击“保存”按钮。
+    g. 单击“ **保存**”。
 
-    ![配置单一登录“保存”按钮](./media/dome9arc-tutorial/tutorial_general_400.png)
+8. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
-9. 在“Dome9 Arc 配置”部分，单击“配置 Dome9 Arc”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
+    ![证书下载链接](common/certificatebase64.png)
 
-    ![Dome9 Arc 配置](./media/dome9arc-tutorial/tutorial_dome9arc_configure.png) 
+9. 在“设置 Dome9 Arc”部分，根据要求复制相应 URL。
 
-10. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Dome9 Arc 公司站点。
+    ![复制配置 URL](common/copy-configuration-urls.png)
 
-11. 单击右上角的“配置文件设置”，然后单击“帐户设置”。 
+    a. 登录 URL
+
+    b. Azure AD 标识符
+
+    c. 注销 URL
+
+### <a name="configure-dome9-arc-single-sign-on"></a>配置 Dome9 Arc 单一登录
+
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Dome9 Arc 公司站点。
+
+2. 单击右上角的“配置文件设置”，然后单击“帐户设置”。 
 
     ![Dome9 Arc 配置](./media/dome9arc-tutorial/configure1.png)
 
-12. 导航到 **SSO**，然后单击“启用”。
+3. 导航到 **SSO**，然后单击“启用”。
 
     ![Dome9 Arc 配置](./media/dome9arc-tutorial/configure2.png)
 
-13. 在“SSO 配置”部分，执行以下步骤：
+4. 在“SSO 配置”部分，执行以下步骤：
 
     ![Dome9 Arc 配置](./media/dome9arc-tutorial/configure3.png)
 
     a. 在“帐户 ID”文本框中输入公司名称。 此值将在“Azure 门户 URL”部分提到的回复 URL 中使用。
 
-    b. 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者”文本框中。
+    b. 在“颁发者”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。
 
-    c. 在“Idp 终结点 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    c. 在“Idp 终结点 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
     d. 在记事本中打开下载的 Base64 编码证书，将其内容复制到剪贴板，并粘贴到“X.509 证书”文本框中。
 
     e. 单击“ **保存**”。
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-   ![创建 Azure AD 测试用户][100]
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
-**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+    ![“用户和组”以及“所有用户”链接](common/users.png)
 
-1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。
+2. 选择屏幕顶部的“新建用户”。
 
-    ![“Azure Active Directory”按钮](./media/dome9arc-tutorial/create_aaduser_01.png)
+    ![“新建用户”按钮](common/new-user.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+3. 在“用户属性”中，按照以下步骤操作。
 
-    ![“用户和组”以及“所有用户”链接](./media/dome9arc-tutorial/create_aaduser_02.png)
+    ![“用户”对话框](common/user-properties.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
-
-    ![“添加”按钮](./media/dome9arc-tutorial/create_aaduser_03.png)
-
-4. 在“用户”对话框中，执行以下步骤：
-
-    ![“用户”对话框](./media/dome9arc-tutorial/create_aaduser_04.png)
-
-    a. 在“姓名”框中，键入“BrittaSimon”。
-
-    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    a. 在“名称”字段中，输入 BrittaSimon。
+  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
     d. 单击“创建”。
 
-### <a name="create-a-dome9-arc-test-user"></a>创建 Dome9 Arc 测试用户
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+
+在本部分中，通过向 Britta Simon 授予 Dome9 Arc 的访问权限，支持她使用 Azure 单一登录。
+
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Dome9 Arc”。
+
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+
+2. 在应用程序列表中，选择“Dome9 Arc”。
+
+    ![应用程序列表中的 Dome9 Arc 链接](common/all-applications.png)
+
+3. 在左侧菜单中，选择“用户和组”。
+
+    ![“用户和组”链接](common/users-groups-blade.png)
+
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+
+    ![“添加分配”窗格](common/add-assign-user.png)
+
+5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+
+7. 在“添加分配”对话框中，单击“分配”按钮。
+
+### <a name="create-dome9-arc-test-user"></a>创建 Dome9 Arc 测试用户
 
 为了使 Azure AD 用户能够登录 Dome9 Arc，必须将其预配到应用程序中。 Dome9 Arc 支持恰时预配，但要正常使用此功能，必须选择特定的**角色**并将其分配给用户。
 
@@ -253,59 +273,17 @@ ms.locfileid: "55191391"
 
     e. 单击“创建”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-
-在本部分中，通过向 Britta Simon 授予 Dome9 Arc 的访问权限，支持她使用 Azure 单一登录。
-
-![分配用户角色][200] 
-
-**若要将 Britta Simon 分配到 Dome9 Arc，请执行以下步骤：**
-
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
-
-    ![分配用户][201] 
-
-2. 在应用程序列表中，选择“Dome9 Arc”。
-
-    ![应用程序列表中的 Dome9 Arc 链接](./media/dome9arc-tutorial/tutorial_dome9arc_app.png)  
-
-3. 在左侧菜单中，单击“用户和组”。
-
-    ![“用户和组”链接][202]
-
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加分配”窗格][203]
-
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
-
-6. 在“用户和组”对话框中单击“选择”按钮。
-
-7. 在“添加分配”对话框中单击“分配”按钮。
-
-### <a name="test-single-sign-on"></a>测试单一登录
+### <a name="test-single-sign-on"></a>测试单一登录 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击 Dome9 Arc 磁贴时，会自动登录到 Dome9 Arc 应用程序。
-有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
+单击访问面板中的 Dome9 Arc 磁贴时，应当会自动登录到为其设置了 SSO 的 Dome9 Arc。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/dome9arc-tutorial/tutorial_general_01.png
-[2]: ./media/dome9arc-tutorial/tutorial_general_02.png
-[3]: ./media/dome9arc-tutorial/tutorial_general_03.png
-[4]: ./media/dome9arc-tutorial/tutorial_general_04.png
-
-[100]: ./media/dome9arc-tutorial/tutorial_general_100.png
-
-[200]: ./media/dome9arc-tutorial/tutorial_general_200.png
-[201]: ./media/dome9arc-tutorial/tutorial_general_201.png
-[202]: ./media/dome9arc-tutorial/tutorial_general_202.png
-[203]: ./media/dome9arc-tutorial/tutorial_general_203.png
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

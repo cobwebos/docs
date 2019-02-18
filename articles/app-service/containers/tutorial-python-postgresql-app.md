@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: beverst;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c70c7e8b893c511aae36f122c5983fd0958eac8e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 161778c921026547c532b05474a60dd0d3e9fa7a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975383"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237794"
 ---
 # <a name="build-a-python-and-postgresql-app-in-azure-app-service"></a>在 Azure 应用服务中生成 Python 和 PostgreSQL 应用
 
@@ -33,6 +33,9 @@ ms.locfileid: "53975383"
 > * 将应用部署到 Azure
 > * 查看诊断日志
 > * 在 Azure 门户中管理应用
+
+> [!NOTE]
+> 在创建 Azure Database for PostgreSQL 之前，请查看[此文](https://docs.microsoft.com/en-us/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores)，了解所在区域提供的计算代系。
 
 可以在 macOS 中执行本文中的步骤。 Linux 和 Windows 指令在大多数情况下相同，本教程中并未详述差异。
 
@@ -407,7 +410,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 转到 [Azure 门户](https://portal.azure.com)查看已创建的应用。
 
-从左侧菜单中单击“应用程序服务”，并单击 Azure 应用的名称。
+在左侧菜单中单击“应用服务”，然后单击 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/tutorial-python-postgresql-app/app-resource.png)
 
@@ -428,7 +431,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 > * 查看诊断日志
 > * 在 Azure 门户中管理应用
 
-转到下一教程，了解如何将自定义 DNS 名称映射到应用。
+继续学习下一篇教程，了解如何将自定义 DNS 名称映射到应用。
 
 > [!div class="nextstepaction"]
 > [将现有的自定义 DNS 名称映射到 Azure 应用服务](../app-service-web-tutorial-custom-domain.md)

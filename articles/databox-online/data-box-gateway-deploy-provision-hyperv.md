@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 3187c516ef22a97d2af89e08d5b99ad7a00d875d
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: cf47919ead890f0ad0e89646dde26276ebfb1127
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166451"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109735"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v-preview"></a>教程：在 Hyper-V（预览版）中预配 Azure Data Box Gateway
 
@@ -66,7 +66,7 @@ ms.locfileid: "49166451"
 
 开始之前：
 
-- 查看部署 Data Box Gateway 的网络要求，并根据要求配置数据中心网络。 有关详细信息，请参阅 [Data Box Gateway 网络要求](data-box-gateway-system-requirements.md#networking-requirements)。
+- 查看部署 Data Box Gateway 的网络要求，并根据要求配置数据中心网络。 有关详细信息，请参阅 [Data Box Gateway 网络要求](data-box-gateway-system-requirements.md#networking-port-requirements)。
 - 请确保最小 Internet 带宽为 20 Mbps，以便实现设备的理想运行。
 
 

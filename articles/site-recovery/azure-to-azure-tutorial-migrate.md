@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 70229a0b211acd08d285ad7a943f39285fad8012
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f6713326045ebd84f1cd484803fbc725ad798d7b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810416"
+ms.locfileid: "55882261"
 ---
 # <a name="move-azure-vms-to-another-region"></a>将 Azure VM 移动到另一区域
 
@@ -31,7 +31,7 @@ ms.locfileid: "55810416"
 > * [丢弃源区域中的资源](#discard-the-resource-in-the-source-region) 
 
 > [!IMPORTANT]
-> 本文档会引导你将 Azure VM 按原样从一个区域移到另一个区域。如果你的要求是通过将一个可用性集中的 VM 移到另一区域中区域固定的 VM 来提高可用性，请参阅本教程。
+> 本文档会引导你将 Azure VM 按原样从一个区域移到另一个区域。如果你的要求是通过将一个可用性集中的 VM 移到另一区域中区域固定的 VM 来提高可用性，请参阅[此教程](move-azure-VMs-AVset-Azone.md)。
 
 ## <a name="verify-prerequisites"></a>验证先决条件
 

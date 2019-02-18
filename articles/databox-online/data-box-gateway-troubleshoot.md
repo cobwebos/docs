@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: alkohli
-ms.openlocfilehash: b542ca2876149b9a60e5c5b9e3fa17284477864f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: d94e2db66c8c5dac2b4d8551ae34a07cd68fd635
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241594"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106961"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>排查 Azure Data Box Gateway 问题 
 
@@ -103,6 +103,7 @@ ms.locfileid: "50241594"
     |    2006            |    ERROR_CLOUD_ACCOUNT_DISABLED                            |    帐户或共享已禁用，无法将数据上传到该帐户。                                                                                                                                                            |
     |    2007            |    ERROR_CLOUD_ACCOUNT_PERMISSIONS                         |    由于帐户权限错误或已过期，无法连接到容器。 请检查访问权限。                                                                                                               |
     |    2008            |    ERROR_CLOUD_CONTAINER_SIZE_LIMIT_REACHED                |    容器已满，无法添加新数据。 在 Azure 规范中根据类型检查受支持的容器大小。 例如，Azure 文件仅支持最大文件大小 5 TB。                                     |
+    |    2997            |    ERROR_ITEM_CANCELED                                     |    发生了意外错误。 这是一种可以自行解决的暂时性错误。                                                                           |
     |    2998            |    ERROR_UNMAPPED_FAILURE                                  |    发生了意外错误。 该错误可能会自行解决，如果持续 24 小时以上，请联系 Microsoft 支持人员。                                                                                                     |
     |    16000           |    RefreshException                                        |    无法关闭此文件。                                                                                                                                                                                                        |
     |    16001           |    RefreshAlreadyExistsException                           |    无法关闭此文件，因为它已在本地系统上存在。                                                                                                                                                         |

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 02/04/2019
 ms.author: alkohli
-ms.openlocfilehash: fa31397e0ecffbd245557a824bdd770724bbc91c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0ceff87cd3075d517ee1c0027e19dbf423e44f5c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249874"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108749"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway-preview"></a>教程：使用 Azure Data Box Gateway（预览版）传输数据
 
@@ -121,13 +121,13 @@ ms.locfileid: "51249874"
 
 2. 安装 NFS 客户端以后，请使用以下命令将创建的 NFS 共享装载到 Data Box Gateway 设备上：
 
-   `sudo mount <device IP>:/<NFS share on device> /home/username/<Folder on local Linux computer>`
+   `sudo mount -t nfs -o sec=sys,resvport <device IP>:/<NFS shares on device> /home/username/<Folder on local Linux computer>`
 
     在设置装载之前，请确保将要在本地计算机上充当装入点的目录已经创建且不含任何文件或子文件夹。
 
     以下示例演示如何通过 NFS 连接到 Gateway 设备上的共享。 虚拟设备 IP 为 `10.10.10.60`，共享 `mylinuxshare2` 装载在 ubuntuVM 上，装入点为 `/home/databoxubuntuhost/gateway`。
 
-    `sudo mount -t nfs 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/gateway`
+    `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/gateway`
 
 > [!NOTE] 
 > 以下注意事项适用于预览版：

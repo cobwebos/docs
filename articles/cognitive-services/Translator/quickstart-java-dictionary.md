@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何使用 Java 和文本翻译 API 获取术语的备用翻译，以及这些备用翻译的使用示例。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 12/03/2018
 ms.author: erhopf
-ms.openlocfilehash: a1e59b8a6ceae3e2379a271a9ff55030f14a5622
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5e9c24d1f128267bcfd201de3aac27b81eb8b278
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223215"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961265"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-java"></a>快速入门：通过 Java 使用双语字典查找字词
 
@@ -171,6 +171,12 @@ public static void main(String[] args) {
 
 ```console
 gradle build
+```
+
+当生成完成后，请运行：
+
+```console
+gradle run
 ```
 
 ## <a name="sample-response"></a>示例响应

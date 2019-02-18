@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/25/2019
+ms.date: 02/11/2019
 ms.author: jeedes
-ms.openlocfilehash: ca0bdc3b88109a8d8c46f0a6a09297b0ca197165
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ab9439cbf46fd77a24aa07cab1884e4e50720e43
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478858"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203754"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-euromonitor-passport"></a>教程：Azure Active Directory 与 Euromonitor Passport 的集成
 
@@ -66,7 +67,7 @@ ms.locfileid: "55478858"
 
 4. 在搜索框中键入 **Euromonitor Passport**，在结果面板中选择“Euromonitor Passport”，然后单击“添加”按钮添加该应用程序。
 
-     ![结果列表中的“Euromonitor Passport”](common/search-new-app.png)
+    ![结果列表中的“Euromonitor Passport”](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -104,17 +105,17 @@ ms.locfileid: "55478858"
 
     ![Euromonitor Passport 域和 URL 单一登录信息](common/preintegrated.png)
 
-5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+5. 如果要在 **SP** 发起的模式下配置应用程序，需从 [Euromonitor Passport 支持团队](mailto:passport.support@euromonitor.com)获取登录 URL。 从 Euromonitor Passport 支持团队获取登录 URL 以后，请单击“设置其他 URL”并执行以下步骤：
 
     ![Euromonitor Passport 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，键入 URL：`https://portal.euromonitor.com`
+    将从 Euromonitor Passport 支持团队获得的登录 URL 粘贴到“登录 URL”文本框中。
 
 6. Euromonitor Passport 应用程序需要采用特定格式的 SAML 断言语句。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
 
     ![图像](./media/euromonitor-passport-tutorial/attribute1.png)
 
-7. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤： 
+7. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤：
 
     | Name | 源属性|
     | ---------------| --------- |

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: 2429d561beffed5bc171b9dbc2c2c9c88eba3313
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 03b453e441b92d21f29e7e1f401bebae0b8589da
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2017
-ms.locfileid: "23637037"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105852"
 ---
 # <a name="deploy-a-managed-application-for-a-service-catalog-with-powershell"></a>使用 PowerShell 为服务目录部署托管应用程序
 
@@ -28,16 +28,18 @@ ms.locfileid: "23637037"
 
 ## <a name="sample-script"></a>示例脚本
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 [!code-powershell[main](../../../powershell_scripts/managed-applications/create-application/create-application.ps1 "Create application")]
 
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令部署托管应用程序。 表中的每条命令链接到特定于命令的文档。
+此脚本使用以下命令部署托管应用程序。 表中的每条命令均链接到特定于命令的文档。
 
 | 命令 | 说明 |
 |---|---|
-| [New-AzureRmManagedApplication](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermmanagedapplication) | 创建托管应用程序。 提供模板的定义 ID 和参数。 |
+| [New-AzManagedApplication](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplication) | 创建托管应用程序。 提供模板的定义 ID 和参数。 |
 
 
 ## <a name="next-steps"></a>后续步骤

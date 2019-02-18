@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/24/2018
+ms.date: 02/05/2019
 ms.author: jeedes
-ms.openlocfilehash: ace02a0cb93cf3e56e4b895524b9e2d35440aecb
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ca0e2c0ce12edba504745e2783844db5109ee01a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812975"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237699"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>教程：Azure Active Directory 与 Zoom 的集成
 
@@ -117,13 +118,17 @@ ms.locfileid: "54812975"
 
 6. 在“用户属性”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
-    | 名称 | 命名空间  |  源属性|
+    | Name | 命名空间  |  源属性|
     | ---------------| --------------- | --------- |
     | 电子邮件地址  | user.mail  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail |
     | 名字  | user.givenname  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname |
     | 姓氏  | user.surname  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname |
     | 电话号码  | user.telephonenumber  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone |
     | 部门  | user.department  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department |
+    | role |    user.assignedrole |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role |
+
+    > [!NOTE]
+    > 若要了解如何在 Azure AD 中配置角色，请单击[此处](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
     a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
@@ -141,11 +146,14 @@ ms.locfileid: "54812975"
 
     f. 单击“ **保存**”。
 
-4. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+    > [!NOTE]
+    > Zoom 可能要求在 SAML 有效负载中有组声明，因此，如果你已创建组，则请联系 [Zoom 客户端支持团队](https://support.zoom.us/hc/en-us)并提供组信息，这样他们就也可以在自己那一端配置该组信息。 你还需要将对象 ID 提供给 [Zoom 客户端支持团队](https://support.zoom.us/hc/en-us)，这样他们就能够在自己那一端进行配置。 请按[文档](https://support.zoom.us/hc/en-us/articles/115005887566)说明获取对象 ID。
+
+7. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Zoom”部分，根据要求复制相应 URL。
+8. 在“设置 Zoom”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -160,29 +168,29 @@ ms.locfileid: "54812975"
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Zoom 公司站点。
 
 2. 单击“单一登录” 选项卡。
-   
-    ![“单一登录”选项卡](./media/zoom-tutorial/IC784700.png "单一登录")
+
+    ![“单一登录”选项卡](./media/zoom-tutorial/ic784700.png "单一登录")
 
 3. 单击“安全控制”，并转到“单一登录”设置。
 
 4. 在“单一登录”部分中，执行以下步骤：
-   
-    ![“单一登录”部分](./media/zoom-tutorial/IC784701.png "单一登录")
-   
+
+    ![“单一登录”部分](./media/zoom-tutorial/ic784701.png "单一登录")
+
     a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
-   
+
     b. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
-     
+
     c. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，再粘贴到“标识提供者证书”文本框中。
 
     d. 在“颁发者”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。 
 
     e. 单击“ **保存**”。
 
-    > [!NOTE] 
+    > [!NOTE]
     > 有关详细信息，请访问 zoom 文档 [https://zoomus.zendesk.com/hc/articles/115005887566](https://zoomus.zendesk.com/hc/articles/115005887566)
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
@@ -240,17 +248,17 @@ ms.locfileid: "54812975"
 ### <a name="to-provision-a-user-account-perform-the-following-steps"></a>若要预配用户帐户，请执行以下步骤：
 
 1. 以管理员身份登录到 **Zoom** 公司站点。
- 
+
 2. 单击“帐户管理”选项卡，并单击“用户管理”。
 
 3. 在“用户管理”部分，单击“添加用户”。
-   
-    ![用户管理](./media/zoom-tutorial/IC784703.png "用户管理")
+
+    ![用户管理](./media/zoom-tutorial/ic784703.png "用户管理")
 
 4. 在“添加用户”页上，执行以下步骤：
-   
-    ![添加用户](./media/zoom-tutorial/IC784704.png "添加用户")
-   
+
+    ![添加用户](./media/zoom-tutorial/ic784704.png "添加用户")
+
     a. 对于“用户类型”，请选择“基本”。
 
     b. 在“电子邮件”文本框中，键入要预配的有效 Azure AD 帐户的电子邮件地址。
@@ -260,7 +268,7 @@ ms.locfileid: "54812975"
 > [!NOTE]
 > 可以使用 Zoom 提供的任何其他 Zoom 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
-### <a name="test-single-sign-on"></a>测试单一登录 
+### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
@@ -273,4 +281,3 @@ ms.locfileid: "54812975"
 - [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

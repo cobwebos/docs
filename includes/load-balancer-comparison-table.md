@@ -5,15 +5,15 @@ services: load balancer
 author: KumudD
 ms.service: load-balancer
 ms.topic: include
-ms.date: 01/09/2018
+ms.date: 02/08/2018
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: c4989016d31880e1c1990c0eb46091c8f50018bc
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 1d3ce900f7354b31e999c12b8e1eb0e23d391fcb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54211804"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56078490"
 ---
 | | 标准 SKU | 基本 SKU |
 | --- | --- | --- |
@@ -26,7 +26,7 @@ ms.locfileid: "54211804"
 | HA 端口 | Internal 负载均衡器（内部负载均衡器） | 不可用。 |
 | 默认保护 | 公共 IP、公共负载均衡器终结点、内部负载均衡器终结点会阻止入站流，除非入站流已由某个网络安全组列入允许列表。 | 默认打开，网络安全组可选。 |
 | [出站连接](../articles/load-balancer/load-balancer-outbound-connections.md) | 可以使用[出站规则](../articles/load-balancer/load-balancer-outbound-rules-overview.md)显式定义基于池的出站 NAT。 可以在每个负载均衡规则选择退出时使用多个前端。_必须_显式创建出站方案，虚拟机、可用性集、虚拟机规模集才能使用出站连接。  虚拟网络服务终结点无需定义出站连接便可访问，且不会计入已处理的数据。  任何公共 IP 地址（包括不作为 VNet 服务终结点提供的 Azure PaaS 服务）必须通过出站连接才能访问，且计入处理的数据。 如果只有一个内部负载均衡器为虚拟机、可用性集或虚拟机规模集提供服务，则经由默认 SNAT 的出站连接将不可用，请改用[出站规则](../articles/load-balancer/load-balancer-outbound-rules-overview.md)。 出站 SNAT 编程特定于传输协议，并以入站负载均衡规则的协议为基础。 | 单个前端，存在多个前端时随机选择。  如果只有内部负载均衡器为虚拟机、可用性集或虚拟机规模集提供服务，则会使用默认 SNAT。 |
-| [出站规则](../articles/load-balancer/load-balancer-outbound-rules-overview.md) | 使用公共 IP 地址或公共 IP 前缀或以上两者、可配置出站空闲超时的或自定义 SNAT 端口分配的声明性出站 NAT 配置 | 不可用。 |
+| [出站规则](../articles/load-balancer/load-balancer-outbound-rules-overview.md) | 使用公共 IP 地址或公共 IP 前缀或以上两者、可配置出站空闲超时（4-120 分钟）或自定义 SNAT 端口分配的声明性出站 NAT 配置 | 不可用。 |
 |  [在空闲时重置 TCP](../articles/load-balancer/load-balancer-tcp-reset.md) | 对任何规则启用空闲超时时重置 TCP (TCP RST) | 不可用 |
 | [多个前端](../articles/load-balancer/load-balancer-multivip-overview.md) | 入站和[出站](../articles/load-balancer/load-balancer-outbound-connections.md) | 仅限入站 |
 | 管理操作 | 大多数操作都小于 30 秒 | 通常为 60 - 90 多秒。 |

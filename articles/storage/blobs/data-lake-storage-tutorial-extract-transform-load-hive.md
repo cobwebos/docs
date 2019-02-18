@@ -6,14 +6,14 @@ author: jamesbak
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 02/07/2019
 ms.author: jamesbak
-ms.openlocfilehash: 70ad37aa0ccbab762aa6e5cfb05d385e8b2a86ee
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: cfe06720d0afa0f9f5cf22552ba7ab21d4e617c0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244005"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993140"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>教程：使用 Apache Hive on Azure HDInsight 提取、转换和加载数据
 
@@ -30,18 +30,24 @@ ms.locfileid: "55244005"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **HDInsight 上基于 Linux 的 Hadoop 群集**：若要创建新的基于 Linux 的 HDInsight 群集，请参阅[在 HDInsight 中使用 Hadoop、Spark、Kafka 等设置群集](./data-lake-storage-quickstart-create-connect-hdi-cluster.md)。
+* **一个针对 HDInsight 配置的 Azure Data Lake Storage Gen2 存储帐户**
+
+    请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)。
+
+* **HDInsight 上基于 Linux 的 Hadoop 群集**
+
+    请参阅[快速入门：通过 Azure 门户在 Azure HDInsight 中开始使用 Apache Hadoop 和 Apache Hive](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal)。
 
 * **Azure SQL 数据库**：使用 Azure SQL 数据库作为目标数据存储。 如果没有 SQL 数据库，请参阅[在 Azure 门户中创建 Azure SQL 数据库](../../sql-database/sql-database-get-started.md)。
 
 * **Azure CLI**：如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-* **一个 SSH 客户端**：有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Hadoop)](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。
+* **安全外壳 (SSH) 客户端**：有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Hadoop)](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 > [!IMPORTANT]
 > 本文中的步骤需要一个使用 Linux 的 HDInsight 群集。 Linux 是 Azure HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../../hdinsight/hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
-### <a name="download-the-flight-data"></a>下载航班数据
+## <a name="download-the-flight-data"></a>下载航班数据
 
 本教程使用美国运输统计局的航班数据，演示如何执行 ETL 操作。 必须下载该数据才能完成本教程。
 
@@ -51,9 +57,8 @@ ms.locfileid: "55244005"
 
    | 名称 | 值 |
    | --- | --- |
-   | **筛选年份** |2013 |
    | **筛选期间** |1 月 |
-   | **字段** |Year、FlightDate、UniqueCarrier、Carrier、FlightNum、OriginAirportID、Origin、OriginCityName、OriginState、DestAirportID、Dest、DestCityName、DestState、DepDelayMinutes、ArrDelay、ArrDelayMinutes、CarrierDelay、WeatherDelay、NASDelay、SecurityDelay、LateAircraftDelay。 |
+   | **字段** |FlightDate、OriginCityName、WeatherDelay |
 
 1. 清除所有其他字段。
 
@@ -61,48 +66,59 @@ ms.locfileid: "55244005"
 
 ## <a name="extract-and-upload-the-data"></a>提取并上传数据
 
-在此部分，请使用 `scp` 将数据上传到 HDInsight 群集。
+在此部分，需将数据上传到 HDInsight 群集。 
 
-打开命令提示符，使用以下命令将 zip 文件上传到 HDInsight 群集头节点：
+1. 打开命令提示符，使用以下安全负责 (Scp) 命令将 zip 文件上传到 HDInsight 群集头节点：
 
-```bash
-scp <FILE_NAME>.zip <SSH_USER_NAME>@<CLUSTER_NAME>-ssh.azurehdinsight.net:<FILE_NAME.zip>
-```
+   ```bash
+   scp <file-name>.zip <ssh-user-name>@<cluster-name>-ssh.azurehdinsight.net:<file-name.zip>
+   ```
 
-* 将 \<FILE_NAME> 替换为 .zip 文件的名称。
-* 将 \<SSH_USER_NAME> 替换为 HDInsight 群集的 SSH 登录名。
-* 将 \<CLUSTER_NAME> 替换为 HDInsight 群集的名称。
+   * 将 `<file-name>` 占位符替换为 .zip 文件的名称。
+   * 将 `<ssh-user-name>` 占位符替换为 HDInsight 群集的 SSH 登录名。
+   * 将 `<cluster-name>` 占位符替换为 HDInsight 群集的名称。
 
-如果使用密码对 SSH 登录名进行身份验证，系统会提示输入密码。 
+   如果使用密码对 SSH 登录名进行身份验证，系统会提示输入密码。
 
-如果使用公钥，可能需要使用 `-i` 参数并指定匹配私钥的路径。 例如，`scp -i ~/.ssh/id_rsa FILE_NAME.zip USER_NAME@CLUSTER_NAME-ssh.azurehdinsight.net:`。
+   如果使用公钥，可能需要使用 `-i` 参数并指定匹配私钥的路径。 例如，`scp -i ~/.ssh/id_rsa <file_name>.zip <user-name>@<cluster-name>-ssh.azurehdinsight.net:`。
 
-上传完成后，使用 SSH 连接到群集。 在命令提示符中输入以下命令：
+2. 上传完成后，使用 SSH 连接到群集。 在命令提示符中输入以下命令：
 
-```bash
-ssh <SSH_USER_NAME>@<CLUSTER_NAME>-ssh.azurehdinsight.net
-```
+   ```bash
+   ssh <ssh-user-name>@<cluster-name>-ssh.azurehdinsight.net
+   ```
 
-使用以下命令解压缩 .zip 文件：
+3. 使用以下命令解压缩 .zip 文件：
 
-```bash
-unzip <FILE_NAME>.zip
-```
+   ```bash
+   unzip <file-name>.zip
+   ```
 
-此命令会提取约为 60 MB 的 **.csv** 文件。
+   此命令会提取 **.csv** 文件。
 
-使用以下命令创建一个目录，然后将 *.csv* 文件复制到该目录：
+4. 使用以下命令创建 Data Lake Storage Gen2 文件系统。
 
-```bash
-hdfs dfs -mkdir -p abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/data
-hdfs dfs -put <FILE_NAME>.csv abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/data/
-```
+   ```bash
+   hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
+   ```
 
-使用以下命令创建 Data Lake Storage Gen2 文件系统。
+   将 `<file-system-name>` 占位符替换为你要为文件系统提供的名称。
 
-```bash
-hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/
-```
+   将 `<storage-account-name>` 占位符替换为存储帐户的名称。
+
+5. 使用以下命令创建目录。
+
+   ```bash
+   hdfs dfs -mkdir -p abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data
+   ```
+
+6. 使用以下命令将 *.csv* 文件复制到目录：
+
+   ```bash
+   hdfs dfs -put "<file-name>.csv" abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data/
+   ```
+
+   如果文件名包含空格或特殊字符，请对文件名使用引号。
 
 ## <a name="transform-the-data"></a>转换数据
 
@@ -110,105 +126,63 @@ hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs
 
 在 Apache Hive 作业运行期间，请将 .csv 文件中的数据导入到名为“delays”的 Apache Hive 表中。
 
-在 HDInsight 群集已有的 SSH 提示符中，使用以下命令创建并编辑名为 flightdelays.hql 的新文件：
+1. 在 HDInsight 群集已有的 SSH 提示符中，使用以下命令创建并编辑名为 flightdelays.hql 的新文件：
 
-```bash
-nano flightdelays.hql
-```
+   ```bash
+   nano flightdelays.hql
+   ```
 
-将以下文本用作此文件的内容：
+2. 修改以下文本，将 `<file-system-name>` 和 `<storage-account-name>` 占位符值替换为文件系统名称和存储帐户名称。 然后将文本复制并粘贴到 nano 控制台中，方法是同时按 SHIFT 键和鼠标右键单击按钮。
 
-```hiveql
- DROP TABLE delays_raw;
- -- Creates an external table over the csv file
- CREATE EXTERNAL TABLE delays_raw (
-    YEAR string,
-    FL_DATE string,
-    UNIQUE_CARRIER string,
-    CARRIER string,
-    FL_NUM string,
-    ORIGIN_AIRPORT_ID string,
-    ORIGIN string,
-    ORIGIN_CITY_NAME string,
-    ORIGIN_CITY_NAME_TEMP string,
-    ORIGIN_STATE_ABR string,
-    DEST_AIRPORT_ID string,
-    DEST string,
-    DEST_CITY_NAME string,
-    DEST_CITY_NAME_TEMP string,
-    DEST_STATE_ABR string,
-    DEP_DELAY_NEW float,
-    ARR_DELAY_NEW float,
-    CARRIER_DELAY float,
-    WEATHER_DELAY float,
-    NAS_DELAY float,
-    SECURITY_DELAY float,
-    LATE_AIRCRAFT_DELAY float)
- -- The following lines describe the format and location of the file
- ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
- LINES TERMINATED BY '\n'
- STORED AS TEXTFILE
- LOCATION 'abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/data';
+   ```hiveql
+   DROP TABLE delays_raw;
+    CREATE EXTERNAL TABLE delays_raw (
+       FL_DATE string,
+       ORIGIN_CITY_NAME string,
+       WEATHER_DELAY float)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    STORED AS TEXTFILE
+    LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data';
+   DROP TABLE delays;
+   CREATE TABLE delays
+   LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
+   AS
+   SELECT FL_DATE AS FlightDate,
+       substring(ORIGIN_CITY_NAME, 2) AS OriginCityName,
+       WEATHER_DELAY AS WeatherDelay
+   FROM delays_raw;
+   ```
 
--- Drop the delays table if it exists
-DROP TABLE delays;
--- Create the delays table and populate it with data
--- pulled in from the CSV file (via the external table defined previously)
-CREATE TABLE delays
-LOCATION abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/processed
-AS
-SELECT YEAR AS year,
-    FL_DATE AS flight_date,
-    substring(UNIQUE_CARRIER, 2, length(UNIQUE_CARRIER) -1) AS unique_carrier,
-    substring(CARRIER, 2, length(CARRIER) -1) AS carrier,
-    substring(FL_NUM, 2, length(FL_NUM) -1) AS flight_num,
-    ORIGIN_AIRPORT_ID AS origin_airport_id,
-    substring(ORIGIN, 2, length(ORIGIN) -1) AS origin_airport_code,
-    substring(ORIGIN_CITY_NAME, 2) AS origin_city_name,
-    substring(ORIGIN_STATE_ABR, 2, length(ORIGIN_STATE_ABR) -1)  AS origin_state_abr,
-    DEST_AIRPORT_ID AS dest_airport_id,
-    substring(DEST, 2, length(DEST) -1) AS dest_airport_code,
-    substring(DEST_CITY_NAME,2) AS dest_city_name,
-    substring(DEST_STATE_ABR, 2, length(DEST_STATE_ABR) -1) AS dest_state_abr,
-    DEP_DELAY_NEW AS dep_delay_new,
-    ARR_DELAY_NEW AS arr_delay_new,
-    CARRIER_DELAY AS carrier_delay,
-    WEATHER_DELAY AS weather_delay,
-    NAS_DELAY AS nas_delay,
-    SECURITY_DELAY AS security_delay,
-    LATE_AIRCRAFT_DELAY AS late_aircraft_delay
-FROM delays_raw;
-```
+3. 保存文件，方法是使用 CTRL+X，然后根据提示键入 `Y`。
 
-若要保存文件，请选择 Esc 键，然后输入 `:x`。
+4. 若要启动 Hive 并运行 **flightdelays.hql** 文件，请使用以下命令：
 
-若要启动 Hive 并运行 **flightdelays.hql** 文件，请使用以下命令：
+   ```bash
+   beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
+   ```
 
-```bash
-beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
-```
+5. flightdelays.hql 脚本完成运行后，使用以下命令打开交互式 Beeline 会话：
 
-flightdelays.hql 脚本完成运行后，使用以下命令打开交互式 Beeline 会话：
+   ```bash
+   beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
+   ```
 
-```bash
-beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
-```
+6. 收到 `jdbc:hive2://localhost:10001/>` 提示时，使用以下查询从导入的航班延误数据中检索数据：
 
-收到 `jdbc:hive2://localhost:10001/>` 提示时，使用以下查询从导入的航班延误数据中检索数据：
+   ```hiveql
+   INSERT OVERWRITE DIRECTORY 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output'
+   ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+   SELECT regexp_replace(OriginCityName, '''', ''),
+       avg(WeatherDelay)
+   FROM delays
+   WHERE WeatherDelay IS NOT NULL
+   GROUP BY OriginCityName;
+   ```
 
-```hiveql
-INSERT OVERWRITE DIRECTORY 'abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output'
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
-SELECT regexp_replace(origin_city_name, '''', ''),
-    avg(weather_delay)
-FROM delays
-WHERE weather_delay IS NOT NULL
-GROUP BY origin_city_name;
-```
+   此查询会检索遇到天气延迟的城市的列表以及平均延迟时间，并将其保存到 `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 中。 稍后，Sqoop 会从该位置读取数据并将其导出到 Azure SQL 数据库。
 
-此查询会检索遇到天气延迟的城市的列表以及平均延迟时间，并将其保存到 `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output` 中。 稍后，Sqoop 会从该位置读取数据并将其导出到 Azure SQL 数据库。
-
-若要退出 Beeline，请在提示符处输入 `!quit`。
+7. 若要退出 Beeline，请在提示符处输入 `!quit`。
 
 ## <a name="create-a-sql-database-table"></a>创建 SQL 数据库表
 
@@ -216,110 +190,112 @@ GROUP BY origin_city_name;
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“SQL 数据库”。
+2. 选择“SQL 数据库”。
 
-1. 针对选择使用的数据库的名称进行筛选。 服务器名称在“服务器名称”列中列出。
+3. 针对选择使用的数据库的名称进行筛选。 服务器名称在“服务器名称”列中列出。
 
-1. 针对要使用的数据库的名称进行筛选。 服务器名称在“服务器名称”列中列出。
+4. 针对要使用的数据库的名称进行筛选。 服务器名称在“服务器名称”列中列出。
 
     ![获取 Azure SQL 服务器的详细信息](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "获取 Azure SQL 服务器的详细信息")
 
     有多种方法可连接到 SQL 数据库并创建表。 以下步骤从 HDInsight 群集中使用 [FreeTDS](http://www.freetds.org/)。
 
-若要安装 FreeTDS，请使用以下命令从 SSH 连接到群集：
+5. 若要安装 FreeTDS，请使用以下命令从 SSH 连接到群集：
 
-```bash
-sudo apt-get --assume-yes install freetds-dev freetds-bin
-```
+   ```bash
+   sudo apt-get --assume-yes install freetds-dev freetds-bin
+   ```
 
-安装完成后，使用以下命令连接到 SQL 数据库服务器。
+6. 安装完成后，使用以下命令连接到 SQL 数据库服务器。
 
-* 使用 SQL 数据库服务器名称替换 \<SERVER_NAME>。
-* 使用 SQL 数据库的管理员登录名替换 \<ADMIN_LOGIN>。
-* 使用数据库名称替换 \<DATABASE_NAME>。
+   ```bash
+   TDSVER=8.0 tsql -H <server-name>.database.windows.net -U <admin-login> -p 1433 -D <database-name>
+    ```
+   * 将 `<server-name>` 占位符替换为 SQL 数据库服务器名称。
 
-```bash
-TDSVER=8.0 tsql -H <SERVER_NAME>.database.windows.net -U <ADMIN_LOGIN> -p 1433 -D <DATABASE_NAME>
-```
+   * 使用 SQL 数据库的管理员登录名替换 `<admin-login>` 占位符。
 
-出现提示时，输入 SQL 数据库管理员登录名的密码。
+   * 将 `<database-name>` 占位符替换为数据库名称
 
-将收到类似于以下文本的输出：
+   出现提示时，输入 SQL 数据库管理员登录名的密码。
 
-```
-locale is "en_US.UTF-8"
-locale charset is "UTF-8"
-using default charset "UTF-8"
-Default database being set to sqooptest
-1>
-```
+   将收到类似于以下文本的输出：
 
-在 `1>` 提示符下输入以下语句：
+   ```
+   locale is "en_US.UTF-8"
+   locale charset is "UTF-8"
+   using default charset "UTF-8"
+   Default database being set to sqooptest
+   1>
+   ```
 
-```hiveql
-CREATE TABLE [dbo].[delays](
-[origin_city_name] [nvarchar](50) NOT NULL,
-[weather_delay] float,
-CONSTRAINT [PK_delays] PRIMARY KEY CLUSTERED   
-([origin_city_name] ASC))
-GO
-```
+7. 在 `1>` 提示符下输入以下语句：
 
-输入 `GO` 语句后，将评估前面的语句。
-此查询创建一个名为 **delays** 且具有聚集索引的表。
+   ```hiveql
+   CREATE TABLE [dbo].[delays](
+   [OriginCityName] [nvarchar](50) NOT NULL,
+   [WeatherDelay] float,
+   CONSTRAINT [PK_delays] PRIMARY KEY CLUSTERED
+   ([OriginCityName] ASC))
+   GO
+   ```
 
-使用以下查询验证是否已创建表：
+8. 输入 `GO` 语句后，将评估前面的语句。
 
-```hiveql
-SELECT * FROM information_schema.tables
-GO
-```
+   此查询创建一个名为 **delays** 且具有聚集索引的表。
 
-输出与以下文本类似：
+9. 使用以下查询验证是否已创建表：
 
-```
-TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
-databaseName       dbo             delays        BASE TABLE
-```
+   ```hiveql
+   SELECT * FROM information_schema.tables
+   GO
+   ```
 
-在 `1>` 提示符下输入 `exit` 以退出 tsql 实用工具。
+   输出与以下文本类似：
+
+   ```
+   TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
+   databaseName       dbo             delays        BASE TABLE
+   ```
+
+10. 在 `1>` 提示符下输入 `exit` 以退出 tsql 实用工具。
 
 ## <a name="export-and-load-the-data"></a>导出和加载数据
 
-在前面的部分中，已经在 `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output` 位置复制了转换后的数据。 本部分使用 Sqoop 将数据从 `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output` 导出到在 Azure SQL 数据库中创建的表。
+在前面的部分中，已经在 `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 位置复制了转换后的数据。 本部分使用 Sqoop 将数据从 `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 导出到在 Azure SQL 数据库中创建的表。
 
-使用以下命令验证 Sqoop 是否可以查看 SQL 数据库：
+1. 使用以下命令验证 Sqoop 是否可以查看 SQL 数据库：
 
-```bash
-sqoop list-databases --connect jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433 --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD>
-```
+   ```bash
+   sqoop list-databases --connect jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433 --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD>
+   ```
 
-此命令会返回数据库列表，其中包括创建的 **delays** 表所在的数据库。
+   此命令会返回数据库列表，其中包括创建的 **delays** 表所在的数据库。
 
-使用以下命令将 **hivesampletable** 表中的数据导出到 **delays** 表：
+2. 使用以下命令将 **hivesampletable** 表中的数据导出到 **delays** 表：
 
-```bash
-sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<FILE_SYSTEM_NAME>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
-```
+   ```bash
+   sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<file-system-name>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
+   ```
 
-Sqoop 连接到包含 **delays** 表的数据库，并将数据从 `/tutorials/flightdelays/output` 目录导出到 **delays** 表。
+   Sqoop 连接到包含 **delays** 表的数据库，并将数据从 `/tutorials/flightdelays/output` 目录导出到 **delays** 表。
 
-`sqoop` 命令完成后，使用 tsql 实用程序连接到数据库：
+3. `sqoop` 命令完成后，使用 tsql 实用程序连接到数据库：
 
-```bash
-TDSVER=8.0 tsql -H <SERVER_NAME>.database.windows.net -U <ADMIN_LOGIN> -P <ADMIN_PASSWORD> -p 1433 -D <DATABASE_NAME>
-```
+   ```bash
+   TDSVER=8.0 tsql -H <SERVER_NAME>.database.windows.net -U <ADMIN_LOGIN> -P <ADMIN_PASSWORD> -p 1433 -D <DATABASE_NAME>
+   ```
 
-使用以下语句验证数据是否已导出到 **delays** 表：
+4. 使用以下语句验证数据是否已导出到 **delays** 表：
 
-```sql
-SELECT * FROM delays
-GO
-```
+   ```sql
+   SELECT * FROM delays
+   GO
+   ```
 
-会在表中看到一系列数据。 该表包括城市名称和该城市的平均航班延迟时间。
+   会在表中看到一系列数据。 该表包括城市名称和该城市的平均航班延迟时间。
 
-输入 `exit`，退出 tsql 实用程序。
+5. 输入 `exit`，退出 tsql 实用程序。
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 存储资源管理器设置 Data Lake Storage Gen2 的权限
-description: 本操作指南介绍如何使用 Azure 存储资源管理器对 Azure Data Lake Storage Gen2（预览版）支持的存储帐户中的文件和目录设置权限。
+description: 本操作指南介绍如何使用 Azure 存储资源管理器对 Azure Data Lake Storage Gen2 支持的存储帐户中的文件和目录设置权限。
 services: storage
 author: roygara
 ms.custom: mvc
@@ -9,16 +9,16 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: fd4ca3946ed4c32a8fd2f08c1c242c33dbca2aaf
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b64b433920a5ce769122c7956c18997c28a3d11a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238307"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867046"
 ---
-# <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2-preview"></a>使用 Azure 存储资源管理器和 Azure Data Lake Storage Gen2（预览版）设置文件和目录级别权限
+# <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>使用 Azure 存储资源管理器和 Azure Data Lake Storage Gen2 设置文件和目录级别权限
 
-Azure Data Lake Storage Gen2（预览版）中存储的文件支持细化权限和访问控制列表 (ACL) 管理。 通过细化权限和 ACL 管理，可以在非常精细的级别上管理对数据的访问权限。
+Azure Data Lake Storage Gen2 中存储的文件支持细化权限和访问控制列表 (ACL) 管理。 通过细化权限和 ACL 管理，可以在非常精细的级别上管理对数据的访问权限。
 
 本文介绍如何使用 Azure 存储资源管理器执行以下操作：
 

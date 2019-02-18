@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 1328835714086dcec71b0e9dd4d1916794f557a6
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 2e34aef9a6f184c60fbb23023f798941a1fc11da
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390172"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894422"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>教程：访问 Azure 实验室服务中的课堂实验室
 在本教程中，你会作为一名学生连接到教室实验室中的虚拟机 (VM)。 
@@ -32,10 +32,10 @@ ms.locfileid: "54390172"
 
 ## <a name="use-the-registration-link"></a>使用注册链接
 
-1. 导航到从教授/教师处收到的注册 URL。 
-2. 使用学校帐户登录服务以完成注册。 
-3. 注册后，请确认可看到你有权访问的实验室的虚拟机。 
-2. 等待虚拟机准备就绪，然后**启动** VM。 此过程需要一些时间。  
+1. 导航到从教授/教师处收到的注册 URL。 完成注册后，不需使用注册 URL。 请改用 URL：[https://labs.azure.com](https://labs.azure.com)。 
+1. 使用学校帐户登录服务以完成注册。 
+2. 注册后，请确认可看到你有权访问的实验室的虚拟机。 
+3. 等待虚拟机准备就绪，然后**启动** VM。 此过程需要一些时间。  
 
     ![启动 VM](../media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
 

@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/29/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 84ca8aff053fdcd7e085392ecf28ca687803a8f9
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 108fd47eea88e4fe0bd8e3eb22cb03e1a092a29e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230210"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999141"
 ---
-# <a name="set-up-your-media-services-development-environment"></a>设置媒体服务开发环境
+# <a name="set-up-your-media-services-development-environment"></a>设置媒体服务开发环境  
 
 以下步骤描述使用 Azure 媒体服务进行开发所要满足的先决条件。
 

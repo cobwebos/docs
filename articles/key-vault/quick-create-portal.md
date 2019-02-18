@@ -3,7 +3,7 @@ title: Azure 快速入门 - 使用 Azure 门户在 Key Vault 中设置和检索�
 description: 快速入门介绍如何使用 Azure 门户在 Azure Key Vault 中设置和检索机密
 services: key-vault
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: 98cf8387-34de-468e-ac8f-5c02c9e83e68
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: c3b605507c3878770db2c7dcb53a2ff9bb512b6b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 4dd81fd03c39dec3c34e614234a563ec8c2ced38
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078382"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117096"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Key Vault 中设置和检索机密
 
@@ -58,14 +58,14 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 
 ## <a name="add-a-secret-to-key-vault"></a>向 Key Vault 添加机密
 
-只需再执行几个步骤即可向保管库添加机密。 在此示例中，我们将添加可供应用程序使用的密码。 此密码名为 **ExamplePassword**，我们在其中存储的值为 **Pa$$w0rd**。
+只需再执行几个步骤即可向保管库添加机密。 在此示例中，我们将添加可供应用程序使用的密码。 此密码名为 **ExamplePassword**，我们在其中存储的值为 **hVFkk965BuUv**。
 
 1. 在 Key Vault 属性页中，选择“机密”。
 2. 单击“生成/导入”。
 3. 在“创建机密”屏幕上，选择以下值：
     - **上传选项**：手动。
     - **名称**：ExamplePassword。
-    - **值**：Pa$$w0rd。
+    - **值**：hVFkk965BuUv
     - 让其他值保留默认设置。 单击“创建”。
 
 收到机密已成功创建的消息后，即可单击列表中的该机密， 然后就可以看到某些属性。 如果单击当前版本，则可看到在上一步指定的值。

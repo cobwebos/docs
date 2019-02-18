@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.author: astay;cephalin;kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 416566ac52e8df6324cbf6146919df160deb0f98
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 6965379aadefd110ce6e46e105bbde10626b63c1
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220988"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892161"
 ---
 # <a name="configure-your-python-app-for-azure-app-service"></a>为 Azure 应用服务配置 Python 应用
 本文介绍 [Azure 应用服务](app-service-linux-intro.md)如何运行 Python 应用，以及如何按需自定义应用服务的行为。 需要连同所有必需的 [pip](https://pypi.org/project/pip/) 模块一起部署 Python 应用。 当你部署 [Git 存储库](../deploy-local-git.md)或者启用了生成过程的 [Zip 包](../deploy-zip.md)时，应用服务部署引擎 (Kudu) 会自动激活虚拟环境并运行 `pip install -r requirements.txt`。
@@ -82,7 +82,7 @@ az webapp config set --resource-group <group_name> --name <app_name> --linux-fx-
 gunicorn --bind=0.0.0.0 --timeout 600 <module>.wsgi
 ```
 
-若要更精细地控制启动命令，请使用[自定义启动命令](#custom-startup-command)，并将 `<module>` 替换为包含 *wsgi.py* 的模块名称。
+若要更精细地控制启动命令，请使用自定义启动命令，并将 `<module>` 替换为包含 *wsgi.py* 的模块名称。
 
 ### <a name="flask-app"></a>Flask 应用
 
@@ -95,7 +95,7 @@ gunicorn --bind=0.0.0.0 --timeout 600 application:app
 gunicorn --bind=0.0.0.0 --timeout 600 app:app
 ```
 
-如果主应用模块包含在不同的文件中，请对应用对象使用不同的名称；若要为 Gunicorn 提供附加的参数，请使用[自定义启动命令](#custom-startup-command)。
+如果主应用模块包含在不同的文件中，请对应用对象使用不同的名称；若要为 Gunicorn 提供附加的参数，请使用自定义启动命令。
 
 ### <a name="default-behavior"></a>默认行为
 
@@ -160,7 +160,7 @@ if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto
 - 请重启应用服务，等待 15 到 20 秒，然后再次检查应用。
 - 请确保使用适用于 Linux 的应用服务，而不要使用基于 Windows 的实例。 在 Azure CLI 中运行 `az webapp show --resource-group <resource_group_name> --name <app_service_name> --query kind` 命令，对 `<resource_group_name>` 和 `<app_service_name>` 进行相应的替换。 应该会看到作为输出的 `app,linux`，否则请重新创建应用服务并选择 Linux。
 - 使用 SSH 或 Kudu 控制台直接连接到应用服务，并检查文件是否存在于 *site/wwwroot* 下。 如果这些文件不存在，请检查部署过程并重新部署应用。
-- 如果这些文件存在，则表示应用服务无法识别特定的启动文件。 检查是否按应用服务的预期方式为 [Django](#django-app) 或 [Flask](#flask-app) 构建了应用，或使用[自定义启动命令](#custom-startup-command)。
+- 如果这些文件存在，则表示应用服务无法识别特定的启动文件。 检查是否按应用服务的预期方式为 [Django](#django-app) 或 [Flask](#flask-app) 构建了应用，或使用自定义启动命令。
 - **浏览器中显示“服务不可用”消息。** 浏览器在等待应用服务的响应时超时，这表示应用服务已启动 Gunicorn 服务器，但指定应用代码的参数不正确。
 - 刷新浏览器，尤其是在应用服务计划中使用最低定价层的情况下。 例如，使用免费层时，应用可能需要较长时间才能启动，并在刷新浏览器后才会做出响应。
 - 检查是否按应用服务的预期方式为 [Django](#django-app) 或 [Flask](#flask-app) 构建了应用，或使用[自定义启动命令](#customize-startup-command)。
