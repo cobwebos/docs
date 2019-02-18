@@ -109,7 +109,7 @@ items:
   - name: 部署模型
     items:
     - name: 部署 Web 服务
-      displayName: publish
+      displayName: publish, multiple regions
       href: publish-a-machine-learning-web-service.md
     - name: 工作原理
       href: model-progression-experiment-to-web-service.md
@@ -118,9 +118,6 @@ items:
     - name: 使用外部数据
       displayName: import, export
       href: web-services-that-use-import-export-modules.md
-    - name: 在多个区域中部署
-      displayName: multiple regions
-      href: how-to-deploy-to-multiple-regions.md
     - name: 使用 Web 服务参数
       href: web-service-parameters.md
     - name: 启用日志记录
@@ -133,17 +130,14 @@ items:
       displayName: endpoint, endpoints
       href: manage-web-service-endpoints-using-api-management.md
     - name: 创建终结点
+      displayName: scale, scaling
       href: create-endpoint.md
-    - name: 扩展
-      href: scaling-webservice.md
   - name: 重新定型
     items:
-    - name: 概述
+    - name: 重新训练并部署新 Web 服务
       href: retrain-machine-learning-model.md
-    - name: 重新训练现有 Web 服务
-      href: retrain-existing-resource-manager-based-web-service.md
-    - name: 故障排除
-      href: troubleshooting-retraining-models.md
+    - name: 重新训练并部署经典 Web 服务
+      href: retrain-classic-web-service.md
   - name: 使用模型
     items:
     - name: 概述
@@ -194,9 +188,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: 自定义神经网络 (Net#)
     href: azure-ml-netsharp-reference-guide.md
-ms.openlocfilehash: c9bbcd35f74e113c33ef0a8b449d806734501324
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: c6d072a6e032fb4059b422d0778eb78b01d3706e
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56266861"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327674"

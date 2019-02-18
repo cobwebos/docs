@@ -123,6 +123,8 @@ items:
     items:
     - name: 映射数据流概念
       href: concepts-data-flow-overview.md
+    - name: 数据流数据集
+      href: concepts-data-flow-datasets.md
     - name: 调试模式
       href: concepts-data-flow-debug-mode.md
     - name: 架构偏差
@@ -418,11 +420,11 @@ items:
       href: data-flow-conditional-split.md
     - name: 派生列
       href: data-flow-derived-column.md
-    - name: 存在
+    - name: Exists
       href: data-flow-exists.md
     - name: 筛选器
       href: data-flow-filter.md
-    - name: 联接
+    - name: Join
       href: data-flow-join.md
     - name: 查找
       href: data-flow-lookup.md
@@ -536,7 +538,7 @@ items:
       href: solution-template-delta-copy-with-control-table.md
     - name: 使用 Databricks 转换数据
       href: solution-template-databricks-notebook.md
-- name: 参考
+- name: 引用
   items:
   - name: .NET
     href: /dotnet/api/microsoft.azure.management.datafactory
@@ -566,9 +568,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: 支持选项
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 7ee5cd120a8f1ecb8a1f685c1fa2332a9d9c5dd1
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 848833c7e5524d8bad46150d4c3a8c560e2ef790
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270413"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330522"

@@ -5,6 +5,12 @@ items:
   items:
   - name: 关于通知中心
     href: notification-hubs-push-notification-overview.md
+- name: 快速入门
+  items:
+  - name: 创建通知中心 - Azure 门户
+    href: create-notification-hub-portal.md
+  - name: 配置通知中心 - Azure 门户
+    href: configure-notification-hub-portal-pns-settings.md
 - name: 教程
   items:
   - name: 1 - 向所有注册的设备推送通知
@@ -108,7 +114,7 @@ items:
     href: notification-hubs-push-notification-http2-token-authentification.md
   - name: 排查通知丢弃问题
     href: notification-hubs-push-notification-fixer.md
-- name: 参考
+- name: 引用
   items:
   - name: .NET
     href: /dotnet/api/microsoft.azure.notificationhubs
@@ -138,9 +144,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: 支持选项
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 55dc84493eca49cce1abe9184daec2687d3e5d56
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 9035ed7f81639770b1c962e4cf254e18fd3b46bd
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301513"
+ms.locfileid: "56310994"

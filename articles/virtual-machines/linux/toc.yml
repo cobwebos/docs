@@ -99,20 +99,13 @@ items:
   - name: 维护和更新
     href: maintenance-and-updates.md
   - name: 磁盘存储
-    href: about-disks-and-vhds.md
     items:
-    - name: 托管磁盘
+    - name: 托管磁盘简介
       href: managed-disks-overview.md
-    - name: 高级 SSD
-      href: premium-storage.md
-    - name: 标准 SSD
-      href: disks-standard-ssd.md
-    - name: 超级 SSD
-      href: disks-ultra-ssd.md
-    - name: 高级存储性能
+    - name: 选择适用于 IaaS VM 的磁盘类型
+      href: disks-types.md
+    - name: 为实现高性能而设计
       href: premium-storage-performance.md
-    - name: 标准存储
-      href: standard-storage.md
     - name: 磁盘的可伸缩性目标
       href: disk-scalability-targets.md
     - name: 磁盘的备份和灾难恢复
@@ -426,6 +419,8 @@ items:
         href: add-disk.md
       - name: Azure 门户
         href: attach-disk-portal.md
+    - name: 对磁盘进行基准检验
+      href: disks-benchmarks.md
     - name: 分离磁盘
       href: detach-disk.md
     - name: 调整磁盘大小
@@ -450,7 +445,7 @@ items:
       href: using-managed-disks-template-deployments.md
     - name: 使用写入加速器
       href: how-to-enable-write-accelerator.md
-    - name: 启用超级 SSD
+    - name: 启用超级磁盘
       href: disks-enable-ultra-ssd.md
     - name: 优化性能
       href: optimization.md
@@ -522,7 +517,7 @@ items:
         href: ../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
       - name: 常见问题解答
         href: migration-classic-resource-manager-faq.md
-- name: 参考
+- name: 引用
   items:
   - name: Azure CLI
     href: /cli/azure/vm
@@ -562,9 +557,9 @@ items:
     href: faq.md
 - name: 故障排除
   href: ../troubleshooting/index.md
-ms.openlocfilehash: 5a154ba0022a73b8acf9ded071ccfb13e62b7509
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 3c7ef0b41167e396828063950a63574ad5b3a7c9
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299132"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330794"

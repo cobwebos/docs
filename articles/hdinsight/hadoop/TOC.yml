@@ -49,11 +49,11 @@ items:
     - name: 使用 Azure 存储
       href: ../hdinsight-hadoop-use-blob-storage.md
       maintainContext: true
-    - name: 使用 Azure Data Lake Storage
-      href: ../hdinsight-hadoop-use-data-lake-store.md
-      maintainContext: true
-    - name: 使用 Azure Data Lake Store Gen2
+    - name: 使用 Azure Data Lake Storage Gen2
       href: ../hdinsight-hadoop-use-data-lake-storage-gen2.md
+      maintainContext: true
+    - name: 使用 Azure Data Lake Storage Gen1
+      href: ../hdinsight-hadoop-use-data-lake-store.md
       maintainContext: true
   - name: 使用 Apache Hadoop 执行批量查询
     items:
@@ -128,8 +128,6 @@ items:
       href: apache-hadoop-streaming-python.md
     - name: 处理和分析 JSON 文档
       href: using-json-in-hive.md
-    - name: 使用 Avro 库将数据序列化
-      href: apache-hadoop-dotnet-avro-serialization.md
     - name: 使用 C# 用户定义的函数
       href: apache-hadoop-hive-pig-udf-dotnet-csharp.md
     - name: 将 Python 与 Apache Hive 和 Apache Pig 配合使用
@@ -477,8 +475,6 @@ items:
     href: ../hdinsight-go-sdk-overview.md
   - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
-  - name: .NET (Avro)
-    href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
   - name: REST
     href: /rest/api/hdinsight/
   - name: REST (Apache Spark)
@@ -560,9 +556,9 @@ items:
   - name: 适用于 HDInsight 的 Windows 工具
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 2646a89812733f114f21e616f09e913adf1ae6e3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e23219c5e2edebaaee4327f4b11350868c50f5d3
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178067"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328803"

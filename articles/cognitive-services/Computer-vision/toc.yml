@@ -98,12 +98,12 @@ items:
       href: quickstarts-sdk/csharp-thumb-sdk.md
     - name: 提取文本
       href: quickstarts-sdk/csharp-hand-text-sdk.md
+  - name: 使用 Python SDK
+    href: quickstarts-sdk/python-sdk.md
 - name: 教程
   items:
   - name: 获取 Azure 图像的元数据
     href: Tutorials/storage-lab-tutorial.md
-  - name: 构建图像处理应用
-    href: Tutorials/CSharpTutorial.md
 - name: 概念
   items:
   - name: 标记图像
@@ -183,7 +183,11 @@ items:
 - name: 资源
   items:
   - name: 示例
-    href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
+    items:
+    - name: 探索图像处理应用
+      href: Tutorials/CSharpTutorial.md
+    - name: 其他计算机视觉示例
+      href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
   - name: 常见问题解答
     href: FAQ.md
   - name: 定价和限制
@@ -198,9 +202,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=cognitive-services
   - name: 区域可用性
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: 700b14c16f1016a403fdf15972cc52021135c64a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 30b8a6937bafc469c4135a899af56277b4f3a9eb
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562345"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310706"
