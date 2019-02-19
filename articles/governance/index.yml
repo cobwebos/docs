@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d99fcc9a8bb69926da7538edc06ae2b7533c86be
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 985f620caaa329b48b00d6ce586e7dcefbf5869d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507420"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341227"
 documentType: LandingData
 title: Azure 管理 - 治理
 metadata:
@@ -39,21 +39,25 @@ sections:
     - href: ./management-groups/overview
       html: <p>了解如何在逻辑层次结构中对订阅进行分组和组织，以支持以结构化方式部署其他治理服务。<br /></p>
       image:
+        alt: 管理组
         src: ./media/management-groups-illustration.svg
       title: 管理组
     - href: ./resource-graph/
       html: <p>使用功能强大的命令行工具（支持 Azure CLI 和 Azure PowerShell）快速查询有关 Azure 资源的复杂详细信息。 查找并公开信息（以前需要复杂的迭代脚本才能找到），以便大规模发现这些资源。</p>
       image:
+        alt: Resource Graph
         src: ./media/resource-graph-illustration.svg
       title: Resource Graph
     - href: ./policy/
       html: <p>为环境中的资源定义和应用标准。 防止创建不需要的资源，使用其他元素强化新资源，以及审核和修复环境中的已有资源。</p>
       image:
+        alt: 策略
         src: ./media/policy-illustration.svg
       title: 策略
     - href: ./blueprints/
       html: <p>创建一个 Azure 本机<i>项目</i>包（资源组、策略、角色分配、资源管理器模板等），从而可将该包动态部署到订阅以创建一致的可重复环境。</p>
       image:
+        alt: 蓝图
         src: ./media/blueprints-illustration.svg
       title: 蓝图
 - title: 实现形式

@@ -1,9 +1,15 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: db83cf4310cb4d74dcbbd290f650e4dcfc00c0c8
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343700"
 documentType: LandingData
 title: Azure Policy 文档
 metadata:
   title: Azure Policy 文档 - 教程和 API 参考
-  description: 可以借助 Azure Policy，通过策略定义来对资源强制实施规则并施加影响，以便管理和预防 IT 问题。 使用 Azure Policy 时，资源始终符合公司标准和服务级别协议。 通过快速入门、教程和示例了解如何创建、分配和管理策略定义。
+  description: 可以借助 Azure Policy，通过策略定义来对资源强制实施规则并施加影响，以便管理和预防 IT 问题。 使用 Azure Policy 时，资源始终符合公司标准和服务级别协议。
   services: azure-policy
   author: DCtheGeek
   manager: carmonm
@@ -12,53 +18,56 @@ metadata:
   ms.date: 01/23/2019
   ms.author: dacoulte
 abstract:
-  description: 可以借助 Azure Policy，通过策略定义来对资源强制实施规则并施加影响，以便管理和预防 IT 问题。 使用 Azure Policy 时，资源始终符合公司标准和服务级别协议。 通过快速入门、教程和示例了解如何创建、分配和管理策略定义。
+  description: 可以借助 Azure Policy，通过策略定义来对资源强制实施规则并施加影响，以便管理和预防 IT 问题。 使用 Azure Policy 时，资源始终符合公司标准和服务级别协议。
 sections:
-  - title: 5 分钟快速入门
+- title: 5 分钟快速入门
+  items:
+  - type: paragraph
+    text: 了解如何在 Azure 中创建、分配和管理策略定义。
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 了解如何在 Azure 中创建、分配和管理策略定义。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/portal.svg
-            text: Azure 门户
-            href: ./assign-policy-portal
-          - image:
-              src: ./media/powershell.svg
-            text: Azure PowerShell
-            href: ./assign-policy-powershell
-          - image:
-              src: ./media/cli.svg
-            text: Azure CLI
-            href: ./assign-policy-azurecli
-  - title: 分步教程
+    - image:
+        alt: Azure 门户
+        src: ./media/portal.svg
+      text: Azure 门户
+      href: ./assign-policy-portal
+    - image:
+        alt: Azure PowerShell
+        src: ./media/powershell.svg
+      text: Azure PowerShell
+      href: ./assign-policy-powershell
+    - image:
+        alt: Azure CLI
+        src: ./media/cli.svg
+      text: Azure CLI
+      href: ./assign-policy-azurecli
+- title: 分步教程
+  items:
+  - type: paragraph
+    text: 了解如何在 Azure 中创建、分配和管理策略定义。
+  - type: list
+    style: unordered
     items:
-      - type: paragraph
-        text: 了解如何在 Azure 中创建、分配和管理策略定义。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/governance/policy/tutorials/create-and-manage">创建和管理 Azure Policy</a>
-  - title: 示例
+    - html: <a href="/azure/governance/policy/tutorials/create-and-manage">创建和管理 Azure Policy</a>
+- title: 示例
+  items:
+  - type: paragraph
+    text: 通过以下 JSON 示例了解如何在 Azure 中创建策略定义。
+  - type: list
+    style: unordered
+    className: spaced noBullet
     items:
-      - type: paragraph
-        text: 通过以下 JSON 示例了解如何在 Azure 中创建策略定义。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/governance/policy/samples/index">Azure PowerShell</a>
-  - title: 引用
+    - html: <a href="/azure/governance/policy/samples/index">Azure PowerShell</a>
+- title: 引用
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: <p><a href="/cli/azure/policy">Azure CLI</a></p>
-          - title: PowerShell
-            html: '<p><a href="/powershell/module/az.resources/#policies">Azure PowerShell</a></p>'
-          - title: REST API
-            html: <p><a href="/rest/api/policy-insights/policyevents">事件</a></p><p><a href="/rest/api/policy-insights/policystates">状态</a></p><p><a href="/rest/api/resources/policyassignments">分配</a></p><p><a href="/rest/api/resources/policydefinitions">策略定义</a></p><p><a href="/rest/api/resources/policysetdefinitions">计划定义</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">策略受跟踪的资源</a></p><p><a href="/rest/api/policy-insights/remediations">修正</a></p>
+    - title: 命令行
+      html: <p><a href="/cli/azure/policy">Azure CLI</a></p>
+    - title: PowerShell
+      html: <p><a href="/powershell/module/az.resources/#policies">Azure PowerShell</a></p>
+    - title: REST API
+      html: <p><a href="/rest/api/policy-insights/policyevents">事件</a></p><p><a href="/rest/api/policy-insights/policystates">状态</a></p><p><a href="/rest/api/resources/policyassignments">分配</a></p><p><a href="/rest/api/resources/policydefinitions">策略定义</a></p><p><a href="/rest/api/resources/policysetdefinitions">计划定义</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">策略受跟踪的资源</a></p><p><a href="/rest/api/policy-insights/remediations">修正</a></p>
