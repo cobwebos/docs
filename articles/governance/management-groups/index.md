@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 管理组来组织资源
-description: 了解管理组以及如何使用它们。
+title: 使用 Azure 管理组来组织资源 - Azure 治理
+description: 了解管理组、其权限的工作方式以及如何使用它们。
 author: rthorn17
 manager: rithorn
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
@@ -11,12 +11,12 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: ea34296e170d18a1d5636c50e7cae316b1d97948
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 9d606a46bd08ce3e999806bed2357968e5ffd914
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584598"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339281"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理组来组织资源
 
@@ -118,7 +118,7 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (RBAC)](../../rol
 1. Azure AD 租户的租户管理员可以[提升访问权限](../../role-based-access-control/elevate-access-global-admin.md)，然后将一个“读者”角色分配给 `/providers/microsoft.insights/eventtypes/management` 范围内的审核用户。
 1. 以审核用户身份调用[租户活动日志 API](/rest/api/monitor/tenantactivitylogs) 来查看管理组活动。 需要按资源提供程序 **Microsoft.Management** 对所有管理组活动进行筛选。  示例：
 
-```
+```http
 GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Management'"
 ```
 
