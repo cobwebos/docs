@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Log Analytics 监视 Active Directory 复制状态 | Microsoft 文档
+title: 使用 Azure Monitor 监视 Active Directory 复制状态 | Microsoft Docs
 description: Active Directory 复制状态解决方案包定期监视 Active Directory 环境中是否有任何复制失败。
 services: log-analytics
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.openlocfilehash: 8d597a3491f80bc09c3e0676d17971f2509ba47a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3b7aa932d24b7879ee3f46419afa2327ee48b403
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818730"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000987"
 ---
-# <a name="monitor-active-directory-replication-status-with-log-analytics"></a>使用 Log Analytics 监视 Active Directory 复制状态
+# <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>使用 Azure Monitor 监视 Active Directory 复制状态
 
 ![AD 复制状态符号](./media/ad-replication-status/ad-replication-status-symbol.png)
 
@@ -28,11 +28,26 @@ Active Directory 是企业 IT 环境的关键组件。 若要确保高可用性�
 
 AD 复制状态解决方案包定期监视 Active Directory 环境中是否有任何复制失败。
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand-solution.md)]
+
 ## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
 使用以下信息安装和配置解决方案。
 
-* 你必须将代理安装在属于要评估的域成员的域控制器上。 或者，你必须在成员服务器上安装代理，并配置代理以将 AD 复制数据发送到 Log Analytics。 要了解如何将 Windows 计算机连接到 Log Analytics，请参阅[将 Windows 计算机连接到 Log Analytics](../../azure-monitor/platform/agent-windows.md)。 如果域控制器已经是你要连接到 Log Analytics 的现有 System Center Operations Manager 环境的一部分，请参阅[将 Operations Manager 连接到 Log Analytics](../../azure-monitor/platform/om-agents.md)。
-* 使用[从解决方案库中添加 Log Analytics 解决方案](../../azure-monitor/insights/solutions.md)中所述的过程，将 Active Directory 复制状况解决方案添加到 Log Analytics 工作区。  无需进一步的配置。
+### <a name="install-agents-on-domain-controllers"></a>在域控制器上安装代理
+你必须将代理安装在属于要评估的域成员的域控制器上。 或者，你必须在成员服务器上安装代理，并配置代理以将 AD 复制数据发送到 Azure Monitor。 若要了解如何将 Windows 计算机连接到 Azure Monitor，请参阅[将 Windows 计算机连接到 Azure Monitor](../../azure-monitor/platform/agent-windows.md)。 如果域控制器已经是你要连接到 Azure Monitor 的现有 System Center Operations Manager 环境的一部分，请参阅[将 Operations Manager 连接到 Azure Monitor](../../azure-monitor/platform/om-agents.md)。
+
+### <a name="enable-non-domain-controller"></a>启用非域控制器
+如果不需要将任何域控制器直接连接到 Azure Monitor，则可以使用域中任何其他与 Azure Monitor 连接的计算机来收集 AD 复制状态解决方案包的数据，并让它发送数据。
+
+1. 确认计算机是你要使用 AD 复制状态解决方案监视的域成员。
+2. 如果该计算机尚未连接，请[将 Windows 计算机连接到 Azure Monitor](../../azure-monitor/platform/om-agents.md) 或[使用现有 Operations Manager 环境将它连接到 Azure Monitor](../../azure-monitor/platform/om-agents.md)。
+3. 在该计算机上，设置以下注册表项：<br>注册表项：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication<br>值：IsTarget<br>值数据：**true**
+
+   > [!NOTE]
+   > 在重新启动 Microsoft Monitoring Agent 服务 (HealthService.exe) 之后，这些更改才会生效。
+### <a name="install-solution"></a>安装解决方案
+按照[安装监视解决方案](solutions.md#install-a-monitoring-solution)中描述的过程，将 **Active Directory 复制状态**解决方案添加到 Log Analytics 工作区。 无需进一步的配置。
+
 
 ## <a name="ad-replication-status-data-collection-details"></a>AD 复制状态数据收集详细信息
 下表显示了 AD 复制状态的数据收集方法和其他数据收集方式的详细信息。
@@ -41,28 +56,15 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |每隔五天 |
 
-## <a name="optionally-enable-a-non-domain-controller-to-send-ad-data-to-log-analytics"></a>可以根据需要启用非域控制器以将 AD 数据发送到 Log Analytics
-如果不需要将任何域控制器直接连接到 Log Analytics，则可以使用域中任何其他与 Log Analytics 连接的计算机来收集 AD 复制状态解决方案包的数据，并让它发送数据。
 
-### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-log-analytics"></a>启用非域控制器，将 AD 数据发送到 Log Analytics
-1. 确认计算机是你要使用 AD 复制状态解决方案监视的域成员。
-2. 如果该计算机尚未连接，请[将 Windows 计算机连接到 Log Analytics](../../azure-monitor/platform/om-agents.md) 或[使用现有 Operations Manager 环境将它连接到 Log Analytics](../../azure-monitor/platform/om-agents.md)。
-3. 在该计算机上，设置以下注册表项：
-
-   * 注册表项：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication
-   * 值：IsTarget
-   * 值数据：**true**
-
-   > [!NOTE]
-   > 在重新启动 Microsoft Monitoring Agent 服务 (HealthService.exe) 之后，这些更改才会生效。
-   >
-   >
 
 ## <a name="understanding-replication-errors"></a>了解复制错误
-将 AD 复制状态数据发送到 Log Analytics 后，会在 Log Analytics 中看到类似于下图的磁贴，指示当前的复制错误数。  
-![AD 复制状态磁贴](./media/ad-replication-status/oms-ad-replication-tile.png)
 
-严重复制错误是指那些处于或高于 Active Directory 林 75% [逻辑删除生存期](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx)的错误。
+[!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
+
+“AD 复制状态”磁贴显示目前有多少复制错误。 严重复制错误是指那些处于或高于 Active Directory 林 75% [逻辑删除生存期](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx)的错误。
+
+![AD 复制状态磁贴](./media/ad-replication-status/oms-ad-replication-tile.png)
 
 当单击该磁贴时，会看到这些错误的详细信息。
 ![AD 复制状态仪表板](./media/ad-replication-status/oms-ad-replication-dash.png)
@@ -104,11 +106,11 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 >
 
 ### <a name="ad-replication-status-details"></a>AD 复制状态详细信息
-当单击其中一个列表的任何一项时，可以查看有关使用日志搜索的其他详细信息。 这些结果已经过筛选，只显示与该项相关的错误。 例如，如果单击“目标服务器状态 (ADDC02)”下列出的第一个域控制器，会看到搜索结果经过筛选，显示将该域控制器列为目标服务器的错误：
+当单击其中一个列表的任何一项时，可以查看有关使用日志查询的其他详细信息。 这些结果已经过筛选，只显示与该项相关的错误。 例如，如果单击“目标服务器状态(ADDC02)”下列出的第一个域控制器，会看到查询结果经过筛选，显示将该域控制器列为目标服务器的错误：
 
-![搜索结果中的 AD 复制状态错误](./media/ad-replication-status/oms-ad-replication-search-details.png)
+![查询结果中的 AD 复制状态错误](./media/ad-replication-status/oms-ad-replication-search-details.png)
 
-从这里，可以进一步筛选，修改搜索查询，等等。 有关使用日志搜索的详细信息，请参阅[日志搜索](../../azure-monitor/log-query/log-query-overview.md)。
+从这里，可以进一步筛选，修改日志查询，等等。 若要详细了解如何在 Azure Monitor 中使用日志查询，请参阅[在 Azure Monitor 中分析日志数据](../../azure-monitor/log-query/log-query-overview.md)。
 
 “**HelpLink**”字段显示了包含该特定错误的其他详细信息的 TechNet 页的 URL。 可以将此链接复制并粘贴到浏览器窗口，以查看有关故障排除和修复该错误的信息。
 
@@ -124,10 +126,11 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 答：现在不行。
 
 **问：是否需要将所有域控制器添加到我的 Log Analytics 工作区中以查看复制状态？**
-答：不需要，只需要添加一个域控制器。 如果 Log Analytics 工作区中有多个域控制器，则所有域控制器的数据发送到 Log Analytics。
+答：不需要，只需要添加一个域控制器。 如果 Log Analytics 工作区中有多个域控制器，则所有域控制器的数据发送到 Azure Monitor。
 
 **问：我不想将任何域控制器添加到我的 Log Analytics 工作区。是否仍可以使用 AD 复制状态解决方案？**
-答：是的。 可以设置注册表项的值来实现此目的。 请参阅“启用非域控制器，将 AD 数据发送到 Log Analytics”。
+
+答：是的。 可以设置注册表项的值来实现此目的。 请参阅[启用非域控制器](#enable-non-domain-controller)。
 
 **问：执行数据收集的进程的名称是什么？**
 答：AdvisorAssessment.exe
@@ -147,9 +150,9 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 ## <a name="troubleshoot-data-collection-problems"></a>数据收集问题疑难解答
 为了收集数据，AD 复制状态解决方案包需要至少一个域控制器以连接到 Log Analytics 工作区。 直到你连接域控制器，出现一条消息，指示“仍在收集数据”。
 
-如果在连接某个域控制器时需要帮助，可以查看[将 Windows 计算机连接到 Log Analytics](../../azure-monitor/platform/om-agents.md) 文档。 或者，如果域控制器已连接到现有 System Center Operations Manager 环境，则可以查看[将 System Center Operations Manager 连接到 Log Analytics](../../azure-monitor/platform/om-agents.md) 文档。
+如果在连接某个域控制器时需要帮助，可以查看[将 Windows 计算机连接到 Azure Monitor](../../azure-monitor/platform/om-agents.md) 文档。 或者，如果域控制器已连接到现有 System Center Operations Manager 环境，则可以查看[将 System Center Operations Manager 连接到 Azure Monitor](../../azure-monitor/platform/om-agents.md) 文档。
 
-如果不希望将任何域控制器直接连接到 Log Analytics 或 System Center Operations Manager，请参阅“启用非域控制器，将 AD 数据发送到 Log Analytics”。
+如果不希望将任何域控制器直接连接到 Azure Monitor 或 System Center Operations Manager，请参阅[启用非域控制器](#enable-non-domain-controller)。
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Log Analytics 中的日志搜索](../../azure-monitor/log-query/log-query-overview.md)查看详细的 Active Directory 复制状态数据。
+* 使用 [Azure Monitor 中的日志查询](../../azure-monitor/log-query/log-query-overview.md)查看详细的 Active Directory 复制状态数据。

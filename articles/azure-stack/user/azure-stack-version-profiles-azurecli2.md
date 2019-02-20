@@ -14,12 +14,12 @@ ms.date: 02/15/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 6d82410e07e725b13385f6ff2b57218c1146a80a
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 40973fbdd1965eb84776fc9365718c65fa0149a7
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329279"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416983"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Azure CLI 配合使用
 
@@ -205,7 +205,7 @@ Write-Host "Python Cert store was updated to allow the Azure Stack CA root certi
       ```
 
       > [!NOTE]
-      > 如果用户帐户已启用多重身份验证，则可以使用不带 `-u` 参数的 `az login command` 命令。 运行此命令提供一个 URL，必须使用进行身份验证的代码。
+      > 如果您的用户帐户已启用多重身份验证，则可以使用`az login`命令而无需提供`-u`参数。 运行此命令提供一个 URL，必须使用进行身份验证的代码。
    
       * 以服务主体身份登录：在登录之前，请[通过 Azure 门户或 CLI 创建一个服务主体](azure-stack-create-service-principals.md)，并为其分配角色。 接下来，使用以下命令登录：
 

@@ -1,19 +1,19 @@
 ---
 title: 常见问题 - 使用 Azure Site Recovery 进行 VMware 到 Azure 的灾难恢复 | Microsoft Docs
 description: 本文汇总了使用 Azure Site Recovery 设置将本地 VMware VM 灾难恢复到 Azure 时的常见问题
-author: rayne-wiselman
-manager: carmonm
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 1/29/2019
+ms.date: 02/13/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: aa4b0fcdfecde181eea4481cc40b898ca74fce76
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 83c9a0baa4d853c8afcb5afe1c4e5cc4ed1e0073
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212222"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235218"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>常见问题 - VMware 到 Azure 的复制
 
@@ -31,8 +31,6 @@ ms.locfileid: "55212222"
 - **灾难恢复**：可以设置完整的灾难恢复。 在此场景中，可将本地 VMware VM 复制到 Azure 存储。 如果本地基础结构不可用，则可以故障转移到 Azure。 在故障转移时，将使用复制的数据创建 Azure VM。 在本地数据中心再次可用之前，你仍可访问 Azure VM 上的应用和工作负荷。 然后，可从 Azure 故障回复到本地站点。
 - **迁移**：可以使用 Site Recovery 将本地 VMware VM 迁移到 Azure。 在此场景中，可将本地 VMware VM 复制到 Azure 存储。 然后从本地故障转移到 Azure。 故障转移后，应用和工作负荷可供使用并在 Azure VM 上运行。
 
-
-
 ## <a name="azure"></a>Azure
 ### <a name="what-do-i-need-in-azure"></a>需要在 Azure 中做好哪些准备？
 需要一个 Azure 订阅、一个恢复服务保管库、一个存储帐户和一个虚拟网络。 保管库、存储帐户和网络必须位于同一区域。
@@ -44,7 +42,33 @@ ms.locfileid: "55212222"
 如果你是订阅管理员，则已经获得了所需的复制权限。 否则，需要有权在配置 Site Recovery 时指定的资源组和虚拟网络中创建 Azure VM，并有权写入选定的存储帐户。 [了解详细信息](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)。
 
 ### <a name="can-i-use-guest-os-server-license-on-azure"></a>是否可以在 Azure 上使用来宾 OS 服务器许可证？
-可以，Microsoft 软件保障客户可以使用 Azure 混合权益来节省迁移到 Azure 的 **Windows Server 计算机**的许可成本，或将 Azure 用于灾难恢复。
+可以，Microsoft 软件保障客户可以使用 [Azure 混合权益](https://azure.microsoft.com/en-in/pricing/hybrid-benefit/)来节省迁移到 Azure 的 **Windows Server 计算机**的许可成本，或将 Azure 用于灾难恢复。
+
+## <a name="pricing"></a>定价
+
+### <a name="how-are-licensing-charges-handled-during-replication-after-failover"></a>在故障转移后进行的复制过程中，如何处理许可收费问题？
+
+有关详细信息，请参阅[此处](https://aka.ms/asr_pricing_FAQ)提供的有关许可的常见问题解答。
+
+### <a name="how-can-i-calculate-approximate-charges-during-the-use-of-site-recovery"></a>在使用 Site Recovery 的过程中，如何计算大致的费用？
+
+可以使用[定价计算器](https://aka.ms/asr_pricing_calculator)来估算使用 Azure Site Recovery 时的费用。 若要对费用进行详细的估算，请运行部署规划器工具(https://aka.ms/siterecovery_deployment_planner) 并分析[成本估算报告](https://aka.ms/asr_DP_costreport)。
+
+### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>我已成为 Azure Site Recovery 用户一个多月。 对于每个受保护的实例，是否仍享受前 31 天免费？
+
+是，与使用 Azure Site Recovery 的时间长短无关。 在前 31 天内，每个受保护的实例不会产生任何 Azure Site Recovery 费用。 例如，你在过去 6 个月内保护了 10 个实例，然后你将第 11 个实例连接到 Azure Site Recovery，则在连接后的前 31 天内，第 11 个实例不会产生任何 Azure Site Recovery 费用。 而前 10 个实例将继续产生 Azure Site Recovery 费用，因为它们受到保护的时间已超过 31 天。
+
+### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>在前 31 天的期限内，会产生其他 Azure 费用吗？
+
+会，尽管受保护实例的 Azure Site Recovery 在前 31 天内为免费，但可能产生 Azure 存储、存储交易和数据传输费用。 恢复后的虚拟机也可能产生 Azure 计算费用。
+
+### <a name="what-charges-do-i-incur-while-using-azure-site-recovery"></a>使用 Azure Site Recovery 时，会产生哪些费用？
+
+有关详细信息，请参阅[有关所引发费用的常见问题解答](https://aka.ms/asr_pricing_FAQ)。
+
+### <a name="is-there-a-cost-associated-to-perform-dr-drillstest-failover"></a>进行 DR 演练/测试性故障转移时，是否有与之相关联的费用？
+
+DR 演练没有单独的费用。 如果在测试性故障转移后创建虚拟机，则会有计算费用。
 
 ## <a name="azure-site-recovery-components-upgrade"></a>Azure Site Recovery 组件升级
 
@@ -87,8 +111,12 @@ Azure Site Recovery 遵循 N-4 支持模型。 有关如何从过旧版本升级
 
 ## <a name="replication"></a>复制
 
-### <a name="what-apps-can-i-replicate"></a>可以复制哪些应用？
+### <a name="what-applications-can-i-replicate"></a>可以复制哪些应用程序？
 可以复制 VMware VM 中运行的、符合[复制要求](vmware-physical-azure-support-matrix.md##replicated-machines)的任何应用或工作负荷。 Site Recovery 支持应用程序感知型复制，因此，应用可以故障转移或故障回复到智能状态。 Site Recovery 除了与 Microsoft 应用程序（例如 SharePoint、Exchange、Dynamics、SQL Server 及 Active Directory）集成之外，还能与行业领先的供应商（包括 Oracle、SAP、IBM 及 Red Hat）紧密配合。 [详细了解](site-recovery-workload.md)工作负荷保护。
+
+### <a name="can-i-protect-a-virtual-machine-that-has-docker-disk-configuration"></a>是否可以保护具有 Docker 磁盘配置的虚拟机？
+
+否，此方案不受支持。
 
 ### <a name="can-i-replicate-to-azure-with-a-site-to-site-vpn"></a>是否可以使用站点到站点 VPN 复制到 Azure？
 Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将数据从本地复制到 Azure 存储。 不支持通过站点到站点 VPN 网络进行的复制。
@@ -96,11 +124,13 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>是否可以使用 ExpressRoute 复制到 Azure？
 可以使用 ExpressRoute 将 VM 复制到 Azure。 Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户。 需要设置[公共对等互连](../expressroute/expressroute-circuit-peerings.md#publicpeering)或 [Microsoft 对等互连](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)将 ExpressRoute 用于 Site Recovery 复制。 在复制时，建议使用 Microsoft 对等互连作为路由域。 此外，复制时还应确保满足[网络要求](vmware-azure-configuration-server-requirements.md#network-requirements)。 将 VM 故障转移到 Azure 虚拟网络后，可以使用[专用对等互连](../expressroute/expressroute-circuit-peerings.md#privatepeering)访问这些 VM。
 
+### <a name="how-can-i-change-storage-account-after-machine-is-protected"></a>在对计算机进行保护以后，如何更改存储帐户？
+
+只能将存储帐户升级到高级。 如果需要使用另一存储帐户，则需禁用对源计算机的复制，然后重新启用对新存储帐户的保护。 除此之外，没有其他方法可以在启用保护之后更改存储帐户。
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>为何不能通过 VPN 复制？
 
 复制到 Azure 时，复制流量会到达 Azure 存储帐户的公共终结点，因此，只能使用 ExpressRoute（公共对等互连）通过公共 Internet 进行复制，而不能使用 VPN。
-
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>复制的 VM 要满足哪些要求？
 
@@ -108,6 +138,9 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>可以多久复制到 Azure 一次？
 将 VMware VM 复制到 Azure 时，复制是持续性的。
+
+### <a name="can-i-retain-the-ip-address-on-failover"></a>是否可以在故障转移之后保留 IP 地址？
+是的，可以在故障转移之后保留 IP 地址。 确保在故障转移之前在“计算和网络”边栏选项卡上提及目标 IP 地址。 另外，请务必在故障转移时关闭计算机，以免在故障回复时出现 IP 冲突。
 
 ### <a name="can-i-extend-replication"></a>是否可以扩展复制？
 不支持扩展扩展或链式复制。 请在[反馈论坛](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)中请求此功能。

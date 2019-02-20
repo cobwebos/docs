@@ -7,14 +7,14 @@ services: key-vault
 ms.service: key-vault
 author: prashanthyv
 ms.author: pryerram
-manager: mbaldwin
+manager: barbkess
 ms.date: 10/03/2018
-ms.openlocfilehash: 152e1e5892e3a72286205c2f5bf4e18b2a2bcbf7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9b1a4e23ed0da0637b44ac52dd4d1baeb22cd6ce
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814837"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118048"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Azure Key Vault 托管存储帐户 - CLI
 
@@ -44,6 +44,12 @@ ms.locfileid: "55814837"
       
 <a name="step-by-step-instructions-on-how-to-use-key-vault-to-manage-storage-account-keys"></a>有关如何使用 Key Vault 管理存储帐户密钥的分步说明
 --------------------------------------------------------------------------------
+从概念上讲，步骤列表包括：
+- 首先获取（预先存在的）存储帐户
+- 然后提取（预先存在的）Key Vault
+- 然后在保管库中添加 KeyVault 管理的存储帐户，将 Key1 设置为活动密钥，其重新生成期限为 180 天
+- 最后，使用 Key1 为指定的存储帐户设置存储上下文
+
 在以下说明中，我们将 Key Vault 分配为服务，以便为存储帐户授予操作员权限
 
 > [!NOTE]
@@ -56,13 +62,13 @@ ms.locfileid: "55814837"
     ```
     从上述命令的结果中复制 ID 字段
     
-2. 通过运行以下命令获取 Azure 密钥保管库服务主体的对象 ID
+2. 通过运行以下命令获取 Azure Key Vault 服务主体的对象 ID
 
     ```
     az ad sp show --id cfa8b339-82a2-471a-a3c9-0fc0be7a4093
     ```
     
-    成功完成此命令后，在结果中查找对象 ID
+    成功完成此命令后，在结果中查找对象 ID：
     ```console
         {
             ...
@@ -71,7 +77,7 @@ ms.locfileid: "55814837"
         }
     ```
     
-3. 将存储密钥操作员角色分配给 Azure Key Vault 标识
+3. 将存储密钥操作员角色分配给 Azure Key Vault 标识。
 
     ```
     az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id <ObjectIdOfKeyVault> --scope <IdOfStorageAccount>
@@ -85,9 +91,41 @@ ms.locfileid: "55814837"
     ```
     如果用户未创建存储帐户并且对存储帐户没有权限，以下步骤会为你的帐户设置权限，确保你可以管理 Key Vault 中的所有存储权限。
     
+
+<a name="step-by-step-instructions-on-how-to-use-key-vault-to-create-and-generate-sas-tokens"></a>有关如何使用 Key Vault 创建和生成 SAS 令牌的分步说明
+--------------------------------------------------------------------------------
+也可以要求 Key Vault 生成 SAS（共享访问签名）令牌。 共享访问签名对存储帐户中的资源提供委托访问。 通过 SAS，可以授予客户端对存储帐户中资源的访问权限，无需共享帐户密钥。 这是在应用程序中使用共享访问签名的关键之处 - SAS 是用于共享存储资源的一种安全方式，它不会危及帐户密钥。
+
+完成上面所列的步骤后，可运行以下命令要求 Key Vault 为你生成 SAS 令牌。 
+
+在以下步骤中完成的任务列表包括：
+- 在保管库“<VaultName>”中的 KeyVault 管理的存储帐户“<YourStorageAccountName>”内设置名为“<YourSASDefinitionName>”的帐户 SAS 定义。 
+- 为 Blob、文件、表和队列服务以及“服务”、“容器”和“对象”资源类型创建拥有所有权限、通过 HTTPS 访问并指定了开始和结束日期的帐户 SAS 令牌
+- 在保管库中设置 KeyVault 管理的存储 SAS 定义，其模板 URI 为上面创建的 SAS 令牌，SAS 类型为“帐户”，有效期为 N 天
+- 从对应于 SAS 定义的 KeyVault 机密中检索实际访问令牌
+
+1. 此步骤将创建 SAS 定义。 创建此 SAS 定义后，可以要求 Key Vault 为你生成更多的 SAS 令牌。 此操作需要 storage/setsas 权限。
+
+```
+$sastoken = az storage account generate-sas --expiry 2020-01-01 --permissions rw --resource-types sco --services bfqt --https-only --account-name storageacct --account-key 00000000
+```
+可在[此处](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-generate-sas)查看有关上述操作的更多帮助
+
+成功运行此操作后，应会看到如下所示的输出。 请复制该输出
+
+```console
+   "se=2020-01-01&sp=***"
+```
+
+2. 此步骤使用上面生成的输出 ($sasToken) 创建 SAS 定义。 [此处](https://docs.microsoft.com/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#required-parameters)提供了更多文档   
+
+```
+az keyvault storage sas-definition create --vault-name <YourVaultName> --account-name <YourStorageAccountName> -n <NameOfSasDefinitionYouWantToGive> --validity-period P2D --sas-type account --template-uri $sastoken
+```
+                        
+
  > [!NOTE] 
  > 如果用户对存储帐户没有权限，我们会先获取用户的对象 ID
-
 
     ```
     az ad user show --upn-or-object-id "developer@contoso.com"
@@ -96,11 +134,11 @@ ms.locfileid: "55814837"
     
     ```
     
-## <a name="how-to-access-your-storage-account-with-sas-tokens"></a>如何使用 SAS 令牌访问存储帐户
+## <a name="fetch-sas-tokens-in-code"></a>在代码中提取 SAS 令牌
 
 在本部分中，我们将讨论如何通过从密钥保管库中提取 [SAS 令牌](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)对存储帐户执行操作
 
-在以下部分中，我们将展示如何提取密钥保管库中存储的存储帐户密钥并使用它为存储帐户创建 SAS（共享访问签名）定义。
+以下部分演示在按前文所述创建 SAS 定义之后，如何提取 SAS 令牌。
 
 > [!NOTE] 
   有 3 种方式可用于向密钥保管库进行身份验证，如[基本概念](key-vault-whatis.md#basic-concepts)中所述
@@ -132,19 +170,9 @@ sasToken = await kv.GetSecretAsync("SecretUri");
 accountSasCredential.UpdateSASToken(sasToken);
 ```
 
+### <a name="relevant-azure-cli-commands"></a>相关的 Azure CLI 命令
 
-### <a name="relavant-azure-cli-cmdlets"></a>相关 Azure CLI cmdlet
-[Azure CLI 存储 Cmdlet](https://docs.microsoft.com/cli/azure/keyvault/storage?view=azure-cli-latest)
-
-### <a name="relevant-powershell-cmdlets"></a>相关的 Powershell cmdlet
-
-- [Get-AzureKeyVaultManagedStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurekeyvaultmanagedstorageaccount)
-- [Add-AzureKeyVaultManagedStorageAccount](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Add-AzureKeyVaultManagedStorageAccount)
-- [Get-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Get-AzureKeyVaultManagedStorageSasDefinition)
-- [Update-AzureKeyVaultManagedStorageAccountKey](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Update-AzureKeyVaultManagedStorageAccountKey)
-- [Remove-AzureKeyVaultManagedStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.keyvault/remove-azurekeyvaultmanagedstorageaccount)
-- [Remove-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Remove-AzureKeyVaultManagedStorageSasDefinition)
-- [Set-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Set-AzureKeyVaultManagedStorageSasDefinition)
+[Azure CLI 存储命令](https://docs.microsoft.com/cli/azure/keyvault/storage?view=azure-cli-latest)
 
 ## <a name="see-also"></a>另请参阅
 

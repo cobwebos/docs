@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: ac52e3b824efdbd5277982a7f1939e8aa0deeeb1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a7930ea86f7972a6e4abb939fb148d519ca924e9
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201782"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416711"
 ---
 # <a name="infrastructure-backup-service-reference"></a>基础结构备份服务参考
 
@@ -108,6 +108,23 @@ Azure Stack 由许多服务构成，其中包括门户、Azure 资源管理器�
 > [!Note]  
 > 无需打开任何入站端口。
 
+### <a name="encryption-requirements"></a>加密要求
+
+从 1901 年开始，基础结构备份服务将使用的证书具有公共键 (。CER) 使用专用密钥加密备份数据和证书 (。PFX) 若要在云恢复过程中解密备份数据。   
+ - 该证书用于传输的密钥，并不用于建立经过身份验证的安全通信。 为此证书可以是自签名的证书。 Azure Stack 不需要验证根或对此证书的信任，因此不需要外部 internet 访问。
+ 
+分为两个部分，一个具有公共键，一个具有私钥的自签名的证书：
+ - 加密备份数据：证书具有公共键 （已导出到。CER 文件） 用于加密备份数据
+ - 解密备份数据：证书与私钥 （已导出到。PFX 文件） 用于解密备份数据
+
+使用公钥证书 (。CER) 不受内部机密轮换。 若要将该证书，你将需要创建新的自签名的证书和更新与新的文件的备份设置 (。CER)。  
+ - 所有现有备份仍然进行加密使用以前的公共密钥。 新的备份将使用新的公钥。 
+ 
+在云恢复期间使用的私钥的证书 (。出于安全原因，PFX) 不保留 Azure stack。 此文件将需要在云恢复过程中显式提供。  
+
+**向后兼容性模式**从 1901 年开始，加密密钥支持已弃用，将在未来的版本中删除。 如果使用已启用使用的加密密钥备份更新从 1811年，Azure Stack 将继续使用的加密密钥。 向后兼容性模式将支持不少于 3 版本。 该时间后将需要证书。 
+ * 从加密密钥更新到证书是一种方法的操作。  
+ * 所有现有备份将保持加密状态使用加密密钥。 新的备份将使用的证书。 
 
 ## <a name="infrastructure-backup-limits"></a>基础结构备份限制
 

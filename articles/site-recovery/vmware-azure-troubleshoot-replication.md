@@ -1,22 +1,61 @@
 ---
 title: 使用 Azure Site Recovery 排查将 VMware VM 和物理服务器灾难恢复到 Azure 时的复制问题 | Microsoft Docs
 description: 本文针对使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 期间遇到的常见复制问题提供故障排除信息。
-author: Rajeswari-Mamilla
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/18/2019
-ms.author: ramamill
-ms.openlocfilehash: 5c2d33b39614ded95ac38e07c844b0a8cafa7cd2
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.date: 02/7/2019
+ms.author: mayg
+ms.openlocfilehash: 71c07d93d75ee372a50ec4ff5fc81e92926d329b
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411469"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964765"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>解决 VMware VM 和物理服务器的复制问题
 
 使用 Azure Site Recovery 保护 VMware 虚拟机或物理服务器时，可能会收到特定的错误消息。 本文介绍在使用 [Site Recovery](site-recovery-overview.md) 将本地 VMware VM 和物理服务器复制到 Azure 时可能遇到的一些常见问题。
+
+## <a name="monitor-process-server-health-to-avoid-replication-issues"></a>监视进程服务器运行状况以避免出现复制问题
+
+建议在门户中监视进程服务器 (PS) 运行状况，以确保关联的源计算机的复制正常进行。 在保管库中，转到“管理”>“Site Recovery 基础结构”>“配置服务器”。 在“配置服务器”边栏选项卡上，单击“关联的服务器”下的“进程服务器”。 此时会打开“进程服务器”边栏选项卡，其中显示了进程服务器的运行状况统计信息。 可以跟踪 CPU 利用率、内存使用率、用于复制的 PS 服务的状态、证书过期日期和可用空间。 所有统计信息的状态应显示为绿色。 
+
+**建议将内存和 CPU 使用率保持在 70% 以下，将可用空间保持在 25% 以上**。 可用空间是指进程服务器中的缓存磁盘空间，在将源计算机中的复制数据上传到 Azure 之前，这些空间用于存储这些数据。 如果可用空间降到 20% 以下，所有关联源计算机的复制将受到限制。 遵循[容量指南](./site-recovery-plan-capacity-vmware.md#capacity-considerations)了解复制源计算机所需的配置。
+
+确保以下服务正在 PS 计算机上运行。 启动或重启未运行的任何服务。
+
+**内置进程服务器**
+
+* cxprocessserver
+* InMage PushInstall
+* 日志上传服务 (LogUpload)
+* InMage Scout 应用程序服务
+* Microsoft Azure 恢复服务代理 (obengine)
+* InMage Scout VX 代理 – Sentinel/Outpost (svagents)
+* tmansvc
+* 万维网发布服务 (W3SVC)
+* MySQL
+* Microsoft Azure Site Recovery 服务 (dra)
+
+**横向扩展进程服务器**
+
+* cxprocessserver
+* InMage PushInstall
+* 日志上传服务 (LogUpload)
+* InMage Scout 应用程序服务
+* Microsoft Azure 恢复服务代理 (obengine)
+* InMage Scout VX 代理 – Sentinel/Outpost (svagents)
+* tmansvc
+
+**Azure 中用于故障回复的进程服务器**
+
+* cxprocessserver
+* InMage PushInstall
+* 日志上传服务 (LogUpload)
+
+确保所有服务的启动类型设置为“自动”或“自动(延迟启动)”。 不需要按上面所述为 Microsoft Azure 恢复服务代理 (obengine) 服务设置启动类型。
 
 ## <a name="initial-replication-issues"></a>初始复制问题
 
@@ -26,7 +65,7 @@ ms.locfileid: "54411469"
 
 以下列表显示了检查源计算机的方式：
 
-*  在源服务器上的命令行中运行以下命令，使用 Telnet 通过 HTTPS 端口（默认 HTTPS 端口为 9443）对进程服务器执行 ping 操作。 该命令将检查网络连接问题，或者阻止防火墙端口的问题。
+*  在源服务器上的命令行中运行以下命令，使用 Telnet 通过 HTTPS 端口对进程服务器执行 ping 操作。 进程服务器默认使用 HTTPS 端口 9443 发送和接收复制流量。 在注册时可以修改此端口。 以下命令检查网络连接问题或者阻止防火墙端口的问题。
 
 
    `telnet <process server IP address> <port>`
@@ -35,13 +74,42 @@ ms.locfileid: "54411469"
    > [!NOTE]
    > 使用 Telnet 测试连接。 请不要使用 `ping`。 如果未安装 Telnet，请完成[安装 Telnet 客户端](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx)中列出的步骤。
 
+   如果 telnet 能够成功连接到 PS 端口，则会显示一个空白屏幕。
+
    如果无法连接到进程服务器，请在进程服务器上允许入站端口 9443。 例如，如果网络包含外围网络或屏蔽子网，可能需要在进程服务器上允许入站端口 9443。 然后，检查是否仍出现此问题。
 
-*  检查 **InMage Scout VX Agent – Sentinel/OutpostStart** 服务的状态。 如果该服务未运行，请启动该服务，然后检查是否仍出现此问题。   
+*  如果 telnet 成功但源计算机报告 PS 不可访问，请在源计算机上打开 Web 浏览器，并检查是否可以访问地址 https://<PS IP>:<PS 数据端口>/。
+
+    接入此地址时，预期会发生 HTTPS 证书错误。 忽略证书错误并继续操作会出现“400 – 错误的请求”，表示服务器无法为浏览器的请求提供服务，但与服务器建立的标准 HTTPS 连接可正常工作。
+
+    如果连接不成功，浏览器上有关错误消息的详细信息会提供指导。 例如，如果代理身份验证不正确，则代理服务器会返回“407 – 需要代理身份验证”，并在错误消息中指明所需的操作。 
+
+*  发生与网络上传相关的错误时，请检查源 VM 上的以下日志：
+
+       C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\svagents*.log 
 
 ### <a name="check-the-process-server"></a>检查进程服务器
 
 以下列表显示了检查进程服务器的方式：
+
+> [!NOTE]
+> 进程服务器必须有一个静态 IPv4 地址，不应在其上配置 NAT IP。
+
+* **检查源计算机与进程服务器之间的连接**
+1. 如果可以从源计算机执行 telnet 但无法从源访问 PS，请在源 VM 上运行 cxpsclient 工具，使用 cxprocessserver 检查端到端连接：
+
+       <install folder>\cxpsclient.exe -i <PS_IP> -l <PS_Data_Port> -y <timeout_in_secs:recommended 300>
+
+    有关相应错误的详细信息，请在 PS 上检查以下目录中生成的日志：
+
+       C:\ProgramData\ASR\home\svsystems\transport\log\cxps.err
+       and
+       C:\ProgramData\ASR\home\svsystems\transport\log\cxps.xfer
+2. 如果 PS 未发出检测信号，请在 PS 上检查以下日志：
+
+       C:\ProgramData\ASR\home\svsystems\eventmanager*.log
+       and
+       C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
 
 *  **检查进程服务器是否主动将数据推送到 Azure**。
 
@@ -121,7 +189,7 @@ ms.locfileid: "54411469"
 
 ## <a name="protected-virtual-machines-are-greyed-out-in-the-portal"></a>受保护的虚拟机在门户中处于灰显状态
 
-如果系统中存在重复的条目，则在 Site Recovery 下复制的虚拟机将不会显示在 Azure 门户中。 若要了解如何删除过时的条目和解决此问题，请参阅[使用 Azure Site Recovery 进行 VMware 到 Azure 的复制：如何清理重复或过时的条目](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx)。
+如果系统中存在重复的条目，则在 Site Recovery 下复制的虚拟机将不会显示在 Azure 门户中。 若要了解如何删除过时的条目和解决此问题，请参阅[使用 Azure Site Recovery 进行 VMware 到 Azure 的复制：如何清除重复或过时的条目](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx)。
 
 ## <a name="next-steps"></a>后续步骤
 

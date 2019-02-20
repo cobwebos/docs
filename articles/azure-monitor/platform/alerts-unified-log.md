@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 18c05f2a9dd9f7e4a6d5ec62806870311c5eb130
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 5722db5be656641301299956172ee19249be7895
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745701"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106393"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor 中的日志警报
-本文提供日志警报的详细信息，该警报是 [Azure 警报](../../azure-monitor/platform/alerts-overview.md)中支持的警报类型之一，允许用户使用 Azure 分析平台作为警报的基础。
+本文提供日志警报的详细信息，该警报是 [Azure 警报](../platform/alerts-overview.md)中支持的警报类型之一，允许用户使用 Azure 分析平台作为警报的基础。
 
-日志警报包含为 [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) 或 [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events) 创建的日志搜索规则。 若要详细了解其用法，请参阅[在 Azure 中创建日志警报](../../azure-monitor/platform/alerts-log.md)
+日志警报包含为 [Azure Monitor](../learn/tutorial-viewdata.md) 或 [Application Insights](../app/cloudservices.md#view-azure-diagnostics-events) 创建的日志查询规则。 若要详细了解其用法，请参阅[在 Azure 中创建日志警报](../platform/alerts-log.md)
 
 > [!NOTE]
-> [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) 中的常见日志数据现在也可以在 Azure Monitor 中的指标平台上查看。 有关详细信息，请查看[日志的指标警报](../../azure-monitor/platform/alerts-metric-logs.md)
+> [Azure Monitor](../learn/tutorial-viewdata.md) 中的常见日志数据现在也可以在 Azure Monitor 中的指标平台上查看。 有关详细信息，请查看[日志的指标警报](../platform/alerts-metric-logs.md)
 
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>日志搜索警报规则 - 定义和类型
@@ -41,7 +41,7 @@ ms.locfileid: "55745701"
 
 - **阈值**。  对日志搜索的结果进行评估，确定是否应创建警报。  不同类型的日志搜索警报规则的阈值不同。
 
-针对 [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) 或 [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events) 的日志搜索规则可以分为两种类型。 这些类型中的每一种都在随后的相应部分进行了详细介绍。
+针对 [Azure Monitor](../learn/tutorial-viewdata.md) 或 [Application Insights](../app/cloudservices.md#view-azure-diagnostics-events) 的日志查询规则可以分为两种类型。 这些类型中的每一种都在随后的相应部分进行了详细介绍。
 
 - **[结果数](#number-of-results-alert-rules)**。 当日志搜索返回的记录数超出指定数目时，将创建单个警报。
 - **[指标度量值](#metric-measurement-alert-rules)**。  为日志搜索结果中其值超出指定阈值的每个对象创建警报。
@@ -99,14 +99,28 @@ ms.locfileid: "55745701"
 - **查询：** Perf | where ObjectName == "Processor" and CounterName == "% Processor Time" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer<br>
 - **时间段：** 30 分钟<br>
 - **警报频率：** 五分钟<br>
-- **聚合值：** 大于 90<br>
+- **警报逻辑 - 条件和阈值：** 大于 90<br>
+- **组字段(聚合)：** Computer
 - **触发警报的条件：** 总违规次数大于 2 次<br>
 
-查询将按 5 分钟的时间间隔为每台计算机创建一个平均值。  对于在前 30 分钟 内收集的数据，此查询将每隔 5 分钟运行一次。  下面显示的示例数据是针对三台计算机的。
+查询将按 5 分钟的时间间隔为每台计算机创建一个平均值。  对于在前 30 分钟 内收集的数据，此查询将每隔 5 分钟运行一次。 由于所选“组字段(聚合)”为纵栏式“计算机”，因此针对“计算机”的各种值对 AggregatedValue 进行了拆分，而每个计算机的平均处理器利用率在 5 分钟的时间段内是确定的。  例如，三台计算机的查询结果示例将如下所示。
+
+
+|TimeGenerated [UTC] |Computer  |AggregatedValue  |
+|---------|---------|---------|
+|20xx-xx-xxT01:00:00Z     |   srv01.contoso.com      |    72     |
+|20xx-xx-xxT01:00:00Z     |   srv02.contoso.com      |    91     |
+|20xx-xx-xxT01:00:00Z     |   srv03.contoso.com      |    83     |
+|...     |   ...      |    ...     |
+|20xx-xx-xxT01:30:00Z     |   srv01.contoso.com      |    88     |
+|20xx-xx-xxT01:30:00Z     |   srv02.contoso.com      |    84     |
+|20xx-xx-xxT01:30:00Z     |   srv03.contoso.com      |    92     |
+
+如果绘制查询结果，该结果将如下所示。
 
 ![示例查询结果](media/alerts-unified-log/metrics-measurement-sample-graph.png)
 
-在此示例中，将为 srv02 和 srv03 创建单独的警报，因为二者都在指定的时间段内超出 90% 的阈值三次。  如果将“触发警报的标准:”更改为“连续”，则只会为 srv03 创建警报，因为对于连续三个示例，它都超出了阈值。
+在此示例中，我们看到的是三台计算机中的每台计算机在 5 分钟的时间范围内计算出来的平均处理器利用率。 srv01 只有一次（在 1:25 处）超出了阈值 90。 如果进行比较，则会发现 srv02 在 1:10、1:15 和 1:25 处超出了阈值 90，而 srv03 则在 1:10、1:15、1:20 和 1:30 处超出了阈值 90。 由于已将警报配置为超出阈值两次以上才触发，因此我们看到只有 srv02 和 srv03 符合此标准。 因此，会为 srv02 和 srv03 创建单独的警报，因为它们在多个时间段内超出了 90% 这个阈值两次。如果为“连续超出阈值”选项配置了“触发警报的标准:”参数，，则只会为 srv03 触发警报，因为在从 1:10 到 1:20 这个时间范围内，只有它连续三个时间段超出阈值。 不会为 srv02 触发警报，因为它只在从 1:10 到 1:15 这个时间范围内连续两个时间段超出阈值。
 
 ## <a name="log-search-alert-rule---firing-and-state"></a>日志搜索警报规则 - 触发和状态
 
@@ -114,11 +128,11 @@ ms.locfileid: "55745701"
 
 现在，假设我们有一条名为 *Contoso-Log-Alert* 的日志警报规则，该规则符合[针对“结果数”类型的日志警报提供的示例](#example-of-number-of-records-type-log-alert)中的配置。 
 - 在下午 1:05 的时候，Azure 警报执行了 Contoso-Log-Alert，日志搜索结果生成 0 个记录，这低于阈值，因此不触发警报。 
-- 下一个迭代发生在下午 1:10，Azure 警报执行了 Contoso-Log-Alert，日志搜索结果提供了 5 个记录，这超出了阈值，因此在触发关联的[操作组](../../azure-monitor/platform/action-groups.md)后很快又触发了警报。 
-- 在下午 1:15 时，Azure 警报执行了 Contoso-Log-Alert，日志搜索结果提供了 2 个记录，这超出了阈值，因此在触发关联的[操作组](../../azure-monitor/platform/action-groups.md)后很快又触发了警报。
+- 下一个迭代发生在下午 1:10，Azure 警报执行了 Contoso-Log-Alert，日志搜索结果提供了 5 个记录，这超出了阈值，因此在触发关联的[操作组](../platform/action-groups.md)后很快又触发了警报。 
+- 在下午 1:15 时，Azure 警报执行了 Contoso-Log-Alert，日志搜索结果提供了 2 个记录，这超出了阈值，因此在触发关联的[操作组](../platform/action-groups.md)后很快又触发了警报。
 - 现在，下一个迭代发生在下午 1:20 的时候，Azure 警报执行了 Contoso-Log-Alert，日志搜索结果再次提供 0 个记录，这低于阈值，因此不触发警报。
 
-但在上面列出的示例中，在下午 1:15 时，Azure 警报无法确定在 1:10 看到的根本问题是否仍然存在，以及是否存在全新的故障，因为用户提供的查询可能考虑到了以前的记录 - Azure 警报可以确定这一点。 因此，为谨慎起见，在下午 1:15 执行 Contoso-Log-Alert 时，将再次触发已配置的[操作组](../../azure-monitor/platform/action-groups.md)。 现在，在下午 1:20 的时候，已经看不到记录 - Azure 警报无法确定记录问题得到解决的原因，因此 Contoso-Log-Alert 的状态不会在 Azure 警报仪表板中更改为“已解决”，也不会发送通知，指出警报已消除。
+但在上面列出的示例中，在下午 1:15 时，Azure 警报无法确定在 1:10 看到的根本问题是否仍然存在，以及是否存在全新的故障，因为用户提供的查询可能考虑到了以前的记录 - Azure 警报可以确定这一点。 因此，为谨慎起见，在下午 1:15 执行 Contoso-Log-Alert 时，将再次触发已配置的[操作组](../platform/action-groups.md)。 现在，在下午 1:20 的时候，已经看不到记录 - Azure 警报无法确定记录问题得到解决的原因，因此 Contoso-Log-Alert 的状态不会在 Azure 警报仪表板中更改为“已解决”，也不会发送通知，指出警报已消除。
 
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>日志警报的定价和计费
@@ -133,9 +147,8 @@ ms.locfileid: "55745701"
     > 如果存在 `<, >, %, &, \, ?, /` 等无效字符，则在帐单中会将这些字符替换为 `_`。 若要删除使用[旧式 Log Analytics API](api-alerts.md) 为警报规则的计费创建的 scheduleQueryRules 资源，用户需要使用[旧式 Log Analytics API](api-alerts.md) 删除原始计划和警报操作
 
 ## <a name="next-steps"></a>后续步骤
-* 了解如何[在 Azure 中创建日志警报](../../azure-monitor/platform/alerts-log.md)。
+* 了解如何[在 Azure 中创建日志警报](../platform/alerts-log.md)。
 * 了解 [Azure 日志警报中的 Webhook](alerts-log-webhook.md)。
-* 了解 [Azure 警报](../../azure-monitor/platform/alerts-overview.md)。
-* 详细了解 [Application Insights](../../azure-monitor/app/analytics.md)。
-* 详细了解 [Log Analytics](../../azure-monitor/log-query/log-query-overview.md)。    
-
+* 了解 [Azure 警报](../platform/alerts-overview.md)。
+* 详细了解 [Application Insights](../app/analytics.md)。
+* 详细了解 [Azure Monitor 日志查询](../log-query/log-query-overview.md)。    

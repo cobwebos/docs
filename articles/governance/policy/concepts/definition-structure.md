@@ -4,17 +4,17 @@ description: 介绍 Azure Policy 如何使用资源策略定义，通过描述�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/04/2019
+ms.date: 02/11/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: fc0d5c4abc3b8584212798d5ea5b6ab65404e93d
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: aa334f88d04bb30ce01fe12fecb3aac3c9cd572d
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698266"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237411"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -90,8 +90,20 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 > [!NOTE]
 > 参数可以添加到现有和已分配的定义。 新参数必须包含 defaultValue 属性。 这可以防止策略或计划的现有分配间接被设为无效。
 
-例如，可以定义策略来限制资源的部署位置。
-创建策略时需声明以下参数：
+### <a name="parameter-properties"></a>参数属性
+
+参数有下述可以在策略定义中使用的属性：
+
+- **名称**：参数的名称。 由策略规则中的 `parameters` 部署函数使用。 有关详细信息，请参阅[使用参数值](#using-a-parameter-value)。
+- `type`：确定参数是**字符串**还是**数组**。
+- `metadata`：定义主要由 Azure 门户用来显示用户友好信息的子属性：
+  - `description`：说明参数的用途。 可以用来提供可接受值的示例。
+  - `displayName`：在门户中显示的用于参数的友好名称。
+  - `strongType`：（可选）通过门户分配策略定义时使用。 提供上下文感知列表。 有关详细信息，请参阅 [strongType](#strongtype)。
+- `defaultValue`：（可选）设置分配的参数的值（如果值未给定）。 在更新已分配的现有策略定义时必须使用此项。
+- `allowedValues`：（可选）提供参数在分配过程中接受的值的列表。
+
+例如，可以定义策略定义来限制资源的部署位置。 **allowedLocations** 可以是该策略定义的一个参数。 每次分配策略定义来限制接受的值时，会使用此参数。 使用 **strongType** 可以在通过门户完成分配时提供增强的体验：
 
 ```json
 "parameters": {
@@ -102,21 +114,17 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
             "displayName": "Allowed locations",
             "strongType": "location"
         },
-        "defaultValue": "westus2"
+        "defaultValue": "westus2",
+        "allowedValues": [
+            "eastus2",
+            "westus2",
+            "westus"
+        ]
     }
 }
 ```
 
-参数类型可以是字符串，也可以是数组。 Azure 门户等工具使用元数据属性显示用户友好信息。
-
-在元数据属性中，可以使用 **strongType** 提供 Azure 门户中的选项多选列表。 **strongType** 的允许值目前包括：
-
-- `"location"`
-- `"resourceTypes"`
-- `"storageSkus"`
-- `"vmSKUs"`
-- `"existingResourceGroups"`
-- `"omsWorkspace"`
+### <a name="using-a-parameter-value"></a>使用参数值
 
 在策略规则中，使用以下 `parameters` 部署值函数语法引用参数：
 
@@ -126,6 +134,19 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
     "in": "[parameters('allowedLocations')]"
 }
 ```
+
+此示例引用 **allowedLocations** 参数，该参数已在[参数属性](#parameter-properties)中演示过。
+
+### <a name="strongtype"></a>strongType
+
+在 `metadata` 属性中，可以使用 **strongType** 提供 Azure 门户中的选项多选列表。 **strongType** 的允许值目前包括：
+
+- `"location"`
+- `"resourceTypes"`
+- `"storageSkus"`
+- `"vmSKUs"`
+- `"existingResourceGroups"`
+- `"omsWorkspace"`
 
 ## <a name="definition-location"></a>定义位置
 
@@ -187,7 +208,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 ### <a name="conditions"></a>条件
 
-条件评估字段是否符合特定的准则。 支持的条件有：
+条件用于评估 **field** 或 **value** 访问器是否符合特定标准。 支持的条件有：
 
 - `"equals": "value"`
 - `"notEquals": "value"`
@@ -231,7 +252,53 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
   - 此括号语法支持包含句点的标记名称。
   - 其中 **\<tagName\>** 是要验证其条件的标记的名称。
   - 示例：`tags[Acct.CostCenter]`，其中 **Acct.CostCenter** 是标记的名称。
+
 - 属性别名 - 有关列表，请参阅[别名](#aliases)。
+
+### <a name="value"></a>值
+
+也可使用 **value** 来形成条件。 **value** 会针对[参数](#parameters)、[支持的模板函数](#policy-functions)或文本来检查条件。
+**value** 可与任何支持的[条件](#conditions)配对。
+
+#### <a name="value-examples"></a>Value 示例
+
+此策略规则示例使用 **value** 将 `resourceGroup()` 函数和返回的 **name** 属性的结果与 **like** 条件 `*netrg` 进行对比。 此规则拒绝名称以 `*netrg` 结尾的资源组中 **type** 不为 `Microsoft.Network/*` 的资源。
+
+```json
+{
+    "if": {
+        "allOf": [{
+                "value": "[resourceGroup().name]",
+                "like": "*netrg"
+            },
+            {
+                "field": "type",
+                "notLike": "Microsoft.Network/*"
+            }
+        ]
+    },
+    "then": {
+        "effect": "deny"
+    }
+}
+```
+
+此策略规则示例使用 **value** 来检查多个嵌套函数的结果是否 **equals** `true`。 此规则拒绝并没有至少三个标记的资源。
+
+```json
+{
+    "mode": "indexed",
+    "policyRule": {
+        "if": {
+            "value": "[less(length(field('tags')), 3)]",
+            "equals": true
+        },
+        "then": {
+            "effect": "deny"
+        }
+    }
+}
+```
 
 ### <a name="effect"></a>效果
 
@@ -274,12 +341,15 @@ AuditIfNotExists 和 DeployIfNotExists 评估相关的资源是否存在，并�
 
 ### <a name="policy-functions"></a>策略函数
 
-多个[资源管理器模板函数](../../../azure-resource-manager/resource-group-template-functions.md)可在策略规则中使用。 目前支持的函数如下：
+所有[资源管理器模板函数](../../../azure-resource-manager/resource-group-template-functions.md)都可在策略规则中使用，以下部署和资源函数除外：
 
-- [parameters](../../../azure-resource-manager/resource-group-template-functions-deployment.md#parameters)
-- [concat](../../../azure-resource-manager/resource-group-template-functions-array.md#concat)
-- [resourceGroup](../../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)
-- [subscription](../../../azure-resource-manager/resource-group-template-functions-resource.md#subscription)
+- copyIndex()
+- deployment()
+- list*
+- providers()
+- reference()
+- resourceId()
+- variables()
 
 此外，`field` 函数可用于策略规则。 `field` 主要用于 **AuditIfNotExists** 和 **DeployIfNotExists**，以引用所评估资源上的字段。 可以在 [DeployIfNotExists 示例](effects.md#deployifnotexists-example)中看到这种用法的示例。
 

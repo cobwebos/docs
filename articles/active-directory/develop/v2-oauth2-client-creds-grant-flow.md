@@ -12,17 +12,18 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/13/2018
+ms.topic: conceptual
+ms.date: 02/07/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 090f9771bf8d1010e4249d97d5768891f02c54b3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 76b752df4557ac5b0b493f1fb40d1712d37c8e22
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096596"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207664"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory v2.0 和 OAuth 2.0 客户端凭据流
 
@@ -30,12 +31,12 @@ ms.locfileid: "55096596"
 
 可通过 RFC 6749 中指定的 [OAuth 2.0 客户端凭据授予](https://tools.ietf.org/html/rfc6749#section-4.4)（有时称为“双重 OAuth”），使用应用程序标识来访问 Web 托管的资源。 这种授予通常用于必须在后台运行的服务器间交互，不需要立即与用户交互。 此类应用程序通常称为守护程序或服务帐户。
 
-OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调用其他 Web 服务时使用它自己的凭据（而不是模拟用户）进行身份验证。 在这种情况下，客户端通常是中间层 Web 服务、后台程序服务或网站。 为了更高级别的保证，Azure Active Directory (Azure AD) 还允许调用服务以将证书（而不是共享机密）用作凭据。
+OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调用其他 Web 服务时使用它自己的凭据（而不是模拟用户）进行身份验证。 在这种情况下，客户端通常是中间层 Web 服务、后台程序服务或网站。 为了进行更高级别的保证，Microsoft 标识平台还允许调用服务将证书（而不是共享机密）用作凭据。
 
 > [!NOTE]
 > v2.0 终结点并非支持所有 Azure AD 方案和功能。 若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。
 
-在较典型的“三重 OAuth”中，客户端应用程序有权代表特定用户访问资源。 该权限通常在[许可](v2-permissions-and-consent.md)过程中由用户委托给应用程序。 但是，在客户端凭据流中，权限直接授予应用程序本身。 应用向资源出示令牌时，该资源强制要求应用本身拥有执行操作的授权，而不是用户拥有授权。
+在较典型的“三重 OAuth”中，客户端应用程序有权代表特定用户访问资源。 该权限通常在[许可](v2-permissions-and-consent.md)过程中由用户委托给应用程序。 但是，在客户端凭据（双重 OAuth）流中，权限直接授予应用程序本身。 应用向资源出示令牌时，该资源强制要求应用本身而不是用户拥有执行操作的授权。 
 
 ## <a name="protocol-diagram"></a>协议图
 
@@ -47,10 +48,10 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 
 应用往往通过以下两种方式之一接收直接授权来访问资源： 
 
-* 通过资源中的访问控制列表 (ACL)
-* 通过 Azure AD 中的应用程序权限分配
+* [通过资源中的访问控制列表 (ACL)](#access-control-lists)
+* [通过 Azure AD 中的应用程序权限分配](#application-permissions)
 
-这两种方法在 Azure AD 中很常见，建议用于执行客户端凭据流的客户端和资源。 但是，资源可以选择以其他方式向其客户端授权。 每个资源服务器可选择最适合其应用程序的方法。
+这两种方法在 Azure AD 中很常见，建议用于执行客户端凭据流的客户端和资源。 资源也可选择以其他方式向其客户端授权。 每个资源服务器可选择最适合其应用程序的方法。
 
 ### <a name="access-control-lists"></a>访问控制列表
 
@@ -77,8 +78,8 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 
 1. 通过[应用程序注册门户](quickstart-v2-register-an-app.md)或新的[应用注册（预览版）体验](quickstart-register-app.md)注册和创建应用。
 1. 在用于注册或创建应用的门户中，转到你的应用程序。 创建应用时，至少需要使用一个应用程序机密。
-2. 找到“Microsoft Graph 权限”部分，然后添加应用所需的“应用程序权限”。
-3. **保存**应用注册。
+1. 找到“API 权限”部分，然后添加应用所需的**应用程序权限**。
+1. **保存**应用注册。
 
 #### <a name="recommended-sign-the-user-in-to-your-app"></a>建议：让用户登录到应用
 
@@ -100,7 +101,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 ```
-// Pro tip: Try pasting the following request in a browser!
+// Pro tip: Try pasting the following request in a browser.
 ```
 
 ```
@@ -128,7 +129,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 | --- | --- |
 | `tenant` | 向应用程序授予所请求权限的目录租户（采用 GUID 格式）。 |
 | `state` | 同样随令牌响应返回的请求中所包含的值。 它可以是用户想要的任何内容的字符串。 该状态用于对发出身份验证请求出现之前，有关用户在应用中的状态的信息（例如前面所在的页面或视图）编码。 |
-| `admin_consent` | 设置为 **true**。 |
+| `admin_consent` | 设置为 **True**。 |
 
 ##### <a name="error-response"></a>错误响应
 
@@ -170,9 +171,9 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 | --- | --- | --- |
 | `tenant` | 必选 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
 | `client_id` | 必选 | 分配给应用的应用程序 ID。 可以在注册应用的门户中找到此信息。 |
-| `scope` | 必选 |在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 对于 Microsoft Graph 示例，该值为 `https://graph.microsoft.com/.default`。 此值通知 v2.0 终结点为应用配置的所有直接应用程序权限，终结点应该为与要使用的资源关联的对象颁发令牌。 |
+| `scope` | 必选 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 对于 Microsoft Graph 示例，该值为 `https://graph.microsoft.com/.default`。 </br>此值告知 v2.0 终结点：在为应用配置的所有直接应用程序权限中，终结点应该为与要使用的资源关联的权限颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
 | `client_secret` | 必选 | 在应用注册门户中为应用生成的应用程序机密。 在发送客户端密码之前必须对其进行 URL 编码。 |
-| `grant_type` | 必选 | 必须是 `client_credentials`。 |
+| `grant_type` | 必选 | 必须设置为 `client_credentials`。 |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>第二种情况：使用证书访问令牌请求
 
@@ -191,9 +192,9 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | 参数 | 条件 | 说明 |
 | --- | --- | --- |
 | `tenant` | 必选 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
-| `client_id` | 必选 |分配给应用的应用程序 ID。 |
-| `scope` | 必选 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 对于 Microsoft Graph 示例，该值为 `https://graph.microsoft.com/.default`。 <br>此值通知 v2.0 终结点为应用配置的所有直接应用程序权限，终结点应该为与要使用的资源关联的对象颁发令牌。 |
-| `client_assertion_type` | 必选 | 值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| `client_id` | 必选 |分配给应用的应用程序（客户端）ID。 |
+| `scope` | 必选 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 对于 Microsoft Graph 示例，该值为 `https://graph.microsoft.com/.default`。 <br>此值通知 v2.0 终结点为应用配置的所有直接应用程序权限，终结点应该为与要使用的资源关联的对象颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
+| `client_assertion_type` | 必选 | 该值必须设置为 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
 | `client_assertion` | 必选 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 有关如何注册证书以及断言的格式，请阅读[证书凭据](active-directory-certificate-credentials.md)的相关信息。|
 | `grant_type` | 必选 | 必须设置为 `client_credentials`。 |
 
@@ -261,6 +262,11 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q" 'https://graph.microsoft.com/v1.0/me/messages'
 ```
 
-## <a name="code-sample"></a>代码示例
+## <a name="code-samples-and-other-documentation"></a>代码示例和其他文档
 
-若要查看使用管理员许可终结点实现客户端凭据授予的应用程序示例，请参阅 [v2.0 守护程序代码示例](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)。
+阅读 Microsoft 身份验证库中的[客户端凭据概述文档](http://aka.ms/msal-net-client-credentials)
+
+| 示例 | 平台 |说明 |
+|--------|----------|------------|
+|[active-directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) | .NET Core 2.1 控制台 | 一个简单的 .NET Core 应用程序，该应用程序显示某个租户的用户在使用应用程序的标识查询 Microsoft Graph，而不是代表用户来查询。 该示例还演示了使用证书进行身份验证的变体。 |
+|[active-directory-dotnet-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)|ASP.NET MVC | 一个 Web 应用程序，该应用程序使用应用程序的标识来同步 Microsoft Graph 的数据，而不是代表用户来同步。 |

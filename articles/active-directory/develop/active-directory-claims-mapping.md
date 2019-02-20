@@ -12,12 +12,13 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin, jeedes
-ms.openlocfilehash: 18cd96c87f294f1dd8e62f41dd759558c2013aa0
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: aad699df2de8b745058784790e672f5b8c6e98e9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241661"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209738"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -43,7 +44,7 @@ ms.locfileid: "50241661"
 
 有一些可定义如何以及何时在令牌中使用它们的特定声明集。
 
-| 声明集 | Description |
+| 声明集 | 说明 |
 |---|---|
 | 核心声明集 | 存在于每个令牌中，与策略无关。 这些声明也被视为受限制的，无法修改。 |
 | 基本声明集 | 包括默认情况下为令牌发出的声明（除了核心声明集之外）。 可以省略或通过使用声明映射策略来修改基本声明。 |
@@ -245,7 +246,7 @@ ms.locfileid: "50241661"
 
 **数据类型：** 布尔值（True 或 False）
 
-**摘要：** 此属性确定是否在受此策略的令牌中包含基本声明集。 
+**摘要：** 此属性确定是否在受此策略影响的令牌中包含基本声明集。 
 
 - 如果设置为 True，则在受此策略的令牌中发出基本声明集中的所有声明。 
 - 如果设置为 False，基本声明集中的声明不包含在令牌中，除非在相同策略的声明架构属性中单独添加它们。
@@ -257,7 +258,7 @@ ms.locfileid: "50241661"
 
 **字符串：** ClaimsSchema
 
-**数据类型：** 具有一个或多个声明架构条目的 JSON blob
+**数据类型：** 具有一个或多个声明架构条目的 JSON Blob
 
 **摘要：** 此属性定义除了基本声明集与核心声明集之外，在受此策略影响的令牌中存在的声明。
 对于此属性中定义的每个声明架构条目，都需要特定信息。 指定数据来源（**Value** 或 **Source/ID 对**）以及数据作为哪种声明发出（**声明类型**）。
@@ -270,12 +271,12 @@ ms.locfileid: "50241661"
 
 将 Source 元素设置为下列值之一： 
 
-- “user”：声明中的数据是用户对象的属性。 
-- “application”：声明中的数据是应用程序（客户端）服务主体的属性。 
-- “resource”：声明中的数据是资源服务主体的属性。
-- “audience”：声明中的数据是作为令牌受众的服务主体（客户端或资源服务主体）的属性。
-- “company”：声明中的数据是资源租户的公司对象的属性。
-- “transformation”：声明中的数据来自声明转换（请参阅本文后面的“声明转换”部分）。
+- "user"：声明中的数据是 User 对象的属性。 
+- "application"：声明中的数据是应用程序（客户端）服务主体的属性。 
+- "resource"：声明中的数据是资源服务主体的属性。
+- "audience"：声明中的数据是作为令牌受众的服务主体（客户端或资源服务主体）的属性。
+- "company"：声明中的数据是资源租户的 Company 对象的属性。
+- "transformation"：声明中的数据来自声明转换（请参阅本文后面的“声明转换”部分）。
 
 如果 Source 是 transformation，则 **TransformationID** 元素也必须包含在此声明定义中。
 
@@ -283,7 +284,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3：每个 Source 的有效 ID 值
 
-|源|ID|Description|
+|源|ID|说明|
 |-----|-----|-----|
 |用户|surname|姓氏|
 |用户|givenname|名字|
@@ -333,7 +334,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 - 此元素必须与 **ClaimsTransformation** 属性（定义如何生成此声明的数据）中的转换条目的 ID 元素匹配。
 
-**声明类型：** **JwtClaimType** 和 **SamlClaimType** 元素定义此声明架构条目引用的声明。
+**声明类型：****JwtClaimType** 和 **SamlClaimType** 元素定义此声明架构条目引用的声明。
 
 - JwtClaimType 必须包含要在 JWT 中发出的声明的名称。
 - SamlClaimType 必须包含要在 SAML 令牌中发出的声明的 URI。
@@ -345,19 +346,19 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 **字符串：** ClaimsTransformation
 
-**数据类型：** 具有一个或多个转换条目的 JSON blob 
+**数据类型：** 具有一个或多个转换条目的 JSON Blob 
 
 **摘要：** 使用此属性可将常见转换应用于源数据，以便为声明架构中指定的声明生成输出数据。
 
 **ID：** 使用 ID 元素可在 TransformationID 声明架构条目中引用此转换条目。 对于此策略中的每个转换条目，此值必须是唯一的。
 
-**TransformationMethod：** TransformationMethod 元素标识为生成声明的数据而执行的操作。
+**TransformationMethod：** TransformationMethod 元素用于标识为生成声明的数据而执行的操作。
 
 根据选择的方法，需要一组输入和输出。 使用 **InputClaims**、**InputParameters** 和**OutputClaims** 元素定义输入和输出。
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>表 4：转换方法以及预期输入和输出
 
-|TransformationMethod|预期输入|预期输出|Description|
+|TransformationMethod|预期输入|预期输出|说明|
 |-----|-----|-----|-----|
 |Join|string1、string2、separator|outputClaim|联接输入字符串（之间使用分隔符）。 例如：string1：“foo@bar.com”、string2：“sandbox”、separator：“.”会生成 outputClaim：“foo@bar.com.sandbox”|
 |ExtractMailPrefix|mail|outputClaim|提取电子邮件地址的本地部分。 例如：mail：“foo@bar.com”会生成 outputClaim：“foo”。 如果未提供 \@ 符号，则按原样返回原始输入字符串。|
@@ -383,7 +384,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5：允许作为 SAML NameID 数据源的属性
 
-|源|ID|Description|
+|源|ID|说明|
 |-----|-----|-----|
 |用户|mail|电子邮件地址|
 |用户|userprincipalname|用户主体名称|

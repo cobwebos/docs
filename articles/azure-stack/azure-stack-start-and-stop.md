@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/19/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: b8d13377b2fb1545ecf88645a5e19bf5eab24c74
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6b14f5e8967567030ce854d05c53a8d26027e9a6
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238129"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428833"
 ---
 # <a name="start-and-stop-azure-stack"></a>启动和停止 Azure Stack
-应该遵循本文中的过程正确关闭再重启 Azure Stack 服务。 关闭将物理关闭整个 Azure Stack 环境的电源。 启动会启动所有基础结构角色，并将租户资源返回到关闭之前的电源状态。
+应该遵循本文中的过程正确关闭再重启 Azure Stack 服务。 关闭将物理关闭整个 Azure Stack 环境的电源。 启动上启动所有基础结构角色，并返回租户的资源添加到它们在关闭之前所处的电源状态。
 
 ## <a name="stop-azure-stack"></a>停止 Azure Stack 
 
