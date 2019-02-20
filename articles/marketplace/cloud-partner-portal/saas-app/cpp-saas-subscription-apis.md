@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c09816d45169ce9bb6c926b8b17b075ea1059ec7
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: e56169d74d1669c3bb7adda06590145d2ca31b72
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695366"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893334"
 ---
 # <a name="saas-sell-through-azure---apis"></a>通过 Azure 销售 SaaS - API
 
@@ -68,7 +68,7 @@ Azure 不会对 SaaS 服务公开给其最终用户的身份验证施加任何�
     -   **登录 URL**：对于 Web 应用/API 应用程序，请提供应用的基 URL。 例如，**http://localhost:31544** 可以是本地计算机上运行的 Web 应用的 URL。 然后，用户将使用此 URL 登录到 Web 客户端应用程序。
     -   **重定向 URI**：对于本机应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入特定于你的应用程序的值，例如 **http://MyFirstAADApp**。
 
-        ![SaaS AD 应用注册](./media/saas-offer-app-registration-2.png)有关 Web 应用程序或本机应用程序的具体示例，请查看 [Azure AD 开发人员指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide#get-started)的“快速入门”部分中提供的快速入门引导设置。
+        ![SaaS AD 应用注册](./media/saas-offer-app-registration-2.png)有关 Web 应用程序或本机应用程序的具体示例，请查看 [Azure AD 开发人员指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)的“快速入门”部分中提供的快速入门引导设置。
 
 5.  完成后，单击“创建”。 Azure AD 会将唯一的应用程序 ID 分配给应用程序，同时你会转到应用程序的注册主页。 根据应用程序是 Web 应用程序还是本机应用程序，会提供不同的选项用于将更多功能添加到应用程序。
 
@@ -148,7 +148,9 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 ### <a name="resolve-subscription"></a>解析订阅
 
-用户针对解析终结点执行 POST 操作可将令牌解析为永久性资源 ID。
+用户针对解析终结点执行 POST 操作可将市场令牌解析为永久性资源 ID。  资源 ID 是 SAAS 订阅的唯一标识符。 
+
+当用户重定向到 ISV 的网站时，URL 将在查询参数中包含一个令牌。 ISV 应当使用此令牌，并发出请求来解析它。 响应包含资源的唯一 SAAS 订阅 ID、名称、产品/服务 ID 和计划。 此令牌的有效期仅为一小时。
 
 *请求*
 

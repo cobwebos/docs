@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 7b5dc6d892741f63596589a48ad5d45891b14c21
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d7801b5ea73cf94439ae2974f91d2032f9bf8a3b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040399"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166736"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nimblex"></a>教程：Azure Active Directory 与 Nimblex 的集成
 
@@ -107,7 +108,7 @@ ms.locfileid: "39040399"
 
     ![Nimblex 域和 URL 单一登录信息](./media/nimblex-tutorial/tutorial_nimblex_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<YOUR APPLICATION PATH>/Login.aspx`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<YOUR APPLICATION PATH>/Login.aspx`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<YOUR APPLICATION PATH>/`
 
@@ -146,7 +147,7 @@ ms.locfileid: "39040399"
 
     ![Nimblex saml](./media/nimblex-tutorial/tutorial_nimblex_sso.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“说明”文本框中，键入实例名称。
+    a. 在“说明”文本框中，键入实例名称。
 
     b. 在记事本中，打开从 Azure 门户下载的 base-64 编码证书，复制其内容，然后将其粘贴到“证书”框中。
 
@@ -178,7 +179,7 @@ ms.locfileid: "39040399"
 
     ![“用户”对话框](./media/nimblex-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -191,7 +192,7 @@ ms.locfileid: "39040399"
 本部分是要在 Nimblex 中创建名为“Britta Simon”的用户。 Nimblex 支持实时预配（默认情况下为启用状态）。 此部分不存在任何操作项。 在尝试访问 Nimblex 期间，如果该用户尚不存在，则将创建一个新用户。
 
 >[!Note]
->如果需要手动创建用户，请联系 [Nimblex 客户端支持团队](mailto:support@ebms.com.au)。
+>如果需要手动创建用户，请联系 [Nimblex 客户端支持团队](mailto:support@ebms.com.au)。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -228,12 +229,12 @@ ms.locfileid: "39040399"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Nimblex 磁贴时，应当会自动登录到 Nimblex 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

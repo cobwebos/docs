@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 1/30/2019
+ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0473bccbd249f70139d815b8353f1ac271df754f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d6e083c4a7595bb70e77bca860c756abc2eaa18e
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658380"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979643"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure 自动化中的在空闲时间启动/停止 VM 解决方案
 
@@ -209,7 +209,7 @@ ms.locfileid: "55658380"
 |External_AutoStop_TimeAggregationOperator | 将应用到所选窗口大小以计算条件的时间聚合运算符。 可接受的值包括：**Average**、**Minimum**、**Maximum**、**Total** 和 **Last**。|
 |External_AutoStop_TimeWindow | Azure 将分析用于触发警报的选定指标的窗口大小。 此参数接受 timespan 格式的输入。 可能的值为 5 分钟到 6 小时。|
 |External_EnableClassicVMs| 指定解决方案是否针对经典 VM。 默认值为 True。 对于 CSP 订阅，这应设置为 False。|
-|External_ExcludeVMNames | 输入要排除的 VM 名称，使用逗号分隔名称，不带空格。|
+|External_ExcludeVMNames | 输入要排除的 VM 名称，使用逗号分隔名称，不带空格。 限制为 140 个 VM。 如果添加超过 140 个 VM，则要排除的 VM 可能会无意中启动或关闭|
 |External_Start_ResourceGroupNames | 指定针对启动操作的一个或多个资源组，使用逗号分隔值。|
 |External_Stop_ResourceGroupNames | 指定针对停止操作的一个或多个资源组，使用逗号分隔值。|
 |Internal_AutomationAccountName | 指定自动化帐户的名称。|
@@ -333,7 +333,7 @@ ms.locfileid: "55658380"
 
 ### <a name="exclude-a-vm"></a>排除 VM
 
-若要将某个 VM 从该解决方案中排除，可以将其添加到 **External_ExcludeVMNames** 变量中。 此变量是要从启动/停止解决方案中排除的特定 VM 的逗号分隔列表。
+若要将某个 VM 从该解决方案中排除，可以将其添加到 **External_ExcludeVMNames** 变量中。 此变量是要从启动/停止解决方案中排除的特定 VM 的逗号分隔列表。 此列表限制为 140 个 VM。 如果向此逗号分隔列表添加超过 140 个 VM，则设置为要排除的 VM 可能会无意中启动或停止。
 
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>修改启动和关闭计划
 

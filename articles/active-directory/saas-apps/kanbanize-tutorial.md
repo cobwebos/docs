@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 746eaadcdb9a588087367c4c70237922cf0f14bf
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 22c136225e5a8526afd482e5ef8400198947422f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39057829"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199674"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kanbanize"></a>教程：Azure Active Directory 与 Kanbanize 集成
 
@@ -107,9 +108,9 @@ ms.locfileid: "39057829"
 
     ![Kanbanize 域和 URL 单一登录信息](./media/kanbanize-tutorial/tutorial_kanbanize_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.kanbanize.com/`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.kanbanize.com/`
 
-    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<subdomain>.kanbanize.com/saml/acs`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.kanbanize.com/saml/acs`
 
     c. 选中“显示高级 URL 设置”。
 
@@ -154,7 +155,7 @@ ms.locfileid: "39057829"
 
     ![Kanbanize 集成](./media/kanbanize-tutorial/tutorial_kanbanize_save.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“Idp 实体 ID”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
+    a. 在“Idp 实体 ID”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
 
     b. 在“Idp 登录终结点”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
@@ -168,7 +169,7 @@ ms.locfileid: "39057829"
     > [!Note]
     > 可以通过组合 Azure 门户的“用户属性”部分中相应属性的命名空间和名称值来获取这些值。
 
-    g. 在记事本中，打开从 Azure 门户下载的 base-64 编码证书，复制其内容（不带开始和结束标记），然后将其粘贴到“Idp X.509 证书”框中。
+    g. 在记事本中，打开从 Azure 门户下载的 base-64 编码证书，复制其内容（不带开始和结束标记），然后将其粘贴到“Idp X.509 证书”框中 ****。
 
     h. 选中“启用同时使用 SSO 和 Kanbanize 登录”。
     
@@ -198,7 +199,7 @@ ms.locfileid: "39057829"
 
     ![“用户”对话框](./media/kanbanize-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -211,7 +212,7 @@ ms.locfileid: "39057829"
 本部分的目的是在 Kanbanize 中创建名为 Britta Simon 的用户。 Kanbanize 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 尝试访问 Kanbanize 期间，如果该用户尚不存在，则将创建一个新用户。
 
 >[!Note]
->如果需要手动创建用户，请联系 [Kanbanize 客户端支持团队](mailto:support@ms.kanbanize.com)。
+>如果需要手动创建用户，请联系 [Kanbanize 客户端支持团队](mailto:support@ms.kanbanize.com)。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -248,12 +249,12 @@ ms.locfileid: "39057829"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Kanbanize 磁贴时，应自动登录到 Kanbanize 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: jeedes
-ms.openlocfilehash: 932a832d4717a788f2d9adfd98ce1ba0c4ca07a1
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dd69616fa544c1d13e14eb8eebb92adb6350d9e8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39507508"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217524"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dossier"></a>教程：Azure Active Directory 与 Dossier 的集成
 
@@ -176,7 +177,7 @@ ms.locfileid: "39507508"
 
 ### <a name="create-a-dossier-test-user"></a>创建 Dossier 测试用户
 
-本部分将在 Dossier 中创建一个名为“Britta Simon”的用户。 请与 [Dossier 支持团队](mailto:support@intellimedia.ca)协作，将用户添加到 Dossier 平台中。 使用单一登录前，必须先创建并激活用户。
+本部分将在 Dossier 中创建一个名为“Britta Simon”的用户。 请与 [Dossier 支持团队](mailto:support@intellimedia.ca)协作，将用户添加到 Dossier 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -218,7 +219,7 @@ ms.locfileid: "39507508"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
