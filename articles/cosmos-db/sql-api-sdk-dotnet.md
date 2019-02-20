@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: e9378fd1e7fd0d8c6b3f913ec3d8f629a2c3be37
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 92d5d458615b029553dee2f8047c85e3fb5f9696
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770680"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892588"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>适用于 SQL API 的 Azure Cosmos DB .NET SDK：下载和发行说明
 > [!div class="op_single_selector"]
@@ -47,6 +47,12 @@ ms.locfileid: "55770680"
 * 新对象模型，使用顶级 CosmosClient 和方法拆分成相关的 CosmosDatabases、CosmosContainers 和 CosmosItems 类。 
 * 支持流。 
 * 对来自服务器的 CosmosResponseMessage 进行了更新以返回状态代码，并且仅在未返回响应时引发异常。 
+
+### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
+
+* 添加了环境变量设置“POCOSerializationOnly”。
+
+* 删除了 DocumentDB.Spatial.Sql.dll，现在在 Microsoft.Azure.Documents.ServiceInterop.dll 中包含
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 
@@ -351,6 +357,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.2.2](#2.2.2) |2019 年 2 月 6 日 |--- |
 | [2.2.1](#2.2.1) |2018 年 12 月 24 日 |--- |
 | [2.2.0](#2.2.0) |2018 年 12 月 7 日 |--- |
 | [2.1.3](#2.1.3) |2018 年 10 月 15 日 |--- |

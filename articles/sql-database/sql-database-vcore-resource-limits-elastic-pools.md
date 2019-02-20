@@ -11,15 +11,15 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/01/2019
-ms.openlocfilehash: cb4d3c4d15dded3c7f90a1e3cf118ca10371dcb1
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.date: 02/072019
+ms.openlocfilehash: 4f025680c1c637f8b8475be2d5784d08e9e2343b
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700989"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962003"
 ---
-# <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Azure SQL 数据库基于 vCore 的购买模型针对弹性池的限制
+# <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>使用基于 vCore 的购买模型限制的弹性池的资源限制
 
 本文提供针对使用基于 vCore 的购买模型的 Azure SQL 数据库弹性池和入池数据库的详细资源限制。
 
@@ -259,6 +259,9 @@ ms.locfileid: "55700989"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关常见问题的解答，请参阅 [SQL 数据库常见问题解答](sql-database-faq.md)。
-- 有关服务器和订阅级别限制的信息，请参阅 [SQL 数据库服务器资源限制概述](sql-database-resource-limits-database-server.md)。
+- 有关单个数据库的 vCore 资源限制，请参阅[使用基于 vCore 的购买模型的单个数据库的资源限制](sql-database-vcore-resource-limits-single-databases.md)
+- 有关单个数据库的 DTU 资源限制，请参阅[使用基于 DTU 的购买模型的单个数据库的资源限制](sql-database-dtu-resource-limits-single-databases.md)
+- 有关弹性池的 DTU 资源限制，请参阅[使用基于 DTU 的购买模型的弹性池的资源限制](sql-database-dtu-resource-limits-elastic-pools.md)
+- 有关托管实例的资源限制，请参阅[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。
 - 有关常规 Azure 限制的相关信息，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md)。
+- 有关数据库服务器上的资源限制的信息，请参阅 [SQL 数据库服务器资源限制概述](sql-database-resource-limits-database-server.md)了解有关服务器级别和订阅级别限制的信息。

@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics 中的高级查询 | Microsoft Docs
-description: 本文提供有关在 Log Analytics 中使用 Analytics 门户编写查询的教程。
+title: Azure Monitor 中的高级查询 | Microsoft Docs
+description: 本文提供有关在 Azure Monitor 中使用 Analytics 门户编写查询的教程。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: b8441d72f85c2160cf756df37722fa6037441236
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 4e5574fa5a615e43d94069a03716fa290b957342
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191540"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993208"
 ---
-# <a name="writing-advanced-queries-in-log-analytics"></a>在 Log Analytics 中编写高级查询
+# <a name="writing-advanced-queries-in-azure-monitor"></a>在 Azure Monitor 中编写高级查询
 
 > [!NOTE]
-> 在学习本课程之前，需完成 [Analytics 门户入门](get-started-portal.md)和[查询入门](get-started-queries.md)。
+> 在完成本课程之前，应先完成 [Azure Monitor 日志分析入门](get-started-portal.md)和[查询入门](get-started-queries.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -130,7 +130,7 @@ SecurityEvent
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关 Log Analytics 查询语言的用法，请参阅其他课程：
+请参阅有关将[数据资源管理器查询语言](/azure/kusto/query/)与 Azure Monitor 日志数据配合使用的其他课程：
 
 - [字符串操作](string-operations.md)
 - [时间和日期操作](datetime-operations.md)

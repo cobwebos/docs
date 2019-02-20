@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: danlep
-ms.openlocfilehash: 7a300826db512a813282eea71d2e898f0221a977
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 394cd1d7f6b806a49c2de471647fd16ba4451d5c
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077737"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978497"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure 市场中查找 Windows VM 映像
 
@@ -28,7 +28,7 @@ ms.locfileid: "55077737"
 
 你还可以使用 [Azure 市场](https://azuremarketplace.microsoft.com/)店面、[Azure 门户](https://portal.azure.com)或 [Azure CLI](../linux/cli-ps-findimage.md) 浏览可用的映像和产品/服务。 
 
-请确保已安装并配置了最新的 [Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
@@ -53,49 +53,49 @@ ms.locfileid: "55077737"
 
 ## <a name="navigate-the-images"></a>浏览映像
 
-在某个位置查找映像的一种方法是按顺序运行 [Get-AzureRMVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher)、[Get-AzureRMVMImageOffer](/powershell/module/azurerm.compute/get-azurermvmimageoffer) 和 [Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) cmdlet：
+在某个位置查找映像的一种方法是按顺序运行 [Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher)、[Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) 和 [Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) cmdlet：
 
 1. 列出映像发布者。
 2. 对于给定的发布者，列出其产品。
 3. 对于给定的产品，列出其 SKU。
 
-然后，对所选 SKU 运行 [Get-AzureRMVMImage](/powershell/module/azurerm.compute/get-azurermvmimage) ，列出要部署的版本。
+然后，对所选 SKU 运行 [Get-AzVMImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimage)，列出要部署的版本。
 
 1. 列出发布者：
 
     ```powershell
     $locName="<Azure location, such as West US>"
-    Get-AzureRMVMImagePublisher -Location $locName | Select PublisherName
+    Get-AzVMImagePublisher -Location $locName | Select PublisherName
     ```
 
 2. 填写你选择的发布者名称并列出产品/服务：
 
     ```powershell
     $pubName="<publisher>"
-    Get-AzureRMVMImageOffer -Location $locName -Publisher $pubName | Select Offer
+    Get-AzVMImageOffer -Location $locName -Publisher $pubName | Select Offer
     ```
 
 3. 填写你选择的产品/服务名称并列出 SKU：
 
     ```powershell
     $offerName="<offer>"
-    Get-AzureRMVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
+    Get-AzVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
     ```
 
 4. 填写你选择的 SKU 名称并获取映像版本：
 
     ```powershell
     $skuName="<SKU>"
-    Get-AzureRMVMImage -Location $locName -Publisher $pubName -Offer $offerName -Sku $skuName | Select Version
+    Get-AzVMImage -Location $locName -Publisher $pubName -Offer $offerName -Sku $skuName | Select Version
     ```
-
-从 `Get-AzureRMVMImage` 命令的输出中，可以选择要部署新虚拟机的版本映像。
+    
+从 `Get-AzVMImage` 命令的输出中，可以选择要部署新虚拟机的版本映像。
 
 以下示例显示了命令及其输出的完整序列：
 
 ```powershell
 $locName="West US"
-Get-AzureRMVMImagePublisher -Location $locName | Select PublisherName
+Get-AzVMImagePublisher -Location $locName | Select PublisherName
 ```
 
 部分输出：
@@ -126,7 +126,7 @@ advantys
 
 ```powershell
 $pubName="MicrosoftWindowsServer"
-Get-AzureRMVMImageOffer -Location $locName -Publisher $pubName | Select Offer
+Get-AzVMImageOffer -Location $locName -Publisher $pubName | Select Offer
 ```
 
 输出：
@@ -143,7 +143,7 @@ WindowsServerSemiAnnual
 
 ```powershell
 $offerName="WindowsServer"
-Get-AzureRMVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
+Get-AzVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
 ```
 
 部分输出：
@@ -173,11 +173,11 @@ Skus
 然后，对于 *2019-Datacenter* SKU：
 
 ```powershell
-$skuName="2019-Datacenter"
-Get-AzureRMVMImage -Location $locName -Publisher $pubName -Offer $offerName -Sku $skuName | Select Version
+$skuName="2016-Datacenter"
+Get-AzVMImage -Location $locName -Publisher $pubName -Offer $offerName -Sku $skuName | Select Version
 ```
 
-现在可以将所选发布者、产品/服务、SKU 和版本合并到 URN 中（由“:”分隔的值）。 使用 [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) cmdlet 创建 VM 时，使用 `--image` 参数传递此 URN。 还可以将 URN 中的版本号替换为 "latest" 以获取映像的最新版本。
+现在可以将所选发布者、产品/服务、SKU 和版本合并到 URN 中（由“:”分隔的值）。 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 创建 VM 时，使用 `--image` 参数传递此 URN。 还可以将 URN 中的版本号替换为 "latest" 以获取映像的最新版本。
 
 如果使用资源管理器模板部署 VM，请在 `imageReference` 属性中单独设置映像参数。 请参阅[模板参考](/azure/templates/microsoft.compute/virtualmachines)。
 
@@ -185,13 +185,13 @@ Get-AzureRMVMImage -Location $locName -Publisher $pubName -Offer $offerName -Sku
 
 ### <a name="view-plan-properties"></a>查看计划属性
 
-若要查看映像的购买计划信息，请运行 `Get-AzureRMVMImage` cmdlet。 如果输出中的 `PurchasePlan` 属性不是 `null`，则映像有条款，在以编程方式部署前需要接受该条款。  
+若要查看映像的购买计划信息，请运行 `Get-AzVMImage` cmdlet。 如果输出中的 `PurchasePlan` 属性不是 `null`，则映像有条款，在以编程方式部署前需要接受该条款。  
 
 例如，*Windows Server 2016 Datacenter* 映像没有附加条款，因此，`PurchasePlan` 信息为 `null`：
 
 ```powershell
-$version = "2019.0.20190115"
-Get-AzureRMVMImage -Location $locName -Publisher $pubName -Offer $offerName -Skus $skuName -Version $version
+$version = "2016.127.20170406"
+Get-AzVMImage -Location $locName -Publisher $pubName -Offer $offerName -Skus $skuName -Version $version
 ```
 
 输出：
@@ -216,7 +216,7 @@ DataDiskImages   : []
 以下示例显示了适用于 *Data Science Virtual Machine - Windows 2016* 映像的类似命令，该映像具有以下 `PurchasePlan` 属性：`name`、`product` 和 `publisher`。 某些映像还具有 `promotion code` 属性。 若要部署此映像，请参阅以下部分，以接受条款并启用编程式部署。
 
 ```powershell
-Get-AzureRMVMImage -Location "westus" -Publisher "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "19.01.14"
+Get-AzVMImage -Location "westus" -Publisher "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"
 ```
 
 输出：
@@ -244,10 +244,10 @@ DataDiskImages   : []
 
 ### <a name="accept-the-terms"></a>接受条款
 
-若要查看许可条款，请使用 [Get-AzureRmMarketplaceterms](/powershell/module/azurerm.marketplaceordering/get-azurermmarketplaceterms) cmdlet 并传入购买计划参数。 输出会提供指向市场映像条款的链接，并显示是否以前已接受条款。 请务必使用字母全部小写的参数值。
+若要查看许可条款，请使用 [Get-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms) cmdlet 并传入购买计划参数。 输出会提供指向市场映像条款的链接，并显示是否以前已接受条款。 请务必使用字母全部小写的参数值。
 
 ```powershell
-Get-AzureRmMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
+Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
 ```
 
 输出：
@@ -263,12 +263,12 @@ Accepted          : False
 Signdate          : 1/25/2019 7:43:00 PM
 ```
 
-使用 [Set-AzureRmMarketplaceterms](/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) cmdlet 接受或拒绝条款。 对于映像的每个订阅，只需接受条款一次。 请务必使用字母全部小写的参数值。 
+使用 [Set-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms) cmdlet 接受或拒绝条款。 对于映像的每个订阅，只需接受条款一次。 请务必使用字母全部小写的参数值。 
 
 ```powershell
-$agreementTerms=Get-AzureRmMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
+$agreementTerms=Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
 
-Set-AzureRmMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" -Terms $agreementTerms -Accept
+Set-AzMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" -Terms $agreementTerms -Accept
 ```
 
 输出：
@@ -287,12 +287,12 @@ Signdate          : 2/23/2018 7:49:31 PM
 
 ### <a name="deploy-using-purchase-plan-parameters"></a>使用购买计划参数进行部署
 
-接受映像的条款后，可以在该订阅中部署 VM。 如以下代码片段中所示，使用 [Set-AzureRmVMPlan](/powershell/module/azurerm.compute/set-azurermvmplan) cmdlet 为 VM 对象设置市场计划信息。 如需为 VM 创建网络设置和完成部署的完整脚本，请参阅 [PowerShell 脚本示例](powershell-samples.md)。
+接受映像的条款后，可以在该订阅中部署 VM。 如以下代码片段中所示，使用 [Set-AzVMPlan](https://docs.microsoft.com/powershell/module/az.compute/set-azvmplan) cmdlet 为 VM 对象设置市场计划信息。 如需为 VM 创建网络设置和完成部署的完整脚本，请参阅 [PowerShell 脚本示例](powershell-samples.md)。
 
 ```powershell
 ...
 
-$vmConfig = New-AzureRmVMConfig -VMName "myVM" -VMSize Standard_D1
+$vmConfig = New-AzVMConfig -VMName "myVM" -VMSize Standard_D1
 
 # Set the Marketplace plan information
 
@@ -302,11 +302,11 @@ $productName = "windows-data-science-vm"
 
 $planName = "windows2016"
 
-$vmConfig = Set-AzureRmVMPlan -VM $vmConfig -Publisher $publisherName -Product $productName -Name $planName
+$vmConfig = Set-AzVMPlan -VM $vmConfig -Publisher $publisherName -Product $productName -Name $planName
 
 $cred=Get-Credential
 
-$vmConfig = Set-AzureRmVMOperatingSystem -Windows -VM $vmConfig -ComputerName "myVM" -Credential $cred
+$vmConfig = Set-AzVMOperatingSystem -Windows -VM $vmConfig -ComputerName "myVM" -Credential $cred
 
 # Set the Marketplace image
 
@@ -316,14 +316,15 @@ $skuName = "windows2016"
 
 $version = "19.01.14"
 
-$vmConfig = Set-AzureRmVMSourceImage -VM $vmConfig -PublisherName $publisherName -Offer $offerName -Skus $skuName -Version $version
+$vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Offer $offerName -Skus $skuName -Version $version
 ...
 ```
-然后将 VM 配置与网络配置对象一起传递给 `New-AzureRmVM` cmdlet。
+然后将 VM 配置与网络配置对象一起传递给 `New-AzVM` cmdlet。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要使用基本映像信息通过 `New-AzureRmVM` cmdlet 快速创建虚拟机，请参阅[使用 PowerShell 创建 Windows 虚拟机](quick-create-powershell.md)。
+若要使用基本映像信息通过 `New-AzVM` cmdlet 快速创建虚拟机，请参阅[使用 PowerShell 创建 Windows 虚拟机](quick-create-powershell.md)。
+
 
 参阅 PowerShell 脚本示例来[创建完全配置的虚拟机](../scripts/virtual-machines-windows-powershell-sample-create-vm.md)。
 

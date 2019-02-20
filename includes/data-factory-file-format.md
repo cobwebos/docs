@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: a9f956e66be03a4811868cbc2e7d6fc7dc672310
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 9b3261679b64e054bb8f750ad99983661a5b6035
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52886367"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56212948"
 ---
 ## <a name="specifying-formats"></a>指定格式
 Azure 数据工厂支持以下格式类型：
@@ -27,7 +27,7 @@ Azure 数据工厂支持以下格式类型：
 | --- | --- | --- | --- |
 | columnDelimiter |用于分隔文件中的列的字符。 可以考虑使用数据中不太可能存在的极少见的不可打印字符：例如，指定“\u0001”表示标题开头 (SOH)。 |只允许一个字符。 **默认**值为**逗号（“,”）**。 <br/><br/>若要使用 Unicode 字符，请参阅 [Unicode 字符](https://en.wikipedia.org/wiki/List_of_Unicode_characters)获取相应的代码。 |否 |
 | rowDelimiter |用于分隔文件中的行的字符。 |只允许一个字符。 **默认**值为以下任何一项：**[“\r\n”、“\r”、“\n”]**（读取时）和 **“\r\n”**（写入时）。 |否 |
-| escapeChar |用于转义输入文件内容中的列分隔符的特殊字符。 <br/><br/>不能同时为表指定 escapeChar 和 quoteChar。 |只允许一个字符。 没有默认值。 <br/><br/>示例：如果使用逗号 (',') 作为列分隔符，但希望在文本中包含逗号字符（例如："Hello, world"），可以将 ‘$’ 定义为转义字符，并在源代码中使用字符串 "Hello$, world"。 |否 |
+| escapeChar |用于转义输入文件内容中的列分隔符的特殊字符。 <br/><br/>不能同时为表指定 escapeChar 和 quoteChar。 |只允许一个字符。 没有默认值。 <br/><br/>示例：如果使用逗号 (',') 作为列分隔符，但希望在文本中包含逗号字符（例如："Hello, world"），可以将“$”定义为转义字符，并在源代码中使用字符串 "Hello$, world"。 |否 |
 | quoteChar |括住字符串值的引号字符。 引号字符内的列和行分隔符被视为字符串值的一部分。 此属性同时适用于输入和输出数据集。<br/><br/>不能同时为表指定 escapeChar 和 quoteChar。 |只允许一个字符。 没有默认值。 <br/><br/>例如，如果以逗号（“,”）作为列分隔符，但想要在文本中使用逗号字符（例如：<Hello, world>），可以将 "（双引号）定义为引号字符，在源中使用字符串“Hello, world”。 |否 |
 | nullValue |用于表示 null 值的一个或多个字符。 |一个或多个字符。 **默认**值为 **“\N”和“NULL”**（读取时）及 **“\N”**（写入时）。 |否 |
 | encodingName |指定编码名称。 |有效的编码名称。 请参阅 [Encoding.EncodingName 属性](https://msdn.microsoft.com/library/system.text.encoding.aspx)。 例如：windows-1250 或 shift_jis。 **默认**值为 **UTF-8**。 |否 |
@@ -213,7 +213,7 @@ Azure 数据工厂支持以下格式类型：
 
 **JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体说来：
 
-- `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非需要进行列映射。 请参阅[指定矩形数据集的结构定义](#specifying-structure-definition-for-rectangular-datasets)部分，了解更多详细信息。
+- `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非需要进行列映射。 请参阅“指定矩形数据集的结构定义”部分，了解更多详细信息。
 - `jsonPathDefinition` 为每个列指定 JSON 路径，表明从何处提取数据。 若要从数组中复制数据，可以使用 **array[x].property** 从 xth 对象中提取给定属性的值，也可以使用 **array[*].property** 从包含此类属性的任何对象中查找该值。
 
 ```json
@@ -286,7 +286,7 @@ Azure 数据工厂支持以下格式类型：
 
 **JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体说来：
 
-- `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非需要进行列映射。 请参阅[指定矩形数据集的结构定义](#specifying-structure-definition-for-rectangular-datasets)部分，了解更多详细信息。
+- `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非需要进行列映射。 请参阅“指定矩形数据集的结构定义”部分，了解更多详细信息。
 - `jsonNodeReference` 指示进行迭代操作，在**数组**订单行下以同一模式从对象提取数据。
 - `jsonPathDefinition` 为每个列指定 JSON 路径，表明从何处提取数据。 在以下示例中，"ordernumber"、"orderdate" 和 "city" 位于 JSON 路径以“$.”开头的根对象下，而 "order_pd" 和 "order_price" 在定义时使用的路径派生自没有“$.”的数组元素。
 

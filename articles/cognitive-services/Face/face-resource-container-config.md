@@ -4,19 +4,19 @@ titlesuffix: Face - Azure Cognitive Services
 description: 容器配置设置。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 218343db4d8ac7e35f58951ee177f5c288aed3d9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: a70c200f0260d87d35eae8728ed1f908e7061f32
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476411"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979099"
 ---
 # <a name="configure-face-docker-containers"></a>配置人脸 Docker 容器
 
@@ -45,7 +45,7 @@ ms.locfileid: "55476411"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-`Billing` 设置指定 Azure 上用于计量容器的账单信息的人脸资源的终结点 URI。 必须为此配置设置指定值，并且该值必须是 Azure 上人脸资源的有效终结点 URI。
+`Billing` 设置指定 Azure 上用于计量容器的账单信息的人脸资源的终结点 URI。 必须为此配置设置指定值，并且该值必须是 Azure 上人脸资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
 
 可以在以下位置找到此设置：
 
@@ -112,7 +112,7 @@ ms.locfileid: "55476411"
 
 ### <a name="basic-example"></a>基本示例 
 
-  ```Docker
+  ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
   containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \
@@ -122,7 +122,7 @@ ms.locfileid: "55476411"
 
 ### <a name="logging-example-with-command-line-arguments"></a>使用命令行参数的日志记录示例
 
-  ```Docker
+  ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \
   Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} \
@@ -131,7 +131,7 @@ ms.locfileid: "55476411"
 
 ### <a name="logging-example-with-environment-variable"></a>带有环境变量的日志记录示例
 
-  ```Docker
+  ```
   SET Logging:Console:LogLevel=Information
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \

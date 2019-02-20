@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: 88618e5b9de9cb8ac46b9b167e6fa6dbccd73687
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 717b895696ca93444744955937c6de23626c7835
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732305"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234742"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
 
@@ -133,9 +133,9 @@ POA 是一个 Azure Service Fabric 应用程序，可在 Service Fabric 群集�
 
 3. 通过这些更改更新群集清单后，使用已更新的群集清单[创建新群集](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server)或[升级群集配置](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server)。 群集使用已更新的群集清单运行后，就可以看到修复管理器系统服务在群集中运行，该服务在 Service Fabric Explorer 中的系统服务部分下被称为 `fabric:/System/RepairManagerService`。
 
-### <a name="disable-automatic-windows-update-on-all-nodes"></a>在所有节点上禁用自动 Windows 更新
+### <a name="configure-windows-updates-for-all-nodes"></a>为所有节点配置 Windows 更新
 
-自动 Windows 更新可能导致可用性丢失，因为多个群集节点可能同时重启。 修补业务流程应用默认会尝试在每个群集节点上禁用自动 Windows 更新。 但是，如果设置由管理员或组策略管理，我们建议显式将 Windows 更新策略设置为“下载之前发出通知”。
+自动 Windows 更新可能会导致可用性丢失，因为多个群集节点可能同时重启。 修补业务流程应用默认会尝试在每个群集节点上禁用自动 Windows 更新。 但是，如果设置由管理员或组策略管理，我们建议显式将 Windows 更新策略设置为“下载之前发出通知”。
 
 ## <a name="download-the-app-package"></a>下载应用包
 

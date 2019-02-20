@@ -5,15 +5,15 @@ services: networking
 author: jimdial
 ms.service: networking
 ms.topic: include
-ms.date: 08/16/2018
+ms.date: 02/07/2019
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 0394d1cc44dae270682691e2091543e5aab321f6
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: fe1993a914ea4d3bd8ab9116748198cbb0c1c43c
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513996"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55904948"
 ---
 <a name="virtual-networking-limits-classic"></a>以下限制仅适用于每个订阅通过经典部署模型托管的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
@@ -76,11 +76,12 @@ ms.locfileid: "55513996"
 以下限制仅适用于每个订阅按区域通过 Azure 资源管理器管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)
 
 | 资源 | 默认限制 |
-| --- | --- | --- |
+| --- | --- |
 | 负载均衡器 | 1000 | 
 | 每个资源的规则数，基本 | 250 |
 | 每个资源的规则数，标准 | 1500 | 
 | 每个 IP 配置的规则数 | 299 |
+| 每个 NIC 的规则数 | 500 |
 | 前端 IP 配置数，基本 | 200 |
 | 前端 IP 配置数，标准 | 600 |
 | 后端池数，基本 | 100，单个可用性集 |
@@ -88,7 +89,5 @@ ms.locfileid: "55513996"
 | 每个负载均衡器的后端资源数，标准* | 150 |
 | HA 端口数，标准 | 每个内部前端 1 个 |
 
-**多达 150 种资源，独立虚拟机、可用性集和虚拟机规模集可任意组合。
-
-如果需要在默认值的基础上提高限制，请[与支持人员联系](../articles/azure-supportability/resource-manager-core-quotas-request.md )。
+** 多达 150 种资源，独立虚拟机资源、可用性集资源和虚拟机规模集资源可任意组合。
 

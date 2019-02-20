@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2f21c54100a46d2f6ba28d2063bea91b84ea06d4
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 160bc0e67b2686d17357241887a207cb4a03002c
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769315"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098096"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>通过 Azure 机器学习服务使用 SSL 保护 Web 服务
 
@@ -82,6 +82,16 @@ SSL 会对在客户端和 Web 服务之间发送的数据进行加密。 客户�
     aci_config = AciWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
++ **在现场可编程门阵列 (FPGA) 上进行部署**
+
+  部署到 FPGA 时，请为 SSL 相关参数提供值，如以下代码片段中所示：
+
+    ```python
+    from azureml.contrib.brainwave import BrainwaveWebservice
+
+    deployment_config = BrainwaveWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem")
+    ```
+
 ## <a name="update-your-dns"></a>更新 DNS
 
 接下来，必须更新 DNS，使其指向该 Web 服务。
@@ -97,10 +107,6 @@ SSL 会对在客户端和 Web 服务之间发送的数据进行加密。 客户�
   在 AKS 群集的“公用 IP 地址”的“配置”选项卡下更新 DNS，如下图中所示。 可以在包含 AKS 代理节点和其他网络资源的资源组下找到公用 IP 地址，它是该资源组中创建的资源类型之一。
 
   ![Azure 机器学习服务：使用 SSL 保护 Web 服务](./media/how-to-secure-web-service/aks-public-ip-address.png)
-
-+ **对于 FPGA**：
-
-目前不支持在部署到 FPGA 的服务中使用 SSL。
 
 ## <a name="next-steps"></a>后续步骤
 了解如何：

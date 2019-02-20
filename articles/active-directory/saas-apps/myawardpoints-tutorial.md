@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 My Award Points Top Sub/Top Team 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 My Award Points Top Sub/Top Team 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 My Award Points Top Sub/Top Team 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 479fcc0408021ff63dbcabe3734f60a4ad6d542f
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 19ed1c12768eed0265f65388984a5859b8f0630b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247748"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210724"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>教程：Azure Active Directory 与 My Award Points Top Sub/Top Team 的集成
+# <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>教程：Azure Active Directory 与 My Award Points Top Sub/Top Team 集成
 
 本教程介绍如何将 My Award Points Top Sub/Top Team 与 Azure Active Directory (Azure AD) 集成。
 
@@ -151,7 +152,7 @@ ms.locfileid: "48247748"
 
     ![“用户”对话框](./media/myawardpoints-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -161,7 +162,7 @@ ms.locfileid: "48247748"
 
 ### <a name="create-a-my-award-points-top-subtop-team-test-user"></a>创建 My Award Points Top Sub/Top Team 测试用户
 
-在本部分，我们将在 My Award Points Top Sub/Top Team 中创建名为“Britta Simon”的用户。 与 [My Award Points Top Sub/Top Team 支持团队](mailto:myawardpoints@biworldwide.com)协作，在 My Award Points Top Sub/Top Team 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分，我们将在 My Award Points Top Sub/Top Team 中创建名为“Britta Simon”的用户。 请与  [My Award Points Top Sub/Top Team 支持团队](mailto:myawardpoints@biworldwide.com) 协作，将用户添加到 My Award Points Top Sub/Top Team 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -198,7 +199,7 @@ ms.locfileid: "48247748"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“My Award Points Top Sub/Top Team”磁贴时，应会自动登录到 My Award Points Top Sub/Top Team 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 

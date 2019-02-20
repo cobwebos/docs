@@ -2,7 +2,7 @@
 title: 开发视频播放器应用程序
 description: 此主题提供了可用来开发用户自己的客户端应用程序（这些应用程序使用媒体服务中的流媒体）的播放器框架和插件的链接。
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: d7f55022dc526f44251814ac953787d6652e6f90
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6c57c8ad85ef83e8739bc2bf35b3bd0dc6d5a902
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237037"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004836"
 ---
 # <a name="develop-video-player-applications"></a>开发视频播放器应用程序
 ## <a name="overview"></a>概述

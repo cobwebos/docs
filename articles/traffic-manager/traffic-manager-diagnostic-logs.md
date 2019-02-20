@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: kumud
-ms.openlocfilehash: abdc50d6d3d27ab7611994089345a997afc72cae
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: a7d6893c42028790ec565961f2a2cb54035aefa1
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082582"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106455"
 ---
 # <a name="enable-diagnostic-logging-in-azure-traffic-manager"></a>在 Azure 流量管理器中启用诊断日志记录
 
@@ -26,29 +26,31 @@ ms.locfileid: "55082582"
 
 ## <a name="enable-diagnostic-logging"></a>启用诊断日志记录
 
-可以在 [Azure Cloud Shell](https://shell.azure.com/powershell) 中运行以下命令，或者在计算机上运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 如果在计算机上运行 PowerShell，则需要 *AzureRM* PowerShell 模块 6.13.1 或更高版本。 可以运行 `Get-Module -ListAvailable AzureRM` 来查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以登录到 Azure。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+可以在 [Azure Cloud Shell](https://shell.azure.com/powershell) 中运行以下命令，或者在计算机上运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 如果在计算机上运行 PowerShell，则需要 Azure PowerShell 模块 1.0.0 或更高版本。 可以运行 `Get-Module -ListAvailable Az` 来查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 以登录到 Azure。
 
 1. **检索流量管理器配置文件：**
 
-    若要启用诊断日志记录，需要具有流量管理器配置文件的 ID。 使用 [Get-AzureRmTrafficManagerProfile](/powershell/module/AzureRM.TrafficManager/Get-AzureRmTrafficManagerProfile) 检索要为其启用诊断日志记录的流量管理器配置文件。 输出包括流量管理器配置文件的 ID 信息。
+    若要启用诊断日志记录，需要具有流量管理器配置文件的 ID。 使用 [Get-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile) 检索要为其启用诊断日志记录的流量管理器配置文件。 输出包括流量管理器配置文件的 ID 信息。
 
     ```azurepowershell-interactive
-    Get-AzureRmTrafficManagerProfile -Name <TrafficManagerprofilename> -ResourceGroupName <resourcegroupname>
+    Get-AzTrafficManagerProfile -Name <TrafficManagerprofilename> -ResourceGroupName <resourcegroupname>
     ```
 
 2. **为流量管理器配置文件启用诊断日志记录：**
 
-    通过 [Set-AzureRmDiagnosticSetting](https://docs.microsoft.com/powershell/module/azurerm.insights/set-azurermdiagnosticsetting?view=latest) 使用在上一步骤中获取的 ID 为流量管理器配置文件启用诊断日志记录。 以下命令将流量管理器配置文件的详细日志存储到指定的 Azure 存储帐户。 
+    通过 [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest) 使用在上一步骤中获取的 ID 为流量管理器配置文件启用诊断日志记录。 以下命令将流量管理器配置文件的详细日志存储到指定的 Azure 存储帐户。 
 
       ```azurepowershell-interactive
-    Set-AzureRmDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
+    Set-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
       ``` 
 3. **验证诊断设置：**
 
-      使用 [Get-AzureRmDiagnosticSetting](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermdiagnosticsetting?view=latest) 验证流量管理器配置文件的诊断设置。 以下命令显示为某个资源记录的类别。
+      使用 [Get-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting?view=latest) 验证流量管理器配置文件的诊断设置。 以下命令显示为某个资源记录的类别。
 
      ```azurepowershell-interactive
-     Get-AzureRmDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId>
+     Get-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId>
      ```  
       请确保与流量管理器配置文件资源关联的所有日志类别都显示为已启用。 另外，请验证存储帐户是否已正确设置。
 
@@ -71,7 +73,7 @@ ms.locfileid: "55082582"
 |----|----|---|---|
 |**字段名称**|**字段类型**|**定义**|**示例**|
 |EndpointName|String|记录其运行状况状态的流量管理器终结点的名称。|*myPrimaryEndpoint*|
-|Status|String|所探测的流量管理器终结点的运行状况状态。 状态可以是 **Up** 或 **Down**。|**Up**|
+|状态|String|所探测的流量管理器终结点的运行状况状态。 状态可以是 **Up** 或 **Down**。|**Up**|
 |||||
 
 ## <a name="next-steps"></a>后续步骤

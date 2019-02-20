@@ -7,21 +7,21 @@ ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: douglaslMS
-ms.author: douglasl
+author: CarlRabeler
+ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: e980ec81f66e1045a4d9df33b3392589f5c1a668
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 050da5e71fd804055d0a2ece1150b79b3922170f
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463746"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100578"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>将 Azure SQL 数据库导出到 BACPAC 文件
 
-如果需要为存档或移动到其他平台而导出数据库，可将数据库架构和数据导出到 [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) 文件。 BACPAC 文件是扩展名为 BACPAC 的 ZIP 文件，其中包含来自 SQL Server 数据库的元数据和数据。 可将 BACPAC 文件存储在 Azure blob 存储中或存储在本地位置的本地存储中，之后可以导入回 Azure SQL 数据库或 SQL Server 本地安装。
+如果需要为存档或移动到其他平台而导出数据库，可将数据库架构和数据导出到 [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) 文件。 BACPAC 文件是扩展名为 BACPAC 的 ZIP 文件，其中包含来自 SQL Server 数据库的元数据和数据。 可将 BACPAC 文件存储在 Azure Blob 存储中或存储在本地位置的本地存储中，之后可以导入回 Azure SQL 数据库或 SQL Server 本地安装。
 
 > [!IMPORTANT]
 > Azure SQL 数据库自动导出已于 2017 年 3 月 1 日停用。 可以使用[长期备份保留](sql-database-long-term-retention.md
@@ -100,5 +100,5 @@ $exportStatus
 - 要了解如何将 BACPAC 导入到 SQL Server 数据库，请参阅[将 BACPAC 导入 SQL Server 数据库](https://msdn.microsoft.com/library/hh710052.aspx)。
 - 若要了解如何从 SQL Server 数据库导出 BACPAC，请参阅[导出数据层应用程序](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
 - 若要了解如何使用数据迁移服务迁移数据库，请参阅[使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库](../dms/tutorial-sql-server-to-azure-sql.md)。
-- 如果将从 SQL Server 中导出作为迁移到 Azure SQL 数据库的准备，请参阅[将 SQL Server 数据库迁移到 Azure SQL 数据库](sql-database-cloud-migrate.md)。
+- 如果将从 SQL Server 中导出作为迁移到 Azure SQL 数据库的准备，请参阅[将 SQL Server 数据库迁移到 Azure SQL 数据库](sql-database-single-database-migrate.md)。
 - 若要了解如何安全地管理和共享存储密钥和共享访问签名，请参阅 [Azure 存储安全指南](https://docs.microsoft.com/azure/storage/common/storage-security-guide)。

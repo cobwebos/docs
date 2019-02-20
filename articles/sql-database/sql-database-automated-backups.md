@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 37b88b254b350d5c9e006e882a2dc5a39b880b2c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: af3a654010fa676096bfad895d5814b2cefa8e71
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477805"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997112"
 ---
 # <a name="automated-backups"></a>自动备份
 
@@ -63,7 +63,7 @@ SQL 数据库使用 SQL Server 技术创建[完整](https://docs.microsoft.com/s
 
 #### <a name="vcore-based-purchasing-model"></a>基于 vCore 的购买模型
 
-如果使用的是[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)，则默认备份保持期为 7 天（适用于单独、入池和实例数据库）。 对于所有 Azure SQL 数据库（单独、入池和实例数据库），可以[将备份保持期更改为最多 35 天](#how-to-change-the-pitr-backup-retention-period)。
+如果使用的是[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)，则默认备份保持期为 7 天（适用于单一、池化和实例数据库）。 对于所有 Azure SQL 数据库（单一、池化和实例数据库），可以[将备份保持期更改为最多 35 天](#how-to-change-the-pitr-backup-retention-period)。
 
 > [!WARNING]
 > 如果缩短当前保留期，早于新保留期的所有现有备份将不再可用。 如果延长当前保留期，SQL 数据库将保留现有备份，直至达到更长的保留期。
@@ -80,7 +80,7 @@ PITR 备份异地冗余且受 [Azure 存储跨区域复制](../storage/common/st
 
 ### <a name="backups-for-long-term-retention"></a>长期保留的备份
 
-单独和入池数据库提供选项，用于在 Azure blob 存储中将完整备份的长期保留 (LTR) 配置为最多 10 年。 如果启用了 LTR 策略，每周完整备份将自动复制到不同的 RA-GRS 存储容器。 为了满足不同的符合性要求，可为每周、每月和/或每年备份选择不同的保留期。 存储消耗量取决于所选的备份频率和保留期。 可以使用 [LTR 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=sql-database)来估算 LTR 存储成本。
+单一和池化数据库提供选项，用于在 Azure Blob 存储中将完整备份的长期保留 (LTR) 配置为最多 10 年。 如果启用了 LTR 策略，每周完整备份将自动复制到不同的 RA-GRS 存储容器。 为了满足不同的符合性要求，可为每周、每月和/或每年备份选择不同的保留期。 存储消耗量取决于所选的备份频率和保留期。 可以使用 [LTR 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=sql-database)来估算 LTR 存储成本。
 
 类似于 PITR，LTR 备份异地冗余且受 [Azure 存储跨区域复制](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)保护。
 
@@ -168,5 +168,5 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 - 数据库备份是任何业务连续性和灾难恢复策略的基本组成部分，因为数据库备份可以保护数据免遭意外损坏或删除。 若要了解其他 Azure SQL 数据库业务连续性解决方案，请参阅[业务连续性概述](sql-database-business-continuity.md)。
 - 要使用 Azure 门户还原到某个时间点，请参阅[使用 Azure 门户将数据库还原到某个时间点](sql-database-recovery-using-backups.md)。
 - 要使用 PowerShell 还原到某个时间点，请参阅[使用 PowerShell 将数据库还原到某个时间点](scripts/sql-database-restore-database-powershell.md)。
-- 若要使用 Azure 门户在 Azure blob 存储中配置和管理自动备份的长期保留，并从中进行还原，请参阅[使用 Azure 门户管理长期备份保留](sql-database-long-term-backup-retention-configure.md)。
+- 若要使用 Azure 门户在 Azure Blob 存储中配置和管理自动备份的长期保留，并从中进行还原，请参阅[使用 Azure 门户管理长期备份保留](sql-database-long-term-backup-retention-configure.md)。
 - 若要使用 PowerShell 在 Azure blob 存储中配置和管理自动备份的长期保留，并从中进行还原，请参阅[使用 PowerShell 管理长期备份保留](sql-database-long-term-backup-retention-configure.md)。

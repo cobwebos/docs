@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 01/14/2019
+ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 894724b08876e96119bf72ce65e22c6ae884d8da
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 192a6f4841e9dc3a478da5e4b53594362955ca71
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306873"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56246719"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP 是否在所有 Azure VPN 网关 SKU 上受支持？
 否，BGP 在 Azure **VpnGw1**、**VpnGw2**、**VpnGw3**、标准 VPN 网关和高性能 VPN 网关上受支持。 **基本** SKU。
@@ -49,6 +49,9 @@ Azure VPN 网关会将以下路由播发到本地 BGP 设备：
 * VNet 地址前缀
 * 已连接到 Azure VPN 网关的每个本地网关的地址前缀
 * 从连接到 Azure VPN 网关的其他 BGP 对等会话获知的路由， **默认路由或与任何 VNet 前缀重叠的路由除外**。
+
+### <a name="how-many-prefixes-can-i-advertise-to-azure-vpn-gateway"></a>我可以向 Azure VPN 网关发布多少个前缀？
+我们支持最多 4000 个前缀。 如果前缀数目超过此限制，将丢弃 BGP 会话。
 
 ### <a name="can-i-advertise-default-route-00000-to-azure-vpn-gateways"></a>能否将默认路由 (0.0.0.0/0) 播发给 Azure VPN 网关？
 是的。

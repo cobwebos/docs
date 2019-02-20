@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 0c7e0e539ca884739f5bf633946a4704d29b132b
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 9f8d6488d12b5550c3390699b9c34380b51b60f9
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448222"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112591"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
 
 本文介绍如何在 Azure Monitor 中使用 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)配置[较新的指标警报](../../azure-monitor/platform/alerts-metric-near-real-time.md)。 使用资源管理器模板可以通过编程方式在多个环境中设置一致且可重现的警报。 较新的指标警报当前适用于[这套资源类型](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)。
 
 > [!IMPORTANT]
-> 为指标警报指定的资源管理器模板不能用于以下资源类型：Microsoft.OperationalInsights/workspace；因为 Log Analytics 中对指标的支持处于预览状态。 若要通过资源模板使用预览功能，可联系 [Azure 警报反馈](mailto:azurealertsfeedback@microsoft.com)
+> 用于针对资源类型创建指标警报的资源模板：Azure Log Analytics 工作区（即 `Microsoft.OperationalInsights/workspaces`）需要执行其他步骤。 有关详细信息，请参阅有关[日志指标警报 - 资源模板](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)的文章。
 
 基本步骤如下所示：
 

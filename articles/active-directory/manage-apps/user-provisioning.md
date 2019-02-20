@@ -3,8 +3,8 @@ title: Azure AD 中的自动 SaaS 应用用户预配 | Microsoft Docs
 description: 介绍可以如何使用 Azure AD 进行自动化设置、取消设置，并不断跨多个第三方 SaaS 应用程序更新用户帐户。
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.devlang: na
@@ -12,14 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/30/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asmalser
-ms.openlocfilehash: a4fc037ed566905133f59163ef99d5e107ca4bcc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3e8b099f845df66dfe8c43bc6f968fd63b30d09d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190915"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186346"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配
 
@@ -39,7 +40,7 @@ Azure Active Directory (Azure AD) 允许用户自动创建、维护和删除云 
 
 * 在源与目标系统之间匹配现有标识的功能。
 * 可自定义的属性映射，定义应将哪些用户数据从源系统流向目标系统。
-* 可选电子邮件警报，用于预配错误
+* 可选电子邮件警报，用于设置错误。
 * 报表和活动日志，用于帮助进行监视和故障排除。
 
 ## <a name="why-use-automated-provisioning"></a>为何要使用自动化预配？
@@ -47,7 +48,7 @@ Azure Active Directory (Azure AD) 允许用户自动创建、维护和删除云 
 使用此功能的一些常见动机包括：
 
 * 避免与手动预配过程相关的成本、低效和人为错误。
-* 避免产生与托管和维护定制开发的预配解决方案和脚本相关的成本
+* 避免产生与托管和维护定制开发的预配解决方案和脚本相关的成本。
 * 通过在用户离开组织时立即删除其在关键 SaaS 应用中的标识，从而保护组织。
 * 轻松将大量用户导入特定的 SaaS 应用程序或系统。
 * 享用一组策略，确定已预配哪些用户，以及哪些用户可登录应用。
@@ -214,13 +215,13 @@ Azure AD 功能预先集成了对多种常见 SaaS 应用和人力资源系统�
     
 影响**初始同步**的完成时间的因素汇总：
 
-* 预配范围中用户和组的总数
+* 预配范围内用户和组的总数。
 
-* 源系统 (Azure AD) 中存在的用户、组和组成员的总数
+* 源系统 (Azure AD) 中存在的用户、组和组成员的总数。
 
 * 预配范围中的用户与目标应用程序中的现有用户匹配，还是需要首次创建。 要首次为其创建所有用户的同步作业花费的时间大约是所有用户都与现有用户匹配的同步作业花费的时间的“两倍”。
 
-* [审核日志](check-status-user-account-provisioning.md)中的错误数。 如果有许多错误，并且预配服务已进入“隔离”状态，则性能较低 
+* [审核日志](check-status-user-account-provisioning.md)中的错误数。 如果有许多错误，并且预配服务已进入“隔离”状态，则性能较低。    
 
 * 目标系统实现的请求速率限制。 某些目标系统实现了在大型同步操作期间可能会影响性能的请求速率限制。 在这些情况下，太快地接收太多请求的应用可能会拖慢其响应速率或关闭连接。 为提高性能，连接器需要进行调整，以不高于应用可以应对的处理速率的速率来向应用发送请求。 Microsoft 构建的预配连接器进行此调整。 
 

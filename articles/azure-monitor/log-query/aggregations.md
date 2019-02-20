@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics 中的聚合 | Microsoft Docs
-description: 介绍 Log Analytics 查询中的聚合函数，这些函数提供了有用的数据分析方式。
+title: Azure Monitor 日志查询中的聚合 | Microsoft Docs
+description: 介绍 Azure Monitor 日志查询中的聚合函数，这些函数提供了有用的数据分析方式。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: f5ecd68c1538fb9e21345221aa22c28217002271
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 31ff0435487592577915e526abcb97197f591449
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185743"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000841"
 ---
-# <a name="aggregations-in-log-analytics-queries"></a>Log Analytics 查询中的聚合
+# <a name="aggregations-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的聚合
 
 > [!NOTE]
 > 在学习本课程之前，需完成 [Analytics 门户入门](get-started-portal.md)和[查询入门](get-started-queries.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-本文介绍了 Log Analytics 查询中的聚合函数，这些函数提供了有用的数据分析方式。 这些函数都适用于 `summarize` 运算符，后者生成一个包含输入表中聚合结果的表。
+本文介绍 Azure Monitor 日志查询中的聚合函数，这些函数提供了有用的数据分析方式。 这些函数都适用于 `summarize` 运算符，后者生成一个包含输入表中聚合结果的表。
 
 ## <a name="counts"></a>计数
 
@@ -147,7 +147,7 @@ Perf
 | summarize stdev(CounterValue), percentiles(CounterValue, 50) by Computer
 ```
 
-有关 Log Analytics 查询语言的用法，请参阅其他课程：
+请参阅有关将[数据资源管理器查询语言](/azure/kusto/query/)与 Azure Monitor 日志数据配合使用的其他课程：
 
 - [字符串操作](string-operations.md)
 - [时间和日期操作](datetime-operations.md)

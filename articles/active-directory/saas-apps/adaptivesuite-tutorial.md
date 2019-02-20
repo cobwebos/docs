@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 74f38ef3043cfa0e6df40c264b72cc5eae38544e
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e334795a63ff298ff8f0695340f35fdff1ad03e0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430283"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166515"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adaptive-insights"></a>教程：Azure Active Directory 与 Adaptive Insights 集成
 
@@ -99,11 +100,11 @@ ms.locfileid: "49430283"
 
     ![图像](./media/adaptivesuite-tutorial/B1_B2_Select_SSO.png)
 
-2. 在“选择单一登录方法”对话框中，选择“SAML”模式以启用单一登录。
+2. 在“选择单一登录方法”对话框中，选择 SAML 模式以启用单一登录。
 
     ![图像](./media/adaptivesuite-tutorial/b1_b2_saml_sso.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“基本 SAML 配置”对话框。
+3. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
 
     ![图像](./media/adaptivesuite-tutorial/b1-domains_and_urlsedit.png)
 
@@ -111,7 +112,7 @@ ms.locfileid: "49430283"
 
     ![图像](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+    a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
@@ -126,7 +127,7 @@ ms.locfileid: "49430283"
 
     请注意，URL 可能指明以下信息：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 登录 URL
+    a. 登录 URL
 
     b. Azure AD 标识符
 
@@ -148,7 +149,7 @@ ms.locfileid: "49430283"
 
     ![SAML SSO 设置](./media/adaptivesuite-tutorial/IC805646.png "SAML SSO 设置")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识提供者名称”文本框中，键入配置名称。
+    a. 在“标识提供者名称”文本框中，键入配置名称。
 
     b. 将从 Azure 门户复制的“Azure AD 标识符”值粘贴到“标识提供者实体 ID”文本框。
 
@@ -176,7 +177,7 @@ ms.locfileid: "49430283"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
     ![图像](./media/adaptivesuite-tutorial/d_users_and_groups.png)
 
@@ -184,13 +185,13 @@ ms.locfileid: "49430283"
 
     ![图像](./media/adaptivesuite-tutorial/d_adduser.png)
 
-3. 在“用户属性”中，执行以下步骤。
+3. 在“用户属性”中，按照以下步骤操作。
 
     ![图像](./media/adaptivesuite-tutorial/d_userproperties.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 **BrittaSimon**。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 **brittasimon@yourcompanydomain.extension**  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -216,7 +217,7 @@ ms.locfileid: "49430283"
 
    ![提交](./media/adaptivesuite-tutorial/IC805649.png "提交")
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 键入希望在相关文本框中预配的有效 Azure Active Directory 用户的“姓名”、“登录名”、“电子邮件”、“密码”。
+   a. 键入希望在相关文本框中预配的有效 Azure Active Directory 用户的“姓名”、“登录名”、“电子邮件”、“密码”。
 
    b. 选择“角色”。
 
@@ -246,7 +247,7 @@ ms.locfileid: "49430283"
 
     ![图像](./media/adaptivesuite-tutorial/d_assign_user.png)
 
-4. 在“用户和组”对话框中，在“用户”列表中选择 Britta Simon，然后单击屏幕底部的“选择”按钮。
+4. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
 
 5. 在“添加分配”对话框中，选择“分配”按钮。
     
@@ -255,7 +256,7 @@ ms.locfileid: "49430283"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Adaptive Insights”磁贴时，应自动登录到 Adaptive Insights 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 

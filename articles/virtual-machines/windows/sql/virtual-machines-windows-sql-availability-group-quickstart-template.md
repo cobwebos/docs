@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 9db6736813b6d99efad687581f19d23023e1593a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 093fa1414ec624f66bc7cb4559fa8c0535834c10
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814531"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981921"
 ---
 # <a name="create-wsfc-listener-and-configure-ilb-for-an-always-on-availability-group-on-a-sql-server-vm-with-azure-quickstart-template"></a>使用 Azure 快速入门模板在 SQL Server VM 上为 Always On 可用性组创建 WSFC、侦听程序和配置 ILB
 本文介绍如何使用 Azure 快速入门模板来部分自动化在 Azure 中为 SQL Server 虚拟机部署 Always On 可用性组配置的过程。 此过程使用两个 Azure 快速入门模板。 
@@ -153,8 +153,8 @@ Always On 可用性组 (AG) 侦听程序需要一个内部 Azure 负载均衡器
 
 ```PowerShell
 # Remove the AG listener
-# example: Remove-AzureRmResource -ResourceId '/subscriptions/a1a11a11-1a1a-aa11-aa11-1aa1a11aa11a/resourceGroups/SQLAG-RG/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/Cluster/availabilitygrouplisteners/aglistener' -Force
-Remove-AzureRmResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<resource-group-name>/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/<cluster-name>/availabilitygrouplisteners/<listener-name>' -Force
+# example: Remove-AzResource -ResourceId '/subscriptions/a1a11a11-1a1a-aa11-aa11-1aa1a11aa11a/resourceGroups/SQLAG-RG/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/Cluster/availabilitygrouplisteners/aglistener' -Force
+Remove-AzResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<resource-group-name>/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/<cluster-name>/availabilitygrouplisteners/<listener-name>' -Force
 ```
  
 ## <a name="common-errors"></a>常见错误
@@ -166,7 +166,7 @@ AG 侦听程序 Azure 快速入门模板中使用的选定可用性组已包含�
 ### <a name="connection-only-works-from-primary-replica"></a>只能从主要副本进行连接
 此行为的原因可能是 **101-sql-vm-aglistener-setup** 模板部署失败，使 ILB 配置处于不一致状态。 验证后端池是否列出可用性集，并且是否存在运行状况探测规则和负载均衡规则。 如果缺少任何一项，则表示 ILB 配置处于不一致状态。 
 
-若要解决此行为，请使用 [PowerShell](#remove-availability-group-listener) 删除侦听程序，通过 Azure 门户删除内部负载均衡器，然后从[步骤 3](#step-3---manually-create-the-internal-load-balanced-ilb) 重新开始。 
+若要解决此行为，请使用 [PowerShell](#remove-availability-group-listener) 删除侦听程序，通过 Azure 门户删除内部负载均衡器，然后从步骤 3 重新开始。 
 
 ### <a name="badrequest---only-sql-virtual-machine-list-can-be-updated"></a>BadRequest - 只能更新 SQL 虚拟机列表
 部署 **101-sql-vm-aglistener-setup** 模板时，如果通过 SQL Server Management Studio (SSMS) 删除了侦听程序，但未将其从 SQL VM 资源提供程序中删除，则可能会发生此错误。 通过 SSMS 删除侦听程序不会从 SQL VM 资源提供程序中删除该侦听程序的元数据；必须使用 [PowerShell](#remove-availability-group-listener) 从资源提供程序中删除该侦听程序。 

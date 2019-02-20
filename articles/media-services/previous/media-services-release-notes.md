@@ -11,27 +11,28 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: aa2a059dd470e671aa3483f2259bcf91796c070d
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 81139734d0eb7d15e78c465c06fc429de48480c3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631662"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182980"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
+
 这些 Azure 媒体服务发行说明汇总了与以前版本相比的变更之处和已知的问题。
 
 > [!NOTE]
-> 我们希望能够倾听客户的心声，以便努力解决对客户造成影响的问题。 要报告问题或提出问题，请将在 [Azure 媒体服务 MSDN 论坛]提交问题。
-> 
-> 
+> 不会向媒体服务 v2 添加任何新特性或新功能。 
+
+我们希望能够倾听客户的心声，以便努力解决对客户造成影响的问题。 要报告问题或提出问题，请将在 [Azure 媒体服务 MSDN 论坛]提交问题。 
 
 ## <a name="a-idissuescurrently-known-issues"></a><a id="issues"/>当前已知的问题
 ### <a name="a-idgeneralissuesmedia-services-general-issues"></a><a id="general_issues"/>媒体服务一般问题
 
-| 问题 | Description |
+| 问题 | 说明 |
 | --- | --- |
 | REST API 中未提供几种常见的 HTTP 标头。 |如果使用 REST API 来开发媒体服务应用程序，将发现一些常见的 HTTP 标头字段（包括 CLIENT-REQUEST-ID、REQUEST-ID 和 RETURN-CLIENT-REQUEST-ID）不受支持。 未来的更新将增加这些标头。 |
 | 不允许使用百分号编码。 |为流内容构建 URL 时，媒体服务使用 IAssetFile.Name 属性的值（例如，`http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`）。 出于这个原因，不允许使用百分号编码。 Name 属性的值不能含有任何以下[百分号编码保留字符](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!* '();:@&=+$,/?%#[]"。 此外，文件扩展名中只能含有一个“.”。 |

@@ -4,7 +4,7 @@ description: 本文简要介绍 Azure Service Fabric 安全性。
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 629b6fba9ced5fa2ccf22f473fe25c87d1cc4818
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 3e7717d4ee07a1f3bfebb5e09b983af68aa4ea31
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436804"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116214"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Azure Service Fabric 安全性概述
 [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。 Service Fabric 解决了开发和管理云应用程序的难题。 开发人员和管理员不需解决复杂的基础结构问题，只需专注于实现苛刻的任务关键型工作负荷，即那些可缩放且可靠的工作负荷。
@@ -48,7 +48,7 @@ Azure Service Fabric 协调跨计算机群集的服务。 必须保护群集以�
 Service Fabric 针对连接到 Service Fabric 群集的客户端支持两种访问控制类型：
 
 -   **管理员**：对管理功能（包括读取/写入功能）拥有完全访问权限。
--   **用户**：只有管理功能的读取访问权限（例如查询功能），以及解析应用程序和服务的能力。
+-   **用户**：只有管理功能的读取访问权限（例如，查询功能），以及解析应用程序和服务的能力。
 
 通过使用访问控制，群集管理员可以限制对某些类型的群集操作的访问。 这就使得群集更加安全。
 

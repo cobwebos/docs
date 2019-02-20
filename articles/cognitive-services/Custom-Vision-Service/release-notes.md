@@ -3,21 +3,23 @@ title: 发行说明 - 自定义影像服务
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
 author: anrothMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: anroth
-ms.openlocfilehash: bba65a495963142e8b3201a026dc13a8cfff8e70
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b712f47fe9272e0ae6ccb9ab9847462729434698
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207354"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894405"
 ---
 # <a name="custom-vision-service-release-notes"></a>自定义影像服务发行说明
 
+## <a name="january-22-2019"></a>2019 年 1 月 22 日
+- 为新的 Azure 区域添加的支持：美国西部 2、美国东部、美国东部 2、欧洲西部、欧洲北部、亚洲东南部、澳大利亚东部、印度中部、英国南部、日本东部和美国中北部。 对美国中南部的持续支持。 
 
 ## <a name="december-12-2018"></a>2018 年 12 月 12 日
 - 支持导出对象检测模型（引入了对象检测 Compact 域）。

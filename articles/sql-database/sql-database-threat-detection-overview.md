@@ -11,13 +11,13 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 395bf57b967ebeefe0a4168b53a4341c304e3d4f
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/08/2019
+ms.openlocfilehash: 5f20fc6ac19e2c9d304f4ab429e485fedaa29f64
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729500"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001879"
 ---
 # <a name="azure-sql-database-threat-detection"></a>Azure SQL 数据库威胁检测
 
@@ -77,7 +77,7 @@ Azure SQL 数据库威胁检测可检测异常活动（指示异常和可能有�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[独立和入池数据库中的威胁检测](sql-database-threat-detection.md)。
+- 详细了解[单一数据库和入池数据库中的威胁检测](sql-database-threat-detection.md)。
 - 详细了解[托管实例中的威胁检测](sql-database-managed-instance-threat-detection.md)。
 - 详细了解[高级数据安全](sql-database-advanced-data-security.md)。
 - 详细了解 [Azure SQL 数据库审核](sql-database-auditing.md)

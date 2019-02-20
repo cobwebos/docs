@@ -3,9 +3,8 @@ title: 自定义 Azure AD 属性映射 | Microsoft Docs
 description: 了解 Azure Active Directory 中有哪些针对 SaaS 应用的属性映射，以及如何修改它们来满足业务需求。
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
-editor: ''
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/09/2018
-ms.author: barbkess
+ms.author: celested
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eaf6890223526b213ac4ec1180288b95fe6eaa29
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c1926849c8ec63b4240d951e46b1341f31f7c5bd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149856"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170340"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 Salesforce、Google Apps 等等。 如果已为第三方 SaaS 应用程序启用用户预配，Azure 门户将以属性映射的形式控制其属性值。

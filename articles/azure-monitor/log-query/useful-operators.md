@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics 查询中的有用运算符 | Microsoft Docs
-description: 在各种场景下在 Log Analytics 查询中使用的常见函数。
+title: Azure Monitor 日志查询中的有用运算符 | Microsoft Docs
+description: Azure Monitor 日志查询中用于各种方案的常见函数。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: 060b1e469a31c335f062ccd332157d13e64f9318
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d11445c3f31f9aced6fdb9783575d10a026de1f0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183976"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000142"
 ---
-# <a name="useful-operators-in-log-analytics-queries"></a>Log Analytics 查询中的有用运算符
+# <a name="useful-operators-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的有用运算符
 
-下表提供了一些常用函数，可用于 Log Analytics 查询中的不同方案。
+下表提供了一些常用函数，可用于 Azure Monitor 日志查询中的不同方案。
 
 ## <a name="useful-operators"></a>有用的运算符
 
@@ -46,4 +46,4 @@ ms.locfileid: "53183976"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 完成有关[在 Log Analytics 中编写查询](get-started-queries.md)的课程。
+- 完成关于[在 Azure Monitor 中编写日志查询](get-started-queries.md)的一课。

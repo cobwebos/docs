@@ -2,7 +2,7 @@
 title: 使用 DASH.js 在 HTML5 应用程序中嵌入 MPEG-DASH 自适应流式处理视频 | Microsoft Docs
 description: 本主题演示如何使用 DASH.js 在 HTML5 应用程序中嵌入 MPEG-DASH 自适应流式处理视频。
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 2b0e6bf643f55e1809b29def7766c58b59f4bb50
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2c8e71a058b2c770741c38f07c6c440fea90f2b2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783376"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998427"
 ---
-# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>使用 DASH.js 在 HTML5 应用程序中嵌入 MPEG-DASH 自适应流式处理视频
+# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs-legacy"></a>使用 DASH.js 在 HTML5 应用程序中嵌入 MPEG-DASH 自适应流式处理视频（旧版）
+
 ## <a name="overview"></a>概述
 MPEG-DASH 是视频内容自适应流式处理的 ISO 标准，为希望传送高质量自适应视频流式处理输出的开发人员提供了显著的好处。 使用 MPEG-DASH，当网络阻塞时，视频流会自动调整到较低清晰度。 这会减少在播放器下载下几秒钟要播放内容（又称缓冲）时观众看到“暂停”视频的可能性。 当网络拥塞减少时，视频播放器将转而恢复到较高质量的流。 这种适应所需带宽的能力也会导致视频开始的速度更快。 这意味着可以在快速下载较低质量段播放最初的几秒钟，并在已缓冲足够内容后提升到更高质量。
 

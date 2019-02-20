@@ -13,15 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 02/07/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: f9ffbebee06ab7b9e010c7e6c84fee533611fb38
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c9f759eb815e8d0d03d4cdd7fe4ed603ff39d34f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567649"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197532"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>如何：在 Azure Active Directory Identity Protection（已刷新）中配置风险策略
 
@@ -81,7 +82,7 @@ Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录�
 
 如果希望要求有风险的登录进行 MFA，则应当：
 
-1. 对受影响的用户启用[多重身份验证注册策略](#multi-factor-authentication-registration-policy)。
+1. 对受影响的用户启用多重身份验证注册策略。
 
 2. 要求受影响的用户在无风险会话中登录以执行 MFA 注册。
 

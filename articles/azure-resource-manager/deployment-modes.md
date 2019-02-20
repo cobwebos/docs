@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2019
+ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: c0875861a90080c649596880804fe6538c04bc51
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: f3ca140fd8606f60a07b71db32cf2d3987ed7860
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497599"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233593"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure 资源管理器部署模式
 
 部署资源时，可以指定部署为增量更新还是完整更新。  这两种模式的主要区别是资源管理器如何处理资源组中不在模板中的现有资源。 默认模式为增量模式。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+仅根级别模板支持完整部署模式。 对于[链接模板或嵌套模板](resource-group-linked-templates.md)，必须使用增量模式。 
 
 ## <a name="incremental-and-complete-deployments"></a>增量部署和完整部署
 
@@ -84,7 +84,7 @@ az group deployment create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-使用[链接或嵌套模板](resource-group-linked-templates.md)时，必须将 `mode` 属性设为 `Incremental`。 仅根级别模板支持完整部署模式。
+以下示例显示了设置为增量部署模式的链接模板：
 
 ```json
 "resources": [

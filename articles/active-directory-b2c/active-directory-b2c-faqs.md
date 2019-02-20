@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 8774792879443cb39238285b0fdc63ca1097dbea
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cef6f47b62a500737e5b01865f73253f18fa470c
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191170"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960592"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题 (FAQ) 
 此页面解答了有关 Azure Active Directory (Azure AD) B2C 的常见问题。 请随时返回查看更新信息。
@@ -83,7 +83,7 @@ Azure AD B2C 还增加了对[自定义策略](active-directory-b2c-overview-cust
 本地帐户的 Azure AD B2C 密码用户流以 Azure AD 的策略为基础。 Azure AD B2C 的注册、注册或登录和密码重置用户流使用“强”密码强度，并且不会让任何密码过期。 有关详细信息，请阅读 [Azure AD 密码策略](https://msdn.microsoft.com/library/azure/jj943764.aspx)。 有关帐户锁定和密码的信息，请参阅[管理对 Azure Active Directory B2C 中资源和数据的威胁](active-directory-b2c-reference-threat-management.md)。
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>我可以使用 Azure AD Connect 将存储在本地 Active Directory 中的使用者标识迁移到 Azure AD B2C 吗？
-不可以，Azure AD Connect 不是为与 Azure AD B2C 一起使用而设计的。 请考虑使用[图形 API](active-directory-b2c-devquickstarts-graph-dotnet.md) 进行用户迁移。  有关详细信息，请参阅[用户迁移指南](active-directory-b2c-user-migration.md)。
+不可以，Azure AD Connect 不是为与 Azure AD B2C 一起使用而设计的。 请考虑使用 [Azure AD 图形 API](active-directory-b2c-devquickstarts-graph-dotnet.md) 进行用户迁移。  有关详细信息，请参阅[用户迁移指南](active-directory-b2c-user-migration.md)。
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>我的应用是否可在 iFrame 中打开 Azure AD B2C 页？
 不可以，出于安全的考虑，无法在 iFrame 中打开 Azure AD B2C 页。  我们的服务将与浏览器通信以禁止 iFrame。  由于点击劫持的风险，安全社区和 OAUTH2 规范一般建议不要使用 iFrame 进行标识体验。

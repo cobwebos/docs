@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 57c9f9a0b6f3a0502a07ca3124cbe157d8008117
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: c9c5ad0af39b698175c4bc7cb7f720452546ec10
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486888"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997060"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>适用于 Azure 机器学习工作室 Web 服务的 Excel 加载项
 Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
@@ -24,8 +24,8 @@ Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
 
 1. 打开“[示例 Excel 文件](https://aka.ms/amlexcel-sample-2)”，其中包含 Excel 外接程序和有关 Titanic 上的乘客数据。 
  
-> [!NOTE]
-> 你将看到与该文件相关的 Web 服务列表，并在底部显示“自动预测”复选框。 如果启用自动预测，则每次输入发生更改时，**所有**服务的预测都将更新。 如果未选中该复选框，则必须单击“全部预测”才能刷新。 若要在服务级别启用自动预测，请转到步骤 6。
+    > [!NOTE]
+    > 你将看到与该文件相关的 Web 服务列表，并在底部显示“自动预测”复选框。 如果启用自动预测，则每次输入发生更改时，**所有**服务的预测都将更新。 如果未选中该复选框，则必须单击“全部预测”才能刷新。 若要在服务级别启用自动预测，请转到步骤 6。
 
 2. 通过单击来选择 Web 服务，在此示例中为“Titanic 存活者预测器（Excel 外接程序示例）[分数]”。
    
@@ -37,7 +37,7 @@ Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
    
     ![预测部分][02]
 
-部署 Web 服务或使用现有的 Web 服务。 有关部署 Web 服务的详细信息，请参阅[演练步骤 5：部署 Azure 机器学习 Web 服务](walkthrough-5-publish-web-service.md)。
+部署 Web 服务或使用现有的 Web 服务。 有关部署 Web 服务的详细信息，请参阅[教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)。
 
 获取 Web 服务的 API 密钥。 执行此操作的位置取决于是否发布了新的机器学习 Web 服务的经典机器学习 Web 服务。
 
@@ -65,7 +65,7 @@ Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
 
 ## <a name="steps-to-add-a-new-web-service"></a>添加新 Web 服务的步骤
 
-1. 部署 Web 服务或使用现有的 Web 服务。 有关部署 Web 服务的详细信息，请参阅[演练步骤 5：部署 Azure 机器学习 Web 服务](walkthrough-5-publish-web-service.md)。
+1. 部署 Web 服务或使用现有的 Web 服务。 有关部署 Web 服务的详细信息，请参阅[教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)。
 2. 单击“**使用**”。
 3. 查找**基本使用信息**部分。 复制并保存**主密钥**和**请求-响应** URL。
 4. 在 Excel 中，转到“Web 服务”部分（如果在“预测”部分中，请单击返回箭头转到 Web 服务列表）。

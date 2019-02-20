@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 376ebcbc17cc9f5c797c2985fe3c0784f5036600
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 52e0521217fb99bc5fac3fdde8f43f9c80f86ac7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752086"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194226"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -145,7 +145,7 @@ Set-AzureRmStorageSyncServerEndpoint `
 
 服务器终结点可能会出于以下原因而未记录同步活动：
 
-- 该服务器具有活动的 VSS 同步会话 (SnapshotSync)。 某个服务器终结点的 VSS 同步会话处于活动状态时，在 VSS 同步会话完成之前，同一卷上的其他服务器终结点无法启动同步会话。
+- 安装了代理版本 4.3.0.0 或之前版本，且服务器具有活动的 VSS 同步会话 (SnapshotSync)。 某个服务器终结点的 VSS 同步会话处于活动状态时，在 VSS 同步会话完成之前，同一卷上的其他服务器终结点无法启动同步会话。 若要解决此问题，请安装代理版本 5.0.2.0 或更高版本，这些版本在 VSS 同步会话时处于活动状态时支持在一个卷上进行多个服务器终结点同步。
 
     若要检查服务器上当前的同步活动，请参阅[如何监视当前同步会话的进度？](#how-do-i-monitor-the-progress-of-a-current-sync-session)。
 
@@ -538,7 +538,7 @@ PerItemErrorCount: 1006.
 | **错误字符串** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
 | **所需的补救措施** | 是 |
 
-如果发生许多的文件同步错误，同步会话可能无法开始。 若要排查此状态，请参阅[根据文件/目录同步错误进行故障排除]()。
+如果发生许多的文件同步错误，同步会话可能无法开始。 <!-- To troubleshoot this state, see [Troubleshooting per file/directory sync errors]().-->
 
 > [!NOTE]
 > Azure 文件同步每天在服务器上创建临时 VSS 快照一次，以同步包含开放句柄的文件。

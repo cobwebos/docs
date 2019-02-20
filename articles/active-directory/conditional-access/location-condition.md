@@ -17,12 +17,13 @@ ms.workload: identity
 ms.date: 01/21/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 26721aa0eac69875f6a3704025e6ab71a54a1e31
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: aeb991de113b13666eeaab3f283b9eccd75fbd39
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078091"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166023"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的位置条件是什么？ 
 
@@ -34,9 +35,9 @@ ms.locfileid: "55078091"
 
 Azure AD 允许从公共 Internet 上的任何位置单一登录到设备、应用和服务。 使用位置条件，可以基于用户的网络位置来控制对云应用的访问。 位置条件的常见用例如下：
 
-- 要求用户在企业网络外部访问服务时执行多重身份验证  
+- 要求用户在企业网络外部访问服务时执行多重身份验证。
 
-- 阻止特定国家或地区的用户访问服务。 
+- 阻止特定国家或地区的用户访问服务。
 
 位置是网络位置的标签，表示命名位置或多重身份验证信任的 IP。
 
@@ -64,7 +65,7 @@ Azure AD 允许从公共 Internet 上的任何位置单一登录到设备、应�
 
 - **国家/地区** - 使用此选项可以选择一个或多个国家或地区，以定义命名位置。 
 
-- **包含未知区域** - 某些 IP 地址未映射到特定的国家/地区。 使用此选项可以选择这些 IP 地址是否应包含在命名位置中。 如果使用命名位置的策略需要应用到未知位置，则可以选中此选项。
+- **包含未知区域** - 某些 IP 地址未映射到特定的国家/地区。 使用此选项可以选择这些 IP 地址是否应包含在命名位置中。 如果使用命名位置的策略需要应用到未知位置，则使用此设置。
 
 可配置的已命名位置数受限于 Azure AD 中相关对象的大小。 可以配置：
 

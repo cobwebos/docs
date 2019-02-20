@@ -1,25 +1,25 @@
 ---
 title: 如何缩放 Azure Redis 缓存 | Microsoft Docs
 description: 了解如何缩放 Azure Redis 缓存实例
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.assetid: 350db214-3b7c-4877-bd43-fef6df2db96c
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
-ms.author: wesmc
-ms.openlocfilehash: 009fbd3b86518758e9654fab547bab99bec369de
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.author: yegu
+ms.openlocfilehash: 5f448c1c66520a5941ad867eaf3c89c22693cc45
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105196"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235566"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>如何缩放 Azure Redis 缓存
 Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能的选择更加灵活。 如果创建缓存后，应用程序的要求发生更改，可以更改缓存的大小和定价层。 本文演示如何使用 Azure 门户以及 Azure PowerShell 和 Azure CLI 等工具来缩放缓存。
@@ -69,9 +69,12 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 * [使用 MAML 进行缩放](#scale-using-maml)
 
 ### <a name="scale-using-powershell"></a>使用 PowerShell 进行缩放
-修改 `Size`、`Sku` 或 `ShardCount` 属性后，可以在 PowerShell 中使用 [Set-AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/set-azurermrediscache?view=azurermps-6.6.0) cmdlet 缩放 Azure Redis 缓存实例。 以下示例演示了如何将名为 `myCache` 的缓存缩放为 2.5 GB 缓存。 
 
-    Set-AzureRmRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+修改 `Size`、`Sku` 或 `ShardCount` 属性后，可以在 PowerShell 中使用 [Set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) cmdlet 缩放 Azure Redis 缓存实例。 以下示例演示了如何将名为 `myCache` 的缓存缩放为 2.5 GB 缓存。 
+
+    Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 
 有关使用 PowerShell 进行缩放的详细信息，请参阅[使用 PowerShell 缩放 Azure Redis 缓存](cache-howto-manage-redis-cache-powershell.md#scale)。
 

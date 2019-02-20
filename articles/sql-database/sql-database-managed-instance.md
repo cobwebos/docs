@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 2e2bf4f0f7ba4546c2f8609ee3ec7efc072024ae
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: d8959e25280a9d1dd62549c698f7b2b6b98d6154
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751542"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964145"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>使用具有虚拟网络和近 100% 兼容性的 SQL 数据库高级数据安全性
 
@@ -93,8 +93,8 @@ ms.locfileid: "55751542"
 以下列表描述了常规用途服务层的主要特征：
 
 - 适用于具有典型性能要求的大多数业务应用程序
-- 高性能 Azure 高级存储 (8 TB)
-- 基于可靠的 Azure 高级存储和 [Azure Service Fabric](../service-fabric/service-fabric-overview.md) 的内置[高可用性](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)
+- 高性能 Azure Blob 存储 (8 TB)
+- 基于可靠的 Azure Blob 存储和 [Azure Service Fabric](../service-fabric/service-fabric-overview.md) 的内置[高可用性](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)
 
 有关详细信息，请参阅[常规用途层中的存储层](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c)和[托管实例（常规用途）的存储性能最佳做法和注意事项](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/)。
 
@@ -107,9 +107,9 @@ ms.locfileid: "55751542"
 以下列表概述了业务关键服务层的主要特征：
 
 - 为具有最严苛性能和 HA 要求的商业应用程序设计
-- 附带超高速 SSD 存储（第 4 代最多 1 TB，第 5 代最多 4 TB）
+- 附带超高速本地 SSD 存储（第 4 代最多 1 TB，第 5 代最多 4 TB）
 - 基于 [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)和 [Azure Service Fabric](../service-fabric/service-fabric-overview.md) 的内置[高可用性](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)。
-- 内置附加的[只读数据库副本](sql-database-read-scale-out.md)，可用于报表和其他只读工作负荷
+- 内置的附加[只读数据库副本](sql-database-read-scale-out.md)，可用于报表和其他只读工作负荷
 - [内存中 OLTP](sql-database-in-memory.md)，可用于具有高性能要求的工作负荷  
 
 若要详细了解两种服务层之间的区别，请参阅[托管实例资源限制](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)。
@@ -158,7 +158,7 @@ Azure SQL 数据库提供一组可用于保护数据的高级安全功能。
 
 借助托管实例部署选项，可以使用 [Azure Active Directory 集成](sql-database-aad-authentication.md)集中管理数据库用户和其他 Microsoft 服务的标识。 此功能简化了权限管理，增强了安全性。 Azure Active Directory 支持[多重身份验证](sql-database-ssms-mfa-authentication-configure.md) (MFA)，以便在支持单一登录进程的同时提高数据和应用程序安全性。
 
-### <a name="authentication"></a>身份验证
+### <a name="authentication"></a>Authentication
 
 托管实例身份验证是指用户连接到数据库时如何证明其身份。 SQL 数据库支持两种类型的身份验证：  
 
@@ -179,7 +179,7 @@ Azure SQL 数据库提供一组可用于保护数据的高级安全功能。
 
 ### <a name="back-up-and-restore"></a>备份和还原  
 
-迁移方法利用从 SQL 到 Azure Blob 存储的备份。 可以使用 [T-SQL RESTORE 命令](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current)将 Azure 存储 Blob 中存储的备份直接还原到托管实例。
+迁移方法利用 Azure Blob 存储的 SQL 备份。 可以使用 [T-SQL RESTORE 命令](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current)将 Azure 存储 Blob 中存储的备份直接还原到托管实例。
 
 - 有关介绍如何还原 Wide World Importers - 标准数据库备份文件的快速入门，请参阅[将备份文件还原到托管实例](sql-database-managed-instance-get-started-restore.md)。 本快速入门介绍如何将备份文件上传到 Azure 博客存储并使用共享访问签名 (SAS) 密钥对其进行保护。
 - 有关从 URL 还原的信息，请参阅[从 URL 本机还原](sql-database-managed-instance-migrate.md#native-restore-from-url)。

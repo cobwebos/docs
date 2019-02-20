@@ -17,12 +17,13 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 25b2e90c6293b93a15aeae2fbf08b70cb191cef0
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6e2115ad1a88c819e0ee1da34d9d332a0b013b96
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098708"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174344"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>v2.0 协议 - OAuth 2.0 授权代码流
 
@@ -53,13 +54,15 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=code
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &response_mode=query
-&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
+&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 &state=12345
 ```
 
 > [!TIP]
 > 单击下面的链接以执行此请求！ 登录之后，浏览器应重定向至地址栏中具有 `code` 的 `https://localhost/myapp/`。
-> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
+> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
+> 
+> 
 
 | 参数    | 必需/可选 | 说明 |
 |--------------|-------------|--------------|
@@ -138,7 +141,7 @@ Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 &code=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq3n8b2JRLk4OxVXr...
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &grant_type=authorization_code
@@ -168,7 +171,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...",
     "token_type": "Bearer",
     "expires_in": 3599,
-    "scope": "https%3A%2F%2Fgraph.microsoft.com%2Fmail.read",
+    "scope": "https%3A%2F%2Fgraph.microsoft.com%2Fuser.read",
     "refresh_token": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGAMxZGUTdM0t4B4...",
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }
@@ -239,7 +242,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 Access_token 生存期很短，必须在其过期后刷新，才能继续访问资源。 为此，可以向 `/token` 终结点提交另一个 `POST` 请求，但这次要提供 `refresh_token` 而不是 `code`。  刷新令牌对客户端已获得同意的所有权限有效 - 因此，对 `scope=mail.read` 请求发出的刷新令牌可用于请求 `scope=api://contoso.com/api/UseResource` 的新访问令牌。  
 
-刷新令牌没有指定的生存期。 通常，刷新令牌的生存期相对较长。 但是，在某些情况下，刷新令牌会过期、被吊销，或缺少执行所需操作的足够权限。 应用程序需要正确预期和处理[令牌颁发终结点返回的错误](#error-codes-for-token-endpoint-errors)。 
+刷新令牌没有指定的生存期。 通常，刷新令牌的生存期相对较长。 但是，在某些情况下，刷新令牌会过期、被吊销，或缺少执行所需操作的足够权限。 应用程序需要正确预期和处理[令牌颁发终结点返回的错误](#error-codes-for-token-endpoint-errors)。  请注意，刷新令牌用于获取新访问令牌时不会被撤销。 
 
 ```
 // Line breaks for legibility only
@@ -249,7 +252,7 @@ Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 &refresh_token=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq...
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &grant_type=refresh_token
@@ -280,7 +283,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...",
     "token_type": "Bearer",
     "expires_in": 3599,
-    "scope": "https%3A%2F%2Fgraph.microsoft.com%2Fmail.read",
+    "scope": "https%3A%2F%2Fgraph.microsoft.com%2Fuser.read",
     "refresh_token": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGAMxZGUTdM0t4B4...",
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }

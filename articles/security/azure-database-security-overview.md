@@ -4,7 +4,7 @@ description: 本文概述了 Azure 数据库安全功能。
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: 984c74c44cb5149e0c4af83ea8ca4d88e67877ae
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f9297946b7e09bc8c516470515d0eee9885d5d38
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584768"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116314"
 ---
 # <a name="azure-database-security-overview"></a>Azure 数据库安全性概述
 
@@ -110,12 +110,12 @@ Always Encrypted 将数据所有者与数据管理者区分开来，前者可查
 
 只能通过 TCP 端口 1433 使用 Azure SQL 数据库服务。 若要从计算机访问 SQL 数据库，请确保客户端计算机防火墙允许 TCP 端口 1433 上的传出 TCP 通信。 如果其他应用程序不需入站连接，则阻止 TCP 端口 1433 上的入站连接。
 
-#### <a name="authentication"></a>身份验证
+#### <a name="authentication"></a>Authentication
 
 身份验证是指连接到数据库时如何证明身份。 SQL 数据库支持两种类型的身份验证：
 
--   **SQL Server 身份验证：** 创建逻辑 SQL 实例时会创建单个登录帐户，称为“SQL 数据库订户帐户”。 此帐户通过 [SQL Server 身份验证](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview)（用户名和密码）进行连接。 此帐户为管理员，负责管理逻辑服务器实例以及所有附加到该实例的用户数据库。 不能限制订户帐户的权限。 此类帐户只能存在一个。
--   **Azure Active Directory 身份验证**：[Azure AD 身份验证](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)是使用 Azure AD 中的标识连接到 Azure SQL 数据库和 SQL 数据仓库的一种机制。 可通过它集中管理数据库用户的身份。
+-   **SQL Server 身份验证**：创建逻辑 SQL 实例时会创建单个登录帐户，称为“SQL 数据库订户帐户”。 此帐户通过 [SQL Server 身份验证](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview)（用户名和密码）进行连接。 此帐户为管理员，负责管理逻辑服务器实例以及所有附加到该实例的用户数据库。 不能限制订户帐户的权限。 此类帐户只能存在一个。
+-   **Azure Active Directory 身份验证**：[Azure AD 身份验证](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)是使用 Azure AD 中的标识连接到 Azure SQL 数据库和 Azure SQL 数据仓库的一种机制。 可通过它集中管理数据库用户的身份。
 
 ![使用 SQL 数据库进行 Azure AD 身份验证](./media/azure-databse-security-overview/azure-database-fig2.png)
 
@@ -176,8 +176,8 @@ SQL 数据库审核可跟踪数据库事件，并将事件写入 Azure 存储帐
 
 有两种审核方法：
 
--   **Blob 审核**将日志写入 Azure Blob 存储。 这是一种较新的审核方法。 这种方法可提供更高的性能，支持更高粒度的对象级审核，且更具成本效益。
--   **表审核**：将日志写入 Azure 表存储。
+-   **Blob 审核**：日志将写入到 Azure Blob 存储。 这是一种较新的审核方法。 这种方法可提供更高的性能，支持更高粒度的对象级审核，且更具成本效益。
+-   **表审核**：日志将写入到 Azure 表存储。
 
 ### <a name="threat-detection"></a>威胁检测
 

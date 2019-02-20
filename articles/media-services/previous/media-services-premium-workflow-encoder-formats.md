@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: c38ca56bc71215ed7fb64d346571ca517a79914f
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: a24448507fa16a48ab3522c3307261d989d773ee
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450194"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895011"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>媒体编码器高级工作流格式和编解码器
 
@@ -33,7 +33,7 @@ ms.locfileid: "54450194"
 
 [Media Encoder Premium Workflow 输入格式和编解码器](#input_formats)
 
-[Media Encoder Premium Workflow 输出格式和编解码器](#output_formats)
+Media Encoder Premium Workflow 输出格式和编解码器
 
 **媒体编码器高级工作流**支持[此](#closed_captioning)部分中所述的隐藏字幕。 
 

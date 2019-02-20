@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/17/2017
 ms.author: roiyz
-ms.openlocfilehash: 8eb7822962988b02f09c2a2ea31b745ef01d5533
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: f7a1cb0ff1e530f15db7d56421fcc67555ac8ada
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451844"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978555"
 ---
 # <a name="custom-script-extension-for-windows-using-the-classic-deployment-model"></a>适用于 Windows 的自定义脚本扩展（使用经典部署模型）
 
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[资源管理器和经典模型](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 了解如何[使用 Resource Manager 模型执行这些步骤](custom-script-windows.md)。
+> Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 了解如何[使用 Resource Manager 模型执行这些步骤](custom-script-windows.md)。
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../includes/virtual-machines-classic-portal.md)]
 
 自定义脚本扩展在 Azure 虚拟机上下载并执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或 GitHub 下载脚本，或者在扩展运行时会脚本提供给 Azure 门户。 自定义脚本扩展与 Azure 资源管理器模板集成，也可以使用 Azure CLI、PowerShell、Azure 门户或 Azure 虚拟机 REST API 来运行它。
@@ -89,7 +89,7 @@ ms.locfileid: "47451844"
 
 ## <a name="powershell-deployment"></a>PowerShell 部署
 
-可以使用 `Set-AzureVMCustomScriptExtension` 命令将自定义脚本扩展添加到现有虚拟机。 有关详细信息，请参阅 [Set-AzureRmVMCustomScriptExtension ](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmcustomscriptextension)。
+可以使用 `Set-AzureVMCustomScriptExtension` 命令将自定义脚本扩展添加到现有虚拟机。 有关详细信息，请参阅 [Set-AzVMCustomScriptExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmcustomscriptextension)。
 
 ```powershell
 # create vm object

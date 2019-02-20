@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: 使用 `docker run` 命令参数配置 LUIS 容器运行时环境。 LUIS 有几个必需的设置以及一些可选设置。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 5437e81397182ede37ef98ad40b54c64f94e2092
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 281358e51ed8585e5deb407b2432ee3b7ee1537f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55294717"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983255"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>配置语言理解 Docker 容器 
 
@@ -59,7 +59,7 @@ ms.locfileid: "55294717"
 
 ## <a name="billing-setting"></a>账单设置
 
-`Billing` 设置指定 Azure 上用于计量容器账单信息的语言理解资源的终结点 URI。 必须为此配置设置指定值，并且该值必须是 Azure 上语言理解资源的有效终结点 URI。
+`Billing` 设置指定 Azure 上用于计量容器账单信息的语言理解资源的终结点 URI。 必须为此配置设置指定值，并且该值必须是 Azure 上语言理解资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
 
 可以在以下位置找到此设置：
 

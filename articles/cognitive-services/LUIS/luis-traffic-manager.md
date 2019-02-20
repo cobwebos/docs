@@ -3,20 +3,20 @@ title: 增加终结点配额
 titleSuffix: Azure Cognitive Services
 description: 语言理解 (LUIS) 提供增加终结点请求配额的功能，可超出单个密钥的配额。 可通过以下方法实现此功能：为 LUIS 创建多个密钥，并在“资源和密钥”部分中的“发布”页面上将其添加到 LUIS 应用程序。
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 802a5cc629a467527c916c5a41a9c00d06e85600
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 89778375c6362007a81eab72663f56492f4fe206
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491716"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997900"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>使用 Microsoft Azure 流量管理器管理密钥之间的终结点配额
 语言理解 (LUIS) 提供增加终结点请求配额的功能，可超出单个密钥的配额。 可通过以下方法实现此功能：为 LUIS 创建多个密钥，并在“资源和密钥”部分中的“发布”页面上将其添加到 LUIS 应用程序。 
@@ -362,6 +362,9 @@ dns.resolveAny('luis-dns-parent.trafficmanager.net', (err, ret) => {
 ## <a name="use-the-traffic-manager-parent-profile"></a>使用流量管理器父配置文件
 若要管理终结点之间的流量，需要插入对流量管理器 DNS 的调用来查找 LUIS 终结点。 此调用针对每个 LUIS 终结点请求进行，并需要模拟 LUIS 客户端应用程序用户的地理位置。 在 LUIS 客户端应用程序和 LUIS 请求之间添加 DNS 响应代码，以进行终结点预测。 
 
+## <a name="resolving-a-degraded-state"></a>解决降级状态
+
+为流量管理器启用[诊断日志](../../traffic-manager/traffic-manager-diagnostic-logs.md)，了解终结点状态降级的原因。
 
 ## <a name="clean-up"></a>清理
 删除两个 LUIS 终结点密钥、三个流量管理器配置文件以及包含这五个资源的资源组。 此操作在 Azure 门户中完成。 从资源列表中删除五个资源。 然后删除资源组。 

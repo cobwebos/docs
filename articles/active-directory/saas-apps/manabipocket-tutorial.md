@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Manabi Pocket 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Manabi Pocket 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Manabi Pocket 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 0116cac7d0e44efee0112d57aedd4f5ee02833b3
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3f5dd7012d280580dca76e50290bc2de4322d55c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430709"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198401"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-manabi-pocket"></a>教程：Azure Active Directory 与 Manabi Pocket 集成
+# <a name="tutorial-azure-active-directory-integration-with-manabi-pocket"></a>教程：Azure Active Directory 与 Manabi Pocket 的集成
 
 在本教程中，了解如何将 Manabi Pocket 与 Azure Active Directory (Azure AD) 集成。
 
@@ -158,7 +159,7 @@ ms.locfileid: "39430709"
  
 ### <a name="create-a-manabi-pocket-test-user"></a>创建 Manabi Pocket 测试用户
 
-在本部分中，在 Manabi Pocket 中创建一个名为 Britta Simon 的用户。 与 [Manabi Pocket 支持团队](mailto:info-ed-cl@ntt.com)协作，将用户添加到 Manabi Pocket 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分中，在 Manabi Pocket 中创建一个名为 Britta Simon 的用户。 请与  [Manabi Pocket 支持团队](mailto:info-ed-cl@ntt.com) 协作，在 Manabi Pocket 平台上添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -195,12 +196,12 @@ ms.locfileid: "39430709"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Manabi Pocket 磁贴时，应当会自动登录到 Manabi Pocket 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

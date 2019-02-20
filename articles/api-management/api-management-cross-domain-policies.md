@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: fbafd2d224879dbe33c581c13dfe52fc9a22ae55
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: ecbc1af97ce5ed158138f2bcf47f5729842c0fe9
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510810"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098523"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies（API 管理跨域策略）
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -145,7 +145,7 @@ CORS 允许浏览器与服务器交互，并确定是否允许特定的跨源请
 此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
 - **策略段：** 入站
-- **策略范围：** API，操作
+- **策略范围：** 全局、API、操作
 
 ## <a name="JSONP"></a> JSONP
 `jsonp` 策略向操作或 API 添加填充型 JSON (JSONP) 支持，以便从基于 JavaScript 浏览器的客户端执行跨域调用。 JSONP 是 JavaScript 程序中使用的方法，用于从不同域中的服务器请求数据。 JSONP 规避了大多数 Web 浏览器强制实施的只能在同一域中访问网页的限制。

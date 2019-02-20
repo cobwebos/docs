@@ -5,15 +5,15 @@ services: batch
 author: davefellows
 manager: jeconnoc
 ms.author: lahugh
-ms.date: 08/13/2018
+ms.date: 02/07/2019
 ms.topic: conceptual
 ms.custom: seodec18
-ms.openlocfilehash: d5102ba94e2b7808a457df00a87b35ef7022c454
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: b8813466b9c0f74a608c0150c037dfec3db08dbc
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543489"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893810"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Azure 渲染的参考体系结构
 
@@ -27,9 +27,9 @@ ms.locfileid: "53543489"
 
 * **网络** - 本地：Azure ExpressRoute 或 VPN。 Azure：Azure VNet。
 
-* **存储** - 输入和输出文件：使用 Azure VM 的 NFS 或 CFS，通过 Azure 文件同步或 RSync 与本地存储同步。
+* **存储** - 输入和输出文件：使用 Azure VM 的 NFS 或 CFS，通过 Azure 文件同步或 RSync 与本地存储同步。 也可使用以下命令：使用 NFS 从本地 NAS 设备输入或输出文件的 Avere vFXT。
 
-  ![云迸发 - 与 NFS 或 CFS 的混合](./media/batch-rendering-architectures/hybrid-nfs-cfs.png)
+  ![云迸发 - 与 NFS 或 CFS 的混合](./media/batch-rendering-architectures/hybrid-nfs-cfs-avere.png)
 
 ## <a name="hybrid-with-blobfuse"></a>与 Blobfuse 的混合
 
@@ -51,9 +51,9 @@ ms.locfileid: "53543489"
 
 * **网络** - 本地：Azure ExpressRoute 或 VPN。 Azure：Azure VNet。
 
-* **存储** - 跨界：Avere vFXT。 通过 Azure Data Box 以可选方式将本地文件存档到 Blob 存储。
+* **存储** - 跨界：Avere vFXT。 通过 Azure Data Box 以可选方式将本地文件存档到 Blob 存储，或通过本地 Avere vFXT 加速 NAS。
 
-  ![云迸发 - 混合计算和存储](./media/batch-rendering-architectures/hybrid-compute-storage.png)
+  ![云迸发 - 混合计算和存储](./media/batch-rendering-architectures/hybrid-compute-storage-avere.png)
 
 
 ## <a name="next-steps"></a>后续步骤

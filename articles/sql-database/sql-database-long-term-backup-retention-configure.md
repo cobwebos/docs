@@ -12,16 +12,16 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/07/2019
-ms.openlocfilehash: 8f88579a5fcdb96622a32c5b55bf8fee744d916e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 3657844d5dd4c4dcf9b9729aaeea6c9af3ed6519
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567173"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894866"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>管理 Azure SQL 数据库长期备份保留
 
-在 Azure SQL 数据库中，可以使用[长期备份保留](sql-database-long-term-retention.md)策略 (LTR) 配置单一数据库或入池数据库，以自动将备份在 Azure blob 存储中保留最多 10 年。 然后，可以通过 Azure 门户或 PowerShell 使用这些备份来恢复数据库。
+在 Azure SQL 数据库中，可以使用[长期备份保留](sql-database-long-term-retention.md)策略 (LTR) 配置单一数据库或入池数据库，以自动将备份在 Azure Blob 存储中保留最多 10 年。 然后，可以通过 Azure 门户或 PowerShell 使用这些备份来恢复数据库。
 
 > [!IMPORTANT]
 > [Azure SQL 数据库托管实例](sql-database-managed-instance.md)目前不支持长期备份保留。

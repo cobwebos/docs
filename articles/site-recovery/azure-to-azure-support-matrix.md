@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: 752be8270f3eb0bcc018cfcb7f87f30f5afbc60a
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 5f3d884720bce5777a358a27dc477eabd5263d0c
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753089"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245178"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>用于在 Azure 区域之间进行复制的支持矩阵
 
@@ -178,7 +178,7 @@ Azure 库映像 - 由第三方发布 | 支持 | 如果 VM 在受支持的操作�
 组件 | **支持** | **详细信息**
 --- | --- | ---
 OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)VM 磁盘相关信息。
-临时磁盘 | 不支持 | 始终从复制中排除临时磁盘。<br/><br/> 请勿在临时磁盘上存放任何持久性数据。 [了解详细信息](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk)。
+临时磁盘 | 不支持 | 始终从复制中排除临时磁盘。<br/><br/> 请勿在临时磁盘上存储任何持久性数据。 [了解详细信息](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk)。
 数据磁盘的最大大小 | 4095 GB |
 数据磁盘的最大数量 | 最多为 64，根据对特定的 Azure VM 大小的支持而定 | [深入了解 ](../virtual-machines/windows/sizes.md)VM 大小相关信息。
 数据磁盘更改率 | 每个高级存储的磁盘最大为 10 MBps。 每个标准存储的磁盘最大为 2 MBps。 | 如果磁盘上的平均数据更改率持续高于最大值，复制将跟不上。<br/><br/>  但是，如果偶尔超出最大值，则复制可跟上，但可能会看到稍有延迟的恢复点。

@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 01/30/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 6b470bfbb97cb14ccb1f63b34218575b64e686de
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 924ed7c2a253ab74a4807559d190218d3125b92c
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812584"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978589"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
@@ -61,7 +61,7 @@ ms.locfileid: "54812584"
 
 **问：** 在一个规模集中使用多个扩展时，是否可以强制规定执行序列？
 
-**答：** 不能直接强制执行，但对于 customScript 扩展，脚本可以等待另一个扩展来完成操作。 在 [Extension Sequencing in Azure virtual machine scale sets](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/)（Azure 虚拟机规模集中的扩展序列）博客文章中可以获取有关扩展序列的其他指导。
+**答：** 是的，可以使用规模集[扩展序列化](virtual-machine-scale-sets-extension-sequencing.md)。
 
 **问：** 规模集是否适用于 Azure 可用性集？
 
@@ -176,7 +176,7 @@ az sf cluster create -h
 
 请查看 keyvaults 文档，了解 Azure 中最新的 API 支持的证书操作。
 
-自签名证书不能用于证书颁发机构提供的分布式信任，也不应用于任何旨在托管企业生产解决方案的 Service Fabric 群集；有关其他 Service Fabric 安全指南，请查看 [Azure Service Fabric 安全最佳做法](https://docs.microsoft.com/en-us/azure/security/azure-service-fabric-security-best-practices)和 [Service Fabric 群集安全方案](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)。
+自签名证书不能用于证书颁发机构提供的分布式信任，也不应用于任何旨在托管企业生产解决方案的 Service Fabric 群集；有关其他 Service Fabric 安全指南，请查看 [Azure Service Fabric 安全最佳做法](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices)和 [Service Fabric 群集安全方案](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)。
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>是否可以通过 Resource Manager 模板指定一个 SSH 密钥对，用于对 Linux 虚拟机规模集进行 SSH 身份验证？
 
@@ -230,9 +230,10 @@ az sf cluster create -h
             }
         ]
     }
+}
 ```
 
-linuxConfiguration 元素名称 | 必选 | 类型 | 说明
+linuxConfiguration 元素名称 | 必选 | Type | 说明
 --- | --- | --- | --- |  ---
 ssh | 否 | 集合 | 指定 Linux OS 的 SSH 密钥配置
 路径 | 是 | String | 指定 SSH 密钥或证书应放置到的 Linux 文件路径
@@ -240,11 +241,11 @@ keyData | 是 | String | 指定 base64 编码的 SSH 公钥
 
 有关示例，请参阅 [101-vm-sshkey GitHub 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)。
 
-### <a name="when-i-run-update-azurermvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>添加同一个密钥保管库中的多个证书后，运行 `Update-AzureRmVmss` 时看到以下消息：
+### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>添加同一个密钥保管库中的多个证书后，运行 `Update-AzVmss` 时看到以下消息：
 
->Update-AzureRmVmss：列表机密包含 /subscriptions/<my-subscription-id>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev 的重复实例，这是不允许的。
+>Update-AzVmss：列表机密包含 /subscriptions/<my-subscription-id>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev 的重复实例，这是不允许的。
 
-如果尝试重新添加同一保管库，而不是对现有源保管库使用新保管库证书，可能会看到此消息。 如果要添加其他机密，`Add-AzureRmVmssSecret` 命令将无法正常运行。
+如果尝试重新添加同一保管库，而不是对现有源保管库使用新保管库证书，可能会看到此消息。 如果要添加其他机密，`Add-AzVmssSecret` 命令将无法正常运行。
 
 若要添加同一密钥保管库中的其他机密，请更新 $vmss.properties.osProfile.secrets[0].vaultCertificates 列表。
 
@@ -283,11 +284,11 @@ Windows 远程管理 (WinRM) 证书引用必须在 OS 配置文件的 Secrets �
 要将保管库证书添加到现有机密，请参阅下面的 PowerShell 示例。 仅使用一个机密对象。
 
 ```powershell
-$newVaultCertificate = New-AzureRmVmssVaultCertificateConfig -CertificateStore MY -CertificateUrl https://sansunallapps1.vault.azure.net:443/secrets/dg-private-enc/55fa0332edc44a84ad655298905f1809
+$newVaultCertificate = New-AzVmssVaultCertificateConfig -CertificateStore MY -CertificateUrl https://sansunallapps1.vault.azure.net:443/secrets/dg-private-enc/55fa0332edc44a84ad655298905f1809
 
 $vmss.VirtualMachineProfile.OsProfile.Secrets[0].VaultCertificates.Add($newVaultCertificate)
 
-Update-AzureRmVmss -VirtualMachineScaleSet $vmss -ResourceGroup $rg -Name $vmssName
+Update-AzVmss -VirtualMachineScaleSet $vmss -ResourceGroup $rg -Name $vmssName
 ```
 
 ### <a name="what-happens-to-certificates-if-you-reimage-a-vm"></a>如果重置 VM 的映像，证书会发生什么情况？
@@ -364,11 +365,11 @@ Key Vault 要求指定证书版本的目的是为了使用户清楚地了解哪�
 若要删除虚拟机规模集扩展，请使用以下 PowerShell 示例：
 
 ```powershell
-$vmss = Get-AzureRmVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName"
+$vmss = Get-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName"
 
-$vmss=Remove-AzureRmVmssExtension -VirtualMachineScaleSet $vmss -Name "extensionName"
+$vmss=Remove-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "extensionName"
 
-Update-AzureRmVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName" -VirtualMacineScaleSet $vmss
+Update-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName" -VirtualMacineScaleSet $vmss
 ```
 
 可以在 `$vmss` 中找到 extensionName 值。
@@ -392,18 +393,18 @@ Update-AzureRmVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vms
 - 使用 VM 访问扩展重置密码。
 
     使用以下 PowerShell 示例：
-    
+
     ```powershell
     $vmssName = "myvmss"
     $vmssResourceGroup = "myvmssrg"
     $publicConfig = @{"UserName" = "newuser"}
     $privateConfig = @{"Password" = "********"}
-    
+
     $extName = "VMAccessAgent"
     $publisher = "Microsoft.Compute"
-    $vmss = Get-AzureRmVmss -ResourceGroupName $vmssResourceGroup -VMScaleSetName $vmssName
-    $vmss = Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss -Name $extName -Publisher $publisher -Setting $publicConfig -ProtectedSetting $privateConfig -Type $extName -TypeHandlerVersion "2.0" -AutoUpgradeMinorVersion $true
-    Update-AzureRmVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
+    $vmss = Get-AzVmss -ResourceGroupName $vmssResourceGroup -VMScaleSetName $vmssName
+    $vmss = Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name $extName -Publisher $publisher -Setting $publicConfig -ProtectedSetting $privateConfig -Type $extName -TypeHandlerVersion "2.0" -AutoUpgradeMinorVersion $true
+    Update-AzVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
     ```
 
 ### <a name="how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set"></a>如何将扩展添加到虚拟机规模集中的所有 VM？
@@ -463,13 +464,13 @@ $vmssname = 'autolapbr'
 $location = 'eastus'
 
 # Retrieve the most recent version number of the extension.
-$allVersions= (Get-AzureRmVMExtensionImage -Location $location -PublisherName "Microsoft.Azure.Security" -Type "IaaSAntimalware").Version
+$allVersions= (Get-AzVMExtensionImage -Location $location -PublisherName "Microsoft.Azure.Security" -Type "IaaSAntimalware").Version
 $versionString = $allVersions[($allVersions.count)-1].Split(".")[0] + "." + $allVersions[($allVersions.count)-1].Split(".")[1]
 
-$VMSS = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname
+$VMSS = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname
 echo $VMSS
-Add-AzureRmVmssExtension -VirtualMachineScaleSet $VMSS -Name "IaaSAntimalware" -Publisher "Microsoft.Azure.Security" -Type "IaaSAntimalware" -TypeHandlerVersion $versionString
-Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet $VMSS
+Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "IaaSAntimalware" -Publisher "Microsoft.Azure.Security" -Type "IaaSAntimalware" -TypeHandlerVersion $versionString
+Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet $VMSS
 ```
 
 ### <a name="i-need-to-execute-a-custom-script-thats-hosted-in-a-private-storage-account-the-script-runs-successfully-when-the-storage-is-public-but-when-i-try-to-use-a-shared-access-signature-sas-it-fails-this-message-is-displayed-missing-mandatory-parameters-for-valid-shared-access-signature-linksas-works-fine-from-my-local-browser"></a>我需要执行一个在专用存储帐户中托管的自定义脚本。 存储为公共存储时脚本成功运行，但尝试使用共享访问签名 (SAS) 时，脚本运行失败。 显示此消息：“缺少有效共享访问签名的必需参数”。 通过本地浏览器可以正常使用“链接+SAS”。
@@ -630,7 +631,9 @@ IP 地址是从指定的子网中选择的。
                     }
                 ]
             }
-        ],
+        ]
+    }
+}
 ```
 
 在此示例中，达到阈值时，警报将转到 Pagerduty.com。

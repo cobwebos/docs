@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9fc22e35b2e435b6452f0f36c34687a15bee39c2
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 40d0250101e4653cd5ab2a3610473d9c577d8998
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766397"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114104"
 ---
 # <a name="getting-compliance-data"></a>获取符合性数据
 
@@ -428,11 +428,11 @@ PS> (Get-AzADUser -ObjectId {principalOid}).DisplayName
 Trent Baker
 ```
 
-## <a name="log-analytics"></a>Log Analytics
+## <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
-如果已将包含 `AzureActivity` 解决方案的 [Log Analytics](../../../log-analytics/log-analytics-overview.md) 工作区绑定到订阅，则还可以使用简单的 Azure 数据资源管理器查询和 `AzureActivity` 表，查看评估周期中的不符合结果。 有了 Log Analytics 中的详细信息，就可以对警报进行配置，监视不符合情况。
+如果已将包含 `AzureActivity` 解决方案的 [Log Analytics 工作区](../../../log-analytics/log-analytics-overview.md)绑定到订阅，则还可以使用简单的 Azure 数据资源管理器查询和 `AzureActivity` 表，查看评估周期中的不符合结果。 借助 Azure Monitor 日志中的详细信息，可对警报进行配置，以监视不符合情况。
 
-![使用 Log Analytics 获取策略符合性](../media/getting-compliance-data/compliance-loganalytics.png)
+![使用 Azure Monitor 日志实现的策略符合性](../media/getting-compliance-data/compliance-loganalytics.png)
 
 ## <a name="next-steps"></a>后续步骤
 

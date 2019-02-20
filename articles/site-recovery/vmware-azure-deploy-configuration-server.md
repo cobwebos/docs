@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/22/2018
+ms.date: 02/05/2018
 ms.author: ramamill
-ms.openlocfilehash: 1d5c2dccabbc2acdddec6176d9b52681d4a18e68
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: b7454226b96ff2f6a76285d708a7ce2ad1c3a6de
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744086"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235880"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器
 
@@ -130,38 +130,42 @@ ms.locfileid: "55744086"
 
 ## <a name="faq"></a>常见问题解答
 
-1. 可以使用安装有配置服务器的 VM 实现其他用途吗？
+1. 通过 OVF 部署在配置服务器上的许可证有效期是多长？ 如果不重新激活许可证会发生什么？
+
+    通过 OVA 模板提供的许可证是有效期为 180 天的评估许可证。 到期之前需要激活许可证。 否则，这可能导致配置服务器频繁关闭，因而妨碍复制活动。
+
+2. 可以使用安装有配置服务器的 VM 实现其他用途吗？
 
     不可以，我们建议仅将 VM 用于配置服务器。 请确保遵循[先决条件](#prerequisites)中所述的所有规范，以便有效管理灾难恢复。
-2. 可以将已在配置服务器中注册的保管库切换为新创建的保管库吗？
+3. 可以将已在配置服务器中注册的保管库切换为新创建的保管库吗？
 
     不可以，将保管库注册到配置服务器后，就无法更改。
-3. 可以使用同一配置服务器来同时保护物理计算机和虚拟机吗？
+4. 可以使用同一配置服务器来同时保护物理计算机和虚拟机吗？
 
     **可以**，同一配置服务器可以用于复制物理计算机和虚拟机。 但是，物理计算机仅可故障回复到 VMware VM。
-4. 配置服务器有何用途，可用于何处？
+5. 配置服务器有何用途，可用于何处？
 
     请参阅 [VMware 到 Azure 复制体系结构](vmware-azure-architecture.md)来详细了解配置服务器及其功能。
-5. 在哪里可以找到最新版本的配置服务器？
+6. 在哪里可以找到最新版本的配置服务器？
 
     有关通过门户升级配置服务器的步骤，请参阅[升级配置服务器](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)。 有关如何升级所有 Site Recovery 组件的详细说明，请参阅[此处](https://aka.ms/asr_how_to_upgrade)。
-6. 在哪里可以下载配置服务器的密码？
+7. 在哪里可以下载配置服务器的密码？
 
     请参阅[本文](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)下载密码。
-7. 是否可以更改通行短语？
+8. 是否可以更改通行短语？
 
     **不可以**，**强烈建议不要更改配置服务器的通行短语**。 通行短语的更改会中断受保护计算机的复制，并会导致关键运行状况状态。
-8. 在哪里可以下载保管库注册密钥？
+9. 在哪里可以下载保管库注册密钥？
 
     在“恢复服务保管库”中，“管理” > “Site Recovery 基础结构” > “配置服务器”。 在“服务器”中，选择“下载注册密钥”以下载保管库凭据文件。
-9. 是否可以克隆现有配置服务器并将其用于复制业务流程？
+10. 是否可以克隆现有配置服务器并将其用于复制业务流程？
 
     **不能**，不支持使用克隆的配置服务器组件。
 
-10. 能否更改配置服务器的 IP？
+11. 能否更改配置服务器的 IP？
 
     **否**，强烈建议不要更改配置服务器的 IP 地址。 请确保分配给配置服务器的所有 IP 是静态 IP，而不是 DHCP IP。
-11. 是否可以在 Azure 上设置配置服务器？
+12. 是否可以在 Azure 上设置配置服务器？
 
     建议使用与 v-Center 的直通连接在本地环境中设置配置服务器，以及将数据传输延迟降至最低。 可出于[故障回复目的](vmware-azure-manage-configuration-server.md#failback-requirements)对配置服务器进行计划备份。
 

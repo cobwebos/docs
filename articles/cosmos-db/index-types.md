@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/5/2018
 ms.author: rimman
-ms.openlocfilehash: 50e8e63c9508aa9e81222f242ca330637075e42d
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 02055ec07de2b08abdc949e17c668912431e00ce
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199062"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55871245"
 ---
 # <a name="index-types-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引类型
 
@@ -42,7 +42,7 @@ ms.locfileid: "54199062"
 | ---------- | ---------------- |
 | 哈希  | /prop/? (or /) 可用于有效完成下列查询：<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>Hash over /props/[]/? (or / or /props/) 可用于有效完成下列查询：<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag = 5  |
 | 范围  | /prop/? (or /) 可用于有效完成下列查询：<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop > 5<br><br>SELECT FROM collection c ORDER BY c.prop   |
-| 空间     | /prop/? (or /) 可用于有效完成下列查询：<br><br>SELECT FROM collection c<br><br>WHERE ST_DISTANCE(c.prop, {"type":"Point", "coordinates": [0.0, 10.0]}) < 40<br><br>SELECT FROM collection c WHERE ST_WITHIN(c.prop, {"type":"Polygon", ... }) --启用对点的索引编制<br><br>SELECT FROM collection c WHERE ST_WITHIN({"type":"Point", ... }, c.prop) --启用对多边形的索引编制。     |
+| 空间     | /prop/? (or /) 可用于有效完成下列查询：<br><br>SELECT FROM collection c<br><br>WHERE ST_DISTANCE(c.prop, {"type":"Point", "coordinates": [0.0, 10.0]}) < 40<br><br>SELECT FROM collection c WHERE ST_WITHIN(c.prop, {"type":"Point", ... }) --启用对点的索引编制<br><br>SELECT FROM collection c WHERE ST_WITHIN({"type":"Polygon", ... }, c.prop) --启用对多边形的索引编制。     |
 
 ## <a name="default-behavior-of-index-kinds"></a>索引种类的默认行为
 

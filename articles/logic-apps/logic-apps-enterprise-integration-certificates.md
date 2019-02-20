@@ -11,12 +11,12 @@ ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
 ms.suite: integration
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 5ae69d365a183f7d2a219d853241e73c1e27212b
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 38bc1615c0849a33ddfa5790a66fc05d681ce339
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42144178"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244923"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>使用证书保护 B2B 消息
 
@@ -30,6 +30,8 @@ ms.locfileid: "42144178"
 * [公用证书](https://en.wikipedia.org/wiki/Public_key_certificate)，必须从公用 Internet [证书颁发机构 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) 购买，不需要任何密钥。 
 
 * 私有证书或[*自签名证书*](https://en.wikipedia.org/wiki/Self-signed_certificate)，由你自己创建并颁发，但还需要私钥。 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="upload-a-public-certificate"></a>上传公用证书
 
@@ -48,7 +50,7 @@ ms.locfileid: "42144178"
    | 属性 | 值 | 说明 | 
    |----------|-------|-------------|
    | **名称** | <*证书名称*> | 你的证书的名称，在本例中为“publicCert” | 
-   | **证书类型** | 公用 | 你的证书的类型 |
+   | **证书类型** | 公共 | 你的证书的类型 |
    | **证书** | <*证书文件名*> | 若要查找并选择要上传的证书文件，请选择“证书”框旁边的文件夹图标。 |
    ||||
 
@@ -67,11 +69,11 @@ ms.locfileid: "42144178"
 > [!NOTE]
 > 对于私有证书，请确保添加显示在 [AS2 协议的](logic-apps-enterprise-integration-as2.md)**发送和接收**设置中用于对消息进行签名和加密的对应公用证书。
 
-1. [将私钥添加到 Azure Key Vault](../key-vault/key-vault-get-started.md#add) 并提供**密钥名称**。
+1. [将私钥添加到 Azure Key Vault](../key-vault/certificate-scenarios.md#import-a-certificate) 并提供**密钥名称**。
    
-2. 授权 Azure 逻辑应用对 Azure Key Vault 执行操作。 若要向逻辑应用服务主体授予访问权限，请使用 PowerShell 命令 [Set-AzureRmKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy)，例如：
+2. 授权 Azure 逻辑应用对 Azure Key Vault 执行操作。 若要向逻辑应用服务主体授予访问权限，请使用 PowerShell 命令 [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy)，例如：
 
-   `Set-AzureRmKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
+   `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
  
 3. 登录到 [Azure 门户](https://portal.azure.com)。 在 Azure 主菜单中，选择“所有资源”。 在搜索框中，输入你的集成帐户名称，然后选择所需的集成帐户。
@@ -86,12 +88,12 @@ ms.locfileid: "42144178"
 
    | 属性 | 值 | 说明 | 
    |----------|-------|-------------|
-   | **Name** | <*证书名称*> | 你的证书的名称，在本例中为“privateCert” | 
+   | **名称** | <*证书名称*> | 你的证书的名称，在本例中为“privateCert” | 
    | **证书类型** | 专用 | 你的证书的类型 |
    | **证书** | <*证书文件名*> | 若要查找并选择要上传的证书文件，请选择“证书”框旁边的文件夹图标。 | 
    | **资源组** | <*集成帐户资源组*> | 你的集成帐户的资源组，在本例中为“MyResourceGroup” | 
    | **Key Vault** | <*密钥保管库名称*> | 你的 Azure 密钥保管库的名称 |
-   | **密钥名称** | <*密钥名称*> | 你的密钥的名称 |
+   | **密钥名称** | <*key-name*> | 你的密钥的名称 |
    ||||
 
    ![选择“添加”，提供证书详细信息](media/logic-apps-enterprise-integration-certificates/private-certificate-details.png)

@@ -7,12 +7,12 @@ ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: f417338205b17c8b949156a6d5a60ef609458fc1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 504436060a71847641635b12baa63c79c77251e6
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088130"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112200"
 ---
 # <a name="management-in-azure"></a>Azure 中的管理
 
@@ -24,7 +24,7 @@ Azure 中的监管是 Azure 管理的一个方面。 本文介绍了在 Azure �
 
 ![管理规则](../monitoring/media/management-overview/management-capabilities.png)
 
-没有一个 Azure 服务完全满足特定管理区域的要求。 但搭配多个服务就能实现这一点。 某些服务（如 Application Insight）可为 Web 应用程序提供有针对性的监视功能。 其他服务（如 Log Analytics）可为其他服务存储管理数据。 可使用此功能分析由不同服务收集的不同类型的数据。
+没有一个 Azure 服务完全满足特定管理区域的要求。 但搭配多个服务就能实现这一点。 某些服务（如 Application Insight）可为 Web 应用程序提供有针对性的监视功能。 其他服务（例如 Azure Monitor 日志）可为其他服务存储管理数据。 可使用此功能分析由不同服务收集的不同类型的数据。
 
 下列部分简要介绍了不同的管理领域，并提供了用于处理这些领域的主要 Azure 服务的详细内容链接。
 

@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 95206d0e3cb7bdb619524237ca1e466414c5acf5
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 2ac140e40ec1c70bf04c35512c28e84f59522bb8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492872"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989417"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>从 Excel 使用 Azure 机器学习工作室 Web 服务
 
@@ -26,7 +26,7 @@ ms.locfileid: "55492872"
 
 
 ## <a name="steps"></a>Steps
-发布 Web 服务。 [此页](walkthrough-5-publish-web-service.md)解释如何执行此操作。 目前，仅具有单个输出（即单个评分标签）的请求/响应服务支持 Excel 工作簿功能。 
+发布 Web 服务。 [教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)说明如何执行此操作。 目前，仅具有单个输出（即单个评分标签）的请求/响应服务支持 Excel 工作簿功能。 
 
 获得 Web 服务后，点击工作室左侧的 **WEB SERVICES** 部分，并从Excel 中选择要使用的 Web 服务。
 

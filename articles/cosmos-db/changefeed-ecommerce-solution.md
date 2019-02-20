@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: 3f42e149b88c2405a37366c3c7b886c7a8613e00
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 90f9a13882e370d6d0c67826750b3edd27603ede
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382549"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55862286"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>使用 Azure Cosmos DB 更改源将实时数据分析可视化
 
@@ -165,7 +165,7 @@ Azure 事件中心接收事件数据，并存储、处理和转发这些数据�
 
 1. 导航回到文件资源管理器中的存储库，并右键单击“ChangeFeedFunction.sln”，在新的 Visual Studio 窗口中再次将其打开。  
 
-2. 导航到“App.config”文件。在 <appSettings> 块中，添加前面检索到的 Azure Cosmos DB 帐户的 URI 和唯一“主密钥”。  
+2. 导航到 **App.config** 文件。在 <appSettings> 块中，添加前面检索到的 Azure Cosmos DB 帐户的终结点和唯一**主密钥**。  
 
 3. 添加**集合**和**数据库**的名称。 （除非你已选择不同的名称，否则这些名称应是 **changefeedlabcollection** 和 **changefeedlabdatabase**。）
 

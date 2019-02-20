@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 2ef37e9661139b0b1d24ddc005df7bf338397803
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c0f5be7fd77ae195b66f8a8fb052ab8573d48171
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163800"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856353"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略管理 SSO 和令牌自定义
 
@@ -52,7 +52,18 @@ ms.locfileid: "55163800"
 - **刷新令牌生存期** - 刷新令牌生存期值是通过 **refresh_token_lifetime_secs** 元数据项设置的。 默认值为 1209600 秒（14 天）。
 - **刷新令牌滑动窗口生存期** - 若要为刷新令牌设置滑动窗口生存期，请设置 **rolling_refresh_token_lifetime_secs** 元数据项的值。 默认值为 7776000（90 天）。 如果不想强制实施滑动窗口生存期，请将此项替换为 `<Item Key="allow_infinite_rolling_refresh_token">True</Item>`。
 - **颁发者 (iss) 声明** - 颁发者 (iss) 声明是通过 **IssuanceClaimPattern** 元数据项设置的。 适用的值为 `AuthorityAndTenantGuid` 和 `AuthorityWithTfp`。
-- **设置声明表示策略 ID** - 用于设置此值的选项为 `TFP`（信任框架策略）和 `ACR`（身份验证上下文引用）。 `TFP` 是建议使用的值。 将 **AuthenticationContextReferenceClaimPattern** 设置为值 `None`。 在 **OutputClaims** 项中，添加以下元素：
+- **设置声明表示策略 ID** - 用于设置此值的选项为 `TFP`（信任框架策略）和 `ACR`（身份验证上下文引用）。 `TFP` 是建议使用的值。 将 **AuthenticationContextReferenceClaimPattern** 设置为值 `None`。 
+
+    在 ClaimsSchema 元素中，添加此元素： 
+    
+    ```XML
+    <ClaimType Id="trustFrameworkPolicy">
+      <DisplayName>Trust framework policy name</DisplayName>
+      <DataType>string</DataType>
+    </ClaimType>
+    ```
+    
+    在 OutputClaims 元素中，添加此元素：
     
     ```XML
     <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />

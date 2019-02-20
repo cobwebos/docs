@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 921788d1cd3ff24140bdff0c9b6a181e4ab7f0a8
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: efaa9101fbe46e0db2f582fe5a208dd8b16f095f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816198"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003578"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>使用 PowerShell 管理流量管理器
 
@@ -32,6 +32,8 @@ Azure 流量管理器是使用名为流量管理器配置文件的一系列设�
 
 ## <a name="setting-up-azure-powershell"></a>设置 Azure PowerShell
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 这些说明使用 Microsoft Azure PowerShell。 下文介绍了如何安装和配置 Azure PowerShell。
 
 * [如何安装和配置 Azure PowerShell](/powershell/azure/overview)
@@ -39,7 +41,7 @@ Azure 流量管理器是使用名为流量管理器配置文件的一系列设�
 本文中的示例假设你具备现有的资源组。 可以使用以下命令创建资源组：
 
 ```powershell
-New-AzureRmResourceGroup -Name MyRG -Location "West US"
+New-AzResourceGroup -Name MyRG -Location "West US"
 ```
 
 > [!NOTE]
@@ -47,10 +49,10 @@ New-AzureRmResourceGroup -Name MyRG -Location "West US"
 
 ## <a name="create-a-traffic-manager-profile"></a>创建流量管理器配置文件
 
-若要创建流量管理器配置文件，请使用 `New-AzureRmTrafficManagerProfile` cmdlet：
+若要创建流量管理器配置文件，请使用 `New-AzTrafficManagerProfile` cmdlet：
 
 ```powershell
-$profile = New-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName contoso -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
+$profile = New-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName contoso -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
 ```
 
 下表描述了参数：
@@ -70,10 +72,10 @@ $profile = New-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName M
 
 ## <a name="get-a-traffic-manager-profile"></a>获取流量管理器配置文件
 
-若要检索现有的流量管理器配置文件对象，请使用 `Get-AzureRmTrafficManagerProfle` cmdlet：
+若要检索现有的流量管理器配置文件对象，请使用 `Get-AzTrafficManagerProfle` cmdlet：
 
 ```powershell
-$profile = Get-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG
+$profile = Get-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG
 ```
 
 此 cmdlet 将返回流量管理器配置文件对象。
@@ -82,18 +84,18 @@ $profile = Get-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName M
 
 修改流量管理器配置文件遵循 3 步流程：
 
-1. 使用 `Get-AzureRmTrafficManagerProfile` 检索配置文件，或使用 `New-AzureRmTrafficManagerProfile` 返回的配置文件。
+1. 使用 `Get-AzTrafficManagerProfile` 检索配置文件，或使用 `New-AzTrafficManagerProfile` 返回的配置文件。
 2. 修改配置文件。 可以添加或删除终结点，也可以更改终结点或配置文件参数。 这些更改属于脱机操作。 只是更改了内存中代表配置文件的本地对象。
-3. 使用 `Set-AzureRmTrafficManagerProfile` cmdlet 提交更改。
+3. 使用 `Set-AzTrafficManagerProfile` cmdlet 提交更改。
 
 所有的配置文件属性都可更改，配置文件的 RelativeDnsName 除外。 若要更改 RelativeDnsName，必须删除配置文件和带有新名称的新配置文件。
 
 下面的示例演示如何更改配置文件的 TTL：
 
 ```powershell
-$profile = Get-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG
+$profile = Get-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG
 $profile.Ttl = 300
-Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
+Set-AzTrafficManagerProfile -TrafficManagerProfile $profile
 ```
 
 有三种类型的流量管理器终结点：
@@ -105,7 +107,7 @@ Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 在所有三种情况下，可以通过两种方式来添加终结点：
 
 1. 使用前面所述的 3 步流程。 此方法的优点是可以通过一次更新更改多个终结点。
-2. 使用 New-AzureRmTrafficManagerEndpoint cmdlet。 此 cmdlet 可在一个操作中将终结点添加到现有的流量管理器配置文件中。
+2. 使用 New-AzTrafficManagerEndpoint cmdlet。 此 cmdlet 可在一个操作中将终结点添加到现有的流量管理器配置文件中。
 
 ## <a name="adding-azure-endpoints"></a>添加 Azure 终结点
 
@@ -116,35 +118,35 @@ Azure 终结点会引用托管在 Azure 中的服务。 支持 2 种类型的 Az
 
 在每种情况下：
 
-* 服务是使用 `Add-AzureRmTrafficManagerEndpointConfig` 或 `New-AzureRmTrafficManagerEndpoint` 的“targetResourceId”参数指定。
+* 服务是使用 `Add-AzTrafficManagerEndpointConfig` 或 `New-AzTrafficManagerEndpoint` 的“targetResourceId”参数指定。
 * “Target”和“EndpointLocation”由 TargetResourceId 表明。
 * 指定“加权”是可选项。 仅当配置文件被配置为使用“加权”流量路由方法时，才使用加权。 否则会忽视加权。 如果要指定，值必须是介于 1 和 1000 之间的数字。 默认值为“1”。
 * 指定“优先级”是可选项。 仅当配置文件被配置为使用“优先级”流量路由方法时，才使用优先级。 否则会忽视优先级。 有效值为 1 到 1000 之间的值，值越小指示优先级越高。 如果为一个终结点指定了该值，则必须为所有终结点指定该值。 如果省略，则会按排列终结点的顺序从“1”开始应用默认值。
 
-### <a name="example-1-adding-app-service-endpoints-using-add-azurermtrafficmanagerendpointconfig"></a>示例 1：使用 `Add-AzureRmTrafficManagerEndpointConfig` 添加应用服务终结点
+### <a name="example-1-adding-app-service-endpoints-using-add-aztrafficmanagerendpointconfig"></a>示例 1：使用 `Add-AzTrafficManagerEndpointConfig` 添加应用服务终结点
 
-在此示例中，创建了一个流量管理器配置文件，并使用 `Add-AzureRmTrafficManagerEndpointConfig` cmdlet 添加了两个应用服务终结点。
+在此示例中，创建了一个流量管理器配置文件，并使用 `Add-AzTrafficManagerEndpointConfig` cmdlet 添加了两个应用服务终结点。
 
 ```powershell
-$profile = New-AzureRmTrafficManagerProfile -Name myprofile -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName myapp -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
-$webapp1 = Get-AzureRMWebApp -Name webapp1
-Add-AzureRmTrafficManagerEndpointConfig -EndpointName webapp1ep -TrafficManagerProfile $profile -Type AzureEndpoints -TargetResourceId $webapp1.Id -EndpointStatus Enabled
-$webapp2 = Get-AzureRMWebApp -Name webapp2
-Add-AzureRmTrafficManagerEndpointConfig -EndpointName webapp2ep -TrafficManagerProfile $profile -Type AzureEndpoints -TargetResourceId $webapp2.Id -EndpointStatus Enabled
-Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
+$profile = New-AzTrafficManagerProfile -Name myprofile -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName myapp -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
+$webapp1 = Get-AzWebApp -Name webapp1
+Add-AzTrafficManagerEndpointConfig -EndpointName webapp1ep -TrafficManagerProfile $profile -Type AzureEndpoints -TargetResourceId $webapp1.Id -EndpointStatus Enabled
+$webapp2 = Get-AzWebApp -Name webapp2
+Add-AzTrafficManagerEndpointConfig -EndpointName webapp2ep -TrafficManagerProfile $profile -Type AzureEndpoints -TargetResourceId $webapp2.Id -EndpointStatus Enabled
+Set-AzTrafficManagerProfile -TrafficManagerProfile $profile
 ```
-### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-azurermtrafficmanagerendpoint"></a>示例 2：使用 `New-AzureRmTrafficManagerEndpoint` 添加 publicIpAddress 终结点
+### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-aztrafficmanagerendpoint"></a>示例 2：使用 `New-AzTrafficManagerEndpoint` 添加 publicIpAddress 终结点
 
 在此示例中，公共 IP 地址资源添加到了流量管理器配置文件中。 公共 IP 地址必须配置了 DNS 名称，并且可以绑定到 VM 的 NIC 或者绑定到负载均衡器。
 
 ```powershell
-$ip = Get-AzureRmPublicIpAddress -Name MyPublicIP -ResourceGroupName MyRG
-New-AzureRmTrafficManagerEndpoint -Name MyIpEndpoint -ProfileName MyProfile -ResourceGroupName MyRG -Type AzureEndpoints -TargetResourceId $ip.Id -EndpointStatus Enabled
+$ip = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyRG
+New-AzTrafficManagerEndpoint -Name MyIpEndpoint -ProfileName MyProfile -ResourceGroupName MyRG -Type AzureEndpoints -TargetResourceId $ip.Id -EndpointStatus Enabled
 ```
 
 ## <a name="adding-external-endpoints"></a>添加外部终结点
 
-流量管理器使用外部终结点将流量定向到在 Azure 外部承载的服务。 与 Azure 终结点一样，可以使用 `Add-AzureRmTrafficManagerEndpointConfig`（后跟 `Set-AzureRmTrafficManagerProfile`）或 `New-AzureRMTrafficManagerEndpoint` 添加外部终结点。
+流量管理器使用外部终结点将流量定向到在 Azure 外部承载的服务。 与 Azure 终结点一样，可以使用 `Add-AzTrafficManagerEndpointConfig`（后跟 `Set-AzTrafficManagerProfile`）或 `New-AzTrafficManagerEndpoint` 添加外部终结点。
 
 指定外部终结点时：
 
@@ -152,23 +154,23 @@ New-AzureRmTrafficManagerEndpoint -Name MyIpEndpoint -ProfileName MyProfile -Res
 * 如果使用了“'Performance”流量路由方法，则需要获取“EndpointLocation”。 否则其则是可选项。 此值必须是[有效的 Azure 区域名称](https://azure.microsoft.com/regions/)。
 * “加权”和“优先级”是可选项。
 
-### <a name="example-1-adding-external-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>示例 1：使用 `Add-AzureRmTrafficManagerEndpointConfig` 和 `Set-AzureRmTrafficManagerProfile` 添加外部终结点
+### <a name="example-1-adding-external-endpoints-using-add-aztrafficmanagerendpointconfig-and-set-aztrafficmanagerprofile"></a>示例 1：使用 `Add-AzTrafficManagerEndpointConfig` 和 `Set-AzTrafficManagerProfile` 添加外部终结点
 
 在此示例中，我们创建了一个流量管理器配置文件，添加了两个外部终结点，并提交了所做的更改。
 
 ```powershell
-$profile = New-AzureRmTrafficManagerProfile -Name myprofile -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName myapp -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
-Add-AzureRmTrafficManagerEndpointConfig -EndpointName eu-endpoint -TrafficManagerProfile $profile -Type ExternalEndpoints -Target app-eu.contoso.com -EndpointLocation "North Europe" -EndpointStatus Enabled
-Add-AzureRmTrafficManagerEndpointConfig -EndpointName us-endpoint -TrafficManagerProfile $profile -Type ExternalEndpoints -Target app-us.contoso.com -EndpointLocation "Central US" -EndpointStatus Enabled
-Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
+$profile = New-AzTrafficManagerProfile -Name myprofile -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName myapp -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
+Add-AzTrafficManagerEndpointConfig -EndpointName eu-endpoint -TrafficManagerProfile $profile -Type ExternalEndpoints -Target app-eu.contoso.com -EndpointLocation "North Europe" -EndpointStatus Enabled
+Add-AzTrafficManagerEndpointConfig -EndpointName us-endpoint -TrafficManagerProfile $profile -Type ExternalEndpoints -Target app-us.contoso.com -EndpointLocation "Central US" -EndpointStatus Enabled
+Set-AzTrafficManagerProfile -TrafficManagerProfile $profile
 ```
 
-### <a name="example-2-adding-external-endpoints-using-new-azurermtrafficmanagerendpoint"></a>示例 2：使用 `New-AzureRmTrafficManagerEndpoint` 添加外部终结点
+### <a name="example-2-adding-external-endpoints-using-new-aztrafficmanagerendpoint"></a>示例 2：使用 `New-AzTrafficManagerEndpoint` 添加外部终结点
 
 在此示例中，我们向已有配置文件添加了一个外部终结点。 该配置文件由配置文件和资源组名称指定。
 
 ```powershell
-New-AzureRmTrafficManagerEndpoint -Name eu-endpoint -ProfileName MyProfile -ResourceGroupName MyRG -Type ExternalEndpoints -Target app-eu.contoso.com -EndpointStatus Enabled
+New-AzTrafficManagerEndpoint -Name eu-endpoint -ProfileName MyProfile -ResourceGroupName MyRG -Type ExternalEndpoints -Target app-eu.contoso.com -EndpointStatus Enabled
 ```
 
 ## <a name="adding-nested-endpoints"></a>添加“嵌套式”终结点
@@ -182,26 +184,26 @@ New-AzureRmTrafficManagerEndpoint -Name eu-endpoint -ProfileName MyProfile -Reso
 * 对于 Azure 终结点，“加权”和“优先级”是可选项。
 * “MinChildEndpoints”参数是可选项。 默认值为“1”。 如果可用终结点数低于此阈值，则父配置文件会将此子配置文件视为“已降级”，并将流量转移到父配置文件中的其他终结点。
 
-### <a name="example-1-adding-nested-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>示例 1：使用 `Add-AzureRmTrafficManagerEndpointConfig` 和 `Set-AzureRmTrafficManagerProfile` 添加嵌套式终结点
+### <a name="example-1-adding-nested-endpoints-using-add-aztrafficmanagerendpointconfig-and-set-aztrafficmanagerprofile"></a>示例 1：使用 `Add-AzTrafficManagerEndpointConfig` 和 `Set-AzTrafficManagerProfile` 添加嵌套式终结点
 
 在此示例中，我们将创建新的流量管理器子配置文件和父配置文件，将子配置文件添加为父配置文件中的嵌套式终结点，并提交所做的更改。
 
 ```powershell
-$child = New-AzureRmTrafficManagerProfile -Name child -ResourceGroupName MyRG -TrafficRoutingMethod Priority -RelativeDnsName child -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
-$parent = New-AzureRmTrafficManagerProfile -Name parent -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName parent -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
-Add-AzureRmTrafficManagerEndpointConfig -EndpointName child-endpoint -TrafficManagerProfile $parent -Type NestedEndpoints -TargetResourceId $child.Id -EndpointStatus Enabled -EndpointLocation "North Europe" -MinChildEndpoints 2
-Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
+$child = New-AzTrafficManagerProfile -Name child -ResourceGroupName MyRG -TrafficRoutingMethod Priority -RelativeDnsName child -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
+$parent = New-AzTrafficManagerProfile -Name parent -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName parent -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
+Add-AzTrafficManagerEndpointConfig -EndpointName child-endpoint -TrafficManagerProfile $parent -Type NestedEndpoints -TargetResourceId $child.Id -EndpointStatus Enabled -EndpointLocation "North Europe" -MinChildEndpoints 2
+Set-AzTrafficManagerProfile -TrafficManagerProfile $profile
 ```
 
 在本示例中为方便起见，我们未将任何其他终结点添加到子或父配置文件。
 
-### <a name="example-2-adding-nested-endpoints-using-new-azurermtrafficmanagerendpoint"></a>示例 2：使用 `New-AzureRmTrafficManagerEndpoint` 添加嵌套式终结点
+### <a name="example-2-adding-nested-endpoints-using-new-aztrafficmanagerendpoint"></a>示例 2：使用 `New-AzTrafficManagerEndpoint` 添加嵌套式终结点
 
 在此示例中，我们将现有子配置文件作为嵌套式终结点添加到了现有父配置文件。 该配置文件由配置文件和资源组名称指定。
 
 ```powershell
-$child = Get-AzureRmTrafficManagerEndpoint -Name child -ResourceGroupName MyRG
-New-AzureRmTrafficManagerEndpoint -Name child-endpoint -ProfileName parent -ResourceGroupName MyRG -Type NestedEndpoints -TargetResourceId $child.Id -EndpointStatus Enabled -EndpointLocation "North Europe" -MinChildEndpoints 2
+$child = Get-AzTrafficManagerEndpoint -Name child -ResourceGroupName MyRG
+New-AzTrafficManagerEndpoint -Name child-endpoint -ProfileName parent -ResourceGroupName MyRG -Type NestedEndpoints -TargetResourceId $child.Id -EndpointStatus Enabled -EndpointLocation "North Europe" -MinChildEndpoints 2
 ```
 
 ## <a name="adding-endpoints-from-another-subscription"></a>从其他订阅添加终结点
@@ -209,39 +211,39 @@ New-AzureRmTrafficManagerEndpoint -Name child-endpoint -ProfileName parent -Reso
 流量管理器可以使用不同订阅中的终结点。 需要使用要添加的终结点切换到订阅，以检索所需的流量管理器输入。 然后，需要使用流量管理器配置文件切换到订阅，并向其中添加终结点。 下面的示例演示如何使用公共 IP 地址执行此操作。
 
 ```powershell
-Set-AzureRmContext -SubscriptionId $EndpointSubscription
-$ip = Get-AzureRmPublicIpAddress -Name $IpAddresName -ResourceGroupName $EndpointRG
+Set-AzContext -SubscriptionId $EndpointSubscription
+$ip = Get-AzPublicIpAddress -Name $IpAddresName -ResourceGroupName $EndpointRG
 
-Set-AzureRmContext -SubscriptionId $trafficmanagerSubscription
-New-AzureRmTrafficManagerEndpoint -Name $EndpointName -ProfileName $ProfileName -ResourceGroupName $TrafficManagerRG -Type AzureEndpoints -TargetResourceId $ip.Id -EndpointStatus Enabled
+Set-AzContext -SubscriptionId $trafficmanagerSubscription
+New-AzTrafficManagerEndpoint -Name $EndpointName -ProfileName $ProfileName -ResourceGroupName $TrafficManagerRG -Type AzureEndpoints -TargetResourceId $ip.Id -EndpointStatus Enabled
 ```
 
 ## <a name="update-a-traffic-manager-endpoint"></a>更新流量管理器终结点
 
 有两种方法可以更新现有的流量管理器终结点：
 
-1. 使用 `Get-AzureRmTrafficManagerProfile` 获取流量管理器配置文件，更新配置文件中的终结点属性，并使用 `Set-AzureRmTrafficManagerProfile` 提交更改。 此方法的优势在于能够通过单个操作更新多个终结点。
-2. 使用 `Get-AzureRmTrafficManagerEndpoint` 获取流量管理器终结点，更新终结点属性，并使用 `Set-AzureRmTrafficManagerEndpoint` 提交所做的更改。 此方法更简单，因为不需要在配置文件的终结点数组中进行索引操作。
+1. 使用 `Get-AzTrafficManagerProfile` 获取流量管理器配置文件，更新配置文件中的终结点属性，并使用 `Set-AzTrafficManagerProfile` 提交更改。 此方法的优势在于能够通过单个操作更新多个终结点。
+2. 使用 `Get-AzTrafficManagerEndpoint` 获取流量管理器终结点，更新终结点属性，并使用 `Set-AzTrafficManagerEndpoint` 提交所做的更改。 此方法更简单，因为不需要在配置文件的终结点数组中进行索引操作。
 
-### <a name="example-1-updating-endpoints-using-get-azurermtrafficmanagerprofile-and-set-azurermtrafficmanagerprofile"></a>示例 1：使用 `Get-AzureRmTrafficManagerProfile` 和 `Set-AzureRmTrafficManagerProfile` 更新终结点
+### <a name="example-1-updating-endpoints-using-get-aztrafficmanagerprofile-and-set-aztrafficmanagerprofile"></a>示例 1：使用 `Get-AzTrafficManagerProfile` 和 `Set-AzTrafficManagerProfile` 更新终结点
 
 在此示例中，我们将修改现有配置文件中两个终结点上的优先级。
 
 ```powershell
-$profile = Get-AzureRmTrafficManagerProfile -Name myprofile -ResourceGroupName MyRG
+$profile = Get-AzTrafficManagerProfile -Name myprofile -ResourceGroupName MyRG
 $profile.Endpoints[0].Priority = 2
 $profile.Endpoints[1].Priority = 1
-Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
+Set-AzTrafficManagerProfile -TrafficManagerProfile $profile
 ```
 
-### <a name="example-2-updating-an-endpoint-using-get-azurermtrafficmanagerendpoint-and-set-azurermtrafficmanagerendpoint"></a>示例 2：使用 `Get-AzureRmTrafficManagerEndpoint` 和 `Set-AzureRmTrafficManagerEndpoint` 更新终结点
+### <a name="example-2-updating-an-endpoint-using-get-aztrafficmanagerendpoint-and-set-aztrafficmanagerendpoint"></a>示例 2：使用 `Get-AzTrafficManagerEndpoint` 和 `Set-AzTrafficManagerEndpoint` 更新终结点
 
 在此示例中，我们将修改现有配置文件中单个终结点的权重。
 
 ```powershell
-$endpoint = Get-AzureRmTrafficManagerEndpoint -Name myendpoint -ProfileName myprofile -ResourceGroupName MyRG -Type ExternalEndpoints
+$endpoint = Get-AzTrafficManagerEndpoint -Name myendpoint -ProfileName myprofile -ResourceGroupName MyRG -Type ExternalEndpoints
 $endpoint.Weight = 20
-Set-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint $endpoint
+Set-AzTrafficManagerEndpoint -TrafficManagerEndpoint $endpoint
 ```
 
 ## <a name="enabling-and-disabling-endpoints-and-profiles"></a>启用和禁用终结点和配置文件
@@ -260,10 +262,10 @@ Enable-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourc
 若要禁用流量管理器配置文件：
 
 ```powershell
-Disable-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
+Disable-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
 ```
 
-Disable-AzureRmTrafficManagerProfile cmdlet 提示进行确认。 可以使用“-Force”参数取消该提示。
+Disable-AzTrafficManagerProfile cmdlet 提示进行确认。 可以使用“-Force”参数取消该提示。
 
 ### <a name="example-2-enabling-and-disabling-a-traffic-manager-endpoint"></a>示例 2：启用和禁用流量管理器终结点
 
@@ -279,27 +281,27 @@ Enable-AzureRmTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -Prof
 同样，若要禁用流量管理器终结点，请执行以下操作：
 
 ```powershell
-Disable-AzureRmTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG -Force
+Disable-AzTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG -Force
 ```
 
-借助 `Disable-AzureRmTrafficManagerProfile``Disable-AzureRmTrafficManagerEndpoint` cmdlet 提示进行确认。 可以使用“-Force”参数取消该提示。
+借助 `Disable-AzTrafficManagerProfile``Disable-AzTrafficManagerEndpoint` cmdlet 提示进行确认。 可以使用“-Force”参数取消该提示。
 
 ## <a name="delete-a-traffic-manager-endpoint"></a>删除流量管理器终结点
 
-若要单独删除终结点，请使用 `Remove-AzureRmTrafficManagerEndpoint` cmdlet：
+若要单独删除终结点，请使用 `Remove-AzTrafficManagerEndpoint` cmdlet：
 
 ```powershell
-Remove-AzureRmTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG
+Remove-AzTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG
 ```
 
 此 cmdlet 提示进行确认。 可以使用“-Force”参数取消该提示。
 
 ## <a name="delete-a-traffic-manager-profile"></a>删除流量管理器配置文件
 
-若要删除流量管理器配置文件，请使用 `Remove-AzureRmTrafficManagerProfile`，同时指定配置文件和资源组名称：
+若要删除流量管理器配置文件，请使用 `Remove-AzTrafficManagerProfile`，同时指定配置文件和资源组名称：
 
 ```powershell
-Remove-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG [-Force]
+Remove-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG [-Force]
 ```
 
 此 cmdlet 提示进行确认。 可以使用“-Force”参数取消该提示。
@@ -307,14 +309,14 @@ Remove-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG [-Fo
 也可以使用配置文件对象指定要删除的配置文件：
 
 ```powershell
-$profile = Get-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG
-Remove-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile [-Force]
+$profile = Get-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG
+Remove-AzTrafficManagerProfile -TrafficManagerProfile $profile [-Force]
 ```
 
 还可以通过管道执行此序列：
 
 ```powershell
-Get-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remove-AzureRmTrafficManagerProfile [-Force]
+Get-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remove-AzTrafficManagerProfile [-Force]
 ```
 
 ## <a name="next-steps"></a>后续步骤

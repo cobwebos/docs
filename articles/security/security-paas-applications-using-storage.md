@@ -4,7 +4,7 @@ description: 了解有关保护 PaaS Web 和移动应用程序的 Azure 存储�
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: ''
 ms.service: security
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: TomShinder
-ms.openlocfilehash: ac01aaca8c147b1f474b59ac57424f5cdc5f8a8d
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 3ad97c7adb5901c1da1d174d12d5d6a91831cc74
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451861"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108919"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>使用 Azure 存储保护 PaaS Web 和移动应用程序的最佳做法
 本文介绍 Azure 存储安全在保护平台即服务 (PaaS) Web 和移动应用程序方面的最佳做法。 这些最佳实践衍生自我们的 Azure 经验和客户经验。
 
 Azure 可以用本地不易实现的方式来部署并使用存储。 通过 Azure 存储，可用相对较少的工作量达到高水平的可伸缩性和可用性。 Azure 存储不仅是 Windows 和 Linux Azure 虚拟机的基础，还可以支持大型分布式应用程序。
 
-Azure 存储提供以下四种服务：Blob 存储、表存储、队列存储和文件存储。 若要了解详细信息，请参阅 [Microsoft Azure 存储简介](../storage/storage-introduction.md)。
+Azure 存储提供了以下四种服务：Blob 存储、表存储、队列存储和文件存储。 若要了解详细信息，请参阅 [Microsoft Azure 存储简介](../storage/storage-introduction.md)。
 
 [Azure 存储安全指南](../storage/common/storage-security-guide.md)是有关 Azure存储和安全性的详细信息的重要来源。 本篇最佳做法文章高度概括地介绍了安全指南中的一些概念，并提供了获得详细信息的安全指南及其他来源的链接。
 

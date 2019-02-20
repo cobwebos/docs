@@ -8,15 +8,15 @@ manager: pchoudh
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 02/13/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 35d447fb7024b8be0bd427305b9e43fa60b1a90d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 757ef07c1268cbf159ce98dfb8ba1980616e4a3a
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223181"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245127"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>QnA Maker 知识库的置信度分数
 如果用户查询的匹配依据为知识库，QnA Maker 会返回相关答案和置信度分数。 此分数指明了答案是给定用户查询的正确匹配答案的置信度。 
@@ -58,7 +58,7 @@ ms.locfileid: "55223181"
 > 较新版本的 QnA Maker 包括对评分逻辑的改进，并可能影响你的阈值。 每次更新服务时，请务必测试阈值并在必要时调整阈值。 可以在[此处](https://www.qnamaker.ai/UserSettings)查看 QnA 服务版本，并在[此处](../How-To/troubleshooting-runtime.md)了解如何获取最新更新。
 
 ## <a name="improve-confidence-scores"></a>提高置信度分数
-若要提高对用户查询的特定响应的置信度分数，可以将用户查询添加到知识库，作为该响应的备用问题。 还可以使用[字变更](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd)向知识库中的关键字添加同义词。
+若要提高对用户查询的特定响应的置信度分数，可以将用户查询添加到知识库，作为该响应的备用问题。 还可以使用区分大小写的[字变更](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd)向知识库中的关键字添加同义词。
 
 
 ## <a name="similar-confidence-scores"></a>相似的置信度分数
@@ -66,8 +66,9 @@ ms.locfileid: "55223181"
 
 
 ## <a name="confidence-score-differences"></a>置信度分数差异
-即使内容相同，答案的置信度分数在知识库的测试版和发布版之间也可能有微不足道的差异。 这是因为测试知识库和已发布知识库的内容位于不同的 Azure 搜索索引中。
-请参见此处了解[发布](../How-To/publish-knowledge-base.md)操作的工作原理。
+即使内容相同，答案的置信度分数在知识库的测试版和发布版之间也可能有微不足道的差异。 这是因为测试知识库和已发布知识库的内容位于不同的 Azure 搜索索引中。 发布知识库时，知识库的问答内容将从测试索引转移到 Azure 搜索中的生产索引。 请参阅[发布](../How-To/publish-knowledge-base.md)操作的工作原理。
+
+如果不同区域都有知识库，则每个区域都使用自己的 Azure 搜索索引。 因为使用的索引不同，所以得分并不完全相同。 
 
 
 ## <a name="no-match-found"></a>找不到匹配项

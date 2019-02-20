@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 12/24/2018
+ms.date: 02/11/2019
 ms.author: juliako
-ms.openlocfilehash: c5332cd2613bc64e3dda143381f37d27b54aa922
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: f9748d61b1aa336c5300dd414d53388f48a41368
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789223"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243979"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>媒体服务事件的 Azure 事件网格架构
 
@@ -24,17 +24,15 @@ ms.locfileid: "53789223"
 
 有关示例脚本和教程的列表，请参阅[媒体服务事件源](../../event-grid/event-sources.md#azure-subscriptions)。
 
-## <a name="available-event-types"></a>可用事件类型
-
-### <a name="job-related-event-types"></a>作业相关事件类型
+## <a name="job-related-event-types"></a>作业相关事件类型
 
 媒体服务会发出如下所述的**作业**相关事件类型。 有两类作业相关事件：“监视作业状态更改”和“监视作业输出状态更改”。 
 
 可通过订阅 JobStateChange 事件来注册所有事件。 或者，可以只订阅特定事件（例如，JobErrored、JobFinished 和 JobCanceled 等最终状态）。 
 
-#### <a name="monitoring-job-state-changes"></a>监视作业状态更改
+### <a name="monitoring-job-state-changes"></a>监视作业状态更改
 
-| 事件类型 | Description |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Media.JobStateChange| 获取所有作业状态更改的事件。 |
 | Microsoft.Media.JobScheduled| 获取当作业转换为已计划状态时的事件。 |
@@ -44,9 +42,11 @@ ms.locfileid: "53789223"
 | Microsoft.Media.JobCanceled| 获取当作业转换为已取消状态时的事件。 这是包含作业输出的最终状态。|
 | Microsoft.Media.JobErrored| 获取当作业转换为错误状态时的事件。 这是包含作业输出的最终状态。|
 
-#### <a name="monitoring-job-output-state-changes"></a>监视作业输出状态更改
+[架构示例](#event-schema-examples)如下。
 
-| 事件类型 | Description |
+### <a name="monitoring-job-output-state-changes"></a>监视作业输出状态更改
+
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Media.JobOutputStateChange| 获取所有作业输出状态更改的事件。 |
 | Microsoft.Media.JobOutputScheduled| 获取当作业输出转换为已计划状态时的事件。 |
@@ -56,25 +56,29 @@ ms.locfileid: "53789223"
 | Microsoft.Media.JobOutputCanceled| 获取当作业输出转换为已取消状态时的事件。|
 | Microsoft.Media.JobOutputErrored| 获取当作业输出转换为错误状态时的事件。|
 
-### <a name="live-event-types"></a>实时事件类型
+[架构示例](#event-schema-examples)如下。
+
+## <a name="live-event-types"></a>实时事件类型
 
 媒体服务也会发出如下所述的**实时**事件类型。 **实时**事件有两种类别：流级事件和轨迹级事件。 
 
-#### <a name="stream-level-events"></a>流级事件
+### <a name="stream-level-events"></a>流级事件
 
 按流或连接引发流级事件。 每个事件具有一个用于标识连接或流的 `StreamId` 参数。 每个流或连接具有一个或多个不同类型的轨迹。 例如，来自编码器的一个连接可能具有一个音频轨迹和四个视频轨迹。 流事件类型包括：
 
-| 事件类型 | Description |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Media.LiveEventConnectionRejected | 编码器的连接尝试被拒绝。 |
 | Microsoft.Media.LiveEventEncoderConnected | 编码器与实时事件建立连接。 |
 | Microsoft.Media.LiveEventEncoderDisconnected | 编码器断开连接。 |
 
-#### <a name="track-level-events"></a>轨迹级事件
+[架构示例](#event-schema-examples)如下。
+
+### <a name="track-level-events"></a>轨迹级事件
 
 按轨迹引发轨迹级事件。轨迹事件类型包括：
 
-| 事件类型 | Description |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Media.LiveEventIncomingDataChunkDropped | 媒体服务器删除了数据区块，因为该区块的抵达时间过迟，或者带有重叠的时间戳（新数据区块的时间戳小于前一数据区块的结束时间）。 |
 | Microsoft.Media.LiveEventIncomingStreamReceived | 媒体服务器收到流或连接中每个轨迹的第一个数据区块。 |
@@ -83,7 +87,9 @@ ms.locfileid: "53789223"
 | Microsoft.Media.LiveEventIngestHeartbeat | 当实时事件正在运行时，每隔 20 秒为每个轨迹发布。 提供引入运行状况摘要。 |
 | Microsoft.Media.LiveEventTrackDiscontinuityDetected | 媒体服务器检测到传入轨迹中存在不连续的情况。 |
 
-## <a name="event-schemas-and-properties"></a>事件架构和属性
+[架构示例](#event-schema-examples)如下。
+
+## <a name="event-schema-examples"></a>事件架构示例
 
 ### <a name="jobstatechange"></a>JobStateChange
 
@@ -109,7 +115,7 @@ ms.locfileid: "53789223"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| 属性 | Type | 说明 |
 | -------- | ---- | ----------- |
 | previousState | 字符串 | 事件发生前的作业状态。 |
 | state | 字符串 | 此事件中通知的作业的新状态。 例如，“已计划：作业已准备就绪”或“已完成：作业已完成。”|
@@ -179,7 +185,7 @@ ms.locfileid: "53789223"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| 属性 | Type | 说明 |
 | -------- | ---- | ----------- |
 | Outputs | Array | 获取作业输出。|
 
@@ -272,7 +278,7 @@ ms.locfileid: "53789223"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| 属性 | Type | 说明 |
 | -------- | ---- | ----------- |
 | streamId | 字符串 | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
 | ingestUrl | 字符串 | 实时事件提供的引入 URL。 |  
@@ -282,7 +288,7 @@ ms.locfileid: "53789223"
 
 结果代码为：
 
-| 结果代码 | Description |
+| 结果代码 | 说明 |
 | ----------- | ----------- |
 | MPE_RTMP_APPID_AUTH_FAILURE | 引入 URL 不正确 |
 | MPE_INGEST_ENCODER_CONNECTION_DENIED | 编码器 IP 在配置的 IP 允许列表中不存在 |
@@ -319,7 +325,7 @@ ms.locfileid: "53789223"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| 属性 | Type | 说明 |
 | -------- | ---- | ----------- |
 | streamId | 字符串 | 流或连接的标识符。 编码器或客户负责在引入 URL 中提供此 ID。 |
 | ingestUrl | 字符串 | 实时事件提供的引入 URL。 |
@@ -353,7 +359,7 @@ ms.locfileid: "53789223"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| 属性 | Type | 说明 |
 | -------- | ---- | ----------- |
 | streamId | 字符串 | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
 | ingestUrl | 字符串 | 实时事件提供的引入 URL。 |  
@@ -363,7 +369,7 @@ ms.locfileid: "53789223"
 
 错误结果代码为：
 
-| 结果代码 | Description |
+| 结果代码 | 说明 |
 | ----------- | ----------- |
 | MPE_RTMP_SESSION_IDLE_TIMEOUT | 在空闲时间达到允许的时间限制后，RTMP 会话超时。 |
 | MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | RTMP 编码器中视频或音频 FLVTag 的时间戳无效。 |
@@ -372,7 +378,7 @@ ms.locfileid: "53789223"
 
 正常断开连接结果代码为：
 
-| 结果代码 | Description |
+| 结果代码 | 说明 |
 | ----------- | ----------- |
 | S_OK | 编码器已成功断开连接。 |
 | MPE_CLIENT_TERMINATED_SESSION | 编码器已断开连接 (RTMP)。 |
@@ -410,7 +416,7 @@ ms.locfileid: "53789223"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| 属性 | Type | 说明 |
 | -------- | ---- | ----------- |
 | trackType | 字符串 | 轨道类型（音频/视频）。 |
 | trackName | 字符串 | 轨道名称。 |
@@ -450,7 +456,7 @@ ms.locfileid: "53789223"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| 属性 | Type | 说明 |
 | -------- | ---- | ----------- |
 | trackType | 字符串 | 轨道类型（音频/视频）。 |
 | trackName | 字符串 | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
@@ -489,7 +495,7 @@ ms.locfileid: "53789223"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| 属性 | Type | 说明 |
 | -------- | ---- | ----------- |
 | minLastTimestamp | 字符串 | 所有轨迹（音频或视频）中最后一个时间戳的最小值。 |
 | typeOfTrackWithMinLastTimestamp | 字符串 | 最后一个时间戳最小的轨迹的类型（音频或视频）。 |
@@ -525,7 +531,7 @@ ms.locfileid: "53789223"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| 属性 | Type | 说明 |
 | -------- | ---- | ----------- |
 | firstTimestamp | 字符串 | 收到视频类型的某个轨迹/质量级别的时间戳。 |
 | firstDuration | 字符串 | 具有第一个时间戳的数据区块的持续时间。 |
@@ -567,7 +573,7 @@ ms.locfileid: "53789223"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| 属性 | Type | 说明 |
 | -------- | ---- | ----------- |
 | trackType | 字符串 | 轨道类型（音频/视频）。 |
 | trackName | 字符串 | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
@@ -611,7 +617,7 @@ ms.locfileid: "53789223"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| 属性 | Type | 说明 |
 | -------- | ---- | ----------- |
 | trackType | 字符串 | 轨道类型（音频/视频）。 |
 | trackName | 字符串 | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
@@ -625,7 +631,7 @@ ms.locfileid: "53789223"
 
 事件具有以下顶级数据：
 
-| 属性 | 类型 | Description |
+| 属性 | Type | 说明 |
 | -------- | ---- | ----------- |
 | 主题 | 字符串 | EventGrid 主题。 此属性包含媒体服务帐户的资源 ID。 |
 | subject | 字符串 | 媒体服务帐户下媒体服务通道的资源路径。 连接主题和使用者可以获得作业的资源 ID。 |

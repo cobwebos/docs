@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 1a5b9f7abbb17aeefa3647e965c63c1f6dc4b0a7
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b1ad5aa074a7719dbe6000301c8cd04e6e1ad632
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429253"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984539"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>上传通用化 VHD 并使用它在 Azure 中创建新的 VM
 
@@ -32,7 +32,8 @@ ms.locfileid: "54429253"
 
 - 将任何 VHD 上传到 Azure 之前，应按照[准备要上传到 Azure 的 Windows VHD 或 VHDX](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 进行操作。
 - 开始迁移到[托管磁盘](managed-disks-overview.md)之前，请先查看[规划迁移到托管磁盘](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks)。
-- 本文需要 5.6 版本或更高版本的 AzureRM 模块。 运行 ` Get-Module -ListAvailable AzureRM.Compute` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>使用 Sysprep 通用化源 VM
@@ -65,17 +66,17 @@ Sysprep 将删除所有个人帐户信息及其他某些数据，并准备好要
 若要显示可用的存储帐户，请输入：
 
 ```azurepowershell
-Get-AzureRmStorageAccount | Format-Table
+Get-AzStorageAccount | Format-Table
 ```
 
 ## <a name="upload-the-vhd-to-your-storage-account"></a>将 VHD 上传到存储帐户
 
-使用 [Add-AzureRmVhd](https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd) cmdlet 将 VHD 上传到存储帐户中的容器。 本示例将文件 myVHD.vhd 从 C:\Users\Public\Documents\Virtual hard disks\\ 上传到 myResourceGroup 资源组中名为 mystorageaccount 的存储帐户。 该文件将放入名为 *mycontainer* 的容器，新文件名为 *myUploadedVHD.vhd*。
+使用 [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) cmdlet 将 VHD 上传到存储帐户中的容器。 本示例将文件 myVHD.vhd 从 C:\Users\Public\Documents\Virtual hard disks\\ 上传到 myResourceGroup 资源组中名为 mystorageaccount 的存储帐户。 该文件将放入名为 *mycontainer* 的容器，新文件名为 *myUploadedVHD.vhd*。
 
 ```powershell
 $rgName = "myResourceGroup"
 $urlOfUploadedImageVhd = "https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd"
-Add-AzureRmVhd -ResourceGroupName $rgName -Destination $urlOfUploadedImageVhd `
+Add-AzVhd -ResourceGroupName $rgName -Destination $urlOfUploadedImageVhd `
     -LocalFilePath "C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd"
 ```
 
@@ -129,15 +130,15 @@ $imageName = "myImage"
 使用通用化的 OS VHD 创建映像。
 
 ```powershell
-$imageConfig = New-AzureRmImageConfig `
+$imageConfig = New-AzImageConfig `
    -Location $location
-$imageConfig = Set-AzureRmImageOsDisk `
+$imageConfig = Set-AzImageOsDisk `
    -Image $imageConfig `
    -OsType Windows `
    -OsState Generalized `
    -BlobUri $urlOfUploadedImageVhd `
    -DiskSizeGB 20
-New-AzureRmImage `
+New-AzImage `
    -ImageName $imageName `
    -ResourceGroupName $rgName `
    -Image $imageConfig
@@ -150,7 +151,7 @@ New-AzureRmImage `
 
 
 ```powershell
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName $rgName `
     -Name "myVM" `
     -ImageName $imageName `

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/05/2019
-ms.openlocfilehash: 0ae6dea86019b84e8d086a595995f8bd5b2a55ed
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/08/2019
+ms.openlocfilehash: a067d83c32f11e0bf091b0efc5528995ab6a021a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753293"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990064"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL 数据库术语表
 
@@ -28,9 +28,9 @@ ms.locfileid: "55753293"
 ||弹性池|[弹性池](sql-database-elastic-pool.md)|
 ||托管实例|[托管实例](sql-database-managed-instance.md)|
 |服务器对象|SQL 数据库服务器或数据库服务器|[数据库服务器](sql-database-servers.md)|
-||SQL 数据库托管示例或托管实例|[托管实例](sql-database-managed-instance.md)|
+||SQL 数据库托管实例服务器、托管实例服务器或实例服务器|[托管实例](sql-database-managed-instance.md)|
 数据库对象|Azure SQL 数据库|Azure SQL 数据库中的任何数据库|
-||单一数据库|使用单一数据库部署选项作为独立数据库创建的数据库|
+||单一数据库|使用单一数据库部署选项创建的数据库|
 ||入池数据库|在弹性池内创建或移入其中的数据库|
 ||实例数据库|在托管实例中创建的数据库|
 ||基本数据库|在基于 DTU 的购买模型的基本服务层内创建或移入其中的数据库|
@@ -39,7 +39,7 @@ ms.locfileid: "55753293"
 ||常规用途数据库|在基于 vCore 的购买模型的一般用途服务层内创建或移入其中的数据库|
 ||超大规模数据库|在基于 vCore 的购买模型的超大规模服务层内创建或移入其中的数据库|
 ||业务关键数据库|在基于 vCore 的购买模型的业务关键服务层内创建或移入其中的数据库|
-|[购买模型和资源](sql-database-service-tiers.md)|基于 DTU 的购买模型|[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)|
+|[购买模型和资源](sql-database-purchase-models.md)|基于 DTU 的购买模型|[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)|
 ||基于 vCore 的购买模型|[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)|
 ||vCore|虚拟机监控程序向来宾 OS 提供的核心。|
 ||服务层|购买模型中的服务级别|

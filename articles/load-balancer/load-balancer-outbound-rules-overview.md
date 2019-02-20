@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 0020d1a830932ffe77f7edc54e9e2e52e04dcb15
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7a0b679ef7a1a468c8a849b0a3fb9f744a392dd3
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439096"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243597"
 ---
 # <a name="load-balancer-outbound-rules"></a>负载均衡器出站规则
 
@@ -34,7 +34,7 @@ ms.locfileid: "54439096"
 - 哪些虚拟机应转换为哪些公共 IP 地址。 
 - 应如何分配[出站 SNAT 端口](load-balancer-outbound-connections.md#snat)。
 - 要为哪些协议提供出站转换。
-- 用于出站连接空闲超时的持续时间。
+- 用于出站连接空闲超时的持续时间（4-120 分钟）。
 - 空闲超时时是否要发送 TCP 重置（公共预览版功能）。 
 
 出站规则扩展了[出站连接](load-balancer-outbound-connections.md)一文中所述的[方案 2](load-balancer-outbound-connections.md#lb)，方案优先顺序保持不变。
@@ -90,7 +90,7 @@ API 版本“2018-07-01”允许按如下所示构建出站规则定义：
 
 ### <a name="idletimeout"></a>控制出站流空闲超时
 
-出站规则提供一个配置参数用于控制出站流空闲超时，并使该超时符合应用程序的需求。  出站空闲超时默认为 4 分钟。  该参数接受从 4 到 66 再到特定分钟数的值作为与此特定规则匹配的流的空闲超时。
+出站规则提供一个配置参数用于控制出站流空闲超时，并使该超时符合应用程序的需求。  出站空闲超时默认为 4 分钟。  该参数接受从 4 到 120 的值用于指定与此特定规则匹配的流的空闲超时分钟数。
 
 使用以下参数可将出站空闲超时设置为 1 小时：
 
@@ -205,7 +205,7 @@ disableOutboundSNAT 参数默认为 false，这意味着，负载均衡规则**�
 ## <a name="limitations"></a>限制
 
 - 每个前端 IP 地址的最大可用临时端口数为 51,200。
-- 可配置的出站空闲超时范围为 4 到 66 分钟（240 到 4000 秒）。
+- 可配置的出站空闲超时范围为 4 到 120 分钟（240 到 7200 秒）。
 - 负载均衡器不支持将 ICMP 用于出站 NAT。
 - 不能使用门户来配置或查看出站规则。  请改为使用模板、REST API、Az CLI 2.0 或 PowerShell。
 - 出站规则只能应用于主 NIC 和主 IP 配置。

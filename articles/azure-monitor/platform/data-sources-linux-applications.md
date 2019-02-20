@@ -1,5 +1,5 @@
 ---
-title: 在 Log Analytics 中收集 Linux 应用程序性能数据 | Microsoft Docs
+title: 在 Azure Monitor 中收集 Linux 应用程序性能数据 | Microsoft Docs
 description: 本文提供了有关对 Log Analytics Linux 代理进行配置以收集 MySQL 和 Apache HTTP Server 的性能计数器的详细信息。
 services: log-analytics
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: bf14e06f52f1b5a32ea3922083cc1f9bdbfb2aae
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 453e66934b93ab4368c4d3816d3db1a4588ae660
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104839"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001319"
 ---
-# <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>在 Log Analytics 中收集 Linux 应用程序的性能计数器 
+# <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>在 Azure Monitor 中收集 Linux 应用程序的性能计数器 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-本文详细介绍了如何配置[适用于 Linux 的 Log Analytics 代理](https://github.com/Microsoft/OMS-Agent-for-Linux)以将特定应用程序的性能计数器收集到 Log Analytics 中。  本文中包括的应用程序有：  
+本文详细介绍了如何配置[适用于 Linux 的 Log Analytics 代理](https://github.com/Microsoft/OMS-Agent-for-Linux)以将特定应用程序的性能计数器收集到 Azure Monitor 中。  本文中包括的应用程序有：  
 
 - [MySQL](#MySQL)
 - [Apache HTTP Server](#apache-http-server)
@@ -48,7 +48,7 @@ MySQL 身份验证文件存储在 `/var/opt/microsoft/mysql-cimprov/auth/omsagen
 
 下表描述了身份验证文件中的条目。
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--|:--|
 | 端口 | 表示 MySQL 实例正在侦听的当前端口。 端口 0 指定后面的属性用于默认实例。 |
 | Bind-Address| 当前 MySQL 绑定地址。 |
@@ -61,7 +61,7 @@ MySQL OMI 身份验证文件可以定义一个默认的实例和端口号，以�
 
 下表提供了示例实例设置 
 
-| Description | 文件 |
+| 说明 | 文件 |
 |:--|:--|
 | 默认实例和端口为 3308 的实例。 | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
 | 默认实例和端口为 3308 且采用不同用户名和密码的实例。 | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |
@@ -77,7 +77,7 @@ MySQL OMI 身份验证文件可以定义一个默认的实例和端口号，以�
 
 下表提供了有关 mycimprovauth 的使用语法的详细信息。
 
-| Operation | 示例 | Description
+| Operation | 示例 | 说明
 |:--|:--|:--|
 | autoupdate *false or true* | mycimprovauth autoupdate false | 设置在重新启动或更新时是否会自动更新身份验证文件。 |
 | default *bind-address username password* | mycimprovauth default 127.0.0.1 root pwd | 在 MySQL OMI 身份验证文件中设置默认实例。<br>应当以纯文本输入密码字段 - MySQL OMI 身份验证文件中的密码将是 Base 64 编码的。 |
@@ -114,7 +114,7 @@ MySQL 用户还需要对以下默认表具有 SELECT 访问权限。
 
 ### <a name="define-performance-counters"></a>定义性能计数器
 
-将 Log Analytics Linux 代理配置为将数据发送到 Log Analytics 后，必须配置要收集的性能计数器。  请对下表中的计数器使用 [Log Analytics 中的 Windows 和 Linux 性能数据来源](data-sources-performance-counters.md)中所述的过程。
+将适用于 Linux 的 Log Analytics 代理配置为将数据发送到 Azure Monitor 后，必须配置要收集的性能计数器。  请对下表中的计数器使用 [Azure Monitor 中的 Windows 和 Linux 性能数据来源](data-sources-performance-counters.md)中所述的过程。
 
 | 对象名称 | 计数器名称 |
 |:--|:--|
@@ -150,7 +150,7 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 ### <a name="define-performance-counters"></a>定义性能计数器
 
-将 Log Analytics Linux 代理配置为将数据发送到 Log Analytics 后，必须配置要收集的性能计数器。  请对下表中的计数器使用 [Log Analytics 中的 Windows 和 Linux 性能数据来源](data-sources-performance-counters.md)中所述的过程。
+将适用于 Linux 的 Log Analytics 代理配置为将数据发送到 Azure Monitor 后，必须配置要收集的性能计数器。  请对下表中的计数器使用 [Azure Monitor 中的 Windows 和 Linux 性能数据来源](data-sources-performance-counters.md)中所述的过程。
 
 | 对象名称 | 计数器名称 |
 |:--|:--|
@@ -168,4 +168,4 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 ## <a name="next-steps"></a>后续步骤
 * 从 Linux 代理[收集性能计数器](data-sources-performance-counters.md)。
-* 了解[日志查询](../../log-analytics/log-analytics-queries.md)以便分析从数据源和解决方案中收集的数据。 
+* 了解[日志查询](../log-query/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。 

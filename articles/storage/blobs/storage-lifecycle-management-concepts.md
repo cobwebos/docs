@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/04/2018
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: dd74cac3000f6a280d5b8faa858c2143d17a7e55
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 284a590a484052fdb7da2f03c6155078268b2aac
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247793"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211438"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>管理 Azure Blob 存储生命周期（预览版）
 
@@ -37,7 +37,7 @@ ms.locfileid: "55247793"
 在预览版中，生命周期管理功能是免费的。 客户需要支付[列出 Blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 和[设置 Blob 层](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API 调用的常规操作费用。 有关定价的详细信息，请参阅[块 Blob 定价](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
 ## <a name="register-for-preview"></a>注册预览版 
-若要注册公共预览版，需要提交请求，将此功能注册到订阅中。 请求通常会在两周内获得批准。 获得批准后，以下区域中的所有现有和新的 GPv2 或 Blob 存储帐户都将包含此功能：美国西部 2、美国中西部、美国东部 2 和西欧。 预览版仅支持块 Blob。 与大多数预览版一样，不应将此功能用于生产工作负荷，直到正式版发布。
+若要注册公共预览版，需要提交请求，将此功能注册到订阅中。 请求通常会在 72 小时内获得批准。 获得批准后，以下区域中的所有现有和新的 GPv2 或 Blob 存储帐户都将包含此功能：美国西部 2、美国中西部、美国东部 2 和西欧。 预览版仅支持块 Blob。 与大多数预览版一样，不应将此功能用于生产工作负荷，直到正式版发布。
 
 若要提交请求，请运行以下 PowerShell 或 CLI 命令。
 

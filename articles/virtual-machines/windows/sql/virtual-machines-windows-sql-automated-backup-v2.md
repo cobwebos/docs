@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 432df6d73b2eaa42645fe25ad9c743b7fcef06a8
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: e20599833d3073e4819dbc974d4b2afe962ba18a
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331638"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984301"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>适用于 Azure 虚拟机（资源管理器）的自动备份 v2
 
@@ -62,7 +62,7 @@ ms.locfileid: "54331638"
 
 ### <a name="basic-settings"></a>基本设置
 
-| 设置 | 范围（默认值） | Description |
+| 设置 | 范围（默认值） | 说明 |
 | --- | --- | --- |
 | **自动备份** | 启用/禁用（已禁用） | 为运行 SQL Server 2016/2017 Developer、Standard 或 Enterprise 的 Azure VM 启用或禁用自动备份。 |
 | **保留期** | 1-30 天（30 天） | 保留备份的天数。 |
@@ -72,7 +72,7 @@ ms.locfileid: "54331638"
 
 ### <a name="advanced-settings"></a>高级设置
 
-| 设置 | 范围（默认值） | Description |
+| 设置 | 范围（默认值） | 说明 |
 | --- | --- | --- |
 | **系统数据库备份** | 启用/禁用（已禁用） | 启用后，此功能还会备份系统数据库：Master、MSDB 和 Model。 对于 MSDB 和 Model 数据库，如果想要创建日志备份，请验证这些数据库是否处于完整恢复模式。 永远不会针对 Master 数据库创建日志备份。 此外，不会创建 TempDB 的备份。 |
 | **备份计划** | 手动/自动（自动） | 默认情况下，系统会根据日志的增长情况自动确定备份计划。 用户可以使用手动备份计划来指定备份时段。 此情况下，仅按指定的频率、在特定日期的指定时段内进行备份。 |
@@ -153,16 +153,18 @@ ms.locfileid: "54331638"
 可以使用 PowerShell 来配置自动备份 v2。 开始之前，必须：
 
 - [下载并安装最新的 Azure PowerShell](https://aka.ms/webpi-azps)。
-- 打开 Windows PowerShell 并使用 Connect-AzureRmAccount 命令将其与帐户关联。
+- 打开 Windows PowerShell 并使用 Connect-AzAccount 命令将其与帐户关联。
+
+[!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 ### <a name="install-the-sql-iaas-extension"></a>安装 SQL IaaS 扩展
-如果通过 Azure 门户预配了 SQL Server 虚拟机，应已安装 SQL Server IaaS 扩展。 可通过调用 **Get-AzureRmVM** 命令并检查 **Extensions** 属性，来确定是否为 VM 安装了该扩展。
+如果通过 Azure 门户预配了 SQL Server 虚拟机，应已安装 SQL Server IaaS 扩展。 可通过调用 Get-AzVM 命令并检查 Extensions 属性，确定是否为 VM 安装了该扩展。
 
 ```powershell
 $vmname = "vmname"
 $resourcegroupname = "resourcegroupname"
 
-(Get-AzureRmVM -Name $vmname -ResourceGroupName $resourcegroupname).Extensions 
+(Get-AzVM -Name $vmname -ResourceGroupName $resourcegroupname).Extensions 
 ```
 
 如果已安装 SQL Server IaaS 代理扩展，应会看到列出的“SqlIaaSAgent”或“SQLIaaSExtension”。 此外，该扩展的 **ProvisioningState** 应显示“Succeeded”。 
@@ -171,16 +173,16 @@ $resourcegroupname = "resourcegroupname"
 
 ```powershell
 $region = “EASTUS2”
-Set-AzureRmVMSqlServerExtension -VMName $vmname `
+Set-AzVMSqlServerExtension -VMName $vmname `
     -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
     -Version "1.2" -Location $region 
 ```
 
 ### <a id="verifysettings"></a> 验证当前设置
-如果在预配期间启用了自动备份，可以使用 PowerShell 检查当前配置。 运行 **Get-AzureRmVMSqlServerExtension** 命令并检查 **AutoBackupSettings** 属性：
+如果在预配期间启用了自动备份，可以使用 PowerShell 检查当前配置。 运行 Get-AzVMSqlServerExtension 命令并检查 AutoBackupSettings 属性：
 
 ```powershell
-(Get-AzureRmVMSqlServerExtension -VMName $vmname -ResourceGroupName $resourcegroupname).AutoBackupSettings
+(Get-AzVMSqlServerExtension -VMName $vmname -ResourceGroupName $resourcegroupname).AutoBackupSettings
 ```
 
 应会看到类似于下面的输出：
@@ -214,27 +216,27 @@ LogBackupFrequency          : 60
 $storage_accountname = “yourstorageaccount”
 $storage_resourcegroupname = $resourcegroupname
 
-$storage = Get-AzureRmStorageAccount -ResourceGroupName $resourcegroupname `
+$storage = Get-AzStorageAccount -ResourceGroupName $resourcegroupname `
     -Name $storage_accountname -ErrorAction SilentlyContinue
 If (-Not $storage)
-    { $storage = New-AzureRmStorageAccount -ResourceGroupName $storage_resourcegroupname `
+    { $storage = New-AzStorageAccount -ResourceGroupName $storage_resourcegroupname `
     -Name $storage_accountname -SkuName Standard_GRS -Location $region } 
 ```
 
 > [!NOTE]
 > 自动备份不支持在高级存储中存储备份，但可以从使用高级存储的 VM 磁盘创建备份。
 
-然后，使用 New-AzureRmVMSqlServerAutoBackupConfig 命令启用并配置自动备份 v2 设置，以便在 Azure 存储帐户中存储备份。 在本示例中，备份设置为保留 10 天。 系统数据库备份已启用。 完整备份计划为每周运行，时段从 20:00 开始，持续两小时。 日志备份计划为每隔 30 分钟运行。 第二个命令 **Set-AzureRmVMSqlServerExtension** 使用这些设置更新指定的 Azure VM。
+然后，使用 New-AzVMSqlServerAutoBackupConfig 命令启用并配置自动备份 v2 设置，以便在 Azure 存储帐户中存储备份。 在本示例中，备份设置为保留 10 天。 系统数据库备份已启用。 完整备份计划为每周运行，时段从 20:00 开始，持续两小时。 日志备份计划为每隔 30 分钟运行。 第二个命令 Set-AzVMSqlServerExtension 使用这些设置更新指定的 Azure VM。
 
 ```powershell
-$autobackupconfig = New-AzureRmVMSqlServerAutoBackupConfig -Enable `
+$autobackupconfig = New-AzVMSqlServerAutoBackupConfig -Enable `
     -RetentionPeriodInDays 10 -StorageContext $storage.Context `
     -ResourceGroupName $storage_resourcegroupname -BackupSystemDbs `
     -BackupScheduleType Manual -FullBackupFrequency Weekly `
     -FullBackupStartHour 20 -FullBackupWindowInHours 2 `
     -LogBackupFrequencyInMinutes 30 
 
-Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
+Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname 
 ```
 
@@ -246,7 +248,7 @@ Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 $password = "P@ssw0rd"
 $encryptionpassword = $password | ConvertTo-SecureString -AsPlainText -Force  
 
-$autobackupconfig = New-AzureRmVMSqlServerAutoBackupConfig -Enable `
+$autobackupconfig = New-AzVMSqlServerAutoBackupConfig -Enable `
     -EnableEncryption -CertificatePassword $encryptionpassword `
     -RetentionPeriodInDays 10 -StorageContext $storage.Context `
     -ResourceGroupName $storage_resourcegroupname -BackupSystemDbs `
@@ -254,19 +256,19 @@ $autobackupconfig = New-AzureRmVMSqlServerAutoBackupConfig -Enable `
     -FullBackupStartHour 20 -FullBackupWindowInHours 2 `
     -LogBackupFrequencyInMinutes 30 
 
-Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
+Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
 
 若要确认是否应用了这些设置，请[检查自动备份配置](#verifysettings)。
 
 ### <a name="disable-automated-backup"></a>禁用自动备份
-若要禁用自动备份，请运行同一个脚本，但不要为 **New-AzureRmVMSqlServerAutoBackupConfig** 命令指定 **-Enable** 参数。 缺少 **-Enable** 参数将向该命令发出指示以禁用此功能。 与安装一样，可能需要花费几分钟时间来禁用自动备份。
+若要禁用自动备份，请运行同一个脚本，但不要为 New-AzVMSqlServerAutoBackupConfig 命令指定 -Enable 参数。 缺少 **-Enable** 参数将向该命令发出指示以禁用此功能。 与安装一样，可能需要花费几分钟时间来禁用自动备份。
 
 ```powershell
-$autobackupconfig = New-AzureRmVMSqlServerAutoBackupConfig -ResourceGroupName $storage_resourcegroupname
+$autobackupconfig = New-AzVMSqlServerAutoBackupConfig -ResourceGroupName $storage_resourcegroupname
 
-Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
+Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
 
@@ -288,21 +290,21 @@ $logbackupfrequency = "30"
 
 # ResourceGroupName is the resource group which is hosting the VM where you are deploying the SQL IaaS Extension 
 
-Set-AzureRmVMSqlServerExtension -VMName $vmname `
+Set-AzVMSqlServerExtension -VMName $vmname `
     -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
     -Version "1.2" -Location $region
 
 # Creates/use a storage account to store the backups
 
-$storage = Get-AzureRmStorageAccount -ResourceGroupName $resourcegroupname `
+$storage = Get-AzStorageAccount -ResourceGroupName $resourcegroupname `
     -Name $storage_accountname -ErrorAction SilentlyContinue
 If (-Not $storage)
-    { $storage = New-AzureRmStorageAccount -ResourceGroupName $storage_resourcegroupname `
+    { $storage = New-AzStorageAccount -ResourceGroupName $storage_resourcegroupname `
     -Name $storage_accountname -SkuName Standard_GRS -Location $region }
 
 # Configure Automated Backup settings
 
-$autobackupconfig = New-AzureRmVMSqlServerAutoBackupConfig -Enable `
+$autobackupconfig = New-AzVMSqlServerAutoBackupConfig -Enable `
     -RetentionPeriodInDays $retentionperiod -StorageContext $storage.Context `
     -ResourceGroupName $storage_resourcegroupname -BackupSystemDbs `
     -BackupScheduleType $backupscheduletype -FullBackupFrequency $fullbackupfrequency `
@@ -311,7 +313,7 @@ $autobackupconfig = New-AzureRmVMSqlServerAutoBackupConfig -Enable `
 
 # Apply the Automated Backup settings to the VM
 
-Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
+Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
 

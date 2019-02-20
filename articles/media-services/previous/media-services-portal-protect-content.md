@@ -4,7 +4,7 @@ description: 本文演示如何使用 Azure 门户配置内容保护策略。 �
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 270b3272-7411-40a9-ad42-5acdbba31154
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: c46faf2298ebaac4f40fb1d18cbfca83076e0d4f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: dc5439c98b5abc69b6cb1ba144e015426bb887ce
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423527"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996920"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>使用 Azure 门户配置内容保护策略
  使用 Azure 媒体服务，可以在媒体从离开计算机到存储、处理和传送的整个过程中确保其安全。 可以通过媒体服务传送按高级加密标准 (AES)（使用 128 位加密密钥）动态加密的内容。 也可借助 PlayReady 和/或 Widevine 数字版权管理 (DRM) 以及 Apple FairPlay，将其与通用加密 (CENC) 配合使用。 
@@ -90,10 +90,10 @@ Widevine 许可证模板设置在 Widevine 许可证上启用的功能。
 ![“资产”选项](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 
 ### <a name="encrypt-with-aes-or-drm"></a>使用 AES 或 DRM 加密
-针对资产选择“加密”时，会看到两个选择：**AES** 或 **DRM**。 
+针对资产选择“加密”时，会看到两个选择：“AES”或“DRM”。 
 
 #### <a name="aes"></a>AES
-对所有流式处理协议启用 AES 明文密钥加密：平滑流式处理、HLS 和 MPEG DASH。
+对所有流式处理协议启用 AES 明文密钥加密：平滑流式处理、HLS 和 MPEG-DASH。
 
 ![加密配置](./media/media-services-portal-content-protection/media-services-content-protection008.png)
 

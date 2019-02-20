@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 36d6733ddc73ace2026ea838cf8f701db95469e6
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 93402f9124a5c2f6a251cb0e3b3dab21386fa5ff
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448460"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965250"
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>示例 3 – 构建外围网络以通过防火墙、UDR 和 NSG 保护网络
 [返回安全边界最佳实践页面][HOME]
@@ -109,35 +109,46 @@ VNETLocal 始终是该特定网络的 VNet 的已定义地址前缀（也就是�
 本示例将使用以下命令来构建路由表、添加用户定义的路由，并将路由表绑定到子网（注意：下面以货币符号开头的项（例如 $BESubnet）均为本文“参考”部分的脚本中的用户定义变量）：
 
 1. 首先必须创建基础路由表。 此代码段演示如何创建后端子网的路由表。 该脚本还为前端子网创建了对应的路由表。
-   
-     New-AzureRouteTable -Name $BERouteTableName `
-   
-         -Location $DeploymentLocation `
-         -Label "Route table for $BESubnet subnet"
+
+   ```powershell
+   New-AzureRouteTable -Name $BERouteTableName `
+       -Location $DeploymentLocation `
+       -Label "Route table for $BESubnet subnet"
+   ```
+
 2. 创建路由表后，可以添加特定的用户定义路由。 在此代码段中，将通过虚拟设备路由所有流量 (0.0.0.0/0)（前面在脚本中创建虚拟设备时，已使用变量 $VMIP[0] 传入了分配的 IP 地址）。 该脚本还在前端路由表中创建了对应的规则。
-   
-     Get-AzureRouteTable $BERouteTableName | `
-   
-         Set-AzureRoute -RouteName "All traffic to FW" -AddressPrefix 0.0.0.0/0 `
-         -NextHopType VirtualAppliance `
-         -NextHopIpAddress $VMIP[0]
+
+   ```powershell
+   Get-AzureRouteTable $BERouteTableName | `
+       Set-AzureRoute -RouteName "All traffic to FW" -AddressPrefix 0.0.0.0/0 `
+       -NextHopType VirtualAppliance `
+       -NextHopIpAddress $VMIP[0]
+   ```
+
 3. 上述路由条目将覆盖默认的“0.0.0.0/0”路由，但默认的 10.0.0.0/16 规则仍然存在，以允许 VNet 中的流量直接路由到目标，而不是路由到网络虚拟设备。 若要纠正此行为，必须添加以下规则。
-   
-        Get-AzureRouteTable $BERouteTableName | `
-            Set-AzureRoute -RouteName "Internal traffic to FW" -AddressPrefix $VNetPrefix `
-            -NextHopType VirtualAppliance `
-            -NextHopIpAddress $VMIP[0]
+
+   ```powershell
+   Get-AzureRouteTable $BERouteTableName | `
+       Set-AzureRoute -RouteName "Internal traffic to FW" -AddressPrefix $VNetPrefix `
+       -NextHopType VirtualAppliance `
+       -NextHopIpAddress $VMIP[0]
+   ```
+
 4. 此时要做出选择。 在上述两个路由中，所有流量都会路由到防火墙进行评估，甚至单个子网中的流量也是如此。 这可能是所需结果，但若要允许子网中的流量直接在本地路由而不要防火墙的介入，可以添加第三个具体规则。 此路由指明，目标为本地子网的地址可以直接路由到该位置 (NextHopType = VNETLocal)。
-   
-        Get-AzureRouteTable $BERouteTableName | `
-            Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $BEPrefix `
-            -NextHopType VNETLocal
+
+   ```powershell
+   Get-AzureRouteTable $BERouteTableName | `
+       Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $BEPrefix `
+           -NextHopType VNETLocal
+   ```
+
 5. 最后，在创建路由表并填入用户定义的路由后，必须立即将路由表绑定到子网。 在脚本中，前端路由表也绑定到了前端子网。 下面是后端子网的绑定脚本。
-   
-     Set-AzureSubnetRouteTable -VirtualNetworkName $VNetName `
-   
-        -SubnetName $BESubnet `
-        -RouteTableName $BERouteTableName
+
+   ```powershell
+   Set-AzureSubnetRouteTable -VirtualNetworkName $VNetName `
+       -SubnetName $BESubnet `
+       -RouteTableName $BERouteTableName
+   ```
 
 ## <a name="ip-forwarding"></a>IP 转发
 UDR 随附 IP 转发功能。 这是虚拟设备上的一项设置，使虚拟设备能够接收不是要专门传送到该设备的流量，再将流量转发到其最终目标。
@@ -149,13 +160,14 @@ UDR 随附 IP 转发功能。 这是虚拟设备上的一项设置，使虚拟�
 > 
 > 
 
-设置 IP 转发是单个命令，可在创建 VM 时完成。 在本示例的流程中，这个代码段靠近脚本末尾处，与 UDR 命令放在一起：
+设置 IP 转发是单个命令，可在创建 VM 时完成。 在本示例的流程中，这个代码片段靠近脚本末尾处，与 UDR 命令放在一起：
 
 1. 调用代表虚拟设备的 VM 实例（在本例中为防火墙），并启用 IP 转发（注意：以货币符号开头的任何红色项（例如 $VMName[0]）均为本文“参考”部分的脚本中的用户定义变量。 方括号中的零 [0] 代表 VM 阵列中的第一个 VM，为使示例脚本无须修改即可运行，第一个 VM (VM 0) 必须是防火墙）：
-   
-     Get-AzureVM -Name $VMName[0] -ServiceName $ServiceName[0] | `
-   
+
+    ```powershell
+    Get-AzureVM -Name $VMName[0] -ServiceName $ServiceName[0] | `
         Set-AzureIPForwarding -Enable
+    ```
 
 ## <a name="network-security-groups-nsg"></a>网络安全组 (NSG)
 在此示例中，构建了 NSG 组，并在其中加载了单个规则。 然后将此组仅绑定到前端和后端子网（不绑定到 SecNet）。 以声明性的方式构建以下规则：
@@ -166,22 +178,26 @@ UDR 随附 IP 转发功能。 这是虚拟设备上的一项设置，使虚拟�
 
 本示例中的网络安全组有一个有趣的特点，那就是它只包含一个规则（如下所示），它将拒绝流向整个虚拟网络（包含安全子网）的 Internet 流量。 
 
-    Get-AzureNetworkSecurityGroup -Name $NSGName | `
-        Set-AzureNetworkSecurityRule -Name "Isolate the $VNetName VNet `
-        from the Internet" `
-        -Type Inbound -Priority 100 -Action Deny `
-        -SourceAddressPrefix INTERNET -SourcePortRange '*' `
-        -DestinationAddressPrefix VIRTUAL_NETWORK `
-        -DestinationPortRange '*' `
-        -Protocol *
+```powershell
+Get-AzureNetworkSecurityGroup -Name $NSGName | `
+    Set-AzureNetworkSecurityRule -Name "Isolate the $VNetName VNet `
+    from the Internet" `
+    -Type Inbound -Priority 100 -Action Deny `
+    -SourceAddressPrefix INTERNET -SourcePortRange '*' `
+    -DestinationAddressPrefix VIRTUAL_NETWORK `
+    -DestinationPortRange '*' `
+    -Protocol *
+```
 
 不过，由于 NSG 只绑定到前端和后端子网，因此不对流往安全子网的入站流量处理此规则。 这样，即使 NSG 规则指出因为 NSG 永远不绑定到安全子网，所以没有由 Internet 流往 VNet 上任何地址的流量，流量也还是会流向安全子网。
 
-    Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
-        -SubnetName $FESubnet -VirtualNetworkName $VNetName
+```powershell
+Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
+    -SubnetName $FESubnet -VirtualNetworkName $VNetName
 
-    Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
-        -SubnetName $BESubnet -VirtualNetworkName $VNetName
+Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
+    -SubnetName $BESubnet -VirtualNetworkName $VNetName
+```
 
 ## <a name="firewall-rules"></a>防火墙规则
 需要在防火墙上创建转发规则。 由于防火墙会阻止或转发所有入站、出站和 VNet 内部流量，因此需要配置许多防火墙规则。 此外，所有入站流量都将（在不同端口上）抵达安全服务公共 IP 地址，并由防火墙进行处理。 最佳实践是先绘制逻辑流向图，再设置子网和防火墙规则，以免事后修改。 下图是此示例中防火墙规则的逻辑视图：
@@ -233,9 +249,11 @@ UDR 随附 IP 转发功能。 这是虚拟设备上的一项设置，使虚拟�
 
 可以在创建 VM 或后续构建时开放终结点，示例脚本和以下代码段中演示了具体的操作（注意：以货币符号开头的任何项（例如 $VMName[$i]）均为本文“参考”部分的脚本中的用户定义变量。 以方括号括住的“$i”[$i] 代表 VM 阵列中特定 VM 的阵列编号）：
 
-    Add-AzureEndpoint -Name "HTTP" -Protocol tcp -PublicPort 80 -LocalPort 80 `
-        -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | `
-        Update-AzureVM
+```powershell
+Add-AzureEndpoint -Name "HTTP" -Protocol tcp -PublicPort 80 -LocalPort 80 `
+    -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | `
+    Update-AzureVM
+```
 
 尽管此处因为使用了变量而未明确显示，但实际上**只会**打开安全云服务上的终结点。 这是为了确保所有入站流量都由防火墙处理（路由、进行 NAT 处理、丢弃）。
 
@@ -389,7 +407,7 @@ UDR 随附 IP 转发功能。 这是虚拟设备上的一项设置，使虚拟�
 
 ## <a name="traffic-scenarios"></a>流量方案
 > [!IMPORTANT]
-> 本部分的重点是要记住**所有**流量都会通过防火墙传送。 通过远程桌面访问 IIS01 服务器也是如此，即使在前端云服务中和前端子网上，要访问此服务器，仍需在端口 8014 上通过 RDP 连接到防火墙，并允许防火墙将 RDP 请求内部路由到 IIS01 RDP 端口。 由于（就门户可见）没有直接通往 IIS01 的 RDP 路径，所以 Azure 门户的“连接”按钮将无效。 这意味着，所有来自 Internet 的连接将连往安全服务和端口，例如 secscv001.cloudapp.net:xxxx。
+> 本部分的重点是要记住所有流量都会通过防火墙传送。 通过远程桌面访问 IIS01 服务器也是如此，即使在前端云服务中和前端子网上，要访问此服务器，仍需在端口 8014 上通过 RDP 连接到防火墙，并允许防火墙将 RDP 请求内部路由到 IIS01 RDP 端口。 由于（就门户可见）没有直接通往 IIS01 的 RDP 路径，所以 Azure 门户的“连接”按钮将无效。 这意味着，所有来自 Internet 的连接将连往安全服务和端口，例如 secscv001.cloudapp.net:xxxx。
 > 
 > 
 
@@ -592,6 +610,7 @@ UDR 随附 IP 转发功能。 这是虚拟设备上的一项设置，使虚拟�
 > 
 > 
 
+```powershell
     <# 
      .SYNOPSIS
       Example of DMZ and User Defined Routing in an isolated network (Azure only, no hybrid connections)
@@ -604,7 +623,7 @@ UDR 随附 IP 转发功能。 这是虚拟设备上的一项设置，使虚拟�
        - A Network Virtual Appliance (NVA), in this case a Barracuda NextGen Firewall
        - One server on the FrontEnd Subnet
        - Three Servers on the BackEnd Subnet
-       - IP Forwading from the FireWall out to the internet
+       - IP Forwarding from the FireWall out to the internet
        - User Defined Routing FrontEnd and BackEnd Subnets to the NVA
 
       Before running script, ensure the network configuration file is created in
@@ -702,7 +721,7 @@ UDR 随附 IP 转发功能。 这是虚拟设备上的一项设置，使虚拟�
           $SubnetName += $FESubnet
           $VMIP += "10.0.1.4"
 
-        # VM 2 - The First Appliaction Server
+        # VM 2 - The First Application Server
           $VMName += "AppVM01"
           $ServiceName += $BackEndService
           $VMFamily += "Windows"
@@ -711,7 +730,7 @@ UDR 随附 IP 转发功能。 这是虚拟设备上的一项设置，使虚拟�
           $SubnetName += $BESubnet
           $VMIP += "10.0.2.5"
 
-        # VM 3 - The Second Appliaction Server
+        # VM 3 - The Second Application Server
           $VMName += "AppVM02"
           $ServiceName += $BackEndService
           $VMFamily += "Windows"
@@ -730,7 +749,7 @@ UDR 随附 IP 转发功能。 这是虚拟设备上的一项设置，使虚拟�
           $VMIP += "10.0.2.4"
 
     # ----------------------------- #
-    # No User Defined Varibles or   #
+    # No User Defined Variables or   #
     # Configuration past this point #
     # ----------------------------- #
 
@@ -741,7 +760,7 @@ UDR 随附 IP 转发功能。 这是虚拟设备上的一项设置，使虚拟�
 
       # Create Storage Account
         If (Test-AzureName -Storage -Name $StorageAccountName) { 
-            Write-Host "Fatal Error: This storage account name is already in use, please pick a diffrent name." -ForegroundColor Red
+            Write-Host "Fatal Error: This storage account name is already in use, please pick a different name." -ForegroundColor Red
             Return}
         Else {Write-Host "Creating Storage Account" -ForegroundColor Cyan 
               New-AzureStorageAccount -Location $DeploymentLocation -StorageAccountName $StorageAccountName}
@@ -872,7 +891,7 @@ UDR 随附 IP 转发功能。 这是虚拟设备上的一项设置，使虚拟�
             |Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $FEPrefix `
             -NextHopType VNETLocal
 
-      # Assoicate the Route Tables with the Subnets
+      # Associate the Route Tables with the Subnets
         Write-Host "Binding Route Tables to the Subnets" -ForegroundColor Cyan 
         Set-AzureSubnetRouteTable -VirtualNetworkName $VNetName `
             -SubnetName $BESubnet `
@@ -920,11 +939,12 @@ UDR 随附 IP 转发功能。 这是虚拟设备上的一项设置，使虚拟�
       Write-Host " - Install Test Web App (Run Post-Build Script on the IIS Server)" -ForegroundColor Gray
       Write-Host " - Install Backend resource (Run Post-Build Script on the AppVM01)" -ForegroundColor Gray
       Write-Host
-
+```
 
 #### <a name="network-config-file"></a>网络配置文件
 使用更新的位置保存此 xml 文件，并将此文件的链接添加到上述脚本中的 $NetworkConfigFile 变量。
 
+```xml
     <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
         <Dns>
@@ -957,6 +977,7 @@ UDR 随附 IP 转发功能。 这是虚拟设备上的一项设置，使虚拟�
         </VirtualNetworkSites>
       </VirtualNetworkConfiguration>
     </NetworkConfiguration>
+```
 
 #### <a name="sample-application-scripts"></a>示例应用程序脚本
 如果希望为此外围网络示例以及其他外围网络示例安装一个示例应用程序，可以使用以下链接上提供的应用程序：[示例应用程序脚本][SampleApp]

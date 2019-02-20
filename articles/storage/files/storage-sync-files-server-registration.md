@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: cec6da78ae47b509e2bb5f8ba0007208545062e7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 493f6f3380dee4ed70bb6e0bc9bba24f93071097
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478060"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165325"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>管理已向 Azure 文件同步注册的服务器
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
@@ -165,7 +165,10 @@ Get-AzureRmStorageSyncGroup -StorageSyncServiceName $StorageSyncService | ForEac
 > 限制设置过低将影响 Azure 文件同步同步和召回的性能。
 
 ### <a name="set-azure-file-sync-network-limits"></a>设置 Azure 文件同步网络限制
-可通过使用 `StorageSyncNetworkLimit` cmdlet 限制 Azure 文件同步的网络利用率。 
+可通过使用 `StorageSyncNetworkLimit` cmdlet 限制 Azure 文件同步的网络利用率。
+
+> [!Note]  
+> 访问分层文件或使用 Invoke-StorageSyncFileRecall cmdlet 时，网络限制不适用。
 
 例如，可以创建新的中止值来确保 Azure 文件同步在工作周的上午 9 点到下午 5 点（17:00 点）之间不超过 10 Mbps： 
 

@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 50a5c8d515e27db7c2c65b484cdecad8ff00baf8
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: a5c62c67cd401c043352b06e6e6070a7fc0f1296
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164532"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55888699"
 ---
-<!--author=SharS last changed: 9/17/15-->
-
 #### <a name="to-connect-through-the-serial-console"></a>通过串行控制台进行连接
 1. 将串行电缆连接到设备（直接连接或通过 USB 串行适配器连接）。
 2. 打开“控制面板”，并打开“设备管理器”。

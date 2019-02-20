@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/6/2018
 ms.author: victorh
-ms.openlocfilehash: f9bd0288d4009af536bdc8f45cbaed4b3f1eee18
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 884775fc2783256d9fff43e8bc6b26cc4f638648
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018698"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998614"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>应用程序网关运行状况监视概述
 
@@ -44,7 +44,7 @@ ms.locfileid: "48018698"
 
 例如：
 
-```
+```powershell
 $match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
 $match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 ```
@@ -52,7 +52,7 @@ $match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 ### <a name="default-health-probe-settings"></a>默认的运行状况探测设置
 
-| 探测属性 | 值 | Description |
+| 探测属性 | 值 | 说明 |
 | --- | --- | --- |
 | 探测 URL |http://127.0.0.1:\<port\>/ |URL 路径 |
 | 时间间隔 |30 |发送下一个运行状况探测前需要等待的时间（以秒为单位）。|
@@ -78,9 +78,9 @@ $match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 下表提供自定义运行状况探测的属性的定义。
 
-| 探测属性 | Description |
+| 探测属性 | 说明 |
 | --- | --- |
-| 名称 |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
+| Name |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
 | 协议 |用于发送探测的协议。 探测使用后端 HTTP 设置中定义的协议 |
 | 主机 |用于发送探测的主机名。 仅在应用程序网关上配置了多站点的情况下适用，否则使用“127.0.0.1”。 此值与 VM 主机名不同。 |
 | 路径 |探测的相对路径。 有效路径以“/”开头。 |

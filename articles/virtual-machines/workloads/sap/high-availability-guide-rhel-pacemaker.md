@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 6001681376011d03f7417d2099c0765e1a6cb5ae
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 3c4f1be97308062adc28a0b49ee36c3492906d63
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750112"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990200"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>在 Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker
 
@@ -216,7 +216,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 }
 ```
 
-### <a name="1-assign-the-custom-role-to-the-service-principal"></a>**[1]** 向服务主体分配自定义角色
+### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** 向服务主体分配自定义角色
 
 将在最后一章中创建的自定义角色“Linux 隔离代理角色”分配给服务主体。 不要再使用“所有者”角色！
 

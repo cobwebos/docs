@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 5edf301ffc87a17963c3c32c7ea1b559e0834cf7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 222891df5b54a8f2c3464fc3bddf9f6b32c28d36
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244464"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244787"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>如何选择 Azure 机器学习工作室算法
 
@@ -41,12 +41,10 @@ Microsoft Azure 机器学习算法备忘单可帮助从 Azure 机器学习工作
 有时，它们都不是最佳选择。 它们本是根据经验法则提出的建议，因此并非十分精确。
 多个交谈过的数据科学家都表示，找到最佳算法的唯一确定方法就是尝试所有算法。
 
-下面是 [Azure AI 库](http://gallery.cortanaintelligence.com/)中的一个试验示例。该试验对相同数据尝试多种算法并对结果进行比较：[比较多类分类器：字母识别](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92)。
+下面是 [Azure AI 库](http://gallery.azure.ai/)中的一个试验示例。该试验对相同数据尝试多种算法并对结果进行比较：[比较多类分类器：字母识别](http://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92)。
 
 > [!TIP]
-> 若要下载和打印 Microsoft Azure 机器学习工作室功能概述示意图，请参阅 [Overview diagram of Azure Machine Learning Studio capabilities](studio-overview-diagram.md)（Azure Machine 机器学习工作室功能概述）。
-> 
-> 
+> 若要下载易于理解的机器学习基础知识信息图概述，以了解用于解答常见机器学习问题的常用算法，请参阅[包含算法示例的机器学习基础知识](basics-infographic-with-algorithm-examples.md)。
 
 ## <a name="flavors-of-machine-learning"></a>机器学习的类型
 
@@ -242,13 +240,11 @@ VW 由 Microsoft Research 的 John Langford 发起并领导，是改装车算法
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关说明算法并提供示例的可下载信息图，请参阅[可下载的信息图：包含算法示例的机器学习基础知识](basics-infographic-with-algorithm-examples.md)。
+* 若要下载易于理解的机器学习基础知识信息图概述，以了解用于解答常见机器学习问题的常用算法，请参阅[包含算法示例的机器学习基础知识](basics-infographic-with-algorithm-examples.md)。
 
 * 有关机器学习工作室中所有可用的机器学习算法的分类列表，请参阅“机器学习工作室算法和模块帮助”中的[初始化模型](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model)。
 
 * 有关机器学习工作室中算法和模块的完整列表（按字母顺序排列），请参阅“机器学习工作室算法和模块帮助”中的[机器学习工作室模块 A-Z 列表](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/a-z-module-list)。
-
-* 若要下载和打印 Microsoft Azure 机器学习工作室功能概述示意图，请参阅 [Overview diagram of Azure Machine Learning Studio capabilities](studio-overview-diagram.md)（Azure Machine 机器学习工作室功能概述）。
 
 <!-- Media -->
 

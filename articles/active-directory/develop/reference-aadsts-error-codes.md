@@ -12,16 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/23/2019
+ms.date: 02/13/2019
 ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 30d9cef89bed1c43fa1d058ff90fe2d9a52260f7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d4ad41992b2ac0dfc98303601060ed299e75ddfc
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096681"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234282"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>身份验证和授权错误代码
 
@@ -190,7 +191,7 @@ ms.locfileid: "55096681"
 | AADSTS90016 | MissingRequiredClaim - 访问令牌无效。 缺少必需的声明。 |
 | AADSTS90019 | MissingTenantRealm - Azure AD 无法确定请求中的租户标识符。 |
 | AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat - 主体名称格式无效，或者不符合预期的 `name[/host][@realm]` 格式。 主体名称是必需的，而主机和领域是可选的，可设置为 null。 |
-| AADSTS90023 | InvalidRequest |
+| AADSTS90023 | InvalidRequest - 身份验证服务请求无效。 |
 | AADSTS90024 | RequestBudgetExceededError - 发生了暂时性错误。 重试。 |
 | AADSTS90033 | MsodsServiceUnavailable - Microsoft Online Directory Service (MSODS) 不可用。 |
 | AADSTS90036 | MsodsServiceUnretryableFailure - MSODS 托管的 WCF 服务发生意外的不可重试错误。 请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)，获取有关该错误的更多详细信息。 |

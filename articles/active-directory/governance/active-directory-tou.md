@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 01/10/2019
+ms.date: 02/09/2019
 ms.author: rolyon
-ms.openlocfilehash: 2b8836525e085b41cc8d011087c4fc71afe453cb
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 987b2b1ca028b816ed6909781f56c0b5174541bd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822504"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163761"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory 使用条款功能
 组织可以通过 Azure AD 使用条款这种简单的方法向最终用户显示信息。 可以通过这样的呈现方式确保用户看到法律要求或符合性要求的相关免责声明。 本文介绍如何快速了解使用条款。
@@ -333,6 +334,9 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 可以针对 Microsoft Intune 注册应用配置条件访问策略，并要求在 Intune 中注册设备之前接受使用条款。 有关详细信息，请阅读[为组织博客文章选择合适的条款解决方案](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409)。
 
 ![Microsoft Intune 云应用](./media/active-directory-tou/cloud-app-intune.png)
+
+> [!NOTE]
+> [按设备实施的使用条款](#per-device-terms-of-use)不支持 Intune 注册应用。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

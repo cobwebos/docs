@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,24 +16,25 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ab2c0f671eaf6147baad24b426c4a527f07e136f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c92472d276b3f03e5a3855587de4ca8a045bfec2
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422399"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234418"
 ---
 # <a name="id-tokens"></a>ID 令牌
 
-`id_tokens` 是在 [OpenID Connect](v1-protocols-openid-connect-code.md) 流中发送到客户端应用程序的。 它们可以一起发送来代替访问令牌，可供客户端用来对用户进行身份验证。 
+`id_tokens` 是在 [OpenID Connect](v1-protocols-openid-connect-code.md) 流中发送到客户端应用程序的。 它们可以一起发送来代替访问令牌，可供客户端用来对用户进行身份验证。
 
 ## <a name="using-the-idtoken"></a>使用 id_token
 
-ID 令牌应该用来验证某个用户是否符合其声称的身份，以及用来获取该用户的其他有用信息 - 它不应该用来替代[访问令牌](access-tokens.md)进行授权。 它提供的声明可以用于应用程序内部的用户体验、数据库键控以及提供客户端应用程序访问权限。 
+ID 令牌应该用来验证某个用户是否符合其声称的身份，以及用来获取该用户的其他有用信息 - 它不应该用来替代[访问令牌](access-tokens.md)进行授权。 它提供的声明可以用于应用程序内部的用户体验、数据库键控以及提供客户端应用程序访问权限。
 
 ## <a name="claims-in-an-idtoken"></a>id_token 中的声明
 
-Microsoft 标识的 `id_tokens` 为 [JWT](https://tools.ietf.org/html/rfc7519)，这意味着它们由标头、有效负载和签名部分组成。 可以使用标头和有效负载来验证令牌的真实性，而有效负载则包含客户端请求的用户信息。 除非另有说明，否则此处列出的所有声明均出现在 v1.0 和 v2.0 令牌中。
+Microsoft 标识的 `id_tokens` 为 [JWT](https://tools.ietf.org/html/rfc7519)，这意味着它们由标头、有效负载和签名部分组成。 可以使用标头和签名来验证令牌的真实性，而有效负载则包含客户端请求的用户信息。 除非另有说明，否则此处列出的所有声明均出现在 v1.0 和 v2.0 令牌中。
 
 ### <a name="v10"></a>v1.0
 
@@ -53,7 +54,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 
 ### <a name="header-claims"></a>标头声明
 
-|声明 | 格式 | Description |
+|声明 | 格式 | 说明 |
 |-----|--------|-------------|
 |`typ` | 字符串 - 始终为“JWT” | 指示令牌是 JWT。|
 |`alg` | String | 指示用于对令牌签名的算法。 示例：“RS256” |
@@ -62,7 +63,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 
 ### <a name="payload-claims"></a>有效负载声明
 
-|声明 | 格式 | Description |
+|声明 | 格式 | 说明 |
 |-----|--------|-------------|
 |`aud` |  字符串，应用 ID URI | 标识令牌的目标接收方。 在 `id_tokens` 中，受众是在 Azure 门户中分配给应用的应用程序 ID。 应用应该验证此值并拒绝其值不匹配的令牌。 |
 |`iss` |  字符串，STS URI | 标识构造并返回令牌的安全令牌服务 (STS)，以及对用户进行身份验证的 Azure AD 租户。 如果令牌由 v2.0 终结点颁发，则 URI 将以 `/v2.0` 结尾。  表示用户是来自 Microsoft 帐户的使用者用户的 GUID 为 `9188040d-6c67-4c5b-b112-36a304b66dad`。 应用应该使用声明的 GUID 部分限制可登录应用的租户集（如果适用）。 |

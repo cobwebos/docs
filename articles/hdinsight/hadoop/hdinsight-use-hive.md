@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 0fa487e1ecd419780243b04a273110f3cf43761c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 03e15532d04a4c62796aad884c5e344688814672
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633957"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209228"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？
 
@@ -204,11 +204,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 [Apache Hive on Tez 设计文档](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)包含有关实现选项和优化配置的详细信息。
 
-为了帮助使用 Tez 调试运行的作业，HDInsight 提供了以下 Web UI，使你可以查看 Tez 作业的详细信息：
-
-* [在基于 Linux 的 HDInsight 上使用 Apache Ambari Tez 视图](../hdinsight-debug-ambari-tez-view.md)
-
-* [在基于 Windows 的 HDInsight 上使用 Apache Tez UI](../hdinsight-debug-tez-ui.md)
+为了帮助调试使用 Tez 运行的作业，HDInsight 提供了以下 Web UI，使你可以查看 Tez 作业的详细信息：[在基于 Linux 的 HDInsight 上使用 Apache Ambari Tez 视图](../hdinsight-debug-ambari-tez-view.md)。
 
 ### <a name="low-latency-analytical-processing-llap"></a>低延迟分析处理 (LLAP)
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: aelnably;nicking
 ms.custom: seodec18
-ms.openlocfilehash: ab1ae63352e66da557cad49bf5f320b577055877
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 8d4290f1411749e2d8d3d27fbd792ceeeea47ef7
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726555"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100479"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>在 Azure 中从快照还原应用
 本文介绍如何在 [Azure 应用服务](../app-service/overview.md)中从快照还原应用。 可以根据应用的某个快照将应用还原到以前的状态。 不需启用快照备份，平台会自动保存所有应用的快照，用于数据恢复。
@@ -38,6 +38,7 @@ ms.locfileid: "53726555"
 - 用于服务在执行还原操作时会停止目标应用或目标槽。
 - 应用服务保留三个月的快照，用于平台数据恢复。
 - 只能还原过去 30 天的快照。
+- 在应用服务环境上运行的应用服务不支持快照。
  
 
 ## <a name="restore-an-app-from-a-snapshot"></a>从快照还原应用

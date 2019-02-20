@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 5eecd750642610737d346c5c270349e285106e95
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a73dab8a0df642e439e8519c404423c6689418f5
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820430"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236968"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 
@@ -253,3 +253,6 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 
 5. 单击“删除”以清理还原点集合。
 6. 再次重试备份操作。
+
+> [!NOTE]
+ >如果资源（RP 集合）具有大量还原点，则从门户中删除相同数量还原点的操作可能会超时并失败。 这是已知的 CRP 问题，其中所有还原点不会在规定时间内都删除且操作会超时；但是，删除操作通常会在 2 次或 3 次重试后成功。

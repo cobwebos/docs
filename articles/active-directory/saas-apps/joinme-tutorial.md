@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 join.me 的集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 join.me 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 join.me 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: dc393b8701bd72ea7f9de543de33116ea3cb5653
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f61520994bdeeab75b6d26731dee9af15b4ccda6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48872032"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209529"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-joinme"></a>教程：Azure Active Directory 与 join.me 的集成
+# <a name="tutorial-azure-active-directory-integration-with-joinme"></a>教程：Azure Active Directory 与 join.me 集成
 
 在本教程中，了解如何将 join.me 与 Azure Active Directory (Azure AD) 集成。
 
@@ -103,11 +104,11 @@ ms.locfileid: "48872032"
 
       ![图像](./media/joinme-tutorial/b1_b2_saml_ssso.png)
 
-3. 在“选择单一登录方法”对话框中，对 SAML 模式单击“选择”以启用单一登录。
+3. 在“选择单一登录方法”对话框中，单击“SAML”模式对应的“选择”，以启用单一登录。
 
     ![图像](./media/joinme-tutorial/b1_b2_saml_sso.png)
 
-4. 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“基本 SAML 配置”对话框。
+4. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
 
     ![图像](./media/joinme-tutorial/b1-domains_and_urlsedit.png)
 
@@ -125,7 +126,7 @@ ms.locfileid: "48872032"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
     ![图像](./media/joinme-tutorial/d_users_and_groups.png)
 
@@ -133,13 +134,13 @@ ms.locfileid: "48872032"
 
     ![图像](./media/joinme-tutorial/d_adduser.png)
 
-3. 在“用户属性”中，执行以下步骤。
+3. 在“用户属性”中，按照以下步骤操作。
 
     ![图像](./media/joinme-tutorial/d_userproperties.png)
 
-    a. 在“名称”字段中，输入 **BrittaSimon**。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 **brittasimon@yourcompanydomain.extension**  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -148,7 +149,7 @@ ms.locfileid: "48872032"
   
 ### <a name="create-a-joinme-test-user"></a>创建 join.me 测试用户
 
-在本部分中，将在 join.me 中创建一个名为 Britta Simon 的用户。 与 [join.me 支持团队](https://help.join.me/s/?language)协作，将用户添加到 join.me 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 join.me 中创建一个名为 Britta Simon 的用户。 请与  [join.me 支持团队](https://help.join.me/s/?language)协作，将用户添加到 join.me 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -170,7 +171,7 @@ ms.locfileid: "48872032"
 
     ![图像](./media/joinme-tutorial/d_assign_user.png)
 
-4. 在“用户和组”对话框中，在“用户”列表中选择 Britta Simon，然后单击屏幕底部的“选择”按钮。
+4. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
 
 5. 在“添加分配”对话框中，选择“分配”按钮。
     
@@ -179,7 +180,7 @@ ms.locfileid: "48872032"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 join.me 磁贴时，应当会自动登录到 join.me 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 1/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: a9c26a2a0eaf9c2669a71cdca729a6e64fe5cd5c
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: d7403d4f791151b167f03ee79c30623bbd644008
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301299"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100670"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务将模型部署为 FPGA 上的 Web 服务
 
@@ -179,7 +179,7 @@ registered_model.delete()
 
 ## <a name="secure-fpga-web-services"></a>保护 FPGA Web 服务
 
-目前不支持使用 SSL 保护 FPGA Web 服务。
+有关如何保护 FPGA Web 服务的信息，请参阅[保护 Web 服务](how-to-secure-web-service.md)文档。
 
 
 ## <a name="next-steps"></a>后续步骤

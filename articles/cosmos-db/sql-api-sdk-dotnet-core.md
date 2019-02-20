@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 642c59e9349585ea2287f7bf439250dbfef9ba7a
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: d25fcbce99017ff19adebd61275b395c980a3cf5
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766242"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891685"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB .NET Core SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -49,6 +49,12 @@ Azure Cosmos DB .NET Core SDK 具有与最新版 [Azure Cosmos DB .NET SDK](sql-
 * 新对象模型，使用顶级 CosmosClient 和方法拆分成相关的 CosmosDatabases、CosmosContainers 和 CosmosItems 类。
 * 支持流。
 * 对来自服务器的 CosmosResponseMessage 进行了更新以返回状态代码，并且仅在未返回响应时引发异常。
+
+### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
+
+* 添加了环境变量设置“POCOSerializationOnly”。
+
+* 删除了 DocumentDB.Spatial.Sql.dll，现在在 Microsoft.Azure.Documents.ServiceInterop.dll 中包含
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 
@@ -227,6 +233,7 @@ Azure Cosmos DB .NET Core 预览版 SDK 与最新版 [Azure Cosmos DB .NET SDK](
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.2.2](#2.2.2) |2019 年 2 月 6 日 |--- |
 | [2.2.1](#2.2.1) |2018 年 12 月 24 日 |--- |
 | [2.2.0](#2.2.0) |2018 年 12 月 7 日 |--- |
 | [2.1.3](#2.1.3) |2018 年 10 月 15 日 |--- |

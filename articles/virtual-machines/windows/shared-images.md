@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/11/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: ecac7216582fa07e9c25492ddeb25e9f155da563
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 07912369179a1d1226c750a8e86837fdc6887922
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54305141"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984165"
 ---
 # <a name="preview-create-a-shared-image-gallery-with-azure-powershell"></a>预览版：使用 Azure PowerShell 创建共享映像库 
 
@@ -33,13 +33,14 @@ ms.locfileid: "54305141"
 
 共享映像库功能具有多种资源类型。 我们将在本文中使用或生成这些资源类型：
 
-| 资源 | Description|
+| 资源 | 说明|
 |----------|------------|
 | **托管映像** | 这是基本映像，可以单独使用，也可用于在映像库中创建“映像版本”。 托管映像是从通用 VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
 | **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
 | **映像定义** | 映像在库中定义，携带有关该映像及其在内部使用的要求的信息。 这包括了该映像是 Windows 还是 Linux 映像、发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 |
 | **映像版本** | 使用库时，将使用**映像版本**来创建 VM。 可根据环境的需要创建多个映像版本。 与托管映像一样，在使用**映像版本**创建 VM 时，将使用映像版本来创建 VM 的新磁盘。 可以多次使用映像版本。 |
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -49,12 +50,12 @@ ms.locfileid: "54305141"
  
 ## <a name="create-vms-from-an-image"></a>根据映像创建 VM
 
-映像版本完成后，可以创建一个或多个新的 VM。 使用 [New-AzureRMVM](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm) cmdlet 经过简化的参数集，只需提供映像版本的映像 ID 即可。 
+映像版本完成后，可以创建一个或多个新的 VM。 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 的简化参数集，只需提供映像版本的映像 ID。 
 
 本示例在美国东部数据中心的“myResourceGroup”中创建名为“myVMfromImage”的 VM。
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
    -ResourceGroupName "myResourceGroup" `
    -Name "myVMfromImage" `
    -Image $imageVersion.Id `
@@ -70,10 +71,10 @@ New-AzureRmVm `
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要、则可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) cmdlet 删除资源组、VM 和所有相关资源：
+如果不再需要资源组、VM 和所有相关的资源，可以使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) cmdlet 将其删除：
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myGalleryRG
+Remove-AzResourceGroup -Name myGalleryRG
 ```
 
 ## <a name="next-steps"></a>后续步骤

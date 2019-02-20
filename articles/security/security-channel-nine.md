@@ -4,7 +4,7 @@ description: 本文介绍第 9 频道上的精选 Azure 安全演示文稿。 �
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 9e5e14aa-11d7-4242-8b7e-49fd0e79817a
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: b6e4539be76449093de0587e43b0e97243602967
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 148b26cc694abaa09bf5016f3c2f2fe3a1c12a70
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
-ms.locfileid: "25540129"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109803"
 ---
 # <a name="azure-security-videos-on-channel-9"></a>第 9 频道上的 Azure 安全视频
 [第 9 频道](https://channel9.msdn.com/)是一个社区，这个社区将我们产品的支持人员推向前台，让客户可以与他们直接进行交流。
@@ -40,7 +40,7 @@ ms.locfileid: "25540129"
 
 通过 Azure 安全中心，可以获得所有 Azure 资源的安全状态的核心情况。 可以快速验证适当的安全控制是否就位且配置正确。 Scott 与 Sara Fender 进行交流，后者就相关问题进行了全面的解释说明。
 
-[实时演示︰对威胁的防护、检测和响应](https://channel9.msdn.com/events/Virtual-Security-Summit/Virtual-Security-Summit-2016/Live-Demo-Protecting-against-Detecting-and-Responding-to-Threats)
+[实时演示：对威胁的防护、检测和响应](https://channel9.msdn.com/events/Virtual-Security-Summit/Virtual-Security-Summit-2016/Live-Demo-Protecting-against-Detecting-and-Responding-to-Threats)
 
 加入此会话，了解 Microsoft 安全平台的行动。 Cloud & Enterprise 的总经理 Julia White 演示了 Windows 10、Azure 和 Office 365 的安全功能，这些功能可帮助你保护组织的安全。
 
@@ -56,7 +56,7 @@ Jack Richins 向 [Scott](https://channel9.msdn.com/Niners/Glucose) 讲述了如�
 
 [如何在开发测试实验室中设置安全性](https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab)
 
-作为实验室的所有者，可以通过以下两种实验室角色来保护实验室访问的安全︰所有者和开发测试实验室用户。 拥有“所有者”角色的用户在实验室中拥有完全访问权限，而拥有“开发测试实验室用户”角色中的用户只有受限的访问权限。 在本视频中，我们将向你演示如何将拥有其中一种角色的用户添加到实验室。
+作为实验室的所有者，可以通过以下两种实验室角色来保护实验室访问的安全：所有者和开发测试实验室用户。 拥有“所有者”角色的用户在实验室中拥有完全访问权限，而拥有“开发测试实验室用户”角色中的用户只有受限的访问权限。 在本视频中，我们将向你演示如何将拥有其中一种角色的用户添加到实验室。
 
 [管理 Azure 应用的机密](https://channel9.msdn.com/events/Build/2016/P456)
 
@@ -66,7 +66,7 @@ Jack Richins 向 [Scott](https://channel9.msdn.com/Niners/Glucose) 讲述了如�
 
 高级项目经理 Narayan Annamalai 向 Scott 讲述了如何在 Azure 虚拟网络内使用网络安全组。 可以通过子网和网络创建对 Azure 内的对象的控制访问！ 学习如何使用 PowerShell 在 Azure 内控制访问和创建组。
 
-[Azure AD Privileged Identity Management：安全向导、警报和审查](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD-Privileged-Identity-Management-Security-Wizard-Alerts-Reviews)
+[Azure AD Privileged Identity Management：安全向导、警报、评审](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD-Privileged-Identity-Management-Security-Wizard-Alerts-Reviews)
 
 Azure Active Directory (AD) Privileged Identity Management 是一项高级功能，可用于发现、限制和监视特权标识及其对资源的访问。 它还可以在需要时强制启用按需实时管理权限。 学习内容：
 

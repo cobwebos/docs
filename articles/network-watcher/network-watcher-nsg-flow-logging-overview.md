@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 06130a5ade63e23fdcd139902a19694a510393a3
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ff3c1e51bcf0b7d730019fad66ed8b0c3fe17a20
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332296"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097642"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 
@@ -287,5 +287,6 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 ## <a name="next-steps"></a>后续步骤
 
 - 要了解如何启用流日志，请参阅[启用 NSG 流日志记录](network-watcher-nsg-flow-logging-portal.md)。
+- 若要了解如何读取流日志，请参阅[读取 NSG 流日志](network-watcher-read-nsg-flow-logs.md)。
 - 如需详细了解 NSG 日志记录，请参阅[网络安全组 (NSG) 的日志分析](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 - 如需确定是允许还是拒绝流量进出 VM，请参阅[诊断 VM 网络流量筛选器问题](diagnose-vm-network-traffic-filtering-problem.md)

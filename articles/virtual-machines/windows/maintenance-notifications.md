@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shants
-ms.openlocfilehash: f8cac174844d7f87687d08975b6fbf17ed47b03e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 7c391e84f335e013ce1914063ccec75ba20f8685
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543285"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980085"
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>处理 Windows 虚拟机的计划内维护通知
 
@@ -77,16 +77,18 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 
 ## <a name="check-maintenance-status-using-powershell"></a>使用 PowerShell 检查维护状态
 
-还可以使用 Azure Powershell 查看 VM 计划何时维护。 使用 `-status` 参数时可通过 [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) cmdlet 获得计划内维护信息。
+还可以使用 Azure Powershell 查看 VM 计划何时维护。 使用 `-status` 参数时可通过 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) cmdlet 获得计划内维护信息。
  
 仅当有计划内维护时，才会返回维护信息。 如果未计划任何影响 VM 的维护，该 cmdlet 不返回任何维护信息。 
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
 ```powershell
-Get-AzureRmVM -ResourceGroupName rgName -Name vmName -Status
+Get-AzVM -ResourceGroupName rgName -Name vmName -Status
 ```
 
 在 MaintenanceRedeployStatus 下返回以下属性： 
-| 值 | Description   |
+| 值 | 说明   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | 指示此时是否可以在 VM 上启动维护 ||
 | PreMaintenanceWindowStartTime         | 可以在 VM 上启动维护的自助式维护时段的起点 ||
@@ -97,10 +99,10 @@ Get-AzureRmVM -ResourceGroupName rgName -Name vmName -Status
 
 
 
-还可以通过使用 [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) 并不指定 VM 来获取资源组中所有 VM 的维护状态。
+还可以通过使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 并且不指定 VM 来获取资源组中所有 VM 的维护状态。
  
 ```powershell
-Get-AzureRmVM -ResourceGroupName rgName -Status
+Get-AzVM -ResourceGroupName rgName -Status
 ```
 
 以下 PowerShell 函数获取订阅 ID，并输出计划维护的 VM 列表。
@@ -109,18 +111,18 @@ Get-AzureRmVM -ResourceGroupName rgName -Status
 
 function MaintenanceIterator
 {
-    Select-AzureRmSubscription -SubscriptionId $args[0]
+    Select-AzSubscription -SubscriptionId $args[0]
 
-    $rgList= Get-AzureRmResourceGroup 
+    $rgList= Get-AzResourceGroup 
 
     for ($rgIdx=0; $rgIdx -lt $rgList.Length ; $rgIdx++)
     {
         $rg = $rgList[$rgIdx]        
-    $vmList = Get-AzureRMVM -ResourceGroupName $rg.ResourceGroupName 
+    $vmList = Get-AzVM -ResourceGroupName $rg.ResourceGroupName 
         for ($vmIdx=0; $vmIdx -lt $vmList.Length ; $vmIdx++)
         {
             $vm = $vmList[$vmIdx]
-            $vmDetails = Get-AzureRMVM -ResourceGroupName $rg.ResourceGroupName -Name $vm.Name -Status
+            $vmDetails = Get-AzVM -ResourceGroupName $rg.ResourceGroupName -Name $vm.Name -Status
               if ($vmDetails.MaintenanceRedeployStatus )
             {
                 Write-Output "VM: $($vmDetails.Name)  IsCustomerInitiatedMaintenanceAllowed: $($vmDetails.MaintenanceRedeployStatus.IsCustomerInitiatedMaintenanceAllowed) $($vmDetails.MaintenanceRedeployStatus.LastOperationMessage)"               
@@ -136,7 +138,7 @@ function MaintenanceIterator
 如果 **IsCustomerInitiatedMaintenanceAllowed** 设置为 true，以下命令使用上一部分中函数的信息，在 VM 上启动维护。
 
 ```powershell
-Restart-AzureRmVM -PerformMaintenance -name $vm.Name -ResourceGroupName $rg.ResourceGroupName 
+Restart-AzVM -PerformMaintenance -name $vm.Name -ResourceGroupName $rg.ResourceGroupName 
 ```
 
 ## <a name="classic-deployments"></a>经典部署
@@ -161,7 +163,7 @@ Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 
 **问：为什么需要立即重新启动虚拟机？**
 
-**答：** 虽然 Azure 平台的大多数更新和升级不会影响虚拟机的可用性，但在某些情况下无法避免重新启动 Azure 中托管的虚拟机。 我们累积了多个需要重启服务器的更改，这将导致重新启动虚拟机。
+**答：** 虽然对 Azure 平台的大多数更新和升级不会影响虚拟机的可用性，但在某些情况下无法避免重新启动 Azure 中托管的虚拟机。 我们累积了多个需要重启服务器的更改，这将导致重新启动虚拟机。
 
 **问：如果我按建议使用可用性集实现高可用性，我是否安全？**
 
@@ -179,7 +181,7 @@ Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 
 **问：有什么方法可以知道虚拟机受影响的确切时间？**
 
-**答：** 设置计划时，我们定义了长达几天的时间范围。 但是，服务器（和 VM）在此时间窗口内的确切排序是未知的。 想要知道其 VM 确切时间的客户可以使用[计划事件](scheduled-events.md)并从虚拟机中查询，这样就会在 VM 重启前 15 分钟收到通知。
+**答：** 设置计划时，我们定义了一个长达几天的时间段。 但是，服务器（和 VM）在此时间窗口内的确切排序是未知的。 想要知道其 VM 确切时间的客户可以使用[计划事件](scheduled-events.md)并从虚拟机中查询，这样就会在 VM 重启前 15 分钟收到通知。
 
 **问：重新启动虚拟机需要多长时间？**
 

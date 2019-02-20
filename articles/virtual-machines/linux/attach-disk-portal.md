@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 5995c896f02720d82862895795e1e8d43f6bb226
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: d24dcc6f12347c66abc033f4c8b25c3b49870a44
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756455"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895765"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>使用门户将数据磁盘附加到 Linux VM 
 本文介绍如何通过 Azure 门户将新磁盘和现有磁盘附加到 Linux 虚拟机。 也可以[在 Azure 门户中将数据磁盘附加到 Windows VM](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
@@ -102,10 +102,10 @@ dmesg | grep SCSI
 ### <a name="partition-a-new-disk"></a>对新磁盘进行分区
 如果使用包含数据的现有磁盘，请跳到装载磁盘。 如果附加新磁盘，需要对磁盘进行分区。
 
-使用 `parted` 对磁盘进行分区，如果磁盘大小为 2TiB 或更大，则必须使用 GPT 进行分区，如果小于 2TiB，则可以使用 MBR 或 GPT 进行分区。 将其设置为分区 1 中的主磁盘，并接受其他默认值。 以下示例在 */dev/sdc* 上启动 `parted` 进程：
+使用 `fdisk` 对磁盘进行分区。 如果磁盘大小为 2 太字节 (TiB) 或更大，则必须使用 GPT 分区；可以使用 `parted` 来执行 GPT 分区。 如果磁盘大小在 2 TiB 以下，则可以使用 MBR 或 GPT 分区。 将其设置为分区 1 中的主磁盘，并接受其他默认值。 以下示例在 */dev/sdc* 上启动 `fdisk` 进程：
 
 ```bash
-sudo parted /dev/sdc
+sudo fdisk /dev/sdc
 ```
 
 使用 `n` 命令添加新分区。 在此示例中，我们还选择主分区的 `p` 并接受其余默认值。 输出将类似于以下示例：

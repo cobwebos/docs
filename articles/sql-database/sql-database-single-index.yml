@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3a404c9f7abae979a4f4d54c6ff502a33edc9b7f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6dfa2cf9d5d7a4fb10c04207341915aebbf1808e
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814395"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235455"
 documentType: LandingData
 title: Azure SQL 数据库：单一数据库
 metadata:
@@ -16,6 +16,7 @@ metadata:
   manager: craigg
   requires-business-manager-approval: false
   ms.service: sql-database
+  ms.subservice: single-database
   ms.tgt_pltfrm: na
   ms.devlang: 
   ms.topic: overview
@@ -80,6 +81,7 @@ sections:
     - html: （预览版）新的 SQL Server 2019 <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">智能查询处理</a>功能，例如<a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#table-variable-deferred-compilation">表变量延迟编译</a>、<a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#batch-mode-on-rowstore">行存储表上的批处理模式</a>以及<a href="https://docs.microsoft.com/sql/relational-databases/user-defined-functions/scalar-udf-inlining?view=azuresqldb-current&toc=%2Fazure%2Fsql-database%2Ftoc.json">标量 UDF 内联</a>。
     - html: （预览版）新的 Transact-SQL 语言功能，例如 <a href="https://docs.microsoft.com/sql/t-sql/functions/approx-count-distinct-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">APPROX_COUNT_DISTINCT 聚合</a>和<a href="https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">从 Azure Blob 存储进行批量导入</a>。
     - html: （预览版）新的 SQL Server 2019 Online <a href="https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#online--on--off">生成</a>和重新生成 CLUSTERED COLUMNSTORE 索引操作。
+    - html: （预览版）新 <a href="https://docs.microsoft.com/azure/sql-database/sql-database-machine-learning-services-overview">Azure SQL 数据库机器学习服务（使用 R）</a>
 - title: 五分钟快速入门
   items:
   - type: paragraph

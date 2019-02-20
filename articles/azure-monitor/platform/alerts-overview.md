@@ -8,22 +8,24 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 59b190065c678ef61b3e0dec8df13db4215a8229
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 6fb49baf8ab58ae6cfe7639cedcc4466810c8b96
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486294"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003306"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警报概述 
 
 本文介绍什么是警报及其优点，以及如何开始使用警报。  
 
 
+
+
 ## <a name="what-are-alerts-in-microsoft-azure"></a>什么是 Microsoft Azure 中的警报？
 在监视数据中发现重要情况时，警报会以主动的方式通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 
 
-本文讨论 Azure Monitor 中的统一警报体验，其现在包括 Log Analytics 和 Application Insights。 [以前的警报体验](alerts-classic.overview.md)和警报类型称为“经典警报”。 单击警报页顶部的“查看经典警报”即可查看这个旧的体验和旧的警报类型。 
+本文讨论 Azure Monitor 中的统一警报体验，其现在包括由 Log Analytics 和 Application Insights 管理的警报。 [以前的警报体验](alerts-classic.overview.md)和警报类型称为“经典警报”。 单击警报页顶部的“查看经典警报”即可查看这个旧的体验和旧的警报类型。 
 
 ## <a name="overview"></a>概述
 

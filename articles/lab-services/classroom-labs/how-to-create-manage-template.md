@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2019
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: d0942d3465811687937ce113e664fbf3f91277d0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: b287a67c470cc1697065838e52916c285a2233a7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815236"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960184"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>在 Azure 实验室服务中创建和管理课堂模板
 实验室中的模板是基础虚拟机映像，用户的所有虚拟机均依据其创建。 设置模板虚拟机，为其准确配置需要提供给实验室用户的内容。 你可以提供实验室用户看到的模板的名称和描述。 然后发布此模板，让模板 VM 的实例可供实验室用户使用。 发布模板时，Azure 实验室服务会使用该模板在实验室中创建 VM。 在此过程中创建的 VM 数等于允许进入实验室的最大用户数，这可以在实验室的使用策略中设置。 所有虚拟机的配置都与模板相同。
@@ -103,7 +103,12 @@ ms.locfileid: "55815236"
 1. 查看警告，并选择“启动”。 
 
     ![启动模板 - 警告](../media/how-to-create-manage-template/start-template-warning.png)
+2. 在“模板”部分的实验室磁贴上可以看到相关状态。
+
+    ![启动模板 - 状态](../media/how-to-create-manage-template/template-start-status.png)
 1. 模板启动后，若要连接到 VM，请选择“连接”，然后按说明操作。 
+
+    ![连接到或停止模板 VM](../media/how-to-create-manage-template/connect-stop-vm.png)
 1. 安装学生进行实验室操作所需的任何软件（例如，Visual Studio、Azure 存储资源管理器，等等）。 
 2. 断开与模板 VM 的连接（关闭远程桌面会话）。 
 3. 选择“停止”以**停止**模板 VM。 

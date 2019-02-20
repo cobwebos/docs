@@ -4,7 +4,7 @@ description: 本规范适用于 Azure 媒体服务，描述基于分片 MP4 的�
 services: media-services
 documentationcenter: ''
 author: cenkdin
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 43fac263-a5ea-44af-8dd5-cc88e423b4de
 ms.service: media-services
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 02/08/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: c6ff386913ed66cf4f74cb577bb8ca58e6932ada
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 16b8b5a012c5d2073a3472a70cf2064b8b0e59cd
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228872"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984828"
 ---
-# <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure 媒体服务零碎的 MP4 实时引入规范
+# <a name="azure-media-services-fragmented-mp4-live-ingest-specification-legacy"></a>Azure 媒体服务分片 MP4 实时引入规范（旧版）
+
 本规范适用于 Azure 媒体服务，描述基于分片 MP4 的实时传送视频流引入的协议和格式。 媒体服务提供实时传送视频流服务，让客户使用 Azure 作为云平台来实时流式传输实时事件和广播内容。 此外，本文档还介绍了有关构建高度冗余和稳健的实时引入机制的最佳实践。
 
 ## <a name="1-conformance-notation"></a>1.一致表示法
@@ -111,7 +112,7 @@ ms.locfileid: "51228872"
 1. 建议编码器不要限制在发生 TCP 错误后，重新尝试创建连接或恢复流式传输的次数。
 1. 发生 TCP 错误后：
   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 必须关闭当前连接，并且必须为新的 HTTP POST 请求创建新的连接。
+    a. 必须关闭当前连接，并且必须为新的 HTTP POST 请求创建新的连接。
 
     b. 新的 HTTP POST URL 必须与初始 POST URL 相同。
   
@@ -161,7 +162,7 @@ ms.locfileid: "51228872"
 1. 在“实时服务器清单框”中，“manifestOutput”必须设置为“true”。
 1. 根据信号事件的稀疏性质，建议如下：
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 实时事件开始时，编码器会将初始标头框发送给服务，使服务可以在客户端清单中注册稀疏轨迹。
+    a. 实时事件开始时，编码器会将初始标头框发送给服务，使服务可以在客户端清单中注册稀疏轨迹。
    
     b. 未发送数据时，编码器应该终止 HTTP POST 请求。 不发送数据的长时间运行 HTTP POST 可以防止媒体服务在服务更新或服务器重新启动事件中很快与编码器断开连接。 在这些情况下，在套接字上的接收操作中，会暂时阻止媒体服务器。
    

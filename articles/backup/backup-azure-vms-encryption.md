@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/10/2018
 ms.author: geetha
-ms.openlocfilehash: 676c6a45f4a3930d350bbcbdcbb1a0fb47880407
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 004d35290d7bfa365d2e1d0ea605c14b03ffb4a5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809991"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114750"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>使用 Azure 备份来备份和还原已加密的虚拟机
 本文介绍使用 Azure 备份来备份和还原虚拟机 (VM) 的步骤。 此外，提供有关受支持的方案、先决条件以及针对错误案例的疑难解答步骤的详细信息。
@@ -138,6 +138,6 @@ ms.locfileid: "55809991"
 | Operation | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
 |备份 | 错误代码：UserErrorKeyVaultPermissionsNotConfigured<br><br>错误消息：Azure 备份服务对 Key Vault 没有足够的权限，无法备份加密的虚拟机。 | 应遵循[上一部分中的步骤](#provide-permissions-to-azure-backup)为备份服务提供这些权限。 或者，可以遵循[使用 PowerShell 备份和还原虚拟机](backup-azure-vms-automation.md#enable-protection)一文“启用保护”部分中的 PowerShell 步骤执行操作。 |  
-| 还原 | 无法还原此加密的 VM，因为与此 VM 关联的 Key Vault 不存在。 |参考 [Azure Key Vault 入门](../key-vault/key-vault-get-started.md)创建 Key Vault。 参阅[使用 Azure 备份还原 Key Vault 密钥和机密](backup-azure-restore-key-secret.md)来还原密钥和机密（如果不存在）。 |
+| 还原 | 无法还原此加密的 VM，因为与此 VM 关联的 Key Vault 不存在。 |通过[什么是 Azure 密钥保管库？](../key-vault/key-vault-overview.md)，创建密钥保管库。 参阅[使用 Azure 备份还原 Key Vault 密钥和机密](backup-azure-restore-key-secret.md)来还原密钥和机密（如果不存在）。 |
 | 还原 | 错误代码：UserErrorKeyVaultKeyDoesNotExist<br><br> 错误消息：无法还原此加密 VM，因为与之关联的密钥不存在。 |参阅[使用 Azure 备份还原 Key Vault 密钥和机密](backup-azure-restore-key-secret.md)来还原密钥和机密（如果不存在）。 |
 | 还原 | 错误代码：ProviderAuthorizationFailed/UserErrorProviderAuthorizationFailed<br><br>错误消息：备份服务没有权限访问订阅中的资源。 |如前所述，请先遵循[选择 VM 还原配置](backup-azure-arm-restore-vms.md#choose-a-vm-restore-configuration)的“还原已备份的磁盘”部分中所述的步骤来还原磁盘。 之后，使用 PowerShell [从已还原的磁盘创建 VM](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。 |

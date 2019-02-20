@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/03/2018
-ms.openlocfilehash: e611c5e11d3c86474a7775971918ba95b8487da4
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.date: 02/07/2019
+ms.openlocfilehash: 79d6e185b64fdaf332f877718487809ba6273441
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970273"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895782"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的限制
 以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。
@@ -52,6 +52,7 @@ ms.locfileid: "53970273"
 ### <a name="unsupported"></a>不支持
 - DBA 角色：许多服务器参数和设置可能会无意中导致服务器性能下降或使 DBMS 的 ACID 属性无效。 因此，为了维护产品级别的服务完整性和 SLA，此服务不公开 DBA 角色。 默认用户帐户（在创建新的数据库实例时构造）允许该用户执行托管数据库实例中的大部分 DDL 和 DML 语句。
 - SUPER 特权：[SUPER 特权](https://mariadb.com/kb/en/library/grant/#global-privileges)同样也受到限制。
+- 定义者：需要创建并限制超级权限。 如果使用备份导入数据，请在执行 mysqldump 时手动删除或使用 `--skip-definer` 命令删除 `CREATE DEFINER` 命令。
 
 ## <a name="data-manipulation-statement-support"></a>数据操作语句支持
 
@@ -76,6 +77,9 @@ ms.locfileid: "53970273"
 
 ### <a name="subscription-management"></a>订阅管理
 - 目前不支持跨订阅和资源组动态移动预先创建的服务器。
+
+### <a name="vnet-service-endpoints"></a>VNet 服务终结点
+- 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
 
 ## <a name="current-known-issues"></a>当前已知的问题
 - 建立连接后，MariaDB 服务器实例显示的服务器版本不正确。 若要获取正确的服务器实例引擎版本，请使用 `select version();` 命令。

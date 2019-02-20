@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2019
 ms.author: magoedte
-ms.openlocfilehash: 0733b4179793e88759ca1c3330880546650fbe09
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 9a4c31df51f804d4738e3a2eb4ce904e793c3f1b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856363"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004989"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>什么是用于 VM 的 Azure Monitor（预览版）？
 
@@ -41,7 +41,7 @@ ms.locfileid: "54856363"
 >[!NOTE]
 >目前，对于 Azure 虚拟机和虚拟机规模集，仅提供了运行状况功能。 性能和映射功能同时支持 Azure VM 和托管在环境或其他云提供商中的虚拟机。
 
-与 Log Analytics 集成提供了强大的聚合和筛选功能，并可随时分析数据趋势。 单独使用 Azure Monitor、服务映射或 Log Analytics 无法实现此类全面的工作负荷监视。  
+与 Azure Monitor 日志集成提供了强大的聚合和筛选功能，并可随时分析数据趋势。 单独使用 Azure Monitor 或服务映射无法实现此类全面的工作负荷监视。  
 
 可直接从虚拟机在单个 VM 中查看此数据，也可使用 Azure Monitor 提供 VM 的聚合视图。 此视图基于每个功能的透视图：
 

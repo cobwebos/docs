@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 0eebfd8b75f428d3b8f6024ed6ee71c18c1309f6
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ab72091c58420459620352c8169773111149316d
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435968"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245722"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>排查配置服务器问题
 
@@ -60,7 +60,7 @@ ms.locfileid: "54435968"
 
 ## <a name="vcenter-discovery-failures"></a>vCenter 发现失败
 
-若要解决 vCenter 发现失败，请确保将 vCenter 服务器添加到 byPass 列表代理设置。若要执行此活动，请执行以下操作：
+若要解决 vCenter 发现失败问题，请向 byPass 列表代理设置添加 vCenter 服务器。 
 
 - 从[此处](https://aka.ms/PsExec)下载 PsExec 工具来访问系统用户内容。
 - 通过运行以下命令行在系统用户内容中打开 Internet Explorer：psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
@@ -80,6 +80,11 @@ ms.locfileid: "54435968"
 
 无法创建用于在 Site Recovery 中进行身份验证的证书。 确保以本地管理员的身份运行安装程序后，重新运行安装程序。
 
+## <a name="failure-to-activate-windows-licence-from-server-standard-evaluation-to-server-standard"></a>未能从 Server Standard EVALUATION 向 Server Standard 激活Windows 许可证
+
+1. 作为通过 OVF 部署配置服务器的一部分，使用了评估许可证，该许可证的有效期为 180 天。 需要在此许可证过期之前进行激活。 否则，这可能导致配置服务器频繁关闭，因而妨碍复制活动。
+2. 如果无法激活 Windows 许可证，请联系 [Windows 支持团队](https://aka.ms/Windows_Support)以解决此问题。
+
 ## <a name="register-source-machine-with-configuration-server"></a>将源计算机注册到配置服务器
 
 ### <a name="if-the-source-machine-runs-windows"></a>如果源计算机运行 Windows
@@ -89,7 +94,7 @@ ms.locfileid: "54435968"
 ```
   cd C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
   UnifiedAgentConfigurator.exe  /CSEndPoint <configuration server IP address> /PassphraseFilePath <passphrase file path>
-  ```
+```
 
 设置 | 详细信息
 --- | ---
@@ -112,3 +117,140 @@ ms.locfileid: "54435968"
 -i | 必需的参数。 指定配置服务器的 IP 地址。 使用任何有效的 IP 地址。
 -P |  必需。 通行短语所保存到的文件的完整文件路径。 使用任何有效文件夹。
 
+## <a name="unable-to-configure-the-configuration-server"></a>无法配置配置服务器
+
+如果在虚拟机上安装配置服务器以外的应用程序，则可能会无法配置主目标。 
+
+配置服务器必须是单一用途服务器，并且不支持将其用作共享服务器。 
+
+有关详细信息，请参阅[部署配置服务器](vmware-azure-deploy-configuration-server.md#faq)中的配置常见问题解答。 
+
+## <a name="remove-the-stale-entries-for-protected-items-from-the-configuration-server-database"></a>从配置服务器数据库中删除受保护项的过时条目 
+
+若要删除配置服务器上过时的受保护计算机，请使用以下步骤。 
+ 
+1. 确定过时条目的源计算机和 IP 地址： 
+
+    1. 在管理员模式下打开 MYSQL 命令行。 
+    2. 执行以下命令。 
+   
+        ```
+        mysql> use svsdb1;
+        mysql> select id as hostid, name, ipaddress, ostype as operatingsystem, from_unixtime(lasthostupdatetime) as heartbeat from hosts where name!='InMageProfiler'\G;
+        ```
+
+        这将返回已注册计算机的列表及其 IP 地址和上次检测信号。 查找具有过时复制对的主机。
+
+2. 打开提升的命令提示符并导航到 C:\ProgramData\ASR\home\svsystems\bin。 
+4. 若要从配置服务器删除已注册主机详细信息和过时条目信息，请使用过时条目的源计算机和 IP 地址运行以下命令。 
+   
+    `Syntax: Unregister-ASRComponent.pl -IPAddress <IP_ADDRESS_OF_MACHINE_TO_UNREGISTER> -Component <Source/ PS / MT>`
+ 
+    如果源服务器条目为“OnPrem-VM01”且 ipaddress 为10.0.0.4，则改为使用以下命令。
+ 
+    `perl Unregister-ASRComponent.pl -IPAddress 10.0.0.4 -Component Source`
+ 
+5. 在源计算机上重启以下服务，向配置服务器重新注册。 
+ 
+    - InMage Scout 应用程序服务
+    - InMage Scout VX Agent - Sentinel/Outpost
+
+## <a name="upgrade-fails-when-the-services-fail-to-stop"></a>服务无法停止时升级失败
+
+如果特定服务无法停止，则配置服务器升级失败。 
+
+若要确定问题，请导航到配置服务器上的 C:\ProgramData\ASRSetupLogs\CX_TP_InstallLogFile。 如果发现以下错误，请使用以下步骤解决问题： 
+
+    2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
+    2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
+    2018-06-28 14:28:12.944   Stopping svagents service.
+    2018-06-28 14:31:32.949   Unable to stop svagents service.
+    2018-06-28 14:31:32.949   Stopping svagents service.
+    2018-06-28 14:34:52.960   Unable to stop svagents service.
+    2018-06-28 14:34:52.960   Stopping svagents service.
+    2018-06-28 14:38:12.971   Unable to stop svagents service.
+    2018-06-28 14:38:12.971   Rolling back the install changes.
+    2018-06-28 14:38:12.971   Upgrade has failed.
+
+若要解决问题，请执行以下操作：
+
+手动停止以下服务：
+
+- cxprocessserver
+- InMage Scout VX Agent – Sentinel/Outpost， 
+- Microsoft Azure 恢复服务代理， 
+- Microsoft Azure Site Recovery 服务， 
+- tmansvc
+  
+若要更新配置服务器，请再次运行[统一安装程序](service-updates-how-to.md#links-to-currently-supported-update-rollups)。
+
+## <a name="azure-active-directory-application-creation-failure"></a>Azure Active Directory 应用程序创建失败
+
+没有在 Azure Active Directory (AAD) 中使用[开放虚拟化应用程序 (OVA)](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template
+) 模板创建应用程序的足够权限。
+
+若要解决问题，请登录 Azure 门户并执行以下操作之一：
+
+- 在 AAD 中请求应用程序开发人员角色。 有关应用程序开发人员角色的详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+- 验证并确保 AAD 中的“用户可以创建应用程序”标志设置为“true”。 有关更多信息，请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)。
+
+## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>进程服务器/主目标无法与配置服务器通信 
+
+进程服务器 (PS) 和主目标 (MT) 模块无法与配置服务器 (CS) 通信，并且它们的状态在 Azure 门户上显示为未连接。
+
+这通常是由于端口 443 出错。 使用以下步骤取消阻止该端口并重新启用与 CS 的通信。
+
+**验证并确保 MARS 代理正在被主目标代理调用**
+
+若要验证并确保主目标代理可以为配置服务器 IP 创建 TCP 会话，请在主目标代理日志中查找类似于以下内容的跟踪：
+
+TCP <Replace IP with CS IP here>:52739 <Replace IP with CS IP here>:443 SYN_SENT 
+
+TCP    192.168.1.40:52739     192.168.1.40:443      SYN_SENT  // 此处将 IP 替换为 CS IP
+
+如果在 MT 代理日志中发现类似于以下内容的跟踪，则 MT 代理将报告端口 443 出错：
+
+    #~> (11-20-2018 20:31:51):   ERROR  2508 8408 313 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
+    #~> (11-20-2018 20:31:54):   ERROR  2508 8408 314 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
+ 
+如果其他应用程序也在使用端口 443，或由于阻止端口的防火墙设置，可能会遇到此错误。
+
+若要解决问题，请执行以下操作：
+
+- 验证并确保防火墙未阻止端口 443。
+- 如果由于其他应用程序使用该端口而导致端口无法访问，请停止并卸载该应用。
+  - 如果停止应用不可行，请设置新的干净 CS。
+- 重启配置服务器。
+- 重启 IIS 服务。
+
+### <a name="configuration-server-is-not-connected-due-to-incorrect-uuid-entries"></a>配置服务器因 UUID 条目不正确而没有连接
+
+当数据库中有多个配置服务器 (CS) 实例 UUID 条目时，可能会发生此错误。 此问题经常在克隆配置服务器 VM 时发生。
+
+若要解决问题，请执行以下操作：
+
+1. 从 vCenter 中删除过时/陈旧的 CS VM。 有关详细信息，请参阅[删除服务器并禁用保护](site-recovery-manage-registration-and-protection.md)。
+2. 登录配置服务器 VM 并连接到 MySQL svsdb1 数据库。 
+3. 执行以下查询：
+
+    > [!IMPORTANT]
+    >
+    > 验证并确保输入的是克隆配置服务器的 UUID 详细信息，或不再用于保护虚拟机的配置服务器过时条目。 输入不正确的 UUID 将导致丢失所有现有受保护项的信息。
+   
+    ```
+        MySQL> use svsdb1;
+        MySQL> delete from infrastructurevms where infrastructurevmid='<Stale CS VM UUID>';
+        MySQL> commit; 
+    ```
+4. 刷新门户页面。
+
+## <a name="an-infinite-sign-in-loop-occurs-when-entering-your-credentials"></a>输入凭据时会出现无限登录循环
+
+在配置服务器 OVF 上输入正确的用户名和密码后，Azure 登录将继续提示输入正确的凭据。
+
+系统时间不正确时可能会发生此问题。
+
+若要解决问题，请执行以下操作：
+
+在计算机上设置正确的时间并重试登录。 
+ 

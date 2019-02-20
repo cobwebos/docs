@@ -12,16 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 01/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 110397e8399d153356a574b00d34a4cb781ec1b5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 45275a02467ab5e8592399e4eeae7f74a582c87a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811556"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200371"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory 访问令牌
 
@@ -101,7 +102,7 @@ JWT 拆分成三个部分：
 | `groups` | GUID 的 JSON 数组 | 指定表示使用者的组成员身份的对象 ID。 这些值是唯一的（请参阅对象 ID），可安全地用于管理访问，例如强制要求授权才能访问资源。 组声明中包含的组通过[应用程序清单](reference-app-manifest.md)的 `groupMembershipClaims` 属性基于每个应用程序进行配置。 值为 null 将排除所有组；值为“SecurityGroup”将只包括“Active Directory 安全组”成员身份；值为“All”将包括安全组和 Office 365 通讯组列表。 <br><br>有关将 `groups` 声明与隐式授权一起使用的详细信息，请参阅下文中的 `hasgroups` 声明。 <br>对于其他流，如果用户所在的组数超出了某个限制（对于 SAML，为 150，对于 JWT，为 200），则会将超额声明添加到指向包含该用户的组列表的 Graph 终结点的声明源。 |
 | `hasgroups` | Boolean | 如果存在，始终为 `true`，表示用户至少在一个组中。 如果完整组声明将导致 URI 片段超出 URL 长度限制（当前为 6 个或更多组），则在隐式授权流中用来替代 JWT 的 `groups` 声明。 指示客户端应当使用 Graph 来确定用户的组 (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`)。 |
 | `groups:src1` | JSON 对象 | 对于长度不受限制（参阅上文中的 `hasgroups`）但对于令牌而言仍然太大的令牌请求，将包括指向用户的完整组列表的链接。 对于 JWT，作为分布式声明；对于 SAML，作为新声明替代 `groups` 声明。 <br><br>**JWT 值示例**： <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }`|
-| `preferred_name` | String | 仅在 v2.0 令牌中提供。 表示用户的主用户名。 它可以是电子邮件地址、电话号码或未指定格式的一般用户名。 其值可变，并可能随时间而不断改变。 由于此值是可变的，因此它不能用于做出授权决定。 需要 `profile` 范围才能接收此声明。 |
+| `preferred_username` | String | 表示用户的主用户名。 它可以是电子邮件地址、电话号码或未指定格式的一般用户名。 其值可变，并可能随时间而不断改变。 由于此值是可变的，因此它不能用于做出授权决定。  但它可以用于用户名提示。 需要 `profile` 范围才能接收此声明。 |
 | `name` | String | 提供一个用户可读值，用于标识令牌使用者。 此值不一定唯一，它是可变的，旨在仅用于显示目的。 需要 `profile` 范围才能接收此声明。 |
 | `oid` | 字符串，GUID | 在 Microsoft 标识平台中，对象的不可变标识符在这种情况下是用户帐户。 还可以使用它安全地执行授权检查，并将它用作数据库表中的键。 此 ID 唯一标识应用程序中的用户 - 同一个用户登录两个不同的应用程序会在 `oid` 声明中收到相同值。 因此，对 Microsoft 联机服务（例如 Microsoft Graph）发出查询时可以使用 `oid`。 Microsoft Graph 将返回此 ID 作为给定用户帐户的 `id` 属性。 因为 `oid` 允许多个应用关联用户，需要 `profile` 作用域才能收到此声明。 请注意，如果单个用户存在于多个租户中，该用户将包含每个租户中的不同对象 ID - 它们将视为不同帐户，即使用户使用相同的凭据登录到每个帐户，也是如此。 |
 | `rh` | 不透明字符串 | Azure 用来重新验证令牌的内部声明。 资源不应使用此声明。 |
@@ -110,7 +111,6 @@ JWT 拆分成三个部分：
 | `sub` | 字符串，GUID | 令牌针对其断言信息的主体，例如应用的用户。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查（例如，使用令牌访问资源时），并可将它用作数据库表中的键。 由于使用者始终存在于 Azure AD 颁发的令牌中，因此建议在通用授权系统中使用此值。 但是，使用者是成对标识符 - 它对特定应用程序 ID 是唯一的。 因此，如果单个用户使用两个不同的客户端 ID 登录到两个不同的应用，这些应用将收到两个不同的使用者声明值。 这不一定是所需的，具体取决于体系结构和隐私要求。 |
 | `tid` | 字符串，GUID | 表示用户所在的 Azure AD 租户。 对于工作和学校帐户，此 GUID 就是用户所属组织的不可变租户 ID。 对于个人帐户，该值为 `9188040d-6c67-4c5b-b112-36a304b66dad`。 需要 `profile` 范围才能接收此声明。 |
 | `unique_name` | String | 仅在 v1.0 令牌中提供。 提供了一个用户可读值，用于标识令牌使用者。 不保证此值在租户中唯一，只应该用于显示目的。 |
-| `upn` | String | 用户的用户名。 可以是电话号码、电子邮件地址或无格式的字符串。 只应该用于显示目的，在重新身份验证方案中提供用户名提示。 |
 | `uti` | 不透明字符串 | Azure 用来重新验证令牌的内部声明。 资源不应使用此声明。 |
 | `ver` | 字符串，1.0 或 2.0 | 指示访问令牌的版本。 |
 
@@ -128,6 +128,7 @@ JWT 拆分成三个部分：
 | `nickname`| String | 用户的附加名称，不同于名字或姓氏。|
 | `family_name` | String | 根据用户对象中的定义提供用户的姓氏。 |
 | `given_name` | String | 根据用户对象中的设置提供用户的名字。 |
+| `upn` | String | 用户的用户名。 可以是电话号码、电子邮件地址或无格式的字符串。 只应该用于显示目的，在重新身份验证方案中提供用户名提示。 |
 
 #### <a name="the-amr-claim"></a>`amr` 声明
 

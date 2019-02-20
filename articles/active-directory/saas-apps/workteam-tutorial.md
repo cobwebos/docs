@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Workteam 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Workteam 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Workteam 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 8d6ca6395e4f5e1aca361c56e21afc4e6bd1fc0c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6a1022ce74fd5514b274f498a4d4f764393e6428
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43132723"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185768"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workteam"></a>教程：Azure Active Directory 与 Workteam 的集成
+# <a name="tutorial-azure-active-directory-integration-with-workteam"></a>教程：Azure Active Directory 与 Workteam 集成
 
 本教程介绍如何将 Workteam 与 Azure Active Directory (Azure AD) 集成。
 
@@ -145,7 +146,7 @@ ms.locfileid: "43132723"
 
     c. 将从 Azure 门户复制的“SAML 实体 ID”值粘贴到“SAML 实体 ID”文本框中。
 
-    d. 在记事本中，打开从 Azure 门户下载的 base-64 编码证书，复制其内容，然后将其粘贴到“SAML 签名证书(Base64)”框中。
+    d. 在记事本中，打开从 Azure 门户下载的 **base-64 编码证书**，复制其内容，然后将其粘贴到“SAML 签名证书(Base64)”框中 。
 
     e. 单击“确定”。
 
@@ -238,12 +239,12 @@ ms.locfileid: "43132723"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“Workteam”磁贴时，应会自动登录到 Workteam 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

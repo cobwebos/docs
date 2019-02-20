@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ebca3060e902c0a45619c2bd64240537cd95308d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: b43e496323da75dfc63f889283257fac41f48abf
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811845"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117725"
 ---
 # <a name="administer-your-iot-central-application"></a>管理 IoT Central 应用程序
 
@@ -141,15 +141,15 @@ ms.locfileid: "55811845"
 
 ## <a name="export-data"></a>导出数据
 
-可以启用“连续数据导出”，以将度量值、设备和设备模板数据导出到 Azure Blob 存储帐户。 详细了解[如何导出数据](#howto-export-data)。
+可以启用“连续数据导出”，以将度量值、设备和设备模板数据导出到 Azure Blob 存储帐户。 详细了解如何[导出数据](#export-data)。
 
 ## <a name="manage-device-connection"></a>管理设备连接
 
-使用此处的密钥和证书在应用程序中大规模连接设备。 详细了解如何[连接设备](#concepts-connectivity)。
+使用此处的密钥和证书在应用程序中大规模连接设备。 详细了解如何[连接设备](/azure/iot-central/concepts-connectivity-experimental?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)。
 
 ## <a name="use-access-tokens"></a>使用访问令牌
 
-生成访问令牌，以便在开发人员工具中使用。 目前，可以使用一个开发人员工具（IoT Central 资源管理器）来监视设备消息以及属性和设置的更改。 详细了解 [IoT Central 资源管理器](#howto-use-iotc-explorer)。 
+生成访问令牌，以便在开发人员工具中使用。 目前，可以使用一个开发人员工具（IoT Central 资源管理器）来监视设备消息以及属性和设置的更改。 详细了解 IoT Central 资源管理器。 
 
 ## <a name="use-the-azure-sdks-for-control-plane-operations"></a>使用 Azure SDK 进行控制平面操作
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 57a8c698133b2b5516a1f5d352f28148afe6f3d2
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f9804dee56e9f099654359e7c336f706cedbd1f7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42447272"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204859"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zenqms"></a>教程：Azure Active Directory 与 ZenQMS 的集成
 
@@ -172,7 +173,7 @@ ms.locfileid: "42447272"
 
 ### <a name="create-a-zenqms-test-user"></a>创建 ZenQMS 测试用户
 
-在本部分，我们将在 ZenQMS 中创建一个名为“Britta Simon”的用户。 配合 [ZenQMS 支持团队](mailto:help@zenqms.com)在 ZenQMS 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分，我们将在 ZenQMS 中创建一个名为“Britta Simon”的用户。 配合  [ZenQMS 支持团队](mailto:help@zenqms.com)在 ZenQMS 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -209,12 +210,12 @@ ms.locfileid: "42447272"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 ZenQMS 磁贴时，应会自动登录到 ZenQMS 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

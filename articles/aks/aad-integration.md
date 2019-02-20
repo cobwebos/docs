@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 78f00b00465b6d834f30411485a874d6d2116ea4
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 0dced367f62ab97d62cd4b11758e13a05278442e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081239"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099252"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>将 Azure Active Directory 与 Azure Kubernetes Service 集成
 
@@ -220,7 +220,9 @@ aks-nodepool1-79590246-2   Ready     agent     1h        v1.9.9
 
 完成后，身份验证令牌将会缓存。 仅当令牌已过期或者重新创建了 Kubernetes 配置文件时，系统才会再次提示。
 
-如果在成功登录后看到授权错误消息，请确认你在 Azure AD 中不是以来宾用户的身份登录（在使用来自不同目录中的联合登录时，通常会出现此情况）。
+如果在成功登录后看到授权错误消息，请检查是否存在以下问题：
+1. 你在 Azure AD 实例中不是以来宾用户的身份登录的（在使用来自不同目录中的联合登录时，通常会出现此情况）。
+2. 用户不是 200 多个组的成员。
 
 ```console
 error: You must be logged in to the server (Unauthorized)

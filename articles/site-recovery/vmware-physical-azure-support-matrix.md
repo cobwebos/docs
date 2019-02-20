@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 02/13/2019
 ms.author: raynew
-ms.openlocfilehash: 202f3fea2445c50398b6ac228b2e58553c9b1076
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 8115065afcbd81da1527e09c07ca89ce89100d7d
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767577"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236985"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -64,7 +64,7 @@ Site Recovery 支持复制在支持的计算机上运行的任何工作负荷。
 --- | ---
 计算机设置 | 复制到 Azure 的计算机必须满足 [Azure 要求](#azure-vm-requirements)。
 计算机工作负载 | Site Recovery 支持复制支持的计算机上运行的任何工作负载（如 Active Directory、SQL server 等）。 有关详细信息，请单击[此处](https://aka.ms/asr_workload)
-Windows 操作系统 | 64 位 Windows Server 2016（服务器核心，带桌面体验的服务器）、Windows Server 2012 R2、Windows Server 2012、带 SP1（或更高版本）的 Windows Server 2008 R2。 </br></br>  [至少带 SP2 的 Windows Server 2008 - 32 位和 64 位](migrate-tutorial-windows-server-2008.md)（仅适用于迁移）。 </br></br> 不支持 Windows 2016 Nano Server。
+Windows 操作系统 | 64 位 Windows Server 2019、64 位 Windows Server 2016（服务器核心，带桌面体验的服务器）、Windows Server 2012 R2、Windows Server 2012、带 SP1（或更高版本）的 Windows Server 2008 R2。 </br></br>  [至少带 SP2 的 Windows Server 2008 - 32 位和 64 位](migrate-tutorial-windows-server-2008.md)（仅适用于迁移）。 </br></br> 不支持 Windows 2016 Nano Server。
 Linux 操作系统 | Red Hat Enterprise Linux：5.2 到 5.11<b>\*\*</b>、6.1 到 6.10<b>\*\*</b>、7.0 到 7.6 <br/><br/>CentOS：5.2 到 5.11<b>\*\*</b>、6.1 到 6.10<b>\*\*</b>、7.0 到 7.6 <br/><br/>Ubuntu 14.04 LTS 服务器[（受支持的内核版本）](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS 服务器[（受支持的内核版本）](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[（受支持的内核版本）](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1、SP2、SP3 [（受支持的内核版本）](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>、SUSE Linux Enterprise Server 11 SP4 * </br></br>Oracle Linux 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5（运行 Red Hat 兼容内核），或 Unbreakable Enterprise Kernel Release 3 (UEK3) <br/><br/></br>-不支持将复制计算机从 SUSE Linux Enterprise Server 11 SP3 升级到 SP4。 若要升级，请禁用复制并在升级后重新启用它。</br></br> - [了解有关在 Azure 中支持 Linux 和开源技术的更多信息](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)。 Site Recovery 会协调故障转移，以在 Azure 中运行 Linux 服务器。 但是，Linux 供应商可能会限制仅支持尚未达到使用寿命的分发版本。<br/><br/> - 在 Linux 发行版中，仅支持属于分发次要版本/更新的原版内核。<br/><br/> - 不支持跨主要 Linux 发行版升级受保护的计算机。 若要升级，请禁用复制，升级操作系统，然后再重新启用复制。<br/><br/> - 运行 Red Hat Enterprise Linux 5.2 到 5.11 或 CentOS 5.2 到 5.11 的服务器应安装有 [Linux Integration Services (LIS) 组件](https://www.microsoft.com/download/details.aspx?id=55106)，以便在 Azure 中启动计算机。
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu 内核版本
@@ -159,6 +159,7 @@ Azure 虚拟网络服务终结点<br/> （不带 Azure 存储防火墙） | 是
 组件 | **支持**
 --- | ---
 动态磁盘 | 操作系统磁盘必须是基本磁盘。 <br/><br/>数据磁盘可以是动态磁盘
+Docker 磁盘配置 | 否
 主机 NFS | VMware 支持<br/><br/> 物理服务器不支持
 主机 SAN (iSCSI/FC) | 是
 主机 vSAN | VMware 支持<br/><br/> 不适用于物理服务器

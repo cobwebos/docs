@@ -12,19 +12,22 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/29/2018
+ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 1c4b3819494ecb4c0897edeb08e2ce45d867b626
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 68b0dba0280ce7875e797634a5dc2254cb889ad7
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179066"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244975"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-directory-roles-in-pim"></a>在 PIM 中批准或拒绝 Azure AD 目录角色的请求
 
-利用 Azure AD Privileged Identity Management (PIM)，可以将角色配置为需要审批才可激活，还可选择一个或多个用户或组作为委派的审批者。 按照本文中的步骤，审批或拒绝有关 Azure AD 目录角色的请求。
+利用 Azure AD Privileged Identity Management (PIM)，可以将角色配置为需要审批才可激活，还可选择一个或多个用户或组作为委派的审批者。 委派的审批者有 24 小时可以审批请求。 如果请求未在 24 小时内获得审批，则符合条件的用户必须重新提交新请求。 24 小时审批时间范围不可配置。
+
+按照本文中的步骤，审批或拒绝有关 Azure AD 目录角色的请求。
 
 ## <a name="view-pending-requests"></a>查看待处理请求
 

@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 1e1316ef568cbc6409a8653022d9acff9837b59d
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 9cd5a63b5b1d7000605f90752be755356d40bb4a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279465"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56212953"
 ---
 >[!NOTE]
 >对于不固定的资源，可以通过开具支持票证请求提高配额。 请**不要**创建更多的 Azure 媒体服务帐户以求获取更高的限制。
@@ -27,7 +27,7 @@ ms.locfileid: "52279465"
 | 每个 AMS 帐户的实时频道数 |5|
 | 每个频道的停止状态节目数 |50|
 | 每个频道的运行状态节目数 |3|
-| 每个 AMS 帐户处于运行状态的流式处理终结点数|2|
+| 每个媒体服务帐户的流式处理端点（已停止或正在运行）|2|
 | 每个流式处理终结点的流式处理单位数 |10 |
 | 存储帐户 | 1,000<sup>(5)</sup>（固定） |
 | 策略 | 1,000,000<sup>(6)</sup> |

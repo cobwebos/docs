@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 3eea59eba9fc1fc79a6f72a61860ee7e66a7df5b
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 42e3464a190f296675b544e0087b664ff256f2fa
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994287"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003238"
 ---
-# <a name="input-metadata"></a>输入元数据
+# <a name="input-metadata-legacy"></a>输入元数据（旧版）
 
 编码作业与要在其上执行某些编码任务的输入资产（或资产）相关联。  完成任务后，会生成一个输出资产。  输出资产包含视频、音频、缩略图、清单等。输出资产还包含提供输入资产相关元数据的文件。 元数据 XML 文件的名称采用下列格式：&lt;asset_id&gt;_metadata.xml（例如，41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml），其中 &lt;asset_id&gt; 是输入资产的 AssetId 值。  
 
@@ -38,7 +38,7 @@ ms.locfileid: "52994287"
 
 请参阅本文末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
 
-| 名称 | Description |
+| Name | 说明 |
 | --- | --- |
 | **AssetFile**<br /><br /> minOccurs="1" maxOccurs="unbounded" |单个子元素。 有关详细信息，请参阅 [AssetFile 元素](media-services-input-metadata-schema.md#AssetFile)。 |
 
@@ -48,7 +48,7 @@ ms.locfileid: "52994287"
  请参阅本文末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
 
 ### <a name="attributes"></a>属性
-| 名称 | 类型 | Description |
+| Name | 类型 | 说明 |
 | --- | --- | --- |
 | **名称**<br /><br /> 必选 |**xs:string** |资产文件名。 |
 | **大小**<br /><br /> 必选 |**xs:long** |资产文件的大小（以字节为单位）。 |
@@ -65,7 +65,7 @@ ms.locfileid: "52994287"
 > 
 
 ### <a name="child-elements"></a>子元素
-| 名称 | 类型 | Description |
+| Name | 类型 | 说明 |
 | --- | --- | --- |
 | **节目**<br /><br /> minOccurs=“0” | |资产文件采用 MPEG-TS 格式时，所有[节目元素](media-services-input-metadata-schema.md#Programs)的集合。 |
 | **VideoTracks**<br /><br /> minOccurs=“0” | |每个物理资产文件可包含交错成适当容器格式的零个或多个视频轨道。 此元素包含所有 [VideoTracks](media-services-input-metadata-schema.md#VideoTracks)（属于资产文件）的集合。 |
@@ -76,7 +76,7 @@ ms.locfileid: "52994287"
 请参阅本文末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
 
 ### <a name="attributes"></a>属性
-| 名称 | 类型 | Description |
+| Name | 类型 | 说明 |
 | --- | --- | --- |
 | **Id**<br /><br /> 必选 |**xs:int** |此音频轨或视频轨从零开始的索引。<br /><br /> 这不一定是 MP4 文件中使用的 TrackID。 |
 | **编解码器** |**xs:string** |视频轨编解码器字符串。 |
@@ -92,7 +92,7 @@ ms.locfileid: "52994287"
 > 
 
 ### <a name="child-elements"></a>子元素
-| 名称 | 类型 | Description |
+| Name | 类型 | 说明 |
 | --- | --- | --- |
 | **处置**<br /><br /> minOccurs="0" maxOccurs="1" |[StreamDispositionType](media-services-input-metadata-schema.md#StreamDispositionType) |包含演示信息（例如，特定音频轨是否适用于视觉障碍人士）。 |
 | **元数据**<br /><br /> minOccurs=“0” maxOccurs =“unbounded” |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |可用于保存各种信息的通用键/值字符串。 例如，键 =“language”，值 =“eng”。 |
@@ -105,7 +105,7 @@ ms.locfileid: "52994287"
  请参阅本文末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
 
 ### <a name="attributes"></a>属性
-| 名称 | 类型 | Description |
+| Name | 类型 | 说明 |
 | --- | --- | --- |
 | **SampleFormat** |**xs:string** |示例格式。 |
 | **ChannelLayout** |**xs: string** |通道布局。 |
@@ -122,7 +122,7 @@ ms.locfileid: "52994287"
 请参阅本文末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
 
 ### <a name="attributes"></a>属性
-| 名称 | 类型 | Description |
+| Name | 类型 | 说明 |
 | --- | --- | --- |
 | **FourCC**<br /><br /> 必选 |**xs:string** |视频编解码器 FourCC 代码。 |
 | **配置文件** |**xs: string** |视频轨的配置文件。 |
@@ -146,7 +146,7 @@ ms.locfileid: "52994287"
 请参阅本文末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
 
 ### <a name="attributes"></a>属性
-| 名称 | 类型 | Description |
+| Name | 类型 | 说明 |
 | --- | --- | --- |
 | **键**<br /><br /> 必选 |**xs:string** |键/值对中的键。 |
 | **值**<br /><br /> 必选 |**xs:string** |键/值对中的值。 |
@@ -155,7 +155,7 @@ ms.locfileid: "52994287"
 **ProgramType** 是描述节目的全局复杂类型。  
 
 ### <a name="attributes"></a>属性
-| 名称 | 类型 | Description |
+| Name | 类型 | 说明 |
 | --- | --- | --- |
 | **ProgramId**<br /><br /> 必选 |**xs:int** |节目 ID |
 | **NumberOfPrograms**<br /><br /> 必选 |**xs:int** |节目的数量。 |
@@ -170,7 +170,7 @@ ms.locfileid: "52994287"
 请参阅本文末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
 
 ### <a name="attributes"></a>属性
-| 名称 | 类型 | Description |
+| Name | 类型 | 说明 |
 | --- | --- | --- |
 | **默认**<br /><br /> 必选 |**xs: int** |将此属性设置为 1，表示此为默认演示。 |
 | **复录**<br /><br /> 必选 |**xs:int** |将此属性设置为 1，表示此为译制演示。 |
@@ -188,7 +188,7 @@ ms.locfileid: "52994287"
 拥有多个**节目**元素的包装元素。  
 
 ### <a name="child-elements"></a>子元素
-| 名称 | 类型 | Description |
+| Name | 类型 | 说明 |
 | --- | --- | --- |
 | **节目**<br /><br /> minOccurs=“0” maxOccurs =“unbounded” |[ProgramType](media-services-input-metadata-schema.md#ProgramType) |对于 MPEG-TS 格式的资产文件，包含有关资产文件中节目的信息。 |
 
@@ -198,7 +198,7 @@ ms.locfileid: "52994287"
  请参阅本文末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
 
 ### <a name="child-elements"></a>子元素
-| 名称 | 类型 | Description |
+| Name | 类型 | 说明 |
 | --- | --- | --- |
 | **VideoTrack**<br /><br /> minOccurs=“0” maxOccurs =“unbounded” |[VideoTrackType（继承自 TrackType）](media-services-input-metadata-schema.md#VideoTrackType) |包含有关资产文件中视频轨的信息。 |
 
@@ -208,7 +208,7 @@ ms.locfileid: "52994287"
  请参阅本文末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
 
 ### <a name="elements"></a>元素
-| 名称 | 类型 | Description |
+| Name | 类型 | 说明 |
 | --- | --- | --- |
 | **AudioTrack**<br /><br /> minOccurs=“0” maxOccurs =“unbounded” |[AudioTrackType（继承自 TrackType）](media-services-input-metadata-schema.md#AudioTrackType) |包含有关资产文件中音频轨的信息。 |
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: jeedes
-ms.openlocfilehash: bcefa3966a6c854f02ce7b3a75306b3d1c888ecd
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b132da4a763490fa6c7a73c80f8e2e3a11b42e9b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49432132"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173124"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getthere"></a>教程：Azure Active Directory 与 GetThere 集成
 
@@ -99,19 +100,19 @@ ms.locfileid: "49432132"
 
     ![图像](./media/getthere-tutorial/B1_B2_Select_SSO.png)
 
-2. 在“选择单一登录方法”对话框中，选择“SAML”模式以启用单一登录。
+2. 在“选择单一登录方法”对话框中，选择 SAML 模式以启用单一登录。
 
     ![图像](./media/getthere-tutorial/b1_b2_saml_sso.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“基本 SAML 配置”对话框。
+3. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
 
     ![图像](./media/getthere-tutorial/b1-domains_and_urlsedit.png)
 
-4. 在“基本 SAML 配置”部分中，执行以下步骤：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![图像](./media/getthere-tutorial/tutorial_getthere_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入以下任意一个 URL：
+    a. 在“标识符”文本框中，键入以下任意一个 URL：
     | |
     |--|
     | `getthere.com` |
@@ -136,7 +137,7 @@ ms.locfileid: "49432132"
     | Sitename | “根据组织提供值” | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sitename |
     | 用户名 |  user.mail | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/username |
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”以打开“管理用户声明”对话框。
+    a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
     ![图像](./media/getthere-tutorial/i2-attribute.png)
 
@@ -160,7 +161,7 @@ ms.locfileid: "49432132"
 
     请注意，URL 可能指明以下信息：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 登录 URL
+    a. 登录 URL
 
     b. Azure AD 标识符
 
@@ -174,7 +175,7 @@ ms.locfileid: "49432132"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
     ![图像](./media/getthere-tutorial/d_users_and_groups.png)
 
@@ -182,11 +183,11 @@ ms.locfileid: "49432132"
 
     ![图像](./media/getthere-tutorial/d_adduser.png)
 
-3. 在“用户属性”中，执行以下步骤。
+3. 在“用户属性”中，按照以下步骤操作。
 
     ![图像](./media/getthere-tutorial/d_userproperties.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
@@ -197,7 +198,7 @@ ms.locfileid: "49432132"
  
 ### <a name="create-a-getthere-test-user"></a>创建 GetThere 测试用户
 
-在本部分中，将在 GetThere 中创建一个名为 Britta Simon 的用户。 请与 [GetThere 客户端支持团队](mailto:dataintegration@sabre.com)协作，将用户添加到 GetThere 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 GetThere 中创建一个名为 Britta Simon 的用户。 请与 [GetThere 客户端支持团队](mailto:dataintegration@sabre.com)合作，将用户添加到 GetThere 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -228,7 +229,7 @@ ms.locfileid: "49432132"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“GetThere”磁贴，即可自动登录到 GetThere 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 

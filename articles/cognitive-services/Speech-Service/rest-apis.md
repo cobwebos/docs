@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 了解如何使用语音转文本和文本转语音 REST API。 本文介绍授权选项、查询选项，以及如何构建请求和接收响应。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: f369ab0ec8c460137f7e2b16a7f2696357d84c50
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0ce33f20d44ac284655569ff66825533650b9d9c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247436"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998923"
 ---
 # <a name="speech-service-rest-apis"></a>语音服务 REST API
 
@@ -27,7 +27,7 @@ ms.locfileid: "55247436"
 * 语音转文本 REST API 仅返回最终结果。 不提供部分结果。
 * 文本转语音 REST API 需要授权标头。 这意味着，需要完成令牌交换才能访问该服务。 有关详细信息，请参阅[身份验证](#authentication)。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 向语音转文本或文本转语音 REST API 发出的每个请求都需要授权标头。 下表列出了每个服务支持的标头：
 
@@ -66,7 +66,7 @@ Content-type: application/x-www-form-urlencoded
 Content-Length: 0
 ```
 
-响应正文包含 Java Web 令牌 (JWT) 格式的访问令牌。
+响应正文包含 JSON Web 令牌 (JWT) 格式的访问令牌。
 
 #### <a name="powershell-sample"></a>PowerShell 示例
 

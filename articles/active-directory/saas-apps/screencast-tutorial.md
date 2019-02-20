@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 20c0acebde232bd50e6e5befed0facc96ee11b4d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 51daf3b9553babb5fc627c02d79914c68c318145
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040943"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190817"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screencast-o-matic"></a>教程：Azure Active Directory 与 Screencast-O-Matic 集成
 
@@ -168,7 +169,7 @@ ms.locfileid: "39040943"
 
     ![“用户”对话框](./media/screencast-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -181,7 +182,7 @@ ms.locfileid: "39040943"
 本部分的目的是在 Screencast-O-Matic 中创建名为“Britta Simon”的用户。 Screencast-O-Matic 支持默认启用的恰时预配。 此部分不存在任何操作项。 尝试访问 Screencast-O-Matic 期间，如果尚不存在用户，则会创建一个新用户。
 
 >[!Note]
->如果需要手动创建用户，请联系 [Screencast-O-Matic 客户端支持团队](mailto:support@screencast-o-matic.com)。
+>如果需要手动创建用户，请联系  [Screencast-O-Matic 客户端支持团队](mailto:support@screencast-o-matic.com)。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -218,12 +219,12 @@ ms.locfileid: "39040943"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Screencast-O-Matic”磁贴时，会自动登录到 Screencast-O-Matic 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

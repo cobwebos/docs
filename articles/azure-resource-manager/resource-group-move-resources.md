@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 84f8d8ecbeacc5acb6b19462096e6fbd1aa45816
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1902d00bc69fd12e7d424a2c2ab3bea562ff4e79
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810280"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108766"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -28,7 +28,7 @@ ms.locfileid: "55810280"
 移动资源仅能够将其移动到新的资源组。 移动操作不能更改该资源的位置。 新的资源组可能有不同的位置，但这不会更改该资源的位置。
 
 > [!NOTE]
-> 本文介绍如何在现有 Azure 帐户产品/服务中移动资源。 如果确实想要更改 Azure 帐户产品/服务（例如从免费升级到即用即付），则需要转换订阅。
+> 本文介绍如何在现有 Azure 订阅之间移动资源。 如果确实想要升级 Azure 订阅（例如从免费切换到即用即付），则需要转换订阅。
 > * 若要升级免费试用版，请参阅[将免费试用版或 Microsoft Imagine Azure 订阅升级到即用即付](..//billing/billing-upgrade-azure-subscription.md)。
 > * 若要更改即用即付帐户，请参阅[将 Azure 即用即付订阅更改为其他套餐](../billing/billing-how-to-switch-azure-offer.md)。
 > * 如果无法转换订阅，请[创建 Azure 支持请求](../azure-supportability/how-to-create-azure-support-request.md)。 选择“订阅管理”作为问题类型。
@@ -102,7 +102,7 @@ ms.locfileid: "55810280"
 * 门户仪表板
 * Power BI - Power BI Embedded 和 Power BI 工作区集合
 * 公共 IP - 可以移动基本 SKU 公共 IP。 不能移动标准 SKU 公共 IP。
-* 恢复服务保管库 - 注册[专用预览版](#recovery-services-limitations)。
+* 恢复服务保管库 - 注册[预览版](#recovery-services-limitations)。
 * Azure Redis 缓存 - 如果 Azure Redis 缓存实例配置了虚拟网络，则实例无法被移动到其他订阅。 请参阅[虚拟网络限制](#virtual-networks-limitations)。
 * 计划程序
 * 搜索 - 不能一次性移动不同区域中的多个搜索资源。 只能通过多个单独的操作移动它们。
@@ -310,7 +310,7 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 
 ### <a name="recovery-services-limitations"></a>恢复服务限制
 
- 若要移动恢复服务保管库，必须注册专用预览版。 若要试用，请发邮件至 AskAzureBackupTeam@microsoft.com。
+ 若要移动恢复服务保管库，则必须注册[受限公共预览版](../backup/backup-azure-move-recovery-services-vault.md)。
 
 目前，每个区域一次可以移动一个恢复服务保管库。 不能移动在 IaaS 虚拟机中备份 Azure 文件、Azure 文件同步或 SQL 的保管库。
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 269ea0162f85c7bd632e0528680fc8b0e2885aa9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4536048db4abc25decf1dbf02c75833c570e41af
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818118"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118201"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 绑定
 
@@ -992,7 +992,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 
 此部分包含的以下示例可以通过指定各种源提供的 ID 值来读取单个文档：
 
-* [队列触发器，从 JSON 查找 ID](#queue-trigger-look-up-id-from-string-javascript)
+* [队列触发器，从 JSON 查找 ID](#queue-trigger-look-up-id-from-json-javascript)
 * [HTTP 触发器，从查询字符串查找 ID](#http-trigger-look-up-id-from-query-string-javascript)
 * [HTTP 触发器，从路由数据查找 ID](#http-trigger-look-up-id-from-route-data-javascript)
 * [队列触发器，使用 SqlQuery 获取多个文档](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
@@ -1200,7 +1200,7 @@ JavaScript 代码如下所示：
 
 此部分包含的以下示例可以通过指定各种源提供的 ID 值来读取单个文档：
 
-* [队列触发器，从 JSON 查找 ID](#queue-trigger-look-up-id-from-string-python)
+* [队列触发器，从 JSON 查找 ID](#queue-trigger-look-up-id-from-json-python)
 * [HTTP 触发器，从查询字符串查找 ID](#http-trigger-look-up-id-from-query-string-python)
 * [HTTP 触发器，从路由数据查找 ID](#http-trigger-look-up-id-from-route-data-python)
 * [队列触发器，使用 SqlQuery 获取多个文档](#queue-trigger-get-multiple-docs-using-sqlquery-python)
@@ -2288,7 +2288,7 @@ public String cosmosDbQueryById(
     }
 ```
 
-有关完整示例，请参阅[输出 - C# 示例](#output---c-example)。
+有关完整示例，请参阅“输出 - C# 示例”。
 
 ## <a name="output---configuration"></a>输出 - 配置
 

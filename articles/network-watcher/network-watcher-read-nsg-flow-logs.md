@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: jdial
-ms.openlocfilehash: 7c35961894cbc8fb33f15b36910021f8ad38fac8
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: dd4622e0359476f47a0ac939d59a2571e34a0a46
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976386"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112693"
 ---
 # <a name="read-nsg-flow-logs"></a>读取 NSG 流日志
 
@@ -185,6 +185,6 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解查看 NSG 流日志的其他方式，请访问[使用开源工具可视化 Azure 网络观察程序 NSG 流日志](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)。
+请访问[使用弹性堆栈](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)、[使用 Grafana](network-watcher-nsg-grafana.md) 和[使用 Graylog](network-watcher-analyze-nsg-flow-logs-graylog.md) 详细了解查看 NSG 流日志的方法。 可以在此处找到直接使用 Blob 并发送给各种日志分析使用者的开源 Azure 函数方法：[Azure 网络观察程序 NSG 流日志连接器](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector)。
 
 若要详细了解存储 blob，请访问：[Azure Functions Blob 存储绑定](../azure-functions/functions-bindings-storage-blob.md)

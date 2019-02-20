@@ -13,13 +13,13 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: f82c96b972baa161658f4a864572bfcb791939ed
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/07/2019
+ms.openlocfilehash: 452811cae74253570591e5ffe2c58708fe632b39
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728991"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894388"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>开始使用 Azure SQL 数据库托管实例审核
 
@@ -154,7 +154,7 @@ ms.locfileid: "55728991"
 
 了解更多信息：
 
-- [Azure SQL 数据库中的单一数据库、弹性池和托管实例以及 SQL Server 中的数据库之间的审核差异](#auditing-differences-between-managed-instance-azure-sql-database-and-sql-server)
+- [Azure SQL 数据库中的单一数据库、弹性池和托管实例以及 SQL Server 中的数据库之间的审核差异](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
 - [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
@@ -221,11 +221,11 @@ ms.locfileid: "55728991"
 
 ## <a name="auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server"></a>Azure SQL 数据库中的数据库与 SQL Server 中的数据库之间的审核差异
 
-在 Azure SQL 数据库中的数据库中审核与在 SQL Server 中的数据库中审核的主要差异为：
+在审核 Azure SQL 数据库和 SQL Server 中的数据库方面，主要差异是：
 
-- 借助 Azure SQL 数据库中的托管实例部署选项，审核可在服务器级别工作并在 Azure Blob 存储帐户中存储 `.xel` 日志文件。
-- 借助 Azure SQL 数据库中的单一数据库和弹性池部署选项，审核可在数据库级别工作。
-- 在 SQL Server 本地/虚拟机中，审核在服务器级别工作，但在文件系统/Windows 事件日志中存储事件。
+- 使用 Azure SQL 数据库中的托管实例部署选项，审核在服务器级别执行，并在 Azure Blob 存储中存储 `.xel` 日志文件。
+- 使用 Azure SQL 数据库中的单一数据库和弹性池部署选项，审核是在数据库一级执行。
+- 在本地 SQL Server/虚拟机上的 SQL Server 中，审核是在服务器一级执行，但却在文件系统/Windows 事件日志中存储事件。
 
 托管实例中的 XEvent 审核支持 Azure Blob 存储目标。 **不支持**文件和 Windows 日志。
 

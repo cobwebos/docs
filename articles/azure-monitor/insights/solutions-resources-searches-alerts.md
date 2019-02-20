@@ -13,14 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c46c65fe7e720e3afdd976e2480e8f183cc4398d
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 97e6029ff85ce7ee8572fd76d04a5d72b27b2950
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901184"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980102"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>将 Log Analytics 保存的搜索和警报添加到管理解决方案（预览版）
+
+> [!IMPORTANT]
+> 此处有关使用资源管理器模板创建警报的详细信息已过时，因为 [Log Analytics 警报已扩展到 Azure Monitor](../platform/alerts-extend.md)。 有关使用资源管理器模板创建日志警报的详细信息，请参阅[使用 Azure 资源模板管理日志警报](../platform/alerts-log.md#managing-log-alerts-using-azure-resource-template)。
 
 > [!NOTE]
 > 这是用于创建当前处于预览版的管理解决方案的初步文档。 如下所述的全部架构均会有变动。

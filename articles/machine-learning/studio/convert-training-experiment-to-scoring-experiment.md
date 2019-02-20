@@ -9,12 +9,12 @@ ms.topic: article
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: fe7d3956c1a5ead55acd8605086668e20e85e1d2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 22cfdd22a8d2adacb5a5a5c817a628fe2c072755
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496068"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001691"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>如何准备在 Azure 机器学习工作室中部署的模型
 
@@ -22,7 +22,7 @@ Azure 机器学习工作室提供必需的工具，方便你开发预测分析�
 
 为此，请使用工作室创建一个实验（称为“训练实验”），以便对模型进行训练、评分和编辑。 满意以后，即可将训练实验转换为*预测实验*（已配置为对用户数据进行评分），使模型做好部署准备。
 
-可以在[演练：在 Azure 机器学习中为信用风险评估开发预测分析解决方案](walkthrough-develop-predictive-solution.md)中查看此过程的示例。
+有关此过程的示例，请参阅[教程 1：预测信贷风险](tutorial-part1-credit-risk.md)。
 
 本文深入分析了将训练实验转换为预测实验并对后者进行部署的细节。 了解这些细节之后，即可学习如何配置已部署模型，使之更高效。
 

@@ -4,7 +4,7 @@ description: 本教程逐步演示如何在 Azure 门户中发布内容。
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 92c364eb-5a5f-4f4e-8816-b162c031bb40
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 71b7e724158255cc979e9a08cd14c7f4412c4382
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0f70bb91ccb0cb403d9292c2e3f069a8a9d2da41
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253391"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993854"
 ---
-# <a name="publish-content-in-the-azure-portal"></a>在 Azure 门户中发布内容
+# <a name="publish-content-in-the-azure-portal-legacy"></a>在 Azure 门户中发布内容（旧版）
 > [!div class="op_single_selector"]
 > * [门户](media-services-portal-publish.md)
 > * [.NET](media-services-deliver-streaming-content.md)

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 2b9aee39942562ec7f17c08c0fcf46143a7a25d3
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: d5c07e0d4aca8bda42ea9f78a1475ea7bb5861f0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53587248"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997016"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>使用 Azure Monitor（预览版）监视资源组
 
@@ -93,9 +93,9 @@ ms.locfileid: "53587248"
 
 ![编辑框的屏幕截图](./media/resource-group-insights/0009-failure-edit-graph.png)
 
-这显示了生成表的可视化效果的基础 Log Analytics 查询。
+这显示了生成表的可视化效果的底层日志查询。
 
- ![Log Analytics 查询窗口的屏幕截图](./media/resource-group-insights/0010-failure-edit-query.png)
+ ![日志查询窗口的屏幕截图](./media/resource-group-insights/0010-failure-edit-query.png)
 
 可以直接修改查询。 还可以将其作为参考，并在设计自己的自定义参数化工作簿时从中借用。
 

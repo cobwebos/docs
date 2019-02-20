@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: e11ef458fad11f04ce159d5e79c4152d2bd7e4c6
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 6f67ad04fed2018ba71dd39ed03c24e6aebecf90
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746773"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984726"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>使用脚本操作自定义基于 Windows 的 HDInsight 群集
 在创建群集的过程中，可以使用**脚本操作**来调用[自定义脚本](hdinsight-hadoop-script-actions.md)，以便在群集上安装其他软件。
@@ -62,17 +62,12 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装以下组件�
 
     ![使用脚本操作自定义群集](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "Use Script Action to customize a cluster")
 
-    <table border='1'>
-        <tr><th>属性</th><th>值</th></tr>
-        <tr><td>Name</td>
-            <td>指定脚本操作的名称。</td></tr>
-        <tr><td>脚本 URI</td>
-            <td>指定要调用来自定义群集的脚本的 URI。 s</td></tr>
-        <tr><td>头节点/辅助节点</td>
-            <td>指定在其上运行自定义脚本的节点（**头节点**或**辅助角色节点**）</b>。
-        <tr><td>parameters</td>
-            <td>根据脚本的需要，指定参数。</td></tr>
-    </table>
+      |属性|值|  
+      |---|---|
+      |Name|指定脚本操作的名称。|
+      |脚本 URI|指定要调用以自定义群集的脚本的 URI。|
+      |头节点/辅助节点|指定在其上运行自定义脚本的节点（“头节点”或“辅助角色节点”）。|
+      |parameters|根据脚本的需要，指定参数。|
 
     按 ENTER 可添加多个脚本操作，以在群集上安装多个组件。
 3. 单击“选择”可保存脚本操作配置并继续执行群集创建。
@@ -80,7 +75,7 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装以下组件�
 ## <a name="call-scripts-using-azure-powershell"></a>使用 Azure PowerShell 调用脚本
 以下 PowerShell 脚本演示如何在基于 Windows 的 HDInsight 群集上安装 Spark。  
 
-    ```powershell
+```powershell  
     # Provide values for these variables
     $subscriptionID = "<Azure Subscription ID>" # After "Connect-AzureRmAccount", use "Get-AzureRmSubscription" to list IDs.
 
@@ -159,7 +154,7 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装以下组件�
             -OSType Windows `
             -DefaultStorageContainer $defaultBlobContainerName `
             -Config $config
-    ```
+```
 
 若要安装其他软件，需要替换脚本中的脚本文件：
 
@@ -172,12 +167,14 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装以下组件�
 
 1. 在 Visual Studio 中创建 C# 控制台应用程序。
 2. 通过 Nuget 包管理器控制台运行以下命令。
-    ```powershell
+
+    ```powershell  
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
         Install-Package Microsoft.Azure.Management.ResourceManager -Pre
         Install-Package Microsoft.Azure.Management.HDInsight
     ```
-3. 在 Program.cs 文件中使用以下 using 语句：
+
+1. 在 Program.cs 文件中使用以下 using 语句：
 
     ```csharp
         using System;

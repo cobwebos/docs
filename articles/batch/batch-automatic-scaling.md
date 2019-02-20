@@ -15,12 +15,12 @@ ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1bd9710edddde04f76c6373a7718519f8ede8a19
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: fdc2cd8f2218d50aa49d6b4eab2800eb6c92d9c9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729995"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869086"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>创建用于缩放 Batch 池中的计算节点的自动缩放公式
 
@@ -376,7 +376,7 @@ await pool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> 创建启用自动缩放的池时，请不要在 **CreatePool** 调用中指定 _targetDedicatedComputeNodes_ 参数或 _targetLowPriorityComputeNodes_ 参数。 应该指定池中的 **AutoScaleEnabled** 和**AutoScaleFormula** 属性。 这些属性的值确定每种类型的节点的目标数。 另请注意，若要手动调整启用自动缩放功能的池的大小（例如，使用 [BatchClient.PoolOperations.ResizePoolAsync][net_poolops_resizepoolasync] 来调整），则必须先**禁用**该池的自动缩放，然后调整其大小。
+> 创建启用自动缩放的池时，请不要在 **CreatePool** 调用中指定 _targetDedicatedNodes_ 参数或 _targetLowPriorityNodes_ 参数。 应该指定池中的 **AutoScaleEnabled** 和**AutoScaleFormula** 属性。 这些属性的值确定每种类型的节点的目标数。 另请注意，若要手动调整启用自动缩放功能的池的大小（例如，使用 [BatchClient.PoolOperations.ResizePoolAsync][net_poolops_resizepoolasync] 来调整），则必须先**禁用**该池的自动缩放，然后调整其大小。
 >
 >
 
@@ -409,10 +409,10 @@ await pool.CommitAsync();
 * 如果池中的自动缩放目前已启用，则可指定自动缩放公式和/或评估间隔。 必须至少指定其中的一个属性。
 
   * 如果指定新的自动缩放评估间隔，将停止现有评估计划并开始新的计划。 新计划的开始时间是发出启用自动缩放的请求的时间。
-  * 如果省略自动缩放公式或评估间隔，则 Batch 服务将继续使用该设置的当前值。
+  * 如果省略自动缩放公式或评估时间间隔，则 Batch 服务将继续使用该设置的当前值。
 
 > [!NOTE]
-> 如果在 .NET 中创建池时指定了 **CreatePool** 方法的 *targetDedicatedComputeNodes* 或 *targetLowPriorityComputeNodes* 参数的值，或者在其他语言中指定了相应参数的值，则评估自动缩放公式时将忽略这些值。
+> 如果在 .NET 中创建池时指定了 **CreatePool** 方法的 *targetDedicatedNodes* 或 *targetLowPriorityNodes* 参数的值，或者在其他语言中指定了相应参数的值，则评估自动缩放公式时将忽略这些值。
 >
 >
 

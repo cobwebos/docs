@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 208526b745a117c9ee14bab21f8a5ce05accd1fe
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 252aacfeb85f23699c6a2e2ac1f457f9e2b59b0e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382236"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997177"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>在本地部署远程监视解决方案加速器 - Docker
 
@@ -54,6 +54,8 @@ set PCS
 该命令会显示 **start.cmd** 脚本设置的所有环境变量。
 
 请确保 Docker 正在本地计算机上运行。
+> [!NOTE]
+> 如果 Docker 在 Windows 上运行，则必须运行 [Linux 容器](https://docs.docker.com/docker-for-windows/)。
 
 本地 Docker 容器中运行的微服务需要访问 Azure 云服务。 可使用以下命令从容器内部 ping 某个 Internet 地址，以测试 Docker 环境的 Internet 连接：
 
@@ -66,6 +68,9 @@ docker run --rm -ti library/alpine ping google.com
 ```cmd/sh
 docker-compose up
 ```
+
+> [!NOTE] 
+> 在运行 `docker-compose up` 之前，请确保与 Docker [共享本地驱动器](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115)。
 
 首次运行此命令时，Docker 会从 Docker 中心下载微服务映像以在本地构建容器。 在后续运行中，Docker 会立即运行容器。
 

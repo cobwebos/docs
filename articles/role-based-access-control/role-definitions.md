@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2019
+ms.date: 02/09/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: ecfcfd5026f310a617f81af42483c29d89385288
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 8966eb337af07b90e7d9c697a4bfd14c543540aa
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700717"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991355"
 ---
 # <a name="understand-role-definitions"></a>了解角色定义
 
@@ -147,7 +147,7 @@ Alice 的[所有者](built-in-roles.md#owner)角色和 Bob 的[存储 Blob 数�
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
 
-由于 Alice 具有订阅范围的通配符 (`*`) 操作，她的权限将向下继承，使她可以执行所有管理操作。 但是，Alice 无法执行数据操作。 例如，默认情况下，Alice 无法读取容器中的 Blob，但可以读取、写入和删除容器。
+由于 Alice 具有订阅范围的通配符 (`*`) 操作，她的权限将向下继承，使她可以执行所有管理操作。 Alice 可以读取、写入和删除容器。 但是，Alice 在不采取其他步骤的情况下无法执行数据操作。 例如，默认情况下，Alice 无法读取容器内的 blob。 若要读取 blob，Alice 必须检索存储访问密钥并使用它们来访问 blob。
 
 Bob 的权限限制为[存储 Blob 数据参与者（预览版）](built-in-roles.md#storage-blob-data-contributor-preview)角色中指定的 `Actions` 和 `DataActions`。 Bob 可以基于角色执行管理和数据操作。 例如，Bob 可以读取、写入和删除指定存储帐户中的容器，并可以读取、写入和删除 Blob。
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: cd45384bfd548cb73c10306dfee942cbcf7c8ca1
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 93b92a8a3b8aacd1f665725643314858fe92ad3c
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491903"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233762"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>在部署过程中使用 Azure Key Vault 传递安全参数值
 
@@ -128,7 +128,6 @@ Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userPrin
 ```azurecli
 az group create --name $resourceGroupName --location $location
 az group deployment create \
-    --name $deploymentName \
     --resource-group $resourceGroupName \
     --template-uri <The Template File URI> \
     --parameters <The Parameter File>
@@ -139,7 +138,6 @@ az group deployment create \
 ```powershell
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
-  -Name $deploymentName `
   -ResourceGroupName $resourceGroupName `
   -TemplateUri <The Template File URI> `
   -TemplateParameterFile <The Parameter File>
@@ -255,7 +253,6 @@ New-AzResourceGroupDeployment `
 ```azurecli
 az group create --name $resourceGroupName --location $location
 az group deployment create \
-    --name $deploymentName \
     --resource-group $resourceGroupName \
     --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-key-vault-use-dynamic-id/azuredeploy.json \
     --parameters vaultName=$keyVaultName vaultResourceGroupName=examplegroup secretName=examplesecret
@@ -266,7 +263,6 @@ az group deployment create \
 ```powershell
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
-  -Name $deploymentName `
   -ResourceGroupName $resourceGroupName `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-key-vault-use-dynamic-id/azuredeploy.json `
   -vaultName $keyVaultName -vaultResourceGroupName $keyVaultResourceGroupName -secretName $secretName
@@ -274,5 +270,5 @@ New-AzResourceGroupDeployment `
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关密钥保管库的一般信息，请参阅 [Azure 密钥保管库入门](../key-vault/key-vault-get-started.md)。
+- 有关密钥保管库的一般信息，请参阅[什么是 Azure 密钥保管库？](../key-vault/key-vault-overview.md)。
 - 有关引用密钥机密的完整示例，请参阅[密钥保管库示例](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)。

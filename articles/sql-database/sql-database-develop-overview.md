@@ -11,20 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
-ms.date: 02/06/2019
-ms.openlocfilehash: d9de6100e3bb7c3cc71a7a251d790df4907be5f2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/07/2019
+ms.openlocfilehash: 01c4bcfcea038f3e69620cdce78719c8c5128faf
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820345"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964791"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL 数据库应用程序开发概述
 
 本文逐步讲解开发人员在编写代码以连接到 Azure SQL 数据库时应考虑的基本注意事项。 本文适用于 Azure SQL 数据库的所有部署模型（单一数据库、弹性池、托管实例）。
 
 > [!TIP]
-> 如果需要设置 Azure SQL 数据库，则查看[单一数据库](sql-database-single-database-quickstart-guide.md)和[托管实例](sql-database-managed-instance-quickstart-guide.md)的入门指南。
+> 如果需要设置 Azure SQL 数据库，请查看[单一数据库](sql-database-single-database-quickstart-guide.md)和[托管实例](sql-database-managed-instance-quickstart-guide.md)的入门指南。
 >
 
 ## <a name="language-and-platform"></a>语言和平台
@@ -33,7 +33,7 @@ ms.locfileid: "55820345"
 
 你可以利用类似 [cheetah](https://github.com/wunderlist/cheetah)、[sql-cli](https://www.npmjs.com/package/sql-cli)、[VS Code](https://code.visualstudio.com/) 的开源工具。 此外，Azure SQL 数据库可与 Microsoft 工具（如 [Visual Studio](https://www.visualstudio.com/downloads/) 和 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx)）配合使用。 还可以使用 Azure 门户、PowerShell 和 REST API 帮助提高工作效率。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 对 Azure SQL 数据库的访问使用登录名和防火墙进行保护。 Azure SQL 数据库支持 SQL Server 和 [Azure Active Directory (AAD) 身份验证](sql-database-aad-authentication.md)用户和登录名。 AAD 登录名仅在托管实例中可用。 
 
@@ -49,14 +49,16 @@ ms.locfileid: "55820345"
 
 ## <a name="resiliency"></a>复原
 
-Azure SQL 数据库是一种云服务，在其中可能会遇到在底层基础结构中或云实体之间的通信中发生的暂时性错误。
-尽管 Azure SQL 数据库在发生暂时性基础结构故障时可复原，但这些故障可能会影响连接。 如果在连接到 SQL 数据库时发生暂时性错误，代码应[重试调用](sql-database-connectivity-issues.md)。 建议让重试逻辑使用退让逻辑，这样就不会因为多个客户端同时重试而对 SQL 数据库造成混乱。 重试逻辑取决于 [SQL 数据库客户端程序的错误消息](sql-database-develop-error-messages.md)。
+Azure SQL 数据库是一种云服务，在其中可能会遇到在底层基础结构中或云实体之间的通信中发生的暂时性错误。 尽管 Azure SQL 数据库在发生暂时性基础结构故障时可复原，但这些故障可能会影响连接。 如果在连接到 SQL 数据库时发生暂时性错误，代码应[重试调用](sql-database-connectivity-issues.md)。 建议让重试逻辑使用退让逻辑，这样就不会因为多个客户端同时重试而对 SQL 数据库造成混乱。 重试逻辑取决于 [SQL 数据库客户端程序的错误消息](sql-database-develop-error-messages.md)。
+
+有关如何为 Azure SQL 数据库上的计划内维护事件做好准备的详细信息，请参阅[规划 Azure SQL 数据库中的 Azure 维护事件](sql-database-planned-maintenance.md)。
 
 ## <a name="network-considerations"></a>网络注意事项
 
 - 在托管客户端程序的计算机上，确保防火墙允许端口 1433 上的传出 TCP 通信。  详细信息：[配置 Azure SQL 数据库防火墙](sql-database-configure-firewall-settings.md)。
 - 客户端在 Azure 虚拟机 (VM) 上运行时，如果客户端程序连接到 SQL 数据库，则必须打开 VM 上的某些端口范围。 详细信息：[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)。
 - 与 Azure SQL 数据库建立的客户端连接有时会绕过代理直接与数据库交互。 除 1433 以外的端口变得非常重要。 有关详细信息，请参阅 [Azure SQL 数据库连接体系结构](sql-database-develop-direct-route-ports-adonet-v12.md)和[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-connectivity-architecture.md)。
+- 有关托管实例的网络配置，请参阅[托管实例的网络配置](sql-database-howto-managed-instance.md#network-configuration)。
 
 ## <a name="next-steps"></a>后续步骤
 

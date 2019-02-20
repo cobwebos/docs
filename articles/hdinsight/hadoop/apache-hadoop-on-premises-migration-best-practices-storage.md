@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8f22885d67537194342115f07e4d04bc4b5c66da
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 3e1d5ed05b7acc8f7e0fcc772a4124984c6cba45
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911738"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884522"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 存储最佳做法
 

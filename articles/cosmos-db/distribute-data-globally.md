@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/26/2018
-ms.openlocfilehash: 28c945223d225d7e91df1041bcbe02ee87b93c6a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 75940f9c3c8022c5445eb998b133a156dacde9b5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475051"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106862"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>使用 Azure Cosmos DB 在全球范围内分发数据 - 概述
 
@@ -22,6 +22,8 @@ Azure Cosmos DB 是一个全局分布式数据库服务，旨在提供低延迟�
 可将数据库配置为全局分布，并使其可在任何 Azure 区域中使用。 为了降低延迟，请将数据放置在更靠近用户的位置。 选择所需的区域数目取决于应用程序的全球覆盖范围以及用户所处的位置。 Azure Cosmos DB 以透明方式将帐户中的所有数据复制到与帐户关联的所有区域。 它提供全局分布式 Azure Cosmos 数据库和容器的单个系统映像，使应用程序能够在本地读取和写入。 
 
 使用 Azure Cosmos DB 可以随时添加或删除与帐户关联的区域。 无需暂停或重新部署应用程序即可添加或删除区域。 得益于该服务提供的多宿主功能，它始终都能保持高可用性。
+
+![高度可用的部署拓扑](./media/distribute-data-globally/deployment-topology.png)
 
 ## <a name="key-benefits-of-global-distribution"></a>全局分布的重要优势
 
@@ -50,6 +52,7 @@ Azure Cosmos DB 是一个全局分布式数据库服务，旨在提供低延迟�
 阅读以下文章详细了解全局分布：
 
 * [全球分布 - 揭秘](global-dist-under-the-hood.md)
+* [如何配置应用程序中的多主数据库](how-to-multi-master.md)
 * [配置多宿主客户端](how-to-manage-database-account.md#configure-clients-for-multi-homing)
 * [在 Azure Cosmos DB 帐户中添加或删除区域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [为 SQL API 帐户创建自定义冲突解决策略](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

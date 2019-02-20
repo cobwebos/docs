@@ -4,24 +4,24 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
-ms.openlocfilehash: 32d09722e8c396a64451018ac92fbc7bc072f461
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: ff7ba04271c150018f2c55b62e40542a686608cf
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133943"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55904964"
 ---
 ## <a name="create-client"></a>创建客户端连接
 通过创建 `WindowsAzure.MobileServiceClient` 对象创建客户端连接。  将 `appUrl` 替换为到移动应用的 URL。
 
-```
+```javascript
 var client = WindowsAzure.MobileServiceClient(appUrl);
 ```
 
 ## <a name="table-reference"></a>使用表
 若要访问或更新数据，请创建到后端表的引用。 将 `tableName` 替换为表名称
 
-```
+```javascript
 var table = client.getTable(tableName);
 ```
 
@@ -39,7 +39,7 @@ var table = client.getTable(tableName);
 拥有表格引用后，可用其查询服务器上的数据。  查询使用了“类 LINQ”语言。
 若要返回表中的所有数据，请使用以下代码：
 
-```
+```javascript
 /**
  * Process the results that are received by a call to table.read()
  *
@@ -72,7 +72,7 @@ table
 #### <a name="table-filter"></a>在服务器上筛选数据
 可在表格引用上使用 `where` 子句：
 
-```
+```javascript
 table
     .where({ userId: user.userId, complete: false })
     .read()
@@ -81,7 +81,7 @@ table
 
 也可使用筛选对象的函数。  在这种情况下，`this` 变量将分配到正在筛选的当前对象。  以下代码在功能上等效于上述示例：
 
-```
+```javascript
 function filterByUserId(currentUserId) {
     return this.userId === currentUserId && this.complete === false;
 }
@@ -95,7 +95,7 @@ table
 #### <a name="table-paging"></a>分页浏览数据
 利用 `take()` 和 `skip()` 方法。  例如，如想要将表拆分为 100 行记录：
 
-```
+```javascript
 var totalCount = 0, pages = 0;
 
 // Step 1 - get the total number of records
@@ -123,7 +123,7 @@ function loadPage(pageNum) {
 #### <a name="sorting-data"></a>如何：返回排序后的数据
 使用 `.orderBy()` 或 `.orderByDescending()` 查询方法：
 
-```
+```javascript
 table
     .orderBy('name')
     .read()
@@ -171,7 +171,7 @@ table
 ### <a name="deleting"></a>如何：删除数据
 若要删除记录，请调用 `.del()` 方法。  在对象引用中传递 ID：
 
-```
+```javascript
 table
     .del({ id: '7163bc7a-70b2-4dde-98e9-8818969611bd' })
     .done(function () {

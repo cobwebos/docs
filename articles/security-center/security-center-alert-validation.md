@@ -4,7 +4,7 @@ description: 本文档介绍了如何在 Azure 安全中心验证安全警报。
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: f8f17a55-e672-4d86-8ba9-6c3ce2e71a57
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2c0bb2a68eaaa8183463efbdc2848567ab67d1b9
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 009f5fe7243b8ce597c2be9f9c6874cdb56d103c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619738"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108539"
 ---
 # <a name="alerts-validation-in-azure-security-center"></a>Azure 安全中心的警报验证
 本文档介绍如何验证系统是否已针对 Azure 安全中心警报进行了适当的配置。
@@ -32,7 +32,7 @@ ms.locfileid: "52619738"
 
 1. 将一个可执行文件（例如 calc.exe）复制到计算机的桌面或方便操作的其他目录。
 2. 将该文件重命名为 ASC_AlertTest_662jfi039N.exe。
-3. 打开命令提示符，使用一个参数（假参数名称即可）执行该文件，例如：ASC_AlertTest_662jfi039N.exe -foo
+3. 打开命令提示符，使用一个参数（假参数名称即可）执行此文件，例如：*ASC_AlertTest_662jfi039N.exe -foo*
 4. 等待 5 到 10 分钟，然后打开安全中心警报。 其中会显示类似以下内容的警报：
 
     ![警报验证](./media/security-center-alert-validation/security-center-alert-validation-fig2.png)

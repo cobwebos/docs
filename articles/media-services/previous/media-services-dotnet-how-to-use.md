@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 5f111fea8fa1ef9f6e07c01f507e487c992729d5
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 36350f8f359c6ad5cc5637ce0ce38838698cd68b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233525"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177438"
 ---
-# <a name="media-services-development-with-net"></a>使用 .NET 进行媒体服务开发
+# <a name="media-services-development-with-net"></a>使用 .NET 进行媒体服务开发 
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
 
 本文讨论如何使用 .NET 开始开发媒体服务应用程序。

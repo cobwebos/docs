@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 55c1bc18422bc2be5172aebcd46b76ac6051a8a4
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: e9fcf36d6ece441c73e7d1224bd5918d2e74bf84
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885841"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001951"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>从 Azure 资源收集和使用日志数据
 
@@ -40,7 +40,9 @@ ms.locfileid: "54885841"
 
 * 将诊断日志保存到[**存储帐户**](../../azure-monitor/platform/archive-diagnostic-logs.md)进行审核或手动检查。 可以使用**资源诊断设置**指定保留时间（天）。
 * [将诊断日志流式传输到**事件中心**](diagnostic-logs-stream-event-hubs.md)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
-* 使用 [Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md) 对其进行分析时，其中的数据将立即写入到 Log Analytics，而无需先将数据写入到存储。  
+* 使用 [Azure Monitor](../../azure-monitor/platform/collect-azure-metrics-logs.md) 对其进行分析时，其中的数据将立即写入到 Azure Monitor，而无需先将数据写入到存储。  
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 可以使用与发出日志的订阅不同的订阅中的存储帐户或事件中心命名空间。 配置此设置的用户必须对两个订阅都具有合适的 RBAC 访问权限。
 
@@ -56,7 +58,7 @@ ms.locfileid: "54885841"
 
 使用资源诊断设置配置资源诊断日志。 使用租户诊断设置配置租户诊断日志。 用于服务控制的**诊断设置**：
 
-* 将诊断日志和指标发送到的位置（存储帐户、事件中心和/或 Log Analytics）。
+* 将诊断日志和指标发送到的位置（存储帐户、事件中心和/或 Azure Monitor）。
 * 发送哪些日志类别，是否也会发送指标数据。
 * 应该将每个日志类别在存储帐户中保留多长时间
     - 保留期为零天表示日志将永久保留。 如果不需永久保留，则可将该值设置为 1 到 2147483647 之间的任意天数。
@@ -235,5 +237,4 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 
 * [将资源诊断日志流式传输到事件中心](diagnostic-logs-stream-event-hubs.md)
 * [使用 Azure Monitor REST API 更改资源诊断设置](https://docs.microsoft.com/rest/api/monitor/)
-* [使用 Log Analytics 分析 Azure 存储中的日志](../../azure-monitor/platform/collect-azure-metrics-logs.md)
-
+* [使用 Azure Monitor 分析 Azure 存储中的日志](collect-azure-metrics-logs.md)

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Workspot Control 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Workspot Control 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Workspot Control 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 520e625ba9689ebf35e985fe95609c62102e2493
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8716d018756d1e6eadcd6ebeeaf4f67ad0bc4741
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311679"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211149"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>教程：Azure Active Directory 与 Workspot Control 的集成
+# <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>教程：Azure Active Directory 与 Workspot Control 集成
 
 在本教程中，了解如何将 Workspot Control 与 Azure Active Directory (Azure AD) 集成。
 
@@ -103,7 +104,7 @@ ms.locfileid: "49311679"
 
     ![图像](./media/workspotcontrol-tutorial/b1_b2_saml_sso.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“基本 SAML 配置”对话框。
+3. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
 
     ![图像](./media/workspotcontrol-tutorial/b1-domains_and_urlsedit.png)
 
@@ -111,11 +112,11 @@ ms.locfileid: "49311679"
 
     ![图像](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<INSTANCENAME>-saml.workspot.com/saml/metadata`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<INSTANCENAME>-saml.workspot.com/saml/metadata`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<INSTANCENAME>-saml.workspot.com/saml/assertion`
 
-    c. 如果要在 SP 发起的模式下配置应用程序，请点击“设置其他 URL”，并执行以下步骤：
+    c. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
      ![图像](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_url1.png)
 
@@ -130,11 +131,11 @@ ms.locfileid: "49311679"
 
 6. 在“设置 Workspot Control”部分中，根据要求复制响应的 URL。
 
-    请注意，URL 可能指示以下事项：
+    请注意，URL 可能指明以下信息：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 登录 URL
+    a. 登录 URL
 
-    b. Azure Ad 标识符
+    b. Azure AD 标识符
 
     c. 注销 URL
 
@@ -142,7 +143,7 @@ ms.locfileid: "49311679"
 
 7. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 Workspot Contro。
 
-8. 在页面顶部的工具栏中，单击“设置”，然后导航到“SAML”。
+8. 在页面顶部的工具栏中，单击“设置”，然后导航到“SAML” **** ****。
 
     ![图像](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_setup.png)
 
@@ -150,7 +151,7 @@ ms.locfileid: "49311679"
  
     ![图像](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_saml.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“实体 ID”文本框中，粘贴从 Azure 门户复制的“Azure Ad 标识符”值。   
+    a. 在“实体 ID”文本框中，粘贴从 Azure 门户复制的“Azure Ad 标识符”值。   
 
     b. 在“登录服务 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
@@ -164,7 +165,7 @@ ms.locfileid: "49311679"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
     ![图像](./media/workspotcontrol-tutorial/d_users_and_groups.png)
 
@@ -172,13 +173,13 @@ ms.locfileid: "49311679"
 
     ![图像](./media/workspotcontrol-tutorial/d_adduser.png)
 
-3. 在用户属性中执行以下步骤。
+3. 在“用户属性”中，按照以下步骤操作。
 
     ![图像](./media/workspotcontrol-tutorial/d_userproperties.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中，键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -193,7 +194,7 @@ ms.locfileid: "49311679"
 
 1. 以安全管理员身份登录 Workspot Control。
 
-2. 在页面顶部的工具栏中，单击“用户”，然后导航到“添加用户”。
+2. 在页面顶部的工具栏中，单击“用户”，然后导航到“添加用户” **** ****。
 
     ![图像](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_adduser.png)
 
@@ -201,7 +202,7 @@ ms.locfileid: "49311679"
 
     ![图像](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_addnewuser.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名字”文本框中，输入用户的名字，如 Britta。
+    a. 在“名字”文本框中，输入用户的名字，如 Britta。
 
     b. 在“姓氏”文本框中，输入用户的姓氏，例如 **simon**。
 
@@ -242,7 +243,7 @@ ms.locfileid: "49311679"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“Workspot Control”磁贴，即可自动登录到 Workspot Control 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -1,6 +1,6 @@
 ---
-title: Log Analytics 中的搜索查询 | Microsoft Docs
-description: 本文提供有关在 Log Analytics 中编写搜索查询的入门教程。
+title: Azure Monitor 日志中的搜索查询 | Microsoft Docs
+description: 本文提供有关在 Azure Monitor 日志中使用搜索查询的入门教程。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 1f3131585a8f6581690eda777b8ffc96768b3cc6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: cda66b91a0e829ec3bc84a82c190b9d856827ad3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884349"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004445"
 ---
-# <a name="search-queries-in-log-analytics"></a>Log Analytics 中的搜索查询
+# <a name="search-queries-in-azure-monitor-logs"></a>Azure Monitor 日志中的搜索查询
 
 > [!NOTE]
-> 在完成本课程之前，应先完成 [Log Analytics 中的查询入门](get-started-queries.md)。
+> 在完成本课程之前，应先完成 [Azure Monitor 日志查询入门](get-started-queries.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Azure Log Analytics 查询可以从表名或 search 命令开始。 本教程介绍基于搜索的查询。 每种方法各有优势。
+Azure Monitor 日志查询可以从表名或 search 命令开始。 本教程介绍基于搜索的查询。 每种方法各有优势。
 
 基于表的查询首先限定查询范围，因此往往比搜索查询更加高效。 搜索查询的结构化程度不高，因此，在跨列或表搜索特定的值时，它是更好的选择。 **搜索**可以在给定表或所有表的所有列中扫描指定的值。 处理的数据量可能十分巨大，正因如此，这些查询可能需要更长的时间才能完成，并且可能返回极大的结果集。
 
@@ -144,4 +144,4 @@ search in (Event) "win"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在 [Log Analytics 查询语言站点](https://aka.ms/LogAnalyticsLanguage)上参阅其他教程。
+- 在[数据资源管理器查询语言站点](/azure/kusto/query/)上参阅其他教程。

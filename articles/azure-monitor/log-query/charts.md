@@ -1,6 +1,6 @@
 ---
-title: 通过 Azure Log Analytics 查询创建图表和关系图 |Microsoft Docs
-description: 介绍在 Azure Log Analytics 中以不同的方式显示数据时的各种可视化效果。
+title: 通过 Azure Monitor 日志查询创建图表和关系图 | Microsoft Docs
+description: 介绍在 Azure Monitor 中以不同的方式显示日志数据时的各种可视化效果。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 049e50f5800194c4126003f7e5ff7ae60b3de768
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 381e8361d31660d90eaee3f7a500139af1ef2a82
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186219"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992972"
 ---
-# <a name="creating-charts-and-diagrams-from-log-analytics-queries"></a>通过 Log Analytics 查询创建图表和关系图
+# <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>通过 Azure Monitor 日志查询创建图表和关系图
 
 > [!NOTE]
-> 在学习本课程之前，需完成 [Log Analytics 查询中的高级聚合](advanced-aggregations.md)。
+> 在完成本课程之前，应先完成 [Azure Monitor 日志查询中的高级聚合](advanced-aggregations.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-本文在 Azure Log Analytics 中以不同的方式显示数据时的各种可视化效果。
+本文介绍在 Azure Monitor 中以不同的方式显示日志数据时的各种可视化效果。
 
 ## <a name="charting-the-results"></a>绘制结果图表
 首先查看在过去 1 小时内，每个操作系统占用了多少台计算机：
@@ -93,7 +93,7 @@ SecurityEvent
 ![条形图 AccountType](media/charts/charts-and-diagrams-multiDimension2.png)
 
 ## <a name="next-steps"></a>后续步骤
-有关 Log Analytics 查询语言的用法，请参阅其他课程：
+请参阅有关将[数据资源管理器查询语言](/azure/kusto/query/)与 Azure Monitor 日志数据配合使用的其他课程：
 
 - [字符串操作](string-operations.md)
 - [时间和日期操作](datetime-operations.md)

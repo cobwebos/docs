@@ -13,14 +13,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 02/10/2019
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: 7d4094abacb46c5e2b525766d61cb0ede7fc20ba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 710ec72e9867ad180afcae8273a093f48933112a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251826"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991491"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>适用于 iOS 的脱机 FairPlay Streaming 
  Azure 媒体服务提供一套设计良好的[内容保护服务](https://azure.microsoft.com/services/media-services/content-protection/)，包括：
@@ -116,7 +116,7 @@ if (objDRMSettings.EnableOfflineMode)
 FPS 脱机模式支持仅适用于 iOS 10 及更高版本。 FPS Server SDK（3.0 或更高版本）包含 FPS 脱机模式文档和示例。 具体而言，FPS Server SDK（3.0 或更高版本）包含以下与脱机模式相关的两项：
 
 * 文档：“使用 FairPlay Streaming 和 HTTP Live Streaming 的脱机播放”。 2016 年 9 月 14 日由 Apple 提供。 在 FPS Server SDK 版本 4.0 中，此文档已合并到主要 FPS 文档。
-* 示例代码：\FairPlay Streaming Server SDK version 3.1\Development\Client\HLSCatalog_With_FPS\HLSCatalog\ 中的 FPS 脱机模式的 HLSCatalog 示例。 在 HLSCatalog 示例应用中，以下代码文件用于实现脱机模式功能：
+* 示例代码：FairPlay Streaming Server SDK version 3.1\Development\Client\HLSCatalog_With_FPS\HLSCatalog\ 中的 FPS 脱机模式的 HLSCatalog 示例。 在 HLSCatalog 示例应用中，以下代码文件用于实现脱机模式功能：
 
     - AssetPersistenceManager.swift 代码文件：AssetPersistenceManager 是此示例中的主类，演示如何：
 

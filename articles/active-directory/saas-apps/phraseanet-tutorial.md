@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2018
 ms.author: jeedes
-ms.openlocfilehash: cfeadbf1d46d9e36f8619cafe29d9dd69aad6eec
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 49a311b74fbc48f414f530e962af39d17a346353
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49118068"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175534"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-phraseanet"></a>教程：Azure Active Directory 与 Phraseanet 集成
 
@@ -99,15 +100,15 @@ ms.locfileid: "49118068"
 
     ![图像](./media/phraseanet-tutorial/b1_b2_select_sso.png)
 
-2. 在“选择单一登录方法”对话框中，对 SAML 模式单击“选择”以启用单一登录。
+2. 在“选择单一登录方法”对话框中，单击“SAML”模式对应的“选择”，以启用单一登录。
 
     ![图像](./media/phraseanet-tutorial/b1_b2_saml_sso.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“基本 SAML 配置”对话框。
+3. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
 
     ![图像](./media/phraseanet-tutorial/b1-domains_and_urlsedit.png)
 
-4. 在“基本 SAML 配置”部分中，执行以下步骤：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     在“登录 URL”文本框中，键入 URL：`https://<SUBDOMAIN>.alchemyasp.com`
 
@@ -126,7 +127,7 @@ ms.locfileid: "49118068"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
     ![图像](./media/phraseanet-tutorial/d_users_and_groups.png)
 
@@ -134,13 +135,13 @@ ms.locfileid: "49118068"
 
     ![图像](./media/phraseanet-tutorial/d_adduser.png)
 
-3. 在用户属性中执行以下步骤。
+3. 在“用户属性”中，按照以下步骤操作。
 
     ![图像](./media/phraseanet-tutorial/d_userproperties.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中，键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -149,7 +150,7 @@ ms.locfileid: "49118068"
  
 ### <a name="create-a-phraseanet-test-user"></a>创建 Phraseanet 测试用户
 
-本部分需在 Phraseanet 中创建名为“Britta Simon”的用户。 请与 [Phraseanet 支持团队](mailto:support@alchemy.fr)协作，将该用户添加到 Phraseanet 平台中。 使用单一登录前，必须先创建并激活用户。
+本部分需在 Phraseanet 中创建名为“Britta Simon”的用户。 请与 [Phraseanet 支持团队](mailto:support@alchemy.fr)协作，将该用户添加到 Phraseanet 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -180,7 +181,7 @@ ms.locfileid: "49118068"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击“访问面板”中的 Phraseanet 磁贴时，用户就会自动登录到 Phraseanet 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 

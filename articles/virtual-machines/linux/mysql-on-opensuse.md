@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: za-rhoads
-ms.openlocfilehash: 98eb331fbd82ff718b01c99afd6840e3c2252777
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 06fb4b9c39b773393d7a58bba44f240265e2200f
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227844"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893695"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>在 Azure 中运行 OpenSUSE Linux 的虚拟机上安装 MySQL
 
@@ -130,7 +130,7 @@ mysql -u root -p
 
 现在，新建 MySQL 用户。
 
-```   
+```sql
 CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 ```
    
@@ -142,7 +142,7 @@ CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 
 创建数据库，并授予 `mysqluser` 用户权限。
 
-```   
+```sql
 CREATE DATABASE testdatabase;
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 ```
@@ -151,7 +151,7 @@ GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 
 允许从另一台计算机登录。 在此示例中，允许从其登录的计算机的 IP 地址是 *10.112.113.114*。
 
-```   
+```sql
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'10.112.113.114' IDENTIFIED BY 'password';
 ```
    

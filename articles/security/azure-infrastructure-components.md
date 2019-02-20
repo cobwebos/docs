@@ -4,7 +4,7 @@ description: 本文提供有关 Microsoft Azure 体系结构和管理的一般�
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: b2e8ef232e1b25c7d000f4683830ff2e188047fb
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: b390dc9bd2b690837a85a5bab361a534b9c9d5a5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186470"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118133"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Azure 信息系统的组件和边界
 本文提供有关 Azure 体系结构和管理的一般说明。 Azure 系统环境由以下网络组成：
@@ -81,7 +81,7 @@ Azure 服务的支持由称作“服务团队”的多个工程小组来管理�
 - Azure 计算
 - Azure Net
 - 云工程服务
-- ISSD：安全性
+- ISSD：安全
 - 多重身份验证
 - SQL 数据库
 - 存储

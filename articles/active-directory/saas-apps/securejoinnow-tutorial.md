@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 SecureW2 JoinNow 连接器集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 SecureW2 JoinNow Connector 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 SecureW2 JoinNow 连接器之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 283f8c935556006a21812578d0638b72adb6eed0
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5b367befb90ec28ece963d67b479749e1c8ad363
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37906313"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175313"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-securew2-joinnow-connector"></a>教程：Azure Active Directory 与 SecureW2 JoinNow 连接器集成
+# <a name="tutorial-azure-active-directory-integration-with-securew2-joinnow-connector"></a>教程：Azure Active Directory 与 SecureW2 JoinNow Connector 的集成
 
 在本教程中，了解如何将 SecureW2 JoinNow 连接器与 Azure Active Directory (Azure AD) 集成。
 
@@ -107,7 +108,7 @@ ms.locfileid: "37906313"
 
     ![SecureW2 JoinNow 连接器域和 URL 单一登录信息](./media/securejoinnow-tutorial/tutorial_securejoinnow_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<organization-identifier>-auth.securew2.com/auth/saml/SSO`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<organization-identifier>-auth.securew2.com/auth/saml/SSO`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<organization-identifier>-auth.securew2.com/auth/saml`
 
@@ -158,7 +159,7 @@ ms.locfileid: "37906313"
  
 ### <a name="create-a-securew2-joinnow-connector-test-user"></a>创建 SecureW2 JoinNow 连接器测试用户
 
-本部分将在 SecureW2 JoinNow 连接器中创建一个名为 Britta Simon 的用户。 配合 [SecureW2 JoinNow 连接器客户端支持团队](mailto:support@securew2.com)，在 SecureW2 JoinNow 连接器平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+本部分将在 SecureW2 JoinNow 连接器中创建一个名为 Britta Simon 的用户。 请与  [SecureW2 JoinNow Connector 客户端支持团队](mailto:support@securew2.com)协作，在 SecureW2 JoinNow Connector 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -203,7 +204,7 @@ c. 身份验证成功后，应返回到 SecureW2 JoinNow 连接器的初始登�
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

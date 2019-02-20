@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics 中的高级聚合 | Microsoft Docs
-description: 介绍一些适用于 Log Analytics 查询的较高级聚合选项。
+title: Azure Monitor 日志查询中的高级聚合 | Microsoft Docs
+description: 介绍一些适用于 Azure Monitor 日志查询的较高级聚合选项。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 1116d03fc9c2328365b0bde29cf9ea900e58b7ed
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 5e2152397a4a965e6d62f8fafc2a59bf318b4a5e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186355"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005414"
 ---
-# <a name="advanced-aggregations-in-log-analytics-queries"></a>Log Analytics 查询中的高级聚合
+# <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的高级聚合
 
 > [!NOTE]
-> 在完成本课程之前，应先完成 [Log Analytics 查询中的聚合](./aggregations.md)。
+> 在完成本课程之前，应先完成 [Azure Monitor 查询中的聚合](./aggregations.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-本文介绍一些适用于 Log Analytics 查询的较高级聚合选项。
+本文介绍一些适用于 Azure Monitor 查询的较高级聚合选项。
 
 ## <a name="generating-lists-and-sets"></a>生成列表和集
 可以使用 `makelist` 根据特定列中的值顺序创建数据透视图。 例如，你可能想要浏览计算机上发生的最常见有序事件。 实际上，可以根据每台计算机上 EventID 的顺序创建数据透视图。 
@@ -181,7 +181,7 @@ WindowsFirewall
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Log Analytics 查询语言的用法，请参阅其他课程：
+请参阅有关将[数据资源管理器查询语言](/azure/kusto/query/)与 Azure Monitor 日志数据配合使用的其他课程：
 
 - [字符串操作](string-operations.md)
 - [时间和日期操作](datetime-operations.md)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ec80be0ece3596eab418ac39507954142944e34a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 4bcd7bcef0969cec82d42ead6307e72a3abea6e1
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260481"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978862"
 ---
 # <a name="install-and-use-apache-giraph-on-windows-based-hdinsight-clusters"></a>在基于 Windows 的 HDInsight 群集上安装并使用 Apache Giraph
 
@@ -46,17 +46,12 @@ ms.locfileid: "54260481"
 
     ![使用脚本操作自定义群集](./media/hdinsight-hadoop-giraph-install/hdi-script-action-giraph.png "Use Script Action to customize a cluster")
 
-    <table border='1'>
-        <tr><th>属性</th><th>值</th></tr>
-        <tr><td>名称</td>
-            <td>指定脚本操作的名称。 例如，<b>Install Giraph</b>。</td></tr>
-        <tr><td>脚本 URI</td>
-            <td>指定调用以自定义群集的脚本的统一资源标识符 (URI)。 例如 <i>https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1</i></td></tr>
-        <tr><td>节点类型</td>
-            <td>指定在其上运行自定义脚本的节点。 可以选择“所有节点”<b></b>、“仅限头节点”<b></b>或“仅限辅助角色节点”<b></b>。
-        <tr><td>parameters</td>
-            <td>根据脚本的需要，指定参数。 用于安装 Giraph 的脚本不需要任何参数，因此可以将此字段留空。</td></tr>
-    </table>
+    |属性|值|  
+    |---|---|  
+    |Name|指定脚本操作的名称。 例如，安装 Giraph|
+    |脚本 URI|指定调用以自定义群集的脚本的统一资源标识符 (URI)。 例如 *https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1*|
+    |节点类型|指定在其上运行自定义脚本的节点。 可以选择“所有节点”、“仅限头节点”或“仅限辅助角色节点”。
+    |parameters|根据脚本的需要，指定参数。 用于安装 Giraph 的脚本不需要任何参数，因此可以将此字段留空。|  
 
     可以添加多个脚本操作，以在群集上安装多个组件。 在添加了脚本后，单击复选标记以开始创建群集。
 
@@ -78,6 +73,7 @@ ms.locfileid: "54260481"
     使用表示对象间距离的值（或权重）绘制图形后，上述数据可能与下面类似。
 
     ![tiny_graph.txt 中的对象绘制为圆圈，线条表示对象之间的不同距离](./media/hdinsight-hadoop-giraph-install/giraph-graph.png)
+
 2. 运行 SimpleShortestPathsComputation 示例。 使用 tiny_graph.txt 文件作为输入，通过以下 Azure PowerShell cmdlet 来运行该示例。
 
     > [!IMPORTANT]  

@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: b85afeb18fdd93afdedbee00df995ba52a66cd5e
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/07/2019
+ms.openlocfilehash: 3c5f087ed44c252737e7f45fde12a4b509637499
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731846"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892875"
 ---
 # <a name="azure-sql-database-data-discovery--classification"></a>Azure SQL 数据库数据发现和分类
 
@@ -143,7 +143,8 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 - [创建或更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) - 创建或更新给定列的敏感度标签
 - [删除](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) - 删除给定列的敏感度标签
 - [获取](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) - 获取给定列的敏感度标签
-- [按数据库列出](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listbydatabase) - 获取给定数据库的敏感度标签
+- [按数据库列出当前项](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) - 获取给定数据库的当前敏感度标签
+- [按数据库列出建议项](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) - 获取给定数据库的当前敏感度标签
 
 ## <a id="subheading-5"></a>后续步骤
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh; cynthn
 ms.custom: ''
-ms.openlocfilehash: 2ac8bd29b617e305d19f30590b8ec9720e9acdd3
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 7e67e7836b1d80e623a11e552c81750bc6133205
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192728"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981632"
 ---
 # <a name="preview-create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>预览版：通过 Azure PowerShell 创建和使用虚拟机规模集的共享映像
 
@@ -33,7 +33,7 @@ ms.locfileid: "54192728"
 
 共享映像库功能具有多种资源类型。 我们将在本文中使用或生成这些资源类型：
 
-| 资源 | Description|
+| 资源 | 说明|
 |----------|------------|
 | **托管映像** | 这是基本映像，可以单独使用，也可用于在映像库中创建“映像版本”。 托管映像是从通用 VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
 | **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
@@ -42,7 +42,7 @@ ms.locfileid: "54192728"
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-
+[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -55,10 +55,10 @@ ms.locfileid: "54192728"
 
 ## <a name="create-a-scale-set-from-the-shared-image-version"></a>从共享的映像版本创建规模集
 
-使用 [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) 创建虚拟机规模集。 以下示例从美国西部数据中心的新映像版本中创建一个规模集。 虚拟网络、公共 IP 地址和负载均衡器的 Azure 网络资源均会自动创建。 出现提示时，可针对规模集中的 VM 实例设置自己的管理凭据：
+使用 [New-AzVmss](/powershell/module/az.compute/new-azvmss) 创建虚拟机规模集。 以下示例从美国西部数据中心的新映像版本中创建一个规模集。 虚拟网络、公共 IP 地址和负载均衡器的 Azure 网络资源均会自动创建。 出现提示时，可针对规模集中的 VM 实例设置自己的管理凭据：
 
 ```azurepowershell-interactive
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName myVMSSRG `
   -Location 'South Central US' `
   -VMScaleSetName 'myScaleSet' `
@@ -77,11 +77,11 @@ New-AzureRmVmss `
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要、则可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) cmdlet 删除资源组、VM 和所有相关资源：
+不再需要时，可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) cmdlet 删除资源组、VM 和所有相关资源：
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myGalleryRG
-Remove-AzureRmResourceGroup -Name myVMSSRG
+Remove-AzResourceGroup -Name myGalleryRG
+Remove-AzResourceGroup -Name myVMSSRG
 ```
 
 

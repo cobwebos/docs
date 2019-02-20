@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: e4b217ada2aae159680b113b6ddcb41c9d121f24
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: dcd0c7073f2126e001a65e2142ea54a229553ebd
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753055"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894694"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL 数据库和 SQL 数据仓库 IP 防火墙规则
 
@@ -92,7 +92,7 @@ Microsoft 建议尽量使用数据库级别 IP 防火墙规则，以增强安全
 > [!TIP]
 > 可以使用[SQL 数据库审核](sql-database-auditing.md)来审核服务器级别和数据库级别防火墙的更改。
 
-## <a name="manage-ip-firewall-rules-using-the-azure-portal"></a>使用 Azure 门户管理 IP 防火墙规则
+## <a name="manage-server-level-ip-firewall-rules-using-the-azure-portal"></a>使用 Azure 门户管理服务器级别 IP 防火墙规则
 
 若要在 Azure 门户中设置服务器级别 IP 防火墙规则，可以转到 Azure SQL 数据库的“概览”页或 SQL 数据库服务器的“概览”页。
 
@@ -196,7 +196,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 | [删除防火墙规则](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |服务器 |删除服务器级别 IP 防火墙规则 |
 | [获取防火墙规则](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | 服务器 | 获取服务器级别 IP 防火墙规则 |
 
-## <a name="server-level-ip-firewall-rule-versus-a-database-level-ip-firewall-rule"></a>服务器级别 IP 防火墙规则与数据库级别 IP 防火墙规则
+## <a name="server-level-versus-database-level-ip-firewall-rules"></a>服务器级别与数据库级别 IP 防火墙规则
 
 问： 是否应将一个数据库的用户与另一个数据库完全隔离？
 如果是，使用数据库级别 IP 防火墙规则授予访问权限。 这样可以避免使用服务器级别 IP 防火墙规则（此规则允许通过防火墙访问所有数据库，进而降低防御程度）。

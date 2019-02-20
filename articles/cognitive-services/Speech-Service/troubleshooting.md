@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 本文提供的信息可帮助你解决在使用语音服务 SDK 时可能遇到的问题。
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: c906a45443bcba8c84a0624c74255f19a492a4e9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: dbcdfd117a39939491914ebddb717f404e07f09c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217145"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859311"
 ---
 # <a name="troubleshoot-the-speech-service-sdk"></a>排查语音服务 SDK 问题
 
@@ -67,6 +67,8 @@ ms.locfileid: "55217145"
     curl -v -X POST "https://YOUR_REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: application/x-www-form-urlencoded" -H "Content-Length: 0"
     ```
 
+如果输入了有效的订阅密钥，则该命令将返回授权令牌，否则将返回错误。
+
 ### <a name="validate-an-authorization-token"></a>验证授权令牌
 
 如果使用授权令牌进行身份验证，请运行以下命令之一以验证授权令牌是否仍然有效。 令牌的有效期为 10 分钟。
@@ -101,6 +103,8 @@ ms.locfileid: "55217145"
     ```
     curl -v -X POST "https://YOUR_REGION.stt.speech.microsoft.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US" -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -H "Transfer-Encoding: chunked" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
     ```
+
+如果输入了有效的授权令牌，则该命令将返回音频文件的听录，否则将返回错误。
 
 ---
 

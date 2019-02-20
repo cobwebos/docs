@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 300673ffd62324de1207a29551694f12dd84ea93
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: bb64aff27aaacc3523552beb9eada12bdeb37ca8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366363"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995707"
 ---
-# <a name="use-azure-media-services-to-deliver-drm-licenses-or-aes-keys"></a>使用 Azure 媒体服务传送 DRM 许可证或 AES 密钥
+# <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>使用媒体服务传送 DRM 许可证或 AES 密钥 
 
 Azure 媒体服务可引入、编码、添加内容保护，以及流式传输内容。 有关详细信息，请参阅[使用 PlayReady 和/或 Widevine 动态通用加密](media-services-protect-with-playready-widevine.md)。 一些客户希望将媒体服务仅用于传送许可证和/或密钥，以及通过使用其本地服务器进行编码、加密和流式处理。 本文说明如何使用媒体服务来传送 PlayReady 和/或 Widevine 许可证，但使用本地服务器来完成其余部分。 
 

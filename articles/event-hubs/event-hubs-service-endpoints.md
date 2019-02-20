@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 2ad525ee0e10064d4d606dc1f899ef813fe92ab5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 077202e65c9e63c8ca5ea1a555ccd70bf27028c6
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273488"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232597"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>将虚拟网络服务终结点与 Azure 事件中心配合使用
 
@@ -29,7 +29,7 @@ ms.locfileid: "53273488"
 >[!WARNING]
 > 实现虚拟网络集成可以防止其他 Azure 服务与事件中心进行交互。
 >
-> 实现虚拟网络时，受信任的 Microsoft 服务不受支持，但很快就会变得可用。
+> 实现虚拟网络时，受信任的 Microsoft 服务不受支持。
 >
 > 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）-
 > - Azure Monitor
@@ -39,7 +39,7 @@ ms.locfileid: "53273488"
 > - Azure IoT Device Explorer
 > - Azure 数据资源管理器
 >
-> 虚拟网络上需要存在以下 Microsoft 服务
+> 以下 Microsoft 服务必须在虚拟网络中
 > - Azure Web 应用
 > - Azure Functions
 
@@ -74,13 +74,13 @@ ms.locfileid: "53273488"
 
 > [!NOTE]
 > 虽然不可能具有拒绝规则，但 Azure 资源管理器模板的默认操作设置为“允许”，不限制连接。
-> 制定虚拟网络或防火墙规则时，必须将“defaultAction”
+> 制定虚拟网络或防火墙规则时，必须更改“defaultAction”
 > 
-> 从
+> from
 > ```json
 > "defaultAction": "Allow"
 > ```
-> 更改为
+> to
 > ```json
 > "defaultAction": "Deny"
 > ```

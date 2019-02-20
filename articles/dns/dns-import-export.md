@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: victorh
-ms.openlocfilehash: 37dd51a60d9ec6e018f58e2cfd593490d126670b
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 3dac11ac4409ddde5264307439533bd583d75a9d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888645"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993044"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>使用 Azure CLI 导入和导出 DNS 区域文件 
 
@@ -116,7 +116,7 @@ az network dns zone import -g <resource group> -n <zone name> -f <zone file name
     az network dns record-set list -g myresourcegroup -z contoso.com
     ```
 
-* 可以通过使用 PowerShell cmdlet `Get-AzureRmDnsRecordSet` 列出记录。
+* 可以通过使用 Azure CLI 命令 `az network dns record-set ns list` 列出记录。
 * 可以使用 `nslookup` 验证记录的名称解析。 由于尚未委派区域，因此需要显式指定正确的 Azure DNS 名称服务器。 下面的示例演示如何检索已分配给该区域的名称服务器的名称。 另外，还会演示如何使用 `nslookup` 查询“www”记录。
 
     ```azurecli
@@ -188,6 +188,6 @@ az network dns zone export -g <resource group> -n <zone name> -f <zone file name
 
 要将资源组 **myresourcegroup** 中现有的 Azure DNS 区域 **contoso.com** 导出至文件 **contoso.com.txt**（在当前文件夹中），请运行 `azure network dns zone export`。 此命令调用 Azure DNS 服务，以枚举该区域中的记录集，并将结果导出到兼容 BIND 的区域文件。
 
-    ```
-    az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
-    ```
+```
+az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
+```

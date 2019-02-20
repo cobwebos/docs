@@ -12,12 +12,12 @@ ms.workload: search
 ms.date: 06/28/2018
 ms.author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: e496e4e2e7e2f66033d090a0534911bff4c53baa
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 524c1a6d083db02349c7dae9a0131228613dc170
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310210"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997604"
 ---
 # <a name="azure-search-service-rest-api-version-2017-11-11-preview"></a>Azure 搜索服务 REST API 版本 2017-11-11-Preview
 本文介绍了 `api-version=2017-11-11-Preview` 版的 Azure 搜索服务 REST API，该版提供尚未正式发布的实验性功能。
@@ -28,7 +28,7 @@ ms.locfileid: "53310210"
 
 ## <a name="new-in-2017-11-11-preview"></a>2017-11-11-Preview 中的新增功能
 
-[**自动完成**](search-autocomplete-tutorial.md)加入现有的[建议 API](https://docs.microsoft.com/rest/api/searchservice/suggestions)，可为搜索栏添加互补的预先输入体验。 自动完成返回用户可以选择作为后续搜索的查询字符串的候选查询词。 建议会返回实际文档以响应部分输入：搜索结果是即时的，并且随着搜索词输入的长度和特殊性的增加而动态变化。
+[自动完成](search-autocomplete-tutorial.md)加入现有的[建议 API](https://docs.microsoft.com/rest/api/searchservice/suggestions)，可为搜索栏添加互补的预先输入体验。 自动完成返回用户可以选择作为后续搜索的查询字符串的候选查询词。 建议会返回实际文档以响应部分输入：搜索结果是即时的，并且随着搜索词输入的长度和特殊性的增加而动态变化。
 
 [**认知搜索**](cognitive-search-concept-intro.md)是 Azure 搜索中的新扩充功能，用于查找非文本源和无差别文本中的潜在信息，将其转换为 Azure 搜索中可全文搜索的内容。 预览版 REST API 中引入或修改了以下资源。 无论是调用正式发布的版本，还是预览版，所有其他 REST API 都是相同的。
 

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/25/2018
+ms.date: 02/10/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: e0eaf88117aa3c67f7ffecad2e3811a22449a5f8
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c982707b24f18e840e866b1dcc858fe2aceb686e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312963"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000001"
 ---
 # <a name="filters-and-dynamic-manifests"></a>筛选器和动态清单
 
@@ -35,7 +35,7 @@ ms.locfileid: "52312963"
 将内容传送到客户（流式传输实时事件或视频点播）时，目标是：将优质视频传递到处于不同网络条件下的各种设备。 若要实现此目标，请执行以下操作：
 
 * 将流编码成多比特率（[自适应比特率](http://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)）视频流（这会负责处理质量和网络条件），并 
-* 使用媒体服务[动态打包](media-services-dynamic-packaging-overview.md)将流动态地重新打包成不同的协议（这会负责不同设备上的流式处理）。 媒体服务支持传送以下自适应比特率流式处理技术：HTTP Live Streaming (HLS)、平滑流式处理和 MPEG DASH。 
+* 使用媒体服务[动态打包](media-services-dynamic-packaging-overview.md)将流动态地重新打包成不同的协议（这会负责不同设备上的流式处理）。 媒体服务支持以下自适应比特率流式处理技术的传送：HTTP Live Streaming (HLS)、平滑流式处理和 MPEG DASH。 
 
 ### <a name="manifest-files"></a>清单文件
 将资产编码为以自适应比特率流式处理时，会创建一个**清单**（播放列表）文件（此文件基于文本或 XML）。 **清单**文件包含流元数据，例如：轨迹类型（音频、视频或文本）、轨迹名称、开始和结束时间、比特率（质量）、轨迹语言、演播窗口（持续时间固定的滑动窗口）和视频编解码器 (FourCC)。 此文件还会通过提供有关下一个可播放视频片段及其位置的信息，来指示播放器检索下一个片段。 片段（或段）实际上是视频内容的“区块”。
@@ -120,7 +120,7 @@ ms.locfileid: "52312963"
 
 ![再现内容筛选示例][renditions2]
 
-以下示例使用编码器将夹层资产编码成七个 ISO MP4 视频再现内容（从 180p 到 1080p）。 编码的资产可动态打包成以下任一流协议：HLS、平滑流和 MPEG DASH。  图表顶部显示了不包含筛选器的资产的 HLS 清单（包含全部七个再现内容）。  左下角显示名为“ott”的筛选器已应用到 HLS 清单。 “ott”筛选器指定要删除所有不低于 1Mbps 的比特率，因此将最差的两个质量级别从响应中剥除。 在右下角显示已应用名为“mobile”的筛选器的 HLS 清单。 “mobile”筛选器指定要删除分辨率大于 720p 的再现内容，因此将剥除两个 1080p 再现内容。
+以下示例使用编码器将夹层资产编码成七个 ISO MP4 视频再现内容（从 180p 到 1080p）。 编码的资产可以动态打包成以下任一流式处理协议：HLS、Smooth 和 MPEG DASH。  图表顶部显示了不包含筛选器的资产的 HLS 清单（包含全部七个再现内容）。  左下角显示名为“ott”的筛选器已应用到 HLS 清单。 “ott”筛选器指定要删除所有不低于 1Mbps 的比特率，因此将最差的两个质量级别从响应中剥除。 在右下角显示已应用名为“mobile”的筛选器的 HLS 清单。 “mobile”筛选器指定要删除分辨率大于 720p 的再现内容，因此将剥除两个 1080p 再现内容。
 
 ![再现内容筛选][renditions1]
 

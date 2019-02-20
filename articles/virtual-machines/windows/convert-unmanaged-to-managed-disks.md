@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
-ms.openlocfilehash: fecf17d95231cc37a141cfb72397f44ce2e980b5
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: bcfb227b8ced6b17fe23c1a60468de24f1835ba0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435594"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979949"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>将 Windows 虚拟机从非托管磁盘转换为托管磁盘
 
 如果有使用非托管磁盘的现有 Windows 虚拟机 (VM)，可通过 [Azure 托管磁盘](managed-disks-overview.md)服务将 VM 转换为使用托管磁盘。 此过程将同时转换 OS 磁盘和任何附加的数据磁盘。
 
-本文介绍如何使用 Azure PowerShell 转换 VM。 如需进行安装或升级，请参阅[安装和配置 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)。
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -43,18 +43,18 @@ ms.locfileid: "54435594"
 ## <a name="convert-single-instance-vms"></a>转换单实例 VM
 本节介绍如何将单实例 Azure VM 从非托管磁盘转换为托管磁盘。 （如果 VM 位于可用性集中，请参阅下一节。） 
 
-1. 使用 [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) cmdlet 解除分配 VM。 以下示例在名为 `myResourceGroup` 的资源组中解除分配名为 `myVM` 的 VM： 
+1. 使用 [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) cmdlet 解除分配 VM。 以下示例在名为 `myResourceGroup` 的资源组中解除分配名为 `myVM` 的 VM： 
 
   ```azurepowershell-interactive
   $rgName = "myResourceGroup"
   $vmName = "myVM"
-  Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
+  Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
   ```
 
-2. 使用 [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) cmdlet 将 VM 转换为托管磁盘。 以下过程转换之前的 VM，包括 OS 磁盘和任何数据磁盘，并启用虚拟机：
+2. 使用 [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk) cmdlet 将 VM 转换为托管磁盘。 以下过程转换之前的 VM，包括 OS 磁盘和任何数据磁盘，并启用虚拟机：
 
   ```azurepowershell-interactive
-  ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
+  ConvertTo-AzVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
   ```
 
 
@@ -63,40 +63,40 @@ ms.locfileid: "54435594"
 
 如果要转换为托管磁盘的 VM 位于可用性集中，则需要先将可用性集转换为托管可用性集。
 
-1. 使用 [Update-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/update-azurermavailabilityset) cmdlet 转换可用性集。 以下示例在名为 `myResourceGroup` 的资源组中更新名为 `myAvailabilitySet` 的可用性集：
+1. 使用 [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) cmdlet 转换可用性集。 以下示例在名为 `myResourceGroup` 的资源组中更新名为 `myAvailabilitySet` 的可用性集：
 
   ```azurepowershell-interactive
   $rgName = 'myResourceGroup'
   $avSetName = 'myAvailabilitySet'
 
-  $avSet = Get-AzureRmAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
-  Update-AzureRmAvailabilitySet -AvailabilitySet $avSet -Sku Aligned 
+  $avSet = Get-AzAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
+  Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned 
   ```
 
   如果可用性集所在的区域只有 2 个托管容错域，但却有 3 个非托管容错域，则此命令会显示类似于“指定的容错域计数 3 必须在 1 到 2 这个范围内”的错误消息。 若要解决此错误，请将容错域更新为 2，并按如下所示将 `Sku` 更新为 `Aligned`：
 
   ```azurepowershell-interactive
   $avSet.PlatformFaultDomainCount = 2
-  Update-AzureRmAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
+  Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
   ```
 
-2. 解除分配 VM，并转换可用性集中的 VM。 以下脚本使用 [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) cmdlet 解除分配每个 VM，使用 [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) 进行转换，并在转换进程结束后自动将其重启：
+2. 解除分配 VM，并转换可用性集中的 VM。 以下脚本使用 [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) cmdlet 解除分配每个 VM，使用 [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk) 进行转换，并在转换进程结束后自动将其重启：
 
   ```azurepowershell-interactive
-  $avSet = Get-AzureRmAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
+  $avSet = Get-AzAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
 
   foreach($vmInfo in $avSet.VirtualMachinesReferences)
   {
-     $vm = Get-AzureRmVM -ResourceGroupName $rgName | Where-Object {$_.Id -eq $vmInfo.id}
-     Stop-AzureRmVM -ResourceGroupName $rgName -Name $vm.Name -Force
-     ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgName -VMName $vm.Name
+     $vm = Get-AzVM -ResourceGroupName $rgName | Where-Object {$_.Id -eq $vmInfo.id}
+     Stop-AzVM -ResourceGroupName $rgName -Name $vm.Name -Force
+     ConvertTo-AzVMManagedDisk -ResourceGroupName $rgName -VMName $vm.Name
   }
   ```
 
 
 ## <a name="troubleshooting"></a>故障排除
 
-如果转换过程中出现错误，或先前转换中的问题导致 VM 处于“失败”状态，请再次运行 `ConvertTo-AzureRmVMManagedDisk` cmdlet。 通常只需简单的重试即可解决这一问题。
+如果转换过程中出现错误，或先前转换中的问题导致 VM 处于“失败”状态，请再次运行 `ConvertTo-AzVMManagedDisk` cmdlet。 通常只需简单的重试即可解决这一问题。
 在转换之前，确保所有 VM 扩展都处于“配置成功”状态，否则转换将失败，并出现错误代码 409。
 
 

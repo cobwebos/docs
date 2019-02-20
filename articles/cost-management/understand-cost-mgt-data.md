@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/06/2019
+ms.date: 02/07/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 0531c106228190fdc40f494e8eee70ec550f6404
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 79cf839a23d41058e0d9583a378dc063cd220136
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820244"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981751"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理数据
 
@@ -25,34 +25,35 @@ ms.locfileid: "55820244"
 
 以下信息说明了 Azure 成本管理中目前支持的 [Microsoft Azure 套餐](https://azure.microsoft.com/support/legal/offer-details/)。  Azure 套餐是客户拥有的 Azure 订阅类型。
 
-| 类别  | **套餐名称** | **套餐编号** |
+| 类别  | **产品/服务名称** | **套餐编号** |
 | --- | --- | --- |
+| **Azure 德国** | [Azure 德国即用即付](https://azure.microsoft.com/offers/ms-azr-de-0003p/) | MS-AZR-DE-0003P |
+| **Azure Government** | Azure Government Enterprise | MS-AZR-USGOV-0017P |
+| **企业协议 (EA)** | Enterprise 开发/测试 | MS-AZR-0148P |
 | **企业协议 (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade/) | MS-AZR-0017P |
-| **企业协议 (EA)**| Enterprise 开发/测试 | MS-AZR-0148P |
 | **Microsoft 开发人员网络 (MSDN)** | [MSDN 平台](https://azure.microsoft.com/offers/ms-azr-0062p/) | MS-AZR-0062P |
+| **即用即付** | [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/) | MS-AZR-0003P |
+| **即用即付** | [即用即付开发/测试](https://azure.microsoft.com/offers/ms-azr-0023p/) | MS-AZR-0023P |
+| **即用即付** | [Microsoft 合作伙伴网络](https://azure.microsoft.com/offers/ms-azr-0025p/) | MS-AZR-0025P |
+| **即用即付** | [免费试用](https://azure.microsoft.com/offers/ms-azr-0044p/) | MS-AZR-0044P |
+| **即用即付** | [Azure 开放式许可](https://azure.microsoft.com/offers/ms-azr-0111p/) | MS-AZR-0111P |
+| **即用即付** | [面向学生的 Azure](https://azure.microsoft.com/offers/ms-azr-0170p/) | MS-AZR-0170P |
+| **即用即付** | Azure Pass | MS-AZR-0120P、MS-AZR-0122P - MS-AZR-0125P、MS-AZR-0128P - MS-AZR-0130P |
 | **Visual Studio** | [Visual Studio Enterprise – MPN](https://azure.microsoft.com/offers/ms-azr-0029p/) | MS-AZR-0029P |
 | **Visual Studio** | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/) | MS-AZR-0059P |
 | **Visual Studio** | [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/) | MS-AZR-0060P |
 | **Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) | MS-AZR-0063P |
 | **Visual Studio** | [Visual Studio Enterprise：BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/) | MS-AZR-0064P |
-| **直接/即用即付** | [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/) | MS-AZR-0003P |
-| **直接/即用即付** | Microsoft Azure 内部消耗 | MS-AZR-0015P |
-| **直接/即用即付** | [即用即付开发/测试](https://azure.microsoft.com/offers/ms-azr-0023p/) | MS-AZR-0023P |
-| **直接/即用即付** | [Microsoft 合作伙伴网络](https://azure.microsoft.com/offers/ms-azr-0025p/) | MS-AZR-0025P |
-| **直接/即用即付** | [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/) | MS-AZR-0036P |
-| **直接/即用即付** | [免费试用](https://azure.microsoft.com/offers/ms-azr-0044p/) | MS-AZR-0044P |
-| **直接/即用即付** | [Azure 开放式许可](https://azure.microsoft.com/offers/ms-azr-0111p/) | MS-AZR-0111P |
-| **直接/即用即付** | [面向学生的 Azure](https://azure.microsoft.com/en-us/offers/ms-azr-0170p/) | MS-AZR-0170P |
-| **直接/即用即付** | Azure Pass | MS-AZR-0120P、MS-AZR-0122P - MS-AZR-0125P、MS-AZR-0128P - MS-AZR-0130P |
 
 下表显示了不支持的套餐。
 
-| 类别  | **套餐名称** | **套餐编号** |
+| 类别  | **产品/服务名称** | **套餐编号** |
 | --- | --- | --- |
 | **云解决方案提供商 (CSP)** | Microsoft Azure | MS-AZR-0145P |
 | **云解决方案提供商 (CSP)** | Azure 政府版 CSP | MS-AZR-USGOV-0145P |
 | **云解决方案提供商 (CSP)** | Microsoft 德国云 CSP 中的 Azure 德国版 | MS-AZR-DE-0145P |
-| **直接/即用即付** | 面向学生的 Azure 入门版 | MS-AZR-0144P |
+| **即用即付** | 面向学生的 Azure 入门版 | MS-AZR-0144P |
+| **即用即付** | [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/) | MS-AZR-0036P |
 | **支持计划** | 标准支持 | MS-AZR-0041P |
 | **支持计划** | 专业直接支持 | MS-AZR-0042P |
 | **支持计划** | 开发人员支持 | MS-AZR-0043P |
@@ -68,17 +69,6 @@ ms.locfileid: "55820244"
 ## <a name="costs-included-in-cost-management"></a>成本管理中包括的成本
 
 下表显示了成本管理中包括或不包括的数据。
-
-**帐户类型**
-
-| **包括** | **不包括** |
-| --- | --- |
-| 企业协议 (EA) | 云解决方案提供商 (CSP) - 有关详细信息，请参阅[合作伙伴中心概述](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview)。 |
-| 即用即付 (PAYG) |   |
-| 开发/测试 |   |
-| 免费、试用和赞助 |   |
-| 合作伙伴网络 |   |
-| Azure 开放许可 | &nbsp;  |
 
 **成本和用量数据**
 

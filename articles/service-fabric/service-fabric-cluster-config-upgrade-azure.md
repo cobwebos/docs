@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 9323b393edb808f3d2d069f868deb0b67cd0c871
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 621dc22ead8fbb6882c692851d39b658da043c55
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51857882"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894677"
 ---
 # <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>在 Azure 中升级群集的配置 
 
 本文介绍如何为 Service Fabric 群集自定义各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。
 
 > [!NOTE]
-> 并非所有设置在门户中皆可用。 如果不能通过门户使用下面列出的设置，请使用 Azure 资源管理器模板对其进行自定义。> 
+> 并非所有设置在门户中皆可用，[最佳做法是使用 Azure 资源管理器模板对其进行自定义](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)；门户仅适用于 Service Fabric 开发\测试方案。> 
 
 ## <a name="customize-cluster-settings-using-resource-manager-templates"></a>使用资源管理器模板自定义群集设置
 可以通过 JSON 资源管理器模板配置 Azure 群集。 若要了解有关不同设置的详细信息，请参阅[群集的配置设置](service-fabric-cluster-fabric-settings.md)。 例如，下面的步骤演示如何使用 Azure 资源浏览器将新设置 MaxDiskQuotaInMB 添加到“诊断”部分。

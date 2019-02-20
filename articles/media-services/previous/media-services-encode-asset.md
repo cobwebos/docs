@@ -1,6 +1,6 @@
 ---
 title: 概述并比较 Azure 点播媒体编码器 | Microsoft Docs
-description: 本主题简要介绍并比较了 Azure 点播媒体编码器。
+description: 本主题提供了 Azure 点播媒体编码器的简要介绍和比较。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: c02d3483a98c358e53964d3932944b5d2dad9c53
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ed4b581cb962c7db706a71ab995963a3c445af55
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240267"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998139"
 ---
-# <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>概述并比较 Azure 点播媒体编码器
+# <a name="overview-and-comparison-of-azure-on-demand-media-encoders-legacy"></a>简要介绍并比较 Azure 点播媒体编码器（旧版）
+
 ## <a name="encoding-overview"></a>编码概述
 Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项。
 

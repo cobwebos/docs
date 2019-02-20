@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: juliako
-ms.openlocfilehash: be4c08bc31c8811655230ab89b48271f4c2b3164
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: a447c359c38c2173ea42b6d717067fc8b3a88f9a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756574"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55875485"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Azure 媒体服务 v3 常见问题
 
@@ -36,17 +36,7 @@ ms.locfileid: "55756574"
 
 ### <a name="how-does-pagination-work"></a>分页是如何工作的？
 
-对于支持 OData 的资源，媒体服务支持使用 $top，但传递给 $top 的值必须小于 1000（例如，分页的页面大小）。
-
-这样一来，既可以使用 $top 获取一小部分项目示例（例如，最近的 100 个项目），也可以使用分页功能对所有项目进行分页。 
-
-媒体服务不支持以用户指定的页面大小对数据进行分页。
-
-有关详细信息，请参阅[筛选、排序、分页](entities-overview.md)。
-
-### <a name="how-to-retrieve-an-entity-in-media-services-v3"></a>如何在媒体服务 v3 中检索实体？
-
-v3 基于一个统一的 API 接口，该接口公开了基于 **Azure 资源管理器**构建的管理和操作功能。 根据 **Azure 资源管理器**，资源名称始终是唯一的。 因此，可以为资源使用任何唯一的标识符字符串（例如，GUID）。
+使用分页时，应始终使用下一链接来枚举集合，而不依赖特定的页面大小。 有关详细信息和示例，请参阅[筛选、排序、分页](entities-overview.md)。
 
 ## <a name="live-streaming"></a>实时传送视频流 
 

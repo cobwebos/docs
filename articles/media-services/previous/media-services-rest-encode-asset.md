@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: ada3210a59e0c3044551bee54b0a705b4b513594
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e51fa086b26e5692d8dd572654b7c1ec50c641c5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254428"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005142"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>如何使用 Media Encoder Standard 对资产进行编码
 > [!div class="op_single_selector"]
@@ -30,6 +30,7 @@ ms.locfileid: "51254428"
 >
 
 ## <a name="overview"></a>概述
+
 若要通过 Internet 传送数字视频，必须压缩媒体文件。 数字视频文件较大，可能因过大而无法通过 Internet 传送或者无法在客户的设备上正常显示。 编码是压缩视频和音频以便客户能够查看媒体的过程。
 
 编码作业是 Azure 媒体服务中最常见的处理操作之一。 可通过创建编码作业将媒体文件从一种编码转换为另一种编码。 编码时，可以使用媒体服务的内置编码器（Media Encoder Standard）。 还可使用媒体服务合作伙伴提供的编码器。 可通过 Azure 市场获取第三方编码器。 可以使用为编码器定义的预设字符串或预设配置文件来指定编码任务的详细信息。 若要查看可用预设的类型，请参阅 [Media Encoder Standard 的任务预设](https://msdn.microsoft.com/library/mt269960)。
@@ -54,12 +55,13 @@ ms.locfileid: "51254428"
 若要了解如何连接到 AMS API，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
 ## <a name="create-a-job-with-a-single-encoding-task"></a>创建包含单个编码任务的作业
+
 > [!NOTE]
 > 使用媒体服务 REST API 时，需注意以下事项：
 >
 > 访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
 >
-> 使用 JSON 并指定在请求（例如，引用某个链接对象的请求）中使用 **__metadata** 关键字时，必须将 **Accept** 标头设置为 [JSON 详细格式](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)：Accept: application/json;odata=verbose。
+> 使用 JSON 并指定在请求中使用 __metadata 关键字（例如，为了引用某个链接对象）时，必须将 Accept 标头设置为 [JSON 详细格式](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)：Accept: application/json;odata=verbose。
 >
 >
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2018
+ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: ac07b5af28dc869b6aa05c269c9225d546d651a0
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 92e5fb782eed3344a55178d6ba74dfd6d7b8cafd
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490424"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235898"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -31,7 +31,9 @@ ms.locfileid: "55490424"
 
 如需教程，请参阅[教程：创建链接的 Azure 资源管理器模板](./resource-manager-tutorial-create-linked-templates.md)。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!NOTE]
+> 对于链接模板或嵌套模板，只能使用[增量](deployment-modes.md)部署模式。
+>
 
 ## <a name="link-or-nest-a-template"></a>链接或嵌套模板
 
@@ -52,8 +54,6 @@ ms.locfileid: "55490424"
 ```
 
 为部署资源提供的属性将因要链接到外部模板，还是要将内联模板嵌套在主模板中而异。
-
-只能使用[增量](deployment-modes.md)部署模式，这点对链接模板和嵌套模板都适用。
 
 ### <a name="nested-template"></a>嵌套模板
 
@@ -467,8 +467,8 @@ done
 
 ```azurepowershell-interactive
 Set-AzCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
-$token = New-AzureStorageContainerSASToken -Name templates -Permission r -ExpiryTime (Get-Date).AddMinutes(30.0)
-$url = (Get-AzureStorageBlob -Container templates -Blob parent.json).ICloudBlob.uri.AbsoluteUri
+$token = New-AzStorageContainerSASToken -Name templates -Permission r -ExpiryTime (Get-Date).AddMinutes(30.0)
+$url = (Get-AzStorageBlob -Container templates -Blob parent.json).ICloudBlob.uri.AbsoluteUri
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ($url + $token) -containerSasToken $token
 ```
 

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 02/07/2019
 ms.author: juliako
-ms.openlocfilehash: d176152429ecac1ed4e570533f1bc0426cc7655f
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: a5a4205c97e4db25d5d0a92472610364d912b278
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767446"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963431"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>存在 Azure 媒体服务 v3 的云和区域
 
@@ -40,7 +40,7 @@ Azure 媒体服务 v3 可通过 Azure资源管理器清单在全球 Azure、Azur
 * [Azure 地域](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)
 
-## <a name="region-code-name"></a>区域代码名 
+### <a name="region-code-name"></a>区域代码名 
 
 如果需要提供**位置**参数，则需要提供区域代码名称作为**位置**值。 若要获取你的帐户所在的并且应当将你的调用路由到的区域的代码名称，可以在 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 中运行以下命令行
 
@@ -62,6 +62,42 @@ az account list-locations
       "subscriptionId": null
     }
 ```
+
+## <a name="endpoints"></a>终结点  
+
+从不同的区域 Azure 云连接到媒体服务帐户时，应记住以下终结点。
+
+### <a name="global-azure"></a>全球 Azure
+
+|终结点 ||
+| --- | --- | 
+| Azure 资源管理器 |  `https://management.azure.com/` |
+| Authentication | `https://login.microsoftonline.com/` | 
+| 令牌受众 | `https://management.core.windows.net/` |
+
+### <a name="azure-government"></a>Azure Government 
+
+|终结点||
+| --- | --- | 
+| Azure 资源管理器 |  `https://management.usgovcloudapi.net/` |
+| Authentication | `https://login.microsoftonline.us/` | 
+| 令牌受众 | `https://management.core.usgovcloudapi.net/` |
+
+### <a name="azure-germany"></a>Azure 德国
+
+| 终结点 ||
+| --- | --- |  
+| Azure 资源管理器 | `https://management.cloudapi.de/` |
+| Authentication | `https://login.microsoftonline.de/` |
+| 令牌受众 | `https://management.core.cloudapi.de/`|
+
+### <a name="azure-china-21vianet"></a>Azure 中国世纪互联
+
+|终结点||
+| --- | --- | 
+| Azure 资源管理器 | `https://management.chinacloudapi.cn/` |
+| Authentication | `https://login.chinacloudapi.cn/` |
+| 令牌受众 |  `https://management.core.chinacloudapi.cn/` |
 
 ## <a name="next-steps"></a>后续步骤
 

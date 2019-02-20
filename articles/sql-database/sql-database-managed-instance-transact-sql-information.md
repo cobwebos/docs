@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: f1adcca48882ca3a149046cbc0729612666363cc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/07/2019
+ms.openlocfilehash: 59599686b2a9ccee7250e33f0786d4c7af816983
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734600"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894303"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 的 T-SQL 差异
 
@@ -27,7 +27,7 @@ ms.locfileid: "55734600"
 
 由于两者的语法和行为仍有一些差异，本文汇总并解释了这些差异。 <a name="Differences"></a>
 - [可用性](#availability)包括 [Always-On](#always-on-availability) 和[备份](#backup)方面的差异
-- [安全性](#security)包括[审核](#auditing)、[证书](#certificates)、[凭据](#credentials)、[加密提供程序](#cryptographic-providers)、[登录名/用户名](#logins--users)、[服务密钥和服务主密钥](#service-key-and-service-master-key)方面的差异
+- [安全性](#security)包括[审核](#auditing)、[证书](#certificates)、[凭据](#credential)、[加密提供程序](#cryptographic-providers)、[登录名/用户名](#logins--users)、[服务密钥和服务主密钥](#service-key-and-service-master-key)方面的差异
 - [配置](#configuration)包括[缓冲池扩展](#buffer-pool-extension)、[排序规则](#collation)、[兼容性级别](#compatibility-levels)、[数据库镜像](#database-mirroring)、[数据库选项](#database-options)、[SQL Server 代理](#sql-server-agent)、[表选项](#tables)方面的差异
 - [功能](#functionalities)包括 [BULK INSERT/OPENROWSET](#bulk-insert--openrowset)、[CLR](#clr)、[DBCC](#dbcc)、[分布式事务](#distributed-transactions)、[已扩展事件](#extended-events)、[外部库](#external-libraries)、[文件流和文件表](#filestream-and-filetable)、[全文语义搜索](#full-text-semantic-search)、[链接服务器](#linked-servers)、[Polybase](#polybase)、[复制](#replication)、[还原](#restore-statement)、[Service Broker](#service-broker)、[存储过程、函数和触发器](#stored-procedures-functions-triggers)方面的差异
 - [在托管实例中行为不同的功能](#Changes)
@@ -74,7 +74,7 @@ ms.locfileid: "55734600"
 
 在审核 Azure SQL 数据库和 SQL Server 中的数据库方面，主要差异是：
 
-- 使用 Azure SQL 数据库中的托管实例部署选项，审核是在服务器一级执行，并在 Azure Blob 存储帐户中存储 `.xel` 日志文件。
+- 使用 Azure SQL 数据库中的托管实例部署选项，审核在服务器级别执行，并在 Azure Blob 存储中存储 `.xel` 日志文件。
 - 使用 Azure SQL 数据库中的单一数据库和弹性池部署选项，审核是在数据库一级执行。
 - 在本地 SQL Server/虚拟机上的 SQL Server 中，审核是在服务器一级执行，但却在文件系统/Windows 事件日志中存储事件。
   
@@ -170,7 +170,7 @@ WITH PRIVATE KEY (<private_key_options>)
 - 常规用途服务层不支持内存中对象。  
 - 每个实例限制为 280 个文件，这意味着，每个数据库最多只能有 280 个文件。 数据文件和日志文件都会计入此限制。  
 - 数据库中不能有包含文件流数据的文件组。  如果 .bak 包含 `FILESTREAM` 数据，则还原将会失败。  
-- 每个文件被放置在 Azure 高级存储中。 与 Azure 高级存储磁盘中的文件一样，每个文件的 IO 和吞吐量取决于每个文件的大小。 请参阅 [Azure 高级磁盘性能](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)  
+- 每个文件都被放置在 Azure Blob 存储中。 每个文件的 IO 和吞吐量取决于每个单独文件的大小。  
 
 #### <a name="create-database-statement"></a>CREATE DATABASE 语句
 
@@ -275,7 +275,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="bulk-insert--openrowset"></a>批量插入/openrowset
 
-由于托管实例无法访问文件共享和 Windows 文件夹，因此必须从 Azure Blob 存储导入文件：
+由于托管实例无法访问文件共享和 Windows 文件夹，必须从 Azure Blob 存储导入文件：
 
 - 从 Azure Blob 存储导入文件时，必须在 `BULK INSERT` 命令中指定 `DATASOURCE`。 请参阅 [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql)。
 - 从 Azure Blob 存储中读取文件内容时，必须在 `OPENROWSET` 函数中指定 `DATASOURCE`。 请参阅 [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql)。
@@ -305,7 +305,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 不支持对 XEvents 使用某些特定于 Windows 的目标：
 
-- 不支持 `etw_classic_sync target`。 在 Azure Blob 存储中存储 `.xel` 文件。 请参阅 [etw_classic_sync 目标](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etwclassicsynctarget-target)。
+- 不支持 `etw_classic_sync target`。 在 Azure Blob 存储中存储 `.xel` 文件。 请参阅 [etw_classic_sync 目标](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target)。
 - 不支持 `event_file target`。 在 Azure Blob 存储中存储 `.xel` 文件。 请参阅 [event_file 目标](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target)。
 
 ### <a name="external-libraries"></a>外部库
@@ -347,7 +347,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="polybase"></a>Polybase
 
-不支持外部表引用 HDFS 或 Azure Blob 存储中的文件。 有关 Polybase 的信息，请参阅 [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)。
+不支持引用 HDFS 或 Azure Blob 存储中文件的外部表。 有关 Polybase 的信息，请参阅 [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)。
 
 ### <a name="replication"></a>复制
 

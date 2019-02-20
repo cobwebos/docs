@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c280a1f7e060ab7637e8d0b2484951f72b58a89c
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: fe671dec730cd1a593c6413c38625677c3f9d164
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081188"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894099"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure 机器学习和 Azure 数据工厂创建预测管道
 
@@ -54,7 +54,7 @@ ms.locfileid: "55081188"
 有关 Azure 数据工厂服务的快速入门，请参阅文章 [Azure 数据工厂简介](data-factory-introduction.md)和[生成第一个管道](data-factory-build-your-first-pipeline.md)。
 
 ### <a name="data-factory-and-machine-learning-together"></a>结合数据工厂和机器学习
-借助 Azure 数据工厂，可轻松创建相关管道，利用已发布的 [Azure 机器学习 Web 服务进行预测分析][azure-machine-learning]。 使用 Azure 数据工厂管道中的**批处理执行活动**，可以调用 Azure 机器学习工作室 Web 服务成批对数据进行预测。 有关详细信息，请参阅[使用批处理执行活动调用 Azure 机器学习工作室 Web 服务](#invoking-an-azure-ml-web-service-using-the-batch-execution-activity)部分。
+借助 Azure 数据工厂，可轻松创建相关管道，利用已发布的 [Azure 机器学习 Web 服务进行预测分析][azure-machine-learning]。 使用 Azure 数据工厂管道中的**批处理执行活动**，可以调用 Azure 机器学习工作室 Web 服务成批对数据进行预测。 有关详细信息，请参阅使用批处理执行活动调用 Azure 机器学习工作室 Web 服务部分。
 
 随着时间推移，需要使用新的输入数据集重新训练 Azure 机器学习工作室评分实验中的预测模型。 可以通过执行以下步骤重新训练数据工厂管道中的 Azure 机器学习工作室模型：
 

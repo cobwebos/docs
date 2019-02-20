@@ -3,17 +3,17 @@ title: Azure Maps 中支持的地图样式 | Microsoft Docs
 description: Azure Maps 支持的地图样式
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/02/2018
+ms.date: 02/12/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2f426ab85d9ab15dd080a487337b8d48358ed040
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 923b9fef75fa610ee817a86ce0b4d6b322153f01
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888454"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113425"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps 支持的地图样式
 Azure Maps 支持几种不同的内置地图样式，如下所述。
@@ -56,7 +56,16 @@ Azure Maps 支持几种不同的内置地图样式，如下所述。
 ## <a name="night"></a>夜间
 夜间是包含彩色道路和符号的道路地图样式的深色版本。
 
-![夜间](./media/supported-map-styles/night.PNG)
+![夜间](./media/supported-map-styles/night.png)
 
 **适用 API：**
-* JS 地图控件 
+* JS 地图控件
+
+## <a name="roadshadedrelief"></a>road_shaded_relief
+道路地形阴影是 Azure Maps 主要样式，通过地球的轮廓完成。
+
+![地形阴影](./media/supported-map-styles/shaded-relief.png)
+
+**适用 API：**
+* JS 地图控件
+* [地图图块](https://docs.microsoft.com/rest/api/maps/render/getmaptile)

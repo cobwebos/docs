@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: caafd5ac43ca94f8b01298b4e18e48065b7001b9
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: c83342e5eb0e6c1f45daa54ea3c4f3c602ff7a39
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766616"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878606"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
 
@@ -376,7 +376,7 @@ sudo ./installIoTEdge
 
 IoT Edge 节点已准备好接收 IoT 中心的连接字符串。 查找 ```device_connection_string:``` 行，并粘贴上面复制内容的引号之间的连接字符串。
 
-此外，可以遵循[快速入门：将第一个 IoT Edge 模块部署到 Linux x64 设备](../../iot-edge/quickstart-linux.md)文档，来了解如何注册设备和安装 IoT 运行时。
+此外，可以遵循[快速入门：将第一个 IoT Edge 模块部署到 Linux x64 设备](../../iot-edge/quickstart-linux.md)文档，来逐步了解如何注册设备和安装 IoT 运行时。
 
 
 #### <a name="get-the-container-registry-credentials"></a>获取容器注册表凭据
@@ -463,7 +463,7 @@ Web 服务是一个 REST API，因此，可以在各种编程语言中创建客�
 
 ## <a id="update"></a> 更新 Web 服务
 
-创建新映像时，必须手动更新要使用新映像的每个服务。 若要更新 Web 服务，请使用 `update` 方法。 以下代码演示如何将 Web 服务更新为使用新映像：
+创建新的映像时，必须手动更新要使用新映像的每个服务。 若要更新 Web 服务，请使用 `update` 方法。 以下代码演示如何将 Web 服务更新为使用新映像：
 
 ```python
 from azureml.core.webservice import Webservice

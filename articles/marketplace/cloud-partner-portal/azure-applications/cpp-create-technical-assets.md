@@ -14,18 +14,23 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6050ad98c87dbe38516a6ee3c4862495ad868031
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 78aa65614920d093b6ba0b8fa43614fd7f3c5176
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53414347"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100425"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>准备 Azure 应用程序技术资产
 
 本文介绍了用于为 Azure 应用程序产品/服务准备技术资产的资源。
 
 ## <a name="before-you-begin"></a>开始之前
+
+观看以下视频（[针对 Azure 市场构建解决方案模板和托管应用程序](https://channel9.msdn.com/Events/Build/2018/BRK3603)），该视频首先概述了如何创建 Azure 资源管理器模板来定义 Azure 应用程序解决方案，然后概述了之后如何将应用套餐发布到 Azure 市场。
+
+>[!VIDEO https://channel9.msdn.com/Events/Build/2018/BRK3603/player]
+
 
 查看以下 Azure 应用程序文档，其中提供了快速入门、教程和示例。
 

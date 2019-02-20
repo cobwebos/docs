@@ -3,7 +3,7 @@ title: 创建、管理 Azure SQL 数据库服务器和单一数据库 | Microsof
 description: 了解如何创建和管理 SQL 数据库服务器和单一数据库。
 services: sql-database
 ms.service: sql-database
-ms.subservice: standalone-database
+ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 7d1f11abbe88bff5a7e16984aacd4953ad4f9e12
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/08/2019
+ms.openlocfilehash: 0a43414ef446beb3f5d6c8e357390363a95ac31c
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751185"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099337"
 ---
 # <a name="create-and-manage-sql-database-servers-and-single-databases-in-azure-sql-database"></a>在 Azure SQL 数据库中创建和管理 SQL 数据库服务器和单一数据库
 
@@ -57,7 +57,7 @@ ms.locfileid: "55751185"
 
 ## <a name="powershell-manage-sql-database-servers-and-single-databases"></a>PowerShell：管理 SQL 数据库服务器和单一数据库
 
-若要使用 Azure PowerShell 创建和管理 Azure SQL 数据库服务器、独立数据库和入池数据库，以及 SQL 数据库服务器防火墙，请运行以下 PowerShell cmdlet。 如果需要安装或升级 PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
+若要使用 Azure PowerShell 创建和管理 Azure SQL 数据库服务器、单一数据库和入池数据库以及 SQL 数据库服务器防火墙，请使用以下 PowerShell cmdlet。 如果需要安装或升级 PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 
 > [!TIP]
 > 有关 PowerShell 示例脚本，请参阅[使用 PowerShell 创建 Azure SQL 单一数据库和配置 SQL 数据库服务器防火墙规则](scripts/sql-database-create-and-configure-database-powershell.md)和[使用 PowerShell 监视和缩放 SQL 单一数据库](scripts/sql-database-monitor-and-scale-database-powershell.md)。
@@ -160,5 +160,5 @@ ms.locfileid: "55751185"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解如何将 SQL Server 数据库迁移到 Azure，请参阅[迁移到 Azure SQL 数据库](sql-database-cloud-migrate.md)。
+- 若要详细了解如何将 SQL Server 数据库迁移到 Azure，请参阅[迁移到 Azure SQL 数据库](sql-database-single-database-migrate.md)。
 - 有关支持的功能的信息，请参阅[功能](sql-database-features.md)。

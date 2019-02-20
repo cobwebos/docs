@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/28/2019
+ms.date: 02/13/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 94171da3c60de3efc4e2a234494816899c3d2f05
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 0afb8a09fa9780755bcfeef678b76e176f11b348
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511847"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246028"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -339,7 +339,8 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 除了 Azure 门户中提供的详细信息以外，还可以针对日志执行搜索。 在解决方案页上，选择“Log Analytics”。 此时将打开“日志搜索”窗格。
 
-还可访问 Log Analytics 搜索 API 文档，了解如何自定义查询或从不同客户端使用查询等。
+还可访问 [Log Analytics 搜索 API 文档](
+https://dev.loganalytics.io/)，了解如何自定义查询或从不同客户端使用查询等。
 
 ### <a name="sample-queries"></a>示例查询
 
@@ -599,6 +600,13 @@ Update
 
 按更新分类部署更新在 CentOS 上无法现成地运行。 若要为 CentOS 正确部署更新，请选择所有分类以确保应用更新。 对于 SUSE，如果首先需要与 zypper（包管理器）或其依赖项相关的安全更新，则仅选择“其他更新”作为分类可能会导致同时安装某些安全更新。 此行为是 zypper 的一项限制。 某些情况下，可能需要重新运行更新部署。 若要验证，请检查更新日志。
 
+## <a name="remove-a-vm-for-update-management"></a>删除用于更新管理的 VM
+
+从更新管理中删除 VM：
+
+* 在 Log Analytics 工作区中，从范围配置 `MicrosoftDefaultScopeConfig-Updates` 的已保存的搜索中删除 VM。 已保存的搜索位于工作区的“常规”下。
+* 删除 [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) 或 [适用于 Linux 的 Log Analytics 代理](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)。
+  
 ## <a name="troubleshoot"></a>故障排除
 
 要了解如何对更新管理进行故障排除，请参阅[更新管理故障排除](troubleshoot/update-management.md)

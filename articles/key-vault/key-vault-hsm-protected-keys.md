@@ -4,23 +4,25 @@ description: 使用这篇文章可帮助你规划、生成然后传输自己的�
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: 51abafa1-812b-460f-a129-d714fdc391da
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: 3458bdc0f010cab622a5ddbb87cb8e1077c404a5
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: cc7d9a8e0d2689be4a8beb5d42c43b9e18157472
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55693878"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238107"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>如何为 Azure 密钥保管库生成和传输受 HSM 保护的密钥
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 为了提高可靠性，在使用 Azure 密钥保管库时，可以在硬件安全模块 (HSM) 中导入或生成永不离开 HSM 边界的密钥。 这种情况通常被称为*自带密钥*，简称 BYOK。 这些 HSM 都通过 FIPS 140-2 第 2 级验证。 Azure 密钥保管库使用 HSM 的 Thales nShield 系列来保护密钥。
 
@@ -30,7 +32,7 @@ ms.locfileid: "55693878"
 
 > [!NOTE]
 > 有关 Azure 密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](key-vault-whatis.md)  
-> 如需包括为受 HSM 保护的密钥创建密钥保管库的入门教程，请参阅 [Azure 密钥保管库入门](key-vault-get-started.md)。
+> 如需包括为受 HSM 保护的密钥创建密钥保管库的入门教程，请参阅[什么是 Azure 密钥保管库？](key-vault-overview.md)。
 
 有关生成和通过 Internet 传输受 HSM 保护的密钥的详细信息：
 
@@ -60,7 +62,7 @@ Microsoft 已与 Thales 联手增强 HSM 的技术开发水平。 这些增强�
 | Azure 订阅 |若要创建 Azure Key Vault，需要 Azure 订阅：[注册免费试用版](https://azure.microsoft.com/pricing/free-trial/) |
 | 用于支持受 HSM 保护的密钥的 Azure 密钥保管库高级服务层 |请参阅 [Azure 密钥保管库定价](https://azure.microsoft.com/pricing/details/key-vault/)网站，了解有关 Azure 密钥保管库的服务层和功能的详细信息。 |
 | Thales HSM、智能卡和支持软件 |必须具有 Thales 硬件安全模块的访问权限和 Thales HSM 的基本操作知识。 请参阅 [Thales 硬件安全模块](https://www.thales-esecurity.com/msrms/buy)，了解兼容型号的列表，或者如果还没有 HSM，请购买 HSM。 |
-| 以下硬件和软件：<ol><li>脱机 x64 工作站，最低 Windows 操作系统为 Windows 7，Thales nShield 软件最低为 11.50 版。<br/><br/>如果此工作站运行 Windows 7，则必须[安装 Microsoft.NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>连接到 Internet 的工作站，最低 Windows 操作系统为 Windows 7，最低 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.7.0) 安装版本为 1.1.0。</li><li>至少拥有 16 MB 可用空间的 USB 驱动器或其他便携式存储设备。</li></ol> |出于安全原因，建议第一个工作站不要连接到网络。 但是，此建议不会以编程方式强制执行。<br/><br/>在后面的说明中，将此工作站称为连接断开的工作站。</p></blockquote><br/>此外，如果租户密钥用于生产网络，建议使用第二个独立的工作站来下载工具集和上传租户密钥。 但出于测试目的，可以使用与第一个相同的工作站。<br/><br/>在后面的说明中，将第二个工作站称为连接到 Internet 的工作站。</p></blockquote><br/> |
+| 以下硬件和软件：<ol><li>脱机 x64 工作站，最低 Windows 操作系统为 Windows 7，Thales nShield 软件最低为 11.50 版。<br/><br/>如果此工作站运行 Windows 7，则必须[安装 Microsoft.NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>连接到 Internet 的工作站，最低 Windows 操作系统为 Windows 7，最低 [Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) 安装版本为 1.1.0。</li><li>至少拥有 16 MB 可用空间的 USB 驱动器或其他便携式存储设备。</li></ol> |出于安全原因，建议第一个工作站不要连接到网络。 但是，此建议不会以编程方式强制执行。<br/><br/>在后面的说明中，将此工作站称为连接断开的工作站。</p></blockquote><br/>此外，如果租户密钥用于生产网络，建议使用第二个独立的工作站来下载工具集和上传租户密钥。 但出于测试目的，可以使用与第一个相同的工作站。<br/><br/>在后面的说明中，将第二个工作站称为连接到 Internet 的工作站。</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>生成密钥并将其传输到 Azure 密钥保管库 HSM
 
@@ -78,21 +80,19 @@ Microsoft 已与 Thales 联手增强 HSM 的技术开发水平。 这些增强�
 
 ### <a name="step-11-install-azure-powershell"></a>步骤 1.1：安装 Azure PowerShell
 
-从通过 Internet 连接的工作站，下载并安装Azure PowerShell 模块，其包含用于管理 Azure 密钥保管库的 cmdlet。 这要求模块的最低版本为 0.8.13。
-
-如需安装说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+从通过 Internet 连接的工作站，下载并安装Azure PowerShell 模块，其包含用于管理 Azure 密钥保管库的 cmdlet。 如需安装说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ### <a name="step-12-get-your-azure-subscription-id"></a>步骤 1.2：获取 Azure 订阅 ID
 
 使用以下命令启动 Azure PowerShell 会话，并登录 Azure 帐户：
 
 ```Powershell
-   Add-AzureRMAccount
+   Connect-AzAccount
 ```
-在弹出的浏览器窗口中，输入 Azure 帐户用户名和密码。 然后，使用 [Get-AzureSubscription](/powershell/module/servicemanagement/azure/get-azuresubscription?view=azuresmps-3.7.0) 命令：
+在弹出的浏览器窗口中，输入 Azure 帐户用户名和密码。 然后，使用 [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) 命令：
 
 ```powershell
-   Get-AzureRMSubscription
+   Get-AzSubscription
 ```
 从输出中，找到用于 Azure 密钥保管库的订阅的 ID。 稍后会用到该订阅 ID。
 
@@ -246,7 +246,6 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 
 在步骤 3 中，请对连接断开的工作站执行以下过程。 若要完成此步骤，HSM 必须处于初始化模式。 
 
-
 ### <a name="step-31-change-the-hsm-mode-to-i"></a>步骤 3.1：将 HSM 模式更改为“I”
 
 如果使用 Thales nShield Edge，要更改模式，请执行以下操作：1. 使用“模式”按钮突出显示所需模式。 2. 几秒钟内，按住“清除”按钮几秒钟。 如果模式发生更改，新模式的 LED 指示灯将停止闪烁并保持亮起。 状态 LED 可能会不规则地闪烁几秒钟，并在设备就绪时规则闪烁。 否则，设备保持在当前模式，相应的模式 LED 亮起。
@@ -256,13 +255,13 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 启动命令提示符并运行 Thales new-world 程序。
 
    ```cmd
-    new-world.exe --initialize --cipher-suite=DLf1024s160mRijndael --module=1 --acs-quorum=2/3
+    new-world.exe --initialize --cipher-suite=DLf3072s256mRijndael --module=1 --acs-quorum=2/3
    ```
 
 此程序会在 %NFAST_KMDATA%\local\world 中创建一个 **Security World** 文件，此文件夹对应于 C:\ProgramData\nCipher\Key Management Data\local 文件夹。 可以使用不同的值进行仲裁，但在本例中，系统会提示为每个值输入三个空白卡和 pin。 然后，任何两个卡都会提供对安全体系的完全访问权限。 这些卡成为新安全体系的**管理员卡集**。
 
 > [!NOTE]
-> 如果 HSM 支持较新的密码组 DLf3072s256mRijndael，则可以将 --cipher-suite=DLf1024s160mRijndael 替换为 --cipher-suite=DLf3072s256mRijndael
+> 如果 HSM 不支持较新的密码套件 DLf3072s256mRijndael，则可以将 --cipher-suite=DLf3072s256mRijndael 替换为 --cipher-suite=DLf1024s160mRijndael
 
 然后执行以下操作：
 
@@ -493,14 +492,14 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 
 ## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>步骤 5：将密钥传输到 Azure Key Vault
 
-在此最后一步中，在连接 Internet 的工作站上，使用 [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) cmdlet 上传从断开连接的工作站复制到 Azure Key Vault HSM 的密钥传输包：
+在此最后一步中，在连接 Internet 的工作站上，使用 [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 上传从断开连接的工作站复制到 Azure 密钥保管库 HSM 的密钥传输包：
 
    ```powershell
-        Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'
+        Add-AzKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'
    ```
 
 如果上传成功，会看到刚添加的密钥的属性。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在可以在密钥保管库中使用此受 HSM 保护的密钥。 有关详细信息，请参阅 [Azure 密钥保管库入门](key-vault-get-started.md)中的**如果要使用硬件安全模块 (HSM)** 部分。
+现在可以在密钥保管库中使用此受 HSM 保护的密钥。 有关详细信息，请参阅 [Azure 密钥保管库入门](key-vault-overview.md)中的**如果要使用硬件安全模块 (HSM)** 部分。

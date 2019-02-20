@@ -16,12 +16,12 @@ ms.date: 06/13/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 8457df9ba809e183122fd53de75a40108e4a4ed1
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 1f545747b883ab70b597b4e598a86b192f89b027
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754296"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892755"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>将磁盘添加到 Linux VM
 本文介绍了如何将持久性磁盘附加到 VM 以便持久保存数据 - 即使 VM 由于维护或调整大小而重新预配。
@@ -73,10 +73,10 @@ dmesg | grep SCSI
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-此处，*sdc* 是我们需要的磁盘。 使用 `parted` 对磁盘进行分区，如果磁盘大小为 2TiB 或更大，则必须使用 GPT 进行分区，如果小于 2TiB，则可以使用 MBR 或 GPT 进行分区。 将其设置为分区 1 中的主磁盘，并接受其他默认值。 以下示例在 */dev/sdc* 上启动 `parted` 进程：
+此处，*sdc* 是我们需要的磁盘。 使用 `parted` 对磁盘进行分区，如果磁盘大小为 2TiB 或更大，则必须使用 GPT 进行分区，如果小于 2TiB，则可以使用 MBR 或 GPT 进行分区。 如果使用 MBR 分区，则可以使用 `fdisk`。 将其设置为分区 1 中的主磁盘，并接受其他默认值。 以下示例在 */dev/sdc* 上启动 `fdisk` 进程：
 
 ```bash
-sudo parted /dev/sdc
+sudo fdisk /dev/sdc
 ```
 
 使用 `n` 命令添加新分区。 在此示例中，我们还选择主分区的 `p` 并接受其余默认值。 输出将类似于以下示例：

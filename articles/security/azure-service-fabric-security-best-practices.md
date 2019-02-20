@@ -4,7 +4,7 @@ description: 本文提供有关 Azure Service Fabric 安全性的一套最佳做
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2019
 ms.author: tomsh
-ms.openlocfilehash: 718b6b38121981bdec1f677537f9cd1180dfdb08
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 8bafc4a95ca9af4567ed70c190a72f3b351da47c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391232"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114699"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric 安全性最佳做法
 在 Azure 上部署应用程序的过程快速、轻松且经济高效。 将云应用程序部署到生产环境前，请先查看有必要遵照和建议的最佳做法列表，了解最好应如何在应用程序中实现群集安全性。
@@ -173,7 +173,7 @@ Service Fabric 使用 X.509 证书保护群集，并提供应用程序安全功�
 
     必须启用密钥保管库，才能进行部署。 然后，计算资源提供程序可以从保管库获取证书，并将证书安装在 VM 实例上。
 
-若要详细了解如何设置密钥保管库，请参阅 [Azure Key Vault 入门](https://docs.microsoft.com/azure/key-vault/key-vault-get-started)。
+若要详细了解如何设置密钥保管库，请参阅[什么是 Azure 密钥保管库？](https://docs.microsoft.com/azure/key-vault/key-vault-get-started)。
 
 ## <a name="assign-users-to-roles"></a>将用户分配到角色
 创建应用程序以代表群集后，请将用户分配到 Service Fabric 支持的角色，即只读和管理员。可使用 Azure 门户来分配这些角色。

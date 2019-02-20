@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2018
+ms.date: 02/08/2019
 ms.author: magoedte
-ms.openlocfilehash: f0f929e7caece9bea10dbe09e237bc987ad93d44
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 5a72c0539cabec3bf4168280c85a2afb92569b25
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159649"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233994"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>使用适用于容器的 Azure Monitor 了解 AKS 群集性能 
 借助适用于容器的 Azure Monitor，可以使用性能图表和运行状况从两个角度（直接从 AKS 群集查看，或是从 Azure Monitor 查看订阅中的所有 AKS 群集）查看 Azure Kubernetes 服务 (AKS) 群集的工作负载。 在监视特定 AKS 群集时，还可以查看 Azure 容器实例 (ACI)。
@@ -275,5 +275,5 @@ Log Analytics 有助于查找趋势、诊断瓶颈、预测或关联有助于确
 | 选择“折线图”显示选项：<br> 性能<br> &#124; where ObjectName == "K8SContainer" and CounterName == "cpuUsageNanoCores" &#124; summarize AvgCPUUsageNanoCores = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | 容器 CPU | 
 | 选择“折线图”显示选项：<br> 性能<br> &#124; where ObjectName == "K8SContainer" and CounterName == "memoryRssBytes" &#124; summarize AvgUsedRssMemoryBytes = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | 容器内存 |
 
-## <a name="alerting"></a>警报
-适用于容器的 Azure Monitor 不包括可以复制并根据支持过程和步骤进行修改的预定义警报集。 在此期间，查看[使用 Azure Monitor 创建日志警报](../../azure-monitor/platform/alerts-log.md?toc=/azure/azure-monitor/toc.json)并了解如何创建您自己的警报集。  
+## <a name="next-steps"></a>后续步骤
+适用于容器的 Azure Monitor 不包括可以根据支持过程和步骤进行复制和修改的预定义警报集。 若要了解如何创建针对高 CPU 使用率和高内存使用率的建议警报，请查看[使用适用于容器的 Azure Monitor 创建性能警报](container-insights-alerts.md)。  

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: f9138ec06900f4a7f856cc90362d16496b7b4fed
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 1dba84c686fbb873f044b4980990baa396a94c79
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766006"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237665"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>统一多个 Azure Monitor Application Insights 资源 
 本文介绍如何在一个位置查询和查看所有 Application Insights 应用程序日志数据（即使这些数据位于不同 Azure 订阅），可作为弃用 Application Insights 连接器的替换方式。 可以在单个查询中包含的资源（Application Insights 资源）数量限制为 100。  
@@ -32,7 +32,7 @@ ApplicationInsights
 | summarize by ApplicationName
 ```
 
-使用 union 运算符和应用程序列表创建函数，然后使用别名“applicationsScoping”将该查询保存为函数。  
+使用 union 运算符和应用程序列表创建函数，然后在工作区中使用别名 *applicationsScoping* 将该查询保存为函数。  
 
 ```
 union withsource=SourceApp 
@@ -45,7 +45,7 @@ app('Contoso-app5').requests
 ```
 
 >[!NOTE]
->可以通过导航到日志门户中的查询资源管理器并编辑函数，或使用 `SavedSearch` PowerShell cmdlet 来随时修改列出的应用程序。 `withsource= SourceApp` 命令可向结果添加用于指定发送日志的应用程序的列。 
+>可以通过导航到工作区中的查询资源管理器，然后选择要编辑的函数并保存，或使用 `SavedSearch` PowerShell cmdlet 来随时修改列出的应用程序。 `withsource= SourceApp` 命令可向结果添加用于指定发送日志的应用程序的列。 
 >
 >虽然是在工作区中执行查询，但该查询使用 Application Insights 架构，因为 applicationsScoping 函数会返回 Application Insights 数据结构。 
 >

@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 将使用 QnA Maker 创建的某一知识库移动到新的知识库。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/06/2019
+ms.date: 02/13/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 73f355a6e8c9373a5c31dd7cfebd4455aa324302
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e91f41633bf6cf6581c237e7634150a5b92746a7
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809736"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245909"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>使用导出-导入迁移知识库
 
@@ -56,7 +56,7 @@ ms.locfileid: "55809736"
     此时，所有知识库内容（问题、答案和元数据，以及源文件的名称和 URL）都已导入新知识库。 
 
 ## <a name="chat-logs-and-alterations"></a>聊天日志和变更内容
-替换词（同义词）不会自动导入。 使用 [V2 ApI](https://aka.ms/qnamaker-v2-apis) 可从旧知识库导出变更内容，使用 [V4 ApI](https://aka.ms/qnamaker-v4-apis) 可将变更内容移至新知识库中。
+区分大小写的替换词（同义词）不会自动导入。 使用 [V2 ApI](https://aka.ms/qnamaker-v2-apis) 可从旧知识库导出变更内容，使用 [V4 ApI](https://aka.ms/qnamaker-v4-apis) 可将变更内容移至新知识库中。
 
 无法迁移聊天日志，因为新知识库使用 Application Insights 存储聊天日志。 
 

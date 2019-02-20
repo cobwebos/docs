@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2018
 ms.author: jeedes
-ms.openlocfilehash: d86004680bf13c9716b4ff4e7a41af73ea186f27
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 377da86003543fb53240de4d5fc672f71e1ed5f2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047182"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202394"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-imagineer-webvision"></a>教程：Azure Active Directory 与 Imagineer WebVision 集成
 
@@ -107,7 +108,7 @@ ms.locfileid: "39047182"
 
     ![Imagineer WebVision 域和 URL 单一登录信息](./media/imagineerwebvision-tutorial/tutorial_imagineerwebvision_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<YOUR SERVER URL>/<yourapplicationloginpage>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<YOUR SERVER URL>/<yourapplicationloginpage>`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<YOUR SERVER URL>/<yourapplicationloginpage>`
 
@@ -148,7 +149,7 @@ ms.locfileid: "39047182"
 
     ![“用户”对话框](./media/imagineerwebvision-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -158,7 +159,7 @@ ms.locfileid: "39047182"
  
 ### <a name="create-an-imagineer-webvision-test-user"></a>创建 Imagineer WebVision 测试用户
 
-在本部分中，将在 Imagineer WebVision 中创建一个名为 Britta Simon 的用户。 配合 [Imagineer WebVision 客户端支持团队](mailto:support@itgny.com)，在 Imagineer WebVision 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Imagineer WebVision 中创建一个名为 Britta Simon 的用户。 请与  [Imagineer WebVision 支持团队](mailto:support@itgny.com)协作，将用户添加到 Imagineer WebVision 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -195,12 +196,12 @@ ms.locfileid: "39047182"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Imagineer WebVision 磁贴时，应当会自动登录到 Imagineer WebVision 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

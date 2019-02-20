@@ -3,8 +3,8 @@ title: 添加 Azure AD 库应用程序时的问题 | Microsoft Docs
 description: 了解添加 Azure AD 库应用程序时常见的问题，以及可以执行哪些操作来解决这些问题
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: barbkess
-ms.openlocfilehash: 3621ca390add5c4a50cae6ed8f2baa5e3b1e2339
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: celested
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 89d587a71eeb75f7be567cbc29a4d77ac371e3dc
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173269"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237861"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>添加 Azure AD 库应用程序时的问题
 
@@ -27,13 +28,13 @@ ms.locfileid: "55173269"
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>单击“添加”按钮后，应用程序要很长时间才显示
 
-某些情况下，将应用程序添加到目录后，可能需要 1-2 分钟（有时更久）才会显示该应用程序。 尽管这不是正常的预期结果，但是通过单击 [Azure 门户](https://portal.azure.com/)右上角的“通知”图标（铃铛），并查找标签为“创建应用程序”的“正在进行中”或“已完成”通知，可以看到应用程序添加正在进行中。
+某些情况下，将应用程序添加到目录后，可能需要 1-2 分钟（有时更久）才会显示该应用程序。 尽管这不是正常的预期结果，但通过单击 [Azure 门户](https://portal.azure.com/)右上角的“通知”图标（铃铛），并查找标签为“添加应用程序”的“正在进行中”或“已完成”通知，可以看到应用程序添加正在进行中。
 
 如果应用程序未成功添加，或在单击“添加”按钮时遇到错误，将看到一个处于“错误”状态的**通知**。 如果想要了解有关错误的详细信息或将其与支持工程师共享，请按照[如何查看门户通知的详细信息](#how-to-see-the-details-of-a-portal-notification)部分中的步骤进行操作。
 
 ## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>单击"添加"按钮后，应用程序未显示
 
-有时，由于暂时性问题、网络问题或 bug，添加应用程序会失败。 如果单击 Azure 门户右上角的“通知”图标（铃铛）后，看到“创建应用程序”通知旁边有一个红色的 (!) 图标，则说明添加失败。 这表明创建应用程序时出现了错误。
+有时，由于暂时性问题、网络问题或 bug，添加应用程序会失败。 如果单击 Azure 门户右上角的“通知”图标（铃铛）后，看到“添加应用程序”通知旁边有一个红色的 (!) 图标，则说明添加失败。 这表明创建应用程序时出现了错误。
 
 如果单击“添加”按钮时遇到错误，将看到一个处于“错误”状态的**通知**。 如果想要了解有关错误的详细信息或将其与支持工程师共享，请按照[如何查看门户通知的详细信息](#how-to-see-the-details-of-a-portal-notification)部分中的步骤进行操作。
 
@@ -41,13 +42,13 @@ ms.locfileid: "55173269"
 
 如果需要有关应用程序的帮助，可先行参阅[有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)一文。
 
-除此之外，[Azure AD 应用程序文档库](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index)可帮助你深入了解如何使用 Azure AD 进行单一登录及其工作原理。
+除此之外，[Azure AD 应用程序文档库](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index)可帮助你详细了解如何使用 Azure AD 进行单一登录及其工作原理。
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>如何查看门户通知的详细信息
 
 可以通过遵循以下步骤来查看任何门户通知的详细信息：
 
-1.  单击 Azure 门户右上角的“通知”图标（铃铛）
+1.  选择 Azure 门户右上角的“通知”图标（铃铛）
 
 2.  选择状态为“错误”的任何通知（旁边有红色的 (!)）。
 
@@ -60,9 +61,9 @@ ms.locfileid: "55173269"
 
 5.  如果仍需要帮助，还可以与支持工程师或产品组共享此信息以获取有关问题的帮助。
 
-6.  单击“复制错误”文本框右侧的“复制”**图标**，复制所有通知详细信息以与支持工程师或产品组工程师共享
+6.  单击“复制错误”文本框右侧的“复制”图标，复制所有通知的详细信息以与支持工程师或产品组工程师共享。
 
-## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>如何通过向支持工程师发送通知详细信息来获取帮助
+## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>如何通过向支持工程师发送通知的详细信息来获取帮助
 
 如果需要帮助，与支持工程师共享**下面列出的所有详细信息**非常重要，这有助于他们迅速提供帮助。 通过**捕获屏幕截图**或单击“复制错误”图标（位于“复制错误”文本框右侧），可以轻松执行此操作。
 

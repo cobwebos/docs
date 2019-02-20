@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: b4de9efbe85d5ab497bccd1742df23ddc1b3af43
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: bb88736762219028d58fe70d0ec32309967c95a4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354653"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55830654"
 ---
 存储优化 VM 大小可提供较高的磁盘吞吐量和 IO，非常适合用于大数据、SQL 和 NoSQL 数据库、数据仓库和大型事务数据库。  示例包括 Cassandra、MongoDB、Cloudera 和 Redis。 本文介绍关于 vCPU、数据磁盘和 NIC 的数量以及每个优化大小的本地存储吞吐量和网络带宽的信息。
 
@@ -31,7 +31,7 @@ ACU：150-175
 
 高级存储缓存：不支持
 
-| 大小          | vCPU | 内存 (GiB) | 临时磁盘<sup>1</sup> (GiB) | NVMe 磁盘 | NVMe 磁盘吞吐量<sup>2</sup>（读取 IOPS / MBps） | 主机缓存大小<sup>3</sup> | 最大数据磁盘 | 最大 NIC 数/预期网络带宽 (MBps) | 
+| 大小          | vCPU | 内存 (GiB) | 临时磁盘<sup>1</sup> (GiB) | NVMe 磁盘<sup>2</sup> | NVMe 磁盘吞吐量<sup>3</sup>（读取 IOPS/MBps） | 主机缓存大小<sup>4</sup> | 最大数据磁盘 | 最大 NIC 数/预期网络带宽 (MBps) | 
 |---------------|-----------|-------------|--------------------------|----------------|---------------------------------------------------|-------------------------------------------|------------------------------|------------------------------| 
 | Standard_L8s_v2   |  8 |  64 |  80 |  1x1.92 TB  | 340,000 / 2,000 | 不适用 | 16 | 2 / 3,200  | 
 | Standard_L16s_v2  | 16 | 128 | 160 |  2x1.92 TB  | 680,000 / 4,500 | 不适用 | 32 | 4 / 6,400  | 
@@ -39,11 +39,13 @@ ACU：150-175
 | Standard_L64s_v2  | 64 | 512 | 640 |  8x1.92 TB  | 2.7M / 18,000   | 不适用 | 32 | 8 / 25,600 |
 | Standard_L80s_v2  | 80 | 640 | 800 | 10x1.92TB   | 3.4M / 22,000   | 不适用 | 32 | 8 / 32,000 |
  
-<sup>1</sup> Lsv2 系列 VM 具有标准的基于 SCSI 的临时资源磁盘，用于 OS 分页/交换文件的使用（对于 Windows，为 D:；对于 Linux，为 /dev/sdb）。 此磁盘为每 8 个 vCPU 提供 80 GiB 的存储空间、4000 IOPS 和 80 MBps 的传输速率（例如，Standard_L80s_v2 在 40000 IOPS 和 800 MBps 下提供 800 GiB）。 这确保 NVMe 驱动器可以完全专用于应用程序的使用。
+<sup>1</sup> Lsv2 系列 VM 具有标准的基于 SCSI 的临时资源磁盘，用于 OS 分页/交换文件的使用（对于 Windows，为 D:；对于 Linux，为 /dev/sdb）。 此磁盘为每 8 个 vCPU 提供 80 GiB 的存储空间、4000 IOPS 和 80 MBps 的传输速率（例如，Standard_L80s_v2 在 40000 IOPS 和 800 MBps 下提供 800 GiB）。 这确保 NVMe 驱动器可以完全专用于应用程序的使用。 此磁盘是临时的，停止/解除分配时将丢失所有数据。
 
-<sup>2</sup> HYPER-V NVMe Direct 技术提供对安全映射到来宾 VM 空间的 NVMe 驱动器的无限制访问。  实现最大性能需要使用最新的 WS2019 版本或者 Azure 市场上的 Ubuntu 18.04 或 16.04。  写入性能因 IO 大小、驱动器负载和容量利用率而异。
+<sup>2</sup> 本地 NVMe 磁盘是临时的，如果停止/解除分配 VM，这些磁盘上的数据都将丢失。
 
-<sup>3</sup> Lsv2 系列 VM 不为数据磁盘提供主机缓存，因为这不利于 Lsv2 工作负载。  然而，Lsv2 VM 可以调整 Azure 的临时 VM OS 磁盘选项（最多 30 GiB）。 
+<sup>3</sup> Hyper-V NVMe Direct 技术提供对安全映射到来宾 VM 空间的本地 NVMe 驱动器的无限制访问。  实现最大性能需要使用最新的 WS2019 版本或者 Azure 市场上的 Ubuntu 18.04 或 16.04。  写入性能因 IO 大小、驱动器负载和容量利用率而异。
+
+<sup>4</sup> Lsv2 系列 VM 不为数据磁盘提供主机缓存，因为这不会让 Lsv2 工作负荷受益。  然而，Lsv2 VM 可以调整 Azure 的临时 VM OS 磁盘选项（最多 30 GiB）。 
 
 
 

@@ -4,7 +4,7 @@ description: 本主题说明如何配置 Flash Media Live Encoder (FMLE) 编码�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 3113f333-517a-47a1-a1b3-57e200c6b2a2
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 02/08/2019
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: 1a7cbd19b89663ab874fc5a7a86587e292b86f81
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 32bed77146284799faebdb8a44e2e610f49913cf
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665879"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003731"
 ---
-# <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>使用 FMLE 编码器发送单比特率实时流
+# <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream-legacy"></a>使用 FMLE 编码器发送单比特率实时流（旧版）
 > [!div class="op_single_selector"]
 > * [FMLE](media-services-configure-fmle-live-encoder.md)
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
@@ -33,7 +33,7 @@ ms.locfileid: "43665879"
 
 本教程演示了如何通过 Azure 媒体服务浏览器 (AMSE) 工具管理 Azure 媒体服务 (AMS)。 此工具仅在 Windows 电脑上运行。 如果使用的是 Mac 或 Linux，则可使用 Azure 门户创建[频道](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)和[节目](media-services-portal-creating-live-encoder-enabled-channel.md)。
 
-本教程介绍如何使用 AAC。 但在默认情况下，FMLE 不支持 AAC。 需要购买一个进行 AAC 编码用的插件，例如由 MainConcept 提供的 [AAC 插件](http://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
+本教程介绍如何使用 AAC。 但在默认情况下，FMLE 不支持 AAC。 需要购买一个进行 AAC 编码用的插件，例如由 MainConcept 提供的：[AAC 插件](http://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
 
 ## <a name="prerequisites"></a>先决条件
 * [创建 Azure 媒体服务帐户](media-services-portal-create-account.md)
@@ -77,16 +77,16 @@ ms.locfileid: "43665879"
 **视频**：
 
 * 编解码器：H.264
-* 配置文件：高（等级 4.0）
+* 配置文件：高（级别 4.0）
 * 比特率：5000 kbps
 * 关键帧：2 秒（60 秒）
 * 帧速率：30
 
 **音频**：
 
-* 编码解码器：AAC (LC)
+* 编解码器：AAC (LC)
 * 比特率：192 kbps
-* 采样速率：44.1 kHz
+* 采样率：44.1 kHz
 
 ### <a name="configuration-steps"></a>配置步骤
 1. 在所使用的计算机上导航到 Flash Media Live Encoder (FMLE) 的界面。
@@ -102,7 +102,7 @@ ms.locfileid: "43665879"
      当使用隔行扫描的源时，请选中“取消隔行扫描”选项
 2. 选择“格式”旁边的扳手图标，那些额外的设置应该如下所示：
 
-   * 配置文件：主
+   * 配置文件：主要
    * 级别：4.0
    * 关键帧频率：2 秒
 
@@ -110,7 +110,7 @@ ms.locfileid: "43665879"
 3. 设置以下重要的音频设置：
 
    * 格式：AAC
-   * 采样频率：44100 Hz
+   * 采样率：44100 Hz
    * 比特率：192 Kbps
 
      ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle5.png)

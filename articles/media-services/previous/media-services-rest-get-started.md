@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 794c2cf6c52ead465d35d3d551cfe76e87c06787
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d27b508362193b79d7464ae49683479b2f8fc7ba
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237598"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991237"
 ---
-# <a name="get-started-with-delivering-content-on-demand-using-rest"></a>开始使用 REST 传送点播内容
+# <a name="get-started-with-delivering-content-on-demand-using-rest"></a>开始使用 REST 传送点播内容  
+
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
 
 本快速入门介绍了使用 Azure 媒体服务 (AMS) REST API 实现视频点播 (VoD) 内容传送应用程序的步骤。
@@ -268,7 +269,7 @@ SAS URL 采用以下格式：
 请注意以下事项：
 
 * 一项给定的资产一次最多只能与五个唯一的定位符相关联。 
-* 如果需要立即上传文件，应将 StartTime 值设置为当前时间前五分钟。 这是因为客户端计算机与媒体服务之间可能存在时钟偏差。 此外，StartTime 值必须采用以下 DateTime 格式：YYYY-MM-DDTHH:mm:ssZ（例如，“2014-05-23T17:53:50Z”）。    
+* 如果需要立即上传文件，应将 StartTime 值设置为当前时间前五分钟。 这是因为客户端计算机与媒体服务之间可能存在时钟偏差。 StartTime 值还必须采用以下日期/时间格式：YYYY-MM-DDTHH:mm:ssZ（例如“2014-05-23T17:53:50Z”）。    
 * 定位符从创建到可用可能会有 30-40 秒的延迟。 [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) 和源定位符都会出现这个问题。
 
 以下示例说明了如何创建 SAS URL 定位符，由请求正文中的 Type 属性定义（“1”表示 SAS 定位符，“2”表示按需来源定位符）。 返回的 **Path** 属性包含上传文件时必须使用的 URL。
@@ -458,7 +459,7 @@ SAS URL 采用以下格式：
     }
 
 ### <a name="create-a-job"></a>创建作业
-每个作业可以有一个或多个任务，具体因要完成的处理类型而异。 REST API 可通过以下两种方式之一创建作业及相关任务：可以通过作业实体上的任务导航属性以内联方式定义任务，或通过 OData 批处理来定义任务。 媒体服务 SDK 使用批处理。 但为了确保本文中代码示例的可读性，任务以内联方式定义。 有关批处理的信息，请参阅 [Open Data Protocol (OData) 批处理](http://www.odata.org/documentation/odata-version-3-0/batch-processing/)。
+每个作业可以有一个或多个任务，具体因要完成的处理类型而异。 REST API 允许通过以下两种方式之一创建作业及相关任务：可按以下两种方式以内联形式定义任务：通过作业实体上的任务导航属性，或通过 OData 批处理。 媒体服务 SDK 使用批处理。 但为了确保本文中代码示例的可读性，任务以内联方式定义。 有关批处理的信息，请参阅 [Open Data Protocol (OData) 批处理](http://www.odata.org/documentation/odata-version-3-0/batch-processing/)。
 
 以下示例说明了如何使用一个任务集来创建和发布一个作业，从而以特定分辨率和质量来编码某个视频。 以下文档部分包含 Media Encoder Standard 处理器支持的所有[任务预设](https://msdn.microsoft.com/library/mt269960)的列表。  
 
@@ -692,7 +693,7 @@ SAS URL 采用以下格式：
 
 ## <a id="publish_get_urls"></a>使用 REST API 发布资产并获取流式处理和渐进式下载 URL
 
-若要流处理或下载资产，必须先创建定位符来“发布”资产。 定位符提供对资产中所含文件的访问权限。 媒体服务支持两种类型的定位符：用于流媒体（例如 MPEG DASH、HLS 或平滑流式处理）的 OnDemandOrigin 定位符，以及用于下载媒体文件的访问签名 (SAS) 定位符。 
+若要流处理或下载资产，必须先创建定位符来“发布”资产。 定位符提供对资产中所含文件的访问权限。 媒体服务支持两种类型的定位符：用于流媒体（例如，MPEG DASH、HLS 或平滑流式处理）的 OnDemandOrigin 定位符，以及用于下载媒体文件的访问签名 (SAS) 定位符。 
 
 创建定位符后，可以创建用来流式处理或下载文件的 URL。
 
@@ -742,7 +743,7 @@ MPEG DASH 的流 URL 采用以下格式：
 如果成功，将返回描述已创建的 AccessPolicy 实体的 201 成功代码。 然后，需要使用 AccessPolicy ID 以及包含需传送文件的资产（如某个输出资产）的资产 ID 来创建定位符实体。
 
 > [!NOTE]
-> 此基本工作流与引入资产时上传文件的工作流相同（如本主题前面所述）。 此外，和上传文件一样，如果（或客户端）需要立即访问文件，请将 StartTime 值设置为当前时间前五分钟。 此操作是必需的，因为客户端与媒体服务之间可能存在时钟偏差。 StartTime 值必须采用以下 DateTime 格式：YYYY-MM-DDTHH:mm:ssZ（例如，“2014-05-23T17:53:50Z”）。
+> 此基本工作流与引入资产时上传文件的工作流相同（如本主题前面所述）。 此外，和上传文件一样，如果（或客户端）需要立即访问文件，请将 StartTime 值设置为当前时间前五分钟。 此操作是必需的，因为客户端与媒体服务之间可能存在时钟偏差。 StartTime 值必须采用以下日期/时间格式：YYYY-MM-DDTHH:mm:ssZ（例如“2014-05-23T17:53:50Z”）。
 >
 >
 

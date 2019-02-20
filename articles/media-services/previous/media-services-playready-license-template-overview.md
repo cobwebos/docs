@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 780fa37351ec590beff6fd2d9e80ec8f22afa84d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6e5e8597ef5f080f557e40d9f053f13daee1ffd0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228498"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989349"
 ---
 # <a name="media-services-playready-license-template-overview"></a>媒体服务 PlayReady 许可证模板概述
 Azure 媒体服务现在提供了用于交付 PlayReady 许可证的服务。 当播放器（例如 Silverlight）尝试播放受 PlayReady 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了该请求，则会颁发该许可证，该许可证将发送到客户端，并用来解密和播放指定的内容。

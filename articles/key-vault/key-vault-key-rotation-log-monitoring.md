@@ -4,7 +4,7 @@ description: 使用本操作指南帮助设置密钥轮替和监视密钥保管�
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: ''
 ms.assetid: 9cd7e15e-23b8-41c0-a10a-06e6207ed157
 ms.service: key-vault
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 4dbfd993a8464c569d30f11e305d4bae000a778f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: deb50a71b179c3cb03d5da22e336c42b26fe0bfa
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077702"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106114"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>使用密钥轮替和审核设置 Azure Key Vault
 
 ## <a name="introduction"></a>介绍
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 有了密钥保管库以后，即可使用它来存储密钥和机密。 应用程序不再需要保存密钥或机密，可以根据需要从保管库请求密钥或机密。 这样，便可以更新密钥和机密，不会影响应用程序的行为，同时可以各种可能的方法管理密钥和机密。
 
@@ -36,7 +38,7 @@ ms.locfileid: "54077702"
 - 本教程演示了如何监视密钥保管库审核日志，并在收到意外请求时发出警报。
 
 > [!NOTE]
-> 本教程不详细说明密钥保管库的初始设置。 有关这方面的信息，请参阅 [Get started with Azure Key Vault](key-vault-get-started.md)（Azure 密钥保管库入门）。 有关跨平台命令行接口说明，请参阅[使用 CLI 管理密钥保管库](key-vault-manage-with-cli2.md)。
+> 本教程不详细说明密钥保管库的初始设置。 有关信息，请参阅[什么是 Azure 密钥保管库？](key-vault-overview.md)。 有关跨平台命令行接口说明，请参阅[使用 CLI 管理密钥保管库](key-vault-manage-with-cli2.md)。
 >
 >
 
@@ -45,7 +47,7 @@ ms.locfileid: "54077702"
 要使应用程序能够从密钥保管库检索机密，必须先创建机密并将其上传到保管库。 此操作可通过以下方式实现：启动 Azure PowerShell 会话，并使用以下命令登录 Azure 帐户：
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 在弹出的浏览器窗口中，输入 Azure 帐户用户名和密码。 PowerShell 将获取与此帐户关联的所有订阅。 PowerShell 默认使用第一个订阅。
@@ -53,19 +55,19 @@ Connect-AzureRmAccount
 如果有多个订阅，可能需要指定用来创建密钥保管库的订阅。 输入以下命令查看帐户的订阅：
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 要指定与要记录的密钥保管库关联的订阅，请输入：
 
 ```powershell
-Set-AzureRmContext -SubscriptionId <subscriptionID>
+Set-AzContext -SubscriptionId <subscriptionID>
 ```
 
 因为本文介绍了如何将存储帐户密钥存储为机密，因此，必须获取该存储帐户密钥。
 
 ```powershell
-Get-AzureRmStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <storageAccountName>
+Get-AzStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <storageAccountName>
 ```
 
 检索机密（在本例中，为存储帐户密钥）后，必须将该机密转换为安全字符串，然后在密钥保管库中使用该值创建机密。
@@ -73,13 +75,13 @@ Get-AzureRmStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <stora
 ```powershell
 $secretvalue = ConvertTo-SecureString <storageAccountKey> -AsPlainText -Force
 
-Set-AzureKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
+Set-AzKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
 ```
 
 接下来，获取所创建的机密的 URI。 这会在后续步骤中使用，在该步骤中将调用密钥保管库检索机密。 运行以下 PowerShell 命令，并记下 ID 值（即机密 URI）：
 
 ```powershell
-Get-AzureKeyVaultSecret –VaultName <vaultName>
+Get-AzKeyVaultSecret –VaultName <vaultName>
 ```
 
 ## <a name="set-up-the-application"></a>设置应用程序
@@ -110,7 +112,7 @@ Get-AzureKeyVaultSecret –VaultName <vaultName>
 在建立从应用程序到密钥保管库的任何调用之前，必须让密钥保管库知道应用程序及其权限。 以下命令从 Azure Active Directory 应用获取保管库名称和应用程序 ID，并为应用程序授予对密钥保管库的“Get”访问权限。
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
+Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
 ```
 
 现在便可开始生成应用程序调用了。 在应用程序中，必须安装所需的 NuGet 包，以便与 Azure 密钥保管库和 Azure Active Directory 交互。 从 Visual Studio 包管理器控制台中，输入以下命令。 在编写本文时，Azure Active Directory 包的最新版本为 3.10.305231913，因此你可能想要确认最新版本并相应地更新。
@@ -188,7 +190,7 @@ var sec = kv.GetSecretAsync(<SecretID>).Result.Value;
 检索 Azure 自动化连接的应用程序 ID 之后，必须让密钥保管库知道此应用程序有权更新保管库中的机密。 可以使用以下 PowerShell 命令实现此目的：
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
+Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
 ```
 
 接下来，选择 Azure 自动化实例下面的“Runbook”，并选择“添加 Runbook”。 选择“快速创建”。 为 Runbook 命名，并选择“PowerShell”作为 Runbook 类型。 可以选择添加说明。 最后，单击“创建”。
@@ -205,7 +207,7 @@ try
     $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
     "Logging in to Azure..."
-    Connect-AzureRmAccount `
+    Connect-AzAccount `
         -ServicePrincipal `
         -TenantId $servicePrincipalConnection.TenantId `
         -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -230,12 +232,12 @@ $VaultName = <keyVaultName>
 $SecretName = <keyVaultSecretName>
 
 #Key name. For example key1 or key2 for the storage account
-New-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName -KeyName "key2" -Verbose
-$SAKeys = Get-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName
+New-AzStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName -KeyName "key2" -Verbose
+$SAKeys = Get-AzStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName
 
 $secretvalue = ConvertTo-SecureString $SAKeys[1].Value -AsPlainText -Force
 
-$secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
+$secret = Set-AzKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
 ```
 
 在编辑器窗格中，选择“测试窗格”测试脚本。 正常运行脚本后，可以选择“发布”，并返回 Runbook 的配置窗格以应用 Runbook 的计划。
@@ -246,9 +248,9 @@ $secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -Secre
 首先，必须对密钥保管库启用日志记录。 这可以通过以下 PowerShell 命令完成（有关完整详细信息，可以查看 [key-vault-logging](key-vault-logging.md)）：
 
 ```powershell
-$sa = New-AzureRmStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
-$kv = Get-AzureRmKeyVault -VaultName '<vaultName>'
-Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
+$sa = New-AzStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
+$kv = Get-AzKeyVault -VaultName '<vaultName>'
+Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 ```
 
 启用日志记录后，审核日志将开始收集到指定的存储帐户中。 这些日志包含有关访问密钥保管库的方式、时间和用户的事件。

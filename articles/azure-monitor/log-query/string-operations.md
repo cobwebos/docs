@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Log Analytics 查询中使用字符串 | Microsoft Docs
-description: 本文提供有关在 Log Analytics 中使用 Analytics 门户编写查询的教程。
+title: 在 Azure Monitor 日志查询中使用字符串 | Microsoft Docs
+description: 介绍如何在 Azure Monitor 日志查询中编辑、比较、搜索字符串以及对其执行其他各种操作。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 729d98dda1ae0a1410a15ee1e40c670ca211d864
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9748cd2c37775a47eb630797dd09981c38f8f7e1
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186236"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995401"
 ---
-# <a name="working-with-strings-in-log-analytics-queries"></a>在 Log Analytics 查询中使用字符串
+# <a name="work-with-strings-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用字符串
 
 
 > [!NOTE]
-> 在完成本教程之前，应先完成 [Analytics 门户入门](get-started-portal.md)和[查询入门](get-started-queries.md)。
+> 完成本教程之前，应先完成 [Azure Monitor 日志分析入门](get-started-portal.md)和 [Azure Monitor 日志查询入门](get-started-queries.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-本文介绍如何编辑、比较、搜索字符串以及对其执行其他各种操作。 
+本文介绍如何编辑、比较、搜索字符串以及对其执行其他各种操作。
 
 字符串中的每个字符都有一个与其位置相符的索引号。 第一个字符位于索引 0 处，下一个字符位于索引 1 处，依此类推。 不同的字符串函数使用以下各部分所示的索引号。 下面的许多示例使用 **print** 命令来演示在不使用特定数据源的情况下如何处理字符串。
 
@@ -49,7 +49,7 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>字符串比较
 
-运算符       |Description                         |区分大小写|示例（生成 `true`）
+运算符       |说明                         |区分大小写|示例（生成 `true`）
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |等于                              |是           |`"aBc" == "aBc"`
 `!=`           |不等于                          |是           |`"abc" != "ABC"`

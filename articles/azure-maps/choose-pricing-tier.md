@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 366637274a8006455f05702f47c02f505a615820
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: ac88bc95ac9ffe4c2f32307b0bee427829242add
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063227"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234673"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>在 Azure Maps 中选择适当的定价层
 
@@ -30,19 +30,22 @@ S0 和 S1 定价层处理不同数量的数据吞吐量。 在选择 Azure Maps 
 | 功能                              |        S0           |  S1      |
 |-----------------------------------------|:-------------------:|:--------:|
 | 搜索                                  |        ✓           |     ✓    |
+| Batch 地理编码（预览版）              |                   |     ✓    |
+| 来自搜索的多边形          |                   |     ✓    |
 | 路由                                 |        ✓           |     ✓    |
+| 路由范围                    |                   |     ✓    |
+| Batch 路由（预览版）                |                   |     ✓    |
+| 矩阵路由（预览版）               |                   |     ✓    |
 | 呈现                                  |        ✓           |     ✓    |
+| 图像加混合图像    |            |     ✓    |
 | 交通                                 |        ✓           |     ✓    |
 | 时区                              |        ✓           |     ✓    |
-| *图像加混合图像（预览）  |        ✓           |     ✓    |
-| *路由范围（预览）                  |        ✓           |     ✓    |
-| *IP 2 位置（预览）                |        ✓           |     ✓    |
-| *来自搜索的多边形（预览）         |        ✓           |     ✓    |
-| *Batch 地理编码（预览）              |        ✓           |     ✓    |
-| *Batch 路由（预览）                |        ✓           |     ✓    |
-| *矩阵路由（预览）               |        ✓           |     ✓    |
+| 地理位置（预览版）                |        ✓           |     ✓    |
+| 数据（预览版）               |                   |     ✓    |
+| 空间（预览版）               |                   |     ✓    |
+| 地理围栏（预览版）               |                   |     ✓    |
 
-\*将于 2019 年 2 月 4 日之后弃用从 S0 定价层访问这些功能。
+
 
 这些其他数据点值得考虑：
 * 拥有哪种企业？

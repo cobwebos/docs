@@ -17,12 +17,13 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c569d1be9a301b2282ad1b4fd6e21130f7de2575
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ec47e6d52a3aef8533a3d16f0f81693b8f01f3cf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103524"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205046"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0 协议 - 使用隐式流的 SPA
 
@@ -79,7 +80,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `client_id` | 必填 |注册门户 ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) 分配给应用的应用程序 ID。 |
 | `response_type` | 必填 |必须包含 OpenID Connect 登录的 `id_token`。 也可以包含 response_type `token`。 此处使用 `token`，让应用能够立即从授权终结点接收访问令牌，而无需向授权终结点发出第二次请求。 如果使用 `token` response_type，`scope` 参数必须包含范围，以指出要对哪个资源发出令牌。 |
 | `redirect_uri` | 建议 |应用程序的 redirect_uri，应用程序可在此发送及接收身份验证响应。 其必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 |
-| `scope` | 必填 |范围的空格分隔列表。 针对 OpenID Connect，即必须包含范围 `openid`，其在同意 UI 中转换为“你将登录”权限。 （可选）可能需要包含 `email` 或 `profile` [范围](v2-permissions-and-consent.md)，以获取对其他用户数据的访问权限。 也可以在此请求中包含其他范围，以请求同意各种资源。 |
+| `scope` | 必填 |[范围](v2-permissions-and-consent.md)的空格分隔列表。 针对 OpenID Connect，即必须包含范围 `openid`，其在同意 UI 中转换为“你将登录”权限。 （可选）可能需要包含 `email` 或 `profile` 范围，以获取对其他用户数据的访问权限。 也可以在此请求中包含其他范围，以请求同意各种资源。 |
 | `response_mode` | 可选 |指定将生成的令牌送回到应用程序所应该使用的方法。 默认为查询访问令牌，但如果请求包括 id_token，则会进行分段。 |
 | `state` | 建议 |同样随令牌响应返回的请求中所包含的值。 它可以是你想要的任何内容的字符串。 随机生成的唯一值通常用于[防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 该状态也用于在身份验证请求出现之前，于应用程序中编码用户的状态信息，例如之前所在的网页或视图。 |
 | `nonce` | 必填 |由应用程序生成且包含在请求中的值，以声明方式包含在生成的 id_token 中。 应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机的唯一字符串，可用以识别请求的来源。 只有请求 id_token 时才是必需的。 |
@@ -100,7 +101,7 @@ GET https://localhost/myapp/#
 access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &token_type=Bearer
 &expires_in=3599
-&scope=https%3a%2f%2fgraph.microsoft.com%2fmail.read 
+&scope=https%3a%2f%2fgraph.microsoft.com%2fuser.read 
 &id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &state=12345
 ```
@@ -156,7 +157,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=token
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
-&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&response_mode=fragment
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read&response_mode=fragment
 &state=12345&nonce=678910
 &prompt=none
 &domain_hint=organizations
@@ -166,9 +167,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 有关 URL 中的查询参数的详细信息，请参阅[发送登录请求](#send-the-sign-in-request)。
 
 > [!TIP]
-> 请尝试将以下请求复制并粘贴到浏览器选项卡中！ （不要忘记使用适用于用户的正确值替换 `domain_hint` 和 `login_hint`）
+> 请尝试将以下请求复制并粘贴到浏览器选项卡中！ （不要忘记使用适用于用户的正确值替换 `login_hint` 值）
 >
->`https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&response_mode=fragment&state=12345&nonce=678910&prompt=none&domain_hint=consumers-or-organizations&login_hint=your-username`
+>`https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=https%3A%2F%2Fgraph.microsoft.com%2user.read&response_mode=fragment&state=12345&nonce=678910&prompt=none&login_hint=your-username`
 >
 
 借助 `prompt=none` 参数，此请求将立即成功或立即失败，并返回应用程序。 成功的响应会通过 `response_mode` 参数中指定的方法，发送到位于所指示的 `redirect_uri` 的应用。

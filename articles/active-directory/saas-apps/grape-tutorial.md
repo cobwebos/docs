@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 5e642cba3354f4f8589e44d975c0cecf5692c5b5
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 02df0a5d13aeb90049383f61d743e8a11e93fc79
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49432433"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188522"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gra-pe"></a>教程：Azure Active Directory 与 Gra-Pe 集成
 
@@ -99,15 +100,15 @@ ms.locfileid: "49432433"
 
     ![图像](./media/grape-tutorial/b1_b2_select_sso.png)
 
-2. 在“选择单一登录方法”对话框中，对 SAML 模式单击“选择”以启用单一登录。
+2. 在“选择单一登录方法”对话框中，单击“SAML”模式对应的“选择”，以启用单一登录。
 
     ![图像](./media/grape-tutorial/b1_b2_saml_sso.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“基本 SAML 配置”对话框。
+3. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
 
     ![图像](./media/grape-tutorial/b1-domains_and_urlsedit.png)
 
-4. 在“基本 SAML 配置”部分中，执行以下步骤：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     在“登录 URL”文本框中，键入 URL：`https://btm.tts.co.jp/portal/apl/SSOLogin.aspx`
 
@@ -119,7 +120,7 @@ ms.locfileid: "49432433"
 
 6. 在“设置 Gra-Pe”部分中，根据要求复制相应的 URL。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 登录 URL
+    a. 登录 URL
 
     b. Azure AD 标识符
 
@@ -133,7 +134,7 @@ ms.locfileid: "49432433"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
     ![图像](./media/grape-tutorial/d_users_and_groups.png)
 
@@ -141,11 +142,11 @@ ms.locfileid: "49432433"
 
     ![图像](./media/grape-tutorial/d_adduser.png)
 
-3. 在“用户属性”中，执行以下步骤。
+3. 在“用户属性”中，按照以下步骤操作。
 
     ![图像](./media/grape-tutorial/d_userproperties.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
@@ -156,7 +157,7 @@ ms.locfileid: "49432433"
  
 ### <a name="create-a-gra-pe-test-user"></a>创建 Gra-Pe 测试用户
 
-在本部分中，将在 Gra-Pe 中创建一个名为“Britta Simon”的用户。 请与 [Gra-Pe 支持团队](https://www.toppantravel.com/inquiry/)协作，将用户添加到 Gra-Pe 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Gra-Pe 中创建一个名为“Britta Simon”的用户。 请与  [Gra-Pe 支持团队](https://www.toppantravel.com/inquiry/)协作，将用户添加到 Gra-Pe 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -187,7 +188,7 @@ ms.locfileid: "49432433"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Gra-Pe 磁贴时，应该会自动登录 Gra-Pe 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 

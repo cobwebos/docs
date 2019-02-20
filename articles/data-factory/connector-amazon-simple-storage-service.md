@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: jingwang
-ms.openlocfilehash: cd07343e056493369d2093651ecf7c466595f412
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 16d0002ec8e42eec92895aaf582a8c2b3df2c3a6
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656577"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895255"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -57,7 +57,7 @@ Amazon S3 链接的服务支持以下属性：
 | type | type 属性必须设置为“AmazonS3”。 | 是 |
 | accessKeyId | 机密访问键 ID。 |是 |
 | secretAccessKey | 机密访问键本身。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
-| serviceUrl | 如果从官方 Amazon S3 服务之外的兼容 S3 的存储提供程序复制数据，请指定自定义 S3 终结点。 例如，若要[从 Google 云存储复制数据](#copy-from-google-cloud-storage)，请指定 `https://storage.googleapis.com`。 | 否 |
+| serviceUrl | 如果从官方 Amazon S3 服务之外的兼容 S3 的存储提供程序复制数据，请指定自定义 S3 终结点。 例如，若要从 Google 云存储复制数据，请指定 `https://storage.googleapis.com`。 | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure Integration Runtime 或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 >[!TIP]

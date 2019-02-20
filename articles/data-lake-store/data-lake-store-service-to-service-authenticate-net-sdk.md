@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 58d8cfdbd2ad5d7e727decfa3e3cfdd7151b0048
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3075f515b8095451a873727fef696fd523664d0a
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250190"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891696"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>使用 .NET SDK 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ ms.locfileid: "53250190"
    | --- | --- |
    | 类别 |模板/Visual C#/Windows |
    | 模板 |控制台应用程序 |
-   | 名称 |CreateADLApplication |
+   | Name |CreateADLApplication |
 4. 单击“确定”以创建该项目  。
 
 5. 将 NuGet 包添加到项目。
@@ -63,35 +63,39 @@ ms.locfileid: "53250190"
 
 6. 打开“Program.cs” ，删除现有代码，并包含以下语句，添加对命名空间的引用。
 
-        using System;
-        using System.IO;
-        using System.Linq;
-        using System.Text;
-        using System.Threading;
-        using System.Collections.Generic;
-        using System.Security.Cryptography.X509Certificates; // Required only if you are using an Azure AD application created with certificates
-                
-        using Microsoft.Rest;
-        using Microsoft.Rest.Azure.Authentication;
-        using Microsoft.Azure.Management.DataLake.Store;
-        using Microsoft.Azure.Management.DataLake.Store.Models;
-        using Microsoft.IdentityModel.Clients.ActiveDirectory;
+```csharp
+using System;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates; // Required only if you are using an Azure AD application created with certificates
+
+using Microsoft.Rest;
+using Microsoft.Rest.Azure.Authentication;
+using Microsoft.Azure.Management.DataLake.Store;
+using Microsoft.Azure.Management.DataLake.Store.Models;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+```
 
 ## <a name="service-to-service-authentication-with-client-secret"></a>使用客户端密码的服务到服务身份验证
 在 .NET 客户端应用程序中添加此代码片段。 将占位符值替换为从 Azure AD Web 应用程序（作为必备组件列出）检索到的值。  此代码片段可让你使用 Azure AD Web 应用程序的客户端密码/密钥通过 Data Lake Storage Gen1 以非交互方式对应用程序进行身份验证。 
 
-    private static void Main(string[] args)
-    {    
-        // Service principal / appplication authentication with client secret / key
-        // Use the client ID of an existing AAD "Web App" application.
-        string TENANT = "<AAD-directory-domain>";
-        string CLIENTID = "<AAD_WEB_APP_CLIENT_ID>";
-        System.Uri ARM_TOKEN_AUDIENCE = new System.Uri(@"https://management.core.windows.net/");
-        System.Uri ADL_TOKEN_AUDIENCE = new System.Uri(@"https://datalake.azure.net/");
-        string secret_key = "<AAD_WEB_APP_SECRET_KEY>";
-        var armCreds = GetCreds_SPI_SecretKey(TENANT, ARM_TOKEN_AUDIENCE, CLIENTID, secret_key);
-        var adlCreds = GetCreds_SPI_SecretKey(TENANT, ADL_TOKEN_AUDIENCE, CLIENTID, secret_key);
-    }
+```csharp
+private static void Main(string[] args)
+{    
+    // Service principal / application authentication with client secret / key
+    // Use the client ID of an existing AAD "Web App" application.
+    string TENANT = "<AAD-directory-domain>";
+    string CLIENTID = "<AAD_WEB_APP_CLIENT_ID>";
+    System.Uri ARM_TOKEN_AUDIENCE = new System.Uri(@"https://management.core.windows.net/");
+    System.Uri ADL_TOKEN_AUDIENCE = new System.Uri(@"https://datalake.azure.net/");
+    string secret_key = "<AAD_WEB_APP_SECRET_KEY>";
+    var armCreds = GetCreds_SPI_SecretKey(TENANT, ARM_TOKEN_AUDIENCE, CLIENTID, secret_key);
+    var adlCreds = GetCreds_SPI_SecretKey(TENANT, ADL_TOKEN_AUDIENCE, CLIENTID, secret_key);
+}
+```
 
 上述代码片段将使用 helper 函数 `GetCreds_SPI_SecretKey`。 可在[此处（GitHub 上）](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_secretkey)获取此 helper 函数的代码。
 
@@ -99,19 +103,20 @@ ms.locfileid: "53250190"
 
 在 .NET 客户端应用程序中添加此代码片段。 将占位符值替换为从 Azure AD Web 应用程序（作为必备组件列出）检索到的值。 此代码片段可让你使用 Azure AD Web 应用程序的证书通过 Data Lake Storage Gen1 以非交互方式对应用程序进行身份验证。 有关如何创建 Azure AD 应用程序的说明，请参阅[使用证书创建服务主体](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)。
 
-    
-    private static void Main(string[] args)
-    {
-        // Service principal / application authentication with certificate
-        // Use the client ID and certificate of an existing AAD "Web App" application.
-        string TENANT = "<AAD-directory-domain>";
-        string CLIENTID = "<AAD_WEB_APP_CLIENT_ID>";
-        System.Uri ARM_TOKEN_AUDIENCE = new System.Uri(@"https://management.core.windows.net/");
-        System.Uri ADL_TOKEN_AUDIENCE = new System.Uri(@"https://datalake.azure.net/");
-        var cert = new X509Certificate2(@"d:\cert.pfx", "<certpassword>");
-        var armCreds = GetCreds_SPI_Cert(TENANT, ARM_TOKEN_AUDIENCE, CLIENTID, cert);
-        var adlCreds = GetCreds_SPI_Cert(TENANT, ADL_TOKEN_AUDIENCE, CLIENTID, cert);
-    }
+```csharp
+private static void Main(string[] args)
+{
+    // Service principal / application authentication with certificate
+    // Use the client ID and certificate of an existing AAD "Web App" application.
+    string TENANT = "<AAD-directory-domain>";
+    string CLIENTID = "<AAD_WEB_APP_CLIENT_ID>";
+    System.Uri ARM_TOKEN_AUDIENCE = new System.Uri(@"https://management.core.windows.net/");
+    System.Uri ADL_TOKEN_AUDIENCE = new System.Uri(@"https://datalake.azure.net/");
+    var cert = new X509Certificate2(@"d:\cert.pfx", "<certpassword>");
+    var armCreds = GetCreds_SPI_Cert(TENANT, ARM_TOKEN_AUDIENCE, CLIENTID, cert);
+    var adlCreds = GetCreds_SPI_Cert(TENANT, ADL_TOKEN_AUDIENCE, CLIENTID, cert);
+}
+```
 
 上述代码片段将使用 helper 函数 `GetCreds_SPI_Cert`。 可在[此处（GitHub 上）](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert)获取此 helper 函数的代码。
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: jeedes
-ms.openlocfilehash: f90af5b57fcb9ed7f02bba0a184dacb17570136b
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1709abdf1d5e90cb253e67b29c0e48f6aa29a712
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311678"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209670"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shuccho-navi"></a>教程：Azure Active Directory 与 Shuccho Navi 集成
 
@@ -138,7 +139,7 @@ ms.locfileid: "49311678"
 
     ![图像](./media/shucchonavi-tutorial/d_userproperties.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
@@ -149,7 +150,7 @@ ms.locfileid: "49311678"
  
 ### <a name="create-a-shuccho-navi-test-user"></a>创建 Shuccho Navi 测试用户
 
-在本部分中，在 Shuccho Navi 中创建名为 Britta Simon 的用户。 与 [Shuccho Navi 支持团队](mailto:sys_ntabtm@nta.co.jp)一起合作以在 Shuccho Navi 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，在 Shuccho Navi 中创建名为 Britta Simon 的用户。 请与  [Shuccho Navi 支持团队](mailto:sys_ntabtm@nta.co.jp)协作，将用户添加到 Shuccho Navi 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -180,7 +181,7 @@ ms.locfileid: "49311678"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Shuccho Navi”磁贴时，用户应自动登录到 Shuccho Navi 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 

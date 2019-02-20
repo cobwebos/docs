@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: f2c7111373ac880d27298deb4fc919d797713f3e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 61fb8380bcad7a30d822ab610f52e8515477d683
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53995650"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56246720"
 ---
 # <a name="internet-of-things-iot-security-architecture"></a>物联网 (IoT) 安全体系结构
 
@@ -225,7 +225,7 @@ Microsoft 使用上述体系结构来对 Azure IoT 进行威胁建模。 以下�
 | 组件 | **威胁** | **缓解措施** | **风险** | **实现** |
 | --- | --- | --- | --- | --- |
 | 设备 IoT 中心 |TID |用于加密流量的 (D)TLS (PSK/RSA) |窃听或干扰设备与网关之间的通信 |协议级别的安全性。 使用自定义协议时，需要了解如何对其进行保护。 在大多数情况下，通信主要是发生在设备到 IoT 中心这一段位置（由设备发起连接）。 |
-| 设备 设备 |TID |用于加密流量的 (D)TLS (PSK/RSA)。 |读取设备之间正在传输的数据。 篡改数据。 使用新连接使设备过载 |协议级别的安全性 (MQTT/AMQP/HTTP/CoAP)。 使用自定义协议时，需要了解如何对其进行保护。 DoS 威胁的缓解措施是通过云网关或现场网关将设备设为对等，使其仅可充当网络客户端。 在网关代理对等方之后，对等互连可以实现对等方之间的直接连接。 |
+| 设备到设备 |TID |用于加密流量的 (D)TLS (PSK/RSA)。 |读取设备之间正在传输的数据。 篡改数据。 使用新连接使设备过载 |协议级别的安全性 (MQTT/AMQP/HTTP/CoAP)。 使用自定义协议时，需要了解如何对其进行保护。 DoS 威胁的缓解措施是通过云网关或现场网关将设备设为对等，使其仅可充当网络客户端。 在网关代理对等方之后，对等互连可以实现对等方之间的直接连接。 |
 | 外部实体设备 |TID |外部实体与设备的强式配对 |窃听设备的连接。 干扰设备的通信 |使用 NFC/蓝牙 LE 安全配对外部实体与设备。 控制设备（物理）的操作面板 |
 | 现场网关 云网关 |TID |用于加密流量的 TLS (PSK/RSA)。 |窃听或干扰设备与网关之间的通信 |协议级别的安全性 (MQTT/AMQP/HTTP/CoAP)。 使用自定义协议时，需要了解如何对其进行保护。 |
 | 设备 云网关 |TID |用于加密流量的 TLS (PSK/RSA)。 |窃听或干扰设备与网关之间的通信 |协议级别的安全性 (MQTT/AMQP/HTTP/CoAP)。 使用自定义协议时，需要了解如何对其进行保护。 |

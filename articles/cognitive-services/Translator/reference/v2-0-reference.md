@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 文本翻译 API V2.0 参考文档。
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: 9491550aae8f88621d947572741f492adcf9cdd0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f8d57723f6e51fb392e4fdbfb2b2a445d48635e3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463219"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861708"
 ---
 # <a name="translator-text-api-v20"></a>文本翻译 API v2.0
 
@@ -327,7 +327,7 @@ binary
 |text|(empty)   |必需。 一个字符串，包含 wave 流对应的指定要朗读的语言的一个或多个句子。 要朗读的文本的大小不得超过 2000 个字符。|query|字符串|
 |语言|(empty)   |必需。 一个字符串，表示要朗读的文本所采用语言的受支持语言代码。 此代码必须存在于从 `GetLanguagesForSpeak` 方法返回的代码的列表中。|query|字符串|
 |格式|(empty)|可选。 一个字符串，指定 content-type ID。 目前，`audio/wav` 和 `audio/mp3` 可用。 默认值为 `audio/wav`。|query|字符串|
-|options|(empty)    |<ul><li>可选。 一个字符串，指定已合成语音的属性：<li>`MaxQuality` 和 `MinSize` 可以用来指定音频信号的质量。 使用 `MaxQuality` 可以获取质量最高的语音，而使用 `MinSize` 则可获取大小最小的语音。 默认为 `MinSize`。</li><li>`female` 和 `male` 可以用来指定语音的所需性别。 默认为 `female`。 使用垂直条形图。|` to include multiple options. For example  `MaxQuality|男性。</li></li></ul> |query|字符串|
+|options|(empty)    |<ul><li>可选。 一个字符串，指定已合成语音的属性：<li>`MaxQuality` 和 `MinSize` 可以用来指定音频信号的质量。 使用 `MaxQuality` 可以获取质量最高的语音，而使用 `MinSize` 则可获取大小最小的语音。 默认为 `MinSize`。</li><li>`female` 和 `male` 可以用来指定语音的所需性别。 默认为 `female`。 使用垂直条 `|` 包含多个选项。 例如 `MaxQuality|Male`。</li></li></ul> |query|字符串|
 |授权|(empty)|必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
 |Ocp-Apim-Subscription-Key|(empty)  |必需，前提是 `appid` 字段或 `Authorization` 标头未指定。|标头的值开始缓存响应|字符串|
 

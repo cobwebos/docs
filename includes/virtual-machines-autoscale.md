@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 0ccb502cd5ae21468e52bdc4d56202a595cd19ef
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 3c008e77116a9b42a2ea137069529c5e241adddd
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53594306"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56212943"
 ---
 使用[虚拟机规模集](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)和 [Azure Monitor 的自动缩放功能](../articles/azure-monitor/platform/autoscale-overview.md)时，可以轻松[自动缩放](../articles/azure-monitor/platform/autoscale-best-practices.md)[虚拟机 (VM)](../articles/virtual-machines/windows/overview.md)。 VM 需要成为规模集的成员才能自动缩放。 本文提供了用于更好地了解如何使用自动和手动方法以纵向方式和横向方式缩放 VM 的信息。
 
@@ -57,11 +57,11 @@ Azure Monitor 的自动缩放功能仅以横向方式调整资源的规模，即
 
 可以通过更改规模集的容量添加或删除 VM。 在 Azure 门户中，可以通过在“缩放”屏幕上向左或向右滑动“替代条件”块来减小或增大规模集中 VM 的数量（显示为**实例计数**）。
 
-如果使用 Azure PowerShell，则需要使用 [Get-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) 获取规模集对象。 然后将 **sku.capacity** 属性设置为所需 VM 的数量，并使用 [Update-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) 更新规模集。 如果使用 Azure CLI，则使用 [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#az_vmss_scale) 命令的 **--new-capacity** 参数更改容量。
+如果使用 Azure PowerShell，则需要使用 [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) 获取规模集对象。 然后将 **sku.capacity** 属性设置为所需的 VM 数量，并使用 [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) 更新规模集。 如果使用 Azure CLI，则使用 [az vmss scale](/cli/azure/vmss?view=azure-cli-latest#az-vmss-scale) 命令的 **--new-capacity** 参数更改容量。
 
 ### <a name="vertical"></a>垂直
 
-可以在 Azure 门户中的“大小”屏幕上手动更改规模集的 VM 大小。 可以在 Azure PowerShell 中使用 Get-AzureRmVmss，设置映像引用 sku 属性，然后使用 [Update-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) 和 [Update-AzureRmVmssInstance](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmssinstance)。
+可以在 Azure 门户中的“大小”屏幕上手动更改规模集的 VM 大小。 可以将 Azure PowerShell 与 Get-AzVmss 配合使用，设置映像引用 sku 属性，然后使用 [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) 和 [Update-AzVmssInstance](https://docs.microsoft.com/powershell/module/az.compute/update-azvmssinstance)。
 
 ## <a name="next-steps"></a>后续步骤
 

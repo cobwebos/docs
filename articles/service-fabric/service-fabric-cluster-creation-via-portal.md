@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2018
 ms.author: aljo
-ms.openlocfilehash: f0c2108ee75f843e8285c5e2c5c55834643dc7da
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 71448125d7308ca28e7241fd4019aadba430214e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620534"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106131"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>使用 Azure 门户在 Azure 中创建 Service Fabric 群集
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ ms.locfileid: "52620534"
 #### <a name="cluster-and-server-certificate-required"></a>群集和服务器证书（必需）
 需要使用此证书来保护群集以及防止未经授权访问群集。 此证书通过多种方式保护群集：
 
-* **群集身份验证：** 在群集联合的情况下对节点间的通信进行身份验证。 只有可以使用此证书自我证明身份的节点才能加入群集。
+* **群集身份验证：** 在群集联合的情况下对节点到节点的通信进行身份验证。 只有可以使用此证书自我证明身份的节点才能加入群集。
 * **服务器身份验证：** 在管理客户端上对群集管理终结点进行身份验证，使管理客户端知道它正在与真正的群集通信。 此证书还通过 HTTPS 为 HTTPS 管理 API 和 Service Fabric Explorer 提供 SSL。
 
 为满足这些用途，该证书必须符合以下要求：
@@ -216,7 +216,7 @@ ms.locfileid: "52620534"
 [azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
 [service-fabric-rp-helpers]: https://github.com/ChackDan/Service-Fabric/tree/master/Scripts/ServiceFabricRPHelpers
 [azure-portal]: https://portal.azure.com/
-[key-vault-get-started]: ../key-vault/key-vault-get-started.md
+[key-vault-get-started]: ../key-vault/key-vault-overview.md
 [create-cluster-arm]: service-fabric-cluster-creation-via-arm.md
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [service-fabric-cluster-security-roles]: service-fabric-cluster-security-roles.md

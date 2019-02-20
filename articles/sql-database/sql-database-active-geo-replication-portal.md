@@ -11,19 +11,19 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/30/2019
-ms.openlocfilehash: 18e786ba45e476df2ab223a47f1b77ef6b778d7f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.date: 02/13/2019
+ms.openlocfilehash: 4ddeef417490b5b928f46dce428acc3e5febe159
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657767"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245977"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>在 Azure 门户中为 Azure SQL 数据库配置活动异地复制，并启动故障转移
 
 本文说明如何使用 [Azure 门户](http://portal.azure.com)为 Azure SQL 数据库中的[单一和入池数据库配置活动异地复制](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities)，以及如何启动故障转移。
 
-有关自动故障转移组与单一数据库和入池数据库的信息，请参阅[将故障转移组与单一数据库和入池数据库配合使用的最佳做法](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools)。 有关自动故障转移组与托管实例的信息（预览版），请参阅[将故障转移组与单一数据库和入池数据库配合使用的最佳做法](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances)。
+有关自动故障转移组与单一数据库和入池数据库的信息，请参阅[将故障转移组与单一数据库和入池数据库配合使用的最佳做法](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools)。 有关自动故障转移组与托管实例（预览版）的信息，请参阅[将故障转移组与托管实例配合使用的最佳做法](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances)。
 
 ## <a name="prerequisites"></a>先决条件
 

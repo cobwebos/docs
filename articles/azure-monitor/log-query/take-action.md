@@ -13,16 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 61d0f74f59b4d6f59b3fbc87556b260751d33baa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9194d5fe6553607ac5a0bb4e133da97f53790984
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809622"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005346"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>从 Log Analytics 日志搜索结果中通过自动化 Runbook 采取操作
 
-从 Azure Log Analytics 中的日志搜索结果中，现在可以选择“采取操作”来运行自动化 runbook。 可以使用 runbook 来更正问题或采取其他操作，例如，收集故障排除信息、发送电子邮件，或创建服务请求。 
+> [!NOTE]
+> 从搜索结果中启动 runbook 是于 2019 年 2 月 15 日弃用的经典日志搜索门户的一个功能。 可以通过 Azure Monitor 中的[警报规则](../platform/alerts-log.md)，配置除其他操作外还可启动 runbook 的操作组。
+
+从 Azure Log Analytics 中的日志搜索结果中，现在可以选择“采取操作”来运行自动化 runbook。  可以使用 runbook 来更正问题或采取其他操作，例如，收集故障排除信息、发送电子邮件，或创建服务请求。 
+
 
 ## <a name="components-and-features-used"></a>所使用的组件和功能
 * [Azure 自动化帐户](../../automation/automation-quickstart-create-account.md)

@@ -1,6 +1,6 @@
 ---
-title: 使用开源工具可视化 Azure 网络观察程序 NSG 流日志 | Microsoft 文档
-description: 本页介绍如何使用开源工具可视化 NSG 流日志。
+title: 使用网络观察程序和 Elastic Stack 管理和分析网络安全组流日志 | Microsoft Docs
+description: 在 Azure 中使用网络观察程序和 Elastic Stack 管理和分析网络安全组流日志。
 services: network-watcher
 documentationcenter: na
 author: mattreatMSFT
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 10f76ea58b859611483c99c2f4accec607bc2939
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 7361eff0f76271564fd5a0e9b8a18221ec4138e3
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822902"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098995"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>使用开源工具可视化 Azure 网络观察程序 NSG 流日志
 

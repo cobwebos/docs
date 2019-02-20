@@ -10,18 +10,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 344b049c46243c06c32ed061410f48f71bc70f54
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 4d336f657baef99d97568ba722e64a1f4440367f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580937"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984573"
 ---
-# <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>将 Azure 活动日志收集到不同订阅中的 Log Analytics
+# <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions-in-different-azure-active-directory-tenants"></a>将 Azure 活动日志收集到不同 Azure Active Directory 租户的订阅中的 Log Analytics
 
-本文逐步讲解如何使用逻辑应用的 Azure Log Analytics 数据收集器连接器，将 Azure 活动日志收集到 Log Analytics 工作区。 需要将日志发送到不同 Azure Active Directory 中的工作区时，可以使用本文中所述的过程。 例如，如果你是托管服务提供商，可能想要从客户的订阅中收集活动日志，并将其存储在自己订阅中的 Log Analytics 工作区中。
+本文逐步讲解如何使用逻辑应用的 Azure Log Analytics 数据收集器连接器，将 Azure 活动日志收集到 Log Analytics 工作区。 需要将日志发送到不同 Azure Active Directory 租户中的工作区时，可以使用本文中所述的过程。 例如，如果你是托管服务提供商，可能想要从客户的订阅中收集活动日志，并将其存储在自己订阅中的 Log Analytics 工作区中。
 
 如果 Log Analytics 工作区位于相同的 Azure 订阅中，或者位于不同的订阅但相同的 Azure Active Directory 中，请使用 [Azure 活动日志解决方案](collect-activity-logs.md)中的步骤收集 Azure 活动日志。
 
@@ -126,9 +126,9 @@ ms.locfileid: "53580937"
 
     ![创建逻辑应用](media/collect-activity-logs-subscriptions/create-logic-app.png)
 
-   |设置 | Description  |
+   |设置 | 说明  |
    |:---|:---|
-   | 名称           | 逻辑应用的唯一名称。 |
+   | Name           | 逻辑应用的唯一名称。 |
    | 订阅   | 选择将要包含该逻辑应用的 Azure 订阅。 |
    | 资源组 | 为逻辑应用选择现有的 Azure 资源组或创建新的资源组。 |
    | 位置       | 选择用于部署逻辑应用的数据中心区域。 |
@@ -301,7 +301,7 @@ ms.locfileid: "53580937"
 
     ![配置发送数据操作](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-configuration.png)
 
-   |设置        | 值           | Description  |
+   |设置        | 值           | 说明  |
    |---------------|---------------------------|--------------|
    |JSON 请求正文  | **撰写**操作提供的**输出** | 从“撰写”操作的正文中检索记录。 |
    | 自定义日志名称 | AzureActivity | 在 Log Analytics 中创建的、用于保存导入数据中的自定义日志表的名称。 |

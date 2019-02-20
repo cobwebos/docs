@@ -1,5 +1,5 @@
 ---
-title: PowerShell 和 CLI：使用自己的密钥启用 SQL TDE - Azure SQL 数据库 | Microsoft Docs
+title: PowerShell 和 CLI：启用 SQL TDE - 使用 Azure Key Vault - 自带密钥 - Azure SQL 数据库 | Microsoft Docs
 description: 了解如何配置 Azure SQL 数据库和数据仓库，以开始使用透明数据加密 (TDE) 通过 PowerShell 或 CLI 进行静态加密。
 services: sql-database
 ms.service: sql-database
@@ -12,16 +12,16 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: be73f5cb7db232538f301b2eb56bf61267fce5d5
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f1cb99799e3aa5c0b37643112f8644d1aabfd666
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566714"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108086"
 ---
-# <a name="powershell-and-cli-enable-transparent-data-encryption-using-your-own-key-from-azure-key-vault"></a>PowerShell 和 CLI：使用自己在 Azure Key Vault 中的密钥启用透明数据加密
+# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell 和 CLI：使用 Azure Key Vault 中由客户管理的密钥启用透明数据加密
 
-本文逐步介绍如何使用 Azure Key Vault 中的密钥对 SQL 数据库或数据仓库启用透明数据加密 (TDE)。 若要详细了解支持“创建自己的密钥”(BYOK) 的 TDE，请访问[适用于 Azure SQL 的支持“创建自己的密钥”的 TDE](transparent-data-encryption-byok-azure-sql.md)。 
+本文逐步介绍如何使用 Azure Key Vault 中的密钥对 SQL 数据库或数据仓库启用透明数据加密 (TDE)。 要了解更多关于 TDE 与 Azure Key Vault 集成（即自带密钥 (BYOK) 支持）的信息，请访问[使用 Azure Key Vault 中由客户管理的密钥进行 TDE](transparent-data-encryption-byok-azure-sql.md)。 
 
 ## <a name="prerequisites-for-powershell"></a>PowerShell 先决条件
 
@@ -29,8 +29,8 @@ ms.locfileid: "55566714"
 - [建议但可选] 提供硬件安全模块 (HSM) 或本地密钥存储，以便创建 TDE 保护器密钥材料的本地副本。
 - 必须安装并运行 Azure PowerShell 4.2.0 或更高版本。 
 - 创建用于 TDE 的 Azure Key Vault 和密钥。
-   - [Key Vault 的 PowerShell 说明](../key-vault/key-vault-get-started.md)
-   - [有关使用硬件安全模块 (HSM) 和 Key Vault 的说明](../key-vault/key-vault-get-started.md#HSM)
+   - [Key Vault 的 PowerShell 说明](../key-vault/key-vault-overview.md)
+   - [有关使用硬件安全模块 (HSM) 和 Key Vault 的说明](../key-vault/key-vault-hsm-protected-keys.md)
  - Key Vault 必须包含用于 TDE 的以下属性：
    - [软删除](../key-vault/key-vault-ovw-soft-delete.md)
    - [如何将 Key Vault 软删除与 PowerShell 配合使用](../key-vault/key-vault-soft-delete-powershell.md) 
@@ -196,7 +196,7 @@ ms.locfileid: "55566714"
 - 命令行接口版本 2.0 或更高版本。 若要安装最新版本并连接到 Azure 订阅，请参阅[安装和配置 Azure 跨平台命令行接口 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 
 - 创建用于 TDE 的 Azure Key Vault 和密钥。
    - [使用 CLI 2.0 管理 Key Vault](../key-vault/key-vault-manage-with-cli2.md)
-   - [有关使用硬件安全模块 (HSM) 和 Key Vault 的说明](../key-vault/key-vault-get-started.md#HSM)
+   - [有关使用硬件安全模块 (HSM) 和 Key Vault 的说明](../key-vault/key-vault-hsm-protected-keys.md)
  - Key Vault 必须包含用于 TDE 的以下属性：
    - [软删除](../key-vault/key-vault-ovw-soft-delete.md)
    - [如何将 Key Vault 软删除与 CLI 配合使用](../key-vault/key-vault-soft-delete-cli.md) 

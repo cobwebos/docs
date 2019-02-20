@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.date: 09/08/2016
-ms.openlocfilehash: d37d5cb2b89b82bd9741dee0946b3a77d456b22a
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c9733346d091a6829bd5b42c80201df3a1357fe3
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405746"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243104"
 ---
 # <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>概述：带有 Enterprise Integration Pack 的 Azure 逻辑应用中的 B2B 企业集成方案
 
@@ -33,7 +33,7 @@ ms.locfileid: "49405746"
 
 ## <a name="how-to-get-started-with-enterprise-integration"></a>如何开始使用企业集成？
 
-可以通过 **Azure 门户**中的逻辑应用设计器来使用 Enterprise Integration Pack 构建和管理 B2B 应用。 还可以使用 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp "逻辑应用 PowerShell") 来管理逻辑应用。
+可以通过 **Azure 门户**中的逻辑应用设计器来使用 Enterprise Integration Pack 构建和管理 B2B 应用。 还可以使用 [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp) 来管理逻辑应用。
 
 以下是在 Azure 门户中创建应用前必须先执行的高级步骤：
 

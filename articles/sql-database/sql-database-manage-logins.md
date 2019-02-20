@@ -12,13 +12,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 81ec99c5de94736d68392cc7cf0bc3e305e0ce7d
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: 34c7d431815ae7a9452bb0703cde18050d38bdb7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754007"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164611"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>控制和授予对 SQL 数据库和 SQL 数据仓库的数据库访问权限
 
@@ -37,11 +37,14 @@ ms.locfileid: "55754007"
 
 - **服务器管理员**
 
-创建 Azure SQL 服务器时，必须指定**服务器管理员登录名**。 SQL 服务器创建该帐户作为 master 数据库中的登录名。 此帐户通过 SQL Server 身份验证（用户名和密码）进行连接。 此类帐户只能存在一个。   
+  创建 Azure SQL 服务器时，必须指定**服务器管理员登录名**。 SQL 服务器创建该帐户作为 master 数据库中的登录名。 此帐户通过 SQL Server 身份验证（用户名和密码）进行连接。 此类帐户只能存在一个。
 
-- **Azure Active Directory 管理员**   
+  > [!NOTE]
+  > 若要重置服务器管理员的密码，请转到 [Azure 门户](https://portal.azure.com)，单击“SQL Server”，从列表中选择服务器，然后单击“重置密码”。
 
-也可以将某个 Azure Active Directory 帐户（个人帐户或安全组帐户）配置为管理员。 配置 Azure AD 管理员是选择性的，但如果需要使用 Azure AD 帐户连接到 SQL 数据库，则必须配置 Azure AD 管理员。 有关配置 Azure Active Directory 访问权限的详细信息，请参阅[使用 Azure Active Directory 身份验证连接到 SQL 数据库或 SQL 数据仓库](sql-database-aad-authentication.md)和 [SQL 数据库和 SQL 数据仓库针对 Azure AD MFA 的 SSMS 支持](sql-database-ssms-mfa-authentication.md)。
+- **Azure Active Directory 管理员**
+
+  也可以将某个 Azure Active Directory 帐户（个人帐户或安全组帐户）配置为管理员。 配置 Azure AD 管理员是选择性的，但如果需要使用 Azure AD 帐户连接到 SQL 数据库，则必须配置 Azure AD 管理员。 有关配置 Azure Active Directory 访问权限的详细信息，请参阅[使用 Azure Active Directory 身份验证连接到 SQL 数据库或 SQL 数据仓库](sql-database-aad-authentication.md)和 [SQL 数据库和 SQL 数据仓库针对 Azure AD MFA 的 SSMS 支持](sql-database-ssms-mfa-authentication.md)。
 
 **服务器管理员**和 **Azure AD 管理员**帐户具有以下特征：
 
@@ -72,7 +75,6 @@ ms.locfileid: "55754007"
 > [!IMPORTANT]
 > 建议始终使用最新版本的 Management Studio 以保持与 Microsoft Azure 和 SQL 数据库的更新同步。 [更新 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)。
 
-
 ## <a name="additional-server-level-administrative-roles"></a>其他服务器级管理角色
 
 >[!IMPORTANT]
@@ -85,7 +87,7 @@ ms.locfileid: "55754007"
 其中一个管理角色是 **dbmanager** 角色。 此角色的成员可以创建新数据库。 要使用此角色，请在 `master` 数据库中创建一个用户，然后将该用户添加到 **dbmanager** 数据库角色。 若要创建数据库，用户必须是基于 master 数据库中的 SQL Server 登录名的用户，或者是基于 Azure Active Directory 用户的已包含数据库用户。
 
 1. 使用管理员帐户连接到 master 数据库。
-2. 可选步骤：使用 [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) 语句创建 SQL Server 身份验证登录名。 示例语句：
+2. 使用 [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) 语句创建 SQL Server 身份验证登录名。 示例语句：
 
    ```sql
    CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';

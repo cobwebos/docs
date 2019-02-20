@@ -14,12 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: ba2eb5a7f888e4cffcd798259afa8194b4021025
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 16871bdc59d141334bc2c95f26929f270d7971cf
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38488886"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100527"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 JavaScript 客户端库
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "38488886"
 本指南介绍如何使用最新的[适用于 Azure 移动应用的 JavaScript SDK] 执行常见任务。 对于 Azure 移动应用的新手，请先完成 [Azure 移动应用快速入门]创建后端和表。 本指南着重介绍如何在 HTML/JavaScript Web 应用程序中使用移动后端。
 
 ## <a name="supported-platforms"></a>支持的平台
-我们将浏览器支持限于当前版本和最新版本的主要浏览器：Google Chrome、Microsoft Edge、Microsoft Internet Explorer 和 Mozilla Firefox。  我们期望 SDK 能与任何相对新式的浏览器一起运作。
+我们将浏览器支持限制为主要浏览器的当前版本和过去版本：Google Chrome、Microsoft Edge、Microsoft Internet Explorer 和 Mozilla Firefox。  我们期望 SDK 能与任何相对新式的浏览器一起运作。
 
 由于包已被分发为通用 JavaScript 模块，因此它支持全局、AMD 和 CommonJS 格式。
 
@@ -42,10 +42,10 @@ npm install azure-mobile-apps-client --save
 
 也可将库用作 CommonJS 环境（例如 Browserify 和 Webpack）中的 ES2015 模块，或者用作 AMD 库。  例如：
 
-```
-# For ECMAScript 5.1 CommonJS
+```javascript
+// For ECMAScript 5.1 CommonJS
 var WindowsAzure = require('azure-mobile-apps-client');
-# For ES2015 modules
+// For ES2015 modules
 import * as WindowsAzure from 'azure-mobile-apps-client';
 ```
 
@@ -57,14 +57,14 @@ import * as WindowsAzure from 'azure-mobile-apps-client';
 
 [!INCLUDE [app-service-mobile-html-js-library](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>如何对用户进行身份验证
-Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Google、Microsoft 帐户和 Twitter）对应用的用户进行身份验证和授权。 可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 还可以在服务器脚本中使用已经过身份验证的用户的标识来实施授权规则。 有关详细信息，请参阅[身份验证入门]教程。
+## <a name="auth"></a>如何：对用户进行身份验证
+Azure 应用服务支持使用各种外部标识提供者对应用用户进行身份验证和授权：Facebook、Google、Microsoft 帐户和 Twitter。 可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 还可以在服务器脚本中使用已经过身份验证的用户的标识来实施授权规则。 有关详细信息，请参阅[身份验证入门]教程。
 
 支持两种身份验证流：服务器流和客户端流。  服务器流依赖于提供者的 Web 身份验证界面，因此可提供最简便的身份验证体验。 客户端流依赖于提供程序特定的 SDK，因此允许与设备特定的功能（例如单一登录）进行更深入的集成。
 
 [!INCLUDE [app-service-mobile-html-js-auth-library](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>如何为外部重定向 URL 配置移动应用服务。
+### <a name="configure-external-redirect-urls"></a>如何：为外部重定向 URL 配置移动应用服务。
 有多种类型的 JavaScript 应用程序使用环回功能来处理 OAuth UI 流。  这些功能包括：
 
 * 在本地运行服务

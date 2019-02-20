@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: abfaf76743f42a3fc4a13878d528c755feeef42a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 791322c71b4d1b49e1367fb0f179e7b0513a1e94
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458561"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55975647"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>使用 PowerShell 将数据磁盘附加到 Windows VM
 
@@ -31,9 +31,9 @@ ms.locfileid: "55458561"
 * 虚拟机的大小决定了可以附加多少个磁盘。 有关详细信息，请参阅[虚拟机的大小](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * 若要使用高级存储，则需要使用支持高级存储的 VM 类型，例如 DS 系列或 GS 系列虚拟机。 有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
-若要在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 6.0.0 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>将空数据磁盘添加到虚拟机
@@ -49,17 +49,17 @@ $location = 'East US'
 $storageType = 'Premium_LRS'
 $dataDiskName = $vmName + '_datadisk1'
 
-$diskConfig = New-AzureRmDiskConfig -SkuName $storageType -Location $location -CreateOption Empty -DiskSizeGB 128
-$dataDisk1 = New-AzureRmDisk -DiskName $dataDiskName -Disk $diskConfig -ResourceGroupName $rgName
+$diskConfig = New-AzDiskConfig -SkuName $storageType -Location $location -CreateOption Empty -DiskSizeGB 128
+$dataDisk1 = New-AzDisk -DiskName $dataDiskName -Disk $diskConfig -ResourceGroupName $rgName
 
-$vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $rgName 
-$vm = Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -CreateOption Attach -ManagedDiskId $dataDisk1.Id -Lun 1
+$vm = Get-AzVM -Name $vmName -ResourceGroupName $rgName 
+$vm = Add-AzVMDataDisk -VM $vm -Name $dataDiskName -CreateOption Attach -ManagedDiskId $dataDisk1.Id -Lun 1
 
-Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
+Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 
 ### <a name="using-managed-disks-in-an-availability-zone"></a>在可用性区域中使用托管磁盘
-若要在可用性区域中创建磁盘，请将 [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig) 与 `-Zone` 参数一起使用。 以下示例在区域 *1* 中创建一个磁盘。
+若要在可用性区域中创建磁盘，请将 [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) 与 `-Zone` 参数一起使用。 以下示例在区域 *1* 中创建一个磁盘。
 
 
 ```powershell
@@ -69,13 +69,13 @@ $location = 'East US 2'
 $storageType = 'Premium_LRS'
 $dataDiskName = $vmName + '_datadisk1'
 
-$diskConfig = New-AzureRmDiskConfig -SkuName $storageType -Location $location -CreateOption Empty -DiskSizeGB 128 -Zone 1
-$dataDisk1 = New-AzureRmDisk -DiskName $dataDiskName -Disk $diskConfig -ResourceGroupName $rgName
+$diskConfig = New-AzDiskConfig -SkuName $storageType -Location $location -CreateOption Empty -DiskSizeGB 128 -Zone 1
+$dataDisk1 = New-AzDisk -DiskName $dataDiskName -Disk $diskConfig -ResourceGroupName $rgName
 
-$vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $rgName 
-$vm = Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -CreateOption Attach -ManagedDiskId $dataDisk1.Id -Lun 1
+$vm = Get-AzVM -Name $vmName -ResourceGroupName $rgName 
+$vm = Add-AzVMDataDisk -VM $vm -Name $dataDiskName -CreateOption Attach -ManagedDiskId $dataDisk1.Id -Lun 1
 
-Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
+Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 
 
@@ -87,7 +87,7 @@ Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
     $location = "location-name"
     $scriptName = "script-name"
     $fileName = "script-file-name"
-    Set-AzureRmVMCustomScriptExtension -ResourceGroupName $rgName -Location $locName -VMName $vmName -Name $scriptName -TypeHandlerVersion "1.4" -StorageAccountName "mystore1" -StorageAccountKey "primary-key" -FileName $fileName -ContainerName "scripts"
+    Set-AzVMCustomScriptExtension -ResourceGroupName $rgName -Location $locName -VMName $vmName -Name $scriptName -TypeHandlerVersion "1.4" -StorageAccountName "mystore1" -StorageAccountKey "primary-key" -FileName $fileName -ContainerName "scripts"
 ```
         
 脚本文件可以包含用来初始化磁盘的代码，例如：
@@ -119,13 +119,13 @@ $rgName = "myResourceGroup"
 $vmName = "myVM"
 $location = "East US" 
 $dataDiskName = "myDisk"
-$disk = Get-AzureRmDisk -ResourceGroupName $rgName -DiskName $dataDiskName 
+$disk = Get-AzDisk -ResourceGroupName $rgName -DiskName $dataDiskName 
 
-$vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $rgName 
+$vm = Get-AzVM -Name $vmName -ResourceGroupName $rgName 
 
-$vm = Add-AzureRmVMDataDisk -CreateOption Attach -Lun 0 -VM $vm -ManagedDiskId $disk.Id
+$vm = Add-AzVMDataDisk -CreateOption Attach -Lun 0 -VM $vm -ManagedDiskId $disk.Id
 
-Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
+Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 
 ## <a name="next-steps"></a>后续步骤

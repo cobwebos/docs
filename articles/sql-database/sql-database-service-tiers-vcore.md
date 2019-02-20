@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 240715fe6d3e8344c15cddf80a23829ec84e81a2
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/07/2019
+ms.openlocfilehash: da43d1261b0ba9bd65998fbaa9fe9e364e686071
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511983"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992120"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>vCore 服务层、Azure 混合权益和迁移
 
@@ -26,10 +26,10 @@ ms.locfileid: "55511983"
 - 第 4 代 - 最多 24 个基于 Intel E5-2673 v3 (Haswell) 2.4 GHz 处理器的逻辑 CPU，vCore = 1 PP（物理核心），每核心 7 GB，附加了 SSD
 - 第 5 代 - 最多 80 个基于 Intel E5-2673 v4 (Broadwell) 2.3 GHz 处理器的逻辑 CPU，vCore=1 LP（超线程），每个核心 5.1 GB，快速 eNVM SSD
 
-vCore 模式还允许使用[适用于 SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)来节省成本。
+第 4 代为每个 vCore 提供的内存要大得多。 但是，第 5 代硬件允许以高得多的力度纵向扩展计算资源。
 
 > [!NOTE]
-> 有关基于 DTU 的服务层的信息，请参阅[基于 DTU 的服务层](sql-database-service-tiers-dtu.md)。 若要了解如何区分基于 DTU 的服务层和基于 vCore 的服务层，请参阅 [Azure SQL 数据库购买模型](sql-database-service-tiers.md)。
+> 有关基于 DTU 的服务层的信息，请参阅[基于 DTU 的服务层](sql-database-service-tiers-dtu.md)。 若要了解如何区分基于 DTU 的服务层和基于 vCore 的服务层，请参阅 [Azure SQL 数据库购买模型](sql-database-purchase-models.md)。
 
 ## <a name="service-tier-characteristics"></a>服务层特征
 
@@ -58,8 +58,6 @@ vCore 模型提供了三个服务层：常规用途、超大规模和业务关�
 
 > [!IMPORTANT]
 > 如果所需的计算容量 vCore 数不超过一个，请使用基于 DTU 的购买模型。
-
-有关常见问题的解答，请参阅 [SQL 数据库常见问题解答](sql-database-faq.md)。
 
 ## <a name="azure-hybrid-benefit"></a>Azure 混合权益
 

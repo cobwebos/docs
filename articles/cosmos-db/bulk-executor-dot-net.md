@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: d6fed65dad0e8f12495177b274cef181e9e91879
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 7c47e6df1e8b92d122dcc6bed55506f2fccf9e89
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044308"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877501"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>使用 Bulk Executor .NET 库在 Azure Cosmos DB 中执行批量操作
 
@@ -28,7 +28,7 @@ ms.locfileid: "54044308"
 
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
 
-* 无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。 或者，可以使用 URI 为 `https://localhost:8081` 的 [Azure Cosmos DB 模拟器](https://docs.microsoft.com/azure/cosmos-db/local-emulator)。 [对请求进行身份验证](local-emulator.md#authenticating-requests)中提供了主密钥。
+* 无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。 或者，可以通过 `https://localhost:8081` 终结点使用 [Azure Cosmos DB 模拟器](https://docs.microsoft.com/azure/cosmos-db/local-emulator)。 [对请求进行身份验证](local-emulator.md#authenticating-requests)中提供了主密钥。
 
 * 使用 .NET 快速入门文章的[创建数据库帐户](create-sql-api-dotnet.md#create-a-database-account)部分所述的步骤创建 Azure Cosmos DB SQL API 帐户。 
 

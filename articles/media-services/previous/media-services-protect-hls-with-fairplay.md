@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 32f3f4fd3f4f299c9b084ab8604b56ea70e639a4
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 49b763cba505a3423b47e5a2601db53b8e47a5fe
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368216"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993957"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>使用 Apple FairPlay 或 Microsoft PlayReady 保护 HLS 内容
 使用 Azure 媒体服务，可使用以下格式动态加密 HTTP Live Streaming (HLS) 内容：  
@@ -77,7 +77,7 @@ ms.locfileid: "46368216"
 
 以下事项必须通过 FPS 客户端来设置：
 
-  * **应用证书 (AC)**：这是一个包含公钥的 .cer/.der 文件，操作系统使用它来加密某些负载。 媒体服务需要了解它，因为播放器需要它。 密钥传送服务使用相应的私钥对其进行解密。
+  * **应用证书 (AC)**：这是一个包含公钥的 .cer/.der 文件，操作系统使用它来加密某些有效负载。 媒体服务需要了解它，因为播放器需要它。 密钥传送服务使用相应的私钥对其进行解密。
 
 要播放 FairPlay 加密的流，需要先获取实际 ASK，然后生成实际证书。 该过程将创建所有三个部分：
 
@@ -85,7 +85,7 @@ ms.locfileid: "46368216"
   * .pfx 文件
   * .pfx 的密码
 
-以下客户端支持使用 **AES-128 CBC** 加密的 HLS：OS X 上的 Safari、Apple TV、iOS。
+以下客户端支持使用 AES-128 CBC 加密的 HLS：OS X 上的 Safari、Apple TV、iOS。
 
 ## <a name="configure-fairplay-dynamic-encryption-and-license-delivery-services"></a>配置 FairPlay 动态加密和许可证传送服务
 下面是使用 FairPlay 保护资产的常规步骤，这些步骤使用媒体服务许可证传送服务，也使用动态加密。

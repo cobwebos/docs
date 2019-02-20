@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 7edf1cbc5cc351e25a9ae7b319768376ea9968a3
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 679284783ac93662c1c96e813f9f028fffb434f0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39266806"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173651"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spotinst"></a>教程：Azure Active Directory 与 Spotinst 集成
 
@@ -31,7 +32,7 @@ Spotinst 与 Azure AD 的集成提供以下优势：
 - 可让用户使用其 Azure AD 帐户自动登录到 Spotinst（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需详细了解 SaaS 应用与 Azure AD 的集成，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -261,12 +262,12 @@ Spotinst 与 Azure AD 的集成提供以下优势：
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Spotinst”磁贴时，用户应会自动登录到 Spotinst 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

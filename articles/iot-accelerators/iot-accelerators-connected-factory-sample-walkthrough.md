@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 23b36fb647c2949dca1c5efe7f8194ec5a397965
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 19e340609e80998037938bdad59e9e6e74894bad
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140394"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098300"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>连接工厂解决方案加速器演练
 
@@ -46,7 +46,7 @@ ms.locfileid: "50140394"
 
 此解决方案按照 [OPC UA Pub/Sub 规范](https://opcfoundation.org/news/opc-foundation-news/opc-foundation-announces-support-of-publish-subscribe-for-opc-ua/)将 OPC UA 遥测数据以 JSON 格式发送到 IoT 中心。 此解决方案将 [OPC 发布服务器](https://github.com/Azure/iot-edge-opc-publisher) IoT Edge 模块用于此目的。
 
-此解决方案还将 OPC UA 客户端集成到 Web 应用程序中，后者可以与本地 OPC UA 服务器建立连接。 该客户端使用[反向代理](https://wikipedia.org/wiki/Reverse_proxy)并从 IoT 中心获取帮助，不需本地防火墙上的开放端口即可进行连接。 此通信模式称为[服务辅助通信](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/)。 此解决方案将 [OPC 代理](https://github.com/Azure/iot-edge-opc-proxy/) IoT Edge 模块用于此目的。
+此解决方案还将 OPC UA 客户端集成到 Web 应用程序中，后者可以与本地 OPC UA 服务器建立连接。 该客户端使用[反向代理](https://wikipedia.org/wiki/Reverse_proxy)并从 IoT 中心获取帮助，不需本地防火墙上的开放端口即可进行连接。 此通信模式称为服务辅助通信。 此解决方案将 [OPC 代理](https://github.com/Azure/iot-edge-opc-proxy/) IoT Edge 模块用于此目的。
 
 
 ## <a name="simulation"></a>模拟

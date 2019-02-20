@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-ms.openlocfilehash: fb8922424de064bc63f793479d8c3a98b506b844
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 3f41edef56b238d8789264d00d73998794fec7eb
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232509"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55881989"
 ---
 # <a name="traffic-manager-endpoints"></a>流量管理器终结点
 使用 Microsoft Azure 流量管理器可以控制如何将网络流量分布到在不同数据中心运行的应用程序部署。 需要在流量管理器中将每个应用程序部署配置为一个“终结点”。 当流量管理器收到 DNS 请求时，将选择要在 DNS 响应中返回的可用终结点。 流量管理器根据当前终结点状态和流量路由方法做出这种选择。 相关详细信息，请参阅[流量管理器工作原理](traffic-manager-how-it-works.md)。
@@ -63,7 +63,7 @@ PublicIPAddress 资源属于 Azure 资源管理器资源。 经典部署模型�
 
 在流量管理器中将 Web 应用配置为终结点时，还需考虑其他因素：
 
-1. 仅“标准”SKU 或更高版 SKU 的 Web 应用可以用于流量管理器。 尝试添加 SKU 较低的 Web 应用会失败。 降低现有 Web 应用的 SKU 会导致流量管理器不再将流量发送到该 Web 应用。
+1. 仅“标准”SKU 或更高版 SKU 的 Web 应用可以用于流量管理器。 尝试添加 SKU 较低的 Web 应用会失败。 降低现有 Web 应用的 SKU 会导致流量管理器不再将流量发送到该 Web 应用。 有关支持的计划的详细信息，请参阅[应用服务计划](https://azure.microsoft.com/en-us/pricing/details/app-service/plans/)
 2. 当某个终结点收到 HTTP 请求时，将使用请求中的“host”标头来确定应通过哪个 Web 应用来处理请求。 主机头包含用于启动请求的 DNS 名称，例如“contosoapp.azurewebsites.net”。 要对 Web 应用使用其他 DNS 名称，必须将该 DNS 名称注册为该应用的自定义域名。 将 Web 应用终结点添加为 Azure 终结点时，系统会自动为该应用注册流量管理器配置文件 DNS 名称。 删除终结点时，会自动删除该注册。
 3. 每个流量管理器配置文件最多允许一个 Azure 区域有一个 Web 应用终结点。 若要克服这种约束，可为外部终结点配置一个 Web 应用。 有关详细信息，请参阅[常见问题](traffic-manager-faqs.md#traffic-manager-endpoints)。
 

@@ -3,9 +3,8 @@ title: 使用 Azure AD 管理对应用的访问 | Microsoft Docs
 description: 介绍 Azure Active Directory 如何使组织能够指定每个用户有权访问的应用。
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
-editor: ''
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2017
-ms.author: barbkess
-ms.openlocfilehash: 0c8450523890430587bedebbcd77ceddd8a03e42
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: celested
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 14957a94dbe8330553a4090e22d80d6cc2ee06eb
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183384"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217320"
 ---
 # <a name="managing-access-to-apps"></a>管理对应用的访问
 将应用集成到组织的标识系统之后，进行中的访问管理、使用评估和报告将持续成为一项挑战。 在许多情况下，IT 管理员或支持人员需要对应用访问管理持续采取主动措施。 有时，分配由一般或分部 IT 小组执行。 分配决策往往由业务决策人委派，在 IT 人员进行分配之前需要其批准。  其他组织会投资来与现有自动化标识与访问管理系统集成，例如基于角色的访问控制 (RBAC) 或基于属性的访问控制 (ABAC)。 集成与规则开发往往是针对性的且费用高昂。 对任一管理方式进行监视或报告本身是一项独立、昂贵且复杂的投资。
@@ -39,7 +39,7 @@ ms.locfileid: "55183384"
 借助 Azure AD，使用和分配报告可完全集成，使管理员能够轻松报告分配状态、分配错误甚至使用情况。
 
 ## <a name="complex-application-assignment-with-azure-ad"></a>使用 Azure AD 进行复杂应用程序分配
-以 Salesforce 之类的应用程序为例。 在许多组织中，Salesforce 主要由营销和销售部门使用。 通常，营销团队成员对 Salesforce 拥有较高的访问权限，而销售团队的访问权限则受限。 在许多情况下，大范围的信息工作者对应用程序的访问权限会受到限制。 这些规则存在的例外使情况变得复杂。 营销或销售领导团队通常有特权授予用户访问权限，或独立于这些常规规则更改其角色。
+以 Salesforce 之类的应用程序为例。 在许多组织中，Salesforce 主要由营销和销售团队使用。 通常，营销团队成员对 Salesforce 拥有较高的访问权限，而销售团队的访问权限则受限。 在许多情况下，大范围的信息工作者对应用程序的访问权限会受到限制。 这些规则存在的例外使情况变得复杂。 营销或销售领导团队通常有特权授予用户访问权限，或独立于这些常规规则更改其角色。
 
 使用 Azure AD 可将 Salesforce 等应用程序预先配置为支持单一登录 (SSO) 和自动化预配。 配置应用程序后，管理员可以执行一次性的操作来创建和分配相应的组。 在本示例中，管理员可以执行以下分配：
 

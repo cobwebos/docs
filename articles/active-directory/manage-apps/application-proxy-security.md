@@ -3,8 +3,8 @@ title: 使用 Azure AD 应用程序代理时的安全注意事项 | Microsoft Do
 description: 介绍使用 Azure AD 应用程序代理时的安全注意事项
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 3e8d9cc44e4e83dac963b3d85f7dd4d058323bf6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ef9dbe1bb0ed9e5aad545453c409b0959bdd3fd4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813817"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207222"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理远程访问应用时的安全注意事项
 
@@ -147,7 +148,7 @@ Azure AD 应用程序代理由两个部分组成：
 
 2. 所有检查都通过后，Azure AD STS 将为应用程序颁发已签名的令牌，并将用户重定向回应用程序代理服务。
 
-3. 应用程序代理会验证是否已颁发用于更正应用程序的令牌。 应用程序代理还会执行其他检查，例如，确保令牌已由 Azure AD 签名并且仍在有效期内。
+3. 应用程序代理会验证令牌是否已颁发给正确的应用程序。 应用程序代理还会执行其他检查，例如，确保令牌已由 Azure AD 签名并且仍在有效期内。
 
 4. 应用程序代理设置加密的身份验证 Cookie，以指示已向应用程序进行身份验证。 该 Cookie 包含基于 Azure AD 颁发的令牌和其他数据（例如，用于身份验证的用户名）的过期时间戳。 该 Cookie 已使用只有应用程序代理服务知道的私钥加密。
 

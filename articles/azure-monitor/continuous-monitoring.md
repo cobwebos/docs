@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: fdccb4e94d9b9fd8b698575c890efad56a115a3e
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 1b86bc015b187fe75e79ba04df60a6bc5257a9b8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452813"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994007"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>使用 Azure Monitor 进行持续监视
 
@@ -64,7 +64,7 @@ ms.locfileid: "54452813"
 
 - 使用 [Azure Pipelines](/azure/devops/pipelines) 可以实现持续部署，并可以根据 CI/CD 测试，自动化将代码提交到生产环境的整个流程。
 - 使用[质量门限](/azure/devops/pipelines/release/approvals/gates)可将监视功能集成到部署前或部署后的流程。 这可以确保应用程序从开发环境转移到生产环境时可以符合关键的运行状况/性能指标 (KPI)，并且基础结构环境或规模的任何差异不会对 KPI 造成负面影响。
-- 在开发、测试、Canary 和生产等不同的部署环境之间[维护独立的监视实例](../azure-monitor/app/separate-resources.md)。这可以确保收集的数据与关联的应用程序和基础结构相关。 如果需要跨环境关联数据，可以使用[指标资源管理器中的多资源图表](../azure-monitor/platform/metrics-charts.md)，或者[在 Log Analytics 中创建跨资源查询](log-query/cross-workspace-query.md)。
+- 在开发、测试、Canary 和生产等不同的部署环境之间[维护独立的监视实例](../azure-monitor/app/separate-resources.md)。这可以确保收集的数据与关联的应用程序和基础结构相关。 如果需要跨环境关联数据，可以使用[指标资源管理器中的多资源图表](../azure-monitor/platform/metrics-charts.md)，或者[在 Azure Monitor 中创建跨资源查询](log-query/cross-workspace-query.md)。
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>使用操作创建可操作警报

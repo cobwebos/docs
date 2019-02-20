@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: afcac73af84010f37eccd018f39852712e495b84
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 714a78c436b7071717e2df12c2a65999920f8c63
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55771770"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192126"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>添加非 Microsoft 帐户
 将非 Microsoft 帐户（例如 Google 帐户、Facebook 帐户或 GitHub 帐户）添加到 Microsoft Authenticator 应用，以进行双因素验证。 Microsoft Authenticator 应用可与使用双因素验证的任何应用以及支持基于时间的一次性密码 (TOTP) 标准的任何帐户配合使用。
@@ -55,7 +56,7 @@ ms.locfileid: "55771770"
 4. 使用设备摄像头扫描电脑上“设置验证器”页显示的 QR 码。
 
     >[!Note]
-    >如果相机不能正常工作，可以[手动输入 QR 码和 URL](#add-an-account-to-the-app-manually)。
+    >如果摄像头不能正常工作，可以手动输入 QR 码和 URL。
 
 5. 检查设备上 Microsoft Authenticator 应用的“帐户”页，以确保帐户信息正确，并有关联的六位数验证码。
 
@@ -94,7 +95,7 @@ ms.locfileid: "55771770"
 3. 使用设备摄像头扫描电脑上“双因素身份验证”页显示的 QR 码。
 
     >[!Note]
-    >如果相机不能正常工作，可以[手动输入 QR 码和 URL](#add-an-account-to-the-app-manually)。
+    >如果摄像头不能正常工作，可以手动输入 QR 码和 URL。
 
 4. 检查设备上 Microsoft Authenticator 应用的“帐户”页，以确保帐户信息正确，并有关联的六位数验证码。
 
@@ -165,7 +166,7 @@ ms.locfileid: "55771770"
 6. 使用设备摄像头扫描电脑上“选择如何接收验证码”页显示的 QR 码。
 
     >[!Note]
-    >如果相机不能正常工作，可以[手动输入 QR 码和 URL](#add-an-account-to-the-app-manually)。
+    >如果摄像头不能正常工作，可以手动输入 QR 码和 URL。
 
 5. 检查设备上 Microsoft Authenticator 应用的“帐户”页，以确保帐户信息正确，并有关联的六位数验证码。
 

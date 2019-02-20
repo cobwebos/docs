@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: 6977fa0a62767cebbd1000335c6c3a33a5991c2c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: eb0fd7e4feb28d60173b638a15dbce598f78e6bf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208159"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182946"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 入门
 > [!div class="op_single_selector"]
@@ -28,16 +28,14 @@ ms.locfileid: "34208159"
 > 
 > 
 
-Azure Service Fabric 应用程序包含一个或多个运行代码的服务。 本指南说明如何使用 [Reliable Services](service-fabric-reliable-services-introduction.md) 同时创建无状态与有状态的 Service Fabric 应用程序。  此 Microsoft Virtual Academy 视频还演示了如何创建无状态可靠服务：<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=s39AO76yC_7206218965">  
-<img src="./media/service-fabric-reliable-services-quick-start/ReliableServicesVid.png" WIDTH="360" HEIGHT="244">  
-</a></center>
+Azure Service Fabric 应用程序包含一个或多个运行代码的服务。 本指南说明如何使用 [Reliable Services](service-fabric-reliable-services-introduction.md)同时创建无状态与有状态的 Service Fabric 应用程序。  
 
 ## <a name="basic-concepts"></a>基本概念
 若要开始使用 Reliable Services，只需了解几个基本概念：
 
 * **服务类型**：这是服务实现。 它由你编写的可扩展 `StatelessService` 的类、其中使用的任何其他代码或依赖项以及名称和版本号定义。
 * **命名服务实例**：若要运行服务，需要创建服务类型的命名实例，就像创建类类型的对象实例一样。 服务实例具有使用“fabric:/”方案（如“fabric:/MyApp/MyService”）的 URI 形式的名称。
-* **服务主机**：创建的命名服务实例需要在主机进程内运行。 服务宿主是可以运行服务实例的进程。
+* **服务主机**：创建的命名服务实例需在主机进程中运行。 服务宿主是可以运行服务实例的进程。
 * **服务注册**：通过注册可将所有对象融合在一起。 只有将服务类型注册到服务宿主中的 Service Fabric 运行时后，Service Fabric 才能创建该类型的可运行实例。  
 
 ## <a name="create-a-stateless-service"></a>创建无状态服务

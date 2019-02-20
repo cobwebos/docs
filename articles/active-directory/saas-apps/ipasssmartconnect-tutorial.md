@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 iPass SmartConnect 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 iPass SmartConnect 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 iPass SmartConnect 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: ecfdd3fae1d394e3b57fcd325f44cad0d1a98534
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 91a68a208496904fcc8bfe13a227c61bf313214f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444888"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198161"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ipass-smartconnect"></a>教程：Azure Active Directory 与 iPass SmartConnect 的集成
+# <a name="tutorial-azure-active-directory-integration-with-ipass-smartconnect"></a>教程：Azure Active Directory 与 iPass SmartConnect 集成
 
 本教程介绍如何将 iPass SmartConnect 与 Azure Active Directory (Azure AD) 集成。
 
@@ -184,7 +185,7 @@ ms.locfileid: "39444888"
 
 ### <a name="create-an-ipass-smartconnect-test-user"></a>创建 iPass SmartConnect 测试用户
 
-在本部分，我们将在 iPass SmartConnect 中创建一个名为 Britta Simon 的用户。 与 [iPass SmartConnect 支持团队](mailto:help@ipass.com)协作，在 iPass SmartConnect 平台中添加将需要列入允许列表的用户或域。 如果域是由团队添加，用户会自动预配到 iPass SmartConnect 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分，我们将在 iPass SmartConnect 中创建一个名为 Britta Simon 的用户。 请与  [iPass SmartConnect 支持团队](mailto:help@ipass.com) 协作，将需要列入允许列表的用户或域添加到 iPass SmartConnect 平台中。 如果域是由团队添加，用户会自动预配到 iPass SmartConnect 平台。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -257,7 +258,7 @@ f. 客户端将会激活。
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

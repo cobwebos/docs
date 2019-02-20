@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5e4a3a1fd450cf855e0ced142e6bc93d4536f2a8
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 24e757c80e23cecb50419a4855ec3ea9f94bcf3b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827714"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112116"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Azure 磁盘加密先决条件
 
@@ -133,7 +133,7 @@ ms.locfileid: "54827714"
 >在删除密钥保管库之前，请确保未使用它加密任何现有 VM。 要防止意外删除保管库，请在保管库上[启用软删除](../key-vault/key-vault-soft-delete-powershell.md#enabling-soft-delete)和[资源锁](../azure-resource-manager/resource-group-lock-resources.md)。 
  
 ## <a name="bkmk_KeyVault"></a>创建密钥保管库 
-Azure 磁盘加密与 [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) 集成，帮助你控制和管理 Key Vault 订阅中的磁盘加密密钥与机密。 可为 Azure 磁盘加密创建 Key Vault，或使用现有的 Key Vault。 有关 Key Vault 的详细信息，请参阅 [Azure Key Vault 入门](../key-vault/key-vault-get-started.md)和[保护 Key Vault](../key-vault/key-vault-secure-your-key-vault.md)。 可以使用资源管理器模板、Azure PowerShell 或 Azure CLI 创建 Key Vault。 
+Azure 磁盘加密与 [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) 集成，帮助你控制和管理 Key Vault 订阅中的磁盘加密密钥与机密。 可为 Azure 磁盘加密创建 Key Vault，或使用现有的 Key Vault。 有关密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../key-vault/key-vault-overview.md)和[保护密钥保管库](../key-vault/key-vault-secure-your-key-vault.md)。 可以使用资源管理器模板、Azure PowerShell 或 Azure CLI 创建 Key Vault。 
 
 
 >[!WARNING]

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: b052d3caa8a7231153f72523eff6e9d24778cb26
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 5f814465da8eeb2261f17e8f0d34fc02437bb5f2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249707"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55988004"
 ---
 # <a name="h264-multiple-bitrate-16x9-for-ios"></a>H264 多比特率 16x9 (iOS)
 `Media Encoder Standard` 定义了一组在创建编码作业时可使用的编码预设。 可以使用 `preset name` 指定编码媒体文件采用的格式。 也可以创建自己的 JSON 或基于 XML 的预设（使用 UTF-8 或 UTF-16 编码）。 然后，将自定义预设传递到编码器。 有关此 `Media Encoder Standard` 编码器支持的所有预设名称的列表，请参阅 [Media Encoder Standard 的任务预设](media-services-mes-presets-overview.md)。  
@@ -29,7 +29,7 @@ ms.locfileid: "50249707"
  此预设产生一组 8 GOP 对齐的 MP4 文件，范围从 8500 kbps 到 200 kbps，以及立体声 AAC 音频。 有关此预设的配置文件、比特率、采样率等的详细信息，请观察下面定义的 XML 或 JSON。 有关这些预设中的每个元素的含义及其有效值的说明，请参阅 [Media Encoder Standard 架构](media-services-mes-schema.md)主题。  
   
 > [!NOTE]
->  跨层修改 `Width` 和 `Height` 值时，请确保纵横比保持一致。 例如：1920x1080、1280x720、1080x576、640x360。 不应使用混合的纵横比，例如：1280x720、720x480、640x360。  
+>  跨层修改 `Width` 和 `Height` 值时，请确保纵横比保持一致。 例如：1920 x 1080、1280 x 720、1080 x 576、640 x 360。 不应使用混合的纵横比，例如：1280 x 720、720 x 480、640 x 360。  
   
  XML  
   

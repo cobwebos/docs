@@ -15,17 +15,20 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
 ms.custom: seodec18
-ms.openlocfilehash: d21d588660b67da024491151fe4f4376cebba46f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 43ec22836cb32c21953b9eb6871b9efe300cbf9e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729796"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001164"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>在 Azure 应用服务中使用 WebJobs 运行后台任务
 
 ## <a name="overview"></a>概述
 WebJobs 是 [Azure 应用服务](https://docs.microsoft.com/azure/app-service/)的一项功能，可以在与 Web 应用、API 应用或移动应用相同的上下文中运行程序或脚本。 使用 Web 作业无需支付额外的费用。
+
+> [!IMPORTANT]
+> Linux 上的应用服务尚不支持 WebJobs。
 
 本文介绍如何使用 [Azure 门户](https://portal.azure.com)部署 WebJobs，以便上传可执行文件或脚本。 有关如何使用 Visual Studio 开发和部署 WebJobs 的信息，请参阅[使用 Visual Studio 部署 WebJobs](webjobs-dotnet-deploy-vs.md)。
 
@@ -80,7 +83,7 @@ when making changes in one don't forget the other two.
 
    ![“添加 Web 作业”页](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
-   | 设置      | 示例值   | Description  |
+   | 设置      | 示例值   | 说明  |
    | ------------ | ----------------- | ------------ |
    | **名称** | myContinuousWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。 |
    | **文件上传** | ConsoleApp.zip | 一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。 [支持的文件类型](#acceptablefiles)部分中列出了支持的可执行文件或脚本文件类型。 |
@@ -118,7 +121,7 @@ when making changes in one don't forget the other two.
 
    ![“添加 Web 作业”页](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
-   | 设置      | 示例值   | Description  |
+   | 设置      | 示例值   | 说明  |
    | ------------ | ----------------- | ------------ |
    | **名称** | myTriggeredWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。|
    | **文件上传** | ConsoleApp.zip | 一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。 [支持的文件类型](#acceptablefiles)部分中列出了支持的可执行文件或脚本文件类型。 |
@@ -156,7 +159,7 @@ when making changes in one don't forget the other two.
 
    ![“添加 Web 作业”页](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
-   | 设置      | 示例值   | Description  |
+   | 设置      | 示例值   | 说明  |
    | ------------ | ----------------- | ------------ |
    | **名称** | myScheduledWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。 |
    | **文件上传** | ConsoleApp.zip | 一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。 [支持的文件类型](#acceptablefiles)部分中列出了支持的可执行文件或脚本文件类型。 |

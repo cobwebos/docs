@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 256550dc6aaa832599747f6fe39c2ca77ed3f8d7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 08913fc2e12026d70976ea8e2169c190378f4054
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441575"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193724"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insight4grc"></a>教程：Azure Active Directory 与 Insight4GRC 集成
 
@@ -167,7 +168,7 @@ ms.locfileid: "39441575"
 本部分是要在 Insight4GRC 中创建用户“Britta Simon”。 Insight4GRC 支持默认启用的实时预配。 此部分不存在任何操作项。 新用户在尝试访问 Insight4GRC 期间创建（如果尚不存在的话）。
 
 >[!Note]
->如果需要手动创建用户，请联系 [Insight4GRC 客户端支持团队](mailto:support.ss@rsmuk.com)。
+>如果需要手动创建用户，请联系 [Insight4GRC 客户端支持团队](mailto:support.ss@rsmuk.com)。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -204,12 +205,12 @@ ms.locfileid: "39441575"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 如果单击访问面板中的“Insight4GRC”磁贴，应该会自动登录 Insight4GRC 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

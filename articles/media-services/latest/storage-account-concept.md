@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 4668ff23710121e5495395d71902b9ffa4c01238
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 90e01f39fa6b31095d76d0dfae2f700b4fa2ca3f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220342"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182861"
 ---
 # <a name="storage-accounts"></a>存储帐户
 
@@ -29,7 +29,7 @@ ms.locfileid: "55220342"
 
 建议使用 GPv2，以便在热存储层和冷存储层之间进行选择。 若要了解存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../../storage/common/storage-account-overview.md)。 
 
-媒体服务帐户和所有关联的存储帐户必须位于同一 Azure 订阅中。 建议在媒体服务帐户所在的位置使用存储帐户。
+媒体服务帐户和所有关联的存储帐户必须位于同一 Azure 订阅中。 强烈建议在媒体服务帐户所在的位置使用存储帐户，避免额外的延迟和数据出口成本
 
 ## <a name="assets-in-a-storage-account"></a>存储帐户中的资产
 

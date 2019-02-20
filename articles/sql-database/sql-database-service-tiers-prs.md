@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: c223b55e8854c9d304354d917e07f4dd7720e72c
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/07/2019
+ms.openlocfilehash: aa9f3b42bbbe8255be328240d26ed4b8740cc5f7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507802"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55958484"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Azure SQL 数据库 Premium RS 服务层（预览版）即将停用 - 迁移选项
 
@@ -71,7 +71,7 @@ ms.locfileid: "55507802"
 |**如果当前使用…**|**迁移到对等的基于 vCore 的服务层...**|**迁移到对等的基于 DTU 的服务层...**|
 |---|---|---|
 |Premium RS 1|（预览版）超大规模 1 vCore（第 4 代）或业务关键 1 vCore（第 4 代）|高级 1|
-|Premium RS 2|（预览版）超大规模 2 vCore（第 4 代）或业务关键 2 vCore（第 4 代）|高级 2|
+|Premium RS 2|（预览版）超大规模 2 vCore（第 4 代）或业务关键 2 vCore（第 4 代|高级 2|
 |Premium RS 4|（预览版）超大规模 4 vCore（第 4 代）或业务关键 4 vCore（第 4 代）|高级 4
 |Premium RS 6|（预览版）超大规模 6 vCore（第 4 代）或业务关键 6 vCore（第 4 代）|高级 6|
 

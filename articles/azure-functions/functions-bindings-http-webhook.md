@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: dc9c3b6740533ae26cf395e436908a359cadf8d9
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: c92bb8e7441e9701d11f3223fa6ebde7869d6233
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321307"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895715"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions HTTP 触发器和绑定
 
@@ -27,6 +27,8 @@ HTTP 触发器可进行自定义以响应 [Webhook](https://en.wikipedia.org/wik
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
+
+本文中的代码默认使用 Functions 2.x 语法，该语法使用 .NET Core。 有关 1.x 语法的信息，请参阅 [1.x functions 模板](https://github.com/Azure/azure-functions-templates/tree/v1.x/Functions.Templates/Templates)。
 
 ## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
@@ -63,26 +65,21 @@ HTTP 触发器可进行自定义以响应 [Webhook](https://en.wikipedia.org/wik
 
 ```cs
 [FunctionName("HttpTriggerCSharp")]
-public static async Task<HttpResponseMessage> Run(
-    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)]HttpRequestMessage req, 
-    ILogger log)
+public static async Task<IActionResult> Run(
+    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] 
+    HttpRequest req, ILogger log)
 {
     log.LogInformation("C# HTTP trigger function processed a request.");
 
-    // parse query parameter
-    string name = req.GetQueryNameValuePairs()
-        .FirstOrDefault(q => string.Compare(q.Key, "name", true) == 0)
-        .Value;
+    string name = req.Query["name"];
 
-    // Get request body
-    dynamic data = await req.Content.ReadAsAsync<object>();
-
-    // Set name to query string or body data
+    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    dynamic data = JsonConvert.DeserializeObject(requestBody);
     name = name ?? data?.name;
 
-    return name == null
-        ? req.CreateResponse(HttpStatusCode.BadRequest, "Please pass a name on the query string or in the request body")
-        : req.CreateResponse(HttpStatusCode.OK, "Hello " + name);
+    return name != null
+        ? (ActionResult)new OkObjectResult($"Hello, {name}")
+        : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
 }
 ```
 
@@ -117,48 +114,46 @@ function.json 文件如下所示：
 
 [配置](#trigger---configuration)部分解释了这些属性。
 
-下面是绑定到 `HttpRequestMessage` 的 C# 脚本代码：
+下面是绑定到 `HttpRequest` 的 C# 脚本代码：
 
-```csharp
+```cs
 using System.Net;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
+using Newtonsoft.Json;
 
-public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
+public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 {
-    log.LogInformation($"C# HTTP trigger function processed a request. RequestUri={req.RequestUri}");
+    log.LogInformation("C# HTTP trigger function processed a request.");
 
-    // parse query parameter
-    string name = req.GetQueryNameValuePairs()
-        .FirstOrDefault(q => string.Compare(q.Key, "name", true) == 0)
-        .Value;
+    string name = req.Query["name"];
 
-    // Get request body
-    dynamic data = await req.Content.ReadAsAsync<object>();
-
-    // Set name to query string or body data
+    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    dynamic data = JsonConvert.DeserializeObject(requestBody);
     name = name ?? data?.name;
 
-    return name == null
-        ? req.CreateResponse(HttpStatusCode.BadRequest, "Please pass a name on the query string or in the request body")
-        : req.CreateResponse(HttpStatusCode.OK, "Hello " + name);
+    return name != null
+        ? (ActionResult)new OkObjectResult($"Hello, {name}")
+        : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
 }
 ```
 
-可以绑定到自定义对象而不是 `HttpRequestMessage`。 此对象从请求正文进行创建，并分析为 JSON。 同样，可以将类型传递给 HTTP 响应输出绑定，并作为响应正文随 200 状态代码一同返回。
+可以绑定到自定义对象而不是 `HttpRequest`。 此对象从请求正文进行创建，并分析为 JSON。 同样，可以将类型传递给 HTTP 响应输出绑定，并作为响应正文随 200 状态代码一同返回。
 
 ```csharp
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
-public static string Run(CustomObject req, ILogger log)
-{
-    return "Hello " + req?.name;
+public static string Run(Person person, ILogger log)
+{   
+    return person.Name != null
+        ? (ActionResult)new OkObjectResult($"Hello, {person.Name}")
+        : new BadRequestObjectResult("Please pass an instance of Person.");
 }
 
-public class CustomObject {
-     public string name {get; set;}
+public class Person {
+     public string Name {get; set;}
 }
 ```
 
@@ -547,12 +542,12 @@ public class ToDoItem {
 
 ```csharp
 [FunctionName("HttpTriggerCSharp")]
-public static HttpResponseMessage Run(
-    [HttpTrigger(AuthorizationLevel.Anonymous)] HttpRequestMessage req)
+public static Task<IActionResult> Run(
+    [HttpTrigger(AuthorizationLevel.Anonymous)] HttpRequest req)
 {
     ...
 }
- ```
+```
 
 有关完整示例，请参阅[触发器 - C# 示例](#trigger---c-example)。
 
@@ -572,7 +567,7 @@ public static HttpResponseMessage Run(
 
 ## <a name="trigger---usage"></a>触发器 - 用法
 
-对于 C# 和 F # 函数，可以将触发器输入的类型声明为 `HttpRequestMessage` 或自定义类型。 如果选择 `HttpRequestMessage`，会获得对请求对象的完全访问权限。 对于自定义类型，运行时会尝试分析 JSON 请求正文，以设置对象属性。
+对于 C# 和 F # 函数，可以将触发器输入的类型声明为 `HttpRequest` 或自定义类型。 如果选择 `HttpRequest`，会获得对请求对象的完全访问权限。 对于自定义类型，运行时会尝试分析 JSON 请求正文，以设置对象属性。
 
 对于 JavaScript 函数，Functions 运行时提供请求正文而不是请求对象。 有关详细信息，请参阅 [JavaScript 触发器示例](#trigger---javascript-example)。
 
@@ -612,13 +607,19 @@ http://<yourapp>.azurewebsites.net/api/products/electronics/357
 这使得函数代码可以支持地址中的两个参数：“category”和“id”。可以将任何 [Web API 路由约束](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints)与参数配合使用。 以下 C# 函数代码使用了这两个参数。
 
 ```csharp
-public static Task<HttpResponseMessage> Run(HttpRequestMessage req, string category, int? id,
-                                                ILogger log)
+public static Task<IActionResult> Run(HttpRequest req, string category, int? id, ILogger log)
 {
     if (id == null)
-        return  req.CreateResponse(HttpStatusCode.OK, $"All {category} items were requested.");
+    {
+        return (ActionResult)new OkObjectResult($"All {category} items were requested.");
+    }
     else
-        return  req.CreateResponse(HttpStatusCode.OK, $"{category} item with id = {id} has been requested.");
+    {
+        return (ActionResult)new OkObjectResult($"{category} item with id = {id} has been requested.");
+    }
+    
+    // -----
+    log.LogInformation($"C# HTTP trigger function processed a request. RequestUri={req.RequestUri}");
 }
 ```
 
@@ -674,7 +675,7 @@ public static IActionResult Run(HttpRequest req, ILogger log)
 {
     ClaimsPrincipal identities = req.HttpContext.User;
     // ...
-    return new OkResult();
+    return new OkObjectResult();
 }
 ```
 
@@ -730,7 +731,7 @@ Functions 允许使用密钥使其难以在开发过程中访问 HTTP 函数终�
 
 大多数 HTTP 触发器模板都需要在请求中获取 API 密钥。 因此 HTTP 请求通常如以下 URL 所示：
 
-    https://<yourapp>.azurewebsites.net/api/<function>?code=<ApiKey>
+    https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
 
 该密钥可以包含在名为 `code` 的查询字符串变量中（如上所示）。 也可以包含在 `x-functions-key` HTTP 头中。 密钥的值可以为任意为函数定义的函数密钥，也可以为任意主机密钥。
 
@@ -774,7 +775,7 @@ Slack webhook 为用户生成令牌，而非让用户指定它，所以必须使
 
 Webhook 授权由属于 HTTP 触发器的 webhook 接收器组件处理，其机制因 webhook 类型而异。 每种机制都依赖于一个密钥。 默认情况下，使用名为“default”的函数密钥。 要使用其他密钥，请将 webhook 提供程序配置为使用以下方式之一的请求发送密钥名称：
 
-* **查询字符串**：提供程序通过 `clientid` 查询字符串参数（例如，`https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>`）传递密钥名称。
+* **查询字符串**：提供程序通过 `clientid` 查询字符串参数（例如，`https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?clientid=<KEY_NAME>`）传递密钥名称。
 * **请求标头**：提供程序通过 `x-functions-clientid` 标头传递密钥名称。
 
 ## <a name="trigger---limits"></a>触发器 - 限制
@@ -805,7 +806,7 @@ HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限
 
 ## <a name="output---usage"></a>输出 - 用法
 
-若要发送 HTTP 响应，请使用语言标准响应模式。 在 C# 或 C# 脚本中，使函数返回类型为 `HttpResponseMessage` 或 `Task<HttpResponseMessage>`。 在 C# 中，不需要返回值属性。
+若要发送 HTTP 响应，请使用语言标准响应模式。 在 C# 或 C# 脚本中，使函数返回类型为 `IActionResult` 或 `Task<IActionResult>`。 在 C# 中，不需要返回值属性。
 
 有关示例响应，请参阅[触发器示例](#trigger---example)。
 

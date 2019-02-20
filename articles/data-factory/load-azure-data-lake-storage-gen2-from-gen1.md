@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 数据工厂将数据从 Azure Data Lake Storage Gen1 复制到 Gen2（预览版）
-description: 使用 Azure 数据工厂将数据从 Azure Data Lake Storage Gen1 复制到 Gen2（预览版）
+title: 使用 Azure 数据工厂将数据从 Azure Data Lake Storage Gen1 复制到 Gen2
+description: 使用 Azure 数据工厂将数据从 Azure Data Lake Storage Gen1 复制到 Gen2
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: jingwang
-ms.openlocfilehash: 40cf8dcf6729d577c4fff694b0380833fccb142d
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: da42e0bf86aca571fb26367f18bbf07f90f5531b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679352"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884607"
 ---
-# <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-preview-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Azure Data Lake Storage Gen1 复制到 Gen2（预览版）
+# <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Azure Data Lake Storage Gen1 复制到 Gen2
 
-Azure Data Lake Storage Gen2 预览版是一组致力于进行大数据分析的功能，基于 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)而构建。 它可使用文件系统和对象存储范例与数据进行交互。
+Azure Data Lake Storage Gen2 是一组专用于大数据分析的功能，内置于 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)中。 它可使用文件系统和对象存储范例与数据进行交互。
 
 如果当前正在使用 Azure Data Lake Storage Gen1，则可以使用 Azure 数据工厂将数据从 Data Lake Storage Gen1 复制到 Gen2，以便评估 Gen2 的新功能。
 
@@ -92,7 +92,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 
     ![指定输出文件夹](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-binary-copy.png)
     
-7. 在“目标数据存储”页，单击“+ 创建新连接”，然后选择“Azure Data Lake Storage Gen2 (预览版)”，并选择“继续”：
+7. 在“目标数据存储”页中，单击“+ 创建新连接”，然后选择“Azure Data Lake Storage Gen2”，并选择“继续”：
 
     ![“目标数据存储”页](./media/load-azure-data-lake-storage-gen2-from-gen1/destination-data-storage-page.png)
 

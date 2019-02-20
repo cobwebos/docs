@@ -1,6 +1,6 @@
 ---
-title: 使用 DistCp 将数据复制到 Azure Data Lake Storage Gen2 预览版 | Microsoft Docs
-description: 使用 DistCp 工具将数据复制到 Data Lake Storage Gen2 预览版和从 Data Lake Storage Gen2 预览版复制数据
+title: 使用 DistCp 将数据复制到 Azure Data Lake Storage Gen2 | Microsoft Docs
+description: 使用 DistCp 工具将数据复制到 Data Lake Storage Gen2 和从中复制数据
 services: storage
 author: seguler
 ms.subservice: data-lake-storage-gen2
@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: seguler
-ms.openlocfilehash: 9c12f96399de218241c8aa7ed686113c17a7410c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 8328ea5afb66bbecdafbb06dcbf6700194d62f9e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244141"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864054"
 ---
-# <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2-preview"></a>使用 DistCp 在 Azure 存储 Blob 与 Azure Data Lake Storage Gen2 预览版之间复制数据
+# <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据
 
 可以使用 [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) 在常规用途 V2 存储帐户与启用了分层命名空间的常规用途 V2 存储帐户之间复制数据。 本文提供如何使用 DistCp 工具的说明。
 
@@ -24,8 +24,8 @@ DistCp 提供了各种命令行参数，强烈建议你阅读本文以优化对 
 ## <a name="prerequisites"></a>先决条件
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **未启用 Data Lake Storage Gen2 预览版功能（分层命名空间）的现有 Azure 存储帐户**。
-* **已启用 Data Lake Storage Gen2（预览版）功能的 Azure 存储帐户**。 有关如何创建 Azure 存储帐户的说明，请参阅[创建 Azure Data Lake Storage Gen2 预览版存储帐户](data-lake-storage-quickstart-create-account.md)
+* **未启用 Data Lake Storage Gen2 功能（分层命名空间）的现有 Azure 存储帐户**。
+* **已启用 Data Lake Storage Gen2 功能的 Azure 存储帐户**。 有关如何创建帐户的说明，请参阅[创建 Azure Data Lake Storage Gen2 存储帐户](data-lake-storage-quickstart-create-account.md)
 * 在已启用分层命名空间的存储帐户中创建的**文件系统**。
 * 可以访问启用了 Data Lake Storage Gen2 的存储帐户的 **Azure HDInsight 群集**。 请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](data-lake-storage-use-hdi-cluster.md)。 请确保对该群集启用远程桌面。
 

@@ -11,13 +11,13 @@ author: vainolo
 ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 0c79554d2db4c1dc17cfbdeed052c1ae16cd68c2
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.date: 02/07/2019
+ms.openlocfilehash: d092b4e8096b311ba9ca9d3fbceea8fb57bf4aa9
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297678"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234656"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
@@ -41,9 +41,9 @@ ms.locfileid: "55297678"
 - **分析**报告。 可以查找可疑事件、异常活动和趋势。
 
 > [!IMPORTANT]
-> 审核日志会写入 Azure 订阅的 Azure Blob 存储中的追加 Blob。
+> 审核日志会写入 Azure 订阅的 Azure Blob 存储中的**追加 Blob**。
 >
-> - 追加 Blob 目前不支持高级存储。
+> - 追加 Blob 目前**不支持****高级存储**。
 > - 目前不支持 VNet 中的存储。
 
 ## <a id="subheading-8"></a>定义服务器级和数据库级审核策略
@@ -125,6 +125,7 @@ ms.locfileid: "55297678"
 如果已选择将审核日志写入到事件中心，请执行以下操作：
 
 - 若要使用事件中心的审核日志数据，需设置一个流来使用事件并将其写入到目标。 有关详细信息，请参阅 [Azure 事件中心文档](https://docs.microsoft.com/azure/event-hubs/)。
+- 事件中心内的审核日志在 [Apache Avro](http://avro.apache.org/) 事件的主体中捕获，并使用带有 UTF-8 编码的 JSON 格式进行存储。 若要读取审核日志，可以使用 [Avro 工具](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools)或处理此格式的类似工具。
 
 如果选择将审核日志写入到 Azure 存储帐户，可以使用多种方法来查看日志：
 

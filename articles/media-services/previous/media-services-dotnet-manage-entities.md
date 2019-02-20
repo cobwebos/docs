@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: af5baf3444196e5a0e8412d9ab4f019fdccb033e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7cab21919eca9ba62fa57e1c6b2089c0b8e115dc
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783676"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979966"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 管理资产和相关的实体
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "33783676"
 > 
 > 
 
-本主题演示如何使用 .NET 管理 Azure 媒体服务实体。 
+本主题演示如何使用 .NET 管理 Azure 媒体服务实体（旧版）
 
 >[!NOTE]
 > 自 2017 年 4 月 1 日起，即使记录总数低于最大配额，也会自动删除帐户中所有超过 90 天的作业记录，及其相关的任务记录。 例如，将于 2017 年 4 月 1 日自动删除帐户中 2016 年 12 月 31 日前的所有作业记录。 在需要时，可使用本主题中所述的代码存档作业/任务信息。

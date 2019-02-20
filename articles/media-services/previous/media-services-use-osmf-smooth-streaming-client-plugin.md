@@ -4,7 +4,7 @@ description: 了解如何使用适用于 Adobe Open Source Media Framework 的 A
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 6068151f-b6b0-4507-9346-f03416d3d572
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 1664dc16e93fa825962690ec3ed5681478005d59
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: cfabc068e801c610c9e393eea50213a3c5ad26ea
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229622"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000091"
 ---
-# <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>如何使用适用于 Adobe Open Source Media Framework 的 Microsoft 平滑流式处理插件
+# <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>如何使用适用于 Adobe Open Source Media Framework 的 Microsoft 平滑流式处理插件  
 ## <a name="overview"></a>概述
 适用于 Open Source Media Framework 2.0 的 Microsoft 平滑流式处理插件 (SS for OSMF) 扩展了 OSMF 的默认功能，并在新的和现有的 OSMF 播放器中添加了 Microsoft 平滑流式处理内容播放功能。 该插件还为 Strobe Media Playback (SMP) 添加了平滑流式处理播放功能。
 

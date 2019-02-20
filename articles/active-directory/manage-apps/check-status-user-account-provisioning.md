@@ -3,8 +3,8 @@ title: 有关在  SaaS 应用程序中自动预配 Azure Active Directory 用户
 description: 了解如何检查自动用户帐户预配作业的状态，以及如何排查单个用户的预配问题。
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,14 +12,15 @@ ms.tgt_pltfrm: app-mgmt
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/09/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asmalser
-ms.openlocfilehash: 833fe24f83a2f159fd00d24c67b6864ce614c445
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0a6d1684c4bc0031978fb5e76548a3112b0f1ef2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203906"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206984"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>教程：针对自动用户帐户预配进行报告
 
@@ -58,13 +59,13 @@ Azure Active Directory 包含一个[用户帐户预配服务](user-provisioning.
 
 预配摘要报告显示在给定应用程序的“预配”选项卡中。 它位于“同步详细信息”部分中的“设置”下面，提供以下信息：
 
-* 已同步并且当前位于源系统与目标系统之间的预配范围内的用户和/或组总数
+* 已同步并且当前位于源系统与目标系统之间的预配范围内的用户和/或组总数。
 
 * 上次运行同步的时间。 [初始同步](user-provisioning.md#what-happens-during-provisioning)完成后，同步通常每隔 20-40 分钟进行一次。
 
-* 是否已完成[初始同步](user-provisioning.md#what-happens-during-provisioning)
+* 是否已完成[初始同步](user-provisioning.md#what-happens-during-provisioning)。
 
-* 预配过程是否已被隔离，隔离状态的原因是什么（例如，由于管理员凭据无效，与目标系统通信失败）
+* 预配过程是否已被隔离，隔离状态的原因是什么（例如，由于管理员凭据无效，与目标系统通信失败）。
 
 管理员应该先查看预配摘要报告，确定预配作业的工作运行状况。
 
@@ -79,7 +80,7 @@ Azure Active Directory 包含一个[用户帐户预配服务](user-provisioning.
 
 * **导出事件** - 每当 Azure AD 预配服务向目标系统写入用户帐户或组对象时，将记录“导出”事件。 这些事件记录发生相应事件时，Azure AD 预配服务写入的所有用户属性及其值。 如果向目标系统写入用户帐户或组对象时出错，此处会显示该错误。
 
-* **进程托管事件** - 如果预配服务在尝试某个操作时遇到失败，并根据退让时间间隔重试该操作，则会发生进程托管。 每当某个预配操作被停用时，将记录“托管”事件。
+* **进程托管事件** - 如果预配服务在尝试某个操作时遇到失败，并根据退让时间间隔重试该操作，则会发生进程托管。 每当某个预配操作被停用时，即会记录“托管”事件。
 
 查看单个用户的预配事件时，这些事件通常按以下顺序显示：
 
@@ -102,7 +103,7 @@ Azure Active Directory 包含一个[用户帐户预配服务](user-provisioning.
 
 2. 在“类别”菜单中，选择“帐户预配”。
 
-3. 在“日期范围”菜单中，选择要搜索的日期范围
+3. 在“日期范围”菜单中，选择要搜索的日期范围。
 
 4. 在“搜索”栏中，输入要搜索的用户的用户 ID。 ID 值的格式应该与在属性映射配置中选作主要匹配 ID（例如 userPrincipalName 或员工 ID 编号）的任何值相匹配。 所需 ID 值会显示在“目标”列中。
 

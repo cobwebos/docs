@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 02/06/2019
 ms.author: juliako
-ms.openlocfilehash: 9c8bff5a0a4f1599a3d23e0c7b07a1caca536a9b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9d62ef2295abbb8f8fc6f45ffc0c7ab1ce9616e4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153957"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878351"
 ---
 # <a name="live-event-types-comparison"></a>实时事件类型比较
 
@@ -45,7 +45,7 @@ ms.locfileid: "55153957"
 | 输出视频的最大视频分辨率|与输入相同|720p（速率为 30 帧/秒）|
 | 输入协议|RTMP、分段 MP4（平滑流式处理）|RTMP、分段 MP4（平滑流式处理）|
 | 价格|请参阅[定价页](https://azure.microsoft.com/pricing/details/media-services/)并单击“实时视频”选项卡|请参阅[定价页](https://azure.microsoft.com/pricing/details/media-services/)并单击“实时视频”选项卡|
-| 最长运行时间|24x365 实时线性|全天候运行|
+| 最长运行时间| 24 小时 x 365 天，实时线性 | 最多 24 小时|
 | 传递嵌入式 CEA 608/708 字幕数据的能力|是|是|
 | 支持插入静态图像|否|否|
 | 支持通过 API 发出广告指示| 否|否|

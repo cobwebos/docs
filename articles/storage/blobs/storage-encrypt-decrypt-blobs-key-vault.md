@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 09bb74ead0ff52cc7a70170357ddc54a91bf00d9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4552249e7d7dd79edbe885b3d615f5071aa694ee
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239401"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116093"
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>教程：在 Microsoft Azure 存储中使用 Azure Key Vault 加密和解密 Blob
 ## <a name="introduction"></a>介绍
@@ -43,7 +43,7 @@ ms.locfileid: "55239401"
 4. 然后，将已加密的数据上传到 Azure 存储服务。
 
 ## <a name="set-up-your-azure-key-vault"></a>设置 Azure 密钥保管库
-若要继续本教程，请执行教程 [Azure 密钥保管库入门](../../key-vault/key-vault-get-started.md)中所述的以下步骤：
+若要继续本教程，请执行教程[什么是 Azure 密钥保管库？](../../key-vault/key-vault-overview.md)中所述的以下步骤：
 
 * 创建密钥保管库。
 * 将密钥或密码添加到密钥保管库。

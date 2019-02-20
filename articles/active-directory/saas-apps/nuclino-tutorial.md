@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 1a5346b98de48b1a2f8928c3c2bf30730588e9c1
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 655ac490e528680f779eeca54899a022ddf3b89a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43145352"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189543"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nuclino"></a>教程：Azure Active Directory 与 Nuclino 的集成
 
@@ -229,7 +230,7 @@ ms.locfileid: "43145352"
 本部分的目的是在 Nuclino 中创建名为“Britta Simon”的用户。 Nuclino 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 如果新用户尚不存在，可在尝试访问 Nuclino 期间创建该用户。
 
 > [!Note]
-> 如果需要手动创建用户，请联系 [Nuclino 支持团队](mailto:contact@nuclino.com)。
+> 如果需要手动创建用户，请联系  [Nuclino 支持团队](mailto:contact@nuclino.com)。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -266,12 +267,12 @@ ms.locfileid: "43145352"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Nuclino 磁贴时，应会自动登录到 Nuclino 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

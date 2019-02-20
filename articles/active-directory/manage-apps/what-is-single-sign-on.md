@@ -2,21 +2,22 @@
 title: 单一登录到应用程序 - Azure Active Directory | Microsoft Docs
 description: 了解如何在 Azure Active Directory (Azure AD) 中配置应用程序时选择单一登录方法。 使用单一登录，这样用户就无需记住个每应用程序的密码，而且简化了帐户管理。
 services: active-directory
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/25/2019
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: arvindh
-ms.openlocfilehash: 8216eb9c076111bfa70633b24f36ac97b0ee319a
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6984307dda58aeba840f2b6d08e84fb4f60cacc8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664023"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163064"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>单一登录到 Azure Active Directory 中的应用程序
 当用户在 Azure Active Directory (Azure AD) 中登录到应用程序时，单一登录 (SSO) 可以增加安全性和便利性。 本文介绍单一登录方法，并帮助你选择在配置应用程序时最适合的 SSO 方法。
@@ -58,7 +59,7 @@ ms.locfileid: "55664023"
 - [Azure Active Directory 开发人员指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)。
 
 ## <a name="saml-sso"></a>SAML SSO
-使用“SAML 单一登录”，Azure AD 通过用户的 Azure AD 帐户向应用程序进行身份验证。 Azure AD 通过连接协议将登录信息传递给应用程序。 使用基于 SAML 的单一登录，可以根据在 SAML 声明中定义的规则将用户映射到特定的应用程序角色
+使用“SAML 单一登录”，Azure AD 通过用户的 Azure AD 帐户向应用程序进行身份验证。 Azure AD 通过连接协议将登录信息传递给应用程序。 使用基于 SAML 的单一登录，可以根据在 SAML 声明中定义的规则将用户映射到特定的应用程序角色。
 
 选择基于 SAML 的单一登录（如果应用程序支持）。
 
@@ -85,7 +86,7 @@ ms.locfileid: "55664023"
 对于提供了基于 HTML 的登录页面的任何基于云的应用程序都支持基于密码的单一登录。 用户可以使用以下任一浏览器：
 
 - Windows 7 或更高版本上的 Internet Explorer 11
-- Windows 10 周年纪念版或更高版本上的 Microsoft Edge 
+- Windows 10 周年纪念版或更高版本上的 Microsoft Edge
 - Windows 7 或更高版本以及 MacOS X 或更高版本上的 Chrome
 - Windows XP SP2 或更高版本以及 Mac OS X 10.6 或更高版本上的 Firefox 26.0 或更高版本
 

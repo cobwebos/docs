@@ -5,24 +5,27 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/22/2019
+ms.date: 2/7/2019
 ms.author: victorh
-ms.openlocfilehash: 87a80703c473245660a850645ca3fef21bbd80f6
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 31543db8e177701ddfe6beaaa3091d6465b0e9cd
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452711"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895474"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>委托 Azure DNS 子域
 
-可以使用 Azure 门户委托 DNS 子域。 例如，如果你拥有 contoso.com 域，可将名为 *engineering* 的子域委托给另一个可以独立于 contoso.com 区域进行管理的单独区域。
+可以使用 Azure 门户委托 DNS 子域。 例如，如果拥有 contoso.com 域，可将名为 *engineering* 的子域委托给另一个可以独立于 contoso.com 区域进行管理的单独区域。
+
+如果需要，可以使用 [Azure PowerShell](delegate-subdomain-ps.md) 委托子域。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要委托 Azure DNS 子域，必须先将公共域委托给 Azure DNS。 有关如何为委托配置名称服务器的说明，请参阅[将域委托给 Azure DNS](./dns-delegate-domain-azure-dns.md)。 将域委托给 Azure DNS 区域后，可以委托子域。
 
-本文中的示例使用 contoso.com 域。 执行这些过程时，应将此域替换为你自己的域。
+> [!NOTE]
+> 本文通篇都使用 contoso.com 作为示例。 请将 contoso.com 替换为你自己的域名。
 
 ## <a name="create-a-zone-for-your-subdomain"></a>为子域创建区域
 
@@ -38,10 +41,13 @@ ms.locfileid: "54452711"
 
 ## <a name="note-the-name-servers"></a>记下名称服务器
 
-接下来，复制子域的四个名称服务器。
+接下来，记下 engineering 子域的四个名称服务器。
 
-1. 在 **engineering** 区域窗格中，记下区域的四个名称服务器。 稍后要使用这些名称服务器。
-2. 创建用于测试的 **A** 记录。 例如，创建 **www** A 记录，并为其配置 **10.10.10.10** IP 地址。
+在 **engineering** 区域窗格中，记下区域的四个名称服务器。 稍后要使用这些名称服务器。
+
+## <a name="create-a-test-record"></a>创建测试记录
+
+创建用于测试的 **A** 记录。 例如，创建 **www** A 记录，并为其配置 **10.10.10.10** IP 地址。
 
 ## <a name="create-an-ns-record"></a>创建 NS 记录
 
@@ -59,10 +65,8 @@ ms.locfileid: "54452711"
 使用 nslookup 测试委托。
 
 1. 打开 PowerShell 窗口。
-2. 在命令提示符下，键入 `nslookup www.engineering.<your domain name>.`
+2. 在命令提示符下，键入 `nslookup www.engineering.contoso.com.`
 3. 应会收到一条非权威回复，其中显示了地址 **10.10.10.10**。
-
-
 
 ## <a name="next-steps"></a>后续步骤
 

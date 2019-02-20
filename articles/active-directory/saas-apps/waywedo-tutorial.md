@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: jeedes
-ms.openlocfilehash: bc415ec7c577e221a1ab5af585dff5b4fc9ab7dc
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5dc6d8e2cf7ac4786f30484325406a1fe696dff3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259440"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165121"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-way-we-do"></a>教程：Azure Active Directory 与 Way We Do 集成
+# <a name="tutorial-azure-active-directory-integration-with-way-we-do"></a>教程：Azure Active Directory 与 Way We Do 的集成
 
 本教程介绍如何将 Way We Do 与 Azure Active Directory (Azure AD) 集成。
 
@@ -198,7 +199,7 @@ ms.locfileid: "39259440"
 本部分的目的是在 Way We Do 中创建名为 Britta Simon 的用户。 Way We Do 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 如果新用户尚不存在，可在尝试访问 Way We Do 期间创建该用户。
 
 > [!Note]
-> 如果需要手动创建用户，请联系 [ 客户端支持团队](mailto:support@waywedo.com)。
+> 如果需要手动创建用户，请联系  [Way We Do 客户端支持团队](mailto:support@waywedo.com)。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -235,12 +236,12 @@ ms.locfileid: "39259440"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“Way We Do”磁贴，即可自动登录到 Way We Do 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

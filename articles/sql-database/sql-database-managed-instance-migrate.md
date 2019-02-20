@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: ce7892401b2b04565a00c33c5301b9c0cd05d5f5
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/11/2019
+ms.openlocfilehash: 1460b595e8887fc932d5be335ae51b07a000b9fb
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732747"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098351"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>将 SQL Server 实例迁移到 Azure SQL 数据库托管实例
 
-本文介绍了如何将 SQL Server 2005 或更高版本实例迁移到 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)。
+本文介绍了如何将 SQL Server 2005 或更高版本实例迁移到 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)。 有关迁移到单一数据库或弹性池的信息，请参阅[迁移到单一数据库或入池数据库](sql-database-cloud-migrate.md)。 有关从其他平台迁移的迁移信息，请参阅 [Azure 数据库迁移指南](https://datamigration.microsoft.com/)。
 
 概括而言，数据库迁移过程如下所示：
 
@@ -34,7 +34,7 @@ ms.locfileid: "55732747"
 - [监视应用程序](#monitor-applications)
 
 > [!NOTE]
-> 若要将单个数据库迁移到单个数据库或弹性池，请参阅[将 SQL Server 数据库迁移到 Azure SQL 数据库](sql-database-cloud-migrate.md)。
+> 若要将单个数据库迁移到单个数据库或弹性池，请参阅[将 SQL Server 数据库迁移到 Azure SQL 数据库](sql-database-single-database-migrate.md)。
 
 ## <a name="assess-managed-instance-compatibility"></a>评估托管实例兼容性
 
@@ -47,7 +47,7 @@ ms.locfileid: "55732747"
 - 需要直接访问操作系统或文件系统（例如，为了在装有 SQL Server 的同一个虚拟机上安装第三方代理或自定义代理）。
 - 严重依赖于目前尚不支持的功能，例如 FileStream/FileTable、PolyBase 和跨实例事务。
 - 绝对需要保持使用特定的 SQL Server 版本（例如 2012）。
-- 计算要求比公共预览版托管实例的要求低得多（例如，只需一个 vCore），并且数据库整合不可接受。
+- 计算要求比托管实例的要求低得多（例如，只需一个 vCore），并且数据库整合不可接受。
 
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>部署到大小最适合的托管实例
 

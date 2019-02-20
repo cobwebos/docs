@@ -7,19 +7,19 @@ ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: douglaslMS
-ms.author: douglasl
+author: CarlRabeler
+ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6066ca586ce9923158026fbeaa405de16681de9b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/07/2019
+ms.openlocfilehash: 6e25c0970a48674e157dac5f51c9508596ff6ea1
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461333"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097076"
 ---
-# <a name="copy-an-transactionally-consistent-copy-of-an-azure-sql-database"></a>复制 Azure SQL 数据库的事务一致性副本
+# <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>复制 Azure SQL 数据库的事务一致性副本
 
 通过 Azure SQL 数据库，可以以多种方式在相同或不同的服务器上创建现有 Azure SQL 数据库的事务一致性副本。 可以使用 Azure 门户、PowerShell 或 T-SQL 复制 SQL 数据库。 
 
@@ -68,6 +68,7 @@ New-AzureRmSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
 使用 [CREATE DATABASE](https://msdn.microsoft.com/library/ms176061.aspx) 语句开始复制源数据库。 执行此语句将启动数据库复制过程。 因为复制数据库是一个异步过程，所以，CREATE DATABASE 语句会在数据库完成复制前返回。
 
 ### <a name="copy-a-sql-database-to-the-same-server"></a>将 SQL 数据库复制到同一台服务器
+
 使用服务器级别主体登录名或创建了要复制的数据库的登录名登录到 master 数据库。 若要成功复制数据库，非服务器级主体的登录名必须是 dbmanager 角色的成员。
 
 此命令将 Database1 复制到同一服务器上名为 Database2 的新数据库。 根据数据库的大小，复制操作可能需要一些时间才能完成。
@@ -86,6 +87,9 @@ New-AzureRmSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
     -- Start copying from Server1 to Server2
     CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
+## <a name="to-move-a-database-between-subscriptions"></a>在订阅之间移动数据库
+
+在 [Azure 门户](https://portal.azure.com)中，单击“SQL Server”，并从列表中选择托管数据库的服务器。 单击“**移动**”，并选择要移动的资源以及要移动到其中的订阅。
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>监视复制操作的进度
 
@@ -96,7 +100,6 @@ New-AzureRmSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
 
 > [!NOTE]
 > 如果决定在复制过程中取消复制，请对新数据库执行 [DROP DATABASE](https://msdn.microsoft.com/library/ms178613.aspx) 语句。 此外，对源数据库执行 DROP DATABASE 语句也将取消复制过程。
-> 
 
 ## <a name="resolve-logins"></a>解析登录名
 

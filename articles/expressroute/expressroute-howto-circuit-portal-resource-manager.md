@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 974421662a33cd9167d3c39b31d8da20db9f505f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3abdeff3c3f1a4069130ed7c8d49d485feea4093
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091521"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894711"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路
 > [!div class="op_single_selector"]
@@ -51,7 +51,8 @@ ms.locfileid: "53091521"
   ![配置 SKU 层和数据计量](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
 
   * “层”决定是启用 ExpressRoute 标准版外接程序还是 ExpressRoute 高级版外接程序。 可以指定“Standard”以获取标准 SKU，或指定“Premium”以获取高级版外接程序。
-  * “数据计量”决定计费类型。 可以指定“Metered”以获取数据流量套餐，指定“Unlimited”以获取无限制流量套餐。 注意：可以将计费类型从“Metered”更改为“Unlimited”，但不能将类型从“Unlimited”更改为“Metered”。
+  * “数据计量”决定计费类型。 可以指定“Metered”以获取数据流量套餐，指定“Unlimited”以获取无限制流量套餐。 请注意，你可以将计费类型从“按流量计费”更改为“不限流量”。
+    > [!IMPORTANT] 你无法将类型从“不限流量”更改为“按流量计费”。
   * “对等互连位置”是与 Microsoft 建立对等互连的实际位置。
 
     > [!IMPORTANT]
@@ -117,10 +118,11 @@ ms.locfileid: "53091521"
 可以执行下列任务，而不产生任何故障时间：
 
 * 为 ExpressRoute 线路启用或禁用 ExpressRoute Premium 加载项。
-* 增加 ExpressRoute 线路的带宽，前提是端口上有可用容量。 不支持对线路的带宽进行降级。 
-* 将计量套餐从“按流量计费”更改为“不限流量”。 不支持将计量套餐从无限制流量套餐更改为数据流量套餐。
+* 增加 ExpressRoute 线路的带宽，前提是端口上有可用容量。
+  > [!IMPORTANT] 不支持对线路的带宽进行降级。 
+* 将计量套餐从“按流量计费”更改为“不限流量”。
+  > [!IMPORTANT] 不支持将计量套餐从不限流量套餐更改为数据流量套餐。
 * 可以启用和禁用允许经典操作。
-
 > [!IMPORTANT]
 > 如果现有端口上的容量不足，可能需要重新创建 ExpressRoute 线路。 如果该位置没有额外的可用容量，则不能升级线路。
 >

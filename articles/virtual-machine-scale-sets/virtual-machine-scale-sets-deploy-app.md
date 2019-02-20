@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 4b977a2fe9dadfe42e02063fa4fa291b9be484ac
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 09145612821cb669e26e3ccb8d15611112eca700
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733124"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980068"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>在虚拟机规模集上部署应用程序
+
 若要在规模集中的虚拟机 (VM) 实例上运行应用程序，首先需要安装应用程序组件和所需文件。 本文介绍如何为规模集中的实例生成自定义 VM 映像，或在现有 VM 实例上自动运行安装脚本。 本文还将介绍如何跨规模集管理应用程序或 OS 更新。
 
 
@@ -50,8 +51,8 @@ ms.locfileid: "55733124"
 
 - 指示 VM 实例从 GitHub 下载 DSC 包 - https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip
 - 设置用于运行安装脚本的扩展 - `configure-http.ps1`
-- 使用 [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) 获取有关规模集的信息
-- 使用 [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) 将扩展应用到 VM 实例
+- 使用 [Get-AzVmss](/powershell/module/az.compute/get-azvmss) 获取有关规模集的信息
+- 使用 [Update-AzVmss](/powershell/module/az.compute/update-azvmss) 将扩展应用到 VM 实例
 
 DSC 扩展会应用于名为 myResourceGroup 的资源组中的 myScaleSet VM 实例。 按如下所示输入自己的名称：
 
@@ -67,12 +68,12 @@ $dscConfig = @{
 }
 
 # Get information about the scale set
-$vmss = Get-AzureRmVmss `
+$vmss = Get-AzVmss `
                 -ResourceGroupName "myResourceGroup" `
                 -VMScaleSetName "myScaleSet"
 
 # Add the Desired State Configuration extension to install IIS and configure basic website
-$vmss = Add-AzureRmVmssExtension `
+$vmss = Add-AzVmssExtension `
     -VirtualMachineScaleSet $vmss `
     -Publisher Microsoft.Powershell `
     -Type DSC `
@@ -81,13 +82,13 @@ $vmss = Add-AzureRmVmssExtension `
     -Setting $dscConfig
 
 # Update the scale set and apply the Desired State Configuration extension to the VM instances
-Update-AzureRmVmss `
+Update-AzVmss `
     -ResourceGroupName "myResourceGroup" `
     -Name "myScaleSet"  `
     -VirtualMachineScaleSet $vmss
 ```
 
-如果规模集上的升级策略是手动的，则使用 [Update-AzureRmVmssInstance](/powershell/module/azurerm.compute/update-azurermvmssinstance) 更新 VM 实例。 此 cmdlet 会将更新的规模集配置应用于 VM 实例，并安装应用程序。
+如果规模集上的升级策略为*手动*，则使用 [Update-AzVmssInstance](/powershell/module/az.compute/update-azvmssinstance) 更新 VM 实例。 此 cmdlet 会将更新的规模集配置应用于 VM 实例，并安装应用程序。
 
 
 ## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>使用 cloud-init 将应用安装到 Linux VM

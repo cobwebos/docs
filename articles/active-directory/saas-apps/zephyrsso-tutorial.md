@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 ZephyrSSO 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 ZephyrSSO 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 ZephyrSSO 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 47bbdc1c50f0d96f1f26d5595a9e54814fa85188
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3be3008367f5c405f65dfd37b4384726ab2456c5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43310705"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209517"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zephyrsso"></a>教程：Azure Active Directory 与 ZephyrSSO 的集成
+# <a name="tutorial-azure-active-directory-integration-with-zephyrsso"></a>教程：Azure Active Directory 与 ZephyrSSO 集成
 
 本教程介绍如何将 ZephyrSSO 与 Azure Active Directory (Azure AD) 集成。
 
@@ -160,7 +161,7 @@ ms.locfileid: "43310705"
   
 ### <a name="create-a-zephyrsso-test-user"></a>创建 ZephyrSSO 测试用户
 
-本部分需在 ZephyrSSO 中创建名为“Britta Simon”的用户。 请与 [ZephyrSSO 支持团队](https://support.getzephyr.com)协作，将该用户添加到 ZephyrSSO 平台中。 使用单一登录前，必须先创建并激活用户。
+本部分需在 ZephyrSSO 中创建名为“Britta Simon”的用户。 请与  [ZephyrSSO 支持团队](https://support.getzephyr.com) 协作，将用户添加到 ZephyrSSO 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -197,12 +198,12 @@ ms.locfileid: "43310705"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 ZephyrSSO 磁贴时，应自动登录到 ZephyrSSO 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

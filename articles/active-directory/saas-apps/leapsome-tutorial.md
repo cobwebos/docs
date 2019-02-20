@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 898d7cf6cdded08cd09c4b1f1f845473af1650a3
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 37549cc76e1490b0758de8e296523b0e70c98dbf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823992"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191225"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>教程：Azure Active Directory 与 Leapsome 集成
 
@@ -107,7 +108,7 @@ ms.locfileid: "51823992"
 
     ![“Leapsome 域和 URL”单一登录信息](./media/leapsome-tutorial/tutorial_leapsome_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入一个 URL：`https://www.leapsome.com`
+    a. 在“标识符”文本框中，键入一个 URL：`https://www.leapsome.com`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/assert`
 
@@ -136,7 +137,7 @@ ms.locfileid: "51823992"
     > [!Note]
     > “picture”属性的值不是实际值。 请使用实际图片 URL 更新此值。 要获得此值，请联系  [Leapsome 客户端支持团队](mailto:support@leapsome.com)。
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
+    a. 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/leapsome-tutorial/tutorial_attribute_04.png)
 
@@ -172,7 +173,7 @@ ms.locfileid: "51823992"
     
     ![Leapsome saml](./media/leapsome-tutorial/tutorial_leapsome_samlsettings.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选中“启用基于 SAML 的单一登录”。
+    a. 选中“启用基于 SAML 的单一登录”。
 
     b. 将“登录 URL (指引用户开始登录)”值复制并粘贴到 Azure 门户上“Leapsome 域和 URL”部分中的“登录 URL”文本框。
 
@@ -208,7 +209,7 @@ ms.locfileid: "51823992"
 
     ![“用户”对话框](./media/leapsome-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 

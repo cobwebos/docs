@@ -2,7 +2,7 @@
 title: 使用 REST 发布 Azure 媒体服务内容
 description: 了解如何创建用于生成流 URL 的定位符。 代码使用 REST API。
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,15 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 8385dedd494c0cef968cb869ded3e92ce213da5e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 185e047bb1877d5ee4660653c0e7b6b32f273a0c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991593"
 ---
-# <a name="publish-azure-media-services-content-using-rest"></a>使用 REST 发布 Azure 媒体服务内容
+# <a name="publish-azure-media-services-content-using-rest"></a>使用 REST 发布 Azure 媒体服务内容 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-deliver-streaming-content.md)
 > * [REST](media-services-rest-deliver-streaming-content.md)
@@ -139,20 +140,20 @@ ms.lasthandoff: 05/07/2018
 ### <a name="build-streaming-urls"></a>生成流 URL
 使用创建定位符后返回的**路径**值生成平滑流式处理、HLS 和 MPEG DASH URL。 
 
-平滑流式处理：**路径** + 清单文件名 +“/manifest”
+平滑流：路径 + 清单文件名 +“/manifest”
 
 示例：
 
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
 
-HLS：**路径** + 清单文件名 +“/manifest(format=m3u8-aapl)”
+HLS：路径 + 清单文件名 +“/manifest(format=m3u8-aapl)”
 
 示例：
 
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
 
-DASH：**路径** + 清单文件名 +“/manifest(format=mpd-time-csf)”
+DASH：路径 + 清单文件名 +“/manifest(format=mpd-time-csf)”
 
 示例：
 
@@ -162,7 +163,7 @@ DASH：**路径** + 清单文件名 +“/manifest(format=mpd-time-csf)”
 ### <a name="build-progressive-download-urls"></a>生成渐进式下载 URL
 使用创建定位符后返回的**路径**值生成渐进式下载 URL。   
 
-URL：**路径** + 资产文件 mp4 名称
+URL：路径 + 资产文件 mp4 名称
 
 示例：
 

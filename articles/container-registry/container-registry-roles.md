@@ -7,18 +7,18 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: danlep
-ms.openlocfilehash: e2ec1b7ad6d1489836937d30b89d0f0f681a9bfa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a4b9b382755e73b6218432624c471346e9698752
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819580"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193384"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure 容器注册表角色和权限
 
 Azure 容器注册表服务支持一组 Azure 角色，这些角色提供访问 Azure 容器注册表所需的不同级别的权限。 使用 Azure [基于角色的访问控制](../role-based-access-control/index.yml) (RBAC)，为需要与注册表交互的用户或服务主体分配特定的权限。
 
-| 角色/权限       | 访问资源管理器| 创建/删除注册表 | [推送映像](#push-image) | [拉取映像](#pull-image) | 更改策略 |   [对映像签名](#sign-images)  |
+| 角色/权限       | [访问资源管理器](#access-resource-manager)| [创建/删除注册表](#create-and-delete-registry) | [推送映像](#push-image) | [拉取映像](#pull-image) | [更改策略](#change-policies) |   [对映像签名](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- |
 | 所有者 | X | X | X | X | X |  |  
 | 参与者 | X | X | X | X | X |  |  
@@ -45,19 +45,19 @@ Azure 容器注册表服务支持一组 Azure 角色，这些角色提供访问 
 
 ## <a name="access-resource-manager"></a>访问资源管理器
 
-Azure 资源管理器访问权限是 Azure 门户和 [Azure CLI](/cli/azure/) 所需的。 例如，若要通过 `az acr list` 命令获取一系列注册表，需要此权限集。 
+Azure 资源管理器访问权限是 Azure 门户和使用 [Azure CLI](/cli/azure/) 进行注册表管理所需的。 例如，若要通过 `az acr list` 命令获取一系列注册表，需要此权限集。 
 
-## <a name="createdelete-registry"></a>创建/删除注册表
+## <a name="create-and-delete-registry"></a>创建和删除注册表
 
 创建和删除 Azure 容器注册表的功能。
 
 ## <a name="push-image"></a>推送映像
 
-通过 `docker push` 将映像推送到注册表的功能，或者将其他受支持的项目推送到注册表的功能。 要求使用授权的标识通过注册表进行[身份验证](container-registry-authentication.md)。 
+通过 `docker push` 将映像推送到注册表的功能，或者将其他[受支持的项目](container-registry-image-formats.md)（例如 Helm 图表）推送到注册表的功能。 要求使用授权的标识通过注册表进行[身份验证](container-registry-authentication.md)。 
 
 ## <a name="pull-image"></a>拉取映像
 
-通过 `docker pull` 从注册表拉取非隔离映像的功能，或者从注册表拉取其他受支持的项目的功能。 要求使用授权的标识通过注册表进行[身份验证](container-registry-authentication.md)。
+通过 `docker pull` 从注册表拉取非隔离映像的功能，或者从注册表拉取其他[受支持的项目](container-registry-image-formats.md)（例如 Helm 图表）的功能。 要求使用授权的标识通过注册表进行[身份验证](container-registry-authentication.md)。
 
 ## <a name="change-policies"></a>更改策略
 

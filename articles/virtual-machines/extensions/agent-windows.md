@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: bba03d8e62c481e9eb5cce8468a6a84f5e492d2f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 051c9cb0c6c1af121a1bdd1f553ef124f980b49d
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253986"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977145"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 虚拟机代理概述
 Microsoft Azure 虚拟机代理（VM 代理）是受保护的轻型进程，用于管理虚拟机 (VM) 与 Azure 结构控制器的交互。 VM 代理有一个主要角色，目的是启用和执行 Azure 虚拟机扩展。 VM 扩展可用于对 VM 进行部署后配置，例如安装和配置软件。 VM 扩展还可启用恢复功能，例如重置 VM 的管理密码。 没有 Azure VM 代理，VM 扩展将无法运行。
@@ -72,12 +72,13 @@ msiexec.exe /i WindowsAzureVmAgent.2.7.1198.778.rd_art_stable.160617-1120.fre /q
 
 ### <a name="powershell"></a>PowerShell
 
-可以使用 Azure 资源管理器 PowerShell 模块检索有关 Azure VM 的信息。 若要查看有关 VM 的信息，如 Azure VM 代理的预配状态，请使用 [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm)：
+可以使用 Azure 资源管理器 PowerShell 模块检索有关 Azure VM 的信息。 若要查看有关 VM 的信息，如 Azure VM 代理的预配状态，请使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)：
 
-```powershell` Get-AzureRmVM
+```powershell
+Get-AzVM
 ```
 
-The following condensed example output shows the *ProvisionVMAgent* property nested inside *OSProfile*. This property can be used to determine if the VM agent has been deployed to the VM:
+以下精简示例输出展示了嵌套在 *OSProfile* 内的 *ProvisionVMAgent* 属性。 可以使用该属性来确定 VM 代理是否已部署到 VM：
 
 ```PowerShell
 OSProfile                  :
@@ -91,7 +92,7 @@ OSProfile                  :
 可以使用以下脚本返回一个简明列表，其中包含 VM 名称以及 VM 代理的状态：
 
 ```PowerShell
-$vms = Get-AzureRmVM
+$vms = Get-AzVM
 
 foreach ($vm in $vms) {
     $agent = $vm | Select -ExpandProperty OSProfile | Select -ExpandProperty Windowsconfiguration | Select ProvisionVMAgent

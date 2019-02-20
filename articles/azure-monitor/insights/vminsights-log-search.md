@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: e9e00dd9d05ff7339a6b5fd93e86bae61fbbf5ee
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 3ab70febbb41b26fd824f9ae6ef0d00358c7530f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188415"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864411"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>如何从用于 VM 的 Azure Monitor（预览版）查询日志
 用于 VM 的 Azure Monitor 收集性能和连接指标、计算机和进程库存数据以及运行状况信息，并将其转发到 Azure Monitor 中的 Log Analytics 数据存储。  可在 Log Analytics 中[搜索](../../azure-monitor/log-query/log-query-overview.md)此数据。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
@@ -40,7 +40,7 @@ ms.locfileid: "54188415"
 
 为了控制成本和复杂性，连接记录不会显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中，然后在相应的表中反映该逻辑连接。  这意味着，*VMConnection* 表中的记录表示逻辑分组，而不是观测到的单个物理连接。 在给定的一分钟时间间隔内对以下属性共用相同值的物理网络连接聚合到 VMConnection 中的一个逻辑记录内。 
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--|:--|
 |方向 |连接方向，值为 *inbound* 或 *outbound* |
 |计算机 |计算机 FQDN |
@@ -52,7 +52,7 @@ ms.locfileid: "54188415"
 
 为了帮助你权衡分组造成的影响，以下记录属性中提供了有关分组的物理连接数的信息：
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--|:--|
 |LinksEstablished |在报告时间范围内建立的物理网络连接数 |
 |LinksTerminated |在报告时间范围内终止的物理网络连接数 |
@@ -63,7 +63,7 @@ ms.locfileid: "54188415"
 
 除了连接计数指标以外，以下记录属性中还包含了有关在给定逻辑连接或网络端口上发送和接收的数据量的信息：
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--|:--|
 |BytesSent |在报告时间范围内发送的字节总数 |
 |BytesReceived |在报告时间范围内接收的字节总数 |
@@ -89,7 +89,7 @@ ms.locfileid: "54188415"
 #### <a name="geolocation"></a>地理位置
 *VMConnection* 还包含以下记录属性中每个连接记录的远程端的地理位置信息： 
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--|:--|
 |RemoteCountry |RemoteIp 所在的国家/地区的名称。  例如 *United States* |
 |RemoteLatitude |地理位置的纬度。 例如 *47.68* |
@@ -98,11 +98,11 @@ ms.locfileid: "54188415"
 #### <a name="malicious-ip"></a>恶意 IP
 将会根据一组 IP 检查 *VMConnection* 表中的每个 RemoteIp 属性，以识别已知的恶意活动。 如果 RemoteIp 识别为恶意，则会在以下记录属性中填充以下属性（如果未将该 IP 视为恶意，则这些属性为空）：
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--|:--|
 |MaliciousIp |RemoteIp 地址 |
 |IndicatorThreadType |检测到的威胁标志是以下值之一：Botnet、C2、CryptoMining、Darknet、DDos、MaliciousUrl、Malware、Phishing、Proxy、PUA 和 Watchlist。   |
-|Description |观察到的威胁说明。 |
+|说明 |观察到的威胁说明。 |
 |TLPLevel |交通信号灯协议 (TLP) 级别是以下定义值之一：White、Green、Amber 和 Red。 |
 |置信度 |值介于 0 和 100 之间。 |
 |严重性 |值介于 0 和 5 之间，其中 5 表示最严重，0 表示毫不严重。 默认值为 3。  |
@@ -117,7 +117,7 @@ ms.locfileid: "54188415"
 
 | 属性 | 说明 |
 |:--|:--|
-| 类型 | *ServiceMapComputer_CL* |
+| Type | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | 工作区中计算机的唯一标识符 |
 | ResourceName_s | 工作区中计算机的唯一标识符 |
@@ -142,7 +142,7 @@ ms.locfileid: "54188415"
 
 | 属性 | 说明 |
 |:--|:--|
-| 类型 | *ServiceMapProcess_CL* |
+| Type | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | 工作区中进程的唯一标识符 |
 | ResourceName_s | 进程在运行它的计算机中的唯一标识符|
@@ -167,6 +167,12 @@ ms.locfileid: "54188415"
 ### <a name="list-all-known-machines"></a>列出所有已知计算机
 `ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
 
+### <a name="when-was-the-vm-last-rebooted"></a>VM 上次重启的时间
+`let Today = now(); ServiceMapComputer_CL | extend DaysSinceBoot = Today - BootTime_t | summarize by Computer, DaysSinceBoot, BootTime_t | sort by BootTime_t asc`
+
+### <a name="summary-of-azure-vms-by-image-location-and-sku"></a>按映像、位置和 SKU 分类的 Azure VM 摘要
+`ServiceMapComputer_CL | where AzureLocation_s != "" | summarize by ComputerName_s, AzureImageOffering_s, AzureLocation_s, AzureImageSku_s`
+
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>列出所有托管计算机的物理内存容量。
 `ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
 
@@ -185,7 +191,7 @@ ms.locfileid: "54188415"
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>列出指定计算机上的所有已知进程
 `ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
-### <a name="list-all-computers-running-sql"></a>列出所有运行 SQL 的计算机
+### <a name="list-all-computers-running-sql-server"></a>列出所有运行 SQL Server 的计算机
 `ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>在我的数据中心列出 curl 的所有唯一产品版本
@@ -193,6 +199,18 @@ ms.locfileid: "54188415"
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>创建由运行 CentOS 的所有计算机组成的计算机组
 `ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
+
+### <a name="bytes-sent-and-received-trends"></a>发送和收到的字节数趋势
+`VMConnection | summarize sum(BytesSent), sum(BytesReceived) by bin(TimeGenerated,1hr), Computer | order by Computer desc | render timechart`
+
+### <a name="which-azure-vms-are-transmitting-the-most-bytes"></a>哪些 Azure VM 传输的字节数最多
+`VMConnection | join kind=fullouter(ServiceMapComputer_CL) on $left.Computer == $right.ComputerName_s | summarize count(BytesSent) by Computer, AzureVMSize_s | sort by count_BytesSent desc`
+
+### <a name="link-status-trends"></a>链接状态趋势
+`VMConnection | where TimeGenerated >= ago(24hr) | where Computer == "acme-demo" | summarize  dcount(LinksEstablished), dcount(LinksLive), dcount(LinksFailed), dcount(LinksTerminated) by bin(TimeGenerated, 1h) | render timechart`
+
+### <a name="connection-failures-trend"></a>连接失败趋势
+`VMConnection | where Computer == "acme-demo" | extend bythehour = datetime_part("hour", TimeGenerated) | project bythehour, LinksFailed | summarize failCount = count() by bythehour | sort by bythehour asc | render timechart`
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>汇总一组计算机的出站连接
 ```

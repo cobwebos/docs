@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: ec61b179627702af7f2c4bc0fc0989230f5eca84
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 02b4b2efb447e3ba8c45caa378268ec402b5c3e7
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885790"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001952"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>使用 Azure 中的监视数据
 
 在 Azure 平台上，我们使用 Azure Monitor 管道将监视数据集中在单个位置，但实际上需承认，目前并非所有监视数据都可在该管道中使用。 本文概述了以编程方式从 Azure 服务访问监视数据的各种方法。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="options-for-data-consumption"></a>数据使用选项
 
@@ -40,7 +42,7 @@ ms.locfileid: "54885790"
 | Azure Monitor 指标警报 | 通知 | [查看此处的列表](metrics-supported.md) | <ul><li>**Webhook：**[Azure 指标警报](alerts-webhooks.md)</li></ul> |
 | Azure Monitor 活动日志警报 | 通知 | 所有 Azure 服务 | <ul><li>**Webhook：** Azure 活动日志警报</li></ul> |
 | 自动缩放通知 | 通知 | [查看此处的列表](autoscale-overview.md#supported-services-for-autoscale) | <ul><li>**Webhook：**[自动缩放通知 Webhook 有效负载架构](autoscale-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
-| 日志搜索查询警报 | 通知 | Log Analytics | <ul><li>**Webhook：**[日志警报规则的 Webhook 操作](alerts-log-webhook.md)</li></ul> |
+| 日志搜索查询警报 | 通知 | Azure Monitor 日志 | <ul><li>**Webhook：**[日志警报规则的 Webhook 操作](alerts-log-webhook.md)</li></ul> |
 | Application Insights 指标警报 | 通知 | Application Insights | <ul><li>**Webhook：**[Application Insights 警报](../../azure-monitor/app/alerts.md)</li></ul> |
 | Application Insights Web 测试 | 通知 | Application Insights | <ul><li>**Webhook：**[Application Insights 警报](../../azure-monitor/app/alerts.md)</li></ul> |
 

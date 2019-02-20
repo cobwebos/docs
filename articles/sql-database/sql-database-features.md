@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 7445496154d9fc2ca59e19059a87a794a1361b14
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.date: 02/08/2019
+ms.openlocfilehash: c2a1cbd75bb3ff0b936d8dd801572e5783ab5260
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747401"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100907"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>功能比较：Azure SQL 数据库与 SQL Server
 
@@ -35,7 +35,7 @@ Microsoft 会继续向 Azure SQL 数据库添加功能。 访问针对 Azure 的
 | **SQL 功能** | **在单一数据库/弹性池中受支持** | **在 Azure SQL 数据库/托管实例中受支持** |
 | --- | --- | --- |
 | [活动异地复制](sql-database-active-geo-replication.md) | 是 - 仅限“常规用途”和“业务关键”服务层| 否，请参见[自动故障转移组](sql-database-auto-failover-group.md) |
-| [自动故障转移组](sql-database-auto-failover-group.md) | 是 - 仅限“常规用途”和“业务关键”服务层| [是 - 预览版](sql-database-auto-failover-group.md)|
+| [自动故障转移组](sql-database-auto-failover-group.md) | 是 - 仅限“常规用途”和“业务关键”服务层| 是，[处于公开预览状态](sql-database-auto-failover-group.md)|
 | [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | 是 - 请参阅[证书存储](sql-database-always-encrypted.md)和[密钥保管库](sql-database-always-encrypted-azure-key-vault.md) | 是 - 请参阅[证书存储](sql-database-always-encrypted.md)和[密钥保管库](sql-database-always-encrypted-azure-key-vault.md) |
 | [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | 每个数据库均包含[高可用性](sql-database-high-availability.md)。 [简要介绍如何使用 Azure SQL 数据库确保业务连续性](sql-database-business-continuity.md)中对灾难恢复进行了讨论 | 每个数据库均包含[高可用性](sql-database-high-availability.md)。 [简要介绍如何使用 Azure SQL 数据库确保业务连续性](sql-database-business-continuity.md)中对灾难恢复进行了讨论 |
 | [附加数据库](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | 否 | 否 |
@@ -52,7 +52,7 @@ Microsoft 会继续向 Azure SQL 数据库添加功能。 访问针对 Azure 的
 | [更改数据捕获](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | 否 | 是 |
 | [更改跟踪](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) | 是 |是 |
 | [排序规则 - 数据库](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation) | 是 | 是 |
-| [排序规则 - 服务器/实例](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | 否 | [是（预览版）](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)|
+| [排序规则 - 服务器/实例](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | 否 | 是，[处于公开预览状态](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)|
 | [列存储索引](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | 是 - [高级层、标准层 - S3 及以上层、常规用途层和业务关键层](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |是 |
 | [公共语言运行时 (CLR)](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | 否 | 是 - 请参阅 [CLR 差异](sql-database-managed-instance-transact-sql-information.md#clr) |
 | [包含的数据库](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | 是 | 是 |
@@ -110,7 +110,7 @@ Microsoft 会继续向 Azure SQL 数据库添加功能。 访问针对 Azure 的
 | [基于策略的管理](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | 否 | 否 |
 | [Predicates](https://docs.microsoft.com/sql/t-sql/queries/predicates)（谓词） | 是 | 是 |
 | [查询通知](https://docs.microsoft.com/sql/relational-databases/native-client/features/working-with-query-notifications) | 否 | 是 |
-| [R 服务](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | 预览版；请参阅[机器学习中的新增功能](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | 否 |
+| [R 服务](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | 是，[处于公开预览状态](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | 否 |
 | [资源调控器](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | 否 | 是 |
 | [RESTORE 语句](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | 否 | 是 - 请参阅[还原差异](sql-database-managed-instance-transact-sql-information.md#restore-statement) |
 | [从备份还原数据库](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | 仅从自动备份 - 请参阅 [SQL 数据库恢复](sql-database-recovery-using-backups.md) | 从自动备份 - 请参阅 [SQL 数据库恢复](sql-database-recovery-using-backups.md)以及从完整备份 - 请参阅[备份差异](sql-database-managed-instance-transact-sql-information.md#backup) |
@@ -131,7 +131,7 @@ Microsoft 会继续向 Azure SQL 数据库添加功能。 访问针对 Azure 的
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | 是 | 是 |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | 是 | 是 |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | 否 - 请参阅[扩展事件](sql-database-xevent-db-diff-from-svr.md) | 是 |
-| [SQL Server 复制](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [仅限事务性和快照复制订户](sql-database-cloud-migrate.md) | 是（公共预览版）- [使用 SQL 数据库托管实例进行复制](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance) |
+| [SQL Server 复制](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [仅限事务性和快照复制订户](sql-database-single-database-migrate.md) | 是，[处于公开预览状态](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance) |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | 否 - 请参阅 [Power BI](https://docs.microsoft.com/power-bi/) | 否 - 请参阅 [Power BI](https://docs.microsoft.com/power-bi/) |
 | [存储过程](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) | 是 | 是 |
 | [系统存储函数](https://docs.microsoft.com/sql/relational-databases/system-functions/system-functions-for-transact-sql) | 大多数 - 请参阅单个函数 | 是 - 请参阅[存储过程、函数和触发器差异](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |

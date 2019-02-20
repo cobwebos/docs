@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
-ms.openlocfilehash: d4a47130dadb782f41579bd20c4b5e1d1e9978bb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f5ac06200766f37c64252599ec8a4dddb6846ea7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188586"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175398"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：针对自动用户预配来配置 Workday
 
@@ -713,7 +714,7 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 
 3. 此操作将启动初始同步；该过程会耗时数小时，具体时间取决于 Workday 租户中的用户数。 
 
-4. 无论何时，检查 Azure 门户中的“审核日志”选项卡都可以查看预配服务执行的操作。 审核日志列出预配服务执行的所有同步事件，例如，正在从 Workday 中读出哪些用户，随后将其添加或更新到 Active Directory。 要了解如何查看审核日志并解决预配错误，请参阅[疑难解答](#troubleshooting-provisioning-issues)部分。
+4. 无论何时，检查 Azure 门户中的“审核日志”选项卡都可以查看预配服务执行的操作。 审核日志列出预配服务执行的所有同步事件，例如，正在从 Workday 中读出哪些用户，随后将其添加或更新到 Active Directory。 要了解如何查看审核日志并解决预配错误，请参阅“疑难解答”部分。
 
 5. 完成初始同步后，系统会在“预配”选项卡中写入一份审核摘要报告，如下所示。
 

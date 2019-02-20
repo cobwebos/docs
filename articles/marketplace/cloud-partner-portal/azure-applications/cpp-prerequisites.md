@@ -14,16 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 1fe847bd0cdceec7eccab8218ccf787d8f4366ba
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: b3f978635127ef6aabb123d1c95b76ed06fccbbf
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195340"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097784"
 ---
 # <a name="azure-application-prerequisites"></a>Azure 应用程序先决条件
 
-本文介绍了在 Azure 市场上发布托管应用程序产品/服务的技术和业务先决条件。
+本文介绍了在 Azure 市场上发布托管应用程序产品/服务的技术和业务先决条件。  如果尚未执行此操作，请查看视频 [Building Solution Templates, and Managed Applications for the Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603)（为 Azure 市场构建解决方案模板和托管应用程序）。
+
 
 ## <a name="technical-requirements"></a>技术要求
 
@@ -36,6 +37,7 @@ ms.locfileid: "53195340"
   * [GitHub：Azure 资源管理器快速入门模板](https://github.com/azure/azure-quickstart-templates)。 此存储库包含由社区提供的所有当前可用的 Azure 资源管理器模板。 https://azure.microsoft.com/en-us/documentation/templates/ 中维护了一个可搜索的模板索引。
 * 创建 UI 定义<br>
 有关详细信息，请参阅[为托管应用程序创建 Azure 门户用户界面](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)。 本文介绍了 createUiDefinition.json 文件的核心概念。 Azure 门户使用此文件生成用于创建托管应用程序的用户界面。
+
 
 ## <a name="business-requirements"></a>业务要求
 
@@ -54,6 +56,7 @@ ms.locfileid: "53195340"
 * 必须同意 Microsoft Azure 市场参与政策与发布者协议的条款。
 * 你必须同意遵守 Microsoft Azure 网站使用条款、Microsoft 隐私声明和 Microsoft Azure 认证计划协议。
 
+
 ## <a name="publishing-requirements"></a>发布要求
 
 若要发布新的 Azure 应用程序产品/服务，必须满足以下先决条件：
@@ -66,6 +69,8 @@ ms.locfileid: "53195340"
 * 文档
 * 支持联系人
 
+
 ## <a name="next-steps"></a>后续步骤
 
-[创建 Azure 应用程序产品/服务](./cpp-create-offer.md) 
+满足所有需求后，即可开始[创建 Azure 应用程序产品/服务](./cpp-create-offer.md)。 
+ 

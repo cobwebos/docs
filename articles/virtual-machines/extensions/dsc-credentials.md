@@ -16,18 +16,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 52e115aa7f54eccc2be4e500c544aa38ca3bc32d
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 6618906f7b1b063de18a4f8a418c1c2744ca1533
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631270"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55975778"
 ---
 # <a name="pass-credentials-to-the-azure-dscextension-handler"></a>将凭据传递给 Azure DSC 扩展处理程序
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
-
 本文介绍了 Azure 的所需状态配置 (DSC) 扩展。 有关 DSC 扩展处理程序的概述，请参阅 [Azure 所需状态配置扩展处理程序](dsc-overview.md)。
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="pass-in-credentials"></a>传入凭据
 
@@ -65,7 +65,7 @@ configuration Main
 
 将此脚本发布到 Azure Blob 存储：
 
-`Publish-AzureRmVMDscConfiguration -ConfigurationPath .\user_configuration.ps1`
+`Publish-AzVMDscConfiguration -ConfigurationPath .\user_configuration.ps1`
 
 设置 Azure DSC 扩展并提供凭据：
 
@@ -73,16 +73,16 @@ configuration Main
 $configurationName = 'Main'
 $configurationArguments = @{ Credential = Get-Credential }
 $configurationArchive = 'user_configuration.ps1.zip'
-$vm = Get-AzureRmVM -Name 'example-1'
+$vm = Get-AzVM -Name 'example-1'
 
-$vm = Set-AzureRmVMDscExtension -VMName $vm -ConfigurationArchive $configurationArchive -ConfigurationName $configurationName -ConfigurationArgument @configurationArguments
+$vm = Set-AzVMDscExtension -VMName $vm -ConfigurationArchive $configurationArchive -ConfigurationName $configurationName -ConfigurationArgument @configurationArguments
 
-$vm | Update-AzureRmVM
+$vm | Update-AzVM
 ```
 
 ## <a name="how-a-credential-is-secured"></a>如何保护凭据
 
-运行此代码时会出现输入凭据的提示。 提供凭据后，它短暂地存储在内存中。 使用 **Set-AzureRmVMDscExtension** cmdlet 发布凭据时，会通过 HTTPS 将凭据传输到 VM。 在 VM 中，Azure 使用本地 VM 证书将加密的凭据存储在磁盘上。 若要将凭据传递给 DSC，将在内存中短暂地将其解密，然后将其重新加密。
+运行此代码时会出现输入凭据的提示。 提供凭据后，它短暂地存储在内存中。 使用 **Set-AzVMDscExtension** cmdlet 发布凭据时，会通过 HTTPS 将凭据传输到 VM。 在 VM 中，Azure 使用本地 VM 证书将加密的凭据存储在磁盘上。 若要将凭据传递给 DSC，将在内存中短暂地将其解密，然后将其重新加密。
 
 此过程不同于[使用不带扩展处理程序的安全配置](/powershell/dsc/securemof)。 Azure 环境提供了通过证书安全地传输配置数据的方法。 使用 DSC 扩展处理程序时，无需在 **ConfigurationData** 中提供 **$CertificatePath** 或 **$CertificateID**/ **$Thumbprint** 条目。
 

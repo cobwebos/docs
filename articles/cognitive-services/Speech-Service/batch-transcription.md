@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: 如果要听录存储（如 Azure Blob）中的大量音频，则批量听录是理想的选择。 使用专用 REST API 可以通过共享访问签名 (SAS) URI 指向音频文件并异步接收听录。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: bf89180ea98473d2da3495286396a12c6f25288f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0e03c388dac4a70fc45150287154406551ac2672
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228655"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867114"
 ---
 # <a name="why-use-batch-transcription"></a>为何使用 Batch 听录？
 
@@ -49,7 +49,7 @@ Batch 听录 API 支持以下格式：
 > [!NOTE]
 > Batch 听录 API 需要 S0 密钥（付费层）。 它不能使用免费 (f0) 密钥。
 
-对于立体声音频流，Batch 听录 API 将在听录期间分离左右声道。 根据单个通道创建两个带有结果的 JSON 文件。 开发人员可利用每个话语的时间戳创建有序的最终脚本。 以下 JSON 示例显示了声道的输出，包括用于设置不雅内容筛选器和标点模型的属性。
+对于立体声音频流，Batch 听录 API 将在听录期间分离左右声道。 根据单个通道创建两个带有结果的 JSON 文件。 开发人员可利用每个话语的时间戳创建有序的最终脚本。 以下 JSON 显示了示例请求，包括用于设置不雅内容筛选器、标点模型和字级别时间戳的属性
 
 ```json
 {
@@ -60,7 +60,8 @@ Batch 听录 API 支持以下格式：
   "description": "An optional description of the transcription.",
   "properties": {
     "ProfanityFilterMode": "Masked",
-    "PunctuationMode": "DictatedAndAutomatic"
+    "PunctuationMode": "DictatedAndAutomatic",
+    "AddWordLevelTimestamps" : "True"
   },
 ```
 
@@ -208,7 +209,7 @@ Batch 听录 API 支持以下格式：
 可在 [GitHub](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI) 上找到本文中的示例。
 
 > [!NOTE]
-> 一般情况下，音频听录所需的时间跨度等于音频文件的持续时间再加上 2 到 3 分钟。
+> 我们不通过 Batch 提供用于音频转录的时间 SLA。 然而，执行听录作业（处于运行状态）后，其处理速度往往快于实时处理速度。
 
 ## <a name="next-steps"></a>后续步骤
 

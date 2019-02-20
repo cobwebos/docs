@@ -4,23 +4,23 @@ description: 本主题演示如何使用 Azure 媒体分析检测面部。
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 02/09/2019
 ms.author: juliako;
-ms.openlocfilehash: 910cc246aa19e19b109fc660682c6b2dc239cbb7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 7fa1bec1b6f83b18684f6139bf6ac8db1ae9daec
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "33784446"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004887"
 ---
-# <a name="redact-faces-with-azure-media-analytics"></a>使用 Azure 媒体分析进行面部修订
+# <a name="redact-faces-with-azure-media-analytics-legacy"></a>使用 Azure 媒体分析进行面部修订（旧版）
 ## <a name="overview"></a>概述
 **Azure 媒体修订器**是一种 [Azure 媒体分析](media-services-analytics-overview.md)媒体处理器 (MP)，可用于在云中进行可缩放的面部修订。 使用面部修订，可对视频进行修改，使所选个人的面部模糊显示。 用户可能想要在公共安全和新闻媒体场景中使用面部修订服务。 对于时长仅几分钟但包含多张面孔的镜头，进行手动面部修订可能需要几个小时，但使用此服务仅需几个简单步骤即可完成该过程。 有关详细信息，请参阅[此](https://azure.microsoft.com/blog/azure-media-redactor/)博客。
 
@@ -135,7 +135,7 @@ ms.locfileid: "33784446"
 
 ## <a name="blur-types"></a>模糊类型
 
-在“组合”或“修订”模式下，可通过 JSON 输入配置在 5 种不同的模糊模式中选择：“低”、“中”、“高”、“框”和“黑色”。 默认情况下使用“中”。
+在“合并”或“修订”模式下，可通过 JSON 输入配置在 5 种不同的模糊模式中选择：“低”、“中”、“高”、“框”和“黑色”。 默认情况下使用“中”。
 
 可以查找以下模糊类型的示例。
 

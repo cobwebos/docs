@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: c3f10e268101cfa5aff6506a64aab98b07fb948a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4af7af6616b5415cd13abacd6aca13bd412d4ad8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464375"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998071"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>如何使用 Azure 机器学习工作室 Web 服务
 
@@ -70,7 +70,7 @@ Azure 机器学习有两种类型的服务：
 ## <a id="connect"></a>连接到机器学习 Web 服务
 可使用支持 HTTP 请求和响应的编程语言连接到机器学习 Web 服务。 可从机器学习 Web 服务帮助页，查看 C#、Python 和 R 示例。
 
-**机器学习 API 帮助**部署 Web 服务时会创建机器学习 API 帮助。 请参阅 [Azure Machine Learning Walkthrough- Deploy Web Service](walkthrough-5-publish-web-service.md)（Azure 机器学习演练 - 部署 Web 服务）。
+**机器学习 API 帮助**部署 Web 服务时会创建机器学习 API 帮助。 请参阅[教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)。
 机器学习 API 帮助包含有关预测 Web 服务的详细信息。
 
 1. 单击正在使用的 Web 服务。

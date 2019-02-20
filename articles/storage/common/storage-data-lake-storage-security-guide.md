@@ -5,24 +5,24 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/07/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: ca1012e0f1b0b7a9e0d8bd88d94876c20d22dec5
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fce7beeda352b9add3603fb74c558ad1b64fac2a
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473776"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895510"
 ---
 # <a name="azure-data-lake-storage-gen2-security-guide"></a>Azure Data Lake Storage Gen2 安全指南
 
-Azure Data Lake Storage Gen2 预览版是建立在 Azure 存储帐户上的一套功能。 因此，本文提到的所有内容均适用于启用了分层命名空间的 Azure 存储帐户（Data Lake Storage Gen2 功能）。
+Azure Data Lake Storage Gen2 是基于 Azure 存储帐户构建的一组功能。 因此，本文提到的所有内容均适用于启用了分层命名空间的 Azure 存储帐户（Data Lake Storage Gen2 功能）。
 
 - 所有写入 Azure 存储的数据，使用[存储服务加密 (SSE)](storage-service-encryption.md) 进行自动加密。 有关详细信息，请参阅[宣布推出针对 Azure Blob、文件、表和队列存储的默认加密](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/)。
 - Azure 存储支持使用 Azure Active Directory (Azure AD) 和基于角色的访问控制 (RBAC) 进行资源管理操作和数据操作，如下所示：
     - 可以将作用域为存储帐户的 RBAC 角色分配给安全主体，并使用 Azure AD 为密钥管理之类的资源管理操作授权。
-    - 预览版支持通过 Azure AD 集成在 Azure 存储上执行数据操作。 可以将范围为订阅、资源组、存储帐户或单个文件系统的 RBAC 角色分配给 Azure 资源的某个安全主体或托管标识。 有关详细信息，请参阅[使用 Azure Active Directory（预览）进行 Azure 存储访问权限身份验证](storage-auth-aad.md)。
+    - 支持通过 Azure AD 集成在 Azure 存储上执行数据操作。 可以将范围为订阅、资源组、存储帐户或单个文件系统的 RBAC 角色分配给 Azure 资源的某个安全主体或托管标识。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure 存储访问进行身份验证](storage-auth-aad.md)。
 - 在 Azure 存储中，可以使用[共享访问签名](../storage-dotnet-shared-access-signature-part-1.md)授予数据对象的委派访问权限。
 
 本文概述其中每项可配合 Azure 存储使用的安全功能。 提供的文章链接提供每项功能的详细信息，让你轻松地进一步探讨每个主题。
@@ -133,7 +133,7 @@ Azure Data Lake Storage Gen2 预览版是建立在 Azure 存储帐户上的一�
 
 Azure 存储中数据对象的访问授权有三个选项，包括：
 
-- 使用 Azure AD 授权对文件系统和队列的访问（预览）。 进行身份验证时，Azure AD 相对于其他方法具有很多优势，包括不需要将机密存储在代码中。 有关详细信息，请参阅[使用 Azure Active Directory（预览）进行 Azure 存储访问权限身份验证](storage-auth-aad.md)。 
+- 使用 Azure AD 授权对文件系统和队列的访问。 进行身份验证时，Azure AD 相对于其他方法具有很多优势，包括不需要将机密存储在代码中。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure 存储访问进行身份验证](storage-auth-aad.md)。 
 - 使用存储帐户密钥通过共享密钥进行访问授权。 通过共享密钥进行授权需要将存储帐户密钥存储在应用程序中，因此 Microsoft 建议尽可能改用 Azure AD。 如果使用生产型应用程序，或者要进行 Azure 表和文件的访问授权，请在 Azure AD 集成仍为预览版的情况下继续使用共享密钥。
 - 使用共享访问签名授予特定时间段对特定数据对象的受控权限。
 
@@ -229,7 +229,7 @@ http://mystorage.dfs.core.windows.net/myfilesystem/myfile.txt (URL to the file)
 
     此文包含 SAS 模型的说明、共享访问签名的示例，以及 SAS 用法最佳实践的建议。 此外介绍了如何吊销授予的权限。
 
-* 身份验证
+* Authentication
 
   * [Authentication for the Azure Storage Services](https://msdn.microsoft.com/library/azure/dd179428.aspx)（Azure 存储服务的身份验证）
 * 共享访问签名入门教程

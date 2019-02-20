@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 32679e37062fbf77ce6ab03b6ea708c0d5eeea30
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: dbf614f9749039b054e1134df31334a6248e2b78
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816231"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981394"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>创建使用可用性区域的虚拟机规模集
 
@@ -117,12 +117,12 @@ az vmss create \
 
 ## <a name="use-azure-powershell"></a>使用 Azure PowerShell
 
-若要使用可用性区域，必须在受支持的 Azure 区域中创建规模集。 在 [New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig) 命令中添加 `-Zone` 参数并指定要使用的区域（例如区域 *1*、*2* 或 *3*）。
+若要使用可用性区域，必须在受支持的 Azure 区域中创建规模集。 在 [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) 命令中添加 `-Zone` 参数并指定要使用的区域（例如区域 *1*、*2* 或 *3*）。
 
 以下示例在美国东部 2 区域 1 中创建名为 myScaleSet 的单区域规模集。 虚拟网络、公共 IP 地址和负载均衡器的 Azure 网络资源均会自动创建。 出现提示时，请针对规模集中的 VM 实例提供自己的所需管理凭据：
 
 ```powershell
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS2" `
   -VMScaleSetName "myScaleSet" `
@@ -139,7 +139,7 @@ New-AzureRmVmss `
 若要创建区域冗余规模集，可使用 `-Zone` 参数指定多个区域。 以下示例跨美国东部 2 区域 1、2、3 创建名为 myScaleSet 的区域冗余规模集。 虚拟网络、公共 IP 地址和负载均衡器的区域冗余 Azure 网络资源均会自动创建。 出现提示时，请针对规模集中的 VM 实例提供自己的所需管理凭据：
 
 ```powershell
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS2" `
   -VMScaleSetName "myScaleSet" `

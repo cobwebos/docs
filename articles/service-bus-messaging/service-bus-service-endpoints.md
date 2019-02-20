@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: aschhab
-ms.openlocfilehash: 8a5832433d1d8c81c22c828ec4659c10951f680a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: c467c963a558f84a0a08887d3777dccf7cd8554d
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103626"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234061"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>使用具有 Azure 服务总线的虚拟网络服务终结点
 
@@ -29,7 +29,7 @@ ms.locfileid: "55103626"
 >[!WARNING]
 > 实现虚拟网络集成可以防止其他 Azure 服务与服务总线交互。
 >
-> 实现虚拟网络时，受信任的 Microsoft 服务不受支持，但很快就会变得可用。
+> 实现虚拟网络时，受信任的 Microsoft 服务不受支持。
 >
 > 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）-
 > - Azure Monitor

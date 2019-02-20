@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 4601628fd0fbdbd80c2b159a4578e25cb4e3c4c5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: f2be733fc0f127288a86372adf54a547983285db
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250760"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998699"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>通过自定义 MES 预设执行高级编码 
 
@@ -238,13 +238,13 @@ ms.locfileid: "50250760"
 * 为 Start/Step/Range 使用的显式时间戳假设输入源的长度至少为 1 分钟。
 * Jpg/Png/BmpImage 元素包含 Start、Step 和 Range 字符串属性 – 这些属性解释如下：
 
-  * 帧数（如果为非负整数），例如："Start": "120"；
-  * 相对于源持续时间（如果以 % 为后缀表示），例如："Start": "15%"，或者
-  * 时间戳（如果以 HH:MM:SS... 格式表示），例如 "Start" : "00:01:00"
+  * 帧数（如果为非负整数），例如，"Start":"120"；
+  * 相对于源持续时间（如果以 % 为后缀表示），例如："Start":"15%"，或者
+  * 时间戳（如果以 HH:MM:SS...  格式表示），例如："Start":"00:01:00"
 
     可以随意混搭使用表示法。
 
-    此外，Start 还支持特殊的宏 {Best}，它会尝试判断第一个“有意义”的内容帧。注意：（Start 设置为 {Best} 时，将忽略 Step 与 Range）
+    此外，Start 还支持特殊的宏 {Best}，它会尝试判断第一个“有意义”的内容帧。请注意：（Start 设置为 {Best} 时，将忽略 Step 与 Range）
   * 默认值：Start:{Best}
 * 需要显式提供每个图像格式的输出格式：Jpg/Png/BmpFormat。 MES 会将 JpgVideo（如果已指定）与 JpgFormat 进行匹配，依此类推。 OutputFormat 引入了新的图像编解码器特定宏 {Index}，需要为图像输出格式提供该宏一次（且只需一次）。
 
@@ -752,7 +752,7 @@ Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以�
 
 
 ## <a id="audio_only"></a>仅音频预设
-本部分介绍两个仅音频 MES 预设：AAC 音频和 AAC 优质音频。
+本节演示了两个仅用于音频的 MES 预设：AAC 音频和 AAC 优质音频。
 
 ### <a name="aac-audio"></a>AAC 音频
     {

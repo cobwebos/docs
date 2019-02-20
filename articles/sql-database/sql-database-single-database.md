@@ -11,17 +11,17 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: a2500988b174e49870f4da7087b3fa4c81f3c77a
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/08/2019
+ms.openlocfilehash: e8af73c955305c54efc478290608e627acb431ea
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754976"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099320"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>什么是 Azure SQL 数据库中的单一数据库
 
-单一数据库部署选项使用自己的资源集在 Azure SQL 数据库中创建独立数据库，并通过 SQL 数据库服务器进行管理。 使用单一数据库，每个数据库都彼此独立且可移植，各自在[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)或[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)中有其自己的服务层，并具备有保证的计算大小。
+单一数据库部署选项使用自己的资源集在 Azure SQL 数据库中创建数据库，并通过 SQL 数据库服务器进行管理。 使用单一数据库，每个数据库都彼此独立且可移植，各自在[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)或[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)中有其自己的服务层，并具备有保证的计算大小。
 
 > [!IMPORTANT]
 > 单一数据库是用于 Azure SQL 数据库的三个部署选项之一。 其他两个是[弹性池](sql-database-elastic-pool.md)和[托管实例](sql-database-managed-instance.md)。
@@ -58,5 +58,5 @@ SQL 数据库提供一系列[内置安全性和符合性](sql-database-security-
 ## <a name="next-steps"></a>后续步骤
 
 - 若要快速开始使用单一数据库，请从 [Single database quickstart guide.md](sql-database-single-database-quickstart-guide.md) 开始。
-- 若要详细了解如何将 SQL Server 数据库迁移到 Azure，请参阅[迁移到 Azure SQL 数据库](sql-database-cloud-migrate.md)。
+- 若要详细了解如何将 SQL Server 数据库迁移到 Azure，请参阅[迁移到 Azure SQL 数据库](sql-database-single-database-migrate.md)。
 - 有关支持的功能的信息，请参阅[功能](sql-database-features.md)。

@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: fc4d09b59e568a693b7f7951e9e716d04a5a2a49
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d664c33c4535d25ec93fd1f36c990f2764a4e071
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729262"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000807"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>用于 Azure Active Directory B2C 中的 JavaScript 示例
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-可以向 Azure Active Directory (Azure AD) B2C 应用程序添加自己的 JavaScript 客户端代码。 本文介绍如何更改[自定义策略](active-directory-b2c-overview-custom.md)以启用脚本执行。
+可以向 Azure Active Directory (Azure AD) B2C 应用程序添加自己的 JavaScript 客户端代码。 本文介绍如何更改[用户流](user-flow-javascript-overview.md)或[自定义策略](active-directory-b2c-overview-custom.md)以启用脚本执行。
 
 ## <a name="prerequisites"></a>先决条件
 
-为应用程序的用户界面元素选择[页协定](page-contract.md)。 如果打算使用 JavaScript，需要为自定义策略中所有的内容定义定义一个页协定版本。
+为应用程序的用户界面元素选择[页协定](page-contract.md)。 如果打算使用 JavaScript，需要为用户流或自定义策略中的所有内容定义定义一个页协定版本。
 
 ## <a name="add-the-scriptexecution-element"></a>添加 ScriptExecution 元素
 

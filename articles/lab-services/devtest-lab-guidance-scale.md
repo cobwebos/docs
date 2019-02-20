@@ -10,14 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 02/11/2019
 ms.author: spelluru
-ms.openlocfilehash: ed6c21762fed331e2f11378ec9b6d91cba9bec11
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.reviewer: christianreddington,anthdela,juselph
+ms.openlocfilehash: 781a897c99a28fbd1b695876f477b140521068e3
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250736"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244873"
 ---
 # <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>纵向扩展 Azure 开发测试实验室基础结构
 在以企业规模实施开发测试实验室之前，有几个关键的决策点。 组织大致了解这些决策点有助于将来做出设计决策。 但是，这些要点不应阻碍组织的概念证明工作。 初始纵向扩展规划的三个首要方面包括：
@@ -66,4 +67,4 @@ ms.locfileid: "48250736"
 - **开发测试实验室用户** – 开发测试实验室用户可以在实验室中创建和使用虚拟机。 这些人可以在他们创建的 VM 上执行一些很次要的管理功能（启动/停止/删除/配置其 VM）。 这些用户不能管理其他用户的 VM。
 
 ## <a name="next-steps"></a>后续步骤
-参阅本系列教程的下一篇文章：[协调 Azure 开发测试实验室的实施](devtest-lab-guidance-orchestrate-implementation.md)
+请参阅本系列的下一篇文章：[协调 Azure 开发测试实验室的实施](devtest-lab-guidance-orchestrate-implementation.md)

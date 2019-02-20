@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Sauce Labs - Mobile and Web Testing 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Sauce Labs - Mobile and Web Testing 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Sauce Labs - Mobile and Web Testing 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 55d84256f408e80600308ede22dbaa903b070d90
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9c4e3d074ad241ec6add6fe43b77413ce283e389
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39266733"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207001"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>教程：Azure Active Directory 与 Sauce Labs - Mobile and Web Testing 的集成
+# <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>教程：Azure Active Directory 与 Sauce Labs - Mobile and Web Testing 集成
 
 本教程介绍如何将 Sauce Labs - Mobile and Web Testing 与 Azure Active Directory (Azure AD) 集成。
 
@@ -175,7 +176,7 @@ ms.locfileid: "39266733"
 
 本部分的目的是在 Sauce Labs - Mobile and Web Testing 中创建名为 Britta Simon 的用户。 Sauce Labs - Mobile and Web Testing 支持默认启用的实时预配。 此部分不存在任何操作项。 如果尚不存在用户，则在尝试访问 Sauce Labs - Mobile and Web Testing 期间会创建一个新用户。
 >[!Note]
->如需手动创建用户，请联系 [Sauce Labs - Mobile and Web Testing 支持团队](mailto:support@saucelabs.com)。
+>如需手动创建用户，请联系  [Sauce Labs - Mobile and Web Testing 支持团队](mailto:support@saucelabs.com)。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -212,12 +213,12 @@ ms.locfileid: "39266733"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Sauce Labs - Mobile and Web Testing”磁贴时，应会自动登录到 Sauce Labs - Mobile and Web Testing 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

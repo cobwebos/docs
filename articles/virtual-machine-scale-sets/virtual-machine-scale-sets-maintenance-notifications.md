@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: shants
-ms.openlocfilehash: 727ae9bbea4cabc5d27c32baff2123a7c03b531c
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d82e0aa1f803001cf3bab5ec133a59f1fe19e4aa
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546855"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981411"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>虚拟机规模集的计划内维护通知
+
 
 Azure 定期执行更新，以提高虚拟机 (VM) 的主机基础结构的可靠性、性能及安全性。 更新可能包括修补托管环境或升级以及解除硬件授权。 大多数更新不影响托管的 VM。 但是在以下情况下，更新会影响 VM：
 
@@ -38,10 +39,8 @@ Azure 定期执行更新，以提高虚拟机 (VM) 的主机基础结构的可�
 
 设置这两个时段的目的是，在了解 Azure 何时将自动启动维护时，提供足够的时间来启动维护和重新启动 VM。
 
-
 可以使用 Azure 门户、PowerShell、REST API 和 Azure CLI 查询虚拟机规模集 VM 的维护时段并启动自助维护。
 
-  
 ## <a name="should-you-start-maintenance-during-the-self-service-window"></a>是否应在自助时段启动维护？  
 
 以下指南可帮助你决定是否在所选时间启动维护。
@@ -87,7 +86,7 @@ Azure 定期执行更新，以提高虚拟机 (VM) 的主机基础结构的可�
 
 现在，“自助维护”列将显示在虚拟机规模集的列表中。 每个虚拟机规模集可以具有以下自助维护列的值之一：
 
-| 值 | Description |
+| 值 | 说明 |
 |-------|-------------|
 | 是 | 虚拟机规模集中至少有一个 VM 处于自助时段。 你可以在此自助时段随时启动维护。 | 
 | 否 | 受影响的虚拟机规模集中的自助时段中没有任何 VM。 | 
@@ -118,16 +117,16 @@ Azure 通过向订阅所有者和共有者组发送电子邮件来传达计划�
  
 ## <a name="check-maintenance-status-by-using-powershell"></a>使用 PowerShell 查看维护状态
 
-可以使用 Azure PowerShell 查看虚拟机规模集中的 VM 计划何时维护。 使用 `-InstanceView` 参数时可通过 [Get-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) cmdlet 获得计划内维护信息。
+可以使用 Azure PowerShell 查看虚拟机规模集中的 VM 计划何时维护。 使用 `-InstanceView` 参数时可通过使用 [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) cmdlet 获得计划内维护信息。
  
 仅当有计划内维护时，才会返回维护信息。 如果未计划影响 VM 实例的维护，则 cmdlet 不会返回任何维护信息。 
 
 ```powershell
-Get-AzureRmVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -InstanceView
+Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -InstanceView
 ```
 
 在 MaintenanceRedeployStatus 下返回以下属性： 
-| 值 | Description   |
+| 值 | 说明   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | 指示此时是否可以在 VM 上启动维护。 ||
 | PreMaintenanceWindowStartTime         | 可以在 VM 上启动维护的自助式维护时段的起点。 ||
@@ -140,10 +139,10 @@ Get-AzureRmVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId i
 
 ### <a name="start-maintenance-on-your-vm-instance-by-using-powershell"></a>使用 PowerShell 在 VM 实例上启动维护
 
-如果 IsCustomerInitiatedMaintenanceAllowed 设置为 true，则可以在 VM 上启动维护。 请使用含 `-PerformMaintenance` 参数的 [Set-AzureRmVmss](/powershell/module/azurerm.compute/set-azurermvmss) cmdlet。
+如果 IsCustomerInitiatedMaintenanceAllowed 设置为 true，则可以在 VM 上启动维护。 使用含 `-PerformMaintenance` 参数的 [Set-AzVmss](/powershell/module/az.compute/set-azvmss) cmdlet。
 
 ```powershell
-Set-AzureRmVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -PerformMaintenance 
+Set-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -PerformMaintenance 
 ```
 
 ## <a name="check-maintenance-status-by-using-the-cli"></a>使用 CLI 查看维护状态
@@ -157,7 +156,7 @@ az vmss list-instances -g rgName -n vmssName --expand instanceView
 ```
 
 在每个 VM 实例的 MaintenanceRedeployStatus 下返回以下属性： 
-| 值 | Description   |
+| 值 | 说明   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | 指示此时是否可以在 VM 上启动维护。 ||
 | PreMaintenanceWindowStartTime         | 可以在 VM 上启动维护的自助式维护时段的起点。 ||

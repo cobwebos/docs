@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 34902016578d92847bd83a7dede8ef73bb640b3e
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: da3c90579dafebf1b5b362c7129e681663a0a7ab
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301571"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891872"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权的高级用法
 
@@ -174,7 +174,7 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 在客户端代码（例如移动应用或浏览器中 JavaScript）中，将 HTTP `GET` 请求发送到 `/.auth/me`。 返回的 JSON 包含提供程序特定的令牌。
 
 > [!NOTE]
-> 访问令牌用于访问提供程序资源，因此，仅当使用客户端机密配置了提供程序时，才提供这些令牌。 若要了解如何获取刷新令牌，请参阅[刷新访问令牌](#refresh-access-tokens)。
+> 访问令牌用于访问提供程序资源，因此，仅当使用客户端机密配置了提供程序时，才提供这些令牌。 若要了解如何获取刷新令牌，请参阅“刷新访问令牌”。
 
 ## <a name="refresh-identity-provider-tokens"></a>刷新标识提供程序令牌
 

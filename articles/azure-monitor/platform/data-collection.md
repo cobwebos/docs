@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: efc5fb022d117caeaec9da014252b501f2d06769
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6fc568546721511f6289600148919d28773058f4
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449993"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002269"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Azure Monitor 收集的监视数据
 [Azure Monitor](../overview.md) 是可以帮助你监视应用程序及其依赖的资源的服务。 存储来自受监视源的遥测数据和其他数据是此功能的核心所在。 本文提供有关 Azure Monitor 如何存储和使用此类数据的完整说明。
@@ -81,7 +81,7 @@ Azure 中指标的特定特性包括：
 ### <a name="sources-of-metric-data"></a>指标数据的源
 Azure Monitor 从三个基本源收集指标。 所有这些指标将在指标存储中提供。在指标存储中，不管指标的源是什么，都可以统一评估这些指标。
 
-**平台指标**由 Azure 资源创建，可用于洞察这些资源的运行状况和性能。 每种资源创建[一组非重复性指标](../../azure-monitor/platform/metrics-supported.md)，无需进行任何配置。
+**平台指标**由 Azure 资源创建，可用于洞察这些资源的运行状况和性能。 每种资源创建[一组非重复性指标](metrics-supported.md)，无需进行任何配置。 
 
 **应用程序指标**由 Application Insights 为受监视的应用程序创建，可帮助检测性能问题，以及跟踪应用程序的用法趋势。 此类指标包括“服务器响应时间”和“浏览器异常”等值。
 
@@ -96,32 +96,39 @@ Azure Monitor 从三个基本源收集指标。 所有这些指标将在指标�
 ### <a name="what-can-you-do-with-metrics"></a>指标有哪些作用？
 可以使用指标执行的任务包括：
 
-- 使用[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)分析收集的指标，并在图表上绘制这些指标。 通过将图表固定到 [Azure 仪表板](../../azure-portal/azure-portal-dashboards.md)来跟踪资源（例如 VM、网站或逻辑应用）的性能。
+- 使用[指标分析](metrics-charts.md)分析收集的指标，并在图表上绘制这些指标。 通过将图表固定到 [Azure 仪表板](../../azure-portal/azure-portal-dashboards.md)来跟踪资源（例如 VM、网站或逻辑应用）的性能。
 - 配置指标[警报规则](alerts-metric.md)，以便在指标超过阈值时发送通知或执行[自动化操作](action-groups.md)。
-- 根据超过阈值的指标，使用[自动缩放](../../azure-monitor/platform/autoscale-overview.md)来增加或减少资源。
-- 将指标连同日志数据一起路由到 Log Analytics 以分析指标数据，并可将指标值存储 93 天以上。
-- 将指标流式传输到[事件中心](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)，以便路由到 [Azure 流分析](../../stream-analytics/stream-analytics-introduction.md)或外部系统。
+- 根据超过阈值的指标，使用[自动缩放](autoscale-overview.md)来增加或减少资源。
+- 将指标连同日志数据一起路由到日志以分析指标数据，可将指标值存储 93 天以上。 
+- 将指标流式传输到[事件中心](stream-monitoring-data-event-hubs.md)，以便路由到 [Azure 流分析](../../stream-analytics/stream-analytics-introduction.md)或外部系统。
 - 出于符合性、审核或脱机报告目的，对资源的性能或运行状况历史记录进行 [存档](../../azure-monitor/learn/tutorial-archive-data.md)。
-- 使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.insights/?view=azurermps-6.7.0) 或 [REST API](../../azure-monitor/platform/rest-api-walkthrough.md) 从命令行或自定义应用程序访问指标值。
+- 使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.insights/?view=azurermps-6.7.0) 或 [REST API](rest-api-walkthrough.md) 从命令行或自定义应用程序访问指标值。
+
+
 
 ### <a name="viewing-metrics"></a>查看指标
 Azure Monitor 中的指标存储在一个经优化的时序数据库中，支持快速检索，并可将指标值存储 93 天。 可以将指标复制到日志以进行长期分析和了解长期趋势。
 
-如前所述，指标数据有多种用法。 使用[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)直接分析指标存储中的数据，并在图表中绘制多个指标在不同时间段的值。 可以通过交互方式查看图表，也可以将其固定到某个仪表板，与其他可视化效果一起查看。 还可以使用 [Azure 监视 REST API](../../azure-monitor/platform/rest-api-walkthrough.md) 检索指标。
+如前所述，指标数据有多种用法。 使用[指标分析](metrics-charts.md)直接分析指标存储中的数据，并在图表中绘制多个指标在不同时间段的值。 可以通过交互方式查看图表，也可以将其固定到某个仪表板，与其他可视化效果一起查看。 还可以使用 [Azure 监视 REST API](rest-api-walkthrough.md) 检索指标。
 
-![指标资源管理器](media/data-collection/metrics-explorer.png)
+![度量值分析](media/data-collection/metrics-explorer.png)
 
 ## <a name="logs"></a>日志
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 日志包含不同类型的已经整理成记录的数据，每种类型都有不同的属性集。 日志可能包含数字值（例如指标），但通常包含带详细说明的文本数据。 日志不同于指标之处还在于，日志有结构差异，且通常不按固定时间间隔收集。
 
 常见类型的日志项是偶尔收集的事件。 事件是由应用程序或服务创建的，通常包含足够的信息，其本身提供的上下文已经很完整。 例如，事件可能会指示特定资源已创建或修改、新主机开始响应流量增高的情况，或者在应用程序中检测到了错误。
 
 如果需要将多个源的数据组合起来进行复杂的分析并推断一段时间的趋势，则日志特别有用。 考虑到数据的格式可能有差异，应用程序可以使用所需结构创建自定义日志。 甚至可以在日志中复制指标，以便将其与其他监视数据组合起来，进行趋势推断和其他数据分析。
 
+
+
 ### <a name="sources-of-log-data"></a>日志数据的源
 Azure Monitor 可从 Azure 和本地资源中的各种源收集日志数据。 日志数据的来源包括：
 
-- 来自 Azure 资源的[活动日志](collect-activity-logs.md)（包括有关资源配置和运行状况的信息）和[诊断日志](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md)（提供资源操作的见解）。
+- 来自 Azure 资源的[活动日志](collect-activity-logs.md)（包括有关资源配置和运行状况的信息）和[诊断日志](diagnostic-logs-stream-log-store.md)（提供资源操作的见解）。
 - [Windows](agent-windows.md) 和 [Linux](../learn/quick-collect-linux-computer.md) 虚拟机上的代理会根据所配置的[数据源](data-sources.md)，将遥测数据从来宾操作系统和应用程序发送到 Azure Monitor。
 - [Application Insights](https://docs.microsoft.com/azure/application-insights/) 收集的应用程序数据。
 - 针对[监视解决方案](../insights/solutions.md)中特定的应用程序或服务，或者 Container Insights、VM Insights 或 Resource Group Insights 等功能提供见解的数据。
@@ -159,12 +166,12 @@ Azure Monitor 中的所有日志数据都是使用以[数据资源管理器查�
 ### <a name="logs-to-metrics"></a>从日志传输到指标
 如前所述，指标的响应速度快于日志，因此在创建警报时延迟更低，成本也更低。 很多数字数据本来是适合用作指标的，但并未作为指标存储在 Azure Monitor 中。 一个常见的示例是从代理和管理解决方案收集的性能数据。 某些这样的数据可以复制到指标中，以便通过指标资源管理器发送警报以及进行分析。
 
-有关此功能的说明，请参见[在 Azure Monitor 中为日志创建指标警报](../../azure-monitor/platform/alerts-metric-logs.md)。 值支持列表可以在 [Azure Monitor 支持的指标](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)中获得。
+有关此功能的说明，请参见[在 Azure Monitor 中为日志创建指标警报](alerts-metric-logs.md)。 值支持列表可以在 [Azure Monitor 支持的指标](metrics-supported.md#microsoftoperationalinsightsworkspaces)中获得。
 
 ## <a name="stream-data-to-external-systems"></a>将数据流式传输到外部系统
 除了使用 Azure 中的工具分析监视数据以外，可能还需要将这些数据转发到外部工具，例如某个安全信息和事件管理 (SIEM) 产品。 通常，这种转发是通过 [Azure 事件中心](https://docs.microsoft.com/azure/event-hubs/)直接从受监视资源完成的。
 
-若要了解不同类型的监视数据，可参阅[将 Azure 监视数据流式传输到事件中心供外部工具使用](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
+若要了解不同类型的监视数据，可参阅[将 Azure 监视数据流式传输到事件中心供外部工具使用](stream-monitoring-data-event-hubs.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

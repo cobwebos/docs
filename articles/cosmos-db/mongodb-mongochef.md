@@ -9,12 +9,12 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: c679d2e6b7dc8998016e79d265f368504d6def3d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: f2ba1a6fef944911c0706ca4e71be6a55bc4b16a
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038398"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961833"
 ---
 # <a name="connect-to-cosmos-account-using-studio-3t"></a>使用 Studio 3T 连接到 Cosmos 帐户
 
@@ -26,7 +26,7 @@ ms.locfileid: "54038398"
 ## <a name="create-the-connection-in-studio-3t"></a>在 Studio 3T 中创建连接
 要将 Cosmos 帐户添加到 Studio 3T 连接管理器，请执行以下步骤：
 
-1. 按照[将 MongoDB 应用程序连接到 Azure Cosmos DB](connect-mongodb-account.md) 一文中的说明，检索使用 Azure Cosmos DB 的 API MongoDB 配置的 Cosmos 帐户的连接信息。
+1. 按照[将 MongoDB 应用程序连接到 Azure Cosmos DB](connect-mongodb-account.md) 一文中的说明，检索使用 Azure Cosmos DB MongoDB API 配置的 Cosmos 帐户的连接信息。
 
     ![连接字符串页的屏幕截图](./media/mongodb-mongochef/ConnectionStringBlade.png)
 2. 单击“连接”以打开“连接管理器”，并单击“新建连接”

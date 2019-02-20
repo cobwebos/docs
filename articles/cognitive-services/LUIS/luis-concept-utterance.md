@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: 话语是应用需要解释的用户输入。 收集你认为用户会输入的短语。 包括意思相同但在单词长度和单词位置上以不同方式构造的陈述。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: a1d71bb992276cb37c73a7ba27b427ccb617f688
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ae3a2788a0d5451736433a6338a71eda3d0ad9ca
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216092"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984352"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>了解哪些良好的话语适用于你的 LUIS 应用
 
@@ -39,7 +39,7 @@ ms.locfileid: "55216092"
 
 ### <a name="utterances-arent-always-well-formed"></a>陈述并非始终格式正确
 
-它可能是一个句子，比如“为我预订到巴黎的机票”，也可能是句子的片段，比如“预订”或“巴黎航班”。  用户常犯拼写错误。 在规划应用时，请考虑在将用户输入传递给 LUIS 之前是否使用 [必应拼写检查] [(luis-tutorial-bing-spellcheck) 进行更正。 
+它可能是一个句子，比如“为我预订到巴黎的机票”，也可能是句子的片段，比如“预订”或“巴黎航班”。  用户常犯拼写错误。 在规划应用时，请考虑在将用户输入传递给 LUIS 之前是否使用[必应拼写检查](luis-tutorial-bing-spellcheck.md)进行更正。 
 
 如果你没有对用户陈述进行拼写检查，则应该针对包含拼写错误的陈述训练 LUIS。
 

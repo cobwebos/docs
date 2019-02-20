@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 6100a77d3c0bd1ac5e012651f1e7d359c4c67443
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 84bed7031307316545cc8e468196c6b12cde7bb7
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954447"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237055"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>通过 PowerShell 创建使用 Azure Data Lake Storage Gen1 作为默认存储的 HDInsight 群集
 
@@ -39,10 +39,12 @@ ms.locfileid: "49954447"
 
 ## <a name="prerequisites"></a>先决条件
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 在开始学习本教程之前，请确保满足以下要求：
 
-* **一个 Azure 订阅**：转到[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure PowerShell 1.0 或更高版本**：参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+* **Azure 订阅**：转到[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure PowerShell 1.0 或更高版本**：请参阅[如何安装和配置 PowerShell](/powershell/azure/overview)。
 * **Windows 软件开发工具包 (SDK)**：若要安装 Windows SDK，请转到[适用于 Windows 10 的下载内容和工具](https://dev.windows.com/downloads)。 该 SDK 用于创建安全证书。
 * **Azure Active Directory 服务主体**：本教程介绍如何在 Azure Active Directory (Azure AD) 中创建服务主体。 但是，只有 Azure AD 管理员才能创建服务主体。 管理员可以跳过此先决条件部分，继续阅读本教程。
 
@@ -57,25 +59,25 @@ ms.locfileid: "49954447"
 1. 在桌面上打开 PowerShell 窗口，并输入以下代码片段。 出现登录提示时，请以订阅管理员或所有者的身份登录。 
 
         # Sign in to your Azure account
-        Connect-AzureRmAccount
+        Connect-AzAccount
 
         # List all the subscriptions associated to your account
-        Get-AzureRmSubscription
+        Get-AzSubscription
 
         # Select a subscription
-        Set-AzureRmContext -SubscriptionId <subscription ID>
+        Set-AzContext -SubscriptionId <subscription ID>
 
         # Register for Data Lake Storage Gen1
-        Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
+        Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
     > [!NOTE]
-    > 如果在注册 Data Lake Storage Gen1 资源提供程序时收到类似于 `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` 的错误，原因可能是订阅未列入 Data Lake Storage Gen1 的允许列表。 要在 Data Lake Storage Gen1 中启用 Azure 订阅，请遵循[通过 Azure 门户开始使用 Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明进行操作。
+    > 如果在注册 Data Lake Storage Gen1 资源提供程序时收到类似于 `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` 的错误，原因可能是订阅未列入 Data Lake Storage Gen1 的允许列表。 要在 Data Lake Storage Gen1 中启用 Azure 订阅，请遵循[通过 Azure 门户开始使用 Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明进行操作。
     >
 
 2. Data Lake Store Gen1 帐户与 Azure 资源组关联。 首先请创建资源组。
 
         $resourceGroupName = "<your new resource group name>"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location "East US 2"
+        New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
 
     应看到如下输出：
 
@@ -88,7 +90,7 @@ ms.locfileid: "49954447"
 3. 创建 Data Lake Storage Gen1 帐户。 指定的帐户名只能包含小写字母和数字。
 
         $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 name>"
-        New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
+        New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
 
     应看到如下输出：
 
@@ -110,7 +112,7 @@ ms.locfileid: "49954447"
 4. 要将 Data Lake Storage Gen1 用作默认存储，需要指定一个根路径，在创建群集过程中将复制此路径下的特定于群集的文件。 若要创建根路径（在代码片段中为“/clusters/hdiadlcluster”），请使用以下 cmdlet：
 
         $myrootdir = "/"
-        New-AzureRmDataLakeStoreItem -Folder -AccountName $dataLakeStorageGen1Name -Path $myrootdir/clusters/hdiadlcluster
+        New-AzDataLakeStoreItem -Folder -AccountName $dataLakeStorageGen1Name -Path $myrootdir/clusters/hdiadlcluster
 
 
 ## <a name="set-up-authentication-for-role-based-access-to-data-lake-storage-gen1"></a>对 Data Lake Storage Gen1 设置基于角色访问的身份验证
@@ -152,7 +154,7 @@ ms.locfileid: "49954447"
 
         $credential = [System.Convert]::ToBase64String($rawCertificateData)
 
-        $application = New-AzureRmADApplication `
+        $application = New-AzADApplication `
             -DisplayName "HDIADL" `
             -HomePage "https://contoso.com" `
             -IdentifierUris "https://mycontoso.com" `
@@ -163,14 +165,14 @@ ms.locfileid: "49954447"
         $applicationId = $application.ApplicationId
 2. 使用应用程序 ID 创建服务主体。
 
-        $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $applicationId
+        $servicePrincipal = New-AzADServicePrincipal -ApplicationId $applicationId
 
         $objectId = $servicePrincipal.Id
 3. 授予服务主体访问之前指定的 Data Lake Storage Gen1 根路径和此路径中的所有文件夹的权限。 使用以下 cmdlet：
 
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters -AceType User -Id $objectId -Permissions All
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters/hdiadlcluster -AceType User -Id $objectId -Permissions All
+        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
+        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters -AceType User -Id $objectId -Permissions All
+        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters/hdiadlcluster -AceType User -Id $objectId -Permissions All
 
 ## <a name="create-an-hdinsight-linux-cluster-with-data-lake-storage-gen1-as-the-default-storage"></a>创建使用 Data Lake Storage Gen1 作为默认存储的 HDInsight Linux 群集
 
@@ -178,7 +180,7 @@ ms.locfileid: "49954447"
 
 1. 检索订阅租户 ID，并存储该 ID 供稍后使用。
 
-        $tenantID = (Get-AzureRmContext).Tenant.TenantId
+        $tenantID = (Get-AzContext).Tenant.TenantId
 
 2. 使用以下 cmdlet 创建 HDInsight 群集：
 
@@ -192,7 +194,7 @@ ms.locfileid: "49954447"
         $httpCredentials = Get-Credential
         $sshCredentials = Get-Credential
 
-        New-AzureRmHDInsightCluster `
+        New-AzHDInsightCluster `
                -ClusterType Hadoop `
                -OSType Linux `
                -ClusterSizeInNodes $clusterNodes `
@@ -253,7 +255,7 @@ ms.locfileid: "49954447"
 
 ## <a name="see-also"></a>另请参阅
 * [将 Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
-* [Azure 门户：创建使用 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Azure 门户：创建 HDInsight 群集以使用 Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

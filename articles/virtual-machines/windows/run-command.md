@@ -8,20 +8,22 @@ ms.author: gwallace
 ms.date: 10/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 33f96c67e7179104d1895cf62f834d3b592bee04
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 86ccd35d14df529a22bd4cdcd50566e7dc0c1375
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487619"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983707"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>使用“运行命令”在 Windows VM 中运行 PowerShell 脚本
 
 “运行命令”使用 VM 代理在 Azure Windows VM 中运行 PowerShell 脚本。 这些脚本可以用于常规的计算机或应用程序管理，并且可以用来快速诊断和修正 VM 访问和网络问题并使 VM 恢复正常运行状态。
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
 ## <a name="benefits"></a>优点
 
-有多个选项可以用来访问虚拟机。 “运行命令”可以使用 VM 代理在虚拟机上以远程方式运行脚本。 可以通过 Windows VM 的 Azure 门户、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand) 或 [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) 使用“运行命令”。
+有多个选项可以用来访问虚拟机。 “运行命令”可以使用 VM 代理在虚拟机上以远程方式运行脚本。 可以通过 Windows VM 的 Azure 门户、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand) 或 [PowerShell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) 使用“运行命令”。
 
 此功能适用于要在虚拟机中运行脚本的所有方案，并且是排查和修正因网络或管理用户配置错误而未打开 RDP 或 SSH 端口的虚拟机的唯一方法。
 
@@ -72,10 +74,11 @@ ms.locfileid: "55487619"
 
 ## <a name="powershell"></a>PowerShell
 
-下面是使用 [Invoke-AzureRmVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) cmdlet 在 Azure VM 上运行 PowerShell 脚本的示例。 该 cmdlet 需要 `ScriptPath` 变量中引用的脚本位于运行该 cmdlet 的位置本地。
+下面是使用 [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) cmdlet 在 Azure VM 上运行 PowerShell 脚本的示例。 该 cmdlet 需要 `-ScriptPath` 参数中引用的脚本位于运行该 cmdlet 的位置本地。
+
 
 ```azurepowershell-interactive
-Invoke-AzureRmVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
+Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
 ```
 
 ## <a name="limiting-access-to-run-command"></a>限制对“运行命令”的访问

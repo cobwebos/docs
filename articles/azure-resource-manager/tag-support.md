@@ -4,17 +4,19 @@ description: 显示支持标记的 Azure资源类型。 提供所有 Azure 服�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 1/24/2019
+ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: d9892b158eae1a83ab1f8eed6c14224e1d4bca15
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: add222c024b5adde1ce81d6ed7f725d0a691c232
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509902"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246045"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](resource-group-using-tags.md)。
+
+若要以逗号分隔值文件的形式获取同一数据，请下载 [tag-support.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv)。
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
 | 资源类型 | 支持标记 |
@@ -1123,13 +1125,14 @@ ms.locfileid: "55509902"
 | servers/communicationLinks | 否 | 
 | servers/databases | 是（见下方备注） | 
 | servers/encryptionProtector | 否 | 
+| servers/firewallRules | 否 | 
 | servers/keys | 否 | 
 | servers/restorableDroppedDatabases | 否 | 
 | servers/serviceobjectives | 否 | 
 | servers/tdeCertificates | 否 | 
 
 > [!NOTE]
-> Master 数据库不支持标记，但其他数据库支持标记。
+> Master 数据库不支持标记，但其他数据库（包括数据仓库数据库）支持标记。
 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine

@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics 查询中的联接 | Microsoft Docs
-description: 本文包含的课程介绍了如何在 Log Analytics 查询语言中使用联接。
+title: Azure Monitor 日志查询中的联接 | Microsoft Docs
+description: 本文包含的课程介绍了如何在 Azure Monitor 日志查询中使用联接。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: c1f578c11fff963ee4bec47bd3737cd224b14720
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 91ff85d8c32c0bcfa984cc690382d09765a068a2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884379"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004626"
 ---
-# <a name="joins-in-log-analytics-queries"></a>Log Analytics 查询中的联接
+# <a name="joins-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的联接
 
 > [!NOTE]
-> 在学习本课程之前，需完成 [Analytics 门户入门](get-started-portal.md)和[查询入门](get-started-queries.md)。
+> 在完成本课程之前，应先完成 [Azure Monitor 日志分析入门](get-started-portal.md)和 [Azure Monitor 日志查询](get-started-queries.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -86,7 +86,7 @@ SecurityEvent
 ## <a name="join-kinds"></a>联接类型
 使用 kind 参数来指定联接类型。 如下表所述，每种类型在给定表的记录之间执行不同的匹配。
 
-| 联接类型 | Description |
+| 联接类型 | 说明 |
 |:---|:---|
 | innerunique | 这是默认的联接模式。 首先找到左表中匹配列的值，并删除重复值。  然后将该组唯一值集与右表匹配。 |
 | 内部 | 结果中只包括在两个表中匹配的记录。 |
@@ -105,7 +105,7 @@ SecurityEvent
 
 
 ## <a name="next-steps"></a>后续步骤
-有关 Log Analytics 查询语言的用法，请参阅其他课程：
+参阅有关使用 Azure Monitor 日志查询的其他课：
 
 - [字符串操作](string-operations.md)
 - [聚合函数](aggregations.md)

@@ -11,17 +11,18 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: bdb4db2d1a9447e8e328728288c1cf425c65a988
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/13/2019
+ms.openlocfilehash: 59eb0b842392faa2adfcd99b028f1e283a7e8db7
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511816"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243823"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL 数据库服务层
 
 Azure SQL 数据库基于 SQL Server 数据库引擎体系结构，该体系结构已根据云环境做出调整，以确保即使在发生基础结构故障时，也仍能提供 99.99% 的可用性。 Azure SQL 数据库中使用了三种体系结构模型：
+
 - [常规用途](sql-database-service-tier-general-purpose.md)，适用于大部分常规工作负荷。
 - [业务关键型](sql-database-service-tier-business-critical.md)，适用于具有一个可读副本的低延迟工作负荷。
 - [超大规模](sql-database-service-tier-hyperscale.md)，适用于具有多个可读副本的非常大的数据库（高达 100 TB）。
@@ -29,7 +30,7 @@ Azure SQL 数据库基于 SQL Server 数据库引擎体系结构，该体系结�
 本文讨论基于 vCore 购买模型中的常规用途和业务关键服务层的存储和备份注意事项。
 
 > [!NOTE]
-> 若要详细了解基于 vCore 的采购模型中的超大规模服务层，请参阅[超大规模服务层](sql-database-service-tier-hyperscale.md)。 有关基于 vCore 购买模型与基于 DTU 购买模型的比较，请参阅 [Azure SQL 数据库购买模型和资源](sql-database-service-tiers.md)。
+> 若要详细了解基于 vCore 的采购模型中的超大规模服务层，请参阅[超大规模服务层](sql-database-service-tier-hyperscale.md)。 有关基于 vCore 购买模型与基于 DTU 购买模型的比较，请参阅 [Azure SQL 数据库购买模型和资源](sql-database-purchase-models.md)。
 
 ## <a name="data-and-log-storage"></a>数据和日志存储
 
@@ -40,8 +41,8 @@ Azure SQL 数据库基于 SQL Server 数据库引擎体系结构，该体系结�
 - 配置所需的单一数据库大小（MDF 大小）时，系统会自动额外添加 30% 的存储来支持 LDF
 - 托管实例中的存储大小必须指定为 32 GB 的倍数。
 - 可以选择介于 10 GB 与受支持最大值之间的任何单一数据库大小
-  - 对于标准存储，可以按 10 GB 的增量增大或减小大小
-  - 对于高级存储，可以按 250 GB 的增量增大或减小大小
+  - 对于标准或常规用途服务层中的存储，按 10 GB 增量增减大小
+  - 对于高级或关键业务服务层中的存储，按 250 GB 增量增减大小
 - 在“常规用途”服务层中，`tempdb` 使用附加的 SSD，此存储成本包含在 vCore 价格中。
 - 在“业务关键”服务层中，`tempdb` 与 MDF 和 LDF 文件共享附加的 SSD，tempDB 存储成本已包含在 vCore 价格中。
 

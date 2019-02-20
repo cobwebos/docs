@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a3f40624e51ef287d70bed547eba7ec9e0882b0e
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3c4d702a33742da5501be208154cbdd593fa0524
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669189"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199702"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>教程：Azure Active Directory 与 Meta Networks 连接器集成
 
@@ -165,7 +166,7 @@ ms.locfileid: "43669189"
 1. 在浏览器中打开新选项卡并登录到 Meta Networks 连接器管理员帐户。
     
     > [!NOTE]
-    > Meta Networks 连接器是一个安全的系统。 因此在访问对方门户之前，需首先获取对方列入允许列表的公共 IP 地址。 访问[此处](https://whatismyipaddress.com/)给出的链接可获取公共 IP 地址。 将 IP 地址发送到 [Meta Networks 连接器客户端支持团队](mailto:support@metanetworks.com)可将 IP 地址列入允许列表。
+    > Meta Networks 连接器是一个安全的系统。 因此在访问对方门户之前，需首先获取对方列入白名单的公共 IP 地址。 访问[此处](https://whatismyipaddress.com/)给出的链接可获取公共 IP 地址。 将 IP 地址发送到 [Meta Networks 连接器客户端支持团队](mailto:support@metanetworks.com)可将 IP 地址列入白名单。
     
 1. 转到“管理员”，然后选择“设置”。
     
@@ -240,7 +241,7 @@ ms.locfileid: "43669189"
 本部分的目的是在 Meta Networks 连接器中创建名为 Britta Simon 的用户。 Meta Networks 连接器支持实时预配，该设置默认开启。 此部分不存在任何操作项。 尝试访问 Meta Networks 连接器期间，如果尚不存在用户，则将创建一个新用户。
 
 >[!Note]
->如果需要手动创建用户，请联系 [Meta Networks 连接器客户端支持团队](mailto:support@metanetworks.com)。
+>如果需要手动创建用户，请联系  [Meta Networks 连接器客户端支持团队](mailto:support@metanetworks.com)。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -277,12 +278,12 @@ ms.locfileid: "43669189"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Meta Networks 连接器”磁贴时，应会自动登录到 Meta Networks 连接器应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

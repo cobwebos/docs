@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 804044dbfc5428c3a80aab13227730ed13c43ce2
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 4f92860ac128bdb6e4e2e059592745285779688d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098024"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001950"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor 概述
 
@@ -28,6 +28,7 @@ Azure Monitor 提供用于收集、分析和处理来自云与本地环境的遥
 ## <a name="overview"></a>概述
 下图提供了 Azure Monitor 的概要视图。 示意图的中心是用于存储指标和日志（Azure Monitor 使用的两种基本类型的数据）的数据存储。 左侧是用于填充这些[数据存储](platform/data-collection.md)的[监视数据源](platform/data-sources.md)。 右侧是 Azure Monitor 针对这些收集的数据执行的不同功能，例如分析、警报和流式传输到外部系统。
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ![Azure Monitor 概述](media/overview/overview.png)
 
@@ -39,7 +40,7 @@ Azure 门户中的“概述”页会直接显示 Azure Monitor 针对许多 Azur
 
 ![度量值](media/overview/metrics.png)
 
-Azure Monitor 收集的日志数据存储在 Log Analytics 中。Log Analytics 包含[丰富查询语言](log-query/log-query-overview.md)，可以快速检索、合并与分析收集的数据。  可以使用 Azure 门户中的 [Log Analytics 页](log-query/portals.md)创建和测试查询，然后可以直接使用这些工具分析数据，或者保存查询以便与[可视化效果](visualizations.md)或[警报规则](platform/alerts-overview.md)配合使用。
+可以使用[查询](log-query/log-query-overview.md)来分析 Azure Monitor 收集的日志数据，这些查询可以快速检索、合并和分析所收集的数据。  可以使用 Azure 门户中的 [Log Analytics](log-query/portals.md) 创建和测试查询，然后可以直接使用这些工具分析数据，或者保存查询以便与[可视化效果](visualizations.md)或[警报规则](platform/alerts-overview.md)配合使用。
 
 Azure Monitor 使用[数据资源管理器查询语言](/azure/kusto/query/)的某个版本，该查询语言适用于简单的日志查询，但也包括高级功能，例如聚合、联接、智能分析。 可以通过[多个课程](log-query/get-started-queries.md)快速了解此查询语言。  特定指南提供给已熟悉 [SQL](log-query/sql-cheatsheet.md) 和 [Splunk](log-query/splunk-cheatsheet.md) 的用户。
 
@@ -54,7 +55,7 @@ Azure Monitor 可从各种源收集数据。 可将应用程序的监视数据�
 - **Azure 订阅监视数据**：有关 Azure 订阅操作和管理的数据，以及有关 Azure 本身运行状况和操作的数据。 
 - **Azure 租户监视数据**：有关租户级 Azure 服务（例如 Azure Active Directory）操作的数据。
 
-在创建 Azure 订阅并开始添加虚拟机和 Web 应用等资源后，Azure Monitor 会立即开始收集数据。  [活动日志](platform/activity-logs-overview.md)记录创建或修改资源的时间。 [指标](../monitoring-and-diagnostics/monitoring-overview-metrics.md)告知资源的性能如何，以及该资源消耗的资源。 
+在创建 Azure 订阅并开始添加虚拟机和 Web 应用等资源后，Azure Monitor 会立即开始收集数据。  [活动日志](platform/activity-logs-overview.md)记录创建或修改资源的时间。 [指标](platform/data-collection.md)告知资源的性能如何，以及该资源消耗的资源。 
 
 通过[启用诊断](platform/diagnostic-logs-overview.md)并[将代理添加](platform/agent-windows.md)到计算资源，将数据收集范围扩展到资源的实际操作。 这会收集资源内部操作的遥测数据，并可让你配置不同的[数据源](platform/agent-data-sources.md)用于从 Windows 和 Linux 来宾操作系统收集日志与指标。 
 

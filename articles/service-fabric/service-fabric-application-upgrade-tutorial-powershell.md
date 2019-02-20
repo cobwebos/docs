@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 0f134bdb4f77034dd124027fc960d172d25db721
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: e11ac55afe41231fcbc3aabb3ef54b46108eb49c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515312"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185836"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>使用 PowerShell 升级 Service Fabric 应用程序
 > [!div class="op_single_selector"]
@@ -34,11 +34,9 @@ ms.locfileid: "51515312"
 
 可使用托管或本机 API、PowerShell、Azure CLI、Java 或 REST 执行受监视的应用程序升级。 有关使用 Visual Studio 执行升级的说明，请参阅[使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)。
 
-使用 Service Fabric 监视的滚动升级，应用程序管理员可以配置 Service Fabric 用于确定应用程序运行状况是否正常的运行状况评估策略。 此外，管理员还可以配置当运行状况评估失败时要采取的措施（例如，执行自动回滚）。本部分将演练使用 PowerShell 对其中一个 SDK 示例进行受监视的升级。 以下 Microsoft Virtual Academy 视频也分步讲解了应用升级：<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=OrHJH66yC_6406218965">
-<img src="./media/service-fabric-application-upgrade-tutorial-powershell/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
+使用 Service Fabric 监视的滚动升级，应用程序管理员可以配置 Service Fabric 用于确定应用程序运行状况是否正常的运行状况评估策略。 此外，管理员还可以配置当运行状况评估失败时要采取的措施（例如，执行自动回滚）。本部分将演练使用 PowerShell 对其中一个 SDK 示例进行受监视的升级。 
 
-## <a name="step-1-build-and-deploy-the-visual-objects-sample"></a>步骤 1：构建和部署 Visual Objects 示例
+## <a name="step-1-build-and-deploy-the-visual-objects-sample"></a>步骤 1：构建和部署视觉对象示例
 单击右键应用程序项目 **VisualObjectsApplication**，并选择“**发布**”命令生成并发布应用程序。  有关详细信息，请参阅 [Service Fabric 应用程序升级教程](service-fabric-application-upgrade-tutorial.md)。  或者，也可以使用 PowerShell 来部署应用程序。
 
 > [!NOTE]
@@ -50,7 +48,7 @@ ms.locfileid: "51515312"
 
 现在可以使用 [Service Fabric Explorer 查看群集和应用程序](service-fabric-visualizing-your-cluster.md)。 应用程序具有一个 Web 服务，可通过在 Internet Explorer 地址栏中键入 [http://localhost:8081/visualobjects](http://localhost:8081/visualobjects) 导航到该 Web 服务。  应在屏幕上看到一些四处移动的浮动视觉对象。  此外，可使用 [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) 检查应用程序状态。
 
-## <a name="step-2-update-the-visual-objects-sample"></a>步骤 2：更新可视对象示例
+## <a name="step-2-update-the-visual-objects-sample"></a>步骤 2：更新视觉对象示例
 你可能会注意到，使用步骤 1 中部署的版本，视觉对象不会旋转。 让我们将此应用程序升级到可视对象也会旋转的版本。
 
 选择 VisualObjects 解决方案中的 VisualObjects.ActorService 项目，并打开该项目中的 StatefulVisualObjectActor.cs 文件。 在该文件内，导航到 `MoveObject` 方法，注释掉 `this.State.Move()`，并取消注释 `this.State.Move(true)`。 此项更改可在升级服务后旋转对象。

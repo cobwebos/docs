@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/28/2016
 ms.author: sogup
-ms.openlocfilehash: 0ed7260f35c483d17eb97e625ef72c310a3fcfdb
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d0fac3a075923b000c453480edbf18599f5fed3d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564130"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994860"
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>管理 Azure 虚拟机备份
 
@@ -142,7 +142,7 @@ ms.locfileid: "55564130"
 
 将恢复点保留在存储空间中需支付相关费用。 不过，保留恢复点的好处是，可以根据需要在以后还原虚拟机。 如需了解保留恢复点的成本，请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/backup/)。 如果选择删除所有恢复点，则无法还原虚拟机。
 
-每当在保留数据的情况下停止备份时，恢复点都将根据保留策略过期，但 Azure 备份会始终保留最后一个恢复点，直至你显式删除备份数据。 类似地，如果你在不执行停止备份的情况下删除数据源，则新备份将会失败，并且旧的恢复点将根据保留策略过期，但最后一个恢复点将始终保留，直到你在删除数据的情况下执行停止备份。
+恢复点将永久保留，直到备份项通过保留策略重新受到保护，或通过删除数据停止保护 (StopProtection)。 对于重新保护，关联的新策略将确定恢复点的保留期。 类似地，如果你在不执行停止备份的情况下删除数据源，则新备份将会失败，并且旧的恢复点将根据保留策略过期，但最后一个恢复点将始终保留，直到你在删除数据的情况下执行停止备份。
 
 若要停止保护虚拟机，请执行以下操作：
 

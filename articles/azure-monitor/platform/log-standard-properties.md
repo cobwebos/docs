@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor Log Analytics 记录中的标准属性 | Microsoft Docs
-description: 介绍 Azure Monitor Log Analytics 中多种数据类型共有的属性。
+title: Azure Monitor 日志记录中的标准属性 | Microsoft Docs
+description: 介绍 Azure Monitor 日志中多种数据类型共有的属性。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: bwren
-ms.openlocfilehash: 27c732a2ddd21401ffbefa727cbb8001ec288293
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 2309e7762ad36f59e0833e675e7012ee3c459e3e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381950"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997033"
 ---
-# <a name="standard-properties-in-log-analytics-records"></a>Log Analytics 记录中的标准属性
-[Log Analytics](../log-query/log-query-overview.md) 中的数据以一组记录的形式存储，每个记录都有一个特定的数据类型，该数据类型具有一组独特属性。 许多数据类型都具有在多种类型中通用的标准属性。 本文介绍这些属性，并提供如何在查询中使用它们的示例。
+# <a name="standard-properties-in-azure-monitor-log-records"></a>Azure Monitor 日志记录中的标准属性
+Azure Monitor 中的日志数据[以一组记录的形式存储](../log-query/log-query-overview.md)，每个记录都有一个特定的数据类型，该数据类型具有一组独特属性。 许多数据类型都具有在多种类型中通用的标准属性。 本文介绍这些属性，并提供如何在查询中使用它们的示例。
 
 其中一些属性仍在实现过程中，因此你可能会在某些数据类型中看到它们，但在其他数据类型中却看不到。
 
@@ -39,7 +39,7 @@ Event
 | sort by TimeGenerated asc 
 ```
 
-## <a name="type"></a>类型
+## <a name="type"></a>Type
 **Type** 属性包含从中检索记录的表的名称，也可以将其视为记录类型。 此属性在将多个表的记录进行组合的查询中非常有用，例如，使用 `search` 运算符区分不同类型的记录的那些查询。 在某些地方，**$table** 可以用来替代 **Type**。
 
 ### <a name="examples"></a>示例
@@ -151,6 +151,6 @@ union withsource = tt *
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细阅读如何[存储 Log Analytics 数据](../log-query/log-query-overview.md)。
-- 获取有关[在 Log Analytics 中编写查询](../../azure-monitor/log-query/get-started-queries.md)的课程。
-- 获取有关[在 Log Analytics 查询中联接表](../../azure-monitor/log-query/joins.md)的课程。
+- 详细了解如何[存储 Azure Monitor 日志数据](../log-query/log-query-overview.md)。
+- 获取有关[编写日志查询](../../azure-monitor/log-query/get-started-queries.md)的课程。
+- 获取有关[在日志查询中联接表](../../azure-monitor/log-query/joins.md)的课程。

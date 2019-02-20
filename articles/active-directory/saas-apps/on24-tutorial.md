@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 ON24 Virtual Environment SAML Connection 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 ON24 Virtual Environment SAML Connection 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 ON24 Virtual Environment SAML Connection 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 1ec18f0013a7fa640395a8b8bedd9df8b0924c3a
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0827895d58b0b7633ee4543495014c62b5394312
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49070882"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209483"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>教程：Azure Active Directory 与 ON24 Virtual Environment SAML Connection 的集成
+# <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>教程：Azure Active Directory 与 ON24 Virtual Environment SAML Connection 集成
 
 本教程介绍如何将 ON24 Virtual Environment SAML Connection 与 Azure Active Directory (Azure AD) 集成。
 
@@ -103,11 +104,11 @@ ms.locfileid: "49070882"
 
       ![图像](./media/on24-tutorial/b1_b2_saml_ssso.png)
 
-3. 在“选择单一登录方法”对话框中，选择“SAML”模式以启用单一登录。
+3. 在“选择单一登录方法”对话框中，选择 SAML 模式以启用单一登录。
 
     ![图像](./media/on24-tutorial/b1_b2_saml_sso.png)
 
-4. 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“基本 SAML 配置”对话框。
+4. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
 
     ![图像](./media/on24-tutorial/b1-domains_and_urlsedit.png)
 
@@ -115,7 +116,7 @@ ms.locfileid: "49070882"
 
     ![图像](./media/on24-tutorial/tutorial_on24_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中键入 URL：
+    a. 在“标识符”文本框中键入 URL：
 
      **生产环境 URL**
     
@@ -161,7 +162,7 @@ ms.locfileid: "49070882"
 
     e. 如果要在 **SP** 发起的模式下配置应用程序，请在“登录 URL”文本框中键入 URL：`https://vshow.on24.com/vshow/<INSTANCENAME>`
 
-6. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“下载”以根据要求下载相应的证书并将其保存在计算机上。
+6. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，单击“下载”，以根据要求下载相应的证书，并将证书保存在计算机上。
 
     ![图像](./media/on24-tutorial/tutorial_on24_certificate.png) 
 
@@ -179,13 +180,13 @@ ms.locfileid: "49070882"
 
     ![图像](./media/on24-tutorial/d_adduser.png)
 
-3. 在用户属性中执行以下步骤。
+3. 在“用户属性”中，按照以下步骤操作。
 
     ![图像](./media/on24-tutorial/d_userproperties.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 **BrittaSimon**。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 **brittasimon@yourcompanydomain.extension**  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -194,7 +195,7 @@ ms.locfileid: "49070882"
  
 ### <a name="create-an-on24-virtual-environment-saml-connection-test-user"></a>创建 ON24 Virtual Environment SAML Connection 测试用户
 
-在本部分，我们将在 ON24 Virtual Environment SAML Connection 中创建名为 Britta Simon 的用户。 请与 [ON24 Virtual Environment SAML Connection 支持团队](https://www.on24.com/about-us/support/)协作，将该用户添加到 ON24 Virtual Environment SAML Connection 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分，我们将在 ON24 Virtual Environment SAML Connection 中创建名为 Britta Simon 的用户。 请与  [ON24 Virtual Environment SAML Connection 支持团队](https://www.on24.com/about-us/support/)协作，将用户添加到 ON24 Virtual Environment SAML Connection 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -225,7 +226,7 @@ ms.locfileid: "49070882"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 ON24 Virtual Environment SAML Connection 磁贴时，应会自动登录到 ON24 Virtual Environment SAML Connection 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 

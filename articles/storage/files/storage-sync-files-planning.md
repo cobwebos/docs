@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 5bff36f17b407c95858924a2a88b133500c350b6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 7b6a5a46e311fa54d6957c45d35ef20d94cf7632
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751406"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200490"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -167,10 +167,14 @@ Windows Server 故障转移群集受 Azure 文件同步支持，用于“一般�
 > 必须在故障转移群集中的每个节点上安装 Azure 文件同步代理，才能正常进行同步。
 
 ### <a name="data-deduplication"></a>重复数据删除
-对于未启用云分层的卷，Azure 文件同步支持在卷上启用 Windows Server 重复数据删除。 目前不可在启用云分层的 Azure 文件同步和重复数据删除之间进行互操作。
+**代理版本 5.0.2.0**   
+Windows Server 2016 和 Windows Server 2019 上启用了云分层的卷支持重复数据删除。 在启用了云分层的卷上启用重复数据删除后，即可在本地缓存更多文件，而无需预配更多存储。
+
+**Windows Server 2012 R2 或之前的代理版本**  
+对于未启用云分层的卷，Azure 文件同步支持在卷上启用 Windows Server 重复数据删除。
 
 ### <a name="distributed-file-system-dfs"></a>分布式文件系统 (DFS)
-从 [Azure 文件同步代理 1.2](https://go.microsoft.com/fwlink/?linkid=864522) 开始，Azure 文件同步就支持与 DFS 命名空间 (DFS-N) 和 DFS 复制 (DFS-R) 进行互操作。
+Azure 文件同步支持与 DFS 命名空间 (DFS-N) 和 DFS 复制 (DFS-R) 进行互操作。
 
 **DFS 命名空间 (DFS-N)**：Azure 文件同步在 DFS-N 服务器上完全受支持。 可以在一个或多个 DFS-N 成员上安装 Azure 文件同步代理，以在服务器终结点与云终结点之间同步数据。 有关详细信息，请参阅 [DFS 命名空间概述](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview)。
  

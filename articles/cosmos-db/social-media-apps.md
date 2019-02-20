@@ -4,14 +4,14 @@ description: 利用 Azure Cosmos DB 的存储灵活性和其他 Azure 服务了�
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 02/11/2019
 ms.author: maquaran
-ms.openlocfilehash: 8d6dfa292bd597c2e37f7111e3a068010dc4653c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 36b77ff6666c2c8b0d27cbdc8552ade15b21d005
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042677"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100357"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 进行社交
 
@@ -222,7 +222,7 @@ Azure 搜索可实现它们称之为[索引器](https://msdn.microsoft.com/libra
 
 最后，还必须说明一个非常重要的项目：可伸缩性。 设计体系结构时，每个组件都应该自行缩放。 你最终将需要处理更多数据，或者希望拥有更大的地理覆盖范围。 幸运的是，使用 Cosmos DB 完成这两项任务是一种统包体验。
 
-Cosmos DB 支持现成可用的[动态分区](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/)。 它会根据给定的分区键自动创建分区，分区键在文档中定义为属性。 定义正确的分区键操作必须在设计时完成。 有关详细信息，请参阅[选择正确的分区键](partitioning-overview.md#choose-partitionkey)文章。
+Cosmos DB 支持现成的动态分区。 它会根据给定的分区键自动创建分区，分区键在文档中定义为属性。 定义正确的分区键操作必须在设计时完成。 有关详细信息，请参阅 [Azure Cosmos DB 分区](partitioning-overview.md)。
 
 对于社交体验，必须将分区策略与查询和写入方式保持一致。 （例如，推荐在同一分区内进行读取，并通过在多个分区上分散写入来避免“热点”。）某些选项为：基于临时键的分区（日/月/周）、按内容类别、按地理区域，或按用户。 这一切都取决于查询数据并在社交体验中显示数据的方式。
 

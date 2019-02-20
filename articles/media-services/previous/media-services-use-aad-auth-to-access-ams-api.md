@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 320afdb1e4f71150680e9bed6a4c1c9955c99936
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: b846e1fe4552c6cec356a7e7828135b0e1fdf315
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230618"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994095"
 ---
-# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>通过 Azure AD 身份验证访问 Azure 媒体服务 API
+# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>通过 Azure AD 身份验证访问 Azure 媒体服务 API  
  
 Azure 媒体服务 API 是 RESTful API。 可用于通过 REST API 或可用的客户端 SDK 对媒体资源执行操作。 Azure 媒体服务提供了适用于 Microsoft.NET 的媒体服务客户端 SDK。 若要有权访问媒体服务资源和媒体服务 API，必须先进行身份验证。 
 
@@ -138,7 +138,7 @@ Azure 媒体服务 API 是 RESTful API。 可用于通过 REST API 或可用的�
 
 ## <a name="troubleshooting"></a>故障排除
 
-异常：“远程服务器返回了错误: (401) 未授权。”
+异常：“远程服务器返回错误:(401)未经授权。”
 
 解决方案：若要让媒体服务 REST 请求成功，对于尝试访问的媒体服务帐户，调用用户必须具有参与者或所有者角色。 有关详细信息，请参阅[访问控制](media-services-use-aad-auth-to-access-ams-api.md#access-control)部分。
 

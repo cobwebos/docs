@@ -4,7 +4,7 @@ description: 了解如何通过创建和上传资产将媒体内容加入媒体�
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: c9c86380-9395-4db8-acea-507c52066f73
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 43da365a6424fa9d489db1f5cd74ff6aeb8f0d7c
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: a07c4f285b2bb2d74b580648a3aad6a550766828
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54819877"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984216"
 ---
-# <a name="upload-files-into-a-media-services-account-using-net"></a>使用 .NET 将文件上传到媒体服务帐户
+# <a name="upload-files-into-a-media-services-account-using-net-legacy"></a>使用 .NET 将文件上传到媒体服务帐户（旧版）
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-upload-files.md)
 > * [REST](media-services-rest-upload-files.md)

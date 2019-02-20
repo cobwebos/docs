@@ -6,17 +6,18 @@ keywords: 剪辑;子剪辑;编码;媒体
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 11/10/2017
+ms.date: 02/08/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 227a312839950652924e75f0bafb474ce7bac588
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: def72c1bb42d083c38640f7c6165c305a5820c75
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448654"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003272"
 ---
-# <a name="configure-localization"></a>配置本地化
+# <a name="configure-localization-legacy"></a>配置本地化（旧版）
+
 Azure 媒体剪辑器支持 18 种语言。 若要设置小组件语言，必须在初始化期间定义 `language` 参数。 从以下列表中传入所需的语言代码字符串：
 - 中文（简体）：zh-hans
 - 中文（繁体）：zh-hant

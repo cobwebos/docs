@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 34b38f979fcab765a35d8aa6f0714ce85beec6fe
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 0cc9c8dc214589e03e5a6a5405c07c9f6b3e53e6
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105179"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895833"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>将本地 VMware 虚拟机或物理服务器的灾难恢复设置到辅助站点
 
@@ -218,7 +218,7 @@ Scout Update 5 是累积更新。 其中包含从 Update 1 到 Update 4 的所�
 
 #### <a name="new-platform-support"></a>新的平台支持
 * SUSE Linux Enterprise Server 11 Service Pack 4(SP4)
-* SLES 11 SP4 64 位 InMage_UA_8.0.1.0_SLES11-SP4-64_GA_13Apr2017_release.tar.gz 与基础 Scout GA 包 (**InMage_Scout_Standard_8.0.1 GA.zip**) 打包在一起。 从门户中下载 GA 包，如[创建保管库](#create-a-vault)中所述。
+* SLES 11 SP4 64 位 InMage_UA_8.0.1.0_SLES11-SP4-64_GA_13Apr2017_release.tar.gz 与基础 Scout GA 包 (**InMage_Scout_Standard_8.0.1 GA.zip**) 打包在一起。 从门户中下载 GA 包，如“创建保管库”中所述。
 
 
 #### <a name="bug-fixes-and-enhancements"></a>Bug 修复和增强功能
@@ -252,7 +252,7 @@ Scout Update 4 是累积更新。 其中包含从 Update 1 到 Update 3 的所�
   * CentOS 6.8
 
 > [!NOTE]
-> RHEL/CentOS 7 64 位 InMage_UA_8.0.1.0_RHEL7-64_GA_06Oct2016_release.tar.gz 与基础 Scout GA 包 InMage_Scout_Standard_8.0.1 GA.zip 一起打包。 从门户中下载 Scout GA 包，如[创建保管库](#create-a-vault)中所述。
+> RHEL/CentOS 7 64 位 InMage_UA_8.0.1.0_RHEL7-64_GA_06Oct2016_release.tar.gz 与基础 Scout GA 包 InMage_Scout_Standard_8.0.1 GA.zip 一起打包。 从门户中下载 Scout GA 包，如“创建保管库”中所述。
 
 #### <a name="bug-fixes-and-enhancements"></a>Bug 修复和增强功能
 

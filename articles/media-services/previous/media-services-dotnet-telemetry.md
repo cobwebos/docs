@@ -4,7 +4,7 @@ description: 本文说明了如何通过 .NET SDK 使用 Azure 媒体服务遥�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: f8f55e37-0714-49ea-bf4a-e6c1319bec44
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 57b68207b5150980ce1ab9a807af40766c25c6c0
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5a24bf415cd575ebf62a2843207872c66bbeb021
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783046"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989849"
 ---
-# <a name="configuring-azure-media-services-telemetry-with-net"></a>使用 .NET 配置 Azure 媒体服务遥测
+# <a name="configuring-azure-media-services-telemetry-with-net-legacy"></a>使用 .NET 配置 Azure 媒体服务遥测（旧版）
 
 本文介绍了使用 .NET SDK 配置 Azure 媒体服务 (AMS) 遥测时可采取的常规步骤。 
 

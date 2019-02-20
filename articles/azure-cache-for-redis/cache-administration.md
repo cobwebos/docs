@@ -1,28 +1,30 @@
 ---
 title: 如何管理 Azure Redis 缓存 | Microsoft Docs
 description: 了解如何执行管理任务，如重启 Azure Redis 缓存和为 Azure Redis 缓存计划更新
-services: azure-cache-for-redis
+services: cache
 documentationcenter: na
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: tysonn
 ms.assetid: 8c915ae6-5322-4046-9938-8f7832403000
 ms.service: cache
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
-ms.author: wesmc
-ms.openlocfilehash: 0f86bd807bf7bf0d00ad659f86b6e1170f31074c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.author: yegu
+ms.openlocfilehash: b75a2faa2030fc343cbabb17eb37b63c9ea34f70
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021085"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232375"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>如何管理 Azure Redis 缓存
 本主题介绍如何为 Azure Redis 缓存实例执行管理任务，如[重启](#reboot)和[计划更新](#schedule-updates)。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="reboot"></a>重新启动
 可通过“重新启动”边栏选项卡重新启动缓存的一个或多个节点。 如果有缓存节点发生故障，此重新启动功能可用于测试应用程序的复原能力。
@@ -92,7 +94,7 @@ ms.locfileid: "53021085"
 
 要指定维护时段，请勾选合适的日期，并指定每天的维护时段开始时间，最后再单击“确定”。 请注意，维护时段使用 UTC 时间。 
 
-更新的默认最小维护时段为 5 小时。 此值不可以在 Azure 门户中配置，但可以在 PowerShell 中使用 [New-AzureRmRedisCacheScheduleEntry](/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry) cmdlet 的 `MaintenanceWindow` 参数进行配置。 有关详细信息，请参阅[能否使用 PowerShell、CLI 或其他管理工具管理计划的更新？](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)
+更新的默认最小维护时段为 5 小时。 此值不可以在 Azure 门户中配置，但可以在 PowerShell 中使用 [New-AzRmRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) cmdlet 的 `MaintenanceWindow` 参数进行配置。 有关详细信息，请参阅[能否使用 PowerShell、CLI 或其他管理工具管理计划的更新？](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)
 
 
 ## <a name="schedule-updates-faq"></a>计划更新常见问题
@@ -110,10 +112,10 @@ ms.locfileid: "53021085"
 ### <a name="can-i-managed-scheduled-updates-using-powershell-cli-or-other-management-tools"></a>有关详细信息，请参阅能否使用 PowerShell、CLI 或其他管理工具管理计划的更新？
 可以使用以下 PowerShell cmdlet 管理计划的更新：
 
-* [Get-AzureRmRedisCachePatchSchedule](/powershell/module/azurerm.rediscache/get-azurermrediscachepatchschedule)
-* [New-AzureRmRedisCachePatchSchedule](/powershell/module/azurerm.rediscache/new-azurermrediscachepatchschedule)
-* [New-AzureRmRedisCacheScheduleEntry](/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry)
-* [Remove-AzureRmRedisCachePatchSchedule](/powershell/module/azurerm.rediscache/remove-azurermrediscachepatchschedule)
+* [Get-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/get-azrediscachepatchschedule)
+* [New-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/new-azrediscachepatchschedule)
+* [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry)
+* [Remove-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/remove-azrediscachepatchschedule)
 
 ### <a name="what-pricing-tiers-can-use-the-schedule-updates-functionality"></a>哪些定价层可以使用计划更新功能？
 **计划更新**功能仅在高级定价层中可用。

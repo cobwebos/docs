@@ -13,18 +13,20 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 82b01cec892f15f7f85f6b5f822475114b5b73c6
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 68a652fe16162d96d4ec07e6690f10f0bd34f2c0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434983"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980867"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>使用 Azure Policy 限制 Windows VM 上的扩展安装
 
 如果想要阻止在 Windows VM 上使用或安装某些扩展，可以使用 PowerShell 创建 Azure Policy 以限制资源组中的 VM 扩展。 
 
-本教程在 Cloud Shell 中使用 Azure PowerShell，后者已不断更新到最新版本。 如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 3.6 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。 
+本教程在 Cloud Shell 中使用 Azure PowerShell，后者已不断更新到最新版本。 
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="create-a-rules-file"></a>创建规则文件
 
@@ -97,13 +99,13 @@ nano $home/clouddrive/parameters.json
 
 ## <a name="create-the-policy"></a>创建策略
 
-策略定义是用于存储想要使用的配置的对象。 策略定义使用规则和参数文件定义策略。 使用 [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition) cmdlet 创建策略定义。
+策略定义是用于存储想要使用的配置的对象。 策略定义使用规则和参数文件定义策略。 使用 [New-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicydefinition) cmdlet 创建策略定义。
 
  策略规则和参数是在 cloud shell 中创建并存储为 .json 文件的文件。
 
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition `
+$definition = New-AzPolicyDefinition `
    -Name "not-allowed-vmextension-windows" `
    -DisplayName "Not allowed VM Extensions" `
    -description "This policy governs which VM extensions that are explicitly denied."   `
@@ -116,13 +118,13 @@ $definition = New-AzureRmPolicyDefinition `
 
 ## <a name="assign-the-policy"></a>分配策略
 
-此示例使用 [New-AzureRMPolicyAssignment](/powershell/module/azurerm.resources/new-azurermpolicyassignment) 将策略分配给资源组。 **myResourceGroup** 资源组中创建的任何 VM 将不能安装 VM 访问代理扩展或自定义脚本扩展。 
+此示例使用 [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment) 将策略分配给资源组。 **myResourceGroup** 资源组中创建的任何 VM 将不能安装 VM 访问代理扩展或自定义脚本扩展。 
 
-使用 [Get-AzureRMSubscription | Format-Table](/powershell/module/azurerm.profile/get-azurermsubscription) cmdlet 获取你的订阅 ID 以替换此示例中的订阅 ID。
+使用 [Get-AzSubscription | Format-Table](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) cmdlet 获取你的订阅 ID，以替换此示例中的订阅 ID。
 
 ```azurepowershell-interactive
 $scope = "/subscriptions/<subscription id>/resourceGroups/myResourceGroup"
-$assignment = New-AzureRMPolicyAssignment `
+$assignment = New-AzPolicyAssignment `
    -Name "not-allowed-vmextension-windows" `
    -Scope $scope `
    -PolicyDefinition $definition `
@@ -139,10 +141,10 @@ $assignment
 
 ## <a name="test-the-policy"></a>测试策略
 
-若要测试策略，请尝试使用 VM 访问扩展。 以下命令应失败并显示消息“Set-AzureRmVMAccessExtension:策略不允许使用资源 'myVMAccess'”。
+若要测试策略，请尝试使用 VM 访问扩展。 以下命令应失败并显示消息“Set-AzVMAccessExtension:策略不允许使用资源 'myVMAccess'”。
 
 ```azurepowershell-interactive
-Set-AzureRmVMAccessExtension `
+Set-AzVMAccessExtension `
    -ResourceGroupName "myResourceGroup" `
    -VMName "myVM" `
    -Name "myVMAccess" `
@@ -154,13 +156,13 @@ Set-AzureRmVMAccessExtension `
 ## <a name="remove-the-assignment"></a>删除分配
 
 ```azurepowershell-interactive
-Remove-AzureRMPolicyAssignment -Name not-allowed-vmextension-windows -Scope $scope
+Remove-AzPolicyAssignment -Name not-allowed-vmextension-windows -Scope $scope
 ```
 
 ## <a name="remove-the-policy"></a>删除策略
 
 ```azurepowershell-interactive
-Remove-AzureRmPolicyDefinition -Name not-allowed-vmextension-windows
+Remove-AzPolicyDefinition -Name not-allowed-vmextension-windows
 ```
     
 ## <a name="next-steps"></a>后续步骤

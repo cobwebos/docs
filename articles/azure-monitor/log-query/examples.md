@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor Log Analytics 查询示例 | Microsoft Docs
-description: Log Analytics 中使用 Kusto 语言的查询示例。
+title: Azure Monitor 日志查询示例 | Microsoft Docs
+description: 使用数据资源管理器查询语言在 Azure Monitor 中进行日志查询的示例。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
-ms.openlocfilehash: d5cad3869e74f33a2d1a56352c658bb9c8f23db6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 81852590ec714c458ebf2ba2b714d0b20f0b873c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884653"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993191"
 ---
-# <a name="log-analytics-query-examples"></a>Log Analytics 查询示例
-本文包含使用 [Kusto 语言](https://docs.microsoft.com/azure/kusto/query/)从 Log Analytics 中检索不同类型的数据的各种示例[查询](../../azure-monitor/log-query/log-query-overview.md)。 其中使用了不同的方法来合并和分析数据，因此，你可以使用这些示例来识别符合自身要求的不同策略。  
+# <a name="azure-monitor-log-query-examples"></a>Azure Monitor 日志查询示例
+本文包含使用[数据资源管理器查询语言](https://docs.microsoft.com/azure/kusto/query/)从 Azure Monitor 中检索不同类型的日志数据的各种[查询](log-query-overview.md)示例。 其中使用了不同的方法来合并和分析数据，因此，你可以使用这些示例来识别符合自身要求的不同策略。  
 
-有关这些示例中使用的不同关键字的详细信息，请参阅 [Kusto 语言参考](https://docs.microsoft.com/azure/kusto/query/)。 如果你是 Log Analytics 的新手，请仔细阅读[有关创建查询的课程](get-started-queries.md)。
+有关这些示例中使用的不同关键字的详细信息，请参阅 [Kusto 语言参考](https://docs.microsoft.com/azure/kusto/query/)。 如果你是初次接触 Azure Monitor，请仔细阅读[有关创建查询的课程](get-started-queries.md)。
 
 ## <a name="events"></a>活动
 
@@ -440,4 +440,4 @@ Update
 ## <a name="next-steps"></a>后续步骤
 
 - 有关语言的详细信息，请参阅 [Kusto 语言参考](/azure/kusto/query)。
-- 演练[有关在 Log Analytics 中编写查询的课程](get-started-queries.md)。
+- 演练[有关在 Azure Monitor 中编写日志查询的课程](get-started-queries.md)。

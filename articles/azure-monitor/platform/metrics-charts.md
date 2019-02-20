@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 2b6d982f514f347dc2a59f9ca8f3c33b8c24849b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 594ebb6a3c82c9b9dd3ee03a8083abf052d20f49
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827442"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991321"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor 指标资源管理器
 
@@ -21,7 +21,7 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
 
 ## <a name="metrics-in-azure"></a>Azure 中的指标
 
-Microsoft Azure 中的指标是随着时间的推移收集和存储的一系列测量值和计数。 有标准（或“平台”）指标和自定义指标。 标准指标由 Azure 平台本身提供。 标准指标反映 Azure 资源的运行状况和使用情况统计信息。 而自定义指标是由应用程序通过[自定义事件的 Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) 发送给 Azure 的。 自定义指标与其他特定于应用程序的指标存储在 Application Insights 资源中。
+[Azure Monitor 中的指标](data-collection.md#metrics)是随着时间的推移收集和存储的一系列测量值和计数。 有标准（或“平台”）指标和自定义指标。 标准指标由 Azure 平台本身提供。 标准指标反映 Azure 资源的运行状况和使用情况统计信息。 而自定义指标是由应用程序通过[自定义事件的 Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) 发送给 Azure 的。 自定义指标与其他特定于应用程序的指标存储在 Application Insights 资源中。
 
 ## <a name="create-a-new-chart"></a>创建新图表
 

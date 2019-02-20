@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 02/12/2018
 ms.author: ramamill
-ms.openlocfilehash: db5482fe17b9181097e13d446937bc489c3db8fe
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 9aa6b9dc26b53315957b7ddbb113d1d129dcc1da
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462821"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109157"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>为 VMware VM 灾难恢复管理配置服务器
 
@@ -161,6 +161,63 @@ ms.locfileid: "54462821"
 
 7. 单击“完成”关闭安装程序。
 8. 若要升级其余的 Site Recovery 组件，请参阅我们的[升级指南](https://aka.ms/asr_vmware_upgrades)。
+
+## <a name="upgrade-configuration-serverprocess-server-from-the-command-line"></a>从命令行升级配置服务器/进程服务器
+
+如下所示运行安装文件：
+
+  ```
+  UnifiedSetup.exe [/ServerMode <CS/PS>] [/InstallDrive <DriveLetter>] [/MySQLCredsFilePath <MySQL credentials file path>] [/VaultCredsFilePath <Vault credentials file path>] [/EnvType <VMWare/NonVMWare>] [/PSIP <IP address to be used for data transfer] [/CSIP <IP address of CS to be registered with>] [/PassphraseFilePath <Passphrase file path>]
+  ```
+
+### <a name="sample-usage"></a>示例用法
+  ```
+  MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
+  cd C:\Temp\Extracted
+  UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "CS" /InstallLocation "D:\" /MySQLCredsFilePath "C:\Temp\MySQLCredentialsfile.txt" /VaultCredsFilePath "C:\Temp\MyVault.vaultcredentials" /EnvType "VMWare"
+  ```
+
+
+### <a name="parameters"></a>parameters
+
+|参数名称| Type | 说明| 值|
+|-|-|-|-|
+| /ServerMode|必选|指定是要同时安装配置服务器和进程服务器，还是只安装进程服务器|CS<br>PS|
+|/InstallLocation|必选|用于安装组件的文件夹| 计算机上的任意文件夹|
+|/MySQLCredsFilePath|必选|MySQL 服务器凭据存储到的文件路径|文件应采用以下指定格式|
+|/VaultCredsFilePath|必选|保管库凭据文件的路径|有效的文件路径|
+|/EnvType|必选|要保护的环境类型 |VMware<br>NonVMware|
+|/PSIP|必选|要用于复制数据传输的 NIC 的 IP 地址| 任何有效的 IP 地址|
+|/CSIP|必选|配置服务器侦听时所在的 NIC 的 IP 地址| 任何有效的 IP 地址|
+|/PassphraseFilePath|必选|通行短语文件位置的完整路径|有效的文件路径|
+|/BypassProxy|可选|指定配置服务器不使用代理连接到 Azure|若要从 Venu 获取此值|
+|/ProxySettingsFilePath|可选|代理设置（默认代理需要身份验证，或自定义代理）|文件应采用以下指定格式|
+|DataTransferSecurePort|可选|PSIP 上用于复制数据的端口号| 有效端口号（默认值为 9433）|
+|/SkipSpaceCheck|可选|跳过缓存磁盘的空间检查| |
+|/AcceptThirdpartyEULA|必选|该标志表示接受第三方 EULA| |
+|/ShowThirdpartyEULA|可选|显示第三方 EULA。 如果作为输入提供，将忽略所有其他参数| |
+
+
+
+### <a name="create-file-input-for-mysqlcredsfilepath"></a>创建 MYSQLCredsFilePath 的文件输入
+
+MySQLCredsFilePath 参数使用某个文件作为输入。 创建使用以下格式的文件并将其作为输入 MySQLCredsFilePath 参数进行传递。
+```ini
+[MySQLCredentials]
+MySQLRootPassword = "Password>"
+MySQLUserPassword = "Password"
+```
+### <a name="create-file-input-for-proxysettingsfilepath"></a>创建 ProxySettingsFilePath 的文件输入
+ProxySettingsFilePath 参数使用某个文件作为输入。 创建使用以下格式的文件并将其作为输入 ProxySettingsFilePath 参数进行传递。
+
+```ini
+[ProxySettings]
+ProxyAuthentication = "Yes/No"
+Proxy IP = "IP Address"
+ProxyPort = "Port"
+ProxyUserName="UserName"
+ProxyPassword="Password"
+```
 
 ## <a name="delete-or-unregister-a-configuration-server"></a>删除或取消注册配置服务器
 

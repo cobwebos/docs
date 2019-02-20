@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 40e0230e6a8e03aa53a24f2497fcd016909c0ada
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: d16214bf08b0e0b5a95acae380f8d644fc4461ce
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55757560"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56212939"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure 高级存储：高性能设计
 
@@ -63,7 +63,7 @@ IOPS 是指应用程序在一秒内发送到存储磁盘的请求数。 可以�
 
 ## <a name="latency"></a>Latency
 
-延迟是指应用程序接收单个请求，将其发送到存储磁盘，然后又将响应发送到客户端所花的时间。 这是除 IOPS 和吞吐量之外的针对应用程序性能的关键度量。 高级存储磁盘的延迟是指该磁盘检索请求的信息并将其发送回应用程序所花的时间。 高级存储提供持续一致的低延迟服务。 如果在高级存储磁盘上启用 ReadOnly 主机缓存，则可获得相当低的读取延迟。 在后面的优化应用程序性能部分，我们将更详细地讨论磁盘缓存。
+延迟是指应用程序接收单个请求，将其发送到存储磁盘，然后又将响应发送到客户端所花的时间。 这是除 IOPS 和吞吐量之外的针对应用程序性能的关键度量。 高级存储磁盘的延迟是指该磁盘检索请求的信息并将其发送回应用程序所花的时间。 高级存储提供持续一致的低延迟服务。 高级磁盘旨在为大多数 IO 操作提供个位数的毫秒级延迟。 如果在高级存储磁盘上启用 ReadOnly 主机缓存，则可获得相当低的读取延迟。 在后面的优化应用程序性能部分，我们将更详细地讨论磁盘缓存。
 
 对应用程序进行优化以获取更高的 IOPS 和吞吐量时，应用程序的延迟就会受到影响。 在优化应用程序性能以后，应始终评估应用程序的延迟，以免出现意外的高延迟行为。
 

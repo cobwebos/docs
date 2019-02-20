@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Silverback 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Silverback 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Silverback 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeedes
-ms.openlocfilehash: e7cb3049f680f81026e09388066001413922600a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b5614c061586c39e44f04f3542285e55e07f14d9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123838"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172700"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-silverback"></a>教程：Azure Active Directory 与 Silverback 集成
+# <a name="tutorial-azure-active-directory-integration-with-silverback"></a>教程：Azure Active Directory 与 Silverback 的集成
 
 在本教程中，你将学习如何将 Silverback 与 Azure Active Directory (Azure AD) 集成。
 
@@ -126,7 +127,7 @@ ms.locfileid: "46123838"
 
 6.  以管理员身份登录 Silverback 服务器并执行以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  导航到“管理员” > “验证提供程序”。
+    a.  导航到“管理员” > “验证提供程序”。
 
     b. 在“验证提供程序设置”页上，执行以下步骤：
 
@@ -196,7 +197,7 @@ ms.locfileid: "46123838"
 
     ![用户 ](./media/silverback-tutorial/tutorial_silverback_user.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“用户名”文本框中，输入用户的名字，例如 **Britta**。
+    a. 在“用户名”文本框中，输入用户的名字，例如 **Britta**。
 
     b. 在“名字”文本框中，输入用户的名字，如 Britta。
 
@@ -248,12 +249,12 @@ ms.locfileid: "46123838"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Silverback”磁贴时，用户应自动登录到 Silverback 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

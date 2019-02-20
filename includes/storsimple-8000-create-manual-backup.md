@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 50c0c781e7e1c95896a22f0cd71ed20bbad4c2b3
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 4fc92931979aa367bdead435c3d6fd758d66a397
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164439"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889760"
 ---
-<!--author=alkohli last changed: 01/20/2017-->
-
 #### <a name="to-create-a-manual-backup"></a>创建手动备份
 
 1. 转到 StorSimple Device Manager 服务，并单击“设备”。 从设备的表格式列表中，选择设备。 转到“设置”>“管理”>“备份策略”。
@@ -23,7 +21,7 @@ ms.locfileid: "50164439"
 
 3. 在“立即备份”边栏选项卡中，执行以下步骤：
 
-    1. 从下拉列表中选择合适的**快照类型**：“本地”快照或“云”快照。 要用于快速备份或还原，请选择本地快照，要用于数据复原，请选择云快照。
+    1. 从下拉列表中选择相应的“快照类型”：“本地”快照或“云”快照。 要用于快速备份或还原，请选择本地快照，要用于数据复原，请选择云快照。
 
         ![创建手动备份](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
 

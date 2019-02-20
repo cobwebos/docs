@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: 使用语言理解 (LUIS) 批处理测试集来查找意向和实体不正确的话语。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: dcc5e463eab6c5de612df45963f160156315a34a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 973a82e97bc9770c30e791512b13e4c57a4c5bca
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213219"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116892"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>使用一组示例话语进行批处理测试
 

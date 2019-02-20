@@ -15,24 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: c766303920913a3ed6e654b3f9b29a0b99bb012a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 92fee850b6ba013c759d3441219f1946a0faedb3
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041269"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984116"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>虚拟机 vCPU 配额
 
 对于每个区域中的每个订阅，虚拟机和虚拟机规模集的 vCPU 配额被安排在两个层中。 第一层是区域的 vCPU 总数，第二层是各种 VM 大小系列核心（如 D 系列 vCPU）。 每当部署新 VM 时，VM 的 vCPU 数不能超过 VM 大小系列的 vCPU 配额或区域 vCPU 配额总数。 如果超过了上述任一配额，将不允许部署 VM。 此外，区域中还有虚拟机总数的配额。 有关上述每个配额的详细信息，可以在 [Azure 门户](https://portal.azure.com)的“订阅”页的“使用情况 + 配额”部分中查看，也可以使用 PowerShell 查询各值。
 
+ [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)] 
  
 ## <a name="check-usage"></a>查看使用情况
 
-可以使用 [Get-AzureRmVMUsage](/powershell/module/azurerm.compute/get-azurermvmusage) cmdlet 来检查配额的使用情况。
+可以使用 [Get-AzVMUsage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmusage) cmdlet 来检查配额的使用情况。
 
 ```azurepowershell-interactive
-Get-AzureRmVMUsage -Location "East US"
+Get-AzVMUsage -Location "East US"
 ```
 
 输出与此类似：

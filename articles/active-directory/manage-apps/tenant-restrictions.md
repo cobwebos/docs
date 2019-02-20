@@ -3,9 +3,8 @@ title: 通过限制租户来管理对云应用的访问 - Azure | Microsoft 文�
 description: 如何使用租户限制来根据用户的 Azure AD 租户管理可访问应用的用户。
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
-editor: yossib
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: richagi
-ms.openlocfilehash: d6030c2bf169d74959279b9c05298db90138a94f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f2dc03b329ce8a4b42f44b958aee96654dafb098
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163086"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197736"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制管理对 SaaS 云应用程序的访问
 
@@ -89,7 +89,7 @@ ms.locfileid: "55163086"
 
 ### <a name="end-user-experience"></a>最终用户体验
 
-例如，某个用户身处 Contoso 网络，但该用户正在尝试访问 Fabrikam 的某个共享 SaaS 应用程序的实例（如 Outlook Online）。 如果 Fabricam 不是 Contoso 实例的受允许租户，该用户将看到以下页面：
+例如，某个用户身处 Contoso 网络，但该用户正在尝试访问 Fabrikam 的某个共享 SaaS 应用程序的实例（如 Outlook Online）。 如果 Fabrikam 不是 Contoso 实例的受允许租户，该用户将看到以下页面：
 
 ![用户在不允许的租户中看到的拒绝访问页面](./media/tenant-restrictions/end-user-denied.png)
 

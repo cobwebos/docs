@@ -14,44 +14,45 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/29/2018
 ms.author: cynthn
-ms.openlocfilehash: f848c6b654f3378df04d1320d957e76ac5384465
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0ae4c883baa156276646755273547a17d23edc55
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427818"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982482"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>如何使用 Packer 在 Azure 中创建 Windows 虚拟机映像
 Azure 中的每个虚拟机 (VM) 都创建至定义 Windows 分发和 OS 版本的映像。 映像可包括预安装的应用程序和配置。 Azure 市场为最常见的操作系统和应用程序环境提供许多第一和第三方映像，或者也可创建满足自身需求的自定义映像。 本文详细介绍了如何使用开源工具 [Packer](https://www.packer.io/) 在 Azure 中定义和生成自定义映像。
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="create-azure-resource-group"></a>创建 Azure 资源组
 在生成过程中，Packer 会在生成源 VM 时创建临时 Azure 资源。 要捕获该源 VM 用作映像，必须定义资源组。 Packer 生成过程的输出存储在此资源组中。
 
-使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
 
 ```powershell
 $rgName = "myResourceGroup"
 $location = "East US"
-New-AzureRmResourceGroup -Name $rgName -Location $location
+New-AzResourceGroup -Name $rgName -Location $location
 ```
 
 ## <a name="create-azure-credentials"></a>创建 Azure 凭据
 Packer 使用服务主体向 Azure 进行身份验证。 Azure 服务主体是可用于应用、服务和 Packer 等自动化工具的安全标识。 控制和定义服务主体可在 Azure 中执行哪些操作的权限。
 
-使用 [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) 创建服务主体，并为服务主体分配权限，以使用 [ New-AzureRmRoleAssignment ](/powershell/module/azurerm.resources/new-azurermroleassignment) 创建和管理资源。 使用自己的密码替换示例中的 &lt;密码&gt;。  
+使用 [New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) 创建服务主体，并为服务主体分配权限，以使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) 创建和管理资源。 使用自己的密码替换示例中的 &lt;密码&gt;。  
 
 ```powershell
-$sp = New-AzureRmADServicePrincipal -DisplayName "AzurePacker" `
+$sp = New-AzADServicePrincipal -DisplayName "AzurePacker" `
     -Password (ConvertTo-SecureString "<password>" -AsPlainText -Force)
 Sleep 20
-New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
+New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-若要向 Azure 进行身份验证，还需使用 [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription) 获取 Azure 租户和订阅 ID：
+若要向 Azure 进行身份验证，还需使用 [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) 获取 Azure 租户和订阅 ID：
 
 ```powershell
-$sub = Get-AzureRmSubscription
+$sub = Get-AzSubscription
 $sub.TenantId[0]
 $sub.SubscriptionId[0]
 ```
@@ -70,7 +71,6 @@ $sub.SubscriptionId[0]
 | client_secret                     | 在 `$securePassword` 中指定的密码 |
 | tenant_id                         | `$sub.TenantId` 命令的输出 |
 | subscription_id                   | `$sub.SubscriptionId` 命令的输出 |
-| object_id                         | 使用 `$sp.Id` 查看服务主体对象 ID |
 | managed_image_resource_group_name | 在第一步中创建的资源组的名称 |
 | managed_image_name                | 创建的托管磁盘映像的名称 |
 
@@ -83,7 +83,6 @@ $sub.SubscriptionId[0]
     "client_secret": "P@ssw0rd!",
     "tenant_id": "72f988bf-86f1-41af-91ab-2d7cd011db47",
     "subscription_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    "object_id": "a7dfb070-0d5b-47ac-b9a5-cf214fff0ae2",
 
     "managed_image_resource_group_name": "myResourceGroup",
     "managed_image_name": "myPackerImage",
@@ -208,10 +207,10 @@ Packer 生成 VM、运行配置程序以及清理部署需要几分钟时间。
 
 
 ## <a name="create-a-vm-from-the-packer-image"></a>基于 Packer 映像创建 VM
-现在可以使用 [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) 从映像创建 VM。 如果提供支持的网络资源尚不存在，则会创建这些资源。 出现提示时，输入要在 VM 上创建的管理用户名和密码。 以下示例基于 *myPackerImage* 创建一个名为 *myVM* 的 VM。
+现在可以使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 从映像创建 VM。 如果提供支持的网络资源尚不存在，则会创建这些资源。 出现提示时，输入要在 VM 上创建的管理用户名和密码。 以下示例基于 *myPackerImage* 创建一个名为 *myVM* 的 VM。
 
 ```powershell
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName $rgName `
     -Name "myVM" `
     -Location $location `
@@ -223,16 +222,16 @@ New-AzureRmVm `
     -Image "myPackerImage"
 ```
 
-如果你希望在与 Packer 映像不同的资源组或区域中创建虚拟机，请指定映像 ID 而不是映像名称。 可以使用 [Get-AzureRmImage](/powershell/module/AzureRM.Compute/Get-AzureRmImage) 获取映像 ID。
+如果你希望在与 Packer 映像不同的资源组或区域中创建虚拟机，请指定映像 ID 而不是映像名称。 可以使用 [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/Get-AzImage) 获取映像 ID。
 
 从 Packer 映像创建 VM 需要几分钟时间。
 
 
 ## <a name="test-vm-and-webserver"></a>测试 VM 和 Web 服务器
-使用 [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) 获取 VM 的公共 IP 地址。 以下示例获取前面创建的“myPublicIP”的 IP 地址：
+使用 [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) 获取 VM 的公共 IP 地址。 以下示例获取前面创建的“myPublicIP”的 IP 地址：
 
 ```powershell
-Get-AzureRmPublicIPAddress `
+Get-AzPublicIPAddress `
     -ResourceGroupName $rgName `
     -Name "myPublicIPAddress" | select "IpAddress"
 ```

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2018
 ms.author: ryanwi
-ms.openlocfilehash: f4ae164a9862a32b45fd5bd0ae7bc09a1180c344
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 373bcecfb1780aa567b1250e53096b9eed0d0f21
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733478"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858733"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上准备开发环境
 > [!div class="op_single_selector"]
@@ -74,7 +74,7 @@ Service Fabric 工具是 Visual Studio 2017 中 Azure 开发工作负荷的一�
 * 适用于 Visual Studio 2015 的 Service Fabric 工具 2.4.11116.1
 * Visual Studio 2017 15.9 包括适用于 Visual Studio 的 Service Fabric 工具 2.4.11024.1 
 
-有关支持的版本列表，请参阅 [Service Fabric 支持](service-fabric-support.md)
+有关支持版本的列表，请参阅 [Service Fabric 版本](service-fabric-versions.md)
 
 > [!NOTE]
 > 应用程序或群集升级不支持单机群集 (OneBox)；如果需要执行群集升级，或在执行应用程序升级时遇到任何问题，请删除 OneBox 群集并重新创建它。 

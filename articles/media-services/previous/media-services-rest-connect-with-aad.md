@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 02/10/2019
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: 17c25181709e6c75de2d23fb02fd55c0e6e41ae3
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ef81e0c4d04d57edbffa16b817b34af5f3bf8c26
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818024"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995623"
 ---
-# <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>通过 Azure AD 身份验证使用 REST 访问 Azure 媒体服务 API
+# <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>通过 Azure AD 身份验证使用 REST 访问媒体服务 API
 
 通过 Azure 媒体服务使用 Azure AD 身份验证时，可以通过以下两种方式之一进行身份验证：
 

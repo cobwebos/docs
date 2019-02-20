@@ -2,19 +2,19 @@
 title: Azure 密钥保管库开发人员指南
 description: 开发人员可以使用 Azure 密钥保管库来管理 Microsoft Azure 环境中的加密密钥。
 services: key-vault
-author: bryanla
-manager: mbaldwin
+author: msmbaldwin
+manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/05/2018
-ms.author: bryanla
-ms.openlocfilehash: 9ab399ae50f9b04acad411b225797f89547a2824
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 02/11/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 274ba6d6a1ce2e9c8f2cae0ca29de8442525391e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237530"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106472"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
 
@@ -23,7 +23,7 @@ ms.locfileid: "51237530"
 - 无需自己编写代码即可保护密钥和机密信息，并且能够轻松地在应用程序中使用它们。
 - 能够让客户拥有和管理其自己的密钥，因此可以专注于提供核心软件功能。 这样，应用程序便不会对客户的租户密钥和机密承担职责或潜在责任。
 - 应用程序可以使用密钥进行签名和加密，不过使密钥管理与应用程序分开，可以使解决方案适用于地理分散的应用。
-- 自 2016 年 9 月版本的 Key Vault 发布起，应用程序现在可以管理 Key Vault 证书。 有关详细信息，请参阅[关于密钥、机密和证书](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)。
+- 自 2016 年 9 月版本的 Key Vault 发布起，应用程序现在可以管理 Key Vault 证书。 有关详细信息，请参阅[关于密钥、机密和证书](/rest/api/keyvault/about-keys--secrets-and-certificates)。
 
 有关 Azure 密钥保管库的更多常规信息，请参阅[什么是密钥保管库](key-vault-whatis.md)。
 
@@ -36,7 +36,7 @@ ms.locfileid: "51237530"
 >[!NOTE]
 >在 Azure Key Vault 的此更新版中，只有**存储帐户密钥**功能以预览版提供。
 
-此预览版包含通过 [.NET/C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault/)、[REST](https://docs.microsoft.com/rest/api/keyvault/) 和 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) 接口提供的新存储帐户密钥功能。 
+此预览版包含通过 [.NET/C#](/dotnet/api/microsoft.azure.keyvault/)、[REST](/rest/api/keyvault/) 和 [PowerShell](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault) 接口提供的新存储帐户密钥功能。 
 
 有关新存储帐户密钥功能的详细信息，请参阅 [Azure Key Vault 存储帐户密钥概述](key-vault-ovw-storage-keys.md)。
 
@@ -55,14 +55,14 @@ ms.locfileid: "51237530"
 
 虽然 Azure Key Vault 可用于安全存储凭据以及其他密钥和机密，但代码需要通过 Key Vault 的身份验证才能检索它们。 “Azure 资源的托管标识”为 Azure 服务提供了 Azure Active Directory (Azure AD) 中的自动托管标识，更巧妙地解决了这个问题。 此标识可用于通过支持 Azure AD 身份验证的任何服务（包括 Key Vault）的身份验证，这样就无需在代码中插入任何凭据了。 
 
-有关 Azure 资源的托管标识的详细信息，请参阅[标识概述](../active-directory/managed-identities-azure-resources/overview.md)。 若要详细了解如何使用 AAD，请参阅[将应用程序与 Azure Active Directory 集成](/azure/active-directory/develop/active-directory-integrating-applications)。
+有关 Azure 资源的托管标识的详细信息，请参阅[标识概述](../active-directory/managed-identities-azure-resources/overview.md)。 若要详细了解如何使用 AAD，请参阅[将应用程序与 Azure Active Directory 集成](../active-directory/develop/active-directory-integrating-applications.md)。
 
 使用密钥保管库中的密钥、机密或证书前，请通过 CLI、PowerShell、资源管理器模板或 REST 创建和管理密钥保管库，如以下文章所述：
 
 - [使用 CLI 创建和管理 Key Vault](key-vault-manage-with-cli2.md)
-- [使用 PowerShell 创建和管理 Key Vault](key-vault-get-started.md)
+- [使用 PowerShell 创建和管理 Key Vault](key-vault-overview.md)
 - [通过 Azure 资源管理器模板创建密钥保管库并添加机密](../azure-resource-manager/resource-manager-template-keyvault.md)
-- [使用 REST 创建和管理 Key Vault](https://docs.microsoft.com/rest/api/keyvault/)
+- [使用 REST 创建和管理 Key Vault](/rest/api/keyvault/)
 
 
 ## <a name="coding-with-key-vault"></a>使用密钥保管库进行编码
@@ -75,35 +75,35 @@ ms.locfileid: "51237530"
 
 通过 REST 接口，可以访问所有 Key Vault 资源：保管库、密钥、机密等。 
 
-[Key Vault REST API 参考](https://docs.microsoft.com/rest/api/keyvault/)。 
+[Key Vault REST API 参考](/rest/api/keyvault/)。
 
 #### <a name="net"></a>.NET
 
-[适用于 Key Vault 的 .NET API 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault) 
+[适用于 Key Vault 的 .NET API 参考](/dotnet/api/microsoft.azure.keyvault)。
 
 有关 .NET SDK 2.x 版的详细信息，请参阅[发行说明](key-vault-dotnet2api-release-notes.md)。
 
 #### <a name="java"></a>Java
 
-[适用于 Key Vault 的 Java SDK](https://docs.microsoft.com/java/api/overview/azure/keyvault)
+[适用于 Key Vault 的 Java SDK](/java/api/overview/azure/keyvault)
 
 #### <a name="nodejs"></a>Node.js
 
 在 Node.js 中，Key Vault 管理 API 和 Key Vault 对象 API 相互独立。 下面的概述文章介绍了如何访问这两个 API。 
 
-[用于 Node.js 的 Azure Key Vault 模块](https://docs.microsoft.com/nodejs/api/overview/azure/key-vault)
+[用于 Node.js 的 Azure Key Vault 模块](/nodejs/api/overview/azure/key-vault)
 
 #### <a name="python"></a>Python
 
-[用于 Python 的 Azure Key Vault 库](https://docs.microsoft.com/python/api/overview/azure/key-vault)
+[用于 Python 的 Azure Key Vault 库](/python/api/overview/azure/key-vault)
 
 #### <a name="azure-cli-2"></a>Azure CLI 2
 
-[适用于 Key Vault 的 Azure CLI](https://docs.microsoft.com/cli/azure/keyvault)
+[适用于 Key Vault 的 Azure CLI](/cli/azure/keyvault)
 
 #### <a name="azure-powershell"></a>Azure PowerShell 
 
-[适用于 Key Vault 的 Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault)
+[适用于 Key Vault 的 Azure PowerShell](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)
 
 ### <a name="quick-start-guides"></a>快速入门指南
 
@@ -139,7 +139,7 @@ ms.locfileid: "51237530"
 这些文章介绍了使用 Key Vault 或与之集成的其他方案和服务。
 
 - [Azure 磁盘加密](../security/azure-security-disk-encryption.md)利用 Windows 的行业标准 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 功能和 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能，为 OS 和数据磁盘提供卷加密。 该解决方案与 Azure 密钥保管库集成，可帮助你控制和管理密钥保管库订阅中的磁盘加密密钥和机密，同时确保虚拟机磁盘中的所有数据可在 Azure 存储空间中静态加密。
-- [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) 提供了对帐户中存储的数据进行加密的选项。 对于密钥管理，Data Lake Store 提供两种用于管理主加密密钥 (MEK) 的模式，这两种模式可用于解密在 Data Lake Store 中存储的任何数据。 可以让 Data Lake Store 代为管理 MEK，或选择使用 Azure 密钥保管库帐户保留 MEK 所有权。 创建 Data Lake Store 帐户时可以指定密钥管理模式。 
+- [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) 提供了对帐户中存储的数据进行加密的选项。 对于密钥管理，Data Lake Store 提供两种用于管理主加密密钥 (MEK) 的模式，这两种模式可用于解密在 Data Lake Store 中存储的任何数据。 可以让 Data Lake Store 代为管理 MEK，或选择使用 Azure 密钥保管库帐户保留 MEK 所有权。 创建 Data Lake Store 帐户时可以指定密钥管理模式。
 - [Azure 信息保护](/azure/information-protection/plan-implement-tenant-key)允许管理自己的租户密钥。 例如，不是由 Microsoft 管理租户密钥（默认设置），可以管理自己的租户密钥，以遵守适用于组织的具体规定。 管理自己的租户密钥也称为自带密钥（简称 BYOK）。
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault 概述和概念
@@ -158,5 +158,3 @@ ms.locfileid: "51237530"
 
 - [Microsoft Azure Key Vault 核心库](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core)提供 IKey 和 IKeyResolver 接口，用于通过标识符查找密钥，以及使用密钥执行操作。
 - [Microsoft Azure 密钥保管库扩展](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions)为 Azure 密钥保管库提供扩展功能。
-
-

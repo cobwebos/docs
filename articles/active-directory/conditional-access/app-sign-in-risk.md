@@ -16,16 +16,17 @@ ms.workload: identity
 ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2c889368afe601bc7188f3b0989e7799c88131b4
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e950450a1ebe710a56ccfa0e8abefc7104602ec5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081953"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206168"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>快速入门：使用 Azure Active Directory 条件访问检测到会话风险时阻止访问  
 
-若要使环境保持受保护状态，可能需要阻止可疑用户执行登录活动。 [Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) 会分析每个登录活动，并计算不是由用户帐户合法所有者执行的登录尝试的可能性。 这种可能性（低、中、高）以称作[登录风险级别](conditions.md#sign-in-risk)的计算值来表示。 通过设置登录风险条件，可以配置一个条件访问策略对特定的登录风险级别做出响应。 
+若要使环境保持受保护状态，可能需要阻止可疑用户登录。 [Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) 会分析每个登录活动，并计算不是由用户帐户合法所有者执行的登录尝试的可能性。 这种可能性（低、中、高）以称作[登录风险级别](conditions.md#sign-in-risk)的计算值来表示。 通过设置登录风险条件，可以配置一个条件访问策略对特定的登录风险级别做出响应。 
 
 本快速入门介绍如何配置[条件访问策略](../active-directory-conditional-access-azure-portal.md)，以便在检测到已配置的登录风险级别时阻止登录。 
 

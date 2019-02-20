@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: fe22a465c21e9522b70ba307e2ec9772674000f2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 67843efd87e0d1cdd1a392fdd24d29decae093e8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488537"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996999"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中解释模型结果
 本主题说明如何在 Azure 机器学习工作室中可视化和解释预测结果。 训练模型并根据它进行预测（“为模型评分”）后，需要了解并解释预测结果。
@@ -74,7 +74,7 @@ Azure 机器学习具有不同的模块用于处理其中每一种分类，但�
 
 **Web 服务发布**
 
-在了解了预测结果并判断其为优良后，可以将实验发布为 Web 服务，以便可以将其部署在各种应用程序中，并对任何新的鸢尾花调用它以获取类预测。 要了解如何将训练实验更改为评分实验并将其发布为 Web 服务，请参阅[发布 Azure 机器学习 Web 服务](walkthrough-5-publish-web-service.md)。 此过程提供评分实验，如图 3 所示。
+在了解了预测结果并判断其为优良后，可以将实验发布为 Web 服务，以便可以将其部署在各种应用程序中，并对任何新的鸢尾花调用它以获取类预测。 若要了解如何将训练实验更改为评分实验并将其作为 Web 服务发布，请参阅[教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)。 此过程提供评分实验，如图 3 所示。
 
 ![评分实验的屏幕截图](./media/interpret-model-results/3.png)
 

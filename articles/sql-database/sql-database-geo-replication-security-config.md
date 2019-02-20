@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 1430bc4a9de863c25e40a2655f0a1cd7a75ae0f7
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 50cec0774729073678498922b2c58f1ca62d7d82
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561378"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858274"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>针对异地还原或故障转移配置和管理 Azure SQL 数据库的安全性
 
@@ -32,6 +32,9 @@ ms.locfileid: "55561378"
 ## <a name="how-to-configure-logins-and-users"></a>如何配置登录名和用户
 
 如果要使用登录名和用户（而不是包含用户），必须采取额外的步骤以确保相同的登录名存在于 master 数据库中。 以下部分概述了相关的步骤和其他注意事项。
+
+  >[!NOTE]
+  > 还可以使用 Azure Active Directory (AAD) 登录来管理数据库。 有关详细信息，请参阅 [Azure SQL 登录和用户](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins)。
 
 ### <a name="set-up-user-access-to-a-secondary-or-recovered-database"></a>设置对辅助数据库或已恢复数据库的用户访问权限
 

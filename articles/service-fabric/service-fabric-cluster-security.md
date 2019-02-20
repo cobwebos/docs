@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: aa0d209cf3da65bb3d50a6458ecc33cfcd85eecb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 92914b26497634de1a0c61738c6aba37acb37c17
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240590"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109311"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 群集安全方案
 Azure Service Fabric 群集是你拥有的资源。 你应保护群集，防止未经授权的用户与其连接。 当在群集上运行生产工作负荷时，安全的群集环境尤为重要。 尽管可以创建不安全的群集，但当该群集向公共 Internet 公开管理终结点时，匿名用户可与它建立连接。 生产工作负荷不支持不安全群集。 
@@ -85,7 +85,7 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 创建群集时，请设置管理员和用户客户端角色。 通过提供单独的标识（例如使用证书或 Azure AD），为每种角色类型分配角色。 若要详细了解默认访问控制设置以及如何更改默认设置，请参阅 [Service Fabric 客户端的基于角色的访问控制](service-fabric-cluster-security-roles.md)。
 
 ## <a name="x509-certificates-and-service-fabric"></a>X.509 证书和 Service Fabric
-X.509 数字证书通常用于验证客户端与服务器。 它们还用于对消息进行加密和数字签名。 Service Fabric 使用 X.509 证书保护群集，提供应用程序安全功能。 有关 X.509 数字证书的详细信息，请参阅[使用证书](https://msdn.microsoft.com/library/ms731899.aspx)。 可以使用 [Key Vault](../key-vault/key-vault-get-started.md) 管理 Azure 中 Service Fabric 群集的证书。
+X.509 数字证书通常用于验证客户端与服务器。 它们还用于对消息进行加密和数字签名。 Service Fabric 使用 X.509 证书保护群集，提供应用程序安全功能。 有关 X.509 数字证书的详细信息，请参阅[使用证书](https://msdn.microsoft.com/library/ms731899.aspx)。 可以使用 [Key Vault](../key-vault/key-vault-overview.md) 管理 Azure 中 Service Fabric 群集的证书。
 
 要考虑的几个要点：
 

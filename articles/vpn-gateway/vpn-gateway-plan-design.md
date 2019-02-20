@@ -1,26 +1,18 @@
 ---
-title: 跨界连接的规划和设计：Azure VPN 网关 | Microsoft 文档
+title: 跨界连接的规划和设计：Azure VPN 网关 | Microsoft Docs
 description: 了解跨界、混合与 VNet 到 VNet 连接的 VPN 网关规划和设计
 services: vpn-gateway
-documentationcenter: na
-author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: d5aaab83-4e74-4484-8bf0-cc465811e757
+author: yushwang
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 07/27/2017
-ms.author: cherylmc
-ms.openlocfilehash: 0ebc3ef4a64432e993dd6ed69766bb64544fe433
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: yushwang
+ms.openlocfilehash: 7802061ba09a30ca34ed3804ace846118c5edb9b
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23125475"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235354"
 ---
 # <a name="planning-and-design-for-vpn-gateway"></a>规划和设计 VPN 网关
 
@@ -30,7 +22,7 @@ ms.locfileid: "23125475"
 
 ### <a name="compare"></a>跨界连接选项
 
-要安全地将本地站点连接到虚拟网络，可以使用三种不同的方式实现此目的：站点到站点、点到站点和 ExpressRoute。 比较可用的不同跨界连接。 选择的选项取决于不同的考虑因素，例如：
+若要将本地站点安全地连接到虚拟网络，可以使用三种不同的方式实现此目的：站点到站点、点到站点和 ExpressRoute。 比较可用的不同跨界连接。 选择的选项取决于不同的考虑因素，例如：
 
 * 解决方案需要哪种吞吐量？
 * 是希望通信通过经由安全 VPN 的公共 Internet 进行，还是通过专用连接进行？

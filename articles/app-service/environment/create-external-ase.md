@@ -14,19 +14,22 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5ab5c769280bdd91a15e6107df8c9c6b7814571c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 7f0af2c64d04d83cc3eb4043007979c17c75e051
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599904"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877280"
 ---
+> [!NOTE]
+> 每个应用服务环境都具有虚拟 IP (VIP)，可用于联系应用服务环境。
+>
 # <a name="create-an-external-app-service-environment"></a>创建外部应用服务环境 #
 
 Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络 (VNet) 的子网中。 可通过两种方法部署应用服务环境 (ASE)：
 
 - 使用外部 IP 地址上的 VIP，通常称为外部 ASE。
-- 使用内部 IP 地址上的 VIP，通常称为 ILB ASE，因为内部终结点是一个内部负载均衡器 (ILB)。
+- 使用内部 IP 地址上的 VIP，通常称为 ILB ASE，因为内部终结点是内部负载均衡器 (ILB)。
 
 本文介绍如何创建外部 ASE。 有关 ASE 的概述，请参阅[应用服务环境简介][Intro]。 若要了解如何创建 ILB ASE，请参阅[创建和使用 ILB ASE][MakeILBASE]。
 
@@ -87,7 +90,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
 9. 指定 Azure 虚拟网络详细信息。 选择“新建”或“选择现有”。 只有所选区域中具有 VNet 时，才可使用选择现有 VNet 选项。 如果选择“新建”，需输入 VNet 的名称。 随即创建带有该名称的新资源管理器 VNet。 它使用所选区域中的地址空间 `192.168.250.0/23`。 如果选择“选择现有”，则需要：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择 VNet 地址块（若有多个）。
+    a. 选择 VNet 地址块（若有多个）。
 
     b. 输入新的子网名称。
 
@@ -123,7 +126,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
 1. 指定 Azure 虚拟网络详细信息。 选择“新建”或“选择现有”。 只有所选区域中具有 VNet 时，才可使用选择现有 VNet 选项。 如果选择“新建”，需输入 VNet 的名称。 随即创建带有该名称的新资源管理器 VNet。 它使用所选区域中的地址空间 `192.168.250.0/23`。 如果选择“选择现有”，则需要：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择 VNet 地址块（若有多个）。
+    a. 选择 VNet 地址块（若有多个）。
 
     b. 输入新的子网名称。
 

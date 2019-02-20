@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: jeedes
-ms.openlocfilehash: b57fdb3f039a9395133854f8b4d4f2095e3a4f9b
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3885f579e4543f25c409010c0aae970c26d2b9c4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095239"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56183967"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-figma"></a>教程：Azure Active Directory 与 Figma集成
+# <a name="tutorial-azure-active-directory-integration-with-figma"></a>教程：Azure Active Directory 与 Figma 集成
 
 在本教程中，了解如何将 Figma 与 Azure Active Directory (Azure AD) 集成。
 
@@ -116,7 +117,7 @@ ms.locfileid: "50095239"
 
     ![Figma 域和 URL 单一登录信息](./media/figma-tutorial/tutorial_figma_url1.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>/consume`
 
@@ -145,9 +146,9 @@ ms.locfileid: "50095239"
     | `givenName` | `givenName` |
     | `userName` | `user.userprincipalname` |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”以打开“管理用户声明”对话框。
+    a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
-    ![新建属性](./media/figma-tutorial/new_save_attribute.png)
+    ![新属性](./media/figma-tutorial/new_save_attribute.png)
 
     ![添加属性](./media/figma-tutorial/new_attribute_details.png)
 
@@ -185,7 +186,7 @@ ms.locfileid: "50095239"
 
     ![创建 Azure AD 测试用户](./media/figma-tutorial/create_aaduser_02.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com

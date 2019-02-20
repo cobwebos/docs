@@ -15,19 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 1daf04e3f878d0748bfa0904259c7b7187481843
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: ede2092be4e4eaf201e15307a7d9934ea267ae37
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580475"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980697"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>将 Windows VM 移到其他 Azure 订阅或资源组
 本文逐步说明如何在资源组或订阅之间移动 Windows 虚拟机 (VM)。 如果最初在个人订阅中创建了 VM，现在想要将其移到公司的订阅以继续工作，则在订阅之间移动 VM 可能很方便。
 
 > [!IMPORTANT]
->不可在此时移动 Azure 托管磁盘。 
->
 >在移动过程中将创建新的资源 ID。 移动 VM 后，需要更新工具和脚本以使用新的资源 ID。 
 > 
 > 
@@ -36,23 +34,23 @@ ms.locfileid: "45580475"
 
 ## <a name="use-powershell-to-move-a-vm"></a>使用 PowerShell 移动 VM
 
-要将虚拟机移到其他资源组，需确保同时移动所有依赖资源。 要获取每种资源的资源 ID 列表，请使用 [Get-AzureRMResource](/powershell/module/azurerm.resources/get-azurermresource) cmdlet。
+要将虚拟机移到其他资源组，需确保同时移动所有依赖资源。 要获取每种资源的资源 ID 列表，请使用 [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) cmdlet。
 
 ```azurepowershell-interactive
- Get-AzureRMResource -ResourceGroupName <sourceResourceGroupName> | Format-table -Property ResourceId 
+ Get-AzResource -ResourceGroupName <sourceResourceGroupName> | Format-table -Property ResourceId 
 ```
 
-可以使用上一命令的输出作为资源 ID 的逗号分隔列表，以用于 [Move-AzureRMResource](/powershell/module/azurerm.resources/move-azurermresource)，将每种资源移到目标。 
+可以使用上一命令的输出作为资源 ID 的逗号分隔列表，以用于 [Move-AzResource](https://docs.microsoft.com/powershell/module/az.resources/move-azresource)，将每种资源移到目标。 
 
 ```azurepowershell-interactive
-Move-AzureRmResource -DestinationResourceGroupName "<myDestinationResourceGroup>" `
+Move-AzResource -DestinationResourceGroupName "<myDestinationResourceGroup>" `
     -ResourceId <myResourceId,myResourceId,myResourceId>
 ```
     
 要将资源移到其他订阅，请包含 **-DestinationSubscriptionId** 参数的值。 
 
 ```azurepowershell-interactive
-Move-AzureRmResource -DestinationSubscriptionId "<myDestinationSubscriptionID>" `
+Move-AzResource -DestinationSubscriptionId "<myDestinationSubscriptionID>" `
     -DestinationResourceGroupName "<myDestinationResourceGroup>" `
     -ResourceId <myResourceId,myResourceId,myResourceId>
 ```

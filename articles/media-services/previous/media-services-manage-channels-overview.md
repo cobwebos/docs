@@ -4,7 +4,7 @@ description: 本主题概述了如何使用 Azure 媒体服务实时传送视频
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: fb63502e-914d-4c1f-853c-4a7831bb08e8
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 3814041359884fc2862b0e90a58aabd1ad26c4cb
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 318ec5a4f9aceaf02048768cbf630eff08feff6b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382140"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998002"
 ---
-# <a name="overview-of-live-streaming-using-azure-media-services"></a>使用 Azure 媒体服务实时传送视频流概述
+# <a name="overview-of-live-streaming-using-media-services"></a>使用媒体服务实时传送视频流概述
 
 > [!NOTE]
 > 自 2018 年 5 月 12 日起，实时频道将不再支持 RTP/MPEG-2 传输流引入协议。 请从 RTP/MPEG-2 迁移到 RTMP 或分段 MP4（平滑流式处理）引入协议。

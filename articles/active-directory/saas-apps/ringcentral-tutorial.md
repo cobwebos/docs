@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 35033e52fb54177428f8869ebcc462bd9465ad4c
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e01b06b2031da20ee9349588bd4a7ee757fbc22c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48872043"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173294"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ringcentral"></a>教程：Azure Active Directory 与 RingCentral 的集成
 
@@ -103,17 +104,17 @@ ms.locfileid: "48872043"
 
       ![图像](./media/ringcentral-tutorial/b1_b2_saml_ssso.png)
 
-3. 在“选择单一登录方法”对话框中，选择“SAML”模式以启用单一登录。
+3. 在“选择单一登录方法”对话框中，选择 SAML 模式以启用单一登录。
 
     ![图像](./media/ringcentral-tutorial/b1_b2_saml_sso.png)
 
-4. 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“基本 SAML 配置”对话框。
+4. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
 
     ![图像](./media/ringcentral-tutorial/b1-domains_and_urlsedit.png)
 
 5. 在“基本 SAML 配置”部分，如果有**服务提供程序元数据文件**，请执行以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“上传元数据文件”。
+    a. 单击“上传元数据文件”。
 
     ![图像](./media/ringcentral-tutorial/b9_saml.png)
 
@@ -138,7 +139,7 @@ ms.locfileid: "48872043"
 
 6. 如果没有**服务提供程序元数据文件**，请执行以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，键入 URL：
+    a. 在“登录 URL”文本框中，键入 URL：
     | |
     |--|
     | `https://service.ringcentral.com` |
@@ -182,7 +183,7 @@ ms.locfileid: "48872043"
 
     ![图像](./media/ringcentral-tutorial/ringcentral4.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“浏览”，上传从 Azure 门户下载的元数据文件。
+    a. 单击“浏览”，上传从 Azure 门户下载的元数据文件。
 
     b. 上传元数据以后，值会自动填充在“SSO 常规信息”部分中。
 
@@ -198,7 +199,7 @@ ms.locfileid: "48872043"
 
     ![图像](./media/ringcentral-tutorial/ringcentral5.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“启用 SSO 服务”。
+    a. 选择“启用 SSO 服务”。
     
     b. 选择“允许用户使用 SSO 或 RingCentral 凭据登录”。
 
@@ -208,7 +209,7 @@ ms.locfileid: "48872043"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
     ![图像](./media/ringcentral-tutorial/d_users_and_groups.png)
 
@@ -216,11 +217,11 @@ ms.locfileid: "48872043"
 
     ![图像](./media/ringcentral-tutorial/d_adduser.png)
 
-3. 在“用户属性”中，执行以下步骤。
+3. 在“用户属性”中，按照以下步骤操作。
 
     ![图像](./media/ringcentral-tutorial/d_userproperties.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
@@ -231,7 +232,7 @@ ms.locfileid: "48872043"
  
 ### <a name="create-a-ringcentral-test-user"></a>创建 RingCentral 测试用户
 
-在本部分，请在 RingCentral 中创建一个名为“Britta Simon”的用户。 请与 [RingCentral 客户端支持团队](https://success.ringcentral.com/RCContactSupp)协作，在 RingCentral 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分，请在 RingCentral 中创建一个名为“Britta Simon”的用户。 请与 [RingCentral 客户端支持团队](https://success.ringcentral.com/RCContactSupp)协作，在 RingCentral 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -262,7 +263,7 @@ ms.locfileid: "48872043"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“RingCentral”磁贴时，会自动登录到 RingCentral 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 

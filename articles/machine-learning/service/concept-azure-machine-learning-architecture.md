@@ -11,16 +11,16 @@ author: hning86
 ms.reviewer: larryfr
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 751a1dc84f81b388a1fffb82cc3dfbc4996eed1f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 1b2934ceb402dab5e9cf98e7e0a53b1b438c66a8
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249623"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111843"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作原理：体系结构和概念
 
-本文介绍 Azure 机器学习服务的体系结构和概念。 下图显示该服务的主要组件，以及使用该服务时的常规工作流： 
+本文介绍 Azure 机器学习服务的体系结构和概念。 下图显示该服务的主要组件，以及使用该服务时的常规工作流：
 
 [![Azure 机器学习服务体系结构和工作流](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
 
@@ -32,7 +32,7 @@ ms.locfileid: "55249623"
 1. **查询试验**了解当前和过去的运行中已记录的指标。 如果指标未指示所需结果，请循环回到步骤 1 并循环访问脚本。
 1. 找到满意的运行后，在**模型注册表**中注册持久化模型。
 1. 开发评分脚本。
-1. **创建映像**并将其注册在**映像注册表**中。 
+1. **创建映像**并将其注册在**映像注册表**中。
 1. 在 Azure 中**将映像部署**为 **Web 服务**。
 
 
@@ -61,11 +61,17 @@ ms.locfileid: "55249623"
 * [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)：存储计算目标使用的机密和工作区所需的其他敏感信息。
 
 > [!NOTE]
-> 除创建新版本以外，还可以使用现有的 Azure 服务。 
+> 除创建新版本以外，还可以使用现有的 Azure 服务。
 
 下图演示了工作区的分类：
 
 [![工作区分类](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+
+## <a name="experiment"></a>试验
+
+试验是指定的脚本中多个运行的分组。 它始终属于工作区。 当你提交运行时，需提供试验名称。 运行的信息存储在该试验下。 如果提交运行，并指定一个不存在的试验名称，则系统将使用新指定的名称自动创建一个新试验。
+
+有关使用试验的示例，请参阅[快速入门：Azure 机器学习服务入门](quickstart-get-started.md)。
 
 ## <a name="model"></a>模型
 
@@ -79,7 +85,7 @@ Azure 机器学习服务与框架无关。 创建模型时，可以使用任何�
 
 ### <a name="model-registry"></a>模型注册表
 
-模型注册表会跟踪 Azure 机器学习服务工作区中的所有模型。 
+模型注册表会跟踪 Azure 机器学习服务工作区中的所有模型。
 
 模型按名称和版本标识。 每次使用与现有相同的名称注册模型时，注册表都会假定它是新版本。 该版本将递增并且新模型会以同一名称注册。
 
@@ -88,6 +94,83 @@ Azure 机器学习服务与框架无关。 创建模型时，可以使用任何�
 映像正在使用的模型无法删除。
 
 有关注册模型的示例，请参阅[使用 Azure 机器学习训练映像分类模型](tutorial-train-models-with-aml.md)。
+
+## <a name="run-configuration"></a>运行配置
+
+运行配置是一组指令，用于定义如何在指定的计算目标中运行脚本。 该配置包括一组广泛的行为定义，例如，是使用现有 Python 环境还是使用根据规范构建的 Conda 环境。
+
+运行配置可以保存到包含训练脚本的目录内的文件中，或构造为内存中对象以及用于提交运行。
+
+有关示例运行配置，请参阅[选择并使用计算目标来训练模型](how-to-set-up-training-targets.md)。
+
+## <a name="datastore"></a>数据存储
+
+数据存储是通过 Azure 存储帐户进行的存储抽象。 数据存储可以使用 Azure blob 容器或 Azure 文件共享作为后端存储。 每个工作区都有默认数据存储，并且你可以注册其他数据存储。
+
+使用 Python SDK API 或 Azure 机器学习 CLI 可从数据存储中存储和检索文件。
+
+## <a name="compute-target"></a>计算目标
+
+计算目标是用于运行训练脚本或托管服务部署的计算资源。 支持的计算目标为：
+
+| 计算目标 | 培训 | 部署 |
+| ---- |:----:|:----:|
+| 本地计算机 | ✓ | &nbsp; |
+| Azure 机器学习计算 | ✓ | &nbsp; |
+| Azure 中的 Linux VM</br>（例如 Data Science Virtual Machine） | ✓ | &nbsp; |
+| Azure Databricks | ✓ | &nbsp; | &nbsp; |
+| Azure Data Lake Analytics | ✓ | &nbsp; |
+| Apache Spark for HDInsight | ✓ | &nbsp; |
+| Azure 容器实例 | &nbsp; | ✓ |
+| Azure Kubernetes 服务 | &nbsp; | ✓ |
+| Azure IoT Edge | &nbsp; | ✓ |
+| Project Brainwave</br>（现场可编程门阵列） | &nbsp; | ✓ |
+
+计算目标附加到工作区。 本地计算机以外的计算目标由工作区的用户共享。
+
+### <a name="managed-and-unmanaged-compute-targets"></a>托管和非托管的计算目标
+
+* **托管**：由 Azure 机器学习服务创建和管理的计算目标。 这些计算目标已针对机器学习工作负荷进行优化。 截至 2018 年 12 月 4 日，Azure 机器学习计算是仅有的托管计算目标。 将来可能会添加其他托管计算目标。
+
+    可以使用 Azure 门户、Azure 机器学习 SDK 或 Azure CLI 通过工作区直接创建机器学习计算实例。 所有其他计算目标必须在工作区外创建，然后再附加到工作区。
+
+* **非托管**：不是由 Azure 机器学习服务管理的计算目标。 可能需要在 Azure 机器学习外部创建它们，然后在使用前将它们附加到工作区。 非托管计算目标可能需要执行额外的步骤来保持或提高机器学习工作负荷的性能。
+
+有关为训练选择计算目标的信息，请参阅[选择并使用计算目标来训练模型](how-to-set-up-training-targets.md)。
+
+有关为部署选择计算目标的信息，请参阅[使用 Azure 机器学习服务部署模型](how-to-deploy-and-where.md)。
+
+## <a name="training-script"></a>培训脚本
+
+若要定型模型，你可以指定包含培训脚本和关联文件的目录。 此外，还可指定一个试验名称，用于存储在训练期间收集的信息。 在训练期间，会将整个目录复制到训练环境（计算目标），并启动运行配置指定的脚本。 目录的快照同样存储在工作区中的试验下。
+
+有关示例，请参阅[使用 Python 创建工作区](quickstart-get-started.md)。
+
+## <a name="run"></a>运行
+
+运行是包含以下信息的记录：
+
+* 有关运行的元数据（时间戳、持续时间等）
+* 脚本记录的指标
+* 试验自动收集的或由你显式上传的输出文件
+* 在运行之前包含脚本的目录的快照
+
+提交脚本以训练模型时，会生成运行。 运行可以有零次或多次子级运行。 例如，顶级运行可以有两次子级运行，其中每个可以有其自己的子级运行。
+
+有关查看由训练模型产生的运行次数的示例，请参阅[快速入门：Azure 机器学习服务入门](quickstart-get-started.md)。
+
+## <a name="snapshot"></a>快照
+
+提交运行时，Azure 机器学习会将包含该脚本的目录压缩为 zip 文件并将其发送到计算目标。 然后解压缩 zip 文件并运行脚本。 Azure 机器学习还将该 zip 文件存储为快照，作为运行记录的一部分。 有权限访问工作区的任何用户都可以浏览运行记录并下载快照。
+
+## <a name="activity"></a>活动
+
+活动表示长时间运行的操作。 以下操作是活动的示例：
+
+* 创建或删除计算目标
+* 在计算目标上运行脚本
+
+活动可通过 SDK 或 Web UI 提供通知，使你能够轻松监视这些操作的进度。
 
 ## <a name="image"></a>映像
 
@@ -110,7 +193,7 @@ Azure 机器学习可以创建两种类型的映像：
 
 ## <a name="deployment"></a>部署
 
-部署是将映像实例化为可在云中托管的 Web 服务或用于集成设备部署的 IoT 模块。 
+部署是将映像实例化为可在云中托管的 Web 服务或用于集成设备部署的 IoT 模块。
 
 ### <a name="web-service"></a>Web 服务
 
@@ -124,36 +207,11 @@ Azure 机器学习可以创建两种类型的映像：
 
 ### <a name="iot-module"></a>IoT 模块
 
-已部署 IoT 模块是一个 Docker 容器，包括模型和关联脚本或应用程序，以及任何其他依赖项。 在边缘设备上使用 Azure IoT Edge 部署这些模块。 
+已部署 IoT 模块是一个 Docker 容器，包括模型和关联脚本或应用程序，以及任何其他依赖项。 在边缘设备上使用 Azure IoT Edge 部署这些模块。
 
 如果已启用监视，Azure 会从 Azure IoT Edge 模块内的模型中收集遥测数据。 遥测数据仅供你访问，并且存储在存储帐户实例中。
 
 Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
-
-## <a name="datastore"></a>数据存储
-
-数据存储是通过 Azure 存储帐户进行的存储抽象。 数据存储可以使用 Azure blob 容器或 Azure 文件共享作为后端存储。 每个工作区都有默认数据存储，并且你可以注册其他数据存储。 
-
-使用 Python SDK API 或 Azure 机器学习 CLI 可从数据存储中存储和检索文件。 
-
-## <a name="run"></a>运行
-
-运行是包含以下信息的记录：
-
-* 有关运行的元数据（时间戳、持续时间等）
-* 脚本记录的指标
-* 试验自动收集的或由你显式上传的输出文件
-* 在运行之前包含脚本的目录的快照
-
-提交脚本以训练模型时，会生成运行。 运行可以有零次或多次子级运行。 例如，顶级运行可以有两次子级运行，其中每个可以有其自己的子级运行。
-
-有关查看由训练模型产生的运行次数的示例，请参阅[快速入门：Azure 机器学习服务入门](quickstart-get-started.md)。
-
-## <a name="experiment"></a>试验
-
-试验是指定的脚本中多个运行的分组。 它始终属于工作区。 当你提交运行时，需提供试验名称。 运行的信息存储在该试验下。 如果提交运行，并指定一个不存在的试验名称，则系统将使用新指定的名称自动创建一个新试验。
-
-有关使用试验的示例，请参阅[快速入门：Azure 机器学习服务入门](quickstart-get-started.md)。
 
 ## <a name="pipeline"></a>管道
 
@@ -161,67 +219,9 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 
 有关机器学习管道与此服务的详细信息，请参阅[管道和 Azure 机器学习](concept-ml-pipelines.md)。
 
-## <a name="compute-target"></a>计算目标
-
-计算目标是用于运行训练脚本或托管服务部署的计算资源。 支持的计算目标为： 
-
-| 计算目标 | 培训 | 部署 |
-| ---- |:----:|:----:|
-| 本地计算机 | ✓ | &nbsp; |
-| Azure 机器学习计算 | ✓ | &nbsp; |
-| Azure 中的 Linux VM</br>（例如 Data Science Virtual Machine） | ✓ | &nbsp; |
-| Azure Databricks | ✓ | &nbsp; | &nbsp; |
-| Azure Data Lake Analytics | ✓ | &nbsp; |
-| Apache Spark for HDInsight | ✓ | &nbsp; |
-| Azure 容器实例 | &nbsp; | ✓ |
-| Azure Kubernetes 服务 | &nbsp; | ✓ |
-| Azure IoT Edge | &nbsp; | ✓ |
-| Project Brainwave</br>（现场可编程门阵列） | &nbsp; | ✓ |
-
-计算目标附加到工作区。 本地计算机以外的计算目标由工作区的用户共享。
-
-### <a name="managed-and-unmanaged-compute-targets"></a>托管和非托管的计算目标
-
-* **托管**：由 Azure 机器学习服务创建和管理的计算目标。 这些计算目标已针对机器学习工作负荷进行优化。 截至 2018 年 12 月 4 日，Azure 机器学习计算是仅有的托管计算目标。 将来可能会添加其他托管计算目标。 
-
-    可以使用 Azure 门户、Azure 机器学习 SDK 或 Azure CLI 通过工作区直接创建机器学习计算实例。 所有其他计算目标必须在工作区外创建，然后再附加到工作区。
-
-* **非托管**：不是由 Azure 机器学习服务管理的计算目标。 可能需要在 Azure 机器学习外部创建它们，然后在使用前将它们附加到工作区。 非托管计算目标可能需要执行额外的步骤来保持或提高机器学习工作负荷的性能。
-
-有关为训练选择计算目标的信息，请参阅[选择并使用计算目标来训练模型](how-to-set-up-training-targets.md)。
-
-有关为部署选择计算目标的信息，请参阅[使用 Azure 机器学习服务部署模型](how-to-deploy-and-where.md)。
-
-## <a name="run-configuration"></a>运行配置
-
-运行配置是一组指令，用于定义如何在指定的计算目标中运行脚本。 该配置包括一组广泛的行为定义，例如，是使用现有 Python 环境还是使用根据规范构建的 Conda 环境。
-
-运行配置可以保存到包含训练脚本的目录内的文件中，或构造为内存中对象以及用于提交运行。
-
-有关示例运行配置，请参阅[选择并使用计算目标来训练模型](how-to-set-up-training-targets.md)。
-
-## <a name="training-script"></a>培训脚本
-
-若要定型模型，你可以指定包含培训脚本和关联文件的目录。 此外，还可指定一个试验名称，用于存储在训练期间收集的信息。 在训练期间，会将整个目录复制到训练环境（计算目标），并启动运行配置指定的脚本。 目录的快照同样存储在工作区中的试验下。
-
-有关示例，请参阅[使用 Python 创建工作区](quickstart-get-started.md)。
-
 ## <a name="logging"></a>日志记录
 
-开发解决方案时，请在 Python 脚本中使用 Azure 机器学习 Python SDK 记录任意指标。 运行后，查询指标以确定运行是否生成了要部署的模型。 
-
-## <a name="snapshot"></a>快照
-
-提交运行时，Azure 机器学习会将包含该脚本的目录压缩为 zip 文件并将其发送到计算目标。 然后解压缩 zip 文件并运行脚本。 Azure 机器学习还将该 zip 文件存储为快照，作为运行记录的一部分。 有权限访问工作区的任何用户都可以浏览运行记录并下载快照。
-
-## <a name="activity"></a>活动
-
-活动表示长时间运行的操作。 以下操作是活动的示例：
-
-* 创建或删除计算目标
-* 在计算目标上运行脚本
-
-活动可通过 SDK 或 Web UI 提供通知，使你能够轻松监视这些操作的进度。
+开发解决方案时，请在 Python 脚本中使用 Azure 机器学习 Python SDK 记录任意指标。 运行后，查询指标以确定运行是否生成了要部署的模型。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -230,3 +230,4 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 * [什么是 Azure 机器学习服务？](overview-what-is-azure-ml.md)
 * [快速入门：使用 Python 创建工作区](quickstart-get-started.md)
 * [教程：训练模型](tutorial-train-models-with-aml.md)
+* [使用资源管理器模板创建工作区](how-to-create-workspace-template.md)

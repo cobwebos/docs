@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 95dc004e1a4b34f1f3a3c547da4ea7cd35e8c753
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 851098840356c7d391c2b10fae1c18884f5dab02
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821467"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236101"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>管理 Log Analytics 的使用情况和成本
 
@@ -116,6 +116,9 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 
 > [!NOTE]
 > 如果工作区关联到自动化帐户，则在选择“单独(按 GB)”定价层之前，必须删除任何“自动化和控制”解决方案，并取消自动化帐户的关联。 在工作区边栏选项卡的“常规”下，单击“解决方案”查看和删除解决方案。 若要取消自动化帐户的关联，请在“定价层”边栏选项卡上单击自动化帐户的名称。
+
+> [!NOTE]
+> 可以详细了解（如何通过 ARM 设置定价层）[https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#create-a-log-analytics-workspace]以及如何确保 ARM 部署无论在订阅处于旧定价模型还是新定价模型的情况下都会成功。 
 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>排查 Log Analytics 不再收集数据的原因

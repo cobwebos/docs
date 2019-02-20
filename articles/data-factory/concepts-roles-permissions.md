@@ -11,12 +11,12 @@ services: data-factory
 documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.openlocfilehash: e296606d219623c29bedca4fb0906a955a394b30
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ee35c7ae1b75c6fb4d656927d7e6e4384cd76836
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54013411"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003935"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure 数据工厂的角色和权限
 
@@ -78,7 +78,7 @@ Azure Repos 和 GitHub 上的权限独立于数据工厂权限。 因此，具�
   此方案需要两个角色分配。
 
   1. 在数据工厂级别分配内置的“参与者”角色。
-  2. 创建权限为 *Microsoft.Resources/deployments/** 的自定义角色。 将此自定义角色分配给资源组级别的用户。
+  2. 创建权限为 **Microsoft.Resources/deployments/** 的自定义角色。 将此自定义角色分配给资源组级别的用户。
 
 - 允许用户通过 PowerShell 或 SDK 更新数据工厂，但不允许其在 Azure 门户中进行更新。
 

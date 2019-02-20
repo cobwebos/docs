@@ -7,16 +7,16 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 9689854d9a28debbfbcf908391806fffac6a2006
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 3c7feda32bf162499888720ce56edac55197abe4
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450163"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005509"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
-Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些指标可能是平台指标、[自定义指标](../../azure-monitor/platform/metrics-custom-overview.md) 、[Log Analytics 中已转换为指标的常用日志，以及](../../azure-monitor/platform/alerts-metric-logs.md) Application Insights 标准指标。 指标警报定期评估，以检查一个或多个指标时序的条件是否属实，并在符合评估条件时发出通知。 指标警报是有状态的，即，它们只会在状态有更改时才发出通知。
+Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些指标可能是平台指标、[自定义指标](../../azure-monitor/platform/metrics-custom-overview.md)、[Azure Monitor 中已转换为指标的常用日志](../../azure-monitor/platform/alerts-metric-logs.md)，以及 Application Insights 标准指标。 指标警报定期评估，以检查一个或多个指标时序的条件是否属实，并在符合评估条件时发出通知。 指标警报是有状态的，即，它们只会在状态有更改时才发出通知。
 
 ## <a name="how-do-metric-alerts-work"></a>指标警报的工作原理
 

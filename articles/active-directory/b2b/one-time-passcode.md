@@ -10,12 +10,13 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 412e114fde8f9b9017d476083f1237c922c67bc8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e9493f7ee3278bb42dc21574cd008fbe2f4376a1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463049"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185139"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>电子邮件一次性密码身份验证（预览）
 
@@ -29,7 +30,7 @@ ms.locfileid: "55463049"
 此功能目前处于预览状态（请参阅下面的[选择加入预览](#opting-in-to-the-preview)）。 预览后，会为所有租户默认启用此功能。
 
 > [!NOTE]
-> 一次性密码用户必须使用包含租户上下文的链接登录（例如，`https://myapps.microsoft.com/?tenantid=<tenant id>` 或 `https://portal.azure.com/<tenant id>`，或者经过验证的默认域 `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`）。 也可以使用应用程序和资源的直接链接，只要这些链接包含租户上下文即可。 来宾用户目前无法使用不包含租户上下文的终结点登录。 例如，使用 `https://myapps.microsoft.com`、`https://portal.azure.com` 或团队公共终结点会导致错误。 
+> 一次性密码用户必须使用包含租户上下文的链接登录（例如，`https://myapps.microsoft.com/?tenantid=<tenant id>` 或 `https://portal.azure.com/<tenant id>`，或者经过验证的域 `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`）。 也可以使用应用程序和资源的直接链接，只要这些链接包含租户上下文即可。 来宾用户目前无法使用不包含租户上下文的终结点登录。 例如，使用 `https://myapps.microsoft.com`、`https://portal.azure.com` 或团队公共终结点会导致错误。 
 
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>一次性密码来宾用户的用户体验
 借助一次性密码身份验证，来宾用户可以通过单击直接链接或使用邀请电子邮件来兑换邀请。 在任一情况下，浏览器中的消息都指示代码将发送到来宾用户的电子邮件地址。 来宾用户选择“发送代码”：

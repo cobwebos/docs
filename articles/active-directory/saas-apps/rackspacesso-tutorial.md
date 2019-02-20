@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Rackspace SSO 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Rackspace SSO 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Rackspace SSO 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2018
 ms.author: jeedes
-ms.openlocfilehash: b825fb1d7f56aae923f6760c4fd6384e03274b7a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 24864fd1e21efaf37f846fc95b9dae39ffb19e5f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042051"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186823"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>教程：Azure Active Directory 与 Rackspace SSO 的集成
+# <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>教程：Azure Active Directory 与 Rackspace SSO 集成
 
 在本教程中，你将了解如何将 Rackspace SSO 与 Azure Active Directory (Azure AD) 进行集成。
 
@@ -192,12 +193,12 @@ ms.locfileid: "47042051"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Rackspace SSO 磁贴时，应当会自动登录到 Rackspace SSO 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

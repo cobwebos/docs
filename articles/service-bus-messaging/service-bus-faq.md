@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 0b419343829e7e7bbbd31260b9cd0c8d93cd255d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: fce3c2975e4b82583aa09a3862f704f05a363828
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847809"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210588"
 ---
 # <a name="service-bus-faq"></a>服务总线常见问题解答
 
@@ -83,6 +83,9 @@ ms.locfileid: "54847809"
 服务总线消息服务（队列和主题/订阅）允许应用程序发送大小不超过 256 KB（标准层）或 1 MB（高级层）的消息。 若要处理大小超过 1 MB 的消息，请使用[此博客文章](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern)中所述的声明检查模式。
 
 ## <a name="troubleshooting"></a>故障排除
+### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>为什么在从其他订阅中删除命名空间后无法创建该命名空间？ 
+从订阅中删除命名空间时，请等待 4 个小时，然后才能在另一个订阅中使用相同的名称重新创建它。 否则，可能会收到以下错误消息：`Namespace already exists`。 
+
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Azure 服务总线 API 生成了哪些异常？建议采取什么操作？
 有关可能的服务总线异常的列表，请参阅[异常概述][Exceptions overview]。
 

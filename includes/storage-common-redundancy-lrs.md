@@ -5,17 +5,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/24/2018
+ms.date: 02/12/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: a948a40e638b5f6e042c62ab58c2b7b65a49cd4e
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 32032f729283cb3f2a786412b563fdee88ba4c8a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741974"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238561"
 ---
-本地冗余存储 (LRS) 可在一年中提供至少 99.999999999%（11 个 9）的对象持久性。 LRS 通过将数据复制到一个存储缩放单元来提供此对象持久性。 你在其中创建存储帐户的区域中的一个数据中心承载着该缩放单元。 只有在数据已写入到所有副本后，到 LRS 存储帐户的写入请求才会成功返回。 每个副本驻留在一个存储缩放单元中的不同容错域和更新域中。
+本地冗余存储 (LRS) 可在一年中提供至少 99.999999999%（11 个 9）的对象持久性。 LRS 通过将数据复制到一个存储缩放单元来提供此对象持久性。 你在其中创建存储帐户的区域中的一个数据中心承载着该缩放单元。 只有在数据已写入到所有副本后，到 LRS 存储帐户的写入请求才会成功返回。 每个副本驻留在存储缩放单元内的不同容错域和升级域中。
 
 存储缩放单元是指存储节点的机架的集合。 容错域 (FD) 是一组表示物理故障单元的节点。 可以将容错域视为属于同一物理机架的节点。 升级域 (UD) 是一组在服务升级（推出）过程中一起升级的节点。 副本分布在同一存储缩放单元内的各个 UD 和 FD 中。 此体系结构可以确保，当硬件故障影响单个机架时或者当节点在服务升级期间进行升级时，你的数据可用。
 

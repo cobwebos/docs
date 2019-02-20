@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: 2f66c6956c803979ee6717f7327379c7bc9e97bb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 503e52266c1c6be71e60a751c40ef0a54f0d9b12
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181888"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112490"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>排查托管域的无效网络配置问题
 本文可帮助你排查和解决导致以下警报消息的与网络相关的配置错误：
@@ -36,7 +36,7 @@ ms.locfileid: "55181888"
 2. 从表中选择与启用了托管域的子网关联的 NSG。
 3. 在左侧面板的“设置”下，单击“入站安全规则”
 4. 就地检查规则并识别是哪些规则阻止了对[这些端口](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services)的访问
-5. 通过删除规则、添加规则来编辑 NSG，或创建一个全新的 NSG，以确保合规性。 [添加规则](#add-a-rule-to-a-network-security-group-using-the-azure-portal)或[创建一个新的合规性 NSG](#create-a-nsg-for-azure-ad-domain-services-using-powershell)的步骤如下所示
+5. 通过删除规则、添加规则来编辑 NSG，或创建一个全新的 NSG，以确保合规性。 [添加规则](#add-a-rule-to-a-network-security-group-using-the-azure-portal)或创建新的合规 NSG 的步骤如下所示
 
 ## <a name="sample-nsg"></a>示例 NSG
 下表描述了一个示例 NSG，它将在允许 Microsoft 监视、管理和更新信息的同时保持托管域的安全。

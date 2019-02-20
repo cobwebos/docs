@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 77fc95c53ba89c3905ebd1aec785e22f42339369
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 8cc5dbb907c342b766cebe6da36cf580ddac5e2c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164414"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889541"
 ---
-<!--author=SharS last changed: 9/17/15-->
-
 #### <a name="to-install-regular-hotfixes-via-windows-powershell-for-storsimple"></a>通过 Windows PowerShell for StorSimple 安装常规修补程序
 1. 连接到设备串行控制台。 有关详细信息，请参阅[步骤 1：连接到串行控制台](../articles/storsimple/storsimple-update-device.md#step1)。
 2. 在串行控制台菜单中，选择选项 1“使用完整访问权限登录”。 键入密码。 默认密码为 **Password1**。

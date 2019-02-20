@@ -11,20 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: d24f7ce20a9dfb8ede184e8f013c2d988a8a96c2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: 2857b7f5347cf546a9745dcbea02f636a798f4a2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468693"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004241"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 
 自动故障转移组是一项 SQL 数据库功能，可便于管理 SQL 数据库服务器中一组数据库或托管实例中所有数据库到另一区域的复制和故障转移（对于托管实例，此功能目前以公共预览版提供）。 它使用的底层技术与相同[活动异地复制](sql-database-active-geo-replication.md)相同。 可以手动启动故障转移，也可以基于用户定义的策略委托 SQL 数据库服务进行故障转移。 使用后一种做法可在发生下述情况后自动恢复次要区域中的多个相关数据库：灾难性故障或其他导致主要区域中 SQL 数据库服务完全或部分丧失可用性的计划外事件。 此外，你还可以使用可读辅助数据库卸载只读查询工作负荷。 由于自动故障转移组涉及多个数据库，因此这些数据库必须在主服务器上进行配置。 故障转移组中数据库的主服务器和辅助服务器必须位于同一订阅中。 自动故障转移组支持将组中所有的数据库复制到另一个区域中唯一的辅助服务器。
 
 > [!NOTE]
-> 如果在 SQL 数据库服务器上使用独立数据库或入池数据库，并要在相同或不同的区域中使用多个辅助数据库，请使用[活动异地复制](sql-database-active-geo-replication.md)。
+> 如果在 SQL 数据库服务器上使用单一数据库或入池数据库，并要在相同或不同的区域中使用多个辅助数据库，请使用[活动异地复制](sql-database-active-geo-replication.md)。
 
 将自动故障转移组与自动故障转移策略配合使用时，任何影响组中一个或多个数据库的服务中断都会导致自动故障转移。 此外，自动故障转移组提供在故障转移期间保持不变的读写和只读侦听器终结点。 无论使用手动故障转移激活还是自动故障转移激活，故障转移都会将组中所有的辅助数据库切换到主数据库。 数据库故障转移完成后，会自动更新 DNS 记录，以便将终结点重定向到新的区域。 有关具体的 RPO 和 RTO 数据，请参阅[业务连续性概述](sql-database-business-continuity.md)。
 
@@ -331,7 +331,7 @@ ms.locfileid: "55468693"
 | Switch-AzureRmSqlDatabaseInstanceFailoverGroup |触发故障转移组到辅助服务器的故障转移|
 | Remove-AzureRmSqlDatabaseInstanceFailoverGroup | 删除故障转移组|
 
-### <a name="rest-api-manage-sql-database-failover-groups-with-standalone-and-pooled-databases"></a>REST API：管理包含独立数据库和入池数据库的 SQL 数据库故障转移组
+### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API：使用单个数据库和入池数据库管理 SQL 数据库故障转移组
 
 | API | 说明 |
 | --- | --- |

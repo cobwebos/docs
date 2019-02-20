@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 2aabdc503a694de46796b7c3afeedfcdb2f39ca9
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 810d1bf6a550539b402721d089d8b041cfb48634
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037852"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991441"
 ---
 # <a name="change-the-reserved-unit-type"></a>更改预留单位类型
 > [!div class="op_single_selector"]

@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 0c2ff94d65e775a12fd76b3115aa8b69ae9a405f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9b4dc2e48093398077071eb2423a80c86eb62c67
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815007"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894932"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>使用 PowerShell 通过路由表路由网络流量
 
@@ -248,7 +248,7 @@ New-NetFirewallRule -DisplayName "Allow ICMPv4-In" -Protocol ICMPv4
 
 虽然本文中使用跟踪路由来测试路由，但在生产部署中，不建议允许 ICMP 通过 Windows 防火墙。
 
-在[启用 IP 转发](#enable-ip-forwarding)中已经在 Azure 中为 VM 的网络接口启用了 IP 转发。 在 VM 中，VM 中运行的操作系统或应用程序也必须能够转发网络流量。 在 *myVmNva* 的操作系统中启用 IP 转发。
+在“启用 IP 转发”中已经在 Azure 中为 VM 的网络接口启用了 IP 转发。 在 VM 中，VM 中运行的操作系统或应用程序也必须能够转发网络流量。 在 *myVmNva* 的操作系统中启用 IP 转发。
 
 在 *myVmPrivate* VM 中的命令提示符下，通过远程桌面连接到 *myVmNva*：
 

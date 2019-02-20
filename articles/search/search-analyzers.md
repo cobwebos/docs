@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 868658062a6407dce901b455cc92f95008df798c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 008a24fe9822ca51b81e1f6979a3731d794a8867
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631934"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964332"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>用于 Azure 搜索中文本处理的分析器
 
@@ -33,7 +33,7 @@ Azure 搜索使用[标准 Lucene 分析器](https://lucene.apache.org/core/4_0_0
 
 下表介绍了 Azure 搜索支持的分析器。
 
-| 类别 | Description |
+| 类别 | 说明 |
 |----------|-------------|
 | [标准 Lucene 分析器](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 默认。 无需任何规范或配置。 这种通用分析器适用于大多数语言和方案。|
 | 预定义分析器 | 作为按原样使用且具有有限自定义项的成品提供。 <br/>有两种类型：专用和语言特定。 由于按名称而非自定义项引用，因此被称为“预定义”。 <br/><br/>当需要对文本输入进行专业处理或最小处理时，请使用[专业（不限语言）分析器](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search#AnalyzerTable)。 非语言预定义分析器包括 Asciifolding、Keyword、Pattern、Simple、Stop 和 Whitespace。<br/><br/>当需要为各种语言提供丰富的语言支持时，请使用[语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)。 Azure 搜索支持 35 种 Lucene 语言分析器和 50 种 Microsoft 自然语言处理分析器。 |
@@ -92,7 +92,7 @@ Azure 搜索允许通过附加的 `indexAnalyzer` 和 `searchAnalyzer` 字段参
 * 分析器是可搜索字段的字段类的属性。
 * 自定义分析器是索引定义的一部分。 它支持轻度自定义（例如，在某个筛选器中自定义一个单独选项）或在多个位置自定义。
 * 在这种情况下，自定义分析器为“my_analyzer”，它将反过来使用自定义的标准分词器“my_standard_tokenizer”和两个词元筛选器：小写的自定义 asciifolding 筛选器“my_asciifolding”。
-* 它还定义一个自定义“map_dash”字符筛选器，以便在词汇切分前将所有短划线替换为下划线（标准分词器在短划线而非下划线上中断）。
+* 它还定义了 2 个自定义字符型筛选器“map_dash”和“remove_whitespace”。 第一个使用下划线替换所有破折号，而第二个用于删除所有空格。 空间需要在映射规则中进行 UTF-8 编码。 字符型筛选器在标记化之前进行应用并将影响生成的标记（标准 tokenizer 在破折号和空格上中断，但不会在下划线上中断）。
 
 ~~~~
   {
@@ -116,7 +116,8 @@ Azure 搜索允许通过附加的 `indexAnalyzer` 和 `searchAnalyzer` 字段参
            "name":"my_analyzer",
            "@odata.type":"#Microsoft.Azure.Search.CustomAnalyzer",
            "charFilters":[
-              "map_dash"
+              "map_dash",
+              "remove_whitespace"
            ],
            "tokenizer":"my_standard_tokenizer",
            "tokenFilters":[
@@ -130,6 +131,11 @@ Azure 搜索允许通过附加的 `indexAnalyzer` 和 `searchAnalyzer` 字段参
            "name":"map_dash",
            "@odata.type":"#Microsoft.Azure.Search.MappingCharFilter",
            "mappings":["-=>_"]
+        },
+        {
+           "name":"remove_whitespace",
+           "@odata.type":"#Microsoft.Azure.Search.MappingCharFilter",
+           "mappings":["\\u0020=>"]
         }
      ],
      "tokenizers":[

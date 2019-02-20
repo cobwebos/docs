@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: e1144611c68e8a3c450f8017388cfa84629f9921
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5e905168ab2c2f10bcfadfc605fdcaa800e70332
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256487"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982001"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>使用 Azure PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 以下步骤演示了如何使用 Azure PowerShell 命令将基础结构即服务 (IaaS) 资源从经典部署模型迁移到 Azure 资源管理器部署模型。
@@ -36,7 +36,9 @@ ms.locfileid: "51256487"
 
 ![Screenshot that shows the migration steps](media/migration-classic-resource-manager/migration-flow.png)
 
-## <a name="step-1-plan-for-migration"></a>步骤 1：做好迁移规划
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
+## <a name="step-1-plan-for-migration"></a>步骤 1：规划迁移
 下面是建议在将 IaaS 资源从经典部署模型迁移到 Resource Manager 部署模型时遵循的一些最佳实践：
 
 * 通读[受支持的和不受支持的功能和配置](migration-classic-resource-manager-overview.md)。 如果虚拟机使用不受支持的配置或功能，建议等到我们宣布支持该配置/功能时再进行迁移。 也可根据需要删除该功能或移出该配置，以利迁移进行。
@@ -47,8 +49,8 @@ ms.locfileid: "51256487"
 >
 >无法自动迁移其他订阅中连接到 ExpressRoute 线路的 ExpressRoute 网关。 此类情况下，请删除 ExpressRoute 网关、迁移虚拟网络并重新创建网关。 有关详细信息，请参阅[将 ExpressRoute 线路和关联的虚拟网络从经典部署模型迁移到 Resource Manager 部署模型](../../expressroute/expressroute-migration-classic-resource-manager.md)。
 
-## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>步骤2：安装最新版本的 Azure PowerShell
-安装 Azure PowerShell 可以通过两个主要的选项：[PowerShell 库](https://www.powershellgallery.com/profiles/azure-sdk/)或 [Web 平台安装程序 (WebPI)](https://aka.ms/webpi-azps)。 WebPI 接收每月的更新。 PowerShell 库会持续接收更新。 本文基于 Azure PowerShell 2.1.0 版。
+## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>步骤 2：安装最新版本的 Azure PowerShell
+有两个主要选项可供安装 Azure PowerShell：[PowerShell 库](https://www.powershellgallery.com/profiles/azure-sdk/)或 [Web 平台安装程序 (WebPI)](https://aka.ms/webpi-azps)。 WebPI 接收每月的更新。 PowerShell 库会持续接收更新。 本文基于 Azure PowerShell 2.1.0 版。
 
 如需安装说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
@@ -69,36 +71,36 @@ ms.locfileid: "51256487"
 登录到 Resource Manager 模型的帐户。
 
 ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
 ```
 
 使用以下命令获取可用订阅：
 
 ```powershell
-    Get-AzureRMSubscription | Sort Name | Select Name
+    Get-AzSubscription | Sort Name | Select Name
 ```
 
 设置当前会话的 Azure 订阅。 此示例将默认订阅名称设置为“我的 Azure 订阅”。 将示例订阅名称替换成自己的名称。
 
 ```powershell
-    Select-AzureRmSubscription –SubscriptionName "My Azure Subscription"
+    Select-AzSubscription –SubscriptionName "My Azure Subscription"
 ```
 
 > [!NOTE]
 > 注册是一次性步骤，但必须在尝试迁移之前完成。 如果不注册，则会出现以下错误消息：
 >
-> *BadRequest : Subscription is not registered for migration.*
+> *BadRequest:Subscription is not registered for migration.*（BadRequest：订阅尚未注册迁移。）
 
 使用以下命令向迁移资源提供程序注册：
 
 ```powershell
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
+    Register-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 ```
 
 请等五分钟让注册完成。 可以使用以下命令来检查审批状态：
 
 ```powershell
-    Get-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
+    Get-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 ```
 
 请确保在继续操作之前，RegistrationState 为 `Registered`。
@@ -129,7 +131,7 @@ ms.locfileid: "51256487"
 此示例检查在“美国西部”区域中的可用性。 将示例区域名称替换成自己的名称。
 
 ```powershell
-Get-AzureRmVMUsage -Location "West US"
+Get-AzVMUsage -Location "West US"
 ```
 
 ## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>步骤 6：运行迁移 IaaS 资源的命令

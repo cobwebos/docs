@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: bfc3ed5553802c8a87776dc1a5372bc27ac8d13d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 457f64b9ae9101628df5347c921bfa057a7cb754
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475179"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991423"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Azure Cosmos DB SQL 语言参考 
 
@@ -493,7 +493,7 @@ ORDER BY <sort_specification>
 |-|-|-|  
 |算术|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|加。<br /><br /> 减。<br /><br /> 乘。<br /><br /> 除。<br /><br /> 取模。|  
 |位|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|位或。<br /><br /> 位与。<br /><br /> 位异或。<br /><br /> 左移。<br /><br /> 右移。<br /><br /> 补零右移。|  
-|逻辑|**AND**<br /><br /> **或**|逻辑与。 如果两个参数都为 true，则返回 true，否则返回 false。<br /><br /> 逻辑与。 如果两个参数都为 true，则返回 true，否则返回 false。|  
+|逻辑|**AND**<br /><br /> **或**|逻辑与。 如果两个参数都为 true，则返回 true，否则返回 false。<br /><br /> 逻辑或运算。 如果任何参数为 true，则返回 true，否则返回 false。|  
 |比较|**=**<br /><br /> !=, <><br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> ??|等于。 如果参数为等于，则返回 "true"，否则返回 "false"。<br /><br /> 不等于。 如果参数为不等于，则返回 "true"，否则返回 "false"。<br /><br /> 大于。 如果第一个参数大于第二个参数，则返回 "true"，否则返回 "false"。<br /><br /> 大于等于。 如果第一个参数大于或等于第二个参数，则返回 "true"，否则返回 "false"。<br /><br /> 小于。 如果第一个参数小于第二个参数，则返回 "true"，否则返回 "false"。<br /><br /> 小于等于。 如果第一个参数小于或等于第二个参数，则返回 "true"，否则返回 "false"。<br /><br /> 联合。 如果第一个参数是“未定义”值，则返回第二个参数。|  
 |**字符串**|**&#124;&#124;**|串联。 返回两个参数的串联。|  
   
@@ -620,7 +620,7 @@ ORDER BY <sort_specification>
 |-|-|-|  
 |\\'|撇号 (')|U+0027|  
 |\\"|引号 (")|U+0022|  
-|\\\|反斜线号 (\\)|U+005C|  
+|\\\ |反斜线号 (\\)|U+005C|  
 |\\/|斜线号 (/)|U+002F|  
 |\b|退格符|U+0008|  
 |\f|换页符|U+000C|  

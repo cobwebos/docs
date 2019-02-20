@@ -4,7 +4,7 @@ description: 使用本文通过 Azure CLI 自动执行密钥保管库中的常�
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: barclayn
-ms.openlocfilehash: 11ace1b5cce742579256d08ecfe9d9a7412d3d7c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1679fbe0dedc88ca3e8293512f9a79bb7da69790
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822487"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115617"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>使用 Azure CLI 管理密钥保管库 
 
@@ -145,18 +145,18 @@ Azure 帐户现已获取在此密钥保管库上执行任何作业的授权。 �
 az keyvault key create --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --protection software
 ```
 
-如果在 .pem 文件中保留了现有的密钥，可将此文件上传到 Azure Key Vault。 可以选择使用软件或 HSM 保护密钥。 使用以下命令从 .pem 文件导入密钥，并使用软件保护该密钥：
+如果在 .pem 文件中保留了现有的密钥，可将此文件上传到 Azure Key Vault。 可以选择使用软件或 HSM 保护密钥。 此示例从 .pem 文件导入密钥，并使用密码“hVFkk965BuUv”通过软件对其进行保护：
 
 ```azurecli
-az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "Pa$$w0rd" --protection software
+az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
 现在可以通过使用密钥的 URI，引用已创建或上传到 Azure Key Vault 的密钥。 使用 **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** 始终会获取当前版本。 使用 https://[keyvault-name].vault.azure.net/keys/[keyname]/[key-unique-id] 会获取此特定版本。 例如，**https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**。 
 
-将机密（名为 SQLPassword 的密码，其值为 Pa$$w0rd）添加到 Azure Key Vault。 
+将机密（名为 SQLPassword 的密码，其值为“hVFkk965BuUv”）添加到 Azure 密钥保管库。 
 
 ```azurecli
-az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "Pa$$w0rd"
+az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "hVFkk965BuUv "
 ```
 
 使用此密码的 URI 引用此密码。 使用 **https://ContosoVault.vault.azure.net/secrets/SQLPassword** 始终会获取当前版本，使用 https://[keyvault-name].vault.azure.net/secret/[secret-name]/[secret-unique-id] 会获取此特定版本。 例如，**https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d**。
@@ -164,7 +164,7 @@ az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --val
 使用 .pem 或 .pfx 将证书导入保管库。
 
 ```azurecli
-az keyvault certificate import --vault-name "ContosoKeyVault" --file "c:\cert\cert.pfx" --name "ContosoCert" --password "Pa$$w0rd"
+az keyvault certificate import --vault-name "ContosoKeyVault" --file "c:\cert\cert.pfx" --name "ContosoCert" --password "hVFkk965BuUv"
 ```
 
 让我们查看创建的密钥、机密或证书：
@@ -203,7 +203,7 @@ az keyvault certificate list --vault-name "ContosoKeyVault"
 在 Azure Active Directory 中注册应用程序：
 
 ```azurecli
-az ad sp create-for-rbac -n "MyApp" --password "Pa$$w0rd" --skip-assignment
+az ad sp create-for-rbac -n "MyApp" --password "hVFkk965BuUv" --skip-assignment
 # If you don't specify a password, one will be created for you.
 ```
 

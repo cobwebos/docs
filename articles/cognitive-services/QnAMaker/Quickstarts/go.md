@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 获取 G0 基于 REST 的信息和代码示例，以帮助你快速开始使用 Azure 上的 Microsoft 认知服务中的 Microsoft 文本翻译 API。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 67654e11f3f5b883c587a4fdc0bb7a25f56cd48b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f16909a9504b2868c1eecf849b9a1fd537cd6048
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220019"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244252"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-go"></a>如何将 QnA Maker REST API 与 Go 配合使用 
 <a name="HOLTop"></a>
@@ -35,8 +35,8 @@ ms.locfileid: "55220019"
 - [删除知识库。](#Delete)
 - [获取当前终结点密钥。](#GetKeys)
 - [重新生成当前终结点密钥。](#PutKeys)
-- [获取当前的字变更集。](#GetAlterations)
-- [替换当前的字变更集。](#PutAlterations)
+- [获取当前区分大小写的字词变更集。](#GetAlterations)
+- [替换当前区分大小写的字词变更集。](#PutAlterations)
 
 ## <a name="prerequisites"></a>先决条件
 

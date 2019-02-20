@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/11/2016
+ms.date: 02/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: bf999e15c04a64f717bcd7bac87e357d5ccc92e6
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: ecf0638aa999208331603ac30ccf4eb17b3c4500
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189926"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960677"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>排查 Application Insights 中的分析问题
 [Application Insights Analytics](analytics.md) 出现了问题？ 从此处开始。 Analytics 是 Azure Application Insights 的强大搜索工具。
@@ -34,9 +34,9 @@ ms.locfileid: "54189926"
 ## <a name="e-a"></a>“意外的错误”
 ![“意外的错误”屏幕](media/analytics-troubleshooting/010.png)
 
-在门户运行时期间发生内部错误 - 未经处理的异常。
+在门户运行时期间发生内部错误 – 未经处理的异常。
 
-* 清除浏览器的缓存。 
+* 清除浏览器的缓存。
 
 ## <a name="e-b"></a>403 ... 请尝试重新加载
 ![403 ... 请尝试重新加载](media/analytics-troubleshooting/020.png)

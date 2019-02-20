@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 30fdb55758d5fbac41452236ebaa9f96ab9bba6b
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 86f23a1520175827f775553e1ba949c62567cf83
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163520"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201918"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hornbill"></a>教程：Azure Active Directory 与 Hornbill 的集成
 
@@ -195,7 +196,7 @@ ms.locfileid: "39163520"
 本部分的目的是在 Hornbill 中创建名为“Britta Simon”的用户。 Hornbill 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 尝试访问 Hornbill 期间，如果尚不存在用户，则会创建一个新用户。
 
 > [!Note]
-> 如果需要手动创建用户，请联系 [Hornbill 客户端支持团队](https://www.hornbill.com/support/?request/)。
+> 如果需要手动创建用户，请联系  [Hornbill 客户端支持团队](https://www.hornbill.com/support/?request/)。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -232,12 +233,12 @@ ms.locfileid: "39163520"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Hornbill 磁贴时，应会自动登录到 Hornbill 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

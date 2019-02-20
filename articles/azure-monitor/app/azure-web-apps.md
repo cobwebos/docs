@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: mbullwin
-ms.openlocfilehash: bde73e9ee87ab9165c1d2dd720377d2f9c8771cb
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 4ec6e1288b34f04350a88697ca13ed044922ee50
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565949"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002213"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 在 [Azure 门户](https://portal.azure.com)中，可以为 [Azure 应用服务](../../app-service/overview.md)中的 Web 应用、移动后端和 API 应用设置应用程序性能监视。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 将检测应用，将其活动的相关遥测数据发送到 Application Insights 服务，以便在其中存储和分析。 此处的指标图表和搜索工具可用于帮助诊断问题、改善性能以及评估使用情况。
@@ -29,7 +29,7 @@ ms.locfileid: "55565949"
 * **生成时** - 在开发期间，可以在应用中安装一个包。 此选项更灵活。 除了安装相同的标准包以外，还可以编写代码来自定义遥测，或发送自己的遥测数据。 可以根据应用域的语义记录特定的活动或记录事件。 
 
 ## <a name="run-time-instrumentation-with-application-insights"></a>Application Insights 的运行时检测
-如果已在 Azure 中运行了应用服务，则已获得了一些监视信息：请求和错误率。 添加 Application Insights 可获得更多功能，例如响应时间监视、监视对依赖项的调用，智能检测和功能强大的 Log Analytics 查询语言。 
+如果已在 Azure 中运行了应用服务，则已获得了一些监视信息：请求和错误率。 添加 Application Insights 可获得更多功能，例如响应时间、依赖项调用监视、智能检测和功能强大的数据资源管理器查询语言。 
 
 1. 在应用服务的 Azure 控制面板中，选择“Application Insights”。
 

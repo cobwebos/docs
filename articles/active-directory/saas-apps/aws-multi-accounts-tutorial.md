@@ -13,14 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 01/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 48d8516a1923aaacc26db2eb9a9acfd0ddff737e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 23ceb9c7b18de5262a38fc724aad9605e82a615a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197511"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238413"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>教程：Azure Active Directory 与多个 Amazon Web Services (AWS) 帐户集成
 
@@ -53,8 +54,8 @@ ms.locfileid: "55197511"
 
 若要配置 Azure AD 与 Amazon Web Services (AWS) 的集成，需要具有以下项：
 
-- 一个 Azure AD Basic 或 Premium 订阅
-- 多个已启用单一登录的 Amazon Web Services (AWS) 帐户
+* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+* 启用了 Amazon Web Services (AWS) 单一登录的订阅
 
 > [!NOTE]
 > 为了测试本教程中的步骤，我们不建议使用生产环境。
@@ -65,31 +66,32 @@ ms.locfileid: "55197511"
 - 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
-1. 从库中添加 Amazon Web Services (AWS)
-2. 配置和测试 Azure AD 单一登录
+本教程会在测试环境中配置和测试 Azure AD 单一登录。
+
+* Amazon Web Services (AWS) 支持 **SP 和 IDP** 发起的 SSO
 
 ## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>从库中添加 Amazon Web Services (AWS)
+
 要配置 Amazon Web Services (AWS) 与 Azure AD 的集成，需要从库将 Amazon Web Services (AWS) 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Amazon Web Services (AWS)，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
-    ![图像](./media/aws-multi-accounts-tutorial/selectazuread.png)
+    ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+2. 转到“企业应用”，并选择“所有应用”选项。
 
-    ![图像](./media/aws-multi-accounts-tutorial/a_select_app.png)
-    
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![图像](./media/aws-multi-accounts-tutorial/a_new_app.png)
+    ![“新增应用程序”按钮](common/add-new-app.png)
 
 4. 在搜索框中，键入“Amazon Web Services (AWS)”，从结果面板中选择“Amazon Web Services (AWS)”，然后单击“添加”按钮添加该应用程序。
 
-     ![图像](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_addfromgallery.png)
+     ![结果列表中的 Amazon Web Services (AWS)](common/search-new-app.png)
 
 5. 添加应用程序后，转到“属性”页并复制“对象 ID”。
 
@@ -106,7 +108,8 @@ ms.locfileid: "55197511"
 若要配置并测试 Amazon Web Services (AWS) 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+2. **[配置 Amazon Web Services (AWS) 单一登录](#configure-amazon-web-services-aws-single-sign-on)** - 在应用程序端配置单一登录设置。
+3. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -116,27 +119,27 @@ ms.locfileid: "55197511"
 
 1. 在 [Azure 门户](https://portal.azure.com/)的 Amazon Web Services (AWS) 应用程序集成页上，选择“单一登录”。
 
-    ![图像](./media/aws-multi-accounts-tutorial/B1_B2_Select_SSO.png)
+    ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
-    ![图像](./media/aws-multi-accounts-tutorial/b1_b2_saml_sso.png)
+    ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
 
-    ![图像](./media/aws-multi-accounts-tutorial/b1-domains_and_urlsedit.png)
+    ![编辑基本 SAML 配置](common/edit-urls.png)
 
 4. 在“基本 SAML 配置”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成。
 
-    ![图像](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_url.png)
+    ![图像](common/preintegrated.png)
 
 5. Amazon Web Services (AWS) 应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性和声明”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性和声明”对话框。
 
-    ![图像](./media/aws-multi-accounts-tutorial/i4-attribute.png)
+    ![图像](common/edit-attribute.png)
 
-6. 在“用户属性和声明”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
-    
-    | Name  | 源属性  | 命名空间 |
+6. 在“用户属性”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
+
+    | 名称  | 源属性  | 命名空间 |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
     | 角色            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
@@ -144,39 +147,43 @@ ms.locfileid: "55197511"
 
     a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
-    ![图像](./media/aws-multi-accounts-tutorial/i2-attribute.png)
+    ![图像](common/new-save-attribute.png)
 
-    ![图像](./media/aws-multi-accounts-tutorial/i3-attribute.png)
+    ![图像](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。
 
-    c. 输入“命名空间”值。
+    c. 在“命名空间”文本框中，键入为该行显示的命名空间值。
 
     d. 选择“源”作为“属性”。
 
     e. 在“源属性”列表中，键入为该行显示的属性值。
 
-    f. 单击“ **保存**”。
+    f. 单击“确定”
+
+    g. 单击“ **保存**”。
 
 7. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“下载”以下载“联合元数据 XML”并将其保存在计算机上。
 
-    ![图像](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_certificate.png) 
+    ![证书下载链接](common/metadataxml.png)
 
-8. 在其他浏览器窗口中，以管理员身份登录 Amazon Web Services (AWS) 公司站点。
+### <a name="configure-amazon-web-services-aws-single-sign-on"></a>配置 Amazon Web Services (AWS) 单一登录
 
-9. 单击“AWS 主页”。
+1. 在其他浏览器窗口中，以管理员身份登录 Amazon Web Services (AWS) 公司站点。
+
+2. 单击“AWS 主页”。
 
     ![配置单一登录主页][11]
 
-10. 单击“标识和访问管理”。
+3. 单击“标识和访问管理”。
 
     ![配置单一登录标识][12]
 
-11. 单击“标识提供者”，并单击“创建提供者”。
+4. 单击“标识提供者”，并单击“创建提供者”。
 
     ![配置单一登录提供者][13]
 
-12. 在“配置提供者”对话框页上，执行以下步骤：
+5. 在“配置提供者”对话框页上，执行以下步骤：
 
     ![配置单一登录对话框][14]
 
@@ -188,15 +195,15 @@ ms.locfileid: "55197511"
 
     d. 单击“下一步”。
 
-13. 在“验证提供者信息”对话框页上，单击“创建”。
+6. 在“验证提供者信息”对话框页上，单击“创建”。
 
     ![配置单一登录验证][15]
 
-14. 单击“角色”，然后单击“创建角色”。
+7. 单击“角色”，然后单击“创建角色”。
 
     ![配置单一登录角色][16]
 
-15. 在“创建角色”页中，执行以下步骤：  
+8. 在“创建角色”页中，执行以下步骤：  
 
     ![配置单一登录信任][19]
 
@@ -208,11 +215,11 @@ ms.locfileid: "55197511"
   
     d. 单击“下一步:权限”。
 
-16. 在“附加权限策略”对话框中，不需要附加任何策略。 单击“下一步:查看”。  
+9. 请在“附加权限策略”对话框中，根据组织附加适当策略。 单击“下一步:查看”。  
 
     ![配置单一登录策略][33]
 
-17. 在“审阅”对话框中，执行以下步骤：
+10. 在“审阅”对话框中，执行以下步骤：
 
     ![配置单一登录审阅][34]
 
@@ -224,23 +231,23 @@ ms.locfileid: "55197511"
 
     d. 创建所需数量的角色，并将其映射到标识提供者。
 
-18. 从当前 AWS 帐户注销，使用要在其中配置 Azure AD 单一登录的另一个帐户登录。
+11. 从当前 AWS 帐户注销，使用要在其中配置 Azure AD 单一登录的另一个帐户登录。
 
-19. 执行步骤 9 到步骤 17，创建要为此帐户设置的多个角色。 如果有两个以上的帐户，请对所有帐户执行相同的步骤，以便为这些帐户创建角色。
+12. 执行步骤 2 到步骤 10，创建要为此帐户设置的多个角色。 如果有两个以上的帐户，请对所有帐户执行相同的步骤，以便为这些帐户创建角色。
 
-20. 在帐户中创建所有角色后，这些角色将显示在这些帐户的“角色”列表中。
+13. 在帐户中创建所有角色后，这些角色将显示在这些帐户的“角色”列表中。
 
     ![角色设置](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_listofroles.png)
 
-21. 我们需要捕获所有帐户中所有角色的所有“角色 ARN”和“受信任实体”，并需要将其手动映射到 Azure AD 应用程序。 
+14. 我们需要捕获所有帐户中所有角色的所有“角色 ARN”和“受信任实体”，并需要将其手动映射到 Azure AD 应用程序。
 
-22. 单击角色复制“角色 ARN”和“受信任实体”值。 对于要在 Azure AD 中创建的所有角色，需要使用这些值。
+15. 单击角色复制“角色 ARN”和“受信任实体”值。 对于要在 Azure AD 中创建的所有角色，需要使用这些值。
 
     ![角色设置](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_role_summary.png)
 
-23. 针对所有帐户中的所有角色执行上述步骤，并以 **<角色 ARN>,<受信任实体>** 的格式将其存储在记事本中。
+16. 针对所有帐户中的所有角色执行上述步骤，并以 **<角色 ARN>,<受信任实体>** 的格式将其存储在记事本中。
 
-24. 在另一个窗口中打开 [Azure AD Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)。
+17. 在另一个窗口中打开 [Azure AD Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)。
 
     a. 使用租户的全局管理员/共同管理员凭据登录到 Graph 浏览器站点。
 
@@ -256,7 +263,7 @@ ms.locfileid: "55197511"
 
     e. 在下拉列表中将版本更改为 **beta**。 若要从租户提取所有服务主体，请使用以下查询：
 
-     `https://graph.microsoft.com/beta/servicePrincipals`
+    `https://graph.microsoft.com/beta/servicePrincipals`
 
     如果使用多个目录，则可以使用包含主域的以下模式：`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
@@ -322,23 +329,23 @@ ms.locfileid: "55197511"
 
     ![Graph 浏览器对话框](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
-25. 使用更多角色修补服务主体后，可将用户/组分配到相应的角色。 可通过转到门户并导航到 Amazon Web Services 应用程序来完成此操作。 在顶部单击“用户和组”选项卡。 
+18. 使用更多角色修补服务主体后，可将用户/组分配到相应的角色。 可通过转到门户并导航到 Amazon Web Services 应用程序来完成此操作。 在顶部单击“用户和组”选项卡。
 
-26. 我们建议为每个 AWS 角色创建新组，以便可以在该组中分配该特定角色。 请注意，这是一个组到一个角色的一对一映射。 然后，可以添加属于该组的成员。
+19. 我们建议为每个 AWS 角色创建新组，以便可以在该组中分配该特定角色。 请注意，这是一个组到一个角色的一对一映射。 然后，可以添加属于该组的成员。
 
-27. 创建组后，请选择该组并分配到应用程序。
+20. 创建组后，请选择该组并分配到应用程序。
 
     ![配置单一登录 Add](./media/aws-multi-accounts-tutorial/graph-explorer-new5.png)
 
-> [!Note]
-> 分配组时不支持嵌套组。
+    > [!Note]
+    > 分配组时不支持嵌套组。
 
-28. 若要将角色分配到组，请选择该角色，然后单击页面底部的“分配”按钮。
+21. 若要将角色分配到组，请选择该角色，然后单击页面底部的“分配”按钮。
 
     ![配置单一登录 Add](./media/aws-multi-accounts-tutorial/graph-explorer-new6.png)
 
-> [!Note]
-> 请注意，需要在 Azure 门户中刷新会话才能看到新角色。
+    > [!Note]
+    > 请注意，需要在 Azure 门户中刷新会话才能看到新角色。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 
@@ -352,7 +359,7 @@ ms.locfileid: "55197511"
 
 ![配置单一登录 Add](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_test_saml.png)
 
-有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 

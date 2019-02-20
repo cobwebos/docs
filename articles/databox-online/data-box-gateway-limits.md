@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 01/15/2019
+ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: acf455bff739666712917008dc8090c6a95c6dc4
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f785e9e540af01b74678cf75159775cd2888e09e
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815637"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959572"
 ---
 # <a name="azure-data-box-gateway-limits-preview"></a>Azure Data Box Gateway 限制（预览版）
 
@@ -26,8 +26,7 @@ ms.locfileid: "55815637"
 
 ## <a name="data-box-gateway-service-limits"></a>Data Box Gateway 服务限制
 
-- 在此版本中，该服务仅在美国、欧洲和亚太地区的某些区域中可用。 有关详细信息，请转到“区域可用性”。 存储帐户的物理位置应当最靠近其中部署了设备的区域（可能不同于服务地区）。
-- 不支持将 Data Box Gateway 资源移动到不同的订阅或资源组。 有关更多详细信息，请转到[将资源移动到新的资源组或订阅](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)。
+[!INCLUDE [data-box-edge-gateway-service-limits](../../includes/data-box-edge-gateway-service-limits.md)]
 
 ## <a name="data-box-gateway-device-limits"></a>Data Box Gateway 设备限制
 
@@ -37,48 +36,24 @@ ms.locfileid: "55815637"
 |---|---|
 |不是。 设备的文件数 |1 亿 <br> 限制为每 2 TB 磁盘空间大约 2500 万个文件，最大限制为 1 亿 |
 |不是。 设备的共享数 |24 |
+|不是。 每个容器的共享数 |1 |
 |写入到共享的最大文件大小|对于 2 TB 的虚拟设备，最大文件大小为 500 GB。 <br> 最大文件大小按上述比例随数据磁盘大小而增大，直至到达最大大小 5 TB。 |
 
 ## <a name="azure-storage-limits"></a>Azure 存储限制
 
-本部分介绍了应用于 Data Box Gateway/Data Box Edge 服务的 Azure 存储服务限制，以及 Azure 文件、Azure 块 blob 和 Azure 页 blob 的必需命名约定。 请仔细查看存储限制并遵循所有建议。
-
-有关 Azure 存储服务限制的最新信息以及对共享、容器和文件进行命名的最佳做法，请转到：
-
-- [命名和引用容器](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
-- [命名和引用共享](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
-- [块 blob 和页 blob 约定](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
-
-> [!IMPORTANT]
-> 如果有任何文件或目录超出了 Azure 存储服务限制，或者不符合 Azure 文件/Blob 命名约定，则这些文件或目录不会通过 Data Box Gateway/Data Box Edge 服务引入到 Azure 存储中。
+[!INCLUDE [data-box-edge-gateway-storage-limits](../../includes/data-box-edge-gateway-storage-limits.md)]
 
 ## <a name="data-upload-caveats"></a>数据上传注意事项
 
-将数据移动到 Azure 中时，下面的警告适用。
-
-- 建议不要将多台设备写入到同一容器中。
-- 如果云中存在与正在复制的对象同名的现有 Azure 对象（例如 blob 或文件），则设备将覆盖云中的文件。
-- 在共享文件夹下创建的任何空目录层次结构（不含任何文件）都不会上传到 blob 容器。
-- 如果要复制大于设备大小的文件，建议使用 *Robocopy* 或 *rsync* 以确保不会失败。
+[!INCLUDE [data-box-edge-gateway-storage-data-upload-caveats](../../includes/data-box-edge-gateway-storage-data-upload-caveats.md)]
 
 ## <a name="azure-storage-account-size-and-object-size-limits"></a>Azure 存储帐户大小和对象大小限制
 
-下面是对复制到存储帐户的数据的大小限制。 请确保上传的数据符合这些限制。 有关这些限制的最新信息，请转到 [Azure blob 存储规模目标](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-blob-storage-scale-targets)和 [Azure 文件规模目标](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-files-scale-targets)。
-
-| 复制到 Azure 存储帐户的数据的大小                      | 默认限制          |
-|---------------------------------------------------------------------|------------------------|
-| 块 Blob 和页 blob                                            | 每个存储帐户 500 TB|
-
+[!INCLUDE [data-box-edge-gateway-storage-acct-limits](../../includes/data-box-edge-gateway-storage-acct-limits.md)]
 
 ## <a name="azure-object-size-limits"></a>Azure 对象大小限制
 
-下面是可以写入的 Azure 对象的大小。 请确保上传的所有文件都符合这些限制。
-
-| Azure 对象类型 | 默认限制                                             |
-|-------------------|-----------------------------------------------------------|
-| 块 blob        | ~ 8 TB                                                 |
-| 页 blob         | 1 TB <br> 以页 Blob 格式上传的每个文件都必须是 512 字节对齐的（整数倍），否则上传将失败。 <br> VHD 和 VHDX 是 512 字节对齐的。 |
-
+[!INCLUDE [data-box-edge-gateway-storage-object-limits](../../includes/data-box-edge-gateway-storage-object-limits.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2018
 ms.author: jeedes
-ms.openlocfilehash: e11ba8ca9c4ad17b2ade909bb474ad2d1fcf4410
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8bc0353453cf5fe689eec398f6a7d73fb356b178
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205368"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190834"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>教程：Azure Active Directory 与 Skills Base 集成
 
@@ -215,12 +216,12 @@ ms.locfileid: "39205368"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Skills Base”磁贴时，用户应自动登录到 Skills Base 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

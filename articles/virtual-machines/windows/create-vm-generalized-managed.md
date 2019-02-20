@@ -14,18 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: c452341567055e0272c8e6a90c43d6b886d6a928
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 9157765afaa610d207a47e19b73f80ae3898fd68
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425588"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977552"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>从托管的映像创建 VM
 
 可以使用 Azure 门户或 PowerShell 基于 Azure 托管 VM 映像创建多台虚拟机 (VM)。 托管 VM 映像包含创建 VM（包括 OS 和数据磁盘）所需的信息。 构成映像的虚拟硬盘 (VHD)（包括 OS 磁盘和任何数据磁盘）均作为托管磁盘存储。 
 
 在创建新的 VM 之前，需要[创建托管 VM 映像](capture-image-resource.md)来用作源映像。 
+
 
 ## <a name="use-the-portal"></a>使用门户
 
@@ -41,17 +42,17 @@ ms.locfileid: "54425588"
 
 ## <a name="use-powershell"></a>使用 PowerShell
 
-可以使用 PowerShell 通过使用 [New-AzureRmVm](/powershell/module/azurerm.compute/new-azurermvm) cmdlet 的简化参数集来基于映像创建 VM。 该映像需要位于你要在其中创建 VM 的同一资源组中。
+可以使用 PowerShell 通过使用 [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 的简化参数集来基于映像创建 VM。 该映像需要位于你要在其中创建 VM 的同一资源组中。
 
-此示例需要 5.6.0 版本或更高版本的 AzureRM 模块。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
-[New-AzureRmVm](/powershell/module/azurerm.compute/new-azurermvm) 的简化参数集仅要求提供名称、资源组和映像名称便可基于映像创建 VM。 New-AzureRmVm 将使用 **-Name** 参数的值作为它自动创建的所有资源的名称。 在此示例中，我们为每个资源提供更详细的名称，但让 cmdlet 自动创建这些资源。 你还可以提前创建资源（例如虚拟网络）并将名称传递给 cmdlet。 如果 New-AzureRmVm 可以通过名称找到资源，则它将使用现有资源。
+[New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 的简化参数集仅要求提供名称、资源组和映像名称便可基于映像创建 VM。 New-AzVm 将使用 -Name 参数的值作为它自动创建的所有资源的名称。 在此示例中，我们为每个资源提供更详细的名称，但让 cmdlet 自动创建这些资源。 你还可以提前创建资源（例如虚拟网络）并将名称传递给 cmdlet。 如果 New-AzVm 可以通过名称找到现有资源，就会使用现有资源。
 
 以下示例在“myResourceGroup”资源组中从名为“myImage”的映像创建名为“myVMFromImage”的 VM。 
 
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Name "myVMfromImage" `
     -ImageName "myImage" `

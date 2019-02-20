@@ -4,7 +4,7 @@ description: 本文概述了 Azure 媒体服务遥测。
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 95c20ec4-c782-4063-8042-b79f95741d28
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 97df0876afd8b7258f985ab375b14f4aabde6e22
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 48b88aed833b0cd15f47195c67be80fe75fe153f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786136"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005176"
 ---
-# <a name="azure-media-services-telemetry"></a>Azure 媒体服务遥测
+# <a name="azure-media-services-telemetry"></a>Azure 媒体服务遥测  
 
 通过 Azure 媒体服务 (AMS) 可访问其服务的遥测/指标数据。 通过当前版本的 AMS，可收集活动 **Channel**、**StreamingEndpoint** 和 **Archive** 实体的遥测数据。 
 
@@ -76,7 +76,7 @@ PartitionKey|{account ID}_{entity ID}|e49bef329c29495f9b9570989682069d_64435281c
 RowKey|{seconds to midnight}_{random value}|01688_00199<br/><br/>行键以距午夜的秒数开头，可允许分区内的前 n 个样式查询。 有关详细信息，请参阅[此](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern)文章。 
 Timestamp|日期/时间|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
 Type|提供遥测数据的实体类型|Channel/StreamingEndpoint/Archive<br/><br/>事件类型只是字符串值。
-名称|遥测事件的名称|ChannelHeartbeat/StreamingEndpointRequestLog
+Name|遥测事件的名称|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|发生遥测事件的时间 (UTC)|2016-09-09T22:42:36.924Z<br/><br/>观察时间由发送遥测的实体（例如通道）提供。 组件之间可能存在时间同步问题，因此此值为近似值
 ServiceID|{service ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 特定于实体的属性|由事件定义|StreamName: stream1, Bitrate 10123, …<br/><br/>其余属性针对给定时间类型定义。 Azure 表内容是键值对。  （即，表中的不同行具有不同的属性集）。
@@ -85,9 +85,9 @@ ServiceID|{service ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 
 特定于实体的遥测数据条目有三种类型，每种类型的推送频率如下：
 
-- 流式处理终结点：每 30 秒
-- 实时频道：每分钟
-- 实时存档：每分钟
+- 流式处理终结点：每隔 30 秒
+- 直播频道：每隔一分钟
+- 实时存档：每隔一分钟
 
 **流式处理终结点**
 
@@ -97,7 +97,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Timestamp|Timestamp|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
 Type|Type|StreamingEndpoint
-名称|名称|StreamingEndpointRequestLog
+Name|Name|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|服务 ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 HostName|终结点的主机名|builddemoserver.origin.mediaservices.windows.net
@@ -116,7 +116,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Timestamp|Timestamp|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
 Type|Type|通道
-名称|名称|ChannelHeartbeat
+Name|Name|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|服务 ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 TrackType|轨道视频/音频/文本的类型|视频/音频
@@ -141,7 +141,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Timestamp|Timestamp|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
 Type|Type|存档
-名称|名称|ArchiveHeartbeat
+Name|Name|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|服务 ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 ManifestName|节目 URL|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ism

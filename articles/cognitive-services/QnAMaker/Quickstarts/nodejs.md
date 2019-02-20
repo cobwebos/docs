@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 获取基于 Node.js REST 的信息和代码示例，以帮助你快速开始使用 Azure 上 Microsoft 认知服务中的 Microsoft 文本翻译 API。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 7e7e362a2536f7adf2a7d68b096ab76d73f15a61
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: ba4af5d3b6612614dee54db7fdb1287ff7136321
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496221"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245756"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-nodejs"></a>如何将 QnA Maker REST API 与 Node.js 配合使用 
 <a name="HOLTop"></a>
@@ -35,8 +35,8 @@ ms.locfileid: "55496221"
 - [删除知识库。](#Delete)
 - [获取当前终结点密钥。](#GetKeys)
 - [重新生成当前终结点密钥。](#PutKeys)
-- [获取当前的字变更集。](#GetAlterations)
-- [替换当前的字变更集。](#PutAlterations)
+- [获取当前区分大小写的字词变更集。](#GetAlterations)
+- [替换当前区分大小写的字词变更集。](#PutAlterations)
 
 [!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 

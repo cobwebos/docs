@@ -8,19 +8,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: geetha
-ms.openlocfilehash: 233325f0032dc31445bbaa9d9e522f401f43c093
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 9ec6760e790bc540554cf18a9f85f24048becbed
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488758"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114665"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>使用 Azure 备份还原加密 VM 的密钥保管库密钥和机密
 本文介绍如何使用 Azure VM 备份对加密 Azure VM 执行还原（当密钥和机密不在密钥保管库中时）。 如果要为还原的 VM 保留密钥（密钥加密密钥）和机密（BitLocker 加密密钥）的单独副本，也可以使用这些步骤。
 
 ## <a name="prerequisites"></a>先决条件
 * **备份加密的 VM** - 已使用 Azure 备份备份加密的 Azure VM。 请参阅文章[使用 PowerShell 管理 Azure VM 的备份和还原](backup-azure-vms-automation.md)，了解有关如何备份加密的 Azure VM 的详细信息。
-* **配置 Azure 密钥保管库** - 确保已存在要将密钥和机密还原到其中的密钥保管库。 请参阅文章 [Azure 密钥保管库入门](../key-vault/key-vault-get-started.md)，了解有关密钥保管库管理的详细信息。
+* **配置 Azure 密钥保管库** - 确保已存在要将密钥和机密还原到其中的密钥保管库。 请参阅文章[什么是 Azure 密钥保管库？](../key-vault/key-vault-overview.md)，了解有关密钥保管库管理的详细信息。
 * **还原磁盘** - 请确保已使用[PowerShell 步骤](backup-azure-vms-automation.md#restore-an-azure-vm)触发还原作业，还原加密 VM 的磁盘。 这是因为此作业将在存储帐户中生成一个 JSON 文件，其中包含要还原的加密 VM 的密钥和机密。
 
 ## <a name="get-key-and-secret-from-azure-backup"></a>从 Azure 备份获取密钥和机密

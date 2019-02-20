@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 29105f97385b11e59ccd3af9d13521ea803bfdb0
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 80d84fcede0d293b083ea75f24e9b0bd3125b265
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024223"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959660"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供以下数据集成功能的计算基础结构：
 
-- **数据移动**：在公用网络中的数据存储和专用网络（本地或虚拟专用网络）中的数据存储之间移动数据。 它提供对内置连接器、格式转换、列映射以及性能和可扩展数据传输的支持。
+- **数据移动**：跨公用网络中的数据存储和专用网络（本地或虚拟专用网络）中的数据存储复制数据。 它提供对内置连接器、格式转换、列映射以及性能和可扩展数据传输的支持。
 - **活动分派**：分派和监视在各种计算服务（如 Azure HDInsight、Azure 机器学习、Azure SQL 数据库、SQL Server 等等）上运行的转换活动。
 - **SSIS 包执行**：在托管的 Azure 计算环境中本机执行 SQL Server 集成服务 (SSIS) 包。
 

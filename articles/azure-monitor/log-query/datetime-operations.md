@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Log Analytics 查询中使用日期时间值 | Microsoft Docs
-description: 介绍如何在 Log Analytics 查询中使用日期和时间数据。
+title: 在 Azure Monitor 日志查询中使用日期时间值 | Microsoft Docs
+description: 介绍如何在 Azure Monitor 日志查询中使用日期和时间数据。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,25 +13,25 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 15767107a5c535cfda98da2a5177e15ca221f35d
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 2465fdcc3bf7128d4813fa5f682ffda8f504f2b6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214688"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999243"
 ---
-# <a name="working-with-date-time-values-in-log-analytics-queries"></a>在 Log Analytics 查询中使用日期时间值
+# <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用日期时间值
 
 > [!NOTE]
 > 在学习本课程之前，需完成 [Analytics 门户入门](get-started-portal.md)和[查询入门](get-started-queries.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-本文介绍如何在 Log Analytics 查询中使用日期和时间数据。
+本文介绍如何在 Azure Monitor 日志查询中使用日期和时间数据。
 
 
 ## <a name="date-time-basics"></a>日期时间基本信息
-Log Analytics 查询语言主要具有两种与日期和时间相关的数据类型：日期/时间和时间跨度。 所有日期均以 UTC 表示。 尽管支持多种日期时间格式，但首选 ISO8601 格式。 
+数据资源管理器查询语言主要具有两种与日期和时间相关的数据类型：日期/时间和时间跨度。 所有日期均以 UTC 表示。 尽管支持多种日期时间格式，但首选 ISO8601 格式。 
 
 时间跨度的表示形式是十进制后面接时间单位：
 
@@ -161,7 +161,7 @@ Event
 | 获取与值对应的日期  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |
 
 ## <a name="next-steps"></a>后续步骤
-有关 Log Analytics 查询语言的用法，请参阅其他课程：
+请参阅有关将[数据资源管理器查询语言](/azure/kusto/query/)与 Azure Monitor 日志数据配合使用的其他课程：
 
 - [字符串操作](string-operations.md)
 - [聚合函数](aggregations.md)

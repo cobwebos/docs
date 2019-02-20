@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/05/2019
+ms.date: 02/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 07f4d170ec6f9d71ea3ecdabd88f4438fb7c1c69
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 509c9cbe3a4c2f930c9fdfda186d78118dbe4b80
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745583"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237835"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>了解 Azure 资源管理器模板的结构和语法
 
@@ -46,7 +46,7 @@ ms.locfileid: "55745583"
 | parameters |否 |执行部署以自定义资源部署时提供的值。 |
 | variables |否 |在模板中用作 JSON 片段以简化模板语言表达式的值。 |
 | functions |否 |可在模板中使用的用户定义函数。 |
-| 资源 |是 |已在资源组中部署或更新的资源类型。 |
+| 资源 |是 |已在资源组或订阅中部署/更新的资源类型。 |
 | outputs |否 |部署后返回的值。 |
 
 每个元素均有可设置的属性。 下例显示一个模板的完整语法：
@@ -217,7 +217,7 @@ ms.locfileid: "55745583"
 定义用户函数时，存在一些限制：
 
 * 该函数不能访问变量。
-* 该函数无法访问模板参数。 也就是说，[参数函数](resource-group-template-functions-deployment.md#parameters)仅限于函数参数。
+* 函数仅可使用函数中定义的参数。 如果在用户定义的函数中使用[参数函数](resource-group-template-functions-deployment.md#parameters)，仅可使用该函数的参数。
 * 该函数不能调用其他用户定义的函数。
 * 该函数不能使用[引用函数](resource-group-template-functions-resource.md#reference)。
 * 该函数的参数不能具有默认值。
@@ -298,9 +298,23 @@ ms.locfileid: "55745583"
 
 有关详细信息，请参阅 [Azure 资源管理器模板的输出部分](resource-manager-templates-outputs.md)。
 
-## <a name="comments"></a>注释
+<a id="comments" />
 
-可通过几个选项向模板添加注释。
+## <a name="comments-and-metadata"></a>注释和元数据
+
+可通过几个选项向模板添加注释和元数据。
+
+几乎可以在模板中的任意位置添加 `metadata` 对象。 资源管理器会忽略该对象，但 JSON 编辑器可能会警告你该属性无效。 在对象中，定义所需的属性。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "comments": "This template was developed for demonstration purposes.",
+        "author": "Example Name"
+    },
+```
 
 对于参数，添加具有 `description` 属性的 `metadata` 对象。
 
@@ -342,18 +356,6 @@ ms.locfileid: "55745583"
     "properties": {}
   }
 ]
-```
-
-几乎可以在模板中的任意位置添加 `metadata` 对象。 资源管理器会忽略该对象，但 JSON 编辑器可能会警告你该属性无效。 在对象中，定义所需的属性。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "metadata": {
-        "comments": "This template was developed for demonstration purposes.",
-        "author": "Example Name"
-    },
 ```
 
 对于输出，将元数据对象添加到输出值。

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/03/2019
+ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 1bada751ffac45b36faad6e978567233901adc7d
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 9f5cf0e8be0529ce59edc9aa4cd33d470415c8a6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700309"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190953"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Azure 媒体服务 v3 中的配额和限制
 
@@ -37,7 +37,7 @@ ms.locfileid: "55700309"
 | 单个订阅中的媒体服务帐户数 | 25（固定） |
 | 每个实时事件处于运行状态的实时输出 |3|
 | 存储帐户 | 100<sup>(4)</sup>（固定） |
-| 每个媒体服务帐户处于运行状态的流式处理终结点数|2|
+| 每个媒体服务帐户的流式处理终结点（已停止或正在运行）|2|
 | 流式处理策略 | 100 <sup>(3)</sup> |
 | 每个媒体服务帐户的转换数 | 100（固定）|
 | 一次与一个资产关联的唯一流式处理定位符 | 100<sup>(5)</sup>（固定） |

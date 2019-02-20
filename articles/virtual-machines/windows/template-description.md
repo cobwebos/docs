@@ -15,18 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: e32e2833edc7027a984bb27b34608e4b1b898113
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 6821c2000efa4a03f803871d9b33272175f1265c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767068"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113237"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure 资源管理器模板中的虚拟机
 
 本文介绍 Azure 资源管理器模板中与虚拟机相关的方面。 本文不会介绍用于创建虚拟机的完整模板；在完整的模板中，需要提供存储帐户、网络接口、公共 IP 地址和虚拟网络的资源定义。 有关如何统一定义这些资源的详细信息，请参阅 [Resource Manager 模板演练](../../azure-resource-manager/resource-manager-template-walkthrough.md)。
 
 [在库中](https://azure.microsoft.com/documentation/templates/?term=VM)有许多包含 VM 资源的模板。 本文并未介绍可在模板中包含的所有元素。
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 本示例演示了模板中用于创建指定数量的 VM 的典型资源节：
 
@@ -163,8 +165,9 @@ ms.locfileid: "55767068"
 可通过以下方式获取最新的 API 版本：
 
 - REST API - [列出所有资源提供程序](https://docs.microsoft.com/rest/api/resources/providers)
-- PowerShell - [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
+- PowerShell - [Get-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)
 - Azure CLI - [az provider show](https://docs.microsoft.com/cli/azure/provider)
+
 
 ## <a name="parameters-and-variables"></a>参数和变量
 
@@ -442,7 +445,7 @@ start.ps1 脚本可以完成许多配置任务。 例如，在本示例中已添
 
 ![获取扩展状态](./media/template-description/virtual-machines-show-extensions.png)
 
-此外，也可以使用 Get-AzureRmVMExtension PowerShell 命令、vm extension get Azure CLI 命令或“获取扩展信息”REST API 来获取扩展信息。
+此外，也可以使用 Get-AzVMExtension PowerShell 命令、vm extension get Azure CLI 命令或“获取扩展信息”REST API 来获取扩展信息。
 
 ## <a name="deployments"></a>部署
 

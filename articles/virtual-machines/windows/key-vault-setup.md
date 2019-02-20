@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: 599b16f633d9a0de5165bdf5cb3d7b82abca655b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: bc83a2cde841e7d1e90cb46304c879fcc6cedb72
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597704"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105767"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>在 Azure 资源管理器中为虚拟机设置密钥保管库
 
@@ -35,15 +35,15 @@ ms.locfileid: "39597704"
 >
 
 ## <a name="use-powershell-to-set-up-key-vault"></a>使用 PowerShell 设置密钥保管库
-若要使用 PowerShell 创建密钥保管库，请参阅 [Azure 密钥保管库入门](../../key-vault/key-vault-get-started.md#vault)。
+若要使用 PowerShell 创建密钥保管库，请参阅[使用 PowerShell 在 Azure 密钥保管库中设置和检索机密](../../key-vault/quick-create-powershell.md)。
 
 对于新的密钥保管库，可以使用此 PowerShell cmdlet：
 
-    New-AzureRmKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -EnabledForDeployment
+    New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -EnabledForDeployment
 
 对于现有的密钥保管库，可以使用此 PowerShell cmdlet：
 
-    Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
+    Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
 ## <a name="use-cli-to-set-up-key-vault"></a>使用 CLI 设置密钥保管库
 若要使用命令行接口 (CLI) 创建密钥保管库，请参阅[使用 CLI 管理密钥保管库](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault)。

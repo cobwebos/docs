@@ -1,6 +1,6 @@
 ---
-title: 管理 Azure Maps 帐户和密钥 | Microsoft Docs
-description: 可以使用 Azure 门户管理 Azure Maps 帐户和访问密钥。
+title: 管理 Azure Maps 帐户 | Microsoft Docs
+description: 可以使用 Azure 门户管理 Azure Maps 帐户。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 12/12/2018
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 81746279e935f9fa5b6ef00bc8d31e75f4d3bd20
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 488167b4893c314af99b354a2422204ebbf34c5e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103038"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113680"
 ---
-# <a name="manage-your-azure-maps-account-and-keys"></a>管理 Azure Maps 帐户和密钥
+# <a name="manage-your-azure-maps-account"></a>管理 Azure Maps 帐户
 
-可以通过 Azure 门户管理 Azure Maps 帐户和密钥。 获得帐户和密钥后，可以在你的网站或移动应用程序中实现 API。
+可以通过 Azure 门户管理 Azure Maps 帐户。 获得帐户后，可以在你的网站或移动应用程序中实现 API。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -32,16 +32,6 @@ ms.locfileid: "54103038"
 4. 输入新帐户的信息。
 
 ![在门户中输入帐户信息](./media/how-to-manage-account-keys/new-account-portal.png)
-
-## <a name="manage-keys-on-the-account-page"></a>在帐户页上管理密钥
-
-在创建帐户后，将会得到两个随机生成的密钥。 若要检索地图数据或者创建新的 JavaScript 地图实例，请使用这些密钥根据 Maps API 进行身份验证。
-
-可以在 Azure 门户中找到密钥。 导航到你的帐户。 然后从菜单中选择“密钥”。
-
-![在门户中管理帐户密钥](./media/how-to-manage-account-keys/account-keys-portal.png)
-
-在此页中，可以复制密钥或生成新密钥。
 
 ## <a name="delete-an-account"></a>删除帐户
 

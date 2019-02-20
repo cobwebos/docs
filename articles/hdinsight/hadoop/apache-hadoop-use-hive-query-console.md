@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1e638bd348b7a5272dd8bfbe25aa841f38a51b9a
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: e568a8b7cfb21483f447b8244056de292e21093f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409694"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169395"
 ---
 # <a name="run-apache-hive-queries-using-the-query-console"></a>使用查询控制台运行 Apache Hive 查询
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -80,10 +80,7 @@ ms.locfileid: "53409694"
 * [将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
 * [将 MapReduce 与 HDInsight 上的 Apache Hadoop 配合使用](hdinsight-use-mapreduce.md)
 
-如果将 Tez 与 Hive 配合使用，请参阅以下文档以了解调试信息：
-
-* [在基于 Windows 的 HDInsight 上使用 Apache Tez UI](../hdinsight-debug-tez-ui.md)
-* [在基于 Linux 的 HDInsight 上使用 Apache Ambari Tez 视图](../hdinsight-debug-ambari-tez-view.md)
+如果将 Tez 与 Hive 配合使用，请参阅以下文档以了解调试信息：[在基于 Linux 的 HDInsight 上使用 Apache Ambari Tez 视图](../hdinsight-debug-ambari-tez-view.md)。
 
 [1]:apache-hadoop-visual-studio-tools-get-started.md
 

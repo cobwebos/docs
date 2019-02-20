@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: ae57605b0fb2cba8cdb0c2f9ecfbab8eef7a5197
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: b39967c071b21978324f205eb62d305011b65fb6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468268"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995045"
 ---
 # <a name="create-readable-secondary-databases-using-active-geo-replication"></a>使用活动异地复制创建可读辅助数据库
 
@@ -46,6 +46,14 @@ ms.locfileid: "55468268"
 故障转移后，请确保在新的主机上配置服务器和数据库的身份验证要求。 有关详细信息，请参阅[灾难恢复后的 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。
 
 活动异地复制利用 SQL Server 的 [Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) 技术，使用快照隔离以异步方式将主数据库上已提交的事务复制到辅助数据库。 自动故障转移组提供基于活动异地复制的组语义，但使用相同的异步复制机制。 尽管在任意给定时间，辅助数据库可能略微滞后于主数据库，但系统可以保证辅助数据永不包含部分事务。 跨区域冗余使应用程序能够在自然灾害、灾难性人为失误或恶意行为导致整个或部分数据中心永久性数据丢失后得以快速恢复。 [业务连续性概述](sql-database-business-continuity.md)中提供了具体的 RPO 数据。
+
+> [!NOTE]
+> 如果两个区域之间存在网络故障，我们会每 10 秒钟重试一次以重新建立连接。
+> [!IMPORTANT]
+> 若要确保对主数据库所做的关键更改已在故障转移前复制到辅助数据库，可以强制同步，以确保复制关键更改（例如密码更新）。 强制同步会阻止调用线程，直到所有提交的事务得到复制，因此会影响性能。 有关详细信息，请参阅 [sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync)。 若要监视主数据库和地域辅助数据库之间的复制延迟，请参阅 [sys.dm_geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database)。
+
+
+
 
 下图显示了配置的活动异地复制示例，其中主数据库位于“美国中北部”区域，辅助数据库位于“美国中南部”区域。
 
@@ -94,7 +102,7 @@ ms.locfileid: "55468268"
 
 - **可配置的辅助数据库计算大小**
 
-  主数据库和辅助数据库都需要有相同的服务层。 另外，强烈建议创建与主数据库具有相同计算大小（DTU 或 vCore）的辅助数据库。 如果辅助数据库的计算大小较低，则会面临复制延迟时间增大、辅助数据库可能不可用等风险，并因此导致在故障转移后丢失大量数据的风险。 因此，发布的 RPO = 5 秒无法保证。 另一个风险是，在故障转移后，在新的主数据库升级到较高的计算大小之前，应用程序的性能将由于新的主数据库缺少计算能力而受影响。 升级时间取决于数据库大小。 此外，当前这类升级要求主数据库和辅助数据库都处于联机状态，因此在中断缓解之前无法完成。 如果决定创建具有较低计算大小的辅助数据库，Azure 门户上的日志 IO 百分比图表提供了一种评估维持复制负荷所需的辅助数据库的最小计算大小的好办法。 例如，如果主数据库是 P6 (1000 DTU)，其日志 IO 百分比为 50%，则辅助数据库需要至少为 P4 (500 DTU)。 还可以使用 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 或 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 数据库视图检索日志 IO 数据。  有关 SQL 数据库计算大小的详细信息，请参阅[什么是 SQL 数据库服务层](sql-database-service-tiers.md)。
+  主数据库和辅助数据库都需要有相同的服务层。 另外，强烈建议创建与主数据库具有相同计算大小（DTU 或 vCore）的辅助数据库。 如果辅助数据库的计算大小较低，则会面临复制延迟时间增大、辅助数据库可能不可用等风险，并因此导致在故障转移后丢失大量数据的风险。 因此，发布的 RPO = 5 秒无法保证。 另一个风险是，在故障转移后，在新的主数据库升级到较高的计算大小之前，应用程序的性能将由于新的主数据库缺少计算能力而受影响。 升级时间取决于数据库大小。 此外，当前这类升级要求主数据库和辅助数据库都处于联机状态，因此在中断缓解之前无法完成。 如果决定创建具有较低计算大小的辅助数据库，Azure 门户上的日志 IO 百分比图表提供了一种评估维持复制负荷所需的辅助数据库的最小计算大小的好办法。 例如，如果主数据库是 P6 (1000 DTU)，其日志 IO 百分比为 50%，则辅助数据库需要至少为 P4 (500 DTU)。 还可以使用 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 或 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 数据库视图检索日志 IO 数据。  有关 SQL 数据库计算大小的详细信息，请参阅[什么是 SQL 数据库服务层](sql-database-purchase-models.md)。
 
 - **用户控制的故障转移和故障回复**
 
@@ -122,7 +130,7 @@ ms.locfileid: "55468268"
 
 如上所述，也可以使用 Azure PowerShell 和 REST API 以编程方式管理活动异地复制。 下表描述了可用的命令集。 活动异地复制包括一组用于管理的 Azure 资源管理器 API，其中包括 [Azure SQL 数据库 REST API](https://docs.microsoft.com/rest/api/sql/) 和 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview)。 这些 API 需要使用资源组，并支持基于角色的安全性 (RBAC)。 有关如何实现访问角色的详细信息，请参阅 [Azure 基于角色的访问控制](../role-based-access-control/overview.md)。
 
-### <a name="t-sql-manage-failover-of-standalone-and-pooled-databases"></a>T-SQL：管理独立数据库和入池数据库的故障转移
+### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL：管理单一数据库和池化数据库的故障转移
 
 > [!IMPORTANT]
 > 这些 Transact-SQL 命令仅适用于活动异地复制，不适用于故障转移组。 因此，它们也不适用于托管实例，因为它们仅支持故障转移组。
@@ -138,7 +146,7 @@ ms.locfileid: "55468268"
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |使应用程序等待，直到所有提交的事务已复制，并由活动辅助数据库确认。 |
 |  | |
 
-### <a name="powershell-manage-failover-of-standalone-and-pooled-databases"></a>PowerShell：管理独立数据库和入池数据库的故障转移
+### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>PowerShell：管理单一数据库和池化数据库的故障转移
 
 | Cmdlet | 说明 |
 | --- | --- |
@@ -152,7 +160,7 @@ ms.locfileid: "55468268"
 > [!IMPORTANT]
 > 有关示例脚本，请参阅[配置单一数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)和[配置入池数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)。
 
-### <a name="rest-api-manage-failover-of-standalone-and-pooled-databases"></a>REST API：管理独立数据库和入池数据库的故障转移
+### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API：管理单一数据库和池化数据库的故障转移
 
 | API | 说明 |
 | --- | --- |

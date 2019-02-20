@@ -6,24 +6,25 @@ keywords: 剪辑;子剪辑;编码;媒体
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 11/10/2017
+ms.date: 02/08/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 1deca68cd6a61ede7536c4d5544036a10c54209b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 510176331a1b79a1069b42afabb63b6b326951cc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782786"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992302"
 ---
-# <a name="create-clips-with-azure-media-clipper-in-the-portal"></a>在门户使用 Azure 媒体剪辑器创建剪辑
+# <a name="create-clips-with-azure-media-clipper-in-the-portal"></a>在门户使用 Azure 媒体剪辑器创建剪辑  
+
 可以在门户中使用 Azure 媒体剪辑器通过媒体服务帐户中的资产来创建剪辑。 要开始，请在门户中导航到媒体服务帐户。 接下来，选择“子剪辑”选项卡。
 
 在“子剪辑”选项卡上，即可以开始创作剪辑。 在门户中，剪辑器加载使用有效流式处理定位符发布的单比特率 MP4、多比特率 MP4 和实时存档。 不加载未发布的资产。
 
 剪辑器目前处于公开预览状态。 若要在 Azure 门户中访问剪辑器，请转到此[公开预览页](https://portal.azure.com/?feature.subclipper=true)。
 
-下图阐释媒体服务帐户中的剪辑器登录页：![Azure 门户中的 Azure 媒体剪辑器](media/media-services-azure-media-clipper-portal/media-services-azure-media-clipper-portal.png)
+下图介绍媒体服务帐户中的剪辑器登录页：![Azure 门户中的 Azure 媒体剪辑器](media/media-services-azure-media-clipper-portal/media-services-azure-media-clipper-portal.png)
 
 ## <a name="producing-clips"></a>生成剪辑
 若要创建剪辑，请将资产拖放至剪辑界面。 如果已知标记时间，可以将这些资产手动输入界面。 否则，需要播放资产或拖动播放指针，找到所需的标记切入和标记切出时间。 如未提供标记切入和标记切出时间，则剪辑从输入资产的开头开始，或者继续直至输入资产的结尾。
@@ -35,7 +36,7 @@ ms.locfileid: "33782786"
 
 若要创建动态清单筛选器，则导航到“资产”选项卡并选择所需资产。 选择顶部菜单的“子剪辑”按钮。 从高级设置菜单中选择动态清单筛选器作为剪辑模式。 然后可以按照相同的过程生成呈现的剪辑，创建筛选器。 筛选器只能从单个资产生成。
 
-下图阐释 Azure 门户中处于动态清单筛选器模式的剪辑器：![Azure 门户中处于动态清单筛选器模式的 Azure 媒体剪辑器](media/media-services-azure-media-clipper-portal/media-services-azure-media-clipper-filter.PNG)
+下图介绍 Azure 门户中处于动态清单筛选器模式的剪辑器：![Azure 门户中处于动态清单筛选器模式的 Azure 媒体剪辑器](media/media-services-azure-media-clipper-portal/media-services-azure-media-clipper-filter.PNG)
 
 ## <a name="submitting-clipping-jobs"></a>提交剪辑作业
 完成创作剪辑后，选择“提交作业”按钮，启动相应的剪辑作业或动态清单调用。

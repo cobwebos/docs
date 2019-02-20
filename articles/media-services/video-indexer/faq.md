@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 84f2b4d68bf95d18a63401f796e2ffca682c808f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: bc52c4eaf77b9441683eea8e5f899c6ef34d62e8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567264"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002351"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 
@@ -66,7 +66,7 @@ ms.locfileid: "55567264"
 
 ### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>视频索引器从媒体中提取见解需要多长时间？
 
-使用视频索引器 API 和视频索引器基于 Web 的界面为视频或音频文件编制索引所需的时间取决于多个参数，例如文件长度和质量、文件中找到的见解数、可用的[预留单位](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview)数以及是否启用了[流式处理终结点](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview)。 对于大多数内容类型，假设启用了 10 个 S3 类型的预留单位，则我们预测，编制索引所需的时间为音频或视频文件持续时间的 1/3 到 1/2（例如，如果源视频的持续时间为 10 分钟，则编制索引需要 3.5 到 5 分钟）。 但是，建议使用自己的内容运行多个测试文件，并根据平均数获取更好的想法。
+使用视频索引器 API 和视频索引器基于 Web 的界面为视频或音频文件编制索引所需的时间取决于多个参数，例如文件长度和质量、文件中找到的见解数、可用的[预留单位](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview)数以及是否启用了[流式处理终结点](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview)。 我们建议使用自己的内容运行多个测试文件，并根据平均数获取更好的想法。
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>是否可以创建自定义工作流来自动化视频索引器的流程？
 

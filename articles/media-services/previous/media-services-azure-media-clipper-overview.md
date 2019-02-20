@@ -6,17 +6,18 @@ keywords: 剪辑;子剪辑;编码;媒体
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 11/10/2017
+ms.date: 02/08/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 0fc04fb64e6d34c46f20b4ba5ff8a1ffc8da9c31
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9d306bc3b9e206e5f21f9c16c0cd32bc599f1b6d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237904"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003153"
 ---
-# <a name="create-clips-with-azure-media-clipper"></a>使用 Azure 媒体剪辑器创建剪辑
+# <a name="create-clips-with-azure-media-clipper"></a>使用 Azure 媒体剪辑器创建剪辑 
+
 Azure 媒体剪辑器是免费的 JavaScript 库，能让 Web 开发人员为其用户提供创建媒体剪辑的界面。 此工具可以集成到任何 Web 页面，并提供用于加载资产和提交剪辑作业的 API。
 
 Azure 媒体剪辑器能够执行：

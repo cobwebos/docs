@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Data Lake Storage Gen2 预览版 URI
-description: 使用 Azure Data Lake Storage Gen2 预览版 URI
+title: 使用 Azure Data Lake Storage Gen2 URI
+description: 使用 Azure Data Lake Storage Gen2 URI
 services: storage
 author: jamesbak
 ms.topic: conceptual
@@ -8,16 +8,16 @@ ms.author: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 63dcea94fd880102a784e6f776855c44d4e97c87
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: fe020ab1091b91ba21174b59d0ce25ab0c6122ca
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243311"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878300"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>使用 Azure Data Lake Storage Gen2 URI
 
-通过方案标识符 `abfs`（Azure Blob 文件系统）可以知道与 Azure Data Lake Storage Gen2 预览版兼容的 [Hadoop 文件系统](http://www.aosabook.org/en/hdfs.html)驱动程序。 与其他 Hadoop 文件系统驱动程序一样，ABFS 驱动程序使用 URI 格式寻址支持 Data Lake Storage Gen2 的帐户中的文件和目录。
+通过方案标识符 `abfs`（Azure Blob 文件系统）可以知道与 Azure Data Lake Storage Gen2 兼容的 [Hadoop 文件系统](http://www.aosabook.org/en/hdfs.html)驱动程序。 与其他 Hadoop 文件系统驱动程序一样，ABFS 驱动程序使用 URI 格式寻址支持 Data Lake Storage Gen2 的帐户中的文件和目录。
 
 ## <a name="uri-syntax"></a>URI 语法
 

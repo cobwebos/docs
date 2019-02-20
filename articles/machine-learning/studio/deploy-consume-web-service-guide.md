@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 64276047410280f8e818cf695f1fbb0c80fdd693
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e2add42e56f939dbfeb33ac2774d404411b1fefb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497666"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997245"
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Azure 机器学习工作室 Web 服务：部署和使用
 可以使用 Azure 机器学习来部署机器学习工作流和模型作为 Web 服务。 然后，可以使用这些 Web 服务，通过 Internet 从应用程序调用机器学习模型，从而实时或者在批处理模式下进行预测。 由于 Web 服务是 RESTful，可以从各种编程语言和平台（如 .NET 和 Java）以及应用程序（如 Excel）调用它们。
@@ -31,10 +31,10 @@ ms.locfileid: "55497666"
 
 * 有关如何部署基于 Azure 资源管理器的新 Web 服务的概述，请参阅[部署新 Web 服务](publish-a-machine-learning-web-service.md)。
 * 有关如何部署 Web 服务的演练，请参阅[部署 Azure 机器学习 Web 服务](publish-a-machine-learning-web-service.md)。
-* 有关如何创建和部署 Web 服务的完整演练，请参阅[演练步骤 1：创建机器学习工作区](walkthrough-1-create-ml-workspace.md)。
+* 有关如何创建和部署 Web 服务的完整演练，请从[教程 1：预测信贷风险](tutorial-part1-credit-risk.md)入手。
 * 有关部署 Web 服务的特定示例，请参阅：
 
-  * [演练步骤 5：部署 Azure 机器学习 Web 服务](walkthrough-5-publish-web-service.md)
+  * [教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)
   * [如何将 Web 服务部署到多个区域](how-to-deploy-to-multiple-regions.md)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>使用 Web 服务资源提供程序 API (Azure 资源管理器 API)
@@ -84,7 +84,7 @@ ms.locfileid: "55497666"
 
 * [部署新 Web 服务](publish-a-machine-learning-web-service.md)
 * [部署 Azure 机器学习 Web 服务](publish-a-machine-learning-web-service.md)
-* [演练步骤 5：部署 Azure 机器学习 Web 服务](walkthrough-5-publish-web-service.md)
+* [教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>从 Excel
 可以下载使用 Web 服务的 Excel 模板：

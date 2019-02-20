@@ -15,17 +15,19 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: roiyz
-ms.openlocfilehash: 2613584e336243128067a76ce424e640ebdf94e0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a4fb31721da679b21fa311340269cf07f93cd903
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817319"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981258"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>对 Azure 虚拟机的远程桌面连接进行故障排除
 与基于 Windows 的 Azure 虚拟机 (VM) 的远程桌面协议 (RDP) 连接可能会因各种原因而失败，使用户无法访问 VM。 问题可能出在 VM 上的远程桌面服务、网络连接或主计算机上的远程桌面客户端。 本文介绍解决 RDP 连接问题的一些最常见方法。 
 
 如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 <a id="quickfixrdp"></a>
 
@@ -107,7 +109,7 @@ ms.locfileid: "55817319"
 以下示例使用 `myResourceGroup`、`myVM`、`myVMAccessExtension` 之类的变量。 将这些变量名称和位置替换为自己的值。
 
 > [!NOTE]
-> 使用 [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) PowerShell cmdlet 重置用户凭据和 RDP 配置。 在以下示例中，`myVMAccessExtension` 是过程中所指定的名称。 如果以前使用过 VMAccessAgent，可以使用 `Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"` 检查 VM 的属性，从而获取现有的扩展名称。 若要查看名称，请在输出的“Extensions”部分下查找。
+> 使用 [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) PowerShell cmdlet 重置用户凭据和 RDP 配置。 在以下示例中，`myVMAccessExtension` 是过程中所指定的名称。 如果以前使用过 VMAccessAgent，可以使用 `Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"` 检查 VM 的属性，从而获取现有的扩展名称。 若要查看名称，请在输出的“Extensions”部分下查找。
 
 在执行每个故障排除步骤之后，请尝试再次连接到 VM。 如果仍然无法连接，请尝试下一步。
 
@@ -116,7 +118,7 @@ ms.locfileid: "55817319"
     以下示例会在 `WestUS` 位置和名为 `myResourceGroup` 资源组中重置名为 `myVM` 的 VM 上的 RDP 连接：
    
     ```powershell
-    Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" `
+    Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
         -VMName "myVM" -Location Westus -Name "myVMAccessExtension"
     ```
 2. **验证网络安全组规则**。 此故障排除步骤验证网络安全组中是否有允许 RDP 通信的规则。 RDP 的默认端口为 TCP 端口 3389。 允许 RDP 通信的规则可能无法在创建 VM 时自动创建。
@@ -124,7 +126,7 @@ ms.locfileid: "55817319"
     首先，将网络安全组的所有配置数据都指定给 `$rules` 变量。 以下示例会在名为 `myResourceGroup` 的资源组中获取关于名为 `myNetworkSecurityGroup` 的网络安全组的信息：
    
     ```powershell
-    $rules = Get-AzureRmNetworkSecurityGroup -ResourceGroupName "myResourceGroup" `
+    $rules = Get-AzNetworkSecurityGroup -ResourceGroupName "myResourceGroup" `
         -Name "myNetworkSecurityGroup"
     ```
    
@@ -164,7 +166,7 @@ ms.locfileid: "55817319"
     现在，更新 VM 上的凭据。 以下示例会在 `WestUS` 位置中和名为 `myResourceGroup` 的资源组中更新名为 `myVM` 的 VM 上的凭据：
    
     ```powershell
-    Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" `
+    Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
         -VMName "myVM" -Location WestUS -Name "myVMAccessExtension" `
         -UserName $cred.GetNetworkCredential().Username `
         -Password $cred.GetNetworkCredential().Password
@@ -174,14 +176,14 @@ ms.locfileid: "55817319"
     以下示例重新启动 `myResourceGroup` 资源组中名为 `myVM` 的 VM：
    
     ```powershell
-    Restart-AzureRmVM -ResourceGroup "myResourceGroup" -Name "myVM"
+    Restart-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
     ```
 5. **重新部署 VM**。 此故障排除步骤将 VM 重新部署到 Azure 内的另一台主机，以更正任何基础平台或网络问题。
    
     以下示例重新部署 `WestUS` 位置和 `myResourceGroup` 资源组中名为 `myVM` 的 VM：
    
     ```powershell
-    Set-AzureRmVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
+    Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
 
 6. **验证路由**。 使用网络观察程序的[下一跃点](../../network-watcher/network-watcher-check-next-hop-portal.md)功能确认路由未阻止将流量路由到虚拟机或从虚拟机路由流量。 还可以查看有效路由，以了解网络接口的所有有效路由。 有关详细信息，请参阅[使用有效路由排查 VM 流量流问题](../../virtual-network/diagnose-network-routing-problem.md)。

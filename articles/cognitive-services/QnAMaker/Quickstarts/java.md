@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 获取 Java 基于 REST 的信息和代码示例，以帮助你快速开始使用 Azure 上的 Microsoft 认知服务中的 Microsoft 文本翻译 API。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 9e9f9b718928614bcd018677a2ddd094fe68f2c4
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0e91aefb800eba42b715cb70d42ce09ad134fabb
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218200"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243789"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-java"></a>如何将 QnA Maker REST API 与 Java 配合使用 
 <a name="HOLTop"></a>
@@ -35,8 +35,8 @@ ms.locfileid: "55218200"
 - [删除知识库。](#Delete)
 - [获取当前终结点密钥。](#GetKeys)
 - [重新生成当前终结点密钥。](#PutKeys)
-- [获取当前的字变更集。](#GetAlterations)
-- [替换当前的字变更集。](#PutAlterations)
+- [获取当前区分大小写的字词变更集。](#GetAlterations)
+- [替换当前区分大小写的字词变更集。](#PutAlterations)
 
 [!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 

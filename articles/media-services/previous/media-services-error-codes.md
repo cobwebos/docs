@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: d485195b868b6cbca587c736ac02663491742cdb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d700423ea966cab3b0f546d21d4d2f5ca5208971
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236868"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990507"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure 媒体服务错误代码
 使用 Microsoft Azure 媒体服务时，可能会收到来自服务的 HTTP 错误代码，这取决于具体的问题，例如身份验证令牌对于媒体服务不支持的操作过期。 以下是媒体服务可能返回的 **HTTP 错误代码**及可能的错误原因的列表。  
