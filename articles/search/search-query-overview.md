@@ -9,16 +9,29 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.custom: seodec2018
-ms.openlocfilehash: 9b682b9cd17c174363dcd04707a11075e30cc8e1
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 62f9d24204e734b7b5e2ed97f361ccf228ba89dc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214821"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005040"
 ---
-# <a name="query-types-and-composition-in-azure-search"></a>Azure 搜索中的查询类型和组成部分
+# <a name="how-to-compose-a-query-in-azure-search"></a>如何在 Azure 搜索中撰写查询
 
-在 Azure 搜索中，查询是往返操作的完整规范。 参数提供匹配条件用于查找索引中的文档、引擎的执行指令，以及用于调整响应的指令。 更确切地说，可以指定哪些字段在搜索范围之内、如何搜索、要返回哪些字段、是否要排序或筛选，等等。 如果未指定这些内容，查询会作为全文搜索操作针对所有可搜索字段运行，返回一个任意排序的未评分结果集。
+在 Azure 搜索中，查询是往返操作的完整规范。 请求中的参数提供匹配条件用于查找索引中的文档、引擎的执行指令，以及用于调整响应的指令。 
+
+查询请求是一个丰富的构造，它指定哪些字段在搜索范围之内、如何搜索、要返回哪些字段、是否要排序或筛选，等等。 如果未指定这些内容，查询会作为全文搜索操作针对所有可搜索字段运行，返回一个任意排序的未评分结果集。
+
+### <a name="apis-and-tools-for-testing"></a>用于测试的 API 和工具
+
+下表列出用于提交查询的 API 和基于工具的方法。
+
+| 方法 | 说明 |
+|-------------|-------------|
+| [搜索浏览器（门户）](search-explorer.md) | 提供搜索栏，以及索引和 API 版本选项。 结果会以 JSON 文档的形式返回。 <br/>[了解详细信息。](search-get-started-portal.md#query-index) | 
+| [Postman 或其他 HTTP 测试工具](search-fiddler.md) | 介绍了如何设置 HTTP 请求标头和正文，以便向 Azure 搜索发送查询。  |
+| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | 可用于查询 Azure 搜索索引的客户端。  <br/>[了解详细信息。](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [搜索文档 (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | 索引上的 GET 或 POST 方法，使用查询参数进行其他输入。  |
 
 ## <a name="a-first-look-at-query-requests"></a>查询请求的初步认识
 
@@ -52,7 +65,7 @@ ms.locfileid: "54214821"
 
 可将此查询字符串粘贴到浏览器的搜索栏中：`search=seattle townhouse +lake&searchFields=description, city&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket`
 
-### <a name="how-query-operations-are-enabled-by-the-index"></a>索引如何启用查询操作
+## <a name="how-query-operations-are-enabled-by-the-index"></a>索引如何启用查询操作
 
 索引设计和查询设计在 Azure 搜索中紧密耦合。 需要提前知道的一个重要事实是，包含每个字段中属性的索引架构确定了可以生成的查询类型。 
 
@@ -148,17 +161,6 @@ Azure 搜索可轻松对搜索结果进行分页。 使用 **`top`** 和 **`skip
 
 ### <a name="hit-highlighting"></a>突出显示
 在 Azure 搜索中，使用 **`highlight`**、**`highlightPreTag`** 和 **`highlightPostTag`** 参数可轻松强调搜索结果中与搜索查询相匹配的确切部分。 可以指定应强调其匹配文本的可搜索字段，还可指定要附加到 Azure 搜索所返回匹配文本的开头和结尾的精确字符串标记。
-
-## <a name="apis-and-tools-for-testing"></a>用于测试的 API 和工具
-
-下表列出用于提交查询的 API 和基于工具的方法。
-
-| 方法 | Description |
-|-------------|-------------|
-| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | 可用于查询 Azure 搜索索引的客户端。  <br/>[了解详细信息。](search-howto-dotnet-sdk.md#core-scenarios)  |
-| [搜索文档 (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | 索引上的 GET 或 POST 方法，使用查询参数进行其他输入。  |
-| [Fiddler、Postman 或其他 HTTP 测试工具](search-fiddler.md) | 介绍如何设置请求标头和正文，以便向 Azure 搜索发送查询。  |
-| [Azure 门户中的搜索浏览器](search-explorer.md) | 提供搜索栏，以及索引和 API 版本选项。 结果会以 JSON 文档的形式返回。 <br/>[了解详细信息。](search-get-started-portal.md#query-index) | 
 
 ## <a name="see-also"></a>另请参阅
 

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: bf5bc66ce55b0b9d6095cd395a11f68b40af1639
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: d1a7ae1e66caaaf17e3c4a38b09eaa2d900604b3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685712"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004479"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 
@@ -26,7 +26,7 @@ ms.locfileid: "51685712"
 
 ## <a name="general-ams-faqs"></a>一般性的 AMS 常见问题
 
-问：如何流式传输到 Apple iOS 设备
+问：如何流式传输到 Apple iOS 设备？
 
 答：向 URL 的“/Manifest”部分添加“(format=m3u8-aapl)”路径，告知流式处理源服务器返回供 Apple iOS 本机设备使用的 HLS 内容（有关详细信息，请参阅[传送内容](media-services-deliver-content-overview.md)）。
 
@@ -56,13 +56,13 @@ ms.locfileid: "51685712"
 
 问：AMS 支持使用哪些字符来为文件命名？
 
-答：构建流内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。）出于这个原因，不允许使用百分号编码。 **Name** 属性的值不能含有任何以下[百分号编码保留字符](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!* '();:@&=+$,/?%#[]"。 此外，只能有一个“.” 文件名扩展名。
+答：生成流式处理内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。）出于这个原因，不允许使用百分号编码。 **Name** 属性的值不能含有任何以下[百分号编码保留字符](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!* '();:@&=+$,/?%#[]"。 此外，只能有一个“.” 文件名扩展名。
 
 问：如何使用 REST 进行连接？
 
-答：有关如何连接到 AMS API 的信息，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 
+答：若要了解如何连接到 AMS API，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
-问：如何在编码过程中旋转视频。
+问：如何在编码过程中旋转视频？
 
 答：[Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) 支持旋转 90/180/270 度。 默认行为是“自动”，即尝试在传入的 MP4/MOV 文件中检测旋转元数据并对其进行补偿。 包含[此处](media-services-mes-presets-overview.md)定义的 json 预设之一的以下 **Sources** 元素：
 

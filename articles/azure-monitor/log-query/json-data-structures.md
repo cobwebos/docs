@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Log Analytics 查询中使用字符串 | Microsoft Docs
-description: 本文提供有关在 Log Analytics 中使用 Analytics 门户编写查询的教程。
+title: 在 Azure Monitor 日志查询中使用字符串 | Microsoft Docs
+description: 本文提供了有关使用 Azure 门户中的 Azure Monitor 日志分析对 Azure Monitor 中的日志数据进行查询和分析的教程。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 24f22d659ccfb6923ad2a038e12454716b2c5445
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: dda7ef2e4e974ea053f030a3ebe71a16872612b0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263877"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993718"
 ---
-# <a name="working-with-json-and-data-structures-in-log-analytics-queries"></a>在 Log Analytics 查询中配合使用 JSON 和数据结构
+# <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用 JSON 和数据结构
 
 > [!NOTE]
-> 在学习本课程之前，需完成 [Analytics 门户入门](get-started-portal.md)和[查询入门](get-started-queries.md)。
+> 在完成本课之前，应当先完成 [Azure Monitor 日志分析入门](get-started-portal.md)和 [Azure Monitor 日志查询入门](get-started-queries.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -131,7 +131,7 @@ print hosts_object
 ![生成架构](media/json-data-structures/buildschema.png)
 
 ## <a name="next-steps"></a>后续步骤
-有关 Log Analytics 查询语言的用法，请参阅其他课程：
+参阅有关在 Azure Monitor 中使用日志查询的其他课：
 
 - [字符串操作](string-operations.md)
 - [时间和日期操作](datetime-operations.md)

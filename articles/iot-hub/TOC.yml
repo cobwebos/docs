@@ -289,6 +289,8 @@ items:
       href: iot-hub-upgrade.md
     - name: 使用指标
       href: iot-hub-metrics.md
+    - name: 启用消息跟踪
+      href: iot-hub-distributed-tracing.md
     - name: 配置 IP 筛选
       href: iot-hub-ip-filtering.md
     - name: 大规模配置设备
@@ -444,9 +446,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: fe459c18d9b59b04dcf40cb313968631dc83d85c
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: dc4c3b1df33f7adac3061341e8bca03654837ef7
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746976"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415844"

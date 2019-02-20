@@ -4,7 +4,7 @@ description: 本文提供一系列有关使用内置 Azure 功能提高网络安
 services: security
 documentationcenter: na
 author: TomShinder
-manager: mbaldwin
+manager: barbkess
 editor: TomShinder
 ms.assetid: 7f6aa45f-138f-4fde-a611-aaf7e8fe56d1
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: TomSh
-ms.openlocfilehash: d89972ff0f7e3035fa20f8d9ee2863b68fa52e9f
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 86246d3d580737837ec07ccdc89ed82914cde209
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124059"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118405"
 ---
 # <a name="azure-network-security-best-practices"></a>Azure 网络安全最佳实践
 你可以将 [Azure虚拟机 (VM)](https://azure.microsoft.com/services/virtual-machines/) 和设备放在 [Azure虚拟网络](https://azure.microsoft.com/documentation/services/virtual-network/)上，从而将它们连接到其他网络设备。 也就是说，可以将虚拟网络接口卡连接到虚拟网络，允许启用了网络的设备之间进行基于 TCP/IP 的通信。 连接到 Azure 虚拟网络的虚拟机能够连接到相同虚拟网络、不同虚拟网络、Internet 或自己的本地网络上的设备。
@@ -115,7 +115,7 @@ Azure 网络安全设备可提供比网络级控制所提供的更高的安全�
 
 建议尽可能为服务采用适当的负载均衡。 以下是 Azure 虚拟网络级别和全球级别的方案，以及每个级别的负载均衡选项。
 
-**方案**：你有如下应用程序：
+**场景**：你有如下应用程序：
 
 - 要求来自同一用户/客户端会话的请求访问相同后端虚拟机。 此类示例如购物车应用和 Web 邮件服务器。
 - 仅接受安全连接，因此与服务器进行未加密的通信是不可接受的选项。
@@ -130,10 +130,10 @@ Azure 网络安全设备可提供比网络级控制所提供的更高的安全�
 
 **负载均衡选项**：使用 Azure 门户[创建外部负载均衡器](../load-balancer/quickstart-create-basic-load-balancer-portal.md)，该均衡器将多个 VM 之间的传入请求进行分散，以提供更高级别的可用性。
 
-**方案**：需要从不在 Internet 上的 VM 对连接进行负载均衡。 大多数情况下，接受的用于进行负载均衡的连接由 Azure 虚拟网络上的设备发起，例如 SQL Server 实例或内部 Web 服务器。   
-**负载均衡选项**：使用 Azure 门户[创建内部部负载均衡器](../load-balancer/quickstart-create-basic-load-balancer-powershell.md)，该均衡器将多个 VM 之间的传入请求进行分散，以提供更高级别的可用性。
+**场景**：需要从不在 Internet 上的 VM 对连接进行负载均衡。 大多数情况下，接受的用于进行负载均衡的连接由 Azure 虚拟网络上的设备发起，例如 SQL Server 实例或内部 Web 服务器。   
+**负载均衡选项**：使用 Azure 门户[创建内部负载均衡器](../load-balancer/quickstart-create-basic-load-balancer-powershell.md)，该均衡器将多个 VM 之间的传入请求进行分散，以提供更高级别的可用性。
 
-**方案**：需要全球负载均衡，因为：
+**场景**：你需要全球负载均衡，因为：
 
 - 拥有广泛分布在多个地区的云解决方案，并且需要可能的最高级别的正常运行时间（可用性）。
 - 需要可能的最高级别的正常运行时间，以确保即使整个数据中心不可用，服务仍然可用。
@@ -149,15 +149,15 @@ Azure 网络安全设备可提供比网络级控制所提供的更高的安全�
 
 我们建议禁用从 Internet 对 Azure 虚拟机的直接 RDP 和 SSH 访问。 禁用从 Internet 的直接 RDP 和 SSH 访问之后，有其他选项可用于访问这些 VM 以便进行远程管理。
 
-**方案**：可让单个用户通过 Internet 连接到 Azure 虚拟网络。   
+**场景**：可让单个用户通过 Internet 连接到 Azure 虚拟网络。   
 **选项**：[点到站点 VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) 是远程访问 VPN 客户端/服务器连接的另一种说法。 建立点到站点连接之后，用户能够使用 RDP 或 SSH 连接到位于用户通过点到站点 VPN 连接的 Azure 虚拟网络上的任何 VM。 此处假设用户有权访问这些 VM。
 
 点到站点 VPN 比直接 RDP 或 SSH 连接更安全，因为用户必须事先通过两次身份验证才将连接到 VM。 首先，用户需要进行身份验证（并获得授权）以建立点到站点 VPN 连接。 其次，用户需要进行身份验证（并获得授权）以建立 RDP 或 SSH 会话。
 
-**方案**：使本地网络上的用户能够连接到 Azure 虚拟网络上的 VM。   
+**场景**：使本地网络上的用户能够连接到 Azure 虚拟网络上的 VM。   
 **选项**：[站点到站点 VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md) 通过 Internet 将整个网络连接到另一个网络。 可以使用站点到站点 VPN 将本地网络连接到 Azure 虚拟网络。 本地网络上的用户通过站点到站点 VPN 使用 RDP 或 SSH 协议进行连接。 不必允许通过 Internet 进行的直接 RDP 或 SSH 访问。
 
-**方案**：使用专用的 WAN 链接提供类似于站点到站点 VPN 的功能。   
+**场景**：使用专用的 WAN 链接提供类似于站点到站点 VPN 的功能。   
 **选项**：使用 [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/)。 它提供类似于站点到站点 VPN 的功能。 它们的主要区别包括：
 
 - 专用的 WAN 链接不会遍历 Internet。
@@ -168,8 +168,8 @@ Azure 网络安全设备可提供比网络级控制所提供的更高的安全�
 
 服务终结点提供以下优势：
 
-- **提高 Azure 服务资源的安全性**：使用服务终结点，可在虚拟网络中保护 Azure 服务资源。 在虚拟网络中保护服务资源可以完全消除通过公共 Internet 对这些资源进行访问，只允许来自客户自己的虚拟网络的流量，从而提高了安全性。
-- **来自虚拟网络的 Azure 服务流量的最佳路由**：强制 Internet 流量发往本地和/或虚拟设备（称为强制隧道）的虚拟网络中的任何路由也会强制 Azure 服务流量采用与 Internet 流量相同的路由。 服务终结点为 Azure 流量提供最佳路由。
+- **提高了 Azure 服务资源的安全性**：使用服务终结点，可在虚拟网络中保护 Azure 服务资源。 在虚拟网络中保护服务资源可以完全消除通过公共 Internet 对这些资源进行访问，只允许来自客户自己的虚拟网络的流量，从而提高了安全性。
+- **来自虚拟网络的 Azure 服务流量的最佳路由**：虚拟网络中强制 Internet 流量通过本地和/或虚拟设备（称为强制隧道）的任何路由也会强制 Azure 服务流量采用与 Internet 流量相同的路由。 服务终结点为 Azure 流量提供最佳路由。
 
   终结点始终将服务流量直接从虚拟网络带至 Azure 主干网络上的服务。 将流量保留在 Azure 主干网络上可以通过强制隧道持续审核和监视来自虚拟网络的出站 Internet 流量，而不会影响服务流量。 详细了解[用户定义的路由和强制隧道](../virtual-network/virtual-networks-udr-overview.md)。
 

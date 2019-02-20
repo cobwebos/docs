@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Log Analytics 中使用函数 | Microsoft Docs
-description: 本文介绍如何在 Log Analytics 中使用函数从另一个查询调用查询。
+title: Azure Monitor 日志查询中的函数 | Microsoft Docs
+description: 本文介绍了如何在 Azure Monitor 中从一个日志查询中使用函数调用另一个查询。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: 8f2855ed56d298ec4c6abee02dd59ce9471f0d2e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 6c6bd31961022957ec1a09fef6058ad32476e1c7
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884355"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005091"
 ---
-# <a name="using-functions-in-azure-monitor-log-analytics"></a>在 Azure Monitor Log Analytics 中使用函数
+# <a name="using-functions-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用函数
 
 > [!NOTE]
 > 在学习本课程之前，需完成 [Analytics 门户入门](get-started-portal.md)和[查询入门](get-started-queries.md)。
@@ -28,13 +28,13 @@ ms.locfileid: "52884355"
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 
-若要通过另一个查询使用 Log Analytics 查询，可以将其另存为函数。 这使你能够通过分解复杂查询将其简化，并能够对多个查询重用通用代码。
+若要将某个日志查询用于其他查询，可以将其保存为函数。 这使你能够通过分解复杂查询将其简化，并能够对多个查询重用通用代码。
 
 ## <a name="create-a-function"></a>创建函数
 
-单击“保存”然后提供下表中的信息，以在 Azure 门户中创建函数。
+在 Azure 门户中的 Log Analytics 中，单击“保存”然后提供下表中的信息来创建一个函数。
 
-| 设置 | Description |
+| 设置 | 说明 |
 |:---|:---|
 | 名称           | 查询资源管理器中查询的显示名称。 |
 | 另存为        | 函数 |
@@ -42,10 +42,10 @@ ms.locfileid: "52884355"
 | 类别       | 用于在查询资源管理器中整理已保存的查询和函数的类别。 |
 
 > [!NOTE]
-> Log Analytics 中的函数不能包含其他函数。
+> Azure Monitor 中的函数不能包含其他函数。
 
 > [!NOTE]
-> 可在 Log Analytics 查询中保存功能，但此功能目前不适用于 Application Insights 查询。
+> 可以在 Azure Monitor 日志查询中保存函数，但目前无法将这些函数用于 Application Insights 查询。
 
 
 
@@ -69,7 +69,7 @@ security_updates_last_day | where Title contains "SQL"
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关 Log Analytics 查询语言的用法，请参阅其他课程：
+参阅有关编写 Azure Monitor 日志查询的其他课：
 
 - [字符串操作](string-operations.md)
 - [时间和日期操作](datetime-operations.md)

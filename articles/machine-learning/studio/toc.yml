@@ -64,7 +64,7 @@ items:
     - name: 使用本地 SQL 数据库中的数据
       displayName: on-premises
       href: use-data-from-an-on-premises-sql-server.md
-  - name: 创建模型并定型
+  - name: 训练模型
     items:
     - name: 试验生命周期管理
       href: version-control.md
@@ -87,6 +87,12 @@ items:
         href: interpret-model-results.md
       - name: 调试
         href: debug-models.md
+    - name: 重新定型
+      items:
+      - name: “新”Web 服务
+        href: retrain-machine-learning-model.md
+      - name: 经典 Web 服务
+        href: retrain-classic-web-service.md
     - name: 使用 R 和 Python
       items:
       - name: 通过 R 开始使用
@@ -132,12 +138,6 @@ items:
     - name: 创建终结点
       displayName: scale, scaling
       href: create-endpoint.md
-  - name: 重新定型
-    items:
-    - name: 重新训练并部署新 Web 服务
-      href: retrain-machine-learning-model.md
-    - name: 重新训练并部署经典 Web 服务
-      href: retrain-classic-web-service.md
   - name: 使用模型
     items:
     - name: 概述
@@ -146,11 +146,9 @@ items:
       href: consuming-from-excel.md
     - name: 使用 Excel 加载项
       href: excel-add-in-for-web-services.md
-    - name: 使用 Web 应用模板
-      href: consume-web-service-with-web-app-template.md
     - name: 使用 Batch 池
       href: dedicated-capacity-for-bes-jobs.md
-  - name: 示例
+  - name: 用例
     items:
     - name: 客户流失
       href: azure-ml-customer-churn-scenario.md
@@ -158,12 +156,14 @@ items:
       href: text-analytics-module-tutorial.md
     - name: 将分析从 Excel 迁移到 Studio
       href: linear-regression-in-azure.md
-  - name: 查看和删除 Studio 数据
-    displayName: export
-    href: export-delete-personal-data-dsr.md
-  - name: 查看和删除 Gallery 数据
-    displayName: export
-    href: ai-gallery-control-personal-data-dsr.md
+  - name: 删除和导出客户数据
+    items:
+    - name: 工作室数据
+      displayName: export
+      href: export-delete-personal-data-dsr.md
+    - name: 库数据
+      displayName: export
+      href: ai-gallery-control-personal-data-dsr.md
 - name: 引用
   items:
   - name: 算法和模块参考
@@ -188,9 +188,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: 自定义神经网络 (Net#)
     href: azure-ml-netsharp-reference-guide.md
-ms.openlocfilehash: c6d072a6e032fb4059b422d0778eb78b01d3706e
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 6649d1c39bdb0a66018feff73f9e9d2b39064155
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327674"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430227"

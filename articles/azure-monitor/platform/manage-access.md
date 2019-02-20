@@ -1,6 +1,6 @@
 ---
-title: 管理 Azure Log Analytics 和 OMS 门户中的工作区 | Microsoft 文档
-description: 可以通过对用户、帐户、工作区和 Azure 帐户使用各种管理任务来管理 Azure Log Analytics 和 OMS 门户中的工作区。
+title: 管理 Azure Monitor 中的 Log Analytics 工作区 | Microsoft Docs
+description: 可以通过对用户、帐户、工作区和 Azure 帐户使用各种管理任务来管理 Azure Monitor 中的 Log Analytics 工作区。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,18 +11,17 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 32a31a87bacbb13cd3b2cb4561ac04e54d51ba46
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 4a777c2bd57d40b4bb6c8d36c996b655cb019e5f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656747"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005363"
 ---
-# <a name="manage-workspaces"></a>管理工作区
-
-若要管理对 Log Analytics 的访问，需要对工作区执行各种管理任务。 本文提供管理工作区的建议和流程。 工作区实际上是包含帐户信息和帐户简单配置信息的容器。 你或组织中的其他成员可以使用多个工作区，管理收集自所有或部分 IT 基础结构的不同数据集。
+# <a name="manage-log-analytics-workspaces-in-azure-monitor"></a>管理 Azure Monitor 中的 Log Analytics 工作区
+Azure Monitor 将日志数据存储在 Log Analytics 工作区中，该工作区本质上是一个包含数据和配置信息的容器。 若要管理对日志数据的访问，需要对工作区执行各种管理任务。 你或组织中的其他成员可以使用多个工作区，管理收集自所有或部分 IT 基础结构的不同数据集。
 
 若要创建工作区，需要：
 
@@ -32,11 +31,11 @@ ms.locfileid: "55656747"
 4. 选择地理位置。
 
 ## <a name="determine-the-number-of-workspaces-you-need"></a>确定所需工作区数
-工作区是一种 Azure 资源，也是 Azure 门户中收集、聚合、分析和呈现数据的容器。
+Log Analytics 工作区是一种 Azure 资源，也是 Azure Monitor 中收集、聚合、分析和呈现数据的容器。
 
 你可以为每个 Azure 订阅创建多个工作区，并且你可以访问多个工作区，并且可以轻松查询这些工作区。 本部分介绍有助于创建多个工作区的情况。
 
-工作区目前提供：
+Log Analytics 工作区可提供：
 
 * 数据存储的地理位置
 * 数据隔离，以定义不同的用户访问权限
@@ -44,7 +43,7 @@ ms.locfileid: "55656747"
 
 从使用角度来看，我们建议尽量减少创建的工作区数量。 这可带来更轻松快捷的管理和查询体验。 但是，基于上述特征，在以下情况下可能需要创建多个工作区：
 
-* 贵公司是全球性公司，因数据所有权和合规性需要将数据存储于特定区域。
+* 贵公司是全球性公司，因数据所有权和合规性需要将日志数据存储于特定区域。
 * 正在使用 Azure，并希望通过让工作区与它所管理的 Azure 资源位于同一区域，避免产生出站数据传输费用。
 * 希望通过在其自己的 Azure 订阅中为每个部门或业务组创建一个工作区，根据使用量将费用分配到各个部门或业务组。
 * 公司是托管服务提供商，需要为所管理的每位客户单独保留 Log Analytics 数据，即与其他客户的数据分开保存。
@@ -55,16 +54,14 @@ ms.locfileid: "55656747"
 如果使用 System Center Operations Manager，每个 Operations Manager 管理组仅可以连接一个工作区。 可以在 Operations Manager 管理的计算机上安装 Microsoft Monitoring Agent，并使代理向 Operations Manager 和不同 Log Analytics 工作区报告。
 
 ## <a name="workspace-information"></a>工作区信息
+通过 Azure 门户中的 **Azure Monitor** 菜单分析 Log Analytics 工作区中的数据时，可以通过“Log Analytics 工作区”菜单创建和管理工作区。
+ 
 
-可以在 Azure 门户中查看有关工作区的详细信息。 
-
-1. 如果尚未登录 [Azure 门户](https://portal.azure.com)，请先登录。
-
-2. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。  
+1. 登录到 [Azure 门户](https://portal.azure.com)，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”。  
 
     ![Azure 门户](media/manage-access/azure-portal-01.png)  
 
-3. 在 Log Analytics 订阅窗格中选择一个工作区。
+3. 从列表中选择你的工作区。
 
 4. 工作区页会显示有关入门、配置的详细信息，以及其他信息的链接。  
 
@@ -84,10 +81,10 @@ ms.locfileid: "55656747"
 | 在 Azure 门户中创建工作区                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
 
 
-### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>使用 Azure 权限管理对 Log Analytics 的访问
+### <a name="managing-access-to-log-analytics-workspace-using-azure-permissions"></a>使用 Azure 权限管理对 Log Analytics 工作区的访问
 若要使用 Azure 权限授予对 Log Analytics 工作区的访问权限，请执行[使用角色分配来管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)中的步骤。
 
-Azure 有两个内置的适用于 Log Analytics 的用户角色：
+Azure 有两个适用于 Log Analytics 工作区的内置用户角色：
 - Log Analytics 读者
 - Log Analytics 参与者
 
@@ -97,7 +94,7 @@ Log Analytics 读者角色的成员可以：
 
 Log Analytics 读者角色包括以下 Azure 操作：
 
-| Type    | 权限 | 说明 |
+| 类型    | 权限 | 说明 |
 | ------- | ---------- | ----------- |
 | 操作 | `*/read`   | 能够查看所有 Azure 资源和资源配置。 包括查看： <br> 虚拟机扩展状态 <br> Azure 诊断在资源上的配置 <br> 所有资源的所有属性和设置 |
 | 操作 | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | 能够执行 Log Search v2 查询 |
@@ -149,5 +146,4 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 ## <a name="next-steps"></a>后续步骤
 * 请参阅 [Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md)，以从数据中心或其他云环境中的计算机收集数据。
 * 请参阅[收集有关 Azure 虚拟机的数据](../../azure-monitor/learn/quick-collect-azurevm.md)，以配置 Azure VM 的数据收集。  
-* [从解决方案库中添加 Log Analytics 解决方案](../../azure-monitor/insights/solutions.md)，以添加功能和收集数据。
 

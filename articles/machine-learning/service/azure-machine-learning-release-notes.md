@@ -11,18 +11,40 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: cea5f2a3eaa7bddb523d95936fbe0a50e0fd16ed
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 4e7cc1340a85e1d00c2f64abeb35a99052184c52
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564334"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100170"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
 本文介绍 Azure 机器学习服务版本。  有关每个 SDK 的完整说明，请访问以下内容的参考文档：
 + Azure 机器学习[适用于 Python 的主 SDK](https://aka.ms/aml-sdk)
 + Azure 机器学习[数据准备 SDK](https://aka.ms/data-prep-sdk)
+
+## <a name="2019-02-11"></a>2019-02-11
+
+### <a name="azure-machine-learning-sdk-for-python-v1015"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.15
+
++ **新功能**
+  + Azure 机器学习管道增加了 AzureBatchStep ([notebook](https://aka.ms/pl-azbatch))、HyperDriveStep ([notebook](https://aka.ms/pl-hyperdrive)) 和基于时间的计划功能 ([notebook](https://aka.ms/pl-schedule))。
+  +  DataTranferStep 已更新，可以与 Azure SQL Server 和 Azure database for PostgreSQL ([notebook](https://aka.ms/pl-data-trans)) 配合使用。
+
++ **更改**
+  + 弃用了 `PublishedPipeline.get_published_pipeline` 而改用 `PublishedPipeline.get`。
+  + 弃用了 `Schedule.get_schedule` 而改用 `Schedule.get`。
+
+### <a name="azure-machine-learning-data-prep-sdk-v1012"></a>Azure 机器学习数据准备 SDK v1.0.12
+
++ **新功能**
+  + 数据准备现在支持使用数据存储从 Azure SQL 数据库读取数据。
+ 
++ **更改**
+  + 显著改进了对大型数据的某些操作的内存性能。
+  + `read_pandas_dataframe()` 现在要求指定 `temp_folder`。
+  + `ColumnProfile` 的 `name` 属性已弃用 - 请改用 `column_name`。
 
 ## <a name="2019-01-28"></a>2019-01-28
 
