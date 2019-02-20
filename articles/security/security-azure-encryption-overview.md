@@ -4,7 +4,7 @@ description: 了解 Azure 中的各种加密选项
 services: security
 documentationcenter: na
 author: Barclayn
-manager: MBaldwin
+manager: barbkess
 editor: TomShinder
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: dc1ca62ce184ac290f289975ff609b8240351099
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 272cc843ab90eade06525f665d3cf2decf74a26f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035090"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114648"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概述
 
@@ -50,9 +50,9 @@ Azure 支持各种加密模型，包括使用服务托管密钥、Key Vault 中�
 
 三个服务器端加密模型提供不同的密钥管理特性，可根据要求进行选择：
 
-- **服务托管密钥：** 可带来低开销的控制和便利。
+- **服务托管密钥**：可带来低开销的控制和便利。
 
-- **客户托管密钥**：可用于控制密钥，包括支持“创建自己的密钥”(BYOK) 或生成新密钥。
+- **客户管理的密钥**：可用于控制密钥，包括支持“创建自己的密钥”(BYOK) 或生成新密钥。
 
 - **客户所控硬件上的服务托管密钥**：可用于管理不受 Microsoft 控制的专有存储库中的密钥。 此特性称为自留密钥 (HYOK)。 但是，配置相当复杂，并且大多数 Azure 服务都不支持此模式。
 

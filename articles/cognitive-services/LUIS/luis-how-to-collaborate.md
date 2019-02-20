@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: 应用所有者可以向应用添加协作者。 这些协作者可以修改模型，训练并发布应用。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 02/12/2019
 ms.author: diberry
-ms.openlocfilehash: bf714e5bd47e244a410d1062488af623253bbee6
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f23212a854fb37dda89fd2bf6b223cf0dc69526b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217775"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167555"
 ---
 # <a name="how-to-manage-authors-and-collaborators"></a>如何管理作者和协作者 
 
@@ -44,14 +44,13 @@ ms.locfileid: "55217775"
 
 ## <a name="azure-active-directory-resources"></a>Azure Active Directory 资源
 
-如果你在组织中使用了 Azure Active Directory (Azure AD)，则在用户希望使用 LUIS 时，LUIS 需要有权访问用户的相关信息。 LUIS 需要的资源是最少的。 
+如果你在组织中使用了 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD)，则在用户希望使用语言理解 (LUIS) 时，LUIS 需要有权访问用户的访问权限相关信息。 LUIS 需要的资源是最少的。 
 
 尝试使用已获得管理员同意或不需要管理员同意的帐户进行登录时，你将看到详细说明，例如管理员同意：
 
-* 允许你使用组织帐户登录到应用并让应用读取你的配置文件。 它还允许应用读取基本的公司信息。
-* 允许应用查看和更新你的数据，即使你当前未使用应用。
+* 允许你使用组织帐户登录到应用并让应用读取你的配置文件。 它还允许应用读取基本的公司信息。 这将授权 LUIS 读取基本的配置文件数据，例如用户 ID、电子邮件、姓名
+* 允许应用查看和更新你的数据，即使你当前未使用应用。 此权限是刷新用户的访问令牌时所必需的。
 
-第一个权限授权 LUIS 读取基本的配置文件数据，例如用户 ID、电子邮件、姓名。 第二个权限是刷新用户的访问令牌时所必需的。
 
 ## <a name="azure-active-directory-tenant-user"></a>Azure Active Directory 租户用户
 
@@ -59,11 +58,8 @@ LUIS 使用标准的 Azure Active Directory (Azure AD) 许可流程。
 
 租户管理员直接处理需要访问权限才能在 Azure AD 中使用 LUIS 的用户。 
 
-用户首先要登录 LUIS，此时看到需要管理员批准的弹出对话框。 继续操作之前，用户需联系租户管理员。 
-
-然后，租户管理员登录 LUIS，并看到一个“同意流”弹出对话框。 管理员需在此对话框中向用户授予权限。 管理员接受权限后，用户才能够继续使用 LUIS。
-
-如果租户管理员不登录 LUIS，还可访问 LUIS 的[同意](https://account.activedirectory.windowsazure.com/r#/applications)部分。 
+* 用户首先要登录 LUIS，此时看到需要管理员批准的弹出对话框。 继续操作之前，用户需联系租户管理员。 
+* 然后，租户管理员登录 LUIS，并看到一个“同意流”弹出对话框。 管理员需在此对话框中向用户授予权限。 管理员接受权限后，用户才能够继续使用 LUIS。 如果租户管理员不登录 LUIS，还可访问 LUIS 的[同意](https://account.activedirectory.windowsazure.com/r#/applications)部分，如以下屏幕截图中所示。 请注意，列表已经过筛选，仅显示包括名称 `LUIS` 的项。
 
 ![应用网站授予的 Azure Active Directory 权限](./media/luis-how-to-collaborate/tenant-permissions.png)
 

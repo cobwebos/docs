@@ -9,12 +9,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: acae8076350c26e7a7157fd2063f64220b167771
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 5c5615dcfc9d43016bdf995a22ae29a5c5dd2c6f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486055"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185377"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>在 HDInsight 中使用企业安全性套餐
 
@@ -28,12 +28,13 @@ HDInsight 中的虚拟机 (VM) 将加入你提供的域。 因此，在 HDInsigh
 
 ## <a name="integrate-hdinsight-with-active-directory"></a>将 HDInsight 与 Active Directory 集成
 
-开源 Apache Hadoop 依赖于 Kerberos 来提供身份验证和安全性。 因此，使用企业安全性套餐 (ESP) 的 HDInsight 群集节点加入到由 Azure AD DS 管理的域。 将为群集上的 Hadoop 组件配置 Kerberos 安全性。 
+开源 Apache Hadoop 依赖于 Kerberos 协议来提供身份验证和安全性。 因此，使用企业安全性套餐 (ESP) 的 HDInsight 群集节点加入到由 Azure AD DS 管理的域。 将为群集上的 Hadoop 组件配置 Kerberos 安全性。 
 
 自动创建以下内容：
-- 每个 Hadoop 组件的服务主体 
+
+- 每个 Hadoop 组件的服务主体
 - 加入域的每台计算机的计算机主体
-- 每个群集的组织单位 (OU)，用于存储这些服务和计算机主体 
+- 每个群集的组织单位 (OU)，用于存储这些服务和计算机主体
 
 概而言之，需要在环境中设置以下项：
 
@@ -47,7 +48,7 @@ HDInsight 当前仅支持将 Azure AD DS 用作群集用于与 Kerberos 进行�
 ### <a name="azure-active-directory-domain-services"></a>Azure Active Directory 域服务
 [Azure AD DS](../../active-directory-domain-services/active-directory-ds-overview.md) 提供与 Windows Server Active Directory 完全兼容的托管域。 Microsoft 负责采用高度可用的 (HA) 设置来管理、修补和监视域。 你可以部署群集，而不用担心如何维护域控制器。 
 
-用户、组和密码将从 Azure Active Directory (Azure AD) 同步。 利用从 Azure AD 实例到 Azure AD DS 的单向同步，用户可以使用相同的企业凭据登录到群集。 
+用户、组和密码将从 Azure AD 进行同步。 利用从 Azure AD 实例到 Azure AD DS 的单向同步，用户可以使用相同的企业凭据登录到群集。 
 
 有关详细信息，请参阅[使用 Azure AD DS 配置使用 ESP 的 HDInsight 群集](./apache-domain-joined-configure-using-azure-adds.md)。
 
@@ -57,38 +58,38 @@ HDInsight 当前仅支持将 Azure AD DS 用作群集用于与 Kerberos 进行�
 
 由于 Kerberos 依赖于密码哈希，因此必须[在 Azure AD DS 上启用密码哈希同步](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)。 
 
-如果将联合与 Active Directory 联合身份验证服务 (ADFS) 配合使用，则必须启用密码哈希同步（一种建议设置，请参阅[本文](https://youtu.be/qQruArbu2Ew)），这还有助于进行灾难恢复（在 ADFS 基础结构发生故障时）和泄漏凭据保护。 有关详细信息，请参阅[使用 Azure AD Connect 同步启用密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)。 
+如果使用 Active Directory 联合身份验证服务 (AD FS) 进行联合身份验证，则必须启用密码哈希同步。（有关建议的设置，请参阅[此视频](https://youtu.be/qQruArbu2Ew)。）密码哈希同步在 AD FS 基础结构失败时可以帮助进行灾难恢复，并且它还有助于提供泄漏凭据保护。 有关详细信息，请参阅[使用 Azure AD Connect 同步启用密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)。 
 
 在 IaaS VM 上单独使用本地 Active Directory 或 Active Directory 而不使用 Azure AD 和 Azure AD DS，这是使用 ESP 的 HDInsight 群集不支持的配置。
 
-如果在使用联合并且密码哈希正确同步，但遇到身份验证失败，请检查 powershell 服务主体云密码身份验证是否启用，如果未启用，则必须为 AAD 租户设置[主领域发现 (HRD) 策略](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md)。 检查和设置 HRD 策略：
+如果使用了联合身份验证并且密码哈希已正确同步，但是遇到了身份验证失败，请检查是否为 PowerShell 服务主体启用了云密码身份验证。 如果没有，则必须为你的 Azure AD 租户设置[主领域发现 (HRD) 策略](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md)。 若要检查和设置 HRD 策略，请执行以下操作：
 
- 1. 安装 AzureAD powershell 模块
-
- ```
-  Install-Module AzureAD
- ```
-
- 2. 使用全局管理员（租户管理员）凭据的 ```Connect-AzureAD```
-
- 3. 检查是否已创建“Microsoft Azure Powershell”服务主体
+ 1. 安装 Azure AD PowerShell 模块。
 
  ```
-  $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
+    Install-Module AzureAD
  ```
 
- 4. 如果它不存在（即 if ($powershellSPN -eq $null)），则创建该服务主体
+ 2. 使用全局管理员（租户管理员）凭据进入 `Connect-AzureAD`。
+
+ 3. 检查是否已创建了 Microsoft Azure PowerShell 服务主体。
 
  ```
-  $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
+    $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
  ```
 
- 5. 创建策略并附加到此服务主体： 
+ 4. 如果它不存在（也就是说，如果 `($powershellSPN -eq $null)`），则创建此服务主体。
 
  ```
- $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
+    $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
+ ```
 
- Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
+ 5. 创建策略并将其附加到此服务主体。
+
+ ```
+    $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
+
+    Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
  ```
 
 ## <a name="next-steps"></a>后续步骤

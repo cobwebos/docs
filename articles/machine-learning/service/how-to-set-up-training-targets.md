@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: article
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14a6bdfff486f13f18d42b1bd20880347d3ebbc8
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 292063183561722eae76c3d30ce242facd22df26
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756523"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981445"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>设置模型训练的计算目标
 
@@ -46,6 +46,11 @@ Azure 机器学习服务为不同的计算目标提供不同的支持。 典型�
 |[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
 |[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 |[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
+
+**所有计算目标都可重复用于多个训练作业**。 例如，将远程 VM 附加到你的工作区后，可以将其重复用于多个作业。
+
+> [!NOTE]
+> Azure 机器学习计算资源可以创建为持久资源，也可以在你请求运行时动态创建。 基于运行的创建在训练运行完成后会删除计算目标，因此无法重复使用以这种方式创建的计算目标。
 
 ## <a name="whats-a-run-configuration"></a>什么是运行配置？
 
@@ -242,7 +247,7 @@ Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Ap
 
 * [查看](#portal-view)附加到工作区的计算目标
 * 在工作区中[创建计算目标](#portal-create)
-* [重复使用现有的计算目标](#portal-reuse)
+* [附加](#portal-reuse)在工作区外部创建的计算目标
 
 创建目标并将其附加到工作区后，可以通过一个 `ComputeTarget` 对象在运行配置中使用该目标： 
 
@@ -293,9 +298,11 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 
 
-### <a id="portal-reuse"></a>重复使用现有的计算目标
+### <a id="portal-reuse"></a>附加计算目标
 
-遵循上述步骤查看计算目标的列表。 然后使用以下步骤重复使用某个计算目标： 
+若要使用在 Azure 机器学习服务工作区外部创建的计算目标，必须附加它们。 附加计算目标会使其可供你的工作区使用。
+
+遵循上述步骤查看计算目标的列表。 然后使用以下步骤来附加计算目标： 
 
 1. 选择加号 (+) 添加计算目标。 
 1. 输入计算目标的名称。 

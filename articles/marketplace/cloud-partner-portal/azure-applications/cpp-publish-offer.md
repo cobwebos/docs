@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 2adf07cf2337611b9136af47ce6a35b617e2e9ff
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cafda8a48f9160c80edb02c3452035f912958bc7
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177026"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098215"
 ---
 # <a name="publish-azure-application-offer"></a>发布 Azure 应用程序产品/服务
 
@@ -46,7 +46,6 @@ ms.locfileid: "55177026"
 | 实时                           | 小于 1 天 | 发布套餐，将其复制到指定的区域，并使其可供公众使用。 |
 |   |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|   |
 
- 
 可以在云合作伙伴门户上套餐的“状态”选项卡中监视发布过程。
 
 ![Azure 应用套餐的“状态”选项卡](./media/offer-status-tab.png)
@@ -54,38 +53,13 @@ ms.locfileid: "55177026"
 完成发布过程后，套餐将在 [Microsoft Azure 市场应用程序类别](https://azuremarketplace.microsoft.com/marketplace/apps/)中列出。
 
 
-
 ## <a name="errors-and-review-feedback"></a>错误和评审反馈
 
-除了显示套餐的发布状态以外，“状态”选项卡还显示“Microsoft 评审”步骤返回的错误消息和反馈。  通常，评审问题引用为拉取请求 (PR)。  每个拉取请求链接到某个联机 Visual Studio Team Services（VSTS，已重命名为 [Azure DevOps](https://azure.microsoft.com/services/devops/)）项，该项包含有关问题的详细信息。  下图显示了评审 PR 引用的示例。  对于更复杂的情况，评审和支持团队可能会向你发送电子邮件。 
-
-![显示评审反馈的“状态”选项卡](./media/status-tab-ms-review.png)
-
-必须先解决所报告的每个问题，然后，套餐才能转到发布过程的下一步骤。  下图演示了此反馈过程与发布过程之间的关系。
-
-![提供 VSTS 反馈的发布步骤](./media/pub-flow-vsts-access.png)
-
-
-### <a name="vsts-access"></a>VSTS 访问
-
-若要查看评审反馈中引用的 VSTS 项，必须为发布者授予适当的授权。  否则，新发布者会收到 `401 - Not Authorized` 响应页。  若要请求访问套餐评审 VSTS 系统，请执行以下步骤：
-
-1. 收集以下信息：
-    - 发布者名称和 ID
-    - 套餐类型（Azure 应用程序）、套餐名称和 SKU ID
-    - 拉取请求链接，例如：`https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/contoso/pullrequest/<number>` 可以从通知消息或 401 响应页的地址检索此 URL。
-    - 发布组织中要向其授予访问权限的个人的电子邮件地址。  这些地址应包括在云合作伙伴门户上注册为发布者时提供的所有者地址。
-2. 创建支持事件。  在云合作伙伴门户的标题栏中选择“帮助”按钮，然后从菜单中选择“支持”。  默认的 Web 浏览器应会启动，并导航到 Microsoft 的新建支持事件页。  （可能需要先登录。）
-3. 指定“市场登记”作为“问题类型”，指定“访问问题”作为“类别”，然后选择“开始请求”。
-
-    ![支持票证类别](./media/support-incident1.png)
-
-4. 在“步骤 1/2”页上，提供联系信息并选择“继续”。
-5. 在“步骤 2/2”页上，指定事件标题（例如 `Request VSTS access`），并提供在上述第一个步骤中收集的信息。  阅读并接受协议，然后选择“提交”。
-
-如果事件创建成功，会显示确认页。  保存确认信息供将来参考。  Microsoft 支持部门会在几个工作日内回复你的访问请求。
+除了显示产品/服务的发布状态以外，“状态”选项卡还显示从遇到问题的任何发布步骤返回的错误消息和反馈。  如果问题严重，则发布会被取消。  必须更正所报告的问题，然后重新发布产品/服务。  因为 **Microsoft 评审**步骤表示对你的产品/服务及其相关技术资产（尤其是 Azure 资源管理器模板）的广泛评审，所以问题通常呈现为拉取请求 (PR) 链接。  有关如何查看和响应这些 PR 的说明，请参阅[处理评审反馈](./cpp-handling-review-feedback.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-发布 Azure 应用后，可以[更新现有套餐](./cpp-update-existing-offer.md)以反映业务或技术要求的变化。 
+如果在一个或多个发布步骤中遇到错误，则必须更正错误并重新发布产品/服务。  如果在 **Microsoft 评审**步骤中遇到严重问题，则必须访问 Microsoft 评审团队的 Azure DevOps 存储库来[处理评审反馈](./cpp-handling-review-feedback.md)。
+
+成功发布 Azure 应用后，可以[更新现有产品/服务](./cpp-update-existing-offer.md)来反映业务或技术要求的变化。 

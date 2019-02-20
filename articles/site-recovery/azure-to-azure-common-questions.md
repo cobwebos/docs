@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: bfce998fbabb89d5e9e964bd504571756941afb4
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 555c8b0b4046fd20583597ae4f0215a815806b8e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770480"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860401"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>常见问题：Azure 到 Azure 的复制
 
@@ -33,6 +33,10 @@ ms.locfileid: "55770480"
 
 ### <a name="how-is-site-recovery-priced"></a>Site Recovery 如何计费？
 请查看 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/)。
+### <a name="how-does-the-free-tier-for-azure-site-recovery-work"></a>Azure Site Recovery 的免费层是如何工作的？
+每个使用 Azure Site Recovery 保护的实例在其保护期的前 31 天内均享受免费。 从第 32 天起，将按以上收费率对实例的保护进行计费。
+###<a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>在前 31 天的期限内，会产生其他 Azure 费用吗？
+是，尽管受保护实例的 Azure Site Recovery 在前 31 天内为免费，但你可能会产生 Azure 存储器、存储事务和数据传输的费用。 恢复后的虚拟机也可能会产生 Azure 计算费用。 可以在[此处](https://azure.microsoft.com/pricing/details/site-recovery)获取有关定价的完整详细信息
 
 ### <a name="what-are-the-best-practices-for-configuring-site-recovery-on-azure-vms"></a>有关在 Azure VM 上配置 Site Recovery 的最佳做法是什么？
 1. [了解 Azure 到 Azure 体系结构](azure-to-azure-architecture.md)
@@ -70,6 +74,10 @@ ms.locfileid: "55770480"
 
 否，Site Recovery 不需要建立 Internet 连接。 但它需要访问 Site Recovery URL 和 IP 范围，如[此文](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)中所述。
 
+### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>是否可以为不同的层复制具有不同资源组的应用程序？ 
+是的，你可以复制应用程序并且也在另一个资源组中保留灾难恢复配置。
+例如，如果你有一个应用程序，并且每层的应用、数据库和 Web 位于不同的资源组中，则必须三次单击[复制向导](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication)来保护所有层。 ASR 会将这三个层复制到三个不同的资源组中。
+
 ## <a name="replication-policy"></a>复制策略
 
 ### <a name="what-is-a-replication-policy"></a>什么是复制策略？
@@ -89,9 +97,12 @@ ms.locfileid: "55770480"
 Site Recovery 每隔 5 分钟创建崩溃一致性恢复点。
 
 ### <a name="what-is-an-application-consistent-recovery-point"></a>什么是应用程序一致性恢复点？ 
-应用程序一致性恢复点是从应用程序一致性快照创建的。 应用程序一致性快照捕获的数据与崩溃一致性快照相同，此外还会加上内存中的数据，以及所有正在进行的事务。 
+应用程序一致性恢复点是从应用程序一致性快照创建的。 应用程序一致性恢复点捕获的数据与崩溃一致性快照相同，此外还会加上内存中的数据，以及所有正在进行的事务。 
 
 由于包含额外的内容，应用程序一致性快照涉及的操作最多，且执行时间最长。 我们建议对数据库操作系统以及 SQL Server 等应用程序使用应用程序一致性恢复点。
+
+### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>应用程序一致性恢复点对应用程序性能有何影响？
+由于应用程序一致性恢复点会捕获内存中的以及正在处理的所有数据，因此它会要求框架（例如 Windows 上的 VSS）静止应用程序。 当工作负荷已经非常繁忙时，如果非常频繁地这样做，可能会影响性能。 对于非数据库工作负荷，通常建议不要对应用程序一致性恢复点使用低频率，即使对于数据库工作负荷，采用 1 小时的频率也足够了。 
 
 ### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>应用程序一致性恢复点生成的最低频率是多少？
 Site Recovery 可以创建一个应用程序一致性的恢复点，最小频率为 1 小时。

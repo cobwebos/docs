@@ -4,7 +4,7 @@ description: 本文概述 Azure 操作安全性。
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: 478228ccb12fbfe3ca527bf4d16af05735b7ba92
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: da58737314012255f26d344f279d855244f0c1ba
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238533"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116467"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
 
@@ -145,8 +145,8 @@ Azure 诊断可在部署的应用程序上启用诊断数据收集功能。 可�
 - [下一跃点](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview)：确定 Azure 网络结构中路由的数据包的下一跃点，以便诊断任何配置不正确的用户定义的路由。
 - [安全组视图](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview)：获取在 VM 上应用的有效安全规则。
 - [网络安全组的 NSG 流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)：可捕获被组中的安全规则允许或拒绝的流量的相关日志。 流由 5 元组信息（源 IP、目标 IP、源端口、目标端口和协议）定义。
-- [虚拟网络网关和连接故障排除](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest)：提供排查虚拟网络网关和连接问题的功能。
-- [网络订阅限制](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)：可查看网络资源用量与限制。
+- [虚拟网络网关和连接故障排除](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest)：提供对虚拟网关和连接进行故障排除的功能。
+- [网络订阅限制](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)：用于查看网络资源用量与限制。
 - [诊断日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)：提供单个窗格来为资源组中的网络资源启用或禁用诊断日志。
 
 有关详细信息，请参阅[配置网络观察程序](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)。

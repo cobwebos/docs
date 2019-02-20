@@ -4,23 +4,23 @@ titleSuffix: Azure Cognitive Services
 description: 了解如何筛选和显示必应 Web 搜索 API 中的搜索结果。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.assetid: 8B837DC2-70F1-41C7-9496-11EDFD1A888D
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 01/12/2017
+ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: c59cb173480fbeefa890317fb4804f07b9f58f76
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 26c38c34543683a3fc450d3a0ae932d8bd30dc98
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158173"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199487"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>筛选搜索响应包含的结果  
 
-查询 Web 时，必应会返回它认为与搜索相关的所有内容。 例如，如果搜索查询为“航行+小船”，则响应可能包含以下结果：
+查询 Web 时，必应会返回它为搜索找到的所有相关内容。 例如，如果搜索查询为“航行+小船”，则响应可能包含以下结果：
 
 ```json
 {
@@ -44,8 +44,16 @@ ms.locfileid: "55158173"
     }
 }    
 ```
+可以使用 [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#responsefilter) 查询参数筛选你将收到的内容类型（例如图像、视频和新闻）。 如果必应找到了指定结果的相关内容，则会返回该内容。 响应筛选器是以逗号分隔的检索结果列表。 
 
-如果对特定类型的内容（如图片、视频和新闻）感兴趣，则可使用 [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#responsefilter) 查询参数将检索结果限于相应范围内。 如果必应找到指定检索结果的相关内容，会返回该内容。 响应筛选器是以逗号分隔的检索结果列表。 下面展示如何使用 `responseFilter` 来请求“航行小艇”的图像、视频和新闻。 对查询字符串进行编码时，逗号会更改为 %2C。  
+若要从响应中排除特定类型的内容（例如图像），可以在 `responseFilter` 值的开头添加一个 `-` 字符。 可以使用逗号 (`,`) 来分隔排除的类型。 例如：
+
+```
+&responseFilter=-images,-videos
+```
+
+
+下面展示如何使用 `responseFilter` 来请求“航行小艇”的图像、视频和新闻。 对查询字符串进行编码时，逗号会更改为 %2C。  
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&responseFilter=images%2Cvideos%2Cnews&mkt=en-us HTTP/1.1  
@@ -57,7 +65,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-以下展示对上一查询的响应。 如下所示，必应未找到相关的视频和新闻结果，因此响应中不包含这些内容。
+以下展示对上一查询的响应。 因为必应未找到相关的视频和新闻结果，所以响应中不包含这些内容。
 
 ```json
 {
@@ -80,12 +88,6 @@ Host: api.cognitive.microsoft.com
         }
     }
 }
-```
-
-如果想从响应中排除特定类型的内容（例如图像），可以使用 responseFilter 值的连字符（减号）前缀来排除它们。 使用逗号单独排除的类型：
-
-```
-&responseFilter=-images,-videos
 ```
 
 虽然必应在之前的响应中未返回视频和新闻结果，但这并不意味着不存在这些视频和新闻内容。 这只表明页面中未包含。 但如果[翻页](./paging-webpages.md)浏览更多结果，则后续页面中可能会包含这些内容。 此外，如果直接调用[视频搜索 API](../bing-video-search/search-the-web.md) 和[新闻搜索 API](../bing-news-search/search-the-web.md) 终结点，则响应中很可能会包含结果。

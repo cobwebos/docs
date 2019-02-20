@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 了解必应 Web 搜索 API 使用的应答类型和响应。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 8/13/2018
+ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: f76c9bfa5dc6a3542ace7025e0889ee64cd2e783
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 07fb655af25fe590effcb885e7b366346724b50a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188620"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232886"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>必应 Web 搜索 API 响应结构和答案类型  
 
@@ -42,7 +42,7 @@ ms.locfileid: "55188620"
 
 ## <a name="webpages-answer"></a>网页应答
 
-[webPages](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) 应答包含必应 Web 搜索确定与查询相关的网页的链接列表。 该列表中的每个[网页](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webpage)包含该页面的名称、URL、显示 URL、内容简短说明，以及必应找到内容的日期。
+[webPages](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) 应答包含必应 Web 搜索确定与查询相关的网页的链接列表。 该列表中的每个[网页](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webpage)将包含：该页面的名称、URL、显示 URL、内容简短说明，以及必应找到内容的日期。
 
 ```json
 {
@@ -91,7 +91,7 @@ The following shows an example of how you might display the webpage in a search 
 }, ...
 ```
 
-根据用户的设备，通常会显示一部分缩略图，以及可让用户查看剩余图像的选项。
+根据用户的设备，通常会显示一部分缩略图，以及用于允许用户[分页查看](paging-webpages.md)剩余图像的一个选项。
 
 <!-- Remove until this can be replaced with a sanitized version.
 ![List of thumbnail images](./media/cognitive-services-bing-web-api/bing-web-image-thumbnails.PNG)
@@ -314,7 +314,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 |符号|说明|
 |------------|-----------------|
-|Sqrt|平方根|
+|排序|平方根|
 |Sin[x]、Cos[x]、Tan[x]<br />Csc[x]、Sec[x]、Cot[x]|三角函数（以弧度为单位的参数）|
 |ArcSin[x]、ArcCos[x]、ArcTan[x]<br />ArcCsc[x]、ArcSec[x]、ArcCot[x]|反三角函数（以弧度为单位给出结果）|
 |Exp[x]、E^x|指数函数|
@@ -428,6 +428,48 @@ Query: What time is it in the U.S.
     }]
 }, ...
 ```
+
+下面显示了必应如何使用拼写建议。
+
+![必应拼写建议示例](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)  
+
+## <a name="response-headers"></a>响应标头
+
+来自必应 Web 搜索 API 的响应可能包含以下标头：
+
+|||
+|-|-|
+|`X-MSEdge-ClientID`|必应分配给用户的唯一 ID|
+|`BingAPIs-Market`|用于完成请求的市场|
+|`BingAPIs-TraceId`|此请求在必应 API 服务器上的日志项目（用于客户支持）|
+
+请务必保留客户端 ID，并在后续请求中返回它。 如果这样做，搜索不仅会在排名搜索结果时使用过往上下文，还会提供一致用户体验。
+
+不过，通过 JavaScript 调用必应 Web 搜索 API 时，浏览器内置的安全功能 (CORS) 可能会阻止访问这些响应头的值。
+
+若要访问响应头，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 此类代理的响应中有 `Access-Control-Expose-Headers` 头，可以将响应头列入白名单，让响应头可供 JavaScript 访问。
+
+CORS 代理安装起来很简单，可便于[教程应用](tutorial-bing-web-search-single-page-app.md)访问可选的客户端标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令提示符处输入以下命令。
+
+    npm install -g cors-proxy-server
+
+接下来，将 HTML 文件中的必应 Web 搜索 API 终结点更改为：
+
+    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+
+最后，运行下面的命令，启动 CORS 代理：
+
+    cors-proxy-server
+
+使用教程应用期间，不要关闭命令窗口；关闭窗口会导致代理停止运行。 在搜索结果下的可展开 HTTP 响应头部分中，现在可以看到 `X-MSEdge-ClientID` 响应头（以及其他响应头），并验证此响应头是否对所有请求都相同。
+
+## <a name="response-headers-in-production"></a>生产环境中的响应头
+
+上一常见问题解答中介绍的 CORS 代理方法适合于开发、测试和学习环境。
+
+在生产环境中，应当将服务器端脚本托管在使用必应 Web 搜索 API 的网页所在的域中。 此脚本应当在网页 JavaScript 发出请求时执行 API 调用，并将所有结果（包括响应头）返回给客户端。 由于（页面和脚本）这两个资源共享同一个源，因此不会使用 CORS，并且网页 JavaScript 可以访问特殊标头。
+
+这种方法还可以保护 API 密钥免遭公开，因为只有服务器端脚本需要它。 此脚本可以使用其他方法，以确保对请求进行授权。
 
 下面显示了必应如何使用拼写建议。
 

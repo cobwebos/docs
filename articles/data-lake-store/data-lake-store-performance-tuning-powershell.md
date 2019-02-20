@@ -11,16 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: stewu
-ms.openlocfilehash: fff26406b036edeb48371b89f7e585160ddc58e0
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 318f2b550e19f4b7f56a7b8cc592d34644dca644
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123311"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235596"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>将 PowerShell 与 Azure Data Lake Store Gen1 配合使用的性能优化指南
 
 本文列出一些可调整的属性，以便在使用 PowerShell 操作 Azure Data Lake Storage Gen1 时可获得更好的性能：
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="performance-related-properties"></a>性能相关属性
 
@@ -33,7 +35,7 @@ ms.locfileid: "46123311"
 
 此命令针对每个文件使用 20 个线程以及 100 个并发文件，将 Data Lake Storage Gen1 中的文件下载到用户的本地驱动器。
 
-    Export-AzureRmDataLakeStoreItem -AccountName <Data Lake Storage Gen1 account name> -PerFileThreadCount 20-ConcurrentFileCount 100 -Path /Powershell/100GB/ -Destination C:\Performance\ -Force -Recurse
+    Export-AzDataLakeStoreItem -AccountName <Data Lake Storage Gen1 account name> -PerFileThreadCount 20-ConcurrentFileCount 100 -Path /Powershell/100GB/ -Destination C:\Performance\ -Force -Recurse
 
 ## <a name="how-do-i-determine-the-value-for-these-properties"></a>如何确定要为这些属性设置的值？
 
@@ -60,7 +62,7 @@ ms.locfileid: "46123311"
 
         PerFileThreadCount = 10 + ((10 GB - 2.5 GB) / 256 MB) = 40 threads
 
-* **步骤 3：计算 ConcurrentFilecount** - 根据以下公式，使用线程总数和 PerFileThreadCount 计算 ConcurrentFileCount：
+* **步骤 3：计算 ConcurrentFilecount** - 根据以下公式，使用线程计数和 PerFileThreadCount 计算 ConcurrentFileCount：
 
         Total thread count = PerFileThreadCount * ConcurrentFileCount
 
@@ -84,7 +86,7 @@ ms.locfileid: "46123311"
 
 ### <a name="limitation"></a>限制
 
-* **文件数小于 ConcurrentFileCount**：如果要上传的文件数小于计算得出的 ConcurrentFileCount，应减小 ConcurrentFileCount，使其等于文件数。 可以使用所有剩余线程来增大 PerFileThreadCount。
+* **文件数小于 ConcurrentFileCount**：如果要上传的文件数小于计算得出的 **ConcurrentFileCount**，应减小 **ConcurrentFileCount**，使其等于文件数。 可以使用所有剩余线程来增大 PerFileThreadCount。
 
 * **线程过多**：如果在不增加群集大小的情况下大幅增加线程计数，会面临性能下降的风险。 在 CPU 上执行上下文切换时，可能会出现资源争用的问题。
 

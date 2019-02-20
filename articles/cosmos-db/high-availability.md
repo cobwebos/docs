@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: eca20b775b97296510545c4d2f2f005fd91d6758
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fc818d2d7db60a8def99c2ad635580253dc795e0
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471311"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109752"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 实现高可用性
 
@@ -58,11 +58,25 @@ Azure Cosmos DB 以透明方式在与 Cosmos 帐户关联的所有 Azure 区域�
 
 ## <a name="building-highly-available-applications"></a>生成高可用性应用程序
 
-- 为确保较高的写入和读取可用性，请将 Cosmos 帐户配置为跨越多个写入区域中的至少两个区域。 对于读取和写入，此配置都可提供由 SLA 作为保障的可用性、最低延迟和可伸缩性。 详细了解如何[将 Cosmos 帐户配置为使用多个写入区域](tutorial-global-distribution-sql-api.md)。
+- 为确保较高的写入和读取可用性，请将 Cosmos 帐户配置为跨越多个写入区域中的至少两个区域。 对于读取和写入，此配置都可提供由 SLA 作为保障的可用性、最低延迟和可伸缩性。 详细了解如何[将 Cosmos 帐户配置为使用多个写入区域](tutorial-global-distribution-sql-api.md)。 若要在应用程序中配置多主数据库，请参阅[如何配置多主数据库](how-to-multi-master.md)。
 
 - 对于配置为使用单个写入区域的多区域 Cosmos 帐户，请[使用 Azure CLI 或 Azure 门户中启用自动故障转移](how-to-manage-database-account.md#automatic-failover)。 启用自动故障转移后，每当发生区域性灾难时，Cosmos DB 都会自动故障转移你的帐户。  
 
 - 即使 Cosmos 帐户具有高可用性，应用程序也不一定能够正常保持高可用性。 若要测试应用程序的端到端高可用性，请在应用程序测试或灾难恢复 (DR) 演练过程中，定期[使用 Azure CLI 或 Azure 门户调用手动故障转移](how-to-manage-database-account.md#manual-failover)。
+
+
+制定业务连续性计划时，需了解应用程序在中断事件发生后完全恢复之前的最大可接受时间。 应用程序完全恢复所需的时间称为恢复时间目标 (RTO)。 此外，还需要了解从中断事件恢复时，应用程序可忍受最近数据更新丢失的最长期限。 可以承受更新丢失的时限称为恢复点目标 (RPO)。
+
+下表显示了最常见方案的 RPO 和 RTO。
+
+|区域数量 |配置 |一致性级别|RPO |RTO |
+|---------|---------|---------|-------|-------|
+|1    | *    |*   | < 240 分钟 | < 1 周 |
+|>1     | 单主数据库复制 | 会话、一致的前缀或最终 | < 15 分钟 | < 15 分钟 |
+|>1     | 单主数据库复制 | 有限过期 | K & T | < 15 分钟 |
+|>1     | 多主数据库复制 | 会话、一致的前缀或最终 | < 15 分钟 | 0 |
+|>1     | 多主数据库复制 | 有限过期 | K & T | 0 |
+|>1     | * | 非常 | 0 | < 15 分钟 |
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -72,3 +86,4 @@ Azure Cosmos DB 以透明方式在与 Cosmos 帐户关联的所有 Azure 区域�
 * [全局缩放预配的吞吐量](scaling-throughput.md)
 * [全球分布 - 揭秘](global-dist-under-the-hood.md)
 * [Azure Cosmos DB 中的一致性级别](consistency-levels.md)
+* [如何在应用程序中配置多主数据库](how-to-multi-master.md)

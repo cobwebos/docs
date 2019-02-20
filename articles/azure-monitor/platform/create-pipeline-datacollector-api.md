@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Log Analytics 数据收集器 API 创建数据管道 | Microsoft Docs
-description: 可以使用 Log Analytics HTTP 数据收集器 API，从能够调用 REST API 的任何客户端将 POST JSON 数据添加到 Log Analytics 存储库。 本文介绍如何以自动方式上传存储在文件中的数据。
+title: 使用 Azure Monitor 数据收集器 API 创建数据管道 | Microsoft Docs
+description: 可以使用 Azure Monitor HTTP 数据收集器 API，从能够调用 REST API 的任何客户端将 POST JSON 数据添加到 Log Analytics 工作区。 本文介绍如何以自动方式上传存储在文件中的数据。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 94d026ce1d055d18a615919df6ed5021b15bf108
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d2736e397827373949da1634a99056420dc13b8a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186066"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003850"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>使用数据收集器 API 创建数据管道
 
-[Log Analytics 数据收集器 API](../../azure-monitor/platform/data-collector-api.md) 用于将自定义数据导入 Log Analytics 中。 唯一要求是数据必须采用 JSON 格式并拆分成 30 MB 或更小的段。 这是一种十分灵活的机制，可以通过多种方式插入：既可通过从应用程序直接发送的数据插入，也可通过一次性即席上传插入。 本文将概述一种常见方案的某些前期要求：需定期自动上传存储在文件中的数据。 虽然此处介绍的管道不会是最有效的（或者从另一个角度来说不会是最优化的），但你可以以它为起点，在将来构建你自己的生产管道。
+使用 [Azure Monitor 数据收集器 API](data-collector-api.md)，可以将任何自定义日志数据导入到 Azure Monitor 中的 Log Analytics 工作区。 唯一要求是数据必须采用 JSON 格式并拆分成 30 MB 或更小的段。 这是一种十分灵活的机制，可以通过多种方式插入：既可通过从应用程序直接发送的数据插入，也可通过一次性即席上传插入。 本文将概述一种常见方案的某些前期要求：需定期自动上传存储在文件中的数据。 虽然此处介绍的管道不会是最有效的（或者从另一个角度来说不会是最优化的），但你可以以它为起点，在将来构建你自己的生产管道。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>示例问题
 本文余下部分，我们会在 Application Insights 中检查页面视图数据。 在我们的假想方案中，我们需要将默认情况下由 Application Insights SDK 收集的地理信息与包含全球每个国家/地区人口的自定义数据关联起来，目的是确定最值得我们投入市场营销费用的地方。 
@@ -42,13 +44,13 @@ ms.locfileid: "53186066"
 
 1. 会通过一个进程来检测是否有新数据上传。  我们的示例使用 [Azure 逻辑应用](../../logic-apps/logic-apps-overview.md)，其提供的触发器可以检测是否有新数据上传到 Blob。
 
-2. 处理器会读取这种新数据并将其转换为 JSON（Log Analytics 要求的格式）。  在此示例中，我们使用 [Azure Function](../../azure-functions/functions-overview.md) 作为一种既轻型又经济高效的方式来执行处理代码。 启动此函数的逻辑应用是我们用来检测新数据的。
+2. 一个处理器将读取此新数据并将其转换为 JSON，这是 Azure Monitor 所需的格式。在此示例中，我们使用 [Azure Function](../../azure-functions/functions-overview.md) 作为一种轻型且经济高效的方式来执行处理代码。 启动此函数的逻辑应用是我们用来检测新数据的。
 
-3. 最后，一旦 JSON 对象可用，就会将它发送到 Log Analytics。 同一逻辑应用使用内置的 Log Analytics 数据收集器活动将数据发送到 Log Analytics。
+3. 最后，一旦 JSON 对象可用，就会将它发送到 Azure Monitor。 同一逻辑应用使用内置的 Log Analytics 数据收集器活动将数据发送到 Azure Monitor。
 
 虽然我们未在本文中概述 Blob 存储、逻辑应用或 Azure Function 的详细设置，但在具体产品的页面上提供了详细说明。
 
-为了监视此管道，我们使用 Application Insights 来监视 Azure Function（[详见此文](../../azure-functions/functions-monitoring.md)），使用 Log Analytics 来监视逻辑应用（[详见此文](../../logic-apps/logic-apps-monitor-your-logic-apps-oms.md)）。 
+为了监视此管道，我们使用 Application Insights 来监视 Azure Function（[详见此文](../../azure-functions/functions-monitoring.md)），使用 Azure Monitor 来监视逻辑应用（[详见此文](../../logic-apps/logic-apps-monitor-your-logic-apps-oms.md)）。 
 
 ## <a name="setting-up-the-pipeline"></a>设置管道
 若要设置管道，请先确保创建并配置 Blob 容器。 同样，请确保创建 Log Analytics 工作区，以便将数据发送到其中。
@@ -136,10 +138,10 @@ ms.locfileid: "53186066"
 ![逻辑应用工作流完整示例](./media/create-pipeline-datacollector-api/logic-apps-workflow-example-02.png)
 
 ## <a name="testing-the-pipeline"></a>测试管道
-现在可以将一个新文件上传到此前配置的 Blob，让逻辑应用对其进行监视。 很快就会看到逻辑应用的新实例启动并调用 Azure Function，然后成功地将数据发送到 Log Analytics。 
+现在可以将一个新文件上传到此前配置的 Blob，让逻辑应用对其进行监视。 很快就会看到逻辑应用的新实例启动并调用 Azure Function，然后成功地将数据发送到 Azure Monitor。 
 
 >[!NOTE]
->首次发送新数据类型时，数据显示在 Log Analytics 中可能需要长达 30 分钟的时间。
+>首次发送新数据类型时，数据显示在 Azure Monitor 中可能需要长达 30 分钟的时间。
 
 
 ## <a name="correlating-with-other-data-in-log-analytics-and-application-insights"></a>与 Log Analytics 和 Application Insights 中的其他数据相关联
@@ -163,7 +165,7 @@ app("fabrikamprod").pageViews
 
 * 在逻辑应用和 Function 中添加错误处理和重试逻辑。
 * 添加逻辑，确保不超出 30MB/单次 Log Analytics 引入 API 调用限制。 根据需要将数据拆分成较小的段。
-* 设置针对 Blob 存储的清理策略。 将数据成功发送到 Log Analytics 以后，除非需要保留原始数据进行存档，否则没有理由继续存储这些数据。 
+* 设置针对 Blob 存储的清理策略。 将数据成功发送到 Log Analytics 工作区以后，除非需要保留原始数据进行存档，否则没有理由继续存储这些数据。 
 * 验证是否已在整个管道中启用监视功能，根据需要添加跟踪点和警报。
 * 利用源代码管理对函数和逻辑应用的代码进行管理。
 * 确保遵循适当的更改管理策略，在架构更改时对函数和逻辑应用进行相应的修改。
@@ -171,4 +173,4 @@ app("fabrikamprod").pageViews
 
 
 ## <a name="next-steps"></a>后续步骤
-详细了解如何使用[数据收集器 API](../../azure-monitor/platform/data-collector-api.md) 将数据从任何 REST API 客户端写入到 Log Analytics。
+详细了解如何使用[数据收集器 API](data-collector-api.md) 将数据从任何 REST API 客户端写入到 Log Analytics 工作区。

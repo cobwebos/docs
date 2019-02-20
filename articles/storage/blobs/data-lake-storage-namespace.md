@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Storage Gen2 预览版分层命名空间
-description: 说明 Azure Data Lake Storage Gen2 预览版分层命名空间的概念
+title: Azure Data Lake Storage Gen2 分层命名空间
+description: 讲述了 Azure Data Lake Storage Gen2 分层命名空间的概念
 services: storage
 author: jamesbak
 ms.service: storage
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 967e24ae6e004fe6ce2b1c0aa6c039f46be2598c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b423d40884dd9132312e79ba0cbff00b8771b207
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244498"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877025"
 ---
-# <a name="azure-data-lake-storage-gen2-preview-hierarchical-namespace"></a>Azure Data Lake Storage Gen2 预览版分层命名空间
+# <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Azure Data Lake Storage Gen2 分层命名空间
 
-一种关键机制，允许 Azure Data Lake Storage Gen2 预览版以对象存储规模和价格提供文件系统性能，是“分层命名空间”的新增内容。 此机制支持按照整理计算机上文件系统的相同方式，将帐户内的对象/文件集合整理成一个包含目录和嵌套子目录的层次结构。 启用分层命名空间后，存储帐户便可通过分析引擎和框架所熟悉的文件系统语义，提供可扩展和具有成本效益的对象存储。
+一种关键机制，允许 Azure Data Lake Storage Gen2 以对象存储规模和价格提供文件系统性能，是**分层命名空间**的新增内容。 此机制支持按照整理计算机上文件系统的相同方式，将帐户内的对象/文件集合整理成一个包含目录和嵌套子目录的层次结构。 启用分层命名空间后，存储帐户便可通过分析引擎和框架所熟悉的文件系统语义，提供可扩展和具有成本效益的对象存储。
 
 ## <a name="the-benefits-of-the-hierarchical-namespace"></a>分层命名空间服务的优点
 
@@ -29,18 +29,17 @@ ms.locfileid: "55244498"
 
 - **熟悉的界面样式：** 文件系统被开发人员和用户及相关人员所熟知。 无需在迁移到云时学习新的存储范例，因为 Data Lake Storage Gen2 公开的文件系统界面与大型和小型计算机使用相同的范例。
 
-对象存储以前不支持分层命名空间，原因之一是分层命名空间的规模有限。 但是，Data Lake Storage Gen2 分层命名空间以线性方式扩展，并且不会降低数据容量或性能。
+对象存储以前不支持分层命名空间，原因之一是分层命名空间会限制规模。 但是，Data Lake Storage Gen2 分层命名空间以线性方式扩展，并且不会降低数据容量或性能。
 
 ## <a name="when-to-enable-the-hierarchical-namespace"></a>何时启用分层命名空间
 
-对于为操作目录的文件系统设计的存储工作负荷，建议启用分层命名空间。 这包括主要用于分析处理的所有工作负荷。 启用分层命名空间对于需要高度整理的数据集同样有益处。
+对于为执行目录操作的文件系统设计的存储工作负荷，建议为其启用分层命名空间。 这包括主要用于分析处理的所有工作负荷。 启用分层命名空间对于需要高度整理的数据集同样有益处。
 
 启用分层命名空间的原因由 TCO 分析确定。 一般而言，由于存储加速改善工作负荷延迟，所需的计算资源时间将会缩短。 由于分层命名空间启用的原子目录操作，许多工作负荷的延迟可能会得到改善。 在许多工作负荷中，计算资源占总成本的 85% 以上，因此即使适度减少工作负荷延迟，也相当于大量节省了 TCO。 即使启用分层命名空间会增加存储成本，但由于降低了计算成本，TCO 仍然会降低。
 
 ## <a name="when-to-disable-the-hierarchical-namespace"></a>何时禁用分层命名空间
 
-某些对象存储工作负荷可能无法通过启用分层命名空间获得任何益处。 此类工作负荷的示例包括备份、图像存储和其他应用程序，其中对象组织与对象本身分开存储（例如，存储在单独的数据库中）。
-
+某些对象存储工作负荷可能无法通过启用分层命名空间获得任何益处。 示例包括备份、图像存储和其他应用程序，其中对象组织与对象本身分开存储（例如，存储在单独的数据库中）。
 
 ## <a name="next-steps"></a>后续步骤
 

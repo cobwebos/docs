@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
 ms.subservice: common
-ms.openlocfilehash: a4e115194d7e903edae4b4713c4f65eef9895cbf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c9009e898b00212dba4dec9bf38af2bfa057b8ea
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467112"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244600"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>使用 AzCopy v10（预览版）传输数据
 
@@ -54,8 +54,11 @@ AzCopy v10 不需要安装。 打开首选命令行应用程序并导航到 `azc
 ## <a name="authentication-options"></a>身份验证选项
 
 使用 Azure 存储进行身份验证时，AzCopy v10 允许你使用以下选项：
-- **Azure Active Directory [在 Blob 和 ADLS Gen2 上受支持]**。 借助 Azure Active Directory，使用 ```.\azcopy login``` 登录。  用户应具有[分配的“存储 Blob 数据参与者”角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac)，以便使用 Azure Active Directory 身份验证写入 Blob 存储。
-- **SAS 令牌 [在 Blob 和文件服务上受支持]**。 在命令行上将 SAS 令牌追加到 blob 路径以使用它。 可以使用 Azure 门户、[存储资源管理器](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)、[PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken) 或所选择的其他工具生成 SAS 令牌。 有关详细信息，请参阅[示例](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)。
+- **Azure Active Directory [支持用于 Blob 和 ADLS Gen2 服务]**。 借助 Azure Active Directory，使用 ```.\azcopy login``` 登录。  用户应具有[分配的“存储 Blob 数据参与者”角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac)，以便使用 Azure Active Directory 身份验证写入 Blob 存储。
+- **SAS 令牌 [支持用于 Blob 和文件服务]**。 在命令行上将 SAS 令牌追加到 blob 路径以使用它。 可以使用 Azure 门户、[存储资源管理器](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)、[PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken) 或所选择的其他工具生成 SAS 令牌。 有关详细信息，请参阅[示例](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)。
+
+> [!IMPORTANT]
+> 向 Microsoft 支持部门提交支持请求时（或者排查涉及第三方的问题时），请共享你尝试执行的命令的经修订版本，以确保不会意外地与任何人共享 SAS。 可以在日志文件的开头找到经修订的版本。 有关更多详细信息，请查看本文下文中的“故障排除”部分。
 
 ## <a name="getting-started"></a>入门
 
@@ -206,11 +209,33 @@ set AZCOPY_CONCURRENCY_VALUE=<value>
 export AZCOPY_CONCURRENCY_VALUE=<value>
 # For MacOS
 export AZCOPY_CONCURRENCY_VALUE=<value>
+# To check the current value of the variable on all the platforms
+.\azcopy env
+# If the value is blank then the default value is currently in use
 ```
 
 ## <a name="troubleshooting"></a>故障排除
 
-AzCopy v10 为所有作业创建日志文件和计划文件。 可以使用日志调查并解决任何潜在问题。 日志包含失败状态（UPLOADFAILED、COPYFAILED 和 DOWNLOADFAILED）、完整路径以及失败原因。 作业日志和计划文件位于 %USERPROFILE\\.azcopy 文件夹。
+AzCopy v10 为所有作业创建日志文件和计划文件。 可以使用日志调查并解决任何潜在问题。 日志包含失败状态（UPLOADFAILED、COPYFAILED 和 DOWNLOADFAILED）、完整路径以及失败原因。 作业日志和计划文件在 Windows 上位于 %USERPROFILE\\.azcopy 文件夹中，在 Mac 和 Linux 上位于 $HOME\\.azcopy 文件夹中。
+
+> [!IMPORTANT]
+> 向 Microsoft 支持部门提交支持请求时（或者排查涉及第三方的问题时），请共享你尝试执行的命令的经修订版本，以确保不会意外地与任何人共享 SAS。 可以在日志文件的开头找到经修订的版本。
+
+### <a name="change-the-location-of-the-log-files"></a>更改日志文件的位置
+
+你可以更改日志文件的位置以满足需要或者避免填满 OS 磁盘。
+
+```cmd
+# For Windows:
+set AZCOPY_LOG_LOCATION=<value>
+# For Linux:
+export AZCOPY_LOG_LOCATION=<value>
+# For MacOS
+export AZCOPY_LOG_LOCATION=<value>
+# To check the current value of the variable on all the platforms
+.\azcopy env
+# If the value is blank then the default value is currently in use
+```
 
 ### <a name="review-the-logs-for-errors"></a>查看错误日志
 

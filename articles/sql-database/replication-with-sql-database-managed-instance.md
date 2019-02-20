@@ -1,6 +1,6 @@
 ---
-title: 在 Azure SQL 数据库托管实例中配置复制 | Microsoft Docs
-description: 了解如何在 Azure SQL 数据库托管实例中配置事务复制
+title: 在 Azure SQL 数据库托管实例数据库中配置复制 | Microsoft Docs
+description: 了解如何在 Azure SQL 数据库托管实例数据库中配置事务复制
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,28 +11,28 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: b0188a0983ea18490f3997b857386e313daa58ed
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/07/2019
+ms.openlocfilehash: 038d8c919e68e68f886525a6c78139496edef8e1
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467657"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893005"
 ---
-# <a name="configure-replication-in-azure-sql-database-managed-instance"></a>在 Azure SQL 数据库托管实例中配置复制
+# <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>在 Azure SQL 数据库托管实例数据库中配置复制
 
-通过事务复制，可以将数据从 SQL Server 或 Azure SQL 数据库托管实例数据库复制到托管实例，或将托管实例的数据库中所做的更改推送到其他 SQL Server、SQL 数据库单一数据库或弹性池，或其他托管实例。 复制在 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)上以公共预览版提供。 托管实例可以托管发布服务器、分发服务器和订阅服务器数据库。 有关可用配置，请参阅[事务复制配置](sql-database-managed-instance-transactional-replication.md#common-configurations)。
+使用事务复制，可将数据从 SQL Server 数据库或其他实例数据库复制到 Azure SQL 数据库托管实例数据库中。 还可以使用事务复制将在 Azure SQL 数据库托管实例中的实例数据库中所做的更改推送到 SQL Server 数据库，推送到 Azure SQL 数据库中的单一数据库或推送到 Azure SQL 数据库弹性池中的入池数据库。 事务复制在 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)上以公共预览版提供。 托管实例可以托管发布服务器、分发服务器和订阅服务器数据库。 有关可用配置，请参阅[事务复制配置](sql-database-managed-instance-transactional-replication.md#common-configurations)。
 
 ## <a name="requirements"></a>要求
 
-Azure SQL 数据库上的发布服务器和分发服务器需要：
+配置充当发布服务器或分发服务器的托管实例需要满足以下要求：
 
-- 不在异地灾难恢复配置中的 Azure SQL 数据库托管实例。
+- 该托管实例当前未加入异地复制关系。
 
    >[!NOTE]
-   >尚未使用托管实例进行配置的 Azure SQL 数据库只能是订阅服务器。
+   >Azure SQL 数据库中的单一数据库和入池数据库只能用作订阅服务器。
 
-- SQL Server 的所有实例需要在同一 vNet 上。
+- 所有托管实例必须位于同一 vNet 中。
 
 - 连接时，在复制参与者之间使用 SQL 身份验证。
 
@@ -44,16 +44,13 @@ Azure SQL 数据库上的发布服务器和分发服务器需要：
 
 支持：
 
-- 事务和快照复制混合，混合了本地和 Azure SQL 数据库托管实例。
-
-- 订阅服务器可以是本地的，可以是 Azure SQL 数据库中的单一数据库，还可以是 Azure SQL 数据库弹性池中的入池数据库。
-
+- 对本地实例和 Azure SQL 数据库中的托管实例混合使用事务复制和快照复制。
+- 订阅服务器可以位于本地 SQL Server 数据库中、Azure SQL 数据库中的单一数据库中，也可以位于 Azure SQL 数据库弹性池中的入池数据库中。
 - 单向或双向复制。
 
-不支持以下功能：
+Azure SQL 数据库中的托管实例不支持以下功能：
 
 - 可更新的订阅。
-
 - 活动异地复制。
 
 ## <a name="configure-publishing-and-distribution-example"></a>配置发布和分发示例
@@ -63,9 +60,9 @@ Azure SQL 数据库上的发布服务器和分发服务器需要：
 
    确保复制存储密钥。 请参阅[查看和复制存储访问密钥](../storage/common/storage-account-manage.md#access-keys
 )。
-3. 为发布服务器创建数据库。
+3. 为发布服务器创建实例数据库。
 
-   在下面的示例脚本中，请将 `<Publishing_DB>` 替换为此数据库的名称。
+   在下面的示例脚本中，请将 `<Publishing_DB>` 替换为实例数据库的名称。
 
 4. 使用适用于发布服务器的 SQL 身份验证创建数据库用户。 使用安全密码。
 

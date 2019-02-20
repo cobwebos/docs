@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics 查询中的 workspace() 表达式 | Microsoft Docs
-description: workspace 表达式用于 Log Analytics 查询，以从同一资源组、另一个资源组或另一个订阅的特定工作区中检索数据。
+title: Azure Monitor 日志查询中的 workspace() 表达式 | Microsoft Docs
+description: workspace 表达式用于 Azure Monitor 日志查询中，以从同一资源组、另一个资源组或另一个订阅的特定工作区中检索数据。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
-ms.openlocfilehash: 24a737a728b0a249fda76cbff481bea284ac24aa
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1d1bb3c99c82683dde9247da86e80d800fe06631
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53182938"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992971"
 ---
-# <a name="workspace-expression-in-log-analytics-query"></a>Log Analytics 查询中的 workspace() 表达式
+# <a name="workspace-expression-in-azure-monitor-log-query"></a>Azure Monitor 日志查询中的 workspace() 表达式
 
-`workspace` 表达式用于 Log Analytics 查询，以从同一资源组、另一个资源组或另一个订阅的特定工作区中检索数据。 此表达式适用于在 Log Analytics 查询中包含日志数据以及在日志查询中在多个工作区上查询数据。
+`workspace` 表达式用于 Azure Monitor 查询中，以从同一资源组、另一个资源组或另一个订阅的特定工作区中检索数据。 此表达式适用于在 Log Analytics 查询中包含日志数据以及在日志查询中在多个工作区上查询数据。
 
 
 ## <a name="syntax"></a>语法
@@ -33,7 +33,7 @@ ms.locfileid: "53182938"
 
 - 标识符：使用下表中的某种格式标识工作区。
 
-| 标识符 | Description | 示例
+| 标识符 | 说明 | 示例
 |:---|:---|:---|
 | 资源名称 | 人工可读的工作区名称（又称“组件名称”） | workspace("contosoretail") |
 | 限定的名称 | 窗体中工作区的完整名称：“subscriptionName/resourceGroup/componentName” | workspace('Contoso/ContosoResource/ContosoWorkspace') |
@@ -71,5 +71,6 @@ union
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅[应用表达式](workspace-expression.md)，以引用 Application Insights 应用。
-- 阅读有关 [Log Analytics 数据](../../azure-monitor/log-query/log-query-overview.md)的存储方式的信息。
+- 参阅[应用表达式](app-expression.md)来引用 Application Insights 应用。
+- 了解 [Azure Monitor 数据是如何存储的](log-query-overview.md)。
+- 访问有关[数据资源管理器查询语言](/azure/kusto/query/)的完整文档。

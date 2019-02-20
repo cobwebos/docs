@@ -1,6 +1,6 @@
 ---
-title: 查看和分析 Azure Log Analytics 中的数据 | Microsoft Docs
-description: 本文介绍可用于在 Azure Log Analytics 中创建和编辑日志搜索的门户。
+title: 查看和分析 Azure Monitor 中的日志数据 | Microsoft Docs
+description: 本文介绍了如何使用 Azure 门户中的 Log Analytics 在 Azure Monitor 中创建和编辑日志查询。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -10,22 +10,19 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 12/22/2018
 ms.author: bwren
-ms.openlocfilehash: 9a5472a6dfc944eb793e863704897c92b1a7572e
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 6e84344e1c0229d15891bd15a512880da6e20cfe
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183346"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110755"
 ---
-# <a name="viewing-and-analyzing-data-in-log-analytics"></a>查看和分析 Log Analytics 中的数据
-Azure 门户中提供了两个选项用于分析 Log Analytics 中存储的数据，以及为即席分析创建查询。 使用这些门户创建的查询可用于其他功能，例如警报和仪表板。
+# <a name="viewing-and-analyzing-log-data-in-azure-monitor"></a>查看和分析 Azure Monitor 中的日志数据
+Log Analytics 是用于在 Azure Monitor 中处理日志数据以及创建查询的主要体验。 从 **Azure Monitor** 菜单中的“日志”打开 Log Analytics。 可以在 [Azure 门户中的 Log Analytics 入门](get-started-portal.md)中了解此门户及其功能。
 
-## <a name="log-analytics-page"></a>Log Analytics 页
-通过 Log Analytics 菜单中的“日志”打开 Log Analytics 页。 这是用于处理日志数据和创建查询的新体验。 [Azure 门户中的 Log Analytics 页入门](../../azure-monitor/log-query/get-started-portal.md)中介绍了此门户及其功能。
-
-Log Analytics 页在[日志搜索（经典版）](#log-search-classic)体验的基础上提供了以下改进。
+Log Analytics 提供了用于处理日志查询的以下功能。
 
 * 多个选项卡 - 创建单独的选项卡来处理多个查询。
 * 丰富的可视化效果 – 各种图表选项。
@@ -38,14 +35,14 @@ Log Analytics 页在[日志搜索（经典版）](#log-search-classic)体验的�
 * 列选择 – 对查询结果中的列进行排序和分组。
 
 > [!NOTE]
-> Log Analytics 页的功能与高级分析门户（Azure 门户外部的工具）相同。 高级分析门户仍然可用，但在 Azure 门户中对它的链接和其他引用即将由此新页取代。
+> Log Analytics 的功能与高级分析门户（Azure 门户外的一个外部工具）相同。 高级分析门户仍然可用，但在 Azure 门户中对它的链接和其他引用即将由此新页取代。
 
-![高级分析门户](media/portals/advanced-analytics-portal.png)
+![Log Analytics](media/portals/log-analytics.png)
 
 ### <a name="resource-logs"></a>资源日志
-新的 Log Analytics 体验与各种 Azure 资源（如虚拟机）集成在一起。 这意味着你可以直接通过资源的监控菜单打开 Log Analytics 页面，而无需切换到 Azure Monitor 或 Log Analytics 而导致丢失资源上下文。 所有 Azure 资源都尚未启用日志，但日志将开始出现在门户菜单中，记录不同的资源类型。
+Log Analytics 集成了各种 Azure 资源（例如虚拟机）。 这意味着你可以直接通过资源的监控菜单打开 Log Analytics，而无需切换到 Azure Monitor 以致丢失资源上下文。 所有 Azure 资源都尚未启用日志，但日志将开始出现在门户菜单中，记录不同的资源类型。
 
-在从特定资源打开 Log Analytics 时，它会自动限定为只记录该资源的记录。   如果要编写包含其他记录的查询，则需要从 Log Analytics 或 Azure Monitor 菜单中打开该查询。
+在从特定资源打开 Log Analytics 时，它会自动限定为只记录该资源的记录。   如果要编写包含其他记录的查询，则需要从 Azure Monitor 菜单中打开该查询。
 
 Log Analytics 的资源视图中尚不提供以下选项：
 
@@ -56,7 +53,7 @@ Log Analytics 的资源视图中尚不提供以下选项：
 
 
 ### <a name="firewall-requirements"></a>防火墙要求
-浏览器需要访问以下地址才能访问 Log Analytics 页和高级分析门户。  如果浏览器通过防火墙访问 Azure 门户，则必须允许访问这些地址。
+浏览器需要访问以下地址才能访问 Log Analytics。  如果浏览器通过防火墙访问 Azure 门户，则必须允许访问这些地址。
 
 | Uri | IP | 端口 |
 |:---|:---|:---|
@@ -66,15 +63,15 @@ Log Analytics 的资源视图中尚不提供以下选项：
 
 
 ## <a name="log-search-classic"></a>日志搜索（经典）
-通过 Log Analytics 菜单中的“日志(经典)”或者 Azure Monitor 菜单中的“Log Analytics”打开日志搜索页。 这是用于处理 Log Analytics 查询的经典页面，该页面缺少上面 [Log Analytics 页面](#log-analytics-page)列出的附加功能。
+日志搜索是 Azure 门户中的旧体验，用于查询和分析 Azure Monitor 中的日志数据。 它很快将停用，但目前仍可用。 从 Log Analytics 菜单中的“日志(经典)”打开日志搜索。
 
 
 
-![日志搜索页面](media/portals/log-search-portal.png)
+![日志搜索](media/portals/log-search-portal.png)
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 完成有关使用[日志搜索](../../azure-monitor/learn/tutorial-viewdata.md)的教程，了解如何使用查询语言创建查询
-- 完成[有关使用高级分析门户的课程](../../azure-monitor/log-query/get-started-portal.md)，该门户提供与 Log Analytics 页相同的体验。
+- 完成[有关使用 Log Analytics 的教程](../../azure-monitor/log-query/get-started-portal.md)。
+- 完成[有关使用日志搜索的教程](../../azure-monitor/learn/tutorial-viewdata.md)。
 

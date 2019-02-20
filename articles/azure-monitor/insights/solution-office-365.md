@@ -1,6 +1,6 @@
 ---
 title: Azure 中的 Office 365 管理解决方案 | Microsoft Docs
-description: 本文详细介绍如何配置和使用 Azure 中的 Office 365 解决方案。  包括详细阐释 Log Analytics 中创建的 Office 365 记录。
+description: 本文详细介绍如何配置和使用 Azure 中的 Office 365 解决方案。  它还详细介绍了在 Azure Monitor 中创建的 Office 365 记录。
 services: operations-management-suite
 documentationcenter: ''
 author: bwren
@@ -12,24 +12,24 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 370483b92dcd2c468cd676a32db0ded80e8814d0
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 92ba185ce3c271284ae20981408b2b12f516e3c8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216606"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999294"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
 ![Office 365 徽标](media/solution-office-365/icon.png)
 
-通过 Office 365 管理解决方案，可在 Log Analytics 中监视 Office 365 环境。
+通过 Office 365 管理解决方案，可在 Azure Monitor 中监视 Office 365 环境。
 
 - 监视 Office 365 帐户的用户活动，以分析使用模式并确定行为趋势。 例如，可提取特定使用方案，例如组织外共享的文件或最常用的 SharePoint 网站。
 - 监视管理员活动，以跟踪配置更改或高特权操作。
 - 检测并调查多余的用户行为，此操作可根据组织需求进行自定义。
 - 演示审核和符合性。 例如，可监视对机密文件的文件访问操作，这对审核和符合性进程有所帮助。
-- 通过对组织的 Office 365 活动数据使用[日志搜索](../log-query/log-query-overview.md)，执行操作故障排除。
+- 通过对组织的 Office 365 活动数据使用[日志查询](../log-query/log-query-overview.md)，执行操作故障排除。
 
 ## <a name="prerequisites"></a>先决条件
 需要以下各项才能安装和配置此解决方案。
@@ -43,7 +43,7 @@ ms.locfileid: "55216606"
 此解决方案不会在[连接的管理组](../platform/om-agents.md)中安装任何管理包。
   
 ## <a name="install-and-configure"></a>安装和配置
-首先，[将 Office 365 解决方案添加到你的订阅](solutions.md#install-a-management-solution)。 添加后，必须执行本部分中的配置步骤来向其授予对你的 Office 365 订阅的访问权限。
+首先，[将 Office 365 解决方案添加到你的订阅](solutions.md#install-a-monitoring-solution)。 添加后，必须执行本部分中的配置步骤来向其授予对你的 Office 365 订阅的访问权限。
 
 ### <a name="required-information"></a>必需的信息
 在开始此过程之前，收集以下信息。
@@ -375,7 +375,7 @@ At line:12 char:18
 ```
 
 ## <a name="uninstall"></a>卸载
-可以使用[删除管理解决方案](solutions.md#remove-a-management-solution)中的过程删除 Office 365 管理解决方案。 但是，这不会停止将数据从 Office 365 收集到 Log Analytics 中。 请按照下面的过程来取消订阅 Office 365 并停止收集数据。
+可以使用[删除管理解决方案](solutions.md#remove-a-monitoring-solution)中的过程删除 Office 365 管理解决方案。 但是，这不会停止将数据从 Office 365 收集到 Azure Monitor 中。 请按照下面的过程来取消订阅 Office 365 并停止收集数据。
 
 1. 将以下脚本保存为 office365_unsubscribe.ps1。
 
@@ -479,9 +479,12 @@ At line:12 char:18
 Office 365 解决方案不会从任何 [Log Analytics 代理](../platform/agent-data-sources.md)中检索数据。  而直接从 Office 365 检索数据。
 
 ### <a name="collection-frequency"></a>收集频率
-初次收集数据可能需要几个小时。 在开始收集后，每次创建记录时，Office 365 都会向 Log Analytics 发送带详细数据的 [webhook 通知](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications)。 在收到此记录几分钟后，此记录将出现在 Log Analytics 中。
+初次收集数据可能需要几个小时。 在开始收集后，每次创建记录时，Office 365 都会向 Azure Monitor 发送带详细数据的 [webhook 通知](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications)。 在收到此记录几分钟后，此记录将出现在 Azure Monitor 中。
 
 ## <a name="using-the-solution"></a>使用解决方案
+
+[!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
+
 向 Log Analytics 工作区添加 Office 365 解决方案时，“Office 365”磁贴将添加到你的仪表板。 此磁贴显示环境中计算机数量及其更新符合性的计数和图形表示形式。<br><br>
 ![Office 365 摘要磁贴](media/solution-office-365/tile.png)  
 
@@ -501,9 +504,9 @@ Office 365 解决方案不会从任何 [Log Analytics 代理](../platform/agent-
 
 
 
-## <a name="log-analytics-records"></a>Log Analytics 记录
+## <a name="azure-monitor-log-records"></a>Azure Monitor 日志记录
 
-Office 365 解决方案在 Log Analytics 工作区中创建的所有记录都具有 OfficeActivity 类型。  OfficeWorkload 属性确定记录所指的 Office 365 服务 - Exchange、AzureActiveDirectory、SharePoint 或 OneDrive。  RecordType 属性指定操作的类型。  每种操作类型的属性都不同，详情请见下表。
+对于 Office 365 解决方案在 Azure Monitor 中的 Log Analytics 工作区中创建的所有记录，其类型都是 **OfficeActivity**。  OfficeWorkload 属性确定记录所指的 Office 365 服务 - Exchange、AzureActiveDirectory、SharePoint 或 OneDrive。  RecordType 属性指定操作的类型。  每种操作类型的属性都不同，详情请见下表。
 
 ### <a name="common-properties"></a>通用属性
 以下属性对于所有 Office 365 记录通用。
@@ -708,6 +711,6 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Log Analytics](../log-query/log-query-overview.md) 中的日志搜索可查看详细的更新数据。
+* 使用 [Azure Monitor 中的日志查询](../log-query/log-query-overview.md)查看详细的更新数据。
 * [创建自己的仪表板](../learn/tutorial-logs-dashboards.md)，显示最喜欢的 Office 365 搜索查询。
 * [创建警报](../platform/alerts-overview.md)，主动接收重要的 Office 365 活动通知。  

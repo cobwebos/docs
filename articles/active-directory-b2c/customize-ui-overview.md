@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 02/07/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c81701dff8d7eebf08aa6b16c61e6915a905c729
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 767e64d4d53702ede7b55edc747366ab3d32ae4d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172708"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996093"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>有关 Azure Active Directory B2C 中的用户界面自定义
 
@@ -24,17 +24,19 @@ ms.locfileid: "55172708"
 根据你对于这些体验的不同需求，可通过不同方式自定义应用程序的 UI。 例如：
 
 - 如果使用[用户流](active-directory-b2c-reference-policies.md)在应用程序中提供注册或登录、密码重置或配置文件编辑体验，则可使用 [Azure 门户来自定义 UI](tutorial-customize-ui.md)。
+- 如果使用的是 v2 用户流，则可以使用[页面布局模板](#page-layout-templates)来更改用户流页面的外观，无需进一步进行自定义。 例如，可以在用户流中的所有页面中应用海蓝或石板灰主题。
 - 如果提供仅登录、其伴随的密码重置页面和验证电子邮件，请使用与 [Azure AD 登录页面](../active-directory/fundamentals/customize-branding.md)相同的自定义步骤。
 - 如果客户在登录前尝试编辑其个人资料，则会将其重定向到使用与自定义 Azure AD 登录页面相同的步骤进行自定义的页面。
 - 如果使用[自定义策略](active-directory-b2c-overview-custom.md)在应用程序中提供注册或登录、密码重置或配置文件编辑，则可使用[策略文件来自定义 UI](active-directory-b2c-ui-customization-custom.md)。
 - 如果需要根据客户的决策提供动态内容，则可使用可根据查询字符串中发送的参数[更改页面内容的自定义策略](active-directory-b2c-ui-customization-custom-dynamic.md)。 例如，可以基于从 Web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。
+- 可以在 Azure AD B2C [用户流](user-flow-javascript-overview.md)或[自定义策略](page-contract.md)中启用 JavaScript 客户端代码。
 
 Azure AD B2C 在客户的浏览器中运行代码，并使用称为[跨域资源共享 (CORS)](https://www.w3.org/TR/cors/) 的新式方法。 在运行时，从在用户流或策略中指定的 URL 加载内容。 可以为不同的页面指定不同的 URL。 从 URL 加载的内容与从 Azure AD B2C 插入的 HTML 片段合并后，会向客户显示页面。
 
-在开始之前，请查看以下指南：
+使用自己的 HTML 和 CSS 文件来自定义 UI 时，在开始之前请查看以下指南：
 
 - 使用 Azure AD B2C 将 HTML 内容合并到页面中。 请勿复制并尝试更改 Azure AD B2C 提供的默认内容。 最好从头开始构建 HTML5 内容，将默认内容用作参考。
-- 出于安全考虑，不允许你在自己的内容中包含 JavaScript。
+- 现在可以在自定义内容中包括 JavaScript。
 - 支持的浏览器版本： 
     - Internet Explorer 11、10 和 Microsoft Edge
     - 对 Internet Explorer 9 和 8 的支持有限
@@ -42,9 +44,23 @@ Azure AD B2C 在客户的浏览器中运行代码，并使用称为[跨域资源
     - Mozilla Firefox 38.0 和更高版本
 - 请确保在 HTML 中不包括窗体标记，因为这会干扰从 Azure AD B2C 注入的 HTML 生成的 POST 操作。
 
+## <a name="page-layout-templates"></a>页面布局模板
+
+对于 v2 用户流，你可以选择一个预先设计的模板，它为你的默认页面提供更好的外观，并用作你的自定义的良好基础。
+
+在左侧菜单中，在“自定义”下选择“页面布局”。 然后，选择“模板(预览版)”。
+
+![选择一个页面布局模板](media/customize-ui-overview/template.png)
+
+从列表中选择一个模板。 例如，“海蓝”模板向用户流页面应用以下布局：
+
+![“海蓝”模板](media/customize-ui-overview/ocean-blue.png)
+
+选择某个模板时，选定的布局将应用于用户流中的所有页面，并且每个页面的 URI 将显示在“自定义页面 URI”字段中。
+
 ## <a name="where-do-i-store-ui-content"></a>在何处存储 UI 内容？
 
-可以在任何位置托管 UI 内容，例如 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)、Web 服务器、CDN、AWS S3 或文件共享系统。 重要的一点是，可以在启用了 CORS 的公共 HTTPS 终结点上托管内容。 在内容中指定绝对 URL 时，必须使用绝对 URL。
+使用自己的 HTML 和 CSS 文件来自定义 UI 时，可以在任何位置托管 UI 内容，例如 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)、Web 服务器、CDN、AWS S3 或文件共享系统。 重要的一点是，可以在启用了 CORS 的公共 HTTPS 终结点上托管内容。 在内容中指定绝对 URL 时，必须使用绝对 URL。
 
 ## <a name="how-do-i-get-started"></a>如何入门？
 

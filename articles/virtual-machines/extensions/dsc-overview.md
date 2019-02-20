@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 18d6478763fd6551cc8baac6ea54e8d91f1a28e6
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: e5e134fa7dd08bad4220866dd4f5bd9b788e624e
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45629962"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980595"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 扩展处理程序简介
 
@@ -35,8 +35,8 @@ Azure Desired State Configuration (DSC) 扩展的主要用例是让 VM 启动到
 
 ## <a name="prerequisites"></a>先决条件
 
-- **本地计算机** - 若要与 Azure VM 扩展交互，必须使用 Azure 门户或 Azure PowerShell SDK。
-- **来宾代理** - 使用 DSC 配置进行配置的 Azure VM 必须采用支持 Windows Management Framework (WMF) 4.0 或更高版本的 OS。 有关支持的 OS 版本的完整列表，请参阅 [DSC 扩展版本历史记录](/powershell/dsc/azuredscexthistory)。
+- **本地计算机**：若要与 Azure VM 扩展交互，必须使用 Azure 门户或 Azure PowerShell SDK。
+- **来宾代理**：使用 DSC 配置进行配置的 Azure VM 必须采用支持 Windows Management Framework (WMF) 4.0 或更高版本的 OS。 有关支持的 OS 版本的完整列表，请参阅 [DSC 扩展版本历史记录](/powershell/dsc/azuredscexthistory)。
 
 ## <a name="terms-and-concepts"></a>术语和概念
 
@@ -44,7 +44,7 @@ Azure Desired State Configuration (DSC) 扩展的主要用例是让 VM 启动到
 
 - **配置**：DSC 配置文档。
 - **节点**：DSC 配置的目标。 在本文档中，“节点”一律指 Azure VM。
-- **配置数据**：包含配置环境数据的 psd1 文件。
+- **配置数据**：包含配置的环境数据的 psd1 文件。
 
 ## <a name="architecture"></a>体系结构
 
@@ -70,17 +70,17 @@ Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Aut
 
 用于管理 DSC 扩展的 PowerShell cmdlet 最适合用于交互式故障排除和信息收集方案。 可以使用 cmdlet 来打包、发布和监视 DSC 扩展部署。 DSC 扩展的 cmdlet 尚未更新，无法使用[默认配置脚本](#default-configuration-script)。
 
-**Publish-AzureRmVMDscConfiguration** cmdlet 检索配置文件，扫描其中是否有依赖的 DSC 资源，然后创建一个 .zip 文件。 该 .zip 文件包含启用配置所需的配置和 DSC 资源。 该 cmdlet 还可以使用 -OutputArchivePath 参数在本地创建包。 否则，该 cmdlet 会将 .zip 文件发布到 Blob 存储，然后使用 SAS 令牌保护该文件。
+**Publish-AzVMDscConfiguration** cmdlet 检索配置文件，扫描其中是否有依赖的 DSC 资源，然后创建一个 .zip 文件。 该 .zip 文件包含启用配置所需的配置和 DSC 资源。 该 cmdlet 还可以使用 -OutputArchivePath 参数在本地创建包。 否则，该 cmdlet 会将 .zip 文件发布到 Blob 存储，然后使用 SAS 令牌保护该文件。
 
 该 cmdlet 创建的 .ps1 配置脚本位于存档文件夹根目录中的 .zip 文件内。 模块文件夹位于资源的存档文件夹中。
 
-**Set-AzureRmVMDscExtension** cmdlet 将 PowerShell DSC 扩展所需的设置注入 VM 配置对象。
+**Set-AzVMDscExtension** cmdlet 将 PowerShell DSC 扩展所需的设置注入 VM 配置对象。
 
-**Get-AzureRmVMDscExtension** cmdlet 检索特定 VM 的 DSC 扩展状态。
+**Get-AzVMDscExtension** cmdlet 检索特定 VM 的 DSC 扩展状态。
 
-**Get-AzureRmVMDscExtensionStatus** cmdlet 检索由 DSC 扩展处理程序启用的 DSC 配置的状态。 可在一个或一组 VM 上执行此操作。
+**Get-AzVMDscExtensionStatus** cmdlet 检索由 DSC 扩展处理程序启用的 DSC 配置的状态。 可在一个或一组 VM 上执行此操作。
 
-**Remove-AzureRmVMDscExtension** cmdlet 从特定的 VM 中删除扩展处理程序。 此 cmdlet 不会删除配置、卸载 WMF 或更改 VM 上已应用的设置。 而只删除扩展处理程序。 
+**Remove-AzVMDscExtension** cmdlet 从特定的 VM 中删除扩展处理程序。 此 cmdlet 不会删除配置、卸载 WMF 或更改 VM 上已应用的设置。 而只删除扩展处理程序。 
 
 有关资源管理器 DSC 扩展 cmdlet 的重要信息：
 
@@ -117,9 +117,9 @@ $location = 'westus'
 $vmName = 'myVM'
 $storageName = 'demostorage'
 #Publish the configuration script to user storage
-Publish-AzureRmVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupName $resourceGroup -StorageAccountName $storageName -force
+Publish-AzVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupName $resourceGroup -StorageAccountName $storageName -force
 #Set the VM to run the DSC configuration
-Set-AzureRmVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate $true -ConfigurationName 'IISInstall'
+Set-AzVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate $true -ConfigurationName 'IISInstall'
 ```
 
 ## <a name="azure-portal-functionality"></a>Azure 门户功能
@@ -139,7 +139,7 @@ Set-AzureRmVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMN
 
 - **配置参数**：如果配置函数采用参数，请使用 **argumentName1=value1,argumentName2=value2** 格式在此处输入。 此格式与 PowerShell cmdlet 或资源管理器模板中接受的配置参数格式不同。
 
-- **配置数据 PSD1 文件**：这是可选字段。 如果配置要求 .psd1 中有配置数据文件，请使用此字段来选择数据字段，然后将它上传到用户 Blob 存储。 配置数据文件在 Blob 存储中受 SAS 令牌的保护。
+- **配置数据 PSD1 文件**：此字段可选。 如果配置要求 .psd1 中有配置数据文件，请使用此字段来选择数据字段，然后将它上传到用户 Blob 存储。 配置数据文件在 Blob 存储中受 SAS 令牌的保护。
 
 - **WMF 版本**：指定应在 VM 上安装的 Windows Management Framework (WMF) 版本。 将此属性设置为“latest”可安装最新版本的 WMF。 目前，此属性的可能值只有“4.0”、“5.0”、“5.1”和“latest”。 这些可能值将来可能会更新。 默认值为 **latest**。
 
@@ -147,7 +147,7 @@ Set-AzureRmVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMN
 
 - **版本**：指定要安装的 DSC 扩展的版本。 有关版本信息，请参阅 [DSC 扩展版本历史记录](/powershell/dsc/azuredscexthistory)。
 
-- **自动升级次要版本**：此字段映射到 cmdlet 中的“AutoUpdate”开关，使扩展能够在安装过程中自动更新到最新版本。 “是”将指示扩展处理程序使用最新可用版本，“否”将强制安装指定的版本。 既不选择“是”也不选择“否”相当于选择“否”。
+- **自动升级次要版本**：此字段映射到 cmdlet 中的 **AutoUpdate** 开关，使扩展能够在安装过程中自动更新到最新版本。 “是”将指示扩展处理程序使用最新可用版本，“否”将强制安装指定的版本。 既不选择“是”也不选择“否”相当于选择“否”。
 
 ## <a name="logs"></a>日志
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 02/07/2019
 ms.author: alkohli
-ms.openlocfilehash: 34e7a578fb04b617221376f5d1065997b12d2613
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0265de5b224e62d188fe6e3b9322d5c2e3f77fa1
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302115"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883128"
 ---
 # <a name="azure-data-box-gateway-preview-release-notes"></a>Azure Data Box Gateway 预览版发行说明
 
@@ -52,9 +52,8 @@ ms.locfileid: "55302115"
 | **7.** |刷新 | 权限和访问控制列表 (ACL) 不会通过刷新操作保存。  | |
 | **8.** |复制 | 数据复制失败，出现错误：因文件系统限制而无法完成请求的操作。  |当备用数据流 (ADS) 与超过 128KB（ReFS 上限）的文件关联时，就会出现此错误。  |
 | **9.** |符号链接 |不支持符号链接。  |指向目录的符号链接导致目录永远不会被标记为脱机。 因此，可能看不到目录上有表明目录处于脱机状态的灰色叉，且所有相关内容都完全上传到 Azure 中。 |
-| **10.** |联机帮助 |Azure 门户中的“帮助”链接可能无法链接到文档。|在正式发布版中，帮助链接将正常工作。 |
-
-
+| **10.** |共享 |将包含页 Blob 的现有容器刷新到块 Blob 共享（或者反向刷新）会导致在修改文件时上传失败。  |执行以下步骤时会出现此行为： <li> 在设备上创建一个块 Blob 共享。 </li><li> 将该共享与具有页 Blob 的现有云容器相关联。</li><li>刷新该共享。 </li><li>修改已作为页 Blob 存储在云中的某些已刷新文件。</li> 此时会发生上传失败。 |
+| **11.** |联机帮助 |Azure 门户中的“帮助”链接可能无法链接到文档。|在正式发布版中，帮助链接将正常工作。 |
 
 ## <a name="next-steps"></a>后续步骤
 

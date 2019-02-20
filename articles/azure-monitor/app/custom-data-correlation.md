@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
 ms.author: Evgeny.Ternovsky
-ms.openlocfilehash: d034bf130440fdb5b783db41161ab5a21a306478
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: b7814ce2ae94216da691b9a54049d20a03aafdd9
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103105"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994810"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>将 Application Insights 数据与自定义数据源相关联
 
@@ -28,19 +28,19 @@ Application Insights 收集多种不同的数据类型：异常、跟踪、页�
 
 - 数据扩充或查找表：例如，在提供服务器名称的同时，补充提供服务器的所有者以及服务器所在的实验室位置 
 - 与非 Application Insights 数据源相关联：例如，将网店购买数据与购买履行服务的信息相关联，确定寄送时间估算的准确度如何 
-- 完全自定义数据：我们的许多客户喜欢支持 Application Insights 的 Log Analytics 数据平台的查询语言和性能，希望使用它来查询与 Application Insights 根本不相关的数据。 例如，在进行智能家居安装的过程中根据[此处]( https://blogs.catapultsystems.com/cfuller/archive/2017/10/04/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/)所述跟踪太阳能板的性能。
+- 完全自定义数据：我们的许多客户喜欢支持 Application Insights 的 Azure Monitor 日志平台的查询语言和性能，希望使用它来查询与 Application Insights 根本不相关的数据。 例如，在进行智能家居安装的过程中根据[此处]( https://blogs.catapultsystems.com/cfuller/archive/2017/10/04/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/)所述跟踪太阳能板的性能。
 
 ## <a name="how-to-correlate-custom-data-with-application-insights-data"></a>如何将自定义数据与 Application Insights 数据相关联 
 
-由于 Application Insights 受强大的 Log Analytics 数据平台的支持，因此我们可以充分利用 Log Analytics 来引入数据。 然后，我们会使用“join”运算符来编写查询，将此自定义数据与 Log Analytics 中提供的数据相关联。 
+由于 Application Insights 由强大的 Azure Monitor 日志平台提供支持，因此我们可以充分利用 Azure Monitor 来引入数据。 然后，我们会使用“join”运算符来编写查询，将此自定义数据与 Azure Monitor 日志中提供的数据相关联。 
 
 ## <a name="ingesting-data"></a>引入数据
 
-在此部分，我们会讨论如何将数据引入 Log Analytics 中。
+在此部分，我们会讨论如何将数据引入 Azure Monitor 日志中。
 
-如果还没有 Log Analytics 工作区，请预配一个新的，只需根据[这些说明]( https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-collect-azurevm)操作并包括“创建工作区”步骤即可。
+如果还没有 Log Analytics 工作区，请预配一个新的，只需根据[这些说明](../learn/quick-collect-azurevm.md)操作并包括“创建工作区”步骤即可。
 
-开始将数据发送到 Log Analytics 中。 存在多个选项：
+开始将日志数据发送到 Azure Monitor。 存在多个选项：
 
 - 对于同步机制，可以直接调用[数据收集器 API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)，也可以使用逻辑应用连接器 - 只需查找“Azure Log Analytics”并选取“发送数据”选项即可：
 
@@ -50,9 +50,9 @@ Application Insights 收集多种不同的数据类型：异常、跟踪、页�
 
 ## <a name="correlating-data"></a>关联数据
 
-Application Insights 基于 Log Analytics 数据平台。 因此，我们可以使用[跨资源联接](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search)将已引入 Log Analytics 中的任何数据与 Application Insights 数据相关联。
+Application Insights 基于 Azure Monitor 日志平台。 因此，我们可以使用[跨资源联接](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search)将已引入到 Azure Monitor 中的任何数据与 Application Insights 数据相关联。
 
-例如，可以将实验室库存和位置引入名为“myLA”的 Log Analytics 工作区的名为“LabLocations_CL”的表中。 然后，如果我们需要查看在名为“myAI”的 Application Insights 应用中跟踪的请求，并将处理请求的计算机名称与存储在前述自定义表中的这些计算机的位置相关联，则可在 Application Insights 或 Log Analytics 上下文中运行以下查询：
+例如，可以将实验室库存和位置引入名为“myLA”的 Log Analytics 工作区的名为“LabLocations_CL”的表中。 然后，如果我们需要查看在名为“myAI”的 Application Insights 应用中跟踪的请求，并将处理请求的计算机名称与存储在前述自定义表中的这些计算机的位置相关联，则可在 Application Insights 或 Azure Monitor 上下文中运行以下查询：
 
 ```
 app('myAI').requests

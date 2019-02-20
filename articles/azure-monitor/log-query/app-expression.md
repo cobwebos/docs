@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics 查询中的 app() 表达式 | Microsoft Docs
-description: app 表达式用于 Log Analytics 查询，可从特定 Application Insights 应用中的同一资源组、另一个资源组或另一个订阅中检索数据。
+title: Azure Monitor 日志查询中的 app() 表达式 | Microsoft Docs
+description: app 表达式用于 Azure Monitor 日志查询中，可从特定 Application Insights 应用中的同一资源组、另一个资源组或另一个订阅中检索数据。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: bwren
-ms.openlocfilehash: 2d6f3517e988d6bd66ee9007e072ee87c71d1340
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: db92db315875348ff05ec3a34b1a9fa946479c27
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104654"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998529"
 ---
-# <a name="app-expression-in-log-analytics-query"></a>Log Analytics 查询中的 app() 表达式
+# <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor 查询中的 app() 表达式
 
-`app` 表达式用于 Log Analytics 查询，可从特定 Application Insights 应用中的同一资源组、另一个资源组或另一个订阅中检索数据。 此表达式适用于在 Log Analytics 查询中包含应用程序数据以及在 Application Insights 查询中跨多个应用程序查询数据。
+`app` 表达式用于 Azure Monitor 查询中，可从特定 Application Insights 应用中的同一资源组、另一个资源组或另一个订阅中检索数据。 此表达式适用于在 Azure Monitor 日志查询中包含应用程序数据以及在 Application Insights 查询中跨多个应用程序查询数据。
 
 
 
@@ -78,5 +78,6 @@ union
 
 ## <a name="next-steps"></a>后续步骤
 
-- 参阅 [workspace 表达式](workspace-expression.md)并延伸到 Log Analytics 工作区。
-- 阅读有关 [Log Analytics 数据](../../azure-monitor/log-query/log-query-overview.md)的存储方式的信息。
+- 参阅 [workspace 表达式](workspace-expression.md)，以引用 Log Analytics 工作区。
+- 了解 [Azure Monitor 数据是如何存储的](../../azure-monitor/log-query/log-query-overview.md)。
+- 访问有关[数据资源管理器查询语言](/azure/kusto/query/)的完整文档。

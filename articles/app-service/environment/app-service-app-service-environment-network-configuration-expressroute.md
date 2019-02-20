@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 23faf3b88584f8031b4a2fdbc6d94ac2ae861431
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: e0fa87facec73efdfff1a9908dcba92838215425
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104448"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113373"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>使用 Azure ExpressRoute 的 PowerApps 的应用服务环境网络配置详细信息
 
@@ -59,7 +59,7 @@ ms.locfileid: "54104448"
 
 * 必须允许应用服务环境通过入站网络访问所需的端口。 有关详细信息，请参阅[如何控制应用服务环境的入站流量][requiredports]。
 
-若要满足 DNS 要求，请确保针对虚拟网络配置并维护有效的 DNS 基础结构。 如果创建应用服务环境之后更改了 DNS 配置，开发人员可以强制应用服务环境选择新的 DNS 配置。 可以在 [Azure 门户][NewPortal] 中使用“应用服务环境管理”下的“重启”图标，触发滚动环境重新启动。 重新启动后，环境即会选择新的 DNS 配置。
+若要满足 DNS 要求，请确保针对虚拟网络配置并维护有效的 DNS 基础结构。 如果创建应用服务环境之后更改了 DNS 配置，开发人员可以强制应用服务环境选择新的 DNS 配置。 可以在 [Azure 门户][NewPortal]中使用“应用服务环境管理”下的“重启”图标，触发滚动环境重新启动。 重新启动后，环境即会选择新的 DNS 配置。
 
 若要满足入站网络访问要求，请在应用服务环境子网中配置[网络安全组 (NSG)][NetworkSecurityGroups]。 NSG 允许进行所需的访问，以[控制应用服务环境的入站流量][requiredports]。
 
@@ -95,7 +95,7 @@ ms.locfileid: "54104448"
 
 ### <a name="prerequisites"></a>先决条件
 
-* 从 [Azure 下载页][AzureDownloads] 安装 Azure PowerShell。 请选择下载发布日期为 2015 年 6 月或更晚的版本。 在“命令行工具” > “Windows PowerShell”下，选择“安装”以安装最新的 PowerShell cmdlet。
+* 从 [Azure 下载页][AzureDownloads]安装 Azure PowerShell。 请选择下载发布日期为 2015 年 6 月或更晚的版本。 在“命令行工具” > “Windows PowerShell”下，选择“安装”以安装最新的 PowerShell cmdlet。
 
 * 创建专供应用服务环境使用的唯一子网。 该唯一子网确保应用到子网的 UDR 只会打开应用服务环境的出站流量。
 
@@ -118,7 +118,7 @@ ms.locfileid: "54104448"
 
 0.0.0.0/0 是广泛的地址范围。 该范围将被 ExpressRoute 播发的更具体地址范围所替代。 使用 0.0.0.0/0 路由的 UDR 应与仅播发 0.0.0.0/0 的 ExpressRoute 配置结合使用。 
 
-或者，可以下载 Azure 当前使用的完整 CIDR 范围列表。 可从 [Microsoft 下载中心][DownloadCenterAddressRanges] 获取所有 Azure IP 地址范围的 XML 文件。  
+或者，可以下载 Azure 当前使用的完整 CIDR 范围列表。 可从 [Microsoft 下载中心][DownloadCenterAddressRanges]获取所有 Azure IP 地址范围的 XML 文件。  
 
 > [!NOTE]
 >
@@ -148,16 +148,23 @@ ms.locfileid: "54104448"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始使用适用于 PowerApps 的应用服务环境，请参阅 [应用服务环境简介][IntroToAppServiceEnvironment]。
+若要开始使用 PowerApps 的应用服务环境，请参阅[应用服务环境简介][IntroToAppServiceEnvironment]。
 
 <!-- LINKS -->
-[virtualnetwork]: https://azure.microsoft.com/services/virtual-network/
-[ExpressRoute]: https://azure.microsoft.com/services/expressroute/
-[requiredports]: app-service-app-service-environment-control-inbound-traffic.md
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
-[UDROverview]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-overview/
-<!-- Old link -- [UDRHowTo]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/ --> [UDRHowTo]: https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md [AzureDownloads]: https://azure.microsoft.com/downloads/ [DownloadCenterAddressRanges]: https://www.microsoft.com/download/details.aspx?id=41653  
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/ [IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md [NewPortal]:  https://portal.azure.com
+[virtualnetwork]: https://azure.microsoft.com/services/virtual-network/ 
+[ExpressRoute]: https://azure.microsoft.com/services/expressroute/ 
+[requiredports]: app-service-app-service-environment-control-inbound-traffic.md 
+[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/ 
+[UDROverview]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-overview/ 
+<!-- Old link -- [UDRHowTo]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/ -->
+
+[UDRHowTo]: https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell 
+[HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md 
+[AzureDownloads]: https://azure.microsoft.com/downloads/ 
+[DownloadCenterAddressRanges]: https://www.microsoft.com/download/details.aspx?id=41653 
+[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/ 
+[IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md 
+[NewPortal]:  https://portal.azure.com 
 
 
 <!-- IMAGES -->

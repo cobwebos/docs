@@ -4,7 +4,7 @@ description: 本文提供一系列有关使用内置 Azure 功能进行标识管
 services: security
 documentationcenter: na
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 07d8e8a8-47e8-447c-9c06-3a88d2713bc1
 ms.service: security
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: barclayn
-ms.openlocfilehash: 64d940552f2790c08e8087f279990d0a6c595bac
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bf5143c3c0c75bc37f6981c6d995339e41baa4c4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245711"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112092"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
-许多人将标识视为安全性的新边界层，从传统的以网络为中心的角度来看可以接管这种角色。 安全关注与投资主轴的这种演变来源于这样一个事实：网络周边的漏洞越来越多，在 [BYOD](https://aka.ms/byodcg) 设备和云应用程序呈爆炸性增长之前，周边防御不如以前那么有效。
+许多人将标识视为安全性的新边界层，而在此之前，人们一直将网络视为边界层。 安全关注与投资主轴的这种演变来源于这样一个事实：网络周边的漏洞越来越多，在 [BYOD](https://aka.ms/byodcg) 设备和云应用程序出现爆炸性增长之前相比，周边防御不再那么有效。
 
 本文介绍一系列 Azure 标识管理和访问控制安全最佳实践。 这些最佳做法衍生自我们的 [Azure AD](../active-directory/fundamentals/active-directory-whatis.md) 经验和客户经验。
 
@@ -51,7 +51,7 @@ ms.locfileid: "51245711"
 
 ## <a name="treat-identity-as-the-primary-security-perimeter"></a>将标识视为主要安全边界
 
-许多人认为标识是主要安全边界。 这表明以往对网络安全的关注发生了转变。 网络边界出现越来越多的漏洞，在 [BYOD](https://aka.ms/byodcg) 设备和云应用程序激增之前，该边界防御不似之前那样有效。
+许多人认为标识是主要安全边界。 这与以网络安全为重点的传统做法不同。 网络边界出现越来越多的漏洞，在 [BYOD](https://aka.ms/byodcg) 设备和云应用程序激增之前，该边界防御不似之前那样有效。
 [Azure Active Directory (Azure AD)](../active-directory/active-directory-whatis.md) 是用于标识和访问管理的 Azure 解决方案。 Azure AD 是 Microsoft 提供的多租户、基于云的目录和标识管理服务。 它将核心目录服务、应用程序访问管理和标识保护融入一个解决方案中。
 
 以下部分列出了使用 Azure AD 实现标识和访问安全性的最佳做法。
@@ -65,9 +65,9 @@ ms.locfileid: "51245711"
 **详细信息**：使用 [Azure AD Connect](../active-directory/connect/active-directory-aadconnect.md) 将本地目录与云目录同步。
 
 **最佳做法**：启用密码哈希同步。  
-**详细信息**：密码哈希同步功能用于将用户密码哈希的哈希从本地 Active Directory 实例同步到基于云的 Azure AD 实例。
+**详细信息**：密码哈希同步是一种功能，用于将用户密码哈希的哈希从本地 Active Directory 实例同步到基于云的 Azure AD 实例。
 
-即使决定使用 Active Directory 联合身份验证服务 (AD FS) 或其他标识提供者进行联合身份验证，也可以选择性地将密码哈希同步设置为在本地服务器发生故障或临时不可用时的备份方式。 这样用户就可以在登录到该服务时使用登录到本地 Active Directory 实例时使用的密码。 如果用户在其他未连接到 Azure AD 的服务上使用过相同的电子邮件地址和密码，则还可以通过 Identity Protection 将这些密码哈希与已知泄露的密码进行比较，从而检测出那些泄露的凭据。
+即使决定使用 Active Directory 联合身份验证服务 (AD FS) 或其他标识提供者进行联合身份验证，也可以选择性地设置密码哈希同步作为备用机制，以应对本地服务器发生故障或临时不可用的情况。 这样用户就可以在登录到该服务时使用登录到本地 Active Directory 实例时使用的密码。 如果用户在其他未连接到 Azure AD 的服务上使用过相同的电子邮件地址和密码，则还可以通过 Identity Protection 将这些密码哈希与已知泄露的密码进行比较，从而检测出那些泄露的凭据。
 
 有关详细信息，请参阅[使用 Azure AD Connect 同步实现密码哈希同步](../active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)。
 
@@ -80,15 +80,15 @@ ms.locfileid: "51245711"
 通过对所有应用和资源使用相同的标识解决方案，可以实现 SSO。 并且不论资源是位于本地还是云中，用户均可以使用相同凭据集登录和访问所需资源。
 
 **最佳做法**：启用 SSO。  
-**详细信息**：Azure AD [将本地 Active Directory](../active-directory/connect/active-directory-aadconnect.md) 扩展到云。 用户可以将他们的主要工作或学校帐户用于他们加入域的设备、公司资源以及完成工作所需的所有 Web 和 SaaS 应用程序。 用户无需记住多组用户名和密码，系统会根据组织的组成员身份和员工身份的状态，自动预配（或取消设置）应用程序访问权限。 可以控制库应用或者自行通过 [Azure AD 应用程序代理](../active-directory/active-directory-application-proxy-get-started.md)开发和发布的本地应用的该访问权限。
+**详细信息**：Azure AD [将本地 Active Directory](../active-directory/connect/active-directory-aadconnect.md) 扩展到云。 用户可以将他们的主要工作或学校帐户用于他们加入域的设备、公司资源以及完成工作所需的所有 Web 和 SaaS 应用程序。 用户无需记住多组用户名和密码，系统会根据组织的组成员身份和员工身份的状态，自动预配（或取消设置）应用程序访问权限。 可以针对库应用或者通过 [Azure AD 应用程序代理](../active-directory/active-directory-application-proxy-get-started.md)自行开发和发布的本地应用控制访问权限。
 
 用户可使用 SSO 基于 Azure AD 中的工作或学校帐户访问 [SaaS 应用程序](../active-directory/active-directory-appssoaccess-whatis.md)。 这不仅适用于 Microsoft SaaS 应用，还适用于其他应用，例如 [Google Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) 和 [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md)。 应用程序可配置为使用 Azure AD 作为[基于 SAML 的标识](../active-directory/fundamentals-identity.md)提供者。 作为安全控制机制，Azure AD 不会发出允许用户登录应用程序的令牌，除非用户已通过 Azure AD 获取了访问权限。 可以直接或者通过用户所属的组授予访问权限。
 
-在用户拥有多个密码的情况下，没有为用户和应用程序创建用于建立 SSO 的通用标识的组织更易发生泄漏。 这种情况增加了用户重复使用同一密码或使用弱密码的可能性。
+如果组织没有通过创建通用标识来为用户和应用程序实现 SSO，那么用户拥有多个密码的情况就更容易出现。 这种情况增加了用户重复使用同一密码或使用弱密码的可能性。
 
 ## <a name="turn-on-conditional-access"></a>启用条件访问
 
-用户可以通过从任意位置使用各种设备和应用访问组织的资源。 作为 IT 管理员，你希望确保这些设备符合安全性和符合性标准。 仅关注谁可以访问资源不再能满足需求。
+用户可能会从任意位置使用各种设备和应用访问组织的资源。 作为 IT 管理员，你希望确保这些设备符合安全性和符合性标准。 仅关注谁可以访问资源不再能满足需求。
 
 为了平衡安全与效率，在做出访问控制决策之前，需要考虑资源的访问方式。 使用 Azure AD 条件访问便可处理该需求。 使用条件访问时，可以根据条件就云应用的访问实施自动化的访问控制决策。
 
@@ -99,10 +99,10 @@ ms.locfileid: "51245711"
 
 如果有多个租户或者你想要允许用户[重置自己的密码](../active-directory/active-directory-passwords-update-your-own-password.md)，则必须使用适当的安全策略来防止滥用。
 
-**最佳做法**：为用户设置自助服务密码重置 (SSPR)。  
-**详细信息**：使用 Azure AD [自助服务密码重置](../active-directory-b2c/active-directory-b2c-reference-sspr.md)功能。
+**最佳做法**：为用户设置自助式密码重置 (SSPR)。  
+**详细信息**：使用 Azure AD [自助式密码重置](../active-directory-b2c/active-directory-b2c-reference-sspr.md)功能。
 
-**最佳做法**：监视 SSPR 的使用情况或者是否真的在使用 SSPR。  
+**最佳做法**：监视是否在使用 SSPR 及其使用情况。  
 **详细信息**：通过使用 Azure AD [密码重置注册活动报表](../active-directory/active-directory-passwords-get-insights.md)监视正在注册的用户。 Azure AD 提供的报表功能可帮助使用预生成的报表来回答问题。 如果有相应的授权，还可以创建自定义查询。
 
 ## <a name="enforce-multi-factor-verification-for-users"></a>对用户强制执行多重身份验证
@@ -151,10 +151,10 @@ ms.locfileid: "51245711"
 
 以下内容总结了[确保 Azure AD 中混合部署和云部署的特权访问安全性](../active-directory/users-groups-roles/directory-admin-roles-secure.md)中介绍的最佳做法：
 
-**最佳做法**：管理、控制和监视对特权帐户的访问权限。   
+**最佳做法**：管理、控制和监视对特权帐户的访问。   
 **详细信息**：启用 [Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/active-directory-securing-privileged-access.md)。 启用 Privileged Identity Management 以后，会收到有关特权访问角色更改的通知电子邮件。 向目录中的高特权角色添加更多用户时，这些通知相当于早期警告。
 
-**最佳做法**：对角色为高特权角色的帐户进行标识和分类。   
+**最佳做法**：对特许权限高的角色中的帐户进行标识和分类。   
 **详细信息**：启用 Azure AD Privileged Identity Management 后，请查看角色为全局管理员、特权角色管理员和其他高特权角色的用户。 请删除在这些角色中不再需要的任何帐户，并对剩余的分配给管理员角色的帐户分类：
 
 - 单独分配给管理用户，可用于非管理性目的（例如，个人电子邮件）
@@ -175,11 +175,11 @@ ms.locfileid: "51245711"
 
 评估已经获得或有资格获得全局管理员角色的帐户。 如果使用 `*.onmicrosoft.com` 域（用于紧急访问）看不到任何仅限云的帐户，请创建此类帐户。 有关详细信息，请参阅“在 Azure AD 中管理紧急访问管理帐户”。
 
-**最佳做法**：启用多重身份验证，并注册所有其他高特权单用户非联合管理员帐户。  
+**最佳做法**：启用多重身份验证，并注册所有其他的特许权限高的单用户非联合管理员帐户。  
 **详细信息**：对于所有永久分配了一个或多个 Azure AD 管理员角色（全局管理员、特权角色管理员、Exchange Online 管理员和 SharePoint Online 管理员）的单个用户，要求在登录时进行 Azure 多重身份验证。 根据指南启用[针对管理员帐户的多重身份验证](../active-directory/authentication/howto-mfa-userstates.md)，确保所有这些用户都已[注册](https://aka.ms/mfasetup)。
 
 **最佳做法**：采取措施来缓解最常用的攻击技术的冲击。  
-**详细信息**：[确定管理角色中需要切换到工作或学校帐户的 Microsoft 帐户](../active-directory/users-groups-roles/directory-admin-roles-secure.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
+**详细信息**：[确定管理角色中那些需要切换到工作或学校帐户的 Microsoft 帐户](../active-directory/users-groups-roles/directory-admin-roles-secure.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
 
 [对于全局管理员帐户，请确保使用单独的用户帐户和邮件转发功能](../active-directory/users-groups-roles/directory-admin-roles-secure.md)  
 
@@ -218,7 +218,7 @@ ms.locfileid: "51245711"
 
 主动身份监视系统可以快速检测可疑行为并触发警报以进行进一步调查。 下表列出了两个可帮助组织监视其标识的 Azure AD 功能：
 
-**最佳做法**：有一种方法可确定：
+**最佳做法**：采用一种方法来确定：
 
 - [未受跟踪](../active-directory/active-directory-reporting-sign-ins-from-unknown-sources.md)的登录尝试。
 - 针对特定帐户的[暴力](../active-directory/active-directory-reporting-sign-ins-after-multiple-failures.md)攻击。

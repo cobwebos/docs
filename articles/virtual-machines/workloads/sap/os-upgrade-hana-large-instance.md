@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cff9be3b074dde4a0335675663133a8df81ae62d
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: d7d451f3831309b4755170915b35a23da8910510
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114586"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100748"
 ---
 # <a name="operating-system-upgrade"></a>操作系统升级
 本文档介绍 HANA 大型实例操作系统升级的详细信息。
@@ -27,9 +27,18 @@ ms.locfileid: "37114586"
 >[!NOTE]
 >操作系统升级是客户的责任，Microsoft 运营支持团队可指导你发现升级过程中需要留意的重点领域。 在计划升级前，你还应咨询操作系统供应商。
 
-Microsoft 运营团队在预配 HLI 单元时安装操作系统。 随着时间推移，你需要维护 HLI 单元的操作系统（例如，修补、优化、升级等）。
+Microsoft 运营团队在预配 HLI 单元时安装操作系统。 随着时间推移，你需要维护 HLI 单元的操作系统（例如：修补、优化、升级等）。
 
 在对操作系统进行重大更改（例如，将 SP1 升级到 SP2）之前，必须通过开具支持票证进行咨询来与 Microsoft 运营团队联系。
+
+请在票证上包括以下内容：
+
+* 你的 HLI 订阅 ID。
+* 你的服务器名称。
+* 你打算应用的修补程序级别。
+* 你计划此更改的日期。 
+
+建议你至少比理想的升级日期提前一周来提交此票证，因为需要让操作团队检查你的服务器刀片是否需要进行固件升级。
 
 
 有关不同 Linux 版本的不同 SAP HANA 版本的支持矩阵，请参阅 [SAP 说明 #2235581](https://launchpad.support.sap.com/#/notes/2235581)。

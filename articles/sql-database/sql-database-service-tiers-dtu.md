@@ -1,6 +1,6 @@
 ---
-title: Azure SQL 数据库服务层 - DTU | Microsoft Docs
-description: 了解单一数据库和入池数据库的服务层以提供计算大小和存储大小。
+title: Azure SQL 数据库服务层 - 基于 DTU 的购买模型 | Microsoft Docs
+description: 了解单一和池化数据库的基于 DTU 的购买模型中的服务层，以提供计算大小和存储大小。
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -11,22 +11,22 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6319deb36088317cb289134b7068720e97cb10b7
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/08/2019
+ms.openlocfilehash: b960e0f670b66ea1759da441e7b1cf53151de7f6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507648"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993592"
 ---
-# <a name="dtu-based-service-tiers"></a>基于 DTU 的服务层
+# <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 
-基于 DTU 的服务层根据一系列具有固定随附存储量、固定备份保留期和固定价格的计算大小进行区分。 所有服务层允许灵活更改计算大小，而不会造成停机。 单一数据库和弹性池根据服务层和计算大小按小时计费。
+基于 DTU 的购买模型中的服务层根据一系列具有固定随附存储量、固定备份保留期和固定价格的计算大小进行区分。 基于 DTU 的购买模型中的所有服务层都允许灵活更改计算大小，无需停机。 单一数据库和弹性池根据服务层和计算大小按小时计费。
 
 > [!IMPORTANT]
-> SQL 数据库托管实例（目前以公共预览版提供）不支持基于 DTU 的购买模型。 有关详细信息，请参阅 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)。
+> SQL 数据库托管实例不支持基于 DTU 的购买模型。 有关详细信息，请参阅 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)。
 > [!NOTE]
-> 有关基于 vCore 的服务层的信息，请参阅[基于 vCore 的服务层](sql-database-service-tiers-vcore.md)。 有关区分基于 DTU 的服务层和基于 vCore 的服务层的信息，请参阅 [Azure SQL 数据库购买模型](sql-database-service-tiers.md)。
+> 有关基于 vCore 的服务层的信息，请参阅[基于 vCore 的服务层](sql-database-service-tiers-vcore.md)。 有关区分基于 DTU 的服务层和基于 vCore 的服务层的信息，请参阅 [Azure SQL 数据库购买模型](sql-database-purchase-models.md)。
 
 ## <a name="compare-the-dtu-based-service-tiers"></a>比较基于 DTU 的服务层
 
@@ -34,8 +34,8 @@ ms.locfileid: "55507648"
 
 ||基本|标准|高级|
 | :-- | --: |--:| --:| --:|
-|目标工作负荷|开发和生产|开发和生产|开发和生产||
-|运行时间 SLA|99.99%|99.99%|99.99%|在预览版中不适用|
+|目标工作负荷|开发和生产|开发和生产|开发和生产|
+|运行时间 SLA|99.99%|99.99%|99.99%|
 |备份保留|7 天|35 天|35 天|
 |CPU|低|低、中、高|中、高|
 |IO 吞吐量（近似） |每个 DTU 2.5 IOPS| 每个 DTU 2.5 IOPS | 每个 DTU 48 IOPS|
@@ -49,12 +49,12 @@ ms.locfileid: "55507648"
 
 ## <a name="single-database-dtu-and-storage-limits"></a>单一数据库 DTU 和存储限制
 
-单一数据库的计算大小以数据库事务单位 (DTU) 表示，弹性池则以弹性数据库事务单位 (eDTU) 表示。 有关 DTU 和 eDTU 的更多信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers.md#dtu-based-purchasing-model)？
+单一数据库的计算大小以数据库事务单位 (DTU) 表示，弹性池则以弹性数据库事务单位 (eDTU) 表示。 有关 DTU 和 eDTU 的更多信息，请参阅[基于 DTU 的购买模型](sql-database-purchase-models.md#dtu-based-purchasing-model)？
 
 ||基本|标准|高级|
 | :-- | --: | --: | --: | --: |
 | 最大存储大小 | 2 GB | 1 TB | 4 TB  |
-| 最大 DTU | 5 | 3000 | 4000 | |
+| 最大 DTU | 5 | 3000 | 4000 | 
 ||||||
 
 > [!IMPORTANT]
@@ -72,7 +72,7 @@ ms.locfileid: "55507648"
 ||||||
 
 > [!IMPORTANT]
-> 除以下区域外，所有区域目前均提供超过 1 TB 的高级层存储：美国中西部、中国东部、US DoD 中部、德国中部、US DoD 东部、US Gov 西南部、USGov 爱荷华州、德国东北部和中国北部。 在其他区域，高级层中的最大存储限制为 1 TB。 请参阅 [P11-P15 当前限制](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
+> 除以下区域外，其他所有区域的高级层目前均可提供超过 1 TB 的存储：美国中西部、中国东部、US DoD 中部、德国中部、US DoD 东部、US Gov 西南部、USGov 爱荷华州、德国东北部和中国北部。 在其他区域，高级层中的最大存储限制为 1 TB。 请参阅 [P11-P15 当前限制](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 
@@ -88,7 +88,7 @@ ms.locfileid: "55507648"
 
 ### <a name="benchmark-summary"></a>基准检验摘要
 
-ASDB 将度量联机事务处理 (OLTP) 工作负荷中最常发生的基本数据库操作组合的性能。 尽管在设计基准检验时考虑到了云计算，但已将数据库架构、数据填充和事务设计为广泛代表 OLTP 工作负荷中最常用的基本元素。
+基准检验将度量联机事务处理 (OLTP) 工作负荷中最常发生的基本数据库操作组合的性能。 尽管在设计基准检验时考虑到了云计算，但已将数据库架构、数据填充和事务设计为广泛代表 OLTP 工作负荷中最常用的基本元素。
 
 ### <a name="schema"></a>架构
 

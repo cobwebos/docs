@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/22/2019
-ms.openlocfilehash: 7b1d58b82f2ccc99ecacb6099f6063fba5899421
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/11/2019
+ms.openlocfilehash: 8fb7ea1841d788c1d8e7809a0641140228fd2ea5
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478451"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233150"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL 数据库和数据仓库的透明数据加密
 
@@ -40,15 +40,14 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 > [!IMPORTANT]
 > 默认情况下，会使用服务托管的透明数据加密将所有新建的 SQL 数据库加密。 默认情况下，Azure SQL 托管实例数据库、2017 年 5 月之前创建的现有 SQL 数据库以及通过还原、异地复制和数据库副本创建的 SQL 数据库均不加密。
 
-## <a name="bring-your-own-key"></a>创建自己的密钥
+## <a name="customer-managed-transparent-data-encryption---bring-your-own-key"></a>客户管理的透明数据加密 - 创建自己的密钥
 
-使用“创建自己的密钥”支持，可以控制透明数据加密密钥，以及谁可以在哪个时间访问这些密钥。 Key Vault 是 Azure 基于云的外部密钥管理系统，是将透明数据加密与“创建自己的密钥”支持集成在一起的首个密钥管理服务。 使用“创建自己的密钥”支持时，数据库加密密钥将受 Key Vault 中存储的非对称密钥的保护。 非对称密钥永远不会离开 Key Vault。 服务器获取 Key Vault 的权限后，服务器会将基本密钥操作请求发送到 Key Vault。 在服务器级别设置非对称密钥，该服务器下的所有“加密”数据库将继承该密钥。
+[使用 Azure Key Vault 中由客户管理的密钥进行 TDE](transparent-data-encryption-byok-azure-sql.md) 允许使用由客户管理的非对称密钥（称为 TDE 保护器）对数据库加密密钥 (DEK) 进行加密。  TDE 保护器存储在由客户拥有和管理的 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)（Azure 的基于云的外部密钥管理系统）中。 TDE DEK 存储在数据库的启动页上，由 TDE 保护器进行加密和解密，该保护器存储在 Azure Key Vault 中并且从不会离开密钥保管库。  需要向 SQL 数据库授予对客户管理的密钥保管库的权限才能对 DEK 进行解密和加密。 如果撤销了逻辑 SQL Server 对密钥保管库的权限，则数据库将无法访问，并且所有数据都是加密的。 对于 Azure SQL 数据库，TDE 保护器是在逻辑 SQL Server 级别设置的，并由该服务器关联的所有数据库继承。 对于 [Azure SQL 托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-howto-managed-instance)，TDE 保护器是在实例级别设置的，并由该实例上所有加密的数据库继承。 除非另有说明，否则术语“服务器”在整个文档中指的是服务器和实例。
 
-通过“创建自己的密钥”支持，可以控制密钥轮替和密钥保管库权限等密钥管理任务。 还可以删除密钥，以及对所有加密密钥启用审核/报告。 Key Vault 提供集中密钥管理，并使用受严格监控的硬件安全模块。 Key Vault 可以促成密钥和数据管理的分离，以帮助满足法规遵从要求。 有关 Key Vault 的详细信息，请参阅 [Key Vault 文档页](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)。
+使用集成了 Azure Key Vault 的 TDE，用户可以控制密钥管理任务，包括密钥轮换、密钥保管库权限、密钥备份，以及使用 Azure Key Vault 功能对所有 TDE 保护器启用审核/报告。 Key Vault 提供了集中化密钥管理功能，利用严格监控的硬件安全模块 (HSM)，并可在密钥与数据管理之间实现职责分离，以帮助满足安全策略的要求。
+若要详细了解适用于 Azure SQL 数据库、SQL 托管实例和数据仓库的集成了 Azure Key Vault 的透明数据加密（支持“创建自己的密钥”），请参阅[集成了 Azure Key Vault 的透明数据加密](transparent-data-encryption-byok-azure-sql.md)。
 
-要详细了解 Azure SQL 数据库、SQL 托管实例和数据仓库的带有“创建自己的密钥”支持的透明数据加密，请参阅[带有“创建自己的密钥”支持的透明数据加密](transparent-data-encryption-byok-azure-sql.md)。
-
-若要开始使用支持“创建自己的密钥”的透明数据加密，请参阅操作方法指南[通过 PowerShell 使用 Key Vault 中的自有密钥启用透明数据加密](transparent-data-encryption-byok-azure-sql-configure.md)。
+若要开始使用集成了 Azure Key Vault 的透明数据加密（支持“创建自己的密钥”），请参阅操作指南[通过 PowerShell 使用 Key Vault 中的自有密钥启用透明数据加密](transparent-data-encryption-byok-azure-sql-configure.md)。
 
 ## <a name="move-a-transparent-data-encryption-protected-database"></a>移动受透明数据加密保护的数据库
 

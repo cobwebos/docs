@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Cloud Shell 中使用简化 New-AzureRMVM cmdlet 创建 Windows VM | Microsoft Docs
-description: 快速了解如何在 Azure Cloud Shell 中使用简化 New-AzureRMVM cmdlet 创建 Windows 虚拟机。
+title: 在 Azure Cloud Shell 中使用简化的 New-AzVM cmdlet 创建 Windows VM | Microsoft Docs
+description: 快速了解如何在 Azure Cloud Shell 中使用简化的 New-AzVM cmdlet 创建 Windows 虚拟机。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,40 +16,40 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: d078a9d319ea914c0cab9113ee71283213471261
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 32862d06cfa6a9a8dd9b99459362ec53fd88cec2
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428659"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978927"
 ---
-# <a name="create-a-windows-virtual-machine-with-the-simplified-new-azurermvm-cmdlet-in-cloud-shell"></a>在 Cloud Shell 中使用简化 New-AzureRMVM cmdlet 创建 Windows 虚拟机 
+# <a name="create-a-windows-virtual-machine-with-the-simplified-new-azvm-cmdlet-in-cloud-shell"></a>在 Cloud Shell 中使用简化的 New-AzVM cmdlet 创建 Windows 虚拟机 
 
-[New-AzureRMVM](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm?view=azurermps-6.8.1) cmdlet 已添加一组简化的参数，用于使用 PowerShell 创建新的 VM。 本主题演示如何通过 Azure Cloud Shell 中的 PowerShell，使用预安装的最新版本 New-AzureVM cmdlet 创建新的 VM。 我们将使用简化的参数集，以使用智能默认设置自动创建所有必需的资源。 
+[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azurermps-6.8.1) cmdlet 已添加了一组简化的参数，用于使用 PowerShell 创建新的 VM。 本主题演示如何通过 Azure Cloud Shell 中的 PowerShell，使用预安装的最新版本 New-AzureVM cmdlet 创建新的 VM。 我们将使用简化的参数集，以使用智能默认设置自动创建所有必需的资源。 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 [!INCLUDE [cloud-shell-powershell](../../../includes/cloud-shell-powershell.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块版本 5.1.1 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 来创建与 Azure 的连接。
 
 ## <a name="create-the-vm"></a>创建 VM
 
-可以使用 [New-AzureRMVM](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm?view=azurermps-6.8.1) cmdlet 创建具有智能默认设置（包括使用 Azure 市场中的 Windows Server 2016 Datacenter 映像）的 VM。 可以将 New-AzureRMVM 仅与 **-Name** 参数配合使用，它会将该值用于所有资源名称。 在本示例中，我们将设置 **-Name** 参数设置为 *myVM*。 
+可以使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azurermps-6.8.1) cmdlet 创建具有智能默认设置（包括使用 Azure 市场中的 Windows Server 2016 Datacenter 映像）的 VM。 可以将 New-AzVM 仅与 **-Name** 参数配合使用，它会将该值用于所有资源名称。 在本示例中，我们将设置 **-Name** 参数设置为 *myVM*。 
 
 请确保在 Cloud Shell 中选择 **PowerShell** 并键入：
 
 ```azurepowershell-interactive
-New-AzureRMVm -Name myVM
+New-AzVm -Name myVM
 ```
 
 系统会要求为 VM 创建用户名和密码，稍后在本主题中连接到该 VM 时需要用到这些凭据。 密码长度必须为 12 到 123 个字符，并且必须满足以下 4 个复杂性要求的其中 3 个：1 个小写字符、1 个大写字符、1 个数字和 1 个特殊字符。
 
-创建 VM 和关联的资源需要一分钟时间。 完成后，可以使用 [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) cmdlet 查看创建的所有资源。
+创建 VM 和关联的资源需要一分钟时间。 完成后，可以使用 [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) cmdlet 查看创建的所有资源。
 
 ```azurepowershell-interactive
-Get-AzureRmResource `
+Get-AzResource `
     -ResourceGroupName myVMResourceGroup | Format-Table Name
 ```
 
@@ -57,10 +57,10 @@ Get-AzureRmResource `
 
 在部署完成后，创建到虚拟机的远程桌面连接。
 
-使用 [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) 命令返回虚拟机的公共 IP 地址。 请记下此 IP 地址。
+使用 [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) 命令返回虚拟机的公共 IP 地址。 请记下此 IP 地址。
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
     -ResourceGroupName myVMResourceGroup | Select IpAddress
 ```
 
@@ -74,7 +74,7 @@ mstsc /v:<publicIpAddress>
 还可以为资源提供更具描述性的名称，并仍将它们自动创建。 下面是一个示例，其中为新的 VM 命名了多个资源，包括新的资源组。
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Name "myVM" `
     -Location "East US" `
@@ -87,11 +87,11 @@ New-AzureRmVm `
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组、VM 和所有相关的资源，可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 命令将其删除。
+如果不再需要资源组、VM 和所有相关的资源，可以使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) 命令将其删除。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myVM
-Remove-AzureRmResourceGroup -Name myResourceGroup
+Remove-AzResourceGroup -Name myVM
+Remove-AzResourceGroup -Name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -12,15 +12,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: f4b72a95c64467ce287d2cb762222d17334aad57
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: 711e51a075ce25ef3aa3c9c7e8784c914c8d0581
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755419"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982261"
 ---
-# <a name="the-azure-sql-database-service"></a>Azure SQL 数据库服务
+# <a name="what-is-azure-sql-database-service"></a>什么是 Azure SQL 数据库服务？
 
 SQL 数据库是 Microsoft Azure 中通用的关系数据库托管服务，支持关系数据、JSON、空间和 XML 等结构。 SQL 数据库在以下两个不同的购买模型中实现动态可扩展性能：基于 vCore 的购买模型和基于 DTU 的购买模型。 SQL 数据库还提供[列存储索引](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)（用于极端分析和报告）和[内存中 OLTP](sql-database-in-memory.md)（用于极端事务处理）等选项。 Microsoft 可无缝处理 SQL 代码库的所有修补和更新，并避开底层基础结构的所有管理。
 
@@ -67,10 +67,10 @@ SQL 数据库通过多个资源类型、服务层和计算大小提供可预测�
 SQL 数据库提供以下两种购买模型：
 
 - [基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)：混合提供三个服务层中的计算、内存和 IO 资源，以支持轻型到重型数据库工作负载。 每个层中的不同计算大小提供这些资源的不同组合，你可以向其添加更多的存储资源。
-- [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)允许选择 vCore 数、内存容量，以及存储的容量和速度。
+- [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)允许选择 vCore 数、内存容量，以及存储的容量和速度。 基于 vCore 的购买模型还允许使用[适用于 SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)来节省成本。 有关 Azure 混合权益的详细信息，请参阅[常见问题解答](#sql-database-frequently-asked-questions-faq)。
 
   > [!IMPORTANT]
-  > [超大规模服务层](sql-database-service-tier-hyperscale.md)目前以公共预览版提供。 尚不建议在超大规模数据库中运行任何生产工作负载。 无法将超大规模数据库更新为其他服务层。 出于测试目的，建议创建当前数据库的副本，并将副本更新为超大规模服务层。
+  > 适用于单一数据库的[超大规模服务层](sql-database-service-tier-hyperscale.md)目前以公共预览版提供。 尚不建议在超大规模数据库中运行任何生产工作负载。 无法将超大规模数据库更新为其他服务层。 出于测试目的，建议创建当前数据库的副本，并将副本更新为超大规模服务层。
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>弹性池可以最大化资源利用率
 
@@ -195,6 +195,41 @@ SQL 数据库让应用程序的构建和维护更加轻松、高效。 SQL 数�
   一种可免费下载的开源代码编辑器，适用于 Windows、macOS 和 Linux，并支持各种扩展，其中包括 [mssql 扩展](https://aka.ms/mssql-marketplace)（用于查询 Microsoft SQL Server、Azure SQL 数据库和 SQL 数据仓库）。
 
 SQL 数据库支持在 MacOS、Linux 和 Windows 上使用 Python、Java、Node.js、PHP、 Ruby 和 .NET 生成应用程序。 SQL 数据库和 SQL Server 支持相同的[连接库](sql-database-libraries.md)。
+
+## <a name="sql-database-frequently-asked-questions-faq"></a>SQL 数据库常见问题解答 (FAQ)
+
+### <a name="what-is-the-current-version-of-sql-database"></a>SQL 数据库的当前版本是多少
+
+SQL 数据库的当前版本是 V12。 V11 版本已停用。
+
+### <a name="can-i-control-when-patching-downtime-occurs"></a>我可以控制修补故障的时间吗
+
+不是。 如果在应用中[使用重试逻辑](sql-database-develop-overview.md#resiliency)，则修补通常不会产生明显影响。 有关如何为 Azure SQL 数据库上的计划内维护事件做好准备的详细信息，请参阅[规划 Azure SQL 数据库中的 Azure 维护事件](sql-database-planned-maintenance.md)。
+
+### <a name="azure-hybrid-benefit-questions"></a>Azure 混合权益问题
+
+#### <a name="are-there-dual-use-rights-with-azure-hybrid-benefit-for-sql-server"></a>面向 SQL Server 的 Azure 混合权益是否具有双倍使用权利
+
+我们为客户提供 180 天的许可证双倍使用权利，以确保无缝运行迁移。 在 180 天期限过后，SQL Server 许可证只能在云中的 SQL 数据库内使用，并且在本地和云中都没有双倍使用权利。
+
+#### <a name="how-does-azure-hybrid-benefit-for-sql-server-differ-from-license-mobility"></a>面向 SQL Server 的 Azure 混合权益与许可证移动性有何区别
+
+目前，我们为 SQL Server 客户提供软件保障许可证移动性权益，以便将其许可证重新分配到第三方共享服务器。 可对 Azure IaaS 和 AWS EC2 使用此权益。
+与许可证移动性相比，面向 SQL Server 的 Azure 混合权益的区别主要体现在两个方面：
+
+- 提供经济权益，以便将高度虚拟化的工作负荷转移到 Azure。 对于高度虚拟化的应用程序，如果 SQL EE 客户在本地拥有一个核心，则他们可以在 Azure 的常规用途 SKU 中获得 4 个核心。 许可证移动性不允许使用任何特殊成本权益将虚拟化工作负荷转移到云中。
+- 它适用于 Azure（SQL 数据库托管实例）上与本地 SQL Server 高度兼容的 PaaS 目标
+
+#### <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>面向 SQL Server 的 Azure 混合权益的特殊权利有哪些
+
+SQL 数据库客户将获得与面向 SQL Server 的 Azure 混合权益相关的以下权利：
+
+|许可证足迹|面向 SQL Server 的 Azure 混合权益可带来哪些好处？|
+|---|---|
+|具有 SA 的 SQL Server Enterprise Edition 核心客户|<li>可以根据“常规用途”或“业务关键”SKU 支付基准费率</li><br><li>1 个本地核心 =“常规用途”SKU 中的 4 个核心</li><br><li>1 个本地核心 =“业务关键”SKU 中的 1 个核心</li>|
+|具有 SA 的 SQL Server Standard Edition 核心客户|<li>只能根据“常规用途”SKU 支付基准费率</li><br><li>1 个本地核心 =“常规用途”SKU 中的 1 个核心</li>|
+|||
+
 
 ## <a name="engage-with-the-sql-server-engineering-team"></a>与 SQL Server 工程团队合作
 

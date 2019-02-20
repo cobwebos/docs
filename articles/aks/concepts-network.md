@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: b2fc4b518ee0857014c59b84b89a0102b86f687a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6affa19c61ff4a824e390c42b7fd97554a30c9bb
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820124"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176231"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序的网络概念
 
@@ -66,7 +66,7 @@ Azure 平台还有助于简化 AKS 群集的虚拟网络。 创建 Kubernetes �
 
 ### <a name="kubenet-basic-networking"></a>Kubenet（基本）网络
 
-kubenet 网络选项是用于创建 AKS 群集的默认配置。 使用 kubenet，节点从 Azure 虚拟网络子网获取 IP 地址。 Pod 接收从逻辑上不同的地址空间到节点的 Azure 虚拟网络子网的 IP 地址。 然后配置网络地址转换 (NAT)，以便 pod 可以访问 Azure 虚拟网络上的资源。 流量的源 IP 地址是 NAT 到节点的主 IP 地址。
+kubenet 网络选项是用于创建 AKS 群集的默认配置。 使用 kubenet，节点从 Azure 虚拟网络子网获取 IP 地址。 Pod 接收从逻辑上不同的地址空间到节点的 Azure 虚拟网络子网的 IP 地址。 然后配置网络地址转换 (NAT)，以便 Pod 可以访问 Azure 虚拟网络上的资源。 流量的源 IP 地址是 NAT 到节点的主 IP 地址。
 
 节点使用 [kubenet][kubenet] Kubernetes 插件。 可以让 Azure 平台创建和配置虚拟网络，或选择将 AKS 群集部署到现有虚拟网络子网中。 同样，只有 pod 和接收可路由 IP 地址的节点才能使用 NAT 与 AKS 群集外的其他资源进行通信。 这种方法大大减少了需要在网络空间中保留以供 pod 使用的 IP 地址数量。
 
@@ -74,7 +74,7 @@ kubenet 网络选项是用于创建 AKS 群集的默认配置。 使用 kubenet�
 
 ### <a name="azure-cni-advanced-networking"></a>Azure CNI（高级）网络
 
-借助 Azure CNI，每个 pod 都可以从子网获取 IP 地址，并且可以直接访问。 这些 IP 地址在网络空间必须是唯一的，并且必须事先计划。 每个节点都有其支持的最大 pod 数的配置参数。 然后，为该节点预先保留每个节点的等效 IP 地址数。 此方法需要更多的计划，并且经常会耗尽 IP 地址或者在应用程序需求增长时需要在更大的子网中重新生成群集。
+借助 Azure CNI，每个 pod 都可以从子网获取 IP 地址，并且可以直接访问。 这些 IP 地址在网络空间必须是唯一的，并且必须事先计划。 每个节点都有一个配置参数来表示它支持的最大 Pod 数。 这样，就会为每个节点预留相应的 IP 地址数。 此方法需要更多的计划，并且经常会耗尽 IP 地址或者在应用程序需求增长时需要在更大的子网中重新生成群集。
 
 节点使用 [Azure 容器网络接口 (CNI)][cni-networking] Kubernetes 插件。
 
@@ -102,9 +102,17 @@ Azure CNI 通过 kubenet 网络提供以下功能：
 
 ## <a name="network-security-groups"></a>网络安全组
 
-网络安全组筛选 VM（如 AKS 节点）的流量。 创建服务（如 LoadBalancer）时，Azure 平台会自动配置所需的任何网络安全组规则。 请勿手动配置网络安全组规则，以筛选 AKS 群集中 Pod 的流量。 定义任何所需端口并作为 Kubernetes 服务清单的一部分转发，让 Azure 平台创建或更新相应的规则。
+网络安全组筛选 VM（例如 AKS 节点）的流量。 创建服务（如 LoadBalancer）时，Azure 平台会自动配置所需的任何网络安全组规则。 请勿手动配置网络安全组规则，以筛选 AKS 群集中 Pod 的流量。 定义任何所需端口并作为 Kubernetes 服务清单的一部分转发，让 Azure 平台创建或更新相应的规则。 还可以使用网络策略（如下一部分中所讨论）来自动向 Pod 应用流量筛选器规则。
 
 流量（如 SSH）存在默认网络安全组规则。 这些默认规则适用于群集管理和故障排除访问。 删除这些默认规则可能会导致 AKS 管理出现问题，并破坏服务级别目标 (SLO)。
+
+## <a name="network-policies"></a>网络策略
+
+默认情况下，AKS 群集中的所有 Pod 都可以无限制地发送和接收流量。 为了提高安全性，你可能想要定义用来控制流量流的规则。 后端应用程序通常只向所需的前端服务公开，或者数据库组件仅可由连接到它们的应用程序层访问。
+
+网络策略是一项 Kubernetes 功能，可用于控制 Pod 之间的流量流。 你可以选择基于分配的标签、命名空间或流量端口等设置来允许或拒绝流量。 网络安全组更多是针对 AKS 节点，而不是针对 Pod。 使用网络策略是一种更合适的用来控制流量流的云本机方式。 因为 Pod 是在 AKS 群集中动态创建的，则可以动态应用所需的网络策略。
+
+有关详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod 之间的流量][use-network-policies]。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -139,3 +147,4 @@ Azure CNI 通过 kubenet 网络提供以下功能：
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
+[use-network-policies]: use-network-policies.md

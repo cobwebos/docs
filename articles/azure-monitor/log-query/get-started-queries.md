@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics 中的查询入门 | Microsoft Docs
-description: 本文提供有关在 Log Analytics 中编写查询的入门教程。
+title: Azure Monitor 中的日志查询入门 | Microsoft Docs
+description: 本文提供了有关在 Azure Monitor 中编写日志查询的入门教程。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 326e12444067e950b9d6ae0862424589d444b83d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 599e6b0cd615be7275df127b0b2f174bd8e6c290
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884531"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994869"
 ---
-# <a name="get-started-with-queries-in-log-analytics"></a>Log Analytics 中的查询入门
+# <a name="get-started-with-azure-monitor-log-queries"></a>Azure Monitor 日志查询入门
 
 
 > [!NOTE]
-> 在完成本教程之前，应先完成 [Analytics 门户入门](get-started-portal.md)。
+> 在完成本教程之前，应当先完成 [Azure Monitor Log Analytics 入门](get-started-portal.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-本教程介绍如何编写 Azure Log Analytics 查询。 具体内容包括：
+在本教程中，你将学习编写 Azure Monitor 日志查询。 具体内容包括：
 
 - 了解查询的结构
 - 将查询结果排序
@@ -43,10 +43,10 @@ ms.locfileid: "52884531"
 查询可以从表名或 *search* 命令开始。 首先应从表名开始，因为它为查询定义了明确的范围，并可以改善查询性能和结果的相关性。
 
 > [!NOTE]
-> Azure Log Analytics 查询语言区分大小写。 语言关键字通常以小写编写。 在查询中使用表或列名时，请确保使用正确的大小写，如架构窗格中所示。
+> Azure Monitor 使用的数据资源管理器查询语言区分大小写。 语言关键字通常以小写编写。 在查询中使用表或列名时，请确保使用正确的大小写，如架构窗格中所示。
 
 ### <a name="table-based-queries"></a>基于表的查询
-Azure Log Analytics 在表中组织数据，每个表由多个列组成。 所有表和列显示在 Analytics 门户中的架构窗格内。 找到所需的表，然后看看其中的一些数据：
+Azure Monitor 在表中组织日志数据，每个表由多个列组成。 所有表和列都显示在 Analytics 门户中的 Log Analytics 中的架构窗格内。 找到所需的表，然后看看其中的一些数据：
 
 ```Kusto
 SecurityEvent
@@ -108,7 +108,7 @@ SecurityEvent
 
 编写筛选器条件时，可使用以下表达式：
 
-| 表达式 | Description | 示例 |
+| 表达式 | 说明 | 示例 |
 |:---|:---|:---|
 | == | 检查相等性<br>（区分大小写） | `Level == 8` |
 | =~ | 检查相等性<br>（不区分大小写） | `EventSourceName =~ "microsoft-windows-security-auditing"` |
@@ -164,7 +164,7 @@ SecurityEvent
 
 前面的示例生成以下输出：
 
-![Log Analytics 投影结果](media/get-started-queries/project.png)
+![查询投影结果](media/get-started-queries/project.png)
 
 还可以使用**投影**来重命名列，并定义新列。 以下示例使用项目执行以下操作：
 
@@ -236,7 +236,7 @@ Perf
 
 为了使输出更清晰，请选择在时间图表中显示不同时段的可用内存：
 
-![Log Analytics 在不同时段的内存](media/get-started-queries/chart.png)
+![查询不同时段的内存](media/get-started-queries/chart.png)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Log Analytics 中分析文本字段 | Microsoft Docs
-description: 介绍用于在引入数据时以及在查询中检索时分析 Log Analytics 记录中的数据的不同选项，比较每个选项的相对优点。
+title: 分析 Azure Monitor 日志中的文本数据 | Microsoft Docs
+description: 介绍了用于在引入数据时以及在查询中检索时分析 Azure Monitor 记录中的日志数据的不同选项，比较了每个选项的相对优点。
 documentationcenter: ''
 author: bwren
 manager: carmonm
@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 0d589156824c7b9f3f6a8c31591d69479d11780a
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: b6a2ca70faa36b94ace8158f33e58b5e6688ece3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214124"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002175"
 ---
-# <a name="parse-text-data-in-log-analytics"></a>在 Log Analytics 中分析文本字段
-由 Log Analytics 收集的某些数据会在单个属性中包括多条信息。 将此数据分析为多个属性可以更轻松地在查询中进行使用。 一个常见示例是收集在单个属性中包含多个值的整个日志项目的[自定义日志](../../log-analytics/log-analytics-data-sources-custom-logs.md)。 通过为不同值创建单独属性，可以对每个值进行搜索和聚合。
+# <a name="parse-text-data-in-azure-monitor-logs"></a>分析 Azure Monitor 日志中的文本数据
+Azure Monitor 收集的某些日志数据会在单个属性中包括多条信息。 将此数据分析为多个属性可以更轻松地在查询中进行使用。 一个常见示例是收集在单个属性中包含多个值的整个日志项目的[自定义日志](../../log-analytics/log-analytics-data-sources-custom-logs.md)。 通过为不同值创建单独属性，可以对每个值进行搜索和聚合。
 
-本文介绍用于在引入数据时以及在查询中检索时分析 Log Analytics 记录中的数据的不同选项，比较每个选项的相对优点。
+本文介绍了用于在引入数据时以及在查询中检索时分析 Azure Monitor 中的日志数据的不同选项，比较了每个选项的相对优点。
 
 
 ## <a name="parsing-methods"></a>分析方法
@@ -60,7 +60,7 @@ ms.locfileid: "54214124"
 - 在对非常大的记录集（数十亿个记录）运行复杂逻辑时可能会形成开销。
 
 ## <a name="parse-data-as-its-collected"></a>在收集时分析数据
-有关在收集时分析数据的详细信息，请参阅[在 Log Analytics 中创建自定义字段](../../log-analytics/log-analytics-custom-fields.md)。 这会在表中创建可以由查询使用的自定义属性（就如同任何其他属性一样）。
+有关在收集时分析数据的详细信息，请参阅[在 Azure Monitor 中创建自定义字段](../platform/custom-fields.md)。 这会在表中创建可以由查询使用的自定义属性（就如同任何其他属性一样）。
 
 ## <a name="parse-data-in-query-using-patterns"></a>使用模式在查询中分析数据
 当要分析的数据可以通过在记录间重复的某种模式进行标识时，可以使用[数据资源管理器查询语言](/azure/kusto/query/)中的不同运算符将特定数据段提取到一个或多个新属性中。
@@ -106,7 +106,7 @@ AzureActivity
 | distinct UPNUserPart, Caller
 ```
 
-为了显示大规模高效分析，Log Analytics 使用 re2 版本的正则表达式，这与某些其他正则表达式变体相似，但并不完全相同。 有关详细信息，请参阅 [re2 表达式语法](https://aka.ms/kql_re2syntax)。
+为了显示大规模高效分析，Azure Monitor 使用 re2 版本的正则表达式，这与某些其他正则表达式变体相似，但并不完全相同。 有关详细信息，请参阅 [re2 表达式语法](https://aka.ms/kql_re2syntax)。
 
 
 ## <a name="parse-delimited-data-in-a-query"></a>在查询中分析带分隔符的数据

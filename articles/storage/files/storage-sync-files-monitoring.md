@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 032b39846d19e34f2eb87c1311feeb4bb890cb24
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5a0d02768b0fbd23e33d13c5e5c3fe84a41cdc52
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467452"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243648"
 ---
 # <a name="monitor-azure-file-sync"></a>监视 Azure 文件同步
 
@@ -29,7 +29,7 @@ ms.locfileid: "55467452"
 
 ### <a name="storage-sync-service"></a>存储同步服务
 
-若要查看已注册的服务器和服务器终结点运行状况，请转到 Azure 门户中的“存储同步服务”。 可在“已注册的服务器”边栏选项卡中查看已注册的服务器运行状况。 可在“同步组”边栏选项卡中查看服务器终结点运行状况。
+若要查看已注册的服务器运行状况、服务器终结点运行状况和指标，请转到 Azure 门户中的“存储同步服务”。 可在“已注册的服务器”边栏选项卡中查看已注册的服务器运行状况。 可在“同步组”边栏选项卡中查看服务器终结点运行状况。
 
 已注册的服务器运行状况
 - 如果已注册的服务器状态为“联机”，则服务器已成功与服务进行通信。
@@ -38,6 +38,23 @@ ms.locfileid: "55467452"
 服务器终结点运行状况
 - 门户中的服务器终结点运行状况取决于服务器上遥测事件日志中记录的同步事件（ID 9102 和 9302）。 如果同步会话因暂时性错误失败（例如，已取消的错误），只要当前同步会话在进行中，同步在门户中仍可能显示为正常运行（事件 ID 9302 用于确定是否正在应用文件）。 有关详细信息，请参阅以下文档：[同步运行状况](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) & [同步进度](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)。
 - 如果门户因未进行同步而显示同步错误，请查看[疑难解答文档](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors)以获得指导。
+
+度量值
+- 可以在“存储同步服务”门户中查看以下指标：
+
+  | 指标名称 | 说明 | 门户边栏选项卡 | 
+  |-|-|-|
+  | 同步的字节数 | 已传输数据的大小（上传和下载） | 同步组，服务器终结点 |
+  | 云分层回调 | 回调的数据的大小 | 已注册的服务器 |
+  | 未同步的文件 | 未能同步的文件数 | 服务器终结点 |
+  | 同步的文件 | 已传输的文件数（上传和下载） | 同步组，服务器终结点 |
+  | 服务器联机状态 | 从服务器接收的检测信号数 | 已注册的服务器 |
+
+- 若要了解详细信息，请参阅 [Azure Monitor](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#azure-monitor) 部分。 
+
+  > [!Note]  
+  > “存储同步服务”门户中的图表的时间范围为 24 小时。 若要查看不同时间范围或维度，请使用 Azure Monitor。
+
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
@@ -52,8 +69,8 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 | 同步的字节数 | 传输数据大小（上传和下载）。<br><br>单位：字节<br>聚合类型：Sum<br>适用维度：服务器终结点名称、同步方向、同步组名称 |
 | 云分层回调 | 回调的数据大小。<br><br>单位：字节<br>聚合类型：Sum<br>适用的维度：服务器名称 |
 | 未同步的文件 | 未能同步的文件数。<br><br>单位：Count<br>聚合类型：Sum<br>适用维度：服务器终结点名称、同步方向、同步组名称 |
-| 同步的文件 | 上传和下载的文件数。<br><br>单位：Count<br>聚合类型：Sum<br>适用维度：服务器终结点名称、同步方向、同步组名称 |
-| 服务器检测信号 | 从服务器接收的检测信号数。<br><br>单位：Count<br>聚合类型：最大值<br>适用的维度：服务器名称 |
+| 同步的文件 | 已传输的文件数（上传和下载）。<br><br>单位：Count<br>聚合类型：Sum<br>适用维度：服务器终结点名称、同步方向、同步组名称 |
+| 服务器联机状态 | 从服务器接收的检测信号数。<br><br>单位：Count<br>聚合类型：最大值<br>适用的维度：服务器名称 |
 | 同步会话结果 | 同步会话结果（1=成功同步会话；0=失败同步会话）<br><br>单位：Count<br>聚合类型：最大值<br>适用维度：服务器终结点名称、同步方向、同步组名称 |
 
 ## <a name="windows-server"></a>Windows Server

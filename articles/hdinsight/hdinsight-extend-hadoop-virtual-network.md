@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 2e986e26f22e41e1cbf7b8d1c1af694522a01d06
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: dfcbbacc5df394e0d2a515d557d655af0ea44d11
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821569"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169966"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>使用 Azure 虚拟网络扩展 Azure HDInsight
 
@@ -253,11 +253,11 @@ HDInsight 在多个端口上公开服务。 使用虚拟设备防火墙时，必
 >
 > 如果不使用网络安全组或用户定义的路由来控制流量，则可以忽略本部分。
 
-如果使用网络安全组或用户定义的路由，则必须允许来自 Azure 运行状况和管理服务的流量发往 HDInsight。 还必须允许在子网内的 VM 之间传输流量。 使用以下步骤来查找必须允许的 IP 地址：
+如果使用网络安全组，则必须允许来自 Azure 运行状况和管理服务的流量在端口 443 上到达 HDInsight 群集。 还必须允许在子网内的 VM 之间传输流量。 使用以下步骤来查找必须允许的 IP 地址：
 
 1. 必须始终允许来自以下 IP 地址的流量：
 
-    | IP 地址 | 允许的端口 | 方向 |
+    | 源 IP 地址 | Destination Port | 方向 |
     | ---- | ----- | ----- |
     | 168.61.49.99 | 443 | 入站 |
     | 23.99.5.239 | 443 | 入站 |
@@ -269,7 +269,7 @@ HDInsight 在多个端口上公开服务。 使用虚拟设备防火墙时，必
     > [!IMPORTANT]  
     > 如果未列出所用的 Azure 区域，则仅使用步骤 1 中所列的四个 IP 地址。
 
-    | 国家/地区 | 区域 | 允许的 IP 地址 | 允许的端口 | 方向 |
+    | 国家/地区 | 区域 | 允许的源 IP 地址 | 允许的目标端口 | 方向 |
     | ---- | ---- | ---- | ---- | ----- |
     | 亚洲 | 东亚 | 23.102.235.122</br>52.175.38.134 | 443 | 入站 |
     | &nbsp; | 东南亚 | 13.76.245.160</br>13.76.136.249 | 443 | 入站 |
@@ -306,15 +306,13 @@ HDInsight 在多个端口上公开服务。 使用虚拟设备防火墙时，必
 
 有关详细信息，请参阅[控制网络流量](#networktraffic)一节。
 
+对于出站 NSG 规则，请允许来自 VNET 中任何源的流量到达作为“目标 IP 地址”的上述地址。
+
+如果使用用户定义的路由 (UDR)，则应当指定一个路由并允许来自 VNET 的出站流量到达下一跃点设置为“Internet”的上述 IP。
+    
 ## <a id="hdinsight-ports"></a>所需的端口
 
-如果计划使用**防火墙**来保护虚拟网络并通过某些端口访问群集，则应允许你的方案所需的端口上的流量。 默认情况下，不需要将这些端口加入允许列表：
-
-* 53
-* 443
-* 1433
-* 11000-11999
-* 14000-14999
+如果计划使用**防火墙**并在特定端口上从外部访问群集，则需要允许你的方案所需的那些端口上的流量。 默认情况下，只要允许上一部分中介绍的 Azure 管理流量在端口 443 上到达群集，则不需要特地将端口列入白名单。
 
 对于特定服务的端口列表，请参阅 [HDInsight 上的 Apache Hadoop 服务所用的端口](hdinsight-hadoop-port-settings-for-services.md)文档。
 

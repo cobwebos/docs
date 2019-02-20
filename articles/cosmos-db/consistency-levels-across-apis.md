@@ -7,26 +7,26 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 4d2994ea6ab6d6472ec56f0f2e378062590c8920
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: b620ca76cfea296e504afffd91852308a01575db
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54806991"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001953"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>一致性级别和 Azure Cosmos DB API
 
-Azure Cosmos DB SQL API 本机支持 Azure Cosmos DB 提供的五个一致性模型。 使用 Azure Cosmos DB 时，SQL API 是默认 API。 
+SQL API 本机支持 Azure Cosmos DB 提供的五个一致性模型。 使用 Azure Cosmos DB 时，SQL API 是默认 API。 
 
-Azure Cosmos DB 还为常用数据库提供对与线路协议兼容的 API 的本机支持。 数据库包括 MongoDB、Apache Cassandra、Gremlin 和 Azure 表存储。 这些数据库既没有提供准确定义的一致性模型，也没有为一致性级别提供由 SLA 支持的保证。 它们通常仅提供 Azure Cosmos DB 提供的五个一致性模型的一个子集。 对于 SQL API、Gremlin API 和表 API，会使用 Azure Cosmos DB 帐户上配置的默认一致性级别。 
+Azure Cosmos DB 还为常用数据库提供对与线路协议兼容的 API 的本机支持。 数据库包括 MongoDB、Apache Cassandra、Gremlin 和 Azure 表存储。 这些数据库既没有提供准确定义的一致性模型，也没有为一致性级别提供由 SLA 支持的保证。 它们通常仅提供 Azure Cosmos DB 提供的五个一致性模型的一个子集。 对于 SQL API、Gremlin API 和表 API，会使用 Azure Cosmos 帐户上配置的默认一致性级别。 
 
-以下部分介绍了由 Apache Cassandra 4.x 和 MongoDB 3.4 的 OSS 客户端驱动程序请求的数据一致性之间的映射。 本文档还介绍了 Apache Cassandra 和 MongoDB 对应的 Azure Cosmos DB 一致性级别。
+以下各部分显示了 Apache Cassandra 和 MongoDB 的 OSS 客户端驱动程序所请求的数据一致性与 Azure Cosmos DB 中的对应一致性级别之间的映射。
 
 ## <a id="cassandra-mapping"></a>Apache Cassandra 与 Azure Cosmos DB 一致性级别之间的映射
 
-下表显示了 Apache Cassandra 与 Azure Cosmos DB 中的一致性级别之间的一致性映射。 对于每个 Cassandra 读写一致性级别，对应的 Cosmos DB 一致性级别提供更强的（即更严格的）保证。
+下表描述了可用于 Cassandra API 的各种一致性组合和 Cosmos DB 的等效原生一致性级别映射。 Cosmos DB 原生支持 Apache Cassandra 写入和读取模式的所有组合。 在 Apache Cassandra 写入和读取一致性模型的每一个组合中，Cosmos DB 都将提供与 Apache Cassandra 相同或更高的一致性保证。 此外，Cosmos DB 提供了比 Apache Cassandra 更高的持续性保证，即使是在最弱的写入模式下也是如此。
 
-下表显示了 Azure Cosmos DB 和 Cassandra 之间的“写一致性映射”：
+下表显示了 Azure Cosmos DB 与 Cassandra 之间的**写一致性映射**：
 
 | Cassandra | Azure Cosmos DB | 保证 |
 | - | - | - |
@@ -42,7 +42,7 @@ Azure Cosmos DB 还为常用数据库提供对与线路协议兼容的 API 的�
 | LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE    | 有限过期 | <ul><li>有限过期。</li><li>至多到 K 版本或在 t 时间之后。</li><li>读取区域中提交的最新值。</li></ul> |
 | ONE, LOCAL_ONE, ANY   | 一致前缀 | 各区域一致前缀 |
 
-下表显示了 Azure Cosmos DB 和 Cassandra 之间的“读一致性映射”：
+下表显示了 Azure Cosmos DB 与 Cassandra 之间的**读一致性映射**：
 
 | Cassandra | Azure Cosmos DB | 保证 |
 | - | - | - |

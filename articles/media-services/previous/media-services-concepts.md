@@ -11,16 +11,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 06c6451a7c8532b32a1c130f6b71df97857d2e7f
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 413e005762ab557e0605f9b4e79a6fe5b45448b7
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353693"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993905"
 ---
-# <a name="azure-media-services-concepts"></a>Azure 媒体服务概念
+# <a name="azure-media-services-concepts"></a>Azure 媒体服务概念 
+
 本部分概述最重要的媒体服务概念。
 
 ## <a name="a-idassetsassets-and-storage"></a><a id="assets"/>资产和存储
@@ -137,7 +138,7 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 ### <a name="dynamic-encryption"></a>动态加密
 使用 Azure 媒体服务，可以在媒体从离开计算机到存储、处理和传送的整个过程中确保其安全。 借助媒体服务，可以传送使用高级加密标准（AES，使用 128 位加密密钥）和通用加密（CENC，使用 PlayReady 和/或 Widevine DRM）进行动态加密的内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 PlayReady 许可证的服务。
 
-当前可以加密以下流格式：HLS、MPEG DASH 和平滑流。 无法加密渐进式下载。
+当前可以加密以下流格式：HLS、MPEG DASH 和平滑流式处理。 无法加密渐进式下载。
 
 如果需要媒体服务来加密资产，则需要将加密密钥（CommonEncryption 或 EnvelopeEncryption）与资产相关联，并且配置密钥的授权策略。
 

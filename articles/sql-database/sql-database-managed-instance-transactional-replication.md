@@ -1,6 +1,6 @@
 ---
 title: Azure SQL 数据库的事务复制 | Microsoft Docs
-description: 了解如何对 Azure SQL 数据库中的独立、入池和实例数据库使用 SQL Server 事务复制。
+description: 了解如何对 Azure SQL 数据库中的单一、池化和实例数据库使用 SQL Server 事务复制。
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,15 +11,15 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 1c542c1e906b078b76b78ed30af8bdf67110199c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/08/2019
+ms.openlocfilehash: d0f9ea15b692d9aba2fde217805ea5e0ecfb4dfd
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814106"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993803"
 ---
-# <a name="transactional-replication-with-standalone-pooled-and-instance-databases-in-azure-sql-database"></a>对 Azure SQL 数据库中的独立、入池和实例数据库进行事务复制
+# <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>对 Azure SQL 数据库中的单一、入池和实例数据库进行事务复制
 
 事务复制是 Azure SQL 数据库和 SQL Server 的一项功能，用于将 Azure SQL 数据库或 SQL Server 中表的数据复制到远程数据库中的表。 使用此功能可以同步不同数据库中的多个表。
 
@@ -37,24 +37,23 @@ ms.locfileid: "55814106"
 
 ![SQL 数据库的复制](media/replication-to-sql-database/replication-to-sql-database.png)
 
-
 **发布服务器**是通过将更新发送到分发服务器，来发布某些表（项目）所发生的更改的实例或服务器。 以下版本的 SQL Server 支持从本地 SQL Server 发布到任何 Azure SQL 数据库：
 
-   - SQL Server 2019（预览版）
-   - SQL Server 2016 到 SQL 2017
-   - SQL Server 2014 SP1 CU3 或更高版本 (12.00.4427)
-   - SQL Server 2014 RTM CU10 (12.00.2556)
-   - SQL Server 2012 SP3 或更高版本 (11.0.6020)
-   - SQL Server 2012 SP2 CU8 (11.0.5634.0)
-   - 对于不支持发布到 Azure 中的对象的其他 SQL Server 版本，可以利用[重新发布数据](https://docs.microsoft.com/sql/relational-databases/replication/republish-data)方法将数据转移到较新版本的 SQL Server。 
+- SQL Server 2019（预览版）
+- SQL Server 2016 到 SQL 2017
+- SQL Server 2014 SP1 CU3 或更高版本 (12.00.4427)
+- SQL Server 2014 RTM CU10 (12.00.2556)
+- SQL Server 2012 SP3 或更高版本 (11.0.6020)
+- SQL Server 2012 SP2 CU8 (11.0.5634.0)
+- 对于不支持发布到 Azure 中的对象的其他 SQL Server 版本，可以利用[重新发布数据](https://docs.microsoft.com/sql/relational-databases/replication/republish-data)方法将数据转移到较新版本的 SQL Server。 
 
 **分发服务器**是从发布服务器收集项目中的更改，并将其分发到订阅服务器的实例或服务器。 分发服务器可以是 Azure SQL 数据库托管实例或 SQL Server（可以采用等于或高于发布服务器版本的任何版本）。 
 
-**订阅服务器**是接收发布服务器上发生的更改的实例或服务器。 订阅服务器可以是 Azure SQL 数据库或 SQL Server 数据库中的独立、入池和实例数据库。 独立或入池数据库上的订阅服务器必须配置为推送订阅服务器。 
+**订阅服务器**是接收发布服务器上发生的更改的实例或服务器。 订阅服务器可以是 Azure SQL 数据库或 SQL Server 数据库中的单一、入池和实例数据库。 单一或入池数据库上的订阅服务器必须配置为推送订阅服务器。 
 
-| 角色 | 独立数据库和入池数据库 | 实例数据库 |
+| 角色 | 单一数据库和入池数据库 | 实例数据库 |
 | :----| :------------- | :--------------- |
-| **发布者** | 否 | 是 | 
+| **发布服务器** | 否 | 是 | 
 | **分发服务器** | 否 | 是|
 | **提取订阅服务器** | 否 | 是|
 | **推送订阅服务器**| 是 | 是|
@@ -63,7 +62,7 @@ ms.locfileid: "55814106"
 有不同的[复制类型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication?view=sql-server-2017)：
 
 
-| 复制 | 独立数据库和入池数据库 | 实例数据库|
+| 复制 | 单一数据库和入池数据库 | 实例数据库|
 | :----| :------------- | :--------------- |
 | [**事务**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | 是（仅用作订阅服务器） | 是 | 
 | [**快照**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | 是（仅用作订阅服务器） | 是|
@@ -107,11 +106,11 @@ ms.locfileid: "55814106"
 - 两个托管实例位于同一位置。
 - 不能[使用自动故障转移组异地复制](sql-database-auto-failover-group.md)正在托管发布和分发服务器数据库的托管实例。
 
-### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-standalone-pooled-and-instance-database"></a>发布服务器和分发服务器位于本地，订阅服务器位于独立、入池和实例数据库上 
+### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-single-pooled-and-instance-database"></a>发布服务器和分发服务器位于本地，订阅服务器位于单一、入池和实例数据库上 
 
 ![Azure SQL DB 用作订阅服务器](media/replication-with-sql-database-managed-instance/03-azure-sql-db-subscriber.png)
  
-在此配置中，Azure SQL 数据库（独立、入池和实例数据库）是订阅服务器。 此配置支持从本地迁移到 Azure。 如果订阅服务器位于独立或入池数据库上，则它必须处于推送模式。  
+在此配置中，Azure SQL 数据库（单一、入池和实例数据库）是订阅服务器。 此配置支持从本地迁移到 Azure。 如果订阅服务器位于单一或入池数据库上，则它必须处于推送模式。  
 
 ## <a name="next-steps"></a>后续步骤
 

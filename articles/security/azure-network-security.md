@@ -4,7 +4,7 @@ description: 了解基于云的计算服务，包括大量计算实例和服务�
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 1d94ac5f799fc4bad13ab6a5e97a225a7499380d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: a405583503b75a64dda2bf277a4a50be4e926d28
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405967"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111282"
 ---
 # <a name="azure-network-security"></a>Azure 网络安全
 
@@ -161,7 +161,7 @@ VNet 之间可相互连接，因此，连接到任意一个 VNet 的资源都可
 
 可组合使用以下任何选项将本地网络连接到 VNet：
 
-- **点到站点虚拟网络 (VPN)：** 在连接到网络的单台电脑和 VNet 之间建立连接。 这种连接类型适用于刚开始使用 Azure 的人员或开发人员，因为该连接类型仅需对现有网络作出极少更改或不做任何更改。 此连接使用 SSTP 协议在电脑和 VNet 之间通过 Internet 提供加密通信。 由于流量遍历 Internet，因此点到站点 VPN 的延迟不可预测。
+- **点到站点虚拟专用网络 (VPN)：** 在连接到网络的单台电脑和 VNet 之间建立连接。 这种连接类型适用于刚开始使用 Azure 的人员或开发人员，因为该连接类型仅需对现有网络作出极少更改或不做任何更改。 此连接使用 SSTP 协议在电脑和 VNet 之间通过 Internet 提供加密通信。 由于流量遍历 Internet，因此点到站点 VPN 的延迟不可预测。
 
 - **站点到站点 VPN：** 在 VPN 设备和 Azure VPN 网关之间建立连接。 此连接类型可使授权的任何本地资源访问 VNet。 此连接是一个 IPsec/IKE VPN，该 VPN 通过 Internet 在本地设备和 Azure VPN 网关之间提供加密通信。 由于流量遍历 Internet，因此站点到站点连接的延迟不可预测。
 
@@ -183,7 +183,7 @@ VNet 之间可相互连接，因此，连接到任意一个 VNet 的资源都可
 
 默认情况下，Azure 会创建路由表，这些路由表可使连接到 VNet 中任何子网的资源相互进行通信。 可使用以下两个选项中任意一个或同时使用二者替代 Azure 创建的默认路由：
 
-- **用户定义路由：** 可创建自定义路由表，其中包含可对每个子网控制流量路由位置的路由。 若要详细了解用户定义路由，请阅读[用户定义路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)。
+- **用户定义的路由：** 可创建自定义路由表，其中包含可对每个子网控制流量路由到位置的路由。 若要详细了解用户定义路由，请阅读[用户定义路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)。
 
 - **BGP 路由：** 如果使用 Azure VPN 网关或 ExpressRoute 连接将 VNet 连接到本地网络，则可将 BGP 路由传播到 VNet。
 
@@ -288,7 +288,7 @@ NSG 附带了一些应当注意的内置规则。 其中包括：
 
 -   **拒绝所有入站流量：** 此规则阻止源自已显式允许的 Internet 的所有流量。
 
--   **允许流向 Internet 的所有出站流量：** 此规则允许 VM 启动到 Internet 的连接。 如果不希望启动这些连接，则需创建一个规则来阻止这些连接或实施强制隧道。
+-   **允许到 Internet 的所有出站流量：** 此规则允许 VM 启动到 Internet 的连接。 如果不希望启动这些连接，则需创建一个规则来阻止这些连接或实施强制隧道。
 
 #### <a name="system-routes-and-user-defined-routes"></a>系统路由和用户定义路由
 
@@ -320,7 +320,7 @@ NSG 附带了一些应当注意的内置规则。 其中包括：
 
 -   每个虚拟网络子网具有内置的系统路由表。 系统路由表具有以下三组路由：
 
- -  **本地 VNet 路由：** 直接路由到同一个虚拟网络中的目标虚拟机
+ -  **本地 VNet 路由：** 直接路由到同一个虚拟网络中的目标 VM
 
  - **本地路由：** 路由到 Azure VPN 网关
 

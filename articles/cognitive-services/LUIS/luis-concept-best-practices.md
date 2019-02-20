@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: 学习 LUIS 最佳做法以从 LUIS 应用的模型中获取最佳结果。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 02/13/2019
 ms.author: diberry
-ms.openlocfilehash: 5a6f9c559ce6fe66d4fe3df9382bc931f4a55e6a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ba51da8b71406cb1bf7446bd66818a6a74e61317
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55209360"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243410"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>使用认知服务生成语言理解应用的最佳做法
 使用应用创作进程生成 LUIS 应用。 
@@ -59,6 +59,12 @@ ms.locfileid: "55209360"
 
 “预订航班”和“预订酒店”使用了同样的词汇“预订”。 此格式相同，所以它应该是同一意向，只是使用不同的词语（“航班”和“酒店”）作为提取的实体。 
 
+更多相关信息：
+* 概念：[关于 LUIS 应用中的意向的概念](luis-concept-intent.md)
+* 教程：[生成 LUIS 应用，以确定用户意向](luis-quickstart-intents-only.md)
+* 如何：[添加意向以确定用户的话语意向](luis-how-to-add-intents.md)
+
+
 ## <a name="do-find-sweet-spot-for-intents"></a>请找到意向的平衡点
 使用 LUIS 中的预测数据来判定意向是否存在重叠的情况。 重叠的意向会困扰 LUIS。 结果是评分最高的意向会与另一个意向非常接近。 由于 LUIS 不会在每次训练的数据中使用完全相同的路径，所以重叠意向可能会在训练中排到第一或第二的位置。 各意向的话语分数应相互拉开差距以避免出现上述翻转情况。 更好地区分意向可以使得每次训练都得出预期的最高分意向。 
  
@@ -67,6 +73,9 @@ ms.locfileid: "55209360"
 
 开发人员应备有三个数据集。 第一个是用于构建模型的话语示例集。 第二个数据集用于在终结点测试模型。 第三个是[批处理测试](luis-how-to-batch-test.md)中使用的盲测数据集。 最后一个数据集不用于训练应用程序，也不在终结点上发送。  
 
+更多相关信息：
+* 概念：[LUIS 应用的创作周期](luis-concept-app-iteration.md)
+
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>应在后续的迭代中添加短语列表和模式
 [短语列表](luis-concept-feature.md)可用于定义包含与应用域有关的字词的字典。 从几个字词开始创建短语列表，然后使用推荐功能，让 LUIS 了解词汇表中更多特定于应用的字词。 请勿将所有字词都添加到词汇表中，因为短语列表不是完全匹配的。 
 
@@ -74,11 +83,22 @@ ms.locfileid: "55209360"
 
 在模式中为标点使用[可选语法](luis-concept-patterns.md)，以便忽略标点。 使用[显式列表](luis-concept-patterns.md#explicit-lists)来弥补 pattern.any 语法问题。 
 
-请勿在应用接收到终结点请求之前应用这些做法，因为这会导致置信度出现偏差。  
+请勿在应用接收到终结点请求之前应用这些做法。 在添加短语列表和模式之前，你应该了解应用的行为方式。 在了解没有这些项时你的应用的行为方式后，在这些功能适用于你的应用时再添加每个功能。 
+
+在设计模型之初就添加它们并没有什么坏处，但如果在将应用用于真实流量之后再添加它们，则可以更容易地看出每个功能是如何改变结果的。 
+
+你不需要在每次迭代中都添加这些功能，也不需要在每个版本中都更改这些功能。 
+
+更多相关信息：
+* 概念：[LUIS 应用的创作周期](luis-concept-app-iteration.md)
+* 概念：[LUIS 应用中的短语列表特征](luis-concept-feature.md)
+* 概念：[模式可提高预测准确性](luis-concept-patterns.md)
+* 操作说明：[使用短语列表来增强字词列表的信号](luis-how-to-add-features.md)
+* 操作说明：[如何添加模式以提高预测准确性](luis-how-to-model-intent-pattern.md)
 
 ## <a name="balance-your-utterances-across-all-intents"></a>跨所有意向来平衡话语
 
-为了使 LUIS 的预测准确，每个意向（None 意向除外）中示例话语的数量必须相同（相对说来）。 
+为了使 LUIS 预测准确，每个意向（None 意向除外）中示例话语的数量必须相同（相对说来）。 
 
 如果一个意向有 100 个示例话语，另一个意向有 20 个示例话语，则 100 个话语的意向的预测准确率会更高。  
 
@@ -86,9 +106,17 @@ ms.locfileid: "55209360"
 
 此意向是回退意向，指示应用程序以外的所有内容。 针对 LUIS 应用其余部分的每 10 个话语示例，向“None”意向中添加一个话语示例。
 
+更多相关信息：
+* 概念：[了解哪些良好的话语适用于你的 LUIS 应用](luis-concept-utterance.md)
+
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>应利用主动学习的建议功能
 
 定期使用[主动学习](luis-how-to-review-endoint-utt.md)的“查看终结点话语”功能，而不是将更多话语示例添加到意向。 因为应用会不断接收终结点话语，所以此列表会不断变化。
+
+更多相关信息：
+* 概念：[通过评审终结点话语启用主动学习的相关概念](luis-concept-review-endpoint-utterances.md)
+* 教程：[教程：通过查看终结点话语来修复不确定的预测](luis-tutorial-review-endpoint-utterances.md)
+* 操作说明：[如何评审 LUIS 门户中的终结点陈述](luis-how-to-review-endoint-utt.md)
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>应监视应用的性能
 
@@ -133,6 +161,11 @@ LUIS 会预期一个意向的话语会存在变体。 在总体意思相同的�
 ## <a name="do-use-versions-for-each-app-iteration"></a>将版本用于每个应用迭代
 
 每个创作周期应该在一个新[版本](luis-concept-version.md)内进行，从现有版本进行克隆。 LUIS 没有版本限制。 版本名称用作 API 路由的一部分，因此必须选取 URL 中允许的字符，不得超出版本的 10 字符计数限制。 制定版本名称策略，使版本保持有序状态。 
+
+更多相关信息：
+* 概念：[了解如何以及何时使用某个 LUIS 版本](luis-concept-version.md)
+* 操作说明：[使用各个版本进行编辑和测试，而不会影响暂存应用或生产应用](luis-how-to-manage-versions.md)
+
 
 ## <a name="next-steps"></a>后续步骤
 

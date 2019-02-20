@@ -13,34 +13,36 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 48f1789d4909a1c3af9e9ca01d0b9d0a8e6e09f8
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: aac58cc0887c566c7377edf08f5a86e2d12cdf28
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299634"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993225"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Azure 中的管理解决方案的数据收集详细信息
-本文包括了 Microsoft 提供的[管理解决方案](solutions.md)的列表以及指向其详细文档的链接。  它还提供了这些解决方案将数据收集到 Log Analytics 中时采用的方法和频率的相关信息。  可以使用本文中的信息来了解可用的各种解决方案，并了解各种管理解决方案的数据流和连接要求。 
+本文包括了 Microsoft 提供的[管理解决方案](solutions.md)的列表以及指向其详细文档的链接。  它还提供了这些解决方案将数据收集到 Azure Monitor 中时采用的方法和频率的相关信息。  可以使用本文中的信息来了解可用的各种解决方案，并了解各种管理解决方案的数据流和连接要求。 
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="list-of-management-solutions"></a>管理解决方案的列表
 
-下表列出了 Azure 中由 Microsoft 提供的[管理解决方案](solutions.md)的列表。 列中的条目意味着解决方案使用该方法将数据收集到 Log Analytics 中。  如果解决方案没有选择任何列，则它将从另一个 Azure 服务直接写入到 Log Analytics 中。 访问每个解决方案的链接可以查看其详细文档来了解更多信息。
+下表列出了 Azure 中由 Microsoft 提供的[管理解决方案](solutions.md)的列表。 列中的条目意味着解决方案使用该方法将数据收集到 Azure Monitor 中。  如果解决方案没有选择任何列，则它将从另一个 Azure 服务直接写入到 Azure Monitor 中。 访问每个解决方案的链接可以查看其详细文档来了解更多信息。
 
 各个列的说明如下：
 
-- **Microsoft Monitoring Agent** - Windows 和 Linux 上用来运行来自 SCOM 的管理包和来自 Azure 的管理解决方案的代理。 在此配置中，代理直接连接到 Log Analytics，无需连接到 Operations Manager 管理组。 
-- **Operations Manager** - 与 Microsoft Monitoring Agent 相同的代理。 在此配置中，它[连接到已连接到 Log Analytics 的 Operations Manager 管理组](../../azure-monitor/platform/om-agents.md)。 
+- **Microsoft Monitoring Agent** - Windows 和 Linux 上用来运行来自 SCOM 的管理包和来自 Azure 的管理解决方案的代理。 在此配置中，代理直接连接到 Azure Monitor，无需连接到 Operations Manager 管理组。 
+- **Operations Manager** - 与 Microsoft Monitoring Agent 相同的代理。 在此配置中，它[连接到已连接到 Azure Monitor 的 Operations Manager 管理组](../../azure-monitor/platform/om-agents.md)。 
 -  **Azure 存储** - 此解决方案从 Azure 存储帐户收集数据。 
 - **是否需要 Operations Manager？** - 管理解决方案进行数据收集时需要一个已连接的 Operations Manager 管理组。 
-- **通过管理组发送 Operations Manager 代理数据** - 如果代理[连接到 SCOM 管理组](../../azure-monitor/platform/om-agents.md)，则数据将从管理服务器发送到 Log Analytics。 在这种情况下，代理不需要直接连接到 Log Analytics。 如果未选中此框，则数据将从代理直接发送到 Log Analytics，即使代理已连接到一个 SCOM 管理组。 它还需要能够通过 [Log Analytics 网关](../../azure-monitor/platform/gateway.md)与 Log Analytics 进行通信。
+- **通过管理组发送 Operations Manager 代理数据** - 如果代理[连接到 SCOM 管理组](../../azure-monitor/platform/om-agents.md)，则数据将从管理服务器发送到 Azure Monitor。 在这种情况下，代理不需要直接连接到 Azure Monitor。 如果未选中此框，则数据将从代理直接发送到 Azure Monitor，即使代理已连接到一个 SCOM 管理组。 它还需要能够通过 [Log Analytics 网关](../../azure-monitor/platform/gateway.md)与 Azure Monitor 进行通信。
 - **收集频率** - 指定管理解决方案收集数据时采用的频率。 
 
 
 
 | **管理解决方案** | 平台 | **Microsoft Monitoring Agent** | **Operations Manager 代理** | **Azure 存储** | **是否需要 Operations Manager？** | **通过管理组发送 Operations Manager 代理数据** | **收集频率** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [活动 Log Analytics](../../azure-monitor/platform/collect-activity-logs.md) | Azure | | | | | | 通知时 |
+| [活动日志分析](../../azure-monitor/platform/collect-activity-logs.md) | Azure | | | | | | 通知时 |
 | [AD 评估](../../azure-monitor/insights/ad-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 天 |
 | [AD 复制状态](../../azure-monitor/insights/ad-replication-status.md) |Windows |&#8226; |&#8226; | | |&#8226; |5 天 |
 | [代理运行状况](solution-agenthealth.md) | Windows 和 Linux | &#8226; | &#8226; | | | &#8226; | 1 分钟 |

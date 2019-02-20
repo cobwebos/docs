@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2019
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 946a2a05cee0cf8f3b91eef58442fbb2e26935c4
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 834674eb63af75088434db0f614b11c7a36e7adf
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490441"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964808"
 ---
 # <a name="configure-usage-settings-and-policies"></a>配置使用设置和策略
 本文介绍了如何向实验室添加用户，将用户注册到实验室，控制用户可以使用 VM 的小时数，以及其他内容。 
@@ -29,7 +29,9 @@ ms.locfileid: "55490441"
 
 1. 选择左侧菜单上的“用户”。
 2. 在工具栏上选择“添加用户”。 
-3. 在“添加用户”页上，在多个不同的行中输入电子邮件地址，或者在一行中输入以分号分隔的电子邮件地址。 
+
+    ![“添加用户”按钮](../media/how-to-configure-student-usage/add-users-button.png)
+1. 在“添加用户”页上，在多个不同的行中输入电子邮件地址，或者在一行中输入以分号分隔的电子邮件地址。 
 
     ![添加用户电子邮件地址](../media/how-to-configure-student-usage/add-users-email-addresses.png)
 4. 选择“保存”。 可以在列表中看到用户的电子邮件地址及其状态（已注册或未注册）。 
@@ -64,11 +66,14 @@ ms.locfileid: "55490441"
 
 1. 选择左侧菜单上的“用户”。
 2. 在工具栏上选择“每用户配额: 无限制”。 
-3. 在“每用户配额”页选择“限制用户可以使用 VM 的小时数”。 
-4. 在“希望为每个用户提供多少小时”中，输入小时数，然后选择“保存”。 
+3. 在“每用户配额”页面上，选择以下选项之一： 
+    1. **无**。 只有在计划的时间内或者当实验室所有者为用户启用了虚拟机时，用户才能使用其虚拟机。
+    2. **无限制(默认值)**。 用户可以不受时间限制地使用其虚拟机。
+    3. **指定每个用户的小时数**。 除了计划的时间之外，用户还可以将其虚拟机使用设定的小时数（在下面指定）。 如果选择了此选项，请在文本框中输入**小时数**。 
 
-    ![每个用户的小时数](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
-5. 现在可以在工具栏上看到小时数：**每个用户的配额: &lt;小时数&gt;**。 
+        ![每个用户的小时数](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
+    4. 选择“保存”。 
+5. 现在可以在工具栏上看到已更改的值：**每个用户的配额: &lt;小时数&gt;**。 
 
     ![每个用户的配额](../media/how-to-configure-student-usage/quota-per-user.png)
 
@@ -78,8 +83,19 @@ ms.locfileid: "55490441"
 ### <a name="add-users-by-uploading-a-csv-file"></a>通过上传 CSV 文件添加用户
 还可通过上传包含用户电子邮件地址的 CSV 文件来添加用户。
 
-1. 在工具栏上选择“上传 CSV”。
-2. 选择包含用户电子邮件地址的 CSV 文件。 使用 Excel 打开时，所有电子邮件地址都应位于一列中。 
+1. 创建一个 CSV 文件，在其中将用户的电子邮件地址放在一个列中。
+
+    ![每个用户的配额](../media/how-to-configure-student-usage/csv-file-with-users.png)
+2. 在实验室的“用户”页面上，在工具栏上选择“上传 CSV”。
+
+    ![“上传 CSV”按钮](../media/how-to-configure-student-usage/upload-csv-button.png)
+3. 选择包含用户电子邮件地址的 CSV 文件。 在选择 CSV 文件后选择“打开”时，可以看到以下“添加用户”窗口。 电子邮件地址列表中将填充来自 CSV 文件的电子邮件地址。 
+
+    ![填充有来自 CSV 文件的电子邮件地址的“添加用户”窗口](../media/how-to-configure-student-usage/add-users-window.png)
+4. 在“添加用户”窗口中选择“保存”。 
+5. 确认你可以在用户列表中看到用户。 
+
+    ![添加的用户的列表](../media/how-to-configure-student-usage/list-of-added-users.png)
 
 ## <a name="manage-user-vms"></a>管理用户 VM
 在学生使用你提供的注册链接向 Azure 实验室服务进行注册后，你可以在“虚拟机”选项卡上查看已分配给学生的虚拟机。 

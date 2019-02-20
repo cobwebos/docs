@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: a1d52e0c6f87b9075d73508c97bd270d67d3ecf5
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 8e2af866dcea3bd8ece29811b2cc8ccd4318ee54
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817616"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242798"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -34,6 +34,10 @@ ms.locfileid: "54817616"
 
 有关详细信息，请参阅[有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md#known-issues)。
 
+## <a name="february-2019"></a>2019 年 2 月
+
+媒体服务 v3 目前在 Azure 区域云中受支持。 目前，并非所有功能在所有云中都可用。 有关详细信息，请参阅[存在 Azure 媒体服务 v3 的云和区域](azure-clouds-regions.md)。
+
 ## <a name="january-2019"></a>2019 年 1 月
 
 ### <a name="media-encoder-standard-and-mpi-files"></a>Media Encoder Standard 和 MPI 文件 
@@ -46,7 +50,7 @@ ms.locfileid: "54817616"
 
 V3 API 的正式版中的更新包括：
        
-* **AssetFilters** 和 **AccountFilters** 不再需要 **PresentationTimeRange** 属性。 
+* **PresentationTimeRange** 属性不再是 **AssetFilters** 和 **AccountFilters** 所必需的。 
 * 已删除 **Jobs** 和 **Transforms** 的 $top 和 $skip 查询选项，并添加了 $orderby。 在添加新排序功能的过程中，我们发现之前意外地公开了 $top 和 $skip 选项，尽管它们并未实现。
 * 重新启用了枚举可扩展性。 此功能在 SDK 的预览版中已启用，但在正式版中被意外禁用。
 * 已重命名两个预定义的流式处理策略。 **SecureStreaming** 现在名为 **MultiDrmCencStreaming**。 **SecureStreamingWithFairPlay** 现在名为 **Predefined_MultiDrmStreaming**。
@@ -67,7 +71,7 @@ CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](https://docs.mic
 - [az ams live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
 - [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
 - [az ams streaming-locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [az ams account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) - 用于管理媒体保留单位
+- [az ams account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) - 用于管理媒体保留单位。 有关详细信息，请参阅[缩放媒体保留单位](media-reserved-units-cli-how-to.md)。
 
 ### <a name="new-features-and-breaking-changes"></a>新功能和重大更改
 
@@ -141,7 +145,7 @@ Azure AD 身份验证和基于角色的访问控制 (RBAC) 通过 Azure AD 中�
 - 改进的 RTMP 支持（提高了稳定性并提供了更多的源编码器支持）。
 - RTMPS 安全引入。
 
-    现可在创建 LiveEvent 时获取 4 个引入 URL。 这 4 个引入 URL 几乎是相同的，具有相同的流式处理令牌 (AppId)，仅端口号部分不同。 其中两个 URL 是 RTMPS 的主要和备份 URL。 
+    创建实时事件时，现在会得到 4 个引入 URL。 这 4 个引入 URL 几乎是相同的，具有相同的流式处理令牌 (AppId)，仅端口号部分不同。 其中两个 URL 是 RTMPS 的主要和备份 URL。 
 - 24 小时转码支持。 
 - 通过 SCTE35 改进了 RTMP 中的广告信号支持。
 
@@ -149,7 +153,7 @@ Azure AD 身份验证和基于角色的访问控制 (RBAC) 通过 Azure AD 中�
 
 可以看到以下事件网格支持改进：
 
-- 可通过逻辑应用和 Azure Functions 更轻松开发 Azure EventGrid 集成。 
+- 可通过逻辑应用和 Azure Functions 更轻松地开发 Azure 事件网格集成。 
 - 订阅事件的编码、直播频道等。
 
 ### <a name="cmaf-support"></a>CMAF 支持
@@ -179,11 +183,11 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 .Net SDK 具有以下功能：
 
 * 转换和作业，用于对媒体内容来进行编码或分析。 有关示例，请参阅[流式传输文件](stream-files-tutorial-with-api.md)和[分析](analyze-videos-tutorial-with-api.md)。
-* StreamingLocators，用于发布内容并将其流式传输到最终用户设备
-* StreamingPolicies 和 ContentKeyPolicies，用于在传送内容时配置密钥传递和内容保护 (DRM)。
-* LiveEvents 和 LiveOutputs，用于配置实时传送视频流内容的引入和归档。
+* **流式处理定位符**，用于发布内容并将其流式传输到最终用户设备
+* **流式处理策略**和**内容密钥策略**，用于在传送内容时配置密钥传递和内容保护 (DRM)。
+* **实时事件**和**实时输出**，用于配置实时传送视频流内容的引入和归档。
 * 资产，用于在 Azure 存储中存储和发布媒体内容。 
-* StreamingEndpoints，用于配置和缩放实时和点播媒体内容的动态打包、加密和流式处理。
+* **流式处理终结点**，用于配置和缩放实时和点播媒体内容的动态打包、加密和流式处理。
 
 ### <a name="known-issues"></a>已知问题
 

@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: celested
 ms.reviewer: paulgarn
-ms.openlocfilehash: 0e2b6e29e159970784ab8c321bbc8c16e96b60e3
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d3a2c79fd46b9c14f1bbb2794581746f6ff45cd6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757312"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179614"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption-preview"></a>如何：配置 Azure AD SAML 令牌加密（预览）
 
@@ -33,19 +34,19 @@ ms.locfileid: "55757312"
 
 即使不使用令牌加密，Azure AD SAML 令牌也永远不会以明文形式在网络中传递。 Azure AD 要求通过加密的 HTTPS/TLS 通道进行令牌请求/响应交换，使 IDP、浏览器与应用程序之间的通信通过加密的链接发生。 请根据自己的场合，在令牌加密所带来的价值与管理更多证书所造成的开销之间进行权衡。   
 
-若要配置令牌加密，需要将包含公钥的 X509 证书文件上传到代表应用程序的 Azure AD 应用程序对象中。 若要获取 X509 证书，可以从应用程序本身下载，或者从应用程序供应商处获取（如果应用程序供应商提供加密密钥）；如果应用程序要求你提供私钥，可以使用加密工具、上传到应用程序密钥存储的私钥部分，以及上传到 Azure AD 的匹配公钥证书来创建该私钥。
+若要配置令牌加密，需要将包含公钥的 X.509 证书文件上传到代表应用程序的 Azure AD 应用程序对象中。 若要获取 X.509 证书，可以从应用程序本身下载，或者从应用程序供应商处获取（如果应用程序供应商提供加密密钥）；如果应用程序要求你提供私钥，可以使用加密工具、上传到应用程序密钥存储的私钥部分，以及上传到 Azure AD 的匹配公钥证书来创建该私钥。
 
 Azure AD 使用 AES-256 加密 SAML 断言数据。
 
 ## <a name="configure-saml-token-encryption"></a>配置 SAML 令牌加密
 
-若要配置 SAML 令牌加密，请执行以下步骤。
+若要配置 SAML 令牌加密，请执行以下步骤：
 
 1. 获取与应用程序中配置的私钥匹配的公钥证书。
 
-    创建用于加密的非对称密钥对。 或者，如果应用程序提供用于加密的公钥，请遵照应用程序的说明下载 X509 证书。
+    创建用于加密的非对称密钥对。 或者，如果应用程序提供用于加密的公钥，请遵照应用程序的说明下载 X.509 证书。
 
-    公钥应以 .cer 格式存储在 X509 证书文件中。
+    公钥应以 .cer 格式存储在 X.509 证书文件中。
 
     如果应用程序使用你为实例创建的密钥，请遵照应用程序提供的说明安装私钥，应用程序将使用它来解密从 Azure AD 租户获取的令牌。
 
@@ -66,9 +67,9 @@ Azure AD 使用 AES-256 加密 SAML 断言数据。
     > [!NOTE]
     > “令牌加密”选项仅适用于已在 Azure 门户的“企业应用程序”边栏选项卡中设置的、来自应用程序库或非库应用的 SAML 应用程序。 对于其他应用程序，此菜单选项将会禁用。 对于通过 Azure 门户中的“应用注册”体验注册的应用程序，可以通过 Microsoft Graph 或 PowerShell 使用应用程序清单配置 SAML 令牌加密。
 
-1. 在“令牌加密”页上，选择“导入证书”导入包含公共 X509 证书的 .cer 文件。
+1. 在“令牌加密”页上，选择“导入证书”导入包含公共 X.509 证书的 .cer 文件。
 
-    ![导入包含 X509 证书的 .cer 文件](./media/howto-saml-token-encryption/import-certificate-small.png)
+    ![导入包含 X.509 证书的 .cer 文件](./media/howto-saml-token-encryption/import-certificate-small.png)
 
 1. 导入证书并配置要在应用程序端使用的私钥后，选择指纹状态旁边的“...”激活加密，然后从下拉菜单选项中选择“激活令牌加密”。
 
@@ -94,7 +95,7 @@ Azure AD 使用 AES-256 加密 SAML 断言数据。
 
 ### <a name="to-configure-token-encryption-using-microsoft-graph"></a>使用 Microsoft Graph 配置令牌加密
 
-1. 更新应用程序的 `keyCredentials`，其中包含用于加密的 X509 证书。 以下示例演示如何执行此操作。
+1. 将应用程序的 `keyCredentials` 更新为用于加密的 X.509 证书。 以下示例演示如何执行此操作。
 
     ```
     Patch https://graph.microsoft.com/beta/applications/<application objectid>

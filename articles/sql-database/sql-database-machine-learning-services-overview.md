@@ -11,20 +11,24 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
-ms.date: 01/31/2019
-ms.openlocfilehash: e2159e7cc59830c3d0d10f1c5b9697ab5b45b666
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/06/2019
+ms.openlocfilehash: b50fd21e4d3325875134d2e2e9caeed9f8db75d0
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824849"
+ms.locfileid: "55875597"
 ---
 # <a name="machine-learning-services-with-r-in-azure-sql-database-preview"></a>Azure SQL 数据库中的机器学习服务（预览版，使用 R）
 
 机器学习服务是 Azure SQL 数据库的一项功能，用于执行数据库中的 R 脚本。 该功能包括用于高性能预测分析和机器学习的 Microsoft R 包。 关系数据可以通过存储过程、包含 R 语句的 T-SQL 脚本或包含 T-SQL 的 R 代码在 R 脚本中使用。
 
-> [!NOTE]
-> Azure SQL 数据库中的机器学习服务（使用 R）当前为公共预览版。 [注册预览版](#signup)（见下）。
+> [!IMPORTANT]
+> Azure SQL 数据库中的机器学习服务（使用 R）目前为公共预览版，可用于**常规用途**和**业务关键**服务层中采用基于 vCore 的购买模型的单一数据库和弹性池。 此初始公共预览版不支持**超大规模**服务层和**托管实例**部署选项。 目前，R 是唯一受支持的语言。 目前不支持 Python。 
+>
+> 预览版目前在以下区域提供：西欧、北欧、美国西部 2、美国东部、美国中南部、美国中北部、加拿大中部、东南亚、印度南部、澳大利亚东南部。 
+>
+> [注册预览版](#signup)（见下）。
 
 ## <a name="what-you-can-do-with-r"></a>R 的功能
 
@@ -55,10 +59,6 @@ ms.locfileid: "55824849"
 2. 若要注册获取公共预览版，请向 Microsoft 的 [sqldbml@microsoft.com](mailto:sqldbml@microsoft.com) 发送电子邮件。 SQL 数据库中的机器学习服务（使用 R）的公共预览版不默认启用。
 
 注册此程序以后，Microsoft 会将你加入公共预览版，并为现有的或新的数据库启用 R。
-
-SQL 数据库中的机器学习服务（使用 R）目前仅在基于 vCore 的购买模型中提供，该模型位于“常规用途型”和“业务关键型”服务层中，适用于单独部署和弹性池部署。 在这个初始的公共预览版中，**超大规模**服务层和**托管实例**部署选择均不受支持。
-
-目前，R 是唯一受支持的语言。 目前不支持 Python。 预览版一开始在以下区域提供：西欧、北欧、美国西部 2、美国东部、美国中南部、美国中北部、加拿大中部、东南亚、印度南部、澳大利亚东南部。 以后会增添其他区域。
 
 请勿将公共预览版机器学习服务（使用 R）用于生产工作负荷。
 

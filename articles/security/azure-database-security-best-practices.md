@@ -4,7 +4,7 @@ description: 本文提供有关 Azure 数据库安全性的一套最佳做法。
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: tomsh
-ms.openlocfilehash: cceea9fa613d2a2428427bfe73eb50550db6c69a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 3e244f89904ce9aca161ed1ea435f4137e42bc5d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281619"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117963"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure 数据库安全性最佳做法
 安全性是管理数据库时的首要考虑因素，并且始终是 [Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/)的优先事务。 严格保护数据库有助于满足大部分法规或安全要求，包括 HIPAA、ISO 27001/27002 和 PCI DSS Level 1。 [Microsoft 信任中心站点](https://azure.microsoft.com/support/trust-center/services/)上提供了安全合规认证的最新列表。 也可以根据法规要求将数据库放置在特定的 Azure 数据中心。
@@ -77,7 +77,7 @@ SQL 数据库支持两种身份验证：SQL Server 身份验证和 Azure AD 身�
 
 - 自行管理强凭据。
 - 保护连接字符串中的凭据。
-- （可能需要）保护通过网络从 Web 服务器传递到数据库的凭据。 有关详细信息，请参阅[如何：在 ASP.NET 2.0 中使用 SQL 身份验证连接到 SQL Server](/previous-versions/msp-n-p/ff648340(v=pandp.10))。
+- （可能需要）保护通过网络从 Web 服务器传递到数据库的凭据。 有关更多信息，请参阅[如何：在 ASP.NET 2.0 中使用 SQL 身份验证连接到 SQL Server](/previous-versions/msp-n-p/ff648340(v=pandp.10))。
 
 ### <a name="azure-active-directory-ad-authentication"></a>*Azure Active Directory (AD) 身份验证*
 Azure AD 身份验证是使用 Azure AD 中的标识连接到 Azure SQL 数据库和 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的一种机制。 通过 Azure AD 身份验证，可以在一个中心位置中管理数据库用户和其他 Microsoft 服务的标识。 集中 ID 管理提供一个单一位置来管理数据库用户，并简化权限管理。
@@ -150,16 +150,16 @@ SQL Server 有多个审核级别，具体取决于针对安装的政府要求或
 - 在数据库上实现安全配置，以便可以保护数据库。
 - 在出现潜在威胁时对其进行检测和响应，以便可以快速响应和修正。
 
-最佳做法：发现数据库中的敏感数据并进行分类和标记。   
-详细信息：通过启用 Azure SQL 数据库中的[数据发现和分类](../sql-database/sql-database-data-discovery-and-classification.md)对 SQL 数据库中的数据进行分类。 可以监视对 Azure 仪表板中的敏感数据的访问或下载报告。
+**最佳做法**：发现数据库中的敏感数据并进行分类和标记。   
+**详细信息**：通过启用 Azure SQL 数据库中的[数据发现和分类](../sql-database/sql-database-data-discovery-and-classification.md)对 SQL 数据库中的数据进行分类。 可以监视对 Azure 仪表板中的敏感数据的访问或下载报告。
 
-最佳做法：跟踪数据库漏洞，以便可以主动提升数据库安全性。   
-详细信息：使用 Azure SQL 数据库[漏洞评估](../sql-database/sql-vulnerability-assessment.md)服务，该服务可扫描潜在的数据库漏洞。 该服务采用标记安全漏洞的规则知识库，并显示与最佳做法的偏差，例如错误配置、过多权限和未受保护的敏感数据。
+**最佳做法**：跟踪数据库漏洞，以便可以主动提升数据库安全性。   
+**详细信息**：使用 Azure SQL 数据库[漏洞评估](../sql-database/sql-vulnerability-assessment.md)服务，该服务可扫描潜在的数据库漏洞。 该服务采用标记安全漏洞的规则知识库，并显示与最佳做法的偏差，例如错误配置、过多权限和未受保护的敏感数据。
 
 这些规则基于 Microsoft 的最佳做法，并专注于对数据库及其重要数据有最大风险的安全问题。 其中涵盖数据库级别的问题以及服务器级别的安全问题，如服务器防火墙设置和服务器级别的权限。 此外，这些规则也代表了监管机构的诸多要求，以满足其符合性标准。
 
-最佳做法：启用威胁检测。  
-详细信息：启用 Azure SQL 数据库[威胁检测](../sql-database/sql-database-threat-detection.md)以获取有关如何调查和缓解威胁的安全警报和建议。 你会收到有关可疑数据库活动、潜在漏洞、SQL 注入攻击以及异常数据库访问和查询模式的警报。
+**最佳做法**：启用威胁检测。  
+**详细信息**：启用 Azure SQL 数据库[威胁检测](../sql-database/sql-database-threat-detection.md)以获取有关如何调查和缓解威胁的安全警报和建议。 你会收到有关可疑数据库活动、潜在漏洞、SQL 注入攻击以及异常数据库访问和查询模式的警报。
 
 [高级威胁防护](../sql-database/sql-advanced-threat-protection.md)是高级 SQL 安全功能的统一程序包。 它包括前面提到的服务：数据发现和分类、漏洞评估和威胁检测。 它提供用于启用和管理这些功能的一个位置。
 

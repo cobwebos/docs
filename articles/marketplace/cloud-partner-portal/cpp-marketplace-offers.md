@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 02/07/2019
 ms.author: pbutlerm
-ms.openlocfilehash: ca4979188830fcb53732750a3eaadfc2009c4f9a
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: f13d49fde7f0e40f6dcb026fcb20cb11c028c64b
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658702"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100869"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Azure 和 AppSource 市场套餐
 
@@ -32,6 +32,18 @@ ms.locfileid: "55658702"
 **生成适用于 Azure 市场和 AppSource 的应用与服务 - Build 2018**
 
 有关这些市场的详细信息，请参阅 [Azure 市场和 AppSource 发布指南](../marketplace-publishers-guide.md)。
+
+
+## <a name="common-offer-operations"></a>常见的产品/服务操作
+
+创建新产品/服务的过程在不同的产品/服务类型之间有很大的不同，例如，在 [Azure 应用产品/服务](./azure-applications/cpp-azure-app-offer.md)与[咨询服务产品/服务](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md)之间。  相比之下，你在[云合作伙伴门户](https://cloudpartner.azure.com)中对产品/服务执行的许多其他操作对不同的产品/服务类型都是相当标准化的。  [管理产品/服务](./manage-offers/cpp-manage-offers.md)部分中涵盖了这些常见操作，包括发布，查看状态，更新，以及删除。
+
+
+## <a name="test-drive"></a>体验版
+
+*体验版*是一项市场功能，它针对启用了此功能的每个产品/服务为客户提供了一个“先试后买”演示选项。  体验版功能仅限于以下部分产品/服务类型：[Azure 应用程序](./azure-applications/cpp-azure-app-offer.md)、[Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md)、[Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md)、[Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md)、[SaaS 应用程序](./saas-app/cpp-saas-offer.md)和[虚拟机](./virtual-machine/cpp-virtual-machine-offer.md)。  此功能需要发布者创建为其产品/服务自定义的体验版模板。  有关详细信息，请参阅[体验版](../cloud-partner-portal-orig/what-is-test-drive.md)部分。
+
+可以通过应用[体验版筛选器](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=test-drive)来浏览具有体验版演示的现有市场产品/服务。 
 
 
 ## <a name="azure-marketplace-and-appsource-offer-types"></a>Azure 市场和 AppSource 套餐类型

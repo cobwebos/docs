@@ -11,16 +11,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: e6b135e14f06ecf4edfbb97913c411f55711854a
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 8bb48044fc827cd0d1dbc11ef3ec72ca1bdcb11a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351446"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997527"
 ---
-# <a name="troubleshooting-guide-for-live-streaming"></a>实时流式处理故障排除指南
+# <a name="troubleshooting-guide-for-live-streaming"></a>实时流式处理故障排除指南  
+
 本文提供有关如何排查某些实时流式处理问题的建议。
 
 ## <a name="issues-related-to-on-premises-encoders"></a>与本地编码器相关的问题
@@ -45,7 +46,7 @@ ms.locfileid: "49351446"
 * **潜在问题**：GOP 大小或关键帧设置不是最佳。 
   
     **故障排除步骤**：建议的 GOP 大小或关键帧间隔为 2 秒。 有些编码器以帧数计算此设置，而有些则以秒计算。 例如：输出 30 fps 时，GOP 大小是 60 帧，相当于 2 秒。  
-* **潜在问题**：关闭的端口阻止流。 
+* **潜在问题**：关闭的端口阻止了流。 
   
     **故障排除步骤**：通过 RTMP 流式处理时，检查防火墙和/或代理设置，确认出站端口 1935 和 1936 已打开。 
 

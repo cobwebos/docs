@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics 中的数据引入时间 | Microsoft Docs
-description: 介绍影响 Azure Log Analytics 中收集数据的延迟的不同因素。
+title: Azure Monitor 中的日志数据引入时间 | Microsoft Docs
+description: 介绍了影响在 Azure Monitor 中收集数据时的延迟的各种因素。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -12,26 +12,26 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 329472f3edee66db6b12e369ee8f944546ad4734
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: ba9a0ab775e062f21a058b537e289fe3ea2b40bb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900436"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000040"
 ---
-# <a name="data-ingestion-time-in-log-analytics"></a>Log Analytics 中的数据引入时间
-Azure Log Analytics 是 Azure Monitor 中的一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 关于数据收集后需要多长时间才能在 Log Analytics 中使用，大家通常存有疑问。 本文将对影响此延迟的不同因素进行说明。
+# <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor 中的日志数据引入时间
+Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 关于日志数据在收集后需要多长时间才可供使用，大家通常存有疑问。 本文将对影响此延迟的不同因素进行说明。
 
 ## <a name="typical-latency"></a>典型延迟
-延迟是指在受监视系统上创建数据的时间以及可在 Log Analytics 中使用该数据进行分析的时间。 将数据引入 Log Analytics 的典型延迟时间为 2 到 5 分钟。 任何特定数据的特定延迟将根据下面介绍的各种因素而变化。
+延迟是指在受监视系统上创建数据的时间以及可在 Azure Monitor 中使用该数据进行分析的时间。 引入日志数据时的典型延迟时间为 2 到 5 分钟。 任何特定数据的特定延迟将根据下面介绍的各种因素而变化。
 
 
 ## <a name="factors-affecting-latency"></a>影响延迟的因素
 特定数据集的总引入时间可以细分为以下几个高级别区域。 
 
-- 代理时间：发现事件、收集事件，然后将其作为日志记录发送到 Log Analytics 引入点的时间。 大多数情况下，此过程由代理处理。
+- 代理时间：发现事件、收集事件，然后将其作为日志记录发送到 Azure Monitor 引入点的时间。 大多数情况下，此过程由代理处理。
 - 管道时间：引入管道处理日志记录的时间。 包括解析事件属性，并且可能会添加计算信息。
-- 索引时间：将日志记录引入到 Log Analytics 大数据存储所花费的时间。
+- 索引时间：将日志记录引入到 Azure Monitor 大数据存储所花费的时间。
 
 下面将详细介绍该过程中引入的不同延迟。
 
@@ -39,11 +39,11 @@ Azure Log Analytics 是 Azure Monitor 中的一种大规模数据服务，每月
 代理和管理解决方案使用不同的策略从虚拟机收集数据，这可能会影响延迟。 一些具体示例包括：
 
 - 立即收集 Windows 事件、syslog 事件和性能指标。 Linux 性能计数器每隔 30 秒轮询一次。
-- IIS 日志和自定义日志在其时间戳更改后收集。 对于 IIS 日志，这会受 [IIS 上配置的滚动更新计划](../../azure-monitor/platform/data-sources-iis-logs.md)影响。 
+- IIS 日志和自定义日志在其时间戳更改后收集。 对于 IIS 日志，这会受 [IIS 上配置的滚动更新计划](data-sources-iis-logs.md)影响。 
 - Active Directory 复制解决方案每五天执行一次评估，而 Active Directory 评估解决方案每周对 Active Directory 基础结构进行一次评估。 只有在评估完成后，代理才会收集这些日志。
 
 ### <a name="agent-upload-frequency"></a>代理上传频率
-为确保 Log Analytics 代理保持轻型，代理会缓冲日志并定期将其上传到 Log Analytics。 上传频率在 30 秒到 2 分钟之间变化，具体取决于数据类型。 大多数数据可在 1 分钟内上传。 网络状况可能会对数据抵达 Log Analytics 引入点的延迟产生负面影响。
+为确保 Log Analytics 代理保持轻型，代理会缓冲日志并定期将其上传到 Azure Monitor。 上传频率在 30 秒到 2 分钟之间变化，具体取决于数据类型。 大多数数据可在 1 分钟内上传。 网络状况可能会对数据抵达 Azure Monitor 引入点的延迟产生负面影响。
 
 ### <a name="azure-activity-logs-diagnostic-logs-and-metrics"></a>Azure 活动日志、诊断日志和指标
 Azure 数据增加了额外的时间，以便在 Log Analytics 引入点处可用于处理：
@@ -54,7 +54,6 @@ Azure 数据增加了额外的时间，以便在 Log Analytics 引入点处可�
 
 数据在引入点处可用后，还需要 2 到 5 分钟才能进行查询。
 
-
 ### <a name="management-solutions-collection"></a>管理解决方案收集
 某些解决方案不从代理收集其数据，并且可能使用会引入额外延迟的收集方法。 一些解决方案以固定时间间隔收集数据，而不尝试近实时收集。 具体示例包括：
 
@@ -64,16 +63,16 @@ Azure 数据增加了额外的时间，以便在 Log Analytics 引入点处可�
 请参阅各解决方案的文档，确定其收集频率。
 
 ### <a name="pipeline-process-time"></a>管道处理时间
-将日志记录引入到 Log Analytics 管道后，会将其写入临时存储，以确保租户隔离并确保数据不会丢失。 此过程通常会花费 5-15 秒的时间。 一些管理解决方案实施了更复杂的算法来聚合数据，并在数据流入时获得见解。 例如，网络性能监视器以 3 分钟的时间间隔聚合传入数据，有效地增加了 3 分钟的延迟。 处理自定义日志是另一个增加延迟的过程。 在某些情况下，此过程可能会为代理从文件收集的日志增加几分钟延迟。
+将日志记录引入到 Azure Monitor 管道后，会将其写入临时存储，以确保租户隔离并确保数据不会丢失。 此过程通常会花费 5-15 秒的时间。 一些管理解决方案实施了更复杂的算法来聚合数据，并在数据流入时获得见解。 例如，网络性能监视器以 3 分钟的时间间隔聚合传入数据，有效地增加了 3 分钟的延迟。 处理自定义日志是另一个增加延迟的过程。 在某些情况下，此过程可能会为代理从文件收集的日志增加几分钟延迟。
 
 ### <a name="new-custom-data-types-provisioning"></a>新的自定义数据类型预配
 从[自定义日志](data-sources-custom-logs.md)或[数据收集器 API ](data-collector-api.md)创建新的自定义数据类型时，系统会创建专用存储容器。 这是一次性开销，仅在此数据类型第一次出现时支付。
 
 ### <a name="surge-protection"></a>激增保护
-Log Analytics 的首要任务是确保不会丢失任何客户数据，因此系统具有内置的数据激增保护。 这包括缓冲区，可用于确保即使在巨大的负载下，系统也能继续正常运行。 在正常负载下，这些控件增加的时间不到一分钟，但在极端条件和故障情况下，它们可以增加大量时间，同时确保数据安全。
+Azure Monitor 的首要任务是确保不会丢失任何客户数据，因此系统具有内置的数据激增保护。 这包括缓冲区，可用于确保即使在巨大的负载下，系统也能继续正常运行。 在正常负载下，这些控件增加的时间不到一分钟，但在极端条件和故障情况下，它们可以增加大量时间，同时确保数据安全。
 
 ### <a name="indexing-time"></a>索引任务
-对于提供分析和高级搜索功能以及提供对数据的即时访问，每个大数据平台都有内置平衡。 Azure Log Analytics 允许用户对数十亿条记录运行强大的查询，并能在几秒钟内获得结果。 之所以能做到这一点，是因为基础结构能在数据引入过程中急速转换数据并将其存储在独特的紧凑结构中。 系统不断缓冲数据，直到有足够的数据可用于创建这些结构。 必须在日志记录出现在搜索结果中之前完成此操作。
+对于提供分析和高级搜索功能以及提供对数据的即时访问，每个大数据平台都有内置平衡。 Azure Monitor 允许用户对数十亿条记录运行强大的查询，并能在几秒钟内获得结果。 之所以能做到这一点，是因为基础结构能在数据引入过程中急速转换数据并将其存储在独特的紧凑结构中。 系统不断缓冲数据，直到有足够的数据可用于创建这些结构。 必须在日志记录出现在搜索结果中之前完成此操作。
 
 目前，在数据量较少但数据速率较高的情况下，此过程大约需要 5 分钟。 这似乎有悖常理，但此过程可优化大量生产工作负荷的延迟。
 
@@ -136,5 +135,5 @@ Heartbeat
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 参阅 Log Analytics 的[服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/)。
+* 阅读 Azure Monitor 的[服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/)。
 

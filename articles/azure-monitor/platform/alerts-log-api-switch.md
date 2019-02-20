@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/24/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: e4e935a9c78950517623acdf8196d51793fff18a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 879a91d7007057e577631e157dae71f1566acab6
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462454"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118218"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>切换日志警报的 API 首选项
 
@@ -30,6 +30,7 @@ ms.locfileid: "55462454"
 
 - 能够在警报规则中[跨工作区进行日志搜索](../log-query/cross-workspace-query.md)并跨越外部资源（如 Log Analytics 工作区，甚至是 Application Insights 应用）
 - 当多个字段过去经常在查询中进行分组时，用户使用 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 可以指定要在 Azure 门户中聚合的字段
+- 使用 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 创建的日志警报可以定义最长 48 小时的时段，并获取比以前更长的时段内的数据
 - 在一个操作中将警报规则创建为单个资源，无需与[旧 Log Analytics 警报 API](api-alerts.md) 一样创建三个级别的资源
 - 单个程序接口用于 Azure 中基于查询的日志警报的所有变体 - 新 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 可以用于为 Log Analytics 以及 Application Insights 管理规则
 - 所有新日志警报功能和未来开发都只能通过新 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 使用
@@ -57,6 +58,13 @@ PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers
 }
 ```
 
+还可以从 PowerShell 命令行使用 [ARMClient](https://github.com/projectkudu/ARMClient) 访问该 API。ARMClient 是可简化 Azure 资源管理器 API 调用的开源命令行工具。 如下所示，示例 PUT 调用使用 ARMclient 工具来切换与特定 Log Analytics 工作区关联的所有警报规则。
+
+```PowerShell
+$switchJSON = {'scheduledQueryRulesEnabled': 'true'}
+armclient PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview $switchJSON
+```
+
 如果成功地将 Log Analytics 工作区中的所有警报规则切换为使用新 [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)，则提供以下响应。
 
 ```json
@@ -70,6 +78,12 @@ PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers
 
 ```
 GET /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
+```
+
+若要在 PowerShell 命令行中使用 [ARMClient](https://github.com/projectkudu/ARMClient) 工具执行上述调用，请参阅以下示例。
+
+```PowerShell
+armclient GET /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
 ```
 
 如果指定 Log Analytics 工作区已切换为仅使用 [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)，则响应 JSON 如下所示。

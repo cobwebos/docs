@@ -4,7 +4,7 @@ description: 本文介绍 Azure 如何保护客户数据。
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 0b702cec6113e6b31e34750872479dce162e4cb6
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 49615dcb2f077d2e1d8b93a4bb900b435e4c87bf
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173061"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104480"
 ---
 # <a name="azure-customer-data-protection"></a>Azure 客户数据保护   
 默认情况下，拒绝 Microsoft 运营和支持人员访问客户数据。 授予对客户数据的访问权限后，需要经过领导批准，并仔细管理和记录访问活动。 访问控制要求由以下 Azure 安全策略制定：
@@ -35,7 +35,7 @@ Microsoft 为 Azure 支持人员分配独特的企业 Active Directory 帐户。
 ## <a name="data-protection"></a>数据保护
 Azure 按默认或者以客户选项的形式为客户提供可靠的数据安全性。
 
-**数据分离**：Azure 是一项多租户服务，这意味着，多个客户的部署和 VM 存储在同一物理硬件上。 Azure 使用逻辑隔离将每个客户的数据互相分离开来。 分离提供多租户服务的缩放和经济优势，同时严格防止客户访问其他人的数据。
+**数据隔离**：Azure 是一项多租户服务，这意味着，多个客户的部署和 VM 存储在同一物理硬件上。 Azure 使用逻辑隔离将每个客户的数据互相分离开来。 分离提供多租户服务的缩放和经济优势，同时严格防止客户访问其他人的数据。
 
 **静态数据保护**：客户负责确保按标准加密 Azure 中存储的数据。 Azure 提供各种加密功能，便于客户选择满足自己需求的最佳解决方案。 Azure Key Vault 可帮助客户轻松保持对密钥的控制，以便云应用程序和服务用于加密数据。 客户可以使用 Azure 磁盘加密来加密 VM。 Azure 存储服务加密可以加密客户存储帐户中的所有数据。
 
@@ -55,8 +55,8 @@ Azure 按默认或者以客户选项的形式为客户提供可靠的数据安�
 
 创建存储帐户时，请选择以下复制选项之一：
 
-- **本地冗余存储 (LRS)**：本地冗余存储保留数据的三个副本。 LRS 会在单个区域中的单个设施内复制三次。 LRS 可以保护数据免受普通的硬件故障损害，但无法保护数据免受单个设施故障的损害。
-- **区域冗余存储 (ZRS)**：区域冗余存储保留数据的三个副本。 ZRS 在两到三个个设施之间复制三次，其持久性比 LRS 更高。 复制在单个区域中或者在两个区域之间进行。 ZRS 帮助在单个区域内确保数据持久保存。
+- **本地冗余存储 (LRS)**： 本地冗余存储保留数据的三个副本。 LRS 会在单个区域中的单个设施内复制三次。 LRS 可以保护数据免受普通的硬件故障损害，但无法保护数据免受单个设施故障的损害。
+- **区域冗余存储 (ZRS)**： 区域冗余存储保留数据的三个副本。 ZRS 在两到三个个设施之间复制三次，其持久性比 LRS 更高。 复制在单个区域中或者在两个区域之间进行。 ZRS 帮助在单个区域内确保数据持久保存。
 - **异地冗余存储 (GRS)**：创建存储帐户时，默认会为该存储帐户启用异地冗余存储。 GRS 维护数据的六个副本。 使用 GRS 时，数据将在主要区域中复制三次。 数据还会在离主要区域数百英里的次要区域中复制三次，从而提供最高级别的持久性。 当主要区域发生故障时，Azure 存储会故障转移到次要区域。 GRS 帮助在两个不同的区域中确保数据持久保存。
 
 **数据销毁**：当客户删除数据或离开 Azure 时，Microsoft 会在重复使用之前遵循严格的规则覆盖存储资源，并对已退役的硬件执行物理销毁。 在客户提出请求和合同终止时，Microsoft 会执行完全数据删除。

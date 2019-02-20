@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/06/2018
+ms.date: 02/13/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 19a771d75cd1f2a2a18a3a4c42fcc34e55afb111
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 5ab50bd5a2b5b1b0e63060986d4336774be7875b
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438841"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245858"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>通过 Webhook 启动 Azure 自动化 Runbook
 
@@ -30,15 +30,15 @@ Webhook 可以用来在 Azure 自动化中通过单个 HTTP 请求来启动特�
 | 属性 | 说明 |
 |:--- |:--- |
 | 名称 |可以提供用于 Webhook 的任何名称，因为该名称不会公开给客户端。 它只用来标识 Azure 自动化中的 Runbook。 <br> 最好是为 Webhook 提供一个名称，该名称需要与使用它的客户端相关。 |
-| 代码 |Webhook 的 URL 是客户端通过 HTTP POST 来调用的唯一地址，用于启动链接到 Webhook 的 Runbook。 它是在创建 Webhook 时自动生成的。 不能指定自定义 URL。 <br> <br> URL 包含一个允许第三方系统调用 Runbook 的安全令牌，不需要进一步进行身份验证。 因此，应将其视为密码。 出于安全原因，只能在创建 Webhook 时通过 Azure 门户查看该 URL。 请将保存在安全位置的 URL 记下来，供将来使用。 |
+| 代码 |Webhook 的 URL 是客户端通过 HTTP POST 来调用的唯一地址，用于启动链接到 Webhook 的 Runbook。 它是在创建 Webhook 时自动生成的。 无法指定自定义 URL。 <br> <br> URL 包含一个允许第三方系统调用 Runbook 的安全令牌，不需要进一步进行身份验证。 因此，应将其视为密码。 出于安全原因，只能在创建 Webhook 时通过 Azure 门户查看该 URL。 请将保存在安全位置的 URL 记下来，供将来使用。 |
 | 到期日期 |与证书一样，每个 Webhook 都有一个过期日期，到了过期日期 Webhook 不再可用。 创建 Webhook 后，只要它没有到期，就可以修改此到期日期。 |
-| 已启用 |Webhook 在创建后已按默认启用。 如果将它设置为“禁用”，则没有客户端能够使用它。 可以在创建 Webhook 时设置 **Enabled** 属性，也可以在创建后随时设置它。 |
+| 已启用 |Webhook 在创建后默认启用。 如果将它设置为“已禁用”，则没有客户端可以使用它。 可以在创建 Webhook 时设置“已启用”属性，也可以在创建后随时设置它。 |
 
 ### <a name="parameters"></a>parameters
 
 Webhook 可以定义 Runbook 参数的值，当该 Webhook 启动 Runbook 时会用到这些值。 Webhook 必须包含 Runbook 的任何必需参数的值，可以包含可选参数的值。 即使在创建 Webhook 后，也可以修改配置给 Webhook 的参数值。 链接到单个 Runbook 的多个 Webhook 可以使用不同的参数值。
 
-客户端在使用 Webhook 启动 Runbook 时，不能重写在 Webhook 中定义的参数值。 为了从客户端接收数据，Runbook 可能会接受名为“$WebhookData”且类型为 [object] 的单个参数，该参数包含客户端包括在 POST 请求中的数据。
+客户端在使用 Webhook 启动 Runbook 时，无法重写在 Webhook 中定义的参数值。 若要从客户端接收数据，Runbook 可以接受一个名为 **$WebhookData** 的参数。 此参数是 [object] 类型的，包含客户端在 POST 请求中包括的数据。
 
 ![Webhookdata 属性](media/automation-webhooks/webhook-data-properties.png)
 
@@ -124,9 +124,9 @@ http://<Webhook Server>/token?=<Token Value>
 
 ## <a name="renew-webhook"></a>续订 Webhook
 
-Webhook 创建后将具有一年的有效期。 一年后，Webhook 将自动到期。 Webhook 到期后将无法将其重新激活，必须将其删除并重新创建。 如果 Webhook 还未到达其到期时间，则可对其进行扩展。
+Webhook 在创建后将具有一年的有效期。 一年后，Webhook 将自动到期。 Webhook 到期后将无法将其重新激活，必须将其删除并重新创建。 如果 Webhook 还未达到其到期时间，则可对其进行延期。
 
-若要扩展 Webhook，请导航到包含 Webhook 的 runbook。 选择“资源”****下的“Webhook”****。 选择想要扩展的 Webhook，这将打开“Webhook”页面。  选择新的到期日期和时间，然后单击“保存”。
+若要对 Webhook 进行延期，请导航到包含 Webhook 的 runbook。 选择“资源”****下的“Webhook”****。 单击要延期的 Webhook，此操作将打开“Webhook”页面。  选择新的到期日期和时间，然后单击“保存”。
 
 ## <a name="sample-runbook"></a>示例 Runbook
 
@@ -189,7 +189,7 @@ else {
 
 以下示例使用 Windows PowerShell 并配合 Webhook 来启动 Runbook。 任何可以发出 HTTP 请求的语言都可以使用 Webhook；Windows PowerShell 在这里用作示例。
 
-Runbook 预期请求的正文中包含 JSON 格式的虚拟机列表。 Runbook 还将验证标头是否包含用于验证 Webhook 调用方是否有效的专门定义的消息。
+Runbook 预期请求的正文中包含 JSON 格式的虚拟机列表。 Runbook 还将验证标头是否包含用于验证 Webhook 调用方是否有效的已定义消息。
 
 ```azurepowershell-interactive
 $uri = "<webHook Uri>"
@@ -200,11 +200,11 @@ $vms  = @(
         )
 $body = ConvertTo-Json -InputObject $vms
 $header = @{ message="StartedbyContoso"}
-$response = Invoke-RestMethod -Method Post -Uri $uri -Body $body -Headers $header
+$response = Invoke-WebRequest -Method Post -Uri $uri -Body $body -Headers $header
 $jobid = (ConvertFrom-Json ($response.Content)).jobids[0]
 ```
 
-下面的示例显示请求的正文，可在“WebhookData”的“RequestBody”属性中提供给 Runbook 使用。 格式化为 JSON 是因为其格式是请求正文中包含的格式。
+下面的示例显示请求的正文，可在“WebhookData”的“RequestBody”属性中提供给 Runbook 使用。 此值格式化为 JSON，因为这是请求正文中包含的格式。
 
 ```json
 [

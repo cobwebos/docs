@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/18/2018
+ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4c34c6c6e0a3f618cbd9337993aa6d176962fe6b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 90616544b1fddb8b6def04c30202035bec04d599
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428233"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235999"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>管理前脚本和后脚本（预览版）
 
@@ -26,7 +26,7 @@ ms.locfileid: "54428233"
 
 ## <a name="using-a-prepost-script"></a>使用前脚本/后脚本
 
-若要在更新部署中使用前脚本或后脚本，请先创建一个更新部署。 选择“前脚本 + 后脚本(预览版)”。 此时会打开“选择前脚本 + 后脚本”页。  
+若要在更新部署中使用前脚本或后脚本，请先创建一个更新部署。 选择“前脚本 + 后脚本(预览版)”。 此操作会打开“选择前脚本 + 后脚本”页面。  
 
 ![选择脚本](./media/pre-post-scripts/select-scripts.png)
 
@@ -52,7 +52,9 @@ ms.locfileid: "54428233"
 
 ## <a name="passing-parameters"></a>传递参数
 
-配置前脚本和后脚本时，可以像计划 Runbook 时一样传入参数。 参数是在创建更新部署时定义的。 除了标准的 Runbook 参数以外，还会提供一个附加参数。 此参数是 **SoftwareUpdateConfigurationRunContext**。 此参数是一个 JSON 字符串；如果在前脚本或后脚本中定义该参数，更新部署会自动传入该参数。 该参数包含有关更新部署的信息（[SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) 返回的信息的子集）。下表显示了变量中提供的属性：
+配置前脚本和后脚本时，可以像计划 Runbook 时一样传入参数。 参数是在创建更新部署时定义的。 前脚本和后脚本需要 `String` 类型的参数。 如果需要其他对象类型，可以使用 `[System.Convert]` 将它强制转换为其他类型或者使用你自己的逻辑来处理它。
+
+除了标准的 Runbook 参数以外，还提供了一个附加参数。 此参数是 **SoftwareUpdateConfigurationRunContext**。 此参数是一个 JSON 字符串；如果在前脚本或后脚本中定义该参数，更新部署会自动传入该参数。 该参数包含有关更新部署的信息（[SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) 返回的信息的子集）。下表显示了变量中提供的属性：
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext 属性
 
@@ -174,7 +176,7 @@ $variable = Get-AutomationVariable -Name $runId
 
 ## <a name="interacting-with-non-azure-machines"></a>与非 Azure 计算机交互
 
-前任务和后任务在 Azure 上下文中运行，无法访问非 Azure 计算机。 若要与非 Azure 计算机交互，必须提供：
+前任务和后任务在 Azure 上下文中运行，无法访问非 Azure 计算机。 若要与非 Azure 计算机进行交互，必须具有以下项：
 
 * 一个运行方式帐户
 * 在计算机上安装的混合 Runbook 辅助角色

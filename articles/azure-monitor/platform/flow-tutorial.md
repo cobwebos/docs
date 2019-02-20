@@ -1,5 +1,5 @@
 ---
-title: 使用 Microsoft Flow自动执行 Azure Log Analytics 过程
+title: 使用 Microsoft Flow 自动执行 Azure Monitor 日志流程
 description: 了解如何通过 Azure Log Analytics 连接器使用 Microsoft Flow 快速自动执行可重复的过程。
 services: log-analytics
 documentationcenter: ''
@@ -11,19 +11,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
-ms.openlocfilehash: 441064d6cbb5b3b2fae77caef3125c8db3467553
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f38d9b40143391be34ce5f72627720e2f5119dc6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187443"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993769"
 ---
-# <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>使用 Microsoft Flow 的连接器自动执行 Log Analytics 过程
-[Microsoft Flow](https://ms.flow.microsoft.com) 支持使用数百种操作为不同服务创建自动化工作流。 来自一个操作的输出可以用作另一个操作的输入，从而在不同的服务之间创建集成。  通过用于 Microsoft Flow 的 Azure Log Analytics 连接器，可构建包含 Log Analytics 中日志搜索检索到的数据的工作流。
+# <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>使用 Microsoft Flow 的连接器自动执行 Azure Monitor 日志流程
+[Microsoft Flow](https://ms.flow.microsoft.com) 支持使用数百种操作为不同服务创建自动化工作流。 来自一个操作的输出可以用作另一个操作的输入，从而在不同的服务之间创建集成。  可以借助用于 Microsoft Flow 的 Azure Log Analytics 连接器来构建工作流，以包括 Azure Monitor 中的 Log Analytics 工作区中的日志查询检索到的数据。
 
-例如，通过 Microsoft Flow，可在 Office 365 的电子邮件通知中使用 Log Analytics 数据，在 Azure DevOps 中创建 bug，或者发布 Slack 消息。  可通过简单计划或从连接的服务中的某些操作（例如收到电子邮件或推文时）触发工作流。  
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-本文中的教程展示如何创建自动通过电子邮件发送 Log Analytics 日志搜索结果的流，是关于如何在 Microsoft Flow 中使用 Log Analytics 的示例。 
+例如，通过 Microsoft Flow，可在 Office 365 的电子邮件通知中使用 Azure Monitor 日志数据，在 Azure DevOps 中创建 bug，或者发布 Slack 消息。  可通过简单计划或从连接的服务中的某些操作（例如收到电子邮件或推文时）触发工作流。  
+
+本文中的教程展示了如何创建一个流来通过电子邮件自动发送 Azure Monitor 日志查询的结果，这是一个关于如何在 Microsoft Flow 中使用 Log Analytics 连接器的示例。 
 
 
 ## <a name="step-1-create-a-flow"></a>步骤 1：创建流
@@ -45,7 +47,7 @@ ms.locfileid: "53187443"
 ## <a name="step-4-configure-the-log-analytics-action"></a>步骤 4：配置 Log Analytics 操作
 
 1. 指定工作区详细信息，包括订阅 ID，资源组和工作区名称。
-2. 将以下 Log Analytics 查询添加到“查询”框中。  这只是一个示例查询，可将它替换为其他任何能返回数据的查询。
+2. 将以下日志查询添加到“查询”窗口中。  这只是一个示例查询，可将它替换为其他任何能返回数据的查询。
 ```
     Event
     | where EventLevelName == "Error" 
@@ -77,7 +79,7 @@ ms.locfileid: "53187443"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 [Log Analytics 中的日志搜索](../../azure-monitor/log-query/log-query-overview.md)。
+- 详细了解 [Azure Monitor 中的日志查询](../log-query/log-query-overview.md)。
 - 详细了解 [Microsoft Flow](https://ms.flow.microsoft.com)。
 
 

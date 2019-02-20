@@ -16,12 +16,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24a12c9144535fecd23be432ee33402eb6528b28
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 8f18fbabe52c9170cde70900933ce96a3a6400c7
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47411181"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984335"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>排查在 Azure 中新建 Windows VM 时遇到的部署问题
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -48,13 +48,13 @@ ms.locfileid: "47411181"
 
 **上载错误：**
 
-N1：如果 OS 是通用的 Windows，但是以专用设置上传的，则会发生预配超时错误，并且 VM 会卡在 OOBE 屏幕上。**N<sup>1</sup>：** 如果 OS 是通用的 Windows，但是以专用设置上载的，则会发生预配超时错误，并且 VM 会卡在 OOBE 屏幕上。
+**N<sup>1</sup>：** 如果 OS 是通用的 Windows，但是以专用设置上载的，则会发生预配超时错误，并且 VM 会卡在 OOBE 屏幕上。
 
-N2：如果 OS 是专用的 Windows，但是以通用设置上传的，则会发生预配失败错误，并且 VM 会卡在 OOBE 屏幕上，因为新 VM 是以原始计算机名称、**N<sup>2</sup>：** 如果 OS 是专用的 Windows，但是以通用设置上载的，则会发生预配失败错误，并且 VM 会卡在 OOBE 屏幕上，因为新 VM 是以原始计算机名称、用户名和密码运行的。用户名和密码运行的。
+**N<sup>2</sup>：** 如果 OS 是专用的 Windows，但是以通用设置上传的，则会发生预配失败错误，并且 VM 会卡在 OOBE 屏幕上，因为新 VM 是以原始计算机名称、用户名和密码运行的。
 
 **解决方法**
 
-若要解决这两个错误，请[使用 Add-AzureRmVhd 上载原始 VHD](https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd)、可用的本地设置、以及与该 OS（通用/专用）相同的设置。 若要以通用设置上传，请记得先运行 sysprep。
+若要解决这两个错误，请[使用 Add-AzVhd 上传原始 VHD](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd)、可用的本地设置、以及与该 OS（通用/专用）相同的设置。 若要以通用设置上传，请记得先运行 sysprep。
 
 **捕获错误：**
 
@@ -66,10 +66,10 @@ N2：如果 OS 是专用的 Windows，但是以通用设置上传的，则会发
 
 若要解决这两个错误，请从门户中删除当前映像，并[从当前 VHD 重新捕获映像](../windows/create-vm-specialized.md)，该映像具有与该 OS（通用/专用）相同的设置。
 
-## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>问题：自定义/库/应用商店映像；分配失败
+## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>问题：自定义/库/市场映像；分配失败
 当新的 VM 请求被固定到不支持所请求的 VM 大小、或没有可用空间可处理请求的群集时，便会发生此错误。
 
-**原因 1：** 群集不支持请求的 VM 大小。
+**原因 1：** 群集无法支持所请求的 VM 大小。
 
 **解决方法 1：**
 
@@ -80,7 +80,7 @@ N2：如果 OS 是专用的 Windows，但是以通用设置上传的，则会发
   * 所有 VM 都停止后，创建所需大小的新 VM。
   * 先启动新 VM，选择每个已停止的 VM，并单击“启动”。
 
-**原因 2：** 群集没有可用的资源。
+**原因 2：** 群集没有空闲的资源。
 
 **解决方法 2：**
 

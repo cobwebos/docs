@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Log Analytics 优化 Active Directory 环境 | Microsoft 文档
+title: 使用 Azure Monitor 优化 Active Directory 环境 | Microsoft Docs
 description: 可以使用 Active Directory 运行状况检查解决方案定期评估环境的风险和运行状况。
 services: log-analytics
 documentationcenter: ''
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: magoedte
-ms.openlocfilehash: 063cedc679c3365e6352549e78c75ecff903cae7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 8a1e08263790f1a04e672fd9d5a17c2bd1b45ce8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193002"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999022"
 ---
-# <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>使用 Log Analytics 中的 Active Directory 运行状况检查解决方案优化 Active Directory 环境
+# <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>使用 Azure Monitor 中的 Active Directory 运行状况检查解决方案优化 Active Directory 环境
 
 ![AD 运行状况检查符号](./media/ad-assessment/ad-assessment-symbol.png)
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 可以使用 Active Directory 运行状况检查解决方案定期评估服务器环境的风险和运行状况。 本文介绍如何安装和使用该解决方案，以针对潜在问题采取纠正措施。
 
@@ -40,22 +42,22 @@ ms.locfileid: "53193002"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Active Directory 运行状况检查解决方案要求在每台装有 Microsoft Monitoring Agent (MMA) 的计算机上安装受支持版本的 .NET Framework 4.5.2 或更高版本。  MMA 代理由 System Center 2016 - Operations Manager 和 Operations Manager 2012 R2 以及 Log Analytics 服务使用。
+* Active Directory 运行状况检查解决方案要求在每台装有 Microsoft Monitoring Agent (MMA) 的计算机上安装受支持版本的 .NET Framework 4.5.2 或更高版本。  MMA 代理由 System Center 2016 - Operations Manager 和 Operations Manager 2012 R2 以及 Azure Monitor 使用。
 * 该解决方案支持运行 Windows Server 2008 和 2008 R2、Windows Server 2012 和 2012 R2 以及 Windows Server 2016 的域控制器。
 * 一个 Log Analytics 工作区，用于在 Azure 门户中通过 Azure 市场添加 Active Directory 运行状况检查解决方案。  无需进一步的配置。
 
   > [!NOTE]
-  > 添加该解决方案后，AdvisorAssessment.exe 文件会随代理添加到服务器中。 读取配置数据，然后将其发送到云中的 Log Analytics 服务进行处理。 逻辑应用于接收的数据，云服务则记录数据。
+  > 添加该解决方案后，AdvisorAssessment.exe 文件会随代理添加到服务器中。 读取配置数据，然后将其发送到云中的 Azure Monitor 进行处理。 逻辑应用于接收的数据，云服务则记录数据。
   >
   >
 
-若要对属于待评估域的域控制器执行运行状况检查，这些域控制器需要一个代理，并使用以下受支持的方法之一与 Log Analytics 建立连接：
+若要对属于待评估域的域控制器执行运行状况检查，这些域控制器需要一个代理，并使用以下受支持的方法之一与 Azure Monitor 建立连接：
 
 1. 如果域控制器尚不受 System Center 2016 - Operations Manager 或 Operations Manager 2012 R2 的监视，请安装 [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md)。
-2. 如果域控制器受 System Center 2016 - Operations Manager 或 Operations Manager 2012 R2 的监视并且管理组未与 Log Analytics 服务集成，则它可与 Log Analytics 共用多个宿主，以收集数据并将其转发到服务，同时仍可由 Operations Manager 监视。  
+2. 如果域控制器受 System Center 2016 - Operations Manager 或 Operations Manager 2012 R2 的监视并且管理组未与 Azure Monitor 集成，则它可与 Azure Monitor 共用多个宿主，以收集数据并将其转发到服务，同时仍可由 Operations Manager 监视。  
 3. 否则，如果 Operations Manager 管理组已与服务集成，则在工作区中启用解决方案后，需要遵循[添加代理管理的计算机](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-log-analytics)中的步骤，为数据收集服务添加域控制器。  
 
-域控制器上的代理向 Operations Manager 管理组报告、收集数据、将数据转发到为其分配的管理服务器，然后将数据从管理服务器直接发送到 Log Analytics 服务。  数据不会写入 Operations Manager 数据库。  
+域控制器上的代理向 Operations Manager 管理组报告、收集数据、将数据转发到为其分配的管理服务器，然后将数据从管理服务器直接发送到 Azure Monitor。  数据不会写入 Operations Manager 数据库。  
 
 ## <a name="active-directory-health-check-data-collection-details"></a>Active Directory 运行状况检查数据集合详细信息
 
@@ -73,7 +75,7 @@ Active Directory 运行状况检查使用已启用的代理收集以下来源的
 - 文件复制服务 (NTFRS) API
 - 自定义 C# 代码
 
-数据从域控制器收集，并每隔七天转发到 Log Analytics。  
+数据是在域控制器上收集的，并每隔七天转发到 Azure Monitor。  
 
 ## <a name="understanding-how-recommendations-are-prioritized"></a>了解如何划分建议的优先级
 每项建议都指定有一个权重值，用于标识该建议的相对重要性。 仅显示 10 个最重要的建议。
@@ -107,30 +109,33 @@ Active Directory 运行状况检查使用已启用的代理收集以下来源的
 查看概述的针对基础结构的合规性评估，并深入分析建议。
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>查看针对重点区域的建议并采取纠正措施
-3. 在 Azure 门户中的 Log Analytics 工作区单击“概述”磁贴。
+[!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
+
 4. 在“概述”页上，单击“Active Directory 运行状况检查”磁贴。
 5. 在“运行状况检查”页上，查看某个重点区域边栏选项卡中的摘要信息，并单击其中一个查看针对该重点区域的建议。
 6. 在任何重点区域页上，均可以查看针对环境所做的优先级建议。 单击“**受影响的对象**”下的建议，以查看有关为何给出此建议的详细信息。<br><br> ![运行状况检查建议图像](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
 7. 可以采取“建议的操作”中建议的纠正操作。 解决该项后，以后的评估将记录已执行的建议操作，并且合规性分数将提高。 已更正的项会显示为“通过的对象”。
 
 ## <a name="ignore-recommendations"></a>忽略建议
-如果有要忽略的建议，可以创建 Log Analytics 用来防止建议出现在评估结果中的文本文件。
+如果有要忽略的建议，可以创建 Azure Monitor 用来防止建议出现在评估结果中的文本文件。
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>确定要忽略的建议
-1. 在 Azure 门户中所选工作区对应的 Log Analytics 工作区页上，单击“日志搜索”磁贴。
-2. 使用以下查询列出对于环境中计算机失败的建议。
+[!INCLUDE [azure-monitor-log-queries](../../../includes/azure-monitor-log-queries.md)]
 
-    ```
-    ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
-    ```
-    下面是显示日志搜索查询的屏幕截图：<br><br> ![失败的建议](./media/ad-assessment/ad-failed-recommendations.png)
+使用以下查询列出对于环境中计算机失败的建议。
 
-3. 选择要忽略的建议。 将 RecommendationId 的值用于接下来的过程。
+```
+ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
+```
+
+下面是一个显示了日志查询的屏幕截图：<br><br> ![失败的建议](media/ad-assessment/ad-failed-recommendations.png)
+
+选择要忽略的建议。 将 RecommendationId 的值用于接下来的过程。
 
 ### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>创建和使用 IgnoreRecommendations.txt 文本文件
 1. 创建一个名为 IgnoreRecommendations.txt 的文件。
-2. 在单独的行上粘贴或键入要 Log Analytics 忽略的每个建议的 RecommendationId，保存并关闭该文件。
-3. 将以下文件夹中的文件置于每台要让 Log Analytics 忽略建议的计算机上。
+2. 在单独的行上粘贴或键入希望 Azure Monitor 忽略的每个建议的 RecommendationId，保存并关闭该文件。
+3. 将以下文件夹中的文件置于每台要让 Azure Monitor 忽略建议的计算机上。
    * 在具有 Microsoft Monitoring Agent（直接连接或通过 Operations Manager 连接）的计算机上 - *SystemDrive*:\Program Files\Microsoft Monitoring Agent\Agent
    * 在 Operations Manager 2012 R2 管理服务器上 - *SystemDrive*:\Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
    * 在 Operations Manager 2016 管理服务器上 - *SystemDrive*:\Program Files\Microsoft System Center 2016\Operations Manager\Server
@@ -138,7 +143,7 @@ Active Directory 运行状况检查使用已启用的代理收集以下来源的
 ### <a name="to-verify-that-recommendations-are-ignored"></a>验证建议是否已被忽略
 在下一次计划运行状况检查运行后（默认情况下每隔七天运行一次），指定的建议会被标记为“已忽略”，不会在仪表板上显示。
 
-1. 可以使用以下日志搜索查询列出所有已忽略的建议。
+1. 可以使用以下日志查询列出所有已忽略的建议。
 
     ```
     ADAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
@@ -177,11 +182,11 @@ Active Directory 运行状况检查使用已启用的代理收集以下来源的
 
 *仅显示前 10 条建议的原因*
 
-* 我们并没有提供完整详尽的任务列表，而是建议先着重解决优先级较高的建议。 在解决这些建议后，其他建议将变为可用。 如果想要查看详细的列表，可以使用日志搜索查看所有建议。
+* 我们并没有提供完整详尽的任务列表，而是建议先着重解决优先级较高的建议。 在解决这些建议后，其他建议将变为可用。 如果想要查看详细的列表，可以使用日志查询来查看所有建议。
 
 *有没有方法来忽略建议？*
 
 * 有的，请参阅上面的 [忽略建议](#ignore-recommendations) 部分。
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Log Analytics 中的日志搜索](../../azure-monitor/log-query/log-query-overview.md)了解如何分析详细的 AD 运行状况检查数据和建议。
+* 使用 [Azure Monitor 日志查询](../log-query/log-query-overview.md)来了解如何分析详细的 AD 运行状况检查数据和建议。

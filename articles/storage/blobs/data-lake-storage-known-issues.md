@@ -6,14 +6,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 02/07/2018
 ms.author: normesta
-ms.openlocfilehash: 5677649b8f002490900ec32bee954348b2f444e6
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: ff158b726c57f4aa5b7822dc0273ab42c350522c
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731540"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895527"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -23,7 +23,7 @@ ms.locfileid: "55731540"
 
 Blob 存储 API 和 Azure Data Lake Gen2 API 不能互操作。
 
-如果有使用 Blob API 的自定义工具、应用程序或脚本，并且希望使用它们处理上传到帐户的所有内容，则在 Blob API 与 Azure Data Lake Gen2 API 实现互操作之前，请勿在 Blob 存储帐户中启用分层命名空间。 使用未启用分层命名空间的存储帐户意味着无法访问 Data Lake Storage Gen2 特定的功能，例如目录和文件系统访问控制列表。
+如果有使用 Blob API 的工具、应用程序、服务或脚本，并且希望使用它们处理上传到帐户的所有内容，则在 Blob API 与 Azure Data Lake Gen2 API 实现互操作之前，请勿在 Blob 存储帐户中启用分层命名空间。 使用未启用分层命名空间的存储帐户意味着无法访问 Data Lake Storage Gen2 特定的功能，例如目录和文件系统访问控制列表。
 
 ## <a name="blob-storage-apis"></a>Blob 存储 API
 
@@ -41,15 +41,15 @@ Blob 存储 API 在 Azure Data Lake Storage Gen2 帐户中尚不可用。
 
 * 即使在生产环境中未频繁受到影响，也请告诉我们你是否出于某种原因需要将该数据复制到另一个存储帐户，如果是，为什么？
 
-在这些情况下，我们可以在有限的时间段内恢复对 Blob API 的访问权限，以便你可以将此数据复制到未启用分层命名空间的存储帐户。
+在这些情况下，我们可以在有限的时间段内恢复对 Blob API 的访问权限，以便你可以将此数据复制到未启用分层命名空间功能的存储帐户。
 
-非托管虚拟机 (VM) 磁盘依赖于被禁用的 Blob 存储 API，因此，若要在存储帐户中启用分层命名空间，请考虑将非托管 VM 磁盘放到未启用分层命名空间的存储帐户中。
+非托管虚拟机 (VM) 磁盘依赖于被禁用的 Blob 存储 API，因此，若要在存储帐户中启用分层命名空间，请考虑将非托管 VM 磁盘放到未启用分层命名空间功能的存储帐户中。
 
 ## <a name="azure-storage-explorer"></a>Azure 存储资源管理器
 
 若要使用 Azure 存储资源管理器查看或管理 Data Lake Storage Gen2 帐户，你必须至少具有可[免费下载](https://azure.microsoft.com/features/storage-explorer/)的此工具的版本 `1.6.0`。
 
-请注意，嵌入到 Azure 门户中的存储资源管理器的版本当前不支持查看或管理启用了分层命名空间的 Data Lake Storage Gen2 帐户。
+请注意，嵌入到 Azure 门户中的存储资源管理器的版本当前不支持查看或管理启用了分层命名空间功能的 Data Lake Storage Gen2 帐户。
 
 ## <a name="blob-viewing-tool"></a>Blob 查看工具
 
@@ -75,17 +75,17 @@ AzCopy 版本 8 不支持 Azure Data Lake Storage Gen2。
 
 软删除和快照不适用于 Azure Data Lake Storage Gen2 帐户。
 
-所有版本控制功能（包括[快照](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob)和[软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)）尚不适用于已启用分层命名空间的存储帐户。
+所有版本控制功能（包括[快照](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob)和[软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)）尚不适用于已启用分层命名空间功能的存储帐户。
 
 ## <a name="object-level-storage-tiers"></a>对象级存储层
 
-对象级存储层（“热”、“冷”和“存档”）尚不适用于 Azure Data Lake Storage Gen 2 帐户，但适用于未启用分层命名空间的存储帐户。
+对象级存储层（“热”、“冷”和“存档”）尚不适用于 Azure Data Lake Storage Gen 2 帐户，但适用于未启用分层命名空间功能的存储帐户。
 
-## <a name="azure-blob-storage-lifecycle-management-preview-policies"></a>Azure Blob 存储生命周期管理（预览版）策略
+## <a name="azure-blob-storage-lifecycle-management-policies"></a>Azure Blob 存储生命周期管理策略
 
-Azure Blob 存储生命周期管理（预览版）策略尚不适用于 Azure Data Lake Storage Gen2 帐户。
+Azure Blob 存储生命周期管理策略尚不适用于 Azure Data Lake Storage Gen2 帐户。
 
-这些策略适用于未启用分层命名空间的存储帐户。
+这些策略适用于未启用分层命名空间功能的存储帐户。
 
 ## <a name="diagnostic-logs"></a>诊断日志
 

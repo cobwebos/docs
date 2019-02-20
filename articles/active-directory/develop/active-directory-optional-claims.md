@@ -16,12 +16,13 @@ ms.date: 11/08/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7efac4138f21a3f8e9dae087991f97dabad61822
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2424dbf595743eacef16b7d11f208edc9cd09a41
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077230"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185445"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>如何：向 Azure AD 应用（公共预览版）提供可选声明
 
@@ -56,7 +57,7 @@ ms.locfileid: "55077230"
 
 **表 2：标准的可选声明集**
 
-| Name                        | 说明   | 令牌类型 | 用户类型 | 说明  |
+| 名称                        | 说明   | 令牌类型 | 用户类型 | 说明  |
 |-----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | 用户上次进行身份验证的时间。 请参阅 OpenID Connect 规范。| JWT        |           |  |
 | `tenant_region_scope`      | 资源租户的区域 | JWT        |           | |
@@ -76,7 +77,7 @@ ms.locfileid: "55077230"
 | `ztdid`                    | 零接触部署 ID | JWT | | 用于 [Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) 的设备标识 |
 |`email`                     | 此用户的可寻址电子邮件（如果此用户有）。  | JWT、SAML | | 如果用户是租户中的来宾，则默认包含此值。  对于托管用户（租户内部的用户），必须通过此可选声明进行请求，或者仅在 v2.0 上使用 OpenID 范围进行请求。  对于托管用户，必须在 [Office 管理门户](https://portal.office.com/adminportal/home#/users)中设置电子邮件地址。|  
 | `acct`             | 租户中的用户帐户状态。 | JWT、SAML | | 如果用户是租户的成员，则该值为 `0`。 如果他们是来宾，则该值为 `1`。 |
-| `upn`                      | UserPrincipalName 声明。 | JWT、SAML  |           | 尽管会自动包含此声明，但可以将它指定为可选声明，以附加额外的属性，在来宾用例中修改此声明的行为。 <br> 附加属性： <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash` |
+| `upn`                      | UserPrincipalName 声明。 | JWT、SAML  |           | 尽管会自动包含此声明，但可以将它指定为可选声明，以附加额外的属性，在来宾用例中修改此声明的行为。  |
 
 ### <a name="v20-optional-claims"></a>v2.0 可选声明
 
@@ -84,31 +85,29 @@ ms.locfileid: "55077230"
 
 **表 3：仅限 V2.0 的可选声明**
 
-| JWT 声明     | Name                            | 说明                                | 说明 |
-|---------------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------|-------|
+| JWT 声明     | 名称                            | 说明                                | 说明 |
+|---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP 地址                      | 客户端从中登录的 IP 地址。   |       |
 | `onprem_sid`  | 本地安全标识符 |                                             |       |
 | `pwd_exp`     | 密码过期时间        | 密码过期的日期时间。 |       |
-| `pwd_url`     | 更改密码 URL             | 用户更改密码时可以访问的 URL。   |       |
-| `in_corp`     | 企业网络内部        | 表示客户端是否从企业网络登录。 如果不是，则不包含此声明。   |       |
-| `nickname`    | 别名                        | 用户的附加名称，不同于名字或姓氏。 |       |                                                                                                                |       |
+| `pwd_url`     | 更改密码 URL             | 用户更改密码时可以访问的 URL。   |   |
+| `in_corp`     | 企业网络内部        | 表示客户端是否从企业网络登录。 如果不是，则不包含此声明。   |  以 MFA 中的[可信 IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) 设置为基础。    |
+| `nickname`    | 别名                        | 用户的附加名称，不同于名字或姓氏。 | 
 | `family_name` | 姓氏                       | 按照 Azure AD 用户对象中的定义，指定用户的姓。 <br>"family_name":"Miller" |       |
 | `given_name`  | 名字                      | 和对 Azure AD 用户对象的设置一样，指定用户的名。<br>"given_name":"Frank"                   |       |
+| `upn`       | 用户主体名称 | 可以与 username_hint 参数一起使用的用户标识符。  不是用户的持久标识符，不应当用于关键数据。 | 有关声明配置，请参阅下面的[附加属性](#additional-properties-of-optional-claims)。 |
 
 ### <a name="additional-properties-of-optional-claims"></a>可选声明的附加属性
 
 可以配置某些可选声明来更改声明的返回方式。 这些附加属性主要用于帮助迁移具有不同数据预期的本地应用程序（例如，`include_externally_authenticated_upn_without_hash` 可帮助迁移无法处理 UPN 中的井号标记 (`#`) 的客户端）
 
-**表 4：用于配置标准可选声明的值**
+**表 4：用于配置可选声明的值**
 
-| 属性名称                                     | 附加属性名称                                                                                                             | 说明 |
-|---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| `upn`                                                 |                                                                                                                                      |  可用于 SAML 和 JWT 响应。        |
-| | `include_externally_authenticated_upn`              | 包含资源租户中存储的来宾 UPN。 例如： `foo_hometenant.com#EXT#@resourcetenant.com`                            |             
-| | `include_externally_authenticated_upn_without_hash` | 同上，不过，井号标记 (`#`) 已替换为下划线 (`_`)，例如 `foo_hometenant.com_EXT_@resourcetenant.com` |             
-
-> [!Note]
->如果指定 upn 可选声明但不使用附加属性，则不会更改任何行为 – 若要查看令牌中颁发的新声明，必须至少添加一个附加属性。 
+| 属性名称  | 附加属性名称 | 说明 |
+|----------------|--------------------------|-------------|
+| `upn`          |                          | 可用于 SAML 和 JWT 响应，以及 v1.0 和 v2.0 令牌。 |
+|                | `include_externally_authenticated_upn`  | 包含资源租户中存储的来宾 UPN。 例如：`foo_hometenant.com#EXT#@resourcetenant.com` |             
+|                | `include_externally_authenticated_upn_without_hash` | 同上，不过，井号标记 (`#`) 已替换为下划线 (`_`)，例如 `foo_hometenant.com_EXT_@resourcetenant.com` |
 
 #### <a name="additional-properties-example"></a>附加属性示例
 
@@ -151,12 +150,12 @@ ms.locfileid: "55077230"
 "saml2Token": [ 
               { 
                     "name": "upn", 
-                    "essential": true
+                    "essential": false
                },
                { 
                     "name": "extension_ab603c56068041afb2f6832e2a17e237_skypeId",
                     "source": "user", 
-                    "essential": true
+                    "essential": false
                }
        ]
    }
@@ -168,7 +167,7 @@ ms.locfileid: "55077230"
 
 **表 5：OptionalClaims 类型属性**
 
-| Name        | 类型                       | 说明                                           |
+| 名称        | 类型                       | 说明                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | 集合 (OptionalClaim) | 在 JWT ID 令牌中返回的可选声明。 |
 | `accessToken` | 集合 (OptionalClaim) | 在 JWT 访问令牌中返回的可选声明。 |
@@ -181,7 +180,7 @@ ms.locfileid: "55077230"
 
 **表 6：OptionalClaim 类型属性**
 
-| Name                 | 类型                    | 说明                                                                                                                                                                                                                                                                                                   |
+| 名称                 | 类型                    | 说明                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | 可选声明的名称。                                                                                                                                                                                                                                                                           |
 | `source`               | Edm.String              | 声明的源（目录对象）。 扩展属性提供预定义声明和用户定义的声明。 如果源值为 null，则声明是预定义的可选声明。 如果源值为 user，则 name 属性中的值是来自用户对象的扩展属性。 |
