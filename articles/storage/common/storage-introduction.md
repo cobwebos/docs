@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 01/02/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 953615a9c6b716db1db0c7bfb993f3d47aefd7a9
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: d84fe768170cffd433b18a1a3dacb1a9c2be7e9f
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507767"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329978"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure 存储简介
 
@@ -169,7 +169,7 @@ Azure 存储资源可以通过任何发出 HTTP/HTTPS 请求的语言来进行�
 * [适用于 .NET 的存储数据移动客户端库](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement)
 
 ### <a name="tools-and-utilities"></a>工具和实用程序
-* [适用于存储的 Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/azure.storage)
+* [适用于存储的 Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.storage)
 * [适用于存储的 Azure CLI Cmdlet](https://docs.microsoft.com/cli/azure/storage)
 * [AzCopy 命令行实用程序](https://aka.ms/downloadazcopy)
 * [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)是 Microsoft 免费提供的独立应用，适用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。

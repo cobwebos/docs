@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 0d57e251b241297c461b117edec8fee6316b337b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 5f8f282db9468d84c3a1fa16c5cd481f2dd0970e
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508865"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415912"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>针对虚拟网络对等互连配置 VPN 网关传输
 
@@ -41,6 +41,8 @@ ms.locfileid: "55508865"
 > 全局虚拟网络对等互连目前不支持网关传输。
 
 ## <a name="requirements"></a>要求
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 本文档中的示例要求创建以下资源：
 
@@ -106,16 +108,16 @@ $SpokeRM = "Spoke-RM"
 $HubRG   = "HubRG1"
 $HubRM   = "Hub-RM"
 
-$spokermvnet = Get-AzureRmVirtualNetwork -Name $SpokeRM -ResourceGroup $SpokeRG
-$hubrmvnet   = Get-AzureRmVirtualNetwork -Name $HubRM -ResourceGroup $HubRG
+$spokermvnet = Get-AzVirtualNetwork -Name $SpokeRM -ResourceGroup $SpokeRG
+$hubrmvnet   = Get-AzVirtualNetwork -Name $HubRM -ResourceGroup $HubRG
 
-Add-AzureRmVirtualNetworkPeering `
+Add-AzVirtualNetworkPeering `
   -Name SpokeRMtoHubRM `
   -VirtualNetwork $spokermvnet `
   -RemoteVirtualNetworkId $hubrmvnet.Id `
   -UseRemoteGateways
 
-Add-AzureRmVirtualNetworkPeering `
+Add-AzVirtualNetworkPeering `
   -Name HubRMToSpokeRM `
   -VirtualNetwork $hubrmvnet `
   -RemoteVirtualNetworkId $spokermvnet.Id `
@@ -151,9 +153,9 @@ Add-AzureRmVirtualNetworkPeering `
 $HubRG   = "HubRG1"
 $HubRM   = "Hub-RM"
 
-$hubrmvnet   = Get-AzureRmVirtualNetwork -Name $HubRM -ResourceGroup $HubRG
+$hubrmvnet   = Get-AzVirtualNetwork -Name $HubRM -ResourceGroup $HubRG
 
-Add-AzureRmVirtualNetworkPeering `
+Add-AzVirtualNetworkPeering `
   -Name HubRMToSpokeRM `
   -VirtualNetwork $hubrmvnet `
   -RemoteVirtualNetworkId "/subscriptions/<subscription Id>/resourceGroups/Default-Networking/providers/Microsoft.ClassicNetwork/virtualNetworks/Spoke-Classic" `

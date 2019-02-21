@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: e191821c8e2c6e189e8d7f8befcb11009f2ed7d8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0f86af63be760a6ba4291f683f41845a6c54ed96
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172359"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446301"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>快速入门：使用 Python 调用必应 Web 搜索 API  
 
@@ -84,7 +84,7 @@ HTML("<table>{0}</table>".format(rows))
 
 ## <a name="sample-code-on-github"></a>GitHub 上的示例代码
 
-如果希望在本地运行此代码，[GitHub 上提供了完整的示例](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingWebSearchv7.js)。
+如果希望在本地运行此代码，[GitHub 上提供了完整的示例](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingWebSearchv7.py)。
 
 ## <a name="next-steps"></a>后续步骤
 

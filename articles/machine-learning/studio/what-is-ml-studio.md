@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: 77c69e7e655770ab912e6ee25183e760f972504d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 4f69de744be3a9926e1c5d3e674966e24c3020dc
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243682"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455647"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什么是 Azure 机器学习工作室？
 Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用于根据数据构建、测试和部署预测分析解决方案。 机器学习工作室将模型发布为可让自定义应用或 BI 工具（如 Excel）方便使用的 Web 服务。
@@ -37,7 +37,7 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 
 不需要编程，只需以可视方式连接数据集和模块即可构建预测分析模型。
 
-![Azure 机器学习工作室示意图：创建试验、读取多个源的数据、编写评分的数据、编写模型。][ml-studio-overview]
+![Azure 机器学习工作室示意图：创建试验、读取多个源的数据、编写评分的数据、编写模型。](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
 
 ## <a name="get-started-with-machine-learning-studio"></a>机器学习工作室入门
 首次进入[机器学习工作室](https://studio.azureml.net)时，会看到“主页”。 可在此处查看文档、视频、网络研讨会，以及查找其他重要资源。
@@ -107,9 +107,6 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 
 ## <a name="deploying-a-predictive-analytics-web-service"></a>部署预测分析 Web 服务
 准备好预测分析模型后，可以从机器学习工作室将它部署为 Web 服务。 有关此过程的详细信息，请参阅 [Deploy an Azure Machine Learning web service](publish-a-machine-learning-web-service.md)（部署 Azure 机器学习 Web 服务）。
-
-[ml-studio-overview]:./media/what-is-ml-studio/azure-ml-studio-diagram.jpg
-
 
 
 ## <a name="key-machine-learning-terms-and-concepts"></a>机器学习的重要术语和概念
