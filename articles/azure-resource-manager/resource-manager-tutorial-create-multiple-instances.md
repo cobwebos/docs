@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3bbf2d1d5fab7dec06eda851cfaad0c84365cc88
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 779ae6030c7d36c60dbd0ad00daaf1423a21eb04
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110789"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269036"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>教程：使用资源管理器模板创建多个资源实例
 
@@ -32,8 +32,6 @@ ms.locfileid: "56110789"
 > * 部署模板
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -122,6 +120,8 @@ ms.locfileid: "56110789"
 
 有关部署过程，请参阅 Visual Studio Code 快速入门中的[部署模板](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#deploy-the-template)部分。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 若要列出全部三个存储帐户，请省略 --name 参数：
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -132,8 +132,6 @@ az storage account list --resource-group $resourceGroupName
 ```
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"

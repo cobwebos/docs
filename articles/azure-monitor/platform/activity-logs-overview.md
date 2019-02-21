@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 3a1ffb3b7a0f154b1d74ca7a8789e5fdadadec31
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 2fc09ccdf68605e444ed4b196162df6205557272
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883766"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002093"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>使用 Azure 活动日志监视订阅活动
 
@@ -83,7 +83,7 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 
 定义了一组筛选器后，可以将查询固定到 Azure 仪表板上，以便始终关注特定事件。
 
-若要获得更强大的功能，可以单击“日志”图标，这会在 [Log Analytics Activity Log Analytics 解决方案](../../azure-monitor/platform/collect-activity-logs.md)中显示活动日志数据。 活动日志边栏选项卡提供对日志的基础筛选/浏览体验，但是 Log Analytics 可以以更强大的方式对数据进行透视、查询和可视化。
+若要获得更强大的功能，可以单击“日志”图标，这会在[收集和分析活动日志解决方案](../../azure-monitor/platform/collect-activity-logs.md)中显示活动日志数据。 “活动日志”边栏选项卡提供对日志的基础筛选/浏览体验，但 Azure Monitor 日志功能能够以更强大的方式对数据进行透视、查询和可视化。
 
 ## <a name="export-the-activity-log-with-a-log-profile"></a>使用日志配置文件导出活动日志
 **日志配置文件**控制如何导出活动日志。 可以使用日志配置文件配置：

@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/12/2018
-ms.openlocfilehash: 88538aa9528059458f6e73485f4839693caa943b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 179bb4586ce7d6b306decfcf4d312d541dc9232e
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054480"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330471"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板在 Azure Databricks 上运行 Spark 作业
 
@@ -51,7 +51,7 @@ ms.locfileid: "54054480"
 
 4. 创建工作区需要几分钟时间。 在创建工作区过程中，门户会在右侧显示“正在提交 Azure Databricks 的部署”磁贴。 可能需要在仪表板上向右滚动才能看到此磁贴。 另外，还会在屏幕顶部附近显示进度条。 你可以查看任一区域来了解进度。
 
-   ![Databricks 部署磁贴](./media/quickstart-create-databricks-workspace-portal/databricks-deployment-tile.png "Databricks 部署磁贴")
+   ![Databricks 部署磁贴](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-deployment-tile.png "Databricks 部署磁贴")
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>在 Databricks 中创建 Spark 群集
 
@@ -59,11 +59,11 @@ ms.locfileid: "54054480"
 
 2. 随后将会重定向到 Azure Databricks 门户。 在该门户中，单击“群集”。
 
-   ![Azure 上的 Databricks](./media/quickstart-create-databricks-workspace-portal/databricks-on-azure.png "Azure 上的 Databricks")
+   ![Azure 上的 Databricks](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-on-azure.png "Azure 上的 Databricks")
 
 3. 在“新建群集”页中，提供用于创建群集的值。
 
-   ![在 Azure 上创建 Databricks Spark 群集](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "在 Azure 上创建 Databricks Spark 群集")
+   ![在 Azure 上创建 Databricks Spark 群集](./media/quickstart-create-databricks-workspace-resource-manager-template/create-databricks-spark-cluster.png "在 Azure 上创建 Databricks Spark 群集")
 
    除以下值外，接受其他所有默认值：
 
@@ -87,11 +87,11 @@ ms.locfileid: "54054480"
 
 1. 在左窗格中，单击“工作区”。 在“工作区”下拉列表中，依次单击“创建”、“笔记本”。
 
-   ![在 Databricks 中创建笔记本](./media/quickstart-create-databricks-workspace-portal/databricks-create-notebook.png "在 Databricks 中创建笔记本")
+   ![在 Databricks 中创建笔记本](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-create-notebook.png "在 Databricks 中创建笔记本")
 
 2. 在“创建笔记本”对话框中输入一个名称，选择“Scala”作为语言，并选择前面创建的 Spark 群集。
 
-   ![在 Databricks 中创建笔记本](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "在 Databricks 中创建笔记本")
+   ![在 Databricks 中创建笔记本](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-details.png "在 Databricks 中创建笔记本")
 
    单击“创建”。
 
@@ -145,17 +145,17 @@ ms.locfileid: "54054480"
 
 6. 随后将会看到以下屏幕截图中所示的表格输出（此处只显示了一部分列）：
 
-   ![示例 JSON 数据](./media/quickstart-create-databricks-workspace-portal/databricks-sample-csv-data.png "示例 JSON 数据")
+   ![示例 JSON 数据](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sample-csv-data.png "示例 JSON 数据")
 
    在其他详细信息中，示例数据捕获了无线电频道的听众的性别（列名为“性别”），以及这些听众的订阅是免费还是付费的（列名为“级别”）。
 
 7. 现在创建这些数据的可视表示形式，以显示每种性别、有多少用户使用免费帐户和多少用户是付费的订户。 在表格输出的底部，单击“条形图”图标，再单击“绘图选项”。
 
-   ![创建条形图](./media/quickstart-create-databricks-workspace-portal/create-plots-databricks-notebook.png "创建条形图")
+   ![创建条形图](./media/quickstart-create-databricks-workspace-resource-manager-template/create-plots-databricks-notebook.png "创建条形图")
 
 8. 在“自定义绘图”中，按屏幕截图中所示拖放值。
 
-   ![自定义条形图](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-customize-plot.png "自定义条形图")
+   ![自定义条形图](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-customize-plot.png "自定义条形图")
 
    * 将“键”设置为“性别”。
    * 将“序列分组”设置为“级别”。
@@ -166,13 +166,13 @@ ms.locfileid: "54054480"
 
 9. 输出将显示以下屏幕截图中所示的可视表示形式：
 
-   ![自定义条形图](./media/quickstart-create-databricks-workspace-portal/databricks-sql-query-output-bar-chart.png "自定义条形图")
+   ![自定义条形图](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sql-query-output-bar-chart.png "自定义条形图")
 
 ## <a name="clean-up-resources"></a>清理资源
 
 完成本文后，可以终止群集。 为此，请在 Azure Databricks 工作区的左窗格中选择“群集”。 针对想要终止的群集，将光标移到“操作”列下面的省略号上，选择“终止”图标。
 
-![停止 Databricks 群集](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "停止 Databricks 群集")
+![停止 Databricks 群集](./media/quickstart-create-databricks-workspace-resource-manager-template/terminate-databricks-cluster.png "停止 Databricks 群集")
 
 如果不手动终止群集，但在创建群集时选中了“在不活动 \_\_ 分钟后终止”复选框，则该群集会自动停止。 在这种情况下，如果群集保持非活动状态超过指定的时间，则会自动停止。
 

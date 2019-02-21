@@ -11,12 +11,12 @@ author: hning86
 ms.author: haining
 ms.date: 01/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: e0c235a9fd3898fa4525651d514c77432627603c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 1962cef85c5e663de640f296a6e8e9efd5a1f4d6
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238952"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310349"
 ---
 # <a name="quickstart-use-the-python-sdk-to-get-started-with-azure-machine-learning"></a>快速入门：通过 Python SDK 开始使用 Azure 机器学习
 
@@ -89,7 +89,7 @@ ms.locfileid: "55238952"
 1. 在 conda 环境中安装 Jupyter Notebook 服务器。
 
   ```shell
-    conda install nb_conda
+    conda install -y nb_conda
     ```
 
 1. 若要在 Azure 机器学习教程中使用此环境，请安装这些包。

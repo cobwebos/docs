@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/11/2019
+ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66a40597178a8267febfd6ad18277d6b865c084d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d656a72e681c8cc73fa8b660684b8c194df3ae48
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180158"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301207"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>教程：Azure Active Directory 与 Zendesk 的集成
 
@@ -109,12 +109,7 @@ ms.locfileid: "56180158"
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.zendesk.com`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
-    | |
-    |-|-|
-    | `<subdomain>.zendesk.com` |
-    | `https://<subdomain>.zendesk.com` |
-    | |
+  b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<subdomain>.zendesk.com`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Zendesk 客户端支持团队](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
